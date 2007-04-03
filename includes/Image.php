@@ -376,7 +376,7 @@ class Image
 			//NB: We enter into this loop even when we're uploading to the wiki.
 			//so skip if it's an upload				
 			if($src!="upload") { 
-				//Download the file from the InstantCommonsServer in the background, else show 
+				//TODO: Download the file from the InstantCommonsServer in the background, else show 
 				//"downloading this image" or other status message.
 				//store it in the image database and return an Image object It should
 				//return an object identical to a database row as above
@@ -402,7 +402,7 @@ class Image
 		            //TODO: This has to be done in the background! Otherwise the page
 		            //hangs until the download is complete
 		            
-		            //As a workaround, check the size of the file returned. If greater than
+		            //TODO: As a workaround, check the size of the file returned. If greater than
 		            //2.5kb (typical thumbnail size on my test wiki), show "Download in progress" 
 		            //image instead until the download is complete
 		             $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
