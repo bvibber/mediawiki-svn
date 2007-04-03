@@ -31,3 +31,5 @@ sixdeg.war: $(DATA) ../java/linksc.jar $(JAVA_OBJS)
 	rm -f sixdeg.war
 	cp ../java/linksc.jar src/WEB-INF/lib/
 	(cd src; zip -Dr ../sixdeg.war . -x `find . | grep '\.svn'`)
+
+depend:

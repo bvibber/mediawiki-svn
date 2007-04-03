@@ -1,18 +1,24 @@
-/* $Id$ */
+/* Six degrees of Wikipedia                                             */
+/* Copyright (c) 2007 River Tarnell <river@attenuate.org>.              */
 /*
- * Six degrees of Wikipedia: Server.
- * This source code is released into the public domain.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
+
+/* $Id$ */
 
 #include <iostream>
 
 #include <boost/format.hpp>
 
 #include "work_queue.h"
+#include "log.h"
 
 work_queue::work_queue(int nthreads)
 {
-	std::cout << "nthreads = " << nthreads << '\n';
+	logger::info(str(boost::format("nthreads = %d") % nthreads));
 
 	pthread_mutex_init(&lock, NULL);
 	pthread_cond_init(&cond, NULL);

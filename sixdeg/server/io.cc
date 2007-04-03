@@ -1,8 +1,13 @@
-/* $Id$ */
+/* Six degrees of Wikipedia                                             */
+/* Copyright (c) 2007 River Tarnell <river@attenuate.org>.              */
 /*
- * Six degrees of Wikipedia: Server.
- * This source code is released into the public domain.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
+
+/* $Id$ */
 
 #include <iostream>
 
@@ -11,6 +16,7 @@
 #include <poll.h>
 
 #include "io.h"
+#include "log.h"
 
 void
 poller::read(int s, boost::function<void (void)> f)
@@ -85,7 +91,7 @@ dispatcher::run(void)
 poller::poller(void)
 {
 	int nfds = getdtablesize();
-	std::cout << "dtablesize = " << nfds << '\n';
+	logger::info(str(boost::format("dtablesize = %d") % nfds));
 	fdtable.resize(nfds);
 }
 

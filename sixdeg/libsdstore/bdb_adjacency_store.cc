@@ -21,6 +21,7 @@
 #include <pthread.h>
 
 #include "bdb_adjacency_store.h"
+#include "log.h"
 
 #define DB_TYPE DB_HASH
 
@@ -318,7 +319,6 @@ bdb_adjacency_transaction::rollback(void)
 {
 	store.last_error = txn->abort(txn);
 	txn = 0;
-	std::cout << "aborting\n";
 }
 
 void
@@ -352,7 +352,7 @@ bdb_adjacency_transaction::get_adjacencies(std::string const &wiki, page_id_t fr
 		return std::set<page_id_t>();
 	}
 	if (store.last_error != 0) {
-		std::cerr << "error getting page: " << store.strerror() << '\n';
+		logger::error(str(boost::format("error getting adjacencies for /%s/: %s") % store.strerror()));
 		return std::set<page_id_t>();
 	}
 

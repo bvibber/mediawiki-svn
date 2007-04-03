@@ -12,3 +12,6 @@ SRCS	= linksc.cc liblinksc.cc
 OBJS	= $(SRCS:.cc=.o)
 
 include ../frag/cxxprog.mk
+#DO NOT DELETE -- make depend needs it
+linksc.o: linksc.cc linksc.h
+liblinksc.o: liblinksc.cc linksc.h ../defs.h ../libsixdeg/encode_decode.h

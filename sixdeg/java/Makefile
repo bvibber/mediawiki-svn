@@ -22,3 +22,5 @@ linksc.jar: $(CLASSES)
 
 clean:
 	rm -f org/wikimedia/links/*.class linksc.jar
+
+depend:

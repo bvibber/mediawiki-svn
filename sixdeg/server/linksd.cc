@@ -1,9 +1,13 @@
-/* $Id$ */
+/* Six degrees of Wikipedia						*/
+/* Copyright (c) 2005-2007 River Tarnell <river@attenuate.org>.		*/
 /*
- * Six degrees of Wikipedia: Server.
- * This source code is released into the public domain.
- *
- * Linux version, modified to use AF_UNIX socket instead of doors 2006-09-20.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
+ */
+/*
+ * Server core: sets up client listener/dispatcher and creates adjacency store.
  */
 
 #include <iostream>
@@ -20,11 +24,13 @@
 #include <boost/format.hpp>
 #include <boost/bind.hpp>
 #include <boost/noncopyable.hpp>
+#include <boost/shared_ptr.hpp>
 
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <netdb.h>
 
 #include <unistd.h>
 #include <fcntl.h>
@@ -36,51 +42,81 @@
 #include "client.h"
 #include "bdb_adjacency_store.h"
 #include "defs.h"
+#include "log.h"
 
+/*
+ * Client handler registers listeners and hands new client connections to the 
+ * request dispatcher.
+ */
 struct client_handler : boost::noncopyable {
 	client_handler(pathfinder *);
 	
+	void listen(std::string const &addr, std::string const &port);
 	void run(void);
 
 private:
-	void accept_client(void);
-	void start_accept(void);
+	void accept_client(int s);
+	void start_accept(int s);
 	void read_data(client *);
 
 	poller p;
 	request_dispatcher d;
 	pathfinder *f;
 
-	int listener;
+	std::vector<int> listeners;
 };
 
 client_handler::client_handler(pathfinder *f_)
 	: d(f_)
 	, f(f_)
 {
-	struct sockaddr_in addr;
-	int one = 1;
+}
 
-	if ((listener = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
-		std::perror("socket");
-		std::exit(1);
+void
+client_handler::listen(std::string const &host, std::string const &port)
+{
+	addrinfo hints, *res;
+	int r, one = 1;
+
+	std::memset(&hints, 0, sizeof(hints));
+	hints.ai_socktype = SOCK_STREAM;
+	hints.ai_flags = AI_PASSIVE;
+
+	if ((r = getaddrinfo(host.c_str(), port.c_str(), &hints, &res)) != 0) {
+		logger::error(str(boost::format("resolving %s:%s: %s") 
+					% host % port % gai_strerror(r)));
+		return;
 	}
 
-	setsockopt(listener, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
+	for (addrinfo *r = res; r; r = r->ai_next) {
+		int s;
 
-	std::memset(&addr, 0, sizeof(addr));
-	addr.sin_family = AF_INET;
-	addr.sin_addr.s_addr = inet_addr("127.0.0.1");
-	addr.sin_port = htons(PORT);
+		if ((s = socket(r->ai_family, r->ai_socktype, r->ai_protocol)) == -1) {
+			logger::error(str(boost::format("adding listener %s:%s: %s") 
+					% host % port % std::strerror(errno)));
+			continue;
+		}
 
-	if (bind(listener, (struct sockaddr *)&addr, sizeof(addr)) == -1) {
-		std::perror("bind");
-		std::exit(1);
-	}
+		setsockopt(s, SOL_SOCKET, SO_REUSEADDR, &one, sizeof(one));
 
-	if (listen(listener, 5) == -1) {
-		std::perror("listen");
-		std::exit(1);
+		if (bind(s, r->ai_addr, r->ai_addrlen) == -1) {
+			logger::error(str(boost::format("binding listener %s:%s: %s")
+					% host % port % std::strerror(errno)));
+			close(s);
+			continue;
+		}
+
+		if (::listen(s, 5) == -1) {
+			logger::error(str(boost::format("listening %s:%s: %s")
+					% host % port % std::strerror(errno)));
+			close(s);
+			continue;
+		}
+
+		logger::info(str(boost::format("listening on %s:%s")
+				% host % port));
+		listeners.push_back(s);
+		start_accept(s);
 	}
 }
 
@@ -122,27 +158,29 @@ client_handler::read_data(client *c)
 void
 client_handler::run(void)
 {
-	start_accept();
 	p.run();
 }
 
 void
-client_handler::start_accept(void)
+client_handler::start_accept(int s)
 {
-	p.read(listener, boost::bind(&client_handler::accept_client, this));
+	p.read(s, boost::bind(&client_handler::accept_client, this, s));
 }
 
 void
-client_handler::accept_client(void)
+client_handler::accept_client(int s)
 {
-	int cli;
-	struct sockaddr_in cliaddr;
-	socklen_t clilen;
+	int		 cli;
+	sockaddr_storage cliaddr;
+	socklen_t	 clilen;
+
 	clilen = sizeof(cliaddr);
 	std::memset(&cliaddr, 0, clilen);
-	if ((cli = accept(listener, (struct sockaddr *)&cliaddr, &clilen)) == -1) {
+
+	if ((cli = accept(s, (struct sockaddr *)&cliaddr, &clilen)) == -1) {
 		std::perror("accept");
-		std::exit(1);
+		start_accept(s);
+		return;
 	}
 
 	int val;
@@ -152,13 +190,37 @@ client_handler::accept_client(void)
 
 	client *n = new client(cli);
 	p.read(n->fd, boost::bind(&client_handler::read_data, this, n));
-	start_accept();
+	start_accept(s);
 }
 
 int
-main(int, char *[])
+main(int argc, char *argv[])
 {
-	std::string l;
+	std::vector<std::pair<std::string, std::string> > listeners;
+	int c;
+
+	while ((c = getopt(argc, argv, "l:")) != -1) {
+		std::string host, port;
+		std::string::size_type i;
+
+		switch (c) {
+		case 'l':
+			host = optarg;
+			if ((i = host.find('/')) != std::string::npos) {
+				port = host.substr(i + 1);
+				host = host.substr(0, i);
+			}
+
+			listeners.push_back(std::make_pair(host, port));
+			break;
+
+		default:
+			std::exit(1);
+		}
+	}
+
+	if (listeners.empty())
+		listeners.push_back(std::make_pair("127.0.0.1", "6534"));
 
 	bdb_adjacency_store aj;
 
@@ -171,5 +233,8 @@ main(int, char *[])
 	pathfinder *finder = new pathfinder(aj);
 
 	client_handler ch(finder);
+	for (std::size_t i = 0, end = listeners.size(); i < end; ++i)
+		ch.listen(listeners[i].first, listeners[i].second);
+
 	ch.run();
 }

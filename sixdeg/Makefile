@@ -8,7 +8,7 @@ include plat_frag.mk
 MAKEFLAGS = --no-print-directory
 SUBDIRS	= libsixdeg client java libsdstore mkcache server webapp
 
-all clean:
+all clean depend:
 	@for dir in $(SUBDIRS); do \
 		echo "$@ ==> $$dir"; \
 		$(MAKE) -C $$dir $@ || exit 1; \
@@ -17,6 +17,7 @@ all clean:
 
 all-real:
 clean-real:
+depend-real:
 
 dist:
 	$(MAKE) clean
