@@ -63,6 +63,8 @@ function wfTalkHereArticleFromTitle( &$title, &$article ) {
 	$oldid     = $wgRequest->getVal( 'oldid'     );
 	$diff      = $wgRequest->getVal( 'diff'      );
 
+	if ($action == 'purge') $action = NULL; //"purge" is not considered an action in this context
+
 	if ( $action || $oldid || $diff ) return true;
 
 	$ns = $title->getNamespace();
