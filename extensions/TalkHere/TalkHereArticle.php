@@ -68,8 +68,12 @@ class TalkHereArticle {
 		$wgOut->addWikiText( wfMsg('talkhere-title', $this->_talkTitle->getPrefixedText() ), false );
 		$wgOut->addHTML('</h1>');
 
-		$wgOut->addWikiText( wfMsg('talkhere-headtext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() ) );
-		$wgOut->addHTML('<hr/>');
+		$headtext = wfMsg('talkhere-headtext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() );
+		if ( $headtext ) {
+			$wgOut->addWikiText( $headtext );
+			$wgOut->addHTML('<hr/>');
+		}
+
 		$wgOut->addHTML('</div>'); //talkhere-head
 
 		$wgOut->addHTML('<div class="talkhere-comments">');
@@ -83,9 +87,10 @@ class TalkHereArticle {
 		$wgOut->addHTML('</div>'); // talkhere-comments
 
 		$wgOut->addHTML('<div class="talkhere-foot">');
-		$wgOut->addHTML('<hr/>');
 
 		if ( $this->_talkTitle->userCan('edit') ) {
+			$wgOut->addHTML('<hr/>');
+
 			if ( $wgUseAjax ) $wgOut->addScript( 
 			"	<script type=\"{$wgJsMimeType}\"> 
 				var talkHereLoadingMsg = \"" . Xml::escapeJsString(wfMsg('talkhere-loading')) . "\"; 
@@ -106,12 +111,14 @@ class TalkHereArticle {
 			$wgOut->addHTML('</div>');
 
 			$wgOut->addHTML('<div id="talkhere_talkform" style="display:none;">&nbsp;</div>');
-			//$this->showCommentForm('new'); 
-	
-			$wgOut->addHTML('<hr/>');
+			//$this->showCommentForm('new'); 	
 		}
 
-		$wgOut->addWikiText( wfMsg('talkhere-foottext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() ) );
+		$foottext = wfMsg('talkhere-foottext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() );
+		if ( $foottext ) {
+			$wgOut->addHTML('<hr/>');
+			$wgOut->addWikiText( $foottext );
+		}
 
 		$wgOut->addHTML('</div>'); // talkhere-foot
 		$wgOut->addHTML('</div>'); // talkhere
