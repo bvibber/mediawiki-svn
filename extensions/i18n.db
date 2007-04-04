@@ -69,7 +69,6 @@
 ./Filepath/SpecialFilepath.i18n.php wgFilepathMessages
 ./FlaggedRevs/FlaggedRevsPage.i18n.php RevisionreviewMessages
 ./FlaggedRevs/Makevalidate.i18n.php efMakeValidateMessages
-./Highlight/SyntaxHighlight.i18n.php efSyntaxHighlightMessages
 ./GiveRollback/GiveRollback.i18n.php efGiveRollbackMessages
 ./ImageMap/ImageMap.i18n.php efImageMapMessages
 ./LinkSearch/LinkSearch.i18n.php wgLinkSearchMessages
@@ -93,6 +92,7 @@
 #./SelectCategory/i18n/SelectCategory.i18n.it.php
 #./SelectCategory/i18n/SelectCategory.i18n.sk.php
 ./SiteMatrix/SiteMatrix.i18n.php wgSiteMatrixMessages
+./SyntaxHighlight_GeSHi/SyntaxHighlight_GeSHi.i18n.php efSyntaxHighlight_GeSHiMessages
 ./Translate/SpecialTranslate.i18n.php wgTranslateMessages
 ./UserImages/UserImages.i18n.php efUserImagesMessages
 ./UsernameBlacklist/UsernameBlacklist.i18n.php efUsernameBlacklistMessages
