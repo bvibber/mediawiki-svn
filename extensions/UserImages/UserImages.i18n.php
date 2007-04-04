@@ -34,6 +34,12 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Nome utente errato o mancante.',
 'userimages-noimages' => 'L\'utente $1 non ha caricato immagini.',
 ),
+/* Japanese */
+'ja' => array(
+'userimages-caption' => '$1 によってアップロードされた画像',
+'userimages-noname' => '利用者名が存在しないか不正な入力です。',
+'userimages-noimages' => '$1 は画像をアップロードしていません。',
+),
 /* nld / Dutch */
 'nl' => array(
 'userimages-caption' => 'Afbeeldingen toegevoegd door $1',

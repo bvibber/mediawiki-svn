@@ -190,6 +190,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'ha revocato lo status di bot a [[$1]]',
 ),
 
+/* Japanese */
+'ja' => array(
+'makebot'                 => 'botフラグの付与・剥奪',
+'makebot-header'          => '\'\'\'各プロジェクトのビューロクラットはこのページで利用者に[[Help:Bot|bot]]フラグを付与または除去することができます。 \'\'\'<br />botフラグをつけるとその利用者の編集を[[Special:Recentchanges|最近更新したページ]]やその他類似のページから隠します。この機能は便利な反面危険も孕んでいますので方針に沿った利用を行ってください。',
+'makebot-username'        => '利用者名:',
+'makebot-search'          => '進む',
+'makebot-isbot'           => '[[User:$1|$1]]はbotフラグが付与されています。',
+'makebot-notbot'          => '[[User:$1|$1]]はbotフラグが付与されていません。',
+'makebot-privileged'      => '[[User:$1|$1]]は[[Special:Listusers/sysop|管理者]]あるいは[[Special:Listusers/bureaucrat|ビューロクラット]]の権限を有しているため、botフラグを付与することはできません。',
+'makebot-change'          => '権限の変更:',
+'makebot-grant'           => '付与',
+'makebot-revoke'          => '剥奪',
+'makebot-comment'         => '要約:',
+'makebot-granted'         => '[[User:$1|$1]]にbotフラグを付与しました。',
+'makebot-revoked'         => '[[$1]]のbotフラグを剥奪しました。',
+'makebot-logpage'         => 'Botフラグログ',
+'makebot-logpagetext'     => 'これは[[Help:Bot|bot]]フラグの付与および剥奪の記録です。',
+'makebot-logentrygrant'   => '[[$1]]にbotフラグを付与しました。',
+'makebot-logentryrevoke'  => '[[$1]]のbotフラグを剥奪しました。',
+),
+
 /* Kazakh default (kk:User:AlefZet) */
 'kk' => array(
 'makebot' => 'Бот күйін беру не қайтару',

@@ -128,6 +128,19 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Dati estratti da: $1',
 ),
 
+'ja' => array(
+'bookinfo-header' => '書籍情報',
+'bookinfo-result-title' => 'タイトル:',
+'bookinfo-result-author' => '著者:',
+'bookinfo-result-publisher' => '出版:',
+'bookinfo-result-year' => '出版年:',
+'bookinfo-error-invalidisbn' => '不正な ISBN です。',
+'bookinfo-error-nosuchitem' => '指定したものが見つかりません。',
+'bookinfo-error-nodriver' => '適切な Book Information ドライバが認識できません。',
+'bookinfo-error-noresponse' => 'リクエストを送信しましたが、応答がないかタイムアウトしました。',
+'bookinfo-purchase' => 'この本を $1 から購入する',
+'bookinfo-provider' => 'データ提供元: $1',
+),
 /* nld / Dutch (Dirk Beetstra) */
 'nl' => array(
 'bookinfo-header' => 'Boekinformatie',

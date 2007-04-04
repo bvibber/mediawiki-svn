@@ -24,6 +24,10 @@ function efMinimumNameLengthMessages() {
 'minnamelength-error' => 'Nama pengguna Anda terlalu pendek. Panjang minimum adalah $1.',
 ),
 
+/* Japanese */
+'ja' => array(
+'minnamelength-error' => 'あなたの利用者名は短すぎます。最短の長さは $1 バイトです。',
+),
 	);
 	return $messages;
 }
