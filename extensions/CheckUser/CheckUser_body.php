@@ -93,7 +93,7 @@ class CheckUser extends SpecialPage
 		# Defaults otherwise
 		else if ( $ip || $xff )
 			$encipedits = 1;
-		else if ( $name )
+		else
 			$encuserips = 1;
 		# Compile our nice form
 		# User box length should fit things like "2001:0db8:85a3:08d3:1319:8a2e:0370:7344/100/xff"
