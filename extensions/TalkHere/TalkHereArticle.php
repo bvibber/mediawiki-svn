@@ -54,7 +54,7 @@ class TalkHereArticle {
 			$this->_talk = MediaWiki::articleFromTitle( $this->_talkTitle );
 		}
 
-		$wgOut->addHTML('<div class="talkhere">');
+		$wgOut->addHTML('<div class="talkhere" id="talkhere">');
 
 		//Bah, would have to call a skin-snippet here :(
 		$wgOut->addHTML('<div class="talkhere-head">');
@@ -290,11 +290,15 @@ class TalkHereEditTarget {
 	}
 	
 	function __call( $name, $args ) {
+		global $wgOut;
+
 		$callback = array( $this->_article, $name );
 		$res = call_user_func_array( $callback, $args );
 
-		if ($name == 'updateArticle' && $res) {
-			global $wgOut;
+		if ($name == 'insertNewArticle') {
+			$wgOut->redirect( $this->_returnto->getFullURL() . '#talkhere' );
+		}
+		else if ($name == 'updateArticle' && $res) {
 			$sectionAnchor = isset($args[5]) ? $args[5] : '';
 			$wgOut->redirect( $this->_returnto->getFullURL() . $sectionAnchor );
 		}
