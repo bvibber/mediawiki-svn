@@ -4,12 +4,14 @@ import java.sql.SQLException;
 import java.util.List;
 
 import org.mediawiki.scavenger.Differ;
+import org.mediawiki.scavenger.PageFormatter;
 import org.mediawiki.scavenger.Revision;
 
 public class Diff extends PageAction {
 	List<Differ.DiffLine> difflines;
 	Revision r1;
 	Revision r2;
+	PageFormatter r2formatter;
 	
 	public String pageExecute() throws SQLException {
 		int ra = Integer.parseInt(((String[]) parameters.get("r1"))[0]);
@@ -22,6 +24,7 @@ public class Diff extends PageAction {
 			r2 = r1.nextRevision();
 		else
 			r2 = wiki.getRevision(Integer.parseInt(rb[0]));
+		r2formatter = new PageFormatter(r2);
 		
 		Differ d = new Differ(r2, r1);
 		difflines = d.format();
@@ -39,4 +42,9 @@ public class Diff extends PageAction {
 	public Revision getR2() {
 		return r2;
 	}
+	
+	public PageFormatter getR2formatter() {
+		return r2formatter;
+	}
+	
 }

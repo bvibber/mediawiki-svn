@@ -11,7 +11,7 @@
 
 <div class="pagebody">
 	<s:if test="viewing != null">
-		<s:property value="viewing.formattedText" escape="no"/>
+		<s:property value="formatter.formattedText" escape="no"/>
 	</s:if>
 	<s:else>
 		This page does not exist.

@@ -15,11 +15,6 @@ public interface Revision {
 		public String getText() throws SQLException;
 
 		/**
-		 * Return formatted HTML of this revision;
-		 */
-		public String getFormattedText() throws SQLException;
-
-		/**
 		 * Return the time of this edit.
 		 */
 		public Date getTimestamp() throws SQLException;

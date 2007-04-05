@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;
 
-import org.eclipse.jdt.internal.compiler.ast.MarkerAnnotation;
 import org.mediawiki.scavenger.Revision;
 
 import com.petebevin.markdown.MarkdownProcessor;
@@ -113,15 +112,6 @@ public class PgRevision implements Revision {
 		return text;
 	}
 
-	/**
-	 * Return formatted HTML of this revision;
-	 */
-	public String getFormattedText() throws SQLException {
-		String t = getText();
-		MarkdownProcessor proc = new MarkdownProcessor();
-		return proc.markdown(t);
-	}
-	
 	/**
 	 * Return the time of this edit.
 	 */

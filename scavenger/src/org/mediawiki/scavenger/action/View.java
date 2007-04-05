@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.apache.struts2.interceptor.ParameterAware;
 import org.mediawiki.scavenger.Page;
+import org.mediawiki.scavenger.PageFormatter;
 import org.mediawiki.scavenger.Revision;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -12,6 +13,7 @@ import com.opensymphony.xwork2.ActionSupport;
 public class View extends PageAction {
 	Page page;
 	Revision viewing;
+	PageFormatter formatter;
 	
 	public String pageExecute() throws Exception {
 		if (title == null)
@@ -24,7 +26,9 @@ public class View extends PageAction {
 			viewing = wiki.getRevision(Integer.parseInt(rev_[0]));
 		else
 			viewing = page.getLatestRevision();
-			
+	
+		formatter = new PageFormatter(viewing);
+		
 		return SUCCESS;
 	}
 	
@@ -34,5 +38,9 @@ public class View extends PageAction {
 	
 	public Revision getViewing() {
 		return viewing;
+	}
+	
+	public PageFormatter getFormatter() {
+		return formatter;
 	}
 }
