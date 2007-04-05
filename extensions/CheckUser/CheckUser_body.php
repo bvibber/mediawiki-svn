@@ -31,14 +31,6 @@ class CheckUser extends SpecialPage
 		$reason = $wgRequest->getText( 'reason' );
 		$checktype = $wgRequest->getVal( 'checktype' );
 
-		$subipedits=0; $subipusers=0; $subuserips=0;
-		if( $checktype=='subipedits' ) {
-			$subipedits=1;
-		} else if( $checktype=='subipusers' ) {
-			$subipusers=1;
-		} else if( $checktype=='subuserips' ) {
-			$subuserips=1;
-		}
 		# An IPv4?
 		if ( preg_match( '#^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}(/\d{1,2}|)$#', $user ) ) {
 			$ip = $user; 
@@ -68,23 +60,23 @@ class CheckUser extends SpecialPage
 			$xff = '';
 		}
 
-		$this->doForm( $user, $reason, $subipedits, $subipusers, $subuserips, $ip, $xff, $name );
+		$this->doForm( $user, $reason, $checktype, $ip, $xff, $name );
 		$this->showLog( $user );
 
-		if ( $subuserips ) {
+		if ( $checktype=='subuserips' ) {
 			$this->doUserIPsRequest( $name, $reason );
-		} else if ( $xff && $subipedits ) {
+		} else if ( $xff && $checktype=='subipedits' ) {
 			$this->doIPEditsRequest( $xff, true, $reason);
-		} else if ( $subipedits ) {
+		} else if ( $checktype=='subipedits' ) {
 			$this->doIPEditsRequest( $ip, false, $reason);
-		} else if ( $xff && $subipusers ) {
+		} else if ( $xff && $checktype=='subipusers' ) {
 			$this->doIPUsersRequest( $xff, true, $reason );
-		} else if ( $subipusers ) {
+		} else if ( $checktype=='subipusers' ) {
 			$this->doIPUsersRequest( $ip, false, $reason );
 		}
 	}
 
-	function doForm( $user, $reason, $subipedits, $subipusers, $subuserips, $ip, $xff, $name ) {
+	function doForm( $user, $reason, $checktype, $ip, $xff, $name ) {
 		global $wgOut, $wgTitle;
 
 		$action = $wgTitle->escapeLocalUrl();
@@ -92,11 +84,11 @@ class CheckUser extends SpecialPage
 		$encReason = htmlspecialchars( $reason );
 		# Fill in requested type if it makes sense
 		$encipusers=0; $encipedits=0; $encuserips=0;
-		if ( $subipusers && ( $ip || $xff ) )
+		if ( $checktype=='subipusers' && ( $ip || $xff ) )
 			$encipusers = 1;
-		else if ( $subipedits && ( $ip || $xff ) )
+		else if ( $checktype=='subipedits' && ( $ip || $xff ) )
 			$encipedits = 1;
-		else if ( $subuserips && $name )
+		else if ( $checktype=='subuserips' && $name )
 			$encuserips = 1;
 		# Defaults otherwise
 		else if ( $ip || $xff )
@@ -113,9 +105,12 @@ class CheckUser extends SpecialPage
 		$form .= "<td>".Xml::input( 'user', 46, $encUser, array( 'id' => 'checktarget' ) )."</td>";
 		$form .= "</tr><tr>";
 		$form .= "<td></td><td class='checkuserradios'><table border='0' cellpadding='3'><tr>";
-		$form .= "<td>".Xml::radio( 'checktype', 'subuserips', $encuserips ).wfMsgHtml( "checkuser-ips" )."</td>";
-		$form .= "<td>".Xml::radio( 'checktype', 'subipedits', $encipedits ).wfMsgHtml( "checkuser-edits" )."</td>";
-		$form .= "<td>".Xml::radio( 'checktype', 'subipusers', $encipusers ).wfMsgHtml( "checkuser-users" )."</td>";
+		$form .= "<td>".Xml::radio( 'checktype', 'subuserips', $encuserips, array('id' => 'subuserips') );
+		$form .= Xml::label( wfMsgHtml("checkuser-ips"), 'subuserips' )."</td>";
+		$form .= "<td>".Xml::radio( 'checktype', 'subipedits', $encipedits, array('id' => 'subipedits') );
+		$form .= Xml::label( wfMsgHtml("checkuser-edits"), 'subipedits' )."</td>";
+		$form .= "<td>".Xml::radio( 'checktype', 'subipusers', $encipusers, array('id' => 'subipusers') );
+		$form .= Xml::label( wfMsgHtml("checkuser-users"), 'subipusers' )."</td>";
 		$form .= "</tr></table></td>";
 		$form .= "</tr><tr>";
 		$form .= "<td>".wfMsgHtml( "checkuser-reason" ).":</td>";
@@ -126,7 +121,12 @@ class CheckUser extends SpecialPage
 		$wgOut->addHTML( $form );
 	}
 
-	#shows all edits in Recent Changes by this IP (or range) and who made them
+	/**
+	 * @param string $ip
+	 * @param bool $xfor
+	 * @param string $reason
+	 * Shows all edits in Recent Changes by this IP (or range) and who made them
+	 */
 	function doIPEditsRequest( $ip, $xfor = false, $reason = '' ) {
 		global $wgUser, $wgOut, $wgLang, $wgTitle, $wgDBname;
 		$fname = 'CheckUser::doIPEditsRequest';
@@ -273,9 +273,14 @@ class CheckUser extends SpecialPage
 		return $links;
 	}
 
-	#Lists all users in recent changes who used an IP, newest to oldest down
-	#Outputs usernames, latest and earliest found edit date, and count
-	#List unique IPs used for each user in time order, list corresponding user agent
+	/**
+	 * @param string $ip
+	 * @param bool $xfor
+	 * @param string $reason
+	 * Lists all users in recent changes who used an IP, newest to oldest down
+	 * Outputs usernames, latest and earliest found edit date, and count
+	 * List unique IPs used for each user in time order, list corresponding user agent
+	 */
 	function doIPUsersRequest( $ip, $xfor = false, $reason = '' ) {
 		global $wgUser, $wgOut, $wgLang, $wgTitle, $wgDBname;
 		$fname = 'CheckUser::doIPUsersRequest';
@@ -372,8 +377,13 @@ class CheckUser extends SpecialPage
 		}
 	}
 
-	#Get all IPs used by a user
-	#Shows first and last date and number of edits
+	/**
+	 * @param string $ip
+	 * @param bool $xfor
+	 * @param string $reason
+	 * Get all IPs used by a user
+	 * Shows first and last date and number of edits
+	 */
 	function doUserIPsRequest( $user , $reason = '') {
 		global $wgOut, $wgTitle, $wgLang, $wgUser, $wgDBname;
 		$fname = 'CheckUser::doUserIPsRequest';
