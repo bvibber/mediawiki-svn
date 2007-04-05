@@ -2,27 +2,89 @@
 /**
  * Internationalisation file for CheckUser extension.
  *
- * @package MediaWiki
- * @subpackage Extensions
+ * @addtogroup Extensions
 */
 
 $wgCheckUserMessages = array();
 
 $wgCheckUserMessages['en'] = array(
+	'checkuser-summary'		 => 'This tool scans recent changes to retrieve the IPs used by a user or show the edit/user data for an IP. 
+	Users and edits can be retrieved with an XFF IP by appending the IP with "/xff". IPv4 (CIDR 16-32) and IPv6 (CIDR 64-128) are supported. 
+	Use this in accordance with policy. ',
+	'checkuser-logcase'		 => 'The log search is case sensitive.',
 	'checkuser'              => 'Check user',
-	'group-checkuser'        => 'Special:CheckUser access',
-	'group-checkuser-member' => 'Special:CheckUser access',
+	'group-checkuser'        => 'Check users',
+	'group-checkuser-member' => 'Check user',
 	'grouppage-checkuser'    => '{{ns:project}}:Check user',
-
-	'checkuser_invalid_ip'   => 'Invalid IP address',
-	'checkuser_no_results'   => 'No results',
-	'checkuser_cant_log'     => 'Unable to add log entry',
+	'checkuser-reason'		 => 'Reason',
+	'checkuser-showlog'		 => 'Show log',
+	'checkuser-log'			 => 'Checkuser log',
+	'checkuser-query'		 => 'Query recent changes',
+	'checkuser-target'		 => 'User or IP',
+	'checkuser-users'		 => 'Get users',
+	'checkuser-edits'	  	 => 'Get edits from IP',
+	'checkuser-ips'	  	 	 => 'Get IPs',
+	'checkuser-search'	  	 => 'Search',	
+	'checkuser-empty'	 	 => 'The log contains no items.',
+	'checkuser-nomatch'	  	 => 'No matches found.',
+	'checkuser-check'	  	 => 'Check',
+	'checkuser-log-fail'	 => 'Unable to add log entry',
+	'checkuser-nolog'		 => 'No log file found.'
+);
+$wgCheckUserMessages['ca'] = array(
+	'checkuser'              => 'Comprova l\'usuari',
+	'group-checkuser'        => 'Comprova els usuaris',
+	'group-checkuser-member' => 'Comprova l\'usuari',
+	'grouppage-checkuser'    => '{{ns:project}}:Comprova l\'usuari',
+);
+$wgCheckUserMessages['cs'] = array(
+	'checkuser'              => 'Revize uživatele',
+	'group-checkuser'        => 'Revizoři',
+	'group-checkuser-member' => 'Revizor',
+	'grouppage-checkuser'    => '{{ns:project}}:Revize uživatele',
+);
+$wgCheckUserMessages['de'] = array(
+	'checkuser'              => 'Checkuser',
+	'group-checkuser'        => 'Checkusers',
+	'group-checkuser-member' => 'Checkuser-Berechtigter',
+	'grouppage-checkuser'    => '{{ns:project}}:CheckUser',
+);
+$wgCheckUserMessages['fi'] = array(
+	'checkuser'              => 'Osoitepaljastin',
+	'group-checkuser'        => 'Osoitepaljastimen käyttäjät',
+	'group-checkuser-member' => 'Osoitepaljastimen käyttäjä',
+	'grouppage-checkuser'    => '{{ns:project}}:Osoitepaljastin',
+);
+$wgCheckUserMessages['es'] = array(
+	'checkuser'              => 'Verificador del usuarios',
+	'group-checkuser'        => 'Verificadors del usuarios',
+	'group-checkuser-member' => 'Verificador del usuarios',
+	'grouppage-checkuser'    => '{{ns:project}}:verificador del usuarios',
 );
 $wgCheckUserMessages['fr'] = array(
+	'checkuser-summary'		 => 'Cet outil balaye les changements récents pour rechercher l\'IPS employé par un utilisateur, 
+	montrer tous édite par un IP, ou énumère les utilisateurs qui ont employé les IPs. Les utilisateur et modifications peut 
+	être trouvé avec une IP XFF si il finit avec « /xff ». IPv4 (CIDR 16-32) et IPv6(CIDR 64-128) sont soutenus. 
+	Employer ceci selon les chaînes de policy.',
+	'checkuser-logcase'		 => 'La recherche de notation est cas sensible.',
 	'checkuser'              => 'Vérificateur d\'utilisateur',
 	'group-checkuser'        => 'Vérificateurs d\'utilisateur',
 	'group-checkuser-member' => 'Vérificateur d\'utilisateur',
 	'grouppage-checkuser'    => '{{ns:projet}}:Vérificateur d\'utilisateur',
+	'checkuser-reason'		 => 'Expanation ',
+	'checkuser-showlog'		 => 'Montrer la notation',
+	'checkuser-log'			 => 'Notation de Vérificateur d\'utilisateur',
+	'checkuser-query'		 => 'Recherche par les changements récents',
+	'checkuser-target'		 => 'Username ou IP',
+	'checkuser-users'		 => 'Obtenir les users',
+	'checkuser-edits'	  	 => 'Obtenir les modifications de l\'IP',
+	'checkuser-ips'	  	 	 => 'Obtenir les IPs',
+	'checkuser-search'	  	 => 'Recherche',
+	'checkuser-empty'	 	 => 'La notation ne contient aucun article',
+	'checkuser-nomatch'	  	 => 'Rien n\'a trouvé.',
+	'checkuser-check'	  	 => 'Recherche',
+	'checkuser-log-fail'	 => 'Incapable d\'ajouter l\'entrée de notation.',
+	'checkuser-nolog'		 => 'Aucun dossier de notation trouvé.'
 );
 $wgCheckUserMessages['he'] = array(
 	'checkuser'              => 'בדיקת משתמש',
@@ -36,6 +98,31 @@ $wgCheckUserMessages['id'] = array(
 	'group-checkuser-member' => 'Pemeriksa',
 	'grouppage-checkuser'    => '{{ns:project}}:Pemeriksa',
 );
+$wgCheckUserMessages['it'] = array(
+	'checkuser'              => 'Controllo utenze',
+	'group-checkuser'        => 'Controllori',
+	'group-checkuser-member' => 'Controllore',
+	'grouppage-checkuser'    => '{{ns:project}}:Controllo utenze',
+);
+$wgCheckUserMessages['kk-kz'] = array(
+	'checkuser'              => 'Пайдаланушыны тексеру',
+	'group-checkuser'        => 'Пайдаланушы тексерушілер',
+	'group-checkuser-member' => 'пайдаланушы тексеруші',
+	'grouppage-checkuser'    => '{{ns:project}}:Пайдаланушы тексерушілер',
+);
+$wgCheckUserMessages['kk-tr'] = array(
+	'checkuser'              => 'Paýdalanwşını tekserw',
+	'group-checkuser'        => 'Paýdalanwşı tekserwşiler',
+	'group-checkuser-member' => 'paýdalanwşı tekserwşi',
+	'grouppage-checkuser'    => '{{ns:project}}:Paýdalanwşı tekserwşiler',
+);
+$wgCheckUserMessages['kk-cn'] = array(
+	'checkuser'              => 'پايدالانۋشىنى تەكسەرۋ',
+	'group-checkuser'        => 'پايدالانۋشى تەكسەرۋشٴىلەر',
+	'group-checkuser-member' => 'پايدالانۋشى تەكسەرۋشٴى',
+	'grouppage-checkuser'    => '{{ns:project}}:پايدالانۋشى تەكسەرۋشٴىلەر',
+);
+$wgCheckUserMessages['kk'] = $wgCheckUserMessages['kk-kz'];
 $wgCheckUserMessages['nl'] = array(
 	'checkuser'              => 'Rechercheer gebruiker',
 	'group-checkuser'        => 'Rechercheer gebruikers',
@@ -61,11 +148,24 @@ $wgCheckUserMessages['ru'] = array(
 	'grouppage-checkuser'    => '{{ns:project}}:Проверка участников',
 );
 $wgCheckUserMessages['sk'] = array(
-	'checkuser'              => 'Overiť používateľa',
-	'group-checkuser'        => 'Overiť používateľov',
-	'group-checkuser-member' => 'Overiť používateľa',
-	'grouppage-checkuser'    => '{{ns:project}}:Overiť používateľa',
+	'checkuser'              => 'Revízia používateľa',
+	'group-checkuser'        => 'Revízor',
+	'group-checkuser-member' => 'Revízori',
+	'grouppage-checkuser'    => '{{ns:project}}:Revízia používateľa',
 );
+$wgCheckUserMessages['sr-ec'] = array(
+	'checkuser'              => 'Чекјузер',
+	'group-checkuser'        => 'Чекјузери',
+	'group-checkuser-member' => 'Чекјузер',
+	'grouppage-checkuser'    => '{{ns:project}}:Чекјузер',
+);
+$wgCheckUserMessages['sr-el'] = array(
+	'checkuser'              => 'Čekjuzer',
+	'group-checkuser'        => 'Čekjuzeri',
+	'group-checkuser-member' => 'Čekjuzer',
+	'grouppage-checkuser'    => '{{ns:project}}:Čekjuzer',
+);
+$wgCheckUserMessages['sr'] = $wgCheckUserMessages['sr-ec'];
 $wgCheckUserMessages['wa'] = array(
 	'checkuser' => 'Verifyî l\' uzeu',
 );
