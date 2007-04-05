@@ -1,8 +1,12 @@
-# "mysql" or "postgres"
+# "oracle", "mysql" or "postgres"
 scavenger.dbtype=mysql
 
 # URL
 scavenger.dburl=jdbc:mysql://localhost/scavenger
+# For Oracle:
+# scavenger.dburl=jdbc:oracle:thin:@<host>:1521:<sid>
+# You could also use the OCI driver if you have the Oracle client
+# libraries available.
 
 # username, password
 scavenger.dbuser=me
@@ -10,3 +14,4 @@ scavenger.dbpassword=mypassword
 
 # Postgres only: schema
 scavenger.dbschema=scavenger
+

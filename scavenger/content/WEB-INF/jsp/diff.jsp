@@ -53,7 +53,7 @@ To: revision as of <s:property value="r2.timestampString" />
 <h1 class="title">Current revision</h1>
 
 <div class="pagebody">
-	<s:property value="r2formatter.formattedText" escape="false" />
+	<s:property value="r1formatter.formattedText" escape="false" />
 </div>
 
 <s:include value="footer.jsp" />

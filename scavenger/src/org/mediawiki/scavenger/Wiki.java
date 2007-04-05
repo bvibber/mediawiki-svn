@@ -9,6 +9,7 @@ import java.util.Properties;
 import javax.servlet.ServletContext;
 
 import org.mediawiki.scavenger.mysql.MyWiki;
+import org.mediawiki.scavenger.oracle.OraWiki;
 import org.mediawiki.scavenger.pg.PgWiki;
 
 public abstract class Wiki {
@@ -30,7 +31,12 @@ public abstract class Wiki {
 			dbc = DriverManager.getConnection(p.getProperty("scavenger.dburl"),
 					p.getProperty("scavenger.dbuser"), p.getProperty("scavenger.dbpassword"));
 			dbc.setAutoCommit(false);
-			return new PgWiki(dbc, p.getProperty("scavenger.dbschema"));			
+			return new PgWiki(dbc, p.getProperty("scavenger.dbschema"));		
+		} else if (dbtype.equals("oracle")) {
+			Class.forName("oracle.jdbc.OracleDriver");
+			dbc = DriverManager.getConnection(p.getProperty("scavenger.dburl"),
+					p.getProperty("scavenger.dbuser"), p.getProperty("scavenger.dbpassword"));
+			return new OraWiki(dbc);
 		} else
 			return null;
 	}

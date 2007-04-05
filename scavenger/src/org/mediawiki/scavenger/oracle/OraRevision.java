@@ -1,4 +1,4 @@
-package org.mediawiki.scavenger.pg;
+package org.mediawiki.scavenger.oracle;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -14,7 +14,7 @@ import com.petebevin.markdown.MarkdownProcessor;
 /**
  * Represents one revision of a page.
  */
-public class PgRevision implements Revision {
+public class OraRevision implements Revision {
 	int rev_id;
 	int rev_page;
 	int rev_text_id;
@@ -28,7 +28,7 @@ public class PgRevision implements Revision {
 	/**
 	 * Construct a new revision from its rev_id.
 	 */
-	public PgRevision(Connection dbc, int id) {
+	public OraRevision(Connection dbc, int id) {
 		this.dbc = dbc;
 		rev_id = id;
 		text = null;
@@ -41,7 +41,7 @@ public class PgRevision implements Revision {
 	/**
 	 * Construct a new revision from a ResultSet.
 	 */
-	public PgRevision(ResultSet rs) throws SQLException {
+	public OraRevision(ResultSet rs) throws SQLException {
 		rev_id = rs.getInt("rev_id");
 		rev_page = rs.getInt("rev_page");
 		rev_text_id = rs.getInt("rev_text_id");
@@ -148,18 +148,20 @@ public class PgRevision implements Revision {
 	/**
 	 * Return the revision prior to this one.
 	 */
-	public PgRevision prevRevision() throws SQLException {
+	public OraRevision prevRevision() throws SQLException {
 		loadFromDB();
 		PreparedStatement stmt = dbc.prepareStatement(
 				"SELECT rev_id FROM revision WHERE rev_id < ? AND rev_page = ? " +
-				"ORDER BY rev_id DESC LIMIT 1");
+				"ORDER BY rev_id DESC");
+		stmt.setFetchSize(1);
 		stmt.setInt(1, rev_id);
 		stmt.setInt(2, rev_page);
 		stmt.execute();
 		ResultSet rs = stmt.getResultSet();
-		PgRevision r = null;
+		
+		OraRevision r = null;
 		if (rs.next())
-			r = new PgRevision(dbc, rs.getInt(1));
+			r = new OraRevision(dbc, rs.getInt(1));
 		rs.close();
 		stmt.close();
 		return r;
@@ -168,18 +170,19 @@ public class PgRevision implements Revision {
 	/**
 	 * Return the revision following this one.
 	 */
-	public PgRevision nextRevision() throws SQLException {
+	public OraRevision nextRevision() throws SQLException {
 		loadFromDB();
 		PreparedStatement stmt = dbc.prepareStatement(
 				"SELECT rev_id FROM revision WHERE rev_id > ? AND rev_page = ? " +
-				"ORDER BY rev_id ASC LIMIT 1"); 
+				"ORDER BY rev_id ASC"); 
+		stmt.setFetchSize(1);
 		stmt.setInt(1, rev_id);
 		stmt.setInt(2, rev_page);
 		stmt.execute();
 		ResultSet rs = stmt.getResultSet();
-		PgRevision r = null;
+		OraRevision r = null;
 		if (rs.next())
-			r = new PgRevision(dbc, rs.getInt(1));
+			r = new OraRevision(dbc, rs.getInt(1));
 		rs.close();
 		stmt.close();
 		return r;
