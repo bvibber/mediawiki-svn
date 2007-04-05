@@ -1,0 +1,12 @@
+# "mysql" or "postgres"
+scavenger.dbtype=mysql
+
+# URL
+scavenger.dburl=jdbc:mysql://localhost/scavenger
+
+# username, password
+scavenger.dbuser=me
+scavenger.dbpassword=mypassword
+
+# Postgres only: schema
+scavenger.dbschema=scavenger

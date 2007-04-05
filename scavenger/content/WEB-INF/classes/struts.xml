@@ -1,0 +1,36 @@
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+        <package name="scavenger" extends="struts-default">
+                <action name="view" class="org.mediawiki.scavenger.action.View">
+                        <result name="success">/WEB-INF/jsp/view.jsp</result>
+                        <result name="mainpage" type="redirect-action">
+                        	<param name="title">Main_Page</param>
+                        	<param name="actionName">view</param>
+                        </result>
+                	<result name="error">/WEB-INF/jsp/error.jsp</result>                        
+                </action>
+                
+                <action name="edit" class="org.mediawiki.scavenger.action.Edit">
+                	<result name="success">/WEB-INF/jsp/edit.jsp</result>
+                	<result name="error">/WEB-INF/jsp/error.jsp</result>
+                </action>
+
+                <action name="submit" class="org.mediawiki.scavenger.action.Submit">
+                	<result name="success">/WEB-INF/jsp/submit.jsp</result>
+                	<result name="error">/WEB-INF/jsp/error.jsp</result>
+                </action>
+                                
+                <action name="history" class="org.mediawiki.scavenger.action.History">
+                	<result name="success">/WEB-INF/jsp/history.jsp</result>
+                	<result name="error">/WEB-INF/jsp/error.jsp</result>
+                </action>
+
+                <action name="diff" class="org.mediawiki.scavenger.action.Diff">
+                	<result name="success">/WEB-INF/jsp/diff.jsp</result>
+                	<result name="error">/WEB-INF/jsp/error.jsp</result>
+                </action>
+                                
+        </package>
+</struts>

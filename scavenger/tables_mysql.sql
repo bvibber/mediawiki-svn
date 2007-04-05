@@ -1,0 +1,40 @@
+DROP TABLE IF EXISTS page;
+DROP TABLE IF EXISTS text;
+DROP TABLE IF EXISTS revision;
+
+CREATE TABLE user (
+  user_id	INT NOT NULL AUTO_INCREMENT,
+  user_anon	INT(1) NOT NULL,
+  user_name	VARCHAR(32),
+
+  PRIMARY KEY	(user_id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE page (
+  page_id	INT NOT NULL AUTO_INCREMENT,
+  page_title	VARCHAR(255) NOT NULL,
+  page_latest	INT DEFAULT NULL,
+
+  PRIMARY KEY  (page_id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE text (
+  text_id	INT NOT NULL AUTO_INCREMENT,
+  text_content	TEXT,
+
+  PRIMARY KEY  (text_id)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+CREATE TABLE revision (
+  rev_id	INT NOT NULL AUTO_INCREMENT,
+  rev_page	INT NOT NULL REFERENCES page(page_id) ON DELETE CASCADE,
+  rev_text_id	INT NOT NULL REFERENCES text(text_id) ON DELETE CASCADE,
+  rev_timestamp	DATETIME NOT NULL,
+  rev_comment	VARCHAR(255) NOT NULL,
+  rev_user	INT NOT NULL REFERENCES user(user_id) ON DELETE CASCADE,
+
+  PRIMARY KEY 	(rev_id),
+  INDEX		(rev_page, rev_timestamp)
+) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+
+ALTER TABLE page ADD FOREIGN KEY(page_latest) REFERENCES revision(rev_id) ON DELETE CASCADE;

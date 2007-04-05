@@ -1,0 +1,97 @@
+/*
+ * Primary CSS file used on all pages.
+ */
+ 
+body {
+	background-color: white;
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+div.menu {
+	float: right;
+	font-size: 120%;
+	font-family: sans-serif;
+	font-weight: bold;
+	background-color: #ccccff;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+}
+
+a {
+	color: #4444aa;
+}
+
+div.menu a {
+	text-decoration: none;
+}
+
+div.menu span {
+	margin: 0 0 0 0;
+	padding: 5px 5px 5px 5px;
+}
+
+div.menu span:hover {
+	background-color: #eeeeff;
+}
+
+div.logo {
+	background-color: #ccccff;
+	font-size: 140%;
+	font-family: sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	width: 100%;
+	padding-left: 1em;
+}
+
+h1.title {
+	border-bottom: dashed 1px black;
+	font-size: 150%;
+	font-family: sans-serif;
+	padding: 0em 1em 0em 1em;
+}
+
+div.pagebody {
+	padding: 0em 1em 0em 1em;
+}
+
+span.comment {
+	font-style: italic;
+}
+
+div.diff del {
+	background-color: #eecccc;
+}
+
+div.diff ins {
+	background-color: #cceecc;
+}
+
+div.diff {
+	padding: 0em 1em 1em 1em;
+}
+
+table.diff td {
+	margin: 0 0 0 0;
+}
+		
+table.diff td.line {
+	border-right: solid 1px black;
+	padding: 2px 2px 2px 2px;
+	vertical-align: top;
+}
+
+table.diff td.text {
+	padding: 2px 1em 2px 1em;
+	vertical-align: top;
+}
+
+table.diff tr {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+div.userinfo {
+	float: right;
+}
