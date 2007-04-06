@@ -30,4 +30,11 @@ public class Title {
 	public String getKey() {
 		return key;
 	}
+	
+	/**
+	 * @return Whether this title is a valid page name
+	 */
+	public boolean isValidName() {
+		return (title.length() > 0) && (title.length() < 256);
+	}
 }

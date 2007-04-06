@@ -58,12 +58,18 @@ public abstract class PageAction
 		}
 		title = null;
 			
-		String[] title_ = (String[]) parameters.get("title");
-		if (title_ != null)
-			title = wiki.getTitle(title_[0]);
-		
 		try {
 			user = wiki.getUser(req.getRemoteAddr(), true);
+
+			String[] title_ = (String[]) parameters.get("title");
+			if (title_ != null) {
+				title = wiki.getTitle(title_[0]);
+				if (!title.isValidName()) {
+					errormsg = "The page name you have requested is illegal.";
+					return ERROR;
+				}
+			}
+			
 			return pageExecute();
 		} catch (Exception e) {
 			try {
