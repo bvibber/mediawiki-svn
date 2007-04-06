@@ -25,18 +25,62 @@ public class OraPage implements Page {
 	int page_id;
 	int page_latest;
 	
-	public OraPage(Connection dbc, Title t) {
+	public OraPage(Connection dbc, Title t) throws SQLException {
 		this.dbc = dbc;
 		title = t;
 		page_id = -1;
+		PreparedStatement stmt = dbc.prepareStatement(
+			"SELECT page_id, page_latest FROM page WHERE page_title = ?");
+		stmt.setString(1, title.getKey());
+		stmt.execute();
+		
+		ResultSet rs = stmt.getResultSet();
+		if (!rs.next()) {
+			stmt.close();
+			return;
+		}
+
+		page_id = rs.getInt(1);
+		page_latest = rs.getInt(2);
+		stmt.close();
+	}
+
+	public OraPage(Connection dbc, int id) throws SQLException {
+		this.dbc = dbc;
+		title = null;
+		page_id = id;
+		PreparedStatement stmt = dbc.prepareStatement(
+			"SELECT page_title, page_latest FROM page WHERE page_id = ?");
+		stmt.setInt(1, page_id);
+		stmt.execute();
+		
+		ResultSet rs = stmt.getResultSet();
+		if (!rs.next()) {
+			page_id = -1;
+			stmt.close();
+			return;
+		}
+
+		title = new Title(rs.getString(1));
+		page_latest = rs.getInt(2);
+		stmt.close();
+	}
+
+	public OraPage(Connection dbc, ResultSet rs) throws SQLException {
+		this.dbc = dbc;
+		title = new Title(rs.getString("page_title"));
+		page_id = rs.getInt("page_id");
+		page_latest = rs.getInt("page_latest");
+	}
+	
+	public Title getTitle() {
+		return title;
 	}
 	
 	/**
 	 * @return The latest version of this page.
 	 */
 	public OraRevision getLatestRevision() throws SQLException {
-		loadFromDB();
-
 		if (page_id == -1)
 			/* no such page... */
 			return null;
@@ -45,36 +89,9 @@ public class OraPage implements Page {
 	}
 	
 	/**
-	 * Initialise ourselves from the database.
-	 */
-	private void loadFromDB() throws SQLException {
-		if (page_id != -1)
-			return;
-		
-		PreparedStatement stmt = dbc.prepareStatement(
-				"SELECT page_id, page_latest FROM page WHERE page_title = ?");
-		stmt.setString(1, title.getKey());
-		stmt.execute();
-
-		ResultSet rs = stmt.getResultSet();
-		if (!rs.next()) {
-			/*
-			 * Page doesn't exist.
-			 */
-			stmt.close();
-			return;
-		}
-		
-		page_id = rs.getInt(1);
-		page_latest = rs.getInt(2);
-		stmt.close();
-	}
-	
-	/**
 	 * @return Whether this page exists
 	 */
 	public boolean exists() throws SQLException {
-		loadFromDB();
 		return (page_id != -1);
 	}
 	
@@ -99,8 +116,6 @@ public class OraPage implements Page {
 	 * @param text Text of the new revision
 	 */
 	public OraRevision edit(User u, String text, String comment) throws SQLException {
-		loadFromDB();
-		
 		if (page_id == -1)
 			create();
 		
@@ -149,8 +164,6 @@ public class OraPage implements Page {
 	 * Return the edit history for this page.
 	 */
 	public List<Revision> getHistory(int num) throws Exception {
-		loadFromDB();
-		
 		List<Revision> revs = new ArrayList<Revision>();
 		
 		PreparedStatement stmt = dbc.prepareStatement(

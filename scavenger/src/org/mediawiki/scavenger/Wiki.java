@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
@@ -42,9 +43,11 @@ public abstract class Wiki {
 	}
 	
 	public abstract Title getTitle(String name);
-	public abstract Page getPage(Title t);
+	public abstract Page getPage(Title t) throws SQLException;
 	public abstract User getUser(String name, boolean anon) throws SQLException;
 	public abstract Revision getRevision(int rev_id) throws SQLException;
 	public abstract void commit() throws SQLException;
 	public abstract void rollback() throws SQLException;
+	public abstract List<RecentChange> getRecentChanges(int num) throws SQLException;
+	public abstract List<Page> getAllPages() throws SQLException;
 }

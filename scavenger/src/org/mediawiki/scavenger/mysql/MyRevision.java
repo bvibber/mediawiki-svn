@@ -8,8 +8,7 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import org.mediawiki.scavenger.Revision;
-
-import com.petebevin.markdown.MarkdownProcessor;
+import org.mediawiki.scavenger.Title;
 
 /**
  * Represents one revision of a page.
@@ -52,11 +51,21 @@ public class MyRevision implements Revision {
 		dbc = rs.getStatement().getConnection();
 	}
 	
+	public MyPage getPage() throws SQLException {
+		loadFromDB();
+		return new MyPage(dbc, rev_page);
+	}
+	
 	/**
 	 * @return id of this revisio
 	 */
 	public int getId() {
 		return rev_id;
+	}
+	
+	public int getPageId() throws SQLException {
+		loadFromDB();
+		return rev_page;
 	}
 	
 	/**

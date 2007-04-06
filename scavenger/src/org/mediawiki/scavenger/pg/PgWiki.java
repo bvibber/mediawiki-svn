@@ -5,7 +5,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
+import org.mediawiki.scavenger.Page;
+import org.mediawiki.scavenger.RecentChange;
+import org.mediawiki.scavenger.Revision;
 import org.mediawiki.scavenger.Title;
 import org.mediawiki.scavenger.User;
 import org.mediawiki.scavenger.Wiki;
@@ -25,7 +30,7 @@ public class PgWiki extends Wiki {
 	}
 
 	public Title getTitle(String name) {
-		return new Title(dbc, name);
+		return new Title(name);
 	}
 
 	public User getUser(String name, boolean anon) throws SQLException {
@@ -36,7 +41,7 @@ public class PgWiki extends Wiki {
 		dbc.rollback();
 	}
 	
-	public PgPage getPage(Title t) {
+	public PgPage getPage(Title t) throws SQLException {
 		return new PgPage(dbc, t);
 	}
 	
@@ -56,5 +61,38 @@ public class PgWiki extends Wiki {
 		rs.close();
 		stmt.close();
 		return id;
+	}
+	
+	public List<RecentChange> getRecentChanges(int num) throws SQLException {
+		List<RecentChange> result = new ArrayList<RecentChange>();
+		
+		PreparedStatement stmt = dbc.prepareStatement(
+				"SELECT rev_id, rev_page, rev_text_id, rev_timestamp, rev_comment, " +
+				"rev_user FROM revision ORDER BY rev_timestamp DESC LIMIT ?");
+		stmt.setInt(1, num);
+		stmt.execute();
+		ResultSet rs = stmt.getResultSet();
+		while (rs.next()) {
+			Revision r = new PgRevision(rs);
+			result.add(new RecentChange(r));
+		}
+		
+		return result;
+	}
+	
+	
+	public List<Page> getAllPages() throws SQLException {
+		List<Page> result = new ArrayList<Page>();
+		
+		PreparedStatement stmt = dbc.prepareStatement(
+				"SELECT page_id, page_title, page_latest FROM page ORDER BY page_title ASC");
+		stmt.execute();
+		ResultSet rs = stmt.getResultSet();
+		while (rs.next()) {
+			Page p = new PgPage(dbc, rs);
+			result.add(p);
+		}
+		
+		return result;
 	}
 }

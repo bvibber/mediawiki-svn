@@ -4,6 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 
 public interface Page {
+	/**
+	 * @return The title of this page.
+	 */
+	public Title getTitle() throws SQLException;
+	
 		/**
 		 * @return The latest version of this page.
 		 */

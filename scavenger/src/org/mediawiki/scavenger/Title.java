@@ -7,14 +7,12 @@ import java.sql.Connection;
  */
 public class Title {
 	String title;
-	Connection dbc;
 	
 	/**
 	 * Construct a new title from free text.
 	 * @param text Page title
 	 */
-	public Title(Connection dbc, String text) {
-		this.dbc = dbc;
+	public Title(String text) {
 		title = text.replaceAll(" ", "_");
 	}
 	

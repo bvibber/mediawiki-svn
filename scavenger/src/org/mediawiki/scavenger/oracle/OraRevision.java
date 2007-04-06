@@ -9,8 +9,6 @@ import java.util.Date;
 
 import org.mediawiki.scavenger.Revision;
 
-import com.petebevin.markdown.MarkdownProcessor;
-
 /**
  * Represents one revision of a page.
  */
@@ -57,6 +55,16 @@ public class OraRevision implements Revision {
 	 */
 	public int getId() {
 		return rev_id;
+	}
+	
+	public OraPage getPage() throws SQLException {
+		loadFromDB();
+		return new OraPage(dbc, rev_page);
+	}
+	
+	public int getPageId() throws SQLException {
+		loadFromDB();
+		return rev_page;
 	}
 	
 	/**

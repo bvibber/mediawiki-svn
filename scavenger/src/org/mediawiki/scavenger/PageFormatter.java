@@ -2,7 +2,7 @@ package org.mediawiki.scavenger;
 
 import java.sql.SQLException;
 
-import com.petebevin.markdown.MarkdownProcessor;
+import org.mediawiki.scavenger.markdown.MarkdownProcessor;
 
 public class PageFormatter {
 	Revision rev;

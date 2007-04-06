@@ -33,6 +33,16 @@ public interface Revision {
 		 * Return the username of the creator of this revision;
 		 */
 		public String getUsername() throws SQLException;
+
+		/**
+		 * Return the page_id of this revision.
+		 */
+		public int getPageId() throws SQLException;
+		
+		/**
+		 * Return the title this revision refers to.
+		 */
+		public Page getPage() throws SQLException;
 		
 		/**
 		 * Return the revision prior to this one.

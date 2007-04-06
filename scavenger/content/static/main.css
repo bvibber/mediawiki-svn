@@ -95,3 +95,22 @@ table.diff tr {
 div.userinfo {
 	float: right;
 }
+
+div.recentchange {
+	margin-left: 3em;
+}
+
+div.footer {
+	margin-top: 2em;
+	width: 100%;
+	border-top: solid 5px #9999ee;
+	background-color: #ccccff;
+}
+
+div.footer div.footermenu {
+	float: right;
+}
+
+div.allpages {
+	margin-left: 3em;
+}	

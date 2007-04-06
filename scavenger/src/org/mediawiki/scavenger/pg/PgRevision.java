@@ -7,9 +7,8 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.util.Date;
 
+import org.mediawiki.scavenger.Page;
 import org.mediawiki.scavenger.Revision;
-
-import com.petebevin.markdown.MarkdownProcessor;
 
 /**
  * Represents one revision of a page.
@@ -36,6 +35,14 @@ public class PgRevision implements Revision {
 		rev_text_id = -1;
 		rev_comment = null;
 		rev_user_text = null;
+	}
+	
+	public Page getPage() throws SQLException {
+		return new PgPage(dbc, rev_page);
+	}
+	
+	public int getPageId() {
+		return rev_page;
 	}
 	
 	/**
