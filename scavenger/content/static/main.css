@@ -113,4 +113,8 @@ div.footer div.footermenu {
 
 div.allpages {
 	margin-left: 3em;
-}	
+}
+
+a.newlink {
+	color: #995555;
+}

@@ -1,7 +1,5 @@
 package org.mediawiki.scavenger;
 
-import java.sql.Connection;
-
 /**
  * Represents a page title (not the page itself).
  */

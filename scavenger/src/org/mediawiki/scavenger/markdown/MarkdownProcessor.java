@@ -81,6 +81,9 @@ public class MarkdownProcessor {
         text.replaceAll("\\r", "\n");    	// Mac to Unix
         text.replaceAll("^[ \\t]+$", "");
         
+        text.replaceAll("<", "&lt;");
+        text.replaceAll(">", "&gt;");
+        
         // Make sure $text ends with a couple of newlines:
         text.append("\n\n");
         
@@ -149,7 +152,7 @@ public class MarkdownProcessor {
         doLists(text);
         doCodeBlocks(text);
         doBlockQuotes(text);
-
+        
         hashHTMLBlocks(text);
 
         return formParagraphs(text);
@@ -295,6 +298,7 @@ public class MarkdownProcessor {
         return markup;
     }
 
+   
     private void unEscapeSpecialChars(TextEditor ed) {
         for (Iterator iterator = CHAR_PROTECTOR.getAllEncodedTokens().iterator(); iterator.hasNext();) {
             String hash = (String) iterator.next();

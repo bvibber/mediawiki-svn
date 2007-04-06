@@ -1,20 +1,26 @@
 package org.mediawiki.scavenger;
 
+import java.net.MalformedURLException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.List;
 import java.util.Properties;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.mediawiki.scavenger.mysql.MyWiki;
 import org.mediawiki.scavenger.oracle.OraWiki;
 import org.mediawiki.scavenger.pg.PgWiki;
 
 public abstract class Wiki {
-	public static Wiki getWiki(ServletContext ctx) throws Exception {
+	HttpServletRequest req;
+	protected Wiki(HttpServletRequest req) {
+		this.req = req;
+	}
+	
+	public static Wiki getWiki(ServletContext ctx, HttpServletRequest req) throws Exception {
 		Properties p;
 		p = new Properties();
 		p.load(ctx.getResourceAsStream("/WEB-INF/config.properties"));
@@ -26,20 +32,28 @@ public abstract class Wiki {
 			dbc = DriverManager.getConnection(p.getProperty("scavenger.dburl"),
 					p.getProperty("scavenger.dbuser"), p.getProperty("scavenger.dbpassword"));
 			dbc.setAutoCommit(false);
-			return new MyWiki(dbc);
+			return new MyWiki(dbc, req);
 		} else if (dbtype.equals("postgres")) {
 			Class.forName("org.postgresql.Driver");
 			dbc = DriverManager.getConnection(p.getProperty("scavenger.dburl"),
 					p.getProperty("scavenger.dbuser"), p.getProperty("scavenger.dbpassword"));
 			dbc.setAutoCommit(false);
-			return new PgWiki(dbc, p.getProperty("scavenger.dbschema"));		
+			return new PgWiki(dbc, p.getProperty("scavenger.dbschema"), req);		
 		} else if (dbtype.equals("oracle")) {
 			Class.forName("oracle.jdbc.OracleDriver");
 			dbc = DriverManager.getConnection(p.getProperty("scavenger.dburl"),
 					p.getProperty("scavenger.dbuser"), p.getProperty("scavenger.dbpassword"));
-			return new OraWiki(dbc);
+			return new OraWiki(dbc, req);
 		} else
 			return null;
+	}
+	
+	public String linkTo(String article) throws SQLException {
+		Title t = getTitle(article);
+		Page p = getPage(t);
+		String cssclass = (p.exists() ? "wikilink" : "newlink");
+		return String.format("<a class=\"%1$s\" href=\"%2$s/view.action?title=%4$s\">%3$s</a>",
+				cssclass, req.getContextPath(), article, p.getTitle().getText());
 	}
 	
 	public abstract Title getTitle(String name);

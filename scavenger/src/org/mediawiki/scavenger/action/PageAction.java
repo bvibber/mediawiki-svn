@@ -1,16 +1,11 @@
 package org.mediawiki.scavenger.action;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Map;
 
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.sql.DataSource;
 
 import org.apache.struts2.interceptor.ParameterAware;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -19,7 +14,6 @@ import org.apache.struts2.util.ServletContextAware;
 import org.mediawiki.scavenger.Title;
 import org.mediawiki.scavenger.User;
 import org.mediawiki.scavenger.Wiki;
-import org.mediawiki.scavenger.User;
 
 import com.opensymphony.xwork2.ActionSupport;
 
@@ -57,7 +51,7 @@ public abstract class PageAction
 	
 	public final String execute() {
 		try {
-			wiki = Wiki.getWiki(ctx);
+			wiki = Wiki.getWiki(ctx, req);
 		} catch (Exception e) {
 			errormsg = "Error retrieving database connection: " + e.toString();
 			return ERROR;

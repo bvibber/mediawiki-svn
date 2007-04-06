@@ -8,6 +8,9 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+
 import org.mediawiki.scavenger.Page;
 import org.mediawiki.scavenger.RecentChange;
 import org.mediawiki.scavenger.Revision;
@@ -18,7 +21,8 @@ import org.mediawiki.scavenger.Wiki;
 public class PgWiki extends Wiki {
 	Connection dbc;
 	
-	public PgWiki(Connection dbc, String schema) throws SQLException {
+	public PgWiki(Connection dbc, String schema, HttpServletRequest req) throws SQLException {
+		super(req);
 		this.dbc = dbc;
 		Statement st = dbc.createStatement();
 		st.executeUpdate("SET SEARCH_PATH = " + schema + ", public");

@@ -24,7 +24,7 @@ public class Diff extends PageAction {
 			r2 = r1.nextRevision();
 		else
 			r2 = wiki.getRevision(Integer.parseInt(rb[0]));
-		r1formatter = new PageFormatter(r1);
+		r1formatter = new PageFormatter(wiki);
 		
 		Differ d = new Differ(r2, r1);
 		difflines = d.format();

@@ -11,7 +11,7 @@
 
 <div class="pagebody">
 	<#if viewing?has_content>
-		<#noescape>${formatter.formattedText}</#noescape>
+		<#noescape>${formattedText}</#noescape>
 	<#else>
 		This page does not exist.
 	</#if>

@@ -1,19 +1,13 @@
 package org.mediawiki.scavenger.action;
 
-import java.sql.SQLException;
-import java.util.Map;
-
-import org.apache.struts2.interceptor.ParameterAware;
 import org.mediawiki.scavenger.Page;
 import org.mediawiki.scavenger.PageFormatter;
 import org.mediawiki.scavenger.Revision;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 public class View extends PageAction {
 	Page page;
 	Revision viewing;
-	PageFormatter formatter;
+	String formattedText;
 	
 	public String pageExecute() throws Exception {
 		if (title == null)
@@ -21,22 +15,26 @@ public class View extends PageAction {
 	
 		page = wiki.getPage(title);
 
-		/*
-		 * If the user requested a page with a non-canonical name
-		 * (wrong case), redirect them.
-		 */
-		if (!page.getTitle().getText().equals(title.getText())) {
-			req.setAttribute("pagename", page.getTitle().getText());
-			return "viewpage";
-		}
-		
-		String[] rev_ = (String[]) parameters.get("rev");
-		if (rev_ != null)
-			viewing = wiki.getRevision(Integer.parseInt(rev_[0]));
-		else
-			viewing = page.getLatestRevision();
+		formattedText = null;
+		if (page.exists()) {
+			/*
+			 * If the user requested a page with a non-canonical name
+			 * (wrong case), redirect them.
+			 */
+			if (!page.getTitle().getText().equals(title.getText())) {
+				req.setAttribute("pagename", page.getTitle().getText());
+				return "viewpage";
+			}
 
-		formatter = new PageFormatter(viewing);
+			String[] rev_ = (String[]) parameters.get("rev");
+			if (rev_ != null)
+				viewing = wiki.getRevision(Integer.parseInt(rev_[0]));
+			else
+				viewing = page.getLatestRevision();
+
+			PageFormatter formatter = new PageFormatter(wiki);
+			formattedText = formatter.getFormattedText(viewing);
+		}
 		
 		return SUCCESS;
 	}
@@ -49,7 +47,7 @@ public class View extends PageAction {
 		return viewing;
 	}
 	
-	public PageFormatter getFormatter() {
-		return formatter;
+	public String getFormattedText() {
+		return formattedText;
 	}
 }

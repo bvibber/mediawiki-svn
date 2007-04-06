@@ -8,7 +8,6 @@ import java.text.DateFormat;
 import java.util.Date;
 
 import org.mediawiki.scavenger.Revision;
-import org.mediawiki.scavenger.Title;
 
 /**
  * Represents one revision of a page.
