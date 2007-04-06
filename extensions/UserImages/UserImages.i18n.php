@@ -46,6 +46,11 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Onjuiste gebruikersnaam of geen naam opgegeven.',
 'userimages-noimages' => '$1 heeft geen afbeeldingen toegevoegd.',
 ),
+'oc' => array(
+'userimages-caption' => 'Imatges importats per $1',
+'userimages-noname' => 'Nom d’utilizaire invalid o mancant.',
+'userimages-noimages' => '$1 a pas importat cap d\'imatge.',
+),
 /* Slovak (by helix84) */
 'sk' => array(
 'userimages-caption' => 'Obrázky nahrané používateľom $1',

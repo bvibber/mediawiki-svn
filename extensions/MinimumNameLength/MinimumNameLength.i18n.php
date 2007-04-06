@@ -28,6 +28,10 @@ function efMinimumNameLengthMessages() {
 'ja' => array(
 'minnamelength-error' => 'あなたの利用者名は短すぎます。最短の長さは $1 バイトです。',
 ),
+
+'oc' => array(
+'minnamelength-error' => 'Vòstre nom d\'utilizaire es tròp cort. La longor minimom es $1.',
+),
 	);
 	return $messages;
 }

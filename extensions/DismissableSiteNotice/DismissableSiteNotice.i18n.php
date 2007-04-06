@@ -74,6 +74,10 @@ $wgDismissableSiteNoticeMessages['nl'] = array(
 	'sitenotice_close' => 'sluiten',
 );
 
+$wgDismissableSiteNoticeMessages['oc'] = array(
+	'sitenotice_close' => 'amagar',
+);
+
 $wgDismissableSiteNoticeMessages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
 );
