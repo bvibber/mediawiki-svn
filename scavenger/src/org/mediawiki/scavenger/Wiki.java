@@ -1,6 +1,8 @@
 package org.mediawiki.scavenger;
 
+import java.io.UnsupportedEncodingException;
 import java.net.MalformedURLException;
+import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -52,8 +54,13 @@ public abstract class Wiki {
 		Title t = getTitle(article);
 		Page p = getPage(t);
 		String cssclass = (p.exists() ? "wikilink" : "newlink");
-		return String.format("<a class=\"%1$s\" href=\"%2$s/view.action?title=%4$s\">%3$s</a>",
-				cssclass, req.getContextPath(), article, p.getTitle().getText());
+		try {
+			return String.format("<a class=\"%1$s\" href=\"%2$s/view.action?title=%4$s\">%3$s</a>",
+					cssclass, req.getContextPath(), article, 
+					URLEncoder.encode(p.getTitle().getText(), "UTF-8"));
+		} catch (UnsupportedEncodingException e) {
+			return ""; // cannot happen
+		}
 	}
 	
 	public abstract Title getTitle(String name);
