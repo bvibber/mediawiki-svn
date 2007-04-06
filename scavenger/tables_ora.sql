@@ -9,6 +9,7 @@ CREATE SEQUENCE page_page_id_seq;
 CREATE TABLE page (
   page_id	INT PRIMARY KEY,
   page_title	VARCHAR(255) NOT NULL UNIQUE,
+  page_key	VARCHAR(255) NOT NULL UNIQUE,
   page_latest	INT DEFAULT NULL
 );
 

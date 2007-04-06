@@ -11,6 +11,12 @@
                         	<param name="title">Main_Page</param>
                         	<param name="actionName">view</param>
                         </result>
+                        
+                        <result name="viewpage" type="redirect-action">
+                        	<param name="actionName">view</param>
+                        	<param name="title">${#request["pagename"]}</param>
+                        </result>
+                        
                 	<result name="error" type="freemarker">/WEB-INF/ftl/error.ftl</result>
                 </action>
                 
@@ -27,6 +33,11 @@
                 <action name="history" class="org.mediawiki.scavenger.action.History">
                 	<result name="success" type="freemarker">/WEB-INF/ftl/history.ftl</result>
                 	<result name="error" type="freemarker">/WEB-INF/ftl/error.ftl</result>
+                        
+                    <result name="viewpage" type="redirect-action">
+                    	<param name="actionName">history</param>
+                    	<param name="title">${#request["pagename"]}</param>
+                    </result>
                 </action>
 
                 <action name="diff" class="org.mediawiki.scavenger.action.Diff">

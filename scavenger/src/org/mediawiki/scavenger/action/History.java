@@ -17,6 +17,15 @@ public class History extends PageAction {
 		Page p = wiki.getPage(title);
 		revisions = p.getHistory(50);
 		
+		/*
+		 * If the user requested a page with a non-canonical name
+		 * (wrong case), redirect them.
+		 */
+		if (!p.getTitle().getText().equals(title.getText())) {
+			req.setAttribute("pagename", p.getTitle().getText());
+			return "viewpage";
+		}
+		
 		return SUCCESS;
 	}
 	

@@ -27,11 +27,10 @@ public class OraPage implements Page {
 	
 	public OraPage(Connection dbc, Title t) throws SQLException {
 		this.dbc = dbc;
-		title = t;
 		page_id = -1;
 		PreparedStatement stmt = dbc.prepareStatement(
-			"SELECT page_id, page_latest FROM page WHERE page_title = ?");
-		stmt.setString(1, title.getKey());
+			"SELECT page_id, page_latest, page_title FROM page WHERE page_key = ?");
+		stmt.setString(1, t.getKey());
 		stmt.execute();
 		
 		ResultSet rs = stmt.getResultSet();
@@ -40,6 +39,7 @@ public class OraPage implements Page {
 			return;
 		}
 
+		title = new Title(rs.getString(3));
 		page_id = rs.getInt(1);
 		page_latest = rs.getInt(2);
 		stmt.close();
@@ -104,9 +104,10 @@ public class OraPage implements Page {
 		PreparedStatement stmt;
 		
 		stmt = dbc.prepareStatement(
-				"INSERT INTO page(page_id, page_title, page_latest) VALUES(?, ?, NULL)");
+				"INSERT INTO page(page_id, page_title, page_key, page_latest) VALUES(?, ?, ?, NULL)");
 		stmt.setInt(1, page_id);
-		stmt.setString(2, title.getKey());
+		stmt.setString(2, title.getText());
+		stmt.setString(3, title.getKey());
 		stmt.executeUpdate();
 		return true;
 	}

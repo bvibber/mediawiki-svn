@@ -21,12 +21,21 @@ public class View extends PageAction {
 	
 		page = wiki.getPage(title);
 
+		/*
+		 * If the user requested a page with a non-canonical name
+		 * (wrong case), redirect them.
+		 */
+		if (!page.getTitle().getText().equals(title.getText())) {
+			req.setAttribute("pagename", page.getTitle().getText());
+			return "viewpage";
+		}
+		
 		String[] rev_ = (String[]) parameters.get("rev");
 		if (rev_ != null)
 			viewing = wiki.getRevision(Integer.parseInt(rev_[0]));
 		else
 			viewing = page.getLatestRevision();
-	
+
 		formatter = new PageFormatter(viewing);
 		
 		return SUCCESS;

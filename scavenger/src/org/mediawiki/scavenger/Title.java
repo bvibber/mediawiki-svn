@@ -6,27 +6,30 @@ import java.sql.Connection;
  * Represents a page title (not the page itself).
  */
 public class Title {
-	String title;
+	String title, key;
 	
 	/**
 	 * Construct a new title from free text.
 	 * @param text Page title
 	 */
 	public Title(String text) {
-		title = text.replaceAll(" ", "_");
+		title = text;
+		key = title.toLowerCase().replaceAll(" ", "_");
 	}
 	
 	/**
-	 * @return Human-readable form of this title.
+	 * @return Human-readable form of the page's display title.  This preserves
+	 * the case.
 	 */
 	public String getText() {
-		return title.replaceAll("_", " ");
+		return title;
 	}
 	
 	/**
-	 * @return Database key for this title.
+	 * @return This page's key.  This is the title in lower case, with
+	 * underscores in place of spaces.
 	 */
 	public String getKey() {
-		return title;
+		return key;
 	}
 }
