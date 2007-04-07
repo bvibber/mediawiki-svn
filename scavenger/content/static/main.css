@@ -166,3 +166,9 @@ div.lsheader {
 #lsclose {
 	color: red;
 }
+
+div.sub {
+	margin-left: 2em;
+	color: #888888;
+	font-size: small;
+}

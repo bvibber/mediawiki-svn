@@ -71,6 +71,7 @@ public class Page extends BodyTagSupport {
 					qb.append("=");
 					qb.append(URLEncoder.encode(e.getValue(), "UTF-8"));
 				}
+				query = qb.toString();
 			}
 
 			URI uri = new URI(null, null, 
