@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+
+<web-app id="WebApp_ID" version="2.4" 
+	xmlns="http://java.sun.com/xml/ns/j2ee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+	>
+
+	<taglib>
+		<taglib-uri>scavenger</taglib-uri>
+		<taglib-location>/WEB-INF/scavenger.tld</taglib-location>
+	</taglib>    
+
 	<display-name>scavenger</display-name>
 
 	<servlet>
@@ -29,7 +40,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>diff</servlet-name>
-		<url-pattern>/diff</url-pattern>
+		<url-pattern>/diff/*</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -49,7 +60,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>history</servlet-name>
-		<url-pattern>/history</url-pattern>
+		<url-pattern>/history/*</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -59,7 +70,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>edit</servlet-name>
-		<url-pattern>/edit</url-pattern>
+		<url-pattern>/edit/*</url-pattern>
 	</servlet-mapping>
 
 	<servlet>
@@ -69,7 +80,7 @@
 	
 	<servlet-mapping>
 		<servlet-name>submit</servlet-name>
-		<url-pattern>/submit</url-pattern>
+		<url-pattern>/submit/*</url-pattern>
 	</servlet-mapping>
 	
 </web-app>
