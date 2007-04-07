@@ -76,17 +76,23 @@ public abstract class PageAction extends HttpServlet {
 				if (!title.isValidName()) {
 					req.setAttribute("errormsg",
 							"The page name you have requested is illegal.");
+					wiki.close();
 					return "error";
 				}
 			}
 			
 			req.setAttribute("title", title);
 			req.setAttribute("user", user);
-			return pageExecute();
+			String ret = pageExecute();
+			wiki.close();
+			return ret;
 		} catch (Exception e) {
 			try {
 				wiki.rollback();
 			} catch (SQLException e2) {}
+			try {
+				wiki.close();
+			} catch (SQLException e3) {}
 			req.setAttribute("errormsg", "Page execution failed: " + e.toString());
 			return "error";
 		}

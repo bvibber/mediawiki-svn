@@ -92,5 +92,15 @@
 		<servlet-name>search</servlet-name>
 		<url-pattern>/search</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>livesearch</servlet-name>
+		<servlet-class>org.mediawiki.scavenger.action.LiveSearch</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>livesearch</servlet-name>
+		<url-pattern>/livesearch</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

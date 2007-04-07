@@ -8,14 +8,28 @@ body {
 	padding: 0 0 0 0;
 }
 
+div.header {
+	overflow: hidden;
+	background-color: #ccccff;
+}
+
 div.menu {
 	float: right;
 	font-size: 120%;
 	font-family: sans-serif;
 	font-weight: bold;
-	background-color: #ccccff;
-	padding: 0 0 0 0;
-	margin: 0 0 0 0;
+	padding: 2px 2px 300px 2px;
+	margin: 2px 2px -298px 2px;
+}
+
+div.logo {
+	padding-bottom: 20em;
+	margin-bottom: -20em;
+	font-size: 140%;
+	font-family: sans-serif;
+	font-style: italic;
+	font-weight: bold;
+	padding-left: 1em;
 }
 
 a {
@@ -33,16 +47,6 @@ div.menu span {
 
 div.menu span:hover {
 	background-color: #eeeeff;
-}
-
-div.logo {
-	background-color: #ccccff;
-	font-size: 140%;
-	font-family: sans-serif;
-	font-style: italic;
-	font-weight: bold;
-	width: 100%;
-	padding-left: 1em;
 }
 
 h1.title {
@@ -131,4 +135,34 @@ div.searchbody {
 
 span.searchterm {
 	font-weight: bold;
+}
+
+div.lshidden {
+	display: none;
+}
+
+div.lsshown {
+	background: #ddddff;
+	border: solid 1px #9999ee;
+	display: block;
+	position: absolute;
+	right: 10px;
+	margin-top: 1em;
+}
+
+div.lsheader {
+	font-weight: bold;
+	font-size: 120%;
+}
+
+#lsbody {
+	margin: 4px 2px 2px 10px;
+}
+
+#livesearch {
+	padding: 5px 5px 5px 5px;
+}
+
+#lsclose {
+	color: red;
 }

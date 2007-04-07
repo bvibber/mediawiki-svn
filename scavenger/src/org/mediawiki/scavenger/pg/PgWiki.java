@@ -41,6 +41,10 @@ public class PgWiki extends Wiki {
 		return new PgUser(dbc, name, anon);
 	}
 
+	public void close() throws SQLException {
+		dbc.close();
+	}
+	
 	public void rollback() throws SQLException {
 		dbc.rollback();
 	}
@@ -97,6 +101,23 @@ public class PgWiki extends Wiki {
 			result.add(p);
 		}
 		
+		return result;
+	}
+	
+	public List<String> getPrefixMatches(String pfx, int num) throws SQLException {
+		List<String> result = new ArrayList<String>();
+		pfx = pfx.replaceAll("\\$", "$$")
+				.replaceAll("[%_]", "$\\1") + "%";
+		
+		PreparedStatement stmt = dbc.prepareStatement(
+				"SELECT page_title FROM page WHERE page_key LIKE ? {escape '$'}");
+		stmt.setString(1, pfx);
+		stmt.execute();
+		ResultSet rs = stmt.getResultSet();
+		while (rs.next() && (num-- > 0))
+			result.add(rs.getString(1));
+		rs.close();
+		stmt.close();
 		return result;
 	}
 }

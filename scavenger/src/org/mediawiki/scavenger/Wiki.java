@@ -81,4 +81,6 @@ public abstract class Wiki {
 	public abstract void rollback() throws SQLException;
 	public abstract List<RecentChange> getRecentChanges(int num) throws SQLException;
 	public abstract List<Page> getAllPages() throws SQLException;
+	public abstract List<String> getPrefixMatches(String prefix, int num) throws SQLException;
+	public abstract void close() throws SQLException ;
 }
