@@ -92,8 +92,14 @@ table.diff tr {
 	padding: 0 0 0 0;
 }
 
+
 div.userinfo {
+	margin: 2px 2px 2px 2px;
 	float: right;
+}
+
+div.breadcrumbs {
+	margin: 2px 2px 2px 2px;
 }
 
 div.recentchange {

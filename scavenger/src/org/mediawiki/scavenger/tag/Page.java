@@ -1,6 +1,8 @@
 package org.mediawiki.scavenger.tag;
 
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -50,34 +52,34 @@ public class Page extends BodyTagSupport {
 	
 	public int doEndTag() throws JspException {
 		try {
-			StringBuilder result = new StringBuilder();
 			String context = ((HttpServletRequest) pageContext.getRequest()).getContextPath();
+			String query = null;
 			
-			result.append(String.format("%1$s/%2$s/%3$s",
-					context,
-					action, 
-					URLEncoder.encode(title.getURLText(), "UTF-8")));
-
 			/*
 			 * Build the query string.
 			 */
 			if (!params.isEmpty()) {
+				StringBuilder qb = new StringBuilder();
 				boolean first = true;
-				result.append("?");
 				
 				for (Map.Entry<String, String> e : params.entrySet()) {
 					if (!first)
-						result.append("&amp;");
+						qb.append("&");
 					else
 						first = false;
 
-					result.append(URLEncoder.encode(e.getKey(), "UTF-8"));
-					result.append("=");
-					result.append(URLEncoder.encode(e.getValue(), "UTF-8"));
+					qb.append(URLEncoder.encode(e.getKey(), "UTF-8"));
+					qb.append("=");
+					qb.append(URLEncoder.encode(e.getValue(), "UTF-8"));
 				}
 			}
 
-			String url = ((HttpServletResponse) pageContext.getResponse()).encodeURL(result.toString());
+			URI uri = new URI(null, null, 
+						String.format("%s/%s/%s", context, action, title.getURLText()),
+						query, null);
+			
+			String url = ((HttpServletResponse) pageContext.getResponse())
+							.encodeURL(uri.toASCIIString());
 
 			if (var == null) {
 				JspWriter out = pageContext.getOut();
@@ -87,6 +89,7 @@ public class Page extends BodyTagSupport {
 			}
 		} catch (IOException e) {
 			throw new JspException("Can't write");
+		} catch (URISyntaxException e) {
 		}
 		
 		return SKIP_BODY;

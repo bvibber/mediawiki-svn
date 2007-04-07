@@ -2,6 +2,7 @@
 	Standard page header.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="scav" uri="scavenger" %>
 
 <html>
@@ -37,8 +38,34 @@
 	<div class="logo">
 		Scavenger
 	</div>
-	
+
 	<div class="userinfo">
 		<c:url var="login" value="/login" />
 		<c:out value="${user.name}" /> - <a href="${login}">Log in / create account</a>
 	</div>
+	
+	<c:if test="${fn:contains(title.text, '/')}">
+		<c:set var="sofar" value="" />
+		
+		<div class="breadcrumbs">
+		
+		<c:forTokens items="${title.text}" delims="/" var="part" varStatus="status">
+			<c:choose>
+				<c:when test="${status.first}">
+					<c:set var="sofar" value="${part}" />
+				</c:when>
+				<c:otherwise>
+					<c:set var="sofar" value="${sofar}/${part}" />
+				</c:otherwise>
+			</c:choose>
+			
+			<scav:page action="view" name="${sofar}" var="url" />
+			<a href="${url}"><c:out value="${part}" /></a>
+			
+			<c:if test="${!status.last}">
+				&gt;
+			</c:if>
+		</c:forTokens>
+		
+		</div>
+	</c:if>
