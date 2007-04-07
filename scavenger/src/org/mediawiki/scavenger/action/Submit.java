@@ -13,6 +13,14 @@ public class Submit extends PageAction {
 		String comment = req.getParameter("comment");
 		if (comment == null)
 			comment = "";
+
+		/*
+		 * Strip trailing space, and ensure text ends with \n.
+		 */
+		newtext = newtext.replaceAll("[ \t]*$", "");
+		if (newtext.charAt(newtext.length() - 1) != '\n') {
+			newtext += '\n';
+		}
 		
 		user.create();
 		Revision r = p.edit(user, newtext, comment);
