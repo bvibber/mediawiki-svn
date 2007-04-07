@@ -2,6 +2,7 @@
 
 if (!defined('MEDIAWIKI')) die();
 
+
 $wgExtensionFunctions[] = 'wfSpecialSuggest';
 
 function wfSpecialSuggest() {
@@ -24,7 +25,6 @@ function wfSpecialSuggest() {
 			require_once("WikiDataAPI.php");
 			require_once("Transaction.php");
 			require_once("OmegaWikiEditors.php");
-						
 			echo getSuggestions();
 		}
 	}
@@ -32,10 +32,14 @@ function wfSpecialSuggest() {
 	SpecialPage::addPage(new SpecialSuggest());
 }
 
+
 function getSuggestions() {
+
 	global
 		$idAttribute;
+	global $wgUser;
 
+	$queryResult=null;
 	$search = ltrim($_GET['search-text']);
 	$prefix = $_GET['prefix'];
 	$query = $_GET['query'];
@@ -43,6 +47,7 @@ function getSuggestions() {
 	$offset = $_GET['offset'];
 	$attributesLevel = $_GET['attributesLevel'];
 	
+	wfDebug(" >>> ObjectId: $objectId  AttributesLevel: $attributesLevel\n ");
 	$dbr =& wfGetDB( DB_SLAVE );
 	$rowText = 'spelling';
 	
@@ -54,15 +59,41 @@ function getSuggestions() {
 			$sql = getSQLForCollectionOfType('CLAS');
 			break;
 		case 'option-attribute':
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN');
+			# This might be done tidier, if I knew more PHP.
+
+			# try user interface language
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', $wgUser->getOption('language'));
+			$try=$dbr->query($sql);
+			if ($dbr->numrows($try)==0) {
+				# fall back to en
+				$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', 'en');
+				$try=$dbr->query($sql);
+				if ($dbr->numrows($try)==0) {
+					# fall back to something semi-random
+					$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', '<ANY>');
+					$try=$dbr->query($sql);
+					if ($dbr->numrows($try)==0) {
+						# Give up. (Not sure that's a good thing, so emitting message to log, if logging is on.)
+						wfDebug("getSuggestions didn't find any matches for ". $wgUser->getOption('language'));
+						return;
+					}
+				}
+			}
+
+			if ($dbr->numrows($try)>0) {
+				$queryResult=$try;
+			}
+			
+				
+			#$q2 = $dbr->query($sql);
+			
 			break;
 		case 'translated-text-attribute':
 		case 'text-attribute':	
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT');
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', $wgUser->getOption('language'));
 			break;
 		case 'language':
 			require_once('languages.php');
-			global $wgUser;
 			$sql = getSQLForLanguageNames($wgUser->getOption('language'));
 			$rowText = 'language_name';
 			break;
@@ -123,8 +154,12 @@ function getSuggestions() {
 		$sql .= " $offset, ";
 		
 	$sql .= "10";
-
-	$queryResult = $dbr->query($sql);
+	
+	# Do query here (unless someone was doing hit-and-miss searching earlier
+	#	and already found their result)
+	if ($queryResult==null) {
+		$queryResult = $dbr->query($sql);
+	}
 	$idAttribute = new Attribute("id", "ID", "id");
 	
 	switch($query) {
@@ -163,9 +198,10 @@ function getSuggestions() {
 	return $editor->view(new IdStack($prefix . 'table'), $recordSet);
 }
 
-function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType) {
+function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType, $language) {
 	global 
 		$wgDefaultClassMids;
+	global	$wgUser;
 
 	if (count($wgDefaultClassMids) > 0)
 		$defaultClassRestriction = " OR uw_class_attributes.class_mid IN (" . join($wgDefaultClassMids, ", ") . ")";
@@ -180,7 +216,18 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 		' AND bootstrapped_defined_meanings.defined_meaning_id = uw_class_attributes.level_mid' .
 		' AND uw_class_attributes.attribute_type = ' . $dbr->addQuotes($attributesType) .
 		' AND uw_syntrans.defined_meaning_id = uw_class_attributes.attribute_mid' .
-		' AND uw_expression_ns.expression_id = uw_syntrans.expression_id' .
+		' AND uw_expression_ns.expression_id = uw_syntrans.expression_id';
+
+	if ($language!="<ANY>") {
+		$sql .=
+		' AND language_id=( '. 
+				' SELECT language_id'.
+				' FROM language'.
+				' WHERE wikimedia_key = '. $dbr->addQuotes($language).
+				' )';
+	}
+
+	$sql .=	
 		' AND ' . getLatestTransactionRestriction('uw_class_attributes') .
 		' AND ' . getLatestTransactionRestriction('uw_expression_ns') .
 		' AND ' . getLatestTransactionRestriction('uw_syntrans') .
@@ -192,6 +239,12 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 				' )'.
 				$defaultClassRestriction .
 		')';
+
+	if ($language="<ANY>") {
+		$sql .=
+		' LIMIT 1 ';
+	}
+
 
 	return $sql;
 }
