@@ -5,20 +5,18 @@ import java.net.URLEncoder;
 import org.mediawiki.scavenger.Page;
 
 public class Submit extends PageAction {
-	String pageExecute() throws Exception {
+	public String pageExecute() throws Exception {
 		Page p = wiki.getPage(title);
-		String comment_, newtext = ((String[]) parameters.get("text"))[0];
-		String[] comment = (String[]) parameters.get("comment");
+		String newtext = req.getParameter("text");
+		String comment = req.getParameter("comment");
 		if (comment == null)
-			comment_ = "";
-		else
-			comment_ = comment[0];
+			comment = "";
 		
 		user.create();
-		p.edit(user, newtext, comment_);
+		p.edit(user, newtext, comment);
 		wiki.commit();
 		
-		String url = "view.action?title=" + URLEncoder.encode(title.getText(), "UTF-8");
+		String url = "view/" + URLEncoder.encode(title.getText(), "UTF-8");
 		resp.sendRedirect(resp.encodeRedirectURL(url));
 		return null;
 	}

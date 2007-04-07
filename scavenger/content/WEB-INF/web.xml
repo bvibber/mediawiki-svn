@@ -2,14 +2,74 @@
 <web-app id="WebApp_ID" version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
 	<display-name>scavenger</display-name>
 
-     <filter>
-         <filter-name>struts2</filter-name>
-         <filter-class>org.apache.struts2.dispatcher.FilterDispatcher</filter-class>
-     </filter>
+	<servlet>
+		<servlet-name>view</servlet-name>
+		<servlet-class>org.mediawiki.scavenger.action.View</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>view</servlet-name>
+		<url-pattern>/view/*</url-pattern>
+	</servlet-mapping>
 
-     <filter-mapping>
-         <filter-name>struts2</filter-name>
-         <url-pattern>/*</url-pattern>
-     </filter-mapping>
+	<servlet>
+		<servlet-name>recentchanges</servlet-name>
+		<servlet-class>org.mediawiki.scavenger.action.RecentChanges</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>recentchanges</servlet-name>
+		<url-pattern>/recentchanges</url-pattern>
+	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>diff</servlet-name>
+		<servlet-class>org.mediawiki.scavenger.action.Diff</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>diff</servlet-name>
+		<url-pattern>/diff</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>allpages</servlet-name>
+		<servlet-class>org.mediawiki.scavenger.action.AllPages</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>allpages</servlet-name>
+		<url-pattern>/allpages</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>history</servlet-name>
+		<servlet-class>org.mediawiki.scavenger.action.History</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>history</servlet-name>
+		<url-pattern>/history</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>edit</servlet-name>
+		<servlet-class>org.mediawiki.scavenger.action.Edit</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>edit</servlet-name>
+		<url-pattern>/edit</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>submit</servlet-name>
+		<servlet-class>org.mediawiki.scavenger.action.Submit</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>submit</servlet-name>
+		<url-pattern>/submit</url-pattern>
+	</servlet-mapping>
+	
 </web-app>

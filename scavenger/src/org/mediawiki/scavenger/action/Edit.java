@@ -14,10 +14,7 @@ public class Edit extends PageAction {
 		if (r != null)
 			pageText = r.getText();
 
-		return SUCCESS;
-	}
-	
-	public String getPageText() {
-		return pageText;
+		req.setAttribute("pageText", pageText);
+		return "edit";
 	}
 }

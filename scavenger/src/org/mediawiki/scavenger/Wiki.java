@@ -1,7 +1,6 @@
 package org.mediawiki.scavenger;
 
 import java.io.UnsupportedEncodingException;
-import java.net.MalformedURLException;
 import java.net.URLEncoder;
 import java.sql.Connection;
 import java.sql.DriverManager;

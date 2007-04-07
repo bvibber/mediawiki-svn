@@ -5,8 +5,6 @@ import java.util.List;
 import org.mediawiki.scavenger.Page;
 import org.mediawiki.scavenger.Revision;
 
-import com.opensymphony.xwork2.ActionSupport;
-
 /**
  * Shows history of edits to a page.
  */
@@ -26,10 +24,7 @@ public class History extends PageAction {
 			return "viewpage";
 		}
 		
-		return SUCCESS;
-	}
-	
-	public List<Revision> getRevisions() {
-		return revisions;
+		req.setAttribute("revisions", revisions);
+		return "history";
 	}
 }

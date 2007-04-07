@@ -1,52 +1,55 @@
 package org.mediawiki.scavenger.action;
 
+import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.struts2.interceptor.ParameterAware;
-import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.ServletResponseAware;
-import org.apache.struts2.util.ServletContextAware;
 import org.mediawiki.scavenger.Title;
 import org.mediawiki.scavenger.User;
 import org.mediawiki.scavenger.Wiki;
 
-import com.opensymphony.xwork2.ActionSupport;
-
-public abstract class PageAction 
-	extends ActionSupport 
-	implements ParameterAware, ServletResponseAware, ServletRequestAware, ServletContextAware {
-	
-	HttpServletResponse resp;
-	HttpServletRequest req;
-	ServletContext ctx;
-	
-	public void setServletContext(ServletContext ctx) {
-		this.ctx = ctx;
-	}
-	
-	public void setServletResponse(HttpServletResponse resp) {
-		this.resp = resp;
-	}
-
-	public void setServletRequest(HttpServletRequest req) {
-		this.req = req;
-	}
-
+public abstract class PageAction extends HttpServlet {
+	protected HttpServletResponse resp;
+	protected HttpServletRequest req;
+	protected ServletContext ctx;
 	protected Wiki wiki;
-	protected Map parameters;
 	protected Title title;
 	protected String errormsg;
 	protected User user;
+
+	public void doPost(HttpServletRequest req, HttpServletResponse resp) 
+	throws ServletException, IOException {
+		this.req = req;
+		this.resp = resp;
+		this.ctx = getServletContext();
+		
+		doExecute();
+	}
+
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) 
+	throws ServletException, IOException {
+		this.req = req;
+		this.resp = resp;
+		this.ctx = getServletContext();
+		
+		doExecute();
+	}	
 	
-	abstract String pageExecute() throws Exception;
+	abstract protected String pageExecute() throws Exception;
 	
-	public void setParameters(Map params) {
-		parameters = params;
+	private void doExecute() throws ServletException, IOException {
+		String goTo = execute();
+		if (goTo == null)
+			return;
+		
+		RequestDispatcher disp = ctx.getRequestDispatcher("/WEB-INF/tpl/" + goTo + ".jsp");
+		disp.forward(req, resp);
 	}
 	
 	public final String execute() {
@@ -54,22 +57,30 @@ public abstract class PageAction
 			wiki = Wiki.getWiki(ctx, req);
 		} catch (Exception e) {
 			errormsg = "Error retrieving database connection: " + e.toString();
-			return ERROR;
+			return "error";
 		}
 		title = null;
 			
 		try {
 			user = wiki.getUser(req.getRemoteAddr(), true);
 
-			String[] title_ = (String[]) parameters.get("title");
-			if (title_ != null) {
-				title = wiki.getTitle(title_[0]);
+			String name = req.getParameter("title");
+			if (name == null) {
+				name = req.getPathInfo();
+				if (name != null)
+					name = name.substring(1);
+			}
+			
+			if (name != null) {
+				title = wiki.getTitle(name);
 				if (!title.isValidName()) {
 					errormsg = "The page name you have requested is illegal.";
-					return ERROR;
+					return "error";
 				}
 			}
 			
+			req.setAttribute("title", title);
+			req.setAttribute("user", user);
 			return pageExecute();
 		} catch (Exception e) {
 			try {

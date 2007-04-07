@@ -9,7 +9,7 @@ public class View extends PageAction {
 	Revision viewing;
 	String formattedText;
 	
-	public String pageExecute() throws Exception {
+	protected String pageExecute() throws Exception {
 		if (title == null)
 			return "mainpage";
 	
@@ -26,9 +26,9 @@ public class View extends PageAction {
 				return "viewpage";
 			}
 
-			String[] rev_ = (String[]) parameters.get("rev");
-			if (rev_ != null)
-				viewing = wiki.getRevision(Integer.parseInt(rev_[0]));
+			String rev = req.getParameter("rev");
+			if (rev != null)
+				viewing = wiki.getRevision(Integer.parseInt(rev));
 			else
 				viewing = page.getLatestRevision();
 
@@ -36,18 +36,8 @@ public class View extends PageAction {
 			formattedText = formatter.getFormattedText(viewing);
 		}
 		
-		return SUCCESS;
-	}
-	
-	public Page getPage() {
-		return page;
-	}
-	
-	public Revision getViewing() {
-		return viewing;
-	}
-	
-	public String getFormattedText() {
-		return formattedText;
+		req.setAttribute("viewing", viewing);
+		req.setAttribute("formattedText", formattedText);
+		return "view";
 	}
 }

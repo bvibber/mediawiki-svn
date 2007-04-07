@@ -7,12 +7,9 @@ import org.mediawiki.scavenger.RecentChange;
 public class RecentChanges extends PageAction {
 	List<RecentChange> changes;
 	
-	String pageExecute() throws Exception {
+	public String pageExecute() throws Exception {
 		changes = wiki.getRecentChanges(50);
-		return SUCCESS;
-	}
-	
-	public List<RecentChange> getChanges() {
-		return changes;
+		req.setAttribute("changes", changes);
+		return "recentchanges";
 	}
 }

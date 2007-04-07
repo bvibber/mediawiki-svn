@@ -14,37 +14,24 @@ public class Diff extends PageAction {
 	PageFormatter r1formatter;
 	
 	public String pageExecute() throws SQLException {
-		int ra = Integer.parseInt(((String[]) parameters.get("r1"))[0]);
+		int ra = Integer.parseInt(req.getParameter("r1"));
 		r1 = wiki.getRevision(ra);
 		
-		String[] rb = (String[]) parameters.get("r2");
-		if (rb[0].equals("prev"))
+		String rb = req.getParameter("r2");
+		if (rb.equals("prev"))
 			r2 = r1.prevRevision();
-		else if (rb[0].equals("next"))
+		else if (rb.equals("next"))
 			r2 = r1.nextRevision();
 		else
-			r2 = wiki.getRevision(Integer.parseInt(rb[0]));
+			r2 = wiki.getRevision(Integer.parseInt(rb));
 		r1formatter = new PageFormatter(wiki);
 		
 		Differ d = new Differ(r2, r1);
 		difflines = d.format();
-		return SUCCESS;
-	}
-	
-	public List<Differ.DiffLine> getDifflines() {
-		return difflines;
-	}
-	
-	public Revision getR1() {
-		return r1;
-	}
-	
-	public Revision getR2() {
-		return r2;
-	}
-	
-	public PageFormatter getR1formatter() {
-		return r1formatter;
-	}
-	
+		req.setAttribute("difflines", difflines);
+		req.setAttribute("r1", r1);
+		req.setAttribute("r2", r2);
+		req.setAttribute("r1text", r1formatter.getFormattedText(r1));
+		return "diff";
+	}	
 }
