@@ -64,38 +64,6 @@ span.comment {
 	font-style: italic;
 }
 
-div.diff del {
-	background-color: #eecccc;
-}
-
-div.diff ins {
-	background-color: #cceecc;
-}
-
-div.diff {
-	padding: 0em 1em 1em 1em;
-}
-
-table.diff td {
-	margin: 0 0 0 0;
-}
-		
-table.diff td.line {
-	border-right: solid 1px black;
-	padding: 2px 2px 2px 2px;
-	vertical-align: top;
-}
-
-table.diff td.text {
-	padding: 2px 1em 2px 1em;
-	vertical-align: top;
-}
-
-table.diff tr {
-	margin: 0 0 0 0;
-	padding: 0 0 0 0;
-}
-
 
 div.userinfo {
 	margin: 2px 2px 2px 2px;
@@ -171,4 +139,53 @@ div.sub {
 	margin-left: 2em;
 	color: #888888;
 	font-size: small;
+}
+
+table.diff td, table.diff th {
+	vertical-align: top;
+	padding: 2px 10px 2px 10px;
+}
+
+table.diff th {
+	border-bottom: dashed 1px black;
+	background-color: #eeeeee;
+}
+
+div.diff del {
+	text-decoration: none;
+	background-color: #eecccc;
+}
+
+div.diff ins {
+	text-decoration: none;
+	background-color: #cceecc;
+}
+
+div.diff {
+	padding: 0em 1em 1em 1em;
+}
+
+table.diff td {
+	margin: 0 0 0 0;
+}
+		
+table.diff td.line {
+	border-right: solid 1px black;
+	padding: 2px 2px 2px 2px;
+	vertical-align: top;
+}
+
+table.diff td.text {
+	padding: 2px 1em 2px 1em;
+	vertical-align: top;
+}
+
+table.diff tr {
+	margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+table.diff {
+	margin-left: auto;
+	margin-right: auto;
 }

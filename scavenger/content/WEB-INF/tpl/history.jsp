@@ -16,8 +16,8 @@
 <c:forEach items="${revisions}" var="rev" varStatus="status">
 <li>
 	<scav:page var="diffurl" action="diff" name="${title.text}">
-		<scav:param name="r1" value="${rev.id}" />
-		<scav:param name="r2" value="prev" />
+		<scav:param name="r1" value="prev" />
+		<scav:param name="r2" value="${rev.id}" />
 	</scav:page>
 
 	<scav:page action="view" name="${title.text}" var="viewurl">

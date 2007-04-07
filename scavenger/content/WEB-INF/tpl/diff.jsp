@@ -16,34 +16,56 @@
 	<scav:param name="rev" value="${r2.id}" />
 </scav:page>
 
-<p>
-Comparing: revision as of ${r1.timestampString}
-(<a href="${r1rev}">view</a>)
-<br>
-To: revision as of ${r2.timestampString}
-(<a href="${r2rev}">view</a>)
-</p>
-
 <table class="diff" cellspacing="0" cellpadding="0">
-	<c:forEach items="${difflines}" var="line">
-		<tr>
-			<td class="line">
-				<c:out value="${line.line}" />
+	<tr>
+		<th class="left">
+			Revision as of ${r1.timestampString}
+			(<a href="${r1rev}">view</a>)
+			<br />
+			By <c:out value="${r1.username}" />
+			<c:if test="${!empty r1.comment}">
+				(<span class="comment"><c:out value="${r1.comment}" /></span>)
+			</c:if>
+		</th>
+		<th class="right">
+			Revision as of ${r2.timestampString}
+			(<a href="${r2rev}">view</a>)
+			<br />
+			By <c:out value="${r2.username}" />
+			<c:if test="${!empty r2.comment}">
+				(<span class="comment"><c:out value="${r2.comment}" /></span>)
+			</c:if>
+		</th>
+	</tr>
+			
+	<c:forEach items="${diffchunks}" var="chunk">
+		<tr>		
+			<td class="left">
+				<c:forEach items="${chunk.left.lines}" var="line">
+					<c:choose>
+						<c:when test="${line.context}">
+							<c:out value="${line.text}" /> <br />
+						</c:when>
+						
+						<c:otherwise>
+							<del><c:out value="${line.text}" /></del> <br />
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 			</td>
-			<td class="text">
-				<c:choose>
-					<c:when test="${line.addition}">
-						<ins><c:out value="${line.text}" /></ins>
-					</c:when>
-
-					<c:when test="${line.deletion}">
-						<del><c:out value="${line.text}" /></del>
-					</c:when>
-
-					<c:otherwise>
-						<c:out value="${line.text}" />
-					</c:otherwise>
-				</c:choose>
+			
+			<td class="right">
+				<c:forEach items="${chunk.right.lines}" var="line">
+					<c:choose>
+						<c:when test="${line.context}">
+							<c:out value="${line.text}" /> <br />
+						</c:when>
+						
+						<c:otherwise>
+							<ins><c:out value="${line.text}" /></ins><br />
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
 			</td>
 		</tr>
 	</c:forEach>

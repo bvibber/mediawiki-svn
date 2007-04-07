@@ -1,23 +1,93 @@
 package org.mediawiki.scavenger;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.incava.util.diff.Diff;
-import org.incava.util.diff.Difference;
 import org.mediawiki.scavenger.Revision;
+import org.suigeneris.jrcs.diff.Diff;
+import org.suigeneris.jrcs.diff.DifferentiationFailedException;
+import org.suigeneris.jrcs.diff.delta.Chunk;
+import org.suigeneris.jrcs.diff.delta.Delta;
+import org.suigeneris.jrcs.diff.myers.MyersDiff;
 
 /**
  * Produce the differences between two revisions of a page;
  */
 public class Differ {
 	Revision a, b;
-	Diff<String> diff;
-	List<Difference> diffs;
+	org.suigeneris.jrcs.diff.Revision revision;
 	String text_a, text_b;
 	String[] lines_a, lines_b;
+	
+	public class DiffLine {
+		String text;
+		boolean context;
+		
+		public DiffLine(String t, boolean c) {
+			text = t;
+			context = c;
+		}
+		
+		public String getText() {
+			return text;
+		}
+		
+		public boolean getContext() {
+			return context;
+		}
+	}
+	
+	public class DiffBlock {
+		int start, end;
+		String[] text;
+		Chunk chunk;
+		List<DiffLine> lines;
+		
+		public DiffBlock(Chunk c, String[] text) {
+			lines = new ArrayList<DiffLine>();
+			chunk = c;
+			start = c.first();
+			end = c.last();
+			
+			/*
+			 * Insert 5 lines of context on either side.
+			 */
+			for (int i = Math.max(0, start - 5); i < start; ++i) {
+				lines.add(new DiffLine(text[i], true));
+			}
+			for (int i = start; i <= end; ++i) {
+				lines.add(new DiffLine(text[i], false));
+			}
+			for (int i = end + 1, e = Math.min(text.length, end + 5); i < e; ++i) {
+				lines.add(new DiffLine(text[i], true));
+			}
+		}
+		
+		public List<DiffLine> getLines() {
+			return lines;
+		}
+	}
+	
+	public class DiffChunk {
+		Chunk left, right;
+		
+		public DiffChunk(Chunk l, Chunk r) {
+			left = l;
+			right = r;
+		}
+		
+		public DiffBlock getLeft() {
+			return new DiffBlock(left, lines_a);
+		}
+		public DiffBlock getRight() {
+			return new DiffBlock(right, lines_b);
+		}
+	}
+
+	List<DiffChunk> chunks;
 	
 	public Differ(Revision a_, Revision b_) throws SQLException {
 		a = a_;
@@ -26,79 +96,22 @@ public class Differ {
 		text_b = b.getText();
 		lines_a = text_a.split("\n");
 		lines_b = text_b.split("\n");
-		diff = new Diff<String>(lines_a, lines_b);
-		diffs = diff.diff();
-	}
-	
-	public List<Difference> diff() throws SQLException {	
-		return diffs;
-	}
-	
-	public static class DiffLine {
-		int line;
-		boolean addition, deletion;
-		String text;
-		
-		public DiffLine(int no, boolean add, boolean del, String t) {
-			line = no;
-			addition = add;
-			deletion = del;
-			text = t;
+		try {
+			revision = Diff.diff(lines_a, lines_b, new MyersDiff());
+		} catch (DifferentiationFailedException e) {
+			revision = null;
 		}
 		
-		public int getLine() {
-			return line;
-		}
-		
-		public boolean getAddition() {
-			return addition;
-		}
-		
-		public boolean getDeletion() {
-			return deletion;
-		}
-		
-		public String getText() {
-			return text;
+		chunks = new ArrayList<DiffChunk>();
+		for (int i = 0, end = revision.size(); i < end; ++i) {
+			Delta d = revision.getDelta(i);
+			Chunk c1 = d.getOriginal();
+			Chunk c2 = d.getRevised();
+			chunks.add(new DiffChunk(c1, c2));
 		}
 	}
 	
-	public List<DiffLine> format() {
-		List<DiffLine> result = new LinkedList<DiffLine>();
-
-		Iterator it = diffs.iterator();
-		int last = 0;
-		while (it.hasNext()) {
-			Difference d = (Difference) it.next();
-			int dstart = d.getDeletedStart(), dend = d.getDeletedEnd();
-			int astart = d.getAddedStart(), aend = d.getAddedEnd();
-		
-			int stop = last;
-			if (dend != -1)
-				stop = dend;
-			if (aend != -1 && aend > stop)
-				stop = aend;
-			
-			for (; last < stop; ++last) {
-				result.add(new DiffLine(last + 1, false, false, lines_b[last]));
-			}
-			
-			if (dend != -1) {
-				for (last = dstart; last <= dend; ++last) {
-					result.add(new DiffLine(last + 1, false, true, lines_a[last]));
-				}
-			}
-			
-			if (aend != -1) {
-				for (last = astart; last <= aend; ++last) {
-					result.add(new DiffLine(last + 1, true, false, lines_b[last]));
-				}
-			}
-		}
-		
-		for (; last < lines_b.length; ++last)
-			result.add(new DiffLine(last + 1, false, false, lines_b[last]));
-		
-		return result;
+	public List<DiffChunk> getChunks() {
+		return chunks;
 	}
 }
