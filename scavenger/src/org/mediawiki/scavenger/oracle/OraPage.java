@@ -23,8 +23,8 @@ public class OraPage implements Page {
 	int page_id;
 	int page_latest;
 	
-	public OraPage(Connection dbc, Title t) throws SQLException {
-		this.dbc = dbc;
+	public OraPage(Connection d, Title t) throws SQLException {
+		dbc = d;
 		page_id = -1;
 		PreparedStatement stmt = dbc.prepareStatement(
 			"SELECT page_id, page_latest, page_title FROM page WHERE page_key = ?");
@@ -44,8 +44,8 @@ public class OraPage implements Page {
 		stmt.close();
 	}
 
-	public OraPage(Connection dbc, int id) throws SQLException {
-		this.dbc = dbc;
+	public OraPage(Connection d, int id) throws SQLException {
+		dbc = d;
 		title = null;
 		page_id = id;
 		PreparedStatement stmt = dbc.prepareStatement(
@@ -65,8 +65,8 @@ public class OraPage implements Page {
 		stmt.close();
 	}
 
-	public OraPage(Connection dbc, ResultSet rs) throws SQLException {
-		this.dbc = dbc;
+	public OraPage(Connection d, ResultSet rs) throws SQLException {
+		dbc = d;
 		title = new Title(rs.getString("page_title"));
 		page_id = rs.getInt("page_id");
 		page_latest = rs.getInt("page_latest");

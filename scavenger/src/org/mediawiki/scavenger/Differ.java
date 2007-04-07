@@ -14,19 +14,19 @@ import org.mediawiki.scavenger.Revision;
  */
 public class Differ {
 	Revision a, b;
-	Diff diff;
-	List diffs;
+	Diff<String> diff;
+	List<Difference> diffs;
 	String text_a, text_b;
 	String[] lines_a, lines_b;
 	
-	public Differ(Revision a, Revision b) throws SQLException {
-		this.a = a;
-		this.b = b;
+	public Differ(Revision a_, Revision b_) throws SQLException {
+		a = a_;
+		b = b_;
 		text_a = a.getText();
 		text_b = b.getText();
 		lines_a = text_a.split("\n");
 		lines_b = text_b.split("\n");
-		diff = new Diff(lines_a, lines_b);
+		diff = new Diff<String>(lines_a, lines_b);
 		diffs = diff.diff();
 	}
 	
@@ -39,11 +39,11 @@ public class Differ {
 		boolean addition, deletion;
 		String text;
 		
-		public DiffLine(int no, boolean add, boolean del, String text) {
-			this.line = no;
-			this.addition = add;
-			this.deletion = del;
-			this.text = text;
+		public DiffLine(int no, boolean add, boolean del, String t) {
+			line = no;
+			addition = add;
+			deletion = del;
+			text = t;
 		}
 		
 		public int getLine() {

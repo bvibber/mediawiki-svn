@@ -16,8 +16,8 @@ public class OraUser implements User {
 	int user_id;
 	boolean user_anon;
 	
-	public OraUser(Connection dbc, int id, boolean anon) throws SQLException {
-		this.dbc = dbc;
+	public OraUser(Connection d, int id, boolean anon) throws SQLException {
+		dbc = d;
 		user_id = id;
 		user_anon = anon;
 		PreparedStatement stmt = dbc.prepareStatement(
@@ -34,8 +34,8 @@ public class OraUser implements User {
 		stmt.close();
 	}
 	
-	public OraUser(Connection dbc, String name, boolean anon) throws SQLException {
-		this.dbc = dbc;
+	public OraUser(Connection d, String name, boolean anon) throws SQLException {
+		dbc = d;
 		user_name = name;
 		user_id = -1;
 		user_anon = anon;

@@ -25,7 +25,8 @@ public class MyPage implements Page {
 	int page_latest;
 	String page_title;
 	
-	public MyPage(Connection dbc, Title t) throws SQLException {
+	public MyPage(Connection d, Title t) throws SQLException {
+		dbc = d;
 		PreparedStatement stmt = dbc.prepareStatement(
 			"SELECT page_id, page_title, page_latest FROM page WHERE page_title = ?");
 		stmt.setString(1, title.getKey());
@@ -42,7 +43,8 @@ public class MyPage implements Page {
 		stmt.close();
 	}
 	
-	public MyPage(Connection dbc, int id) throws SQLException {
+	public MyPage(Connection d, int id) throws SQLException {
+		dbc = d;
 		page_id = id;
 		PreparedStatement stmt = dbc.prepareStatement(
 			"SELECT page_title, page_latest FROM page WHERE page_id = ?");
@@ -61,7 +63,8 @@ public class MyPage implements Page {
 		stmt.close();
 	}
 
-	public MyPage(Connection dbc, ResultSet rs) throws SQLException {
+	public MyPage(Connection d, ResultSet rs) throws SQLException {
+		dbc = d;
 		page_id = rs.getInt("page_id");
 		title = new Title(rs.getString("page_title"));
 		page_latest = rs.getInt("page_latest");

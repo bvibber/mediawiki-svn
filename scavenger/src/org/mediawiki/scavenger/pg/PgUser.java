@@ -16,8 +16,8 @@ public class PgUser implements User {
 	int user_id;
 	boolean user_anon;
 	
-	public PgUser(Connection dbc, int id, boolean anon) throws SQLException {
-		this.dbc = dbc;
+	public PgUser(Connection d, int id, boolean anon) throws SQLException {
+		dbc = d;
 		user_id = id;
 		user_anon = anon;
 		PreparedStatement stmt = dbc.prepareStatement(
@@ -34,8 +34,8 @@ public class PgUser implements User {
 		stmt.close();
 	}
 	
-	public PgUser(Connection dbc, String name, boolean anon) throws SQLException {
-		this.dbc = dbc;
+	public PgUser(Connection d, String name, boolean anon) throws SQLException {
+		dbc = d;
 		user_name = name;
 		user_id = -1;
 		user_anon = anon;

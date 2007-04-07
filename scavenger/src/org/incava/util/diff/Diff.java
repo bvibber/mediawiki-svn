@@ -16,22 +16,22 @@ import java.util.*;
  * <p>The file FileDiff.java shows an example usage of this class, in an
  * application similar to the Unix "diff" program.</p>
  */
-public class Diff
+public class Diff<T>
 {
     /**
      * The source array, AKA the "from" values.
      */
-    protected Object[] a;
+    protected T[] a;
 
     /**
      * The target array, AKA the "to" values.
      */
-    protected Object[] b;
+    protected T[] b;
 
     /**
      * The list of differences, as <code>Difference</code> instances.
      */
-    protected List diffs = new ArrayList();
+    protected List<Difference> diffs = new ArrayList<Difference>();
 
     /**
      * The pending, uncommitted difference.
@@ -41,21 +41,21 @@ public class Diff
     /**
      * The comparator used, if any.
      */
-    private Comparator comparator;
+    private Comparator<T> comparator;
 
     /**
      * The thresholds.
      */
-    private TreeMap thresh;
+    private TreeMap<Integer, Integer> thresh;
 
     /**
      * Constructs the Diff object for the two arrays, using the given comparator.
      */
-    public Diff(Object[] a, Object[] b, Comparator comp)
+    public Diff(T[] a_, T[] b_, Comparator<T> comp)
     {
-        this.a = a;
-        this.b = b;
-        this.comparator = comp;
+        a = a_;
+        b = b_;
+        comparator = comp;
         this.thresh = null;     // created in getLongestCommonSubsequences
     }
 
@@ -64,18 +64,19 @@ public class Diff
      * comparison mechanism between the objects, such as <code>equals</code> and
      * <code>compareTo</code>.
      */
-    public Diff(Object[] a, Object[] b)
+    public Diff(T[] a_, T[] b_)
     {
-        this(a, b, null);
+        this(a_, b_, null);
     }
 
     /**
      * Constructs the Diff object for the two collections, using the given
      * comparator.
      */
-    public Diff(Collection a, Collection b, Comparator comp)
+	@SuppressWarnings("unchecked")
+	public Diff(Collection<T> a_, Collection<T> b_, Comparator<T> comp)
     {
-        this(a.toArray(), b.toArray(), comp);
+        this((T[]) a_.toArray(), (T[]) b_.toArray(), comp);
     }
 
     /**
@@ -83,15 +84,15 @@ public class Diff
      * comparison mechanism between the objects, such as <code>equals</code> and
      * <code>compareTo</code>.
      */
-    public Diff(Collection a, Collection b)
+    public Diff(Collection<T> a_, Collection<T> b_)
     {
-        this(a, b, null);
+        this(a_, b_, null);
     }
 
     /**
      * Runs diff and returns the results.
      */
-    public List diff()
+    public List<Difference> diff()
     {
         traverseSequences();
 
@@ -253,7 +254,7 @@ public class Diff
      * Compares the two objects, using the comparator provided with the
      * constructor, if any.
      */
-    protected boolean equals(Object x, Object y)
+    protected boolean equals(T x, T y)
     {
         return comparator == null ? x.equals(y) : comparator.compare(x, y) == 0;
     }
@@ -269,7 +270,7 @@ public class Diff
         int bStart = 0;
         int bEnd = b.length - 1;
 
-        TreeMap matches = new TreeMap();
+        TreeMap<Integer, Integer> matches = new TreeMap<Integer, Integer>();
 
         while (aStart <= aEnd && bStart <= bEnd && equals(a[aStart], b[bStart])) {
             matches.put(new Integer(aStart++), new Integer(bStart++));
@@ -279,40 +280,40 @@ public class Diff
             matches.put(new Integer(aEnd--), new Integer(bEnd--));
         }
 
-        Map bMatches = null;
+        Map<T, List<Integer>> bMatches = null;
         if (comparator == null) {
             if (a.length > 0 && a[0] instanceof Comparable) {
                 // this uses the Comparable interface
-                bMatches = new TreeMap();
+                bMatches = new TreeMap<T, List<Integer>>();
             }
             else {
                 // this just uses hashCode()
-                bMatches = new HashMap();
+                bMatches = new HashMap<T, List<Integer>>();
             }
         }
         else {
             // we don't really want them sorted, but this is the only Map
             // implementation (as of JDK 1.4) that takes a comparator.
-            bMatches = new TreeMap(comparator);
+            bMatches = new TreeMap<T, List<Integer>>(comparator);
         }
 
         for (int bi = bStart; bi <= bEnd; ++bi) {
-            Object element   = b[bi];
-            Object key       = element;
-            List   positions = (List)bMatches.get(key);
+            T element   = b[bi];
+            T key       = element;
+            List<Integer>   positions = (List<Integer>)bMatches.get(key);
             if (positions == null) {
-                positions = new ArrayList();
+                positions = new ArrayList<Integer>();
                 bMatches.put(key, positions);
             }
             positions.add(new Integer(bi));
         }
 
-        thresh = new TreeMap();
-        Map links = new HashMap();
+        thresh = new TreeMap<Integer, Integer>();
+        Map<Integer, Object[]> links = new HashMap<Integer, Object[]>();
 
         for (int i = aStart; i <= aEnd; ++i) {
-            Object aElement  = a[i]; // keygen here.
-            List   positions = (List)bMatches.get(aElement);
+            T		aElement  = a[i]; // keygen here.
+            List	positions = (List)bMatches.get(aElement);
 
             if (positions != null) {
                 Integer  k   = new Integer(0);

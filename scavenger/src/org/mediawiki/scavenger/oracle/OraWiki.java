@@ -19,9 +19,9 @@ import org.mediawiki.scavenger.Wiki;
 public class OraWiki extends Wiki {
 	Connection dbc;
 	
-	public OraWiki(Connection dbc, HttpServletRequest req) throws SQLException {
+	public OraWiki(Connection d, HttpServletRequest req) throws SQLException {
 		super(req);
-		this.dbc = dbc;
+		dbc = d;
 	}
 	
 	public void commit() throws SQLException {

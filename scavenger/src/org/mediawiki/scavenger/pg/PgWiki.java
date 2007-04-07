@@ -20,9 +20,9 @@ import org.mediawiki.scavenger.Wiki;
 public class PgWiki extends Wiki {
 	Connection dbc;
 	
-	public PgWiki(Connection dbc, String schema, HttpServletRequest req) throws SQLException {
+	public PgWiki(Connection d, String schema, HttpServletRequest req) throws SQLException {
 		super(req);
-		this.dbc = dbc;
+		dbc = d;
 		Statement st = dbc.createStatement();
 		st.executeUpdate("SET SEARCH_PATH = " + schema + ", public");
 		st.close();

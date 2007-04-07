@@ -27,8 +27,8 @@ public class PgRevision implements Revision {
 	/**
 	 * Construct a new revision from its rev_id.
 	 */
-	public PgRevision(Connection dbc, int id) {
-		this.dbc = dbc;
+	public PgRevision(Connection d, int id) {
+		dbc = d;
 		rev_id = id;
 		text = null;
 		rev_page = -1;

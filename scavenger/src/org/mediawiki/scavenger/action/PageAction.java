@@ -23,20 +23,20 @@ public abstract class PageAction extends HttpServlet {
 	protected String errormsg;
 	protected User user;
 
-	public void doPost(HttpServletRequest req, HttpServletResponse resp) 
+	public void doPost(HttpServletRequest rq, HttpServletResponse rp) 
 	throws ServletException, IOException {
-		this.req = req;
-		this.resp = resp;
-		this.ctx = getServletContext();
+		req = rq;
+		resp = rp;
+		ctx = getServletContext();
 		
 		doExecute();
 	}
 
-	public void doGet(HttpServletRequest req, HttpServletResponse resp) 
+	public void doGet(HttpServletRequest rq, HttpServletResponse rp) 
 	throws ServletException, IOException {
-		this.req = req;
-		this.resp = resp;
-		this.ctx = getServletContext();
+		req = rq;
+		resp = rp;
+		ctx = getServletContext();
 		
 		doExecute();
 	}	

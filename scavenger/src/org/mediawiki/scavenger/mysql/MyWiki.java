@@ -19,9 +19,9 @@ import org.mediawiki.scavenger.Wiki;
 public class MyWiki extends Wiki {
 	Connection dbc;
 	
-	public MyWiki(Connection dbc, HttpServletRequest req) {
+	public MyWiki(Connection d, HttpServletRequest req) {
 		super(req);
-		this.dbc = dbc;
+		dbc = d;
 	}
 	
 	public void commit() throws SQLException {

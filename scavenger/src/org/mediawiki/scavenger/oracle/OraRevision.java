@@ -26,8 +26,8 @@ public class OraRevision implements Revision {
 	/**
 	 * Construct a new revision from its rev_id.
 	 */
-	public OraRevision(Connection dbc, int id) {
-		this.dbc = dbc;
+	public OraRevision(Connection d, int id) {
+		dbc = d;
 		rev_id = id;
 		text = null;
 		rev_page = -1;

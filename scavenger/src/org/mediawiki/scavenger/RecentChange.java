@@ -3,21 +3,21 @@ package org.mediawiki.scavenger;
 import java.sql.SQLException;
 
 public class RecentChange {
-	Revision r;
+	Revision revision;
 	
 	public RecentChange(Revision r) {
-		this.r = r;
+		revision = r;
 	}
 	
 	public Page getPage() throws SQLException {
-		return r.getPage();
+		return revision.getPage();
 	}
 	
 	public Title getTitle() throws SQLException {
-		return r.getPage().getTitle();
+		return revision.getPage().getTitle();
 	}
 	
 	public Revision getRevision() {
-		return r;
+		return revision;
 	}
 }

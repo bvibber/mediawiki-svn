@@ -39,9 +39,9 @@ public class LinkDefinition {
     private String url;
     private String title;
 
-    public LinkDefinition(String url, String title) {
-        this.url = url;
-        this.title = title;
+    public LinkDefinition(String u, String t) {
+        url = u;
+        title = t;
     }
 
     public String getUrl() {

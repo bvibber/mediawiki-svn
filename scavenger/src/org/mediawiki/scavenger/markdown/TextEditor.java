@@ -53,8 +53,8 @@ public class TextEditor {
      *
      * @param text
      */
-    public TextEditor(CharSequence text) {
-        this.text = new StringBuffer(text.toString());
+    public TextEditor(CharSequence t) {
+        text = new StringBuffer(t.toString());
     }
 
     /**
@@ -221,7 +221,7 @@ public class TextEditor {
      * @return
      */
     public Collection tokenizeHTML() {
-        List tokens = new ArrayList();
+        List<HTMLToken> tokens = new ArrayList<HTMLToken>();
         String nestedTags = nestedTagsRegex(6);
 
         Pattern p = Pattern.compile("" +

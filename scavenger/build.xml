@@ -1,0 +1,66 @@
+<?xml version="1.0"?>
+
+<project name="scavenger" default="all" basedir=".">
+	<property name="output.dir" value="${basedir}/build"/>
+	<property name="classes.dir" value="${output.dir}/classes"/>
+
+	<property name="src" value="${basedir}/src"/>
+	<property name="lib" value="${basedir}/content/WEB-INF/lib"/>
+
+	<property name="dist.dir" value="${basedir}/dist"/>
+	<property name="lib.dest" value="${dist.dir}/lib"/>
+	
+	<property name="webapp.name" value="scavenger"/>
+	<property name="webapp.tmp.dir" value="${output.dir}/webapp/${webapp.name}"/>
+	<property name="webapp.lib" value="${webapp.tmp.dir}/WEB-INF/lib"/>
+	<property name="webapp.tld" value="${webapp.tmp.dir}/WEB-INF/tld"/>
+	<property name="webapp.classes" value="${webapp.tmp.dir}/WEB-INF/classes"/>
+
+	<property name="bin.dest" value="${output.dir}/bin"/>
+
+	<target name="clean">
+		<delete dir="${output.dir}"/>
+	</target>
+
+	<target name="prepare">
+		<mkdir dir="${dist.dir}"/>
+		<mkdir dir="${bin.dest}"/>
+		<mkdir dir="${classes.dir}"/>
+	</target>
+	
+	<target name="compile" depends="prepare">
+		<javac destdir="${classes.dir}" srcdir="${src}" debug="on" deprecation="off" optimize="on" target="1.5" source="1.5">
+			<classpath>
+				<fileset dir="${lib}">
+					<include name="**/*.jar"/>
+				</fileset>
+				<fileset dir="${basedir}/lib">
+					<include name="**/*.jar" />
+				</fileset>
+			</classpath>
+		</javac>
+	</target>
+	
+	<target name="clean.webapp">
+		<delete dir="${webapp.tmp.dir}"/>
+	</target>
+	
+	<target name="prepare.webapp">
+		<mkdir dir="${webapp.tmp.dir}"/>
+		<copy toDir="${webapp.tmp.dir}">
+			<fileset dir="content" />
+		</copy>
+	</target>
+	
+	<target name="war" depends="compile">
+		<war warfile="${dist.dir}/scavenger.war" webxml="${basedir}/content/WEB-INF/web.xml">
+			<classes dir="${basedir}/build/classes">
+			</classes>
+			<fileset dir="${basedir}/content">
+			</fileset>
+		</war>
+	</target>
+	
+	<target name="all" depends="war"/>
+
+</project>

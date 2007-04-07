@@ -37,12 +37,12 @@ public class Difference
      * Creates the difference for the given start and end points for the
      * deletion and addition.
      */
-    public Difference(int delStart, int delEnd, int addStart, int addEnd)
+    public Difference(int delStart_, int delEnd_, int addStart_, int addEnd_)
     {
-        this.delStart = delStart;
-        this.delEnd   = delEnd;
-        this.addStart = addStart;
-        this.addEnd   = addEnd;
+        delStart = delStart_;
+        delEnd   = delEnd_;
+        addStart = addStart_;
+        addEnd   = addEnd_;
     }
 
     /**

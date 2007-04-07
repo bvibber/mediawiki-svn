@@ -3,8 +3,6 @@ package org.mediawiki.scavenger.tag;
 import javax.servlet.jsp.JspException;
 import javax.servlet.jsp.tagext.TagSupport;
 
-import org.mediawiki.scavenger.Title;
-
 public class Param extends TagSupport {
 	String name = null;
 	String value = null;

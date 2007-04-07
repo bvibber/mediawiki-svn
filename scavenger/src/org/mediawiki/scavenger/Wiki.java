@@ -17,8 +17,9 @@ import org.mediawiki.scavenger.pg.PgWiki;
 
 public abstract class Wiki {
 	HttpServletRequest req;
-	protected Wiki(HttpServletRequest req) {
-		this.req = req;
+	
+	protected Wiki(HttpServletRequest rq) {
+		req = rq;
 	}
 	
 	public static Wiki getWiki(ServletContext ctx, HttpServletRequest req) throws Exception {
