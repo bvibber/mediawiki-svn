@@ -3,19 +3,18 @@
 --%>
 <%@ include file="header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="scav" uri="scavenger" %>
 
 <h1 class="title"><c:out value="${title.text}" /> (difference between revisions)</h1>
 
 <div class="diff">
 
-<c:url var="r1rev" value="/view">
-	<c:param name="title" value="${title.text}" />
-	<c:param name="rev" value="${r1.id}" />
-</c:url>
-<c:url var="r2rev" value="/view">
-	<c:param name="title" value="${title.text}" />
-	<c:param name="rev" value="${r2.id}" />
-</c:url>
+<scav:page var="r1rev" name="${title.text}" action="view">
+	<scav:param name="rev" value="${r1.id}" />
+</scav:page>
+<scav:page var="r2rev" name="${title.text}" action="view">
+	<scav:param name="rev" value="${r2.id}" />
+</scav:page>
 
 <p>
 Comparing: revision as of ${r1.timestampString}
