@@ -2,6 +2,7 @@
 	History action.  Shows edit history for a page.
 --%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="scav" uri="scavenger" %>
 <%@ include file="header.jsp" %>
 
 <h1 class="title"><c:out value="${title.text}" /> (edit history)</h1>
@@ -9,16 +10,14 @@
 <ul>
 <c:forEach items="${revisions}" var="rev">
 <li>
-	<c:url value="/diff" var="diffurl">
-		<c:param name="r1" value="${rev.id}" />
-		<c:param name="r2" value="prev" />
-		<c:param name="title" value="${title.text}" />
-	</c:url>
+	<scav:page var="diffurl" action="diff" name="${title.text}">
+		<scav:param name="r1" value="${rev.id}" />
+		<scav:param name="r2" value="prev" />
+	</scav:page>
 
-	<c:url value="/view" var="viewurl">
-		<c:param name="rev" value="${rev.id}" />
-		<c:param name="title" value="${title.text}" />
-	</c:url>
+	<scav:page action="view" name="${title.text}" var="viewurl">
+		<scav:param name="rev" value="${rev.id}" />
+	</scav:page>
 		
 	(<a href="${diffurl}">diff</a>)
 	

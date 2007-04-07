@@ -12,7 +12,7 @@
 	<tag>
 		<name>page</name>
 		<tagclass>org.mediawiki.scavenger.tag.Page</tagclass>
-		<bodycontent>empty</bodycontent>
+		<bodycontent>JSP</bodycontent>
 		<info>Return a page URL</info>
 		<attribute>
 			<name>name</name>
@@ -28,6 +28,23 @@
 			<name>var</name>
 			<required>false</required>
 			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+	</tag>
+
+	<tag>
+		<name>param</name>
+		<tagclass>org.mediawiki.scavenger.tag.Param</tagclass>
+		<bodycontent>empty</bodycontent>
+		<info>Add a URL parameter to the containing page tag.</info>
+		<attribute>
+			<name>name</name>
+			<required>true</required>
+			<rtexprvalue>false</rtexprvalue>
+		</attribute>
+		<attribute>
+			<name>value</name>
+			<required>true</required>
+			<rtexprvalue>true</rtexprvalue>
 		</attribute>
 	</tag>
 	
