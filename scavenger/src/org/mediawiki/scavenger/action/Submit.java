@@ -22,7 +22,8 @@ public class Submit extends PageAction {
 		if (idx != null)
 			idx.indexRevision(r);
 
-		String url = req.getContextPath() + "/view/" + URLEncoder.encode(title.getText(), "UTF-8");
+		String url = req.getContextPath() + "/view/" + 
+			URLEncoder.encode(title.getURLText(), "UTF-8");
 		resp.sendRedirect(resp.encodeRedirectURL(url));
 		return null;
 	}
