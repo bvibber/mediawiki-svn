@@ -14,9 +14,12 @@
 	
 	<body>
 	
-	<%-- Only display the menu if this is a title page --%>
-	<c:if test="${!empty title}">
 	<div class="menu">
+	<%-- Only display the menu actions if this is a title page --%>
+	<c:url var="surl" value="/search" />
+	<form id="search" method="get" action="${surl}">
+
+	<c:if test="${!empty title}">
 		<scav:page var="viewurl" action="view" name="${title.text}" />
 		<scav:page var="editurl" action="edit" name="${title.text}" />
 		<scav:page var="histurl" action="history" name="${title.text}" />
@@ -32,8 +35,13 @@
 		<span>
 			<a href="${histurl}">History</a>
 		</span>
-	</div>
 	</c:if>
+
+	<input type="text" name="q" width="15" />
+	<input type="submit" value="Go" />
+	
+	</div>
+	</form>
 	
 	<div class="logo">
 		Scavenger

@@ -82,5 +82,15 @@
 		<servlet-name>submit</servlet-name>
 		<url-pattern>/submit/*</url-pattern>
 	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>search</servlet-name>
+		<servlet-class>org.mediawiki.scavenger.action.Search</servlet-class>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>search</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
 	
 </web-app>

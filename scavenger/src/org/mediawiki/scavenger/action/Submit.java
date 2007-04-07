@@ -16,7 +16,7 @@ public class Submit extends PageAction {
 		p.edit(user, newtext, comment);
 		wiki.commit();
 		
-		String url = "view/" + URLEncoder.encode(title.getText(), "UTF-8");
+		String url = req.getContextPath() + "/view/" + URLEncoder.encode(title.getText(), "UTF-8");
 		resp.sendRedirect(resp.encodeRedirectURL(url));
 		return null;
 	}

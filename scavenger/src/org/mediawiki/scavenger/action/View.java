@@ -1,5 +1,7 @@
 package org.mediawiki.scavenger.action;
 
+import java.net.URLEncoder;
+
 import org.mediawiki.scavenger.Page;
 import org.mediawiki.scavenger.PageFormatter;
 import org.mediawiki.scavenger.Revision;
@@ -21,9 +23,12 @@ public class View extends PageAction {
 			 * If the user requested a page with a non-canonical name
 			 * (wrong case), redirect them.
 			 */
-			if (!page.getTitle().getURLText().equals(title.getURLText())) {
-				req.setAttribute("pagename", page.getTitle().getText());
-				return "viewpage";
+			String pageURL = page.getTitle().getURLText();
+			if (!pageURL.equals(title.getURLText())) {
+				String url = req.getContextPath() + "/view/" + 
+								URLEncoder.encode(pageURL, "UTF-8");
+				resp.sendRedirect(resp.encodeRedirectURL(url));
+				return null;
 			}
 
 			String rev = req.getParameter("rev");

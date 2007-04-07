@@ -20,7 +20,6 @@ public abstract class PageAction extends HttpServlet {
 	protected ServletContext ctx;
 	protected Wiki wiki;
 	protected Title title;
-	protected String errormsg;
 	protected User user;
 
 	public void doPost(HttpServletRequest rq, HttpServletResponse rp) 
@@ -56,7 +55,8 @@ public abstract class PageAction extends HttpServlet {
 		try {
 			wiki = Wiki.getWiki(ctx, req);
 		} catch (Exception e) {
-			errormsg = "Error retrieving database connection: " + e.toString();
+			req.setAttribute("errormsg", 
+					"Error retrieving database connection: " + e.toString());
 			return "error";
 		}
 		title = null;
@@ -74,7 +74,8 @@ public abstract class PageAction extends HttpServlet {
 			if (name != null) {
 				title = wiki.getTitle(name);
 				if (!title.isValidName()) {
-					errormsg = "The page name you have requested is illegal.";
+					req.setAttribute("errormsg",
+							"The page name you have requested is illegal.");
 					return "error";
 				}
 			}
@@ -86,20 +87,8 @@ public abstract class PageAction extends HttpServlet {
 			try {
 				wiki.rollback();
 			} catch (SQLException e2) {}
-			errormsg = "Page execution failed: " + e.toString();
+			req.setAttribute("errormsg", "Page execution failed: " + e.toString());
 			return "error";
 		}
-	}
-	
-	public String getErrormsg() {
-		return errormsg;
-	}
-	
-	public Title getTitle() {
-		return title;
-	}
-	
-	public User getUser() {
-		return user;
 	}
 }
