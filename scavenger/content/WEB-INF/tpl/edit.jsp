@@ -9,7 +9,7 @@
 <c:url var="submit" value="/submit" />
 
 <form method="post" action="${submit}">
-	<input type="hidden" name="title" value="${title.text}" />
+	<input type="hidden" name="title" value="<c:out value="${title.text}" />" />
 	<textarea name="text" style="width: 100%" rows="30"><c:out value="${pageText}" /></textarea>
 	<br />
 	
