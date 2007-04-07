@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,8 +20,8 @@ import org.mediawiki.scavenger.Wiki;
 public class OraWiki extends Wiki {
 	Connection dbc;
 	
-	public OraWiki(Connection d, HttpServletRequest req) throws SQLException {
-		super(req);
+	public OraWiki(Connection d, HttpServletRequest req, Properties p) throws SQLException {
+		super(req, p);
 		dbc = d;
 	}
 	

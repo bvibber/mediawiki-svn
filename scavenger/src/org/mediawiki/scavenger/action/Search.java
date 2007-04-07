@@ -1,9 +1,12 @@
 package org.mediawiki.scavenger.action;
 
 import java.net.URLEncoder;
+import java.util.List;
 
 import org.mediawiki.scavenger.Page;
 import org.mediawiki.scavenger.Title;
+import org.mediawiki.scavenger.search.SearchIndex;
+import org.mediawiki.scavenger.search.SearchResult;
 
 public class Search extends PageAction {
 	protected String pageExecute() throws Exception {
@@ -19,7 +22,13 @@ public class Search extends PageAction {
 		}
 		
 		req.setAttribute("title", t);
-		req.setAttribute("page", p);
+		SearchIndex idx = wiki.getSearchIndex();
+
+		if (idx == null)
+			return "search";
+	
+		List<SearchResult> hits = idx.search(name, 20);
+		req.setAttribute("hits", hits);
 		return "search";
 	}
 }

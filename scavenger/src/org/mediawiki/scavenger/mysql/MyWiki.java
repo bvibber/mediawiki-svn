@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,8 +20,8 @@ import org.mediawiki.scavenger.Wiki;
 public class MyWiki extends Wiki {
 	Connection dbc;
 	
-	public MyWiki(Connection d, HttpServletRequest req) {
-		super(req);
+	public MyWiki(Connection d, HttpServletRequest req, Properties p) {
+		super(req, p);
 		dbc = d;
 	}
 	

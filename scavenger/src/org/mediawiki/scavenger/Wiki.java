@@ -14,12 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import org.mediawiki.scavenger.mysql.MyWiki;
 import org.mediawiki.scavenger.oracle.OraWiki;
 import org.mediawiki.scavenger.pg.PgWiki;
+import org.mediawiki.scavenger.search.SearchIndex;
 
 public abstract class Wiki {
 	HttpServletRequest req;
+	Properties props;
 	
-	protected Wiki(HttpServletRequest rq) {
+	protected Wiki(HttpServletRequest rq, Properties p) {
 		req = rq;
+		props = p;
 	}
 	
 	public static Wiki getWiki(ServletContext ctx, HttpServletRequest req) throws Exception {
@@ -34,18 +37,18 @@ public abstract class Wiki {
 			dbc = DriverManager.getConnection(p.getProperty("scavenger.dburl"),
 					p.getProperty("scavenger.dbuser"), p.getProperty("scavenger.dbpassword"));
 			dbc.setAutoCommit(false);
-			return new MyWiki(dbc, req);
+			return new MyWiki(dbc, req, p);
 		} else if (dbtype.equals("postgres")) {
 			Class.forName("org.postgresql.Driver");
 			dbc = DriverManager.getConnection(p.getProperty("scavenger.dburl"),
 					p.getProperty("scavenger.dbuser"), p.getProperty("scavenger.dbpassword"));
 			dbc.setAutoCommit(false);
-			return new PgWiki(dbc, p.getProperty("scavenger.dbschema"), req);		
+			return new PgWiki(dbc, p.getProperty("scavenger.dbschema"), req, p);		
 		} else if (dbtype.equals("oracle")) {
 			Class.forName("oracle.jdbc.OracleDriver");
 			dbc = DriverManager.getConnection(p.getProperty("scavenger.dburl"),
 					p.getProperty("scavenger.dbuser"), p.getProperty("scavenger.dbpassword"));
-			return new OraWiki(dbc, req);
+			return new OraWiki(dbc, req, p);
 		} else
 			return null;
 	}
@@ -63,6 +66,13 @@ public abstract class Wiki {
 		}
 	}
 	
+	public SearchIndex getSearchIndex() {
+		String path = props.getProperty("scavenger.searchindex");
+		if (path == null)
+			return null;
+		
+		return new SearchIndex(this, path);
+	}
 	public abstract Title getTitle(String name);
 	public abstract Page getPage(Title t) throws SQLException;
 	public abstract User getUser(String name, boolean anon) throws SQLException;
