@@ -16,7 +16,7 @@ public class Search extends PageAction {
 		
 		if (p.exists()) {
 			String url = req.getContextPath() + "/view/" + 
-				URLEncoder.encode(t.getText(), "UTF-8");
+				URLEncoder.encode(t.getURLText(), "UTF-8");
 			resp.sendRedirect(resp.encodeRedirectURL(url));
 			return null;
 		}

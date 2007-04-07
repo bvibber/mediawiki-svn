@@ -37,7 +37,8 @@
 		</span>
 	</c:if>
 
-	<input type="text" name="q" width="15" />
+	<input type="text" name="q" width="15" 
+			value="<c:out value='${param["q"]}' />" />
 	<input type="submit" value="Go" />
 	
 	</div>

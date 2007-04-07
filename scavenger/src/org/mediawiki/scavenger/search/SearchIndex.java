@@ -34,7 +34,7 @@ public class SearchIndex {
 	
 	public void indexRevision(Revision r) throws SQLException, IOException {
 		Title t = r.getPage().getTitle();
-		IndexWriter writer = new IndexWriter(idxpath, new StandardAnalyzer(), true);
+		IndexWriter writer = new IndexWriter(idxpath, new StandardAnalyzer());
 		Document doc = new Document();
 		doc.add(new Field("key", t.getText(), Field.Store.YES, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("title", t.getText(), Field.Store.YES, Field.Index.TOKENIZED));
