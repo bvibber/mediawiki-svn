@@ -47,7 +47,6 @@ function getSuggestions() {
 	$offset = $_GET['offset'];
 	$attributesLevel = $_GET['attributesLevel'];
 	
-	wfDebug(" >>> ObjectId: $objectId  AttributesLevel: $attributesLevel\n ");
 	$dbr =& wfGetDB( DB_SLAVE );
 	$rowText = 'spelling';
 	
