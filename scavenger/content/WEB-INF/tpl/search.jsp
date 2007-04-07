@@ -13,12 +13,17 @@
 </c:when>
 
 <c:otherwise>
-	<ul>
+	<ul class="searchresults">
 	<c:forEach items="${hits}" var="hit">
 		<scav:page var="url" action="view" name="${hit.title.text}" />
 		
 		<li>
-		<a href="${url}"><c:out value="${hit.title.text}"/></a>
+		<span class="searchtitle">
+			<a href="${url}"><c:out value="${hit.title.text}"/></a>
+		</span>
+		<div class="searchbody">
+			${hit.context}
+		</div>
 		</li>
 	</c:forEach>
 	</ul>

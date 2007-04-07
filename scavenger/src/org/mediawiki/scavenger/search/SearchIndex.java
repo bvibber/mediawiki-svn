@@ -65,7 +65,7 @@ public class SearchIndex {
 		
 		for (int i = 0, end = Math.min(total, limit); i < end; ++i) {
 			Document d = hits.doc(i);
-			results.add(new SearchResult(d));
+			results.add(new SearchResult(bodyquery, d));
 		}
 		
 		return results;
