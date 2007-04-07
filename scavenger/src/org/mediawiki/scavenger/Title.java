@@ -11,7 +11,7 @@ public class Title {
 	 * @param text Page title
 	 */
 	public Title(String text) {
-		title = text;
+		title = text.replaceAll("_", " ");
 		key = title.toLowerCase().replaceAll(" ", "_");
 	}
 	
@@ -21,6 +21,13 @@ public class Title {
 	 */
 	public String getText() {
 		return title;
+	}
+	
+	/**
+	 * @return The URL-text of this article, for use in URLs
+	 */
+	public String getURLText() {
+		return title.replaceAll(" ", "_");
 	}
 	
 	/**

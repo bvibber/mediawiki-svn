@@ -21,7 +21,7 @@ public class View extends PageAction {
 			 * If the user requested a page with a non-canonical name
 			 * (wrong case), redirect them.
 			 */
-			if (!page.getTitle().getText().equals(title.getText())) {
+			if (!page.getTitle().getURLText().equals(title.getURLText())) {
 				req.setAttribute("pagename", page.getTitle().getText());
 				return "viewpage";
 			}

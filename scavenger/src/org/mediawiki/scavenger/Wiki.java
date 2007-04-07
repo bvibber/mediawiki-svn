@@ -54,9 +54,9 @@ public abstract class Wiki {
 		Page p = getPage(t);
 		String cssclass = (p.exists() ? "wikilink" : "newlink");
 		try {
-			return String.format("<a class=\"%1$s\" href=\"%2$s/view.action?title=%4$s\">%3$s</a>",
-					cssclass, req.getContextPath(), article, 
-					URLEncoder.encode(p.getTitle().getText(), "UTF-8"));
+			return String.format("<a class=\"%1$s\" href=\"%2$s/view/%4$s\">%3$s</a>",
+					cssclass, req.getContextPath(), article,
+					URLEncoder.encode(p.getTitle().getText().replaceAll(" ", "_"), "UTF-8"));
 		} catch (UnsupportedEncodingException e) {
 			return ""; // cannot happen
 		}
