@@ -15,11 +15,14 @@ public class PageFormatter {
 	 * Return formatted HTML of this revision;
 	 */
 	public String getFormattedText(Revision r) throws SQLException {
-		String t = r.getText();
+		return getFormattedText(r.getText());
+	}
+
+	public String getFormattedText(String t) throws SQLException {
 		MarkdownProcessor proc = new MarkdownProcessor();
 		return replaceLinks(proc.markdown(t));
 	}
-	
+
 	/**
 	 * Replace wiki links with HTML.
 	 */

@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.jsp.PageContext;
 
 import org.mediawiki.scavenger.Title;
 import org.mediawiki.scavenger.User;
@@ -27,8 +28,18 @@ public abstract class PageAction extends HttpServlet {
 		req = rq;
 		resp = rp;
 		ctx = getServletContext();
-		
-		doExecute();
+
+		try {
+			doExecute();
+		} catch (Exception e) {
+			throw new ServletException(e);
+		} finally {
+			try {
+				cleanup();
+			} catch (Exception e) {
+				throw new ServletException(e);
+			}
+		}
 	}
 
 	public void doGet(HttpServletRequest rq, HttpServletResponse rp) 
@@ -37,64 +48,85 @@ public abstract class PageAction extends HttpServlet {
 		resp = rp;
 		ctx = getServletContext();
 		
-		doExecute();
+		try {
+			doExecute();
+		} catch (Exception e) {
+			throw new ServletException(e);
+		} finally {
+			try {
+				cleanup();
+			} catch (Exception e) {
+				throw new ServletException(e);
+			}
+		}
 	}	
 	
 	abstract protected String pageExecute() throws Exception;
 	
-	private void doExecute() throws ServletException, IOException {
-		String goTo = execute();
-		if (goTo == null)
-			return;
+	public void showError(String e) {
+		req.setAttribute("errormsg", e);
+		RequestDispatcher disp = ctx.getRequestDispatcher("/WEB-INF/tpl/error.jsp");
 		
-		RequestDispatcher disp = ctx.getRequestDispatcher("/WEB-INF/tpl/" + goTo + ".jsp");
-		disp.forward(req, resp);
+		try {
+			disp.include(req, resp);
+		} catch (Exception ex) {}
+	}
+
+	void cleanup() {
+		try {
+			wiki.rollback();
+		} catch (Exception e) {}
+		try {
+			wiki.close();
+		} catch (Exception e) {}
+	}
+
+	Title getRequestTitle() {
+		Title t = null;
+		String name = req.getParameter("title");
+		if (name == null) {
+			name = req.getPathInfo();
+			if (name != null)
+				name = name.substring(1);
+		}
+		
+		if (name != null)
+			t = wiki.getTitle(name);
+		
+		return t;
 	}
 	
-	public final String execute() {
+	public void doExecute() {
 		try {
 			wiki = Wiki.getWiki(ctx, req);
 		} catch (Exception e) {
-			req.setAttribute("errormsg", 
-					"Error retrieving database connection: " + e.toString());
-			return "error";
+			showError("Error retrieving database connection: " + e.toString());
+			return;
 		}
+		
 		title = null;
-			
+		req.setAttribute("wiki", wiki);
+		
 		try {
 			user = wiki.getUser(req.getRemoteAddr(), true);
+			title = getRequestTitle();
 
-			String name = req.getParameter("title");
-			if (name == null) {
-				name = req.getPathInfo();
-				if (name != null)
-					name = name.substring(1);
-			}
-			
-			if (name != null) {
-				title = wiki.getTitle(name);
-				if (!title.isValidName()) {
-					req.setAttribute("errormsg",
-							"The page name you have requested is illegal.");
-					wiki.close();
-					return "error";
-				}
+			if (title != null && !title.isValidName()) {
+				showError("The page name you have requested is illegal.");
+				return;
 			}
 			
 			req.setAttribute("title", title);
 			req.setAttribute("user", user);
 			String ret = pageExecute();
-			wiki.close();
-			return ret;
+			
+			if (ret != null) {
+				RequestDispatcher disp = ctx.getRequestDispatcher("/WEB-INF/tpl/" + ret + ".jsp");
+				disp.include(req, resp);
+			}
+			return;
 		} catch (Exception e) {
-			try {
-				wiki.rollback();
-			} catch (SQLException e2) {}
-			try {
-				wiki.close();
-			} catch (SQLException e3) {}
-			req.setAttribute("errormsg", "Page execution failed: " + e.toString());
-			return "error";
+			showError("Page execution failed: " + e.toString());
 		}
 	}
 }

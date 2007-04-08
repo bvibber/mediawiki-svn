@@ -22,8 +22,8 @@
 
 <div class="pagebody">
 	<c:choose>
-		<c:when test="${!empty formattedText}">
-			<c:out value="${formattedText}" escapeXml="false" />
+		<c:when test="${!empty viewing}">
+			<scav:parse text="${viewing.text}" />
 		</c:when>
 		
 		<c:otherwise>

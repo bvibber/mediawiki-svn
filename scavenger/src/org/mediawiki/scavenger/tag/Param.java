@@ -15,6 +15,11 @@ public class Param extends TagSupport {
 		this.value = v;
 	}
 
+	public void init() {
+		this.name = null;
+		this.value = null;
+	}
+	
 	public int doStartTag() throws JspException {
 		((Page) getParent()).addParameter(name, value);
 		return SKIP_BODY;

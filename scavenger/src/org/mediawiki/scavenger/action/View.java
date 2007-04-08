@@ -36,13 +36,9 @@ public class View extends PageAction {
 				viewing = wiki.getRevision(Integer.parseInt(rev));
 			else
 				viewing = page.getLatestRevision();
-
-			PageFormatter formatter = new PageFormatter(wiki);
-			formattedText = formatter.getFormattedText(viewing);
 		}
 		
 		req.setAttribute("viewing", viewing);
-		req.setAttribute("formattedText", formattedText);
 		return "view";
 	}
 }

@@ -75,7 +75,7 @@
 <h1 class="title">Current revision</h1>
 
 <div class="pagebody">
-	${r1text}
+	<scav:parse text="${r2.text}" />
 </div>
 
 <%@ include file="footer.jsp" %>
