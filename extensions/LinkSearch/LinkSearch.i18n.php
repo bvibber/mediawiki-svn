@@ -45,7 +45,7 @@ $wgLinkSearchMessages['hu'] = array(
 	'linksearch-error' => 'Helyettesítő karakterek csak a cím elején szerepelhetnek.',
 );
 $wgLinkSearchMessages['id'] = array(
-	'linksearch'       => 'Cari pranala luar',
+	'linksearch'       => 'Pencarian pranala luar',
 	'linksearch-text'  => 'Bentuk pencarian \'\'wildcards\'\' seperti "*.wikipedia.org" dapat digunakan.',
 	'linksearch-line'  => '$1 terpaut dari $2',
 	'linksearch-error' => '\'\'Wildcards\'\' hanya dapat digunakan di bagian awal dari nama host.'

@@ -369,7 +369,7 @@ $wgMakesysopMessages['hu'] = array(
 	'group-steward-member' => 'Helytartó',
 );
 $wgMakesysopMessages['id'] = array(
-	'makesysoptitle'       => 'Buat seorang pengguna menjadi pengurus',
+	'makesysoptitle'       => 'Pemberian status pengurus',
 	'makesysoptext'        => 'Formulir ini digunakan oleh para birokrat untuk menjadikan pengguna biasa menjadi seorang pengurus. Ketikkan nama pengguna yang dimaksud dalam kotak dan tekan tombol untuk menjadikan pengguna tersebut seorang pengurus.',
 	'makesysopname'        => 'Nama pengguna:',
 	'makesysopsubmit'      => 'Jadikan pengurus',
@@ -380,7 +380,7 @@ $wgMakesysopMessages['id'] = array(
 	'set_user_rights'      => 'Atur hak-hak pengguna',
 	'user_rights_set'      => "<strong>Hak-hak pengguna \"$1\" berhasil diperbarui</strong>",
 	'set_rights_fail'      => "<strong>Hak-hak pengguna \"$1\" gagal diperbarui.</strong> (Apakah Anda mengetikkan namanya dengan benar?)",
-	'makesysop'            => 'Buat seorang pengguna menjadi pengurus',
+	'makesysop'            => 'Pemberian status pengurus',
 	'already_sysop'        => 'Pengguna ini telah berstatus pengurus',
 	'already_bureaucrat'   => 'Pengguna ini telah berstatus birokrat',
 	'makesysop-nodatabase' => 'Nama pengguna interwiki salah:: $1',
