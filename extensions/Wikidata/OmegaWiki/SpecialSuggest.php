@@ -59,7 +59,6 @@ function getSuggestions() {
 			break;
 		case 'option-attribute':
 			# This might be done tidier, if I knew more PHP.
-
 			# try user interface language
 			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', $wgUser->getOption('language'));
 			$try=$dbr->query($sql);
@@ -114,7 +113,6 @@ function getSuggestions() {
 			if ($dbr->numrows($try)>0) {
 				$queryResult=$try;
 			}
-$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', $wgUser->getOption('<ANY>'));
 			break;
 		case 'language':
 			require_once('languages.php');
