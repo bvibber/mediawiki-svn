@@ -49,7 +49,7 @@ function getSuggestions() {
 	
 	$dbr =& wfGetDB( DB_SLAVE );
 	$rowText = 'spelling';
-	
+	wfDebug("]]]]] query: $query\n");
 	switch ($query) {
 		case 'relation-type':
 			$sql = getSQLForCollectionOfType('RELT');
@@ -135,12 +135,19 @@ function getSuggestions() {
 	    	$sql = 
 				"SELECT collection_id, spelling ".
 	    		" FROM uw_expression_ns, uw_collection_ns, uw_syntrans " .
-	    		" WHERE uw_expression_ns.expression_id=syntrans.expression_id" .
+	    		" WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id" .
 	    		" AND uw_syntrans.defined_meaning_id=uw_collection_ns.collection_mid " .
 	    		" AND uw_syntrans.identical_meaning=1" .
 	    		" AND " . getLatestTransactionRestriction('uw_syntrans') .
 	    		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
 	    		" AND " . getLatestTransactionRestriction('uw_collection_ns');
+
+		#$try=$dbr->query($sql);
+		wfDebug("]]]]]trying...\n");
+		#if ($dbr->numrows($try)>0) {
+		#	wfDebug("]]]]obtained...\n");
+		#	$queryResult=$try;
+		#}
 	    	break;
 	    case 'transaction':
 	    	$sql = 
@@ -231,7 +238,7 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 		$defaultClassRestriction = "";
 
 	
-	wfDebug("attributesLevel=$attributesLevel attributesType=$attributesType");
+	wfDebug("[][][][][] attributesLevel=$attributesLevel attributesType=$attributesType");
 	$dbr =& wfGetDB(DB_SLAVE);
 	$sql = 
 		'SELECT attribute_mid, spelling' .
