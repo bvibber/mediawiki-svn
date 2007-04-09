@@ -47,8 +47,12 @@ class TalkHereArticle {
 		loadTalkHereI18n();
 
 		$skin = $wgUser->getSkin();
+		$hastalk = $this->_talkTitle->exists();
+		$cantalk = $this->_talkTitle->userCan('edit');
 
 		$this->_article->view();
+
+		if (!$hastalk && !$cantalk) return;
 
 		if (!$this->_talk) {
 			$this->_talk = MediaWiki::articleFromTitle( $this->_talkTitle );
@@ -56,40 +60,43 @@ class TalkHereArticle {
 
 		$wgOut->addHTML('<div class="talkhere" id="talkhere">');
 
-		//Bah, would have to call a skin-snippet here :(
-		$wgOut->addHTML('<div class="talkhere-head">');
-
-		$wgOut->addHTML('<h1>');
-		if ($this->_talkTitle->userCan('edit')) {
-			$wgOut->addHTML('<span class="editsection">');
-			$wgOut->addHTML( '[' . $skin->makeKnownLinkObj( $this->_talkTitle, wfMsg('talkhere-talkpage' ) ) . ']' );
-			$wgOut->addHTML('</span>');
-		}
-		$wgOut->addWikiText( wfMsg('talkhere-title', $this->_talkTitle->getPrefixedText() ), false );
-		$wgOut->addHTML('</h1>');
-
-		$headtext = wfMsg('talkhere-headtext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() );
-		if ( $headtext ) {
-			$wgOut->addWikiText( $headtext );
-			$wgOut->addHTML('<hr/>');
-		}
-
-		$wgOut->addHTML('</div>'); //talkhere-head
-
-		$wgOut->addHTML('<div class="talkhere-comments">');
-		if ( !$this->_talkTitle->exists() ) {
-			$wgOut->addWikiText(  wfMsg('talkhere-notalk') );
-		}
-		else {
-			//$wgOut->addHTML( '[' . $skin->makeKnownLinkObj( $this->_talkTitle, wfMsg('edit' ), 'action=edit&section=0' ) . ']' );
+		if ($hastalk) {
+			//Bah, would have to call a skin-snippet here :(
+			$wgOut->addHTML('<div class="talkhere-head">');
+	
+			$wgOut->addHTML('<h1>');
+			if ($this->_talkTitle->userCan('edit')) {
+				$wgOut->addHTML('<span class="editsection">');
+				$wgOut->addHTML( '[' . $skin->makeKnownLinkObj( $this->_talkTitle, wfMsg('talkhere-talkpage' ) ) . ']' );
+				$wgOut->addHTML('</span>');
+			}
+			$wgOut->addWikiText( wfMsg('talkhere-title', $this->_talkTitle->getPrefixedText() ), false );
+			$wgOut->addHTML('</h1>');
+	
+			$headtext = wfMsg('talkhere-headtext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() );
+			if ( $headtext ) {
+				$wgOut->addWikiText( $headtext );
+				$wgOut->addHTML('<hr/>');
+			}
+	
+			$wgOut->addHTML('</div>'); //talkhere-head
+	
+			$wgOut->addHTML('<div class="talkhere-comments">');
 			$this->_talk->view();
+			$wgOut->addHTML('</div>'); // talkhere-comments
 		}
-		$wgOut->addHTML('</div>'); // talkhere-comments
 
 		$wgOut->addHTML('<div class="talkhere-foot">');
 
-		if ( $this->_talkTitle->userCan('edit') ) {
-			$wgOut->addHTML('<hr/>');
+		if ( $cantalk ) {
+			if ($hastalk) {
+				$wgOut->addHTML('<hr/>');
+			}
+			else {
+				$wgOut->addHTML('<div class="talkhere-comments talkhere-notalk">');
+				$wgOut->addWikiText(  wfMsg('talkhere-notalk') );
+				$wgOut->addHTML('</div>'); // talkhere-comments
+			}
 
 			if ( $wgUseAjax ) $wgOut->addScript( 
 			"	<script type=\"{$wgJsMimeType}\"> 
@@ -114,10 +121,12 @@ class TalkHereArticle {
 			//$this->showCommentForm('new'); 	
 		}
 
-		$foottext = wfMsg('talkhere-foottext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() );
-		if ( $foottext ) {
-			$wgOut->addHTML('<hr/>');
-			$wgOut->addWikiText( $foottext );
+		if ($hastalk) {
+			$foottext = wfMsg('talkhere-foottext', $this->mTitle->getPrefixedText(), $this->_talkTitle->getPrefixedText() );
+			if ( $foottext ) {
+				$wgOut->addHTML('<hr/>');
+				$wgOut->addWikiText( $foottext );
+			}
 		}
 
 		$wgOut->addHTML('</div>'); // talkhere-foot
