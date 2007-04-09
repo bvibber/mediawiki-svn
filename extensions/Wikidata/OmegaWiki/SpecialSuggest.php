@@ -89,7 +89,32 @@ function getSuggestions() {
 			break;
 		case 'translated-text-attribute':
 		case 'text-attribute':	
+			# This is the same as case option-attribute, but s/OPTN/TEXT/.
+			# If anyone asks me to do this thrice, I shall make a function.
+			wfDebug("]]]BINGELY");
+			# try user interface language
 			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', $wgUser->getOption('language'));
+			$try=$dbr->query($sql);
+			if ($dbr->numrows($try)==0) {
+				# fall back to en
+				$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', 'en');
+				$try=$dbr->query($sql);
+				if ($dbr->numrows($try)==0) {
+					# fall back to something semi-random
+					$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', '<ANY>');
+					$try=$dbr->query($sql);
+					if ($dbr->numrows($try)==0) {
+						# Give up. (Not sure that's a good thing, so emitting message to log, if logging is on.)
+						wfDebug("getSuggestions didn't find any matches for ". $wgUser->getOption('language'));
+						return;
+					}
+				}
+			}
+
+			if ($dbr->numrows($try)>0) {
+				$queryResult=$try;
+			}
+$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', $wgUser->getOption('<ANY>'));
 			break;
 		case 'language':
 			require_once('languages.php');
@@ -207,6 +232,8 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 	else
 		$defaultClassRestriction = "";
 
+	
+	wfDebug("attributesLevel=$attributesLevel attributesType=$attributesType");
 	$dbr =& wfGetDB(DB_SLAVE);
 	$sql = 
 		'SELECT attribute_mid, spelling' .
