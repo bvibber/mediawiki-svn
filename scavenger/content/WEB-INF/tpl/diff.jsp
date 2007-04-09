@@ -39,6 +39,12 @@
 	</tr>
 			
 	<c:forEach items="${diffchunks}" var="chunk">
+		<tr class="diffloc">
+			<td colspan="2">
+				Line <c:out value="${chunk.start}" />
+			</td>
+		</tr>
+		
 		<tr>		
 			<td class="left">
 				<c:forEach items="${chunk.left.lines}" var="line">

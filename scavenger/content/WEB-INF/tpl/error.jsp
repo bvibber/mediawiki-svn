@@ -7,7 +7,8 @@
 <h1 class="title">Error</h1>
 
 <div class="pagebody">
-	<p class="error">Error: <c:out value="${errormsg}" /></p>
+	<p class="error">Error:</p>
+	<div><c:out value="${errormsg}" /></div>
 </div>
 
 <%@ include file="footer.jsp" %>

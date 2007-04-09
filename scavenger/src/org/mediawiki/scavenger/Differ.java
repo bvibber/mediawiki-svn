@@ -41,16 +41,14 @@ public class Differ {
 	}
 	
 	public class DiffBlock {
-		int start, end;
-		String[] text;
 		Chunk chunk;
 		List<DiffLine> lines;
 		
 		public DiffBlock(Chunk c, String[] text) {
 			lines = new ArrayList<DiffLine>();
 			chunk = c;
-			start = c.first();
-			end = c.last();
+			int start = c.first();
+			int end = c.last();
 			
 			/*
 			 * Insert 5 lines of context on either side.
@@ -73,10 +71,12 @@ public class Differ {
 	
 	public class DiffChunk {
 		Chunk left, right;
+		int start;
 		
 		public DiffChunk(Chunk l, Chunk r) {
 			left = l;
 			right = r;
+			start = Math.max(Math.min(l.first(), r.first()) - 5, 0) + 1;
 		}
 		
 		public DiffBlock getLeft() {
@@ -84,6 +84,9 @@ public class Differ {
 		}
 		public DiffBlock getRight() {
 			return new DiffBlock(right, lines_b);
+		}
+		public int getStart() {
+			return start;
 		}
 	}
 
