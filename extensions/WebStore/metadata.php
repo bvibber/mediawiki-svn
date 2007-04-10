@@ -4,10 +4,7 @@
  * Retrieve metadata for a file
  */
 
-require( dirname( __FILE__ ) . '/WebStoreCommon.php' );
-$IP = dirname( realpath( __FILE__ ) ) . '/../..';
-chdir( $IP );
-require( './includes/WebStart.php' );
+require( dirname( __FILE__ ) . '/WebStoreStart.php' );
 
 class WebStoreImage extends Image {
 	function __construct( $path ) {
@@ -24,10 +21,6 @@ class WebStoreImage extends Image {
 class WebStoreMetadata extends WebStoreCommon {
 	function execute() {
 		global $wgRequest;
-		if ( !$this->checkAccess() ) {
-			$this->error( 403, 'webstore_access' );
-			return false;
-		}
 
 		if ( !$wgRequest->wasPosted() ) {
 			echo $this->dtd();
@@ -53,7 +46,7 @@ class WebStoreMetadata extends WebStoreCommon {
 		$repository = $wgRequest->getVal( 'repository' );
 		$root = $this->getRepositoryRoot( $repository );
 		if ( strval( $root ) == '' ) {
-				$this->error( 400, 'webstore_invalid_repository' );
+				$this->error( 400, 'webstore_invalid_repository', $repository );
 				return false;
 		}
 
@@ -65,13 +58,18 @@ class WebStoreMetadata extends WebStoreCommon {
 
 		$fullPath = $root . '/' . $rel;
 
-		$image = new WebStoreImage( $root . '/' . $rel );
+		if ( !file_exists( $fullPath ) ) {
+			$this->error( 400, 'webstore_metadata_not_found', $fullPath );
+			return false;
+		}
+
+		$image = new WebStoreImage( $fullPath );
 		$image->loadFromFile();
 
 		$fields = array( 'width', 'height', 'bits', 'type', 'mime', 'metadata', 'size' );
 
 		header( 'Content-Type: text/xml' );
-		echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<response>\n";
+		echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<response><status>success</status><metadata>\n";
 		foreach ( $fields as $field ) {
 			$value = $image->$field;
 			if ( is_bool( $image->$field ) ) {
@@ -79,11 +77,11 @@ class WebStoreMetadata extends WebStoreCommon {
 			}
 			echo "<$field>" . htmlspecialchars( $value ) . "</$field>\n";
 		}
-		echo "</response>\n";
+		echo "</metadata></response>\n";
 	}
 }
 
 $obj = new WebStoreMetadata;
-$obj->execute();
+$obj->executeCommon();
 
 ?>

@@ -1,10 +1,6 @@
 <?php
 
-require( dirname( __FILE__ ) . '/WebStoreCommon.php' );
-$IP = dirname( realpath( __FILE__ ) ) . '/../..';
-chdir( $IP );
-define( 'MW_NO_OUTPUT_COMPRESSION', 1 );
-require( './includes/WebStart.php' );
+require( dirname( __FILE__ ) . '/WebStoreStart.php' );
 
 class InplaceScaler extends WebStoreCommon {
 	function execute() {

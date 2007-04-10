@@ -1,9 +1,6 @@
 <?php
 
-require( dirname( __FILE__ ) . '/WebStoreCommon.php' );
-$IP = dirname( realpath( __FILE__ ) ) . '/../..';
-chdir( $IP );
-require( './includes/WebStart.php' );
+require( dirname( __FILE__ ) . '/WebStoreStart.php' );
 
 class WebStoreDelete extends WebStoreCommon {
 	function execute() {
@@ -50,13 +47,11 @@ class WebStoreDelete extends WebStoreCommon {
 			$this->error( 500, $error );
 			return false;
 		}
-		echo $this->dtd();
-?>
-<html>
-<head><title>MediaWiki delete OK</title></head>
-<body>File deleted successfully</body>
-</html>
-<?php
+
+		echo <<<EOT
+<?xml version="1.0" encoding="utf-8"?>
+<response><status>success</status></response>
+EOT;
 		return true;
 	}
 }

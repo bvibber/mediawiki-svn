@@ -1,60 +1,5 @@
 <?php
 
-$wgWebStoreSettings = array(
-	/**
-	 * Set this in LocalSettings.php to an array of IP ranges allowed to access 
-	 * the store. Empty by default for maximum security.
-	 */
-	'accessRanges' => array( '127.0.0.1' ),
-
-	/**
-	 * Access ranges for inplace-scaler.php
-	 */
-	'scalerAccessRanges' => array( '127.0.0.1' ),
-
-	/**
-	 * Main public directory. If false, uses $wgUploadDirectory
-	 */
-	'publicDir' => false,
-
-	/**
-	 * Private temporary directory. If false, uses $wgTmpDirectory
-	 */
-	'tmpDir' => false,
-
-	/**
-	 * Private directory for deleted files. If false, uses $wgFileStore['deleted']['directory']
-	 */
-	'deletedDir' => false,
-
-	/**
-	 * Expiration time for temporary files in seconds. Must be at least 7200.
-	 */
-	'tempExpiry' => 7200,
-
-	/**
-	 * PHP file to display on 404 errors in 404-handler.php
-	 */
-	'fallback404' => false,
-
-	/**
-	 * Connect timeout for forwarded HTTP requests, in seconds
-	 */
-	'httpConnectTimeout' => 0.01,
-
-	/**
-	 * Overall request timeout for forwarded HTTP requests, in seconds
-	 */
-	'httpOverallTimeout' => 180,
-
-	/**
-	 * Servers that can be used for image scaling
-	 */
-	'scalerServers' => array( 'localhost' ),
-);
-
-
-$wgWebStoreAccess = array();
 
 class WebStoreCommon {
 	const NO_LOCK = 1;
@@ -71,7 +16,8 @@ class WebStoreCommon {
 
 	var $accessRanges = array(), $publicDir = false, $tmpDir = false, 
 		$deletedDir = false, $tempExpiry = 7200,
-		$inplaceScalerAccess = array();
+		$inplaceScalerAccess = array(), $errors = array(),
+		$pathDisclosureProtection = 'simple';
 
 	function __construct() {
 		global $wgWebStoreSettings, $wgUploadDirectory, $wgTmpDirectory, $wgFileStore;
@@ -90,12 +36,22 @@ class WebStoreCommon {
 				$this->deletedDir = $wgFileStore['deleted']['directory'];
 			} else {
 				// No deletion
+				$this->errors[] = new WebStoreWarning( 'webstore_no_deleted' );
 				$this->deletedDir = false;
 			}
 		}
 		$this->windows = wfIsWindows();
 		
 		self::initialiseMessages();
+	}
+
+	function setErrorHandler() {
+		set_error_handler( array( $this, 'handleWarning' ), E_WARNING );
+		ini_set( 'html_errors', 0 );
+	}
+
+	function handleWarning( $errno, $errstr, $errfile, $errline ) {
+		$this->errors[] = new WebStoreWarning( 'webstore_php_warning', $errstr );
 	}
 
 	function dtd() {
@@ -107,18 +63,45 @@ EOT;
 
 	function error( $code, $msgName /*, ... */ ) {
 		$params = array_slice( func_get_args(), 1 );
-		$msgText = htmlspecialchars( call_user_func_array( 'wfMsg', $params ) );
-		$encMsgName = htmlspecialchars( $msgName );
 		$info = self::$httpErrors[$code];
 		header( "HTTP/1.1 $code $info" );
-		echo $this->dtd();
+		header( 'Content-Type: text/xml' );
+		$this->errors[] = wfCreateObject( 'WebStoreError', $params );
+		$errors = $this->getErrorsXML();
 		echo <<<EOT
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+<status>failure</status>
+$errors
+</response>
+
+EOT;
+	}
+
+    function htmlError( $code, $msgName /*, ... */ ) {
+        $params = array_slice( func_get_args(), 1 );
+        $msgText = htmlspecialchars( call_user_func_array( 'wfMsg', $params ) );
+        $encMsgName = htmlspecialchars( $msgName );
+        $info = self::$httpErrors[$code];
+        header( "HTTP/1.1 $code $info" );
+        echo $this->dtd();
+        echo <<<EOT
 <html><head><title>$info</title></head>
 <body><h1>$info</h1><p>
 $encMsgName: $msgText
 </p></body></html>
+
 EOT;
-	}
+    }
+
+	function executeCommon() {
+		if ( !$this->checkAccess() ) {
+			$this->error( 403, 'webstore_access' );
+			return false;
+		}
+		$this->setErrorHandler();
+		$this->execute();
+	}		
 
 	function validateFilename( $filename ) {
 		if ( strval( $filename ) == '' ) {
@@ -182,14 +165,16 @@ EOT;
 	 *
 	 * $flags may be: 
 	 * 		self::NO_LOCK if you already have the destination lock. 
+	 * Returns true on success and false on failure.
 	 */
 	function movePath( $srcPath, $dstPath, $flags = 0 ) {
 		$lockFile = false;
-		$error = true;
+		$success = true;
 		do {
 			// Create destination directory
 			if ( !wfMkdirParents( dirname( $dstPath ) ) ) {
-				$error = 'webstore_dest_mkdir';
+				$this->errors[] = new WebStoreError( 'webstore_dest_mkdir', $dstPath );
+				$success = false;
 				break;
 			}
 
@@ -199,18 +184,21 @@ EOT;
 				$lockFileName = "$dstPath.lock.MW_WebStore";
 				$lockFile = fopen( $lockFileName , 'w' );
 				if ( !$lockFile ) {
-					$error = 'webstore_lock_open';
+					$this->errors[] = new WebStoreError( 'webstore_lock_open', $lockFileName );
+					$success = false;
 					break;
 				}
 				if ( !flock( $lockFile, LOCK_EX | LOCK_NB ) ) {
-					$error = 'webstore_dest_lock';
+					$this->errors[] = new WebStoreError( 'webstore_dest_lock', $lockFileName );
+					$success = false;
 					break;
 				}
 			}
 
 			// Check for destination existence
 			if ( file_exists( $dstPath ) ) {
-				$error = 'webstore_dest_exists';
+				$this->errors[] = new WebStoreError( 'webstore_dest_exists', $dstPath );
+				$success = false;
 				break;
 			}
 
@@ -219,23 +207,19 @@ EOT;
 			// Rename the file
 			if ( !rename( $srcPath, $dstPath ) ) {
 				wfDebug( "$srcPath -> $dstPath\n" );
-				$error = 'webstore_rename';
+				$this->errors[] = new WebStoreError( 'webstore_rename', $srcPath, $dstPath );
+				$success = false;
 				break;
 			}
 		} while (false);
 
 		// Close and delete the lockfile
-		$error2 = true;
 		if ( $lockFile && !($flags & self::NO_LOCK) ) {
 			if ( !$this->closeAndDelete( $lockFile, $lockFileName ) )  {
-				$error2 = 'webstore_lock_close';
+				$this->errors[] = new WebStoreWarning( 'webstore_lock_close', $lockFileName );
 			}
 		}
-		if ( $error !== true ) {
-			return $error;
-		} else {
-			return $error2;
-		}
+		return $success;
 	}
 
 	/*
@@ -246,23 +230,28 @@ EOT;
 	 * $flags may be: 
 	 *      * self::NO_LOCK if you already have the destination lock (*.lock.MW_WebStore)
 	 *      * self::OVERWRITE to overwrite the destination if it exists
+	 *
+	 * Returns true on success and false on failure.
 	 */
 	function copyPath( $srcPath, $dstPath, $flags = 0 ) {
-		$error = true;
+		$success = true;
 		$tempFile = false;
 		$srcFile = false;
 
 		do {
 			// Create destination directory
-			if ( !wfMkdirParents( dirname( $dstPath ) ) ) {
-				$error = 'webstore_dest_mkdir';
+			$dstDir = dirname( $dstPath );
+			if ( !wfMkdirParents( $dstDir ) ) {
+				$this->errors[] = new WebStoreError( 'webstore_dest_mkdir', $dstDir );
+				$success = false;
 				break;
 			}
 
 			// Open the source file
 			$srcFile = fopen( $srcPath, 'r' );
 			if ( !$srcFile ) {
-				$error = 'webstore_src_open';
+				$this->errors[] = new WebStoreError( 'webstore_src_open', $srcPath );
+				$success = false;
 				break;
 			}
 
@@ -271,11 +260,13 @@ EOT;
 			$tempFileName = "$dstPath.temp.MW_WebStore";
 			$tempFile = fopen( $tempFileName, 'a+' );
 			if ( !$tempFile ) {
-				$error = 'webstore_temp_open';
+				$this->errors[] = new WebStoreError( 'webstore_temp_open', $tempFileName );
+				$success = false;
 				break;
 			}
 			if ( !flock( $tempFile, LOCK_EX | LOCK_NB ) ) {
-				$error = 'webstore_temp_lock';
+				$this->errors[] = new WebStoreError( 'webstore_temp_lock', $tempFileName );
+				$success = false;
 				break;
 			}
 			// Truncate the file if there's anything in it (unlikely)
@@ -284,7 +275,8 @@ EOT;
 			}
 			// Copy the data from filehandle to filehandle
 			if ( !$this->copyFile( $srcFile, $tempFile ) ) {
-				$error = 'webstore_temp_copy';
+				$this->errors[] = new WebStoreError( 'webstore_temp_copy', $srcPath, $tempFileName );
+				$success = false;
 				break;
 			}
 
@@ -292,7 +284,8 @@ EOT;
 			// This creates a gap where another process may overwrite the temporary file
 			if ( $this->windows ) {
 				if ( !fclose( $tempFile ) ) {
-					$error = 'webstore_temp_close';
+					$this->errors[] = new WebStoreError( 'webstore_temp_close', $tempFileName );
+					$success = false;
 					break;
 				}
 				$tempFile = false;
@@ -304,13 +297,11 @@ EOT;
 					unlink( $dstPath );
 				}
 				if ( !rename( $tempFileName, $dstPath ) ) {
-					$error = 'webstore_rename';
+					$this->errors[] = new WebStoreError( 'webstore_rename', $tempFileName, $dstPath );
+					$success = false;
 				}
 			} else {
-				$error = $this->movePath( $tempFileName, $dstPath, $flags );
-			}
-			if ( $error !== true ) {
-				break;
+				$success = $this->movePath( $tempFileName, $dstPath, $flags );
 			}
 		} while ( false );
 
@@ -318,20 +309,16 @@ EOT;
 		$error2 = true;
 		if ( $srcFile ) {
 			if ( !fclose( $srcFile ) ) {
-				$error2 = 'webstore_src_close';
+				$this->errors[] = new WebStoreWarning( 'webstore_src_close', $srcPath );
 			}
 		}
 		// Close the temporary file
 		if ( $tempFile ) {
 			if ( !fclose( $tempFile, $tempFileName ) ) {
-				$error2 = 'webstore_temp_close';
+				$this->errors[] = new WebStoreWarning( 'webstore_temp_close', $tempFileName );
 			}
 		}
-		if ( $error === true && $error2 !== true ) {
-			$error = $error2;
-		}
-
-		return $error;
+		return $success;
 	}
 
 	function checkAccess() {
@@ -405,5 +392,93 @@ EOT;
 				return false;
 		}
 	}
+
+	function getErrorCleanupFunction() {
+		switch ( $this->pathDisclosureProtection ) {
+			case 'simple':
+				$callback = array( $this, 'simpleClean' );
+				break;
+			case 'paranoid':
+				$callback = array( $this, 'paranoidClean' );
+				break;
+			default:
+				$callback = array( $this, 'passThrough' );
+		}
+		return $callback;
+	}
+
+	function getErrorsXML() {
+		if ( !count( $this->errors ) ) {
+			return '';
+		}
+		$callback = $this->getErrorCleanupFunction();
+
+		$xml = "<errors>\n";
+		foreach ( $this->errors as $error ) {
+			$xml .= $error->getXML( $callback );
+		}
+		$xml .= "</errors>\n";
+		return $xml;
+	}
+
+	function paranoidClean( $param ) {
+		return '[hidden]';
+	}
+
+	function simpleClean( $param ) {
+		if ( !isset( $this->simpleCleanPairs ) ) {
+			global $IP;
+			$this->simpleCleanPairs = array(
+				$this->publicDir => 'public',
+				$this->tmpDir => 'temp',
+				$IP => '$IP',
+				dirname( __FILE__ ) => '$IP/extensions/WebStore',
+			);
+			if ( $this->deletedDir ) {
+				$this->simpleCleanPairs[$this->deletedDir] = 'deleted';
+			}
+		}
+		return strtr( $param, $this->simpleCleanPairs );
+	}
+
+	function passThrough( $param ) {
+		return $param;
+	}
 }
+
+class WebStoreError {
+	var $type, $message, $params;
+	function __construct( $message /*, parameters... */ ) {
+		$this->type = 'error';
+		$this->message = $message;
+		$this->params = array_slice( func_get_args(), 1 );
+	}
+
+	function getXML( $cleanCallback = false ) {
+		if ( $cleanCallback ) {
+			foreach ( $this->params as $i => $param ) {
+				$this->params[$i] = call_user_func( $cleanCallback, $param );
+			}
+		}
+
+		$xml = "<{$this->type}>\n" . 
+			Xml::element( 'message', null, $this->message ) . "\n" .
+			Xml::element( 'text', null, wfMsgReal( $this->message, $this->params ) ) ."\n";
+		foreach ( $this->params as $param ) {
+			$xml .= Xml::element( 'param', null, $param );
+		}
+		$xml .= "</{$this->type}>\n";
+		return $xml;
+	}
+}
+
+class WebStoreWarning extends WebStoreError {
+	var $type, $message, $params;
+	function __construct( $message /*, parameters... */ ) {
+		$this->type = 'warning';
+		$this->message = $message;
+		$this->params = array_slice( func_get_args(), 1 );
+	}
+}
+
 ?>

@@ -5,10 +5,7 @@
  * if there was one.
  */
 
-require( dirname( __FILE__ ) . '/WebStoreCommon.php' );
-$IP = dirname( realpath( __FILE__ ) ) . '/../..';
-chdir( $IP );
-require( './includes/WebStart.php' );
+require( dirname( __FILE__ ) . '/WebStoreStart.php' );
 
 class WebStorePublish extends WebStoreCommon {
 	const DELETE_SOURCE = 1;
@@ -82,7 +79,7 @@ class WebStorePublish extends WebStoreCommon {
 
 		$srcRoot = $this->getRepositoryRoot( $srcRepo );
 		if ( strval( $srcRoot ) == '' ) {
-				$this->error( 400, 'webstore_invalid_repository' );
+				$this->error( 400, 'webstore_invalid_repository', $srcRepo );
 				return false;
 		}
 
@@ -91,25 +88,36 @@ class WebStorePublish extends WebStoreCommon {
 		$archivePath = $this->publicDir . '/archive/' . $archiveRel;
 
 		if ( file_exists( $dstPath ) ) {
-			$error = $this->publishAndArchive( $srcPath, $dstPath, $archivePath, $deleteSource );
+			if ( $this->publishAndArchive( $srcPath, $dstPath, $archivePath, $deleteSource ) ) {
+				$status = 'archived';
+			} else {
+				$status = 'failure';
+			}
 		} elseif ( $deleteSource ) {
-			$error = $this->movePath( $srcPath, $dstPath );
+			if ( $this->movePath( $srcPath, $dstPath ) ) {
+				$status = 'new';
+			} else {
+				$status = 'failure';
+			}
 		} else {
-			$error = $this->copyPath( $srcPath, $dstPath );
-		}
-		if ( $error !== true ) {
-			$this->error( 500, $error );
-			return false;
+			if ( $this->copyPath( $srcPath, $dstPath ) ) {
+				$status = 'new';
+			} else {
+				$status = 'failure';
+			}
 		}
 
-		echo $this->dtd();
-?>
-<html>
-<head><title>MediaWiki publish OK</title></head>
-<body>File published successfully</body>
-</html>
-<?php
-		return true;
+		$errors = $this->getErrorsXML();
+		header( 'Content-Type: text/xml' );
+		echo <<<EOT
+<?xml version="1.0" encoding="utf-8"?>
+<response>
+<status>$status</status>
+$errors
+</response>
+
+EOT;
+		return $status;
 	}
 
 	/**
@@ -123,11 +131,13 @@ class WebStorePublish extends WebStoreCommon {
 	function publishAndArchive( $srcPath, $dstPath, $archivePath, $flags = 0 ) {
 		$archiveLockFile = false;
 		$dstLockFile = false;
-		$error = true;
+		$success = true;
 		do {
 			// Create archive directory
-			if ( !wfMkdirParents( dirname( $archivePath ) ) ) {
-				$error = 'webstore_archive_mkdir';
+			$archiveDir = dirname( $archivePath );
+			if ( !wfMkdirParents( $archiveDir ) ) {
+				$this->errors[] = new WebStoreError( 'webstore_archive_mkdir', $archiveDir );
+				$success = false;
 				break;
 			}
 
@@ -135,22 +145,26 @@ class WebStorePublish extends WebStoreCommon {
 			$archiveLockPath = "$archivePath.lock.MW_WebStore";
 			$archiveLockFile = fopen( $archiveLockPath, 'w' );
 			if ( !$archiveLockFile ) {
-				$error = 'webstore_lock_open';
+				$this->errors[] = new WebStoreError( 'webstore_lock_open', $archiveLockPath );
+				$success = false;
 				break;
 			}
 			if ( !flock( $archiveLockFile, LOCK_EX | LOCK_NB ) ) {
-				$error = 'webstore_archive_lock';
+				$this->errors[] = new WebStoreError( 'webstore_archive_lock', $archiveLockPath );
+				$success = false;
 				break;
 			}
 
 			$dstLockPath = "$dstPath.lock.MW_WebStore";
 			$dstLockFile = fopen( $dstLockPath, 'w' );
 			if ( !$dstLockFile ) {
-				$error = 'webstore_lock_open';
+				$this->errors[] = new WebStoreError( 'webstore_lock_open', $dstLockFile );
+				$success = false;
 				break;
 			}
 			if ( !flock( $dstLockFile, LOCK_EX | LOCK_NB ) ) {
-				$error = 'webstore_dest_lock';
+				$this->errors[] = new WebStoreError( 'webstore_dest_lock', $dstLockFile );
+				$success = false;
 				break;
 			}
 
@@ -162,8 +176,8 @@ class WebStorePublish extends WebStoreCommon {
 			// the archive, makes this a dangerous option.
 			//
 			// NO_LOCK option because we already have the lock
-			$error = $this->copyPath( $dstPath, $archivePath, self::NO_LOCK );
-			if ( $error !== true ) {
+			$success = $this->copyPath( $dstPath, $archivePath, self::NO_LOCK );
+			if ( !$success ) {
 				break;
 			}
 
@@ -174,32 +188,32 @@ class WebStorePublish extends WebStoreCommon {
 					unlink( $dstPath );
 				}
 				if ( !rename( $srcPath, $dstPath ) ) {
-					wfDebug( "$srcPath -> $dstPath\n" );
-					$error = 'webstore_rename';
+					$this->errors[] = new WebStoreError( 'webstore_rename', $srcPath, $dstPath );
+					$success = false;
 					break;
 				}
 			} else {
-				$error = $this->copyPath( $srcPath, $dstPath, self::NO_LOCK | self::OVERWRITE );
+				$success = $this->copyPath( $srcPath, $dstPath, self::NO_LOCK | self::OVERWRITE );
 			}
 		} while (false);
 		
 		// Close the lock files
-		$error2 = true;
 		if ( $archiveLockFile ) {
-			$error2 = $this->closeAndDelete( $archiveLockFile, $archiveLockPath );
+			if ( !$this->closeAndDelete( $archiveLockFile, $archiveLockPath ) ) {
+				$this->errors[] = new WebStoreWarning( 'webstore_lock_close', $archiveLockPath );
+			}
 		}
 		if ( $dstLockFile ) {
-			$error2 = $this->closeAndDelete( $dstLockFile, $dstLockPath );
-		}
-		if ( $error === true && $error2 !== true ) {
-			$error = $error2;
+			if ( !$this->closeAndDelete( $dstLockFile, $dstLockPath ) ) {
+				$this->errors[] = new WebStoreWarning( 'webstore_lock_close', $dstLockPath );
+			}
 		}
 
-		return $error;
+		return $success;
 	}
 }
 
 $w = new WebStorePublish;
-$w->execute();
+$w->executeCommon();
 
 ?>

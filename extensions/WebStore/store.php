@@ -6,18 +6,11 @@
  * TODO: expiration
  */
 
-require( dirname( __FILE__ ) . '/WebStoreCommon.php' );
-$IP = dirname( realpath( __FILE__ ) ) . '/../..';
-chdir( $IP );
-require( './includes/WebStart.php' );
+require( dirname( __FILE__ ) . '/WebStoreStart.php' );
 
 class WebStoreStore extends WebStoreCommon {
 	function execute() {
 		global $wgRequest;
-		if ( !$this->checkAccess() ) {
-			$this->error( 403, 'webstore_access' );
-			return false;
-		}
 
 		if ( !$wgRequest->wasPosted() ) {
 			echo $this->dtd();
@@ -61,15 +54,14 @@ EOT;
 		// Pick a random temporary path
 		$destRel =  $timestamp . '/' . md5( mt_rand() . mt_rand() . mt_rand() ) . $extension;
 		if ( !@move_uploaded_file( $srcFile, "{$this->tmpDir}/$destRel" ) ) {
-			$this->error( 400, 'webstore_move_uploaded' );
+			$this->error( 400, 'webstore_move_uploaded', $srcFile, "{$this->tmpDir}/$destRel" );
 			return false;
 		}
 
 		// Succeeded, return temporary location
 		header( 'Content-Type: text/xml' );
-		header( 'X-Store-Location: ' . $destRel );
 		echo <<<EOT
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <response>
 <location>$destRel</location>
 </response>
@@ -80,6 +72,6 @@ EOT;
 }
 
 $s = new WebStoreStore;
-$s->execute();
+$s->executeCommon();
 
 ?>
