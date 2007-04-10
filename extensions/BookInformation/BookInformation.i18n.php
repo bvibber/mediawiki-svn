@@ -141,6 +141,7 @@ function efBookInformationMessages() {
 'bookinfo-purchase' => 'この本を $1 から購入する',
 'bookinfo-provider' => 'データ提供元: $1',
 ),
+
 /* nld / Dutch (Dirk Beetstra) */
 'nl' => array(
 'bookinfo-header' => 'Boekinformatie',
@@ -183,6 +184,7 @@ function efBookInformationMessages() {
 'bookinfo-purchase' => 'Купить эту книгу на $1',
 'bookinfo-provider' => 'Поставщик информации: $1',
 ),
+
 'sk' => array(
 'bookinfo-header' => 'Informácie o knihách',
 'bookinfo-result-title' => 'Názov:',
@@ -195,6 +197,81 @@ function efBookInformationMessages() {
 'bookinfo-error-noresponse' => 'Bez odpovede alebo čas vyhradený na odpoveď vypršal.',
 'bookinfo-purchase' => 'Kúpiť túto knihu z $1',
 'bookinfo-provider' => 'Poskytovateľ údajov: $1',
+),
+
+/* Chinese (China) (Shinjiman) */
+'zh-cn' => array(
+'bookinfo-header' => '书籍资料',
+'bookinfo-result-title' => '标题:',
+'bookinfo-result-author' => '作者:',
+'bookinfo-result-publisher' => '出版者:',
+'bookinfo-result-year' => '年份:',
+'bookinfo-error-invalidisbn' => '不正确的 ISBN 输入。',
+'bookinfo-error-nosuchitem' => '项目不正确或找不到。',
+'bookinfo-error-nodriver' => '无法初始化一个合适的书籍资料驱动器。',
+'bookinfo-error-noresponse' => '无反应或要求过时。',
+'bookinfo-purchase' => '在$1买这本书',
+'bookinfo-provider' => '资料提供者: $1',
+),
+
+/* Chinese (Hong Kong) (Shinjiman) */
+'zh-hk' => array(
+'bookinfo-header' => '書籍資料',
+'bookinfo-result-title' => '標題:',
+'bookinfo-result-author' => '作者:',
+'bookinfo-result-publisher' => '出版者:',
+'bookinfo-result-year' => '年份:',
+'bookinfo-error-invalidisbn' => '不正確的 ISBN 輸入。',
+'bookinfo-error-nosuchitem' => '項目不正確或找不到。',
+'bookinfo-error-nodriver' => '無法初始化一個合適的書籍資料驅動器。',
+'bookinfo-error-noresponse' => '無回應或要求過時。',
+'bookinfo-purchase' => '在$1買這本書',
+'bookinfo-provider' => '資料提供者: $1',
+),
+
+/* Chinese (Singapore) (Shinjiman) */
+'zh-sg' => array(
+'bookinfo-header' => '书籍资料',
+'bookinfo-result-title' => '标题:',
+'bookinfo-result-author' => '作者:',
+'bookinfo-result-publisher' => '出版者:',
+'bookinfo-result-year' => '年份:',
+'bookinfo-error-invalidisbn' => '不正确的 ISBN 输入。',
+'bookinfo-error-nosuchitem' => '项目不正确或找不到。',
+'bookinfo-error-nodriver' => '无法初始化一个合适的书籍资料驱动器。',
+'bookinfo-error-noresponse' => '无反应或要求过时。',
+'bookinfo-purchase' => '在$1买这本书',
+'bookinfo-provider' => '资料提供者: $1',
+),
+
+/* Chinese (Taiwan) (Shinjiman) */
+'zh-tw' => array(
+'bookinfo-header' => '書籍資料',
+'bookinfo-result-title' => '標題:',
+'bookinfo-result-author' => '作者:',
+'bookinfo-result-publisher' => '出版者:',
+'bookinfo-result-year' => '年份:',
+'bookinfo-error-invalidisbn' => '不正確的 ISBN 輸入。',
+'bookinfo-error-nosuchitem' => '項目不正確或找不到。',
+'bookinfo-error-nodriver' => '無法初始化一個合適的書籍資料驅動器。',
+'bookinfo-error-noresponse' => '無回應或要求過時。',
+'bookinfo-purchase' => '在$1買這本書',
+'bookinfo-provider' => '資料提供者: $1',
+),
+
+/* Cantonese (Shinjiman) */
+'zh-yue' => array(
+'bookinfo-header' => '書籍資料',
+'bookinfo-result-title' => '標題:',
+'bookinfo-result-author' => '作者:',
+'bookinfo-result-publisher' => '出版者:',
+'bookinfo-result-year' => '年份:',
+'bookinfo-error-invalidisbn' => '唔正確嘅 ISBN 輸入。',
+'bookinfo-error-nosuchitem' => '項目唔正確或者搵唔到。',
+'bookinfo-error-nodriver' => '唔能夠初始化一個合適嘅書籍資料驅動器。',
+'bookinfo-error-noresponse' => '無回應或要求過時。',
+'bookinfo-purchase' => '響$1買呢本書',
+'bookinfo-provider' => '資料提供者: $1',
 ),
 
 	);
