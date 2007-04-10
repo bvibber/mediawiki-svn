@@ -32,8 +32,8 @@ require_once($IP.'/includes/SearchEngine.php');
 
 # Add messages
 global $wgMessageCache, $wgLuceneSearchMessages;
-foreach( $wgLuceneSearchMessages as $key => $value ) {
-	$wgMessageCache->addMessages( $wgLuceneSearchMessages[$key], $key );
+foreach( $wgLuceneSearchMessages as $lang => $messages ) {
+	$wgMessageCache->addMessages( $messages, $lang );
 }
 
 class LuceneSearch extends SpecialPage
