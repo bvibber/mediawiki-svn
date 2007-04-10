@@ -75,7 +75,7 @@ class WebStoreMetadata extends WebStoreCommon {
 			if ( is_bool( $image->$field ) ) {
 				$value = $value ? 1 : 0;
 			}
-			echo "<$field>" . htmlspecialchars( $value ) . "</$field>\n";
+			echo "<item name=\"$field\">" . htmlspecialchars( $value ) . "</item>\n";
 		}
 		echo "</metadata></response>\n";
 	}

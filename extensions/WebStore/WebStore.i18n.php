@@ -41,7 +41,7 @@ $messages = array(
 		'webstore_metadata_not_found' => 'File not found: $1',
 		'webstore_postfile_not_found' => 'File to post not found.',
 
-		'webstore_invalid_response' => 'Invalid response from server',
+		'webstore_invalid_response' => "Invalid response from server:\n\n$1\n",
 		'webstore_no_response' => 'No response from server',
 		'webstore_backend_error' => "Error from storage server:\n\n$1\n",
 		'webstore_php_error' => 'PHP errors were encountered:',

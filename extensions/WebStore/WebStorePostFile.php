@@ -31,7 +31,7 @@ class WebStorePostFile {
 		}
 		// Data file
 		$this->formDataPrefix .= 
-			"Content-Disposition: form-data; name=\"data\"; filename=\"" . urlencode( basename( $sourcePath ) ) . "\"\r\n" .
+			"Content-Disposition: form-data; name=\"$fileParamName\"; filename=\"" . urlencode( basename( $sourcePath ) ) . "\"\r\n" .
 			"Content-Transfer-Encoding: binary\r\n\r\n";
 
 		$this->outputFile = $outputFile;
@@ -68,7 +68,8 @@ class WebStorePostFile {
 		if ( $this->outputFile === false ) {
 			ob_start();
 			$this->success = curl_exec( $this->curl );
-			$this->content = ob_end_clean();
+			$this->content = ob_get_contents();
+			ob_end_clean();
 		} else {
 			ftruncate( $this->outputFile, 0 );
 			$this->success = curl_exec( $this->curl );
