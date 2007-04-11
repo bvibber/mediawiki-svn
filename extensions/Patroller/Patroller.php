@@ -13,6 +13,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgSpecialPages['Patrol'] = 'Patroller';
 	$wgAutoloadClasses['Patroller'] = dirname( __FILE__ ) . '/Patroller.class.php';
+	$wgHooks['LoadAllMessages'][] = 'Patroller::initialiseMessages';
 
 	$wgExtensionCredits['specialpage'][] = array(
 		'name' => 'Patroller',
@@ -23,6 +24,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgAvailableRights[] = 'patroller';
 	$wgGroupPermissions['sysop']['patroller'] = true;
+	$wgGroupPermissions['patroller']['patroller'] = true;
 
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );

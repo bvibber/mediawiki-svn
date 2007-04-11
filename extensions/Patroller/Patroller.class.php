@@ -15,10 +15,7 @@ class Patroller extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct() {
-		global $wgMessageCache;
-		require_once( 'Patroller.i18n.php' );
-		foreach( efPatrollerMessages() as $lang => $messages )
-			$wgMessageCache->addMessages( $messages, $lang );
+		self::initialiseMessages();
 		parent::__construct( 'Patrol', 'patroller' );
 	}
 
@@ -305,6 +302,20 @@ class Patroller extends SpecialPage {
 		return trim( $custom ) != ''
 				? $custom
 				: $request->getText( 'wpPatrolRevertReasonCommon' );
+	}
+	
+	/**
+	 * Initialise extension messages
+	 */
+	public static function initialiseMessages() {
+		static $init = false;
+		if( !$init ) {
+			global $wgMessageCache;
+			require_once( 'Patroller.i18n.php' );
+			foreach( efPatrollerMessages() as $lang => $messages )
+				$wgMessageCache->addMessages( $messages, $lang );
+			$init = true;
+		}
 	}
 	
 }

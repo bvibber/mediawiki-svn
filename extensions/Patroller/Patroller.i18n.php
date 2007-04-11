@@ -30,6 +30,8 @@ function efPatrollerMessages() {
 'patrol-another' => 'Show another edit, if available.',
 'patrol-stopped' => 'You have opted not to patrol another edit. $1',
 'patrol-resume' => 'Click here to resume.',
+'group-patroller' => 'Patrollers',
+'group-patroller-member' => 'Patroller',
 ),
 
 /* German (Raymond) */
