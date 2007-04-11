@@ -311,7 +311,7 @@ class Patroller extends SpecialPage {
 		static $init = false;
 		if( !$init ) {
 			global $wgMessageCache;
-			require_once( 'Patroller.i18n.php' );
+			require_once( dirname( __FILE__ ) . '/Patroller.i18n.php' );
 			foreach( efPatrollerMessages() as $lang => $messages )
 				$wgMessageCache->addMessages( $messages, $lang );
 			$init = true;
