@@ -40,7 +40,7 @@ riddler|Riddler",
 'vote-caption' => 'Votre sélection :',
 'vote-choices' => "joker|Le Joker
 pingouin|Le Pingouin
-Sphinx|Sphinx",
+sphinx|Sphinx",
 'vote-submit' => 'Voter',
 'vote-registered' => 'Votre vote a été enregistré.',
 'vote-view-results' => 'Résultats',

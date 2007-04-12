@@ -53,7 +53,7 @@ class SpecialVote extends SpecialPage {
 		$wgOut->addWikiText( wfMsgNoTrans( 'vote-header' ) );
 		$current = self::getExistingVote( $wgUser );
 		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $token, 'vote' ) ) {
-			$vote = $wgRequest->getText( 'vote' );
+			$vote = strtolower( $wgRequest->getText( 'vote' ) );
 			if( in_array( $vote, array_keys( $this->getChoices() ) ) ) {
 				self::updateVote( $wgUser, $vote );
 				$wgOut->addHtml( '<p class="mw-votesuccess">' . wfMsgHtml( 'vote-registered' ) . '</p>' );
@@ -110,7 +110,7 @@ class SpecialVote extends SpecialPage {
 			$lines = explode( "\n", wfMsgForContent( 'vote-choices' ) );
 			foreach( $lines as $line ) {
 				list( $short, $long ) = explode( '|', $line, 2 );
-				$return[$short] = $long;
+				$return[ strtolower( $short )] = $long;
 			}
 		}
 		return $return;		
