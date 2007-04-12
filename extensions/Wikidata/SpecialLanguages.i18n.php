@@ -16,6 +16,7 @@ $wgLanguageManagerMessages['de'] = array(
 );
 $wgLanguageManagerMessages['fr'] = array(
 	'langman_title' => 'Gestion des langues',
+	'languages' => 'Gestion des langues',
 );
 $wgLanguageManagerMessages['he'] = array(
 	'langman_title' => 'מנהל שפות',

@@ -32,6 +32,27 @@ riddler|Riddler",
 'vote-invalid-choice' => 'You must select one of the available options.',
 ),
 
+'fr' => array(
+'vote' => 'Vote',
+'vote-header' => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
+'vote-current' => "Votre vote actuel est pour '''$1'''.",
+'vote-legend' => 'Placer ou modifier un vote',
+'vote-caption' => 'Votre sélection :',
+'vote-choices' => "joker|Le Joker
+pingouin|Le Pingouin
+Sphinx|Sphinx",
+'vote-submit' => 'Voter',
+'vote-registered' => 'Votre vote a été enregistré.',
+'vote-view-results' => 'Résultats',
+'vote-results' => 'Résultats',
+'vote-results-choice' => 'Choix',
+'vote-results-count' => 'Voix',
+'vote-results-none' => 'Aucun vote n\'a été placé pour le moment.',
+'vote-login' => 'Vous devez $1 pour voter.',
+'vote-login-link' => 'vous connecter',
+'vote-invalid-choice' => 'Vous devez choisir une des options disponible.',
+),
+
 'id' => array(
 'vote' => 'Pemilihan',
 'vote-header' => "Anda dapat memilih '''Penguasa Tertinggi Dunia''' di sini!",
