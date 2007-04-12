@@ -39,22 +39,42 @@ $wgExtensionCredits['parserhook'][] = array(
   );
 
 /**
- * Extension options 
+ * Extension settings 
  */
-$wgDPL2MaxCategoryCount = 4; // Maximum number of categories allowed in the Query
-$wgDPL2MinCategoryCount = 0; // Minimum number of categories needed in the Query
-$wgDPL2MaxResultCount = 50; // Maximum number of results to allow
-$wgDPL2CategoryStyleListCutoff = 6; //Max length to format a list of articles chunked by letter as bullet list, if list bigger, columnar format user (same as cutoff arg for CategoryPage::formatList())
-$wgDPL2AllowUnlimitedCategories = true; // Allow unlimited categories in the Query
-$wgDPL2AllowUnlimitedResults = true; // Allow unlimited results to be shown
-$wgDPL2AllowedNamespaces = NULL; // to be initialized at first use of DPL2, array of all namespaces except Media and Special, because we cannot use the DB for these to generate dynamic page lists. Cannot be customized. Use $wgDPL2Options['namespace'] or $wgDPL2Options['notnamespace'] for customization.
+
+# Maximum number of categories allowed in the Query
+$wgDPL2MaxCategoryCount = 4;
+
+# Minimum number of categories needed in the Query
+$wgDPL2MinCategoryCount = 0;
+
+# Maximum number of results to allow
+$wgDPL2MaxResultCount = 50;
+
+# Max length to format a list of articles chunked by letter as bullet list
+# if list is bigger, columnar format user (same as cutoff arg for
+# CategoryPage::formatList())
+$wgDPL2CategoryStyleListCutoff = 6;
+
+# Allow unlimited categories in the Query
+$wgDPL2AllowUnlimitedCategories = true;
+
+# Allow unlimited results to be shown
+$wgDPL2AllowUnlimitedResults = true;
+
+# To be initialized at first use of DPL2, array of all namespaces except
+# Media and Special, because we cannot use the DB for these to generate
+# dynamic page lists. Cannot be customized !
+# Use $wgDPL2Options['namespace'] or $wgDPL2Options['notnamespace'] for customization.
+$wgDPL2AllowedNamespaces = NULL;
 
 /**
  * Map parameters to possible values.
  * A 'default' key indicates the default value for the parameter.
  * A 'pattern' key indicates a pattern for regular expressions (that the value must match).
- * For some options (e.g. 'namespace'), possible values are not yet defined but will be if necessary (for debugging) 
- */	
+ * For some options (e.g. 'namespace'), possible values are not yet defined
+ * but will be if necessary (for debugging)
+ */
 $wgDPL2Options = array(
 	'addcategories' => array('default' => 'false', 'false', 'true'),
 	'addpagecounter' => array('default' => 'false', 'false', 'true'),
@@ -62,6 +82,7 @@ $wgDPL2Options = array(
 	'addfirstcategorydate' => array('default' => 'false', 'false', 'true'),
 	'addpagetoucheddate' => array('default' => 'false', 'false', 'true'),
 	'adduser' => array('default' => 'false', 'false', 'true'),
+
 	/**
 	 * category= Cat11 | Cat12 | ...
 	 * category= Cat21 | Cat22 | ...
@@ -73,11 +94,16 @@ $wgDPL2Options = array(
 	 * @todo define 'category' options (retrieve list of categories from 'categorylinks' table?)
 	 */
 	'category' => NULL,
+
 	/**
-	 * Max of results to display.
-	 * Empty count value (default) indicates no count limit.
+	 * Maximum number of results to be displayed.
+	 * Empty count value (default) indicates no limit.
 	 */
-	'count' => array('default' => '', 'pattern' => '/^\d*$/'),
+	'count' => array(
+		'default' => '',
+		'pattern' => '/^\d*$/'
+	),
+
 	/**
 	 * debug=...
 	 * - 0: displays no debug message;
@@ -85,70 +111,118 @@ $wgDPL2Options = array(
 	 * - 2: fatal errors + warnings only;
 	 * - 3: every debug message.
 	 */
-	'debug' => array( 'default' => '2', '0', '1', '2', '3'),
+	'debug' => array(
+		'default' => '2',
+		'0', '1', '2', '3'
+	),
+
 	/**
-	 * Mode at the heading level with ordermethod on multiple components, e.g. category heading with ordermethod=category,...: 
-	 * html headings (H2, H3, H4), definition list, no heading (none), ordered, unordered.
+	 * Mode at the heading level with ordermethod on multiple components,
+	 * e.g. category heading with ordermethod=category,...: 
+	 * html headings (H2, H3, H4), definition list, no heading (none), ordered,
+	 * unordered.
 	 */
-	'headingmode' => array( 'default' => 'none', 'H2', 'H3', 'H4', 'definition', 'none', 'ordered', 'unordered'),
+	'headingmode' => array(
+		'default' => 'none',
+		'H2', 'H3', 'H4', 'definition', 'none', 'ordered', 'unordered'
+	),
+
 	/**
-	 * Attributes for HTML list items (headings) at the heading level, depending on 'headingmode' (e.g. 'li' for ordered/unordered)
+	 * Attributes for HTML list items (headings) at the heading level,
+	 * depending on 'headingmode' (e.g. 'li' for ordered/unordered)
 	 * Not yet applicable to 'headingmode=none | definition | H2 | H3 | H4'.
 	 * @todo Make 'hitemattr' param applicable to  'none', 'definition', 'H2', 'H3', 'H4' headingmodes.
 	 * Example: hitemattr= class="topmenuli" style="color: red;"
 	 */
 	'hitemattr' => array('default' => ''),
+
 	/**
-	 * Attributes for the HTML list element at the heading/top level, depending on 'headingmode' (e.g. 'ol' for ordered, 'ul' for unordered, 'dl' for definition)
+	 * Attributes for the HTML list element at the heading/top level, depending
+	 * on 'headingmode' (e.g. 'ol' for ordered, 'ul' for unordered, 'dl' for definition)
 	 * Not yet applicable to 'headingmode=none'.
 	 * @todo Make 'hlistattr' param applicable to  headingmode=none.
 	 * Example: hlistattr= class="topmenul" id="dmenu"
 	 */
 	'hlistattr' => array('default' => ''),
+
 	/**
 	 * PAGE TRANSCLUSION: includepage=...
+	 *
 	 * To include the whole page, use a wildcard:
-	 * includepage =*
-	 * To include sections labeled 'sec1' or 'sec2' or... from the page (see the doc of the LabeledSectionTransclusion extension for more info):
-	 * includepage = sec1,sec2,..
-	 * To include from the first occurrence of the heading 'heading1' (resp. 'heading2') until the next heading of the same or lower level. Note that this comparison is case insensitive. (See http://www.mediawiki.org/wiki/Extension:Labeled_Section_Transclusion#Transcluding_visual_headings.) :
-	 * includepage = #heading1,#heading2,....
-	 * You can combine:
-	 * includepage= sec1,#heading1,...
+	 *     includepage =*
+	 *
+	 * To include sections labeled 'sec1' or 'sec2' or... from the page
+	 * (see the doc of the LabeledSectionTransclusion extension for more info)
+	 *     includepage = sec1,sec2,..
+	 *
+	 * To include from the first occurrence of the heading 'heading1'
+	 * (resp. 'heading2') until the next heading of the same or lower level.
+	 * Note that this comparison is case insensitive. (See http://www.mediawiki.org/wiki/Extension:Labeled_Section_Transclusion#Transcluding_visual_headings.) :
+	 *     includepage = #heading1,#heading2,....
+	 *
+	 * You can combine the above options:
+	 *     includepage= sec1,#heading1,...
+	 *
 	 * To include nothing from the page (no transclusion), leave empty:
 	 * includepage =
 	 */
     'includepage' => array('default' => ''),
+
 	/** 
 	 * Inline text is some wiki text used to separate list items with 'mode=inline'.
 	 */
-	'inlinetext' => array('default' => '&nbsp;-&nbsp;'),
+	'inlinetext' => array(
+		'default' => '&nbsp;-&nbsp;'
+	),
+
 	/**
-	 * Attributes for HTML list items, depending on 'mode' ('li' for ordered/unordered, 'span' for others).
+	 * Attributes for HTML list items, depending on 'mode':
+	 *     - 'li' for ordered/unordered
+	 *     - 'span' for others).
+	 *
 	 * Not applicable to 'mode=category'.
+	 *
 	 * @todo Make 'itemattr' param applicable to 'mode=category'.
-	 * Example: itemattr= class="submenuli" style="color: red;"
+	 *
+	 * Example:
+	 *     itemattr= class="submenuli" style="color: red;"
 	 */
 	'itemattr' => array('default' => ''),
+
 	/**
-	 * Attributes for HTML list elements, depending on 'mode' ('ol' for ordered, 'ul' for unordered, 'div' for others)
+	 * Attributes for HTML list elements, depending on 'mode':
+	 *    - 'ol' for ordered
+	 *    - 'ul' for unordered
+	 *    - 'div' for others
+     *
 	 * Can be used with pseudo 'mode=inline' where 'inlinetext' contains one or more <BR/>.
+	 *
 	 * Not applicable to 'mode=category' or 'mode=inline' (with no <BR/> in inlinetext).
+	 *
 	 * @todo Make 'listattr' param applicable to 'mode=category'.
-	 * Example: listattr= class="submenul" style="color: red;"
+	 *
+	 * Example:
+	 *     listattr= class="submenul" style="color: red;"
 	 */
 	'listattr' => array('default' => ''),
+
 	/**
-	 * this parameter restricts the output to articles which contain a reference to the specified page.
+	 * This parameter restricts the output to articles which contain
+	 * a reference to the specified page.
 	 * Magic words allowed.
-	 * Examples:   linksto=my article   ,  linksto=Template:my template   ,  linksto = {{FULLPAGENAME}}
+	 * Examples:
+	 *     linksto=my article
+	 *     linksto=Template:my template
+	 *     linksto = {{FULLPAGENAME}}
 	 */
     'linksto' => array('default' => ''),
+
 	/**
 	 * Mode for list of pages (possibly within a heading, see 'headingmode' param).
 	 * 'none' mode is implemented as a specific submode of 'inline' with <BR/> as inline text
 	 */
 	'mode' => array('default' => 'unordered', 'category', 'inline', 'none', 'ordered', 'unordered'),
+
 	/**
 	 * namespace= Ns1 | Ns2 | ...
 	 * [Special value] NsX='' (empty string without quotes) means Main namespace
@@ -156,6 +230,7 @@ $wgDPL2Options = array(
 	 * Magic words allowed.
 	 */
 	'namespace' => NULL,
+
 	/**
 	 * notcategory= Cat1
 	 * notcategory = Cat2
@@ -165,6 +240,7 @@ $wgDPL2Options = array(
 	 * @todo define 'notcategory' options (retrieve list of categories from 'categorylinks' table?)
 	 */
 	'notcategory' => NULL,
+
 	/**
 	 * notnamespace= Ns1
  	 * notnamespace= Ns2
@@ -174,40 +250,68 @@ $wgDPL2Options = array(
 	 * Magic words allowed.
 	*/
 	'notnamespace' => NULL,
-	'order' => array('default' => 'ascending', 'ascending', 'descending'),
+	'order' => array(
+		'default' => 'ascending',
+		'ascending', 'descending'
+	),
+
 	/**
 	 * 'ordermethod=param1,param2' means ordered by param1 first, then by param2.
-	 * @todo: add 'ordermethod=category,categoryadd' (for each category CAT, pages ordered by date when page was added to CAT).
+	 * @todo: add 'ordermethod=category,categoryadd' (for each category CAT,
+	 * pages ordered by date when page was added to CAT).
 	 */
-	'ordermethod' => array('default' => 'title', 'counter', 'category,firstedit',  'category,lastedit', 'category,pagetouched', 'category,sortkey', 'categoryadd', 'firstedit', 'lastedit', 'pagetouched', 'title', 'user,firstedit', 'user,lastedit'),
+	'ordermethod' => array(
+		'default' => 'title',
+		'counter', 'category,firstedit', 'category,lastedit', 'category,pagetouched',
+		'category,sortkey', 'categoryadd', 'firstedit', 'lastedit', 'pagetouched',
+		'title', 'user,firstedit', 'user,lastedit'
+	),
+
 	/**
 	 * minoredits =... (compatible with ordermethod=...,firstedit | lastedit only)
 	 * - exclude: ignore minor edits when sorting the list (rev_minor_edit = 0 only)
 	 * - include: include minor edits
 	 */
-	'minoredits' => array('default' => 'include', 'exclude', 'include'),
+	'minoredits' => array(
+		'default' => 'include',
+		'exclude', 'include'
+	),
+
 	/**
 	 * redirects =...
 	 * - exclude: excludes redirect pages from lists (page_is_redirect = 0 only)
 	 * - include: allows redirect pages to appear in lists
 	 * - only: lists only redirect pages in lists (page_is_redirect = 1 only)
 	 */
-	'redirects' => array('default' => 'exclude', 'exclude', 'include', 'only'),
+	'redirects' => array(
+		'default' => 'exclude',
+		'exclude', 'include', 'only'
+	),
+
 	/**
-	 * secseparators  is a sequence of html texts used to separate sections (see "includepage=name1, name2, ..") 
-	 *              there are four items which must be separated by "," as delimiter
-	 *              t1 and t4 define an outer frame for sections of an article
-	 *              t2 and t3 build an inner frame for each section
-	 *   example:   secseparators=<table><tr>,<td>,</td>,</tr></table>
+	 * secseparators  is a sequence of html texts used to separate sections
+	*  (see "includepage=name1, name2, .."). There are four items which must
+	 * be separated by "," as delimiter :
+	 *     - t1 and t4 define an outer frame for sections of an article
+	 *     - t2 and t3 build an inner frame for each section
+	 * Example:
+	 *     secseparators=<table><tr>,<td>,</td>,</tr></table>
 	 */
 	'secseparators'  => array('default' => ',,,'),
-	'shownamespace' => array('default' => 'true', 'false', 'true'),
+	'shownamespace' => array(
+		'default' => 'true',
+		'false', 'true'
+	),
+
 	/**
 	 * Max # characters of page title to display.
 	 * Empty value (default) means no limit.
 	 * Not applicable to mode=category.
 	 */
-	'titlemaxlength' => array('default' => '', 'pattern' => '/^\d*$/'),
+	'titlemaxlength' => array(
+		'default' => '',
+		'pattern' => '/^\d*$/'
+	),
 );
 
 /**
@@ -236,6 +340,7 @@ $wgDPL2DebugCodes = array(
 	// OTHERS
 	'DPL2_QUERY' => 3
 );
+
 $wgDPL2DebugMinLevels = array();
 $i = 0;
 foreach ($wgDPL2DebugCodes as $name => $minlevel ) {
@@ -299,9 +404,9 @@ function DynamicPageList2( $input, $params, &$parser ) {
 			$wgDPL2Options['notnamespace'] = array_intersect($wgDPL2Options['notnamespace'], $wgDPL2AllowedNamespaces);
 		if( !isset($wgDPL2Options['notnamespace']['default']) )
 			$wgDPL2Options['notnamespace']['default'] = NULL;
-	}	
+	}
 	
-	 // Options
+	// Options
 	$aOrderMethods = explode(',', $wgDPL2Options['ordermethod']['default']);
 	$sOrder = $wgDPL2Options['order']['default'];
 	$sPageListMode = $wgDPL2Options['mode']['default'];
