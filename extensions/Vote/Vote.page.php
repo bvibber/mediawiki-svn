@@ -110,7 +110,7 @@ class SpecialVote extends SpecialPage {
 			$lines = explode( "\n", wfMsgForContent( 'vote-choices' ) );
 			foreach( $lines as $line ) {
 				list( $short, $long ) = explode( '|', $line, 2 );
-				$return[ strtolower( $short )] = $long;
+				$return[ strtolower( $short ) ] = $long;
 			}
 		}
 		return $return;		
