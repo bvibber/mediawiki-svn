@@ -9,8 +9,9 @@
  */
 
 function efVoteMessages() {
-	return array(
+	$messages = array(
 
+/* English (Rob Church) */
 'en' => array(
 'vote' => 'Vote',
 'vote-header' => "You can vote for '''Supreme Overlord of the World''' here!",
@@ -32,6 +33,7 @@ riddler|Riddler",
 'vote-invalid-choice' => 'You must select one of the available options.',
 ),
 
+/* French (Ashar Voultoiz) */
 'fr' => array(
 'vote' => 'Vote',
 'vote-header' => "Vous pouvez voter pour le '''maître de l'Univers''' ici !",
@@ -53,6 +55,7 @@ sphinx|Sphinx",
 'vote-invalid-choice' => 'Vous devez choisir une des options disponible.',
 ),
 
+/* Indonesian (Ivan Lanin) */
 'id' => array(
 'vote' => 'Pemilihan',
 'vote-header' => "Anda dapat memilih '''Penguasa Tertinggi Dunia''' di sini!",
@@ -75,6 +78,7 @@ riddler|Riddler",
 ),
 
 	);
+	return $messages;
 }
 
 ?>
