@@ -50,6 +50,13 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 ),
 
+/* Slovak (helix84) */
+'sk' => array(
+'blacklistedusername' => 'Používateľské meno na čiernej listine',
+'blacklistedusernametext' => 'Používateľské meno, ktoré ste si zvolili sa nachádza na [[MediaWiki:Usernameblacklist|
+čiernej listine používateľských mien]]. Prosím, zvoľte si iné.',
+),
+
 /* Chinese (China) (Shinjiman) */
 'zh-cn' => array(
 'blacklistedusername' => '列入黑名单的用户名',

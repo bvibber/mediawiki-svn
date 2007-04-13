@@ -108,12 +108,12 @@ $wgDesysopMessages['ru'] = array(
 );
 $wgDesysopMessages['sk'] = array(
 	'desysoptitle'         => 'Odober používateľovi privilégiá správcu',
-	'desysoptext'          => "Tento formulár používajú byrokrati na odobratie privilégií správcu používateľovi. Do poľa napíšte meno používateľa. Po stlačení tlačidla s odoberiú používateľovi privilégiá správcu.",
+	'desysoptext'          => 'Tento formulár používajú byrokrati na odobratie privilégií správcu používateľovi. Do poľa napíšte meno používateľa. Po stlačení tlačidla s odoberiú používateľovi privilégiá správcu.',
 	'desysopname'          => 'Meno používateľa:',
-	'desysopok'            => "<b>Používateľovi \"$1\" boli odobrané privilégiá správcu</b>",
-	'set_user_rights'      => 'Nastav používateľské práva',
-	'user_rights_set'      => "<b>Práva používateľa \"$1\" aktualizované</b>",
-	'set_rights_fail'      => "<b>Práva používateľa \"$1\" nebolo možné nastaviť. (Zadali ste meno správne?)</b>",
+	'desysopok'            => '<b>Používateľovi "$1" boli odobrané privilégiá správcu</b>',
+	'set_user_rights'      => 'Nastav redaktorove práva',
+	'user_rights_set'      => '<b>Práva používateľa „$1“ aktualizované</b>',
+	'set_rights_fail'      => '<b>Redaktorove práva pre "$1" nemohli byť nastavené. (zadali ste meno správne?)</b>',
 	'desysop'              => 'Odobrať privilégiá správcu používateľovi',
 	'not_sysop'            => 'Tento používateľ nie je správca',
 );

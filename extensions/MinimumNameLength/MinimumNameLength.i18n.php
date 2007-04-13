@@ -32,6 +32,10 @@ function efMinimumNameLengthMessages() {
 'oc' => array(
 'minnamelength-error' => 'Vòstre nom d\'utilizaire es tròp cort. La longor minimom es $1.',
 ),
+
+'sk' => array(
+'minnamelength-error' => 'Vaše používateľské meno je príliš krátke. Minimálna dĺžka je $1.',
+),
 	);
 	return $messages;
 }

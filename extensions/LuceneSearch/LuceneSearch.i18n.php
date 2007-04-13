@@ -300,22 +300,17 @@ $1\n
 либо воспользуйтесь поиском во внешних поисковых системах.\n"
 );
 $wgLuceneSearchMessages['sk'] = array(
-	'searchnumber'          => "<strong>Výsledky $1-$2 zo $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Späť</span>",
-	'searchnext'            => "<span style='font-size: small'>Ďalej</span> &#x00BB;",
-	'searchscore'           => "Relevantnosť: $1",
-	'searchsize'            => "$1KB ($2 slov)",
-	'searchdidyoumean'      => "Mali ste na mysli: \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "Ľutujeme, vyhľadávanie nevrátilo žiadne presné výsledky na Váš dotaz.",
-	'searchnearmatches'     => "<b>Tieto stránky majú názvy podobné Vášmu dotazu:</b>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-Vyhľadávanie v menných priestoroch:\n
-$1\n
-Hľadanie $3 $9",
-	'lucenefallback'        => "S vyhľadávaním na wiki nastal problém.
-Je možné, že je to dočasné; o chvíľu to skúste znova
-alebo vyhľadávajte na wiki pomocou externej indexovacej služby:\n"
+	'searchnumber'          => '<strong>Výsledky $1-$2 zo $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Späť</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Ďalej</span> &#x00BB;',
+	'searchscore'           => 'Relevantnosť: $1',
+	'searchsize'            => '$1KB ($2 slov)',
+	'searchdidyoumean'      => 'Mali ste na mysli: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Ľutujeme, vyhľadávanie nevrátilo na Vašu požiadavku žiadne presné výsledky.',
+	'searchnearmatches'     => '<b>Tieto stránky majú názvy podobné Vášej požiadavke:</b>',
+	'searchnearmatch'       => '<li>$1</li>',
+	'lucenepowersearchtext' => 'Vyhľadávanie v menných priestoroch: $1 Hľadanie $3 $9',
+	'lucenefallback'        => 'S vyhľadávaním na wiki nastal problém. Je možné, že je to dočasné; o chvíľu to skúste znova alebo vyhľadávajte na wiki pomocou externej indexovacej služby:',
 );
 $wgLuceneSearchMessages['sr-ec'] = array(
 	'searchnumber'          => "<strong>Резултати $1-$2 од $3</strong>",

@@ -77,6 +77,24 @@ riddler|Riddler",
 'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
 ),
 
+'sk' => array(
+'vote' => 'Hlasovať',
+'vote-header' => 'Tu môžete hlasovať o \'\'\'Hlavnom diktátorovi sveta\'\'\'!',
+'vote-current' => 'Aktuálne hlasujete za \'\'\'$1\'\'\'.',
+'vote-legend' => 'Hlasovať alebo zmeniť hlas',
+'vote-caption' => 'Vaša voľba:',
+'vote-submit' => 'Hlasovať',
+'vote-registered' => 'Váš hlas bol zaznamenaný.',
+'vote-view-results' => 'Zobraziť výsledky',
+'vote-results' => 'Výsledky hlasovania',
+'vote-results-choice' => 'Voľba',
+'vote-results-count' => 'Počet',
+'vote-results-none' => 'Momentálne nie sú žiadne hlasy.',
+'vote-login' => 'Aby ste mohli hlasovať, musíte $1.',
+'vote-login-link' => 'sa prihlásiť',
+'vote-invalid-choice' => 'Musíte vybrať jednu z dostupných možností.',
+),
+
 	);
 	return $messages;
 }
