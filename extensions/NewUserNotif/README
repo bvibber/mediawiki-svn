@@ -34,7 +34,7 @@ To install the extension, place all extension files into a NewUserNotif
 directory within your MediaWiki extensions/ directory, then edit
 LocalSettings.php and add the following line
 
-	require_once( "{$IP}/extensions/NewUserNotif.php" );
+	require_once( "{$IP}/extensions/NewUserNotif/NewUserNotif.php" );
 
 == 4. Editing the notification email ==
 
