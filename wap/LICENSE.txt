@@ -1,0 +1,22 @@
+HawPedia Software License
+
+Copyright (C) 2006 Norbert Huffschmid
+
+This program is provided for educational purposes. It is a coding example to
+learn how mobile applications can be built my means of the hawhaw PHP library:
+http://www.hawhaw.de/
+
+The HawPedia code is free for non-commercial use.
+
+You can redistribute it and/or modify it under the terms of the GNU General
+Public License as published by the Free Software Foundation; either version 2
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+http://www.gnu.org/copyleft/gpl.html
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the software.

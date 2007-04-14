@@ -1,0 +1,94 @@
+Wap Wikipedia.
+--------------
+This is an often quick and dirty Hack for wap.es.wikipedia.org
+made by Purodha Blissenbach, http://ksh.wikipedia.org/wiki/User:Purodha
+
+It is based on hawpedia, http://hawpedia.mobi/
+using the HAWHAW library, http://hawhaw.de/
+Little attempts have been made to improve the existing code,
+but some limitations were lifted and errors removed.
+
+Caution:
+--------
+Before you use it, you must take care to adopt
+./wap/.htaccess
+to the target system! 
+
+Necessary to to:
+----------------
+* /lang/es/tanslations.php
+  - to be checked and translations corrected / completed.
+  (Author of modifications cannot do that)
+* /lang/*/keywords.php
+  - may be outdated. Only good one: /lang/es/keywords.php 
+* /config.php
+  - should likely be taylored.
+
+Changes:
+--------
++ Name changed from Hawpedia to Wikipedia
++ several texts adapted.
++ "spoken Wikipedia" switched off
++ square brackets surrounding links removed.
+  (can be switched back on in config.php)
++ Wikipedia globe logo added to all non-wp-pages
+  (currently 16x16px, a 32x32px logo is available,
+  can be set in config.php)
+  + those page are laid out more equally.
++ all embedded html entities (&bull;, &Auml;, ...)
+  are now correctly converted to Unicode.
++ "magic word" control elements (e.g. __TOC__)
+  are always not treated as text and are removed.
++ can ignore browsers language preference and always use
+  default language as per setting in config.php
++ images can be switched off in config.php
++ images inline with text working now.
++ image scaling:
+  + uses width from wikicode if less than max permitted
+    (max set in config.php to 128px)
+  + some image types are always scaled so as to force
+    them through type conversion.
++ image loading:
+  + images are loaded directly from the wikipedia
+    if possible
+  + they may be coming from either the Wikipedia istself
+    or Wikimedia commons.
+  + on-the-fly conversion for image types not supported by
+    WAP devices is done through new local /image.php
++ Template, parser function and constant expansion added.
+  It uses the Special:ExpandTemplates interface, and
+  can be switched off in config.php
++ whatever I forgot to mention :-)
+
+
+Open Issues:
+------------
+* Image exceeding the (unknown) file size restriction of
+  target devices are not detected and may cause errors.
+* Transparency in SVG and PNG images is not preserved
+  during conversion to GIF format.
+* Expanded templates loose their parser property of being
+  treated as if at a line break when inserted into the
+  wikitext as they are. Thus wiki syntax like == or {|
+  may go undetected.
+
+
+Nice to be done (not necessarily in this order):
+
+Parser:
+- some embedded html to be treated
+- wiki table styntax to be treated.
+- wikilinks having a name space must not be ignored.
+  + localized name space names to be recognized.
+
+Other:
+- Opera: Unicode or document type problem.
+
+Images:
+- alignment?
+  + can WAP2 have text float around images?
+- show text associated with an image, if present.
+- associate links to local WP image page with images. How?
+
+=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
