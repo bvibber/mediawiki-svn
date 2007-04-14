@@ -23,16 +23,20 @@
 # Extension info available at http://www.mediawiki.org/wiki/Extension:SmoothGallery
 # SmoothGallery available at http://smoothgallery.jondesign.net/
 #
-# Version 1.0h / 2007-02-03
+# Version 1.0i / 2007-02-03
 #
 
 if( !defined( 'MEDIAWIKI' ) )
         die( -1 );
 
 $wgExtensionFunctions[] = "wfSmoothGallery";
-$wgExtensionFunctions[] = "wfSetupSpecialSmoothGallery";
 
-$wgHooks['BeforePageDisplay'][] = 'addSmoothGalleryJavascriptAndCSS';
+$wgHooks['OutputPageParserOutput'][] = 'smoothGalleryParserOutput';
+$wgHooks['LoadAllMessages'][] = 'loadSmoothGalleryI18n';
+
+$wgAutoloadClasses['SmoothGallery'] = dirname( __FILE__ ) . '/SmoothGalleryClass.php';
+$wgAutoloadClasses['SpecialSmoothGallery'] = dirname( __FILE__ ) . '/SpecialSmoothGallery.php';
+$wgSpecialPages['SmoothGallery'] = 'SpecialSmoothGallery';
 
 //sane defaults. always initialize to avoid register_globals vulnerabilities
 $wgSmoothGalleryDelimiter = "\n";
@@ -42,75 +46,6 @@ function wfSmoothGallery() {
         global $wgParser;
 
         $wgParser->setHook( 'sgallery', 'renderSmoothGallery' );
-}
-
-function wfSetupSpecialSmoothGallery() {
-        global $IP;
-        global $wgMessageCache;
-
-        require_once($IP . '/includes/SpecialPage.php');
-
-        SpecialPage::addPage(new SpecialPage('SmoothGallery', '', false));
-        $wgMessageCache->addMessage('smoothgallery', 'Special:SmoothGallery');
-}
-
-function wfSpecialSmoothGallery( $par ) {
-        global $wgRequest;
-
-        $gallery = new SmoothGallery( $wgRequest );
-        $gallery->execute( $par );
-}
-
-class SmoothGallery {
-        /**#@+
-         * @access private
-         */
-        var $mOptionArray, $mInput;
-
-        function SmoothGallery( &$request ) {
-                global $wgImageLimits, $wgUser;
-
-                $wopt = $wgUser->getOption( 'imagesize' );
-
-                if( !isset( $wgImageLimits[$wopt] ) ) {
-                        $wopt = User::getDefaultOption( $sizeDefault );
-                }
-
-                list($width, $height) = $wgImageLimits[$wopt];
-
-                $this->mInput = $request->getVal( 'input' );
-
-                $this->mOptionArray['height'] = $request->getVal( 'height', $height );
-                $this->mOptionArray['width'] = $request->getVal( 'width', $width );
-                $this->mOptionArray['showcarousel'] = $request->getVal( 'showcarousel', '1' );
-                $this->mOptionArray['timed'] = $request->getVal( 'timed' );
-                $this->mOptionArray['delay'] = $request->getVal( 'delay' );
-                $this->mOptionArray['showarrows'] = $request->getVal( 'showarrows', '1' );
-                $this->mOptionArray['showinfopane'] = $request->getVal( 'showinfopane', '1' );
-
-                //The extension expects true/false and not 1/0
-                $boollist = array("showcarousel", "timed", "delay", "showarrows", "showinfopane");
-                foreach ( $boollist as $bool ) {
-                        if ( $this->mOptionArray[$bool] == "1" ) {
-                                $this->mOptionArray[$bool] = "true";
-                        } else {
-                                $this->mOptionArray[$bool] = "false";
-                        }
-                }
-        }
-
-        function execute( $par ) {
-                global $wgSmoothGalleryDelimiter;
-                global $wgOut;
-                global $wgTitle;
-                global $wgParser;
-
-                if (!$this->mInput) $this->mInput = $par;
-
-                $this->mInput = str_replace( array('|', ':::'), $wgSmoothGalleryDelimiter, $this->mInput );
-
-                $wgOut->addHTML( renderSmoothGallery( $this->mInput, $this->mOptionArray, $wgParser ) );
-        }
 }
 
 function smoothGalleryImagesByCat( $title ) {
@@ -139,9 +74,6 @@ function smoothGalleryImagesByCat( $title ) {
 	return $images;
 }
 
-/**
- * @todo Internationalize
- */
 function renderSmoothGallery( $input, $argv, &$parser ) {
         global $wgContLang, $wgUser, $wgTitle;
         global $wgSmoothGalleryDelimiter;
@@ -150,7 +82,9 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
 
         //Sanity check
         if ( $input == "" ) {
-                $output = "<p><b>SGallery error:</b> no images were added into the gallery. Please add at least one image.</p>";
+		loadSmoothGalleryI18n();
+		$output = wfMsg("smoothgallery-error");
+                $output .= wfMsg("smoothgallery-not-found");
                 return $output;
         }
 
@@ -233,6 +167,8 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
                 return '<a href="' . $output . '">' . $name . '</a>';
         }
 
+	$parser->mOutput->mSmoothGalleryTag = true; # flag for use by smoothGalleryParserOutput
+
         //Open the outer div of the gallery
         $output = '<div id="' . $name . '" class="myGallery" style="width: ' . $width . ';height: ' . $height . '; display:none;">';
 
@@ -248,7 +184,7 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         $local_parser->replaceVariables( $input );
 
         //The image array is a delimited list of images (strings)
-        $img_arr = explode( $wgSmoothGalleryDelimiter, $input );
+	$img_arr = preg_split( "/$wgSmoothGalleryDelimiter/", $input, -1, PREG_SPLIT_NO_EMPTY );
         $img_count = count( $img_arr );
 
         $title_arr = array();
@@ -283,6 +219,7 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
 
                 //Image wasn't found. No point in going any further.
                 if ( is_null($img_obj) ) {
+                        $img_count = $img_count - 1;
                         continue;
                 }
 
@@ -299,13 +236,19 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
                 //check media type. Only images are supported
 		$mtype = $img_obj->getMediaType();
                 if ( $mtype != MEDIATYPE_DRAWING && $mtype != MEDIATYPE_BITMAP ) {
+                        $img_count = $img_count - 1;
                         continue;
                 }
 
                 //Create a thumbnail the same size as our gallery so that
                 //full images fit correctly
                 $full_thumb_obj = $img_obj->getThumbnail( $width, $height );
-                $full_thumb = $full_thumb_obj->getUrl();
+		if ( !is_null($full_thumb_obj) ) {
+                	$full_thumb = $full_thumb_obj->getUrl();
+		} else {
+                        $img_count = $img_count - 1;
+                	continue;
+		}
 
                 if ( $full_thumb == "" ) {
                         //The thumbnail we requested was larger than the image;
@@ -366,19 +309,19 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         }
 
         //Make sure we have something to output
-        if ( $img_count == 0 ) {
+        if ( $img_count <= 0 ) {
                 //The user requested images, but none of the ones requested
                 //actually exist, let's inform the user
-                $output = "<p><b>SGallery error:</b> ";
+		loadSmoothGalleryI18n();
+
+		$output = wfMsg("smoothgallery-error");
 
                 //Sanity check
                 if ( $missing_img != "" ) {
-                        $output .= "No images were included in this gallery. Make sure all images requested exist. The following images were not found: $missing_img";
+                        $output .= wfMsg("smoothgallery-no-images", $missing_img);
                 } else {
-                        $output .= "There was an unexpected error. Please file a bug report.";
+                        $output .= wfMsg("smoothgallery-unexpected-error");
                 }
-
-                $output .= "</p>";
 
                 return $output;
         }
@@ -433,32 +376,46 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
         return $output;
 }
 
-function addSmoothGalleryJavascriptAndCSS( &$m_pageObj ) {
-        global $wgSmoothGalleryExtensionPath;
-
-        $extensionpath = $wgSmoothGalleryExtensionPath;
-
-        //Add mootools (required by SmoothGallery)
-        //You can use the compressed js if you want, but I
-        //generally don't trust them unless I wrote them myself
-        $m_pageObj->addScript( '<script src="' . $extensionpath . '/scripts/mootools.uncompressed.js" type="text/javascript"></script>' );
-
-        //Add SmoothGallery javascript and CSS (I should probably
-        //be using addLink for the CSS...)
-        $m_pageObj->addScript( '<script src="' . $extensionpath . '/scripts/jd.gallery.js" type="text/javascript"></script>' );
-        $m_pageObj->addScript( '<link rel="stylesheet" href="' . $extensionpath . '/css/jd.gallery.css" type="text/css" media="screen" charset="utf-8" />' );
-
-        $m_pageObj->addScript( '<style type="text/css">.jdGallery .slideInfoZone { overflow:auto ! important; }</style>' );
-
+/**
+ * Hook callback that injects messages and things into the <head> tag
+ * Does nothing if $parserOutput->mSmoothGalleryTag is not set
+ */
+function smoothGalleryParserOutput( &$outputPage, &$parserOutput )  {
+        if ( !empty( $parserOutput->mSmoothGalleryTag ) ) {
+                SmoothGallery::setHeaders( $outputPage );
+        }
         return true;
 }
+
+/**
+ * Load the SmoothGallery internationalization file
+ */
+function loadSmoothGalleryI18n() {
+        global $wgContLang, $wgMessageCache;
+
+        static $initialized = false;
+
+        if ( $initialized ) return;
+
+        $messages = array();
+
+        $f = dirname( __FILE__ ) . '/SmoothGallery.i18n.php';
+        include( $f );
+
+        $f = dirname( __FILE__ ) . '/SmoothGallery.i18n.' . $wgContLang->getCode() . '.php';
+        if ( file_exists( $f ) ) include( $f );
+
+        $initialized = true;
+        $wgMessageCache->addMessages( $messages );
+}
+
 
 /**
  * Add extension information to Special:Version
  */
 $wgExtensionCredits['other'][] = array(
         'name' => 'SmoothGallery parser extension',
-        'version' => '1.0h',
+        'version' => '1.0i',
         'author' => 'Ryan Lane',
         'description' => 'Allows users to create galleries with images that have been uploaded. Allows most options of SmoothGallery',
         'url' => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery'
