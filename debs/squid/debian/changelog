@@ -1,3 +1,9 @@
+squid (2.6.12-1wm5) edgy; urgency=low
+
+  * Add support for min-size cache_dir option
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 15 Apr 2007 13:37:00 +0000
+
 squid (2.6.12-1wm4) edgy; urgency=low
 
   * Update COSS rebuild patch to not assert on other wrong tlv lengths.

@@ -35,5 +35,6 @@ nomanglerequestheaders	Do not alter the request headers in server-side
 coss-rebuild-meta-key-length
 			Do not crash on assert(t->length == MD5_DIGEST_CHARS)
 			in the COSS rebuild code, just ignore the object
-25-coss-remove-swap-log	Remove (or currently, disable) COSS swap log as it's
+coss-remove-swap-log	Remove (or currently, disable) COSS swap log as it's
 			not really used and just causes bugs and disk I/O.
+storedir-minobjsize	Add support for min-size cache option
