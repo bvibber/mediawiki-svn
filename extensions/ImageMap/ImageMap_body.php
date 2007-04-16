@@ -161,7 +161,7 @@ class ImageMap {
 
 			# Construct the area tag
 			$attribs = array( 
-				'href' => $title->escapeLocalURL(),
+				'href' => $title->escapeLocalURL() . $title->getFragmentForURL() ,
 			);
 			if ( $shape != 'default' ) {
 				$attribs['shape'] = $shape;
