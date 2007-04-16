@@ -14,6 +14,9 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
+define('NEWS_HEAD_LENGTH', 1024 * 2);
+define('NEWS_HEAD_SCAN', 256);
+
 #no need to include, rely on autoloader
 #global $IP;
 #require_once( "$IP/includes/RecentChange.php" );
@@ -22,6 +25,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 class NewsRenderer {
 	var $parser;
 	var $skin;
+
+	var $title;
+
+	var $prefix;
+	var $postfix;
 
 	var $usetemplate;
 	var $templatetext;
@@ -42,8 +50,34 @@ class NewsRenderer {
 	var $onlynew;
 	var $onlypatrolled;
 
-	function __construct( $templatetext, $argv, &$parser ) {
+	static function newFromArticle( &$article, &$parser ) {
+		$title = $article->getTitle();
+		$article->getContent(); 
+		$text = $article->mContent;
+		if (!$text) return NULL;
+
+		$uniq_prefix = "\x07NR-UNIQ";
+		$elements = array( 'nowiki', 'gallery', 'newsfeed');
+		$matches = array();
+		$text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+
+		foreach( $matches as $marker => $data ) {
+			list( $element, $content, $params, $tag ) = $data;
+			$tagName = strtolower( $element );
+
+			if ($tagName != 'newsfeed') continue;
+			#if (!is_null($id) && (!isset($params['id']) || $params['id'] != $id)) continue;
+			
+			return new NewsRenderer( $title, $content, $params, $parser );
+		}
+
+		return NULL;
+	}
+
+	function __construct( $title, $templatetext, $argv, &$parser ) {
 		global $wgContLang, $wgUser;
+
+		$this->title = $title;
 
 		$this->skin = $wgUser->getSkin();
 		$this->parser = $parser;
@@ -62,24 +96,38 @@ class NewsRenderer {
 	
 		#$template = @$argv['template'];
 	
-		if ( $this->usetemplate ) {
+		#if ( $this->usetemplate ) {
 			#print "<pre>$templatetitle</pre>";
 	
-			$this->templateparser = clone $parser;
-			$this->templateparser->setOutputType( OT_HTML );
-	
+			$this->templateparser = $parser;
+			#$this->templateparser = clone $parser;
+			#$this->templateparser->setOutputType( OT_HTML );
+			$this->templateoptions = new ParserOptions;
+			$this->templateoptions->setEditSection( false );
+			$this->templateoptions->setNumberHeadings( false );
+			$this->templateoptions->setRemoveComments( true );
+			$this->templateoptions->setUseTeX( false );
+			$this->templateoptions->setUseDynamicDates( false );
+			$this->templateoptions->setInterwikiMagic( true ); //strip interlanguage-links
+			$this->templateoptions->setAllowSpecialInclusion( false );
+
 			#$this->templatetitle = Title::newFromText( $template, NS_TEMPLATE );
 			#$templatetext = $templateparser->fetchTemplate( $templatetitle );
 			#print "<pre>$templatetext</pre>";
 		
-			$this->templateoptions = new ParserOptions;
 			#$templateoptions->setRemoveComments( true );
 			#$templateoptions->setMaxIncludeSize( self::MAX_INCLUDE_SIZE );
-		}
-		else {
+		#}
+
+		if ( !$this->usetemplate ) {
 			$this->changelist = new OldChangesList( $this->skin );
 		}
 	
+		#$this->feedId = @$argv['id'];
+
+		$this->prefix = @$argv['prefix'];
+		$this->postfix = @$argv['postfix'];
+
 		$this->limit = @$argv['limit'];
 		if ( !$this->limit ) $this->limit = 10;
 		else if ( $this->limit > 100 ) $this->limit = 100;
@@ -150,8 +198,29 @@ class NewsRenderer {
 			$group[] = 'rc_namespace AND rc_title';
 		}
 		*/
-	
 	}
+
+	/*
+	function getFeedId() {
+		return $this->feedId;
+	}
+	*/
+
+	/*
+	function getCacheKey() {
+		return '@' . get_class($this) . ':' . 
+			($this->templatetext ? md5($this->templatetext) : $this->templatetext ). '|' .
+			$this->namespaces . '|' .
+			$this->categories . '|' .
+			$this->types . '|' .
+			$this->nominor . ',' .
+			$this->noanon . ',' .
+			$this->nobot . ',' .
+			$this->notalk . ',' .
+			$this->onlynew . ',' .
+			$this->onlypatrolled ;
+	}
+	*/
 
 	function query( $dbr, $limit, $offset = 0 ) {
 		list( $trecentchanges, $tpage, $tcategorylinks ) = $dbr->tableNamesN( 'recentchanges', 'page', 'categorylinks' );
@@ -191,24 +260,15 @@ class NewsRenderer {
 	
 		$sql = $dbr->limitResult( $sql, $limit, $offset );
 	
-		$res = $dbr->query( $sql, 'newsxFetchRows' );
+		$res = $dbr->query( $sql, 'NewsRenderer::query' );
 	
 		return $res;
 	}
 	
-	# The callback function for converting the input text to HTML output
-	function renderNews( ) {
-		global $wgTitle;
-
-		$this->parser->disableCache();
-	
+	function fetchNews( ) {
 		$dbr = wfGetDB( DB_SLAVE );
+		$news = array();
 	
-		$text = '';
-	
-		if ( !$this->usetemplate )
-			$text .= $this->changelist->beginRecentChangesList();
-
 		$remaining = $this->limit;
 		$offset = 0;
 		$ignore = array(); #collect stuff we already have, when in unique mode
@@ -228,8 +288,7 @@ class NewsRenderer {
 					$ignore[$k] = true;
 				}
 		
-				$t = $this->renderRow( $row );
-				$text .= trim($t) . "\n"; #FIXME: handle blank lines at the end sanely. Paragraphs may be desired, but not when using lists.
+				$news[] = $row;
 				$remaining -= 1;
 			}
 	
@@ -238,9 +297,32 @@ class NewsRenderer {
 			if ( !$has ) break; #empty result set, stop trying 
 		}
 		
+		return $news;
+	}
+
+	function renderNews( ) {
+		global $wgTitle;
+
+		$news = $this->fetchNews();
+
+		$text = '';
+	
+		if ( $this->usetemplate ) {
+			$text .= $this->prefix;
+		}
+		else {
+			$text .= $this->changelist->beginRecentChangesList();
+		}
+	
+		foreach ($news as $row) { 
+			$t = $this->renderRow( $row );
+			$text .= trim($t) . "\n"; #TODO: handle blank lines at the end sanely. Paragraphs may be desired, but not when using lists.
+		}
+		
 		if ( $this->usetemplate ) { #it's wikitext, parse
-			$output = $this->templateparser->parse( $text, $wgTitle, $this->templateoptions, true );
-			$html =  $output->getText();
+			#$output = $this->templateparser->parse( $text, $wgTitle, $this->templateoptions, true );
+			$text .= $this->postfix;
+			$html = $this->templateparser->recursiveTagParse( $text );
 		}
 		else { #it's already html
 			$text .= $this->changelist->endRecentChangesList();
@@ -249,14 +331,130 @@ class NewsRenderer {
 	
 		return $html;
 	}
+
+	function renderFeed( $format, $description = '' ) {
+		global $wgSitename, $wgFeedClasses;
+		$date = wfTimestamp(); //XXX: use MAX(rc_timestamp) ?
+
+		$cls = $wgFeedClasses[$format];
+		if (!class_exists($cls)) return false;
+
+		$url = $this->title->getFullUrl();
+		$feed = new $cls( $this->title->getText() . ' - ' . $wgSitename , $description, $url, $date );
+
+		$news = $this->fetchNews();
+
+		ob_start();
+		$feed->outHeader();	
+		foreach ($news as $row) { 
+			$t = $this->renderRow( $row, true );
+			$item = $this->makeFeedItem( $row, $t, true );
+
+			$feed->outItem( $item );
+		}
+		
+		$feed->outFooter();
+		$xml = ob_get_contents();
+		ob_end_clean();
+
+		return $xml;
+	}
 	
-	function renderRow( $row ) {
+	function renderFeedPreview( ) {
+		$news = $this->fetchNews();
+
+		$html = '';
+
+		foreach ($news as $row) { 
+			$t = $this->renderRow( $row, true );
+			$item = $this->makeFeedItem( $row, $t, false );
+			$t = $this->renderFeedItem( $item );
+			$html .= $t;
+		}
+
+		return $html;
+	}
+	
+	function renderFeedItem( $item ) {
+		global $wgContLang, $wgUser;
+		$sk = $wgUser->getSkin();
+
+		$html = '';
+		$html .= '<div class="newsfeed-item">';
+		$html .= '<div class="newsfeed-item-head">';
+
+		$html .= '<h1>' . $sk->makeKnownLinkObj( $item->title_object ) . '</h1>';
+
+		$html .= '<p><small>';
+		$html .= $item->getAuthor();
+		$html .= ', ';
+		$html .= $wgContLang->timeanddate( $item->getDate() );
+		if ( $item->getComments() ) {
+			$html .= ' - <i>';
+			$html .= htmlspecialchars( $item->raw_comment );
+			$html .= '</i>';
+		}
+		$html .= '</small></p>';
+
+		$html .= '</div>';
+
+		$html .= '<div class="newsfeed-item-content">';
+		$html .= $item->raw_text;
+		$html .= '</div>';
+		$html .= '</div>';
+		return $html;
+	}
+
+	function makeFeedItem( $row, $text, $standalone ) {
+		global $wgNewsFeedUserPattern;
+
+		$text = $text . ' __NOTOC__'; #XXX ugly hack!
+
+		if ($standalone) {
+			$output = $this->templateparser->parse( $text, $GLOBALS['wgTitle'], $this->templateoptions, true );
+			$text = $output->mText;
+		}
+		else {  //FIXME: mask interwikis, categories, etc!!!!!!!!
+			$text = $this->templateparser->recursiveTagParse( $text );
+		}
+
+		if ( $wgNewsFeedUserPattern ) {
+			$user = str_replace('$1', $row->rc_user_text, $wgNewsFeedUserPattern);
+		}
+		else {
+			$user = $row->rc_user_text;
+		}
+
+		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title ); //XXX: this is redundant, we already have a title object in renderRow. But no good way to pass it :(
+		$item = new FeedItem( $title->getPrefixedText(), 
+					$text, 
+					$title->getFullURL(), 
+					$row->rc_timestamp,
+					$user,
+					$row->rc_comment );
+
+		//XXX: ugly hack - things used by preview
+		$item->raw_text = $text; //needed because FeedItem holds text html-encoded internally. wtf
+		$item->raw_comment = $row->rc_comment; //needed because FeedItem holds text html-encoded internally. wtf
+		$item->title_object = $title; //title object
+		return $item;
+	}
+
+	function renderRow( $row, $forFeed = false ) {
 		global $wgUser, $wgLang;
-	
+
 		$change = RecentChange::newFromRow( $row );
 		$change->counter = 0; //hack
-	
-		if ( !$this->usetemplate ) {
+
+		$usetemplate = $this->usetemplate;
+		$templatetext = $this->templatetext;
+
+		if (!$templatetext && $forFeed) {
+			$templatetext = '{{{head}}}';
+			$usetemplate = true;
+		}
+
+		if ( !$usetemplate ) {
 			#$pagelink = $this->skin->makeKnownLinkObj( $title );
 		
 			$this->changelist->insertDateHeader($dummy, $row->rc_timestamp); #dummy call to suppress date headers
@@ -276,7 +474,7 @@ class NewsRenderer {
 			$params['minor'] = $row->rc_minor ? 'true' : '';
 			$params['bot'] = $row->rc_bot ? 'true' : '';
 			$params['patrolled'] = $row->rc_patrolled ? 'true' : '';
-			$params['anon'] = ( $row->rc_user <= 0 ) ? 'true' : ''; #TODO: perhaps use (rc_user == rc_ip) instead? That would take care of entries from importing.
+			$params['anon'] = ( $row->rc_user <= 0 ) ? 'true' : ''; #XXX: perhaps use (rc_user == rc_ip) instead? That would take care of entries from importing.
 			$params['new'] = ( $row->rc_type == RC_NEW ) ? 'true' : '';
 
 			$params['type'] = $row->rc_type;
@@ -300,10 +498,183 @@ class NewsRenderer {
 			$params['permalink'] = $permaq ? $title->getFullURL( $permaq ) : '';
 
 			$params['comment'] = str_replace( array( '{{', '}}', '|', '\'' ), array( '&#123;&#123;', '&#125;&#125;', '&#124;', '$#39;' ), wfEscapeWikiText( $row->rc_comment ) );
-	
-			$text = $this->templateparser->replaceVariables( $this->templatetext, $params );
+			
+			if ( stripos($templatetext, '{{{content}}}')!==false || stripos($templatetext, '{{{head}}}')!==false ) {
+				$article = new Article( $title, $row->rc_this_oldid );
+				$t = $article->getContent(); 
+
+				$params['content'] = NewsRenderer::sanitizeWikiText( $t );
+				//TODO: expand variables & templates first, so cut-off applies to effective content, 
+				//      and extension tags from templates are stripped properly
+				//TODO: avoid magic categories, interwiki-links, etc
+
+				if ( stripos($templatetext, '{{{head}}}')!==false ) {
+					$params['head'] = NewsRenderer::extractHead( $params['content'], $title );
+				}
+			}
+
+			$text = $this->templateparser->replaceVariables( $templatetext, $params );
 			return $text;
 		}
+	}
+
+	/*
+	function renderFeedMetaLink( $format ) {
+		$format = strtolower(trim($format));
+
+		$name = $format;
+		if ($name == 'rss') $name = 'RSS 2.0';
+		else if ($name == 'atom') $name = 'Atom 1.0';
+
+		$mime = "application/$format+xml"; //hack
+		$url = NewsRenderer::getFeedURL($this->title, $format);
+		#$id = $this->feedId ? htmlspecialchars($this->feedId) : NULL;
+
+		$html = '<link rel="alternate" type="'.$mime.'" title="'.($id?"$id - ":'').$name.'" href="'.htmlspecialchars($url).'">';
+		return $html;
+	}
+	*/
+
+	static function getFeedURL( $title, $format ) {
+		global $wgNewsFeedURLPattern;
+
+		if ( $wgNewsFeedURLPattern ) {
+			$params = array(
+				'$1' => urlencode( $title->getPrefixedDBKey() ),
+				'$2' => urlencode( $format ),
+				#'$3' => urlencode( $feedId ),
+			);
+
+			$url = str_replace(array_keys($params), array_values($params), $wgNewsFeedURLPattern);
+		}
+		else {
+			$q = 'feed=' . urlencode( $format );
+			#if ($feedId) $q .= '&feed=' . urlencode( $feedId );
+	
+			$url = $title->getFullUrl($q);
+		}
+
+		return $url;
+	}
+
+	static function renderFeedLink( $text, $argv, &$parser ) {
+		$t = @$argv['feed'];
+		if ($t) $t = $parser->replaceVariables($t, array());
+
+		$title = $t === NULL ? NULL : Title::newFromText($t);
+		if (!$title) $title = $GLOBALS['wgTitle'];
+
+		#$id = @$argv['id'];
+		$format = @$argv['format'];
+		if (!$format) $format = 'rss';
+		else $format = strtolower(trim($format));
+
+		$icon = @$argv['icon'];
+		$iconright = false;
+		if (preg_match('/^(.+)\|(\w+)$/', $icon, $m)) {
+			$icon = $m[1];
+			$iconright = ( strtolower(trim($m[2])) === 'right' );
+		}
+		
+		$ticon = $icon ? Title::newFromText($icon, NS_IMAGE) : NULL;
+		$image = $ticon ? new Image( $ticon ) : NULL;
+		$thumb = $image ? $image->getThumbnail(80, 16) : NULL;
+		if ($image && !$thumb) $thumb = $image;
+		$iconurl = $thumb ? $thumb->getUrl() : NULL;
+
+		$url = NewsRenderer::getFeedURL($title, $format); 
+
+		$ttl = @$argv['title'];
+		if ($ttl) $ttl = $parser->replaceVariables($ttl, array());
+
+		$s = '';
+		if ($text) {
+			$s .= $parser->recursiveTagParse($text);
+			if (!$ttl) $ttl = $text . ' (' . $format . ')';
+		}
+		else {
+			if (!$ttl) $ttl = $format;
+		}
+
+		if ($iconurl) {
+			$ic = '<img border="0" src="'.htmlspecialchars($iconurl).'" alt="'.htmlspecialchars($ttl).'" title="'.htmlspecialchars($ttl).'"/>';
+			if ($s === '') $s = $ic;
+			else if ($iconright) $s = "$s&nbsp;$ic";
+			else $s = "$ic&nbsp;$s";
+		}
+
+		$html = '<a href="'.htmlspecialchars($url).'" title="'.htmlspecialchars($ttl).'">'.$s.'</a>';
+		return $html;
+	}
+
+	static function getLastChangeTime( ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		list( $trecentchanges ) = $dbr->tableNamesN( 'recentchanges' );
+
+		$sql = 'select max(rc_timestamp) from ' . $trecentchanges;
+		$res = $dbr->query( $sql, 'NewsRenderer::getLastChangeTime' );
+		if (!$res) return false;
+
+		$row = $dbr->fetchRow($res);
+		if (!$row) return false;
+
+		return $row[0];
+	}
+
+	static function sanitizeWikiText( $text ) {
+		global $wgParser;
+
+		$elements = array_keys( $wgParser->mTagHooks );
+		$uniq_prefix = "\x07NR-UNIQ";
+
+		$matches = array();
+		$text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+
+		foreach( $matches as $marker => $data ) {
+			list( $element, $content, $params, $tag ) = $data;
+			$tagName = strtolower( $element );
+
+			$output = '';
+			if ($tagName == '!--') $output = $tag; //keep comments for now, may be stripped later
+
+			#print "* $marker => " . htmlspecialchars($output) . "<br/>\n";
+			$text = str_replace($marker, $output, $text);
+		}
+
+		return $text;
+	}
+
+	private static function cutHead( $text, $separators, $suffix ) {
+		$i = NEWS_HEAD_LENGTH - 1;
+		while ($i > NEWS_HEAD_LENGTH - NEWS_HEAD_SCAN) {
+			$ch = substr($text, $i, 1);
+			if (in_array($ch, $separators)) {
+				$text = substr($text, 0, $i);
+				return trim($text) . $suffix;
+			}
+
+			$i -= 1;
+		}
+
+		return false;
+	}
+
+	static function extractHead( $text, $title = NULL ) {
+		$text = trim($text);
+
+		if ( strlen($text) < NEWS_HEAD_LENGTH ) return $text;
+
+		$suffix = "\n" . '... ([[' . $title->getPrefixedText() . ']]...)';
+
+		$t = preg_replace('/^(.*?)<!--\s*summary\s+end\s*-->.*$/si', '\1', $text);
+		if ($t != $text) return trim($t);
+
+		if ( $t = NewsRenderer::cutHead($text, array("\r", "\n"), $suffix) ) return $t;
+		if ( $t = NewsRenderer::cutHead($text, array("."), $suffix) ) return $t;
+		if ( $t = NewsRenderer::cutHead($text, array(" ", "\t"), $suffix) ) return $t;
+		
+		$text = substr($text, 0, 512) . $suffix;
+		return $text;
 	}
 }
 
