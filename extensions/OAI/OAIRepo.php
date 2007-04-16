@@ -119,6 +119,7 @@ function oaiUpdateMove( $from, $to, $user, $fromid, $toid ) {
 
 function oaiTestTables( &$tables ) {
 	$tables[] = 'updates';
+	return true;
 }
 
 ?>

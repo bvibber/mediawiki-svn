@@ -1576,6 +1576,7 @@ function wfTasksExtension() { # Checked for HTML and MySQL insertion attacks
  */
 function wfTasksTestTables( &$tables ) {
 	$tables[] = 'tasks';
+	return true;
 }
 
 
