@@ -19,7 +19,7 @@ $wgExtensionCredits['other'][] = array(
 	'name' => 'News', 
 	'author' => 'Daniel Kinzler, brightbyte.de', 
 	'url' => 'http://mediawiki.org/wiki/Extension:News',
-	'description' => 'shows recent changes on a wiki page',
+	'description' => 'shows customized recent changes on a wiki pages or as RSS or Atom feed',
 );
 
 $wgNewsFeedURLPattern = false; // pattern for feed-URLs; useful when using rewrites for canonical feed URLs
