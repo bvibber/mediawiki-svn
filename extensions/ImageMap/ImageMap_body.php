@@ -40,6 +40,9 @@ class ImageMap {
 		$lineNum = 0;
 		$output = '';
 		$links = array();
+
+		# Define canonical desc types to allow i18n of 'imagemap_desc_types'
+		$descTypesCanonical = 'top-right, bottom-right, bottom-left, top-left, none';
 		$descType = self::BOTTOM_RIGHT;
 		$defaultLinkAttribs = false;
 		$realmap = true;
@@ -96,10 +99,18 @@ class ImageMap {
 			$cmd = strtok( $line, " \t" );
 			if ( $cmd == 'desc' ) {
 				$typesText = wfMsgForContent( 'imagemap_desc_types' );
+				if ( $descTypesCanonical != $typesText ) {
+					// i18n desc types exists
+					$typesText = $descTypesCanonical . ', ' . $typesText;
+				}
 				$types = array_map( 'trim', explode( ',', $typesText ) );
 				$type = trim( strtok( '' ) );
 				$descType = array_search( $type, $types );
-				if ( $descType === false ) {
+				if ( $descType > 4 ) {
+					// A localized descType is used. Subtract 5 to reach the canonical desc type.
+					$descType = $descType - 5;
+				}
+				if ( $descType === false || $descType < 0 ) { // <0? In theory never, but paranoia...
 					return self::error( 'imagemap_invalid_desc', $typesText );
 				}
 				continue;

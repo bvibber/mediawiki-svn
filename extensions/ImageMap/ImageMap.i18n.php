@@ -18,7 +18,7 @@ function efImageMapMessages() {
 								   'default, rect, circle or poly',
 'imagemap_no_areas'             => '&lt;imagemap&gt;: at least one area specification must be given',
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: invalid coordinate at line $1, must be a number',
-'imagemap_invalid_desc'         => '&lt;imagemap&gt;: invalid desc specification, must be one of: $1',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: invalid desc specification, must be one of: <tt>$1</tt>',
 'imagemap_description'          => 'About this image',
 # Note to translators: keep the same order
 'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
@@ -35,10 +35,10 @@ function efImageMapMessages() {
 								   '<tt>default, rect, circle</tt> oder <tt>poly</tt>',
 'imagemap_no_areas'             => '&lt;imagemap&gt;-Fehler: Es muss mindestens ein Gebiet definiert werden',
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;-Fehler: Ungültige Koordinate in Zeile $1: es sind nur Zahlen erlaubt',
-'imagemap_invalid_desc'         => '&lt;imagemap&gt;-Fehler: Ungültiger „desc“-Parameter, möglich sind: $1',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;-Fehler: Ungültiger „desc“-Parameter, möglich sind: <tt>$1</tt>',
 'imagemap_description'          => 'Über dieses Bild',
 # Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
+'imagemap_desc_types'           => 'oben rechts, unten rechts, unten links, oben links, keine',
 ),
 
 /* French */
@@ -54,8 +54,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt; : coordonnée invalide à la ligne $1, doit être un nombre',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt; : paramètre « desc » invalide, les paramètres possibles sont : $1',
 'imagemap_description'          => 'À propos de cette image',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 
@@ -72,8 +70,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: קוארדינאטה שגויה בשורה $1, היא חייבת להיות מספר',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: הגדרת פרמטר desc שגויה, צריך להיות אחד מהבאים: $1',
 'imagemap_description'          => 'אודות התמונה',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Indonesian (Ivan Lanin) */
@@ -89,8 +85,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: koordinat tidak sah pada baris ke $1, haruslah berupa angka',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: spesifikasi desc tidak sah, harus salah satu dari: $1',
 'imagemap_description'          => 'Tentang gambar ini',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Italian (AnyFile, fixed typos by BrokenArrow) */
@@ -105,10 +99,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinata non valida nella riga $1, deve essere un numero',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Valore non valido per il parametro desc, deve essere uno dei seguenti: $1',
 'imagemap_description'          => 'Informazioni sull\'immagine',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
-#Since, as far I know, the alignment indicator are kept in English in the
-#  image inclusion syntax, I kept them in English here too.
 ),
 
 /* Kazakh default (AlefZet) */
@@ -124,8 +114,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 жолында жарамсыз координата, сан болуы қажет',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: жарамсыз сипаттама маманданымы, мынаның біреуі болуы қажет: $1',
 'imagemap_description'          => 'Бұл сурет туралы',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Kazakh Cyrillic (AlefZet) */
@@ -141,8 +129,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 жолында жарамсыз координата, сан болуы қажет',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: жарамсыз сипаттама маманданымы, мынаның біреуі болуы қажет: $1',
 'imagemap_description'          => 'Бұл сурет туралы',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Kazakh Latin (AlefZet) */
@@ -158,8 +144,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 jolında jaramsız koordïnata, san bolwı qajet',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: jaramsız sïpattama mamandanımı, mınanıñ birewi bolwı qajet: $1',
 'imagemap_description'          => 'Bul swret twralı',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Kazakh Arabic (AlefZet) */
@@ -175,8 +159,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 جولىندا جارامسىز كوورديناتا, سان بولۋى قاجەت',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: جارامسىز سيپاتتاما ماماندانىمى, مىنانىڭ بٴىرەۋٴى بولۋى قاجەت: $1',
 'imagemap_description'          => 'بۇل سۋرەت تۋرالى',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* nld / Dutch (Siebrand Mazeland) */
@@ -209,8 +191,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: neplatná súradnica na riadku $1, musí to byť číslo',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: neplatný popis, musí byť jedno z nasledovných: $1',
 'imagemap_description'          => 'O tomto obrázku',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Chinese (China) (Shinjiman) */
@@ -226,8 +206,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正确的座标，它必须是一个数字',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正确的 desc 参数，必须是以下的其中之一: $1',
 'imagemap_description'          => '关于这幅图像',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Chinese (Hong Kong) (Shinjiman) */
@@ -243,8 +221,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正確的座標，它必須是一個數字',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正確的 desc 參數，必須是以下的其中之一: $1',
 'imagemap_description'          => '關於這幅圖像',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Chinese (Singapore) (Shinjiman) */
@@ -260,8 +236,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正确的座标，它必须是一个数字',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正确的 desc 参数，必须是以下的其中之一: $1',
 'imagemap_description'          => '关于这幅图像',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Chinese (Taiwan) (Shinjiman) */
@@ -277,8 +251,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正確的座標，它必須是一個數字',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正確的 desc 參數，必須是以下的其中之一: $1',
 'imagemap_description'          => '關於這幅圖像',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
 /* Cantonese (Shinjiman) */
@@ -294,8 +266,6 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 響第$1行度有唔正確嘅座標，佢一定係一個數字',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
 'imagemap_description'          => '關於呢幅圖像',
-# Note to translators: keep the same order
-'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 );
 }
