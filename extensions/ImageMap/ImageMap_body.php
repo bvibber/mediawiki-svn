@@ -42,6 +42,7 @@ class ImageMap {
 		$links = array();
 		$descType = self::BOTTOM_RIGHT;
 		$defaultLinkAttribs = false;
+		$realmap = true;
 		foreach ( $lines as $line ) {
 			++$lineNum;
 
@@ -187,17 +188,21 @@ class ImageMap {
 			return self::error( 'imagemap_no_image' );
 		}
 
-		if ( $output == '' ) {
+		if ( $output == '' && $defaultLinkAttribs == '' ) {
 			return self::error( 'imagemap_no_areas' );
+		} elseif ( $output == '' && $defaultLinkAttribs != '' ) {
+			// no areas defined, default only. It's not a real imagemap, so we do not need some tags
+			$realmap = false;
 		}
 
-		# Construct the map
-		$mapName = "ImageMap_" . ++self::$id;
-		$output = "<map name=\"$mapName\">\n$output</map>\n";
-		
-		# Alter the image tag
-		$imageNode->setAttribute( 'usemap', "#$mapName" );
-		
+		if ( $realmap ) {
+			# Construct the map
+			$mapName = "ImageMap_" . ++self::$id;
+			$output = "<map name=\"$mapName\">\n$output</map>\n";
+
+			# Alter the image tag
+			$imageNode->setAttribute( 'usemap', "#$mapName" );
+		}
 		# Add a surrounding div, remove the default link to the description page
 		$anchor = $imageNode->parentNode;
 		$parent = $anchor->parentNode;
