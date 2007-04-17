@@ -349,6 +349,23 @@ Ovo je verovatno privremeno; pokušajte ponovo nakon nekoliko momenata,
 ili pretražite viki preko nekog od spoljnih pretraživačkih servisa:\n"
 );
 $wgLuceneSearchMessages['sr'] = $wgLuceneSearchMessages['sr-ec'];
+$wgLuceneSearchMessages['sv'] = array(
+	'searchnumber'          => "<strong>Resultat $1-$2 av $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Föregående</span>",
+	'searchnext'            => "<span style='font-size: small'>Nästa</span> &#x00BB;",
+	'searchscore'           => "Relevans: $1",
+	'searchsize'            => "$1 kbyte ($2 ord)",
+	'searchdidyoumean'      => "Menade du: \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "Sökningen gav tyvärr inga exakta träffar.",
+	'searchnearmatches'     => "<b>Följande sidor har titlar som liknar din sökning:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "Sök i följande namnrymder:\n
+$1\n
+Sök efter $3 $9",
+	'lucenefallback'        => "På grund av ett problem kunde inte sökningen utföras. 
+Det var troligen bara något tillfälligt; försök igen om en liten stund,
+eller sök på wikin med någon extern söktjänst:\n"
+);
 $wgLuceneSearchMessages['ur'] = array(
 	'searchnumber'          => '<strong><font face="times new roman, urdu naskh asiatype">نـتـائـج : $3 کے $1 تـا $2 </strong></font>',
 	'searchprev'            => 'پیچھے',

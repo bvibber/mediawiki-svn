@@ -421,6 +421,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'uklonio status bota: [[$1]]',
 ),
 
+/* Swedish (Lejonel) */
+'sv' => array(
+'makebot' => 'Dela ut eller återkalla robotstatus',
+'makebot-header' => "'''Lokala byråkrater kan använda den här sidan för att ge eller ta ifrån användarkonton [[{{MediaWiki:Grouppage-bot}}|robotstatus]].'''<br />Robotstatus innebär att användarens redigeringar göms från de [[Special:Recentchanges|senaste ändringarna]] och liknande listor. Det är användbart för att användare som gör automatiserade redigeringar. Robotstatus ska användas enligt tillämpliga policies.",
+'makebot-username' => 'Användarnamn:',
+'makebot-search' => 'OK',
+'makebot-isbot' => '[[User:$1|$1]] har robotstatus.',
+'makebot-notbot' => '[[User:$1|$1]] har inte robotstatus.',
+'makebot-privileged' => '[[User:$1|$1]] är redan [[Special:Listadmins|administratör eller byråkrat]], och kan därför inte ges robotstatus.',
+'makebot-change' => 'Ändra status:',
+'makebot-grant' => 'Tilldela',
+'makebot-revoke' => 'Återkalla',
+'makebot-comment' => 'Kommentar:',
+'makebot-granted' => '[[User:$1|$1]] har nu robotstatus.',
+'makebot-revoked' => '[[User:$1|$1]] har inte längre robotstatus.',
+'makebot-logpage' => 'Robotstatuslogg',
+'makebot-logpagetext' => 'Det här är en logg över ändringar av användares [[{{MediaWiki:Grouppage-bot|robotstatus]].',
+'makebot-logentrygrant' => 'Gav robotstatus till [[$1]]',
+'makebot-logentryrevoke' => 'Återkallade robotstatus från [[$1]]',
+),
+
 /* Urdu */
 'ur' => array(
 'makebot' => 'بخشیں یا منسوخ کریں درجہ خودکارصارف',

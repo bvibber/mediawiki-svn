@@ -118,6 +118,11 @@ $wgCrossNamespaceLinksMessages['sr-el'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|veza|veze|veza}} ka $3 imenskom prostoru'
 );
 $wgCrossNamespaceLinksMessages['sr'] = $wgCrossNamespaceLinksMessages['sr-ec'];
+$wgCrossNamespaceLinksMessages['sv'] = array(
+	'crossnamespacelinks'         => 'Länkar mellan namnrymder',
+	'crossnamespacelinks-summary' => 'På den här sidan finns en lista över länkar från sidor i huvudnamnrymden till sidor i andra namnrymder (utom till namnrymderna {{ns:special}}, {{ns:talk}}, {{ns:project}} och {{ns:template}}). Det rekommenderas att sådana länkar inte används.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|länk|länkar}} till $3'
+);
 $wgCrossNamespaceLinksMessages['zh-cn'] = array(
 	'crossnamespacelinks'     => '跨名字空间的链接',
 	'crossnamespacelinks-summary' => '本页面提供一个从主名字空间到其他名字空间页面的链接列表（{{ns:special}}, {{ns:talk}}, {{ns:project}} 和 {{ns:template}}名字空间的除外），我们不推荐这种从主名字空间链接到到其他名字的做法。',

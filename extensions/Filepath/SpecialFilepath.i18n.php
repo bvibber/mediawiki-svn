@@ -109,6 +109,11 @@ $wgFilepathMessages['sr-el'] = array(
 	'filepath_submit' => 'Putanja',
 );
 $wgFilepathMessages['sr'] = $wgFilepathMessages['sr-ec'];
+$wgFilepathMessages['sv'] = array(
+	'filepath'        => 'Sökväg till fil',
+	'filepath_page'   => 'Fil:',
+	'filepath_submit' => 'Sökväg',
+);
 $wgFilepathMessages['zh-cn'] = array(
 	'filepath'        => '文件路径',
 	'filepath_page'   => '文件名：',
