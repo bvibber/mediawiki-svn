@@ -61,6 +61,8 @@ else if ($_GET['mode'] == 'lang') {
     "en" => "english",
     "es" => "spanish",
     "fr" => "french",
+    'nds' => 'low german',
+    'ksh' => 'ripuarian'
   );
   
   $subtitle = new HAW_text(hawtra("Language"), HAW_TEXTFORMAT_BOLD);

@@ -1,18 +1,22 @@
 <?php
 /*
  * config file for hawpedia
- * $Date: 2006/11/22 21:25:30 $
+ * $Date: 2007/04/14 20:38:30 $
  */
 
-define("HAWPEDIA_VERSION", "1.0");
+define("HAWPEDIA_VERSION",	"1.0");
 
-define("HAWIKI_TITLE", "Wikipedia");    // browser window title
-define("DEFAULT_LANGUAGE", "es");
-define('FORCE_DEFAULT_LANGUAGE', TRUE);	// ignore browsers accept-language setting, if set & true.
-# define('DISABLE_IMAGES', FALSE);	// do not output images, if set & true.
+define("HAWIKI_TITLE",		"Wikipedia");    // browser window title
+define("DEFAULT_LANGUAGE",	"es");
+define('FORCE_DEFAULT_LANGUAGE', 'subdomain');	// not defined or FALSE - use browsers accept-language setting,
+						//	if supported, else DAFAULT_LANGUAGE;
+						// TRUE - always use DEFAULT_LANGUAGE;
+						// 'subdomain' - use 1st (leftmost) subdomain as language code
+						//	if supported, else DAFAULT_LANGUAGE.
+define('DISABLE_IMAGES',	FALSE);	// do not output images, if set & true.
 define('LINKS_HAVE_NO_BRACKETS', TRUE);	// do not output brackets surrounding links, if set & true.
-define('IMG_MAX_WIDTH', 128);		// pixels maximum width for images.
-define('EXPAND_TEMPLATES', TRUE);	// expand {{...}} sytax, if set & true, else ignore it.
+define('IMG_MAX_WIDTH',		128);	// pixels maximum width for images (may be further reduced by displa size)
+define('EXPAND_TEMPLATES',	TRUE);	// expand {{...}} syntax, if set & true, else remove it.
 
 define("SEGLENGTH_WML",  600);
 define("SEGLENGTH_HDML", 600);
@@ -26,6 +30,9 @@ $supportedLanguages = Array(
 "de" => 1,
 "en" => 1,
 "es" => 1,
-"fr" => 0);
+"fr" => 0,
+"nds" => 1,
+"ksh" => 1,
+"zxx" => 0);
 
 ?>

@@ -61,17 +61,32 @@ function determine_settings()
   	// language explicitely requested in url parameter
     $_SESSION['language'] = $_GET['lang']; // overwrite session info
   }
-  else if (!isset($_SESSION['language'])) {
-	  // no language info stored in session
-	  if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && 
-	      isset($supportedLanguages[$_SERVER['HTTP_ACCEPT_LANGUAGE']]) &&
-	      ($supportedLanguages[$_SERVER['HTTP_ACCEPT_LANGUAGE']] == 1) &&
-	      (!defined('FORCE_DEFAULT_LANGUAGE') || !FORCE_DEFAULT_LANGUAGE))
-	    // store browser's preference in session
-	    $_SESSION['language'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
-	  else
-	    // store default language in session
-      $_SESSION['language'] = DEFAULT_LANGUAGE;
+  else if (!isset($_SESSION['language'])) 
+  {
+	// no language info stored in session
+	if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && 
+	   isset($supportedLanguages[$_SERVER['HTTP_ACCEPT_LANGUAGE']]) &&
+	   ($supportedLanguages[$_SERVER['HTTP_ACCEPT_LANGUAGE']] == 1) &&
+	   (!defined('FORCE_DEFAULT_LANGUAGE') || !FORCE_DEFAULT_LANGUAGE))
+	{
+		// store browser's preference in session
+		$_SESSION['language'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+	}
+	elseif(isset($_SERVER['HTTP_HOST']) &&
+	   ($dot = strpos($_SERVER['HTTP_HOST'], '.')) &&
+	   ($domlang = substr($_SERVER['HTTP_HOST'], 0, $dot)) &&
+	   isset($supportedLanguages[$domlang]) &&
+	   ($supportedLanguages[$domlang] == 1) &&
+	   (defined('FORCE_DEFAULT_LANGUAGE') && ('subdomain'==FORCE_DEFAULT_LANGUAGE)))
+	{
+		// store language subdomain in session
+		$_SESSION['language'] = $domlang;
+	}
+	else
+	{
+		// store default language in session
+		$_SESSION['language'] = DEFAULT_LANGUAGE;
+	}
   }
   
   require('lang/' . $_SESSION['language'] . '/phonenumbers.php');
@@ -203,7 +218,8 @@ function replace_sections($wikitext, $startStr, $endStr, $title='', $replacement
 	// thereby replacing it with the result of $replcementfunction of the removed string and $title.
 	// preg_replace can cause problems as described here: http://bugs.php.net/bug.php?id=24460
 	$len = strlen($startStr);
-	$sec = 0;	
+	$sec = 0;
+	$pos = array();
 	while(FALSE !== ($sec = (strpos($wikitext, $startStr, $sec))))
 	{
 		$pos[$sec] = -1;

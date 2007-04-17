@@ -8,19 +8,13 @@ using the HAWHAW library, http://hawhaw.de/
 Little attempts have been made to improve the existing code,
 but some limitations were lifted and errors removed.
 
-Caution:
---------
-Before you use it, you must take care to adopt
-./wap/.htaccess
-to the target system! 
 
-Necessary to to:
+Necessary to do:
 ----------------
 * /lang/es/tanslations.php
   - to be checked and translations corrected / completed.
-  (Author of modifications cannot do that)
-* /lang/*/keywords.php
-  - may be outdated. Only good one: /lang/es/keywords.php 
+* /lang/nds/*
+  - to be checked and translations corrected / completed.
 * /config.php
   - should likely be taylored.
 
@@ -32,15 +26,18 @@ Changes:
 + square brackets surrounding links removed.
   (can be switched back on in config.php)
 + Wikipedia globe logo added to all non-wp-pages
-  (currently 16x16px, a 32x32px logo is available,
-  can be set in config.php)
+  (currently 16x16px, 32x32px, 58x58px, 81x81px logos available,
+  can be set in ./hawiki/hawiki_cfg.inc)
   + those page are laid out more equally.
++ language selection:
+  + can ignore browsers language preference and always
+    use default language as per setting in config.php
+  + can extract language preference from subdomain name
+    as per setting in config.php
 + all embedded html entities (&bull;, &Auml;, ...)
   are now correctly converted to Unicode.
 + "magic word" control elements (e.g. __TOC__)
   are always not treated as text and are removed.
-+ can ignore browsers language preference and always use
-  default language as per setting in config.php
 + images can be switched off in config.php
 + images inline with text working now.
 + image scaling:
@@ -58,6 +55,9 @@ Changes:
 + Template, parser function and constant expansion added.
   It uses the Special:ExpandTemplates interface, and
   can be switched off in config.php
++ Language es (spanish) added. (Few translations are incomplete)
++ Language nds (lower saxon) added. (Some incomplete translations)
++ Lanugage ksh (Kölsch/Ripuarian languages) added.
 + whatever I forgot to mention :-)
 
 

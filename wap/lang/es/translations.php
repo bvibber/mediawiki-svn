@@ -7,17 +7,13 @@
 $translation = Array(
 "About"		=> 'Acerca de',
 'Back'		=> 'Tornar',
-'bavarian'	=> "b\303\241varo",
 "Call" => "Anruf",
 "Content"	=> 'Contenidos',
 'Continue'	=> "m\303\241s lejos",
 "Copyright"	=> "Copyright",
-"english"	=> "ingl\303\251se",
 "external link" => "externer Verweis",
-"french"	=> "franc\303\251s",
 "for"		=> "para",
-"Found articles for:" => "Gefundene Artikel für:",
-"german"	=> "alem\303\241n",
+"Found articles for:" => "Articulos encontrados:",
 "Home"		=> "Portal",
 'Language'	=> 'Idioma',
 "MP3 conversion failed" => "MP3-Konvertierung nicht erfolgreich",
@@ -30,6 +26,14 @@ $translation = Array(
 "Wikipedia currently not available" => "Wikipedia momentan nicht verfügbar",
 "wikipedia export error" => "Wikipedia Export Fehler",
 "you hear an article from the wikipedia" => "Sie hören einen Artikel aus der Wikipedia",
+# languages:
+'bavarian'	=> "b\303\241varo",
+"english"	=> "ingl\303\251se",
+"french"	=> "franc\303\251s",
+"german"	=> "alem\303\241n",
+"low german"	=> "bas alemand",
+"ripuarian"	=> "francique ripuaire",
+'spanish'	=> 'espanol',
 "###end###"=>"###end###");
 
 ?>
