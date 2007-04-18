@@ -47,28 +47,7 @@ do_mysql_query(MYSQL* mysql, char const *query)
 }
 
 
-struct link_entry {
-	std::string wiki;
-	page_id_t from, to;
-};
-
-static std::vector<link_entry> pending;
 static bdb_adjacency_store store;
-
-static void flush()
-{
-	bdb_adjacency_transaction trans(store);
-	for (std::size_t i = 0, end = pending.size(); i < end; ++i) {
-		trans.add_adjacency(pending[i].wiki, pending[i].from, pending[i].to);
-	}
-	trans.commit();
-
-	if (store.error()) {
-		std::cout << "adding adjacency: " << store.strerror() << '\n';
-		std::exit(1);
-	}
-	pending.clear();
-}
 
 struct title_entry {
 	std::string wiki;
@@ -158,6 +137,7 @@ build_for(MYSQL &mysql, std::string const &db)
 	std::map<page_id_t, std::set<page_id_t> > cache;
 	MYSQL_ROW arow;
 	int i = 0;
+	std::cout << db << ": 0" << std::flush;
 	while ((arow = mysql_fetch_row(res)) != NULL) {
 		if ((i++ % 10000) == 0)
 			std::cout << '\r' << db << ": " << (i - 1) << std::flush;
@@ -166,31 +146,27 @@ build_for(MYSQL &mysql, std::string const &db)
 		page_id_t to = boost::lexical_cast<page_id_t>(arow[0]);
 		cache[from].insert(to);
 	}
-	std::cout << '\n';
 	mysql_free_result(res);
 
 	bdb_adjacency_transaction trans(store);
-	std::cout << "flush to storage: " << std::flush;
+	std::cout << " flush to storage... " << std::flush;
 	for (std::map<page_id_t, std::set<page_id_t> >::iterator
 			it = cache.begin(), end = cache.end();
 			it != end; ++it) {
 		trans.set_adjacencies(db, it->first, it->second);
 	}
-	std::cout << "\n";
 	trans.commit();
+	std::cout << "\n";
 
 	if (!do_mysql_query(&mysql, "SELECT page_title,page_id,page_latest FROM page WHERE page_namespace=0"))
 		return;
 
+	std::cout << db << ": titles: 0" << std::flush;
 	res = mysql_use_result(&mysql);
-	i = 0;
-	for (std::size_t i = 0, end = pending.size(); i < end; ++i) {
-		trans.add_adjacency(pending[i].wiki, pending[i].from, pending[i].to);
-	}
 	while ((arow = mysql_fetch_row(res)) != NULL) {
 		if ((i++ % 10000) == 0)
-			std::cout << "\rtitles: " << db << ": " << (i - 1) << "..." << std::flush;
-		if ((i % 500) == 0)
+			std::cout << "\r" << db << ": titles: " << (i - 1) << "..." << std::flush;
+		if ((i % 10000) == 0)
 			flush_titles();
 
 		title_entry t;
