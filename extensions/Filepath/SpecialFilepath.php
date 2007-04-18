@@ -12,7 +12,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'Filepath',
 	'author' => 'Ævar Arnfjörð Bjarmason',
 	'description' => '[[Special:Filepath|a special page]] to get the full path of a file from its name',
-	'url' => 'http://meta.wikimedia.org/wiki/Filepath'
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Filepath'
 );
 
 # Internationalisation file
