@@ -7,6 +7,12 @@
  */
 
 $wgExtensionFunctions[] = 'wfLinkSearchSetup';
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Linksearch',
+	'author' => 'Brion Vibber',
+	'description' => 'Search for Weblinks',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:LinkSearch',
+);
 
 # Internationalisation file
 require_once( 'LinkSearch.i18n.php' );
