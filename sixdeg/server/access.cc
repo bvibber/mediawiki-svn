@@ -74,7 +74,7 @@ radix<uint32_t>::const_iterator	r;
 	else if (*r & _allowflg)
 		return std::make_pair(true, *r & 0xFFFF);
 	else
-		abort();
+		std::abort();
 }
 
 radix<uint32_t>::const_iterator
@@ -86,7 +86,7 @@ access_list_impl::_end(prefix const &p) const
 	case AF_INET6:
 		return _v6.end();
 	}
-	abort();
+	std::abort();
 }
 
 radix<uint32_t>::const_iterator
@@ -98,7 +98,7 @@ access_list_impl::_get(prefix const &p) const
 	case AF_INET6:
 		return _v6.search(p);
 	}
-	abort();
+	std::abort();
 }
 
 bool
@@ -119,7 +119,7 @@ radix<uint32_t>::iterator	r;
 		return _v6.insert(p, flags).first;
 		break;
 	default:
-		abort();
+		std::abort();
 	}
 }
 

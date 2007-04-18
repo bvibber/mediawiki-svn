@@ -71,7 +71,8 @@ bdb_adjacency_store::open(std::string const &path, bdb_adjacency_store::open_mod
 	}
 
 	env->set_errfile(env, stdout);
-	last_error = env->set_cachesize(env, 0, 256 * 1024 * 1024, 1);
+	//last_error = env->set_cachesize(env, 0, 256 * 1024 * 1024, 1);
+	last_error = env->set_cachesize(env, 2, 0, 1);
 	if (last_error != 0) {
 		env = 0;
 		return;
@@ -202,7 +203,7 @@ bdb_adjacency_store::close(void)
 bdb_adjacency_transaction::bdb_adjacency_transaction(bdb_adjacency_store &s)
 	: store(s)
 {
-	store.env->txn_begin(store.env, NULL, &txn, 0);
+	store.env->txn_begin(store.env, NULL, &txn, DB_TXN_NOSYNC);
 }
 
 bdb_adjacency_transaction::~bdb_adjacency_transaction(void)

@@ -11,6 +11,7 @@
 #include <string>
 #include <fstream>
 #include <cerrno>
+#include <map>
 
 #include <boost/format.hpp>
 #include <boost/lexical_cast.hpp>
@@ -150,34 +151,45 @@ build_for(MYSQL &mysql, std::string const &db)
 
 	MYSQL_RES *res = mysql_use_result(&mysql);
 
+	/*
+	 * First we cache the data for this wiki in RAM, then commit all once.  
+	 * This avoids constantly (over)writing in the database.
+	 */
+	std::map<page_id_t, std::set<page_id_t> > cache;
 	MYSQL_ROW arow;
 	int i = 0;
 	while ((arow = mysql_fetch_row(res)) != NULL) {
 		if ((i++ % 10000) == 0)
-			std::cout << '\r' << db << ": " << ": " << (i - 1) << std::flush;
+			std::cout << '\r' << db << ": " << (i - 1) << std::flush;
 
-		if ((i % 500) == 0)
-			flush();
-
-		link_entry e;
-		e.wiki = db;
-		e.from = boost::lexical_cast<page_id_t>(arow[1]);
-		e.to = boost::lexical_cast<page_id_t>(arow[0]);
-		pending.push_back(e);
+		page_id_t from = boost::lexical_cast<page_id_t>(arow[1]);
+		page_id_t to = boost::lexical_cast<page_id_t>(arow[0]);
+		cache[from].insert(to);
 	}
 	std::cout << '\n';
-	flush();
-
 	mysql_free_result(res);
+
+	bdb_adjacency_transaction trans(store);
+	std::cout << "flush to storage: " << std::flush;
+	for (std::map<page_id_t, std::set<page_id_t> >::iterator
+			it = cache.begin(), end = cache.end();
+			it != end; ++it) {
+		trans.set_adjacencies(db, it->first, it->second);
+	}
+	std::cout << "\n";
+	trans.commit();
 
 	if (!do_mysql_query(&mysql, "SELECT page_title,page_id,page_latest FROM page WHERE page_namespace=0"))
 		return;
 
 	res = mysql_use_result(&mysql);
 	i = 0;
+	for (std::size_t i = 0, end = pending.size(); i < end; ++i) {
+		trans.add_adjacency(pending[i].wiki, pending[i].from, pending[i].to);
+	}
 	while ((arow = mysql_fetch_row(res)) != NULL) {
 		if ((i++ % 10000) == 0)
-			std::cout << '\r' << db << ": " << (i - 1) << "..." << std::flush;
+			std::cout << "\rtitles: " << db << ": " << (i - 1) << "..." << std::flush;
 		if ((i % 500) == 0)
 			flush_titles();
 

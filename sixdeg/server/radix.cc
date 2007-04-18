@@ -16,6 +16,7 @@
 /* From: (Loreley) Id: radix.cc 18347 2006-12-15 01:59:58Z river */
 /* $Id$ */
 
+#include <stdio.h>
 #include <arpa/inet.h>
 #include "radix.h"
 
@@ -64,7 +65,7 @@ namespace radix_detail {
 int 
 comp_with_mask (void const *addr, void const *dest, uint32_t mask)
 {
-	if ( /* mask/8 == 0 || */ memcmp (addr, dest, mask / 8) == 0) {
+	if ( /* mask/8 == 0 || */ std::memcmp(addr, dest, mask / 8) == 0) {
 		int n = mask / 8;
 		int m = ((-1) << (8 - (mask % 8)));
 		if (mask % 8 == 0 || (((uint8_t const*)addr)[n] & m) == (((uint8_t const*)dest)[n] & m))
@@ -120,10 +121,10 @@ prefix::_from(char const *string)
 char const *cp;
 char prefixstr[64] = {};
 
-	if (strchr(string, ':')) {
+	if (std::strchr(string, ':')) {
 		prefixlen = 128;
 		_family = AF_INET6;
-	} else if (strchr(string, '.')) {
+	} else if (std::strchr(string, '.')) {
 		_family = AF_INET;
 		prefixlen = 32;
 	} else {
@@ -131,11 +132,11 @@ char prefixstr[64] = {};
 	}
 
 	if ((cp = std::strchr(string, '/')) != NULL) {
-		prefixlen = atol (cp+1);
-		memcpy(prefixstr, string, cp-string);
+		prefixlen = std::atol (cp+1);
+		std::memcpy(prefixstr, string, cp-string);
 		prefixstr[cp-string] = '\0';
 	} else {
-		strncpy (prefixstr, string, sizeof(prefixstr));
+		std::strncpy (prefixstr, string, sizeof(prefixstr));
 	}
 
 	if (inet_pton(_family, prefixstr, &add) != 1)
@@ -151,15 +152,15 @@ sockaddr_in6 const	*in6;
 	case AF_INET:
 		prefixlen = 32;
 		in = reinterpret_cast<sockaddr_in const *>(addr);
-		memcpy(&add.sin4, &in->sin_addr, sizeof(in->sin_addr));
+		std::memcpy(&add.sin4, &in->sin_addr, sizeof(in->sin_addr));
 		break;
 	case AF_INET6:
 		prefixlen = 128;
 		in6 = reinterpret_cast<sockaddr_in6 const *>(addr);
-		memcpy(&add.sin6, &in6->sin6_addr, sizeof(in6->sin6_addr));
+		std::memcpy(&add.sin6, &in6->sin6_addr, sizeof(in6->sin6_addr));
 		break;
 	default:
-		abort();
+		std::abort();
 	}
 }
 
