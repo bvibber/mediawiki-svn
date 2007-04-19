@@ -26,6 +26,7 @@ struct bdb_adjacency_store {
 	bdb_adjacency_store(void);
 	void open(std::string const &, open_mode);
 	void close(void);
+	void checkpoint(void);
 
 	int error(void) const;
 	std::string strerror(void) const;

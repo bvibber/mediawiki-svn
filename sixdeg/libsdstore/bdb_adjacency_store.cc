@@ -23,16 +23,13 @@
 #include "bdb_adjacency_store.h"
 #include "log.h"
 
-#define DB_TYPE DB_HASH
+//#define DB_TYPE DB_HASH
+#define DB_TYPE DB_BTREE
 
-void *chkp(void *arg)
+void
+bdb_adjacency_store::checkpoint(void)
 {
-	DB_ENV *env = static_cast<DB_ENV *>(arg);
-	for (;;) {
-		sleep(40);
-		env->txn_checkpoint(env, 0, 0, 0);
-	}
-	return 0;
+	env->txn_checkpoint(env, 0, 0, 0);
 }
 
 bdb_adjacency_store::bdb_adjacency_store(void)
@@ -185,9 +182,6 @@ bdb_adjacency_store::open(std::string const &path, bdb_adjacency_store::open_mod
 		return;
 	}
 	txn->commit(txn, 0);
-
-	pthread_t tid;
-	pthread_create(&tid, NULL, chkp, env);
 }
 
 void
