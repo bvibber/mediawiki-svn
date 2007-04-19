@@ -1,2 +1,2 @@
-PLAT_FRAG       = solaris.mk
+PLAT_FRAG       = solaris-gcc.mk
 include frag/setup.mk

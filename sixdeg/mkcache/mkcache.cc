@@ -93,9 +93,11 @@ main(int, char *argv[])
 }
 	
 struct page_entry {
+	page_entry() : id(-1) {}
+	page_id_t id;
 	text_id_t text;
 	std::string name;
-	std::set<page_id_t> adj;
+	std::vector<page_id_t> adj;
 };
 
 void
@@ -115,7 +117,8 @@ build_for(MYSQL &mysql, std::string const &db)
 	 * First we cache the data for this wiki in RAM, then commit all once.  
 	 * This avoids constantly (over)writing in the database.
 	 */
-	std::map<page_id_t, page_entry> cache;
+	//std::map<page_id_t, page_entry> cache;
+	std::vector<page_entry> cache;
 	MYSQL_ROW arow;
 	int i = 0;
 	std::cout << db << ": 0" << std::flush;
@@ -125,24 +128,27 @@ build_for(MYSQL &mysql, std::string const &db)
 
 		page_id_t from = boost::lexical_cast<page_id_t>(arow[1]);
 		page_id_t to = boost::lexical_cast<page_id_t>(arow[0]);
-		std::map<page_id_t, page_entry>::iterator it = cache.find(from);
-		if (it == cache.end()) {
-			page_entry e;
-			e.name = arow[2];
-			e.text = boost::lexical_cast<text_id_t>(arow[3]);
-			it = cache.insert(std::make_pair(from, e)).first;
+
+		if (cache.size() <= from)
+			cache.resize(from + 1);
+
+		if (cache[from].id == -1) {
+			cache[from].id = from;
+			cache[from].name = arow[2];
+			cache[from].text = boost::lexical_cast<text_id_t>(arow[3]);
 		}
 
-		it->second.adj.insert(to);
+		cache[from].adj.push_back(to);
 	}
 	mysql_free_result(res);
 
 	bdb_adjacency_transaction *trans = new bdb_adjacency_transaction(store);
 	std::cout << " flush to storage... " << std::flush;
 	i = 0;
-	for (std::map<page_id_t, page_entry>::iterator
-			it = cache.begin(), end = cache.end();
-			it != end; ++it) {
+	for (std::size_t s = 0, end = cache.size(); s < end; ++s) {
+		if (cache[s].id == -1)
+			continue;
+
 		if (++i == 10000) {
 			trans->commit();
 			delete trans;
@@ -151,8 +157,9 @@ build_for(MYSQL &mysql, std::string const &db)
 			i = 0;
 		}
 
-		trans->add_title(db, it->first, it->second.name, it->second.text);
-		trans->set_adjacencies(db, it->first, it->second.adj);
+		std::set<page_id_t> adj(cache[s].adj.begin(), cache[s].adj.end());
+		trans->add_title(db, cache[s].id, cache[s].name, cache[s].text);
+		trans->set_adjacencies(db, cache[s].id, adj);
 	}
 	trans->commit();
 	delete trans;
