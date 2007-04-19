@@ -49,31 +49,6 @@ do_mysql_query(MYSQL* mysql, char const *query)
 
 static bdb_adjacency_store store;
 
-struct title_entry {
-	std::string wiki;
-	page_id_t page;
-	text_id_t text;
-	std::string name;
-};
-
-static std::vector<title_entry> pending_titles;
-static void flush_titles()
-{
-	bdb_adjacency_transaction trans(store);
-
-	for (std::size_t i = 0, end = pending_titles.size(); i < end; ++i) {
-		trans.add_title(pending_titles[i].wiki,
-				pending_titles[i].page, pending_titles[i].name, pending_titles[i].text);
-	}
-
-	trans.commit();
-	if (store.error()) {
-		std::cout << "adding title: " << store.strerror() << '\n';
-		std::exit(1);
-	}
-	pending_titles.clear();
-}
-
 int
 main(int, char *argv[])
 {
@@ -87,6 +62,7 @@ main(int, char *argv[])
 		return 1;
 	}
 
+	store.set_cache(256 * 1024 * 1024);
 	store.open(DB, bdb_adjacency_store::write_open);
 
 	if (store.error()) {
@@ -185,36 +161,4 @@ build_for(MYSQL &mysql, std::string const &db)
 	store.checkpoint();
 	
 	std::cout << "\n";
-
-#if 0
-	if (!do_mysql_query(&mysql, "SELECT page_title,page_id,page_latest FROM page WHERE page_namespace=0"))
-		return;
-
-	std::cout << db << ": titles: 0" << std::flush;
-	res = mysql_use_result(&mysql);
-	bdb_adjacency_transaction ttrans(store);
-	while ((arow = mysql_fetch_row(res)) != NULL) {
-		if ((i++ % 10000) == 0)
-			std::cout << "\r" << db << ": titles: " << (i - 1) << "..." << std::flush;
-#if 0
-		if ((i % 10000) == 0)
-			flush_titles();
-
-		title_entry t;
-		t.wiki = db;
-		t.page = boost::lexical_cast<page_id_t>(arow[1]);
-		t.name = arow[0];
-		t.text = boost::lexical_cast<text_id_t>(arow[2]);
-		pending_titles.push_back(t);
-#endif
-		page_id_t page = boost::lexical_cast<page_id_t>(arow[1]);
-		text_id_t text = boost::lexical_cast<text_id_t>(arow[2]);
-		ttrans.add_title(db, page, arow[0], text);
-	}
-	std::cout << " flush to storage..." << std::flush;
-	ttrans.commit();
-	std::cout << '\n';
-	flush_titles();
-	mysql_free_result(res);
-#endif
 }

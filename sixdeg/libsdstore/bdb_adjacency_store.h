@@ -27,6 +27,7 @@ struct bdb_adjacency_store {
 	void open(std::string const &, open_mode);
 	void close(void);
 	void checkpoint(void);
+	void set_cache(std::size_t);
 
 	int error(void) const;
 	std::string strerror(void) const;
@@ -44,6 +45,7 @@ private:
 	DB *titles_byname;
 	DB *text_ids;
 	int last_error;
+	std::size_t cachesz;
 };
 
 struct bdb_adjacency_transaction {

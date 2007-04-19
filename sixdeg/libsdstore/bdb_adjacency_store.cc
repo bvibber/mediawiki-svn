@@ -34,7 +34,14 @@ bdb_adjacency_store::checkpoint(void)
 
 bdb_adjacency_store::bdb_adjacency_store(void)
 	: env(0)
+	, cachesz(0)
 {
+}
+
+void
+bdb_adjacency_store::set_cache(std::size_t nbytes)
+{
+	cachesz = nbytes;
 }
 
 /*
@@ -68,8 +75,7 @@ bdb_adjacency_store::open(std::string const &path, bdb_adjacency_store::open_mod
 	}
 
 	env->set_errfile(env, stdout);
-	//last_error = env->set_cachesize(env, 0, 256 * 1024 * 1024, 1);
-	last_error = env->set_cachesize(env, 2, 0, 1);
+	last_error = env->set_cachesize(env, cachesz / 1024 / 1024 / 1024, cachesz % (1024 * 1024 * 1024), 1);
 	if (last_error != 0) {
 		env = 0;
 		return;

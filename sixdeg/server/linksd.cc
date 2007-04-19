@@ -221,8 +221,11 @@ main(int argc, char *argv[])
 	std::vector<std::pair<std::string, std::string> > listeners;
 	std::vector<std::string> sources;
 	int c;
+	char m;
+	std::size_t cache = 32 * 1024 * 1024; // 32 MB
+	std::istringstream strm;
 
-	while ((c = getopt(argc, argv, "l:s:")) != -1) {
+	while ((c = getopt(argc, argv, "l:s:C:")) != -1) {
 		std::string host, port;
 		std::string::size_type i;
 
@@ -241,6 +244,28 @@ main(int argc, char *argv[])
 			sources.push_back(optarg);
 			break;
 
+		case 'C':
+			strm.str(optarg);
+			if (!(strm >> cache)) {
+				std::cerr << boost::format("%s: invalid cache size: \"%s\"\n") % argv[0] % optarg;
+				return 1;
+			}
+
+			if (strm >> m) {
+				char lm = std::tolower(m);
+				if (m == 'g')
+					cache *= (1024 * 1024 * 1024);
+				else if (m == 'm')
+					cache *= (1024 * 1024);
+				else if (m == 'k')
+					cache *= 1024;
+				else {
+					std::cerr << boost::format("%s: invalid cache size: \"%s\"\n") % argv[0] % optarg;
+					return 1;
+				}
+			}
+			break;
+						
 		default:
 			std::exit(1);
 		}
@@ -251,9 +276,13 @@ main(int argc, char *argv[])
 
 	bdb_adjacency_store aj;
 
+	logger::info(str(boost::format("cache = %d") % cache));
+
+	aj.set_cache(cache);
 	aj.open(DB, bdb_adjacency_store::read_open);
+
 	if (aj.error()) {
-		std::cerr << "opening database: " << aj.strerror() << "\n";
+		logger::error(str(boost::format("cannot open database: %s") % aj.strerror()));
 		return 1;
 	}
 
