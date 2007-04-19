@@ -32,7 +32,7 @@ class ImageMap {
 	const NONE = 4;
 
 	static function render( $input, $params, $parser ) {
-		global $wgScriptPath, $wgUser, $wgImageMapAllowExternLink, $wgUrlProtocols, $wgNoFollowLinks;
+		global $wgScriptPath, $wgUser, $wgImageMapAllowExternalLinks, $wgUrlProtocols, $wgNoFollowLinks;
 
 		$lines = explode( "\n", $input );
 
@@ -125,7 +125,7 @@ class ImageMap {
 			} elseif ( preg_match( '/^ \[\[  ([^\]]*+) \]\] \w* $ /x', $link, $m ) ) {
 				$title = Title::newFromText( $m[1] );
 				$alt = $title->getFullText();
-			} elseif ( $wgImageMapAllowExternLink && ( in_array( substr( $link , 1 , strpos($link, '//' )+1 ) , $wgUrlProtocols ) || in_array( substr( $link , 1 , strpos($link, ':' ) ) , $wgUrlProtocols ) ) ) {
+			} elseif ( $wgImageMapAllowExternalLinks && ( in_array( substr( $link , 1 , strpos($link, '//' )+1 ) , $wgUrlProtocols ) || in_array( substr( $link , 1 , strpos($link, ':' ) ) , $wgUrlProtocols ) ) ) {
 				if ( preg_match( '/^ \[  ([^\s]*+)  \s  ([^\]]*+)  \] \w* $ /x', $link, $m ) ) {
 					$title = htmlspecialchars( $m[1] );
 					$alt = htmlspecialchars( trim( $m[2] ) );
@@ -289,10 +289,11 @@ class ImageMap {
 		foreach ( $links as $title ) {
 			$parser->mOutput->addLink( $title );
 		}
-		foreach ( $extLinks as $title ) {
-			$parser->mOutput->addExternalLink( $title );
+		if ( isset( $extLinks ) ) {
+			foreach ( $extLinks as $title ) {
+				$parser->mOutput->addExternalLink( $title );
+			}
 		}
-
 		# Armour output against broken parser
 		$output = str_replace( "\n", '', $output );
 		return $output;
