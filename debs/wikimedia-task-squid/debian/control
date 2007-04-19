@@ -7,7 +7,7 @@ Standards-Version: 3.6.2
 
 Package: wikimedia-task-squid
 Architecture: all
-Depends: squid, wikimedia-lvs-realserver
+Depends: squid, squid-frontend, wikimedia-lvs-realserver, reiserfsprogs
 Description: Provides a Wikimedia Squid caching proxy server
  Package wikimedia-task-squid depends on the appropriate packages
  that need to be installed on a Wikimedia Squid server, and does

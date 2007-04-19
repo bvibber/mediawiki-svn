@@ -1,3 +1,11 @@
+wikimedia-task-squid (0.02) edgy; urgency=low
+
+  * Depend on squid-frontend and reiserfsprogs
+  * Include script /usr/sbin/setup-aufs-cachedirs for automatic deployments
+    - Add /etc/default/wikimedia-task-squid file
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 19 Apr 2007 10:51:52 +0000
+
 wikimedia-task-squid (0.01) edgy; urgency=low
 
   * Initial release

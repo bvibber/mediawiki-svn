@@ -2,7 +2,7 @@ wikimedia-task-squid
 --------------------
 
 This package pulls in the necessary dependencies like (obviously) Squid
-and wikimedia-lvs-realserver.
+and wikimedia-lvs-realserver and includes useful scripts for deployment.
 
 It also adds a line to /etc/motd describing the task of this server.
 

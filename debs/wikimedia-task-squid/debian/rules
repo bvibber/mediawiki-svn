@@ -57,6 +57,10 @@ install: build
 
 	# Add here commands to install the package into debian/wikimedia-task-squid.
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/wikimedia-task-squid
+	mkdir $(CURDIR)/debian/wikimedia-task-squid/aufs
+	mkdir -p $(CURDIR)/debian/wikimedia-task-squid/etc/default $(CURDIR)/debian/wikimedia-task-squid/usr/sbin
+	install -m 0755 setup-aufs-cachedirs $(CURDIR)/debian/wikimedia-task-squid/usr/sbin/
+	install -m 0644 debian/wikimedia-task-squid.default $(CURDIR)/debian/wikimedia-task-squid/etc/default/wikimedia-task-squid
 
 
 # Build architecture-independent files here.

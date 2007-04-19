@@ -1,0 +1,10 @@
+# Location of the squid configuration file
+SQUIDCONF=/etc/squid/squid.conf
+
+# aufs partitions need to be set to this partition type 
+PART_TYPE=82
+
+# File system options for mkfs and mount
+FS=reiserfs
+FS_MOUNT_OPTIONS=noatime,nolog
+FS_OPTIONS="-q --journal-size 0"
