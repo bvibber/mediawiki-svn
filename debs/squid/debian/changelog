@@ -1,3 +1,9 @@
+squid (2.6.12-1wm6) edgy; urgency=low
+
+  * Increase default nr of FDs to 32768 in squid-frontend
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 19 Apr 2007 11:01:18 +0000
+
 squid (2.6.12-1wm5) edgy; urgency=low
 
   * Add support for min-size cache_dir option

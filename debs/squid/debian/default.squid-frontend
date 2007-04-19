@@ -3,6 +3,6 @@
 #
 
 # Max. number of filedescriptors to use. You can increase this on a busy
-# cache to a maximum of (currently) 65536 filedescriptors. Default is 16384.
-SQUID_MAXFD=16384
+# cache to a maximum of (currently) 65536 filedescriptors. Default is 32768.
+SQUID_MAXFD=32768
 
