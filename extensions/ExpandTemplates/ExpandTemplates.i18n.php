@@ -20,6 +20,16 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Remove comments',
 );
+
+$wgExpandTemplatesMessages['ar'] = array(
+	'expandtemplates'                  => 'فرد القوالب',
+	'expand_templates_intro'           => 'تتعامل هذه الصفحة الخاصة مع نصوص الويكي وتقوم بفرد كل القوالب الموجودة به. وتقوم أيضا بفرد دوال القوالب مثل <nowiki>{{</nowiki>#if:...}}, و المتغيرات مثل <nowiki>{{</nowiki>يوم}}-- و تقوم التعامل مع كل ما بين الأقواس المزدوجة. و تقوم بفعل هذا عن طريق استدعاء المعالج المناسب من الميدياويكي.',
+	'expand_templates_title'           => 'عنوان صفحة هذا النص، لأجل معالجة <nowiki>{{</nowiki>اسم_صفحة}} و..إلخ. :',
+	'expand_templates_input'           => 'النص المدخل (الأصلي)',
+	'expand_templates_output'          => 'النتيجة',
+	'expand_templates_ok'              => 'تنفيذ',
+	'expand_templates_remove_comments' => 'إزالة التعليقات',
+);
 $wgExpandTemplatesMessages['cs'] = array(
 	'expandtemplates'                  => 'Substituovat šablony',
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',

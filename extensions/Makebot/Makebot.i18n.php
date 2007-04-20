@@ -33,6 +33,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'removed bot status from [[$1]]',
 ),
 
+/* Arabic */
+'ar' => array(
+'makebot'                 => 'منح أو إلغاء صلاحية البوت',
+'makebot-header'          => '\'\'\'يمكن للبيروقراط المحلي استخدام هذه الصفحة لإعطاء [[ويكيبيديا:بوت|صلاحية بوت]] لحساب مستخدم آخر.\'\'\'<br />تخفي صلاحية البوت تعديلات المستخدم من صفحة أحدث التغييرات و القوائم المماثلة، و هذا يعتبر مفيدا إلى المستخدمين الذين يقومون بتعديلات آلية. يجب أن يكون هذا تبعا للقواعد المتبعة.',
+'makebot-username'        => 'اسم المستخدم:',
+'makebot-search'          => 'تنفيذ',
+'makebot-isbot'           => '[[مستخدم:$1|$1]] لديه صلاحية البوت.',
+'makebot-notbot'          => 'لا يملك [[مستخدم:$1|$1]] صلاحية بوت.',
+'makebot-privileged'      => 'يملك [[مستخدم:$1|$1]] صلاحية [[Special:Listadmins|إداري أو بيروقراط]]، و لا يمكن منحه صلاحية بوت.',
+'makebot-change'          => 'تغيير الحالة:',
+'makebot-grant'           => 'منح',
+'makebot-revoke'          => 'إلغاء',
+'makebot-comment'         => 'تعليق:',
+'makebot-granted'         => '[[مستخدم:$1|$1]] لديه الآن صلاحية بوت.',
+'makebot-revoked'         => 'فقد [[مستخدم:$1|$1]] صلاحية البوت.',
+'makebot-logpage'         => 'سجل صلاحيات البوت',
+'makebot-logpagetext'     => 'هذا سجل لتغييرات صلاحية [[ويكيبيديا:بوت|البوت]] من منح و إلغاء.',
+'makebot-logentrygrant'   => 'تم منح صلاحية بوت إلى [[$1]]',
+'makebot-logentryrevoke'  => 'تم إلغاء صلاحية بوت من [[$1]]',
+),
+
 /* Old Church Slavonic (language file) */
 'cu' => array(
 'makebot-search' => 'Прѣиди',

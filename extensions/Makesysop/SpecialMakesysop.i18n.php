@@ -27,6 +27,14 @@ $wgMakesysopMessages['en'] = array(
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
+$wgMakesysopMessages['ar'] = array(
+	'setbureaucratflag' => 'ضع علامة بيروقراط',
+	'rights' => 'صلاحيات:',
+	'set_user_rights' => 'اضبط صلاحيات مستخدم',
+	'set_rights_fail' => '<b>لم يتم ضبط الصلاحيات للمستخدم "$1". (هل أدخلت الاسم بصورة صحيحة?)</b>',
+	'already_sysop' => 'هذا المستخدم بالفعل إداري',
+	'already_bureaucrat' => 'هذا المستخدم بالفعل بيروقراط',
+);
 $wgMakesysopMessages['az'] = array(
 	'already_sysop'        => 'Bu istifadəçi hazirdə idarəçidir',
 	'already_bureaucrat'   => 'Bu istifadəçi hazirdə bürokratdı',

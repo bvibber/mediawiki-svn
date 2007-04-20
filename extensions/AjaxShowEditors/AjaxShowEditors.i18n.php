@@ -8,6 +8,11 @@ $wgAjaxShowEditorsMessages['en'] = array(
 	'ajax-se-pending' => 'pending refresh ... (click this box or start editing)',
 	'ajax-se-idling' => '($1s ago)',
 );
+$wgAjaxShowEditorsMessages['ar'] = array(
+	'ajax-se-title' => 'يقوم الآن بالتحرير:',
+	'ajax-se-pending' => 'انتظار التحديث ... (اضغط على هذا الصندوق أو ابدأ في التحرير)',
+	'ajax-se-idling' => '(منذ $1ث)',
+);
 $wgAjaxShowEditorsMessages['br'] = array(
 	'ajax-se-title' => 'Oc\'h adaozañ :',
 	'ajax-se-pending' => 'trevell war ar stern ... (klikit war ar voest-mañ pe krogit da zegas kemmoù)',

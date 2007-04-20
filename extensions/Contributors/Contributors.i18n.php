@@ -24,6 +24,20 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'The article $1 doesn\'t exist.',
 ),
 
+/* Arabic */
+'ar' => array(
+'contributors' => 'المساهمون',
+'contributors-toolbox' => 'المساهمون الأساسيون',
+'contributors-legend' => 'اعرض المساهمون الأساسيون لمقالة',
+'contributors-target' => 'العنوان:',
+'contributors-submit' => 'اعرض',
+'contributors-subtitle' => 'المساهمون الأساسيون للمقالة $1',
+'contributors-others-long' => 'هناك {{plural:مساهم|مساهمين|$1 مساهمين|$1 مساهم|$1 مساهما}} {{plural:آخر|آخرين|آخرين|آخر|آخرا}} لهذه الصفحة.',
+'contributors-others' => 'و $1 {{plural:$1|آخر|آخرين|آخرين|آخرين|آخرا}}.',
+'contributors-badtitle' => 'عنوان خاطئ.',
+'contributors-nosuchpage' => 'لا يوجد مقالة بعنوان $1.',
+),
+
 'br' => array(
 'contributors' => 'Aozerien',
 'contributors-toolbox' => 'Aozerien bennañ',

@@ -18,6 +18,10 @@ $wgDesysopMessages['en'] = array(
 	'desysop'              => 'Desysop a user',
 	'not_sysop'            => 'This user is not an administrator',
 );
+$wgDesysopMessages['ar'] = array(
+	'set_user_rights'      => 'اضبط صلاحيات مستخدم',
+	'set_rights_fail'      => '<b>لم يتم ضبط الصلاحيات للمستخدم "$1". (هل أدخلت الاسم بصورة صحيحة?)</b>',
+);
 $wgDesysopMessages['cs'] = array(
 	'desysoptitle'         => 'Odebrat uživateli práva správce',
 	'desysoptext'          => 'Pomocí tohoto formuláře může byrokrat odebrat uživateli práva správce. Napište uživatelovo jméno do rámečku a klikněte na tlačítko, práva budou odebrána.',

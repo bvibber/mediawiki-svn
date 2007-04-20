@@ -14,6 +14,11 @@ function efMinimumNameLengthMessages() {
 'minnamelength-error' => 'Your username is too short. The minimum length is $1.',
 ),
 
+/* Arabic */
+'ar' => array(
+'minnamelength-error' => 'اسم المستخدم قصير للغاية. أقل طول مسموخ به هو $1.',
+),
+
 /* German */
 'de' => array(
 'minnamelength-error' => 'Der Benutzername ist zu kurz. Die Mindestlänge beträgt $1 Zeichen.',
