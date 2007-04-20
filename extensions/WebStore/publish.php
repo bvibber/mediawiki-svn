@@ -25,7 +25,7 @@ class WebStorePublish extends WebStoreCommon {
 <head><title>publish.php Test Interface</title></head>
 <body>
 <form method="post" action="publish.php">
-<p>Source repository: <select name="srcRepo" value="public">
+<p>Source zone: <select name="srcZone" value="public">
 <option>public</option>
 <option>temp</option>
 <option>deleted</option>
@@ -41,12 +41,12 @@ class WebStorePublish extends WebStoreCommon {
 			return true;
 		}
 
-		$srcRepo = $wgRequest->getVal( 'srcRepo' );
-		if ( !$srcRepo ) {
-			$srcRepo = 'temp';
+		$srcZone = $wgRequest->getVal( 'srcZone' );
+		if ( !$srcZone ) {
+			$srcZone = 'temp';
 		}
-		// Delete the source file if the source repo is not the public one
-		$deleteSource = ( $srcRepo != 'public' );
+		// Delete the source file if the source zone is not the public one
+		$deleteSource = ( $srcZone != 'public' );
 
 		$srcRel = $wgRequest->getVal( 'src' );
 		$dstRel = $wgRequest->getVal( 'dst' );
@@ -61,7 +61,7 @@ class WebStorePublish extends WebStoreCommon {
 			return false;
 		}
 
-		// Don't publish into odd subdirectories of the public repository. 
+		// Don't publish into odd subdirectories of the public zone. 
 		// Some directories may be temporary caches with a potential for 
 		// data loss.
 		if ( !preg_match( '!^archive|[a-zA-Z0-9]/!', $dstRel ) ) {
@@ -77,9 +77,9 @@ class WebStorePublish extends WebStoreCommon {
 			return false;
 		}
 
-		$srcRoot = $this->getRepositoryRoot( $srcRepo );
+		$srcRoot = $this->getZoneRoot( $srcZone );
 		if ( strval( $srcRoot ) == '' ) {
-				$this->error( 400, 'webstore_invalid_repository', $srcRepo );
+				$this->error( 400, 'webstore_invalid_zone', $srcZone );
 				return false;
 		}
 
@@ -88,7 +88,10 @@ class WebStorePublish extends WebStoreCommon {
 		$archivePath = $this->publicDir . '/archive/' . $archiveRel;
 
 		if ( file_exists( $dstPath ) ) {
-			if ( $this->publishAndArchive( $srcPath, $dstPath, $archivePath, $deleteSource ) ) {
+			if ( $dstRel == '' ) {
+				$this->errors[] = new WebStoreError( 'webstore_no_archive' );
+				$status = 'failure';
+			} elseif ( $this->publishAndArchive( $srcPath, $dstPath, $archivePath, $deleteSource ) ) {
 				$status = 'archived';
 			} else {
 				$status = 'failure';

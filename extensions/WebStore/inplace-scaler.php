@@ -7,7 +7,7 @@ class InplaceScaler extends WebStoreCommon {
 		global $wgRequest, $wgContLanguageCode;
 
 		if ( !$this->scalerAccessRanges ) {
-			$this->error( 403, 'inplace_access_disabled' );
+			$this->htmlError( 403, 'inplace_access_disabled' );
 			return false;
 		}
 
@@ -24,7 +24,7 @@ class InplaceScaler extends WebStoreCommon {
 		}
 		
 		if ( !$allowed ) {
-			$this->error( 403, 'inplace_access_denied' );
+			$this->htmlError( 403, 'inplace_access_denied' );
 			return false;
 		}
 
@@ -49,20 +49,18 @@ class InplaceScaler extends WebStoreCommon {
 		$tempDir = $this->tmpDir . '/' . gmdate( self::$tempDirFormat );
 		if ( !is_dir( $tempDir ) ) {
 			if ( !wfMkdirParents( $tempDir ) ) {
-				$this->error( 500, 'inplace_scaler_no_temp' );
+				$this->htmlError( 500, 'inplace_scaler_no_temp' );
 				return false;
 			}
 		}
 
 		$name = $wgRequest->getFileName( 'data' );
 		$srcTemp = $wgRequest->getFileTempname( 'data' );
-		$page = $wgRequest->getInt( 'page', 1 );
-		$dstWidth = $wgRequest->getInt( 'width', 0 );
 
-		# Check that the parameters are present
-		if ( is_null( $name ) || !$dstWidth ) {
-			$this->error( 400, 'inplace_scaler_not_enough_params' );
-			return false;
+		$params = $_REQUEST;
+		unset( $params['file'] );
+		if ( get_magic_quotes_gpc() ) { 
+			$params = array_map( 'stripslashes', $params );
 		}
 
 		$i = strrpos( $name, '.' );
@@ -70,16 +68,26 @@ class InplaceScaler extends WebStoreCommon {
 
 		$magic = MimeMagic::singleton();
 		$mime = $magic->guessTypesForExtension( $ext );
-		$deja = false;
-		$size = Image::getImageSize( $srcTemp, $mime, $deja );
-		if ( !$size ) {
-			$this->error( 400, 'inplace_scaler_invalid_image' );
+
+		$image = new WebStoreLocalImage( $srcTemp, $mime );
+
+		$handler = $image->getHandler();
+		if ( !$handler ) {
+			$this->htmlError( 400, 'inplace_scaler_no_handler' );
 			return false;
 		}
 
-		$dstHeight = Image::scaleHeight( $size[0], $size[1], $dstWidth );
+		if ( !isset( $params['page'] ) ) {
+			$params['page'] = 1;
+		}
+		$srcWidth = $image->getWidth( $params['page'] );
+		$srcHeight = $image->getHeight( $params['page'] );
+		if ( $srcWidth <= 0 || $srcHeight <= 0 ) {
+			$this->htmlError( 400, 'inplace_scaler_invalid_image' );
+			return false;
+		}
 
-		list( $dstExt, $dstMime ) = Image::getThumbType( $ext, $mime );
+		list( $dstExt, $dstMime ) = $handler->getThumbType( $ext, $mime );
 		if ( preg_match( '/[ \\n;=]/', $name ) ) {
 			$dstName = "thumb.$ext";
 		} else {
@@ -91,13 +99,26 @@ class InplaceScaler extends WebStoreCommon {
 
 		$dstTemp = tempnam( $tempDir, 'mwimg' );
 
-		$error = Image::reallyRenderThumb( $srcTemp, $dstTemp, $mime, $dstWidth, $dstHeight, $page );
-		if ( $error !== true ) {
-			$this->error( 500, 'inplace_scaler_failed', $error );
-			@unlink( $dstTemp );
+		$thumb = $handler->doTransform( $image, $dstTemp, false, $params );
+		if ( !$thumb || $thumb->isError()  ) {
+			$error = $thumb ? $thumb->getHtmlMsg() : '';
+			$this->htmlErrorReal( 500, 'inplace_scaler_failed', array(''), $error );
+			unlink( $dstTemp );
+			return false;
+		}
+		$stat = stat( $dstTemp );
+		if ( !$stat  ) {
+			$this->htmlError( 500, 'inplace_scaler_no_output' );
 			return false;
 		}
 
+		if ( $stat['size'] == 0 ) {
+			$this->htmlError( 500, 'inplace_scaler_no_output' );
+			unlink( $dstTemp );
+			return false;
+		}
+
+		wfDebug( __METHOD__.": transformation completed successfully, streaming output...\n" );
 		header( "Content-Type: $dstMime" );
 		header( "Content-Disposition: inline;filename*=utf-8'$wgContLanguageCode'" . urlencode( $dstName ) );
 		readfile( $dstTemp );
@@ -105,7 +126,10 @@ class InplaceScaler extends WebStoreCommon {
 	}
 }
 
-
+// Fatal errors can cause PHP to spew out some HTML and exit with a 200 response, 
+// which would leave a corrupt image file permanently on disk. Prevent this from
+// happening.
+ini_set( 'display_errors', false );
 $s = new InplaceScaler;
 $s->execute();
 

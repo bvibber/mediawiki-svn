@@ -79,20 +79,32 @@ EOT;
 	}
 
     function htmlError( $code, $msgName /*, ... */ ) {
-        $params = array_slice( func_get_args(), 1 );
-        $msgText = htmlspecialchars( call_user_func_array( 'wfMsg', $params ) );
-        $encMsgName = htmlspecialchars( $msgName );
-        $info = self::$httpErrors[$code];
+		$params = array_slice( func_get_args(), 1 );
+		$this->htmlErrorReal( $code, $msgName, $params );
+	}
+
+	function htmlErrorReal( $code, $msgName, $msgParams = array(), $extra = '' ) {
+		global $wgLogo;
+        $msgText = htmlspecialchars( wfMsgReal( $msgName, $msgParams ) );
+		$encMsgName = htmlspecialchars( $msgName );
+		$info = self::$httpErrors[$code];
+		$logo = htmlspecialchars( $wgLogo );
         header( "HTTP/1.1 $code $info" );
         echo $this->dtd();
         echo <<<EOT
-<html><head><title>$info</title></head>
-<body><h1>$info</h1><p>
+<html>
+<head>
+<title>$info</title></head>
+<body>
+<h1><img src="$logo" style='float:left;margin-right:1em' alt=''>$info</h1><p>
 $encMsgName: $msgText
-</p></body></html>
+</p>
+$extra
+</body>
+</html>
 
 EOT;
-    }
+	}
 
 	function executeCommon() {
 		if ( !$this->checkAccess() ) {
@@ -378,10 +390,10 @@ EOT;
 	}
 
 	/**
-	 * Get the root directory for a given repository: public, temp or deleted
+	 * Get the root directory for a given zone: public, temp or deleted
 	 */
-	function getRepositoryRoot( $repository ) {
-		switch ( $repository ) {
+	function getZoneRoot( $zone ) {
+		switch ( $zone ) {
 			case 'public':
 				return $this->publicDir;
 			case 'temp':
@@ -480,5 +492,59 @@ class WebStoreWarning extends WebStoreError {
 		$this->params = array_slice( func_get_args(), 1 );
 	}
 }
+
+class WebStoreLocalImage {
+	function __construct( $path, $mime ) {
+		$this->imagePath = $path;
+		$this->mime = $mime;
+		$this->handler = MediaHandler::getHandler( $mime );
+		$this->dims = array();
+	}
+
+	function getPageDimensions( $page = 1 ) {
+		if ( !isset( $this->dims[$page] ) ) {
+			$this->dims[$page] = $this->handler->getPageDimensions( $this, $page );
+		}
+		return $this->dims[$page];
+	}
+
+	function getWidth( $page = 1 ) {
+		$dim = $this->getPageDimensions( $page );
+		return $dim['width'];
+	}
+
+	function getHeight( $page = 1 ) {
+		$dim = $this->getPageDimensions( $page );
+		return $dim['height'];
+	}
+
+	function getMimeType() {
+		return $this->mime;
+	}
+
+	function getImagePath() {
+		return $this->imagePath;
+	}
+
+	function getHandler() {
+		return $this->handler;
+	}
+
+	function getImageSize() {
+		return $this->handler->getImageSize( $this, $this->getImagePath() );
+	}
+
+	function getMetadata() {
+		if ( !isset( $this->metadata ) ) {
+			$this->metadata = $this->handler->getMetadata( $this, $this->getImagePath() );
+		}
+		return $this->metadata;
+	}
+
+	function getURL() {
+		return false;
+	}
+}
+
 
 ?>

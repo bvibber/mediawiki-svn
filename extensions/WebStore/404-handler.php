@@ -39,15 +39,42 @@ class WebStore404Handler extends WebStoreCommon {
 			return false;
 		}
 
-		if ( !preg_match( '!^(\w)/(\w\w)/([^/]*)/(page(\d*)-)?(\d*)px-([^/]*)$!', $rel, $parts ) ) {
+		if ( !preg_match( '!^(\w)/(\w\w)/([^/]*)/([^/]*)$!', $rel, $parts ) ) {
 			header( 'X-Debug: regex mismatch' );
 			$this->real404();
 			return false;
 		}
 
-		list( $all, $hash1, $hash2, $filename, $pagefull, $pagenum, $size, $fn2 ) = $parts;
-		if( $filename != $fn2 && "$filename.png" != $fn2 ) {
+		list( $all, $hash1, $hash2, $filename, $thumbName ) = $parts;
+		$srcNamePos = strrpos( $thumbName, $filename );
+		if ( $srcNamePos === false ) {
 			header( 'X-Debug: filename/fn2 mismatch' );
+			$this->real404();
+			return false;
+		}
+		$extraExt = substr( $thumbName, $srcNamePos + strlen( $filename ) );
+		if ( $extraExt != '' && $extraExt[0] != '.' ) {
+			header( "X-Debug: invalid trailing characters in filename: $extraExt" );
+			$this->real404();
+			return false;
+		}
+		// Determine MIME type
+		$extPos = strrpos( $filename, '.' );
+		$srcExt = $extPos === false ? '' : substr( $filename, $extPos + 1 );
+		$magic = MimeMagic::singleton();
+		$mime = $magic->guessTypesForExtension( $srcExt );
+		$handler = MediaHandler::getHandler( $mime );
+		if ( !$handler ) {
+			header( 'X-Debug: no handler' );
+			$this->real404();
+			return false;
+		}
+
+		// Parse parameter string
+		$paramString = substr( $thumbName, 0, $srcNamePos - 1 );
+		$params = $handler->parseParamString( $paramString );
+		if ( !$params ) {
+			header( "X-Debug: handler for $mime says param string is invalid" );
 			$this->real404();
 			return false;
 		}
@@ -114,7 +141,7 @@ class WebStore404Handler extends WebStoreCommon {
 
 				$post = WebStorePostFile::post( $scalerUrl, 'data', 
 					"{$this->publicDir}/$hash1/$hash2/$filename",
-					array( 'width' => $size, 'page' => $pagenum ), 
+					$params, 
 					$server, $tmpFile, $this->httpConnectTimeout, $this->httpOverallTimeout );
 
 				// Try next server unless that one was successful
@@ -132,6 +159,12 @@ class WebStore404Handler extends WebStoreCommon {
 				$info = self::$httpErrors[$post->responseCode];
 				header( "HTTP/1.1 {$post->responseCode} $info" );
 				$this->streamFile( $tmpFile );
+				break;
+			}
+
+			fseek( $tmpFile, 0, SEEK_END );
+			if ( ftell( $tmpFile ) == 0 ) {
+				$this->htmlError( 500, 'webstore_scaler_empty_response' );
 				break;
 			}
 

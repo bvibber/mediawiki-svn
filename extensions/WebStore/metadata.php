@@ -6,18 +6,6 @@
 
 require( dirname( __FILE__ ) . '/WebStoreStart.php' );
 
-class WebStoreImage extends Image {
-	function __construct( $path ) {
-		$title = Title::makeTitle( NS_IMAGE, 'Metadata.php dummy image');
-		$this->imagePath = $path;
-		parent::__construct( $title );
-	}
-
-	function getFullPath() {
-		return $this->imagePath;
-	}
-}
-
 class WebStoreMetadata extends WebStoreCommon {
 	function execute() {
 		global $wgRequest;
@@ -29,7 +17,7 @@ class WebStoreMetadata extends WebStoreCommon {
 <head><title>metadata.php Test interface</title>
 <body>
 <form method="post" action="metadata.php">
-<p>Repository: <select name="repository" value="public">
+<p>Zone: <select name="zone" value="public">
 <option>public</option>
 <option>temp</option>
 <option>deleted</option>
@@ -43,10 +31,10 @@ class WebStoreMetadata extends WebStoreCommon {
 			return true;
 		}
 
-		$repository = $wgRequest->getVal( 'repository' );
-		$root = $this->getRepositoryRoot( $repository );
+		$zone = $wgRequest->getVal( 'zone' );
+		$root = $this->getZoneRoot( $zone );
 		if ( strval( $root ) == '' ) {
-				$this->error( 400, 'webstore_invalid_repository', $repository );
+				$this->error( 400, 'webstore_invalid_zone', $zone );
 				return false;
 		}
 
@@ -58,21 +46,42 @@ class WebStoreMetadata extends WebStoreCommon {
 
 		$fullPath = $root . '/' . $rel;
 
-		if ( !file_exists( $fullPath ) ) {
+		$name = basename( $fullPath );
+		$i = strrpos( $name, '.' );
+		$ext = Image::normalizeExtension( $i ? substr( $name, $i + 1 ) : '' );
+		$magic = MimeMagic::singleton();
+		$mime = $magic->guessTypesForExtension( $ext );
+		$type = $magic->getMediaType( $fullPath, $mime);
+
+		$stat = stat( $fullPath );
+		if ( !$stat ) {
 			$this->error( 400, 'webstore_metadata_not_found', $fullPath );
 			return false;
 		}
 
-		$image = new WebStoreImage( $fullPath );
-		$image->loadFromFile();
+		$image = new WebStoreLocalImage( $fullPath, $mime );
+		if ( !$image->getHandler() ) {
+			$this->error( 400, 'webstore_no_handler' );
+			return false;
+		}
+		$gis = $image->getImageSize();
+		$handlerMeta = $image->getMetadata();
+		$stat = stat( $fullPath );
 
-		$fields = array( 'width', 'height', 'bits', 'type', 'mime', 'metadata', 'size' );
+		$metadata = array(
+			'width' => $gis[0],
+			'height' => $gis[1],
+			'bits' => isset( $gis['bits'] ) ? $gis['bits'] : '',
+			'type' => $type, 
+			'mime' => $mime,
+			'metadata' => $handlerMeta,
+			'size' => $stat['size'],
+		);
 
 		header( 'Content-Type: text/xml' );
 		echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<response><status>success</status><metadata>\n";
-		foreach ( $fields as $field ) {
-			$value = $image->$field;
-			if ( is_bool( $image->$field ) ) {
+		foreach ( $metadata as $field => $value ) {
+			if ( is_bool( $value ) ) {
 				$value = $value ? 1 : 0;
 			}
 			echo "<item name=\"$field\">" . htmlspecialchars( $value ) . "</item>\n";

@@ -66,20 +66,29 @@ class WebStoreClient extends FileStore {
 	/**
 	 * Publish a file, return "archived" if the file existed already and was archived,
 	 * "new" if the file didn't exist, and "failure" if there was a problem. Details
-	 * of the problem are put in $this->lastError
+	 * of the problem are put in $this->lastError.
+	 *
+	 * The source zone may be one of "local", "temp", "public" or "deleted". The 
+	 * file is copied if it is "public", and moved otherwise.
 	 */
-	function publish( $srcRepo, $srcRel, $dstRel, $archiveRel ) {
+	function publish( $srcZone, $srcRel, $dstRel, $archiveRel ) {
 		global $wgServer, $wgScriptPath;
 
-		if ( $srcRepo == 'local' ) {
-			// Need to store the file first.
-			$srcRel = $this->store( $srcRel );
-			$srcRepo = 'temp';
+		if ( $srcZone == 'local' ) {
+			// Local pseudo-zone, need to store the file first.
+			$sharedSrcRel = $this->store( $srcRel );
+			if ( !$sharedSrcRel ) {
+				return 'failure';
+			}
+			// Delete temporary source file, to simulate rename()
+			unlink( $srcRel );
+			$srcRel = $sharedSrcRel;
+			$srcZone = 'temp';
 		}
 
 		$content = $this->post( $this->getURL( 'publish.php' ),
 			array(
-				'srcRepo' => $srcRepo,
+				'srcZone' => $srcZone,
 				'src' => $srcRel,
 				'dst' => $dstRel,
 				'archive' => $archiveRel
@@ -113,10 +122,10 @@ class WebStoreClient extends FileStore {
 		return isset( $response->status ) && $response->status == 'success';
 	}
 
-	function metadata( $repository, $path ) {
+	function metadata( $zone, $path ) {
 		$content = $this->post( $this->getURL( 'metadata.php' ),
 			array( 
-				'repository' => $repository,
+				'zone' => $zone,
 				'path' => $path,
 			));
 		$response = $this->parseResponse( $content );
