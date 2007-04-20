@@ -265,6 +265,18 @@ Zoek naar $3 $9",
 Deze is waarschijnlijk tijdelijk van aard; probeer het over enige tijd opnieuw
 of doorzoek de wiki via een externe zoekmachine:\n"
 );
+$wgLuceneSearchMessages['oc'] = array(
+	'searchnumber'          => '<strong>Resultats $1-$2 sus $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Prec.</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Seg.</span> &#x00BB;',
+	'searchscore'           => 'Pertinéncia : $1',
+	'searchsize'            => '$1 ko ($2 mots)',
+	'searchdidyoumean'      => 'Pensavetz a : « <a href="$1">$2</a> » ?',
+	'searchnoresults'       => 'O planhem, existís pas cap de correspondéncia exacta a vòstra requèsta.',
+	'searchnearmatches'     => '<strong>Aquestas paginas an un títol similar a vòstra requèsta.</strong>',
+	'lucenepowersearchtext' => 'Recercar dins los espacis : $1<br />Tèxt de recercar : $3 $9',
+	'lucenefallback'        => 'Un problèma es subrevengut amb la recèrca wiki. Aqueste problèma es probablament temporari ; mercé de tornar ensajar dins un moment o d’utilizar un servici de recèrca extèrna.',
+);
 $wgLuceneSearchMessages['pl'] = array(
 	'searchnumber'          => "<strong>Wyniki $1-$2 z $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Poprzednia</span>",
