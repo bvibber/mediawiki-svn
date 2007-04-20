@@ -16,8 +16,8 @@ delay 10
 #exempt adminuser
 #exempt gooduser
 
-# Command to send mail.
-sendmail /usr/lib/sendmail -oi -bm -- 
+# Command to send mail.  No arguments allowed.
+sendmail /usr/lib/sendmail
 
 # File to store PID in.
 #pidfile /var/run/slayerd.pid

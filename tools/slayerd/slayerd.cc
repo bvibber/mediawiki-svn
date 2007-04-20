@@ -25,6 +25,7 @@
 #include <sys/types.h>
 #include <sys/mman.h>
 #include <sys/stat.h>
+#include <sys/wait.h>
 #include <unistd.h>
 #include <pwd.h>
 #include <signal.h>
@@ -226,15 +227,59 @@ log(std::string const &m)
 void
 sendmail(std::string const &username, std::string const &message)
 {
-	std::string cmd = str(boost::format("%s %s") % config.sendmail % username);
-	FILE *p = popen(cmd.c_str(), "w");
-	if (p == 0) {
-		log(str(boost::format("cannot send mail using %s: %s") % config.sendmail % std::strerror(errno)));
+	char const *const args[] = {
+		config.sendmail.c_str(),
+		"-oi",
+		"-bm",
+		"--",
+		username.c_str(),
+		0
+	};
+	int fds[2];
+	pid_t pid;
+
+	if (pipe(fds) == -1) {
+		log(str(boost::format("while sending mail: pipe: %s") % 
+					std::strerror(errno)));
 		return;
 	}
 
-	fwrite(message.data(), message.size(), 1, p);
-	pclose(p);
+	switch (pid = fork()) {
+	case 0:
+		if (dup2(fds[0], 0) == -1) {
+			log(str(boost::format("mail child: dup2: %s") % 
+						std::strerror(errno)));
+			_exit(1);
+		}
+
+		close(fds[0]);
+		close(fds[1]);
+		if (execv(config.sendmail.c_str(), const_cast<char *const 
+					*>(args)) == -1)
+			log(str(boost::format("mail child: execv: %s") % 
+						std::strerror(errno)));
+		_exit(1);
+
+	case -1:
+		log(str(boost::format("sending mail: fork: %s") % 
+					std::strerror(errno)));
+		return;
+
+	default:
+		close(fds[0]);
+		write(fds[1], message.data(), message.size());
+		close(fds[1]);
+	}
+
+	int status;
+	wait(&status);
+	if (WIFEXITED(status)) {
+		int ret = WEXITSTATUS(status);
+		if (ret != 0)
+			log(str(boost::format("sending mail: child exited with status %d") % ret));
+	} else if (WIFSIGNALED(status)) {
+		log(str(boost::format("sending mail: child exited with signal %d") % WTERMSIG(status)));
+	}
 }
 
 std::string
