@@ -161,6 +161,31 @@ function efPatrollerMessages() {
 'patrol-resume' => 'Klik hier om verder te gaan.',
 ),
 
+/* Occitan (Cedric31) */
+'oc' => array(
+'patrol' => 'Verificacion de las modificacions',
+'patrol-endorse' => 'Acceptar',
+'patrol-revert' => 'Anullar',
+'patrol-revert-reason' => 'Motiu:',
+'patrol-skip' => 'Sautar',
+'patrol-reverting' => 'Anullacion: $1',
+'patrol-nonefound' => 'Cap d\'edicion seguida a pas pugut èsser trobada per la verificacion.',
+'patrol-endorsed-ok' => 'L’edicion es estada marcada coma verificada.',
+'patrol-endorsed-failed' => 'L’edicion a pas pogut èsser verificada.',
+'patrol-reverted-ok' => 'L’edicion es estada anullada.',
+'patrol-reverted-failed' => 'L’edicion a pas pogut èsser anullada.',
+'patrol-skipped-ok' => 'Ignorar l’edicion.',
+'patrol-reasons' => '* Simple vandalisme
+* Tèst de debutant
+* Vejatz pagina de discussion',
+'patrol-another' => 'Veire una edicion novèla, se es disponibla.',
+'patrol-stopped' => 'Avètz causit per verificar pas mai una autra edicion. $1',
+'patrol-resume' => 'Clicar aicí per reprener.',
+'group-patroller' => 'Patrolhaires',
+'group-patroller-member' => 'Patrolhaire',
+'grouppage-patroller' => '{{ns:project}}:Patrolhaire',
+),
+
 /* Slovak (helix84) */
 
 'sk' => array(

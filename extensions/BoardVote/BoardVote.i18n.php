@@ -621,6 +621,50 @@ uitgebracht. $1 voor de versleutelde gegevens.</p>",
 	'group-boardvote-member'  => 'Board vote beheerder',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote beheerder',
 );
+$wgBoardVoteMessages['oc'] = array(
+	'boardvote'               => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vòte]]
+* [[Special:Boardvote/list|Lista dels vòtes enregistrats]]
+* [[Special:Boardvote/dump|Enregistraments criptats]]',
+	'boardvote_intro'         => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
+	'boardvote_intro_change'  => '<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çai jos. Mercé de marcar las casas en regard de cada candidat qu\'a vòtre supòrt.</p></p>',
+	'boardvote_entered'       => 'Mercé, vòstre vòte es estat enregistrat. 
+
+S\'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
+
+<pre>$1</pre>
+
+Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion : 
+
+<pre>$2</pre> 
+
+La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/dump]].
+
+<pre>$3</pre> 
+
+[[Special:Boardvote/entry|Retorn]]',
+	'boardvote_notloggedin'   => 'Actualament sètz pas autentificat. Per votar, devètz utilizar un compte comportant al mens $1 contribucions abans lo $2, e que la primièra remonte al $3.',
+	'boardvote_notqualified'  => 'Respondètz pas a una de las condicions requesidas per votar a aqueste escrutin. Es necessari d’aver $3 contribucions abans lo $2, e n\'avètz efectuadas $1. En mai, vòstra primièra modificacion data del $4, e deu aver estada facha abans lo $5.',
+	'boardvote_novotes'       => 'Degun a pas encara votat.',
+	'boardvote_time'          => 'Ora',
+	'boardvote_user'          => 'Utilizaire',
+	'boardvote_edits'         => 'Modificacions',
+	'boardvote_days'          => 'Jorns',
+	'boardvote_ua'            => 'Representant de l’utilizaire',
+	'boardvote_listintro'     => 'Lista de las personas qua ja an votat :<br /><br />',
+	'boardvote_dumplink'      => 'Clicatz aicí',
+	'boardvote_submit'        => 'D\'acòrdi',
+	'boardvote_strike'        => 'Raiar',
+	'boardvote_unstrike'      => 'Desraiar',
+	'boardvote_needadmin'     => 'Sols los administrators del vòte pòdon efectuar aquesta operacion.',
+	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Eleccions al conselh d’administracion Wikimedia</a> : Vòte dobert fins al 12 de julhet',
+	'boardvote_notstarted'    => 'Lo vòte a pas encara començat',
+	'boardvote_closed'        => 'L’eleccion es d\'ara enlà clausa. Lo resultat es proclamat sus [[meta:Election results 2006/oc|la pagina de resultats]] (oc).',
+	'boardvote_edits_many'    => 'mantun',
+	'group-boardvote'         => 'Membres votants del conselh d’administracion',
+	'group-boardvote-member'  => 'Membre votant del conselh d’administracion',
+	'grouppage-boardvote'     => '{{ns:project}}:membre votant del conselh d’administracion',
+);
 $wgBoardVoteMessages['pl'] = array(
 	'boardvote'               => "Wybory do Rady Powierniczej Fundacji Wikimedia",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Głosuj]]

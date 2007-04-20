@@ -645,6 +645,23 @@ $wgMakesysopMessages['no'] = array(
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
+$wgMakesysopMessages['oc'] = array(
+	'makesysoptitle' => 'Balhar los dreches d’administrator a un utilizaire',
+	'makesysoptext' => 'Aqueste formulari es utilizat pels burocratas per balhar los dreches d’administrator a un utilizaire ordinari. Inscrivissètz lo nom de l’utilizaire dins lo quadre e clicatz sul boton per balhar los dreches en question.',
+	'makesysopname' => 'Nom de l\'utilizaire:',
+	'makesysopsubmit' => 'Balhar los dreches d’administrator a aqueste utilizaire',
+	'makesysopok' => '<b>D’ara enlà, l\'utilizaire « $1 » es administrator.</b>',
+	'makesysopfail' => '<b>L’utilizaire « $1 » pòt pas èsser nomenat administrator. (Avètz picat corrèctament lo nom ?)</b>',
+	'setbureaucratflag' => 'Ajustar l\'estatut de burocrata',
+	'rights' => 'Dreches:',
+	'set_user_rights' => 'Aplicar los dreches a l’utilizaire',
+	'user_rights_set' => '<b>Los dreches de l’utilizaire « $1 » son estats meses a jorn.</b>',
+	'set_rights_fail' => '<b>Los dreches de l’utilizaire « $1 » an pas pogut èsser meses a jorn. (Avètz picat lo nom corrèctament ?)<b>',
+	'makesysop' => 'Balhar los dreches d’administrator a un utilizaire',
+	'already_sysop' => 'Aqueste utilizaire ja es administrator',
+	'already_bureaucrat' => 'Aqueste utilizaire ja es burocrata',
+	'makesysop-nodatabase' => 'Marrit nom d’utilizaire interwiki : $1',
+);
 $wgMakesysopMessages['pl'] = array(
 	'makesysoptitle'       => 'Nadaj użytkownikowi uprawnienia administratora',
 	'makesysoptext'        => 'Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania innym użytkownikom praw administratora. Aby to uczynić, wpisz nazwę użytkownika i kliknij na przycisk.',

@@ -178,6 +178,20 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'rechtsboven, rechtsonder, linksonder, linksboven, geen',
 ),
 
+/* Occitan (Cedric31) */
+'oc' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt; : devètz especificar un imatge dins la primièra linha',
+'imagemap_invalid_image'        => '&lt;imagemap&gt; : l’imatge es invalid o existís pas',
+'imagemap_no_link'              => '&lt;imagemap&gt; : cap de ligam valid es pas estat trobat a la fin de la linha $1',
+'imagemap_invalid_title'        => '&lt;imagemap&gt; : títol invalid dins lo ligam a la linha $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt; : pas pro de coordenadas per la forma a la linha $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt; : forma pas reconeguda a la linha $1, cada linha deu començar amb un dels mots seguents : default, rect, circle o poly',
+'imagemap_no_areas'             => '&lt;imagemap&gt; : al mens una especificacion d’aira deu èsser balhada',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt; : coordenada invalida a la linha $1, deu èsser un nombre',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt; : paramètre « desc » invalid, los paramètres possibles son : $1',
+'imagemap_description'          => 'A prepaus d\'aqueste imatge',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: musí mať na prvom riadku uvedený obrázok',

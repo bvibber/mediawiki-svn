@@ -75,6 +75,17 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 'querysuccessful' => 'Query uitgevoerd',
 ),
 
+/* Occitan (Cedric31) */
+'oc' => array(
+'asksql'           => 'Requèsta SQL',
+'asksqltext'       => 'Utilizatz aqueste formulari per far una requèsta dirècta dins la banca de donadas. Utilizatz los apostròfes (\'atal\') per las cadenas de caractèrs. Aquò pòt sovent subrecargar lo serveire. Alara, utilizatz aquesta foncion amb parsimoniá.',
+'sqlislogged'      => 'Notatz plan que totas las requèstas son jornalizadas.',
+'sqlquery'         => 'Entratz la requèsta',
+'querybtn'         => 'Sometre la requèsta',
+'selectonly'       => 'Solas las requèstas en lecturas solas son permesas.',
+'querysuccessful'  => 'La requèsta es estada executada amb succès.',
+),
+
 /* Russian (Alexander Sigachov) */
 'ru' => array(
 'asksql' => 'SQL-запрос',

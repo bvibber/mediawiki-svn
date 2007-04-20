@@ -78,6 +78,11 @@ $wgFilepathMessages['nl'] = array(
 	'filepath_page'   => 'Bestand:',
 	'filepath_submit' => 'Zoeken',
 );
+$wgFilepathMessages['oc'] = array(
+	'filepath'        => 'Camin d\'un fichièr',
+	'filepath_page'   => 'Fichièr:',
+	'filepath_submit' => 'Camin',
+);
 $wgFilepathMessages['pt'] = array(
 	'filepath'        => 'Diretório do ficheiro',
 	'filepath_page'   => 'Ficheiro:',

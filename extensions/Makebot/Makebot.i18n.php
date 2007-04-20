@@ -337,6 +337,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'heeft de botstatus van [[$1]] ingetrokken',
 ),
 
+/* Occitan (Cedric31) */
+'oc' => array(
+'makebot'                 => 'Donar o levar los dreches de bòt',
+'makebot-header'          => '\'\'\'Un burocrata local pòt utilizar aquesta pagina per acordar o revocar l\'[[Ajuda:Bòt|Estatut de Bòt]] a un autre compte d\'utilizaire.\'\'\'<br />L\'estatut de bòt a per particularitat d\'amagar las edicions dels utilizaires dins la pagina dels [[Special:Recentchanges|darrièrs cambiaments]] e de totas las autras listas similàrias. Aquò es fòrt util per marcar los utilizaires que vòlon far d\'edicions automaticas. Aquò deu pas èsser fach pas que conformament a las règlas edictadas al sen de cada projècte.',
+'makebot-username'        => 'Nom d\'utilizaire:',
+'makebot-search'          => 'Validar',
+'makebot-isbot'           => '[[User:$1|$1]] a l\'estatut de bòt.',
+'makebot-notbot'          => '[[User:$1|$1]] a pas l\'estatut de bòt.',
+'makebot-privileged'      => '[[User:$1|$1]] ja es [[Special:Listadmins|un administrator]] e pòt pas aver l\'estatut de « bòt ».',
+'makebot-change'          => 'Cambiar los dreches:',
+'makebot-grant'           => 'Acordar',
+'makebot-revoke'          => 'Revocar',
+'makebot-comment'         => 'Comentari:',
+'makebot-granted'         => 'D\'ara enlà, [[User:$1|$1]] a l\'estatut de bòt.',
+'makebot-revoked'         => '[[User:$1|$1]] a pas mai l\'estatut de bòt.',
+'makebot-logpage'         => 'Istoric dels cambiaments d\'estatut dels bòts',
+'makebot-logpagetext'     => 'Aquesta pagina repertòria los cambiaments (aquisicions e pèrdas) d\'estatut dels [[Ajuda:Bòt|bòts]].',
+'makebot-logentrygrant'   => 'a balhat l\'estatut de bòt a [[$1]]',
+'makebot-logentryrevoke'  => 'a levat l\'estatut de bòt de [[$1]]',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'makebot' => 'Conceder ou remover estatuto de bot',

@@ -50,6 +50,12 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 ),
 
+/* Occitan (Cedric31) */
+'oc' => array(
+'blacklistedusername' => 'Noms d’utilizaires en lista negra',
+'blacklistedusernametext' => 'Lo nom d’utilizaire qu\'avètz causit se tròba sus la [[MediaWiki:Usernameblacklist|lista dels noms interdiches]]. Causissètz un autre nom.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'blacklistedusername' => 'Používateľské meno na čiernej listine',

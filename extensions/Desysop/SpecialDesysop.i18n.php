@@ -99,6 +99,17 @@ $wgDesysopMessages['nl'] = array(
 	'desysop'              => 'Beheerdersrechten intrekken',
 	'not_sysop'            => 'Deze gebruiker is geen beheerder',
 );
+$wgDesysopMessages['oc'] = array(
+	'desysoptitle'         => 'Levar los dreches d’administrator a aqueste utilizaire',
+	'desysoptext'          => 'Aqueste formulari es utilizat pels burocratas per levar sos dreches a un administrator. Entratz lo nom d’un administrator çai jos e clicatz lo boton per levar los dreches.',
+	'desysopname'          => 'Nom de l\'utilizaire:',
+	'desysopok'            => '<b>L’utilizaire « $1 » es pas mai administrator</b>',
+	'set_user_rights'      => 'Aplicar los dreches a l’utilizaire',
+	'user_rights_set'      => '<b>Los dreches de l’utilizaire « $1 » son estats meses a jorn.</b>',
+	'set_rights_fail'      => '<b>Los dreches de l’utilizaire « $1 » an pas pogut èsser meses a jorn. (Avètz picat lo nom corrèctament ?)<b>',
+	'desysop'              => 'Levar los dreches d’administrator',
+	'not_sysop'            => 'Aqueste utilizaire es pas un administrator',
+);
 $wgDesysopMessages['ru'] = array(
 	'desysoptitle'         => 'Отозвать права администратора у участника',
 	'desysoptext'          => "Эту форму могут использовать «бюрократы» для того, чтобы отозвать права администратора у участника. Введите имя участника и нажмите на кнопку, чтобы запретить ему доступ к административным функциям.",
