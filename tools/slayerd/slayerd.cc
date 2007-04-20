@@ -39,8 +39,27 @@ namespace fs = boost::filesystem;
 
 namespace {
 	std::string PATH_PROC = "/proc";
-	std::string SENDMAIL = "/usr/lib/sendmail";
+	std::string CONFFILE = "/etc/slayerd/slayerd.conf";
 }
+
+struct config_t {
+	std::size_t limit;
+	std::size_t thresh;
+	int delay;
+	std::string mailmessage;
+	std::string sendmail;
+	std::string pidfile;
+	std::set<uid_t> exempt;
+
+	config_t()
+		: limit(0)
+		, thresh(0)
+		, delay(60)
+		, mailmessage(ETCDIR "/mailmessage")
+		, sendmail("/usr/lib/sendmail -oi -bm --")
+		, pidfile("/var/run/slayerd.pid")
+	{}
+} config;
 
 struct process {
 	process(fs::path const &pth);
@@ -188,14 +207,13 @@ field_comparator(S const &a, S const &b)
 
 void
 version(void) {
-	std::cerr << "slayerd $Revision$\n";
+	std::cerr << "slayerd 1.0\n";
 	std::cerr << "Copyright (C) 2007, River Tarnell <river@attenuate.org>.\n";
 }
 
 void
 usage(void) {
-	std::cerr <<
-"usage: slayerd [-vh] -l <limit> -t <thread> [-e <user>]\n"
+	std::cerr << "usage: slayerd [-fvh] [-c <conf>]\n"
 ;
 }
 
@@ -208,10 +226,10 @@ log(std::string const &m)
 void
 sendmail(std::string const &username, std::string const &message)
 {
-	std::string cmd = str(boost::format("%s -oi -bm -- %s") % SENDMAIL % username);
+	std::string cmd = str(boost::format("%s %s") % config.sendmail % username);
 	FILE *p = popen(cmd.c_str(), "w");
 	if (p == 0) {
-		log(str(boost::format("cannot send mail using %s: %s") % SENDMAIL % std::strerror(errno)));
+		log(str(boost::format("cannot send mail using %s: %s") % config.sendmail % std::strerror(errno)));
 		return;
 	}
 
@@ -219,53 +237,208 @@ sendmail(std::string const &username, std::string const &message)
 	pclose(p);
 }
 
+std::string
+replace_file(std::string const &filename, std::map<std::string, std::string> const &vars)
+{
+	std::string file;
+	std::string result;
+
+	std::ifstream f(filename.c_str());
+	if (!f) {
+		log(str(boost::format("cannot open %s: %s") % filename % std::strerror(errno)));
+		return "";
+	}
+
+	std::string line;
+	while (std::getline(f, line)) {
+		std::string::size_type i, j;
+		while ((i = line.find('%')) != std::string::npos) {
+			if ((j = line.find('%', i + 1)) == std::string::npos) {
+				result += line;
+				line = "";
+				break;
+			}
+
+			result += line.substr(0, i);
+			std::string var = line.substr(i + 1, j - i - 1);
+			std::map<std::string, std::string>::const_iterator it = vars.find(var);
+
+			if (it == vars.end()) {
+				result += line.substr(i);
+				line = "";
+				break;
+			}
+
+			result += it->second;
+			line = line.substr(j + 1);
+		}
+
+		result += line;
+		result += '\n';
+	}
+
+	return result;
+}
+
+bool
+configure(void)
+{
+	std::ifstream conffile(CONFFILE.c_str());
+	if (!conffile) {
+		std::string err = str(boost::format("cannot open %s: %s") % CONFFILE % std::strerror(errno));
+		std::cerr << err << '\n';
+		log(err);
+		return false;
+	}
+
+	std::string line;
+	int lineno = 0;
+	while (std::getline(conffile, line)) {
+		++lineno;
+
+		if (line[0] == '#')
+			continue;
+		if (line.empty())
+			continue;
+
+		std::istringstream l(line);
+		std::string d;
+		if (!(l >> d))
+			continue;
+
+		if (d == "limit") {
+			if (!(l >> config.limit)) {
+				std::string err = str(boost::format("\"%s\", line %d: invalid limit") % CONFFILE % lineno);
+				std::cerr << err << '\n';
+				log(err);
+				return false;
+			}
+			config.limit *= 1024 * 1024;
+		} else if (d == "thresh") {
+			if (!(l >> config.thresh)) {
+				std::string err = str(boost::format("\"%s\", line %d: invalid threshold") % CONFFILE % lineno);
+				std::cerr << err << '\n';
+				log(err);
+				return false;
+			}
+			config.thresh *= 1024 * 1024;
+		} else if (d == "exempt") {
+			std::string username;
+			if (!(l >> username)) {
+				std::string err = str(boost::format("\"%s\", line %d: invalid username") % CONFFILE % lineno);
+				std::cerr << err << '\n';
+				log(err);
+				return false;
+			}
+
+			uid_t id = uid(username);
+			if (id == -1) {
+				std::string err = str(boost::format("\"%s\", line %d: user \"%s\" does not exist") 
+						% CONFFILE % lineno % username);
+				std::cerr << err << '\n';
+				log(err);
+				return false;
+			}
+			config.exempt.insert(id);
+		} else if (d == "delay") {
+			if (!(l >> config.delay)) {
+				std::string err = str(boost::format("\"%s\", line %d: invalid delay") % CONFFILE % lineno);
+				std::cerr << err << '\n';
+				log(err);
+				return false;
+			}
+		} else if (d == "mailmessage") {
+			if (!(l >> config.mailmessage)) {
+				std::string err = str(boost::format("\"%s\", line %d: invalid mail message") % CONFFILE % lineno);
+				std::cerr << err << '\n';
+				log(err);
+				return false;
+			}
+		} else if (d == "sendmail") {
+			if (!(l >> config.sendmail)) {
+				std::string err = str(boost::format("\"%s\", line %d: invalid sendmail command") % CONFFILE % lineno);
+				std::cerr << err << '\n';
+				log(err);
+				return false;
+			}
+		} else if (d == "pidfile") {
+			if (!(l >> config.pidfile)) {
+				std::string err = str(boost::format("\"%s\", line %d: invalid pid file") % CONFFILE % lineno);
+				std::cerr << err << '\n';
+				log(err);
+				return false;
+			}
+		} else {
+			std::string err = str(boost::format("\"%s\", line %d: invalid directive") % CONFFILE % lineno);
+			std::cerr << err << '\n';
+			log(err);
+			return false;
+		}
+	}
+
+	return true;
+}
+
+void
+rmpidfile(void)
+{
+	unlink(config.pidfile.c_str());
+}
+
+void
+do_signal(int sig)
+{
+	rmpidfile();
+	_exit(0);
+}
+
+bool
+do_pidfile(void)
+{
+	{
+		std::ifstream pf(config.pidfile.c_str());
+		if (pf) {
+			std::string pid;
+			std::getline(pf, pid);
+			std::cerr << boost::format("slayerd already running (pid %d) or stale pidfile %s\n")
+				% pid % config.pidfile;
+			return false;
+		}
+	}
+
+	std::ofstream pf(config.pidfile.c_str());
+	if (!pf) {
+		std::cerr << boost::format("cannot open pidfile %s: %s\n")
+			% config.pidfile % std::strerror(errno);
+		return false;
+	}
+
+	pf << getpid() << '\n';
+	atexit(rmpidfile);
+	signal(SIGINT, do_signal);
+	signal(SIGTERM, do_signal);
+	return true;
+}
+
 int
 main(int argc, char **argv)
 {
-	int delay = 10, pagesize = sysconf(_SC_PAGE_SIZE);
-	std::size_t limit = 0, thresh = 0;
+	int pagesize = sysconf(_SC_PAGE_SIZE), fflag = 0;
 	int c;
-	std::set<uid_t> exempt;
+
+	config.exempt.insert(0);	/* root is always exempt */
 
 	char nodename[255];
 	gethostname(nodename, sizeof nodename);
 
-	while ((c = getopt(argc, argv, "l:t:e:vh")) != -1) {
+	while ((c = getopt(argc, argv, "fvhc:")) != -1) {
 		switch (c) {
-			case 'l':
-				try {
-					limit = boost::lexical_cast<std::size_t>(optarg) * 1024 * 1024;
-				} catch (boost::bad_lexical_cast &) {
-					std::cerr << boost::format("\"%s\" is not a valid number\n") % optarg;
-					return 1;
-				}
+			case 'f':
+				fflag++;
 				break;
 
-			case 't':
-				try {
-					thresh = boost::lexical_cast<std::size_t>(optarg) * 1024 * 1024;
-				} catch (boost::bad_lexical_cast &) {
-					std::cerr << boost::format("\"%s\" is not a valid number\n") % optarg;
-					return 1;
-				}
-				break;
-
-			case 'd':
-				try {
-					delay = boost::lexical_cast<std::size_t>(optarg);
-				} catch (boost::bad_lexical_cast &) {
-					std::cerr << boost::format("\"%s\" is not a valid number\n") % optarg;
-					return 1;
-				}
-				break;
-
-			case 'e':
-				uid_t u;
-				if ((u = uid(optarg)) == -1) {
-					std::cerr << boost::format("user \"%s\" does not exist\n") % optarg;
-					return 1;
-				}
-				exempt.insert(u);
+			case 'c':
+				CONFFILE = optarg;
 				break;
 
 			case 'v':
@@ -286,23 +459,29 @@ main(int argc, char **argv)
 	argc -= optind;
 	argv += optind;
 
-	if (limit == 0 || thresh == 0) {
-		usage();
+	openlog("slayerd", LOG_PID, LOG_DAEMON);
+
+	if (!configure())
+		return 1;
+
+	if (config.limit == 0 || config.thresh == 0) {
+		std::cerr << "invalid limit/threshold\n";
 		return 1;
 	}
 
-	openlog("slayerd", LOG_PID, LOG_DAEMON);
-
-	if (daemon(0, 0) == -1) {
+	if (!fflag && daemon(0, 0) == -1) {
 		std::cerr << boost::format("cannot daemonise: %s\n") % std::strerror(errno);
 		return 1;
 	}
+
+	if (!do_pidfile())
+		return 1;
 
 	if (mlockall(MCL_CURRENT | MCL_FUTURE) == -1) 
 		log(str(boost::format("warning: cannot lock memory: %s\n") % std::strerror(errno)));
 
 	log(str(boost::format("delay: %d, limit: %dM, threshold: %dM\n")
-		% delay % (limit / 1024 / 1024) % (thresh / 1024 / 1024)));
+		% config.delay % (config.limit / 1024 / 1024) % (config.thresh / 1024 / 1024)));
 
 	for (;;) {
 		fs::path proc(PATH_PROC);
@@ -345,41 +524,23 @@ main(int argc, char **argv)
 			user &u = users[i];
 			std::size_t bytes = u.rss * pagesize;
 
-			if (exempt.find(u.uid) != exempt.end())
+			if (config.exempt.find(u.uid) != config.exempt.end())
 				continue;
 
-			if (bytes < limit)
+			if (bytes < config.limit)
 				continue;
 
 			std::string uname = username(u.uid);
-			std::string message = str(boost::format(
-"From: slayerd <slayerd@%1%>\n"
-"To: %2% <%2%@%1%>\n"
-"Subject: Excessive memory usage from your processes.\n"
-"Reply-To: Wikimedia Toolserver Administrators <ts-admins@wikimedia.org>\n"
-"X-Mailer: slayerd $Revision$\n"
-"\n"
-"This message was automatically generated by slayerd on %1%.\n"
-"\n"
-"Hello,\n"
-"\n"
-"One or more of your processes on the host %1%\n"
-"were exceeding the configured memory limit, which is %3% megabytes.\n"
-"I have killed enough of your processes to bring your usage back to the\n"
-"threshold limit, which is %4% megabytes.\n"
-"\n"
-"These are the processes I killed:\n"
-"\n"
-		) % nodename % uname % (limit / 1024 / 1024) % (thresh / 1024 / 1024));
+			std::string process_list;
 
 			log(str(boost::format("user \"%s\" is using %dM, over configured limit %dM")
 						% uname
 						% (bytes / 1024 / 1024)
-						% (limit / 1024 / 1024)));
+						% (config.limit / 1024 / 1024)));
 
 			std::sort(u.processes.begin(), u.processes.end(), field_comparator<process, long, &process::_rss>);
 
-			while (bytes >= thresh && !u.processes.empty()) {
+			while (bytes >= config.thresh && !u.processes.empty()) {
 				process &p = u.processes[0];
 				std::string comm = p._comm.substr(1);
 				comm.resize(comm.size() - 1);
@@ -391,7 +552,7 @@ main(int argc, char **argv)
 						% (p._rss * pagesize / 1024 / 1024)
 						% ((bytes - p._rss * pagesize) / 1024 / 1024)));
 
-				message += str(boost::format("    %s (pid %d), using %d megabyte(s)\n")
+				process_list += str(boost::format("    %s (pid %d), using %d megabyte(s)\n")
 						% comm % p._pid % (p._rss * pagesize / 1024 / 1024));
 
 				bytes -= p._rss * pagesize;
@@ -401,21 +562,19 @@ main(int argc, char **argv)
 			log(str(boost::format("    usage is now within acceptable limits (%dM)")
 					% (bytes / 1024 / 1024)));
 
-			message += str(boost::format(
-"\n"
-"Your total memory usage is now %d megabyte(s).\n"
-"\n"
-"Excessive memory usage is usually a symptom of a broken program.  Please\n"
-"investigate the cause of the problem and fix it before you restart these\n"
-"processes.\n"
-"\n"
-"Regards,\n"
-"      slayerd (the process slayer)\n"
-	) % (bytes / 1024 / 1024));
+			std::map<std::string, std::string> msgvars;
+			msgvars["limit"] = boost::lexical_cast<std::string>(config.limit / 1024 / 1024);
+			msgvars["thresh"] = boost::lexical_cast<std::string>(config.thresh / 1024 / 1024);
+			msgvars["user"] = uname;
+			msgvars["hostname"] = nodename;
+			msgvars["current"] = boost::lexical_cast<std::string>(bytes / 1024 / 1024);
+			msgvars["processes"] = process_list;
 
-			sendmail(uname, message);
+			std::string message = replace_file(config.mailmessage, msgvars);
+			if (!message.empty())
+				sendmail(uname, message);
 		}
 
-		sleep(delay);
+		sleep(config.delay);
 	}
 }
