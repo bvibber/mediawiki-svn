@@ -12,7 +12,7 @@
  * 	require_once("extensions/DynamicPageList2.php"); in LocalSettings.php
  * 
  * @addtogroup Extensions
- * @link http://meta.wikimedia.org/wiki/DynamicPageList2 Documentation
+ * @link http://www.mediawiki.org/wiki/Extension:DynamicPageList2 Documentation
  * @author n:en:User:IlyaHaykinson 
  * @author n:en:User:Amgine 
  * @author w:de:Benutzer:Unendlich 
@@ -33,8 +33,8 @@ $wgExtensionFunctions[] = "wfDynamicPageList2";
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'DynamicPageList2',
 	'author' => '[http://en.wikinews.org/wiki/User:IlyaHaykinson IlyaHaykinson], [http://en.wikinews.org/wiki/User:Amgine Amgine], [http://de.wikipedia.org/wiki/Benutzer:Unendlich Unendlich], [http://meta.wikimedia.org/wiki/User:Dangerman Cyril Dangerville]',
-	'url' => 'http://meta.wikimedia.org/wiki/DynamicPageList2',
-	'description' => 'hack of the original [http://meta.wikimedia.org/wiki/DynamicPageList DynamicPageList] extension featuring many Improvements',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:DynamicPageList2',
+	'description' => 'hack of the original [http://www.mediawiki.org/wiki/Extension:DynamicPageList DynamicPageList] extension featuring many Improvements',
   	'version' => DPL2_VERSION
   );
 

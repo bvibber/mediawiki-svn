@@ -13,7 +13,11 @@
 if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgExtensionFunctions[] = 'efUserRightsNotifierSetup';
-	$wgExtensionCredits['other'][] = array( 'name' => 'User Rights Email Notification', 'url' => 'http://meta.wikimedia.org/wiki/User_Rights_Email_Notification', 'author' => 'Rob Church' );
+	$wgExtensionCredits['other'][] = array(
+		'name' => 'User Rights Email Notification',
+		'url' => 'http://meta.wikimedia.org/wiki/User_Rights_Email_Notification',
+		'author' => 'Rob Church',
+	);
 
 	# Change this to alter the email sender
 	$wgUserRightsNotif['sender'] = $wgPasswordSender;
