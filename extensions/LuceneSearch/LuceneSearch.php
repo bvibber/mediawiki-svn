@@ -1,6 +1,6 @@
 <?php
 /*
- * Copyright 2004, 2005 Kate Turner, Brion Vibber.
+ * Copyright 2004-2007 River Tarnell, Brion Vibber.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,6 +25,7 @@
 
 # To use this, add something like the following to LocalSettings:
 #
+#  $wgDisableInternalSearch = true;
 #  $wgLuceneHost = "192.168.0.1";
 #  $wgLucenePort = 8123;
 #
@@ -35,7 +36,7 @@
 #  $wgLuceneHost = array( "192.168.0.1", "192.168.0.2" );
 #
 # The MWDaemon search daemon needs to be running on the specified host(s)
-# - it's in the 'lucene-search' module in CVS.
+# - it's in the 'mwsearch' module in CVS.
 ##########
 
 $wgLuceneDisableSuggestions = false;
