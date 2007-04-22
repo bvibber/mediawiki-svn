@@ -503,10 +503,11 @@ class NewsRenderer {
 				$article = new Article( $title, $row->rc_this_oldid );
 				$t = $article->getContent(); 
 
-				$params['content'] = NewsRenderer::sanitizeWikiText( $t );
 				//TODO: expand variables & templates first, so cut-off applies to effective content, 
 				//      and extension tags from templates are stripped properly
+				//      this doesn't work though: $t = $this->templateparser->preprocess( $t, $this->title, new ParserOptions() );
 				//TODO: avoid magic categories, interwiki-links, etc
+				$params['content'] = NewsRenderer::sanitizeWikiText( $t );
 
 				if ( stripos($templatetext, '{{{head}}}')!==false ) {
 					$params['head'] = NewsRenderer::extractHead( $params['content'], $title );
@@ -678,4 +679,127 @@ class NewsRenderer {
 	}
 }
 
+class NewsFeedPage extends Article {
+	var $mFeedFormat;
+
+	function __construct($title, $format) {
+		Article::__construct( $title );
+		$this->mFeedFormat = $format;
+	}
+
+	function getCacheKey( ) {
+		//global $wgLang;
+		//NOTE: per-language caching might be needed at some point.
+		//      right now, caching is done for anon users only 
+		//      (the content language might be set individually however, 
+		//      using an extension like LanguageSelector)
+		
+		return "@newsfeed:" . urlencode($this->mTitle->getPrefixedDBKey()) . '|' . urlencode($this->mFeedFormat);
+	}
+	
+	function view( $usecache = true ) {
+		global $wgUser, $wgOut;
+
+		$fname = 'NewsFeedPage::view';
+		wfDebug("$fname: start\n");
+
+		$note = '';	
+
+		$ims = @$_SERVER['HTTP_IF_MODIFIED_SINCE'];
+		
+		if ( $ims && $usecache ) {
+			$lastchange = wfTimestamp(TS_UNIX, NewsRenderer::getLastChangeTime());
+
+			wfDebug("$fname: checking cache-ok:  IMS $ims vs. changed $lastchange \n");
+			if ( $wgOut->checkLastModified( $lastchange ) ) {
+				wfDebug("$fname: HTTP cache ok, 304 header sent\n");
+				return; // done, 304 header sent.
+			}
+		}
+
+		//NOTE: do caching for anon users only, because of user-specific 
+		//      rendering of textual content
+		if ($wgUser->isAnon() && $usecache) {
+			$cachekey = $this->getCacheKey();
+			$ocache = wfGetParserCacheStorage();
+			$e = $ocache ? $ocache->get( $cachekey ) : NULL;
+			$note .= ' anon;';
+			wfDebug("$fname: " . ($e? "got cached" : "no cached") . "\n");
+		}
+		else {
+			if (!$usecache) {
+				wfDebug("$fname: purge, ignoring cache\n");
+				$note .= ' purged;';
+			}
+			else {
+				wfDebug("$fname: logged in, ignoring cache\n");
+				$note .= ' user;';
+			}
+			
+			$cachekey = NULL;
+			$ocache = NULL;
+			$e = NULL;
+			$note .= ' user;';
+		}
+		
+		$wgOut->disable();
+
+		if ( $e ) {
+			if (!isset($lastchange)) $lastchange = wfTimestamp(TS_UNIX, NewsRenderer::getLastChangeTime());
+			$last = wfTimestamp(TS_UNIX, $lastchange);
+
+			if ($last < $e['timestamp']) {
+				wfDebug("$fname: outputting cached copy ($cachekey): $last < {$e['timestamp']}\n");
+				print $e['xml'];
+				print "\n<!-- cached: $note -->\n";
+				return; //done
+			}
+			else {
+				wfDebug("$fname: found stale cache copy ($cachekey): $last >= {$e['timestamp']}\n");
+				$note .= " stale: $last >= {$e['timestamp']};";
+			}
+		}
+
+		//TODO: fetch actual news data and check the newest item. re-apply cache checks.
+		//      this would still save the cost of rendering if the data didn't change
+
+		global $wgParser; //evil global
+		
+		if (!$wgParser->mOptions) { //XXX: ugly hack :(
+			$wgParser->mOptions = new ParserOptions; 
+			$wgParser->setOutputType( OT_HTML );
+			$wgParser->clearState();
+			$wgParser->mTitle = $this->mTitle;
+		}
+		
+		$renderer = NewsRenderer::newFromArticle( $this, $wgParser );
+		if (!$renderer) {
+			wfDebug("$fname: no feed found on page: " . $this->mTitle->getPrefixedText() . "\n");
+			wfHttpError(404, "Not Found", "no feed found on page: " . $this->mTitle->getPrefixedText() ); //TODO: better code & text
+			return;
+		}
+		
+		$description = ''; //TODO: grab from article content... but what? and how?
+		$ts = time();
+		
+		//this also sends the right headers
+		$xml = $renderer->renderFeed( $this->mFeedFormat, $description );
+		wfDebug("$fname: rendered feed\n");
+	
+		$e = array( 'xml' => $xml, 'timestamp' => $ts );
+		if ($ocache) {
+			wfDebug("$fname: caching feed ($cachekey)\n");
+			$ocache->set( $cachekey, $e, $ts + 24 * 60 * 60 ); //cache for max 24 hours; cached record is discarded when anything turns up in RC anyway.
+			$note .= ' updated;';
+		}
+
+		wfDebug("$fname: outputting fresh feed\n");
+		print $xml;
+		print "\n<!-- fresh: $note -->\n";
+	}
+
+	function purge() {
+		$this->view( false );
+	}
+}
 ?>
