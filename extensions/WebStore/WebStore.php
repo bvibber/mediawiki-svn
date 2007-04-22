@@ -68,5 +68,11 @@ $wgAutoloadClasses['WebStoreLocalImage'] = 'extensions/WebStore/WebStoreCommon.p
 $wgAutoloadClasses['WebStorePostFile'] = 'extensions/WebStore/WebStorePostFile.php';
 $wgHooks['LoadAllMessages'][] = 'WebStoreCommon::initialiseMessages';
 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'WebStore',
+	'author' => 'Tim Starling',
+	'description' => 'Web-only (non-NFS) file storage middleware',
+);
+
 define( 'MW_WEBSTORE_ENABLED', 1 );
 ?>
