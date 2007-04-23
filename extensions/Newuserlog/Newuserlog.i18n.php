@@ -43,7 +43,7 @@ $wgNewuserlogMessages['fr'] = array(
 	'newuserlogpage'           => 'Historique des créations de comptes',
 	'newuserlogpagetext'       => 'Voici le journal de création des nouveaux comptes utilisateurs',
 	'newuserlog-create-entry'  => 'Nouvel utilisateur',
-	'newuserlog-create2-entry' => 'compte créé pour $1',
+	'newuserlog-create2-entry' => 'a créé le compte $1',
 );
 $wgNewuserlogMessages['he'] = array(
 	'newuserlogpage'           => 'יומן רישום משתמשים',
