@@ -34,9 +34,6 @@ $wgLinkSearchMessages['fi'] = array(
 );
 $wgLinkSearchMessages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
-	'linksearch-pat'   => 'קישור לחיפוש:',
-	'linksearch-ns'    => 'מרחב שם:',
-	'linksearch-ok'    => 'חיפוש',
 	'linksearch-text'  => 'ניתן להשתמש בתווים כללים, לדוגמה "‎*.wikipedia.org".',
 	'linksearch-line'  => '$1 מקושר מהדף $2',
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
