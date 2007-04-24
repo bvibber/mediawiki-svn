@@ -10,9 +10,6 @@ $wgLinkSearchMessages = array();
 
 $wgLinkSearchMessages['en'] = array(
 	'linksearch'       => 'Search web links',
-	'linksearch-pat'   => 'Search pattern:',
-	'linksearch-ns'    => 'Namespace:',
-	'linksearch-ok'    => 'Search',
 	'linksearch-text'  => 'Wildcards such as "*.wikipedia.org" may be used.',
 	'linksearch-line'  => '$1 linked from $2',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
@@ -25,9 +22,6 @@ $wgLinkSearchMessages['cs'] = array(
 );
 $wgLinkSearchMessages['de'] = array(
 	'linksearch'       => 'Weblink-Suche',
-	'linksearch-pat'   => 'Suchmuster:',
-	'linksearch-ns'    => 'Namensraum:',
-	'linksearch-ok'    => 'Suche',
 	'linksearch-text'  => 'Diese Spezialseite ermöglicht die Suche nach Seiten, in denen bestimmte Weblinks enthalten sind. Dabei können Wildcards wie beispielsweise <tt>*.example.com</tt> benutzt werden. ',
 	'linksearch-line'  => '$1 ist verlinkt von $2',
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
