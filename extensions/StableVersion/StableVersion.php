@@ -30,6 +30,10 @@ $wgStableVersionThereCanOnlyBeOne = true;
 # Evil variables, needed internally
 $wgStableVersionCaching = false;
 
+# Every user can mark stable versions (default)
+# To change this, add this line to localsettings.php and modify
+$wgGroupPermissions['user']['stableversion'] = true;
+
 $wgExtensionCredits['StableVersion'][] = array(
         'name' => 'Stable version',
         'description' => 'An extension to allow the marking of a stable version.',
@@ -190,11 +194,11 @@ function wfStableVersionSetArticleVersionStatusAndCache( &$article, $rev ) {
  * @return bool (always TRUE by default, for testing)
  */
 function wfStableVersionCanChange() {
-	return true; # Dummy, everyone can set stable versions
+	//return true; # Dummy, everyone can set stable versions
 	global $wgUser, $wgOut;
 	if( !$wgUser->isAllowed( 'stableversion' ) ) {
-		#$wgOut->permissionRequired( 'stableversion' );
-		#$wgOut->setSubtitle( wfMsg('stableversion') );
+		$wgOut->permissionRequired( 'stableversion' );
+		$wgOut->setSubtitle( wfMsg('stableversion') );
 		return false;
 	}
 	return true;
@@ -211,6 +215,11 @@ function wfStableVersionHeaderHook( &$article ) {
 
 	wfStableVersionAddCache();
 	$st = ""; # Subtitle
+	
+	# Gah...these hooks are not consistant
+	# Load if not loaded to avoid errors - Aaron
+	if ( !isset($article->mIsStable) ) 
+		wfStableVersionSetArticleVersionStatusAndCache( $article, $article->getRevIdFetched() );
 	
 	if( $article->mIsStable ) {
 		# This is the stable version
