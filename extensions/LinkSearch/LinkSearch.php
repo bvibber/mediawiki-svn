@@ -122,22 +122,47 @@ function wfLinkSearchSetup() {
 		}
 	}
 
-	function wfSpecialLinksearch( $par=null, $ns=null, $prot='http://' ) {
+	function wfSpecialLinksearch( $par=null, $ns=null, $prot='' ) {
 		list( $limit, $offset ) = wfCheckLimits();
 		global $wgOut, $wgRequest, $wgUrlProtocols, $wgMiserMode;
 		$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
 		$namespace = $GLOBALS['wgRequest']->getIntorNull( 'namespace', $ns );
 		$protocol = $GLOBALS['wgRequest']->getVal( 'protocol', $prot );
+
+		$protocols_list[] = '';
+		foreach( $wgUrlProtocols as $prot ) {
+			$protocols_list[] = $prot;
+		}
+
+		$pr_sl = strpos($target, '//' );
+		$pr_cl = strpos($target, ':' );
+		if ( $pr_sl ) {
+			// For protocols with '//'
+			$protocol = substr( $target, 0 , $pr_sl+2 );
+			$target = substr( $target, $pr_sl+2 );
+		} elseif ( !$pr_sl && $pr_cl ) {
+			// For protocols without '//' like 'mailto:'
+			$protocol = substr( $target, 0 , $pr_cl+1 );
+			$target = substr( $target, $pr_cl+1 );
+		} elseif ( $protocol == '' && $target != '' ) {
+			// default
+			$protocol = 'http://';
+		}
+		if ( !in_array( $protocol, $protocols_list ) ) {
+			// unsupported protocol, show original search request
+			$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
+		}
+
 		$self = Title::makeTitle( NS_SPECIAL, 'Linksearch' );
 
-		$wgOut->addWikiText( wfMsg( 'linksearch-text', '<nowiki>' . implode( ', ',  $wgUrlProtocols) . '</nowiki>' ) );
+		$wgOut->addWikiText( wfMsg( 'linksearch-text' ) );
 		$s =	Xml::openElement( 'form', array( 'id' => 'mw-linksearch-form', 'method' => 'get', 'action' => $GLOBALS['wgScript'] ) ) .
 			Xml::hidden( 'title', $self->getPrefixedDbKey() ) .
 			'<fieldset>' .
 			Xml::element( 'legend', array(), wfMsg( 'linksearch' ) ) .
 			Xml::label( wfMsg( 'linksearch-pat' ), 'target' ) . ' ' .
 			"<select id='protocol' name='protocol' class='protocolselector'>";
-		foreach( $wgUrlProtocols as $prot ) {
+		foreach( $protocols_list as $prot ) {
 			if ( $prot == $protocol ) {
 				$s .= Xml::option( $prot, $prot, true );
 			} else {
