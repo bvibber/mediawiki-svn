@@ -16,6 +16,7 @@ require_once('extensions/AjaxShowEditors/Hooks.php');
 
 // Function to load the i18n messages
 function wfAjaxShowEditorsLoadI18n() {
+	global $wgAjaxShowEditorsMessages ;
 	require_once('extensions/AjaxShowEditors/AjaxShowEditors.i18n.php');
 	global $wgMessageCache ;
 	foreach( $wgAjaxShowEditorsMessages as $lang => $msg ) {
