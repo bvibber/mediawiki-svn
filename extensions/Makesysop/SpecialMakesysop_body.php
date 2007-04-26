@@ -53,7 +53,7 @@ class MakeSysopPage extends SpecialPage {
  * @addtogroup SpecialPage
  */
 class MakesysopForm {
-	var $mTarget, $mAction, $mRights, $mUser, $mSubmit, $mSetBureaucrat;
+	var $mTarget, $mAction, $mRights, $mUser, $mReason, $mSubmit, $mSetBureaucrat;
 
 	function MakesysopForm( &$request ) {
 		global $wgUser;
@@ -61,6 +61,7 @@ class MakesysopForm {
 		$this->mAction = $request->getText( 'action' );
 		$this->mRights = $request->getVal( 'wpRights' );
 		$this->mUser = $request->getText( 'wpMakesysopUser' );
+		$this->mReason = htmlspecialchars( $request->getText( 'wpMakesysopReason' ) );
 		$this->mSubmit = $request->getBool( 'wpMakesysopSubmit' ) &&
 			$request->wasPosted() &&
 			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );		
@@ -87,38 +88,33 @@ class MakesysopForm {
 			$encUser = "";
 		}
 
-		$wgOut->addHTML( "
-			<form id=\"makesysop\" method=\"post\" action=\"{$action}\">
-			<table border='0'>
+		$reason = wfMsg( "makesysopreason" );
+		$makebureaucrat = wfMsg( "setbureaucratflag" );
+		$mss = wfMsg( "set_user_rights" );
+		$token = htmlspecialchars( $wgUser->editToken() );
+
+		$wgOut->addHTML(
+			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'id' => 'makesysop' ) ) .
+			Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', array(), wfMsg( 'makesysoptitle' ) ) .
+			"<table border='0'>
 			<tr>
 				<td align='right'>$namedesc</td>
-				<td align='left'>
-					<input type='text' size='40' name=\"wpMakesysopUser\" value=\"$encUser\" />
-				</td>
-			</tr>" 
-		);
-		
-		$makeburo = wfMsg( "setbureaucratflag" );
-		$wgOut->addHTML(
-			"<tr>
+				<td align='left'>" . Xml::input( 'wpMakesysopUser', 40, $encUser ) . "</td>
+			</tr><tr>
+				<td align='right'>$reason</td>
+				<td align='left'>" . Xml::input( 'wpMakesysopReason', 40, $this->mReason ) . "</td>
+			</tr><tr>
 				<td>&nbsp;</td>
-				<td align='left'>
-					<input type='checkbox' name='wpSetBureaucrat' value='1'>$makeburo</input>
-				</td>
-			</tr>"
-		);
-
-
-		$mss = wfMsg( "set_user_rights" );
-
-		$token = htmlspecialchars( $wgUser->editToken() );
-		$wgOut->addHTML(
-			"<tr>
-				<td>&nbsp;</td><td align='left'>
-					<input type='submit' name=\"wpMakesysopSubmit\" value=\"{$mss}\" />
-				</td></tr></table>
-				<input type='hidden' name='wpEditToken' value=\"{$token}\" />
-			</form>\n" 
+				<td align='left'>" . Xml::checkLabel( $makebureaucrat, 'wpSetBureaucrat', 'wpSetBureaucrat', $this->mSetBureaucrat ) . "</td>
+			</tr><tr>
+				<td>&nbsp;</td>
+				<td align='left'>" . Xml::submitButton( $mss, array( 'name' => 'wpMakesysopSubmit' ) ) . "</td>
+			</tr>
+			</table>" .
+			Xml::hidden( 'wpEditToken', $token ) .
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' ) . "\n"
 		);
 	}
 
@@ -127,7 +123,7 @@ class MakesysopForm {
 		global $wgDBname, $wgMemc, $wgLocalDatabases, $wgSharedDB;
 
 		$fname = 'MakesysopForm::doSubmit';
-		
+
 		$dbw =& wfGetDB( DB_MASTER );
 		$user_groups = $dbw->tableName( 'user_groups' );
 		$usertable   = $dbw->tableName( 'user' );
@@ -141,7 +137,7 @@ class MakesysopForm {
 			return;
 		}
 		$username = $t->getText();
-		
+
 		if ( $username{0} == "#" ) {
 			$id = intval( substr( $username, 1 ) );
 		} else {
@@ -187,13 +183,13 @@ class MakesysopForm {
 		} else {
 			$wgMemc->delete( "$wgDBname:user:id:$id" );
 		}
-		
+
 		$newGroups = array_merge($newGroups, $addedGroups);
-		
+
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), '',
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), $this->mReason,
 			array( $this->makeGroupNameList( $oldGroups ), $this->makeGroupNameList( $newGroups ) ) );
-			
+
 		$this->showSuccess();
 	}
 
@@ -202,6 +198,9 @@ class MakesysopForm {
 
 		$wgOut->setPagetitle( wfMsg( "makesysoptitle" ) );
 		$text = wfMsg( "makesysopok", $this->mUser );
+		if ( $this->mSetBureaucrat ) {
+			$text .= "<br />" . wfMsg( "makebureaucratok", $this->mUser );
+		}
 		$text .= "\n\n";
 		$wgOut->addWikiText( $text );
 		$this->showForm();
@@ -230,10 +229,10 @@ class MakesysopStewardForm extends UserrightsForm {
 		$this->mPosted = $request->wasPosted();
 		$this->mRequest =& $request;
 		$this->mName = 'userrights';
-		
+		$this->mReason = htmlspecialchars( $request->getText( 'wpMakesysopReason' ) );
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'Makesysop' );
 		$this->action = $titleObj->escapeLocalURL();
-		
+
 		$this->db = null;
 	}
 
@@ -243,7 +242,7 @@ class MakesysopStewardForm extends UserrightsForm {
 			$wgOut->addWikiText( wfMsg( 'makesysop-nodatabase', $split->getMessage() ) );
 			return;
 		}
-		
+
 		list( $database, $name ) = $split;
 		$this->db =& $this->getDB( $database );
 		$userid = $this->getUserId( $database, $name );
@@ -251,11 +250,11 @@ class MakesysopStewardForm extends UserrightsForm {
 		if( $userid == 0) {
 			$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
 			return;
-		}		
+		}
 
 		$oldGroups = $this->getUserGroups( $database, $userid );
 		$newGroups = $oldGroups;
-		$logcomment = ' ';
+		$logcomment = $this->mReason;
 		// remove then add groups		
 		if(isset($removegroup)) {
 			$newGroups = array_diff($newGroups, $removegroup);
@@ -270,15 +269,15 @@ class MakesysopStewardForm extends UserrightsForm {
 			}
 		}
 		$newGroups = array_unique( $newGroups );
-		
+
 		// Ensure that caches are cleared
 		$this->touchUser( $database, $userid );
-		
+
 		wfDebug( 'oldGroups: ' . print_r( $oldGroups, true ) );
 		wfDebug( 'newGroups: ' . print_r( $newGroups, true ) );
 
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), '', array( $this->makeGroupNameList( $oldGroups ),
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), $logcomment, array( $this->makeGroupNameList( $oldGroups ),
 			$this->makeGroupNameList( $newGroups ) ) );
 	}
 
@@ -294,7 +293,7 @@ class MakesysopStewardForm extends UserrightsForm {
 			$wgOut->addWikiText( wfMsg( 'makesysop-nodatabase', $split->getMessage() ) );
 			return;
 		}
-		
+
 		list( $database, $name ) = $split;
 		$this->db =& $this->getDB( $database );
 		$userid = $this->getUserId( $database, $name );
@@ -302,48 +301,47 @@ class MakesysopStewardForm extends UserrightsForm {
 		if( $userid == 0) {
 			$wgOut->addWikiText( wfMsg( 'nosuchusershort', wfEscapeWikiText( $username ) ) );
 			return;
-		}		
-		
+		}
+
 		$groups = $this->getUserGroups( $database, $userid );
 
-		$wgOut->addHTML( "<form name=\"editGroup\" action=\"$this->action\" method=\"post\">\n".
-			wfElement( 'input', array(
-				'type'  => 'hidden',
-				'name'  => 'user-editname',
-				'value' => $username ) ) .
-			wfElement( 'input', array(
-				'type'  => 'hidden',
-				'name'  => 'wpEditToken',
-				'value' => $wgUser->editToken( $username ) ) ) .
-			$this->fieldset( 'editusergroup',
-			$wgOut->parse( wfMsg('editing', $username ) ) .
-			'<table border="0" align="center"><tr><td>'.
-			HTMLSelectGroups('member', $this->mName.'-groupsmember', $groups,true,6).
-			'</td><td>'.
-			HTMLSelectGroups('available', $this->mName.'-groupsavailable', $groups,true,6,true).
-			'</td></tr></table>'."\n".
+		$wgOut->addHTML(
+			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->action, 'name' => 'editGroup' ) ) .
+			Xml::hidden( 'user-editname', $username ) .
+			Xml::hidden( 'wpEditToken', $wgUser->editToken( $username ) ) .
+			Xml::openElement( 'fieldset' ) .
+			Xml::element( 'legend', array(), wfMsg( 'userrights-editusergroup' ) ) .
+			$wgOut->parse( wfMsg( 'editinguser', $username ) ) .
+			"<table border='0' align='center'>
+			<tr>
+				<td>" . HTMLSelectGroups( 'member', $this->mName.'-groupsmember', $groups, true, 6 ) . "</td>
+				<td align='right'>" . HTMLSelectGroups( 'available', $this->mName.'-groupsavailable', $groups, true, 6, true) . "</td>
+			</tr><tr>
+				<td>" . $wgOut->parse( wfMsg( 'makesysopreason' ) ) . "</td>
+				<td align='right'>" . Xml::input( 'wpMakesysopReason', 30 ) . "</td>
+			</tr>
+			</table> \n" .
 			$wgOut->parse( wfMsg('userrights-groupshelp') ) .
-			wfElement( 'input', array(
-				'type'  => 'submit',
-				'name'  => 'saveusergroups',
-				'value' => wfMsg( 'saveusergroups' ) ) )
-			));
-		$wgOut->addHTML( "</form>\n" );
+			Xml::submitButton( wfMsg( 'saveusergroups' ), array( 'name' => 'saveusergroups' ) ) .
+			Xml::closeElement( 'fieldset' ) .
+			Xml::closeElement( 'form' ) . "\n"
+		);
+
 	}
-	
+
 	function splitUsername( $username ) {
 		$parts = explode( '@', $username );
 		if( count( $parts ) < 2 ) {
 			return array( '', $username );
 		}
 		list( $name, $database ) = $parts;
-		
+
 		global $wgLocalDatabases;
 		return array_search( $database, $wgLocalDatabases ) !== false
 			? array( $database, $name )
 			: new WikiError( 'Bogus database suffix "' . wfEscapeWikiText( $database ) . '"' );
 	}
-	
+
 	/**
 	 * Open a database connection to work on for the requested user.
 	 * This may be a new connection to another database for remote users.
@@ -371,7 +369,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		}
 		return $wgDBserver;
 	}
-	
+
 	function getUserId( $database, $name ) {
 		if( $name === '' )
 			return 0;
@@ -382,7 +380,7 @@ class MakesysopStewardForm extends UserrightsForm {
 				array( 'user_name' => $name ),
 				'MakesysopStewardForm::getUserId' ) );
 	}
-	
+
 	function getUserGroups( $database, $userid ) {
 		$res = $this->db->select( 'user_groups',
 			array( 'ug_group' ),
@@ -394,7 +392,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		}
 		return $groups;
 	}
-	
+
 	function addUserGroup( $database, $userid, $group ) {
 		$this->db->insert( 'user_groups',
 			array(
@@ -404,7 +402,7 @@ class MakesysopStewardForm extends UserrightsForm {
 			'MakesysopStewardForm::addUserGroup',
 			array( 'IGNORE' ) );
 	}
-	
+
 	function removeUserGroup( $database, $userid, $group ) {
 		$this->db->delete( 'user_groups',
 			array(
@@ -413,7 +411,7 @@ class MakesysopStewardForm extends UserrightsForm {
 			),
 			'MakesysopStewardForm::addUserGroup' );
 	}
-	
+
 	function touchUser( $database, $userid ) {
 		$this->db->update( 'user',
 			array( 'user_touched' => $this->db->timestamp() ),
@@ -429,6 +427,5 @@ class MakesysopStewardForm extends UserrightsForm {
 		$wgMemc->delete( $key );
 	}
 }
-
 
 ?>
