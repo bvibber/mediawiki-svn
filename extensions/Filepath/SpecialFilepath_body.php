@@ -48,17 +48,18 @@ class FilepathForm {
 	}
 	
 	function execute() {
-		global $wgOut, $wgTitle;
+		global $wgOut, $wgTitle, $wgScript;
 
 		$wgOut->addHTML(
 			wfElement( 'form',
 				array(
 					'id' => 'specialfilepath',
 					'method' => 'get',
-					'action' => $wgTitle->escapeLocalUrl()
+					'action' => $wgScript,
 				),
 				null
 			) .
+				wfHidden( 'title', $wgTitle->getPrefixedText() ) .
 				wfOpenElement( 'label' ) .
 					wfMsgHtml( 'filepath_page' ) .
 					' ' .
