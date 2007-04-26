@@ -27,6 +27,11 @@ $wgFilepathMessages['fi'] = array(
 	'filepath_page'   => 'Tiedosto:',
 	'filepath_submit' => 'Selvitä osoite',
 );
+$wgFilepathMessages['fiu-vro'] = array(
+	'filepath'        => 'Teedüstü aadrõs',
+	'filepath_page'   => 'Teedüstü:',
+	'filepath_submit' => 'Aadrõs',
+);
 $wgFilepathMessages['fr'] = array(
 	'filepath'        => 'Chemin d’un fichier',
 	'filepath_page'   => 'Fichier :',
