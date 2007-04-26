@@ -1,0 +1,225 @@
+
+Lucene Search 2.0 Overview (by Robert Stojnic)
+
+
+== Distributed architecture ==
+
+- one indexer / many searchers
+
+- indexers make clean snapshots of indexes and searchers use rsync to
+  obtain local copy of the updated index
+
+- index can be either whole (single), mainsplit (two parts, one with
+  all articles in main namespace, other with rest of article), and
+  split (some fraction of documents in each subindex). 
+
+- both indexing and searching can be distributed on many hosts
+
+- there is a global configuration file (mwsearch-global.conf) that
+  lays out the global architecture, defines indexes, indexers,
+  searchers. It needs to be available to all nodes. 
+
+- local configuration file deals with host-specific stuff
+
+- Java RMI is used for communication, it is typically at least 5-6
+  times faster than xmlrpc, and also manages persistent connections.
+	Further, Lucene has built-in support for RMI. 
+
+- Searchers watch the status of other searchers, and try to ping dead
+  searchers (and at same time take them out of rotation while they are
+  down)
+
+Notes:
+
+- mainsplit is a special case of more general idea of having database
+  split around namespaces. It is a convenient special case because
+  database then has minimal size for most searches (taking that most
+  searches come from anonymous users wanting to search main
+  namespace). Currently, this is the only implemented way to split the
+  database around namespaces, but it could be easily extended.
+
+
+== Searching == 
+
+- Distributed search (on split index) takes 3 calls per nonlocal
+  index: getting IDFs (inverse document frequencies, needed to
+  construct global scorer), actual search, and retrieving some number
+  of documents (if needed)
+
+- Searchers are organized in search groups. When search is to be
+  executed, each searcher tries to use local copies of indexes, and
+  for those it doesn't have a local copy, randomly chooses remote
+  searcher within its group that has the needed index part
+
+- Search always returns correct number of hits, since queries are
+  either filtered (filters are cached and introduce very little
+  overhead - one BitSet.get() per result), or rewritten so that only
+  those namespaces specified in the query are searched
+
+- Update of index is done in separate thread that prepares a copy for
+  rsync (makes a hard-link of current index), and then runs rsync on
+  it so that only differences are transfered. After that index is
+  opened, typical queries run on it (to warm up the copy, load
+  caches), main namespace filter is rebuilt, and then in synchronized
+  block the old searcher is replaced with a new one. The old one is
+  close after 15 seconds (these 15s is to allow threads to finish with
+  the old index)
+
+
+
+== Indexing ==
+
+- One indexer per each index part. For split indexes there is one main
+  indexer that maintains a logical view on the whole index
+
+- Mainsplit and single indexes have very limited overhead, Split
+  indexes have a larger overhead, due to the reporting system that
+  keeps the operations atomic and makes sure they are correctly
+  carried out
+
+- Indexing is fastest if it's done in large batches. However, storing
+  large number of articles eats up heap. 64MB heap is eaten up by
+  queue size of 30000, but in my testing environment worked fine with
+  queue of 5000.
+
+- After testing java XMLRPC implementations it seemed to me that they
+  all introduce large overhead, so I implemented hackish HTTP frontend
+  for indexer. Article text is transfered raw in POST request, and
+  function to be called is encoded in the URL. 
+
+
+
+== Wiki parser ==
+
+- FastWikiTokenizerEngine.java is a handmade parser for basic wiki
+  syntax. This is to replace the slow stripWiki() function.
+
+- Accents are stripped by default, thus no accents are ever
+  indexed. AFAIK, this is OK for all languages (and seems to be the
+  way major search engines do it). Indexing accented words as aliases
+  would be probably unnecessary overhead.
+
+- numbers are also tokenized
+
+- extracts categories and interwiki (interwikis are currently unused)
+
+- skips table properties, names of templates (e.g. so that search for
+  "stub" gives meaningful results), image properties, external link
+  urls, xml markup
+
+- localization is read at startup from Messages files (to be
+  up-to-date), so that parser recognized localized variants of
+  Category and Image keywords. Interwiki map is read out of static
+  file lib/interwiki.map (which could be update somehow?)
+
+
+
+== Analyzers/Languages ==
+
+- Generic Language analyzer consists of filter (e.g. for Serbian
+  (convert to latin, etc) and Thai (tokenize words)) and stemmer (for
+  English, German, French, Esperanto, Dutch, Russian). Stemmed words
+  are indexed alongside with the original words (i.e. as aliases -
+  positional increment 0)
+
+- Search queries uses same language analyzer, but stemmed words are
+  boosted with 0.5, so that exact match is favored
+
+- Titles are not stemmed, to even more favor exact matches and reduce
+  overhead, as words from title usually appear in the article
+
+TODO:
+- Maybe look at more languages, especially Chinese 
+
+
+
+== Query Parser ==
+
+- Faster with complex queries than Lucene QueryParser
+
+- recognizes subset of QueryParser syntax: AND, OR keywords and
+  +,-. Phrases enclosed in ""
+
+- introduces namespace prefixes ''namespace:query'' to limit search to
+  ceratin namespace: e.g. ''help:inserting pictures''. Note that
+  ''help'' prefix is valid until the end of query of some other prefix
+  definition: e.g. ''help:editing project:wikipedia'' will find all
+  pages in help namespace containing ''editing'' and all pages in
+  project namespace containing ''wikipedia''.
+
+- searching categories. Syntax is: ''query category:"exact category
+  name"''. It is important to note that category names are themselves
+  not tokenized. Using logical operators, intersection, union and
+  difference of categories can be searched. Since exact category is
+  needed (only case is not important), it is maybe best to incorporate
+  this somewhere on category page, and have category name put into
+  query by MediaWiki instead manually by user.
+
+Note:
+
+- namespace prefixes render the old way of picking namespaces to
+  search unusable, thus it should be removed from user settings. And
+  users should pick only one namespace to be their default for search
+  (or all namespaces). In theory, by rewriting the query it could be
+  possible to be back compatible with the current way, but it would
+  slow down searching for those users, and I wonder if it is important
+  to be able to to have any combination of namespace searched by
+  default and how many users use this
+
+- see WikiQueryParser.java for adopted names of namespaces (all: is
+  special prefix for all namespace)
+
+Todo:
+
+- Before search query is passed to Lucene-Search, localized version of
+  namespace names should be replaced with standard ones. This should
+  be implemented in MediaWiki. E.g. ''srpski kategorija:jezici'' ->
+  ''srpski category:jezici''
+
+
+
+== Lucene patch ==
+
+- Don't use Readers but plain strings when possible. Java streams are
+  very slow, whenever we don't need the general Reader interface, I
+  replaced it with just Strings (instead of StringReaders). 
+
+- SearchableMul interface, enables retrieval of many documents in
+  single call (to minimize network overhead)
+
+
+
+== Incremental update ==
+
+- get load off database, more up-to-date index, etc.. 
+
+- however, needs to be tested in production environment. There are two
+  scenarios:
+
+	* don't optimize indexes with merge factor of 2. This means that
+    additional segments will be made with new documents, and that old
+    documents will be deleted when the size of index doubles (roughly)
+
+		This is good because incremental update is fast, and download of
+    index to searchers is also fast since only new segments need to be
+    transfered, and old segment pages are already in memory (since we
+    use cp -lr to prepare a copy for rsync).
+
+		However, search will be slower (according to my tests up to 50%
+		slower in worst case), and in worst case twice the memory is
+		needed
+
+  * optimize indexes. To optimize index, indexer needs twice the
+    memory of whole index (because brand new segments is made from all
+    old segments merged)
+
+		Rsync diff algorithm might be helpful in transferring the
+		optimized index, but probably not too much.
+
+		On searcher, twice the memory is needed when index is updated
+		(actually probably less since in the beginning not all of the
+		index is loaded in memory, especially the part of the index with
+		positional increments)
+
+- third scenario is to abandon incremental updates altogether, and
+  just rebuild whole database from scratch and snapshot then
