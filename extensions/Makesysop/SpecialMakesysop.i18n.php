@@ -380,6 +380,12 @@ $wgMakesysopMessages['hu'] = array(
 	'group-steward'        => 'Helytartók',
 	'group-steward-member' => 'Helytartó',
 );
+$wgMakesysopMessages['hy'] = array(
+	'already_sysop'        => 'Այս մասնակիցը արդեն ադմինիստրատոր է',
+	'already_bureaucrat'   => 'Այս մասնակիցը արդեն բյուրոկրատ է',
+	'makesysoptext'        => 'Տվյալ ձևն օգտագործվում է "բյուրոկրատների" կողմից, հասարակ օգտագործողներին ադմինիստրատոր հաստատելու համար: Նշեք օգտագործողի անունը հետևյալ տուփոմ և սեղմեք համապատասխան կոճակը, օգտագործողին ադմինիստրատոր կարգափոխելու համար:',
+	'makesysopname'        => 'Մասնակցի անունը`',
+);
 $wgMakesysopMessages['id'] = array(
 	'makesysoptitle'       => 'Pemberian status pengurus',
 	'makesysoptext'        => 'Formulir ini digunakan oleh para birokrat untuk menjadikan pengguna biasa menjadi seorang pengurus. Ketikkan nama pengguna yang dimaksud dalam kotak dan tekan tombol untuk menjadikan pengguna tersebut seorang pengurus.',
