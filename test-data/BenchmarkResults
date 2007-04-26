@@ -1,0 +1,57 @@
+
+==== Stemming overhead ====
+
+Simple english db, single index file
+test terms: SampleTerms 
+
+== No stemming ==
+For total of 10000 runs (1000 runs per 10 threads) on wikilucene (single) with 1 words:
+* total time: 53664ms
+* time per request: 5.3664ms
+* total results: 1263843
+* results per request: 126.3843
+
+== English stemming ==
+For total of 10000 runs (1000 runs per 10 threads) on wikilucene (single) with 1 words:
+* total time: 56570ms
+* time per request: 5.657ms
+* total results: 1396857
+* results per request: 139.6857
+
+
+==== Arhitecture ====
+
+Simple english database (page-articles dump, 25k articles)
+Complete dictionary for terms
+
+== Single, optimized ==
+For total of 50000 runs (5000 runs per 10 threads) on wikilucene with 2 words:
+* total time: 191375ms
+* time per request: 3.8275ms
+* total results: 3519656
+* results per request: 70.39312
+
+== Split, 6 parts, all local ==
+For total of 50000 runs (5000 runs per 10 threads) on wikilucene with 2 words:
+* total time: 261375ms
+* time per request: 5.2275ms
+* total results: 3442547
+* results per request: 68.85094
+
+== Mainsplit (mainpart is 92% of index) ==
+For total of 50000 runs (5000 runs per 10 threads) on wikilucene with 2 words:
+* total time: 188511ms
+* time per request: 3.77022ms
+* total results: 3417172
+* results per request: 68.34344
+
+== Single, unoptimized index (70% bigger than optimized) ==
+For total of 50000 runs (5000 runs per 10 threads) on wikilucene with 2 words:
+* total time: 253653ms
+* time per request: 5.07306ms
+* total results: 3506954
+* results per request: 70.13908
+
+
+
+
