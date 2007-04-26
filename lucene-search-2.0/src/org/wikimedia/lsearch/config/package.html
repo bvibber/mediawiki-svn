@@ -1,0 +1,26 @@
+<html><body>
+<h2>Configuration managament. Entry point.</h2>
+<ul>
+<li> Index for some wiki database can be managed in three ways, as:
+	<ul>
+		<li><i>single</i> index - all wiki documents are stored into single lucene index
+		<li><i>mainsplit</i> index - index split into two parts. One containing only pages from
+			the main namespace, and the other all other pages. Optimal search performance 
+			(when index needs to be split into parts), since in most cases, users want to search 
+			only the main namespace.
+		<li><i>split</i> index - index is split into N parts, pages are randomly assigned to 
+			index parts, this results in gracefull degradation and enables splitting the index
+			in arbitrary number of strips. Largest overhead, both searching and indexing. 
+	</ul>
+<li> Each index is identified with a fully qualified name <i>dbname.part</i> (for <i>single</i> indexes <i>part</i> is omitted).
+	E.g. enwiki.part1, srwiki, dewiki.mainpart, dewiki.restpart ...
+<li> Local subdirectory structure: 
+	<ul>
+		<li>&lt;basedir&gt;/index/&lt;iid&gt; - index while being built (on indexer hosts)
+		<li>&lt;basedir&gt;/snapshot/&lt;iid&gt;/&lt;timestamp&gt; - clean snapshots of the index (on indexer hosts)
+		<li>&lt;basedir&gt;/update/&lt;iid&gt;/&lt;timestamp&gt; - local copy of index snapshot (on searcher hosts)
+		<li>&lt;basedir&gt;/search/&lt;iid&gt; - symlink to latest index update (on searcher hosts)
+	</ul>
+<li> 
+</ul>
+</body></html>
