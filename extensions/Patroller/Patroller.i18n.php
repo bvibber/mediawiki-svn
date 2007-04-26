@@ -96,6 +96,9 @@ function efPatrollerMessages() {
 'patrol-another' => 'Voir une nouvelle édition, si elle est disponible.',
 'patrol-stopped' => 'Vous avez choisi pour ne plus vérifier une autre édition. $1',
 'patrol-resume' => 'Cliquer ici pour reprendre.',
+'group-patroller' => 'Patrouilleurs',
+'group-patroller-member' => 'Patrouilleur',
+'grouppage-patroller' => '{{ns:project}}:Patrouilleur',
 ),
 
 /* Indonesian (Ivan Lanin) */
