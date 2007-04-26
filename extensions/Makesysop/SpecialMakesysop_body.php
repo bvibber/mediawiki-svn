@@ -187,7 +187,7 @@ class MakesysopForm {
 		$newGroups = array_merge($newGroups, $addedGroups);
 
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), htmlspecialchars( $this->mReason ),
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), $this->mReason,
 			array( $this->makeGroupNameList( $oldGroups ), $this->makeGroupNameList( $newGroups ) ) );
 
 		$this->showSuccess();
@@ -229,7 +229,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		$this->mPosted = $request->wasPosted();
 		$this->mRequest =& $request;
 		$this->mName = 'userrights';
-		$this->mReason = htmlspecialchars( $request->getText( 'wpMakesysopReason' ) );
+		$this->mReason = $request->getText( 'wpMakesysopReason' );
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'Makesysop' );
 		$this->action = $titleObj->escapeLocalURL();
 
