@@ -22,20 +22,22 @@ class SpecialFilepath extends SpecialPage {
 		
 		$title = Title::makeTitleSafe( NS_IMAGE, $file );
 		
-		if ( ! is_null( $title ) && ! $title->exists() ) {
-			$wgOut->setStatusCode( 404 );
-			$this->setHeaders();
-			$this->outputHeader();
-			$cform = new FilepathForm( $title );
-			$cform->execute();
-		} else if ( is_null( $title ) ) {
+		if ( is_null( $title ) ) {
 			$this->setHeaders();
 			$this->outputHeader();
 			$cform = new FilepathForm( $title );
 			$cform->execute();
 		} else {
 			$file = new Image( $title ); 
-			$wgOut->redirect( $file->getURL() );
+			if ( $file->exists() ) {
+				$wgOut->redirect( $file->getURL() );
+			} else {
+				$wgOut->setStatusCode( 404 );
+				$this->setHeaders();
+				$this->outputHeader();
+				$cform = new FilepathForm( $title );
+				$cform->execute();
+			}
 		}
 	}
 }
