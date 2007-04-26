@@ -61,7 +61,7 @@ class MakesysopForm {
 		$this->mAction = $request->getText( 'action' );
 		$this->mRights = $request->getVal( 'wpRights' );
 		$this->mUser = $request->getText( 'wpMakesysopUser' );
-		$this->mReason = htmlspecialchars( $request->getText( 'wpMakesysopReason' ) );
+		$this->mReason = $request->getText( 'wpMakesysopReason' );
 		$this->mSubmit = $request->getBool( 'wpMakesysopSubmit' ) &&
 			$request->wasPosted() &&
 			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );		
@@ -88,7 +88,7 @@ class MakesysopForm {
 			$encUser = "";
 		}
 
-		$reason = wfMsg( "makesysopreason" );
+		$reason = htmlspecialchars( wfMsg( "makesysopreason" ) );
 		$makebureaucrat = wfMsg( "setbureaucratflag" );
 		$mss = wfMsg( "set_user_rights" );
 		$token = htmlspecialchars( $wgUser->editToken() );
@@ -187,7 +187,7 @@ class MakesysopForm {
 		$newGroups = array_merge($newGroups, $addedGroups);
 
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), $this->mReason,
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), htmlspecialchars( $this->mReason ),
 			array( $this->makeGroupNameList( $oldGroups ), $this->makeGroupNameList( $newGroups ) ) );
 
 		$this->showSuccess();
@@ -254,7 +254,6 @@ class MakesysopStewardForm extends UserrightsForm {
 
 		$oldGroups = $this->getUserGroups( $database, $userid );
 		$newGroups = $oldGroups;
-		$logcomment = $this->mReason;
 		// remove then add groups		
 		if(isset($removegroup)) {
 			$newGroups = array_diff($newGroups, $removegroup);
@@ -277,7 +276,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		wfDebug( 'newGroups: ' . print_r( $newGroups, true ) );
 
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), $logcomment, array( $this->makeGroupNameList( $oldGroups ),
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), $this->mReason, array( $this->makeGroupNameList( $oldGroups ),
 			$this->makeGroupNameList( $newGroups ) ) );
 	}
 
