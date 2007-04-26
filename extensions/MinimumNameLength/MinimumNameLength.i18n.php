@@ -34,6 +34,16 @@ function efMinimumNameLengthMessages() {
 'minnamelength-error' => 'あなたの利用者名は短すぎます。最短の長さは $1 バイトです。',
 ),
 
+'kk-kz' => array(
+'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',
+),
+'kk-tr' => array(
+'minnamelength-error' => 'Qatıswşı atıñız tım qısqa.Eñ keminde uzındığı $1 bolwı qajet.',
+),
+'kk-cn' => array(
+'minnamelength-error' => 'قاتىسۋشى اتىڭىز تىم قىسقا.ەڭ كەمٴىندە ۇزىندىعى $1 بولۋى قاجەت.',
+),
+
 'oc' => array(
 'minnamelength-error' => 'Vòstre nom d\'utilizaire es tròp cort. La longor minimom es $1.',
 ),

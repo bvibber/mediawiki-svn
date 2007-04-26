@@ -465,7 +465,7 @@ $wgMakesysopMessages['kk-kz'] = array(
 	'already_bureaucrat'   => 'Бұл қатысушы тореші бопты түге',
 	'makesysop-nodatabase' => 'Қатысушы аты уики-аралығы жарамсыз: $1',
 	'group-steward'        => 'Жетекшілер',
-	'group-steward-member' => 'Жетекші',
+	'group-steward-member' => 'жетекші',
 	'grouppage-steward'    => '{{ns:project}}:Жетекшілер',
 );
 $wgMakesysopMessages['kk-tr'] = array(
@@ -485,7 +485,7 @@ $wgMakesysopMessages['kk-tr'] = array(
 	'already_bureaucrat'   => 'Bul qatıswşı toreşi boptı tüge',
 	'makesysop-nodatabase' => 'Qatıswşı atı wïkï-aralığı jaramsız: $1',
 	'group-steward'        => 'Jetekşiler',
-	'group-steward-member' => 'Jetekşi',
+	'group-steward-member' => 'jetekşi',
 	'grouppage-steward'    => '{{ns:project}}:Jetekşiler',
 );
 $wgMakesysopMessages['kk-cn'] = array(
