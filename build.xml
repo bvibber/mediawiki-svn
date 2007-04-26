@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="MWSearch" default="makejar" basedir=".">
+	<property name="lib" value="lib"/>
+	<property name="bin" value="bin"/>
+	<property name="src" value="src"/>
+	<property name="jars" value="jars"/>
+	<property name="dist" location="dist"/>
+	<property name="pack.name" value="mwsearch-src"/>
+	<property name="binary.name" value="mwsearch"/>
+	
+	<property file="${basedir}/hostname"/>
+	
+	<path id="classpath">
+		<fileset dir="${lib}" includes="*.jar"/>
+	</path>
+
+	<target name="run">
+		<java jar="MWSearch.jar" fork="yes">
+			<sysproperty key="java.rmi.server.codebase" value="file://${basedir}/MWSearch.jar"/>
+			<sysproperty key="java.rmi.server.hostname" value="${hostname}"/>
+	  		<classpath>
+	        	<fileset dir="${lib}">
+	            	<include name="*.jar"/>
+	        	</fileset>
+      		</classpath> 
+    	</java>
+  	</target> 
+	
+	<target name="makejar" depends="build">
+		<jar destfile="${basedir}/MWSearch.jar">
+			<manifest>
+	            <attribute name="Main-Class" value="org.wikimedia.lsearch.config.StartupManager"/>
+                <attribute name="Class-Path" value="MWSearch.jar lib/xmlrpc-common-3.0.jar lib/xmlrpc-client-3.0.jar lib/xmlrpc-server-3.0.jar lib/commons-logging-1.1.jar lib/ws-commons-util-1.0.1.jar lib/log4j-1.2.14.jar lib/lucene-core-2.0.1-dev.jar lib/lucene-analyzers.jar"/>
+            </manifest>
+			<zipfileset dir="${bin}" prefix="">
+				<include name="org/**"/>
+			</zipfileset>			
+		</jar>
+	</target>
+	
+	<target name="build" description="Compile classes">
+	    <mkdir dir="${bin}"/>
+	    <javac srcdir="${src}/org/" includes="**/*.java" destdir="${bin}/">
+	      <classpath refid="classpath"/>
+	    </javac>
+  	</target>
+	
+	<target name="pack" description="Make tar.gz distribution">
+		<delete file="${dist}/${pack.name}.tar"/>
+		<delete file="${dist}/${pack.name}.tar.gz"/>
+		<tar tarfile="${dist}/${pack.name}.tar">
+			<tarfileset prefix="${pack.name}" dir="." includes="**/*" excludes="dist/"/>
+		</tar>
+
+		<gzip zipfile="${dist}/${pack.name}.tar.gz" src="${dist}/${pack.name}.tar"/>
+		<delete file="${dist}/${pack.name}.tar"/>
+	</target>
+	
+	<target name="binary" depends="makejar" description="Make binary tar.gz distribution">
+		<delete file="${dist}/${binary.name}.tar"/>
+		<delete file="${dist}/${binary.name}.tar.gz"/>
+		<tar tarfile="${dist}/${binary.name}.tar">
+			<tarfileset prefix="${binary.name}" dir="." includes="**/*" excludes="dist/ doc/ src/ test-data/ bin/ TODO"/>
+		</tar>
+
+		<gzip zipfile="${dist}/${binary.name}.tar.gz" src="${dist}/${binary.name}.tar"/>
+		<delete file="${dist}/${binary.name}.tar"/>
+	</target>
+
+	
+</project>

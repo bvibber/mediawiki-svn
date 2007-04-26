@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/commons-logging-1.1.jar"/>
+	<classpathentry kind="lib" path="lib/junit-4.1.jar" sourcepath="/home/rainman/lucene/junit-4.1-src.jar"/>
+	<classpathentry kind="lib" path="lib/log4j-1.2.14.jar"/>
+	<classpathentry kind="lib" path="lib/lucene-analyzers.jar"/>
+	<classpathentry kind="lib" path="lib/ws-commons-util-1.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/xmlrpc-client-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/xmlrpc-common-3.0.jar"/>
+	<classpathentry kind="lib" path="lib/xmlrpc-server-3.0.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/lucene-core-2.0.1-dev.jar" sourcepath="/lucene-2.0"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
