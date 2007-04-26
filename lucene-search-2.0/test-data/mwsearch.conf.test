@@ -1,0 +1,47 @@
+# By default, will check /etc/mwsearch.conf
+
+# Space-separated list of wiki database names:
+Search.databases=frtest rutest entest detest
+
+# If you have a lot of databases, specify instead
+# the path to file containing a list of all dbs.
+# Each database should be on its own line in the file.
+#Search.databaselist=/etc/mwsearch.dblist
+
+# Directory to put the Lucene index files into
+Search.indexpath=/usr/local/var/mwsearch/index/{0}
+
+# For title prefix database; not really used yet...
+Search.titledb=/usr/local/var/mwsearch/title/{0}
+
+# Point config to the path of a log4net configuration file
+# If left blank, debug info will be logged to the console.
+#logconfig=/etc/mwsearch.log4net
+
+Index.rules= entest : (mainsplit,localhost1,localhost2), (part,5,6); \
+	detest,rutest,frtest : single,2,10,true; \
+	entest : part
+
+Daemon.port=8000
+Daemon.verbose=true
+
+# Turn this on to broadcast status to a Ganglia reporting system.
+# Requires that 'gmetric' be in the PATH and runnable. You can
+# override the default UDP broadcast port and interface if required.
+#Ganglia.report=true
+#Ganglia.port=8649
+#Ganglia.interface=eth0
+
+# Override to have updates made to a separate copy of the index.
+# This can be useful to do updates independtly from a running
+# search daemon, then merge them intermittently.
+#Updater.indexpath=/kalman/Projects/mwsearch/index-update/{0}
+
+# Logging can also be overridden here, to keep separate
+# log files for the daemon and updater:
+#Updater.logconfig=/etc/mwupdater.log4net
+
+Database.suffix=test
+
+# Set debug to true to diagnose problems with log4net configuration
+Logging.debug=false
