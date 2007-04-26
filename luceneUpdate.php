@@ -46,7 +46,8 @@ case 'update':
 	$rev = Revision::newFromTitle( $title );
 	if( $rev ) {
 		$text = $rev->getText();
-		$ret = MWSearchUpdater::updatePage( $wgDBname, $title, $text );
+		$ar = new Article($title);
+		$ret = MWSearchUpdater::updatePage( $wgDBname, $title, $text, $ar->isRedirect() );
 	} else {
 		$ret = MWSearchUpdater::deletePage( $wgDBname, $title );
 	}
@@ -168,7 +169,7 @@ class LuceneBuilder {
 	 * See if the daemon's getting overloaded and pause if so
 	 */
 	function wait() {
-		$cutoff = 500;
+		$cutoff = 5000;
 		$waittime = 10;
 		
 		while( true ) {
@@ -234,7 +235,7 @@ class LuceneBuilder {
 		}
 		
 		$result = $this->dbstream->select( array( 'page' ),
-			array( 'page_namespace', 'page_title', 'page_latest' ),
+			array( 'page_namespace', 'page_title', 'page_latest', 'page_is_redirect' ),
 			'',
 			$fname,
 			$limit );
@@ -251,7 +252,7 @@ class LuceneBuilder {
 			}
 			
  			$text = $rev->getText();
-			$hit = MWSearchUpdater::updatePage( $wgDBname, $title, $text );
+			$hit = MWSearchUpdater::updatePage( $wgDBname, $title, $text, $row->page_is_redirect);
 			
 			if( WikiError::isError( $hit ) ) {
 				echo "ERROR: " . $hit->getMessage() . "\n";
@@ -363,7 +364,7 @@ class LuceneBuilder {
 			$rev = new Revision( $row );
 			if( is_object( $rev ) ) {
 				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
-				$hit = MWSearchUpdater::updatePage( $wgDBname, $title, $rev->getText() );
+				$hit = MWSearchUpdater::updatePage( $wgDBname, $title, $rev->getText(), $row->page_is_redirect );
 				if( WikiError::isError( $hit ) ) {
 					echo "ERROR: " . $hit->getMessage() . "\n";
 					$lastError = $hit;

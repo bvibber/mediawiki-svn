@@ -33,7 +33,7 @@ function mwSearchUpdateMove( $from, $to, $user, $pageid, $redirid ) {
 	}
 	
 	$redirText = '#REDIRECT [[' . $to->getPrefixedText() . "]]\n";
-	MWSearchUpdater::updatePage( $wgDBname, $from, $redirText );
+	MWSearchUpdater::updatePage( $wgDBname, $from, $redirText, 1 );
 	return true;
 }
 ?>
