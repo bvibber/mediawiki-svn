@@ -75,7 +75,7 @@ if($max<$row[1])$max=$row[1];
 $wi=ceil((($row[1]/$max)*$width));
 $per=ceil((($row[1]/$max)*100));
 if($row[1]>$limit)echo "<tr><td >".$lang[$row[0]]."</td><td>".$row[1]."</td><td><img src=sc1.png width=\"$wi\" height=20> $per %</td></tr>";
-else $tx.=$lang[$row[0]].", ";
+else $tx.=$lang[$row[0]]." (".$row[1]."), ";
 //$ar[$row[0]].=$row[1]."	".$row[2]."\n";
 //filewrite("out/".$row[0].".txt",$row[1]."	".$row[2]);
 }
