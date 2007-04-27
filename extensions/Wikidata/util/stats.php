@@ -37,6 +37,23 @@ limit 0,40")or die ("error ".mysql_error());
 
 $start=stopwatch();
 
+echo"<center>
+<h1>Number of Expressions per language</h1>
+<hr width=950 size=1 noshade><br>
+";
+
+$expressions_r=mysql_query("SELECT  COUNT(*) FROM uw_expression_ns");
+$expressions_a=mysql_fetch_row($expressions_r);
+$expressions=$expressions_a[0];
+
+$defined_meanings_r=mysql_query("SELECT  COUNT(*) FROM uw_defined_meaning");
+$defined_meanings_a=mysql_fetch_row($defined_meanings_r);
+$defined_meanings=$defined_meanings_a[0];
+echo"<br>\n";
+echo"Total <b>$defined_meanings</b> DefinedMeanings in database, linking together <b>$expressions</b> Expressions. Broken down per language:\n";
+echo"</br>\n";
+echo"<hr>\n";
+
 $result = mysql_query("SELECT *
 FROM language_names 
 where name_language_id = 85
@@ -62,11 +79,8 @@ group by language_id
 order by count(*) desc
  ")or die ("error ".mysql_error());
 
-echo "<center>
-
-<h1>Number of expressions per language</h1>
-<hr width=950 size=1 noshade><br>
-<table cellpadding=0 width=950><tr><td width=200><b>Language</b></td><td><b>Entries</b></td><td></td></tr>";
+echo "
+<table cellpadding=0 width=950><tr><td width=200><b>Language</b></td><td><b>Expressions</b></td><td></td></tr>";
 $width=600;
 $limit=500;
 $max=0;
@@ -88,7 +102,6 @@ $tx
 </div>
 </td>
 </table><center>";
-
 /*
 for($i=0;$i<250;$i++){
 if(strlen($ar[$i])>20)filewrite("out/".$lang[$i].".txt",$ar[$i]);
@@ -112,6 +125,7 @@ echo "
 </td>
 </tr></table>
 <br>";
+
 
 function filewrite($file,$txt){
 $fw=fopen($file,"w+");
