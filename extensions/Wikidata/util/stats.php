@@ -81,7 +81,7 @@ order by count(*) desc
 
 echo "
 <table cellpadding=0 width=950><tr><td width=200><b>Language</b></td><td><b>Expressions</b></td><td></td></tr>";
-$width=600;
+$width=500;
 $limit=500;
 $max=0;
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
