@@ -80,7 +80,7 @@ order by count(*) desc
  ")or die ("error ".mysql_error());
 
 echo ' 
-<table cellpadding=0 width=950><tr><td width=100><b>Language</b></td><td align=right><b>Expressions</b></td><td width=30></td><td></td></tr>';
+<table cellpadding=0 width=950><tr><td width=200><b>Language</b></td><td align=right><b>Expressions</b></td><td width=30></td><td></td></tr>';
 $width=500;
 $limit=500;
 $max=0;
