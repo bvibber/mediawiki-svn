@@ -43,6 +43,31 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 'blacklistedusernametext' => 'Il nome utente scelto è inserito nella [[MediaWiki:Usernameblacklist|lista dei nomi non consentiti]]. Si prega di scegliere un altro nome.',
 ),
 
+/* Kazakh default (kk:AlefZet) */
+'kk' => array(
+'blacklistedusername' => 'Қара тізімдегі қатысушы аты',
+'blacklistedusernametext' => 'Тандаған қатысушы атыңыз [[{{ns:mediawiki}}:Usernameblacklist| қатысушы аты қара тізіміне]] кіреді.
+Басқа атау талғаңыз.',
+),
+/* Kazakh Cyrillic (kk:AlefZet) */
+'kk-kz' => array(
+'blacklistedusername' => 'Қара тізімдегі қатысушы аты',
+'blacklistedusernametext' => 'Тандаған қатысушы атыңыз [[{{ns:mediawiki}}:Usernameblacklist| қатысушы аты қара тізіміне]] кіреді.
+Басқа атау талғаңыз.',
+),
+/* Kazakh Latin (kk:AlefZet) */
+'kk-tr' => array(
+'blacklistedusername' => 'Qara tizimdegi qatıswşı atı',
+'blacklistedusernametext' => 'Tandağan qatıswşı atıñız [[{{ns:mediawiki}}:Usernameblacklist| qatıswşı atı qara tizimine]] kiredi.
+Basqa ataw talğañız.',
+),
+/* Kazakh Arabic (kk:AlefZet) */
+'kk-cn' => array(
+'blacklistedusername' => 'قارا تٴىزٴىمدەگٴى قاتىسۋشى اتى',
+'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تٴىزٴىمٴىنە]] كٴىرەدٴى.
+باسقا اتاۋ تالعاڭىز.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'blacklistedusername' => 'Gebruikersnaam op zwarte lijst',

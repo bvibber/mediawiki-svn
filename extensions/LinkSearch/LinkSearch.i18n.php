@@ -69,19 +69,28 @@ $wgLinkSearchMessages['ja'] = array(
 	'linksearch-error' => 'ワイルドカードはホスト名の先頭でのみ使用できます。',
 );
 $wgLinkSearchMessages['kk-kz'] = array(
-	'linksearch'       => 'Веб сілтемелерін іздеу',
+	'linksearch'       => 'Еренсілтемелерін іздеу',
+	'linksearch-pat'   => 'Іздеу шарты:',
+	'linksearch-ns'    => 'Есім аясы:',
+	'linksearch-ok'    => 'Іздеу',
 	'linksearch-text'  => '«*.wikipedia.org» атауына ұқсасты бәдел нышандарды қолдануға болады. ',
 	'linksearch-line'  => '$2 дегеннен $1 сілтеген',
 	'linksearch-error' => 'Бәдел нышандар тек сервер жайы атауының бастауында болуы мүмкін.',
 );
 $wgLinkSearchMessages['kk-tr'] = array(
-	'linksearch'       => 'Veb siltemelerin izdew',
+	'linksearch'       => 'Erensiltemelerin izdew',
+	'linksearch-pat'   => 'İzdew şartı:',
+	'linksearch-ns'    => 'Esim ayası:',
+	'linksearch-ok'    => 'İzdew',
 	'linksearch-text'  => '«*.wikipedia.org» atawına uqsastı bädel nışandardı qoldanwğa boladı. ',
 	'linksearch-line'  => '$2 degennen $1 siltegen',
 	'linksearch-error' => 'Bädel nışandar tek server jaýı atawınıñ bastawında bolwı mümkin.',
 );
 $wgLinkSearchMessages['kk-cn'] = array(
-	'linksearch'       => 'ۆەب سٴىلتەمەلەرٴىن ٴىزدەۋ',
+	'linksearch'       => 'ەرەنسٴىلتەمەلەرٴىن ٴىزدەۋ',
+	'linksearch-pat'   => 'ٴىزدەۋ شارتى:',
+	'linksearch-ns'    => 'ەسٴىم اياسى:',
+	'linksearch-ok'    => 'ٴىزدەۋ',
 	'linksearch-text'  => '«*.wikipedia.org» اتاۋىنا ۇقساستى بٴادەل نىشانداردى قولدانۋعا بولادى. ',
 	'linksearch-line'  => '$2 دەگەننەن $1 سٴىلتەگەن',
 	'linksearch-error' => 'بٴادەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٴۇمكٴىن.',

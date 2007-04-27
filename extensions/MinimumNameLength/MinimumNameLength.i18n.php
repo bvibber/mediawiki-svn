@@ -39,12 +39,19 @@ function efMinimumNameLengthMessages() {
 'minnamelength-error' => 'あなたの利用者名は短すぎます。最短の長さは $1 バイトです。',
 ),
 
+/* Kazakh default */
+'kk' => array(
+'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',
+),
+/* Kazakh Cyrillic */
 'kk-kz' => array(
 'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',
 ),
+/* Kazakh Latin */
 'kk-tr' => array(
 'minnamelength-error' => 'Qatıswşı atıñız tım qısqa.Eñ keminde uzındığı $1 bolwı qajet.',
 ),
+/* Kazakh Arabic */
 'kk-cn' => array(
 'minnamelength-error' => 'قاتىسۋشى اتىڭىز تىم قىسقا.ەڭ كەمٴىندە ۇزىندىعى $1 بولۋى قاجەت.',
 ),
