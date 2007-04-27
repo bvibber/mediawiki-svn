@@ -79,8 +79,8 @@ group by language_id
 order by count(*) desc
  ")or die ("error ".mysql_error());
 
-echo "
-<table cellpadding=0 width=950><tr><td width=200><b>Language</b></td><td><b>Expressions</b></td><td></td></tr>";
+echo ' 
+<table cellpadding=0 width=950><tr><td width=100><b>Language</b></td><td align=right><b>Expressions</b></td><td width=30></td><td></td></tr>';
 $width=500;
 $limit=500;
 $max=0;
@@ -88,7 +88,7 @@ while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
 if($max<$row[1])$max=$row[1];
 $wi=ceil((($row[1]/$max)*$width));
 $per=ceil((($row[1]/$max)*100));
-if($row[1]>$limit)echo "<tr><td >".$lang[$row[0]]."</td><td>".$row[1]."</td><td><img src=sc1.png width=\"$wi\" height=20> $per %</td></tr>";
+if($row[1]>$limit)echo "<tr><td >".$lang[$row[0]].'</td><td align="right">'.$row[1]."</td><td width=30></td><td><img src=sc1.png width=\"$wi\" height=20> $per %</td></tr>";
 else $tx.=$lang[$row[0]]." (".$row[1]."), ";
 //$ar[$row[0]].=$row[1]."	".$row[2]."\n";
 //filewrite("out/".$row[0].".txt",$row[1]."	".$row[2]);
