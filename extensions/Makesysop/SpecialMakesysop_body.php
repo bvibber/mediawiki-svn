@@ -303,29 +303,8 @@ class MakesysopStewardForm extends UserrightsForm {
 		}
 
 		$groups = $this->getUserGroups( $database, $userid );
-
-		$wgOut->addHTML(
-			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->action, 'name' => 'editGroup' ) ) .
-			Xml::hidden( 'user-editname', $username ) .
-			Xml::hidden( 'wpEditToken', $wgUser->editToken( $username ) ) .
-			Xml::openElement( 'fieldset' ) .
-			Xml::element( 'legend', array(), wfMsg( 'userrights-editusergroup' ) ) .
-			$wgOut->parse( wfMsg( 'editinguser', $username ) ) .
-			"<table border='0' align='center'>
-			<tr>
-				<td>" . HTMLSelectGroups( 'member', $this->mName.'-groupsmember', $groups, true, 6 ) . "</td>
-				<td align='right'>" . HTMLSelectGroups( 'available', $this->mName.'-groupsavailable', $groups, true, 6, true) . "</td>
-			</tr><tr>
-				<td>" . $wgOut->parse( wfMsg( 'makesysopreason' ) ) . "</td>
-				<td align='right'>" . Xml::input( 'wpMakesysopReason', 30 ) . "</td>
-			</tr>
-			</table> \n" .
-			$wgOut->parse( wfMsg('userrights-groupshelp') ) .
-			Xml::submitButton( wfMsg( 'saveusergroups' ), array( 'name' => 'saveusergroups' ) ) .
-			Xml::closeElement( 'fieldset' ) .
-			Xml::closeElement( 'form' ) . "\n"
-		);
-
+		
+		$this->showEditUserGroupsForm( $username, $groups );
 	}
 
 	function splitUsername( $username ) {
