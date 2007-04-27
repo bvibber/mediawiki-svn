@@ -88,7 +88,7 @@ class MakesysopForm {
 			$encUser = "";
 		}
 
-		$reason = htmlspecialchars( wfMsg( "makesysopreason" ) );
+		$reason = htmlspecialchars( wfMsg( "userrights-reason" ) );
 		$makebureaucrat = wfMsg( "setbureaucratflag" );
 		$mss = wfMsg( "set_user_rights" );
 		$token = htmlspecialchars( $wgUser->editToken() );
