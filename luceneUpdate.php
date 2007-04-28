@@ -5,6 +5,8 @@
 $options = array( 'skip' );
 require_once( 'commandLine.inc' );
 
+$mwSearchTCPAddress = 'localhost';
+$mwSearchTCPPort = 8112;
 
 if( !isset( $args[0] ) ) {
 	print "Call MWUpdateDaemon remotely for status or updates.\n";
@@ -91,6 +93,14 @@ case 'random':
 			LuceneBuilder::wait();
 		}
 	}
+	break;
+case 'newupdates':
+	$builder = new LuceneBuilder();
+	$ret = $builder->rebuildUpdates('FETCH NEW');	
+	break;
+case 'oldupdates':
+	$builder = new LuceneBuilder();
+	$ret = $builder->rebuildUpdates('FETCH OLD');	
 	break;
 default:
 	echo "Unknown command.\n";
@@ -377,6 +387,68 @@ class LuceneBuilder {
 		
 		return $lastError;
 	}
+
+	/** Fetch updates from RecentUpdatesDaemon from lucene-search-2.0 package and apply them */
+	function rebuildUpdates($command) {
+		global $wgDBname,$mwSearchTCPAddress,$mwSearchTCPPort;
+
+		$socket = fsockopen($mwSearchTCPAddress,$mwSearchTCPPort, $errno, $errstr, 2);
+		if(!$socket){
+			print "Error openning TCP socket to $mwSearchTCPAddress:$mwSearchTCPPort\n";
+			return;
+		}
+		fwrite($socket, "$command ON $wgDBname\n");
+		
+		$titles = array();
+		$max = 0;
+		while ($str = trim(fgets($socket, 4096))){
+			$titles[] = $str;
+			$max = $max + 1;
+		}
+		fclose($socket);
+
+		if($max == 0){
+			print "No new updates\n";
+			return;
+		}
+
+		$this->init($max);
+		
+		foreach($titles as $line) {
+			$this->progress();
+			
+			$parts = explode(' ',$line,3);
+
+			$title = Title::newFromText( $parts[2] );
+			if($parts[1] == "UPDATE"){
+				$rev = Revision::newFromTitle( $title );
+				if( is_null( $rev ) ) {
+					// Page was probably deleted while we were running
+					continue;
+				}
+				
+				$text = $rev->getText();
+				$article = new Article($title);
+				$hit = MWSearchUpdater::updatePage( $wgDBname, $title, $text, $article->isRedirect());
+
+				if( WikiError::isError( $hit ) ) {
+					echo "ERROR: " . $hit->getMessage() . "\n";
+					$lastError = $hit;
+					$errorCount++;
+					if( $errorCount > 20 ) {
+						echo "Lots of errors, giving up. :(\n";
+						return $lastError;
+					}
+				}
+				
+			}
+			else if($parts[1] == "DELETE"){
+				MWSearchUpdater::deletePage( $wgDBname, $title );							
+			}
+		}
+		$this->finalStatus();
+	}
+
 
 }
 
