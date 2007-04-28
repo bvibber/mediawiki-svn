@@ -40,6 +40,10 @@ function wfSpecialRevisiondelete( $par = null ) {
 	}
 }
 
+/**
+ * Implements the GUI for Revision Deletion.
+ * @addtogroup SpecialPage
+ */
 class RevisionDeleteForm {
 	/**
 	 * @param webrequest $request
@@ -490,7 +494,10 @@ class RevisionDeleteForm {
 	}
 }
 
-
+/**
+ * Implements the actions for Revision Deletion.
+ * @addtogroup SpecialPage
+ */
 class RevisionDeleter {
 	function __construct( $db ) {
 		$this->db = $db;

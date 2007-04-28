@@ -32,6 +32,11 @@ function wfRFC822Phrase( $phrase ) {
 	return '"' . $phrase . '"';
 }
 
+/**
+ * Stores a single person's name and email address.
+ * These are passed in via the constructor, and will be returned in SMTP
+ * header format when requested.
+ */
 class MailAddress {
 	/**
 	 * @param mixed $address String with an email address, or a User object
@@ -224,6 +229,13 @@ class EmailNotification {
 		$enotifusertalkpage = ($isUserTalkPage && $wgEnotifUserTalk);
 		$enotifwatchlistpage = $wgEnotifWatchlist;
 
+		$this->title =& $title;
+		$this->timestamp = $timestamp;
+		$this->summary = $summary;
+		$this->minorEdit = $minorEdit;
+		$this->oldid = $oldid;
+		$this->composeCommonMailtext();
+
 		if ( (!$minorEdit || $wgEnotifMinorEdits) ) {
 			if( $wgEnotifWatchlist ) {
 				// Send updates to watchers other than the current editor
@@ -258,13 +270,7 @@ class EmailNotification {
 				# if anyone is watching ... set up the email message text which is
 				# common for all receipients ...
 				if ( $dbr->numRows( $res ) > 0 ) {
-					$this->title =& $title;
-					$this->timestamp = $timestamp;
-					$this->summary = $summary;
-					$this->minorEdit = $minorEdit;
-					$this->oldid = $oldid;
 
-					$this->composeCommonMailtext();
 					$watchingUser = new User();
 
 					# ... now do for all watching users ... if the options fit
@@ -288,6 +294,12 @@ class EmailNotification {
 				}
 			} # if anyone is watching
 		} # if $wgEnotifWatchlist = true
+
+		global $wgUsersNotifedOnAllChanges;
+		foreach ( $wgUsersNotifedOnAllChanges as $name ) {
+			$user = User::newFromName( $name );
+			$this->composeAndSendPersonalisedMail( $user );
+		}
 
 		if ( $wgShowUpdatedMarker || $wgEnotifWatchlist ) {
 			# mark the changed watch-listed page with a timestamp, so that the page is

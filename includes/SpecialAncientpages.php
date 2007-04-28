@@ -5,7 +5,7 @@
  */
 
 /**
- *
+ * Implements Special:Ancientpages
  * @addtogroup SpecialPage
  */
 class AncientPagesPage extends QueryPage {

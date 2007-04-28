@@ -114,7 +114,7 @@ class LogPage {
 	}
 
 	/**
-	 * @fixme: handle missing log types
+	 * @todo handle missing log types
 	 * @static
 	 */
 	function logHeader( $type ) {

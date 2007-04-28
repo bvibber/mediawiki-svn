@@ -162,7 +162,6 @@ $wgTmpDirectory     = false; /// defaults to "{$wgUploadDirectory}/tmp"
 $wgUploadBaseUrl    = "";
 /**#@-*/
 
-
 /**
  * By default deleted files are simply discarded; to save them and
  * make it possible to undelete images, create a directory which
@@ -307,8 +306,8 @@ $wgVerifyMimeType= true;
 /** Sets the mime type definition file to use by MimeMagic.php.
 * @global string $wgMimeTypeFile
 */
-#$wgMimeTypeFile= "/etc/mime.types";
 $wgMimeTypeFile= "includes/mime.types";
+#$wgMimeTypeFile= "/etc/mime.types";
 #$wgMimeTypeFile= NULL; #use built-in defaults only.
 
 /** Sets the mime type info file to use by MimeMagic.php.
@@ -372,7 +371,11 @@ $wgSharedUploadDBprefix = '';
 $wgCacheSharedUploads = true;
 /** Allow for upload to be copied from an URL. Requires Special:Upload?source=web */
 $wgAllowCopyUploads = false;
-/** Max size for uploads, in bytes */
+/**
+ * Max size for uploads, in bytes.  Currently only works for uploads from URL
+ * via CURL (see $wgAllowCopyUploads).  The only way to impose limits on
+ * normal uploads is currently to edit php.ini.
+ */
 $wgMaxUploadSize = 1024*1024*100; # 100MB
 
 /**
@@ -485,8 +488,6 @@ $wgSMTP				= false;
 $wgDBserver         = 'localhost';
 /** database port number */
 $wgDBport           = '';
-/** timezone the database is using */
-$wgDBtimezone       = 0;
 /** name of the database */
 $wgDBname           = 'wikidb';
 /** */
@@ -504,7 +505,11 @@ $wgDBtype           = "mysql";
 $wgSearchType	    = null;
 /** Table name prefix */
 $wgDBprefix         = '';
+/** MySQL table options to use during installation or update */
+$wgDBTableOptions = 'TYPE=InnoDB';
+
 /**#@-*/
+
 
 /** Live high performance sites should disable this - some checks acquire giant mysql locks */
 $wgCheckDBSchema = true;
@@ -980,6 +985,7 @@ $wgGroupPermissions['emailconfirmed']['emailconfirmed'] = true;
 $wgGroupPermissions['bot'  ]['bot']             = true;
 $wgGroupPermissions['bot'  ]['autoconfirmed']   = true;
 $wgGroupPermissions['bot'  ]['nominornewtalk']  = true;
+$wgGroupPermissions['bot'  ]['autopatrol']      = true;
 
 // Most extra permission abilities go to this group
 $wgGroupPermissions['sysop']['block']           = true;
@@ -1016,9 +1022,6 @@ $wgGroupPermissions['bureaucrat']['userrights'] = true;
 //$wgGroupPermissions['bureaucrat']['hiderevision'] = true;
 // For private log access
 //$wgGroupPermissions['bureaucrat']['oversight'] = true;
-// Also, we may want titles to be effectively hidden
-//$wgGroupPermissions['sysop']['browsearchive'] = false;
-//$wgGroupPermissions['bureaucrat']['browsearchive'] = true;
 
 /**
  * The developer group is deprecated, but can be activated if need be
@@ -1128,7 +1131,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '61';
+$wgStyleVersion = '63';
 
 
 # Server-side caching:
@@ -1176,6 +1179,11 @@ $wgEnotifUserTalk		= false;	# UPO
 $wgEnotifRevealEditorAddress	= false;	# UPO; reply-to address may be filled with page editor's address (if user allowed this in the preferences)
 $wgEnotifMinorEdits		= true;	# UPO; false: "minor edits" on pages do not trigger notification mails.
 #							# Attention: _every_ change on a user_talk page trigger a notification mail (if the user is not yet notified)
+
+/** 
+ * Array of usernames who will be sent a notification email for every change which occurs on a wiki
+ */
+$wgUsersNotifedOnAllChanges = array();
 
 /** Show watching users in recent changes, watchlist and page history views */
 $wgRCShowWatchingUsers 				= false; # UPO
@@ -1451,8 +1459,19 @@ $wgSiteNotice = '';
 # Images settings
 #
 
-/** dynamic server side image resizing ("Thumbnails") */
-$wgUseImageResize		= false;
+/** 
+ * Plugins for media file type handling.
+ * Each entry in the array maps a MIME type to a class name
+ */
+$wgMediaHandlers = array(
+	'image/jpeg' => 'BitmapHandler',
+	'image/png' => 'BitmapHandler',
+	'image/gif' => 'BitmapHandler',
+	'image/x-ms-bmp' => 'BmpHandler',
+	'image/svg+xml' => 'SvgHandler',
+	'image/vnd.djvu' => 'DjVuHandler',
+);
+
 
 /**
  * Resizing can be done using PHP's internal image libraries or using
@@ -1465,6 +1484,12 @@ $wgUseImageResize		= false;
 $wgUseImageMagick		= false;
 /** The convert command shipped with ImageMagick */
 $wgImageMagickConvertCommand    = '/usr/bin/convert';
+
+/** Sharpening parameter to ImageMagick */
+$wgSharpenParameter = '0x0.4';
+
+/** Reduction in linear dimensions below which sharpening will be enabled */
+$wgSharpenReductionThreshold = 0.85;
 
 /**
  * Use another resizing converter, e.g. GraphicMagick
@@ -1483,7 +1508,7 @@ $wgCustomConvertCommand = false;
 #
 # An external program is required to perform this conversion:
 $wgSVGConverters = array(
-	'ImageMagick' => '$path/convert -background white -geometry $width $input $output',
+	'ImageMagick' => '$path/convert -background white -geometry $width $input PNG:$output',
 	'sodipodi' => '$path/sodipodi -z -w $width -f $input -e $output',
 	'inkscape' => '$path/inkscape -z -w $width -f $input -e $output',
 	'batik' => 'java -Djava.awt.headless=true -jar $path/batik-rasterizer.jar -w $width -d $output $input',
@@ -1530,6 +1555,10 @@ $wgIgnoreImageErrors = false;
  * webserver(s).  
  */
 $wgGenerateThumbnailOnParse = true;
+
+/** Obsolete, always true, kept for compatibility with extensions */
+$wgUseImageResize		= true;
+
 
 /** Set $wgCommandLineMode if it's not set already, to avoid notices */
 if( !isset( $wgCommandLineMode ) ) {
@@ -1663,12 +1692,6 @@ $wgFilterCallback = false;
 /** Go button goes straight to the edit screen if the article doesn't exist. */
 $wgGoToEdit = false;
 
-/** Allow limited user-specified HTML in wiki pages?
- * It  will be run through a whitelist for security. Set this to false if you
- * want wiki pages to consist only of wiki markup. Note that replacements do not
- * yet exist for all HTML constructs.*/
-$wgUserHtml = true;
-
 /** Allow raw, unchecked HTML in <html>...</html> sections.
  * THIS IS VERY DANGEROUS on a publically editable site, so USE wgGroupPermissions
  * TO RESTRICT EDITING to only those that you trust
@@ -1677,8 +1700,7 @@ $wgRawHtml = false;
 
 /**
  * $wgUseTidy: use tidy to make sure HTML output is sane.
- * This should only be enabled if $wgUserHtml is true.
- * tidy is a free tool that fixes broken HTML.
+ * Tidy is a free tool that fixes broken HTML.
  * See http://www.w3.org/People/Raggett/tidy/
  * $wgTidyBin should be set to the path of the binary and
  * $wgTidyConf to the path of the configuration file.
@@ -2311,7 +2333,7 @@ $wgTrustedMediaFormats= array(
 	MEDIATYPE_BITMAP, //all bitmap formats
 	MEDIATYPE_AUDIO,  //all audio formats
 	MEDIATYPE_VIDEO,  //all plain video formats
-	"image/svg",  //svg (only needed if inline rendering of svg is not supported)
+	"image/svg+xml",  //svg (only needed if inline rendering of svg is not supported)
 	"application/pdf",  //PDF files
 	#"application/x-shockwave-flash", //flash/shockwave movie
 );
@@ -2406,7 +2428,7 @@ $wgAllowDisplayTitle = false ;
 $wgReservedUsernames = array(
 	'MediaWiki default', // Default 'Main Page' and MediaWiki: message pages
 	'Conversion script', // Used for the old Wikipedia software upgrade
-	'Maintenance script', // ... maintenance/edit.php uses this?
+	'Maintenance script', // Maintenance scripts which perform editing, image import script
 	'Template namespace initialisation script', // Used in 1.2->1.3 upgrade
 );
 
@@ -2414,7 +2436,7 @@ $wgReservedUsernames = array(
  * MediaWiki will reject HTMLesque tags in uploaded files due to idiotic browsers which can't
  * perform basic stuff like MIME detection and which are vulnerable to further idiots uploading
  * crap files as images. When this directive is on, <title> will be allowed in files with
- * an "image/svg" MIME type. You should leave this disabled if your web server is misconfigured
+ * an "image/svg+xml" MIME type. You should leave this disabled if your web server is misconfigured
  * and doesn't send appropriate MIME types for SVG images.
  */
 $wgAllowTitlesInSVG = false;
@@ -2440,25 +2462,42 @@ $wgMaxShellFileSize = 102400;
 
 /**
  * DJVU settings
- * Path of the djvutoxml executable
+ * Path of the djvudump executable
  * Enable this and $wgDjvuRenderer to enable djvu rendering
  */
-# $wgDjvuToXML = 'djvutoxml';
-$wgDjvuToXML = null;
+# $wgDjvuDump = 'djvudump';
+$wgDjvuDump = null;
 
 /**
  * Path of the ddjvu DJVU renderer
- * Enable this and $wgDjvuToXML to enable djvu rendering
+ * Enable this and $wgDjvuDump to enable djvu rendering
  */
 # $wgDjvuRenderer = 'ddjvu';
 $wgDjvuRenderer = null;
 
 /**
- * Path of the DJVU post processor
- * May include command line options
- * Default: ppmtojpeg, since ddjvu generates ppm output
+ * Path of the djvutoxml executable
+ * This works like djvudump except much, much slower as of version 3.5. 
+ *
+ * For now I recommend you use djvudump instead. The djvuxml output is
+ * probably more stable, so we'll switch back to it as soon as they fix
+ * the efficiency problem.
+ * http://sourceforge.net/tracker/index.php?func=detail&aid=1704049&group_id=32953&atid=406583
  */
-$wgDjvuPostProcessor = 'ppmtojpeg';
+# $wgDjvuToXML = 'djvutoxml';
+$wgDjvuToXML = null;
+
+
+/**
+ * Shell command for the DJVU post processor
+ * Default: pnmtopng, since ddjvu generates ppm output
+ * Set this to false to output the ppm file directly.
+ */
+$wgDjvuPostProcessor = 'pnmtojpeg';
+/**
+ * File extension for the DJVU post processor output
+ */
+$wgDjvuOutputExtension = 'jpg';
 
 /**
 * Enable direct access to the data API

@@ -2,8 +2,8 @@
 
 /**
  * Various core parser functions, registered in Parser::firstCallInit()
+ * @addtogroup Parser
  */
-
 class CoreParserFunctions {
 	static function intFunction( $parser, $part1 = '' /*, ... */ ) {
 		if ( strval( $part1 ) !== '' ) {
@@ -135,6 +135,7 @@ class CoreParserFunctions {
 	static function numberofarticles( $parser, $raw = null ) { return self::statisticsFunction( 'articles', $raw ); }
 	static function numberoffiles( $parser, $raw = null ) { return self::statisticsFunction( 'images', $raw ); }
 	static function numberofadmins( $parser, $raw = null ) { return self::statisticsFunction( 'admins', $raw ); }
+	static function numberofedits( $parser, $raw = null ) { return self::statisticsFunction( 'edits', $raw ); }
 
 	static function pagesinnamespace( $parser, $namespace = 0, $raw = null ) {
 		$count = SiteStats::pagesInNs( intval( $namespace ) );
@@ -169,7 +170,11 @@ class CoreParserFunctions {
 	}
 
 	static function anchorencode( $parser, $text ) {
-		return strtr( urlencode( $text ) , array( '%' => '.' , '+' => '_' ) );
+		$a = urlencode( $text );
+		$a = strtr( $a, array( '%' => '.', '+' => '_' ) );
+		# leave colons alone, however
+		$a = str_replace( '.3A', ':', $a );
+		return $a;
 	}
 
 	static function special( $parser, $text ) {

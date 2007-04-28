@@ -67,7 +67,7 @@ if ( !function_exists( 'mb_strlen' ) ) {
 	 * @param string $enc optional encoding; ignored
 	 * @return int
 	 */
-	function new_mb_strlen( $str, $enc="" ) {
+	function mb_strlen( $str, $enc="" ) {
 		$counts = count_chars( $str );
 		$total = 0;
 
@@ -558,11 +558,11 @@ function wfMsgWikiHtml( $key ) {
  * Returns message in the requested format
  * @param string $key Key of the message
  * @param array $options Processing rules:
- *  <i>parse<i>: parses wikitext to html
- *  <i>parseinline<i>: parses wikitext to html and removes the surrounding p's added by parser or tidy
- *  <i>escape<i>: filters message trough htmlspecialchars
- *  <i>replaceafter<i>: parameters are substituted after parsing or escaping
- *  <i>parsemag<i>: transform the message using magic phrases
+ *  <i>parse</i>: parses wikitext to html
+ *  <i>parseinline</i>: parses wikitext to html and removes the surrounding p's added by parser or tidy
+ *  <i>escape</i>: filters message trough htmlspecialchars
+ *  <i>replaceafter</i>: parameters are substituted after parsing or escaping
+ *  <i>parsemag</i>: transform the message using magic phrases
  */
 function wfMsgExt( $key, $options ) {
 	global $wgOut, $wgParser;
@@ -612,7 +612,7 @@ function wfMsgExt( $key, $options ) {
  * Just like exit() but makes a note of it.
  * Commits open transactions except if the error parameter is set
  *
- * @obsolete Please return control to the caller or throw an exception
+ * @deprecated Please return control to the caller or throw an exception
  */
 function wfAbruptExit( $error = false ){
 	global $wgLoadBalancer;
@@ -642,7 +642,7 @@ function wfAbruptExit( $error = false ){
 }
 
 /**
- * @obsolete Please return control the caller or throw an exception
+ * @deprecated Please return control the caller or throw an exception
  */
 function wfErrorExit() {
 	wfAbruptExit( true );
@@ -1167,7 +1167,7 @@ function wfHttpError( $code, $label, $desc ) {
  * Note that some PHP configuration options may add output buffer
  * layers which cannot be removed; these are left in place.
  *
- * @parameter bool $resetGzipEncoding
+ * @param bool $resetGzipEncoding
  */
 function wfResetOutputBuffers( $resetGzipEncoding=true ) {
 	if( $resetGzipEncoding ) {
@@ -1337,7 +1337,7 @@ function wfArrayLookup( $a, $b ) {
  */
 function wfTimestampNow() {
 	# return NOW
-	return wfTimestamp( TS_MW, 0 );
+	return wfTimestamp( TS_MW, time() );
 }
 
 /**
@@ -1401,7 +1401,7 @@ define('TS_ISO_8601', 4);
 /**
  * An Exif timestamp (YYYY:MM:DD HH:MM:SS)
  *
- * @url http://exif.org/Exif2-2.PDF The Exif 2.2 spec, see page 28 for the
+ * @see http://exif.org/Exif2-2.PDF The Exif 2.2 spec, see page 28 for the
  *       DateTime tag and page 36 for the DateTimeOriginal and
  *       DateTimeDigitized tags.
  */
@@ -1424,11 +1424,10 @@ define('TS_POSTGRES', 7);
  * @return string Time in the format specified in $outputtype
  */
 function wfTimestamp($outputtype=TS_UNIX,$ts=0) {
-	global $wgDBtimezone;
 	$uts = 0;
 	$da = array();
 	if ($ts==0) {
-		$uts=time() - 60*60*$wgDBtimezone;
+		$uts=time();
 	} elseif (preg_match('/^(\d{4})\-(\d\d)\-(\d\d) (\d\d):(\d\d):(\d\d)$/D',$ts,$da)) {
 		# TS_DB
 		$uts=gmmktime((int)$da[4],(int)$da[5],(int)$da[6],
@@ -1821,14 +1820,14 @@ function wfShellExec( $cmd, &$retval=null ) {
 	}
 
 	if ( php_uname( 's' ) == 'Linux' ) {
-		$time = ini_get( 'max_execution_time' );
+		$time = intval( ini_get( 'max_execution_time' ) );
 		$mem = intval( $wgMaxShellMemory );
 		$filesize = intval( $wgMaxShellFileSize );
 
 		if ( $time > 0 && $mem > 0 ) {
-			$script = "$IP/bin/ulimit-tvf.sh";
+			$script = "$IP/bin/ulimit4.sh";
 			if ( is_executable( $script ) ) {
-				$cmd = escapeshellarg( $script ) . " $time $mem $filesize $cmd";
+				$cmd = escapeshellarg( $script ) . " $time $mem $filesize " . escapeshellarg( $cmd );
 			}
 		}
 	} elseif ( php_uname( 's' ) == 'Windows NT' ) {
@@ -2039,6 +2038,7 @@ function wfExplodeMarkup( $separator, $text ) {
  * @param $sourceBase int 2-36
  * @param $destBase int 2-36
  * @param $pad int 1 or greater
+ * @param $lowercase bool
  * @return string or false on invalid input
  */
 function wfBaseConvert( $input, $sourceBase, $destBase, $pad=1, $lowercase=true ) {

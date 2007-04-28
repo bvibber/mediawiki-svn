@@ -1,7 +1,8 @@
 <?php
 
-if( !defined( 'MEDIAWIKI' ) )
-        die( 1 );
+if( !defined( 'MEDIAWIKI' ) ) {
+	die( 1 );
+}
 
 if ( ! $wgUseAjax ) {
 	die( 1 );
@@ -9,6 +10,10 @@ if ( ! $wgUseAjax ) {
 
 require_once( 'AjaxFunctions.php' );
 
+/**
+ * Object-Oriented Ajax functions.
+ * @addtogroup Ajax
+ */
 class AjaxDispatcher {
 	var $mode;
 	var $func_name;

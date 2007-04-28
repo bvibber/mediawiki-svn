@@ -2,8 +2,8 @@
 
 /**
  * This is the Oracle database abstraction layer.
+ * @addtogroup Database
  */
-
 class ORABlob {
 	var $mData;
 
@@ -14,12 +14,13 @@ class ORABlob {
 	function getData() {
 		return $this->mData;
 	}
-};
+}
 
-/*
+/**
  * The oci8 extension is fairly weak and doesn't support oci_num_rows, among 
  * other things.  We use a wrapper class to handle that and other 
  * Oracle-specific bits, like converting column names back to lowercase.
+ * @addtogroup Database
  */
 class ORAResult {
 	private $rows;
@@ -32,7 +33,7 @@ class ORAResult {
 		$this->db =& $db;
 		if (($this->nrows = oci_fetch_all($stmt, $this->rows, 0, -1, OCI_FETCHSTATEMENT_BY_ROW | OCI_NUM)) === false) {
 			$e = oci_error($stmt);
-			$db->reportQueryError('', $e['message'], $e['code']);
+			$db->reportQueryError($e['message'], $e['code'], '', __FUNCTION__);
 			return;
 		}
 
@@ -83,8 +84,11 @@ class ORAResult {
 		}
 		return $ret;
 	}
-};
+}
 
+/**
+ * @addtogroup Database
+ */
 class DatabaseOracle extends Database {
 	var $mInsertId = NULL;
 	var $mLastResult = NULL;
@@ -189,10 +193,18 @@ class DatabaseOracle extends Database {
 
 	function doQuery($sql) {
 		wfDebug("SQL: [$sql]\n");
-		$this->mLastResult = $stmt = oci_parse($this->mConn, $sql);
+		if (!mb_check_encoding($sql)) {
+			throw new MWException("SQL encoding is invalid");
+		}
+
+		if (($this->mLastResult = $stmt = oci_parse($this->mConn, $sql)) === false) {
+			$e = oci_error($this->mConn);
+			$this->reportQueryError($e['message'], $e['code'], $sql, __FUNCTION__);
+		}
+		
 		if (oci_execute($stmt, $this->execFlags()) == false) {
 			$e = oci_error($stmt);
-			$this->reportQueryError($sql, $e['message'], $e['code'], '');
+			$this->reportQueryError($e['message'], $e['code'], $sql, __FUNCTION__);
 		}
 		if (oci_statement_type($stmt) == "SELECT")
 			return new ORAResult($this, $stmt);
@@ -277,8 +289,8 @@ class DatabaseOracle extends Database {
 		if (!is_array($options))
 			$options = array($options);
 
-		if (in_array('IGNORE', $options))
-			$oldIgnore = $this->ignoreErrors(true);
+		#if (in_array('IGNORE', $options))
+		#	$oldIgnore = $this->ignoreErrors(true);
 
 		# IGNORE is performed using single-row inserts, ignoring errors in each
 		# FIXME: need some way to distiguish between key collision and other types of error
@@ -292,8 +304,8 @@ class DatabaseOracle extends Database {
 		//$this->ignoreErrors($oldIgnore);
 		$retVal = true;
 
-		if (in_array('IGNORE', $options))
-			$this->ignoreErrors($oldIgnore);
+		//if (in_array('IGNORE', $options))
+		//	$this->ignoreErrors($oldIgnore);
 
 		return $retVal;
 	}
@@ -331,7 +343,11 @@ class DatabaseOracle extends Database {
 			}
 		}
 
-		$bval = oci_new_descriptor($this->mConn, OCI_D_LOB);
+		if (($bval = oci_new_descriptor($this->mConn, OCI_D_LOB)) === false) {
+			$e = oci_error($stmt);
+			throw new DBUnexpectedError($this, "Cannot create LOB descriptor: " . $e['message']);
+		}
+
 		if (strlen($returning))
 			oci_bind_by_name($stmt, ":bval", $bval, -1, SQLT_BLOB);
 
@@ -373,7 +389,7 @@ class DatabaseOracle extends Database {
 	}
 
 	/**
-	 * ORacle does not have a "USE INDEX" clause, so return an empty string
+	 * Oracle does not have a "USE INDEX" clause, so return an empty string
 	 */
 	function useIndexClause($index) {
 		return '';
@@ -511,15 +527,18 @@ class DatabaseOracle extends Database {
 	}
 
 	function reportQueryError($error, $errno, $sql, $fname, $tempIgnore = false) {
-		# Ignore errors during error handling to avoid infinite recursion
+		# Ignore errors during error handling to avoid infinite 
+		# recursion
 		$ignore = $this->ignoreErrors(true);
 		++$this->mErrorCount;
 
 		if ($ignore || $tempIgnore) {
+echo "error ignored! query = [$sql]\n";
 			wfDebug("SQL ERROR (ignored): $error\n");
 			$this->ignoreErrors( $ignore );
 		}
 		else {
+echo "error!\n";
 			$message = "A database error has occurred\n" .
 				"Query: $sql\n" .
 				"Function: $fname\n" .
@@ -594,6 +613,8 @@ class DatabaseOracle extends Database {
 	}
 
 	function addQuotes( $s ) {
+	global	$wgLang;
+		$s = $wgLang->checkTitleEncoding($s);
 		return "'" . $this->strencode($s) . "'";
 	}
 
@@ -650,7 +671,7 @@ class DatabaseOracle extends Database {
 	}
 
 	public function setTimeout( $timeout ) {
-		/// @fixme no-op
+		// @todo fixme no-op
 	}
 
 	function ping() {

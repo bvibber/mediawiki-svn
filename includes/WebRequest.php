@@ -21,6 +21,15 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 # http://www.gnu.org/copyleft/gpl.html
 
+
+/**
+ * Some entry points may use this file without first enabling the 
+ * autoloader.
+ */
+if ( !function_exists( '__autoload' ) ) {
+	require_once( dirname(__FILE__) . '/normal/UtfNormal.php' );
+}
+
 /**
  * The WebRequest class encapsulates getting at data passed in the
  * URL or via a POSTed form, handling remove of "magic quotes" slashes,
@@ -32,15 +41,6 @@
  * input.
  *
  */
-
-/**
- * Some entry points may use this file without first enabling the 
- * autoloader.
- */
-if ( !function_exists( '__autoload' ) ) {
-	require_once( dirname(__FILE__) . '/normal/UtfNormal.php' );
-}
-
 class WebRequest {
 	function __construct() {
 		$this->checkMagicQuotes();
@@ -140,7 +140,9 @@ class WebRequest {
 
 	/**
 	 * Fetch a scalar from the input or return $default if it's not set.
-	 * Returns a string. Arrays are discarded.
+	 * Returns a string. Arrays are discarded. Useful for 
+	 * non-freeform text inputs (e.g. predefined internal text keys 
+	 * selected by a drop-down menu). For freeform input, see getText().
 	 *
 	 * @param string $name
 	 * @param string $default optional default (or NULL)
@@ -250,7 +252,9 @@ class WebRequest {
 	 * Fetch a text string from the given array or return $default if it's not
 	 * set. \r is stripped from the text, and with some language modules there
 	 * is an input transliteration applied. This should generally be used for
-	 * form <textarea> and <input> fields.
+	 * form <textarea> and <input> fields. Used for user-supplied freeform text
+	 * input (for which input transformations may be required - e.g. Esperanto 
+	 * x-coding).
 	 *
 	 * @param string $name
 	 * @param string $default optional

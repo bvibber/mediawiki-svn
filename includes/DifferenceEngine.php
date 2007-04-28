@@ -1,6 +1,7 @@
 <?php
 /**
  * See diff.doc
+ * @todo indicate where diff.doc can be found.
  * @addtogroup DifferenceEngine
  */
 
@@ -631,7 +632,7 @@ CONTROL;
 			$this->mOldtitle = "<a href='$oldLink'>{$this->mOldPagetitle}</a>"
 				. "(<a href='$oldEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
 			// Now that we considered old rev, we can make undo link (bug 8133, multi-edit undo)
-			$newUndo = $this->mNewPage->escapeLocalUrl( 'action=edit&undoafter=' . $this->mOldid . '&undoto=' . $this->mNewid);
+			$newUndo = $this->mNewPage->escapeLocalUrl( 'action=edit&undoafter=' . $this->mOldid . '&undo=' . $this->mNewid);
 			if ( $this->mNewRev->userCan(Revision::DELETED_TEXT) )
 				$this->mNewtitle .= " (<a href='$newUndo'>" . htmlspecialchars( wfMsg( 'editundo' ) ) . "</a>)";
 			
@@ -1379,8 +1380,7 @@ class Diff
 }
 
 /**
- * FIXME: bad name.
- * @todo document
+ * @todo document, bad name.
  * @private
  * @addtogroup DifferenceEngine
  */

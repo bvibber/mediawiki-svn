@@ -5,7 +5,7 @@
  */
 
 /**
- *
+ * implements Special:Popularpages
  * @addtogroup SpecialPage
  */
 class PopularPagesPage extends QueryPage {
@@ -59,11 +59,11 @@ class PopularPagesPage extends QueryPage {
  * Constructor
  */
 function wfSpecialPopularpages() {
-    list( $limit, $offset ) = wfCheckLimits();
+	list( $limit, $offset ) = wfCheckLimits();
 
-    $ppp = new PopularPagesPage();
+	$ppp = new PopularPagesPage();
 
-    return $ppp->doQuery( $offset, $limit );
+	return $ppp->doQuery( $offset, $limit );
 }
 
 ?>

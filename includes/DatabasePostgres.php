@@ -7,8 +7,8 @@
  * than MySQL ones, some of them should be moved to parent
  * Database class.
  *
+ * @addtogroup Database
  */
-
 class PostgresField {
 	private $name, $tablename, $type, $nullable, $max_length;
 
@@ -63,6 +63,9 @@ END;
 	}
 }
 
+/**
+ * @addtogroup Database
+ */
 class DatabasePostgres extends Database {
 	var $mInsertId = NULL;
 	var $mLastResult = NULL;
@@ -154,7 +157,7 @@ class DatabasePostgres extends Database {
 		## If this is the initial connection, setup the schema stuff and possibly create the user
 		if (defined('MEDIAWIKI_INSTALL')) {
 			global $wgDBname, $wgDBuser, $wgDBpassword, $wgDBsuperuser, $wgDBmwschema,
-				$wgDBts2schema, $wgDBtimezone;
+				$wgDBts2schema;
 
 			print "<li>Checking the version of Postgres...";
 			$version = $this->getServerVersion();
@@ -164,20 +167,6 @@ class DatabasePostgres extends Database {
 				dieout("</ul>");
 			}
 			print "version $this->numeric_version is OK.</li>\n";
-
-			print "<li>Figuring out timezone the database is using...";
-			## Figure out what the local timezone is for this database
-			$wgDBtimezone = 99;
-			if ($this->doQuery("SET datestyle TO ISO")) {
-				$res = $this->doQuery("SELECT substring(now() FROM E'-?\\\d\\\d\$')::int");
-				if ($res) {
-					$wgDBtimezone = pg_fetch_result($res,0,0);
-					print "timezone is '$wgDBtimezone'</li>\n";
-				}
-			}
-			if ($wgDBtimezone === 99) {
-				print "<b>UNKNOWN</b>. Defaulting to '0'</li>\n";
-			}
 
 			$safeuser = $this->quote_ident($wgDBuser);
 			## Are we connecting as a superuser for the first time?
@@ -424,6 +413,39 @@ class DatabasePostgres extends Database {
 				print "<li>Schema \"$wgDBmwschema\" exists and is owned by \"$user\". Excellent.</li>\n";
 			}
 
+			## Always return GMT time to accomodate the existing integer-based timestamp assumption
+			print "<li>Setting the timezone to GMT for user \"$user\" ...";
+			$SQL = "ALTER USER $safeuser SET timezone = 'GMT'";
+			$result = pg_query($this->mConn, $SQL);
+			if (!$result) {
+				print "<b>FAILED</b>.</li>\n";
+				dieout("</ul>");
+			}
+			print "OK</li>\n";
+			## Set for the rest of this session
+			$SQL = "SET timezone = 'GMT'";
+			$result = pg_query($this->mConn, $SQL);
+			if (!$result) {
+				print "<li>Failed to set timezone</li>\n";
+				dieout("</ul>");
+			}
+
+			print "<li>Setting the datestyle to ISO, YMD for user \"$user\" ...";
+			$SQL = "ALTER USER $safeuser SET datestyle = 'ISO, YMD'";
+			$result = pg_query($this->mConn, $SQL);
+			if (!$result) {
+				print "<b>FAILED</b>.</li>\n";
+				dieout("</ul>");
+			}
+			print "OK</li>\n";
+			## Set for the rest of this session
+			$SQL = "SET datestyle = 'ISO, YMD'";
+			$result = pg_query($this->mConn, $SQL);
+			if (!$result) {
+				print "<li>Failed to set datestyle</li>\n";
+				dieout("</ul>");
+			}
+
 			## Fix up the search paths if needed
 			print "<li>Setting the search path for user \"$user\" ...";
 			$path = $this->quote_ident($wgDBmwschema);
@@ -538,6 +560,30 @@ class DatabasePostgres extends Database {
 	function affectedRows() {
 		return pg_affected_rows( $this->mLastResult );
 	}
+
+	/**
+	 * Estimate rows in dataset
+	 * Returns estimated count, based on EXPLAIN output
+	 * This is not necessarily an accurate estimate, so use sparingly
+	 * Returns -1 if count cannot be found
+	 * Takes same arguments as Database::select()
+	 */
+	
+	function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
+		$options['EXPLAIN'] = true;
+		$res = $this->select( $table, $vars, $conds, $fname, $options );
+		$rows = -1;
+		if ( $res ) {
+			$row = $this->fetchRow( $res );
+			$count = array();
+			if( preg_match( '/rows=(\d+)/', $row[0], $count ) ) {
+				$rows = $count[1];
+			}
+			$this->freeResult($res);
+		}
+		return $rows;
+	}
+
 
 	/**
 	 * Returns information about an index
@@ -837,7 +883,7 @@ class DatabasePostgres extends Database {
 	}
 
 	function triggerExists($table, $trigger) {
-	global $wgDBmwschema;
+		global $wgDBmwschema;
 
 		$q = <<<END
 	SELECT 1 FROM pg_class, pg_namespace, pg_trigger
@@ -849,19 +895,35 @@ END;
 				$this->addQuotes($wgDBmwschema),
 				$this->addQuotes($table),
 				$this->addQuotes($trigger)));
-		$row = $this->fetchRow($res);
-		$exists = !!$row;
+		if (!$res)
+			return NULL;
+		$rows = pg_num_rows($res);
 		$this->freeResult($res);
-		return $exists;
+		return $rows;
 	}
 
 	function ruleExists($table, $rule) {
-	global $wgDBmwschema;
+		global $wgDBmwschema;
 		$exists = $this->selectField("pg_rules", "rulename",
 				array(	"rulename" => $rule,
 					"tablename" => $table,
 					"schemaname" => $wgDBmwschema));
 		return $exists === $rule;
+	}
+
+	function constraintExists($table, $constraint) {
+		global $wgDBmwschema;
+		$SQL = sprintf("SELECT 1 FROM information_schema.table_constraints ".
+			   "WHERE constraint_schema = %s AND table_name = %s AND constraint_name = %s",
+			$this->addQuotes($wgDBmwschema),	
+			$this->addQuotes($table),	
+			$this->addQuotes($constraint));
+		$res = $this->query($SQL);
+		if (!$res)
+			return NULL;
+		$rows = pg_num_rows($res);
+		$this->freeResult($res);
+		return $rows;
 	}
 
 	/**
@@ -1058,7 +1120,7 @@ END;
 	}
 
 	public function setTimeout( $timeout ) {
-		/// @fixme no-op
+		// @todo fixme no-op
 	}
 
 	function ping() {

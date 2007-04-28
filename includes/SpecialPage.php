@@ -26,7 +26,8 @@
 
 /**
  * Parent special page class, also static functions for handling the special
- * page list
+ * page list.
+ * @addtogroup SpecialPage
  */
 class SpecialPage
 {
@@ -102,6 +103,7 @@ class SpecialPage
 		'Mostcategories'            => array( 'SpecialPage', 'Mostcategories' ),
 		'Mostimages'                => array( 'SpecialPage', 'Mostimages' ),
 		'Mostrevisions'             => array( 'SpecialPage', 'Mostrevisions' ),
+		'Fewestrevisions'             => array( 'SpecialPage', 'Fewestrevisions' ),
 		'Shortpages'                => array( 'SpecialPage', 'Shortpages' ),
 		'Longpages'                 => array( 'SpecialPage', 'Longpages' ),
 		'Newpages'                  => array( 'IncludableSpecialPage', 'Newpages' ),
@@ -137,6 +139,7 @@ class SpecialPage
 		'Revisiondelete'            => array( 'SpecialPage', 'Revisiondelete', 'deleterevision' ),
 		'Unusedtemplates'           => array( 'SpecialPage', 'Unusedtemplates' ),
 		'Randomredirect'            => array( 'SpecialPage', 'Randomredirect' ),
+		'Withoutinterwiki'			=> array( 'SpecialPage', 'Withoutinterwiki' ),
 
 		'Mypage'                    => array( 'SpecialMypage' ),
 		'Mytalk'                    => array( 'SpecialMytalk' ),
@@ -690,6 +693,7 @@ class SpecialPage
 
 /**
  * Shortcut to construct a special page which is unlisted by default
+ * @addtogroup SpecialPage
  */
 class UnlistedSpecialPage extends SpecialPage
 {
@@ -700,6 +704,7 @@ class UnlistedSpecialPage extends SpecialPage
 
 /**
  * Shortcut to construct an includable special  page
+ * @addtogroup SpecialPage
  */
 class IncludableSpecialPage extends SpecialPage
 {
@@ -708,6 +713,10 @@ class IncludableSpecialPage extends SpecialPage
 	}
 }
 
+/**
+ * Shortcut to construct a special page alias.
+ * @addtogroup SpecialPage
+ */
 class SpecialRedirectToSpecial extends UnlistedSpecialPage {
 	var $redirName, $redirSubpage;
 
@@ -727,6 +736,17 @@ class SpecialRedirectToSpecial extends UnlistedSpecialPage {
 	}
 }
 
+/** SpecialMypage, SpecialMytalk and SpecialMycontributions special pages
+ * are used to get user independant links pointing to the user page, talk
+ * page and list of contributions.
+ * This can let us cache a single copy of any generated content for all
+ * users.
+ */
+
+/**
+ * Shortcut to construct a special page pointing to current user user's page.
+ * @addtogroup SpecialPage
+ */
 class SpecialMypage extends UnlistedSpecialPage {
 	function __construct() {
 		parent::__construct( 'Mypage' );
@@ -743,6 +763,10 @@ class SpecialMypage extends UnlistedSpecialPage {
 	}
 }
 
+/**
+ * Shortcut to construct a special page pointing to current user talk page.
+ * @addtogroup SpecialPage
+ */
 class SpecialMytalk extends UnlistedSpecialPage {
 	function __construct() {
 		parent::__construct( 'Mytalk' );
@@ -759,6 +783,10 @@ class SpecialMytalk extends UnlistedSpecialPage {
 	}
 }
 
+/**
+ * Shortcut to construct a special page pointing to current user contributions.
+ * @addtogroup SpecialPage
+ */
 class SpecialMycontributions extends UnlistedSpecialPage {
 	function __construct() {
 		parent::__construct(  'Mycontributions' );

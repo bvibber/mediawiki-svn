@@ -17,11 +17,11 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 # http://www.gnu.org/copyleft/gpl.html
 
+
 /**
  *
  * @addtogroup SpecialPage
  */
-
 class WikiExporter {
 	var $list_authors = false ; # Return distinct author list (when not returning full history)
 	var $author_list = "" ;
@@ -140,9 +140,9 @@ class WikiExporter {
 		wfProfileIn( $fname );
 		$this->author_list = "<contributors>";
 		//rev_deleted
-		$deleted = '(rev_deleted & '.Revision::DELETED_USER.') !=1 ';
+		$nothidden = '(rev_deleted & '.Revision::DELETED_USER.') = 0';
 		
-		$sql = "SELECT DISTINCT rev_user_text,rev_user FROM {$page},{$revision} WHERE page_id=rev_page AND $deleted AND " . $cond ;
+		$sql = "SELECT DISTINCT rev_user_text,rev_user FROM {$page},{$revision} WHERE page_id=rev_page AND $nothidden AND " . $cond ;
 		$result = $this->db->query( $sql, $fname );
 		$resultset = $this->db->resultObject( $result );
 		while( $row = $resultset->fetchObject() ) {
@@ -281,6 +281,9 @@ class WikiExporter {
 	}
 }
 
+/**
+ * @addtogroup Dump
+ */
 class XmlDumpWriter {
 
 	/**
@@ -463,6 +466,7 @@ class XmlDumpWriter {
 
 /**
  * Base class for output stream; prints to stdout or buffer or whereever.
+ * @addtogroup Dump
  */
 class DumpOutput {
 	function writeOpenStream( $string ) {
@@ -496,6 +500,7 @@ class DumpOutput {
 
 /**
  * Stream outputter to send data to a file.
+ * @addtogroup Dump
  */
 class DumpFileOutput extends DumpOutput {
 	var $handle;
@@ -513,6 +518,7 @@ class DumpFileOutput extends DumpOutput {
  * Stream outputter to send data to a file via some filter program.
  * Even if compression is available in a library, using a separate
  * program can allow us to make use of a multi-processor system.
+ * @addtogroup Dump
  */
 class DumpPipeOutput extends DumpFileOutput {
 	function DumpPipeOutput( $command, $file = null ) {
@@ -525,6 +531,7 @@ class DumpPipeOutput extends DumpFileOutput {
 
 /**
  * Sends dump output via the gzip compressor.
+ * @addtogroup Dump
  */
 class DumpGZipOutput extends DumpPipeOutput {
 	function DumpGZipOutput( $file ) {
@@ -534,6 +541,7 @@ class DumpGZipOutput extends DumpPipeOutput {
 
 /**
  * Sends dump output via the bgzip2 compressor.
+ * @addtogroup Dump
  */
 class DumpBZip2Output extends DumpPipeOutput {
 	function DumpBZip2Output( $file ) {
@@ -543,6 +551,7 @@ class DumpBZip2Output extends DumpPipeOutput {
 
 /**
  * Sends dump output via the p7zip compressor.
+ * @addtogroup Dump
  */
 class Dump7ZipOutput extends DumpPipeOutput {
 	function Dump7ZipOutput( $file ) {
@@ -560,6 +569,7 @@ class Dump7ZipOutput extends DumpPipeOutput {
  * Dump output filter class.
  * This just does output filtering and streaming; XML formatting is done
  * higher up, so be careful in what you do.
+ * @addtogroup Dump
  */
 class DumpFilter {
 	function DumpFilter( &$sink ) {
@@ -605,6 +615,7 @@ class DumpFilter {
 
 /**
  * Simple dump output filter to exclude all talk pages.
+ * @addtogroup Dump
  */
 class DumpNotalkFilter extends DumpFilter {
 	function pass( $page ) {
@@ -614,6 +625,7 @@ class DumpNotalkFilter extends DumpFilter {
 
 /**
  * Dump output filter to include or exclude pages in a given set of namespaces.
+ * @addtogroup Dump
  */
 class DumpNamespaceFilter extends DumpFilter {
 	var $invert = false;
@@ -668,6 +680,7 @@ class DumpNamespaceFilter extends DumpFilter {
 
 /**
  * Dump output filter to include only the last revision in each page sequence.
+ * @addtogroup Dump
  */
 class DumpLatestFilter extends DumpFilter {
 	var $page, $pageString, $rev, $revString;
@@ -699,6 +712,7 @@ class DumpLatestFilter extends DumpFilter {
 
 /**
  * Base class for output stream; prints to stdout or buffer or whereever.
+ * @addtogroup Dump
  */
 class DumpMultiWriter {
 	function DumpMultiWriter( $sinks ) {

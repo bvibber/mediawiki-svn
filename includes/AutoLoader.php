@@ -8,6 +8,7 @@ function __autoload($className) {
 	global $wgAutoloadClasses;
 
 	static $localClasses = array(
+		# Includes
 		'AjaxDispatcher' => 'includes/AjaxDispatcher.php',
 		'AjaxCachePolicy' => 'includes/AjaxFunctions.php',
 		'AjaxResponse' => 'includes/AjaxResponse.php',
@@ -115,6 +116,10 @@ function __autoload($className) {
 		'MacBinary' => 'includes/MacBinary.php',
 		'MagicWord' => 'includes/MagicWord.php',
 		'MathRenderer' => 'includes/Math.php',
+		'MediaTransformOutput' => 'includes/MediaTransformOutput.php',
+		'ThumbnailImage' => 'includes/MediaTransformOutput.php',
+		'MediaTransformError' => 'includes/MediaTransformOutput.php',
+		'TransformParameterError' => 'includes/MediaTransformOutput.php',
 		'MessageCache' => 'includes/MessageCache.php',
 		'MimeMagic' => 'includes/MimeMagic.php',
 		'Namespace' => 'includes/Namespace.php',
@@ -128,13 +133,15 @@ function __autoload($className) {
 		'ParserOutput' => 'includes/ParserOutput.php',
 		'ParserOptions' => 'includes/ParserOptions.php',
 		'ParserCache' => 'includes/ParserCache.php',
+		'PatrolLog' => 'includes/PatrolLog.php',
 		'ProfilerSimple' => 'includes/ProfilerSimple.php',
 		'ProfilerSimpleUDP' => 'includes/ProfilerSimpleUDP.php',
 		'Profiler' => 'includes/Profiler.php',
 		'ProxyTools' => 'includes/ProxyTools.php',
 		'ProtectionForm' => 'includes/ProtectionForm.php',
 		'QueryPage' => 'includes/QueryPage.php',
-		'PageQueryPage' => 'includes/QueryPage.php',
+		'PageQueryPage' => 'includes/PageQueryPage.php',
+		'ImageQueryPage' => 'includes/ImageQueryPage.php',
 		'RawPage' => 'includes/RawPage.php',
 		'RecentChange' => 'includes/RecentChange.php',
 		'Revision' => 'includes/Revision.php',
@@ -185,6 +192,7 @@ function __autoload($className) {
 		'MostlinkedPage' => 'includes/SpecialMostlinked.php',
 		'MostlinkedCategoriesPage' => 'includes/SpecialMostlinkedcategories.php',
 		'MostrevisionsPage' => 'includes/SpecialMostrevisions.php',
+		'FewestrevisionsPage' => 'includes/SpecialFewestrevisions.php',
 		'MovePageForm' => 'includes/SpecialMovepage.php',
 		'NewbieContributionsPage' => 'includes/SpecialNewbieContributions.php',
 		'NewPagesPage' => 'includes/SpecialNewpages.php',
@@ -194,6 +202,7 @@ function __autoload($className) {
 		'PopularPagesPage' => 'includes/SpecialPopularpages.php',
 		'PreferencesForm' => 'includes/SpecialPreferences.php',
 		'SpecialPrefixindex' => 'includes/SpecialPrefixindex.php',
+		'PasswordResetForm' => 'includes/SpecialResetpass.php',
 		'RevisionDeleteForm' => 'includes/SpecialRevisiondelete.php',
 		'RevisionDeleter' => 'includes/SpecialRevisiondelete.php',
 		'SpecialSearch' => 'includes/SpecialSearch.php',
@@ -215,6 +224,7 @@ function __autoload($className) {
 		'WantedCategoriesPage' => 'includes/SpecialWantedcategories.php',
 		'WantedPagesPage' => 'includes/SpecialWantedpages.php',
 		'WhatLinksHerePage' => 'includes/SpecialWhatlinkshere.php',
+		'WithoutInterwikiPage' => 'includes/SpecialWithoutinterwiki.php',
 		'SquidUpdate' => 'includes/SquidUpdate.php',
 		'ReplacementArray' => 'includes/StringUtils.php',
 		'Replacer' => 'includes/StringUtils.php',
@@ -237,14 +247,27 @@ function __autoload($className) {
 		'Xml' => 'includes/Xml.php',
 		'ZhClient' => 'includes/ZhClient.php',
 		'memcached' => 'includes/memcached-client.php',
+
+		# Media
+		'BitmapHandler' => 'includes/media/Bitmap.php',
+		'BmpHandler' => 'includes/media/BMP.php',
+		'DjVuHandler' => 'includes/media/DjVu.php',
+		'MediaHandler' => 'includes/media/Generic.php',
+		'ImageHandler' => 'includes/media/Generic.php',
+		'SvgHandler' => 'includes/media/SVG.php',
+
+		# Normal
 		'UtfNormal' => 'includes/normal/UtfNormal.php',
+
+		# Templates
 		'UsercreateTemplate' => 'includes/templates/Userlogin.php',
 		'UserloginTemplate' => 'includes/templates/Userlogin.php',
-		'Language' => 'languages/Language.php',
-		'PasswordResetForm' => 'includes/SpecialResetpass.php',
-		'PatrolLog' => 'includes/PatrolLog.php',
 
-		// API classes
+		# Languages
+		'Language' => 'languages/Language.php',
+		'RandomPage' => 'includes/SpecialRandompage.php',
+
+		# API
 		'ApiBase' => 'includes/api/ApiBase.php',
 		'ApiFormatFeedWrapper' => 'includes/api/ApiFormatBase.php',
 		'ApiFeedWatchlist' => 'includes/api/ApiFeedWatchlist.php',

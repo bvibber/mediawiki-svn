@@ -33,11 +33,11 @@ function wfSpecialImport( $page = '' ) {
 	$namespace = $wgImportTargetNamespace;
 	$frompage = '';
 	$history = true;
-	
+
 	if( $wgRequest->wasPosted() && $wgRequest->getVal( 'action' ) == 'submit') {
 		$isUpload = false;
 		$namespace = $wgRequest->getIntOrNull( 'namespace' );
-		
+
 		switch( $wgRequest->getVal( "source" ) ) {
 		case "upload":
 			$isUpload = true;
@@ -64,17 +64,17 @@ function wfSpecialImport( $page = '' ) {
 			$wgOut->addWikiText( wfEscapeWikiText( $source->getMessage() ) );
 		} else {
 			$wgOut->addWikiText( wfMsg( "importstart" ) );
-			
+
 			$importer = new WikiImporter( $source );
 			if( !is_null( $namespace ) ) {
 				$importer->setTargetNamespace( $namespace );
 			}
 			$reporter = new ImportReporter( $importer, $isUpload, $interwiki );
-			
+
 			$reporter->open();
 			$result = $importer->doImport();
 			$reporter->close();
-			
+
 			if( WikiError::isError( $result ) ) {
 				$wgOut->addWikiText( wfMsg( "importfailed",
 					wfEscapeWikiText( $result->getMessage() ) ) );
@@ -160,6 +160,7 @@ function wfSpecialImport( $page = '' ) {
 
 /**
  * Reporting callback
+ * @addtogroup SpecialPage
  */
 class ImportReporter {
 	function __construct( $importer, $upload, $interwiki ) {
@@ -168,27 +169,27 @@ class ImportReporter {
 		$this->mIsUpload = $upload;
 		$this->mInterwiki = $interwiki;
 	}
-	
+
 	function open() {
 		global $wgOut;
 		$wgOut->addHtml( "<ul>\n" );
 	}
-	
+
 	function reportPage( $title, $origTitle, $revisionCount, $successCount ) {
 		global $wgOut, $wgUser, $wgLang, $wgContLang;
-		
+
 		$skin = $wgUser->getSkin();
-		
+
 		$this->mPageCount++;
-		
+
 		$localCount = $wgLang->formatNum( $successCount );
 		$contentCount = $wgContLang->formatNum( $successCount );
-		
+
 		$wgOut->addHtml( "<li>" . $skin->makeKnownLinkObj( $title ) .
 			" " .
 			wfMsgExt( 'import-revision-count', array( 'parsemag', 'escape' ), $localCount ) .
 			"</li>\n" );
-		
+
 		if( $successCount > 0 ) {
 			$log = new LogPage( 'import' );
 			if( $this->mIsUpload ) {
@@ -202,7 +203,7 @@ class ImportReporter {
 					$contentCount, $interwiki );
 				$log->addEntry( 'interwiki', $title, $detail );
 			}
-			
+
 			$comment = $detail; // quick
 			$dbw = wfGetDB( DB_MASTER );
 			$nullRevision = Revision::newNullRevision(
@@ -210,7 +211,7 @@ class ImportReporter {
 			$nullRevision->insertOn( $dbw );
 		}
 	}
-	
+
 	function close() {
 		global $wgOut;
 		if( $this->mPageCount == 0 ) {
@@ -277,7 +278,7 @@ class WikiRevision {
 		return $this->title;
 	}
 
-	function getID() { 
+	function getID() {
 		return $this->id;
 	}
 
@@ -336,7 +337,7 @@ class WikiRevision {
 				return false;
 			}
 		}
-		
+
 		# FIXME: Use original rev_id optionally
 		# FIXME: blah blah blah
 
@@ -360,14 +361,14 @@ class WikiRevision {
 		if( $created ) {
 			wfDebug( __METHOD__ . ": running onArticleCreate\n" );
 			Article::onArticleCreate( $this->title );
-			
+
 			wfDebug( __METHOD__ . ": running create updates\n" );
 			$article->createUpdates( $revision );
-			
+
 		} elseif( $changed ) {
 			wfDebug( __METHOD__ . ": running onArticleEdit\n" );
 			Article::onArticleEdit( $this->title );
-			
+
 			wfDebug( __METHOD__ . ": running edit updates\n" );
 			$article->editUpdates(
 				$this->getText(),
@@ -376,14 +377,14 @@ class WikiRevision {
 				$this->timestamp,
 				$revId );
 		}
-		
+
 		return true;
 	}
 
 }
 
 /**
- *
+ * implements Special:Import
  * @addtogroup SpecialPage
  */
 class WikiImporter {
@@ -443,7 +444,7 @@ class WikiImporter {
 			print "$data\n";
 		} else {
 			global $wgOut;
-			$wgOut->addHTML( "<li>$data</li>\n" );
+			$wgOut->addHTML( "<li>" . htmlspecialchars( $data ) . "</li>\n" );
 		}
 	}
 
@@ -483,7 +484,7 @@ class WikiImporter {
 		$this->mRevisionCallback = $callback;
 		return $previous;
 	}
-	
+
 	/**
 	 * Set a target namespace to override the defaults
 	 */
@@ -624,9 +625,14 @@ class WikiImporter {
 			xml_set_character_data_handler( $parser, "char_append" );
 			break;
 		case "revision":
-			$this->workRevision = new WikiRevision;
-			$this->workRevision->setTitle( $this->pageTitle );
-			$this->workRevisionCount++;
+			if( is_object( $this->pageTitle ) ) {
+				$this->workRevision = new WikiRevision;
+				$this->workRevision->setTitle( $this->pageTitle );
+				$this->workRevisionCount++;
+			} else {
+				// Skipping items due to invalid page title
+				$this->workRevision = null;
+			}
 			xml_set_element_handler( $parser, "in_revision", "out_revision" );
 			break;
 		default:
@@ -643,7 +649,7 @@ class WikiImporter {
 
 		$this->pageOutCallback( $this->pageTitle, $this->origTitle,
 			$this->workRevisionCount, $this->workSuccessCount );
-		
+
 		$this->workTitle = null;
 		$this->workRevision = null;
 		$this->workRevisionCount = 0;
@@ -678,30 +684,42 @@ class WikiImporter {
 			} else {
 				$this->pageTitle = Title::newFromText( $this->workTitle );
 			}
-			$this->pageCallback( $this->workTitle );
+			if( is_null( $this->pageTitle ) ) {
+				// Invalid page title? Ignore the page
+				$this->notice( "Skipping invalid page title '$this->workTitle'" );
+			} else {
+				$this->pageCallback( $this->workTitle );
+			}
 			break;
 		case "id":
 			if ( $this->parenttag == 'revision' ) {
-				$this->workRevision->setID( $this->appenddata );
+				if( $this->workRevision )
+					$this->workRevision->setID( $this->appenddata );
 			}
 			break;
 		case "text":
-			$this->workRevision->setText( $this->appenddata );
+			if( $this->workRevision )
+				$this->workRevision->setText( $this->appenddata );
 			break;
 		case "username":
-			$this->workRevision->setUsername( $this->appenddata );
+			if( $this->workRevision )
+				$this->workRevision->setUsername( $this->appenddata );
 			break;
 		case "ip":
-			$this->workRevision->setUserIP( $this->appenddata );
+			if( $this->workRevision )
+				$this->workRevision->setUserIP( $this->appenddata );
 			break;
 		case "timestamp":
-			$this->workRevision->setTimestamp( $this->appenddata );
+			if( $this->workRevision )
+				$this->workRevision->setTimestamp( $this->appenddata );
 			break;
 		case "comment":
-			$this->workRevision->setComment( $this->appenddata );
+			if( $this->workRevision )
+				$this->workRevision->setComment( $this->appenddata );
 			break;
 		case "minor":
-			$this->workRevision->setMinor( true );
+			if( $this->workRevision )
+				$this->workRevision->setMinor( true );
 			break;
 		default:
 			$this->debug( "Bad append: {$this->appendfield}" );
@@ -738,10 +756,12 @@ class WikiImporter {
 		}
 		xml_set_element_handler( $parser, "in_page", "out_page" );
 
-		$ok = call_user_func_array( $this->mRevisionCallback,
-			array( &$this->workRevision, &$this ) );
-		if( $ok ) {
-			$this->workSuccessCount++;
+		if( $this->workRevision ) {
+			$ok = call_user_func_array( $this->mRevisionCallback,
+				array( &$this->workRevision, &$this ) );
+			if( $ok ) {
+				$this->workSuccessCount++;
+			}
 		}
 	}
 
@@ -771,6 +791,10 @@ class WikiImporter {
 
 }
 
+/**
+ * @todo document (e.g. one-sentence class description).
+ * @addtogroup SpecialPage
+ */
 class ImportStringSource {
 	function ImportStringSource( $string ) {
 		$this->mString = $string;
@@ -791,6 +815,10 @@ class ImportStringSource {
 	}
 }
 
+/**
+ * @todo document (e.g. one-sentence class description).
+ * @addtogroup SpecialPage
+ */
 class ImportStreamSource {
 	function ImportStreamSource( $handle ) {
 		$this->mHandle = $handle;

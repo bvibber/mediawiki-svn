@@ -5,7 +5,7 @@
  */
 
 /**
- *
+ * implements Special:Newpages
  * @addtogroup SpecialPage
  */
 class NewPagesPage extends QueryPage {
@@ -50,9 +50,9 @@ class NewPagesPage extends QueryPage {
 				rc_namespace AS namespace,
 				rc_title AS title,
 				rc_cur_id AS cur_id,
-				rc_user AS user,
+				rc_user AS \"user\",
 				rc_user_text AS user_text,
-				rc_comment as comment,
+				rc_comment as \"comment\",
 				rc_timestamp AS timestamp,
 				rc_timestamp AS value,
 				'{$usepatrol}' as usepatrol,
@@ -132,10 +132,13 @@ class NewPagesPage extends QueryPage {
 	function getPageHeader() {
 		$self = SpecialPage::getTitleFor( $this->getName() );
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		# Namespace selector
 		$form .= '<table><tr><td align="right">' . Xml::label( wfMsg( 'namespace' ), 'namespace' ) . '</td>';
-		$form .= '<td>' . Xml::namespaceSelector( $this->namespace ) . '</td><tr>';
+		$form .= '<td>' . Xml::namespaceSelector( $this->namespace ) . '</td></tr>';
+		# Username filter
 		$form .= '<tr><td align="right">' . Xml::label( wfMsg( 'newpages-username' ), 'mw-np-username' ) . '</td>';
 		$form .= '<td>' . Xml::input( 'username', 30, $this->username, array( 'id' => 'mw-np-username' ) ) . '</td></tr>';
+		
 		$form .= '<tr><td></td><td>' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . '</td></tr></table>';
 		$form .= Xml::hidden( 'offset', $this->offset ) . Xml::hidden( 'limit', $this->limit ) . '</form>';
 		return $form;

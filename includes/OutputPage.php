@@ -47,6 +47,7 @@ class OutputPage {
 		$this->mParserOptions = null;
 		$this->mSquidMaxage = 0;
 		$this->mScripts = '';
+		$this->mHeadItems = array();
 		$this->mETag = false;
 		$this->mRevisionId = null;
 		$this->mNewSectionLink = false;
@@ -77,10 +78,21 @@ class OutputPage {
 	 */
 	function addInlineScript( $script ) {
 		global $wgJsMimeType;
-		$this->mScripts .= "<script type=\"$wgJsMimeType\"><!--\n$script\n--></script>";
+		$this->mScripts .= "<script type=\"$wgJsMimeType\">/*<![CDATA[*/\n$script\n/*]]>*/</script>";
 	}
 
-	function getScript() { return $this->mScripts; }
+	function getScript() { 
+		return $this->mScripts . $this->getHeadItems(); 
+	}
+
+	function getHeadItems() {
+		$s = '';
+		foreach ( $this->mHeadItems as $item ) {
+			$s .= $item;
+		}
+		return $s;
+	}
+
 
 	function setETag($tag) { $this->mETag = $tag; }
 	function setArticleBodyOnly($only) { $this->mArticleBodyOnly = $only; }
@@ -355,6 +367,7 @@ class OutputPage {
 			$this->mSubtitle .= $parserOutput->mSubtitle ;
 		}
 		$this->mNoGallery = $parserOutput->getNoGallery();
+		$this->mHeadItems = array_merge( $this->mHeadItems, (array)$parserOutput->mHeadItems );
 		wfRunHooks( 'OutputPageParserOutput', array( &$this, $parserOutput ) );
 	}
 
@@ -766,7 +779,7 @@ class OutputPage {
 		$this->returnToMain( false );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function errorpage( $title, $msg ) {
 		throw new ErrorPageError( $title, $msg );
 	}
@@ -876,7 +889,7 @@ class OutputPage {
 			$this->returnToMain( true, $mainPage );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function databaseError( $fname, $sql, $error, $errno ) {
 		throw new MWException( "OutputPage::databaseError is obsolete\n" );
 	}
@@ -910,7 +923,7 @@ class OutputPage {
 					$titles .= '* [[:' . $title->getPrefixedText() . "]]\n";
 				}
 
-				$notice = wfMsg( 'cascadeprotected' ) . "\n$titles";
+				$notice = wfMsgExt( 'cascadeprotected', array('parsemag'), count($cascadeSources) ) . "\n$titles";
 
 				$this->addWikiText( $notice );
 			} else {
@@ -940,32 +953,32 @@ class OutputPage {
 		$this->returnToMain( false );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fatalError( $message ) {
 		throw new FatalError( $message ); 
 	}
 	
-	/** @obsolete */
+	/** @deprecated */
 	public function unexpectedValueError( $name, $val ) {
 		throw new FatalError( wfMsg( 'unexpected', $name, $val ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileCopyError( $old, $new ) {
 		throw new FatalError( wfMsg( 'filecopyerror', $old, $new ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileRenameError( $old, $new ) {
 		throw new FatalError( wfMsg( 'filerenameerror', $old, $new ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileDeleteError( $name ) {
 		throw new FatalError( wfMsg( 'filedeleteerror', $name ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileNotFoundError( $name ) {
 		throw new FatalError( wfMsg( 'filenotfound', $name ) );
 	}
@@ -1101,6 +1114,7 @@ class OutputPage {
 		$ret .= $sk->getHeadScripts();
 		$ret .= $this->mScripts;
 		$ret .= $sk->getUserStyles();
+		$ret .= $this->getHeadItems();
 
 		if ($wgUseTrackbacks && $this->isArticleRelated())
 			$ret .= $wgTitle->trackbackRDF();

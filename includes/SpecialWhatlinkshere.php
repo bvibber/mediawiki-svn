@@ -14,10 +14,16 @@ function wfSpecialWhatlinkshere($par = NULL) {
 	$page->execute();
 }
 
+/**
+ * implements Special:Whatlinkshere
+ * @addtogroup SpecialPage
+ */
 class WhatLinksHerePage {
 	var $request, $par;
-	var $limit, $from, $back, $target, $namespace;
+	var $limit, $from, $back, $target;
 	var $selfTitle, $skin;
+
+	private $namespace;
 
 	function WhatLinksHerePage( &$request, $par = null ) {
 		global $wgUser;
@@ -70,6 +76,7 @@ class WhatLinksHerePage {
 		global $wgOut;
 		$fname = 'WhatLinksHerePage::showIndirectLinks';
 		$dbr = wfGetDB( DB_READ );
+		$options = array();
 
 		$ns = $this->request->getIntOrNull( 'namespace' );
 		if ( isset( $ns ) ) {
@@ -99,11 +106,11 @@ class WhatLinksHerePage {
 
 		if ( $from ) {
 			$offsetCond = "page_id >= $from";
-			$options = array( 'ORDER BY page_id' );
 		} else {
 			$offsetCond = false;
-			$options = array( 'ORDER BY page_id,is_template DESC' );
 		}
+		$options['ORDER BY'] = 'page_id';
+
 		// Read an extra row as an at-end check
 		$queryLimit = $limit + 1;
 		$options['LIMIT'] = $queryLimit;
@@ -237,19 +244,24 @@ class WhatLinksHerePage {
 		return $this->skin->makeKnownLinkObj( $this->selfTitle, $text, $query );
 	}
 
-	function getPrevNext( $limit, $prevId, $nextId, $namespace ) {
+	function getPrevNext( $limit, $prevId, $nextId ) {
 		global $wgLang;
 		$fmtLimit = $wgLang->formatNum( $limit );
-		$prev = wfMsg( 'whatlinkshere-prev', $fmtLimit );
-		$next = wfMsg( 'whatlinkshere-next', $fmtLimit );
+		$prev = wfMsgExt( 'whatlinkshere-prev', array( 'parsemag', 'escape' ), $fmtLimit );
+		$next = wfMsgExt( 'whatlinkshere-next', array( 'parsemag', 'escape' ), $fmtLimit );
+
+		$nsText = '';
+		if( is_int($this->namespace) ) {
+			$nsText = "&namespace={$this->namespace}";
+		}
 
 		if ( 0 != $prevId ) {
-			$prevLink = $this->makeSelfLink( $prev, "limit={$limit}&from={$this->back}&namespace={$namespace}" );
+			$prevLink = $this->makeSelfLink( $prev, "limit={$limit}&from={$this->back}{$nsText}" );
 		} else {
 			$prevLink = $prev;
 		}
 		if ( 0 != $nextId ) {
-			$nextLink = $this->makeSelfLink( $next, "limit={$limit}&from={$nextId}&back={$prevId}&namespace={$namespace}" );
+			$nextLink = $this->makeSelfLink( $next, "limit={$limit}&from={$nextId}&back={$prevId}{$nsText}" );
 		} else {
 			$nextLink = $next;
 		}
@@ -262,9 +274,10 @@ class WhatLinksHerePage {
 		return wfMsg( 'viewprevnext', $prevLink, $nextLink, $nums );
 	}
 
-	function numLink( $limit, $from ) {
+	function numLink( $limit, $from, $ns = null ) {
 		global $wgLang;
 		$query = "limit={$limit}&from={$from}";
+		if( is_int($this->namespace) ) { $query .= "&namespace={$this->namespace}";}
 		$fmtLimit = $wgLang->formatNum( $limit );
 		return $this->makeSelfLink( $fmtLimit, $query );
 	}
@@ -292,7 +305,8 @@ class WhatLinksHerePage {
 		return $f;
 	}
 
-	function setNamespace( $ns ) {
+	/** Set the namespace we are filtering on */
+	private function setNamespace( $ns ) {
 		$this->namespace = $ns;
 	}
 

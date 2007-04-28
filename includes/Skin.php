@@ -2,16 +2,15 @@
 if ( ! defined( 'MEDIAWIKI' ) )
 	die( 1 );
 
-/**
- *
- * @addtogroup Skins
- */
-
 # See skin.txt
 
 /**
  * The main skin class that provide methods and properties for all other skins.
  * This base class is also the "Standard" skin.
+ *
+ * See docs/skin.txt for more information.
+ *
+ * @addtogroup Skins
  */
 class Skin extends Linker {
 	/**#@+
@@ -23,6 +22,7 @@ class Skin extends Linker {
 	var $rcMoveIndex;
 	var $mWatchLinkNum = 0; // Appended to end of watch link id's
 	/**#@-*/
+	protected $skinname = 'standard' ;
 
 	/** Constructor, call parent constructor */
 	function Skin() { parent::__construct(); }
@@ -142,8 +142,8 @@ class Skin extends Linker {
 	}
 
 	/** @return string skin name */
-	function getSkinName() {
-		return 'standard';
+	public function getSkinName() {
+		return $this->skinname;
 	}
 
 	function qbSetting() {
@@ -295,7 +295,7 @@ class Skin extends Linker {
 		global $wgStylePath, $wgUser;
 		global $wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgLang;
 		global $wgTitle, $wgCanonicalNamespaceNames, $wgOut, $wgArticle;
-		global $wgBreakFrames;
+		global $wgBreakFrames, $wgRequest;
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
@@ -311,6 +311,7 @@ class Skin extends Linker {
 			'wgNamespaceNumber' => $wgTitle->getNamespace(),
 			'wgPageName' => $wgTitle->getPrefixedDBKey(),
 			'wgTitle' => $wgTitle->getText(),
+			'wgAction' => $wgRequest->getText( 'action', 'view' ),
 			'wgArticleId' => $wgTitle->getArticleId(),
 			'wgIsArticle' => $wgOut->isArticle(),
 			'wgUserName' => $wgUser->isAnon() ? NULL : $wgUser->getName(),
@@ -429,7 +430,7 @@ var wgAjaxWatch = {
 
 		wfProfileOut( __METHOD__ );
 		return $s;
-    }
+	}
 
 	/**
 	 * Return html code that include User stylesheets

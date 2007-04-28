@@ -14,7 +14,6 @@
  * history.
  *
  */
-
 class PageHistory {
 	const DIR_PREV = 0;
 	const DIR_NEXT = 1;
@@ -226,7 +225,7 @@ class PageHistory {
 		}
 		
 		$s .= " $link";
-		$s .= $this->mSkin->revUserTools( $rev, true);
+		$s .= ' '.$this->mSkin->revUserTools( $rev, true);
 		
 		if( $row->rev_minor_edit ) {
 			$s .= ' ' . wfElement( 'span', array( 'class' => 'minor' ), wfMsg( 'minoreditletter') );
@@ -533,6 +532,9 @@ class PageHistory {
 }
 
 
+/**
+ * @addtogroup Pager
+ */
 class PageHistoryPager extends ReverseChronologicalPager {
 	public $mLastRow = false, $mPageHistory;
 	

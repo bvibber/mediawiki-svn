@@ -71,40 +71,10 @@ class LogReader {
 		$this->limitTime( $request->getVal( 'until' ), '<=' );
 
 		list( $this->limit, $this->offset ) = $request->getLimitOffset();
-	}
-	
-	function newFromTitle( $title, $logid=0 ) {
-		$fname = 'LogReader::newFromTitle';
-
-		$matchId = intval( $logid );
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'logging', array('*'),
-		array('log_id' => $matchId, 'log_namespace' => $title->getNamespace(), 'log_title' => $title->getDBkey() ), 
-		$fname );
-
-		if ( $res ) {
-		   $ret = $dbr->fetchObject( $res );
-		   if ( $ret ) {
-		   	  return $ret;
-			}
-		} 
-		return null;
-	}
-	
-	function newFromId( $logid ) {
-		$fname = 'LogReader::newFromId';
-
-		$matchId = intval( $logid );
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'logging', array('*'), array('log_id' => $matchId ), $fname );
-
-		if ( $res ) {
-		   $ret = $dbr->fetchObject( $res );
-		   if ( $ret ) {
-		   	  return $ret;
-			}
-		} 
-		return null;
+		
+		// XXX This all needs to use Pager, ugly hack for now.
+		global $wgMiserMode;
+		if ($wgMiserMode && ($this->offset >10000)) $this->offset=10000;
 	}
 
 	/**
@@ -116,7 +86,12 @@ class LogReader {
 	function limitType( $type ) {
 		global $wgLogRestrictions, $wgUser;
 		
-		// Restriction system
+		// Can user see this log?
+		if ( isset($wgLogRestrictions[$type]) ) {
+			if ( !$wgUser->isAllowed( $wgLogRestrictions[$type] ) ) {
+			return false;
+			}
+		}
 		if ( isset($wgLogRestrictions) ) {
 			foreach ( $wgLogRestrictions as $logtype => $right ) {
 				if ( !$wgUser->isAllowed( $right ) ) {
@@ -128,12 +103,6 @@ class LogReader {
 		
 		if( empty( $type ) ) {
 			return false;
-		}
-		// Can user see this log?
-		if ( isset($wgLogRestrictions[$type]) ) {
-			if ( !$wgUser->isAllowed( $wgLogRestrictions[$type] ) ) {
-			return false;
-			}
 		}
 		
 		$this->type = $type;
@@ -171,14 +140,15 @@ class LogReader {
 	 * @private
 	 */
 	function limitTitle( $page , $pattern ) {
-		$title = Title::newFromURL( $page, false );
+		global $wgMiserMode;
+		$title = Title::newFromText( $page );
 		if( empty( $page ) || is_null( $title )  ) {
 			return false;
 		}
 		$this->title =& $title;
 		$this->pattern = $pattern;
 		$ns = $title->getNamespace();
-		if ( $pattern ) {
+		if ( $pattern && !$wgMiserMode ) {
 			$safetitle = $this->db->escapeLike( $title->getDBkey() ); // use escapeLike to avoid expensive search patterns like 't%st%'
 			$this->whereClauses[] = "log_namespace=$ns AND log_title LIKE '$safetitle%'";
 		} else {
@@ -264,6 +234,30 @@ class LogReader {
 		} else {
 			return $this->title->getPrefixedText();
 		}
+	}
+	
+	/**
+	 * Returns a row of log data
+	 * @param Title $title
+	 * @param integer $logid, optional
+	 * @private
+	 */	
+	function newFromTitle( $title, $logid=0 ) {
+		$fname = 'LogReader::newFromTitle';
+
+		$matchId = intval( $logid );
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( 'logging', array('*'),
+		array('log_id' => $matchId, 'log_namespace' => $title->getNamespace(), 'log_title' => $title->getDBkey() ), 
+		$fname );
+
+		if ( $res ) {
+		   $ret = $dbr->fetchObject( $res );
+		   if ( $ret ) {
+		   	  return $ret;
+			}
+		} 
+		return null;
 	}
 }
 
@@ -511,7 +505,7 @@ class LogViewer {
 	 * @private
 	 */
 	function logLine( $s ) {
-		global $wgLang, $wgUser;
+		global $wgLang, $wgUser;;
 		
 		$skin = $wgUser->getSkin();
 		$title = Title::makeTitle( $s->log_namespace, $s->log_title );
@@ -588,12 +582,12 @@ class LogViewer {
 		if ( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
 			$destTitle = Title::newFromText( $paramArray[0] );
 			if ( $destTitle ) {
-				$reviewlink = $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
+				$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
 					wfMsg( 'revertmove' ),
 					'wpOldTitle=' . urlencode( $destTitle->getPrefixedDBkey() ) .
 					'&wpNewTitle=' . urlencode( $title->getPrefixedDBkey() ) .
 					'&wpReason=' . urlencode( wfMsgForContent( 'revertmove' ) ) .
-					'&wpMovetalk=0' );
+					'&wpMovetalk=0' ) . ')';
 			}
 		// show undelete link
 		} else if ( $s->log_action == 'delete' && $wgUser->isAllowed( 'delete' ) ) {
@@ -664,7 +658,7 @@ class LogViewer {
 	 * @private
 	 */
 	function showOptions( &$out ) {
-		global $wgScript;
+		global $wgScript, $wgMiserMode;
 		$action = htmlspecialchars( $wgScript );
 		$title = SpecialPage::getTitleFor( 'Log' );
 		$special = htmlspecialchars( $title->getPrefixedDBkey() );
@@ -675,7 +669,7 @@ class LogViewer {
 			$this->getTypeMenu() . "\n" .
 			$this->getUserInput() . "\n" .
 			$this->getTitleInput() . "\n" .
-			$this->getTitlePattern() . "\n" .
+			(!$wgMiserMode?($this->getTitlePattern()."\n"):"") .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			"</fieldset></form>" );
 	}
@@ -742,7 +736,7 @@ class LogViewer {
 	 */
 	function getTitlePattern() {
 		$pattern = $this->reader->queryPattern();
-		return Xml::checkLabel( wfMsg( 'title-pattern' ), 'pattern', 'pattern', $pattern );
+		return Xml::checkLabel( wfMsg( 'log-title-wildcard' ), 'pattern', 'pattern', $pattern );
 	}
 
 	/**

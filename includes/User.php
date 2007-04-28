@@ -17,13 +17,21 @@ define( 'EDIT_TOKEN_SUFFIX', '\\' );
 
 /**
  * Thrown by User::setPassword() on error
+ * @addtogroup Exception
  */
 class PasswordError extends MWException {
 	// NOP
 }
 
 /**
- *
+ * The User object encapsulates all of the user-specific settings (user_id,
+ * name, rights, password, email address, options, last login time). Client
+ * classes use the getXXX() functions to access these fields. These functions
+ * do all the work of determining whether the user is logged in,
+ * whether the requested option can be satisfied from cookies or
+ * whether a database query is needed. Most of the settings needed
+ * for rendering normal pages are set in the cookie to minimize use
+ * of the database.
  */
 class User {
 
@@ -350,8 +358,6 @@ class User {
 	 * addresses like this, if we allowed accounts like this to be created
 	 * new users could get the old edits of these anonymous users.
 	 *
-	 * @bug 3631
-	 *
 	 * @static
 	 * @param string $name Nickname of a user
 	 * @return bool
@@ -481,15 +487,15 @@ class User {
 	 *
 	 * @param string $password
 	 * @return bool
-	 * @static
 	 */
-	static function isValidPassword( $password ) {
-		global $wgMinimalPasswordLength;
+	function isValidPassword( $password ) {
+		global $wgMinimalPasswordLength, $wgContLang;
 
 		$result = null;
 		if( !wfRunHooks( 'isValidPassword', array( $password, &$result ) ) ) return $result;
-		if ($result === false) return false; 
-		return (strlen( $password ) >= $wgMinimalPasswordLength);
+		if ($result === false) return false;
+		return (strlen( $password ) >= $wgMinimalPasswordLength) &&
+			($wgContLang->lc( $password ) !== $wgContLang->lc( $this->mName ));
 	}
 
 	/**
@@ -499,8 +505,7 @@ class User {
 	 * rejected valid addresses. Actually just check if there is '@' somewhere
 	 * in the given address.
 	 *
-	 * @todo Check for RFC 2822 compilance
-	 * @bug 959
+	 * @todo Check for RFC 2822 compilance (bug 959)
 	 *
 	 * @param string $addr email address
 	 * @static
@@ -602,7 +607,7 @@ class User {
 
 	/**
 	 * Return a random password. Sourced from mt_rand, so it's not particularly secure.
-	 * @todo: hash random numbers to improve security, like generateToken()
+	 * @todo hash random numbers to improve security, like generateToken()
 	 *
 	 * @return string
 	 * @static
@@ -668,10 +673,8 @@ class User {
 	 * Load user data from the session or login cookie. If there are no valid
 	 * credentials, initialises the user as an anon.
 	 * @return true if the user is logged in, false otherwise
-	 * 
-	 * @private
 	 */
-	function loadFromSession() {
+	private function loadFromSession() {
 		global $wgMemc, $wgCookiePrefix;
 
 		if ( isset( $_SESSION['wsUserID'] ) ) {
@@ -973,7 +976,7 @@ class User {
 	 */
 	public function isPingLimitable() {
 		global $wgRateLimitsExcludedGroups;
-		return array_intersect($this->getEffectiveGroups(), $wgRateLimitsExcludedGroups) != array();
+		return array_intersect($this->getEffectiveGroups(), $wgRateLimitsExcludedGroups) == array();
 	}
 
 	/**
@@ -1133,10 +1136,10 @@ class User {
 		} else {
 			$this->load();
 			if ( $this->mName === false ) {
-				$this->mName = wfGetIP();
+				# Clean up IPs
+				$this->mName = IP::sanitizeIP( wfGetIP() );
 			}
-			# Clean up IPs
-			return IP::sanitizeIP($this->mName);
+			return $this->mName;
 		}
 	}
 
@@ -1651,7 +1654,7 @@ class User {
 	/**
 	 * Add the user to the given group.
 	 * This takes immediate effect.
-	 * @string $group
+	 * @param string $group
 	 */
 	function addGroup( $group ) {
 		$this->load();
@@ -1675,7 +1678,7 @@ class User {
 	/**
 	 * Remove the user from the given group.
 	 * This takes immediate effect.
-	 * @string $group
+	 * @param string $group
 	 */
 	function removeGroup( $group ) {
 		$this->load();
@@ -1946,7 +1949,7 @@ class User {
 
 	/**
 	 * Save object settings into database
-	 * @fixme Only rarely do all these fields need to be set!
+	 * @todo Only rarely do all these fields need to be set!
 	 */
 	function saveSettings() {
 		$this->load();
@@ -2466,13 +2469,12 @@ class User {
 	 * @static
 	 */
 	static function getGroupName( $group ) {
+		MessageCache::loadAllMessages();
 		$key = "group-$group";
 		$name = wfMsg( $key );
-		if( $name == '' || wfEmptyMsg( $key, $name ) ) {
-			return $group;
-		} else {
-			return $name;
-		}
+		return $name == '' || wfEmptyMsg( $key, $name )
+			? $group
+			: $name;
 	}
 
 	/**
@@ -2481,13 +2483,12 @@ class User {
 	 * @static
 	 */
 	static function getGroupMember( $group ) {
+		MessageCache::loadAllMessages();
 		$key = "group-$group-member";
 		$name = wfMsg( $key );
-		if( $name == '' || wfEmptyMsg( $key, $name ) ) {
-			return $group;
-		} else {
-			return $name;
-		}
+		return $name == '' || wfEmptyMsg( $key, $name )
+			? $group
+			: $name;
 	}
 
 	/**
@@ -2512,6 +2513,7 @@ class User {
 	 * @return mixed
 	 */
 	static function getGroupPage( $group ) {
+		MessageCache::loadAllMessages();
 		$page = wfMsgForContent( 'grouppage-' . $group );
 		if( !wfEmptyMsg( 'grouppage-' . $group, $page ) ) {
 			$title = Title::newFromText( $page );

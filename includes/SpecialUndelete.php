@@ -4,21 +4,21 @@
  * Special page allowing users with the appropriate permissions to view
  * and restore deleted content
  *
- * @addtogroup Special pages
+ * @addtogroup SpecialPage
  */
 
 /**
- *
+ * Constructor
  */
 function wfSpecialUndelete( $par ) {
-    global $wgRequest;
+	global $wgRequest;
 
 	$form = new UndeleteForm( $wgRequest, $par );
 	$form->execute();
 }
 
 /**
- *
+ * Used to show archived pages and eventually restore them.
  * @addtogroup SpecialPage
  */
 class PageArchive {
@@ -78,12 +78,16 @@ class PageArchive {
 					'ar_namespace',
 					'ar_title',
 					'COUNT(*) AS count',
+					'AVG(ar_deleted)'
 				),
 				$condition,
 				__METHOD__,
 				array(
 					'GROUP BY' => 'ar_namespace,ar_title',
 					'ORDER BY' => 'ar_namespace,ar_title',
+					// "oversight" deletion involves hiding all
+					// possible values, a bitfield of 15
+					'HAVING' => 'AVG(ar_deleted) != 15',
 					'LIMIT' => 100,
 				)
 			)
@@ -114,7 +118,7 @@ class PageArchive {
 	 * if not a file page.
 	 *
 	 * @return ResultWrapper
-	 * @fixme Does this belong in Image for fuller encapsulation?
+	 * @todo Does this belong in Image for fuller encapsulation?
 	 */
 	function listFiles() {		
 		if( $this->title->getNamespace() == NS_IMAGE ) {
@@ -492,7 +496,8 @@ class PageArchive {
 }
 
 /**
- *
+ * The HTML form for Special:Undelete, which allows users with the appropriate
+ * permissions to view and restore deleted content.
  * @addtogroup SpecialPage
  */
 class UndeleteForm {
@@ -532,7 +537,7 @@ class UndeleteForm {
 		}
 		if( $this->mRestore ) {
 			$timestamps = array();
-			$this->mFileVersions = array();
+			/*$this->mFileVersions = array();
 			foreach( $_REQUEST as $key => $val ) {
 				$matches = array();
 				if( preg_match( '/^ts(\d{14})$/', $key, $matches ) ) {
@@ -544,6 +549,7 @@ class UndeleteForm {
 				}
 			}
 			rsort( $timestamps );
+			*/
 			$this->mTargetTimestamp = $timestamps;
 		}
 	}
@@ -676,7 +682,7 @@ class UndeleteForm {
 		
 		if( $this->mPreview ) {
 			$wgOut->addHtml( "<hr />\n" );
-			$wgOut->addWikiTextTitle( $rev->revText(), $this->mTargetObj, false );
+			$wgOut->addWikiTextTitleTidy( $rev->getText(), $this->mTargetObj, false );
 		}
 
 		$wgOut->addHtml(
@@ -875,8 +881,8 @@ class UndeleteForm {
 				if( $this->isDeleted( $row, Revision::DELETED_TEXT ) )
 					$dflag = ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
 				
-				// Do we still need checkboxes?
-				$wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $stxt $comment$dflag</li>\n" );
+				// $wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $stxt $comment$dflag</li>\n" );
+				$wgOut->addHTML( "<li>$rd $pageLink . . $userLink $stxt $comment$dflag</li>\n" );
 			}
 			$revisions->free();
 			$wgOut->addHTML("</ul>");
@@ -893,8 +899,6 @@ class UndeleteForm {
 				if ( $this->mAllowed && $row->fa_storage_key ) {
 					if ( !$this->userCan( $row, Revision::DELETED_RESTRICTED ) )
 					// Grey out boxes to files restricted beyond this user.
-					// In the future, all image storage may use FileStore, allowing
-					// for such items to be restored and retain their fa_deleted status
 						$checkBox = wfCheck( "", false, array("disabled" => "disabled") );
 					else
 						$checkBox = wfCheck( "fileid" . $row->fa_id );

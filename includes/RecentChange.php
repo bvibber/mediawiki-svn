@@ -232,7 +232,8 @@ class RecentChange
 
 	# Makes an entry in the database corresponding to an edit
 	/*static*/ function notifyEdit( $timestamp, &$title, $minor, &$user, $comment,
-		$oldId, $lastTimestamp, $bot="default", $ip='', $oldSize=0, $newSize=0, $newId=0)
+		$oldId, $lastTimestamp, $bot = "default", $ip = '', $oldSize = 0, $newSize = 0,
+		$newId = 0)
 	{
 
 		if ( $bot === 'default' ) {
@@ -293,7 +294,7 @@ class RecentChange
 	 * @static
 	 */
 	public static function notifyNew( $timestamp, &$title, $minor, &$user, $comment, $bot = "default",
-	  $ip='', $size=0, $newId=0 )
+	  $ip='', $size = 0, $newId = 0 )
 	{
 		if ( !$ip ) {
 			$ip = wfGetIP();
@@ -301,7 +302,6 @@ class RecentChange
 				$ip = '';
 			}
 		}
-				
 		if ( $bot == 'default' ) {
 			$bot = $user->isAllowed( 'bot' );
 		}
@@ -354,7 +354,7 @@ class RecentChange
 				$ip = '';
 			}
 		}
-		
+
 		$rc = new RecentChange;
 		$rc->mAttribs = array(
 			'rc_timestamp'	=> $timestamp,
@@ -400,8 +400,9 @@ class RecentChange
 		RecentChange::notifyMove( $timestamp, $oldTitle, $newTitle, $user, $comment, $ip, true );
 	}
 
-	# A log entry is different to an edit in that previous revisions are not kept
-	/*static*/ function notifyLog( $timestamp, &$title, &$user, $actionText = null, $ip='',
+	# A log entry is different to an edit in that previous revisions are
+	# not kept
+	/*static*/ function notifyLog( $timestamp, &$title, &$user, $comment, $ip='',
 	   $type, $action, $target, $logComment, $params, $newId=0 )
 	{
 		if ( !$ip ) {
@@ -419,7 +420,7 @@ class RecentChange
 			'rc_cur_id'	=> $title->getArticleID(),
 			'rc_user'	=> $user->getID(),
 			'rc_user_text'	=> $user->getName(),
-			'rc_comment'	=> $logComment,
+			'rc_comment'	=> $logComment, //to become $logComment
 			'rc_this_oldid'	=> 0,
 			'rc_last_oldid'	=> 0,
 			'rc_bot'	=> $user->isAllowed( 'bot' ) ? 1 : 0,

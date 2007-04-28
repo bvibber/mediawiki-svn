@@ -1,10 +1,4 @@
 <?php
-/**
- * Contain class to show various lists of change:
- * - what's link here
- * - related changes
- * - recent changes
- */
 
 /**
  * @todo document
@@ -12,11 +6,10 @@
 class RCCacheEntry extends RecentChange
 {
 	var $secureName, $link;
-	var $curlinks, $difflink, $lastlink , $usertalklink , $versionlink ;
+	var $curlink , $difflink, $lastlink , $usertalklink , $versionlink ;
 	var $userlink, $timestamp, $watched;
 
-	function newFromParent( $rc )
-	{
+	function newFromParent( $rc ) {
 		$rc2 = new RCCacheEntry;
 		$rc2->mAttribs = $rc->mAttribs;
 		$rc2->mExtra = $rc->mExtra;
@@ -25,7 +18,10 @@ class RCCacheEntry extends RecentChange
 } ;
 
 /**
- * @package MediaWiki
+ * Class to show various lists of changes:
+ * - what links here
+ * - related changes
+ * - recent changes
  */
 class ChangesList {
 	# Called by history lists and recent changes
@@ -311,6 +307,10 @@ class OldChangesList extends ChangesList {
 		// Moved pages
 		if( $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
 			$this->insertMove( $s, $rc );
+		// Log entries
+		} elseif( $rc_log_type !='' ) {
+			$logtitle = Title::newFromText( "Log/$rc_log_type", NS_SPECIAL );
+			$this->insertLog( $s, $logtitle, $rc_log_type );
 		// Log entries (old format) or log targets, and special pages
 		} elseif( $rc_namespace == NS_SPECIAL ) {
 			list( $specialName, $specialSubpage ) = SpecialPage::resolveAliasWithSubpage( $rc_title );
@@ -320,11 +320,7 @@ class OldChangesList extends ChangesList {
 				wfDebug( "Unexpected special page in recentchanges\n" );
 			}
 		// Log entries
-		} elseif( $rc_log_type !='' ) {
-			$logtitle = Title::newFromText( "Log/$rc_log_type", NS_SPECIAL );
-			$this->insertLog( $s, $logtitle, $rc_log_type );
-		// All other stuff
-		}  else {
+		} else {
 			wfProfileIn($fname.'-page');
 
 			$this->insertDiffHist($s, $rc, $unpatrolled);

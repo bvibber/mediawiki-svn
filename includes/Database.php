@@ -15,6 +15,10 @@ define( 'DEADLOCK_DELAY_MAX', 1500000 );
  * Utility classes
  *****************************************************************************/
 
+/**
+ * Utility class.
+ * @addtogroup Database
+ */
 class DBObject {
 	public $mData;
 
@@ -31,6 +35,10 @@ class DBObject {
 	}
 };
 
+/**
+ * Utility class.
+ * @addtogroup Database
+ */
 class MySQLField {
 	private $name, $tablename, $default, $max_length, $nullable,
 		$is_pk, $is_unique, $is_key, $type;
@@ -86,6 +94,7 @@ class MySQLField {
 
 /**
  * Database error base class
+ * @addtogroup Database
  */
 class DBError extends MWException {
 	public $db;
@@ -101,6 +110,9 @@ class DBError extends MWException {
 	}
 }
 
+/**
+ * @addtogroup Database
+ */
 class DBConnectionError extends DBError {
 	public $error;
 	
@@ -218,6 +230,9 @@ border=\"0\" ALT=\"Google\"></A>
 	}
 }
 
+/**
+ * @addtogroup Database
+ */
 class DBQueryError extends DBError {
 	public $error, $errno, $sql, $fname;
 	
@@ -271,12 +286,16 @@ class DBQueryError extends DBError {
 	}
 }
 
+/**
+ * @addtogroup Database
+ */
 class DBUnexpectedError extends DBError {}
 
 /******************************************************************************/
 
 /**
  * Database abstraction object
+ * @addtogroup Database
  */
 class Database {
 
@@ -460,13 +479,11 @@ class Database {
 #------------------------------------------------------------------------------
 
 	/**@{{
+	 * Constructor.
 	 * @param string $server database server host
 	 * @param string $user database user name
 	 * @param string $password database user password
 	 * @param string $dbname database name
-	 */
-
-	/**
 	 * @param failFunction
 	 * @param $flags
 	 * @param $tablePrefix String: database table prefixes. By default use the prefix gave in LocalSettings.php
@@ -593,12 +610,19 @@ class Database {
 		}
 
 		if ( $success ) {
-			global $wgDBmysql5;
-			if( $wgDBmysql5 ) {
+			$version = $this->getServerVersion();
+			if ( version_compare( $version, '4.1' ) >= 0 ) {
 				// Tell the server we're communicating with it in UTF-8.
 				// This may engage various charset conversions.
-				$this->query( 'SET NAMES utf8' );
+				global $wgDBmysql5;
+				if( $wgDBmysql5 ) {
+					$this->query( 'SET NAMES utf8', __METHOD__ );
+				}
+				// Turn off strict mode
+				$this->query( "SET sql_mode = ''", __METHOD__ );
 			}
+
+			// Turn off strict mode if it is on
 		} else {
 			$this->reportConnectionError();
 		}
@@ -651,10 +675,15 @@ class Database {
 	}
 
 	/**
-	 * Usually aborts on failure
-	 * If errors are explicitly ignored, returns success
+	 * Usually aborts on failure.  If errors are explicitly ignored, returns success.
+	 *
+	 * @param  $sql        String: SQL query
+	 * @param  $fname      String: Name of the calling function, for profiling/SHOW PROCESSLIST comment (you can use __METHOD__ or add some extra info)
+	 * @param  $tempIgnore Bool:   Whether to avoid throwing an exception on errors... maybe best to catch the exception instead?
+	 * @return Result object to feed to fetchObject, fetchRow, ...; or false on failure if $tempIgnore set
+	 * @throws DBQueryError Thrown when the database returns an error of any kind
 	 */
-	function query( $sql, $fname = '', $tempIgnore = false ) {
+	public function query( $sql, $fname = '', $tempIgnore = false ) {
 		global $wgProfiling;
 
 		if ( $wgProfiling ) {
@@ -678,11 +707,21 @@ class Database {
 		$this->mLastQuery = $sql;
 
 		# Add a comment for easy SHOW PROCESSLIST interpretation
-		if ( $fname ) {
-			$commentedSql = preg_replace('/\s/', " /* $fname */ ", $sql, 1);
-		} else {
-			$commentedSql = $sql;
-		}
+		#if ( $fname ) {
+			global $wgUser;
+			if ( is_object( $wgUser ) ) {
+				$userName = $wgUser->getName();
+				if ( strlen( $userName ) > 15 ) {
+					$userName = substr( $userName, 0, 15 ) . '...';
+				}
+				$userName = str_replace( '/', '', $userName );
+			} else {
+				$userName = '';
+			}
+			$commentedSql = preg_replace('/\s/', " /* $fname $userName */ ", $sql, 1);
+		#} else {
+		#	$commentedSql = $sql;
+		#}
 
 		# If DBO_TRX is set, start a transaction
 		if ( ( $this->mFlags & DBO_TRX ) && !$this->trxLevel() && 
@@ -731,9 +770,11 @@ class Database {
 
 	/**
 	 * The DBMS-dependent part of query()
-	 * @param string $sql SQL query.
+	 * @param  $sql String: SQL query.
+	 * @return Result object to feed to fetchObject, fetchRow, ...; or false on failure
+	 * @access private
 	 */
-	function doQuery( $sql ) {
+	/*private*/ function doQuery( $sql ) {
 		if( $this->bufferResults() ) {
 			$ret = mysql_query( $sql, $this->mConn );
 		} else {
@@ -874,7 +915,13 @@ class Database {
 	}
 
 	/**
-	 * Fetch the next row from the given result object, in object form
+	 * Fetch the next row from the given result object, in object form.
+	 * Fields can be retrieved with $row->fieldname, with fields acting like
+	 * member variables.
+	 *
+	 * @param $res SQL result object as returned from Database::query(), etc.
+	 * @return MySQL row object
+	 * @throws DBUnexpectedError Thrown if the database returns an error
 	 */
 	function fetchObject( $res ) {
 		@/**/$row = mysql_fetch_object( $res );
@@ -885,8 +932,12 @@ class Database {
 	}
 
 	/**
-	 * Fetch the next row from the given result object
-	 * Returns an array
+	 * Fetch the next row from the given result object, in associative array
+	 * form.  Fields are retrieved with $row['fieldname'].
+	 *
+	 * @param $res SQL result object as returned from Database::query(), etc.
+	 * @return MySQL row object
+	 * @throws DBUnexpectedError Thrown if the database returns an error
 	 */
  	function fetchRow( $res ) {
 		@/**/$row = mysql_fetch_array( $res );
@@ -1120,6 +1171,10 @@ class Database {
 			$sql = $this->limitResult($sql, $options['LIMIT'],
 				isset($options['OFFSET']) ? $options['OFFSET'] : false);
 		$sql = "$sql $postLimitTail";
+		
+		if (isset($options['EXPLAIN'])) {
+			$sql = 'EXPLAIN ' . $sql;
+		}
 
 		return $this->query( $sql, $fname );
 	}
@@ -1152,6 +1207,33 @@ class Database {
 		return $obj;
 
 	}
+	
+	/**
+	 * Estimate rows in dataset
+	 * Returns estimated count, based on EXPLAIN output
+	 * Takes same arguments as Database::select()
+	 */
+	
+	function estimateRowCount( $table, $vars='*', $conds='', $fname = 'Database::estimateRowCount', $options = array() ) {
+		$options['EXPLAIN']=true;
+		$res = $this->select ($table, $vars, $conds, $fname, $options );
+		if ( $res === false )
+			return false;
+		if (!$this->numRows($res)) {
+			$this->freeResult($res);
+			return 0;
+		}
+		
+		$rows=1;
+	
+		while( $plan = $this->fetchObject( $res ) ) {
+			$rows *= ($plan->rows > 0)?$plan->rows:1; // avoid resetting to zero
+		}
+		
+		$this->freeResult($res);
+		return $rows;		
+	}
+	
 
 	/**
 	 * Removes most variables from an SQL query and replaces them with X or N for numbers.
@@ -1484,7 +1566,7 @@ class Database {
 	}
 	
 	/**
-	 * @desc: Fetch a number of table names into an zero-indexed numerical array
+	 * Fetch a number of table names into an zero-indexed numerical array
 	 * This is handy when you need to construct SQL for joins
 	 *
 	 * Example:
@@ -2033,18 +2115,36 @@ class Database {
 	/**
 	 * Read and execute SQL commands from a file.
 	 * Returns true on success, error string on failure
+	 * @param string $filename File name to open
+	 * @param callback $lineCallback Optional function called before reading each line
+	 * @param callback $resultCallback Optional function called for each MySQL result
 	 */
-	function sourceFile( $filename ) {
+	function sourceFile( $filename, $lineCallback = false, $resultCallback = false ) {
 		$fp = fopen( $filename, 'r' );
 		if ( false === $fp ) {
 			return "Could not open \"{$filename}\".\n";
 		}
+		$error = $this->sourceStream( $fp, $lineCallback, $resultCallback );
+		fclose( $fp );
+		return $error;
+	}
 
+	/**
+	 * Read and execute commands from an open file handle
+	 * Returns true on success, error string on failure
+	 * @param string $fp File handle
+	 * @param callback $lineCallback Optional function called before reading each line
+	 * @param callback $resultCallback Optional function called for each MySQL result
+	 */
+	function sourceStream( $fp, $lineCallback = false, $resultCallback = false ) {
 		$cmd = "";
 		$done = false;
 		$dollarquote = false;
 
 		while ( ! feof( $fp ) ) {
+			if ( $lineCallback ) {
+				call_user_func( $lineCallback );
+			}
 			$line = trim( fgets( $fp, 1024 ) );
 			$sl = strlen( $line ) - 1;
 
@@ -2074,7 +2174,10 @@ class Database {
 			if ( $done ) {
 				$cmd = str_replace(';;', ";", $cmd);
 				$cmd = $this->replaceVars( $cmd );
-				$res = $this->query( $cmd, 'dbsource', true );
+				$res = $this->query( $cmd, __METHOD__, true );
+				if ( $resultCallback ) {
+					call_user_func( $resultCallback, $this->resultObject( $res ) );
+				}
 
 				if ( false === $res ) {
 					$err = $this->lastError();
@@ -2085,9 +2188,9 @@ class Database {
 				$done = false;
 			}
 		}
-		fclose( $fp );
 		return true;
 	}
+
 
 	/**
 	 * Replace variables in sourced SQL
@@ -2096,7 +2199,7 @@ class Database {
 		$varnames = array(
 			'wgDBserver', 'wgDBname', 'wgDBintlname', 'wgDBuser',
 			'wgDBpassword', 'wgDBsqluser', 'wgDBsqlpassword',
-			'wgDBadminuser', 'wgDBadminpassword',
+			'wgDBadminuser', 'wgDBadminpassword', 'wgDBTableOptions',
 		);
 
 		// Ordinary variables
@@ -2129,6 +2232,7 @@ class Database {
  * Database abstraction object for mySQL
  * Inherit all methods and properties of Database::Database()
  *
+ * @addtogroup Database
  * @see Database
  */
 class DatabaseMysql extends Database {
@@ -2138,7 +2242,7 @@ class DatabaseMysql extends Database {
 
 /**
  * Result wrapper for grabbing data queried by someone else
- *
+ * @addtogroup Database
  */
 class ResultWrapper {
 	var $db, $result;
