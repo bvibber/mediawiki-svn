@@ -229,7 +229,7 @@ class MakesysopStewardForm extends UserrightsForm {
 		$this->mPosted = $request->wasPosted();
 		$this->mRequest =& $request;
 		$this->mName = 'userrights';
-		$this->mReason = $request->getText( 'wpMakesysopReason' );
+		$this->mReason = $request->getText( 'user-reason' );
 		$titleObj = Title::makeTitle( NS_SPECIAL, 'Makesysop' );
 		$this->action = $titleObj->escapeLocalURL();
 
