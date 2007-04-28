@@ -200,7 +200,8 @@ public class RecentUpdatesDaemon {
 					} else if(queue.get(db)!=null){
 						changedDBs.add(db);
 						oldqueue.put(db,queue.remove(db));
-					}
+					} else
+						oldqueue.remove(db);
 				}
 			}
 			
