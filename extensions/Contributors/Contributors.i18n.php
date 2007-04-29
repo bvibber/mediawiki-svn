@@ -146,6 +146,63 @@ function efContributorsMessages() {
 'contributors-badtitle' => '不正なページ名です。',
 'contributors-nosuchpage' => 'ページ $1 は存在しません。',
 ),
+
+/* Kazakh default (AlefZet) */
+'kk' => array(
+'contributors' => 'Үлескерлер',
+'contributors-toolbox' => 'Басты үлескерлер',
+'contributors-legend' => 'Мақала басты үлескерлері тізімі',
+'contributors-target' => 'Атауы:',
+'contributors-submit' => 'Көрсет',
+'contributors-subtitle' => '$1 бетінің басты үлескерлері',
+'contributors-others-long' => 'Бұл беттің басқа $1 үлескері бар.',
+'contributors-others' => 'және $1 басқалар',
+'contributors-badtitle' => 'Жарамсыз атау.',
+'contributors-nosuchpage' => '$1 деген мақала бізде жоқ.',
+),
+
+/* Kazakh Cyrillic (AlefZet) */
+'kk-kz' => array(
+'contributors' => 'Үлескерлер',
+'contributors-toolbox' => 'Басты үлескерлер',
+'contributors-legend' => 'Мақала басты үлескерлері тізімі',
+'contributors-target' => 'Атауы:',
+'contributors-submit' => 'Көрсет',
+'contributors-subtitle' => '$1 бетінің басты үлескерлері',
+'contributors-others-long' => 'Бұл беттің басқа $1 үлескері бар.',
+'contributors-others' => 'және $1 басқалар',
+'contributors-badtitle' => 'Жарамсыз атау.',
+'contributors-nosuchpage' => '$1 деген мақала бізде жоқ.',
+),
+
+/* Kazakh Latin (AlefZet) */
+'kk-tr' => array(
+'contributors' => 'Üleskerler',
+'contributors-toolbox' => 'Bastı üleskerler',
+'contributors-legend' => 'Maqala bastı üleskerleri tizimi',
+'contributors-target' => 'Atawı:',
+'contributors-submit' => 'Körset',
+'contributors-subtitle' => '$1 betiniñ bastı üleskerleri',
+'contributors-others-long' => 'Bul bettiñ basqa $1 üleskeri bar.',
+'contributors-others' => 'jäne $1 basqalar',
+'contributors-badtitle' => 'Jaramsız ataw.',
+'contributors-nosuchpage' => '$1 degen maqala bizde joq.',
+),
+
+/* Kazakh Arabic (AlefZet) */
+'kk-cn' => array(
+'contributors' => 'ٷلەسكەرلەر',
+'contributors-toolbox' => 'باستى ٷلەسكەرلەر',
+'contributors-legend' => 'ماقالا باستى ٷلەسكەرلەرٸ تٸزٸمٸ',
+'contributors-target' => 'اتاۋى:',
+'contributors-submit' => 'كٶرسەت',
+'contributors-subtitle' => '$1 بەتٸنٸڭ باستى ٷلەسكەرلەرٸ',
+'contributors-others-long' => 'بۇل بەتتٸڭ باسقا $1 ٷلەسكەرٸ بار.',
+'contributors-others' => 'جٵنە $1 باسقالار',
+'contributors-badtitle' => 'جارامسىز اتاۋ.',
+'contributors-nosuchpage' => '$1 دەگەن ماقالا بٸزدە جوق.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'contributors' => 'Contribuanten',

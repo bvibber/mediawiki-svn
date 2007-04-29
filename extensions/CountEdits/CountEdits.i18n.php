@@ -124,6 +124,58 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Il sito non ha subito alcuna modifica.',
 ),
 
+/* Kazakh default (AlefZet) */
+'kk' => array(
+'countedits' => 'Түзету санау',
+'countedits-warning' => "'''Назар салыңыз:''' Кітапті мұқабасынан жорамалдамаңыз. Үлескерді түзету санынан жорамалдамаңыз.",
+'countedits-username' => 'Қатысуша аты:',
+'countedits-ok' => 'Жарайды',
+'countedits-nosuchuser' => 'Мынадай атауы бар қатысушы жоқ: $1.',
+'countedits-resultheader' => '$1 деген үшін табылған натижелері',
+'countedits-resulttext' => '$1 деген $2 түзету істеген',
+'countedits-mostactive' => 'Ең белсенді үлескерлер',
+'countedits-nocontribs' => 'Бұл уикиде еш үлес болған жоқ.',
+),
+
+/* Kazakh Cyrillic (AlefZet) */
+'kk-kz' => array(
+'countedits' => 'Түзету санау',
+'countedits-warning' => "'''Назар салыңыз:''' Кітапті мұқабасынан жорамалдамаңыз. Үлескерді түзету санынан жорамалдамаңыз.",
+'countedits-username' => 'Қатысуша аты:',
+'countedits-ok' => 'Жарайды',
+'countedits-nosuchuser' => 'Мынадай атауы бар қатысушы жоқ: $1.',
+'countedits-resultheader' => '$1 деген үшін табылған натижелері',
+'countedits-resulttext' => '$1 деген $2 түзету істеген',
+'countedits-mostactive' => 'Ең белсенді үлескерлер',
+'countedits-nocontribs' => 'Бұл уикиде еш үлес болған жоқ.',
+),
+
+/* Kazakh Latin (AlefZet) */
+'kk-tr' => array(
+'countedits' => 'Tüzetw sanaw',
+'countedits-warning' => "'''Nazar salıñız:''' Kitapti muqabasınan joramaldamañız. Üleskerdi tüzetw sanınan joramaldamañız.",
+'countedits-username' => 'Qatıswşa atı:',
+'countedits-ok' => 'Jaraýdı',
+'countedits-nosuchuser' => 'Mınadaý atawı bar qatıswşı joq: $1.',
+'countedits-resultheader' => '$1 degen üşin tabılğan natïjeleri',
+'countedits-resulttext' => '$1 degen $2 tüzetw istegen',
+'countedits-mostactive' => 'Eñ belsendi üleskerler',
+'countedits-nocontribs' => 'Bul wïkïde eş üles bolğan joq.',
+),
+
+/* Kazakh Arabic (AlefZet) */
+'kk-cn' => array(
+'countedits' => 'تٷزەتۋ ساناۋ',
+'countedits-warning' => "'''نازار سالىڭىز:''' كٸتاپتٸ مۇقاباسىنان جورامالداماڭىز. ٷلەسكەردٸ تٷزەتۋ سانىنان جورامالداماڭىز.",
+'countedits-username' => 'قاتىسۋشا اتى:',
+'countedits-ok' => 'جارايدى',
+'countedits-nosuchuser' => 'مىناداي اتاۋى بار قاتىسۋشى جوق: $1.',
+'countedits-resultheader' => '$1 دەگەن ٷشٸن تابىلعان ناتيجەلەرٸ',
+'countedits-resulttext' => '$1 دەگەن $2 تٷزەتۋ ٸستەگەن',
+'countedits-mostactive' => 'ەڭ بەلسەندٸ ٷلەسكەرلەر',
+'countedits-nocontribs' => 'بۇل ۋيكيدە ەش ٷلەس بولعان جوق.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'countedits' => 'Bewerkingen tellen',
