@@ -991,6 +991,16 @@ $wgMakesysopMessages['wa'] = array(
 	'group-steward-member' => 'Mwaisse-manaedjeu tot avå',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
+$wgMakesysopMessages['zh-classical'] = array(
+	'makesysoptitle'       => '封有秩',
+	'makesysopname'        => '簿名：',
+	'makesysopsubmit'      => '封之有秩',
+	'makesysopok'          => "<b>"$1"成有秩矣。</b>",
+	'makesysopfail'        => "<b>"$1"未封之，疑名謬。</b>",
+	'makesysop'            => '封有秩',
+	'already_sysop'        => '早封有秩矣',
+	'already_bureaucrat'   => '早封門下矣',
+);
 $wgMakesysopMessages['zh-cn'] = array(
 	'makesysoptitle'       => '将用户设置为操作员',
 	'makesysoptext'        => '这个由行政管理员使用的表单可以将普通用户变为管理员。在输入框中输入用户名并点击按钮就可以将用户设置为管理员。',
