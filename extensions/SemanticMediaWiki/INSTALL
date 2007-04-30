@@ -1,0 +1,213 @@
+[[Semantic MediaWiki 0.7]]
+
+Contents:
+* Disclaimer
+* Requirements
+* Installation
+* Notes on Upgrading
+* FAQ
+* Contact
+
+== Disclaimer ==
+
+Semantic MediaWiki can be used for production wikis, but please note
+that the software is still under development. In general, the extension
+can be installed into a working wiki without making any irreversible
+changes to the source code or database, so you can try out the software
+without much risk (though no dedicated uninstall mechanism is provided).
+Every serious wiki should be subject to regular database backups. If you
+have any specific questions, please contact the authors.
+
+For a proper legal disclaimer, see the file "COPYING".
+
+== Requirements ==
+
+- MediaWiki 1.9.* or 1.10 (versions >=1.7 might still work)
+- PHP 5.x or greater installed and working
+- MySQL >= 4.0.14 (required by MediaWiki)
+
+== Installation ==
+
+If you upgrade an existing installation of Semantic MediaWiki, also read the
+remarks in the section "Notes on Upgrading" below!
+
+(1) Extract the archive or check out the current files from SVN to obtain the
+    directory "SemanticMediaWiki" that contains all relevant files. Copy this
+    directory to "[wikipath]/extensions/" (or extract/download it to this place).
+    We abbreviate "[wikipath]/extensions/SemanticMediaWiki" as "[SMW_path]" below.
+(2) If you use MediaWiki 1.9 or smaller, you *must* manually change the file
+    "[wikipath]/includes/Parser.php". Open the file in some text editor and find
+    the first line "$text = $this->replaceVariables( $text, $args );" located
+    around line 1000 in the function "internalParse". Right after this line, insert 
+    the new line:
+
+      wfRunHooks( 'InternalParseBeforeLinks', array( &$this, &$text ) );
+
+    Users of MediaWiki 1.10 or greater do not have to do this.
+(3) Insert the following lines into the file "[wikipath]/LocalSettings.php":
+     include_once('extensions/SemanticMediaWiki/includes/SMW_Settings.php');
+     enableSemantics('example.org');
+    where example.org should be replaced by your server's name (or IP address).
+    If you have custom namespaces (e.g. "Portal"), read the note below.
+(4) In your wiki, log in as a user with admin status and go to the page
+    "Special:SMWAdmin" to do the final setup steps.
+
+'''Remark:'''  Semantic MediaWiki uses six additional custom namespaces (see
+http://meta.wikimedia.org/wiki/Help:Custom_namespaces). If you have your own
+custom namespaces, you have to set the parameter $smwgNamespaceIndex  before
+including SMW_Settings.php. See the documentation within SMW_Settings.php for
+details. If you add more namespaces later on, then you have to assign them to
+higher numbers than those used by Semantic MediaWiki.
+
+=== Customising Semantic MediaWiki ===
+
+Semantic MediaWiki can be customised by a number of settings. To do so, you
+can set respective parameters somewhere below the line
+"include_once('extensions/SemanticMediaWiki/includes/SMW_Settings.php');"
+in your LocalSetting.php. For example, one can write
+
+ include_once('extensions/SemanticMediaWiki/includes/SMW_Settings.php');
+ $smwgIQDefaultLinking = 'all';
+ enableSemantics('example.org');
+
+to enable links on all results returned by inline queries. The parameters that
+are available are documented in the files SMW_Settings.php (general) and
+SMW_InlineQueries.php (related to queries).
+
+=== Running SMW on older versions of MediaWiki ===
+
+If your site is still running on PHP4, SMW is not supported. It would hardly be 
+possible to backport the code to the old PHP version. If you have PHP5 but an 
+older MediaWiki version, additional patches/modifications might be needed.
+Download an older release of SMW and have a look at the included INSTALL
+instructions to find out whether other changes are recommended therein.
+
+== Notes on Upgrading ==
+
+The below instructions describe how to upgrade from one minor version to the next, e.g.
+from 0.2 (or 0.2b) to 0.3. If you missed one of the updates (e.g. if you want to jump
+from 0.1 to 0.3) then it is wise to proceed stepwise: install all intermediate versions
+subsequently and follow the given update instructions. For example, first upgrade from 0.1
+to 0.2 before upgrading further from 0.2 to 0.3. Also, do not forget to backup your
+database before any upgrade.
+
+'''Upgrading from version 0.6 or 0.5'''
+
+Go to Special:SMWAdmin and press the setup button there. From  any patch in MediaWiki is
+now obsolete (but your changes should have vanished when MediaWiki 1.10 anyway).
+
+The file SMW_LocalSettings.php is now obsolete. Modify your LocalSettings.php as described
+above, and import your changes in SMW_LocalSettings.php, if any, into LocalSettings.php as
+well.
+
+'''Upgrading from 0.4.x:'''
+
+Upgrading does not require any special changes. However, you have to upgrade MediaWiki
+and SMW. This should not be a problem, and in fact you need one patch less.
+
+The type "Geographic area" and "Geographic length" are no longer built in. But you can
+easily create them by yourself with the new type customisation features. See the docu at
+ontoworld.org for details.
+
+
+== Testing your Installation ==
+
+If you are uncertain that everything went well, you can do some testing steps to
+check if SMW is set up properly.
+
+Go to the Special:Version page and you should see Semantic MediaWiki (version nn)
+listed as a Parser Hook and several wfSMWXxxx functions listed as Extension 
+Functions.
+
+Create a regular wiki page named "TestSMW", and in it enter the wiki text
+  Relation test:  [[testrelation::Dummypage]]
+  Attribute test: [[testattribute:=dummyvalue]]
+
+when you preview and save the page, the SMW "Factbox" should appear showing the
+relation Testrelation to Dummypage and the attribute Testattribute with a warning
+(since you haven't given it a type).
+
+If you don't get these results, check the steps in the Installation section, consult
+the FAQ section, then contact the user support list (see the Contact section).
+
+== FAQ ==
+
+- Problem: I installed Semantic MediaWiki and all went fine. What should I do
+  with it now?
+
+  Semantic MediaWiki is there to help you to structure your data, so that you
+  can browse and search it easier. Typically, you should first add semantic 
+  markup to articles that cover a topic that is typical for your wiki. A single
+  article, semantic or not, will not improve your search capabilities.
+
+  Start with a kind of article that occurs often in your wiki, possibly with
+  some type of articles that is already collected in some category, such as
+  cities, persons, or software projects. For these articles, introduce a small
+  amount of relations and attributes, and annotate many of the articles in
+  this way. As with categories, less is often more in semantic annotation: do
+  not use overly specific relations or attributes. A relation that is not
+  applicable in at least ten or twenty articles is hardly useful.
+
+  Templates can greatly simplify initial annotation. Create a flashy template
+  for your users to play with, and hide the semantic annotations in the code
+  of the template. Use the ParserFunctions extension to implement optional
+  parameters, so that your users can leave fields in the template unspecified
+  without creating faulty annotations.
+
+  Develop suitable inline queries (<ask> ... </ask>) along with any new
+  annotation. If you don't know how to use some annotation for searching, or
+  if you are not interested in searching for the annotated information anyway,
+  then you should probably not take the effort in the first place. Annotate
+  in a goal-directed way! Not all information can be extracted from the
+  annotations in your wiki. E.g. one can currently not search for articles that
+  are *not* in a given category. Think about what you want to ask for before
+  editing half of your wiki with new semantics ...
+
+  If in doubt, choose simple annotations and learn to combine them into more
+  complex information. For example, you do not need to have a category for
+  "European cities" -- just combine "located in::Europe" and "Category:City."
+  In any case, if some annotation is not sufficient, you can still add more
+  information. Cleaning too specific and possibly contradictory annotations
+  can be more problematic.
+
+  Regularly review users' use of categories, relations, attributes, and types
+  using the Special pages for each.
+
+- Problem: Previewing or storing articles with semantic relations causes
+  database errors.
+
+  Your database was not initialized properly. Go to Special:SMWAdmin for
+  instructions.
+
+- Problem: When using annotations like [[located in::Europe]], the semantic
+  data is not extracted, and a link to an article called "located in::Europe"
+  appears.
+
+  You probably use a version of MediaWiki that is smaller or equal to 1.9.*
+  and you did not make the required changes in Parser.php as described above.
+
+- Problem: After installing SMW, some or all pages are not displayed at all.
+- Problem: In some cases, pages are displayed incompletely, with some parts
+  vanishing.
+
+  This is due to the restrictive memory default settings on some sites, and
+  is not directly caused by SMW (any additional extension code might cause this).
+  Uncomment the line "ini_set( 'memory_limit', '20M' );" in LocalSettings.php
+  and possibly adjust the value to your needs.
+
+- Problem: I have a problem that is not in this list.
+
+  Report general bugs at http://bugzilla.wikimedia.org/
+  where you can also find out whether your problem is known.
+  You can also send an email to semediawiki-user@lists.sourceforge.net.
+
+== Contact ==
+
+If you have remarks or questions, please send them to
+ semediawiki-user@lists.sourceforge.net
+You can join this mailing list at http://sourceforge.net/mail/?group_id=147937
+
+Please report bugs to MediaZilla, http://bugzilla.wikimedia.org
+
+Technical support questions or feature requests that are mailed directly to 
+the developers will usually not be answered. Please use the mailing list.

@@ -1,0 +1,511 @@
+<?php
+
+if (!defined('MEDIAWIKI')) die();
+
+
+$wgExtensionFunctions[] = 'wfSpecialSuggest';
+
+function wfSpecialSuggest() {
+	class SpecialSuggest extends SpecialPage {
+		function SpecialSuggest() {
+			SpecialPage::SpecialPage('Suggest','UnlistedSpecialPage');
+		}
+		
+		function execute( $par ) {
+			global
+				$wgOut,	$IP;
+				
+			$wgOut->disable();
+			
+			require_once("$IP/includes/Setup.php");
+			require_once("Attribute.php");
+			require_once("RecordSet.php");
+			require_once("Editor.php");
+			require_once("HTMLtable.php");
+			require_once("WikiDataAPI.php");
+			require_once("Transaction.php");
+			require_once("OmegaWikiEditors.php");
+			echo getSuggestions();
+		}
+	}
+	
+	SpecialPage::addPage(new SpecialSuggest());
+}
+
+
+function getSuggestions() {
+
+	global
+		$idAttribute;
+	global $wgUser;
+
+	$queryResult=null;
+	$search = ltrim($_GET['search-text']);
+	$prefix = $_GET['prefix'];
+	$query = $_GET['query'];
+	$objectId = $_GET['objectId'];
+	$offset = $_GET['offset'];
+	$attributesLevel = $_GET['attributesLevel'];
+	
+	$dbr =& wfGetDB( DB_SLAVE );
+	$rowText = 'spelling';
+	wfDebug("]]]]] query: $query\n");
+	switch ($query) {
+		case 'relation-type':
+			$sql = getSQLForCollectionOfType('RELT');
+			break;
+		case 'class':
+			$sql = getSQLForCollectionOfType('CLAS');
+			break;
+		case 'option-attribute':
+			# This might be done tidier, if I knew more PHP.
+			# try user interface language
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', $wgUser->getOption('language'));
+			$try=$dbr->query($sql);
+			if ($dbr->numrows($try)==0) {
+				# fall back to en
+				$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', 'en');
+				$try=$dbr->query($sql);
+				if ($dbr->numrows($try)==0) {
+					# fall back to something semi-random
+					$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', '<ANY>');
+					$try=$dbr->query($sql);
+					if ($dbr->numrows($try)==0) {
+						# Give up. (Not sure that's a good thing, so emitting message to log, if logging is on.)
+						wfDebug("getSuggestions didn't find any matches for ". $wgUser->getOption('language'));
+						return;
+					}
+				}
+			}
+
+			if ($dbr->numrows($try)>0) {
+				$queryResult=$try;
+			}
+			
+				
+			#$q2 = $dbr->query($sql);
+			
+			break;
+		case 'translated-text-attribute':
+		case 'text-attribute':	
+			# This is the same as case option-attribute, but s/OPTN/TEXT/.
+			# If anyone asks me to do this thrice, I shall make a function.
+			wfDebug("]]]BINGELY");
+			# try user interface language
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', $wgUser->getOption('language'));
+			$try=$dbr->query($sql);
+			if ($dbr->numrows($try)==0) {
+				# fall back to en
+				$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', 'en');
+				$try=$dbr->query($sql);
+				if ($dbr->numrows($try)==0) {
+					# fall back to something semi-random
+					$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', '<ANY>');
+					$try=$dbr->query($sql);
+					if ($dbr->numrows($try)==0) {
+						# Give up. (Not sure that's a good thing, so emitting message to log, if logging is on.)
+						wfDebug("getSuggestions didn't find any matches for ". $wgUser->getOption('language'));
+						return;
+					}
+				}
+			}
+
+			if ($dbr->numrows($try)>0) {
+				$queryResult=$try;
+			}
+			break;
+		case 'language':
+			require_once('languages.php');
+			$sql = getSQLForLanguageNames($wgUser->getOption('language'));
+			$rowText = 'language_name';
+			break;
+		case 'defined-meaning':
+			$sql = 
+				"SELECT uw_syntrans.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS spelling, uw_expression_ns.language_id AS language_id ".
+				" FROM uw_expression_ns, uw_syntrans ".
+	            " WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id " .
+	            " AND uw_syntrans.identical_meaning=1 " .
+	            " AND " . getLatestTransactionRestriction('uw_syntrans').
+	            " AND " . getLatestTransactionRestriction('uw_expression_ns');
+	        break;
+	    case 'class-attributes-level':
+	    	$sql = getSQLForCollectionOfType('LEVL');
+	    	break;
+	    case 'collection':
+	    	$sql = 
+				"SELECT collection_id, spelling ".
+	    		" FROM uw_expression_ns, uw_collection_ns, uw_syntrans " .
+	    		" WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id" .
+	    		" AND uw_syntrans.defined_meaning_id=uw_collection_ns.collection_mid " .
+	    		" AND uw_syntrans.identical_meaning=1" .
+	    		" AND " . getLatestTransactionRestriction('uw_syntrans') .
+	    		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+	    		" AND " . getLatestTransactionRestriction('uw_collection_ns');
+
+		#$try=$dbr->query($sql);
+		wfDebug("]]]]]trying...\n");
+		#if ($dbr->numrows($try)>0) {
+		#	wfDebug("]]]]obtained...\n");
+		#	$queryResult=$try;
+		#}
+	    	break;
+	    case 'transaction':
+	    	$sql = 
+				"SELECT transaction_id, user_id, user_ip, " .
+	    		" CONCAT(SUBSTRING(timestamp, 1, 4), '-', SUBSTRING(timestamp, 5, 2), '-', SUBSTRING(timestamp, 7, 2), ' '," .
+	    		" SUBSTRING(timestamp, 9, 2), ':', SUBSTRING(timestamp, 11, 2), ':', SUBSTRING(timestamp, 13, 2)) AS time, comment" .
+	    		" FROM transactions WHERE 1";
+	    		
+	    	$rowText = "CONCAT(SUBSTRING(timestamp, 1, 4), '-', SUBSTRING(timestamp, 5, 2), '-', SUBSTRING(timestamp, 7, 2), ' '," .
+	    			" SUBSTRING(timestamp, 9, 2), ':', SUBSTRING(timestamp, 11, 2), ':', SUBSTRING(timestamp, 13, 2))";
+	    	break;
+	}
+	                          
+	if ($search != '') {
+		if ($query == 'transaction')
+			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("%$search%");
+		else if ($query == 'language')
+			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes("$search%");
+		else	
+			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("$search%");
+	}
+	else
+		$searchCondition = "";
+	
+	if ($query == 'transaction')
+		$orderBy = 'transaction_id DESC';
+	else
+		$orderBy = $rowText;
+	
+	$sql .= $searchCondition . " ORDER BY $orderBy LIMIT ";
+	
+	if ($offset > 0)
+		$sql .= " $offset, ";
+		
+	$sql .= "10";
+	
+	# Do query here (unless someone was doing hit-and-miss searching earlier
+	#	and already found their result)
+	if ($queryResult==null) {
+		$queryResult = $dbr->query($sql);
+	}
+	$idAttribute = new Attribute("id", "ID", "id");
+	
+	switch($query) {
+		case 'relation-type':
+			list($recordSet, $editor) = getRelationTypeAsRecordSet($queryResult);
+			break;		
+		case 'class':
+			list($recordSet, $editor) = getClassAsRecordSet($queryResult);
+			break;
+		case 'text-attribute':
+			list($recordSet, $editor) = getTextAttributeAsRecordSet($queryResult);
+			break;
+		case 'translated-text-attribute':
+			list($recordSet, $editor) = getTranslatedTextAttributeAsRecordSet($queryResult);
+			break;
+		case 'option-attribute':
+			list($recordSet, $editor) = getOptionAttributeAsRecordSet($queryResult);
+			break;
+		case 'defined-meaning':
+			list($recordSet, $editor) = getDefinedMeaningAsRecordSet($queryResult);
+			break;
+		case 'class-attributes-level':
+			list($recordSet, $editor) = getClassAttributeLevelAsRecordSet($queryResult);
+			break;				
+		case 'collection':
+			list($recordSet, $editor) = getCollectionAsRecordSet($queryResult);
+			break;	
+		case 'language':
+			list($recordSet, $editor) = getLanguageAsRecordSet($queryResult);
+			break;
+		case 'transaction':
+			list($recordSet, $editor) = getTransactionAsRecordSet($queryResult);
+			break;
+	}
+	
+	return $editor->view(new IdStack($prefix . 'table'), $recordSet);
+}
+
+function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType, $language) {
+	global 
+		$wgDefaultClassMids;
+	global	$wgUser;
+
+	if (count($wgDefaultClassMids) > 0)
+		$defaultClassRestriction = " OR uw_class_attributes.class_mid IN (" . join($wgDefaultClassMids, ", ") . ")";
+	else
+		$defaultClassRestriction = "";
+
+	
+	wfDebug("[][][][][] attributesLevel=$attributesLevel attributesType=$attributesType");
+	$dbr =& wfGetDB(DB_SLAVE);
+	$sql = 
+		'SELECT attribute_mid, spelling' .
+		' FROM bootstrapped_defined_meanings, uw_class_attributes, uw_syntrans, uw_expression_ns' .
+		' WHERE bootstrapped_defined_meanings.name = ' . $dbr->addQuotes($attributesLevel) .
+		' AND bootstrapped_defined_meanings.defined_meaning_id = uw_class_attributes.level_mid' .
+		' AND uw_class_attributes.attribute_type = ' . $dbr->addQuotes($attributesType) .
+		' AND uw_syntrans.defined_meaning_id = uw_class_attributes.attribute_mid' .
+		' AND uw_expression_ns.expression_id = uw_syntrans.expression_id';
+
+	if ($language!="<ANY>") {
+		$sql .=
+		' AND language_id=( '. 
+				' SELECT language_id'.
+				' FROM language'.
+				' WHERE wikimedia_key = '. $dbr->addQuotes($language).
+				' )';
+	}
+
+	$sql .=	
+		' AND ' . getLatestTransactionRestriction('uw_class_attributes') .
+		' AND ' . getLatestTransactionRestriction('uw_expression_ns') .
+		' AND ' . getLatestTransactionRestriction('uw_syntrans') .
+		' AND (uw_class_attributes.class_mid IN (' .
+				' SELECT class_mid ' .
+				' FROM   uw_class_membership' .
+				' WHERE  uw_class_membership.class_member_mid = ' . $objectId .
+				' AND ' . getLatestTransactionRestriction('uw_class_membership') .
+				' )'.
+				$defaultClassRestriction .
+		')';
+
+	if ($language="<ANY>") {
+		$sql .=
+		' LIMIT 1 ';
+	}
+
+
+	return $sql;
+}
+
+function getSQLForCollectionOfType($collectionType) {
+	return 
+		"SELECT member_mid, spelling, collection_mid " .
+        " FROM uw_collection_contents, uw_collection_ns, uw_syntrans, uw_expression_ns " .
+        " WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id " .
+        " AND uw_collection_ns.collection_type='$collectionType' " .
+        " AND uw_syntrans.defined_meaning_id=uw_collection_contents.member_mid " .
+        " AND uw_expression_ns.expression_id=uw_syntrans.expression_id " .
+        " AND uw_syntrans.identical_meaning=1 " .
+        " AND " . getLatestTransactionRestriction('uw_syntrans') .
+        " AND " . getLatestTransactionRestriction('uw_expression_ns') .
+        " AND " . getLatestTransactionRestriction('uw_collection_ns') .
+        " AND " . getLatestTransactionRestriction('uw_collection_contents');
+}
+
+function getRelationTypeAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$relationTypeAttribute = new Attribute("relation-type", "Relation type", "short-text");
+	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $relationTypeAttribute, $collectionAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($relationTypeAttribute));
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
+	
+	return array($recordSet, $editor);		
+}
+
+function getClassAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	$classAttribute = new Attribute("class", "Class", "short-text");
+	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $classAttribute, $collectionAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($classAttribute));
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+function getTextAttributeAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "short-text");
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute), new Structure($idAttribute));
+//	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+//		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($textAttributeAttribute));
+//	$editor->addEditor(createShortTextViewer($collectionAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+function getTranslatedTextAttributeAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Translated text attribute", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $translatedTextAttributeAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($translatedTextAttributeAttribute));
+//	$editor->addEditor(createShortTextViewer($collectionAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+function getOptionAttributeAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$optionAttributeAttribute = new Attribute("option-attribute", "Option attribute", "short-text");
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $optionAttributeAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($optionAttributeAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+function getDefinedMeaningAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+
+	$dbr =& wfGetDB(DB_SLAVE);
+	$spellingAttribute = new Attribute("spelling", "Spelling", "short-text");
+	$languageAttribute = new Attribute("language", "Language", "language");
+	
+	$expressionStructure = new Structure($spellingAttribute, $languageAttribute);
+	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType($expressionStructure));
+	$definitionAttribute = new Attribute("definition", "Definition", "definition");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $definedMeaningAttribute, $definitionAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) {
+		$definedMeaningRecord = new ArrayRecord($expressionStructure);
+		$definedMeaningRecord->setAttributeValue($spellingAttribute, $row->spelling);
+		$definedMeaningRecord->setAttributeValue($languageAttribute, $row->language_id);
+		
+		$recordSet->addRecord(array($row->defined_meaning_id, $definedMeaningRecord, getDefinedMeaningDefinition($row->defined_meaning_id)));
+	}			
+
+	$expressionEditor = new RecordTableCellEditor($definedMeaningAttribute);
+	$expressionEditor->addEditor(createShortTextViewer($spellingAttribute));
+	$expressionEditor->addEditor(createLanguageViewer($languageAttribute));
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor($expressionEditor);
+	$editor->addEditor(new TextEditor($definitionAttribute, new SimplePermissionController(false), false, true, 75));
+
+	return array($recordSet, $editor);		
+}
+
+function getClassAttributeLevelAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$classAttributeLevelAttribute = new Attribute("class-attribute-level", "Level", "short-text");
+	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $classAttributeLevelAttribute, $collectionAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($classAttributeLevelAttribute));
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
+	
+	return array($recordSet, $editor);		
+}
+
+function getCollectionAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+
+	$dbr =& wfGetDB(DB_SLAVE);
+	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $collectionAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->collection_id, $row->spelling));			
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($collectionAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+function getLanguageAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+
+	$dbr =& wfGetDB(DB_SLAVE);
+	$languageAttribute = new Attribute("language", "Language", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $languageAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->row_id, $row->language_name));			
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($languageAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+function getTransactionAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$userAttribute = new Attribute("user", "User", "short-text");
+	$timestampAttribute = new Attribute("timestamp", "Time", "timestamp");
+	$summaryAttribute = new Attribute("summary", "Summary", "short-text");
+	
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $userAttribute, $timestampAttribute, $summaryAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->transaction_id, getUserLabel($row->user_id, $row->user_ip), $row->time, $row->comment));			
+	
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($timestampAttribute));
+	$editor->addEditor(createShortTextViewer($idAttribute));
+	$editor->addEditor(createShortTextViewer($userAttribute));
+	$editor->addEditor(createShortTextViewer($summaryAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+?>

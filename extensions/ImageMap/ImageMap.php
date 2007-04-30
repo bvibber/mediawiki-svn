@@ -1,0 +1,23 @@
+<?php
+
+/**
+ * Set this to true to enable extern links [http://www.example.com] as
+ * link destination
+ */
+$wgImageMapAllowExternalLinks = false;
+
+$wgExtensionFunctions[] = 'wfSetupImageMap';
+$wgAutoloadClasses['ImageMap'] = dirname(__FILE__).'/ImageMap_body.php';
+$wgExtensionCredits['parserhook']['ImageMap'] = array(
+	'name' => 'ImageMap',
+	'author' => 'Tim Starling',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ImageMap',
+	'description' => 'Allows client-side clickable image maps using <nowiki><imagemap></nowiki> tag.',
+);
+
+function wfSetupImageMap() {
+	global $wgParser;
+	$wgParser->setHook( 'imagemap', array( 'ImageMap', 'render' ) );
+}
+
+?>

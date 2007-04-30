@@ -1,0 +1,113 @@
+.flaggedrevs_tag1 {
+	border: 1px solid #aaa;
+	background-color: #f0f8ff;
+	padding: 5px;
+	font-size: 80%;
+	margin-left: 50px;
+	margin-right: 50px;
+	text-align: center;
+}
+
+.flaggedrevs_tag2 {
+	border: 1px solid #aaa;
+	background-color: #f0fff0;
+	padding: 5px;
+	font-size: 80%;
+	margin-left: 50px;
+	margin-right: 50px;
+	text-align: center;
+}
+
+.flaggedrevs_tag3 {
+	border: 1px solid #aaa;
+	background-color: #fffff0;
+	padding: 5px;
+	font-size: 80%;
+	margin-left: 50px;
+	margin-right: 50px;
+	text-align: center;
+}
+
+.flaggedrevs_notes {
+	border: 1px solid #aaa;
+	background-color: #f9f9f9;
+	padding: 5px;
+	font-size: 80%;
+	margin-left: 50px;
+	margin-right: 50px;
+	text-align: center;
+}
+
+.flaggedrevs_notice {
+	font-size: 80%;
+	line-height: 1.2em;
+	margin: 0 0 1.4em 1em;
+	color: #7d7d7d;
+	width: auto;
+}
+
+/*.fr-marker-1 span {display: none};*/
+.fr-marker-1 {
+    background-image: url(../FlaggedRevs/img/boxY.png);
+    background-repeat: no-repeat;
+    min-width: 16px;
+    width: 16px;
+    height: 16px
+    min-height: 16px;
+    padding: 3px 16px 0px 20px;
+}
+
+.fr-text-value {
+    /*font-size:0px;    */
+    min-width:100px;
+    width: 100px;
+
+}
+
+
+.fr-marker-20 {
+    background-image: url(../FlaggedRevs/img/bar_20.png);
+    background-position: bottom left;
+    background-repeat: no-repeat;    
+    padding-bottom: 3px;
+}
+.fr-marker-40 {
+    background-image: url(../FlaggedRevs/img/bar_40.png);
+    background-position: bottom left;
+    background-repeat: no-repeat;    
+    padding-bottom: 3px;
+}
+
+.fr-marker-60 {
+    background-image: url(../FlaggedRevs/img/bar_60.png);
+    background-position: bottom left;
+    background-repeat: no-repeat;    
+    padding-bottom: 3px;
+
+}
+
+.fr-marker-80 {
+    background-image: url(../FlaggedRevs/img/bar_80.png);
+    background-position: bottom left;
+    background-repeat: no-repeat;    
+    padding-bottom: 3px;
+}
+
+.fr-marker-100 {
+    background-image: url(../FlaggedRevs/img/bar_100.png);
+    background-position: bottom left;
+    background-repeat: no-repeat;    
+    padding-bottom: 3px;
+}
+
+.fr-marker-2 {
+    background-image: url(../FlaggedRevs/img/boxC.png);
+    background-repeat: no-repeat;
+    padding: 3px 16px 0px 0px;
+}
+
+.fr-marker-0 {
+    background-image: url(../FlaggedRevs/img/boxQ.png);
+    background-repeat: no-repeat;
+    padding: 3px 16px 0px 0px;
+}
