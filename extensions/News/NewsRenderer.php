@@ -665,10 +665,10 @@ class NewsRenderer {
 
 		if ( strlen($text) < NEWS_HEAD_LENGTH ) return $text;
 
-		$suffix = "\n" . '... ([[' . $title->getPrefixedText() . ']]...)';
+		$suffix = ' &#091;...[[' . $title->getPrefixedText() . ']]...&#093;';
 
 		$t = preg_replace('/^(.*?)<!--\s*summary\s+end\s*-->.*$/si', '\1', $text);
-		if ($t != $text) return trim($t);
+		if ($t != $text) return trim($t) . $suffix;
 
 		if ( $t = NewsRenderer::cutHead($text, array("\r", "\n"), $suffix) ) return $t;
 		if ( $t = NewsRenderer::cutHead($text, array("."), $suffix) ) return $t;
