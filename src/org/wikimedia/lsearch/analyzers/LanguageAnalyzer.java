@@ -42,23 +42,12 @@ public class LanguageAnalyzer extends Analyzer {
 	}
 	static org.apache.log4j.Logger log = Logger.getLogger(LanguageAnalyzer.class);
 	protected WikiTokenizer wikitokenizer = null;
-	protected Constructor language = null;
-	protected Constructor customFilter = null;
+	protected FilterFactory filters;
 	
 	/** Make a new analyzer that process input as: wikitokenizer -> customFilter -> languageStemmer */
-	public LanguageAnalyzer(Class languageStemmer, WikiTokenizer wikitokenizer, Class customFilter){
+	public LanguageAnalyzer(FilterFactory filters, WikiTokenizer wikitokenizer){
 		this.wikitokenizer = wikitokenizer;
-		try{
-			if(languageStemmer != null)
-				language = languageStemmer.getConstructor(TokenStream.class);
-			if(customFilter != null)
-				this.customFilter = customFilter.getConstructor(TokenStream.class);
-
-		} catch (SecurityException e) {
-			log.error("The constructor that takes TokenStream is hidden. Class: "+language.getClass().getCanonicalName());
-		} catch (NoSuchMethodException e) {
-			log.error("The constructor that takes TokenStream is missing.Class: "+language.getClass().getCanonicalName());
-		}		
+		this.filters = filters;
 	}
 
 	/**
@@ -69,10 +58,10 @@ public class LanguageAnalyzer extends Analyzer {
 	public TokenStream tokenStream(String fieldName, Reader reader) {
 		wikitokenizer.resetIterator();
 		ArrayList<Token> tokens = wikitokenizer.getTokens();
-		if(customFilter != null)
+		if(filters.hasCustomFilter())
 			tokens = applyCustomFilter(tokens);
 		
-		return new AliasFilter(language,
+		return new AliasFilter(filters,
 				new ArrayTokens(tokens), new ArrayTokens(tokens)); 
 	}
 
@@ -80,9 +69,9 @@ public class LanguageAnalyzer extends Analyzer {
 	 * stop words, or in Thai to tokenize words properly. 
 	 */
 	protected ArrayList<Token> applyCustomFilter(ArrayList<Token> tokens) {
-		if(customFilter != null){
+		if(filters.hasCustomFilter()){
 			try {
-				TokenStream ts =  (TokenStream) customFilter.newInstance(new Object[] {new ArrayTokens(tokens)});
+				TokenStream ts =  filters.makeCustomFilter(new ArrayTokens(tokens));
 				ArrayList<Token> filtered = new ArrayList<Token>();
 				Token t;
 				while((t = ts.next())!=null)
@@ -90,9 +79,14 @@ public class LanguageAnalyzer extends Analyzer {
 				
 				return filtered;				
 			} catch (Exception e){
-				log.error("Error applying custom filter "+customFilter.getName());
+				log.error("Error applying custom filter for "+filters.getLanguage());
 			}
 		}
 		return tokens;
+	}
+	
+	@Override
+	public String toString() {
+		return "LanguageAnalyzer for "+filters.getLanguage();
 	}
 }

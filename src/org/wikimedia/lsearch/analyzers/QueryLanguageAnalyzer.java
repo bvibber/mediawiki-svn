@@ -14,8 +14,8 @@ import org.apache.lucene.analysis.TokenStream;
 public class QueryLanguageAnalyzer extends LanguageAnalyzer {
 	static org.apache.log4j.Logger log = Logger.getLogger(QueryLanguageAnalyzer.class);
 	
-	public QueryLanguageAnalyzer(Class languageClass, Class customFilter){
-		super(languageClass,null,customFilter);
+	public QueryLanguageAnalyzer(FilterFactory filters){
+		super(filters,null);
 	}
 	
 	/**
@@ -33,6 +33,12 @@ public class QueryLanguageAnalyzer extends LanguageAnalyzer {
 		log.error("Invalid usage of QueryLanguageAnalyzer.tokenStream(String,Reader). Use tokenStream(String,String). Probably bug in the software. ");
 		return null;
 	}
+
+	@Override
+	public String toString() {
+		return "QueryLanguageAnalyzer for "+filters.getLanguage();
+	}
+	
 	
 	
 }

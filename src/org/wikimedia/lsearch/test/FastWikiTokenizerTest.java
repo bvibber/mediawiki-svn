@@ -74,12 +74,9 @@ public class FastWikiTokenizerTest {
 			text = "{{IPstack|name = Hundai}} '''[[Hypertext]] Transfer [[communications protocol|Protocol]]''' ('''HTTP''') is a method used to transfer or convey information on the [[World Wide Web]]. Its original purpose was to provide a way to publish and retrieve [[HTML]] pages.";
 			showTokens(text);
 			
-			//if(true)
-			//	return;
-			
 			ArticlesParser ap = new ArticlesParser("./test-data/indexing-articles.test");
 			ArrayList<TestArticle> articles = ap.getArticles();
-			timeTest(articles);
+			//timeTest(articles);
 		}
 		
 		static void timeTest(ArrayList<TestArticle> articles) throws IOException{

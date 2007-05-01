@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="lib/xmlrpc-server-3.0.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/lucene-core-2.0.1-dev.jar" sourcepath="/lucene-2.0"/>
+	<classpathentry kind="lib" path="lib/snowball.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

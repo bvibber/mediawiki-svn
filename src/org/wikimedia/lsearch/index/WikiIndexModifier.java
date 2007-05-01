@@ -20,6 +20,7 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
 import org.wikimedia.lsearch.analyzers.Analyzers;
+import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
@@ -146,15 +147,14 @@ public class WikiIndexModifier {
 			if(maxFieldLength!=0)
 				writer.setMaxFieldLength(maxFieldLength);
 			
-			Class language = Analyzers.getStemmerForLanguage(langCode);
-			Class customFilter = Analyzers.getCustomFilterForLanguage(langCode);
+			FilterFactory filters = new FilterFactory(langCode);
 
 			for(IndexUpdateRecord rec : records){								
 				if(rec.doAdd()){
 					if(!rec.isAlwaysAdd() && nonDeleteDocuments.contains(rec))
 						continue; // don't add if delete/add are paired operations
 					IndexReportCard card = getReportCard(rec);
-					Object[] ret = makeDocumentAndAnalyzer(rec,language,customFilter);
+					Object[] ret = makeDocumentAndAnalyzer(rec,filters);
 					Document doc = (Document) ret[0];
 					Analyzer analyzer = (Analyzer) ret[1];
 					try {
@@ -264,7 +264,7 @@ public class WikiIndexModifier {
 	 * @param languageAnalyzer
 	 * @return array { document, analyzer }
 	 */
-	protected Object[] makeDocumentAndAnalyzer(IndexUpdateRecord rec, Class languageAnalyzer, Class customFilter){
+	protected Object[] makeDocumentAndAnalyzer(IndexUpdateRecord rec, FilterFactory filters){
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		Document doc = new Document();
 		Article article = rec.getArticle();
@@ -288,7 +288,7 @@ public class WikiIndexModifier {
 		if(article.isRedirect())
 			text=""; // for redirects index only the title
 		
-		perFieldAnalyzer = Analyzers.getIndexerAnalyzer(text,languageAnalyzer,customFilter,global.getLanguage(rec.getIndexId().getDBname()));
+		perFieldAnalyzer = Analyzers.getIndexerAnalyzer(text,filters);
 		
 		return new Object[] { doc, perFieldAnalyzer };
 	}
