@@ -75,6 +75,7 @@ public class IndexId {
 	/** Where the indexer places the snapshots */
 	protected String snapshotPath;
 	protected String updatePath = null;
+	protected String importPath;
 	
 	protected String rsyncSnapshotPath = null;
 
@@ -167,6 +168,7 @@ public class IndexId {
 		}
 
 		indexPath = indexHostPath + "index" + sep + dbrole;
+		importPath = indexHostPath + "fromXML" + sep + dbrole;
 		snapshotPath = indexHostPath + "snapshot" + sep + dbrole;
 		rsyncSnapshotPath = "/mwsearch/snapshot/" + dbrole;
 
@@ -289,7 +291,11 @@ public class IndexId {
 	public String getUpdatePath() {
 		return updatePath;
 	}
-	
+	/** Where indexes are made when built from XML importing */
+	public String getImportPath() {
+		return importPath;
+	}
+
 	/** Get search path with resolved symlinks */
 	public String getCanonicalSearchPath(){
 		try {

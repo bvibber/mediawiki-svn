@@ -62,7 +62,7 @@ public class Localization {
 	}
 
 	/** Reads localization for language, return true if success */
-	protected static boolean readLocalization(String langCode){
+	public static boolean readLocalization(String langCode){
 		return readLocalization(langCode,0);
 	}
 	

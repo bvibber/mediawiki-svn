@@ -130,7 +130,7 @@ public class WikiIndexModifier {
 			} catch (IOException e) {				
 				try {
 					// try to make brand new index
-					makeDBPath(iid); // ensure all directories are made
+					makeDBPath(path); // ensure all directories are made
 					log.info("Making new index at path "+path);
 					writer = new IndexWriter(path,null,true);
 				} catch (IOException e1) {
@@ -154,7 +154,7 @@ public class WikiIndexModifier {
 					if(!rec.isAlwaysAdd() && nonDeleteDocuments.contains(rec))
 						continue; // don't add if delete/add are paired operations
 					IndexReportCard card = getReportCard(rec);
-					Object[] ret = makeDocumentAndAnalyzer(rec,filters);
+					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),filters);
 					Document doc = (Document) ret[0];
 					Analyzer analyzer = (Analyzer) ret[1];
 					try {
@@ -181,25 +181,26 @@ public class WikiIndexModifier {
 			}
 		}
 
-		/**
-		 * Create necessary directories for index
-		 * @param dbname
-		 * @return relative path (to document root) of db within filesystem 
-		 */
-		public String makeDBPath(IndexId iid){
-			String path = iid.getIndexPath();
-			File dir = new File(path); 
-			if(!dir.exists()){
-				boolean succ = dir.mkdirs();
-				if(!succ){
-					log.error("Could not create directory "+path+", do you have permissions to create it? Updates from database "+iid+" will not be written.");
-					return null;
-				}
-			}		
-			return path;
-		}
+	
 
 	}
+	/**
+	 * Create necessary directories for index
+	 * @param dbname
+	 * @return relative path (to document root) of db within filesystem 
+	 */
+	public static String makeDBPath(String path){
+		File dir = new File(path); 
+		if(!dir.exists()){
+			boolean succ = dir.mkdirs();
+			if(!succ){
+				log.error("Could not create directory "+path+", do you have permissions to create it?");
+				return null;
+			}
+		}		
+		return path;
+	}
+	
 	// ============================================================================
 	static org.apache.log4j.Logger log = Logger.getLogger(WikiIndexModifier.class);
 	protected static GlobalConfiguration global = null;
@@ -264,10 +265,9 @@ public class WikiIndexModifier {
 	 * @param languageAnalyzer
 	 * @return array { document, analyzer }
 	 */
-	protected Object[] makeDocumentAndAnalyzer(IndexUpdateRecord rec, FilterFactory filters){
+	public static Object[] makeDocumentAndAnalyzer(Article article, FilterFactory filters){
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		Document doc = new Document();
-		Article article = rec.getArticle();
 		
 		// This will be used to look up and replace entries on index updates.
 		doc.add(new Field("key", article.getKey(), Field.Store.YES, Field.Index.UN_TOKENIZED));

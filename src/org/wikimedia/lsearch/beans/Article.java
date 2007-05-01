@@ -60,6 +60,14 @@ public class Article implements Serializable  {
 		this.redirect = redirect;
 	}
 	
+	public Article(int namespace, String titleText, String text, boolean redirect) {
+		this.namespace = Integer.toString(namespace);
+		this.title = titleText;
+		contents = text;
+		timestamp = null;
+		this.redirect = redirect;
+	}
+	
 	public Article(int namespace_, String title_) {
 		namespace = Integer.toString(namespace_);
 		title = title_;
