@@ -30,7 +30,7 @@
 		<jar destfile="${basedir}/MWSearch.jar">
 			<manifest>
 	            <attribute name="Main-Class" value="org.wikimedia.lsearch.config.StartupManager"/>
-                <attribute name="Class-Path" value="MWSearch.jar lib/xmlrpc-common-3.0.jar lib/xmlrpc-client-3.0.jar lib/xmlrpc-server-3.0.jar lib/commons-logging-1.1.jar lib/ws-commons-util-1.0.1.jar lib/log4j-1.2.14.jar lib/lucene-core-2.0.1-dev.jar lib/lucene-analyzers.jar"/>
+                <attribute name="Class-Path" value="MWSearch.jar lib/xmlrpc-common-3.0.jar lib/xmlrpc-client-3.0.jar lib/xmlrpc-server-3.0.jar lib/commons-logging-1.1.jar lib/ws-commons-util-1.0.1.jar lib/log4j-1.2.14.jar lib/lucene-core-2.0.1-dev.jar lib/lucene-analyzers.jar lib/snowball.jar"/>
             </manifest>
 			<zipfileset dir="${bin}" prefix="">
 				<include name="org/**"/>

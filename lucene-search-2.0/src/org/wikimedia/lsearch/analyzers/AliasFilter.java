@@ -32,17 +32,12 @@ public class AliasFilter extends TokenStream {
 	 * 
 	 * @param language
 	 */
-	public AliasFilter(Constructor language, TokenStream input, TokenStream duplicate){
+	public AliasFilter(FilterFactory filters, TokenStream input, TokenStream duplicate){
 		this.input = input;
 		stemmer = null;
 		last = null;
-		if(language != null){
-			try {
-				stemmer =  (TokenStream) language.newInstance(new Object[] {duplicate});
-			} catch (Exception e){
-				log.error("Error making a tokenizer with a constructor "+language.getName());
-			}
-		}
+		if(filters.hasStemmer())
+			stemmer =  filters.makeStemmer(duplicate);
 	}
 	
 	@Override

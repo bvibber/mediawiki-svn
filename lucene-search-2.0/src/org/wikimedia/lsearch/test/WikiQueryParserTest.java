@@ -183,7 +183,7 @@ public class WikiQueryParserTest extends TestCase {
 			// ==================================
 			// Tests with actual params :)
 			// ==================================
-			Analyzer analyzer = Analyzers.getSearcherAnalyzer(Analyzers.getStemmerForLanguage("en"),Analyzers.getCustomFilterForLanguage("en"));
+			Analyzer analyzer = Analyzers.getSearcherAnalyzer("en");
 			parser = new WikiQueryParser("contents","main",analyzer,NamespacePolicy.LEAVE);
 			q = parser.parseTwoPass("beans everyone",null);
 			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());
@@ -234,7 +234,7 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("(+(+namespace:0 +(+contents:1991 +category:\"olympic cities\")) -contents:1990) (+(+namespace:0 +(+title:1991^2.0 +category:\"olympic cities\")) -title:1990^2.0)",q.toString());
 			
 			// Localization tests
-			analyzer = Analyzers.getSearcherAnalyzer(Analyzers.getStemmerForLanguage("sr"),Analyzers.getCustomFilterForLanguage("sr"));
+			analyzer = Analyzers.getSearcherAnalyzer("sr");
 			parser = new WikiQueryParser("contents","main",analyzer,NamespacePolicy.LEAVE);
 			
 			q = parser.parseTwoPass("all:добродошли на википедију",NamespacePolicy.IGNORE);
@@ -243,7 +243,7 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("all:dobrodošli na šđčćž",NamespacePolicy.IGNORE);
 			assertEquals("(+contents:dobrodosli +contents:na +contents:sdjccz) (+title:dobrodosli^2.0 +title:na^2.0 +title:sdjccz^2.0)",q.toString());
 			
-			analyzer = Analyzers.getSearcherAnalyzer(Analyzers.getStemmerForLanguage("th"),Analyzers.getCustomFilterForLanguage("th"));
+			analyzer = Analyzers.getSearcherAnalyzer("th");
 			parser = new WikiQueryParser("contents","main",analyzer,NamespacePolicy.LEAVE);
 			
 			q = parser.parseTwoPass("ภาษาไทย",NamespacePolicy.IGNORE);

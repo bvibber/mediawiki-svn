@@ -69,12 +69,12 @@ public class Analyzers {
 	
 	/** Analyzer for titles, for most languages just a plain
 	 *  wiki tokenizer (lowercase, unicode normalization), but
-	 *  no steeming or aliases. 
+	 *  no stemming or aliases. 
 	 * @param language
 	 * @return
 	 */
-	public static Analyzer getTitleAnalyzer(Class language, Class customFilter){
-		return new QueryLanguageAnalyzer(language,customFilter);
+	public static Analyzer getTitleAnalyzer(FilterFactory filters){
+		return new QueryLanguageAnalyzer(filters);
 	}
 
 	/**
@@ -89,20 +89,20 @@ public class Analyzers {
 	 * @param languageAnalyzer  language filter class (e.g. PorterStemFilter)
 	 * @return
 	 */
-	public static PerFieldAnalyzerWrapper getIndexerAnalyzer(String text, Class languageFilter, Class customFilter, String langCode) {
+	public static PerFieldAnalyzerWrapper getIndexerAnalyzer(String text, FilterFactory filters) {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		// parse wiki-text to get categories
-		WikiTokenizer tokenizer = new WikiTokenizer(text,langCode);
+		WikiTokenizer tokenizer = new WikiTokenizer(text,filters.getLanguage());
 		tokenizer.tokenize();
 		ArrayList<String> categories = tokenizer.getCategories();
 		
 		perFieldAnalyzer = new PerFieldAnalyzerWrapper(new SimpleAnalyzer());
 		perFieldAnalyzer.addAnalyzer("contents", 
-				new LanguageAnalyzer(languageFilter,tokenizer,customFilter));
+				new LanguageAnalyzer(filters,tokenizer));
 		perFieldAnalyzer.addAnalyzer("category", 
 				new CategoryAnalyzer(categories));
 		perFieldAnalyzer.addAnalyzer("title",
-				getTitleAnalyzer(null,customFilter));
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
 		
 		return perFieldAnalyzer;
 	}
@@ -110,8 +110,12 @@ public class Analyzers {
 	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(IndexId iid){
 		if(global == null)
 			global = GlobalConfiguration.getInstance();
-		String langCode = global.getLanguage(iid.getDBname());
-		return getSearcherAnalyzer(getStemmerForLanguage(langCode),getCustomFilterForLanguage(langCode));
+		return getSearcherAnalyzer(global.getLanguage(iid.getDBname()));
+		
+	}
+	
+	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(String langCode){
+		return getSearcherAnalyzer(new FilterFactory(langCode));
 	}
 	
 	/**
@@ -120,12 +124,14 @@ public class Analyzers {
 	 * @param text
 	 * @return
 	 */
-	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(Class languageFilter, Class customFilter) {
+	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(FilterFactory filters) {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		
-		perFieldAnalyzer = new PerFieldAnalyzerWrapper(getTitleAnalyzer(null,customFilter));
+		perFieldAnalyzer = new PerFieldAnalyzerWrapper(getTitleAnalyzer(filters));
 		perFieldAnalyzer.addAnalyzer("contents", 
-				new QueryLanguageAnalyzer(languageFilter,customFilter));
+				new QueryLanguageAnalyzer(filters));
+		perFieldAnalyzer.addAnalyzer("title",
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
 		
 		return perFieldAnalyzer;
 	}
