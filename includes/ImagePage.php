@@ -66,7 +66,7 @@ class ImagePage extends Article {
 		# Show shared description, if needed
 		if ( $this->mExtraDescription ) {
 			$fol = wfMsg( 'shareddescriptionfollows' );
-			if( $fol != '-' ) {
+			if( $fol != '-' && !wfEmptyMsg( 'shareddescriptionfollows', $fol ) ) {
 				$wgOut->addWikiText( $fol );
 			}
 			$wgOut->addHTML( '<div id="shared-image-desc">' . $this->mExtraDescription . '</div>' );
@@ -224,12 +224,13 @@ class ImagePage extends Article {
 						# Note that $height <= $maxHeight now, but might not be identical
 						# because of rounding.
 					}
-					$msgbig  = wfMsgHtml('show-big-image');
-					$msgsmall = wfMsg('show-big-image-thumb', $width, $height );
+					$msgbig  = wfMsgHtml( 'show-big-image' );
+					$msgsmall = wfMsgExt( 'show-big-image-thumb',
+						array( 'parseinline' ), $width, $height );
 				} else {
 					# Image is small enough to show full size on image page
-					$msgbig = $this->img->getName();
-					$msgsmall = wfMsg( 'file-nohires' );
+					$msgbig = htmlspecialchars( $this->img->getName() );
+					$msgsmall = wfMsgExt( 'file-nohires', array( 'parseinline' ) );
 				}
 
 				$params['width'] = $width;
@@ -439,18 +440,19 @@ END
 
 		if ( $line ) {
 			$list = new ImageHistoryList( $sk );
+			// Our top image
 			$s = $list->beginImageHistoryList() .
 				$list->imageHistoryLine( true, wfTimestamp(TS_MW, $line->img_timestamp),
 					$this->mTitle->getDBkey(),  $line->img_user,
 					$line->img_user_text, $line->img_size, $line->img_description,
-					$line->img_width, $line->img_height
+					$line->img_width, $line->img_height, $line->oi_deleted
 				);
-
+			// old image versions
 			while ( $line = $this->img->nextHistoryLine() ) {
 				$s .= $list->imageHistoryLine( false, $line->img_timestamp,
 			  		$line->oi_archive_name, $line->img_user,
 			  		$line->img_user_text, $line->img_size, $line->img_description,
-					$line->img_width, $line->img_height
+					$line->img_width, $line->img_height, $line->oi_deleted
 				);
 			}
 			$s .= $list->endImageHistoryList();
@@ -732,11 +734,12 @@ class ImageHistoryList {
 		return $s;
 	}
 
-	function imageHistoryLine( $iscur, $timestamp, $img, $user, $usertext, $size, $description, $width, $height ) {
+	function imageHistoryLine( $iscur, $timestamp, $img, $user, $usertext, $size, $description, $width, $height, $deleted ) {
 		global $wgUser, $wgLang, $wgTitle, $wgContLang;
 
 		$datetime = $wgLang->timeanddate( $timestamp, true );
-		$del = wfMsgHtml( 'deleteimg' );
+		#$del = wfMsgHtml( 'deleteimg' );
+		$del = wfMsgHtml( 'rev-delundel' );
 		$delall = wfMsgHtml( 'deleteimgcompletely' );
 		$cur = wfMsgHtml( 'cur' );
 
@@ -748,40 +751,121 @@ class ImageHistoryList {
 				  '&action=delete' );
 				$style = $this->skin->getInternalLinkAttributes( $link, $delall );
 
-				$dlink = '<a href="'.$link.'"'.$style.'>'.$delall.'</a>';
+				$dlink = '(<a href="'.$link.'"'.$style.'>'.$delall.'</a>) ';
 			} else {
-				$dlink = $del;
+				$dlink = '';
 			}
-		} else {
+		} else {		
 			$url = htmlspecialchars( wfImageArchiveUrl( $img ) );
 			if( $wgUser->getID() != 0 && $wgTitle->userCan( 'edit' ) ) {
-				$token = urlencode( $wgUser->editToken( $img ) );
-				$rlink = $this->skin->makeKnownLinkObj( $wgTitle,
+				# Revert link, for public files only
+				if ( $deleted ) {
+					$rlink = wfMsgHtml( 'revertimg' );
+				} else {
+					$token = urlencode( $wgUser->editToken( $img ) );
+					$rlink = $this->skin->makeKnownLinkObj( $wgTitle,
 				           wfMsgHtml( 'revertimg' ), 'action=revert&oldimage=' .
 				           urlencode( $img ) . "&wpEditToken=$token" );
+				}
+				# Delete link
+				if( $wgUser->isAllowed( 'deleterevision' ) ) {
+					$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
+					if( !$this->userCan( $deleted, Image::DELETED_RESTRICTED ) ) {
+						// If file was hidden from sysops
+						$del = wfMsgHtml( 'rev-delundel' );			
+					} else {
+						list($ts,$name) = explode('!',$img);
+						$del = $this->skin->makeKnownLinkObj( $revdel,
+							wfMsg( 'rev-delundel' ),
+							'target=' . urlencode( $wgTitle->getPrefixedText() ) .
+							'&oldimage=' . urlencode( $ts ) );
+						// Bolden oversighted content
+						if( $this->isDeleted( $deleted, Image::DELETED_RESTRICTED ) )
+							$del = "<strong>$del</strong>";
+					}
+					$dlink = "<tt>(<small>$del</small>)</tt> ";
+				} else {
+					$dlink = '';
+				}
+				/*
 				$dlink = $this->skin->makeKnownLinkObj( $wgTitle,
 				           $del, 'action=delete&oldimage=' . urlencode( $img ) .
 				           "&wpEditToken=$token" );
+				*/
 			} else {
 				# Having live active links for non-logged in users
 				# means that bots and spiders crawling our site can
 				# inadvertently change content. Baaaad idea.
 				$rlink = wfMsgHtml( 'revertimg' );
-				$dlink = $del;
+				$dlink = '';
 			}
 		}
+		# Hide deleted usernames
+		if ( $this->isDeleted($deleted, Image::DELETED_USER) )
+			$userlink = '<span class="history-deleted">' . wfMsgHtml( 'rev-deleted-user' ) . '</span>';
+		else
+			$userlink = $this->skin->userLink( $user, $usertext ) . $this->skin->userToolLinks( $user, $usertext );
 		
-		$userlink = $this->skin->userLink( $user, $usertext ) . $this->skin->userToolLinks( $user, $usertext );
-		$nbytes = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ),
-			$wgLang->formatNum( $size ) );
+		$nbytes = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ), $wgLang->formatNum( $size ) );
 		$widthheight = wfMsgHtml( 'widthheight', $width, $height );
 		$style = $this->skin->getInternalLinkAttributes( $url, $datetime );
-
-		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\"{$style}>{$datetime}</a> . . {$userlink} . . {$widthheight} ({$nbytes})";
-
-		$s .= $this->skin->commentBlock( $description, $wgTitle );
+		
+		if ( !$this->userCan($deleted, Image::DELETED_FILE) ) {
+			# Don't link to unviewable files
+			$pagelink = '<span class="history-deleted">' . $datetime . '</span>';
+		} else if ( $this->isDeleted($deleted, Image::DELETED_FILE) ) {
+			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
+			# Make a link to review the image
+			$pagelink = $this->skin->makeKnownLinkObj( $revdel, $datetime, "target=".$wgTitle->getPrefixedText()."&file=$img" );
+			$pagelink = '<span class="history-deleted">' . $pagelink . '</span>';
+		} else {
+			$pagelink = "<a href=\"{$url}\"{$style}>{$datetime}</a>";
+		}
+		
+		$s = "<li>{$dlink}({$rlink}) {$pagelink} . . {$userlink} . . {$widthheight} ({$nbytes})";
+		# Don't show deleted descriptions
+		if ( $this->isDeleted($deleted, Image::DELETED_COMMENT) )
+			$s .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-comment') . '</span>';
+		else
+			$s .= $this->skin->commentBlock( $description, $wgTitle );
+		#add blurb about text having been deleted
+		if( $this->isDeleted($deleted, Image::DELETED_FILE) ) {
+			$s .= ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
+		}
 		$s .= "</li>\n";
 		return $s;
+	}
+	
+	/**
+	 * int $field one of DELETED_* bitfield constants
+	 * for file or revision rows
+	 * @param int $bitfield
+	 * @param int $field
+	 * @return bool
+	 */
+	function isDeleted( $bitfield, $field ) {
+		return ($bitfield & $field) == $field;
+	}
+	
+	/**
+	 * Determine if the current user is allowed to view a particular
+	 * field of this FileStore image file, if it's marked as deleted.
+	 * @param int $bitfield
+	 * @param int $field
+	 * @return bool
+	 */
+	function userCan( $bitfield, $field ) {
+		if( ($bitfield & $field) == $field ) {
+		// images
+			global $wgUser;
+			$permission = ( $bitfield & Image::DELETED_RESTRICTED ) == Image::DELETED_RESTRICTED
+				? 'hiderevision'
+				: 'deleterevision';
+			wfDebug( "Checking for $permission due to $field match on $bitfield\n" );
+			return $wgUser->isAllowed( $permission );
+		} else {
+			return true;
+		}
 	}
 
 }

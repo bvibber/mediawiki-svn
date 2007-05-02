@@ -245,11 +245,12 @@ class LogReader {
 	function newFromTitle( $title, $logid=0 ) {
 		$fname = 'LogReader::newFromTitle';
 
-		$matchId = intval( $logid );
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'logging', array('*'),
-		array('log_id' => $matchId, 'log_namespace' => $title->getNamespace(), 'log_title' => $title->getDBkey() ), 
-		$fname );
+			array('log_id' => intval( $logid ), 
+				'log_namespace' => $title->getNamespace(), 
+				'log_title' => $title->getDBkey() ), 
+			$fname );
 
 		if ( $res ) {
 		   $ret = $dbr->fetchObject( $res );
@@ -421,17 +422,11 @@ class LogViewer {
 	}
 
 	/**
-	 * Return the log action if it's available to all users
-	 * default is deleted if not specified for security
+	 * Return the parsed log action text
 	 * @return Title
 	 */
-	function logActionText( $log_type, $log_action, $title, $skin, $paramArray, $log_deleted = self::DELETED_ACTION ) {
-		if( $log_deleted & self::DELETED_ACTION ) {
-			return '<span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
-		} else {
-		  	$action = LogPage::actionText( $log_type, $log_action, $title, $this->skin, $paramArray, true, true );
-		  	return $action;
-		}
+	function logActionText( $log_type, $log_action, $title, $skin, $paramArray ) {
+		return LogPage::actionText( $log_type, $log_action, $title, $this->skin, $paramArray, true, true );
 	}
 
 	/**
@@ -505,7 +500,7 @@ class LogViewer {
 	 * @private
 	 */
 	function logLine( $s ) {
-		global $wgLang, $wgUser;;
+		global $wgLang, $wgUser;
 		
 		$skin = $wgUser->getSkin();
 		$title = Title::makeTitle( $s->log_namespace, $s->log_title );
@@ -523,7 +518,7 @@ class LogViewer {
 		$userLink = $this->skin->logUserTools( $s, true );
 		// Comment
 		$comment = $this->skin->logComment( $s, true );
-
+		
 		$paramArray = LogPage::extractParams( $s->log_params );
 		$revert = ''; $del = '';
 		
@@ -536,7 +531,10 @@ class LogViewer {
 		$revert = $this->showReviewLinks( $s, $title, $paramArray );
 		
 		// Event description
-		$action = $this->logActionText( $s->log_type, $s->log_action, $title, $this->skin, $paramArray, $s->log_deleted );
+		if ( $s->log_deleted & self::DELETED_ACTION )
+			$action = '<span class="history-deleted">' . wfMsgHtml('rev-deleted-event') . '</span>';
+		else
+			$action = $this->logActionText( $s->log_type, $s->log_action, $title, $this->skin, $paramArray );
 		
 		$out = "<li><tt>$del</tt> $time $userLink $action $comment <small>$revert</small></li>\n";
 		return $out;
@@ -628,12 +626,11 @@ class LogViewer {
 				wfArrayToCGI( array('page' => $paramArray[0] ) ) ) . ':';
 			}
 			if ( $reviewlink ) {
-				// Link to each hidden object ID
-				$IdType = $paramArray[1].'id';
+				// Link to each hidden object ID, $paramArray[1] is the url param
 				$Ids = explode( ',', $paramArray[2] );
 				foreach ( $Ids as $id ) {
 					$reviewlink .= ' '.$this->skin->makeKnownLinkObj( $revdel, "#$id",
-					wfArrayToCGI( array('target' => $paramArray[0], $IdType => $id ) ) );
+					wfArrayToCGI( array('target' => $paramArray[0], $paramArray[1] => $id ) ) );
 				}
 			}
 		}

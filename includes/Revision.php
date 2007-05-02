@@ -10,8 +10,8 @@ class Revision {
 	const DELETED_TEXT = 1;
 	const DELETED_COMMENT = 2;
 	const DELETED_USER = 4;
-    const DELETED_RESTRICTED = 8;
-	
+	const DELETED_RESTRICTED = 8;
+
 	/**
 	 * Load a page revision from a given revision ID number.
 	 * Returns null if no such revision can be found.
@@ -45,6 +45,74 @@ class Revision {
 		}
 		return Revision::newFromConds(
 			array( "rev_id=$matchId",
+			       'page_id=rev_page',
+			       'page_namespace' => $title->getNamespace(),
+			       'page_title'     => $title->getDbkey() ) );
+	}
+	
+	/**
+	 * Gets the revision that was current at said time
+	 * as accurately as possible. Archiving of individual 
+	 * revisions can cause this to become borked.
+	 * --Use of rev_deleted instead avoids that.
+	 * History merges can break this
+	 *
+	 * @param Database $db
+	 * @param Title $title
+ 	 * @param timestamp $timeframe, desired view time
+	 * @return Revision
+	 * @access public
+	 * @static
+	 */	
+	public static function newFromTimeframe( &$title, $timeframe ) {
+		$relocated = true; // Assume true to begin with
+		$isdeleted = false;
+		$since = $timeframe;
+		$id = 0;
+		// Query conds...
+		$dbr = wfGetDB( DB_SLAVE );
+		$deleted = "log_type='delete' AND log_action='delete'";
+		$restored = "log_type='delete' AND log_action='restore'";
+		$moved = "log_type='move' AND log_action='move'";
+		// Initial query conds...
+		$d = $deleted;
+		$r = '1 = 0';
+		$m = $moved;
+		// Recursively check logs for page moves since $timeframe...
+		while ( $relocated ) {
+			$result = $dbr->select( 'logging', array('log_params', 'log_action', 'log_id'),
+				array("log_timestamp >= $timeframe", "log_id > $id",
+					'log_namespace' => $title->getNamespace(), 'log_title' => $title->getDbkey(),
+					"($m) OR ($d) OR ($r)"),
+				__METHOD__,
+				array('ORDER BY' => 'log_timestamp ASC', 'LIMIT' => 1) );
+			if ( $row = $dbr->fetchObject($result) ) {
+				// Was it deleted?
+				if ( $row->log_action=='delete' ) {
+					$isdeleted = true;
+					$d = '1 = 0';
+					$r = $restored;
+					$m = '1 = 0';
+				// Was it restored?
+				} else if ( $row->log_action=='restore' ) {
+					$isdeleted = false;
+					$d = $deleted; 
+					$r = '1 = 0'; 
+					$m = $moved;
+				// Was it moved?
+				} else {
+					$title = Title::newFromText( $row->log_params );
+				}
+				$id = $row->log_id;
+			} else if ( $isdeleted ) {
+				return null;
+			} else {
+				$relocated = false;
+			}
+		}
+		// Fetch the revision
+		return Revision::newFromConds(
+			array( "rev_timestamp < $timeframe",
 			       'page_id=rev_page',
 			       'page_namespace' => $title->getNamespace(),
 			       'page_title'     => $title->getDbkey() ) );
@@ -242,7 +310,7 @@ class Revision {
 			       'rev_len' ),
 			$conditions,
 			'Revision::fetchRow',
-			array( 'LIMIT' => 1 ) );
+			array( 'ORDER BY' => 'rev_id DESC', 'LIMIT' => 1 ) );
 		$ret = $db->resultObject( $res );
 		return $ret;
 	}
@@ -281,8 +349,8 @@ class Revision {
 			$this->mMinorEdit = intval( $row->rev_minor_edit );
 			$this->mTimestamp =         $row->rev_timestamp;
 			$this->mDeleted   = intval( $row->rev_deleted );
-
-			if( is_null( $row->rev_len ) )
+			
+			if( !isset( $row->rev_len ) || is_null( $row->rev_len ) )
 				$this->mSize = null;
 			else
 				$this->mSize = intval( $row->rev_len ); 
@@ -611,7 +679,7 @@ class Revision {
 				# Old revisions kept around in a legacy encoding?
 				# Upconvert on demand.
 				global $wgInputEncoding, $wgContLang;
-				$text = $wgContLang->iconv( $wgLegacyEncoding, $wgInputEncoding . '//IGNORE', $text );
+				$text = $wgContLang->iconv( $wgLegacyEncoding, $wgInputEncoding, $text );
 			}
 		}
 		wfProfileOut( $fname );

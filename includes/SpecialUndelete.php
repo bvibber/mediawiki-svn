@@ -85,8 +85,8 @@ class PageArchive {
 				array(
 					'GROUP BY' => 'ar_namespace,ar_title',
 					'ORDER BY' => 'ar_namespace,ar_title',
-					// "oversight" deletion involves hiding all
-					// possible values, a bitfield of 15
+					# "oversight" deletion involves hiding all
+					# values, a bitfield of 15, so hide the name too
 					'HAVING' => 'AVG(ar_deleted) != 15',
 					'LIMIT' => 100,
 				)
@@ -276,6 +276,7 @@ class PageArchive {
 	 * @param array $timestamps Pass an empty array to restore all revisions, otherwise list the ones to undelete.
 	 * @param string $comment
 	 * @param array $fileVersions
+	 * @param bool $Unsuppress
 	 *
 	 * @return true on success.
 	 */
@@ -356,8 +357,7 @@ class PageArchive {
 			: 'FOR UPDATE';
 		$page = $dbw->selectRow( 'page',
 			array( 'page_id', 'page_latest' ),
-			array( 'page_namespace' => $this->title->getNamespace(),
-			       'page_title'     => $this->title->getDBkey() ),
+			array( 'page_namespace' => $this->title->getNamespace(), 'page_title' => $this->title->getDBkey() ),
 			__METHOD__,
 			$options );
 		if( $page ) {
@@ -366,11 +366,14 @@ class PageArchive {
 			$newid             = 0;
 			$pageId            = $page->page_id;
 			$previousRevId     = $page->page_latest;
+			$previousRev       = Revision::NewFromId($previousRevId);
+			$previousTimestamp = $previousRev ? $previousRev->getTimestamp() : 0;
 		} else {
 			# Have to create a new article...
 			$newid  = $article->insertOn( $dbw );
 			$pageId = $newid;
 			$previousRevId = 0;
+			$previousTimestamp = 0;
 		}
 
 		if( $restoreAll ) {
@@ -411,26 +414,30 @@ class PageArchive {
 		$rev_count = $dbw->numRows( $result );
 		if( $rev_count < count( $timestamps ) ) {
 			# Remove page stub per failure
-			$dbw->delete( 'page', array( 'page_id' => $pageId ), __METHOD__);
+			$dbw->delete( 'page', array( 'page_id' => $newid ), __METHOD__);
 			wfDebug( __METHOD__.": couldn't find all requested rows\n" );
 			return false;
 		}
 		
 		$ret = $dbw->resultObject( $result );		
-		// FIXME: We don't currently handle well changing the top revision's settings
-		$ret->seek( $rev_count - 1 );
-		$last_row = $ret->fetchObject();
-		if ( !$Unsuppress && $last_row->ar_deleted && $last_row->ar_rev_id > $previousRevId ) {
-			# Remove page stub per failure
-			$dbw->delete( 'page', array( 'page_id' => $pageId ), __METHOD__);
-			wfDebug( __METHOD__.": couldn't find all requested rows or not all of them could be restored\n" );
-			return false;
+		// We don't handle well changing the top revision's settings
+		if ( $rev_count ) {
+			# We need to seek around as just using DESC in the ORDER BY
+			# would leave the revisions inserted in the wrong order
+			$ret->seek( $rev_count - 1 );
+			$last_row = $ret->fetchObject();
+			if ( !$Unsuppress && $last_row->ar_deleted && $last_row->ar_timestamp > $previousTimestamp ) {
+				# Remove page stub per failure
+				$dbw->delete( 'page', array( 'page_id' => $newid ), __METHOD__);
+				wfDebug( __METHOD__.": restoration would result in a deleted top revision\n" );
+				return false;
+			}
+			$ret->seek( 0 );
 		}
 
 		$revision = null;
 		$restored = 0;
 		
-		$ret->seek( 0 );
 		while( $row = $ret->fetchObject() ) {
 			if( $row->ar_text_id ) {
 				// Revision was deleted in 1.5+; text is in
@@ -460,10 +467,12 @@ class PageArchive {
 			$revision->insertOn( $dbw );
 			$restored++;
 		}
-
+		// If there were any revisions restored
 		if( $revision ) {
-			# FIXME: Update latest if newer as well...
-			if( $newid ) {
+			// If we have to create a new page entry
+			// or this is now the newest live revision,
+			// then set the page entry to point to it
+			if( $newid || $revision->getTimestamp() > $previousTimestamp ) {
 				// Attach the latest revision to the page...
 				$article->updateRevisionOn( $dbw, $revision, $previousRevId );
 				
@@ -478,8 +487,6 @@ class PageArchive {
 				wfRunHooks( 'ArticleUndelete', array( &$this->title, false ) );
 				Article::onArticleEdit( $this->title );
 			}
-		} else {
-			# Something went terribly wrong!
 		}
 
 		# Now that it's safely stored, take it out of the archive
@@ -537,7 +544,8 @@ class UndeleteForm {
 		}
 		if( $this->mRestore ) {
 			$timestamps = array();
-			/*$this->mFileVersions = array();
+			$this->mFileVersions = array();
+			/*
 			foreach( $_REQUEST as $key => $val ) {
 				$matches = array();
 				if( preg_match( '/^ts(\d{14})$/', $key, $matches ) ) {
@@ -828,7 +836,7 @@ class UndeleteForm {
 			}
 			$table .= '</tr><tr><td>&nbsp;</td><td>';
 			$table .= wfSubmitButton( wfMsg( 'undeletebtn' ), array( 'name' => 'restore' ) );
-			$table .= wfElement( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'undeletereset' ) ) );
+			#$table .= wfElement( 'input', array( 'type' => 'reset', 'value' => wfMsg( 'undeletereset' ) ) );
 			$table .= '</td></tr></table></fieldset>';
 			$wgOut->addHtml( $table );
 		}
@@ -874,7 +882,7 @@ class UndeleteForm {
 						if( $this->isDeleted( $row, Revision::DELETED_RESTRICTED ) )
 							$del = "<strong>$del</strong>";
 					}
-				$rd = "<tt>(<small>$del</small>)</tt>";
+					$rd = "<tt>(<small>$del</small>)</tt>";
 				}
 				
 				$dflag='';
@@ -933,9 +941,10 @@ class UndeleteForm {
 						if( $this->isDeleted( $row, Image::DELETED_RESTRICTED ) )
 							$del = "<strong>$del</strong>";
 					}
-				$rd = "<tt>(<small>$del</small>)</tt>";
+					$rd = "<tt>(<small>$del</small>)</tt>";
 				}
-				$wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $data $comment</li>\n" );
+				// $wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $data $comment</li>\n" );
+				$wgOut->addHTML( "<li>$rd $pageLink . . $userLink $data $comment</li>\n" );
 			}
 			$files->free();
 			$wgOut->addHTML( "</ul>" );

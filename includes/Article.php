@@ -1033,7 +1033,6 @@ class Article {
 		$result = $dbw->affectedRows() != 0;
 
 		if ($result) {
-			// FIXME: Should the result from updateRedirectOn() be returned instead?
 			$this->updateRedirectOn( $dbw, $rt, $lastRevIsRedirect );
 		}
 
@@ -2073,6 +2072,7 @@ class Article {
 		// Bitfields to further supress the content
 		if ( $suppress ) {
 			$bitfield = 0;
+			// This should be 15...
 			$bitfield |= Revision::DELETED_TEXT;
 			$bitfield |= Revision::DELETED_COMMENT;
 			$bitfield |= Revision::DELETED_USER;

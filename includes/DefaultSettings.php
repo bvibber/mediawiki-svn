@@ -31,7 +31,7 @@ require_once( 'includes/SiteConfiguration.php' );
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
-$wgVersion			= '1.10alpha';
+$wgVersion			= '1.11alpha';
 
 /** Name of the site. It must be changed in LocalSettings.php */
 $wgSitename         = 'MediaWiki';
@@ -179,10 +179,16 @@ $wgSaveDeletedFiles = false;
  *   $wgFileStore['deleted']['directory'] = '/var/wiki/private/deleted';
  *
  */
+// For deleted images, gererally were all versions of the image are discarded
 $wgFileStore = array();
 $wgFileStore['deleted']['directory'] = null; // Don't forget to set this.
 $wgFileStore['deleted']['url'] = null;       // Private
 $wgFileStore['deleted']['hash'] = 3;         // 3-level subdirectory split
+// For revisions of images marked as hidden
+// These are kept even if $wgSaveDeletedFiles is set to false
+$wgFileStore['hidden']['directory'] = null; // Don't forget to set this.
+$wgFileStore['hidden']['url'] = null;       // Private
+$wgFileStore['hidden']['hash'] = 3;         // 3-level subdirectory split
 
 /**
  * Allowed title characters -- regex character class
@@ -1010,18 +1016,17 @@ $wgGroupPermissions['sysop']['unwatchedpages']  = true;
 $wgGroupPermissions['sysop']['autoconfirmed']   = true;
 $wgGroupPermissions['sysop']['upload_by_url']   = true;
 $wgGroupPermissions['sysop']['ipblock-exempt']	= true;
+$wgGroupPermissions['sysop']['deleterevision']  = true;
 
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
 
-// Experimental permissions to enable revisiondelete:
-
-//$wgGroupPermissions['sysop']['deleterevision'] = true;
-//$wgGroupPermissions['sysop']['hideuser'] = true;
+// To hide usernames
+$wgGroupPermissions['bureaucrat']['hideuser'] = true;
 // To see hidden revs
-//$wgGroupPermissions['bureaucrat']['hiderevision'] = true;
+$wgGroupPermissions['bureaucrat']['hiderevision'] = true;
 // For private log access
-//$wgGroupPermissions['bureaucrat']['oversight'] = true;
+$wgGroupPermissions['bureaucrat']['oversight'] = true;
 
 /**
  * The developer group is deprecated, but can be activated if need be
@@ -1897,6 +1902,22 @@ $wgFeedDiffCutoff = 32768;
 $wgExtraNamespaces = NULL;
 
 /**
+ * Namespace aliases
+ * These are alternate names for the primary localised namespace names, which 
+ * are defined by $wgExtraNamespaces and the language file. If a page is 
+ * requested with such a prefix, the request will be redirected to the primary 
+ * name. 
+ *
+ * Set this to a map from namespace names to IDs.
+ * Example:
+ *    $wgNamespaceAliases = array( 
+ *        'Wikipedian' => NS_USER,
+ *        'Help' => 100,
+ *    );
+ */
+$wgNamespaceAliases = array();
+
+/**
  * Limit images on image description pages to a user-selectable limit. In order
  * to reduce disk usage, limits can only be selected from a list.
  * The user preference is saved as an array offset in the database, by default
@@ -1952,9 +1973,9 @@ $wgBrowserBlackList = array(
 	 * 
 	 * Reference: http://www.psychedelix.com/agents/index.shtml
 	 */
-	'/^Mozilla\/2\.[^ ]+ .*?\((?!compatible).*; [UIN]/',
-	'/^Mozilla\/3\.[^ ]+ .*?\((?!compatible).*; [UIN]/',
-	'/^Mozilla\/4\.[^ ]+ .*?\((?!compatible).*; [UIN]/',
+	'/^Mozilla\/2\.[^ ]+ [^(]*?\((?!compatible).*; [UIN]/',
+	'/^Mozilla\/3\.[^ ]+ [^(]*?\((?!compatible).*; [UIN]/',
+	'/^Mozilla\/4\.[^ ]+ [^(]*?\((?!compatible).*; [UIN]/',
 	
 	/**
 	 * MSIE on Mac OS 9 is teh sux0r, converts þ to <thorn>, ð to <eth>, Þ to <THORN> and Ð to <ETH>

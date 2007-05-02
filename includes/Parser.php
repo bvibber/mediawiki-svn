@@ -1,5 +1,7 @@
 <?php
+
 /**
+ *
  * File for Parser and related classes
  *
  * @addtogroup Parser
@@ -56,9 +58,10 @@ define( 'MW_COLON_STATE_COMMENTDASH', 6 );
 define( 'MW_COLON_STATE_COMMENTDASHDASH', 7 );
 
 /**
- * PHP Parser
- *
- * Processes wiki markup
+ * PHP Parser - Processes wiki markup (which uses a more user-friendly 
+ * syntax, such as "[[link]]" for making links), and provides a one-way
+ * transformation of that wiki markup it into XHTML output / markup
+ * (which in turn the browser understands, and can display).
  *
  * <pre>
  * There are four main entry points into the Parser class:
@@ -85,6 +88,7 @@ define( 'MW_COLON_STATE_COMMENTDASHDASH', 7 );
  *  * only within ParserOptions
  * </pre>
  *
+ * @addtogroup Parser
  */
 class Parser
 {
@@ -94,6 +98,11 @@ class Parser
 	 */
 	# Persistent:
 	var $mTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables;
+	
+	# Are we trying to get revs from a certain timeframe?
+	# Use $mTimeframe to set the revision to show as it was at that time
+	# Deletions/moves can cause red linkage or templates to become mere links
+	var $mTimeframe;
 
 	# Cleared with clearState():
 	var $mOutput, $mAutonumber, $mDTopen, $mStripState;
@@ -128,7 +137,7 @@ class Parser
 		$this->mFunctionSynonyms = array( 0 => array(), 1 => array() );
 		$this->mFirstCall = true;
 	}
-
+	
 	/**
 	 * Do various kinds of initialisation on the first call of the parser
 	 */
@@ -136,12 +145,12 @@ class Parser
 		if ( !$this->mFirstCall ) {
 			return;
 		}
-
+		
 		wfProfileIn( __METHOD__ );
 		global $wgAllowDisplayTitle, $wgAllowSlowParserFunctions;
-
+		
 		$this->setHook( 'pre', array( $this, 'renderPreTag' ) );
-
+		
 		$this->setFunctionHook( 'int', array( 'CoreParserFunctions', 'intFunction' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'ns', array( 'CoreParserFunctions', 'ns' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'urlencode', array( 'CoreParserFunctions', 'urlencode' ), SFH_NO_HASH );
@@ -161,6 +170,7 @@ class Parser
 		$this->setFunctionHook( 'numberofarticles', array( 'CoreParserFunctions', 'numberofarticles' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'numberoffiles', array( 'CoreParserFunctions', 'numberoffiles' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'numberofadmins', array( 'CoreParserFunctions', 'numberofadmins' ), SFH_NO_HASH );
+		$this->setFunctionHook( 'numberofedits', array( 'CoreParserFunctions', 'numberofedits' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'language', array( 'CoreParserFunctions', 'language' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'padleft', array( 'CoreParserFunctions', 'padleft' ), SFH_NO_HASH );
 		$this->setFunctionHook( 'padright', array( 'CoreParserFunctions', 'padright' ), SFH_NO_HASH );
@@ -269,7 +279,7 @@ class Parser
 	 * @param int $revid number to pass in {{REVISIONID}}
 	 * @return ParserOutput a ParserOutput
 	 */
-	public function parse( $text, &$title, $options, $linestart = true, $clearState = true, $revid = null ) {
+	public function parse( $text, &$title, $options, $linestart = true, $clearState = true, $revid = null, $timeframe=null ) {
 		/**
 		 * First pass--just handle <nowiki> sections, pass the rest off
 		 * to internalParse() which does all the real work.
@@ -286,6 +296,9 @@ class Parser
 
 		$this->mOptions = $options;
 		$this->mTitle =& $title;
+		// This variable is used for gettings Templates/Images from a certain time
+		$this->mTimeframe = $timeframe;
+		
 		$oldRevisionId = $this->mRevisionId;
 		$oldRevisionTimestamp = $this->mRevisionTimestamp;
 		if( $revid !== null ) {
@@ -1000,7 +1013,7 @@ class Parser
 		$text = Sanitizer::removeHTMLtags( $text, array( &$this, 'attributeStripCallback' ) );
 
 		$text = $this->replaceVariables( $text, $args );
-		wfRunHooks( 'InternalParseBeforeLinks', array( &$this, &$text ) );
+		wfRunHooks( 'InternalParseBeforeLinks', array( &$this, &$text, &$this->mStripState ) );
 
 		// Tables need to come after variable replacement for things to work
 		// properly; putting them before other transformations should keep
@@ -1468,7 +1481,7 @@ class Parser
 	 * @param string
 	 * @return string
 	 * @static
-	 * @fixme This can merge genuinely required bits in the path or query string,
+	 * @todo  This can merge genuinely required bits in the path or query string,
 	 *        breaking legit URLs. A proper fix would treat the various parts of
 	 *        the URL differently; as a workaround, just use the output for
 	 *        statistical records, not for actual linking/output.
@@ -1626,7 +1639,7 @@ class Parser
 				$might_be_img = true;
 				$text = $m[2];
 				if ( strpos( $m[1], '%' ) !== false ) {
-				       $m[1] = urldecode($m[1]);
+					$m[1] = urldecode($m[1]);
 				}
 				$trail = "";
 			} else { # Invalid form; output directly
@@ -1640,7 +1653,7 @@ class Parser
 			# Don't allow internal links to pages containing
 			# PROTO: where PROTO is a valid URL protocol; these
 			# should be external links.
-			if (preg_match('/^(\b(?:' . wfUrlProtocols() . '))/', $m[1])) {
+			if (preg_match('/^\b(?:' . wfUrlProtocols() . ')/', $m[1])) {
 				$s .= $prefix . '[[' . $line ;
 				continue;
 			}
@@ -2135,9 +2148,9 @@ class Parser
 				wfProfileIn( "$fname-paragraph" );
 				# No prefix (not in list)--go to paragraph mode
 				// XXX: use a stack for nestable elements like span, table and div
-				$openmatch = preg_match('/(<table|<blockquote|<h1|<h2|<h3|<h4|<h5|<h6|<pre|<tr|<p|<ul|<ol|<li|<\\/tr|<\\/td|<\\/th)/iS', $t );
+				$openmatch = preg_match('/(?:<table|<blockquote|<h1|<h2|<h3|<h4|<h5|<h6|<pre|<tr|<p|<ul|<ol|<li|<\\/tr|<\\/td|<\\/th)/iS', $t );
 				$closematch = preg_match(
-					'/(<\\/table|<\\/blockquote|<\\/h1|<\\/h2|<\\/h3|<\\/h4|<\\/h5|<\\/h6|'.
+					'/(?:<\\/table|<\\/blockquote|<\\/h1|<\\/h2|<\\/h3|<\\/h4|<\\/h5|<\\/h6|'.
 					'<td|<th|<\\/?div|<hr|<\\/pre|<\\/p|'.$this->mUniqPrefix.'-pre|<\\/li|<\\/ul|<\\/ol|<\\/?center)/iS', $t );
 				if ( $openmatch or $closematch ) {
 					$paragraphStack = false;
@@ -2539,6 +2552,8 @@ class Parser
 				return $varCache[$index] = $wgContLang->formatNum( SiteStats::pages() );
 			case 'numberofadmins':
 				return $varCache[$index]  = $wgContLang->formatNum( SiteStats::admins() );
+			case 'numberofedits':
+				return $varCache[$index]  = $wgContLang->formatNum( SiteStats::edits() );
 			case 'currenttimestamp':
 				return $varCache[$index] = wfTimestampNow();
 			case 'localtimestamp':
@@ -3032,6 +3047,19 @@ class Parser
 			} else {
 				# set $text to cached message.
 				$text = $linestart . $this->mTemplates[$piece['title']];
+				#treat title for cached page the same as others
+				$ns = NS_TEMPLATE;
+				$subpage = '';
+				$part1 = $this->maybeDoSubpageLink( $part1, $subpage );
+				if ($subpage !== '') {
+				  $ns = $this->mTitle->getNamespace();
+				}
+				$title = Title::newFromText( $part1, $ns );
+				//used by include size checking
+				$titleText = $title->getPrefixedText();
+				//used by edit section links
+				$replaceHeadings = true;
+				
 			}
 		}
 
@@ -3071,7 +3099,7 @@ class Parser
 						$found = false; //access denied
 						wfDebug( "$fname: template inclusion denied for " . $title->getPrefixedDBkey() );
 					} else {
-						$articleContent = $this->fetchTemplate( $title );
+						list($articleContent,$title) = $this->fetchTemplateAndtitle( $title );
 						if ( $articleContent !== false ) {
 							$found = true;
 							$text = $articleContent;
@@ -3159,7 +3187,7 @@ class Parser
 
 				# If the template begins with a table or block-level
 				# element, it should be treated as beginning a new line.
-				if (!$piece['lineStart'] && preg_match('/^({\\||:|;|#|\*)/', $text)) /*}*/{
+				if (!$piece['lineStart'] && preg_match('/^(?:{\\||:|;|#|\*)/', $text)) /*}*/{
 					$text = "\n" . $text;
 				}
 			} elseif ( !$noargs ) {
@@ -3202,6 +3230,7 @@ class Parser
 						PREG_SPLIT_DELIM_CAPTURE);
 					$text = '';
 					$nsec = $headingOffset;
+
 					for( $i = 0; $i < count($m); $i += 2 ) {
 						$text .= $m[$i];
 						if (!isset($m[$i + 1]) || $m[$i + 1] == "") continue;
@@ -3237,11 +3266,17 @@ class Parser
 	/**
 	 * Fetch the unparsed text of a template and register a reference to it.
 	 */
-	function fetchTemplate( $title ) {
+	function fetchTemplateAndtitle( $title ) {
 		$text = false;
+		$finalTitle = $title;
 		// Loop to fetch the article, with up to 1 redirect
 		for ( $i = 0; $i < 2 && is_object( $title ); $i++ ) {
-			$rev = Revision::newFromTitle( $title );
+			# Are we trying to get revs from a certain timeframe?
+			if ( $this->mTimeframe ) {
+				$rev = Revision::newFromTimeframe( $title, $this->mTimeframe );
+			} else {
+				$rev = Revision::newFromTitle( $title );
+			}
 			$this->mOutput->addTemplate( $title, $title->getArticleID() );
 			if ( $rev ) {
 				$text = $rev->getText();
@@ -3260,9 +3295,15 @@ class Parser
 				break;
 			}
 			// Redirect?
+			$finalTitle = $title;
 			$title = Title::newFromRedirect( $text );
 		}
-		return $text;
+		return array($text,$finalTitle);
+	}
+
+	function fetchTemplate( $title ) {
+		$rv = $this->fetchTemplateAndtitle($title);
+		return $rv[0];
 	}
 
 	/**
@@ -3435,17 +3476,13 @@ class Parser
 			$enoughToc = true;
 		}
 
-		# Never ever show TOC if no headers
-		if( $numMatches < 1 ) {
-			$enoughToc = false;
-		}
-
 		# We need this to perform operations on the HTML
 		$sk = $this->mOptions->getSkin();
 
 		# headline counter
 		$headlineCount = 0;
 		$sectionCount = 0; # headlineCount excluding template sections
+		$numVisible = 0;
 
 		# Ugh .. the TOC should have neat indentation levels which can be
 		# passed to the skin functions. These are determined here
@@ -3475,7 +3512,6 @@ class Parser
 
 			if( $toclevel ) {
 				$prevlevel = $level;
-				$prevtoclevel = $toclevel;
 			}
 			$level = $matches[1][$headlineCount];
 
@@ -3486,7 +3522,9 @@ class Parser
 					$toclevel++;
 					$sublevelCount[$toclevel] = 0;
 					if( $toclevel<$wgMaxTocLevel ) {
+						$prevtoclevel = $toclevel;
 						$toc .= $sk->tocIndent();
+						$numVisible++;
 					}
 				}
 				elseif ( $level < $prevlevel && $toclevel > 1 ) {
@@ -3593,9 +3631,14 @@ class Parser
 				$sectionCount++;
 		}
 
+		# Never ever show TOC if no headers
+		if( $numVisible < 1 ) {
+			$enoughToc = false;
+		}
+		
 		if( $enoughToc ) {
-			if( $toclevel<$wgMaxTocLevel ) {
-				$toc .= $sk->tocUnindent( $toclevel - 1 );
+			if( $prevtoclevel > 0 && $prevtoclevel < $wgMaxTocLevel ) {
+				$toc .= $sk->tocUnindent( $prevtoclevel - 1 );
 			}
 			$toc = $sk->tocList( $toc );
 		}
@@ -4369,8 +4412,8 @@ class Parser
 	 * Parse image options text and use it to make an image
 	 */
 	function makeImage( $nt, $options ) {
-		global $wgUseImageResize, $wgDjvuRenderer;
-
+		# @TODO: let the MediaHandler specify its transform parameters
+		#
 		# Check if the options text is of the form "options|alt text"
 		# Options are:
 		#  * thumbnail       	make a thumbnail with enlarge-icon and caption, alignment depends on lang
@@ -4390,6 +4433,7 @@ class Parser
 		#  * bottom
 		#  * text-bottom
 
+
 		$part = array_map( 'trim', explode( '|', $options) );
 
 		$mwAlign = array();
@@ -4404,13 +4448,14 @@ class Parser
 		$mwPage   =& MagicWord::get( 'img_page' );
 		$caption = '';
 
-		$width = $height = $framed = $thumb = false;
-		$page = null;
+		$params = array();
+		$framed = $thumb = false;
 		$manual_thumb = '' ;
 		$align = $valign = '';
+		$sk = $this->mOptions->getSkin();
 
 		foreach( $part as $val ) {
-			if ( $wgUseImageResize && ! is_null( $mwThumb->matchVariableStartToEnd($val) ) ) {
+			if ( !is_null( $mwThumb->matchVariableStartToEnd($val) ) ) {
 				$thumb=true;
 			} elseif ( ! is_null( $match = $mwManualThumb->matchVariableStartToEnd($val) ) ) {
 				# use manually specified thumbnail
@@ -4428,19 +4473,18 @@ class Parser
 						continue 2;
 					}
 				}
-				if ( isset( $wgDjvuRenderer ) && $wgDjvuRenderer
-				&& ! is_null( $match = $mwPage->matchVariableStartToEnd($val) ) ) {
+				if ( ! is_null( $match = $mwPage->matchVariableStartToEnd($val) ) ) {
 					# Select a page in a multipage document
-					$page = $match;
-				} elseif ( $wgUseImageResize && !$width && ! is_null( $match = $mwWidth->matchVariableStartToEnd($val) ) ) {
+					$params['page'] = $match;
+				} elseif ( !isset( $params['width'] ) && ! is_null( $match = $mwWidth->matchVariableStartToEnd($val) ) ) {
 					wfDebug( "img_width match: $match\n" );
 					# $match is the image width in pixels
 					$m = array();
 					if ( preg_match( '/^([0-9]*)x([0-9]*)$/', $match, $m ) ) {
-						$width = intval( $m[1] );
-						$height = intval( $m[2] );
+						 $params['width'] = intval( $m[1] );
+						 $params['height'] = intval( $m[2] );
 					} else {
-						$width = intval($match);
+						$params['width'] = intval($match);
 					}
 				} elseif ( ! is_null( $mwFramed->matchVariableStartToEnd($val) ) ) {
 					$framed=true;
@@ -4459,8 +4503,7 @@ class Parser
 		$alt = Sanitizer::stripAllTags( $alt );
 
 		# Linker does the rest
-		$sk = $this->mOptions->getSkin();
-		return $sk->makeImageLinkObj( $nt, $caption, $alt, $align, $width, $height, $framed, $thumb, $manual_thumb, $page, $valign );
+		return $sk->makeImageLinkObj( $nt, $caption, $alt, $align, $params, $framed, $thumb, $manual_thumb, $valign, $this->mTimeframe );
 	}
 
 	/**
@@ -4702,6 +4745,10 @@ class Parser
 
 }
 
+/**
+ * @todo document, briefly.
+ * @addtogroup Parser
+ */
 class OnlyIncludeReplacer {
 	var $output = '';
 
@@ -4714,6 +4761,10 @@ class OnlyIncludeReplacer {
 	}
 }
 
+/**
+ * @todo document, briefly.
+ * @addtogroup Parser
+ */
 class StripState {
 	var $general, $nowiki;
 

@@ -4,14 +4,12 @@
  * These functions are used for primarily page content:
  * links, embedded images, table of contents. Links are
  * also used in the skin.
- */
-
-/**
  * For the moment, Skin is a descendent class of Linker.
  * In the future, it should probably be further split
  * so that ever other bit of the wiki doesn't have to
  * go loading up Skin to get at it.
  *
+ * @addtogroup Skins
  */
 class Linker {
 	function __construct() {}
@@ -356,16 +354,8 @@ class Linker {
 	 *                      the end of the link.
 	 */
 	function makeStubLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
-		$u = $nt->escapeLocalURL( $query );
-
-		if ( '' == $text ) {
-			$text = htmlspecialchars( $nt->getPrefixedText() );
-		}
 		$style = $this->getInternalLinkAttributesObj( $nt, $text, 'stub' );
-
-		list( $inside, $trail ) = Linker::splitTrail( $trail );
-		$s = "<a href=\"{$u}\"{$style}>{$prefix}{$text}{$inside}</a>{$trail}";
-		return $s;
+		return $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix, '', $style );
 	}
 
 	/**
@@ -429,31 +419,38 @@ class Linker {
 	}
 
 	/** @todo document */
-	function makeImageLinkObj( $nt, $label, $alt, $align = '', $width = false, $height = false, $framed = false,
-	  $thumb = false, $manual_thumb = '', $page = null, $valign = '' )
+	function makeImageLinkObj( $nt, $label, $alt, $align = '', $params = array(), $framed = false,
+	  $thumb = false, $manual_thumb = '', $valign = '', $timeframe=null )
 	{
-		global $wgContLang, $wgUser, $wgThumbLimits, $wgGenerateThumbnailOnParse;
+		global $wgContLang, $wgUser, $wgThumbLimits;
 
-		$img   = new Image( $nt );
-
-		if ( ! is_null( $page ) ) {
-			$img->selectPage( $page );
-		}
+		$img   = new Image( $nt, $timeframe );
 
 		if ( !$img->allowInlineDisplay() && $img->exists() ) {
 			return $this->makeKnownLinkObj( $nt );
 		}
 
-		$url   = $img->getViewURL();
 		$error = $prefix = $postfix = '';
-
-		wfDebug( "makeImageLinkObj: '$width'x'$height', \"$label\"\n" );
+		$page = isset( $params['page'] ) ? $params['page'] : false;
 
 		if ( 'center' == $align )
 		{
 			$prefix  = '<div class="center">';
 			$postfix = '</div>';
 			$align   = 'none';
+		}
+
+		if ( !isset( $params['width'] ) ) {
+			$params['width'] = $img->getWidth( $page );
+			if( $thumb || $framed ) {
+				$wopt = $wgUser->getOption( 'thumbsize' );
+
+				if( !isset( $wgThumbLimits[$wopt] ) ) {
+					 $wopt = User::getDefaultOption( 'thumbsize' );
+				}
+
+				$params['width'] = min( $params['width'], $wgThumbLimits[$wopt] );
+			}
 		}
 
 		if ( $thumb || $framed ) {
@@ -468,73 +465,39 @@ class Linker {
 			if ( $align == '' ) {
 				$align = $wgContLang->isRTL() ? 'left' : 'right';
 			}
-
-
-			if ( $width === false ) {
-				$wopt = $wgUser->getOption( 'thumbsize' );
-
-				if( !isset( $wgThumbLimits[$wopt] ) ) {
-					 $wopt = User::getDefaultOption( 'thumbsize' );
-				}
-
-				$width = min( $img->getWidth(), $wgThumbLimits[$wopt] );
-			}
-
-			return $prefix.$this->makeThumbLinkObj( $img, $label, $alt, $align, $width, $height, $framed, $manual_thumb ).$postfix;
+			return $prefix.$this->makeThumbLinkObj( $img, $label, $alt, $align, $params, $framed, $manual_thumb ).$postfix;
 		}
 
-		if ( $width && $img->exists() ) {
-
-			# Create a resized image, without the additional thumbnail
-			# features
-
-			if ( $height == false )
-				$height = -1;
-			if ( $manual_thumb == '') {
-				$thumb = $img->getThumbnail( $width, $height, $wgGenerateThumbnailOnParse );
-				if ( $thumb ) {
-					// In most cases, $width = $thumb->width or $height = $thumb->height.
-					// If not, we're scaling the image larger than it can be scaled,
-					// so we send to the browser a smaller thumbnail, and let the client do the scaling.
-
-					if ($height != -1 && $width > $thumb->width * $height / $thumb->height) {
-						// $height is the limiting factor, not $width
-						// set $width to the largest it can be, such that the resulting
-						// scaled height is at most $height
-						$width = floor($thumb->width * $height / $thumb->height);
-					}
-					$height = round($thumb->height * $width / $thumb->width);
-
-					wfDebug( "makeImageLinkObj: client-size set to '$width x $height'\n" );
-					$url = $thumb->getUrl();
-				} else {
-					$error = htmlspecialchars( $img->getLastError() );
-					// Do client-side scaling...
-					$height = intval( $img->getHeight() * $width / $img->getWidth() );
-				}
-			}
+		if ( $params['width'] && $img->exists() ) {
+			# Create a resized image, without the additional thumbnail features
+			$thumb = $img->transform( $params );
 		} else {
-			$width = $img->width;
-			$height = $img->height;
+			$thumb = false;
 		}
 
-		wfDebug( "makeImageLinkObj2: '$width'x'$height'\n" );
-		$u = $nt->escapeLocalURL();
-		if ( $error ) {
-			$s = $error;
-		} elseif ( $url == '' ) {
+		if ( $page ) {
+			$query = 'page=' . urlencode( $page );
+		} else {
+			$query = '';
+		}
+		$u = $nt->getLocalURL( $query );
+		$imgAttribs = array(
+			'alt' => $alt,
+			'longdesc' => $u
+		);
+		if ( $valign ) {
+			$imgAttribs['style'] = "vertical-align: $valign";
+		}
+		$linkAttribs = array(
+			'href' => $u,
+			'class' => 'image',
+			'title' => $alt
+		);
+
+		if ( !$thumb ) {
 			$s = $this->makeBrokenImageLinkObj( $img->getTitle() );
-			//$s .= "<br />{$alt}<br />{$url}<br />\n";
 		} else {
-			$s = '<a href="'.$u.'" class="image" title="'.$alt.'">' .
-				 '<img src="'.$url.'" alt="'.$alt.'" ' .
-				 ( $width
-				 	? ( 'width="'.$width.'" height="'.$height.'" ' )
-				 	: '' ) .
-				 ( $valign
-					? ( 'style="vertical-align: '.$valign.'" ' )
-					: '' ) .
-				 'longdesc="'.$u.'" /></a>';
+			$s = $thumb->toHtml( $imgAttribs, $linkAttribs );
 		}
 		if ( '' != $align ) {
 			$s = "<div class=\"float{$align}\"><span>{$s}</span></div>";
@@ -546,86 +509,70 @@ class Linker {
 	 * Make HTML for a thumbnail including image, border and caption
 	 * $img is an Image object
 	 */
-	function makeThumbLinkObj( $img, $label = '', $alt, $align = 'right', $boxwidth = 180, $boxheight=false, $framed=false , $manual_thumb = "" ) {
-		global $wgStylePath, $wgContLang, $wgGenerateThumbnailOnParse;
+	function makeThumbLinkObj( $img, $label = '', $alt, $align = 'right', $params = array(), $framed=false , $manual_thumb = "" ) {
+		global $wgStylePath, $wgContLang;
 		$thumbUrl = '';
 		$error = '';
 
-		$width = $height = 0;
-		if ( $img->exists() ) {
-			$width  = $img->getWidth();
-			$height = $img->getHeight();
-		}
-		if ( 0 == $width || 0 == $height ) {
-			$width = $height = 180;
-		}
-		if ( $boxwidth == 0 ) {
-			$boxwidth = 180;
-		}
-		if ( $framed ) {
-			// Use image dimensions, don't scale
-			$boxwidth  = $width;
-			$boxheight = $height;
-			$thumbUrl  = $img->getViewURL();
-		} else {
-			if ( $boxheight === false )
-				$boxheight = -1;
-			if ( '' == $manual_thumb ) {
-				$thumb = $img->getThumbnail( $boxwidth, $boxheight, $wgGenerateThumbnailOnParse );
-				if ( $thumb ) {
-					$thumbUrl = $thumb->getUrl();
-					$boxwidth = $thumb->width;
-					$boxheight = $thumb->height;
-				} else {
-					$error = $img->getLastError();
-				}
-			}
-		}
-		$oboxwidth = $boxwidth + 2;
+		$page = isset( $params['page'] ) ? $params['page'] : false;
 
-		if ( $manual_thumb != '' ) # Use manually specified thumbnail
-		{
-			$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb ); #new Title ( $manual_thumb ) ;
+		if ( empty( $params['width'] ) ) {
+			$params['width'] = 180;
+		}
+		$thumb = false;
+		if ( $manual_thumb != '' ) {
+			# Use manually specified thumbnail
+			$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb );
 			if( $manual_title ) {
 				$manual_img = new Image( $manual_title );
-				$thumbUrl = $manual_img->getViewURL();
-				if ( $manual_img->exists() )
-				{
-					$width  = $manual_img->getWidth();
-					$height = $manual_img->getHeight();
-					$boxwidth = $width ;
-					$boxheight = $height ;
-					$oboxwidth = $boxwidth + 2 ;
-				}
+				$thumb = $manual_img->getUnscaledThumb();
 			}
+		} elseif ( $framed ) {
+			// Use image dimensions, don't scale
+			$thumb = $img->getUnscaledThumb( $page );
+		} else {
+			# Do not present an image bigger than the source, for bitmap-style images
+			# This is a hack to maintain compatibility with arbitrary pre-1.10 behaviour
+			$srcWidth = $img->getWidth( $page );
+			if ( $srcWidth && !$img->mustRender() && $params['width'] > $srcWidth ) {
+				$params['width'] = $srcWidth;
+			}
+			$thumb = $img->transform( $params );
 		}
 
-		$u = $img->getEscapeLocalURL();
+		if ( $thumb ) {
+			$outerWidth = $thumb->getWidth() + 2;
+		} else {
+			$outerWidth = $params['width'] + 2;
+		}
+
+		$query = $page ? 'page=' . urlencode( $page ) : '';
+		$u = $img->getTitle()->getLocalURL( $query );
 
 		$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
 		$magnifyalign = $wgContLang->isRTL() ? 'left' : 'right';
 		$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : '';
 
-		$s = "<div class=\"thumb t{$align}\"><div class=\"thumbinner\" style=\"width:{$oboxwidth}px;\">";
-		if( $thumbUrl == '' ) {
-			// Couldn't generate thumbnail? Scale the image client-side.
-			$thumbUrl = $img->getViewURL();
-			if( $boxheight == -1 ) {
-				// Approximate...
-				$boxheight = round( $height * $boxwidth / $width );
-			}
-		}
-		if ( $error ) {
-			$s .= htmlspecialchars( $error );
+		$s = "<div class=\"thumb t{$align}\"><div class=\"thumbinner\" style=\"width:{$outerWidth}px;\">";
+		if ( !$thumb ) {
+			$s .= htmlspecialchars( wfMsg( 'thumbnail_error', '' ) );
 			$zoomicon = '';
 		} elseif( !$img->exists() ) {
 			$s .= $this->makeBrokenImageLinkObj( $img->getTitle() );
 			$zoomicon = '';
 		} else {
-			$s .= '<a href="'.$u.'" class="internal" title="'.$alt.'">'.
-				'<img src="'.$thumbUrl.'" alt="'.$alt.'" ' .
-				'width="'.$boxwidth.'" height="'.$boxheight.'" ' .
-				'longdesc="'.$u.'" class="thumbimage" /></a>';
+			$imgAttribs = array(
+				'alt' => $alt,
+				'longdesc' => $u,
+				'class' => 'thumbimage'
+			);
+			$linkAttribs = array(
+				'href' => $u,
+				'class' => 'internal',
+				'title' => $alt
+			);
+				
+			$s .= $thumb->toHtml( $imgAttribs, $linkAttribs );
 			if ( $framed ) {
 				$zoomicon="";
 			} else {
@@ -681,8 +628,6 @@ class Linker {
 	 *
 	 * @param $title Title object.
 	 * @param $text  String: pre-sanitized HTML
-	 * @param $nourl Boolean: Mask absolute URLs, so the parser doesn't
-	 *                       linkify them (it is currently not context-aware)
 	 * @return string HTML
 	 *
 	 * @public
@@ -806,11 +751,8 @@ class Linker {
 	 * @private
 	 */
 	function userTalkLink( $userId, $userText ) {
-		global $wgLang;
-		$talkname = $wgLang->getNsText( NS_TALK ); # use the shorter name
-
 		$userTalkPage = Title::makeTitle( NS_USER_TALK, $userText );
-		$userTalkLink = $this->makeLinkObj( $userTalkPage, $talkname );
+		$userTalkLink = $this->makeLinkObj( $userTalkPage, wfMsgHtml( 'talkpagelinktext' ) );
 		return $userTalkLink;
 	}
 
@@ -874,7 +816,7 @@ class Linker {
 
 	/**
 	 * Generate a user link if the current user is allowed to view it
-	 * @param $file, filestore file
+	 * @param ArchivedFile or OldImage $file
 	 * @param $isPublic, bool, show only if all users can see it
 	 * @return string HTML
 	 */
@@ -942,7 +884,7 @@ class Linker {
 
 	/**
 	 * Generate a user tool link cluster if the current user is allowed to view it
-	 * @param $file, filestore file
+	 * @param ArchivedFile or OldImage $file
 	 * @param $isPublic, bool, show only if all users can see it
 	 * @return string HTML
 	 */
@@ -973,7 +915,7 @@ class Linker {
 	 * Since you can't set a default parameter for a reference, I've turned it
 	 * temporarily to a value pass. Should be adjusted further. --brion
 	 *
-	 * $param string $comment
+	 * @param string $comment
 	 * @param mixed $title Title object (to generate link to the section in autocomment) or null
 	 * @param bool $local Whether section links should refer to local page
 	 */
@@ -1125,7 +1067,7 @@ class Linker {
 	 * Wrap and format the given file's comment block, if the current
 	 * user is allowed to view it.
 	 *
-	 * @param FileStore file object $file
+	 * @param ArchivedFile or OldImage $file
 	 * @return string HTML
 	 */
 	function fileComment( $file, $isPublic = false ) {
@@ -1170,7 +1112,7 @@ class Linker {
 	/** @todo document */
 	function tocList($toc) {
 		global $wgJsMimeType;
-		$title =  wfMsgForContent('toc') ;
+		$title =  wfMsgHtml('toc') ;
 		return
 		   '<table id="toc" class="toc" summary="' . $title .'"><tr><td>'
 		 . '<div id="toctitle"><h2>' . $title . "</h2></div>\n"
@@ -1180,8 +1122,8 @@ class Linker {
 		 . "</ul>\n</td></tr></table>"
 		 . '<script type="' . $wgJsMimeType . '">'
 		 . ' if (window.showTocToggle) {'
-		 . ' var tocShowText = "' . wfEscapeJsString( wfMsgForContent('showtoc') ) . '";'
-		 . ' var tocHideText = "' . wfEscapeJsString( wfMsgForContent('hidetoc') ) . '";'
+		 . ' var tocShowText = "' . wfEscapeJsString( wfMsg('showtoc') ) . '";'
+		 . ' var tocHideText = "' . wfEscapeJsString( wfMsg('hidetoc') ) . '";'
 		 . ' showTocToggle();'
 		 . ' } '
 		 . "</script>\n";
