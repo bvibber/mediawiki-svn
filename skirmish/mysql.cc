@@ -53,7 +53,8 @@ struct connection : db::connection {
 private:
 	MYSQL *conn;
 	std::string err;
-	std::string host, db, user, password;
+	std::string host, db, user;
+	boost::optional<std::string> password;
 };
 
 
@@ -113,10 +114,12 @@ connection::open(void)
 	conn = new MYSQL;
 	mysql_init(conn);
 
+	mysql_options(conn, MYSQL_READ_DEFAULT_GROUP, "skirmish");
+
 	if (mysql_real_connect(conn, 
 			host.empty() ? NULL : host.c_str(),
 			user.empty() ? NULL : user.c_str(),
-			password.empty() ? NULL : password.c_str(),
+			(password && !password->empty()) ? password->c_str() : NULL,
 			db.empty() ? NULL :db.c_str(), 0, NULL, 0) == NULL) {
 		err = mysql_error(conn);
 		delete conn;

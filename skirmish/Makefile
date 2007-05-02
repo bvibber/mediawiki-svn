@@ -1,6 +1,10 @@
 include config.mk
 include rules.mk
 
+PREFIX?=	/usr/local
+BINDIR?=	/usr/local/bin
+INSTALL?=	install
+
 SRCS =			\
 	terminal.cc	\
 	skirmish.cc	\
@@ -24,6 +28,10 @@ help_text.cc: bin/mkhelp
 
 bin/help_text.o: bin/mkhelp help_text.cc
 	$(CXX) $(CPPFLAGS) $(INCLUDES) $(CXXFLAGS) -c help_text.cc -o bin/help_text.o
+
+install:
+	$(INSTALL) -d -m 755 $(BINDIR)
+	$(INSTALL) -o root -g bin -m 755 bin/skirmish $(BINDIR)
 
 clean:
 	rm -f bin/* help_text.cc
