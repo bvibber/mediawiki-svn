@@ -35,8 +35,8 @@ public class IndexUpdateRecord implements Serializable {
 	/** Used to identify this object in a back report */
 	protected ReportId reportId;
 	
-	public IndexUpdateRecord(String dbrole, Title title, String text, boolean redirect, Action role){
-		article = new Article(title,text,redirect);
+	public IndexUpdateRecord(String dbrole, long pageId, Title title, String text, boolean redirect, Action role){
+		article = new Article(pageId,title,text,redirect);
 		this.action = role;
 		iid = IndexId.get(dbrole);
 		alwaysAdd = true;

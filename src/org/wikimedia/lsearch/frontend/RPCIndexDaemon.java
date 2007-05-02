@@ -23,16 +23,16 @@ public class RPCIndexDaemon {
 			ud = new IndexDaemon();
 	}
 
-	public boolean updatePage(String databaseName, HashMap titleMap, String text, String isRedirect) {
+	public boolean updatePage(String databaseName, String pageId, HashMap titleMap, String text, String isRedirect) {
 		Title title = new Title(((Integer)titleMap.get("namespace")).intValue(),(String) titleMap.get("title"));
-		ud.updatePage(databaseName,title,isRedirect,text);
+		ud.updatePage(databaseName,pageId,title,isRedirect,text);
 		return true;
 	}
 
 
-	public boolean deletePage(String databaseName, HashMap titleMap) {
+	public boolean deletePage(String databaseName, String pageId, HashMap titleMap) {
 		Title title = new Title(((Integer)titleMap.get("namespace")).intValue(),(String) titleMap.get("title"));
-		ud.deletePage(databaseName,title);
+		ud.deletePage(databaseName,pageId,title);
 		return true;
 	}
 
