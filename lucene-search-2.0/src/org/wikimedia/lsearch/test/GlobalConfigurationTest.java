@@ -49,10 +49,6 @@ public class GlobalConfigurationTest extends TestCase {
 			return indexLocation;
 		}
 		
-		public Hashtable getIndexPath(){
-			return indexPath;
-		}
-		
 		public InetAddress getMyHost(){
 			return myHost;
 		}
@@ -84,7 +80,7 @@ public class GlobalConfigurationTest extends TestCase {
 		String testurl = "file://"+System.getProperty("user.dir")+"/test-data/mwsearch-global.test";
 		try {
 			URL url = new URL(testurl);
-			testgc.readFromURL(url);
+			testgc.readFromURL(url,"/usr/local/var/mwsearch");
 			
 			// database
 			Hashtable database = testgc.getDatabase();			
@@ -144,10 +140,6 @@ public class GlobalConfigurationTest extends TestCase {
 			assertEquals("192.168.0.5",indexLocation.get("entest.mainpart"));
 			assertEquals("192.168.0.2",indexLocation.get("entest.ngram"));
 			
-			// indexPath
-			Hashtable indexPath = testgc.getIndexPath();
-			assertEquals("/usr/local/var/mwsearch",indexPath.get("<default>"));
-			assertEquals("/usr/local/var/mwsearch2",indexPath.get("192.168.0.5"));			
 			
 			// this should be the nonloopback address
 			InetAddress host = testgc.getMyHost();
@@ -174,9 +166,9 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals("entest",entest.toString());
 		assertEquals("192.168.0.5",entest.getIndexHost());
 		assertFalse(entest.isMyIndex());
-		assertEquals("/usr/local/var/mwsearch2/snapshot/entest",entest.getSnapshotPath());
+		assertEquals(null,entest.getSnapshotPath());
 		assertEquals("mainsplit",entest.getType());
-		assertEquals("/usr/local/var/mwsearch2/index/entest",entest.getIndexPath());
+		assertEquals("/mwsearch2/snapshot/entest",entest.getRsyncSnapshotPath());
 		
 		IndexId enrest = IndexId.get("entest.restpart");
 		
@@ -185,10 +177,10 @@ public class GlobalConfigurationTest extends TestCase {
 		assertFalse(enrest.isLogical());
 		assertEquals("entest",enrest.getDBname());
 		assertEquals("entest.restpart",enrest.toString());
+		assertEquals("/mwsearch2/snapshot/entest.restpart",enrest.getRsyncSnapshotPath());
 		assertFalse(enrest.isMyIndex());
-		assertEquals("/usr/local/var/mwsearch2/snapshot/entest.restpart",enrest.getSnapshotPath());
 		assertEquals("mainsplit",enrest.getType());
-		assertEquals("/usr/local/var/mwsearch2/index/entest.restpart",enrest.getIndexPath());
+		assertEquals(null,enrest.getIndexPath());
 		
 		IndexId frtest = IndexId.get("frtest");
 		assertTrue(frtest.isSplit());

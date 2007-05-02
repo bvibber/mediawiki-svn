@@ -263,7 +263,8 @@ public class FastWikiTokenizerEngine {
 		if(line == null) // only single line without a newline
 			line = new String(text,0,textLength);
 		
-		if(line.matches("#REDIRECT +\\[\\[.*?\\]\\]"))
+		// kind of hackish but should work
+		if(line.matches("#.*? +\\[\\[.*?\\]\\]"))
 			return true;
 		
 		return false;			

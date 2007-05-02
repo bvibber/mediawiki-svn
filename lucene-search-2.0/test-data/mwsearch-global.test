@@ -38,14 +38,7 @@ frtest : (split,3) (part1) (part2) (part3)
 # Path where indexes are on hosts, after default value put hosts where 
 # the location differs
 [Index-Path]
-<default> : /usr/local/var/mwsearch
-192.168.0.5 : /usr/local/var/mwsearch2
-
-# Protocols and ports on which indexer and searchers will listen
-# Add nondefault host settings after the default ones
-# indexer can use a http and xmlrpc frontends, searcher only http
-[Protocols]
-<index> : (http,8321)
-<search> : (http,8123)
+<default> : /mwsearch
+192.168.0.5 : mwsearch2
 
 # databases can be writen as {file}, where file contains list of dbs

@@ -50,18 +50,15 @@ public class StartupManager {
 		if(global.isIndexer()){
 			// preload the unicode decomposer
 			UnicodeDecomposer.getInstance();
-			// start the fronend deamon if needed
-			if(global.hasIndexFrontendDBs()){
-				String daemon = config.getString("Index","daemon");
-				// default is http server
-				if(daemon == null || daemon.equalsIgnoreCase("http"))
-					(new HTTPIndexServer()).start();
-				else if(daemon.equalsIgnoreCase("xmlrpc"))
-					(new RPCIndexServer()).start();
-				else{
-					System.out.println("Warning: Unknown server type \""+daemon+"\" for indexer, using http frontend.");
-					(new HTTPIndexServer()).start();			
-				}
+			String daemon = config.getString("Index","daemon");
+			// default is http server
+			if(daemon == null || daemon.equalsIgnoreCase("http"))
+				(new HTTPIndexServer()).start();
+			else if(daemon.equalsIgnoreCase("xmlrpc"))
+				(new RPCIndexServer()).start();
+			else{
+				System.out.println("Warning: Unknown server type \""+daemon+"\" for indexer, using http frontend.");
+				(new HTTPIndexServer()).start();			
 			}
 		}
 		if(global.isSearcher()){

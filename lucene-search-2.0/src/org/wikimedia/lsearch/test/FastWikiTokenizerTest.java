@@ -49,7 +49,9 @@ public class FastWikiTokenizerTest {
 		}
 		
 		public static void main(String args[]) throws IOException{
-			String text = "[[Category:Blah Blah?!|Caption]], and [[:Category:Link to category]]";
+			String text = "#Preusmenje [[Njanja]]";
+			showTokens(text);
+			text = "[[Category:Blah Blah?!|Caption]], and [[:Category:Link to category]]";
 			showTokens(text);
 			text = "{{IPstack}} '''[[Hypertext]] Transfer [[communications protocol|Protocol]]''' ('''HTTP''') is a method used to transfer or convey information on the [[World Wide Web]]. Its original purpose was to provide a way to publish and retrieve [[HTML]] pages.";
 			showTokens(text);
