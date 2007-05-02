@@ -39,7 +39,6 @@ function getSuggestions() {
 		$idAttribute;
 	global $wgUser;
 
-	$queryResult=null;
 	$search = ltrim($_GET['search-text']);
 	$prefix = $_GET['prefix'];
 	$query = $_GET['query'];
@@ -49,70 +48,27 @@ function getSuggestions() {
 	
 	$dbr =& wfGetDB( DB_SLAVE );
 	$rowText = 'spelling';
-	wfDebug("]]]]] query: $query\n");
 	switch ($query) {
 		case 'relation-type':
-			$sql = getSQLForCollectionOfType('RELT');
+			$sql_actual = getSQLForCollectionOfType('RELT', $wgUser->getOption('language'));
+			$sql_fallback = getSQLForCollectionOfType('RELT', 'en');
+			$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("member_mid", "spelling", "collection_mid"));
 			break;
 		case 'class':
-			$sql = getSQLForCollectionOfType('CLAS');
+			$sql_actual = getSQLForCollectionOfType('CLAS', $wgUser->getOption('language'));
+			$sql_fallback = getSQLForCollectionOfType('CLAS', 'en');
+			$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("member_mid", "spelling", "collection_mid"));
 			break;
 		case 'option-attribute':
-			# This might be done tidier, if I knew more PHP.
-			# try user interface language
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', $wgUser->getOption('language'));
-			$try=$dbr->query($sql);
-			if ($dbr->numrows($try)==0) {
-				# fall back to en
-				$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', 'en');
-				$try=$dbr->query($sql);
-				if ($dbr->numrows($try)==0) {
-					# fall back to something semi-random
-					$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', '<ANY>');
-					$try=$dbr->query($sql);
-					if ($dbr->numrows($try)==0) {
-						# Give up. (Not sure that's a good thing, so emitting message to log, if logging is on.)
-						wfDebug("getSuggestions didn't find any matches for ". $wgUser->getOption('language'));
-						return;
-					}
-				}
-			}
-
-			if ($dbr->numrows($try)>0) {
-				$queryResult=$try;
-			}
-			
-				
-			#$q2 = $dbr->query($sql);
-			
+			$sql_actual = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', $wgUser->getOption('language'));
+			$sql_fallback = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', 'en');
+			$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("attribute_mid", "spelling"));
 			break;
 		case 'translated-text-attribute':
 		case 'text-attribute':	
-			# This is the same as case option-attribute, but s/OPTN/TEXT/.
-			# If anyone asks me to do this thrice, I shall make a function.
-			wfDebug("]]]BINGELY");
-			# try user interface language
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', $wgUser->getOption('language'));
-			$try=$dbr->query($sql);
-			if ($dbr->numrows($try)==0) {
-				# fall back to en
-				$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', 'en');
-				$try=$dbr->query($sql);
-				if ($dbr->numrows($try)==0) {
-					# fall back to something semi-random
-					$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', '<ANY>');
-					$try=$dbr->query($sql);
-					if ($dbr->numrows($try)==0) {
-						# Give up. (Not sure that's a good thing, so emitting message to log, if logging is on.)
-						wfDebug("getSuggestions didn't find any matches for ". $wgUser->getOption('language'));
-						return;
-					}
-				}
-			}
-
-			if ($dbr->numrows($try)>0) {
-				$queryResult=$try;
-			}
+			$sql_actual = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', $wgUser->getOption('language'));
+			$sql_fallback = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', 'en');
+			$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("attribute_mid", "spelling"));
 			break;
 		case 'language':
 			require_once('languages.php');
@@ -132,22 +88,9 @@ function getSuggestions() {
 	    	$sql = getSQLForCollectionOfType('LEVL');
 	    	break;
 	    case 'collection':
-	    	$sql = 
-				"SELECT collection_id, spelling ".
-	    		" FROM uw_expression_ns, uw_collection_ns, uw_syntrans " .
-	    		" WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id" .
-	    		" AND uw_syntrans.defined_meaning_id=uw_collection_ns.collection_mid " .
-	    		" AND uw_syntrans.identical_meaning=1" .
-	    		" AND " . getLatestTransactionRestriction('uw_syntrans') .
-	    		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
-	    		" AND " . getLatestTransactionRestriction('uw_collection_ns');
-
-		#$try=$dbr->query($sql);
-		wfDebug("]]]]]trying...\n");
-		#if ($dbr->numrows($try)>0) {
-		#	wfDebug("]]]]obtained...\n");
-		#	$queryResult=$try;
-		#}
+	 	$sql_actual=getSQLForCollection($wgUser->getOption('language'));
+	 	$sql_fallback=getSQLForCollection('en');
+		$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("collection_id", "spelling"));
 	    	break;
 	    case 'transaction':
 	    	$sql = 
@@ -184,13 +127,13 @@ function getSuggestions() {
 		
 	$sql .= "10";
 	
-	# Do query here (unless someone was doing hit-and-miss searching earlier
-	#	and already found their result)
-	if ($queryResult==null) {
-		$queryResult = $dbr->query($sql);
-	}
+	# == Actual query here
+	#wfdebug("]]]".$sql."\n");
+	$queryResult = $dbr->query($sql);
+	
 	$idAttribute = new Attribute("id", "ID", "id");
 	
+	# == Process query
 	switch($query) {
 		case 'relation-type':
 			list($recordSet, $editor) = getRelationTypeAsRecordSet($queryResult);
@@ -227,6 +170,38 @@ function getSuggestions() {
 	return $editor->view(new IdStack($prefix . 'table'), $recordSet);
 }
 
+# Constructs a new SQL query from 2 other queries such that if a field exists
+# in the fallback query, but not in the actual query, the field from the
+# fallback query will be returned. Fields not in the fallback are ignored.
+# You will need to state which fields in your query need to be returned.
+# As a (minor) hack, the 0th element of $fields is assumed to be the key field. 
+function ConstructSQLWithFallback($actual_query, $fallback_query, $fields){
+
+	#if ($actual_query==$fallback_query)
+	#	return $actual_query; 
+
+	$sql.="SELECT ";
+	$sql_with_comma=$sql;
+	foreach ($fields as $field) {
+		$sql=$sql_with_comma;
+		$sql.="COALESCE(actual.$field, fallback.$field) as $field";
+		$sql_with_comma=$sql;
+		$sql_with_comma.=", ";
+	}
+		
+	$sql.=" FROM ";
+	$sql.=	" ( $fallback_query ) AS fallback";
+	$sql.=	" LEFT JOIN ";
+	$sql.=	" ( $actual_query ) AS actual";
+	
+	$field0=$fields[0]; # slightly presumptuous
+	$sql.=  " ON actual.$field0 = fallback.$field0";
+	
+	return $sql;
+}
+
+# langauge is the 2 letter wikimedia code. use "<ANY>" if you don't want language filtering
+# (any does set limit 1 hmph)
 function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType, $language) {
 	global 
 		$wgDefaultClassMids;
@@ -237,8 +212,6 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 	else
 		$defaultClassRestriction = "";
 
-	
-	wfDebug("[][][][][] attributesLevel=$attributesLevel attributesType=$attributesType");
 	$dbr =& wfGetDB(DB_SLAVE);
 	$sql = 
 		'SELECT attribute_mid, spelling' .
@@ -280,9 +253,8 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 	return $sql;
 }
 
-function getSQLForCollectionOfType($collectionType) {
-	return 
-		"SELECT member_mid, spelling, collection_mid " .
+function getSQLForCollectionOfType($collectionType, $language="<ANY>") {
+	$sql="SELECT member_mid, spelling, collection_mid " .
         " FROM uw_collection_contents, uw_collection_ns, uw_syntrans, uw_expression_ns " .
         " WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id " .
         " AND uw_collection_ns.collection_type='$collectionType' " .
@@ -293,7 +265,42 @@ function getSQLForCollectionOfType($collectionType) {
         " AND " . getLatestTransactionRestriction('uw_expression_ns') .
         " AND " . getLatestTransactionRestriction('uw_collection_ns') .
         " AND " . getLatestTransactionRestriction('uw_collection_contents');
+	if ($language!="<ANY>") {
+		$dbr =& wfGetDB(DB_SLAVE);
+		$sql .=
+			' AND language_id=( '. 
+				' SELECT language_id'.
+				' FROM language'.
+				' WHERE wikimedia_key = '. $dbr->addQuotes($language).
+				' )';
+	}
+	return $sql;
 }
+
+function getSQLForCollection($language="<ANY>") {
+	$sql = 
+			"SELECT collection_id, spelling ".
+	    		" FROM uw_expression_ns, uw_collection_ns, uw_syntrans " .
+	    		" WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id" .
+	    		" AND uw_syntrans.defined_meaning_id=uw_collection_ns.collection_mid " .
+	    		" AND uw_syntrans.identical_meaning=1" .
+	    		" AND " . getLatestTransactionRestriction('uw_syntrans') .
+	    		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+	    		" AND " . getLatestTransactionRestriction('uw_collection_ns');
+	
+	if ($language!="<ANY>") {
+		$dbr =& wfGetDB(DB_SLAVE);
+		$sql .=
+			' AND language_id=( '. 
+				' SELECT language_id'.
+				' FROM language'.
+				' WHERE wikimedia_key = '. $dbr->addQuotes($language).
+				' )';
+	}
+
+	return $sql;
+}
+
 
 function getRelationTypeAsRecordSet($queryResult) {
 	global
