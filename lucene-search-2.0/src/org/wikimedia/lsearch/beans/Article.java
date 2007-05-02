@@ -33,47 +33,40 @@ import java.io.Serializable;
  *
  */
 public class Article implements Serializable  {
-	private String namespace, title, contents, timestamp;
+	private String namespace, title, contents;
 	private boolean redirect;
+	private long pageId;
 	
 	public Article(){
 		namespace="";
 		title="";
 		contents="";
-		timestamp="";
+		pageId = 0;
 		redirect=false;
 	}
 	public Article(String dbname, String namespace_, 
-			String title_, String contents_, String timestamp_, boolean isRedirect_) {
+			String title_, String contents_, long pageId_, boolean isRedirect_) {
 		namespace = namespace_;
 		title = title_;
 		contents = contents_;
-		timestamp = timestamp_;
+		pageId = pageId_;
 		redirect = isRedirect_;
 	}
 	
-	public Article(Title title, String text, boolean redirect) {
+	public Article(long pageId, Title title, String text, boolean redirect) {
 		namespace = Integer.toString(title.getNamespace());
 		this.title = title.getTitle();
 		contents = text;
-		timestamp = null;
+		this.pageId = pageId;
 		this.redirect = redirect;
 	}
 	
-	public Article(int namespace, String titleText, String text, boolean redirect) {
+	public Article(long pageId, int namespace, String titleText, String text, boolean redirect) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		contents = text;
-		timestamp = null;
 		this.redirect = redirect;
-	}
-	
-	public Article(int namespace_, String title_) {
-		namespace = Integer.toString(namespace_);
-		title = title_;
-		contents = null;
-		timestamp = null;
-		redirect = false;
+		this.pageId = pageId;
 	}
 	
 	public boolean isRedirect() {
@@ -98,19 +91,15 @@ public class Article implements Serializable  {
 	}
 	
 	/**
-	 * @return Returns the timestamp.
-	 */
-	public String getTimestamp() {
-		return timestamp;
-	}
-	
-	/**
 	 * @return Returns the title.
 	 */
 	public String getTitle() {
 		return title;
 	}
 
+	public long getPageId() {
+		return pageId;
+	}
 	/**
 	 * Articles need to be easily identifiable by an exact match
 	 * for replacement of updated items when updating an existing
@@ -119,7 +108,7 @@ public class Article implements Serializable  {
 	 * @return Returns unique id.
 	 */
 	public String getKey() {
-		return getNamespace() + ":" + getTitle();
+		return Long.toString(pageId);
 	}
 	
 	public String toString() {

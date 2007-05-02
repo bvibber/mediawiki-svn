@@ -331,8 +331,7 @@ public class IndexThread extends Thread {
 			} else if( iid.isSplit() ){
 				int number = iid.getSplitFactor();
 				Article a = record.getArticle();
-				ReportId reportId = new ReportId(Integer.parseInt(a.getNamespace()),
-						a.getTitle(),
+				ReportId reportId = new ReportId(a.getPageId(),
 						System.currentTimeMillis(),
 						iid.toString(),
 						record);

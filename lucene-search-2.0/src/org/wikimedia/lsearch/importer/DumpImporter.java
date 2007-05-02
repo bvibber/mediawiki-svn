@@ -28,7 +28,7 @@ public class DumpImporter implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		Article article = new Article(page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect());
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect());
 		writer.addArticle(article);		
 	}	
 	
