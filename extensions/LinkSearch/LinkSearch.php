@@ -99,7 +99,7 @@ function wfLinkSearchSetup() {
 		/**
 		 * Override to check query validity.
 		 */
-		function doQuery( $offset, $limit ) {
+		function doQuery( $offset, $limit, $shownavigation=true ) {
 			global $wgOut;
 			$this->mMungedQuery = LinkSearchPage::mungeQuery( $this->mQuery, $this->mProt );
 			if( $this->mMungedQuery === false ) {
@@ -107,7 +107,7 @@ function wfLinkSearchSetup() {
 			} else {
 				// For debugging
 				$wgOut->addHtml( "\n<!-- " . htmlspecialchars( $this->mMungedQuery ) . " -->\n" );
-				parent::doQuery( $offset, $limit );
+				parent::doQuery( $offset, $limit, $shownavigation );
 			}
 		}
 
