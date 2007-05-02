@@ -45,15 +45,13 @@ public class GlobalConfiguration {
 	/** dbrole -> host */
 	protected Hashtable<String,String> indexLocation;
 	/** host -> path */
-	protected Hashtable<String,String> indexPath;
+	protected Hashtable<String,String> indexRsyncPath;
+	/** path where index are locally stored */
+	protected String indexPath;
 	
 	/** info about this host */
 	protected static InetAddress myHost;
 	protected static String hostAddr, hostName;	
-	protected String myIndexPath;
-	// dbs used for indexing
-	protected HashSet<String> indexFrontends;
-	protected HashSet<String> indexParts;
 	
 	/** All identifiers of all indexes (dbrole -> IndexId) */
 	protected static Hashtable<String,IndexId> indexIdPool = new Hashtable<String,IndexId>();
@@ -116,7 +114,7 @@ public class GlobalConfiguration {
 	 */
 	public boolean checkIntegrity(){
 		// check for default path
-		if(indexPath.get("<default>") == null){
+		if(indexRsyncPath.get("<default>") == null){
 			System.out.println("ERROR in GlobalConfiguration: Default path for index absent. Check section [Index-Path].");
 			return false;
 		}
@@ -182,13 +180,13 @@ public class GlobalConfiguration {
 	 * @param url
 	 * @throws IOException
 	 */
-	public void readFromURL(URL url) throws IOException{
+	public void readFromURL(URL url, String indexpath) throws IOException{
 		BufferedReader in;
 		try {
 			in = new BufferedReader(
 					new InputStreamReader(
 					url.openStream()));
-			read(in);
+			read(in,indexpath);
 		} catch (IOException e) {
 			System.out.println("I/O Error in opening or reading global config at url "+url);
 			throw e;
@@ -206,10 +204,7 @@ public class GlobalConfiguration {
 		databaseGroup = new Hashtable<String,Integer>();
 		index = new Hashtable<String, ArrayList<String>>();
 		indexLocation = new Hashtable<String, String>();
-		indexPath = new Hashtable<String, String>();
-		
-		indexFrontends = new HashSet<String>();
-		indexParts = new HashSet<String>();
+		indexRsyncPath = new Hashtable<String, String>();
 	}
 	
 	/** 
@@ -219,7 +214,7 @@ public class GlobalConfiguration {
 	 * @param in   opened reader
 	 * @throws IOException
 	 */
-	protected void read(BufferedReader in) throws IOException{
+	protected void read(BufferedReader in, String indexpath) throws IOException{
 		String line="";		
 		int section = -1; 
 		Pattern roleRegexp = Pattern.compile("\\((.*?)\\)");
@@ -233,6 +228,7 @@ public class GlobalConfiguration {
 		int searchGroupNum = -1;
 		
 		init();
+		this.indexPath = indexpath;
 		
 		while((line = in.readLine()) != null){
 			lineNum ++;		
@@ -288,9 +284,9 @@ public class GlobalConfiguration {
 				String host = parts[0].trim();
 				String path = parts[1].trim();
 				
-				if(indexPath.get(host)!=null)
+				if(indexRsyncPath.get(host)!=null)
 					System.out.println("Warning: repeated path definition for host "+host+" on line "+lineNum+", overwriting old.");
-				indexPath.put(host,path);
+				indexRsyncPath.put(host,path);
 			}
 		}
 		if( !checkIntegrity() ){
@@ -298,7 +294,6 @@ public class GlobalConfiguration {
 			System.exit(1);
 		}
 		makeIndexIdPool();
-		processLocalData();
 		in.close();
 	}
 	
@@ -364,39 +359,31 @@ public class GlobalConfiguration {
 				boolean mySearch = searchHosts.contains(hostAddr) || searchHosts.contains(hostName);
 				String indexHost = indexLocation.get(dbrole);
 				boolean myIndex = localIndexes.contains(dbrole);
-				String thisIndexPath = "/";
+				
+				String rsyncIndexPath = "/";
 				// if the index is on the local computer search for it
 				// using both ip address and host name
 				if(myIndex){
-					thisIndexPath = indexPath.get(hostAddr);
-					if(thisIndexPath == null)
-						thisIndexPath = indexPath.get(hostName);
-					if(thisIndexPath == null)
-						thisIndexPath = indexPath.get("<default>");	
+					rsyncIndexPath = indexRsyncPath.get(hostAddr);
+					if(rsyncIndexPath == null)
+						rsyncIndexPath = indexRsyncPath.get(hostName);
+					if(rsyncIndexPath == null)
+						rsyncIndexPath = indexRsyncPath.get("<default>");	
 				} else{
-					thisIndexPath = indexPath.get(indexHost);
-					if(thisIndexPath == null)
-						thisIndexPath = indexPath.get("<default>");
+					rsyncIndexPath = indexRsyncPath.get(indexHost);
+					if(rsyncIndexPath == null)
+						rsyncIndexPath = indexRsyncPath.get("<default>");
 				}
-				
-				String localSearchPath = null;
-				if(mySearch){
-					localSearchPath = indexPath.get(hostAddr);
-					if(localSearchPath == null)
-						localSearchPath = indexPath.get(hostName);
-					if(localSearchPath== null)
-						localSearchPath = indexPath.get("<default>");
-				}
-				
+												
 				IndexId iid = new IndexId(dbrole,
 						                    type,
 						                    indexHost,
-						                    thisIndexPath,
+						                    rsyncIndexPath,
 						                    database.get(dbname).get(type),
 						                    database.get(dbname).get(typeid),
 						                    searchHosts,
 						                    mySearchHosts,
-						                    localSearchPath,
+						                    indexPath,
 						                    myIndex,
 						                    mySearch);
 				indexIdPool.put(dbrole,iid);
@@ -630,59 +617,6 @@ public class GlobalConfiguration {
 	public boolean isSearcher() {
 		return search.get(hostAddr)!=null || search.get(hostName)!=null;
 	}
-
-	/**
-	 * @return the set of db names which are handled by host's indexer
-	 */
-	public HashSet<String> getIndexerDBs() {
-		return indexFrontends;
-	}
-	
-	public boolean hasIndexFrontendDBs(){
-		return indexFrontends.size()!=0;
-	}
-	
-	public boolean hasIndexRmiDBs(){
-		return indexParts.size()!=0;
-	}
-	
-	/**
-	 * Set the local data relevant to this host, like which dbs it's
-	 * searching or indexing... 
-	 *
-	 */
-	protected void processLocalData(){	
-		if(isIndexer()){
-			// get dbs dor this host
-			ArrayList<String> idbs = index.get(hostAddr);
-			if(idbs == null)
-				idbs = new ArrayList<String>();
-			if(index.get(hostName)!=null)
-				idbs.addAll(index.get(hostName));
-			// get which dbs should be exposed via frontend (http) vs rmi
-			Iterator i = idbs.iterator();
-			while(i.hasNext()){
-				String db = (String) i.next();
-				if(db.contains("."))
-					indexParts.add(db);
-				else
-					indexFrontends.add(db);				
-			}
-			
-			myIndexPath = indexPath.get(hostAddr);
-			if(myIndexPath == null)
-				myIndexPath = indexPath.get(hostName);
-			if(myIndexPath == null)
-				myIndexPath = indexPath.get("<default>");
-			
-			// append path separator at end if none is present
-			if(!myIndexPath.endsWith(Configuration.PATH_SEP))
-				myIndexPath+=Configuration.PATH_SEP;
-			
-			if(indexPath == null)
-				System.out.println("ERROR: Cannot find default value for directory to store the index, check global configuration.");
-		}
-	}
 	
 	/**
 	 * Get type (single,mainpart,split,etc..) or database being indexed
@@ -753,29 +687,6 @@ public class GlobalConfiguration {
 		return host.equalsIgnoreCase(hostAddr) || host.equalsIgnoreCase(hostName);
 	}
 
-	/**
-	 * @param db
-	 * @return if the db.role specified is handled by current node
-	 */
-	public boolean isMyIndexer(String db) {
-		return indexFrontends.contains(db) || indexParts.contains(db);
-	}
-
-	/**
-	 * @return root path of where the index is stored on this machine
-	 */
-	public String getMyIndexPath() {
-		return myIndexPath;
-	}
-
-	public String getIndexPath(String host){
-		String path;
-		if((path = indexPath.get(host)) != null)
-			return path;
-		else
-			return indexPath.get("<default>");
-	}
-	
 	/** Get language for a dbname */
 	public String getLanguage(String dbname) {
 		Hashtable<String,String> lang = database.get(dbname).get("language");

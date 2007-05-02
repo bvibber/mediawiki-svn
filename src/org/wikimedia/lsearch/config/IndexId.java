@@ -29,7 +29,7 @@ public class IndexId {
 	/** Where the index is */
 	protected String indexHost;
 	/** Path to index on remote machine */
-	protected String indexHostPath; 
+	protected String indexRsyncPath; 
 	
 	/** Type (single, mainsplit, split) in string repesentation */
 	protected String typeString; 
@@ -98,26 +98,28 @@ public class IndexId {
 	 * @param dbrole   string repesentation of IndexId, e.g. entest.mainpart
 	 * @param type     type, e.g. mainsplit
 	 * @param indexHost    where the indexer is
-	 * @param indexHostPath    the indexers path
+	 * @param indexRsyncPath    the rsync base of path
 	 * @param typeParams    parameters of type, e.g. split factor
 	 * @param params    parameters of this index, e.g. merge factor, optimize, .. 
 	 * @param searchHosts    all hosts that search this index
 	 * @param mySearchHosts   searcher hosts within this machines group
-	 * @param localSearchPath   the path of search indexes on local machine  
+	 * @param localIndexPath   the path of local indexes  
 	 * @param myIndex    if this machines is an indexer for this index
 	 * @param mySearch   if this machine is a searcher for this index
 	 */
-	public IndexId(String dbrole, String type, String indexHost, String indexHostPath, 
+	public IndexId(String dbrole, String type, String indexHost, String indexRsyncPath, 
 			Hashtable<String, String> typeParams, Hashtable<String, String> params, 
-			HashSet<String> searchHosts, HashSet<String> mySearchHosts, String localSearchPath, 
+			HashSet<String> searchHosts, HashSet<String> mySearchHosts, String localIndexPath, 
 			boolean myIndex, boolean mySearch) {
 		final String sep = Configuration.PATH_SEP;
 		this.indexHost = indexHost;
-		if(!indexHostPath.endsWith(sep))
-			indexHostPath += sep;
-		if(localSearchPath!= null && !localSearchPath.endsWith(sep))
-			localSearchPath += sep;
-		this.indexHostPath = indexHostPath;
+		if(!indexRsyncPath.endsWith("/"))
+			indexRsyncPath += "/";
+		if(!indexRsyncPath.startsWith("/"))
+			indexRsyncPath = "/" + indexRsyncPath;
+		if(localIndexPath!= null && !localIndexPath.endsWith(sep))
+			localIndexPath += sep;
+		this.indexRsyncPath = indexRsyncPath;
 		this.typeString = type;
 		this.typeParams = typeParams;
 		this.searchHosts = searchHosts;
@@ -167,14 +169,21 @@ public class IndexId {
 				partNum = 0;
 		}
 
-		indexPath = indexHostPath + "index" + sep + dbrole;
-		importPath = indexHostPath + "fromXML" + sep + dbrole;
-		snapshotPath = indexHostPath + "snapshot" + sep + dbrole;
-		rsyncSnapshotPath = "/mwsearch/snapshot/" + dbrole;
+		if(myIndex){
+			indexPath = localIndexPath + "index" + sep + dbrole;
+			importPath = localIndexPath + "import" + sep + dbrole;
+			snapshotPath = localIndexPath + "snapshot" + sep + dbrole;
+		} else{
+			indexPath = null;
+			importPath = null;
+			snapshotPath = null;
+		}
+		
+		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + dbrole;
 
 		if(mySearch){
-			searchPath = localSearchPath + "search" + sep + dbrole;
-			updatePath = localSearchPath + "update" + sep + dbrole;
+			searchPath = localIndexPath + "search" + sep + dbrole;
+			updatePath = localIndexPath + "update" + sep + dbrole;
 		} else{
 			searchPath = null;
 			updatePath = null;

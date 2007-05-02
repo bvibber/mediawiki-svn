@@ -105,8 +105,16 @@ public class Configuration {
 		// open the global configuration
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		String globalurl = getString("MWConfig","global");
+		String indexpath = getString("Indexes","path");
+		if(globalurl==null){
+			System.out.println("FATAL: Need to define global configuration url in local config file.");
+			System.exit(1);
+		} else if(indexpath==null){
+			System.out.println("FATAL: Need to define Indexes.path variable in local configuration.");
+			System.exit(1);
+		}
 		try {
-			global.readFromURL(new URL(globalurl));
+			global.readFromURL(new URL(globalurl),indexpath);
 		} catch (MalformedURLException e) {
 			System.out.println("Malformed URL "+globalurl+" cannot read global configuration (check MWConfig.global in mwsearch.conf), exiting...");
 			System.exit(1);
