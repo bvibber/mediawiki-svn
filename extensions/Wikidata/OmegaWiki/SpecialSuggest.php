@@ -109,6 +109,13 @@ function getSuggestions() {
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("%$search%");
 		else if ($query == 'language')
 			$searchCondition = " HAVING $rowText LIKE " . $dbr->addQuotes("$search%");
+		else if ($query == 'relation-type' or
+			$query == 'class' or
+			$query == 'option-attribute' or
+			$query == 'translated-text-attribute' or
+			$query == 'text-attribute' or
+			$query == 'collection') 
+			$searchCondition = " WHERE $rowText LIKE " . $dbr->addQuotes("$search%");
 		else	
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("$search%");
 	}
@@ -180,7 +187,8 @@ function ConstructSQLWithFallback($actual_query, $fallback_query, $fields){
 	#if ($actual_query==$fallback_query)
 	#	return $actual_query; 
 
-	$sql.="SELECT ";
+	$sql.="SELECT * FROM (SELECT ";
+
 	$sql_with_comma=$sql;
 	foreach ($fields as $field) {
 		$sql=$sql_with_comma;
@@ -196,7 +204,7 @@ function ConstructSQLWithFallback($actual_query, $fallback_query, $fields){
 	
 	$field0=$fields[0]; # slightly presumptuous
 	$sql.=  " ON actual.$field0 = fallback.$field0";
-	
+	$sql.= ") as coalesced";
 	return $sql;
 }
 
