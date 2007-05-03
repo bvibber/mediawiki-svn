@@ -565,7 +565,7 @@ class OAIRepo {
 	function fetchRecord( $pageid ) {
 		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text' ) );
 		if( $this->newSchema() ) {
-			$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
+			$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
 			page_namespace,
 			page_title,
 			old_text,
@@ -609,7 +609,7 @@ class OAIRepo {
 		$chunk = IntVal( $chunk );
 		
 		if( $this->newSchema() ) {
-			$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
+			$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
 			page_namespace,
 			page_title,
 			old_text,
@@ -764,7 +764,7 @@ class WikiOAIRecord extends OAIRecord {
 	 * @param object $row database row
 	 */
 	function WikiOAIRecord( $row, $writer ) {
-		$this->_id        = $row->page_id;
+		$this->_id        = $row->up_page;
 		$this->_timestamp = $row->up_timestamp;
 		$this->_deleted   = is_null( $row->page_title );
 		$this->_row       = $row;
