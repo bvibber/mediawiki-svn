@@ -868,6 +868,17 @@ class WikiOAIRecord extends OAIRecord {
 		}
 	}
 
+	function renderContributor( $id, $text ) {
+		if( $id ) {
+			$tag = oaiTag( 'username', array(), $text ) .
+				oaiTag( 'id', array(), $id );
+		} else {
+			$tag = oaiTag( 'ip', array(), $text );
+		}
+		return '<contributor>' . $tag . '</contributor>';
+	}
+
+
 }
 
 /** For the very first page output siteinfo, else same sa XmlDumpWriter  */
