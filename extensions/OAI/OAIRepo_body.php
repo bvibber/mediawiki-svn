@@ -35,44 +35,6 @@ class OAIRepository extends UnlistedSpecialPage {
 		# FIXME: Replace the DB error handler
 		header( 'Content-type: text/xml; charset=utf-8' );
 		
-		require_once( 'includes/SpecialExport.php' );
-		
-		if( !function_exists( 'revision2xml' ) ) {
-			// Quick hack for 1.5 compatibility.
-			// We'll improve this later to use the new
-			// native interface...
-			function revision2xml( $s, $full, $cur ) {
-				$fname = 'revision2xml';
-				wfProfileIn( $fname );
-				
-				$ts = wfTimestamp2ISO8601( $s->timestamp );
-				$xml = "    <revision>\n";
-				if($full && !$cur)
-					$xml .= "    <id>$s->id</id>\n";
-				$xml .= "      <timestamp>$ts</timestamp>\n";
-				if($s->user) {
-					$u = "<username>" . xmlsafe( $s->user_text ) . "</username>";
-					if($full)
-						$u .= "<id>$s->user</id>";
-				} else {
-					$u = "<ip>" . xmlsafe( $s->user_text ) . "</ip>";
-				}
-				$xml .= "      <contributor>$u</contributor>\n";
-				if( $s->minor_edit ) {
-					$xml .= "      <minor/>\n";
-				}
-				if($s->comment != "") {
-					$c = xmlsafe( $s->comment );
-					$xml .= "      <comment>$c</comment>\n";
-				}
-				$t = xmlsafe( Revision::getRevisionText( $s, "" ) );
-				$xml .= "      <text>$t</text>\n";
-				$xml .= "    </revision>\n";
-				wfProfileOut( $fname );
-				return $xml;
-			}
-		}
-		
 		$repo = new OAIRepo( $wgRequest );
 		$repo->respond();
 	}
@@ -600,25 +562,27 @@ class OAIRepo {
 	function fetchRecord( $pageid ) {
 		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text' ) );
 		if( $this->newSchema() ) {
-			$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
-			page_namespace    AS namespace,
-			page_title        AS title,
-			old_text          AS text,
-			old_flags         AS flags,
-			rev_comment       AS comment,
-			rev_user          AS user,
-			rev_user_text     AS user_text,
-			rev_timestamp     AS timestamp,
-			page_restrictions AS restrictions,
-			rev_minor_edit    AS minor_edit
+			$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
+			page_namespace,
+			page_title,
+			old_text,
+			old_flags,
+			rev_id,
+			rev_delete,
+			rev_comment,
+			rev_user,
+			rev_user_text,
+			rev_timestamp,
+			page_restrictions,
+			rev_minor_edit
 			FROM $updates,$page,$revision,$text
 			WHERE up_page=" . IntVal( $pageid ) . '
 			AND page_id=up_page
 			AND page_latest=rev_id
 			AND rev_text_id=old_id
 			LIMIT 1';
-		} else {
-			$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
+		} else { // FIXME: this will work only with dublin core?
+			$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
 			cur_namespace    AS namespace,
 			cur_title        AS title,
 			cur_text         AS text,
@@ -642,23 +606,25 @@ class OAIRepo {
 		$chunk = IntVal( $chunk );
 		
 		if( $this->newSchema() ) {
-			$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
-			page_namespace    AS namespace,
-			page_title        AS title,
-			old_text          AS text,
-			old_flags         AS flags,
-			rev_comment       AS comment,
-			rev_user          AS user,
-			rev_user_text     AS user_text,
-			rev_timestamp     AS timestamp,
-			page_restrictions AS restrictions,
-			rev_minor_edit    AS minor_edit
+			$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
+			page_namespace,
+			page_title,
+			old_text,
+			old_flags,
+			rev_id,
+			rev_deleted,
+			rev_comment,
+			rev_user,
+			rev_user_text,
+			rev_timestamp,
+			page_restrictions,
+			rev_minor_edit
 			FROM $updates
 			LEFT JOIN $page ON page_id=up_page
 			LEFT JOIN $revision ON page_latest=rev_id
 			LEFT JOIN $text ON rev_text_id=old_id ";
-		} else {
-			$sql = "SELECT up_page,up_timestamp,up_action,up_sequence,
+		} else { // FIXME: this will only work with dublin core?
+			$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
 			cur_namespace    AS namespace,
 			cur_title        AS title,
 			cur_text         AS text,
@@ -795,9 +761,9 @@ class WikiOAIRecord extends OAIRecord {
 	 * @param object $row database row
 	 */
 	function WikiOAIRecord( $row ) {
-		$this->_id        = $row->up_page;
+		$this->_id        = $row->page_id;
 		$this->_timestamp = $row->up_timestamp;
-		$this->_deleted   = is_null( $row->title );
+		$this->_deleted   = is_null( $row->page_title );
 		$this->_row       = $row;
 	}
 	
@@ -828,8 +794,9 @@ class WikiOAIRecord extends OAIRecord {
 		return "<metadata>\n$data</metadata>\n";
 	}
 	
+	/** FIXME: seems to be completely broken (at least on MW 1.5+) */
 	function renderDublinCore() {
-		$title = Title::makeTitle( $this->_row->namespace, $this->_row->title );
+		$title = Title::makeTitle( $this->_row->page_namespace, $this->_row->page_title );
 		global $wgMimeType, $wgContLanguageCode;
 		
 		$out = oaiTag( 'oai_dc:dc', array(
@@ -851,72 +818,34 @@ class WikiOAIRecord extends OAIRecord {
 	}
 	
 	function renderMediaWiki() {
-		global $wgContLanguageCode;
-		$title = Title::makeTitle( $this->_row->namespace, $this->_row->title );
-		$out = oaiTag( 'mediawiki', array(
-			'xmlns'              => 'http://www.mediawiki.org/xml/export-0.2/',
-			'xmlns:xsi'          => 'http://www.w3.org/2001/XMLSchema-instance',
-			'xsi:schemaLocation' => 'http://www.mediawiki.org/xml/export-0.2/ ' .
-			                        'http://www.mediawiki.org/xml/export-0.2.xsd',
-			'version'            => '0.2',
-			'xml:lang'           => $wgContLanguageCode ) ) . "\n";
-		$out .= "<page>\n";
-		$out .= oaiTag( 'title', array(), $title->getPrefixedText() ) . "\n";
-		$out .= oaiTag( 'id', array(), $this->_id ) . "\n";
-		if( $this->_row->restrictions ) {
-			$out .= oaiTag( 'restrictions', array(), $this->_row->restrictions ) . "\n";
-		}
-		$out .= revision2xml( $this->_row, true, true );
-		if( $title->getNamespace() == NS_IMAGE ) {
-			$out .= $this->renderUpload();
-		}
-		$out .= "</page>\n";
-		$out .= "</mediawiki>\n";
-		return $out;
+		$writer = new OAIDumpWriter();
+
+		return $writer->openStream().$writer->openPage($this->_row).
+			$writer->writeRevision($this->_row).$writer->closePage().$writer->closeStream();
+	}	
+}
+
+/** For the very first page output siteinfo, else same sa XmlDumpWriter  */
+class OAIDumpWriter extends XmlDumpWriter {
+	static $isFirst = true;
+
+	function siteInfo() {
+		if(OAIDumpWriter::$isFirst){
+			$info = array(
+										$this->sitename(),
+										$this->homelink(),
+										$this->generator(),
+										$this->caseSetting(),
+										$this->namespaces() );
+			OAIDumpWriter::$isFirst = false;
+
+			return "  <siteinfo>\n    " .
+			implode( "\n    ", $info ) .
+			"\n  </siteinfo>\n";
+		} else
+			return "";
 	}
-	
-	function renderUpload() {
-		$fname = 'WikiOAIRecord::renderUpload';
-		$db =& wfGetDB( DB_SLAVE );
-		$imageRow = $db->selectRow( 'image',
-			array( 'img_name', 'img_size', 'img_description',
-				'img_user', 'img_user_text', 'img_timestamp' ),
-			array( 'img_name' => $this->_row->title ),
-			$fname );
-		if( $imageRow ) {
-			if( OAIRepo::newSchema() ) {
-				$url = Image::imageUrl( $imageRow->img_name );
-			} else {
-				$url = Image::wfImageUrl( $imageRow->img_name );
-			}
-			if( $url{0} == '/' ) {
-				global $wgServer;
-				$url = $wgServer . $url;
-			}
-			return implode( "\n", array(
-				"<upload>",
-				oaiTag( 'timestamp', array(), wfTimestamp2ISO8601( $imageRow->img_timestamp ) ),
-				$this->renderContributor( $imageRow->img_user, $imageRow->img_user_text ),
-				oaiTag( 'comment',   array(), $imageRow->img_description ),
-				oaiTag( 'filename',  array(), $imageRow->img_name ),
-				oaiTag( 'src',       array(), $url ),
-				oaiTag( 'size',      array(), $imageRow->img_size ),
-				"</upload>\n" ) );
-		} else {
-			return '';
-		}
-	}
-	
-	function renderContributor( $id, $text ) {
-		if( $id ) {
-			$tag = oaiTag( 'username', array(), $text ) .
-				oaiTag( 'id', array(), $id );
-		} else {
-			$tag = oaiTag( 'ip', array(), $text );
-		}
-		return '<contributor>' . $tag . '</contributor>';
-	}
-	
+
 }
 
 ?>
