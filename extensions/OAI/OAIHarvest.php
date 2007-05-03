@@ -133,11 +133,10 @@ class OAIHarvester {
 		if( $errors->length == 0 )
 			return;
 		
-		throw new OAIError(
-			implode( "\n",
-				array_map(
-					array( &$this, 'oaiErrorMessage' ),
-					$errors->nodeset ) ) );
+		for( $i = 0; $i < $errors->length; $i++ ) {
+			$messages[$i] = $this->oaiErrorMessage( $errors->item( $i ) );
+		}
+		throw new OAIError( implode( "\n", $messages ) );
 	}
 	
 	/**
