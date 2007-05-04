@@ -572,12 +572,14 @@ class LogViewer {
 	 */
 	function showReviewLinks( $s, $title, $paramArray ) {
 		global $wgUser;
-		// Don't give away the page name
-		if( self::isDeleted( $s, self::DELETED_ACTION ) )
-			return '';
+		
 		$reviewlink='';
+		// Don't give away the page name
+		if( self::isDeleted($s,self::DELETED_ACTION) )
+			return $reviewlink;
+		
 		// Show revertmove link
-		if ( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
+		if( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
 			$destTitle = Title::newFromText( $paramArray[0] );
 			if ( $destTitle ) {
 				$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
@@ -588,48 +590,62 @@ class LogViewer {
 					'&wpMovetalk=0' ) . ')';
 			}
 		// show undelete link
-		} else if ( $s->log_action == 'delete' && $wgUser->isAllowed( 'delete' ) ) {
+		} else if( $s->log_action == 'delete' && $wgUser->isAllowed( 'delete' ) ) {
 			$reviewlink = $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete' ),
 				wfMsg( 'undeletebtn' ) ,
 				'target='. urlencode( $title->getPrefixedDBkey() ) );
 		// show unblock link
-		} elseif ( $s->log_action == 'block' && $wgUser->isAllowed( 'block' ) ) {
+		} elseif( $s->log_action == 'block' && $wgUser->isAllowed( 'block' ) ) {
 			$reviewlink = $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Ipblocklist' ),
 				wfMsg( 'unblocklink' ),
 				'action=unblock&ip=' . urlencode( $s->log_title ) );
 		// show change protection link
-		} elseif ( $s->log_action == 'protect' && $wgUser->isAllowed( 'protect' ) ) {
+		} elseif( $s->log_action == 'protect' && $wgUser->isAllowed( 'protect' ) ) {
 			$reviewlink = $this->skin->makeKnownLink( $title->getPrefixedDBkey() ,
 				wfMsg( 'protect_change' ),
 				'action=unprotect' );
 		// show user tool links for self created users
-		} elseif ( $s->log_action == 'create2' ) {
+		} elseif( $s->log_action == 'create2' ) {
 			$revert = $this->skin->userToolLinksRedContribs( $s->log_user, $s->log_title );
 			// do not show $comment for self created accounts. It includes wrong user tool links:
 			// 'blockip' for users w/o block allowance and broken links for very long usernames (bug 4756)
 			$comment = '';
-		}
 		// If an edit was hidden from a page give a review link to the history
-		if ( $wgUser->isAllowed( 'deleterevision' ) && isset($paramArray[2]) ) {
+		} else if( ($s->log_action=='revision' || $s->log_action=='event') && $wgUser->isAllowed( 'deleterevision' ) ) {
 			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
-			if ( $s->log_action == 'revision' ) {
-				$reviewlink = $this->skin->makeKnownLinkObj( $title, $this->message['revhistory'],
-				wfArrayToCGI( array('action' => 'history' ) ) ) . ':';
-			} else if ( $s->log_action == 'file' ) {
-			// Currently, only deleted file versions can be hidden
-				$undelete = SpecialPage::getTitleFor( 'Undelete' );
-				$reviewlink = $this->skin->makeKnownLinkObj( $undelete, $this->message['imghistory'],
-				wfArrayToCGI( array('target' => $title->getPrefixedText() ) ) ) . ':';
-			} else if ( $s->log_action == 'event' ) {
-			// If this event was to a log, give a review link to logs for that page only
-				$reviewlink = $this->skin->makeKnownLinkObj( $title, $this->message['viewpagelogs'],
-				wfArrayToCGI( array('page' => $paramArray[0] ) ) ) . ':';
+			$subtype = isset($paramArray[2]) ? $paramArray[1] : ''; // URL param
+			
+			switch ( $subtype ) {
+				case 'oldid':
+					$reviewlink = $this->skin->makeKnownLinkObj( $title, $this->message['revhistory'],
+					wfArrayToCGI( array('action' => 'history' ) ) ) . ':';
+					break;
+				case 'arid':
+					$undelete = SpecialPage::getTitleFor( 'Undelete' );
+					$reviewlink = $this->skin->makeKnownLinkObj( $undelete, $this->message['revhistory'],
+					wfArrayToCGI( array('target' => $title->getPrefixedText() ) ) ) . ':';	
+					break;
+				case 'oldimage':
+					$reviewlink = $this->skin->makeKnownLink( $title->getPrefixedText().'#filehistory', 
+					$this->message['imghistory'] ) . ':';
+					break;		
+				case 'fileid':
+					$undelete = SpecialPage::getTitleFor( 'Undelete' );
+					$reviewlink = $this->skin->makeKnownLinkObj( $undelete, $this->message['imghistory'],
+					wfArrayToCGI( array('target' => $title->getPrefixedText() ) ) ) . ':';
+					break;
+				case 'logid':
+					$undelete = SpecialPage::getTitleFor( 'Undelete' );
+					$reviewlink = $this->skin->makeKnownLinkObj( $undelete, $this->message['imghistory'],
+					wfArrayToCGI( array('target' => $title->getPrefixedText() ) ) ) . ':';
+					break;
 			}
+			
 			if ( $reviewlink ) {
 				// Link to each hidden object ID, $paramArray[1] is the url param
 				$Ids = explode( ',', $paramArray[2] );
-				foreach ( $Ids as $id ) {
-					$reviewlink .= ' '.$this->skin->makeKnownLinkObj( $revdel, "#$id",
+				foreach ( $Ids as $n => $id ) {
+					$reviewlink .= ' '.$this->skin->makeKnownLinkObj( $revdel, '#'.($n+1),
 					wfArrayToCGI( array('target' => $paramArray[0], $paramArray[1] => $id ) ) );
 				}
 			}

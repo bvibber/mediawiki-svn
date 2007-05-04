@@ -669,6 +669,7 @@ END
 		}
 		$oldver = wfTimestampNow() . "!{$name}";
 
+		wfSuppressWarnings();
 		if ( ! rename( $curfile, "${archive}/{$oldver}" ) ) {
 			$wgOut->showFileRenameError( $curfile, "${archive}/{$oldver}" );
 			return;
@@ -677,6 +678,7 @@ END
 			$wgOut->showFileCopyError( "${archive}/{$oldimage}", $curfile );
 			return;
 		}
+		wfRestoreWarnings();
 
 		# Record upload and update metadata cache
 		$img = Image::newFromName( $name );
@@ -770,17 +772,26 @@ class ImageHistoryList {
 				# Delete link
 				if( $wgUser->isAllowed( 'deleterevision' ) ) {
 					$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
-					if( !$this->userCan( $deleted, Image::DELETED_RESTRICTED ) ) {
+					if( !$this->userCan($deleted,Image::DELETED_RESTRICTED) ) {
 						// If file was hidden from sysops
 						$del = wfMsgHtml( 'rev-delundel' );			
 					} else {
-						list($ts,$name) = explode('!',$img);
-						$del = $this->skin->makeKnownLinkObj( $revdel,
-							wfMsg( 'rev-delundel' ),
-							'target=' . urlencode( $wgTitle->getPrefixedText() ) .
-							'&oldimage=' . urlencode( $ts ) );
+						// If the file was hidden, link to the whole image name
+						if ( $this->isDeleted($deleted,Image::DELETED_FILE) ) {
+							$del = $this->skin->makeKnownLinkObj( $revdel,
+								wfMsg( 'rev-delundel' ),
+								'target=' . urlencode( $wgTitle->getPrefixedText() ) .
+								'&oldimage=' . urlencode( $img ) );
+						// Otherwise link to the timestamp
+						} else {
+							list($ts,$name) = explode('!',$img);
+							$del = $this->skin->makeKnownLinkObj( $revdel,
+								wfMsg( 'rev-delundel' ),
+								'target=' . urlencode( $wgTitle->getPrefixedText() ) .
+								'&oldimage=' . urlencode( $ts ) );
+						}
 						// Bolden oversighted content
-						if( $this->isDeleted( $deleted, Image::DELETED_RESTRICTED ) )
+						if( $this->isDeleted($deleted,Image::DELETED_RESTRICTED) )
 							$del = "<strong>$del</strong>";
 					}
 					$dlink = "<tt>(<small>$del</small>)</tt> ";
@@ -801,7 +812,7 @@ class ImageHistoryList {
 			}
 		}
 		# Hide deleted usernames
-		if ( $this->isDeleted($deleted, Image::DELETED_USER) )
+		if ( $this->isDeleted($deleted,Image::DELETED_USER) )
 			$userlink = '<span class="history-deleted">' . wfMsgHtml( 'rev-deleted-user' ) . '</span>';
 		else
 			$userlink = $this->skin->userLink( $user, $usertext ) . $this->skin->userToolLinks( $user, $usertext );
@@ -810,10 +821,10 @@ class ImageHistoryList {
 		$widthheight = wfMsgHtml( 'widthheight', $width, $height );
 		$style = $this->skin->getInternalLinkAttributes( $url, $datetime );
 		
-		if ( !$this->userCan($deleted, Image::DELETED_FILE) ) {
+		if ( !$this->userCan($deleted,Image::DELETED_FILE) ) {
 			# Don't link to unviewable files
 			$pagelink = '<span class="history-deleted">' . $datetime . '</span>';
-		} else if ( $this->isDeleted($deleted, Image::DELETED_FILE) ) {
+		} else if ( $this->isDeleted($deleted,Image::DELETED_FILE) ) {
 			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			# Make a link to review the image
 			$pagelink = $this->skin->makeKnownLinkObj( $revdel, $datetime, "target=".$wgTitle->getPrefixedText()."&file=$img" );
@@ -824,12 +835,12 @@ class ImageHistoryList {
 		
 		$s = "<li>{$dlink}({$rlink}) {$pagelink} . . {$userlink} . . {$widthheight} ({$nbytes})";
 		# Don't show deleted descriptions
-		if ( $this->isDeleted($deleted, Image::DELETED_COMMENT) )
+		if ( $this->isDeleted($deleted,Image::DELETED_COMMENT) )
 			$s .= ' <span class="history-deleted">' . wfMsgHtml('rev-deleted-comment') . '</span>';
 		else
 			$s .= $this->skin->commentBlock( $description, $wgTitle );
 		#add blurb about text having been deleted
-		if( $this->isDeleted($deleted, Image::DELETED_FILE) ) {
+		if( $this->isDeleted($deleted,Image::DELETED_FILE) ) {
 			$s .= ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
 		}
 		$s .= "</li>\n";

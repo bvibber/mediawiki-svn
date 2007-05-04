@@ -15,8 +15,8 @@ function wfSpecialRevisiondelete( $par = null ) {
 	$logid = $wgRequest->getArray( 'logid' );
 	$image = $wgRequest->getArray( 'oldimage' );
 	$fileid = $wgRequest->getArray( 'fileid' );
-	# For reviewing deleted files
-	$file = $wgRequest->getVal( 'file' );
+	
+	$file = $wgRequest->getVal( 'file' ); // For reviewing deleted files
 		
 	// We need a target page (possible a dummy like User:#1)
 	$page = Title::newFromUrl( $target, false );
@@ -55,7 +55,8 @@ class RevisionDeleteForm {
 	 * @param array $logids
 	 * @param array $arids
 	 * @param array $fileids
-	 * @param array $filenames
+	 * @param array $oldimages
+     * @param string $file
 	 */
 	function __construct( $page, $oldids=null, $logids=null, $arids=null, $fileids=null, $oldimages=null, $file=null ) {
 		global $wgUser;
@@ -63,20 +64,20 @@ class RevisionDeleteForm {
 		$this->page = $page;
 		$this->skin = $wgUser->getSkin();
 		
-		# For reviewing deleted files
+		// For reviewing deleted files
 		if ( $file ) {
 			$oimage = new OldImage( $this->page, $file );
 			// Check if user is allowed to see this file
-			if ( !$oimage->userCan( Image::DELETED_FILE ) ) {
+			if ( !$oimage->userCan(Image::DELETED_FILE) ) {
 				$wgOut->permissionRequired( 'hiderevision' ); 
 				return false;
 			} else {
-				// Format for hidden images is <timestamp when it became old>!<key>
+				// Format for hidden images is <timestamp>!<key>
 				list($ts,$key) = explode('!',$file);
 				return $this->showFile( $key );
 			}
 		}
-		
+		// At this point, we should only have one of these
 		if( $oldids ) {
 			$this->revisions = $oldids;
 			$hide_content_name = array( 'revdelete-hide-text', 'wpHideText', Revision::DELETED_TEXT );
@@ -98,6 +99,7 @@ class RevisionDeleteForm {
 			$hide_content_name = array( 'revdelete-hide-name', 'wpHideName', LogViewer::DELETED_ACTION );
 			$this->deletetype='logid';
 		}
+		// Our checkbox messages depends one what we are doing
 		$this->checks = array(
 			$hide_content_name,
 			array( 'revdelete-hide-comment', 'wpHideComment', Revision::DELETED_COMMENT ),
@@ -163,12 +165,12 @@ class RevisionDeleteForm {
 					}
 					$UserAllowed=false;
 				}
-			$wgOut->addHtml( $this->historyLine( $rev ) );
-			$bitfields = $this->setBitfield( $bitfields, $rev->mDeleted );
+				$wgOut->addHtml( $this->historyLine( $rev ) );
+				$bitfields = $this->setBitfield( $bitfields, $rev->mDeleted );
 			}
 		// The archives...
 		} else {
-		   $archive = new PageArchive( $this->page );
+			$archive = new PageArchive( $this->page );
 			foreach( $this->archrevs as $revid ) {
     			$rev = $archive->getRevision('', $revid );
 				if( !is_object($rev) ) {
@@ -182,8 +184,8 @@ class RevisionDeleteForm {
 					}
 					$UserAllowed=false;
 				}
-			$wgOut->addHtml( $this->historyLine( $rev ) );
-			$bitfields = $this->setBitfield( $bitfields, $rev->mDeleted );
+				$wgOut->addHtml( $this->historyLine( $rev ) );
+				$bitfields = $this->setBitfield( $bitfields, $rev->mDeleted );
 			}
 		} 
 		$wgOut->addHtml( "</ul>" );
@@ -247,9 +249,11 @@ class RevisionDeleteForm {
 		$wgOut->addHtml( "<ul>" );
 		// Live revisions...
 		if( $this->deletetype=='oldimage' ) {
-			$imgtitle = $this->page->getDbKey();
-			foreach( $this->ofiles as $timestamp ) {
-				$oimage = new OldImage( $this->page, "$timestamp!$imgtitle" );
+			foreach( $this->ofiles as $name ) {
+				// Our image may be hidden, if so it's name is formated as <time>!<key>
+				// Otherwise, it will be <time>!<image> and the URL only needs to pass the time
+				$archivename = ( strpos($name,'!')==false ) ? $name.'!'.$this->page->getDbKey() : $name;
+				$oimage = new OldImage( $this->page, $archivename );
 				if( !isset( $oimage->mName ) ) {
 					$wgOut->showErrorPage( 'revdelete-nooldid-title', 'revdelete-nooldid-text' );
 					return;
@@ -261,8 +265,8 @@ class RevisionDeleteForm {
 					}
 					$UserAllowed=false;
 				}
-			$wgOut->addHtml( $this->uploadLine( $oimage ) );
-			$bitfields = $this->setBitfield( $bitfields, $oimage->mDeleted );
+				$wgOut->addHtml( $this->uploadLine( $oimage ) );
+				$bitfields = $this->setBitfield( $bitfields, $oimage->mDeleted );
 			}	
 		// Archived files...		
 		} else {
@@ -279,8 +283,8 @@ class RevisionDeleteForm {
 					}
 					$UserAllowed=false;
 				}
-			$wgOut->addHtml( $this->uploadLine( $file ) );
-			$bitfields = $this->setBitfield( $bitfields, $file->mDeleted );
+				$wgOut->addHtml( $this->uploadLine( $file ) );
+				$bitfields = $this->setBitfield( $bitfields, $file->mDeleted );
 			}
 		}
 		$wgOut->addHtml( "</ul>" );
@@ -344,10 +348,10 @@ class RevisionDeleteForm {
 			$log = new LogViewer( $wgRequest );
 			$event = LogReader::newFromTitle( $this->page, $logid );
 			// Don't hide from oversight log!!!
-			if( !isset( $event ) || $event->log_type == 'oversight' ) {
+			if( !isset( $event ) || $event->log_type=='oversight' ) {
 				$wgOut->showErrorPage( 'revdelete-nooldid-title', 'revdelete-nooldid-text' );
 				return;
-			} else if( !$log->userCan($event, Revision::DELETED_RESTRICTED) ) {
+			} else if( !$log->userCan($event,Revision::DELETED_RESTRICTED) ) {
 			// If an event is hidden from sysops
 				if( $action != 'submit') {
 					$wgOut->permissionRequired( 'hiderevision' );
@@ -412,7 +416,7 @@ class RevisionDeleteForm {
 		// Live revisions
 		if( $this->deletetype=='oldid' ) {
 			$difflink = '(' . $this->skin->makeKnownLinkObj( $this->page, wfMsgHtml('diff'), 
-		'&diff=' . $rev->getId() . '&oldid=prev' ) . ')';
+				'&diff=' . $rev->getId() . '&oldid=prev' ) . ')';
 			$revlink = $this->skin->makeLinkObj( $this->page, $date, 'oldid=' . $rev->getId() );
 		} else {
 		// Archived revisions
@@ -439,25 +443,31 @@ class RevisionDeleteForm {
 	 * @returns string
 	 */	
 	function uploadLine( $file ) {
-		global $wgContLang;
+		global $wgContLang, $wgTitle;
 		
 		$target = $this->page->getPrefixedText();
 		$date = $wgContLang->timeanddate( $file->mTimestamp, true  );
-
+	
 		$del = '';
 		// Special:Undelete for viewing archived images
 		if( $this->deletetype=='fileid' ) {
 			$undelete = SpecialPage::getTitleFor( 'Undelete' );
 			$pageLink = $this->skin->makeKnownLinkObj( $undelete, $date, "target=$target&file=$file->mKey" );
+		// Revisiondelete for viewing images
 		} else {
-		// Revisiondelete for viewing deleted images
-			$pageLink = $this->skin->makeKnownLinkObj( $this->page, $date, "target=$target&file=$file->mArchiveName" );
-		}
-		if( $file->isDeleted(Image::DELETED_FILE) ) {
-			$pageLink = '<span class="history-deleted">' . $pageLink . '</span>';
-			$del = ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
-			if( !$file->userCan(Image::DELETED_FILE) ) {
-				$pageLink = '<span class="history-deleted">'.$date.'</span>';
+			# Hidden files...
+			if( $file->isDeleted(Image::DELETED_FILE) ) {
+				$del = ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
+				if( !$file->userCan(Image::DELETED_FILE) ) {
+					$pageLink = $date;
+				} else {
+					$pageLink = $this->skin->makeKnownLinkObj( $wgTitle, $date, "target=$target&file=$file->mArchiveName" );
+				}
+				$pageLink = '<span class="history-deleted">' . $pageLink . '</span>';
+			# Regular files...
+			} else {
+				$url = htmlspecialchars( wfImageArchiveUrl( $file->mArchiveName ) );
+				$pageLink = "<a href=\"{$url}\">{$date}</a>";
 			}
 		}
 		
@@ -535,12 +545,13 @@ class RevisionDeleteForm {
 		if( $type=='logid' ) {
 			$wgOut->addWikiText( wfMsgHtml('logdelete-success', $target), false );
 			$this->showEvents( $request );
-		} else if( $type=='oldid' || $type=='arid' ) {
+		} else if( $type=='oldid' ) {
 		  	$wgOut->addWikiText( wfMsgHtml('revdelete-success', $target), false );
 		  	$this->showRevs( $request );
-		} else if( $type=='fileid' ) {
-		  	$wgOut->addWikiText( wfMsgHtml('revdelete-success', $target), false );
-		  	$this->showImages( $request );
+		} else if( $type=='arid' || $type=='fileid' ) {
+			$undelete = SpecialPage::getTitleFor( 'Undelete' );
+			# Redirect out, we already have the deleted history right there
+		  	$wgOut->redirect( $undelete->escapeLocalUrl() . '/' . htmlspecialchars($target) );
 		} else if( $type=='oldimage' ) {
 			# Redirect out, we already have the history right there
 		  	$wgOut->redirect( $title->escapeLocalUrl() );
@@ -587,7 +598,7 @@ class RevisionDeleteForm {
  */
 class RevisionDeleter {
 	function __construct( $db ) {
-		$this->db = $db;
+		$this->dbw = $db;
 	}
 	
 	/**
@@ -668,15 +679,16 @@ class RevisionDeleter {
     			$UserAllowedAll=false;
 				continue;
 			}
-			// For logging, maintain a count of revisions
+			// Which revisions did we change anything about?
 			if( $rev->mDeleted != $bitfield ) {
 			   $Id_set[]=$revid;
 			   $count++;
-			}		
-			$this->updateArchive( $rev, $bitfield );
+			   
+			   $this->updateArchive( $rev, $bitfield );
+			}
 		}
 		
-		// Log if something was changed
+		// For logging, maintain a count of revisions
 		if( $count > 0 ) {
 			$this->updateLog( $title, $count, $bitfield, $comment, $title, 'arid', $Id_set );
 		}
@@ -701,34 +713,52 @@ class RevisionDeleter {
 		$UserAllowedAll = true;
 		$count = 0; 
 		$set = array();
-		$imgtitle = $title->getDbKey();
 		// To work!
-		foreach( $items as $timestamp ) {
-			$oimage = new OldImage( $title, "$timestamp!$imgtitle" );
+		foreach( $items as $name ) {
+			// Our image may be hidden, if so it's name is formated as <time>!<key>
+			// Otherwise, it will be <time>!<image> and the URL only needs to pass the time
+			$archivename = ( strpos($name,'!')==false ) ? $name.'!'.$title->getDbKey() : $name;
+			$oimage = new OldImage( $title, $archivename );
 			if( !isset($oimage->mName) ) {
 				return false;
 			} else if( !$oimage->userCan(Revision::DELETED_RESTRICTED) ) {
     			$UserAllowedAll=false;
 				continue;
 			}
-			// For logging, maintain a count of revisions
-			if( $oimage->mDeleted != $bitfield ) {
-			   $set[]=$timestamp;
-			   $count++;
-			}
 			
-			// If this image is currently hidden...
-			if( $oimage->mDeleted & Image::DELETED_FILE ) {
-				if( $bitfield & Image::DELETED_FILE ) {
-					# Leave it alone if we are not changing this...
-				} else {
-					$this->makeOldImagePublic( $oimage );
-					$this->updateOldFiles( $oimage, $bitfield );
-				}
-			// Is it just now becoming hidden?
-			} else if( $bitfield & Image::DELETED_FILE ) {
+			$transaction = true;
+			// Which revisions did we change anything about?
+			if( $oimage->mDeleted != $bitfield ) {
+				$count++;
+				
+				$this->dbw->begin();
 				$this->updateOldFiles( $oimage, $bitfield );
-				$this->makeOldImagePrivate( $oimage );
+				// If this image is currently hidden...
+				if( $oimage->mDeleted & Image::DELETED_FILE ) {
+					if( $bitfield & Image::DELETED_FILE ) {
+						# Leave it alone if we are not changing this...
+						$set[]=$name;
+						$transaction = true;
+					} else {
+						# We are moving this out
+						$transaction = $this->makeOldImagePublic( $oimage );
+						$set[]=$transaction;
+					}
+				// Is it just now becoming hidden?
+				} else if( $bitfield & Image::DELETED_FILE ) {
+					$transaction = $this->makeOldImagePrivate( $oimage );
+					$set[]=$transaction;
+				} else {
+					$set[]=$name;
+				}
+				// If our I/O operations fail, then revert back the db
+				if ( $transaction==false ) {
+					$this->dbw->rollback();
+					return false;
+				}
+				$this->dbw->commit();
+				
+				$this->updatePage( $title ); // Clear the image page cache
 			}
 		}
 		
@@ -766,12 +796,13 @@ class RevisionDeleter {
     			$UserAllowedAll=false;
 				continue;
 			}
-			// For logging, maintain a count of revisions
+			// Which revisions did we change anything about?
 			if( $file->mDeleted != $bitfield ) {
 			   $Id_set[]=$fileid;
 			   $count++;
+			   
+			   $this->updateArchFiles( $file, $bitfield );
 			}
-			$this->updateArchFiles( $file, $bitfield );
 		}
 		
 		// Log if something was changed
@@ -842,7 +873,9 @@ class RevisionDeleter {
 
 	/**
 	 * Moves an image to a safe private location
+	 * @param $dbw, database
 	 * @param OldImage $oimage
+	 * @returns string, new archivename on success, false on failure
 	 */	
 	function makeOldImagePrivate( $oimage ) {
 		global $wgFileStore, $wgUseSquid;
@@ -858,8 +891,8 @@ class RevisionDeleter {
 		$oldpath = wfImageArchiveDir( $oimage->mName ) . DIRECTORY_SEPARATOR . $oimage->mArchiveName;
 		// Dupe the file into the file store
 		if( file_exists( $oldpath ) ) {
-			// Is our directory configured?
 			$group = 'hidden';
+			// Is our directory configured?
 			if( $wgFileStore[$group]['directory'] ) {
 				$store = FileStore::get( $group );
 				$key = FileStore::calculateKey( $oldpath, $this->extension );
@@ -872,7 +905,7 @@ class RevisionDeleter {
 		} else {
 			wfDebug( __METHOD__." deleting already-missing '$path'; moving on to database\n" );
 			$group = null;
-			$key = null;
+			$key = '';
 			$transaction = new FSTransaction(); // empty
 		}
 
@@ -887,25 +920,27 @@ class RevisionDeleter {
 		$transaction->commit();
 		FileStore::unlock();
 		// Update our database to add a reference to the key
-		// For shortness, make it as <timestamp when it became old>!<key>
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'oldimage',
-			array( 'oi_archive_name' => "$timestamp!$key" ),
-			array( 'oi_name' => $oimage->mName, 'oi_archive_name' => $oimage->mArchiveName ),
-			__METHOD__ );
-			
-		// Purge the squid
-		if ( $wgUseSquid ) {
-			$urls = array( wfImageArchiveUrl( $oimage->mArchiveName ) );
-			wfPurgeSquidServers( $urls );
+		// For shortness, make it as <timestamp>!<key>
+		if ( $key ) {
+			$this->dbw->update( 'oldimage',
+				array( 'oi_archive_name' => "{$timestamp}!{$key}" ),
+				array( 'oi_name' => $oimage->mName, 'oi_archive_name' => $oimage->mArchiveName ),
+				__METHOD__ );
 		}
 		
-		return true;
+		// Use of $timeframe for Image objects can create thumbnails of oldimages
+		$imgtitle = Title::makeTitle( NS_IMAGE, $oimage->mArchiveName ); // hack...
+		$image = new Image( $imgtitle );
+		$image->purgeCache(); // Clear any thumbnails/purge squid cache
+		
+		return "{$timestamp}!{$key}";
 	}
 
 	/**
 	 * Moves an image from a safe private location
+	 * @param $dbw, database
 	 * @param OldImage $oimage
+	 * @returns string, timestamp on success, false on failure
 	 */		
 	function makeOldImagePublic( $oimage ) {
 	
@@ -926,15 +961,15 @@ class RevisionDeleter {
 		if ( !is_dir( $destDir ) ) {
 			wfMkdirParents( $destDir );
 		}
-		// Deleted versions have an archive_name like <timestamp when it became old>!<key>
+		// Deleted versions have an archive_name like <timestamp>!<key>
 		list($timestamp,$key) = explode('!',$oimage->mArchiveName);
+		$archivename = "{$timestamp}!{$oimage->mName}";
 		
-		$destPath = $destDir . DIRECTORY_SEPARATOR . $oimage->mArchiveName;
+		$destPath = $destDir . DIRECTORY_SEPARATOR . $archivename;
 		// Check if any other stored revisions use this file;
-		// if so, we shouldn't remove the file from the deletion
+		// if so, we shouldn't remove the file from the hidden
 		// archives so they will still work.
-		$dbw = wfGetDB( DB_MASTER );
-		$useCount = $dbw->selectField( 'oldimage',
+		$useCount = $this->dbw->selectField( 'oldimage',
 			'COUNT(*)',
 			array( 'oi_archive_name' => $oimage->mArchiveName, 'oi_name' => $oimage->mName ),
 			__METHOD__ );
@@ -950,15 +985,13 @@ class RevisionDeleter {
 		wfDebug( __METHOD__.": set db items, applying file transactions\n" );
 		$transaction->commit();
 		FileStore::unlock();
-		
-		// Re-insert the original archive_name, like <timestamp when it became old>!<name>
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->update( 'oldimage',
-			array( 'oi_archive_name' => "$timestamp!$oimage->mName" ),
+		// Re-insert the original archive_name, like <timestamp>!<name>
+		$this->dbw->update( 'oldimage',
+			array( 'oi_archive_name' => "{$timestamp}!{$oimage->mName}" ),
 			array( 'oi_name' => $oimage->mName, 'oi_archive_name' => $oimage->mArchiveName ),
 			__METHOD__ );
 		
-		return true;
+		return $timestamp;
 	}
 	
 	/**
@@ -967,7 +1000,7 @@ class RevisionDeleter {
 	 * @param int $bitfield new rev_deleted bitfield value
 	 */
 	function updateRevision( $rev, $bitfield ) {
-		$this->db->update( 'revision',
+		$this->dbw->update( 'revision',
 			array( 'rev_deleted' => $bitfield ),
 			array( 'rev_id' => $rev->getId() ),
 			'RevisionDeleter::updateRevision' );
@@ -979,7 +1012,7 @@ class RevisionDeleter {
 	 * @param int $bitfield new rev_deleted bitfield value
 	 */
 	function updateArchive( $rev, $bitfield ) {
-		$this->db->update( 'archive',
+		$this->dbw->update( 'archive',
 			array( 'ar_deleted' => $bitfield ),
 			array( 'ar_rev_id' => $rev->getId() ),
 			'RevisionDeleter::updateArchive' );
@@ -991,7 +1024,7 @@ class RevisionDeleter {
 	 * @param int $bitfield new rev_deleted bitfield value
 	 */
 	function updateOldFiles( $oimage, $bitfield ) {
-		$this->db->update( 'oldimage',
+		$this->dbw->update( 'oldimage',
 			array( 'oi_deleted' => $bitfield ),
 			array( 'oi_archive_name' => $oimage->mArchiveName ),
 			'RevisionDeleter::updateOldFiles' );
@@ -1003,7 +1036,7 @@ class RevisionDeleter {
 	 * @param int $bitfield new rev_deleted bitfield value
 	 */
 	function updateArchFiles( $file, $bitfield ) {
-		$this->db->update( 'filearchive',
+		$this->dbw->update( 'filearchive',
 			array( 'fa_deleted' => $bitfield ),
 			array( 'fa_id' => $file->mId ),
 			'RevisionDeleter::updateArchFiles' );
@@ -1015,7 +1048,7 @@ class RevisionDeleter {
 	 * @param int $bitfield new rev_deleted bitfield value
 	 */
 	function updateLogs( $event, $bitfield ) {
-		$this->db->update( 'logging',
+		$this->dbw->update( 'logging',
 			array( 'log_deleted' => $bitfield ),
 			array( 'log_id' => $event->log_id ),
 			'RevisionDeleter::updateLogs' );
@@ -1027,7 +1060,7 @@ class RevisionDeleter {
 	 * @param int $bitfield new rev_deleted bitfield value
 	 */
 	function updateRecentChangesLog( $event, $bitfield ) {
-		$this->db->update( 'recentchanges',
+		$this->dbw->update( 'recentchanges',
 			array( 'rc_deleted' => $bitfield,
 				   'rc_patrolled' => 1),
 			array( 'rc_logid' => $event->log_id ),
@@ -1040,7 +1073,7 @@ class RevisionDeleter {
 	 * @param int $bitfield new rev_deleted bitfield value
 	 */
 	function updateRecentChangesEdits( $rev, $bitfield ) {
-		$this->db->update( 'recentchanges',
+		$this->dbw->update( 'recentchanges',
 			array( 'rc_deleted' => $bitfield,
 				   'rc_patrolled' => 1),
 			array( 'rc_this_oldid' => $rev->getId() ),
@@ -1055,6 +1088,7 @@ class RevisionDeleter {
 	 */
 	function updatePage( $title ) {
 		$title->invalidateCache();
+		$title->purgeSquid();
 	}
 	
 	/**
@@ -1077,14 +1111,10 @@ class RevisionDeleter {
     		$reason = wfMsgExt('logdelete-logaction', array('parsemag'), $count, $bitfield, $target->getPrefixedText() );
 			if($comment) $reason .= ": $comment";
 			$log->addEntry( 'event', $title, $reason, $params );
-		} else if( $param=='oldid' || $param=='arid' ) {
+		} else {
     		$reason = wfMsgExt('revdelete-logaction', array('parsemag'), $count, $bitfield );
 			if($comment) $reason .= ": $comment";
 			$log->addEntry( 'revision', $title, $reason, $params );
-		} else if( $param=='fileid' || $param=='oldimage' ) {
-    		$reason = wfMsgExt('revdelete-logaction', array('parsemag'), $count, $bitfield );
-			if($comment) $reason .= ": $comment";
-			$log->addEntry( 'file', $title, $reason, $params );
 		}
 	}
 }

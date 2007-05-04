@@ -799,9 +799,8 @@ class Image
 	 * @param boolean $fromSharedDirectory	Should this be in $wgSharedUploadPath?
 	 * @return string URL of $name image
 	 * @public
-	 * @static
 	 */
-	function imageUrl( $name, $fromSharedDirectory = false ) {
+	static function imageUrl( $name, $fromSharedDirectory = false ) {
 		global $wgUploadPath,$wgUploadBaseUrl,$wgSharedUploadPath;
 		if($fromSharedDirectory) {
 			$base = '';
@@ -1279,7 +1278,6 @@ class Image
 
 	/**
 	 * @return bool
-	 * @static
 	 */
 	public static function isHashed( $shared ) {
 		global $wgHashedUploadDirectory, $wgHashedSharedUploadDirectory;
@@ -1669,8 +1667,16 @@ class Image
 	 * @return FStransaction on success, false on failure
 	 */
 	private function prepareDeleteOld( $archiveName, $reason, $suppress=false ) {
-		$oldpath = wfImageArchiveDir( $this->name ) .
-			DIRECTORY_SEPARATOR . $archiveName;
+		list($timestamp,$img) = explode('!',$archiveName);
+		// Is this image using a filestore key (hidden)?
+		if( $img != $this->name && FileStore::validKey($img) ) {
+			$group = 'hidden';
+			
+			$hiddenstore = FileStore::get( $group );
+			$oldpath = $hiddenstore->filePath( $img );
+		} else {
+			$oldpath = wfImageArchiveDir( $this->name ) . DIRECTORY_SEPARATOR . $archiveName;
+		}
 		return $this->prepareDeleteVersion(
 			$oldpath,
 			$reason,
@@ -1717,8 +1723,7 @@ class Image
 
 				$store = FileStore::get( $group );
 				$key = FileStore::calculateKey( $path, $this->extension );
-				$transaction = $store->insert( $key, $path,
-					FileStore::DELETE_ORIGINAL );
+				$transaction = $store->insert( $key, $path, FileStore::DELETE_ORIGINAL );
 			} else {
 				$group = null;
 				$key = null;
@@ -1804,7 +1809,7 @@ class Image
 			// Re-confirm whether this image presently exists;
 			// if no we'll need to create an image record for the
 			// first item we restore. Grab the timestamp
-			$exists = $dbw->selectField( 'image', 'img_timestamp',
+			$exists = $dbw->selectField( 'image', '1',
 				array( 'img_name' => $this->name ),
 				__METHOD__,
 				array('ORDER BY' => 'img_timestamp DESC') );
@@ -1837,7 +1842,7 @@ class Image
 				FileStore::unlock();
 				return true;
 			}
-			
+
 			$revisions = 0;
 			while( $row = $dbw->fetchObject( $result ) ) {				
 				if( ($row->fa_deleted & Revision::DELETED_RESTRICTED) && !$wgUser->isAllowed('hiderevision') ) {
@@ -1910,15 +1915,31 @@ class Image
 						// This was originally a current version; we
 						// have to devise a new archive name for it.
 						// Format is <timestamp of archiving>!<name>
-						$archiveName =
-							wfTimestamp( TS_MW, $row->fa_deleted_timestamp ) .
-							'!' . $row->fa_name;
+						$archiveName = wfTimestamp( TS_MW, $row->fa_deleted_timestamp ) . '!' . $row->fa_name;
 					}
-					$destDir = wfImageArchiveDir( $row->fa_name );
-					if ( !is_dir( $destDir ) ) {
-						wfMkdirParents( $destDir );
+					
+					list($timestamp,$img) = explode('!',$archiveName);
+					// Is this image hidden?
+					if( !$Unsuppress && $row->fa_deleted & Image::DELETED_FILE ) {
+						$group = 'hidden';
+						// Upon restoration, this should go into the hidden directory
+						$hiddenstore = FileStore::get( $group );
+						$destPath = $hiddenstore->filePath( $row->fa_storage_key );
+						// Follow the usual <timestamp>!<key> convention for hidden files
+						$archiveName = "{$timestamp}!{$row->fa_storage_key}";
+					// Does the archivename using a filestore key? (was hidden when deleted)
+					} else if( $img != $row->fa_name && FileStore::validKey($img) ) {
+						// Follow the usual <timestamp>!<image> convention for old files
+						$archiveName = "{$timestamp}!{$row->fa_name}";
+						$destPath = $destDir . DIRECTORY_SEPARATOR . $archiveName;
+					} else {
+						$destDir = wfImageArchiveDir( $row->fa_name );
+						
+						if ( !is_dir( $destDir ) ) {
+							wfMkdirParents( $destDir );
+						}
+						$destPath = $destDir . DIRECTORY_SEPARATOR . $archiveName;
 					}
-					$destPath = $destDir . DIRECTORY_SEPARATOR . $archiveName;
 
 					$table = 'oldimage';
 					$fields = array(
@@ -1957,8 +1978,7 @@ class Image
 					$flags = 0;
 				}
 
-				$transaction->add( $store->export( $row->fa_storage_key,
-					$destPath, $flags ) );
+				$transaction->add( $store->export( $row->fa_storage_key, $destPath, $flags ) );
 			}
 
 			$dbw->immediateCommit();

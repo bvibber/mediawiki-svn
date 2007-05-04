@@ -294,10 +294,7 @@ class PageArchive {
 			$textRestored = 0;
 		}
 		
-		if ( $restoreText && !$textRestored) {
-		// if the image page didn't restore right, don't restore the file either!!!
-			$filesRestored = 0;
-		} else if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
+		if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
 			$img = new Image( $this->title );
 			$filesRestored = $img->restore( $fileVersions, $Unsuppress );
 		} else {
@@ -343,8 +340,6 @@ class PageArchive {
 	 * @return int number of revisions restored
 	 */
 	private function undeleteRevisions( $timestamps, $Unsuppress = false ) {
-		global $wgDBtype;
-
 		$restoreAll = empty( $timestamps );
 		
 		$dbw = wfGetDB( DB_MASTER );
@@ -352,9 +347,7 @@ class PageArchive {
 
 		# Does this page already exist? We'll have to update it...
 		$article = new Article( $this->title );
-		$options = ( $wgDBtype == 'postgres' )
-			? '' // pg doesn't support this?
-			: 'FOR UPDATE';
+		$options = 'FOR UPDATE';
 		$page = $dbw->selectRow( 'page',
 			array( 'page_id', 'page_latest' ),
 			array( 'page_namespace' => $this->title->getNamespace(), 'page_title' => $this->title->getDBkey() ),
