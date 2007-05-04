@@ -133,6 +133,7 @@ class OAIHarvester {
 		if( $errors->length == 0 )
 			return;
 		
+		$messages = array();
 		for( $i = 0; $i < $errors->length; $i++ ) {
 			$messages[$i] = $this->oaiErrorMessage( $errors->item( $i ) );
 		}
