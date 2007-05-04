@@ -50,6 +50,10 @@ class NewsRenderer {
 	var $onlynew;
 	var $onlypatrolled;
 
+	var $publication; //"publication" mode, as opposed to the default "updates" mode
+	var $pubtrigger; //word to use in summaries to trigger publication
+	var $permalinks; //wether to force permalinks in feeds, even in publication mode
+
 	static function newFromArticle( &$article, &$parser ) {
 		$title = $article->getTitle();
 		$article->getContent(); 
@@ -167,6 +171,14 @@ class NewsRenderer {
 			}
 		}
 	
+		$this->pubtrigger = @$argv['trigger'];
+		if ( $this->pubtrigger ) $this->publication = true;
+		else  $this->publication = false;
+	
+		$this->permalinks = @$argv['permalinks'];
+		if ( $this->permalinks === 'false' || $this->permalinks === 'no' || $this->permalinks === '0' )
+			$this->permalinks = false;
+	
 		$this->nominor = @$argv['nominor'];
 		if ( $this->nominor === 'false' || $this->nominor === 'no' || $this->nominor === '0' )
 			$this->nominor = false;
@@ -244,6 +256,8 @@ class NewsRenderer {
 		if ( $this->noanon )  $where[] = 'rc_user > 0';
 		if ( $this->onlypatrolled )  $where[] = 'rc_patrolled = 1';
 		if ( $this->onlynew )  $where[] = 'rc_new = 1';
+		if ( $this->pubtrigger )  $where[] = 'rc_comment LIKE ' . $dbr->addQuotes( '%' . $this->pubtrigger . '%' );
+
 		if ( $this->namespaces )  $where[] = 'rc_namespace IN ( ' . $dbr->makeList( $this->namespaces ) . ' )';
 		else {
 			if ( $this->notalk )  $where[] = 'MOD(rc_namespace, 2) = 0';
@@ -364,13 +378,14 @@ class NewsRenderer {
 		$news = $this->fetchNews();
 
 		$html = '';
-
+		$html .= '<div class="hfeed"> <!-- using hatom microformat, see http://microformats.org/wiki/hatom -->';
 		foreach ($news as $row) { 
 			$t = $this->renderRow( $row, true );
 			$item = $this->makeFeedItem( $row, $t, false );
 			$t = $this->renderFeedItem( $item );
 			$html .= $t;
 		}
+		$html .= '</div>';
 
 		return $html;
 	}
@@ -380,27 +395,29 @@ class NewsRenderer {
 		$sk = $wgUser->getSkin();
 
 		$html = '';
-		$html .= '<div class="newsfeed-item">';
+		$html .= '<div class="newsfeed-item hentry">';
 		$html .= '<div class="newsfeed-item-head">';
 
-		$html .= '<h1>' . $sk->makeKnownLinkObj( $item->title_object ) . '</h1>';
+		$html .= '<h1><a href="'.$item->getUrl().'" class="entry-title" rel="bookmark">' . $item->getTitle() . '</a></h1>';
 
 		$html .= '<p><small>';
-		$html .= $item->getAuthor();
+		$html .= '<span class="author">' . $item->getAuthor() . '</span>';
 		$html .= ', ';
-		$html .= $wgContLang->timeanddate( $item->getDate() );
-		if ( $item->getComments() ) {
-			$html .= ' - <i>';
-			$html .= htmlspecialchars( $item->raw_comment );
-			$html .= '</i>';
-		}
+		$html .= '<span class="published">' . $wgContLang->timeanddate( $item->getDate() ) . '</span>';
 		$html .= '</small></p>';
 
 		$html .= '</div>';
 
-		$html .= '<div class="newsfeed-item-content">';
+		$html .= '<div class="newsfeed-item-content entry-content">';
 		$html .= $item->raw_text;
 		$html .= '</div>';
+		$html .= '<p><small>';
+		if ( $item->getComments() ) {
+			$html .= '(';
+			$html .= '<a href="'.htmlspecialchars( $item->raw_comment ).'"/>'.htmlspecialchars($item->title_object->getTalkPage()->getPrefixedText()).'</a>';
+			$html .= ')';
+		}
+		$html .= '</small></p>';
 		$html .= '</div>';
 		return $html;
 	}
@@ -426,16 +443,33 @@ class NewsRenderer {
 		}
 
 		$title = Title::makeTitle( $row->rc_namespace, $row->rc_title ); //XXX: this is redundant, we already have a title object in renderRow. But no good way to pass it :(
-		$item = new FeedItem( $title->getPrefixedText(), 
+
+		if ($this->publication) {
+			$name = $title->getPrefixedText();
+		}
+		else {
+			$name = $title->getPrefixedText() . ( $row->rc_comment ? (' - ' . $row->rc_comment) : '' );
+			$permaq = "oldid=" . $row->rc_this_oldid;
+		}
+
+		if (!$this->publication || $this->permalinks) {
+			$url = $row->rc_this_oldid ? $title->getFullURL( $permaq ) : $title->getFullURL();
+		}
+		else {
+			$url = $title->getFullURL();
+		}
+
+		$item = new FeedItem( $name,
 					$text, 
-					$title->getFullURL(), 
+					$url,
 					$row->rc_timestamp,
 					$user,
-					$row->rc_comment );
+					$title->getTalkPage()->getFullURL() );
 
 		//XXX: ugly hack - things used by preview
 		$item->raw_text = $text; //needed because FeedItem holds text html-encoded internally. wtf
-		$item->raw_comment = $row->rc_comment; //needed because FeedItem holds text html-encoded internally. wtf
+		$item->raw_comment = $title->getTalkPage()->getFullURL(); //needed because FeedItem holds text html-encoded internally. wtf
+		$item->raw_title = $name; //needed because FeedItem holds text html-encoded internally. wtf
 		$item->title_object = $title; //title object
 		return $item;
 	}
@@ -706,7 +740,9 @@ class NewsFeedPage extends Article {
 		$note = '';	
 
 		$ims = @$_SERVER['HTTP_IF_MODIFIED_SINCE'];
-		
+
+		//TODO: cache control!
+
 		if ( $ims && $usecache ) {
 			$lastchange = wfTimestamp(TS_UNIX, NewsRenderer::getLastChangeTime());
 
@@ -750,8 +786,12 @@ class NewsFeedPage extends Article {
 
 			if ($last < $e['timestamp']) {
 				wfDebug("$fname: outputting cached copy ($cachekey): $last < {$e['timestamp']}\n");
+
+				header('Content-Type: application/' . $this->mFeedFormat . '+xml; charset=UTF-8');
+
 				print $e['xml'];
 				print "\n<!-- cached: $note -->\n";
+
 				return; //done
 			}
 			else {
@@ -762,7 +802,6 @@ class NewsFeedPage extends Article {
 
 		//TODO: fetch actual news data and check the newest item. re-apply cache checks.
 		//      this would still save the cost of rendering if the data didn't change
-
 		global $wgParser; //evil global
 		
 		if (!$wgParser->mOptions) { //XXX: ugly hack :(
@@ -771,6 +810,11 @@ class NewsFeedPage extends Article {
 			$wgParser->clearState();
 			$wgParser->mTitle = $this->mTitle;
 		}
+
+		//FIXME: an EXTREMELY ugly hack to force generation of absolute links.
+		//       this is needed because Title::getLocalUrl check wgRequest to see
+		//       if absolute urls are requested, instead of it being a parser option.
+		$_REQUEST['action'] = 'render';
 		
 		$renderer = NewsRenderer::newFromArticle( $this, $wgParser );
 		if (!$renderer) {
@@ -794,6 +838,8 @@ class NewsFeedPage extends Article {
 		}
 
 		wfDebug("$fname: outputting fresh feed\n");
+
+		header('Content-Type: application/' . $this->mFeedFormat . '+xml; charset=UTF-8');
 		print $xml;
 		print "\n<!-- fresh: $note -->\n";
 	}

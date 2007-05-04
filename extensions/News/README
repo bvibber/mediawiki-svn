@@ -99,6 +99,20 @@ The following options (tag attributes) can be used to controll the output of the
                 "false"). If given, the edit shown may not refer to the current
                 revision. 
 
+* trigger       show only edits with the given trigger in the edit comment.
+                Used primarily to explicitely "publish" pages to a news box
+                or feed. If used, the resulting feed will also look slightly
+                different, focussing less on a single edit and more on the
+                page. Most importantly, the edit comment will not be show in
+                the feed, and a generic link to the page will be used, instead
+                of a permalink to a specific version (unless the permalink
+                option is also set).
+
+* permalinks    force the use of permalinks in feeds, even if a trigger is
+                used to publish pages. Per default, feeds that use a trigger
+                use generic page links instead of permalinks to specific
+                versions. Feeds not using a trigger always use permalinks.
+
 * prefix        wikitext to be inserted before the wikitext generated from the
                 template text is parsed. Can be used to make tables from news.
 
