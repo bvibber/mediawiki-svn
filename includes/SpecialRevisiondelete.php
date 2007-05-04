@@ -929,7 +929,7 @@ class RevisionDeleter {
 		}
 		
 		// Use of $timeframe for Image objects can create thumbnails of oldimages
-		$imgtitle = Title::makeTitle( NS_IMAGE, $oimage->mArchiveName ); // hack...
+		$imgtitle = Title::makeTitle( NS_IMAGE, $oimage->mName );
 		$image = new Image( $imgtitle );
 		$image->purgeCache(); // Clear any thumbnails/purge squid cache
 		

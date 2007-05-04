@@ -265,7 +265,7 @@ class ImagePage extends Article {
 
 					if ( $page > 1 ) {
 						$label = $wgOut->parse( wfMsg( 'imgmultipageprev' ), false );
-						$link = $sk->makeLinkObj( $this->mTitle, $label, 'page='. ($page-1) );
+						$link = $sk->makeKnownLinkObj( $this->mTitle, $label, 'page='. ($page-1) );
 						$thumb1 = $sk->makeThumbLinkObj( $this->img, $link, $label, 'none', 
 							array( 'page' => $page - 1 ) );
 					} else {
@@ -274,7 +274,7 @@ class ImagePage extends Article {
 
 					if ( $page < $count ) {
 						$label = wfMsg( 'imgmultipagenext' );
-						$link = $sk->makeLinkObj( $this->mTitle, $label, 'page='. ($page+1) );
+						$link = $sk->makeKnownLinkObj( $this->mTitle, $label, 'page='. ($page+1) );
 						$thumb2 = $sk->makeThumbLinkObj( $this->img, $link, $label, 'none', 
 							array( 'page' => $page + 1 ) );
 					} else {
@@ -515,7 +515,8 @@ END
 			return;
 		}
 		if ( $wgUser->isBlocked() ) {
-			return $this->blockedIPpage();
+			$wgOut->blockedPage();
+			return;
 		}
 		if ( wfReadOnly() ) {
 			$wgOut->readOnlyPage();
@@ -648,7 +649,8 @@ END
 			return;
 		}
 		if ( $wgUser->isBlocked() ) {
-			return $this->blockedIPpage();
+			$wgOut->blockedPage();
+			return;
 		}
 		if( !$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ), $oldimage ) ) {
 			$wgOut->showErrorPage( 'internalerror', 'sessionfailure' );
@@ -691,11 +693,6 @@ END
 		$descTitle = $img->getTitle();
 		$wgOut->returnToMain( false, $descTitle->getPrefixedText() );
 	}
-
-	function blockedIPpage() {
-		$edit = new EditPage( $this );
-		return $edit->blockedIPpage();
-	}
 	
 	/**
 	 * Override handling of action=purge
@@ -706,6 +703,7 @@ END
 			wfDebug( "ImagePage::doPurge purging " . $this->img->getName() . "\n" );
 			$update = new HTMLCacheUpdate( $this->mTitle, 'imagelinks' );
 			$update->doUpdate();
+			$this->img->upgradeRow();
 			$this->img->purgeCache();
 		} else {
 			wfDebug( "ImagePage::doPurge no image\n" );

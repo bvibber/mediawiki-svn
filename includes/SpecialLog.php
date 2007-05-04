@@ -536,7 +536,7 @@ class LogViewer {
 		else
 			$action = $this->logActionText( $s->log_type, $s->log_action, $title, $this->skin, $paramArray );
 		
-		$out = "<li><tt>$del</tt> $time $userLink $action $comment <small>$revert</small></li>\n";
+		$out = "<li><tt>$del</tt> $time $userLink $action $comment $revert</li>\n";
 		return $out;
 	}
 

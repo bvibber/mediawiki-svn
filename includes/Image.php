@@ -89,9 +89,9 @@ class Image
 			throw new MWException( 'Image constructor given bogus title.' );
 		}
 		$this->title =& $title;
-		$this->name = $title->getDBkey();
 		// Name used for hash dir
-		$this->baseName = $this->name;
+		$this->name = $title->getDBkey();
+		$this->fileName = $this->name;
 		// $timeframe is for getting images from a time period
 		$this->timeframe = $timeframe;
 		$this->oldimage = false;
@@ -345,7 +345,7 @@ class Image
 			$result = $dbr->select( 'oldimage',
 				array( 'oi_archive_name','oi_width as img_width','oi_height as img_height','oi_bits as img_bits',
 					'oi_size as img_size','oi_media_type as img_media_type', 'oi_metadata as img_metadata',
-					'oi_major_mime as img_major_mime','oi_minor_mime as img_minor_mime'),
+					'oi_major_mime as img_major_mime','oi_minor_mime as img_minor_mime','oi_deleted'),
 				array( 'oi_name' => $this->name, "oi_timestamp < {$this->timeframe}" ), 
 				__METHOD__,
 				array('ORDER BY' => 'oi_timestamp DESC', 'LIMIT' => 1) );
@@ -354,7 +354,7 @@ class Image
 				if ( $row->oi_deleted & Image::DELETED_FILE ) {
 					$row = null; // public only
 				} else {
-					$this->name = $row->oi_archive_name;
+					$this->fileName = $row->oi_archive_name;
 					$this->oldimage = true;
 				}
 			}
@@ -384,7 +384,7 @@ class Image
 				$result = $dbc->select( "`$wgSharedUploadDBname`.{$wgSharedUploadDBprefix}oldimage",
 					array( 'oi_archive_name','oi_width as img_width','oi_height as img_height','oi_bits as img_bits',
 						'oi_size as img_size','oi_media_type as img_media_type', 'oi_metadata as img_metadata',
-						'oi_major_mime as img_major_mime','oi_minor_mime as img_minor_mime'),
+						'oi_major_mime as img_major_mime','oi_minor_mime as img_minor_mime','oi_deleted'),
 					array( 'oi_name' => $this->name, "oi_timestamp < {$this->timeframe}" ), 
 					__METHOD__,
 					array('ORDER BY' => 'oi_timestamp DESC', 'LIMIT' => 1) );
@@ -394,7 +394,7 @@ class Image
 					if ( $row->oi_deleted & Image::DELETED_FILE ) {
 						$row = null; // public only
 					} else {
-						$this->name = $row->oi_archive_name;
+						$this->fileName = $row->oi_archive_name;
 						$this->oldimage = true;
 					}
 				}
@@ -533,7 +533,7 @@ class Image
 					'oi_major_mime' => $major,
 					'oi_minor_mime' => $minor,
 					'oi_metadata' => $this->metadata,
-				), array( 'oi_archive_name' => $this->name ), __METHOD__
+				), array( 'oi_archive_name' => $this->fileName ), __METHOD__
 			);
 		}
 		if ( $this->fromSharedDirectory ) {
@@ -899,7 +899,7 @@ class Image
 			return null;
 		}
 		list( $thumbExt, $thumbMime ) = self::getThumbType( $this->extension, $this->mime );
-		$thumbName = $handler->makeParamString( $params ) . '-' . $this->name;
+		$thumbName = $handler->makeParamString( $params ) . '-' . $this->fileName;
 		if ( $thumbExt != $this->extension ) {
 			$thumbName .= ".$thumbExt";
 		}
@@ -1119,7 +1119,7 @@ class Image
 	 */
 	function purgeMetadataCache() {
 		clearstatcache();
-		$this->upgradeRow();
+		$this->loadFromFile();
 		$this->saveToCache();
 	}
 
@@ -1269,7 +1269,7 @@ class Image
 		$subdir = $this->oldimage ? '/archive' : '';
 		// $wgSharedUploadDirectory may be false, if thumb.php is used
 		if ( $dir ) {
-			$fullpath = $dir . $subdir . wfGetHashPath($this->baseName, $fromSharedRepository) . $this->name;
+			$fullpath = $dir . $subdir . wfGetHashPath($this->name, $fromSharedRepository) . $this->fileName;
 		} else {
 			$fullpath = false;
 		}
@@ -1347,7 +1347,7 @@ class Image
 				'img_description' => $desc,
 				'img_user' => $wgUser->getID(),
 				'img_user_text' => $wgUser->getName(),
-				'img_metadata' => $this->metadata,
+				'img_metadata' => $this->metadata
 			),
 			__METHOD__,
 			'IGNORE'
