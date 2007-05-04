@@ -41,7 +41,7 @@ public class AliasPorterStemFilter extends TokenFilter {
 			String s = stemmer.stem(token.termText());
 			if (s != token.termText()){ 
 				// generate stemmed alias for the current token
-				nextToken = new Token(s,token.startOffset(),token.endOffset());
+				nextToken = new Token(s,token.startOffset(),token.endOffset(),"stemmed");
 				nextToken.setPositionIncrement(0);
 			}
 			return token;

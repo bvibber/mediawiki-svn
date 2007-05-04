@@ -280,6 +280,10 @@ public class WikiIndexModifier {
 		doc.add(new Field("contents", "", 
 				Field.Store.NO, Field.Index.TOKENIZED));
 		
+		// the next fields are generated using wikitokenizer 
+		doc.add(new Field("stemmed", "", 
+				Field.Store.NO, Field.Index.TOKENIZED));
+		
 		// each token is one category (category names themself are not tokenized)
 		doc.add(new Field("category", "", 
 				Field.Store.NO, Field.Index.TOKENIZED));

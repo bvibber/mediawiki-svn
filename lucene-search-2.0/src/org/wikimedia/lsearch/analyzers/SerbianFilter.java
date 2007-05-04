@@ -97,7 +97,7 @@ public class SerbianFilter extends TokenFilter {
 					token = new Token(s,token.startOffset(),token.endOffset());
 					return token;
 				}
-				nextToken = new Token(s,token.startOffset(),token.endOffset());
+				nextToken = new Token(s,token.startOffset(),token.endOffset(),"alias");
 				nextToken.setPositionIncrement(0);
 			}			
 			return token;

@@ -42,6 +42,8 @@ public class Importer {
 		Localization.readLocalization(GlobalConfiguration.getInstance().getLanguage(dbname));
 		Localization.loadInterwiki();
 		
+		long start = System.currentTimeMillis();
+		
 		// open
 		InputStream input = null;
 		try {
@@ -58,9 +60,22 @@ public class Importer {
 		} catch (IOException e) {
 			log.warn("I/O error reading dump for "+dbname+" from "+inputfile);
 		}
+		
+		long end = System.currentTimeMillis();
 
 		log.info("Closing/optimizing index...");
 		dp.closeIndex();
+		
+		long finalEnd = System.currentTimeMillis();
+		
+		System.out.println("Finished indexing in "+formatTime(end-start)+", with final index optimization in "+formatTime(finalEnd-end));
+	}
+
+	private static String formatTime(long l) {
+		l /= 1000;
+		if(l >= 3600) return l/3600+"h "+(l%3600)/60+"m "+(l%60)+"s";
+		else if(l >= 60) return (l%3600)/60+"m "+(l%60)+"s";
+		else return l+"s";
 	}
 
 }

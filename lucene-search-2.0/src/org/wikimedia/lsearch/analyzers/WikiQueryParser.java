@@ -275,11 +275,7 @@ public class WikiQueryParser {
 
 	/** make <code>tokenStream</code> from lowercased <code>buffer</code> via analyzer */
 	private void analyzeBuffer(){
-		String analysisField;
-		if(field == null || namespaceMapping.containsKey(field) || field.equalsIgnoreCase("all"))
-			analysisField = defaultField;
-		else
-			analysisField = field;
+		String analysisField = defaultField;
 		tokenStream = analyzer.tokenStream(analysisField, 
 				new String(buffer,0,length).toLowerCase());
 		
@@ -336,7 +332,17 @@ public class WikiQueryParser {
 		}
 		if(length != 0){
 			query = new PhraseQuery();
-			query.add(makeTerm());
+			// if it's a category don't tokenize it, we want whole category name
+			if(field!=null && field.equals("category"))
+				query.add(makeTerm()); 
+			else{
+				analyzeBuffer();
+				for(Token token : tokens){
+					if(token.type().equals("word")) // ignore aliases and stemmed words
+						query.add(makeTerm(token));
+				}
+				query.setBoost(defaultBoost);
+			}			
 			return query;	
 		} else
 			return null;
@@ -431,7 +437,7 @@ public class WikiQueryParser {
 						fieldsubquery = parseClause(level+1,true,myfield);
 					} else{
 						analyzeBuffer();
-						subquery = makeQueryFromTokens(occur);
+						subquery = makeQueryFromTokens(explicitOccur!=null? explicitOccur : occur);
 					}
 					break;
 				case AND:
@@ -506,11 +512,6 @@ public class WikiQueryParser {
 					break mainloop;
 				}
 				continue;
-			/* case ':':
-				// prefix: all
-				if(field == null)
-					field = "contents"; 
-				 continue; */
 			}
 
 			// if we fetched some tokens or a subquery add it to main query
@@ -570,26 +571,41 @@ public class WikiQueryParser {
 			t.setBoost(defaultBoost);
 			return t;
 		} else{
-			bq = new BooleanQuery();
-			boolean hasAliases = false;
-			for(Token token: tokens){
-				if(token.getPositionIncrement()==0){
-					hasAliases = true;
-					break;
-				}
-			}
+			BooleanQuery cur;
+			cur = bq = new BooleanQuery();
 			// make a nested boolean query
-			for(Token token : tokens){				
-				t = new TermQuery(makeTerm(token));
-				t.setBoost(defaultBoost);
-				if(token.getPositionIncrement() == 0 && aliasOccur != null){
-					// alias !!
-					t.setBoost(ALIAS_BOOST*defaultBoost);
-					bq.add(t,aliasOccur);
-				} else if(hasAliases && token.getPositionIncrement() != 0)
-					bq.add(t,BooleanClause.Occur.SHOULD); // add the original word with SHOULD
-				else if(!hasAliases && token.getPositionIncrement() != 0)
-					bq.add(t,boolDefault); // cases of analysis output like anti-hero => anti, hero
+			for(int i=0; i<tokens.size(); i++){
+				Token token = tokens.get(i);
+				if(token.getPositionIncrement() == 0){
+					if(aliasOccur == null); // ignore stemmed/aliases if prefixed with MUST_NOT
+					else if(token.type().equals("stemmed")){						
+						// stemmed word
+						t = new TermQuery(new Term("stemmed",token.termText()));
+						t.setBoost(ALIAS_BOOST*defaultBoost);
+						cur.add(t,aliasOccur);
+					} else if(token.type().equals("alias")){
+						// produced by alias engine (e.g. for sr)
+						t = new TermQuery(makeTerm(token));
+						t.setBoost(ALIAS_BOOST*defaultBoost);
+						cur.add(t,aliasOccur);
+					}
+					if( cur != bq) // returned from nested query
+						cur = bq;
+				} else{
+					t = new TermQuery(makeTerm(token));
+					t.setBoost(defaultBoost);
+					if(tokens.size() > 2 && (i+1) < tokens.size() && tokens.get(i+1).getPositionIncrement()==0){
+						// make nested query. this is needed when single word is tokenized
+						// into many words of which they all have aliases
+						// e.g. anti-hero => anti stemmed:anti hero stemmed:hero
+						cur = new BooleanQuery();
+						cur.add(t,BooleanClause.Occur.SHOULD);
+						bq.add(cur,boolDefault);
+					} else if((i+1) >= tokens.size() || tokens.get(i+1).getPositionIncrement()!=0)
+						cur.add(t,boolDefault);
+					else
+						cur.add(t,BooleanClause.Occur.SHOULD); // add the original word with SHOULD					
+				}
 			}
 			return bq;
 		}

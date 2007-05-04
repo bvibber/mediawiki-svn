@@ -5,8 +5,8 @@
 	<property name="src" value="src"/>
 	<property name="jars" value="jars"/>
 	<property name="dist" location="dist"/>
-	<property name="pack.name" value="mwsearch-src"/>
-	<property name="binary.name" value="mwsearch"/>
+	<property name="pack.name" value="lucene-search-2.0"/>
+	<property name="binary.name" value="ls2-bin"/>
 	
 	<property file="${basedir}/hostname"/>
 	
@@ -49,7 +49,7 @@
 		<delete file="${dist}/${pack.name}.tar"/>
 		<delete file="${dist}/${pack.name}.tar.gz"/>
 		<tar tarfile="${dist}/${pack.name}.tar">
-			<tarfileset prefix="${pack.name}" dir="." includes="**/*" excludes="dist/"/>
+			<tarfileset prefix="${pack.name}" dir="." includes="**/*" excludes="dist/ bin/ MWSearch.jar"/>
 		</tar>
 
 		<gzip zipfile="${dist}/${pack.name}.tar.gz" src="${dist}/${pack.name}.tar"/>
@@ -60,7 +60,7 @@
 		<delete file="${dist}/${binary.name}.tar"/>
 		<delete file="${dist}/${binary.name}.tar.gz"/>
 		<tar tarfile="${dist}/${binary.name}.tar">
-			<tarfileset prefix="${binary.name}" dir="." includes="**/*" excludes="dist/ doc/ src/ test-data/ bin/ TODO"/>
+			<tarfileset prefix="${binary.name}" dir="." includes="**/*" excludes="dist/ doc/ src/ test-data/ bin/ TODO .svn **/.svn"/>
 		</tar>
 
 		<gzip zipfile="${dist}/${binary.name}.tar.gz" src="${dist}/${binary.name}.tar"/>
