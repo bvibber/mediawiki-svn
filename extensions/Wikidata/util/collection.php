@@ -37,22 +37,25 @@ limit 0,40")or die ("error ".mysql_error());
 
 $start=stopwatch();
 
+$collection_id=$_REQUEST['collection'];
+
+$result = mysql_query(
+"SELECT spelling 
+FROM uw_collection_ns, uw_defined_meaning, uw_expression_ns
+WHERE collection_id=$collection_id
+AND collection_mid=defined_meaning_id 
+AND uw_defined_meaning.expression_id=uw_expression_ns.expression_id
+")or die ("error ".mysql_error());
+
+$row= mysql_fetch_array($result, MYSQL_NUM);
+$collection= $row[0];
+
 echo"<center>
-<h1>Number of Expressions per language</h1>
+<h1> $collection </h1>
+<h2> Number of Expressions per language in this collection </h2>
 <hr width=950 size=1 noshade><br>
 ";
 
-$expressions_r=mysql_query("SELECT  COUNT(*) FROM uw_expression_ns");
-$expressions_a=mysql_fetch_row($expressions_r);
-$expressions=$expressions_a[0];
-
-$defined_meanings_r=mysql_query("SELECT  COUNT(*) FROM uw_defined_meaning");
-$defined_meanings_a=mysql_fetch_row($defined_meanings_r);
-$defined_meanings=$defined_meanings_a[0];
-echo"<br>\n";
-echo"Total <b>$defined_meanings</b> DefinedMeanings in database, linking together <b>$expressions</b> Expressions. Broken down per language:\n";
-echo"</br>\n";
-echo"<hr>\n";
 
 $result = mysql_query("SELECT *
 FROM language_names 
@@ -66,26 +69,34 @@ $lang[$row[0]]=$row[2];
 
 
 ////////////////////////////////////////////////////////
+$collection_esc=mysql_real_escape_string( $collection_id);
 $result = mysql_query("SELECT 
-language_id, count(*)
-FROM uw_expression_ns, uw_syntrans
-WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id
+language_id, COUNT(DISTINCT defined_meaning_id) as counts
+FROM uw_collection_contents, uw_syntrans, uw_expression_ns
+WHERE  collection_id = $collection_esc
+AND  uw_syntrans.defined_meaning_id= uw_collection_contents.member_mid
+AND uw_expression_ns.expression_id = uw_syntrans.expression_id
 AND uw_syntrans.remove_transaction_id IS NULL
-group by language_id
-order by count(*) desc
+GROUP BY language_id
+ORDER BY counts DESC
  ")or die ("error ".mysql_error());
 
 echo ' 
 <table cellpadding=0 width=950><tr><td width=200><b>Language</b></td><td align=right><b>Expressions</b></td><td width=30></td><td></td></tr>';
 $width=500;
-$limit=500;
+$limit=0;
 $max=0;
+$limit_percent=10;
+
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
-if($max<$row[1])$max=$row[1];
+if($max<$row[1]) {
+	$max=$row[1];
+	$limit=(int) ($max*($limit_percent/100)+0.5); # 10% cutoff, note that ORDER BY ... DESC   should have first row = max ;-)
+}
 $wi=ceil((($row[1]/$max)*$width));
 $per=ceil((($row[1]/$max)*100));
 if($row[1]>$limit)echo "<tr><td >".$lang[$row[0]].'</td><td align="right">'.$row[1]."</td><td width=30></td><td><img src=sc1.png width=\"$wi\" height=20> $per %</td></tr>";
-else $tx.=$lang[$row[0]]." (".$row[1]."), ";
+else $tx.=$lang[$row[0]]." (".$row[1]."/ $per%), ";
 //$ar[$row[0]].=$row[1]."	".$row[2]."\n";
 //filewrite("out/".$row[0].".txt",$row[1]."	".$row[2]);
 }
@@ -93,7 +104,7 @@ echo "
 <tr><td colspan=4>
 <div align=justify>
 
-<h3>Languages with less than $limit entries:</h3>
+<h3>Languages with $limit entries or less ( / cutoff at $limit_percent% or less)</h3>
 $tx
 </div>
 </td>
@@ -116,7 +127,7 @@ echo "
 <small>Page time: ".substr((stopwatch()-$start),0,5)." seconds</small>
 <td align=right>
 
-<small>Script contributed by <a href=http://www.dicts.info/>Zdenek Broz</a>
+<small>Script based on work contributed by <a href=http://www.dicts.info/>Zdenek Broz</a>
 </small>
 </td>
 </tr></table>
@@ -137,6 +148,7 @@ fclose($fw);
 <p align="left">
 <h3> see also</h3>
 <ul>
-<li><a href="collections.php">Collections</a></li>
+<li><a href="collections.php">Other collections</a></li>
+<li><a href="stats.php">Overview, expressions per langauge</a></li>
 <li><a href="../../..">return to Omegawiki proper</li></a>
 </p>
