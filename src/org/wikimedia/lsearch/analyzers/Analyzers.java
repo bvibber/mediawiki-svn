@@ -26,46 +26,6 @@ public class Analyzers {
 	static org.apache.log4j.Logger log = Logger.getLogger(Analyzers.class);
 	
 	protected static GlobalConfiguration global = null;
-
-	/** Get a token filter (usually stemmer) */
-	public static Class getStemmerForLanguage(String language) {
-
-		if(language == null)
-			language = "en";
-		
-		if(language.equals("en")){
-			log.debug("Using english alias stemmer.");
-			return PorterStemFilter.class;
-		} else if(language.equals("de"))
-			return GermanStemFilter.class;
-		else if(language.equals("eo"))
-			return EsperantoStemFilter.class;
-		else if(language.equals("ru"))
-			return RussianStemFilter.class;
-		else if(language.equals("fr"))
-			return FrenchStemFilter.class;
-		else if(language.equals("nl"))
-			return DutchStemFilter.class;
-		else{ 
-			log.debug("Not using a language stemmer");
-			return null;
-		}
-	}
-	
-	/** Get additional filter */
-	public static Class getCustomFilterForLanguage(String language) {
-
-		if(language == null)
-			language = "en";
-		
-		if(language.equals("th"))
-			return ThaiWordFilter.class;
-		else if(language.equals("sr"))
-			return SerbianFilter.class;
-		else{ 
-			return null;
-		}
-	}
 	
 	/** Analyzer for titles, for most languages just a plain
 	 *  wiki tokenizer (lowercase, unicode normalization), but
@@ -97,8 +57,9 @@ public class Analyzers {
 		ArrayList<String> categories = tokenizer.getCategories();
 		
 		perFieldAnalyzer = new PerFieldAnalyzerWrapper(new SimpleAnalyzer());
-		perFieldAnalyzer.addAnalyzer("contents", 
-				new LanguageAnalyzer(filters,tokenizer));
+		Analyzer contentAn = new TwinLanguageAnalyzer(filters,tokenizer); 
+		perFieldAnalyzer.addAnalyzer("contents", contentAn);
+		perFieldAnalyzer.addAnalyzer("stemmed", contentAn);
 		perFieldAnalyzer.addAnalyzer("category", 
 				new CategoryAnalyzer(categories));
 		perFieldAnalyzer.addAnalyzer("title",
@@ -128,8 +89,9 @@ public class Analyzers {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		
 		perFieldAnalyzer = new PerFieldAnalyzerWrapper(getTitleAnalyzer(filters));
-		perFieldAnalyzer.addAnalyzer("contents", 
-				new QueryLanguageAnalyzer(filters));
+		Analyzer contentAn = new QueryLanguageAnalyzer(filters); 
+		perFieldAnalyzer.addAnalyzer("contents", contentAn);
+		perFieldAnalyzer.addAnalyzer("stemmed", contentAn);
 		perFieldAnalyzer.addAnalyzer("title",
 				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
 		

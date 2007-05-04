@@ -11,6 +11,8 @@ import org.apache.lucene.analysis.TokenStream;
 
 /**
  * Manages aliases for stemmers.
+ * Update: mixes two tokenstreams into one. All words are transformed into pairs
+ * (word, stemmed), even if word == stemmed. Usefeul only for search query parsing.
  * 
  * @author rainman
  *
@@ -52,10 +54,16 @@ public class AliasFilter extends TokenStream {
 			return original;
 		Token stemmed = stemmer.next();
 		// NOTE: we require them to be the SAME OBJECT, so we don't waste time doing equal()
-		if(original == stemmed)
+		if(original == stemmed){
+			if(original != null){ // produce stemmed alias even if original == stemmed
+				last = new Token(original.termText(),original.startOffset(),original.endOffset(),"stemmed");
+				last.setPositionIncrement(0);
+			}
 			return original;
+		}
 		else{
 			stemmed.setPositionIncrement(0); // alias
+			stemmed.setType("stemmed");
 			last = stemmed;
 			return original;
 		}

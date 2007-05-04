@@ -17,6 +17,7 @@ public class Benchmark extends Thread {
 	protected int threads;
 	protected Terms terms;
 	protected int words;
+	protected String namespace;
 	
 	protected int thread; // current thread
 		
@@ -34,12 +35,12 @@ public class Benchmark extends Thread {
 	protected static Object sharedLock = new Object();
 	
 	/** Use this to construct the main thread */
-	public Benchmark(String host, int port, String database, String verb, Terms terms, int words) {
-		this(host,port,database,verb,terms,words,0,0);
+	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace) {
+		this(host,port,database,verb,terms,words,namespace,0,0);
 	}
 	
 	/** Use this to construct a benchmark thread */
-	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, int runs, int thread) {
+	public Benchmark(String host, int port, String database, String verb, Terms terms, int words, String namespace, int runs, int thread) {
 		this.host = host;
 		this.port = port;
 		this.database = database;
@@ -48,6 +49,7 @@ public class Benchmark extends Thread {
 		this.terms = terms;
 		this.thread = thread;
 		this.words = words;
+		this.namespace = namespace;
 	}
 
 	/** Start benchmarking on main thread */
@@ -62,7 +64,7 @@ public class Benchmark extends Thread {
 		collector = new Collector(100,threads*runs);
 		
 		for(int i=0;i<threads;i++)
-			new Benchmark(host,port,database,verb,terms,words,runs,i).start();
+			new Benchmark(host,port,database,verb,terms,words,namespace,runs,i).start();
 		
 		// wait until all thread finish
 		while(activeThreads != 0){
@@ -107,7 +109,7 @@ public class Benchmark extends Thread {
 				query += " OR ";
 			query += terms.next();
 		}
-		query = "main:"+URLEncoder.encode(query).replaceAll("\\+","%20");
+		query = namespace+":"+URLEncoder.encode(query).replaceAll("\\+","%20");
 		String urlString = "http://"+host+":"+port+"/"+verb+"/"+database+"/"+query+"?limit=20"; 
 		try {
 			URL url;
@@ -158,6 +160,7 @@ public class Benchmark extends Thread {
 		int port = 8123;
 		String database = "wikilucene";
 		String verb = "search";
+		String namespace = "all";
 		int runs = 5000;
 		int threads = 10;
 		int words = 2;
@@ -177,6 +180,8 @@ public class Benchmark extends Thread {
 				runs = Integer.parseInt(args[++i]);
 			} else if (args[i].equals("-v")) {
 				database = args[++i];
+			} else if (args[i].equals("-ns")) {
+				namespace = args[++i];
 			} else if (args[i].equals("-w")) {
 				words = Integer.parseInt(args[++i]);
 			} else if (args[i].equals("--help")) {
@@ -187,11 +192,13 @@ public class Benchmark extends Thread {
 				                   "  -t  threads (defaut: "+threads+")\n"+
 				                   "  -n  count (default: "+runs+")\n"+
 				                   "  -w  number of words in query (default: "+words+")\n"+
-				                   "  -v  verb (default: "+verb+")\n\n");
+				                   "  -v  verb (default: "+verb+")\n"+
+				                   "  -ns  namespace (default: "+namespace+")\n");
+				return;
 			}
 		}
 		System.out.println("Running benchmark on "+host+":"+port+" with "+threads+" theads each "+runs+" runs");
-		Benchmark bench = new Benchmark(host, port, database, verb, terms, words);
+		Benchmark bench = new Benchmark(host, port, database, verb, terms, words, namespace);
 		bench.startBenchmark(threads,runs);
 		bench.printReport();
 	}

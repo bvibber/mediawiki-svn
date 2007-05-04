@@ -52,6 +52,86 @@ For total of 50000 runs (5000 runs per 10 threads) on wikilucene with 2 words:
 * total results: 3506954
 * results per request: 70.13908
 
+========== Srv77 =========
+
+For total of 50000 runs (5000 runs per 10 threads) on enwiki.mainpart with 1 words:
+* total time: 641673ms
+* time per request: 12.83346ms
+* total results: 453450994
+* results per request: 9069.01988
+
+(warmed up index)
+For total of 50000 runs (5000 runs per 10 threads) on enwiki.mainpart with 1 words:
+* total time: 210580ms
+* time per request: 4.2116ms
+* total results: 453338558
+* results per request: 9066.77116
+
+For total of 50000 runs (5000 runs per 10 threads) on enwiki.mainpart with 2 words:
+* total time: 287177ms
+* time per request: 5.74354ms
+* total results: 895383204
+* results per request: 17907.66408
+
+For total of 50000 runs (5000 runs per 10 threads) on enwiki with 1 words:
+* total time: 716212ms
+* time per request: 14.32424ms
+* total results: 1012740105
+* results per request: 20254.8021
+
+======= Srv77 (tested from srv79) =======
+
+(warmed up index)
+For total of 50000 runs (5000 runs per 10 threads) on enwiki.mainpart with 1 words:
+* total time: 116131ms
+* time per request: 2.32262ms
+* total results: 451635588
+* results per request: 9032.71176
+
+For total of 50000 runs (5000 runs per 10 threads) on enwiki with 1 words:
+* total time: 343828ms
+* time per request: 6.87656ms
+* total results: 945571167
+* results per request: 18911.42334
+
+For total of 50000 runs (5000 runs per 10 threads) on enwiki with 2 words:
+* total time: 533135ms
+* time per request: 10.6627ms
+* total results: 1978025206
+* results per request: 39560.50412
 
 
+======= Srv22 (tested from srv77) =======
 
+For total of 50000 runs (5000 runs per 10 threads) on enwiki with 1 words:
+* total time: 418933ms
+* time per request: 8.37866ms
+* total results: 979467166
+* results per request: 19589.34332
+
+For total of 50000 runs (5000 runs per 10 threads) on enwiki with 2 words:
+* total time: 704018ms
+* time per request: 14.08036ms
+* total results: 1990957311
+* results per request: 39819.14622
+
+=============== Contents + stemmed architecture ===================
+
+==== Srv77 from srv79 ====
+(cold index)
+For total of 50000 runs (5000 runs per 10 threads) on enwiki.mainpart with 1 words:
+* total time: 705646ms
+* time per request: 14.11292ms
+* total results: 328363380
+* results per request: 6567.2676
+
+(warmed up index)
+For total of 50000 runs (5000 runs per 10 threads) on enwiki with 1 words:
+* total time: 173255ms
+* time per request: 3.4651ms
+* total results: 334332223
+* results per request: 6686.64446
+
+(super-hot index ;)
+
+	
