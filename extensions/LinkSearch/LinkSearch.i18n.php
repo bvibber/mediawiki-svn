@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Internationalisation file for LinkSearch extension.
  *
@@ -104,9 +104,12 @@ $wgLinkSearchMessages['nl'] = array(
 );
 $wgLinkSearchMessages['pt'] = array(
 	'linksearch'       => 'Procurar por links da web',
-	'linksearch-text'  => 'É possível utilizar "caracteres mágicos" como em "*.wikipedia.org".',
+	'linksearch-pat'   => 'Padrão de procura:',
+	'linksearch-ns'    => 'Espaço nominal:',
+	'linksearch-ok'    => 'Pesquisar',
+	'linksearch-text'  => 'É possível utilizar "caracteres mágicos" como em "*.wikipedia.org".<br />Protocolos suportados: <tt>$1</tt>',
 	'linksearch-line'  => '$1 está lincado em $2',
-	'linksearch-error' => '"Caracteres mágicos" Wildcards podem ser utilizados apenas no início do endereço.',
+	'linksearch-error' => '"Caracteres mágicos" (wildcards) podem ser utilizados apenas no início do endereço.',
 );
 // Brazillian portuguese inherits portuguese.
 $wgLinkSearchMessages['pt-br'] = $wgLinkSearchMessages['pt'];

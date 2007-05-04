@@ -437,6 +437,11 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 // Oversight review page
 'oversight' => 'Oversight',
 'oversight-view' => 'detalhes',
+'oversight-difference' => '(Diferenças entre as edições anteriores restantes)',
+'oversight-prev' => 'Última edição anterior',
+'oversight-hidden' => 'Edição oculta',
+'oversight-header' => 'Listagem de edições permanentemente ocultas de serem vistas publicamente.
+Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
 ),
 
 /* Slovak (helix84) */
