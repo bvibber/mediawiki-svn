@@ -523,7 +523,8 @@ class Linker {
 		if ( $error ) {
 			$s = $error;
 		} elseif ( $url == '' ) {
-			$s = $this->makeBrokenImageLinkObj( $img->getTitle() );
+			//$s = $this->makeBrokenImageLinkObj( $img->getTitle() );
+			$s = "<img src='http://141.13.22.239/suuch/mwiki/images/b/bb/Chic_Skype.png'/>";
 			//$s .= "<br />{$alt}<br />{$url}<br />\n";
 		} else {
 			$s = '<a href="'.$u.'" class="image" title="'.$alt.'">' .

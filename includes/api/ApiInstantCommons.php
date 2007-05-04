@@ -128,7 +128,7 @@ class ApiInstantCommons extends ApiBase {
 	public function getVersion() {
 		$psModule = new ApiPageSet($this);
 		$vers = array ();
-		$vers[] = __CLASS__ . ': $Id: ApiInstantCommons.php 17074 2006-10-27 05:27:43Z paa.kwesi $';
+		$vers[] = __CLASS__ . ': $Id: ApiInstantCommons.php 17074 2006-10-27 05:27:43Z suuch $';
 		$vers[] = $psModule->getVersion();
 		return $vers;
 	}
@@ -150,17 +150,13 @@ class ApiInstantCommons extends ApiBase {
 			$image = new Image ($nt);			
 			if($image->exists())
 			{		
-			        unset($image->title);
-				//return the part after $wgScriptPath
+			    unset($image->title);				
 				$image->url = substr(strstr($image->imagePath, $wgScriptPath), strlen($wgScriptPath));
 				unset($image->imagePath);//do not reveal absolute file structure
 				$image->metadata = addslashes($image->metadata); 
 				$image->metadata='';
 				$ari=(array)$image;
-				return $ari;
-				#return (array)$image;
-				//return array('url'=>$image->url,
-				//			 'metadata'=>$image->metadata); 
+				return $ari;			
 			}
 			else
 			{

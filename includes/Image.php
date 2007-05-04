@@ -1,8 +1,5 @@
 <?php
 /**
- */
-
-/**
  * NOTE FOR WINDOWS USERS:
  * To enable EXIF functions, add the folloing lines to the
  * "Windows extensions" section of php.ini:
@@ -375,82 +372,86 @@ class Image
 		} elseif ( $wgUseInstantCommons && $wgInstantCommonsServerPath ){
 			//NB: We enter into this loop even when we're uploading to the wiki.
 			//so skip if it's an upload				
-			if($src!="upload") { 
-				//TODO: Download the file from the InstantCommonsServer in the background, else show 
-				//"downloading this image" or other status message.
-				//store it in the image database and return an Image object It should
-				//return an object identical to a database row as above
-				
-				$rname=tempnam(wfTempDir(),'icresponse.xml');
-				$url = $wgInstantCommonsServerPath.'/api.php?action=instantcommons&format=xml&media='.$this->name;
-				$fp = fopen($rname, "w");				
-				$xmlString = $this-> my_file_get_contents($url, $fp);
-				
-				$p =& new ApiInstantCommons('instantcommons', 'maint');
-				fclose($fp);
-												
-				if(trim($xmlString)!=""){								
-					$row = ($p->parse($xmlString));				
-					$row = $row[0]['children'][0]['children'][0]['attrs']; 
-				}			
-				if ( $row['NAME'] ) {					
-					//create the local file directory ($this->mSavedFile)
-					UploadForm::saveUploadedFile( $row['NAME'],
-		                             $row['NAME']
-		                              ); //this hack just creates the path locally
-		            //now download the file to the final location
-		            //TODO: This has to be done in the background! Otherwise the page
-		            //hangs until the download is complete
-		            
-		            //TODO: As a workaround, check the size of the file returned. If greater than
-		            //2.5kb (typical thumbnail size on my test wiki), show "Download in progress" 
-		            //image instead until the download is complete
-		             $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
-		            $fp = fopen("{$this->mSavedFile}", "w");
-		            if($row['SIZE'] > 3000) {wfDebug(join($row, ' | '));
-		            	$this-> my_file_get_contents($icFileUrl, $this->mSavedFile, TRUE);
-		            }else {
-			            /* 
-			            $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
-			            $icFp = fopen("{$this->mSavedFile}", "w");
-			            my_file_get_contents($icFileUrl, $icFp);	
-			            fclose($icFp);*/
-			                       
-						$ch = curl_init($wgInstantCommonsServerPath.$row['URL']);
-						//$fp = fopen("{$this->mSavedFile}", "w");				
-						curl_setopt($ch, CURLOPT_FILE, $fp);
-						curl_setopt($ch, CURLOPT_HEADER, 0);				
-						curl_exec($ch);
-						curl_close($ch);						
-		            }                             
+			if($src!="upload") {
+				if($_POST['wpPreview']=='Show preview') {
+				 	//do not record the image. Show a placeholder image instead
+				}else{				
+					//TODO: Replace placeholder image with the file from the InstantCommonsServer
+					//store it in the image database and return an Image object It should
+					//return an object identical to a database row as above
 					
-					//set further properties
-					$this->fromInstantCommons = true; //TODO:THIS IS NOT STORED. For future use only!
-					$this->fileExists = true;
-					$this->imagePath = $this->getFullPath(false, true);
-					$this->width = $row['WIDTH'];
-					$this->height = $row['HEIGHT'];
-					$this->metadata = stripslashes($row['METADATA']);
-					$this->bits = $row['BITS'];
-					$this->type = $row['TYPE'];
-					$this->mime = $row['MIME'];
-					$this->size = $row['SIZE'];
-					$this->dataLoaded = $row['DATALOADED'];
-					$this->attr = $row['ATTR'];
-					$this->historyLine = $row['HISTORYLINE'];
-					$this->historyRes = $row['HISTORYRES'];
-					/**
-					 * Update the upload log and create the description page
-					 * if it's a new file.
-					 */
-					$success = $this->recordUpload('Downloaded with InstantCommons!', $row['DESCRIPTION']);	
-					if ( $success ) {					
-						wfRunHooks( 'UploadComplete', array( &$this ) );
-					}					                                			
+					$rname=tempnam(wfTempDir(),'icresponse.xml');
+					$url = $wgInstantCommonsServerPath.'/api.php?action=instantcommons&format=xml&media='.$this->name;
+					$fp = fopen($rname, "w");				
+					$xmlString = $this-> my_file_get_contents($url, $fp);
 					
-				}
+					$p =& new ApiInstantCommons('instantcommons', 'maint');
+					fclose($fp);
+					//TODO: Replace the xml-parser								
+					if(trim($xmlString)!=""){								
+						$row = ($p->parse($xmlString));				
+						$row = $row[0]['children'][0]['children'][0]['attrs']; 
+					}			
+					if ( $row['NAME'] ) {					
+						//create the local file directory ($this->mSavedFile)
+						UploadForm::saveUploadedFile( $row['NAME'],
+			                             $row['NAME']
+			                              ); //this hack just creates the path locally
+			            //now download the file to the final location
+			            //TODO: This has to be done in the background! Otherwise the page
+			            //hangs until the download is complete
+			            
+			            //TODO: As a workaround, check the size of the file returned. If greater than
+			            //2.5kb (typical thumbnail size on my test wiki), show "Download in progress" 
+			            //image instead until the download is complete
+			             $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
+			            $fp = fopen("{$this->mSavedFile}", "w");
+			            if($row['SIZE'] > 3000) {wfDebug(join($row, ' | '));
+			            	$this-> my_file_get_contents($icFileUrl, $this->mSavedFile, TRUE);
+			            }else {
+				            /* 
+				            $icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
+				            $icFp = fopen("{$this->mSavedFile}", "w");
+				            my_file_get_contents($icFileUrl, $icFp);	
+				            fclose($icFp);*/
+				                       
+							$ch = curl_init($wgInstantCommonsServerPath.$row['URL']);
+							//$fp = fopen("{$this->mSavedFile}", "w");				
+							curl_setopt($ch, CURLOPT_FILE, $fp);
+							curl_setopt($ch, CURLOPT_HEADER, 0);				
+							curl_exec($ch);
+							curl_close($ch);						
+			            }                             
+						
+						//set further properties
+						$this->fromInstantCommons = true; //TODO:THIS IS NOT STORED. For future use only!
+						$this->fileExists = true;
+						$this->imagePath = $this->getFullPath(false, true);
+						$this->width = $row['WIDTH'];
+						$this->height = $row['HEIGHT'];
+						$this->metadata = stripslashes($row['METADATA']);
+						$this->bits = $row['BITS'];
+						$this->type = $row['TYPE'];
+						$this->mime = $row['MIME'];
+						$this->size = $row['SIZE'];
+						$this->dataLoaded = $row['DATALOADED'];
+						$this->attr = $row['ATTR'];
+						$this->historyLine = $row['HISTORYLINE'];
+						$this->historyRes = $row['HISTORYRES'];
+						/**
+						 * Update the upload log and create the description page
+						 * if it's a new file.
+						 */
+						
+						$success = $this->recordUpload('Downloaded with InstantCommons!', $row['DESCRIPTION']);	
+						if ( $success ) {
+							wfRunHooks( 'UploadComplete', array( &$this ) );
+							//TODO: purge cache to show the image						
+						}                  			
+					}
 				}
 			}
+		}
 		
 
 		if ( !$row ) {
@@ -1739,7 +1740,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 
 			# Update the current image row
 			$dbw->update( 'image',
-				array( /* SET */
+				array( // SET
 					'img_size' => $this->size,
 					'img_width' => intval( $this->width ),
 					'img_height' => intval( $this->height ),
@@ -1752,7 +1753,7 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 					'img_user' => $wgUser->getID(),
 					'img_user_text' => $wgUser->getName(),
 					'img_metadata' => $this->metadata,
-				), array( /* WHERE */
+				), array( // WHERE 
 					'img_name' => $this->name
 				), __METHOD__
 			);
@@ -1790,11 +1791,11 @@ function my_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://
 		# Commit the transaction now, in case something goes wrong later
 		# The most important thing is that images don't get lost, especially archives
 		$dbw->immediateCommit();
-
+		
 		# Invalidate cache for all pages using this image
 		$update = new HTMLCacheUpdate( $this->getTitle(), 'imagelinks' );
 		$update->doUpdate();
-
+ 
 		return true;
 	}
 
