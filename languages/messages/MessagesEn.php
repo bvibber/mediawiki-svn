@@ -251,6 +251,7 @@ $magicWords = array(
 	'numberofarticles'       => array( 1,    'NUMBEROFARTICLES'       ),
 	'numberoffiles'          => array( 1,    'NUMBEROFFILES'          ),
 	'numberofusers'          => array( 1,    'NUMBEROFUSERS'          ),
+	'numberofedits'          => array( 1,    'NUMBEROFEDITS'          ),
 	'pagename'               => array( 1,    'PAGENAME'               ),
 	'pagenamee'              => array( 1,    'PAGENAMEE'              ),
 	'namespace'              => array( 1,    'NAMESPACE'              ),
@@ -374,6 +375,7 @@ $specialPageAliases = array(
 	'Mostcategories'            => array( 'Mostcategories' ),
 	'Mostimages'                => array( 'Mostimages' ),
 	'Mostrevisions'             => array( 'Mostrevisions' ),
+	'Fewestrevisions'           => array( 'Fewestrevisions' ),
 	'Shortpages'                => array( 'Shortpages' ),
 	'Longpages'                 => array( 'Longpages' ),
 	'Newpages'                  => array( 'Newpages' ),
@@ -415,6 +417,7 @@ $specialPageAliases = array(
 	'Popularpages'              => array( 'Popularpages' ),
 	'Search'                    => array( 'Search' ),
 	'Resetpass'                 => array( 'Resetpass' ),
+	'Withoutinterwiki'          => array( 'Withoutinterwiki' ),
 );
 
 /**
@@ -639,6 +642,7 @@ parent class in order maintain consistency across languages.
 'unprotectthispage' => 'Unprotect this page',
 'newpage' => 'New page',
 'talkpage'		=> 'Discuss this page',
+'talkpagelinktext' => 'Talk',
 'specialpage' => 'Special Page',
 'personaltools' => 'Personal tools',
 'postcomment'   => 'Post a comment',
@@ -779,7 +783,7 @@ Query: $2',
 'protectedinterface' => 'This page provides interface text for the software, and is locked to prevent abuse.',
 'editinginterface' => "'''Warning:''' You are editing a page which is used to provide interface text for the software. Changes to this page will affect the appearance of the user interface for other users.",
 'sqlhidden' => '(SQL query hidden)',
-'cascadeprotected' => 'This page has been protected from editing, because it is included in the following pages, which are protected with the "cascading" option turned on:',
+'cascadeprotected' => 'This page has been protected from editing, because it is included in the following {{PLURAL:$1|page|pages}}, which are protected with the "cascading" option turned on:',
 
 # Login and logout pages
 #
@@ -933,9 +937,24 @@ format. Please enter a well-formatted address or empty that field.',
 
 The block was made by $1. The reason given is ''$2''.
 
+Expiry of block: $6
+
 You can contact $1 or another [[{{MediaWiki:grouppage-sysop}}|administrator]] to discuss the block.
 You cannot use the 'email this user' feature unless a valid email address is specified in your
 [[Special:Preferences|account preferences]]. Your current IP address is $3, and the block ID is #$5. Please include either or both of these in any queries.",
+'autoblockedtext'   => 'Your IP address has been automatically blocked because it was used by another user, who was blocked by $1.
+The reason given is this:
+
+:\'\'$2\'\'
+
+Expiry of block: $6
+
+You may contact $1 or one of the other
+[[{{ns:project}}:Administrators|administrators]] to discuss the block.
+
+Note that you may not use the "e-mail this user" feature unless you have a valid e-mail address registered in your [[Special:Preferences|user preferences]].
+
+Your block ID is $5. Please include this ID in any queries you make.',
 'blockedoriginalsource' => "The source of '''$1''' is shown below:",
 'blockededitsource' => "The text of '''your edits''' to '''$1''' is shown below:",
 'whitelistedittitle' => 'Login required to edit',
@@ -946,6 +965,8 @@ You cannot use the 'email this user' feature unless a valid email address is spe
 'whitelistacctext' => 'To be allowed to create accounts in this wiki you have to [[Special:Userlogin|log]] in and have the appropriate permissions.',
 'confirmedittitle' => 'E-mail confirmation required to edit',
 'confirmedittext' => 'You must confirm your e-mail address before editing pages. Please set and validate your e-mail address through your [[Special:Preferences|user preferences]].',
+'nosuchsectiontitle' => 'No such section',
+'nosuchsectiontext' => "You tried to edit a section that doesn't exist.  Since there is no section \$1, there's no place to save your edit.",
 'loginreqtitle'	=> 'Login Required',
 'loginreqlink' => 'log in',
 'loginreqpagetext'	=> 'You must $1 to view other pages.',
@@ -1014,7 +1035,7 @@ so you will not be able to save your edits right now. You may wish to cut-n-past
 the text into a text file and save it for later.</strong>',
 'protectedpagewarning' => "<strong>WARNING:  This page has been locked so that only users with sysop privileges can edit it.</strong>",
 'semiprotectedpagewarning' => "'''Note:''' This page has been locked so that only registered users can edit it.",
-'cascadeprotectedwarning' => "'''Warning:''' This page has been locked so that only users with sysop privileges can edit it, because it is included in the following cascade-protected pages:",
+'cascadeprotectedwarning' => "'''Warning:''' This page has been locked so that only users with sysop privileges can edit it, because it is included in the following cascade-protected {{PLURAL:$1|page|pages}}:",
 'templatesused'	=> 'Templates used on this page:',
 'templatesusedpreview'	=> 'Templates used in this preview:',
 'templatesusedsection'	=> 'Templates used in this section:',
@@ -1065,77 +1086,72 @@ Legend: (cur) = difference with current version,
 'deletedrev' => '[deleted]',
 'histfirst' => 'Earliest',
 'histlast' => 'Latest',
-'history-feed-title' => 'Revision history',
-'history-feed-description'	=> 'Revision history for this page on the wiki',
+'historysize' => '($1 bytes)',
+'historyempty' => '(empty)',
+
+# Revision feed
+#
+'history-feed-title'          => 'Revision history',
+'history-feed-description'    => 'Revision history for this page on the wiki',
 'history-feed-item-nocomment' => '$1 at $2', # user at time
-'history-feed-empty' => 'The requested page doesn\'t exist.
+'history-feed-empty'          => 'The requested page doesn\'t exist.
 It may have been deleted from the wiki, or renamed.
 Try [[Special:Search|searching on the wiki]] for relevant new pages.',
 
 # Revision deletion
 #
-'revisiondelete' => 'Delete/undelete revisions',
-
-'rev-deleted-comment' => '(comment removed)',
-'rev-deleted-user' => '(username removed)',
-'rev-deleted-event' => '(entry removed)',
+'rev-deleted-comment'         => '(comment removed)',
+'rev-deleted-user'            => '(username removed)',
+'rev-deleted-event'           => '(entry removed)',
 'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">
 This page revision has been removed from the public archives.
 There may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
 </div>',
-'rev-deleted-text-view' => '<div class="mw-warning plainlinks">
+'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
 This page revision has been removed from the public archives.
 As an administrator on this site you can view it;
 there may be details in the [{{fullurl:Special:Log/delete|page={{FULLPAGENAMEE}}}} deletion log].
 </div>',
-'rev-delundel' => 'show/hide',
-'historysize' => '($1 bytes)',
-'historyempty' => '(empty)',
-
-'history-feed-title' => 'Revision history',
-'history-feed-description'	=> 'Revision history for this page on the wiki',
-'history-feed-item-nocomment' => '$1 at $2', # user at time
-'history-feed-empty' => 'The requested page doesn\'t exist.
-It may have been deleted from the wiki, or renamed.
-Try [[Special:Search|searching on the wiki]] for relevant new pages.',
-
-# Revision deletion
-#
-'revisiondelete' => 'Delete/undelete revisions',
-'revdelete-nooldid-title' => 'No target revision',
-'revdelete-nooldid-text' => 'You have not specified target revision or revisions
-to perform this function on.',
-'revdelete-selected' => "Selected revisions of '''$1''':",
-'logdelete-selected' => "Selected log events for '''$1''':",
-'revdelete-text' => "Deleted revisions and events will still appear in the page history and logs,
+'rev-delundel'                => 'show/hide',
+'revisiondelete'              => 'Delete/undelete revisions',
+'revdelete-nooldid-title'     => 'No target revision',
+'revdelete-nooldid-text'      => 'You have either not specified a target revision(s) to perform this 
+function on or the specified revision does not exist.',
+'revdelete-selected'          => "{{PLURAL:$2|Selected revision|Selected revisions}} of '''$1:'''",
+'logdelete-selected'          => "{{PLURAL:$2|Selected log event|Selected log events}} for '''$1:'''",
+'revdelete-text'              => "Deleted revisions and events will still appear in the page history and logs,
 but parts of their content will be inaccessible to the public.
 
 Other admins on this wiki will still be able to access the hidden content and can
-undelete it again through this same interface, unless additional restrictions
-are set.",
-'revdelete-legend' => 'Set restrictions:',
-'revdelete-hide-text' => 'Hide revision text',
-'revdelete-hide-name' => 'Hide action and target',
-'revdelete-hide-comment' => 'Hide edit comment',
-'revdelete-hide-user' => 'Hide editor\'s username/IP',
-'revdelete-hide-restricted' => 'Apply these restrictions to sysops as well as others',
-'revdelete-suppress' => 'Suppress data from sysops as well as others',
-'revdelete-hide-image' => 'Hide file content',
-'revdelete-unsuppress' => 'Remove restrictions on restored revisions',
-'revdelete-log' => 'Log comment:',
-'revdelete-submit' => 'Apply to selected revision',
+undelete it again through this same interface, unless additional restrictions are set.",
+'revdelete-legend'            => 'Set restrictions:',
+'revdelete-hide-text'         => 'Hide revision text',
+'revdelete-hide-name'         => 'Hide action and target',
+'revdelete-hide-comment'      => 'Hide edit comment',
+'revdelete-hide-user'         => 'Hide editor\'s username/IP',
+'revdelete-hide-restricted'   => 'Apply these restrictions to Sysops and lock this interface',
+'revdelete-suppress'          => 'Suppress data from sysops as well as others',
+'revdelete-hide-image'        => 'Hide file content',
+'revdelete-unsuppress'        => 'Remove restrictions on restored revisions',
+'revdelete-log'               => 'Log comment:',
+'revdelete-submit'            => 'Apply to selected revision',
+'revdelete-logentry'          => 'changed revision visibility of [[$1]]',
+'logdelete-logentry'          => 'changed event visibility of [[$1]]',
+'revdelete-logaction'         => '$1 {{plural:$1|revision|revisions}} set to mode $2',
+'logdelete-logaction'         => '$1 {{plural:$1|event|events}} to [[$3]] set to mode $2',
+'revdelete-success'           => 'Revision visibility successfully set.',
+'logdelete-success'           => 'Event visibility successfully set.',
 
-'revdelete-logentry' => 'changed revision visibility of [[$1]]',
-'logdelete-logentry' => 'changed event visibility of [[$1]]',
-'revdelete-logaction' => '$1 {{plural:$1|revision|revisions}} set to mode $2',
-'logdelete-logaction' => '$1 {{plural:$1|event|events}} to [[$3]] set to mode $2',
-
-'revdelete-success' => 'Revision visibility successfully set.',
-'logdelete-success' => 'Event visibility successfully set.',
-
+# Oversight log
+#
 'oversightlog' => 'Oversight log',
 'overlogpagetext' => 'Below is a list of the most recent deletions and blocks involving content 
-hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
+hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans 
+and blocks.
+
+The deletion of single revisions can be reviewed by clicking the linked numbers that appear in parenthesis, which
+correspond to each deleted item.',
+
 # Diffs
 #
 'difference'	=> '(Difference between revisions)',
@@ -1245,7 +1261,8 @@ containing all of the search terms will appear in the result).",
 'contextlines'	=> 'Lines per hit:',
 'contextchars'	=> 'Context per line:',
 'stubthreshold' => 'Threshold for stub display:',
-'recentchangescount' => 'Titles in recent changes:',
+'recentchangesdays' => 'Days to show in recent changes:',
+'recentchangescount' => 'Number of edits to show in recent changes:',
 'savedprefs'	=> 'Your preferences have been saved.',
 'timezonelegend' => 'Time zone',
 'timezonetext'	=> 'The number of hours your local time differs from server time (UTC).',
@@ -1268,6 +1285,7 @@ containing all of the search terms will appear in the result).",
 'userrights-groupsavailable' => 'Available groups:',
 'userrights-groupshelp' => 'Select groups you want the user to be removed from or added to.
 Unselected groups will not be changed. You can deselect a group with CTRL + Left Click',
+'userrights-reason' => 'Reason for change:',
 
 # Groups
 'group'                   => 'Group:',
@@ -1365,10 +1383,19 @@ To include the image in a page, use a link in the form
 'filetype-missing'            => 'The file has no extension (like ".jpg").',
 'large-file' => 'It is recommended that files are no larger than $1; this file is $2.',
 'largefileserver' => 'This file is bigger than the server is configured to allow.',
-'emptyfile'		=> 'The file you uploaded seems to be empty. This might be due to a typo in the file name. Please check whether you really want to upload this file.',
-'fileexists'		=> 'A file with this name exists already, please check $1 if you are not sure if you want to change it.',
-'fileexists-forbidden' => 'A file with this name exists already; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
-'fileexists-shared-forbidden' => 'A file with this name exists already in the shared file repository; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
+'emptyfile'		      => 'The file you uploaded seems to be empty. This might be due to a typo in the file name. Please check whether you really want to upload this file.',
+'fileexists'		      => 'A file with this name exists already, please check <strong><tt>$1</tt></strong> if you are not sure if you want to change it.',
+'fileexists-extension'        => 'A file with a similar name exists:<br />
+Name of the uploading file: <strong><tt>$1</tt></strong><br />
+Name of the existing file: <strong><tt>$2</tt></strong><br />
+Please choose a different name.',
+'fileexists-thumb'             => "'''<center>Existing image</center>'''",
+'fileexists-thumbnail-yes'     => "The file seems to be an image of reduced size <i>(thumbnail)</i>. Please check the file <strong><tt>$1</tt></strong>.<br />
+If the checked file is the same image of original size it is not necessary to upload an extra thumbnail.",
+'file-thumbnail-no'            => "The filename begins with <strong><tt>$1</tt></strong>. It seems to be an image of reduced size <i>(thumbnail)</i>.
+If you have this image in full resolution upload this one, otherwise change the file name please.",
+'fileexists-forbidden'         => 'A file with this name exists already; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
+'fileexists-shared-forbidden'  => 'A file with this name exists already in the shared file repository; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
 'successfulupload' => 'Successful upload',
 'fileuploaded'	=> "File $1 uploaded successfully.
 Please follow this link: $2 to the description page and fill
@@ -1425,8 +1452,7 @@ created and by whom, and anything else you may know about it. If this is an imag
 'revertimg'		=> 'rev',
 'deleteimg'		=> 'del',
 'deleteimgcompletely'		=> 'Delete all revisions of this file',
-'imghistlegend' => 'Legend: (cur) = this is the current file, (del) = delete
-this old version, (rev) = revert to this old version.
+'imghistlegend' => 'Legend: (cur) = this is the current file, (rev) = revert to this old version.
 <br /><i>Click on date to see the file uploaded on that date</i>.',
 'imagelinks'	=> 'Links',
 'linkstoimage'	=> 'The following pages link to this file:',
@@ -1469,24 +1495,28 @@ this old version, (rev) = revert to this old version.
 
 # Random redirect
 'randomredirect' => 'Random redirect',
+'randomredirect-nopages' => 'There are no redirects in this namespace.',
 
 # Statistics
 #
 'statistics'	=> 'Statistics',
 'sitestats'		=> '{{SITENAME}} statistics',
 'userstats'		=> 'User statistics',
-'sitestats-text' => "There {{PLURAL:$1|is '''1''' page|are '''$1''' total pages}} in the database.
+'sitestatstext' => "There {{PLURAL:$1|is '''1''' page|are '''$1''' total pages}} in the database.
 This includes \"talk\" pages, pages about {{SITENAME}}, minimal \"stub\"
 pages, redirects, and others that probably don't qualify as content pages.
 Excluding those, there {{PLURAL:$2|is '''1''' page that is a|are '''$2''' pages that are}} probably legitimate
 content {{PLURAL:$2|page|pages}}. 
 
-'''$5''' {{PLURAL:$5|file|files}} have been uploaded.
+'''$8''' {{PLURAL:$8|file|files}} have been uploaded.
 
-There have been a total '''$3''' {{PLURAL:$3|page edit|page edits}} since {{SITENAME}} was setup. That comes to '''$4''' average edits per page.",
-'sitestats-views' => "There have been a total of '''$1''' {{PLURAL:$1|page view|page views}} and '''$2''' views per edit.",
-'sitestats-jobs' => "The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$1'''.",
-'userstats-text' => "There {{PLURAL:$1|is '''1''' registered user|are '''$1''' registered users}}, of which '''$2''' (or '''$3%''') {{PLURAL:$2|has|have}} $4 rights.",
+There have been a total of '''$3''' {{PLURAL:$3|page view|page views}}, and '''$4''' {{PLURAL:$4|page edit|page edits}}
+since {{SITENAME}} was setup.
+That comes to '''$5''' average edits per page, and '''$6''' views per edit.
+
+The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''.",
+'userstatstext' => "There {{PLURAL:$1|is '''1''' registered user|are '''$1''' registered users}}, of which
+'''$2''' (or '''$4%''') {{PLURAL:$2|has|have}} $5 rights.",
 'statistics-mostpopular' => 'Most viewed pages',
 'statistics-footer' => '',
 
@@ -1504,6 +1534,13 @@ There have been a total '''$3''' {{PLURAL:$3|page edit|page edits}} since {{SITE
 'brokenredirectstext'	=> 'The following redirects link to non-existent pages:',
 'brokenredirects-edit' => '(edit)',
 'brokenredirects-delete' => '(delete)',
+
+'withoutinterwiki' => 'Pages without language links',
+'withoutinterwiki-header' => 'The following pages do not link to other language versions:',
+'withoutinterwiki-summary' => '',
+
+'fewestrevisions' => 'Articles with the fewest revisions',
+'fewestrevisions-summary' => '',
 
 # Miscellaneous special pages
 #
@@ -1546,6 +1583,7 @@ There have been a total '''$3''' {{PLURAL:$3|page edit|page edits}} since {{SITE
 'prefixindex'   => 'Prefix index',
 'prefixindex-summary' => '',
 'randompage'	=> 'Random page',
+'randompage-nopages'	=> 'There are no pages in this namespace.',
 'randompage-url'=> 'Special:Random',
 'shortpages'	=> 'Short pages',
 'shortpages-summary'     => '',
@@ -1557,7 +1595,7 @@ There have been a total '''$3''' {{PLURAL:$3|page edit|page edits}} since {{SITE
 'protectedpages' => 'Protected pages',
 'protectedpages-summary' => '',
 'protectedpagestext' => 'The following pages are protected from moving or editing',
-'protectedpagesempty' => 'No pages are currently protected',
+'protectedpagesempty'   => 'No pages are currently protected with these parameters.',
 'listusers'		=> 'User list',
 'listusers-summary'	=> '',
 'specialpages'	=> 'Special pages',
@@ -1598,11 +1636,17 @@ further information about books you are looking for:',
 'pubmedurl' =>  'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1',
 'alphaindexline' => "$1 to $2",
 'version'		=> 'Version',
-'log'		=> 'Logs',
-'alllogstext'	=> 'Combined display of upload, deletion, protection, blocking, and sysop logs.
-You can narrow down the view by selecting a log type, the user name, or the affected page.',
-'logempty' => 'No matching items in log.',
 
+# Special:Logs
+'specialloguserlabel'  => 'User:',
+'speciallogtitlelabel' => 'Title:',
+'log'                  => 'Logs',
+'log-search-legend' => 'Search for logs',
+'log-search-submit' => 'Go',
+'alllogstext'          => 'Combined display of all available logs of {{SITENAME}}.
+You can narrow down the view by selecting a log type, the user name, or the affected page.',
+'logempty'             => 'No matching items in log.',
+'log-title-wildcard' => 'Search titles starting with this text',
 
 # Special:Allpages
 'nextpage'          => 'Next page ($1)',
@@ -1620,7 +1664,7 @@ You can narrow down the view by selecting a log type, the user name, or the affe
 # Special:Listusers
 'listusersfrom'      => 'Display users starting at:',
 'listusers-submit'   => 'Show',
-'listusers-noresult' => 'No users found. Please check upper-/lowercase variants too.',
+'listusers-noresult' => 'No user found.',
 
 # Email this user
 #
@@ -1652,6 +1696,7 @@ or has chosen not to receive e-mail from other users.',
 
 # Watchlist
 'watchlist'			=> 'My watchlist',
+'mywatchlist'			=> 'My watchlist',
 'watchlistfor' => "(for '''$1''')",
 'nowatchlist'		=> 'You have no items on your watchlist.',
 'watchlistanontext' => 'Please $1 to view or edit items on your watchlist.',
@@ -1796,15 +1841,24 @@ Please hit "back" and reload the page you came from, then try again.',
 'unprotectcomment' => 'Reason for unprotecting',
 'protect-unchain' => 'Unlock move permissions',
 'protect-text' => 'You may view and change the protection level here for the page <strong>$1</strong>.',
-'protect-viewtext' => 'Your account does not have permission to change
-page protection levels. Here are the current settings for the page <strong>$1</strong>:',
-'protect-cascadeon' => "This page is currently protected because it is included in the following pages, which have cascading protection turned on. You can change this page's protection level, but it will not affect the cascading protection.",
+'protect-locked-blocked' => 'You cannot change protection levels while blocked. Here are the
+current settings for the page <strong>$1</strong>:',
+'protect-locked-dblock' => 'Protection levels cannot be changed due to an active database lock.
+Here are the current settings for the page <strong>$1</strong>:',
+'protect-locked-access' => 'Your account does not have permission to change page protection levels.
+Here are the current settings for the page <strong>$1</strong>:',
+'protect-cascadeon' => "This page is currently protected because it is included in the following {{PLURAL:$1|page, which has|pages, which have}} cascading protection turned on. You can change this page's protection level, but it will not affect the cascading protection.",
 'protect-default' => '(default)',
 'protect-level-autoconfirmed' => 'Block unregistered users',
 'protect-level-sysop' => 'Sysops only',
 'protect-summary-cascade' => 'cascading',
 'protect-expiring' => 'expires $1 (UTC)',
 'protect-cascade' => 'Cascading protection - protect any pages included in this page.',
+'restriction-type' => 'Permission:',
+'restriction-level' => 'Restriction level:',
+'minimum-size' => 'Min size',
+'maximum-size' => 'Max size',
+'pagesize'     => '(bytes)',
 
 # restrictions (nouns)
 'restriction-edit' => 'Edit',
@@ -1813,6 +1867,7 @@ page protection levels. Here are the current settings for the page <strong>$1</s
 # restriction levels
 'restriction-level-sysop' => 'full protected',
 'restriction-level-autoconfirmed' => 'semi protected',
+'restriction-level-all' => 'any level',
 
 
 # Undelete
@@ -1821,18 +1876,15 @@ page protection levels. Here are the current settings for the page <strong>$1</s
 'viewdeletedpage' => 'View deleted pages',
 'undeletepagetext' => 'The following pages have been deleted but are still in the archive and
 can be restored. The archive may be periodically cleaned out.',
-'undeleteextrahelp' => "To restore the entire page, leave all checkboxes deselected and
-click '''''Restore'''''. To perform a selective restoration, check the boxes corresponding to the
-revisions to be restored, and click '''''Restore'''''. Clicking '''''Reset''''' will clear the
-comment field and all checkboxes.",
+'undeleteextrahelp' => "To restore the entire page, click '''''Restore'''''. Use the \"show/hide\" links to set 
+restrictions on individual revisions, which will remain on the revisions even when restored.",
 'undeleterevisions' => "$1 {{PLURAL:$1|revision|revisions}} archived",
 'undeletehistory' => 'If you restore the page, all revisions will be restored to the history.
 If a new page with the same name has been created since the deletion, the restored
 revisions will appear in the prior history, and the current revision of the live page
-will not be automatically replaced. Also note that restrictions on file revisions are lost upon restoration', 
-'undeleterevdel' => 'Undeletion will not be performed if it will result in the top page revision being
-partially deleted. In such cases, you must uncheck or unhide the newest deleted revisions. Revisions of files 
-that you don\'t have permission to view will not be restored.',
+will not be automatically replaced.', 
+'undeleterevdel' => 'Undeletion will not be performed if it will result in the top page or image revision being
+restricted. In such cases, you must remove restrictions on the newest deleted revision.',
 'undeletehistorynoadmin' => 'This article has been deleted. The reason for deletion is
 shown in the summary below, along with details of the users who had edited this page
 before deletion. The actual text of these deleted revisions is only available to administrators.',
@@ -1844,7 +1896,7 @@ revision may have been restored or removed from the archive.",
 'undeletecomment' => 'Comment:',
 'undeletedarticle' => "restored \"[[$1]]\"",
 'undeletedrevisions' => "$1 {{plural:$1|revision|revisions}} restored",
-'undeletedrevisions-files' => "$1 revisions and {{plural:$2|file|files}} restored",
+'undeletedrevisions-files' => "$1 {{plural:$1|revision|revisions}} and $2 {{plural:$2|file|files}} restored",
 'undeletedfiles' => "$1 {{plural:$1|file|files}} restored",
 'cannotundelete' => 'Undelete failed; someone else may have undeleted the page first.',
 'undeletedpage' => "<big>'''$1 has been restored'''</big>
@@ -1864,7 +1916,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 #
 'contributions' => 'User contributions',
 'mycontris'     => 'My contributions',
-'contribsub'    => "For $1",
+'contribsub2'    => "For $1 ($2)",
 'nocontribs'    => 'No changes were found matching these criteria.',
 'ucnote'        => "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
 'uclinks'       => "View the last $1 changes; view the last $2 days.",
@@ -1880,22 +1932,27 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'sp-contributions-search'      => 'Search for contributions',
 'sp-contributions-username'    => 'IP Address or username:',
 'sp-contributions-submit'      => 'Search',
+'sp-contributions-footer' => '-',
+'sp-contributions-footer-anon' => '-',
 
 'sp-newimages-showfrom' => 'Show new images starting from $1',
 
 # What links here
 #
-'whatlinkshere'	=> 'What links here',
+'whatlinkshere'         => 'What links here',
 'whatlinkshere-summary'	=> '',
-'whatlinkshere-barrow' => '&lt;',
-'notargettitle' => 'No target',
-'notargettext'	=> 'You have not specified a target page or user
+'whatlinkshere-barrow'  => '&lt;',
+'notargettitle'         => 'No target',
+'notargettext'          => 'You have not specified a target page or user
 to perform this function on.',
-'linklistsub'	=> '(List of links)',
-'linkshere' => "The following pages link to '''[[:$1]]''':",
-'nolinkshere' => "No pages link to '''[[:$1]]'''.",
-'isredirect'	=> 'redirect page',
-'istemplate'	=> 'inclusion',
+'linklistsub'           => '(List of links)',
+'linkshere'             => "The following pages link to '''[[:$1]]''':",
+'nolinkshere'           => "No pages link to '''[[:$1]]'''.",
+'nolinkshere-ns'        => "No pages link to '''[[:$1]]''' in the chosen namespace.",
+'isredirect'            => 'redirect page',
+'istemplate'            => 'inclusion',
+'whatlinkshere-prev'    => '{{PLURAL:$1|previous|previous $1}}',
+'whatlinkshere-next'    => '{{PLURAL:$1|next|next $1}}',
 
 # Block/unblock IP
 #
@@ -1910,6 +1967,23 @@ pages that were vandalized).",
 'ipadressorusername' => 'IP Address or username',
 'ipbexpiry'		=> 'Expiry',
 'ipbreason'		=> 'Reason',
+'ipbreasonotherlist'    => 'Other reason',
+
+// These are examples only. They can be translated but should be adjusted via
+// [[MediaWiki:ipbreason-list]] by the local community
+// defines a block reason not part of a group
+// * defines a block reason group in the drow down menu
+// ** defines a block reason
+// To disable this drop down menu enter '-' in [[MediaWiki:ipbreason-dropdown]].
+'ipbreason-dropdown'    => '
+*Common block reasons
+** Inserting false information
+** Removing content from pages
+** Spamming links to external sites
+** Inserting nonsense/gibberish into pages
+** Intimidating behaviour/harassment
+** Abusing multiple accounts
+** Unacceptable username',
 'ipbanononly'   => 'Block anonymous users only',
 'ipbcreateaccount' => 'Prevent account creation',
 'ipbenableautoblock' => 'Automatically block the last IP address used by this user, and any subsequent IPs they try to edit from',
@@ -1917,11 +1991,13 @@ pages that were vandalized).",
 'ipbother'		=> 'Other time',
 'ipboptions'		=> '2 hours:2 hours,1 day:1 day,3 days:3 days,1 week:1 week,2 weeks:2 weeks,1 month:1 month,3 months:3 months,6 months:6 months,1 year:1 year,infinite:infinite',
 'ipbotheroption'	=> 'other',
+'ipbotherreason'        => 'Other/additional reason',
 'ipbhidename'		=> 'Hide username/IP from the block log, active block list and user list',
 'badipaddress'	=> 'Invalid IP address',
 'blockipsuccesssub' => 'Block succeeded',
 'blockipsuccesstext' => '[[Special:Contributions/$1|$1]] has been blocked.
 <br />See [[Special:Ipblocklist|IP block list]] to review blocks.',
+'ipb-edit-dropdown' => 'Edit block reasons',
 'ipb-unblock-addr' => 'Unblock $1',
 'ipb-unblock' => 'Unblock a username or IP address',
 'ipb-blocklist-addr' => 'View existing blocks for $1',
@@ -1944,7 +2020,7 @@ to a previously blocked IP address or username.',
 'blocklink'		=> 'block',
 'unblocklink'	=> 'unblock',
 'contribslink'	=> 'contribs',
-'autoblocker'	=> 'Autoblocked because your IP address has been recently used by "[[User:$1|$1]]". The reason given for $1\'s block is: "\'\'\'$2\'\'\'"',
+'autoblocker'	=> 'Autoblocked because your IP address has been recently used by "[[User:$1|$1]]". The reason given for $1\'s block is: "$2"',
 'blocklogpage'	=> 'Block log',
 'blocklogentry'	=> 'blocked "[[$1]]" with an expiry time of $2 $3',
 'blocklogtext'	=> 'This is a log of user blocking and unblocking actions. Automatically
@@ -1953,7 +2029,7 @@ the list of currently operational bans and blocks.',
 'unblocklogentry'	=> 'unblocked $1',
 'block-log-flags-anononly' => 'anonymous users only',
 'block-log-flags-nocreate' => 'account creation disabled',
-'block-log-flags-autoblock' => 'autoblocker enabled',
+'block-log-flags-noautoblock' => 'autoblock disabled',
 'range_block_disabled'	=> 'The sysop ability to create range blocks is disabled.',
 'ipb_expiry_invalid'	=> 'Expiry time invalid.',
 'ipb_already_blocked' => '"$1" is already blocked',
@@ -2090,6 +2166,10 @@ In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{Media
 'missingimage'		=> '<b>Missing image</b><br /><i>$1</i>',
 'filemissing'		=> 'File missing',
 'thumbnail_error'   => 'Error creating thumbnail: $1',
+'djvu_page_error'   => 'DjVu page out of range',
+'djvu_no_xml'       => 'Unable to fetch XML for DjVu file',
+'thumbnail_invalid_params' => 'Invalid thumbnail parameters',
+'thumbnail_dest_directory' => 'Unable to create destination directory',
 
 # Special:Import
 'import'	=> 'Import pages',
@@ -2326,7 +2406,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'file-info-size'        => '($1 × $2 pixel, file size: $3, MIME type: $4)',
 'file-nohires'          => '<small>No higher resolution available.</small>',
 'file-svg'              => '<small>This is a lossless scalable vector image. Base size: $1 × $2 pixels.</small>',
-'show-big-image'        => 'Image in higher resolution',
+'show-big-image'        => 'Full resolution',
 'show-big-image-thumb'  => '<small>Size of this preview: $1 × $2 pixels</small>',
 
 'newimages' => 'Gallery of new files',
@@ -2354,11 +2434,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'variantname-kk-cn' => 'kk-cn',
 'variantname-kk' => 'kk',
 
-# labels for User: and Title: on Special:Log pages
-'specialloguserlabel' => 'User:',
-'speciallogtitlelabel' => 'Title:',
-
-'passwordtooshort' => 'Your password is too short. It must have at least $1 characters.',
+'passwordtooshort' => 'Your password is invalid or too short. It must have at least $1 characters and be different from your username.',
 
 # Metadata
 'metadata' => 'Metadata',
@@ -2771,8 +2847,8 @@ Please confirm that really want to recreate this page.',
 * Nederlands|nl",
 
 # Multipage image navigation
-'imgmultipageprev' => '&larr; previous page',
-'imgmultipagenext' => 'next page &rarr;',
+'imgmultipageprev' => '← previous page',
+'imgmultipagenext' => 'next page →',
 'imgmultigo' => 'Go!',
 'imgmultigotopre' => 'Go to page',
 'imgmultigotopost' => '',
