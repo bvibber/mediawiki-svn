@@ -33,13 +33,13 @@ including the 1.10alpha development version.
 
 == 3. Installing the extension ==
 
-To install the Random Image extension, first upload/copy the extension file 
-RandomImage.php into your MediaWiki extensions directory. Then edit your
-LocalSettings.php file and add the following line:
+To install the extension, place all extension files into a RandomImage
+directory within your MediaWiki extensions/ directory, then edit
+LocalSettings.php and add the following line
 
-	require_once( 'extensions/RandomImage.php' );
-	
-Save the file (uploading if applicable) to complete the installation.
+	require_once( "{$IP}/extensions/RandomImage/RandomImage.php" );
+
+Installation can be verified through the Special:Version page on the wiki.
 
 == 4. Inserting a random image ==
 
