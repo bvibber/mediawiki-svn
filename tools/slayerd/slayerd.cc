@@ -51,9 +51,11 @@ struct config_t {
 	std::string sendmail;
 	std::string pidfile;
 	std::set<uid_t> exempt;
+	int minuid;
 
 	config_t()
 		: limit(0)
+		, minuid(-1)
 		, thresh(0)
 		, delay(60)
 		, mailmessage(ETCDIR "/mailmessage")
@@ -208,7 +210,7 @@ field_comparator(S const &a, S const &b)
 
 void
 version(void) {
-	std::cerr << "slayerd 1.0\n";
+	std::cerr << "slayerd " << VERSION << "\n";
 	std::cerr << "Copyright (C) 2007, River Tarnell <river@attenuate.org>.\n";
 }
 
@@ -413,6 +415,13 @@ configure(void)
 				log(err);
 				return false;
 			}
+		} else if (d == "minuid") {
+			if (!(l >> config.minuid) || config.minuid < 0) {
+				std::string err = str(boost::format("\"%s\", line %d: invalid minimum uid") % CONFFILE % lineno);
+				std::cerr << err << '\n';
+				log(err);
+				return false;
+			}
 		} else {
 			std::string err = str(boost::format("\"%s\", line %d: invalid directive") % CONFFILE % lineno);
 			std::cerr << err << '\n';
@@ -570,6 +579,9 @@ main(int argc, char **argv)
 			std::size_t bytes = u.rss * pagesize;
 
 			if (config.exempt.find(u.uid) != config.exempt.end())
+				continue;
+
+			if (config.minuid >= 0 && u.uid < config.minuid)
 				continue;
 
 			if (bytes < config.limit)

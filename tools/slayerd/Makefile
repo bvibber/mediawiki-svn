@@ -1,3 +1,5 @@
+VERSION		= 1.2
+
 PREFIX		?= /usr/local
 CONFDIR		?= /etc/slayerd
 SBINDIR		?= $(PREFIX)/sbin
@@ -23,7 +25,7 @@ install: slayerd
 	install -c -o root -g root -m 644 slayerd.8 $(DESTDIR)$(MANDIR)
 
 .cc.o:
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c $<
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -DVERSION=\"$(VERSION)\" -c $<
 
 clean:
 	rm -f slayerd slayerd.o

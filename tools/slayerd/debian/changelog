@@ -1,9 +1,16 @@
+slayerd (1.2) unstable; urgency=low
+
+  * Add "minuid" config parameter, ignores users with a lesser uid.
+
+ -- River Tarnell <river@attenuate.org>  Sat, 05 May 2007 02:25:44 +0000
+
 slayerd (1.1) unstable; urgency=low
 
   * Usernames shouldn't contain shell metacharacters, but use fork/exec 
     instead of popen just in case.
 
  -- River Tarnell <river@attenuate.org>  Fri, 20 Apr 2007 18:34:23 +0000
+
 
 slayerd (1.0-1) unstable; urgency=low
 
