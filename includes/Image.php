@@ -1817,9 +1817,7 @@ class Image
 			// sorted from the most recent to the oldest.
 			$conditions = array( 'fa_name' => $this->name );
 			if( $timestamp ) {
-				$oldones = '1 = 1'; # All revisions...
-			} else {
-				$oldones = "fa_timestamp >= {$timestamp}";
+				$conditions[] = "fa_timestamp >= {$timestamp}";
 			}
 
 			$result = $dbw->select( 'filearchive', '*',

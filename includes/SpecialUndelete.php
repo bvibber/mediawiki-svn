@@ -368,10 +368,11 @@ class PageArchive {
 			$previousTimestamp = 0;
 		}
 
+		$conditions = array( 
+			'ar_namespace' => $this->title->getNamespace(), 
+			'ar_title' => $this->title->getDBkey() );
 		if( $restoreAll ) {
-			$oldones = '1 = 1'; # All revisions...
-		} else {
-			$oldones = "ar_timestamp >= {$timestamp}";
+			$conditions[] = "ar_timestamp >= {$timestamp}";
 		}
 
 		/**
@@ -390,10 +391,8 @@ class PageArchive {
 				'ar_text_id',
 				'ar_deleted',
 				'ar_len' ),
-			/* WHERE */ array(
-				'ar_namespace' => $this->title->getNamespace(),
-				'ar_title'     => $this->title->getDBkey(),
-				$oldones ),
+			/* WHERE */ 
+				$conditions,
 			__METHOD__,
 			/* options */ array(
 				'ORDER BY' => 'ar_timestamp' )
@@ -474,10 +473,8 @@ class PageArchive {
 
 		# Now that it's safely stored, take it out of the archive
 		$dbw->delete( 'archive',
-			/* WHERE */ array(
-				'ar_namespace' => $this->title->getNamespace(),
-				'ar_title' => $this->title->getDBkey(),
-				$oldones ),
+			/* WHERE */ 
+			$conditions,
 			__METHOD__ );
 
 		return $restored;
@@ -812,9 +809,9 @@ class UndeleteForm {
 		}
 	
 		$wgOut->addHTML( "<h2>" . wfMsgHtml( "history" ) . "</h2>\n" );
-		$wgOut->addHTML( wfMsgHtml( "restorepoint" ) );
 
 		if( $haveRevisions ) {
+			$wgOut->addHTML( wfMsgHtml( "restorepoint" ) );
 			# The page's stored (deleted) history:
 			$wgOut->addHTML("<ul>");
 			$target = urlencode( $this->mTarget );
