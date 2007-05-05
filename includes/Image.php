@@ -1827,15 +1827,6 @@ class Image
 				__METHOD__,
 				array( 'ORDER BY' => 'fa_timestamp DESC' ) );
 
-			if( $dbw->numRows( $result ) < count( $versions ) ) {
-				// There's some kind of conflict or confusion;
-				// we can't restore everything we were asked to.
-				wfDebug( __METHOD__.": couldn't find requested items\n" );
-				$dbw->rollback();
-				FileStore::unlock();
-				return false;
-			}
-
 			if( $dbw->numRows( $result ) == 0 ) {
 				// Nothing to do.
 				wfDebug( __METHOD__.": nothing to do\n" );
@@ -1928,7 +1919,7 @@ class Image
 						$destPath = $hiddenstore->filePath( $row->fa_storage_key );
 						// Follow the usual <timestamp>!<key> convention for hidden files
 						$archiveName = "{$timestamp}!{$row->fa_storage_key}";
-					// Does the archivename using a filestore key? (was hidden when deleted)
+					// Does the archivename use a filestore key? (was hidden when deleted)
 					} else if( $img != $row->fa_name && FileStore::validKey($img) ) {
 						// Follow the usual <timestamp>!<image> convention for old files
 						$archiveName = "{$timestamp}!{$row->fa_name}";
