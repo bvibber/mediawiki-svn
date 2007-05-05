@@ -751,7 +751,7 @@ class RevisionDeleter {
 				} else {
 					$set[]=$name;
 				}
-				// If our I/O operations fail, then revert back the db
+				// If our file operations fail, then revert back the db
 				if ( $transaction==false ) {
 					$this->dbw->rollback();
 					return false;

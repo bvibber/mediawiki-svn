@@ -56,6 +56,8 @@ class Revision {
 	 * revisions can cause this to become borked.
 	 * --Use of rev_deleted instead avoids that.
 	 * History merges can break this
+	 * --Requiring either all restored revs to be all newer
+	 * --or all older to than those of the live page avoids that.
 	 *
 	 * @param Database $db
 	 * @param Title $title
@@ -71,14 +73,10 @@ class Revision {
 		$id = 0;
 		
 		$dbr = wfGetDB( DB_SLAVE );
-		// Query conds...
-		$deleted = "log_type='delete' AND log_action='delete'";
-		$restored = "log_type='delete' AND log_action='restore'";
-		$moved = "log_type='move' AND log_action='move'";
 		// Initial query conds...
-		$d = $deleted;
+		$d = "log_action='delete'";
 		$r = '1 = 0'; // we don't care if it was restored yet
-		$m = $moved;
+		$m = "log_action='move'";
 		// Recursively check logs for page moves since $timeframe...
 		while ( $relocated ) {
 			$result = $dbr->select( 'logging', array('log_params', 'log_action', 'log_id'),
@@ -92,7 +90,7 @@ class Revision {
 				if ( $row->log_action=='delete' ) {
 					$isdeleted = true;
 					$d = '1 = 0';
-					$r = $restored;
+					$r = "log_action='restore'";
 					$m = '1 = 0';
 				// Was it restored?
 				} else if ( $row->log_action=='restore' ) {
@@ -100,9 +98,9 @@ class Revision {
 					$restpoints = explode('\n',$row->log_params);
 					if ( $restpoints[0] >= $timeframe ) {
 						$isdeleted = false; // our desired revision was restored
-						$d = $deleted; 
+						$d = "log_action='delete'"; 
 						$r = '1 = 0'; 
-						$m = $moved;
+						$m = "log_action='move'";
 					}
 				// Was it moved?
 				} else {

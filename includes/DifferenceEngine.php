@@ -520,7 +520,7 @@ CONTROL;
 	/**
 	 * Add the header to a diff body
 	 */
-	function addHeader( $diff, $otitle, $ntitle, $multi = '' ) {
+	static function addHeader( $diff, $otitle, $ntitle, $multi = '' ) {
 		global $wgOut;
 
 		$header = "
