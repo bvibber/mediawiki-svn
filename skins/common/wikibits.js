@@ -929,6 +929,11 @@ function getElementsByClassName(oElm, strTagName, oClassNames){
 	return (arrReturnElements)
 }
 
+// insertAfter is Public Domain (http://www.dustindiaz.com/top-ten-javascript/)
+function insertAfter(parent, node, referenceNode) {
+	parent.insertBefore(node, referenceNode.nextSibling);
+}
+
 function redirectToFragment(fragment) {
 	var match = navigator.userAgent.match(/AppleWebKit\/(\d+)/);
 	if (match) {

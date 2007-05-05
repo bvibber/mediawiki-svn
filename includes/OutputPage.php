@@ -573,6 +573,10 @@ class OutputPage {
 				$this->addScript( "<script type=\"{$wgJsMimeType}\">hookEvent(\"load\", sajax_onload);</script>\n" );
 			}
 
+			global $wgAjaxRandom; if( $wgAjaxRandom ) {
+				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxrandom.js?$wgStyleVersion\"></script>\n" );
+			}
+
 			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
 				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxwatch.js?$wgStyleVersion\"></script>\n" );
 			}

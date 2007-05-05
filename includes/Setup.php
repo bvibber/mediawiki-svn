@@ -198,6 +198,7 @@ $wgDeferredUpdateList = array();
 $wgPostCommitUpdateList = array();
 
 if ( $wgAjaxSearch ) $wgAjaxExportList[] = 'wfSajaxSearch';
+if ( $wgAjaxRandom ) $wgAjaxExportList[] = 'wfAjaxRandom';
 if ( $wgAjaxWatch ) $wgAjaxExportList[] = 'wfAjaxWatch';
 if ( $wgAjaxShowEditors ) $wgAjaxExportList[] = 'wfAjaxShowEditors';
 

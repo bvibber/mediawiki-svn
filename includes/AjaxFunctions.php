@@ -134,6 +134,40 @@ function wfSajaxSearch( $term ) {
 	return $response;
 }
 
+function wfAjaxRandom( ) {
+
+	// Enclose given text between two tags
+	function glue($text) {
+		// Key to glue our stuff.
+		$Key = 'jqZlBX9PEbSGebfBL8mz9HyeMfCVdl7W';
+		return "$text$Key";
+	}
+
+	$return = '';
+
+
+	$random = new RandomPage();
+	$title = $random->getRandomTitle();
+	$article = new Article( $title );
+// DEBUG 
+#	$article = new Article( Title::newFromDBKey('Main_Page') );
+// DEBUG
+	$article->render();
+
+	global $wgOut;
+	$return .= glue( $wgOut->getHTMLTitle() );
+	$return .= glue( $wgOut->getPageTitle() );
+	$return .= glue( $title->getPrefixedDBKey() );
+	$return .= glue( $wgOut->getHTML() );
+
+
+	global $wgUser;
+	$sk = $wgUser->getSkin();
+	$return .= glue( $sk->getCategoryLinks() );
+	$return .= glue( $sk->otherLanguages() );
+	return $return; 
+}
+
 /**
  * Called for AJAX watch/unwatch requests.
  * @param $pageID Integer ID of the page to be watched/unwatched

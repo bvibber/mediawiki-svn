@@ -1126,7 +1126,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '63';
+$wgStyleVersion = '64';
 
 
 # Server-side caching:
@@ -2400,6 +2400,12 @@ $wgAjaxSearch = false;
  * Extensions acting as Ajax callbacks must register here
  */
 $wgAjaxExportList = array( );
+
+/**
+ * Enable fast Special:random
+ * Requires $wgUseAjax to be true too.
+ */
+$wgAjaxRandom = false;
 
 /**
  * Enable watching/unwatching pages using AJAX.
