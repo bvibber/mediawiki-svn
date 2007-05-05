@@ -398,7 +398,9 @@ class PageArchive {
 				return false;
 			}
 			
-			if ( $last->ar_timestamp < $previousCreated ) {
+			if ( $makepage ) {
+				// Our history will consist of a new page with these revisions
+			} else if ( $last->ar_timestamp < $previousCreated ) {
 				// Our history will have a new block of older revisions added
 			} else if ( $first->ar_timestamp > $previousTimestamp ) {
 				// Our history will have a new block of newer revisions added
