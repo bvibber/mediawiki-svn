@@ -69,14 +69,15 @@ class Revision {
 		$isdeleted = false;
 		$since = $timeframe;
 		$id = 0;
-		// Query conds...
+		
 		$dbr = wfGetDB( DB_SLAVE );
+		// Query conds...
 		$deleted = "log_type='delete' AND log_action='delete'";
 		$restored = "log_type='delete' AND log_action='restore'";
 		$moved = "log_type='move' AND log_action='move'";
 		// Initial query conds...
 		$d = $deleted;
-		$r = '1 = 0';
+		$r = '1 = 0'; // we don't care if it was restored yet
 		$m = $moved;
 		// Recursively check logs for page moves since $timeframe...
 		while ( $relocated ) {
@@ -95,13 +96,17 @@ class Revision {
 					$m = '1 = 0';
 				// Was it restored?
 				} else if ( $row->log_action=='restore' ) {
-					$isdeleted = false;
-					$d = $deleted; 
-					$r = '1 = 0'; 
-					$m = $moved;
+					// Check the restore point (format is <page time><\n><image time>)
+					$restpoints = explode('\n',$row->log_params);
+					if ( $restpoints[0] >= $timeframe ) {
+						$isdeleted = false; // our desired revision was restored
+						$d = $deleted; 
+						$r = '1 = 0'; 
+						$m = $moved;
+					}
 				// Was it moved?
 				} else {
-					$title = Title::newFromText( $row->log_params );
+					$title = Title::newFromText( $row->log_params ); // New name is stored here
 				}
 				$id = $row->log_id;
 			} else if ( $isdeleted ) {

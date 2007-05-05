@@ -709,7 +709,7 @@ class Database {
 		# Add a comment for easy SHOW PROCESSLIST interpretation
 		#if ( $fname ) {
 			global $wgUser;
-			if ( is_object( $wgUser ) ) {
+			if ( is_object( $wgUser ) && !($wgUser instanceof StubObject) ) {
 				$userName = $wgUser->getName();
 				if ( strlen( $userName ) > 15 ) {
 					$userName = substr( $userName, 0, 15 ) . '...';
@@ -1091,6 +1091,7 @@ class Database {
 		}
 
 		if ( isset( $options['GROUP BY'] ) ) $preLimitTail .= " GROUP BY {$options['GROUP BY']}";
+		if ( isset( $options['HAVING'] ) ) $preLimitTail .= " HAVING {$options['HAVING']}";
 		if ( isset( $options['ORDER BY'] ) ) $preLimitTail .= " ORDER BY {$options['ORDER BY']}";
 		
 		//if (isset($options['LIMIT'])) {
@@ -1175,7 +1176,6 @@ class Database {
 		if (isset($options['EXPLAIN'])) {
 			$sql = 'EXPLAIN ' . $sql;
 		}
-
 		return $this->query( $sql, $fname );
 	}
 

@@ -1022,11 +1022,11 @@ $wgGroupPermissions['sysop']['deleterevision']  = true;
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
 
 // To hide usernames
-$wgGroupPermissions['bureaucrat']['hideuser'] = true;
-// To see hidden revs
-$wgGroupPermissions['bureaucrat']['hiderevision'] = true;
+$wgGroupPermissions['oversight']['hideuser'] = true;
+// To see hidden revs and unhide revs hidden from Sysops
+$wgGroupPermissions['oversight']['hiderevision'] = true;
 // For private log access
-$wgGroupPermissions['bureaucrat']['oversight'] = true;
+$wgGroupPermissions['oversight']['oversight'] = true;
 
 /**
  * The developer group is deprecated, but can be activated if need be
@@ -2087,7 +2087,7 @@ $wgLogTypes = array( '',
  * Logs should remain non-transcludable
  */
 $wgLogRestrictions = array(
-'oversight' => 'oversight'
+	'oversight' => 'oversight'
 );
 
 /**

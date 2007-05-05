@@ -1788,12 +1788,11 @@ class Image
 	 *
 	 * May throw database exceptions on error.
 	 *
-	 * @param $versions set of record ids of deleted items to restore,
-	 *                    or empty to restore all revisions.
+	 * @param string $timestamp, restore all revisions since this time
 	 * @return the number of file revisions restored if successful,
 	 *         or false on failure
 	 */
-	function restore( $versions=array(), $Unsuppress=false ) {
+	function restore( $timestamp = 0, $Unsuppress = false ) {
 		global $wgUser;
 	
 		if( !FileStore::lock() ) {
@@ -1818,7 +1817,9 @@ class Image
 			// sorted from the most recent to the oldest.
 			$conditions = array( 'fa_name' => $this->name );
 			if( $versions ) {
-				$conditions['fa_id'] = $versions;
+				$oldones = '1 = 1'; # All revisions...
+			} else {
+				$oldones = "fa_timestamp >= {$timestamp}";
 			}
 
 			$result = $dbw->select( 'filearchive', '*',

@@ -77,17 +77,16 @@ class PageArchive {
 				array(
 					'ar_namespace',
 					'ar_title',
-					'COUNT(*) AS count',
-					'AVG(ar_deleted)'
+					'COUNT(*) AS count'
 				),
 				$condition,
 				__METHOD__,
 				array(
 					'GROUP BY' => 'ar_namespace,ar_title',
 					'ORDER BY' => 'ar_namespace,ar_title',
-					# "oversight" deletion involves hiding all
-					# values, a bitfield of 15, so hide the name too
-					'HAVING' => 'AVG(ar_deleted) != 15',
+					# "suppression" involves the setting of all deletion flags, 
+					# a bitfield of 15, so hide the name too
+					'HAVING' => 'MIN(ar_deleted) < 15',
 					'LIMIT' => 100,
 				)
 			)
@@ -273,30 +272,30 @@ class PageArchive {
 	 * Once restored, the items will be removed from the archive tables.
 	 * The deletion log will be updated with an undeletion notice.
 	 *
-	 * @param array $timestamps Pass an empty array to restore all revisions, otherwise list the ones to undelete.
+	 * @param string $pagetimestamp, restore all revisions since this time
 	 * @param string $comment
-	 * @param array $fileVersions
+	 * @param string $filetimestamp, restore all revision from this time on
 	 * @param bool $Unsuppress
 	 *
 	 * @return true on success.
 	 */
-	function undelete( $timestamps, $comment = '', $fileVersions = array(), $Unsuppress = false) {
+	function undelete( $pagetimestamp = 0, $comment = '', $filetimestamp = 0, $Unsuppress = false) {
 		// If both the set of text revisions and file revisions are empty,
 		// restore everything. Otherwise, just restore the requested items.
-		$restoreAll = empty( $timestamps ) && empty( $fileVersions );
+		$restoreAll = ($pagetimestamp==0 && $filetimestamp==0);
 		
-		$restoreText = $restoreAll || !empty( $timestamps );
-		$restoreFiles = $restoreAll || !empty( $fileVersions );
+		$restoreText = ($restoreAll || $pagetimestamp );
+		$restoreFiles = ($restoreAll || $filetimestamp );
 		
 		if( $restoreText ) {
-			$textRestored = $this->undeleteRevisions( $timestamps, $Unsuppress );
+			$textRestored = $this->undeleteRevisions( $pagetimestamp, $Unsuppress );
 		} else {
 			$textRestored = 0;
 		}
 		
 		if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
 			$img = new Image( $this->title );
-			$filesRestored = $img->restore( $fileVersions, $Unsuppress );
+			$filesRestored = $img->restore( $filetimestamp, $Unsuppress );
 		} else {
 			$filesRestored = 0;
 		}
@@ -322,7 +321,7 @@ class PageArchive {
 		
 		if( trim( $comment ) != '' )
 			$reason .= ": {$comment}";
-		$log->addEntry( 'restore', $this->title, $reason );
+		$log->addEntry( 'restore', $this->title, $reason, array($pagetimestamp,$filetimestamp) );
 		
 		return true;
 	}
@@ -332,18 +331,19 @@ class PageArchive {
 	 * to the cur/old tables. If the page currently exists, all revisions will
 	 * be stuffed into old, otherwise the most recent will go into cur.
 	 *
-	 * @param array $timestamps Pass an empty array to restore all revisions, otherwise list the ones to undelete.
+	 * @param string $timestamps, restore all revisions since this time
 	 * @param string $comment
 	 * @param array $fileVersions
 	 * @param bool $Unsuppress, remove all ar_deleted/fa_deleted restrictions of seletected revs
 	 *
 	 * @return int number of revisions restored
 	 */
-	private function undeleteRevisions( $timestamps, $Unsuppress = false ) {
-		$restoreAll = empty( $timestamps );
+	private function undeleteRevisions( $timestamp, $Unsuppress = false ) {
+		$restoreAll = ($timestamp==0);
 		
 		$dbw = wfGetDB( DB_MASTER );
 		$page = $dbw->tableName( 'archive' );
+		$makepage = false; // Do we need to make a new page?
 
 		# Does this page already exist? We'll have to update it...
 		$article = new Article( $this->title );
@@ -363,8 +363,7 @@ class PageArchive {
 			$previousTimestamp = $previousRev ? $previousRev->getTimestamp() : 0;
 		} else {
 			# Have to create a new article...
-			$newid  = $article->insertOn( $dbw );
-			$pageId = $newid;
+			$makepage = true;
 			$previousRevId = 0;
 			$previousTimestamp = 0;
 		}
@@ -372,12 +371,7 @@ class PageArchive {
 		if( $restoreAll ) {
 			$oldones = '1 = 1'; # All revisions...
 		} else {
-			$oldts = implode( ',',
-				array_map( array( &$dbw, 'addQuotes' ),
-					array_map( array( &$dbw, 'timestamp' ),
-						$timestamps ) ) );
-
-			$oldones = "ar_timestamp IN ( {$oldts} )";
+			$oldones = "ar_timestamp >= {$timestamp}";
 		}
 
 		/**
@@ -405,12 +399,6 @@ class PageArchive {
 				'ORDER BY' => 'ar_timestamp' )
 			);
 		$rev_count = $dbw->numRows( $result );
-		if( $rev_count < count( $timestamps ) ) {
-			# Remove page stub per failure
-			$dbw->delete( 'page', array( 'page_id' => $newid ), __METHOD__);
-			wfDebug( __METHOD__.": couldn't find all requested rows\n" );
-			return false;
-		}
 		
 		$ret = $dbw->resultObject( $result );		
 		// We don't handle well changing the top revision's settings
@@ -418,14 +406,17 @@ class PageArchive {
 			# We need to seek around as just using DESC in the ORDER BY
 			# would leave the revisions inserted in the wrong order
 			$ret->seek( $rev_count - 1 );
-			$last_row = $ret->fetchObject();
-			if ( !$Unsuppress && $last_row->ar_deleted && $last_row->ar_timestamp > $previousTimestamp ) {
-				# Remove page stub per failure
-				$dbw->delete( 'page', array( 'page_id' => $newid ), __METHOD__);
+			$last = $ret->fetchObject();
+			if ( !$Unsuppress && $last->ar_deleted && $last->ar_timestamp > $previousTimestamp ) {
 				wfDebug( __METHOD__.": restoration would result in a deleted top revision\n" );
 				return false;
 			}
 			$ret->seek( 0 );
+		}
+		
+		if ( $makepage ) {
+			$newid  = $article->insertOn( $dbw );
+			$pageId = $newid;
 		}
 
 		$revision = null;
@@ -454,7 +445,7 @@ class PageArchive {
 				'timestamp'  => $row->ar_timestamp,
 				'minor_edit' => $row->ar_minor_edit,
 				'text_id'    => $row->ar_text_id,
-				'deleted' 	 => ($Unsuppress) ? 0 : $row->ar_deleted,
+				'deleted' 	 => $Unsuppress ? 0 : $row->ar_deleted,
 				'len'        => $row->ar_len
 				) );
 			$revision->insertOn( $dbw );
@@ -468,11 +459,10 @@ class PageArchive {
 			if( $newid || $revision->getTimestamp() > $previousTimestamp ) {
 				// Attach the latest revision to the page...
 				$article->updateRevisionOn( $dbw, $revision, $previousRevId );
-				
 				// Update site stats, link tables, etc
 				$article->createUpdates( $revision );
 			}
-
+			
 			if( $newid ) {
 				wfRunHooks( 'ArticleUndelete', array( &$this->title, true ) );
 				Article::onArticleCreate( $this->title );
@@ -506,6 +496,7 @@ class UndeleteForm {
 
 	function UndeleteForm( $request, $par = "" ) {
 		global $wgUser;
+		
 		$this->mAction = $request->getVal( 'action' );
 		$this->mTarget = $request->getVal( 'target' );
 		$this->mSearchPrefix = $request->getText( 'prefix' );
@@ -536,22 +527,8 @@ class UndeleteForm {
 			$this->mTargetObj = NULL;
 		}
 		if( $this->mRestore ) {
-			$timestamps = array();
-			$this->mFileVersions = array();
-			/*
-			foreach( $_REQUEST as $key => $val ) {
-				$matches = array();
-				if( preg_match( '/^ts(\d{14})$/', $key, $matches ) ) {
-					array_push( $timestamps, $matches[1] );
-				}
-				
-				if( preg_match( '/^fileid(\d+)$/', $key, $matches ) ) {
-					$this->mFileVersions[] = intval( $matches[1] );
-				}
-			}
-			rsort( $timestamps );
-			*/
-			$this->mTargetTimestamp = $timestamps;
+			$this->mFileTimestamp = $request->getVal('imgrestorepoint');
+			$this->mPageTimestamp = $request->getVal('restorepoint');
 		}
 	}
 
@@ -834,7 +811,8 @@ class UndeleteForm {
 			$wgOut->addHtml( $table );
 		}
 	
-		$wgOut->addHTML( "<h2>" . htmlspecialchars( wfMsg( "history" ) ) . "</h2>\n" );
+		$wgOut->addHTML( "<h2>" . wfMsgHtml( "history" ) . "</h2>\n" );
+		$wgOut->addHTML( wfMsgHtml( "restorepoint" ) );
 
 		if( $haveRevisions ) {
 			# The page's stored (deleted) history:
@@ -844,7 +822,7 @@ class UndeleteForm {
 				$ts = wfTimestamp( TS_MW, $row->ar_timestamp );
 				// We don't handle top edits with rev_deleted 
 				if ( $this->mAllowed ) {
-					$checkBox = wfCheck( "ts$ts", false );
+					$checkBox = wfRadio( "restorepoint", $ts, false );
 					$titleObj = SpecialPage::getTitleFor( "Undelete" );
 					$pageLink = $this->getPageLink( $row, $titleObj, $ts, $target );
 				} else {
@@ -882,8 +860,7 @@ class UndeleteForm {
 				if( $this->isDeleted( $row, Revision::DELETED_TEXT ) )
 					$dflag = ' <tt>' . wfMsgHtml( 'deletedrev' ) . '</tt>';
 				
-				// $wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $stxt $comment$dflag</li>\n" );
-				$wgOut->addHTML( "<li>$rd $pageLink . . $userLink $stxt $comment$dflag</li>\n" );
+				$wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $stxt $comment$dflag</li>\n" );
 			}
 			$revisions->free();
 			$wgOut->addHTML("</ul>");
@@ -894,15 +871,12 @@ class UndeleteForm {
 		
 		if( $haveFiles ) {
 			$wgOut->addHtml( "<h2>" . wfMsgHtml( 'imghistory' ) . "</h2>\n" );
+			$wgOut->addHTML( wfMsgHtml( "restorepoint" ) );
 			$wgOut->addHtml( "<ul>" );
 			while( $row = $files->fetchObject() ) {
 				$ts = wfTimestamp( TS_MW, $row->fa_timestamp );
 				if ( $this->mAllowed && $row->fa_storage_key ) {
-					if ( !$this->userCan( $row, Revision::DELETED_RESTRICTED ) )
-					// Grey out boxes to files restricted beyond this user.
-						$checkBox = wfCheck( "", false, array("disabled" => "disabled") );
-					else
-						$checkBox = wfCheck( "fileid" . $row->fa_id );
+					$checkBox = wfRadio( "imgrestorepoint", $ts, false );
 					$key = urlencode( $row->fa_storage_key );
 					$target = urlencode( $this->mTarget );
 					$pageLink = $this->getFileLink( $row, $titleObj, $ts, $target, $key );
@@ -936,8 +910,7 @@ class UndeleteForm {
 					}
 					$rd = "<tt>(<small>$del</small>)</tt>";
 				}
-				// $wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $data $comment</li>\n" );
-				$wgOut->addHTML( "<li>$rd $pageLink . . $userLink $data $comment</li>\n" );
+				$wgOut->addHTML( "<li>$checkBox $rd $pageLink . . $userLink $data $comment</li>\n" );
 			}
 			$files->free();
 			$wgOut->addHTML( "</ul>" );
@@ -1096,9 +1069,9 @@ class UndeleteForm {
 			$archive = new PageArchive( $this->mTargetObj );
 			
 			$ok = $archive->undelete(
-				$this->mTargetTimestamp,
+				$this->mPageTimestamp,
 				$this->mComment,
-				$this->mFileVersions,
+				$this->mFileTimestamp,
 				$this->mUnsuppress );
 			if( $ok ) {
 				$skin = $wgUser->getSkin();
