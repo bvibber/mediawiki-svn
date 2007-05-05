@@ -67,11 +67,16 @@ $lang[$row[0]]=$row[2];
 
 
 ////////////////////////////////////////////////////////
-$result = mysql_query("SELECT 
+$result = mysql_query("
+SELECT 
 language_id, count(*)
-FROM uw_expression_ns, uw_syntrans
-WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id
-AND uw_syntrans.remove_transaction_id IS NULL
+FROM uw_expression_ns
+WHERE expression_id IN
+(
+	SELECT DISTINCT expression_id
+	FROM uw_syntrans
+	WHERE remove_transaction_id IS NULL
+)
 group by language_id
 order by count(*) desc
  ")or die ("error ".mysql_error());
