@@ -13,6 +13,7 @@ $db4=$wgDBname;  # db-name
 $connection=MySQL_connect($db1,$db2,$db3);
 if (!$connection)die("Cannot connect to SQL server. Try again later.");
 MySQL_select_db($db4)or die("Cannot open database");
+mysql_query("SET NAMES 'utf8'");
 
 echo "
 <style type=\"text/css\"><!--
