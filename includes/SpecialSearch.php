@@ -19,8 +19,7 @@
 
 /**
  * Run text & title search and display the output
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -43,9 +42,8 @@ function wfSpecialSearch( $par = '' ) {
 }
 
 /**
- * @todo document
- * @package MediaWiki
- * @subpackage SpecialPage
+ * implements Special:Search - Run text & title search and display the output
+ * @addtogroup SpecialPage
  */
 class SpecialSearch {
 
@@ -161,19 +159,22 @@ class SpecialSearch {
 
 		$num = ( $titleMatches ? $titleMatches->numRows() : 0 )
 			+ ( $textMatches ? $textMatches->numRows() : 0);
-		if ( $num >= $this->limit ) {
-			$top = wfShowingResults( $this->offset, $this->limit );
-		} else {
-			$top = wfShowingResultsNum( $this->offset, $this->limit, $num );
+		if ( $num > 0 ) {
+			if ( $num >= $this->limit ) {
+				$top = wfShowingResults( $this->offset, $this->limit );
+			} else {
+				$top = wfShowingResultsNum( $this->offset, $this->limit, $num );
+			}
+			$wgOut->addHTML( "<p>{$top}</p>\n" );
 		}
-		$wgOut->addHTML( "<p>{$top}</p>\n" );
 
 		if( $num || $this->offset ) {
 			$prevnext = wfViewPrevNext( $this->offset, $this->limit,
 				SpecialPage::getTitleFor( 'Search' ),
 				wfArrayToCGI(
 					$this->powerSearchOptions(),
-					array( 'search' => $term ) ) );
+					array( 'search' => $term ) ),
+					($num < $this->limit) );
 			$wgOut->addHTML( "<br />{$prevnext}\n" );
 		}
 
@@ -314,12 +315,20 @@ class SpecialSearch {
 			wfProfileOut( $fname );
 			return "<!-- Broken link in search result -->\n";
 		}
-		$sk =& $wgUser->getSkin();
+		$sk = $wgUser->getSkin();
 
 		$contextlines = $wgUser->getOption( 'contextlines',  5 );
 		$contextchars = $wgUser->getOption( 'contextchars', 50 );
 
 		$link = $sk->makeKnownLinkObj( $t );
+
+		//If page content is not readable, just return the title.
+		//This is not quite safe, but better than showing excerpts from non-readable pages
+		//Note that hiding the entry entirely would screw up paging.
+		if (!$t->userCanRead()) {
+			return "<li>{$link}</li>\n";
+		}
+
 		$revision = Revision::newFromTitle( $t );
 		$text = $revision->getText();
 		$size = wfMsgExt( 'nbytes', array( 'parsemag', 'escape'),

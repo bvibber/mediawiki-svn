@@ -21,7 +21,6 @@
 /**
  * Contain log classes
  *
- * @package MediaWiki
  */
 
 /**
@@ -29,7 +28,6 @@
  * The logs are now kept in a table which is easier to manage and trim
  * than ever-growing wiki pages.
  *
- * @package MediaWiki
  */
 class LogPage {
 	/* @access private */
@@ -44,7 +42,7 @@ class LogPage {
 	  *               'upload', 'move'
 	  * @param bool $rc Whether to update recent changes as well as the logging table
 	  */
-	function LogPage( $type, $rc = true ) {
+	function __construct( $type, $rc = true ) {
 		$this->type = $type;
 		$this->updateRecentChanges = $rc;
 	}
@@ -55,7 +53,7 @@ class LogPage {
 		global $wgUser;
 		$fname = 'LogPage::saveContent';
 
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$uid = $wgUser->getID();
 
 		$this->timestamp = $now = wfTimestampNow();
@@ -92,7 +90,7 @@ class LogPage {
 	/**
 	 * @static
 	 */
-	function validTypes() {
+	public static function validTypes() {
 		global $wgLogTypes;
 		return $wgLogTypes;
 	}
@@ -100,7 +98,7 @@ class LogPage {
 	/**
 	 * @static
 	 */
-	function isLogType( $type ) {
+	public static function isLogType( $type ) {
 		return in_array( $type, LogPage::validTypes() );
 	}
 
@@ -119,10 +117,10 @@ class LogPage {
 	}
 
 	/**
-	 * @fixme: handle missing log types
+	 * @todo handle missing log types
 	 * @static
 	 */
-	function logHeader( $type ) {
+	static function logHeader( $type ) {
 		global $wgLogHeaders;
 		return wfMsg( $wgLogHeaders[$type] );
 	}
@@ -130,7 +128,7 @@ class LogPage {
 	/**
 	 * @static
 	 */
-	function actionText( $type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks=false, $translate=false ) {
+	static function actionText( $type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks=false, $translate=false ) {
 		global $wgLang, $wgContLang, $wgLogActions;
 
 		$key = "$type/$action";
@@ -187,8 +185,10 @@ class LogPage {
 					}
 				} else {
 					array_unshift( $params, $titleLink );
-					if ( $translate && $key == 'block/block' ) {
-						$params[1] = $wgLang->translateBlockExpiry( $params[1] );
+					if ( $key == 'block/block' ) {
+						if ( $translate ) {
+							$params[1] = $wgLang->translateBlockExpiry( $params[1] );
+						}
 						$params[2] = isset( $params[2] )
 										? self::formatBlockFlags( $params[2] )
 										: '';
@@ -233,7 +233,7 @@ class LogPage {
 	 * Create a blob from a parameter array
 	 * @static
 	 */
-	function makeParamBlob( $params ) {
+	static function makeParamBlob( $params ) {
 		return implode( "\n", $params );
 	}
 
@@ -241,7 +241,7 @@ class LogPage {
 	 * Extract a parameter array from a blob
 	 * @static
 	 */
-	function extractParams( $blob ) {
+	static function extractParams( $blob ) {
 		if ( $blob === '' ) {
 			return array();
 		} else {

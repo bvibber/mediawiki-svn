@@ -18,8 +18,7 @@
 # http://www.gnu.org/copyleft/gpl.html
 
 /**
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 /** */
@@ -31,7 +30,7 @@ MediaWiki $wgVersion parser test suite
 Usage: php parserTests.php [--quick] [--quiet] [--show-output]
                            [--color[=(yes|no)]]
                            [--regex=<expression>] [--file=<testfile>]
-                           [--record]
+                           [--record] [--compare]
                            [--help]
 Options:
   --quick          Suppress diff output of failed tests
@@ -42,6 +41,7 @@ Options:
   --regex          Only run tests whose descriptions which match given regex
   --file           Run test cases from a custom file instead of parserTests.txt
   --record         Record tests in database
+  --compare        Compare with recorded results, without updating the database.
   --help           Show this help message
 
 
@@ -64,7 +64,7 @@ if( isset( $options['file'] ) ) {
 
 # Print out software version to assist with locating regressions
 $version = SpecialVersion::getVersion();
-echo( "This is MediaWiki version {$version}.\n" );
+echo( "This is MediaWiki version {$version}.\n\n" );
 $ok = $tester->runTestsFromFiles( $files );
 
 exit ($ok ? 0 : -1);

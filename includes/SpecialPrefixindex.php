@@ -1,10 +1,7 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
-
-require_once 'SpecialAllpages.php';
 
 /**
  * Entry point : initialise variables and call subfunctions.
@@ -44,6 +41,10 @@ function wfSpecialPrefixIndex( $par=NULL, $specialPage ) {
 	}
 }
 
+/**
+ * implements Special:Prefixindex 
+ * @addtogroup SpecialPage
+ */
 class SpecialPrefixindex extends SpecialAllpages {
 	var $maxPerPage=960;
 	var $topLevelMax=50;
@@ -75,7 +76,7 @@ function showChunk( $namespace = NS_MAIN, $prefix, $including = false, $from = n
 
 		### FIXME: should complain if $fromNs != $namespace
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$res = $dbr->select( 'page',
 			array( 'page_namespace', 'page_title', 'page_is_redirect' ),

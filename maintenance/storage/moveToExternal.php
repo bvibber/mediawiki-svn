@@ -5,7 +5,7 @@ define( 'REPORTING_INTERVAL', 1 );
 if ( !defined( 'MEDIAWIKI' ) ) {
 	$optionsWithArgs = array( 'm', 's' );
 
-	require_once( '../commandLine.inc' );
+	require_once( dirname(__FILE__) . '/../commandLine.inc' );
 	require_once( 'ExternalStoreDB.php' );
 	require_once( 'resolveStubs.php' );
 
@@ -17,7 +17,7 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	}
 
 	$cluster = $args[0];
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 
 	if ( isset( $options['e'] ) ) {
 		$maxID = $options['e'];
@@ -33,8 +33,8 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 
 function moveToExternal( $cluster, $maxID, $minID = 1 ) {
 	$fname = 'moveToExternal';
-	$dbw =& wfGetDB( DB_MASTER );
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbw = wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_SLAVE );
 
 	$count = $maxID - $minID + 1;
 	$blockSize = 1000;

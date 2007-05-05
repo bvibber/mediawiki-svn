@@ -1,13 +1,8 @@
 <?php
 /** Icelandic (Íslenska)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
-
-$quickbarSettings = array(
-	'Sleppa', 'Fast vinstra megin', 'Fast hægra megin', 'Fljótandi til vinstri'
-);
 
 $skinNames = array(
 	'standard'	=> 'Klassískt',
@@ -269,7 +264,7 @@ the list of currently operational bans and blocks.",
 'contextchars' => "Stafir í samhengi á hverja línu",
 'contextlines' => "Línur á hverja niðurstöðu",
 'contribslink' => "framlög",
-'contribsub' => "Eftir $1",
+'contribsub2' => "Eftir $1 ($2)",
 'contributions' => "Framlög notanda",
 'copyright' => "Efni síðunnar má nota undir $1.",
 'copyrightpage' => "Project:Höfundarréttur",
@@ -544,6 +539,10 @@ to set user preferences.",
 'protectsub' => "(Vernda „$1“)",
 'qbedit' => "Breyta",
 'qbsettings' => "Valblað",
+'qbsettings-none'	=> 'Sleppa',
+'qbsettings-fixedleft'	=> 'Fast vinstra megin',
+'qbsettings-fixedright'	=> 'Fast hægra megin',
+'qbsettings-floatingleft'	=> 'Fljótandi til vinstri',
 'randompage' => "Handahófsvalin síða",
 'rclinks' => "Sýna síðustu $1 breytingar síðustu $2 daga<br />$3",
 'rclistfrom' => "Sýna breytingar frá og með $1",
@@ -714,6 +713,7 @@ stafrófsröð. Merktu við þær síður sem þú vilt fjarlægja
 af vaktlistanum og ýttu á 'fjarlægja merktar' takkan
 neðst á skjánum.",
 'watchlist' => "Vaktlistinn",
+'mywatchlist' => "Vaktlistinn",
 'watchlistcontains' => "Á vaktlistanum eru $1 síður.",
 'watchmethod-list' => "leita að breytingum í vöktuðum síðum",
 'watchmethod-recent' => "kanna hvort nýlegar breytingar innihalda vaktaðar síður",

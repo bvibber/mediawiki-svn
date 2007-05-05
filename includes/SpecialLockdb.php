@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -37,9 +36,8 @@ function wfSpecialLockdb() {
 }
 
 /**
- *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * A form to make the database readonly (eg for maintenance purposes).
+ * @addtogroup SpecialPage
  */
 class DBLockForm {
 	var $reason = '';

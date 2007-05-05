@@ -2,6 +2,7 @@
 
 /**
  * Basic pager interface.
+ * @addtogroup Pager
  */
 interface Pager {
 	function getNavigationBar();
@@ -46,6 +47,8 @@ interface Pager {
  *  please see the examples in PageHistory.php and SpecialIpblocklist.php. You just need 
  *  to override formatRow(), getQueryInfo() and getIndexField(). Don't forget to call the 
  *  parent constructor if you override it.
+ *
+ * @addtogroup Pager
  */
 abstract class IndexPager implements Pager {
 	public $mRequest;
@@ -386,8 +389,45 @@ abstract class IndexPager implements Pager {
 	abstract function getIndexField();
 }
 
+
+/**
+ * IndexPager with an alphabetic list and a formatted navigation bar
+ * @addtogroup Pager
+ */
+abstract class AlphabeticPager extends IndexPager {
+	public $mDefaultDirection = false;
+	
+	function __construct() {
+		parent::__construct();
+	}
+	
+	/** 
+	 * Shamelessly stolen bits from ReverseChronologicalPager, d
+	 * didn't want to do class magic as may be still revamped 
+	 */
+	function getNavigationBar() {
+		global $wgLang;
+		
+		$linkTexts = array(
+			'prev' => wfMsgHtml( "prevn", $this->mLimit ),
+			'next' => wfMsgHtml( 'nextn', $this->mLimit ),
+			'first' => wfMsgHtml('page_first'), /* Introduced the message */
+			'last' => wfMsgHtml( 'page_last' )  /* Introduced the message */
+		);
+		
+		$pagingLinks = $this->getPagingLinks( $linkTexts );
+		$limitLinks = $this->getLimitLinks();
+		$limits = implode( ' | ', $limitLinks );
+		
+		$this->mNavigationBar = "({$pagingLinks['first']} | {$pagingLinks['last']}) " . wfMsgHtml("viewprevnext", $pagingLinks['prev'], $pagingLinks['next'], $limits);
+		return $this->mNavigationBar;
+		
+	}
+}
+
 /**
  * IndexPager with a formatted navigation bar
+ * @addtogroup Pager
  */
 abstract class ReverseChronologicalPager extends IndexPager {
 	public $mDefaultDirection = true;
@@ -413,13 +453,15 @@ abstract class ReverseChronologicalPager extends IndexPager {
 		$limitLinks = $this->getLimitLinks();
 		$limits = implode( ' | ', $limitLinks );
 		
-		$this->mNavigationBar = "({$pagingLinks['first']} | {$pagingLinks['last']}) " . wfMsgHtml("viewprevnext", $pagingLinks['prev'], $pagingLinks['next'], $limits);
+		$this->mNavigationBar = "({$pagingLinks['first']} | {$pagingLinks['last']}) " . 
+			wfMsgHtml("viewprevnext", $pagingLinks['prev'], $pagingLinks['next'], $limits);
 		return $this->mNavigationBar;
 	}
 }
 
 /**
  * Table-based display with a user-selectable sort order
+ * @addtogroup Pager
  */
 abstract class TablePager extends IndexPager {
 	var $mSort;

@@ -48,7 +48,7 @@ would handle this as follows (note: not real code, here):
 	
 	# code to actually show the article goes here
     }
-    
+
 An extension writer, or a local admin, will often add custom code to
 the function -- with or without a global variable. For example,
 someone wanting email notification when an article is shown may add:
@@ -317,6 +317,14 @@ $user: the user who did the block (not the one being blocked)
 $isbn: ISBN to show information for
 $output: OutputPage object in use
 
+'CustomEditor': When invoking the page editor
+$article: Article being edited
+$user: User performing the edit
+
+Return true to allow the normal editor to be used, or false
+if implementing a custom editor, e.g. for a special namespace,
+etc.
+
 'DiffViewHeader': called before diff display
 $diff: DifferenceEngine object that's calling
 $oldRev: Revision object of the "old" revision (may be null/invalid)
@@ -329,6 +337,11 @@ saved, that is before insertNewArticle() is called
 'EditFormPreloadText': Allows population of the edit form when creating new pages
 &$text: Text to preload with
 &$title: Title object representing the page being created
+
+'EditPage::showEditForm:fields': allows injection of form field into edit form
+&$editor: the EditPage instance for reference
+&$out: an OutputPage instance to write to
+return value is ignored (should always return true)
 
 'EditFilter': Perform checks on an edit
 $editor: Edit form (see includes/EditPage.php)
@@ -365,6 +378,9 @@ $text: text of the mail
 &$list: List object (defaults to NULL, change it to an object instance and return
 false override the list derivative used)
 
+'FileUpload': When a file upload occurs
+$file : Image object representing the file that was uploaded
+
 'GetInternalURL': modify fully-qualified URLs used for squid cache purging
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
@@ -379,6 +395,12 @@ $query: query options passed to Title::getLocalURL()
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getFullURL()
+
+'InternalParseBeforeLinks': during Parser's internalParse method before links but
+after noinclude/includeonly/onlyinclude and other processing.
+&$this: Parser object
+&$text: string containing partially parsed text
+&$this->mStripState: Parser's internal StripState object
 
 'LogPageValidTypes': action being logged. DEPRECATED: Use $wgLogTypes
 &$type: array of strings
@@ -414,10 +436,22 @@ the resulting HTML is about to be displayed.
 $parserOutput: the parserOutput (object) that corresponds to the page 
 $text: the text that will be displayed, in HTML (string)
 
+'PageHistoryBeforeList': When a history page list is about to be constructed.
+$article: the article that the history is loading for
+
+'PageHistoryLineEnding' : right before the end <li> is added to a history line
+$row: the revision row for this line
+$s: the string representing this parsed line
+
 'PageRenderingHash': alter the parser cache option hash key
   A parser extension which depends on user options should install
   this hook and append its values to the key.
 $hash: reference to a hash key string which can be modified
+
+'ParserTestTables': alter the list of tables to duplicate when parser tests
+are run. Use when page save hooks require the presence of custom tables
+to ensure that tests continue to run properly.
+&$tables: array of table names
 
 'PersonalUrls': Alter the user-specific navigation links (e.g. "my page,
 my talk page, my contributions" etc).
@@ -439,6 +473,12 @@ $form : PreferencesForm object
 'RawPageViewBeforeOutput': Right before the text is blown out in action=raw
 &$obj: RawPage object
 &$text: The text that's going to be the output
+
+'SearchUpdate': Prior to search update completion
+$id : Page id
+$namespace : Page namespace
+$title : Page title
+$text : Current text being indexed
 
 'SiteNoticeBefore': Before the sitenotice/anonnotice is composed
 &$siteNotice: HTML returned as the sitenotice
@@ -545,6 +585,10 @@ $content_actions: The array of content actions
 		     articles, special, history, preview, diff, edit, ...)
 		     Can be used to set custom CSS/JS
 $out: OutputPage object
+
+'AjaxAddScript': Called in output page just before the initialisation
+of the javascript ajax engine. The hook is only called when ajax
+is enabled ( $wgUseAjax = true; ).
 
 More hooks might be available but undocumented, you can execute
 ./maintenance/findhooks.php to find hidden one.

@@ -2,10 +2,7 @@
 /**#@+
  * Give information about the version of MediaWiki, PHP, the DB and extensions
  *
- * @package MediaWiki
- * @subpackage SpecialPage
- *
- * @bug 2019, 4531
+ * @addtogroup SpecialPage
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, Ævar Arnfjörð Bjarmason
@@ -50,7 +47,7 @@ class SpecialVersion {
 	 */
 	function MediaWikiCredits() {
 		$version = self::getVersion();
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$ret =
 		"__NOTOC__
@@ -264,8 +261,6 @@ class SpecialVersion {
 	/**
 	 * Retrieve the revision number of a Subversion working directory.
 	 *
-	 * @bug 7335
-	 *
 	 * @param string $dir
 	 * @return mixed revision number as int, or false if not a SVN checkout
 	 */
@@ -287,7 +282,10 @@ class SpecialVersion {
 				return false;
 			}
 
-			$xml = simplexml_load_file( $entries, "SimpleXMLElement", LIBXML_NOWARNING );
+			// SimpleXml whines about the xmlns...
+			wfSuppressWarnings();
+			$xml = simplexml_load_file( $entries );
+			wfRestoreWarnings();
 
 			if( $xml ) {
 				foreach( $xml->entry as $entry ) {

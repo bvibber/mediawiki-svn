@@ -2,8 +2,7 @@
 /**
  * Several types of messages.
  *
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 /** Ignored messages, which should be exist only in the English messages file. */
@@ -93,6 +92,8 @@ $wgIgnoredMessages = array(
 	'sitenotice',
 	'sitesubtitle',
 	'sitetitle',
+	'sp-contributions-footer',
+	'sp-contributions-footer-anon',
 	'statistics-footer',
 	'talkpagetext',
 	'trackback',
@@ -106,6 +107,8 @@ $wgOptionalMessages = array(
 	'linkprefix',
 	'feed-atom',
 	'feed-rss',
+	'sectionlink',
+	'unit-pixel',
 	'allpages-summary',
 	'booksources-summary',
 	'ipblocklist-summary',
@@ -116,7 +119,6 @@ $wgOptionalMessages = array(
 	'whatlinkshere-summary',
 	'whatlinkshere-barrow',
 	'imagelist-summary',
-	'mimesearch-summary',
 	'listredirects-summary',
 	'uncategorizedpages-summary',
 	'uncategorizedcategories-summary',
@@ -138,10 +140,14 @@ $wgOptionalMessages = array(
 	'userrights-summary',
 	'brokenredirects-summary',
 	'deadendpages-summary',
+	'protectedpages-summary',
 	'disambiguations-summary',
 	'doubleredirects-summary',
 	'lonelypages-summary',
 	'unusedtemplates-summary',
+	'recentchangeslinked-summary',
+	'fewestrevisions-summary',
+	'withoutinterwiki-summary',
 	'variantname-zh-cn',
 	'variantname-zh-tw',
 	'variantname-zh-hk',

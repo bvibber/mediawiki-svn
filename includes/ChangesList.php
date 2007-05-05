@@ -1,15 +1,7 @@
 <?php
-/**
- * @package MediaWiki
- * Contain class to show various lists of change:
- * - what's link here
- * - related changes
- * - recent changes
- */
 
 /**
  * @todo document
- * @package MediaWiki
  */
 class RCCacheEntry extends RecentChange
 {
@@ -17,8 +9,7 @@ class RCCacheEntry extends RecentChange
 	var $curlink , $difflink, $lastlink , $usertalklink , $versionlink ;
 	var $userlink, $timestamp, $watched;
 
-	function newFromParent( $rc )
-	{
+	function newFromParent( $rc ) {
 		$rc2 = new RCCacheEntry;
 		$rc2->mAttribs = $rc->mAttribs;
 		$rc2->mExtra = $rc->mExtra;
@@ -27,14 +18,17 @@ class RCCacheEntry extends RecentChange
 } ;
 
 /**
- * @package MediaWiki
+ * Class to show various lists of changes:
+ * - what links here
+ * - related changes
+ * - recent changes
  */
 class ChangesList {
 	# Called by history lists and recent changes
 	#
 
 	/** @todo document */
-	function ChangesList( &$skin ) {
+	function __construct( &$skin ) {
 		$this->skin =& $skin;
 		$this->preCacheMessages();
 	}
@@ -47,7 +41,7 @@ class ChangesList {
 	 * @return ChangesList derivative
 	 */
 	public static function newFromUser( &$user ) {
-		$sk =& $user->getSkin();
+		$sk = $user->getSkin();
 		$list = NULL;
 		if( wfRunHooks( 'FetchChangesList', array( &$user, &$sk, &$list ) ) ) {
 			return $user->getOption( 'usenewrc' ) ? new EnhancedChangesList( $sk ) : new OldChangesList( $sk );
@@ -64,7 +58,7 @@ class ChangesList {
 		// Precache various messages
 		if( !isset( $this->message ) ) {
 			foreach( explode(' ', 'cur diff hist minoreditletter newpageletter last '.
-				'blocklink changes history boteditletter' ) as $msg ) {
+				'blocklink history boteditletter' ) as $msg ) {
 				$this->message[$msg] = wfMsgExt( $msg, array( 'escape') );
 			}
 		}
@@ -422,7 +416,7 @@ class EnhancedChangesList extends ChangesList {
 	 * Enhanced RC group
 	 */
 	function recentChangesBlockGroup( $block ) {
-		global $wgContLang, $wgRCShowChangedSize;
+		global $wgLang, $wgContLang, $wgRCShowChangedSize;
 		$r = '';
 
 		# Collate list of users
@@ -484,13 +478,21 @@ class EnhancedChangesList extends ChangesList {
 		$currentRevision = $block[0]->mAttribs['rc_this_oldid'];
 		if( $block[0]->mAttribs['rc_type'] != RC_LOG ) {
 			# Changes
-			$r .= ' ('.count($block).' ';
+
+			$n = count($block);
+			static $nchanges = array();
+			if ( !isset( $nchanges[$n] ) ) {
+				$nchanges[$n] = wfMsgExt( 'nchanges', array( 'parsemag', 'escape'),
+					$wgLang->formatNum( $n ) );
+			}
+
+			$r .= ' (';
 
 			if( $isnew ) {
-				$r .= $this->message['changes'];
+				$r .= $nchanges[$n];
 			} else {
 				$r .= $this->skin->makeKnownLinkObj( $block[0]->getTitle(),
-					$this->message['changes'], $curIdEq."&diff=$currentRevision&oldid=$oldid" );
+					$nchanges[$n], $curIdEq."&diff=$currentRevision&oldid=$oldid" );
 			}
 
 			$r .= ') . . ';

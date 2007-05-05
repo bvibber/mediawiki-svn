@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -24,6 +23,10 @@ function wfSpecialImagelist() {
 		. $nav );
 }
 
+/**
+ * @addtogroup SpecialPage
+ * @addtogroup Pager
+ */
 class ImageListPager extends TablePager {
 	var $mFieldNames = null;
 	var $mMessages = array();
@@ -40,11 +43,11 @@ class ImageListPager extends TablePager {
 		if ( $search != '' && !$wgMiserMode ) {
 			$nt = Title::newFromUrl( $search );
 			if( $nt ) {
-				$dbr =& wfGetDB( DB_SLAVE );
+				$dbr = wfGetDB( DB_SLAVE );
 				$m = $dbr->strencode( strtolower( $nt->getDBkey() ) );
 				$m = str_replace( "%", "\\%", $m );
 				$m = str_replace( "_", "\\_", $m );
-				$this->mQueryConds = array( "LCASE(img_name) LIKE '%{$m}%'" );
+				$this->mQueryConds = array( "LOWER(img_name) LIKE '%{$m}%'" );
 			}
 		}
 

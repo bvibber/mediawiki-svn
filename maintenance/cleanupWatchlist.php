@@ -25,8 +25,7 @@
  * http://www.gnu.org/copyleft/gpl.html
  *
  * @author Brion Vibber <brion at pobox.com>
- * @package MediaWiki
- * @subpackage maintenance
+ * @addtogroup maintenance
  */
 
 $options = array( 'fix' );
@@ -120,7 +119,7 @@ class WatchlistCleanup extends FiveUpgrade {
 	
 	function removeWatch( $row ) {
 		if( !$this->dryrun) {
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			$dbw->delete( 'watchlist', array(
 				'wl_user'      => $row->wl_user,
 				'wl_namespace' => $row->wl_namespace,

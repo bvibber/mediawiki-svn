@@ -7,6 +7,7 @@
  * to an array of pages you want everyone to be able to access. Your server must
  * support PATH_INFO, CGI-based configurations generally don't.
  */
+define( 'MW_NO_OUTPUT_COMPRESSION', 1 );
 require_once( './includes/WebStart.php' );
 wfProfileIn( 'img_auth.php' );
 require_once( './includes/StreamFile.php' );
@@ -49,6 +50,7 @@ wfLogProfilingData();
 
 function wfForbidden() {
 	header( 'HTTP/1.0 403 Forbidden' );
+	header( 'Content-Type: text/html; charset=utf-8' );
 	print
 "<html><body>
 <h1>Access denied</h1>

@@ -1,7 +1,6 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 /** */
@@ -14,7 +13,7 @@ function updateSearchIndex( $start, $end, $maxLockTime, $quiet ) {
 	$wgQuiet = $quiet;
 	$wgDisableSearchUpdate = false;
 
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	$recentchanges = $dbw->tableName( 'recentchanges' );
 
 	output( "Updating searchindex between $start and $end\n" );

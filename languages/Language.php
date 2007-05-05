@@ -1,7 +1,6 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
 
 if( !defined( 'MEDIAWIKI' ) ) {
@@ -23,7 +22,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 # Read language names
 global $wgLanguageNames;
-require_once( 'Names.php' );
+require_once( dirname(__FILE__) . '/Names.php' ) ;
 
 global $wgInputEncoding, $wgOutputEncoding;
 
@@ -62,7 +61,7 @@ class Language {
 	var $mConverter, $mVariants, $mCode, $mLoaded = false;
 
 	static public $mLocalisationKeys = array( 'fallback', 'namespaceNames',
-		'quickbarSettings', 'skinNames', 'mathNames', 
+		'skinNames', 'mathNames', 
 		'bookstoreList', 'magicWords', 'messages', 'rtl', 'digitTransformTable', 
 		'separatorTransformTable', 'fallback8bitEncoding', 'linkPrefixExtension',
 		'defaultUserOptionOverrides', 'linkTrail', 'namespaceAliases', 
@@ -163,6 +162,11 @@ class Language {
 		return User::getDefaultOptions();
 	}
 
+	function getFallbackLanguageCode() {
+		$this->load();
+		return $this->fallback;
+	}
+
 	/**
 	 * Exports $wgBookstoreListEn
 	 * @return array
@@ -224,7 +228,22 @@ class Language {
 	}
 
 	/**
-	 * Get a namespace key by value, case insensetive.
+	 * Get a namespace key by value, case insensitive.
+	 * Only matches namespace names for the current language, not the
+	 * canonical ones defined in Namespace.php.
+	 *
+	 * @param string $text
+	 * @return mixed An integer if $text is a valid value otherwise false
+	 */
+	function getLocalNsIndex( $text ) {
+		$this->load();
+		$lctext = $this->lc($text);
+		return isset( $this->mNamespaceIds[$lctext] ) ? $this->mNamespaceIds[$lctext] : false;
+	}
+
+	/**
+	 * Get a namespace key by value, case insensitive.  Canonical namespace
+	 * names override custom ones defined for the current language.
 	 *
 	 * @param string $text
 	 * @return mixed An integer if $text is a valid value otherwise false
@@ -232,6 +251,7 @@ class Language {
 	function getNsIndex( $text ) {
 		$this->load();
 		$lctext = $this->lc($text);
+		if( ( $ns = Namespace::getCanonicalIndex( $lctext ) ) !== null ) return $ns;
 		return isset( $this->mNamespaceIds[$lctext] ) ? $this->mNamespaceIds[$lctext] : false;
 	}
 
@@ -254,8 +274,13 @@ class Language {
 	}
 
 	function getQuickbarSettings() {
-		$this->load();
-		return $this->quickbarSettings;
+		return array(
+			$this->getMessage( 'qbsettings-none' ),
+			$this->getMessage( 'qbsettings-fixedleft' ),
+			$this->getMessage( 'qbsettings-fixedright' ),
+			$this->getMessage( 'qbsettings-floatingleft' ),
+			$this->getMessage( 'qbsettings-floatingright' )
+		);
 	}
 
 	function getSkinNames() {
@@ -744,6 +769,9 @@ class Language {
 	*/
 	function timeanddate( $ts, $adj = false, $format = true, $timecorrection = false) {
 		$this->load();
+
+		$ts = wfTimestamp( TS_MW, $ts );
+
 		if ( $adj ) { 
 			$ts = $this->userAdjust( $ts, $timecorrection ); 
 		}
@@ -768,7 +796,7 @@ class Language {
 
 	function iconv( $in, $out, $string ) {
 		# For most languages, this is a wrapper for iconv
-		return iconv( $in, $out, $string );
+		return iconv( $in, $out . '//IGNORE', $string );
 	}
 
 	// callback functions for uc(), lc(), ucwords(), ucwordbreaks()
@@ -1311,10 +1339,11 @@ class Language {
 	/**
 	 * For translaing of expiry times
 	 * @param string The validated block time in English
+	 * @param $forContent, avoid html?
 	 * @return Somehow translated block time
 	 * @see LanguageFi.php for example implementation
 	 */
-	function translateBlockExpiry( $str ) {
+	function translateBlockExpiry( $str, $forContent=false ) {
 
 		$scBlockExpiryOptions = $this->getMessageFromDB( 'ipboptions' );
 
@@ -1326,9 +1355,12 @@ class Language {
 			if ( strpos($option, ":") === false )
 				continue;
 			list($show, $value) = explode(":", $option);
-			if ( strcmp ( $str, $value) == 0 )
-				return '<span title="' . htmlspecialchars($str). '">' .
-					htmlspecialchars( trim( $show ) ) . '</span>';
+			if ( strcmp ( $str, $value) == 0 ) {
+				if ( $forContent )
+					return htmlspecialchars($str) . htmlspecialchars( trim( $show ) );
+				else
+					return '<span title="' . htmlspecialchars($str). '">' . htmlspecialchars( trim( $show ) ) . '</span>';
+			}
 		}
 
 		return $str;

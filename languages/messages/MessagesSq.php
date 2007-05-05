@@ -1,13 +1,8 @@
 <?php
 /** Albanian (Shqip)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
-
-$quickbarSettings = array(
-	'Asnjë', 'Lidhur majtas', 'Lidhur djathtas', 'Pezull majtas', 'Pezull djathtas'
-);
 
 $skinNames = array(
 	'standard' => 'Standarte',
@@ -431,14 +426,14 @@ Adresa e IP-së që keni është $3. Jepni këtë adresë në çdo ankesë.',
 'whitelistacctitle'     => 'Nuk ju lejohet të hapni një llogari',
 'whitelistacctext'      => 'Duhet të [[Special:Userlogin|hyni brënda]] dhe të keni të drejta të posaçme pasi tu lejohet të hapni llogari në Wiki.',
 'confirmedittitle'      => 'Nevojitet adresë email-i e vërtetuar për të redaktuar',
-'confirmedittext'       => 'Ju duhet së pari ta vërtetoni e-mail adresen para se të redaktoni. Ju lutem plotësoni dhe vërtetoni e-mailin tuaj  te [[{ns:special}}:Preferences|parapëlqimet]] e juaja.',
+'confirmedittext'       => 'Ju duhet së pari ta vërtetoni e-mail adresen para se të redaktoni. Ju lutem plotësoni dhe vërtetoni e-mailin tuaj  te [[Special:Preferences|parapëlqimet]] e juaja.',
 'loginreqtitle'         => 'Detyrohet hyrja',
 'loginreqlink'          => 'hyni',
 'loginreqpagetext'      => 'Ju duhet $1 për të parë faqe e tjera.',
 'accmailtitle'          => 'Fjalëkalimi u dërgua.',
 'accmailtext'           => 'Fjalëkalimi për \'$1\' u dërgua tek $2.',
 'newarticle'            => '(I Ri)',
-'newarticletext'        => '<div style="border: 1px solid #ccc; padding: 7px;">{{SITENAME}} nuk ka akoma një \'\'{{NAMESPACE}} faqe\'\' të quajtur \'\'\'{{PAGENAME}}\'\'\'. Shtypni \'\'\'redaktoni\'\'\' më sipër ose [[Special:Search/{{PAGENAME}}|bëni një kërkim për {{PAGENAME}}]]</div>',
+'newarticletext'        => '{{SITENAME}} nuk ka akoma një \'\'{{NAMESPACE}} faqe\'\' të quajtur \'\'\'{{PAGENAME}}\'\'\'. Shtypni \'\'\'redaktoni\'\'\' më sipër ose [[Special:Search/{{PAGENAME}}|bëni një kërkim për {{PAGENAME}}]]',
 'anontalkpagetext'      => '---- \'\'Kjo është një faqe diskutimi për një përdorues anonim i cili nuk ka hapur akoma një llogari ose nuk e përdor atë. Prandaj, më duhet të përdor numrin e adresës [[IP adresë|IP]] për ta identifikuar. Kjo adresë mund të përdoret nga disa njerëz. Në qoftë se jeni një përdorues anonim dhe mendoni se komente kot janë drejtuar ndaj jush, ju lutem [[Special:Userlogin|krijoni një llogari ose hyni brënda]] për të mos u ngatarruar me përdorues të tjerë anonim.\'\'',
 'noarticletext'         => 'Tani për tani nuk ka tekst në këtë faqe, mund ta [[Special:Search/{{PAGENAME}}|kërkoni]] këtë titull në faqe të tjera ose mund ta [{{fullurl:{{FULLPAGENAME}}|action=edit}} filloni] atë.',
 'clearyourcache'        => '\'\'\'Shënim:\'\'\' Pasi të ruani parapëlqimet ose pasi të kryeni ndryshimet, duhet të pastroni \'\'cache\'\'-në e shfletuesit tuaj për të parë ndryshimet: për \'\'\'Mozilla/Safari/Konqueror\'\'\' shtypni \'\'Ctrl+Shift+Reload\'\' (ose \'\'ctrl+shift+r\'\'), për \'\'\'IE\'\'\' \'\'Ctrl+f5\'\', \'\'\'Opera\'\'\': \'\'F5\'\'.',
@@ -568,6 +563,11 @@ $2 Lidhje përcjellëse   Kërko për $3 $9',
 'prefsnologintext'      => 'Duhet të keni [[Special:Userlogin|hyrë brenda]] për të ndryshuar parapëlqimet e përdoruesit.',
 'prefsreset'            => 'Parapëlqimet janë rikthyer siç ishin.',
 'qbsettings'            => 'Vendime të shpejta',
+'qbsettings-none'	=> 'Asnjë',
+'qbsettings-fixedleft'	=> 'Lidhur majtas',
+'qbsettings-fixedright'	=> 'Lidhur djathtas',
+'qbsettings-floatingleft'	=> 'Pezull majtas',
+'qbsettings-floatingright'	=> 'Pezull djathtas',
 'changepassword'        => 'Ndërroni fjalëkalimin',
 'skin'                  => 'Pamja',
 'math'                  => 'Formula',
@@ -846,7 +846,7 @@ një figurë me një URL në mënyrë direkte, kështuqë ka mundësi që këto 
 'allpagessubmit'        => 'Shko',
 'allpagesprefix'        => 'Trego faqet me parashtesë:',
 'mailnologin'           => 'S\'ka adresë dërgimi',
-'mailnologintext'       => 'Duhet të keni [[{ns:special}}:Userlogin|hyrë brenda]] dhe të keni një adresë të saktë në [[{ns:special}}:Preferences|parapëlqimet]] tuaja për tu dërguar email përdoruesve të tjerë.',
+'mailnologintext'       => 'Duhet të keni [[Special:Userlogin|hyrë brenda]] dhe të keni një adresë të saktë në [[Special:Preferences|parapëlqimet]] tuaja për tu dërguar email përdoruesve të tjerë.',
 'emailuser'             => 'Email përdoruesit',
 'emailpage'             => 'Dërgo email përdoruesve',
 'emailpagetext'         => 'Në qoftë se ky përdorues ka dhënë një adresë të saktë në parapëlqimet, formulari më poshtë do t\'i dërgojë një mesazh. 
@@ -865,6 +865,7 @@ ose ka vendosur të mos pranojë mesazhe email-i nga përdorues të tjerë.',
 'emailsent'             => 'Email-i u dërgua',
 'emailsenttext'         => 'Email-i është dërguar.',
 'watchlist'             => 'Lista mbikqyrëse',
+'mywatchlist'             => 'Lista mbikqyrëse',
 'nowatchlist'           => 'Nuk keni asnjë faqe në listën mbikqyrëse.',
 'watchlistcount'        => '\'\'\'Keni $1 faqe nën mbikqyrje duke përfshirë dhe faqet e diskutimit.\'\'\'',
 'clearwatchlist'        => 'Pastroni listën mbikqyrëse',
@@ -1013,7 +1014,7 @@ Shikoni [[Special:Log/delete|regjistrin e grisjeve]] për grisjet dhe restaurime
 'invert'                => 'Kundër zgjedhjes',
 'contributions'         => 'Kontributet',
 'mycontris'             => 'Redaktimet e mia',
-'contribsub'            => 'Për $1',
+'contribsub2'            => 'Për $1 ($2)',
 'nocontribs'            => 'Nuk ka asnjë ndryshim që përputhet me këto kritere.',
 'ucnote'                => 'Më poshtë janë redaktimet më të fundit të <b>$1</b> gjatë <b>$2</b> ditëve.',
 'uclinks'               => 'Shikoni $1 redaktimet e fundit; shikoni $2 ditët e fundit.',
@@ -1043,7 +1044,7 @@ Plotësoni arsyen specifike më poshtë (p.sh., tregoni faqet specifike që u va
 'ipbreason'             => 'Arsyeja',
 'ipbsubmit'             => 'Blloko këtë përdorues',
 'ipbother'              => 'Kohë tjetër',
-'ipboptions'            => '1 Orë:1 hour,2 Orë:2 hours,6 Orë:6 hours,1 Ditë:1 day,3 Ditë:3 days,1 Javë:1 week,2 Javë:2 weeks,1 Muaj:1 month,3 Muaj:3 months,1 Vjet:1 year,Pa kufi:indefinite',
+'ipboptions'            => '1 Orë:1 hour,2 Orë:2 hours,6 Orë:6 hours,1 Ditë:1 day,3 Ditë:3 days,1 Javë:1 week,2 Javë:2 weeks,1 Muaj:1 month,3 Muaj:3 months,1 Vjet:1 year,Pa kufi:infinite',
 'ipbotheroption'        => 'tjetër',
 'badipaddress'          => 'Nuk ka asnjë përdorues me atë emër',
 'blockipsuccesssub'     => 'Bllokimi u bë me sukses',
@@ -1065,7 +1066,7 @@ një përdoruesi ose IP adreseje të bllokuar.',
 'autoblocker'           => 'I bllokuar automatikisht sepse përdor të njëjtën IP adresë si "$1". Arsye "$2".',
 'blocklogpage'          => 'Regjistri i bllokimeve',
 'blocklogentry'         => 'bllokoi "[[$1]]" për një kohëzgjatje prej $2',
-'blocklogtext'          => 'Ky është një regjistër bllokimesh dhe çbllokimesh të përdoruesve. IP-të e bllokuara automatikisht nuk janë të dhëna. Shikoni dhe [[{ns:special}}:Ipblocklist|listën e IP-ve të bllokuara]] për një listë të bllokimeve të tanishme.',
+'blocklogtext'          => 'Ky është një regjistër bllokimesh dhe çbllokimesh të përdoruesve. IP-të e bllokuara automatikisht nuk janë të dhëna. Shikoni dhe [[Special:Ipblocklist|listën e IP-ve të bllokuara]] për një listë të bllokimeve të tanishme.',
 'unblocklogentry'       => 'çbllokoi "$1"',
 'range_block_disabled'  => 'Mundësia e administruesve për të bllokuar me shtrirje është çaktivizuar.',
 'ipb_expiry_invalid'    => 'Afati i kohës është gabim.',
@@ -1091,26 +1092,12 @@ Ju lutem konfirmoni që dëshironi me të vërtetë të kryeni këtë veprim, dh
 'lockdbsuccesstext'     => 'Regjistri i {{SITENAME}} është bllokuar.
 <br />Kujtohu ta çbllokosh mbasi të kesh mbaruar mirëmbajtjen.',
 'unlockdbsuccesstext'   => 'Regjistri i {{SITENAME}} është çbllokuar.',
-'makesysoptitle'        => 'Jepini privilegjin e titullit administrues',
-'makesysoptext'         => 'Ky formular përdoret për tu dhënë titullin [[Project:Administruesit|administrues]] një përdoruesi të thjeshtë. Kini kujdes, mbasi të jetë dhënë, vetëm një \'\'zhvillues\'\' mund t\'ia heqi këtë titull një administruesi.',
-'makesysopname'         => 'Emri i përdoruesit:',
-'makesysopsubmit'       => 'Jepini privilegjin',
-'makesysopok'           => '<b>Përdoruesi \'$1\' u bë administrues</b>',
-'makesysopfail'         => '<b>Përdoruesi \'$1\' nuk mund të bëhej administrues. (Kontrolloni nëse emrin e keni shtypur saktësisht)</b>',
-'setbureaucratflag'     => 'Jepi titullin burokrat',
 'rightslog'             => 'Regjistri i privilegjeve',
 'rightslogtext'         => 'Ky është një regjistër për ndryshimet e titujve të përdoruesve.',
 'rightslogentry'        => 'ndryshoi privilegjet e $1 prej "$2" në "$3"',
-'rights'                => 'Privilegje:',
-'set_user_rights'       => 'Vendosni privilegjet e përdoruesve',
-'user_rights_set'       => '<b>Privilegjet për përdoruesin "$1" u freskuan</b>',
-'set_rights_fail'       => '<b>Nuk mund të vendoseshin privilegjet për përdoruesin "$1". (Vendosët emrin e saktë?)</b>',
-'makesysop'             => 'Jepni titullin administrues',
-'already_sysop'         => 'Ky përdorues është bërë administrues më parë',
-'already_bureaucrat'    => 'Ky përdorues është bërë burokrat më parë',
 'rightsnone'            => '(asnjë)',
 'movepage'              => 'Zhvendose faqen',
-'movepagetext'          => 'Duke përdorur formularin e mëposhtëm do të ndërroni titullin e një faqeje, duke zhvendosur gjithë historinë përkatëse tek titulli i ri. Titulli i vjetër do të bëhet një faqe përcjellëse tek titulli i ri. Lidhjet tek faqja e vjetër nuk do të ndryshohen; duhet të kontrolloni [[{ns:special}}:Maintenance|mirëmbajtjen]] për përcjellime të dyfishta ose të prishura.
+'movepagetext'          => 'Duke përdorur formularin e mëposhtëm do të ndërroni titullin e një faqeje, duke zhvendosur gjithë historinë përkatëse tek titulli i ri. Titulli i vjetër do të bëhet një faqe përcjellëse tek titulli i ri. Lidhjet tek faqja e vjetër nuk do të ndryshohen; duhet të kontrolloni [[Special:SpecialPages|mirëmbajtjen]] për përcjellime të dyfishta ose të prishura.
 Keni përgjegjësinë për tu siguruar që lidhjet të vazhdojnë të jenë të sakta.
 
 Vini re se kjo faqe \'\'\'nuk\'\'\' do të zhvendoset n.q.s. ekziston një faqe me titullin e ri, përveçse kur ajo të jetë bosh ose një përcjellim dhe të mos ketë një histori të vjetër. Kjo do të thotë se mund ta zhvendosni një faqe prapë tek emri

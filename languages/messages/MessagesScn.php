@@ -1,8 +1,7 @@
 <?php
 /** Sicilian (Sicilianu)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  *
  * @author Niklas Laxström
  */
@@ -68,6 +67,7 @@ $messages = array(
 
 # Watchlist
 'watchlist' => 'Lista taliata mia',
+'mywatchlist' => 'Lista taliata mia',
 'watch'     => 'talìa',
 
 # Contributions

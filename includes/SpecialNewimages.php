@@ -1,18 +1,17 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
  *
  */
 function wfSpecialNewimages( $par, $specialPage ) {
-	global $wgUser, $wgOut, $wgLang, $wgRequest, $wgGroupPermissions;
+	global $wgUser, $wgOut, $wgLang, $wgRequest, $wgGroupPermissions, $wgMiserMode;
 
 	$wpIlMatch = $wgRequest->getText( 'wpIlMatch' );
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$sk = $wgUser->getSkin();
 	$shownav = !$specialPage->including();
 	$hidebots = $wgRequest->getBool('hidebots',1);
@@ -75,23 +74,23 @@ function wfSpecialNewimages( $par, $specialPage ) {
 
 	$where = array();
 	$searchpar = '';
-	if ( $wpIlMatch != '' ) {
+	if ( $wpIlMatch != '' && !$wgMiserMode) {
 		$nt = Title::newFromUrl( $wpIlMatch );
 		if($nt ) {
 			$m = $dbr->strencode( strtolower( $nt->getDBkey() ) );
 			$m = str_replace( '%', "\\%", $m );
 			$m = str_replace( '_', "\\_", $m );
-			$where[] = "LCASE(img_name) LIKE '%{$m}%'";
+			$where[] = "LOWER(img_name) LIKE '%{$m}%'";
 			$searchpar = '&wpIlMatch=' . urlencode( $wpIlMatch );
 		}
 	}
 
 	$invertSort = false;
 	if( $until = $wgRequest->getVal( 'until' ) ) {
-		$where[] = 'img_timestamp < ' . $dbr->timestamp( $until );
+		$where[] = "img_timestamp < '" . $dbr->timestamp( $until ) . "'";
 	}
 	if( $from = $wgRequest->getVal( 'from' ) ) {
-		$where[] = 'img_timestamp >= ' . $dbr->timestamp( $from );
+		$where[] = "img_timestamp >= '" . $dbr->timestamp( $from ) . "'";
 		$invertSort = true;
 	}
 	$sql='SELECT img_size, img_name, img_user, img_user_text,'.
@@ -158,7 +157,7 @@ function wfSpecialNewimages( $par, $specialPage ) {
 	$sub = wfMsg( 'ilsubmit' );
 	$titleObj = SpecialPage::getTitleFor( 'Newimages' );
 	$action = $titleObj->escapeLocalURL( $hidebots ? '' : 'hidebots=0' );
-	if ($shownav) {
+	if ($shownav && !$wgMiserMode) {
 		$wgOut->addHTML( "<form id=\"imagesearch\" method=\"post\" action=\"" .
 		  "{$action}\">" .
 			Xml::input( 'wpIlMatch', 20, $wpIlMatch ) . ' ' .

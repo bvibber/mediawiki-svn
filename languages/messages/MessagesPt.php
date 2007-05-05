@@ -9,8 +9,7 @@
  *  - Sérgio Ribeiro
  * from the Portuguese Wikipedia
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
 
 $namespaceNames = array(
@@ -43,10 +42,6 @@ $namespaceNames = array(
 	NS_HELP_TALK        => 'Ajuda_Discussão', # 13
 	NS_CATEGORY         => 'Categoria', # 14
 	NS_CATEGORY_TALK    => 'Categoria_Discussão' # 15
-);
-
-$quickbarSettings = array(
-	'Nenhuma', 'Fixo à esquerda', 'Fixo à direita', 'Flutuando à esquerda', 'Flutuando à direita'
 );
 
 $skinNames = array(
@@ -768,6 +763,11 @@ Note que os índices do conteúdo da {{SITENAME}} destes sites podem estar desac
 'prefsnologintext'      => "Precisa estar [[Special:Userlogin|autenticado]] para definir suas preferências.",
 'prefsreset'    => 'Preferências restauradas da base de dados.',
 'qbsettings'    => 'Barra Rápida',
+'qbsettings-none'	=> 'Nenhuma',
+'qbsettings-fixedleft'	=> 'Fixo à esquerda',
+'qbsettings-fixedright'	=> 'Fixo à direita',
+'qbsettings-floatingleft'	=> 'Flutuando à esquerda',
+'qbsettings-floatingright'	=> 'Flutuando à direita',
 'changepassword' => 'Alterar palavra-chave',
 'skin'                  => 'Tema',
 'math'                  => 'Matemática',
@@ -877,7 +877,7 @@ Grupos não seleccionados, não serão alterados. Pode seleccionar ou remover a 
 'reupload'              => 'Recarregar',
 'reuploaddesc'  => 'Voltar ao formulário de carregamento.',
 'uploadnologin' => 'Não autenticado',
-'uploadnologintext'     => "Deve estar <a href=\"{{localurle:Special:Userlogin}}\">autenticado</a>
+'uploadnologintext'     => "Deve estar [[Special:Userlogin|autenticado]]
 para carregar ficheiros.",
 'upload_directory_read_only' => 'A directoria de envio ($1) não tem permissões de escrita pelo servidor Web.',
 'uploaderror'   => 'Erro ao carregar',
@@ -1120,6 +1120,7 @@ para que o destinatário lhe possa responder.',
 # Watchlist
 #
 'watchlist'                     => 'Artigos vigiados',
+'mywatchlist'                     => 'Artigos vigiados',
 'watchlistfor' => "(para '''$1''')",
 'nowatchlist'           => 'Não existem itens na sua lista de artigos vigiados.',
 'watchlistanontext' => 'Por favor $1 para ver ou editar os itens na sua lista de artigos vigiados.',
@@ -1294,7 +1295,7 @@ Consulte o [[Special:Log/delete|registo de eliminações]] para um registo das e
 #
 'contributions' => 'Contribuições do utilizador',
 'mycontris'     => 'Minhas contribuições',
-'contribsub'    => "Para $1",
+'contribsub2'    => "Para $1 ($2)",
 'nocontribs'    => 'Não foram encontradas mudanças com este critério.',
 'ucnote'        => "Segue as últimas <b>$1</b> mudanças nos últimos <b>$2</b> dias deste utilizador.",
 'uclinks'       => "Ver as últimas $1 mudanças; ver os últimos $2 dias.",
@@ -1413,7 +1414,7 @@ Isto pode ser uma mudança drástica e inesperada para uma página popular; por 
 Nestes casos, você terá que mover ou mesclar a página manualmente, se desejar.',
 'movearticle'   => 'Mover página',
 'movenologin'   => 'Não autenticado',
-'movenologintext' => "Deve ser um utilizador registado e [[Special:Userlogin|autenticado]]</a>
+'movenologintext' => "Deve ser um utilizador registado e [[Special:Userlogin|autenticado]]
 para mover uma página.",
 'newtitle'              => 'Para novo título',
 'movepagebtn'   => 'Mover página',

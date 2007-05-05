@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Created on Oct 16, 2006
  *
@@ -29,6 +28,9 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiQueryBase.php');
 }
 
+/**
+ * @addtogroup API
+ */
 class ApiQueryContributions extends ApiQueryBase {
 
 	public function __construct($query, $moduleName) {
@@ -44,7 +46,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		extract($this->extractRequestParams());
 
 		//Get a database instance
-		$db = & $this->getDB();
+		$db = $this->getDB();
 
 		if (is_null($user))
 			$this->dieUsage("User parameter may not be empty", 'param_user');

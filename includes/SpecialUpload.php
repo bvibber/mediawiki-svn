@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 
@@ -16,9 +15,8 @@ function wfSpecialUpload() {
 }
 
 /**
- *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * implements Special:Upload
+ * @addtogroup SpecialPage
  */
 class UploadForm {
 	/**#@+
@@ -334,7 +332,7 @@ class UploadForm {
 		 * If the image is protected, non-sysop users won't be able
 		 * to modify it by uploading a new revision.
 		 */
-		if( !$nt->userCanEdit() ) {
+		if( !$nt->userCan( 'edit' ) ) {
 			return $this->uploadError( wfMsgWikiHtml( 'protectedpage' ) );
 		}
 
@@ -349,10 +347,12 @@ class UploadForm {
 		/* Don't allow users to override the blacklist (check file extension) */
 		global $wgStrictFileExtensions;
 		global $wgFileExtensions, $wgFileBlacklist;
-		if( $this->checkFileExtensionList( $ext, $wgFileBlacklist ) ||
-			($wgStrictFileExtensions &&
-				!$this->checkFileExtension( $finalExt, $wgFileExtensions ) ) ) {
-			return $this->uploadError( wfMsgHtml( 'badfiletype', htmlspecialchars( $finalExt ) ) );
+		if ($finalExt == '') {
+			return $this->uploadError( wfMsgExt( 'filetype-missing', array ( 'parseinline' ) ) );
+		} elseif ( $this->checkFileExtensionList( $ext, $wgFileBlacklist ) ||
+				($wgStrictFileExtensions &&
+					!$this->checkFileExtension( $finalExt, $wgFileExtensions ) ) ) {
+			return $this->uploadError( wfMsgExt( 'filetype-badtype', array ( 'parseinline' ), htmlspecialchars( $finalExt ), implode ( ', ', $wgFileExtensions ) ) );
 		}
 
 		/**
@@ -395,13 +395,13 @@ class UploadForm {
 			global $wgCheckFileExtensions;
 			if ( $wgCheckFileExtensions ) {
 				if ( ! $this->checkFileExtension( $finalExt, $wgFileExtensions ) ) {
-					$warning .= '<li>'.wfMsgHtml( 'badfiletype', htmlspecialchars( $finalExt ) ).'</li>';
+					$warning .= '<li>'.wfMsgExt( 'filetype-badtype', array ( 'parseinline' ), htmlspecialchars( $finalExt ), implode ( ', ', $wgFileExtensions ) ).'</li>';
 				}
 			}
 
 			global $wgUploadSizeWarning;
 			if ( $wgUploadSizeWarning && ( $this->mUploadSize > $wgUploadSizeWarning ) ) {
-				$skin =& $wgUser->getSkin();
+				$skin = $wgUser->getSkin();
 				$wsize = $skin->formatSize( $wgUploadSizeWarning );
 				$asize = $skin->formatSize( $this->mUploadSize );
 				$warning .= '<li>' . wfMsgHtml( 'large-file', $wsize, $asize ) . '</li>';
@@ -410,21 +410,73 @@ class UploadForm {
 				$warning .= '<li>'.wfMsgHtml( 'emptyfile' ).'</li>';
 			}
 
-			if( $nt->getArticleID() ) {
-				global $wgUser;
-				$sk = $wgUser->getSkin();
+			global $wgUser;
+			$sk = $wgUser->getSkin();
+			$image = new Image( $nt );
+
+			// Check for uppercase extension. We allow these filenames but check if an image
+			// with lowercase extension exists already
+			if ( $finalExt != strtolower( $finalExt ) ) {
+				$nt_lc = Title::newFromText( $partname . '.' . strtolower( $finalExt ) );
+				$image_lc = new Image( $nt_lc );
+			}
+
+			if( $image->exists() ) {
 				$dlink = $sk->makeKnownLinkObj( $nt );
-				$warning .= '<li>'.wfMsgHtml( 'fileexists', $dlink ).'</li>';
-			} else {
+				if ( $image->allowInlineDisplay() ) {
+					$dlink2 = $sk->makeImageLinkObj( $nt, wfMsgExt( 'fileexists-thumb', 'parseinline', $dlink ), $nt->getText(), 'right', array(), false, true );
+				} elseif ( !$image->allowInlineDisplay() && $image->isSafeFile() ) {
+					$icon = $image->iconThumb();
+					$dlink2 = '<div style="float:right" id="mw-media-icon"><a href="' . $image->getURL() . '">' . $icon->toHtml() . '</a><br />' . $dlink . '</div>';
+				} else {
+					$dlink2 = '';
+				}
+
+				$warning .= '<li>' . wfMsgExt( 'fileexists', 'parseline', $dlink ) . '</li>' . $dlink2;
+
+			} elseif ( isset( $image_lc) && $image_lc->exists() ) {
+				# Check if image with lowercase extension exists.
+				# It's not forbidden but in 99% it makes no sense to upload the same filename with uppercase extension
+				$dlink = $sk->makeKnownLinkObj( $nt_lc );
+				if ( $image_lc->allowInlineDisplay() ) {
+					$dlink2 = $sk->makeImageLinkObj( $nt_lc, wfMsgExt( 'fileexists-thumb', 'parseinline', $dlink ), $nt_lc->getText(), 'right', array(), false, true );
+				} elseif ( !$image_lc->allowInlineDisplay() && $image_lc->isSafeFile() ) {
+					$icon = $image_lc->iconThumb();
+					$dlink2 = '<div style="float:right" id="mw-media-icon"><a href="' . $image_lc->getURL() . '">' . $icon->toHtml() . '</a><br />' . $dlink . '</div>';
+				} else {
+					$dlink2 = '';
+				}
+
+				$warning .= '<li>' . wfMsgExt( 'fileexists-extension', 'parsemag' , $partname . '.' . $finalExt , $dlink ) . '</li>' . $dlink2;				
+
+			} elseif ( ( substr( $partname , 3, 3 ) == 'px-' || substr( $partname , 2, 3 ) == 'px-' ) && ereg( "[0-9]{2}" , substr( $partname , 0, 2) ) ) {
+				# Check for filenames like 50px- or 180px-, these are mostly thumbnails
+				$nt_thb = Title::newFromText( substr( $partname , strpos( $partname , '-' ) +1 ) . '.' . $finalExt );
+				$image_thb = new Image( $nt_thb );
+				if ($image_thb->exists() ) {
+					# Check if an image without leading '180px-' (or similiar) exists
+					$dlink = $sk->makeKnownLinkObj( $nt_thb);
+					if ( $image_thb->allowInlineDisplay() ) {
+						$dlink2 = $sk->makeImageLinkObj( $nt_thb, wfMsgExt( 'fileexists-thumb', 'parseinline', $dlink ), $nt_thb->getText(), 'right', array(), false, true );
+					} elseif ( !$image_thb->allowInlineDisplay() && $image_thb->isSafeFile() ) {
+						$icon = $image_thb->iconThumb();
+						$dlink2 = '<div style="float:right" id="mw-media-icon"><a href="' . $image_thb->getURL() . '">' . $icon->toHtml() . '</a><br />' . $dlink . '</div>';
+					} else {
+						$dlink2 = '';
+					}
+
+					$warning .= '<li>' . wfMsgExt( 'fileexists-thumbnail-yes', 'parsemag', $dlink ) . '</li>' . $dlink2;	
+				} else {
+					# Image w/o '180px-' does not exists, but we do not like these filenames
+					$warning .= '<li>' . wfMsgExt( 'file-thumbnail-no', 'parseinline' , substr( $partname , 0, strpos( $partname , '-' ) +1 ) ) . '</li>';
+				}
+			}
+			if ( $image->wasDeleted() ) {
 				# If the file existed before and was deleted, warn the user of this
 				# Don't bother doing so if the image exists now, however
-				$image = new Image( $nt );
-				if( $image->wasDeleted() ) {
-					$skin = $wgUser->getSkin();
-					$ltitle = SpecialPage::getTitleFor( 'Log' );
-					$llink = $skin->makeKnownLinkObj( $ltitle, wfMsgHtml( 'deletionlog' ), 'type=delete&page=' . $nt->getPrefixedUrl() );
-					$warning .= wfOpenElement( 'li' ) . wfMsgWikiHtml( 'filewasdeleted', $llink ) . wfCloseElement( 'li' );
-				}
+				$ltitle = SpecialPage::getTitleFor( 'Log' );
+				$llink = $sk->makeKnownLinkObj( $ltitle, wfMsgHtml( 'deletionlog' ), 'type=delete&page=' . $nt->getPrefixedUrl() );
+				$warning .= wfOpenElement( 'li' ) . wfMsgWikiHtml( 'filewasdeleted', $llink ) . wfCloseElement( 'li' );
 			}
 
 			if( $warning != '' ) {
@@ -724,7 +776,7 @@ class UploadForm {
 			  "<span class='error'>{$msg}</span>\n" );
 		}
 		$wgOut->addHTML( '<div id="uploadtext">' );
-		$wgOut->addWikiText( wfMsg( 'uploadtext' ) );
+		$wgOut->addWikiText( wfMsgNoTrans( 'uploadtext', $this->mDestFile ) );
 		$wgOut->addHTML( '</div>' );
 
 		$sourcefilename = wfMsgHtml( 'sourcefilename' );
@@ -929,7 +981,7 @@ class UploadForm {
 			global $wgMimeTypeBlacklist;
 			if( isset($wgMimeTypeBlacklist) && !is_null($wgMimeTypeBlacklist)
 				&& $this->checkFileExtension( $mime, $wgMimeTypeBlacklist ) ) {
-				return new WikiErrorMsg( 'badfiletype', htmlspecialchars( $mime ) );
+				return new WikiErrorMsg( 'filetype-badmime', htmlspecialchars( $mime ) );
 			}
 		}
 
@@ -1073,13 +1125,13 @@ class UploadForm {
 		$chunk = Sanitizer::decodeCharReferences( $chunk );
 
 		#look for script-types
-		if (preg_match('!type\s*=\s*[\'"]?\s*(\w*/)?(ecma|java)!sim',$chunk)) return true;
+		if (preg_match('!type\s*=\s*[\'"]?\s*(?:\w*/)?(?:ecma|java)!sim',$chunk)) return true;
 
 		#look for html-style script-urls
-		if (preg_match('!(href|src|data)\s*=\s*[\'"]?\s*(ecma|java)script:!sim',$chunk)) return true;
+		if (preg_match('!(?:href|src|data)\s*=\s*[\'"]?\s*(?:ecma|java)script:!sim',$chunk)) return true;
 
 		#look for css-style script-urls
-		if (preg_match('!url\s*\(\s*[\'"]?\s*(ecma|java)script:!sim',$chunk)) return true;
+		if (preg_match('!url\s*\(\s*[\'"]?\s*(?:ecma|java)script:!sim',$chunk)) return true;
 
 		wfDebug("SpecialUpload::detectScript: no scripts found\n");
 		return false;

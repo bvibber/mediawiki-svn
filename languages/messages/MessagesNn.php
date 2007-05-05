@@ -9,14 +9,8 @@
   * @link http://meta.wikimedia.org/w/index.php?title=LanguageNn.php&action=history
   * @link http://nn.wikipedia.org/w/index.php?title=Brukar:Dittaeva/LanguageNn.php&action=history
   *
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
   */
-
-
-$quickbarSettings = array(
-	'Ingen', 'Venstre', 'Høgre', 'Flytande venstre', 'Flytande høgre'
-);
 
 $skinNames = array(
 	'standard'        => 'Klassisk',
@@ -614,6 +608,11 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 'prefsnologintext'	    => 'Du lyt vera [[Special:Userlogin|innlogga]] for å endre brukarinnstillingane dine.',
 'prefsreset'	        => 'Innstillingane er tilbakestilte til siste lagra versjon.',
 'qbsettings'	        => 'Snøggmeny',
+'qbsettings-none'	=> 'Ingen',
+'qbsettings-fixedleft'	=> 'Venstre',
+'qbsettings-fixedright'	=> 'Høgre',
+'qbsettings-floatingleft'	=> 'Flytande venstre',
+'qbsettings-floatingright'	=> 'Flytande høgre',
 'changepassword'        => 'Skift passord',
 'skin'			=> 'Drakt',
 'math'			=> 'Matematiske formlar',
@@ -865,6 +864,7 @@ Alle sidene er vortne viste \'\'\'$3\'\'\' gonger og endra \'\'\'$4\'\'\' gonger
 # Watchlist
 #
 'watchlist'		=> 'Overvakingsliste',
+'mywatchlist'		=> 'Overvakingsliste',
 'nowatchlist'	        => 'Du har ikkje noko i overvakingslista di.',
 'watchnologin'	        => 'Ikkje innlogga',
 'watchnologintext'	    => 'Du lyt vera [[Special:Userlogin|innlogga]] for å kunna endre overvakingslista.',
@@ -995,7 +995,7 @@ Den siste endringa vart gjort av [[{{ns:2}}:$3|$3]] ([[{{ns:3}}:$3|brukardiskusj
 #
 'contributions'	        => 'Brukarbidrag',
 'mycontris'             => 'Eigne bidrag',
-'contribsub'	        => 'For $1',
+'contribsub2'	        => 'For $1 ($2)',
 'nocontribs'	        => 'Det vart ikkje funne nokon endringar gjorde av denne brukaren.',
 'ucnote'	        => 'Her er dei siste <b>$1</b> endringane frå denne brukaren dei siste <b>$2</b> dagane.',
 'uclinks'	        => 'Vis dei siste $1 endringane; vis dei siste $2 dagane.',

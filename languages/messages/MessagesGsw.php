@@ -193,6 +193,7 @@ Funktion: $1<br />
 Abfrog: $2',
 'viewsource'            => 'Quelltext aaluege',
 'viewsourcefor'         => 'fier $1',
+# problem with link: [[Project:Geschützte Seiten|Project:Gschützti Syte]]
 'protectedtext'         => 'Die Syten isch für ds Bearbeite gsperrt; daderfür cha’s verschidnigi Gründ gä. Lueg ou unter [[Project:Geschützte Seiten|Project:Gschützti Syte]].
 
 Du chasch der Quelltekscht vo dere Syten aaluegen u kopiere.',
@@ -219,7 +220,7 @@ Vergis nid, dyni [[Special:Preferences|Ystelligen]] aazpasse.',
 'loginproblem'          => '\'\'\'S het ä Problem mit dinre Onmeldung gäbe.\'\'\'<br />Bitte vosuechs grad nomal!',
 'alreadyloggedin'       => '<strong>Si sin scho als Benutzer $1 aagmolde!</strong><br />',
 'login'                 => 'Aamälde',
-'loginprompt'           => '<small>Für di bir {{SITENAME}} aazmälde, muesch [[Cookie]]s erloube!</small>',
+'loginprompt'           => '<small>Für di bir {{SITENAME}} aazmälde, muesch Cookies erloube!</small>',
 'userlogin'             => 'Aamälde',
 'logout'                => 'Abmälde',
 'userlogout'            => 'Abmälde',
@@ -345,6 +346,7 @@ Alli nöiere Versione wärden überschribe, we du uf «Syte spychere» drücksch
 Si verspräche uns usserdäm, dass Si des alles selber gschriebe oder vo nere Quälle kopiert hen, wo Public Domain odr sunscht frei isch (lueg $1 für Details).
 <strong>SETZE SI DO OHNI ERLAUBNIS CHEINI URHEBERRÄCHTLICH GSCHÜTZTI WÄRK INE!</strong>',
 'longpagewarning'       => '<span style="color:#ff0000">WARNIG:</span> Die Syten isch $1KB groß; elteri Browser chönnte Problem ha, Sytene z bearbeite wo gröser sy als 32KB. Überleg bitte, öb du Abschnitte vo dere Syte zu eigete Sytene chönntsch usboue.',
+# problem with link: [[Project:Geschützte Seiten|Regle für gschützti Syte]]
 'protectedpagewarning'  => '<span style="color:#ff0000">WARNIG:</span> Die Syten isch gsperrt worde, so das se nume Benutzer mit Sysop-Rechten chöi verändere. Bitte häb di a d [[Project:Geschützte Seiten|Regle für gschützti Syte]].',
 'semiprotectedpagewarning'=> '\'\'\'\'\'Halbsperrung\'\'\': Diese Seite kann von angemeldeten Benutzern bearbeitet werden. Für nicht angemeldete oder gerade eben erst angemeldete Benutzer ist der Schreibzugang gesperrt.\'\'',
 'templatesused'         => 'Selli Vorlage wärde in sellem Artikel bruucht:',
@@ -366,7 +368,7 @@ Erklärig: (aktuell) = Underschid zu jetz,
 'difference'            => '(Unterschide zwüsche Versione)',
 'compareselectedversions'=> 'Usgwählti Versione verglyche',
 'searchresults'         => 'Suech-Ergäbnis',
-'searchresulttext'      => 'Für wiiteri Informatione zuem Sueche uff {{SITENAME}} chönne Si mol uff [[Project:Searching|{{SITENAME}} duresueche]] luege.',
+'searchresulttext'      => 'Für wiiteri Informatione zuem Sueche uff {{SITENAME}} chönne Si mol uff [[{{MediaWiki:helppage}}|{{int:help}}]] luege.',
 'searchsubtitle'           => 'Für d Suechaafrag «[[:$1]]»',
 'searchsubtitleinvalid'           => 'Für d Suechaafrag «$1»',
 'prevn'                 => 'vorderi $1',
@@ -441,10 +443,10 @@ Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit Strg +
 'uploadtext'            => 'Bruuche Si sell Formular unte go Dateie uffelade. Zuem aaluege odr fruener uffegladeni Bilder go sueche lueg uff de [[Special:Imagelist|Lischte vo uffegladene Dateie]], Uffeladige un Löschige sin au protokolliert uff [[Special:Log/upload|Uffeladige Protokoll]].
 
 Go e Datei odr en Bild innere Syte iizbaue schriibe Si eifach ane:
-* \'\'\'<nowiki>[[File:file.jpg]]</nowiki>\'\'\'
-* \'\'\'<nowiki>[[File:file.png|alt text]]</nowiki>\'\'\'
+* \'\'\'<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.jpg]]</nowiki>\'\'\'
+* \'\'\'<nowiki>[[</nowiki>{{ns:image}}<nowiki>:file.png|alt text]]</nowiki>\'\'\'
 or
-* \'\'\'<nowiki>[[Media:file.ogg]]</nowiki>\'\'\'
+* \'\'\'<nowiki>[[</nowiki>{{ns:media}}<nowiki>:file.ogg]]</nowiki>\'\'\'
 go direkt e Gleich uff d Datei z\'mache.',
 'copyrightpage'         => 'Project:Copyright',
 'minlength'             => 'Bilddateien müssen mindestens drei Buchstaben haben.',
@@ -479,13 +481,14 @@ Es isch insgsamt \'\'\'$4\'\'\' mol öbbis gänderet worde un drmit jedi Syte im
 Es het \'\'\'$8\'\'\' uffegladeni Dateie.
 
 Zuer Ziit stöhn \'\'\'$7\'\'\' Arbete zuem mache aa.',
-'userstatstext'         => 'S git \'\'\'$1\'\'\' [[Project:Benutzer|regischtriirte Benutzer]]. Dodrvo sin \'\'\'$2\'\'\' (also \'\'\'$4 %\'\'\') Administratore (lueg au uff $3).',
+# problem with link: [[Project:Benutzer|regischtriirte Benutzer]]
+'userstatstext'         => 'S git \'\'\'$1\'\'\' regischtriirte Benutzer. Dodrvo sin \'\'\'$2\'\'\' (also \'\'\'$4 %\'\'\') Administratore (lueg au uff $3).',
 'disambiguationspage'   => 'Template:Begriffsklärig',
 'doubleredirects'       => 'Doppelte Redirects',
 'brokenredirects'       => 'Kaputti Wyterleitige',
 'brokenredirectstext'   => 'Di folgende Wyterleitige füered zu Artikel wo\'s gar nid git.',
 'nbytes'                => '$1 {{PLURAL:$1|byte|bytes}}',
-'ncategories'           => '$1 {{PLURAL:$1|Kategori|Kategorie',
+'ncategories'           => '$1 {{PLURAL:$1|Kategori|Kategorie}}',
 'nlinks'                => '$1 {{PLURAL:$1|Gleich|Gleicher}}',
 'nmembers'              => '$1 {{PLURAL:$1|Syte|Sytene}}',
 'nrevisions'            => '$1 {{PLURAL:$1|Revision|Revisione}}',
@@ -543,6 +546,7 @@ Si chönnet d Aazeig iischränke wenn Si e Protokoll, e Benutzername odr e Syten
 'emailsent'             => 'E-Bost furtgschickt',
 'emailsenttext'         => 'Dys e-Mail isch verschickt worde.',
 'watchlist'             => 'Beobachtigslischte',
+'mywatchlist'             => 'Beobachtigslischte',
 'nowatchlist'           => 'Du hesch ke Yträg uf dyre Beobachtigslischte.',
 'watchnologintext'      => 'Du musst [[Special:Userlogin|angemeldet]] sein, um deine Beobachtungsliste zu bearbeiten.',
 'addedwatch'            => 'zue de Beobachtigslischte drzue do',
@@ -586,7 +590,7 @@ Es wird chei wiiteri Benochrichtigungsbost gschickt bis Si selli Syte wiedr bsue
 
 ---
 Ihri Beobachtigslischte {{fullurl:Special:Watchlist/edit}}
-Hilf zue de Benutzig gits uff {{fullurl:WikiHelpdesk}}',
+Hilf zue de Benutzig gits uff {{fullurl:{{MediaWiki:helppage}}}}',
 'deletepage'            => 'Syte lösche',
 'confirm'               => 'Bestätige',
 'excontentauthor'       => 'einzigen Inhalt: \'$1\' (bearbeitet worde nume dür \'$2\')',
@@ -594,7 +598,8 @@ Hilf zue de Benutzig gits uff {{fullurl:WikiHelpdesk}}',
 'deletesub'             => '(«$1» lösche)',
 'historywarning'        => '<span style="color:#ff0000">WARNUNG:</span> Die Seite die Sie zu löschen gedenken hat eine Versionsgeschichte:',
 'confirmdeletetext'     => 'Du bisch drann, en Artikel oder es Bild mitsamt Versionsgschicht permanänt us der Datebank z lösche.
-Bitte bis dir über d Konsequänze bewusst, u bis sicher, das du di a üsi [[Project:Leitlinien|Leitlinien]] haltisch.',
+Bitte bis dir über d Konsequänze bewusst, u bis sicher, das du di a üsi [[{{MediaWiki:policy-url}}|Leitlinien]] haltisch.',
+'policy-url'            => 'Project:Leitlinien',
 'actioncomplete'        => 'Uftrag usgfuehrt.',
 'deletedtext'           => '«$1» isch glösche worde.
 Im $2 het’s e Lischte vo de letschte Löschige.',
@@ -604,6 +609,7 @@ Im $2 het’s e Lischte vo de letschte Löschige.',
 
 Di letschti Änderig het [[User:$3|$3]] ([[User talk:$3|Talk]]) gmacht.',
 'revertpage'            => 'Rückgängig gmacht zuer letschte Änderig vo $1',
+# problem with link: [[Project:Geschützte Seiten]]
 'protectlogtext'        => 'Dies ist eine Liste der blockierten Seiten. Siehe [[Project:Geschützte Seiten]] für mehr Informationen.',
 'protectcomment'        => 'Grund der Sperrung',
 'undeletehistorynoadmin'=> 'Dieser Artikel wurde gelöscht. Der Grund für die Löschung ist in der Zusammenfassung angegeben,
@@ -621,7 +627,7 @@ Der aktuelle Text des gelöschten Artikels ist nur Administratoren zugänglich.'
 'istemplate'            => 'Vorlageybindig',
 'blockip'               => 'Benutzer bzw. IP blockyre',
 'ipbsubmit'             => 'Adresse blockieren',
-'ipboptions'            => '1 Stunde:1 hour,2 Stunden:2 hours,6 Stunden:6 hours,1 Tag:1 day,3 Tage:3 days,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,1 Jahr:1 year,Für immer:indefinite',
+'ipboptions'            => '1 Stunde:1 hour,2 Stunden:2 hours,6 Stunden:6 hours,1 Tag:1 day,3 Tage:3 days,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,1 Jahr:1 year,Für immer:infinite',
 'ipblocklist'           => 'Lischte vo blockierte IP-Adresse',
 'blocklistline'         => '$1, $2 het $3 ($4) gschperrt',
 'blocklink'             => 'spärre',
@@ -811,7 +817,7 @@ sollte umgehend ein Administrator informiert werden!',
 'confirmemail_subject'  => '{{SITENAME}} e-Mail-Adrässbestätigung',
 'confirmemail_body'     => 'Hallo
 
-{{SITENAME}}}}-BenutzerIn «$2» — das bisch allwäg du — het sech vor IP-Adrässen $1 uus mit deren e-Mail-Adrässe bi {{SITENAME}} aagmäldet.
+{{SITENAME}}-BenutzerIn «$2» — das bisch allwäg du — het sech vor IP-Adrässen $1 uus mit deren e-Mail-Adrässe bi {{SITENAME}} aagmäldet.
 
 Für z bestätige, das die Adrässe würklech dir isch, u für dyni erwytereten e-Mail-Funktionen uf {{SITENAME}} yzschalte, tue bitte der folgend Link i dym Browser uuf:
 

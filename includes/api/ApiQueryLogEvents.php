@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Created on Oct 16, 2006
  *
@@ -29,6 +28,9 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiQueryBase.php');
 }
 
+/**
+ * @addtogroup API
+ */
 class ApiQueryLogEvents extends ApiQueryBase {
 
 	public function __construct($query, $moduleName) {
@@ -39,7 +41,7 @@ class ApiQueryLogEvents extends ApiQueryBase {
 		$limit = $type = $start = $end = $dir = $user = $title = null;
 		extract($this->extractRequestParams());
 
-		$db = & $this->getDB();
+		$db = $this->getDB();
 
 		list($tbl_logging, $tbl_page, $tbl_user) = $db->tableNamesN('logging', 'page', 'user');
 

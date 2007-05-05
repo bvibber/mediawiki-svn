@@ -1,7 +1,6 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 /** */
@@ -14,7 +13,7 @@ function compressOldPages( $start = 0, $extdb = '' ) {
 
 	$chunksize = 50;
 	print "Starting from old_id $start...\n";
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	do {
 		$res = $dbw->select( 'text', array( 'old_id','old_flags','old_namespace','old_title','old_text' ),
 			"old_id>=$start", $fname, array( 'ORDER BY' => 'old_id', 'LIMIT' => $chunksize, 'FOR UPDATE' ) );
@@ -40,7 +39,7 @@ function compressPage( $row, $extdb ) {
 		#print "Already compressed row {$row->old_id}\n";
 		return false;
 	}
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	$flags = $row->old_flags ? "{$row->old_flags},gzip" : "gzip";
 	$compress = gzdeflate( $row->old_text );
 
@@ -76,8 +75,8 @@ function compressWithConcat( $startId, $maxChunkSize, $maxChunkFactor, $factorTh
 	$fname = 'compressWithConcat';
 	$loadStyle = LS_CHUNKED;
 
-	$dbr =& wfGetDB( DB_SLAVE );
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbr = wfGetDB( DB_SLAVE );
+	$dbw = wfGetDB( DB_MASTER );
 
 	# Set up external storage
 	if ( $extdb != '' ) {
@@ -277,8 +276,8 @@ function compressWithConcat( $startId, $maxChunkSize, $maxChunkFactor, $factorTh
 
 					# Store the stub objects
 					for ( $j = 1; $j < $thisChunkSize; $j++ ) {
-						# Skip if not compressing
-						if ( $stubs[$j] !== false ) {
+						# Skip if not compressing and don't overwrite the first revision
+						if ( $stubs[$j] !== false && $revs[$i + $j]->rev_text_id != $primaryOldid ) {
 							$dbw->update( 'text',
 								array( /* SET */
 									'old_text' => serialize($stubs[$j]),

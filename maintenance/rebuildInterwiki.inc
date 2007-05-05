@@ -4,16 +4,14 @@
  * Wikimedia specific!
  *
  * @todo document
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 /** */
 
 /**
  * @todo document
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 class Site {
 	var $suffix, $lateral, $url;
@@ -254,7 +252,7 @@ function makeLink( $entry, &$first, $source ) {
 	} else {
 		$sql .= ",\n";
 	}
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$sql .= "(" . $dbr->makeList( $entry ) . ")";
 	return $sql;
 }

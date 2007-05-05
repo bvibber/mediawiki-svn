@@ -1,8 +1,7 @@
 <?php
 /**
   * Based on Language.php 1.645
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
   * Compatible to MediaWiki 1.5
   * Initial translation by Trần Thế Trung and Nguyễn Thanh Quang
   * Last update 28 August 2005 (UTC)
@@ -27,10 +26,6 @@ $namespaceNames = array(
 	NS_HELP_TALK		=> 'Thảo_luận_Trợ_giúp',
 	NS_CATEGORY			=> 'Thể_loại',
 	NS_CATEGORY_TALK	=> 'Thảo_luận_Thể_loại'
-);
-
-$quickbarSettings = array(
-	'Không', 'Trái', 'Phải', 'Nổi bên trái'
 );
 
 $skinNames = array(
@@ -90,9 +85,9 @@ $magicWords = array(
 $datePreferences = array(
 	'default',
 	'vi normal',
-	'vi longmonth',
+	'vi spelloutmonth',
 	'vi shortcolon',
-	'vi short',
+	'vi shorth',
 	'ISO 8601',
 );
 
@@ -100,20 +95,20 @@ $defaultDateFormat = 'vi normal';
 
 $dateFormats = array(
 	'vi normal time' => 'H:i',
-	'vi normal date' => '"ngày" j M "năm" Y',
-	'vi normal both' => 'H:i, "ngày" j M "năm" Y',
+	'vi normal date' => '"ngày" j "tháng" n "năm" Y',
+	'vi normal both' => 'H:i, "ngày" j "tháng" n "năm" Y',
 
-	'vi longmonth time' => 'H:i',
-	'vi longmonth date' => '"ngày" j F "năm" Y',
-	'vi longmonth both' => 'H:i, "ngày" j F "năm" Y',
+	'vi spelloutmonth time' => 'H:i',
+	'vi spelloutmonth date' => '"ngày" j xg "năm" Y',
+	'vi spelloutmonth both' => 'H:i, "ngày" j xg "năm" Y',
 
 	'vi shortcolon time' => 'H:i',
 	'vi shortcolon date' => 'j/n/Y',
 	'vi shortcolon both' => 'H:i, j/n/Y',
 
-	'vi short time' => 'H"h"i',
-	'vi short date' => 'j/n/Y',
-	'vi short both' => 'H"h"i, j/n/Y',
+	'vi shorth time' => 'H"h"i',
+	'vi shorth date' => 'j/n/Y',
+	'vi shorth both' => 'H"h"i, j/n/Y',
 );
 
 $datePreferenceMigrationMap = array(
@@ -170,18 +165,37 @@ $messages = array(
 'thursday' => 'thứ năm',
 'friday' => 'thứ sáu',
 'saturday' => 'thứ bảy',
-'january'   => 'tháng Một',
-'february'  => 'tháng Hai',
-'march'     => 'tháng Ba',
-'april'     => 'tháng Tư',
-'may_long'  => 'tháng Năm',
-'june'      => 'tháng Sáu',
-'july'      => 'tháng Bảy',
-'august'    => 'tháng Tám',
-'september' => 'tháng Chín',
-'october'   => 'tháng Mười',
-'november'  => 'tháng Mười một',
-'december'  => 'tháng Mười hai',
+'sun' => 'chủ nhật',
+'mon' => 'thứ 2',
+'tue' => 'thứ 3',
+'wed' => 'thứ 4',
+'thu' => 'thứ 5',
+'fri' => 'thứ 6',
+'sat' => 'thứ 7',
+'january' => 'tháng 1',
+'february' => 'tháng 2',
+'march' => 'tháng 3',
+'april' => 'tháng 4',
+'may_long' => 'tháng 5',
+'june' => 'tháng 6',
+'july' => 'tháng 7',
+'august' => 'tháng 8',
+'september' => 'tháng 9',
+'october' => 'tháng 10',
+'november' => 'tháng 11',
+'december' => 'tháng 12',
+'january-gen'   => 'tháng Một',
+'february-gen'  => 'tháng Hai',
+'march-gen'     => 'tháng Ba',
+'april-gen'     => 'tháng Tư',
+'may-gen'  => 'tháng Năm',
+'june-gen'      => 'tháng Sáu',
+'july-gen'      => 'tháng Bảy',
+'august-gen'    => 'tháng Tám',
+'september-gen' => 'tháng Chín',
+'october-gen'   => 'tháng Mười',
+'november-gen'  => 'tháng Mười một',
+'december-gen'  => 'tháng Mười hai',
 'jan' => 'tháng 1',
 'feb' => 'tháng 2',
 'mar' => 'tháng 3',
@@ -466,7 +480,7 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 'editingsection'  => 'Soạn thảo $1',
 'editingcomment'  => 'Soạn thảo $1',
 'editconflict' => 'Sửa đổi mâu thuẫn : $1',
-'explainconflict' => "<b>Trang này có đã được lưu bởi người khác sau khi bạn bắt đầu sửa. Phía trên là bản vừa được lưu. Phía dưới là sửa đổi của bạn. Bạn phải sửa lại từ bản đã lưu.<br />",
+'explainconflict' => "<b>Trang này có đã được lưu bởi người khác sau khi bạn bắt đầu sửa. Phía trên là bản vừa được lưu. Phía dưới là sửa đổi của bạn. Bạn phải sửa lại từ bản đã lưu.</b><br />",
 'yourtext'     => 'Nội dung bạn nhập',
 'storedversion' => 'Phiên bản lưu',
 "editingold"   => "<strong>Chú ý: bạn đang sửa một phiên bản cũ. Nếu bạn lưu, các sửa đổi trên phiên bản mới hơn sẽ mất.</strong>",
@@ -479,7 +493,7 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 *Mọi đóng góp cho {{SITENAME}} đều tuân theo GNU Free Documentation Licence (Xem $1). Nếu bạn không muốn nội dung bạn nhập bị người khác sửa, đừng viết vào đây. <br /><b>KHÔNG LẤY TÀI LIỆU TỪ NGUỒN KHÁC MÀ CHƯA XIN PHÉP!</b>",
 "longpagewarning" => "<strong>Chú ý : Trang này dài $1 kb; nhiều trình duyệt không tải được trang dài hơn 32 kb. Bạn nên chia nhỏ trang này thành nhiều trang.</strong>",
 "readonlywarning" => "<strong>Chú ý : trang này bị khóa để bảo trì. Bạn chỉ có thể sao nội dung để sửa đổi trên máy cá nhân.</strong>",
-"protectedpagewarning" => "<strong>Chú ý : trang này bị khóa. Chỉ có quản lý viên mới sửa được. Chú ý tuân thủ [[{{ns:4}}:Trang_bị_khóa|quy định về trang bị khóa]].<strong>",
+"protectedpagewarning" => "<strong>Chú ý : trang này bị khóa. Chỉ có quản lý viên mới sửa được. Chú ý tuân thủ [[{{ns:4}}:Trang_bị_khóa|quy định về trang bị khóa]].</strong>",
 
 # History pages
 #
@@ -554,6 +568,10 @@ $2 gồm cả trang đổi hướng &nbsp; Tìm $3 $9",
 'prefsnologintext'  => "Bạn phải [[Đặc_biệt:Userlogin|đăng nhập]] để sửa các Lựa chọn cá nhân của bạn.",
 'prefsreset'        => 'Các Lựa chọn cá nhân đã được mặc định lại.',
 'qbsettings'        => 'Các lựa chọn cho thanh công cụ',
+'qbsettings-none'	=> 'Không',
+'qbsettings-fixedleft'	=> 'Trái',
+'qbsettings-fixedright'	=> 'Phải',
+'qbsettings-floatingleft'	=> 'Nổi bên trái',
 'changepassword'    => 'Đổi mật khẩu',
 'skin'              => 'Ngoại hình',
 'math'				=> 'Công thức toán',
@@ -772,6 +790,7 @@ Con số này không bao gồm các trang [[{{ns:4}}:Trang_thảo_luận|thảo 
 # Watchlist
 #
 'watchlist'	=> 'Trang tôi theo dõi',
+'mywatchlist'	=> 'Trang tôi theo dõi',
 'nowatchlist'	=> "Chưa có gì.",
 'watchnologin'	=> 'Chưa đăng nhập',
 'watchnologintext' => "Bạn phải [[Đặc_biệt:Userlogin|đăng nhập]] mới sửa đổi được danh sách theo dõi.",
@@ -877,9 +896,9 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 # Contributions
 'contributions' => 'Đóng góp',
 'mycontris'     => 'Đóng góp của tôi',
-'contribsub'    => "Của $1",
+'contribsub2'    => "Của $1 ($2)",
 'nocontribs'    => 'Không tìm thấy.',
-'ucnote'        => "</b>$1</b> thay đổi mới của người này trong <b>$2</b> ngày qua.",
+'ucnote'        => "<b>$1</b> thay đổi mới của người này trong <b>$2</b> ngày qua.",
 'uclinks'       => "Xem $1 thay đổi mới; xem $2 ngày qua.",
 'uctop'         => '(mới nhất)' ,
 'newbies'       => 'người mới',
@@ -949,21 +968,8 @@ Xin hãy khẳng định đây là điều bạn định làm.',
 <br />Nhớ bỏ khóa sau khi bảo trì xong.',
 'unlockdbsuccesstext' => 'Cơ sở dữ liệu đã được mở khóa.',
 
-# Special:Makesysop
-'makesysoptitle'    => 'Phong một thành viên làm quản lý',
-'makesysoptext'     => 'Mẫu này được các tổng quản lý dùng để phong các thành viên bình thường thành người quản lý.
-Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và nhấn nút.',
-'makesysopname'     => 'Tên thành viên:',
-'makesysopsubmit'   => 'Phong quyền quản lý cho thành viên này',
-'makesysopok'       => "<b>Thành viên \"$1\" đã thành quản lý</b>",
-'makesysopfail'     => "<b>Thành viên \"$1\" không thể trở thành quản lý được. (Liệu bạn có nhập tên đúng không?)</b>",
-'setbureaucratflag' => 'Đặt cờ tổng quản lý',
+# Rights log
 'rightslogtext'     => 'Đây là nhật trình lưu những thay đổi đối với các quyền hạn thành viên.',
-'rights'            => 'Quyền:',
-'set_user_rights'   => 'Đặt quyền hạn cho thành viên',
-'user_rights_set'   => "<b>Quyền hạn thành viên của \"$1\" đã được cập nhật</b>",
-'set_rights_fail'   => "<b>Quyền hạn thành viên của \"$1\" không thể xác lập được. (Liệu bạn có gõ sai tên không?)</b>",'makesysop'         => 'Phong một thành viên làm quản lý',
-
 
 # Spam
 'spamprotectiontitle' => 'Bộ lọc chống thư rác',
@@ -1279,8 +1285,6 @@ Nếu không phải bạn, đừng mở địa chỉ này. Mã xác nhận này 
 'allpagesfrom' => 'Xem trang từ:',
 
 # new stuffs
-'already_bureaucrat' => 'Người này đã là tổng quản lý',
-'already_sysop' => 'Người này đã là quản lý',
 'changed' => 'Đã sửa',
 'compareselectedversions' => 'So sánh các bản đã chọn',
 'createarticle' => 'Viết bài mới',

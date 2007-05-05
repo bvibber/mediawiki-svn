@@ -3,7 +3,7 @@
 Security reminder: MediaWiki does not require PHP's register_globals
 setting since version 1.2.0. If you have it on, turn it *off* if you can.
 
-== MediaWiki 1.10 ==
+== MediaWiki 1.11 ==
 
 THIS IS NOT A RELEASE YET.
 
@@ -12,133 +12,56 @@ quarterly snapshot releases. The latest development code is always kept
 "ready to run", and in fact runs our own sites on Wikipedia.
 
 Release branches will continue to receive security updates for about a year
-from first release, but nonessential bugfixes and feature development happen
+from first release, but nonessential bugfixes and feature developments
 will be made on the development trunk and appear in the next quarterly release.
 
 Those wishing to use the latest code instead of a branch release can obtain
 it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
-== Configuration changes ==
+== Configuration changes since 1.10 ==
 
-=== $wgCommandLineDarkBg ==
 
-A new switch used by maintenance scripts (parserTests.php). It lets you specify
-if your terminal use a dark background, the colorized output will be made
-lighter making things easier to read.
+== New features since 1.10 ==
 
-== Major new features ==
+* (bug 8868) Separate "blocked" message for autoblocks
+* Adding expiry of block to block messages
 
-== Changes since 1.9 ==
+== Bugfixes since 1.10 ==
 
-* (bug 7292) Fix site statistics when moving pages in/out of content namespaces
-* (bug 6937) Introduce "statistics-footer" message, appended to Special:Statistics
-* (bug 8531) Correct local name of Lingála (patch by Raymond)
-* (bug 6638) List block flags in block log entries
-* New script maintenance/language/checkExtensioni18n.php used to check i18n
-  progress in the extension repository.
-* Running maintenance/parserTests.php with '--record' option, will now
-  automatically attempt to create the required tables
-* Made the PLURAL: parser function return singular on -1 per default
-* Fixed up the AjaxSearch
-* (bugs 5051, 5376) Tooltips and accesskeys no longer require JavaScript
-* Added SkinTemplateOutputPageBeforeExec hook before SkinTemplate::outputPage()
-  starts page output (http://lists.wikimedia.org/pipermail/wikitech-l/2007-January/028554.html)
-* Fix SpecialVersion->formatCredits input. Version and Url parameters should be
-  null to be treated properly with isset.
-* Page restrictions moved into a new, dedicated table
-* Introduce "cascading protection" -- implicit protection on pages transcluded
-  into a page protected with this option enabled
-* The minimum permissions needed to edit a page in each namespace can now be 
-  customized via the $wgNamespaceProtection array. By default, editing pages in
-  the MediaWiki namespace requires "editinterface" permission, as before.
-* (bug 8567) Added hook RawPageViewBeforeOutput just before the text is blown
-  out in action=raw, so extensions might influence the output.
-* Correct tooltip accesskey hint for Opera on the Macintosh
-  (uses Shift-Esc-, not Ctrl-).
-* (bug 3446) Add user preference to hide page content below diffs, can be
-  overridden by adding diffonly=1 or diffonly=0 to the URL of the diff page
-* (bug 8002) Math should render left-to-right even in right-to-left wikis
-* Pass e-mail and real name fields to AuthPlugin::addUser, as additional
-  optional fields, which may be considered useful at registration time.
-* PostgreSQL upgrade scripts fixed and updated
-* (bug 8613) Fix error when viewing "Recent Changes" and using Postgres.
-* Initialise site_stats table at upgrade time if data was missing
-* (bug 7250) Updated Unicode normalization tables to Unicode 5.0
-* Add 'purge' privilege to replace the hardcoded check for login state in
-  determining whether action=purge can be done via GET. Switching the
-  permission on for anons can be helpful for benchmarking.
-* Unmaintained Oracle support files have been removed.
-* Made Linker::userToolLinks() show the contribs link red when the user has
-  zero edits
-* Use browser default for printing size, don't force to 11pt
-* (bug 8632) Fix regression in page protection null edit update
-* (bug 7842) Link back to deleted revision list from deleted revision preview
-* (bug 8619) Add user-aware "unblock" link to Special:Blockip
-* (bug 8407) Disallow indexing of "printable" versions
-* (bug 8522) Provide a "delete" link on Special:Brokenredirects for users with
-  the appropriate permission
-* (bug 8628) Add user-aware block list link to Special:Blockip
-* (bug 8643) Correctly escape the page-specific CSS class for non-Monobook skins
-* (bug 8629) Document $wgFilterCallback
-* (bug 1000) Clarify warning about memory_limit in installer
-* Suppress PHP warning about set_time_limit in installer when safe mode is on
-* (bug 3000) Fall back to SCRIPT_NAME plus QUERY_STRING when REQUEST_URI is
-  not available, as on IIS with PHP-CGI
-* (bug 8621) Log revisions marked as patrolled
-* Introduce "BookInformation" hook; see docs/hooks.txt for more details
-* Missing interwiki row for English Wikipedia restored (as "wikipedia:")
-* use configured cache servers for mctest.php
-* bucket details in mcc.php
-* fix input validation and remove debugging code in compressOld
-* full ID range for moveToExternal
-* fix resolveStubs.php for compatibility with older serialized data
-* maximum line length for bar graphs in getLagTimes.php
-* recognize specieswiki in rebuildInterwiki.inc
-* --purge option to do additional parser-cache purging for purgeList.php
-* profile unicode cleanup in Xml
-* log slow parses in Article.php
-* profile wfMsgReal
-* log mkdir failures
-* profile AutoLoader
-* rebuild empty DjVu metadata containing ''
-* security fix for DjVu metadata retrieval
-* Add title prefix search for Special:Undelete
-* Remove full-archive list from Special:Undelete
-* Undelete page list can use plural marker
-* (bug 8638) Fix update from 1.4 and earlier
-* Allow restriction of autoconfirmed permission by edit count. New global setting
-  $wgAutoConfirmCount (defaulting to zero, naturally).
-* (bug 8641) Fix order of updates to ipblocks table
-* (bug 8678) Fix detection of self-links for numeric titles in Parser
-* (bug 6171) Magically close tags in tables when not using Tidy.
-* Fix hardcoded background color in parserTests.php
-* parserTests.php : removed the 'light' option for --color argument, replacing
-  it with a new global switch : $wgCommandLineDarkBg
-* Sanitizer now correctly escapes lonely '>' occurring before the first wikitag.
-* Ignore self closing on closing tags ( '</div />' now gives '</div>') 
-* (bug 8673) Minor fix for web service API content-type header
-* Fix API revision list on PHP 5.2.1; bad reference assignment
-* (bug 8136) Introduce 'ArticleUndelete' hook; see docs/hooks.txt for more info
-* (bug 8688) Handle underscores/spaces in Special:Blockip and Special:Ipblocklist
-  in a consistent manner
+* (bug 9712) Use Arabic comma in date/time formats for Arabic and Farsi
+* (bug 9670) Follow redirects when render edit section links to transcluded
+  templates.
+* (bug 6204) Fix incorrect unindentation with $wgMaxTocLevel
+* (bug 3431) Special:Search: dont show 'next link' when there is nothing else
 
-== Languages updated ==
+== Maintenance script changes since 1.10 ==
 
-* Belarusian (be)
-* Breton (br)
+* Add support for wgMaxTocLevel option in parserTests
+
+
+== Languages updated since 1.10 ==
+
+* Arabic (ar)
+* German (de)
+* Farsi (fa)
 * Finnish (fi)
 * French (fr)
-* German (de)
 * Hebrew (he)
 * Indonesian (id)
+* Italian (it)
+* Japanese (ja)
+* Kazakh (kk)
 * Lithuanian (lt)
+* Norwegian (no)
 * Polish (pl)
-* Sicilian (scn)
-* Swedish (sv)
+* Somali (so)
+* Chinese (PRC) (zh-cn)
+* Chinese (Taiwan) (zh-tw)
+* Cantonese (zh-yue)
 
 == Compatibility ==
 
-MediaWiki 1.10 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
+MediaWiki 1.11 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
 
 PHP 5.0.x fails on 64-bit systems due to serious bugs with array processing:
 http://bugs.php.net/bug.php?id=34879
@@ -150,21 +73,17 @@ At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
 
 == Upgrading ==
 
-Some minor database changes have been made since 1.7:
-* new fields and indexes on ipblocks
-* index change on recentchanges
+1.11 has several database changes since 1.10, and will not work without schema
+updates.
 
-Several changes from 1.5 and 1.6 do require updates to be run on upgrade.
-To ensure that these tables are filled with data, run refreshLinks.php after
-the upgrade.
+If upgrading from before 1.7, you may want to run refreshLinks.php to ensure
+new database fields are filled with data.
 
 If you are upgrading from MediaWiki 1.4.x or earlier, some major database
 changes are made, and there is a slightly higher chance that things could
 break. Don't forget to always back up your database before upgrading!
 
 See the file UPGRADE for more detailed upgrade instructions.
-
-
 
 === Caveats ===
 
@@ -175,14 +94,15 @@ cases, but this is not recommended on live sites. (This must be set for
 MathML to display properly in Mozilla.)
 
 
-For notes on 1.9.x and older releases, see HISTORY.
+For notes on 1.10.x and older releases, see HISTORY.
 
 
 === Online documentation ===
 
 Documentation for both end-users and site administrators is currently being
-built up on Meta-Wikipedia, and is covered under the GNU Free Documentation
-License:
+built up on MediaWiki.org, and is covered under the GNU Free Documentation
+License (except for pages that explicitly state that their contents are in
+the public domain) :
 
   http://www.mediawiki.org/wiki/Documentation
 

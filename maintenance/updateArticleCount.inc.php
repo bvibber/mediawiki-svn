@@ -3,8 +3,7 @@
 /**
  * Support class for the updateArticleCount.php maintenance script
  *
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  * @author Rob Church <robchur@gmail.com>
  */
 
@@ -16,7 +15,7 @@ class ArticleCounter {
 	function ArticleCounter() {
 		global $wgContentNamespaces;
 		$this->namespaces = $wgContentNamespaces;
-		$this->dbr =& wfGetDB( DB_SLAVE );
+		$this->dbr = wfGetDB( DB_SLAVE );
 	}
 	
 	/**

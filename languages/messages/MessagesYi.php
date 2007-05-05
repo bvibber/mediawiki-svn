@@ -1,8 +1,7 @@
 <?php
 /** Yiddish (ייִדיש)
   *
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
   */
 $fallback = 'he';
 
@@ -47,10 +46,10 @@ $defaultUserOptionOverrides = array(
 
 /**
  * Magic words.
- * Disabling the Hebrew ones.
+ * Disabling the Hebrew aliases, adding a Yiddish alias for #REDIRECT.
  */
 $magicWords = array(
-	'redirect'               => array( 0,    '#REDIRECT'              ),
+	'redirect'               => array( 0,    '#ווייטערפירן', '#REDIRECT'              ),
 	'notoc'                  => array( 0,    '__NOTOC__'              ),
 	'nogallery'              => array( 0,    '__NOGALLERY__'          ),
 	'forcetoc'               => array( 0,    '__FORCETOC__'           ),
@@ -411,6 +410,7 @@ Legend: (cur) = difference with current version,
 'emailmessage'          => 'מעלדונג',
 'emailsend'             => 'שיקן',
 'watchlist'             => 'אַכטונגע ליסט',
+'mywatchlist'             => 'אַכטונגע ליסט',
 'addedwatch'            => 'צוגעלייגט געוואָרן צום "אַכטונגע ליסט"',
 'addedwatchtext'        => 'דער אַרטיקל "[[:$1]]" איז צוגעלײגט געוואָרן צו דײַן [[{{ns:Special}}:Watchlist|אַכטונגע ליסט]].
 
@@ -570,7 +570,6 @@ make it easier to pick out.
 'accesskey-ca-nstab-help' => 'c',
 'tooltip-ca-nstab-help' => 'באזוכט די הילף בלעטער',
 'accesskey-ca-nstab-category' => 'c',
-'tooltip-ca-nstab-category' => '];',
 'previousdiff'          => 'פריעריגע אונטערשייד →',
 'nextdiff'              => 'קומענדיקע אונטערשייד ←',
 'newimages'             => 'גאַלעריע אויף נײַע בילדער',

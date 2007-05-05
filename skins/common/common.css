@@ -125,7 +125,11 @@ td.diff-context {
     background:#eeeeee;
     font-size: 94%;
 }
-span.diffchange { color: red; font-weight: bold; }
+.diffchange {
+	color: red;
+	font-weight: bold;
+	text-decoration: none;
+}
 
 img { border: none; }
 img.tex { vertical-align: middle; }
@@ -277,7 +281,7 @@ table.gallery {
 }
 
 table.gallery tr {
-        vertical-align:top;
+    vertical-align:top;
 }
 
 table.gallery td {
@@ -401,8 +405,12 @@ table.collapsed tr.collapsable {
   display: none;
 }
 
+/* Keep this temporarily so that cached pages will display right */
 table.gallery td.galleryheader {
-	text-align: center;
+    text-align: center;
+	font-weight: bold;
+}
+table.gallery caption {
 	font-weight: bold;
 }
 
@@ -463,6 +471,24 @@ p.mw-ipb-conveniencelinks {
  * Here is some stuff that's ACTUALLY COMMON TO ALL SKINS.
  * When the day comes, it can be moved to a *real* common.css.
  */
-#toolbar { clear: both; }
 .mw-plusminus-null { color: #aaa; }
 .texvc { direction: ltr; unicode-bidi: embed; }
+/* Stop floats from intruding into edit area in previews */
+#toolbar, #wpTextbox1 { clear: both; }
+
+/*
+#file img, .gallerybox .thumb img {
+	background: url(images/Checker-16x16.png) repeat;
+}
+*/
+.MediaTransformError {
+	border: thin solid #777;
+	background-color: #ccc;
+	padding: 0.1em;
+}
+.MediaTransformError td {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 90%;
+}
+

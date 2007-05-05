@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -11,7 +10,7 @@
 function wfSpecialUserlogin() {
 	global $wgCommandLineMode;
 	global $wgRequest;
-	if( !$wgCommandLineMode && !isset( $_COOKIE[session_name()] )  ) {
+	if( session_id() == '' ) {
 		wfSetupSession();
 	}
 
@@ -20,11 +19,9 @@ function wfSpecialUserlogin() {
 }
 
 /**
- *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * implements Special:Login
+ * @addtogroup SpecialPage
  */
-
 class LoginForm {
 
 	const SUCCESS = 0;
@@ -42,7 +39,7 @@ class LoginForm {
 
 	/**
 	 * Constructor
-	 * @param webrequest $request A webrequest object passed by reference
+	 * @param WebRequest $request A WebRequest object passed by reference
 	 */
 	function LoginForm( &$request ) {
 		global $wgLang, $wgAllowRealName, $wgEnableEmail;
@@ -231,6 +228,7 @@ class LoginForm {
 			return false;
 		}
 
+		# Check anonymous user ($wgUser) limitations :
 		if (!$wgUser->isAllowedToCreateAccount()) {
 			$this->userNotPrivilegedMessage();
 			return false;
@@ -244,6 +242,7 @@ class LoginForm {
 			return;
 		}
 
+		# Now create a dummy user ($u) and check if it is valid
 		$name = trim( $this->mName );
 		$u = User::newFromName( $name, 'creatable' );
 		if ( is_null( $u ) ) {
@@ -261,7 +260,7 @@ class LoginForm {
 			return false;
 		}
 
-		if ( !$wgUser->isValidPassword( $this->mPassword ) ) {
+		if ( !$u->isValidPassword( $this->mPassword ) ) {
 			$this->mainLoginForm( wfMsg( 'passwordtooshort', $wgMinimalPasswordLength ) );
 			return false;
 		}
@@ -274,7 +273,7 @@ class LoginForm {
 			return false;
 		}
 
-		if ( $wgAccountCreationThrottle ) {
+		if ( $wgAccountCreationThrottle && $wgUser->isPingLimitable() ) {
 			$key = wfMemcKey( 'acctcreate', 'ip', $ip );
 			$value = $wgMemc->incr( $key );
 			if ( !$value ) {
@@ -291,10 +290,6 @@ class LoginForm {
 			return false;
 		}
 
-		# Update user count
-		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
-		$ssUpdate->doUpdate();
-
 		return $this->initUser( $u );
 	}
 
@@ -307,17 +302,26 @@ class LoginForm {
 	 * @private
 	 */
 	function initUser( $u ) {
+		global $wgAuth;
+
 		$u->addToDatabase();
-		$u->setPassword( $this->mPassword );
+
+		if ( $wgAuth->allowPasswordChange() ) {
+			$u->setPassword( $this->mPassword );
+		}
+
 		$u->setEmail( $this->mEmail );
 		$u->setRealName( $this->mRealName );
 		$u->setToken();
 
-		global $wgAuth;
 		$wgAuth->initUser( $u );
 
 		$u->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
 		$u->saveSettings();
+
+		# Update user count
+		$ssUpdate = new SiteStatsUpdate( 0, 0, 0, 0, 1 );
+		$ssUpdate->doUpdate();
 
 		return $u;
 	}
@@ -709,11 +713,17 @@ class LoginForm {
 	}
 
 	/**
+	 * Check if a session cookie is present.
+	 *
+	 * This will not pick up a cookie set during _this_ request, but is
+	 * meant to ensure that the client is returning the cookie which was
+	 * set on a previous pass through the system.
+	 *
 	 * @private
 	 */
 	function hasSessionCookie() {
-		global $wgDisableCookieCheck;
-		return ( $wgDisableCookieCheck ) ? true : ( isset( $_COOKIE[session_name()] ) );
+		global $wgDisableCookieCheck, $wgRequest;
+		return $wgDisableCookieCheck ? true : $wgRequest->checkSessionCookie();
 	}
 
 	/**
@@ -794,7 +804,7 @@ class LoginForm {
 			$attr[] = 'type=signup';
 		if( $this->mReturnTo )
 			$attr[] = 'returnto=' . $this->mReturnTo;
-		$skin =& $wgUser->getSkin();
+		$skin = $wgUser->getSkin();
 		return $skin->makeKnownLinkObj( $self, htmlspecialchars( $text ), implode( '&', $attr ) );
 	}
 }

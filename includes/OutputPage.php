@@ -2,12 +2,10 @@
 if ( ! defined( 'MEDIAWIKI' ) )
 	die( 1 );
 /**
- * @package MediaWiki
  */
 
 /**
  * @todo document
- * @package MediaWiki
  */
 class OutputPage {
 	var $mMetatags, $mKeywords;
@@ -34,7 +32,7 @@ class OutputPage {
 	 * Constructor
 	 * Initialise private variables
 	 */
-	function OutputPage() {
+	function __construct() {
 		$this->mMetatags = $this->mKeywords = $this->mLinktags = array();
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
 		$this->mRedirect = $this->mLastModified =
@@ -49,6 +47,7 @@ class OutputPage {
 		$this->mParserOptions = null;
 		$this->mSquidMaxage = 0;
 		$this->mScripts = '';
+		$this->mHeadItems = array();
 		$this->mETag = false;
 		$this->mRevisionId = null;
 		$this->mNewSectionLink = false;
@@ -71,7 +70,7 @@ class OutputPage {
 	# To add an http-equiv meta tag, precede the name with "http:"
 	function addMeta( $name, $val ) { array_push( $this->mMetatags, array( $name, $val ) ); }
 	function addKeyword( $text ) { array_push( $this->mKeywords, $text ); }
-	function addScript( $script ) { $this->mScripts .= $script; }
+	function addScript( $script ) { $this->mScripts .= "\t\t".$script; }
 
 	/**
 	 * Add a self-contained script tag with the given contents
@@ -79,10 +78,24 @@ class OutputPage {
 	 */
 	function addInlineScript( $script ) {
 		global $wgJsMimeType;
-		$this->mScripts .= "<script type=\"$wgJsMimeType\"><!--\n$script\n--></script>";
+		$this->mScripts .= "<script type=\"$wgJsMimeType\">/*<![CDATA[*/\n$script\n/*]]>*/</script>";
 	}
 
-	function getScript() { return $this->mScripts; }
+	function getScript() { 
+		return $this->mScripts . $this->getHeadItems(); 
+	}
+
+	function getHeadItems() {
+		$s = '';
+		foreach ( $this->mHeadItems as $item ) {
+			$s .= $item;
+		}
+		return $s;
+	}
+
+	function addHeadItem( $name, $value ) {
+		$this->mHeadItems[$name] = $value;
+	}
 
 	function setETag($tag) { $this->mETag = $tag; }
 	function setArticleBodyOnly($only) { $this->mArticleBodyOnly = $only; }
@@ -254,7 +267,7 @@ class OutputPage {
 		$lb->setArray( $arr );
 		$lb->execute();
 
-		$sk =& $wgUser->getSkin();
+		$sk = $wgUser->getSkin();
 		foreach ( $categories as $category => $unused ) {
 			$title = Title::makeTitleSafe( NS_CATEGORY, $category );
 			$text = $wgContLang->convertHtml( $title->getText() );
@@ -357,6 +370,7 @@ class OutputPage {
 			$this->mSubtitle .= $parserOutput->mSubtitle ;
 		}
 		$this->mNoGallery = $parserOutput->getNoGallery();
+		$this->mHeadItems = array_merge( $this->mHeadItems, (array)$parserOutput->mHeadItems );
 		wfRunHooks( 'OutputPageParserOutput', array( &$this, $parserOutput ) );
 	}
 
@@ -491,7 +505,7 @@ class OutputPage {
 		# maintain different caches for logged-in users and non-logged in ones
 		$wgRequest->response()->header( 'Vary: Accept-Encoding, Cookie' );
 		if( !$this->uncacheableBecauseRequestvars() && $this->mEnableClientCache ) {
-			if( $wgUseSquid && ! isset( $_COOKIE[ini_get( 'session.name') ] ) &&
+			if( $wgUseSquid && session_id() == '' &&
 			  ! $this->isPrintable() && $this->mSquidMaxage != 0 )
 			{
 				if ( $wgUseESI ) {
@@ -551,13 +565,16 @@ class OutputPage {
 
 		if ( $wgUseAjax ) {
 			$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajax.js?$wgStyleVersion\"></script>\n" );
+
+			wfRunHooks( 'AjaxAddScript', array( &$this ) );
+
 			if( $wgAjaxSearch ) {
-				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxsearch.js\"></script>\n" );
+				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxsearch.js?$wgStyleVersion\"></script>\n" );
 				$this->addScript( "<script type=\"{$wgJsMimeType}\">hookEvent(\"load\", sajax_onload);</script>\n" );
 			}
 
 			if( $wgAjaxWatch && $wgUser->isLoggedIn() ) {
-				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxwatch.js\"></script>\n" );
+				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxwatch.js?$wgStyleVersion\"></script>\n" );
 			}
 		}
 
@@ -576,6 +593,7 @@ class OutputPage {
 
 			$this->sendCacheControl();
 
+			$wgRequest->response()->header("Content-Type: text/html; charset=utf-8");
 			if( $wgDebugRedirects ) {
 				$url = htmlspecialchars( $this->mRedirect );
 				print "<html>\n<head>\n<title>Redirect</title>\n</head>\n<body>\n";
@@ -712,7 +730,7 @@ class OutputPage {
 	 * @return nothing
 	 */
 	function blockedPage( $return = true ) {
-		global $wgUser, $wgContLang, $wgTitle;
+		global $wgUser, $wgContLang, $wgTitle, $wgLang;
 
 		$this->setPageTitle( wfMsg( 'blockedtitle' ) );
 		$this->setRobotpolicy( 'noindex,nofollow' );
@@ -731,7 +749,31 @@ class OutputPage {
 
 		$blockid = $wgUser->mBlock->mId;
 
-		$this->addWikiText( wfMsg( 'blockedtext', $link, $reason, $ip, $name, $blockid ) );
+		$blockExpiry = $wgUser->mBlock->mExpiry;
+		if ( $blockExpiry == 'infinity' ) {
+			// Entry in database (table ipblocks) is 'infinity' but 'ipboptions' uses 'infinite' or 'indefinite'
+			// Search for localization in 'ipboptions'
+			$scBlockExpiryOptions = wfMsg( 'ipboptions' );
+			foreach ( explode( ',', $scBlockExpiryOptions ) as $option ) {
+				if ( strpos( $option, ":" ) === false )
+					continue;
+				list( $show, $value ) = explode( ":", $option );
+				if ( $value == 'infinite' || $value == 'indefinite' ) {
+					$blockExpiry = $show;
+					break;
+				}
+			}
+		} else {
+			$blockExpiry = $wgLang->timeanddate( wfTimestamp( TS_MW, $blockExpiry ), true );
+		}
+
+		if ( $wgUser->mBlock->mAuto ) {
+			$msg = 'autoblockedtext';
+		} else {
+			$msg = 'blockedtext';
+		}
+
+		$this->addWikiText( wfMsg( $msg, $link, $reason, $ip, $name, $blockid, $blockExpiry ) );
 		
 		# Don't auto-return to special pages
 		if( $return ) {
@@ -764,7 +806,7 @@ class OutputPage {
 		$this->returnToMain( false );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function errorpage( $title, $msg ) {
 		throw new ErrorPageError( $title, $msg );
 	}
@@ -806,10 +848,10 @@ class OutputPage {
 				$groupName = User::getGroupName( $key );
 				$groupPage = User::getGroupPage( $key );
 				if( $groupPage ) {
-					$skin =& $wgUser->getSkin();
-					$groups[] = '"'.$skin->makeLinkObj( $groupPage, $groupName ).'"';
+					$skin = $wgUser->getSkin();
+					$groups[] = $skin->makeLinkObj( $groupPage, $groupName );
 				} else {
-					$groups[] = '"'.$groupName.'"';
+					$groups[] = $groupName;
 				}
 			}
 		}
@@ -874,7 +916,7 @@ class OutputPage {
 			$this->returnToMain( true, $mainPage );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function databaseError( $fname, $sql, $error, $errno ) {
 		throw new MWException( "OutputPage::databaseError is obsolete\n" );
 	}
@@ -895,7 +937,7 @@ class OutputPage {
 			$this->setPageTitle( wfMsg( 'viewsource' ) );
 			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
 
-			$cascadeSources = $wgTitle->getCascadeProtectionSources();
+			list( $cascadeSources, $restrictions ) = $wgTitle->getCascadeProtectionSources();
 
 			# Determine if protection is due to the page being a system message
 			# and show an appropriate explanation
@@ -908,7 +950,7 @@ class OutputPage {
 					$titles .= '* [[:' . $title->getPrefixedText() . "]]\n";
 				}
 
-				$notice = wfMsg( 'cascadeprotected' ) . "\n$titles";
+				$notice = wfMsgExt( 'cascadeprotected', array('parsemag'), count($cascadeSources) ) . "\n$titles";
 
 				$this->addWikiText( $notice );
 			} else {
@@ -938,32 +980,32 @@ class OutputPage {
 		$this->returnToMain( false );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fatalError( $message ) {
 		throw new FatalError( $message ); 
 	}
 	
-	/** @obsolete */
+	/** @deprecated */
 	public function unexpectedValueError( $name, $val ) {
 		throw new FatalError( wfMsg( 'unexpected', $name, $val ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileCopyError( $old, $new ) {
 		throw new FatalError( wfMsg( 'filecopyerror', $old, $new ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileRenameError( $old, $new ) {
 		throw new FatalError( wfMsg( 'filerenameerror', $old, $new ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileDeleteError( $name ) {
 		throw new FatalError( wfMsg( 'filedeleteerror', $name ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileNotFoundError( $name ) {
 		throw new FatalError( wfMsg( 'filenotfound', $name ) );
 	}
@@ -1099,6 +1141,7 @@ class OutputPage {
 		$ret .= $sk->getHeadScripts();
 		$ret .= $this->mScripts;
 		$ret .= $sk->getUserStyles();
+		$ret .= $this->getHeadItems();
 
 		if ($wgUseTrackbacks && $this->isArticleRelated())
 			$ret .= $wgTitle->trackbackRDF();
@@ -1135,11 +1178,11 @@ class OutputPage {
 				"/<.*?>/" => '',
 				"/_/" => ' '
 			);
-			$ret .= "<meta name=\"keywords\" content=\"" .
+			$ret .= "\t\t<meta name=\"keywords\" content=\"" .
 			  htmlspecialchars(preg_replace(array_keys($strip), array_values($strip),implode( ",", $this->mKeywords ))) . "\" />\n";
 		}
 		foreach ( $this->mLinktags as $tag ) {
-			$ret .= '<link';
+			$ret .= "\t\t<link";
 			foreach( $tag as $attr => $val ) {
 				$ret .= " $attr=\"" . htmlspecialchars( $val ) . "\"";
 			}

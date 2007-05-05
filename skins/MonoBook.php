@@ -6,8 +6,7 @@
  * dependency on PHPTAL.
  *
  * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @addtogroup Skins
  */
 
 if( !defined( 'MEDIAWIKI' ) )
@@ -19,8 +18,7 @@ require_once('includes/SkinTemplate.php');
 /**
  * Inherit main code from SkinTemplate, set the CSS and template filter.
  * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @addtogroup Skins
  */
 class SkinMonoBook extends SkinTemplate {
 	/** Using monobook. */
@@ -34,8 +32,7 @@ class SkinMonoBook extends SkinTemplate {
 
 /**
  * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @addtogroup Skins
  */
 class MonoBookTemplate extends QuickTemplate {
 	/**
@@ -92,7 +89,7 @@ class MonoBookTemplate extends QuickTemplate {
 <?php	}
 		if($this->data['trackbackhtml']) print $this->data['trackbackhtml']; ?>
 		<!-- Head Scripts -->
-		<?php $this->html('headscripts') ?>
+<?php $this->html('headscripts') ?>
 	</head>
 <body <?php if($this->data['body_ondblclick']) { ?>ondblclick="<?php $this->text('body_ondblclick') ?>"<?php } ?>
 <?php if($this->data['body_onload'    ]) { ?>onload="<?php     $this->text('body_onload')     ?>"<?php } ?>

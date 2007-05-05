@@ -2,13 +2,8 @@
 /**
  * Walloon (Walon)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
-
-$quickbarSettings = array(
-	"Nole bår", "Aclawêye a hintche", "Aclawêye a droete", "Flotante a hintche", "Flotante a droete"
-);
 
 # lists "no preferences", normall (long) walloon date,
 # short walloon date, and ISO format
@@ -344,7 +339,7 @@ Vosse conte a stî ahivé.
 'remembermypassword' => 'Rimimbrer m\' sicret inte les sessions.',
 'yourdomainname' => 'Vosse dominne',
 'loginproblem' => '<b>Åk n\' a nén stî tot vs elodjant.</b><br />Rissayîz s\' i vs plait!',
-'alreadyloggedin' => '<span style="color:#ff0000"><strong>Uzeu $1, vos estoz ddja elodjî!</strong></span><br />',
+'alreadyloggedin' => '<strong>Uzeu $1, vos estoz ddja elodjî!</strong><br />',
 
 'login' => 'S\' elodjî',
 'loginprompt' => 'Vos dvoz permete les coûkes po vs elodjî so {{SITENAME}}.',
@@ -538,12 +533,6 @@ des candjmints, seulmint les uzeus avou èn accès di manaedjeu el polèt candj�
 Acertinez vs ki vos shuvoz les [[{{ns:project}}:Pådje_protedjeye|rîles po les pådjes protedjeyes]].</strong>',
 'semiprotectedpagewarning' => '\'\'\'Note:\'\'\' cisse pådje ci a stî protedjeye po k\' seulmint les uzeus edjîstrés el polexhe candjî.',
 'templatesused' => 'Modeles eployîs e cisse pådje ci:',
-'edittools' => '<div id="editpage-specialchars" class="plainlinks" style="margin-top:1px; border-width:1px; border-style:solid; border-color:#aaaaaa; padding:2px;">
-<small>Ahessåvès letes (clitchîz po les taper):
-<charinsert>Å å Ç ç É é Ê ê È è Î î Ô ô Û û</charinsert> ·
-<charinsert>«+» [+] [[+]] {{+}} </charinsert> ·
-<charinsert>– — ~ | € ° º</charinsert>
-</small></div>',
 'nocreatetitle' => 'Ahivaedje di pådjes limité',
 'nocreatetext' => 'Cisse waibe ci a limité l\' possibilité d\' ahiver des novelès pådjes. Vos ploz rivni en erî eyet candjî ene pådje k\' egzistêye dedja, oudonbén, [[{{ns:special}}:Userlogin|vos elodjî ou ahiver on conte d\' uzeu]].',
 
@@ -651,6 +640,11 @@ Rissayîz avou ene ôte tchinne di cweraedje.',
 'prefsnologintext' => 'I vs fåt esse [[{{ns:special}}:Userlogin|elodjî]] po pleur candjî vos preferinces.',
 'prefsreset' => 'Les preferinces ont stî rmetowes come d\' avance a pårti des wårdêyès valixhances.',
 'qbsettings' => 'Apontiaedjes pol bår di menu',
+'qbsettings-none'	=> 'Nole bår',
+'qbsettings-fixedleft'	=> 'Aclawêye a hintche',
+'qbsettings-fixedright'	=> 'Aclawêye a droete',
+'qbsettings-floatingleft'	=> 'Flotante a hintche',
+'qbsettings-floatingright'	=> 'Flotante a droete',
 'changepassword' => 'Candjî l\' sicret',
 'skin' => 'Pea',
 'math' => 'Formules matematikes',
@@ -996,6 +990,7 @@ Do côp, c\' est nén possibe di lyi evoyî èn emile.',
 # Watchlist
 #
 'watchlist' => 'Pådjes shuvowes',
+'mywatchlist' => 'Pådjes shuvowes',
 'nowatchlist' => 'Vosse djivêye des pådjes a shuve est vude.',
 'watchlistcount' => '\'\'\'Vos avoz $1 cayets dins vosse djivêye des shuvous, tot contant les pådjes di copene.\'\'\'',
 'clearwatchlist' => 'Netyî l\' djivêye des shuvous',
@@ -1159,9 +1154,9 @@ ni pout esse veyou ki des manaedjeus.',
 'undeletedarticle' => 'a rapexhî l\' pådje «[[$1]]»',
 # NOTE: Messages.php n' eploye nén PLURAL
 'undeletedrevisions' => '{{PLURAL:$1|ene modêye di rapexheye|$1 modêyes di rapexheyes}}',
-'undeletedpage' => '<big>\'\'\'Li pådje $1 a stî rapexheye.\'\'\'
+'undeletedpage' => '<big>\'\'\'Li pådje $1 a stî rapexheye.\'\'\'</big>
 
-Loukîz l\' [[{{ns:special}}:Log/delete|djournå des disfaçaedjes]] po ene djivêye des dierins disfaçaedjes eyet rapexhaedjes.',
+Loukîz l\' [[Special:Log/delete|djournå des disfaçaedjes]] po ene djivêye des dierins disfaçaedjes eyet rapexhaedjes.',
 
 # Namespace form on various pages
 'namespace' => 'Espåce di lomaedje:',
@@ -1171,7 +1166,7 @@ Loukîz l\' [[{{ns:special}}:Log/delete|djournå des disfaçaedjes]] po ene djiv
 #
 'contributions' => 'Ovraedjes di l\' uzeu',
 'mycontris' => 'Mi ovraedje',
-'contribsub' => 'Po l\' uzeu $1',
+'contribsub2' => 'Po l\' uzeu $1 ($2)',
 'nocontribs' => 'Nou candjmint di trové ki corespondreut a ç\' critere la.',
 'ucnote' => 'Chal pa dzo les <b>$1</b> dierins candjmints di l\' uzeu so les <b>$2</b> dierins djoûs.',
 'uclinks' => 'Vey les $1 dierins candjmints; vey les $2 dierins djoûs.',

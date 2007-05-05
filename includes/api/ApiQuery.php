@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Created on Sep 7, 2006
  *
@@ -29,6 +28,9 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiBase.php');
 }
 
+/**
+ * @addtogroup API
+ */
 class ApiQuery extends ApiBase {
 
 	private $mPropModuleNames, $mListModuleNames, $mMetaModuleNames;
@@ -79,10 +81,10 @@ class ApiQuery extends ApiBase {
 		$this->mAllowedGenerators = array_merge($this->mListModuleNames, $this->mPropModuleNames);
 	}
 
-	public function & getDB() {
+	public function getDB() {
 		if (!isset ($this->mSlaveDB)) {
 			$this->profileDBIn();
-			$this->mSlaveDB = & wfGetDB(DB_SLAVE);
+			$this->mSlaveDB = wfGetDB(DB_SLAVE);
 			$this->profileDBOut();
 		}
 		return $this->mSlaveDB;

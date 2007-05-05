@@ -2,8 +2,7 @@
 /**
  * Handle messages in the language files.
  *
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 require_once( 'messageTypes.inc' );
@@ -245,6 +244,25 @@ class languages {
 			}
 		}
 		return $messagesWithoutVariables;
+	}
+
+	/**
+	 * Get the messages which do not use plural.
+	 *
+	 * @param $code The langauge code.
+	 *
+	 * @return The messages which do not use plural in this language.
+	 */
+	public function getMessagesWithoutPlural( $code ) {
+		$this->loadGeneralMessages();
+		$this->loadMessages( $code );
+		$messagesWithoutPlural = array();
+		foreach ( $this->mMessages[$code]['translated'] as $key => $value ) {
+			if ( stripos( $this->mGeneralMessages['translatable'][$key], '{{plural:' ) !== false && stripos( $value, '{{plural:' ) === false ) {
+				$messagesWithoutPlural[$key] = $value;
+			}
+		}
+		return $messagesWithoutPlural;
 	}
 
 	/**

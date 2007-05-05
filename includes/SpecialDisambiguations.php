@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 class DisambiguationsPage extends PageQueryPage {
@@ -21,7 +20,7 @@ class DisambiguationsPage extends PageQueryPage {
 	}
 
 	function getSQL() {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		$dMsgText = wfMsgForContent('disambiguationspage');
 
