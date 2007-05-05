@@ -72,10 +72,11 @@ $wgNewFields = array(
 	array( 'archive',		'ar_deleted',		'patch-ar_deleted.sql' ),
 	array( 'ipblocks',		'ipb_deleted',		'patch-ipb_deleted.sql' ),
 	array( 'filearchive',	'fa_deleted',		'patch-fa_deleted.sql' ),
+	array( 'revision',	    'rev_len',          'patch-rev_len.sql' ),
+	array( 'archive',	    'ar_len',           'patch-ar_len.sql' ),
+ 	array( 'revision',	    'rev_parent_id',    'patch-rev_parent_id.sql' ),
 	array( 'page_restrictions', 'pr_id',		'patch-page_restrictions_sortkey.sql' ),
-	array( 'revision',	'rev_len',              'patch-rev_len.sql' ),
-	array( 'archive',	'ar_len',               'patch-ar_len.sql' ),
- 	array( 'revision',	'rev_parent_id',        'patch-rev_parent_id.sql' ),
+	array( 'oldimage', 		'oi_metadata',		'patch-oi_metadata.sql' ),
 );
 
 function rename_table( $from, $to, $patch ) {
@@ -173,7 +174,7 @@ function do_index_update() {
 	# Check that proper indexes are in place
 	global $wgDatabase;
 	$meta = $wgDatabase->fieldInfo( "recentchanges", "rc_timestamp" );
-	if( $meta->multiple_key == 0 ) {
+	if( !$meta->isMultipleKey() ) {
 		echo "Updating indexes to 20031107: ";
 		dbsource( archive("patch-indexes.sql") );
 		echo "ok\n";
@@ -187,7 +188,7 @@ function do_image_index_update() {
 	global $wgDatabase;
 
 	$meta = $wgDatabase->fieldInfo( "image", "img_major_mime" );
-	if( $meta->multiple_key == 0 ) {
+	if( !$meta->isMultipleKey() ) {
 		echo "Updating indexes to 20050912: ";
 		dbsource( archive("patch-mimesearch-indexes.sql") );
 		echo "ok\n";
@@ -421,6 +422,7 @@ function do_schema_restructuring() {
   			rev_timestamp char(14) binary NOT NULL default '',
   			rev_minor_edit tinyint(1) unsigned NOT NULL default '0',
 			rev_deleted tinyint(1) unsigned NOT NULL default '0',
+			rev_len int(8) unsigned,
 			rev_parent_id int(8) unsigned default NULL,
   			PRIMARY KEY rev_page_id (rev_page, rev_id),
   			UNIQUE INDEX rev_id (rev_id),
@@ -678,7 +680,7 @@ function do_user_groups_reformat() {
 	global $wgDatabase;
 	$info = $wgDatabase->fieldInfo( 'user_groups', 'ug_group' );
 
-	if( $info->type == 'int' ) {
+	if( $info->type() == 'int' ) {
 		$oldug = $wgDatabase->tableName( 'user_groups' );
 		$newug = $wgDatabase->tableName( 'user_groups_bogus' );
 		echo "user_groups is in bogus intermediate format. Renaming to $newug... ";
@@ -705,7 +707,7 @@ function do_watchlist_null() {
 	global $wgDatabase;
 	$info = $wgDatabase->fieldInfo( 'watchlist', 'wl_notificationtimestamp' );
 
-	if( $info->not_null ) {
+	if( !$info->nullable() ) {
 		echo "Making wl_notificationtimestamp nullable... ";
 		dbsource( archive( 'patch-watchlist-null.sql' ), $wgDatabase );
 		echo "ok\n";
@@ -963,12 +965,14 @@ function do_restrictions_update() {
 
 	$name = 'page_restrictions';
 	$patch = 'patch-page_restrictions.sql';
+	$patch2 = 'patch-page_restrictions_sortkey.sql';
 
 	if ( $wgDatabase->tableExists( $name ) ) {
 		echo "...$name table already exists.\n";
 	} else {
 		echo "Creating $name table...";
 		dbsource( archive($patch), $wgDatabase );
+		dbsource( archive($patch2), $wgDatabase );
 		echo "ok\n";
 
 		echo "Migrating old restrictions to new table...";
@@ -1018,7 +1022,8 @@ function do_restrictions_update() {
 				$wgDatabase->insert( 'page_restrictions', array ( 'pr_page' => $id,
 											'pr_type' => $type,
 											'pr_level' => $level,
-											'pr_cascade' => 0 ),
+											'pr_cascade' => 0,
+											'pr_expiry' => 'infinity' ),
 											__METHOD__ );
 			}
 		}
@@ -1105,128 +1110,6 @@ END;
 }
 
 function
-pg_column_has_type($table, $column, $wanttype)
-{
-global	$wgDatabase, $wgDBname, $wgDBmwschema;
-
-	$q = <<<END
-SELECT typname FROM pg_class, pg_namespace, pg_attribute, pg_type
-	WHERE relnamespace=pg_namespace.oid AND relkind='r'
-	      AND attrelid=pg_class.oid AND atttypid=pg_type.oid
-	      AND nspname=%s AND relname=%s AND attname=%s;
-END;
-	$res = $wgDatabase->query(sprintf($q,
-			$wgDatabase->addQuotes($wgDBmwschema),
-			$wgDatabase->addQuotes($table),
-			$wgDatabase->addQuotes($column)));
-	$row = $wgDatabase->fetchRow($res);
-	$istype = false;
-	if ($row)
-		$istype = $row[0] === $wanttype;
-	$wgDatabase->freeResult($res);
-	return $istype;
-}
-
-function
-pg_column_exists($table, $column)
-{
-global	$wgDatabase, $wgDBname, $wgDBmwschema;
-
-	$q = <<<END
-SELECT 1 FROM pg_class, pg_namespace, pg_attribute
-	WHERE relnamespace=pg_namespace.oid AND relkind='r'
-	      AND attrelid=pg_class.oid
-	      AND nspname=%s AND relname=%s AND attname=%s;
-END;
-	$res = $wgDatabase->query(sprintf($q,
-			$wgDatabase->addQuotes($wgDBmwschema),
-			$wgDatabase->addQuotes($table),
-			$wgDatabase->addQuotes($column)));
-	$row = $wgDatabase->fetchRow($res);
-	$exists = !!$row;
-	$wgDatabase->freeResult($res);
-	return $exists;
-}
-
-function
-pg_column_is_nullable($table, $column)
-{
-global	$wgDatabase, $wgDBname, $wgDBmwschema;
-
-	$q = <<<END
-SELECT attnotnull FROM pg_class, pg_namespace, pg_attribute
-	WHERE relnamespace=pg_namespace.oid AND relkind='r'
-	      AND attrelid=pg_class.oid
-	      AND nspname=%s AND relname=%s AND attname=%s;
-END;
-	$res = $wgDatabase->query(sprintf($q,
-			$wgDatabase->addQuotes($wgDBmwschema),
-			$wgDatabase->addQuotes($table),
-			$wgDatabase->addQuotes($column)));
-	$row = $wgDatabase->fetchRow($res);
-	$nullable = ($row[0] === 'f');
-	$wgDatabase->freeResult($res);
-	return $nullable;
-}
-
-define('PG_RELTYPE_TABLE', 'r');
-define('PG_RELTYPE_SEQUENCE', 'S');
-
-function
-pg_relation_exists($rel, $type)
-{
-global	$wgDatabase, $wgDBname, $wgDBmwschema;
-
-	$q = <<<END
-SELECT 1 FROM pg_class, pg_namespace
-	WHERE relnamespace=pg_namespace.oid AND relkind=%s
-	      AND nspname=%s AND relname=%s
-END;
-	$res = $wgDatabase->query(sprintf($q,
-			$wgDatabase->addQuotes($type),
-			$wgDatabase->addQuotes($wgDBmwschema),
-			$wgDatabase->addQuotes($rel)));
-	$row = $wgDatabase->fetchRow($res);
-	$exists = !!$row;
-	$wgDatabase->freeResult($res);
-	return $exists;
-}
-
-function
-pg_table_exists($table)
-{
-	return pg_relation_exists($table, PG_RELTYPE_TABLE);
-}
-
-function
-pg_sequence_exists($seq)
-{
-	return pg_relation_exists($seq, PG_RELTYPE_SEQUENCE);
-}
-
-function
-pg_trigger_exists($table, $trigger)
-{
-global	$wgDatabase, $wgDBname, $wgDBmwschema;
-
-	$q = <<<END
-SELECT 1 FROM pg_class, pg_namespace, pg_trigger
-	WHERE relnamespace=pg_namespace.oid AND relkind='r'
-	      AND tgrelid=pg_class.oid
-	      AND nspname=%s AND relname=%s AND tgname=%s
-END;
-	$res = $wgDatabase->query(sprintf($q,
-			$wgDatabase->addQuotes($wgDBmwschema),
-			$wgDatabase->addQuotes($table),
-			$wgDatabase->addQuotes($trigger)));
-	$row = $wgDatabase->fetchRow($res);
-	$exists = !!$row;
-	$wgDatabase->freeResult($res);
-	return $exists;
-}
-
-
-function
 pg_index_exists($table, $index)
 {
 global	$wgDatabase, $wgDBmwschema;
@@ -1235,17 +1118,6 @@ global	$wgDatabase, $wgDBmwschema;
 				"tablename" => $table,
 				"schemaname" => $wgDBmwschema));
 	return $exists === $index;
-}
-
-function
-pg_rule_exists($table, $rule)
-{
-global	$wgDatabase, $wgDBmwschema;
-	$exists = $wgDatabase->selectField("pg_rules", "rulename",
-			array(	"rulename" => $rule,
-				"tablename" => $table,
-				"schemaname" => $wgDBmwschema));
-	return $exists === $rule;
 }
 
 function
@@ -1289,68 +1161,77 @@ END;
 }
 
 function do_postgres_updates() {
-	global $wgDatabase, $wgVersion, $wgDBmwschema;
+	global $wgDatabase, $wgVersion, $wgDBmwschema, $wgShowExceptionDetails;
 
-	# Just in case their LocalSetings.php does not have this:
+	$wgShowExceptionDetails = 1;
+
+	# Just in case their LocalSettings.php does not have this:
 	if ( !isset( $wgDBmwschema ))
 		$wgDBmwschema = 'mediawiki';
 
-	$typechanges = array(
-		array("oldimage",     "oi_size",    "int4"),
-		array("oldimage",     "oi_width",   "int4"),
-		array("oldimage",     "oi_height",  "int4"),
-		array("image",        "img_size",   "int4"),
-		array("image",        "img_width",  "int4"),
-		array("image",        "img_height", "int4"),
-	);
-
-	$newcols = array(
-		array("mwuser",        "user_newpass_time",    "TIMESTAMPTZ"),
-		array("mwuser",        "user_editcount",       "INTEGER"),
-		array("ipblocks",      "ipb_anon_only",        "CHAR NOT NULL DEFAULT '0'"),
-		array("ipblocks",      "ipb_create_account",   "CHAR NOT NULL DEFAULT '1'"),
-		array("ipblocks",      "ipb_enable_autoblock", "CHAR NOT NULL DEFAULT '1'"),
-		array("ipblocks",      "ipb_deleted",          "INTEGER NOT NULL DEFAULT '0'"),
-		array("recentchanges", "rc_old_len",           "INT"),
-		array("recentchanges", "rc_new_len",           "INT"),
-		array("revision",      "rev_len",              "INT"),
-		array("filearchive",   "fa_deleted",           "INTEGER NOT NULL DEFAULT '0'"),
-		array("recentchanges", "rc_deleted",           "INTEGER NOT NULL DEFAULT '0'"),
-                array("recentchanges", "rc_logid",             "INTEGER NOT NULL DEFAULT '0'"),
-                array("recentchanges", "rc_log_type",          "TEXT"),
-		array("recentchanges", "rc_log_action",        "TEXT"),
-		array("recentchanges", "rc_params",            "TEXT"),
-		array("logging",       "log_id",               "INTEGER NOT NULL PRIMARY KEY DEFAULT nextval('log_log_id_seq')"),
-		array("logging",       "log_params",           "TEXT"),
-		array("logging",       "log_deleted",          "INTEGER NOT NULL DEFAULT '0'")
+	$newsequences = array(
+		"log_log_id_seq",
+		"pr_id_val",
 	);
 
 	$newtables = array(
+		array("mediawiki_version", "patch-mediawiki_version.sql"),
 		array("mwuser",            "patch-mwuser.sql"),
 		array("pagecontent",       "patch-pagecontent.sql"),
 		array("querycachetwo",     "patch-querycachetwo.sql"),
-		array("redirect",          "patch-redirect.sql"),
 		array("page_restrictions", "patch-page_restrictions.sql"),
 		array("profiling",         "patch-profiling.sql"),
-		array("mediawiki_version", "patch-mediawiki_version.sql"),
-	//	array("archive2",          "patch-archive2.sql")
+		array("redirect",          "patch-redirect.sql"),
 	);
 
-	$newsequences = array(
-		"log_log_id_seq"
+	$newcols = array(
+		array("archive",       "ar_len",               "INTEGER"),
+		array("ipblocks",      "ipb_anon_only",        "CHAR NOT NULL DEFAULT '0'"),
+		array("ipblocks",      "ipb_create_account",   "CHAR NOT NULL DEFAULT '1'"),
+		array("ipblocks",      "ipb_deleted",          "INTEGER NOT NULL DEFAULT 0"),
+		array("ipblocks",      "ipb_enable_autoblock", "CHAR NOT NULL DEFAULT '1'"),
+		array("filearchive",   "fa_deleted",           "INTEGER NOT NULL DEFAULT 0"),
+		array("logging",       "log_deleted",          "INTEGER NOT NULL DEFAULT 0"),
+		array("logging",       "log_id",               "INTEGER NOT NULL PRIMARY KEY DEFAULT nextval('log_log_id_seq')"),
+		array("logging",       "log_params",           "TEXT"),
+		array("mwuser",        "user_editcount",       "INTEGER"),
+		array("mwuser",        "user_newpass_time",    "TIMESTAMPTZ"),
+		array("page_restrictions", "pr_id",            "INTEGER NOT NULL UNIQUE DEFAULT nextval('pr_id_val')"),
+		array("recentchanges", "rc_deleted",           "INTEGER NOT NULL DEFAULT 0"),
+		array("recentchanges", "rc_log_action",        "TEXT"),
+        array("recentchanges", "rc_log_type",          "TEXT"),
+        array("recentchanges", "rc_logid",             "INTEGER NOT NULL DEFAULT 0"),
+		array("recentchanges", "rc_new_len",           "INTEGER"),
+		array("recentchanges", "rc_old_len",           "INTEGER"),
+		array("recentchanges", "rc_params",            "TEXT"),
+		array("revision",      "rev_len",              "INTEGER"),
+	);
+
+
+	# table, column, desired type, USING clause if needed
+	$typechanges = array(
+		array("image",        "img_size",        "int4",  ""),
+		array("image",        "img_width",       "int4",  ""),
+		array("image",        "img_height",      "int4",  ""),
+		array("ipblocks",     "ipb_address",     "text", "ipb_address::text"),
+		array("math",         "math_inputhash",  "bytea", "decode(math_inputhash,'escape')"),
+		array("math",         "math_outputhash", "bytea", "decode(math_outputhash,'escape')"),
+		array("oldimage",     "oi_size",         "int4",  ""),
+		array("oldimage",     "oi_width",        "int4",  ""),
+		array("oldimage",     "oi_height",       "int4",  ""),
+		array("user_newtalk", "user_ip",         "text", "host(user_ip)"),
 	);
 
 	$newindexes = array(
-		array("revision", "rev_text_id_idx",          "patch-rev_text_id_idx.sql")
+		array("revision", "rev_text_id_idx", "patch-rev_text_id_idx.sql")
 	);
 
 	$newrules = array(
-		//array("archive", "archive_delete", 
-		//"patch-archive_delete.sql")
 	);
 
+
 	foreach ($newsequences as $ns) {
-		if (pg_sequence_exists($ns)) {
+		if ($wgDatabase->sequenceExists($ns)) {
 			echo "... sequence $ns already exists\n";
 			continue;
 		}
@@ -1360,7 +1241,7 @@ function do_postgres_updates() {
 	}
 
 	foreach ($newtables as $nt) {
-		if (pg_table_exists($nt[0])) {
+		if ($wgDatabase->tableExists($nt[0])) {
 			echo "... table $nt[0] already exists\n";
 			continue;
 		}
@@ -1369,8 +1250,25 @@ function do_postgres_updates() {
 		dbsource(archive($nt[1]));
 	}
 
+	## Needed before newcols
+	if ($wgDatabase->tableExists("archive2")) {
+		echo "... convert archive2 back to normal archive table\n";
+		if ($wgDatabase->ruleExists("archive", "archive_insert")) {
+			echo "...   drop rule archive_insert\n";
+			$wgDatabase->query("DROP RULE archive_insert ON archive");
+		}
+		if ($wgDatabase->ruleExists("archive", "archive_delete")) {
+			echo "...   drop rule archive_delete\n";
+			$wgDatabase->query("DROP RULE archive_delete ON archive");
+		}
+
+		dbsource(archive("patch-remove-archive2.sql"));
+	} else
+		echo "... obsolete archive2 not present\n";
+
 	foreach ($newcols as $nc) {
-		if (pg_column_exists($nc[0], $nc[1])) {
+		$fi = $wgDatabase->fieldInfo($nc[0], $nc[1]);
+		if (!is_null($fi)) {
 			echo "... column $nc[0].$nc[1] already exists\n";
 			continue;
 		}
@@ -1380,22 +1278,23 @@ function do_postgres_updates() {
 	}
 
 	foreach ($typechanges as $tc) {
-		if (!pg_column_exists($tc[0], $tc[1])) {
+		$fi = $wgDatabase->fieldInfo($tc[0], $tc[1]);
+		if (is_null($fi)) {
 			echo "... error: expected column $tc[0].$tc[1] to exist\n";
 			exit(1);
 		}
 
-		if (pg_column_has_type($tc[0], $tc[1], $tc[2]))
+		if ($fi->type() === $tc[2])
 			echo "... $tc[0].$tc[1] is already $tc[2]\n";
 		else {
-			echo "... change $tc[0].$tc[1] to $tc[2]\n";
-			$wgDatabase->query("ALTER TABLE $tc[0] ALTER $tc[1] TYPE $tc[2];\nCOMMIT;\n");
+			echo "... change $tc[0].$tc[1] from {$fi->type()} to $tc[2]\n";
+			$sql = "ALTER TABLE $tc[0] ALTER $tc[1] TYPE $tc[2]";
+			if (strlen($tc[3])) {
+				$sql .= " USING $tc[3]";
+			}
+			$sql .= ";\nCOMMIT;\n";
+			$wgDatabase->query($sql);
 		}
-	}
-
-	if (!pg_column_has_type("user_newtalk", "user_ip", "text")) {
-		echo "... convert user_newtalk.user_ip to text\n";
-		$wgDatabase->query("ALTER TABLE user_newtalk ALTER user_ip TYPE TEXT USING host(user_ip)");
 	}
 
 	foreach ($newindexes as $ni) {
@@ -1407,25 +1306,20 @@ function do_postgres_updates() {
 	}
 
 	foreach ($newrules as $nr) {
-		if (pg_rule_exists($nr[0], $nr[1])) {
+		if ($wgDatabase->ruleExists($nr[0], $nr[1])) {
 			echo "... rule $nr[1] on $nr[0] already exists\n";
 			continue;
 		}
 		dbsource(archive($nr[2]));
 	}
 
-	if (!pg_column_has_type("ipblocks", "ipb_address", "text")) {
-		echo "... change ipblocks.ipb_address to TEXT\n";
-		$wgDatabase->query("ALTER TABLE ipblocks ALTER ipb_address TYPE TEXT USING ipb_address::TEXT");
-	} else
-		echo "... ipblocks.ipb_address is already TEXT\n";
-
-	if (!pg_trigger_exists("page", "page_deleted")) {
+	if (!$wgDatabase->triggerExists("page", "page_deleted")) {
 		echo "... create page_deleted trigger\n";
 		dbsource(archive('patch-page_deleted.sql'));
 	}
 
-	if (!pg_column_is_nullable("recentchanges", "rc_cur_id")) {
+	$fi = $wgDatabase->fieldInfo("recentchanges", "rc_cur_id");
+	if (!$fi->nullable()) {
 		echo "... remove NOT NULL constraint on recentchanges.rc_cur_id\n";
 		dbsource(archive('patch-rc_cur_id-not-null.sql'));
 	}
@@ -1451,22 +1345,7 @@ function do_postgres_updates() {
 		dbsource(archive('patch-revision_rev_user_fkey.sql'));
 	}
 
-	if (pg_table_exists("archive2")) {
-		echo "... convert archive2 back to normal archive table\n";
-		if (pg_rule_exists("archive", "archive_insert")) {
-			echo "...   drop rule archive_insert\n";
-			$wgDatabase->query("DROP RULE archive_insert ON archive");
-		}
-		if (pg_rule_exists("archive", "archive_delete")) {
-			echo "...   drop rule archive_delete\n";
-			$wgDatabase->query("DROP RULE archive_delete ON archive");
-		}
-
-		dbsource(archive("patch-remove-archive2.sql"));
-	} else
-		echo "... obsolete archive2 not present\n";
-
-	if (!pg_column_exists("archive", "ar_deleted")) {
+	if (is_null($wgDatabase->fieldInfo("archive", "ar_deleted"))) {
 		echo "... add archive.ar_deleted\n";
 		dbsource(archive("patch-archive-ar_deleted.sql"));
 	} else
