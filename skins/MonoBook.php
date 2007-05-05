@@ -118,7 +118,7 @@ class MonoBookTemplate extends QuickTemplate {
 	<div id="p-cactions" class="portlet">
 		<h5><?php $this->msg('views') ?></h5>
 		<div class="pBody">
-			<ul>
+			<ul id="l-cactions">
 	<?php			foreach($this->data['content_actions'] as $key => $tab) { ?>
 				 <li id="ca-<?php echo Sanitizer::escapeId($key) ?>"<?php
 					 	if($tab['class']) { ?> class="<?php echo htmlspecialchars($tab['class']) ?>"<?php }

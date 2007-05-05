@@ -574,6 +574,7 @@ class OutputPage {
 			}
 
 			global $wgAjaxRandom; if( $wgAjaxRandom ) {
+				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/skin.js?$wgStyleVersion\"></script>\n" );
 				$this->addScript( "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/ajaxrandom.js?$wgStyleVersion\"></script>\n" );
 			}
 

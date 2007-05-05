@@ -31,10 +31,13 @@ wgAjaxRandom.callback = function(request) {
 	mCatLinks   = data[4];
 	mInterwikis = data[5];
 
-	// Update document title (top bar)
+	// Refresh skin with the new pagename
+	wgSkinUpdate(mPageName);
+
+	// Replace document title (top bar)
 	document.title=mHTMLTitle;
 
-	// Update the page <h1>title</h1>
+	// Replace the page <h1>title</h1>
 	var firstHeading = false;
 	var content = document.getElementById("content");
 	searchLoop:
@@ -46,15 +49,11 @@ wgAjaxRandom.callback = function(request) {
 	}
 	firstHeading.innerHTML = mPageTitle;
 
-	// Mediawiki global variables
-	wgTitle = mPageTitle;
-	wgPageName = mPageName;
-
-	// Update page content
+	// Replace page content
 	var bodyContent = document.getElementById("bodyContent");
 	bodyContent.innerHTML = mContent;
 
-	// Update interwikis
+	// Replace or insert interwikis
 	var langPortlet = document.getElementById("p-lang");
 	if( langPortlet ) {
 		langPortlet.innerHTML = mInterwikis;
@@ -70,11 +69,10 @@ wgAjaxRandom.callback = function(request) {
 			);
 	}
 
+
 	wgAjaxRandom.inprogress = false;
 	return;
 }
-
-
 
 // Constructor
 wgAjaxRandom.onLoad = function() {
@@ -104,4 +102,3 @@ function wfSupportsAjax() {
 	delete request;
 	return supportsAjax;
 }
-
