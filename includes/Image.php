@@ -1816,7 +1816,7 @@ class Image
 			// Fetch all or selected archived revisions for the file,
 			// sorted from the most recent to the oldest.
 			$conditions = array( 'fa_name' => $this->name );
-			if( $versions ) {
+			if( $timestamp ) {
 				$oldones = '1 = 1'; # All revisions...
 			} else {
 				$oldones = "fa_timestamp >= {$timestamp}";
