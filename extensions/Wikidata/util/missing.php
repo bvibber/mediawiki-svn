@@ -56,6 +56,7 @@ $language=$row[0];
 echo"
 <h1>$collection</h1>
 <h2>$language</h2>
+<small><i>For large collections, this query might take up to a minute. Please be patient</i></small>
 <hr width=950 size=1 noshade><br>
 <h3> Missing defined meanings </h3>
 
@@ -137,13 +138,22 @@ while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
 
 
 
-?>
+echo"
 <hr>
-Note that particular (typically common) words occur multiple times. This is because these words have multiple meanings.
+<div align=\"right\">
+<small>Page time: ".substr((stopwatch()-$start),0,5)." seconds</small>
+</div>
+Notes:
+<ul>
+<li>Particular (typically common) words occur multiple times. This is because these words have multiple (defined) meanings.</li>
+</ul>
 <hr>
-<p align="left">
+<p align=\"left\">
 <h3> see also</h3>
 <ul>
-<li><a href="stats.php">Overview, expressions per langauge</a></li>
-<li><a href="../../..">return to Omegawiki proper</li></a>
+<li><a href=\"collection.php?collection=$collection_id\">Return to  Number of Expressions per language in this collection</a></li>
+<li><a href=\"stats.php\">Overview, expressions per langauge</a></li>
+<li><a href=\"../../..\">return to Omegawiki proper</li></a>
 </p>
+"
+?>

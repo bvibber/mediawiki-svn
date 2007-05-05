@@ -89,14 +89,17 @@ $max=0;
 $limit_percent=10;
 
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
+$language_id=$row[0];
+$count=$row[1];
 if($max<$row[1]) {
 	$max=$row[1];
 	$limit=(int) ($max*($limit_percent/100)+0.5); # 10% cutoff, note that ORDER BY ... DESC   should have first row = max ;-)
 }
 $wi=ceil((($row[1]/$max)*$width));
 $per=ceil((($row[1]/$max)*100));
-if($row[1]>$limit)echo "<tr><td >".$lang[$row[0]].'</td><td align="right">'.$row[1]."</td><td width=30></td><td><img src=sc1.png width=\"$wi\" height=20> $per %</td></tr>";
-else $tx.=$lang[$row[0]]." (".$row[1]."/ $per%), ";
+$language_link="<a href=\"missing.php?collection=$collection_id&language=$language_id\">".$lang[$language_id]."</a>";
+if($row[1]>$limit)echo "<tr><td >".$language_link.'</td><td align="right">'.$row[1]."</td><td width=30></td><td><img src=sc1.png width=\"$wi\" height=20> $per %</td></tr>";
+else $tx.=$language_link." (".$row[1]."/ $per%), ";
 //$ar[$row[0]].=$row[1]."	".$row[2]."\n";
 //filewrite("out/".$row[0].".txt",$row[1]."	".$row[2]);
 }
@@ -142,9 +145,16 @@ fclose($fw);
 
 
 
-
-?>
+echo"
 </center></center>
+<hr>\n";
+?>
+Notes:
+<ul>
+<li>Languages link to lists of words that are still missing for this collection. </li>
+<li>Especially for large collections, <b>it might take a minute or two to get all the missing words</b></li>
+</ul>
+<hr>
 <p align="left">
 <h3> see also</h3>
 <ul>

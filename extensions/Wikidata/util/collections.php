@@ -63,6 +63,7 @@ while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
 }
 print "</ul>";
 
+echo"<hr><div align=\"right\"><small>Page time: ".substr((stopwatch()-$start),0,5)." seconds</small></div>";
 ?>
 
 <p align="left">
