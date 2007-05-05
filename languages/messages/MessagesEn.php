@@ -1147,10 +1147,10 @@ undelete it again through this same interface, unless additional restrictions ar
 'oversightlog' => 'Oversight log',
 'overlogpagetext' => 'Below is a list of the most recent deletions and blocks involving content 
 hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans 
-and blocks.
+and blocks. Content listed here should never be released to the general public.
 
-The deletion of single revisions can be reviewed by clicking the linked numbers that appear in parenthesis, which
-correspond to each deleted item.',
+The deletion of single revisions and events can be reviewed by clicking the linked numbers that appear 
+within parenthesis, which correspond to each deleted item.',
 
 # Diffs
 #
@@ -1301,6 +1301,11 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'grouppage-bot' => '{{ns:project}}:Bots',
 'grouppage-sysop' => '{{ns:project}}:Administrators',
 'grouppage-bureaucrat' => '{{ns:project}}:Bureaucrats',
+
+'oversight'              => 'Oversight',
+'group-oversight'        => 'Oversights',
+'group-oversight-member' => 'Oversight',
+'grouppage-oversight'    => '{{ns:project}}:Oversight',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -1876,15 +1881,21 @@ Here are the current settings for the page <strong>$1</strong>:',
 'viewdeletedpage' => 'View deleted pages',
 'undeletepagetext' => 'The following pages have been deleted but are still in the archive and
 can be restored. The archive may be periodically cleaned out.',
-'undeleteextrahelp' => "To restore the entire page, click '''''Restore'''''. Use the \"show/hide\" links to set 
-restrictions on individual revisions, which will remain on the revisions even when restored.",
+'undeleteextrahelp' => "To restore the entire page, leave all radios deselected and click '''''Restore'''''. 
+To perform a selective restoration, check the desired restore point below and click '''''Restore'''''. 
+Clicking '''''Reset''''' will clear the comment field and all radios. Use the '''''show/hide''''' links to 
+set restrictions on individual revisions, which will remain on the revisions even when restored.",
 'undeleterevisions' => "$1 {{PLURAL:$1|revision|revisions}} archived",
-'undeletehistory' => 'If you restore the page, all revisions will be restored to the history.
+'undeletehistory' => 'If you restore the page, the revisions will be restored to the page history.
 If a new page with the same name has been created since the deletion, the restored
 revisions will appear in the prior history, and the current revision of the live page
 will not be automatically replaced.', 
-'undeleterevdel' => 'Undeletion will not be performed if it will result in the top page or image revision being
-restricted. In such cases, you must remove restrictions on the newest deleted revision.',
+'undeleterevdel' => 'Undeletion will not be performed if it would result in the top page or image revision being
+restricted. In such cases, you must remove restrictions on the newest deleted page and/or file revision. 
+Additionally, restoration will not be performed if it would result in an alternating page history between these and 
+any live revisions for this page. ',
+'restorepoint' => 'Use the radio button column to restore only revisions from the specified time onwards. Note 
+that you will have to re-select any options if you use the history navigation links.',
 'undeletehistorynoadmin' => 'This article has been deleted. The reason for deletion is
 shown in the summary below, along with details of the users who had edited this page
 before deletion. The actual text of these deleted revisions is only available to administrators.',
