@@ -371,7 +371,7 @@ class PageArchive {
 		$conditions = array( 
 			'ar_namespace' => $this->title->getNamespace(), 
 			'ar_title' => $this->title->getDBkey() );
-		if( $restoreAll ) {
+		if( $timestamp ) {
 			$conditions[] = "ar_timestamp >= {$timestamp}";
 		}
 
