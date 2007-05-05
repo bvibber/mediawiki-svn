@@ -23,13 +23,24 @@ wgAjaxRandom.callback = function(request) {
 
 	// Tag name is defined in AjaxFunctions.php wfAjaxRandom()
 	// we will have title, content, interwikis
-	var data = request.responseText.split( "jqZlBX9PEbSGebfBL8mz9HyeMfCVdl7W" );
-	mHTMLTitle  = data[0];
-	mPageTitle  = data[1];
-	mPageName   = data[2];
-	mContent    = data[3];
-	mCatLinks   = data[4];
-	mInterwikis = data[5];
+	var data = request.responseText;
+
+	var XMLdata = request.responseXML.documentElement;
+
+	mHTMLTitle  = XMLdata.getElementsByTagName('htmltitle')[0].firstChild.data;
+	mPageTitle  = XMLdata.getElementsByTagName('pagetitle')[0].firstChild.data; 
+	mPageName   = XMLdata.getElementsByTagName('dbkey')[0].firstChild.data;
+
+	// Following three elements might be empty
+	if( mContent = XMLdata.getElementsByTagName('article')[0].firstChild ) {
+		mContent = mContent.data;
+	} else { mContent = null; }
+	if( mCatLinks = XMLdata.getElementsByTagName('categorylinks')[0].firstChild ) {
+		mCatLinks = mCatLinks.data;
+	} else { mCatLinks = null; }
+	if( mInterwikis = XMLdata.getElementsByTagName('interwikilinks')[0].firstChild ) {
+		mInterwikis = mInterwikis.data;
+	} else { mInterwikis = null; }
 
 	// Refresh skin with the new pagename
 	wgSkinUpdate(mPageName);

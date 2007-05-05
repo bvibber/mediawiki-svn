@@ -2402,6 +2402,11 @@ $wgAjaxSearch = false;
 $wgAjaxExportList = array( );
 
 /**
+ * List of ajax callbacks returning xhtml to set the content-type
+ */
+$wgAjaxXHTMLCallbacks = array( 'wfAjaxRandom', );
+
+/**
  * Enable fast Special:random
  * Requires $wgUseAjax to be true too.
  */

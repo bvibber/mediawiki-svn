@@ -134,16 +134,12 @@ function wfSajaxSearch( $term ) {
 	return $response;
 }
 
+/** @return New page data using XML*/
 function wfAjaxRandom( ) {
 
-	// Enclose given text between two tags
-	function glue($text) {
-		// Key to glue our stuff.
-		$Key = 'jqZlBX9PEbSGebfBL8mz9HyeMfCVdl7W';
-		return "$text$Key";
-	}
-
-	$return = '';
+	# The XML response header.
+	$return = '<?xml version="1.0" encoding="UTF-8" ?>' . "\n" .
+	Xml::openElement( 'ajaxrandom' );
 
 
 	$random = new RandomPage();
@@ -155,16 +151,18 @@ function wfAjaxRandom( ) {
 	$article->render();
 
 	global $wgOut;
-	$return .= glue( $wgOut->getHTMLTitle() );
-	$return .= glue( $wgOut->getPageTitle() );
-	$return .= glue( $title->getPrefixedDBKey() );
-	$return .= glue( $wgOut->getHTML() );
-
+	$return .= Xml::element( 'htmltitle', null, $wgOut->getHTMLTitle() );
+	$return .= Xml::element( 'pagetitle', null, $wgOut->getPageTitle() );
+	$return .= Xml::element( 'dbkey'    , null, $title->getPrefixedDBKey() );
+	$return .= Xml::element( 'article'  , null, $wgOut->getHTML() );
 
 	global $wgUser;
 	$sk = $wgUser->getSkin();
-	$return .= glue( $sk->getCategoryLinks() );
-	$return .= glue( $sk->otherLanguages() );
+	$return .= Xml::element( 'categorylinks' , null, $sk->getCategoryLinks() );
+	$return .= Xml::element( 'interwikilinks', null, $sk->otherLanguages() );
+
+	$return .= Xml::closeElement( 'ajaxrandom' );
+
 	return $return; 
 }
 

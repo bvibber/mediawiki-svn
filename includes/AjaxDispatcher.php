@@ -73,7 +73,7 @@ class AjaxDispatcher {
 	 * request.
 	 */
 	function performAction() {
-		global $wgAjaxExportList, $wgOut;
+		global $wgAjaxExportList, $wgAjaxXHTMLCallbacks, $wgOut;
 
 		if ( empty( $this->mode ) ) {
 			return;
@@ -94,6 +94,11 @@ class AjaxDispatcher {
 				else {
 					if ( is_string( $result ) ) {
 						$result= new AjaxResponse( $result );
+
+						if( in_array($this->func_name, $wgAjaxXHTMLCallbacks)) {
+							# Callback returns XHTML
+							$result->setContentType( 'text/xml' );
+						}
 					}
 
 					$result->sendHeaders();
