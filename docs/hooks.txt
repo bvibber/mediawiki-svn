@@ -48,7 +48,7 @@ would handle this as follows (note: not real code, here):
 	
 	# code to actually show the article goes here
     }
-    
+
 An extension writer, or a local admin, will often add custom code to
 the function -- with or without a global variable. For example,
 someone wanting email notification when an article is shown may add:
@@ -286,6 +286,15 @@ $isminor: minor flag
 $iswatch: watch flag
 $section: section #
 
+'ArticleUndeleted': When one or more revisions of an article are restored
+$title: Title corresponding to the article restored
+$create: Whether or not the restoration caused the page to be created
+(i.e. it didn't exist before)
+
+'AuthPluginSetup': update or replace authentication plugin object ($wgAuth)
+Gives a chance for an extension to set it programattically to a variable class.
+&$auth: the $wgAuth object, probably a stub
+
 'AutoAuthenticate': called to authenticate users on external/environmental means
 $user: writes user object to this parameter
 
@@ -304,14 +313,35 @@ $user: the user _doing_ the block (not the one being blocked)
 $block: the Block object that was saved
 $user: the user who did the block (not the one being blocked)
 
+'BookInformation': Before information output on Special:Booksources
+$isbn: ISBN to show information for
+$output: OutputPage object in use
+
+'CustomEditor': When invoking the page editor
+$article: Article being edited
+$user: User performing the edit
+
+Return true to allow the normal editor to be used, or false
+if implementing a custom editor, e.g. for a special namespace,
+etc.
+
 'DiffViewHeader': called before diff display
 $diff: DifferenceEngine object that's calling
 $oldRev: Revision object of the "old" revision (may be null/invalid)
 $newRev: Revision object of the "new" revision
 
+'EditPage::attemptSave': called before an article is
+saved, that is before insertNewArticle() is called
+&$editpage_Obj: the current EditPage object
+
 'EditFormPreloadText': Allows population of the edit form when creating new pages
 &$text: Text to preload with
 &$title: Title object representing the page being created
+
+'EditPage::showEditForm:fields': allows injection of form field into edit form
+&$editor: the EditPage instance for reference
+&$out: an OutputPage instance to write to
+return value is ignored (should always return true)
 
 'EditFilter': Perform checks on an edit
 $editor: Edit form (see includes/EditPage.php)
@@ -348,6 +378,9 @@ $text: text of the mail
 &$list: List object (defaults to NULL, change it to an object instance and return
 false override the list derivative used)
 
+'FileUpload': When a file upload occurs
+$file : Image object representing the file that was uploaded
+
 'GetInternalURL': modify fully-qualified URLs used for squid cache purging
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
@@ -362,6 +395,12 @@ $query: query options passed to Title::getLocalURL()
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getFullURL()
+
+'InternalParseBeforeLinks': during Parser's internalParse method before links but
+after noinclude/includeonly/onlyinclude and other processing.
+&$this: Parser object
+&$text: string containing partially parsed text
+&$this->mStripState: Parser's internal StripState object
 
 'LogPageValidTypes': action being logged. DEPRECATED: Use $wgLogTypes
 &$type: array of strings
@@ -397,16 +436,49 @@ the resulting HTML is about to be displayed.
 $parserOutput: the parserOutput (object) that corresponds to the page 
 $text: the text that will be displayed, in HTML (string)
 
+'PageHistoryBeforeList': When a history page list is about to be constructed.
+$article: the article that the history is loading for
+
+'PageHistoryLineEnding' : right before the end <li> is added to a history line
+$row: the revision row for this line
+$s: the string representing this parsed line
+
 'PageRenderingHash': alter the parser cache option hash key
   A parser extension which depends on user options should install
   this hook and append its values to the key.
 $hash: reference to a hash key string which can be modified
+
+'ParserTestTables': alter the list of tables to duplicate when parser tests
+are run. Use when page save hooks require the presence of custom tables
+to ensure that tests continue to run properly.
+&$tables: array of table names
 
 'PersonalUrls': Alter the user-specific navigation links (e.g. "my page,
 my talk page, my contributions" etc).
 
 &$personal_urls: Array of link specifiers (see SkinTemplate.php)
 &$title: Title object representing the current page
+
+'PingLimiter': Allows extensions to override the results of User::pingLimiter()
+&$user : User performing the action
+$action : Action being performed
+&$result : Whether or not the action should be prevented
+Change $result and return false to give a definitive answer, otherwise
+the built-in rate limiting checks are used, if enabled.
+
+'PreferencesUserInformationPanel': Add HTML bits to user information list in preferences form
+$form : PreferencesForm object
+&$html : HTML to append to
+
+'RawPageViewBeforeOutput': Right before the text is blown out in action=raw
+&$obj: RawPage object
+&$text: The text that's going to be the output
+
+'SearchUpdate': Prior to search update completion
+$id : Page id
+$namespace : Page namespace
+$title : Page title
+$text : Current text being indexed
 
 'SiteNoticeBefore': Before the sitenotice/anonnotice is composed
 &$siteNotice: HTML returned as the sitenotice
@@ -416,6 +488,10 @@ or change the value of $siteNotice and return false to alter it.
 'SiteNoticeAfter': After the sitenotice/anonnotice is composed
 &$siteNotice: HTML sitenotice
 Alter the contents of $siteNotice to add to/alter the sitenotice/anonnotice.
+
+'SkinTemplateOutputPageBeforeExec': Before SkinTemplate::outputPage() starts page output
+&$sktemplate: SkinTemplate object
+&$tpl: Template engine object
 
 'TitleMoveComplete': after moving an article (title)
 $old: old title
@@ -436,6 +512,17 @@ $article: article object to be removed
 'UnwatchArticle': after a watch is removed from an article
 $user: user that was watching
 $article: article object removed
+
+'UploadForm:initial': before the upload form is generated
+$form: UploadForm object
+You might set the member-variables $uploadFormTextTop and 
+$uploadFormTextAfterSummary to inject text (HTML) either before
+or after the editform.
+
+'UploadForm:BeforeProcessing': at the beginning of processUpload()
+$form: UploadForm object
+Lets you poke at member variables like $mUploadDescription before the
+file is saved.
 
 'UploadVerification': additional chances to reject an uploaded file
 string $saveName: destination file name
@@ -498,6 +585,10 @@ $content_actions: The array of content actions
 		     articles, special, history, preview, diff, edit, ...)
 		     Can be used to set custom CSS/JS
 $out: OutputPage object
+
+'AjaxAddScript': Called in output page just before the initialisation
+of the javascript ajax engine. The hook is only called when ajax
+is enabled ( $wgUseAjax = true; ).
 
 More hooks might be available but undocumented, you can execute
 ./maintenance/findhooks.php to find hidden one.
