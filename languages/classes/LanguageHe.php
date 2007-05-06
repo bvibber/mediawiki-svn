@@ -2,8 +2,7 @@
 /**
  * Hebrew (עברית)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  *
  * @author Rotem Liss
  */
@@ -52,11 +51,13 @@ class LanguageHe extends Language {
 	 * @param integer the number of items
 	 * @param string the first form (singular)
 	 * @param string the second form (plural)
-	 * @param string the third form (2 items, plural is used if not applicable and not specified)
+	 * @param string the third form (2 items, plural is used if not applicable and not specified
+	 * @param not used (for compatibility with ancestor)
+	 * @param not used (for compatibility with ancestor)
 	 *
 	 * @return string of the suited form of word
 	 */
-	public function convertPlural( $count, $w1, $w2, $w3) {
+	public function convertPlural( $count, $w1, $w2, $w3, $w4, $w5) {
 		if ( $count == '1' ) {
 			return $w1;
 		} elseif ( $count == '2' && $w3 ) {

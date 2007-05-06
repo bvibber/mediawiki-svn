@@ -4,6 +4,29 @@
  * @addtogroup Language
  */
 
+$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
+
+$namespaceNames = array(
+	NS_MEDIA            => 'Media',
+	NS_SPECIAL          => 'Toiminnot',
+	NS_MAIN             => '',
+	NS_TALK             => 'Keskustelu',
+	NS_USER             => 'Käyttäjä',
+	NS_USER_TALK        => 'Keskustelu_käyttäjästä',
+	# NS_PROJECT set by $wgMetaNamespace
+	NS_PROJECT_TALK     => 'Keskustelu_{{grammar:elative|$1}}',
+	NS_IMAGE            => 'Kuva',
+	NS_IMAGE_TALK       => 'Keskustelu_kuvasta',
+	NS_MEDIAWIKI        => 'Järjestelmäviesti',
+	NS_MEDIAWIKI_TALK   => 'Keskustelu_järjestelmäviestistä',
+	NS_TEMPLATE         => 'Malline',
+	NS_TEMPLATE_TALK    => 'Keskustelu_mallineesta',
+	NS_HELP             => 'Ohje',
+	NS_HELP_TALK        => 'Keskustelu_ohjeesta',
+	NS_CATEGORY         => 'Luokka',
+	NS_CATEGORY_TALK    => 'Keskustelu_luokasta'
+);
+
 $skinNames = array(
 	'standard'          => 'Perus',
 	'cologneblue'       => 'Kölnin sininen',
@@ -48,29 +71,16 @@ $bookstoreList = array(
 	'Tampereen seudun kirjastot'    => 'http://kirjasto.tampere.fi/Piki?formid=fullt&typ0=6&dat0=$1'
 );
 
-$namespaceNames = array(
-	NS_MEDIA            => 'Media',
-	NS_SPECIAL          => 'Toiminnot',
-	NS_MAIN             => '',
-	NS_TALK             => 'Keskustelu',
-	NS_USER             => 'Käyttäjä',
-	NS_USER_TALK        => 'Keskustelu_käyttäjästä',
-	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK     => 'Keskustelu_{{grammar:elative|$1}}',
-	NS_IMAGE            => 'Kuva',
-	NS_IMAGE_TALK       => 'Keskustelu_kuvasta',
-	NS_MEDIAWIKI        => 'Järjestelmäviesti',
-	NS_MEDIAWIKI_TALK   => 'Keskustelu_järjestelmäviestistä',
-	NS_TEMPLATE         => 'Malline',
-	NS_TEMPLATE_TALK    => 'Keskustelu_mallineesta',
-	NS_HELP             => 'Ohje',
-	NS_HELP_TALK        => 'Keskustelu_ohjeesta',
-	NS_CATEGORY         => 'Luokka',
-	NS_CATEGORY_TALK    => 'Keskustelu_luokasta'
+$magicWords = array(
+	'redirect'            => array( 0, "#UUDELLEENOHJAUS", "#REDIRECT" ),
+	'toc'                 => array( 0, "__SISÄLLYSLUETTELO__", "__TOC__" ),
+	'img_right'           => array( 1, "oikea", "right" ),
+	'img_left'            => array( 1, "vasen", "left" ),
+	'img_center'          => array( 1, "keskitetty", "center", "centre" ),
+	'img_framed'          => array( 1, "kehys", "kehystetty", "framed", "enframed", "frame" ),
+	'grammar'             => array( 0, "TAIVUTUS:", "GRAMMAR:" ),
+	'plural'              => array( 0, "MONIKKO:", "PLURAL:" ),
 );
-
-$separatorTransformTable = array(',' => "\xc2\xa0", '.' => ',' );
-$linkTrail = '/^([a-zäö]+)(.*)$/sDu';
 
 $specialPageAliases = array(
 	'DoubleRedirects'           => array( 'Kaksinkertaiset_uudelleenohjaukset' ),
@@ -100,6 +110,7 @@ $specialPageAliases = array(
 	'Mostcategories'            => array( 'Luokitelluimmat_sivut' ),
 	'Mostimages'                => array( 'Viitatuimmat_kuvat' ),
 	'Mostrevisions'             => array( 'Muokatuimmat_sivut' ),
+	'Fewestrevisions'           => array( 'Vähiten_muokatut_sivut' ),
 	'Shortpages'                => array( 'Lyhyet_sivut' ),
 	'Longpages'                 => array( 'Pitkät_sivut' ),
 	'Newpages'                  => array( 'Uudet_sivut' ),
@@ -141,8 +152,10 @@ $specialPageAliases = array(
 	'Popularpages'              => array( 'Suositut_sivut' ),
 	'Search'                    => array( 'Haku' ),
 	'Resetpass'                 => array( 'Alusta_salasana' ),
+	'Withoutinterwiki'          => array( 'Kielilinkittömät_sivut' ),
 );
 
+$linkTrail = '/^([a-zäö]+)(.*)$/sDu';
 
 $messages = array(
 # User preference toggles
@@ -161,7 +174,7 @@ $messages = array(
 'tog-rememberpassword'        => 'Älä kysy salasanaa saman yhteyden eri istuntojen välillä',
 'tog-editwidth'               => 'Muokkauskenttä on sivun levyinen',
 'tog-watchcreations'          => 'Lisää luomani sivut tarkkailulistalle',
-'tog-watchdefault'            => 'Lisää oletuksena uudet ja muokatut sivut tarkkailulistalle',
+'tog-watchdefault'            => 'Lisää muokkaamani sivut tarkkailulistalle',
 'tog-watchmoves'              => 'Lisää siirtämäni sivut tarkkailulistalle',
 'tog-watchdeletion'           => 'Lisää poistamani sivut tarkkailulistalle',
 'tog-minordefault'            => 'Muutokset ovat oletuksena pieniä',
@@ -307,11 +320,13 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'deletethispage'    => 'Poista tämä sivu',
 'undelete_short'    => 'Palauta $1 muokkausta',
 'protect'           => 'Suojaa',
+'protect_change'    => 'muuta suojausta',
 'protectthispage'   => 'Suojaa tämä sivu',
 'unprotect'         => 'Poista suojaus',
 'unprotectthispage' => 'Poista tämän sivun suojaus',
 'newpage'           => 'Uusi sivu',
 'talkpage'          => 'Keskustele tästä sivusta',
+'talkpagelinktext'  => 'keskustelu',
 'specialpage'       => 'Toimintosivu',
 'personaltools'     => 'Henkilökohtaiset työkalut',
 'postcomment'       => 'Kommentti sivun loppuun',
@@ -446,7 +461,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'protectedinterface'   => 'Tämä sivu sisältää ohjelmiston käyttöliittymätekstiä ja on suojattu häiriköinnin estämiseksi.',
 'editinginterface'     => '<center>Muokkaat sivua, joka sisältää ohjelmiston käyttöliittymätekstiä.</center>',
 'sqlhidden'            => '(SQL-kysely piilotettu)',
-'cascadeprotected'     => 'Tämän sivu on suojattu muokkauksilta, koska se on sisällytetty alle oleviin laajennetusti suojattuihin sivuihin:',
+'cascadeprotected'     => 'Tämä sivu on suojattu muokkauksilta, koska se on sisällytetty alla {{PLURAL:$1|olevaan laajennetusti suojattuun sivuun|oleviin laajennetusti suojattuihin sivuihin}}:',
 
 # Login and logout pages
 'logouttitle'                => 'Uloskirjautuminen',
@@ -577,6 +592,8 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'whitelistacctext'          => 'Saadaksesi oikeudet luoda tunnus sinun täytyy kirjautua [[Special:Userlogin|sisään]] ja sinulla tulee olla asiaankuuluvat oikeudet.',
 'confirmedittitle'          => 'Sähköpostin varmennus',
 'confirmedittext'           => 'Et voi muokata sivuja, ennen kuin olet varmentanut sähköpostiosoitteesi. Voit tehdä varmennuksen [[Special:Preferences|asetussivulla]].',
+'nosuchsectiontitle'        => 'Pyydettyä osiota ei ole',
+'nosuchsectiontext'         => 'Yritit muokata osiota, jota ei ole olemassa. Koska osiota $1 ei ole olemassa, muokkausta ei voida tallentaa.',
 'loginreqtitle'             => 'Sisäänkirjautuminen vaaditaan',
 'loginreqlink'              => 'kirjautua sisään',
 'loginreqpagetext'          => 'Sinun täytyy $1, jotta voisit nähdä muut sivut.',
@@ -626,7 +643,7 @@ Yritä uudelleen. Jos ongelma ei katoa, yritä kirjautua ulos ja takaisin sisä�
 'readonlywarning'           => '<strong>Varoitus</strong>: Tietokanta on lukittu huoltoa varten, joten voi olla ettet pysty tallentamaan muokkauksiasi juuri nyt. Saattaa olla paras leikata ja liimata tekstisi omaan tekstitiedostoosi ja tallentaa se tänne myöhemmin.',
 'protectedpagewarning'      => '<center><small>Tämä sivu on lukittu. Vain ylläpitäjät voivat muokata sitä.</small></center>',
 'semiprotectedpagewarning'  => 'Vain rekisteröityneet käyttäjät voivat muokata tätä sivua.',
-'cascadeprotectedwarning'   => '<strong>Vain ylläpitäjät voivat muokata tätä sivua, koska se on sisällytetty alla oleviin laajennetusti suojattuihin sivuihin</strong>:',
+'cascadeprotectedwarning'   => '<strong>Vain ylläpitäjät voivat muokata tätä sivua, koska se on sisällytetty alla {{PLURAL:$1|olevaan laajennetusti suojattuun sivuun|oleviin laajennetusti suojattuihin sivuihin}}</strong>:',
 'templatesused'             => 'Tällä sivulla käytetyt mallineet:',
 'templatesusedpreview'      => 'Esikatselussa mukana olevat mallineet:',
 'templatesusedsection'      => 'Tässä osiossa mukana olevat mallineet:',
@@ -646,34 +663,32 @@ Yritä uudelleen. Jos ongelma ei katoa, yritä kirjautua ulos ja takaisin sisä�
 'cantcreateaccounttext'  => 'Tunnuksien luominen tästä IP-osoitteesta ($1) on estetty. Syynä tähän on luultavasti jatkuva häiriköinti yhteiskäyttökoneelta.',
 
 # History pages
-'revhistory'                  => 'Muutoshistoria',
-'viewpagelogs'                => 'Näytä tämän sivun lokit',
-'nohistory'                   => 'Tällä sivulla ei ole muutoshistoriaa.',
-'revnotfound'                 => 'Versiota ei löydy',
-'revnotfoundtext'             => 'Pyytämääsi versiota ei löydy. Tarkista URL-osoite, jolla hait tätä sivua.',
-'loadhist'                    => 'Ladataan sivuhistoriaa',
-'currentrev'                  => 'Nykyinen versio',
-'revisionasof'                => 'Versio $1',
-'revision-info'               => 'Versio hetkellä $1 – tehnyt $2',
-'previousrevision'            => '← Vanhempi versio',
-'nextrevision'                => 'Uudempi versio →',
-'currentrevisionlink'         => 'Nykyinen versio',
-'cur'                         => 'nyk.',
-'next'                        => 'seur.',
-'last'                        => 'edell.',
-'orig'                        => 'alkup.',
-'page_first'                  => 'ensimmäinen sivu',
-'page_last'                   => 'viimeinen sivu',
-'histlegend'                  => 'Merkinnät: (nyk.) = eroavaisuudet nykyiseen versioon, (edell.) = eroavaisuudet edelliseen versioon, <span class="minor">p</span> = pieni muutos',
-'deletedrev'                  => '[poistettu]',
-'histfirst'                   => 'Ensimmäiset',
-'histlast'                    => 'Viimeisimmät',
-'rev-deleted-comment'         => '(kommentti poistettu)',
-'rev-deleted-user'            => '(käyttäjänimi poistettu)',
-'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">Tämä versio on poistettu julkisesta arkistosta. [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} Poistolokissa] saattaa olla lisätietoja.</div>',
-'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">Tämä versio on poistettu julkisesta arkistosta.</div>',
-'rev-delundel'                => 'näytä tai piilota',
+'revhistory'          => 'Muutoshistoria',
+'viewpagelogs'        => 'Näytä tämän sivun lokit',
+'nohistory'           => 'Tällä sivulla ei ole muutoshistoriaa.',
+'revnotfound'         => 'Versiota ei löydy',
+'revnotfoundtext'     => 'Pyytämääsi versiota ei löydy. Tarkista URL-osoite, jolla hait tätä sivua.',
+'loadhist'            => 'Ladataan sivuhistoriaa',
+'currentrev'          => 'Nykyinen versio',
+'revisionasof'        => 'Versio $1',
+'revision-info'       => 'Versio hetkellä $1 – tehnyt $2',
+'previousrevision'    => '← Vanhempi versio',
+'nextrevision'        => 'Uudempi versio →',
+'currentrevisionlink' => 'Nykyinen versio',
+'cur'                 => 'nyk.',
+'next'                => 'seur.',
+'last'                => 'edell.',
+'orig'                => 'alkup.',
+'page_first'          => 'ensimmäinen sivu',
+'page_last'           => 'viimeinen sivu',
+'histlegend'          => 'Merkinnät: (nyk.) = eroavaisuudet nykyiseen versioon, (edell.) = eroavaisuudet edelliseen versioon, <span class="minor">p</span> = pieni muutos',
+'deletedrev'          => '[poistettu]',
+'histfirst'           => 'Ensimmäiset',
+'histlast'            => 'Viimeisimmät',
+'historysize'         => '($1 tavua)',
+'historyempty'        => '(tyhjä)',
 
+# Revision feed
 'history-feed-title'          => 'Muutoshistoria',
 'history-feed-description'    => 'Tämän sivun muutoshistoria',
 'history-feed-item-nocomment' => '$1 ($2)', # user at time
@@ -682,21 +697,41 @@ Se on saatettu poistaa wikistä tai nimetä uudelleen.
 Kokeile [[Special:Search|hakua]] löytääksesi asiaan liittyviä sivuja.',
 
 # Revision deletion
-'revisiondelete'            => 'Poista tai palauta versioita',
-'revdelete-nooldid-title'   => 'Ei kohdeversiota',
-'revdelete-nooldid-text'    => 'Et ole valinnut kohdeversiota tai -versioita.',
-'revdelete-selected'        => 'Valittu versio [[:$1]]:',
-'revdelete-text'            => 'Poistetut versiot näkyvät sivun historiassa, mutta niiden sisältö ei ole julkisesti saatavilla.
+'rev-deleted-comment'         => '(kommentti poistettu)',
+'rev-deleted-user'            => '(käyttäjänimi poistettu)',
+'rev-deleted-event'           => '(tapahtuma poistettu)',
+'rev-deleted-text-permission' => '<div class="mw-warning plainlinks">Tämä versio on poistettu julkisesta arkistosta. [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} Poistolokissa] saattaa olla lisätietoja.</div>',
+'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">Tämä versio on poistettu julkisesta arkistosta.</div>',
+'rev-delundel'                => 'näytä tai piilota',
+'revisiondelete'              => 'Poista tai palauta versioita',
+'revdelete-nooldid-title'     => 'Ei kohdeversiota',
+'revdelete-nooldid-text'      => 'Et ole valinnut kohdeversiota tai -versioita.',
+'revdelete-selected'          => "{{PLURAL:$2|Valittu versio|Valitut versiot}} sivusta '''$1:'''",
+'logdelete-selected'          => "{{PLURAL:$2|Valittu lokimerkintä|Valitut lokimerkinnät}} sivulle '''$1:'''",
+'revdelete-text'              => 'Poistetut versiot näkyvät sivun historiassa, mutta niiden sisältö ei ole julkisesti saatavilla.
 
 Muut ylläpitäjät voivat lukea piilotetun sisällön ja palauttaa sen.',
-'revdelete-legend'          => 'Version rajoitukset:',
-'revdelete-hide-text'       => 'Piilota version sisältö',
-'revdelete-hide-comment'    => 'Piilota yhteenveto',
-'revdelete-hide-user'       => 'Piilota tekijän tunnus tai IP-osoite',
-'revdelete-hide-restricted' => 'Apply these restrictions to sysops as well as others',
-'revdelete-log'             => 'Lokimerkintä:',
-'revdelete-submit'          => 'Toteuta',
-'revdelete-logentry'        => 'muutti sivun [[$1]] version näkyvyyttä',
+'revdelete-legend'            => 'Version rajoitukset:',
+'revdelete-hide-text'         => 'Piilota version sisältö',
+'revdelete-hide-name'         => 'Piilota toiminto ja kohde',
+'revdelete-hide-comment'      => 'Piilota yhteenveto',
+'revdelete-hide-user'         => 'Piilota tekijän tunnus tai IP-osoite',
+'revdelete-hide-restricted'   => 'Apply these restrictions to sysops as well as others',
+'revdelete-suppress'          => 'Piilota myös ylläpitäjiltä',
+'revdelete-hide-image'        => 'Piilota tiedoston sisältö',
+'revdelete-unsuppress'        => 'Poista rajoitukset palautetuilta versiolta',
+'revdelete-log'               => 'Lokimerkintä:',
+'revdelete-submit'            => 'Toteuta',
+'revdelete-logentry'          => 'muutti sivun [[$1]] version näkyvyyttä',
+'logdelete-logentry'          => 'muutti sivun [[$1]] näkyvyyttä',
+'revdelete-logaction'         => '$1 {{plural:$1|versio|versiota}} asetettiin tilaan $2',
+'logdelete-logaction'         => '$1 sivun [[$3]] {{plural:$1|tapahtuma|tapahtumaa}} asetettiin tilaan $2',
+'revdelete-success'           => 'Version näkyvyys asetettu.',
+'logdelete-success'           => 'Tapahtuman näkyvyys asetettu.',
+
+# Oversight log
+'oversightlog'    => 'Tietosuojaloki',
+'overlogpagetext' => 'Alla on lista viimeaikaisista poistoista ja estoista liittyen ylläpitäjiltä piilotettuun sisältöön. [[Special:Ipblocklist|Estolistalla]] on luettelo voimassa olevista estoista.',
 
 # Diffs
 'difference'                => 'Versioiden väliset erot',
@@ -717,8 +752,7 @@ Muut ylläpitäjät voivat lukea piilotetun sisällön ja palauttaa sen.',
 'badquery'              => 'Kelvoton hakumerkkijono',
 'badquerytext'          => 'Tekemäsi kysely ei ole kelvollinen. Tämä saattaa johtua siitä, että et ole määritellyt hakumerkkijonoa.',
 'matchtotals'           => "Haulla '''$1''' löytyi $2 osumaa sivujen otsikoista ja $3 osumaa sivujen sisällöistä.",
-'noexactmatch'          => '<big>Sivua nimeltä ”$1” ei ole.</big>
-:Voit [[$1|luoda aiheesta uuden sivun]].',
+'noexactmatch'          => 'Sivua ”$1” ei ole olemassa. Voit [[$1|luoda aiheesta uuden sivun]].',
 'titlematches'          => 'Osumat sivujen otsikoissa',
 'notitlematches'        => 'Hakusanaa ei löytynyt minkään sivun otsikosta',
 'textmatches'           => 'Osumat sivujen teksteissä',
@@ -782,6 +816,7 @@ $1 | $2',
 'contextlines'             => 'Rivien määrä tulosta kohti:',
 'contextchars'             => 'Sisällön merkkien määrä riviä kohden:',
 'stubthreshold'            => 'Tynkäsivun osoituskynnys:',
+'recentchangesdays'        => 'Näytettävien päivien määrä tuoreissa muutoksissa:',
 'recentchangescount'       => 'Sivujen määrä tuoreissa muutoksissa:',
 'savedprefs'               => 'Asetuksesi tallennettiin onnistuneesti.',
 'timezonelegend'           => 'Aikavyöhyke',
@@ -804,6 +839,7 @@ $1 | $2',
 'userrights-groupsmember'    => 'Jäsenenä ryhmissä:',
 'userrights-groupsavailable' => 'Saatavilla olevat ryhmät:',
 'userrights-groupshelp'      => 'Valitse ryhmät, jotka haluat poistaa tai lisätä. Valitsemattomia ryhmiä ei muuteta. Voit poistaa valinnan pitämällä Ctrl-näppäintä pohjassa napsautuksen aikana.',
+'userrights-reason'          => 'Syy muutokselle:',
 
 # Groups
 'group'            => 'Ryhmä:',
@@ -898,6 +934,15 @@ Huomaa, että {{GRAMMAR:inessive|{{SITENAME}}}} muut voivat muokata tai poistaa 
 'largefileserver'             => 'Tämä tiedosto on suurempi kuin mitä palvelin sallii.',
 'emptyfile'                   => 'Tiedosto, jota yritit lähettää, näyttää olevan tyhjä. Tarkista, että kirjoitit polun ja nimen oikein ja että se ei ole liian suuri kohdepalvelimelle.',
 'fileexists'                  => 'Samanniminen tiedosto on jo olemassa. Katso tiedoston sivu $1, jos et ole varma, haluatko muuttaa sitä.',
+'fileexists-extension'        => 'Tiedosto, jolla on samankaltainen nimi, on jo olemassa:<br />
+Tallennetun tiedoston nimi: <strong><tt>$1</tt></strong><br />
+Olemassa olevan tiedoston nimi: <strong><tt>$2</tt></strong><br />
+Ainoa ero on tiedostopäätteen kirjainkoko. Tarkista ovatko tiedostot identtisiä.',
+'fileexists-thumb'            => "'''<center>Olemassa oleva kuva</center>'''",
+'fileexists-thumbnail-yes'    => 'Tiedosto näyttäisi olevan pienennetty kuva <i>(pienoiskuva)</i>. Tarkista tiedosto <strong><tt>$1</tt></strong>.<br />
+Jos yllä oleva tiedosto on alkuperäisversio samasta kuvasta, ei sille tarvi tallentaa pienoiskuvaa.',
+'file-thumbnail-no'           => 'Tiedostonimi alkaa merkkijonolla <strong><tt>$1</tt></strong>. Tiedosto näyttäisi olevan pienennetty kuva <i>(pienoiskuva)</i>.
+Jos sinulla on tämän kuvan alkuperäinen versio, tallenna se. Muussa tapauksessa nimeä tiedosto uudelleen.',
 'fileexists-forbidden'        => 'Samanniminen tiedosto on jo olemassa. Tallenna tiedosto jollakin toisella nimellä. Nykyinen tiedosto: [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Samanniminen tiedosto on jo olemassa jaetussa mediavarastossa. Tallenna tiedosto jollakin toisella nimellä. Nykyinen tiedosto: [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Tallennus onnistui',
@@ -986,7 +1031,8 @@ Huomaa, että {{GRAMMAR:inessive|{{SITENAME}}}} muut voivat muokata tai poistaa 
 'unusedtemplateswlh'  => 'muut linkit',
 
 # Random redirect
-'randomredirect' => 'Satunnainen uudelleenohjaus',
+'randomredirect'         => 'Satunnainen uudelleenohjaus',
+'randomredirect-nopages' => 'Tässä nimiavaruudessa ei ole uudelleenohjauksia.',
 
 # Statistics
 'statistics'             => 'Tilastot',
@@ -1014,6 +1060,11 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'brokenredirects-edit'   => '(muokkaa)',
 'brokenredirects-delete' => '(poista)',
 
+'withoutinterwiki'        => 'Sivut, joilla ei ole kielilinkkejä',
+'withoutinterwiki-header' => 'Seuraavat sivut eivät viittaa erikielisiin versioihin:',
+
+'fewestrevisions' => 'Sivut, joilla on vähiten muutoksia',
+
 # Miscellaneous special pages
 'nbytes'                  => '$1 {{PLURAL:$1|tavu|tavua}}',
 'ncategories'             => '$1 {{PLURAL:$1|luokka|luokkaa}}',
@@ -1040,6 +1091,7 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'allpages'                => 'Kaikki sivut',
 'prefixindex'             => 'Sivut otsikon alun mukaan',
 'randompage'              => 'Satunnainen sivu',
+'randompage-nopages'      => 'Tässä nimiavaruudessa ei ole sivuja.',
 'shortpages'              => 'Lyhyet sivut',
 'longpages'               => 'Pitkät sivut',
 'deadendpages'            => 'Sivut, joilla ei ole linkkejä',
@@ -1075,9 +1127,16 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'isbn'               => 'ISBN',
 'alphaindexline'     => '$1…$2',
 'version'            => 'Versio',
-'log'                => 'Lokit',
-'alllogstext'        => 'Yhdistetty lokien näyttö. Voit rajoittaa listaa valitsemalla lokityypin, käyttäjän tai sivun johon muutos on kohdistunut.',
-'logempty'           => 'Ei tapahtumia lokissa.',
+
+# Special:Log
+'specialloguserlabel'  => 'Käyttäjä',
+'speciallogtitlelabel' => 'Kohde',
+'log'                  => 'Lokit',
+'log-search-legend'    => 'Etsi lokeista',
+'log-search-submit'    => 'Hae',
+'alllogstext'          => 'Yhdistetty lokien näyttö. Voit rajoittaa listaa valitsemalla lokityypin, käyttäjän tai sivun johon muutos on kohdistunut.',
+'logempty'             => 'Ei tapahtumia lokissa.',
+'log-title-wildcard'   => 'Kohde alkaa merkkijonolla',
 
 # Special:Allpages
 'nextpage'          => 'Seuraava sivu ($1)',
@@ -1088,7 +1147,7 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'allnotinnamespace' => 'Kaikki sivut, jotka eivät ole nimiavaruudessa $1',
 'allpagesprev'      => 'Edellinen',
 'allpagesnext'      => 'Seuraava',
-'allpagessubmit'    => 'Vaihda',
+'allpagessubmit'    => 'Hae',
 'allpagesprefix'    => 'Näytä sivut, joiden otsikko alkaa',
 'allpagesbadtitle'  => 'Annettu otsikko oli kelvoton tai siinä oli wikien välinen etuliite.',
 
@@ -1119,6 +1178,7 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 
 # Watchlist
 'watchlist'            => 'Tarkkailulista',
+'mywatchlist'          => 'Tarkkailulista',
 'watchlistfor'         => 'käyttäjälle <b>$1</b>',
 'nowatchlist'          => 'Tarkkailulistallasi ei ole sivuja.',
 'watchlistanontext'    => 'Sinun täytyy $1, jos haluat käyttää tarkkailulistaa.',
@@ -1207,7 +1267,7 @@ Palaute ja lisäapu osoitteessa:
 'historywarning'              => 'Varoitus: Sivulla, jonka aiot poistaa on muokkaushistoria:',
 'confirmdeletetext'           => 'Olet poistamassa sivun tai tiedoston ja kaiken sen historian. Ymmärrä teon seuraukset ja tee poisto {{GRAMMAR:genitive|{{SITENAME}}}} [[{{MediaWiki:policy-url}}|käytäntöjen]] mukaisesti.',
 'actioncomplete'              => 'Toiminto suoritettu',
-'deletedtext'                 => "'''[[Special:Undelete/$1|$1]]''' on poistettu. Katso $2 nähdäksesi listan viimeaikaisista poistoista.",
+'deletedtext'                 => "'''[[Special:Undelete/$1|$1]]''' on poistettu. Sivulla $2 on lista viimeaikaisista poistoista.",
 'deletedarticle'              => 'poisti sivun $1',
 'dellogpage'                  => 'Poistoloki',
 'dellogpagetext'              => 'Alla on loki viimeisimmistä poistoista.',
@@ -1241,15 +1301,22 @@ Palaute ja lisäapu osoitteessa:
 'confirmunprotect'            => 'Vahvista suojauksen poisto',
 'unprotectcomment'            => 'Syy suojauksen poistoon',
 'protect-unchain'             => 'Käytä siirtosuojausta',
-'protect-text'                => 'Voit katsoa ja muuttaa sivun ”<strong>$1</strong>” suojauksia:',
-'protect-viewtext'            => 'Et voi muuttaa sivun ”<strong>$1</strong>” suojauksia. Alla on sivun nykyiset suojaukset:',
-'protect-cascadeon'           => 'Tämä sivu on suojauksen kohteena, koska se on sisällytetty alla oleviin laajennetusti suojattuihin sivuihin. Voit muuttaa tämän sivun suojaustasoa, mutta se ei vaikuta laajennettuun suojaukseen.',
+'protect-text'                => 'Voit katsoa ja muuttaa sivun ”<strong>$1</strong>” suojauksia.',
+'protect-locked-blocked'      => 'Et voi muuttaa sivun suojauksia, koska sinut on estetty. Alla on sivun ”<strong>$1</strong>” nykyiset suojaukset:',
+'protect-locked-dblock'       => 'Sivun suojauksia ei voi muuttaa, koska tietokanta on lukittu. Alla on sivun ”<strong>$1</strong>” nykyiset suojaukset:',
+'protect-locked-access'       => 'Sinulla ei ole tarvittavia oikeuksia sivujen suojauksen muuttamiseen. Alla on sivun ”<strong>$1</strong>” nykyiset suojaukset:',
+'protect-cascadeon'           => 'Tämä sivu on suojauksen kohteena, koska se on sisällytetty alla {{PLURAL:$1|olevaan laajennetusti suojattuun sivuun|oleviin laajennetusti suojattuihin sivuihin}}. Voit muuttaa tämän sivun suojaustasoa, mutta se ei vaikuta laajennettuun suojaukseen.',
 'protect-default'             => '(ei rajoituksia)',
 'protect-level-autoconfirmed' => 'Estä uudet ja anonyymit käyttäjät',
 'protect-level-sysop'         => 'Vain ylläpitäjät',
 'protect-summary-cascade'     => 'laajennettu',
 'protect-expiring'            => 'vanhenee $1',
 'protect-cascade'             => 'Laajenna suojaus koskemaan kaikkia tähän sivuun sisällytettyjä sivuja.',
+'restriction-type'            => 'Rajoitus',
+'restriction-level'           => 'Suojaus',
+'minimum-size'                => 'Vähimmäiskoko',
+'maximum-size'                => 'Enimmäiskoko',
+'pagesize'                    => 'tavua',
 
 # Restrictions (nouns)
 'restriction-edit' => 'muokkaus',
@@ -1258,6 +1325,7 @@ Palaute ja lisäapu osoitteessa:
 # Restriction levels
 'restriction-level-sysop'         => 'täysin suojattu',
 'restriction-level-autoconfirmed' => 'osittaissuojattu',
+'restriction-level-all'           => 'mikä tahansa suojaus',
 
 # Undelete
 'undelete'                 => 'Palauta poistettuja sivuja',
@@ -1265,9 +1333,9 @@ Palaute ja lisäapu osoitteessa:
 'viewdeletedpage'          => 'Poistettujen sivujen selaus',
 'undeletepagetext'         => 'Seuraavat sivut on poistettu, mutta ne löytyvät vielä arkistosta, joten ne ovat palautettavissa. Arkisto saatetaan tyhjentää aika ajoin.',
 'undeleteextrahelp'        => 'Palauta sivu valitsemalla <b><i>Palauta</i></b>. Voit palauttaa versiota valikoivasti valitsemalla vain niiden versioiden valintalaatikot, jotka haluat palauttaa.',
-'undeletearticle'          => 'Palauta poistettu sivu',
 'undeleterevisions'        => '{{PLURAL:$1|Versio|$1 versiota}} arkistoitu.',
 'undeletehistory'          => 'Jos palautat sivun, kaikki versiot lisätään sivun historiaan. Jos uusi sivu samalla nimellä on luotu poistamisen jälkeen, palautetut versiot lisätään sen historiaan, ja olemassa olevaa versiota ei korvata automaattisesti.',
+'undeleterevdel'           => 'Palautusta ei tehdä, jos sen seurauksena sivun uusin versio olisi osittain poistettu. Tässä tilanteessa poista uusimman poistetan version piilotus. Tiedostoversioita, joihin sinulla ei ole katseluoikeutta ei palauteta.',
 'undeletehistorynoadmin'   => 'Tämä sivu on poistettu. Syy sivun poistamiseen näkyy yhteenvedossa, jossa on myös tiedot, ketkä ovat muokanneet tätä sivua ennen poistamista. Sivujen varsinainen sisältö on vain ylläpitäjien luettavissa.',
 'undelete-revision'        => 'Poistettu sivu $1 hetkellä $2',
 'undeleterevision-missing' => 'Virheellinen tai puuttuva versio. Se on saatettu palauttaa tai poistaa arkistosta.',
@@ -1289,23 +1357,23 @@ Palaute ja lisäapu osoitteessa:
 'undelete-no-results'      => 'Poistoarkistosta ei löytynyt haettuja sivuja.',
 
 # Namespace form on various pages
-'namespace' => 'Nimiavaruus:',
+'namespace' => 'Nimiavaruus',
 'invert'    => 'Käännä nimiavaruusvalinta päinvastaiseksi',
 
 # Contributions
 'contributions' => 'Käyttäjän muokkaukset',
 'mycontris'     => 'Muokkaukset',
-'contribsub'    => 'Käyttäjän $1 muokkaukset',
+'contribsub2'   => 'Käyttäjän $1 ($2) muokkaukset',
 'nocontribs'    => 'Näihin ehtoihin sopivia muokkauksia ei löytynyt.',
 'ucnote'        => "Alla on '''$1''' viimeisintä tämän käyttäjän tekemää muokkausta viimeisten '''$2''' päivän aikana.",
 'uclinks'       => 'Katso $1 viimeisintä muokkausta; katso $2 viimeisintä päivää.',
 'uctop'         => ' (uusin)',
-'newbies'       => 'tulokkaat',
 
 'sp-contributions-newest'      => 'Uusimmat',
 'sp-contributions-oldest'      => 'Vanhimmat',
 'sp-contributions-newer'       => '← $1 uudempaa',
 'sp-contributions-older'       => '$1 vanhempaa →',
+'sp-contributions-newbies'     => 'Näytä uusien tulokkaiden muutokset',
 'sp-contributions-newbies-sub' => 'Uusien tulokkaiden muokkaukset',
 'sp-contributions-blocklog'    => 'estot',
 'sp-contributions-search'      => 'Etsi muokkauksia',
@@ -1315,14 +1383,17 @@ Palaute ja lisäapu osoitteessa:
 'sp-newimages-showfrom' => 'Näytä uudet kuvat alkaen $1',
 
 # What links here
-'whatlinkshere' => 'Tänne viittaavat sivut',
-'notargettitle' => 'Ei kohdetta',
-'notargettext'  => 'Et ole määritellyt kohdesivua tai -käyttäjää johon toiminto kohdistuu.',
-'linklistsub'   => 'Lista linkeistä',
-'linkshere'     => 'Seuraavilta sivuilta on linkki sivulle <b>[[:$1]]</b>:',
-'nolinkshere'   => 'Sivulle <b>[[:$1]]</b> ei ole linkkejä.',
-'isredirect'    => 'uudelleenohjaussivu',
-'istemplate'    => 'sisällytetty mallineeseen',
+'whatlinkshere'      => 'Tänne viittaavat sivut',
+'notargettitle'      => 'Ei kohdetta',
+'notargettext'       => 'Et ole määritellyt kohdesivua tai -käyttäjää johon toiminto kohdistuu.',
+'linklistsub'        => 'Lista linkeistä',
+'linkshere'          => 'Seuraavilta sivuilta on linkki sivulle <strong>[[:$1]]</strong>:',
+'nolinkshere'        => 'Sivulle <strong>[[:$1]]</strong> ei ole linkkejä.',
+'nolinkshere-ns'     => 'Sivulle <strong>[[:$1]]</strong> ei ole linkkejä valitussa nimiavaruudessa.',
+'isredirect'         => 'uudelleenohjaussivu',
+'istemplate'         => 'sisällytetty mallineeseen',
+'whatlinkshere-prev' => '← {{PLURAL:$1|edellinen sivu|$1 edellistä sivua}}',
+'whatlinkshere-next' => '{{PLURAL:$1|seuraava sivu|$1 seuraavaa sivua}} →',
 
 # Block/unblock
 'blockip'                     => 'Aseta muokkausesto',
@@ -1331,6 +1402,16 @@ Palaute ja lisäapu osoitteessa:
 'ipadressorusername'          => 'IP-osoite tai käyttäjätunnus',
 'ipbexpiry'                   => 'Umpeutuu',
 'ipbreason'                   => 'Syy',
+'ipbreasonotherlist'          => 'Muu syy',
+'ipbreason-dropdown'          => '
+*Yleiset estosyyt
+** Väärän tiedon lisääminen
+** Sisällön poistaminen
+** Mainoslinkkien lisääminen
+** Sotkeminen tai roskan lisääminen
+** Häiriköinti
+** Useamman käyttäjätunnuksen väärinkäyttö
+** Sopimaton käyttäjätunnus',
 'ipbanononly'                 => 'Estä vain kirjautumattomat käyttäjät',
 'ipbcreateaccount'            => 'Estä tunnusten luonti',
 'ipbenableautoblock'          => 'Estä viimeisin IP-osoite, josta käyttäjä on muokannut, sekä ne osoitteet, joista hän jatkossa yrittää muokata.',
@@ -1338,9 +1419,12 @@ Palaute ja lisäapu osoitteessa:
 'ipbother'                    => 'Vapaamuotoinen kesto',
 'ipboptions'                  => '2 tuntia:2 hours,1 päivä:1 day,3 päivää:3 days,1 viikko:1 week,2 viikkoa:2 weeks,1 kuukausi:1 month,3 kuukautta:3 months,6 kuukautta:6 months,1 vuosi:1 year,ikuisesti:infinite',
 'ipbotheroption'              => 'Muu kesto',
+'ipbotherreason'              => 'Muu syy',
+'ipbhidename'                 => 'Piilota IP-osoite tai tunnus estolokista, muokkausestolistasta ja käyttäjälistasta',
 'badipaddress'                => 'IP-osoite on väärin muotoiltu.',
 'blockipsuccesssub'           => 'Esto onnistui',
 'blockipsuccesstext'          => "Käyttäjä tai IP-osoite '''$1''' on estetty.<br />Nykyiset estot löytyvät [[Special:Ipblocklist|estolistalta]].",
+'ipb-edit-dropdown'           => 'Muokkaa syitä',
 'ipb-unblock-addr'            => 'Poista käyttäjän $1 esto',
 'ipb-unblock'                 => 'Poista käyttäjän tai IP-osoitteen muokkausesto',
 'ipb-blocklist-addr'          => 'Näytä käyttäjän $1 estot',
@@ -1368,7 +1452,7 @@ Palaute ja lisäapu osoitteessa:
 'unblocklogentry'             => 'poisti käyttäjältä $1 muokkauseston',
 'block-log-flags-anononly'    => 'vain kirjautumattomat käyttäjät',
 'block-log-flags-nocreate'    => 'tunnusten luonti estetty',
-'block-log-flags-autoblock'   => 'automaattinen IP-osoitteiden esto',
+'block-log-flags-noautoblock' => 'ei automaattista IP-osoitteiden estoa',
 'range_block_disabled'        => 'Ylläpitäjän oikeus luoda alue-estoja ei ole käytössä.',
 'ipb_expiry_invalid'          => 'Virheellinen umpeutumisaika.',
 'ipb_already_blocked'         => '”$1” on jo estetty.',
@@ -1456,10 +1540,14 @@ Sivujen koko historian vienti on estetty suorituskykysyistä.',
 'allmessagesmodified'       => 'Näytä vain muutetut',
 
 # Thumbnails
-'thumbnail-more'  => 'Suurenna',
-'missingimage'    => '<b>Puuttuva kuva</b><br /><i>$1</i>',
-'filemissing'     => 'Tiedosto puuttuu',
-'thumbnail_error' => 'Pienoiskuvan luominen epäonnistui: $1',
+'thumbnail-more'           => 'Suurenna',
+'missingimage'             => '<b>Puuttuva kuva</b><br /><i>$1</i>',
+'filemissing'              => 'Tiedosto puuttuu',
+'thumbnail_error'          => 'Pienoiskuvan luominen epäonnistui: $1',
+'djvu_page_error'          => 'DjVu-tiedostossa ei ole pyydettyä sivua',
+'djvu_no_xml'              => 'DjVu-tiedoston XML-vienti epäonnistui',
+'thumbnail_invalid_params' => 'Virheelliset parametrit pienoiskuvalle',
+'thumbnail_dest_directory' => 'Kohdehakemiston luominen ei onnistunut',
 
 # Special:Import
 'import'                     => 'Tuo sivuja',
@@ -1642,17 +1730,11 @@ Sivujen koko historian vienti on estetty suorituskykysyistä.',
 'showhidebots' => '($1 botit)',
 'noimages'     => 'Ei uusia kuvia.',
 
-# Labels for User: and Title: on Special:Log pages
-'specialloguserlabel'  => 'Käyttäjä:',
-'speciallogtitlelabel' => 'Kohde:',
-
-'passwordtooshort' => 'Salasanasi on liian lyhyt. Salasanan pitää olla vähintään $1 merkkiä pitkä.',
+'passwordtooshort' => 'Salasanasi on ei kelpaa. Salasanan pitää olla vähintään $1 merkkiä pitkä ja eri kuin käyttäjätunnuksesi.',
 
 # Metadata
 'metadata'          => 'Sisältökuvaukset',
-'metadata-help'     => 'Tämä tiedosto sisältää esimerkiksi kuvanlukijan, digikameran tai kuvankäsittelyohjelman lisäämiä lisätietoja. Kaikki tiedot eivät enää välttämättä vastaa todellisuutta, jos kuvaa on muokattu sen alkuperäisen luonnin jälkeen.
-
-This file contains additional information, probably added from the digital camera or scanner used to create or digitize it. If the file has been modified from its original state, some details may not fully reflect the modified image.',
+'metadata-help'     => 'Tämä tiedosto sisältää esimerkiksi kuvanlukijan, digikameran tai kuvankäsittelyohjelman lisäämiä lisätietoja. Kaikki tiedot eivät enää välttämättä vastaa todellisuutta, jos kuvaa on muokattu sen alkuperäisen luonnin jälkeen.',
 'metadata-expand'   => 'Näytä kaikki sisältökuvaukset',
 'metadata-collapse' => 'Näytä vain tärkeimmät sisältökuvaukset',
 'metadata-fields'   => 'Seuraavat kentät ovat esillä kuvasivulla, kun sisältötietotaulukko on pienennettynä.

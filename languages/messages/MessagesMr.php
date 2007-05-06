@@ -31,7 +31,7 @@ $digitTransformTable = array(
 	"8" => "८",
 	"9" => "९"
 );
-$linkTrail = "/^([a-z]+)(.*)\$/sDu";
+$linkTrail = "/^([\xE0\xA4\x80-\xE0\xA5\xA3\xE0\xA5\xB1-\xE0\xA5\xBF\xEF\xBB\xBF\xE2\x80\x8D]+)(.*)$/sDu";
 
 $messages = array(
 'about'         => 'च्या विषयी',
@@ -215,7 +215,7 @@ MySQL returned error "$3: $4".',
 # Contributions
 'contributions' => 'सदस्याचे योगदान',
 'mycontris'     => 'माझे योगदान',
-'contribsub'    => '$1 साठी',
+'contribsub2'    => '$1 ($2) साठी',
 'nocontribs'    => 'या मानदंडाशी जुळणारे बदल सापडले नाहीत.',
 'ucnote'        => 'या सदस्याचे गेल्या <b>$2</b> दिवसातील शेवटचे <b>$1</b> बदल दिले आहेत.',
 'uclinks'       => 'शेवटचे $1 बदल पहा;शेवटचे $2 दिवस पहा.',

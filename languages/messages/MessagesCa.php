@@ -1101,6 +1101,7 @@ respondre.",
 
 # Watchlist
 'watchlist'            => 'Llista de seguiment',
+'mywatchlist'            => 'Llista de seguiment',
 'watchlistfor'         => "(per a '''$1''')",
 'nowatchlist'          => 'No teniu cap element en el vostre llistat de seguiment.',
 'watchlistanontext'    => 'Premeu $1 per a visualitzar o editar elements de la vostra llista de seguiment.',
@@ -1303,7 +1304,7 @@ Consulteu el [[Special:Log/delete|registre d'esborrats]] per a veure els esborra
 # Contributions
 'contributions' => "Contribucions de l'usuari",
 'mycontris'     => 'Contribucions',
-'contribsub'    => 'Per $1',
+'contribsub2'    => 'Per $1 ($2)',
 'nocontribs'    => "No s'ha trobat canvis que encaixessin amb aquests criteris.",
 'ucnote'        => "A sota hi ha els darrers <b>$1</b> canvis d'aquest usuari en els darrers <b>$2</b> dies.",
 'uclinks'       => 'Mostra els darrers $1 canvis; mostra els darrers $2 dies.',

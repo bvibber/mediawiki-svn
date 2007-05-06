@@ -133,6 +133,7 @@ $messages = array(
 'userlogout' => 'иходъ',
 'watch' => 'блюди',
 'watchlist' => 'Мо блюдени',
+'mywatchlist' => 'Мо блюдени',
 'whatlinkshere' => ' Досьдещьнѩ съвѧзи',
 
 );

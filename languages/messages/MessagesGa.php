@@ -924,8 +924,8 @@ leathanach atá i gceist agat.',
 # Email this user
 #
 "mailnologin"   => "Níl aon seoladh maith ann",
-"mailnologintext" => "Ní mór duit bheith  <a href=\"{{localurl:Special:Userlogin\">logáilte isteach</a>
-agus bheith le seoladh ríomhphoist bhailí i do chuid <a href=\"{{localurl:Special:Preferences}}\">sainroghanna</a>
+"mailnologintext" => "Ní mór duit bheith  [[Special:Userlogin|logáilte isteach]]
+agus bheith le seoladh ríomhphoist bhailí i do chuid [[Special:Preferences|sainroghanna]]
 más mian leat ríomhphost a sheoladh chuig úsáideoirí eile.",
 "emailuser"     => "Cuir ríomhphost chuig an úsáideoir seo",
 "emailpage"     => "Seol ríomhphost",
@@ -949,6 +949,7 @@ mian leis ríomhphost a fháil ón úsáideoirí eile.",
 # Watchlist
 #
 "watchlist"     => "Mo liosta faire",
+"mywatchlist"     => "Mo liosta faire",
 "nowatchlist"   => "Níl aon rud i do liosta faire.",
 "watchnologin"  => "Níl tú logáilte isteach",
 /*"watchnologintext"  => "Ní mór duit <a href=\"" .
@@ -1099,7 +1100,7 @@ leathanaigh go huathoibríoch.",
 #
 "contributions" => "Dréachtaí úsáideora",
 "mycontris" => "Mo chuid dréachtaí",
-"contribsub"    => "Do $1",
+"contribsub2"    => "Do $1 ($2)",
 "nocontribs"    => "Níor bhfuarthas aon athrú a raibh cosúil le na crítéir seo.",
 "ucnote"	=> "Is iad seo thíos na <b>$1</b> athruithe is déanaí a rinne an
 

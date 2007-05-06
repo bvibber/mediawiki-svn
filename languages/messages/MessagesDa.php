@@ -662,7 +662,6 @@ så vær sikker på du har læst og følger {{SITENAME}}s
 Følg venligst disse retningslinjer:
 <ul>
 <li>Angiv tydeligt hvor filen stammer fra</li>
-<li>Angiv tydeligt hvilken licens filen er omfattet af, ved at tilføje en af skabelonerne <tt>&#123;{GFDL}}</tt> eller <tt>&#123;{PD}}</tt> eller en af de andre du kan finde på [[{{NS:4}}:Skabeloner#Ophavsret|skabelonsiden]].</li>
 <li>Brug et beskrivende filnavn, så det er til at se hvad filen indeholder</li>
 <li>Tjek i [[Special:Imagelist|listen over filer]] om filen allerede er lagt op</li>
 </ul>
@@ -862,6 +861,7 @@ eller har valgt ikke at modtage e-mail fra andre brugere.",
 # Watchlist
 #
 "watchlist"		=> "Overvågningsliste",
+"mywatchlist"		=> "Overvågningsliste",
 "nowatchlist"	=> "Du har ingenting i din overvågningsliste.",
 "watchnologin"	=> "Ikke logget på",
 "watchnologintext"	=> "Du skal være [[Special:Userlogin|logget på]] for at kunne ændre din overvågningsliste.",
@@ -1012,7 +1012,7 @@ på siden.",
 #
 "contributions"	=> "Brugerbidrag",
 "mycontris" => "Mine bidrag",
-"contribsub"	=> "For $1",
+"contribsub2"	=> "For $1 ($2)",
 "nocontribs"	=> "Ingen ændringer er fundet som opfylder disse kriterier.",
 "ucnote"	=> "Herunder er denne brugers sidste <b>$1</b> ændringer i de
 sidste <b>$2</b> dage.",

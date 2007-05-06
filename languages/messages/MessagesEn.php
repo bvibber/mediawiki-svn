@@ -1472,7 +1472,7 @@ created and by whom, and anything else you may know about it. If this is an imag
 'imagelist_date' => 'Date',
 'imagelist_name' => 'Name',
 'imagelist_user' => 'User',
-'imagelist_size' => 'Size (bytes)',
+'imagelist_size' => 'Size',
 'imagelist_description' => 'Description',
 'imagelist_search_for' => 'Search for image name:',
 
@@ -1759,13 +1759,15 @@ at the bottom of the screen (deleting a content page also deletes the accompanyi
 'enotif_mailer' 		=> '{{SITENAME}} Notification Mailer',
 'enotif_reset'			=> 'Mark all pages visited',
 'enotif_newpagetext'=> 'This is a new page.',
+'enotif_impersonal_salutation'	=> '{{SITENAME}} user',
 'changed'			=> 'changed',
 'created'			=> 'created',
 'enotif_subject' 	=> '{{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED by $PAGEEDITOR',
 'enotif_lastvisited' => 'See $1 for all changes since your last visit.',
+'enotif_lastdiff' => 'See $1 to view this change.',
 'enotif_body' => 'Dear $WATCHINGUSERNAME,
 
-the {{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED on $PAGEEDITDATE by $PAGEEDITOR, see $PAGETITLE_URL for the current version.
+The {{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED on $PAGEEDITDATE by $PAGEEDITOR, see $PAGETITLE_URL for the current version.
 
 $NEWPAGE
 
@@ -1883,13 +1885,11 @@ Here are the current settings for the page <strong>$1</strong>:',
 can be restored. The archive may be periodically cleaned out.',
 'undeleteextrahelp' => "To restore the entire page, leave all radios deselected and click '''''Restore'''''. 
 To perform a selective restoration, check the desired restore point below and click '''''Restore'''''. 
-Clicking '''''Reset''''' will clear the comment field and all radios. Use the '''''show/hide''''' links to 
-set restrictions on individual revisions, which will remain on the revisions even when restored.",
+Clicking '''''Reset''''' will clear the comment field and reset the form.",
 'undeleterevisions' => "$1 {{PLURAL:$1|revision|revisions}} archived",
 'undeletehistory' => 'If you restore the page, the revisions will be restored to the page history.
 If a new page with the same name has been created since the deletion, the restored
-revisions will appear in the prior history, and the current revision of the live page
-will not be automatically replaced.', 
+revisions will appear in the prior history.', 
 'undeleterevdel' => 'Undeletion will not be performed if it would result in the top page or image revision being
 restricted. In such cases, you must remove restrictions on the newest deleted page and/or file revision. 
 Additionally, restoration will not be performed if it would result in an alternating page history between these and 

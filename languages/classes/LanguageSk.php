@@ -2,8 +2,7 @@
 /**
  * Slovak (Slovenčina)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
 class LanguageSk extends Language {
 	# Convert from the nominative form of a noun to some other case
@@ -76,8 +75,8 @@ class LanguageSk extends Language {
 		}
 		return $word;
 	}
-	
-	function convertPlural( $count, $w1, $w2, $w3) {
+
+	function convertPlural( $count, $w1, $w2, $w3, $w4, $w5) {
 		$count = str_replace ('.', '', $count);
 		$forms = array( $w1, $w2, $w3);
 		if ( $count == 1 ) {

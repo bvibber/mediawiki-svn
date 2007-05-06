@@ -3,8 +3,7 @@
   *
   * You can contact Alexander Sigachov (alexander.sigachov at Googgle Mail)
   *
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
   */
 
 /* Please, see Language.php for general function comments */
@@ -57,7 +56,7 @@ class LanguageRu extends Language {
 		return $word;
 	}
 
-	function convertPlural( $count, $wordform1, $wordform2, $wordform3) {
+	function convertPlural( $count, $wordform1, $wordform2, $wordform3, $w4, $w5) {
 		$count = str_replace (' ', '', $count);
 		if ($count > 10 && floor(($count % 100) / 10) == 1) {
 			return $wordform3;

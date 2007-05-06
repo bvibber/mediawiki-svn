@@ -649,7 +649,7 @@ Molimo prijavite se pošto je primite.',
 
 Blokirao vas je korisnik $1. Razlog za blokiranje je \'\'$2\'\'.
 
-Možete kontaktirati korisnika $1 ili nekog drugog [[{{ns:project}}:Administratori|administratora]] kako biste razgovarali o blokadi. Ne možete da koristite opciju "Pošalji e-poštu ovom korisniku" ukoliko nemate valjanu adresu e-pošte navedenu u vašim [[{ns:special}}:Preferences|podešavanjima]]. Vaša trenutna IP adresa je $3. Molimo uključite ovo u svaki vaš zahtev.',
+Možete kontaktirati korisnika $1 ili nekog drugog [[{{ns:project}}:Administratori|administratora]] kako biste razgovarali o blokadi. Ne možete da koristite opciju "Pošalji e-poštu ovom korisniku" ukoliko nemate valjanu adresu e-pošte navedenu u vašim [[Special:Preferences|podešavanjima]]. Vaša trenutna IP adresa je $3. Molimo uključite ovo u svaki vaš zahtev.',
 'blockedoriginalsource' => 'Izvor \'\'\'$1\'\'\' je prikazan ispod:',
 'blockededitsource' => 'Tekst \'\'\'vaših izmena\'\'\' za \'\'\'$1\'\'\' je prikazan ispod:',
 'whitelistedittitle' => 'Obavezno je prijavljivanje za uređivanje',
@@ -1222,6 +1222,7 @@ ili je izabrao da ne prima e-poštu od drugih korisnika.',
 
 # Watchlist
 'watchlist' => 'Moj spisak nadgledanja',
+'mywatchlist' => 'Moj spisak nadgledanja',
 'watchlistfor' => '(za \'\'\'$1\'\'\')',
 'nowatchlist' => 'Nemate ništa na svom spisku nadgledanja.',
 'watchlistanontext' => 'Molimo $1 da biste gledali ili menjali stavke na vašem spisku nadgledanja.',
@@ -1402,7 +1403,7 @@ Pogledajte [[{{ns:special}}:Log/delete|istoriju brisanja]] za spisak skorašnjih
 #
 'contributions' => 'Prilozi korisnika',
 'mycontris' => 'Moji prilozi',
-'contribsub' => 'Za $1',
+'contribsub2' => 'Za $1 ($2)',
 'nocontribs' => 'Nisu nađene promene koje zadovoljavaju ove uslove.',
 'ucnote' => 'Ispod je poslednjih <b>$1</b> promena u poslednjih <b>$2</b> dana.',
 'uclinks' => 'Gledaj poslednjih $1 promena; gledaj poslednjih $2 dana.',

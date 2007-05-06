@@ -608,6 +608,7 @@ o ha optate pro non reciper e-mail de altere usatores.",
 # Watchlist
 #
 "watchlist"		=> "Paginas sub observation",
+"mywatchlist"		=> "Paginas sub observation",
 "nowatchlist"	=> "Tu non ha paginas sub observation.",
 "watchnologin"	=> "Session non aperte",
 "watchnologintext"	=> "Tu debe [[Special:Userlogin|aperir un session]]
@@ -615,7 +616,7 @@ pro modificar tu lista de paginas sub observation.",
 "addedwatch"	=> "Ponite sub observation",
 "addedwatchtext" => "Le pagina \"$1\" es ora in tu [[Special:Watchlist||lista de paginas sub observation]].
 Modificationes futur a iste pagina e su pagina de discussion associate essera listate la,
-e le pagina apparera '''in nigretto''' in le [[Special:Recentchanges}}|lista de modificationes recente]] pro
+e le pagina apparera '''in nigretto''' in le [[Special:Recentchanges|lista de modificationes recente]] pro
 facilitar su identification.
 
 Si tu vole cessar le obsevation de iste pagina posteriormente, clicca \"Cancellar observation\" in le barra de navigation.",
@@ -672,7 +673,7 @@ non essera automaticamente substituite.",
 #
 "contributions"	=> "Contributiones de usator",
 "mycontris" => "Mi contributiones",
-"contribsub"	=> "Pro $1",
+"contribsub2"	=> "Pro $1 ($2)",
 "nocontribs"	=> "Necun modification ha essite trovate secundo iste criterios.",
 "ucnote"		=> "Infra es le <b>$1</b> ultime modificationes de iste usator in le <b>$2</b> ultime dies.",
 "uclinks"		=> "Vider le $1 ultime modificationes; vider le $2 ultime dies.",

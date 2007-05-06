@@ -482,13 +482,13 @@ Es het \'\'\'$8\'\'\' uffegladeni Dateie.
 
 Zuer Ziit stöhn \'\'\'$7\'\'\' Arbete zuem mache aa.',
 # problem with link: [[Project:Benutzer|regischtriirte Benutzer]]
-'userstatstext'         => 'S git \'\'\'$1\'\'\' [[Project:Benutzer|regischtriirte Benutzer]]. Dodrvo sin \'\'\'$2\'\'\' (also \'\'\'$4 %\'\'\') Administratore (lueg au uff $3).',
+'userstatstext'         => 'S git \'\'\'$1\'\'\' regischtriirte Benutzer. Dodrvo sin \'\'\'$2\'\'\' (also \'\'\'$4 %\'\'\') Administratore (lueg au uff $3).',
 'disambiguationspage'   => 'Template:Begriffsklärig',
 'doubleredirects'       => 'Doppelte Redirects',
 'brokenredirects'       => 'Kaputti Wyterleitige',
 'brokenredirectstext'   => 'Di folgende Wyterleitige füered zu Artikel wo\'s gar nid git.',
 'nbytes'                => '$1 {{PLURAL:$1|byte|bytes}}',
-'ncategories'           => '$1 {{PLURAL:$1|Kategori|Kategorie',
+'ncategories'           => '$1 {{PLURAL:$1|Kategori|Kategorie}}',
 'nlinks'                => '$1 {{PLURAL:$1|Gleich|Gleicher}}',
 'nmembers'              => '$1 {{PLURAL:$1|Syte|Sytene}}',
 'nrevisions'            => '$1 {{PLURAL:$1|Revision|Revisione}}',
@@ -546,6 +546,7 @@ Si chönnet d Aazeig iischränke wenn Si e Protokoll, e Benutzername odr e Syten
 'emailsent'             => 'E-Bost furtgschickt',
 'emailsenttext'         => 'Dys e-Mail isch verschickt worde.',
 'watchlist'             => 'Beobachtigslischte',
+'mywatchlist'             => 'Beobachtigslischte',
 'nowatchlist'           => 'Du hesch ke Yträg uf dyre Beobachtigslischte.',
 'watchnologintext'      => 'Du musst [[Special:Userlogin|angemeldet]] sein, um deine Beobachtungsliste zu bearbeiten.',
 'addedwatch'            => 'zue de Beobachtigslischte drzue do',
@@ -626,7 +627,7 @@ Der aktuelle Text des gelöschten Artikels ist nur Administratoren zugänglich.'
 'istemplate'            => 'Vorlageybindig',
 'blockip'               => 'Benutzer bzw. IP blockyre',
 'ipbsubmit'             => 'Adresse blockieren',
-'ipboptions'            => '1 Stunde:1 hour,2 Stunden:2 hours,6 Stunden:6 hours,1 Tag:1 day,3 Tage:3 days,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,1 Jahr:1 year,Für immer:indefinite',
+'ipboptions'            => '1 Stunde:1 hour,2 Stunden:2 hours,6 Stunden:6 hours,1 Tag:1 day,3 Tage:3 days,1 Woche:1 week,2 Wochen:2 weeks,1 Monat:1 month,3 Monate:3 months,1 Jahr:1 year,Für immer:infinite',
 'ipblocklist'           => 'Lischte vo blockierte IP-Adresse',
 'blocklistline'         => '$1, $2 het $3 ($4) gschperrt',
 'blocklink'             => 'spärre',
@@ -816,7 +817,7 @@ sollte umgehend ein Administrator informiert werden!',
 'confirmemail_subject'  => '{{SITENAME}} e-Mail-Adrässbestätigung',
 'confirmemail_body'     => 'Hallo
 
-{{SITENAME}}}}-BenutzerIn «$2» — das bisch allwäg du — het sech vor IP-Adrässen $1 uus mit deren e-Mail-Adrässe bi {{SITENAME}} aagmäldet.
+{{SITENAME}}-BenutzerIn «$2» — das bisch allwäg du — het sech vor IP-Adrässen $1 uus mit deren e-Mail-Adrässe bi {{SITENAME}} aagmäldet.
 
 Für z bestätige, das die Adrässe würklech dir isch, u für dyni erwytereten e-Mail-Funktionen uf {{SITENAME}} yzschalte, tue bitte der folgend Link i dym Browser uuf:
 
