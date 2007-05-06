@@ -943,6 +943,7 @@ class RevisionDeleter {
 	 * @returns string, timestamp on success, false on failure
 	 */		
 	function makeOldImagePublic( $oimage ) {
+		global $wgFileStore;
 	
 		$transaction = new FSTransaction();
 		if( !FileStore::lock() ) {
@@ -950,6 +951,11 @@ class RevisionDeleter {
 			return false;
 		}
 		$group = 'hidden';
+		
+		if ( !isset($wgFileStore[$group]['directory']) ) {
+			wfDebug( __METHOD__.": filestore not configured.\n" );
+			return false;	
+		}
 		
 		$store = FileStore::get( $group );
 		if( !$store ) {
