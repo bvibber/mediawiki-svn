@@ -73,6 +73,7 @@ $wgHooks['ArticleDelete'        ][] = 'oaiUpdateDeleteSetup';
 $wgHooks['ArticleDeleteComplete'][] = 'oaiUpdateDelete';
 $wgHooks['TitleMoveComplete'    ][] = 'oaiUpdateMove';
 $wgHooks['ParserTestTables'     ][] = 'oaiTestTables';
+$wgHooks['ArticleUndelete'      ][] = 'oaiUpdateUndelete';
 
 $oaiDeleteIds = array();
 
@@ -119,6 +120,14 @@ function oaiUpdateMove( $from, $to, $user, $fromid, $toid ) {
 
 function oaiTestTables( &$tables ) {
 	$tables[] = 'updates';
+	return true;
+}
+
+function oaiUpdateUndelete( $title, $isnewid ) {
+	global $wgDBname;
+	$article = new Article($title);
+	$id = $article->getID();
+	oaiUpdatePage( $id, 'modify' );
 	return true;
 }
 
