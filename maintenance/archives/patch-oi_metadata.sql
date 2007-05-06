@@ -1,9 +1,6 @@
--- 
--- patch-indexes.sql
--- 
+
 -- Add data to allow for direct reference to old images
 -- They can be included into pages
--- 
 
 ALTER TABLE /*$wgDBprefix*/oldimage
    DROP INDEX oi_name,

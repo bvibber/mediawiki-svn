@@ -328,9 +328,12 @@ class WikiRevision {
 		} else {
 			$created = false;
 
-			$prior = Revision::loadFromTimestamp( $dbw, $this->title, $this->timestamp );
-			if( !is_null( $prior ) ) {
-				// FIXME: this could fail slightly for multiple matches :P
+			$result = $dbw->select( 'revision', 
+				array('MIN(rev_timestamp) as created', 'MAX(rev_timestamp) as latest'), 
+				array( 'rev_page' => $pageId ), __METHOD__ );
+			$row = $dbw->fetchObject($result);
+			// Don't make fucked up alternating page histories
+			if( $row && $row->latest > $this->timestamp && $row->created < $this->timestamp ) {
 				wfDebug( __METHOD__ . ": skipping existing revision for [[" .
 					$this->title->getPrefixedText() . "]], timestamp " .
 					$this->timestamp . "\n" );
@@ -859,11 +862,20 @@ class ImportStreamSource {
 
 	function newFromURL( $url ) {
 		wfDebug( __METHOD__ . ": opening $url\n" );
-		# fopen-wrappers are normally turned off for security.
-		ini_set( "allow_url_fopen", true );
-		$ret = ImportStreamSource::newFromFile( $url );
-		ini_set( "allow_url_fopen", false );
-		return $ret;
+		# Use the standard HTTP fetch function; it times out
+		# quicker and sorts out user-agent problems which might
+		# otherwise prevent importing from large sites, such
+		# as the Wikimedia cluster, etc.
+		$data = Http::get( $url );
+		if( $data !== false ) {
+			$file = tmpfile();
+			fwrite( $file, $data );
+			fflush( $file );
+			fseek( $file, 0 );
+			return new ImportStreamSource( $file );
+		} else {
+			return new WikiErrorMsg( 'importcantopen' );
+		}
 	}
 
 	public static function newFromInterwiki( $interwiki, $page, $history=false ) {

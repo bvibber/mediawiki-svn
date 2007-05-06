@@ -950,7 +950,7 @@ The reason given is this:
 Expiry of block: $6
 
 You may contact $1 or one of the other
-[[{{ns:project}}:Administrators|administrators]] to discuss the block.
+[[{{MediaWiki:grouppage-sysop}}|administrators]] to discuss the block.
 
 Note that you may not use the "e-mail this user" feature unless you have a valid e-mail address registered in your [[Special:Preferences|user preferences]].
 
@@ -1648,7 +1648,7 @@ further information about books you are looking for:',
 'log'                  => 'Logs',
 'log-search-legend' => 'Search for logs',
 'log-search-submit' => 'Go',
-'alllogstext'          => 'Combined display of all available logs of {{SITENAME}}.
+'alllogstext'          => 'Combined display of all available public logs of {{SITENAME}}.
 You can narrow down the view by selecting a log type, the user name, or the affected page.',
 'logempty'             => 'No matching items in log.',
 'log-title-wildcard' => 'Search titles starting with this text',
@@ -1887,13 +1887,11 @@ can be restored. The archive may be periodically cleaned out.',
 To perform a selective restoration, check the desired restore point below and click '''''Restore'''''. 
 Clicking '''''Reset''''' will clear the comment field and reset the form.",
 'undeleterevisions' => "$1 {{PLURAL:$1|revision|revisions}} archived",
-'undeletehistory' => 'If you restore the page, the revisions will be restored to the page history.
+'undeletehistory' => 'If you restore the page, these revisions will be restored to the page history.
 If a new page with the same name has been created since the deletion, the restored
 revisions will appear in the prior history.', 
-'undeleterevdel' => 'Undeletion will not be performed if it would result in the top page or image revision being
-restricted. In such cases, you must remove restrictions on the newest deleted page and/or file revision. 
-Additionally, restoration will not be performed if it would result in an alternating page history between these and 
-any live revisions for this page. ',
+'undeleterevdel' => 'Undeletion will not be performed if either it would result in the top page or image revision 
+being restricted or it would result in an alternating page history between these and any live revisions for this page. ',
 'restorepoint' => 'Use the radio button column to restore only revisions from the specified time onwards. Note 
 that you will have to re-select any options if you use the history navigation links.',
 'undeletehistorynoadmin' => 'This article has been deleted. The reason for deletion is
@@ -2018,6 +2016,7 @@ pages that were vandalized).",
 to a previously blocked IP address or username.',
 'ipusubmit'		=> 'Unblock this address',
 'unblocked' => '[[User:$1|$1]] has been unblocked',
+'unblocked-id' => 'Block $1 has been removed',
 'ipblocklist'	=> 'List of blocked IP addresses and usernames',
 'ipblocklist-summary'	=> '',
 'ipblocklist-submit'    => 'Search',

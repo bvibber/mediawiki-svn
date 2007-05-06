@@ -342,10 +342,19 @@ class PageArchive {
 			$newid             = 0;
 			$pageId            = $page->page_id;
 			$previousRevId     = $page->page_latest;
-			$previousRev       = Revision::NewFromId($previousRevId);
-			$previousTimestamp = $previousRev ? $previousRev->getTimestamp() : 0;
-			$previousCreated   = $dbw->selectField( 'revision', 'MIN(rev_timestamp)', 
-				array( 'rev_page' => $pageId ), __METHOD__ );
+			# Get the time span of this page
+			$result = $dbw->select( 'revision',
+				array('MIN(rev_timestamp) as created', 'MAX(rev_timestamp) as latest'),
+				array( 'rev_page' => $pageId ),
+				__METHOD__ );
+			
+			if ( $row = $dbw->fetchObject($result) ) {
+				$previousTimestamp = $row->latest;
+				$previousCreated   = $row->created;
+			} else {
+				wfDebug( __METHOD__.": existing page refers to a page_latest that does not exist\n" );
+				return false;
+			}
 		} else {
 			# Have to create a new article...
 			$makepage = true;
@@ -871,7 +880,7 @@ class UndeleteForm {
 			$wgOut->addHtml( $table );
 		}
 	
-		$wgOut->addHTML( "<h2>" . wfMsgHtml( "history" ) . "</h2>\n" );
+		$wgOut->addHTML( "<h2 id=\"pagehistory\">" . wfMsgHtml( "history" ) . "</h2>\n" );
 
 		if( $haveRevisions ) {
 			$wgOut->addHTML( '<p>' . wfMsgHtml( "restorepoint" ) . '</p>' );
@@ -883,7 +892,7 @@ class UndeleteForm {
 		}
 		
 		if( $haveFiles ) {
-			$wgOut->addHtml( "<h2>" . wfMsgHtml( 'imghistory' ) . "</h2>\n" );
+			$wgOut->addHtml( "<h2 id=\"filehistory\">" . wfMsgHtml( 'imghistory' ) . "</h2>\n" );
 			$wgOut->addHTML( wfMsgHtml( "restorepoint" ) );
 			$wgOut->addHtml( "<ul>" );
 			while( $row = $files->fetchObject() ) {

@@ -86,19 +86,17 @@ class LogReader {
 	function limitType( $type ) {
 		global $wgLogRestrictions, $wgUser;
 		
-		// Can user see this log?
-		if ( isset($wgLogRestrictions[$type]) ) {
-			if ( !$wgUser->isAllowed( $wgLogRestrictions[$type] ) ) {
-			return false;
-			}
-		}
-		if ( isset($wgLogRestrictions) ) {
+		// Exclude logs this user can't see
+		if( isset($wgLogRestrictions) ) {
 			foreach ( $wgLogRestrictions as $logtype => $right ) {
-				if ( !$wgUser->isAllowed( $right ) ) {
+				if ( !$wgUser->isAllowed( $right ) || empty( $type ) ) {
 					$safetype = $this->db->strencode( $logtype );
 					$this->whereClauses[] = "log_type <> '$safetype'";
 				}
 			}
+			// Do not add to where clause if user can't see $type log
+			if( isset($wgLogRestrictions[$type]) && !$wgUser->isAllowed( $wgLogRestrictions[$type] ) )
+				return false;
 		}
 		
 		if( empty( $type ) ) {
