@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -33,12 +34,41 @@ import org.wikimedia.lsearch.interoperability.RMIServer;
  *
  */
 public class UpdateThread extends Thread {
+	/** After waiting for some time process updates 
+	 *  Warning: the delay should not be too long, else 
+	 *  the fetch will end in error... 
+	 *  */
+	class DeferredUpdate extends Thread {
+		ArrayList<LocalIndex> forUpdate;
+		long delay;
+		
+		DeferredUpdate(ArrayList<LocalIndex> forUpdate, long delay){
+			this.forUpdate = forUpdate;
+			this.delay = delay;
+		}
+
+		@Override
+		public void run() {
+			try {
+				log.debug("Init deferred update ( "+delay+" ms )");
+				Thread.sleep(delay);
+			} catch (InterruptedException e) {				
+			}
+			// get the new snapshots via rsync, might be lengthy
+			for(LocalIndex li : forUpdate){
+				log.debug("Syncing "+li.iid);
+				rebuild(li); // rsync, update registry, cache
+			}
+		}		
+	}
+		
 	static org.apache.log4j.Logger log = Logger.getLogger(UpdateThread.class);
 	protected RMIMessengerClient messenger;
-	protected GlobalConfiguration global;
+	protected static GlobalConfiguration global;
 	protected IndexRegistry registry;
 	protected long queryInterval;
 	protected SearcherCache cache;
+	protected long delayInterval;
 	
 	protected static UpdateThread instance = null;
 	
@@ -95,11 +125,7 @@ public class UpdateThread extends Thread {
 				}
 			}
 		}
-		// get the new snapshots via rsync, might be lengthy
-		for(LocalIndex li : forUpdate){
-			log.debug("Syncing "+li.iid);
-			rebuild(li); // rsync, update registry, cache
-		}
+		new DeferredUpdate(forUpdate,delayInterval);
 	}
 	
 	/** Rsync a remote snapshot to a local one, updates registry, cache */
@@ -139,24 +165,13 @@ public class UpdateThread extends Thread {
 				File ind = new File(iid.getCanonicalSearchPath());
 
 				if(ind.exists()){ // prepare a local hard-linked copy of index
-					/* TODO: this might work.. need to be tested 
-					String command = "/bin/cp -lr "+ind.getCanonicalPath()+" "+updatepath;
-					log.debug("Running shell command: "+command);
-					Runtime.getRuntime().exec(command).waitFor(); */
-					
-					ind = ind.getCanonicalFile();
-					for(File f: ind.listFiles()){
-						//  a cp -lr command for each file in the index
-						command = "/bin/cp -lr "+ind.getCanonicalPath()+sep+f.getName()+" "+updatepath+sep+f.getName();
-						Process copy;
-						try {
-							log.debug("Running shell command: "+command);
-							copy = Runtime.getRuntime().exec(command);
-							copy.waitFor();
-						} catch (Exception e) {
-							log.error("Error making update hardlinked copy "+updatepath+": "+e.getMessage());
-							continue;
-						}
+					try {
+						// cp -lr update/dbname/timestamp/* update/dbname/timestamp2/ 
+						command = "/bin/cp -lr "+ind.getCanonicalPath()+sep+"*"+" "+updatepath+sep;
+						log.debug("Running shell command: "+command);
+						Runtime.getRuntime().exec(command).waitFor();
+					} catch (Exception e) {
+						log.error("Error making update hardlinked copy "+updatepath+": "+e.getMessage());
 					}
 				}
 
@@ -203,22 +218,9 @@ public class UpdateThread extends Thread {
 	/** Update search cache after successful rsync of update version of index */
 	protected void updateCache(IndexSearcherMul is, LocalIndex li){
 		// do some typical queries to preload some lucene caches, pages into memory, etc..
-		warmupIndexSearcher(is,li.iid);			
+		Warmup.warmupIndexSearcher(is,li.iid);			
 		// add to cache
 		cache.invalidateLocalSearcher(li.iid,is);		
-	}
-	
-	/** Runs some typical queries on a local index searcher to preload caches, pages into memory, etc .. */
-	public static void warmupIndexSearcher(IndexSearcherMul is, IndexId iid){
-		try{
-			WikiQueryParser parser = new WikiQueryParser("contents","main",Analyzers.getSearcherAnalyzer(iid),WikiQueryParser.NamespacePolicy.IGNORE);
-			Query q = parser.parseTwoPass("a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",WikiQueryParser.NamespacePolicy.IGNORE);
-			is.search(q,new NamespaceFilterWrapper(new NamespaceFilter("0")));
-		} catch (IOException e) {
-			log.error("Error warming up local IndexSearcherMul for "+iid);
-		} catch (ParseException e) {
-			log.error("Error parsing query in warmup of IndexSearcherMul for "+iid);
-		}
 	}
 	
 	protected UpdateThread(){
@@ -227,9 +229,9 @@ public class UpdateThread extends Thread {
 		registry = IndexRegistry.getInstance();
 		Configuration config = Configuration.open();
 		// query interval in config is in minutes
-		queryInterval = config.getInt("Search","queryinterval",15) * 60 * 1000;
+		queryInterval = (long)(config.getDouble("Search","updateinterval",15) * 60 * 1000);
+		delayInterval = (long)(config.getDouble("Search","updatedelay",0)*1000);
 		cache = SearcherCache.getInstance();
-		
 	}
 	
 	public static synchronized UpdateThread getInstance(){

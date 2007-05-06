@@ -13,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.NetworkInterface;
 import java.net.URL;
 import java.net.UnknownHostException;
+import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.HashSet;
@@ -52,6 +53,11 @@ public class GlobalConfiguration {
 	/** info about this host */
 	protected static InetAddress myHost;
 	protected static String hostAddr, hostName;	
+	
+	/** OAI repo pattern from mwsearch.conf */
+	protected String OAIRepoPattern;
+	/** Database suffix if dbname, the rest is supposed to be language, e.g srwiki => (suffix wiki) => sr */
+	protected String[] databaseSuffixes;
 	
 	/** All identifiers of all indexes (dbrole -> IndexId) */
 	protected static Hashtable<String,IndexId> indexIdPool = new Hashtable<String,IndexId>();
@@ -180,13 +186,13 @@ public class GlobalConfiguration {
 	 * @param url
 	 * @throws IOException
 	 */
-	public void readFromURL(URL url, String indexpath) throws IOException{
+	public void readFromURL(URL url, String indexpath, String oaiRepo, String[] dbsuffixes) throws IOException{
 		BufferedReader in;
 		try {
 			in = new BufferedReader(
 					new InputStreamReader(
 					url.openStream()));
-			read(in,indexpath);
+			read(in,indexpath,oaiRepo,dbsuffixes);
 		} catch (IOException e) {
 			System.out.println("I/O Error in opening or reading global config at url "+url);
 			throw e;
@@ -214,7 +220,7 @@ public class GlobalConfiguration {
 	 * @param in   opened reader
 	 * @throws IOException
 	 */
-	protected void read(BufferedReader in, String indexpath) throws IOException{
+	protected void read(BufferedReader in, String indexpath, String oaiRepo, String[] dbsuffixes) throws IOException{
 		String line="";		
 		int section = -1; 
 		Pattern roleRegexp = Pattern.compile("\\((.*?)\\)");
@@ -229,6 +235,8 @@ public class GlobalConfiguration {
 		
 		init();
 		this.indexPath = indexpath;
+		this.OAIRepoPattern = oaiRepo == null? "" : oaiRepo;
+		this.databaseSuffixes = dbsuffixes;
 		
 		while((line = in.readLine()) != null){
 			lineNum ++;		
@@ -374,7 +382,8 @@ public class GlobalConfiguration {
 					if(rsyncIndexPath == null)
 						rsyncIndexPath = indexRsyncPath.get("<default>");
 				}
-												
+				String oairepo = MessageFormat.format(OAIRepoPattern,new Object[] {dbname,getLanguage(dbname)});
+				
 				IndexId iid = new IndexId(dbrole,
 						                    type,
 						                    indexHost,
@@ -385,7 +394,8 @@ public class GlobalConfiguration {
 						                    mySearchHosts,
 						                    indexPath,
 						                    myIndex,
-						                    mySearch);
+						                    mySearch,
+						                    oairepo);
 				indexIdPool.put(dbrole,iid);
 			}
 		}
@@ -578,7 +588,17 @@ public class GlobalConfiguration {
 				params.put("code",tokens[1]);
 			
 			if(tokens.length>2)
-				System.out.println("Unrecognized aspell parameters in ("+role+")");
+				System.out.println("Unrecognized language parameters in ("+role+")");
+			
+			dbroles.put(type,params);
+			
+		} else if(type.equals("warmup")){
+			// number of warmup queries
+			if(tokens.length>1)
+				params.put("count",tokens[1]);
+			
+			if(tokens.length>2)
+				System.out.println("Unrecognized warmup parameters in ("+role+")");
 			
 			dbroles.put(type,params);
 			
@@ -619,15 +639,8 @@ public class GlobalConfiguration {
 	}
 	
 	/**
-	 * Get type (single,mainpart,split,etc..) or database being indexed
-	 * @param dbname
-	 * @return set of lowercased type
-	 */
-	public Set<String> getDBTypes(String dbname){
-		return database.get(dbname).keySet();
-	}
-	
-	/**
+	 * Returns parameters of database, i.e. language, warmup ... 
+	 * 
 	 * @param dbname
 	 * @return Hashtable of parameters for dbname.type
 	 */
@@ -653,23 +666,6 @@ public class GlobalConfiguration {
 		System.out.println("Database "+dbname+" does not have a specified type (eg single, mainsplit, split).");
 		return "unknown"; 
 	}
-	
-	/**
-	 * @param dbname
-	 * @return Parameters associated with database index type
-	 */
-	protected Hashtable getMainDBParams(String dbname){
-		Hashtable dbroles =(Hashtable)database.get(dbname); 
-		Enumeration e = dbroles.keys();
-		while(e.hasMoreElements()){
-			String type = (String)e.nextElement();
-			if(type.equals("single") || type.equals("mainsplit") ||
-					type.equals("split"))
-				return (Hashtable)dbroles.get(type);
-		}
-		
-		return new Hashtable(); 
-	}
 
 	/**
 	 * @param db
@@ -689,9 +685,17 @@ public class GlobalConfiguration {
 
 	/** Get language for a dbname */
 	public String getLanguage(String dbname) {
+		// first check explicit language paramter in global settings
 		Hashtable<String,String> lang = database.get(dbname).get("language");
 		if(lang!=null)
 			return lang.get("code");
+		// try to get languages from suffixes
+		if(databaseSuffixes != null){
+			for (String suffix : databaseSuffixes) {
+				if (dbname.endsWith(suffix))
+					return dbname.substring(0, dbname.length() - suffix.length());
+			}	
+		}
 		
 		return "";
 	}
@@ -729,6 +733,5 @@ public class GlobalConfiguration {
 		else
 			return null;
 	}
-
 
 }

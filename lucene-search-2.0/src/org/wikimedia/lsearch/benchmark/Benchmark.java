@@ -106,7 +106,7 @@ public class Benchmark extends Thread {
 		String query = "";
 		for(int i=0;i<words;i++){
 			if(!query.equals(""))
-				query += " OR ";
+				query += " ";
 			query += terms.next();
 		}
 		query = namespace+":"+URLEncoder.encode(query).replaceAll("\\+","%20");
