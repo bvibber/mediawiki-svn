@@ -22,7 +22,7 @@ import org.wikimedia.lsearch.config.IndexId;
  */
 public class IndexUpdateRecord implements Serializable {
 	protected Article article;	
-	public enum Action { ADD, UPDATE, DELETE, DELETE_FINAL };
+	public enum Action { ADD, UPDATE, DELETE };
 	protected Action action;
 	transient protected IndexId iid;
 	protected String dbrole; 
@@ -118,7 +118,7 @@ public class IndexUpdateRecord implements Serializable {
 	 * @return true if update needs to delete the old record
 	 */
 	public boolean doDelete(){
-		return (action == Action.UPDATE || action == Action.DELETE || action == Action.DELETE_FINAL);
+		return (action == Action.UPDATE || action == Action.DELETE);
 	}
 	
 	/**
@@ -128,17 +128,8 @@ public class IndexUpdateRecord implements Serializable {
 		return (action == Action.ADD || action == Action.UPDATE);
 	}
 	
-	/**
-	 * Final delete: if deletion of this record fails, do not try 
-	 * to delete it on other parts of the index (for split index)
-	 *
-	 */
-	public void markAsFinalDelete(){
-		action = Action.DELETE_FINAL;
-	}
-	
-	public boolean isFinal(){
-		return action == Action.DELETE_FINAL;
+	public boolean isDelete(){
+		return action == Action.DELETE;
 	}
 	
 	/**

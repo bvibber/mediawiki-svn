@@ -57,9 +57,8 @@ public class Analyzers {
 		ArrayList<String> categories = tokenizer.getCategories();
 		
 		perFieldAnalyzer = new PerFieldAnalyzerWrapper(new SimpleAnalyzer());
-		Analyzer contentAn = new TwinLanguageAnalyzer(filters,tokenizer); 
-		perFieldAnalyzer.addAnalyzer("contents", contentAn);
-		perFieldAnalyzer.addAnalyzer("stemmed", contentAn);
+		perFieldAnalyzer.addAnalyzer("contents", 
+				new LanguageAnalyzer(filters,tokenizer));
 		perFieldAnalyzer.addAnalyzer("category", 
 				new CategoryAnalyzer(categories));
 		perFieldAnalyzer.addAnalyzer("title",
@@ -89,9 +88,8 @@ public class Analyzers {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		
 		perFieldAnalyzer = new PerFieldAnalyzerWrapper(getTitleAnalyzer(filters));
-		Analyzer contentAn = new QueryLanguageAnalyzer(filters); 
-		perFieldAnalyzer.addAnalyzer("contents", contentAn);
-		perFieldAnalyzer.addAnalyzer("stemmed", contentAn);
+		perFieldAnalyzer.addAnalyzer("contents", 
+				new QueryLanguageAnalyzer(filters));
 		perFieldAnalyzer.addAnalyzer("title",
 				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
 		

@@ -159,6 +159,19 @@ public class SearcherCache {
 		return s;
 	}
 	
+	/** Warmup all local IndexSearcher (create if necessary) */
+	public void warmupLocalCache(){
+		HashSet<IndexId> mys =  global.getMySearch();
+		for(IndexId iid : mys){
+			try {
+				IndexSearcherMul is = getLocalSearcher(iid);
+				Warmup.warmupIndexSearcher(is,iid);
+			} catch (IOException e) {
+				log.warn("I/O error warming index for "+iid);				
+			}
+		}
+	}
+	
 	/** 
 	 * Make a searchable instance, and add it to cache
 	 * @return   the created searchable instance

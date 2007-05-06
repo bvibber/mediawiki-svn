@@ -74,8 +74,15 @@ public class IndexId {
 	protected String searchPath = null;
 	/** Where the indexer places the snapshots */
 	protected String snapshotPath;
+	/** Path of index updates on searcher */
 	protected String updatePath = null;
+	/** Build path for indexes from xml import */
 	protected String importPath;
+	/** Path where status files are for incremental updater */
+	protected String statusPath;
+	
+	/** url of OAI repository */
+	protected String OAIRepository;
 	
 	protected String rsyncSnapshotPath = null;
 
@@ -110,7 +117,7 @@ public class IndexId {
 	public IndexId(String dbrole, String type, String indexHost, String indexRsyncPath, 
 			Hashtable<String, String> typeParams, Hashtable<String, String> params, 
 			HashSet<String> searchHosts, HashSet<String> mySearchHosts, String localIndexPath, 
-			boolean myIndex, boolean mySearch) {
+			boolean myIndex, boolean mySearch, String OAIRepository) {
 		final String sep = Configuration.PATH_SEP;
 		this.indexHost = indexHost;
 		if(!indexRsyncPath.endsWith("/"))
@@ -128,6 +135,7 @@ public class IndexId {
 		this.mySearch = mySearch;
 		this.dbrole = dbrole;
 		this.params = params;
+		this.OAIRepository = OAIRepository;
 		
 		// types
 		if(type.equals("single"))
@@ -180,6 +188,7 @@ public class IndexId {
 		}
 		
 		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + dbrole;
+		statusPath = localIndexPath + "status" + sep + dbrole;
 
 		if(mySearch){
 			searchPath = localIndexPath + "search" + sep + dbrole;
@@ -303,6 +312,10 @@ public class IndexId {
 	/** Where indexes are made when built from XML importing */
 	public String getImportPath() {
 		return importPath;
+	}	
+	/** Status file for incremental updater */ 
+	public String getStatusPath() {
+		return statusPath;
 	}
 
 	/** Get search path with resolved symlinks */
@@ -380,5 +393,11 @@ public class IndexId {
 	public boolean isMySearch() {
 		return mySearch;
 	}
+	/** Get base URL of OAI repository */
+	public String getOAIRepository() {
+		return OAIRepository;
+	}
+	
+	
 		
 }

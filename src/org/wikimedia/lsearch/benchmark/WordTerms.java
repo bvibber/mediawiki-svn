@@ -11,10 +11,17 @@ import java.util.zip.GZIPInputStream;
 public class WordTerms implements Terms {
 	/** load words from file, e.g. ./test-data/words-wikilucene.ngram.gz */
 	public static ArrayList<String> loadWordFreq(String path) throws IOException {
-		BufferedReader in = new BufferedReader(
+		BufferedReader in;
+		if(path.endsWith(".gz"))
+			in = new BufferedReader(
 				new InputStreamReader(
 						new GZIPInputStream(
 								new FileInputStream(path))));
+		else 
+			in = new BufferedReader(
+					new InputStreamReader(
+							new FileInputStream(path)));
+		
 		String line="";
 		ArrayList<String> words = new ArrayList<String>();
 		int freqSum = 0;
@@ -28,7 +35,7 @@ public class WordTerms implements Terms {
 			count++;
 			words.add(parts[0].trim());
 		}
-		System.out.println("Loaded "+count+" words with frequency sum of "+freqSum);
+		//System.out.println("Loaded "+count+" words with frequency sum of "+freqSum);
 		return words;
 	}
 	

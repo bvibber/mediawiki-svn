@@ -580,7 +580,7 @@ public class WikiQueryParser {
 					if(aliasOccur == null); // ignore stemmed/aliases if prefixed with MUST_NOT
 					else if(token.type().equals("stemmed")){						
 						// stemmed word
-						t = new TermQuery(new Term("stemmed",token.termText()));
+						t = new TermQuery(makeTerm(token));
 						t.setBoost(ALIAS_BOOST*defaultBoost);
 						cur.add(t,aliasOccur);
 					} else if(token.type().equals("alias")){

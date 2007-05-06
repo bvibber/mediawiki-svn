@@ -80,7 +80,7 @@ public class GlobalConfigurationTest extends TestCase {
 		String testurl = "file://"+System.getProperty("user.dir")+"/test-data/mwsearch-global.test";
 		try {
 			URL url = new URL(testurl);
-			testgc.readFromURL(url,"/usr/local/var/mwsearch");
+			testgc.readFromURL(url,"/usr/local/var/mwsearch","",null);
 			
 			// database
 			Hashtable database = testgc.getDatabase();			

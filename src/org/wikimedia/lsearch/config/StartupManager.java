@@ -11,6 +11,7 @@ import org.wikimedia.lsearch.frontend.RPCIndexServer;
 import org.wikimedia.lsearch.frontend.SearchServer;
 import org.wikimedia.lsearch.interoperability.RMIServer;
 import org.wikimedia.lsearch.search.NetworkStatusThread;
+import org.wikimedia.lsearch.search.SearcherCache;
 import org.wikimedia.lsearch.search.UpdateThread;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
@@ -44,12 +45,12 @@ public class StartupManager {
 			langCodes.add(global.getLanguage(iid.getDBname()));
 		Localization.readLocalizations(langCodes);
 		Localization.loadInterwiki();
+		// preload the unicode decomposer
+		UnicodeDecomposer.getInstance();
 		
 		RMIServer.bindRMIObjects(); 
 		
 		if(global.isIndexer()){
-			// preload the unicode decomposer
-			UnicodeDecomposer.getInstance();
 			String daemon = config.getString("Index","daemon");
 			// default is http server
 			if(daemon == null || daemon.equalsIgnoreCase("http"))
@@ -62,6 +63,9 @@ public class StartupManager {
 			}
 		}
 		if(global.isSearcher()){
+			// warmup local indexes
+			SearcherCache.getInstance().warmupLocalCache();
+			// startup
 			(new SearchServer()).start();
 			UpdateThread.getInstance().start(); // updater for local indexes
 			NetworkStatusThread.getInstance().start(); // network monitor

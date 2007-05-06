@@ -25,12 +25,19 @@ import org.wikimedia.lsearch.index.WikiSimilarity;
  */
 public class SimpleIndexWriter {
 	static Logger log = Logger.getLogger(SimpleIndexWriter.class);
-	IndexId iid;
-	HashMap<String,IndexWriter> indexes;
-	FilterFactory filters;
+	protected IndexId iid;
+	protected HashMap<String,IndexWriter> indexes;
+	protected FilterFactory filters;
+	protected Boolean optimize;
+	protected Integer mergeFactor, maxBufDocs;
+	protected boolean newIndex;
 	
-	public SimpleIndexWriter(IndexId iid){
+	public SimpleIndexWriter(IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
 		this.iid = iid;
+		this.optimize = optimize;
+		this.mergeFactor = mergeFactor;
+		this.maxBufDocs = maxBufDocs;
+		this.newIndex = newIndex;
 		String langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
 		filters = new FilterFactory(langCode);
 		indexes = new HashMap<String,IndexWriter>();
@@ -54,7 +61,7 @@ public class SimpleIndexWriter {
 		String path = iid.getImportPath();
 		IndexWriter writer;
 		try {
-			writer = new IndexWriter(path,null,false); // never rewrite index, so we can resume
+			writer = new IndexWriter(path,null,newIndex); // if newIndex==true, overwrites old index
 		} catch (IOException e) {				
 			try {
 				// try to make brand new index
@@ -67,10 +74,16 @@ public class SimpleIndexWriter {
 			}				
 		}
 		writer.setSimilarity(new WikiSimilarity());
-		int mergeFactor = iid.getIntParam("mergeFactor",2);
-		int maxBufDocs = iid.getIntParam("maxBufDocs",10);
-		writer.setMergeFactor(mergeFactor);
-		writer.setMaxBufferedDocs(maxBufDocs);
+		int glMergeFactor = iid.getIntParam("mergeFactor",2);
+		int glMaxBufDocs = iid.getIntParam("maxBufDocs",10);
+		if(mergeFactor!=null)
+			writer.setMergeFactor(mergeFactor);
+		else
+			writer.setMergeFactor(glMergeFactor);
+		if(maxBufDocs!=null)
+			writer.setMaxBufferedDocs(maxBufDocs);
+		else
+			writer.setMaxBufferedDocs(glMaxBufDocs);		
 		writer.setUseCompoundFile(true);
 		
 		return writer;
@@ -109,7 +122,11 @@ public class SimpleIndexWriter {
 			IndexId iid = IndexId.get(en.getKey());
 			IndexWriter writer = en.getValue();
 			try{
-				if(iid.getBooleanParam("optimize",true))
+				if(optimize!=null){
+					if(optimize)
+						writer.optimize();
+				}
+				else if(iid.getBooleanParam("optimize",true))
 					writer.optimize();
 				writer.close();
 			} catch(IOException e){

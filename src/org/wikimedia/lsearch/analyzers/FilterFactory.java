@@ -48,8 +48,8 @@ public class FilterFactory {
 		// figure out stemmer
 		useStemmer = true;		
 		if(lang.equals("en"))
-			// snowballName = "English";
-			stemmer = PorterStemFilter.class; // 2x faster but less accurate
+			snowballName = "English";
+			//stemmer = PorterStemFilter.class; // 2x faster but less accurate
 		else if(lang.equals("da"))
 			snowballName = "Danish";
 		else if(lang.equals("nl"))

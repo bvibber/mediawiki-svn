@@ -1,6 +1,7 @@
 package org.wikimedia.lsearch.importer;
 
 import java.io.IOException;
+import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 
 import org.apache.log4j.Logger;
 import org.mediawiki.importer.DumpWriter;
@@ -16,10 +17,12 @@ public class DumpImporter implements DumpWriter {
 	Page page;
 	Revision revision;
 	SimpleIndexWriter writer;
+	int count = 0, limit;
 
-	public DumpImporter(String dbname){
+	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
 		Configuration.open(); // make sure configuration is loaded
-		writer = new SimpleIndexWriter(IndexId.get(dbname));
+		writer = new SimpleIndexWriter(IndexId.get(dbname), optimize, mergeFactor, maxBufDocs, newIndex);
+		this.limit = limit;
 	}
 	public void writeRevision(Revision revision) throws IOException {
 		this.revision = revision;		
@@ -29,7 +32,10 @@ public class DumpImporter implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect());
-		writer.addArticle(article);		
+		writer.addArticle(article);
+		count++;
+		if(limit >= 0 && count > limit)
+			throw new IOException("stopped");
 	}	
 	
 	public void close() throws IOException {

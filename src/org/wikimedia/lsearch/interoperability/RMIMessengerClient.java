@@ -33,12 +33,20 @@ public class RMIMessengerClient {
 	protected static RMIMessengerImpl localMessenger = null;
 	protected static GlobalConfiguration global = null;
 	protected static SearcherCache cache = null;
+	protected boolean alwaysRemote;
 
 	public RMIMessengerClient(){
+		this(false);		
+	}
+
+	/** if alwaysRemote == true, we always use a remote instance of RMIMessenger, even for localhost */
+	public RMIMessengerClient(boolean alwaysRemote){
 		if(localMessenger == null)
 			localMessenger = RMIMessengerImpl.getInstance();
 		if(global == null)
 			global = GlobalConfiguration.getInstance();
+		
+		this.alwaysRemote = alwaysRemote;		
 	}
 	
 	/** notify remote hosts that a local search index is changes (to reload remote object) */
@@ -72,7 +80,7 @@ public class RMIMessengerClient {
 	
 	private RMIMessenger messengerFromCache(String host) throws RemoteException, NotBoundException {
 		// if trying to talk to localhost, return the local RMI object
-		if(global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals("")){
+		if(!alwaysRemote && (global.isLocalhost(host) || host.equals("localhost") || host.equals("127.0.0.1") || host.equals(""))){
 			log.debug("Getting a local RMI messenger for "+host);
 			return localMessenger;
 		}

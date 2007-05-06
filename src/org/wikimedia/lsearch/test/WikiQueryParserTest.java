@@ -122,43 +122,45 @@ public class WikiQueryParserTest extends TestCase {
 			
 			parser = new WikiQueryParser("contents","main",new EnglishAnalyzer(), WikiQueryParser.NamespacePolicy.REWRITE);
 			q = parser.parseRaw("main_talk:laziness");
-			assertEquals("+namespace:1 +(contents:laziness stemmed:lazi^0.5)",q.toString());
+			assertEquals("+namespace:1 +(contents:laziness contents:lazi^0.5)",q.toString());
 						
 			q = parser.parse("main_talk:laziness");
-			assertEquals("+namespace:1 +(+(contents:laziness stemmed:lazi^0.5) title:laziness^2.0)",q.toString());
+			assertEquals("+namespace:1 +(+(contents:laziness contents:lazi^0.5) title:laziness^2.0)",q.toString());
 			
 			q = parser.parseRaw("(help:beans AND category:food) OR (help_talk:orchid AND category:\"some flowers\")");
-			assertEquals("(+namespace:12 +(+(contents:beans stemmed:bean^0.5) +category:food)) (+namespace:13 +(+contents:orchid +category:\"some flowers\"))",q.toString());
+			assertEquals("(+namespace:12 +(+(contents:beans contents:bean^0.5) +category:food)) (+namespace:13 +(+contents:orchid +category:\"some flowers\"))",q.toString());
 			
 			q = parser.parse("(help:beans AND category:food) OR (help_talk:orchid AND category:\"some flowers\")");
-			assertEquals("(+namespace:12 +(+(+(contents:beans stemmed:bean^0.5) title:beans^2.0) +category:food)) (+namespace:13 +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0))",q.toString());
+			assertEquals("(+namespace:12 +(+(+(contents:beans contents:bean^0.5) title:beans^2.0) +category:food)) (+namespace:13 +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0))",q.toString());
 
 			q = parser.parse("(help:making something category:blah) OR (rest category:crest)");
-			assertEquals("(+namespace:12 +(+(+(contents:making stemmed:make^0.5) title:making^2.0) +(+(contents:something stemmed:someth^0.5) title:something^2.0) +category:blah)) (+namespace:0 +(+(+contents:rest +category:crest) title:rest^2.0))",q.toString());
+			assertEquals("(+namespace:12 +(+(+(contents:making contents:make^0.5) title:making^2.0) +(+(contents:something contents:someth^0.5) title:something^2.0) +category:blah)) (+namespace:0 +(+(+contents:rest +category:crest) title:rest^2.0))",q.toString());
 			
 			parser = new WikiQueryParser("contents",new EnglishAnalyzer());
 
 			q = parser.parseRaw("laziness");
-			assertEquals("contents:laziness stemmed:lazi^0.5",q.toString());
+			assertEquals("contents:laziness contents:lazi^0.5",q.toString());
 
 			q = parser.parseRaw("laziness beans");
-			assertEquals("+(contents:laziness stemmed:lazi^0.5) +(contents:beans stemmed:bean^0.5)",q.toString());
+			assertEquals("+(contents:laziness contents:lazi^0.5) +(contents:beans contents:bean^0.5)",q.toString());
 
 			q = parser.parse("laziness");
-			assertEquals("+(contents:laziness stemmed:lazi^0.5) title:laziness^2.0",q.toString());
+			assertEquals("+(contents:laziness contents:lazi^0.5) title:laziness^2.0",q.toString());
 
 			q = parser.parseRaw("(beans AND category:food) (orchid AND category:\"some flowers\")");
-			assertEquals("+(+(contents:beans stemmed:bean^0.5) +category:food) +(+contents:orchid +category:\"some flowers\")",q.toString());
+			assertEquals("+(+(contents:beans contents:bean^0.5) +category:food) +(+contents:orchid +category:\"some flowers\")",q.toString());
 
 			q = parser.parseRaw("(Beans AND category:FOod) (orchID AND category:\"some FLOWERS\")");
-			assertEquals("+(+(contents:beans stemmed:bean^0.5) +category:food) +(+contents:orchid +category:\"some flowers\")",q.toString());
+			assertEquals("+(+(contents:beans contents:bean^0.5) +category:food) +(+contents:orchid +category:\"some flowers\")",q.toString());
 
 			q = parser.parse("(beans AND category:food) (orchid AND category:\"some flowers\")");
-			assertEquals("+(+(+(contents:beans stemmed:bean^0.5) title:beans^2.0) +category:food) +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0)",q.toString());
+			assertEquals("+(+(+(contents:beans contents:bean^0.5) title:beans^2.0) +category:food) +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0)",q.toString());
 
 			q = parser.parse("(beans AND category:food) +(orchid AND category:\"some flowers\")");
-			assertEquals("+(+(+(contents:beans stemmed:bean^0.5) title:beans^2.0) +category:food) +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0)",q.toString());
-	
+			assertEquals("+(+(+(contents:beans contents:bean^0.5) title:beans^2.0) +category:food) +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0)",q.toString());
+			
+			q = parser.parse("main:cheese contents:greek");
+			assertEquals("+(+(main:cheese main:chees^0.5) +contents:greek) title:greek^2.0",q.toString());
 			
 			fields = parser.getFields("(help:making breakfast) food");
 			assertEquals(2,fields.size());
@@ -184,61 +186,52 @@ public class WikiQueryParserTest extends TestCase {
 			Analyzer analyzer = Analyzers.getSearcherAnalyzer("en");
 			parser = new WikiQueryParser("contents","main",analyzer,NamespacePolicy.LEAVE);
 			q = parser.parseTwoPass("beans everyone",null);
-			assertEquals("(+(contents:beans stemmed:bean^0.5) +(contents:everyone stemmed:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());
-			
-			q = parser.parseTwoPass("\"lazy dog\"",NamespacePolicy.IGNORE);
-			assertEquals("contents:\"lazy dog\" title:\"lazy dog\"^2.0",q.toString());
+			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("(beans category:plants) OR (orchid category:flowers)",null);
-			assertEquals("((+(contents:beans stemmed:bean^0.5) +category:plants) (+(contents:orchid stemmed:orchid^0.5) +category:flowers)) ((+title:beans^2.0 +category:plants) (+title:orchid^2.0 +category:flowers))",q.toString());
+			assertEquals("((+(contents:beans contents:bean^0.5) +category:plants) (+contents:orchid +category:flowers)) ((+title:beans^2.0 +category:plants) (+title:orchid^2.0 +category:flowers))",q.toString());
 
 			q = parser.parseTwoPass("main:beans everyone",NamespacePolicy.IGNORE);
-			assertEquals("(+(contents:beans stemmed:bean^0.5) +(contents:everyone stemmed:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());
+			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("beans everyone",NamespacePolicy.REWRITE);
-			assertEquals("(+namespace:0 +(+(contents:beans stemmed:bean^0.5) +(contents:everyone stemmed:everyon^0.5))) (+namespace:0 +(+title:beans^2.0 +title:everyone^2.0))",q.toString());
+			assertEquals("(+namespace:0 +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+namespace:0 +(+title:beans^2.0 +title:everyone^2.0))",q.toString());
 			
 			q = parser.parseTwoPass("(beans category:plants) OR (orchid category:flowers)",NamespacePolicy.REWRITE);
-			assertEquals("((+namespace:0 +(+(contents:beans stemmed:bean^0.5) +category:plants)) (+namespace:0 +(+(contents:orchid stemmed:orchid^0.5) +category:flowers))) ((+namespace:0 +(+title:beans^2.0 +category:plants)) (+namespace:0 +(+title:orchid^2.0 +category:flowers)))",q.toString());
+			assertEquals("((+namespace:0 +(+(contents:beans contents:bean^0.5) +category:plants)) (+namespace:0 +(+contents:orchid +category:flowers))) ((+namespace:0 +(+title:beans^2.0 +category:plants)) (+namespace:0 +(+title:orchid^2.0 +category:flowers)))",q.toString());
 			
 			q = parser.parseTwoPass("main:beans main:everyone",NamespacePolicy.REWRITE);
-			assertEquals("(+namespace:0 +(+(contents:beans stemmed:bean^0.5) +(contents:everyone stemmed:everyon^0.5))) (+namespace:0 +(+title:beans^2.0 +title:everyone^2.0))",q.toString());
+			assertEquals("(+namespace:0 +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+namespace:0 +(+title:beans^2.0 +title:everyone^2.0))",q.toString());
 			
 			q = parser.parseTwoPass("beans everyone (category:people OR category:food)",NamespacePolicy.REWRITE);
-			assertEquals("(+namespace:0 +(+(contents:beans stemmed:bean^0.5) +(contents:everyone stemmed:everyon^0.5) +(category:people category:food))) (+namespace:0 +(+title:beans^2.0 +title:everyone^2.0 +(category:people category:food)))",q.toString());
+			assertEquals("(+namespace:0 +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5) +(category:people category:food))) (+namespace:0 +(+title:beans^2.0 +title:everyone^2.0 +(category:people category:food)))",q.toString());
 			
 			q = parser.parseTwoPass("all:beans everyone",NamespacePolicy.REWRITE);
-			assertEquals("(+(contents:beans stemmed:bean^0.5) +(contents:everyone stemmed:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());
+			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("all:beans everyone",NamespacePolicy.IGNORE);
-			assertEquals("(+(contents:beans stemmed:bean^0.5) +(contents:everyone stemmed:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());			
+			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());			
 			
 			q = parser.parseTwoPass("category:\"french actresses\" category:\"born 1920\"",NamespacePolicy.REWRITE);
 			assertEquals("+category:\"french actresses\" +category:\"born 1920\"",q.toString());
 			
 			q = parser.parseTwoPass("(all:beans everyone) OR (something else) OR (help:editing) AND (all:foo)",NamespacePolicy.REWRITE);
-			assertEquals("((+(contents:beans stemmed:bean^0.5) +(contents:everyone stemmed:everyon^0.5)) (+namespace:0 +(+(contents:something stemmed:someth^0.5) +(contents:else stemmed:els^0.5))) (+namespace:12 +(contents:editing stemmed:edit^0.5)) +(contents:foo stemmed:foo^0.5)) ((+title:beans^2.0 +title:everyone^2.0) (+namespace:0 +(+title:something^2.0 +title:else^2.0)) (+namespace:12 +title:editing^2.0) +title:foo^2.0)",q.toString());
+			assertEquals("((+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+namespace:0 +(+(contents:something contents:someth^0.5) +(contents:else contents:els^0.5))) (+namespace:12 +(contents:editing contents:edit^0.5)) +contents:foo) ((+title:beans^2.0 +title:everyone^2.0) (+namespace:0 +(+title:something^2.0 +title:else^2.0)) (+namespace:12 +title:editing^2.0) +title:foo^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("all:beans -everyone",NamespacePolicy.IGNORE);
-			assertEquals("(+(contents:beans stemmed:bean^0.5) -(contents:everyone)) (+title:beans^2.0 -title:everyone^2.0)",q.toString());
+			assertEquals("(+(contents:beans contents:bean^0.5) -(contents:everyone)) (+title:beans^2.0 -title:everyone^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("all:(beans -everyone)",NamespacePolicy.IGNORE);
-			assertEquals("(+(contents:beans stemmed:bean^0.5) -(contents:everyone)) (+title:beans^2.0 -title:everyone^2.0)",q.toString());
+			assertEquals("(+(contents:beans contents:bean^0.5) -(contents:everyone)) (+title:beans^2.0 -title:everyone^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("all:anti-hero",NamespacePolicy.IGNORE);
-			assertEquals("(+(contents:anti stemmed:anti^0.5) +(contents:hero stemmed:hero^0.5)) (+title:anti^2.0 +title:hero^2.0)",q.toString());
-			
-			q = parser.parseTwoPass("all:anti-hero person",NamespacePolicy.IGNORE);
-			assertEquals("(+(+(contents:anti stemmed:anti^0.5) +(contents:hero stemmed:hero^0.5)) +(contents:person stemmed:person^0.5)) (+(+title:anti^2.0 +title:hero^2.0) +title:person^2.0)",q.toString());
+			assertEquals("(+contents:anti +contents:hero) (+title:anti^2.0 +title:hero^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("main:1991 category:\"olympic cities\" OR all:1990",NamespacePolicy.REWRITE);
-			assertEquals("(+(+namespace:0 +(+(contents:1991 stemmed:1991^0.5) +category:\"olympic cities\")) (contents:1990 stemmed:1990^0.5)) (+(+namespace:0 +(+title:1991^2.0 +category:\"olympic cities\")) title:1990^2.0)",q.toString());
+			assertEquals("(+(+namespace:0 +(+contents:1991 +category:\"olympic cities\")) contents:1990) (+(+namespace:0 +(+title:1991^2.0 +category:\"olympic cities\")) title:1990^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("main:1991 category:\"olympic cities\" -all:1990",NamespacePolicy.REWRITE);
-			assertEquals("(+(+namespace:0 +(+(contents:1991 stemmed:1991^0.5) +category:\"olympic cities\")) -(contents:1990)) (+(+namespace:0 +(+title:1991^2.0 +category:\"olympic cities\")) -title:1990^2.0)",q.toString());
-						
-			q = parser.parseTwoPass("null:tints",NamespacePolicy.IGNORE);
-			assertEquals("(contents:tints stemmed:tint^0.5) title:tints^2.0",q.toString());
+			assertEquals("(+(+namespace:0 +(+contents:1991 +category:\"olympic cities\")) -contents:1990) (+(+namespace:0 +(+title:1991^2.0 +category:\"olympic cities\")) -title:1990^2.0)",q.toString());
 			
 			// Localization tests
 			analyzer = Analyzers.getSearcherAnalyzer("sr");

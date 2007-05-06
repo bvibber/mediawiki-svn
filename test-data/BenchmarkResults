@@ -126,12 +126,31 @@ For total of 50000 runs (5000 runs per 10 threads) on enwiki.mainpart with 1 wor
 * results per request: 6567.2676
 
 (warmed up index)
-For total of 50000 runs (5000 runs per 10 threads) on enwiki with 1 words:
+For total of 50000 runs (5000 runs per 10 threads) on enwiki.mainpart with 1 words:
 * total time: 173255ms
 * time per request: 3.4651ms
 * total results: 334332223
 * results per request: 6686.64446
 
-(super-hot index ;)
+(super-hot index)
+For total of 50000 runs (5000 runs per 10 threads) on enwiki.mainpart with 1 words:
+* total time: 132633ms
+* time per request: 2.65266ms
+* total results: 342543705
+* results per request: 6850.8741
 
+=== second build (lucene porter stemmer) ===
+(warmed-up index)
+For total of 50000 runs (5000 runs per 10 threads) on enwiki with 1 words:
+* total time: 117896ms
+* time per request: 2.35792ms
+* total results: 323793227
+* results per request: 6475.86454
 	
+=== no stemming ===
+For total of 50000 runs (5000 runs per 10 threads) on enwiki with 1 words:
+* total time: 99978ms
+* time per request: 1.99956ms
+* total results: 171542998
+* results per request: 3430.85996
+
