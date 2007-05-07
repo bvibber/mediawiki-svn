@@ -52,7 +52,10 @@ $wgLinkSearchMessages['hu'] = array(
 );
 $wgLinkSearchMessages['id'] = array(
 	'linksearch'       => 'Pencarian pranala luar',
-	'linksearch-text'  => 'Bentuk pencarian \'\'wildcards\'\' seperti "*.wikipedia.org" dapat digunakan.',
+	'linksearch-pat'   => 'Pola pencarian:',
+	'linksearch-ns'    => 'Ruang nama:',
+	'linksearch-ok'    => 'Cari',
+	'linksearch-text'  => 'Bentuk pencarian \'\'wildcards\'\' seperti "*.wikipedia.org" dapat digunakan.<br />Protokol yang didukung: <tt>$1</tt>',
 	'linksearch-line'  => '$1 terpaut dari $2',
 	'linksearch-error' => '\'\'Wildcards\'\' hanya dapat digunakan di bagian awal dari nama host.'
 );
