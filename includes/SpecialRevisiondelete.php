@@ -886,7 +886,8 @@ class RevisionDeleter {
 			return false;
 		}
 		
-		list($timestamp,$name) = explode('!',$oimage->mArchiveName);
+		$m = explode('!',$oimage->mArchiveName);
+		$timestamp = $m[0];
 		
 		$oldpath = wfImageArchiveDir( $oimage->mName ) . DIRECTORY_SEPARATOR . $oimage->mArchiveName;
 		// Dupe the file into the file store

@@ -55,23 +55,26 @@ class LogPage {
 
 		$dbw = wfGetDB( DB_MASTER );
 		$uid = $wgUser->getID();
+		$log_id = $dbw->nextSequenceValue( 'log_log_id_seq' );
 
 		$this->timestamp = $now = wfTimestampNow();
-		
-		$log_id = $dbw->nextSequenceValue( 'log_log_id_seq' );
-		$dbw->insert( 'logging',
-			array(
-				'log_type' => $this->type,
-				'log_action' => $this->action,
-				'log_timestamp' => $dbw->timestamp( $now ),
-				'log_user' => $uid,
-				'log_namespace' => $this->target->getNamespace(),
-				'log_title' => $this->target->getDBkey(),
-				'log_comment' => $this->comment,
-				'log_params' => $this->params
-			), $fname
+		$data = array(
+			'log_type' => $this->type,
+			'log_action' => $this->action,
+			'log_timestamp' => $dbw->timestamp( $now ),
+			'log_user' => $uid,
+			'log_namespace' => $this->target->getNamespace(),
+			'log_title' => $this->target->getDBkey(),
+			'log_comment' => $this->comment,
+			'log_params' => $this->params
 		);
-		$newId = $dbw->insertId();
+
+		# log_id doesn't exist on Wikimedia servers yet, and it's a tricky 
+		# schema update to do. Hack it for now to ignore the field on MySQL.
+		if ( !is_null( $log_id ) ) {
+			$data['log_id'] = $log_id;
+		}
+		$dbw->insert( 'logging', $data, $fname );
 
 		# And update recentchanges
 		if ( $this->updateRecentChanges ) {
@@ -220,7 +223,7 @@ class LogPage {
 		$this->comment = $comment;
 		$this->params = LogPage::makeParamBlob( $params );
 
-		$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params, false, false, true );
+		$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params );
 
 		return $this->saveContent();
 	}

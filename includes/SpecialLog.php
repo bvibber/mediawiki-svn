@@ -85,10 +85,12 @@ class LogReader {
 	 */
 	function limitType( $type ) {
 		global $wgLogRestrictions, $wgUser;
-		
+		// Reset the array, clears extra "where" clauses when $par is used
+		$this->whereClauses = array();
 		// Exclude logs this user can't see
 		if( isset($wgLogRestrictions) ) {
 			foreach ( $wgLogRestrictions as $logtype => $right ) {
+			// Do not show private logs when not specifically requested
 				if ( !$wgUser->isAllowed( $right ) || empty( $type ) ) {
 					$safetype = $this->db->strencode( $logtype );
 					$this->whereClauses[] = "log_type <> '$safetype'";
@@ -102,7 +104,6 @@ class LogReader {
 		if( empty( $type ) ) {
 			return false;
 		}
-		
 		$this->type = $type;
 		$safetype = $this->db->strencode( $type );
 		$this->whereClauses[] = "log_type='$safetype'";
@@ -550,14 +551,13 @@ class LogViewer {
 			$del = $this->message['rev-delundel'];
 		} else if( $s->log_type == 'oversight' ) {
 		// No one should be hiding from the oversight log
-			$del = $this->message['rev-delundel'];
+			return '';
 		} else {
-			$del = $this->skin->makeKnownLinkObj( $revdel,
-			$this->message['rev-delundel'],
-			'target=' . urlencode( $title->getPrefixedDbkey() ) . '&logid=' . $s->log_id );
+			$del = $this->skin->makeKnownLinkObj( $revdel, $this->message['rev-delundel'],
+				'target=' . urlencode( $title->getPrefixedDbkey() ) . '&logid=' . $s->log_id );
 			// Bolden oversighted content
 			if( self::isDeleted( $s, Revision::DELETED_RESTRICTED ) )
-			$del = "<strong>$del</strong>";
+				$del = "<strong>$del</strong>";
 		}
 		return "(<small>$del</small>)";
 	}

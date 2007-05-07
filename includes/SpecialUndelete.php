@@ -253,6 +253,7 @@ class PageArchive {
 	 * Restore the given (or all) text and file revisions for the page.
 	 * Once restored, the items will be removed from the archive tables.
 	 * The deletion log will be updated with an undeletion notice.
+	 * Use -1 for the one of the timestamps to only restore files or text
 	 *
 	 * @param string $pagetimestamp, restore all revisions since this time
 	 * @param string $comment
@@ -269,13 +270,13 @@ class PageArchive {
 		$restoreText = ($restoreAll || $pagetimestamp );
 		$restoreFiles = ($restoreAll || $filetimestamp );
 		
-		if( $restoreText ) {
+		if( $restoreText && $pagetimestamp >= 0 ) {
 			$textRestored = $this->undeleteRevisions( $pagetimestamp, $Unsuppress );
 		} else {
 			$textRestored = 0;
 		}
 		
-		if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
+		if( $restoreFiles && $filetimestamp >= 0 && $this->title->getNamespace() == NS_IMAGE ) {
 			$img = new Image( $this->title );
 			$filesRestored = $img->restore( $filetimestamp, $Unsuppress );
 		} else {
@@ -402,16 +403,16 @@ class PageArchive {
 			$ret->seek( $rev_count - 1 );
 			$last = $ret->fetchObject();
 			// We don't handle well changing the top revision's settings
-			if ( !$Unsuppress && $last->ar_deleted && $last->ar_timestamp > $previousTimestamp ) {
+			if( !$Unsuppress && $last->ar_deleted && $last->ar_timestamp > $previousTimestamp ) {
 				wfDebug( __METHOD__.": restoration would result in a deleted top revision\n" );
 				return false;
 			}
 			
-			if ( $makepage ) {
+			if( $makepage ) {
 				// Our history will consist of a new page with these revisions
-			} else if ( $last->ar_timestamp < $previousCreated ) {
+			} else if( $last->ar_timestamp < $previousCreated ) {
 				// Our history will have a new block of older revisions added
-			} else if ( $first->ar_timestamp > $previousTimestamp ) {
+			} else if( $first->ar_timestamp > $previousTimestamp ) {
 				// Our history will have a new block of newer revisions added
 			} else {
 				// We don't want pages to be patched together, breaks diffs/timeframe parsing and such...
@@ -421,7 +422,7 @@ class PageArchive {
 			$ret->seek( 0 );
 		}
 		
-		if ( $makepage ) {
+		if( $makepage ) {
 			$newid  = $article->insertOn( $dbw );
 			$pageId = $newid;
 		}
@@ -740,6 +741,7 @@ class UndeleteForm {
 			return;
 			
 		$oldTitle = $this->mTargetObj->getPrefixedText();
+		$wgOut->addHtml( "<center><h3>$oldTitle</h3></center>" );
 		
 		$oldminor = $newminor = '';
 		
@@ -755,12 +757,10 @@ class UndeleteForm {
 		
 		$ot = $wgLang->timeanddate( $oldRev->getTimestamp(), true );
 		$nt = $wgLang->timeanddate( $newRev->getTimestamp(), true );
-		$oldHeader = "<strong>$oldTitle</strong><br />" .
-			htmlspecialchars( wfMsg( 'revisionasof', $ot ) ) . "<br />" .
+		$oldHeader = htmlspecialchars( wfMsg( 'revisionasof', $ot ) ) . "<br />" .
 			$skin->revUserTools( $oldRev, true ) . "<br />" .
 			$oldminor . $skin->revComment( $oldRev, false, true ) . "<br />";
-		$newHeader = "<strong>$oldTitle</strong><br />" .
-			htmlspecialchars( wfMsg( 'revisionasof', $nt ) ) . "<br />" .
+		$newHeader = htmlspecialchars( wfMsg( 'revisionasof', $nt ) ) . "<br />" .
 			$skin->revUserTools( $newRev, true ) . " <br />" .
 			$newminor . $skin->revComment( $newRev, false, true ) . "<br />";
 		
@@ -804,13 +804,7 @@ class UndeleteForm {
 		}
 
 		$archive = new PageArchive( $this->mTargetObj );
-		/*
-		$text = $archive->getLastRevisionText();
-		if( is_null( $text ) ) {
-			$wgOut->addWikiText( wfMsg( "nohistory" ) );
-			return;
-		}
-		*/
+
 		if ( $this->mAllowed ) {
 			$wgOut->addWikiText( '<p>' . wfMsgHtml( "undeletehistory" ) . '</p>' );
 			$wgOut->addHtml( '<p>' . wfMsgHtml( "undeleterevdel" ) . '</p>' );
@@ -885,7 +879,10 @@ class UndeleteForm {
 		if( $haveRevisions ) {
 			$wgOut->addHTML( '<p>' . wfMsgHtml( "restorepoint" ) . '</p>' );
 			$wgOut->addHTML( $revisions->getNavigationBar() );
-			$wgOut->addHTML( "<ul>" . $revisions->getBody() . "</ul>" );
+			$wgOut->addHTML( "<ul>" );
+			$wgOut->addHTML( "<li>" . wfRadio( "restorepoint", -1, false ) . " " . wfMsgHtml('restorenone') . "</li>" );
+			$wgOut->addHTML( $revisions->getBody() );
+			$wgOut->addHTML( "</ul>" );
 			$wgOut->addHTML( $revisions->getNavigationBar() );
 		} else {
 			$wgOut->addWikiText( wfMsg( "nohistory" ) );
@@ -895,6 +892,7 @@ class UndeleteForm {
 			$wgOut->addHtml( "<h2 id=\"filehistory\">" . wfMsgHtml( 'imghistory' ) . "</h2>\n" );
 			$wgOut->addHTML( wfMsgHtml( "restorepoint" ) );
 			$wgOut->addHtml( "<ul>" );
+			$wgOut->addHTML( "<li>" . wfRadio( "imgrestorepoint", -1, false ) . wfMsgHtml('restorenone') . "</li>" );
 			while( $row = $files->fetchObject() ) {
 				$ts = wfTimestamp( TS_MW, $row->fa_timestamp );
 				if ( $this->mAllowed && $row->fa_storage_key ) {
@@ -1189,7 +1187,7 @@ class UndeleteRevisionsPager extends ReverseChronologicalPager {
 			$batch->addObj( Title::makeTitleSafe( NS_USER_TALK, $row->ar_user_text ) );
 			if ( $rev_id > $row->ar_rev_id )
 				$this->mForm->prevId[$rev_id] = $row->ar_rev_id;
-			else
+			else if ( $rev_id < $row->ar_rev_id )
 				$this->mForm->prevId[$row->ar_rev_id] = $rev_id;
 			
 			$rev_id = $row->ar_rev_id;

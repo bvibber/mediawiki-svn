@@ -822,19 +822,19 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'createaccountmail'	=> 'by e-mail',
 'badretype'		=> 'The passwords you entered do not match.',
 'userexists'	=> 'Username entered already in use. Please choose a different name.',
-'youremail'		=> 'E-mail *:',
+'youremail'		=> 'E-mail:',
 'username'		=> 'Username:',
 'uid'			=> 'User ID:',
-'yourrealname'		=> 'Real name *:',
+'yourrealname'		=> 'Real name:',
 'yourlanguage'	=> 'Language:',
 'yourvariant'  => 'Variant',
 'yournick'		=> 'Nickname:',
 'badsig'		=> 'Invalid raw signature; check HTML tags.',
 'email'			=> 'E-mail',
 'prefs-help-email-enotif' => 'This address is also used to send you e-mail notifications if you enabled the options.',
-'prefs-help-realname' 	=> '* Real name (optional): if you choose to provide it this will be used for giving you attribution for your work.',
+'prefs-help-realname' 	=> 'Optional: if you choose to provide it this will be used for giving you attribution for your work.',
 'loginerror'	=> 'Login error',
-'prefs-help-email'      => '* E-mail (optional): Enables others to contact you through your user or user_talk page without needing to reveal your identity.',
+'prefs-help-email'      => 'Optional: Enables others to contact you through your user or user_talk page without needing to reveal your identity.',
 'nocookiesnew'	=> 'The user account was created, but you are not logged in. {{SITENAME}} uses cookies to log in users. You have cookies disabled. Please enable them, then log in with your new username and password.',
 'nocookieslogin'	=> '{{SITENAME}} uses cookies to log in users. You have cookies disabled. Please enable them and try again.',
 'noname'		=> 'You have not specified a valid user name.',
@@ -1145,12 +1145,15 @@ undelete it again through this same interface, unless additional restrictions ar
 # Oversight log
 #
 'oversightlog' => 'Oversight log',
-'overlogpagetext' => 'Below is a list of the most recent deletions and blocks involving content 
-hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans 
-and blocks. Content listed here should never be released to the general public.
+'overlogpagetext' => 'Below is a list of the most recent deletions and blocks involving items  
+hidden from Sysops. Automatically blocked IP addresses are not listed. See the [[Special:Ipblocklist|IP block list]] 
+for the list of currently operational bans and blocks. Note that deleted pages listed here will not be listed using 
+the search function at [[Special:Undelete]].
 
-The deletion of single revisions and events can be reviewed by clicking the linked numbers that appear 
-within parenthesis, which correspond to each deleted item.',
+Blocked users listed here can cannot edit their talk pages and thus can only communicate via email. Their accounts 
+will remain hidden only as long as they are blocked.
+
+Content listed here should never be released to the general public unless it was hidden by mistake.',
 
 # Diffs
 #
@@ -1810,7 +1813,8 @@ consequences, and that you are doing this in accordance with
 See $2 for a record of recent deletions.",
 'deletedarticle' => "deleted \"[[$1]]\"",
 'dellogpage'	=> 'Deletion log',
-'dellogpagetext' => 'Below is a list of the most recent deletions.',
+'dellogpagetext' => 'Below is a list of the most recent deletions. The deletion of single revisions and events 
+can be reviewed by clicking the linked numbers that appear within parenthesis, which correspond to each deleted item.',
 'deletionlog'	=> 'deletion log',
 'reverted'		=> 'Reverted to earlier revision',
 'deletecomment'	=> 'Reason for deletion',
@@ -1885,15 +1889,16 @@ Here are the current settings for the page <strong>$1</strong>:',
 can be restored. The archive may be periodically cleaned out.',
 'undeleteextrahelp' => "To restore the entire page, leave all radios deselected and click '''''Restore'''''. 
 To perform a selective restoration, check the desired restore point below and click '''''Restore'''''. 
-Clicking '''''Reset''''' will clear the comment field and reset the form.",
+Clicking '''''Reset''''' will reset this form. Note that you will have to re-select any options if you 
+use the navigation links.",
 'undeleterevisions' => "$1 {{PLURAL:$1|revision|revisions}} archived",
 'undeletehistory' => 'If you restore the page, these revisions will be restored to the page history.
 If a new page with the same name has been created since the deletion, the restored
 revisions will appear in the prior history.', 
 'undeleterevdel' => 'Undeletion will not be performed if either it would result in the top page or image revision 
 being restricted or it would result in an alternating page history between these and any live revisions for this page. ',
-'restorepoint' => 'Use the radio button column to restore only revisions from the specified time onwards. Note 
-that you will have to re-select any options if you use the history navigation links.',
+'restorepoint' => 'Use the radio button column to restore only revisions from the specified time onwards.',
+'restorenone' => '(select this button to restore none of these revisions)',
 'undeletehistorynoadmin' => 'This article has been deleted. The reason for deletion is
 shown in the summary below, along with details of the users who had edited this page
 before deletion. The actual text of these deleted revisions is only available to administrators.',
@@ -2190,7 +2195,9 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'import-interwiki-history' => 'Copy all history versions for this page',
 'import-interwiki-submit' => 'Import',
 'import-interwiki-namespace' => 'Transfer pages into namespace:',
-'importtext'	=> 'Please export the file from the source wiki using the Special:Export utility, save it to your disk and upload it here.',
+'importtext'	=> 'Please export the file from the source wiki using the Special:Export utility, save it to 
+your disk and upload it here. Note that if the page used by an imported revision already exists, the revision 
+will only be inserted if it is newer than or predates the page history.',
 'importstart'	=> "Importing pages...",
 'import-revision-count' => '$1 {{PLURAL:$1|revision|revisions}}',
 'importnopages'	=> "No pages to import.",

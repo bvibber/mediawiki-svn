@@ -442,6 +442,38 @@ class PreferencesForm {
 	}
 
 	/**
+	 * Helper function for user information panel
+	 * @param $td1 label for an item
+	 * @param $td2 item or null
+	 * @param $td3 optional help or null
+	 * @return xhtml block
+	 */
+	function tableRow( $td1, $td2 = null, $td3 = null ) {
+		global $wgContLang;
+
+		$align['align'] = $wgContLang->isRtl() ? 'right' : 'left';
+
+		if ( is_null( $td3 ) ) {
+			$td3 = '';
+		} else {
+			$td3 = Xml::tags( 'tr', null,
+				Xml::tags( 'td', array( 'colspan' => '2' ), $td3 )
+			);
+		}
+
+		if ( is_null( $td2 ) ) {
+			$td1 = Xml::tags( 'td', $align + array( 'colspan' => '2' ), $td1 );
+			$td2 = '';
+		} else {
+			$td1 = Xml::tags( 'td', $align, $td1 );
+			$td2 = Xml::tags( 'td', $align, $td2 );
+		}
+
+		return Xml::tags( 'tr', null, $td1 . $td2 ). $td3 . "\n";
+	
+	}
+
+	/**
 	 * @access private
 	 */
 	function mainPrefsForm( $status , $message = '' ) {
@@ -484,12 +516,7 @@ class PreferencesForm {
 		$this->mUsedToggles[ 'ccmeonemails' ] = true;
 		$this->mUsedToggles[ 'uselivepreview' ] = true;
 
-		# Enotif
-		# <FIXME>
-		$this->mUserEmail = htmlspecialchars( $this->mUserEmail );
-		$this->mRealName = htmlspecialchars( $this->mRealName );
-		$rawNick = $this->mNick;
-		$this->mNick = htmlspecialchars( $this->mNick );
+
 		if ( !$this->mEmailFlag ) { $emfc = 'checked="checked"'; }
 		else { $emfc = ''; }
 
@@ -527,93 +554,68 @@ class PreferencesForm {
 		$wgOut->addHTML( "<div id='preferences'>" );
 
 		# User data
-		#
 
-		$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg('prefs-personal') . "</legend>\n<table>\n");
+		$wgOut->addHTML(
+			Xml::openElement( 'fieldset ' ) .
+			Xml::element( 'legend', null, wfMsg('prefs-personal') ) .
+			Xml::openElement( 'table' ) .
+			$this->tableRow( Xml::element( 'h2', null, wfMsg( 'prefs-personal' ) ) )
+		);
 
 		$userInformationHtml =
-			$this->addRow(
-				wfMsg( 'username'),
-				$wgUser->getName()
-			) .
-			$this->addRow(
-				wfMsg( 'uid' ),
-				$wgUser->getID()
-			);
-		
+			$this->tableRow( wfMsgHtml( 'username' ), htmlspecialchars( $wgUser->getName() ) ) .
+			$this->tableRow( wfMsgHtml( 'uid' ), htmlspecialchars( $wgUser->getID() ) );
+
 		if( wfRunHooks( 'PreferencesUserInformationPanel', array( $this, &$userInformationHtml ) ) ) {
 			$wgOut->addHtml( $userInformationHtml );
 		}
 
-
-		if ($wgAllowRealName) {
+		if ( $wgAllowRealName ) {
 			$wgOut->addHTML(
-				$this->addRow(
-					'<label for="wpRealName">' . wfMsg('yourrealname') . '</label>',
-					"<input type='text' name='wpRealName' id='wpRealName' value=\"{$this->mRealName}\" size='25' />"
+				$this->tableRow(
+					Xml::label( wfMsg('yourrealname'), 'wpRealName' ),
+					Xml::input( 'wpRealName', 25, $this->mRealName, array( 'id' => 'wpRealName' ) ),
+					Xml::tags('div', array( 'class' => 'prefsectiontip' ),
+						wfMsgExt( 'prefs-help-realname', 'parseinline' )
+					)
 				)
 			);
 		}
-		if ($wgEnableEmail) {
+		if ( $wgEnableEmail ) {
 			$wgOut->addHTML(
-				$this->addRow(
-					'<label for="wpUserEmail">' . wfMsg( 'youremail' ) . '</label>',
-					"<input type='text' name='wpUserEmail' id='wpUserEmail' value=\"{$this->mUserEmail}\" size='25' />"
+				$this->tableRow(
+					Xml::label( wfMsg('youremail'), 'wpUserEmail' ),
+					Xml::input( 'wpUserEmail', 25, $this->mUserEmail, array( 'id' => 'wpUserEmail' ) ),
+					Xml::tags('div', array( 'class' => 'prefsectiontip' ),
+						wfMsgExt( 'prefs-help-email', 'parseinline' )
+					)
 				)
 			);
 		}
 
 		global $wgParser;
 		if( !empty( $this->mToggles['fancysig'] ) &&
-			false === $wgParser->validateSig( $rawNick ) ) {
-			$invalidSig = $this->addRow(
+			false === $wgParser->validateSig( $this->mNick ) ) {
+			$invalidSig = $this->tableRow(
 				'&nbsp;',
-				'<span class="error">' . wfMsgHtml( 'badsig' ) . '<span>'
+				Xml::element( 'span', array( 'class' => 'error' ), wfMsg( 'badsig' ) )
 			);
 		} else {
 			$invalidSig = '';
 		}
 
 		$wgOut->addHTML(
-			$this->addRow(
-				'<label for="wpNick">' . wfMsg( 'yournick' ) . '</label>',
-				"<input type='text' name='wpNick' id='wpNick' value=\"{$this->mNick}\" size='25' />"
+			$this->tableRow(
+				Xml::label( wfMsg( 'yournick' ), 'wpNick' ),
+				Xml::input( 'wpNick', 25, $this->mNick, array( 'id' => 'wpNick' ) )
 			) .
 			$invalidSig .
-			# FIXME: The <input> part should be where the &nbsp; is, getToggle() needs
-			# to be changed to out return its output in two parts. -ævar
-			$this->addRow(
-				'&nbsp;',
-				$this->getToggle( 'fancysig' )
-			)
+			$this->tableRow( '&nbsp;', $this->getToggle( 'fancysig' ) )
 		);
 
-		/**
-		 * Make sure the site language is in the list; a custom language code
-		 * might not have a defined name...
-		 */
-		$languages = Language::getLanguageNames( true );
-		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
-			$languages[$wgContLanguageCode] = $wgContLanguageCode;
-		}
-		ksort( $languages );
-
-		/**
-		 * If a bogus value is set, default to the content language.
-		 * Otherwise, no default is selected and the user ends up
-		 * with an Afrikaans interface since it's first in the list.
-		 */
-		$selectedLang = isset( $languages[$this->mUserLanguage] ) ? $this->mUserLanguage : $wgContLanguageCode;
-		$options = "\n";
-		foreach( $languages as $code => $name ) {
-			$selected = ($code == $selectedLang);
-			$options .= Xml::option( "$code - $name", $code, $selected ) . "\n";
-		}
+		list( $lsLabel, $lsSelect) = Xml::languageSelector( $this->mUserLanguage );
 		$wgOut->addHTML(
-			$this->addRow(
-				'<label for="wpUserLanguage">' . wfMsg('yourlanguage') . '</label>',
-				"<select name='wpUserLanguage' id='wpUserLanguage'>$options</select>"
-			)
+			$this->tableRow( $lsLabel, $lsSelect )
 		);
 
 		/* see if there are multiple language variants to choose from*/
@@ -621,6 +623,7 @@ class PreferencesForm {
 			$variants = $wgContLang->getVariants();
 			$variantArray = array();
 
+			$languages = Language::getLanguageNames( true );
 			foreach($variants as $v) {
 				$v = str_replace( '_', '-', strtolower($v));
 				if( array_key_exists( $v, $languages ) ) {
@@ -637,69 +640,74 @@ class PreferencesForm {
 
 			if(count($variantArray) > 1) {
 				$wgOut->addHtml(
-					$this->addRow( wfMsg( 'yourvariant' ),
-						"<select name='wpUserVariant'>$options</select>" )
+					$this->tableRow(
+						Xml::label( wfMsg( 'yourvariant' ), 'wpUserVariant' ),
+						Xml::tags( 'select',
+							array( 'name' => 'wpUserVariant', 'id' => 'wpUserVariant' ),
+							$options
+						)
+					)
 				);
 			}
 		}
-		$wgOut->addHTML('</table>');
 
 		# Password
-		if( $wgAuth->allowPasswordChange() ) {
-			$this->mOldpass = htmlspecialchars( $this->mOldpass );
-			$this->mNewpass = htmlspecialchars( $this->mNewpass );
-			$this->mRetypePass = htmlspecialchars( $this->mRetypePass );
-	
-			$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'changepassword' ) . '</legend><table>');
+		if( $wgAuth->allowPasswordChange() ) {	
 			$wgOut->addHTML(
-				$this->addRow(
-					'<label for="wpOldpass">' . wfMsg( 'oldpassword' ) . '</label>',
-					"<input type='password' name='wpOldpass' id='wpOldpass' value=\"{$this->mOldpass}\" size='20' />"
+				$this->tableRow( Xml::element( 'h2', null, wfMsg( 'changepassword' ) ) ) .
+				$this->tableRow(
+					Xml::label( wfMsg( 'oldpassword' ), 'wpOldpass' ),
+					Xml::input( 'wpOldpass', 25, $this->mOldpass, array( 'id' => 'wpOldpass' ) )
 				) .
-				$this->addRow(
-					'<label for="wpNewpass">' . wfMsg( 'newpassword' ) . '</label>',
-					"<input type='password' name='wpNewpass' id='wpNewpass' value=\"{$this->mNewpass}\" size='20' />"
+				$this->tableRow(
+					Xml::label( wfMsg( 'newpassword' ), 'wpNewpass' ),
+					Xml::input( 'wpNewpass', 25, $this->mNewpass, array( 'id' => 'wpNewpass' ) )
 				) .
-				$this->addRow(
-					'<label for="wpRetypePass">' . wfMsg( 'retypenew' ) . '</label>',
-					"<input type='password' name='wpRetypePass' id='wpRetypePass' value=\"{$this->mRetypePass}\" size='20' />"
+				$this->tableRow(
+					Xml::label( wfMsg( 'retypenew' ), 'wpRetypePass' ),
+					Xml::input( 'wpRetypePass', 25, $this->mRetypePass, array( 'id' => 'wpRetypePass' ) )
 				) .
-				"</table>\n" .
-				$this->getToggle( "rememberpassword" ) . "</fieldset>\n\n" );
+				Xml::tags( 'tr', null,
+					Xml::tags( 'td', array( 'colspan' => '2' ),
+						$this->getToggle( "rememberpassword" )
+					)
+				)
+			);
 		}
 
 		# <FIXME>
 		# Enotif
-		if ($wgEnableEmail) {
-			$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'email' ) . '</legend>' );
+		if ( $wgEnableEmail ) {
+
+			$moreEmail = '';
+			if ($wgEnableUserEmail) {
+				$emf = wfMsg( 'allowemail' );
+				$disabled = $disableEmailPrefs ? ' disabled="disabled"' : '';
+				$moreEmail =
+				"<input type='checkbox' $emfc $disabled value='1' name='wpEmailFlag' id='wpEmailFlag' /> <label for='wpEmailFlag'>$emf</label>";
+			}
+
+
 			$wgOut->addHTML(
+				$this->tableRow( Xml::element( 'h2', null, wfMsg( 'email' ) ) ) .
+				$this->tableRow(
 					$emailauthenticated.
 					$enotifrevealaddr.
 					$enotifwatchlistpages.
 					$enotifusertalkpages.
-					$enotifminoredits );
-			if ($wgEnableUserEmail) {
-			$emf = wfMsg( 'allowemail' );
-				$disabled = $disableEmailPrefs ? ' disabled="disabled"' : '';
-				$wgOut->addHTML(
-				"<div><input type='checkbox' $emfc $disabled value='1' name='wpEmailFlag' id='wpEmailFlag' /> <label for='wpEmailFlag'>$emf</label></div>" );
-			}
-			$wgOut->addHtml( $this->getToggle( 'ccmeonemails' ) );
-
-			$wgOut->addHTML( '</fieldset>' );
+					$enotifminoredits.
+					$moreEmail.
+					$this->getToggle( 'ccmeonemails' )
+				)
+			);
 		}
 		# </FIXME>
 
-		# Show little "help" tips for the real name and email address options
-		if( $wgAllowRealName || $wgEnableEmail ) {
-			if( $wgAllowRealName )
-				$tips[] = wfMsg( 'prefs-help-realname' );
-			if( $wgEnableEmail )
-				$tips[] = wfMsg( 'prefs-help-email' );
-			$wgOut->addHtml( '<div class="prefsectiontip">' . implode( '<br />', $tips ) . '</div>' );
-		}		
+		$wgOut->addHTML(
+			Xml::closeElement( 'table' ) .
+			Xml::closeElement( 'fieldset' )
+		);
 
-		$wgOut->addHTML( '</fieldset>' );
 
 		# Quickbar
 		#
@@ -753,8 +761,12 @@ class PreferencesForm {
 		if( $wgUseTeX ) {
 			$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg('math') . '</legend>' );
 			foreach ( $mathopts as $k => $v ) {
-				$checked = $k == $this->mMath ? ' checked="checked"' : '';
-				$wgOut->addHTML( "<div><label><input type='radio' name='wpMath' value=\"$k\"$checked /> ".wfMsg($v)."</label></div>\n" );
+				$checked = ($k == $this->mMath);
+				$wgOut->addHTML(
+					Xml::openElement( 'div' ) .
+					Xml::radioLabel( wfMsg( $v ), 'wpMath', $k, "mw-sp-math-$k", $checked ) .
+					Xml::closeElement( 'div' ) . "\n"
+				);
 			}
 			$wgOut->addHTML( "</fieldset>\n\n" );
 		}
@@ -967,7 +979,9 @@ class PreferencesForm {
 	<input type='hidden' name='wpEditToken' value='{$token}' />
 	</div></form>\n" );
 
-		$wgOut->addWikiText( '<div class="prefcache">' . wfMsg('clearyourcache') . '</div>' );
+		$wgOut->addHtml( Xml::tags( 'div', array( 'class' => "prefcache" ),
+			wfMsgExt( 'clearyourcache', 'parseinline' ) )
+		);
 
 	}
 }
