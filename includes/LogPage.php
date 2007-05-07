@@ -68,13 +68,8 @@ class LogPage {
 			'log_comment' => $this->comment,
 			'log_params' => $this->params
 		);
-
-		# log_id doesn't exist on Wikimedia servers yet, and it's a tricky 
-		# schema update to do. Hack it for now to ignore the field on MySQL.
-		if ( !is_null( $log_id ) ) {
-			$data['log_id'] = $log_id;
-		}
 		$dbw->insert( 'logging', $data, $fname );
+		$newId = $dbw->insertId();
 
 		# And update recentchanges
 		if ( $this->updateRecentChanges ) {
