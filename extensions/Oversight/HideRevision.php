@@ -605,13 +605,14 @@ function sosShowRevision( $revision ) {
 		} else {
 		$wgOut->addHtml(
 			"<div>" .
-			wfElement( 'textarea',
+			wfOpenElement( 'textarea',
 				array(
 					'cols' => 80,
 					'rows' => 25,
 					'wrap' => 'virtual',
-					'readonly' => 'readonly' ),
-				$text) .
+					'readonly' => 'readonly' ) ) .
+			htmlspecialchars( $text ) .
+			wfCloseElement( 'textarea' ) .
 			"</div>" );
 		}
 	}
