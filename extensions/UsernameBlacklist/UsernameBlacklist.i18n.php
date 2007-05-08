@@ -68,6 +68,11 @@ Basqa ataw talğañız.',
 باسقا اتاۋ تالعاڭىز.',
 ),
 
+/* Kurdi */
+'ku' => array(
+'blacklistedusernametext' => 'Wê navî yê te hilbijart li ser [[MediaWiki:Usernameblacklist|lîstêya navên nebaş]] e. Xêra xwe navekî din hilbijêre.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'blacklistedusername' => 'Gebruikersnaam op zwarte lijst',

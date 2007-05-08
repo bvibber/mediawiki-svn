@@ -94,6 +94,10 @@ $wgNewuserlogMessages['kk-cn'] = array(
 	'newuserlog-create2-entry' => 'جاڭا تٴىركەلگٴى جاسادى — $1',
 );
 $wgNewuserlogMessages['kk'] = $wgNewuserlogMessages['kk-kz'];
+$wgNewuserlogMessages['ku'] = array(
+	'newuserlogpage'           => 'Reşahiya çêkirina hesabên nû',
+	'newuserlog-create-entry'  => 'Bikarhênerekî nuh',
+);
 $wgNewuserlogMessages['nl'] = array(
 	'newuserlogpage'           => 'Logboek nieuwe gebruikers',
 	'newuserlogpagetext'       => 'Hieronder staan de nieuw ingeschreven gebruikers',
