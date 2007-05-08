@@ -76,16 +76,16 @@ public class NamespaceFilter implements Serializable {
 		return included.get(namespace);
 	}
 	
+	public BitSet getIncluded() {
+		return included;
+	}
+
 	public int cardinality(){
 		return included.cardinality();
 	}
 	
 	public int getNamespace(){
-		for(int i=0;i<included.size();i++){
-			if(included.get(i))
-				return i;
-		}
-		return Integer.MIN_VALUE;
+		return included.nextSetBit(0);		
 	}
 	
 	@Override

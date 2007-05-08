@@ -2,8 +2,10 @@ package org.wikimedia.lsearch.analyzers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.BitSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map.Entry;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
@@ -15,6 +17,8 @@ import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
+import org.apache.lucene.search.WildcardQuery;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
 /**
@@ -74,7 +78,8 @@ public class WikiQueryParser {
 	 */
 	public enum NamespacePolicy { LEAVE, IGNORE, REWRITE };
 	protected HashMap<String,Integer> namespaceMapping;
-	private String defaultNamespace;
+	private String defaultNamespaceName;
+	private Query namespaceRewriteQuery;
 	private NamespacePolicy namespacePolicy;
 	
 	/** default value for boolean queries */
@@ -110,7 +115,7 @@ public class WikiQueryParser {
 	 * @param analyzer
 	 */
 	public WikiQueryParser(String field, Analyzer analyzer){
-		this(field,null,analyzer,NamespacePolicy.LEAVE);
+		this(field,(NamespaceFilter)null,analyzer,NamespacePolicy.LEAVE);
 	}
 	
 	/**
@@ -122,14 +127,51 @@ public class WikiQueryParser {
 	 * @param nsPolicy
 	 */
 	public WikiQueryParser(String field, String namespace, Analyzer analyzer, NamespacePolicy nsPolicy){
-		defaultField = field;
-		defaultNamespace = namespace;
+		this(field,new NamespaceFilter(namespace),analyzer,nsPolicy);
+	}
+	
+	public WikiQueryParser(String field, NamespaceFilter nsfilter, Analyzer analyzer, NamespacePolicy nsPolicy){
+		defaultField = field;		
 		this.analyzer = analyzer;
 		decomposer = UnicodeDecomposer.getInstance();
 		tokens = new ArrayList<Token>();
 		this.namespacePolicy = nsPolicy;
 		disableTitleAliases = true;
 		initNamespaces();
+		if(nsfilter != null){
+			namespaceRewriteQuery = generateRewrite(nsfilter);
+			defaultNamespaceName = null;
+			if(nsfilter.cardinality()==1){
+				Integer in = new Integer(nsfilter.getNamespace());
+				// if has only on namespace, try to get the name of default namespace
+				for(Entry<String,Integer> e : namespaceMapping.entrySet()){
+					if(in.equals(e.getValue())){
+						defaultNamespaceName = e.getKey();
+					}
+				}
+			}
+		}
+		else{
+			namespaceRewriteQuery = null;
+			defaultNamespaceName = null;
+		}
+	}
+	
+	/** Generate a rewrite query for a collection of namespaces */
+	protected Query generateRewrite(NamespaceFilter nsfilter){
+		if(nsfilter.cardinality() == 0)
+			return null;
+		else if(nsfilter.cardinality() == 1)
+			return new TermQuery(new Term("namespace",Integer.toString(nsfilter.getNamespace())));
+		
+		BooleanQuery bq = new BooleanQuery();
+		BitSet bs = nsfilter.getIncluded();
+		// iterate over set bits
+		for(int i=bs.nextSetBit(0); i>=0; i=bs.nextSetBit(i+1)){
+			bq.add(new TermQuery(new Term("namespace",Integer.toString(i))),
+					BooleanClause.Occur.SHOULD);
+		}
+		return bq;
 	}
 	
 	/** 
@@ -228,8 +270,8 @@ public class WikiQueryParser {
 			if(length == 0 && ch == ' ')
 				continue; // ignore whitespaces
 			
-			// pluses and minuses, underscores can be within words
-			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_'){
+			// pluses and minuses, underscores can be within words, *,? are for wildcard queries
+			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_' || ch=='*' || ch=='?'){
 				// unicode normalization -> delete accents
 				decomp = decomposer.decompose(ch);
 				if(decomp == null)
@@ -353,7 +395,7 @@ public class WikiQueryParser {
 	}
 	
 	private final boolean needsRewrite(){
-		return defaultNamespace != null && namespacePolicy == NamespacePolicy.REWRITE; 
+		return namespaceRewriteQuery != null && namespacePolicy == NamespacePolicy.REWRITE; 
 	}
 	
 	/** Parses a clause:  (in regexp notation)
@@ -382,7 +424,7 @@ public class WikiQueryParser {
 		
 		// assume default namespace value on rewrite
 		if(!returnOnFieldDef && field == null && needsRewrite()){
-			fieldQuery = getNamespaceQuery(defaultNamespace); 
+			fieldQuery = namespaceRewriteQuery; 
 		}
 		
 		mainloop: for( ; cur < queryLength; cur++ ){
@@ -409,7 +451,7 @@ public class WikiQueryParser {
 					if(field == null || definedExplicitField){
 						// set field name
 						field = new String(buffer,0,length);
-						if((defaultNamespace!=null && field.equals(defaultNamespace)) || field.equals(defaultField)){
+						if((defaultNamespaceName!=null && field.equals(defaultNamespaceName)) || field.equals(defaultField)){
 							field = null;
 							break; // repeated definition of field, ignore
 						}
@@ -433,7 +475,7 @@ public class WikiQueryParser {
 				case WORD:
 					if(fieldQuery != null){
 						backToken();
-						String myfield = (topFieldName != null)? topFieldName : (field !=null)? field : (defaultNamespace!=null)? defaultNamespace : defaultField; 
+						String myfield = (topFieldName != null)? topFieldName : (field !=null)? field : (defaultNamespaceName!=null)? defaultNamespaceName : defaultField; 
 						fieldsubquery = parseClause(level+1,true,myfield);
 					} else{
 						analyzeBuffer();
@@ -559,6 +601,14 @@ public class WikiQueryParser {
 		// categories should not be analyzed
 		if(field != null && field.equals("category")){
 			return new TermQuery(makeTerm());
+		}
+		
+		// check for wildcard seaches, they are also not analyzed/stemmed
+		// wildcard signs are allowed only at the end of the word, minimum one letter word
+		if(length>1 && Character.isLetter(buffer[0]) && (buffer[length-1]=='*' || buffer[length-1]=='?')){
+			Query ret = new WildcardQuery(makeTerm());
+			ret.setBoost(defaultBoost);
+			return ret;
 		}
 		
 		if(toplevelOccur == BooleanClause.Occur.MUST_NOT)

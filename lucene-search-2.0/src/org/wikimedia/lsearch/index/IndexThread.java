@@ -222,7 +222,7 @@ public class IndexThread extends Thread {
 		}
 	}
 	
-	protected void deleteDirRecursive(File file){
+	protected static void deleteDirRecursive(File file){
 		if(!file.exists())
 			return;
 		else if(file.isDirectory()){
@@ -241,12 +241,9 @@ public class IndexThread extends Thread {
 	 *
 	 */
 	protected void makeSnapshot() {
-		final String sep = Configuration.PATH_SEP;
 		HashSet<IndexId> indexes = WikiIndexModifier.closeAllModifiers();
 		IndexRegistry registry = IndexRegistry.getInstance();
 		
-		DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
-		String timestamp = df.format(new Date(System.currentTimeMillis()));
 		log.debug("Making snapshots...");
 		// check filesystem timestamps (for those for which we are unsure if they are updated)
 		for( IndexId iid : global.getMyIndex()){
@@ -264,35 +261,42 @@ public class IndexThread extends Thread {
 			}
 		}
 		for( IndexId iid : indexes ){
-			log.info("Making snapshot for "+iid);
-			String index = iid.getIndexPath();
-			String snapshotdir = iid.getSnapshotPath();
-			String snapshot = snapshotdir+sep+timestamp;
-			// cleanup the snapshot dir for this iid
-			File spd = new File(snapshotdir);
-			if(spd.exists() && spd.isDirectory()){
-				File[] files = spd.listFiles();
-				for(File f: files)
-					deleteDirRecursive(f);
-			}
-			new File(snapshot).mkdirs();
-			File ind =new File(index);
-			for(File f: ind.listFiles()){
-				// use a cp -lr command for each file in the index
-				String command = "/bin/cp -lr "+index+sep+f.getName()+" "+snapshot+sep+f.getName();
-				Process copy;
-				try {
-					log.debug("Running shell command: "+command);
-					copy = Runtime.getRuntime().exec(command);
-					copy.waitFor();
-				} catch (Exception e) {
-					log.error("Error making snapshot "+snapshot+": "+e.getMessage());
-					continue;
-				}
-			}
+			makeIndexSnapshot(iid,iid.getIndexPath());
 			registry.refreshSnapshots(iid);
-			log.info("Made snapshot "+snapshot);			
 		}
+	}
+	
+	public static void makeIndexSnapshot(IndexId iid, String indexPath){
+		final String sep = Configuration.PATH_SEP;
+		DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
+		String timestamp = df.format(new Date(System.currentTimeMillis()));
+
+		log.info("Making snapshot for "+iid);
+		String snapshotdir = iid.getSnapshotPath();
+		String snapshot = snapshotdir+sep+timestamp;
+		// cleanup the snapshot dir for this iid
+		File spd = new File(snapshotdir);
+		if(spd.exists() && spd.isDirectory()){
+			File[] files = spd.listFiles();
+			for(File f: files)
+				deleteDirRecursive(f);
+		}
+		new File(snapshot).mkdirs();
+		File ind =new File(indexPath);
+		for(File f: ind.listFiles()){
+			// use a cp -lr command for each file in the index
+			String command = "/bin/cp -lr "+indexPath+sep+f.getName()+" "+snapshot+sep+f.getName();
+			Process copy;
+			try {
+				log.debug("Running shell command: "+command);
+				copy = Runtime.getRuntime().exec(command);
+				copy.waitFor();
+			} catch (Exception e) {
+				log.error("Error making snapshot "+snapshot+": "+e.getMessage());
+				continue;
+			}
+		}
+		log.info("Made snapshot "+snapshot);		
 	}
 	
 	/**
