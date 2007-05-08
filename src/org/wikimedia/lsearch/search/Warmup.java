@@ -28,7 +28,7 @@ public class Warmup {
 	protected static Hashtable<String,Terms> langTerms = new Hashtable<String,Terms>();
 	
 	/** Runs some typical queries on a local index searcher to preload caches, pages into memory, etc .. */
-	public static void warmupIndexSearcher(IndexSearcherMul is, IndexId iid){
+	public static void warmupIndexSearcher(IndexSearcherMul is, IndexId iid, boolean useDelay){
 		log.info("Warming up index "+iid+" ...");
 		long start = System.currentTimeMillis();
 		
@@ -50,15 +50,15 @@ public class Warmup {
 				return;
 			}
 			makeNamespaceFilters(is,iid);
-			warmupSearchTerms(is,iid,count);
+			warmupSearchTerms(is,iid,count,useDelay);
 			long delta = System.currentTimeMillis() - start;
 			log.info("Warmed up "+iid+" in "+delta+" ms");
 		}					
 	}
 	
 	/** Warmup index using some number of simple searches */
-	protected static void warmupSearchTerms(IndexSearcherMul is, IndexId iid, int count) {
-		WikiQueryParser parser = new WikiQueryParser("contents","main",Analyzers.getSearcherAnalyzer(iid),WikiQueryParser.NamespacePolicy.IGNORE);
+	protected static void warmupSearchTerms(IndexSearcherMul is, IndexId iid, int count, boolean useDelay) {
+		WikiQueryParser parser = new WikiQueryParser("contents","0",Analyzers.getSearcherAnalyzer(iid),WikiQueryParser.NamespacePolicy.IGNORE);
 		Terms terms = getTermsForLang(global.getLanguage(iid.getDBname()));
 		
 		try{	
@@ -67,11 +67,18 @@ public class Warmup {
 				Hits hits = is.search(q);
 				for(int j =0; j<20 && j<hits.length(); j++)
 					hits.doc(j); // retrieve some documents
+				if(useDelay){
+					if(i<1000)
+						Thread.sleep(100);
+					else
+						Thread.sleep(50);
+				}
 			}
 		} catch (IOException e) {
 			log.error("Error warming up local IndexSearcherMul for "+iid);
 		} catch (ParseException e) {
 			log.error("Error parsing query in warmup of IndexSearcherMul for "+iid);
+		} catch (InterruptedException e) {
 		}		
 	}
 
@@ -101,7 +108,7 @@ public class Warmup {
 	/** Just run one complex query and rebuild the main namespace filter */
 	public static void simpleWarmup(IndexSearcherMul is, IndexId iid){
 		try{
-			WikiQueryParser parser = new WikiQueryParser("contents","main",Analyzers.getSearcherAnalyzer(iid),WikiQueryParser.NamespacePolicy.IGNORE);
+			WikiQueryParser parser = new WikiQueryParser("contents","0",Analyzers.getSearcherAnalyzer(iid),WikiQueryParser.NamespacePolicy.IGNORE);
 			Query q = parser.parseTwoPass("a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",WikiQueryParser.NamespacePolicy.IGNORE);
 			is.search(q,new NamespaceFilterWrapper(new NamespaceFilter("0")));
 		} catch (IOException e) {

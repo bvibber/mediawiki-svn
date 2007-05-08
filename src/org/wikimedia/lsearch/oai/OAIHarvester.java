@@ -22,7 +22,6 @@ import org.wikimedia.lsearch.index.IndexUpdateRecord;
 public class OAIHarvester {
 	static Logger log = Logger.getLogger(OAIHarvester.class);
 	protected String urlbase;
-	protected Authenticator auth;
 	protected OAIParser parser;
 	protected IndexUpdatesCollector collector;
 	protected IndexId iid;
@@ -30,8 +29,8 @@ public class OAIHarvester {
 	
 	public OAIHarvester(IndexId iid, String url, Authenticator auth){
 		this.urlbase = url;
-		this.auth = auth;
 		this.iid = iid;
+		Authenticator.setDefault(auth); 
 	}
 	
 	/** Invoke ListRecords from a certain timestamp */

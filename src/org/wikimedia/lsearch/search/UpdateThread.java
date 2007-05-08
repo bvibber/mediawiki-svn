@@ -58,6 +58,7 @@ public class UpdateThread extends Thread {
 			for(LocalIndex li : forUpdate){
 				log.debug("Syncing "+li.iid);
 				rebuild(li); // rsync, update registry, cache
+				pending.remove(li.iid.toString());
 			}
 		}		
 	}
@@ -69,6 +70,8 @@ public class UpdateThread extends Thread {
 	protected long queryInterval;
 	protected SearcherCache cache;
 	protected long delayInterval;
+	/** Pending updates, dbrole -> timestamp */
+	protected Hashtable<String,Long> pending = new Hashtable<String,Long>();
 	
 	protected static UpdateThread instance = null;
 	
@@ -115,6 +118,8 @@ public class UpdateThread extends Thread {
 			
 			for(int i = 0; i < hiids.size(); i++){
 				IndexId iid = hiids.get(i);
+				if(pending.containsKey(iid.toString()))
+					continue; // pending update, ignore
 				LocalIndex myli = registry.getCurrentSearch(iid);
 				if(timestamps[i]!= 0 && (myli == null || myli.timestamp < timestamps[i])){
 					LocalIndex li = new LocalIndex(
@@ -122,10 +127,12 @@ public class UpdateThread extends Thread {
 							iid.getUpdatePath(),
 							timestamps[i]);
 					forUpdate.add(li); // newer snapshot available
+					pending.put(iid.toString(),new Long(timestamps[i]));
 				}
 			}
 		}
-		new DeferredUpdate(forUpdate,delayInterval);
+		if(forUpdate.size()>0)
+			new DeferredUpdate(forUpdate,delayInterval).start();
 	}
 	
 	/** Rsync a remote snapshot to a local one, updates registry, cache */
@@ -165,19 +172,23 @@ public class UpdateThread extends Thread {
 				File ind = new File(iid.getCanonicalSearchPath());
 
 				if(ind.exists()){ // prepare a local hard-linked copy of index
-					try {
-						// cp -lr update/dbname/timestamp/* update/dbname/timestamp2/ 
-						command = "/bin/cp -lr "+ind.getCanonicalPath()+sep+"*"+" "+updatepath+sep;
-						log.debug("Running shell command: "+command);
-						Runtime.getRuntime().exec(command).waitFor();
-					} catch (Exception e) {
-						log.error("Error making update hardlinked copy "+updatepath+": "+e.getMessage());
+					ind = ind.getCanonicalFile();
+					for(File f: ind.listFiles()){
+						//  a cp -lr command for each file in the index
+						command = "/bin/cp -lr "+ind.getCanonicalPath()+sep+f.getName()+" "+updatepath+sep+f.getName();
+						try {
+							log.debug("Running shell command: "+command);
+							Runtime.getRuntime().exec(command).waitFor();
+						} catch (Exception e) {
+							log.error("Error making update hardlinked copy "+updatepath+": "+e.getMessage());
+							continue;
+						}
 					}
 				}
 
 				// rsync
 				String snapshotpath = iid.getRsyncSnapshotPath()+"/"+li.timestamp;
-				command = "/usr/bin/rsync --delete -r rsync://"+iid.getIndexHost()+":"+snapshotpath+" "+iid.getUpdatePath();
+				command = "/usr/bin/rsync -W --delete -r rsync://"+iid.getIndexHost()+":"+snapshotpath+" "+iid.getUpdatePath();
 				log.debug("Running shell command: "+command);
 				Runtime.getRuntime().exec(command).waitFor();
 
@@ -218,7 +229,7 @@ public class UpdateThread extends Thread {
 	/** Update search cache after successful rsync of update version of index */
 	protected void updateCache(IndexSearcherMul is, LocalIndex li){
 		// do some typical queries to preload some lucene caches, pages into memory, etc..
-		Warmup.warmupIndexSearcher(is,li.iid);			
+		Warmup.warmupIndexSearcher(is,li.iid,true);			
 		// add to cache
 		cache.invalidateLocalSearcher(li.iid,is);		
 	}

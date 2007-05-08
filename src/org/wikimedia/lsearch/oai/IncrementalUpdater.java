@@ -44,6 +44,7 @@ public class IncrementalUpdater {
 				log.error("OAI authentication error. Username/password pair not specified in configuration file.");
 				return null;
 			}
+			log.info("Authenticating ... ");
 			return new PasswordAuthentication(username,password.toCharArray());
 		}		
 	}

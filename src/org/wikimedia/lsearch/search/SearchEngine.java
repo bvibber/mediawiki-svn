@@ -107,7 +107,9 @@ public class SearchEngine {
 	 */
 	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, NamespaceFilter nsDefault){
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid);
-		WikiQueryParser parser = new WikiQueryParser("contents","main",analyzer,WikiQueryParser.NamespacePolicy.IGNORE);
+		if(nsDefault == null || nsDefault.cardinality() == 0)
+			nsDefault = new NamespaceFilter("0"); // default to main namespace
+		WikiQueryParser parser = new WikiQueryParser("contents",nsDefault,analyzer,WikiQueryParser.NamespacePolicy.IGNORE);
 		HashSet<Integer> fields = parser.getFieldNamespaces(searchterm);
 		NamespaceFilterWrapper nsfw = null;
 		Query q = null;
@@ -122,8 +124,6 @@ public class SearchEngine {
 		}
 		else if(fields.size()==0 && nsDefault!=null && nsDefault.cardinality()==1)
 			nsfw = new NamespaceFilterWrapper(nsDefault);
-		else if(fields.size()==0) // default: search main namespace
-			nsfw = new NamespaceFilterWrapper(new NamespaceFilter("0"));
 		
 		try {
 			if(nsfw == null){

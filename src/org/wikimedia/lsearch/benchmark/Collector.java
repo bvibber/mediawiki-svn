@@ -16,16 +16,18 @@ public class Collector {
 	}
 	
 	protected ArrayList<ReportSet> reports = new ArrayList<ReportSet>();
-	protected long startTime;
+	protected long startTime, lastTime;
 	protected int reportInc; // after how many reports to print out results
 	protected int curInc; // current increment
 	protected int total;
+	protected int threads;
 	
-	Collector(int reportInc, int total){
-		startTime = System.currentTimeMillis();
+	Collector(int reportInc, int total, int threads){
+		lastTime = startTime = System.currentTimeMillis();
 		this.reportInc = reportInc;
 		curInc = 0;
 		this.total = total;
+		this.threads = threads;
 	}
 	
 	synchronized public void add(int results, long time){
@@ -44,6 +46,11 @@ public class Collector {
 			results += rs.results;
 			time += rs.time;
 		}
+		long time1k = 0;
+		if(reports.size()>=1000){
+			for(int i=reports.size()-1000;i<reports.size();i++)
+				time1k += reports.get(i).time;
+		}
 		long now = System.currentTimeMillis();
 		int sec = (int) ((now-startTime)/1000);
 		int min = 0;
@@ -52,8 +59,9 @@ public class Collector {
 			sec = sec%60;
 		}
 		double pers = (double)(now-startTime)/reports.size();
-		//double avgtime = (double)time/reports.size();
-		System.out.format("[%d:%02d %d/%d] %2.1fms : %d results / search\n", min, sec, reports.size(), total, pers, results/reports.size());
+		double nowpers = (double)(now-lastTime)/reportInc;
+		lastTime = now;
+		System.out.format("[%d:%02d %d/%d] %2.1fms : %d results / search (now: %2.1fms, last 1k: %2.1fms)\n", min, sec, reports.size(), total, pers, results/reports.size(), nowpers, time1k/1000.0/threads);
 		System.out.flush();
 	}
 }

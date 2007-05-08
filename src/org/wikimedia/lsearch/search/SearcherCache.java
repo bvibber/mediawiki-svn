@@ -165,7 +165,7 @@ public class SearcherCache {
 		for(IndexId iid : mys){
 			try {
 				IndexSearcherMul is = getLocalSearcher(iid);
-				Warmup.warmupIndexSearcher(is,iid);
+				Warmup.warmupIndexSearcher(is,iid,false);
 			} catch (IOException e) {
 				log.warn("I/O error warming index for "+iid);				
 			}
