@@ -592,7 +592,177 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 'oversight-view' => 'detalji',
 ),
 
+/* Chinese (PRC) (Alex S.H. Lin) */
+'zh-cn' => array(
+'hiderevision' => '永久隐藏修订版本',
+// Empty form
+'hiderevision-prompt' => '要隐藏的修订版本号码:',
+'hiderevision-continue' => '继续',
+// Confirmation form
+'hiderevision-text' =>
+"'''注意！'''本工具'''只能'''在以下情况才能使用：
+* 这个修订版本含有不适当的个人隐私资讯。
+*: ''例如一个人的住处地址、电话号码、身分证号码等等…''
+
+'''滥用此工具，最终将会失去使用此工具的特殊权限！'''
+
+删除这个项目，将会使这个网站上何任人都无法看到此项目,
+如果您误删了修订版本，必须请管理员从资料库中手动恢复。",
+'hiderevision-reason' => '理由 (这个记录将不会公开):',
+'hiderevision-submit' => '永久隐藏这项资料',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => '隐藏此修订',
+// Status & errors on action
+'hiderevision-norevisions' => '没有指定的修订版本被删除',
+'hiderevision-noreason' => '您必须说明隐藏这个修订版本的理由。',
+'hiderevision-status' => '修订版本 $1: $2',
+'hiderevision-success' => '已经完成隐藏与记录此操作',
+'hiderevision-error-missing' => '资料库找不到这个修订版本。',
+'hiderevision-error-current' => '本页为该页面的最新版本，无法隐藏。请先恢复这个页面之前的编辑。',
+'hiderevision-error-delete' => '无法记录此操作。可能之前已经被删除。',
+'hiderevision-archive-status' => '已删除的修订版本。从 $1: $2',
+'oversight-nodiff' => '无法与过去之前的版本做差异比较，可能是因为：
+*这个页面已经被删除。
+*隐藏的页面为最先建立的版本。',
+// Logging
+'oversight-log-hiderev' => '隐藏 $1 中的一个修订版本',
+// Oversight review page
+'oversight' => 'Oversight',
+'oversight-view' => '内容',
+'oversight-difference' => '(与之前存在之修订版本的差异)',
+'oversight-prev' => '最后一个之前的修订版本',
+'oversight-hidden' => '隐藏修订',
+'oversight-header' => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
+),
+
+/* Chinese (Hong Kong) (Alex S.H. Lin) */
+'zh-hk' => array(
+'hiderevision' => '永久隱藏修訂版本',
+// Empty form
+'hiderevision-prompt' => '要隱藏的修訂版本號碼:',
+'hiderevision-continue' => '繼續',
+// Confirmation form
+'hiderevision-text' =>
+"'''注意！'''本工具'''只能'''在以下情況才能使用：
+* 這個修訂版本含有不適當的個人隱私資訊。
+*: ''例如一個人的住處地址、電話號碼、身分證號碼等等…''
+
+'''濫用此工具，最終將會失去使用此工具的特殊權限！'''
+
+刪除這個項目，將會使這個網站上何任人都無法看到此項目,
+如果您誤刪了修訂版本，必須請管理員從資料庫中手動恢復。",
+'hiderevision-reason' => '理由 (這個記錄將不會公開):',
+'hiderevision-submit' => '永久隱藏這項資料',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => '隱藏此修訂',
+// Status & errors on action
+'hiderevision-norevisions' => '沒有指定的修訂版本被刪除',
+'hiderevision-noreason' => '您必須說明隱藏這個修訂版本的理由。',
+'hiderevision-status' => '修訂版本 $1: $2',
+'hiderevision-success' => '已經完成隱藏與記錄此操作',
+'hiderevision-error-missing' => '資料庫找不到這個修訂版本。',
+'hiderevision-error-current' => '本頁為該頁面的最新版本，無法隱藏。請先恢復這個頁面之前的編輯。',
+'hiderevision-error-delete' => '無法記錄此操作。可能之前已經被刪除。',
+'hiderevision-archive-status' => '已刪除的修訂版本。從 $1: $2',
+'oversight-nodiff' => '無法與過去之前的版本做差異比較，可能是因為：
+*此頁面已經被刪除。
+*隱藏的頁面為最先建立的版本。',
+// Logging
+'oversight-log-hiderev' => '隱藏 $1 中的一個修訂版本',
+// Oversight review page
+'oversight' => 'Oversight',
+'oversight-view' => '內容',
+'oversight-difference' => '(與之前存在之修訂版本的差異)',
+'oversight-prev' => '最後一個之前的修訂版本',
+'oversight-hidden' => '隱藏修訂',
+'oversight-header' => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
+),
+
+/* Chinese (Singapore) (Alex S.H. Lin) */
+'zh-sg' => array(
+'hiderevision' => '永久隐藏修订版本',
+// Empty form
+'hiderevision-prompt' => '要隐藏的修订版本号码:',
+'hiderevision-continue' => '继续',
+// Confirmation form
+'hiderevision-text' =>
+"'''注意！'''本工具'''只能'''在以下情况才能使用：
+* 这个修订版本含有不适当的个人隐私资讯。
+*: ''例如一个人的住处地址、电话号码、身分证号码等等…''
+
+'''滥用此工具，最终将会失去使用此工具的特殊权限！'''
+
+删除这个项目，将会使这个网站上何任人都无法看到此项目,
+如果您误删了修订版本，必须请管理员从资料库中手动恢复。",
+'hiderevision-reason' => '理由 (这个记录将不会公开):',
+'hiderevision-submit' => '永久隐藏这项资料',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => '隐藏此修订',
+// Status & errors on action
+'hiderevision-norevisions' => '没有指定的修订版本被删除',
+'hiderevision-noreason' => '您必须说明隐藏这个修订版本的理由。',
+'hiderevision-status' => '修订版本 $1: $2',
+'hiderevision-success' => '已经完成隐藏与记录此操作',
+'hiderevision-error-missing' => '资料库找不到这个修订版本。',
+'hiderevision-error-current' => '本页为该页面的最新版本，无法隐藏。请先恢复这个页面之前的编辑。',
+'hiderevision-error-delete' => '无法记录此操作。可能之前已经被删除。',
+'hiderevision-archive-status' => '已删除的修订版本。从 $1: $2',
+'oversight-nodiff' => '无法与过去之前的版本做差异比较，可能是因为：
+*这个页面已经被删除。
+*隐藏的页面为最先建立的版本。',
+// Logging
+'oversight-log-hiderev' => '隐藏 $1 中的一个修订版本',
+// Oversight review page
+'oversight' => 'Oversight',
+'oversight-view' => '内容',
+'oversight-difference' => '(与之前存在之修订版本的差异)',
+'oversight-prev' => '最后一个之前的修订版本',
+'oversight-hidden' => '隐藏修订',
+'oversight-header' => '以下列示的是已经永久隐藏的修订版本。请注意！泄漏这些讯息将会永远丧失{{int:Oversight}}权限！',
+),
+
+/* Chinese (Taiwan) (Alex S.H. Lin) */
+'zh-tw' => array(
+'hiderevision' => '永久隱藏修訂版本',
+// Empty form
+'hiderevision-prompt' => '要隱藏的修訂版本號碼:',
+'hiderevision-continue' => '繼續',
+// Confirmation form
+'hiderevision-text' =>
+"'''注意！'''本工具'''只能'''在以下情況才能使用：
+* 這個修訂版本含有不適當的個人隱私資訊。
+*: ''例如一個人的住處地址、電話號碼、身分證號碼等等…''
+
+'''濫用此工具，最終將會失去使用此工具的特殊權限！'''
+
+刪除這個項目，將會使這個網站上何任人都無法看到此項目,
+如果您誤刪了修訂版本，必須請管理員從資料庫中手動恢復。",
+'hiderevision-reason' => '理由 (這個記錄將不會公開):',
+'hiderevision-submit' => '永久隱藏這項資料',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => '隱藏此修訂',
+// Status & errors on action
+'hiderevision-norevisions' => '沒有指定的修訂版本被刪除',
+'hiderevision-noreason' => '您必須說明隱藏這個修訂版本的理由。',
+'hiderevision-status' => '修訂版本 $1: $2',
+'hiderevision-success' => '已經完成隱藏與記錄此操作',
+'hiderevision-error-missing' => '資料庫找不到這個修訂版本。',
+'hiderevision-error-current' => '本頁為該頁面的最新版本，無法隱藏。請先恢復這個頁面之前的編輯。',
+'hiderevision-error-delete' => '無法記錄此操作。可能之前已經被刪除。',
+'hiderevision-archive-status' => '已刪除的修訂版本。從 $1: $2',
+'oversight-nodiff' => '無法與過去之前的版本做差異比較，可能是因為：
+*此頁面已經被刪除。
+*隱藏的頁面為最先建立的版本。',
+// Logging
+'oversight-log-hiderev' => '隱藏 $1 中的一個修訂版本',
+// Oversight review page
+'oversight' => 'Oversight',
+'oversight-view' => '內容',
+'oversight-difference' => '(與之前存在之修訂版本的差異)',
+'oversight-prev' => '最後一個之前的修訂版本',
+'oversight-hidden' => '隱藏修訂',
+'oversight-header' => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
+),
 	);
 }
-
 ?>
