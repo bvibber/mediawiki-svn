@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.Map.Entry;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -18,6 +19,7 @@ import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.WildcardQuery;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
@@ -77,7 +79,9 @@ public class WikiQueryParser {
 	 * REWRITE -  rewrite (help:searchterm) => (+namespace:12 contents:searchterm)
 	 */
 	public enum NamespacePolicy { LEAVE, IGNORE, REWRITE };
-	protected HashMap<String,Integer> namespaceMapping;
+	static protected Hashtable<String,Query> namespaceQueries = null;
+	static protected String namespaceAllKeyword = null;
+	static protected Hashtable<String,NamespaceFilter> namespaceFilters = null;
 	private String defaultNamespaceName;
 	private Query namespaceRewriteQuery;
 	private NamespacePolicy namespacePolicy;
@@ -89,26 +93,18 @@ public class WikiQueryParser {
 	private char[] decomp; // unicode decomposition letters
 	private int decompi;
 	
-	private void initNamespaces(){
-		namespaceMapping = new HashMap<String,Integer>();
-		namespaceMapping.put("main",new Integer(0));
-		namespaceMapping.put("main_talk",new Integer(1));
-		namespaceMapping.put("user",new Integer(2));
-		namespaceMapping.put("user_talk",new Integer(3));
-		namespaceMapping.put("project",new Integer(4));
-		namespaceMapping.put("project_talk",new Integer(5));
-		namespaceMapping.put("image",new Integer(6));
-		namespaceMapping.put("image_talk",new Integer(7));
-		namespaceMapping.put("mediawiki",new Integer(8));
-		namespaceMapping.put("mediawiki_talk",new Integer(9));
-		namespaceMapping.put("template",new Integer(10));
-		namespaceMapping.put("template_talk",new Integer(11));
-		namespaceMapping.put("help",new Integer(12));
-		namespaceMapping.put("help_talk",new Integer(13));
-		namespaceMapping.put("category_text",new Integer(14));
-		namespaceMapping.put("category_talk",new Integer(15));
+	/** Init namespace queries */
+	protected void initNamespaces(){
+		if(namespaceQueries != null)
+			return;
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
+		namespaceAllKeyword = global.getNamespacePrefixAll();
+		namespaceQueries = new Hashtable<String,Query>();
+		namespaceFilters = global.getNamespacePrefixes();
+		for(Entry<String,NamespaceFilter> prefix : namespaceFilters.entrySet()){
+			namespaceQueries.put(prefix.getKey(),generateRewrite(prefix.getValue()));
+		}
 	}
-	
 	/**
 	 * Construct using default policy (LEAVE), without any namespace rewriting
 	 * @param field   default field name
@@ -141,11 +137,10 @@ public class WikiQueryParser {
 		if(nsfilter != null){
 			namespaceRewriteQuery = generateRewrite(nsfilter);
 			defaultNamespaceName = null;
-			if(nsfilter.cardinality()==1){
-				Integer in = new Integer(nsfilter.getNamespace());
-				// if has only on namespace, try to get the name of default namespace
-				for(Entry<String,Integer> e : namespaceMapping.entrySet()){
-					if(in.equals(e.getValue())){
+			if(namespaceRewriteQuery != null && namespaceQueries.containsValue(namespaceRewriteQuery)){
+				// try to get the name of prefix from predefined namespaces
+				for(Entry<String,Query> e : namespaceQueries.entrySet()){
+					if(e.getValue().equals(namespaceRewriteQuery)){
 						defaultNamespaceName = e.getKey();
 					}
 				}
@@ -158,7 +153,7 @@ public class WikiQueryParser {
 	}
 	
 	/** Generate a rewrite query for a collection of namespaces */
-	protected Query generateRewrite(NamespaceFilter nsfilter){
+	public static Query generateRewrite(NamespaceFilter nsfilter){
 		if(nsfilter.cardinality() == 0)
 			return null;
 		else if(nsfilter.cardinality() == 1)
@@ -180,15 +175,15 @@ public class WikiQueryParser {
 	 * @param queryText
 	 * @return
 	 */
-	public HashSet<Integer> getFieldNamespaces(String queryText){
+	public HashSet<NamespaceFilter> getFieldNamespaces(String queryText){
 		HashSet<String> fields = getFields(queryText);
-		HashSet<Integer> ret = new HashSet<Integer>();
+		HashSet<NamespaceFilter> ret = new HashSet<NamespaceFilter>();
 		for(String field : fields){
 			field = field.toLowerCase();
-			if(namespaceMapping.get(field) != null)
-				ret.add(namespaceMapping.get(field));
-			else if(field.equals("all"))
-				ret.add(new Integer(Integer.MAX_VALUE));
+			if(namespaceFilters.containsKey(field))
+				ret.add(namespaceFilters.get(field));
+			else if(field.equals(namespaceAllKeyword))
+				ret.add(new NamespaceFilter());
 		}
 		
 		return ret;
@@ -248,9 +243,9 @@ public class WikiQueryParser {
 		if(fieldName == null || namespacePolicy != NamespacePolicy.REWRITE)
 			return null;
 		
-		Integer i;
-		if((i = namespaceMapping.get(fieldName))!=null){
-			return new TermQuery(new Term("namespace",i.toString()));
+		Query q;
+		if((q = namespaceQueries.get(fieldName))!=null){
+			return q;
 		} else
 			return null;
 	}

@@ -23,6 +23,8 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.wikimedia.lsearch.search.NamespaceFilter;
+
 /**
  * Read and parse the global configuration file, is also used
  * to discover where the indexes are. Global configuration manages
@@ -49,6 +51,10 @@ public class GlobalConfiguration {
 	protected Hashtable<String,String> indexRsyncPath;
 	/** path where index are locally stored */
 	protected String indexPath;
+	/** prefixes, e.g. main, talk, help, and corresponding filters */
+	protected Hashtable<String,NamespaceFilter> namespacePrefix;
+	/** keyword for all namespaces (i.e. no filtering) */
+	protected String namespacePrefixAll; 
 	
 	/** info about this host */
 	protected static InetAddress myHost;
@@ -211,6 +217,8 @@ public class GlobalConfiguration {
 		index = new Hashtable<String, ArrayList<String>>();
 		indexLocation = new Hashtable<String, String>();
 		indexRsyncPath = new Hashtable<String, String>();
+		namespacePrefix = new Hashtable<String,NamespaceFilter>();
+		namespacePrefixAll = "all"; // default
 	}
 	
 	/** 
@@ -230,6 +238,7 @@ public class GlobalConfiguration {
 		final int INDEX = 1;
 		final int SEARCH = 2;
 		final int INDEXPATH = 3;
+		final int NAMESPACE_PREFIX = 4;
 		
 		int searchGroupNum = -1;
 		
@@ -258,9 +267,10 @@ public class GlobalConfiguration {
 				else if(s.equalsIgnoreCase("search-group")){
 					section = SEARCH;
 					searchGroupNum++;
-				}
-				else if(s.equalsIgnoreCase("index-path"))
+				} else if(s.equalsIgnoreCase("index-path"))
 					section = INDEXPATH;
+				else if(s.equalsIgnoreCase("namespace-prefix"))
+					section = NAMESPACE_PREFIX;
 			} else if(section==-1 && !line.trim().equals("")){
 				System.out.println("Ignoring a line up to first section heading...");
 			} else if(section == DATABASE){
@@ -295,6 +305,17 @@ public class GlobalConfiguration {
 				if(indexRsyncPath.get(host)!=null)
 					System.out.println("Warning: repeated path definition for host "+host+" on line "+lineNum+", overwriting old.");
 				indexRsyncPath.put(host,path);
+			} else if(section == NAMESPACE_PREFIX){
+				String[] parts = splitBySemicolon(line,lineNum);
+				if(parts == null) continue;
+				String prefix = parts[0].trim();
+				String filter = parts[1].trim();
+				
+				if(filter.equalsIgnoreCase("<all>"))
+					namespacePrefixAll = prefix;
+				else
+					namespacePrefix.put(prefix,new NamespaceFilter(filter));
+				
 			}
 		}
 		if( !checkIntegrity() ){
@@ -733,5 +754,15 @@ public class GlobalConfiguration {
 		else
 			return null;
 	}
+
+	public Hashtable<String, NamespaceFilter> getNamespacePrefixes() {
+		return namespacePrefix;
+	}
+
+	public String getNamespacePrefixAll() {
+		return namespacePrefixAll;
+	}
+	
+	
 
 }
