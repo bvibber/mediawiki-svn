@@ -1,5 +1,6 @@
 package org.wikimedia.lsearch.test;
 
+import java.net.URL;
 import java.util.HashSet;
 
 import junit.framework.TestCase;
@@ -11,11 +12,15 @@ import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 
 public class WikiQueryParserTest extends TestCase {
 
 	public void testParser() {
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
+		String testurl = "file://"+System.getProperty("user.dir")+"/test-data/mwsearch-global.test";		
 		try{
+			global.readFromURL(new URL(testurl),"/usr/local/var/mwsearch","",null);
 			WikiQueryParser parser = new WikiQueryParser("contents",new SimpleAnalyzer());
 			Query q;
 			HashSet<String> fields;
@@ -276,6 +281,9 @@ public class WikiQueryParserTest extends TestCase {
 			
 			q = parser.parseTwoPass("beans everyone category:cheeses",NamespacePolicy.REWRITE);
 			assertEquals("(+(namespace:0 namespace:1 namespace:4 namespace:12) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5) +category:cheeses)) (+(namespace:0 namespace:1 namespace:4 namespace:12) +(+title:beans^2.0 +title:everyone^2.0 +category:cheeses))",q.toString());
+			
+			q = parser.parseTwoPass("all_talk: beans everyone",NamespacePolicy.REWRITE);
+			assertEquals("(+(namespace:1 namespace:3 namespace:5 namespace:7 namespace:9 namespace:11 namespace:13 namespace:15) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+(namespace:1 namespace:3 namespace:5 namespace:7 namespace:9 namespace:11 namespace:13 namespace:15) +(+title:beans^2.0 +title:everyone^2.0))",q.toString());
 			
 		} catch(Exception e){
 			e.printStackTrace();

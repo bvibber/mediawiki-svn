@@ -89,18 +89,15 @@ public class Warmup {
 		return langTerms.get("en");
 	}
 
-	/** Generate filters for all namespace from 0 to 15 */
+	/** Preload all predefined filters */
 	protected static void makeNamespaceFilters(IndexSearcherMul is, IndexId iid) {
-		if(iid.isMainPart())
-			return; // no filters are ever used on mainpart
-		for(int ns = 0; ns < 15 ; ns ++){
-			if(ns==0 && iid.isRestPart())
-				continue;
+		Hashtable<String,NamespaceFilter> filters = global.getNamespacePrefixes();
+		for(NamespaceFilter filter : filters.values()){
 			try {
 				is.search(new TermQuery(new Term("contents","wikipedia")),
-						new NamespaceFilterWrapper(new NamespaceFilter(Integer.toString(ns))));
+						new NamespaceFilterWrapper(filter));
 			} catch (IOException e) {
-				log.warn("I/O error while preloading filter for "+iid+" for namespace "+ns+" : "+e.getMessage());
+				log.warn("I/O error while preloading filter for "+iid+" for filter "+filter+" : "+e.getMessage());
 			}
 		}
 	}

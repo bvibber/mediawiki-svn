@@ -5,6 +5,7 @@ import java.net.URI;
 import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
@@ -20,6 +21,7 @@ import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.frontend.SearchDaemon;
 import org.wikimedia.lsearch.frontend.SearchServer;
@@ -110,19 +112,21 @@ public class SearchEngine {
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
 		WikiQueryParser parser = new WikiQueryParser("contents",nsDefault,analyzer,WikiQueryParser.NamespacePolicy.IGNORE);
-		HashSet<Integer> fields = parser.getFieldNamespaces(searchterm);
+		HashSet<NamespaceFilter> fields = parser.getFieldNamespaces(searchterm);
 		NamespaceFilterWrapper nsfw = null;
 		Query q = null;
 		SearchResults res = null;
 		long searchStart = System.currentTimeMillis();
+		Hashtable<String,NamespaceFilter> cachedFilters = GlobalConfiguration.getInstance().getNamespacePrefixes(); 
 		
 		if(fields.size()==1){
-			if(fields.contains(new Integer(Integer.MAX_VALUE)))
-				nsfw = null;  // "all" keyword
-			else // use filter if search on one namespace
-				nsfw = new NamespaceFilterWrapper(new NamespaceFilter(fields));
+			if(fields.contains(new NamespaceFilter()))
+				nsfw = null;  // empty filter: "all" keyword
+			else // use the specified filter in the query (if there is exactly one)
+				nsfw = new NamespaceFilterWrapper(fields.toArray(new NamespaceFilter[] {})[0]);
 		}
-		else if(fields.size()==0 && nsDefault!=null && nsDefault.cardinality()==1)
+		// use default filter if it's cached
+		else if(fields.size()==0 && nsDefault!=null && cachedFilters.containsValue(nsDefault))
 			nsfw = new NamespaceFilterWrapper(nsDefault);
 		
 		try {
@@ -131,7 +135,7 @@ public class SearchEngine {
 			}
 			else{
 				q = parser.parseTwoPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE);
-				log.debug("Using NamespaceFilterWrapper "+nsfw);
+				log.info("Using NamespaceFilterWrapper "+nsfw);
 			}
 			
 			WikiSearcher searcher = new WikiSearcher(iid);
