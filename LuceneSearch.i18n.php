@@ -294,6 +294,24 @@ Szukana fraza $3 $9",
 Jest to tymczasowe; spróbuj ponownie za parę chwil
 lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:\n"
 );
+$wgLuceneSearchMessages['pt'] = array(
+	'searchnumber'          => "<strong>Resultados $1-$2 de $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",
+	'searchnext'            => "<span style='font-size: small'>Posterior</span> &#x00BB;",
+	'searchscore'           => "Relevância: $1",
+	'searchsize'            => "$1 KB ($2 words)",
+	'searchdidyoumean'      => "Você quis dizer: \"<a href=\"$1\">$2</a>\"?",
+	'searchnoresults'       => "Desculpe, mas não existem resultados exatos correspondentes à sua procura.",
+	'searchnearmatches'     => "<b>As páginas a seguir possuem títulos similares com o que você pesquisou:</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+Pesquisar nos espaços nominais:\n
+$1\n
+Pesquisar por $3 $9",
+	'lucenefallback'        => "Há um problema com a busca neste wiki.
+Provavelmente seja apenas uma falha temporária; tente novamente mais tarde,
+ou procure por conteúdos neste wiki através de um mecanismo externo:\n"
+);
 $wgLuceneSearchMessages['ru'] = array(
 	'searchnumber'          => "<strong>Результаты $1—$2 из $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Пред.</span>",
