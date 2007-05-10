@@ -65,9 +65,9 @@ $wgCrossNamespaceLinksMessages['kk-tr'] = array(
 	'crossnamespacelinkstext'     => '«$1» beti: «$3» esim ayasına $2 silteme '
 );
 $wgCrossNamespaceLinksMessages['kk-cn'] = array(
-	'crossnamespacelinks'         => 'باسقا ەسٴىم اياسىنا سٴىلتەيتٴىن بەتتەر',
-	'crossnamespacelinks-summary' => 'بۇل بەتتە نەگٴىزگٴى ەسٴىم اياسىنداعى بەتتەگٴى باسقا ەسٴىم ايالىرىنداعى ({{ns:special}}, {{ns:talk}}, {{ns:project}} جٴانە {{ns:template}} ەسٴىم ايالارىنان تىس) بەتتەرگە سٴىلتەمە تٴىزٴىمٴى بەرٴىلەدٴى. وسىنداي سٴىلتەمەلەردٴى قولدانۋعا ۇسىنىلمايدى.',
-	'crossnamespacelinkstext'     => '«$1» بەتٴى: «$3» ەسٴىم اياسىنا $2 سٴىلتەمە '
+	'crossnamespacelinks'         => 'باسقا ەسٸم اياسىنا سٸلتەيتٸن بەتتەر',
+	'crossnamespacelinks-summary' => 'بۇل بەتتە نەگٸزگٸ ەسٸم اياسىنداعى بەتتەگٸ باسقا ەسٸم ايالىرىنداعى ({{ns:special}}, {{ns:talk}}, {{ns:project}} جٵنە {{ns:template}} ەسٸم ايالارىنان تىس) بەتتەرگە سٸلتەمە تٸزٸمٸ بەرٸلەدٸ. وسىنداي سٸلتەمەلەردٸ قولدانۋعا ۇسىنىلمايدى.',
+	'crossnamespacelinkstext'     => '«$1» بەتٸ: «$3» ەسٸم اياسىنا $2 سٸلتەمە '
 );
 $wgCrossNamespaceLinksMessages['kk'] = $wgCrossNamespaceLinksMessages['kk-kz'];
 $wgCrossNamespaceLinksMessages['ksh'] = array(

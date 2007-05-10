@@ -47,7 +47,7 @@ $wgSiteMatrixMessages['kk-tr'] = array(
 	"sitematrix" => "Barlıq Wikimedia wïkï-jobalar tizimi",
 );
 $wgSiteMatrixMessages['kk-cn'] = array(
-	"sitematrix" => "بارلىق Wikimedia ۋيكي-جوبالار تٴىزٴىمٴى",
+	"sitematrix" => "بارلىق Wikimedia ۋيكي-جوبالار تٸزٸمٸ",
 );
 $wgSiteMatrixMessages['kk'] = $wgSiteMatrixMessages['kk-kz'];
 $wgSiteMatrixMessages['lt'] = array(

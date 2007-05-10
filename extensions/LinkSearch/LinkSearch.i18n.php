@@ -90,13 +90,13 @@ $wgLinkSearchMessages['kk-tr'] = array(
 	'linksearch-error' => 'Bädel nışandar tek server jaýı atawınıñ bastawında bolwı mümkin.',
 );
 $wgLinkSearchMessages['kk-cn'] = array(
-	'linksearch'       => 'ەرەنسٴىلتەمەلەرٴىن ٴىزدەۋ',
-	'linksearch-pat'   => 'ٴىزدەۋ شارتى:',
-	'linksearch-ns'    => 'ەسٴىم اياسى:',
-	'linksearch-ok'    => 'ٴىزدەۋ',
-	'linksearch-text'  => '«*.wikipedia.org» اتاۋىنا ۇقساستى بٴادەل نىشانداردى قولدانۋعا بولادى. ',
-	'linksearch-line'  => '$2 دەگەننەن $1 سٴىلتەگەن',
-	'linksearch-error' => 'بٴادەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٴۇمكٴىن.',
+	'linksearch'       => 'ەرەنسٸلتەمەلەرٸن ٸزدەۋ',
+	'linksearch-pat'   => 'ٸزدەۋ شارتى:',
+	'linksearch-ns'    => 'ەسٸم اياسى:',
+	'linksearch-ok'    => 'ٸزدەۋ',
+	'linksearch-text'  => '«*.wikipedia.org» اتاۋىنا ۇقساستى بٵدەل نىشانداردى قولدانۋعا بولادى. ',
+	'linksearch-line'  => '$2 دەگەننەن $1 سٸلتەگەن',
+	'linksearch-error' => 'بٵدەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٷمكٸن.',
 );
 $wgLinkSearchMessages['kk'] = $wgLinkSearchMessages['kk-kz'];
 $wgLinkSearchMessages['nl'] = array(

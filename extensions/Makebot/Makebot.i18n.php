@@ -232,27 +232,6 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke'  => '[[$1]]のbotフラグを剥奪しました。',
 ),
 
-/* Kazakh default (kk:User:AlefZet) */
-'kk' => array(
-'makebot' => 'Бот күйін беру не қайтару',
-'makebot-header' => "'''Бұл бетті орнындағы төрешілер басқа катысушы тіркелгісіне [[{{ns:help}}:Боттар|бот күйін]] беру не қайтару үшін қолданады.'''<br />Берілген бот күйі қатысушының өңдеулерін [[{{ns:special}}:Recentchanges|жуықтағы өзгерістер]] сияқты тізімдерден жасырады, және де өздік түрде өңдеу жасайтын қатысушыларды белгілеуге қолайлы. Осы әрекет іске асатын саясаты бойынша жасалуы қажет.",
-'makebot-username' => 'Қатысушы аты:',
-'makebot-search' => 'Өту',
-'makebot-isbot' => '[[{{ns:user}}:$1|$1]] дегенде бот күйі бар.',
-'makebot-notbot' => '[[{{ns:user}}:$1|$1]] дегенде бот күйі жоқ.',
-'makebot-privileged' => '[[{{ns:user}}:$1|$1]] дегенде [[{{ns:special}}:Listadmins|әкімші немесе төреші құқықтары]] бар, сондықтан бот күйі берілмейді.',
-'makebot-change' => 'Күйін өзгерту:',
-'makebot-grant' => 'Беру',
-'makebot-revoke' => 'Қайта шақыру',
-'makebot-comment' => 'Мәндемесі:',
-'makebot-granted' => '[[{{ns:user}}:$1|$1]] дегенде енді бот күйі бар.',
-'makebot-revoked' => '[[{{ns:user}}:$1|$1]] дегенде енді бот күйі жоқ.',
-'makebot-logpage' => 'Бот күй журналы',
-'makebot-logpagetext' => 'Бұл қатысушы [[{{ns:help}}:Боттар|бот]] күйін өзгерту журналы.',
-'makebot-logentrygrant' => '[[$1]] дегенге бот күйі берілді',
-'makebot-logentryrevoke' => '[[$1]] дегеннен бот күйі аластатылды',
-),
-
 /* Kazakh Cyrillic (kk:User:AlefZet) */
 'kk-kz' => array(
 'makebot' => 'Бот күйін беру не қайтару',
@@ -297,23 +276,23 @@ function efMakeBotMessages() {
 
 /* Kazakh Arabic (kk:User:AlefZet) */
 'kk-cn' => array(
-'makebot' => 'بوت كٴۇيٴىن بەرۋ نە قايتارۋ',
-'makebot-header' => "'''بۇل بەتتٴى ورنىنداعى تٴورەشٴىلەر باسقا كاتىسۋشى تٴىركەلگٴىسٴىنە [[{{ns:help}}:بوتتار|بوت كٴۇيٴىن]] بەرۋ نە قايتارۋ ٴۇشٴىن قولدانادى.'''<br />بەرٴىلگەن بوت كٴۇيٴى قاتىسۋشىنىڭ ٴوڭدەۋلەرٴىن [[{{ns:special}}:Recentchanges|جۋىقتاعى ٴوزگەرٴىستەر]] سيياقتى تٴىزٴىمدەردەن جاسىرادى, جٴانە دە ٴوزدٴىك تٴۇردە ٴوڭدەۋ جاسايتىن قاتىسۋشىلاردى بەلگٴىلەۋگە قولايلى. وسى ٴارەكەت ٴىسكە اساتىن ساياساتى بويىنشا جاسالۋى قاجەت.",
+'makebot' => 'بوت كٷيٸن بەرۋ نە قايتارۋ',
+'makebot-header' => "'''بۇل بەتتٸ ورنىنداعى تٶرەشٸلەر باسقا كاتىسۋشى تٸركەلگٸسٸنە [[{{ns:help}}:بوتتار|بوت كٷيٸن]] بەرۋ نە قايتارۋ ٷشٸن قولدانادى.'''<br />بەرٸلگەن بوت كٷيٸ قاتىسۋشىنىڭ ٶڭدەۋلەرٸن [[{{ns:special}}:Recentchanges|جۋىقتاعى ٶزگەرٸستەر]] سيياقتى تٸزٸمدەردەن جاسىرادى, جٵنە دە ٶزدٸك تٷردە ٶڭدەۋ جاسايتىن قاتىسۋشىلاردى بەلگٸلەۋگە قولايلى. وسى ٵرەكەت ٸسكە اساتىن ساياساتى بويىنشا جاسالۋى قاجەت.",
 'makebot-username' => 'قاتىسۋشى اتى:',
-'makebot-search' => 'ٴوتۋ',
-'makebot-isbot' => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٴۇيٴى بار.',
-'makebot-notbot' => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٴۇيٴى جوق.',
-'makebot-privileged' => '[[{{ns:user}}:$1|$1]] دەگەندە [[{{ns:special}}:Listadmins|ٴاكٴىمشٴى نەمەسە تٴورەشٴى قۇقىقتارى]] بار, سوندىقتان بوت كٴۇيٴى بەرٴىلمەيدٴى.',
-'makebot-change' => 'كٴۇيٴىن ٴوزگەرتۋ:',
+'makebot-search' => 'ٶتۋ',
+'makebot-isbot' => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٷيٸ بار.',
+'makebot-notbot' => '[[{{ns:user}}:$1|$1]] دەگەندە بوت كٷيٸ جوق.',
+'makebot-privileged' => '[[{{ns:user}}:$1|$1]] دەگەندە [[{{ns:special}}:Listadmins|ٵكٸمشٸ نەمەسە تٶرەشٸ قۇقىقتارى]] بار, سوندىقتان بوت كٷيٸ بەرٸلمەيدٸ.',
+'makebot-change' => 'كٷيٸن ٶزگەرتۋ:',
 'makebot-grant' => 'بەرۋ',
 'makebot-revoke' => 'قايتا شاقىرۋ',
-'makebot-comment' => 'مٴاندەمەسٴى:',
-'makebot-granted' => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٴى بوت كٴۇيٴى بار.',
-'makebot-revoked' => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٴى بوت كٴۇيٴى جوق.',
-'makebot-logpage' => 'بوت كٴۇي جۋرنالى',
-'makebot-logpagetext' => 'بۇل قاتىسۋشى [[{{ns:help}}:بوتتار|بوت]] كٴۇيٴىن ٴوزگەرتۋ جۋرنالى.',
-'makebot-logentrygrant' => '[[$1]] دەگەنگە بوت كٴۇيٴى بەرٴىلدٴى',
-'makebot-logentryrevoke' => '[[$1]] دەگەننەن بوت كٴۇيٴى الاستاتىلدى',
+'makebot-comment' => 'مٵندەمەسٸ:',
+'makebot-granted' => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٸ بوت كٷيٸ بار.',
+'makebot-revoked' => '[[{{ns:user}}:$1|$1]] دەگەندە ەندٸ بوت كٷيٸ جوق.',
+'makebot-logpage' => 'بوت كٷي جۋرنالى',
+'makebot-logpagetext' => 'بۇل قاتىسۋشى [[{{ns:help}}:بوتتار|بوت]] كٷيٸن ٶزگەرتۋ جۋرنالى.',
+'makebot-logentrygrant' => '[[$1]] دەگەنگە بوت كٷيٸ بەرٸلدٸ',
+'makebot-logentryrevoke' => '[[$1]] دەگەننەن بوت كٷيٸ الاستاتىلدى',
 ),
 
 /* nld . Dutch (Siebrand Mazeland) */
@@ -595,6 +574,10 @@ function efMakeBotMessages() {
 ),
 
 	);
+
+	/* Kazakh default, fallback to kk-kz */
+	$messages['kk'] = $messages['kk-kz'];
+
 	/* Chinese (Singapore), inherited from Chinese (China) */
 	$messages['zh-sg'] = $messages['zh-cn'];
 	return $messages;

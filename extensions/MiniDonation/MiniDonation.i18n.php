@@ -38,7 +38,7 @@ $wgMiniDonationMessages['kk-tr'] = array(
 	'donationform-submit' => 'Järdemdi PayPal jüýesimen jiberw',
 );
 $wgMiniDonationMessages['kk-cn'] = array(
-	'donationform-submit' => 'جٴاردەمدٴى PayPal جٴۇيەسٴىمەن جٴىبەرۋ',
+	'donationform-submit' => 'جٵردەمدٸ PayPal جٷيەسٸمەن جٸبەرۋ',
 );
 $wgMiniDonationMessages['kk'] = $wgMiniDonationMessages['kk-kz'];
 $wgMiniDonationMessages['lt'] = array(

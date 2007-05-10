@@ -183,50 +183,6 @@ in caso di errori.",
 La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
 ),
 
-/* Kazakh default (AlefZet) */
-'kk' => array('hiderevision' => 'Нұсқаларды тұрақты жасыру',
-// Empty form
-'hiderevision-prompt' => 'Жойылатын нұсқа нөмірі:',
-'hiderevision-continue' => 'Жалғастыру',
-// Confirmation form
-'hiderevision-text' =>
-"Бұл ''тек''' келесі жағдайларда қолданылу қажет:
-* Жеке деректер теріс болса
-*: ''үй мекен жайы және телефон нөмірі, әлеуметтік сақтандыру нөмірі, т.б.''
-
-'''Бұл жүйе қызметін теріс пайдалансаңыз, құқықтарыңыз өшіріледі.'''
-
-Аластатылған даналар торап бойынша әркімгеде көрінбейді,
-дегенмен, жоюлар жазылып алынады және қате әрекет болса,
-дерекқор әкімшісі қолмен қайтадан келтіруге мүмкін.",
-'hiderevision-reason' => 'Себебі (жеке жазылып алынады):',
-'hiderevision-submit' => 'Деректерді тұрақты жасыру',
-// Tab displayed to allowed users on old revision display
-'hiderevision-tab' => 'Нұсқаны жасыр',
-// Status & errors on action
-'hiderevision-norevisions' => 'Жоюға ешқандай нусқа белгіленбеген.',
-'hiderevision-noreason' => 'Бұл жоюдың себебін жазып беріңіз.',
-'hiderevision-status' => '$1 нұсқасы: $2',
-'hiderevision-success' => 'Сәтті мұрағаталды және жойлды.',
-'hiderevision-error-missing' => 'Дерекқорда табылмады.',
-'hiderevision-error-current' => 'Беттің соңғы түзетуі жойылынбады. Алдынан бұл түзетуді қайтарыңыз.',
-'hiderevision-error-delete' => 'Мұрағатталынбады; алдынан жойылғанба?',
-'hiderevision-archive-status' => '$1 кезіндегі нұсқа жойылды: $2',
-'oversight-nodiff' => 'Өзгерістер байқалынбайды, өйткені ағымда бұл беттің алдыңғы нұсқасы жоқ. Қай-қайсысы болуы мүмкін:
-* Бет жойлған
-* Жасырылған нұсқа бірінші болған',
-// Logging
-'oversight-log-hiderev' => '$1 кезіндегі түзету жойылды',
-// Oversight review page
-'oversight' => 'Қарауыл',
-'oversight-view' => 'егжей-тегжейлері',
-'oversight-difference' => '(Алдынан қалған нұсқамен айырмашылық)',
-'oversight-prev' => 'Алдыңғы нұсқа',
-'oversight-hidden' => 'Жасырылған нұсқа',
-'oversight-header' => 'Төменде барша көруінен тұрақты жасырылған нұсқалар тізімі.
-Бұл ақпаратты көруге ашқанда Қарауыл құқықтар әрдайым өшіріледі.',
-),
-
 /* Kazakh Cyrillic (AlefZet) */
 'kk-kz' => array('hiderevision' => 'Нұсқаларды тұрақты жасыру',
 // Empty form
@@ -262,13 +218,13 @@ La divulgazione di tali informazioni può dar luogo alla rimozione permanente de
 // Logging
 'oversight-log-hiderev' => '$1 кезіндегі түзету жойылды',
 // Oversight review page
-'oversight' => 'Қарауыл',
+'oversight' => 'Бет нұсқаларын жасыру',
 'oversight-view' => 'егжей-тегжейлері',
 'oversight-difference' => '(Алдынан қалған нұсқамен айырмашылық)',
 'oversight-prev' => 'Алдыңғы нұсқа',
 'oversight-hidden' => 'Жасырылған нұсқа',
-'oversight-header' => 'Төменде барша көруінен тұрақты жасырылған нұсқалар тізімі.
-Бұл ақпаратты көруге ашқанда Қарауыл құқықтар әрдайым өшіріледі.',
+'oversight-header' => 'Төменде баршадан тұрақты жасырылған нұсқалар тізімі беріледі.
+Бұл мәліметті баршаға ашқанда Нұсқа жасырушы құқықтарыңыз әрдайым өшіріледі.',
 ),
 
 /* Kazakh Latin (AlefZet) */
@@ -306,57 +262,57 @@ derekqor äkimşisi qolmen qaýtadan keltirwge mümkin.",
 // Logging
 'oversight-log-hiderev' => '$1 kezindegi tüzetw joýıldı',
 // Oversight review page
-'oversight' => 'Qarawıl',
+'oversight' => 'Bet nusqaların jasırw',
 'oversight-view' => 'egjeý-tegjeýleri',
 'oversight-difference' => '(Aldınan qalğan nusqamen aýırmaşılıq)',
 'oversight-prev' => 'Aldıñğı nusqa',
 'oversight-hidden' => 'Jasırılğan nusqa',
-'oversight-header' => 'Tömende barşa körwinen turaqtı jasırılğan nusqalar tizimi.
-Bul aqparattı körwge aşqanda Qarawıl quqıqtar ärdaýım öşiriledi.',
+'oversight-header' => 'Tömende barşadan turaqtı jasırılğan nusqalar tizimi beriledi.
+Bul mälimetti barşağa aşqanda Nusqa jasırwşı quqıqtarıñız ärdaýım öşiriledi.',
 ),
 
 /* Kazakh Arabic (AlefZet) */
 'kk-cn' => array('hiderevision' => 'نۇسقالاردى تۇراقتى جاسىرۋ',
 // Empty form
-'hiderevision-prompt' => 'جويىلاتىن نۇسقا نٴومٴىرٴى:',
+'hiderevision-prompt' => 'جويىلاتىن نۇسقا نٶمٸرٸ:',
 'hiderevision-continue' => 'جالعاستىرۋ',
 // Confirmation form
 'hiderevision-text' =>
-"بۇل ''تەك''' كەلەسٴى جاعدايلاردا قولدانىلۋ قاجەت:
-* جەكە دەرەكتەر تەرٴىس بولسا
-*: ''ٴۇي مەكەن جايى جٴانە تەلەفون نٴومٴىرٴى, ٴالەۋمەتتٴىك ساقتاندىرۋ نٴومٴىرٴى, ت.ب.''
+"بۇل ''تەك''' كەلەسٸ جاعدايلاردا قولدانىلۋ قاجەت:
+* جەكە دەرەكتەر تەرٸس بولسا
+*: ''ٷي مەكەن جايى جٵنە تەلەفون نٶمٸرٸ, ٵلەۋمەتتٸك ساقتاندىرۋ نٶمٸرٸ, ت.ب.''
 
-'''بۇل جٴۇيە قىزمەتٴىن تەرٴىس پايدالانساڭىز, قۇقىقتارىڭىز ٴوشٴىرٴىلەدٴى.'''
+'''بۇل جٷيە قىزمەتٸن تەرٸس پايدالانساڭىز, قۇقىقتارىڭىز ٶشٸرٸلەدٸ.'''
 
-الاستاتىلعان دانالار توراپ بويىنشا ٴاركٴىمگەدە كٴورٴىنبەيدٴى,
-دەگەنمەن, جويۋلار جازىلىپ الىنادى جٴانە قاتە ٴارەكەت بولسا,
-دەرەكقور ٴاكٴىمشٴىسٴى قولمەن قايتادان كەلتٴىرۋگە مٴۇمكٴىن.",
-'hiderevision-reason' => 'سەبەبٴى (جەكە جازىلىپ الىنادى):',
-'hiderevision-submit' => 'دەرەكتەردٴى تۇراقتى جاسىرۋ',
+الاستاتىلعان دانالار توراپ بويىنشا ٵركٸمگەدە كٶرٸنبەيدٸ,
+دەگەنمەن, جويۋلار جازىلىپ الىنادى جٵنە قاتە ٵرەكەت بولسا,
+دەرەكقور ٵكٸمشٸسٸ قولمەن قايتادان كەلتٸرۋگە مٷمكٸن.",
+'hiderevision-reason' => 'سەبەبٸ (جەكە جازىلىپ الىنادى):',
+'hiderevision-submit' => 'دەرەكتەردٸ تۇراقتى جاسىرۋ',
 // Tab displayed to allowed users on old revision display
 'hiderevision-tab' => 'نۇسقانى جاسىر',
 // Status & errors on action
-'hiderevision-norevisions' => 'جويۋعا ەشقانداي نۋسقا بەلگٴىلەنبەگەن.',
-'hiderevision-noreason' => 'بۇل جويۋدىڭ سەبەبٴىن جازىپ بەرٴىڭٴىز.',
+'hiderevision-norevisions' => 'جويۋعا ەشقانداي نۋسقا بەلگٸلەنبەگەن.',
+'hiderevision-noreason' => 'بۇل جويۋدىڭ سەبەبٸن جازىپ بەرٸڭٸز.',
 'hiderevision-status' => '$1 نۇسقاسى: $2',
-'hiderevision-success' => 'سٴاتتٴى مۇراعاتالدى جٴانە جويلدى.',
+'hiderevision-success' => 'سٵتتٸ مۇراعاتالدى جٵنە جويلدى.',
 'hiderevision-error-missing' => 'دەرەكقوردا تابىلمادى.',
-'hiderevision-error-current' => 'بەتتٴىڭ سوڭعى تٴۇزەتۋٴى جويىلىنبادى. الدىنان بۇل تٴۇزەتۋدٴى قايتارىڭىز.',
-'hiderevision-error-delete' => 'مۇراعاتتالىنبادى; الدىنان جويىلعانبا?',
-'hiderevision-archive-status' => '$1 كەزٴىندەگٴى نۇسقا جويىلدى: $2',
-'oversight-nodiff' => 'ٴوزگەرٴىستەر بايقالىنبايدى, ٴويتكەنٴى اعىمدا بۇل بەتتٴىڭ الدىڭعى نۇسقاسى جوق. قاي-قايسىسى بولۋى مٴۇمكٴىن:
+'hiderevision-error-current' => 'بەتتٸڭ سوڭعى تٷزەتۋٸ جويىلىنبادى. الدىنان بۇل تٷزەتۋدٸ قايتارىڭىز.',
+'hiderevision-error-delete' => 'مۇراعاتتالىنبادى; الدىنان جويىلعانبا؟',
+'hiderevision-archive-status' => '$1 كەزٸندەگٸ نۇسقا جويىلدى: $2',
+'oversight-nodiff' => 'ٶزگەرٸستەر بايقالىنبايدى, ٶيتكەنٸ اعىمدا بۇل بەتتٸڭ الدىڭعى نۇسقاسى جوق. قاي-قايسىسى بولۋى مٷمكٸن:
 * بەت جويلعان
-* جاسىرىلعان نۇسقا بٴىرٴىنشٴى بولعان',
+* جاسىرىلعان نۇسقا بٸرٸنشٸ بولعان',
 // Logging
-'oversight-log-hiderev' => '$1 كەزٴىندەگٴى تٴۇزەتۋ جويىلدى',
+'oversight-log-hiderev' => '$1 كەزٸندەگٸ تٷزەتۋ جويىلدى',
 // Oversight review page
-'oversight' => 'قاراۋىل',
-'oversight-view' => 'ەگجەي-تەگجەيلەرٴى',
+'oversight' => 'بەت نۇسقالارىن جاسىرۋ',
+'oversight-view' => 'ەگجەي-تەگجەيلەرٸ',
 'oversight-difference' => '(الدىنان قالعان نۇسقامەن ايىرماشىلىق)',
 'oversight-prev' => 'الدىڭعى نۇسقا',
 'oversight-hidden' => 'جاسىرىلعان نۇسقا',
-'oversight-header' => 'تٴومەندە بارشا كٴورۋٴىنەن تۇراقتى جاسىرىلعان نۇسقالار تٴىزٴىمٴى.
-بۇل اقپاراتتى كٴورۋگە اشقاندا قاراۋىل قۇقىقتار ٴاردايىم ٴوشٴىرٴىلەدٴى.',
+'oversight-header' => 'تٶمەندە بارشادان تۇراقتى جاسىرىلعان نۇسقالار تٸزٸمٸ بەرٸلەدٸ.
+بۇل مٵلٸمەتتٸ بارشاعا اشقاندا نۇسقا جاسىرۋشى قۇقىقتارىڭىز ٵردايىم ٶشٸرٸلەدٸ.',
 ),
 
 /* nld / Dutch (Siebrand Mazeland) */
@@ -764,5 +720,9 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 'oversight-header' => '以下列示的是已經永久隱藏的修訂版本。請注意！洩漏這些訊息將會永遠喪失{{int:Oversight}}權限！',
 ),
 	);
+
+	/* Kazakh default, fallback to kk-kz */
+	$messages['kk'] = $messages['kk-kz'];
+
 }
 ?>

@@ -88,10 +88,10 @@ $wgNewuserlogMessages['kk-tr'] = array(
 	'newuserlog-create2-entry' => 'jaña tirkelgi jasadı — $1',
 );
 $wgNewuserlogMessages['kk-cn'] = array(
-	'newuserlogpage'           => 'تٴىركەلۋ جۋرنالى',
-	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تٴىركەلگٴى جاساۋ جۋرنالى',
+	'newuserlogpage'           => 'تٸركەلۋ جۋرنالى',
+	'newuserlogpagetext'       => 'بۇل قاتىسۋشى تٸركەلگٸ جاساۋ جۋرنالى',
 	'newuserlog-create-entry'  => 'جاڭا قاتىسۋشى',
-	'newuserlog-create2-entry' => 'جاڭا تٴىركەلگٴى جاسادى — $1',
+	'newuserlog-create2-entry' => 'جاڭا تٸركەلگٸ جاسادى — $1',
 );
 $wgNewuserlogMessages['kk'] = $wgNewuserlogMessages['kk-kz'];
 $wgNewuserlogMessages['ku'] = array(

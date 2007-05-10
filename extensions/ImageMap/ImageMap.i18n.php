@@ -101,21 +101,6 @@ function efImageMapMessages() {
 'imagemap_description'          => 'Informazioni sull\'immagine',
 ),
 
-/* Kazakh default (AlefZet) */
-'kk' => array(
-'imagemap_no_image'             => '&lt;imagemap&gt;: бірінші жолда суретті көрсету қажет',
-'imagemap_invalid_image'        => '&lt;imagemap&gt;: сурет жарамсыз немесе жоқ',
-'imagemap_no_link'              => '&lt;imagemap&gt;: $1 жол аяғында жарамды сілтеме табылмады',
-'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 жол аяғындағы сілтемеде жарамсыз атау',
-'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 жолдағы кескін үшін координаттар жетіксіз',
-'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 жолдағы кескін жарамсыз, әрбір жол мынаның біреуінен басталу қажет: ',
-
-'imagemap_no_areas'             => '&lt;imagemap&gt;: ең кемінде бір аумақ маманданымы берілу қажет',
-'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 жолында жарамсыз координата, сан болуы қажет',
-'imagemap_invalid_desc'         => '&lt;imagemap&gt;: жарамсыз сипаттама маманданымы, мынаның біреуі болуы қажет: $1',
-'imagemap_description'          => 'Бұл сурет туралы',
-),
-
 /* Kazakh Cyrillic (AlefZet) */
 'kk-kz' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: бірінші жолда суретті көрсету қажет',
@@ -148,16 +133,16 @@ function efImageMapMessages() {
 
 /* Kazakh Arabic (AlefZet) */
 'kk-cn' => array(
-'imagemap_no_image'             => '&lt;imagemap&gt;: بٴىرٴىنشٴى جولدا سۋرەتتٴى كٴورسەتۋ قاجەت',
+'imagemap_no_image'             => '&lt;imagemap&gt;: بٸرٸنشٸ جولدا سۋرەتتٸ كٶرسەتۋ قاجەت',
 'imagemap_invalid_image'        => '&lt;imagemap&gt;: سۋرەت جارامسىز نەمەسە جوق',
-'imagemap_no_link'              => '&lt;imagemap&gt;: $1 جول اياعىندا جارامدى سٴىلتەمە تابىلمادى',
-'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 جول اياعىنداعى سٴىلتەمەدە جارامسىز اتاۋ',
-'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 جولداعى كەسكٴىن ٴۇشٴىن كوورديناتتار جەتٴىكسٴىز',
-'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 جولداعى كەسكٴىن جارامسىز, ٴاربٴىر جول مىنانىڭ بٴىرەۋٴىنەن باستالۋ قاجەت: ',
+'imagemap_no_link'              => '&lt;imagemap&gt;: $1 جول اياعىندا جارامدى سٸلتەمە تابىلمادى',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: $1 جول اياعىنداعى سٸلتەمەدە جارامسىز اتاۋ',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن ٷشٸن كوورديناتتار جەتٸكسٸز',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: $1 جولداعى كەسكٸن جارامسىز, ٵربٸر جول مىنانىڭ بٸرەۋٸنەن باستالۋ قاجەت: ',
 
-'imagemap_no_areas'             => '&lt;imagemap&gt;: ەڭ كەمٴىندە بٴىر اۋماق ماماندانىمى بەرٴىلۋ قاجەت',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: ەڭ كەمٸندە بٸر اۋماق ماماندانىمى بەرٸلۋ قاجەت',
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: $1 جولىندا جارامسىز كوورديناتا, سان بولۋى قاجەت',
-'imagemap_invalid_desc'         => '&lt;imagemap&gt;: جارامسىز سيپاتتاما ماماندانىمى, مىنانىڭ بٴىرەۋٴى بولۋى قاجەت: $1',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: جارامسىز سيپاتتاما ماماندانىمى, مىنانىڭ بٸرەۋٸ بولۋى قاجەت: $1',
 'imagemap_description'          => 'بۇل سۋرەت تۋرالى',
 ),
 
@@ -282,5 +267,9 @@ function efImageMapMessages() {
 'imagemap_description'          => '關於呢幅圖像',
 ),
 );
+
+	/* Kazakh default, fallback to kk-kz */
+	$messages['kk'] = $messages['kk-kz'];
+
 }
 ?>

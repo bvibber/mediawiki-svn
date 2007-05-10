@@ -143,17 +143,17 @@ Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp iste
 	'expand_templates_remove_comments' => 'Mändemelerin alastatıp?',
 );
 $wgExpandTemplatesMessages['kk-cn'] = array(
-	'expandtemplates'                  => 'ٴۇلگٴىلەردٴى ۇلعايتۋ',
-	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتٴى ٴالدەبٴىر مٴاتٴىندٴى الادى دا,
-بۇنىڭ ٴىشٴىندەگٴى بارلىق كٴىرٴىكتەلگەن ٴۇلگٴىلەردٴى مەيلٴىنشە ۇلعايتادى.
-مىنا <nowiki>{{</nowiki>#if:...}} سيياقتى جٴوڭدەتۋ فۋنكتسييالارىن دا, جٴانە <nowiki>{{</nowiki>CURRENTDAY}}
+	'expandtemplates'                  => 'ٷلگٸلەردٸ ۇلعايتۋ',
+	'expand_templates_intro'           => 'وسى قۇرال ارنايى بەتٸ ٵلدەبٸر مٵتٸندٸ الادى دا,
+بۇنىڭ ٸشٸندەگٸ بارلىق كٸرٸكتەلگەن ٷلگٸلەردٸ مەيلٸنشە ۇلعايتادى.
+مىنا <nowiki>{{</nowiki>#if:...}} سيياقتى جٶڭدەتۋ فۋنكتسييالارىن دا, جٵنە <nowiki>{{</nowiki>CURRENTDAY}}
 سيياقتى اينامالىلارىن دا ۇلعايتادى (ناقتى ايتقاندا, قوس قابات ساداق جاقشالار اراسىنداعى بارلىعىن).
-بۇنى ٴوز MediaWiki باعدارلاماسىنان قاتىستى جٴوڭدەتۋ ساتىن شاقىرىپ ٴىستەلٴىنەدٴى.',
-	'expand_templates_title'           => '{{PAGENAME}} ت.ب. بەتتەر ٴۇشٴىن مٴاتٴىن ارالىق اتاۋى:',
-	'expand_templates_input'           => 'كٴىرٴىس مٴاتٴىنٴى:',
-	'expand_templates_output'          => 'نٴاتيجەسٴى:',
+بۇنى ٶز MediaWiki باعدارلاماسىنان قاتىستى جٶڭدەتۋ ساتىن شاقىرىپ ٸستەلٸنەدٸ.',
+	'expand_templates_title'           => '{{PAGENAME}} ت.ب. بەتتەر ٷشٸن مٵتٸن ارالىق اتاۋى:',
+	'expand_templates_input'           => 'كٸرٸس مٵتٸنٸ:',
+	'expand_templates_output'          => 'نٵتيجەسٸ:',
 	'expand_templates_ok'              => 'جارايدى',
-	'expand_templates_remove_comments' => 'مٴاندەمەلەرٴىن الاستاتىپ?',
+	'expand_templates_remove_comments' => 'مٵندەمەلەرٸن الاستاتىپ؟',
 );
 $wgExpandTemplatesMessages['kk'] = $wgExpandTemplatesMessages['kk-kz'];
 $wgExpandTemplatesMessages['ksh'] = array(

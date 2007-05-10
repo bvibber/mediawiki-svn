@@ -43,12 +43,6 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 'blacklistedusernametext' => 'Il nome utente scelto è inserito nella [[MediaWiki:Usernameblacklist|lista dei nomi non consentiti]]. Si prega di scegliere un altro nome.',
 ),
 
-/* Kazakh default (kk:AlefZet) */
-'kk' => array(
-'blacklistedusername' => 'Қара тізімдегі қатысушы аты',
-'blacklistedusernametext' => 'Тандаған қатысушы атыңыз [[{{ns:mediawiki}}:Usernameblacklist| қатысушы аты қара тізіміне]] кіреді.
-Басқа атау талғаңыз.',
-),
 /* Kazakh Cyrillic (kk:AlefZet) */
 'kk-kz' => array(
 'blacklistedusername' => 'Қара тізімдегі қатысушы аты',
@@ -63,8 +57,8 @@ Basqa ataw talğañız.',
 ),
 /* Kazakh Arabic (kk:AlefZet) */
 'kk-cn' => array(
-'blacklistedusername' => 'قارا تٴىزٴىمدەگٴى قاتىسۋشى اتى',
-'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تٴىزٴىمٴىنە]] كٴىرەدٴى.
+'blacklistedusername' => 'قارا تٸزٸمدەگٸ قاتىسۋشى اتى',
+'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تٸزٸمٸنە]] كٸرەدٸ.
 باسقا اتاۋ تالعاڭىز.',
 ),
 
@@ -119,6 +113,9 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 ),
 
 	);
+
+	/* Kazakh default, fallback to kk-kz */
+	$messages['kk'] = $messages['kk-kz'];
 
 	/* Chinese (Hong Kong), inherited from Chinese (Taiwan) */
 	$messages['zh-hk'] = $messages['zh-tw'];
