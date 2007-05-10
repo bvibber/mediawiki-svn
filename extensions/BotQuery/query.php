@@ -2640,7 +2640,7 @@ function slowWddxPrinter( &$elemValue )
 		case 'array':
 			echo '<struct>';
 			foreach( $elemValue as $subElemName => &$subElemValue ) {
-				echo wfElement( 'var', array('name' => $subElemName), null );
+				echo wfOpenElement( 'var', array('name' => $subElemName) );
 				slowWddxPrinter( $subElemValue );
 				echo '</var>';
 			}
@@ -2703,14 +2703,14 @@ function recXmlPrint( $printer, $elemName, &$elemValue, $indent )
 				$subElemContent = $elemValue['*'];
 				unset( $elemValue['*'] );
 				if( gettype( $subElemContent ) === 'array' ) {
-					$printer( $indstr . wfElement( $elemName, $elemValue, null ));
+					$printer( $indstr . wfOpenElement( $elemName, $elemValue ));
 					recXmlPrint( $printer, $elemName, $subElemContent, $indent );
 					$printer( $indstr . "</$elemName>" );
 				} else {
 					$printer( $indstr . wfElement( $elemName, $elemValue, $subElemContent ));
 				}
 			} else {
-				$printer( $indstr . wfElement( $elemName, null, null ));
+				$printer( $indstr . wfOpenElement( $elemName, null ));
 				if( array_key_exists('_element', $elemValue) ) {
 					$subElemName = $elemValue['_element'];
 					foreach( $elemValue as $subElemId => &$subElemValue ) {
