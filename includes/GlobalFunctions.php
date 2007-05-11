@@ -429,18 +429,11 @@ function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = 
  * @param $key String:
  */
 function wfMsgWeirdKey ( $key ) {
-	$subsource = str_replace ( ' ' , '_' , $key ) ;
-	$source = wfMsgForContentNoTrans( $subsource ) ;
-	if ( wfEmptyMsg( $subsource, $source) ) {
-		# Try again with first char lower case
-		$subsource = strtolower ( substr ( $subsource , 0 , 1 ) ) . substr ( $subsource , 1 ) ;
-		$source = wfMsgForContentNoTrans( $subsource ) ;
-	}
-	if ( wfEmptyMsg( $subsource, $source ) ) {
-		# Didn't work either, return blank text
-		$source = "" ;
-	}
-	return $source ;
+	$source = wfMsgGetKey( $key, false, true, false );
+	if ( wfEmptyMsg( $key, $source ) )
+		return "";
+	else
+		return $source;
 }
 
 /**
@@ -453,6 +446,17 @@ function wfMsgWeirdKey ( $key ) {
  */
 function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
 	global $wgParser, $wgContLang, $wgMessageCache, $wgLang;
+
+	/* <Vyznev> btw, is all that code in wfMsgGetKey() that check
+	 * if the message cache exists of not really necessary, or is
+	 * it just paranoia?
+	 * <TimStarling> Vyznev: it's probably not necessary
+	 * <TimStarling> I think I wrote it in an attempt to report DB
+	 * connection errors properly
+	 * <TimStarling> but eventually we gave up on using the
+	 * message cache for that and just hard-coded the strings
+	 * <TimStarling> it may have other uses, it's not mere paranoia
+	 */
 
 	if ( is_object( $wgMessageCache ) )
 		$transstat = $wgMessageCache->getTransform();
@@ -468,16 +472,18 @@ function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
 			$lang = &$wgLang;
 		}
 
-		wfSuppressWarnings();
+		# MessageCache::get() does this already, Language::getMessage() doesn't
+		# ISSUE: Should we try to handle "message/lang" here too?
+		$key = str_replace( ' ' , '_' , $wgContLang->lcfirst( $key ) );
 
+		wfSuppressWarnings();
 		if( is_object( $lang ) ) {
 			$message = $lang->getMessage( $key );
 		} else {
 			$message = false;
 		}
 		wfRestoreWarnings();
-		if($message === false)
-			$message = Language::getMessage($key);
+
 		if ( $transform && strstr( $message, '{{' ) !== false ) {
 			$message = $wgParser->transformMsg($message, $wgMessageCache->getParserOptions() );
 		}

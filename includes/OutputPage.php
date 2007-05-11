@@ -15,6 +15,7 @@ class OutputPage {
 	var $mLastModified, $mETag, $mCategoryLinks;
 	var $mScripts, $mLinkColours, $mPageLinkTitle;
 
+	var $mAllowUserJs;
 	var $mSuppressQuickbar;
 	var $mOnloadHandler;
 	var $mDoNothing;
@@ -33,6 +34,8 @@ class OutputPage {
 	 * Initialise private variables
 	 */
 	function __construct() {
+		global $wgAllowUserJs;
+		$this->mAllowUserJs = $wgAllowUserJs;
 		$this->mMetatags = $this->mKeywords = $this->mLinktags = array();
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
 		$this->mRedirect = $this->mLastModified =
@@ -282,6 +285,9 @@ class OutputPage {
 
 	public function suppressQuickbar() { $this->mSuppressQuickbar = true; }
 	public function isQuickbarSuppressed() { return $this->mSuppressQuickbar; }
+
+	public function disallowUserJs() { $this->mAllowUserJs = false; }
+	public function isUserJsAllowed() { return $this->mAllowUserJs; }
 
 	public function addHTML( $text ) { $this->mBodytext .= $text; }
 	public function clearHTML() { $this->mBodytext = ''; }
@@ -937,7 +943,7 @@ class OutputPage {
 			$this->setPageTitle( wfMsg( 'viewsource' ) );
 			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
 
-			list( $cascadeSources, $restrictions ) = $wgTitle->getCascadeProtectionSources();
+			list( $cascadeSources, /* $restrictions */ ) = $wgTitle->getCascadeProtectionSources();
 
 			# Determine if protection is due to the page being a system message
 			# and show an appropriate explanation
@@ -1138,7 +1144,7 @@ class OutputPage {
 		$ret .= "<link rel='stylesheet' type='text/css' $media href='$printsheet' />\n";
 
 		$sk = $wgUser->getSkin();
-		$ret .= $sk->getHeadScripts();
+		$ret .= $sk->getHeadScripts( $this->mAllowUserJs );
 		$ret .= $this->mScripts;
 		$ret .= $sk->getUserStyles();
 		$ret .= $this->getHeadItems();

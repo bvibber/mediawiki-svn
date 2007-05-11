@@ -21,7 +21,7 @@ function wfSpecialRevisiondelete( $par = null ) {
 	// We need a target page (possible a dummy like User:#1)
 	$page = Title::newFromUrl( $target, false );
 	if( is_null( $page ) ) {
-		$wgOut->showErrorPage( 'notargettitle', 'notargettext' );
+		$wgOut->addWikiText( wfMsgHtml( 'undelete-header' ) );
 		return;
 	}
 	
@@ -886,8 +886,7 @@ class RevisionDeleter {
 			return false;
 		}
 		
-		$m = explode('!',$oimage->mArchiveName);
-		$timestamp = $m[0];
+		list($timestamp,$img) = explode('!',$oimage->mArchiveName,2);
 		
 		$oldpath = wfImageArchiveDir( $oimage->mName ) . DIRECTORY_SEPARATOR . $oimage->mArchiveName;
 		// Dupe the file into the file store
@@ -1096,6 +1095,10 @@ class RevisionDeleter {
 	function updatePage( $title ) {
 		$title->invalidateCache();
 		$title->purgeSquid();
+		
+		// Extensions that require referencing previous revisions may need this
+		$article = new Article( $title );
+		wfRunHooks( 'ArticleRevisionVisiblityUpdates', array( &$article ) );
 	}
 	
 	/**

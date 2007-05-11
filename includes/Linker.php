@@ -223,27 +223,21 @@ class Linker {
 			if ( 0 == $aid ) {
 				$retVal = $this->makeBrokenLinkObj( $nt, $text, $query, $trail, $prefix );
 			} else {
-				$threshold = $wgUser->getOption('stubthreshold') ;
-				if ( $threshold > 0 ) {
-					$dbr = wfGetDB( DB_SLAVE );
-					$s = $dbr->selectRow(
-						array( 'page' ),
-						array( 'page_len',
-							'page_namespace',
-							'page_is_redirect' ),
-						array( 'page_id' => $aid ), $fname ) ;
-					if ( $s !== false ) {
-						$size = $s->page_len;
-						if ( $s->page_is_redirect OR $s->page_namespace != NS_MAIN ) {
-							$size = $threshold*2 ; # Really big
-						}
-					} else {
-						$size = $threshold*2 ; # Really big
+				$stub = false;
+				if ( $nt->isContentPage() ) {
+					$threshold = $wgUser->getOption('stubthreshold');
+					if ( $threshold > 0 ) {
+						$dbr = wfGetDB( DB_SLAVE );
+						$s = $dbr->selectRow(
+							array( 'page' ),
+							array( 'page_len',
+							       'page_is_redirect' ),
+							array( 'page_id' => $aid ), $fname ) ;
+						$stub = ( $s !== false && !$s->page_is_redirect &&
+							  $s->page_len < $threshold );
 					}
-				} else {
-					$size = 1 ;
 				}
-				if ( $size < $threshold ) {
+				if ( $stub ) {
 					$retVal = $this->makeStubLinkObj( $nt, $text, $query, $trail, $prefix );
 				} else {
 					$retVal = $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix );
@@ -511,8 +505,6 @@ class Linker {
 	 */
 	function makeThumbLinkObj( $img, $label = '', $alt, $align = 'right', $params = array(), $framed=false , $manual_thumb = "" ) {
 		global $wgStylePath, $wgContLang;
-		$thumbUrl = '';
-		$error = '';
 
 		$page = isset( $params['page'] ) ? $params['page'] : false;
 
@@ -922,16 +914,33 @@ class Linker {
 	function formatComment($comment, $title = NULL, $local = false) {
 		wfProfileIn( __METHOD__ );
 
-		global $wgContLang;
+		# Sanitize text a bit:
 		$comment = str_replace( "\n", " ", $comment );
 		$comment = htmlspecialchars( $comment );
 
-		# The pattern for autogen comments is / * foo * /, which makes for
-		# some nasty regex.
-		# We look for all comments, match any text before and after the comment,
-		# add a separator where needed and format the comment itself with CSS
+		# Render autocomments and make links:
+		$comment = $this->formatAutoComments( $comment, $title, $local );
+		$comment = $this->formatLinksInComment( $comment );
+
+		wfProfileOut( __METHOD__ );
+		return $comment;
+	}
+
+	/**
+	 * The pattern for autogen comments is / * foo * /, which makes for
+	 * some nasty regex.
+	 * We look for all comments, match any text before and after the comment,
+	 * add a separator where needed and format the comment itself with CSS
+	 * Called by Linker::formatComment.
+	 *
+	 * @param $comment Comment text
+	 * @param $title An optional title object used to links to sections
+	 *
+	 * @todo Document the $local parameter.
+	 */
+	private function formatAutocomments( $comment, $title = NULL, $local = false ) {
 		$match = array();
-		while (preg_match('/(.*)\/\*\s*(.*?)\s*\*\/(.*)/', $comment,$match)) {
+		while (preg_match('!(.*)/\*\s*(.*?)\s*\*/(.*)!', $comment,$match)) {
 			$pre=$match[1];
 			$auto=$match[2];
 			$post=$match[3];
@@ -963,10 +972,21 @@ class Linker {
 			$comment=$pre.$auto.$post;
 		}
 
-		# format regular and media links - all other wiki formatting
-		# is ignored
+		return $comment;
+	}
+
+	/**
+	 * Format regular and media links - all other wiki formatting is ignored
+	 * Called by Linker::formatComment.
+	 * @param $comment The comment text.
+	 * @return Comment text with links using HTML.
+	 */
+	private function formatLinksInComment( $comment ) {
+		global $wgContLang;
+
 		$medians = '(?:' . preg_quote( Namespace::getCanonicalName( NS_MEDIA ), '/' ) . '|';
 		$medians .= preg_quote( $wgContLang->getNsText( NS_MEDIA ), '/' ) . '):';
+
 		while(preg_match('/\[\[:?(.*?)(\|(.*?))*\]\](.*)$/',$comment,$match)) {
 			# Handle link renaming [[foo|text]] will show link as "text"
 			if( "" != $match[3] ) {
@@ -993,7 +1013,7 @@ class Linker {
 			}
 			$comment = preg_replace( $linkRegexp, StringUtils::escapeRegexReplacement( $thelink ), $comment, 1 );
 		}
-		wfProfileOut( __METHOD__ );
+
 		return $comment;
 	}
 
@@ -1018,7 +1038,7 @@ class Linker {
 			return " <span class=\"comment\">($formatted)</span>";
 		}
 	}
-	
+
 	/**
 	 * Wrap and format the given revision's comment block, if the current
 	 * user is allowed to view it.

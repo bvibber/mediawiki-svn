@@ -1937,6 +1937,7 @@ class Parser
 			# Look at the first character
 			if( $target != '' && $target{0} == '/' ) {
 				# / at end means we don't want the slash to be shown
+				$m = array();
 				$trailingSlashes = preg_match_all( '%(/+)$%', $target, $m );
 				if( $trailingSlashes ) {
 					$noslash = $target = substr( $target, 1, -strlen($m[0][0]) );
@@ -4086,16 +4087,11 @@ class Parser
 					$linkCache->addGoodLinkObj( $s->page_id, $title );
 					$this->mOutput->addLink( $title, $s->page_id );
 
-					if ( $threshold >  0 ) {
-						$size = $s->page_len;
-						if ( $s->page_is_redirect || $s->page_namespace != 0 || $size >= $threshold ) {
-							$colours[$pdbk] = 1;
-						} else {
-							$colours[$pdbk] = 2;
-						}
-					} else {
-						$colours[$pdbk] = 1;
-					}
+					$colours[$pdbk] = ( $threshold == 0 || (
+								$s->page_len >= $threshold || # always true if $threshold <= 0
+							        $s->page_is_redirect ||
+							        !Namespace::isContent( $s->page_namespace ) )
+							    ? 1 : 2 );
 				}
 			}
 			wfProfileOut( $fname.'-check' );
@@ -4595,7 +4591,7 @@ class Parser
 				.+?  # Section title...
 				\\2  # Ending = count must match start
 				(?:$comment|<\/?noinclude>|[ \\t]+)* # Trailing whitespace ok
-				# Bug 9156: don't require EOL here
+				$
 			|
 				<h([1-6])\b.*?>
 				.*?

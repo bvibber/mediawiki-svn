@@ -898,7 +898,7 @@ class Image
 		if ( !$handler ) {
 			return null;
 		}
-		list( $thumbExt, $thumbMime ) = self::getThumbType( $this->extension, $this->mime );
+		list( $thumbExt, /* $thumbMime */ ) = self::getThumbType( $this->extension, $this->mime );
 		$thumbName = $handler->makeParamString( $params ) . '-' . $this->fileName;
 		if ( $thumbExt != $this->extension ) {
 			$thumbName .= ".$thumbExt";
@@ -992,17 +992,19 @@ class Image
 			$thumbPath = wfImageThumbDir( $this->name, $this->fromSharedDirectory ) .  "/$thumbName";
 			$thumbUrl = $this->thumbUrlFromName( $thumbName );
 
-			$this->migrateThumbFile( $thumbName );
-
-			if ( file_exists( $thumbPath ) ) {
-				$thumb = $handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
-				break;
-			}
 
 			if ( !$wgGenerateThumbnailOnParse && !($flags & self::RENDER_NOW ) ) {
 				$thumb = $handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
 				break;
 			}
+			
+			wfDebug( "Doing stat for $thumbPath\n" );
+			$this->migrateThumbFile( $thumbName );
+			if ( file_exists( $thumbPath ) ) {
+				$thumb = $handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
+				break;
+			}
+
 			$thumb = $handler->doTransform( $this, $thumbPath, $thumbUrl, $params );
 
 			// Ignore errors if requested
@@ -1137,7 +1139,6 @@ class Image
 		$dir = wfImageThumbDir( $this->name, $shared );
 		$urls = array();
 		foreach ( $files as $file ) {
-			$m = array();
 			# Check that the base image name is part of the thumb name
 			# This is a basic sanity check to avoid erasing unrelated directories
 			if ( strpos( $file, $this->name ) !== false ) {
@@ -1477,7 +1478,6 @@ class Image
 	}
 
 	function getExifData() {
-		global $wgRequest;
 		$handler = $this->getHandler();
 		if ( !$handler || $handler->getMetadataType( $this ) != 'exif' ) {
 			return array();
@@ -1667,7 +1667,8 @@ class Image
 	 * @return FStransaction on success, false on failure
 	 */
 	private function prepareDeleteOld( $archiveName, $reason, $suppress=false ) {
-		list($timestamp,$img) = explode('!',$archiveName);
+		// Stored as either <time>!<name> or <time>!<key>
+		list($timestamp,$img) = explode('!',$archiveName,2);
 		// Is this image using a filestore key (hidden)?
 		if( $img != $this->name && FileStore::validKey($img) ) {
 			$group = 'hidden';
@@ -1804,6 +1805,15 @@ class Image
 		try {
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->begin();
+			
+			// Make sure there is a page for this image
+			$page = $dbw->selectRow( 'page',
+    			array( 'page_id', 'page_latest' ),
+				array( 'page_namespace' => $this->title->getNamespace(), 
+					'page_title' => $this->title->getDBkey() ),
+				__METHOD__ );
+			if( !$page )
+				return false;
 
 			// Re-confirm whether this image presently exists;
 			// if no we'll need to create an image record for the
@@ -1834,11 +1844,7 @@ class Image
 			}
 
 			$revisions = 0;
-			while( $row = $dbw->fetchObject( $result ) ) {				
-				if( ($row->fa_deleted & Revision::DELETED_RESTRICTED) && !$wgUser->isAllowed('hiderevision') ) {
-				// Skip restoring file revisions that the user cannot restore
-					continue;
-				}
+			while( $row = $dbw->fetchObject( $result ) ) {
 				$revisions++;
 				$store = FileStore::get( $row->fa_storage_group );
 				if( !$store ) {
@@ -1908,7 +1914,7 @@ class Image
 						$archiveName = wfTimestamp( TS_MW, $row->fa_deleted_timestamp ) . '!' . $row->fa_name;
 					}
 					
-					list($timestamp,$img) = explode('!',$archiveName);
+    				list($timestamp,$img) = explode('!',$archiveName,2);
 					// Is this image hidden?
 					if( !$Unsuppress && $row->fa_deleted & Image::DELETED_FILE ) {
 						$group = 'hidden';

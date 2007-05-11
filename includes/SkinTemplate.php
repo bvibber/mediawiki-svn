@@ -179,7 +179,7 @@ class SkinTemplate extends Skin {
 
 		$this->usercss =  $this->userjs = $this->userjsprev = false;
 		$this->setupUserCss();
-		$this->setupUserJs();
+		$this->setupUserJs( $out->isUserJsAllowed() );
 		$this->titletxt = $this->mTitle->getPrefixedText();
 		wfProfileOut( "$fname-stuff" );
 
@@ -591,7 +591,7 @@ class SkinTemplate extends Skin {
 		if( $selected ) {
 			$classes[] = 'selected';
 		}
-		if( $checkEdit && $title->getArticleId() == 0 ) {
+		if( $checkEdit && !$title->isAlwaysKnown() && $title->getArticleId() == 0 ) {
 			$classes[] = 'new';
 			$query = 'action=edit';
 		}
@@ -968,9 +968,12 @@ class SkinTemplate extends Skin {
 		# If we use the site's dynamic CSS, throw that in, too
 		if ( $wgUseSiteCss ) {
 			$query = "usemsgcache=yes&action=raw&ctype=text/css&smaxage=$wgSquidMaxage";
+			$skinquery = '';
+			if (($us = $wgRequest->getVal('useskin', '')) !== '')
+				$skinquery = "&useskin=$us";
 			$sitecss .= '@import "' . self::makeNSUrl( 'Common.css', $query, NS_MEDIAWIKI) . '";' . "\n";
 			$sitecss .= '@import "' . self::makeNSUrl( ucfirst( $this->skinname ) . '.css', $query, NS_MEDIAWIKI ) . '";' . "\n";
-			$sitecss .= '@import "' . self::makeUrl( '-', 'action=raw&gen=css' . $siteargs ) . '";' . "\n";
+			$sitecss .= '@import "' . self::makeUrl( '-', "action=raw&gen=css$siteargs$skinquery" ) . '";' . "\n";
 		}
 
 		# If we use any dynamic CSS, make a little CDATA block out of it.
@@ -984,14 +987,14 @@ class SkinTemplate extends Skin {
 	/**
 	 * @private
 	 */
-	function setupUserJs() {
+	function setupUserJs( $allowUserJs ) {
 		$fname = 'SkinTemplate::setupUserJs';
 		wfProfileIn( $fname );
 
-		global $wgRequest, $wgAllowUserJs, $wgJsMimeType;
+		global $wgRequest, $wgJsMimeType;
 		$action = $wgRequest->getText('action');
 
-		if( $wgAllowUserJs && $this->loggedin ) {
+		if( $allowUserJs && $this->loggedin ) {
 			if( $this->mTitle->isJsSubpage() and $this->userCanPreview( $action ) ) {
 				# XXX: additional security check/prompt?
 				$this->userjsprev = '/*<![CDATA[*/ ' . $wgRequest->getText('wpTextbox1') . ' /*]]>*/';

@@ -211,19 +211,23 @@ class PreferencesForm {
 
 		if ( '' != $this->mNewpass && $wgAuth->allowPasswordChange() ) {
 			if ( $this->mNewpass != $this->mRetypePass ) {
+				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'badretype' ) );
 				$this->mainPrefsForm( 'error', wfMsg( 'badretype' ) );
 				return;
 			}
 
 			if (!$wgUser->checkPassword( $this->mOldpass )) {
+				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'wrongpassword' ) );
 				$this->mainPrefsForm( 'error', wfMsg( 'wrongpassword' ) );
 				return;
 			}
 			
 			try {
 				$wgUser->setPassword( $this->mNewpass );
+				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'success' ) );
 				$this->mNewpass = $this->mOldpass = $this->mRetypePass = '';
 			} catch( PasswordError $e ) {
+				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'error' ) );
 				$this->mainPrefsForm( 'error', $e->getMessage() );
 				return;
 			}
@@ -320,6 +324,9 @@ class PreferencesForm {
 				$wgUser->setEmail( $this->mUserEmail );
 				$wgUser->setCookies();
 				$wgUser->saveSettings();
+			}
+			if( $oldadr != $newadr ) {
+				wfRunHooks( "PrefsEmailAudit", array( $wgUser, $oldadr, $newadr ) );
 			}
 		}
 
@@ -489,6 +496,8 @@ class PreferencesForm {
 		$wgOut->setArticleRelated( false );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
+		$wgOut->disallowUserJs();  # Prevent hijacked user scripts from sniffing passwords etc.
+
 		if ( $this->mSuccess || 'success' == $status ) {
 			$wgOut->addWikitext( '<div class="successbox"><strong>'. wfMsg( 'savedprefs' ) . '</strong></div>' );
 		} else	if ( 'error' == $status ) {
@@ -657,15 +666,15 @@ class PreferencesForm {
 				$this->tableRow( Xml::element( 'h2', null, wfMsg( 'changepassword' ) ) ) .
 				$this->tableRow(
 					Xml::label( wfMsg( 'oldpassword' ), 'wpOldpass' ),
-					Xml::input( 'wpOldpass', 25, $this->mOldpass, array( 'id' => 'wpOldpass' ) )
+					Xml::password( 'wpOldpass', 25, $this->mOldpass, array( 'id' => 'wpOldpass' ) )
 				) .
 				$this->tableRow(
 					Xml::label( wfMsg( 'newpassword' ), 'wpNewpass' ),
-					Xml::input( 'wpNewpass', 25, $this->mNewpass, array( 'id' => 'wpNewpass' ) )
+					Xml::password( 'wpNewpass', 25, $this->mNewpass, array( 'id' => 'wpNewpass' ) )
 				) .
 				$this->tableRow(
 					Xml::label( wfMsg( 'retypenew' ), 'wpRetypePass' ),
-					Xml::input( 'wpRetypePass', 25, $this->mRetypePass, array( 'id' => 'wpRetypePass' ) )
+					Xml::password( 'wpRetypePass', 25, $this->mRetypePass, array( 'id' => 'wpRetypePass' ) )
 				) .
 				Xml::tags( 'tr', null,
 					Xml::tags( 'td', array( 'colspan' => '2' ),

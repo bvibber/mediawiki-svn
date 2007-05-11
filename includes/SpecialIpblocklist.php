@@ -77,7 +77,7 @@ class IPUnblockForm {
 	}
 
 	function showForm( $err ) {
-		global $wgOut, $wgUser, $wgSysopUserBans;
+		global $wgOut, $wgUser, $wgSysopUserBans, $wgContLang;
 
 		$wgOut->setPagetitle( wfMsg( 'unblockip' ) );
 		$wgOut->addWikiText( wfMsg( 'unblockiptext' ) );
@@ -87,6 +87,7 @@ class IPUnblockForm {
 		$ipus = wfMsgHtml( 'ipusubmit' );
 		$titleObj = SpecialPage::getTitleFor( "Ipblocklist" );
 		$action = $titleObj->getLocalURL( "action=submit" );
+		$alignRight = $wgContLang->isRtl() ? 'left' : 'right';
 
 		if ( "" != $err ) {
 			$wgOut->setSubtitle( wfMsg( "formerror" ) );
@@ -111,24 +112,24 @@ class IPUnblockForm {
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'id' => 'unblockip' ) ) .
 			Xml::openElement( 'table', array( 'border' => '0' ) ).
 			"<tr>
-				<td align='right'>
-					{$ipa}:
+				<td align='$alignRight'>
+					{$ipa}
 				</td>
-				<td align='left'>
+				<td>
 					{$addressPart}
 				</td>
 			</tr>
 			<tr>
-				<td align='right'>
-					{$ipr}:
+				<td align='$alignRight'>
+					{$ipr}
 				</td>
-				<td align='left'>" .
+				<td>" .
 					Xml::input( 'wpUnblockReason', 40, $this->reason, array( 'type' => 'text', 'tabindex' => '2' ) ) .
 				"</td>
 			</tr>
 			<tr>
 				<td>&nbsp;</td>
-				<td align='left'>" .
+				<td>" .
 					Xml::submitButton( $ipus, array( 'name' => 'wpBlock', 'tabindex' => '3' ) ) .
 				"</td>
 			</tr>" .
@@ -223,46 +224,30 @@ class IPUnblockForm {
 			}
 		}
 
-                # TODO: difference message between
-		#       a) an real empty list and
-		#       b) requested ip/username not on list
 		$pager = new IPBlocklistPager( $this, $conds );
 		if ( $pager->getNumRows() ) {
-			$s = $this->searchForm() .
-				$pager->getNavigationBar();
-			$s .= "<ul>" . 
-				$pager->getBody() .
-				"</ul>";
-			$s .= $pager->getNavigationBar();
+			$wgOut->addHTML(
+				$this->searchForm() .
+				$pager->getNavigationBar() .
+				Xml::tags( 'ul', null, $pager->getBody() ) .
+				$pager->getNavigationBar()
+			);
+		} elseif ( $this->ip != '') {
+			$wgOut->addHTML( $this->searchForm() );
+			$wgOut->addWikiText( wfMsg( 'ipblocklist-no-results' ) );
 		} else {
-			$s = $this->searchForm() .
-				'<p>' . wfMsgHTML( 'ipblocklistempty' ) . '</p>';
+			$wgOut->addWikiText( wfMsg( 'ipblocklist-empty' ) );
 		}
-		$wgOut->addHTML( $s );
 	}
 
 	function searchForm() {
 		global $wgTitle, $wgScript, $wgRequest;
 		return
-			wfElement( 'form', array(
-				'action' => $wgScript ),
-				null ) .
-			wfHidden( 'title', $wgTitle->getPrefixedDbKey() ) .
-			wfElement( 'input', array(
-				'type' => 'hidden',
-				'name' => 'action',
-				'value' => 'search' ) ).
-			wfElement( 'input', array(
-				'type' => 'hidden',
-				'name' => 'limit',
-				'value' => $wgRequest->getText( 'limit' ) ) ) .
-			wfElement( 'input', array(
-				'name' => 'ip',
-				'value' => $this->ip ) ) .
-			wfElement( 'input', array(
-				'type' => 'submit',
-				'value' => wfMsg( 'ipblocklist-submit' ) ) ) .
-			'</form>';
+			Xml::tags( 'form', array( 'action' => $wgScript ),
+				Xml::hidden( 'title', $wgTitle->getPrefixedDbKey() ) .
+				Xml::input( 'ip', /*size*/ false, $this->ip ) .
+				Xml::submitButton( wfMsg( 'ipblocklist-submit' ) )
+			);
 	}
 
 	/**

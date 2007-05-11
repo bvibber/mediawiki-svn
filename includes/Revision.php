@@ -96,7 +96,7 @@ class Revision {
 				} else if ( $row->log_action=='restore' ) {
 					// Check the restore point (format is <page time><\n><image time>)
 					$restpoints = explode('\n',$row->log_params);
-					if ( $restpoints[0] >= $timeframe ) {
+					if ( $restpoints[0] >= 0 && $restpoints[0] <= $timeframe ) {
 						$isdeleted = false; // our desired revision was restored
 						$d = "log_action='delete'"; 
 						$r = '1 = 0'; 

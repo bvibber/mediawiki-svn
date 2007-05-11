@@ -461,12 +461,10 @@ class PageArchive {
 		}
 		// If there were any revisions restored
 		if( $revision ) {
-			// If we have to create a new page entry
-			// or this is now the newest live revision,
-			// then set the page entry to point to it
-			if( $newid || $revision->getTimestamp() > $previousTimestamp ) {
-				// Attach the latest revision to the page...
-				$article->updateRevisionOn( $dbw, $revision, $previousRevId );
+			// Attach the latest revision to the page...
+			$wasnew = $article->updateIfNewerOn( $dbw, $revision, $previousRevId );
+
+			if( $newid || $wasnew ) {
 				// Update site stats, link tables, etc
 				$article->createUpdates( $revision );
 			}
@@ -892,7 +890,7 @@ class UndeleteForm {
 			$wgOut->addHtml( "<h2 id=\"filehistory\">" . wfMsgHtml( 'imghistory' ) . "</h2>\n" );
 			$wgOut->addHTML( wfMsgHtml( "restorepoint" ) );
 			$wgOut->addHtml( "<ul>" );
-			$wgOut->addHTML( "<li>" . wfRadio( "imgrestorepoint", -1, false ) . wfMsgHtml('restorenone') . "</li>" );
+			$wgOut->addHTML( "<li>" . wfRadio( "imgrestorepoint", -1, false ) . " " . wfMsgHtml('restorenone') . "</li>" );
 			while( $row = $files->fetchObject() ) {
 				$ts = wfTimestamp( TS_MW, $row->fa_timestamp );
 				if ( $this->mAllowed && $row->fa_storage_key ) {
@@ -958,7 +956,9 @@ class UndeleteForm {
 			$titleObj = SpecialPage::getTitleFor( "Undelete" );
 			$pageLink = $this->getPageLink( $row, $titleObj, $ts, $this->mTarget );
 			# Last link
-			if ( isset($this->prevId[$row->ar_rev_id]) )
+			if ( !$this->userCan( $row, Revision::DELETED_TEXT ) )
+				$last = $this->message['last'];
+			else if ( isset($this->prevId[$row->ar_rev_id]) )
 				$last = $this->sk->makeKnownLinkObj( $titleObj, $this->message['last'], "target=" . $this->mTarget .
 				"&diff=" . $row->ar_rev_id . "&oldid=" . $this->prevId[$row->ar_rev_id] );
 		} else {

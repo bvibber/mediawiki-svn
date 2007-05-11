@@ -32,6 +32,7 @@ class LoginForm {
 	const WRONG_PASS = 5;
 	const EMPTY_PASS = 6;
 	const RESET_PASS = 7;
+	const ABORTED = 8;
 
 	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
@@ -364,6 +365,12 @@ class LoginForm {
 			$u->load();
 		}
 
+		// Give general extensions, such as a captcha, a chance to abort logins
+		$abort = self::ABORTED;
+		if( !wfRunHooks( 'AbortLogin', array( $u, $this->mPassword, &$abort ) ) ) {
+			return $abort;
+		}
+		
 		if (!$u->checkPassword( $this->mPassword )) {
 			if( $u->checkTemporaryPassword( $this->mPassword ) ) {
 				// The e-mailed temporary password should not be used
@@ -393,16 +400,18 @@ class LoginForm {
 				// reset form; bot interfaces etc will probably just
 				// fail cleanly here.
 				//
-				return self::RESET_PASS;
+				$retval = self::RESET_PASS;
 			} else {
-				return '' == $this->mPassword ? self::EMPTY_PASS : self::WRONG_PASS;
+				$retval = '' == $this->mPassword ? self::EMPTY_PASS : self::WRONG_PASS;
 			}
 		} else {
 			$wgAuth->updateUser( $u );
 			$wgUser = $u;
 
-			return self::SUCCESS;
+			$retval = self::SUCCESS;
 		}
+		wfRunHooks( 'LoginAuthenticateAudit', array( $u, $this->mPassword, $retval ) );
+		return $retval;
 	}
 
 	function processLogin() {
@@ -696,6 +705,7 @@ class LoginForm {
 		$wgOut->setPageTitle( wfMsg( 'userlogin' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
+		$wgOut->disallowUserJs();  // just in case...
 		$wgOut->addTemplate( $template );
 	}
 
