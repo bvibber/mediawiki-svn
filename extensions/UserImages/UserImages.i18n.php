@@ -81,6 +81,14 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Pogrešno korisničko ime ili korisnik nije poslao ni jednu sliku.',
 'userimages-noimages' => '$1 nema poslatih slika.',
 ),
+
+/* Sundanese */
+'su' => array(
+'userimages-caption' => 'Gambar nu dimuatkeun ku $1',
+'userimages-noname' => 'Ngaran landihanana salah atawa mémang teu aya.',
+'userimages-noimages' => '$1 can kungsi ngamuatkeun gambar.',
+),
+
 /* Chinese (China) (下一次登录) */
 'zh-cn' => array(
 'userimages-caption' => '$1上传的图像',

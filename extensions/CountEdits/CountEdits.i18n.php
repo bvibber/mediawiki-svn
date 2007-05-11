@@ -6,10 +6,10 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 function efCountEditsMessages( $single = false ) {
 	$messages = array(
-	
+
 /* English (Rob Church) */
 'en' => array(
 'countedits' => 'Count edits',
@@ -278,6 +278,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-resulttext' => '$1 ima $2 izmena',
 'countedits-mostactive' => 'Najaktivniji korisnici',
 'countedits-nocontribs' => 'Ne postoje prilozi na ovoj viki.',
+),
+
+/* Sundanese (Kandar via BetaWiki) */
+'su' => array(
+'countedits' => 'Itung éditan',
+'countedits-warning' => '\'\'\'Ati-ati\'\'\': ulah nganiléy kontributor dumasar kana jumlah éditanana.',
+'countedits-username' => 'Landihan pamaké:',
+'countedits-ok' => 'Heug',
+'countedits-nosuchuser' => 'Euweuh pamaké nu landihanana $1.',
+'countedits-resultheader' => 'Hasil pikeun $1',
+'countedits-resulttext' => '$1 geus nyieun $2 éditan',
+'countedits-mostactive' => 'Kontributor panggetolna',
+'countedits-nocontribs' => 'Can aya kontribusi ka ieu wiki.',
 ),
 
 	);

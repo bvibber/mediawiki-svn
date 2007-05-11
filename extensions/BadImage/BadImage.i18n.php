@@ -11,7 +11,7 @@
 
 function efBadImageMessages() {
 	return array(
-	
+
 /* English (Rob Church) */
 'en' => array(
 'badimages' => 'Bad image list',
@@ -362,6 +362,26 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'uklonjena [[$1]] sa spiska loših slika',
 ),
 
+/* Sundanese (Kandar via BetaWiki) */
+'su' => array(
+'badimages' => 'Daptar gambar rusak',
+'badimages-add-btn' => 'Tambahkeun',
+'badimages-added' => '$1 ditambahkeun ka daptar.',
+'badimages-count' => 'Aya \'\'\'$1\'\'\' Gambar dina daptar gambar rusak.',
+'badimages-name' => 'Ngaran:',
+'badimages-not-added' => 'Gambar teu bisa ditambahkeun.',
+'badimages-not-removed' => 'Gambar teu bisa dihapus.',
+'badimages-reason' => 'Alesan:',
+'badimages-remove-confirm' => '\'\'\'Konfirmasi\'\'\': Anjeun hayang ngahapus $1 ti daptar:',
+'badimages-removed' => '$1 dihapus tina daptar.',
+'badimages-subheading' => 'Daptar kiwari',
+'badimages-unprivileged' => '(Anjeun teu boga <u>hak</u> keur ngarobah daptar)',
+'badimages-log-name' => 'Daptar gambar rusak',
+'badimages-log-header' => 'Ieu log parobahan keur [[Help:Daptar gambar rusak|daptar gambar rusak]].',
+'badimages-log-add' => 'nambahkeun [[$1]] ka daptar gambar rusak',
+'badimages-log-remove' => 'ngahapus [[$1]] ti daptar gambar rusak',
+),
+
 /* Chinese (China) (Shinjiman) */
 'zh-cn' => array(
 'badimages' => '坏图像列表',
@@ -428,7 +448,7 @@ function efBadImageMessages() {
 'badimages-log-remove' => '已经由坏图像列表中移除 [[$1]]',
 ),
 
-/* 
+/*
  * Chinese (Taiwan) (Shinjiman) */
 'zh-tw' => array(
 'badimages' => '壞圖像列表',

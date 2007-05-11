@@ -121,6 +121,13 @@ $wgCrossNamespaceLinksMessages['sr-el'] = array(
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|veza|veze|veza}} ka $3 imenskom prostoru'
 );
 $wgCrossNamespaceLinksMessages['sr'] = $wgCrossNamespaceLinksMessages['sr-ec'];
+
+$wgCrossNamespaceLinksMessages['su'] = array(
+	'crossnamespacelinks'         => 'Tumbu antara-ngaranspasi',
+	'crossnamespacelinks-summary' => 'Kaca ieu mikeun daptar tumbu ti hiji kaca di ngaran spasi utama ka kaca séjén di ngaran spasi séjén (kajaba {{ns:special}}, {{ns:talk}}, {{ns:project}} sarta ngaran spasi {{ns:template}}), anu henteu dianjurkeun pikeun dipaké.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|numbu|numbu}} ka $3',
+);
+
 $wgCrossNamespaceLinksMessages['sv'] = array(
 	'crossnamespacelinks'         => 'Länkar mellan namnrymder',
 	'crossnamespacelinks-summary' => 'På den här sidan finns en lista över länkar från sidor i huvudnamnrymden till sidor i andra namnrymder (utom till namnrymderna {{ns:special}}, {{ns:talk}}, {{ns:project}} och {{ns:template}}). Det rekommenderas att sådana länkar inte används.',

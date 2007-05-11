@@ -531,7 +531,7 @@ $wgMakesysopMessages['ko'] = array(
 );
 $wgMakesysopMessages['ksh'] = array(
 	'makesysoptitle'       => 'Maach ene Wiki Köbes us däm Metmaacher',
-	'makesysoptext'        => 'Hee künne Bürrokrade us enem normale Metmaacher ene Wiki Köbes oder och ene 
+	'makesysoptext'        => 'Hee künne Bürrokrade us enem normale Metmaacher ene Wiki Köbes oder och ene
 Bürrokrad maache.
 Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'makesysopname'        => 'Hee dä Metmaacher_Name:',
@@ -784,7 +784,7 @@ $wgMakesysopMessages['ru'] = array(
 );
 $wgMakesysopMessages['sk'] = array(
 	'makesysoptitle' => 'Urob z používateľa správcu',
-	'makesysoptext' => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 
+	'makesysoptext' => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom.
 Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na správcu.',
 	'makesysopname' => 'Meno používateľa:',
 	'makesysopsubmit' => 'Urob z tohto redaktora správcu',
@@ -884,6 +884,29 @@ $wgMakesysopMessages['sr-el'] = array(
 	'grouppage-steward'    => '{{ns:project}}:stjuardi',
 );
 $wgMakesysopMessages['sr'] = $wgMakesysopMessages['sr-ec'];
+
+$wgMakesysopMessages['su'] = array(
+	'makesysoptitle' => 'Ngangkat pamaké jadi kuncén',
+	'makesysoptext' => 'Formulir ieu dipaké ku birokrat pikeun ngangkat pamaké biasa jadi kuncén. Ketik ngaran pamaké na kotak, terus pencét tombol pikeun ngangkat pamaké jadi kuncén.',
+	'makesysopname' => 'Ngaran pamaké:',
+	'makesysopsubmit' => 'Angkat pamaké ieu jadi kuncén',
+	'makesysopok' => '<b>Pamaké "$1" ayeuna geus jadi kuncén</b>',
+	'makebureaucratok' => '<strong>Pamaké "$1" ayeuna geus jadi birokrat</strong>',
+	'makesysopfail' => '<strong>Pamaké "$1" teu bisa dijadikeun kuncén. (Ngaran nu diasupkeun bener teu?)</strong>',
+	'setbureaucratflag' => 'Atur tanda birokrat',
+	'rights' => 'Hak:',
+	'set_user_rights' => 'Setél kawenangan pamaké',
+	'user_rights_set' => '<b>Kawenangan pamaké "$1" geus diropéa</b>',
+	'set_rights_fail' => '<b>Kawenangan pamaké "$1" teu bisa disetél (landihan nu diasupkeun geus bener, can?)</b>',
+	'makesysop' => 'Ngangkat pamaké jadi kuncén',
+	'already_sysop' => 'Pamaké ieu geus boga kalungguhan kuncén',
+	'already_bureaucrat' => 'Pamaké ieu geus boga kalungguhan birokrat',
+	'makesysop-nodatabase' => 'Ngaran pamaké interwiki salah: $1',
+	'group-steward' => 'Steward',#identical but defined
+	'group-steward-member' => 'Steward',#identical but defined
+	'grouppage-steward' => '{{ns:project}}:Steward',
+);
+
 $wgMakesysopMessages['sv'] = array(
 	'makesysoptitle'       => 'Gör en användare till administratör',
 	'makesysoptext'        => 'Det här formuläret används av byråkrater för att göra vanliga användare till administratörer. Skriv användarens namn i rutan och tryck på knappen för att göra användaren till administratör',

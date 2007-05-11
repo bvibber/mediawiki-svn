@@ -47,7 +47,7 @@ It has been encrypted with the public key of the Election Administrators:
 
 <pre>$2</pre>
 
-The resulting encrypted version follows. It will be displayed publicly on [[Special:Boardvote/dump]]. 
+The resulting encrypted version follows. It will be displayed publicly on [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -61,7 +61,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 	'boardvote_days'          => "Days",
 	'boardvote_ip'            => "IP",
 	'boardvote_ua'            => "User agent",
-	'boardvote_listintro'     => "<p>This is a list of all votes which have been recorded 
+	'boardvote_listintro'     => "<p>This is a list of all votes which have been recorded
 to date. $1 for the encrypted data.</p>",
 	'boardvote_dumplink'      => "Click here",
 	'boardvote_submit'        => 'OK',
@@ -102,7 +102,7 @@ shody bude pořádáno druhé kolo hlasování.</p>
 
 <p>Další informace (anglicky a v dalších jazycích) najdete na následujících stránkách:</p>
 <ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">Často kladené otázky o hlasování</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidáti</a></li></ul>	
+<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidáti</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>Již jste hlasoval(a). Můžete však svůj hlas změnit prostřednictvím níže uvedeného formuláře. Zaškrtněte čtvereček u každého kandidáta, kterého schvalujete.</p>",
 	'boardvote_entered'       => "Děkujeme vám, váš hlas byl zaznamenán.
@@ -115,7 +115,7 @@ Byl zašifrován s použitím veřejného klíče volebních úředníků:
 
 <pre>$2</pre>
 
-Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [[Speciální:Boardvote/dump]]. 
+Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [[Speciální:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -146,7 +146,7 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 );
 $wgBoardVoteMessages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
-	'boardvote_entry'         => "* [[meta:Election candidates 2006/De|Kandidatenvorstellungen]] 
+	'boardvote_entry'         => "* [[meta:Election candidates 2006/De|Kandidatenvorstellungen]]
 * [[{{ns:special}}:Boardvote/vote|Abstimmen]]
 * [[{{ns:special}}:Boardvote/list|Bislang abgegebene Stimmen]]
 * [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]", # to be updated before the next election
@@ -163,7 +163,7 @@ Diese wurde mit dem Public Key der Wahladministratoren verschlüsselt:
 
 <pre>$2</pre>
 
-Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich auf [[{{ns:special}}:Boardvote/dump]] angezeigt. 
+Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich auf [[{{ns:special}}:Boardvote/dump]] angezeigt.
 
 <pre>$3</pre>
 
@@ -197,12 +197,12 @@ $wgBoardVoteMessages['fr'] = array(
 * [[Special:Boardvote/list|Liste des votes enregistrés]]
 * [[Special:Boardvote/dump|Enregistrements cryptés]]",
 	'boardvote_intro'         => "
-<p>Bienvenue aux troisièmes élections du conseil d'administration de <i><a href=\"http://wikimediafoundation.org/wiki/Accueil\" class=\"extiw\" title=\"foundation:Accueil\">Wikimedia Foundation Inc.</a></i>. 
-Nous votons pour une personne qui représentera la communauté des utilisateurs sur les différents projets Wikimedia. 
-Cette personne et le conseil d'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et préoccupations auprès du conseil d'administration. 
+<p>Bienvenue aux troisièmes élections du conseil d'administration de <i><a href=\"http://wikimediafoundation.org/wiki/Accueil\" class=\"extiw\" title=\"foundation:Accueil\">Wikimedia Foundation Inc.</a></i>.
+Nous votons pour une personne qui représentera la communauté des utilisateurs sur les différents projets Wikimedia.
+Cette personne et le conseil d'administration contribueront à orienter la direction de ces projets et représenteront <i>vos</i> intérêts et préoccupations auprès du conseil d'administration.
 Ils décideront des moyens de financement et de l'affectation des fonds.</p>
 
-<p>Lisez attentivement les déclarations des candidats et leurs réponses aux questions avant de voter. 
+<p>Lisez attentivement les déclarations des candidats et leurs réponses aux questions avant de voter.
 Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de temps et d'effort pour faire de ces projets un endroit accueillant dédié au développement de la libre diffusion du savoir humain.</p>
 
 <p>Vous pouvez voter pour autant de candidats que vous le souhaitez. Celui qui remportera le plus de voix sera déclaré élu pour le poste auquel il s'est présenté. En cas de ballotage, il y aura un vote de départage.</p>
@@ -212,8 +212,8 @@ Tous les candidats sont des utilisateurs respectés, qui ont donné beaucoup de 
 <li><a href=\"http://meta.wikimedia.org/wiki/Election_candidates_2006/Fr\" class=\"extiw\" title=\"meta:Election_candidates_2006/Fr\">Candidat-e-s</a></li></ul>
 ",
 	'boardvote_intro_change'  => "<p>Vous avez déjà voté. Cependant vous pouvez modifier votre vote en utilisant le formulaire ci-dessous. Merci de cocher les cases en regard de chaque candidat qui a votre support.</p></p>",
-	'boardvote_entered'       => "Merci, votre vote a été enregistré. 
-	
+	'boardvote_entered'       => "Merci, votre vote a été enregistré.
+
 Si vous le souhaitez, vous pouvez enregistrer les détails suivants. Votre historique de vote est :
 
 <pre>$1</pre>
@@ -222,7 +222,7 @@ Il a été crypté avec la clé publique des scrutateurs officiels pour l’éle
 
 <pre>$2</pre>
 
-La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvote/dump]]. 
+La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -321,7 +321,7 @@ Data tersebut telah dienkripsi dengan kunci publik Pengurus Pemilihan:
 
 <pre>$2</pre>
 
-Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik di [[Special:Boardvote/sini]]. 
+Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik di [[Special:Boardvote/sini]].
 
 <pre>$3</pre>
 
@@ -354,10 +354,10 @@ $wgBoardVoteMessages['it'] = array(
 * [[Special:Boardvote/list|Visualizza i voti espressi sinora]]
 * [[Special:Boardvote/dump|Scarica i voti in forma cifrata]]",
 	'boardvote_intro'         => "
-<p>Benvenuti alla seconda elezione per il Consiglio direttivo della Wikimedia Foundation. 
-Si vota per eleggere due rappresentanti della comunità degli utenti sui vari progetti 
+<p>Benvenuti alla seconda elezione per il Consiglio direttivo della Wikimedia Foundation.
+Si vota per eleggere due rappresentanti della comunità degli utenti sui vari progetti
 Wikimedia. Queste persone daranno un contributo nelle scelte sugli indirizzi futuri dei
-progetti Wikimedia, sia individualmente che come gruppo. Essi rappresentano i <em>vostri</em> 
+progetti Wikimedia, sia individualmente che come gruppo. Essi rappresentano i <em>vostri</em>
 interessi e preoccupazioni nei confronti del Consiglio direttivo; decideranno inoltre con
 quali mezzi procurare le risorse finanziarie e come gestire i frutti della raccolta fondi.</p>
 
@@ -366,7 +366,7 @@ prima di votare. Tutti i candidati sono utenti stimati che si sono dedicati in m
 in termini di tempo e di impegno personale, per fare di questi progetti un ambiente accogliente e
 impegnato nella ricerca e la distribuzione libera della conoscenza umana.</p>
 
-<p>È possibile votare per un qualsiasi numero di candidati. Verrà eletto il candidato con il 
+<p>È possibile votare per un qualsiasi numero di candidati. Verrà eletto il candidato con il
 maggior numero di voti per ciascun seggio. In caso di parità si terrà un turno di ballottaggio.</p>
 
 <p>Per maggiori informazioni, si rimanda ai seguenti documenti:</p>
@@ -384,7 +384,7 @@ Il voto è stato cifrato con la chiave pubblica della commissione elettorale:
 
 <pre>$2</pre>
 
-Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile al pubblico all'indirizzo [[Special:Boardvote/dump]]. 
+Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile al pubblico all'indirizzo [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -595,7 +595,7 @@ Deze is versleuteld met de publieke sleutel van de Verkiezingscommissie:
 
 <pre>$2</pre>
 
-Nu volgt de versleutelde versie. Deze is openbaar en na te zien op [[Special:Boardvote/dump]]. 
+Nu volgt de versleutelde versie. Deze is openbaar en na te zien op [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -628,19 +628,19 @@ $wgBoardVoteMessages['oc'] = array(
 * [[Special:Boardvote/dump|Enregistraments criptats]]',
 	'boardvote_intro'         => '<p>Benvenguda a las tresenas eleccions del conselh d\'administracion de <i><a href="http://wikimediafoundation.org/wiki/Acuèlh" class="extiw" title="foundation:Acuèlh">Wikimedia Foundation Inc.</a></i>. Votam per una persona que representarà la comunautat dels utilizaires suls diferents projèctes Wikimedia. Aquesta persona e lo conselh d\'administracion contribuiràn a orientar la direccion d\'aquestes projèctes e representaràn <i>vòstres</i> interèsses e preocupacions alprèp del conselh d\'administracion. Decidiràn dels mejans de finançament e de l\'afectacion dels fonses.</p> <p>Legissètz atentivament las declaracions dels candidats e lors responsas a las questions abans de votar. Totes los candidats son d\'utilizaires respectats, qu\'an balhat fòrça de temps e d\'esfòrces per far d\'aquestes projèctes un endrech acuelhant dedicat al desvolopament de la liura difusion del saber uman.</p> <p>Podètz votar per autant de candidats qu\'o desiratz. Lo que remportarà mai de voses serà declarat elegit pel pòst alqual s\'es presentat. En cas de balotatge, i aurà un vòte de departatge.</p> <p>Per mai d\'informacion, vejatz :</p> <ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006/Oc" class="extiw" title="meta:Election_FAQ_2006/Oc">FAQ sus las eleccions</a></li> <li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Oc" class="extiw" title="meta:Election_candidates_2006/Oc">Candidat-a-s</a></li></ul>',
 	'boardvote_intro_change'  => '<p>Ja avètz votat. Podètz çaquelà modificar vòstre vòte en utilizant lo formulari çai jos. Mercé de marcar las casas en regard de cada candidat qu\'a vòtre supòrt.</p></p>',
-	'boardvote_entered'       => 'Mercé, vòstre vòte es estat enregistrat. 
+	'boardvote_entered'       => 'Mercé, vòstre vòte es estat enregistrat.
 
 S\'o desiratz, podètz enregistrar los detalhs seguents. Vòstre istoric de vòte es :
 
 <pre>$1</pre>
 
-Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion : 
+Es estat criptat amb la clau publica dels escrutators oficials per l’eleccion :
 
-<pre>$2</pre> 
+<pre>$2</pre>
 
 La version criptada seguís. Serà afichada publicament sus [[Special:Boardvote/dump]].
 
-<pre>$3</pre> 
+<pre>$3</pre>
 
 [[Special:Boardvote/entry|Retorn]]',
 	'boardvote_notloggedin'   => 'Actualament sètz pas autentificat. Per votar, devètz utilizar un compte comportant al mens $1 contribucions abans lo $2, e que la primièra remonte al $3.',
@@ -735,7 +735,7 @@ Foi encriptado com a chave pública dos Administradores da Eleição:
 
 <pre>$2</pre>
 
-A versão da encriptação segue-se, e será publicada em [[Especial:Boardvote/dump]]. 
+A versão da encriptação segue-se, e será publicada em [[Especial:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -787,7 +787,7 @@ $wgBoardVoteMessages['ru'] = array(
 
 <pre>$2</pre>
 
-Зашифрованный текст приведен ниже. Любой желающий сможет найти его на странице [[Special:Boardvote/dump]]. 
+Зашифрованный текст приведен ниже. Любой желающий сможет найти его на странице [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -821,24 +821,24 @@ $wgBoardVoteMessages['sr-ec'] = array(
 * [[Special:Boardvote/list|Списак гласова до датума]]
 * [[Special:Boardvote/dump|Енкриптован запис гласања]]",
 	'boardvote_intro'         => "
-<p>Добро дошли на треће изборе за Викимедијин Одбор повереника. 
-Гласамо за једну особу која би представљала заједницу корисника разних Викимедијиних пројеката. 
-Она ће помоћи да се утврди будући смер којим ће Викимедијини пројекти да се крећу, 
-индивидуално и као група, и представљаће <em>ваше</em> интересе и бриге Одбору повереника. 
+<p>Добро дошли на треће изборе за Викимедијин Одбор повереника.
+Гласамо за једну особу која би представљала заједницу корисника разних Викимедијиних пројеката.
+Она ће помоћи да се утврди будући смер којим ће Викимедијини пројекти да се крећу,
+индивидуално и као група, и представљаће <em>ваше</em> интересе и бриге Одбору повереника.
 Одлучиће како да се стварају приноси и како да се расподели прикупљен новац.</p>
 
-<p>Молимо прочитајте изјаве кандидата и одговоре на претраге пажљиво пре него што гласате. 
-Сваки од кандидата је поштовани корисник, који је допринео значајним временом и напорима да 
+<p>Молимо прочитајте изјаве кандидата и одговоре на претраге пажљиво пре него што гласате.
+Сваки од кандидата је поштовани корисник, који је допринео значајним временом и напорима да
 ови пројекти буду добродошло окружење са слободном дистрибуцијом људског знања као циљем.</p>
 
-<p>Можете гласати за онолико кандидата за колико желите. Кандидат са највише гласова у сваком положају 
+<p>Можете гласати за онолико кандидата за колико желите. Кандидат са највише гласова у сваком положају
 ће бити проглашени победником тог положаја. У случају нерешеног, ново гласање ће бити одржано.</p>
 
 <p>За више информација, погледајте:</p>
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Најчешће постављена питања избора</a></li>
 <li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Кандидати</a></li></ul>
 ",
-	'boardvote_intro_change'  => "<p>Гласали сте раније. Међутим, можете променити ваш глас користећи формулар испод. 
+	'boardvote_intro_change'  => "<p>Гласали сте раније. Међутим, можете променити ваш глас користећи формулар испод.
 Молимо одаберите кандидате за које гласате.</p>",
 	'boardvote_footer'        => "&nbsp;", # Don't translate this
 	'boardvote_entered'       => "Хвала вам, ваш глас је снимљен.
@@ -885,24 +885,24 @@ $wgBoardVoteMessages['sr-el'] = array(
 * [[Special:Boardvote/list|Spisak glasova do datuma]]
 * [[Special:Boardvote/dump|Enkriptovan zapis glasanja]]",
 	'boardvote_intro'         => "
-<p>Dobro došli na treće izbore za Vikimedijin Odbor poverenika. 
-Glasamo za jednu osobu koja bi predstavljala zajednicu korisnika raznih Vikimedijinih projekata. 
-Ona će pomoći da se utvrdi budući smer kojim će Vikimedijini projekti da se kreću, 
-individualno i kao grupa, i predstavljaće <em>vaše</em> interese i brige Odboru poverenika. 
+<p>Dobro došli na treće izbore za Vikimedijin Odbor poverenika.
+Glasamo za jednu osobu koja bi predstavljala zajednicu korisnika raznih Vikimedijinih projekata.
+Ona će pomoći da se utvrdi budući smer kojim će Vikimedijini projekti da se kreću,
+individualno i kao grupa, i predstavljaće <em>vaše</em> interese i brige Odboru poverenika.
 Odlučiće kako da se stvaraju prinosi i kako da se raspodeli prikupljen novac.</p>
 
-<p>Molimo pročitajte izjave kandidata i odgovore na pretrage pažljivo pre nego što glasate. 
-Svaki od kandidata je poštovani korisnik, koji je doprineo značajnim vremenom i naporima da 
+<p>Molimo pročitajte izjave kandidata i odgovore na pretrage pažljivo pre nego što glasate.
+Svaki od kandidata je poštovani korisnik, koji je doprineo značajnim vremenom i naporima da
 ovi projekti budu dobrodošlo okruženje sa slobodnom distribucijom ljudskog znanja kao ciljem.</p>
 
-<p>Možete glasati za onoliko kandidata za koliko želite. Kandidat sa najviše glasova u svakom položaju 
+<p>Možete glasati za onoliko kandidata za koliko želite. Kandidat sa najviše glasova u svakom položaju
 će biti proglašeni pobednikom tog položaja. U slučaju nerešenog, novo glasanje će biti održano.</p>
 
 <p>Za više informacija, pogledajte:</p>
 <ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Najčešće postavljena pitanja izbora</a></li>
 <li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidati</a></li></ul>
 ",
-	'boardvote_intro_change'  => "<p>Glasali ste ranije. Međutim, možete promeniti vaš glas koristeći formular ispod. 
+	'boardvote_intro_change'  => "<p>Glasali ste ranije. Međutim, možete promeniti vaš glas koristeći formular ispod.
 Molimo odaberite kandidate za koje glasate.</p>",
 	'boardvote_footer'        => "&nbsp;", # Don't translate this
 	'boardvote_entered'       => "Hvala vam, vaš glas je snimljen.
@@ -945,6 +945,28 @@ Sledi rezultujuća šifrirana verzija. Biće javno predstavljena na [[Special:Bo
 );
 
 $wgBoardVoteMessages['sr'] = $wgBoardVoteMessages['sr-ec'];
+
+$wgBoardVoteMessages['su'] = array(
+	'boardvote'               => 'Saémbara Anggota Déwan Kapercayaan Yayasan Wikimedia',
+	'boardvote_novotes'       => 'Acan aya pamilih.',
+	'boardvote_time'          => 'Wanci',
+	'boardvote_user'          => 'Pamaké',
+	'boardvote_edits'         => 'Édit',
+	'boardvote_days'          => 'Poé',
+	'boardvote_ip'            => 'IP',#identical but defined
+	'boardvote_dumplink'      => 'Klik di dieu',
+	'boardvote_submit'        => 'Kintun',
+	'boardvote_strike'        => 'Coret',#identical but defined
+	'boardvote_unstrike'      => 'Hapus nu dicoret',
+	'boardvote_needadmin'     => 'Ngan kuncén saémbara nu bisa ngalakukeun ieu.',
+	'boardvote_notstarted'    => 'Saémbara can dimimitian',
+	'boardvote_closed'        => 'Saémbara geus ditutup, tempo [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En kaca saémbara keur hasilna] teu lila.',
+	'boardvote_edits_many'    => 'loba',
+	'group-boardvote'         => 'Kuncén saémbara anggota dewan',
+	'group-boardvote-member'  => 'Kuncén saémbara anggota dewan',
+	'grouppage-boardvote'     => '{{ns:project}}:Kuncén saémbara anggota dewan',
+);
+
 $wgBoardVoteMessages['sv'] = array(
 	'boardvote'               => "Val till Wikimedias styrelse (Wikimedia Board of Trustees)",
 	'boardvote_entry'         => "* [[m:Election_candidates_2006/Sv|Kandidaternas presentationer]]
@@ -975,7 +997,7 @@ Den är krypterad med valadministratörernas publika nyckel:
 
 <pre>$2</pre>
 
-Den resulterande krypterade versionen följer här. Den kommer att visas öppet på [[Special:Boardvote/dump]]. 
+Den resulterande krypterade versionen följer här. Den kommer att visas öppet på [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -1000,7 +1022,7 @@ $wgBoardVoteMessages['wa'] = array(
 * [[Special:Boardvote/list|Djivêye des vôtaedjes dedja fwaits]]
 * [[Special:Boardvote/dump|Djiveye des bultins]] (tchaeke bultin est on blok ecripté)',
 	'boardvote_intro' => '<p>
-Bénvnowe å prumî vôtaedje po les manaedjeus del fondåcion Wikimedia. 
+Bénvnowe å prumî vôtaedje po les manaedjeus del fondåcion Wikimedia.
 Li vôtaedje c\' est po tchoezi deus djins ki cåzront å consey des manaedjeus po les contribouweus des diferins pordjets Wikimedia k\' overnut félmint po lzès fé viker:
 on <strong>rprezintant des mimbes ki sont des contribouweus actifs</strong>,
 eyet on <strong>rprezintant des uzeus volontaires</strong>.
@@ -1043,7 +1065,7 @@ Il a stî ecripté avou l\' clé publike des manaedjeus do vôtaedje:
 <pre>$2</pre>
 
 Vosse bultins ecripté est chal pa dzo. Tos les bultins ecriptés polèt
-esse publicmint veyous so [[Special:Boardvote/dump]]. 
+esse publicmint veyous so [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
@@ -1317,7 +1339,7 @@ $wgBoardVoteMessages['zh-yue'] = array(
 
 <pre>$2</pre>
 
-所加密嘅結果響下面列示。佢會響[[Special:Boardvote/dump]]度畀公眾顯示。 
+所加密嘅結果響下面列示。佢會響[[Special:Boardvote/dump]]度畀公眾顯示。
 
 <pre>$3</pre>
 

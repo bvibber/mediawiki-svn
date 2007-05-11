@@ -63,6 +63,11 @@ function efMinimumNameLengthMessages() {
 'sk' => array(
 'minnamelength-error' => 'Vaše používateľské meno je príliš krátke. Minimálna dĺžka je $1.',
 ),
+
+'su' => array(
+'minnamelength-error' => 'Landihan anjeun pondok teuing. Paling henteu kudu $1.',
+),
+
 	);
 	return $messages;
 }

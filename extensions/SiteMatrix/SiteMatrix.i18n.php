@@ -81,6 +81,11 @@ $wgSiteMatrixMessages['sr-el'] = array(
 	"sitematrix" => "Tabela svih vikija",
 );
 $wgSiteMatrixMessages['sr'] = $wgSiteMatrixMessages['sr-ec'];
+
+$wgSiteMatrixMessages['su'] = array(
+	'sitematrix' => 'Béréndélan wiki Wikimédia',
+);
+
 $wgSiteMatrixMessages['sv'] = array(
 	"sitematrix" => "Lista över Wikimedias wikis",
 );

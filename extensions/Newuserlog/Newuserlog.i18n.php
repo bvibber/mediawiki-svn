@@ -151,6 +151,14 @@ $wgNewuserlogMessages['sr-el'] = array(
 	'newuserlog-create2-entry' => 'napravio nalog za $1',
 );
 $wgNewuserlogMessages['sr'] = $wgNewuserlogMessages['sr-ec'];
+
+$wgNewuserlogMessages['su'] = array(
+	'newuserlogpage'           => 'Log pamaké anyar',
+	'newuserlogpagetext'       => 'Di handap ieu béréndélan log pamaké anyar',
+	'newuserlog-create-entry'  => 'Pamaké anyar',
+	'newuserlog-create2-entry' => 'rekening pikeun $1 geus dijieun',
+);
+
 $wgNewuserlogMessages['sv'] = array(
 	'newuserlogpage'           => 'Logg över nya användare',
 	'newuserlogpagetext'       => 'Det här är en logg över användarkonton som registrerats',

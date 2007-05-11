@@ -6,10 +6,10 @@
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
  */
- 
+
 function efContributorsMessages() {
 	return array(
-	
+
 /* English (Rob Church) */
 'en' => array(
 'contributors' => 'Contributors',
@@ -325,6 +325,20 @@ function efContributorsMessages() {
 'contributors-others' => 'i $1 drugih',
 'contributors-badtitle' => 'Greška u naslovu.',
 'contributors-nosuchpage' => 'Članak $1 ne postoji.',
+),
+
+/* Sundanese (Kandar via BetaWiki) */
+'su' => array(
+'contributors' => 'Kontributor',
+'contributors-toolbox' => 'Kontributor utama',#identical but defined
+'contributors-legend' => 'Béréndélkeun kontributor utama artikel',
+'contributors-target' => 'Judul:',#identical but defined
+'contributors-submit' => 'Témbongkeun',
+'contributors-subtitle' => 'Kontributor utama $1',
+'contributors-others-long' => 'Aya $1 kontributor séjénna pikeun kaca ieu.',
+'contributors-others' => 'sarta $1 lianna',
+'contributors-badtitle' => 'Judulna teu sah.',
+'contributors-nosuchpage' => 'Teu aya artikel $1.',
 ),
 
 /* Chinese (China) (Shinjiman) */

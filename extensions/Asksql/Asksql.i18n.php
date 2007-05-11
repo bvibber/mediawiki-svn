@@ -113,6 +113,17 @@ používajte túto funkciu s rozmyslom.",
 'querysuccessful' => 'Požiadavka úspešne vykonaná',
 ),
 
+/* Sundanese (Kandar via BetaWiki) */
+'su' => array(
+'asksql'           => 'Pamundut SQL',
+'asksqltext'       => 'Paké pormulir di handap ieu pikeun mundut langsung ti pangkalan data. Paké curek tunggal (\'kawas kieu\') pikeun ngawatesan string nu dimaksud. Hal ieu bisa ngabeungbeuratan ka server, ku kituna mangga anggo saperluna.',
+'sqlislogged'      => 'Perhatoskeun yén sadaya pamundut aya logna.',
+'sqlquery'         => 'Asupkeun pamundut',
+'querybtn'         => 'Kirimkeun pamundut',
+'selectonly'       => 'Ngan pamundut ukur-maca nu diwenangkeun.',
+'querysuccessful'  => 'Pamundut tos laksana',
+),
+
 /* Chinese (China) (Formulax, Shizhao) */
 'zh-cn' => array(
 'asksql' => 'SQL查询',

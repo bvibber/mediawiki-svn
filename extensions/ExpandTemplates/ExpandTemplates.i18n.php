@@ -9,9 +9,9 @@ $wgExpandTemplatesMessages = array();
 
 $wgExpandTemplatesMessages['en'] = array(
 	'expandtemplates'                  => 'Expand templates',
-	'expand_templates_intro'           => 'This special page takes some text and expands 
-all templates in it recursively. It also expands parser functions like 
-<nowiki>{{</nowiki>#if:...}}, and variables like 
+	'expand_templates_intro'           => 'This special page takes some text and expands
+all templates in it recursively. It also expands parser functions like
+<nowiki>{{</nowiki>#if:...}}, and variables like
 <nowiki>{{</nowiki>CURRENTDAY}}&mdash;in fact pretty much everything in double-braces.
 It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_title'           => 'Context title, for {{PAGENAME}} etc.:',
@@ -60,8 +60,8 @@ $wgExpandTemplatesMessages['fi'] = array(
 );
 $wgExpandTemplatesMessages['fr'] = array(
 	'expandtemplates'                  => 'Expansion des modèles',
-	'expand_templates_intro'           => 'Cette page permet de tester l’expansion de modèles, 
-qui sont développés recursivement. Les fonctions et les variables prédéfinies, 
+	'expand_templates_intro'           => 'Cette page permet de tester l’expansion de modèles,
+qui sont développés recursivement. Les fonctions et les variables prédéfinies,
 telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont aussi développées.',
 	'expand_templates_title'           => 'Titre de l’article, utile par exemple si le modèle utilise {{PAGENAME}} :',
 	'expand_templates_input'           => 'Entrez votre texte ici :',
@@ -158,10 +158,10 @@ $wgExpandTemplatesMessages['kk-cn'] = array(
 $wgExpandTemplatesMessages['kk'] = $wgExpandTemplatesMessages['kk-kz'];
 $wgExpandTemplatesMessages['ksh'] = array(
 	'expandtemplates'                  => 'Schablone üvverpröfe',
-	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä 
-komplett opjelös, och all die ennedren widder opjerofe Schablone, Parameter, Funktione, speziell Name, 
-un esu, bes nix mieh üvverich es, wat mer noch oplöse künnt. Wann jet en <nowiki>{{ â€¦ }} Klammere 
-üvverbliet, dann wor et unbekannt. Do passeet jenau et selve wie söns em Wiki och, nor dat De hee tirek ze 
+	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä
+komplett opjelös, och all die ennedren widder opjerofe Schablone, Parameter, Funktione, speziell Name,
+un esu, bes nix mieh üvverich es, wat mer noch oplöse künnt. Wann jet en <nowiki>{{ â€¦ }} Klammere
+üvverbliet, dann wor et unbekannt. Do passeet jenau et selve wie söns em Wiki och, nor dat De hee tirek ze
 sinn kriss wat erus kütt.',
 	'expand_templates_title'           => 'Dä Siggetitel, also wat för {{PAGENAME}} uew. enjeföllt weed:',
 	'expand_templates_input'           => 'Wat De üvverpröfe wells:',
@@ -218,9 +218,9 @@ volania relevantnej fázy parsera samotného MediaWiki.',
 );
 $wgExpandTemplatesMessages['sr-ec'] = array(
 	'expandtemplates'                  => 'Замена шаблона',
-	'expand_templates_intro'           => 'Ова посебна страница узима неки текст и мења све шаблоне у њему рекурзивно. 
-Такође мења функције парсера као што је <nowiki>{{</nowiki>#if:...}}, и променљиве као што је 
-<nowiki>{{</nowiki>ТРЕНУТНИДАН}}&mdash;заправо практично све што се налази између витичастих заграда. 
+	'expand_templates_intro'           => 'Ова посебна страница узима неки текст и мења све шаблоне у њему рекурзивно.
+Такође мења функције парсера као што је <nowiki>{{</nowiki>#if:...}}, и променљиве као што је
+<nowiki>{{</nowiki>ТРЕНУТНИДАН}}&mdash;заправо практично све што се налази између витичастих заграда.
 До овога долази тако што се зове одговарајуће стање парсера из самог МедијаВикија.',
 	'expand_templates_title'           => 'Назив контекста; за <nowiki>{{</nowiki>СТРАНИЦА}} итд.:',
 	'expand_templates_input'           => 'Унос:',
@@ -230,9 +230,9 @@ $wgExpandTemplatesMessages['sr-ec'] = array(
 );
 $wgExpandTemplatesMessages['sr-el'] = array(
 	'expandtemplates'                  => 'Zamena šablona',
-	'expand_templates_intro'           => 'Ova posebna stranica uzima neki tekst i menja sve šablone u njemu rekurzivno. 
-Takođe menja funkcije parsera kao što je <nowiki>{{</nowiki>#if:...}}, i promenljive kao što je 
-<nowiki>{{</nowiki>TRENUTNIDAN}}&mdash;zapravo praktično sve što se nalazi između vitičastih zagrada. 
+	'expand_templates_intro'           => 'Ova posebna stranica uzima neki tekst i menja sve šablone u njemu rekurzivno.
+Takođe menja funkcije parsera kao što je <nowiki>{{</nowiki>#if:...}}, i promenljive kao što je
+<nowiki>{{</nowiki>TRENUTNIDAN}}&mdash;zapravo praktično sve što se nalazi između vitičastih zagrada.
 Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVikija.',
 	'expand_templates_title'           => 'Naziv konteksta; za <nowiki>{{</nowiki>STRANICA}} itd.:',
 	'expand_templates_input'           => 'Unos:',
@@ -241,6 +241,13 @@ Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVi
 	'expand_templates_remove_comments' => 'Ukloni komentare',
 );
 $wgExpandTemplatesMessages['sr'] = $wgExpandTemplatesMessages['sr-ec'];
+
+$wgExpandTemplatesMessages['su'] = array(
+	'expandtemplates'                  => 'Mekarkeun citakan',
+	'expand_templates_output'          => 'Hasil:',#identical but defined
+	'expand_templates_ok'              => 'Heug',
+);
+
 $wgExpandTemplatesMessages['zh-cn'] = array(
 	'expandtemplates'                  => '展开模板',
 	'expand_templates_intro'           => '本特殊页面用于将一些文字中的模板展开，包括模板中引用的模板。同时也展开解释器函数如<nowiki>{{</nowiki>#if:...}}，以及变量如<nowiki>{{</nowiki>CURRENTDAY}}&mdash;实际上，几乎所有在双括号中的内容都被展开。本特殊页面是通过调用MediaWiki的相关解释阶段的功能完成的。',

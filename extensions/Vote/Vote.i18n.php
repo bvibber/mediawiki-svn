@@ -117,6 +117,18 @@ sphinx|Esfinx',
 'vote-invalid-choice' => 'Musíte vybrať jednu z dostupných možností.',
 ),
 
+/* Sundanese (Kandar via BetaWiki) */
+'su' => array(
+'vote-header' => 'Anjeun bisa milih \'\'\'Supreme Overlord of the World\'\'\' di dieu!',
+'vote-current' => 'Anjeun geus milih \'\'\'$1\'\'\'.',
+'vote-caption' => 'Pilihan anjeun:',
+'vote-registered' => 'Pilihan anjeun geus didaptarkeun.',
+'vote-results-count' => 'Itung',
+'vote-login' => 'Anjeun kudu $1 pikeun milu milih.',
+'vote-login-link' => 'asup log',
+'vote-invalid-choice' => 'Anjeun kudu milih salah sahiji ti nu aya.',
+),
+
 	);
 	return $messages;
 }

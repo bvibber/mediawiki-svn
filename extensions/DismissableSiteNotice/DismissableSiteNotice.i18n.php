@@ -97,6 +97,11 @@ $wgDismissableSiteNoticeMessages['ru'] = array(
 $wgDismissableSiteNoticeMessages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
 );
+
+$wgDismissableSiteNoticeMessages['su'] = array(
+	'sitenotice_close' => 'bubarkeun',
+);
+
 $wgDismissableSiteNoticeMessages['ur'] = array(
 	'sitenotice_close' => 'ترک',
 );

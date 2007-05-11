@@ -26,7 +26,7 @@ list of blacklisted usernames]]. Please choose another name.',
 /* French */
 'fr' => array(
 'blacklistedusername' => 'Noms d’utilisateurs en liste noire',
-'blacklistedusernametext' => 'Le nom d’utilisateur que vous avez choisi se trouve sur la 
+'blacklistedusernametext' => 'Le nom d’utilisateur que vous avez choisi se trouve sur la
 [[MediaWiki:Usernameblacklist|liste des noms interdits]]. Veuillez choisir un autre nom.',
 ),
 
@@ -92,6 +92,12 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 'blacklistedusername' => 'Používateľské meno na čiernej listine',
 'blacklistedusernametext' => 'Používateľské meno, ktoré ste si zvolili sa nachádza na [[MediaWiki:Usernameblacklist|
 čiernej listine používateľských mien]]. Prosím, zvoľte si iné.',
+),
+
+/* Sundanese (Irwangatot via BetaWiki) */
+'su' => array(
+'blacklistedusername' => 'Ngaran pamaké nu dicorét:',
+'blacklistedusernametext' => 'Ngaran pamaké nu dipilih cocog jeung [[MediaWiki:Usernameblacklist|ngaran pamaké nu dicorét]]. Mangga pilih ngaran séjén.',
 ),
 
 /* Chinese (China) (Shinjiman) */

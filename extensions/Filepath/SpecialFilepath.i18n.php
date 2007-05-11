@@ -119,6 +119,13 @@ $wgFilepathMessages['sr-el'] = array(
 	'filepath_submit' => 'Putanja',
 );
 $wgFilepathMessages['sr'] = $wgFilepathMessages['sr-ec'];
+
+$wgFilepathMessages['su'] = array(
+	'filepath'        => 'Jalur koropak',
+	'filepath_page'   => 'Koropak:',
+	'filepath_submit' => 'Jalur',
+);
+
 $wgFilepathMessages['sv'] = array(
 	'filepath'        => 'Sökväg till fil',
 	'filepath_page'   => 'Fil:',

@@ -155,6 +155,19 @@ $wgDesysopMessages['sr-el'] = array(
 	'not_sysop'            => 'Ovaj korisnik nije administrator',
 );
 $wgDesysopMessages['sr'] = $wgDesysopMessages['sr-ec'];
+
+$wgDesysopMessages['su'] = array(
+	'desysoptitle'         => 'Cabut status kuncén ti pamaké',
+	'desysoptext'          => 'Pormulir ieu dipaké ku birokrat pikeun nyabut kawenangan kuncén. Mangga ketikkeun landihan pamaké dina kotak, lajeng pencét tombolna pikeun nyabut status kuncénna.',
+	'desysopname'          => 'Landihan pamaké:',
+	'desysopok'            => '<b>Pamaké "$1" geus dicabut status kuncénna</b>',
+	'set_user_rights'      => 'Setél kawenangan pamaké',
+	'user_rights_set'      => '<b>Kawenangan pamaké "$1" geus diropéa</b>',
+	'set_rights_fail'      => '<b>Kawenangan pamaké "$1" teu bisa disetél (landihan nu diasupkeun geus bener, can?)</b>',
+	'desysop'              => 'Cabut status kuncén pamaké',
+	'not_sysop'            => 'Pamaké ieu lain administrator',
+);
+
 $wgDesysopMessages['zh-cn'] = array(
 	'desysoptitle'         => '撤销一位用户的操作员权限',
 	'desysoptext'          => "这个表格供行政员使用以撤销一位用户的操作员权限。在下面的框中输入用户名并按下按钮以撤销该用户的操作员权限。",

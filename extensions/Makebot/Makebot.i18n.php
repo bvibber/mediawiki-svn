@@ -11,7 +11,7 @@
 
 function efMakeBotMessages() {
 	$messages = array(
-	
+
 /* English (Rob Church) */
 'en' => array(
 'makebot' => 'Grant or revoke bot status',
@@ -440,6 +440,27 @@ function efMakeBotMessages() {
 'makebot-logpagetext' => 'Ovo je istorija izmena statusa [[Pomoć:Bot|bota]] korisnika.',
 'makebot-logentrygrant' => 'dao status bota: [[$1]]',
 'makebot-logentryrevoke' => 'uklonio status bota: [[$1]]',
+),
+
+/* Sundanese (Kandar via BetaWiki) */
+'su' => array(
+'makebot'                 => 'Leler atawa cabut status bot',
+'makebot-header'          => '\'\'\'Birokrat lokal bisa migunakeun ieu kaca pikeun ngaleler atawa nyabut [[Help:Bot|status bot]] ka rekening pamaké séjén.\'\'\'<br />Status bot nyumputkeun éditan hiji pamaké dina [[Special:Recentchanges|daptar parobahan anyar]] jeung nu sarupa jeung éta. Hal ieu penting pikeun nandaan pamaké nu ngajalankeun éditan otomatis, luyu jeung kawijakan anu aya.',
+'makebot-username'        => 'Ngaran landihan:',
+'makebot-search'          => 'Jung',
+'makebot-isbot'           => '[[User:$1|$1]] boga status bot.',
+'makebot-notbot'          => '[[User:$1|$1]] teu boga status bot.',
+'makebot-privileged'      => '[[User:$1|$1]] boga [[Special:Listadmins|kawenangan administrator atawa birokrat]], sahingga teu bisa dibéré status bot.',
+'makebot-change'          => 'Robah status:',
+'makebot-grant'           => 'Leler',
+'makebot-revoke'          => 'Cabut',
+'makebot-comment'         => 'Pamanggih:',
+'makebot-granted'         => '[[User:$1|$1]] ayeuna boga status bot.',
+'makebot-revoked'         => '[[User:$1|$1]] geus teu boga status bot deui.',
+'makebot-logpage'         => 'Log status bot',
+'makebot-logpagetext'     => 'Ieu mangrupa log parobahan status [[Help:Bot|bot]] pamaké.',
+'makebot-logentrygrant'   => 'méré status bot ka [[$1]]',
+'makebot-logentryrevoke'  => 'nyabut status bot [[$1]]',
 ),
 
 /* Swedish (Lejonel) */

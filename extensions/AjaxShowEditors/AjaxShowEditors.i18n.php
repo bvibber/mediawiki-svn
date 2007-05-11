@@ -63,6 +63,11 @@ $wgAjaxShowEditorsMessages['sk'] = array(
 	'ajax-se-pending' => 'čaká sa na obnovenie... (kliknite do tohto poľa alebo začnite upravovať)',
 	'ajax-se-idling' => '(pred $1 sek)',
 );
+$wgAjaxShowEditorsMessages['su'] = array(
+	'ajax-se-title' => 'Keur ngédit:',
+	'ajax-se-pending' => 'muatkeun koropak deui ditunda... (klik kotak ieu atawa mimiti ngédit)',
+	'ajax-se-idling' => '($1 nu kaliwat)',
+);
 $wgAjaxShowEditorsMessages['zh-cn'] = array(
 	'ajax-se-title' => '当前编辑中:',
 	'ajax-se-pending' => '正在正在刷新 ... (单击这个框或开始编辑)',
