@@ -1,6 +1,9 @@
 <?php
 
-$verbose = isset( $argv[1] ) && $argv[1] == '-v';
+$opts = getopt("vt:");
+
+$verbose = $opts['v'];
+$type = $opts['t'];
 
 $user = 'wikiuser';
 $password = `/home/wikipedia/bin/wikiuser_pass`;
@@ -10,7 +13,17 @@ $dbs = array();
 # Connect to enwiki
 mysql_connect( 'ariel', $user, $password ) || myerror();
 mysql_select_db( 'enwiki' ) || myerror();
-( $res = mysql_query( 'SELECT 1 FROM job LIMIT 1' ) ) || myerror();
+
+if ($type === false)
+    $res = mysql_query( 'SELECT 1 FROM job LIMIT 1' );
+else {
+    $st = mysql_real_escape_string($type);
+    $res = mysql_query( "SELECT 1 FROM job WHERE job_cmd='$st' LIMIT 1" );
+}
+
+if ($res === false)
+    myerror();
+
 if ( mysql_num_rows( $res ) ) {
 	$dbs[] = 'enwiki';
 }
@@ -28,8 +41,15 @@ foreach ( $availableDBs as $db ) {
 	}
 	
 	mysql_select_db( $db ) || myerror();
-	( $res = mysql_query( 'SELECT 1 FROM job LIMIT 1' ) ) || myerror();
-	if ( mysql_num_rows( $res ) ) {
+        if ($type === false)
+            $res = mysql_query( 'SELECT 1 FROM job LIMIT 1' );
+        else
+            $res = mysql_query( "SELECT 1 FROM job WHERE job_cmd='$st' LIMIT 1" );
+
+        if ($res === false)
+            myerror();
+
+        if ( mysql_num_rows( $res ) ) {
 		$dbs[] = $db;
 	}
 	mysql_free_result( $res );

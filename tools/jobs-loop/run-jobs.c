@@ -9,6 +9,9 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 	char *database = argv[1];
+        char *type = 0;
+        if (argc > 2)
+            type = argv[2];
 	
 	struct passwd *apache = getpwnam("apache");
 	if (apache == NULL) {
@@ -31,11 +34,21 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 	
-	execl("/usr/local/bin/php",
-		"/usr/local/bin/php",
-		"runJobs.php",
-		database,
-		(char *)0);
+        if (type) {
+            char typeopt[256];
+            snprintf(typeopt, sizeof(typeopt), "--type=%s", type);
+            execl("/usr/local/bin/php",
+                    "/usr/local/bin/php",
+                    "runJobs.php",
+                    typeopt,
+                    database,
+                    (char *)0);
+        } else
+            execl("/usr/local/bin/php",
+                    "/usr/local/bin/php",
+                    "runJobs.php",
+                    database,
+                    (char *)0);
 	fprintf(stderr, "Could not exec php / jobs script.\n");
 	return 1;
 }
