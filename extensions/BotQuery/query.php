@@ -482,17 +482,15 @@ class BotQueryProcessor {
 				"Example: query.php?what=usercontribs&titles=User:YurikBot&uclimit=20&uccomments",
 			)),
 			
-			// Extremelly slow query!!!
-			
-//		'contribcounter'   => array(
-//			GN_FUNC => 'genContributionsCounter',
-//			GN_ISMETA => false,
-//			GN_PARAMS => array(),
-//			GN_DFLT => array(),
-//			GN_DESC => array(
-//				"User contributions counter",
-//				"Example: query.php?what=contribcounter&titles=User:Yurik",
-//			)),
+		'contribcounter'   => array(
+			GN_FUNC => 'genContributionsCounter',
+			GN_ISMETA => false,
+			GN_PARAMS => array(),
+			GN_DFLT => array(),
+			GN_DESC => array(
+				"User contributions counter",
+				"Example: query.php?what=contribcounter&titles=User:Yurik",
+			)),
 		'imageinfo'      => array(
 			GN_FUNC => 'genImageInfo',
 			GN_ISMETA => false,
@@ -1897,45 +1895,42 @@ class BotQueryProcessor {
 	}
 	
 	
-//	/**
-//	* Add counts of user contributions to the user pages
-//	*/
-//	function genContributionsCounter(&$prop, &$genInfo)
-//	{
-//		$this->startProfiling();
-//		$users = array ();			// Users to query
-//		$userPageIds = array ();	// Map of user name to the page ID
-//
-//		// For all valid pages in User namespace query history. Note that the page might not exist.
-//		foreach ($this->data['pages'] as $pageId => & $page) {
-//			if (array_key_exists('_obj', $page)) {
-//				$title = & $page['_obj'];
-//				if ($title->getNamespace() == NS_USER && !$title->isExternal()) {
-//					$users[] = $title->getText();
-//					$userPageIds[$title->getText()] = $pageId;
-//				}
-//			}
-//		}
-//
-//		$this->validateLimit( 'cc_querytoobig', count($users), 10, 50 );
-//		$this->startDbProfiling();
-//		$res = $this->db->select('revision', array (
-//			'rev_user_text',
-//			'count(*) cnt',
-//			'count(DISTINCT rev_page) distcnt'
-//		), array (
-//			'rev_user_text' => $users
-//		), __METHOD__, array (
-//			'GROUP BY' => 'rev_user_text'
-//		));
-//		$this->endDbProfiling($prop);
-//		while ($row = $this->db->fetchObject($res)) {
-//			$pageId = $userPageIds[$row->rev_user_text];
-//			$this->addPageSubElement($pageId, $prop, 'count', $row->cnt, false);
-//			$this->addPageSubElement($pageId, $prop, 'distcount', $row->distcnt, false);
-//		}
-//		$this->endProfiling($prop);
-//	}
+	/**
+	* Add counts of user contributions to the user pages
+	*/
+	function genContributionsCounter(&$prop, &$genInfo)
+	{
+		$this->startProfiling();
+		$users = array ();			// Users to query
+		$userPageIds = array ();	// Map of user name to the page ID
+
+		// For all valid pages in User namespace query history. Note that the page might not exist.
+		foreach ($this->data['pages'] as $pageId => & $page) {
+			if (array_key_exists('_obj', $page)) {
+				$title = & $page['_obj'];
+				if ($title->getNamespace() == NS_USER && !$title->isExternal()) {
+					$users[] = $title->getText();
+					$userPageIds[$title->getText()] = $pageId;
+				}
+			}
+		}
+
+		$this->validateLimit( 'cc_querytoobig', count($users), 10, 50 );
+		$this->startDbProfiling();
+		$res = $this->db->select('user', array (
+			'user_name',
+			'user_editcount'
+		), array (
+			'user_name' => $users
+		), __METHOD__
+		);
+		$this->endDbProfiling($prop);
+		while ($row = $this->db->fetchObject($res)) {
+			$pageId = $userPageIds[$row->user_name];
+			$this->addPageSubElement($pageId, $prop, 'count', $row->user_editcount, false);
+		}
+		$this->endProfiling($prop);
+	}
 	
 	/**
 	* Add the raw content of the pages
