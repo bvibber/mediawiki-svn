@@ -1,0 +1,12 @@
+/etc/apache2/apache2.conf
+/etc/apache2/wmf/access.conf
+/etc/apache2/wmf/foundation.conf
+/etc/apache2/wmf/nonexistent.conf
+/etc/apache2/wmf/redirects.conf
+/etc/apache2/wmf/wikimedia.conf
+/etc/apache2/wmf/www.wikipedia.conf
+/etc/apache2/wmf/en2.conf
+/etc/apache2/wmf/main.conf
+/etc/apache2/wmf/postrewrites.conf
+/etc/apache2/wmf/remnant.conf
+/etc/apache2/wmf/wikimedia-ssl-backend.conf

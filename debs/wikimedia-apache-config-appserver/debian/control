@@ -1,0 +1,12 @@
+Source: wikimedia-apache-config-appserver
+Section: unknown
+Priority: optional
+Maintainer: River Tarnell <river@wikimedia.org>
+Standards-Version: 3.6.2
+
+Package: wikimedia-apache-config-appserver
+Architecture: all
+Description: Wikimedia Apache configuration for application servers
+ This package contains the Wikimedia Apache configuration for running
+ standard application servers.  It does not contain apache; install
+ wikimedia-task-appserver for that.

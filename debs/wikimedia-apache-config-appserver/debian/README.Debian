@@ -1,0 +1,6 @@
+wikimedia-apache-config-appserver
+-----------------------
+
+This package contains the Wikimedia Apache configuration for running
+standard application servers.  It does not contain apache; install
+wikimedia-task-appserver for that.
