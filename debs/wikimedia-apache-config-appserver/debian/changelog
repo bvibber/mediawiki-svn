@@ -1,3 +1,9 @@
+wikimedia-apache-config-appserver (1.1) feisty; urgency=low
+
+  * Include sudoers rules needed for apaches.
+
+ -- River Tarnell <river@wikimedia.org>  Sat, 12 May 2007 18:47:09 +0000
+
 wikimedia-apache-config-appserver (1.0) feisty; urgency=low
 
   * Initial release

@@ -19,6 +19,26 @@ set -e
 
 case "$1" in
     configure)
+    	echo '/^# BEGIN WIKIMEDIA APACHE RULES/,/^# END WIKIMEDIA APACHE RULES/d
+wq' | ed /etc/sudoers || true
+	echo '# BEGIN WIKIMEDIA APACHE RULES
+User_Alias      ADMINS = %wikidev
+User_Alias      WIKIUSER = apache,%wikidev
+Cmnd_Alias      ADMIN_COMMANDS =        \
+/usr/local/apache/bin/apachectl,        \
+/home/wikipedia/sbin/apache-kill-it,    \
+/home/wikipedia/sbin/sync-common-it,    \
+/home/wikipedia/sbin/sync-common-php,   \
+/home/wikipedia/sbin/scap14-2,          \
+/home/wikipedia/sbin/scap15-2,          \
+/home/wikipedia/sbin/unscap-2,          \
+/home/wikipedia/sbin/set-group-write2,  \
+/home/wikipedia/sbin/run-mysql-test,    \
+/usr/bin/renice
+ADMINS  ALL= NOPASSWD: ADMIN_COMMANDS
+WIKIUSER    ALL=NOPASSWD: /home/wikipedia/sbin/wikiuser_pass_real
+# END WIKIMEDIA APACHE RULES' >>/etc/sudoers
+
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

@@ -22,6 +22,9 @@ case "$1" in
        purge)
 	dpkg-divert --package wikimedia-apache-config-appserver --remove --rename \
 		--divert /etc/apache2/apache2.conf.default /etc/apache2/apache2.conf
+
+	echo '/^# BEGIN WIKIMEDIA APACHE RULES/,/^# END WIKIMEDIA APACHE RULES/d
+wq' | ed /etc/sudoers || true
 	;;
        remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
 
