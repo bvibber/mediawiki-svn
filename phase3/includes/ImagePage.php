@@ -18,6 +18,14 @@ class ImagePage extends Article {
 	/* private */ var $img;  // Image object this page is shown for
 	var $mExtraDescription = false;
 
+	function __construct( $title ) {
+		parent::__construct( $title );
+		$this->img = wfFindFile( $this->mTitle );
+		if ( !$this->img ) {
+			$this->img = wfLocalFile( $this->mTitle );
+		}
+	}
+
 	/**
 	 * Handler for action=render
 	 * Include body text only; none of the image extras
@@ -30,8 +38,6 @@ class ImagePage extends Article {
 
 	function view() {
 		global $wgOut, $wgShowEXIF, $wgRequest, $wgUser;
-
-		$this->img = new Image( $this->mTitle );
 
 		$diff = $wgRequest->getVal( 'diff' );
 		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
@@ -160,7 +166,7 @@ class ImagePage extends Article {
 	 * shared upload server if possible.
 	 */
 	function getContent() {
-		if( $this->img && $this->img->fromSharedDirectory && 0 == $this->getID() ) {
+		if( $this->img && !$this->img->isLocal() && 0 == $this->getID() ) {
 			return '';
 		}
 		return Article::getContent();
@@ -349,7 +355,7 @@ END
 				}
 			}
 
-			if($this->img->fromSharedDirectory) {
+			if(!$this->img->isLocal()) {
 				$this->printSharedImageText();
 			}
 		} else {
@@ -400,7 +406,7 @@ END
 	function uploadLinksBox() {
 		global $wgUser, $wgOut;
 
-		if( $this->img->fromSharedDirectory )
+		if( !$this->img->isLocal() )
 			return;
 
 		$sk = $wgUser->getSkin();
@@ -439,7 +445,7 @@ END
 		$line = $this->img->nextHistoryLine();
 
 		if ( $line ) {
-			$list = new ImageHistoryList( $sk );
+			$list = new ImageHistoryList( $sk, $this->img );
 			$s = $list->beginImageHistoryList() .
 				$list->imageHistoryLine( true, wfTimestamp(TS_MW, $line->img_timestamp),
 					$this->mTitle->getDBkey(),  $line->img_user,
@@ -527,8 +533,6 @@ END
 			$wgOut->showFatalError( wfMsg( 'cannotdelete' ) );
 			return;
 		}
-
-		$this->img  = new Image( $this->mTitle );
 
 		# Deleting old images doesn't require confirmation
 		if ( !is_null( $oldimage ) || $confirm ) {
@@ -653,39 +657,23 @@ END
 			$wgOut->showErrorPage( 'internalerror', 'sessionfailure' );
 			return;
 		}
-		$name = substr( $oldimage, 15 );
 
-		$dest = wfImageDir( $name );
-		$archive = wfImageArchiveDir( $name );
-		$curfile = "{$dest}/{$name}";
+		$sourcePath = $this->img->getArchiveVirtualUrl( $oldimage );
+		$result = $this->img->publish( $sourcePath );
 
-		if ( !is_dir( $dest ) ) wfMkdirParents( $dest );
-		if ( !is_dir( $archive ) ) wfMkdirParents( $archive );
-
-		if ( ! is_file( $curfile ) ) {
-			$wgOut->showFileNotFoundError( htmlspecialchars( $curfile ) );
-			return;
-		}
-		$oldver = wfTimestampNow() . "!{$name}";
-
-		if ( ! rename( $curfile, "${archive}/{$oldver}" ) ) {
-			$wgOut->showFileRenameError( $curfile, "${archive}/{$oldver}" );
-			return;
-		}
-		if ( ! copy( "{$archive}/{$oldimage}", $curfile ) ) {
-			$wgOut->showFileCopyError( "${archive}/{$oldimage}", $curfile );
+		if ( WikiError::isError( $result ) ) {
+			$this->showError( $result );
 			return;
 		}
 
 		# Record upload and update metadata cache
-		$img = Image::newFromName( $name );
-		$img->recordUpload( $oldver, wfMsg( "reverted" ) );
+		$this->img->recordUpload( $result, wfMsg( "reverted" ) );
 
 		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->addHTML( wfMsg( 'imagereverted' ) );
 
-		$descTitle = $img->getTitle();
+		$descTitle = $this->img->getTitle();
 		$wgOut->returnToMain( false, $descTitle->getPrefixedText() );
 	}
 	
@@ -693,7 +681,6 @@ END
 	 * Override handling of action=purge
 	 */
 	function doPurge() {
-		$this->img = new Image( $this->mTitle );
 		if( $this->img->exists() ) {
 			wfDebug( "ImagePage::doPurge purging " . $this->img->getName() . "\n" );
 			$update = new HTMLCacheUpdate( $this->mTitle, 'imagelinks' );
@@ -706,6 +693,18 @@ END
 		parent::doPurge();
 	}
 
+	/**
+	 * Display an error from a wikitext-formatted WikiError object
+	 */
+	function showError( WikiError $error ) {
+		global $wgOut;
+		$wgOut->setPageTitle( wfMsg( "internalerror" ) );
+		$wgOut->setRobotpolicy( "noindex,nofollow" );
+		$wgOut->setArticleRelated( false );
+		$wgOut->enableClientCache( false );
+		$wgOut->addWikiText( $error->getMessage() );
+	}
+
 }
 
 /**
@@ -713,8 +712,10 @@ END
  * @addtogroup Media
  */
 class ImageHistoryList {
-	function ImageHistoryList( &$skin ) {
-		$this->skin =& $skin;
+	var $img, $skin;
+	function ImageHistoryList( $skin, $img ) {
+		$this->skin = $skin;
+		$this->img = $img;
 	}
 
 	function beginImageHistoryList() {
@@ -738,7 +739,7 @@ class ImageHistoryList {
 		$cur = wfMsgHtml( 'cur' );
 
 		if ( $iscur ) {
-			$url = Image::imageUrl( $img );
+			$url = htmlspecialchars( $this->img->getURL() );
 			$rlink = $cur;
 			if ( $wgUser->isAllowed('delete') ) {
 				$link = $wgTitle->escapeLocalURL( 'image=' . $wgTitle->getPartialURL() .
@@ -750,7 +751,7 @@ class ImageHistoryList {
 				$dlink = $del;
 			}
 		} else {
-			$url = htmlspecialchars( wfImageArchiveUrl( $img ) );
+			$url = htmlspecialchars( $this->img->getArchiveUrl( $img ) );
 			if( $wgUser->getID() != 0 && $wgTitle->userCan( 'edit' ) ) {
 				$token = urlencode( $wgUser->editToken( $img ) );
 				$rlink = $this->skin->makeKnownLinkObj( $wgTitle,
@@ -780,7 +781,6 @@ class ImageHistoryList {
 		$s .= "</li>\n";
 		return $s;
 	}
-
 }
 
 

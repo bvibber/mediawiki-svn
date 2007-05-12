@@ -185,6 +185,12 @@ $wgFileStore['deleted']['url'] = null;       // Private
 $wgFileStore['deleted']['hash'] = 3;         // 3-level subdirectory split
 
 /**
+ * File repository structures
+ */
+$wgLocalFileRepo = false;
+$wgForeignFileRepos = array();
+
+/**
  * Allowed title characters -- regex character class
  * Don't change this unless you know what you're doing
  *

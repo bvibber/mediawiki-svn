@@ -418,9 +418,9 @@ class Linker {
 	{
 		global $wgContLang, $wgUser, $wgThumbLimits;
 
-		$img   = new Image( $nt );
+		$img = wfFindFile( $nt );
 
-		if ( !$img->allowInlineDisplay() && $img->exists() ) {
+		if ( $img && !$img->allowInlineDisplay() ) {
 			return $this->makeKnownLinkObj( $nt );
 		}
 
@@ -434,7 +434,7 @@ class Linker {
 			$align   = 'none';
 		}
 
-		if ( !isset( $params['width'] ) ) {
+		if ( $img && !isset( $params['width'] ) ) {
 			$params['width'] = $img->getWidth( $page );
 			if( $thumb || $framed ) {
 				$wopt = $wgUser->getOption( 'thumbsize' );
@@ -459,10 +459,10 @@ class Linker {
 			if ( $align == '' ) {
 				$align = $wgContLang->isRTL() ? 'left' : 'right';
 			}
-			return $prefix.$this->makeThumbLinkObj( $img, $label, $alt, $align, $params, $framed, $manual_thumb ).$postfix;
+			return $prefix.$this->makeThumbLinkObj( $nt, $img, $label, $alt, $align, $params, $framed, $manual_thumb ).$postfix;
 		}
 
-		if ( $params['width'] && $img->exists() ) {
+		if ( $img && $params['width'] ) {
 			# Create a resized image, without the additional thumbnail features
 			$thumb = $img->transform( $params );
 		} else {
@@ -489,7 +489,7 @@ class Linker {
 		);
 
 		if ( !$thumb ) {
-			$s = $this->makeBrokenImageLinkObj( $img->getTitle() );
+			$s = $this->makeBrokenImageLinkObj( $nt );
 		} else {
 			$s = $thumb->toHtml( $imgAttribs, $linkAttribs );
 		}
@@ -501,10 +501,12 @@ class Linker {
 
 	/**
 	 * Make HTML for a thumbnail including image, border and caption
-	 * $img is an Image object
+	 * @param Title $nt 
+	 * @param Image $img Image object or false if it doesn't exist
 	 */
-	function makeThumbLinkObj( $img, $label = '', $alt, $align = 'right', $params = array(), $framed=false , $manual_thumb = "" ) {
+	function makeThumbLinkObj( Title $nt, $img, $label = '', $alt, $align = 'right', $params = array(), $framed=false , $manual_thumb = "" ) {
 		global $wgStylePath, $wgContLang;
+		$exists = $img && $img->exists();
 
 		$page = isset( $params['page'] ) ? $params['page'] : false;
 
@@ -512,45 +514,54 @@ class Linker {
 			$params['width'] = 180;
 		}
 		$thumb = false;
-		if ( $manual_thumb != '' ) {
-			# Use manually specified thumbnail
-			$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb );
-			if( $manual_title ) {
-				$manual_img = new Image( $manual_title );
-				$thumb = $manual_img->getUnscaledThumb();
-			}
-		} elseif ( $framed ) {
-			// Use image dimensions, don't scale
-			$thumb = $img->getUnscaledThumb( $page );
-		} else {
-			# Do not present an image bigger than the source, for bitmap-style images
-			# This is a hack to maintain compatibility with arbitrary pre-1.10 behaviour
-			$srcWidth = $img->getWidth( $page );
-			if ( $srcWidth && !$img->mustRender() && $params['width'] > $srcWidth ) {
-				$params['width'] = $srcWidth;
-			}
-			$thumb = $img->transform( $params );
-		}
 
-		if ( $thumb ) {
-			$outerWidth = $thumb->getWidth() + 2;
-		} else {
+		if ( !$exists ) {
 			$outerWidth = $params['width'] + 2;
+		} else {
+			if ( $manual_thumb != '' ) {
+				# Use manually specified thumbnail
+				$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb );
+				if( $manual_title ) {
+					$manual_img = wfFindFile( $manual_title );
+					if ( $manual_img ) {
+						$thumb = $manual_img->getUnscaledThumb();
+					} else {
+						$exists = false;
+					}
+				}
+			} elseif ( $framed ) {
+				// Use image dimensions, don't scale
+				$thumb = $img->getUnscaledThumb( $page );
+			} else {
+				# Do not present an image bigger than the source, for bitmap-style images
+				# This is a hack to maintain compatibility with arbitrary pre-1.10 behaviour
+				$srcWidth = $img->getWidth( $page );
+				if ( $srcWidth && !$img->mustRender() && $params['width'] > $srcWidth ) {
+					$params['width'] = $srcWidth;
+				}
+				$thumb = $img->transform( $params );
+			}
+
+			if ( $thumb ) {
+				$outerWidth = $thumb->getWidth() + 2;
+			} else {
+				$outerWidth = $params['width'] + 2;
+			}
 		}
 
 		$query = $page ? 'page=' . urlencode( $page ) : '';
-		$u = $img->getTitle()->getLocalURL( $query );
+		$u = $nt->getLocalURL( $query );
 
 		$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
 		$magnifyalign = $wgContLang->isRTL() ? 'left' : 'right';
 		$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : '';
 
 		$s = "<div class=\"thumb t{$align}\"><div class=\"thumbinner\" style=\"width:{$outerWidth}px;\">";
-		if ( !$thumb ) {
-			$s .= htmlspecialchars( wfMsg( 'thumbnail_error', '' ) );
+		if( !$exists ) {
+			$s .= $this->makeBrokenImageLinkObj( $nt );
 			$zoomicon = '';
-		} elseif( !$img->exists() ) {
-			$s .= $this->makeBrokenImageLinkObj( $img->getTitle() );
+		} elseif ( !$thumb ) {
+			$s .= htmlspecialchars( wfMsg( 'thumbnail_error', '' ) );
 			$zoomicon = '';
 		} else {
 			$imgAttribs = array(
@@ -609,10 +620,10 @@ class Linker {
 		return $s;
 	}
 
-	/** @todo document */
-	function makeMediaLink( $name, /* wtf?! */ $url, $alt = '' ) {
+	/** @deprecated use Linker::makeMediaLinkObj() */
+	function makeMediaLink( $name, $unused = '', $text = '' ) {
 		$nt = Title::makeTitleSafe( NS_IMAGE, $name );
-		return $this->makeMediaLinkObj( $nt, $alt );
+		return $this->makeMediaLinkObj( $nt, $text );
 	}
 
 	/**
@@ -630,13 +641,13 @@ class Linker {
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
 		} else {
-			$img  = new Image( $title );
-			if( $img->exists() ) {
+			$img  = wfFindFile( $title );
+			if( $img ) {
 				$url  = $img->getURL();
 				$class = 'internal';
 			} else {
 				$upload = SpecialPage::getTitleFor( 'Upload' );
-				$url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $img->getName() ) );
+				$url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $title->getText() ) );
 				$class = 'new';
 			}
 			$alt = htmlspecialchars( $title->getText() );

@@ -2272,4 +2272,23 @@ function &wfGetDB( $db = DB_LAST, $groups = array() ) {
 	$ret = $wgLoadBalancer->getConnection( $db, true, $groups );
 	return $ret;
 }
+
+/**
+ * Find a file. 
+ * Shortcut for RepoGroup::singleton()->findFile()
+ * @param mixed $title Title object or string. May be interwiki. 
+ * @return File, or false if the file does not exist
+ */
+function wfFindFile( $title ) {
+	return RepoGroup::singleton()->findFile( $title );
+}
+
+/**
+ * Get an object referring to a locally registered file.
+ * Returns a valid placeholder object if the file does not exist.
+ */
+function wfLocalFile( $title ) {
+	return RepoGroup::singleton()->getLocalRepo()->newFile( $title );
+}
+
 ?>

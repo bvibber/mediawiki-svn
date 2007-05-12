@@ -147,16 +147,11 @@ class CategoryViewer {
 	/**
 	 * Add a page in the image namespace
 	 */
-	function addImage( $title, $sortkey, $pageLength ) {
-		if ( $this->showGallery ) {
-			$image = new Image( $title );
-			if( $this->flip ) {
-				$this->gallery->insert( $image );
-			} else {
-				$this->gallery->add( $image );
-			}
+	function addImage( Title $title, $sortkey, $pageLength ) {
+		if( $this->flip ) {
+			$this->gallery->insert( $title );
 		} else {
-			$this->addPage( $title, $sortkey, $pageLength );
+			$this->gallery->add( $title );
 		}
 	}
 
@@ -219,7 +214,7 @@ class CategoryViewer {
 
 			if( $title->getNamespace() == NS_CATEGORY ) {
 				$this->addSubcategory( $title, $x->cl_sortkey, $x->page_len );
-			} elseif( $title->getNamespace() == NS_IMAGE ) {
+			} elseif( $this->showGallery && $title->getNamespace() == NS_IMAGE ) {
 				$this->addImage( $title, $x->cl_sortkey, $x->page_len );
 			} else {
 				$this->addPage( $title, $x->cl_sortkey, $x->page_len );
