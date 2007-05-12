@@ -328,10 +328,12 @@ class WikiRevision {
 		} else {
 			$created = false;
 
-			$latest = $dbw->selectField( 'revision', 'MAX(rev_timestamp)', 
+			$result = $dbw->select( 'revision', 
+				array('MIN(rev_timestamp) as created', 'MAX(rev_timestamp) as latest'), 
 				array( 'rev_page' => $pageId ), __METHOD__ );
+			$row = $dbw->fetchObject($result);
 			// Don't make fucked up alternating page histories
-			if( $latest && $latest > $this->timestamp ) {
+			if( $row && $row->latest > $this->timestamp && $row->created < $this->timestamp ) {
 				wfDebug( __METHOD__ . ": skipping existing revision for [[" .
 					$this->title->getPrefixedText() . "]], timestamp " .
 					$this->timestamp . "\n" );
@@ -858,13 +860,13 @@ class ImportStreamSource {
 		}
 	}
 
-	function newFromURL( $url, $method = 'GET' ) {
+	function newFromURL( $url ) {
 		wfDebug( __METHOD__ . ": opening $url\n" );
 		# Use the standard HTTP fetch function; it times out
 		# quicker and sorts out user-agent problems which might
 		# otherwise prevent importing from large sites, such
 		# as the Wikimedia cluster, etc.
-		$data = Http::request( $method, $url );
+		$data = Http::get( $url );
 		if( $data !== false ) {
 			$file = tmpfile();
 			fwrite( $file, $data );
@@ -883,8 +885,7 @@ class ImportStreamSource {
 		} else {
 			$params = $history ? 'history=1' : '';
 			$url = $link->getFullUrl( $params );
-			# For interwikis, use POST to avoid redirects.
-			return ImportStreamSource::newFromURL( $url, "POST" );
+			return ImportStreamSource::newFromURL( $url );
 		}
 	}
 }
