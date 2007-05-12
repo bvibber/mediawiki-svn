@@ -1,0 +1,151 @@
+= MediaWiki release notes =
+
+Security reminder: MediaWiki does not require PHP's register_globals
+setting since version 1.2.0. If you have it on, turn it *off* if you can.
+
+== MediaWiki 1.11 ==
+
+THIS IS NOT A RELEASE YET.
+
+MediaWiki is now using a "continuous integration" development model with
+quarterly snapshot releases. The latest development code is always kept
+"ready to run", and in fact runs our own sites on Wikipedia.
+
+Release branches will continue to receive security updates for about a year
+from first release, but nonessential bugfixes and feature developments
+will be made on the development trunk and appear in the next quarterly release.
+
+Those wishing to use the latest code instead of a branch release can obtain
+it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
+
+== Configuration changes since 1.10 ==
+
+
+== New features since 1.10 ==
+
+* (bug 8868) Separate "blocked" message for autoblocks
+* Adding expiry of block to block messages
+* Bulk mail options ($wgEnotifImpersonal, $wgEnotifUseJobQ) for large sites
+
+== Bugfixes since 1.10 ==
+
+* (bug 9712) Use Arabic comma in date/time formats for Arabic and Farsi
+* (bug 9670) Follow redirects when render edit section links to transcluded
+  templates.
+* (bug 6204) Fix incorrect unindentation with $wgMaxTocLevel
+* (bug 3431) Suppress "next page" link in Special:Search at end of results
+* Don't show unblock form if the user doesn't have permission to use it
+  (cosmetic change, no vulnerabilities existed)
+* Subtitle success message when unblocking a block ID instead of a pseudo link
+  like [[User:#123|#123]]
+* Use the standard HTTP fetch functions when retrieving remote wiki pages
+  through transwiki, so we can take advantage of cURL goodies if available
+* Disable custom user javascript in Special:Preferences, to avoid the risk
+  of a compromised script sniffing passwords etc.
+* (bug 9854, 3770) Clip overflow text in gallery boxes for visual cleanliness
+  instead of letting it flow outside the box or trigger ugly scroll bars.
+* Tooltips for print version and permalink
+* Links to the MediaWiki namespace for system messages having their default
+  values are no longer shown as nonexistent (e.g., in red)
+* Special:Ipblocklist differentiates between empty list and no search results.
+* (bug 5375) profiling does not respect read-only mode.
+* (bug 7070) monobook/user.gif has antialias artifacts
+* (bug 9877) Fix Catalan translation of rev-deleted-text-view
+
+== Maintenance script changes since 1.10 ==
+
+* Add support for wgMaxTocLevel option in parserTests
+* (bug 6823) dumpHTML: explicitly disable article view counter
+
+== Languages updated since 1.10 ==
+
+* Arabic (ar)
+* German (de)
+* Spanish (es)
+* Farsi (fa)
+* Finnish (fi)
+* French (fr)
+* Hebrew (he)
+* Indonesian (id)
+* Italian (it)
+* Japanese (ja)
+* Kabyle (kab)
+* Kazakh (kk)
+* Kurdish (ku)
+* Lithuanian (lt)
+* Norwegian (no)
+* Polish (pl)
+* Russian (ru)
+* Somali (so)
+* Sundanese (su)
+* Swedish (sv)
+* Chinese (PRC) (zh-cn)
+* Chinese (Taiwan) (zh-tw)
+* Cantonese (zh-yue)
+
+== Compatibility ==
+
+MediaWiki 1.11 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
+
+PHP 5.0.x fails on 64-bit systems due to serious bugs with array processing:
+http://bugs.php.net/bug.php?id=34879
+Upgrade affected systems to PHP 5.1 or higher.
+
+MySQL 3.23.x is no longer supported; some older hosts may need to upgrade.
+At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
+
+
+== Upgrading ==
+
+1.11 has several database changes since 1.10, and will not work without schema
+updates.
+
+If upgrading from before 1.7, you may want to run refreshLinks.php to ensure
+new database fields are filled with data.
+
+If you are upgrading from MediaWiki 1.4.x or earlier, some major database
+changes are made, and there is a slightly higher chance that things could
+break. Don't forget to always back up your database before upgrading!
+
+See the file UPGRADE for more detailed upgrade instructions.
+
+=== Caveats ===
+
+Some output, particularly involving user-supplied inline HTML, may not
+produce 100% valid or well-formed XHTML output. Testers are welcome to
+set $wgMimeType = "application/xhtml+xml"; to test for remaining problem
+cases, but this is not recommended on live sites. (This must be set for
+MathML to display properly in Mozilla.)
+
+
+For notes on 1.10.x and older releases, see HISTORY.
+
+
+=== Online documentation ===
+
+Documentation for both end-users and site administrators is currently being
+built up on MediaWiki.org, and is covered under the GNU Free Documentation
+License (except for pages that explicitly state that their contents are in
+the public domain) :
+
+  http://www.mediawiki.org/wiki/Documentation
+
+
+=== Mailing list ===
+
+A MediaWiki-l mailing list has been set up distinct from the Wikipedia
+wikitech-l list:
+
+  http://lists.wikimedia.org/mailman/listinfo/mediawiki-l
+
+A low-traffic announcements-only list is also available:
+
+  http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce
+
+It's highly recommended that you sign up for one of these lists if you're
+going to run a public MediaWiki, so you can be notified of security fixes.
+
+
+=== IRC help ===
+
+There's usually someone online in #mediawiki on irc.freenode.net
