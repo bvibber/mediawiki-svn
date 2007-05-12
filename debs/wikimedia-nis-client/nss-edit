@@ -1,0 +1,19 @@
+#! /bin/sh
+# Edit /etc/nsswitch.conf
+
+set -e
+
+[ $# = 2 ] || {
+	echo >&2 "usage: $0 <database> <repositories>"
+	exit 1
+}
+
+db=$1
+repos=$2
+
+echo "updating database $1 to \"$repos\"..."
+
+cp -p /etc/nsswitch.conf /etc/nsswitch.conf.bak
+sed < /etc/nsswitch.conf > /etc/nsswitch.conf.tmp \
+	"s/^$db: .*/$db: $repos/"
+mv /etc/nsswitch.conf.tmp /etc/nsswitch.conf

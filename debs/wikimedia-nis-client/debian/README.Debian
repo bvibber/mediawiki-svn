@@ -1,0 +1,5 @@
+wikimedia-nis-client
+-----------------------
+
+This package configures a machine to use NIS for name services,
+and mount /home.
