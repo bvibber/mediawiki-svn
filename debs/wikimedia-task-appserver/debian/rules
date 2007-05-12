@@ -47,7 +47,12 @@ install: build
 	dh_clean -k 
 	dh_installdirs
 
-	install -d $(DESTDIR)
+	install -d $(DESTDIR)/usr/local/apache
+	install -d $(DESTDIR)/usr/local/apache/logs
+	ln -s /usr/local/apache $(DESTDIR)/
+	ln -s common-local $(DESTDIR)/usr/local/apache/common
+	ln -s /home/wikipedia/common $(DESTDIR)/usr/local/apache/common-shared
+	ln -s /home/wikipedia/htdocs $(DESTDIR)/usr/local/apache
 
 # Build architecture-independent files here.
 binary-indep: build install
