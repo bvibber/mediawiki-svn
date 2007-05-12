@@ -1,3 +1,10 @@
+wikimedia-apache-config-appserver (1.2) feisty; urgency=low
+
+  * Load some required modules.
+  * Log to the right place (/usr/local/apache/logs)
+
+ -- River Tarnell <river@wikimedia.org>  Sat, 12 May 2007 19:27:37 +0000
+
 wikimedia-apache-config-appserver (1.1) feisty; urgency=low
 
   * Include sudoers rules needed for apaches.
