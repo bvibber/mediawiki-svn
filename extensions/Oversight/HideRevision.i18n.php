@@ -137,6 +137,49 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d\'Oversight.',
 ),
 
+/* Hebrew (Rotem Liss) */
+'he' => array(
+'hiderevision' => 'מחיקת גרסאות לצמיתות',
+// Empty form
+'hiderevision-prompt' => 'מספר גרסה למחיקה:',
+'hiderevision-continue' => 'המשך',
+// Confirmation form
+'hiderevision-text' =>
+"יש להשתמש באפשרות זו '''אך ורק''' במקרים הבאים:
+* פרסום מידע אישי
+*: '''כתובות, מספרי טלפון וכדומה'''
+
+'''שימוש לרעה במערכת יגרום לאובדן הסמכויות.'''
+
+הפריטים שהוסרו לא יהיו גלויים לאיש דרך האתר עצמו, אבל נשמר יומן של המחיקות ומנהל מסד הנתונים יכול לשחזר אותן ידנית אם תתבצע טעות.",
+'hiderevision-reason' => 'סיבה (תיכתב ביומן פרטי):',
+'hiderevision-submit' => 'מחיקת המידע הזה לצמיתות',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => 'הסתרת גרסאות',
+// Status & errors on action
+'hiderevision-norevisions' => 'לא נבחרו גרסאות למחיקה.',
+'hiderevision-noreason' => 'עליכם לכתוב את הסיבה להסרה זו.',
+'hiderevision-status' => 'גרסה $1: $2',
+'hiderevision-success' => 'נמחקה בהצלחה.',
+'hiderevision-error-missing' => 'לא נמצאה במסד הנתונים.',
+'hiderevision-error-current' => 'לא ניתן למחוק את הגרסה האחרונה בדף. ראשית יש לשחזר את השינוי.',
+'hiderevision-error-delete' => 'לא ניתן למחוק; אולי הגרסה כבר נמחקה.',
+'hiderevision-archive-status' => 'נמחקה גרסה של $1: $2',
+'oversight-nodiff' => 'לא ניתן לעקוב אחרי השינויים כיוון שאין כרגע שום גרסה קודמת לדף זה. ייתכן ש:
+* הדף נמחק
+* הגרסה שהוסתרה הייתה הגרסה האחרונה',
+// Logging
+'oversight-log-hiderev' => 'הסיר עריכה מהדף $1',
+// Oversight review page
+'oversight' => 'אוברסייט',
+'oversight-view' => 'פרטים',
+'oversight-difference' => '(שינויים מהגרסה הקודמת שנשארה)',
+'oversight-prev' => 'הגרסה הקודמת',
+'oversight-hidden' => 'גרסה מוסתרת',
+'oversight-header' => 'להלן רשימת גרסאות שנמחקו לצמיתות מתצוגה ציבורית.
+שיחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 'hiderevision' => 'Oscuramento permanente di una revisione',
