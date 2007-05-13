@@ -23,11 +23,19 @@ set -e
 #DEBHELPER#
 
 if [ "$1" = configure -a -x /usr/bin/fc-cache ]; then
-       echo -n "Regenerating fonts cache... "
-       HOME=/root fc-cache -f -v 1>/var/log/fontconfig.log 2>&1 || \
-       (echo "failed; see /var/log/fontconfig.log for more information."; \
-        exit 1)
-       echo "done."
+    . /usr/share/debconf/confmodule
+    db_version 2.0 || true
+    db_set fontconfig/enable_bitmaps true || true
+    db_go || true
+
+    rm -f /etc/fonts/conf.d/70-no-bitmaps.conf
+    ln -fs /etc/fonts/conf.avail/70-yes-bitmaps.conf /etc/fonts/conf.d
+
+    echo -n "Regenerating fonts cache... "
+    HOME=/root fc-cache -fr -v 1>/var/log/fontconfig.log 2>&1 || \
+    (echo "failed; see /var/log/fontconfig.log for more information."; \
+     exit 1)
+    echo "done."
 fi
 
 exit 0

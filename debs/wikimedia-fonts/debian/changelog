@@ -1,3 +1,9 @@
+wikimedia-fonts (1.1) feisty; urgency=low
+
+  * Set fontconfig to use bitmap fonts upon install.
+
+ -- River Tarnell <river@wikimedia.org>  Sun, 13 May 2007 14:48:56 +0000
+
 wikimedia-fonts (1.0) feisty; urgency=low
 
   * Initial release
