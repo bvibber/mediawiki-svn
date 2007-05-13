@@ -1,0 +1,13 @@
+Source: wikimedia-nis-client
+Section: unknown
+Priority: optional
+Maintainer: River Tarnell <river@wikimedia.org>
+Build-Depends: debhelper (>= 4.0.0)
+Standards-Version: 3.6.2
+
+Package: wikimedia-nis-client
+Architecture: all
+Depends: nis, nscd
+Description: Provides a Wikimedia NIS client
+ This package provides a machine configured as a NIS client in the
+ Wikimedia network.

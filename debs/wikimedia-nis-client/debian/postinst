@@ -39,6 +39,8 @@ case "$1" in
 		fi
 	fi
 
+        echo pmtpa.wmnet >/etc/defaultdomain
+
         # Update the system to use NIS for users.
         nss-edit passwd "files nis"
         nss-edit group "files nis"
@@ -49,20 +51,26 @@ case "$1" in
         db_set nis/domain pmtpa.wmnet || true
         db_go || true
 
+        /etc/init.d/nis stop
+
         sed -i 's/^NISCLIENT=.*$/NISCLIENT=true/' /etc/default/nis
-        printf 'ypserver srv1.pmtpa.wmnet\nypserver srv2.pmtpa.wmnet\n' > /etc/yp.conf
+        echo 'ypserver nis-1.pmtpa.wmnet
+ypserver nis-2.pmtpa.wmnet
+ypserver nis-3.pmtpa.wmnet' > /etc/yp.conf
+
+        rm -f /var/yp/bindings/pmtpa.wmnet*
 
         # Make sure nscd doesn't cache hosts
         sed -i '/enable-cache.*hosts/ { s/yes/no/ }' /etc/nscd.conf
         /etc/init.d/nscd reload
-        /etc/init.d/nis restart
+        /etc/init.d/nis start
 
         # Add the /home mount
-        grep -qs '^/home' /etc/fstab || {
+        grep -qs '10.0.5.8:/home' /etc/fstab || {
             echo "Adding /home mount..." >&2
             echo >>/etc/fstab \
                 '10.0.5.8:/home  /home nfs     bg,soft,udp,rsize=8192,wsize=8192,timeo=14,intr,nfsvers=3  0 0'
-            mount /home
+            mount /home || true
         }
     ;;
 
