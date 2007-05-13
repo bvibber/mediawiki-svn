@@ -17,6 +17,23 @@ set -e
 # the debian-policy package
 #
 
+checkmount() {
+    dev=$1
+    mnt=$2
+
+    [ -d $mnt ] || {
+        mkdir -p $mnt
+        echo "created $mnt" >&2
+    }
+
+    grep -qs "^$dev" /etc/fstab || {
+        echo "Adding $mnt mount..." >&2
+        echo >>/etc/fstab \
+            "$dev  $mnt nfs     bg,soft,udp,rsize=8192,wsize=8192,timeo=14,intr,nfsvers=3  0 0"
+        mount $mnt
+    }
+}
+
 case "$1" in
     configure)
 	# Add a line to /etc/motd describing the task of this server
@@ -39,6 +56,8 @@ case "$1" in
 		fi
 	fi
 
+        checkmount amane:/export/upload /mnt/upload3
+        checkmount amane:/export/math /mnt/math
         echo "remember to sync this server before you start it!"
     ;;
 

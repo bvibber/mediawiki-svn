@@ -17,6 +17,15 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
+removemount() {
+    mnt=$1
+    grep -qs "$mnt.*nfs" /etc/fstab && {
+        echo "Removing $mnt from fstab"
+        sed -i "\\,$mnt,d" /etc/fstab
+    }
+
+    umount $mnt || true
+}
 
 case "$1" in
        purge)
@@ -24,6 +33,8 @@ case "$1" in
        remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
 
 
+       removemount /mnt/upload3
+       removemount /mnt/math
         ;;
 
     *)
