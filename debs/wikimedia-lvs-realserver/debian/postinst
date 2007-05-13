@@ -17,21 +17,15 @@ set -e
 # the debian-policy package
 #
 
+CONFIGFILE=/etc/default/wikimedia-lvs-realserver
+
+. /usr/share/debconf/confmodule
+db_version 2.0
+
 case "$1" in
     configure)
-	. /etc/default/wikimedia-lvs-realserver
-	if [ -z "$LVS_SERVICE_IPS" ]
-	then
-		# Ask for the service IPs through debconf
-		. /usr/share/debconf/confmodule
-		db_version 2.0
-
-		db_input high wikimedia-lvs-realserver/service_ips || true
-		db_go
-		db_get wikimedia-lvs-realserver/service_ips
-		[ -z "$RET" ] && exit 1
-		sed -i -e "/^LVS_SERVICE_IPS=/s/=.*$/=\\\"$RET\\\"/" /etc/default/wikimedia-lvs-realserver
-	fi
+	db_get wikimedia-lvs-realserver/service_ips
+	sed -i -e "/^LVS_SERVICE_IPS=/s/=.*$/=\\\"$RET\\\"/" $CONFIGFILE
 
 	IFACE=lo /etc/network/if-up.d/wikimedia-lvs-realserver
     ;;

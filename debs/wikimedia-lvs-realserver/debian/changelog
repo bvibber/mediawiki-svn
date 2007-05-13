@@ -1,3 +1,11 @@
+wikimedia-lvs-realserver (0.04) edgy; urgency=low
+
+  * Use a config script instead of debconf prompting in postinst
+  * Remove quotes in if-down, which causes errors if no LVS IPs are bound.
+  * Set a default LVS_SERVICE_IPS value (Apaches LVS IP)
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 13 May 2007 18:09:11 +0000
+
 wikimedia-lvs-realserver (0.03) edgy; urgency=low
 
   * 'test' in Edgy doesn't seem to like operator '==', use '=' instead

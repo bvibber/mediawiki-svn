@@ -13,7 +13,7 @@ export PATH=/bin:/sbin:/usr/bin:/usr/sbin
 LVS_SERVICE_IPS=$(ip addr show label "lo:LVS" | awk '{ print $2 }')
 
 # Delete the service IPs from the loopback interface
-for SIP in "$LVS_SERVICE_IPS"
+for SIP in $LVS_SERVICE_IPS
 do
 	ip addr del $SIP label "lo:LVS" dev lo
 done
