@@ -2140,7 +2140,11 @@ class OldImage
 			$this->mUser = $row->oi_user;
 			$this->mUserText = $row->oi_user_text;
 			$this->mTimestamp = $row->oi_timestamp;
-			$this->mDeleted = $row->oi_deleted;		
+			$this->mDeleted = $row->oi_deleted;
+			
+			$n = strrpos( $this->mName, '.' );
+			$this->extension = Image::normalizeExtension( $n ?
+				substr( $this->mName, $n + 1 ) : '' );
 		} else {
 			throw new MWException( 'This title does not correspond to an image page.' );
 			return false;

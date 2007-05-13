@@ -895,7 +895,7 @@ class RevisionDeleter {
 			// Is our directory configured?
 			if( $wgFileStore[$group]['directory'] ) {
 				$store = FileStore::get( $group );
-				$key = FileStore::calculateKey( $oldpath, $this->extension );
+				$key = FileStore::calculateKey( $oldpath, $oimage->extension );
 				$transaction->add( $store->insert( $key, $oldpath, FileStore::DELETE_ORIGINAL ) );
 			} else {
 				$group = null;
@@ -1097,8 +1097,7 @@ class RevisionDeleter {
 		$title->purgeSquid();
 		
 		// Extensions that require referencing previous revisions may need this
-		$article = new Article( $title );
-		wfRunHooks( 'ArticleRevisionVisiblityUpdates', array( &$article ) );
+		wfRunHooks( 'ArticleRevisionVisiblityUpdates', array( &$title ) );
 	}
 	
 	/**
