@@ -1,0 +1,41 @@
+category type1
+begin /usr/share/fonts/wikimedia/putbi.pfa
+  FontName = Utopia-BoldItalic
+  Charset = ISO8859-1
+  Family = Utopia
+  GeneralFamily = Serif
+  Weight = Bold
+  Width = Variable
+  Shape = Italic
+  Priority = 20
+end
+begin /usr/share/fonts/wikimedia/putb.pfa
+  FontName = Utopia-Bold
+  Charset = ISO8859-1
+  Family = Utopia
+  GeneralFamily = Serif
+  Weight = Bold
+  Width = Variable
+  Shape = Serif
+  Priority = 20
+end
+begin /usr/share/fonts/wikimedia/putri.pfa
+  FontName = Utopia-Italic
+  Charset = ISO8859-1
+  Family = Utopia
+  GeneralFamily = Serif
+  Weight = Medium
+  Width = Variable
+  Shape = Italic
+  Priority = 20
+end
+begin /usr/share/fonts/wikimedia/putr.pfa
+  FontName = Utopia-Regular
+  Charset = ISO8859-1
+  Family = Utopia
+  GeneralFamily = Serif
+  Weight = Regular
+  Width = Variable
+  Shape = Serif
+  Priority = 20
+end

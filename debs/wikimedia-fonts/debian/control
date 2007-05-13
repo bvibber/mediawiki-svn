@@ -1,0 +1,14 @@
+Source: wikimedia-fonts
+Section: unknown
+Priority: optional
+Maintainer: River Tarnell <river@wikimedia.org>
+Standards-Version: 3.6.2
+
+Package: wikimedia-fonts
+Architecture: all
+Depends: fontconfig
+Description: Provides additional fonts for Wikimedia
+ This package provides some fonts Wikimedia uses for SVG, which are not in
+ Ubuntu:
+ .
+    Adobe Utopia
