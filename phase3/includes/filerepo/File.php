@@ -452,7 +452,6 @@ class File {
 			$thumbPath = $this->getThumbPath( $thumbName );
 			$thumbUrl = $this->getThumbUrl( $thumbName );
 
-
 			if ( $this->repo->canTransformVia404() && !($flags & self::RENDER_NOW ) ) {
 				$thumb = $this->handler->getTransform( $this, $thumbPath, $thumbUrl, $params );
 				break;
@@ -573,6 +572,27 @@ class File {
 	}
 
 	/**
+	 * Return the history of this file, line by line. Starts with current version, 
+	 * then old versions. Should return an object similar to an image/oldimage 
+	 * database row.
+	 *
+	 * @public
+	 * STUB
+	 * Overridden in LocalFile
+	 */
+	function nextHistoryLine() {
+		return false;
+	}
+
+	/**
+	 * Reset the history pointer to the first element of the history
+	 * @public
+	 * STUB
+	 * Overridden in LocalFile.
+	 */
+	function resetHistory() {}
+
+	/**
 	 * Get the filename hash component of the directory including trailing slash,
 	 * e.g. f/fa/
 	 * If the repository is not hashed, returns an empty string.
@@ -625,7 +645,7 @@ class File {
 
 	/** Get the URL of the thumbnail directory, or a particular file if $suffix is specified */
 	function getThumbUrl( $suffix = false ) {
-		$path = $this->repo->getZoneUrl('public') . '/thumb/' . $this->hashPath;
+		$path = $this->repo->getZoneUrl('public') . '/thumb/' . $this->getUrlRel();
 		if ( $suffix !== false ) {
 			$path .= '/' . urlencode( $suffix );
 		}

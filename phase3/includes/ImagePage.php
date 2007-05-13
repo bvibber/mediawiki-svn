@@ -374,11 +374,9 @@ END
 		$url = $wgRepositoryBaseUrl . urlencode($this->mTitle->getDBkey());
 		$sharedtext = "<div class='sharedUploadNotice'>" . wfMsgWikiHtml("sharedupload");
 		if ($wgRepositoryBaseUrl && !$wgFetchCommonsDescriptions) {
-
 			$sk = $wgUser->getSkin();
-			$title = SpecialPage::getTitleFor( 'Upload' );
-			$link = $sk->makeKnownLinkObj($title, wfMsgHtml('shareduploadwiki-linktext'),
-			array( 'wpDestFile' => urlencode( $this->img->getName() )));
+			$url = $wgRepositoryBaseUrl . urlencode( $this->img->getName() );
+			$link = $sk->makeExternalLink( $url, wfMsg('shareduploadwiki-linktext') );
 			$sharedtext .= " " . wfMsgWikiHtml('shareduploadwiki', $link);
 		}
 		$sharedtext .= "</div>";
@@ -737,11 +735,12 @@ class ImageHistoryList {
 		$del = wfMsgHtml( 'deleteimg' );
 		$delall = wfMsgHtml( 'deleteimgcompletely' );
 		$cur = wfMsgHtml( 'cur' );
+		$local = $this->img->isLocal();
 
 		if ( $iscur ) {
 			$url = htmlspecialchars( $this->img->getURL() );
 			$rlink = $cur;
-			if ( $wgUser->isAllowed('delete') ) {
+			if ( $local && $wgUser->isAllowed('delete') ) {
 				$link = $wgTitle->escapeLocalURL( 'image=' . $wgTitle->getPartialURL() .
 				  '&action=delete' );
 				$style = $this->skin->getInternalLinkAttributes( $link, $delall );
@@ -752,7 +751,7 @@ class ImageHistoryList {
 			}
 		} else {
 			$url = htmlspecialchars( $this->img->getArchiveUrl( $img ) );
-			if( $wgUser->getID() != 0 && $wgTitle->userCan( 'edit' ) ) {
+			if( $local && $wgUser->getID() != 0 && $wgTitle->userCan( 'edit' ) ) {
 				$token = urlencode( $wgUser->editToken( $img ) );
 				$rlink = $this->skin->makeKnownLinkObj( $wgTitle,
 				           wfMsgHtml( 'revertimg' ), 'action=revert&oldimage=' .
@@ -768,8 +767,12 @@ class ImageHistoryList {
 				$dlink = $del;
 			}
 		}
-		
-		$userlink = $this->skin->userLink( $user, $usertext ) . $this->skin->userToolLinks( $user, $usertext );
+
+		if ( $local ) {
+			$userlink = $this->skin->userLink( $user, $usertext ) . $this->skin->userToolLinks( $user, $usertext );
+		} else {
+			$userlink = htmlspecialchars( $usertext );
+		}
 		$nbytes = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ),
 			$wgLang->formatNum( $size ) );
 		$widthheight = wfMsgHtml( 'widthheight', $width, $height );

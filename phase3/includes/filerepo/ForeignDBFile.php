@@ -1,6 +1,10 @@
 <?php
 
 class ForeignDBFile extends LocalFile {
+	function newFromTitle( $title, $repo ) {
+		return new self( $title, $repo );
+	}
+
 	function getCacheKey() {
 		if ( $this->repo->hasSharedCache ) {
 			$hashedName = md5($this->name);
@@ -21,5 +25,10 @@ class ForeignDBFile extends LocalFile {
 	function restore(  /*...*/  ) {
 		$this->readOnlyError();
 	}
+
+	/*
+	function nextHistoryLine() {
+		return false;
+	}*/
 }
 ?>
