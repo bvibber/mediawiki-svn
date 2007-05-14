@@ -176,8 +176,8 @@ public class IndexId {
 			else
 				partNum = 0;
 		}
-
-		if(myIndex){
+		// for split/mainsplit the main iid is logical, it doesn't have local path
+		if(myIndex && !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT))){
 			indexPath = localIndexPath + "index" + sep + dbrole;
 			importPath = localIndexPath + "import" + sep + dbrole;
 			snapshotPath = localIndexPath + "snapshot" + sep + dbrole;
@@ -202,8 +202,8 @@ public class IndexId {
 	
 	/** If this is logical name referring to a set of split indexes */
 	public boolean isLogical(){
-		return part == null;
-	}
+		return part == null && type != IndexType.SINGLE;
+	}	
 	/** If type of this index is single */
 	public boolean isSingle(){
 		return type == IndexType.SINGLE;

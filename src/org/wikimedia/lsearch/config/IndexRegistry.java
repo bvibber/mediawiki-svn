@@ -86,6 +86,8 @@ public class IndexRegistry {
 	
 	/** Refresh latest snapshot info */
 	public synchronized void refreshSnapshots(IndexId iid){
+		if(iid.isLogical())
+			return;
 		File snapshotDir = new File(iid.getSnapshotPath());
 		LocalIndex latest = getLatestLocalIndex(snapshotDir,iid);
 		if(latest != null){

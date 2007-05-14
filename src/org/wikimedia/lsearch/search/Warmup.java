@@ -37,6 +37,7 @@ public class Warmup {
 		
 		Hashtable<String,String> warmup = global.getDBParams(iid.getDBname(),"warmup");
 		if(warmup == null){
+			makeNamespaceFilters(is,iid);
 			simpleWarmup(is,iid);
 			log.info("Warmed up "+iid);
 		}
@@ -84,9 +85,17 @@ public class Warmup {
 
 	/** Get database of example search terms for language */
 	protected static Terms getTermsForLang(String language) {
-		if(langTerms.get("en")==null)
-			langTerms.put("en",new WordTerms("./test-data/words-wikilucene.ngram.gz"));
-		return langTerms.get("en");
+		if(language.equals("en") && langTerms.get("en")==null)
+			langTerms.put("en",new WordTerms("./lib/dict/english.txt.gz"));
+		if(language.equals("fr") && langTerms.get("fr")==null)
+			langTerms.put("fr",new WordTerms("./lib/dict/french.txt.gz"));
+		if(language.equals("de") && langTerms.get("de")==null)
+			langTerms.put("de",new WordTerms("./lib/dict/german.txt.gz"));
+		
+		if(langTerms.containsKey(language))
+			return langTerms.get(language);
+		else
+			return langTerms.get("en");
 	}
 
 	/** Preload all predefined filters */

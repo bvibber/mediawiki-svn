@@ -40,7 +40,7 @@
 	
 	<target name="build" description="Compile classes">
 	    <mkdir dir="${bin}"/>
-	    <javac srcdir="${src}/org/" includes="**/*.java" destdir="${bin}/">
+	    <javac srcdir="${src}/org/" debug="on" includes="**/*.java" destdir="${bin}/">
 	      <classpath refid="classpath"/>
 	    </javac>
   	</target>

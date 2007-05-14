@@ -5,6 +5,7 @@
 package org.wikimedia.lsearch.index;
 
 import java.io.File;
+import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -22,6 +23,9 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.analysis.SimpleAnalyzer;
+import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.IndexWriter;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.beans.LocalIndex;
@@ -245,22 +249,18 @@ public class IndexThread extends Thread {
 		IndexRegistry registry = IndexRegistry.getInstance();
 		
 		log.debug("Making snapshots...");
-		// check filesystem timestamps (for those for which we are unsure if they are updated)
+		// check if other indexes exist, if so, make snapshots
 		for( IndexId iid : global.getMyIndex()){
-			if(indexes.contains(iid))
+			if(iid.isLogical() || indexes.contains(iid))
 				continue;
 			File indexdir = new File(iid.getIndexPath());
-			if(indexdir.exists()){
-				LocalIndex li = registry.getLatestSnapshot(iid);
-				// check if the index has been updated since last snapshot
-				if(li == null || li.timestamp < indexdir.lastModified()){
-					if(li == null)
-						log.debug("No previous snapshot for "+iid);
-					indexes.add(iid);
-				}
-			}
+			if(indexdir.exists())
+				indexes.add(iid);
 		}
 		for( IndexId iid : indexes ){
+			if(iid.isLogical())
+				continue;
+			optimizeIndex(iid);
 			makeIndexSnapshot(iid,iid.getIndexPath());
 			registry.refreshSnapshots(iid);
 		}
@@ -270,6 +270,8 @@ public class IndexThread extends Thread {
 		final String sep = Configuration.PATH_SEP;
 		DateFormat df = new SimpleDateFormat("yyyyMMddHHmmss");
 		String timestamp = df.format(new Date(System.currentTimeMillis()));
+		if(iid.isLogical())
+			return;
 
 		log.info("Making snapshot for "+iid);
 		String snapshotdir = iid.getSnapshotPath();
@@ -299,6 +301,30 @@ public class IndexThread extends Thread {
 		log.info("Made snapshot "+snapshot);		
 	}
 	
+	/** Optimizes index if needed */
+	protected static void optimizeIndex(IndexId iid){
+		if(iid.isLogical()) 
+			return;
+		if(iid.getBooleanParam("optimize",true)){
+			try {
+				IndexReader reader = IndexReader.open(iid.getImportPath());
+				if(!reader.isOptimized()){
+					reader.close();
+					log.debug("Optimizing "+iid);
+					long start = System.currentTimeMillis();
+					IndexWriter writer = new IndexWriter(iid.getIndexPath(),new SimpleAnalyzer(),false);
+					writer.optimize();
+					writer.close();
+					long delta = System.currentTimeMillis() - start;
+					log.info("Optimized "+iid+" in "+delta+" ms");
+				} else
+					reader.close();
+			} catch (IOException e) {
+				log.error("Could not optimize index at "+iid.getIndexPath());
+			}
+		}
+	}
+	
 	/**
 	 * @return if there are queued updates
 	 */
@@ -316,7 +342,7 @@ public class IndexThread extends Thread {
 	public static void enqueue(IndexUpdateRecord record) {
 		synchronized(threadLock){
 			IndexId iid = record.getIndexId();
-			if(iid == null || !iid.isLogical() || !iid.isMyIndex()){
+			if(iid == null || !(iid.isLogical() || iid.isSingle()) || !iid.isMyIndex()){
 				log.error("Got update for database "+iid+", however this node does not accept updates for this DB");
 				return;
 			}
@@ -333,8 +359,8 @@ public class IndexThread extends Thread {
 					IndexUpdateRecord rec2 = (IndexUpdateRecord) record.clone();
 					rec1.setIndexId(iid.getMainPart());
 					rec2.setIndexId(iid.getRestPart());
-					enqueueRemotely(rec1.getIndexId().getIndexHost(),record);
-					enqueueRemotely(rec2.getIndexId().getIndexHost(),record);
+					enqueueRemotely(rec1.getIndexId().getIndexHost(),rec1);
+					enqueueRemotely(rec2.getIndexId().getIndexHost(),rec2);
 				} else{
 					if( ar.getNamespace().equals("0") )
 						piid = iid.getMainPart();

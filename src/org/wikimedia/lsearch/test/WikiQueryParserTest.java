@@ -13,6 +13,7 @@ import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 
 public class WikiQueryParserTest extends TestCase {
 
@@ -43,28 +44,28 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseRaw("eggs AND milk");
 			assertEquals("+contents:eggs +contents:milk",q.toString());
 
-			q = parser.parseRaw("+eggs category:breakfast");
+			q = parser.parseRaw("+eggs incategory:breakfast");
 			assertEquals("+contents:eggs +category:breakfast",q.toString());
 
 			q = parser.parseRaw("help: making breakfast");
 			assertEquals("+help:making +help:breakfast",q.toString());
 
-			q = parser.parseRaw("category:(help AND pleh)");
+			q = parser.parseRaw("incategory:(help AND pleh)");
 			assertEquals("+category:help +category:pleh",q.toString());
 
-			q = parser.parseRaw("category:(help AND (pleh -ping))");
+			q = parser.parseRaw("incategory:(help AND (pleh -ping))");
 			assertEquals("+category:help +(+category:pleh -category:ping)",q.toString());
 
 			q = parser.parseRaw("(\"something is\" OR \"something else\") AND \"very important\"");
 			assertEquals("+(contents:\"something is\" contents:\"something else\") +contents:\"very important\"",q.toString());
 
-			q = parser.parseRaw("category:(\"\" help AND () pleh)");
+			q = parser.parseRaw("incategory:(\"\" help AND () pleh)");
 			assertEquals("+category:help +category:pleh",q.toString());
 
 			q = parser.parseRaw("šđčćždzñ");
 			assertEquals("contents:sđcczdzn",q.toString());
 
-			q = parser.parseRaw("help:making breakfast category:food");
+			q = parser.parseRaw("help:making breakfast incategory:food");
 			assertEquals("+help:making +help:breakfast +category:food",q.toString());
 
 			q = parser.parseRaw("(help:making breakfast) food");
@@ -75,9 +76,6 @@ public class WikiQueryParserTest extends TestCase {
 
 			q = parser.parseRaw("(help:making (breakfast) food");
 			assertEquals("+help:making +help:breakfast +help:food",q.toString());
-
-			q = parser.parse("contents:making +breakfast category:food");
-			assertEquals("+(+contents:making +contents:breakfast +category:food) (+title:making^2.0 +title:breakfast^2.0)",q.toString());
 			
 			// extracting fields
 			fields = parser.getFields("(help:making breakfast) food");
@@ -89,22 +87,22 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals(1,fields.size());
 			assertTrue(fields.contains("help"));
 			
-			fields = parser.getFields("contents:making +breakfast category:food");
+			fields = parser.getFields("contents:making +breakfast incategory:food");
 			assertEquals(2,fields.size());
-			assertTrue(fields.contains("category"));
+			assertTrue(fields.contains("incategory"));
 			assertTrue(fields.contains("contents"));
 			
-			fields = parser.getFields("contents:making +breakfast \"category:food\"");
+			fields = parser.getFields("contents:making +breakfast \"incategory:food\"");
 			assertEquals(1,fields.size());
 			assertTrue(fields.contains("contents"));
 			
 			// namespace policies
 			parser = new WikiQueryParser("contents","0",new SimpleAnalyzer(), WikiQueryParser.NamespacePolicy.IGNORE);
-			q = parser.parseRaw("help:making breakfast category:food");
+			q = parser.parseRaw("help:making breakfast incategory:food");
 			assertEquals("+contents:making +contents:breakfast +category:food",q.toString());
 			
 			parser = new WikiQueryParser("contents","0",new SimpleAnalyzer(), WikiQueryParser.NamespacePolicy.REWRITE);
-			q = parser.parseRaw("help:making breakfast category:food");
+			q = parser.parseRaw("help:making breakfast incategory:food");
 			assertEquals("+namespace:12 +(+contents:making +contents:breakfast +category:food)",q.toString());
 			
 			q = parser.parseRaw("help:making main_talk:something");
@@ -113,10 +111,10 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseRaw("making something");
 			assertEquals("+namespace:0 +(+contents:making +contents:something)",q.toString());
 			
-			q = parser.parseRaw("making something category:blah");
+			q = parser.parseRaw("making something incategory:blah");
 			assertEquals("+namespace:0 +(+contents:making +contents:something +category:blah)",q.toString());
 			
-			q = parser.parseRaw("(help:making something category:blah) (rest category:crest)");
+			q = parser.parseRaw("(help:making something incategory:blah) (rest incategory:crest)");
 			assertEquals("+(+namespace:12 +(+contents:making +contents:something +category:blah)) +(+namespace:0 +(+contents:rest +category:crest))",q.toString());
 			
 			//TODO: fix
@@ -132,13 +130,13 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parse("main_talk:laziness");
 			assertEquals("+namespace:1 +(+(contents:laziness contents:lazi^0.5) title:laziness^2.0)",q.toString());
 			
-			q = parser.parseRaw("(help:beans AND category:food) OR (help_talk:orchid AND category:\"some flowers\")");
+			q = parser.parseRaw("(help:beans AND incategory:food) OR (help_talk:orchid AND incategory:\"some flowers\")");
 			assertEquals("(+namespace:12 +(+(contents:beans contents:bean^0.5) +category:food)) (+namespace:13 +(+contents:orchid +category:\"some flowers\"))",q.toString());
 			
-			q = parser.parse("(help:beans AND category:food) OR (help_talk:orchid AND category:\"some flowers\")");
+			q = parser.parse("(help:beans AND incategory:food) OR (help_talk:orchid AND incategory:\"some flowers\")");
 			assertEquals("(+namespace:12 +(+(+(contents:beans contents:bean^0.5) title:beans^2.0) +category:food)) (+namespace:13 +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0))",q.toString());
 
-			q = parser.parse("(help:making something category:blah) OR (rest category:crest)");
+			q = parser.parse("(help:making something incategory:blah) OR (rest incategory:crest)");
 			assertEquals("(+namespace:12 +(+(+(contents:making contents:make^0.5) title:making^2.0) +(+(contents:something contents:someth^0.5) title:something^2.0) +category:blah)) (+namespace:0 +(+(+contents:rest +category:crest) title:rest^2.0))",q.toString());
 			
 			parser = new WikiQueryParser("contents",new EnglishAnalyzer());
@@ -152,21 +150,18 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parse("laziness");
 			assertEquals("+(contents:laziness contents:lazi^0.5) title:laziness^2.0",q.toString());
 
-			q = parser.parseRaw("(beans AND category:food) (orchid AND category:\"some flowers\")");
+			q = parser.parseRaw("(beans AND incategory:food) (orchid AND incategory:\"some flowers\")");
 			assertEquals("+(+(contents:beans contents:bean^0.5) +category:food) +(+contents:orchid +category:\"some flowers\")",q.toString());
 
-			q = parser.parseRaw("(Beans AND category:FOod) (orchID AND category:\"some FLOWERS\")");
+			q = parser.parseRaw("(Beans AND incategory:FOod) (orchID AND incategory:\"some FLOWERS\")");
 			assertEquals("+(+(contents:beans contents:bean^0.5) +category:food) +(+contents:orchid +category:\"some flowers\")",q.toString());
 
-			q = parser.parse("(beans AND category:food) (orchid AND category:\"some flowers\")");
+			q = parser.parse("(beans AND incategory:food) (orchid AND incategory:\"some flowers\")");
 			assertEquals("+(+(+(contents:beans contents:bean^0.5) title:beans^2.0) +category:food) +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0)",q.toString());
 
-			q = parser.parse("(beans AND category:food) +(orchid AND category:\"some flowers\")");
+			q = parser.parse("(beans AND incategory:food) +(orchid AND incategory:\"some flowers\")");
 			assertEquals("+(+(+(contents:beans contents:bean^0.5) title:beans^2.0) +category:food) +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0)",q.toString());
-			
-			q = parser.parse("main:cheese contents:greek");
-			assertEquals("+(+(main:cheese main:chees^0.5) +contents:greek) title:greek^2.0",q.toString());
-			
+						
 			fields = parser.getFields("(help:making breakfast) food");
 			assertEquals(2,fields.size());
 			assertTrue(fields.contains("help"));
@@ -176,14 +171,19 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals(1,fields.size());
 			assertTrue(fields.contains("help"));
 			
-			fields = parser.getFields("contents:making +breakfast category:food");
+			fields = parser.getFields("contents:making +breakfast incategory:food");
 			assertEquals(2,fields.size());
-			assertTrue(fields.contains("category"));
+			assertTrue(fields.contains("incategory"));
 			assertTrue(fields.contains("contents"));
 			
-			fields = parser.getFields("contents:making +breakfast \"category:food\"");
+			fields = parser.getFields("contents:making +breakfast \"incategory:food\"");
 			assertEquals(1,fields.size());
 			assertTrue(fields.contains("contents"));
+			
+			fields = parser.getFields("contents:making +[2]:breakfast \"incategory:food\"");
+			assertEquals(2,fields.size());
+			assertTrue(fields.contains("contents"));
+			assertTrue(fields.contains("[2]"));
 			
 			// ==================================
 			// Tests with actual params :)
@@ -193,7 +193,7 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("beans everyone",null);
 			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());
 			
-			q = parser.parseTwoPass("(beans category:plants) OR (orchid category:flowers)",null);
+			q = parser.parseTwoPass("(beans incategory:plants) OR (orchid incategory:flowers)",null);
 			assertEquals("((+(contents:beans contents:bean^0.5) +category:plants) (+contents:orchid +category:flowers)) ((+title:beans^2.0 +category:plants) (+title:orchid^2.0 +category:flowers))",q.toString());
 
 			q = parser.parseTwoPass("main:beans everyone",NamespacePolicy.IGNORE);
@@ -202,13 +202,13 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("beans everyone",NamespacePolicy.REWRITE);
 			assertEquals("(+namespace:0 +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+namespace:0 +(+title:beans^2.0 +title:everyone^2.0))",q.toString());
 			
-			q = parser.parseTwoPass("(beans category:plants) OR (orchid category:flowers)",NamespacePolicy.REWRITE);
+			q = parser.parseTwoPass("(beans incategory:plants) OR (orchid incategory:flowers)",NamespacePolicy.REWRITE);
 			assertEquals("((+namespace:0 +(+(contents:beans contents:bean^0.5) +category:plants)) (+namespace:0 +(+contents:orchid +category:flowers))) ((+namespace:0 +(+title:beans^2.0 +category:plants)) (+namespace:0 +(+title:orchid^2.0 +category:flowers)))",q.toString());
 			
 			q = parser.parseTwoPass("main:beans main:everyone",NamespacePolicy.REWRITE);
 			assertEquals("(+namespace:0 +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+namespace:0 +(+title:beans^2.0 +title:everyone^2.0))",q.toString());
 			
-			q = parser.parseTwoPass("beans everyone (category:people OR category:food)",NamespacePolicy.REWRITE);
+			q = parser.parseTwoPass("beans everyone (incategory:people OR incategory:food)",NamespacePolicy.REWRITE);
 			assertEquals("(+namespace:0 +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5) +(category:people category:food))) (+namespace:0 +(+title:beans^2.0 +title:everyone^2.0 +(category:people category:food)))",q.toString());
 			
 			q = parser.parseTwoPass("all:beans everyone",NamespacePolicy.REWRITE);
@@ -217,7 +217,7 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("all:beans everyone",NamespacePolicy.IGNORE);
 			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0)",q.toString());			
 			
-			q = parser.parseTwoPass("category:\"french actresses\" category:\"born 1920\"",NamespacePolicy.REWRITE);
+			q = parser.parseTwoPass("incategory:\"french actresses\" incategory:\"born 1920\"",NamespacePolicy.REWRITE);
 			assertEquals("+category:\"french actresses\" +category:\"born 1920\"",q.toString());
 			
 			q = parser.parseTwoPass("(all:beans everyone) OR (something else) OR (help:editing) AND (all:foo)",NamespacePolicy.REWRITE);
@@ -232,10 +232,10 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("all:anti-hero",NamespacePolicy.IGNORE);
 			assertEquals("(+contents:anti +contents:hero) (+title:anti^2.0 +title:hero^2.0)",q.toString());
 			
-			q = parser.parseTwoPass("main:1991 category:\"olympic cities\" OR all:1990",NamespacePolicy.REWRITE);
+			q = parser.parseTwoPass("main:1991 incategory:\"olympic cities\" OR all:1990",NamespacePolicy.REWRITE);
 			assertEquals("(+(+namespace:0 +(+contents:1991 +category:\"olympic cities\")) contents:1990) (+(+namespace:0 +(+title:1991^2.0 +category:\"olympic cities\")) title:1990^2.0)",q.toString());
 			
-			q = parser.parseTwoPass("main:1991 category:\"olympic cities\" -all:1990",NamespacePolicy.REWRITE);
+			q = parser.parseTwoPass("main:1991 incategory:\"olympic cities\" -all:1990",NamespacePolicy.REWRITE);
 			assertEquals("(+(+namespace:0 +(+contents:1991 +category:\"olympic cities\")) -contents:1990) (+(+namespace:0 +(+title:1991^2.0 +category:\"olympic cities\")) -title:1990^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("main:ba*",NamespacePolicy.IGNORE);
@@ -249,6 +249,29 @@ public class WikiQueryParserTest extends TestCase {
 			
 			q = parser.parseTwoPass("*kuta",NamespacePolicy.IGNORE);
 			assertEquals("contents:kuta title:kuta^2.0",q.toString());
+			
+			q = parser.parseTwoPass("category:beans",NamespacePolicy.IGNORE);
+			assertEquals("(contents:beans contents:bean^0.5) title:beans^2.0",q.toString());
+			
+			q = parser.parseTwoPass("bzvz:beans",NamespacePolicy.IGNORE); // if it's unrecognized prefix, add to query
+			assertEquals("(+contents:bzvz +(contents:beans contents:bean^0.5)) (+title:bzvz^2.0 +title:beans^2.0)",q.toString());
+			
+			// Generic namespace prefixes
+			q = parser.parseTwoPass("[12]:beans",NamespacePolicy.IGNORE);
+			assertEquals("(contents:beans contents:bean^0.5) title:beans^2.0",q.toString());
+			
+			q = parser.parseTwoPass("[1,12]:beans",NamespacePolicy.REWRITE);
+			assertEquals("(+(namespace:1 namespace:12) +(contents:beans contents:bean^0.5)) (+(namespace:1 namespace:12) +title:beans^2.0)",q.toString());
+			
+			q = parser.parseTwoPass("[1,a12]:beans",NamespacePolicy.IGNORE);
+			assertEquals("(+contents:1 +contents:a12 +(contents:beans contents:bean^0.5)) (+title:1^2.0 +title:a12^2.0 +title:beans^2.0)",q.toString());
+
+			// Test field extraction
+			HashSet<NamespaceFilter> fs = parser.getFieldNamespaces("main:something [1]:else all:oh []:nja");
+			assertEquals(3,fs.size());
+			assertTrue(fs.contains(new NamespaceFilter("0")));
+			assertTrue(fs.contains(new NamespaceFilter("1")));
+			assertTrue(fs.contains(new NamespaceFilter()));
 			
 			// Localization tests
 			analyzer = Analyzers.getSearcherAnalyzer("sr");
@@ -279,7 +302,7 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("beans main:everyone",NamespacePolicy.REWRITE);
 			assertEquals("((+(namespace:0 namespace:1 namespace:4 namespace:12) +(contents:beans contents:bean^0.5)) (+namespace:0 +(contents:everyone contents:everyon^0.5))) ((+(namespace:0 namespace:1 namespace:4 namespace:12) +title:beans^2.0) (+namespace:0 +title:everyone^2.0))",q.toString());
 			
-			q = parser.parseTwoPass("beans everyone category:cheeses",NamespacePolicy.REWRITE);
+			q = parser.parseTwoPass("beans everyone incategory:cheeses",NamespacePolicy.REWRITE);
 			assertEquals("(+(namespace:0 namespace:1 namespace:4 namespace:12) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5) +category:cheeses)) (+(namespace:0 namespace:1 namespace:4 namespace:12) +(+title:beans^2.0 +title:everyone^2.0 +category:cheeses))",q.toString());
 			
 			q = parser.parseTwoPass("all_talk: beans everyone",NamespacePolicy.REWRITE);

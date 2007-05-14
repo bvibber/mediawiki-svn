@@ -119,15 +119,19 @@ public class SearchEngine {
 		long searchStart = System.currentTimeMillis();
 		Hashtable<String,NamespaceFilter> cachedFilters = GlobalConfiguration.getInstance().getNamespacePrefixes(); 
 		
+		// if search is over one field, try to use filters
 		if(fields.size()==1){
 			if(fields.contains(new NamespaceFilter()))
 				nsfw = null;  // empty filter: "all" keyword
-			else // use the specified filter in the query (if there is exactly one)
-				nsfw = new NamespaceFilterWrapper(fields.toArray(new NamespaceFilter[] {})[0]);
+			else if(!fields.contains(nsDefault)){ 
+				// use the specified prefix in the query (if it can be cached)
+				NamespaceFilter f = fields.toArray(new NamespaceFilter[] {})[0];
+				if(f.cardinality()==1 || NamespaceCache.isComposable(f))
+					nsfw = new NamespaceFilterWrapper(f);
+			// use default filter if it's cached or composable of cached entries
+			}else if(cachedFilters.containsValue(nsDefault) || NamespaceCache.isComposable(nsDefault))
+				nsfw = new NamespaceFilterWrapper(nsDefault);
 		}
-		// use default filter if it's cached
-		else if(fields.size()==0 && nsDefault!=null && cachedFilters.containsValue(nsDefault))
-			nsfw = new NamespaceFilterWrapper(nsDefault);
 		
 		try {
 			if(nsfw == null){

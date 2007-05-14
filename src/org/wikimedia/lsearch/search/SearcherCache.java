@@ -260,7 +260,7 @@ public class SearcherCache {
 		IndexSearcherMul searcher = null;
 		log.debug("Openning local index for "+iid);
 		if(!iid.isMySearch())
-			throw new IOException(iid+" is not searched locally.");
+			throw new IOException(iid+" is not searched by this host.");
 		try {
 			searcher = new IndexSearcherMul(iid.getCanonicalSearchPath());
 		} catch (IOException e) {

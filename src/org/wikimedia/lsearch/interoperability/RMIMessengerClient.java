@@ -133,7 +133,7 @@ public class RMIMessengerClient {
 	public void enqueueUpdateRecords(IndexUpdateRecord[] records, String host) throws Exception{
 		try {
 			RMIMessenger r = messengerFromCache(host);
-			log.debug("Calling enqueueUpdateRecords("+Arrays.toString(records)+") on "+host);
+			log.debug("Calling enqueueUpdateRecords("+records.length+" records) on "+host);
 			r.enqueueUpdateRecords(records);
 		} catch (Exception e) {
 			log.warn("Error invoking remote method enqueueUpdateRecords() on host "+host);
@@ -141,10 +141,21 @@ public class RMIMessengerClient {
 		}
 	}
 	
+	public void enqueueFrontend(IndexUpdateRecord[] records, String host) throws Exception{
+		try {
+			RMIMessenger r = messengerFromCache(host);
+			log.debug("Calling enqueueFrontend("+records.length+" records) on "+host);
+			r.enqueueFrontend(records);
+		} catch (Exception e) {
+			log.warn("Error invoking remote method enqueueFrontend() on host "+host);
+			throw e;
+		}
+	}
+	
 	public void sendReports(IndexReportCard[] cards, String host){
 		try {
 			RMIMessenger r = messengerFromCache(host);
-			log.debug("Calling reportBack("+Arrays.toString(cards)+") on "+host);
+			log.debug("Calling reportBack("+cards.length+" records) on "+host);
 			r.reportBack(cards);
 		} catch (Exception e) {
 			log.warn("Error invoking remote method sendReports on host "+host);
@@ -162,5 +173,18 @@ public class RMIMessengerClient {
 			log.warn("Error invoking remote method searchMainPart on host "+host);
 			return null;
 		}
+	}
+	
+	public int getIndexerQueueSize(String host){
+		try {
+			RMIMessenger r = messengerFromCache(host);
+			log.debug("Calling searchPart() on "+host);
+			int size = r.getIndexerQueueSize();
+			log.debug(" \\-> got: "+size);
+			return size;
+		} catch (Exception e) {
+			log.warn("Error invoking remote method getIndexerQueueSize on host "+host);
+			return -1;
+		}	
 	}
 }
