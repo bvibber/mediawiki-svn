@@ -56,7 +56,7 @@ public class RMIMessengerImpl implements RMIMessenger {
 	
 	// inherit javadoc
 	public void enqueueUpdateRecords(IndexUpdateRecord[] records) throws RemoteException {
-		log.debug("Received request enqueueUpdateRecords("+Arrays.toString(records)+")");
+		log.debug("Received request enqueueUpdateRecords("+records.length+" records)");
 		if(indexer == null)
 			indexer = new IndexDaemon(); // start the indexer
 		for(IndexUpdateRecord record : records)
@@ -64,8 +64,17 @@ public class RMIMessengerImpl implements RMIMessenger {
 	}
 	
 	// inherit javadoc
+	public void enqueueFrontend(IndexUpdateRecord[] records) throws RemoteException {
+		log.debug("Received request enqueueUpdateRecords("+records.length+" records)");
+		if(indexer == null)
+			indexer = new IndexDaemon(); // start the indexer
+		for(IndexUpdateRecord record : records)
+			IndexThread.enqueue(record);		
+	}
+
+	// inherit javadoc
 	public void reportBack(IndexReportCard[] cards) throws RemoteException {
-		log.debug("Received request reportBack("+Arrays.toString(cards)+")");
+		log.debug("Received request reportBack("+cards.length+" records)");
 		if(indexer == null)
 			indexer = new IndexDaemon(); // start the indexer
 		IndexThread.enqueuReports(cards);
@@ -75,6 +84,11 @@ public class RMIMessengerImpl implements RMIMessenger {
 	public SearchResults searchPart(String dbrole, Query query, NamespaceFilterWrapper filter, int offset, int limit) throws RemoteException {
 		log.debug("Received request searchMainPart("+dbrole+","+query+","+offset+","+limit+")");
 		return new SearchEngine().searchPart(IndexId.get(dbrole),query,filter,offset,limit);
+	}
+	
+	// inherit javadoc
+	public int getIndexerQueueSize() throws RemoteException {
+		return IndexThread.getQueueSize();
 	}
 
 	protected RMIMessengerImpl(){

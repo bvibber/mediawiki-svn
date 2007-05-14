@@ -178,7 +178,7 @@ public class GlobalConfiguration {
 					}
 				}
 				boolean searched = (getSearchHosts(dbrole).size() != 0); 
-				if(!searched){
+				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split"))){
 					System.out.println("WARNING: in Global Configuration: index "+dbrole+" is not searched by any host.");
 				}
 			}
@@ -257,7 +257,7 @@ public class GlobalConfiguration {
 			
 			line = preprocessLine(line);
 			
-			if(line.startsWith("[")){ // section
+			if(line.startsWith("[") && line.length()>2 && !Character.isDigit(line.charAt(1))){ // section
 				int last = line.indexOf("]");
 				String s = line.substring(1,last);
 				if(s.equalsIgnoreCase("database"))
@@ -309,7 +309,7 @@ public class GlobalConfiguration {
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;
 				String prefix = parts[0].trim();
-				String filter = parts[1].trim();
+				String filter = parts[1].trim();				
 				
 				if(filter.equalsIgnoreCase("<all>"))
 					namespacePrefixAll = prefix;

@@ -185,12 +185,13 @@ public class UpdateThread extends Thread {
 						}
 					}
 				}
-
+				long startTime = System.currentTimeMillis();
 				// rsync
 				String snapshotpath = iid.getRsyncSnapshotPath()+"/"+li.timestamp;
 				command = "/usr/bin/rsync -W --delete -r rsync://"+iid.getIndexHost()+":"+snapshotpath+" "+iid.getUpdatePath();
 				log.debug("Running shell command: "+command);
 				Runtime.getRuntime().exec(command).waitFor();
+				log.info("Finished rsync of "+iid+" in "+(System.currentTimeMillis()-startTime)+" ms");
 
 			}
 

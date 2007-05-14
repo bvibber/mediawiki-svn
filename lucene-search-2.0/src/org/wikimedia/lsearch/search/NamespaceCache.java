@@ -1,6 +1,7 @@
 package org.wikimedia.lsearch.search;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Hashtable;
 
@@ -13,6 +14,7 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.QueryFilter;
 import org.apache.lucene.search.TermQuery;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 
 /**
  * Local cache of Filter, or more precisely of {@link CachingWrapperFilter}.
@@ -31,6 +33,16 @@ public class NamespaceCache {
 	public static void put(NamespaceFilter key, CachingWrapperFilter value){
 		cache.put(key,value);
 	}
+	
+	/** Returns true if the filter can be composed from filters in cache */
+	public static boolean isComposable(NamespaceFilter key){
+		ArrayList<NamespaceFilter> dec = key.decompose();
+		for(NamespaceFilter nsf : dec){
+			if(!cache.containsKey(nsf))
+				return false;
+		}
+		return true;
+	}
 		
 	/** 
 	 * Get bits from filter, if filter does not exist, new one will be 
@@ -47,9 +59,33 @@ public class NamespaceCache {
 			log.debug("Got bitset from cache for nsfilter "+key);
 			return f.bits(reader);
 		} else {
+			// try to compose the filter from existing ones
+			if(key.cardinality() > 1){
+				ArrayList<NamespaceFilter> dec = key.decompose();
+				ArrayList<Filter> filters = new ArrayList<Filter>();
+				boolean succ = true;
+				for(NamespaceFilter nsf : dec){
+					if(cache.containsKey(nsf))
+						filters.add(cache.get(nsf));
+					else{ // didn't find the apropriate filter in cache :(
+						succ = false;
+						break;
+					}
+				}
+				if(succ){
+					log.debug("Made composite filter for "+key);
+					// never cache composite filters
+					return new NamespaceCompositeFilter(filters).bits(reader);
+				} else {
+					log.info("Cannot compose filter "+key+" from cache. This should happen only in warmup phase.");
+				}
+			}
+			// build new filter from query
 			Query q = WikiQueryParser.generateRewrite(key);
 			CachingWrapperFilter cwf = new CachingWrapperFilter(new QueryFilter(q));
-			cache.put(key,cwf);
+			// cache only if defined as a textual prefix in global conf, or filters one namespace
+			if(GlobalConfiguration.getInstance().getNamespacePrefixes().containsValue(key) || key.cardinality()==1)
+				cache.put(key,cwf);
 			log.debug("Making new bitset for nsfilter "+key);
 			return cwf.bits(reader);
 		}

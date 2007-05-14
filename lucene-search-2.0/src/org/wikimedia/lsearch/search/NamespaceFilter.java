@@ -25,6 +25,7 @@
 package org.wikimedia.lsearch.search;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.Collection;
 
@@ -46,19 +47,37 @@ public class NamespaceFilter implements Serializable {
 	public NamespaceFilter(Collection<Integer> namespaces){
 		init();
 		for(Integer namespace : namespaces){
+			empty = false;
 			included.set(namespace.intValue());
 		}
 	}
 	
+	public NamespaceFilter(int namespace){
+		init();
+		empty = false;
+		included.set(namespace);
+	}
+	
 	public NamespaceFilter(String namespaces) {
 		init();
-		if (namespaces != null) {
+		if (namespaces != null && !namespaces.equals("")) {
 			String[] bits = namespaces.split(",");
 			for (int i = 0; i < bits.length; i++) {
 				empty = false;
 				included.set(Integer.parseInt(bits[i]));
 			}
 		}
+	}
+	
+	/** Decompose this filter into an array of single-namespace filters, do OR to construct */
+	public ArrayList<NamespaceFilter> decompose(){
+		if(empty)
+			return null;
+		ArrayList<NamespaceFilter> dec = new ArrayList<NamespaceFilter>();
+		for(int i = included.nextSetBit(0);i>=0;i=included.nextSetBit(i+1)){
+			dec.add(new NamespaceFilter(i));
+		}
+		return dec;
 	}
 	
 	public boolean filter(String namespace) {

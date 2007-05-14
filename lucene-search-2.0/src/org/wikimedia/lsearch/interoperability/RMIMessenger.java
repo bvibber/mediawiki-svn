@@ -38,6 +38,14 @@ public interface RMIMessenger extends Remote {
 	public void enqueueUpdateRecords(IndexUpdateRecord[] records) throws RemoteException;
 	
 	/**
+	 * RMI frontend for enqueue operation on indexer. For incremental updates. 
+	 *  
+	 * @param record
+	 * @throws RemoteException
+	 */
+	public void enqueueFrontend(IndexUpdateRecord[] records) throws RemoteException;
+	
+	/**
 	 * On split indexes, send back reports if addition/deletion of an 
 	 * article on parts of the index succeeded 
 	 * @param cards
@@ -56,4 +64,12 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public SearchResults searchPart(String dbrole, Query query, NamespaceFilterWrapper filter, int offset, int limit) throws RemoteException;
+	
+	/**
+	 * Returns index queue size. Needed for incremental updater, so it doesn't overload the indexer. 
+	 * 
+	 * @return
+	 * @throws RemoteException
+	 */
+	public int getIndexerQueueSize() throws RemoteException;
 }

@@ -3,7 +3,6 @@ package org.wikimedia.lsearch.analyzers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.BitSet;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Map.Entry;
@@ -79,12 +78,18 @@ public class WikiQueryParser {
 	 * REWRITE -  rewrite (help:searchterm) => (+namespace:12 contents:searchterm)
 	 */
 	public enum NamespacePolicy { LEAVE, IGNORE, REWRITE };
+	/** Rewritten namespace queries. prefix => query */
 	static protected Hashtable<String,Query> namespaceQueries = null;
+	/** The 'all' keyword */
 	static protected String namespaceAllKeyword = null;
+	/** Prefixes and associated filters. prefix -> filter */
 	static protected Hashtable<String,NamespaceFilter> namespaceFilters = null;
+	/** nsfilter -> prefix (reverse table to namespaceFilters */
+	static protected Hashtable<NamespaceFilter,String> namespacePrefixes = null;
 	private String defaultNamespaceName;
 	private Query namespaceRewriteQuery;
 	private NamespacePolicy namespacePolicy;
+	protected NamespaceFilter defaultNamespaceFilter;
 	
 	/** default value for boolean queries */
 	public BooleanClause.Occur boolDefault = BooleanClause.Occur.MUST;
@@ -100,9 +105,11 @@ public class WikiQueryParser {
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		namespaceAllKeyword = global.getNamespacePrefixAll();
 		namespaceQueries = new Hashtable<String,Query>();
+		namespacePrefixes = new Hashtable<NamespaceFilter,String>();
 		namespaceFilters = global.getNamespacePrefixes();
 		for(Entry<String,NamespaceFilter> prefix : namespaceFilters.entrySet()){
 			namespaceQueries.put(prefix.getKey(),generateRewrite(prefix.getValue()));
+			namespacePrefixes.put(prefix.getValue(),prefix.getKey());
 		}
 	}
 	/**
@@ -134,17 +141,13 @@ public class WikiQueryParser {
 		this.namespacePolicy = nsPolicy;
 		disableTitleAliases = true;
 		initNamespaces();
+		this.defaultNamespaceFilter=nsfilter;
 		if(nsfilter != null){
-			namespaceRewriteQuery = generateRewrite(nsfilter);
-			defaultNamespaceName = null;
-			if(namespaceRewriteQuery != null && namespaceQueries.containsValue(namespaceRewriteQuery)){
-				// try to get the name of prefix from predefined namespaces
-				for(Entry<String,Query> e : namespaceQueries.entrySet()){
-					if(e.getValue().equals(namespaceRewriteQuery)){
-						defaultNamespaceName = e.getKey();
-					}
-				}
-			}
+			namespaceRewriteQuery = generateRewrite(nsfilter);			
+			if(namespaceRewriteQuery != null && namespacePrefixes.containsKey(nsfilter))
+				defaultNamespaceName = namespacePrefixes.get(nsfilter);
+			else
+				defaultNamespaceName = null;
 		}
 		else{
 			namespaceRewriteQuery = null;
@@ -184,6 +187,11 @@ public class WikiQueryParser {
 				ret.add(namespaceFilters.get(field));
 			else if(field.equals(namespaceAllKeyword))
 				ret.add(new NamespaceFilter());
+			else if(field.equals(defaultField) && defaultNamespaceFilter != null)
+				ret.add(defaultNamespaceFilter);
+			else if(field.startsWith("[")){
+				ret.add(new NamespaceFilter(field.substring(1,field.length()-1)));
+			}
 		}
 		
 		return ret;
@@ -231,6 +239,11 @@ public class WikiQueryParser {
 					if(fieldLevel == -1)
 						fields.add(defaultField);
 				}
+			} else if(c == '['){
+				if(fetchGenericPrefix()){
+					fieldLevel = level;
+					fields.add(new String(buffer,0,length));
+				}
 			}
 		}
 		
@@ -246,6 +259,8 @@ public class WikiQueryParser {
 		Query q;
 		if((q = namespaceQueries.get(fieldName))!=null){
 			return q;
+		} else if(fieldName.startsWith("[")){
+			return generateRewrite(new NamespaceFilter(fieldName.substring(1,fieldName.length()-1)));
 		} else
 			return null;
 	}
@@ -295,14 +310,46 @@ public class WikiQueryParser {
 			ch = text[lookup];
 			if(ch == ' ')
 				continue;
-			else if(ch == ':'){
-				cur = lookup;
-				return TokenType.FIELD;
+			else if(ch == ':'){				
+				// check if it's a valid field
+				String f = new String(buffer,0,length);
+				if(f.equals(namespaceAllKeyword) || f.equals("incategory") || namespaceFilters.containsKey(f)){
+					cur = lookup;
+					return TokenType.FIELD;
+				} else
+					break;
 			} else
 				break;
 		}
 		
 		return TokenType.WORD; 
+	}
+	
+	/**
+	 * Fetches prefixes like [0,1,2] (in [0,1,2]:query) 
+	 * 
+	 * @return true if search prefixes is successfully fetched
+	 */
+	private boolean fetchGenericPrefix(){
+		char ch;
+		prev_cur = cur;
+		if(text[cur] != '[')
+			return false; // sanity check
+		buffer[0] = '[';
+		for(length = 1, cur++; cur < queryLength; cur++){
+			ch = text[cur];
+			if(Character.isDigit(ch) || ch ==',')
+				buffer[length++] = ch;
+			else if(ch == ']' && cur+1 < queryLength && text[cur+1]==':'){
+				cur++; // position on :
+				buffer[length++] = ch;
+				return true;
+			} else
+				break; // bad format, only numbers and commas are allowed
+		}
+		cur = prev_cur; // traceback
+		return false;
+		
 	}
 	
 	/** Go back one token */
@@ -342,10 +389,12 @@ public class WikiQueryParser {
 	private Term makeTerm(String t){
 		if(field == null)
 			return new Term(defaultField,t.toLowerCase());
-		else if(!field.equals("category") && 
+		else if(!field.equals("incategory") && 
 				(namespacePolicy == NamespacePolicy.IGNORE || 
 						namespacePolicy == NamespacePolicy.REWRITE))
 			return new Term(defaultField,t.toLowerCase());
+		else if(field.equals("incategory"))
+			return new Term("category",t.toLowerCase());
 		else
 			return new Term(field,t.toLowerCase());
 	}
@@ -370,7 +419,7 @@ public class WikiQueryParser {
 		if(length != 0){
 			query = new PhraseQuery();
 			// if it's a category don't tokenize it, we want whole category name
-			if(field!=null && field.equals("category"))
+			if(field!=null && field.equals("incategory"))
 				query.add(makeTerm()); 
 			else{
 				analyzeBuffer();
@@ -393,7 +442,7 @@ public class WikiQueryParser {
 		return namespaceRewriteQuery != null && namespacePolicy == NamespacePolicy.REWRITE; 
 	}
 	
-	/** Parses a clause:  (in regexp notation)
+	/** Parses a clause:  (in regexp-like notation)
 	 * 
 	 *  Clause := ([+-]? (<field>:)? <term> | [AND,OR] | \( Clause \) )+
 	 *  
@@ -429,8 +478,15 @@ public class WikiQueryParser {
 				continue;
 			
 			// terms, fields
-			if(Character.isLetterOrDigit(c)){
-				tokenType = fetchToken();
+			if(Character.isLetterOrDigit(c) || c == '['){
+				// check for generic namespace prefixes, e.g. [0,1]:
+				if(c == '['){
+					if(fetchGenericPrefix())
+						tokenType = TokenType.FIELD;
+					else
+						continue;
+				} else // fetch next token					
+					tokenType = fetchToken();
 				
 				switch(tokenType){
 				case FIELD:
@@ -438,7 +494,7 @@ public class WikiQueryParser {
 					// next if (i.e. some 10 lines down)
 					if(returnOnFieldDef){
 						String newfield = new String(buffer,0,length); 
-						if(!newfield.equals("category") && !newfield.equals(topFieldName)){
+						if(!newfield.equals("incategory") && !newfield.equals(topFieldName)){
 							backToken(); cur--;
 							break mainloop;
 						}
@@ -594,7 +650,7 @@ public class WikiQueryParser {
 		TermQuery t;
 	
 		// categories should not be analyzed
-		if(field != null && field.equals("category")){
+		if(field != null && field.equals("incategory")){
 			return new TermQuery(makeTerm());
 		}
 		
@@ -855,6 +911,9 @@ public class WikiQueryParser {
 		// pop stack
 		defaultField = contentField;
 		defaultBoost = olfDefaultBoost;
+		if(qc == null || qt == null)
+			return new BooleanQuery();
+		
 		if(qc.equals(qt))
 			return qc; // don't duplicate (probably a query for categories only)
 		BooleanQuery bq = new BooleanQuery();

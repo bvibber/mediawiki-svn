@@ -197,6 +197,9 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals(2,frpart2.getPartNum());
 		assertEquals(3,frpart2.getSplitFactor());
 		
+		IndexId detest = IndexId.get("detest");
+		assertFalse(detest.isLogical());
+		
 		
 	}
 }

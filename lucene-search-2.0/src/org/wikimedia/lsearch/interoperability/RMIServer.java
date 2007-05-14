@@ -60,7 +60,7 @@ public class RMIServer {
 		register(RMIMessengerImpl.getInstance(),"RMIMessenger");
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		for(IndexId iid : global.getMySearch()){
-			if(iid.isSingle() || !iid.isLogical())
+			if(!iid.isLogical())
 				rebind(iid);			
 		}		
 	}
