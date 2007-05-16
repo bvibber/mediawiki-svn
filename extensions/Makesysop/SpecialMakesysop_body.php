@@ -236,7 +236,8 @@ class MakesysopStewardForm extends UserrightsForm {
 		$this->db = null;
 	}
 
-	function saveUserGroups( $username, $removegroup, $addgroup) {
+	/** @see UserrightsForm::saveUserGroups in MediaWiki */
+	function saveUserGroups( $username, $removegroup, $addgroup, $reason = '') {
 		$split = $this->splitUsername( $username );
 		if( WikiError::isError( $split ) ) {
 			$wgOut->addWikiText( wfMsg( 'makesysop-nodatabase', $split->getMessage() ) );
