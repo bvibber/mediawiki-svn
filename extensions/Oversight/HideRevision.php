@@ -657,6 +657,7 @@ function sosShowDiff( $revision )
 		}
 		$ntext = strval( $rev->getText());
 
+		$wgOut->addStyle( 'common/diff.css' );
 		$wgOut->addHtml(
 			"<ul>" .
 			$info .
@@ -668,6 +669,10 @@ function sosShowDiff( $revision )
 			"</p>" .
 			"<div>" .
 			"<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
+			"<col class='diff-marker' />" .
+			"<col class='diff-content' />" .
+			"<col class='diff-marker' />" .
+			"<col class='diff-content' />" .
 			"<tr>" .
 				"<td colspan='2' width='50%' align='center' class='diff-otitle'>" . wfMsgHTML('oversight-prev') . " (#$prevId)" . "</td>" .
 				"<td colspan='2' width='50%' align='center' class='diff-ntitle'>" . wfMsgHTML('oversight-hidden') . "</td>" .
