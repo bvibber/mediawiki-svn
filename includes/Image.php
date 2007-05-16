@@ -371,7 +371,7 @@ class Image
 	 				$rname=tempnam(wfTempDir(),'icresponse.xml');
 	 	  	  		$url = $wgInstantCommonsServerPath.'/api.php?action=instantcommons&format=xml&media='.$this->name;
 	 	  	  		$fp = fopen($rname, "w");
-	 	  	  		$xmlString = $this-> my_file_get_contents($url, $fp);
+	 	  	  		$xmlString = $this-> curl_file_get_contents($url, $fp);
 					$p =& new ApiInstantCommons('instantcommons', 'maint');
 	 	  	  		fclose($fp);
 	 	  	  		//TODO: Replace the xml-parser with a preg_grep since it's a single line of XML that's returned. 
@@ -394,12 +394,12 @@ class Image
 			 	  	  	$icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
 			 	  	  	$fp = fopen("{$this->mSavedFile}", "w");
 			 	  	  	if($row['SIZE'] > 3000) {wfDebug(join($row, ' | '));
-			 	  	  		$this-> my_file_get_contents($icFileUrl, $this->mSavedFile, TRUE);
+			 	  	  		$this-> curl_file_get_contents($icFileUrl, $this->mSavedFile, TRUE);
 			 	  	  	}else {
 			 	  	  	/*
 			 	  	  	$icFileUrl = $wgInstantCommonsServerPath.$row['URL'];
 			 	  	  	$icFp = fopen("{$this->mSavedFile}", "w");
-			 	  	  	my_file_get_contents($icFileUrl, $icFp);
+			 	  	  	curl_file_get_contents($icFileUrl, $icFp);
 			 	  	  	fclose($icFp);*/
 			 	  	  	
 			 	  	  	$ch = curl_init($wgInstantCommonsServerPath.$row['URL']);
@@ -456,8 +456,33 @@ class Image
 		$this->dataLoaded = true;
 		wfProfileOut( __METHOD__ );
 	}
+	
+	/**
+	 * Use cURL to read the content of a URL into a string
+	 * @param string $url - the URL to fetch
+	 * @param resource $fp - filename to write file contents to
+	 * @param boolean $bg - call cURL in the background (don't hang page until complete)
+	 * @param int $timeout - cURL connect timeout
+	 */
+	function curl_file_get_contents($url, $fp, $bg=FALSE, $timeout = 1){//ref: http://groups-beta.google.com/group/comp.lang.php/browse_thread/thread/8efbbaced3c45e3c/d63c7891cf8e380b?lnk=raot
+		if(!$bg){
+		   $ch = curl_init();
+		   curl_setopt ($ch, CURLOPT_URL, $url);
+	   	   curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+		   curl_setopt ($ch, CURLOPT_CONNECTTIMEOUT, $timeout);
+		   curl_setopt ($ch, CURLOPT_TIMEOUT, $timeout);
+		   $file_contents = curl_exec($ch);
+		   curl_close($ch);
+		} else {//call curl in the background to download the file
+		$cmd = 'curl '.escapeshellcmd($url).' -o '.$fp.'&';
+		wfDebug('Curl download initiated='.$cmd );
+			pclose(popen($cmd, 'r'));
+			$file_contents = 1;
+		}
+	   return $file_contents;				
+	}
 
-	/*
+	/**
 	 * Load image metadata from a DB result row
 	 */
 	function loadFromRow( &$row ) {
