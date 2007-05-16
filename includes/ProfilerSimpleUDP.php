@@ -1,11 +1,13 @@
 <?php
-/* ProfilerSimpleUDP class, that sends out messages for 'udpprofile' daemon
-   (the one from mediawiki/trunk/udpprofile SVN )
-*/
 
 require_once(dirname(__FILE__).'/Profiler.php');
 require_once(dirname(__FILE__).'/ProfilerSimple.php');
 
+/**
+ * ProfilerSimpleUDP class, that sends out messages for 'udpprofile' daemon
+ * (the one from mediawiki/trunk/udpprofile SVN )
+ * @addtogroup Profiler
+ */
 class ProfilerSimpleUDP extends ProfilerSimple {
 	function getFunctionReport() {
 		global $wgUDPProfilerHost;

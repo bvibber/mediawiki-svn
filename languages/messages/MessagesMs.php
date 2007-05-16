@@ -299,7 +299,7 @@ $messages = array(
 "preview"             => "Paparan", #"Preview",
 "showpreview"         => "Tunjuk paparan", #"Show preview",
 "blockedtitle"                => "Pengguna ini telah disekat", #"User is blocked",
-"blockedtext"         => "Nama pengguna atau alamat IP anda telah disekat oleh $1. Alasannya: <br />$2. <p>Sila hubungi $1 atau [[[[Project:Penyelia|penyelia]] yang lain untuk membincangkan sekatan ini. <p>Sila ambil perhatian bahawa anda tidak dapat menggunakan ciri \"Emelkan pengguna ini\" kecuali anda mempunyai alamat emel yang sah di dalam [[{{ns:-1}}:Preferences|Tatarajah]] anda.", #'Your user name or IP address has been blocked by $1. The reason given is this:<br />''$2''<p>You may contact $1 or one of the other [[Project:Administrators|administrators]] to discuss the block. <p>Note that you may not use the \"email this user\" feature unless you have a valid email address registered in your [[Special:Preferences|user preferences]].',
+"blockedtext"         => "Nama pengguna atau alamat IP anda telah disekat oleh $1. Alasannya: <br />$2. <p>Sila hubungi $1 atau [[{{MediaWiki:grouppage-sysop}}|penyelia]] yang lain untuk membincangkan sekatan ini. <p>Sila ambil perhatian bahawa anda tidak dapat menggunakan ciri \"Emelkan pengguna ini\" kecuali anda mempunyai alamat emel yang sah di dalam [[Special:Preferences|Tatarajah]] anda.", #'Your user name or IP address has been blocked by $1. The reason given is this:<br />''$2''<p>You may contact $1 or one of the other [[Project:Administrators|administrators]] to discuss the block. <p>Note that you may not use the \"email this user\" feature unless you have a valid email address registered in your [[Special:Preferences|user preferences]].',
 "whitelistedittitle"    => "Pendaftaran masuk diperlukan untuk menyunting",
 "whitelistedittext"     => "Anda harus [[{{ns:special}}:Userlogin|log masuk]] untuk dapat menyunting rencana.",
 "whitelistreadtitle"    => "Pendaftaran masuk diperlukan untuk membaca",
@@ -596,7 +596,7 @@ $messages = array(
 "emailpage"             => "Emelkan pengguna", #"E-mail user",
 "emailpagetext"                 => "Jika pengguna ini memasukkan alamat emel yang sah dalam Tatarajahnya, borang di bawah akan mengirimkan satu pesanan. Alamat emel di dalam Tatarajah anda akan dipaparkan sebagai alamat emel \"Daripada\", jadi penerima boleh membalas emel tersebut.", #"If this user has entered a valid e-mail address in is user preferences, the form below will send a single message. The e-mail address you entered in your user preferences will appear as the \"From\" address of the mail, so the recipient wi#ll be able to reply.",
 'usermailererror'         => "Objek emel mengembalikan ralat:",
-'defemailsubject'         => "Emel {{SITENAME}",
+'defemailsubject'         => "Emel {{SITENAME}}",
 "noemailtitle"                  => "Tiada alamat emel", #"No e-mail address",
 "noemailtext"           => "Pengguna ini tidak menetapkan alamat emel yang sah, atau telah memilih untuk tidak mendapat emel daripada pengguna yang lain.", #"This user has not specified a valid e-mail address, or has chosen not to receive e-mail from other users.",
 "emailfrom"             => "Daripada", #"From",
@@ -611,6 +611,7 @@ $messages = array(
 # Watchlist
 #
 "watchlist"             => "Senarai Pantau",
+"mywatchlist"             => "Senarai Pantau",
 "nowatchlist"           => "Tiada sebarang rencana dalam senarai pantau anda.", #"You have no items on your watchlist.",
 "watchnologin"                  => "Belum log masuk", #"Not logged in",
 "watchnologintext"      => "Anda mesti [[{{ns:special}}:Userlogin|log masuk]] untuk mengubahkan senarai pantau.",
@@ -703,7 +704,7 @@ $messages = array(
 #
 "contributions"           => "Sumbangan pengguna", #"User contributions",
 "mycontris"         => "Sumbangan saya", #"My contributions",
-"contribsub"      => "Untuk $1", #"For $1",
+"contribsub2"      => "Untuk $1", #"For $1 ($2)",
 "nocontribs"              => "Tiada sebarang perubahan yang sepadan dengan kriteria-kriteria ini.", #"No changes were found matching these criteria.",
 "ucnote"          => "Di bawah ini adalah <b>$1</b> perubahan terbaru yang dibuat oleh pengguna ini sejak <b>$2</b> hari yang lalu.", #"Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
 "uclinks"         => "Paparkan $1 perubahan terkini; paparkan $2 hari yang lalu", #"View the last $1 changes; view the last $2 days.",

@@ -513,7 +513,7 @@ lûden OGG. Brûk in dúdlike bestânsnamme, sa't in oar ek wit wat it is.
 Om it ôfbyld yn in side op te nimmen, meitsje jo dêr sa'n keppeling:<br />
 '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:jo_foto.jpg|omskriuwing]]</nowiki>''' of
 '''<nowiki>[[</nowiki>{{ns:image}}<nowiki>:jo_logo.png|omskriuwing]]</nowiki>''';
-en foar lûden '''<nowiki>[[</nowiki>{ns:media}}<nowiki>:jo_lûd.ogg]]</nowiki>'''.
+en foar lûden '''<nowiki>[[</nowiki>{{ns:media}}<nowiki>:jo_lûd.ogg]]</nowiki>'''.
 
 Tink derom dat oaren bewurkje kinne wat jo oanbiede, as dat better is foar de {{SITENAME}},
 krekt's sa't dat foar siden jildt, en dat jo útsletten wurde kinne as jo misbrûk
@@ -663,6 +663,7 @@ of hat oanjaan gjin post fan oare brûkers krije te wollen.",
 # Watchlist
 #
 "watchlist"		=> "Folchlist",
+"mywatchlist"		=> "Folchlist",
 "nowatchlist"	=> "Jo hawwe gjin siden op jo folchlist.",
 "watchnologin"	=> "Not oanmeld in",
 "watchnologintext"=> "Jo moatte [[{{ns:special}}:Userlogin|oanmeld]] wêze om jo folchlist te feroarjen.",
@@ -759,7 +760,7 @@ troch de lêste ferzje út dy weromsette skiednis ferfangen.",
 #
 "contributions"	=> "Brûker bydragen",
 "mycontris"		=> "Myn bydragen",
-"contribsub"	=> "Foar \"$1\"",
+"contribsub2"	=> "Foar \"$1 ($2)\"",
 "nocontribs"	=> "Der binne gjin feroarings fûn dyt't hjirmei oerienkomme.",
 "ucnote"		=> "Dit binne dizze brûker's leste <b>$1</b> feroarings yn de lêste <b>$2</b> dagen.",
 "uclinks"		=> "Besjoch de lêste $1 feroarings; besjoch de lêste $2 dagen.",

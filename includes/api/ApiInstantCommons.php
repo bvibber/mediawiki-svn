@@ -1,7 +1,6 @@
 <?php
-
-
 /**
+ * @author suuch (mediawiki @ suuch . com)
  * In the public domain. At least in Ghana.
  */
 
@@ -100,10 +99,10 @@ class ApiInstantCommons extends ApiBase {
 			'api.php?action=instantcommons&media=Image:MusekeBannerl.jpg',
 			'api.php?action=instantcommons&media=Image:MusekeBannerl.jpg&maint=update', //performs update on this media
 			'api.php?action=instantcommons&media=Image:MusekeBannerl.jpg&maint=delete', //performs delete on this media
-			'api.php?action=instantcommons&maint=update', //performs update on all commons media
-			'api.php?action=instantcommons&maint=delete', //performs delete on all commons imedia
-			'api.php?action=instantcommons&maint=both', //performs update/delete on all commons media
-			
+			'api.php?action=instantcommons&maint=update', //TODO: performs update on all commons media
+			'api.php?action=instantcommons&maint=delete', //TODO: performs delete on all commons imedia
+			'api.php?action=instantcommons&maint=both', //TODO: performs update/delete on all commons media
+			'api.php?action=instantcommons&maint=pending', //TODO: return a GD temp image
 		);
 	}
 
@@ -153,8 +152,7 @@ class ApiInstantCommons extends ApiBase {
 	
 
   
-   function parse($strInputXML) {
-  
+   function parse($strInputXML) {  
            $this->resParser = xml_parser_create ();
            xml_set_object($this->resParser,$this);
            xml_set_element_handler($this->resParser, "tagOpen", "tagClosed");

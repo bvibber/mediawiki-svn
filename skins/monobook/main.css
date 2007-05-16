@@ -499,10 +499,11 @@ span.texhtml {
 
 /* Have a checkered background on images on the description pages and in galleries
    to make transparency visible
-*/
+
 #file img, .gallerybox .thumb img {
 	background: url(Checker-16x16.png) repeat;
 }
+*/
 
 /*
 ** classes for special content elements like town boxes
@@ -1140,11 +1141,9 @@ input.searchButton {
 	}
 /* } */
 div.prefsectiontip {
-	font-size: 95%;
-	margin-top: 0;
-	background-color: #FFC1C1;
-	padding: .2em .7em;
-	clear: both;
+	font-size: x-small;
+	padding: .2em 2em;
+	color: #666;
 }
 .btnSavePrefs {
 	font-weight: bold;
@@ -1182,10 +1181,10 @@ div#userlogin form#userlogin2 h2 {
 	padding-top: 0;
 }
 
-div#userlogin .captcha {
+div#userlogin .captcha,
+div#userloginForm .captcha {
 	border: 1px solid #bbb;
 	padding: 1.5em 2em;
-	width: 400px;
 	background-color: white;
 }
 
@@ -1326,6 +1325,7 @@ div.gallerybox div.thumb {
 }
 
 div.gallerytext {
+	overflow: hidden;
 	font-size: 94%;
 	padding: 2px 4px;
 }
@@ -1593,7 +1593,7 @@ tr.sv-space td { display: none; }
 .TablePager_nav a { text-decoration: none; }
 .TablePager { border-collapse: collapse; }
 .TablePager, .TablePager td, .TablePager th { 
-	border: 0.15em solid #777777;
+	border: 1px solid #aaaaaa;
 	padding: 0 0.15em 0 0.15em;
 }
 .TablePager th { background-color: #eeeeff }
@@ -1626,9 +1626,12 @@ p.mw-ipb-conveniencelinks {
 /* Stop floats from intruding into edit area in previews */
 #toolbar, #wpTextbox1 { clear: both; }
 
-/* Have a checkered background on images on the description pages and in galleries
-   to make transparency visible
-*/
-#file img, .gallerybox .thumb img {
-	background: url(../common/images/Checker-16x16.png) repeat;
+.MediaTransformError {
+	background-color: #ccc;
+	padding: 0.1em;
+}
+.MediaTransformError td {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 90%;
 }

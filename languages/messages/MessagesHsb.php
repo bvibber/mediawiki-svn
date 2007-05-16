@@ -1069,6 +1069,7 @@ E-mejlowa adresa, kotruž sy w swojich nastajenjach zapodał, jewi so jako adres
 
 # Watchlist
 'watchlist'            => 'Wobkedźbowanki',
+'mywatchlist'            => 'Wobkedźbowanki',
 'watchlistfor'         => '(za wužiwarja <b>$1</b>)',
 'nowatchlist'          => 'Nimaš žane strony w swojich wobkedźbowankach.',
 'watchlistanontext'    => 'Dyrbiš so $1, zo by swoje wobkedźbowanki wobhladać abo wobdźěłać móhł.',
@@ -1254,7 +1255,7 @@ Hlej [[{{ns:special}}:Log/delete|protokol]] za lisćinu aktualnych wušmórnjenj
 # Contributions
 'contributions' => 'Přinoški wužiwarja',
 'mycontris'     => 'Moje přinoški',
-'contribsub'    => 'za wužiwarja $1',
+'contribsub2'    => 'za wužiwarja $1 ($2)',
 'nocontribs'    => 'Žane změny, kotrež podatym kriterijam wotpowěduja.',
 'ucnote'        => 'Deleka su poslednje <b>$1</b> změnow wužiwarja z poslednich <b>$2</b> dnjow.',
 'uclinks'       => 'Poslednje $1 přinoškow pokazać; poslednje $2 dnjow pokazać.',
@@ -1293,7 +1294,7 @@ Hlej [[{{ns:special}}:Log/delete|protokol]] za lisćinu aktualnych wušmórnjenj
 'ipbenableautoblock'          => 'IP-adresy blokować kiž buchu přez tutoho wužiwarja hižo wužiwane kaž tež naslědne adresy, z kotrychž so wobdźěłanje pospytuje',
 'ipbsubmit'                   => 'Wužiwarja zablokować',
 'ipbother'                    => 'Druha doba',
-'ipboptions'                  => '1 hodźinu:1 hour,2 hodźinje:2 hours, 6 hodźiny:6 hours,1 dźeń:1 day,3 dny:3 days,1 tydźeń:1 week,2 njedźeli:2 weeks,1 měsać:1 month,3 měsacy:3 months,6 měsacow:6 months,1 lěto:1 year,na přeco:indefinite',
+'ipboptions'                  => '1 hodźinu:1 hour,2 hodźinje:2 hours, 6 hodźiny:6 hours,1 dźeń:1 day,3 dny:3 days,1 tydźeń:1 week,2 njedźeli:2 weeks,1 měsać:1 month,3 měsacy:3 months,6 měsacow:6 months,1 lěto:1 year,na přeco:infinite',
 'ipbotheroption'              => 'druha doba (jendźelsce)',
 'badipaddress'                => 'Njepłaćiwa IP-adresa',
 'blockipsuccesssub'           => 'Zablokowanje wuspěšne',
@@ -1932,7 +1933,7 @@ W poslednim padźe móžeš tež wotkaz wužiwać, na př. „[[{{ns:special}}:E
 'confirmemail_subject'    => '{{SITENAME}} – wobkrućenje e-mejloweje adresy',
 'confirmemail_body'       => 'Něchtó, najskerje ty z IP-adresu $1, je wužiwarske konto „$2” z tutej e-mejlowej adresu we {{GRAMMAR:lokatiw|{{SITENAME}}}} wutworił.
 
-Zo by so wobkrućiło, zo tute konto woprawdźe tebi słuša a zo bychu so e-mejlowe funkcije we {{{GRAMMAR:lokatiw|{{SITENAME}}}} zaktiwizowali, wočiń tutón wotkaz w swojim wobhladowaku: $3.
+Zo by so wobkrućiło, zo tute konto woprawdźe tebi słuša a zo bychu so e-mejlowe funkcije we {{GRAMMAR:lokatiw|{{SITENAME}}}} zaktiwizowali, wočiń tutón wotkaz w swojim wobhladowaku: $3.
 
 Jeli to *njejsy*, njeslěduj wotkaz. Tutón wobkrućenski kod spadnje dnja $4.
 

@@ -115,7 +115,7 @@ Sielç par plasê un altri non.',
 'contextlines'	=> 'Riis par risultât',
 'contributions' => "Contribûts dal utent",
 'contribslink'	=> 'contribûts',
-'contribsub'    => "Par $1",
+'contribsub2'    => "Par $1 ($2)",
 'copyright' => "Il contignût al è disponibil sot de $1",
 /*'copyrightwarning' => "<!-- Perché i link non abbiano l'aspetto di link esterni: -->
 <div class=\"plainlinks\">
@@ -688,6 +688,7 @@ Par includi une figure intune pagjine, dopre un leam inte form
 'wantedpages'	=> 'Pagjinis desideradis',
 'watch' => "Ten di voli",
 'watchlist' => "Tignûts di voli",
+'mywatchlist' => "Tignûts di voli",
 'watchlistall1' => "ducj",
 'watchlistall2' => "dutis",
 'watchlistcontains' => "Tu stâs tignint di voli $1 pagjinis.",

@@ -968,6 +968,7 @@ Horren arabera, '''$5''' aldaketa egin dira orrialde bakoitzeko bataz beste, eta
 
 # Watchlist
 'watchlist'			=> 'Nire jarraipen zerrenda',
+'mywatchlist'			=> 'Nire jarraipen zerrenda',
 'watchlistfor' => "('''$1''')",
 'nowatchlist'		=> 'Zure jarraipen zerrenda hutsik dago.',
 'watchlistanontext' => 'Mesedez $1 zure jarraipen zerrendako orrialdeak ikusi eta aldatu ahal izateko.',
@@ -1127,7 +1128,7 @@ Laguntza:
 #
 'contributions' => 'Lankidearen ekarpenak',
 'mycontris'     => 'Nire ekarpenak',
-'contribsub'    => "$1",
+'contribsub2'    => "$1 ($2)",
 'nocontribs'    => 'Ez da ezaugarri horiekin bat datorren aldaketarik aurkitu.',
 'ucnote'        => "Behean agertzen dira erabiltzaile honen azken <b>$1</b> aldaketak azken <b>$2</b> egunetan.",
 'uclinks'       => "Azken $1 aldaketak ikusi; azken $2 egunak ikusi.",

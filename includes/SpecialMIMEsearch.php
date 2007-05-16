@@ -10,6 +10,8 @@
  */
 
 /**
+ * Searches the database for files of the requested MIME type, comparing this with the
+ * 'img_major_mime' and 'img_minor_mime' fields in the image table.
  * @addtogroup SpecialPage
  */
 class MIMEsearchPage extends QueryPage {
@@ -77,7 +79,7 @@ class MIMEsearchPage extends QueryPage {
 }
 
 /**
- * constructor
+ * Output the HTML search form, and constructs the MIMEsearchPage object.
  */
 function wfSpecialMIMEsearch( $par = null ) {
 	global $wgRequest, $wgTitle, $wgOut;
@@ -85,33 +87,16 @@ function wfSpecialMIMEsearch( $par = null ) {
 	$mime = isset( $par ) ? $par : $wgRequest->getText( 'mime' );
 
 	$wgOut->addHTML(
-		wfElement( 'form',
+		Xml::openElement( 'form',
 			array(
 				'id' => 'specialmimesearch',
 				'method' => 'get',
 				'action' => $wgTitle->escapeLocalUrl()
-			),
-			null
+			)
 		) .
-			wfOpenElement( 'label' ) .
-				wfMsgHtml( 'mimetype' ) .
-				wfElement( 'input', array(
-						'type' => 'text',
-						'size' => 20,
-						'name' => 'mime',
-						'value' => $mime
-					),
-					''
-				) .
-				' ' .
-				wfElement( 'input', array(
-						'type' => 'submit',
-						'value' => wfMsg( 'ilsubmit' )
-					),
-					''
-				) .
-			wfCloseElement( 'label' ) .
-		wfCloseElement( 'form' )
+			Xml::inputLabel( wfMsg( 'mimetype' ), 'mime', 'mime', 20, $mime ) .
+			Xml::submitButton( wfMsg( 'ilsubmit' ) ) .
+		Xml::closeElement( 'form' )
 	);
 
 	list( $major, $minor ) = wfSpecialMIMEsearchParse( $mime );

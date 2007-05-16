@@ -17,10 +17,12 @@
  * with this program; if not, write to the Free Software Foundation, Inc.,
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
- *
- * @addtogroup SpecialPage
  */
 
+/**
+ * @todo document, briefly.
+ * @addtogroup SpecialPage
+ */
 class ProtectionForm {
 	var $mRestrictions = array();
 	var $mReason = '';
@@ -86,7 +88,7 @@ class ProtectionForm {
 	}
 
 	function show( $err = null ) {
-		global $wgOut;
+		global $wgOut, $wgUser;
 
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
@@ -97,7 +99,7 @@ class ProtectionForm {
 			return;
 		}
 
-		$cascadeSources = $this->mTitle->getCascadeProtectionSources();
+		list( $cascadeSources, /* $restrictions */ ) = $this->mTitle->getCascadeProtectionSources();
 
 		if ( "" != $err ) {
 			$wgOut->setSubtitle( wfMsgHtml( 'formerror' ) );
@@ -111,7 +113,7 @@ class ProtectionForm {
 				$titles .= '* [[:' . $title->getPrefixedText() . "]]\n";
 			}
 
-			$notice = wfMsg( 'protect-cascadeon' ) . "\r\n$titles";
+			$notice = wfMsgExt( 'protect-cascadeon', array('parsemag'), count($cascadeSources) ) . "\r\n$titles";
 
 			$wgOut->addWikiText( $notice );
 		}
@@ -119,9 +121,25 @@ class ProtectionForm {
 		$wgOut->setPageTitle( wfMsg( 'confirmprotect' ) );
 		$wgOut->setSubtitle( wfMsg( 'protectsub', $this->mTitle->getPrefixedText() ) );
 
-		$wgOut->addWikiText(
-			wfMsg( $this->disabled ? "protect-viewtext" : "protect-text",
-				wfEscapeWikiText( $this->mTitle->getPrefixedText() ) ) );
+		# Show an appropriate message if the user isn't allowed or able to change
+		# the protection settings at this time
+		if( $this->disabled ) {
+			if( $wgUser->isAllowed( 'protect' ) ) {
+				if( $wgUser->isBlocked() ) {
+					# Blocked
+					$message = 'protect-locked-blocked';
+				} else {
+					# Database lock
+					$message = 'protect-locked-dblock';
+				}
+			} else {
+				# Permission error
+				$message = 'protect-locked-access';
+			}
+		} else {
+			$message = 'protect-text';
+		}
+		$wgOut->addWikiText( wfMsg( $message, wfEscapeWikiText( $this->mTitle->getPrefixedText() ) ) );
 
 		$wgOut->addHTML( $this->buildForm() );
 
@@ -182,6 +200,7 @@ class ProtectionForm {
 			// The submission needs to reenable the move permission selector
 			// if it's in locked mode, or some browsers won't submit the data.
 			$out .= wfOpenElement( 'form', array(
+				'id' => 'mw-Protect-Form',
 				'action' => $this->mTitle->getLocalUrl( 'action=protect' ),
 				'method' => 'post',
 				'onsubmit' => 'protectEnable(true)' ) );
@@ -213,13 +232,13 @@ class ProtectionForm {
 		$out .= "</tbody>\n";
 		$out .= "</table>\n";
 
-		$out .= "<table>\n";
-		$out .= "<tbody>\n";
-
 		global $wgEnableCascadingProtection;
 
 		if ($wgEnableCascadingProtection)
 			$out .= $this->buildCascadeInput();
+
+		$out .= "<table>\n";
+		$out .= "<tbody>\n";
 
 		$out .= $this->buildExpiryInput();
 
@@ -285,8 +304,7 @@ class ProtectionForm {
 
 	function buildCascadeInput() {
 		$id = 'mwProtect-cascade';
-		$ci = "<tr>" . wfCheckLabel( wfMsg( 'protect-cascade' ), $id, $id, $this->mCascade, $this->disabledAttrib) . "</tr>";
-
+		$ci = wfCheckLabel( wfMsg( 'protect-cascade' ), $id, $id, $this->mCascade, $this->disabledAttrib);
 		return $ci;
 	}
 
@@ -311,6 +329,7 @@ class ProtectionForm {
 
 	function buildSubmit() {
 		return wfElement( 'input', array(
+			'id' => 'mw-Protect-submit',
 			'type' => 'submit',
 			'value' => wfMsg( 'confirm' ) ) );
 	}
@@ -323,8 +342,17 @@ class ProtectionForm {
 	}
 
 	function buildCleanupScript() {
-		return '<script type="text/javascript">protectInitialize("mwProtectSet","' .
-			wfEscapeJsString( wfMsg( 'protect-unchain' ) ) . '")</script>';
+		global $wgRestrictionLevels, $wgGroupPermissions;
+		$script = 'var wgCascadeableLevels=';
+		$CascadeableLevels = array();
+		foreach( $wgRestrictionLevels as $key ) {
+			if ( isset($wgGroupPermissions[$key]['protect']) && $wgGroupPermissions[$key]['protect'] ) {
+				$CascadeableLevels[]="'" . wfEscapeJsString($key) . "'";
+			}
+		}
+		$script .= "[" . implode(',',$CascadeableLevels) . "];\n";
+		$script .= 'protectInitialize("mwProtectSet","' . wfEscapeJsString( wfMsg( 'protect-unchain' ) ) . '")';
+		return '<script type="text/javascript">' . $script . '</script>';
 	}
 
 	/**

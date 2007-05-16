@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Created on Sep 7, 2006
  *
@@ -29,6 +28,9 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiBase.php');
 }
 
+/**
+ * @addtogroup API
+ */
 class ApiQuery extends ApiBase {
 
 	private $mPropModuleNames, $mListModuleNames, $mMetaModuleNames;
@@ -36,12 +38,16 @@ class ApiQuery extends ApiBase {
 
 	private $mQueryPropModules = array (
 		'info' => 'ApiQueryInfo',
-		'revisions' => 'ApiQueryRevisions'
+		'revisions' => 'ApiQueryRevisions',
+		'links' => 'ApiQueryLinks',
+		'langlinks' => 'ApiQueryLangLinks',
+		'images' => 'ApiQueryImages',
+		'templates' => 'ApiQueryLinks',
+		'categories' => 'ApiQueryCategories',
+		'extlinks' => 'ApiQueryExternalLinks',
 	);
 	//	'categories' => 'ApiQueryCategories',
 	//	'imageinfo' => 'ApiQueryImageinfo',
-	//	'langlinks' => 'ApiQueryLanglinks',
-	//	'links' => 'ApiQueryLinks',
 	//	'templates' => 'ApiQueryTemplates',
 
 	private $mQueryListModules = array (
@@ -51,12 +57,10 @@ class ApiQuery extends ApiBase {
 		'recentchanges' => 'ApiQueryRecentChanges',
 		'backlinks' => 'ApiQueryBacklinks',
 		'embeddedin' => 'ApiQueryBacklinks',
-		'imagelinks' => 'ApiQueryBacklinks',
+		'imageusage' => 'ApiQueryBacklinks',
 		'usercontribs' => 'ApiQueryContributions'
 	);
 	//	'categorymembers' => 'ApiQueryCategorymembers',
-	//	'embeddedin' => 'ApiQueryEmbeddedin',
-	//	'imagelinks' => 'ApiQueryImagelinks',
 	//	'recentchanges' => 'ApiQueryRecentchanges',
 	//	'users' => 'ApiQueryUsers',
 	//	'watchlist' => 'ApiQueryWatchlist',
@@ -67,9 +71,30 @@ class ApiQuery extends ApiBase {
 	//	'userinfo' => 'ApiQueryUserinfo',
 
 	private $mSlaveDB = null;
+	private $mNamedDB = array();
 
 	public function __construct($main, $action) {
 		parent :: __construct($main, $action);
+
+		// Allow custom modules to be added in LocalSettings.php		
+		global $wgApiQueryPropModules, $wgApiQueryListModules, $wgApiQueryMetaModules;
+
+		if (is_array( $wgApiQueryPropModules )) {
+			foreach ( $wgApiQueryPropModules as $moduleName => $moduleClass) {
+				$this->mQueryPropModules[$moduleName] = $moduleClass;
+			}
+		}
+		if (is_array( $wgApiQueryListModules )) {
+			foreach ( $wgApiQueryListModules as $moduleName => $moduleClass) {
+				$this->mQueryListModules[$moduleName] = $moduleClass;
+			}
+		}
+		if (is_array( $wgApiQueryMetaModules )) {
+			foreach ( $wgApiQueryMetaModules as $moduleName => $moduleClass) {
+				$this->mQueryMetaModules[$moduleName] = $moduleClass;
+			}
+		}
+
 		$this->mPropModuleNames = array_keys($this->mQueryPropModules);
 		$this->mListModuleNames = array_keys($this->mQueryListModules);
 		$this->mMetaModuleNames = array_keys($this->mQueryMetaModules);
@@ -86,6 +111,21 @@ class ApiQuery extends ApiBase {
 			$this->profileDBOut();
 		}
 		return $this->mSlaveDB;
+	}
+
+	/**
+	 * Get the query database connection with the given name.
+	 * If no such connection has been requested before, it will be created. 
+	 * Subsequent calls with the same $name will return the same connection 
+	 * as the first, regardless of $db or $groups new values. 
+	 */
+	public function getNamedDB($name, $db, $groups) {
+		if (!array_key_exists($name, $this->mNamedDB)) {
+			$this->profileDBIn();
+			$this->mNamedDB[$name] = wfGetDB($db, $groups);
+			$this->profileDBOut();
+		}
+		return $this->mNamedDB[$name];
 	}
 
 	public function getPageSet() {
@@ -130,15 +170,15 @@ class ApiQuery extends ApiBase {
 		}
 
 		//
+		// Populate page information for the given pageSet
+		//
+		$this->mPageSet->execute();
+
+		//
 		// If given, execute generator to substitute user supplied data with generated data.  
 		//
 		if (isset ($generator))
 			$this->executeGeneratorModule($generator, $redirects);
-
-		//
-		// Populate page information for the given pageSet
-		//
-		$this->mPageSet->execute();
 
 		//
 		// Record page information (title, namespace, if exists, etc)
@@ -248,9 +288,8 @@ class ApiQuery extends ApiBase {
 			ApiBase :: dieDebug(__METHOD__, "Unknown generator=$generatorName");
 		}
 
-		// Use current pageset as the result, and create a new one just for the generator 
-		$resultPageSet = $this->mPageSet;
-		$this->mPageSet = new ApiPageSet($this, $redirects);
+		// Generator results 
+		$resultPageSet = new ApiPageSet($this, $redirects);
 
 		// Create and execute the generator
 		$generator = new $className ($this, $generatorName);
@@ -259,9 +298,6 @@ class ApiQuery extends ApiBase {
 
 		$generator->setGeneratorMode();
 		$generator->requestExtraData();
-
-		// execute current pageSet to get the data for the generator module
-		$this->mPageSet->execute();
 
 		// populate resultPageSet with the generator output
 		$generator->profileIn();

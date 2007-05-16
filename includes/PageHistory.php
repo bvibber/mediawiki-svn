@@ -14,7 +14,6 @@
  * history.
  *
  */
-
 class PageHistory {
 	const DIR_PREV = 0;
 	const DIR_NEXT = 1;
@@ -99,6 +98,8 @@ class PageHistory {
 			$wgOut->redirect( $wgTitle->getLocalURL( "action=history&limit={$limit}&dir=prev" ) );
 			return;
 		}
+		
+		wfRunHooks( 'PageHistoryBeforeList', array( &$this->mArticle ) );
 
 		/** 
 		 * Do the list
@@ -177,7 +178,7 @@ class PageHistory {
 	 * @return string HTML output for the row
 	 */
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		$rev = new Revision( $row );
 		$rev->setTitle( $this->mTitle );
 
@@ -224,7 +225,7 @@ class PageHistory {
 			if ($size == 0)
 				$stxt = wfMsgHtml('historyempty');
 			else
-				$stxt = wfMsgHtml('historysize', $size);
+				$stxt = wfMsgHtml('historysize', $wgLang->formatNum( $size ) );
 			$s .= " <span class=\"history-size\">$stxt</span>";
 		}
 
@@ -246,6 +247,9 @@ class PageHistory {
 		if( $wgUser->isAllowed( 'rollback' ) && $latest ) {
 			$s .= ' '.$this->mSkin->generateRollback( $rev );
 		}
+		
+		wfRunHooks( 'PageHistoryLineEnding', array( &$row , &$s ) );
+		
 		$s .= "</li>\n";
 
 		return $s;
@@ -387,8 +391,7 @@ class PageHistory {
 
 		$res = $dbr->select(
 			'revision',
-			array('rev_id', 'rev_page', 'rev_text_id', 'rev_user', 'rev_comment', 'rev_user_text',
-				'rev_timestamp', 'rev_minor_edit', 'rev_deleted', 'rev_len'),
+			Revision::selectFields(),
 			array_merge(array("rev_page=$page_id"), $offsets),
 			$fname,
 			array('ORDER BY' => "rev_timestamp $dirs",
@@ -519,6 +522,9 @@ class PageHistory {
 }
 
 
+/**
+ * @addtogroup Pager
+ */
 class PageHistoryPager extends ReverseChronologicalPager {
 	public $mLastRow = false, $mPageHistory;
 	
@@ -530,8 +536,7 @@ class PageHistoryPager extends ReverseChronologicalPager {
 	function getQueryInfo() {
 		return array(
 			'tables' => 'revision',
-			'fields' => array('rev_id', 'rev_page', 'rev_text_id', 'rev_user', 'rev_comment', 'rev_user_text',
-				'rev_timestamp', 'rev_minor_edit', 'rev_deleted', 'rev_len'),
+			'fields' => Revision::selectFields(),
 			'conds' => array('rev_page' => $this->mPageHistory->mTitle->getArticleID() ),
 			'options' => array( 'USE INDEX' => 'page_timestamp' )
 		);

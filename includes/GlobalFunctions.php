@@ -22,7 +22,6 @@ $wgTotalViews = -1;
 $wgTotalEdits = -1;
 
 
-global $IP;
 require_once dirname(__FILE__) . '/LogPage.php';
 require_once dirname(__FILE__) . '/normal/UtfNormalUtil.php';
 require_once dirname(__FILE__) . '/XmlFunctions.php';
@@ -62,9 +61,26 @@ if ( !function_exists( 'mb_substr' ) ) {
 }
 
 if ( !function_exists( 'mb_strlen' ) ) {
-	function mb_strlen( $str, $enc = "" ) {
-		preg_match_all( '/./us', $str, $matches );
-		return count($matches);
+	/**
+	 * Fallback implementation of mb_strlen, hardcoded to UTF-8.
+	 * @param string $str
+	 * @param string $enc optional encoding; ignored
+	 * @return int
+	 */
+	function mb_strlen( $str, $enc="" ) {
+		$counts = count_chars( $str );
+		$total = 0;
+
+		// Count ASCII bytes
+		for( $i = 0; $i < 0x80; $i++ ) {
+			$total += $counts[$i];
+		}
+
+		// Count multibyte sequence heads
+		for( $i = 0xc0; $i < 0xff; $i++ ) {
+			$total += $counts[$i];
+		}
+		return $total;
 	}
 }
 
@@ -223,7 +239,7 @@ function wfLogDBError( $text ) {
 function wfErrorLog( $text, $file ) {
 	wfSuppressWarnings();
 	$exists = file_exists( $file );
-	$size = filesize( $file );
+	$size = $exists ? filesize( $file ) : false;
 	if ( !$exists || ( $size !== false && $size + strlen( $text ) < 0x7fffffff ) ) {
 		error_log( $text, 3, $file );
 	}
@@ -413,18 +429,11 @@ function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = 
  * @param $key String:
  */
 function wfMsgWeirdKey ( $key ) {
-	$subsource = str_replace ( ' ' , '_' , $key ) ;
-	$source = wfMsgForContentNoTrans( $subsource ) ;
-	if ( wfEmptyMsg( $subsource, $source) ) {
-		# Try again with first char lower case
-		$subsource = strtolower ( substr ( $subsource , 0 , 1 ) ) . substr ( $subsource , 1 ) ;
-		$source = wfMsgForContentNoTrans( $subsource ) ;
-	}
-	if ( wfEmptyMsg( $subsource, $source ) ) {
-		# Didn't work either, return blank text
-		$source = "" ;
-	}
-	return $source ;
+	$source = wfMsgGetKey( $key, false, true, false );
+	if ( wfEmptyMsg( $key, $source ) )
+		return "";
+	else
+		return $source;
 }
 
 /**
@@ -437,6 +446,17 @@ function wfMsgWeirdKey ( $key ) {
  */
 function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
 	global $wgParser, $wgContLang, $wgMessageCache, $wgLang;
+
+	/* <Vyznev> btw, is all that code in wfMsgGetKey() that check
+	 * if the message cache exists of not really necessary, or is
+	 * it just paranoia?
+	 * <TimStarling> Vyznev: it's probably not necessary
+	 * <TimStarling> I think I wrote it in an attempt to report DB
+	 * connection errors properly
+	 * <TimStarling> but eventually we gave up on using the
+	 * message cache for that and just hard-coded the strings
+	 * <TimStarling> it may have other uses, it's not mere paranoia
+	 */
 
 	if ( is_object( $wgMessageCache ) )
 		$transstat = $wgMessageCache->getTransform();
@@ -452,16 +472,18 @@ function wfMsgGetKey( $key, $useDB, $forContent = false, $transform = true ) {
 			$lang = &$wgLang;
 		}
 
-		wfSuppressWarnings();
+		# MessageCache::get() does this already, Language::getMessage() doesn't
+		# ISSUE: Should we try to handle "message/lang" here too?
+		$key = str_replace( ' ' , '_' , $wgContLang->lcfirst( $key ) );
 
+		wfSuppressWarnings();
 		if( is_object( $lang ) ) {
 			$message = $lang->getMessage( $key );
 		} else {
 			$message = false;
 		}
 		wfRestoreWarnings();
-		if($message === false)
-			$message = Language::getMessage($key);
+
 		if ( $transform && strstr( $message, '{{' ) !== false ) {
 			$message = $wgParser->transformMsg($message, $wgMessageCache->getParserOptions() );
 		}
@@ -542,11 +564,11 @@ function wfMsgWikiHtml( $key ) {
  * Returns message in the requested format
  * @param string $key Key of the message
  * @param array $options Processing rules:
- *  <i>parse<i>: parses wikitext to html
- *  <i>parseinline<i>: parses wikitext to html and removes the surrounding p's added by parser or tidy
- *  <i>escape<i>: filters message trough htmlspecialchars
- *  <i>replaceafter<i>: parameters are substituted after parsing or escaping
- *  <i>parsemag<i>: transform the message using magic phrases
+ *  <i>parse</i>: parses wikitext to html
+ *  <i>parseinline</i>: parses wikitext to html and removes the surrounding p's added by parser or tidy
+ *  <i>escape</i>: filters message trough htmlspecialchars
+ *  <i>replaceafter</i>: parameters are substituted after parsing or escaping
+ *  <i>parsemag</i>: transform the message using magic phrases
  */
 function wfMsgExt( $key, $options ) {
 	global $wgOut, $wgParser;
@@ -596,7 +618,7 @@ function wfMsgExt( $key, $options ) {
  * Just like exit() but makes a note of it.
  * Commits open transactions except if the error parameter is set
  *
- * @obsolete Please return control to the caller or throw an exception
+ * @deprecated Please return control to the caller or throw an exception
  */
 function wfAbruptExit( $error = false ){
 	global $wgLoadBalancer;
@@ -626,7 +648,7 @@ function wfAbruptExit( $error = false ){
 }
 
 /**
- * @obsolete Please return control the caller or throw an exception
+ * @deprecated Please return control the caller or throw an exception
  */
 function wfErrorExit() {
 	wfAbruptExit( true );
@@ -968,6 +990,26 @@ function wfArrayToCGI( $array1, $array2 = NULL )
 }
 
 /**
+ * Append a query string to an existing URL, which may or may not already
+ * have query string parameters already. If so, they will be combined.
+ *
+ * @param string $url
+ * @param string $query
+ * @return string
+ */
+function wfAppendQuery( $url, $query ) {
+	if( $query != '' ) {
+		if( false === strpos( $url, '?' ) ) {
+			$url .= '?';
+		} else {
+			$url .= '&';
+		}
+		$url .= $query;
+	}
+	return $url;
+}
+
+/**
  * This is obsolete, use SquidUpdate::purge()
  * @deprecated
  */
@@ -1131,7 +1173,7 @@ function wfHttpError( $code, $label, $desc ) {
  * Note that some PHP configuration options may add output buffer
  * layers which cannot be removed; these are left in place.
  *
- * @parameter bool $resetGzipEncoding
+ * @param bool $resetGzipEncoding
  */
 function wfResetOutputBuffers( $resetGzipEncoding=true ) {
 	if( $resetGzipEncoding ) {
@@ -1365,7 +1407,7 @@ define('TS_ISO_8601', 4);
 /**
  * An Exif timestamp (YYYY:MM:DD HH:MM:SS)
  *
- * @url http://exif.org/Exif2-2.PDF The Exif 2.2 spec, see page 28 for the
+ * @see http://exif.org/Exif2-2.PDF The Exif 2.2 spec, see page 28 for the
  *       DateTime tag and page 36 for the DateTimeOriginal and
  *       DateTimeDigitized tags.
  */
@@ -1784,14 +1826,14 @@ function wfShellExec( $cmd, &$retval=null ) {
 	}
 
 	if ( php_uname( 's' ) == 'Linux' ) {
-		$time = ini_get( 'max_execution_time' );
+		$time = intval( ini_get( 'max_execution_time' ) );
 		$mem = intval( $wgMaxShellMemory );
 		$filesize = intval( $wgMaxShellFileSize );
 
 		if ( $time > 0 && $mem > 0 ) {
-			$script = "$IP/bin/ulimit-tvf.sh";
+			$script = "$IP/bin/ulimit4.sh";
 			if ( is_executable( $script ) ) {
-				$cmd = escapeshellarg( $script ) . " $time $mem $filesize $cmd";
+				$cmd = escapeshellarg( $script ) . " $time $mem $filesize " . escapeshellarg( $cmd );
 			}
 		}
 	} elseif ( php_uname( 's' ) == 'Windows NT' ) {
@@ -1916,20 +1958,45 @@ function wfRelativePath( $path, $from ) {
  * Make a URL index, appropriate for the el_index field of externallinks.
  */
 function wfMakeUrlIndex( $url ) {
-	wfSuppressWarnings();
+	global $wgUrlProtocols; // Allow all protocols defined in DefaultSettings/LocalSettings.php
 	$bits = parse_url( $url );
+	wfSuppressWarnings();
 	wfRestoreWarnings();
-	if ( !$bits || $bits['scheme'] !== 'http' ) {
+	if ( !$bits ) {
 		return false;
 	}
+	// most of the protocols are followed by ://, but mailto: and sometimes news: not, check for it
+	$delimiter = '';
+	if ( in_array( $bits['scheme'] . '://' , $wgUrlProtocols ) ) {
+		$delimiter = '://';
+	} elseif ( in_array( $bits['scheme'] .':' , $wgUrlProtocols ) ) {
+		$delimiter = ':';
+		// parse_url detects for news: and mailto: the host part of an url as path
+		// We have to correct this wrong detection
+		if ( isset ( $bits['path'] ) ) { 
+			$bits['host'] = $bits['path'];
+			$bits['path'] = '';
+		}
+	} else {
+		return false;
+	}
+
 	// Reverse the labels in the hostname, convert to lower case
-	$reversedHost = strtolower( implode( '.', array_reverse( explode( '.', $bits['host'] ) ) ) );
+	// For emails reverse domainpart only
+	if ( $bits['scheme'] == 'mailto' ) {
+		$mailparts = explode( '@', $bits['host'] );
+		$domainpart = strtolower( implode( '.', array_reverse( explode( '.', $mailparts[1] ) ) ) );
+		$reversedHost = $domainpart . '@' . $mailparts[0];
+	} else {
+		$reversedHost = strtolower( implode( '.', array_reverse( explode( '.', $bits['host'] ) ) ) );
+	}
 	// Add an extra dot to the end
 	if ( substr( $reversedHost, -1, 1 ) !== '.' ) {
 		$reversedHost .= '.';
 	}
 	// Reconstruct the pseudo-URL
-	$index = "http://$reversedHost";
+	$prot = $bits['scheme'];
+	$index = "$prot$delimiter$reversedHost";
 	// Leave out user and password. Add the port, path, query and fragment
 	if ( isset( $bits['port'] ) )      $index .= ':' . $bits['port'];
 	if ( isset( $bits['path'] ) ) {
@@ -1977,9 +2044,11 @@ function wfExplodeMarkup( $separator, $text ) {
  * @param $sourceBase int 2-36
  * @param $destBase int 2-36
  * @param $pad int 1 or greater
+ * @param $lowercase bool
  * @return string or false on invalid input
  */
-function wfBaseConvert( $input, $sourceBase, $destBase, $pad=1 ) {
+function wfBaseConvert( $input, $sourceBase, $destBase, $pad=1, $lowercase=true ) {
+	$input = strval( $input );
 	if( $sourceBase < 2 ||
 		$sourceBase > 36 ||
 		$destBase < 2 ||
@@ -1992,8 +2061,7 @@ function wfBaseConvert( $input, $sourceBase, $destBase, $pad=1 ) {
 		$input == '' ) {
 		return false;
 	}
-	
-	$digitChars = '0123456789abcdefghijklmnopqrstuvwxyz';
+	$digitChars = ( $lowercase ) ?  '0123456789abcdefghijklmnopqrstuvwxyz' : '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	$inDigits = array();
 	$outChars = '';
 	

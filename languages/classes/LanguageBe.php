@@ -1,5 +1,8 @@
 <?php
-/** Belarusian (Беларуская мова)
+/** Belarusian normative (Беларуская мова)
+  *
+  * This is still the version from Be-x-old, only duplicated for consistency of
+  * plural and grammar functions. If there are errors please send a patch.
   *
   * @addtogroup Language
   *

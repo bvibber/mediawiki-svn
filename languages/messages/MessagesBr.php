@@ -1057,6 +1057,7 @@ E maezienn \"Kaser\" ho postel e vo merket ar chomlec'h postel resisaet ganeoc'h
 
 # Watchlist
 'watchlist'            => 'Rollad evezhiañ',
+'mywatchlist'            => 'Rollad evezhiañ',
 'watchlistfor'         => "(evit '''$1''')",
 'nowatchlist'          => "N'eus pennad ebet en ho rollad evezhiañ.",
 'watchlistanontext'    => "Ret eo deoc'h $1 evit gwelet pe kemmañ an elfennoù zo en ho rollad evezhiañ.",
@@ -1244,7 +1245,7 @@ Sellit ouzh [[Special:Log/delete|marilh an diverkadennoù]] evit teuler ur sell 
 # Contributions
 'contributions' => 'diazezet war labour $1.',
 'mycontris'     => 'Ma degasadennnoù',
-'contribsub'    => 'Evit $1',
+'contribsub2'    => 'Evit $1 ($2)',
 'nocontribs'    => "N'eus bet kavet kemm ebet o klotañ gant an dezverkoù-se.",
 'ucnote'        => "Setu an/ar <b>$1</b> (b/c'h)kemm diwezhañ bet graet gant an implijer-mañ e-pad an/ar <b>$2</b> devezh diwezhañ.",
 'uclinks'       => "diskouez an/ar $1 (g/c'h)kemm diwezhañ; diskouez an/ar $2 devezh diwezhañ.",

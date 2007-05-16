@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Created on Sep 19, 2006
  *
@@ -29,6 +28,9 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiFormatBase.php');
 }
 
+/**
+ * @addtogroup API
+ */
 class ApiFormatJson extends ApiFormatBase {
 
 	private $mIsRaw;
@@ -47,12 +49,33 @@ class ApiFormatJson extends ApiFormatBase {
 	}
 
 	public function execute() {
+		$prefix = $suffix = "";
+
+		$params = $this->extractRequestParams();
+		$callback = $params['callback'];
+		if(!is_null($callback)) {
+			$prefix = ereg_replace("[^_A-Za-z0-9]", "", $callback ) . "(";
+			$suffix = ")";
+		}
+
 		if (!function_exists('json_encode') || $this->getIsHtml()) {
 			$json = new Services_JSON();
-			$this->printText($json->encode($this->getResultData(), $this->getIsHtml()));
+			$this->printText($prefix . $json->encode($this->getResultData(), $this->getIsHtml()) . $suffix);
 		} else {
-			$this->printText(json_encode($this->getResultData()));
+			$this->printText($prefix . json_encode($this->getResultData()) . $suffix);
 		}
+	}
+
+	protected function getAllowedParams() {
+		return array (
+			'callback' => null
+		);
+	}
+
+	protected function getParamDescription() {
+		return array (
+			'callback' => 'If specified, wraps the output into a given function call',
+		);
 	}
 
 	protected function getDescription() {

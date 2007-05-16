@@ -528,6 +528,7 @@ Die e-posadres wat jy in jou gebruikersvoorkeure het sal verkyn as die \"Van\" a
 # Watchlist
 #
 "watchlist"		=> "My dophoulys",
+"mywatchlist"		=> "My dophoulys",
 "nowatchlist"	=> "Jy het geen items in jou dophoulys nie.",
 "watchnologin"	=> "Nie ingeteken nie",
 "watchnologintext"	=> "Jy moet [[Special:Userlogin|ingeteken]]
@@ -587,7 +588,7 @@ As 'n nuwe bladsy met dieselfde naam sedert die skrapping geskep is, sal die her
 #
 "contributions"	=> "Gebruikersbydraes",
 "mycontris" => "My bydraes",
-"contribsub"	=> "Vir $1",
+"contribsub2"	=> "Vir $1 ($2)",
 
 "nocontribs"	=> "Geen veranderinge wat by hierdie kriteria pas, is gevind nie.",
 "ucnote"		=> "Hier onder is die gebruiker se laaste <b>$1</b> veranderings in die laaste <b>$2</b> dae.",

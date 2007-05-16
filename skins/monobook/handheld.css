@@ -872,11 +872,8 @@ head:first-child+body #footer li { white-space: nowrap; }
 	background-color: #F9F9F9;
 }
 div.prefsectiontip {
-	font-size: 95%;
-	margin-top: 0;
-	background-color: #FFC1C1;
-	padding: .2em .7em;
-	clear: both;
+	font-size: x-small;
+	padding: .2em 2em;
 }
 .btnSavePrefs {
 	font-weight: bold;
@@ -917,7 +914,6 @@ div#userlogin form#userlogin2 h2 {
 div#userlogin .captcha {
 	border: 1px solid #bbb;
 	padding: 1.5em 2em;
-	width: 400px;
 	background-color: white;
 }
 
@@ -1036,6 +1032,7 @@ div.gallerybox div.thumb {
 }
 
 div.gallerytext {
+	overflow: hidden;
 	font-size: 94%;
 	padding: 2px 4px;
 }

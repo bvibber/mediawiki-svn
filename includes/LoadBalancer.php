@@ -95,7 +95,9 @@ class LoadBalancer {
 		# Unset excessively lagged servers
 		$lags = $this->getLagTimes();
 		foreach ( $lags as $i => $lag ) {
-			if ( isset( $this->mServers[$i]['max lag'] ) && $lag > $this->mServers[$i]['max lag'] ) {
+			if ( $i != 0 && isset( $this->mServers[$i]['max lag'] ) && 
+				( $lag === false || $lag > $this->mServers[$i]['max lag'] ) ) 
+			{
 				unset( $loads[$i] );
 			}
 		}
@@ -238,53 +240,6 @@ class LoadBalancer {
 		}
 		wfDebug( "Query group $group => $i\n" );
 		return $i;
-	}
-
-	/**
-	 * Get a connection to a foreign DB. Will use the following types of 
-	 * connection in order of precedence:
-	 *    * The alternate master, if there is one and DB_MASTER is given
-	 *    * The query group
-	 *    * The alternate master, if there is one
-	 *    * The default writer, if DB_MASTER was specified
-	 *    * The default reader. 
-	 * 
-	 * Connection error will *not* lead to progression down this list. Selection
-	 * of a group depends only on configuration.
-	 *
-	 * @param string $dbName The database name
-	 * @param mixed $group The query group, or DB_MASTER for the foreign master
-	 * @return Database object with the database selected
-	 */
-	function getForeignConnection( $dbName, $group = false ) {
-		global $wgAlternateMaster;
-
-		// Try cache
-		if ( isset( $this->mForeignConnections[$dbName][$group] ) ) {
-			return $this->mForeignConnections[$dbName][$group];
-		}
-
-		// Try the precedence list described in the function description
-		if ( $group === DB_MASTER && isset( $wgAlternateMaster[$dbName] ) ) {
-			$index = $this->mServers[$wgAlternateMaster[$dbName]];
-		} if ( $group && $group !== DB_MASTER ) {
-			$index = $this->getGroupIndex( $group );
-		} elseif ( isset( $wgAlternateMaster[$dbName] ) ) {
-			$index = $this->mServers[$wgAlternateMaster[$dbName]];
-		} elseif ( $group === DB_MASTER ) {
-			$index = $this->getWriterIndex();
-		} else {
-			$index = $this->getReaderIndex();
-		}
-
-		if ( $index === false || !isset( $this->mServers[$index] ) ) {
-			throw new MWException( "No configured server available for foreign connection to $dbName" );
-		}
-
-		$dbInfo = $this->mServers[$index];
-		$dbc = $this->reallyOpenConnection( $dbInfo, $dbName );
-		$this->mForeignConnections[$dbName][$group] = $dbc;
-		return $dbc;
 	}
 
 	/**
@@ -462,15 +417,12 @@ class LoadBalancer {
 	 * Really opens a connection
 	 * @access private
 	 */
-	function reallyOpenConnection( &$server, $overrideDBname = false ) {
+	function reallyOpenConnection( &$server ) {
 		if( !is_array( $server ) ) {
 			throw new MWException( 'You must update your load-balancing configuration. See DefaultSettings.php entry for $wgDBservers.' );
 		}
 
 		extract( $server );
-		if ( $overrideDBname ) {
-			$dbname = $overrideDBname;
-		}
 		# Get class for this database type
 		$class = 'Database' . ucfirst( $type );
 

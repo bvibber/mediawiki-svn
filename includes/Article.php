@@ -500,6 +500,10 @@ class Article {
 	 * @return bool
 	 */
 	function isCurrent() {
+		# If no oldid, this is the current version.
+		if ($this->getOldID() == 0)
+			return true;
+
 		return $this->exists() &&
 			isset( $this->mRevision ) &&
 			$this->mRevision->isCurrent();
@@ -718,9 +722,12 @@ class Article {
 		}
 
 		$outputDone = false;
+		wfRunHooks( 'ArticleViewHeader', array( &$this ) );
 		if ( $pcache ) {
 			if ( $wgOut->tryParserCache( $this, $wgUser ) ) {
-				wfRunHooks( 'ArticleViewHeader', array( &$this ) );
+				// Ensure that UI elements requiring revision ID have
+				// the correct version information.
+				$wgOut->setRevisionId( $this->mLatest );
 				$outputDone = true;
 			}
 		}
@@ -767,17 +774,12 @@ class Article {
 			}
 		}
 		if( !$outputDone ) {
-			/**
-			 * @fixme: this hook doesn't work most of the time, as it doesn't
-			 * trigger when the parser cache is used.
-			 */
-			wfRunHooks( 'ArticleViewHeader', array( &$this ) ) ;
 			$wgOut->setRevisionId( $this->getRevIdFetched() );
 			# wrap user css and user js in pre and don't parse
 			# XXX: use $this->mTitle->usCssJsSubpage() when php is fixed/ a workaround is found
 			if (
 				$ns == NS_USER &&
-				preg_match('/\\/[\\w]+\\.(css|js)$/', $this->mTitle->getDBkey())
+				preg_match('/\\/[\\w]+\\.(?:css|js)$/', $this->mTitle->getDBkey())
 			) {
 				$wgOut->addWikiText( wfMsg('clearyourcache'));
 				$wgOut->addHTML( '<pre>'.htmlspecialchars($this->mContent)."\n</pre>" );
@@ -1682,6 +1684,7 @@ class Article {
 
 		# If nothing's changed, do nothing
 		if( $changed ) {
+			global $wgGroupPermissions;
 			if( wfRunHooks( 'ArticleProtect', array( &$this, &$wgUser, $limit, $reason ) ) ) {
 
 				$dbw = wfGetDB( DB_MASTER );
@@ -1689,7 +1692,6 @@ class Article {
 				$encodedExpiry = Block::encodeExpiry($expiry, $dbw );
 
 				$expiry_description = '';
-
 				if ( $encodedExpiry != 'infinity' ) {
 					$expiry_description = ' (' . wfMsgForContent( 'protect-expiring', $wgContLang->timeanddate( $expiry ) ).')';
 				}
@@ -1697,12 +1699,25 @@ class Article {
 				# Prepare a null revision to be added to the history
 				$comment = $wgContLang->ucfirst( wfMsgForContent( $protect ? 'protectedarticle' : 'unprotectedarticle', $this->mTitle->getPrefixedText() ) );
 
+				foreach( $limit as $action => $restrictions ) {
+					# Check if the group level required to edit also can protect pages
+					# Otherwise, people who cannot normally protect can "protect" pages via transclusion
+					$cascade = ( $cascade && isset($wgGroupPermissions[$restrictions]['protect']) && $wgGroupPermissions[$restrictions]['protect'] );	
+				}
+				
+				$cascade_description = '';
+				if ($cascade) {
+					$cascade_description = ' ['.wfMsg('protect-summary-cascade').']';
+				}
+
 				if( $reason )
 					$comment .= ": $reason";
 				if( $protect )
 					$comment .= " [$updated]";
 				if ( $expiry_description && $protect )
 					$comment .= "$expiry_description";
+				if ( $cascade )
+					$comment .= "$cascade_description";
 
 				$nullRevision = Revision::newNullRevision( $dbw, $id, $comment, true );
 				$nullRevId = $nullRevision->insertOn( $dbw );
@@ -1734,12 +1749,6 @@ class Article {
 
 				# Update the protection log
 				$log = new LogPage( 'protect' );
-
-				$cascade_description = '';
-
-				if ($cascade) {
-					$cascade_description = ' ['.wfMsg('protect-summary-cascade').']';
-				}
 
 				if( $protect ) {
 					$log->addEntry( 'protect', $this->mTitle, trim( $reason . " [$updated]$cascade_description$expiry_description" ) );
@@ -1870,7 +1879,7 @@ class Article {
 				$reason = wfMsgForContent( 'exblank' );
 			}
 
-			if( $length < 500 && $reason === '' ) {
+			if( $reason === '' ) {
 				# comment field=255, let's grep the first 150 to have some user
 				# space left
 				global $wgContLang;
@@ -2078,6 +2087,7 @@ class Article {
 				'ar_text_id'    => 'rev_text_id',
 				'ar_text'       => '\'\'', // Be explicit to appease
 				'ar_flags'      => '\'\'', // MySQL's "strict mode"...
+				'ar_len'		=> 'rev_len'
 			), array(
 				'page_id' => $id,
 				'page_id = rev_page'
@@ -2180,7 +2190,7 @@ class Article {
 			if( $current->getComment() != '') {
 				$wgOut->addHTML(
 					wfMsg( 'editcomment',
-					htmlspecialchars( $current->getComment() ) ) );
+					$wgUser->getSkin()->formatComment( $current->getComment() ) ) );
 			}
 			return;
 		}
@@ -2352,7 +2362,7 @@ class Article {
 	 *
 	 * @param Revision $rev
 	 *
-	 * @fixme This is a shitty interface function. Kill it and replace the
+	 * @todo This is a shitty interface function. Kill it and replace the
 	 * other shitty functions like editUpdates and such so it's not needed
 	 * anymore.
 	 */
@@ -2458,25 +2468,40 @@ class Article {
 	 * @return bool
 	 */
 	function isFileCacheable() {
-		global $wgUser, $wgUseFileCache, $wgShowIPinHeader, $wgRequest;
+		global $wgUser, $wgUseFileCache, $wgShowIPinHeader, $wgRequest, $wgLang, $wgContLang;
 		$action    = $wgRequest->getVal( 'action'    );
 		$oldid     = $wgRequest->getVal( 'oldid'     );
 		$diff      = $wgRequest->getVal( 'diff'      );
 		$redirect  = $wgRequest->getVal( 'redirect'  );
 		$printable = $wgRequest->getVal( 'printable' );
+		$page      = $wgRequest->getVal( 'page' );
 
-		return $wgUseFileCache
-			and (!$wgShowIPinHeader)
-			and ($this->getID() != 0)
-			and ($wgUser->isAnon())
-			and (!$wgUser->getNewtalk())
-			and ($this->mTitle->getNamespace() != NS_SPECIAL )
-			and (empty( $action ) || $action == 'view')
-			and (!isset($oldid))
-			and (!isset($diff))
-			and (!isset($redirect))
-			and (!isset($printable))
-			and (!$this->mRedirectedFrom);
+		//check for non-standard user language; this covers uselang, 
+		//and extensions for auto-detecting user language.
+		$ulang     = $wgLang->getCode(); 
+		$clang     = $wgContLang->getCode();
+
+		$cacheable = $wgUseFileCache
+			&& (!$wgShowIPinHeader)
+			&& ($this->getID() != 0)
+			&& ($wgUser->isAnon())
+			&& (!$wgUser->getNewtalk())
+			&& ($this->mTitle->getNamespace() != NS_SPECIAL )
+			&& (empty( $action ) || $action == 'view')
+			&& (!isset($oldid))
+			&& (!isset($diff))
+			&& (!isset($redirect))
+			&& (!isset($printable))
+			&& !isset($page)
+			&& (!$this->mRedirectedFrom)
+			&& ($ulang === $clang);
+
+		if ( $cacheable ) {
+			//extension may have reason to disable file caching on some pages.
+			$cacheable = wfRunHooks( 'IsFileCacheable', array( $this ) );
+		}
+
+		return $cacheable;
 	}
 
 	/**

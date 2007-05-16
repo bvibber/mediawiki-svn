@@ -545,6 +545,7 @@ yurama beterü, (qaytart) = iske yurama qaytartu.
 
 # Watchlist
 'watchlist'         => 'Saqtezmäm',
+'mywatchlist'         => 'Saqtezmäm',
 'nowatchlist'       => 'Saqtezmäñdä kertemnär yuq.',
 'watchnologin'      => 'Kermädeñ',
 'watchnologintext'  => 'Saqtezmäñ üzgärtü öçen, säxifägä isem belän [[Special:Userlogin|keräse]].',
@@ -603,7 +604,7 @@ Soñğı beterülär $2 bitendä terkälenä.',
 # Contributions
 'contributions' => 'Äğzä qatnaşuı',
 'mycontris'     => 'Qatnaşuım',
-'contribsub'    => '$1 öçen',
+'contribsub2'    => '$1 ($2) öçen',
 'uctop'         => ' (öskä)',
 
 # What links here

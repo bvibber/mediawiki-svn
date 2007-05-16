@@ -19,9 +19,7 @@ class Xml {
 	public static function element( $element, $attribs = null, $contents = '') {
 		$out = '<' . $element;
 		if( !is_null( $attribs ) ) {
-			foreach( $attribs as $name => $val ) {
-				$out .= ' ' . $name . '="' . Sanitizer::encodeAttribute( $val ) . '"';
-			}
+			$out .=  self::expandAttributes( $attribs );
 		}
 		if( is_null( $contents ) ) {
 			$out .= '>';
@@ -33,6 +31,25 @@ class Xml {
 			}
 		}
 		return $out;
+	}
+
+	/**
+	 * Given an array of ('attributename' => 'value'), it generates the code
+	 * to set the XML attributes : attributename="value".
+	 * The values are passed to Sanitizer::encodeAttribute.
+	 * Return null if no attributes given.
+	 * @param $attribs Array of attributes for an XML element
+	 */
+	private static function expandAttributes( $attribs ) {
+		if( is_null( $attribs ) ) {
+			return null;
+		} else {
+			$out = '';
+			foreach( $attribs as $name => $val ) {
+				$out .= ' ' . $name . '="' . Sanitizer::encodeAttribute( $val ) . '"';
+			}
+			return $out;
+		}
 	}
 
 	/**
@@ -57,9 +74,21 @@ class Xml {
 		return self::element( $element, $attribs, $contents );
 	}
 
-	// Shortcuts
-	public static function openElement( $element, $attribs = null ) { return self::element( $element, $attribs, null ); }
+	/** This open an XML element */
+	public static function openElement( $element, $attribs = null ) {
+		return '<' . $element . self::expandAttributes( $attribs ) . '>';
+	}
+
+	// Shortcut
 	public static function closeElement( $element ) { return "</$element>"; }
+
+	/**
+	 * Same as <link>element</link>, but does not escape contents. Handy when the
+	 * content you have is already valid xml.
+	 */
+	public static function tags( $element, $attribs = null, $contents ) {
+		return self::openElement( $element, $attribs ) . $contents . "</$element>";
+	}
 
 	/**
 	 * Create a namespace selector
@@ -102,6 +131,45 @@ class Xml {
 		return $s;
 	}
 
+	/**
+	 *
+	 * @param $language The language code of the selected language
+	 * @param $customisedOnly If true only languages which have some content are listed
+	 * @return array of label and select
+	 */
+	public static function languageSelector( $selected, $customisedOnly = true ) {
+		global $wgContLanguageCode;
+		/**
+		 * Make sure the site language is in the list; a custom language code
+		 * might not have a defined name...
+		 */
+		$languages = Language::getLanguageNames( $customisedOnly );
+		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
+			$languages[$wgContLanguageCode] = $wgContLanguageCode;
+		}
+		ksort( $languages );
+
+		/**
+		 * If a bogus value is set, default to the content language.
+		 * Otherwise, no default is selected and the user ends up
+		 * with an Afrikaans interface since it's first in the list.
+		 */
+		$selected = isset( $languages[$selected] ) ? $selected : $wgContLanguageCode;
+		$options = "\n";
+		foreach( $languages as $code => $name ) {
+			$options .= Xml::option( "$code - $name", $code, ($code == $selected) ) . "\n";
+		}
+
+		return array(
+			Xml::label( wfMsg('yourlanguage'), 'wpUserLanguage' ),
+			Xml::tags( 'select',
+				array( 'id' => 'wpUserLanguage', 'name' => 'wpUserLanguage' ),
+				$options
+			)
+		);
+
+	}
+
 	public static function span( $text, $class, $attribs=array() ) {
 		return self::element( 'span', array( 'class' => $class ) + $attribs, $text );
 	}
@@ -115,6 +183,14 @@ class Xml {
 			'name' => $name,
 			'size' => $size,
 			'value' => $value ) + $attribs );
+	}
+
+	/**
+	 * Convenience function to build an HTML password input field
+	 * @return string HTML
+	 */
+	public static function password( $name, $size=false, $value=false, $attribs=array() ) {
+		return self::input( $name, $size, $value, array_merge($attribs, array('type' => 'password')));
 	}
 
 	/**

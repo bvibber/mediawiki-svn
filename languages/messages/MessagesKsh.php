@@ -67,10 +67,20 @@ $namespaceNames = array(
  * Array of namespace aliases, mapping from name to NS_xxx index
  */
 $namespaceAliases = array(
+	'Meedije'           => NS_MEDIA,
+	'Shpezjal'          => NS_SPECIAL,
+	'Medmaacher'        => NS_USER,
+	'Medmaacher_Klaaf'  => NS_USER_TALK,
 	'Belld'             => NS_IMAGE,
 	'Bellder_Klaaf'     => NS_IMAGE_TALK,
+	'MedijaWikki'       => NS_MEDIAWIKI,
+	'MedijaWikki_Klaaf' => NS_MEDIAWIKI_TALK,
+	'Hülp'              => NS_HELP,
+	'Hülp_Klaaf'        => NS_HELP_TALK,
 	'Sachjrop'          => NS_CATEGORY,
 	'Sachjrop_Klaaf'    => NS_CATEGORY_TALK,
+	'Saachjropp'        => NS_CATEGORY,
+	'Saachjroppe_Klaaf' => NS_CATEGORY_TALK,
 	'Kattejori'         => NS_CATEGORY,
 	'Kattejori_Klaaf'   => NS_CATEGORY_TALK,
 	'Kategorie'         => NS_CATEGORY,
@@ -902,7 +912,7 @@ dat dänne ihr Daate topaktuell sin,
 luure bei <i>latex</i>, <i>dvips</i>, <i>gs</i>, un <i>convert</i>. Oder sag et enem Sörver-Admin, oder enem 
 Wiki Köbes.',
 'math_bad_tmpdir'       => 'Dat Zwescheverzeichnis för de mathematische Formele lööt sich nit aanläje oder nix 
-eren schrieve. Dat es Dress. Sag et enem Wiki-Köbes]] oder enem 
+eren schrieve. Dat es Dress. Sag et enem Wiki-Köbes oder enem
 Sörver-Minsch.',
 'math_bad_output'       => 'Dat Verzeichnis för de mathematische Formele lööt sich nit aanläje oder nix 
 eren schrieve. Dat es Dress. Sag et enem Wiki-Köbes oder enem 
@@ -1381,6 +1391,7 @@ Alles klor?',
 
 # Watchlist
 'watchlist'             => 'ming Oppassliss',
+'mywatchlist'             => 'ming Oppassliss',
 'watchlistfor'          => '(för <strong>$1</strong>)',
 'nowatchlist'           => 'En Ding Oppassliss es nix dren.',
 'watchlistanontext'     => 'Do muss $1, domet de en Ding Oppassliss erenluure kanns, oder jet dran ändere.',
@@ -1556,7 +1567,7 @@ un widder herjehollte Sigge.',
 #
 'contributions'         => 'Däm Metmaacher sing Beidräch',
 'mycontris'             => 'ming Beidräch',
-'contribsub'            => 'För dä Metmaacher: $1',
+'contribsub2'            => 'För dä Metmaacher: $1 ($2)',
 'nocontribs'            => 'Mer han kein Änderunge jefonge, en de Logböcher, die do passe däte.',
 'ucnote'                => 'Hee sin däm Metmaacher sing letzte <strong>$1</strong> Änderunge vun de letzte <strong>$2</strong> Dage.',
 'uclinks'               => 'Zeich de letzte <strong>$1</strong> Beidräch, Zeich de letzte <strong>$2</strong> Dage.',

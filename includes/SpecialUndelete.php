@@ -4,21 +4,21 @@
  * Special page allowing users with the appropriate permissions to view
  * and restore deleted content
  *
- * @addtogroup Special pages
+ * @addtogroup SpecialPage
  */
 
 /**
- *
+ * Constructor
  */
 function wfSpecialUndelete( $par ) {
-    global $wgRequest;
+	global $wgRequest;
 
 	$form = new UndeleteForm( $wgRequest, $par );
 	$form->execute();
 }
 
 /**
- *
+ * Used to show archived pages and eventually restore them.
  * @addtogroup SpecialPage
  */
 class PageArchive {
@@ -99,7 +99,7 @@ class PageArchive {
 	function listRevisions() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( 'archive',
-			array( 'ar_minor_edit', 'ar_timestamp', 'ar_user', 'ar_user_text', 'ar_comment' ),
+			array( 'ar_minor_edit', 'ar_timestamp', 'ar_user', 'ar_user_text', 'ar_comment', 'ar_len' ),
 			array( 'ar_namespace' => $this->title->getNamespace(),
 			       'ar_title' => $this->title->getDBkey() ),
 			'PageArchive::listRevisions',
@@ -114,7 +114,7 @@ class PageArchive {
 	 * if not a file page.
 	 *
 	 * @return ResultWrapper
-	 * @fixme Does this belong in Image for fuller encapsulation?
+	 * @todo Does this belong in Image for fuller encapsulation?
 	 */
 	function listFiles() {
 		if( $this->title->getNamespace() == NS_IMAGE ) {
@@ -170,7 +170,8 @@ class PageArchive {
 				'ar_timestamp',
 				'ar_minor_edit',
 				'ar_flags',
-				'ar_text_id' ),
+				'ar_text_id',
+				'ar_len' ),
 			array( 'ar_namespace' => $this->title->getNamespace(),
 			       'ar_title' => $this->title->getDbkey(),
 			       'ar_timestamp' => $dbr->timestamp( $timestamp ) ),
@@ -318,8 +319,6 @@ class PageArchive {
 	 * @return int number of revisions restored
 	 */
 	private function undeleteRevisions( $timestamps ) {
-		global $wgDBtype;
-
 		$restoreAll = empty( $timestamps );
 		
 		$dbw = wfGetDB( DB_MASTER );
@@ -327,9 +326,7 @@ class PageArchive {
 
 		# Does this page already exist? We'll have to update it...
 		$article = new Article( $this->title );
-		$options = ( $wgDBtype == 'postgres' )
-			? '' // pg doesn't support this?
-			: 'FOR UPDATE';
+		$options = 'FOR UPDATE';
 		$page = $dbw->selectRow( 'page',
 			array( 'page_id', 'page_latest' ),
 			array( 'page_namespace' => $this->title->getNamespace(),
@@ -373,7 +370,8 @@ class PageArchive {
 				'ar_timestamp',
 				'ar_minor_edit',
 				'ar_flags',
-				'ar_text_id' ),
+				'ar_text_id',
+				'ar_len' ),
 			/* WHERE */ array(
 				'ar_namespace' => $this->title->getNamespace(),
 				'ar_title'     => $this->title->getDBkey(),
@@ -413,17 +411,17 @@ class PageArchive {
 				'timestamp'  => $row->ar_timestamp,
 				'minor_edit' => $row->ar_minor_edit,
 				'text_id'    => $row->ar_text_id,
+				'len'		 => $row->ar_len
 				) );
 			$revision->insertOn( $dbw );
 			$restored++;
 		}
 
 		if( $revision ) {
-			# FIXME: Update latest if newer as well...
-			if( $newid ) {
-				// Attach the latest revision to the page...
-				$article->updateRevisionOn( $dbw, $revision, $previousRevId );
-				
+			// Attach the latest revision to the page...
+			$wasnew = $article->updateIfNewerOn( $dbw, $revision, $previousRevId );
+
+			if( $newid || $wasnew ) {
 				// Update site stats, link tables, etc
 				$article->createUpdates( $revision );
 			}
@@ -453,7 +451,8 @@ class PageArchive {
 }
 
 /**
- *
+ * The HTML form for Special:Undelete, which allows users with the appropriate
+ * permissions to view and restore deleted content.
  * @addtogroup SpecialPage
  */
 class UndeleteForm {
@@ -613,7 +612,7 @@ class UndeleteForm {
 		
 		if( $this->mPreview ) {
 			$wgOut->addHtml( "<hr />\n" );
-			$wgOut->addWikiTextTitle( $rev->getText(), $this->mTargetObj, false );
+			$wgOut->addWikiTextTitleTidy( $rev->getText(), $this->mTargetObj, false );
 		}
 
 		$wgOut->addHtml(
@@ -768,8 +767,16 @@ class UndeleteForm {
 					$pageLink = $wgLang->timeanddate( $ts, true );
 				}
 				$userLink = $sk->userLink( $row->ar_user, $row->ar_user_text ) . $sk->userToolLinks( $row->ar_user, $row->ar_user_text );
+				$stxt = '';
+				if (!is_null($size = $row->ar_len)) {
+					if ($size == 0) {
+						$stxt = wfMsgHtml('historyempty');
+					} else {
+						$stxt = wfMsgHtml('historysize', $wgLang->formatNum( $size ) );
+					}
+				}
 				$comment = $sk->commentBlock( $row->ar_comment );
-				$wgOut->addHTML( "<li>$checkBox $pageLink . . $userLink $comment</li>\n" );
+				$wgOut->addHTML( "<li>$checkBox $pageLink . . $userLink $stxt $comment</li>\n" );
 	
 			}
 			$revisions->free();

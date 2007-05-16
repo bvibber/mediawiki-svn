@@ -10,9 +10,8 @@ class Revision {
 	const DELETED_TEXT = 1;
 	const DELETED_COMMENT = 2;
 	const DELETED_USER = 4;
-    const DELETED_RESTRICTED = 8;
-    const DELETED_NAME = 16;
-	
+	const DELETED_RESTRICTED = 8;
+
 	/**
 	 * Load a page revision from a given revision ID number.
 	 * Returns null if no such revision can be found.
@@ -249,6 +248,25 @@ class Revision {
 	}
 
 	/**
+	 * Return the list of revision fields that should be selected to create 
+	 * a new revision.
+	 */
+	static function selectFields() {
+		return array( 
+			'rev_id',
+			'rev_page',
+			'rev_text_id',
+			'rev_timestamp',
+			'rev_comment',
+			'rev_minor_edit',
+			'rev_user',
+			'rev_user_text,'.
+			'rev_deleted',
+			'rev_len'
+		);
+	}
+
+	/**
 	 * @param object $row
 	 * @access private
 	 */
@@ -263,8 +281,8 @@ class Revision {
 			$this->mMinorEdit = intval( $row->rev_minor_edit );
 			$this->mTimestamp =         $row->rev_timestamp;
 			$this->mDeleted   = intval( $row->rev_deleted );
-
-			if (is_null($row->rev_len))
+			
+			if( !isset( $row->rev_len ) || is_null( $row->rev_len ) )
 				$this->mSize = null;
 			else
 				$this->mSize = intval( $row->rev_len ); 
@@ -298,7 +316,8 @@ class Revision {
 			$this->mMinorEdit = isset( $row['minor_edit'] ) ? intval( $row['minor_edit'] ) : 0;
 			$this->mTimestamp = isset( $row['timestamp']  ) ? strval( $row['timestamp']  ) : wfTimestamp( TS_MW );
 			$this->mDeleted   = isset( $row['deleted']    ) ? intval( $row['deleted']    ) : 0;
-
+			$this->mSize      = isset( $row['len']        ) ? intval( $row['len']        ) : null;
+			
 			// Enforce spacing trimming on supplied text
 			$this->mComment   = isset( $row['comment']    ) ?  trim( strval( $row['comment'] ) ) : null;
 			$this->mText      = isset( $row['text']       ) ? rtrim( strval( $row['text']    ) ) : null;
@@ -306,8 +325,9 @@ class Revision {
 
 			$this->mTitle     = null; # Load on demand if needed
 			$this->mCurrent   = false;
-
-			$this->mSize      = is_null($this->mText) ? null : mb_strlen($this->mText);
+			# If we still have no len_size, see it we have the text to figure it out
+			if ( !$this->mSize )
+				$this->mSize      = is_null($this->mText) ? null : strlen($this->mText);
 		} else {
 			throw new MWException( 'Revision constructor passed invalid row format.' );
 		}
@@ -591,7 +611,7 @@ class Revision {
 				# Old revisions kept around in a legacy encoding?
 				# Upconvert on demand.
 				global $wgInputEncoding, $wgContLang;
-				$text = $wgContLang->iconv( $wgLegacyEncoding, $wgInputEncoding . '//IGNORE', $text );
+				$text = $wgContLang->iconv( $wgLegacyEncoding, $wgInputEncoding, $text );
 			}
 		}
 		wfProfileOut( $fname );
@@ -692,7 +712,7 @@ class Revision {
 				'rev_user_text'  => $this->mUserText,
 				'rev_timestamp'  => $dbw->timestamp( $this->mTimestamp ),
 				'rev_deleted'    => $this->mDeleted,
-				'rev_len'	 => mb_strlen($this->mText),
+				'rev_len'	     => $this->mSize,
 			), $fname
 		);
 

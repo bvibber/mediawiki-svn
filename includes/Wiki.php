@@ -56,6 +56,22 @@ class MediaWiki {
 		return $article;
 	}
 
+	function checkMaxLag( $maxLag ) {
+		global $wgLoadBalancer;
+		list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
+		if ( $lag > $maxLag ) {
+			header( 'HTTP/1.1 503 Service Unavailable' );
+			header( 'Retry-After: ' . max( intval( $maxLag ), 5 ) );
+			header( 'X-Database-Lag: ' . intval( $lag ) );
+			header( 'Content-Type: text/plain' );
+			echo "Waiting for $host: $lag seconds lagged\n";
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+
 	/**
 	 * Checks some initial queries
 	 * Note that $title here is *not* a Title object, but a string!
@@ -142,7 +158,7 @@ class MediaWiki {
 				$title = SpecialPage::getTitleFor( 'Badtitle' );
 				throw new ErrorPageError( 'badtitle', 'badtitletext' );
 			}
-		} else if ( ( $action == 'view' ) &&
+		} else if ( ( $action == 'view' ) && !$wgRequest->wasPosted() && 
 			(!isset( $this->GET['title'] ) || $title->getPrefixedDBKey() != $this->GET['title'] ) &&
 			!count( array_diff( array_keys( $this->GET ), array( 'action', 'title' ) ) ) )
 		{

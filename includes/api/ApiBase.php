@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Created on Sep 5, 2006
  *
@@ -24,6 +23,10 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+/**
+ * @todo Document - e.g. Provide top-level description of this class.
+ * @addtogroup API
+ */
 abstract class ApiBase {
 
 	// These constants allow modules to specify exactly how to treat incomming parameters.
@@ -522,6 +525,12 @@ abstract class ApiBase {
 		if ($this->mDBTimeIn !== 0)
 			ApiBase :: dieDebug(__METHOD__, 'called without calling profileDBOut() first');
 		return $this->mDBTime;
+	}
+	
+	public static function debugPrint($value, $name = 'unknown') {
+		print "\n\n<pre><b>Debuging value '$location':</b>\n\n";
+		var_export($value);
+		print "\n</pre>\n";
 	}
 
 	public abstract function getVersion();

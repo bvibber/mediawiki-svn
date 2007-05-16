@@ -48,7 +48,7 @@ would handle this as follows (note: not real code, here):
 	
 	# code to actually show the article goes here
     }
-    
+
 An extension writer, or a local admin, will often add custom code to
 the function -- with or without a global variable. For example,
 someone wanting email notification when an article is shown may add:
@@ -237,6 +237,13 @@ protocol came about after MediaWiki 1.4rc1.
 This is a list of known events and parameters; please add to it if
 you're going to add events to the MediaWiki code.
 
+'AbortLogin': Return false to cancel account login.
+$user: the User object being authenticated against
+$password: the password being submitted, not yet checked for validity
+&$retval: a LoginForm class constant to return from authenticateUserData();
+          default is LoginForm::ABORTED. Note that the client may be using
+          a machine API rather than the HTML user interface.
+
 'AbortNewAccount': Return false to cancel account creation.
 $user: the User object about to be created (read-only, incomplete)
 $message: out parameter: error message to display on abort
@@ -338,6 +345,11 @@ saved, that is before insertNewArticle() is called
 &$text: Text to preload with
 &$title: Title object representing the page being created
 
+'EditPage::showEditForm:fields': allows injection of form field into edit form
+&$editor: the EditPage instance for reference
+&$out: an OutputPage instance to write to
+return value is ignored (should always return true)
+
 'EditFilter': Perform checks on an edit
 $editor: Edit form (see includes/EditPage.php)
 $text: Contents of the edit box
@@ -373,6 +385,9 @@ $text: text of the mail
 &$list: List object (defaults to NULL, change it to an object instance and return
 false override the list derivative used)
 
+'FileUpload': When a file upload occurs
+$file : Image object representing the file that was uploaded
+
 'GetInternalURL': modify fully-qualified URLs used for squid cache purging
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
@@ -387,6 +402,18 @@ $query: query options passed to Title::getLocalURL()
 $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getFullURL()
+
+'InternalParseBeforeLinks': during Parser's internalParse method before links but
+after noinclude/includeonly/onlyinclude and other processing.
+&$this: Parser object
+&$text: string containing partially parsed text
+&$this->mStripState: Parser's internal StripState object
+
+'LoginAuthenticateAudit': a login attempt for a valid user account either succeeded or failed.
+                          No return data is accepted; this hook is for auditing only.
+$user: the User object being authenticated against
+$password: the password being submitted and found wanting
+$retval: a LoginForm class constant with authenticateUserData() return value (SUCCESS, WRONG_PASS, etc)
 
 'LogPageValidTypes': action being logged. DEPRECATED: Use $wgLogTypes
 &$type: array of strings
@@ -422,6 +449,13 @@ the resulting HTML is about to be displayed.
 $parserOutput: the parserOutput (object) that corresponds to the page 
 $text: the text that will be displayed, in HTML (string)
 
+'PageHistoryBeforeList': When a history page list is about to be constructed.
+$article: the article that the history is loading for
+
+'PageHistoryLineEnding' : right before the end <li> is added to a history line
+$row: the revision row for this line
+$s: the string representing this parsed line
+
 'PageRenderingHash': alter the parser cache option hash key
   A parser extension which depends on user options should install
   this hook and append its values to the key.
@@ -452,6 +486,12 @@ $form : PreferencesForm object
 'RawPageViewBeforeOutput': Right before the text is blown out in action=raw
 &$obj: RawPage object
 &$text: The text that's going to be the output
+
+'SearchUpdate': Prior to search update completion
+$id : Page id
+$namespace : Page namespace
+$title : Page title
+$text : Current text being indexed
 
 'SiteNoticeBefore': Before the sitenotice/anonnotice is composed
 &$siteNotice: HTML returned as the sitenotice

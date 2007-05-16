@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Created on Sep 7, 2006
  *
@@ -29,13 +28,17 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiBase.php');
 }
 
+/**
+ * @addtogroup API
+ */
 abstract class ApiQueryBase extends ApiBase {
 
-	private $mQueryModule, $tables, $where, $fields, $options;
+	private $mQueryModule, $mDb, $tables, $where, $fields, $options;
 
 	public function __construct($query, $moduleName, $paramPrefix = '') {
 		parent :: __construct($query->getMain(), $moduleName, $paramPrefix);
 		$this->mQueryModule = $query;
+		$this->mDb = null;
 		$this->resetQueryParams();
 	}
 
@@ -132,12 +135,8 @@ abstract class ApiQueryBase extends ApiBase {
 
 		// Title
 		$title = ApiQueryBase :: addRowInfo_title($row, $prefix . '_namespace', $prefix . '_title');
-		if ($title) {
-			if (!$title->userCanRead())
-				return false;
-			$vals['ns'] = $title->getNamespace();
-			$vals['title'] = $title->getPrefixedText();
-		}
+		if ($title)
+			ApiQueryBase :: addTitleInfo($vals, $title);
 
 		switch ($prefix) {
 
@@ -277,6 +276,11 @@ abstract class ApiQueryBase extends ApiBase {
 		return $vals;
 	}
 
+	protected static function addTitleInfo(&$arr, $title) {
+		$arr['ns'] = $title->getNamespace();
+		$arr['title'] = $title->getPrefixedText();
+	}
+	
 	private static function addRowInfo_title($row, $nsfld, $titlefld) {
 		if ( isset( $row-> $nsfld ) ) {
 			$ns = $row-> $nsfld;
@@ -312,7 +316,19 @@ abstract class ApiQueryBase extends ApiBase {
 	 * Get the Query database connection (readonly)
 	 */
 	protected function getDB() {
-		return $this->getQuery()->getDB();
+		if (is_null($this->mDb))
+			$this->mDb = $this->getQuery()->getDB();
+		return $this->mDb;
+	}
+
+	/**
+	 * Selects the query database connection with the given name.
+	 * If no such connection has been requested before, it will be created. 
+	 * Subsequent calls with the same $name will return the same connection 
+	 * as the first, regardless of $db or $groups new values. 
+	 */
+	public function selectNamedDB($name, $db, $groups) {
+		$this->mDb = $this->getQuery()->getNamedDB($name, $db, $groups);	
 	}
 
 	/**
@@ -320,7 +336,7 @@ abstract class ApiQueryBase extends ApiBase {
 	 * @return ApiPageSet data
 	 */
 	protected function getPageSet() {
-		return $this->mQueryModule->getPageSet();
+		return $this->getQuery()->getPageSet();
 	}
 
 	/**
@@ -341,6 +357,9 @@ abstract class ApiQueryBase extends ApiBase {
 	}
 }
 
+/**
+ * @addtogroup API
+ */
 abstract class ApiQueryGeneratorBase extends ApiQueryBase {
 
 	private $mIsGenerator;

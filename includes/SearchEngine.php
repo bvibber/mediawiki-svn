@@ -3,9 +3,6 @@
  * Contain a class for special pages
  * @addtogroup Search
  */
-
-/**
- */
 class SearchEngine {
 	var $limit = 10;
 	var $offset = 0;
@@ -43,12 +40,10 @@ class SearchEngine {
 	 * If an exact title match can be find, or a very slightly close match,
 	 * return the title. If no match, returns NULL.
 	 *
-	 * @static
 	 * @param string $term
 	 * @return Title
-	 * @private
 	 */
-	function getNearMatch( $searchterm ) {
+	public static function getNearMatch( $searchterm ) {
 		global $wgContLang;
 
 		$allSearchTerms = array($searchterm);
@@ -122,13 +117,29 @@ class SearchEngine {
 		if ( $title->getNamespace() == NS_USER ) {
 			return $title;
 		}
+		
+		# Go to images that exist even if there's no local page.
+		# There may have been a funny upload, or it may be on a shared
+		# file repository such as Wikimedia Commons.
+		if( $title->getNamespace() == NS_IMAGE ) {
+			$image = new Image( $title );
+			if( $image->exists() ) {
+				return $title;
+			}
+		}
+
+		# MediaWiki namespace? Page may be "implied" if not customized.
+		# Just return it, with caps forced as the message system likes it.
+		if( $title->getNamespace() == NS_MEDIAWIKI ) {
+			return Title::makeTitle( NS_MEDIAWIKI, $wgContLang->ucfirst( $title->getText() ) );
+		}
 
 		# Quoted term? Try without the quotes...
 		$matches = array();
 		if( preg_match( '/^"([^"]+)"$/', $searchterm, $matches ) ) {
 			return SearchEngine::getNearMatch( $matches[1] );
 		}
-
+		
 		return NULL;
 	}
 
@@ -163,9 +174,8 @@ class SearchEngine {
 	/**
 	 * Make a list of searchable namespaces and their canonical names.
 	 * @return array
-	 * @access public
 	 */
-	function searchableNamespaces() {
+	public static function searchableNamespaces() {
 		global $wgContLang;
 		$arr = array();
 		foreach( $wgContLang->getNamespaces() as $ns => $name ) {
@@ -200,6 +210,8 @@ class SearchEngine {
 			$class = 'SearchMySQL4';
 		} else if ( $wgDBtype == 'postgres' ) {
 			$class = 'SearchPostgres';
+		} else if ( $wgDBtype == 'oracle' ) {
+			$class = 'SearchOracle';
 		} else {
 			$class = 'SearchEngineDummy';
 		}
@@ -229,11 +241,15 @@ class SearchEngine {
 	 * @param string $title
 	 * @abstract
 	 */
-    function updateTitle( $id, $title ) {
+	function updateTitle( $id, $title ) {
 		// no-op
-    }
+	}
 }
 
+
+/**
+ * @addtogroup Search
+ */
 class SearchResultSet {
 	/**
 	 * Fetch an array of regular expression fragments for matching
@@ -308,6 +324,10 @@ class SearchResultSet {
 	}
 }
 
+
+/**
+ * @addtogroup Search
+ */
 class SearchResult {
 	function SearchResult( $row ) {
 		$this->mTitle = Title::makeTitle( $row->page_namespace, $row->page_title );
@@ -330,6 +350,7 @@ class SearchResult {
 }
 
 /**
+ * @addtogroup Search
  */
 class SearchEngineDummy {
 	function search( $term ) {

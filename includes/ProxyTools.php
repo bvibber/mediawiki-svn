@@ -3,6 +3,12 @@
  * Functions for dealing with proxies
  */
 
+/**
+ * Extracts the XFF string from the request header
+ * Checks first for "X-Forwarded-For", then "Client-ip"
+ * Note: headers are spoofable
+ * @return string
+ */
 function wfGetForwardedFor() {
 	if( function_exists( 'apache_request_headers' ) ) {
 		// More reliable than $_SERVER due to case and -/_ folding
@@ -25,30 +31,11 @@ function wfGetForwardedFor() {
 	}
 }
 
-function wfGetLastIPfromXFF( $xff )
-{
-	if ( $xff ) {
-	// Avoid annoyingly long xff hacks
-	   $xff = substr( $xff, 0, 255 );
-	   // Look for the last IP, assuming they are separated by commas
-	   $n = strrpos( $xff, ',' );
-	   if ( strrpos !== false ) {
-	  	  $last = substr( $xff, $n + 1 );
-		  // Make sure it is an IP
-		  $m = preg_match('#\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}#', $last, $last_ip);
-		  if ( $m > 0 ) 
-		  	 $xff_ip = $last_ip;
-		  else 
-		  	 $xff_ip = null;
-		} else {
-		  $xff_ip = null;
-		} 
-	} else {
-	  $xff_ip = null;
-	}
-	return $xff_ip;
-}
-
+/**
+ * Returns the browser/OS data from the request header
+ * Note: headers are spoofable
+ * @return string
+ */
 function wfGetAgent() {
 	if( function_exists( 'apache_request_headers' ) ) {
 		// More reliable than $_SERVER due to case and -/_ folding
@@ -62,11 +49,15 @@ function wfGetAgent() {
 	if( isset( $set[$index] ) ) {
 		return $set[$index];
 	} else {
-		return null;
+		return '';
 	}
 }
 
-/** Work out the IP address based on various globals */
+/**
+ * Work out the IP address based on various globals
+ * For trusted proxies, use the XFF client IP (first of the chain)
+ * @return string
+ */
 function wfGetIP() {
 	global $wgIP;
 
@@ -111,6 +102,13 @@ function wfGetIP() {
 	return $ip;
 }
 
+/**
+ * Checks if an IP is a trusted proxy providor
+ * Useful to tell if X-Fowarded-For data is possibly bogus
+ * Squid cache servers for the site and AOL are whitelisted
+ * @param string $ip
+ * @return bool
+ */
 function wfIsTrustedProxy( $ip ) {
 	global $wgSquidServers, $wgSquidServersNoPurge;
 
@@ -175,6 +173,7 @@ function wfProxyCheck() {
 
 /**
  * Convert a network specification in CIDR notation to an integer network and a number of bits
+ * @return array(string, int)
  */
 function wfParseCIDR( $range ) {
 	return IP::parseCIDR( $range );
@@ -182,6 +181,7 @@ function wfParseCIDR( $range ) {
 
 /**
  * Check if an IP address is in the local proxy list
+ * @return bool
  */
 function wfIsLocallyBlockedProxy( $ip ) {
 	global $wgProxyList;
@@ -214,6 +214,7 @@ function wfIsLocallyBlockedProxy( $ip ) {
 /**
  * TODO: move this list to the database in a global IP info table incorporating
  * trusted ISP proxies, blocked IP addresses and open proxies.
+ * @return bool
  */
 function wfIsAOLProxy( $ip ) {
 	$ranges = array(

@@ -22,9 +22,10 @@ image/x-bmp bmp
 image/gif gif
 image/jpeg jpeg jpg jpe
 image/png png
-image/svg+xml svg
+image/svg+xml image/svg svg
 image/tiff tiff tif
 image/vnd.djvu djvu
+image/x-portable-pixmap ppm
 text/plain txt
 text/html html htm
 video/ogg ogm ogg
@@ -50,9 +51,10 @@ image/x-bmp image/bmp [BITMAP]
 image/gif [BITMAP]
 image/jpeg [BITMAP]
 image/png [BITMAP]
-image/svg image/svg+xml [DRAWING]
+image/svg+xml [DRAWING]
 image/tiff [BITMAP]
 image/vnd.djvu [BITMAP]
+image/x-portable-pixmap [BITMAP]
 text/plain [TEXT]
 text/html [TEXT]
 video/ogg [VIDEO]
@@ -69,12 +71,13 @@ if ($wgLoadFileinfoExtension) {
 	if(!extension_loaded('fileinfo')) dl('fileinfo.' . PHP_SHLIB_SUFFIX);
 }
 
-/** Implements functions related to mime types such as detection and mapping to
-* file extension,
-*
-* Instances of this class are stateles, there only needs to be one global instance
-* of MimeMagic. Please use MimeMagic::singleton() to get that instance.
-*/
+/** 
+ * Implements functions related to mime types such as detection and mapping to
+ * file extension.
+ *
+ * Instances of this class are stateles, there only needs to be one global instance
+ * of MimeMagic. Please use MimeMagic::singleton() to get that instance.
+ */
 class MimeMagic {
 
 	/**
@@ -260,7 +263,7 @@ class MimeMagic {
 	function getTypesForExtension($ext) {
 		$ext= strtolower($ext);
 
-		$r= @$this->mExtToMime[$ext];
+		$r= isset( $this->mExtToMime[$ext] ) ? $this->mExtToMime[$ext] : null;
 		return $r;
 	}
 
@@ -339,7 +342,7 @@ class MimeMagic {
 	}
 
 
-	/** mime type detection. This uses detectMimeType to detect the mim type of the file,
+	/** mime type detection. This uses detectMimeType to detect the mime type of the file,
 	* but applies additional checks to determine some well known file formats that may be missed
 	* or misinterpreter by the default mime detection (namely xml based formats like XHTML or SVG).
 	*
@@ -397,8 +400,8 @@ class MimeMagic {
 
 					#print "<br>ANALYSING $file ($mime): doctype= $doctype; tag= $tag<br>";
 
-					if (strpos($doctype,"-//W3C//DTD SVG")===0) $mime= "image/svg";
-					elseif ($tag==="svg") $mime= "image/svg";
+					if (strpos($doctype,"-//W3C//DTD SVG")===0) $mime= "image/svg+xml";
+					elseif ($tag==="svg") $mime= "image/svg+xml";
 					elseif (strpos($doctype,"-//W3C//DTD XHTML")===0) $mime= "text/html";
 					elseif ($tag==="html") $mime= "text/html";
 				}

@@ -17,13 +17,21 @@ define( 'EDIT_TOKEN_SUFFIX', '\\' );
 
 /**
  * Thrown by User::setPassword() on error
+ * @addtogroup Exception
  */
 class PasswordError extends MWException {
 	// NOP
 }
 
 /**
- *
+ * The User object encapsulates all of the user-specific settings (user_id,
+ * name, rights, password, email address, options, last login time). Client
+ * classes use the getXXX() functions to access these fields. These functions
+ * do all the work of determining whether the user is logged in,
+ * whether the requested option can be satisfied from cookies or
+ * whether a database query is needed. Most of the settings needed
+ * for rendering normal pages are set in the cookie to minimize use
+ * of the database.
  */
 class User {
 
@@ -350,20 +358,39 @@ class User {
 	 * addresses like this, if we allowed accounts like this to be created
 	 * new users could get the old edits of these anonymous users.
 	 *
-	 * @bug 3631
-	 *
 	 * @static
 	 * @param string $name Nickname of a user
 	 * @return bool
 	 */
 	static function isIP( $name ) {
-		return preg_match('/^\d{1,3}\.\d{1,3}\.\d{1,3}\.(?:xxx|\d{1,3})$/',$name);
+		return preg_match('/^\d{1,3}\.\d{1,3}\.\d{1,3}\.(?:xxx|\d{1,3})$/',$name) || User::isIPv6($name);
 		/*return preg_match("/^
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))\.
 			(?:[01]?\d{1,2}|2(:?[0-4]\d|5[0-5]))
 		$/x", $name);*/
+	}
+
+	/**
+	 * Check if $name is an IPv6 IP.
+	 */
+	static function isIPv6($name) {
+		/* 
+		 * if it has any non-valid characters, it can't be a valid IPv6  
+		 * address.
+		 */
+		if (preg_match("/[^:a-fA-F0-9]/", $name))
+			return false;
+
+		$parts = explode(":", $name);
+		if (count($parts) < 3)
+			return false;
+		foreach ($parts as $part) {
+			if (!preg_match("/^[0-9a-fA-F]{0,4}$/", $part))
+				return false;
+		}
+		return true;
 	}
 
 	/**
@@ -460,15 +487,15 @@ class User {
 	 *
 	 * @param string $password
 	 * @return bool
-	 * @static
 	 */
-	static function isValidPassword( $password ) {
-		global $wgMinimalPasswordLength;
+	function isValidPassword( $password ) {
+		global $wgMinimalPasswordLength, $wgContLang;
 
 		$result = null;
 		if( !wfRunHooks( 'isValidPassword', array( $password, &$result ) ) ) return $result;
-		if ($result === false) return false; 
-		return (strlen( $password ) >= $wgMinimalPasswordLength);
+		if ($result === false) return false;
+		return (strlen( $password ) >= $wgMinimalPasswordLength) &&
+			($wgContLang->lc( $password ) !== $wgContLang->lc( $this->mName ));
 	}
 
 	/**
@@ -478,8 +505,7 @@ class User {
 	 * rejected valid addresses. Actually just check if there is '@' somewhere
 	 * in the given address.
 	 *
-	 * @todo Check for RFC 2822 compilance
-	 * @bug 959
+	 * @todo Check for RFC 2822 compilance (bug 959)
 	 *
 	 * @param string $addr email address
 	 * @static
@@ -581,7 +607,7 @@ class User {
 
 	/**
 	 * Return a random password. Sourced from mt_rand, so it's not particularly secure.
-	 * @todo: hash random numbers to improve security, like generateToken()
+	 * @todo hash random numbers to improve security, like generateToken()
 	 *
 	 * @return string
 	 * @static
@@ -647,10 +673,8 @@ class User {
 	 * Load user data from the session or login cookie. If there are no valid
 	 * credentials, initialises the user as an anon.
 	 * @return true if the user is logged in, false otherwise
-	 * 
-	 * @private
 	 */
-	function loadFromSession() {
+	private function loadFromSession() {
 		global $wgMemc, $wgCookiePrefix;
 
 		if ( isset( $_SESSION['wsUserID'] ) ) {
@@ -860,7 +884,8 @@ class User {
 		wfProfileIn( __METHOD__ );
 		wfDebug( __METHOD__.": checking...\n" );
 
-		$this->mBlockedby = 0;
+		$this->mBlockedby = 0; 
+		$this->mHideName = 0;
 		$ip = wfGetIP();
 
 		if ($this->isAllowed( 'ipblock-exempt' ) ) {
@@ -875,6 +900,7 @@ class User {
 			wfDebug( __METHOD__.": Found block.\n" );
 			$this->mBlockedby = $this->mBlock->mBy;
 			$this->mBlockreason = $this->mBlock->mReason;
+			$this->mHideName = $this->mBlock->mHideName;
 			if ( $this->isLoggedIn() ) {
 				$this->spreadBlock();
 			}
@@ -950,7 +976,7 @@ class User {
 	 */
 	public function isPingLimitable() {
 		global $wgRateLimitsExcludedGroups;
-		return array_intersect($this->getEffectiveGroups(), $wgRateLimitsExcludedGroups) != array();
+		return array_intersect($this->getEffectiveGroups(), $wgRateLimitsExcludedGroups) == array();
 	}
 
 	/**
@@ -1053,14 +1079,13 @@ class User {
 		wfProfileIn( __METHOD__ );
 		wfDebug( __METHOD__.": enter\n" );
 
-		if ( $wgBlockAllowsUTEdit && $title->getText() === $this->getName() &&
-		  $title->getNamespace() == NS_USER_TALK )
-		{
+		wfDebug( __METHOD__.": asking isBlocked()\n" );
+		$blocked = $this->isBlocked( $bFromSlave );
+		# If a user's name is suppressed, they cannot make edits anywhere
+		if ( !$this->mHideName && $wgBlockAllowsUTEdit && $title->getText() === $this->getName() &&
+		  $title->getNamespace() == NS_USER_TALK ) {
 			$blocked = false;
 			wfDebug( __METHOD__.": self-talk page, ignoring any blocks\n" );
-		} else {
-			wfDebug( __METHOD__.": asking isBlocked()\n" );
-			$blocked = $this->isBlocked( $bFromSlave );
 		}
 		wfProfileOut( __METHOD__ );
 		return $blocked;
@@ -1111,7 +1136,8 @@ class User {
 		} else {
 			$this->load();
 			if ( $this->mName === false ) {
-				$this->mName = wfGetIP();
+				# Clean up IPs
+				$this->mName = IP::sanitizeIP( wfGetIP() );
 			}
 			return $this->mName;
 		}
@@ -1373,11 +1399,23 @@ class User {
 					$wgMinimalPasswordLength ) );
 			}
 		}
-		
+
 		if( !$wgAuth->setPassword( $this, $str ) ) {
 			throw new PasswordError( wfMsg( 'externaldberror' ) );
 		}
 		
+		$this->setInternalPassword( $str );
+
+		return true;
+	}
+
+	/**
+	 * Set the password and reset the random token no matter
+	 * what.
+	 *
+	 * @param string $str
+	 */
+	function setInternalPassword( $str ) {
 		$this->load();
 		$this->setToken();
 		
@@ -1389,10 +1427,7 @@ class User {
 		}
 		$this->mNewpassword = '';
 		$this->mNewpassTime = null;
-		
-		return true;
 	}
-
 	/**
 	 * Set the random token (used for persistent authentication)
 	 * Called from loadDefaults() among other places.
@@ -1619,7 +1654,7 @@ class User {
 	/**
 	 * Add the user to the given group.
 	 * This takes immediate effect.
-	 * @string $group
+	 * @param string $group
 	 */
 	function addGroup( $group ) {
 		$this->load();
@@ -1643,7 +1678,7 @@ class User {
 	/**
 	 * Remove the user from the given group.
 	 * This takes immediate effect.
-	 * @string $group
+	 * @param string $group
 	 */
 	function removeGroup( $group ) {
 		$this->load();
@@ -1914,7 +1949,7 @@ class User {
 
 	/**
 	 * Save object settings into database
-	 * @fixme Only rarely do all these fields need to be set!
+	 * @todo Only rarely do all these fields need to be set!
 	 */
 	function saveSettings() {
 		$this->load();
@@ -2097,6 +2132,8 @@ class User {
 		// extra options or other effects on the parser cache.
 		wfRunHooks( 'PageRenderingHash', array( &$confstr ) );
 
+		// Make it a valid memcached key fragment
+		$confstr = str_replace( ' ', '_', $confstr );
 		$this->mHash = $confstr;
 		return $confstr;
 	}
@@ -2434,13 +2471,12 @@ class User {
 	 * @static
 	 */
 	static function getGroupName( $group ) {
+		MessageCache::loadAllMessages();
 		$key = "group-$group";
 		$name = wfMsg( $key );
-		if( $name == '' || wfEmptyMsg( $key, $name ) ) {
-			return $group;
-		} else {
-			return $name;
-		}
+		return $name == '' || wfEmptyMsg( $key, $name )
+			? $group
+			: $name;
 	}
 
 	/**
@@ -2449,13 +2485,12 @@ class User {
 	 * @static
 	 */
 	static function getGroupMember( $group ) {
+		MessageCache::loadAllMessages();
 		$key = "group-$group-member";
 		$name = wfMsg( $key );
-		if( $name == '' || wfEmptyMsg( $key, $name ) ) {
-			return $group;
-		} else {
-			return $name;
-		}
+		return $name == '' || wfEmptyMsg( $key, $name )
+			? $group
+			: $name;
 	}
 
 	/**
@@ -2480,6 +2515,7 @@ class User {
 	 * @return mixed
 	 */
 	static function getGroupPage( $group ) {
+		MessageCache::loadAllMessages();
 		$page = wfMsgForContent( 'grouppage-' . $group );
 		if( !wfEmptyMsg( 'grouppage-' . $group, $page ) ) {
 			$title = Title::newFromText( $page );

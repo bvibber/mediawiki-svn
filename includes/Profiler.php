@@ -40,6 +40,7 @@ if (!function_exists('memory_get_usage')) {
 
 /**
  * @todo document
+ * @addtogroup Profiler
  */
 class Profiler {
 	var $mStack = array (), $mWorkStack = array (), $mCollated = array ();
@@ -300,6 +301,9 @@ class Profiler {
 	 * @static
 	 */
 	function logToDB($name, $timeSum, $eventCount) {
+		# Do not log anything if database is readonly (bug 5375)
+		if( wfReadOnly() ) { return; }
+
 		# Warning: $wguname is a live patch, it should be moved to Setup.php
 		global $wguname, $wgProfilePerHost;
 

@@ -15,6 +15,7 @@ class OutputPage {
 	var $mLastModified, $mETag, $mCategoryLinks;
 	var $mScripts, $mLinkColours, $mPageLinkTitle;
 
+	var $mAllowUserJs;
 	var $mSuppressQuickbar;
 	var $mOnloadHandler;
 	var $mDoNothing;
@@ -33,6 +34,8 @@ class OutputPage {
 	 * Initialise private variables
 	 */
 	function __construct() {
+		global $wgAllowUserJs;
+		$this->mAllowUserJs = $wgAllowUserJs;
 		$this->mMetatags = $this->mKeywords = $this->mLinktags = array();
 		$this->mHTMLtitle = $this->mPagetitle = $this->mBodytext =
 		$this->mRedirect = $this->mLastModified =
@@ -47,6 +50,7 @@ class OutputPage {
 		$this->mParserOptions = null;
 		$this->mSquidMaxage = 0;
 		$this->mScripts = '';
+		$this->mHeadItems = array();
 		$this->mETag = false;
 		$this->mRevisionId = null;
 		$this->mNewSectionLink = false;
@@ -77,10 +81,24 @@ class OutputPage {
 	 */
 	function addInlineScript( $script ) {
 		global $wgJsMimeType;
-		$this->mScripts .= "<script type=\"$wgJsMimeType\"><!--\n$script\n--></script>";
+		$this->mScripts .= "<script type=\"$wgJsMimeType\">/*<![CDATA[*/\n$script\n/*]]>*/</script>";
 	}
 
-	function getScript() { return $this->mScripts; }
+	function getScript() { 
+		return $this->mScripts . $this->getHeadItems(); 
+	}
+
+	function getHeadItems() {
+		$s = '';
+		foreach ( $this->mHeadItems as $item ) {
+			$s .= $item;
+		}
+		return $s;
+	}
+
+	function addHeadItem( $name, $value ) {
+		$this->mHeadItems[$name] = $value;
+	}
 
 	function setETag($tag) { $this->mETag = $tag; }
 	function setArticleBodyOnly($only) { $this->mArticleBodyOnly = $only; }
@@ -268,6 +286,9 @@ class OutputPage {
 	public function suppressQuickbar() { $this->mSuppressQuickbar = true; }
 	public function isQuickbarSuppressed() { return $this->mSuppressQuickbar; }
 
+	public function disallowUserJs() { $this->mAllowUserJs = false; }
+	public function isUserJsAllowed() { return $this->mAllowUserJs; }
+
 	public function addHTML( $text ) { $this->mBodytext .= $text; }
 	public function clearHTML() { $this->mBodytext = ''; }
 	public function getHTML() { return $this->mBodytext; }
@@ -355,6 +376,7 @@ class OutputPage {
 			$this->mSubtitle .= $parserOutput->mSubtitle ;
 		}
 		$this->mNoGallery = $parserOutput->getNoGallery();
+		$this->mHeadItems = array_merge( $this->mHeadItems, (array)$parserOutput->mHeadItems );
 		wfRunHooks( 'OutputPageParserOutput', array( &$this, $parserOutput ) );
 	}
 
@@ -714,7 +736,7 @@ class OutputPage {
 	 * @return nothing
 	 */
 	function blockedPage( $return = true ) {
-		global $wgUser, $wgContLang, $wgTitle;
+		global $wgUser, $wgContLang, $wgTitle, $wgLang;
 
 		$this->setPageTitle( wfMsg( 'blockedtitle' ) );
 		$this->setRobotpolicy( 'noindex,nofollow' );
@@ -733,7 +755,31 @@ class OutputPage {
 
 		$blockid = $wgUser->mBlock->mId;
 
-		$this->addWikiText( wfMsg( 'blockedtext', $link, $reason, $ip, $name, $blockid ) );
+		$blockExpiry = $wgUser->mBlock->mExpiry;
+		if ( $blockExpiry == 'infinity' ) {
+			// Entry in database (table ipblocks) is 'infinity' but 'ipboptions' uses 'infinite' or 'indefinite'
+			// Search for localization in 'ipboptions'
+			$scBlockExpiryOptions = wfMsg( 'ipboptions' );
+			foreach ( explode( ',', $scBlockExpiryOptions ) as $option ) {
+				if ( strpos( $option, ":" ) === false )
+					continue;
+				list( $show, $value ) = explode( ":", $option );
+				if ( $value == 'infinite' || $value == 'indefinite' ) {
+					$blockExpiry = $show;
+					break;
+				}
+			}
+		} else {
+			$blockExpiry = $wgLang->timeanddate( wfTimestamp( TS_MW, $blockExpiry ), true );
+		}
+
+		if ( $wgUser->mBlock->mAuto ) {
+			$msg = 'autoblockedtext';
+		} else {
+			$msg = 'blockedtext';
+		}
+
+		$this->addWikiText( wfMsg( $msg, $link, $reason, $ip, $name, $blockid, $blockExpiry ) );
 		
 		# Don't auto-return to special pages
 		if( $return ) {
@@ -766,7 +812,7 @@ class OutputPage {
 		$this->returnToMain( false );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function errorpage( $title, $msg ) {
 		throw new ErrorPageError( $title, $msg );
 	}
@@ -876,7 +922,7 @@ class OutputPage {
 			$this->returnToMain( true, $mainPage );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function databaseError( $fname, $sql, $error, $errno ) {
 		throw new MWException( "OutputPage::databaseError is obsolete\n" );
 	}
@@ -897,7 +943,7 @@ class OutputPage {
 			$this->setPageTitle( wfMsg( 'viewsource' ) );
 			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
 
-			$cascadeSources = $wgTitle->getCascadeProtectionSources();
+			list( $cascadeSources, /* $restrictions */ ) = $wgTitle->getCascadeProtectionSources();
 
 			# Determine if protection is due to the page being a system message
 			# and show an appropriate explanation
@@ -910,7 +956,7 @@ class OutputPage {
 					$titles .= '* [[:' . $title->getPrefixedText() . "]]\n";
 				}
 
-				$notice = wfMsg( 'cascadeprotected' ) . "\n$titles";
+				$notice = wfMsgExt( 'cascadeprotected', array('parsemag'), count($cascadeSources) ) . "\n$titles";
 
 				$this->addWikiText( $notice );
 			} else {
@@ -940,32 +986,32 @@ class OutputPage {
 		$this->returnToMain( false );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fatalError( $message ) {
 		throw new FatalError( $message ); 
 	}
 	
-	/** @obsolete */
+	/** @deprecated */
 	public function unexpectedValueError( $name, $val ) {
 		throw new FatalError( wfMsg( 'unexpected', $name, $val ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileCopyError( $old, $new ) {
 		throw new FatalError( wfMsg( 'filecopyerror', $old, $new ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileRenameError( $old, $new ) {
 		throw new FatalError( wfMsg( 'filerenameerror', $old, $new ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileDeleteError( $name ) {
 		throw new FatalError( wfMsg( 'filedeleteerror', $name ) );
 	}
 
-	/** @obsolete */
+	/** @deprecated */
 	public function fileNotFoundError( $name ) {
 		throw new FatalError( wfMsg( 'filenotfound', $name ) );
 	}
@@ -1098,9 +1144,10 @@ class OutputPage {
 		$ret .= "<link rel='stylesheet' type='text/css' $media href='$printsheet' />\n";
 
 		$sk = $wgUser->getSkin();
-		$ret .= $sk->getHeadScripts();
+		$ret .= $sk->getHeadScripts( $this->mAllowUserJs );
 		$ret .= $this->mScripts;
 		$ret .= $sk->getUserStyles();
+		$ret .= $this->getHeadItems();
 
 		if ($wgUseTrackbacks && $this->isArticleRelated())
 			$ret .= $wgTitle->trackbackRDF();

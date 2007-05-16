@@ -4,11 +4,11 @@
  * @addtogroup SpecialPage
  */
 
-/**
- *
- */
 require_once('UserMailer.php');
 
+/**
+ * @todo document
+ */
 function wfSpecialEmailuser( $par ) {
 	global $wgUser, $wgOut, $wgRequest, $wgEnableEmail, $wgEnableUserEmail;
 
@@ -65,7 +65,7 @@ function wfSpecialEmailuser( $par ) {
 }
 
 /**
- * @todo document
+ * Implements the Special:Emailuser web interface, and invokes userMailer for sending the email message.
  * @addtogroup SpecialPage
  */
 class EmailUserForm {

@@ -54,10 +54,12 @@ cmp_ok( Sanitizer::decodeCharReferences( '&foo;' ), '==', '&foo;', 'Invalid name
 cmp_ok( Sanitizer::decodeCharReferences( "&#88888888888888;" ), '==', UTF8_REPLACEMENT, 'Invalid numbered entity' );
 
 $wgUseTidy = false;
-$wgUserHtml = true;
 cmp_ok(
 	Sanitizer::removeHTMLtags( '<div>Hello world</div />' ),
 	'==',
 	'<div>Hello world</div>',
 	'Self-closing closing div'
 );
+
+/* vim: set filetype=php: */
+?>

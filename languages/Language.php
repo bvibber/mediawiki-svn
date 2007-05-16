@@ -228,7 +228,22 @@ class Language {
 	}
 
 	/**
-	 * Get a namespace key by value, case insensetive.
+	 * Get a namespace key by value, case insensitive.
+	 * Only matches namespace names for the current language, not the
+	 * canonical ones defined in Namespace.php.
+	 *
+	 * @param string $text
+	 * @return mixed An integer if $text is a valid value otherwise false
+	 */
+	function getLocalNsIndex( $text ) {
+		$this->load();
+		$lctext = $this->lc($text);
+		return isset( $this->mNamespaceIds[$lctext] ) ? $this->mNamespaceIds[$lctext] : false;
+	}
+
+	/**
+	 * Get a namespace key by value, case insensitive.  Canonical namespace
+	 * names override custom ones defined for the current language.
 	 *
 	 * @param string $text
 	 * @return mixed An integer if $text is a valid value otherwise false
@@ -236,6 +251,7 @@ class Language {
 	function getNsIndex( $text ) {
 		$this->load();
 		$lctext = $this->lc($text);
+		if( ( $ns = Namespace::getCanonicalIndex( $lctext ) ) !== null ) return $ns;
 		return isset( $this->mNamespaceIds[$lctext] ) ? $this->mNamespaceIds[$lctext] : false;
 	}
 
@@ -404,8 +420,12 @@ class Language {
 		if ( $tz === '' ) {
 			# Global offset in minutes.
 			if( isset($wgLocalTZoffset) ) {
-				$hrDiff = $wgLocalTZoffset % 60;
-				$minDiff = $wgLocalTZoffset - ($hrDiff * 60);
+				if( $wgLocalTZoffset >= 0 ) {
+					$hrDiff = floor($wgLocalTZoffset / 60);
+				} else {
+					$hrDiff = ceil($wgLocalTZoffset / 60);
+				}
+				$minDiff = $wgLocalTZoffset % 60;
 			}
 		} elseif ( strpos( $tz, ':' ) !== false ) {
 			$tzArray = explode( ':', $tz );
@@ -753,6 +773,9 @@ class Language {
 	*/
 	function timeanddate( $ts, $adj = false, $format = true, $timecorrection = false) {
 		$this->load();
+
+		$ts = wfTimestamp( TS_MW, $ts );
+
 		if ( $adj ) { 
 			$ts = $this->userAdjust( $ts, $timecorrection ); 
 		}

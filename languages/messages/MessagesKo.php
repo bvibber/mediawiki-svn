@@ -921,6 +921,7 @@ $messages = array(
 
 # Watchlist
 'watchlist'            => '주시문서 목록',
+'mywatchlist'            => '주시문서 목록',
 'watchlistfor'         => "('''$1'''의 목록)",
 'nowatchlist'          => '주시하는 문서가 아직 없습니다.',
 'watchlistanontext'    => '주시문서 목록의 항목들을 보거나 편집하려면 $1을(를) 보세요.',
@@ -1078,7 +1079,7 @@ $NEWPAGE
 # Contributions
 'contributions' => '사용자 기여',
 'mycontris'     => '내 기여 목록',
-'contribsub'    => '$1의',
+'contribsub2'    => '$1 ($2)의',
 'nocontribs'    => '이 사용자는 어디에도 기여하지 않았습니다.',
 'ucnote'        => "이 사용자가 '''$2'''일 동안에 바꾼 '''$1'''개의 목록입니다.",
 'uclinks'       => '최근 $1개 보기; 최근 $2일 보기',

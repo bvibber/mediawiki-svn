@@ -21,7 +21,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	# Get query parameters
 	$feedFormat = $wgRequest->getVal( 'feed' );
 
-	/* Checkbox values can't be true be default, because
+	/* Checkbox values can't be true by default, because
 	 * we cannot differentiate between unset and not set at all
 	 */
 	$defaults = array(
@@ -57,7 +57,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	if( $feedFormat ) {
 		global $wgFeedLimit;
 		if( $limit > $wgFeedLimit ) {
-			$options['limit'] = $wgFeedLimit;
+			$limit = $wgFeedLimit;
 		}
 
 	} else {
@@ -469,7 +469,7 @@ function rcDayLimitLinks( $days, $limit, $page='Recentchanges', $more='', $doall
 
 /**
  * Makes change an option link which carries all the other options
- * @param $title @see Title
+ * @param $title see Title
  * @param $override
  * @param $options
  */

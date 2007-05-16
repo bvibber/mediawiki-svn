@@ -81,11 +81,9 @@ function wfImageArchiveDir( $fname , $subdir='archive', $shared=false ) {
  * @param $fromInstantCommons Use the InstantCommons repository
  */
 function wfGetHashPath ( $dbkey, $fromSharedDirectory = false, $fromInstantCommons = false ) {
-	if($fromInstantCommons){
-		//we will display a local image with GD that indicates that this file is being downloaded
+	if($fromInstantCommons){		
 		return '/api.php?action=instantcommons&maint=pending';
-	}
-	elseif( Image::isHashed( $fromSharedDirectory ) ) {
+	} elseif( Image::isHashed( $fromSharedDirectory ) ) {
 		$hash = md5($dbkey);
 		return '/' . $hash{0} . '/' . substr( $hash, 0, 2 ) . '/';
 	} else {

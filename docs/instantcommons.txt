@@ -40,6 +40,7 @@ $description
 - loadFromDB()
 - load()
 - loadFromFile()
+- exists()
 
 - includes/ImageFunctions.php
 - wfGetHashPath()
@@ -53,7 +54,7 @@ static $localClasses (added "ApiInstantCommons" to array)
 - includes/api/ApiInstantCommons.php (new file)
 
 - includes/SpecialUpload.php
-now distinguishes file upload sources
+now distinguishes file upload sources using the Image::exists('upload') method
 
 
 Known Limitations:

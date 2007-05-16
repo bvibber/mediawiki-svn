@@ -40,9 +40,7 @@ define( 'EXT_I18N_DB', 'i18n.db' );
 $wgDisplayLevel = 2;
 $wgChecks = array( 'untranslated', 'obsolete', 'variables', 'empty', 'whitespace', 'xhtml', 'chars' );
 
-
-$optionsWithArgs = array( 'extdir' );
-
+$optionsWithArgs = array( 'extdir', 'lang' );
 
 require_once( dirname(__FILE__).'/../commandLine.inc' );
 require_once( 'languages.inc' );
@@ -57,37 +55,54 @@ class extensionLanguages extends languages {
 		$this->mExt18nFilename = $ext18nFilename;
 		$this->mExtArrayName = $extArrayName;
 
-		$this->mIgnoredMessages = array() ;
-		$this->mOptionalMessages = array() ;
+		$this->mIgnoredMessages = array();
+		$this->mOptionalMessages = array();
 
 		if ( file_exists( $this->mExt18nFilename ) ) {
 			require_once( $this->mExt18nFilename );
 
-			$foundarray = false ;
-
+			$foundarray = false;
 			if( isset( ${$this->mExtArrayName} ) )  {
 				// File provided in the db file
-				$foundarray = ${$this->mExtArrayName} ;
+				$foundarray = ${$this->mExtArrayName};
 			} else {
-				// Provided array could not be found we try to guess it.
 
-				# Using the extension path ($m[1]) and filename ($m[2]):
-				$m = array();
-				preg_match( '%.*/(.*)/(.*).i18n\.php%', $this->mExt18nFilename, $m);
-				$arPathCandidate = 'wg' . $m[1].'Messages';
-				$arFileCandidate = 'wg' . $m[2].'Messages';
-				$funcCandidate = "ef{$m[2]}Messages";
+				/* For extensions included elsewhere. For some reason other extensions
+				 * break with the global statement, so recheck here.
+				 */
+				global ${$this->mExtArrayName};
+				if( is_array( ${$this->mExtArrayName} ) )  {
+					$foundarray = ${$this->mExtArrayName};
+				}
 
-				// Try them:
-				if( isset($$arPathCandidate) && is_array( $$arPathCandidate ) ) {
-					print "warning> messages from guessed path array \$$arPathCandidate.\n";
-					$foundarray = $$arPathCandidate;
-				} elseif( isset($$arFileCandidate) && is_array( $$arFileCandidate ) ) {
-					print "warning> messages from guessed file array \$$arFileCandidate.\n";
-					$foundarray = $$arFileCandidate;
-				} elseif( function_exists( $funcCandidate ) ) {
-					print "warning> messages build from guessed function {$funcCandidate}().\n";
-					$foundarray = $funcCandidate();
+				/* we might have been given a function name, test it too */
+				if( function_exists( $this->mExtArrayName  ) ) {
+					// Load data
+					$funcName = $this->mExtArrayName ;
+					$foundarray = $funcName();
+				}
+
+				if(!$foundarray) {
+					// Provided array could not be found we try to guess it.
+
+					# Using the extension path ($m[1]) and filename ($m[2]):
+					$m = array();
+					preg_match( '%.*/(.*)/(.*).i18n\.php%', $this->mExt18nFilename, $m);
+					$arPathCandidate = 'wg' . $m[1].'Messages';
+					$arFileCandidate = 'wg' . $m[2].'Messages';
+					$funcCandidate = "ef{$m[2]}Messages";
+
+					// Try them:
+					if( isset($$arPathCandidate) && is_array( $$arPathCandidate ) ) {
+						print "warning> messages from guessed path array \$$arPathCandidate.\n";
+						$foundarray = $$arPathCandidate;
+					} elseif( isset($$arFileCandidate) && is_array( $$arFileCandidate ) ) {
+						print "warning> messages from guessed file array \$$arFileCandidate.\n";
+						$foundarray = $$arFileCandidate;
+					} elseif( function_exists( $funcCandidate ) ) {
+						print "warning> messages build from guessed function {$funcCandidate}().\n";
+						$foundarray = $funcCandidate();
+					}
 				}
 
 				# We are unlucky, return empty stuff
@@ -122,8 +137,12 @@ class extensionLanguages extends languages {
 	}
 }
 
-
-function checkExtensionLanguage( $filename, $arrayname ) {
+/**
+ * @param $filename Filename containing the extension i18n
+ * @param $arrayname The name of the array in the filename
+ * @param $filter Optional, restrict check to a given language code (default; null)
+ */
+function checkExtensionLanguage( $filename, $arrayname, $filter = null ) {
 	global $wgGeneralMessages, $wgRequiredMessagesNumber;
 
 	$extLanguages = new extensionLanguages($filename, $arrayname);
@@ -138,17 +157,27 @@ function checkExtensionLanguage( $filename, $arrayname ) {
 		return false;
 	}
 
-	print "Found ". count($langs) . " languages : " . implode(' ', $langs) ."\n";
-	foreach( $langs as $lang ) {
-		if( $lang == 'en' ) {
-			#print "Skipped english language\n";
-			continue;
-		}
+	$nErrors = 0;
+	if( $filter ) {
+		$nErrors += checkLanguage( $extLanguages, $filter );
+	} else {
+		print "Will check ". count($langs) . " languages : " . implode(' ', $langs) .".\n";
+		foreach( $langs as $lang ) {
+			if( $lang == 'en' ) {
+				#print "Skipped english language\n";
+				continue;
+			}
 
-		checkLanguage( $extLanguages, $lang );
+			$nErrors += checkLanguage( $extLanguages, $lang );
+		}
 	}
+
+	return $nErrors;
 }
 
+/**
+ * Read the db file, parse it, start the check.
+ */
 function checkExtensionRepository( $extdir, $db ) {
 	$fh = fopen( $extdir. '/' . $db, 'r' );
 
@@ -180,7 +209,15 @@ function checkExtensionRepository( $extdir, $db ) {
 
  		$i18n_file = $extdir . '/' . $i18n_file ;
 
-		checkExtensionLanguage( $i18n_file, $arrayname );
+		global $myLang;
+		$nErrors = checkExtensionLanguage( $i18n_file, $arrayname, $myLang );
+		if($nErrors == 1 ) {
+			print "\nFound $nErrors error for this extension.\n";
+		} elseif($nErrors) {
+			print "\nFound $nErrors errors for this extension.\n";
+		} else {
+			print "Looks OK.\n";
+		}
 
 		print "\n";
 	}
@@ -192,7 +229,10 @@ function usage() {
 print <<<END
 Usage:
     php checkExtensioni18n.php <filename> <arrayname>
-    php checkExtensioni18n.php --extdir <exstention repository>
+    php checkExtensioni18n.php --extdir <extension repository>
+
+Common option:
+    --lang <language code> : only check the given language.
 
 
 END;
@@ -200,6 +240,8 @@ die;
 }
 
 // Play with options and arguments
+$myLang = isset($options['lang']) ? $options['lang'] : null;
+
 if( isset( $options['extdir'] ) ) {
 	$extdb = $options['extdir'] . '/' . EXT_I18N_DB ;
 
@@ -227,7 +269,8 @@ if( isset( $options['extdir'] ) ) {
 			usage();
 		}
 
-		checkExtensionLanguage( $filename, $arrayname );
+		global $myLang;
+		checkExtensionLanguage( $filename, $arrayname, $myLang );
 	} else {
 		usage();
 	}

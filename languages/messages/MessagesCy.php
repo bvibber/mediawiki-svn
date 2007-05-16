@@ -503,7 +503,7 @@ i lwytho ffeiliau i fynu.",
 I gweld neu chwilio hen lluniau ewch i'r
 [[{{ns:special}}:Imagelist|rhestr lluniau wedi llwytho]].
 Mae pob llwyth a dileuo ffeil yn cael eu recordio ar y
-[[{{ns:special}}:Log/upload]]|log llwytho]].
+[[Special:Log/upload|log llwytho]].
 
 Defnyddwch y ffurflen isod i llwytho ffeil llun newydd i darluno eich erthyglau.
 Ar y mwyafrif o porwyr, fyddwch yn gweld botwm \"Pori/Browse...\" i agor y dialog agor ffeil arferol.
@@ -633,6 +633,7 @@ i anfon e-bost i ddefnyddwyr eraill.",
 # Watchlist
 #
 "watchlist" => "Fy rhestr gwylio",
+"mywatchlist" => "Fy rhestr gwylio",
 "nowatchlist"  => "Does ganddoch chi ddim eitem ar eich rhestr gwylio.",
 "watchnologin"	=> "Dydych chi ddim wedi mewngofnodi",
 "watchnologintext" => "Rhaid i chi bod wedi [[Special:Userlogin|mewngofnodi]]
@@ -726,7 +727,7 @@ Gwelwch [[{{ns:project}}:Tudalen amddiffynol]] am mwy o wybodaeth.",
 #
 "contributions"	=> "Cyfraniadau defnyddwr",
 "mycontris" => "Fy nghyfraniadau",
-"contribsub" => "Dros $1",
+"contribsub2" => "Dros $1 ($2)",
 "nocontribs" => "Dim wedi dod o hyd i newidiadau gyda criterion hyn.",
 "ucnote" => "Isod mae y <b>$1</b> newidiadau yn y <b>$2</b> dyddiau olaf am defnyddwr hwn.",
 "uclinks" => "Gwelwch y $1 newidiadau olaf; gwelwch y $2 dyddiau olaf.",

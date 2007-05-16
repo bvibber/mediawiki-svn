@@ -2,16 +2,15 @@
 if ( ! defined( 'MEDIAWIKI' ) )
 	die( 1 );
 
-/**
- *
- * @addtogroup Skins
- */
-
 # See skin.txt
 
 /**
  * The main skin class that provide methods and properties for all other skins.
  * This base class is also the "Standard" skin.
+ *
+ * See docs/skin.txt for more information.
+ *
+ * @addtogroup Skins
  */
 class Skin extends Linker {
 	/**#@+
@@ -23,6 +22,8 @@ class Skin extends Linker {
 	var $rcMoveIndex;
 	var $mWatchLinkNum = 0; // Appended to end of watch link id's
 	/**#@-*/
+	protected $mRevisionId; // The revision ID we're looking at, null if not applicable.
+	protected $skinname = 'standard' ;
 
 	/** Constructor, call parent constructor */
 	function Skin() { parent::__construct(); }
@@ -142,8 +143,8 @@ class Skin extends Linker {
 	}
 
 	/** @return string skin name */
-	function getSkinName() {
-		return 'standard';
+	public function getSkinName() {
+		return $this->skinname;
 	}
 
 	function qbSetting() {
@@ -295,7 +296,7 @@ class Skin extends Linker {
 		global $wgStylePath, $wgUser;
 		global $wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgLang;
 		global $wgTitle, $wgCanonicalNamespaceNames, $wgOut, $wgArticle;
-		global $wgBreakFrames;
+		global $wgBreakFrames, $wgRequest;
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
@@ -311,6 +312,7 @@ class Skin extends Linker {
 			'wgNamespaceNumber' => $wgTitle->getNamespace(),
 			'wgPageName' => $wgTitle->getPrefixedDBKey(),
 			'wgTitle' => $wgTitle->getText(),
+			'wgAction' => $wgRequest->getText( 'action', 'view' ),
 			'wgArticleId' => $wgTitle->getArticleId(),
 			'wgIsArticle' => $wgOut->isArticle(),
 			'wgUserName' => $wgUser->isAnon() ? NULL : $wgUser->getName(),
@@ -332,8 +334,8 @@ class Skin extends Linker {
 		return self::makeVariablesScript( $vars );
 	}
 
-	function getHeadScripts() {
-		global $wgStylePath, $wgUser, $wgAllowUserJs, $wgJsMimeType, $wgStyleVersion;
+	function getHeadScripts( $allowUserJs ) {
+		global $wgStylePath, $wgUser, $wgJsMimeType, $wgStyleVersion;
 
 		$r = self::makeGlobalVariablesScript( array( 'skinname' => $this->getSkinName() ) );
 
@@ -346,7 +348,7 @@ class Skin extends Linker {
 				$r .= "<script type=\"$wgJsMimeType\" src=\"".htmlspecialchars(self::makeUrl('-','action=raw&gen=js'))."\"><!-- site js --></script>\n";
 			}
 		}
-		if( $wgAllowUserJs && $wgUser->isLoggedIn() ) {
+		if( $allowUserJs && $wgUser->isLoggedIn() ) {
 			$userpage = $wgUser->getUserPage();
 			$userjs = htmlspecialchars( self::makeUrl(
 				$userpage->getPrefixedText().'/'.$this->getSkinName().'.js',
@@ -429,7 +431,7 @@ var wgAjaxWatch = {
 
 		wfProfileOut( __METHOD__ );
 		return $s;
-    }
+	}
 
 	/**
 	 * Return html code that include User stylesheets
@@ -1423,29 +1425,6 @@ END;
 	function bugReportsLink() {
 		$s = $this->makeKnownLink( wfMsgForContent( 'bugreportspage' ),
 		  wfMsg( 'bugreports' ) );
-		return $s;
-	}
-
-	function dateLink() {
-		$t1 = Title::newFromText( gmdate( 'F j' ) );
-		$t2 = Title::newFromText( gmdate( 'Y' ) );
-
-		$id = $t1->getArticleID();
-
-		if ( 0 == $id ) {
-			$s = $this->makeBrokenLink( $t1->getText() );
-		} else {
-			$s = $this->makeKnownLink( $t1->getText() );
-		}
-		$s .= ', ';
-
-		$id = $t2->getArticleID();
-
-		if ( 0 == $id ) {
-			$s .= $this->makeBrokenLink( $t2->getText() );
-		} else {
-			$s .= $this->makeKnownLink( $t2->getText() );
-		}
 		return $s;
 	}
 

@@ -198,7 +198,8 @@ span.texhtml { font-family: serif; }
 }
 div.prefsectiontip {
     font-size: 94%;
-    margin-top: 1em;
+    margin-top: 0.4em;
+    color: #666;
 }
 fieldset.prefsection { margin-top: 1em }
 fieldset.operaprefsection { margin-left: 15em }
@@ -302,6 +303,7 @@ div.gallerybox div.thumb {
 }
 
 div.gallerytext {
+	overflow: hidden;
         font-size: 94%;
         padding: 2px 4px;
 }
@@ -476,6 +478,19 @@ p.mw-ipb-conveniencelinks {
 /* Stop floats from intruding into edit area in previews */
 #toolbar, #wpTextbox1 { clear: both; }
 
+/*
 #file img, .gallerybox .thumb img {
 	background: url(images/Checker-16x16.png) repeat;
 }
+*/
+.MediaTransformError {
+	border: thin solid #777;
+	background-color: #ccc;
+	padding: 0.1em;
+}
+.MediaTransformError td {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 90%;
+}
+

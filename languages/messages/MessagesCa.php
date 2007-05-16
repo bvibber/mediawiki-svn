@@ -625,7 +625,7 @@ Reviseu l'URL que heu emprat per a accedir-hi.",
 Aquesta versió de la pàgina ha estat eliminada dels arxius públics. Vegeu més detalls al [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} registre d\'esborrats].
 </div>',
 'rev-deleted-text-view'       => '<div class="mw-warning plainlinks">
-Aquesta versió de la pàgina ha estat eliminada dels arxius públics. Com a administrador de la Viquipèdia podeu veure-la; vegeu més detalls al [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} registre d\'esborrats].
+Aquesta versió de la pàgina ha estat eliminada dels arxius públics. Com a administrador d\'aquesta wiki podue veure-la; vegeu més detalls al [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} registre d\'esborrats].
 </div>',
 'rev-delundel'                => 'mostra/amaga',
 
@@ -1101,6 +1101,7 @@ respondre.",
 
 # Watchlist
 'watchlist'            => 'Llista de seguiment',
+'mywatchlist'            => 'Llista de seguiment',
 'watchlistfor'         => "(per a '''$1''')",
 'nowatchlist'          => 'No teniu cap element en el vostre llistat de seguiment.',
 'watchlistanontext'    => 'Premeu $1 per a visualitzar o editar elements de la vostra llista de seguiment.',
@@ -1303,7 +1304,7 @@ Consulteu el [[Special:Log/delete|registre d'esborrats]] per a veure els esborra
 # Contributions
 'contributions' => "Contribucions de l'usuari",
 'mycontris'     => 'Contribucions',
-'contribsub'    => 'Per $1',
+'contribsub2'    => 'Per $1 ($2)',
 'nocontribs'    => "No s'ha trobat canvis que encaixessin amb aquests criteris.",
 'ucnote'        => "A sota hi ha els darrers <b>$1</b> canvis d'aquest usuari en els darrers <b>$2</b> dies.",
 'uclinks'       => 'Mostra els darrers $1 canvis; mostra els darrers $2 dies.',

@@ -28,8 +28,10 @@
  * the PHP memcached client.
  *
  * backends for local hash array and SQL table included:
- * $bag = new HashBagOStuff();
- * $bag = new MysqlBagOStuff($tablename); # connect to db first
+ * <code>
+ *   $bag = new HashBagOStuff();
+ *   $bag = new MysqlBagOStuff($tablename); # connect to db first
+ * </code>
  *
  */
 class BagOStuff {
@@ -492,7 +494,6 @@ class TurckBagOStuff extends BagOStuff {
  * This is a wrapper for APC's shared memory functions
  *
  */
-
 class APCBagOStuff extends BagOStuff {
 	function get($key) {
 		$val = apc_fetch($key);
@@ -551,6 +552,9 @@ class eAccelBagOStuff extends BagOStuff {
 	}
 }
 
+/**
+ * @todo document
+ */
 class DBABagOStuff extends BagOStuff {
 	var $mHandler, $mFile, $mReader, $mWriter, $mDisabled;
 	

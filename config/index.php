@@ -226,6 +226,26 @@ class ConfigData {
 	function getSitename() { return $this->getEncoded( $this->Sitename ); }
 	function getSysopName() { return $this->getEncoded( $this->SysopName ); }
 	function getSysopPass() { return $this->getEncoded( $this->SysopPass ); }
+
+	function setSchema( $schema ) {
+		$this->DBschema = $schema;
+		switch ( $this->DBschema ) {
+			case 'mysql5':
+				$this->DBTableOptions = 'ENGINE=InnoDB, DEFAULT CHARSET=utf8';
+				$this->DBmysql5 = 'true';
+				break;
+			case 'mysql5-binary':
+				$this->DBTableOptions = 'ENGINE=InnoDB, DEFAULT CHARSET=binary';
+				$this->DBmysql5 = 'true';
+				break;
+			default:
+				$this->DBTableOptions = 'TYPE=InnoDB';
+				$this->DBmysql5 = 'false';
+		}
+		# Set the global for use during install
+		global $wgDBTableOptions;
+		$wgDBTableOptions = $this->DBTableOptions;
+	}
 }
 
 ?>
@@ -326,6 +346,15 @@ if( ini_get( "mbstring.func_overload" ) ) {
 	<?php
 }
 
+if( ini_get( "zend.ze1_compatibility_mode" ) ) {
+	$fatal = true;
+	?><li class="error"><strong>Fatal: <a href="http://www.php.net/manual/en/ini.core.php">zend.ze1_compatibility_mode</a> is active!</strong>
+	This option causes horrible bugs with MediaWiki; you cannot install or use
+	MediaWiki unless this option is disabled.
+	<?php
+}
+
+
 if( $fatal ) {
 	dieout( "</ul><p>Cannot install MediaWiki.</p>" );
 }
@@ -360,13 +389,35 @@ if( $conf->xml ) {
 		If you're running Mandrake, install the php-xml package." );
 }
 
-# Crude check for session support
+# Check for session support
 if( !function_exists( 'session_name' ) )
 	dieout( "PHP's session module is missing. MediaWiki requires session support in order to function." );
 
-# Likewise for PCRE
+# session.save_path doesn't *have* to be set, but if it is, and it's
+# not valid/writable/etc. then it can cause problems
+$sessionSavePath = ini_get( 'session.save_path' );
+# Warn the user if it's not set, but let them proceed
+if( !$sessionSavePath ) {
+	print "<li><strong>Warning:</strong> A value for <tt>session.save_path</tt>
+	has not been set in PHP.ini. If the default value causes problems with
+	saving session data, set it to a valid path which is read/write/execute
+	for the user your web server is running under.</li>";
+} elseif ( is_dir( $sessionSavePath ) && is_writable( $sessionSavePath ) ) {
+	# All good? Let the user know
+	print "<li>Session save path appears to be valid.</li>";
+} else {
+	# Something not right? Halt the installation so the user can fix it up
+	dieout( "Your session save path appears to be invalid or is not writable.
+		PHP needs to be able to save data to this location in order for correct
+		session operation. Please check that <tt>session.save_path</tt> in
+		<tt>PHP.ini</tt> points to a valid path, and is read/write/execute for
+		the user your web server is running under." );
+}
+
+# Check for PCRE support
 if( !function_exists( 'preg_match' ) )
-	dieout( "The PCRE regular expression functions are missing. MediaWiki requires these in order to function." );
+	dieout( "The PCRE support module appears to be missing. MediaWiki requires the
+	Perl-compatible regular expression functions." );
 
 $memlimit = ini_get( "memory_limit" );
 $conf->raiseMemory = false;
@@ -461,8 +512,6 @@ if( $conf->HaveGD ) {
 	}
 }
 
-$conf->UseImageResize = $conf->HaveGD || $conf->ImageMagick;
-
 $conf->IP = dirname( dirname( __FILE__ ) );
 print "<li>Installation directory: <tt>" . htmlspecialchars( $conf->IP ) . "</tt></li>\n";
 
@@ -502,10 +551,7 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 
 	## MySQL specific:
 	$conf->DBprefix     = importPost( "DBprefix" );
-	$conf->DBschema     = importPost( "DBschema", "mysql4" );
-	$conf->DBmysql5     = ($conf->DBschema == "mysql5" ||
-	                       $conf->DBschema == "mysql5-binary")
-	                       ? "true" : "false";
+	$conf->setSchema( importPost( "DBschema", "mysql4" ) );
 	$conf->LanguageCode = importPost( "LanguageCode", "en" );
 
 	## Postgres specific:
@@ -521,6 +567,9 @@ if( $conf->Sitename == "" || $conf->Sitename == "MediaWiki" || $conf->Sitename =
 }
 if( $conf->DBuser == "" ) {
 	$errs["DBuser"] = "Must not be blank";
+}
+if( ($conf->DBtype == 'mysql') && (strlen($conf->DBuser) > 16) ) {
+	$errs["DBuser"] = "Username too long";
 }
 if( $conf->DBpassword == "" && $conf->DBtype != "postgres" ) {
 	$errs["DBpassword"] = "Must not be blank";
@@ -706,7 +755,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 			error_reporting( E_ALL );
 			$wgSuperUser = '';
 			## Possible connect as a superuser
-			if( $conf->Root ) {
+			if( $useRoot ) {
 				$wgDBsuperuser = $conf->RootUser;
 				echo( "<li>Attempting to connect to database \"postgres\" as superuser \"$wgDBsuperuser\"..." );
 				$wgDatabase = $dbc->newFromParams($wgDBserver, $wgDBsuperuser, $conf->RootPW, "postgres", 1);
@@ -790,48 +839,62 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 		if( $wgDatabase->tableExists( "cur" ) || $wgDatabase->tableExists( "revision" ) ) {
 			print "<li>There are already MediaWiki tables in this database. Checking if updates are needed...</li>\n";
 
-			# Create user if required (todo: other databases)
-			if ( $conf->Root && $conf->DBtype == 'mysql') {
-				$conn = $dbc->newFromParams( $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, 1 );
-				if ( $conn->isOpen() ) {
-					print "<li>DB user account ok</li>\n";
-					$conn->close();
-				} else {
-					print "<li>Granting user permissions...";
-					if( $mysqlOldClient && $mysqlNewAuth ) {
-						print " <b class='error'>If the next step fails, see <a href='http://dev.mysql.com/doc/mysql/en/old-client.html'>http://dev.mysql.com/doc/mysql/en/old-client.html</a> for help.</b>";
+			if ( $conf->DBtype == 'mysql') {
+
+				# Determine existing default character set
+				if ( $wgDatabase->tableExists( "revision" ) ) {
+					$revision = $wgDatabase->escapeLike( $conf->DBprefix . 'revision' );
+					$res = $wgDatabase->query( "SHOW TABLE STATUS LIKE '$revision'" );
+					$row = $wgDatabase->fetchObject( $res );
+					if ( !$row ) {
+						echo "<li>SHOW TABLE STATUS query failed!</li>\n";
+						$existingSchema = false;
+					} elseif ( preg_match( '/^latin1/', $row->Collation ) ) {
+						$existingSchema = 'mysql4';
+					} elseif ( preg_match( '/^utf8/', $row->Collation ) ) {
+						$existingSchema = 'mysql5';
+					} elseif ( preg_match( '/^binary/', $row->Collation ) ) {
+						$existingSchema = 'mysql5-binary';
+					} else {
+						$existingSchema = false;
+						echo "<li><strong>Warning:</strong> Unrecognised existing collation</li>\n";
 					}
-					print "</li>\n";
-					dbsource( "../maintenance/users.sql", $wgDatabase );
+					if ( $existingSchema && $existingSchema != $conf->DBschema ) {
+						print "<li><strong>Warning:</strong> you requested the {$conf->DBschema} schema, " .
+							"but the existing database has the $existingSchema schema. This upgrade script ". 
+							"can't convert it, so it will remain $existingSchema.</li>\n";
+						$conf->setSchema( $existingSchema );
+					}
+				}
+
+				# Create user if required
+				if ( $conf->Root ) {
+					$conn = $dbc->newFromParams( $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname, 1 );
+					if ( $conn->isOpen() ) {
+						print "<li>DB user account ok</li>\n";
+						$conn->close();
+					} else {
+						print "<li>Granting user permissions...";
+						if( $mysqlOldClient && $mysqlNewAuth ) {
+							print " <b class='error'>If the next step fails, see <a href='http://dev.mysql.com/doc/mysql/en/old-client.html'>http://dev.mysql.com/doc/mysql/en/old-client.html</a> for help.</b>";
+						}
+						print "</li>\n";
+						dbsource( "../maintenance/users.sql", $wgDatabase );
+					}
 				}
 			}
-			print "<pre>\n";
+			print "</ul><pre>\n";
 			chdir( ".." );
 			flush();
 			do_all_updates();
 			chdir( "config" );
 			print "</pre>\n";
-			print "<li>Finished update checks.</li>\n";
+			print "<ul><li>Finished update checks.</li>\n";
 		} else {
 			# FIXME: Check for errors
 			print "<li>Creating tables...";
 			if ($conf->DBtype == 'mysql') {
-				switch( $conf->DBschema ) {
-				case "mysql4":
-					print " using MySQL 4 table defs...";
-					dbsource( "../maintenance/tables.sql", $wgDatabase );
-					break;
-				case "mysql5":
-					print " using MySQL 5 UTF-8 table defs...";
-					dbsource( "../maintenance/mysql5/tables.sql", $wgDatabase );
-					break;
-				case "mysql5-binary":
-					print " using MySQL 5 binary table defs...";
-					dbsource( "../maintenance/mysql5/tables-binary.sql", $wgDatabase );
-					break;
-				default:
-					dieout( " <b>invalid schema selection!</b></li>" );
-				}
+				dbsource( "../maintenance/tables.sql", $wgDatabase );
 				dbsource( "../maintenance/interwiki.sql", $wgDatabase );
 			} else if ($conf->DBtype == 'postgres') {
 				$wgDatabase->setup_database();
@@ -1277,7 +1340,6 @@ function escapePhpString( $string ) {
 }
 
 function writeLocalSettings( $conf ) {
-	$conf->UseImageResize = $conf->UseImageResize ? 'true' : 'false';
 	$conf->PasswordSender = $conf->EmergencyContact;
 	$magic = ($conf->ImageMagick ? "" : "# ");
 	$convert = ($conf->ImageMagick ? $conf->ImageMagick : "/usr/bin/convert" );
@@ -1406,15 +1468,20 @@ if ( \$wgCommandLineMode ) {
 \$wgDBname           = \"{$slconf['DBname']}\";
 \$wgDBuser           = \"{$slconf['DBuser']}\";
 \$wgDBpassword       = \"{$slconf['DBpassword']}\";
-\$wgDBport           = \"{$slconf['DBport']}\";
+
+# MySQL specific settings
 \$wgDBprefix         = \"{$slconf['DBprefix']}\";
 
-# Schemas for Postgres
-\$wgDBmwschema       = \"{$slconf['DBmwschema']}\";
-\$wgDBts2schema      = \"{$slconf['DBts2schema']}\";
+# MySQL table options to use during installation or update
+\$wgDBTableOptions   = \"{$slconf['DBTableOptions']}\";
 
 # Experimental charset support for MySQL 4.1/5.0.
 \$wgDBmysql5 = {$conf->DBmysql5};
+
+# Postgres specific settings
+\$wgDBport           = \"{$slconf['DBport']}\";
+\$wgDBmwschema       = \"{$slconf['DBmwschema']}\";
+\$wgDBts2schema      = \"{$slconf['DBts2schema']}\";
 
 ## Shared memory settings
 \$wgMainCacheType = $cacheType;
@@ -1423,7 +1490,6 @@ if ( \$wgCommandLineMode ) {
 ## To enable image uploads, make sure the 'images' directory
 ## is writable, then set this to true:
 \$wgEnableUploads       = false;
-\$wgUseImageResize      = {$conf->UseImageResize};
 {$magic}\$wgUseImageMagick = true;
 {$magic}\$wgImageMagickConvertCommand = \"{$convert}\";
 

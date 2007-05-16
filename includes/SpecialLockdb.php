@@ -36,7 +36,7 @@ function wfSpecialLockdb() {
 }
 
 /**
- *
+ * A form to make the database readonly (eg for maintenance purposes).
  * @addtogroup SpecialPage
  */
 class DBLockForm {

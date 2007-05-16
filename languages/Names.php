@@ -24,7 +24,9 @@
 	'ba' => 'Башҡорт',	# Bashkir
 	'bar' => 'Boarisch',	# Bavarian (Austro-Bavarian and South Tyrolean)
 	'bat-smg' => 'Žemaitėška', # Samogitian 
-	'be' => 'Беларуская',	# Belarusian ''or'' Byelarussian
+	'be' => 'Беларуская',	#  Belarusian normative
+	'be-tarask' => 'Беларуская (тарашкевіца)',	# Belarusian in Taraskievica orthography
+	'be-x-old' => 'Беларуская (тарашкевіца)',	# Belarusian in Taraskievica orthography; compat link
 	'bg' => 'Български',	# Bulgarian
 	'bh' => 'भोजपुरी',	# Bihara
 	'bi' => 'Bislama',		# Bislama
@@ -116,7 +118,7 @@
 	'jv' => 'Basa Jawa',	# Javanese
 	'ka' => 'ქართული',	# Georgian
 	'kaa' => 'Qaraqalpaqsha',	# Karakalpak
-	'kab' => 'ثاقبايليث',	# Kabyle
+	'kab' => 'Taqbaylit',	# Kabyle
 	'kg' => 'Kongo',		# Kongo, (FIXME!) should probaly be KiKongo or KiKoongo
 	'ki' => 'Gĩkũyũ',	# Kikuyu, correctness not guaranteed
 	'kj' => 'Kuanyama',		# Kuanyama (FIXME!)
@@ -131,6 +133,8 @@
 	'kr' => 'Kanuri',		# Kanuri (FIXME!)
 	'ks' => 'कश्मीरी - (كشميري)',	# Kashmiri
 	'ksh' => 'Ripoarisch', 	# Ripuarian 
+	'ksh-c-a' => 'Ripoarisch c a', 	# Ripuarian 
+	'ksh-p-b' => 'Ripoarisch p b', 	# Ripuarian 
 	'ku' => 'Kurdî / كوردي',	# Kurdish
 	'kv' => 'Коми', 	# Komi, cyrillic is common script but also written in latin script
 	'kw' => 'Kernewek',		# Cornish
@@ -191,8 +195,8 @@
 	'pam' => 'Kapampangan',   # Pampanga
 	'pap' => 'Papiamentu',	# Papiamentu
 	'pdc' => 'Deitsch', 	# Pennsylvania German
-	'pih' => 'Norfuk / Pitkern', # Norfuk/Pitcairn/Norfolk
 	'pi' => 'पािऴ',	# Pali
+	'pih' => 'Norfuk / Pitkern', # Norfuk/Pitcairn/Norfolk
 	'pl' => 'Polski',		# Polish
 	'pms' => 'Piemontèis', 	# Piedmontese
 	'ps' => 'پښتو',	# Pashto
@@ -267,23 +271,26 @@
 	'vo' => 'Volapük',	# Volapük
 	'wa' => 'Walon',		# Walloon
 	'war' => 'Winaray', # Waray-Waray
-	'wo' => 'Wollof',		# Wolof
+	'wo' => 'Wolof',		# Wolof
 	'wuu' => '吴语',		# Wu
 	'xal' => 'Хальмг',		# Kalmyk
 	'xh' => 'isiXhosa',		# Xhosan
 	'yi' => 'ייִדיש',	# Yiddish
 	'yo' => 'Yorùbá',	# Yoruba
+	'yue' => '粵語', 	# Cantonese -- (bug 8217) yue instead of zh-yue, http://www.sil.org/iso639-3/codes.asp?order=639_3&letter=y
 	'za' => '(Cuengh)',		# Zhuang
 	'zea' => 'Zeêuws',	# Zealandic
-	'zh' => '中文',	# (Zhōng Wén) - Chinese
-	'zh-cfr' => '閩南語', # Min-nan alias (site is at minnan)
-	'zh-classical' => '古文 / 文言文',	# Classical Chinese/Literary Chinese
-	'zh-cn' => "\xE2\x80\xAA中文(简体)\xE2\x80\xAC",	# Simplified
-	'zh-hk' => "\xE2\x80\xAA中文(繁體)\xE2\x80\xAC",	# Traditional (Hong Kong)
-	'zh-min-nan' => 'Bân-lâm-gú', # Min-nan -- (see bug 8217)
-	'zh-sg' => "\xE2\x80\xAA中文(简体)\xE2\x80\xAC", # Simplified (Singapore)
-	'zh-tw' => "\xE2\x80\xAA中文(繁體)\xE2\x80\xAC",	# Traditional
-	'zh-yue' => '粵語',	# Cantonese
+	'zh' => '中文',						# (Zhōng Wén) - Chinese
+	'zh-cfr' => '閩南語', 					# Min-nan alias (site is at minnan)
+	'zh-classical' => '古文 / 文言文',			# Classical Chinese/Literary Chinese
+	'zh-cn' => "\xE2\x80\xAA中文(中国大陆)\xE2\x80\xAC",	# Chinese (PRC)
+	'zh-hans' => "\xE2\x80\xAA中文(简体)\xE2\x80\xAC",	# Chinese written using the Simplified Chinese script
+	'zh-hant' => "\xE2\x80\xAA中文(繁體)\xE2\x80\xAC",	# Chinese written using the Traditional Chinese script
+	'zh-hk' => "\xE2\x80\xAA中文(香港)\xE2\x80\xAC",		# Chinese (Hong Kong)
+	'zh-min-nan' => 'Bân-lâm-gú', 				# Min-nan -- (see bug 8217)
+	'zh-sg' => "\xE2\x80\xAA中文(新加坡)\xE2\x80\xAC", 	# Chinese (Singapore)
+	'zh-tw' => "\xE2\x80\xAA中文(台灣)\xE2\x80\xAC",		# Chinese (Taiwan)
+	'zh-yue' => '粵語',					# Cantonese -- (see bug 8217)
 	'zu' => 'isiZulu'		# Zulu
 );
 ?>

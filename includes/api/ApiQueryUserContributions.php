@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Created on Oct 16, 2006
  *
@@ -29,6 +28,9 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiQueryBase.php');
 }
 
+/**
+ * @addtogroup API
+ */
 class ApiQueryContributions extends ApiQueryBase {
 
 	public function __construct($query, $moduleName) {
@@ -36,6 +38,8 @@ class ApiQueryContributions extends ApiQueryBase {
 	}
 
 	public function execute() {
+
+		$this->selectNamedDB('contributions', DB_SLAVE, 'contributions');
 
 		//Blank all our variables
 		$limit = $user = $start = $end = $dir = null;
