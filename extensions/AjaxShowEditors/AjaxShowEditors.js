@@ -7,10 +7,12 @@ var wgAjaxShowEditors = {} ;
 wgAjaxShowEditors.onLoad = function() {
 	var elEditors = document.getElementById( 'ajax-se' );
 	// wgAjaxShowEditors.refresh();
-	elEditors.onclick = function() { wgAjaxShowEditors.refresh(); } ;
+	if( elEditors ) {
+		elEditors.onclick = function() { wgAjaxShowEditors.refresh(); } ;
 
-	var elTextArea = document.getElementById( 'wpTextbox1' );
-	elTextArea.onkeypress = function() { wgAjaxShowEditors.refresh(); } ;
+		var elTextArea = document.getElementById( 'wpTextbox1' );
+		elTextArea.onkeypress = function() { wgAjaxShowEditors.refresh(); } ;
+	}
 
 	wgAjaxShowEditors.allowRefresh();
 }
