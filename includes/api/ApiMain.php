@@ -1,6 +1,5 @@
 <?php
 
-
 /*
  * Created on Sep 4, 2006
  *
@@ -31,6 +30,7 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * This is the main API class, used for both external and internal processing. 
+ * @addtogroup API
  */
 class ApiMain extends ApiBase {
 
@@ -45,10 +45,10 @@ class ApiMain extends ApiBase {
 	private static $Modules = array (
 		'help' => 'ApiHelp',
 		'login' => 'ApiLogin',
+		'query' => 'ApiQuery',
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
-		'query' => 'ApiQuery',
-		'instantcommons' => 'ApiInstantCommons',
+		'instantcommons' => 'ApiInstantCommons',		
 	);
 
 	/**
@@ -270,7 +270,7 @@ class ApiMain extends ApiBase {
 		return array (
 			'',
 			'This API allows programs to access various functions of MediaWiki software.',
-			'For more details see API Home Page @ http://meta.wikimedia.org/wiki/API',
+			'For more details see API Home Page @ http://www.mediawiki.org/wiki/API',
 			'',
 			'Status: ALPHA -- all features shown on this page should be working,',
 			'                 but the API is still in active development, and  may change at any time.',
@@ -347,8 +347,9 @@ class ApiMain extends ApiBase {
 }
 
 /**
-* @desc This exception will be thrown when dieUsage is called to stop module execution.
-*/
+ * This exception will be thrown when dieUsage is called to stop module execution.
+ * @addtogroup API
+ */
 class UsageException extends Exception {
 
 	private $mCodestr;
