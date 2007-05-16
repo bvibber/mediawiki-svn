@@ -1,6 +1,5 @@
 Installation Instructions
-Create a patch against Mediawiki 1.9alpha from this branch which implements InstantCommons functionality for Mediawiki.
-You can find the full InstantCommons specifications at http://meta.wikimedia.org/wiki/InstantCommons
+Check out the instantcommons branch from http://svn.wikimedia.org/viewvc/mediawiki/branches/instantcommons/
 
 README
 * How is the implementation done?
@@ -8,15 +7,13 @@ This implementation extends the new Mediawiki API to include another action call
 
 *How do I use the functionality?
 - Enable the cURL extension on your webserver(and for php too). 
-- Install 2 (or more) instances of Mediawiki 1.9alpha.
+- Install 2 (or more) instances of the downloaded InstantCommons branch of Mediawiki 
 NB: If you install both instances on the same machine, you need to disable shared uploads in order to use instantcommons functionality as shared upload functionality has higher priority than InstantCommons functionality on when both Mediawiki instances are on the same machine.
-
-- Apply your patch from the instantcommons branch to your installation.
 
 - Edit your LocalSettinngs.php and add the following lines:
 //InstantCommons Settings
 $wgUseInstantCommons = true; //this activates the IC Api
-$wgInstantCommonsServerPath = "http://fienipa.asemsebe.com/commons"; //this points to the full url of the folder which contains the index.php of your mediawiki instance (with no trailing slash!).
+$wgInstantCommonsServerPath = "http://example.com/commons"; //this points to the full url of the folder which contains the index.php of your mediawiki instance (with no trailing slash!).
 
 - Navigate to your client mediawiki, upload an Image, say A.jpg.
 - Navigate to your commons mediawiki, create a page and make a direct reference to A.jpg as if it were a local image.
@@ -58,36 +55,12 @@ static $localClasses (added "ApiInstantCommons" to array)
 - includes/SpecialUpload.php
 now distinguishes file upload sources
 
--------------PERSONAL NOTES-------------------------
-Upload all changes to client
-Upload all changes to commons
-Use mutual settings for client/commons 
-
-Test-mutually
-Upload image to client, reference from commons
-Upload image to commons, reference from client
 
 Known Limitations:
-Not included in installation procedure.
+Not included in automatic installation procedure.
 No storage of IC variable in Image class in database.
 No indication of "downloading" status.
 
 
-
-Done since alpha:
-Fix ApiInstantCommons.php so that calls to it return the name of the file, size, etc that
-can be used to prepopulate the image table. As well as the filepath for downloading with cURL.
-Let cURL run in the background instead of hanging the page until it's done
-
 TODO:
 Show downloading.png in place of the file if download is not complete. Hack the Image display functionality.
-
-Feedback from Erik
-The biggest bug I am seeing right now is that IC does not work in
-preview. When I preview a page with an IC image, it just puts me on
-the description page _for_ the image; I don't see an actual preview.
-Steps to reproduce:
-1) Put an image reference to an IC server in the client
-2) Hit "Preview"
-3) Expected result: Page with preview of  text & image from IC
-4) Actual result: Image description page
