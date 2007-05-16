@@ -15,7 +15,7 @@ function wfSpecialUpload() {
 }
 
 /**
- *
+ * implements Special:Upload
  * @addtogroup SpecialPage
  */
 class UploadForm {
@@ -410,21 +410,73 @@ class UploadForm {
 				$warning .= '<li>'.wfMsgHtml( 'emptyfile' ).'</li>';
 			}
 
-			if( $nt->getArticleID() ) {
-				global $wgUser;
-				$sk = $wgUser->getSkin();
+			global $wgUser;
+			$sk = $wgUser->getSkin();
+			$image = new Image( $nt );
+
+			// Check for uppercase extension. We allow these filenames but check if an image
+			// with lowercase extension exists already
+			if ( $finalExt != strtolower( $finalExt ) ) {
+				$nt_lc = Title::newFromText( $partname . '.' . strtolower( $finalExt ) );
+				$image_lc = new Image( $nt_lc );
+			}
+
+			if( $image->exists() ) {
 				$dlink = $sk->makeKnownLinkObj( $nt );
-				$warning .= '<li>'.wfMsgHtml( 'fileexists', $dlink ).'</li>';
-			} else {
+				if ( $image->allowInlineDisplay() ) {
+					$dlink2 = $sk->makeImageLinkObj( $nt, wfMsgExt( 'fileexists-thumb', 'parseinline', $dlink ), $nt->getText(), 'right', array(), false, true );
+				} elseif ( !$image->allowInlineDisplay() && $image->isSafeFile() ) {
+					$icon = $image->iconThumb();
+					$dlink2 = '<div style="float:right" id="mw-media-icon"><a href="' . $image->getURL() . '">' . $icon->toHtml() . '</a><br />' . $dlink . '</div>';
+				} else {
+					$dlink2 = '';
+				}
+
+				$warning .= '<li>' . wfMsgExt( 'fileexists', 'parseline', $dlink ) . '</li>' . $dlink2;
+
+			} elseif ( isset( $image_lc) && $image_lc->exists() ) {
+				# Check if image with lowercase extension exists.
+				# It's not forbidden but in 99% it makes no sense to upload the same filename with uppercase extension
+				$dlink = $sk->makeKnownLinkObj( $nt_lc );
+				if ( $image_lc->allowInlineDisplay() ) {
+					$dlink2 = $sk->makeImageLinkObj( $nt_lc, wfMsgExt( 'fileexists-thumb', 'parseinline', $dlink ), $nt_lc->getText(), 'right', array(), false, true );
+				} elseif ( !$image_lc->allowInlineDisplay() && $image_lc->isSafeFile() ) {
+					$icon = $image_lc->iconThumb();
+					$dlink2 = '<div style="float:right" id="mw-media-icon"><a href="' . $image_lc->getURL() . '">' . $icon->toHtml() . '</a><br />' . $dlink . '</div>';
+				} else {
+					$dlink2 = '';
+				}
+
+				$warning .= '<li>' . wfMsgExt( 'fileexists-extension', 'parsemag' , $partname . '.' . $finalExt , $dlink ) . '</li>' . $dlink2;				
+
+			} elseif ( ( substr( $partname , 3, 3 ) == 'px-' || substr( $partname , 2, 3 ) == 'px-' ) && ereg( "[0-9]{2}" , substr( $partname , 0, 2) ) ) {
+				# Check for filenames like 50px- or 180px-, these are mostly thumbnails
+				$nt_thb = Title::newFromText( substr( $partname , strpos( $partname , '-' ) +1 ) . '.' . $finalExt );
+				$image_thb = new Image( $nt_thb );
+				if ($image_thb->exists() ) {
+					# Check if an image without leading '180px-' (or similiar) exists
+					$dlink = $sk->makeKnownLinkObj( $nt_thb);
+					if ( $image_thb->allowInlineDisplay() ) {
+						$dlink2 = $sk->makeImageLinkObj( $nt_thb, wfMsgExt( 'fileexists-thumb', 'parseinline', $dlink ), $nt_thb->getText(), 'right', array(), false, true );
+					} elseif ( !$image_thb->allowInlineDisplay() && $image_thb->isSafeFile() ) {
+						$icon = $image_thb->iconThumb();
+						$dlink2 = '<div style="float:right" id="mw-media-icon"><a href="' . $image_thb->getURL() . '">' . $icon->toHtml() . '</a><br />' . $dlink . '</div>';
+					} else {
+						$dlink2 = '';
+					}
+
+					$warning .= '<li>' . wfMsgExt( 'fileexists-thumbnail-yes', 'parsemag', $dlink ) . '</li>' . $dlink2;	
+				} else {
+					# Image w/o '180px-' does not exists, but we do not like these filenames
+					$warning .= '<li>' . wfMsgExt( 'file-thumbnail-no', 'parseinline' , substr( $partname , 0, strpos( $partname , '-' ) +1 ) ) . '</li>';
+				}
+			}
+			if ( $image->wasDeleted() ) {
 				# If the file existed before and was deleted, warn the user of this
 				# Don't bother doing so if the image exists now, however
-				$image = new Image( $nt );
-				if( $image->wasDeleted() ) {
-					$skin = $wgUser->getSkin();
-					$ltitle = SpecialPage::getTitleFor( 'Log' );
-					$llink = $skin->makeKnownLinkObj( $ltitle, wfMsgHtml( 'deletionlog' ), 'type=delete&page=' . $nt->getPrefixedUrl() );
-					$warning .= wfOpenElement( 'li' ) . wfMsgWikiHtml( 'filewasdeleted', $llink ) . wfCloseElement( 'li' );
-				}
+				$ltitle = SpecialPage::getTitleFor( 'Log' );
+				$llink = $sk->makeKnownLinkObj( $ltitle, wfMsgHtml( 'deletionlog' ), 'type=delete&page=' . $nt->getPrefixedUrl() );
+				$warning .= wfOpenElement( 'li' ) . wfMsgWikiHtml( 'filewasdeleted', $llink ) . wfCloseElement( 'li' );
 			}
 
 			if( $warning != '' ) {
@@ -1073,13 +1125,13 @@ class UploadForm {
 		$chunk = Sanitizer::decodeCharReferences( $chunk );
 
 		#look for script-types
-		if (preg_match('!type\s*=\s*[\'"]?\s*(\w*/)?(ecma|java)!sim',$chunk)) return true;
+		if (preg_match('!type\s*=\s*[\'"]?\s*(?:\w*/)?(?:ecma|java)!sim',$chunk)) return true;
 
 		#look for html-style script-urls
-		if (preg_match('!(href|src|data)\s*=\s*[\'"]?\s*(ecma|java)script:!sim',$chunk)) return true;
+		if (preg_match('!(?:href|src|data)\s*=\s*[\'"]?\s*(?:ecma|java)script:!sim',$chunk)) return true;
 
 		#look for css-style script-urls
-		if (preg_match('!url\s*\(\s*[\'"]?\s*(ecma|java)script:!sim',$chunk)) return true;
+		if (preg_match('!url\s*\(\s*[\'"]?\s*(?:ecma|java)script:!sim',$chunk)) return true;
 
 		wfDebug("SpecialUpload::detectScript: no scripts found\n");
 		return false;
@@ -1233,7 +1285,7 @@ class UploadForm {
 		if( $img->exists('upload') ) {
 			global $wgUser, $wgOut;
 			if( $img->isLocal() ) {
-				if( !$wgUser->isAllowed( 'reupload' ) ) {
+				if( !$this->userCanReUpload( $wgUser, $img->name ) ) {
 					$error = 'fileexists-forbidden';
 				}
 			} else {
@@ -1252,6 +1304,31 @@ class UploadForm {
 		// Rockin', go ahead and upload
 		return true;
 	}
+	
+	 /**
+	 * Check if a user is the last uploader
+	 *
+	 * @param User $user
+	 * @param string $img, image name
+	 * @return bool
+	 * @access private
+	 */
+	function userCanReUpload( $user, $img ) {
+		if( $user->isAllowed('reupload' ) )
+			return true; // non-conditional
+		if( !$user->isAllowed('reupload-own') )
+			return false;
+		
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow(
+		/* FROM */ 'image',
+		/* SELECT */ 'img_user',
+		/* WHERE */ array( 'img_name' => $img )
+		);
+		if ( !$row )
+			return false;
 
+		return $user->getID() == $row->img_user;
+	}
 }
 ?>
