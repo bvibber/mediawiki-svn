@@ -1,5 +1,6 @@
 package org.wikimedia.lsearch.interoperability;
 
+import java.io.IOException;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -172,6 +173,28 @@ public class RMIMessengerClient {
 		} catch (Exception e) {
 			log.warn("Error invoking remote method searchMainPart on host "+host);
 			return null;
+		}
+	}
+	
+	public boolean requestFlushAndNotify(String dbname, String host){
+		try {
+			RMIMessenger r = messengerFromCache(host);
+			log.debug("Calling requestFlushAndNotify("+dbname+" records) on "+host);
+			return r.requestFlushAndNotify(dbname);
+		} catch (Exception e) {
+			log.warn("Error invoking remote method requestFlushAndNotify on host "+host);
+			return false;
+		}
+	}
+	
+	public Boolean isSuccessfulFlush(String dbname, String host) throws IOException {
+		try {
+			RMIMessenger r = messengerFromCache(host);
+			log.debug("Calling isSuccessfulFlush("+dbname+" records) on "+host);
+			return r.isSuccessfulFlush(dbname);
+		} catch (Exception e) {
+			log.warn("Error invoking remote method isSuccessfulFlush on host "+host);
+			throw new IOException("Remote error");
 		}
 	}
 	

@@ -20,6 +20,7 @@ Setup:
  	* make and set permissions of local directory for indexes
  	* edit mwsearch.conf:
  	 	+ MWConfig.global to point to URL of mwsearch-global.conf
+ 	 	+ MWConfig.lib to point to local library path (ie with unicode-data etc)
  		+ Localization.url to point to URL pattern of latest 
  		  message files from MediaWiki
    	* setup rsync daemon (see rsyncd.conf-example)
@@ -28,7 +29,7 @@ Setup:
 Running:
 
  - start rsync daemon (if distributed architecture)
- - "./run.sh <hostname>" or "ant run" (setup hostname in file "hostname")
+ - "./lsearchd" or "ant run" (setup hostname in file "hostname")
  
 Features: 
 

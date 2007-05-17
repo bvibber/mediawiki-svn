@@ -121,7 +121,8 @@ public class Localization {
 		if(interwiki != null)
 			return;
 		interwiki = new HashSet<String>();
-		String path = "./lib/interwiki.map";
+		String lib = Configuration.open().getString("MWConfig","lib","./lib");
+		String path = lib+"/interwiki.map";
 		try{
 			BufferedReader r = new BufferedReader(new FileReader(path));
 			String line;

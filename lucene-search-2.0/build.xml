@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="MWSearch" default="makejar" basedir=".">
+<project name="MWSearch" default="alljar" basedir=".">
 	<property name="lib" value="lib"/>
 	<property name="bin" value="bin"/>
 	<property name="src" value="src"/>
@@ -7,6 +7,8 @@
 	<property name="dist" location="dist"/>
 	<property name="pack.name" value="lucene-search-2.0"/>
 	<property name="binary.name" value="ls2-bin"/>
+	<property name="jar.name" value="LuceneSearch.jar"/>
+	
 	
 	<property file="${basedir}/hostname"/>
 	
@@ -15,8 +17,8 @@
 	</path>
 
 	<target name="run">
-		<java jar="MWSearch.jar" fork="yes">
-			<sysproperty key="java.rmi.server.codebase" value="file://${basedir}/MWSearch.jar"/>
+		<java jar="${jar.name}" fork="yes">
+			<sysproperty key="java.rmi.server.codebase" value="file://${basedir}/${jar.name}"/>
 			<sysproperty key="java.rmi.server.hostname" value="${hostname}"/>
 	  		<classpath>
 	        	<fileset dir="${lib}">
@@ -27,16 +29,38 @@
   	</target> 
 	
 	<target name="makejar" depends="build">
-		<jar destfile="${basedir}/MWSearch.jar">
+		<jar destfile="${basedir}/${jar.name}">
 			<manifest>
 	            <attribute name="Main-Class" value="org.wikimedia.lsearch.config.StartupManager"/>
-                <attribute name="Class-Path" value="MWSearch.jar lib/xmlrpc-common-3.0.jar lib/xmlrpc-client-3.0.jar lib/xmlrpc-server-3.0.jar lib/commons-logging-1.1.jar lib/ws-commons-util-1.0.1.jar lib/log4j-1.2.14.jar lib/lucene-core-2.0.1-dev.jar lib/lucene-analyzers.jar lib/snowball.jar lib/mwdumper.jar"/>
+                <attribute name="Class-Path" value="${jar.name} lib/xmlrpc-common-3.0.jar lib/xmlrpc-client-3.0.jar lib/xmlrpc-server-3.0.jar lib/commons-logging-1.1.jar lib/ws-commons-util-1.0.1.jar lib/log4j-1.2.14.jar lib/lucene-core-2.0.1-dev.jar lib/lucene-analyzers.jar lib/snowball.jar lib/mwdumper.jar"/>
             </manifest>
 			<zipfileset dir="${bin}" prefix="">
 				<include name="org/**"/>
 			</zipfileset>			
 		</jar>
 	</target>
+	
+	<target name="alljar" depends="build" description="All-in-one jar">
+		<jar jarfile="${jar.name}" compress="true">
+			<manifest>
+				<attribute name="Main-Class" value="org.wikimedia.lsearch.config.StartupManager" />
+			</manifest>
+			<fileset dir="bin" includes="org/**" />
+			
+			<!-- pack libraries as well -->
+			<zipfileset src="lib/xmlrpc-common-3.0.jar" />
+			<zipfileset src="lib/xmlrpc-client-3.0.jar" />
+			<zipfileset src="lib/xmlrpc-server-3.0.jar" />
+			<zipfileset src="lib/commons-logging-1.1.jar" />
+			<zipfileset src="lib/ws-commons-util-1.0.1.jar" />
+			<zipfileset src="lib/log4j-1.2.14.jar" />			
+			<zipfileset src="lib/lucene-core-2.0.1-dev.jar" />
+			<zipfileset src="lib/lucene-analyzers.jar" />			
+			<zipfileset src="lib/snowball.jar" />
+			<zipfileset src="lib/mwdumper.jar" />				
+		</jar>
+	</target>
+
 	
 	<target name="build" description="Compile classes">
 	    <mkdir dir="${bin}"/>
@@ -49,7 +73,7 @@
 		<delete file="${dist}/${pack.name}.tar"/>
 		<delete file="${dist}/${pack.name}.tar.gz"/>
 		<tar tarfile="${dist}/${pack.name}.tar">
-			<tarfileset prefix="${pack.name}" dir="." includes="**/*" excludes="dist/ bin/ MWSearch.jar"/>
+			<tarfileset prefix="${pack.name}" dir="." includes="**/*" excludes="dist/ bin/ ${jar.name}"/>
 		</tar>
 
 		<gzip zipfile="${dist}/${pack.name}.tar.gz" src="${dist}/${pack.name}.tar"/>
@@ -66,6 +90,5 @@
 		<gzip zipfile="${dist}/${binary.name}.tar.gz" src="${dist}/${binary.name}.tar"/>
 		<delete file="${dist}/${binary.name}.tar"/>
 	</target>
-
 	
 </project>

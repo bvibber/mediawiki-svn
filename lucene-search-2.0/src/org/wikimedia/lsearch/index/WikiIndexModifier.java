@@ -7,8 +7,10 @@ package org.wikimedia.lsearch.index;
 import java.io.File;
 import java.io.IOException;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
@@ -19,6 +21,8 @@ import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.store.Directory;
+import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.beans.Article;
@@ -89,11 +93,37 @@ public class WikiIndexModifier {
 			return card;
 		}
 		
-		/** Batch-delete documents */
-		void deleteDocuments(Collection<IndexUpdateRecord> records){
+		/** 
+		 * Try unlocking the index. This should only be called on index recovery
+		 * 
+		 * IMPORTANT: assumes single-threaded application and one indexer !!!! 		 * 
+		 */
+		void unlockIndex(String path){
+			try{
+				if(IndexReader.isLocked(path)){
+					Directory dir = FSDirectory.getDirectory(path, false);
+					IndexReader.unlock(dir);
+					log.info("Unlocked index at "+path);
+				}
+			} catch(IOException e){
+				log.warn("I/O error unlock index at "+path+" : "+e.getMessage());
+			}
+		}
+		
+		/** Batch-delete documents, returns true if successfull */
+		boolean deleteDocuments(Collection<IndexUpdateRecord> records){
 			nonDeleteDocuments = new HashSet<IndexUpdateRecord>();
 			try {
-				reader = IndexReader.open(iid.getIndexPath());				
+				try{
+					reader = IndexReader.open(iid.getIndexPath());
+				} catch(IOException e){
+					if(IndexReader.isLocked(iid.getIndexPath())){
+						// unlock the index, and then retry
+						unlockIndex(iid.getIndexPath());
+						reader = IndexReader.open(iid.getIndexPath());
+					} else
+						throw e;
+				}
 				for(IndexUpdateRecord rec : records){								
 					if(rec.doDelete()){
 						int count = reader.deleteDocuments(new Term("key", rec.getKey()));
@@ -118,24 +148,33 @@ public class WikiIndexModifier {
 					if(card!=null)
 						card.setFailedDelete();
 				}
-				return;
-			}			
+				return false;
+			}
+			return true;
 		}
 		
-		/** Batch-add documents */
-		void addDocuments(Collection<IndexUpdateRecord> records){
+		/** Batch-add documents, returns true if successfull */
+		boolean addDocuments(Collection<IndexUpdateRecord> records){
+			boolean succ = true;
 			String path = iid.getIndexPath();
 			try {
 				writer = new IndexWriter(path,null,rewrite);
 			} catch (IOException e) {				
 				try {
-					// try to make brand new index
-					makeDBPath(path); // ensure all directories are made
-					log.info("Making new index at path "+path);
-					writer = new IndexWriter(path,null,true);
+					// unlock, retry
+					if(IndexReader.isLocked(path)){
+						unlockIndex(path);
+						writer = new IndexWriter(path,null,true);
+					} else if(!new File(path).exists()){
+						// try to make brand new index
+						makeDBPath(path); // ensure all directories are made
+						log.info("Making new index at path "+path);
+						writer = new IndexWriter(path,null,true);
+					} else
+						throw e;
 				} catch (IOException e1) {
 					log.error("I/O error openning index for addition of documents at "+path+" : "+e.getMessage());
-					return;
+					return false;
 				}				
 			}
 			writer.setSimilarity(new WikiSimilarity());
@@ -166,19 +205,23 @@ public class WikiIndexModifier {
 						log.error("Error writing  document "+rec+" to index "+path);
 						if(card != null)
 							card.setFailedAdd();
+						succ = false; // report unsucc, but still continue, to process all cards 
 					} catch(Exception e){
 						e.printStackTrace();
 						log.error("Error adding document "+rec.getKey()+" with message: "+e.getMessage());
 						if(card != null)
 							card.setFailedAdd();
+						succ = false; // report unsucc, but still continue, to process all cards
 					}
 				}
 			}
 			try {
-				writer.close();
+				writer.close();					
 			} catch (IOException e) {
 				log.error("Error closing index "+path);
+				return false;
 			}
+			return succ;
 		}
 
 	
@@ -221,13 +264,15 @@ public class WikiIndexModifier {
 	 * @param iid
 	 * @param updateRecords
 	 */
-	public void updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
+	public boolean updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		long now = System.currentTimeMillis();
 		log.info("Starting update of "+updateRecords.size()+" records on "+iid+", started at "+now);
 			
 		SimpleIndexModifier modifier = new SimpleIndexModifier(iid,global.getLanguage(iid.getDBname()),false);
-		modifier.deleteDocuments(updateRecords);
-		modifier.addDocuments(updateRecords);
+		
+		boolean succDel = modifier.deleteDocuments(updateRecords);
+		boolean succAdd = modifier.addDocuments(updateRecords);
+		boolean succ = succDel && succAdd;
 		
 		// send reports back to the main indexer host
 		RMIMessengerClient messenger = new RMIMessengerClient();
@@ -237,8 +282,11 @@ public class WikiIndexModifier {
 		
 		modifiedDBs.add(iid);
 		long delta = System.currentTimeMillis()-now;
-		log.info("Finishing update ["+(int)((double)updateRecords.size()/delta*1000)+" articles/s] of "+updateRecords.size()+" records in "+delta+"ms on "+iid);
-		
+		if(succ)
+			log.info("Successful update ["+(int)((double)updateRecords.size()/delta*1000)+" articles/s] of "+updateRecords.size()+" records in "+delta+"ms on "+iid);
+		else
+			log.warn("Failed update of "+updateRecords.size()+" records in "+delta+"ms on "+iid);
+		return succ;
 	}
 
 	/** Close all IndexModifier instances, and optimize if needed */
