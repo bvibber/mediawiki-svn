@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.List;
@@ -62,7 +63,8 @@ public class IndexThread extends Thread {
 	protected long lastFlush;
 	protected WikiIndexModifier indexModifier;	
 	protected static GlobalConfiguration global;
-	protected static Object threadLock = new Object();
+	/** this lock is used when threads access static members */
+	protected static Object staticLock = new Object();
 	/** This is where pages are queued for processing 
 	 * 	Structure: dbname -> hashtable(ns:title -> indexUpdateRecord) 
 	 */
@@ -70,6 +72,12 @@ public class IndexThread extends Thread {
 	
 	/** Local reports: reportd Id -> list (reports from distributed indexes) */ 
 	protected static Hashtable<ReportId,List<IndexReportCard>> reports = new Hashtable<ReportId,List<IndexReportCard>>();
+	
+	/** set of dbs to be flushed */
+	protected static Set<String> needFlushDBs = Collections.synchronizedSet(new HashSet<String>());
+	/** dbs that have been flushed in last flush cycle, dbrole -> flushed_succ */
+	protected static Hashtable<String,Boolean> flushedDBs = new Hashtable<String,Boolean>(); 
+	protected Set<String> workFlushes;
 
 	/** dbrole -> ns:title -> ReportId <br/>
 	 * Records the latest reportid (if new updates arrives 
@@ -144,7 +152,7 @@ public class IndexThread extends Thread {
 	 * @param rc
 	 */
 	public static void enqueuReport(IndexReportCard rc){
-		synchronized(threadLock){
+		synchronized(staticLock){
 			List<IndexReportCard> cards = reports.get(rc.getId());
 			if(cards == null){
 				log.warn("Unexpected report "+rc);
@@ -156,7 +164,7 @@ public class IndexThread extends Thread {
 	
 	/** See enqueuReport(IndexReportCard) */
 	public static void enqueuReports(IndexReportCard[] rcs){
-		synchronized(threadLock){
+		synchronized(staticLock){
 			for(IndexReportCard rc : rcs){
 				List<IndexReportCard> cards = reports.get(rc.getId());
 				if(cards == null){
@@ -172,7 +180,7 @@ public class IndexThread extends Thread {
 	protected void checkReports(){
 		if(reports.size() != 0 ){
 			Hashtable<ReportId,List<IndexReportCard>> reportsLocal;
-			synchronized (threadLock) {
+			synchronized (staticLock) {
 				 reportsLocal = (Hashtable<ReportId, List<IndexReportCard>>) reports.clone();
 			}
 			for(Entry<ReportId,List<IndexReportCard>> entry : reportsLocal.entrySet()){				
@@ -183,7 +191,7 @@ public class IndexThread extends Thread {
 					if(entry.getValue().size() == splitFactor){
 						// got all reports, process						
 						// for now only process update reports
-						synchronized(threadLock){
+						synchronized(staticLock){
 							if(!reportId.equals(pendingUpdates.get(iid.toString()).get(reportId.getKey()))){
 								log.info(reportId+" has a newer update!");
 								reports.remove(entry.getKey());
@@ -276,12 +284,15 @@ public class IndexThread extends Thread {
 		log.info("Making snapshot for "+iid);
 		String snapshotdir = iid.getSnapshotPath();
 		String snapshot = snapshotdir+sep+timestamp;
+		LocalIndex li = IndexRegistry.getInstance().getLatestSnapshot(iid);
 		// cleanup the snapshot dir for this iid
 		File spd = new File(snapshotdir);
 		if(spd.exists() && spd.isDirectory()){
 			File[] files = spd.listFiles();
-			for(File f: files)
-				deleteDirRecursive(f);
+			for(File f: files){
+				if(!f.getAbsolutePath().equals(li.path)) // leave the last snapshot
+					deleteDirRecursive(f);
+			}
 		}
 		new File(snapshot).mkdirs();
 		File ind =new File(indexPath);
@@ -329,7 +340,7 @@ public class IndexThread extends Thread {
 	 * @return if there are queued updates
 	 */
 	public static boolean queuedUpdatesExist(){
-		synchronized(threadLock){
+		synchronized(staticLock){
 			return queuedUpdates.size() > 0;
 		}
 	}
@@ -340,7 +351,7 @@ public class IndexThread extends Thread {
 	 * @param record
 	 */
 	public static void enqueue(IndexUpdateRecord record) {
-		synchronized(threadLock){
+		synchronized(staticLock){
 			IndexId iid = record.getIndexId();
 			if(iid == null || !(iid.isLogical() || iid.isSingle()) || !iid.isMyIndex()){
 				log.error("Got update for database "+iid+", however this node does not accept updates for this DB");
@@ -430,7 +441,7 @@ public class IndexThread extends Thread {
 	 * @param record
 	 */
 	static protected void enqueueLocally(IndexUpdateRecord record){
-		synchronized (threadLock){
+		synchronized (staticLock){
 			IndexId iid = record.getIndexId();
 			Hashtable<String,IndexUpdateRecord> dbUpdates = queuedUpdates.get(iid.toString());
 			if (dbUpdates == null){
@@ -448,7 +459,7 @@ public class IndexThread extends Thread {
 	}
 	
 	static public int getQueueSize(){
-		synchronized(threadLock){
+		synchronized(staticLock){
 			int count = 0;
 			for(String db : queuedUpdates.keySet()){
 				count += queuedUpdates.get(db).size();
@@ -459,17 +470,34 @@ public class IndexThread extends Thread {
 	
 	/** 
 	 * Fetches queued updates for processing, will clear
-	 * the queuedUpdates hashtable
+	 * the queuedUpdates hashtable. Use filter to fetch 
+	 * only certain dbs.
 	 * 
+	 * @param filter - set of dbnames
 	 * @return hashtable of db->key->updates
 	 */
-	public static Hashtable<String,Hashtable<String,IndexUpdateRecord>> fetchIndexUpdates(){
-		synchronized(threadLock){
+	public static Hashtable<String,Hashtable<String,IndexUpdateRecord>> fetchIndexUpdates(Set<String> filter){
+		synchronized(staticLock){
 			if(queuedUpdates.size() == 0)
 				return null;
-			Hashtable<String,Hashtable<String,IndexUpdateRecord>> updates = queuedUpdates;
-			queuedUpdates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
-			return updates;
+			Hashtable<String,Hashtable<String,IndexUpdateRecord>> updates;
+			// filter out only certain dbs 
+			if(filter != null){
+				updates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
+				for(String dbname : filter){
+					IndexId iid = IndexId.get(dbname);
+					// get all subindexes
+					for(String pi : iid.getPhysicalIndexes()){
+						if(queuedUpdates.containsKey(pi))
+							updates.put(pi,queuedUpdates.remove(pi));
+					}
+				}				
+				return updates;
+			} else{
+				updates = queuedUpdates;
+				queuedUpdates = new Hashtable<String,Hashtable<String,IndexUpdateRecord>>();
+				return updates;
+			}
 		}
 	}
 	
@@ -488,19 +516,34 @@ public class IndexThread extends Thread {
 			int queuedCount = getQueueSize();
 			if(queuedCount == 0){
 				log.debug("0 queued items. Nothing to do.");
+				// make all dbs flushed
+				synchronized(staticLock){
+					for(String dbname : needFlushDBs){
+						flushedDBs.put(dbname,true);
+					}
+					needFlushDBs.clear();
+				}
 				return;
 			}
 			
 			// check if it's flush time
-			if (!flushNow &&
+			if (!(flushNow || needFlushDBs.size()!=0) &&
 				(delta < maxQueueTimeout &&
 				queuedCount < maxQueueCount)) {
 				log.info(queuedCount+" queued items waiting, "+delta+"ms since last flush...");
 				return;
 			}
 
+			// if flush&notify is requestd, get the flush requests
+			workFlushes = null;
+			synchronized(staticLock){
+				if(needFlushDBs.size() != 0){
+					workFlushes = needFlushDBs;
+					needFlushDBs = Collections.synchronizedSet(new HashSet<String>());
+				}
+			}
 			// fetch for update
-			workUpdates = fetchIndexUpdates();
+			workUpdates = fetchIndexUpdates(workFlushes);
 			if(workUpdates == null || workUpdates.size() == 0){				
 				flushNow = false;
 				lastFlush =  System.currentTimeMillis();		
@@ -513,6 +556,22 @@ public class IndexThread extends Thread {
 				Hashtable<String,IndexUpdateRecord> dbUpdates = workUpdates.get( dbname );
 				update(IndexId.get(dbname), dbUpdates.values());
 			}
+			if(workFlushes != null){
+				// figure out from index parts if the update was successful
+				synchronized(staticLock){	
+					for(String dbname : workFlushes){
+						IndexId iid = IndexId.get(dbname);
+						boolean succ = true;
+						Boolean val;
+						for(String r : iid.getPhysicalIndexes()){
+							if((val = flushedDBs.remove(r)) != null)
+								if(val == false)
+									succ = false;
+						}
+						flushedDBs.put(dbname,succ);							
+					}
+				}			
+			}			
 			flushNow = false;
 			lastFlush =  System.currentTimeMillis();
 		} catch (Exception e) {
@@ -527,7 +586,12 @@ public class IndexThread extends Thread {
 	 * @param updates collection of IndexUpdateRecords
 	 */
 	private void update(IndexId iid, Collection<IndexUpdateRecord> updates) {
-		indexModifier.updateDocuments(iid,updates);
+		boolean succ = indexModifier.updateDocuments(iid,updates);
+		if(workFlushes != null){
+			synchronized(staticLock){
+				flushedDBs.put(iid.toString(),succ);
+			}
+		}
 	}
 	
 	public String getStatus() {
@@ -543,7 +607,7 @@ public class IndexThread extends Thread {
 	 * @param record
 	 */
 	public static void enqueueFromIndexer(IndexUpdateRecord record) {
-		synchronized(threadLock){
+		synchronized(staticLock){
 			enqueueLocally(record);	
 		}
 	}
@@ -570,7 +634,41 @@ public class IndexThread extends Thread {
 		quit = true;		
 	}
 	
+	/**
+	 * Flush updates for given dbname (all parts), and put the dbname
+	 * into notification table. Returns true if request is valid.  
+	 * 
+	 * @param dbname
+	 */
+	public static boolean flushAndNotify(String dbname) {
+		log.info("Flush and notify requested on "+dbname);
+		IndexId iid = IndexId.get(dbname);
+		HashSet<IndexId> myindex = global.getMyIndex();
+		for(String r : iid.getPhysicalIndexes()){
+			if( ! myindex.contains(IndexId.get(r)) ){
+				log.warn("Invalid flush/notify request. Can be made only for dbs that are entirely indexes by this host");
+				return false;
+			}
+		}
+		synchronized(staticLock){
+			needFlushDBs.add(dbname);
+		}
+		return true;
+	}
 	
-	
+	/** 
+	 * Checks if db is flushed after notification has been queued
+	 * (via flushAndNotify()).
+	 * Returns null if flushed state is unknown, true/false if
+	 * it's successfull/failed. Flag is cleared after bool value
+	 * has been returned. 
+	 * 
+	 * @param dbname
+	 */
+	public static Boolean isFlushedDB(String dbname){
+		synchronized(staticLock){
+			return flushedDBs.remove(dbname);
+		}
+	}
 	
 }

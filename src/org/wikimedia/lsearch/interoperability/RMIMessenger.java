@@ -72,4 +72,27 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public int getIndexerQueueSize() throws RemoteException;
+	
+	/** 
+	 * Incremental updater tools. 
+	 * Request that indexer flushes dbname, and enqueues notification if the
+	 * flush was sucessful. Call function isSuccessfulFlush() to find out
+	 * flush status.
+	 * 
+	 * @param dbname
+	 * @return
+	 * @throws RemoteException
+	 */
+	public boolean requestFlushAndNotify(String dbname) throws RemoteException;
+
+	/**
+	 * Incremental updater tools.
+	 * Pair to function requestFlushAndNotify(). Will return null if flush status
+	 * is unknown, and true/false if it's successful/failed
+	 * 
+	 * @param dbname
+	 * @return
+	 * @throws RemoteException
+	 */
+	public Boolean isSuccessfulFlush(String dbname) throws RemoteException;
 }

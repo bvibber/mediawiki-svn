@@ -90,6 +90,20 @@ public class RMIMessengerImpl implements RMIMessenger {
 	public int getIndexerQueueSize() throws RemoteException {
 		return IndexThread.getQueueSize();
 	}
+	
+	// inherit javadoc
+	public Boolean isSuccessfulFlush(String dbname) throws RemoteException {
+		if(indexer == null)
+			indexer = new IndexDaemon(); // start the indexer
+		return IndexThread.isFlushedDB(dbname);
+	}
+
+	// inherit javadoc
+	public boolean requestFlushAndNotify(String dbname) throws RemoteException {
+		if(indexer == null)
+			indexer = new IndexDaemon(); // start the indexer
+		return IndexThread.flushAndNotify(dbname);
+	}
 
 	protected RMIMessengerImpl(){
 		networkStatus = null;

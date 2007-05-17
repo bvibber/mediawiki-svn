@@ -19,6 +19,7 @@ public class Benchmark extends Thread {
 	protected int words;
 	protected String namespace;
 	protected String namespaceFilter;
+	protected static boolean sample;
 	
 	protected int thread; // current thread
 		
@@ -116,8 +117,12 @@ public class Benchmark extends Thread {
 			query = URLEncoder.encode(query).replaceAll("\\+","%20");
 			urlString = "http://"+host+":"+port+"/"+verb+"/"+database+"/"+query+"?limit=20&namespaces="+namespaceFilter;
 		} else{
-			query = namespace+":"+URLEncoder.encode(query).replaceAll("\\+","%20");
+			query = URLEncoder.encode(namespace+":"+query).replaceAll("\\+","%20");
 			urlString = "http://"+host+":"+port+"/"+verb+"/"+database+"/"+query+"?limit=20";
+		}
+		if(sample){
+			System.out.println("url ~ "+urlString);
+			sample = false;
 		}
 		try {
 			URL url;
@@ -170,11 +175,12 @@ public class Benchmark extends Thread {
 		String verb = "search";
 		String namespace = "main";
 		String namespaceFilter= "0";
+		String lang = "en-b";
 		int runs = 5000;
 		int threads = 10;
 		int words = 2;
-		//SampleTerms terms = new SampleTerms();
-		Terms terms = new WordTerms("./test-data/words-wikilucene.ngram.gz");
+		sample = true;
+		Terms terms;
 		
 		for(int i = 0; i < args.length; i++) {
 			if (args[i].equals("-h")) {
@@ -196,6 +202,10 @@ public class Benchmark extends Thread {
 				namespace ="";
 			} else if (args[i].equals("-w")) {
 				words = Integer.parseInt(args[++i]);
+			} else if (args[i].equals("-l") || args[i].equals("-lang")) {
+				lang = args[++i];
+			} else if (args[i].equals("-s") || args[i].equals("-sample")) {
+				sample = true;
 			} else if (args[i].equals("--help")) {
 				System.out.println("Usage: java Benchmark <options>\n"+
 				                   "  -h  host (default: "+host+")\n"+
@@ -206,14 +216,25 @@ public class Benchmark extends Thread {
 				                   "  -w  number of words in query (default: "+words+")\n"+
 				                   "  -v  verb (default: "+verb+")\n"+
 				                   "  -n  namespace (default: "+namespace+")\n"+
-				                   "  -f  namespace filter (default: "+namespaceFilter+")\n");
+				                   "  -f  namespace filter (default: "+namespaceFilter+")\n"+
+				                   "  -l  language (default: "+lang+")\n"+
+				                   "  -s  show sample url (default: "+sample+")\n");
 				return;
 			} else{
 				System.out.println("Unrecognized switch: "+args[i]);
 				return;
 			}
 		}
-		System.out.println("Running benchmark on "+host+":"+port+" with "+threads+" theads each "+runs+" runs");
+		if(lang.equals("en"))
+			terms = new WordTerms("./lib/dict/english.txt.gz");
+		else if(lang.equals("de"))
+			terms = new WordTerms("./lib/dict/german.txt.gz");
+		else if(lang.equals("fr"))
+			terms = new WordTerms("./lib/dict/french.txt.gz");
+		else
+			terms = new WordTerms("./test-data/words-wikilucene.ngram.gz");
+		
+		System.out.println("Running benchmark on "+database+" "+host+":"+port+" with "+threads+" theads each "+runs+" runs, "+words+" words, filter: "+((namespace == "")? namespaceFilter : namespace)+", lang "+lang);
 		Benchmark bench = new Benchmark(host, port, database, verb, terms, words, namespace, namespaceFilter);
 		bench.startBenchmark(threads,runs);
 		bench.printReport();

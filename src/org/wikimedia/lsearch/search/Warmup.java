@@ -13,6 +13,7 @@ import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.benchmark.Terms;
 import org.wikimedia.lsearch.benchmark.WordTerms;
+import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 
@@ -85,12 +86,13 @@ public class Warmup {
 
 	/** Get database of example search terms for language */
 	protected static Terms getTermsForLang(String language) {
+		String lib = Configuration.open().getString("MWConfig","lib","./lib");
 		if(language.equals("en") && langTerms.get("en")==null)
-			langTerms.put("en",new WordTerms("./lib/dict/english.txt.gz"));
+			langTerms.put("en",new WordTerms(lib+"/dict/english.txt.gz"));
 		if(language.equals("fr") && langTerms.get("fr")==null)
-			langTerms.put("fr",new WordTerms("./lib/dict/french.txt.gz"));
+			langTerms.put("fr",new WordTerms(lib+"/dict/french.txt.gz"));
 		if(language.equals("de") && langTerms.get("de")==null)
-			langTerms.put("de",new WordTerms("./lib/dict/german.txt.gz"));
+			langTerms.put("de",new WordTerms(lib+"/dict/german.txt.gz"));
 		
 		if(langTerms.containsKey(language))
 			return langTerms.get(language);

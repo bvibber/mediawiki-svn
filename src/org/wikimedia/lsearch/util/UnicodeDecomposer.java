@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.BitSet;
 
 import org.apache.log4j.Logger;
+import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.index.IndexThread;
 /**
  * Implements a simplistic unicode decomposer. By default will use 
@@ -42,8 +43,10 @@ public class UnicodeDecomposer {
 	 * @return
 	 */
 	synchronized public static UnicodeDecomposer getInstance(){
-		if(instance == null)
-			instance = new UnicodeDecomposer("./lib/UnicodeData.txt");
+		if(instance == null){
+			String lib = Configuration.open().getString("MWConfig","lib","./lib");
+			instance = new UnicodeDecomposer(lib+"/UnicodeData.txt");
+		}
 		
 		return instance;
 	}

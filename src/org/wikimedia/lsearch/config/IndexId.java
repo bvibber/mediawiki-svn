@@ -398,6 +398,23 @@ public class IndexId {
 		return OAIRepository;
 	}
 	
+	/** 
+	 * Get all indexes parts for this iid except for logical names.
+	 * I.e. for db of kind mainsplit, it will return db.mainpart, db.restpart
+	 * @return
+	 */
+	public HashSet<String> getPhysicalIndexes() {
+		HashSet<String> ret = new HashSet<String>();
+		if(isSingle())
+			ret.add(dbrole);
+		else if(isMainsplit() || isSplit()){
+			for(String p : splitParts)
+				ret.add(p);
+		}
+		
+		return ret;
+	}
+	
 	
 		
 }

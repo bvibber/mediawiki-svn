@@ -151,6 +151,14 @@ public class Configuration {
 	public String getString(String section, String name) {
 		return props.getProperty(section+"."+name);
 	}
+	/** Get string property, if not set will return default value */
+	public String getString(String section, String name, String defaultValue) {
+		String ret = getString(section,name);
+		if(ret == null)
+			return defaultValue;
+		else
+			return ret;
+	}
 	
 	public String[] getArray(String section, String name) {		
 		String s = props.getProperty(section+"."+name);
