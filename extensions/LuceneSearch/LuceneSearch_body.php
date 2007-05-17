@@ -160,9 +160,16 @@ class LuceneSearch extends SpecialPage
                 		$wgOut->addWikiText( wfMsg( 'noexactmatch', $t->getPrefixedText() ) );
 			}
 
+			# Replace localized namespace prefixes (from lucene-search 2.0)
+			global $wgLuceneSearchVersion;
+			if($wgLuceneSearchVersion >= 2)
+				$searchq = $this->replacePrefixes($q);
+			else
+				$searchq = $q;
+
 			global $wgDisableTextSearch;
 			if( !$wgDisableTextSearch ) {
-				$results = LuceneSearchSet::newFromQuery( 'search', $q, $this->namespaces, $limit, $offset );
+				$results = LuceneSearchSet::newFromQuery( 'search', $searchq, $this->namespaces, $limit, $offset );
 			}
 
 			if( $wgDisableTextSearch || $results === false ) {
@@ -265,6 +272,125 @@ class LuceneSearch extends SpecialPage
 		$wgOut->setRobotpolicy('noindex,nofollow');
                 $wgOut->setArticleRelated(false);
 		wfProfileOut( $fname );
+	}
+
+	/**
+	 * Replaces localized namespace prefixes with the standard ones
+	 * defined in lucene-search daemon global configuration
+	 *
+	 * Small parser that extracts prefixes (e.g. help from 'help:editing'), 
+	 * but ignores those that are within quotes (i.e. in a phrase). It
+	 * replaces those with prefixes defined in messages searchall (all keyword) 
+	 * and searchincategory (incategory keyword), and in wgLuceneSearchNSPrefixes.
+	 * 
+	 *
+	 * @param query - search query
+	 * @access private
+	 */
+	function replacePrefixes( $query ) {
+		global $wgContLang;
+		$qlen = strlen($query);
+		$start = 0; $len = 0; // token start pos and length
+		$rewritten = ''; // rewritten query
+		$rindex = 0; // point to last rewritten character
+		$inquotes = false;
+
+		$allkeywords = explode("\n",wfMsg('searchall'));
+		$incatkeywords = explode("\n",wfMsg('searchincategory'));
+		$aliaspairs = explode("\n",wfMsg('searchaliases'));
+		$aliases = array(); // alias => indexes
+		foreach($aliaspairs as $ap){
+			$parts = explode('|',$ap);
+			if(count($parts) == 2){
+				$namespaces = explode(',',$parts[1]);
+				$rewrite = array();
+				foreach($namespaces as $ns){
+					$index = $wgContLang->getNsIndex($ns);
+					if($index !== false){
+						$rewrite[] = $index;
+					}
+				}
+				$aliases[$parts[0]] = $rewrite;
+			}
+		}
+		for($i = 0 ; $i < $qlen ; $i++){
+			$c = $query[$i];
+
+			// ignore chars in quotes
+			if($inquotes && $c!='"'); 
+			// check if $c is valid prefix character
+			else if(($c >= 'a' && $c <= 'z') ||
+				 ($c >= 'A' && $c <= 'Z') ||
+				 $c == '_' || $c == '-' || $c ==','){
+				if($len == 0){
+					$start = $i; // begin of token
+					$len = 1;
+				} else
+					$len++;	
+			// check for utf-8 chars
+			} else if(($c >= "\xc0" && $c <= "\xff")){ 
+				$utf8len = 1;
+				for($j = $i+1; $j < $qlen; $j++){ // fetch extra utf-8 bytes
+					if($query[$j] >= "\x80" && $query[$j] <= "\xbf")
+						$utf8len++;
+					else
+						break;
+				}
+				if($len == 0){
+					$start = $i;
+					$len = $utf8len;
+				} else
+					$len += $utf8len;
+				$i = $j - 1;  // we consumed the chars
+			// check for end of prefix (i.e. semicolon)
+			} else if($c == ':' && $len !=0){
+				$rewrite = array(); // here we collect namespaces 
+				$prefixes = explode(',',substr($query,$start,$len));
+				// iterate thru comma-separated list of prefixes
+				foreach($prefixes as $prefix){
+					$index = $wgContLang->getNsIndex($prefix);
+					
+					// check for special prefixes all/incategory
+					if(in_array($prefix,$allkeywords)){
+						$rewrite = 'all';
+						break;
+					} else if(in_array($prefix,$incatkeywords)){
+						$rewrite = 'incategory';
+						break;
+					// check for localized names of namespaces
+					} else if($index !== false)
+						$rewrite[] = $index;
+					// check aliases
+					else if(isset($aliases[$prefix]))
+						$rewrite = array_merge($rewrite,$aliases[$prefix]);
+					
+				}
+				$translated = null;
+				if($rewrite === 'all' || $rewrite === 'incategory')
+					$translated = $rewrite;
+				else if(count($rewrite) != 0)
+					$translated = '['.implode(',',array_unique($rewrite)).']';
+
+				if(isset($translated)){
+					// append text before the prefix, and then the prefix
+					$rewritten .= substr($query,$rindex,$start-$rindex);
+					$rewritten .= $translated . ':';
+					$rindex = $i+1;
+				}
+				
+				$len = 0;
+			} else{ // end of token
+				if($c == '"') // get in/out of quotes
+					$inquotes = !$inquotes;
+				
+				$len = 0;
+			}
+				
+		}
+		// add rest of the original query that doesn't need rewritting
+		$rewritten .= substr($query,$rindex,$qlen-$rindex);
+
+		return $rewritten;
 	}
 
 	/**

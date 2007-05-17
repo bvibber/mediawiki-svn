@@ -23,8 +23,28 @@ $1\n
 Search for $3 $9",
 	'lucenefallback'        => "There was a problem with the wiki search.
 This is probably temporary; try again in a few moments,
-or you can search the wiki through an external search service:\n"
+or you can search the wiki through an external search service:\n",
+	'searchall'             => 'all',
+	'searchincategory'      => 'incategory',
+	'searchaliases'         => 
+"m|
+mt|Talk
+u|User
+ut|User_talk
+p|Project
+pt|Project_talk
+i|Image
+it|Image_talk
+mw|MediaWiki
+mwt|MediaWiki_talk
+t|Template
+tt|Template_talk
+h|Help
+ht|Help_talk
+c|Category
+ct|Category_talk"
 );
+
 $wgLuceneSearchMessages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
@@ -358,7 +378,9 @@ $1\n
 Претрага за $3 $9",
 	'lucenefallback'        => "Дошло је до проблема у вики претрази...
 Ово је вероватно привремено; покушајте поново након неколико момената,
-или претражите вики преко неког од спољних претраживачких сервиса:\n"
+или претражите вики преко неког од спољних претраживачких сервиса:\n",
+	'searchall'             => "све\nsve",
+	'searchincategory'      => "укатегорији\nukategoriji"
 );
 $wgLuceneSearchMessages['sr-el'] = array(
 	'searchnumber'          => "<strong>Rezultati $1-$2 od $3</strong>",
@@ -376,7 +398,9 @@ $1\n
 Pretraga za $3 $9",
 	'lucenefallback'        => "Došlo je do problema u viki pretrazi...
 Ovo je verovatno privremeno; pokušajte ponovo nakon nekoliko momenata,
-ili pretražite viki preko nekog od spoljnih pretraživačkih servisa:\n"
+ili pretražite viki preko nekog od spoljnih pretraživačkih servisa:\n",
+	'searchall'             => "све\nsve",
+	'searchincategory'      => "укатегорији\nukategoriji"
 );
 $wgLuceneSearchMessages['sr'] = $wgLuceneSearchMessages['sr-ec'];
 $wgLuceneSearchMessages['sv'] = array(

@@ -57,6 +57,9 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description' => 'Interface for the Apache Lucene search engine',
 );
 
+/** Lucene-search (mwsearch) version. from 2.0 we support search prefixes */
+$wgLuceneSearchVersion = 1.0;
+
 # Internationalisation file
 require_once( 'LuceneSearch.i18n.php' );
 
