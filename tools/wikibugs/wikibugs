@@ -55,7 +55,7 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 	$/ = "";
 	# extract and remove the comment section
 	my ($haschanges, $user);
-	my $comment = $contents =~ s/\-{7}\s*Additional\s+Comments\s+From\s+(.*?)\@.*//s;
+	my $comment = $contents =~ s/\-+\s*Comment\s#\d+\sfrom\s.*?\s<(.*?)\@.*//s;
 	if($comment) {
 	$user = $1;
 	} else {
@@ -72,7 +72,7 @@ if ($contents =~ /^From: bugzilla-daemon/m)
 		my ($bug, $summary, $st);
 		if ($contents =~ /\nSubject: \[Bug (\d+)\]\s+New:\s+(.*?)\nX-Bugzilla-Reason/s) {
 			($bug, $summary, $st) = ($1, $2, "\00303(NEW)\003");
-		} elsif ($contents =~ /Subject: \[Bug (\d+)\] (.*?)\nX-Bugzilla-Reason/s) {
+		} elsif ($contents =~ /Subject: \[Bug (\d+)\]\s(.*?)\nX-Bugzilla-Reason/s) {
 			($bug, $summary, $st) = ($1, $2, "\00303(mod)\003");
 		}
 		my $url = $contents =~ /^http.*show_bug\.cgi.*$/m ? $& : "http://bugzilla.wikimedia.org/show_bug.cgi?id=$bug";
