@@ -86,7 +86,7 @@ Notes:
   all introduce large overhead, so I implemented hackish HTTP frontend
   for indexer. Article text is transfered raw in POST request, and
   function to be called is encoded in the URL. 
-
+  
 
 
 == Wiki parser ==
@@ -138,7 +138,7 @@ TODO:
 - Faster with complex queries than Lucene QueryParser
 
 - recognizes subset of QueryParser syntax: AND, OR keywords and
-  +,-. Phrases enclosed in ""
+  +,-. Phrases enclosed in "". Supports wilcards with * in end.
 
 - introduces namespace prefixes ''namespace:query'' to limit search to
   ceratin namespace: e.g. ''help:inserting pictures''. Note that
@@ -146,8 +146,14 @@ TODO:
   definition: e.g. ''help:editing project:wikipedia'' will find all
   pages in help namespace containing ''editing'' and all pages in
   project namespace containing ''wikipedia''.
+  
+- prefixes are defined in global configuration, but for generality
+  (and LuceneSearch) there is also a generic way to make prefixes. 
+  E.g. ''[0,1,2]:query'' will search namespaces 0,1,2. This is 
+  convenient because it allows extended customization on the user
+  side (i.ei mw extension rewrites custom labels into this syntax).
 
-- searching categories. Syntax is: ''query category:"exact category
+- searching categories. Syntax is: ''query incategory:"exact category
   name"''. It is important to note that category names are themselves
   not tokenized. Using logical operators, intersection, union and
   difference of categories can be searched. Since exact category is
@@ -169,12 +175,10 @@ Note:
 - see WikiQueryParser.java for adopted names of namespaces (all: is
   special prefix for all namespace)
 
-Todo:
-
 - Before search query is passed to Lucene-Search, localized version of
   namespace names should be replaced with standard ones. This should
   be implemented in MediaWiki. E.g. ''srpski kategorija:jezici'' ->
-  ''srpski category:jezici''
+  ''srpski incategory:jezici''
 
 
 
@@ -187,39 +191,25 @@ Todo:
 - SearchableMul interface, enables retrieval of many documents in
   single call (to minimize network overhead)
 
+TODO: make patch file for lucene 2.0
+
 
 
 == Incremental update ==
 
 - get load off database, more up-to-date index, etc.. 
 
-- however, needs to be tested in production environment. There are two
-  scenarios:
+- Incremental updating is available via OAI-PMH interface. One indexer
+  can have many incremental updaters delivering latest updates. 
+  Incremental updater maintains a list of status files, in which latest
+  timestamp of successful updates is stored. 
 
-	* don't optimize indexes with merge factor of 2. This means that
-    additional segments will be made with new documents, and that old
-    documents will be deleted when the size of index doubles (roughly)
-
-		This is good because incremental update is fast, and download of
-    index to searchers is also fast since only new segments need to be
-    transfered, and old segment pages are already in memory (since we
-    use cp -lr to prepare a copy for rsync).
-
-		However, search will be slower (according to my tests up to 50%
-		slower in worst case), and in worst case twice the memory is
-		needed
-
-  * optimize indexes. To optimize index, indexer needs twice the
-    memory of whole index (because brand new segments is made from all
-    old segments merged)
-
-		Rsync diff algorithm might be helpful in transferring the
-		optimized index, but probably not too much.
-
-		On searcher, twice the memory is needed when index is updated
-		(actually probably less since in the beginning not all of the
-		index is loaded in memory, especially the part of the index with
-		positional increments)
-
-- third scenario is to abandon incremental updates altogether, and
-  just rebuild whole database from scratch and snapshot then
+- Snapshot is made of index at regular intervals, and it's picked up
+  by searchers (via is a RMI query system) and rsynced. Indexes should
+  be optimized, and need to be properly warmed up to enable smooth
+  transition when new index replaces the old. Test indicate than this
+  scheme will work smoothly until 1/2 of both indexes can be kept in
+  memory. After that the operation becomes I/O bound, and degrades
+  search performance during warmup.
+  
+  

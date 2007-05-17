@@ -39,6 +39,9 @@ Features:
    index, and searchers check for this snapshots to update their local
    copy.
    
+ - incremental updater using oai interface. Periodically checks wikis
+   for new updates, and enqueues them on the indexer.
+   
  - wiki syntax parser, articles are parsed for basic wiki syntax and are 
    stripped of accents. Localization for wiki syntax can be read from 
    MediaWiki message files. Categories are extracted and put into 
