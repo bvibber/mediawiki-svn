@@ -1,29 +1,88 @@
 # By default, will check /etc/mwsearch.conf
 
-# Space-separated list of wiki database names:
-Search.databases=frtest rutest entest detest
+################################################
+# Global configuration
+################################################
 
-# If you have a lot of databases, specify instead
-# the path to file containing a list of all dbs.
-# Each database should be on its own line in the file.
-#Search.databaselist=/etc/mwsearch.dblist
+# URL to global configuration, this is the shared main config file, it can 
+# be on a NFS partition or available somewhere on the network
+MWConfig.global=http://localhost/lucene-search-2.0/test-data/mwsearch-global.test
 
-# Directory to put the Lucene index files into
-Search.indexpath=/usr/local/var/mwsearch/index/{0}
+# The libraries are (i.e. unicode data, interwiki map, dictionaries..)
+MWConfig.lib=/var/www/html/lucene-search-2.0/lib
 
-# For title prefix database; not really used yet...
-Search.titledb=/usr/local/var/mwsearch/title/{0}
+# Local path to root directory of indexes
+Indexes.path=/usr/local/var/ls2
 
-# Point config to the path of a log4net configuration file
-# If left blank, debug info will be logged to the console.
-#logconfig=/etc/mwsearch.log4net
+################################################
+# Search node related configuration
+################################################
 
-Index.rules= entest : (mainsplit,localhost1,localhost2), (part,5,6); \
-	detest,rutest,frtest : single,2,10,true; \
-	entest : part
+# Port of http daemon, if different from default 8123
+# Search.port=8000
 
-Daemon.port=8000
-Daemon.verbose=true
+# In minutes, how frequently will the index host be checked for updates
+Search.updateinterval=1
+
+# In seconds, delay after which the update will be fetched
+# used to scatter the updates around the hour
+Search.updatedelay=0
+
+# In seconds, how frequently the dead search nodes should be checked
+Search.checkinterval=30
+
+################################################
+# Indexer related configuration
+################################################
+
+# In minutes, how frequently is a clean snapshot of index created
+Index.snapshotinterval=5
+
+# Daemon type (http is started by default)
+#Index.daemon=xmlrpc
+
+# Port of daemon (default is 8321)
+#Index.port=8080
+
+# Maximal queue size after which index is being updated
+Index.maxqueuecount=5000
+
+# Maximal time an update can remain in queue before being processed (in seconds)
+Index.maxqueuetimeout=12
+
+################################################
+# Log, ganglia, localization
+################################################
+
+# URL to message files, {0} is replaced with language code, i.e. En
+Localization.url=file:///var/www/html/wiki-lucene/phase3/languages/messages/Messages{0}.php
+
+# suffixes to database name, the rest is assumed to be language code
+Database.suffix=test
+
+# Pattern for OAI repo. {0} is replaced with dbname, {1} with language
+OAI.repo=http://localhost/wiki-lucene/phase3/index.php/Special:OAIRepository
+
+# Username/password for password authenticated OAI repo
+OAI.username=user
+OAI.password=pass
+
+# Max queue size on remote indexer after which we wait a bit
+OAI.maxqueue=5000
+
+# RecentUpdateDaemon udp and tcp ports
+RecentUpdateDaemon.udp=8111
+RecentUpdateDaemon.tcp=8112
+# Hot spare
+RecentUpdateDaemon.hostspareHost=vega
+RecentUpdateDaemon.hostspareUdpPort=8111
+RecentUpdateDaemon.hostspareTcpPort=8112
+
+# Log configuration
+Logging.logconfig=/etc/mwsearch.log4j
+
+# Set debug to true to diagnose problems with log4j configuration
+Logging.debug=false
 
 # Turn this on to broadcast status to a Ganglia reporting system.
 # Requires that 'gmetric' be in the PATH and runnable. You can
@@ -31,17 +90,3 @@ Daemon.verbose=true
 #Ganglia.report=true
 #Ganglia.port=8649
 #Ganglia.interface=eth0
-
-# Override to have updates made to a separate copy of the index.
-# This can be useful to do updates independtly from a running
-# search daemon, then merge them intermittently.
-#Updater.indexpath=/kalman/Projects/mwsearch/index-update/{0}
-
-# Logging can also be overridden here, to keep separate
-# log files for the daemon and updater:
-#Updater.logconfig=/etc/mwupdater.log4net
-
-Database.suffix=test
-
-# Set debug to true to diagnose problems with log4net configuration
-Logging.debug=false

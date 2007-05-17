@@ -12,16 +12,25 @@ import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
+import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 
+/**
+ * Query Parser tests. 
+ * 
+ * NOTE: setup global configuration url in test-data/mwsearch.conf.test
+ * before running the test. 
+ * 
+ * @author rainman
+ *
+ */
 public class WikiQueryParserTest extends TestCase {
 
 	public void testParser() {
-		GlobalConfiguration global = GlobalConfiguration.getInstance();
-		String testurl = "file://"+System.getProperty("user.dir")+"/test-data/mwsearch-global.test";		
+		Configuration.setConfigFile(System.getProperty("user.dir")+"/test-data/mwsearch.conf.test");
+		Configuration.open();
 		try{
-			global.readFromURL(new URL(testurl),"/usr/local/var/mwsearch","",null);
 			WikiQueryParser parser = new WikiQueryParser("contents",new SimpleAnalyzer());
 			Query q;
 			HashSet<String> fields;
@@ -47,7 +56,7 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseRaw("+eggs incategory:breakfast");
 			assertEquals("+contents:eggs +category:breakfast",q.toString());
 
-			q = parser.parseRaw("help: making breakfast");
+			q = parser.parseRaw("help:making breakfast");
 			assertEquals("+help:making +help:breakfast",q.toString());
 
 			q = parser.parseRaw("incategory:(help AND pleh)");
