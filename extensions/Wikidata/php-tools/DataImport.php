@@ -28,13 +28,14 @@ $sibUserID = 10;
 
 //$linkEC2GoFileName = "LinksEC2Go.txt";
 //$linkSwissProtKeyWord2GoFileName = "LinksSP2Go.txt";
-$swissProtXMLFileName =  "uniprot_sprot.xml";
+$swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\uniprot_sprot.xml";
 //$swissProtXMLFileName =  "100000lines.xml";
+//$swissProtXMLFileName =  "SPentriesForWPTest.xml"
 
-$wgUser->setID($nlmUserID);
-startNewTransaction($nlmUserID, 0, "UMLS Import");
-echo "Importing UMLS\n";
-$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod");//, array("NCI", "GO"));
+//$wgUser->setID($nlmUserID);
+//startNewTransaction($nlmUserID, 0, "UMLS Import");
+//echo "Importing UMLS\n";
+//$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod");//, array("NCI", "GO"));
 //$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod", array("GO", "SRC", "NCI", "HUGO"));
 //$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", NULL, array("GO", "SRC", "NCI", "HUGO"));
 
@@ -44,10 +45,10 @@ $umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod");//
 $wgUser->setID($sibUserID);
 startNewTransaction($sibUserID, 0, "Swiss-Prot Import");
 echo "\nImporting Swiss-Prot\n";
-//$umlsImport = new UMLSImportResult;
-//$umlsImport->umlsCollectionId = 5;
-//$umlsImport->sourceAbbreviations['GO'] = 30; 
-//$umlsImport->sourceAbbreviations['HUGO'] = 69912;
+$umlsImport = new UMLSImportResult;
+$umlsImport->umlsCollectionId = 5;
+$umlsImport->sourceAbbreviations['GO'] = 30; 
+$umlsImport->sourceAbbreviations['HUGO'] = 69912;
 
 importSwissProt($swissProtXMLFileName, $umlsImport->umlsCollectionId, $umlsImport->sourceAbbreviations['GO'], $umlsImport->sourceAbbreviations['HUGO'], $EC2GoMapping, $SP2GoMapping);
 //importSwissProt($swissProtXMLFileName);
