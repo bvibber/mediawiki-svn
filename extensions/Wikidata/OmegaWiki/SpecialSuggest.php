@@ -210,7 +210,7 @@ function ConstructSQLWithFallback($actual_query, $fallback_query, $fields){
 
 # langauge is the 2 letter wikimedia code. use "<ANY>" if you don't want language filtering
 # (any does set limit 1 hmph)
-function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType, $language) {
+function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType, $language="<ANY>") {
 	global 
 		$wgDefaultClassMids;
 	global	$wgUser;
@@ -252,10 +252,10 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 				$defaultClassRestriction .
 		')';
 
-	if ($language="<ANY>") {
-		$sql .=
-		' LIMIT 1 ';
-	}
+	//if ($language="<ANY>") {
+	//	$sql .=
+	//	' LIMIT 1 ';
+	//}
 
 
 	return $sql;
