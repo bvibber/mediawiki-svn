@@ -7,7 +7,9 @@
 //
 
 define('MEDIAWIKI', true );
+
 require_once("../../../../LocalSettings.php");
+require_once("../../../../includes/Defines.php");
 require_once("Setup.php");
 require_once("../../php-tools/ProgressBar.php");
 require_once("../../OmegaWiki/WikiDataAPI.php");
@@ -27,6 +29,9 @@ $wgCommandLineMode = true;
 
 $dbr =& wfGetDB(DB_MASTER);
 $timestamp = wfTimestampNow();
+
+$dbr->query('DROP TABLE `bootstrapped_defined_meanings`;');
+
 
 $dbr->query('CREATE TABLE `bootstrapped_defined_meanings` (
 			`name` VARCHAR(255) NOT NULL ,
@@ -52,8 +57,8 @@ foreach($meanings as $internalName => $meaningId) {
 				'VALUES (' . $dbr->addQuotes($internalName) . ', ' . $meaningId . ')');
 }
 
-$dbr->query('INSERT INTO script_log (time, script_name) ' .
-		    'VALUES ('. $timestamp . ',' . $dbr->addQuotes('23 - Bootstrap class attribute meanings.php') . ')');
+$dbr->query('INSERT INTO script_log (time, script_name, comment) ' .
+		    'VALUES ('. $timestamp . ',' . $dbr->addQuotes('23 - Bootstrap class attribute meanings.php') .  ',' . $dbr->addQuotes('create bootstrap class attribute meanings') . ')');
 
 $endTime = time();
 echo "\n\nTime elapsed: " . durationToString($endTime - $beginTime); 
