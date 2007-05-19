@@ -52,6 +52,7 @@ struct config_t {
 	std::string pidfile;
 	std::set<uid_t> exempt;
 	int minuid;
+	bool debug;
 
 	config_t()
 		: limit(0)
@@ -61,6 +62,7 @@ struct config_t {
 		, mailmessage(ETCDIR "/mailmessage")
 		, sendmail("/usr/lib/sendmail -oi -bm --")
 		, pidfile("/var/run/slayerd.pid")
+		, debug(false)
 	{}
 } config;
 
@@ -108,6 +110,12 @@ struct process {
 	unsigned long _policy;
 	long _nice;
 	uid_t _uid;
+	int _msize;
+	int _mres;
+	int _mshare;
+	int _mtext;
+	int _mlib;
+	int _mdata;
 
 	void _read_proc_data(fs::path const &);
 };
@@ -126,22 +134,35 @@ process::process(fs::path const &pth)
 void
 process::_read_proc_data(fs::path const &pth)
 {
-	std::ifstream f((pth / "stat").native_file_string().c_str());
-	std::string sline;
+	{
+		std::ifstream f((pth / "stat").native_file_string().c_str());
+		std::string sline;
 
-	if (!f)
-		throw std::runtime_error("could not read line from stat");
+		if (!f)
+			throw std::runtime_error("could not read line from stat");
 
-	long dummy;
-	if (!(f >> _pid >> _comm >> _state >> _ppid >> _pgrp >> _sid >> _tty >> _tpgid
-		>> _flags >> _minflt >> _cminflt >> _majflt >> _cmajflt >> _utime
-		>> _stime >> _cutime >> _cstime >> _priority >> _nice >> dummy >> _itrealvalue
-		>> _starttime >> _vsize >> _rss >> _rlim >> _startcode >> _endcode
-		>> _stackstart >> _kstkesp >> _kstkeip >> _signal >> _blocked >> _sigignore
-		>> _sigcatch >> _wchan >> _nswap >> _cnswap >> _exit_signal >> _processor
-		>> _rt_priority >> _policy
-	))
-		throw std::runtime_error("could not parse stat line");
+		long dummy;
+		if (!(f >> _pid >> _comm >> _state >> _ppid >> _pgrp >> _sid >> _tty >> _tpgid
+			>> _flags >> _minflt >> _cminflt >> _majflt >> _cmajflt >> _utime
+			>> _stime >> _cutime >> _cstime >> _priority >> _nice >> dummy >> _itrealvalue
+			>> _starttime >> _vsize >> _rss >> _rlim >> _startcode >> _endcode
+			>> _stackstart >> _kstkesp >> _kstkeip >> _signal >> _blocked >> _sigignore
+			>> _sigcatch >> _wchan >> _nswap >> _cnswap >> _exit_signal >> _processor
+			>> _rt_priority >> _policy
+		))
+			throw std::runtime_error("could not parse stat line");
+	}
+
+	{
+		std::ifstream f((pth / "statm").native_file_string().c_str());
+		std::string sline;
+
+		if (!f)
+			throw std::runtime_error("could not read line from stat");
+
+		if (!(f >> _msize >> _mres >> _mshare >> _mtext >> _mlib >> _mdata))
+			throw std::runtime_error("could not parse statm line");
+	}
 }
 
 std::string
@@ -223,7 +244,10 @@ usage(void) {
 void
 log(std::string const &m)
 {
-	syslog(LOG_NOTICE, "%s", m.c_str());
+	if (config.debug)
+		std::cerr << m << '\n';
+	else
+		syslog(LOG_NOTICE, "%s", m.c_str());
 }
 
 void
@@ -485,7 +509,7 @@ main(int argc, char **argv)
 	char nodename[255];
 	gethostname(nodename, sizeof nodename);
 
-	while ((c = getopt(argc, argv, "fvhc:")) != -1) {
+	while ((c = getopt(argc, argv, "fvhc:D")) != -1) {
 		switch (c) {
 			case 'f':
 				fflag++;
@@ -504,6 +528,11 @@ main(int argc, char **argv)
 				usage();
 				return 0;
 
+			case 'D':
+				config.debug = true;
+				fflag++;
+				break;
+
 			default:
 				version();
 				usage();
@@ -513,7 +542,8 @@ main(int argc, char **argv)
 	argc -= optind;
 	argv += optind;
 
-	openlog("slayerd", LOG_PID, LOG_DAEMON);
+	if (!config.debug)
+		openlog("slayerd", LOG_PID, LOG_DAEMON);
 
 	if (!configure())
 		return 1;
@@ -528,13 +558,13 @@ main(int argc, char **argv)
 		return 1;
 	}
 
-	if (!do_pidfile())
+	if (!fflag && !do_pidfile())
 		return 1;
 
 	if (mlockall(MCL_CURRENT | MCL_FUTURE) == -1) 
-		log(str(boost::format("warning: cannot lock memory: %s\n") % std::strerror(errno)));
+		log(str(boost::format("warning: cannot lock memory: %s") % std::strerror(errno)));
 
-	log(str(boost::format("delay: %d, limit: %dM, threshold: %dM\n")
+	log(str(boost::format("delay: %d, limit: %dM, threshold: %dM")
 		% config.delay % (config.limit / 1024 / 1024) % (config.thresh / 1024 / 1024)));
 
 	for (;;) {
@@ -565,7 +595,7 @@ main(int argc, char **argv)
 				u = &users[n];
 			}
 
-			u->rss += p._rss;
+			u->rss += p._mdata;
 			u->processes.push_back(p);
 		}
 
@@ -595,24 +625,25 @@ main(int argc, char **argv)
 						% (bytes / 1024 / 1024)
 						% (config.limit / 1024 / 1024)));
 
-			std::sort(u.processes.begin(), u.processes.end(), field_comparator<process, long, &process::_rss>);
+			std::sort(u.processes.begin(), u.processes.end(), field_comparator<process, int, &process::_mdata>);
 
 			while (bytes >= config.thresh && !u.processes.empty()) {
 				process &p = u.processes[0];
 				std::string comm = p._comm.substr(1);
 				comm.resize(comm.size() - 1);
 
-				kill(p._pid, SIGKILL);
+				if (!config.debug)
+					kill(p._pid, SIGKILL);
 
 				log(str(boost::format("    killed process \"%s\" (pid %d) using %dM, usage now %dM")
 						% comm % p._pid
-						% (p._rss * pagesize / 1024 / 1024)
-						% ((bytes - p._rss * pagesize) / 1024 / 1024)));
+						% (p._mdata * pagesize / 1024 / 1024)
+						% ((bytes - p._mdata * pagesize) / 1024 / 1024)));
 
 				process_list += str(boost::format("    %s (pid %d), using %d megabyte(s)\n")
-						% comm % p._pid % (p._rss * pagesize / 1024 / 1024));
+						% comm % p._pid % (p._mdata * pagesize / 1024 / 1024));
 
-				bytes -= p._rss * pagesize;
+				bytes -= p._mdata * pagesize;
 				u.processes.erase(u.processes.begin());
 			}
 
@@ -628,7 +659,7 @@ main(int argc, char **argv)
 			msgvars["processes"] = process_list;
 
 			std::string message = replace_file(config.mailmessage, msgvars);
-			if (!message.empty())
+			if (!config.debug && !message.empty())
 				sendmail(uname, message);
 		}
 
