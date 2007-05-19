@@ -164,7 +164,7 @@ používajte túto funkciu s rozmyslom.",
 ),
 
 /* Chinese (Taiwan) (Shinjiman, Vipuser) */
-'nl' => array(
+'zh-tw' => array(
 'asksql' => 'SQL查詢',
 'asksqltext' => "使用下面的表單可以直接查詢資料庫。
 使用單引號（'像這樣'）來界定字串符。
