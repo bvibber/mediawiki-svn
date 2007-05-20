@@ -60,7 +60,7 @@ public class GlobalConfiguration {
 	protected static InetAddress myHost;
 	protected static String hostAddr, hostName;	
 	
-	/** OAI repo pattern from mwsearch.conf */
+	/** OAI repo pattern from lsearch2.conf */
 	protected String OAIRepoPattern;
 	/** Database suffix if dbname, the rest is supposed to be language, e.g srwiki => (suffix wiki) => sr */
 	protected String[] databaseSuffixes;
@@ -636,9 +636,15 @@ public class GlobalConfiguration {
 			if(dbr == null){
 				dbr = new Hashtable<String, Hashtable<String, String>>();				
 				database.put(db,dbr);
-			}			
+			}
+			if(type.equals("split") || type.equals("mainsplit") || type.equals("single")){
+				if(dbr.get("split")!=null || dbr.get("mainsplit")!=null || dbr.get("single")!=null){
+					System.out.println("WARNING: in Global Configuration: defined new architecture "+type+" for "+db);
+					dbr.remove("split"); dbr.remove("mainsplit"); dbr.remove("single");
+				}
+			}
 			if(dbr.get(type)!=null)
-				System.out.println("Warning: role \""+type+"\" already defined for database \""+db+"\". Overwriting.");
+				System.out.println("WARNING: in Global Configuration: role \""+type+"\" already defined for database \""+db+"\". Overwriting.");
 			dbr.putAll(dbroles);
 		}
 	}
