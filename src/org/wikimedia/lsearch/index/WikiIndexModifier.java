@@ -96,7 +96,7 @@ public class WikiIndexModifier {
 		/** 
 		 * Try unlocking the index. This should only be called on index recovery
 		 * 
-		 * IMPORTANT: assumes single-threaded application and one indexer !!!! 		 * 
+		 * IMPORTANT: assumes single-threaded application and one indexer !!!! 
 		 */
 		void unlockIndex(String path){
 			try{
@@ -162,17 +162,18 @@ public class WikiIndexModifier {
 			} catch (IOException e) {				
 				try {
 					// unlock, retry
-					if(IndexReader.isLocked(path)){
-						unlockIndex(path);
-						writer = new IndexWriter(path,null,true);
-					} else if(!new File(path).exists()){
+					if(!new File(path).exists()){
 						// try to make brand new index
 						makeDBPath(path); // ensure all directories are made
 						log.info("Making new index at path "+path);
 						writer = new IndexWriter(path,null,true);
+					} else if(IndexReader.isLocked(path)){
+						unlockIndex(path);
+						writer = new IndexWriter(path,null,rewrite); 					
 					} else
 						throw e;
 				} catch (IOException e1) {
+					e1.printStackTrace();
 					log.error("I/O error openning index for addition of documents at "+path+" : "+e.getMessage());
 					return false;
 				}				
@@ -272,7 +273,7 @@ public class WikiIndexModifier {
 		
 		boolean succDel = modifier.deleteDocuments(updateRecords);
 		boolean succAdd = modifier.addDocuments(updateRecords);
-		boolean succ = succDel && succAdd;
+		boolean succ = succAdd; // it's OK if articles cannot be deleted
 		
 		// send reports back to the main indexer host
 		RMIMessengerClient messenger = new RMIMessengerClient();

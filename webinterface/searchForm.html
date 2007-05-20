@@ -1,0 +1,120 @@
+<html>
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+<body>
+
+<h2> Test web interface for lucene-search 2.0 </h2>
+
+<p>
+<strong>Highlights:</strong>
+<ul>
+<li> Prefixed searches. If you want to search only some namespace, prefix the
+search string with it. E.g. <i>help:editing</i> will search only help namespace.
+You can combine namespaces, e.g. <i>help,help_talk:editing</i>. You can also
+use aliases (these will be customizable in MW). I've predefined
+some aliases (the list is below), so the last query can be written: <i>h,ht:editing</i>.
+You can also search everything by prefixing it with <i>all</i>. E.g. <i>
+all:editing</i>
+
+<li> Category searches. You can limit search by categories (note: this won't
+work recursivelly for subcategories, you need to include them!). E.g. <i>
+white cheese incategory:cheeses</i>. To avoid ambiguity, category names need 
+to be given exactly. E.g. <i>monument incategory:"World Heritage Sites in Serbia"</i>.
+By default category intersection is searched, but any combination can be searched
+using AND/OR and +/- operators.
+
+<li> Improved scoring. Short articles are not strongly favored any more,
+and stemmed words are penalized. Number are included in the index.
+
+</ul>
+Send comments to: Robert Stojnić (rainmansr@gmail.com)
+</p>
+
+<p>
+<strong>Warning:</strong> this test is not running on the current en.wiki database. The
+indexes is built from the latest dumps, with incremental updates running
+the last few days (e.g. if edit is made during the weekend 19-20 of May
+the article should be updated). The index is updated once a day (early
+morning GMT)
+</p>
+<strong>Search:</strong>
+<hr>
+
+<form id="search" method="get" action="/search">
+
+Wiki:
+	<select name="dbname">
+		<option value="enwiki">enwiki</option>
+		<option value="dewiki">dewiki</option>
+		<option value="frwiki">frwiki</option>
+		<option value="plwiki">plwiki</option>
+		<option value="jawiki">jawiki</option>
+		<option value="nlwiki">nlwiki</option>
+		<option value="itwiki">itwiki</option>
+		<option value="ptwiki">ptwiki</option>
+		<option value="eswiki">eswiki</option>
+		<option value="svwiki">svwiki</option>
+		<option value="ruwiki">ruwiki</option>
+		<option value="zhwiki">zhwiki</option>
+		<option value="fiwiki">fiwiki</option>
+		<option value="nowiki">nowiki</option>
+		<option value="srwiki">srwiki</option>	
+		<option value="wikilucene">wikilucene</option>
+		<option value="wikidev">wikidev</option> 
+	</select>
+	
+Search for <input type='text' name="query" value="" size="30" />
+	 <input type="submit" value="Search" />
+	 <hr>
+	
+Default namespaces:
+
+ <label><input type='checkbox' value="1" name="ns0" checked="checked" />(Main)</label>
+ <label><input type='checkbox' value="1" name="ns1" />Talk</label>
+ <label><input type='checkbox' value="1" name="ns2" />User</label>
+ <label><input type='checkbox' value="1" name="ns3" />User talk</label>
+ <label><input type='checkbox' value="1" name="ns4" />Wikipedia</label>
+
+ <label><input type='checkbox' value="1" name="ns5" />Wikipedia talk</label>
+ <label><input type='checkbox' value="1" name="ns6" />Image</label>
+ <label><input type='checkbox' value="1" name="ns7" />Image talk</label>
+ <label><input type='checkbox' value="1" name="ns8" />MediaWiki</label>
+ <label><input type='checkbox' value="1" name="ns9" />MediaWiki talk</label>
+ <label><input type='checkbox' value="1" name="ns10" />Template</label>
+
+ <label><input type='checkbox' value="1" name="ns11" />Template talk</label>
+ <label><input type='checkbox' value="1" name="ns12" />Help</label>
+ <label><input type='checkbox' value="1" name="ns13" />Help talk</label>
+ <label><input type='checkbox' value="1" name="ns14" />Category</label>
+ <label><input type='checkbox' value="1" name="ns15" />Category talk</label>
+ <label><input type='checkbox' value="1" name="ns100" />Portal</label>
+ <label><input type='checkbox' value="1" name="ns101" />Portal talk</label>
+
+</form>
+
+<hr>
+<hr>
+<p>
+<strong>Appendix: predefined namespace prefixes</strong><br>
+Namespace / prefixes<br>
+Main: main, m<br>
+Talk: talk, mt<br>
+User: user, u<br>
+User talk: user_talk, ut<br>
+Project: project, p<br>
+Project talk: project_talk, pt<br>
+Image: image, i<br>
+Image talk: image_talk, it<br>
+MediaWiki: mediawiki, mw<br>
+MediaWiki talk: mediawiki_talk, mwt<br>
+Template: template, t<br>
+Template talk: template_talk, tt<br>
+Help: help, h<br>
+Help talk: help_talk, ht<br>
+Category: category, c<br>
+Category_talk: category_talk, ct<br>
+Portal: portal<br>
+Portal talk: portal_talk<br>
+
+</p>
+</body>
+</html>

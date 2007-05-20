@@ -52,12 +52,11 @@ import org.apache.log4j.helpers.LogLog;
  */
 public class Configuration {
 	private static Configuration instance;
-	private static String configfile = null; // was "./mwsearch.conf"
+	private static String configfile = null; 
+	
+	protected final String CONF_FILE_NAME = "lsearch.conf";
 	
 	public static final String PATH_SEP = System.getProperty("file.separator");
-	
-	/** Which [section] is preferred for GetIndex* */
-	private static String indexSection = "Search";
 	
 	public static void setConfigFile(String file) {
 		configfile = file;
@@ -73,14 +72,14 @@ public class Configuration {
 		if (configfile == null) {
 			String home = System.getProperty("user.home"); 			
 			String [] paths;
-			String filename = System.getProperty("file.separator")+"mwsearch.conf";
+			String filename = System.getProperty("file.separator")+CONF_FILE_NAME;
 			if (home == null) {
 				paths = new String[] {
 					System.getProperty("user.dir")+filename,
 					"/etc"+filename };
 			} else {	
 				paths = new String[] {
-					home+System.getProperty("file.separator")+".mwsearch.conf",
+					home+System.getProperty("file.separator")+"."+CONF_FILE_NAME,
 					System.getProperty("user.dir")+filename,					
 					"/etc"+filename };
 			}
@@ -118,10 +117,10 @@ public class Configuration {
 		try {
 			global.readFromURL(new URL(globalurl),indexpath,oairepo,dbsuffixes);
 		} catch (MalformedURLException e) {
-			System.out.println("Malformed URL "+globalurl+" cannot read global configuration (check MWConfig.global in mwsearch.conf), exiting...");
+			System.out.println("Malformed URL "+globalurl+" cannot read global configuration (check MWConfig.global in "+CONF_FILE_NAME+"), exiting...");
 			System.exit(1);
 		} catch (IOException e) {
-			System.out.println("Will not proceed without global configuration (make sure MWConfig.global in mwsearch.conf points to right URL), exiting...");
+			System.out.println("Will not proceed without global configuration (make sure MWConfig.global in "+CONF_FILE_NAME+" points to right URL), exiting...");
 			System.exit(1);
 		}
 	}
