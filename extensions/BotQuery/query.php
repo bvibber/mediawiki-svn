@@ -2,7 +2,7 @@
 /**
 * Bot Query extension for MediaWiki 1.7+
 *
-* Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
+* Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
 * Uses bits from the original query.php code written by Tim Starling.
 *
 * This program is free software; you can redistribute it and/or modify
@@ -2332,7 +2332,7 @@ class BotQueryProcessor {
 				"  Changelog and Source: http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/BotQuery/query%2Ephp?view=log",
 				"",
 				"*Credits*",
-				"  This feature was written and is being maintained by Yuri Astrakhan (FirstnameLastname@gmail.com)",
+				"  This feature was written and is being maintained by Yuri Astrakhan (<Firstname><Lastname>@gmail.com)",
 				"  Please leave your comments and suggestions at http://en.wikipedia.org/wiki/User_talk:Yurik",
 				"",
 				"  This extension came as the result of IRC discussion between Yuri Astrakhan (en:Yurik), Tim Starling (en:Tim Starling), and Daniel Kinzler(de:Duesentrieb)",
