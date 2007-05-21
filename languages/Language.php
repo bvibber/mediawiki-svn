@@ -249,8 +249,7 @@ class Language {
 	 * @return mixed, string if the namespace value exists, otherwise false
 	 */
 	function getNsText( $index ) {
-		$ns = $this->getNamespaces();
-		return isset( $ns[$index] ) ? $ns[$index] : false;
+		return Namespace::get($index)->getDefaultName();
 	}
 
 	/**
@@ -266,15 +265,13 @@ class Language {
 	}
 
 	/**
-	 * Get a namespace key by value, case insensetive.
+	 * Get a namespace key by value, case insensitive.
 	 *
 	 * @param string $text
 	 * @return mixed An integer if $text is a valid value otherwise false
 	 */
 	function getNsIndex( $text ) {
-		$this->load();
-		$lctext = $this->lc($text);
-		return isset( $this->mNamespaceIds[$lctext] ) ? $this->mNamespaceIds[$lctext] : false;
+		return Namespace::getIndexForName($text);
 	}
 
 	/**
@@ -1748,61 +1745,13 @@ class Language {
 	 * Do any necessary post-cache-load settings adjustment
 	 */
 	function fixUpSettings() {
-		global $wgExtraNamespaces, $wgMetaNamespace, $wgMetaNamespaceTalk,
-			$wgNamespaceAliases, $wgAmericanDates;
+		global $wgAmericanDates;
 		wfProfileIn( __METHOD__ );
-		if ( $wgExtraNamespaces ) {
-			$this->namespaceNames = $wgExtraNamespaces + $this->namespaceNames;
-		}
-
-		$this->namespaceNames[NS_PROJECT] = $wgMetaNamespace;
-		if ( $wgMetaNamespaceTalk ) {
-			$this->namespaceNames[NS_PROJECT_TALK] = $wgMetaNamespaceTalk;
-		} else {
-			$talk = $this->namespaceNames[NS_PROJECT_TALK];
-			$talk = str_replace( '$1', $wgMetaNamespace, $talk );
-
-			# Allow grammar transformations
-			# Allowing full message-style parsing would make simple requests 
-			# such as action=raw much more expensive than they need to be. 
-			# This will hopefully cover most cases.
-			$talk = preg_replace_callback( '/{{grammar:(.*?)\|(.*?)}}/i', 
-				array( &$this, 'replaceGrammarInNamespace' ), $talk );
-			$talk = str_replace( ' ', '_', $talk );
-			$this->namespaceNames[NS_PROJECT_TALK] = $talk;
-		}
-		
-		# The above mixing may leave namespaces out of canonical order.
-		# Re-order by namespace ID number...
-		ksort( $this->namespaceNames );
-
-		# Put namespace names and aliases into a hashtable.
-		# If this is too slow, then we should arrange it so that it is done 
-		# before caching. The catch is that at pre-cache time, the above
-		# class-specific fixup hasn't been done.
-		$this->mNamespaceIds = array();
-		foreach ( $this->namespaceNames as $index => $name ) {
-			$this->mNamespaceIds[$this->lc($name)] = $index;
-		}
-		if ( $this->namespaceAliases ) {
-			foreach ( $this->namespaceAliases as $name => $index ) {
-				$this->mNamespaceIds[$this->lc($name)] = $index;
-			}
-		}
-		if ( $wgNamespaceAliases ) {
-			foreach ( $wgNamespaceAliases as $name => $index ) {
-				$this->mNamespaceIds[$this->lc($name)] = $index;
-			}
-		}
 
 		if ( $this->defaultDateFormat == 'dmy or mdy' ) {
 			$this->defaultDateFormat = $wgAmericanDates ? 'mdy' : 'dmy';
 		}
 		wfProfileOut( __METHOD__ );
-	}
-
-	function replaceGrammarInNamespace( $m ) {
-		return $this->convertGrammar( trim( $m[2] ), trim( $m[1] ) );
 	}
 
 	static function getCaseMaps() {

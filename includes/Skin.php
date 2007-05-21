@@ -817,9 +817,14 @@ END;
 	}
 
 	function subPageSubtitle() {
-		global $wgOut,$wgTitle,$wgNamespacesWithSubpages;
+		global $wgOut,$wgTitle;
+		if(!is_null($ns=Namespace::get())) {
+			$allowsSubpages=$ns->allowsSubpages();
+		} else {
+			$allowsSubpages=false;
+		}
 		$subpages = '';
-		if($wgOut->isArticle() && !empty($wgNamespacesWithSubpages[$wgTitle->getNamespace()])) {
+		if($wgOut->isArticle() && $allowsSubpages) {
 			$ptext=$wgTitle->getPrefixedText();
 			if(preg_match('/\//',$ptext)) {
 				$links = explode('/',$ptext);

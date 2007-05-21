@@ -292,7 +292,7 @@ class EditPage {
 
 		# We may want to edit this page using a handler class
 		$ns=$wgTitle->getNamespace();
-                $handlerClass=Namespace::getHandlerForNamespaceId($ns);
+                $handlerClass=Namespace::get($ns)->getHandlerClass();
                 if(!empty($handlerClass)) {
 			$handlerPath=Namespace::getHandlerPathForNamespaceId($ns);
 			$hfilename=$handlerPath.$handlerClass.".php"; 

@@ -650,7 +650,11 @@ class NamespaceStore {
 	}
 
 	function getNamespaceObjectByIndex( $index ) {
-		return $this->nsarray[$index];
+		if(array_key_exists($index,$this->nsarray)) {
+			return $this->nsarray[$index];
+		} else {
+			return null;
+		}
 	}
 
 	function hasIndex( $index ) {
@@ -666,9 +670,6 @@ class NamespaceStore {
 		return $this->nsarray;
 	}
 
-	function isContent($id) {
-		return $this->nsarray[$id]->isCountable();
-	}
 	function getHandlerForId($id) {
 		return $this->nsarray[$id]->getHandlerClass();
 

@@ -137,8 +137,7 @@ class Namespace {
 
 	/**
 	 * @return String like NS_MAIN for identifying
-	 *  system namespaces (see Defines.php).
-	 */
+	 *  system namespaces (see Defines.php).	 */
 	function getSystemType() {
 		return $this->systemType;	
 	}
@@ -237,8 +236,7 @@ class Namespace {
 			$ns = $this;
 		}
 		else {
-			$nsstore = wfGetNamespaceStore();
-			$ns = $nsstore->getNamespaceObjectByIndex($index);
+			$ns = Namespace::get($index);
 		}
 
 		if($ns->isTalk()) {
@@ -278,7 +276,7 @@ class Namespace {
 		}
 		else {
 			$nsstore = wfGetNamespaceStore();
-			$ns = $nsstore->getNamespaceObjectByIndex($index);
+			$ns = Namespace::get($index);
 			return $ns->hasParent();
 		}
 	}
@@ -344,7 +342,7 @@ class Namespace {
 		}
 		else {
 			$nsstore = wfGetNamespaceStore();
-			$ns = $nsstore->getNamespaceObjectByIndex($index);
+			$ns = Namespace::get($index);
 		}
 
 		/* This behavior is expected by Title.php! */
@@ -612,7 +610,7 @@ class Namespace {
 		}
 	}
 	
-	/**
+	/*
 	 * Kill them all! Well, all the ones in this namespace
 	 * object. And only if we save().
 	 */
@@ -640,12 +638,54 @@ class Namespace {
 		return $nsstore->deleteNamespace($this,$deleteSystem);
 	}
 
-	
-	static function isContent($id) {
-		$nsstore= wfGetNamespaceStore();
-		return $nsstore->isContent($id);
+	/**
+	 * Retrieve a namespace object from the store.
+	 * This function should be used for all logical operations
+	 * on namespaces. The store does not care if an object
+	 * exists or not; this function will log all failures
+	 * but proceed with a reasonable default dummy namespace.
+	 *
+	 * If called with no parameter, will return the
+	 * namespace object for the current title object.
+	 *
+	 * @return the object or a harmless, friendly dummy
+	*/ 
+	static function get($id=null) {
+		if(is_null($id)) {
+			global $wgTitle;
+			$id=$wgTitle->getNamespace();
+		}
+		$nsstore=wfGetNamespaceStore();
+		$rv=$nsstore->getNamespaceObjectByIndex($id);
+		if(is_null($rv)) {
+			$dummyNs=new Namespace();
+			$di=$dummyNs->addName(wfMsg('namespace_dummy_name')."_$id");
+			wfDebug("Namespace $id has no object. Verify the namespace definitions in the database! This is quite bad! Moving on ..\n");
+			$dummyNs->setDefaultNameIndex($di);
+			$rv=$dummyNs;
+		}
+		return $rv;
 	}
 
+	static function getIndexForName($text) {
+		$nsstore = wfGetNamespaceStore();
+		if(!is_null($id=$nsstore->getIndexForName)) {
+			return $id;
+		} else {
+			# If a namespace name gets lost, all its appearances will be replaced
+			# with 'Missing namespace $FOO'. Here we do the reverse thing, so we
+			# can still retrieve pages, even if their namespaces have gone AWOL.
+			if(($sp=strpos(strtolower($text),strtolower(wfMsg('namespace_dummy_name')))) !== false) {
+				$missid=substr($text,strlen(wfMsg('namespace_dummy_name'))+1);
+				wfDebug("Resolving missing namespace to $missid\n");
+				return $missid;
+			} else {
+				wfDebug('Bad namespace:'.$text."\n");
+				return false;
+			}
+		}
+	}
+	
 	static function getHandlerForNamespaceId($id) {
 		$nsstore=wfGetNamespaceStore();
 		return $nsstore->getHandlerForId($id);

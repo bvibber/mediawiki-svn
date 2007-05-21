@@ -753,8 +753,13 @@ class Title {
 	 * @return string Base name
 	 */
 	function getBaseText() {
-		global $wgNamespacesWithSubpages;
-		if( isset( $wgNamespacesWithSubpages[ $this->mNamespace ] ) && $wgNamespacesWithSubpages[ $this->mNamespace ] ) {
+		if(!is_null($ns=Namespace::get($this->mNamespace))) {
+			$subpages=$ns->allowsSubPages();
+		} else {
+			$subpages=false;
+		}
+
+		if( $subpages ) {
 			$parts = explode( '/', $this->getText() );
 			# Don't discard the real title if there's no subpage involved
 			if( count( $parts ) > 1 )
@@ -2676,7 +2681,11 @@ class Title {
 	 * @return bool
 	 */
 	public function isContentPage() {
-		return Namespace::isContent( $this->getNamespace() );
+		if(!is_null($ns=Namespace::get($this->getNamespace()))) {
+			return $ns->isCountable();
+		} else {
+			return false;
+		}
 	}
 	
 }

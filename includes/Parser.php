@@ -78,7 +78,7 @@ define( 'MW_COLON_STATE_COMMENTDASHDASH', 7 );
  *
  * settings:
  *  $wgUseTex*, $wgUseDynamicDates*, $wgInterwikiMagic*,
- *  $wgNamespacesWithSubpages, $wgAllowExternalImages*,
+ *  $wgAllowExternalImages*,
  *  $wgLocaltimezone, $wgAllowSpecialInclusion*,
  *  $wgMaxArticleSize*
  *
@@ -1888,9 +1888,7 @@ class Parser
 	 * @return bool
 	 */
 	function areSubpagesAllowed() {
-		# Some namespaces don't allow subpages
-		global $wgNamespacesWithSubpages;
-		return !empty($wgNamespacesWithSubpages[$this->mTitle->getNamespace()]);
+		return Namespace::get($this->mTitle->getNamespace())->allowsSubpages();
 	}
 
 	/**

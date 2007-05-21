@@ -2868,6 +2868,10 @@ Please confirm that really want to recreate this page.',
 'namespace_handler_not_found'=>'Namespace handler not found!',
 'namespace_handler_not_found_error'=>'This page requires a special handler to view, expected in the directory \'$1\'! Please make sure that this file is present before viewing pages of the type \'$2\'.',
 
+# This name will be used as a dummy to keep the system from breaking if a namespace
+# has gone missing
+'namespace_dummy_name'=>'Missing_namespace',
+
 );
 
 ?>

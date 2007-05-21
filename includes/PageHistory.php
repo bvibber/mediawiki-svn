@@ -60,8 +60,7 @@ class PageHistory {
 		wfProfileIn( $fname );
 
 		# We may want to view this page using a handler class
-		$ns=$this->mTitle->getNamespace();
-                $handlerClass=Namespace::getHandlerForNamespaceId($ns);
+                $handlerClass=Namespace::get($this->mTitle->getNamespace())->getHandlerClass();
                 if(!empty($handlerClass)) {
 			$handlerPath=Namespace::getHandlerPathForNamespaceId($ns);
 			$hfilename=$handlerPath.$handlerClass.".php"; 
