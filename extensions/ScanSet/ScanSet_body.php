@@ -395,6 +395,7 @@ class ScanSet {
 			'scanset_next' => 'Next &gt;',
 			'scanset_prev' => '&lt; Prev',
 		));
+		return true;
 	}
 }
 

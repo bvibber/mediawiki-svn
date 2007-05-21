@@ -395,7 +395,7 @@ function loadSmoothGalleryI18n() {
 
         static $initialized = false;
 
-        if ( $initialized ) return;
+        if ( $initialized ) return true;
 
         $messages = array();
 
@@ -407,6 +407,8 @@ function loadSmoothGalleryI18n() {
 
         $initialized = true;
         $wgMessageCache->addMessages( $messages );
+
+		return true;
 }
 
 

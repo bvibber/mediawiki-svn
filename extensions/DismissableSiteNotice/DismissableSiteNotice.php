@@ -79,6 +79,7 @@ function wfInitSiteNoticeMessage() {
 	foreach( $wgDismissableSiteNoticeMessages as $key => $value ) {
 		$wgMessageCache->addMessages( $wgDismissableSiteNoticeMessages[$key], $key );
 	}
+	return true;
 }
 
 # Internationalisation file

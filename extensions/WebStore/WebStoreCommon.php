@@ -345,7 +345,7 @@ EOT;
 	static function initialiseMessages() {
 		static $done = false;
 		if ( $done ) {
-			return;
+			return true;
 		}
 		$done = true;
 
@@ -355,6 +355,7 @@ EOT;
 		foreach ( $messages as $code => $messages2 ) {
 			$wgMessageCache->addMessages( $messages2, $code );
 		}
+		return true;
 	}
 
 	/**

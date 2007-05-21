@@ -316,6 +316,7 @@ class Patroller extends SpecialPage {
 				$wgMessageCache->addMessages( $messages, $lang );
 			$init = true;
 		}
+		return true;
 	}
 	
 }

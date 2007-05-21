@@ -135,7 +135,7 @@ function loadPlayerI18n() {
 
 	static $initialized = false;
 
-	if ( $initialized ) return;
+	if ( $initialized ) return true;
 
 	$messages= array();
 	
@@ -147,6 +147,8 @@ function loadPlayerI18n() {
 	
 	$initialized = true;
 	$wgMessageCache->addMessages( $messages );
+	
+	return true;
 }
 
 
