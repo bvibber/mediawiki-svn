@@ -74,7 +74,10 @@ $wgLuceneSearchMessages['de'] = array(
 	'lucenepowersearchtext' => "Suche in den Namensräumen $1<br />Suchbegriff: $3 $9",
 	'lucenefallback'        => "Bei der {{SITENAME}}-internen Suche ist ein Problem aufgetreten.
 Dies ist normalerweise ein vorübergehendes Problem. Bitte versuchen Sie es nochmal.
-Alternativ können Sie auch die externen Suchmöglichkeiten nutzen:\n"
+Alternativ können Sie auch die externen Suchmöglichkeiten nutzen:\n",
+	'searchall'             => 'alle',
+	'searchincategory'      => 'in Kategorie',
+
 );
 $wgLuceneSearchMessages['eo'] = array(
 	'searchnumber'          => "<strong>Rezultoj $1-$2 el $3</strong>",
