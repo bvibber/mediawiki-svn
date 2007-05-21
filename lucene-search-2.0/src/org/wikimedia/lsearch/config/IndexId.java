@@ -80,6 +80,8 @@ public class IndexId {
 	protected String importPath;
 	/** Path where status files are for incremental updater */
 	protected String statusPath;
+	/** Path where transaction data is stored */
+	protected String transactionPath;
 	
 	/** url of OAI repository */
 	protected String OAIRepository;
@@ -189,6 +191,7 @@ public class IndexId {
 		
 		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + dbrole;
 		statusPath = localIndexPath + "status" + sep + dbrole;
+		transactionPath = localIndexPath + "transaction" + sep + dbrole;
 
 		if(mySearch){
 			searchPath = localIndexPath + "search" + sep + dbrole;
@@ -312,7 +315,11 @@ public class IndexId {
 	/** Where indexes are made when built from XML importing */
 	public String getImportPath() {
 		return importPath;
-	}	
+	}
+	/** Where transaction data is stored */
+	public String getTransactionPath() {
+		return transactionPath;
+	}
 	/** Status file for incremental updater */ 
 	public String getStatusPath() {
 		return statusPath;
