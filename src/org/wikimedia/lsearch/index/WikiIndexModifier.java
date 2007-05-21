@@ -93,23 +93,6 @@ public class WikiIndexModifier {
 			return card;
 		}
 		
-		/** 
-		 * Try unlocking the index. This should only be called on index recovery
-		 * 
-		 * IMPORTANT: assumes single-threaded application and one indexer !!!! 
-		 */
-		void unlockIndex(String path){
-			try{
-				if(IndexReader.isLocked(path)){
-					Directory dir = FSDirectory.getDirectory(path, false);
-					IndexReader.unlock(dir);
-					log.info("Unlocked index at "+path);
-				}
-			} catch(IOException e){
-				log.warn("I/O error unlock index at "+path+" : "+e.getMessage());
-			}
-		}
-		
 		/** Batch-delete documents, returns true if successfull */
 		boolean deleteDocuments(Collection<IndexUpdateRecord> records){
 			nonDeleteDocuments = new HashSet<IndexUpdateRecord>();
@@ -245,6 +228,23 @@ public class WikiIndexModifier {
 		return path;
 	}
 	
+	/** 
+	 * Try unlocking the index. This should only be called on index recovery
+	 * 
+	 * IMPORTANT: assumes single-threaded application and one indexer !!!! 
+	 */
+	public static void unlockIndex(String path){
+		try{
+			if(IndexReader.isLocked(path)){
+				Directory dir = FSDirectory.getDirectory(path, false);
+				IndexReader.unlock(dir);
+				log.info("Unlocked index at "+path);
+			}
+		} catch(IOException e){
+			log.warn("I/O error unlock index at "+path+" : "+e.getMessage());
+		}
+	}
+	
 	// ============================================================================
 	static org.apache.log4j.Logger log = Logger.getLogger(WikiIndexModifier.class);
 	protected static GlobalConfiguration global = null;
@@ -271,9 +271,12 @@ public class WikiIndexModifier {
 			
 		SimpleIndexModifier modifier = new SimpleIndexModifier(iid,global.getLanguage(iid.getDBname()),false);
 		
+		Transaction trans = new Transaction(iid);
+		trans.begin();
 		boolean succDel = modifier.deleteDocuments(updateRecords);
 		boolean succAdd = modifier.addDocuments(updateRecords);
 		boolean succ = succAdd; // it's OK if articles cannot be deleted
+		trans.commit();
 		
 		// send reports back to the main indexer host
 		RMIMessengerClient messenger = new RMIMessengerClient();
