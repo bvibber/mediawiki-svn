@@ -1449,7 +1449,7 @@ class BotQueryProcessor {
 
 				$prop2 = $prop . "_shrd";
 				$this->startDbProfiling();
-				$dbc =& wfGetDB( DB_SLAVE, 'commons' );
+				$dbc = Image :: getCommonsDB();
 				$this->endDbProfiling( $prop2 );
 
 				$this->ImageInfoHelper( $prop2, true, true, $imageDbKeys, $iiurl, $dbc );
