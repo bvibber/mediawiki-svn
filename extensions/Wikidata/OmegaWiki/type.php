@@ -6,10 +6,10 @@ require_once('Attribute.php');
 require_once('Record.php');
 require_once('Transaction.php');
 require_once('WikiDataAPI.php');
+require_once('Wikidata.php');
 
-require_once("Wikidata.php");
 $wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
-
+#$wdDataSetContext='uw';
 function booleanAsText($value) {
 	if ($value)
 		return "Yes";
@@ -102,6 +102,8 @@ function definingExpression($definedMeaningId) {
 }
 
 function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT spelling" .

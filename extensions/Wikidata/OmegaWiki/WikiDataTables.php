@@ -3,7 +3,6 @@
 require_once("Wikidata.php");
 $wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 $dc=$wdDataSetContext; // See? We're keeping this readable :-P
-
 class Table {
 	public $name;
 	public $isVersioned;

@@ -7,6 +7,9 @@ $wgNamespaceProtection[ 24 ] = array( 'editwikidata' );
 $wgGroupPermissions['wikidata']['editwikidata']=true;
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/Wikidata/OmegaWiki/");
+$wgDefaultClassMids = array(402295);
+
+require_once("{$IP}/includes/Setup.php");
 require_once("{$IP}/extensions/Wikidata/SpecialLanguages.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSuggest.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSelect.php");
@@ -23,6 +26,6 @@ function addWikidataHeader() {
 }
 
 # all DMs will be put in this class by default.
-$wgDefaultClassMids = array(402295);
+
 
 ?>

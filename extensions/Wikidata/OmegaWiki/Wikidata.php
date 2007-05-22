@@ -4,14 +4,7 @@ require_once("forms.php");
 require_once("Transaction.php");
 require_once("OmegaWikiAttributes.php");
 
-interface WikidataApplication {
-	public function view();
-	public function edit();
-	public function history();
-	public function getTitle();
-}
-
-class DefaultWikidataApplication implements WikidataApplication {
+class DefaultWikidataApplication {
 	protected $showRecordLifeSpan;
 	protected $transaction;
 	protected $queryTransactionInformation;
@@ -26,6 +19,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 	protected $showLanguageSelector = true;					// Show language selector at the top of each wiki data page
 	protected $showClassicPageTitles = true;				// Show classic page titles instead of prettier page titles
 	protected $possiblySynonymousRelationTypeId = 0;		// Put this relation type in a special section "Possibly synonymous"
+
 
 	public function __construct() {
 		global 
@@ -280,9 +274,10 @@ class DefaultWikidataApplication implements WikidataApplication {
 	 *
 	 * @return prefix (without underscore)
 	**/
-	public function getDataSetContext() {
+	public static function getDataSetContext() {
 		return 'uw';
 	}
+
 }
 
 ?>

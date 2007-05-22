@@ -7,7 +7,6 @@ require_once("GotoSourceTemplate.php");
 require_once("Wikidata.php");
 $wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
-
 function addCollapsablePrefixToClass($class) {
 	return "collapsable-$class";
 }

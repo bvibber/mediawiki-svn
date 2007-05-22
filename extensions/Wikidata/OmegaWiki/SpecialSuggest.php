@@ -14,8 +14,9 @@ function wfSpecialSuggest() {
 		function execute( $par ) {
 			global
 				$wgOut,	$IP, $wdDataSetContext;
-				
+			wfDebug("PREFIX -- $wdDataSetContext\n");				
 			$wgOut->disable();
+
 			
 			require_once("$IP/includes/Setup.php");
 			require_once("Attribute.php");

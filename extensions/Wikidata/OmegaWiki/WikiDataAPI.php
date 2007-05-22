@@ -3,9 +3,8 @@
 require_once('Transaction.php');
 require_once('WikidataNamespaces.php');
 
-require_once("Wikidata.php");
+require_once('Wikidata.php');
 $wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
-
 class Expression {
 	public $id;
 	public $spelling;
@@ -48,7 +47,6 @@ function getExpression($expressionId) {
 
 	global $wdDataSetContext;
 	$dc=$wdDataSetContext;
-	
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT spelling, language_id " .
 								" FROM {$dc}_expression_ns " .
@@ -90,7 +88,7 @@ function getExpressionId($spelling, $languageId) {
 
 	global $wdDataSetContext;
 	$dc=$wdDataSetContext;
-	
+
 	$dbr = &wfGetDB(DB_SLAVE);
 	$sql = "SELECT expression_id FROM {$dc}_expression_ns " .
 			'WHERE spelling=binary '. $dbr->addQuotes($spelling) . ' AND language_id=' . $languageId .
@@ -205,6 +203,8 @@ function createSynonymOrTranslation($definedMeaningId, $expressionId, $identical
 }
 
 function expressionIsBoundToDefinedMeaning($definedMeaningId, $expressionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT expression_id FROM {$dc}_syntrans WHERE expression_id=$expressionId AND defined_meaning_id=$definedMeaningId AND ". getLatestTransactionRestriction("{$dc}_syntrans") ." LIMIT 1");
 	

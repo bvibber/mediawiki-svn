@@ -3,7 +3,6 @@
 if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialSelect';
-
 require_once("Wikidata.php");
 $wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
