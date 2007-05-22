@@ -5,6 +5,7 @@
 
 	require_once("Wikidata.php");
 	$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
+
 	function wfSpecialNeedsTranslation() {
 	        global $wgMessageCache;
                 $wgMessageCache->addMessages(array('needstranslation'=>'Expressions needing translation'),'en');
@@ -46,6 +47,8 @@
 				global
 					$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure, $spellingAttribute, $languageAttribute;
 
+				global $wdDataSetContext;
+				$dc=$wdDataSetContext;
 				require_once("Transaction.php");
 				require_once("OmegaWikiAttributes.php");
 				require_once("RecordSet.php");
@@ -55,21 +58,21 @@
 				$dbr = &wfGetDB(DB_SLAVE);
 
 				$sql = 'SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id' .
-					' FROM (uw_syntrans source_syntrans, uw_expression_ns source_expression)';
+					" FROM ({$dc}_syntrans source_syntrans, {$dc}_expression_ns source_expression)";
 
 				if ($collectionId != '')
-					$sql .= ' JOIN uw_collection_contents ON source_syntrans.defined_meaning_id = member_mid';
+					$sql .= " JOIN {$dc}_collection_contents ON source_syntrans.defined_meaning_id = member_mid";
 
 				$sql .= ' WHERE source_syntrans.expression_id = source_expression.expression_id';
 
 				if ($sourceLanguageId != '')
 					$sql .= ' AND source_expression.language_id = ' . $sourceLanguageId;
 				if ($collectionId != '')
-					$sql .= ' AND uw_collection_contents.collection_id = ' . $collectionId .
-						' AND ' . getLatestTransactionRestriction('uw_collection_contents');
+					$sql .= " AND {$dc}_collection_contents.collection_id = " . $collectionId .
+						' AND ' . getLatestTransactionRestriction("{$dc}_collection_contents");
 
 				$sql .= ' AND NOT EXISTS (' .
-					' SELECT * FROM uw_syntrans destination_syntrans, uw_expression_ns destination_expression' .
+					" SELECT * FROM {$dc}_syntrans destination_syntrans, {$dc}_expression_ns destination_expression" .
 					' WHERE destination_syntrans.expression_id = destination_expression.expression_id AND destination_expression.language_id = ' .$destinationLanguageId .
 					' AND source_syntrans.defined_meaning_id = destination_syntrans.defined_meaning_id' .
 					' AND ' . getLatestTransactionRestriction('destination_syntrans') .
