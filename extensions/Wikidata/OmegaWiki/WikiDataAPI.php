@@ -60,17 +60,23 @@ function getExpression($expressionId) {
 }
 
 function newObjectId($table) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO objects (`table`, `UUID`) VALUES (". $dbr->addQuotes($table) . ", UUID())");
+	$dbr->query("INSERT INTO {$dc}_objects (`table`, `UUID`) VALUES (". $dbr->addQuotes($table) . ", UUID())");
 	
 	return $dbr->insertId();
 }
 
 function getTableNameWithObjectId($objectId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT `table`" .
-		" FROM objects" .
+		" FROM {$dc}_objects" .
 		" WHERE object_id=$objectId"
 	);
 	
