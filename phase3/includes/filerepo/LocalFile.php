@@ -53,7 +53,7 @@ class LocalFile extends File
 	 * Get the memcached key
 	 */
 	function getCacheKey() {
-		$hashedName = md5($this->name);
+		$hashedName = md5($this->getName());
 		return wfMemcKey( 'file', $hashedName );
 	}
 
@@ -75,8 +75,7 @@ class LocalFile extends File
 		  && isset($cachedValues['version']) && ( $cachedValues['version'] == MW_FILE_VERSION )
 		  && isset( $cachedValues['mime'] ) && isset( $cachedValues['metadata'] ) )
 		{
-			wfDebug( "Pulling file metadata from local cache\n" );
-			$this->name = $cachedValues['name'];
+			wfDebug( "Pulling file metadata from cache key $key\n" );
 			$this->fileExists = $cachedValues['fileExists'];
 			$this->width = $cachedValues['width'];
 			$this->height = $cachedValues['height'];
@@ -86,7 +85,6 @@ class LocalFile extends File
 			$this->metadata = $cachedValues['metadata'];
 			$this->size = $cachedValues['size'];
 			$this->dataLoaded = true;
-			$this->path = $this->getFullPath();
 		}
 		if ( $this->dataLoaded ) {
 			wfIncrStats( 'image_cache_hit' );
@@ -110,7 +108,6 @@ class LocalFile extends File
 		}
 		$cachedValues = array(
 			'version'    => MW_FILE_VERSION,
-			'name'       => $this->name,
 			'fileExists' => $this->fileExists,
 			'width'      => $this->width,
 			'height'     => $this->height,
@@ -129,35 +126,35 @@ class LocalFile extends File
 	function loadFromFile() {
 		global $wgContLang;
 		wfProfileIn( __METHOD__ );
-		$this->path = $this->getFullPath();
-		$this->fileExists = file_exists( $this->path );
+		$path = $this->getPath();
+		$this->fileExists = file_exists( $path );
 		$gis = array();
 
 		if ( $this->fileExists ) {
 			$magic=& MimeMagic::singleton();
 
-			$this->mime = $magic->guessMimeType($this->path,true);
-			$this->type = $magic->getMediaType($this->path,$this->mime);
+			$this->mime = $magic->guessMimeType($path,true);
+			$this->type = $magic->getMediaType($path,$this->mime);
 			$handler = MediaHandler::getHandler( $this->mime );
 
 			# Get size in bytes
-			$this->size = filesize( $this->path );
+			$this->size = filesize( $path );
 
 			# Height, width and metadata
 			if ( $handler ) {
-				$gis = $handler->getImageSize( $this, $this->path );
-				$this->metadata = $handler->getMetadata( $this, $this->path );
+				$gis = $handler->getImageSize( $this, $path );
+				$this->metadata = $handler->getMetadata( $this, $path );
 			} else {
 				$gis = false;
 				$this->metadata = '';
 			}
 
-			wfDebug(__METHOD__.': '.$this->path." loaded, ".$this->size." bytes, ".$this->mime.".\n");
+			wfDebug(__METHOD__.": $path loaded, {$this->size} bytes, {$this->mime}.\n");
 		} else {
 			$this->mime = NULL;
 			$this->type = MEDIATYPE_UNKNOWN;
 			$this->metadata = '';
-			wfDebug(__METHOD__.': '.$this->path." NOT FOUND!\n");
+			wfDebug(__METHOD__.": $path NOT FOUND!\n");
 		}
 
 		if( $gis ) {
@@ -193,11 +190,10 @@ class LocalFile extends File
 		$row = $dbr->selectRow( 'image',
 			array( 'img_size', 'img_width', 'img_height', 'img_bits',
 			       'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata' ),
-			array( 'img_name' => $this->name ), __METHOD__ );
+			array( 'img_name' => $this->getName() ), __METHOD__ );
 		if ( $row ) {
 			$this->fileExists = true;
 			$this->loadFromRow( $row );
-			$this->path = $this->getFullPath();
 			// Check for rows from a previous schema, quietly upgrade them
 			$this->maybeUpgradeRow();
 		} else {
@@ -282,7 +278,7 @@ class LocalFile extends File
 		$dbw = $this->repo->getMasterDB();
 		list( $major, $minor ) = self::splitMime( $this->mime );
 
-		wfDebug(__METHOD__.': upgrading '.$this->name." to the current schema\n");
+		wfDebug(__METHOD__.': upgrading '.$this->getName()." to the current schema\n");
 
 		$dbw->update( 'image',
 			array(
@@ -293,7 +289,7 @@ class LocalFile extends File
 				'img_major_mime' => $major,
 				'img_minor_mime' => $minor,
 				'img_metadata' => $this->metadata,
-			), array( 'img_name' => $this->name ), __METHOD__
+			), array( 'img_name' => $this->getName() ), __METHOD__
 		);
 		wfProfileOut( __METHOD__ );
 	}
@@ -303,16 +299,7 @@ class LocalFile extends File
 	/** getTitle inherited */
 	/** getURL inherited */
 	/** getViewURL inherited */
-
-	/**
-	 * Return the path of the file in the
-	 * local file system as an absolute path
-	 * @public
-	 */
-	function getPath() {
-		$this->load();
-		return $this->path;
-	}
+	/** getPath inherited */
 
 	/**
 	 * Return the width of the image
@@ -497,7 +484,7 @@ class LocalFile extends File
 			$m = array();
 			# Check that the base file name is part of the thumb name
 			# This is a basic sanity check to avoid erasing unrelated directories
-			if ( strpos( $file, $this->name ) !== false ) {
+			if ( strpos( $file, $this->getName() ) !== false ) {
 				$url = $this->getThumbUrl( $file );
 				$urls[] = $url;
 				@unlink( "$dir/$file" );
@@ -602,7 +589,7 @@ class LocalFile extends File
 
 		// Fail now if the file isn't there
 		if ( !$this->fileExists ) {
-			wfDebug( __METHOD__.": File ".$this->path." went missing!\n" );
+			wfDebug( __METHOD__.": File ".$this->getPath()." went missing!\n" );
 			return false;
 		}
 
@@ -640,7 +627,7 @@ class LocalFile extends File
 		# doesn't deadlock. SELECT FOR UPDATE causes a deadlock for every race condition.
 		$dbw->insert( 'image',
 			array(
-				'img_name' => $this->name,
+				'img_name' => $this->getName(),
 				'img_size'=> $this->size,
 				'img_width' => intval( $this->width ),
 				'img_height' => intval( $this->height ),
@@ -673,7 +660,7 @@ class LocalFile extends File
 					'oi_description' => 'img_description',
 					'oi_user' => 'img_user',
 					'oi_user_text' => 'img_user_text',
-				), array( 'img_name' => $this->name ), __METHOD__
+				), array( 'img_name' => $this->getName() ), __METHOD__
 			);
 
 			# Update the current image row
@@ -692,7 +679,7 @@ class LocalFile extends File
 					'img_user_text' => $wgUser->getName(),
 					'img_metadata' => $this->metadata,
 				), array( /* WHERE */
-					'img_name' => $this->name
+					'img_name' => $this->getName()
 				), __METHOD__
 			);
 		} else {
@@ -758,7 +745,7 @@ class LocalFile extends File
 	 */
 	function publish( $srcPath, $flags = 0 ) {
 		$dstPath = $this->getFullPath();
-		$archiveName = gmdate( 'YmdHis' ) . "!{$this->name}";
+		$archiveName = gmdate( 'YmdHis' ) . '!'. $this->getName();
 		$archivePath = $this->getArchivePath( $archiveName );
 		$flags = $flags & File::DELETE_SOURCE ? LocalRepo::DELETE_SOURCE : 0;
 		$status = $this->repo->publish( $srcPath, $dstPath, $archivePath, $flags );
@@ -803,7 +790,7 @@ class LocalFile extends File
 			// Delete old versions
 			$result = $dbw->select( 'oldimage',
 				array( 'oi_archive_name' ),
-				array( 'oi_name' => $this->name ) );
+				array( 'oi_name' => $this->getName() ) );
 
 			while( $row = $dbw->fetchObject( $result ) ) {
 				$oldName = $row->oi_archive_name;
@@ -917,7 +904,7 @@ class LocalFile extends File
 				'fa_user'         => 'img_user',
 				'fa_user_text'    => 'img_user_text',
 				'fa_timestamp'    => 'img_timestamp' ),
-			array( 'img_name' => $this->name ),
+			array( 'img_name' => $this->getName() ),
 			$suppress,
 			__METHOD__ );
 	}
@@ -950,7 +937,7 @@ class LocalFile extends File
 				'fa_user_text'    => 'oi_user_text',
 				'fa_timestamp'    => 'oi_timestamp' ),
 			array(
-				'oi_name' => $this->name,
+				'oi_name' => $this->getName(),
 				'oi_archive_name' => $archiveName ),
 			$suppress,
 			__METHOD__ );
@@ -974,7 +961,7 @@ class LocalFile extends File
 				$group = 'deleted';
 
 				$store = FileStore::get( $group );
-				$key = FileStore::calculateKey( $path, $this->extension );
+				$key = FileStore::calculateKey( $path, $this->getExtension() );
 				$transaction = $store->insert( $key, $path,
 					FileStore::DELETE_ORIGINAL );
 			} else {
@@ -1062,12 +1049,12 @@ class LocalFile extends File
 			// if no we'll need to create an file record for the
 			// first item we restore.
 			$exists = $dbw->selectField( 'image', '1',
-				array( 'img_name' => $this->name ),
+				array( 'img_name' => $this->getName() ),
 				__METHOD__ );
 
 			// Fetch all or selected archived revisions for the file,
 			// sorted from the most recent to the oldest.
-			$conditions = array( 'fa_name' => $this->name );
+			$conditions = array( 'fa_name' => $this->getName() );
 			if( $versions ) {
 				$conditions['fa_id'] = $versions;
 			}
@@ -1244,6 +1231,29 @@ class LocalFile extends File
 	/** pageCount inherited */
 	/** scaleHeight inherited */
 	/** getImageSize inherited */
+	
+	/**
+	 * Get the URL of the file description page. 
+	 */
+	function getDescriptionUrl() {
+		return $this->title->getLocalUrl();
+	}
+
+	/**
+	 * Get the HTML text of the description page
+	 * This is not used by ImagePage for local files, since (among other things)
+	 * it skips the parser cache.
+	 */
+	function getDescriptionText() {
+		global $wgParser;
+		$revision = Revision::newFromTitle( $this->title );
+		if ( !$revision ) return false;
+		$text = $revision->getText();
+		if ( !$text ) return false;
+		$html = $wgParser->parse( $text, new ParserOptions );
+		return $html;
+	}
+
 } //class
 
 /**

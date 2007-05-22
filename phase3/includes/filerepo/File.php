@@ -30,14 +30,18 @@ class File {
 	const DELETE_SOURCE = 1;
 
 	/** 
-	 * Some member variables are lazy-initialised using __get(). The 
+	 * Some member variables can be lazy-initialised using __get(). The 
 	 * initialisation function for these variables is always a function named
-	 * like _getVar(), where Var is the variable name with upper-case first 
+	 * like getVar(), where Var is the variable name with upper-case first 
 	 * letter.
 	 *
 	 * The following variables are initialised in this way in this base class:
 	 *    name, extension, handler, path, canRender, isSafeFile, 
 	 *    transformScript, hashPath, pageCount, url
+	 *
+	 * Code within this class should generally use the accessor function 
+	 * directly, since __get() isn't re-entrant and therefore causes bugs that
+	 * depend on initialisation order.
 	 */
 
 	/**
@@ -51,7 +55,7 @@ class File {
 	}
 
 	function __get( $name ) {
-		$function = array( $this, '_get' . ucfirst( $name ) );
+		$function = array( $this, 'get' . ucfirst( $name ) );
 		if ( !is_callable( $function ) ) {
 			return null;
 		} else {
@@ -84,6 +88,12 @@ class File {
 	}
 
 	/**
+	 * Upgrade the database row if there is one
+	 * Called by ImagePage
+	 */
+	function upgradeRow() {}
+
+	/**
 	 * Split an internet media type into its two components; if not
 	 * a two-part name, set the minor type to 'unknown'.
 	 *
@@ -102,17 +112,23 @@ class File {
 	 * Return the name of this file
 	 * @public
 	 */
-	function getName() { return $this->name; }
-	function _getName() { return $this->title->getDBkey(); }
+	function getName() {
+		if ( !isset( $this->name ) ) {
+			$this->name = $this->title->getDBkey();
+		}
+		return $this->name; 
+	}
 
 	/**
 	 * Get the file extension, e.g. "svg"
 	 */
-	function getExtension() { return $this->extension; }
-	function _getExtension() {
-		$n = strrpos( $this->name, '.' );
-		return self::normalizeExtension( $n ?
-			substr( $this->name, $n + 1 ) : '' );
+	function getExtension() {
+		if ( !isset( $this->extension ) ) {
+			$n = strrpos( $this->getName(), '.' );
+			$this->extension = self::normalizeExtension( 
+				$n ? substr( $this->getName(), $n + 1 ) : '' );
+		}
+		return $this->extension;
 	}
 
 	/**
@@ -125,9 +141,11 @@ class File {
 	 * Return the URL of the file
 	 * @public
 	 */
-	function getURL() { return $this->url; }
-	function _getUrl() {
-		return $this->repo->getZoneUrl( 'public' ) . '/' . $this->getUrlRel();
+	function getUrl() { 
+		if ( !isset( $this->url ) ) {
+			$this->url = $this->repo->getZoneUrl( 'public' ) . '/' . $this->getUrlRel();
+		}
+		return $this->url; 
 	}
 
 	function getViewURL() {
@@ -136,7 +154,7 @@ class File {
 				return $this->createThumb( $this->getWidth() );
 			}
 			else {
-				wfDebug(__METHOD__.': supposed to render '.$this->name.' ('.$this->mime."), but can't!\n");
+				wfDebug(__METHOD__.': supposed to render '.$this->getName().' ('.$this->getMimeType()."), but can't!\n");
 				return $this->getURL(); #hm... return NULL?
 			}
 		} else {
@@ -156,9 +174,11 @@ class File {
 	*
 	* @public
 	*/
-	function getPath() { return $this->path; }
-	function _getPath() {
-		return $this->repo->getZonePath('public') . '/' . $this->getRel();
+	function getPath() {
+		if ( !isset( $this->path ) ) {
+			$this->path = $this->repo->getZonePath('public') . '/' . $this->getRel();
+		}
+		return $this->path;
 	}
 
 	/**
@@ -227,9 +247,18 @@ class File {
 	 * supported by all browsers (namely GIF, PNG and JPEG),
 	 * or if it is an SVG image and SVG conversion is enabled.
 	 */
-	function canRender() { return $this->canRender; }
-	function _getCanRender() {
-		return $this->handler && $this->handler->canRender();
+	function canRender() {
+		if ( !isset( $this->canRender ) ) {
+			$this->canRender = $this->getHandler() && $this->handler->canRender();
+		}
+		return $this->canRender;
+	}
+
+	/**
+	 * Accessor for __get()
+	 */
+	protected function getCanRender() {
+		return $this->canRender();
 	}
 
 	/**
@@ -243,7 +272,7 @@ class File {
 	 * @return bool
 	 */
 	function mustRender() {
-		return $this->handler && $this->handler->mustRender();
+		return $this->getHandler() && $this->handler->mustRender();
 	}
 
 	/**
@@ -269,8 +298,20 @@ class File {
 	 * Note that this function will always return true if allowInlineDisplay()
 	 * or isTrustedFile() is true for this file.
 	 */
-	function isSafeFile() { return $this->isSafeFile; }
-	function _getIsSafeFile() {
+	function isSafeFile() {
+		if ( !isset( $this->isSafeFile ) ) {
+			$this->isSafeFile = $this->_getIsSafeFile();
+		}
+		return $this->isSafeFile;
+	}
+	
+	/** Accessor for __get() */
+	protected function getIsSafeFile() {
+		return $this->isSafeFile();
+	}
+
+	/** Uncached accessor */
+	protected function _getIsSafeFile() {
 		if ($this->allowInlineDisplay()) return true;
 		if ($this->isTrustedFile()) return true;
 
@@ -308,26 +349,26 @@ class File {
 	/**
 	 * Returns true if file exists in the repository.
 	 *
-	 * Overridden by LocalFile.
+	 * Overridden by LocalFile to avoid unnecessary stat calls.
 	 * 
 	 * @return boolean Whether file exists in the repository.
 	 * @public
 	 */
 	function exists() {
-		return $this->path && file_exists( $this->path );
+		return $this->getPath() && file_exists( $this->path );
 	}
 
-	function getTransformScript() { return $this->transformScript; }
-	function _getTransformScript() {
-		if ( !$this->repo ) {
-			return false;
+	function getTransformScript() {
+		if ( !isset( $this->transformScript ) ) {
+			$this->transformScript = false;
+			if ( $this->repo ) {
+				$script = $this->repo->getThumbScriptUrl();
+				if ( $script ) {
+					$this->transformScript = "$script?f=" . urlencode( $this->getName() );
+				}
+			}
 		}
-		$script = $this->repo->getThumbScriptPath();
-		if ( $script ) {
-			return "$script?f=" . urlencode( $this->name );
-		} else {
-			return false;
-		}
+		return $this->transformScript;
 	}
 
 	/**
@@ -356,7 +397,7 @@ class File {
 	 * @private
 	 */
 	function thumbName( $params ) {
-		if ( !$this->handler ) {
+		if ( !$this->getHandler() ) {
 			return null;
 		}
 		$extension = $this->getExtension();
@@ -433,7 +474,7 @@ class File {
 
 		wfProfileIn( __METHOD__ );
 		do {
-			if ( !$this->handler || !$this->handler->canRender() ) {
+			if ( !$this->getHandler() || !$this->handler->canRender() ) {
 				// not a bitmap or renderable image, don't try.
 				$thumb = $this->iconThumb();
 				break;
@@ -494,9 +535,11 @@ class File {
 	/**
 	 * Get a MediaHandler instance for this file
 	 */
-	function getHandler() { return $this->handler; }
-	function _getHandler() {
-		return MediaHandler::getHandler( $this->getMimeType() );
+	function getHandler() { 
+		if ( !isset( $this->handler ) ) {
+			$this->handler = MediaHandler::getHandler( $this->getMimeType() );
+		}
+		return $this->handler;
 	}
 
 	/**
@@ -597,28 +640,30 @@ class File {
 	 * e.g. f/fa/
 	 * If the repository is not hashed, returns an empty string.
 	 */
-	function getHashPath() { return $this->hashPath; }
-	function _getHashPath() {
-		return $this->repo->getHashPath( $this->name );
+	function getHashPath() {
+		if ( !isset( $this->hashPath ) ) {
+			$this->hashPath = $this->repo->getHashPath( $this->getName() );
+		}
+		return $this->hashPath;
 	}
 
 	/**
 	 * Get the path of the file relative to the public zone root
 	 */
 	function getRel() {
-		return $this->hashPath . $this->name;
+		return $this->getHashPath() . $this->getName();
 	}
 
 	/**
 	 * Get urlencoded relative path of the file
 	 */
 	function getUrlRel() {
-		return $this->hashPath . urlencode( $this->name );
+		return $this->getHashPath() . urlencode( $this->getName() );
 	}
 
 	/** Get the path of the archive directory, or a particular file if $suffix is specified */
 	function getArchivePath( $suffix = false ) {
-		$path = $this->repo->getZonePath('public') . '/archive/' . $this->hashPath;
+		$path = $this->repo->getZonePath('public') . '/archive/' . $this->getHashPath();
 		if ( $suffix !== false ) {
 			$path .= '/' . $suffix;
 		}
@@ -636,7 +681,7 @@ class File {
 
 	/** Get the URL of the archive directory, or a particular file if $suffix is specified */
 	function getArchiveUrl( $suffix = false ) {
-		$path = $this->repo->getZoneUrl('public') . '/archive/' . $this->hashPath;
+		$path = $this->repo->getZoneUrl('public') . '/archive/' . $this->getHashPath();
 		if ( $suffix !== false ) {
 			$path .= '/' . urlencode( $suffix );
 		}
@@ -654,7 +699,7 @@ class File {
 
 	/** Get the virtual URL for an archive file or directory */
 	function getArchiveVirtualUrl( $suffix = false ) {
-		$path = $this->repo->getVirtualUrl() . '/public/archive/' . $this->hashPath;
+		$path = $this->repo->getVirtualUrl() . '/public/archive/' . $this->getHashPath();
 		if ( $suffix !== false ) {
 			$path .= '/' . urlencode( $suffix );
 		}
@@ -663,7 +708,7 @@ class File {
 
 	/** Get the virtual URL for a thumbnail file or directory */
 	function getThumbVirtualUrl( $suffix = false ) {
-		$path = $this->repo->getVirtualUrl() . '/public/thumb/' . $this->hashPath;
+		$path = $this->repo->getVirtualUrl() . '/public/thumb/' . $this->getHashPath();
 		if ( $suffix !== false ) {
 			$path .= '/' . urlencode( $suffix );
 		}
@@ -733,7 +778,7 @@ class File {
 		$linkCache =& LinkCache::singleton();
 
 		list( $page, $imagelinks ) = $db->tableNamesN( 'page', 'imagelinks' );
-		$encName = $db->addQuotes( $this->name );
+		$encName = $db->addQuotes( $this->getName() );
 		$sql = "SELECT page_namespace,page_title,page_id FROM $page,$imagelinks WHERE page_id=il_from AND il_to=$encName $options";
 		$res = $db->query( $sql, __METHOD__ );
 
@@ -752,7 +797,7 @@ class File {
 	}
 
 	function getExifData() {
-		if ( !$this->handler || $this->handler->getMetadataType( $this ) != 'exif' ) {
+		if ( !$this->getHandler() || $this->handler->getMetadataType( $this ) != 'exif' ) {
 			return array();
 		}
 		$metadata = $this->getMetadata();
@@ -829,20 +874,22 @@ class File {
 	 * @return Bool
 	 */
 	function isMultipage() {
-		return $this->handler && $this->handler->isMultiPage();
+		return $this->getHandler() && $this->handler->isMultiPage();
 	}
 
 	/**
 	 * Returns the number of pages of a multipage document, or NULL for
 	 * documents which aren't multipage documents
 	 */
-	function pageCount() { return $this->pageCount; }
-	function _getPageCount() {
-		if ( $this->handler && $this->handler->isMultiPage() ) {
-			return $this->handler->pageCount( $this );
-		} else {
-			return null;
+	function pageCount() {
+		if ( !isset( $this->pageCount ) ) {
+			if ( $this->getHandler() && $this->handler->isMultiPage() ) {
+				$this->pageCount = $this->handler->pageCount( $this );
+			} else {
+				$this->pageCount = false;
+			}
 		}
+		return $this->pageCount;
 	}
 
 	/**
@@ -865,9 +912,35 @@ class File {
 	 * @return array
 	 */
 	function getImageSize( $fileName ) {
+		if ( !$this->getHandler() ) {
+			return false;
+		}
 		return $this->handler->getImageSize( $this, $fileName );
 	}
 
+	/**
+	 * Get the URL of the image description page. May return false if it is
+	 * unknown or not applicable.
+	 */
+	function getDescriptionUrl() {
+		return $this->repo->getDescriptionUrl( $this->getName() );
+	}
+
+	/**
+	 * Get the HTML text of the description page, if available
+	 */
+	function getDescriptionText() {
+		if ( !$this->repo->fetchDescription ) {
+			return false;
+		}
+		$renderUrl = $this->repo->getDescriptionRenderUrl( $this->getName() );
+		if ( $renderUrl ) {
+			wfDebug( "Fetching shared description from $renderUrl\n" );
+			return Http::get( $renderUrl );
+		} else {
+			return false;
+		}
+	}
 }
 
 ?>

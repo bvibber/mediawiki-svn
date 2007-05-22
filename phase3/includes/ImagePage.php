@@ -336,21 +336,21 @@ class ImagePage extends Article {
 				$dirmark = $wgContLang->getDirMark();
 				if (!$this->img->isSafeFile()) {
 					$warning = wfMsg( 'mediawarning' );
-					$wgOut->addWikiText( <<<END
+					$wgOut->addWikiText( <<<EOT
 <div class="fullMedia">$infores
 <span class="dangerousLink">[[Media:$filename|$filename]]</span>$dirmark
 <span class="fileInfo"> $info</span>
 </div>
 
 <div class="mediaWarning">$warning</div>
-END
+EOT
 						);
 				} else {
-					$wgOut->addWikiText( <<<END
+					$wgOut->addWikiText( <<<EOT
 <div class="fullMedia">$infores
 [[Media:$filename|$filename]]$dirmark <span class="fileInfo"> $info</span>
 </div>
-END
+EOT
 						);
 				}
 			}
@@ -369,25 +369,21 @@ END
 	}
 
 	function printSharedImageText() {
-		global $wgRepositoryBaseUrl, $wgFetchCommonsDescriptions, $wgOut, $wgUser;
+		global $wgOut, $wgUser;
 
-		$url = $wgRepositoryBaseUrl . urlencode($this->mTitle->getDBkey());
-		$sharedtext = "<div class='sharedUploadNotice'>" . wfMsgWikiHtml("sharedupload");
-		if ($wgRepositoryBaseUrl && !$wgFetchCommonsDescriptions) {
+		$descUrl = $this->img->getDescriptionUrl();
+		$descText = $this->img->getDescriptionText();
+		$s = "<div class='sharedUploadNotice'>" . wfMsgWikiHtml("sharedupload");
+		if ( $descUrl && !$descText) {
 			$sk = $wgUser->getSkin();
-			$url = $wgRepositoryBaseUrl . urlencode( $this->img->getName() );
-			$link = $sk->makeExternalLink( $url, wfMsg('shareduploadwiki-linktext') );
-			$sharedtext .= " " . wfMsgWikiHtml('shareduploadwiki', $link);
+			$link = $sk->makeExternalLink( $descUrl, wfMsg('shareduploadwiki-linktext') );
+			$s .= " " . wfMsgWikiHtml('shareduploadwiki', $link);
 		}
-		$sharedtext .= "</div>";
-		$wgOut->addHTML($sharedtext);
+		$s .= "</div>";
+		$wgOut->addHTML($s);
 
-		if ($wgRepositoryBaseUrl && $wgFetchCommonsDescriptions) {
-			$renderUrl = wfAppendQuery( $url, 'action=render' );
-			wfDebug( "Fetching shared description from $renderUrl\n" );
-			$text = Http::get( $renderUrl );
-			if ($text)
-				$this->mExtraDescription = $text;
+		if ( $descText ) {
+			$this->mExtraDescription = $descText;
 		}
 	}
 

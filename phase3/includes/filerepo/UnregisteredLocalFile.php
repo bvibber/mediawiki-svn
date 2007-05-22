@@ -46,7 +46,10 @@ class UnregisteredLocalFile extends File {
 
 	function getPageDimensions( $page = 1 ) {
 		if ( !isset( $this->dims[$page] ) ) {
-			$this->dims[$page] = $this->getHandler()->getPageDimensions( $this, $page );
+			if ( !$this->getHandler() ) {
+				return false;
+			}
+			$this->dims[$page] = $this->handler->getPageDimensions( $this, $page );
 		}
 		return $this->dims[$page];
 	}
@@ -69,28 +72,20 @@ class UnregisteredLocalFile extends File {
 		return $this->mime;
 	}
 
-	function getPath() {
-		return $this->path;
-	}
-
-	function getFullPath() {
-		return $this->path;
-	}
-
-	function getHandler() {
-		if ( !isset( $this->handler ) ) {
-			$this->handler = MediaHandler::getHandler( $this->getMimeType() );
-		}
-		return $this->handler;
-	}
-
 	function getImageSize() {
-		return $this->getHandler()->getImageSize( $this, $this->getImagePath() );
+		if ( !$this->getHandler() ) {
+			return false;
+		}
+		return $this->handler->getImageSize( $this, $this->getImagePath() );
 	}
 
 	function getMetadata() {
 		if ( !isset( $this->metadata ) ) {
-			$this->metadata = $this->getHandler()->getMetadata( $this, $this->getImagePath() );
+			if ( !$this->getHandler() ) {
+				$this->metadata = false;
+			} else {
+				$this->metadata = $this->handler->getMetadata( $this, $this->getImagePath() );
+			}
 		}
 		return $this->metadata;
 	}
@@ -103,10 +98,12 @@ class UnregisteredLocalFile extends File {
 		}
 	}
 
-	function transform( $params, $flags = 0 ) {
-		# TODO
-		return $this->iconThumb();
+	function getSize() {
+		if ( file_exists( $this->path ) ) {
+			return filesize( $this->path );
+		} else {
+			return false;
+		}
 	}
-
 }
 ?>

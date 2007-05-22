@@ -8,16 +8,26 @@
 class FSRepo {
 	const DELETE_SOURCE = 1;
 
-	var $directory, $url, $hashed, $thumbScriptPath, $transformVia404;
+	var $directory, $url, $hashLevels, $thumbScriptUrl, $transformVia404;
+	var $descBaseUrl, $scriptDirUrl, $articleUrl, $fetchDescription;
 	var $fileFactory = array( 'UnregisteredLocalFile', 'newFromTitle' );
 
 	function __construct( $info ) {
+		// Required settings
+		$this->name = $info['name'];
 		$this->directory = $info['directory'];
 		$this->url = $info['url'];
-		$this->hashed = $info['hashed'];
-		$this->thumbScriptPath = $info['thumbScriptPath'];
-		$this->transformVia404 = $info['transformVia404'];
-		$this->name = $info['name'];
+		$this->hashLevels = $info['hashLevels'];
+		$this->transformVia404 = !empty( $info['transformVia404'] );
+
+		// Optional settings
+		foreach ( array( 'descBaseUrl', 'scriptDirUrl', 'articleUrl', 'fetchDescription', 
+			'thumbScriptUrl' ) as $var ) 
+		{
+			if ( isset( $info[$var] ) ) {
+				$this->$var = $info[$var];
+			}
+		}
 	}
 
 	/**
@@ -47,11 +57,11 @@ class FSRepo {
 	}
 
 	function isHashed() {
-		return $this->hashed;
+		return (bool)$this->hashLevels;
 	}
 
-	function getThumbScriptPath() {
-		return $this->thumbScriptPath;
+	function getThumbScriptUrl() {
+		return $this->thumbScriptUrl;
 	}
 
 	function canTransformVia404() {
@@ -226,7 +236,11 @@ class FSRepo {
 	function getHashPath( $name ) {
 		if ( $this->isHashed() ) {
 			$hash = md5( $name );
-			return $hash[0] . '/' . substr( $hash, 0, 2 ) . '/';
+			$path = '';
+			for ( $i = 1; $i <= $this->hashLevels; $i++ ) {
+				$path .= substr( $hash, 0, $i ) . '/';
+			}
+			return $path;
 		} else {
 			return '';
 		}
@@ -234,6 +248,64 @@ class FSRepo {
 
 	function getName() {
 		return $this->name;
+	}
+
+	/**
+	 * Get the file description page base URL, or false if there isn't one.
+	 * @private
+	 */
+	function getDescBaseUrl() {
+		if ( is_null( $this->descBaseUrl ) ) {
+			if ( !is_null( $this->articleUrl ) ) {
+				$this->descBaseUrl = str_replace( '$1', 
+					urlencode( Namespace::getCanonicalName( NS_IMAGE ) ) . ':', $this->articleUrl );
+			} elseif ( !is_null( $this->scriptDirUrl ) ) {
+				$this->descBaseUrl = $this->scriptDirUrl . '/index.php?title=' . 
+					urlencode( Namespace::getCanonicalName( NS_IMAGE ) ) . ':';
+			} else {
+				$this->descBaseUrl = false;
+			}
+		}
+		return $this->descBaseUrl;
+	}
+
+	/**
+	 * Get the URL of an image description page. May return false if it is
+	 * unknown or not applicable. In general this should only be called by the 
+	 * File class, since it may return invalid results for certain kinds of 
+	 * repositories. Use File::getDescriptionUrl() in user code.
+	 *
+	 * In particular, it uses the article paths as specified to the repository
+	 * constructor, whereas local repositories use the local Title functions.
+	 */
+	function getDescriptionUrl( $name ) {
+		$base = $this->getDescBaseUrl();
+		if ( $base ) {
+			return $base . wfUrlencode( $name );
+		} else {
+			return false;
+		}
+	}
+
+	/**
+	 * Get the URL of the content-only fragment of the description page. For 
+	 * MediaWiki this means action=render. This should only be called by the 
+	 * repository's file class, since it may return invalid results. User code 
+	 * should use File::getDescriptionText().
+	 */
+	function getDescriptionRenderUrl( $name ) {
+		if ( isset( $this->scriptDirUrl ) ) {
+			return $this->scriptDirUrl . '/index.php?title=' . 
+				wfUrlencode( Namespace::getCanonicalName( NS_IMAGE ) . ':' . $name ) .
+				'&action=render';
+		} else {
+			$descBase = $this->getDescBaseUrl();
+			if ( $descBase ) {
+				return wfAppendQuery( $descBase . wfUrlencode( $name ), 'action=render' );
+			} else {
+				return false;
+			}
+		}
 	}
 }
 

@@ -421,6 +421,7 @@ class Linker {
 		$img = wfFindFile( $nt );
 
 		if ( $img && !$img->allowInlineDisplay() ) {
+			wfDebug( __METHOD__.': '.$nt->getPrefixedDBkey()." does not allow inline display\n" );
 			return $this->makeKnownLinkObj( $nt );
 		}
 
