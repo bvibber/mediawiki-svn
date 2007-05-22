@@ -8,6 +8,8 @@ require_once("WikiDataAPI.php");
 require_once("OmegaWikiAttributes.php");
 require_once("OmegaWikiRecordSets.php");
 require_once("OmegaWikiEditors.php");
+require_once("Wikidata.php");
+$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
 class Search extends DefaultWikidataApplication {
 	function view() {
@@ -23,15 +25,17 @@ class Search extends DefaultWikidataApplication {
 	}
 	
 	function searchText($text) {
+		global $wdDataSetContext;
+		$dc=$wdDataSetContext;
 		$dbr = &wfGetDB(DB_SLAVE);
 		
-		$sql = "SELECT INSTR(LCASE(uw_expression_ns.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, uw_syntrans.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS spelling, uw_expression_ns.language_id AS language_id ".
-				"FROM uw_expression_ns, uw_syntrans ".
-	            "WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id AND uw_syntrans.identical_meaning=1 " .
-	            " AND " . getLatestTransactionRestriction('uw_syntrans') .
-	            " AND " . getLatestTransactionRestriction('uw_expression_ns') .
+		$sql = "SELECT INSTR(LCASE({$dc}_expression_ns.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS spelling, {$dc}_expression_ns.language_id AS language_id ".
+				"FROM {$dc}_expression_ns, {$dc}_syntrans ".
+	            "WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id AND {$dc}_syntrans.identical_meaning=1 " .
+	            " AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+	            " AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
 				" AND spelling LIKE " . $dbr->addQuotes("%$text%") .
-				" ORDER BY position ASC, uw_expression_ns.spelling ASC limit 100";
+				" ORDER BY position ASC, {$dc}_expression_ns.spelling ASC limit 100";
 		
 		$queryResult = $dbr->query($sql);
 		list($recordSet, $editor) = getSearchResultAsRecordSet($queryResult);

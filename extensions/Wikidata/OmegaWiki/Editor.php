@@ -4,6 +4,9 @@ require_once("HTMLtable.php");
 require_once("Controller.php");
 require_once("type.php");
 require_once("GotoSourceTemplate.php");
+require_once("Wikidata.php");
+$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
+
 
 function addCollapsablePrefixToClass($class) {
 	return "collapsable-$class";
@@ -1896,26 +1899,30 @@ class ObjectPathEditor extends Viewer {
 	}
 	
 	protected function resolveObject($objectId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+	wfDebug("dc is <$dc>\n");
+
 		$tableName = getTableNameWithObjectId($objectId);
 		
 		if ($tableName != "") {
 			switch ($tableName) {
-				case "uw_meaning_relations": 
+				case "{$dc}_meaning_relations": 
 					$result = $this->resolveRelation($objectId);
 					break;
-				case "uw_text_attribute_values":
-				case "uw_url_attribute_values":
-				case "uw_translated_text_attribute_values":
-				case "uw_option_attribute_values":
+				case "{$dc}_text_attribute_values":
+				case "{$dc}_url_attribute_values":
+				case "{$dc}_translated_text_attribute_values":
+				case "{$dc}_option_attribute_values":
 					$result = $this->resolveAttribute($objectId, $tableName);
 					break;
 				case "translated_content":
 					$result = $this->resolveTranslatedContent($objectId);
 					break;
-				case "uw_syntrans":
+				case "{$dc}_syntrans":
 					$result = $this->resolveSyntrans($objectId);
 					break;
-				case "uw_defined_meaning":
+				case "{$dc}_defined_meaning":
 					$result = $this->resolveDefinedMeaning($objectId);
 					break;
 				default:
@@ -1929,10 +1936,12 @@ class ObjectPathEditor extends Viewer {
 	}
 	
 	protected function resolveRelation($objectId) {
+		global $wdDataSetContext;
+		$dc=$wdDataSetContext;
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT meaning1_mid, relationtype_mid, meaning2_mid" .
-			" FROM uw_meaning_relations" .
+			" FROM {$dc}_meaning_relations" .
 			" WHERE relation_id=$objectId"
 		);
 
@@ -1962,10 +1971,12 @@ class ObjectPathEditor extends Viewer {
 	}
 
 	protected function resolveTranslatedContent($objectId) {
+		global $wdDataSetContext;
+		$dc=$wdDataSetContext;
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT defined_meaning_id" .
-			" FROM uw_defined_meaning" .
+			" FROM {$dc}_defined_meaning" .
 			" WHERE meaning_text_tcid=$objectId"
 		);
 
@@ -1977,12 +1988,14 @@ class ObjectPathEditor extends Viewer {
 	}
 
 	protected function resolveSyntrans($objectId) {
+		global $wdDataSetContext;
+		$dc=$wdDataSetContext;
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT spelling, defined_meaning_id" .
-			" FROM uw_syntrans, uw_expression_ns" .
+			" FROM {$dc}_syntrans, _expression_ns" .
 			" WHERE syntrans_sid=$objectId" .
-			" AND uw_syntrans.expression_id=uw_expression_ns.expression_id"
+			" AND {$dc}_syntrans.expression_id={$dc}_expression_ns.expression_id"
 		);
 
 		if ($syntrans = $dbr->fetchObject($queryResult))

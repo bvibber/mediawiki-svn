@@ -3,6 +3,8 @@
 
 	$wgExtensionFunctions[] = 'wfSpecialNeedsTranslation';
 
+	require_once("Wikidata.php");
+	$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 	function wfSpecialNeedsTranslation() {
 	        global $wgMessageCache;
                 $wgMessageCache->addMessages(array('needstranslation'=>'Expressions needing translation'),'en');

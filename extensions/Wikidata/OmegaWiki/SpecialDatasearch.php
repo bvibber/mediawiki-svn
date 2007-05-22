@@ -6,6 +6,9 @@ require_once( 'SpecialDatasearch.i18n.php' );
 
 $wgExtensionFunctions[] = 'wfSpecialDatasearch';
 
+require_once("Wikidata.php");
+$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
+
 function wfSpecialDatasearch() {
 	# Add messages
 	global $wgMessageCache, $wgDataSearchMessages, $IP;
@@ -181,33 +184,35 @@ function wfSpecialDatasearch() {
 		}
 		
 		function searchWords($text, $collectionId, $languageId) {
+		global $wdDataSetContext;
+		$dc=$wdDataSetContext;
 			$dbr = &wfGetDB(DB_SLAVE);
 			
 			$sql = 
-				"SELECT ". $this->getPositionSelectColumn($text, "uw_expression_ns.spelling") ." uw_syntrans.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS spelling, uw_expression_ns.language_id AS language_id ".
-				"FROM uw_expression_ns, uw_syntrans ";
+				"SELECT ". $this->getPositionSelectColumn($text, "{$dc}_expression_ns.spelling") ." {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS spelling, {$dc}_expression_ns.language_id AS language_id ".
+				"FROM {$dc}_expression_ns, {$dc}_syntrans ";
 					
 			if ($collectionId > 0)
-				$sql .= ", uw_collection_contents ";
+				$sql .= ", {$dc}_collection_contents ";
 				
 			$sql .=
-		    	"WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id AND uw_syntrans.identical_meaning=1 " .
-				" AND " . getLatestTransactionRestriction('uw_syntrans').
-				" AND " . getLatestTransactionRestriction('uw_expression_ns').
+		    	"WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id AND {$dc}_syntrans.identical_meaning=1 " .
+				" AND " . getLatestTransactionRestriction("{$dc}_syntrans").
+				" AND " . getLatestTransactionRestriction("{$dc}_expression_ns").
 				$this->getSpellingRestriction($text, 'spelling');
 				
 			if ($collectionId > 0)
 				$sql .= 
-					" AND uw_collection_contents.member_mid=uw_syntrans.defined_meaning_id " .
-					" AND uw_collection_contents.collection_id=" . $collectionId .
-					" AND " . getLatestTransactionRestriction('uw_collection_contents');
+					" AND {$dc}_collection_contents.member_mid={$dc}_syntrans.defined_meaning_id " .
+					" AND {$dc}_collection_contents.collection_id=" . $collectionId .
+					" AND " . getLatestTransactionRestriction("{$dc}_collection_contents");
 					
 			if ($languageId > 0)
 				$sql .= 
-					" AND uw_expression_ns.language_id=$languageId";
+					" AND {$dc}_expression_ns.language_id=$languageId";
 			
 			$sql .=
-				" ORDER BY " . $this->getSpellingOrderBy($text) . "uw_expression_ns.spelling ASC limit 100";
+				" ORDER BY " . $this->getSpellingOrderBy($text) . "{$dc}_expression_ns.spelling ASC limit 100";
 			
 			$queryResult = $dbr->query($sql);
 			$recordSet = $this->getWordsSearchResultAsRecordSet($queryResult);
@@ -239,6 +244,7 @@ function wfSpecialDatasearch() {
 		}
 		
 		function getWordsSearchResultEditor() {
+
 			$expressionEditor = new RecordTableCellEditor($this->expressionAttribute);
 			$expressionEditor->addEditor(new SpellingEditor($this->spellingAttribute, new SimplePermissionController(false), false));
 			$expressionEditor->addEditor(new LanguageEditor($this->languageAttribute, new SimplePermissionController(false), false));
@@ -255,24 +261,26 @@ function wfSpecialDatasearch() {
 		}
 		
 		function searchExternalIdentifiers($text, $collectionId) {
+			global $wdDataSetContext;
+			$dc=$wdDataSetContext;
 			$dbr = &wfGetDB(DB_SLAVE);
 			
 			$sql = 
-				"SELECT ". $this->getPositionSelectColumn($text, 'uw_collection_contents.internal_member_id') ." uw_collection_contents.member_mid AS member_mid, uw_collection_contents.internal_member_id AS external_identifier, uw_collection_ns.collection_mid AS collection_mid ".
-				"FROM uw_collection_contents, uw_collection_ns ";
+				"SELECT ". $this->getPositionSelectColumn($text, "{$dc}_collection_contents.internal_member_id") ." {$dc}_collection_contents.member_mid AS member_mid, {$dc}_collection_contents.internal_member_id AS external_identifier, {$dc}_collection_ns.collection_mid AS collection_mid ".
+				"FROM {$dc}_collection_contents, {$dc}_collection_ns ";
 					
 			$sql .=
-		    	"WHERE uw_collection_ns.collection_id=uw_collection_contents.collection_id " .
-				" AND " . getLatestTransactionRestriction('uw_collection_ns').
-				" AND " . getLatestTransactionRestriction('uw_collection_contents').
-				$this->getSpellingRestriction($text, 'uw_collection_contents.internal_member_id');
+		    	"WHERE {$dc}_collection_ns.collection_id={$dc}_collection_contents.collection_id " .
+				" AND " . getLatestTransactionRestriction("{$dc}_collection_ns").
+				" AND " . getLatestTransactionRestriction("{$dc}_collection_contents").
+				$this->getSpellingRestriction($text, "{$dc}_collection_contents.internal_member_id");
 				
 			if ($collectionId > 0)
 				$sql .= 
-					" AND uw_collection_ns.collection_id=$collectionId ";
+					" AND {$dc}_collection_ns.collection_id=$collectionId ";
 			
 			$sql .=
-				" ORDER BY " . $this->getSpellingOrderBy($text) . "uw_collection_contents.internal_member_id ASC limit 100";
+				" ORDER BY " . $this->getSpellingOrderBy($text) . "{$dc}_collection_contents.internal_member_id ASC limit 100";
 			
 			$queryResult = $dbr->query($sql);
 			$recordSet = $this->getExternalIdentifiersSearchResultAsRecordSet($queryResult);

@@ -7,6 +7,8 @@ require_once("OmegaWikiAttributes.php");
 require_once("RecordSet.php");
 require_once("Editor.php");
 require_once("WikiDataAPI.php");
+require_once("Wikidata.php");
+$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
 class NeedsTranslationTo extends DefaultWikidataApplication {
 	public function view() {
@@ -49,14 +51,17 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 		global
 			$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure, $spellingAttribute, $languageAttribute;
 		
+		global $wdDataSetContext;
+		$dc=$wdDataSetContext;
+
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id" .
-					" FROM uw_syntrans source_syntrans, uw_expression_ns source_expression" .
+					" FROM {$dc}_syntrans source_syntrans, {$dc}_expression_ns source_expression" .
 					" WHERE source_syntrans.expression_id=source_expression.expression_id AND source_expression.language_id=$sourceLanguageId" .
 					" AND ". getLatestTransactionRestriction('source_syntrans').
 					" AND ". getLatestTransactionRestriction('source_expression').
 					" AND NOT EXISTS (" .
-					"   SELECT * FROM uw_syntrans destination_syntrans, uw_expression_ns destination_expression" .
+					"   SELECT * FROM {$dc}_syntrans destination_syntrans, {$dc}_expression_ns destination_expression" .
 					"   WHERE  destination_syntrans.expression_id=destination_expression.expression_id AND destination_expression.language_id=$destinationLanguageId" .
 					" AND source_syntrans.defined_meaning_id=destination_syntrans.defined_meaning_id".
 					" AND ". getLatestTransactionRestriction('destination_syntrans').

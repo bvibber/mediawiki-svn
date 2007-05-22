@@ -1,6 +1,9 @@
 <?php
 	if (!defined('MEDIAWIKI')) die();
 
+
+	require_once("Wikidata.php");
+	$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 	$wgAvailableRights[] = 'languagenames';
 	$wgGroupPermissions['bureaucrat']['languagenames'] = true;
 
@@ -18,6 +21,8 @@
 			function execute($par) {
 				global $wgOut, $wgUser;
 
+				global $wdDataSetContext;
+				$dc=$wdDataSetContext;
 				require_once('Transaction.php');
 
 				$wgOut->setPageTitle('Import Language Names');
@@ -30,20 +35,20 @@
 				$dbr = &wfGetDB(DB_MASTER);
 
 				/* Get collection ID for "ISO 639-3 codes" collection. */
-				$sql = 'SELECT collection_id FROM uw_collection_ns' .
-					' JOIN uw_defined_meaning ON defined_meaning_id = collection_mid' .
-					' JOIN uw_expression_ns ON' .
-					' uw_defined_meaning.expression_id = uw_expression_ns.expression_id' .
+				$sql = "SELECT collection_id FROM {$dc}_collection_ns" .
+					" JOIN {$dc}_defined_meaning ON defined_meaning_id = collection_mid" .
+					" JOIN {$dc}_expression_ns ON" .
+					" {$dc}_defined_meaning.expression_id = {$dc}_expression_ns.expression_id" .
 					' WHERE spelling LIKE "ISO 639-3 codes"' .
-					' AND ' . getLatestTransactionRestriction('uw_collection_ns') .
+					' AND ' . getLatestTransactionRestriction("{$dc}_collection_ns") .
 					' LIMIT 1';
 				$collection_id_res = $dbr->query($sql);
 				$collection_id = $this->fetchResult($dbr->fetchRow($collection_id_res));
 
 				/* Get defined meaning IDs and ISO codes for languages in collection. */
-				$sql = 'SELECT member_mid,internal_member_id FROM uw_collection_contents' .
+				$sql = "SELECT member_mid,internal_member_id FROM {$dc}_collection_contents" .
 					' WHERE collection_id = ' . $collection_id .
-					' AND ' . getLatestTransactionRestriction('uw_collection_contents');
+					' AND ' . getLatestTransactionRestriction("{$dc}_collection_contents");
 				$lang_res = $dbr->query($sql);
 				$editable = '';
 				$first = true;
@@ -64,8 +69,8 @@
 						$wgOut->addHTML('Language names for "' . $iso_code . '" added.');
 
 						/* Add current language to list of portals/DMs. */
-						$sql = 'SELECT spelling FROM uw_expression_ns' .
-							' JOIN uw_defined_meaning ON uw_defined_meaning.expression_id = uw_expression_ns.expression_id' .
+						$sql = "SELECT spelling FROM {$dc}_expression_ns" .
+							" JOIN {$dc}_defined_meaning ON {$dc}_defined_meaning.expression_id = {$dc}_expression_ns.expression_id" .
 							' WHERE defined_meaning_id = ' . $dm_id .
 							' LIMIT 1';
 						$dm_expr_res = $dbr->query($sql);
@@ -90,12 +95,12 @@
 					$dbr->query($sql);
 
 					/*	Get syntrans expressions for names of language and IDs for the languages the names are in. */
-					$sql = 'SELECT spelling,language_id FROM uw_expression_ns' .
-						' JOIN uw_syntrans' .
-						' ON uw_expression_ns.expression_id = uw_syntrans.expression_id' .
+					$sql = "SELECT spelling,language_id FROM {$dc}_expression_ns" .
+						" JOIN {$dc}_syntrans" .
+						" ON {$dc}_expression_ns.expression_id = {$dc}_syntrans.expression_id" .
 						' WHERE defined_meaning_id = ' . $dm_id .
-						' AND ' . getLatestTransactionRestriction('uw_expression_ns') .
-						' AND ' . getLatestTransactionRestriction('uw_syntrans') .
+						' AND ' . getLatestTransactionRestriction("{$dc}_expression_ns") .
+						' AND ' . getLatestTransactionRestriction("{$dc}_syntrans") .
 						' GROUP BY language_id ORDER BY NULL';
 					$syntrans_res = $dbr->query($sql);
 					while ($syntrans_row = $dbr->fetchRow($syntrans_res)) {

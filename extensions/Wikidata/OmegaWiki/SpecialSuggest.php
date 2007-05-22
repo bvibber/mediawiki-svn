@@ -13,7 +13,7 @@ function wfSpecialSuggest() {
 		
 		function execute( $par ) {
 			global
-				$wgOut,	$IP;
+				$wgOut,	$IP, $wdDataSetContext;
 				
 			$wgOut->disable();
 			
@@ -25,6 +25,8 @@ function wfSpecialSuggest() {
 			require_once("WikiDataAPI.php");
 			require_once("Transaction.php");
 			require_once("OmegaWikiEditors.php");
+			require_once("Wikidata.php");
+			$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 			echo getSuggestions();
 		}
 	}
@@ -35,10 +37,12 @@ function wfSpecialSuggest() {
 
 function getSuggestions() {
 
-	global
-		$idAttribute;
+	global $idAttribute;
 	global $wgUser;
-
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+	//wfDebug("dc is <$dc>\n"); //XXX Ok to remove after may 2007
+	
 	$search = ltrim($_GET['search-text']);
 	$prefix = $_GET['prefix'];
 	$query = $_GET['query'];
@@ -77,12 +81,12 @@ function getSuggestions() {
 			break;
 		case 'defined-meaning':
 			$sql = 
-				"SELECT uw_syntrans.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS spelling, uw_expression_ns.language_id AS language_id ".
-				" FROM uw_expression_ns, uw_syntrans ".
-	            " WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id " .
-	            " AND uw_syntrans.identical_meaning=1 " .
-	            " AND " . getLatestTransactionRestriction('uw_syntrans').
-	            " AND " . getLatestTransactionRestriction('uw_expression_ns');
+				"SELECT {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS spelling, {$dc}_expression_ns.language_id AS language_id ".
+				" FROM {$dc}_expression_ns, {$dc}_syntrans ".
+	            " WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id " .
+	            " AND {$dc}_syntrans.identical_meaning=1 " .
+	            " AND " . getLatestTransactionRestriction("{$dc}_syntrans").
+	            " AND " . getLatestTransactionRestriction("{$dc}_expression_ns");
 	        break;
 	    case 'class-attributes-level':
 	    	$sql = getSQLForCollectionOfType('LEVL');
@@ -211,24 +215,25 @@ function ConstructSQLWithFallback($actual_query, $fallback_query, $fields){
 # langauge is the 2 letter wikimedia code. use "<ANY>" if you don't want language filtering
 # (any does set limit 1 hmph)
 function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType, $language="<ANY>") {
-	global 
-		$wgDefaultClassMids;
-	global	$wgUser;
+	global $wgDefaultClassMids;
+	global $wgUser;
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 
 	if (count($wgDefaultClassMids) > 0)
-		$defaultClassRestriction = " OR uw_class_attributes.class_mid IN (" . join($wgDefaultClassMids, ", ") . ")";
+		$defaultClassRestriction = " OR {$dc}_class_attributes.class_mid IN (" . join($wgDefaultClassMids, ", ") . ")";
 	else
 		$defaultClassRestriction = "";
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$sql = 
 		'SELECT attribute_mid, spelling' .
-		' FROM bootstrapped_defined_meanings, uw_class_attributes, uw_syntrans, uw_expression_ns' .
+		" FROM bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression_ns" .
 		' WHERE bootstrapped_defined_meanings.name = ' . $dbr->addQuotes($attributesLevel) .
-		' AND bootstrapped_defined_meanings.defined_meaning_id = uw_class_attributes.level_mid' .
-		' AND uw_class_attributes.attribute_type = ' . $dbr->addQuotes($attributesType) .
-		' AND uw_syntrans.defined_meaning_id = uw_class_attributes.attribute_mid' .
-		' AND uw_expression_ns.expression_id = uw_syntrans.expression_id';
+		" AND bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
+		" AND {$dc}_class_attributes.attribute_type = " . $dbr->addQuotes($attributesType) .
+		" AND {$dc}_syntrans.defined_meaning_id = {$dc}_class_attributes.attribute_mid" .
+		" AND {$dc}_expression_ns.expression_id = {$dc}_syntrans.expression_id";
 
 	if ($language!="<ANY>") {
 		$sql .=
@@ -240,14 +245,14 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 	}
 
 	$sql .=	
-		' AND ' . getLatestTransactionRestriction('uw_class_attributes') .
-		' AND ' . getLatestTransactionRestriction('uw_expression_ns') .
-		' AND ' . getLatestTransactionRestriction('uw_syntrans') .
-		' AND (uw_class_attributes.class_mid IN (' .
+		' AND ' . getLatestTransactionRestriction("{$dc}_class_attributes") .
+		' AND ' . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		' AND ' . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" AND ({$dc}_class_attributes.class_mid IN (" .
 				' SELECT class_mid ' .
-				' FROM   uw_class_membership' .
-				' WHERE  uw_class_membership.class_member_mid = ' . $objectId .
-				' AND ' . getLatestTransactionRestriction('uw_class_membership') .
+				" FROM   {$dc}_class_membership" .
+				" WHERE  {$dc}_class_membership.class_member_mid = " . $objectId .
+				' AND ' . getLatestTransactionRestriction("{$dc}_class_membership") .
 				' )'.
 				$defaultClassRestriction .
 		')';
@@ -262,17 +267,19 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 }
 
 function getSQLForCollectionOfType($collectionType, $language="<ANY>") {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$sql="SELECT member_mid, spelling, collection_mid " .
-        " FROM uw_collection_contents, uw_collection_ns, uw_syntrans, uw_expression_ns " .
-        " WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id " .
-        " AND uw_collection_ns.collection_type='$collectionType' " .
-        " AND uw_syntrans.defined_meaning_id=uw_collection_contents.member_mid " .
-        " AND uw_expression_ns.expression_id=uw_syntrans.expression_id " .
-        " AND uw_syntrans.identical_meaning=1 " .
-        " AND " . getLatestTransactionRestriction('uw_syntrans') .
-        " AND " . getLatestTransactionRestriction('uw_expression_ns') .
-        " AND " . getLatestTransactionRestriction('uw_collection_ns') .
-        " AND " . getLatestTransactionRestriction('uw_collection_contents');
+        " FROM {$dc}_collection_contents, {$dc}_collection_ns, {$dc}_syntrans, {$dc}_expression_ns " .
+        " WHERE {$dc}_collection_contents.collection_id={$dc}_collection_ns.collection_id " .
+        " AND {$dc}_collection_ns.collection_type='$collectionType' " .
+        " AND {$dc}_syntrans.defined_meaning_id={$dc}_collection_contents.member_mid " .
+        " AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id " .
+        " AND {$dc}_syntrans.identical_meaning=1 " .
+        " AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+        " AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+        " AND " . getLatestTransactionRestriction("{$dc}_collection_ns") .
+        " AND " . getLatestTransactionRestriction("{$dc}_collection_contents");
 	if ($language!="<ANY>") {
 		$dbr =& wfGetDB(DB_SLAVE);
 		$sql .=
@@ -286,15 +293,17 @@ function getSQLForCollectionOfType($collectionType, $language="<ANY>") {
 }
 
 function getSQLForCollection($language="<ANY>") {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$sql = 
 			"SELECT collection_id, spelling ".
-	    		" FROM uw_expression_ns, uw_collection_ns, uw_syntrans " .
-	    		" WHERE uw_expression_ns.expression_id=uw_syntrans.expression_id" .
-	    		" AND uw_syntrans.defined_meaning_id=uw_collection_ns.collection_mid " .
-	    		" AND uw_syntrans.identical_meaning=1" .
-	    		" AND " . getLatestTransactionRestriction('uw_syntrans') .
-	    		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
-	    		" AND " . getLatestTransactionRestriction('uw_collection_ns');
+	    		" FROM {$dc}_expression_ns, {$dc}_collection_ns, {$dc}_syntrans " .
+	    		" WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
+	    		" AND {$dc}_syntrans.defined_meaning_id={$dc}_collection_ns.collection_mid " .
+	    		" AND {$dc}_syntrans.identical_meaning=1" .
+	    		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+	    		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+	    		" AND " . getLatestTransactionRestriction("{$dc}_collection_ns");
 	
 	if ($language!="<ANY>") {
 		$dbr =& wfGetDB(DB_SLAVE);
