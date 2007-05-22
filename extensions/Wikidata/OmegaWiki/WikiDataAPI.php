@@ -418,9 +418,11 @@ function updateSynonymOrTranslation($definedMeaningId, $expressionId, $identical
 }
 
 function updateSynonymOrTranslationWithId($syntransId, $identicalMeaning) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT defined_meaning_id, expression_id" .
-								" FROM uw_syntrans" .
+								" FROM {$dc}_syntrans" .
 								" WHERE syntrans_sid=$syntransId AND remove_transaction_id IS NULL");
 				
 	if ($syntrans = $dbr->fetchObject($queryResult)) 
