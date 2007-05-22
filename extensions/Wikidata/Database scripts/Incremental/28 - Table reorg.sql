@@ -2,6 +2,9 @@
 RENAME TABLE translated_content to uw_translated_content;
 RENAME TABLE transactions to uw_transactions;
 
+-- Drop table so that the next create doesn't crash
+DROP TABLE `uw_text`;
+
 -- We used to share this with MediaWiki, but it makes more sense to
 -- have our own within each data set.
 CREATE TABLE `uw_text` (
