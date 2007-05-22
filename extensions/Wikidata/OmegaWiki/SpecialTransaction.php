@@ -389,14 +389,14 @@ function initializeAttributes() {
 
 function getTransactionRecordSet($fromTransactionId, $transactionCount, $userName) {
 	global
-		$transactionAttribute, $transactionIdAttribute, $transactionsTable, $updatesInTransactionAttribute;
-		
+		$transactionAttribute, $transactionIdAttribute, $transactionsTable, $updatesInTransactionAttribute, $wdDataSets;
+	$dc=$wdDataSets;
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
 
 	$restrictions = array("transaction_id <= $fromTransactionId");
 	
 	if ($userName != "")
-		$restrictions[] = "EXISTS (SELECT user_name FROM user WHERE user.user_id=transactions.user_id AND user.user_name='" . $userName . "')"; 
+		$restrictions[] = "EXISTS (SELECT user_name FROM user WHERE user.user_id={$dc}_transactions.user_id AND user.user_name='" . $userName . "')"; 
 
 	$recordSet = queryRecordSet(
 		$queryTransactionInformation,
@@ -495,24 +495,26 @@ function getUpdatesInTransactionRecord($transactionId) {
 function getTranslatedContentHistory($translatedContentId, $languageId, $isLatest) {
 	global
 		$translatedContentHistoryStructure, $translatedContentHistoryKeyStructure,
-		$textAttribute, $addTransactionIdAttribute, $recordLifeSpanAttribute;
-		
+		$textAttribute, $addTransactionIdAttribute, $recordLifeSpanAttribute,
+		$wdDataSetContext;
+
+	$dc=$wdDataSetContext;
 	$recordSet = new ArrayRecordSet($translatedContentHistoryStructure, $translatedContentHistoryKeyStructure);
 	
 	if ($isLatest) {
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
-			"SELECT old_text, add_transaction_id, remove_transaction_id " .
-			" FROM translated_content, text" .
-			" WHERE translated_content.translated_content_id=$translatedContentId" .
-			" AND translated_content.language_id=$languageId " .
-			" AND translated_content.text_id=text.old_id " .
+			"SELECT text_text, add_transaction_id, remove_transaction_id " .
+			" FROM {$dc}_translated_content, {$dc}_text" .
+			" WHERE {$dc}_translated_content.translated_content_id=$translatedContentId" .
+			" AND {$dc}_translated_content.language_id=$languageId " .
+			" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 			" ORDER BY add_transaction_id DESC"
 		);
 		
 		while ($row = $dbr->fetchObject($queryResult)) {
 			$record = new ArrayRecord($translatedContentHistoryStructure);
-			$record->setAttributeValue($textAttribute, $row->old_text);
+			$record->setAttributeValue($textAttribute, $row->text_text);
 			$record->setAttributeValue($addTransactionIdAttribute, (int) $row->add_transaction_id);
 			$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple((int) $row->add_transaction_id, (int) $row->remove_transaction_id));
 			
@@ -538,16 +540,17 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 	global
 		$languageAttribute, $textAttribute, $definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, $updatedDefinitionStructure, $translatedContentIdAttribute,
-		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
+		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure, $wdDataSetContext;
+	$dc=$wdDataSetContext;
 		
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT defined_meaning_id, translated_content_id, language_id, old_text, " . 
+		"SELECT defined_meaning_id, translated_content_id, language_id, text_text, " . 
 			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
 			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
-		" FROM uw_defined_meaning, translated_content, text " .
+		" FROM uw_defined_meaning, {$dc}_translated_content, text " .
 		" WHERE uw_defined_meaning.meaning_text_tcid=translated_content.translated_content_id ".
-		" AND translated_content.text_id=text.old_id " .
+		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
 		" AND " . getAtTransactionRestriction('uw_defined_meaning', $transactionId)
 	);
@@ -560,7 +563,7 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->defined_meaning_id));
 		$record->setAttributeValue($translatedContentIdAttribute, $row->translated_content_id);
 		$record->setAttributeValue($languageAttribute, $row->language_id);
-		$record->setAttributeValue($textAttribute, $row->old_text);
+		$record->setAttributeValue($textAttribute, $row->text_text);
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
 		$record->setAttributeValue($rollBackTranslatedContentAttribute, simpleRecord($rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest))));
@@ -609,16 +612,16 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 	global
 		$languageAttribute, $textAttribute, $definedMeaningIdAttribute, $sourceAttribute,
 		$definedMeaningReferenceAttribute, $updatedAlternativeDefinitionTextStructure, $translatedContentIdAttribute,
-		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute, $operationAttribute, $isLatestAttribute;
-		
+		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute, $operationAttribute, $isLatestAttribute, $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT meaning_mid, translated_content_id, source_id, language_id, old_text, " . 
+		"SELECT meaning_mid, translated_content_id, source_id, language_id, text_text, " . 
 			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
 			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
-		" FROM uw_alt_meaningtexts, translated_content, text " .
+		" FROM uw_alt_meaningtexts, {$dc}_translated_content, text " .
 		" WHERE uw_alt_meaningtexts.meaning_text_tcid=translated_content.translated_content_id ".
-		" AND translated_content.text_id=text.old_id " .
+		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
 		" AND " . getAtTransactionRestriction('uw_alt_meaningtexts', $transactionId)
 	);
@@ -632,7 +635,7 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 		$record->setAttributeValue($translatedContentIdAttribute, $row->translated_content_id);
 		$record->setAttributeValue($sourceAttribute, getDefinedMeaningReferenceRecord($row->source_id));
 		$record->setAttributeValue($languageAttribute, $row->language_id);
-		$record->setAttributeValue($textAttribute, $row->old_text);
+		$record->setAttributeValue($textAttribute, $row->text_text);
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
 		$record->setAttributeValue($rollBackTranslatedContentAttribute, simpleRecord($rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest))));
@@ -939,16 +942,16 @@ function getUpdatedTranslatedTextRecordSet($transactionId) {
 	global
 		$languageAttribute, $textAttribute, $objectIdAttribute, $valueIdAttribute, $attributeAttribute,
 		$updatedTranslatedTextStructure, $translatedContentIdAttribute,
-		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
-		
+		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure, $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT value_id, object_id, attribute_mid, translated_content_id, language_id, old_text, " . 
+		"SELECT value_id, object_id, attribute_mid, translated_content_id, language_id, text_text, " . 
 			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
 			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
-		" FROM uw_translated_content_attribute_values, translated_content, text " .
+		" FROM uw_translated_content_attribute_values, {$dc}_translated_content, text " .
 		" WHERE uw_translated_content_attribute_values.value_tcid=translated_content.translated_content_id ".
-		" AND translated_content.text_id=text.old_id " .
+		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
 		" AND " . getAtTransactionRestriction('uw_translated_content_attribute_values', $transactionId)
 	);
@@ -962,7 +965,7 @@ function getUpdatedTranslatedTextRecordSet($transactionId) {
 		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
 		$record->setAttributeValue($translatedContentIdAttribute, $row->translated_content_id);
 		$record->setAttributeValue($languageAttribute, $row->language_id);
-		$record->setAttributeValue($textAttribute, $row->old_text);
+		$record->setAttributeValue($textAttribute, $row->text_text);
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
 		$record->setAttributeValue($rollBackTranslatedContentAttribute, simpleRecord($rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest))));
@@ -1422,17 +1425,19 @@ function rollBackTranslatedContent($idStack, $rollBackAction, $translatedContent
 }
 
 function getTranslatedContentFromHistory($translatedContentId, $languageId, $addTransactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT old_text " .
-		" FROM translated_content, text " .
-		" WHERE translated_content.translated_content_id=$translatedContentId " .
-		" AND translated_content.text_id=text.old_id " .
-		" AND translated_content.add_transaction_id=$addTransactionId");
+		"SELECT text_text " .
+		" FROM {$dc}_translated_content, text " .
+		" WHERE {$dc}_translated_content.translated_content_id=$translatedContentId " .
+		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
+		" AND {$dc}_translated_content.add_transaction_id=$addTransactionId");
 		
 	$row = $dbr->fetchObject($queryResult);
 	
-	return $row->old_text;
+	return $row->text_text;
 }
 
 function rollBackTranslatedContentToVersion($translatedContentId, $languageId, $addTransactionId) {
