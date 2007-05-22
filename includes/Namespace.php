@@ -684,7 +684,7 @@ class Namespace {
 
 	static function getIndexForName($text) {
 		$nsstore = wfGetNamespaceStore();
-		if(!is_null($id=$nsstore->getIndexForName)) {
+		if(!is_null($id=$nsstore->getIndexForName($text))) {
 			return $id;
 		} else {
 			# If a namespace name gets lost, all its appearances will be replaced
