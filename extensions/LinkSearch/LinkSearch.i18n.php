@@ -67,7 +67,10 @@ $wgLinkSearchMessages['it'] = array(
 );
 $wgLinkSearchMessages['ja'] = array(
 	'linksearch'       => '外部リンクの検索',
-	'linksearch-text'  => '"*.wikipedia.org" のようにワイルドカードを使うことができます。',
+	'linksearch-pat'   => '検索パターン:',
+	'linksearch-ns'    => '名前空間:',
+	'linksearch-ok'    => '検索',
+	'linksearch-text'  => '"*.wikipedia.org" のようにワイルドカードを使うことができます。<br />対応プロトコル: <tt>$1</tt>',
 	'linksearch-line'  => '$1 が $2 からリンクされています',
 	'linksearch-error' => 'ワイルドカードはホスト名の先頭でのみ使用できます。',
 );
