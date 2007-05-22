@@ -33,16 +33,17 @@ class DefaultWikidataApplication implements WikidataApplication {
 		
 		$wgMessageCache->addMessages(
 			array(
-				'wz_uilang'=>'Your user interface language: $1',
-				'wz_uilang_set'=>'Set your preferences',
-				'wz_save' => 'Save',
-				'wz_history' => 'History'
+				'ow_uilang'=>'Your user interface language: $1',
+				'ow_uilang_set'=>'Set your preferences',
+				'ow_save' => 'Save',
+				'ow_history' => 'History'
 			)
 		);
 		
 		global
 			$wgAvailableAuthorities, $wgFilterLanguageId, $wgShowLanguageSelector, 
-			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId;
+			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId,
+			$wdDataSetContext;
 		
 		if (isset($wgAvailableAuthorities))
 			$this->availableAuthorities = $wgAvailableAuthorities;
@@ -58,6 +59,9 @@ class DefaultWikidataApplication implements WikidataApplication {
 			
 		if (isset($wgPossiblySynonymousRelationTypeId))
 			$this->possiblySynonymousRelationTypeId = $wgPossiblySynonymousRelationTypeId; 
+
+		$wdDataSetContext=$this->getDataSetContext();
+
 	}
 
 	function getLanguageSelector() {
@@ -67,7 +71,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 		$userlang=$wgUser->getOption('language');
 		$skin = $wgUser->getSkin();
 			
-		return wfMsg('wz_uilang',"<b>$userlang</b>").  " &mdash; " . $skin->makeLink("Special:Preferences", wfMsg('wz_uilang_set'));
+		return wfMsg('ow_uilang',"<b>$userlang</b>").  " &mdash; " . $skin->makeLink("Special:Preferences", wfMsg('ow_uilang_set'));
 	}
 
 	protected function outputAuthoritativeContributionPanel() {
@@ -189,7 +193,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 		if (!$this->showClassicPageTitles) 
 			$title = $this->getTitle();
 
-		$wgOut->setPageTitle(wfMsg('wz_history',$title));
+		$wgOut->setPageTitle(wfMsg('ow_history',$title));
 
 		
 		if (isset($_GET['show'])) {
@@ -251,7 +255,7 @@ class DefaultWikidataApplication implements WikidataApplication {
 					'<th>' . wfMsg('summary') . ': </th>' .
 					'<td class="option-field">' . getTextBox("summary") .'</td>' .
 				'</tr></table>' .
-				getSubmitButton("save", wfMsg('wz_save')).
+				getSubmitButton("save", wfMsg('ow_save')).
 			'</div>'
 		);
 		
@@ -265,6 +269,19 @@ class DefaultWikidataApplication implements WikidataApplication {
 			$wgTitle;
 			
 		return $wgTitle->getText();
+	}
+
+	/**
+	 * The data set context defines which set of Wikidata
+	 * tables should be used for all queries except
+	 * for those relating to MediaWiki tables. It is a
+	 * prefix defined in the 'wikidata_sets' tables
+	 * and associated there with a string or a DMID.
+	 *
+	 * @return prefix (without underscore)
+	**/
+	public function getDataSetContext() {
+		return 'uw';
 	}
 }
 

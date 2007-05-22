@@ -20,7 +20,7 @@ require_once('WikiDataGlobals.php');
 class OmegaWiki extends DefaultWikidataApplication {
 	public function view() {
 		global
-			$wgOut, $wgTitle;
+			$wgOut, $wgTitle, $wdDataSetContext;
 
 		parent::view();
 
@@ -45,9 +45,10 @@ class OmegaWiki extends DefaultWikidataApplication {
 
 	public function history() {
 		global
-			$wgOut, $wgTitle;
+			$wgOut, $wgTitle, $wdDataSetContext;
 
 		parent::history();
+
 
 		$spelling = $wgTitle->getText();
 		

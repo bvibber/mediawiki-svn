@@ -9,51 +9,64 @@ require_once('WikiDataTables.php');
 require_once('RecordSetQueries.php');
 
 function getSynonymSQLForLanguage($languageId, &$definedMeaningIds) {
+
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+
 	return 
-		"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS label " .
-		" FROM uw_defined_meaning, uw_syntrans, uw_expression_ns " .
-		" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
-		" AND " . getLatestTransactionRestriction('uw_syntrans') .
-		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
-		" AND " . getLatestTransactionRestriction('uw_defined_meaning') .
-		" AND uw_expression_ns.language_id=" . $languageId .
-		" AND uw_expression_ns.expression_id=uw_syntrans.expression_id " .
-		" AND uw_defined_meaning.defined_meaning_id=uw_syntrans.defined_meaning_id " . 
-		" AND uw_syntrans.identical_meaning=1 " .
-		" GROUP BY uw_defined_meaning.defined_meaning_id";
+		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS label " .
+		" FROM {$dc}_defined_meaning, {$dc}_syntrans, {$dc}_expression_ns " .
+		" WHERE {$dc}_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
+		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning") .
+		" AND {$dc}_expression_ns.language_id=" . $languageId .
+		" AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id " .
+		" AND {$dc}_defined_meaning.defined_meaning_id={$dc}_syntrans.defined_meaning_id " . 
+		" AND {$dc}_syntrans.identical_meaning=1 " .
+		" GROUP BY {$dc}_defined_meaning.defined_meaning_id";
 }
 
 function getSynonymSQLForAnyLanguage(&$definedMeaningIds) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+
 	return 
-		"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS label " .
-		" FROM uw_defined_meaning, uw_syntrans, uw_expression_ns " .
-		" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
-		" AND " . getLatestTransactionRestriction('uw_syntrans') .
-		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
-		" AND " . getLatestTransactionRestriction('uw_defined_meaning') .
-		" AND uw_expression_ns.expression_id=uw_syntrans.expression_id " .
-		" AND uw_defined_meaning.defined_meaning_id=uw_syntrans.defined_meaning_id " . 
-		" AND uw_syntrans.identical_meaning=1 " .
-		" GROUP BY uw_defined_meaning.defined_meaning_id";
+		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS label " .
+		" FROM {$dc}_defined_meaning, {$dc}_syntrans, {$dc}_expression_ns " .
+		" WHERE {$dc}_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
+		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning") .
+		" AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id " .
+		" AND {$dc}_defined_meaning.defined_meaning_id={$dc}_syntrans.defined_meaning_id " . 
+		" AND {$dc}_syntrans.identical_meaning=1 " .
+		" GROUP BY {$dc}_defined_meaning.defined_meaning_id";
 }
 
 function getDefiningSQLForLanguage($languageId, &$definedMeaningIds) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+
 	return 
-		"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling AS label " .
-		" FROM uw_defined_meaning, uw_syntrans, uw_expression_ns " .
-		" WHERE uw_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
-		" AND " . getLatestTransactionRestriction('uw_syntrans') .
-		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
-		" AND " . getLatestTransactionRestriction('uw_defined_meaning') .
-		" AND uw_expression_ns.expression_id=uw_syntrans.expression_id " .
-		" AND uw_defined_meaning.defined_meaning_id=uw_syntrans.defined_meaning_id " . 
-		" AND uw_syntrans.identical_meaning=1 " .
-		" AND uw_defined_meaning.expression_id=uw_expression_ns.expression_id " .
-		" AND uw_expression_ns.language_id=" . $languageId .
-		" GROUP BY uw_defined_meaning.defined_meaning_id";
+		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS label " .
+		" FROM {$dc}_defined_meaning, {$dc}_syntrans, {$dc}_expression_ns " .
+		" WHERE {$dc}_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
+		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning") .
+		" AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id " .
+		" AND {$dc}_defined_meaning.defined_meaning_id={$dc}_syntrans.defined_meaning_id " . 
+		" AND {$dc}_syntrans.identical_meaning=1 " .
+		" AND {$dc}_defined_meaning.expression_id={$dc}_expression_ns.expression_id " .
+		" AND {$dc}_expression_ns.language_id=" . $languageId .
+		" GROUP BY {$dc}_defined_meaning.defined_meaning_id";
 }
 
 function fetchDefinedMeaningReferenceRecords($sql, &$definedMeaningIds, &$definedMeaningReferenceRecords) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+
 	global
 		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute,
 		$definedMeaningDefiningExpressionAttribute;
@@ -80,16 +93,18 @@ function fetchDefinedMeaningReferenceRecords($sql, &$definedMeaningIds, &$define
 function fetchDefinedMeaningDefiningExpressions(&$definedMeaningIds, &$definedMeaningReferenceRecords) {
 	global
 		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute,
-		$definedMeaningDefiningExpressionAttribute;
+		$definedMeaningDefiningExpressionAttribute, $wdDataSetContext;
+
+	$dc=$wdDataSetContext;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT uw_defined_meaning.defined_meaning_id AS defined_meaning_id, uw_expression_ns.spelling" .
-		" FROM uw_defined_meaning, uw_expression_ns " .
-		" WHERE uw_defined_meaning.expression_id=uw_expression_ns.expression_id " .
-		" AND " . getLatestTransactionRestriction('uw_defined_meaning') .
-		" AND " . getLatestTransactionRestriction('uw_expression_ns') . 
-		" AND uw_defined_meaning.defined_meaning_id IN (". implode(", ", $definedMeaningIds) .")"
+		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling" .
+		" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
+		" WHERE {$dc}_defined_meaning.expression_id={$dc}_expression_ns.expression_id " .
+		" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") . 
+		" AND {$dc}_defined_meaning.defined_meaning_id IN (". implode(", ", $definedMeaningIds) .")"
 	);
 
 	while ($row = $dbr->fetchObject($queryResult)) {
@@ -205,15 +220,17 @@ function expandTranslatedContentsInRecordSet($recordSet, $idAttribute, $translat
 
 function getExpressionReferenceRecords($expressionIds) {
 	global
-		$expressionStructure, $languageAttribute, $spellingAttribute;
+		$expressionStructure, $languageAttribute, $spellingAttribute, $wdDataSetContext;
 	
+	$dc=$wdDataSetContext;
+
 	if (count($expressionIds) > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT expression_id, language_id, spelling" .
-			" FROM uw_expression_ns" .
+			" FROM {$dc}_expression_ns" .
 			" WHERE expression_id IN (". implode(', ', $expressionIds) .")" .
-			" AND ". getLatestTransactionRestriction('uw_expression_ns')
+			" AND ". getLatestTransactionRestriction("{$dc}_expression_ns")
 		);
 		
 		$result = array();
@@ -248,15 +265,17 @@ function expandExpressionReferencesInRecordSet($recordSet, $expressionAttributes
 
 function getExpressionSpellings($expressionIds) {
 	global
-		$expressionAttribute;
+		$expressionAttribute, $wdDataSetContext;
 	
+	$dc=$wdDataSetContext;
+
 	if (count($expressionIds) > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT expression_id, spelling" .
-			" FROM uw_expression_ns" .
+			" FROM {$dc}_expression_ns" .
 			" WHERE expression_id IN (". implode(', ', $expressionIds) .")" .
-			" AND ". getLatestTransactionRestriction('uw_expression_ns')
+			" AND ". getLatestTransactionRestriction("{$dc}_expression_ns")
 		);
 		
 		$result = array();
@@ -320,7 +339,10 @@ function expandTextReferencesInRecordSet($recordSet, $textAttributes) {
 
 function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 	global
-		$expressionMeaningStructure, $definedMeaningIdAttribute;
+		$expressionMeaningStructure, $definedMeaningIdAttribute, $wdDataSetContext;
+
+	$dc=$wdDataSetContext;
+
 
 	if ($exactMeaning)
 		$identicalMeaning = 1;
@@ -330,9 +352,9 @@ function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLan
 	$recordSet = new ArrayRecordSet($expressionMeaningStructure, new Structure($definedMeaningIdAttribute));
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT defined_meaning_id FROM uw_syntrans" .
+	$queryResult = $dbr->query("SELECT defined_meaning_id FROM {$dc}_syntrans" .
 								" WHERE expression_id=$expressionId AND identical_meaning=" . $identicalMeaning .
-								" AND ". getLatestTransactionRestriction('uw_syntrans'));
+								" AND ". getLatestTransactionRestriction("{$dc}_syntrans"));
 
 	while($definedMeaning = $dbr->fetchObject($queryResult)) {
 		$definedMeaningId = $definedMeaning->defined_meaning_id;
@@ -361,7 +383,9 @@ function getExpressionMeaningsRecord($expressionId, $filterLanguageId, $possibly
 
 function getExpressionsRecordSet($spelling, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 	global
-		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute;
+		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute, $wdDataSetContext;
+
+	$dc=$wdDataSetContext;
 
 	if ($filterLanguageId != 0)
 		$languageRestriction = " AND language_id=$filterLanguageId";
@@ -371,15 +395,15 @@ function getExpressionsRecordSet($spelling, $filterLanguageId, $possiblySynonymo
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT expression_id, language_id " .
-		" FROM uw_expression_ns" .
+		" FROM {$dc}_expression_ns" .
 		" WHERE spelling=BINARY " . $dbr->addQuotes($spelling) .
-		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
 		$languageRestriction .
 		" AND EXISTS (" .
 			"SELECT expression_id " .
-			" FROM uw_syntrans " .
-			" WHERE uw_syntrans.expression_id=uw_expression_ns.expression_id" .
-			" AND ". getLatestTransactionRestriction('uw_syntrans') 
+			" FROM {$dc}_syntrans " .
+			" WHERE {$dc}_syntrans.expression_id={$dc}_expression_ns.expression_id" .
+			" AND ". getLatestTransactionRestriction("{$dc}_syntrans") 
 		.")"
 	);
 	
@@ -401,18 +425,21 @@ function getExpressionsRecordSet($spelling, $filterLanguageId, $possiblySynonymo
 }
 
 function getExpressionIdThatHasSynonyms($spelling, $languageId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT expression_id, language_id " .
-		" FROM uw_expression_ns" .
+		" FROM {$dc}_expression_ns" .
 		" WHERE spelling=BINARY " . $dbr->addQuotes($spelling) .
-		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
 		" AND language_id=$languageId" .
 		" AND EXISTS (" .
 			"SELECT expression_id " .
-			" FROM uw_syntrans " .
-			" WHERE uw_syntrans.expression_id=uw_expression_ns.expression_id" .
-			" AND ". getLatestTransactionRestriction('uw_syntrans') 
+			" FROM {$dc}_syntrans " .
+			" WHERE {$dc}_syntrans.expression_id={$dc}_expression_ns.expression_id" .
+			" AND ". getLatestTransactionRestriction("{$dc}_syntrans") 
 		.")"
 	);
 	
@@ -603,15 +630,17 @@ function getFilteredTranslatedContentRecordSet($translatedContentId, $filterLang
 
 function getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
 	global
-		$syntransTable, $syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute;
+		$syntransTable, $syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute,
+		$wdDataSetContext;
 
+	$dc=$wdDataSetContext;
 	$restrictions = array("defined_meaning_id=$definedMeaningId");
 	
 	if ($filterLanguageId != 0) 
 		$restrictions[] =
 			"expression_id IN (" .
 				"SELECT expressions.expression_id" .
-				" FROM uw_expression_ns AS expressions" .
+				" FROM {$dc}_expression_ns AS expressions" .
 				" WHERE expressions.expression_id=expression_id" .
 				" AND language_id=$filterLanguageId" .
 				" AND " . getLatestTransactionRestriction('expressions') .
