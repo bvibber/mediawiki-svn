@@ -454,9 +454,11 @@ function updateTranslatedText($setId, $languageId, $text) {
 }
  
 function createText($text) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr = &wfGetDB(DB_MASTER);
 	$text = $dbr->addQuotes($text);
-	$sql = "insert into text(old_text) values($text)";	
+	$sql = "insert into {$dc}_text(text_text) values($text)";	
 	$dbr->query($sql);
 	
 	return $dbr->insertId();
@@ -935,15 +937,15 @@ function getDefinedMeaningDefinitionForLanguage($definedMeaningId, $languageId) 
 	global $wdDataSetContext;
 	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT old_text FROM {$dc}_defined_meaning as dm, {$dc}_translated_content as tc, text as t ".
+	$queryResult = $dbr->query("SELECT text_text FROM {$dc}_defined_meaning as dm, {$dc}_translated_content as tc, {$dc}_text as t ".
 								"WHERE dm.defined_meaning_id=$definedMeaningId " .
 								" AND " . getLatestTransactionRestriction('dm') .
 								" AND " . getLatestTransactionRestriction('tc') .
 								" AND  dm.meaning_text_tcid=tc.translated_content_id AND tc.language_id=$languageId " .
-								" AND  t.old_id=tc.text_id");	
+								" AND  t.text_id=tc.text_id");	
 	
 	if ($definition = $dbr->fetchObject($queryResult)) 
-		return $definition->old_text;
+		return $definition->text_text;
 	else	
 		return "";
 }
@@ -952,15 +954,15 @@ function getDefinedMeaningDefinitionForAnyLanguage($definedMeaningId) {
 	global $wdDataSetContext;
 	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT old_text FROM {$dc}_defined_meaning as dm, {$dc}_translated_content as tc, text as t ".
+	$queryResult = $dbr->query("SELECT text_text FROM {$dc}_defined_meaning as dm, {$dc}_translated_content as tc, {$dc}_text as t ".
 								"WHERE dm.defined_meaning_id=$definedMeaningId " .
 								" AND " . getLatestTransactionRestriction('dm') .
 								" AND " . getLatestTransactionRestriction('tc') .
 								" AND dm.meaning_text_tcid=tc.translated_content_id " .
-								" AND t.old_id=tc.text_id LIMIT 1");	
+								" AND t.text_id=tc.text_id LIMIT 1");	
 	
 	if ($definition = $dbr->fetchObject($queryResult)) 
-		return $definition->old_text;
+		return $definition->text_text;
 	else	
 		return "";
 }

@@ -2,7 +2,8 @@
 
 function getOwLanguageNames() {
 	global $wgUser;
-	$wgOwLanguageNames = getLangNames($wgUser->getOption('language'));
+	$owLanguageNames = getLangNames($wgUser->getOption('language'));
+	return $owLanguageNames;
 }
 
 /* Return an array containing all language names translated into the language

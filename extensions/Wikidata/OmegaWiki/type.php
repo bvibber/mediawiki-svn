@@ -8,8 +8,8 @@ require_once('Transaction.php');
 require_once('WikiDataAPI.php');
 require_once('Wikidata.php');
 
+global $wdDataSetContext;
 $wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
-#$wdDataSetContext='uw';
 function booleanAsText($value) {
 	if ($value)
 		return "Yes";
@@ -58,7 +58,7 @@ function definedMeaningReferenceAsLink($definedMeaningId, $definingExpression, $
 function languageIdAsText($languageId) {
 	global $wgUser;
 	$owLanguageNames=getOwLanguageNames();
-	$langaugeName=$owLanguageNames[$languageId];
+	$languageName=$owLanguageNames[$languageId];
 	return $languageName;
 }
 
@@ -177,10 +177,12 @@ function definedMeaningExpression($definedMeaningId) {
 }
 
 function getTextValue($textId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT old_text from text where old_id=$textId");
+	$queryResult = $dbr->query("SELECT text_text from {$dc}_text where text_id=$textId");
 
-	return $dbr->fetchObject($queryResult)->old_text; 
+	return $dbr->fetchObject($queryResult)->text_text; 
 }
 
 function definingExpressionAsLink($definedMeaningId) {

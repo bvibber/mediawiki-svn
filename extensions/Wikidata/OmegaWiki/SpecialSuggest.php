@@ -4,19 +4,18 @@ if (!defined('MEDIAWIKI')) die();
 
 
 $wgExtensionFunctions[] = 'wfSpecialSuggest';
-
 function wfSpecialSuggest() {
 	class SpecialSuggest extends SpecialPage {
 		function SpecialSuggest() {
 			SpecialPage::SpecialPage('Suggest','UnlistedSpecialPage');
+	
 		}
 		
 		function execute( $par ) {
 			global
 				$wgOut,	$IP, $wdDataSetContext;
-			wfDebug("PREFIX -- $wdDataSetContext\n");				
-			$wgOut->disable();
 
+			$wgOut->disable();
 			
 			require_once("$IP/includes/Setup.php");
 			require_once("Attribute.php");
@@ -42,7 +41,6 @@ function getSuggestions() {
 	global $wgUser;
 	global $wdDataSetContext;
 	$dc=$wdDataSetContext;
-	//wfDebug("dc is <$dc>\n"); //XXX Ok to remove after may 2007
 	
 	$search = ltrim($_GET['search-text']);
 	$prefix = $_GET['prefix'];
