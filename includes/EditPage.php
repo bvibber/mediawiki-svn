@@ -291,10 +291,10 @@ class EditPage {
 		wfDebug( "$fname: enter\n" );
 
 		# We may want to edit this page using a handler class
-		$ns=$wgTitle->getNamespace();
-                $handlerClass=Namespace::get($ns)->getHandlerClass();
+		$ns=Namespace::get($wgTitle->getNamespace());
+                $handlerClass=$ns->getHandlerClass();
                 if(!empty($handlerClass)) {
-			$handlerPath=Namespace::getHandlerPathForNamespaceId($ns);
+			$handlerPath=$ns->getHandlerPath();
 			$hfilename=$handlerPath.$handlerClass.".php"; 
 			if(file_exists($hfilename)) {
                         	require_once($hfilename);

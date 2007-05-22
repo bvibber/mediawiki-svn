@@ -610,10 +610,12 @@ class Article {
 		wfProfileIn( __METHOD__ );
 
 		# We may want to view this page using a handler class
-		$ns=$this->mTitle->getNamespace();
-                $handlerClass=Namespace::get($ns)->getHandlerClass();
+		$nsid=$this->mTitle->getNamespace();
+		$ns=Namespace::get($nsid);
+		
+                $handlerClass=$ns->getHandlerClass();
                 if(!empty($handlerClass)) {
-			$handlerPath=Namespace::getHandlerPathForNamespaceId($ns);
+			$handlerPath=$ns->getHandlerPath();
 			$hfilename=$handlerPath.$handlerClass.".php"; 
 			if(file_exists($hfilename)) {
                         	require_once($hfilename);
@@ -621,7 +623,7 @@ class Article {
         	                $handlerInstance->view();
 				return;
 			} else {
-				$wgOut->showErrorPage('namespace_handler_not_found','namespace_handler_not_found_error',$hfilename,$wgContLang->getFormattedNsText($ns));
+				$wgOut->showErrorPage('namespace_handler_not_found','namespace_handler_not_found_error',$hfilename,$wgContLang->getFormattedNsText($nsid));
 			}
                 }
 
@@ -647,9 +649,9 @@ class Article {
 		# Discourage indexing of printable versions, but encourage following
 		if( $wgOut->isPrintable() ) {
 			$policy = 'noindex,follow';
-		} elseif( isset( $wgNamespaceRobotPolicies[$ns] ) ) {
+		} elseif( isset( $wgNamespaceRobotPolicies[$nsid] ) ) {
 			# Honour customised robot policies for this namespace
-			$policy = $wgNamespaceRobotPolicies[$ns];
+			$policy = $wgNamespaceRobotPolicies[$nsid];
 		} else {
 			# Default to encourage indexing and following links
 			$policy = 'index,follow';
@@ -791,7 +793,7 @@ class Article {
 			# wrap user css and user js in pre and don't parse
 			# XXX: use $this->mTitle->usCssJsSubpage() when php is fixed/ a workaround is found
 			if (
-				$ns == NS_USER &&
+				$nsid == NS_USER &&
 				preg_match('/\\/[\\w]+\\.(css|js)$/', $this->mTitle->getDBkey())
 			) {
 				$wgOut->addWikiText( wfMsg('clearyourcache'));
@@ -845,7 +847,7 @@ class Article {
 		}
 
 		# check if we're displaying a [[User talk:x.x.x.x]] anonymous talk page
-		if( $ns == NS_USER_TALK &&
+		if( $nsid == NS_USER_TALK &&
 			User::isIP( $this->mTitle->getText() ) ) {
 			$wgOut->addWikiText( wfMsg('anontalkpagetext') );
 		}

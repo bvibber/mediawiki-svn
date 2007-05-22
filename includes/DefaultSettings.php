@@ -1411,6 +1411,10 @@ $wgPasswordSalt = true;
 
 /** Which namespaces should support subpages?
  * See Language.php for a list of namespaces.
+ *
+ * This is only relevant upon initial installation or upgrade;
+ * afterwards, these namespace settings can be changed 
+ * through Special:Namespaces.
  */
 $wgNamespacesWithSubpages = array(
 	NS_TALK           => true,
@@ -1424,6 +1428,11 @@ $wgNamespacesWithSubpages = array(
 	NS_CATEGORY_TALK  => true
 );
 
+/**
+ * This is only relevant upon initial installation or upgrade;
+ * afterwards, these namespace settings can be changed 
+ * through Special:Namespaces.
+*/
 $wgNamespacesToBeSearchedDefault = array(
 	NS_MAIN           => true,
 );
@@ -2019,6 +2028,7 @@ $wgLogTypes = array( '',
 	'move',
 	'import',
 	'patrol',
+	'namespace',
 );
 
 /**
@@ -2037,6 +2047,7 @@ $wgLogNames = array(
 	'move'    => 'movelogpage',
 	'import'  => 'importlogpage',
 	'patrol'  => 'patrol-log-page',
+	'namespace' =>'namespacelogpage',
 );
 
 /**
@@ -2055,6 +2066,7 @@ $wgLogHeaders = array(
 	'move'    => 'movelogpagetext',
 	'import'  => 'importlogpagetext',
 	'patrol'  => 'patrol-log-header',
+	'namespace' => 'namespacelogtext',
 );
 
 /**
@@ -2078,6 +2090,11 @@ $wgLogActions = array(
 	'move/move_redir'   => '1movedto2_redir',
 	'import/upload'     => 'import-logentry-upload',
 	'import/interwiki'  => 'import-logentry-interwiki',
+	'namespace/add'     => 'namespaceaddlog',
+	'namespace/delete'  => 'namespacedeletelog',
+	'namespace/modify'  => 'namespacemodifylog',
+	'namespace/delete'  => 'namespacedeletelog',
+	'namespace/pseudo'  => 'namespacepseudolog',
 );
 
 /**

@@ -670,11 +670,6 @@ class NamespaceStore {
 		return $this->nsarray;
 	}
 
-	function getHandlerForId($id) {
-		return $this->nsarray[$id]->getHandlerClass();
-
-	}
-
 }
 
 

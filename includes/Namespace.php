@@ -579,6 +579,21 @@ class Namespace {
 	function getHandlerClass() {
 		return $this->handlerClass;
 	}
+	
+	/**
+	 * @return directory where the handler class PHP file can be found.
+	*/
+	function getHandlerPath() {
+		global $wgCustomHandlerPath;
+		$handler=$this->getHandlerClass();
+		if(array_key_exists($handler,$wgCustomHandlerPath)) {
+			return $wgCustomHandlerPath[$handler];
+		} else {
+			return $wgCustomHandlerPath['*'];
+		}
+	}
+
+
 	/**
 	 * Returns the index for a given canonical name, or NULL
 	 * The input *must* be converted to lower case first
@@ -685,22 +700,6 @@ class Namespace {
 			}
 		}
 	}
-	
-	static function getHandlerForNamespaceId($id) {
-		$nsstore=wfGetNamespaceStore();
-		return $nsstore->getHandlerForId($id);
-	}
-
-	static function getHandlerPathForNamespaceId($id) {
-		global $wgCustomHandlerPath;
-		$handler=Namespace::getHandlerForNamespaceId($id);
-		if(array_key_exists($handler,$wgCustomHandlerPath)) {
-			return $wgCustomHandlerPath[$handler];
-		} else {
-			return $wgCustomHandlerPath['*'];
-		}
-	}
-
 }
 
 ?>
