@@ -1,4 +1,7 @@
 -- These tables can exist within each dataset.
+CREATE TABLE `uw_script_log` as SELECT * from `script_log` limit 0;
+RENAME TABLE objects to uw_objects;
+RENAME TABLE bootstrapped_defined_meanings to uw_bootstrapped_defined_meanings;
 RENAME TABLE translated_content to uw_translated_content;
 RENAME TABLE transactions to uw_transactions;
 
