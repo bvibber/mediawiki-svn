@@ -1,17 +1,16 @@
 <?php
 /**
  * Provide functions to handle article trackbacks.
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 require_once( './includes/WebStart.php' );
-
-require_once('DatabaseFunctions.php');
+require_once( './includes/DatabaseFunctions.php' );
 
 /**
  *
  */
 function XMLsuccess() {
+	header("Content-Type: application/xml; charset=utf-8");
 	echo "
 <?xml version=\"1.0\" encoding=\"utf-8\"?>
 <response>
@@ -23,6 +22,7 @@ function XMLsuccess() {
 
 function XMLerror($err = "Invalid request.") {
 	header("HTTP/1.0 400 Bad Request");
+	header("Content-Type: application/xml; charset=utf-8");
 	echo "
 <?xml version=\"1.0\" encoding=\"utf-8\"?>
 <response>
@@ -41,7 +41,7 @@ if (   !isset($_POST['url'])
     || !isset($_REQUEST['article']))
 	XMLerror("Required field not specified");
 
-$dbw =& wfGetDB(DB_MASTER);
+$dbw = wfGetDB(DB_MASTER);
 
 $tbtitle = $_POST['title'];
 $tbex = $_POST['excerpt'];

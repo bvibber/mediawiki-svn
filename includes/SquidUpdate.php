@@ -1,17 +1,15 @@
 <?php
 /**
  * See deferred.txt
- * @package MediaWiki
  */
 
 /**
  *
- * @package MediaWiki
  */
 class SquidUpdate {
 	var $urlArr, $mMaxTitles;
 
-	function SquidUpdate( $urlArr = Array(), $maxTitles = false ) {
+	function __construct( $urlArr = Array(), $maxTitles = false ) {
 		global $wgMaxSquidPurgeTitles;
 		if ( $maxTitles === false ) {
 			$this->mMaxTitles = $wgMaxSquidPurgeTitles;
@@ -24,14 +22,12 @@ class SquidUpdate {
 		$this->urlArr = $urlArr;
 	}
 
-	/* static */ function newFromLinksTo( &$title ) {
+	static function newFromLinksTo( &$title ) {
 		$fname = 'SquidUpdate::newFromLinksTo';
 		wfProfileIn( $fname );
 
 		# Get a list of URLs linking to this page
-		$id = $title->getArticleID();
-
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$res = $dbr->select( array( 'links', 'page' ),
 			array( 'page_namespace', 'page_title' ),
 			array(
@@ -53,7 +49,7 @@ class SquidUpdate {
 		return new SquidUpdate( $blurlArr );
 	}
 
-	/* static */ function newFromTitles( &$titles, $urlArr = array() ) {
+	static function newFromTitles( &$titles, $urlArr = array() ) {
 		global $wgMaxSquidPurgeTitles;
 		if ( count( $titles ) > $wgMaxSquidPurgeTitles ) {
 			$titles = array_slice( $titles, 0, $wgMaxSquidPurgeTitles );
@@ -64,7 +60,7 @@ class SquidUpdate {
 		return new SquidUpdate( $urlArr );
 	}
 
-	/* static */ function newSimplePurge( &$title ) {
+	static function newSimplePurge( &$title ) {
 		$urlArr = $title->getSquidURLs();
 		return new SquidUpdate( $urlArr );
 	}
@@ -78,7 +74,7 @@ class SquidUpdate {
 	(example: $urlArr[] = 'http://my.host/something')
 	XXX report broken Squids per mail or log */
 
-	/* static */ function purge( $urlArr ) {
+	static function purge( $urlArr ) {
 		global $wgSquidServers, $wgHTCPMulticastAddress, $wgHTCPPort;
 
 		/*if ( (@$wgSquidServers[0]) == 'echo' ) {
@@ -193,7 +189,7 @@ class SquidUpdate {
 		wfProfileOut( $fname );
 	}
 
-	/* static */ function HTCPPurge( $urlArr ) {
+	static function HTCPPurge( $urlArr ) {
 		global $wgHTCPMulticastAddress, $wgHTCPMulticastTTL, $wgHTCPPort;
 		$fname = 'SquidUpdate::HTCPPurge';
 		wfProfileIn( $fname );
@@ -201,9 +197,11 @@ class SquidUpdate {
 		$htcpOpCLR = 4;                 // HTCP CLR
 
 		// FIXME PHP doesn't support these socket constants (include/linux/in.h)
-		define( "IPPROTO_IP", 0 );
-		define( "IP_MULTICAST_LOOP", 34 );
-		define( "IP_MULTICAST_TTL", 33 );
+		if( !defined( "IPPROTO_IP" ) ) {
+			define( "IPPROTO_IP", 0 );
+			define( "IP_MULTICAST_LOOP", 34 );
+			define( "IP_MULTICAST_TTL", 33 );
+		}
 
 		// pfsockopen doesn't work because we need set_sock_opt
 	        $conn = socket_create( AF_INET, SOCK_DGRAM, SOL_UDP );
@@ -215,6 +213,9 @@ class SquidUpdate {
 					$wgHTCPMulticastTTL );
 
 			foreach ( $urlArr as $url ) {
+				if( !is_string( $url ) ) {
+					wfDebugDieBacktrace( 'Bad purge URL' );
+				}
 				$url = SquidUpdate::expand( $url );
 				
 				// Construct a minimal HTCP request diagram

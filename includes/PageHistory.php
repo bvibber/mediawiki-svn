@@ -3,7 +3,6 @@
  * Page history
  *
  * Split off from Article.php and Skin.php, 2003-12-22
- * @package MediaWiki
  */
 
 /**
@@ -14,9 +13,7 @@
  * Construct it by passing in an Article, and call $h->history() to print the
  * history.
  *
- * @package MediaWiki
  */
-
 class PageHistory {
 	const DIR_PREV = 0;
 	const DIR_NEXT = 1;
@@ -33,7 +30,7 @@ class PageHistory {
 	 * @param Article $article
 	 * @returns nothing
 	 */
-	function PageHistory($article) {
+	function __construct($article) {
 		global $wgUser;
 
 		$this->mArticle =& $article;
@@ -70,10 +67,11 @@ class PageHistory {
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setSyndicated( true );
 
-		$logPage = Title::makeTitle( NS_SPECIAL, 'Log' );
+		$logPage = SpecialPage::getTitleFor( 'Log' );
 		$logLink = $this->mSkin->makeKnownLinkObj( $logPage, wfMsgHtml( 'viewpagelogs' ), 'page=' . $this->mTitle->getPrefixedUrl() );
 
-		$this->doSubtitle($loglink);
+		$subtitle = wfMsgHtml( 'revhistory' ) . '<br />' . $logLink;
+		$wgOut->setSubtitle( $subtitle );
 
 		$feedType = $wgRequest->getVal( 'feed' );
 		if( $feedType ) {
@@ -90,7 +88,7 @@ class PageHistory {
 			return;
 		}
 
-
+		
 		/*
 		 * "go=first" means to jump to the last (earliest) history page.
 		 * This is deprecated, it no longer appears in the user interface
@@ -100,27 +98,22 @@ class PageHistory {
 			$wgOut->redirect( $wgTitle->getLocalURL( "action=history&limit={$limit}&dir=prev" ) );
 			return;
 		}
+		
+		wfRunHooks( 'PageHistoryBeforeList', array( &$this->mArticle ) );
 
 		/** 
 		 * Do the list
 		 */
 		$pager = new PageHistoryPager( $this );
-		$navbar = $pager->getNavigationBar();
 		$this->linesonpage = $pager->getNumRows();
 		$wgOut->addHTML(
 			$pager->getNavigationBar() . 
 			$this->beginHistoryList() . 
-			$pager->getBody() . 
+			$pager->getBody() .
 			$this->endHistoryList() .
 			$pager->getNavigationBar()
 		);
 		wfProfileOut( $fname );
-	}
-
-	function doSubtitle( $logLink ) {
-		global $wgOut;
-		$subtitle = wfMsgHtml( 'revhistory' ) . '<br />' . $logLink;
-		$wgOut->setSubtitle( $subtitle );
 	}
 
 	/** @todo document */
@@ -165,15 +158,27 @@ class PageHistory {
 					'class'     => 'historysubmit',
 					'type'      => 'submit',
 					'accesskey' => wfMsg( 'accesskey-compareselectedversions' ),
-					'title'     => wfMsg( 'tooltip-compareselectedversions' ),
+					'title'     => wfMsg( 'tooltip-compareselectedversions' ).' ['.wfMsg( 'accesskey-compareselectedversions' ).']',
 					'value'     => wfMsg( 'compareselectedversions' ),
 				) ) )
 			: '';
 	}
 
-	/** @todo document */
+	/**
+	 * Returns a row from the history printout.
+	 *
+	 * @todo document some more, and maybe clean up the code (some params redundant?)
+	 *
+	 * @param object $row The database row corresponding to the line (or is it the previous line?).
+	 * @param object $next The database row corresponding to the next line (or is it this one?).
+	 * @param int $counter Apparently a counter of what row number we're at, counted from the top row = 1.
+	 * @param $notificationtimestamp
+	 * @param bool $latest Whether this row corresponds to the page's latest revision.
+	 * @param bool $firstInList Whether this row corresponds to the first displayed on this history page.
+	 * @return string HTML output for the row
+	 */
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
-		global $wgUser;
+		global $wgUser, $wgLang;
 		$rev = new Revision( $row );
 		$rev->setTitle( $this->mTitle );
 
@@ -189,32 +194,62 @@ class PageHistory {
 		$s .= "($curlink) ($lastlink) $arbitrary";
 		
 		if( $wgUser->isAllowed( 'deleterevision' ) ) {
-			$revdel = Title::makeTitle( NS_SPECIAL, 'Revisiondelete' );
+			$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
 			if( $firstInList ) {
 				// We don't currently handle well changing the top revision's settings
 				$del = wfMsgHtml( 'rev-delundel' );
+			} else if( !$rev->userCan( Revision::DELETED_RESTRICTED ) ) {
+			// If revision was hidden from sysops
+				$del = wfMsgHtml( 'rev-delundel' );			
 			} else {
 				$del = $this->mSkin->makeKnownLinkObj( $revdel,
 					wfMsg( 'rev-delundel' ),
 					'target=' . urlencode( $this->mTitle->getPrefixedDbkey() ) .
 					'&oldid=' . urlencode( $rev->getId() ) );
 			}
-			$s .= "(<small>$del</small>) ";
+			$s .= " (<small>$del</small>) ";
 		}
 		
-		$s .= " $link <span class='history-user'>$user</span>";
+		$s .= " $link";
+		#getUser is safe, but this avoids making the invalid untargeted contribs links
+		if( $row->rev_deleted & Revision::DELETED_USER ) {
+			$user = '<span class="history-deleted">' . wfMsg('rev-deleted-user') . '</span>';
+		}
+		$s .= " <span class='history-user'>$user</span>";
 
 		if( $row->rev_minor_edit ) {
 			$s .= ' ' . wfElement( 'span', array( 'class' => 'minor' ), wfMsg( 'minoreditletter') );
 		}
 
-		$s .= $this->mSkin->revComment( $rev );
+		if (!is_null($size = $rev->getSize())) {
+			if ($size == 0)
+				$stxt = wfMsgHtml('historyempty');
+			else
+				$stxt = wfMsgHtml('historysize', $wgLang->formatNum( $size ) );
+			$s .= " <span class=\"history-size\">$stxt</span>";
+		}
+
+		#getComment is safe, but this is better formatted
+		if( $rev->isDeleted( Revision::DELETED_COMMENT ) ) {
+			$s .= " <span class=\"history-deleted\"><span class=\"comment\">" .
+			wfMsgHtml( 'rev-deleted-comment' ) . "</span></span>";
+		} else {
+			$s .= $this->mSkin->revComment( $rev );
+		}
+		
 		if ($notificationtimestamp && ($row->rev_timestamp >= $notificationtimestamp)) {
 			$s .= ' <span class="updatedmarker">' .  wfMsgHtml( 'updatedmarker' ) . '</span>';
 		}
+		#add blurb about text having been deleted
 		if( $row->rev_deleted & Revision::DELETED_TEXT ) {
 			$s .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
+		if( $wgUser->isAllowed( 'rollback' ) && $latest ) {
+			$s .= ' '.$this->mSkin->generateRollback( $rev );
+		}
+		
+		wfRunHooks( 'PageHistoryLineEnding', array( &$row , &$s ) );
+		
 		$s .= "</li>\n";
 
 		return $s;
@@ -323,7 +358,7 @@ class PageHistory {
 	function getLatestId() {
 		if( is_null( $this->mLatestId ) ) {
 			$id = $this->mTitle->getArticleID();
-			$db =& wfGetDB(DB_SLAVE);
+			$db = wfGetDB(DB_SLAVE);
 			$this->mLatestId = $db->selectField( 'page',
 				"page_latest",
 				array( 'page_id' => $id ),
@@ -340,7 +375,7 @@ class PageHistory {
 	function fetchRevisions($limit, $offset, $direction) {
 		$fname = 'PageHistory::fetchRevisions';
 
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 
 		if ($direction == PageHistory::DIR_PREV)
 			list($dirs, $oper) = array("ASC", ">=");
@@ -356,8 +391,7 @@ class PageHistory {
 
 		$res = $dbr->select(
 			'revision',
-			array('rev_id', 'rev_page', 'rev_text_id', 'rev_user', 'rev_comment', 'rev_user_text',
-				'rev_timestamp', 'rev_minor_edit', 'rev_deleted'),
+			Revision::selectFields(),
 			array_merge(array("rev_page=$page_id"), $offsets),
 			$fname,
 			array('ORDER BY' => "rev_timestamp $dirs",
@@ -382,7 +416,7 @@ class PageHistory {
 		if ($wgUser->isAnon() || !$wgShowUpdatedMarker)
 			return $this->mNotificationTimestamp = false;
 
-		$dbr =& wfGetDB(DB_SLAVE);
+		$dbr = wfGetDB(DB_SLAVE);
 
 		$this->mNotificationTimestamp = $dbr->selectField(
 			'watchlist',
@@ -488,6 +522,9 @@ class PageHistory {
 }
 
 
+/**
+ * @addtogroup Pager
+ */
 class PageHistoryPager extends ReverseChronologicalPager {
 	public $mLastRow = false, $mPageHistory;
 	
@@ -499,8 +536,7 @@ class PageHistoryPager extends ReverseChronologicalPager {
 	function getQueryInfo() {
 		return array(
 			'tables' => 'revision',
-			'fields' => array('rev_id', 'rev_page', 'rev_text_id', 'rev_user', 'rev_comment', 'rev_user_text',
-				'rev_timestamp', 'rev_minor_edit', 'rev_deleted'),
+			'fields' => Revision::selectFields(),
 			'conds' => array('rev_page' => $this->mPageHistory->mTitle->getArticleID() ),
 			'options' => array( 'USE INDEX' => 'page_timestamp' )
 		);

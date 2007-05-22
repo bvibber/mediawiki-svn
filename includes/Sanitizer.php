@@ -20,8 +20,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @package MediaWiki
- * @subpackage Parser
+ * @addtogroup Parser
  */
 
 /**
@@ -29,7 +28,7 @@
  * Sanitizer::normalizeCharReferences and Sanitizer::decodeCharReferences
  */
 define( 'MW_CHAR_REFS_REGEX',
-	'/&([A-Za-z0-9]+);
+	'/&([A-Za-z0-9\x80-\xff]+);
 	 |&\#([0-9]+);
 	 |&\#x([0-9A-Za-z]+);
 	 |&\#X([0-9A-Za-z]+);
@@ -316,7 +315,20 @@ $wgHtmlEntities = array(
 	'zwj'      => 8205,
 	'zwnj'     => 8204 );
 
-/** @package MediaWiki */
+/**
+ * Character entity aliases accepted by MediaWiki
+ */
+global $wgHtmlEntityAliases;
+$wgHtmlEntityAliases = array(
+	'רלמ' => 'rlm',
+	'رلم' => 'rlm',
+);
+
+
+/**
+ * XHTML sanitizer for MediaWiki
+ * @addtogroup Parser
+ */
 class Sanitizer {
 	/**
 	 * Cleans up HTML, removes dangerous tags and attributes, and
@@ -328,48 +340,41 @@ class Sanitizer {
 	 * @return string
 	 */
 	static function removeHTMLtags( $text, $processCallback = null, $args = array() ) {
-		global $wgUseTidy, $wgUserHtml;
+		global $wgUseTidy;
 
-		static $htmlpairs, $htmlsingle, $htmlsingleonly, $htmlnest, $tabletags, 
+		static $htmlpairs, $htmlsingle, $htmlsingleonly, $htmlnest, $tabletags,
 			$htmllist, $listtags, $htmlsingleallowed, $htmlelements, $staticInitialised;
-		
-		wfProfileIn( __METHOD__ );
-		
-		if ( !$staticInitialised ) {
-			if( $wgUserHtml ) {
-				$htmlpairs = array( # Tags that must be closed
-					'b', 'del', 'i', 'ins', 'u', 'font', 'big', 'small', 'sub', 'sup', 'h1',
-					'h2', 'h3', 'h4', 'h5', 'h6', 'cite', 'code', 'em', 's',
-					'strike', 'strong', 'tt', 'var', 'div', 'center',
-					'blockquote', 'ol', 'ul', 'dl', 'table', 'caption', 'pre',
-					'ruby', 'rt' , 'rb' , 'rp', 'p', 'span', 'u'
-				);
-				$htmlsingle = array(
-					'br', 'hr', 'li', 'dt', 'dd'
-				);
-				$htmlsingleonly = array( # Elements that cannot have close tags
-					'br', 'hr'
-				);
-				$htmlnest = array( # Tags that can be nested--??
-					'table', 'tr', 'td', 'th', 'div', 'blockquote', 'ol', 'ul',
-					'dl', 'font', 'big', 'small', 'sub', 'sup', 'span'
-				);
-				$tabletags = array( # Can only appear inside table
-					'td', 'th', 'tr',
-				);
-				$htmllist = array( # Tags used by list
-					'ul','ol',
-				);
-				$listtags = array( # Tags that can appear in a list
-					'li',
-				);
 
-			} else {
-				$htmlpairs = array();
-				$htmlsingle = array();
-				$htmlnest = array();
-				$tabletags = array();
-			}
+		wfProfileIn( __METHOD__ );
+
+		if ( !$staticInitialised ) {
+
+			$htmlpairs = array( # Tags that must be closed
+				'b', 'del', 'i', 'ins', 'u', 'font', 'big', 'small', 'sub', 'sup', 'h1',
+				'h2', 'h3', 'h4', 'h5', 'h6', 'cite', 'code', 'em', 's',
+				'strike', 'strong', 'tt', 'var', 'div', 'center',
+				'blockquote', 'ol', 'ul', 'dl', 'table', 'caption', 'pre',
+				'ruby', 'rt' , 'rb' , 'rp', 'p', 'span', 'u'
+			);
+			$htmlsingle = array(
+				'br', 'hr', 'li', 'dt', 'dd'
+			);
+			$htmlsingleonly = array( # Elements that cannot have close tags
+				'br', 'hr'
+			);
+			$htmlnest = array( # Tags that can be nested--??
+				'table', 'tr', 'td', 'th', 'div', 'blockquote', 'ol', 'ul',
+				'dl', 'font', 'big', 'small', 'sub', 'sup', 'span'
+			);
+			$tabletags = array( # Can only appear inside table, we will close them
+				'td', 'th', 'tr',
+			);
+			$htmllist = array( # Tags used by list
+				'ul','ol',
+			);
+			$listtags = array( # Tags that can appear in a list
+				'li',
+			);
 
 			$htmlsingleallowed = array_merge( $htmlsingle, $tabletags );
 			$htmlelements = array_merge( $htmlsingle, $htmlpairs, $htmlnest );
@@ -386,14 +391,16 @@ class Sanitizer {
 		# Remove HTML comments
 		$text = Sanitizer::removeHTMLcomments( $text );
 		$bits = explode( '<', $text );
-		$text = array_shift( $bits );
+		$text = str_replace( '>', '&gt;', array_shift( $bits ) );
 		if(!$wgUseTidy) {
 			$tagstack = $tablestack = array();
 			foreach ( $bits as $x ) {
-				$prev = error_reporting( E_ALL & ~( E_NOTICE | E_WARNING ) );
-				preg_match( '!^(/?)(\\w+)([^>]*?)(/{0,1}>)([^<]*)$!', $x, $regs );
-				list( $qbar, $slash, $t, $params, $brace, $rest ) = $regs;
-				error_reporting( $prev );
+				$regs = array();
+				if( preg_match( '!^(/?)(\\w+)([^>]*?)(/{0,1}>)([^<]*)$!', $x, $regs ) ) {
+					list( /* $qbar */, $slash, $t, $params, $brace, $rest ) = $regs;
+				} else {
+					$slash = $t = $params = $brace = $rest = null;
+				}
 
 				$badtag = 0 ;
 				if ( isset( $htmlelements[$t = strtolower( $t )] ) ) {
@@ -451,6 +458,10 @@ class Sanitizer {
 						} else if( isset( $htmlsingle[$t] ) ) {
 							# Hack to not close $htmlsingle tags
 							$brace = NULL;
+						} else if( isset( $tabletags[$t] )
+						&&  in_array($t ,$tagstack) ) {
+							// New table tag but forgot to close the previous one
+							$text .= "</$t>";
 						} else {
 							if ( $t == 'table' ) {
 								array_push( $tablestack, $tagstack );
@@ -470,7 +481,7 @@ class Sanitizer {
 					}
 					if ( ! $badtag ) {
 						$rest = str_replace( '>', '&gt;', $rest );
-						$close = ( $brace == '/>' ) ? ' /' : '';
+						$close = ( $brace == '/>' && !$slash ) ? ' /' : '';
 						$text .= "<$slash$t$newparams$close>$rest";
 						continue;
 					}
@@ -487,7 +498,7 @@ class Sanitizer {
 			foreach ( $bits as $x ) {
 				preg_match( '/^(\\/?)(\\w+)([^>]*?)(\\/{0,1}>)([^<]*)$/',
 				$x, $regs );
-				@list( $qbar, $slash, $t, $params, $brace, $rest ) = $regs;
+				@list( /* $qbar */, $slash, $t, $params, $brace, $rest ) = $regs;
 				if ( isset( $htmlelements[$t = strtolower( $t )] ) ) {
 					if( is_callable( $processCallback ) ) {
 						call_user_func_array( $processCallback, array( &$params, $args ) );
@@ -603,14 +614,15 @@ class Sanitizer {
 		$stripped = Sanitizer::decodeCharReferences( $value );
 
 		// Remove any comments; IE gets token splitting wrong
-		$stripped = preg_replace( '!/\\*.*?\\*/!S', ' ', $stripped );
+		$stripped = StringUtils::delimiterReplace( '/*', '*/', ' ', $stripped );
+		
 		$value = $stripped;
 
 		// ... and continue checks
 		$stripped = preg_replace( '!\\\\([0-9A-Fa-f]{1,6})[ \\n\\r\\t\\f]?!e',
 			'codepointToUtf8(hexdec("$1"))', $stripped );
 		$stripped = str_replace( '\\', '', $stripped );
-		if( preg_match( '/(expression|tps*:\/\/|url\\s*\().*/is',
+		if( preg_match( '/(?:expression|tps*:\/\/|url\\s*\().*/is',
 				$stripped ) ) {
 			# haxx0r
 			return false;
@@ -642,15 +654,15 @@ class Sanitizer {
 		if( trim( $text ) == '' ) {
 			return '';
 		}
-		
+
 		$stripped = Sanitizer::validateTagAttributes(
 			Sanitizer::decodeTagAttributes( $text ), $element );
-		
+
 		$attribs = array();
 		foreach( $stripped as $attribute => $value ) {
 			$encAttribute = htmlspecialchars( $attribute );
 			$encValue = Sanitizer::safeEncodeAttribute( $value );
-			
+
 			$attribs[] = "$encAttribute=\"$encValue\"";
 		}
 		return count( $attribs ) ? ' ' . implode( ' ', $attribs ) : '';
@@ -663,7 +675,7 @@ class Sanitizer {
 	 */
 	static function encodeAttribute( $text ) {
 		$encValue = htmlspecialchars( $text );
-		
+
 		// Whitespace is normalized during attribute decoding,
 		// so if we've been passed non-spaces we must encode them
 		// ahead of time or they won't be preserved.
@@ -672,10 +684,10 @@ class Sanitizer {
 			"\r" => '&#13;',
 			"\t" => '&#9;',
 		) );
-		
+
 		return $encValue;
 	}
-	
+
 	/**
 	 * Encode an attribute value for HTML tags, with extra armoring
 	 * against further wiki processing.
@@ -684,7 +696,7 @@ class Sanitizer {
 	 */
 	static function safeEncodeAttribute( $text ) {
 		$encValue = Sanitizer::encodeAttribute( $text );
-		
+
 		# Templates and links may be expanded in later parsing,
 		# creating invalid or dangerous output. Suppress this.
 		$encValue = strtr( $encValue, array(
@@ -713,12 +725,10 @@ class Sanitizer {
 	 * Given a value escape it so that it can be used in an id attribute and
 	 * return it, this does not validate the value however (see first link)
 	 *
-	 * @link http://www.w3.org/TR/html401/types.html#type-name Valid characters
+	 * @see http://www.w3.org/TR/html401/types.html#type-name Valid characters
 	 *                                                          in the id and
 	 *                                                          name attributes
-	 * @link http://www.w3.org/TR/html401/struct/links.html#h-12.2.3 Anchors with the id attribute
-	 *
-	 * @bug 4461
+	 * @see http://www.w3.org/TR/html401/struct/links.html#h-12.2.3 Anchors with the id attribute
 	 *
 	 * @static
 	 *
@@ -734,6 +744,25 @@ class Sanitizer {
 		$id = urlencode( Sanitizer::decodeCharReferences( strtr( $id, ' ', '_' ) ) );
 
 		return str_replace( array_keys( $replace ), array_values( $replace ), $id );
+	}
+
+	/**
+	 * Given a value, escape it so that it can be used as a CSS class and
+	 * return it.
+	 *
+	 * @todo For extra validity, input should be validated UTF-8.
+	 *
+	 * @see http://www.w3.org/TR/CSS21/syndata.html Valid characters/format
+	 *
+	 * @param string $class
+	 * @return string
+	 */
+	static function escapeClass( $class ) {
+		// Convert ugly stuff to underscores and kill underscores in ugly places
+		return rtrim(preg_replace(
+			array('/(^[0-9\\-])|[\\x00-\\x20!"#$%&\'()*+,.\\/:;<=>?@[\\]^`{|}~]|\\xC2\\xA0/','/_+/'),
+			'_',
+			$class ), '_');
 	}
 
 	/**
@@ -773,11 +802,11 @@ class Sanitizer {
 		foreach( $pairs as $set ) {
 			$attribute = strtolower( $set[1] );
 			$value = Sanitizer::getTagAttributeCallback( $set );
-			
+
 			// Normalize whitespace
 			$value = preg_replace( '/[\t\r\n ]+/', ' ', $value );
 			$value = trim( $value );
-			
+
 			// Decode character references
 			$attribs[$attribute] = Sanitizer::decodeCharReferences( $value );
 		}
@@ -828,10 +857,15 @@ class Sanitizer {
 	 */
 	private static function normalizeAttributeValue( $text ) {
 		return str_replace( '"', '&quot;',
-			preg_replace(
-				'/\r\n|[\x20\x0d\x0a\x09]/',
-				' ',
+			self::normalizeWhitespace(
 				Sanitizer::normalizeCharReferences( $text ) ) );
+	}
+	
+	private static function normalizeWhitespace( $text ) {
+		return preg_replace(
+			'/\r\n|[\x20\x0d\x0a\x09]/',
+			' ',
+			$text );
 	}
 
 	/**
@@ -878,16 +912,19 @@ class Sanitizer {
 
 	/**
 	 * If the named entity is defined in the HTML 4.0/XHTML 1.0 DTD,
-	 * return the named entity reference as is. Otherwise, returns
-	 * HTML-escaped text of pseudo-entity source (eg &amp;foo;)
+	 * return the named entity reference as is. If the entity is a 
+	 * MediaWiki-specific alias, returns the HTML equivalent. Otherwise, 
+	 * returns HTML-escaped text of pseudo-entity source (eg &amp;foo;)
 	 *
 	 * @param string $name
 	 * @return string
 	 * @static
 	 */
 	static function normalizeEntity( $name ) {
-		global $wgHtmlEntities;
-		if( isset( $wgHtmlEntities[$name] ) ) {
+		global $wgHtmlEntities, $wgHtmlEntityAliases;
+		if ( isset( $wgHtmlEntityAliases[$name] ) ) {
+			return "&{$wgHtmlEntityAliases[$name]};";
+		} elseif( isset( $wgHtmlEntities[$name] ) ) {
 			return "&$name;";
 		} else {
 			return "&amp;$name;";
@@ -984,7 +1021,10 @@ class Sanitizer {
 	 * @return string
 	 */
 	static function decodeEntity( $name ) {
-		global $wgHtmlEntities;
+		global $wgHtmlEntities, $wgHtmlEntityAliases;
+		if ( isset( $wgHtmlEntityAliases[$name] ) ) {
+			$name = $wgHtmlEntityAliases[$name];
+		}
 		if( isset( $wgHtmlEntities[$name] ) ) {
 			return codepointToUtf8( $wgHtmlEntities[$name] );
 		} else {
@@ -1151,25 +1191,21 @@ class Sanitizer {
 
 	/**
 	 * Take a fragment of (potentially invalid) HTML and return
-	 * a version with any tags removed, encoded suitably for literal
-	 * inclusion in an attribute value.
+	 * a version with any tags removed, encoded as plain text.
+	 *
+	 * Warning: this return value must be further escaped for literal
+	 * inclusion in HTML output as of 1.10!
 	 *
 	 * @param string $text HTML fragment
 	 * @return string
 	 */
 	static function stripAllTags( $text ) {
 		# Actual <tags>
-		$text = preg_replace( '/ < .*? > /x', '', $text );
+		$text = StringUtils::delimiterReplace( '<', '>', '', $text );
 
 		# Normalize &entities and whitespace
-		$text = Sanitizer::normalizeAttributeValue( $text );
-
-		# Will be placed into "double-quoted" attributes,
-		# make sure remaining bits are safe.
-		$text = str_replace(
-			array('<', '>', '"'),
-			array('&lt;', '&gt;', '&quot;'),
-			$text );
+		$text = self::decodeCharReferences( $text );
+		$text = self::normalizeWhitespace( $text );
 
 		return $text;
 	}
@@ -1193,7 +1229,7 @@ class Sanitizer {
 		$out .= "]>\n";
 		return $out;
 	}
-	
+
 	static function cleanUrl( $url, $hostname=true ) {
 		# Normalize any HTML entities in input. They will be
 		# re-escaped by makeExternalLink().
@@ -1201,11 +1237,12 @@ class Sanitizer {
 
 		# Escape any control characters introduced by the above step
 		$url = preg_replace( '/[\][<>"\\x00-\\x20\\x7F]/e', "urlencode('\\0')", $url );
-		
+
 		# Validate hostname portion
+		$matches = array();
 		if( preg_match( '!^([^:]+:)(//[^/]+)?(.*)$!iD', $url, $matches ) ) {
-			list( $whole, $protocol, $host, $rest ) = $matches;
-			
+			list( /* $whole */, $protocol, $host, $rest ) = $matches;
+
 			// Characters that will be ignored in IDNs.
 			// http://tools.ietf.org/html/3454#section-3.1
 			// Strip them before further processing so blacklists and such work.
@@ -1224,11 +1261,11 @@ class Sanitizer {
 				\xe2\x80\x8d| # 200d ZERO WIDTH JOINER
 				[\xef\xb8\x80-\xef\xb8\x8f] # fe00-fe00f VARIATION SELECTOR-1-16
 				/xuD";
-			
+
 			$host = preg_replace( $strip, '', $host );
-			
+
 			// @fixme: validate hostnames here
-			
+
 			return $protocol . $host . $rest;
 		} else {
 			return $url;

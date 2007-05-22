@@ -1,8 +1,7 @@
 <?php
 /**
  * @todo document
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 $wgRequestTime = microtime(true);
@@ -172,7 +171,7 @@ if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 
 	if ( ! is_readable( $settingsFile ) ) {
 		print "A copy of your installation's LocalSettings.php\n" .
-		  "must exist in the source directory.\n";
+		  "must exist and be readable in the source directory.\n";
 		exit( 1 );
 	}
 	$wgCommandLineMode = true;
@@ -188,7 +187,9 @@ if ( file_exists( '/home/wikipedia/common/langlist' ) ) {
 }
 
 # Turn off output buffering again, it might have been turned on in the settings files
-@ob_end_flush();
+if( ob_get_level() ) {
+	ob_end_flush();
+}
 # Same with these
 $wgCommandLineMode = true;
 

@@ -1,8 +1,7 @@
 <?php
 /**
  * File for magic words
- * @package MediaWiki
- * @subpackage Parser
+ * @addtogroup Parser
  */
 
 /**
@@ -21,7 +20,6 @@
  * magic words which are also Parser variables, add a MagicWordwgVariableIDs
  * hook. Use string keys.
  *
- * @package MediaWiki
  */
 class MagicWord {
 	/**#@+
@@ -55,6 +53,7 @@ class MagicWord {
 		'localhour',
 		'numberofarticles',
 		'numberoffiles',
+		'numberofedits',
 		'sitename',
 		'server',
 		'servername',
@@ -101,13 +100,14 @@ class MagicWord {
 		'contentlanguage',
 		'pagesinnamespace',
 		'numberofadmins',
+		'defaultsort',
 	);
 
 	static public $mObjects = array();
 
 	/**#@-*/
 
-	function MagicWord($id = 0, $syn = '', $cs = false) {
+	function __construct($id = 0, $syn = '', $cs = false) {
 		$this->mId = $id;
 		$this->mSynonyms = (array)$syn;
 		$this->mCaseSensitive = $cs;
@@ -289,7 +289,7 @@ class MagicWord {
 	 * Used in matchAndRemove()
 	 * @private
 	 **/
-	function pregRemoveAndRecord( $match ) {
+	function pregRemoveAndRecord( ) {
 		$this->mFound = true;
 		return '';
 	}
@@ -298,7 +298,7 @@ class MagicWord {
 	 * Replaces the word with something else
 	 */
 	function replace( $replacement, $subject, $limit=-1 ) {
-		$res = preg_replace( $this->getRegex(), wfRegexReplacement( $replacement ), $subject, $limit );
+		$res = preg_replace( $this->getRegex(), StringUtils::escapeRegexReplacement( $replacement ), $subject, $limit );
 		$this->mModified = !($res === $subject);
 		return $res;
 	}

@@ -1,15 +1,9 @@
 <?php
-/**
- * Date formatter, recognises dates in plain text and formats them accoding to user preferences.
- *
- * @package MediaWiki
- * @subpackage Parser
- */
 
 /**
+ * Date formatter, recognises dates in plain text and formats them accoding to user preferences.
  * @todo preferences, OutputPage
- * @package MediaWiki
- * @subpackage Parser
+ * @addtogroup Parser
  */
 class DateFormatter
 {
@@ -129,10 +123,10 @@ class DateFormatter
 		}
 		for ( $i=1; $i<=self::LAST; $i++ ) {
 			$this->mSource = $i;
-			if ( @$this->rules[$preference][$i] ) {
+			if ( isset ( $this->rules[$preference][$i] ) ) {
 				# Specific rules
 				$this->mTarget = $this->rules[$preference][$i];
-			} elseif ( @$this->rules[self::ALL][$i] ) {
+			} elseif ( isset ( $this->rules[self::ALL][$i] ) ) {
 				# General rules
 				$this->mTarget = $this->rules[self::ALL][$i];
 			} elseif ( $preference ) {

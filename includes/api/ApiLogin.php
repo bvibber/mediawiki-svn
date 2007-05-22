@@ -1,12 +1,11 @@
 <?php
 
-
 /*
  * Created on Sep 19, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
+ * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,6 +28,9 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiBase.php');
 }
 
+/**
+ * @addtogroup API
+ */
 class ApiLogin extends ApiBase {
 
 	public function __construct($main, $action) {
@@ -89,8 +91,8 @@ class ApiLogin extends ApiBase {
 
 	protected function getAllowedParams() {
 		return array (
-			'name' => '',
-			'password' => '',
+			'name' => null,
+			'password' => null,
 			'domain' => null
 		);
 	}

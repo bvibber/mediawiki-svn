@@ -1,12 +1,11 @@
 <?php
 
-
 /*
  * Created on Sep 19, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
+ * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,12 +28,18 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiBase.php');
 }
 
+/**
+ * This is the abstract base class for API formatters.
+ * 
+ * @addtogroup API
+ */
 abstract class ApiFormatBase extends ApiBase {
 
 	private $mIsHtml, $mFormat;
 
 	/**
-	* Constructor
+	* Create a new instance of the formatter.
+	* If the format name ends with 'fm', wrap its output in the proper HTML.
 	*/
 	public function __construct($main, $format) {
 		parent :: __construct($main, $format);
@@ -54,6 +59,11 @@ abstract class ApiFormatBase extends ApiBase {
 	 */
 	public abstract function getMimeType();
 
+	/**
+	 * If formatter outputs data results as is, the results must first be sanitized.
+	 * An XML formatter on the other hand uses special tags, such as "_element" for special handling,
+	 * and thus needs to override this function to return true.  
+	 */
 	public function getNeedsRawData() {
 		return false;
 	}
@@ -75,39 +85,40 @@ abstract class ApiFormatBase extends ApiBase {
 	function initPrinter($isError) {
 		$isHtml = $this->getIsHtml();
 		$mime = $isHtml ? 'text/html' : $this->getMimeType();
-		
+
 		// Some printers (ex. Feed) do their own header settings,
 		// in which case $mime will be set to null
 		if (is_null($mime))
-			return;	// skip any initialization
-			
-		header("Content-Type: $mime; charset=utf-8;");
-		header("Cache-Control: private, s-maxage=0, max-age=0");
-		
+			return; // skip any initialization
+
+		header("Content-Type: $mime; charset=utf-8");
+
 		if ($isHtml) {
 ?>
-		<html>
-		<head>
-			<title>MediaWiki API</title>
-		</head>
-		<body>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<title>MediaWiki API</title>
+</head>
+<body>
 <?php
 
 
 			if (!$isError) {
 ?>
-			<br/>
-			<small>
-			This result is being shown in <?=$this->mFormat?> format,
-			which might not be suitable for your application.<br/>
-			See <a href='api.php'>API help</a> for more information.<br/>
-			</small>
+<br/>
+<small>
+You are looking at the HTML representation of the <?=$this->mFormat?> format.<br/>
+HTML is good for debugging, but probably is not suitable for your application.<br/>
+Please see "format" parameter documentation at the <a href='api.php'>API help</a>
+for more information.
+</small>
 <?php
 
 
 			}
 ?>
-		<pre>
+<pre>
 <?php
 
 
@@ -120,14 +131,20 @@ abstract class ApiFormatBase extends ApiBase {
 	public function closePrinter() {
 		if ($this->getIsHtml()) {
 ?>
-		</pre>
-		</body>
+
+</pre>
+</body>
+</html>
 <?php
 
 
 		}
 	}
 
+	/**
+	 * The main format printing function. Call it to output the result string to the user.
+	 * This function will automatically output HTML when format name ends in 'fm'.
+	 */
 	public function printText($text) {
 		if ($this->getIsHtml())
 			echo $this->formatHTML($text);
@@ -141,11 +158,12 @@ abstract class ApiFormatBase extends ApiBase {
 	*/
 	protected function formatHTML($text) {
 		// encode all tags as safe blue strings
-		$text = ereg_replace('\<([^>]+)\>', '<font color=blue>&lt;\1&gt;</font>', $text);
+		$text = ereg_replace('\<([^>]+)\>', '<span style="color:blue;">&lt;\1&gt;</span>', $text);
 		// identify URLs
-		$text = ereg_replace("[a-zA-Z]+://[^ '()<\n]+", '<a href="\\0">\\0</a>', $text);
+		$protos = "http|https|ftp|gopher";
+		$text = ereg_replace("($protos)://[^ \\'\"()<\n]+", '<a href="\\0">\\0</a>', $text);
 		// identify requests to api.php
-		$text = ereg_replace("api\\.php\\?[^ ()<\n\t]+", '<a href="\\0">\\0</a>', $text);
+		$text = ereg_replace("api\\.php\\?[^ \\()<\n\t]+", '<a href="\\0">\\0</a>', $text);
 		// make strings inside * bold
 		$text = ereg_replace("\\*[^<>\n]+\\*", '<b>\\0</b>', $text);
 		// make strings inside $ italic
@@ -158,7 +176,11 @@ abstract class ApiFormatBase extends ApiBase {
 	 * Returns usage examples for this format.
 	 */
 	protected function getExamples() {
-		return 'api.php?action=query&meta=siteinfo&si=namespaces&format=' . $this->getModuleName();
+		return 'api.php?action=query&meta=siteinfo&siprop=namespaces&format=' . $this->getModuleName();
+	}
+
+	protected function getDescription() {
+		return $this->getIsHtml() ? ' (pretty-print in HTML)' : '';
 	}
 
 	public static function getBaseVersion() {
@@ -168,6 +190,7 @@ abstract class ApiFormatBase extends ApiBase {
 
 /**
  * This printer is used to wrap an instance of the Feed class 
+ * @addtogroup API
  */
 class ApiFormatFeedWrapper extends ApiFormatBase {
 
@@ -176,12 +199,12 @@ class ApiFormatFeedWrapper extends ApiFormatBase {
 	}
 
 	/**
-	 * Call this method to initialize output data
+	 * Call this method to initialize output data. See self::execute()
 	 */
 	public static function setResult($result, $feed, $feedItems) {
 		// Store output in the Result data.
 		// This way we can check during execution if any error has occured
-		$data =& $result->getData();
+		$data = & $result->getData();
 		$data['_feed'] = $feed;
 		$data['_feeditems'] = $feedItems;
 	}
@@ -199,24 +222,29 @@ class ApiFormatFeedWrapper extends ApiFormatBase {
 	public function getNeedsRawData() {
 		return true;
 	}
-	
+
+	/**
+	 * This class expects the result data to be in a custom format set by self::setResult()
+	 * $result['_feed']		 - an instance of one of the $wgFeedClasses classes
+	 * $result['_feeditems'] - an array of FeedItem instances
+	 */
 	public function execute() {
-		$data =& $this->getResultData();
-		if (isset($data['_feed']) && isset($data['_feeditems'])) {
-			$feed =& $data['_feed'];
-			$items =& $data['_feeditems'];
+		$data = $this->getResultData();
+		if (isset ($data['_feed']) && isset ($data['_feeditems'])) {
+			$feed = $data['_feed'];
+			$items = $data['_feeditems'];
 
 			$feed->outHeader();
-			foreach($items as &$item)
+			foreach ($items as & $item)
 				$feed->outItem($item);
 			$feed->outFooter();
 		} else {
 			// Error has occured, print something usefull
-			// TODO: make this error more informative using $this->dieDebug() or similar
+			// TODO: make this error more informative using ApiBase :: dieDebug() or similar
 			wfHttpError(500, 'Internal Server Error', '');
 		}
 	}
-
+	
 	public function getVersion() {
 		return __CLASS__ . ': $Id$';
 	}

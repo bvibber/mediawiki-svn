@@ -1,12 +1,11 @@
 <?php
 
-
 /*
  * Created on Sep 4, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
+ * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,23 +28,62 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiBase.php');
 }
 
+/**
+ * This class represents the result of the API operations.
+ * It simply wraps a nested array() structure, adding some functions to simplify array's modifications.
+ * As various modules execute, they add different pieces of information to this result,
+ * structuring it as it will be given to the client.
+ * 
+ * Each subarray may either be a dictionary - key-value pairs with unique keys,
+ * or lists, where the items are added using $data[] = $value notation.
+ * 
+ * There are two special key values that change how XML output is generated:
+ *   '_element' This key sets the tag name for the rest of the elements in the current array.
+ *              It is only inserted if the formatter returned true for getNeedsRawData()
+ *   '*'        This key has special meaning only to the XML formatter, and is outputed as is
+ * 				for all others. In XML it becomes the content of the current element.          
+ * 
+ * @addtogroup API
+ */
 class ApiResult extends ApiBase {
 
-	private $mData;
+	private $mData, $mIsRawMode;
 
 	/**
 	* Constructor
 	*/
 	public function __construct($main) {
 		parent :: __construct($main, 'result');
-		$this->Reset();
+		$this->mIsRawMode = false;
+		$this->reset();
 	}
 
-	public function Reset() {
+	/**
+	 * Clear the current result data.
+	 */
+	public function reset() {
 		$this->mData = array ();
 	}
+	
+	/**
+	 * Call this function when special elements such as '_element' 
+	 * are needed by the formatter, for example in XML printing. 
+	 */
+	public function setRawMode() {
+		$this->mIsRawMode = true;
+	}
+	
+	/**
+	 * Returns true if the result is being created for the formatter that requested raw data.
+	 */
+	public function getIsRawMode() {
+		return $this->mIsRawMode;
+	}
 
-	function & getData() {
+	/**
+	 * Get result's internal data array
+	 */
+	public function & getData() {
 		return $this->mData;
 	}
 
@@ -88,26 +126,25 @@ class ApiResult extends ApiBase {
 		}
 	}
 
-	//	public static function makeContentElement($tag, $value) {
-	//		$result = array();
-	//		ApiResult::setContent($result, )
-	//	}
-	//
 	/**
 	 * In case the array contains indexed values (in addition to named),
 	 * all indexed values will have the given tag name.
 	 */
-	public static function setIndexedTagName(& $arr, $tag) {
-		// Do not use setElement() as it is ok to call this more than once
+	public function setIndexedTagName(& $arr, $tag) {
+		// In raw mode, add the '_element', otherwise just ignore
+		if (!$this->getIsRawMode())
+			return;
 		if ($arr === null || $tag === null || !is_array($arr) || is_array($tag))
 			ApiBase :: dieDebug(__METHOD__, 'Bad parameter');
+		// Do not use setElement() as it is ok to call this more than once
 		$arr['_element'] = $tag;
 	}
 
 	/**
 	 * Add value to the output data at the given path.
 	 * Path is an indexed array, each element specifing the branch at which to add the new value
-	 * Setting $path to array('a','b','c') is equivalent to data['a']['b']['c'] = $value  
+	 * Setting $path to array('a','b','c') is equivalent to data['a']['b']['c'] = $value
+	 * If $name is empty, the $value is added as a next list element data[] = $value  
 	 */
 	public function addValue($path, $name, $value) {
 
@@ -127,27 +164,10 @@ class ApiResult extends ApiBase {
 			}
 		}
 
-		ApiResult :: setElement($data, $name, $value);
-	}
-
-	/**
-	* Recursivelly removes any elements from the array that begin with an '_'.
-	* The content element '*' is the only special element that is left.
-	* Use this method when the entire data object gets sent to the user.
-	*/
-	public function SanitizeData() {
-		ApiResult :: SanitizeDataInt($this->mData);
-	}
-
-	private static function SanitizeDataInt(& $data) {
-		foreach ($data as $key => & $value) {
-			if ($key[0] === '_') {
-				unset ($data[$key]);
-			}
-			elseif (is_array($value)) {
-				ApiResult :: SanitizeDataInt($value);
-			}
-		}
+		if (empty($name))
+			$data[] = $value;	// Add list element
+		else
+			ApiResult :: setElement($data, $name, $value);	// Add named element
 	}
 
 	public function execute() {

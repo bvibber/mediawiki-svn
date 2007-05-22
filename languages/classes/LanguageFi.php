@@ -1,8 +1,7 @@
 <?php
 /** Finnish (Suomi)
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  *
  * @author Niklas Laxström
  */
@@ -11,7 +10,7 @@ class LanguageFi extends Language {
 	 * Avoid grouping whole numbers between 0 to 9999
 	 */
 	function commafy($_) {
-		if (!preg_match('/^\d{1,4}$/',$_)) {
+		if (!preg_match('/^-?\d{1,4}$/',$_)) {
 			return strrev((string)preg_replace('/(\d{3})(?=\d)(?!\d*\.)/','$1,',strrev($_)));
 		} else {
 			return $_;
@@ -28,62 +27,44 @@ class LanguageFi extends Language {
 
 		# These rules are not perfect, but they are currently only used for site names so it doesn't
 		# matter if they are wrong sometimes. Just add a special case for your site name if necessary.
+
+		# wovel harmony flag
+		$aou = preg_match( '/[aou][^äöy]*$/i', $word );
+
+		# The flag should be false for compounds where the last word has only neutral vowels (e/i).
+		# The general case cannot be handled without a dictionary, but there's at least one notable
+		# special case we should check for:
+
+		if ( preg_match( '/wiki$/i', $word ) )
+			$aou = false;
+
+		# append i after final consonant
+		if ( preg_match( '/[bcdfghjklmnpqrstvwxz]$/i', $word ) )
+			$word .= 'i';
+
 		switch ( $case ) {
 			case 'genitive':
-				if ( $word == 'Wikisitaatit' ) {
-					$word = 'Wikisitaattien';
-				} else {
-					$word .= 'n';
-				}
-			break;
+				$word .= 'n';
+				break;
 			case 'elative':
-				if ( $word == 'Wikisitaatit' ) {
-					$word = 'Wikisitaateista';
-				} else {
-					if ( mb_substr($word, -1) == 'y' ) {
-						$word .= 'stä';
-					} else {
-						$word .= 'sta';
-					}
-				}
+				$word .= ($aou ? 'sta' : 'stä');
 				break;
 			case 'partitive':
-				if ( $word == 'Wikisitaatit' ) {
-					$word = 'Wikisitaatteja';
-				} else {
-					if ( mb_substr($word, -1) == 'y' ) {
-						$word .= 'ä';
-					} else {
-						$word .= 'a';
-					}
-				}
+				$word .= ($aou ? 'a' : 'ä');
 				break;
 			case 'illative':
 				# Double the last letter and add 'n'
 				# mb_substr has a compatibility function in GlobalFunctions.php
-				if ( $word == 'Wikisitaatit' ) {
-					$word = 'Wikisitaatteihin';
-				} else {
-					$word = $word . mb_substr($word,-1) . 'n';
-				}
+				$word = $word . mb_substr($word, -1) . 'n';
 				break;
 			case 'inessive':
-				if ( $word == 'Wikisitaatit' ) {
-					$word = 'Wikisitaateissa';
-				} else {
-					if ( mb_substr($word, -1) == 'y' ) {
-						$word .= 'ssä';
-					} else {
-						$word .= 'ssa';
-					}
-				}
+				$word .= ($aou ? 'ssa' : 'ssä');
 				break;
-
 		}
 		return $word;
 	}
 
-	function translateBlockExpiry( $str ) {
+	function translateBlockExpiry( $str, $forContent = false ) {
 		/*
 			'ago', 'now', 'today', 'this', 'next',
 			'first', 'third', 'fourth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth',
@@ -157,7 +138,12 @@ class LanguageFi extends Language {
 
 			$final .= ' ' . $item;
 		}
-	   	return '<span class="blockexpiry" title="' . htmlspecialchars($str). '">”' . trim( $final ) . '”</span>';
+
+		if ( $forContent ) {
+			return htmlspecialchars( trim( $final ) );
+		} else {
+			return '<span class="blockexpiry" title="' . htmlspecialchars($str). '">”' . trim( $final ) . '”</span>';
+		}
 	}
 
 }

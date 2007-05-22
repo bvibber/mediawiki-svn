@@ -1,12 +1,11 @@
 <?php
 
-
 /*
  * Created on Sep 19, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
+ * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,6 +28,9 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiFormatBase.php');
 }
 
+/**
+ * @addtogroup API
+ */
 class ApiFormatYaml extends ApiFormatBase {
 
 	public function __construct($main, $format) {
@@ -44,7 +46,7 @@ class ApiFormatYaml extends ApiFormatBase {
 	}
 
 	protected function getDescription() {
-		return 'Output data in YAML format';
+		return 'Output data in YAML format' . parent :: getDescription();
 	}
 
 	public function getVersion() {

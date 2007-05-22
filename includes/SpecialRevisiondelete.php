@@ -10,12 +10,11 @@
  */
 
 function wfSpecialRevisiondelete( $par = null ) {
-	global $wgOut, $wgRequest, $wgUser;
+	global $wgOut, $wgRequest;
 	
 	$target = $wgRequest->getVal( 'target' );
 	$oldid = $wgRequest->getIntArray( 'oldid' );
 	
-	$sk = $wgUser->getSkin();
 	$page = Title::newFromUrl( $target );
 	
 	if( is_null( $page ) ) {
@@ -36,6 +35,10 @@ function wfSpecialRevisiondelete( $par = null ) {
 	}
 }
 
+/**
+ * Implements the GUI for Revision Deletion.
+ * @addtogroup SpecialPage
+ */
 class RevisionDeleteForm {
 	/**
 	 * @param Title $page
@@ -89,7 +92,7 @@ class RevisionDeleteForm {
 			$hidden[] = wfHidden( 'oldid[]', $revid );
 		}
 		
-		$special = Title::makeTitle( NS_SPECIAL, 'Revisiondelete' );
+		$special = SpecialPage::getTitleFor( 'Revisiondelete' );
 		$wgOut->addHtml( wfElement( 'form', array(
 			'method' => 'post',
 			'action' => $special->getLocalUrl( 'action=submit' ) ),
@@ -156,7 +159,7 @@ class RevisionDeleteForm {
 	function extractBitfield( $request ) {
 		$bitfield = 0;
 		foreach( $this->checks as $item ) {
-			list( $message, $name, $field ) = $item;
+			list( /* message */ , $name, $field ) = $item;
 			if( $request->getCheck( $name ) ) {
 				$bitfield |= $field;
 			}
@@ -167,11 +170,14 @@ class RevisionDeleteForm {
 	function save( $bitfield, $reason ) {
 		$dbw = wfGetDB( DB_MASTER );
 		$deleter = new RevisionDeleter( $dbw );
-		$ok = $deleter->setVisibility( $this->revisions, $bitfield, $reason );
+		$deleter->setVisibility( $this->revisions, $bitfield, $reason );
 	}
 }
 
-
+/**
+ * Implements the actions for Revision Deletion.
+ * @addtogroup SpecialPage
+ */
 class RevisionDeleter {
 	function __construct( $db ) {
 		$this->db = $db;

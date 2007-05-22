@@ -24,7 +24,7 @@ class StubObject {
 	}
 
 	static function isRealObject( $obj ) {
-		return is_object( $obj ) && !is_a( $obj, 'StubObject' );
+		return is_object( $obj ) && !($obj instanceof StubObject);
 	}
 
 	function _call( $name, $args ) {
@@ -35,7 +35,7 @@ class StubObject {
 	function _newObject() {
 		return wfCreateObject( $this->mClass, $this->mParams );
 	}
-	
+
 	function __call( $name, $args ) {
 		return $this->_call( $name, $args );
 	}
@@ -89,11 +89,19 @@ class StubUserLang extends StubObject {
 
 	function _newObject() {
 		global $wgContLanguageCode, $wgRequest, $wgUser, $wgContLang;
-		$code = $wgRequest->getVal('uselang', '');
-		if ($code == '')
-			$code = $wgUser->getOption('language');
+		$code = $wgRequest->getVal('uselang', $wgUser->getOption('language') );
+
+		// if variant is explicitely selected, use it instead the one from wgUser
+		// see bug #7605
+		if($wgContLang->hasVariants()){
+			$variant = $wgContLang->getPreferredVariant();
+			if($variant != $wgContLanguageCode)
+				$code = $variant;
+		}	 
+
 		# Validate $code
-		if( empty( $code ) || !preg_match( '/^[a-z]+(-[a-z]+)?$/', $code ) ) {
+		if( empty( $code ) || !preg_match( '/^[a-z-]+$/', $code ) ) {
+			wfDebug( "Invalid user language code\n" );
 			$code = $wgContLanguageCode;
 		}
 
@@ -120,7 +128,7 @@ class StubUser extends StubObject {
 			$user = new User;
 		} else {
 			$user = User::newFromSession();
-			wfRunHooks('AutoAuthenticate',array($user));
+			wfRunHooks('AutoAuthenticate',array(&$user));
 		}
 		return $user;
 	}

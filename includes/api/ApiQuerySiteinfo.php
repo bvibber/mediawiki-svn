@@ -1,12 +1,11 @@
 <?php
 
-
 /*
  * Created on Sep 25, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
+ * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,6 +28,11 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiQueryBase.php');
 }
 
+/**
+ * A query action to return meta information about the wiki site.
+ * 
+ * @addtogroup API
+ */
 class ApiQuerySiteinfo extends ApiQueryBase {
 
 	public function __construct($query, $moduleName) {
@@ -44,7 +48,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 
 				case 'general' :
 
-					global $wgSitename, $wgVersion, $wgCapitalLinks;
+					global $wgSitename, $wgVersion, $wgCapitalLinks, $wgRightsCode, $wgRightsText;
 					$data = array ();
 					$mainPage = Title :: newFromText(wfMsgForContent('mainpage'));
 					$data['mainpage'] = $mainPage->getText();
@@ -52,6 +56,9 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 					$data['sitename'] = $wgSitename;
 					$data['generator'] = "MediaWiki $wgVersion";
 					$data['case'] = $wgCapitalLinks ? 'first-letter' : 'case-sensitive'; // 'case-insensitive' option is reserved for future
+					if (isset($wgRightsCode))
+						$data['rightscode'] = $wgRightsCode;
+					$data['rights'] = $wgRightsText;
 					$this->getResult()->addValue('query', $p, $data);
 					break;
 
@@ -65,10 +72,10 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 						);
 						ApiResult :: setContent($data[$ns], $title);
 					}
-					ApiResult :: setIndexedTagName($data, 'ns');
+					$this->getResult()->setIndexedTagName($data, 'ns');
 					$this->getResult()->addValue('query', $p, $data);
 					break;
-
+					
 				default :
 					ApiBase :: dieDebug(__METHOD__, "Unknown prop=$p");
 			}

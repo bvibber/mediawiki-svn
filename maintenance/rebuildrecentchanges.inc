@@ -3,15 +3,14 @@
  * Rebuild recent changes table.
  *
  * @todo document
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 /** */
 function rebuildRecentChangesTablePass1()
 {
 	$fname = 'rebuildRecentChangesTablePass1';
-	$dbw =& wfGetDB( DB_MASTER );
+	$dbw = wfGetDB( DB_MASTER );
 	extract( $dbw->tableNames( 'recentchanges', 'cur', 'old' ) );
 
 	$dbw->delete( 'recentchanges', '*' );
@@ -41,17 +40,14 @@ function rebuildRecentChangesTablePass1()
 			'rev_page=page_id'
 		), $fname,
 		array(), // INSERT options
-		array( 'ORDER BY' => 'rev_timestamp', 'LIMIT' => 5000 ) // SELECT options
+		array( 'ORDER BY' => 'rev_timestamp DESC', 'LIMIT' => 5000 ) // SELECT options
 	);
 }
 
 function rebuildRecentChangesTablePass2()
 {
-	$dbw =& wfGetDB( DB_MASTER );
-	extract( $dbw->tableNames( 'recentchanges', 'revision' ) );
-
-	$ns = $id = $count = 0;
-	$title = $ct =  "";
+	$dbw = wfGetDB( DB_MASTER );
+	list ($recentchanges, $revision) = $dbw->tableNamesN( 'recentchanges', 'revision' );
 
 	print( "Updating links...\n" );
 
@@ -91,6 +87,76 @@ function rebuildRecentChangesTablePass2()
 			$lastOldId = intval( $obj->rc_this_oldid );
 		}
 	}
+	$dbw->freeResult( $res );
+}
+
+function rebuildRecentChangesTablePass3()
+{
+	global $wgGroupPermissions, $wgUseRCPatrol;
+			
+	$dbw = wfGetDB( DB_MASTER );
+	
+	list ($recentchanges, $usergroups) = $dbw->tableNamesN( 'recentchanges', 'user_groups' );
+
+	$botgroups = $autopatrolgroups = array();
+	foreach( $wgGroupPermissions as $group => $rights ) {
+		if( isset( $rights['bot'] ) && $rights['bot'] == true ) {
+			$botgroups[] = "'" . $dbw->strencode( $group ) . "'";
+		}
+		if( $wgUseRCPatrol && isset( $rights['autopatrol'] ) && $rights['autopatrol'] == true ) {
+			$autopatrolgroups[] = "'" . $dbw->strencode( $group ) . "'";
+		}
+	}
+	# Flag our recent bot edits
+	if( !empty($botgroups) ) {
+		$botwhere = implode(',',$botgroups);
+		$botusers = array();
+
+		print( "Flagging bot account edits...\n" );
+
+		# Find all users in RC that are bots
+		$sql = "SELECT DISTINCT rc_user FROM $recentchanges " .
+			"LEFT JOIN $usergroups ON rc_user=ug_user " . 
+			"WHERE ug_group IN($botwhere)";
+		$res = $dbw->query( $sql, DB_MASTER );
+
+		while( $obj = $dbw->fetchObject( $res ) ) {
+			$botusers[] = $obj->rc_user;
+		}
+		# Fill in the rc_bot field
+		if( !empty($botusers) ) {
+			$botwhere = implode(',',$botusers);
+			$sql2 = "UPDATE $recentchanges SET rc_bot=1 " .
+				"WHERE rc_user IN($botwhere)";
+			$dbw->query( $sql2 );
+		}
+	}
+	# Flag our recent autopatrolled edits
+	if( !empty($autopatrolgroups) ) {
+		$patrolwhere = implode(',',$autopatrolgroups);
+		$patrolusers = array();
+
+		print( "Flagging auto-patrolled edits...\n" );
+
+		# Find all users in RC with autopatrol rights
+		$sql = "SELECT DISTINCT rc_user FROM $recentchanges " .
+			"LEFT JOIN $usergroups ON rc_user=ug_user " . 
+			"WHERE ug_group IN($patrolwhere)";
+		$res = $dbw->query( $sql, DB_MASTER );
+
+		while( $obj = $dbw->fetchObject( $res ) ) {
+			$patrolusers[] = $obj->rc_user;
+		}
+		
+		# Fill in the rc_patrolled field
+		if( !empty($patrolusers) ) {
+			$patrolwhere = implode(',',$patrolusers);
+			$sql2 = "UPDATE $recentchanges SET rc_patrolled=1 " .
+				"WHERE rc_user IN($patrolwhere)";
+			$dbw->query( $sql2 );
+		}
+	}
+	
 	$dbw->freeResult( $res );
 }
 

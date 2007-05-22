@@ -1,12 +1,11 @@
 <?php
 
-
 /*
  * Created on Sep 25, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
+ * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,6 +28,11 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiQueryBase.php');
 }
 
+/**
+ * A query module to show basic page information.
+ * 
+ * @addtogroup API
+ */
 class ApiQueryInfo extends ApiQueryBase {
 
 	public function __construct($query, $moduleName) {
@@ -38,25 +42,39 @@ class ApiQueryInfo extends ApiQueryBase {
 	public function requestExtraData() {
 		$pageSet = $this->getPageSet();
 		$pageSet->requestField('page_is_redirect');
+		$pageSet->requestField('page_is_new');
+		$pageSet->requestField('page_counter');
 		$pageSet->requestField('page_touched');
 		$pageSet->requestField('page_latest');
+		$pageSet->requestField('page_len');
 	}
 
 	public function execute() {
 
 		$pageSet = $this->getPageSet();
 		$titles = $pageSet->getGoodTitles();
-		$result = & $this->getResult();
+		$result = $this->getResult();
 
 		$pageIsRedir = $pageSet->getCustomField('page_is_redirect');
+		$pageIsNew = $pageSet->getCustomField('page_is_new');
+		$pageCounter = $pageSet->getCustomField('page_counter');
 		$pageTouched = $pageSet->getCustomField('page_touched');
 		$pageLatest = $pageSet->getCustomField('page_latest');
+		$pageLength = $pageSet->getCustomField('page_len');
 
-		foreach ($titles as $pageid => $title) {
-			$pageInfo = array ('touched' => $pageTouched[$pageid], 'lastrevid' => $pageLatest[$pageid]);
+		foreach ( $titles as $pageid => $unused ) {
+			$pageInfo = array (
+				'touched' => wfTimestamp(TS_ISO_8601, $pageTouched[$pageid]),
+				'lastrevid' => intval($pageLatest[$pageid]),
+				'counter' => intval($pageCounter[$pageid]),
+				'length' => intval($pageLength[$pageid]),
+			);
 
 			if ($pageIsRedir[$pageid])
 				$pageInfo['redirect'] = '';
+
+			if ($pageIsNew[$pageid])
+				$pageInfo['new'] = '';
 
 			$result->addValue(array (
 				'query',

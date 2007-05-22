@@ -3,7 +3,7 @@
 Security reminder: MediaWiki does not require PHP's register_globals
 setting since version 1.2.0. If you have it on, turn it *off* if you can.
 
-== MediaWiki 1.9 ==
+== MediaWiki 1.11 ==
 
 THIS IS NOT A RELEASE YET.
 
@@ -12,60 +12,148 @@ quarterly snapshot releases. The latest development code is always kept
 "ready to run", and in fact runs our own sites on Wikipedia.
 
 Release branches will continue to receive security updates for about a year
-from first release, but nonessential bugfixes and feature development happen
+from first release, but nonessential bugfixes and feature developments
 will be made on the development trunk and appear in the next quarterly release.
 
 Those wishing to use the latest code instead of a branch release can obtain
 it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
-== Configuration changes ==
+== Configuration changes since 1.10 ==
+* $wgThumbUpright - Adjust width of upright images when parameter 'upright' is
+  used
 
+== New features since 1.10 ==
 
-== Major new features ==
+* (bug 8868) Separate "blocked" message for autoblocks
+* Adding expiry of block to block messages
+* Bulk mail options ($wgEnotifImpersonal, $wgEnotifUseJobQ) for large sites
+* Links to redirect pages in categories are wrapped in
+  <span class="redirect-in-category"></span>
+* Introduced 'ImageOpenShowImageInlineBefore' hook; see docs/hooks.txt for
+  more information
+* (bug 9628) Show warnings about slave lag on Special:Contributions,
+  Special:Watchlist
+* (bug 8818) Expose "wpDestFile" as parameter $1 to "uploaddisabledtext"
+* Introducing new image parameter 'upright' and corresponding variable
+  $wgThumbUpright. This allows better proportional view of upright images
+  related to landscape images on a page without nailing the width of upright
+  images to a fix value which makes views for anon unproportional and user
+  preferences useless
+  
+== Bugfixes since 1.10 ==
 
+* (bug 9712) Use Arabic comma in date/time formats for Arabic and Farsi
+* (bug 9670) Follow redirects when render edit section links to transcluded
+  templates.
+* (bug 6204) Fix incorrect unindentation with $wgMaxTocLevel
+* (bug 3431) Suppress "next page" link in Special:Search at end of results
+* Don't show unblock form if the user doesn't have permission to use it
+  (cosmetic change, no vulnerabilities existed)
+* Subtitle success message when unblocking a block ID instead of a pseudo link
+  like [[User:#123|#123]]
+* Use the standard HTTP fetch functions when retrieving remote wiki pages
+  through transwiki, so we can take advantage of cURL goodies if available
+* Disable custom user javascript in Special:Preferences, to avoid the risk
+  of a compromised script sniffing passwords etc.
+* (bug 9854, 3770) Clip overflow text in gallery boxes for visual cleanliness
+  instead of letting it flow outside the box or trigger ugly scroll bars.
+* Tooltips for print version and permalink
+* Links to the MediaWiki namespace for system messages having their default
+  values are no longer shown as nonexistent (e.g., in red)
+* Special:Ipblocklist differentiates between empty list and no search results.
+* (bug 5375) profiling does not respect read-only mode.
+* (bug 7070) monobook/user.gif has antialias artifacts
+* (bug 9123) Safer way when applying $wgLocalTZoffset
+* (bug 9896) Documentation for $wgSquidServers and X-FORWARDED-FOR
+* (bug 9417) Uploading new versions of images when using Postgres no longer 
+  throws warnings.
+* (bug 9908) Using tsearch2 with Postgres 8.1 no longer gives an error.
+* (bug 1438) Fix for diff table layout on very wide lines.
+  Diff style rules have been broken out to common/diff.css,
+  and the dupes removed from the default skin files.
+  Skins can still override the default rules.
+* (bug 1229) Balance columns in diff display evenly
+* Right-align diff line numbers in RTL language display
+* (bug 9332) Fix instructions in tests/README
+* (bug 9813) Reject usernames containing '#' to avoid silent truncation
+  of fragments during the normalisation process
+* (bug 7989) RSS feeds content now use black text when using white background.
+* (bug 9971) Typo in a french language message.
+* (bug 9973) Changed size was shown in advanced recentchanges collapsible items
+  with $wgRCShowChangedSized = false.
+* Fix PHP strict standards warning in enhanced recent changes.
+* (bug 5850) Added hexadecimal html entities comments for $digitTransformTable
+  entries.
+* Returnto now works with special pages with subpage parameters
+* (bug 7432) Change language name for Aromanian (roa-rup)
 
-== Changes since 1.8 ==
+== MediaWiki API changes since 1.10 ==
 
-* (bug 6835) Removing the includes/Parser.php::getTemplateArgs() function, 
-  because it seems to be unused.
-* (bug 7139) Increasing the visual width of the edit summary field on larger
-  screen sizes, for the default monobook skin.
-* Fix PHP notice and estimates for dumpBackup.php and friends
-* Improved register_globals paranoia checks
-* (bug 7545) Fix PHP version check on install
-* Disable PHP exception backtrace printing unless $wgShowExceptionDetails
-  is set. Backtraces may contain sensitive information in function call
-  parameters.
-* (bug 6164) Avoid smashing Cite state if message transformation triggers
-  during bad image list check, by skipping message transformation.
-  This isn't a good permanent fix.
-* (bug 6918) Stopped borders and backgrounds from showing through floated
-  tables in Monobook
-* (bug 6868) Un-hardcode section edit link style
-* (bug 3205) Stop right floats from stacking horizontally in non-Monobook skins
-* (bug 2013) Inherit ratios and not computed values for line-height
-* Added global $wgStyleVersion to centralize bumping CSS and JS file versions
-  for cache-friendly style and script updating
-* (bug 7562) Fix non-ASCII namespaces on Windows/XAMPP servers
-* Friendlier check for PHP 5 in command-line scripts; it's common for parallel
-  PHP 4 and 5 installations to interfere on the command-line.
-* Fix regression in autoconfirm permission check
-* (bug 3015) Add CSS ids to subcategory and page sections on category pages
-* (bug 7587) Fix erroneous id for specialpage tab, enabling informative popup
+(For ongoing development discussion, see http://www.mediawiki.org/wiki/API)
 
+* New properties: links, templates, images, langlinks, categories, external links
+* Breaking Change: imagelinks renamed into imageusage (il->iu)
+* Bug fix: incorrect generator behavior in some cases
+* JSON format allows an optional callback function to wrap the result.
+* Login module disabled until a more secure solution can be implemented
+* (bug 9938) Querying by revision identifier returns the most recent revision
+  for the corresponding page, rather than the requested revision
+* (bug 8772) Filter page revision queries by user
+* (bug 9927) User contributions queries do not accept IP addresses
+* Watchlist feed now reports a proper feed item when the user is not logged in
+* Watchlist feed date bug fixed - automatically shows one last day
+* Watchlist feed now allows to specify number of hours to monitor
+* list=allpages now returns a list instead of a map in json format
+* Breaking Change: in json, revisions are now returned as a list, not as a map.
+* Add: prop=info can show page is new flag, current page length, and visit counter.
+* Change: Query watchlist now shows flags only when explicitly requested with wlparam=flags
+          rc_this_oldid (textid) is no longer accessible from query watchlist
+* action=usercontribs: additional filtering by ucshow=; selection of needed fields with ucprop=;
+  the textid (rev_text_id) is no longer being exposed
+* breaking change: backlinks, embeddedin & imageusage now return lists in json instead of a map,
+                   and do not return anything when titles do not exist. (bug 9970)
+* added query parameter indexpageids to list the page ids of all returned page items (bug 9121)
 
-== Languages updated ==
+== Maintenance script changes since 1.10 ==
 
+* Add support for wgMaxTocLevel option in parserTests
+* (bug 6823) dumpHTML: explicitly disable article view counter
+
+== Languages updated since 1.10 ==
+
+* Arabic (ar)
+* Catalan (ca)
+* Danish (da)
 * German (de)
+* Spanish (es)
+* Farsi (fa)
+* Finnish (fi)
+* French (fr)
 * Hebrew (he)
 * Indonesian (id)
-* Occitan (oc)
-* Upper Sorbian (hsb)
-
+* Italian (it)
+* Japanese (ja)
+* Kabyle (kab)
+* Kazakh (kk)
+* Kurdish (ku)
+* Lithuanian (lt)
+* Norwegian (no)
+* Polish (pl)
+* Russian (ru)
+* Somali (so)
+* Sundanese (su)
+* Swedish (sv)
+* Chinese (PRC) (zh-cn)
+* Chinese (Taiwan) (zh-tw)
+* Cantonese (zh-yue)
 
 == Compatibility ==
 
-MediaWiki 1.9 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
+MediaWiki 1.11 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
+
+PHP 5.0.x fails on 64-bit systems due to serious bugs with array processing:
+http://bugs.php.net/bug.php?id=34879
+Upgrade affected systems to PHP 5.1 or higher.
 
 MySQL 3.23.x is no longer supported; some older hosts may need to upgrade.
 At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
@@ -73,21 +161,17 @@ At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
 
 == Upgrading ==
 
-Some minor database changes have been made since 1.7:
-* new fields and indexes on ipblocks
-* index change on recentchanges
+1.11 has several database changes since 1.10, and will not work without schema
+updates.
 
-Several changes from 1.5 and 1.6 do require updates to be run on upgrade.
-To ensure that these tables are filled with data, run refreshLinks.php after
-the upgrade.
+If upgrading from before 1.7, you may want to run refreshLinks.php to ensure
+new database fields are filled with data.
 
 If you are upgrading from MediaWiki 1.4.x or earlier, some major database
 changes are made, and there is a slightly higher chance that things could
 break. Don't forget to always back up your database before upgrading!
 
 See the file UPGRADE for more detailed upgrade instructions.
-
-
 
 === Caveats ===
 
@@ -98,14 +182,15 @@ cases, but this is not recommended on live sites. (This must be set for
 MathML to display properly in Mozilla.)
 
 
-For notes on 1.5.x and older releases, see HISTORY.
+For notes on 1.10.x and older releases, see HISTORY.
 
 
 === Online documentation ===
 
 Documentation for both end-users and site administrators is currently being
-built up on Meta-Wikipedia, and is covered under the GNU Free Documentation
-License:
+built up on MediaWiki.org, and is covered under the GNU Free Documentation
+License (except for pages that explicitly state that their contents are in
+the public domain) :
 
   http://www.mediawiki.org/wiki/Documentation
 
@@ -115,11 +200,11 @@ License:
 A MediaWiki-l mailing list has been set up distinct from the Wikipedia
 wikitech-l list:
 
-  http://mail.wikimedia.org/mailman/listinfo/mediawiki-l
+  http://lists.wikimedia.org/mailman/listinfo/mediawiki-l
 
 A low-traffic announcements-only list is also available:
 
-  http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce
+  http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce
 
 It's highly recommended that you sign up for one of these lists if you're
 going to run a public MediaWiki, so you can be notified of security fixes.

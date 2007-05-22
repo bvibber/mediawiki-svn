@@ -1,8 +1,7 @@
 <?php
 /**
  * Hold things related to displaying and saving user preferences.
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -18,14 +17,13 @@ function wfSpecialPreferences() {
 /**
  * Preferences form handling
  * This object will show the preferences form and can save it as well.
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 class PreferencesForm {
 	var $mQuickbar, $mOldpass, $mNewpass, $mRetypePass, $mStubs;
 	var $mRows, $mCols, $mSkin, $mMath, $mDate, $mUserEmail, $mEmailFlag, $mNick;
 	var $mUserLanguage, $mUserVariant;
-	var $mSearch, $mRecent, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
+	var $mSearch, $mRecent, $mRecentDays, $mHourDiff, $mSearchLines, $mSearchChars, $mAction;
 	var $mReset, $mPosted, $mToggles, $mSearchNs, $mRealName, $mImageSize;
 	var $mUnderline, $mWatchlistEdits;
 
@@ -34,7 +32,7 @@ class PreferencesForm {
 	 * Load some values
 	 */
 	function PreferencesForm( &$request ) {
-		global $wgLang, $wgContLang, $wgUser, $wgAllowRealName;
+		global $wgContLang, $wgUser, $wgAllowRealName;
 
 		$this->mQuickbar = $request->getVal( 'wpQuickbar' );
 		$this->mOldpass = $request->getVal( 'wpOldpass' );
@@ -54,6 +52,7 @@ class PreferencesForm {
 		$this->mUserVariant = $request->getVal( 'wpUserVariant' );
 		$this->mSearch = $request->getVal( 'wpSearch' );
 		$this->mRecent = $request->getVal( 'wpRecent' );
+		$this->mRecentDays = $request->getVal( 'wpRecentDays' );
 		$this->mHourDiff = $request->getVal( 'wpHourDiff' );
 		$this->mSearchLines = $request->getVal( 'wpSearchLines' );
 		$this->mSearchChars = $request->getVal( 'wpSearchChars' );
@@ -170,7 +169,7 @@ class PreferencesForm {
 
 	/**
 	 * Used to validate the user inputed timezone before saving it as
-	 * 'timeciorrection', will return '00:00' if fed bogus data.
+	 * 'timecorrection', will return '00:00' if fed bogus data.
 	 * Note: It's not a 100% correct implementation timezone-wise, it will
 	 * accept stuff like '14:30',
 	 * @access private
@@ -206,32 +205,32 @@ class PreferencesForm {
 	function savePreferences() {
 		global $wgUser, $wgOut, $wgParser;
 		global $wgEnableUserEmail, $wgEnableEmail;
-		global $wgEmailAuthentication, $wgMinimalPasswordLength;
+		global $wgEmailAuthentication;
 		global $wgAuth;
 
 
 		if ( '' != $this->mNewpass && $wgAuth->allowPasswordChange() ) {
 			if ( $this->mNewpass != $this->mRetypePass ) {
+				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'badretype' ) );
 				$this->mainPrefsForm( 'error', wfMsg( 'badretype' ) );
 				return;
 			}
 
-			if ( strlen( $this->mNewpass ) < $wgMinimalPasswordLength ) {
-				$this->mainPrefsForm( 'error', wfMsg( 'passwordtooshort', $wgMinimalPasswordLength ) );
-				return;
-			}
-
 			if (!$wgUser->checkPassword( $this->mOldpass )) {
+				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'wrongpassword' ) );
 				$this->mainPrefsForm( 'error', wfMsg( 'wrongpassword' ) );
 				return;
 			}
-			if (!$wgAuth->setPassword( $wgUser, $this->mNewpass )) {
-				$this->mainPrefsForm( 'error', wfMsg( 'externaldberror' ) );
+			
+			try {
+				$wgUser->setPassword( $this->mNewpass );
+				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'success' ) );
+				$this->mNewpass = $this->mOldpass = $this->mRetypePass = '';
+			} catch( PasswordError $e ) {
+				wfRunHooks( "PrefsPasswordAudit", array( $wgUser, $this->mNewpass, 'error' ) );
+				$this->mainPrefsForm( 'error', $e->getMessage() );
 				return;
 			}
-			$wgUser->setPassword( $this->mNewpass );
-			$this->mNewpass = $this->mOldpass = $this->mRetypePass = '';
-
 		}
 		$wgUser->setRealName( $this->mRealName );
 
@@ -267,6 +266,7 @@ class PreferencesForm {
 		$wgUser->setOption( 'contextlines', $this->validateIntOrNull( $this->mSearchLines ) );
 		$wgUser->setOption( 'contextchars', $this->validateIntOrNull( $this->mSearchChars ) );
 		$wgUser->setOption( 'rclimit', $this->validateIntOrNull( $this->mRecent ) );
+		$wgUser->setOption( 'rcdays', $this->validateInt( $this->mRecentDays, 1, 7 ) );
 		$wgUser->setOption( 'wllimit', $this->validateIntOrNull( $this->mWatchlistEdits, 0, 1000 ) );
 		$wgUser->setOption( 'rows', $this->validateInt( $this->mRows, 4, 1000 ) );
 		$wgUser->setOption( 'cols', $this->validateInt( $this->mCols, 4, 1000 ) );
@@ -325,16 +325,18 @@ class PreferencesForm {
 				$wgUser->setCookies();
 				$wgUser->saveSettings();
 			}
+			if( $oldadr != $newadr ) {
+				wfRunHooks( "PrefsEmailAudit", array( $wgUser, $oldadr, $newadr ) );
+			}
 		}
 
 		if( $needRedirect && $error === false ) {
-			$title =& Title::makeTitle( NS_SPECIAL, "Preferences" );
+			$title =& SpecialPage::getTitleFor( "Preferences" );
 			$wgOut->redirect($title->getFullURL('success'));
 			return;
 		}
 
 		$wgOut->setParserOptions( ParserOptions::newFromUser( $wgUser ) );
-		$po = ParserOptions::newFromUser( $wgUser );
 		$this->mainPrefsForm( $error === false ? 'success' : 'error', $error);
 	}
 
@@ -342,18 +344,16 @@ class PreferencesForm {
 	 * @access private
 	 */
 	function resetPrefs() {
-		global $wgUser, $wgLang, $wgContLang, $wgAllowRealName;
+		global $wgUser, $wgLang, $wgContLang, $wgContLanguageCode, $wgAllowRealName;
 
 		$this->mOldpass = $this->mNewpass = $this->mRetypePass = '';
 		$this->mUserEmail = $wgUser->getEmail();
 		$this->mUserEmailAuthenticationtimestamp = $wgUser->getEmailAuthenticationtimestamp();
 		$this->mRealName = ($wgAllowRealName) ? $wgUser->getRealName() : '';
-		$this->mUserLanguage = $wgUser->getOption( 'language' );
-		if( empty( $this->mUserLanguage ) ) {
-			# Quick hack for conversions, where this value is blank
-			global $wgContLanguageCode;
-			$this->mUserLanguage = $wgContLanguageCode;
-		}
+
+		# language value might be blank, default to content language
+		$this->mUserLanguage = $wgUser->getOption( 'language', $wgContLanguageCode );
+
 		$this->mUserVariant = $wgUser->getOption( 'variant');
 		$this->mEmailFlag = $wgUser->getOption( 'disablemail' ) == 1 ? 1 : 0;
 		$this->mNick = $wgUser->getOption( 'nickname' );
@@ -372,13 +372,13 @@ class PreferencesForm {
 		$this->mImageSize = $wgUser->getOption( 'imagesize' );
 		$this->mThumbSize = $wgUser->getOption( 'thumbsize' );
 		$this->mRecent = $wgUser->getOption( 'rclimit' );
+		$this->mRecentDays = $wgUser->getOption( 'rcdays' );
 		$this->mWatchlistEdits = $wgUser->getOption( 'wllimit' );
 		$this->mUnderline = $wgUser->getOption( 'underline' );
 		$this->mWatchlistDays = $wgUser->getOption( 'watchlistdays' );
 
 		$togs = User::getToggles();
 		foreach ( $togs as $tname ) {
-			$ttext = wfMsg('tog-'.$tname);
 			$this->mToggles[$tname] = $wgUser->getOption( $tname );
 		}
 
@@ -449,6 +449,38 @@ class PreferencesForm {
 	}
 
 	/**
+	 * Helper function for user information panel
+	 * @param $td1 label for an item
+	 * @param $td2 item or null
+	 * @param $td3 optional help or null
+	 * @return xhtml block
+	 */
+	function tableRow( $td1, $td2 = null, $td3 = null ) {
+		global $wgContLang;
+
+		$align['align'] = $wgContLang->isRtl() ? 'right' : 'left';
+
+		if ( is_null( $td3 ) ) {
+			$td3 = '';
+		} else {
+			$td3 = Xml::tags( 'tr', null,
+				Xml::tags( 'td', array( 'colspan' => '2' ), $td3 )
+			);
+		}
+
+		if ( is_null( $td2 ) ) {
+			$td1 = Xml::tags( 'td', $align + array( 'colspan' => '2' ), $td1 );
+			$td2 = '';
+		} else {
+			$td1 = Xml::tags( 'td', $align, $td1 );
+			$td2 = Xml::tags( 'td', $align, $td2 );
+		}
+
+		return Xml::tags( 'tr', null, $td1 . $td2 ). $td3 . "\n";
+	
+	}
+
+	/**
 	 * @access private
 	 */
 	function mainPrefsForm( $status , $message = '' ) {
@@ -464,6 +496,8 @@ class PreferencesForm {
 		$wgOut->setArticleRelated( false );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
+		$wgOut->disallowUserJs();  # Prevent hijacked user scripts from sniffing passwords etc.
+
 		if ( $this->mSuccess || 'success' == $status ) {
 			$wgOut->addWikitext( '<div class="successbox"><strong>'. wfMsg( 'savedprefs' ) . '</strong></div>' );
 		} else	if ( 'error' == $status ) {
@@ -478,7 +512,7 @@ class PreferencesForm {
 		$dateopts = $wgLang->getDatePreferences();
 		$togs = User::getToggles();
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Preferences' );
+		$titleObj = SpecialPage::getTitleFor( 'Preferences' );
 		$action = $titleObj->escapeLocalURL();
 
 		# Pre-expire some toggles so they won't show if disabled
@@ -488,14 +522,10 @@ class PreferencesForm {
 		$this->mUsedToggles[ 'enotifusertalkpages' ] = true;
 		$this->mUsedToggles[ 'enotifminoredits' ] = true;
 		$this->mUsedToggles[ 'enotifrevealaddr' ] = true;
+		$this->mUsedToggles[ 'ccmeonemails' ] = true;
 		$this->mUsedToggles[ 'uselivepreview' ] = true;
 
-		# Enotif
-		# <FIXME>
-		$this->mUserEmail = htmlspecialchars( $this->mUserEmail );
-		$this->mRealName = htmlspecialchars( $this->mRealName );
-		$rawNick = $this->mNick;
-		$this->mNick = htmlspecialchars( $this->mNick );
+
 		if ( !$this->mEmailFlag ) { $emfc = 'checked="checked"'; }
 		else { $emfc = ''; }
 
@@ -508,7 +538,7 @@ class PreferencesForm {
 				$disableEmailPrefs = true;
 				$skin = $wgUser->getSkin();
 				$emailauthenticated = wfMsg('emailnotauthenticated').'<br />' .
-					$skin->makeKnownLinkObj( Title::makeTitle( NS_SPECIAL, 'Confirmemail' ),
+					$skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Confirmemail' ),
 						wfMsg( 'emailconfirmlink' ) );
 			}
 		} else {
@@ -526,8 +556,6 @@ class PreferencesForm {
 		$enotifusertalkpages = ($wgEnotifUserTalk) ? $this->getToggle( 'enotifusertalkpages', false, $disableEmailPrefs ) : '';
 		$enotifminoredits = ($wgEnotifWatchlist && $wgEnotifMinorEdits) ? $this->getToggle( 'enotifminoredits', false, $disableEmailPrefs ) : '';
 		$enotifrevealaddr = (($wgEnotifWatchlist || $wgEnotifUserTalk) && $wgEnotifRevealEditorAddress) ? $this->getToggle( 'enotifrevealaddr', false, $disableEmailPrefs ) : '';
-		$prefs_help_email_enotif = ( $wgEnotifWatchlist || $wgEnotifUserTalk) ? ' ' . wfMsg('prefs-help-email-enotif') : '';
-		$prefs_help_realname = '';
 
 		# </FIXME>
 
@@ -535,94 +563,68 @@ class PreferencesForm {
 		$wgOut->addHTML( "<div id='preferences'>" );
 
 		# User data
-		#
-
-		$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg('prefs-personal') . "</legend>\n<table>\n");
 
 		$wgOut->addHTML(
-			$this->addRow(
-				wfMsg( 'username'),
-				$wgUser->getName()
-			)
+			Xml::openElement( 'fieldset ' ) .
+			Xml::element( 'legend', null, wfMsg('prefs-personal') ) .
+			Xml::openElement( 'table' ) .
+			$this->tableRow( Xml::element( 'h2', null, wfMsg( 'prefs-personal' ) ) )
 		);
 
-		$wgOut->addHTML(
-			$this->addRow(
-				wfMsg( 'uid' ),
-				$wgUser->getID()
-			)
-		);
+		$userInformationHtml =
+			$this->tableRow( wfMsgHtml( 'username' ), htmlspecialchars( $wgUser->getName() ) ) .
+			$this->tableRow( wfMsgHtml( 'uid' ), htmlspecialchars( $wgUser->getID() ) );
 
+		if( wfRunHooks( 'PreferencesUserInformationPanel', array( $this, &$userInformationHtml ) ) ) {
+			$wgOut->addHtml( $userInformationHtml );
+		}
 
-		if ($wgAllowRealName) {
+		if ( $wgAllowRealName ) {
 			$wgOut->addHTML(
-				$this->addRow(
-					'<label for="wpRealName">' . wfMsg('yourrealname') . '</label>',
-					"<input type='text' name='wpRealName' id='wpRealName' value=\"{$this->mRealName}\" size='25' />"
+				$this->tableRow(
+					Xml::label( wfMsg('yourrealname'), 'wpRealName' ),
+					Xml::input( 'wpRealName', 25, $this->mRealName, array( 'id' => 'wpRealName' ) ),
+					Xml::tags('div', array( 'class' => 'prefsectiontip' ),
+						wfMsgExt( 'prefs-help-realname', 'parseinline' )
+					)
 				)
 			);
 		}
-		if ($wgEnableEmail) {
+		if ( $wgEnableEmail ) {
 			$wgOut->addHTML(
-				$this->addRow(
-					'<label for="wpUserEmail">' . wfMsg( 'youremail' ) . '</label>',
-					"<input type='text' name='wpUserEmail' id='wpUserEmail' value=\"{$this->mUserEmail}\" size='25' />"
+				$this->tableRow(
+					Xml::label( wfMsg('youremail'), 'wpUserEmail' ),
+					Xml::input( 'wpUserEmail', 25, $this->mUserEmail, array( 'id' => 'wpUserEmail' ) ),
+					Xml::tags('div', array( 'class' => 'prefsectiontip' ),
+						wfMsgExt( 'prefs-help-email', 'parseinline' )
+					)
 				)
 			);
 		}
 
 		global $wgParser;
 		if( !empty( $this->mToggles['fancysig'] ) &&
-			false === $wgParser->validateSig( $rawNick ) ) {
-			$invalidSig = $this->addRow(
+			false === $wgParser->validateSig( $this->mNick ) ) {
+			$invalidSig = $this->tableRow(
 				'&nbsp;',
-				'<span class="error">' . wfMsgHtml( 'badsig' ) . '<span>'
+				Xml::element( 'span', array( 'class' => 'error' ), wfMsg( 'badsig' ) )
 			);
 		} else {
 			$invalidSig = '';
 		}
 
 		$wgOut->addHTML(
-			$this->addRow(
-				'<label for="wpNick">' . wfMsg( 'yournick' ) . '</label>',
-				"<input type='text' name='wpNick' id='wpNick' value=\"{$this->mNick}\" size='25' />"
+			$this->tableRow(
+				Xml::label( wfMsg( 'yournick' ), 'wpNick' ),
+				Xml::input( 'wpNick', 25, $this->mNick, array( 'id' => 'wpNick' ) )
 			) .
 			$invalidSig .
-			# FIXME: The <input> part should be where the &nbsp; is, getToggle() needs
-			# to be changed to out return its output in two parts. -ævar
-			$this->addRow(
-				'&nbsp;',
-				$this->getToggle( 'fancysig' )
-			)
+			$this->tableRow( '&nbsp;', $this->getToggle( 'fancysig' ) )
 		);
 
-		/**
-		 * Make sure the site language is in the list; a custom language code
-		 * might not have a defined name...
-		 */
-		$languages = $wgLang->getLanguageNames( true );
-		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
-			$languages[$wgContLanguageCode] = $wgContLanguageCode;
-		}
-		ksort( $languages );
-
-		/**
-		 * If a bogus value is set, default to the content language.
-		 * Otherwise, no default is selected and the user ends up
-		 * with an Afrikaans interface since it's first in the list.
-		 */
-		$selectedLang = isset( $languages[$this->mUserLanguage] ) ? $this->mUserLanguage : $wgContLanguageCode;
-		$selbox = null;
-		foreach($languages as $code => $name) {
-			global $IP;
-			$sel = ($code == $selectedLang)? ' selected="selected"' : '';
-			$selbox .= "<option value=\"$code\"$sel>$code - $name</option>\n";
-		}
+		list( $lsLabel, $lsSelect) = Xml::languageSelector( $this->mUserLanguage );
 		$wgOut->addHTML(
-			$this->addRow(
-				'<label for="wpUserLanguage">' . wfMsg('yourlanguage') . '</label>',
-				"<select name='wpUserLanguage' id='wpUserLanguage'>$selbox</select>"
-			)
+			$this->tableRow( $lsLabel, $lsSelect )
 		);
 
 		/* see if there are multiple language variants to choose from*/
@@ -630,6 +632,7 @@ class PreferencesForm {
 			$variants = $wgContLang->getVariants();
 			$variantArray = array();
 
+			$languages = Language::getLanguageNames( true );
 			foreach($variants as $v) {
 				$v = str_replace( '_', '-', strtolower($v));
 				if( array_key_exists( $v, $languages ) ) {
@@ -638,75 +641,82 @@ class PreferencesForm {
 				}
 			}
 
-			$selbox = null;
-			foreach($variantArray as $code => $name) {
-				$sel = $code == $this->mUserVariant ? 'selected="selected"' : '';
-				$selbox .= "<option value=\"$code\" $sel>$code - $name</option>";
+			$options = "\n";
+			foreach( $variantArray as $code => $name ) {
+				$selected = ($code == $this->mUserVariant);
+				$options .= Xml::option( "$code - $name", $code, $selected ) . "\n";
 			}
 
 			if(count($variantArray) > 1) {
 				$wgOut->addHtml(
-					$this->addRow( wfMsg( 'yourvariant' ), "<select name='wpUserVariant'>$selbox</select>" )
+					$this->tableRow(
+						Xml::label( wfMsg( 'yourvariant' ), 'wpUserVariant' ),
+						Xml::tags( 'select',
+							array( 'name' => 'wpUserVariant', 'id' => 'wpUserVariant' ),
+							$options
+						)
+					)
 				);
 			}
 		}
-		$wgOut->addHTML('</table>');
 
 		# Password
-		if( $wgAuth->allowPasswordChange() ) {
-			$this->mOldpass = htmlspecialchars( $this->mOldpass );
-			$this->mNewpass = htmlspecialchars( $this->mNewpass );
-			$this->mRetypePass = htmlspecialchars( $this->mRetypePass );
-	
-			$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'changepassword' ) . '</legend><table>');
+		if( $wgAuth->allowPasswordChange() ) {	
 			$wgOut->addHTML(
-				$this->addRow(
-					'<label for="wpOldpass">' . wfMsg( 'oldpassword' ) . '</label>',
-					"<input type='password' name='wpOldpass' id='wpOldpass' value=\"{$this->mOldpass}\" size='20' />"
+				$this->tableRow( Xml::element( 'h2', null, wfMsg( 'changepassword' ) ) ) .
+				$this->tableRow(
+					Xml::label( wfMsg( 'oldpassword' ), 'wpOldpass' ),
+					Xml::password( 'wpOldpass', 25, $this->mOldpass, array( 'id' => 'wpOldpass' ) )
 				) .
-				$this->addRow(
-					'<label for="wpNewpass">' . wfMsg( 'newpassword' ) . '</label>',
-					"<input type='password' name='wpNewpass' id='wpNewpass' value=\"{$this->mNewpass}\" size='20' />"
+				$this->tableRow(
+					Xml::label( wfMsg( 'newpassword' ), 'wpNewpass' ),
+					Xml::password( 'wpNewpass', 25, $this->mNewpass, array( 'id' => 'wpNewpass' ) )
 				) .
-				$this->addRow(
-					'<label for="wpRetypePass">' . wfMsg( 'retypenew' ) . '</label>',
-					"<input type='password' name='wpRetypePass' id='wpRetypePass' value=\"{$this->mRetypePass}\" size='20' />"
+				$this->tableRow(
+					Xml::label( wfMsg( 'retypenew' ), 'wpRetypePass' ),
+					Xml::password( 'wpRetypePass', 25, $this->mRetypePass, array( 'id' => 'wpRetypePass' ) )
 				) .
-				"</table>\n" .
-				$this->getToggle( "rememberpassword" ) . "</fieldset>\n\n" );
+				Xml::tags( 'tr', null,
+					Xml::tags( 'td', array( 'colspan' => '2' ),
+						$this->getToggle( "rememberpassword" )
+					)
+				)
+			);
 		}
 
 		# <FIXME>
 		# Enotif
-		if ($wgEnableEmail) {
-			$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'email' ) . '</legend>' );
+		if ( $wgEnableEmail ) {
+
+			$moreEmail = '';
+			if ($wgEnableUserEmail) {
+				$emf = wfMsg( 'allowemail' );
+				$disabled = $disableEmailPrefs ? ' disabled="disabled"' : '';
+				$moreEmail =
+				"<input type='checkbox' $emfc $disabled value='1' name='wpEmailFlag' id='wpEmailFlag' /> <label for='wpEmailFlag'>$emf</label>";
+			}
+
+
 			$wgOut->addHTML(
+				$this->tableRow( Xml::element( 'h2', null, wfMsg( 'email' ) ) ) .
+				$this->tableRow(
 					$emailauthenticated.
 					$enotifrevealaddr.
 					$enotifwatchlistpages.
 					$enotifusertalkpages.
-					$enotifminoredits );
-			if ($wgEnableUserEmail) {
-			$emf = wfMsg( 'allowemail' );
-				$disabled = $disableEmailPrefs ? ' disabled="disabled"' : '';
-				$wgOut->addHTML(
-				"<div><input type='checkbox' $emfc $disabled value='1' name='wpEmailFlag' id='wpEmailFlag' /> <label for='wpEmailFlag'>$emf</label></div>" );
-			}
-
-			$wgOut->addHTML( '</fieldset>' );
+					$enotifminoredits.
+					$moreEmail.
+					$this->getToggle( 'ccmeonemails' )
+				)
+			);
 		}
 		# </FIXME>
 
-		# Show little "help" tips for the real name and email address options
-		if( $wgAllowRealName || $wgEnableEmail ) {
-			if( $wgAllowRealName )
-				$tips[] = wfMsg( 'prefs-help-realname' );
-			if( $wgEnableEmail )
-				$tips[] = wfMsg( 'prefs-help-email' );
-			$wgOut->addHtml( '<div class="prefsectiontip">' . implode( '<br />', $tips ) . '</div>' );
-		}		
+		$wgOut->addHTML(
+			Xml::closeElement( 'table' ) .
+			Xml::closeElement( 'fieldset' )
+		);
 
-		$wgOut->addHTML( '</fieldset>' );
 
 		# Quickbar
 		#
@@ -732,12 +742,19 @@ class PreferencesForm {
 		# Only show members of Skin::getSkinNames() rather than
 		# $skinNames (skins is all skin names from Language.php)
 		$validSkinNames = Skin::getSkinNames();
-		foreach ($validSkinNames as $skinkey => $skinname ) {
+		# Sort by UI skin name. First though need to update validSkinNames as sometimes
+		# the skinkey & UI skinname differ (e.g. "standard" skinkey is "Classic" in the UI).
+		foreach ($validSkinNames as $skinkey => & $skinname ) {
+			if ( isset( $skinNames[$skinkey] ) )  {
+				$skinname = $skinNames[$skinkey];
+			}
+		}
+		asort($validSkinNames);
+		foreach ($validSkinNames as $skinkey => $sn ) {
 			if ( in_array( $skinkey, $wgSkipSkins ) ) {
 				continue;
 			}
 			$checked = $skinkey == $this->mSkin ? ' checked="checked"' : '';
-			$sn = isset( $skinNames[$skinkey] ) ? $skinNames[$skinkey] : $skinname;
 
 			$mplink = htmlspecialchars($mptitle->getLocalURL("useskin=$skinkey"));
 			$previewlink = "<a target='_blank' href=\"$mplink\">$previewtext</a>";
@@ -753,32 +770,53 @@ class PreferencesForm {
 		if( $wgUseTeX ) {
 			$wgOut->addHTML( "<fieldset>\n<legend>" . wfMsg('math') . '</legend>' );
 			foreach ( $mathopts as $k => $v ) {
-				$checked = $k == $this->mMath ? ' checked="checked"' : '';
-				$wgOut->addHTML( "<div><label><input type='radio' name='wpMath' value=\"$k\"$checked /> ".wfMsg($v)."</label></div>\n" );
+				$checked = ($k == $this->mMath);
+				$wgOut->addHTML(
+					Xml::openElement( 'div' ) .
+					Xml::radioLabel( wfMsg( $v ), 'wpMath', $k, "mw-sp-math-$k", $checked ) .
+					Xml::closeElement( 'div' ) . "\n"
+				);
 			}
 			$wgOut->addHTML( "</fieldset>\n\n" );
 		}
 
 		# Files
 		#
-		$wgOut->addHTML("<fieldset>
-			<legend>" . wfMsg( 'files' ) . "</legend>
-			<div><label for='wpImageSize'>" . wfMsg('imagemaxsize') . "</label> <select id='wpImageSize' name='wpImageSize'>");
+		$wgOut->addHTML(
+			"<fieldset>\n" . Xml::element( 'legend', null, wfMsg( 'files' ) ) . "\n"
+		);
 
 		$imageLimitOptions = null;
 		foreach ( $wgImageLimits as $index => $limits ) {
-			$selected = ($index == $this->mImageSize) ? 'selected="selected"' : '';
-			$imageLimitOptions .= "<option value=\"{$index}\" {$selected}>{$limits[0]}×{$limits[1]}". wfMsgHtml('unit-pixel') ."</option>\n";
+			$selected = ($index == $this->mImageSize);
+			$imageLimitOptions .= Xml::option( "{$limits[0]}×{$limits[1]}" .
+				wfMsg('unit-pixel'), $index, $selected );
 		}
 
+		$imageSizeId = 'wpImageSize';
+		$wgOut->addHTML(
+			"<div>" . Xml::label( wfMsg('imagemaxsize'), $imageSizeId ) . " " .
+			Xml::openElement( 'select', array( 'name' => $imageSizeId, 'id' => $imageSizeId ) ) .
+				$imageLimitOptions .
+			Xml::closeElement( 'select' ) . "</div>\n"
+		);
+
 		$imageThumbOptions = null;
-		$wgOut->addHTML( "{$imageLimitOptions}</select></div>
-			<div><label for='wpThumbSize'>" . wfMsg('thumbsize') . "</label> <select name='wpThumbSize' id='wpThumbSize'>");
 		foreach ( $wgThumbLimits as $index => $size ) {
-			$selected = ($index == $this->mThumbSize) ? 'selected="selected"' : '';
-			$imageThumbOptions .= "<option value=\"{$index}\" {$selected}>{$size}". wfMsgHtml('unit-pixel') ."</option>\n";
+			$selected = ($index == $this->mThumbSize);
+			$imageThumbOptions .= Xml::option($size . wfMsg('unit-pixel'), $index,
+				$selected);
 		}
-		$wgOut->addHTML( "{$imageThumbOptions}</select></div></fieldset>\n\n");
+
+		$thumbSizeId = 'wpThumbSize';
+		$wgOut->addHTML(
+			"<div>" . Xml::label( wfMsg('thumbsize'), $thumbSizeId ) . " " .
+			Xml::openElement( 'select', array( 'name' => $thumbSizeId, 'id' => $thumbSizeId ) ) .
+				$imageThumbOptions .
+			Xml::closeElement( 'select' ) . "</div>\n"
+		);
+
+		$wgOut->addHTML( "</fieldset>\n\n" );
 
 		# Date format
 		#
@@ -822,7 +860,7 @@ class PreferencesForm {
 
 		# Editing
 		#
-		global $wgLivePreview, $wgUseRCPatrol;
+		global $wgLivePreview;
 		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'textboxsize' ) . '</legend>
 			<div>' .
 				wfInputLabel( wfMsg( 'rows' ), 'wpRows', 'wpRows', 3, $this->mRows ) .
@@ -837,39 +875,60 @@ class PreferencesForm {
 				'showtoolbar',
 				'previewonfirst',
 				'previewontop',
-				'watchcreations',
-				'watchdefault',
 				'minordefault',
 				'externaleditor',
 				'externaldiff',
 				$wgLivePreview ? 'uselivepreview' : false,
-				$wgUser->isAllowed( 'patrol' ) && $wgUseRCPatrol ? 'autopatrol' : false,
 				'forceeditsummary',
 			) ) . '</fieldset>'
 		);
-		$this->mUsedToggles['autopatrol'] = true; # Don't show this up for users who can't; the handler below is dumb and doesn't know it
 
-		$wgOut->addHTML( '<fieldset><legend>' . htmlspecialchars(wfMsg('prefs-rc')) . '</legend>' .
-					wfInputLabel( wfMsg( 'recentchangescount' ),
-						'wpRecent', 'wpRecent', 3, $this->mRecent ) .
-			$this->getToggles( array(
-				'hideminor',
-				$wgRCShowWatchingUsers ? 'shownumberswatching' : false,
-				'usenewrc' )
-			) . '</fieldset>'
-		);
+		# Recent changes
+		$wgOut->addHtml( '<fieldset><legend>' . wfMsgHtml( 'prefs-rc' ) . '</legend>' );
+		
+		$rc  = '<table><tr>';
+		$rc .= '<td>' . Xml::label( wfMsg( 'recentchangesdays' ), 'wpRecentDays' ) . '</td>';
+		$rc .= '<td>' . Xml::input( 'wpRecentDays', 3, $this->mRecentDays, array( 'id' => 'wpRecentDays' ) ) . '</td>';		
+		$rc .= '</tr><tr>';
+		$rc .= '<td>' . Xml::label( wfMsg( 'recentchangescount' ), 'wpRecent' ) . '</td>';
+		$rc .= '<td>' . Xml::input( 'wpRecent', 3, $this->mRecent, array( 'id' => 'wpRecent' ) ) . '</td>';
+		$rc .= '</tr></table>';
+		$wgOut->addHtml( $rc );
+		
+		$wgOut->addHtml( '<br />' );
+		
+		$toggles[] = 'hideminor';
+		if( $wgRCShowWatchingUsers )
+			$toggles[] = 'shownumberswatching';
+		$toggles[] = 'usenewrc';
+		$wgOut->addHtml( $this->getToggles( $toggles ) );
+
+		$wgOut->addHtml( '</fieldset>' );
 
 		# Watchlist
-		$wgOut->addHTML( '<fieldset><legend>' . wfMsgHtml( 'prefs-watchlist' ) . '</legend>' );
+		$wgOut->addHtml( '<fieldset><legend>' . wfMsgHtml( 'prefs-watchlist' ) . '</legend>' );
+		
+		$wgOut->addHtml( wfInputLabel( wfMsg( 'prefs-watchlist-days' ), 'wpWatchlistDays', 'wpWatchlistDays', 3, $this->mWatchlistDays ) );
+		$wgOut->addHtml( '<br /><br />' );
 
-		$wgOut->addHTML( wfInputLabel( wfMsg( 'prefs-watchlist-days' ),
-			'wpWatchlistDays', 'wpWatchlistDays', 3, $this->mWatchlistDays ) );
-		$wgOut->addHTML( '<br /><br />' ); # Spacing
-		$wgOut->addHTML( $this->getToggles( array( 'watchlisthideown', 'watchlisthidebots', 'extendwatchlist' ) ) );
-		$wgOut->addHTML( wfInputLabel( wfMsg( 'prefs-watchlist-edits' ),
-			'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) );
+		$wgOut->addHtml( $this->getToggle( 'extendwatchlist' ) );
+		$wgOut->addHtml( wfInputLabel( wfMsg( 'prefs-watchlist-edits' ), 'wpWatchlistEdits', 'wpWatchlistEdits', 3, $this->mWatchlistEdits ) );
+		$wgOut->addHtml( '<br /><br />' );
 
-		$wgOut->addHTML( '</fieldset>' );
+		$wgOut->addHtml( $this->getToggles( array( 'watchlisthideown', 'watchlisthidebots', 'watchlisthideminor' ) ) );
+		
+		if( $wgUser->isAllowed( 'createpage' ) || $wgUser->isAllowed( 'createtalk' ) )
+			$wgOut->addHtml( $this->getToggle( 'watchcreations' ) );
+		foreach( array( 'edit' => 'watchdefault', 'move' => 'watchmoves', 'delete' => 'watchdeletion' ) as $action => $toggle ) {
+			if( $wgUser->isAllowed( $action ) )
+				$wgOut->addHtml( $this->getToggle( $toggle ) );
+		}
+		$this->mUsedToggles['watchcreations'] = true;
+		$this->mUsedToggles['watchdefault'] = true;
+		$this->mUsedToggles['watchmoves'] = true;
+		$this->mUsedToggles['watchdeletion'] = true;
+		
+		$wgOut->addHtml( '</fieldset>' );
 
 		# Search
 		$wgOut->addHTML( '<fieldset><legend>' . wfMsg( 'searchresultshead' ) . '</legend><table>' .
@@ -901,14 +960,13 @@ class PreferencesForm {
 		$s1 = $uopt == 1 ? ' selected="selected"' : '';
 		$s2 = $uopt == 2 ? ' selected="selected"' : '';
 		$wgOut->addHTML("
-<div class='toggle'><label for='wpOpunderline'>$msgUnderline</label>
+<div class='toggle'><p><label for='wpOpunderline'>$msgUnderline</label>
 <select name='wpOpunderline' id='wpOpunderline'>
 <option value=\"0\"$s0>$msgUnderlinenever</option>
 <option value=\"1\"$s1>$msgUnderlinealways</option>
 <option value=\"2\"$s2>$msgUnderlinedefault</option>
-</select>
-</div>
-");
+</select></p></div>");
+
 		foreach ( $togs as $tname ) {
 			if( !array_key_exists( $tname, $this->mUsedToggles ) ) {
 				$wgOut->addHTML( $this->getToggle( $tname ) );
@@ -917,11 +975,11 @@ class PreferencesForm {
 		$wgOut->addHTML( '</fieldset>' );
 
 		$token = $wgUser->editToken();
+		$skin = $wgUser->getSkin();
 		$wgOut->addHTML( "
 	<div id='prefsubmit'>
 	<div>
-		<input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . "\" accesskey=\"".
-		wfMsgHtml('accesskey-save')."\" title=\"".wfMsgHtml('tooltip-save')."\" />
+		<input type='submit' name='wpSaveprefs' class='btnSavePrefs' value=\"" . wfMsgHtml( 'saveprefs' ) . '"'.$skin->tooltipAndAccesskey('save')." />
 		<input type='submit' name='wpReset' value=\"" . wfMsgHtml( 'resetprefs' ) . "\" />
 	</div>
 
@@ -930,7 +988,9 @@ class PreferencesForm {
 	<input type='hidden' name='wpEditToken' value='{$token}' />
 	</div></form>\n" );
 
-		$wgOut->addWikiText( '<div class="prefcache">' . wfMsg('clearyourcache') . '</div>' );
+		$wgOut->addHtml( Xml::tags( 'div', array( 'class' => "prefcache" ),
+			wfMsgExt( 'clearyourcache', 'parseinline' ) )
+		);
 
 	}
 }

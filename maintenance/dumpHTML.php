@@ -1,34 +1,41 @@
 <?php
 /**
  * @todo document
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
-/**
- * Usage:
- * php dumpHTML.php [options...]
- *
- * -d <dest>            destination directory
- * -s <start>           start ID
- * -e <end>             end ID
- * -k <skin>            skin to use (defaults to htmldump)
- * --no-overwrite       skip existing HTML files
- * --checkpoint <file>  use a checkpoint file to allow restarting of interrupted dumps
- * --slice <n/m>        split the job into m segments and do the n'th one
- * --images             only do image description pages
- * --categories         only do category pages
- * --redirects          only do redirects
- * --special            only do miscellaneous stuff
- * --force-copy         copy commons instead of symlink, needed for Wikimedia
- * --interlang          allow interlanguage links
- * --image-snapshot     copy all images used to the destination directory
- * --compress           generate compressed version of the html pages
- */
+function ShowUsage() {
+echo <<<END
+Usage:
+php dumpHTML.php --help
+php dumpHTML.php [options...]
 
+	--help               show this message
 
-$optionsWithArgs = array( 's', 'd', 'e', 'k', 'checkpoint', 'slice' );
+	-d <dest>            destination directory
+	-s <start>           start ID
+	-e <end>             end ID
+	-k <skin>            skin to use (defaults to htmldump)
+	--no-overwrite       skip existing HTML files
+	--checkpoint <file>  use a checkpoint file to allow restarting of interrupted dumps
+	--slice <n/m>        split the job into m segments and do the n'th one
+	--images             only do image description pages
+	--shared-desc        only do shared (commons) image description pages
+	--no-shared-desc     don't do shared image description pages
+	--categories         only do category pages
+	--redirects          only do redirects
+	--special            only do miscellaneous stuff
+	--force-copy         copy commons instead of symlink, needed for Wikimedia
+	--interlang          allow interlanguage links
+	--image-snapshot     copy all images used to the destination directory
+	--compress           generate compressed version of the html pages
+	--udp-profile <N>    profile 1/N rendering operations using ProfilerSimpleUDP
 
+END;
+}
+
+$optionsWithArgs = array( 's', 'd', 'e', 'k', 'checkpoint', 'slice', 'udp-profile' );
+$options = array( 'help' );
 $profiling = false;
 
 if ( $profiling ) {
@@ -41,10 +48,19 @@ if ( $profiling ) {
 	}
 }
 
+if ( in_array( '--udp-profile', $argv ) ) {
+	define( 'MW_FORCE_PROFILE', 1 );
+}
+
 require_once( "commandLine.inc" );
 require_once( "dumpHTML.inc" );
 
 error_reporting( E_ALL & (~E_NOTICE) );
+
+if( isset( $options['help'] ) ) {
+	ShowUsage();
+	exit();
+}
 
 if ( !empty( $options['s'] ) ) {
 	$start = $options['s'];
@@ -55,7 +71,7 @@ if ( !empty( $options['s'] ) ) {
 if ( !empty( $options['e'] ) ) {
 	$end = $options['e'];
 } else {
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$end = $dbr->selectField( 'page', 'max(page_id)', false );
 }
 
@@ -93,6 +109,8 @@ $wgHTMLDump = new DumpHTML( array(
 	'sliceDenominator' => $sliceDenominator,
 	'noOverwrite' => $options['no-overwrite'],
 	'compress' => $options['compress'],
+	'noSharedDesc' => $options['no-shared-desc'],
+	'udpProfile' => $options['udp-profile'],
 ));
 
 
@@ -104,9 +122,11 @@ if ( $options['special'] ) {
 	$wgHTMLDump->doCategories();
 } elseif ( $options['redirects'] ) {
 	$wgHTMLDump->doRedirects();
+} elseif ( $options['shared-desc'] ) {
+	$wgHTMLDump->doSharedImageDescriptions();
 } else {
 	print "Creating static HTML dump in directory $dest. \n";
-	$dbr =& wfGetDB( DB_SLAVE );
+	$dbr = wfGetDB( DB_SLAVE );
 	$server = $dbr->getProperty( 'mServer' );
 	print "Using database {$server}\n";
 

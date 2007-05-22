@@ -1,7 +1,6 @@
 <?php
 /**
  * A few constants that might be needed during LocalSettings.php
- * @package MediaWiki
  */
 
 /**
@@ -62,9 +61,6 @@ define('NS_HELP', 12);
 define('NS_HELP_TALK', 13);
 define('NS_CATEGORY', 14);
 define('NS_CATEGORY_TALK', 15);
-define('LQT_NS_ARCHIVE', 97);
-define('LQT_NS_CHANNEL', 98);
-define('LQT_NS_THREAD', 99);
 /**#@-*/
 
 /**
@@ -196,6 +192,7 @@ define( 'EDIT_MINOR', 4 );
 define( 'EDIT_SUPPRESS_RC', 8 );
 define( 'EDIT_FORCE_BOT', 16 );
 define( 'EDIT_DEFER_UPDATES', 32 );
+define( 'EDIT_AUTOSUMMARY', 64 );
 /**#@-*/
 
 /** 

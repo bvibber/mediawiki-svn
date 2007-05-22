@@ -46,7 +46,7 @@ class UserDupes {
 		# Confusingly, 'Non_unique' is 0 for *unique* indexes,
 		# and 1 for *non-unique* indexes. Pass the crack, MySQL,
 		# it's obviously some good stuff!
-		return ( $info->Non_unique == 0 );
+		return ( $info[0]->Non_unique == 0 );
 	}
 
 	/**
@@ -146,7 +146,7 @@ class UserDupes {
 		$names = array_map( array( $this, 'lockTable' ), $set );
 		$tables = implode( ',', $names );
 
-		$result = $this->db->query( "LOCK TABLES $tables", $fname );
+		$this->db->query( "LOCK TABLES $tables", $fname );
 	}
 
 	function lockTable( $table ) {
@@ -166,7 +166,7 @@ class UserDupes {
 	 */
 	function unlock() {
 		$fname = 'UserDupes::unlock';
-		$result = $this->db->query( "UNLOCK TABLES", $fname );
+		$this->db->query( "UNLOCK TABLES", $fname );
 	}
 
 	/**
@@ -301,7 +301,7 @@ class UserDupes {
 	function reassignEditsOn( $table, $field, $from, $to ) {
 		$fname = 'UserDupes::reassignEditsOn';
 		echo "reassigning on $table... ";
-		$result = $this->db->update( $table,
+		$this->db->update( $table,
 			array( $field => $to ),
 			array( $field => $from ),
 			$fname );

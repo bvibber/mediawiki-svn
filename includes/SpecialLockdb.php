@@ -1,8 +1,7 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
@@ -37,9 +36,8 @@ function wfSpecialLockdb() {
 }
 
 /**
- *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * A form to make the database readonly (eg for maintenance purposes).
+ * @addtogroup SpecialPage
  */
 class DBLockForm {
 	var $reason = '';
@@ -62,7 +60,7 @@ class DBLockForm {
 		$lc = htmlspecialchars( wfMsg( 'lockconfirm' ) );
 		$lb = htmlspecialchars( wfMsg( 'lockbtn' ) );
 		$elr = htmlspecialchars( wfMsg( 'enterlockreason' ) );
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Lockdb' );
+		$titleObj = SpecialPage::getTitleFor( 'Lockdb' );
 		$action = $titleObj->escapeLocalURL( 'action=submit' );
 		$reason = htmlspecialchars( $this->reason );
 		$token = htmlspecialchars( $wgUser->editToken() );
@@ -114,7 +112,7 @@ END
 		  $wgLang->timeanddate( wfTimestampNow() ) . ")\n" );
 		fclose( $fp );
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Lockdb' );
+		$titleObj = SpecialPage::getTitleFor( 'Lockdb' );
 		$wgOut->redirect( $titleObj->getFullURL( 'action=success' ) );
 	}
 
@@ -126,7 +124,7 @@ END
 		$wgOut->addWikiText( wfMsg( 'lockdbsuccesstext' ) );
 	}
 	
-	function notWritable() {
+	public static function notWritable() {
 		global $wgOut;
 		$wgOut->errorPage( 'lockdb', 'lockfilenotwritable' );
 	}

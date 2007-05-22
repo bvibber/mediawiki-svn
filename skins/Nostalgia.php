@@ -3,8 +3,7 @@
  * See skin.txt
  *
  * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @addtogroup Skins
  */
 
 if( !defined( 'MEDIAWIKI' ) )
@@ -12,8 +11,7 @@ if( !defined( 'MEDIAWIKI' ) )
 
 /**
  * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @addtogroup Skins
  */
 class SkinNostalgia extends Skin {
 
@@ -63,11 +61,17 @@ class SkinNostalgia extends Skin {
 			$s .=  $sep . $this->editThisPage()
 			  . $sep . $this->historyLink();
 		}
+		
+		/* show links to different language variants */
+		$s .= $this->variantLinks();
+		$s .= $this->extensionTabLinks();
+		
 		if ( $wgUser->isAnon() ) {
 			$s .= $sep . $this->specialLink( "userlogin" );
 		} else {
 			$s .= $sep . $this->specialLink( "userlogout" );
 		}
+		
 		$s .= $sep . $this->specialPagesList();
 
 		return $s;

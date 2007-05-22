@@ -3,8 +3,7 @@
  * See skin.txt
  *
  * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @addtogroup Skins
  */
 
 if( !defined( 'MEDIAWIKI' ) )
@@ -12,18 +11,17 @@ if( !defined( 'MEDIAWIKI' ) )
 
 /**
  * @todo document
- * @package MediaWiki
- * @subpackage Skins
+ * @addtogroup Skins
  */
 class SkinStandard extends Skin {
 
 	/**
 	 *
 	 */
-	function getHeadScripts() {
+	function getHeadScripts( $allowUserJs ) {
 		global $wgStylePath, $wgJsMimeType, $wgStyleVersion;
 
-		$s = parent::getHeadScripts();
+		$s = parent::getHeadScripts( $allowUserJs );
 		if ( 3 == $this->qbSetting() ) { # Floating left
 			$s .= "<script language='javascript' type='$wgJsMimeType' " .
 			  "src='{$wgStylePath}/common/sticky.js?$wgStyleVersion'></script>\n";
@@ -248,7 +246,7 @@ class SkinStandard extends Skin {
 				{
 					$s .= $sep . $this->watchThisPage();
 				}
-				if ( $wgTitle->userCanEdit() )
+				if ( $wgTitle->userCan( 'edit' ) )
 					$s .= $sep . $this->moveThisPage();
 			}
 			if ( $wgUser->isAllowed('delete') and $articleExists ) {

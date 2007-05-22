@@ -1,12 +1,11 @@
 <?php
 
-
 /*
  * Created on Sep 25, 2006
  *
  * API for MediaWiki 1.8+
  *
- * Copyright (C) 2006 Yuri Astrakhan <FirstnameLastname@gmail.com>
+ * Copyright (C) 2006 Yuri Astrakhan <Firstname><Lastname>@gmail.com
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -29,6 +28,11 @@ if (!defined('MEDIAWIKI')) {
 	require_once ('ApiQueryBase.php');
 }
 
+/**
+ * Query module to enumerate all available pages.
+ * 
+ * @addtogroup API
+ */
 class ApiQueryAllpages extends ApiQueryGeneratorBase {
 
 	public function __construct($query, $moduleName) {
@@ -47,49 +51,36 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 	}
 
 	private function run($resultPageSet = null) {
-		$limit = $from = $namespace = $filterredir = null;
-		extract($this->extractRequestParams());
 
 		$db = $this->getDB();
 
-		$where = array (
-			'page_namespace' => $namespace
-		);
+		$limit = $from = $namespace = $filterredir = $prefix = null;
+		extract($this->extractRequestParams());
 
-		if (isset ($from)) {
-			$where[] = 'page_title>=' . $db->addQuotes(ApiQueryBase :: titleToKey($from));
-		}
-		
-		if (isset ($prefix)) {
-			$where[] = "page_title LIKE '{$db->strencode(ApiQueryBase :: titleToKey($prefix))}%'";
-		}
-
-		if ($filterredir === 'redirects') {
-			$where['page_is_redirect'] = 1;
-		}
-		elseif ($filterredir === 'nonredirects') {
-			$where['page_is_redirect'] = 0;
-		}
+		$this->addTables('page');
+		if (!$this->addWhereIf('page_is_redirect = 1', $filterredir === 'redirects'))
+			$this->addWhereIf('page_is_redirect = 0', $filterredir === 'nonredirects');
+		$this->addWhereFld('page_namespace', $namespace);
+		if (isset ($from))
+			$this->addWhere('page_title>=' . $db->addQuotes(ApiQueryBase :: titleToKey($from)));
+		if (isset ($prefix))
+			$this->addWhere("page_title LIKE '{$db->strencode(ApiQueryBase :: titleToKey($prefix))}%'");
 
 		if (is_null($resultPageSet)) {
-			$fields = array (
+			$this->addFields(array (
 				'page_id',
 				'page_namespace',
 				'page_title'
-			);
+			));
 		} else {
-			$fields = $resultPageSet->getPageTableFields();
+			$this->addFields($resultPageSet->getPageTableFields());
 		}
 
-		$options = array (
-			'USE INDEX' => 'name_title',
-			'LIMIT' => $limit +1,
-			'ORDER BY' => 'page_namespace, page_title'
-		);
+		$this->addOption('USE INDEX', 'name_title');
+		$this->addOption('LIMIT', $limit +1);
+		$this->addOption('ORDER BY', 'page_namespace, page_title');
 
-		$this->profileDBIn();
-		$res = $db->select('page', $fields, $where, __METHOD__, $options);
-		$this->profileDBOut();
+		$res = $this->select(__METHOD__);
 
 		$data = array ();
 		$count = 0;
@@ -100,51 +91,51 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 				break;
 			}
 
-			$title = Title :: makeTitle($row->page_namespace, $row->page_title);
-			// skip any pages that user has no rights to read
-			if ($title->userCanRead()) {
-
-				if (is_null($resultPageSet)) {
-					$id = intval($row->page_id);
-					$data[$id] = array (
-						'id' => $id,
-						'ns' => $title->getNamespace(),
+			if (is_null($resultPageSet)) {
+				$title = Title :: makeTitle($row->page_namespace, $row->page_title);
+				if ($title->userCanRead()) {
+					$data[] = array(
+						'pageid' => intval($row->page_id),
+						'ns' => intval($title->getNamespace()),
 						'title' => $title->getPrefixedText());
-				} else {
-					$resultPageSet->processDbRow($row);
 				}
+			} else {
+				$resultPageSet->processDbRow($row);
 			}
 		}
 		$db->freeResult($res);
 
 		if (is_null($resultPageSet)) {
-			ApiResult :: setIndexedTagName($data, 'p');
-			$this->getResult()->addValue('query', 'allpages', $data);
+			$result = $this->getResult();
+			$result->setIndexedTagName($data, 'p');
+			$result->addValue('query', $this->getModuleName(), $data);
 		}
 	}
 
 	protected function getAllowedParams() {
-
 		return array (
 			'from' => null,
 			'prefix' => null,
 			'namespace' => array (
 				ApiBase :: PARAM_DFLT => 0,
-				ApiBase :: PARAM_TYPE => $this->getQuery()->getValidNamespaces()),
+				ApiBase :: PARAM_TYPE => 'namespace'
+			),
 			'filterredir' => array (
 				ApiBase :: PARAM_DFLT => 'all',
 				ApiBase :: PARAM_TYPE => array (
 					'all',
 					'redirects',
 					'nonredirects'
-				)),
+				)
+			),
 			'limit' => array (
 				ApiBase :: PARAM_DFLT => 10,
 				ApiBase :: PARAM_TYPE => 'limit',
 				ApiBase :: PARAM_MIN => 1,
-				ApiBase :: PARAM_MAX1 => 500,
-				ApiBase :: PARAM_MAX2 => 5000
-		));
+				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
+				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
+			)
+		);
 	}
 
 	protected function getParamDescription() {

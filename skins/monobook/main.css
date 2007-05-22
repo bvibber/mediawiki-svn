@@ -9,162 +9,38 @@
 ** All you guys rock :)
 */
 
-.bordered {
-  border: solid 1px #ddd;
-  margin: 2em;
-}
+/**
+ * Stylesheet for screen/projection.  All rules not marked media-specific are
+ * shared with handheld.css and should be updated in tandem.  The rules can't
+ * be in the same file because old browsers like IE5 won't obey @media rules.
+ *
+ * Rules that are screen/projection-specific are marked with commented-out
+ * @media rules and indentation.
+ */
 
-/*ul {
-	line-height: 1.5em;
-	list-style-type: square;
-	margin: .3em 0 0 1.5em;
-	padding: 0;
-	list-style-image: url(bullet.gif);
-}
-ol {
-	line-height: 1.5em;
-	margin: .3em 0 0 3.2em;
-	padding: 0;
-	list-style-image: none;
-}
-li {
-	margin-bottom: .1em;
-}*/
-
-#lqt_archive_hide_show {
-        display: block;
-}
-
-#lqt_archive_toc {
-        display: none;
-}
-
-.lqt_thread {
-//        display: none;
-}
-
-.lqt_thread_disclosure_triangle {
-        margin-right: 4pt;
-}
-
-.lqt_archive_browser {
-        margin-top: 1em;
-	margin-bottom: 1em;
-}
-
-.lqt_deleted_notice {
-       color: #999;
-       font-style: italic;
-}
-
-.lqt_deleted_notice a {
-	 color: #5874d1;
-}
-.lqt_deleted_notice a:visited {
-	color: #937cba;
-}
-.lqt_deleted_notice a:active {
-	color: #faa700;
-}     
-}
-
-.lqt_channel_body {
-        background-color: white;
-}
-
-.ns-98 #content {
-        background-color: white;
-}
-
-.lqt_post { border: solid 1px #ddd; margin-top: 0.1in; padding: 0.2em; }
-
-.lqt_post_highlight { border: solid 1px #fabd23; margin-top: 0.1in; padding: 0.2em; }
-
-.lqt_replies { margin-left: 0.25in; }
-
-.lqt_footer {
-         margin: 0.5em 0 0em 0 ;
-         font-size: smaller;
-         color: #777;
-}
-
-.lqt_footer li {
-         display: inline;
-         list-style-type: none;
-         padding-right: 0.6em;
-}
-
-.lqt_topic_field { 
-         margin-top: 0.5em;
-         margin-bottom: 0.5em;
- }
-
-.lqt_post .lqt_footer a {
-	color: #5874d1;
-}
-.lqt_post .lqt_footer a:visited {
-	color: #937cba;
-}
-.lqt_post .lqt_footer a:active {
-	color: #faa700;
-}
-.lqt_post .lqt_footer a.stub {
-	color: #a66e7a;
-}
-.lqt_post .lqt_footer a.new, #p-personal a.new {
-	color: #d25858;
-}
-.lqt_post .lqt_footer a.new:visited, #p-personal a.new:visited {
-	color: #c49292;
-}
-
-.lqt_post:hover .lqt_footer {
-        color: black;
-}
-
-.lqt_post:hover {
-        border-color: #aaa;
-}
-
-.lqt_post:hover a {
-	color: #002bb8;
-}
-.lqt_post:hover a:visited {
-	color: #5a3696;
-}
-.lqt_post:hover .lqt_footer a:active {
-	color: #faa700;
-}
-.lqt_post:hover a.stub {
-	color: #772233;
-}
-.lqt_post:hover a.new, #p-personal a.new {
-	color: #ba0000;
-}
-.lqt_post:hover a.new:visited, #p-personal a.new:visited {
-	color: #a55858;
-}
-
-
-#column-content {
-	width: 100%;
-	float: right;
-	margin: 0 0 .6em -12.2em;
-	padding: 0;
-}
+/* @media screen, projection { */
+	#column-content {
+		width: 100%;
+		float: right;
+		margin: 0 0 .6em -12.2em;
+		padding: 0;
+	}
+	#content {
+		margin: 2.8em 0 0 12.2em;
+		padding: 0 1em 1.5em 1em;
+		position: relative;
+		z-index: 2;
+	}
+	#column-one {
+		padding-top: 160px;
+	}
+/* } */
 #content {
-	margin: 2.8em 0 0 12.2em;
-	padding: 0 1em 1.5em 1em;
 	background: white;
 	color: black;
 	border: 1px solid #aaa;
 	border-right: none;
-	line-height: 1.5;
-	position: relative;
-	z-index: 2;
-}
-#column-one {
-	padding-top: 160px;
+	line-height: 1.5em;
 }
 /* the left column width is specified in class .portlet */
 
@@ -230,10 +106,12 @@ img {
 	border: none;
 	vertical-align: middle;
 }
-p {
-	margin: .4em 0 .5em 0;
-	line-height: 1.5;
-}
+/* @media screen, projection { */
+	p {
+		margin: .4em 0 .5em 0;
+		line-height: 1.5em;
+	}
+/* } */
 p img {
 	margin: 0;
 }
@@ -255,46 +133,37 @@ h1, h2, h3, h4, h5, h6 {
 	padding-bottom: .17em;
 	border-bottom: 1px solid #aaa;
 }
-h1 {
-	font-size: 188%;
-	line-height: 0.8;
-}
-h2 {
-	font-size: 150%;
-	line-height: 1;
-}
+h1 { font-size: 188%; }
+h1 .editsection { font-size: 53%; }
+h2 { font-size: 150%; }
+h2 .editsection { font-size: 67%; }
 h3, h4, h5, h6 {
 	border-bottom: none;
 	font-weight: bold;
 }
-h3 {
-	font-size: 132%;
-	line-height: 1.14;
-}
-h4 {
-	font-size: 116%;
-	line-height: 1.30;
-}
+h3 { font-size: 132%; }
+h3 .editsection { font-size: 76%; font-weight: normal; }
+h4 { font-size: 116%; }
+h4 .editsection { font-size: 86%; font-weight: normal; }
 h5 { font-size: 100%; }
-h6 {
-	font-size: 80%;
-	line-height: 1.89;
-}
+h5 .editsection { font-weight: normal; }
+h6 { font-size: 80%;  }
+h6 .editsection { font-size: 125%; font-weight: normal; }
 
-div.editsection {
+.editsection {
 	float: right;
 	margin-left: 5px;
 }
 
 ul {
-	line-height: 1.5;
+	line-height: 1.5em;
 	list-style-type: square;
 	margin: .3em 0 0 1.5em;
 	padding: 0;
 	list-style-image: url(bullet.gif);
 }
 ol {
-	line-height: 1.5;
+	line-height: 1.5em;
 	margin: .3em 0 0 3.2em;
 	padding: 0;
 	list-style-image: none;
@@ -311,7 +180,7 @@ dl {
 	margin-bottom: .5em;
 }
 dd {
-	line-height: 1.5;
+	line-height: 1.5em;
 	margin-left: 2em;
 	margin-bottom: .1em;
 }
@@ -320,7 +189,7 @@ fieldset {
 	border: 1px solid #2f6fab;
 	margin: 1em 0 1em 0;
 	padding: 0 1em 1em;
-	line-height: 1.5;
+	line-height: 1.5em;
 }
 legend {
 	padding: .5em;
@@ -369,24 +238,25 @@ pre {
 	border: 1px dashed #2f6fab;
 	color: black;
 	background-color: #f9f9f9;
-	line-height: 1.1;
+	line-height: 1.1em;
 }
 
 /*
 ** the main content area
 */
 
-#siteSub {
-	display: none;
-}
-
-#jump-to-nav {
-	display: none;
-}
+/* @media screen, projection { */
+	#siteSub {
+		display: none;
+	}
+	#jump-to-nav {
+		display: none;
+	}
+/* } */
 
 #contentSub, #contentSub2 {
 	font-size: 84%;
-	line-height: 1.2;
+	line-height: 1.2em;
 	margin: 0 0 1.4em 1em;
 	color: #7d7d7d;
 	width: auto;
@@ -467,7 +337,7 @@ in the bottom-right corner of the content area */
 	font-weight: bold;
 	display: block;
 	margin: 1em 0;
-	line-height: 1.5;
+	line-height: 1.5em;
 }
 .documentByLine {
 	text-align: right;
@@ -558,6 +428,7 @@ div.floatright, table.floatright {
 div.floatright p { font-style: italic; }
 div.floatleft, table.floatleft {
 	float: left;
+	clear: left;
 	position: relative;
 	margin: 0 .5em .5em 0;
 	border: 0;
@@ -575,7 +446,7 @@ div.thumb {
 	border-color: white;
 	width: auto;
 }
-div.thumb div {
+div.thumbinner {
 	border: 1px solid #ccc;
 	padding: 3px !important;
 	background-color: #f9f9f9;
@@ -583,14 +454,15 @@ div.thumb div {
 	text-align: center;
 	overflow: hidden;
 }
-div.thumb div a img {
+html .thumbimage {
 	border: 1px solid #ccc;
 }
-div.thumb div div.thumbcaption {
+html .thumbcaption {
 	border: none;
 	text-align: left;
-	line-height: 1.4;
-	padding: .3em 0 .1em 0;
+	line-height: 1.4em;
+	padding: 3px !important;
+	font-size: 94%;
 }
 div.magnify {
 	float: right;
@@ -609,6 +481,7 @@ div.tright {
 }
 div.tleft {
 	float: left;
+	clear: left;
 	margin-right: .5em;
 	border-width: .5em 1.4em .8em 0;
 }
@@ -623,6 +496,14 @@ img.tex {
 span.texhtml {
 	font-family: serif;
 }
+
+/* Have a checkered background on images on the description pages and in galleries
+   to make transparency visible
+
+#file img, .gallerybox .thumb img {
+	background: url(Checker-16x16.png) repeat;
+}
+*/
 
 /*
 ** classes for special content elements like town boxes
@@ -675,7 +556,7 @@ div.townBox dl dd {
 ** edit views etc
 */
 .special li {
-	line-height: 1.4;
+	line-height: 1.4em;
 	margin: 0;
 	padding: 0;
 }
@@ -698,29 +579,6 @@ div.townBox dl dd {
 #pagehistory li.selected {
 	background-color: #f9f9f9;
 	border: 1px dashed #aaa;
-}
-
-/*
-** Diff rendering
-*/
-table.diff, td.diff-otitle, td.diff-ntitle {
-	background-color: white;
-}
-td.diff-addedline {
-	background: #cfc;
-	font-size: smaller;
-}
-td.diff-deletedline {
-	background: #ffa;
-	font-size: smaller;
-}
-td.diff-context {
-	background: #eee;
-	font-size: smaller;
-}
-span.diffchange {
-	color: red;
-	font-weight: bold;
 }
 
 /*
@@ -756,6 +614,32 @@ span.diffchange {
 	background: url(discussionitem_icon.gif) center right no-repeat;
 	padding-right: 18px;
 }
+#bodyContent a.external[href $=".ogg"], #bodyContent a.external[href $=".OGG"],
+#bodyContent a.external[href $=".mid"], #bodyContent a.external[href $=".MID"],
+#bodyContent a.external[href $=".midi"], #bodyContent a.external[href $=".MIDI"],
+#bodyContent a.external[href $=".mp3"], #bodyContent a.external[href $=".MP3"],
+#bodyContent a.external[href $=".wav"], #bodyContent a.external[href $=".WAV"],
+#bodyContent a.external[href $=".wma"], #bodyContent a.external[href $=".WMA"],
+.link-audio {
+	background: url("audio.png") center right no-repeat;
+	padding-right: 13px;
+}
+#bodyContent a.external[href $=".ogm"], #bodyContent a.external[href $=".OGM"],
+#bodyContent a.external[href $=".avi"], #bodyContent a.external[href $=".AVI"],
+#bodyContent a.external[href $=".mpeg"], #bodyContent a.external[href $=".MPEG"],
+#bodyContent a.external[href $=".mpg"], #bodyContent a.external[href $=".MPG"],
+.link-video {
+	background: url("video.png") center right no-repeat;
+	padding-right: 13px;
+}
+#bodyContent a.external[href $=".pdf"], #bodyContent a.external[href $=".PDF"],
+#bodyContent a.external[href *=".pdf#"], #bodyContent a.external[href *=".PDF#"],
+#bodyContent a.external[href *=".pdf?"], #bodyContent a.external[href *=".PDF?"],
+.link-document {
+	background: url("document.png") center right no-repeat;
+	padding-right: 12px;
+}
+
 /* disable interwiki styling */
 #bodyContent a.extiw,
 #bodyContent a.extiw:active {
@@ -830,7 +714,7 @@ special external link styling */
 	padding: 0;
 }
 .portlet ul {
-	line-height: 1.5;
+	line-height: 1.5em;
 	list-style-type: square;
 	list-style-image: url(bullet.gif);
 	font-size: 95%;
@@ -844,48 +728,52 @@ special external link styling */
 ** Logo properties
 */
 
-#p-logo {
-	z-index: 3;
-	position: absolute; /*needed to use z-index */
-	top: 0;
-	left: 0;
-	height: 155px;
-	width: 12em;
-	overflow: visible;
-}
-#p-logo h5 {
-	display: none;
-}
-#p-logo a,
-#p-logo a:hover {
-	display: block;
-	height: 155px;
-	width: 12.2em;
-	background-repeat: no-repeat;
-	background-position: 35% 50% !important;
-	text-decoration: none;
-}
-
+/* @media screen, projection { */
+	#p-logo {
+		top: 0;
+		left: 0;
+		position: absolute; /*needed to use z-index */
+		z-index: 3;
+		height: 155px;
+		width: 12em;
+		overflow: visible;
+	}
+	#p-logo h5 {
+		display: none;
+	}
+	#p-logo a,
+	#p-logo a:hover {
+		display: block;
+		height: 155px;
+		width: 12.2em;
+		background-repeat: no-repeat;
+		background-position: 35% 50% !important;
+		text-decoration: none;
+	}
+/* } */
 /*
 ** the navigation portlet
 */
 
-#p-navigation {
-	position: relative;
-	z-index: 3;
-}
+/* @media screen, projection { */
+	#p-navigation {
+		position: relative;
+		z-index: 3;
+	}
+	#p-navigation a {
+		display: block;
+	}
+	#p-navigation li.active a, #p-navigation li.active a:hover {
+		display: inline;
+	}
+/* } */
 
 #p-navigation .pBody {
 	padding-right: 0;
 }
 
-#p-navigation a {
-	display: block;
-}
-
 #p-navigation li.active a, #p-navigation li.active a:hover {
 	text-decoration: none;
-	display: inline;
 	font-weight: bold;
 }
 
@@ -893,10 +781,12 @@ special external link styling */
 /*
 ** Search portlet
 */
-#p-search {
-	position: relative;
-	z-index: 3;
-}
+/* @media screen, projection { */
+	#p-search {
+		position: relative;
+		z-index: 3;
+	}
+/* } */
 input.searchButton {
 	margin-top: 1px;
 	font-size: 95%;
@@ -919,176 +809,193 @@ input.searchButton {
 /*
 ** the personal toolbar
 */
-
-#p-personal {
-	width: 100%;
-	white-space: nowrap;
-	padding: 0;
-	margin: 0;
-	position: absolute;
-	left: 0;
-	top: 0;
-	z-index: 0;
-	border: none;
-	background: none;
-	overflow: visible;
-	line-height: 1.2;
-}
-
-#p-personal h5 {
-	display: none;
-}
-#p-personal .portlet,
-#p-personal .pBody {
-	padding: 0;
-	margin: 0;
-	border: none;
-	z-index: 0;
-	overflow: visible;
-	background: none;
-}
+/* @media screen, projection { */
+	#p-personal {
+		position: absolute;
+		left: 0;
+		top: 0;
+		z-index: 0;
+	}
+	#p-personal {
+		width: 100%;
+		white-space: nowrap;
+		padding: 0;
+		margin: 0;
+		border: none;
+		background: none;
+		overflow: visible;
+		line-height: 1.2em;
+	}
+	#p-personal h5 {
+		display: none;
+	}
+	#p-personal .portlet,
+	#p-personal .pBody {
+		z-index: 0;
+		padding: 0;
+		margin: 0;
+		border: none;
+		overflow: visible;
+		background: none;
+	}
 /* this is the ul contained in the portlet */
+	#p-personal ul {
+		border: none;
+		line-height: 1.4em;
+		color: #2f6fab;
+		padding: 0 2em 0 3em;
+		margin: 0;
+		text-align: right;
+		list-style: none;
+		z-index: 0;
+		background: none;
+		cursor: default;
+	}
+	#p-personal li {
+		z-index: 0;
+		border: none;
+		padding: 0;
+		display: inline;
+		color: #2f6fab;
+		margin-left: 1em;
+		line-height: 1.2em;
+		background: none;
+	}
+	#p-personal li a {
+		text-decoration: none;
+		color: #005896;
+		padding-bottom: .2em;
+		background: none;
+	}
+	#p-personal li a:hover {
+		background-color: white;
+		padding-bottom: .2em;
+		text-decoration: none;
+	}
+	#p-personal li.active a:hover {
+		background-color: transparent;
+	}
+	/* the icon in front of the user name, single quotes
+	in bg url to hide it from iemac */
+	li#pt-userpage,
+	li#pt-anonuserpage,
+	li#pt-login {
+		background: url(user.gif) top left no-repeat;
+		padding-left: 20px;
+		text-transform: none;
+	}
+/* } */
 #p-personal ul {
-	border: none;
-	line-height: 1.4;
-	color: #2f6fab;
-	padding: 0 2em 0 3em;
-	margin: 0;
-	text-align: right;
 	text-transform: lowercase;
-	list-style: none;
-	z-index: 0;
-	background: none;
-	cursor: default;
-}
-#p-personal li {
-	z-index: 0;
-	border: none;
-	padding: 0;
-	display: inline;
-	color: #2f6fab;
-	margin-left: 1em;
-	line-height: 1.2;
-	background: none;
 }
 #p-personal li.active {
 	font-weight: bold;
 }
-#p-personal li a {
-	text-decoration: none;
-	color: #005896;
-	padding-bottom: .2em;
-	background: none;
-}
-#p-personal li a:hover {
-	background-color: white;
-	padding-bottom: .2em;
-	text-decoration: none;
-}
-#p-personal li.active a:hover {
-	background-color: transparent;
-}
-/* the icon in front of the user name, single quotes
-in bg url to hide it from iemac */
-li#pt-userpage,
-li#pt-anonuserpage,
-li#pt-login {
-	background: url(user.gif) top left no-repeat;
-	padding-left: 20px;
-	text-transform: none;
-}
-
 /*
 ** the page-related actions- page/talk, edit etc
 */
-#p-cactions {
-	position: absolute;
-	top: 1.3em;
-	left: 11.5em;
-	margin: 0;
-	white-space: nowrap;
-	width: 76%;
-	line-height: 1.1;
-	overflow: visible;
-	background: none;
-	border-collapse: collapse;
-	padding-left: 1em;
-	list-style: none;
-	font-size: 95%;
-}
+/* @media screen, projection { */
+	#p-cactions {
+		position: absolute;
+		top: 1.3em;
+		left: 11.5em;
+		margin: 0;
+		white-space: nowrap;
+		width: 76%;
+		line-height: 1.1em;
+		overflow: visible;
+		background: none;
+		border-collapse: collapse;
+		padding-left: 1em;
+		list-style: none;
+		font-size: 95%;
+	}
+	#p-cactions ul {
+		list-style: none;
+	}
+	#p-cactions li {
+		display: inline;
+		border: 1px solid #aaa;
+		border-bottom: none;
+		padding: 0 0 .1em 0;
+		margin: 0 .3em 0 0;
+		overflow: visible;
+		background: white;
+	}
+	#p-cactions li.selected {
+		border-color: #fabd23;
+		padding: 0 0 .2em 0;
+		font-weight: bold;
+	}
+	#p-cactions li a {
+		background-color: #fbfbfb;
+		color: #002bb8;
+		border: none;
+		padding: 0 .8em .3em;
+		position: relative;
+		z-index: 0;
+		margin: 0;
+		text-decoration: none;
+	}
+	#p-cactions li.selected a {
+		z-index: 3;
+		padding: 0 1em .2em!important;
+		background-color: white;
+	}
+	#p-cactions .new a {
+		color: #ba0000;
+	}
+	#p-cactions li a:hover {
+		z-index: 3;
+		text-decoration: none;
+		background-color: white;
+	}
+	#p-cactions h5 {
+		display: none;
+	}
+	#p-cactions li.istalk {
+		margin-right: 0;
+	}
+	#p-cactions li.istalk a {
+		padding-right: .5em;
+	}
+	#p-cactions #ca-addsection a {
+		padding-left: .4em;
+		padding-right: .4em;
+	}
+	/* offsets to distinguish the tab groups */
+	li#ca-talk {
+		margin-right: 1.6em;
+	}
+	li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
+		margin-left: 1.6em;
+	}
+	#p-cactions .pBody {
+		font-size: 1em;
+		background-color: transparent;
+		color: inherit;
+		border-collapse: inherit;
+		border: 0;
+		padding: 0;
+	}
+/* } */
 #p-cactions .hiddenStructure {
 	display: none;
 }
-#p-cactions ul {
-	list-style: none;
-}
-#p-cactions li {
-	display: inline;
-	border: 1px solid #aaa;
-	border-bottom: none;
-	padding: 0 0 .1em 0;
-	margin: 0 .3em 0 0;
-	overflow: visible;
-	background: white;
-}
-#p-cactions li.selected {
-	border-color: #fabd23;
-	padding: 0 0 .2em 0;
-	font-weight: bold;
-}
 #p-cactions li a {
-	background-color: #fbfbfb;
-	color: #002bb8;
-	border: none;
-	padding: 0 .8em .3em;
-	text-decoration: none;
 	text-transform: lowercase;
-	position: relative;
-	z-index: 0;
-	margin: 0;
-}
-#p-cactions li.selected a {
-	z-index: 3;
-		background-color: #fff;
-	padding: 0 1em .2em!important;
-}
-#p-cactions .new a {
-	color: #ba0000;
-}
-#p-cactions li a:hover {
-	z-index: 3;
-	text-decoration: none;
-		background-color: #fff;
-}
-#p-cactions h5 {
-	display: none;
-}
-#p-cactions li.istalk {
-	margin-right: 0;
-}
-#p-cactions li.istalk a {
-	padding-right: .5em;
-}
-#p-cactions #ca-addsection a {
-	padding-left: .4em;
-	padding-right: .4em;
-}
-/* offsets to distinguish the tab groups */
-li#ca-talk {
-	margin-right: 1.6em;
-}
-li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
-	margin-left: 1.6em;
 }
 
 /*
 ** the remaining portlets
 */
-#p-tbx,
-#p-lang {
-	position: relative;
-	z-index: 3;
-}
+/* @media screen, projection { */
+	#p-tbx,
+	#p-lang {
+		position: relative;
+		z-index: 3;
+	}
+/* } */
 
 /* TODO: #t-iscite is only used by the Cite extension, come up with some
  * system which allows extensions to add to this file on the fly
@@ -1112,8 +1019,6 @@ li#ca-watch, li#ca-unwatch, li#ca-varlang-0, li#ca-print {
 	display: inline;
 	margin: 0 1.3em;
 }
-/* hide from incapable browsers */
-head:first-child+body #footer li { white-space: nowrap; }
 #f-poweredbyico, #f-copyrightico {
 	margin: 0 8px;
 	position: relative;
@@ -1136,20 +1041,24 @@ head:first-child+body #footer li { white-space: nowrap; }
 	clear: both;
 }
 #preftoc li {
-	margin: 1px -2px 1px 2px;
-	float: left;
-	padding: 2px 0 3px 0;
 	background-color: #f0f0f0;
 	color: #000;
-	border: 1px solid #fff;
-	border-right-color: #716f64;
-	border-bottom: 0;
-	position: relative;
-	white-space: nowrap;
-	list-style-type: none;
-	list-style-image: none;
-	z-index: 3;
 }
+/* @media screen, projection { */
+	#preftoc li {
+		margin: 1px -2px 1px 2px;
+		float: left;
+		padding: 2px 0 3px 0;
+		border: 1px solid #fff;
+		border-right-color: #716f64;
+		border-bottom: 0;
+		position: relative;
+		white-space: nowrap;
+		list-style-type: none;
+		list-style-image: none;
+		z-index: 3;
+	}
+/* } */
 #preftoc li.selected {
 	font-weight: bold;
 	background-color: #f9f9f9;
@@ -1202,15 +1111,15 @@ head:first-child+body #footer li { white-space: nowrap; }
 .prefsection table, .prefsection legend {
 	background-color: #F9F9F9;
 }
-.mainLegend {
-	display: none;
-}
+/* @media screen, projection { */
+	.mainLegend {
+		display: none;
+	}
+/* } */
 div.prefsectiontip {
-	font-size: 95%;
-	margin-top: 0;
-	background-color: #FFC1C1;
-	padding: .2em .7em;
-	clear: both;
+	font-size: x-small;
+	padding: .2em 2em;
+	color: #666;
 }
 .btnSavePrefs {
 	font-weight: bold;
@@ -1248,10 +1157,10 @@ div#userlogin form#userlogin2 h2 {
 	padding-top: 0;
 }
 
-div#userlogin .captcha {
+div#userlogin .captcha,
+div#userloginForm .captcha {
 	border: 1px solid #bbb;
 	padding: 1.5em 2em;
-	width: 400px;
 	background-color: white;
 }
 
@@ -1274,27 +1183,29 @@ div#userlogin .captcha {
 	font-weight: bold;
 }
 
-/*
-** IE/Mac fixes, hope to find a validating way to move this
-** to a separate stylesheet. This would work but doesn't validate:
-** @import("IEMacFixes.css");
-*/
-/* tabs: border on the a, not the div */
-* > html #p-cactions li { border: none; }
-* > html #p-cactions li a {
-	border: 1px solid #aaa;
-	border-bottom: none;
-}
-* > html #p-cactions li.selected a { border-color: #fabd23; }
-/* footer icons need a fixed width */
-* > html #f-poweredbyico,
-* > html #f-copyrightico { width: 88px; }
-* > html #bodyContent,
-* > html #bodyContent pre {
-	overflow-x: auto;
-	width: 100%;
-	padding-bottom: 25px;
-}
+/* @media screen, projection { */
+	/*
+	** IE/Mac fixes, hope to find a validating way to move this
+	** to a separate stylesheet. This would work but doesn't validate:
+	** @import("IEMacFixes.css");
+	*/
+	/* tabs: border on the a, not the div */
+	* > html #p-cactions li { border: none; }
+	* > html #p-cactions li a {
+		border: 1px solid #aaa;
+		border-bottom: none;
+	}
+	* > html #p-cactions li.selected a { border-color: #fabd23; }
+	/* footer icons need a fixed width */
+	* > html #f-poweredbyico,
+	* > html #f-copyrightico { width: 88px; }
+	* > html #bodyContent,
+	* > html #bodyContent pre {
+		overflow-x: auto;
+		width: 100%;
+		padding-bottom: 25px;
+	}
+/* } */
 
 /* more IE fixes */
 /* float/negative margin brokenness */
@@ -1353,15 +1264,6 @@ span.updatedmarker {
 	color: black;
 	background-color: #0f0;
 }
-span.newpageletter {
-	font-weight: bold;
-	color: black;
-	background-color: yellow;
-}
-span.minoreditletter {
-	color: black;
-	background-color: #c5ffe6;
-}
 
 table.gallery {
 	border: 1px solid #ccc;
@@ -1379,15 +1281,17 @@ table.gallery td {
 	background-color: #f9f9f9;
 	border: solid 2px white;
 }
-
+/* Keep this temporarily so that cached pages will display right */
 table.gallery td.galleryheader {
-	text-align: center;
+    text-align: center;
+	font-weight: bold;
+}
+table.gallery caption {
 	font-weight: bold;
 }
 
 div.gallerybox {
 	margin: 2px;
-	width:  150px;
 }
 
 div.gallerybox div.thumb {
@@ -1397,6 +1301,7 @@ div.gallerybox div.thumb {
 }
 
 div.gallerytext {
+	overflow: hidden;
 	font-size: 94%;
 	padding: 2px 4px;
 }
@@ -1630,6 +1535,29 @@ table.multipageimage td {
    text-align: center;
 }
 
+/** Special:Version */
+
+table#sv-ext, table#sv-hooks {
+	margin: 1em;
+	padding:0em;
+}
+
+#sv-ext td, #sv-hooks td,
+#sv-ext th, #sv-hooks th {
+	border: 1px solid #A0A0A0;
+	padding: 0 0.15em 0 0.15em;
+}
+#sv-ext th, #sv-hooks th {
+	background-color: #F0F0F0;
+	color: black;
+	padding: 0 0.15em 0 0.15em;
+}
+tr.sv-space{
+	height: 0.8em;
+	border:none;
+}
+tr.sv-space td { display: none; }
+
 /*
   Table pager (e.g. Special:Imagelist)
   - remove underlines from the navigation link
@@ -1641,7 +1569,7 @@ table.multipageimage td {
 .TablePager_nav a { text-decoration: none; }
 .TablePager { border-collapse: collapse; }
 .TablePager, .TablePager td, .TablePager th { 
-	border: 0.15em solid #777777;
+	border: 1px solid #aaaaaa;
 	padding: 0 0.15em 0 0.15em;
 }
 .TablePager th { background-color: #eeeeff }
@@ -1652,3 +1580,52 @@ table.multipageimage td {
 .imagelist .TablePager_col_links { background-color: #eeeeff }
 .imagelist .TablePager_col_img_description { white-space: normal }
 .imagelist th.TablePager_sort { background-color: #ccccff }
+
+.templatesUsed { margin-top: 1.5em; }
+
+.mw-summary-preview {
+	margin: 0.1em 0;
+}
+
+/* Convenience links on Special:Ipblocklist */
+p.mw-ipb-conveniencelinks {
+	font-size: 90%;
+	float: right;
+}
+
+/* Friendlier slave lag warnings */
+div.mw-lag-warn-normal,
+div.mw-lag-warn-high {
+	width: 75%;
+	padding: 3px;
+	text-align: center;
+	margin: 3px auto;
+}
+div.mw-lag-warn-normal {
+	border: 1px solid #FFCC66;
+	background-color: #FFFFCC;
+}
+div.mw-lag-warn-high {
+	font-weight: bold;
+	border: 2px solid #CC3333;
+	background-color: #CC9999;
+}
+
+/**
+ * Here is some stuff that's ACTUALLY COMMON TO ALL SKINS.
+ * When the day comes, it can be moved to a *real* common.css.
+ */
+.mw-plusminus-null { color: #aaa; }
+.texvc { direction: ltr; unicode-bidi: embed; }
+/* Stop floats from intruding into edit area in previews */
+#toolbar, #wpTextbox1 { clear: both; }
+
+.MediaTransformError {
+	background-color: #ccc;
+	padding: 0.1em;
+}
+.MediaTransformError td {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 90%;
+}

@@ -10,8 +10,7 @@
  * Also see the Kannada Localisation Initiative at:
  *      http://kannada.sourceforge.net/
  *
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
 
 $namespaceNames = array(
@@ -36,16 +35,16 @@ $namespaceNames = array(
 );
 
 $digitTransformTable = array(
-	'0' => '೦',
-	'1' => '೧',
-	'2' => '೨',
-	'3' => '೩',
-	'4' => '೪',
-	'5' => '೫',
-	'6' => '೬',
-	'7' => '೭',
-	'8' => '೮',
-	'9' => '೯'
+	'0' => '೦', # &#x0ce6;
+	'1' => '೧', # &#x0ce7;
+	'2' => '೨', # &#x0ce8;
+	'3' => '೩', # &#x0ce9;
+	'4' => '೪', # &#x0cea;
+	'5' => '೫', # &#x0ceb;
+	'6' => '೬', # &#x0cec;
+	'7' => '೭', # &#x0ced;
+	'8' => '೮', # &#x0cee;
+	'9' => '೯', # &#x0cef;
 );
 
 $messages = array(
@@ -121,7 +120,7 @@ $messages = array(
 'confirmunprotect' => "ಸ೦ರಕ್ಷಣೆ ತೆಗೆಯಬೇಕೆ೦ದು ದೃಢಪಡಿಸಿ",
 'confirmunprotecttext' => "ಈ ಪುಟದ ಸ೦ರಕ್ಷಣೆಯನ್ನು ನಿಜಕ್ಕೂ ತೆಗೆಯಬಯಸುತ್ತೀರಾ?",
 'contribslink' => "ಕಾಣಿಕೆಗಳು",
-'contribsub' => "$1 ಗೆ",
+'contribsub2' => "$1 ($2) ಗೆ",
 'contributions' => "ಸದಸ್ಯರ ಕಾಣಿಕೆಗಳು",
 'copyright' => "ಇದು ಈ ಕಾಪಿರೈಟ್‌ನಲ್ಲಿ ಲಭ್ಯವಿದೆ $1.",
 'copyrightpage' => "ವಿಕಿಪೀಡಿಯ: ಕೃತಿಸ್ವಾಮ್ಯತೆಗಳು",

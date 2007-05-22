@@ -2,11 +2,36 @@
  * common.css
  * This file contains CSS settings common to Wikistandard, Nostalgia and CologneBlue
  */
+
+/* For clarity, explicitly state some recommendations from <http://www.w3.org/
+   TR/CSS21/sample.html> to make sure the editsection links scale right */
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.17em; }
+h5 { font-size: .83em; }
+h6 { font-size: .75em; }
+h1, h2, h3, h4, h5, h6 { font-weight: bolder }
+
+/* Now the custom parts */
+
+/* Make edit sections (which are inside h# tags) normal-sized */
+.editsection {
+	font-weight: normal;
+	float: right;
+	margin-left: 5px;
+}
+h1 .editsection { font-size: 50% }
+h2 .editsection { font-size: 66.7% }
+h3 .editsection { font-size: 85.5% }
+h5 .editsection { font-size: 120% }
+h6 .editsection { font-size: 133% }
+
 #footer { clear: both }
 /* images */
-div.floatright { float: right; margin: 0 0 1em 1em; }
+div.floatright { float: right; clear: right; margin: 0 0 1em 1em; }
 div.floatright p { font-style: italic; }
-div.floatleft { float: left; margin: 0.3em 0.5em 0.5em 0; }
+div.floatleft { float: left; clear: left; margin: 0.3em 0.5em 0.5em 0; }
 div.floatleft p { font-style: italic; }
 
 
@@ -26,44 +51,49 @@ table.rimage {
 
 /* thumbnails */
 div.thumb {
-    margin: 10px;
-    text-align: center;
-    width: auto;
+	margin-bottom: .5em;
+	border-style: solid;
+	border-color: white;
+	width: auto;
 }
-div.thumb div {
-    border: 1px solid #8888aa;
-    background-color: #f7f8ff;
-    padding: 2px;
-    font-size: 94%;
-    text-align: center;
-    overflow: hidden;
+div.thumbinner {
+	border: 1px solid #ccc;
+	padding: 3px !important;
+	background-color: #f9f9f9;
+	font-size: 94%;
+	text-align: center;
+	overflow: hidden;
 }
-div.thumb div * {
-    border: none;
-    background: none;
+html .thumbimage {
+	border: 1px solid #ccc;
 }
-div.thumb img {
-    border:1px solid #8888AA;
-    margin-bottom:3px;
-    background:#FFFFFF;
+html .thumbcaption {
+	border: none;
+	text-align: left;
+	line-height: 1.4em;
+	padding: 3px !important;
+	font-size: 94%;
 }
-div.thumbcaption,
-div.thumbcaption * {
-    border: none !important;
-    background: none !important;
+div.magnify {
+	float: right;
+	border: none !important;
+	background: none !important;
 }
-div.thumbcaption {
-    padding: 0.2em 0 0.2em 0 !important;
-    text-align: left !important;
+div.magnify a, div.magnify img {
+	display: block;
+	border: none !important;
+	background: none !important;
 }
 div.tright {
-    float: right;
-    clear: right;
-    margin-left:0.5em;
+	clear: right;
+	float: right;
+	border-width: .5em 0 .8em 1.4em;
 }
 div.tleft {
-    float: left;
-    margin-right:0.5em;
+	float: left;
+	clear: left;
+	margin-right: .5em;
+	border-width: .5em 1.4em .8em 0;
 }
 
 /* Page history styling */
@@ -79,23 +109,6 @@ div.tleft {
     background-color:#f9f9f9;
     border:1px dashed #aaaaaa;
 }
-
-table.diff { background:white; }
-td.diff-otitle { background:#cccccc; }
-td.diff-ntitle { background:#cccccc; }
-td.diff-addedline {
-    background:#ccffcc;
-    font-size: 94%;
-}
-td.diff-deletedline {
-    background:#ffffaa;
-    font-size: 94%;
-}
-td.diff-context {
-    background:#eeeeee;
-    font-size: 94%;
-}
-span.diffchange { color: red; font-weight: bold; }
 
 img { border: none; }
 img.tex { vertical-align: middle; }
@@ -164,7 +177,8 @@ span.texhtml { font-family: serif; }
 }
 div.prefsectiontip {
     font-size: 94%;
-    margin-top: 1em;
+    margin-top: 0.4em;
+    color: #666;
 }
 fieldset.prefsection { margin-top: 1em }
 fieldset.operaprefsection { margin-left: 15em }
@@ -238,15 +252,6 @@ span.updatedmarker {
 	color:black;
 	background-color:#00FF00;
 }
-span.newpageletter {
-	font-weight:bold;
-	color:black;
-	background-color:yellow;
-}
-span.minoreditletter {
-	color:black;
-	background-color:#C5FFE6;
-}
 
 table.gallery {
         border:  1px solid #cccccc;
@@ -256,7 +261,7 @@ table.gallery {
 }
 
 table.gallery tr {
-        vertical-align:top;
+    vertical-align:top;
 }
 
 table.gallery td {
@@ -277,6 +282,7 @@ div.gallerybox div.thumb {
 }
 
 div.gallerytext {
+	overflow: hidden;
         font-size: 94%;
         padding: 2px 4px;
 }
@@ -313,11 +319,6 @@ li span.deleted {
 	text-decoration: line-through;
 	color: #888;
 	font-style: italic;
-}
-
-div.editsection {
-	float: right;
-	margin-left: 5px;
 }
 
 /* Classes for EXIF data display */
@@ -385,8 +386,12 @@ table.collapsed tr.collapsable {
   display: none;
 }
 
+/* Keep this temporarily so that cached pages will display right */
 table.gallery td.galleryheader {
-	text-align: center;
+    text-align: center;
+	font-weight: bold;
+}
+table.gallery caption {
 	font-weight: bold;
 }
 
@@ -434,3 +439,37 @@ table.multipageimage td {
 .imagelist .TablePager_col_links { background-color: #eeeeff }
 .imagelist .TablePager_col_img_description { white-space: normal }
 .imagelist th.TablePager_sort { background-color: #ccccff }
+
+.templatesUsed { margin-top: 1em; }
+
+/* Convenience links on Special:Ipblocklist */
+p.mw-ipb-conveniencelinks {
+	font-size: 90%;
+	float: right;
+}
+
+/**
+ * Here is some stuff that's ACTUALLY COMMON TO ALL SKINS.
+ * When the day comes, it can be moved to a *real* common.css.
+ */
+.mw-plusminus-null { color: #aaa; }
+.texvc { direction: ltr; unicode-bidi: embed; }
+/* Stop floats from intruding into edit area in previews */
+#toolbar, #wpTextbox1 { clear: both; }
+
+/*
+#file img, .gallerybox .thumb img {
+	background: url(images/Checker-16x16.png) repeat;
+}
+*/
+.MediaTransformError {
+	border: thin solid #777;
+	background-color: #ccc;
+	padding: 0.1em;
+}
+.MediaTransformError td {
+	text-align: center;
+	vertical-align: middle;
+	font-size: 90%;
+}
+

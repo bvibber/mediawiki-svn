@@ -12,15 +12,31 @@ if ( isset( $options['maxjobs'] ) ) {
 	$maxJobs = 10000;
 }
 
-// Trigger errors on inappropriate use of $wgTitle
-$wgTitle = new FakeTitle;
+$type = false;
+if ( isset( $options['type'] ) )
+	$type = $options['type'];
 
-$dbw =& wfGetDB( DB_MASTER );
+$wgTitle = Title::newFromText( 'RunJobs.php' );
+
+$dbw = wfGetDB( DB_MASTER );
 $n = 0;
-while ( $dbw->selectField( 'job', 'count(*)', '', 'runJobs.php' ) ) {
-	while ( false != ($job = Job::pop()) ) {
+$conds = array();
+if ($type !== false)
+	$conds = array('job_cmd' => $type);
+
+while ( $dbw->selectField( 'job', 'count(*)', $conds, 'runJobs.php' ) ) {
+	$offset=0;
+	for (;;) {
+		$job = ($type == false) ?
+				Job::pop($offset, $type)
+				: Job::pop_type($type);
+
+		if ($job == false)
+			break;
+
 		wfWaitForSlaves( 5 );
 		print $job->id . "  " . $job->toString() . "\n";
+		$offset=$job->id;
 		if ( !$job->run() ) {
 			print "Error: {$job->error}\n";
 		}

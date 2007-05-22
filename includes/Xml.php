@@ -19,9 +19,7 @@ class Xml {
 	public static function element( $element, $attribs = null, $contents = '') {
 		$out = '<' . $element;
 		if( !is_null( $attribs ) ) {
-			foreach( $attribs as $name => $val ) {
-				$out .= ' ' . $name . '="' . Sanitizer::encodeAttribute( $val ) . '"';
-			}
+			$out .=  self::expandAttributes( $attribs );
 		}
 		if( is_null( $contents ) ) {
 			$out .= '>';
@@ -33,6 +31,25 @@ class Xml {
 			}
 		}
 		return $out;
+	}
+
+	/**
+	 * Given an array of ('attributename' => 'value'), it generates the code
+	 * to set the XML attributes : attributename="value".
+	 * The values are passed to Sanitizer::encodeAttribute.
+	 * Return null if no attributes given.
+	 * @param $attribs Array of attributes for an XML element
+	 */
+	private static function expandAttributes( $attribs ) {
+		if( is_null( $attribs ) ) {
+			return null;
+		} else {
+			$out = '';
+			foreach( $attribs as $name => $val ) {
+				$out .= ' ' . $name . '="' . Sanitizer::encodeAttribute( $val ) . '"';
+			}
+			return $out;
+		}
 	}
 
 	/**
@@ -50,14 +67,28 @@ class Xml {
 			$attribs = array_map( array( 'UtfNormal', 'cleanUp' ), $attribs );
 		}
 		if( $contents ) {
+			wfProfileIn( __METHOD__ . '-norm' );
 			$contents = UtfNormal::cleanUp( $contents );
+			wfProfileOut( __METHOD__ . '-norm' );
 		}
 		return self::element( $element, $attribs, $contents );
 	}
 
-	// Shortcuts
-	public static function openElement( $element, $attribs = null ) { return self::element( $element, $attribs, null ); }
+	/** This open an XML element */
+	public static function openElement( $element, $attribs = null ) {
+		return '<' . $element . self::expandAttributes( $attribs ) . '>';
+	}
+
+	// Shortcut
 	public static function closeElement( $element ) { return "</$element>"; }
+
+	/**
+	 * Same as <link>element</link>, but does not escape contents. Handy when the
+	 * content you have is already valid xml.
+	 */
+	public static function tags( $element, $attribs = null, $contents ) {
+		return self::openElement( $element, $attribs ) . $contents . "</$element>";
+	}
 
 	/**
 	 * Create a namespace selector
@@ -67,7 +98,7 @@ class Xml {
 	 * @param $includehidden Bool: include hidden namespaces?
 	 * @return String: Html string containing the namespace selector
 	 */
-	public static function &namespaceSelector($selected = '', $allnamespaces = null, $includehidden=false) {
+	public static function namespaceSelector($selected = '', $allnamespaces = null, $includehidden=false) {
 		global $wgContLang;
 		if( $selected !== '' ) {
 			if( is_null( $selected ) ) {
@@ -100,6 +131,45 @@ class Xml {
 		return $s;
 	}
 
+	/**
+	 *
+	 * @param $language The language code of the selected language
+	 * @param $customisedOnly If true only languages which have some content are listed
+	 * @return array of label and select
+	 */
+	public static function languageSelector( $selected, $customisedOnly = true ) {
+		global $wgContLanguageCode;
+		/**
+		 * Make sure the site language is in the list; a custom language code
+		 * might not have a defined name...
+		 */
+		$languages = Language::getLanguageNames( $customisedOnly );
+		if( !array_key_exists( $wgContLanguageCode, $languages ) ) {
+			$languages[$wgContLanguageCode] = $wgContLanguageCode;
+		}
+		ksort( $languages );
+
+		/**
+		 * If a bogus value is set, default to the content language.
+		 * Otherwise, no default is selected and the user ends up
+		 * with an Afrikaans interface since it's first in the list.
+		 */
+		$selected = isset( $languages[$selected] ) ? $selected : $wgContLanguageCode;
+		$options = "\n";
+		foreach( $languages as $code => $name ) {
+			$options .= Xml::option( "$code - $name", $code, ($code == $selected) ) . "\n";
+		}
+
+		return array(
+			Xml::label( wfMsg('yourlanguage'), 'wpUserLanguage' ),
+			Xml::tags( 'select',
+				array( 'id' => 'wpUserLanguage', 'name' => 'wpUserLanguage' ),
+				$options
+			)
+		);
+
+	}
+
 	public static function span( $text, $class, $attribs=array() ) {
 		return self::element( 'span', array( 'class' => $class ) + $attribs, $text );
 	}
@@ -116,6 +186,14 @@ class Xml {
 	}
 
 	/**
+	 * Convenience function to build an HTML password input field
+	 * @return string HTML
+	 */
+	public static function password( $name, $size=false, $value=false, $attribs=array() ) {
+		return self::input( $name, $size, $value, array_merge($attribs, array('type' => 'password')));
+	}
+
+	/**
 	 * Internal function for use in checkboxes and radio buttons and such.
 	 * @return array
 	 */
@@ -128,10 +206,13 @@ class Xml {
 	 * @return string HTML
 	 */
 	public static function check( $name, $checked=false, $attribs=array() ) {
-		return self::element( 'input', array(
-			'name' => $name,
-			'type' => 'checkbox',
-			'value' => 1 ) + self::attrib( 'checked', $checked ) +  $attribs );
+		return self::element( 'input', array_merge(
+			array(
+				'name' => $name,
+				'type' => 'checkbox',
+				'value' => 1 ),
+			self::attrib( 'checked', $checked ),
+			$attribs ) );
 	}
 
 	/**
@@ -255,6 +336,33 @@ class Xml {
 	}
 
 	/**
+	 * Encode a variable of unknown type to JavaScript.
+	 * Doesn't support hashtables just yet.
+	 */
+	public static function encodeJsVar( $value ) {
+		if ( is_bool( $value ) ) {
+			$s = $value ? 'true' : 'false';
+		} elseif ( is_null( $value ) ) {
+			$s = 'null';
+		} elseif ( is_int( $value ) ) {
+			$s = $value;
+		} elseif ( is_array( $value ) ) {
+			$s = '[';
+			foreach ( $value as $name => $elt ) {
+				if ( $s != '[' ) {
+					$s .= ', ';
+				}
+				$s .= self::encodeJsVar( $elt );
+			}
+			$s .= ']';
+		} else {
+			$s = '"' . self::escapeJsString( $value ) . '"';
+		}
+		return $s;
+	}
+	
+
+	/**
 	 * Check if a string is well-formed XML.
 	 * Must include the surrounding tag.
 	 *
@@ -270,8 +378,8 @@ class Xml {
 		xml_parser_set_option( $parser, XML_OPTION_CASE_FOLDING, false );
 
 		if( !xml_parse( $parser, $text, true ) ) {
-			$err = xml_error_string( xml_get_error_code( $parser ) );
-			$position = xml_get_current_byte_index( $parser );
+			//$err = xml_error_string( xml_get_error_code( $parser ) );
+			//$position = xml_get_current_byte_index( $parser );
 			//$fragment = $this->extractFragment( $html, $position );
 			//$this->mXmlError = "$err at byte $position:\n$fragment";
 			xml_parser_free( $parser );
@@ -296,6 +404,20 @@ class Xml {
 			$text .
 			'</html>';
 		return Xml::isWellFormed( $html );
+	}
+
+	/**
+	 * Replace " > and < with their respective HTML entities ( &quot;,
+	 * &gt;, &lt;)
+	 *
+	 * @param $in String: text that might contain HTML tags.
+	 * @return string Escaped string
+	 */
+	public static function escapeTagsOnly( $in ) {
+		return str_replace(
+			array( '"', '>', '<' ),
+			array( '&quot;', '&gt;', '&lt;' ),
+			$in );
 	}
 }
 ?>

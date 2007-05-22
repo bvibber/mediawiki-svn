@@ -1,7 +1,6 @@
 <?php
 /**
  * Include most things that's need to customize the site
- * @package MediaWiki
  */
 
 /**
@@ -27,6 +26,33 @@ if ( !isset( $wgVersion ) ) {
 	echo "Error, Setup.php must be included from the file scope, after DefaultSettings.php\n";
 	die( 1 );
 }
+
+// Set various default paths sensibly...
+if( $wgScript === false ) $wgScript = "$wgScriptPath/index.php";
+if( $wgRedirectScript === false ) $wgRedirectScript = "$wgScriptPath/redirect.php";
+
+if( $wgArticlePath === false ) {
+	if( $wgUsePathInfo ) {
+		$wgArticlePath      = "$wgScript/$1";
+	} else {
+		$wgArticlePath      = "$wgScript?title=$1";
+	}
+}
+
+if( $wgStylePath === false ) $wgStylePath = "$wgScriptPath/skins";
+if( $wgStyleDirectory === false) $wgStyleDirectory   = "$IP/skins";
+
+if( $wgLogo === false ) $wgLogo = "$wgStylePath/common/images/wiki.png";
+
+if( $wgUploadPath === false ) $wgUploadPath = "$wgScriptPath/images";
+if( $wgUploadDirectory === false ) $wgUploadDirectory = "$IP/images";
+
+if( $wgMathPath === false ) $wgMathPath = "{$wgUploadPath}/math";
+if( $wgMathDirectory === false ) $wgMathDirectory = "{$wgUploadDirectory}/math";
+if( $wgTmpDirectory === false ) $wgTmpDirectory = "{$wgUploadDirectory}/tmp";
+
+if( $wgReadOnlyFile === false ) $wgReadOnlyFile = "{$wgUploadDirectory}/lock_yBgMBwiR";
+if( $wgFileCacheDirectory === false ) $wgFileCacheDirectory = "{$wgUploadDirectory}/cache";
 
 require_once( "$IP/includes/AutoLoader.php" );
 
@@ -107,13 +133,14 @@ if ( $wgDBprefix ) {
 } else {
 	$wgCookiePrefix = $wgDBname;
 }
+$wgCookiePrefix = strtr($wgCookiePrefix, "=,; +.\"'\\[", "__________");
 
 # If session.auto_start is there, we can't touch session name
 #
 if( !ini_get( 'session.auto_start' ) )
 	session_name( $wgSessionName ? $wgSessionName : $wgCookiePrefix . '_session' );
 
-if( !$wgCommandLineMode && ( isset( $_COOKIE[session_name()] ) || isset( $_COOKIE[$wgCookiePrefix.'Token'] ) ) ) {
+if( !$wgCommandLineMode && ( $wgRequest->checkSessionCookie() || isset( $_COOKIE[$wgCookiePrefix.'Token'] ) ) ) {
 	wfIncrStats( 'request_with_session' );
 	wfSetupSession();
 	$wgSessionStarted = true;
@@ -140,6 +167,10 @@ if ( !$wgDBservers ) {
 $wgLoadBalancer = new StubObject( 'wgLoadBalancer', 'LoadBalancer', 
 	array( $wgDBservers, false, $wgMasterWaitTimeout, true ) );
 $wgContLang = new StubContLang;
+
+// Now that variant lists may be available...
+$wgRequest->interpolateTitle();
+
 $wgUser = new StubUser;
 $wgLang = new StubUserLang;
 $wgOut = new StubObject( 'wgOut', 'OutputPage' );
@@ -160,7 +191,9 @@ foreach ( $wgSkinExtensionFunctions as $func ) {
 
 if( !is_object( $wgAuth ) ) {
 	$wgAuth = new StubObject( 'wgAuth', 'AuthPlugin' );
+	wfRunHooks( 'AuthPluginSetup', array( &$wgAuth ) );
 }
+
 wfProfileOut( $fname.'-User' );
 
 wfProfileIn( $fname.'-misc2' );
@@ -169,6 +202,7 @@ $wgDeferredUpdateList = array();
 $wgPostCommitUpdateList = array();
 
 if ( $wgAjaxSearch ) $wgAjaxExportList[] = 'wfSajaxSearch';
+if ( $wgAjaxWatch ) $wgAjaxExportList[] = 'wfAjaxWatch';
 
 wfSeedRandom();
 

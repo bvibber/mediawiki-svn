@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * MediaWiki exception
+ * @addtogroup Exception
+ */
 class MWException extends Exception
 {
 	function useOutputPage() {
@@ -12,6 +16,7 @@ class MWException extends Exception
 		return is_object( $wgLang );
 	}
 
+	/** Get a message from i18n */
 	function msg( $key, $fallback /*[, params...] */ ) {
 		$args = array_slice( func_get_args(), 2 );
 		if ( $this->useMessageCache() ) {
@@ -21,6 +26,7 @@ class MWException extends Exception
 		}
 	}
 
+	/* If wgShowExceptionDetails, return a HTML message with a backtrace to the error. */
 	function getHTML() {
 		global $wgShowExceptionDetails;
 		if( $wgShowExceptionDetails ) {
@@ -33,6 +39,7 @@ class MWException extends Exception
 		}
 	}
 
+	/* If wgShowExceptionDetails, return a text message with a backtrace to the error */
 	function getText() {
 		global $wgShowExceptionDetails;
 		if( $wgShowExceptionDetails ) {
@@ -43,7 +50,8 @@ class MWException extends Exception
 				"in LocalSettings.php to show detailed debugging information.</p>";
 		}
 	}
-	
+
+	/* Return titles of this error page */
 	function getPageTitle() {
 		if ( $this->useMessageCache() ) {
 			return wfMsg( 'internalerror' );
@@ -52,14 +60,19 @@ class MWException extends Exception
 			return "$wgSitename error";
 		}
 	}
-	
+
+	/** Return the requested URL and point to file and line number from which the
+	 * exception occured
+	 */
 	function getLogMessage() {
+		global $wgRequest;
 		$file = $this->getFile();
 		$line = $this->getLine();
 		$message = $this->getMessage();
-		return "{$_SERVER['REQUEST_URI']} Exception from line $line of $file: $message";
+		return $wgRequest->getRequestURL() . " Exception from line $line of $file: $message";
 	}
-	
+
+	/** Output the exception report using HTML */
 	function reportHTML() {
 		global $wgOut;
 		if ( $this->useOutputPage() ) {
@@ -77,11 +90,15 @@ class MWException extends Exception
 			echo $this->htmlFooter();
 		}
 	}
-	
+
+	/** Print the exception report using text */
 	function reportText() {
 		echo $this->getText();
 	}
 
+	/* Output a report about the exception and takes care of formatting.
+	 * It will be either HTML or plain text based on $wgCommandLineMode.
+	 */
 	function report() {
 		global $wgCommandLineMode;
 		if ( $wgCommandLineMode ) {
@@ -124,6 +141,7 @@ class MWException extends Exception
 /**
  * Exception class which takes an HTML error message, and does not
  * produce a backtrace. Replacement for OutputPage::fatalError().
+ * @addtogroup Exception
  */
 class FatalError extends MWException {
 	function getHTML() {
@@ -135,6 +153,9 @@ class FatalError extends MWException {
 	}
 }
 
+/**
+ * @addtogroup Exception
+ */
 class ErrorPageError extends MWException {
 	public $title, $msg;
 	
@@ -165,7 +186,7 @@ function wfInstallExceptionHandler() {
  * Report an exception to the user
  */
 function wfReportException( Exception $e ) {
-	 if ( is_a( $e, 'MWException' ) ) {
+	 if ( $e instanceof MWException ) {
 		 try {
 			 $e->report();
 		 } catch ( Exception $e2 ) {
@@ -202,7 +223,7 @@ function wfReportException( Exception $e ) {
 function wfExceptionHandler( $e ) {
 	global $wgFullyInitialised;
 	wfReportException( $e );
-	
+
 	// Final cleanup, similar to wfErrorExit()
 	if ( $wgFullyInitialised ) {
 		try {

@@ -3,17 +3,23 @@
  * Special handling for category description pages
  * Modelled after ImagePage.php
  *
- * @package MediaWiki
  */
 
 if( !defined( 'MEDIAWIKI' ) )
 	die( 1 );
 
 /**
- * @package MediaWiki
  */
 class CategoryPage extends Article {
 	function view() {
+		global $wgRequest, $wgUser;
+
+		$diff = $wgRequest->getVal( 'diff' );
+		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
+
+		if ( isset( $diff ) && $diffOnly )
+			return Article::view();
+
 		if(!wfRunHooks('CategoryPageView', array(&$this))) return;
 
 		if ( NS_CATEGORY == $this->mTitle->getNamespace() ) {
@@ -141,7 +147,7 @@ class CategoryViewer {
 	/**
 	 * Add a page in the image namespace
 	 */
-	function addImage( $title, $sortkey, $pageLength ) {
+	function addImage( $title, $sortkey, $pageLength, $isRedirect = false ) {
 		if ( $this->showGallery ) {
 			$image = new Image( $title );
 			if( $this->flip ) {
@@ -150,18 +156,21 @@ class CategoryViewer {
 				$this->gallery->add( $image );
 			}
 		} else {
-			$this->addPage( $title, $sortkey, $pageLength );
+			$this->addPage( $title, $sortkey, $pageLength, $isRedirect );
 		}
 	}
 
 	/**
 	 * Add a miscellaneous page
 	 */
-	function addPage( $title, $sortkey, $pageLength ) {
+	function addPage( $title, $sortkey, $pageLength, $isRedirect = false ) {
 		global $wgContLang;
-		$this->articles[] = $this->getSkin()->makeSizeLinkObj( 
+		$link = $this->getSkin()->makeSizeLinkObj( 
 			$pageLength, $title, $wgContLang->convert( $title->getPrefixedText() ) 
 		);
+		if ($isRedirect)
+			$link = '<span class="redirect-in-category">'.$link.'</span>';
+		$this->articles[] = $link;
 		$this->articles_start_char[] = $wgContLang->convert( $wgContLang->firstChar( $sortkey ) );
 	}
 
@@ -175,7 +184,7 @@ class CategoryViewer {
 	}
 
 	function doCategoryQuery() {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		if( $this->from != '' ) {
 			$pageCondition = 'cl_sortkey >= ' . $dbr->addQuotes( $this->from );
 			$this->flip = false;
@@ -188,7 +197,7 @@ class CategoryViewer {
 		}
 		$res = $dbr->select(
 			array( 'page', 'categorylinks' ),
-			array( 'page_title', 'page_namespace', 'page_len', 'cl_sortkey' ),
+			array( 'page_title', 'page_namespace', 'page_len', 'page_is_redirect', 'cl_sortkey' ),
 			array( $pageCondition,
 			       'cl_from          =  page_id',
 			       'cl_to'           => $this->title->getDBKey()),
@@ -196,6 +205,7 @@ class CategoryViewer {
 			#+ $pageCondition,
 			__METHOD__,
 			array( 'ORDER BY' => $this->flip ? 'cl_sortkey DESC' : 'cl_sortkey',
+			       'USE INDEX' => 'cl_sortkey', 
 			       'LIMIT'    => $this->limit + 1 ) );
 
 		$count = 0;
@@ -213,9 +223,9 @@ class CategoryViewer {
 			if( $title->getNamespace() == NS_CATEGORY ) {
 				$this->addSubcategory( $title, $x->cl_sortkey, $x->page_len );
 			} elseif( $title->getNamespace() == NS_IMAGE ) {
-				$this->addImage( $title, $x->cl_sortkey, $x->page_len );
+				$this->addImage( $title, $x->cl_sortkey, $x->page_len, $x->page_is_redirect );
 			} else {
-				$this->addPage( $title, $x->cl_sortkey, $x->page_len );
+				$this->addPage( $title, $x->cl_sortkey, $x->page_len, $x->page_is_redirect );
 			}
 		}
 		$dbr->freeResult( $res );
@@ -234,11 +244,12 @@ class CategoryViewer {
 	function getSubcategorySection() {
 		# Don't show subcategories section if there are none.
 		$r = '';
-		if( count( $this->children ) > 0 ) {
+		$c = count( $this->children );
+		if( $c > 0 ) {
 			# Showing subcategories
-			$r .= "<div id=\"subcategories\">\n";
+			$r .= "<div id=\"mw-subcategories\">\n";
 			$r .= '<h2>' . wfMsg( 'subcategories' ) . "</h2>\n";
-			$r .= wfMsgExt( 'subcategorycount', array( 'parse' ), count( $this->children) );
+			$r .= wfMsgExt( 'subcategorycount', array( 'parse' ), $c );
 			$r .= $this->formatList( $this->children, $this->children_start_char );
 			$r .= "\n</div>";
 		}
@@ -247,17 +258,25 @@ class CategoryViewer {
 
 	function getPagesSection() {
 		$ti = htmlspecialchars( $this->title->getText() );
-		$r = "<div id=\"pages\">\n";
-		$r .= '<h2>' . wfMsg( 'category_header', $ti ) . "</h2>\n";
-		$r .= wfMsgExt( 'categoryarticlecount', array( 'parse' ), count( $this->articles) );
-		$r .= $this->formatList( $this->articles, $this->articles_start_char );
-		$r .= "\n</div>";
+		# Don't show articles section if there are none.
+		$r = '';
+		$c = count( $this->articles );
+		if( $c > 0 ) {
+			$r = "<div id=\"mw-pages\">\n";
+			$r .= '<h2>' . wfMsg( 'category_header', $ti ) . "</h2>\n";
+			$r .= wfMsgExt( 'categoryarticlecount', array( 'parse' ), $c );
+			$r .= $this->formatList( $this->articles, $this->articles_start_char );
+			$r .= "\n</div>";
+		}
 		return $r;
 	}
 
 	function getImageSection() {
 		if( $this->showGallery && ! $this->gallery->isEmpty() ) {
-			return $this->gallery->toHTML();
+			return "<div id=\"mw-category-media\">\n" .
+			'<h2>' . wfMsg( 'category-media-header', htmlspecialchars($this->title->getText()) ) . "</h2>\n" .
+			wfMsgExt( 'category-media-count', array( 'parse' ), $this->gallery->count() ) .
+			$this->gallery->toHTML() . "\n</div>";
 		} else {
 			return '';
 		}
@@ -388,7 +407,7 @@ class CategoryViewer {
 	 */
 	function pagingLinks( $title, $first, $last, $limit, $query = array() ) {
 		global $wgUser, $wgLang;
-		$sk =& $this->getSkin();
+		$sk = $this->getSkin();
 		$limitText = $wgLang->formatNum( $limit );
 
 		$prevLink = htmlspecialchars( wfMsg( 'prevn', $limitText ) );

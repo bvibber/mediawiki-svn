@@ -1,7 +1,6 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage Language
+ * @addtogroup Language
  */
 
 if( !defined( 'MEDIAWIKI' ) ) {
@@ -23,7 +22,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 # Read language names
 global $wgLanguageNames;
-require_once( 'Names.php' );
+require_once( dirname(__FILE__) . '/Names.php' ) ;
 
 global $wgInputEncoding, $wgOutputEncoding;
 
@@ -51,7 +50,7 @@ class FakeConverter {
 	function markNoConversion($text, $noParse=false) {return $text;}
 	function convertCategoryKey( $key ) {return $key; }
 	function convertLinkToAllVariants($text){ return array( $this->mLang->getCode() => $text); }
-	function setNoTitleConvert(){}
+	function armourMath($text){ return $text; }
 }
 
 #--------------------------------------------------------------------------
@@ -62,17 +61,19 @@ class Language {
 	var $mConverter, $mVariants, $mCode, $mLoaded = false;
 
 	static public $mLocalisationKeys = array( 'fallback', 'namespaceNames',
-		'quickbarSettings', 'skinNames', 'mathNames', 
+		'skinNames', 'mathNames', 
 		'bookstoreList', 'magicWords', 'messages', 'rtl', 'digitTransformTable', 
 		'separatorTransformTable', 'fallback8bitEncoding', 'linkPrefixExtension',
 		'defaultUserOptionOverrides', 'linkTrail', 'namespaceAliases', 
 		'dateFormats', 'datePreferences', 'datePreferenceMigrationMap', 
-		'defaultDateFormat', 'extraUserToggles' );
+		'defaultDateFormat', 'extraUserToggles', 'specialPageAliases' );
 
 	static public $mMergeableMapKeys = array( 'messages', 'namespaceNames', 'mathNames', 
 		'dateFormats', 'defaultUserOptionOverrides', 'magicWords' );
 
 	static public $mMergeableListKeys = array( 'extraUserToggles' );
+
+	static public $mMergeableAliasListKeys = array( 'specialPageAliases' );
 
 	static public $mLocalisationCache = array();
 
@@ -161,6 +162,11 @@ class Language {
 		return User::getDefaultOptions();
 	}
 
+	function getFallbackLanguageCode() {
+		$this->load();
+		return $this->fallback;
+	}
+
 	/**
 	 * Exports $wgBookstoreListEn
 	 * @return array
@@ -222,19 +228,31 @@ class Language {
 	}
 
 	/**
-	 * Get a namespace key by value, case insensetive.
+	 * Get a namespace key by value, case insensitive.
+	 * Only matches namespace names for the current language, not the
+	 * canonical ones defined in Namespace.php.
+	 *
+	 * @param string $text
+	 * @return mixed An integer if $text is a valid value otherwise false
+	 */
+	function getLocalNsIndex( $text ) {
+		$this->load();
+		$lctext = $this->lc($text);
+		return isset( $this->mNamespaceIds[$lctext] ) ? $this->mNamespaceIds[$lctext] : false;
+	}
+
+	/**
+	 * Get a namespace key by value, case insensitive.  Canonical namespace
+	 * names override custom ones defined for the current language.
 	 *
 	 * @param string $text
 	 * @return mixed An integer if $text is a valid value otherwise false
 	 */
 	function getNsIndex( $text ) {
 		$this->load();
-		$index = @$this->mNamespaceIds[$this->lc($text)];
-		if ( is_null( $index ) ) {
-			return false;
-		} else {
-			return $index;
-		}
+		$lctext = $this->lc($text);
+		if( ( $ns = Namespace::getCanonicalIndex( $lctext ) ) !== null ) return $ns;
+		return isset( $this->mNamespaceIds[$lctext] ) ? $this->mNamespaceIds[$lctext] : false;
 	}
 
 	/**
@@ -248,12 +266,21 @@ class Language {
 	}
 
 	function specialPage( $name ) {
+		$aliases = $this->getSpecialPageAliases();
+		if ( isset( $aliases[$name][0] ) ) {
+			$name = $aliases[$name][0];
+		}
 		return $this->getNsText(NS_SPECIAL) . ':' . $name;
 	}
 
 	function getQuickbarSettings() {
-		$this->load();
-		return $this->quickbarSettings;
+		return array(
+			$this->getMessage( 'qbsettings-none' ),
+			$this->getMessage( 'qbsettings-fixedleft' ),
+			$this->getMessage( 'qbsettings-fixedright' ),
+			$this->getMessage( 'qbsettings-floatingleft' ),
+			$this->getMessage( 'qbsettings-floatingright' )
+		);
 	}
 
 	function getSkinNames() {
@@ -304,7 +331,7 @@ class Language {
 	 * Get language names, indexed by code.
 	 * If $customisedOnly is true, only returns codes with a messages file
 	 */
-	function getLanguageNames( $customisedOnly = false ) {
+	public static function getLanguageNames( $customisedOnly = false ) {
 		global $wgLanguageNames;
 		if ( !$customisedOnly ) {
 			return $wgLanguageNames;
@@ -314,6 +341,7 @@ class Language {
 		$messageFiles = glob( "$IP/languages/messages/Messages*.php" );
 		$names = array();
 		foreach ( $messageFiles as $file ) {
+			$m = array();
 			if( preg_match( '/Messages([A-Z][a-z_]+)\.php$/', $file, $m ) ) {
 				$code = str_replace( '_', '-', strtolower( $m[1] ) );
 				if ( isset( $wgLanguageNames[$code] ) ) {
@@ -392,8 +420,12 @@ class Language {
 		if ( $tz === '' ) {
 			# Global offset in minutes.
 			if( isset($wgLocalTZoffset) ) {
-				$hrDiff = $wgLocalTZoffset % 60;
-				$minDiff = $wgLocalTZoffset - ($hrDiff * 60);
+				if( $wgLocalTZoffset >= 0 ) {
+					$hrDiff = floor($wgLocalTZoffset / 60);
+				} else {
+					$hrDiff = ceil($wgLocalTZoffset / 60);
+				}
+				$minDiff = $wgLocalTZoffset % 60;
 			}
 		} elseif ( strpos( $tz, ':' ) !== false ) {
 			$tzArray = explode( ':', $tz );
@@ -741,6 +773,9 @@ class Language {
 	*/
 	function timeanddate( $ts, $adj = false, $format = true, $timecorrection = false) {
 		$this->load();
+
+		$ts = wfTimestamp( TS_MW, $ts );
+
 		if ( $adj ) { 
 			$ts = $this->userAdjust( $ts, $timecorrection ); 
 		}
@@ -755,7 +790,7 @@ class Language {
 
 	function getMessage( $key ) {
 		$this->load();
-		return @$this->messages[$key];
+		return isset( $this->messages[$key] ) ? $this->messages[$key] : null;
 	}
 
 	function getAllMessages() {
@@ -765,7 +800,7 @@ class Language {
 
 	function iconv( $in, $out, $string ) {
 		# For most languages, this is a wrapper for iconv
-		return iconv( $in, $out, $string );
+		return iconv( $in, $out . '//IGNORE', $string );
 	}
 
 	// callback functions for uc(), lc(), ucwords(), ucwordbreaks()
@@ -801,15 +836,17 @@ class Language {
 	}
 
 	function uc( $str, $first = false ) {
-		if ( function_exists( 'mb_strtoupper' ) )
-			if ( $first )
-				if ( self::isMultibyte( $str ) )
+		if ( function_exists( 'mb_strtoupper' ) ) {
+			if ( $first ) {
+				if ( self::isMultibyte( $str ) ) {
 					return mb_strtoupper( mb_substr( $str, 0, 1 ) ) . mb_substr( $str, 1 );
-				else
+				} else {
 					return ucfirst( $str );
-			else
+				}
+			} else {
 				return self::isMultibyte( $str ) ? mb_strtoupper( $str ) : strtoupper( $str );
-		else
+			}
+		} else {
 			if ( self::isMultibyte( $str ) ) {
 				list( $wikiUpperChars ) = $this->getCaseMaps();
 				$x = $first ? '^' : '';
@@ -818,8 +855,10 @@ class Language {
 					array($this,"ucCallback"),
 					$str
 				);
-			} else
+			} else {
 				return $first ? ucfirst( $str ) : strtoupper( $str );
+			}
+		}
 	}
 	
 	function lcfirst( $str ) {
@@ -908,6 +947,21 @@ class Language {
 			$str );
 	}
 
+	/**
+	 * Return a case-folded representation of $s
+	 *
+	 * This is a representation such that caseFold($s1)==caseFold($s2) if $s1 
+	 * and $s2 are the same except for the case of their characters. It is not
+	 * necessary for the value returned to make sense when displayed.
+	 *
+	 * Do *not* perform any other normalisation in this function. If a caller
+	 * uses this function when it should be using a more general normalisation
+	 * function, then fix the caller.
+	 */
+	function caseFold( $s ) {
+		return $this->uc( $s );
+	}
+
 	function checkTitleEncoding( $s ) {
 		if( is_array( $s ) ) {
 			wfDebugDieBacktrace( 'Given array to checkTitleEncoding.' );
@@ -937,6 +991,11 @@ class Language {
 	 * @return string
 	 */
 	function stripForSearch( $string ) {
+		global $wgDBtype;
+		if ( $wgDBtype != 'mysql' ) {
+			return $string;
+		}
+
 		# MySQL fulltext index doesn't grok utf-8, so we
 		# need to fold cases and convert to hex
 
@@ -970,6 +1029,7 @@ class Language {
 	 * @return string
 	 */
 	function firstChar( $s ) {
+		$matches = array();
 		preg_match( '/^([\x00-\x7f]|[\xc0-\xdf][\x80-\xbf]|' .
 		'[\xe0-\xef][\x80-\xbf]{2}|[\xf0-\xf7][\x80-\xbf]{3})/', $s, $matches);
 
@@ -1084,6 +1144,20 @@ class Language {
 	}
 
 	/**
+	 * Get special page names, as an associative array
+	 *   case folded alias => real name
+	 */
+	function getSpecialPageAliases() {
+		$this->load();
+		if ( !isset( $this->mExtendedSpecialPageAliases ) ) {
+			$this->mExtendedSpecialPageAliases = $this->specialPageAliases;
+			wfRunHooks( 'LangugeGetSpecialPageAliases', 
+				array( &$this->mExtendedSpecialPageAliases, $this->getCode() ) );
+		}
+		return $this->mExtendedSpecialPageAliases;
+	}
+
+	/**
 	 * Italic is unsuitable for some languages
 	 *
 	 * @public
@@ -1132,6 +1206,17 @@ class Language {
 			if (!is_null($s)) { $number = strtr($number, $s); }
 		}
 
+		return $number;
+	}
+
+	function parseFormattedNumber( $number ) {
+		$s = $this->digitTransformTable();
+		if (!is_null($s)) { $number = strtr($number, array_flip($s)); }
+
+		$s = $this->separatorTransformTable();
+		if (!is_null($s)) { $number = strtr($number, array_flip($s)); }
+
+		$number = strtr( $number, array (',' => '') );
 		return $number;
 	}
 
@@ -1194,6 +1279,7 @@ class Language {
 		if( $length > 0 ) {
 			$string = substr( $string, 0, $length );
 			$char = ord( $string[strlen( $string ) - 1] );
+			$m = array();
 			if ($char >= 0xc0) {
 				# We got the first byte only of a multibyte char; remove it.
 				$string = substr( $string, 0, -1 );
@@ -1246,19 +1332,22 @@ class Language {
 	 * @param string $wordform1
 	 * @param string $wordform2
 	 * @param string $wordform3 (optional)
+	 * @param string $wordform4 (optional)
+	 * @param string $wordform5 (optional)
 	 * @return string
 	 */
-	function convertPlural( $count, $w1, $w2, $w3) {
-		return $count == '1' ? $w1 : $w2;
+	function convertPlural( $count, $w1, $w2, $w3, $w4, $w5) {
+		return ( $count == '1' || $count == '-1' ) ? $w1 : $w2;
 	}
 
 	/**
 	 * For translaing of expiry times
 	 * @param string The validated block time in English
+	 * @param $forContent, avoid html?
 	 * @return Somehow translated block time
 	 * @see LanguageFi.php for example implementation
 	 */
-	function translateBlockExpiry( $str ) {
+	function translateBlockExpiry( $str, $forContent=false ) {
 
 		$scBlockExpiryOptions = $this->getMessageFromDB( 'ipboptions' );
 
@@ -1270,9 +1359,12 @@ class Language {
 			if ( strpos($option, ":") === false )
 				continue;
 			list($show, $value) = explode(":", $option);
-			if ( strcmp ( $str, $value) == 0 )
-				return '<span title="' . htmlspecialchars($str). '">' .
-					htmlspecialchars( trim( $show ) ) . '</span>';
+			if ( strcmp ( $str, $value) == 0 ) {
+				if ( $forContent )
+					return htmlspecialchars($str) . htmlspecialchars( trim( $show ) );
+				else
+					return '<span title="' . htmlspecialchars($str). '">' . htmlspecialchars( trim( $show ) ) . '</span>';
+			}
 		}
 
 		return $str;
@@ -1309,14 +1401,14 @@ class Language {
 		return $this->mConverter->parserConvert( $text, $parser );
 	}
 
-	# Tell the converter that it shouldn't convert titles
-	function setNoTitleConvert(){
-		$this->mConverter->setNotitleConvert();
-	}
-
 	# Check if this is a language with variants
 	function hasVariants(){
 		return sizeof($this->getVariants())>1;
+	}
+
+	# Put custom tags (e.g. -{ }-) around math to prevent conversion
+	function armourMath($text){ 
+		return $this->mConverter->armourMath($text);
 	}
 
 
@@ -1479,7 +1571,7 @@ class Language {
 			$cache = wfGetPrecompiledData( self::getFileName( "Messages", $code, '.ser' ) );
 			if ( $cache ) {
 				self::$mLocalisationCache[$code] = $cache;
-				wfDebug( "Got localisation for $code from precompiled data file\n" );
+				wfDebug( "Language::loadLocalisation(): got localisation for $code from precompiled data file\n" );
 				wfProfileOut( __METHOD__ );
 				return self::$mLocalisationCache[$code]['deps'];
 			}
@@ -1488,21 +1580,19 @@ class Language {
 			$memcKey = wfMemcKey('localisation', $code );
 			$cache = $wgMemc->get( $memcKey );
 			if ( $cache ) {
-				$expired = false;
 				# Check file modification times
 				foreach ( $cache['deps'] as $file => $mtime ) {
 					if ( !file_exists( $file ) || filemtime( $file ) > $mtime ) {
-						$expired = true;
 						break;
 					}
 				}
 				if ( self::isLocalisationOutOfDate( $cache ) ) {
 					$wgMemc->delete( $memcKey );
 					$cache = false;
-					wfDebug( "Localisation cache for $code had expired due to update of $file\n" );
+					wfDebug( "Language::loadLocalisation(): localisation cache for $code had expired due to update of $file\n" );
 				} else {
 					self::$mLocalisationCache[$code] = $cache;
-					wfDebug( "Got localisation for $code from cache\n" );
+					wfDebug( "Language::loadLocalisation(): got localisation for $code from cache\n" );
 					wfProfileOut( __METHOD__ );
 					return $cache['deps'];
 				}
@@ -1511,25 +1601,26 @@ class Language {
 			wfProfileIn( __METHOD__ );
 		}
 
+		# Default fallback, may be overridden when the messages file is included
 		if ( $code != 'en' ) {
 			$fallback = 'en';
 		} else {
 			$fallback = false;
 		}
-		
+
 		# Load the primary localisation from the source file
 		$filename = self::getMessagesFileName( $code );
 		if ( !file_exists( $filename ) ) {
-			wfDebug( "No localisation file for $code, using implicit fallback to en\n" );
+			wfDebug( "Language::loadLocalisation(): no localisation file for $code, using implicit fallback to en\n" );
 			$cache = array();
 			$deps = array();
 		} else {
 			$deps = array( $filename => filemtime( $filename ) );
 			require( $filename );
 			$cache = compact( self::$mLocalisationKeys );	
-			wfDebug( "Got localisation for $code from source\n" );
+			wfDebug( "Language::loadLocalisation(): got localisation for $code from source\n" );
 		}
-		
+
 		if ( !empty( $fallback ) ) {
 			# Load the fallback localisation, with a circular reference guard
 			if ( isset( $recursionGuard[$code] ) ) {
@@ -1550,6 +1641,8 @@ class Language {
 							$cache[$key] = $cache[$key] + $secondary[$key];
 						} elseif ( in_array( $key, self::$mMergeableListKeys ) ) {
 							$cache[$key] = array_merge( $secondary[$key], $cache[$key] );
+						} elseif ( in_array( $key, self::$mMergeableAliasListKeys ) ) {
+							$cache[$key] = array_merge_recursive( $cache[$key], $secondary[$key] );
 						}
 					}
 				} else {
@@ -1626,7 +1719,7 @@ class Language {
 	 */
 	static function getMessageFor( $key, $code ) {
 		self::loadLocalisation( $code );
-		return @self::$mLocalisationCache[$code]['messages'][$key];
+		return isset( self::$mLocalisationCache[$code]['messages'][$key] ) ? self::$mLocalisationCache[$code]['messages'][$key] : null;
 	}
 
 	/**
@@ -1649,7 +1742,7 @@ class Language {
 	 * Do any necessary post-cache-load settings adjustment
 	 */
 	function fixUpSettings() {
-		global $wgExtraNamespaces, $wgMetaNamespace, $wgMetaNamespaceTalk, $wgMessageCache, 
+		global $wgExtraNamespaces, $wgMetaNamespace, $wgMetaNamespaceTalk,
 			$wgNamespaceAliases, $wgAmericanDates;
 		wfProfileIn( __METHOD__ );
 		if ( $wgExtraNamespaces ) {

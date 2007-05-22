@@ -1,3 +1,29 @@
+/* For clarity, explicitly state some recommendations from <http://www.w3.org/
+   TR/CSS21/sample.html> to make sure the editsection links scale right */
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.5em; }
+h3 { font-size: 1.17em; }
+h5 { font-size: .83em; }
+h6 { font-size: .75em; }
+h1, h2, h3, h4, h5, h6 { font-weight: bolder }
+
+/* Now the custom parts */
+
+/* Make edit sections (which are inside h# tags) normal-sized
+   and otherwise format */
+.editsection {
+	font-weight: normal;
+	float: right;
+	margin-left: 5px;
+}
+h1 .editsection { font-size: 50% }
+h2 .editsection { font-size: 66.7% }
+h3 .editsection { font-size: 85.5% }
+h5 .editsection { font-size: 120% }
+h6 .editsection { font-size: 133% }
+
+
 #toolbar {
   display: none;
 }
@@ -29,7 +55,7 @@ a:hover {
     margin: 0em 0 0 12.2em;
     padding: 0em 1em 1.5em 1em;
     border-left: 1px solid #959595;
-    line-height: 1.5;
+    line-height: 1.5em;
 }
 
 #column-one {
@@ -59,7 +85,7 @@ img {
 }
 p {
     margin: 0.4em 0em 0.5em 0em;
-    line-height: 1.5;
+    line-height: 1.5em;
 }
 p img { margin: 0; }
 
@@ -242,7 +268,7 @@ td.diff-deletedline {
     background-color: #f8ffaa;
 }
 
-span.diffchange { background-color: #FFCDF3; }
+.diffchange { background-color: #FFCDF3; text-decoration: none; }
 .autocomment { color:  grey; }
 #pagehistory span.user {
     margin-left: 1.4em;
@@ -276,6 +302,7 @@ div.floatright, table.floatright {
 div.floatright p { font-style: italic; }
 div.floatleft, table.floatleft {
     float: left;
+    clear: left;
     margin: 0.3em 0.5em 0.5em 0;
     position: relative;
     border-width: 0.5em 1.4em 0.8em 0;
@@ -315,6 +342,7 @@ div.tright {
 }
 div.tleft {
     float: left;
+    clear: left;
     margin-right:0.5em;
     border-width: 0.5em 1.4em 0.8em 0;
 }
@@ -407,3 +435,20 @@ table.collapsed tr.collapsable {
 	float: right;
 	margin-left: 5px;
 }
+
+.templatesUsed { margin-top: 1.5em; }
+
+/**
+ * Here is some stuff that's ACTUALLY COMMON TO ALL SKINS.
+ * When the day comes, it can be moved to a *real* common.css.
+ */
+.mw-plusminus-null { color: #aaa; }
+.texvc { direction: ltr; unicode-bidi: embed; }
+/* Stop floats from intruding into edit area in previews */
+#toolbar, #wpTextbox1 { clear: both; }
+
+/*
+#file img, .gallerybox .thumb img {
+	background: url(../common/images/Checker-16x16.png) repeat;
+}
+*/

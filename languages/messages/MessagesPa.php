@@ -1,15 +1,10 @@
 <?php
 /** Punjabi (Gurmukhi)
-  * @package MediaWiki
-  * @subpackage Language
+  * @addtogroup Language
   */
 # This file is dual-licensed under GFDL and GPL.
 #
 # See: http://bugzilla.wikimedia.org/show_bug.cgi?id=1478
-
-$quickbarSettings = array(
-	'ਕੋਈ ਨਹੀਂ', 'ਸਥਿਰ ਖੱਬੇ', 'ਸਥਿਰ ਸੱਜਾ', 'ਤੈਰਦਾ ਖੱਬੇ'
-);
 
 $skinNames = array(
 	'standard'      => 'ਮਿਆਰੀ',
@@ -37,16 +32,16 @@ $namespaceNames = array(
 );
 
 $digitTransformTable = array(
-	'0' => '੦',
-	'1' => '੧',
-	'2' => '੨',
-	'3' => '੩',
-	'4' => '੪',
-	'5' => '੫',
-	'6' => '੬',
-	'7' => '੭',
-	'8' => '੮',
-	'9' => '੯'
+	'0' => '੦', # &#x0a66;
+	'1' => '੧', # &#x0a67;
+	'2' => '੨', # &#x0a68;
+	'3' => '੩', # &#x0a69;
+	'4' => '੪', # &#x0a6a;
+	'5' => '੫', # &#x0a6b;
+	'6' => '੬', # &#x0a6c;
+	'7' => '੭', # &#x0a6d;
+	'8' => '੮', # &#x0a6e;
+	'9' => '੯', # &#x0a6f;
 );
 $linkTrail = '/^([ਁਂਃਅਆਇਈਉਊਏਐਓਔਕਖਗਘਙਚਛਜਝਞਟਠਡਢਣਤਥਦਧਨਪਫਬਭਮਯਰਲਲ਼ਵਸ਼ਸਹ਼ਾਿੀੁੂੇੈੋੌ੍ਖ਼ਗ਼ਜ਼ੜਫ਼ੰੱੲੳa-z]+)(.*)$/sDu';
 
@@ -377,6 +372,13 @@ $1 ਜਾਂ ਕਿਸੇ ਵੀ ਹੋਰ [[{{ns:4}}:ਪ੍ਰਸ਼ਾਸਕ]]
 #
 'searchdisabled'	=> '<p>ਮੁਆਫ਼ੀ ਚਾਹੁੰਦੇ ਹਾਂ! Full text search, performance reasons ਕਰਕੇ ਕੁੱਝ ਦੇਰ ਲਈ ਬੰਦ ਕਰ ਦਿੱਤੀ ਗਈ ਹੈ. ਇਸ ਦਰਮਿਆਨ, ਚਾਹੋ ਤਾਂ ਤੁਸੀਂ Google search ਦੀ ਵਰਤੋਂ ਕਰ ਸਕਦੇ ਹੋ, ਜੋ ਕਿ ਹੋ ਸਕਦਾ ਹੈ ਪੂਰਾਣੀ ਹੋ ਚੁੱਕੀ ਹੋਵੇ</p>',
 
+# Preferences page
+#
+'qbsettings-none'	=> 'ਕੋਈ ਨਹੀਂ',
+'qbsettings-fixedleft'	=> 'ਸਥਿਰ ਖੱਬੇ',
+'qbsettings-fixedright'	=> 'ਸਥਿਰ ਸੱਜਾ',
+'qbsettings-floatingleft'	=> 'ਤੈਰਦਾ ਖੱਬੇ',
+
 # Recent changes
 #
 'changes'		=> 'ਬਦਲਾਵ',
@@ -389,10 +391,10 @@ $1 ਜਾਂ ਕਿਸੇ ਵੀ ਹੋਰ [[{{ns:4}}:ਪ੍ਰਸ਼ਾਸਕ]]
 
 # tooltip help for some actions, most are in Monobook.js
 'tooltip-watch'	=> 'ਇਸ ਪੰਨੇ ਨੂੰ ਆਪਣੀ watchlist ਵਿੱਚ ਜਮਾਂ ਕਰੋ[alt-w]',
-'tooltip-search'	=> 'ਇਸ ਵਿਕਿ ਵਿੱਚ ਲੱਭੋ [alt-f]',
-'tooltip-minoredit'	=> 'ਮਾਮੂਲੀ ਬਦਲਾਵ ਦੀ ਨਿਸ਼ਾਨੀ ਲਗਾਓ (Mark this as a minor edit) [alt-i]',
-'tooltip-save'	=> 'ਕੀਤੇ ਗਏ ਬਦਲਾਵ ਪੱਕੇ ਕਰੋ [alt-s]',
-'tooltip-preview'	=> 'ਕੀਤੇ ਗਏ ਬਦਲਾਵਾਂ ਦੀ ਝਲਕ ਵੇਖੋ, ਕਿਰਪਾ ਕਰਕੇ ਪੱਕਾ ਕਰਨ ਤੋਂ ਪਿਹਲਾਂ ਇਸਦੀ ਵਰਤੋਂ ਜ਼ਰੂਰ ਕਰੋ! [alt-p]',
+'tooltip-search'	=> 'ਇਸ ਵਿਕਿ ਵਿੱਚ ਲੱਭੋ',
+'tooltip-minoredit'	=> 'ਮਾਮੂਲੀ ਬਦਲਾਵ ਦੀ ਨਿਸ਼ਾਨੀ ਲਗਾਓ (Mark this as a minor edit)',
+'tooltip-save'	=> 'ਕੀਤੇ ਗਏ ਬਦਲਾਵ ਪੱਕੇ ਕਰੋ',
+'tooltip-preview'	=> 'ਕੀਤੇ ਗਏ ਬਦਲਾਵਾਂ ਦੀ ਝਲਕ ਵੇਖੋ, ਕਿਰਪਾ ਕਰਕੇ ਪੱਕਾ ਕਰਨ ਤੋਂ ਪਿਹਲਾਂ ਇਸਦੀ ਵਰਤੋਂ ਜ਼ਰੂਰ ਕਰੋ!',
 
 # Attribution
 

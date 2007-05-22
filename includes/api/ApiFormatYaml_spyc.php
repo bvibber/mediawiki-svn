@@ -3,15 +3,14 @@
    * Spyc -- A Simple PHP YAML Class
    * @version 0.2.3 -- 2006-02-04
    * @author Chris Wanstrath <chris@ozmm.org>
-   * @link http://spyc.sourceforge.net/
+   * @see http://spyc.sourceforge.net/
    * @copyright Copyright 2005-2006 Chris Wanstrath
    * @license http://www.opensource.org/licenses/mit-license.php MIT License
-   * @package Spyc
    */
 
   /** 
    * A node, used by Spyc for parsing YAML.
-   * @package Spyc
+   * @addtogroup API
    */
   class YAMLNode {
     /**#@+
@@ -20,7 +19,7 @@
      */ 
     var $parent;
     var $id;
-    /**#@+*/
+    /**#@-*/
     /** 
      * @access public
      * @var mixed
@@ -59,7 +58,7 @@
    *   $parser = new Spyc;
    *   $array  = $parser->load($file);
    * </code>
-   * @package Spyc
+   * @addtogroup API
    */
   class Spyc {
     
@@ -340,7 +339,7 @@
     var $_isInline;
     var $_dumpIndent;
     var $_dumpWordWrap;
-    /**#@+*/
+    /**#@-*/
 
     /**** Private Methods ****/
     
@@ -463,6 +462,7 @@
      * @param string $line A line from the YAML file
      */
     function _getIndent($line) {
+      $match = array();
       preg_match('/^\s{1,}/',$line,$match);
       if (!empty($match[0])) {
         $indent = substr_count($match[0],' ');
@@ -500,6 +500,7 @@
       } elseif (preg_match('/^(.+):/',$line,$key)) {
         // It's a key/value pair most likely
         // If the key is in double quotes pull it out
+        $matches = array();
         if (preg_match('/^(["\'](.*)["\'](\s)*:)/',$line,$matches)) {
           $value = trim(str_replace($matches[1],'',$line));
           $key   = $matches[2];
@@ -529,6 +530,7 @@
      * @return mixed
      */
     function _toType($value) {
+      $matches = array();
       if (preg_match('/^("(.*)"|\'(.*)\')/',$value,$matches)) {        
        $value = (string)preg_replace('/(\'\'|\\\\\')/',"'",end($matches));
        $value = preg_replace('/\\\\"/','"',$value);
@@ -596,6 +598,7 @@
       
       // Check for strings      
       $regex = '/(?:(")|(?:\'))((?(1)[^"]+|[^\']+))(?(1)"|\')/';
+      $strings = array();
       if (preg_match_all($regex,$inline,$strings)) {
         $saved_strings[] = $strings[0][0];
         $inline  = preg_replace($regex,'YAMLString',$inline); 
@@ -603,12 +606,14 @@
       unset($regex);
 
       // Check for sequences
+      $seqs = array();
       if (preg_match_all('/\[(.+)\]/U',$inline,$seqs)) {
         $inline = preg_replace('/\[(.+)\]/U','YAMLSeq',$inline);
         $seqs   = $seqs[0];
       }
       
       // Check for mappings
+      $maps = array();
       if (preg_match_all('/{(.+)}/U',$inline,$maps)) {
         $inline = preg_replace('/{(.+)}/U','YAMLMap',$inline);
         $maps   = $maps[0];
@@ -704,6 +709,7 @@
     function _linkRef(&$n,$key,$k = NULL,$v = NULL) {
       if (empty($k) && empty($v)) {
         // Look for &refs
+        $matches = array();
         if (preg_match('/^&([^ ]+)/',$n->data[$key],$matches)) {
           // Flag the node so we know it's a reference
           $this->_allNodes[$n->id]->ref = substr($matches[0],1);
@@ -837,7 +843,7 @@
       $ret   = array(); 
 
       foreach($keys as $key) { 
-        list($unused,$val) = each($vals);
+        list( /* unused */ ,$val) = each($vals);
         // This is the good part!  If a key already exists, but it's part of a
         // sequence (an int), just keep addin numbers until we find a fresh one.
         if (isset($ret[$key]) and is_int($key)) {

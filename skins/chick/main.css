@@ -28,7 +28,7 @@ img {
 }
 p {
     margin: 0.4em 0em 0.5em 0em;
-    line-height: 1.5;
+    line-height: 1.5em;
 }
 
 p img { margin: 0; }
@@ -50,28 +50,34 @@ h1, h2, h3, h4, h5, h6 {
     padding-bottom: 0.17em;
     border-bottom: 1px solid #aaaaaa;
 }
+.editsection {
+	font-weight: normal;
+	float: right;
+	margin-left: 5px;
+}
 h1 { font-size: 188%; }
+h1 .editsection { font-size: 53.2%; }
 h2 { font-size: 150%; }
+h2 .editsection { font-size: 66.7%; }
 h3, h4, h5, h6 {
     border-bottom: none;
     font-weight: bold;
 }
 h3 { font-size: 132%; }
+h3 .editsection { font-size: 75.8%; }
 h4 { font-size: 116%; }
+h4 .editsection { font-size: 86.2%; }
 h5 { font-size: 100%; }
 h6 { font-size: 80%;  }
-.editsection {
-	float: right;
-	margin-left: 5px;
-}
+h6 .editsection { font-size: 125%; }
 
 ul {
-    line-height: 1.5;
+    line-height: 1.5em;
     margin: 0.3em 0 0 1.5em;
     padding:0;
 }
 ol {
-    line-height: 1.5;
+    line-height: 1.5em;
     margin: 0.3em 0 0 3.2em;
     padding:0;
     list-style-image: none;
@@ -86,7 +92,7 @@ dl{
     margin-bottom: 0.5em;
 }
 dd {
-    line-height: 1.5;
+    line-height: 1.5em;
     margin-left: 2em;
     margin-bottom: 0.1em;
 }
@@ -95,7 +101,7 @@ fieldset {
     border: 1px solid #2f6fab;
     margin: 1em 0em 1em 0em;
     padding: 0em 1em 1em 1em;
-    line-height: 1.5;
+    line-height: 1.5em;
 }
 legend {
     background: White;
@@ -156,7 +162,7 @@ pre {
     border: 1px dashed #2f6fab;
     color: Black;
     background-color: #f9f9f9;
-    line-height: 1.1;
+    line-height: 1.1em;
 }
 
 /*
@@ -211,7 +217,7 @@ in the bottom-right corner of the content area */
     font-weight: bold;
     display: block;
     margin: 1em 0em;
-    line-height: 1.5;
+    line-height: 1.5em;
 }
 .documentByLine {
     text-align: right;
@@ -264,6 +270,7 @@ div.floatright, table.floatright {
 div.floatright p { font-style: italic; }
 div.floatleft, table.floatleft {
     float: left;
+    clear: left;
     margin: 0.3em 0.5em 0.5em 0;
     position: relative;
     border: 0.5em solid White;
@@ -290,7 +297,7 @@ div.thumb div a img {
 div.thumb div div.thumbcaption {
     border: none;
     text-align: left;
-    line-height: 1.4;
+    line-height: 1.4em;
     padding: 0.3em 0 0.1em 0;
 }
 div.magnify {
@@ -310,6 +317,7 @@ div.tright {
 }
 div.tleft {
     float: left;
+    clear: left;
     margin-right:0.5em;
     border-width: 0.5em 1.4em 0.8em 0;
 }
@@ -371,7 +379,7 @@ div.townBox dl dd {
 ** edit views etc
 */
 .special li {
-    line-height: 1.4;
+    line-height: 1.4em;
     margin: 0;
     padding: 0;
 }
@@ -389,25 +397,6 @@ div.townBox dl dd {
     background-color:#f9f9f9;
     border:1px dashed #aaaaaa;
 }
-/*
-** Diff rendering
-*/
-table.diff { background:white; }
-td.diff-otitle { background:#ffffff; }
-td.diff-ntitle { background:#ffffff; }
-td.diff-addedline {
-    background:#ccffcc;
-    font-size: smaller;
-}
-td.diff-deletedline {
-    background:#ffffaa;
-    font-size: smaller;
-}
-td.diff-context {
-    background:#eeeeee;
-    font-size: smaller;
-}
-span.diffchange { color: red; }
 
 a.external { color: #3366bb; }
 
@@ -436,15 +425,6 @@ span.newpage, span.minor {
 span.updatedmarker {
 	color:black;
 	background-color:#00FF00;
-}
-span.newpageletter {
-	font-weight:bold;
-	color:black;
-	background-color:yellow;
-}
-span.minoreditletter {
-	color:black;
-	background-color:#C5FFE6;
 }
 
 table.gallery {
@@ -476,6 +456,7 @@ div.gallerybox div.thumb {
 }       
 
 div.gallerytext {
+	overflow: hidden;
         font-size: 94%;
         padding: 2px 4px;
 }       
@@ -483,3 +464,14 @@ div.gallerytext {
 #jump-to-nav {
   display: none;
 }
+
+.templatesUsed { margin-top: 1.5em; }
+
+/**
+ * Here is some stuff that's ACTUALLY COMMON TO ALL SKINS.
+ * When the day comes, it can be moved to a *real* common.css.
+ */
+.mw-plusminus-null { color: #aaa; }
+.texvc { direction: ltr; unicode-bidi: embed; }
+/* Stop floats from intruding into edit area in previews */
+#toolbar, #wpTextbox1 { clear: both; }

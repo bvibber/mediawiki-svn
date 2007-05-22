@@ -1,20 +1,19 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
  *
  */
-require_once( 'ChangesList.php' );
+require_once( dirname(__FILE__) . '/ChangesList.php' );
 
 /**
  * Constructor
  */
 function wfSpecialRecentchanges( $par, $specialPage ) {
-	global $wgUser, $wgOut, $wgRequest, $wgUseRCPatrol, $wgDBtype;
+	global $wgUser, $wgOut, $wgRequest, $wgUseRCPatrol;
 	global $wgRCShowWatchingUsers, $wgShowUpdatedMarker;
 	global $wgAllowCategorizedRecentChanges ;
 	$fname = 'wfSpecialRecentchanges';
@@ -22,7 +21,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	# Get query parameters
 	$feedFormat = $wgRequest->getVal( 'feed' );
 
-	/* Checkbox values can't be true be default, because
+	/* Checkbox values can't be true by default, because
 	 * we cannot differentiate between unset and not set at all
 	 */
 	$defaults = array(
@@ -43,12 +42,10 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	extract($defaults);
 
 
-	$days = $wgUser->getOption( 'rcdays' );
-	if ( !$days ) { $days = $defaults['days']; }
+	$days = $wgUser->getOption( 'rcdays', $defaults['days']);
 	$days = $wgRequest->getInt( 'days', $days );
 
-	$limit = $wgUser->getOption( 'rclimit' );
-	if ( !$limit ) { $limit = $defaults['limit']; }
+	$limit = $wgUser->getOption( 'rclimit', $defaults['limit'] );
 
 	#	list( $limit, $offset ) = wfCheckLimits( 100, 'rclimit' );
 	$limit = $wgRequest->getInt( 'limit', $limit );
@@ -60,7 +57,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	if( $feedFormat ) {
 		global $wgFeedLimit;
 		if( $limit > $wgFeedLimit ) {
-			$options['limit'] = $wgFeedLimit;
+			$limit = $wgFeedLimit;
 		}
 
 	} else {
@@ -90,7 +87,8 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 				if ( is_numeric( $bit ) ) {
 					$limit = $bit;
 				}
-
+				
+				$m = array();
 				if ( preg_match( '/^limit=(\d+)$/', $bit, $m ) ) {
 					$limit = $m[1];
 				}
@@ -106,8 +104,8 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 
 
 	# Database connection and caching
-	$dbr =& wfGetDB( DB_SLAVE );
-	extract( $dbr->tableNames( 'recentchanges', 'watchlist' ) );
+	$dbr = wfGetDB( DB_SLAVE );
+	list( $recentchanges, $watchlist ) = $dbr->tableNamesN( 'recentchanges', 'watchlist' );
 
 
 	$cutoff_unixtime = time() - ( $days * 86400 );
@@ -198,7 +196,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 
 		// Output header
 		if ( !$specialPage->including() ) {
-			$wgOut->addWikiText( wfMsgForContent( "recentchangestext" ) );
+			$wgOut->addWikiText( wfMsgForContentNoTrans( "recentchangestext" ) );
 
 			// Dump everything here
 			$nondefaults = array();
@@ -222,7 +220,6 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 		}
 
 		// And now for the content
-		$sk = $wgUser->getSkin();
 		$wgOut->setSyndicated( true );
 
 		$list = ChangesList::newFromUser( $wgUser );
@@ -334,7 +331,7 @@ function rcOutputFeed( $rows, $feedFormat, $limit, $hideminor, $lastmod ) {
 		' [' . $wgContLanguageCode . ']';
 	$feed = new $wgFeedClasses[$feedFormat](
 		$feedTitle,
-		htmlspecialchars( wfMsgForContent( 'recentchangestext' ) ),
+		htmlspecialchars( wfMsgForContent( 'recentchanges-feed-description' ) ),
 		$wgTitle->getFullUrl() );
 
 	/**
@@ -397,7 +394,6 @@ function rcDoOutputFeed( $rows, &$feed ) {
 			$sorted[$n] = $obj;
 			$n++;
 		}
-		$first = false;
 	}
 
 	foreach( $sorted as $obj ) {
@@ -473,7 +469,7 @@ function rcDayLimitLinks( $days, $limit, $page='Recentchanges', $more='', $doall
 
 /**
  * Makes change an option link which carries all the other options
- * @param $title @see Title
+ * @param $title see Title
  * @param $override
  * @param $options
  */
@@ -571,7 +567,7 @@ function rcOptionsPanel( $defaults, $nondefaults ) {
  */
 function rcNamespaceForm( $namespace, $invert, $nondefaults, $categories_any ) {
 	global $wgScript, $wgAllowCategorizedRecentChanges, $wgRequest;
-	$t = Title::makeTitle( NS_SPECIAL, 'Recentchanges' );
+	$t = SpecialPage::getTitleFor( 'Recentchanges' );
 
 	$namespaceselect = HTMLnamespaceselector($namespace, '');
 	$submitbutton = '<input type="submit" value="' . wfMsgHtml( 'allpagessubmit' ) . "\" />\n";
@@ -613,9 +609,10 @@ function rcNamespaceForm( $namespace, $invert, $nondefaults, $categories_any ) {
  */
 function rcFormatDiff( $row ) {
 	$titleObj = Title::makeTitle( $row->rc_namespace, $row->rc_title );
+	$timestamp = wfTimestamp( TS_MW, $row->rc_timestamp );
 	return rcFormatDiffRow( $titleObj,
 		$row->rc_last_oldid, $row->rc_this_oldid,
-		$row->rc_timestamp,
+		$timestamp,
 		$row->rc_comment );
 }
 
@@ -627,7 +624,7 @@ function rcFormatDiffRow( $title, $oldid, $newid, $timestamp, $comment ) {
 	$skin = $wgUser->getSkin();
 	$completeText = '<p>' . $skin->formatComment( $comment ) . "</p>\n";
 
-	if( $title->getNamespace() >= 0 ) {
+	if( $title->getNamespace() >= 0 && $title->userCan( 'read' ) ) {
 		if( $oldid ) {
 			wfProfileIn( "$fname-dodiff" );
 
@@ -688,13 +685,13 @@ function rcFormatDiffRow( $title, $oldid, $newid, $timestamp, $comment ) {
  */
 function rcApplyDiffStyle( $text ) {
 	$styles = array(
-		'diff'             => 'background-color: white;',
-		'diff-otitle'      => 'background-color: white;',
-		'diff-ntitle'      => 'background-color: white;',
-		'diff-addedline'   => 'background: #cfc; font-size: smaller;',
-		'diff-deletedline' => 'background: #ffa; font-size: smaller;',
-		'diff-context'     => 'background: #eee; font-size: smaller;',
-		'diffchange'       => 'color: red; font-weight: bold;',
+		'diff'             => 'background-color: white; color:black;',
+		'diff-otitle'      => 'background-color: white; color:black;',
+		'diff-ntitle'      => 'background-color: white; color:black;',
+		'diff-addedline'   => 'background: #cfc; color:black; font-size: smaller;',
+		'diff-deletedline' => 'background: #ffa; color:black; font-size: smaller;',
+		'diff-context'     => 'background: #eee; color:black; font-size: smaller;',
+		'diffchange'       => 'color: red; font-weight: bold; text-decoration: none;',
 	);
 	
 	foreach( $styles as $class => $style ) {

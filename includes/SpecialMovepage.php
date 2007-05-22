@@ -1,15 +1,14 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
  * Constructor
  */
 function wfSpecialMovepage( $par = null ) {
-	global $wgUser, $wgOut, $wgRequest, $action, $wgOnlySysopMayMove;
+	global $wgUser, $wgOut, $wgRequest, $action;
 
 	# Check rights
 	if ( !$wgUser->isAllowed( 'move' ) ) {
@@ -42,13 +41,14 @@ function wfSpecialMovepage( $par = null ) {
 }
 
 /**
- *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * HTML form for Special:Movepage
+ * @addtogroup SpecialPage
  */
 class MovePageForm {
 	var $oldTitle, $newTitle, $reason; # Text input
 	var $moveTalk, $deleteAndMove;
+	
+	private $watch = false;
 
 	function MovePageForm( $par ) {
 		global $wgRequest;
@@ -56,12 +56,20 @@ class MovePageForm {
 		$this->oldTitle = $wgRequest->getText( 'wpOldTitle', $target );
 		$this->newTitle = $wgRequest->getText( 'wpNewTitle' );
 		$this->reason = $wgRequest->getText( 'wpReason' );
-		$this->moveTalk = $wgRequest->getBool( 'wpMovetalk', true );
+		if ( $wgRequest->wasPosted() ) {
+			$this->moveTalk = $wgRequest->getBool( 'wpMovetalk', false );
+		} else {
+			$this->moveTalk = $wgRequest->getBool( 'wpMovetalk', true );
+		}
 		$this->deleteAndMove = $wgRequest->getBool( 'wpDeleteAndMove' ) && $wgRequest->getBool( 'wpConfirm' );
+		$this->watch = $wgRequest->getCheck( 'wpWatch' );
 	}
 
 	function showForm( $err ) {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgContLang;
+		
+		$start = $wgContLang->isRTL() ? 'right' : 'left';
+		$end = $wgContLang->isRTL() ? 'left' : 'right';
 
 		$wgOut->setPagetitle( wfMsg( 'movepage' ) );
 
@@ -101,10 +109,10 @@ class MovePageForm {
 			$submitVar = 'wpDeleteAndMove';
 			$confirm = "
 				<tr>
-					<td align='right'>
+					<td align='$end'>
 						<input type='checkbox' name='wpConfirm' id='wpConfirm' value=\"true\" />
 					</td>
-					<td align='left'><label for='wpConfirm'>{$confirmText}</label></td>
+					<td align='$start'><label for='wpConfirm'>{$confirmText}</label></td>
 				</tr>";
 			$err = '';
 		} else {
@@ -126,7 +134,7 @@ class MovePageForm {
 		$movetalk = wfMsgHtml( 'movetalk' );
 		$movereason = wfMsgHtml( 'movereason' );
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Movepage' );
+		$titleObj = SpecialPage::getTitleFor( 'Movepage' );
 		$action = $titleObj->escapeLocalURL( 'action=submit' );
 		$token = htmlspecialchars( $wgUser->editToken() );
 
@@ -141,19 +149,19 @@ class MovePageForm {
 <form id=\"movepage\" method=\"post\" action=\"{$action}\">
 	<table border='0'>
 		<tr>
-			<td align='right'>{$movearticle}:</td>
-			<td align='left'><strong>{$oldTitle}</strong></td>
+			<td align='$end'>{$movearticle}:</td>
+			<td align='$start'><strong>{$oldTitle}</strong></td>
 		</tr>
 		<tr>
-			<td align='right'><label for='wpNewTitle'>{$newtitle}:</label></td>
-			<td align='left'>
+			<td align='$end'><label for='wpNewTitle'>{$newtitle}:</label></td>
+			<td align='$start'>
 				<input type='text' size='40' name='wpNewTitle' id='wpNewTitle' value=\"{$encNewTitle}\" />
 				<input type='hidden' name=\"wpOldTitle\" value=\"{$encOldTitle}\" />
 			</td>
 		</tr>
 		<tr>
-			<td align='right' valign='top'><br /><label for='wpReason'>{$movereason}:</label></td>
-			<td align='left' valign='top'><br />
+			<td align='$end' valign='top'><br /><label for='wpReason'>{$movereason}:</label></td>
+			<td align='$start' valign='top'><br />
 				<textarea cols='60' rows='2' name='wpReason' id='wpReason'>{$encReason}</textarea>
 			</td>
 		</tr>" );
@@ -161,17 +169,25 @@ class MovePageForm {
 		if ( $considerTalk ) {
 			$wgOut->addHTML( "
 		<tr>
-			<td align='right'>
+			<td align='$end'>
 				<input type='checkbox' id=\"wpMovetalk\" name=\"wpMovetalk\"{$moveTalkChecked} value=\"1\" />
 			</td>
 			<td><label for=\"wpMovetalk\">{$movetalk}</label></td>
 		</tr>" );
 		}
+		
+		$watchChecked = $this->watch || $wgUser->getBoolOption( 'watchmoves' ) || $ot->userIsWatching();
+		$watch  = '<tr>';
+		$watch .= "<td align=\"$end\">" . Xml::check( 'wpWatch', $watchChecked, array( 'id' => 'watch' ) ) . '</td>';
+		$watch .= '<td>' . Xml::label( wfMsg( 'move-watch' ), 'watch' ) . '</td>';
+		$watch .= '</tr>';
+		$wgOut->addHtml( $watch );
+		
 		$wgOut->addHTML( "
 		{$confirm}
 		<tr>
 			<td>&nbsp;</td>
-			<td align='left'>
+			<td align='$start'>
 				<input type='submit' name=\"{$submitVar}\" value=\"{$movepagebtn}\" />
 			</td>
 		</tr>
@@ -185,7 +201,6 @@ class MovePageForm {
 
 	function doSubmit() {
 		global $wgOut, $wgUser, $wgRequest;
-		$fname = "MovePageForm::doSubmit";
 
 		if ( $wgUser->pingLimiter( 'move' ) ) {
 			$wgOut->rateLimited();
@@ -221,7 +236,7 @@ class MovePageForm {
 		# Move the talk page if relevant, if it exists, and if we've been told to
 		$ott = $ot->getTalkPage();
 		if( $ott->exists() ) {
-			if( $wgRequest->getVal( 'wpMovetalk' ) == 1 && !$ot->isTalkPage() && !$nt->isTalkPage() ) {
+			if( $this->moveTalk && !$ot->isTalkPage() && !$nt->isTalkPage() ) {
 				$ntt = $nt->getTalkPage();
 	
 				# Attempt the move
@@ -239,9 +254,18 @@ class MovePageForm {
 		} else {
 			$talkmoved = 'notalkpage';
 		}
+		
+		# Deal with watches
+		if( $this->watch ) {
+			$wgUser->addWatch( $ot );
+			$wgUser->addWatch( $nt );
+		} else {
+			$wgUser->removeWatch( $ot );
+			$wgUser->removeWatch( $nt );
+		}
 
 		# Give back result to user.
-		$titleObj = Title::makeTitle( NS_SPECIAL, 'Movepage' );
+		$titleObj = SpecialPage::getTitleFor( 'Movepage' );
 		$success = $titleObj->getFullURL(
 		  'action=success&oldtitle=' . wfUrlencode( $ot->getPrefixedText() ) .
 		  '&newtitle=' . wfUrlencode( $nt->getPrefixedText() ) .
