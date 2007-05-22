@@ -7,6 +7,9 @@ require_once('Record.php');
 require_once('Transaction.php');
 require_once('WikiDataAPI.php');
 
+require_once("Wikidata.php");
+$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
+
 function booleanAsText($value) {
 	if ($value)
 		return "Yes";
@@ -71,25 +74,29 @@ function timestampAsText($timestamp) {
 }
 
 function definingExpressionRow($definedMeaningId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT uw_expression_ns.expression_id, spelling, language_id " .
-								" FROM uw_defined_meaning, uw_expression_ns " .
-								" WHERE uw_defined_meaning.defined_meaning_id=$definedMeaningId " .
-								" AND uw_expression_ns.expression_id=uw_defined_meaning.expression_id".
-								" AND " . getLatestTransactionRestriction('uw_defined_meaning').
-								" AND " . getLatestTransactionRestriction('uw_expression_ns'));
+	$queryResult = $dbr->query("SELECT {$dc}_expression_ns.expression_id, spelling, language_id " .
+								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
+								" WHERE {$dc}_defined_meaning.defined_meaning_id=$definedMeaningId " .
+								" AND {$dc}_expression_ns.expression_id={$dc}_defined_meaning.expression_id".
+								" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning").
+								" AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
 	$expression = $dbr->fetchObject($queryResult);
 	return array($expression->expression_id, $expression->spelling, $expression->language_id); 
 }
 
 function definingExpression($definedMeaningId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT spelling " .
-								" FROM uw_defined_meaning, uw_expression_ns " .
-								" WHERE uw_defined_meaning.defined_meaning_id=$definedMeaningId " .
-								" AND uw_expression_ns.expression_id=uw_defined_meaning.expression_id".
-								" AND " . getLatestTransactionRestriction('uw_defined_meaning').
-								" AND " . getLatestTransactionRestriction('uw_expression_ns'));
+								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
+								" WHERE {$dc}_defined_meaning.defined_meaning_id=$definedMeaningId " .
+								" AND {$dc}_expression_ns.expression_id={$dc}_defined_meaning.expression_id".
+								" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning").
+								" AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
 	$expression = $dbr->fetchObject($queryResult);
 	return $expression->spelling; 
 }
@@ -98,13 +105,13 @@ function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT spelling" .
-		" FROM uw_syntrans, uw_expression_ns " .
+		" FROM {$dc}_syntrans, {$dc}_expression_ns " .
 		" WHERE defined_meaning_id=$definedMeaningId" .
-		" AND uw_expression_ns.expression_id=uw_syntrans.expression_id" .
-		" AND uw_expression_ns.language_id=$languageId" .
-		" AND uw_syntrans.identical_meaning=1" .
-		" AND " . getLatestTransactionRestriction('uw_syntrans') .
-		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+		" AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
+		" AND {$dc}_expression_ns.language_id=$languageId" .
+		" AND {$dc}_syntrans.identical_meaning=1" .
+		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
 		" LIMIT 1"
 	);
 
@@ -115,15 +122,17 @@ function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
 }
 
 function definedMeaningExpressionForAnyLanguage($definedMeaningId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT spelling " .
-		" FROM uw_syntrans, uw_expression_ns" .
+		" FROM {$dc}_syntrans, {$dc}_expression_ns" .
 		" WHERE defined_meaning_id=$definedMeaningId" .
-		" AND uw_expression_ns.expression_id=uw_syntrans.expression_id" .
-		" AND uw_syntrans.identical_meaning=1" .
-		" AND " . getLatestTransactionRestriction('uw_syntrans') .
-		" AND " . getLatestTransactionRestriction('uw_expression_ns') .
+		" AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
+		" AND {$dc}_syntrans.identical_meaning=1" .
+		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
 		" LIMIT 1");
 
 	if ($expression = $dbr->fetchObject($queryResult))

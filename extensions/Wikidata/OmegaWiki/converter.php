@@ -4,6 +4,9 @@ require_once('type.php');
 require_once('Attribute.php');
 require_once('Transaction.php');
 
+require_once("Wikidata.php");
+$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
+
 interface Converter {
 	public function getStructure();
 	public function convert($record);
@@ -67,13 +70,16 @@ class ExpressionIdConverter extends DefaultConverter {
 	}
 	
 	public function convert($record) {
+		global $wdDataSetContext;
+		$dc=$wdDataSetContext;
+
 		global
 			$expressionAttribute, $expressionIdAttribute, $languageAttribute, $spellingAttribute;
 		
 		$dbr =& wfGetDB(DB_SLAVE);
 		$expressionId = $record->getAttributeValue($this->attribute);
-		$queryResult = $dbr->query("SELECT language_id, spelling from uw_expression_ns WHERE expression_id=$expressionId" .
-									" AND ". getLatestTransactionRestriction('uw_expression_ns'));
+		$queryResult = $dbr->query("SELECT language_id, spelling from {$dc}_expression_ns WHERE expression_id=$expressionId" .
+									" AND ". getLatestTransactionRestriction("{$dc}_expression_ns"));
 		$expression = $dbr->fetchObject($queryResult); 
 
 		$expressionRecord = new ArrayRecord(new Structure($languageAttribute, $spellingAttribute));
