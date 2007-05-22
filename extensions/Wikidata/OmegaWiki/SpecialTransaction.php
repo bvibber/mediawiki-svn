@@ -3,6 +3,8 @@
 if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialTransaction';
+require_once("Wikidata.php");
+$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
 function wfSpecialTransaction() {
         global $wgMessageCache;
@@ -537,6 +539,8 @@ function getUpdatedTextRecord($text, $history) {
 }
 
 function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$languageAttribute, $textAttribute, $definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, $updatedDefinitionStructure, $translatedContentIdAttribute,
@@ -548,11 +552,11 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 		"SELECT defined_meaning_id, translated_content_id, language_id, text_text, " . 
 			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
 			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
-		" FROM uw_defined_meaning, {$dc}_translated_content, text " .
-		" WHERE uw_defined_meaning.meaning_text_tcid=translated_content.translated_content_id ".
+		" FROM {$dc}_defined_meaning, {$dc}_translated_content, text " .
+		" WHERE {$dc}_defined_meaning.meaning_text_tcid=translated_content.translated_content_id ".
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
-		" AND " . getAtTransactionRestriction('uw_defined_meaning', $transactionId)
+		" AND " . getAtTransactionRestriction("{$dc}_defined_meaning", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedDefinitionStructure, new Structure($definedMeaningIdAttribute, $languageAttribute));
@@ -574,6 +578,8 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 }
 
 function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$updatedAlternativeDefinitionsStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
 		$translatedContentIdAttribute, $sourceAttribute, $alternativeDefinitionTextAttribute,
@@ -582,10 +588,10 @@ function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT meaning_mid, meaning_text_tcid, source_id, " . 
-			getOperationSelectColumn('uw_alt_meaningtexts', $transactionId) . ', ' .
-			getIsLatestSelectColumn('uw_alt_meaningtexts', array('meaning_text_tcid'), $transactionId) . 
-		" FROM uw_alt_meaningtexts " .
-		" WHERE " . getInTransactionRestriction('uw_alt_meaningtexts', $transactionId)
+			getOperationSelectColumn("{$dc}_alt_meaningtexts", $transactionId) . ', ' .
+			getIsLatestSelectColumn("{$dc}_alt_meaningtexts", array('meaning_text_tcid'), $transactionId) . 
+		" FROM {$dc}_alt_meaningtexts " .
+		" WHERE " . getInTransactionRestriction("{$dc}_alt_meaningtexts", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedAlternativeDefinitionsStructure, new Structure($definedMeaningIdAttribute, $translatedContentIdAttribute));
@@ -609,6 +615,8 @@ function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
 }
 
 function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$languageAttribute, $textAttribute, $definedMeaningIdAttribute, $sourceAttribute,
 		$definedMeaningReferenceAttribute, $updatedAlternativeDefinitionTextStructure, $translatedContentIdAttribute,
@@ -619,11 +627,11 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 		"SELECT meaning_mid, translated_content_id, source_id, language_id, text_text, " . 
 			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
 			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
-		" FROM uw_alt_meaningtexts, {$dc}_translated_content, text " .
-		" WHERE uw_alt_meaningtexts.meaning_text_tcid=translated_content.translated_content_id ".
+		" FROM {$dc}_alt_meaningtexts, {$dc}_translated_content, text " .
+		" WHERE {$dc}_alt_meaningtexts.meaning_text_tcid=translated_content.translated_content_id ".
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
-		" AND " . getAtTransactionRestriction('uw_alt_meaningtexts', $transactionId)
+		" AND " . getAtTransactionRestriction("{$dc}_alt_meaningtexts", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedAlternativeDefinitionTextStructure, new Structure($translatedContentIdAttribute, $languageAttribute));
@@ -646,6 +654,8 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 }
 
 function getUpdatedSyntransesRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$updatedSyntransesStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
 		$expressionAttribute, $expressionStructure, $languageAttribute, $spellingAttribute, $syntransIdAttribute,
@@ -654,13 +664,13 @@ function getUpdatedSyntransesRecordSet($transactionId) {
 	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT syntrans_sid, defined_meaning_id, uw_syntrans.expression_id, language_id, spelling, identical_meaning, " . 
-			getOperationSelectColumn('uw_syntrans', $transactionId) . ', ' .
-			getIsLatestSelectColumn('uw_syntrans', array('syntrans_sid'), $transactionId) . 
-		" FROM uw_syntrans, uw_expression_ns " .
-		" WHERE uw_syntrans.expression_id=uw_expression_ns.expression_id " .
-		" AND " . getInTransactionRestriction('uw_syntrans', $transactionId) .
-		" AND " . getAtTransactionRestriction('uw_expression_ns', $transactionId)
+		"SELECT syntrans_sid, defined_meaning_id, {$dc}_syntrans.expression_id, language_id, spelling, identical_meaning, " . 
+			getOperationSelectColumn("{$dc}_syntrans", $transactionId) . ', ' .
+			getIsLatestSelectColumn("{$dc}_syntrans", array('syntrans_sid'), $transactionId) . 
+		" FROM {$dc}_syntrans, {$dc}_expression_ns " .
+		" WHERE {$dc}_syntrans.expression_id={$dc}_expression_ns.expression_id " .
+		" AND " . getInTransactionRestriction("{$dc}_syntrans", $transactionId) .
+		" AND " . getAtTransactionRestriction("{$dc}_expression_ns", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedSyntransesStructure, new Structure($syntransIdAttribute));
@@ -706,6 +716,8 @@ function getIsLatestSelectColumn($table, $idFields, $transactionId) {
 }
 
 function getUpdatedRelationsRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$updatedRelationsStructure, $relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, 
 		$relationTypeAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
@@ -713,10 +725,10 @@ function getUpdatedRelationsRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT relation_id, meaning1_mid, meaning2_mid, relationtype_mid, " . 
-			getOperationSelectColumn('uw_meaning_relations', $transactionId) . ', ' .
-			getIsLatestSelectColumn('uw_meaning_relations', array('relation_id'), $transactionId) . 
-		" FROM uw_meaning_relations " .
-		" WHERE " . getInTransactionRestriction('uw_meaning_relations', $transactionId)
+			getOperationSelectColumn("{$dc}_meaning_relations", $transactionId) . ', ' .
+			getIsLatestSelectColumn("{$dc}_meaning_relations", array('relation_id'), $transactionId) . 
+		" FROM {$dc}_meaning_relations " .
+		" WHERE " . getInTransactionRestriction("{$dc}_meaning_relations", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedRelationsStructure, new Structure($relationIdAttribute));
@@ -738,6 +750,8 @@ function getUpdatedRelationsRecordSet($transactionId) {
 }
 
 function getUpdatedClassMembershipRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$updatedClassMembershipStructure, $classMembershipIdAttribute, $classAttribute, $classMemberAttribute, 
 		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
@@ -745,10 +759,10 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT class_membership_id, class_mid, class_member_mid, " . 
-		getOperationSelectColumn('uw_class_membership', $transactionId) . ', ' .
-		getIsLatestSelectColumn('uw_class_membership', array('class_membership_id'), $transactionId) . 
-		" FROM uw_class_membership " .
-		" WHERE " . getInTransactionRestriction('uw_class_membership', $transactionId)
+		getOperationSelectColumn("{$dc}_class_membership", $transactionId) . ', ' .
+		getIsLatestSelectColumn("{$dc}_class_membership", array('class_membership_id'), $transactionId) . 
+		" FROM {$dc}_class_membership " .
+		" WHERE " . getInTransactionRestriction("{$dc}_class_membership", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedClassMembershipStructure, new Structure($classMembershipIdAttribute));
@@ -769,6 +783,8 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 }
 
 function getUpdatedCollectionMembershipRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$updatedCollectionMembershipStructure, $collectionIdAttribute, $collectionMeaningAttribute, 
 		$collectionMemberAttribute, $sourceIdentifierAttribute, $collectionMemberIdAttribute, 
@@ -776,13 +792,13 @@ function getUpdatedCollectionMembershipRecordSet($transactionId) {
 	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT uw_collection_contents.collection_id, collection_mid, member_mid, internal_member_id, " . 
-			getOperationSelectColumn('uw_collection_contents', $transactionId) . ', ' .
-			getIsLatestSelectColumn('uw_collection_contents', array('collection_id', 'member_mid'), $transactionId) . 
-		" FROM uw_collection_contents, uw_collection_ns " .
-		" WHERE uw_collection_contents.collection_id=uw_collection_ns.collection_id " .
-		" AND " . getInTransactionRestriction('uw_collection_contents', $transactionId) .
-		" AND " . getAtTransactionRestriction('uw_collection_ns', $transactionId)
+		"SELECT {$dc}_collection_contents.collection_id, collection_mid, member_mid, internal_member_id, " . 
+			getOperationSelectColumn("{$dc}_collection_contents", $transactionId) . ', ' .
+			getIsLatestSelectColumn("{$dc}_collection_contents", array('collection_id', 'member_mid'), $transactionId) . 
+		" FROM {$dc}_collection_contents, {$dc}_collection_ns " .
+		" WHERE {$dc}_collection_contents.collection_id={$dc}_collection_ns.collection_id " .
+		" AND " . getInTransactionRestriction("{$dc}_collection_contents", $transactionId) .
+		" AND " . getAtTransactionRestriction("{$dc}_collection_ns", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedCollectionMembershipStructure, new Structure($collectionIdAttribute, $collectionMemberIdAttribute));
@@ -805,6 +821,8 @@ function getUpdatedCollectionMembershipRecordSet($transactionId) {
 }
 
 function getUpdatedClassAttributesRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$updatedClassAttributesStructure, $classAttributeIdAttribute, $classAttribute, $levelAttribute, 
 		$attributeAttribute, $typeAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
@@ -812,10 +830,10 @@ function getUpdatedClassAttributesRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT object_id, class_mid, level_mid, attribute_mid, attribute_type, " . 
-			getOperationSelectColumn('uw_class_attributes', $transactionId) . ', ' .
-			getIsLatestSelectColumn('uw_class_attributes', array('object_id'), $transactionId) . 
-		" FROM uw_class_attributes " .
-		" WHERE " . getInTransactionRestriction('uw_class_attributes', $transactionId)
+			getOperationSelectColumn("{$dc}_class_attributes", $transactionId) . ', ' .
+			getIsLatestSelectColumn("{$dc}_class_attributes", array('object_id'), $transactionId) . 
+		" FROM {$dc}_class_attributes " .
+		" WHERE " . getInTransactionRestriction('{$dc}_class_attributes', $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedClassAttributesStructure, new Structure($classAttributeIdAttribute));
@@ -838,6 +856,8 @@ function getUpdatedClassAttributesRecordSet($transactionId) {
 }
 
 function getUpdatedURLRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $URLAttribute, 
 		$updatedURLStructure, $operationAttribute, $isLatestAttribute, 
@@ -846,10 +866,10 @@ function getUpdatedURLRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT value_id, object_id, attribute_mid, url, " . 
-		getOperationSelectColumn('uw_url_attribute_values', $transactionId) . ', ' .
-		getIsLatestSelectColumn('uw_url_attribute_values', array('value_id'), $transactionId) . 
-		" FROM uw_url_attribute_values " .
-		" WHERE " . getInTransactionRestriction('uw_url_attribute_values', $transactionId) 
+		getOperationSelectColumn("{$dc}_url_attribute_values", $transactionId) . ', ' .
+		getIsLatestSelectColumn("{$dc}_url_attribute_values", array('value_id'), $transactionId) . 
+		" FROM {$dc}_url_attribute_values " .
+		" WHERE " . getInTransactionRestriction("{$dc}_url_attribute_values", $transactionId) 
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedURLStructure, new Structure($valueIdAttribute));
@@ -871,6 +891,8 @@ function getUpdatedURLRecordSet($transactionId) {
 }
 
 function getUpdatedTextRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $textAttribute, 
 		$updatedTextStructure, 
@@ -879,10 +901,10 @@ function getUpdatedTextRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT value_id, object_id, attribute_mid, text, " . 
-		getOperationSelectColumn('uw_text_attribute_values', $transactionId) . ', ' .
-		getIsLatestSelectColumn('uw_text_attribute_values', array('value_id'), $transactionId) . 
-		" FROM uw_text_attribute_values " .
-		" WHERE " . getInTransactionRestriction('uw_text_attribute_values', $transactionId) 
+		getOperationSelectColumn("{$dc}_text_attribute_values", $transactionId) . ', ' .
+		getIsLatestSelectColumn("{$dc}_text_attribute_values", array('value_id'), $transactionId) . 
+		" FROM {$dc}_text_attribute_values " .
+		" WHERE " . getInTransactionRestriction('{$dc}_text_attribute_values', $transactionId) 
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedTextStructure, new Structure($valueIdAttribute));
@@ -904,6 +926,8 @@ function getUpdatedTextRecordSet($transactionId) {
 }
 
 function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$updatedTranslatedTextPropertyStructure, $objectIdAttribute, $valueIdAttribute, 
 		$translatedContentIdAttribute, $attributeAttribute, $translatedTextTextAttribute,
@@ -912,10 +936,10 @@ function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT value_id, object_id, attribute_mid, value_tcid, " . 
-			getOperationSelectColumn('uw_translated_content_attribute_values', $transactionId) . ', ' .
-			getIsLatestSelectColumn('uw_translated_content_attribute_values', array('value_id'), $transactionId) . 
-		" FROM uw_translated_content_attribute_values " .
-		" WHERE " . getInTransactionRestriction('uw_translated_content_attribute_values', $transactionId)
+			getOperationSelectColumn("{$dc}_translated_content_attribute_values", $transactionId) . ', ' .
+			getIsLatestSelectColumn("{$dc}_translated_content_attribute_values", array('value_id'), $transactionId) . 
+		" FROM {$dc}_translated_content_attribute_values " .
+		" WHERE " . getInTransactionRestriction("{$dc}_translated_content_attribute_values", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedTranslatedTextPropertyStructure, new Structure($valueIdAttribute));
@@ -939,6 +963,8 @@ function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
 }
 
 function getUpdatedTranslatedTextRecordSet($transactionId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$languageAttribute, $textAttribute, $objectIdAttribute, $valueIdAttribute, $attributeAttribute,
 		$updatedTranslatedTextStructure, $translatedContentIdAttribute,
@@ -949,11 +975,11 @@ function getUpdatedTranslatedTextRecordSet($transactionId) {
 		"SELECT value_id, object_id, attribute_mid, translated_content_id, language_id, text_text, " . 
 			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
 			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
-		" FROM uw_translated_content_attribute_values, {$dc}_translated_content, text " .
-		" WHERE uw_translated_content_attribute_values.value_tcid=translated_content.translated_content_id ".
+		" FROM {$dc}_translated_content_attribute_values, {$dc}_translated_content, text " .
+		" WHERE {$dc}_translated_content_attribute_values.value_tcid=translated_content.translated_content_id ".
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
-		" AND " . getAtTransactionRestriction('uw_translated_content_attribute_values', $transactionId)
+		" AND " . getAtTransactionRestriction("{$dc}_translated_content_attribute_values", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedTranslatedTextStructure, new Structure($valueIdAttribute, $languageAttribute));
