@@ -10,4 +10,4 @@ CREATE TABLE `uw_text` (
   `text_flags` tinyblob NOT NULL,
   PRIMARY KEY  (`text_id`)
 ) DEFAULT CHARSET=utf8;
-INSERT INTO `script_log` (`time`, `script_name`) VALUES (NOW(), '28 - Table reorg.sql');
+INSERT INTO `script_log` (`time`, `script_name`, `comment`) VALUES (NOW(), '28 - Table reorg.sql', 'reorganize tables for authoritative view');
