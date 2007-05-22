@@ -22,12 +22,12 @@ global
 	$textAttributeValuesTable, $optionAttributeOptionsTable, $optionAttributeValuesTable, $classAttributesTable,
 	$urlAttributeValuesTable;
 	
-$transactionsTable = new Table('transactions', false, array('transaction_id'));
+$transactionsTable = new Table("{$dc}_transactions", false, array('transaction_id'));
 $meaningRelationsTable = new Table("{$dc}_meaning_relations", true, array('relation_id'));
 $classMembershipsTable = new Table("{$dc}_class_membership", true, array('class_membership_id'));
 $collectionMembershipsTable = new Table("{$dc}_collection_contents", true, array('collection_id', 'member_mid'));
 $syntransTable = new Table("{$dc}_syntrans", true, array('syntrans_sid'));
-$translatedContentTable = new Table('translated_content', true, array('translated_content_id', 'language_id'));
+$translatedContentTable = new Table("{$dc}_translated_content", true, array('translated_content_id', 'language_id'));
 $alternativeDefinitionsTable = new Table("{$dc}_alt_meaningtexts", true, array('meaning_mid', 'meaning_text_tcid'));
 $classAttributesTable = new Table("{$dc}_class_attributes", true, array('object_id'));
 

@@ -460,21 +460,26 @@ function createText($text) {
 }
 
 function createTranslatedContent($translatedContentId, $languageId, $textId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+
 	$dbr = &wfGetDB(DB_MASTER);
-	$sql = "insert into translated_content(translated_content_id,language_id,text_id,add_transaction_id) values($translatedContentId, $languageId, $textId, ". getUpdateTransactionId() .")";	
+	$sql = "insert into {$dc}_translated_content(translated_content_id,language_id,text_id,add_transaction_id) values($translatedContentId, $languageId, $textId, ". getUpdateTransactionId() .")";	
 	$dbr->query($sql);
 	
 	return $dbr->insertId();
 }
 
 function translatedTextExists($textId, $languageId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT translated_content_id" .
-		" FROM translated_content" .
+		" FROM {$dc}_translated_content" .
 		" WHERE translated_content_id=$textId" .
 		" AND language_id=$languageId" .
-		" AND " . getLatestTransactionRestriction('translated_content')
+		" AND " . getLatestTransactionRestriction("{$dc}_translated_content")
 	);
 
 	return $dbr->numRows($queryResult) > 0;	
@@ -509,7 +514,9 @@ function updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId) {
 }
 
 function newTranslatedContentId() {
-	return newObjectId('translated_content');
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+	return newObjectId("{$dc}_translated_content");
 }
 
 function addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $text) {
@@ -543,14 +550,18 @@ function addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, 
 }
 
 function removeTranslatedText($translatedContentId, $languageId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("UPDATE translated_content SET remove_transaction_id=". getUpdateTransactionId() . 
+	$dbr->query("UPDATE {$dc}_translated_content SET remove_transaction_id=". getUpdateTransactionId() . 
 				" WHERE translated_content_id=$translatedContentId AND language_id=$languageId AND remove_transaction_id IS NULL");
 }
 
 function removeTranslatedTexts($translatedContentId) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("UPDATE translated_content SET remove_transaction_id=". getUpdateTransactionId() . 
+	$dbr->query("UPDATE {$dc}_translated_content SET remove_transaction_id=". getUpdateTransactionId() . 
 				" WHERE translated_content_id=$translatedContentId AND remove_transaction_id IS NULL");
 }
 
@@ -923,7 +934,7 @@ function getDefinedMeaningDefinitionForLanguage($definedMeaningId, $languageId) 
 	global $wdDataSetContext;
 	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT old_text FROM {$dc}_defined_meaning as dm, translated_content as tc, text as t ".
+	$queryResult = $dbr->query("SELECT old_text FROM {$dc}_defined_meaning as dm, {$dc}_translated_content as tc, text as t ".
 								"WHERE dm.defined_meaning_id=$definedMeaningId " .
 								" AND " . getLatestTransactionRestriction('dm') .
 								" AND " . getLatestTransactionRestriction('tc') .
@@ -940,7 +951,7 @@ function getDefinedMeaningDefinitionForAnyLanguage($definedMeaningId) {
 	global $wdDataSetContext;
 	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT old_text FROM {$dc}_defined_meaning as dm, translated_content as tc, text as t ".
+	$queryResult = $dbr->query("SELECT old_text FROM {$dc}_defined_meaning as dm, {$dc}_translated_content as tc, text as t ".
 								"WHERE dm.defined_meaning_id=$definedMeaningId " .
 								" AND " . getLatestTransactionRestriction('dm') .
 								" AND " . getLatestTransactionRestriction('tc') .

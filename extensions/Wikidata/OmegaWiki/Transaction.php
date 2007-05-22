@@ -3,6 +3,8 @@
 require_once('Attribute.php');
 require_once('Record.php');
 require_once('RecordSet.php');
+require_once("Wikidata.php");
+$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
 interface QueryTransactionInformation {
 	public function getRestriction($table);
@@ -165,8 +167,10 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 	}
 	
 	public function getRestriction($table) {
+		global $wdDataSetContext;
+		$dc=$wdDataSetContext;
 		$result =  
-			$table->name . ".add_transaction_id=transactions.transaction_id";
+			$table->name . ".add_transaction_id={$dc}_transactions.transaction_id";
 
 		$showAnyAuthorities = count($this->authoritiesToShow) > 0;
 
@@ -175,23 +179,23 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 			$availableAuthoritiesSet = "(" . implode(", ", $availableAuthorityIds) . ")";
 			
 			$result =  
-				$table->name . ".add_transaction_id=transactions.transaction_id" .
+				$table->name . ".add_transaction_id={$dc}_transactions.transaction_id" .
 				" AND (";
 				
 			if ($this->showCommunityContribution)
 				$result .=	
 					"(" .
-						" transactions.user_id NOT IN " . $availableAuthoritiesSet . 
+						" {$dc}_transactions.user_id NOT IN " . $availableAuthoritiesSet . 
 						" AND " .$table->name . ".add_transaction_id=(" .
 							" SELECT max(add_transaction_id) " .
-							" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+							" FROM " . $table->name . " AS latest_" . $table->name . ", {$dc}_transactions as latest_transactions" .
 							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
 							" AND latest_transactions.transaction_id=latest_" . $table->name . ".add_transaction_id" .
 							" AND latest_transactions.user_id NOT IN (" . implode(", ", $availableAuthorityIds) . ")" .
 							")" .
 						" AND NOT EXISTS (" .
 							" SELECT * " .
-							" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+							" FROM " . $table->name . " AS latest_" . $table->name . ", {$dc}_transactions as latest_transactions" .
 							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
 							" AND latest_transactions.transaction_id=latest_" . $table->name . ".remove_transaction_id" .
 							" AND latest_transactions.user_id NOT IN " . $availableAuthoritiesSet .
@@ -204,20 +208,20 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 			if ($showAnyAuthorities)
 				$result .=
 					" OR (" .
-						" transactions.user_id IN (" . implode(", ", $this->authoritiesToShow) . ") " .
+						" {$dc}_transactions.user_id IN (" . implode(", ", $this->authoritiesToShow) . ") " .
 						" AND " .$table->name . ".add_transaction_id=(" .
 							" SELECT max(add_transaction_id) " .
-							" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+							" FROM " . $table->name . " AS latest_" . $table->name . ", {$dc}_transactions as latest_transactions" .
 							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
 							" AND latest_transactions.transaction_id=latest_" . $table->name . ".add_transaction_id" .
-							" AND latest_transactions.user_id=transactions.user_id" .
+							" AND latest_transactions.user_id={$dc}_transactions.user_id" .
 							")" .
 						" AND NOT EXISTS (" .
 							" SELECT * " .
-							" FROM " . $table->name . " AS latest_" . $table->name . ", transactions as latest_transactions" .
+							" FROM " . $table->name . " AS latest_" . $table->name . ", {$dc}_transactions as latest_transactions" .
 							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
 							" AND latest_transactions.transaction_id=latest_" . $table->name . ".remove_transaction_id" .
-							" AND latest_transactions.user_id=transactions.user_id" .
+							" AND latest_transactions.user_id={$dc}_transactions.user_id" .
 							" AND latest_" . $table->name . ".remove_transaction_id > " . $table->name . ".add_transaction_id" .
 						")" . 
 					" )";
@@ -231,7 +235,9 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 	}
 	
 	public function getTables() {
-		return array("transactions");
+		global $wdDataSetContext;
+		$dc=$wdDataSetContext;
+		return array("{$dc}_transactions");
 	}
 	
 	public function versioningAttributes() {
@@ -242,7 +248,7 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 	}
 
 	public function versioningFields($tableName) {
-		return array('transactions.user_id', $tableName . '.add_transaction_id');
+		return array("{$dc}_transactions.user_id", $tableName . '.add_transaction_id');
 	}
 
 	public function setVersioningAttributes($record, $row) {
@@ -264,13 +270,15 @@ global
 	$updateTransactionId;
 
 function startNewTransaction($userID, $userIP, $comment) {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	global
 		$updateTransactionId;
 	
 	$dbr =& wfGetDB(DB_MASTER);
 	$timestamp = wfTimestampNow();
 	
-	$dbr->query('INSERT INTO transactions (user_id, user_ip, timestamp, comment) VALUES ('. $userID . ', ' . $dbr->addQuotes($userIP) . ', ' . $timestamp . ', ' . $dbr->addQuotes($comment) . ')');
+	$dbr->query("INSERT INTO {$dc}_transactions (user_id, user_ip, timestamp, comment) VALUES (". $userID . ', ' . $dbr->addQuotes($userIP) . ', ' . $timestamp . ', ' . $dbr->addQuotes($comment) . ')');
 	$updateTransactionId = $dbr->insertId();
 }
 
@@ -282,8 +290,10 @@ function getUpdateTransactionId() {
 }
 
 function getLatestTransactionId() {
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT max(transaction_id) AS transaction_id FROM transactions");
+	$queryResult = $dbr->query("SELECT max(transaction_id) AS transaction_id FROM {$dc}_transactions");
 
 	if ($transaction = $dbr->fetchObject($queryResult)) 
 		return $transaction->transaction_id;
@@ -389,12 +399,15 @@ function getTransactionRecord($transactionId) {
 	global
 		$transactionStructure, $transactionIdAttribute, $userAttribute, $timestampAttribute, $summaryAttribute;
 	
+	global $wdDataSetContext;
+	$dc=$wdDataSetContext;
+
 	$result = new ArrayRecord($transactionStructure);
 	$result->setAttributeValue($transactionIdAttribute, $transactionId);
 	
 	if ($transactionId > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT user_id, user_ip, timestamp, comment FROM transactions WHERE transaction_id=$transactionId");
+		$queryResult = $dbr->query("SELECT user_id, user_ip, timestamp, comment FROM {$dc}_transactions WHERE transaction_id=$transactionId");
 		
 		if ($transaction = $dbr->fetchObject($queryResult)) {
 			$result->setAttributeValue($userAttribute, getUserLabel($transaction->user_id, $transaction->user_ip));	

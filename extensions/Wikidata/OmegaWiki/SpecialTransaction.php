@@ -550,12 +550,12 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT defined_meaning_id, translated_content_id, language_id, text_text, " . 
-			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
-			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
+			getOperationSelectColumn("{$dc}_translated_content", $transactionId) . ', ' .
+			getIsLatestSelectColumn("{$dc}_translated_content", array('translated_content_id', 'language_id'), $transactionId) . 
 		" FROM {$dc}_defined_meaning, {$dc}_translated_content, text " .
-		" WHERE {$dc}_defined_meaning.meaning_text_tcid=translated_content.translated_content_id ".
+		" WHERE {$dc}_defined_meaning.meaning_text_tcid={$dc}_translated_content.translated_content_id ".
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
-		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
+		" AND " . getInTransactionRestriction("${dc}_translated_content", $transactionId) .
 		" AND " . getAtTransactionRestriction("{$dc}_defined_meaning", $transactionId)
 	);
 		
@@ -625,12 +625,12 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT meaning_mid, translated_content_id, source_id, language_id, text_text, " . 
-			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
-			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
+			getOperationSelectColumn("{$dc}_translated_content", $transactionId) . ', ' .
+			getIsLatestSelectColumn("{$dc}_translated_content", array('translated_content_id', 'language_id'), $transactionId) . 
 		" FROM {$dc}_alt_meaningtexts, {$dc}_translated_content, text " .
-		" WHERE {$dc}_alt_meaningtexts.meaning_text_tcid=translated_content.translated_content_id ".
+		" WHERE {$dc}_alt_meaningtexts.meaning_text_tcid={$dc}_translated_content.translated_content_id ".
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
-		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
+		" AND " . getInTransactionRestriction("{$dc}_translated_content", $transactionId) .
 		" AND " . getAtTransactionRestriction("{$dc}_alt_meaningtexts", $transactionId)
 	);
 		
@@ -973,12 +973,12 @@ function getUpdatedTranslatedTextRecordSet($transactionId) {
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT value_id, object_id, attribute_mid, translated_content_id, language_id, text_text, " . 
-			getOperationSelectColumn('translated_content', $transactionId) . ', ' .
-			getIsLatestSelectColumn('translated_content', array('translated_content_id', 'language_id'), $transactionId) . 
+			getOperationSelectColumn("{$dc}_translated_content", $transactionId) . ', ' .
+			getIsLatestSelectColumn("{$dc}_translated_content", array('translated_content_id', 'language_id'), $transactionId) . 
 		" FROM {$dc}_translated_content_attribute_values, {$dc}_translated_content, text " .
-		" WHERE {$dc}_translated_content_attribute_values.value_tcid=translated_content.translated_content_id ".
+		" WHERE {$dc}_translated_content_attribute_values.value_tcid={$dc}_translated_content.translated_content_id ".
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
-		" AND " . getInTransactionRestriction('translated_content', $transactionId) .
+		" AND " . getInTransactionRestriction("{$dc}_translated_content", $transactionId) .
 		" AND " . getAtTransactionRestriction("{$dc}_translated_content_attribute_values", $transactionId)
 	);
 		

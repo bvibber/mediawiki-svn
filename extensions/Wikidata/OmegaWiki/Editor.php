@@ -1916,7 +1916,7 @@ class ObjectPathEditor extends Viewer {
 				case "{$dc}_option_attribute_values":
 					$result = $this->resolveAttribute($objectId, $tableName);
 					break;
-				case "translated_content":
+				case "{$dc}_translated_content":
 					$result = $this->resolveTranslatedContent($objectId);
 					break;
 				case "{$dc}_syntrans":
