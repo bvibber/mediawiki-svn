@@ -56,8 +56,10 @@ function definedMeaningReferenceAsLink($definedMeaningId, $definingExpression, $
 }
 
 function languageIdAsText($languageId) {
-	global $wgUser,$wgOwLanguageNames;
-	return $wgOwLanguageNames[$languageId];
+	global $wgUser;
+	$owLanguageNames=getOwLanguageNames();
+	$langaugeName=$owLanguageNames[$languageId];
+	return $languageName;
 }
 
 function collectionIdAsText($collectionId) {

@@ -9,7 +9,6 @@ $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/Wikidata/OmegaWiki/");
 $wgDefaultClassMids = array(402295);
 
-require_once("{$IP}/includes/Setup.php");
 require_once("{$IP}/extensions/Wikidata/SpecialLanguages.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSuggest.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSelect.php");

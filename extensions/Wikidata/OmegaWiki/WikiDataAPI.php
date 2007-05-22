@@ -1,7 +1,6 @@
 <?php
 
 require_once('Transaction.php');
-require_once('WikidataNamespaces.php');
 
 require_once('Wikidata.php');
 $wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
@@ -23,9 +22,7 @@ class Expression {
 	}
 	
 	function createPage() {
-		global
-			$expressionNameSpaceId;
-			
+		$expressionNameSpaceId = Namespace::getIndexForName('Expression');
 		return createPage($expressionNameSpaceId, getPageTitle($this->spelling));
 	}
 	
@@ -684,10 +681,8 @@ function addCollection($definedMeaningId, $collectionType) {
 }
 
 function addDefinedMeaning($definingExpressionId) {
-	global
-		$definedMeaningNameSpaceId;
-	
 	global $wdDataSetContext;
+	$definedMeaningNameSpaceId = Namespace::getIndexForName('DefinedMeaning');
 	$dc=$wdDataSetContext;
 	
 	$definedMeaningId = newObjectId("{$dc}_defined_meaning"); 

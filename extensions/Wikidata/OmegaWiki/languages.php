@@ -1,9 +1,9 @@
 <?php
 
-global
-	$wgOwLanguageNames, $wgUser;
-
-$wgOwLanguageNames = getLangNames($wgUser->getOption('language'));
+function getOwLanguageNames() {
+	global $wgUser;
+	$wgOwLanguageNames = getLangNames($wgUser->getOption('language'));
+}
 
 /* Return an array containing all language names translated into the language
 	indicated by $code, with fallbacks in English where the language names
