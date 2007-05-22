@@ -1,6 +1,5 @@
 -- These tables can exist within each dataset.
 ALTER TABLE `archive` ENGINE = InnoDB;
-ALTER TABLE `bootstrapped_defined_meanings` ENGINE = InnoDB;
 ALTER TABLE `categorylinks` ENGINE = InnoDB;
 ALTER TABLE `externallinks` ENGINE = InnoDB;
 ALTER TABLE `filearchive` ENGINE = InnoDB;
@@ -39,6 +38,7 @@ ALTER TABLE `user` ENGINE = InnoDB;
 ALTER TABLE `user_groups` ENGINE = InnoDB;
 ALTER TABLE `user_newtalk` ENGINE = InnoDB;
 ALTER TABLE `uw_alt_meaningtexts` ENGINE = InnoDB;
+ALTER TABLE `uw_bootstrapped_defined_meanings` ENGINE = InnoDB;
 ALTER TABLE `uw_class_attributes` ENGINE = InnoDB;
 ALTER TABLE `uw_class_membership` ENGINE = InnoDB;
 ALTER TABLE `uw_collection_contents` ENGINE = InnoDB;
@@ -47,8 +47,10 @@ ALTER TABLE `uw_collection_ns` ENGINE = InnoDB;
 ALTER TABLE `uw_defined_meaning` ENGINE = InnoDB;
 ALTER TABLE `uw_expression_ns` ENGINE = InnoDB;
 ALTER TABLE `uw_meaning_relations` ENGINE = InnoDB;
+ALTER TABLE `uw_objects` ENGINE = InnoDB;
 ALTER TABLE `uw_option_attribute_options` ENGINE = InnoDB;
 ALTER TABLE `uw_option_attribute_values` ENGINE = InnoDB;
+ALTER TABLE `uw_script_log` ENGINE = InnoDB;
 ALTER TABLE `uw_syntrans` ENGINE = InnoDB;
 ALTER TABLE `uw_syntrans_relations` ENGINE = InnoDB;
 ALTER TABLE `uw_text` ENGINE = InnoDB;
