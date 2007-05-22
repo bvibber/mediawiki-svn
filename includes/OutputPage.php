@@ -74,6 +74,13 @@ class OutputPage {
 	function addMeta( $name, $val ) { array_push( $this->mMetatags, array( $name, $val ) ); }
 	function addKeyword( $text ) { array_push( $this->mKeywords, $text ); }
 	function addScript( $script ) { $this->mScripts .= "\t\t".$script; }
+	function addStyle( $style ) {
+		global $wgStylePath, $wgStyleVersion;
+		$this->addLink(
+				array(
+					'rel' => 'stylesheet',
+					'href' => $wgStylePath . '/' . $style . '?' . $wgStyleVersion ) );
+	}
 
 	/**
 	 * Add a self-contained script tag with the given contents
@@ -789,13 +796,13 @@ class OutputPage {
 	}
 
 	/**
-	 * Outputs a pretty page to explain why the request exploded.
+	 * Output a standard error page
 	 *
-	 * @param string $title Message key for page title.
-	 * @param string $msg   Message key for page text.
-	 * @return nothing
+	 * @param string $title Message key for page title
+	 * @param string $msg Message key for page text
+	 * @param array $params Message parameters
 	 */
-	public function showErrorPage( $title, $msg ) {
+	public function showErrorPage( $title, $msg, $params = array() ) {
 		global $wgTitle;
 
 		$this->mDebugtext .= 'Original title: ' .
@@ -806,9 +813,12 @@ class OutputPage {
 		$this->setArticleRelated( false );
 		$this->enableClientCache( false );
 		$this->mRedirect = '';
-
 		$this->mBodytext = '';
-		$this->addWikiText( wfMsg( $msg ) );
+		
+		array_unshift( $params, $msg );
+		$message = call_user_func_array( 'wfMsg', $params );
+		$this->addWikiText( $message );
+		
 		$this->returnToMain( false );
 	}
 
@@ -1226,5 +1236,26 @@ class OutputPage {
 	public function showNewSectionLink() {
 		return $this->mNewSectionLink;
 	}
+	
+	/**
+	 * Show a warning about slave lag
+	 *
+	 * If the lag is higher than 30 seconds, then the warning is
+	 * a bit more obvious
+	 *
+	 * @param int $lag Slave lag
+	 */
+	public function showLagWarning( $lag ) {
+		global $wgSlaveLagWarning, $wgSlaveLagOhNo;
+		
+		if ($lag < $wgSlaveLagWarning)
+			return;
+
+		$message = $lag >= $wgSlaveLagOhNo ? 'lag-warn-high' : 'lag-warn-normal';
+		$warning = wfMsgHtml( $message, htmlspecialchars( $lag ) );
+		$this->addHtml( "<div class=\"mw-{$message}\">\n{$warning}\n</div>\n" );
+	}
+	
 }
+
 ?>

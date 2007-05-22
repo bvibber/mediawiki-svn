@@ -1136,7 +1136,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '67';
+$wgStyleVersion = '72';
 
 
 # Server-side caching:
@@ -1256,7 +1256,11 @@ $wgSquidMaxage = 18000;
 
 /**
  * A list of proxy servers (ips if possible) to purge on changes don't specify
- * ports here (80 is default)
+ * ports here (80 is default). When mediawiki is running behind a proxy, its
+ * address should be listed in $wgSquidServers otherwise mediawiki won't rely
+ * on the X-FORWARDED-FOR header to determine the user IP address and
+ * all users will appear to come from the proxy IP address. Don't use domain
+ * names here, only IP adresses.
  */
 # $wgSquidServers = array('127.0.0.1');
 $wgSquidServers = array();
@@ -1967,6 +1971,13 @@ $wgThumbLimits = array(
 );
 
 /**
+ * Adjust width of upright images when parameter 'upright' is used
+ * This allows a nicer look for upright images without the need to fix the width
+ * by hardcoded px in wiki sourcecode.
+ */
+$wgThumbUpright = 0.75;
+
+/**
  *  On  category pages, show thumbnail gallery for images belonging to that
  * category instead of listing them as articles.
  */
@@ -2580,5 +2591,13 @@ $wgEnableCascadingProtection = true;
  * Disable output compression (enabled by default if zlib is available)
  */
 $wgDisableOutputCompression = false;
+
+/**
+ * If lag is higher than $wgSlaveLagWarning, show a warning in some special 
+ * pages (like watchlist).  If the lag is higher than $wgSlaveLagOhNo, show a 
+ * more obvious warning.
+ */
+$wgSlaveLagWarning = 10;
+$wgSlaveLagOhNo = 30;
 
 ?>

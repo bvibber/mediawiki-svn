@@ -2071,6 +2071,28 @@ class Article {
 		if ( $t == '' || $id == 0 ) {
 			return false;
 		}
+		# Check the live revisions
+		$result = $dbw->select( 'revision', 
+			array('MIN(rev_timestamp) as created', 'MAX(rev_timestamp) as latest'), 
+			array( 'rev_page' => $id ), __METHOD__ );
+		$current = $dbw->fetchObject($result);
+		# Check the archives
+		$result = $dbw->select( 'archive', 
+			array('MIN(ar_timestamp) as created', 'MAX(ar_timestamp) as latest'), 
+			array( 'ar_namespace' => $ns, 'ar_title' => $t ), __METHOD__ );
+		$archived = $dbw->fetchObject($result);
+		# Compare the times to see if we will end up with a mixed up archive
+		if( $current && $archived && $archived->created ) {
+			if( $archived->latest < $current->created ) {
+				// Our archive will have a set of newer revisions added
+			} else if( $current->latest < $archived->created ) {
+				// Our archive will have a set of older revisions added to it
+			} else {
+				// No alternating archive histories!!!
+				return false;
+			}
+		
+		}
 
 		$u = new SiteStatsUpdate( 0, 1, -(int)$this->isCountable( $this->getContent() ), -1 );
 		array_push( $wgDeferredUpdateList, $u );

@@ -19,7 +19,7 @@ function wfSpecialRevisiondelete( $par = null ) {
 	$file = $wgRequest->getVal( 'file' ); // For reviewing deleted files
 		
 	// We need a target page (possible a dummy like User:#1)
-	$page = Title::newFromUrl( $target, false );
+	$page = Title::newFromUrl( $target, true );
 	if( is_null( $page ) ) {
 		$wgOut->addWikiText( wfMsgHtml( 'undelete-header' ) );
 		return;
@@ -509,7 +509,7 @@ class RevisionDeleteForm {
 		$comment = $request->getText( 'wpReason' );
 		
 		$target = $request->getText( 'target' );
-		$title = Title::newFromURL( $target, false );
+		$title = Title::newFromURL( $target, true );
 		
 		if( $this->save( $bitfield, $comment, $title ) ) {
 			$this->success( $request );
@@ -530,7 +530,7 @@ class RevisionDeleteForm {
 		$target = $request->getText( 'target' );
 		$type = $request->getText( 'type' );
 
-		$title = Title::newFromURL( $target, false );
+		$title = Title::newFromURL( $target, true );
 		$name = $title->makeName( $title->getNamespace(), $title->getText() );
 		
 		$logtitle = SpecialPage::getTitleFor( 'Log' );

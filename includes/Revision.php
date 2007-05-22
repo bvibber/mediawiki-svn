@@ -59,6 +59,9 @@ class Revision {
 	 * --Requiring either all restored revs to be all newer
 	 * --or all older to than those of the live page avoids that.
 	 *
+	 * --Also, if a page has archived revs, deletion should have
+	 * --the same limitations
+	 *
 	 * @param Database $db
 	 * @param Title $title
  	 * @param timestamp $timeframe, desired view time
@@ -69,7 +72,6 @@ class Revision {
 	public static function newFromTimeframe( &$title, $timeframe ) {
 		$relocated = true; // Assume true to begin with
 		$isdeleted = false;
-		$since = $timeframe;
 		$id = 0;
 		
 		$dbr = wfGetDB( DB_SLAVE );
@@ -78,25 +80,25 @@ class Revision {
 		$r = '1 = 0'; // we don't care if it was restored yet
 		$m = "log_action='move'";
 		// Recursively check logs for page moves since $timeframe...
-		while ( $relocated ) {
+		while( $relocated ) {
 			$result = $dbr->select( 'logging', array('log_params', 'log_action', 'log_id'),
 				array("log_timestamp >= $timeframe", "log_id > $id",
 					'log_namespace' => $title->getNamespace(), 'log_title' => $title->getDbkey(),
 					"($m) OR ($d) OR ($r)"),
 				__METHOD__,
 				array('ORDER BY' => 'log_timestamp ASC', 'LIMIT' => 1) );
-			if ( $row = $dbr->fetchObject($result) ) {
+			if( $row = $dbr->fetchObject($result) ) {
 				// Was it deleted?
-				if ( $row->log_action=='delete' ) {
+				if( $row->log_action=='delete' ) {
 					$isdeleted = true;
 					$d = '1 = 0';
 					$r = "log_action='restore'";
 					$m = '1 = 0';
 				// Was it restored?
-				} else if ( $row->log_action=='restore' ) {
-					// Check the restore point (format is <page time><\n><image time>)
+				} else if( $row->log_action=='restore' ) {
+					// Check the restore point (format is <page time>\n<image time>)
 					$restpoints = explode('\n',$row->log_params);
-					if ( $restpoints[0] >= 0 && $restpoints[0] <= $timeframe ) {
+					if( $restpoints[0] >= 0 && $restpoints[0] <= $timeframe ) {
 						$isdeleted = false; // our desired revision was restored
 						$d = "log_action='delete'"; 
 						$r = '1 = 0'; 
@@ -107,7 +109,7 @@ class Revision {
 					$title = Title::newFromText( $row->log_params ); // New name is stored here
 				}
 				$id = $row->log_id;
-			} else if ( $isdeleted ) {
+			} else if( $isdeleted ) {
 				return null;
 			} else {
 				$relocated = false;

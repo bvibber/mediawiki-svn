@@ -765,9 +765,21 @@ class UndeleteForm {
 		$otext = $oldRev->revText();
 		$ntext = $newRev->revText();
 		
-		$diffbody = DifferenceEngine::generateDiffBody( $otext, $ntext );
-		
-		$wgOut->addHtml( DifferenceEngine::addHeader( $diffbody, $oldHeader, $newHeader ) ); 
+		$wgOut->addStyle( 'common/diff.css' );
+        $wgOut->addHtml(
+            "<div>" .
+            "<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>" .
+            "<col class='diff-marker' />" .
+            "<col class='diff-content' />" .
+            "<col class='diff-marker' />" .
+            "<col class='diff-content' />" .
+            "<tr>" .
+                "<td colspan='2' width='50%' align='center' class='diff-otitle'>" . $oldHeader . "</td>" .
+                "<td colspan='2' width='50%' align='center' class='diff-ntitle'>" . $newHeader . "</td>" .
+            "</tr>" .
+            DifferenceEngine::generateDiffBody( $otext, $ntext ) .
+            "</table>" .
+            "</div>\n" );
 			
 		return true;
 	}

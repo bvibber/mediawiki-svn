@@ -6,6 +6,14 @@
  */
 
 /**
+ * Constant to indicate diff cache compatibility.
+ * Bump this when changing the diff formatting in a way that
+ * fixes important bugs or such to force cached diff views to
+ * clear.
+ */
+define( 'MW_DIFF_VERSION', '1.11a' );
+
+/**
  * @todo document
  * @public
  * @addtogroup DifferenceEngine
@@ -325,6 +333,7 @@ CONTROL;
 			$wgOut->addWikitext( wfMsg( 'missingarticle', "<nowiki>(fixme, bug)</nowiki>" ) );
 			return false;
 		} else {
+			$wgOut->addStyle( 'common/diff.css' );
 			$wgOut->addHTML( $diff );
 			return true;
 		}
@@ -359,7 +368,7 @@ CONTROL;
 		$key = false;
 		if ( $this->mOldid && $this->mNewid ) {
 			// Try cache
-			$key = wfMemcKey( 'diff', 'oldid', $this->mOldid, 'newid', $this->mNewid );
+			$key = wfMemcKey( 'diff', 'version', MW_DIFF_VERSION, 'oldid', $this->mOldid, 'newid', $this->mNewid );
 			$difftext = $wgMemc->get( $key );
 			if ( $difftext ) {
 				wfIncrStats( 'diff_cache_hit' );
@@ -524,10 +533,14 @@ CONTROL;
 		global $wgOut;
 
 		$header = "
-			<table border='0' width='98%' cellpadding='0' cellspacing='4' class='diff'>
+			<table class='diff'>
+			<col class='diff-marker' />
+			<col class='diff-content' />
+			<col class='diff-marker' />
+			<col class='diff-content' />
 			<tr>
-				<td colspan='2' width='50%' align='center' class='diff-otitle'>{$otitle}</td>
-				<td colspan='2' width='50%' align='center' class='diff-ntitle'>{$ntitle}</td>
+				<td colspan='2' class='diff-otitle'>{$otitle}</td>
+				<td colspan='2' class='diff-ntitle'>{$ntitle}</td>
 			</tr>
 		";
 
@@ -1770,8 +1783,8 @@ class TableDiffFormatter extends DiffFormatter
 	}
 
 	function _block_header( $xbeg, $xlen, $ybeg, $ylen ) {
-		$r = '<tr><td colspan="2" align="left"><strong><!--LINE '.$xbeg."--></strong></td>\n" .
-		  '<td colspan="2" align="left"><strong><!--LINE '.$ybeg."--></strong></td></tr>\n";
+		$r = '<tr><td colspan="2" class="diff-lineno"><!--LINE '.$xbeg."--></td>\n" .
+		  '<td colspan="2" class="diff-lineno"><!--LINE '.$ybeg."--></td></tr>\n";
 		return $r;
 	}
 
@@ -1787,17 +1800,25 @@ class TableDiffFormatter extends DiffFormatter
 
 	# HTML-escape parameter before calling this
 	function addedLine( $line ) {
-		return "<td>+</td><td class='diff-addedline'>{$line}</td>";
+		return $this->wrapLine( '+', 'diff-addedline', $line );
 	}
 
 	# HTML-escape parameter before calling this
 	function deletedLine( $line ) {
-		return "<td>-</td><td class='diff-deletedline'>{$line}</td>";
+		return $this->wrapLine( '-', 'diff-deletedline', $line );
 	}
 
 	# HTML-escape parameter before calling this
 	function contextLine( $line ) {
-		return "<td> </td><td class='diff-context'>{$line}</td>";
+		return $this->wrapLine( ' ', 'diff-context', $line );
+	}
+	
+	private function wrapLine( $marker, $class, $line ) {
+		if( $line !== '' ) {
+			// The <div> wrapper is needed for 'overflow: auto' style to scroll properly
+			$line = "<div>$line</div>";
+		}
+		return "<td class='diff-marker'>$marker</td><td class='$class'>$line</td>";
 	}
 
 	function emptyLine() {

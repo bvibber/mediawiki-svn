@@ -9,7 +9,7 @@ class RCCacheEntry extends RecentChange
 	var $curlink , $difflink, $lastlink , $usertalklink , $versionlink ;
 	var $userlink, $timestamp, $watched;
 
-	function newFromParent( $rc ) {
+	static function newFromParent( $rc ) {
 		$rc2 = new RCCacheEntry;
 		$rc2->mAttribs = $rc->mAttribs;
 		$rc2->mExtra = $rc->mExtra;
@@ -588,18 +588,20 @@ class EnhancedChangesList extends ChangesList {
 					$nchanges[$n], $curIdEq."&diff=$currentRevision&oldid=$oldid" );
 			}
 
-			# Character difference
-			$chardiff = $rcObj->getCharacterDifference( $block[ count( $block ) - 1 ]->mAttribs['rc_old_len'],
-					$block[0]->mAttribs['rc_new_len'] );
-			if( $chardiff == '' ) {
-				$r .= '; ';
-			} else {
-				$r .= '; ' . $chardiff . ' ';
+			if( $wgRCShowChangedSize ) {
+				# Character difference
+				$chardiff = $rcObj->getCharacterDifference( $block[ count( $block ) - 1 ]->mAttribs['rc_old_len'],
+						$block[0]->mAttribs['rc_new_len'] );
+				if( $chardiff == '' ) {
+					$r .= ' (';
+				} else {
+					$r .= ' ' . $chardiff. ' . . ';
+				}
 			}
 
 			# History
-			$r .= $this->skin->makeKnownLinkObj( $block[0]->getTitle(), $this->message['history'], $curIdEq.'&action=history' );
-
+			$r .= '(' . $this->skin->makeKnownLinkObj( $block[0]->getTitle(),
+				$this->message['history'], $curIdEq.'&action=history' );
 			$r .= ')';
 		}
 
