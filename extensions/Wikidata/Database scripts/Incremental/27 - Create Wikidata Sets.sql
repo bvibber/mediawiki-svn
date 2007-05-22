@@ -7,7 +7,7 @@ CREATE TABLE `wikidata_sets` (
   `set_prefix` varchar(20) default NULL,
   `set_string` varchar(100) default NULL,
   `set_dmid` int(10) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+);
 
 
 LOCK TABLES `wikidata_sets` WRITE;
@@ -15,4 +15,4 @@ INSERT INTO `wikidata_sets` VALUES ('uw','OmegaWiki community',0),('umls','UMLS'
 UNLOCK TABLES;
 
 
-INSERT INTO `script_log` (`time`, `script_name`) VALUES (NOW(), '27 - Create Wikidata sets.sql');
+INSERT INTO `script_log` (`time`, `script_name`) VALUES (NOW(), '27 - Create Wikidata Sets.sql');
