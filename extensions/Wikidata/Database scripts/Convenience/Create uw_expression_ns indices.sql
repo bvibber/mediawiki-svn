@@ -5,7 +5,7 @@ ALTER TABLE `uw_expression_ns`
 	ADD INDEX `versioned_start_expression` (`add_transaction_id`, `expression_id`, `language_id`),
 	ADD INDEX `versioned_start_language` (`add_transaction_id`, `language_id`, `expression_id`),
 	ADD INDEX `versioned_start_spelling` (`add_transaction_id`, `spelling` (255), `expression_id`, `language_id`),
-	ADD UNIQUE INDEX `expressions_unique_idx` (`expression_id`,`language_id`),
+	ADD INDEX `expressions_unique_idx` (`expression_id`,`language_id`),
 	ADD INDEX `expressions_idx`	(`expression_id`),
 	ADD INDEX `language_idx`	(`language_id`)
 	;
