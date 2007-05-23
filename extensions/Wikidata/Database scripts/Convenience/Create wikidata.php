@@ -1,0 +1,115 @@
+<?php
+
+# this module create a wikidata extension for mediawiki
+# it generates the tables in a database (passed as parameter) with a defined prefix (passed as parameter)
+
+define('MEDIAWIKI', true );
+
+$wgUseMasterForMaintenance = true;
+require_once( "../../../../LocalSettings.php");
+require_once( "install-utils.inc" );
+require_once( "AdminSettings.php");
+require_once( "GlobalFunctions.php" );
+require_once( "ProfilerStub.php");
+require_once( "Exception.php" );
+require_once( "Database.php" );
+
+function ReadSQLFile( $database, $pattern, $prefix, $filename ){
+	$fp = fopen( $filename, 'r' );
+	if ( false === $fp ) {
+		return "Could not open \"{$filename}\".\n";
+	}
+
+	$cmd = "";
+	$done = false;
+
+	while ( ! feof( $fp ) ) {
+		$line = trim( fgets( $fp, 1024 ) );
+		$sl = strlen( $line ) - 1;
+
+		if ( $sl < 0 ) { continue; }
+		if ( '-' == $line{0} && '-' == $line{1} ) { continue; }
+
+		if ( ';' == $line{$sl} && ($sl < 2 || ';' != $line{$sl - 1})) {
+			$done = true;
+			$line = substr( $line, 0, $sl );
+		}
+
+		if ( '' != $cmd ) { $cmd .= ' '; }
+		$cmd .= "$line\n";
+
+		if ( $done ) {
+			$cmd = str_replace(';;', ";", $cmd);
+			$cmd = trim( str_replace( $pattern, $prefix, $cmd ) );
+			$res = $database->query( $cmd );
+
+			if ( false === $res ) {
+				return "Query \"{$cmd}\" failed with error code \".\n";
+			}
+
+			$cmd = '';
+			$done = false;
+		}
+	}
+	fclose( $fp );
+	return true;
+}
+
+$dbclass = 'Database' . ucfirst( $wgDBtype ) ;
+$comment = '';
+
+# Parse arguments
+for( $arg = reset( $argv ); $arg !== false; $arg = next( $argv ) ) {
+	if ( substr( $arg, 0, 7 ) == '-prefix' ) {
+		$prefix = next( $argv );
+		$wgWDprefix = $prefix . "_";
+	}
+	else if ( substr( $arg, 0, 9 ) == '-template' ) {
+			$wgWDtemplate = next( $argv );
+	}
+	else if ( substr( $arg, 0, 8 ) == '-comment' ) {
+		$comment = next( $argv );
+	} else {
+		$args[] = $arg;
+	}
+}
+
+if ( !isset( $wgWDtemplate ) ){
+	echo( "SQL template should be provided!");
+	echo( "usage: create wikidata.php -prefix <prefix> -template <sql template> [-comment '<comment line>']");
+	exit();
+}
+
+if ( !isset( $wgWDprefix ) ){
+	echo( "database prefix should be provided!");
+	echo( "usage: create wikidata.php -prefix <prefix> -template <sql template> [-comment '<comment line>']");
+	exit();
+}
+
+# Do a pre-emptive check to ensure we've got credentials supplied
+# We can't, at this stage, check them, but we can detect their absence,
+# which seems to cause most of the problems people whinge about
+if( !isset( $wgDBadminuser ) || !isset( $wgDBadminpassword ) ) {
+	echo( "No superuser credentials could be found. Please provide the details\n" );
+	echo( "of a user with appropriate permissions to update the database. See\n" );
+	echo( "AdminSettings.sample for more details.\n\n" );
+	exit();
+}
+
+# Attempt to connect to the database as a privileged user
+# This will vomit up an error if there are permissions problems
+$wdDatabase = new $dbclass( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1 );
+
+if( !$wdDatabase->isOpen() ) {
+	# Appears to have failed
+	echo( "A connection to the database could not be established. Check the\n" );
+	echo( "values of \$wgDBadminuser and \$wgDBadminpassword.\n" );
+	exit();
+}
+
+ReadSQLFile( $wdDatabase, "/*\$wgWDprefix*/", $wgWDprefix, $wgWDtemplate );
+$wdDatabase->query( "DELETE FROM wikidata_sets WHERE set_prefix = '$prefix'" );
+$wdDatabase->query( "INSERT INTO wikidata_sets (set_prefix,set_string,set_dmid) VALUES ('$prefix','$comment',0)" );
+$wdDatabase->close();
+
+?>
