@@ -1,8 +1,6 @@
 <?php
 
 require_once("Wikidata.php");
-$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
-$dc=$wdDataSetContext; // See? We're keeping this readable :-P
 class Table {
 	public $name;
 	public $isVersioned;
@@ -20,7 +18,8 @@ global
 	$translatedContentTable, $alternativeDefinitionsTable, $translatedContentAttributeValuesTable, $transactionsTable,
 	$textAttributeValuesTable, $optionAttributeOptionsTable, $optionAttributeValuesTable, $classAttributesTable,
 	$urlAttributeValuesTable;
-	
+
+$dc=wdGetDataSetContext();
 $transactionsTable = new Table("{$dc}_transactions", false, array('transaction_id'));
 $meaningRelationsTable = new Table("{$dc}_meaning_relations", true, array('relation_id'));
 $classMembershipsTable = new Table("{$dc}_class_membership", true, array('class_membership_id'));

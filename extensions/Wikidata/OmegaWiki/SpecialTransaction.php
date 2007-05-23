@@ -4,7 +4,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialTransaction';
 require_once("Wikidata.php");
-$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
+
 
 function wfSpecialTransaction() {
         global $wgMessageCache;
@@ -391,8 +391,8 @@ function initializeAttributes() {
 
 function getTransactionRecordSet($fromTransactionId, $transactionCount, $userName) {
 	global
-		$transactionAttribute, $transactionIdAttribute, $transactionsTable, $updatesInTransactionAttribute, $wdDataSets;
-	$dc=$wdDataSets;
+			$transactionAttribute, $transactionIdAttribute, $transactionsTable, $updatesInTransactionAttribute;
+	$dc=wdGetDataSetContext();	
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
 
 	$restrictions = array("transaction_id <= $fromTransactionId");
@@ -497,10 +497,9 @@ function getUpdatesInTransactionRecord($transactionId) {
 function getTranslatedContentHistory($translatedContentId, $languageId, $isLatest) {
 	global
 		$translatedContentHistoryStructure, $translatedContentHistoryKeyStructure,
-		$textAttribute, $addTransactionIdAttribute, $recordLifeSpanAttribute,
-		$wdDataSetContext;
+		$textAttribute, $addTransactionIdAttribute, $recordLifeSpanAttribute;
 
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();		
 	$recordSet = new ArrayRecordSet($translatedContentHistoryStructure, $translatedContentHistoryKeyStructure);
 	
 	if ($isLatest) {
@@ -539,13 +538,13 @@ function getUpdatedTextRecord($text, $history) {
 }
 
 function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+
 	global
 		$languageAttribute, $textAttribute, $definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, $updatedDefinitionStructure, $translatedContentIdAttribute,
-		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure, $wdDataSetContext;
-	$dc=$wdDataSetContext;
+		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
+
+	$dc=wdGetDataSetContext();		
 		
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -578,13 +577,12 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 }
 
 function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$updatedAlternativeDefinitionsStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
 		$translatedContentIdAttribute, $sourceAttribute, $alternativeDefinitionTextAttribute,
 		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
 
+	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT meaning_mid, meaning_text_tcid, source_id, " . 
@@ -615,13 +613,12 @@ function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
 }
 
 function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$languageAttribute, $textAttribute, $definedMeaningIdAttribute, $sourceAttribute,
 		$definedMeaningReferenceAttribute, $updatedAlternativeDefinitionTextStructure, $translatedContentIdAttribute,
-		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute, $operationAttribute, $isLatestAttribute, $wdDataSetContext;
-	$dc=$wdDataSetContext;
+		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute, $operationAttribute, $isLatestAttribute;
+
+	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT meaning_mid, translated_content_id, source_id, language_id, text_text, " . 
@@ -654,13 +651,13 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 }
 
 function getUpdatedSyntransesRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$updatedSyntransesStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
 		$expressionAttribute, $expressionStructure, $languageAttribute, $spellingAttribute, $syntransIdAttribute,
 		$expressionIdAttribute,	$identicalMeaningAttribute, 
-		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $rollBackStructure;
+		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $rollBackStructure;		
+
+	$dc=wdGetDataSetContext();			
 	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -716,11 +713,12 @@ function getIsLatestSelectColumn($table, $idFields, $transactionId) {
 }
 
 function getUpdatedRelationsRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$updatedRelationsStructure, $relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, 
 		$relationTypeAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+
+	$dc=wdGetDataSetContext();	
 
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -750,11 +748,11 @@ function getUpdatedRelationsRecordSet($transactionId) {
 }
 
 function getUpdatedClassMembershipRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$updatedClassMembershipStructure, $classMembershipIdAttribute, $classAttribute, $classMemberAttribute, 
 		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+	$dc=wdGetDataSetContext();	
 	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -783,13 +781,12 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 }
 
 function getUpdatedCollectionMembershipRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$updatedCollectionMembershipStructure, $collectionIdAttribute, $collectionMeaningAttribute, 
 		$collectionMemberAttribute, $sourceIdentifierAttribute, $collectionMemberIdAttribute, 
 		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
-	
+
+	$dc=wdGetDataSetContext();		
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT {$dc}_collection_contents.collection_id, collection_mid, member_mid, internal_member_id, " . 
@@ -821,12 +818,11 @@ function getUpdatedCollectionMembershipRecordSet($transactionId) {
 }
 
 function getUpdatedClassAttributesRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$updatedClassAttributesStructure, $classAttributeIdAttribute, $classAttribute, $levelAttribute, 
 		$attributeAttribute, $typeAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
 
+	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT object_id, class_mid, level_mid, attribute_mid, attribute_type, " . 
@@ -856,13 +852,12 @@ function getUpdatedClassAttributesRecordSet($transactionId) {
 }
 
 function getUpdatedURLRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $URLAttribute, 
 		$updatedURLStructure, $operationAttribute, $isLatestAttribute, 
 		$rollBackAttribute, $rollBackStructure;
-	
+
+	$dc=wdGetDataSetContext();		
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT value_id, object_id, attribute_mid, url, " . 
@@ -891,13 +886,12 @@ function getUpdatedURLRecordSet($transactionId) {
 }
 
 function getUpdatedTextRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $textAttribute, 
 		$updatedTextStructure, 
 		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
-	
+
+	$dc=wdGetDataSetContext();		
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT value_id, object_id, attribute_mid, text, " . 
@@ -926,13 +920,12 @@ function getUpdatedTextRecordSet($transactionId) {
 }
 
 function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$updatedTranslatedTextPropertyStructure, $objectIdAttribute, $valueIdAttribute, 
 		$translatedContentIdAttribute, $attributeAttribute, $translatedTextTextAttribute,
 		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
 
+	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT value_id, object_id, attribute_mid, value_tcid, " . 
@@ -963,13 +956,12 @@ function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
 }
 
 function getUpdatedTranslatedTextRecordSet($transactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
 	global
 		$languageAttribute, $textAttribute, $objectIdAttribute, $valueIdAttribute, $attributeAttribute,
 		$updatedTranslatedTextStructure, $translatedContentIdAttribute,
-		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure, $wdDataSetContext;
-	$dc=$wdDataSetContext;
+		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
+
+	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT value_id, object_id, attribute_mid, translated_content_id, language_id, text_text, " . 
@@ -1451,8 +1443,8 @@ function rollBackTranslatedContent($idStack, $rollBackAction, $translatedContent
 }
 
 function getTranslatedContentFromHistory($translatedContentId, $languageId, $addTransactionId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+
+	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT text_text " .

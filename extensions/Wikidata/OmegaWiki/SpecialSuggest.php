@@ -13,7 +13,7 @@ function wfSpecialSuggest() {
 		
 		function execute( $par ) {
 			global
-				$wgOut,	$IP, $wdDataSetContext;
+				$wgOut,	$IP;
 
 			$wgOut->disable();
 			
@@ -26,8 +26,6 @@ function wfSpecialSuggest() {
 			require_once("Transaction.php");
 			require_once("OmegaWikiEditors.php");
 			require_once("Wikidata.php");
-			$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
-			echo getSuggestions();
 		}
 	}
 	
@@ -39,9 +37,7 @@ function getSuggestions() {
 
 	global $idAttribute;
 	global $wgUser;
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
-	
+	$dc=wdGetDataSetContext();	
 	$search = ltrim($_GET['search-text']);
 	$prefix = $_GET['prefix'];
 	$query = $_GET['query'];
@@ -216,8 +212,7 @@ function ConstructSQLWithFallback($actual_query, $fallback_query, $fields){
 function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType, $language="<ANY>") {
 	global $wgDefaultClassMids;
 	global $wgUser;
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 
 	if (count($wgDefaultClassMids) > 0)
 		$defaultClassRestriction = " OR {$dc}_class_attributes.class_mid IN (" . join($wgDefaultClassMids, ", ") . ")";
@@ -266,8 +261,7 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 }
 
 function getSQLForCollectionOfType($collectionType, $language="<ANY>") {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	$sql="SELECT member_mid, spelling, collection_mid " .
         " FROM {$dc}_collection_contents, {$dc}_collection_ns, {$dc}_syntrans, {$dc}_expression_ns " .
         " WHERE {$dc}_collection_contents.collection_id={$dc}_collection_ns.collection_id " .
@@ -292,8 +286,7 @@ function getSQLForCollectionOfType($collectionType, $language="<ANY>") {
 }
 
 function getSQLForCollection($language="<ANY>") {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=$wdGetDataSetContext();
 	$sql = 
 			"SELECT collection_id, spelling ".
 	    		" FROM {$dc}_expression_ns, {$dc}_collection_ns, {$dc}_syntrans " .

@@ -10,8 +10,7 @@ require_once('RecordSetQueries.php');
 
 function getSynonymSQLForLanguage($languageId, &$definedMeaningIds) {
 
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 
 	return 
 		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS label " .
@@ -28,8 +27,8 @@ function getSynonymSQLForLanguage($languageId, &$definedMeaningIds) {
 }
 
 function getSynonymSQLForAnyLanguage(&$definedMeaningIds) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+
+	$dc=wdGetDataSetContext();
 
 	return 
 		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS label " .
@@ -45,8 +44,8 @@ function getSynonymSQLForAnyLanguage(&$definedMeaningIds) {
 }
 
 function getDefiningSQLForLanguage($languageId, &$definedMeaningIds) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+
+	$dc=wdGetDataSetContext();
 
 	return 
 		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS label " .
@@ -64,8 +63,8 @@ function getDefiningSQLForLanguage($languageId, &$definedMeaningIds) {
 }
 
 function fetchDefinedMeaningReferenceRecords($sql, &$definedMeaningIds, &$definedMeaningReferenceRecords) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+
+	$dc=wdGetDataSetContext();
 
 	global
 		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute,
@@ -93,9 +92,9 @@ function fetchDefinedMeaningReferenceRecords($sql, &$definedMeaningIds, &$define
 function fetchDefinedMeaningDefiningExpressions(&$definedMeaningIds, &$definedMeaningReferenceRecords) {
 	global
 		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute,
-		$definedMeaningDefiningExpressionAttribute, $wdDataSetContext;
+		$definedMeaningDefiningExpressionAttribute;
 
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -220,9 +219,9 @@ function expandTranslatedContentsInRecordSet($recordSet, $idAttribute, $translat
 
 function getExpressionReferenceRecords($expressionIds) {
 	global
-		$expressionStructure, $languageAttribute, $spellingAttribute, $wdDataSetContext;
+		$expressionStructure, $languageAttribute, $spellingAttribute;
 	
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 
 	if (count($expressionIds) > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
@@ -265,9 +264,9 @@ function expandExpressionReferencesInRecordSet($recordSet, $expressionAttributes
 
 function getExpressionSpellings($expressionIds) {
 	global
-		$expressionAttribute, $wdDataSetContext;
+		$expressionAttribute;
 	
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 
 	if (count($expressionIds) > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
@@ -305,8 +304,7 @@ function expandExpressionSpellingsInRecordSet($recordSet, $expressionAttributes)
 
 function getTextReferences($textIds) {
 
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	if (count($textIds) > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
@@ -342,9 +340,9 @@ function expandTextReferencesInRecordSet($recordSet, $textAttributes) {
 
 function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 	global
-		$expressionMeaningStructure, $definedMeaningIdAttribute, $wdDataSetContext;
+		$expressionMeaningStructure, $definedMeaningIdAttribute;
 
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 
 
 	if ($exactMeaning)
@@ -386,9 +384,9 @@ function getExpressionMeaningsRecord($expressionId, $filterLanguageId, $possibly
 
 function getExpressionsRecordSet($spelling, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 	global
-		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute, $wdDataSetContext;
+		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute;
 
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 
 	if ($filterLanguageId != 0)
 		$languageRestriction = " AND language_id=$filterLanguageId";
@@ -428,8 +426,7 @@ function getExpressionsRecordSet($spelling, $filterLanguageId, $possiblySynonymo
 }
 
 function getExpressionIdThatHasSynonyms($spelling, $languageId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -633,10 +630,9 @@ function getFilteredTranslatedContentRecordSet($translatedContentId, $filterLang
 
 function getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
 	global
-		$syntransTable, $syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute,
-		$wdDataSetContext;
+		$syntransTable, $syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute;
 
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	$restrictions = array("defined_meaning_id=$definedMeaningId");
 	
 	if ($filterLanguageId != 0) 

@@ -36,9 +36,8 @@ class DefaultWikidataApplication {
 		
 		global
 			$wgAvailableAuthorities, $wgFilterLanguageId, $wgShowLanguageSelector, 
-			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId,
-			$wdDataSetContext;
-		
+			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId;
+					
 		if (isset($wgAvailableAuthorities))
 			$this->availableAuthorities = $wgAvailableAuthorities;
 			
@@ -53,8 +52,6 @@ class DefaultWikidataApplication {
 			
 		if (isset($wgPossiblySynonymousRelationTypeId))
 			$this->possiblySynonymousRelationTypeId = $wgPossiblySynonymousRelationTypeId; 
-
-		$wdDataSetContext=$this->getDataSetContext();
 
 	}
 
@@ -265,19 +262,22 @@ class DefaultWikidataApplication {
 		return $wgTitle->getText();
 	}
 
-	/**
-	 * The data set context defines which set of Wikidata
-	 * tables should be used for all queries except
-	 * for those relating to MediaWiki tables. It is a
-	 * prefix defined in the 'wikidata_sets' tables
-	 * and associated there with a string or a DMID.
-	 *
-	 * @return prefix (without underscore)
-	**/
-	public static function getDataSetContext() {
-		return 'uw';
-	}
+}
 
+/**
+ * The data set context defines which set of Wikidata
+ * tables should be used for all queries except
+ * for those relating to MediaWiki tables. It is a
+ * prefix defined in the 'wikidata_sets' tables
+ * and associated there with a string or a DMID.
+ *
+ * @return prefix (without underscore)
+**/
+function wdGetDataSetContext() {
+	global $wgRequest;
+	$dc=$wgRequest->getText('dataset');
+	if(!$dc) $dc='uw';
+	return $dc;
 }
 
 ?>

@@ -8,7 +8,6 @@ require_once("RecordSet.php");
 require_once("Editor.php");
 require_once("WikiDataAPI.php");
 require_once("Wikidata.php");
-$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
 class NeedsTranslationTo extends DefaultWikidataApplication {
 	public function view() {
@@ -51,8 +50,7 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 		global
 			$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure, $spellingAttribute, $languageAttribute;
 		
-		global $wdDataSetContext;
-		$dc=$wdDataSetContext;
+		$dc=wdGetDataSetContext();
 
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id" .

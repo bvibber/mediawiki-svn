@@ -4,7 +4,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialSelect';
 require_once("Wikidata.php");
-$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
+
 
 function wfSpecialSelect() {
 	class SpecialSelect extends SpecialPage {
@@ -31,9 +31,7 @@ function getSelectOptions() {
 	global
 		$wgUser;
 
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
-
+	$dc=wdGetDataSetContext();
 	$optionAttribute = $_GET['option-attribute'];
 	$attributeObject = $_GET['attribute-object'];
 	$lang_code = $wgUser->getOption('language');

@@ -1,9 +1,7 @@
 <?php
 	if (!defined('MEDIAWIKI')) die();
 
-
 	require_once("Wikidata.php");
-	$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 	$wgAvailableRights[] = 'languagenames';
 	$wgGroupPermissions['bureaucrat']['languagenames'] = true;
 
@@ -20,9 +18,8 @@
 
 			function execute($par) {
 				global $wgOut, $wgUser;
-
-				global $wdDataSetContext;
-				$dc=$wdDataSetContext;
+				// These operations should always be on the community database.
+				$dc="uw";
 				require_once('Transaction.php');
 
 				$wgOut->setPageTitle('Import Language Names');

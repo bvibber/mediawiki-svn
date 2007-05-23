@@ -8,8 +8,6 @@ require_once('Transaction.php');
 require_once('WikiDataAPI.php');
 require_once('Wikidata.php');
 
-global $wdDataSetContext;
-$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 function booleanAsText($value) {
 	if ($value)
 		return "Yes";
@@ -76,8 +74,7 @@ function timestampAsText($timestamp) {
 }
 
 function definingExpressionRow($definedMeaningId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT {$dc}_expression_ns.expression_id, spelling, language_id " .
 								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
@@ -90,8 +87,7 @@ function definingExpressionRow($definedMeaningId) {
 }
 
 function definingExpression($definedMeaningId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT spelling " .
 								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
@@ -104,8 +100,7 @@ function definingExpression($definedMeaningId) {
 }
 
 function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT spelling" .
@@ -126,8 +121,7 @@ function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
 }
 
 function definedMeaningExpressionForAnyLanguage($definedMeaningId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT spelling " .
@@ -177,8 +171,7 @@ function definedMeaningExpression($definedMeaningId) {
 }
 
 function getTextValue($textId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT text_text from {$dc}_text where text_id=$textId");
 

@@ -5,7 +5,6 @@ require_once("Controller.php");
 require_once("type.php");
 require_once("GotoSourceTemplate.php");
 require_once("Wikidata.php");
-$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
 function addCollapsablePrefixToClass($class) {
 	return "collapsable-$class";
@@ -1898,8 +1897,7 @@ class ObjectPathEditor extends Viewer {
 	}
 	
 	protected function resolveObject($objectId) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	wfDebug("dc is <$dc>\n");
 
 		$tableName = getTableNameWithObjectId($objectId);
@@ -1935,8 +1933,7 @@ class ObjectPathEditor extends Viewer {
 	}
 	
 	protected function resolveRelation($objectId) {
-		global $wdDataSetContext;
-		$dc=$wdDataSetContext;
+		$dc=wdGetDataSetContext();
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT meaning1_mid, relationtype_mid, meaning2_mid" .
@@ -1970,8 +1967,7 @@ class ObjectPathEditor extends Viewer {
 	}
 
 	protected function resolveTranslatedContent($objectId) {
-		global $wdDataSetContext;
-		$dc=$wdDataSetContext;
+		$dc=wdGetDataSetContext();
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT defined_meaning_id" .
@@ -1987,8 +1983,7 @@ class ObjectPathEditor extends Viewer {
 	}
 
 	protected function resolveSyntrans($objectId) {
-		global $wdDataSetContext;
-		$dc=$wdDataSetContext;
+		$dc=wdGetDataSetContext();
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT spelling, defined_meaning_id" .

@@ -9,7 +9,6 @@ require_once("OmegaWikiAttributes.php");
 require_once("OmegaWikiRecordSets.php");
 require_once("OmegaWikiEditors.php");
 require_once("Wikidata.php");
-$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
 class Search extends DefaultWikidataApplication {
 	function view() {
@@ -25,8 +24,7 @@ class Search extends DefaultWikidataApplication {
 	}
 	
 	function searchText($text) {
-		global $wdDataSetContext;
-		$dc=$wdDataSetContext;
+		$dc=wdGetDataSetContext();
 		$dbr = &wfGetDB(DB_SLAVE);
 		
 		$sql = "SELECT INSTR(LCASE({$dc}_expression_ns.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS spelling, {$dc}_expression_ns.language_id AS language_id ".

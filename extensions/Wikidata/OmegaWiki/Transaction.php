@@ -4,7 +4,6 @@ require_once('Attribute.php');
 require_once('Record.php');
 require_once('RecordSet.php');
 require_once('Wikidata.php');
-$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 interface QueryTransactionInformation {
 	public function getRestriction($table);
 	public function getTables();
@@ -166,8 +165,8 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 	}
 	
 	public function getRestriction($table) {
-		global $wdDataSetContext;
-		$dc=$wdDataSetContext;
+
+		$dc=wdGetDataSetContext();
 		$result =  
 			$table->name . ".add_transaction_id={$dc}_transactions.transaction_id";
 
@@ -234,8 +233,7 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 	}
 	
 	public function getTables() {
-		global $wdDataSetContext;
-		$dc=$wdDataSetContext;
+		$dc=wdGetDataSetContext();
 		return array("{$dc}_transactions");
 	}
 	
@@ -269,11 +267,10 @@ global
 	$updateTransactionId;
 
 function startNewTransaction($userID, $userIP, $comment) {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+
 	global
 		$updateTransactionId;
-	
+	$dc=wdGetDataSetContext();	
 	$dbr =& wfGetDB(DB_MASTER);
 	$timestamp = wfTimestampNow();
 	
@@ -289,8 +286,7 @@ function getUpdateTransactionId() {
 }
 
 function getLatestTransactionId() {
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
+	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT max(transaction_id) AS transaction_id FROM {$dc}_transactions");
 
@@ -398,9 +394,7 @@ function getTransactionRecord($transactionId) {
 	global
 		$transactionStructure, $transactionIdAttribute, $userAttribute, $timestampAttribute, $summaryAttribute;
 	
-	global $wdDataSetContext;
-	$dc=$wdDataSetContext;
-
+	$dc=wdGetDataSetContext();
 	$result = new ArrayRecord($transactionStructure);
 	$result->setAttributeValue($transactionIdAttribute, $transactionId);
 	

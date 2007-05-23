@@ -7,7 +7,6 @@ require_once( 'SpecialDatasearch.i18n.php' );
 $wgExtensionFunctions[] = 'wfSpecialDatasearch';
 
 require_once("Wikidata.php");
-$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
 function wfSpecialDatasearch() {
 	# Add messages
@@ -184,8 +183,7 @@ function wfSpecialDatasearch() {
 		}
 		
 		function searchWords($text, $collectionId, $languageId) {
-		global $wdDataSetContext;
-		$dc=$wdDataSetContext;
+		$dc=wdGetDataSetContext();
 			$dbr = &wfGetDB(DB_SLAVE);
 			
 			$sql = 
@@ -261,8 +259,7 @@ function wfSpecialDatasearch() {
 		}
 		
 		function searchExternalIdentifiers($text, $collectionId) {
-			global $wdDataSetContext;
-			$dc=$wdDataSetContext;
+			$dc=wdGetDataSetContext();
 			$dbr = &wfGetDB(DB_SLAVE);
 			
 			$sql = 

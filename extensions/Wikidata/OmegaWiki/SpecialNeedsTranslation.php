@@ -4,7 +4,6 @@
 	$wgExtensionFunctions[] = 'wfSpecialNeedsTranslation';
 
 	require_once("Wikidata.php");
-	$wdDataSetContext=DefaultWikidataApplication::getDataSetContext();
 
 	function wfSpecialNeedsTranslation() {
 	        global $wgMessageCache;
@@ -47,8 +46,7 @@
 				global
 					$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure, $spellingAttribute, $languageAttribute;
 
-				global $wdDataSetContext;
-				$dc=$wdDataSetContext;
+				$dc=wdGetDataSetContext();
 				require_once("Transaction.php");
 				require_once("OmegaWikiAttributes.php");
 				require_once("RecordSet.php");
