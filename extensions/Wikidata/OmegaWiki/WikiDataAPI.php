@@ -928,6 +928,39 @@ function getDefinedMeaningDefinition($definedMeaningId) {
 	return $result;
 }
 
+
+function getSpellingForLanguage($definedMeaningId, $languageCode, $fallbackLanguageCode='en', $dc=null) {
+
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+	} 
+
+	$userLanguageId=getLanguageIdForCode($languageCode);
+
+	wfDebug("User language: $userLanguageId\n");
+	$fallbackLanguageId=getLanguageIdForCode($fallbackLanguageCode);
+
+	wfDebug("Fallback language: $fallbackLanguageId\n");
+	$dbr = & wfGetDB(DB_SLAVE);	
+
+	if($userLanguageId) {
+		$actual_query="select spelling from {$dc}_syntrans,{$dc}_expression_ns where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id and language_id=$userLanguageId and {$dc}_expression_ns.remove_transaction_id is NULL";
+	
+		$res=$dbr->query($actual_query);
+		$row=$dbr->fetchObject($res);
+		if($row->spelling) return $row->spelling;
+	}
+
+	$fallback_query="select spelling from {$dc}_syntrans,{$dc}_expression_ns where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id and language_id=$fallbackLanguageId and {$dc}_expression_ns.remove_transaction_id is NULL";
+
+	$res=$dbr->query($fallback_query);
+	$row=$dbr->fetchObject($res);
+	if($row->spelling) return $row->spelling;
+
+	return null;
+
+}
+
 function isClass($objectId) {
 	$dc=wdGetDataSetContext();
 	$dbr = & wfGetDB(DB_SLAVE);	

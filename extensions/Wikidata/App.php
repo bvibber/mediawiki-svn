@@ -10,6 +10,19 @@ $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/Wikidata/OmegaWiki/");
 $wgDefaultClassMids = array(402295);
 
+# The term dataset prefix identifies the Wikidata instance that will
+# be used as a resource for obtaining language-independent strings
+# in various places of the code. If the term db prefix is empty,
+# these code segments will fall back to (usually English) strings.
+# If you are setting up a new Wikidata instance, you may want to
+# set this to ''.
+$wdTermDBDataSet='uw';
+
+# This is the dataset that should be shown to all users by default.
+# It _must_ exist for the Wikidata application to be executed 
+# successfully.
+$wdDefaultViewDataSet='uw';
+
 require_once("{$IP}/extensions/Wikidata/SpecialLanguages.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSuggest.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSelect.php");

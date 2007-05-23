@@ -265,19 +265,122 @@ class DefaultWikidataApplication {
 }
 
 /**
- * The data set context defines which set of Wikidata
- * tables should be used for all queries except
- * for those relating to MediaWiki tables. It is a
- * prefix defined in the 'wikidata_sets' tables
- * and associated there with a string or a DMID.
+ * A Wikidata application can manage multiple data sets.
+ * The current "context" is dependent on multiple factors:
+ * - the URL can have a dataset parameter
+ * - there is a global default
+ * - there can be defaults for different user groups
  *
  * @return prefix (without underscore)
 **/
 function wdGetDataSetContext() {
-	global $wgRequest;
-	$dc=$wgRequest->getText('dataset');
-	if(!$dc) $dc='uw';
-	return $dc;
+
+	global $wgRequest, $wdDefaultViewDataSet;
+	$datasets=wdGetDataSets();
+	if( ($ds=$wgRequest->getText('dataset')) && array_key_exists($ds,$datasets) ) {
+		return $datasets[$ds];
+	} else {
+		return $datasets[$wdDefaultViewDataSet];
+	}
+}
+
+
+/**
+ * Load dataset definitions from the database if necessary.
+ *
+ * @return an array of all available datasets
+**/
+function &wdGetDataSets() {
+
+	static $datasets;
+	if(empty($datasets)) {
+
+		// Load defs from the DB
+		$dbs =& wfGetDB(DB_SLAVE);
+		$res=$dbs->select('wikidata_sets', array('set_prefix'));
+
+		while($row=$dbs->fetchObject($res)) {
+
+			$dc=new DataSet();
+			$dc->setPrefix($row->set_prefix);
+			if($dc->isValidPrefix()) {
+				$datasets[$row->set_prefix]=$dc;
+				wfDebug("Imported data set: ".$dc->fetchName()."\n");
+			} else {
+				wfDebug($row->set_prefix . " does not appear to be a valid dataset!\n");
+			}
+		}
+	}
+	return $datasets;
+}
+
+class DataSet {
+
+	private $dataSetPrefix;
+	private $isValidPrefix=false;
+	private $fallbackName='';
+	private $dmId=0;
+
+	public function getPrefix() {
+		return $this->dataSetPrefix;
+	}
+
+	public function isValidPrefix() {
+		return $this->isValidPrefix;
+	}
+
+	public function setDefinedMeaningId($dmid) {
+		$this->dmId=$dmid;
+	}
+	public function getDefinedMeaningId() {
+		return $this->dmId;
+	}
+
+	public function setValidPrefix($isValid=true) {
+		$this->isValidPrefix=$isValid;
+	}
+
+	public function setPrefix($cp) {
+
+		$fname="DataSet::setPrefix";
+
+		$dbs =& wfGetDB(DB_SLAVE);
+		$this->dataSetPrefix=$cp;
+		$sql="select * from wikidata_sets where set_prefix=".$dbs->addQuotes($cp);
+		$res=$dbs->query($sql);
+		$row=$dbs->fetchObject($res);
+		if($row->set_prefix) {
+			$this->setValidPrefix();
+			$this->setDefinedMeaningId($row->set_dmid);
+			$this->setFallbackName($row->set_fallback_name);
+		} else {
+			$this->setValidPrefix(false);
+		}
+	}
+
+	// Fetch!
+	function fetchName() {
+		global $wgUser, $wdTermDBDataSet;
+		if($wdTermDBDataSet) {
+			$userLanguage=$wgUser->getOption('language');
+			$spelling=getSpellingForLanguage($this->dmId, $userLanguage, 'en',$wdTermDBDataSet);
+			if($spelling) return $spelling;
+		}
+		return $this->getFallbackName();
+	}
+
+	public function getFallbackName() {
+		return $this->fallbackName;
+	}
+
+	public function setFallbackName($name) {
+		$this->fallbackName=$name;
+	}
+
+	function __toString() {
+		return $this->getPrefix();
+	}
+
 }
 
 ?>
