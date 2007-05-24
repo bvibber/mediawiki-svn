@@ -517,45 +517,58 @@ class NamespaceStore {
 		}
 		$this->nsarray = array();
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'namespace',
-			array('ns_id','ns_search_default','ns_subpages', 'ns_parent', 'ns_target', 'ns_system', 'ns_hidden', 'ns_count', 'ns_class'),
-			array(),
+		$res = $dbr->select( 
+			array('namespace','namespace_names'),
+			array('namespace.ns_id','ns_search_default','ns_subpages', 'ns_parent', 'ns_target', 'ns_system', 'ns_hidden', 'ns_count', 'ns_class','ns_name','ns_default','ns_canonical'),
+			array('namespace_names.ns_id=namespace.ns_id'),
 			'Setup',
-			array('ORDER BY'=>'ns_id ASC')
+			array('ORDER BY'=>'namespace.ns_id ASC')
 		);
+
 		while( $row = $dbr->fetchObject( $res ) ){	
 			# See Namespace.php for documentation on all namespace
 			# properties which are accessed below.	
 			$id=$row->ns_id;
-			$this->nsarray[$id]=new Namespace();
+			if(!array_key_exists($id,$this->nsarray)) {
 
-			# Cannot currently be changed through the UI - is
-			# there a need for it to be changeable?
-			$this->nsarray[$id]->setMovable(
-				$id < NS_MAIN || $id==NS_FILE || 
-				$id==NS_CATEGORY ? false : true );
-			$this->nsarray[$id]->setIndex($id);
-			$this->nsarray[$id]->setSystemType($row->ns_system);
-			$this->nsarray[$id]->setSearchedByDefault($row->ns_search_default);
-			$this->nsarray[$id]->setSubpages($row->ns_subpages);
-			$this->nsarray[$id]->setHidden($row->ns_hidden);
-			$this->nsarray[$id]->setTarget($row->ns_target);
-			$this->nsarray[$id]->setHandlerClass($row->ns_class);
-			$this->nsarray[$id]->setCountable($row->ns_count);
-			$this->nsarray[$id]->setParentIndex($row->ns_parent);
-			$res2 = $dbr->select( 'namespace_names', array('ns_name','ns_default,ns_canonical'),
-					array('ns_id = '. $row->ns_id),
-					'Setup', array('order by'=>'ns_default desc,ns_canonical desc,ns_id asc'));
-			
-			# Add the list of valid names
-			while($row2 = $dbr->fetchObject($res2) ) {
-				$nsi=$this->nsarray[$id]->addName($row2->ns_name);
-				if($row2->ns_default) {
+				$this->nsarray[$id]=new Namespace();	
+				# Cannot currently be changed through the UI - is
+				# there a need for it to be changeable?
+				$this->nsarray[$id]->setMovable(
+					$id < NS_MAIN || $id==NS_FILE || 
+					$id==NS_CATEGORY ? false : true );
+				$this->nsarray[$id]->setIndex($id);
+				$this->nsarray[$id]->setSystemType($row->ns_system);
+				$this->nsarray[$id]->setSearchedByDefault($row->ns_search_default);
+				$this->nsarray[$id]->setSubpages($row->ns_subpages);
+				$this->nsarray[$id]->setHidden($row->ns_hidden);
+				$this->nsarray[$id]->setTarget($row->ns_target);
+				$this->nsarray[$id]->setHandlerClass($row->ns_class);
+				$this->nsarray[$id]->setCountable($row->ns_count);
+				$this->nsarray[$id]->setParentIndex($row->ns_parent);
+				$res2 = $dbr->select( 'namespace_names', array('ns_name','ns_default,ns_canonical'),
+						array('ns_id = '. $row->ns_id),
+						'Setup', array('order by'=>'ns_default desc,ns_canonical desc,ns_id asc'));
+				
+				$nsi=$this->nsarray[$id]->addName($row->ns_name);
+				if($row->ns_default) {
 					$this->nsarray[$id]->setDefaultNameIndex($nsi);
 				}
-				if($row2->ns_canonical) {
+				if($row->ns_canonical) {
 					$this->nsarray[$id]->setCanonicalNameIndex($nsi);
 				}
+
+
+			} else {
+
+				$nsi=$this->nsarray[$id]->addName($row->ns_name);
+				if($row->ns_default) {
+					$this->nsarray[$id]->setDefaultNameIndex($nsi);
+				}
+				if($row->ns_canonical) {
+					$this->nsarray[$id]->setCanonicalNameIndex($nsi);
+				}
+
 			}
 		}
 		$dbr->freeResult( $res );
