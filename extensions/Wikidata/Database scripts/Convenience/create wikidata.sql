@@ -1,4 +1,20 @@
 --
+-- Add the wikidata specific namespaces
+--
+
+INSERT INTO `namespace` (`ns_id`,`ns_system`,`ns_subpages`,`ns_search_default`,`ns_target`,`ns_parent`,`ns_hidden`,`ns_count`,`ns_class`) VALUES 
+ (16,NULL,0,0,'',NULL,0,'OmegaWiki',1);
+ (17,NULL,1,0,'',16,0,NULL,NULL),
+ (24,NULL,0,0,'',NULL,0,'DefinedMeaning',1);
+ (25,NULL,1,0,'',24,0,NULL,NULL);
+
+INSERT INTO `namespace_names` (`ns_id`,`ns_name`,`ns_default`,`ns_canonical`) VALUES 
+ (16,'Expression',1,0),
+ (17,'Expression_talk',1,0),
+ (24,'DefinedMeaning',1,0),
+ (25,'DefinedMeaning_talk',1,0);
+
+--
 -- Definition of table `language`
 --
 
