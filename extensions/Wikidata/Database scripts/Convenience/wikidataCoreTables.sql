@@ -118,19 +118,6 @@ INSERT INTO language_names (language_id,name_language_id,language_name) VALUES
  (105,85,'Greek'),
  (105,101,'Griechisch');
 
-DROP TABLE IF EXISTS validate;
-
-CREATE TABLE validate (
-  val_user int(11) NOT NULL default '0',
-  val_page int(11) unsigned NOT NULL default '0',
-  val_revision int(11) unsigned NOT NULL default '0',
-  val_type int(11) unsigned NOT NULL default '0',
-  val_value int(11) default '0',
-  val_comment varchar(255) NOT NULL default '',
-  val_ip varchar(20) NOT NULL default '',
-  KEY val_user (`val_user`,`val_revision`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 DROP TABLE IF EXISTS wikidata_sets;
 
 CREATE TABLE wikidata_sets (
