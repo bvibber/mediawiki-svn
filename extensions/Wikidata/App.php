@@ -30,7 +30,7 @@ require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialDatasearch.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialTransaction.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialNeedsTranslation.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialImportLangNames.php");
-
+require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialAddCollection.php");
 function addWikidataHeader() {
   global $wgOut,$wgScriptPath;
   $wgOut->addScript("<script type='text/javascript' src='{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js'></script>");

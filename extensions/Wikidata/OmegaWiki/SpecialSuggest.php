@@ -40,12 +40,13 @@ function getSuggestions() {
 	global $idAttribute;
 	global $wgUser;
 	$dc=wdGetDataSetContext();	
-	$search = ltrim($_GET['search-text']);
-	$prefix = $_GET['prefix'];
-	$query = $_GET['query'];
-	$objectId = $_GET['objectId'];
-	$offset = $_GET['offset'];
-	$attributesLevel = $_GET['attributesLevel'];
+	@$search = ltrim($_GET['search-text']);
+	@$prefix = $_GET['prefix'];
+	@$query = $_GET['query'];
+	@$objectId = $_GET['objectId'];
+	@$offset = $_GET['offset'];
+	@$attributesLevel = $_GET['attributesLevel'];
+	$sql='';
 	
 	$dbr =& wfGetDB( DB_SLAVE );
 	$rowText = 'spelling';

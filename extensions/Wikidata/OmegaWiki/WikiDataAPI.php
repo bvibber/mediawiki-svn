@@ -88,7 +88,7 @@ function getExpressionId($spelling, $languageId) {
 			' AND '. getLatestTransactionRestriction("{$dc}_expression_ns");
 	$queryResult = $dbr->query($sql);
 	$expression = $dbr->fetchObject($queryResult);
-	return $expression->expression_id;
+	return isset($expression->expression_id) ? $expression->expression_id : null;
 }	
 
 function createExpressionId($spelling, $languageId) {

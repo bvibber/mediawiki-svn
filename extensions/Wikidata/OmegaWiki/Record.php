@@ -21,7 +21,8 @@ class ArrayRecord implements Record {
 	}
 	
 	public function getAttributeValue($attribute) {
-		return $this->values[$attribute->id];
+		#FIXME: check if valid
+		return @$this->values[$attribute->id];
 	}
 	
 
