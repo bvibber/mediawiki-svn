@@ -1,4 +1,3 @@
-
 <?php
 
 $wgDefaultGoPrefix='Expression:';
@@ -6,6 +5,7 @@ $wgDefaultGoPrefix='Expression:';
 $wgNamespaceProtection[ 16 ] = array( 'editwikidata' );
 $wgNamespaceProtection[ 24 ] = array( 'editwikidata' );
 $wgGroupPermissions['wikidata']['editwikidata']=true;
+$wgExtensionFunctions[]='setupDataContextPermissions';
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
 $wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail';
 $wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail';
@@ -48,6 +48,15 @@ function addWikidataEditLinkTrail(&$trail) {
 function addHistoryLinkTrail(&$trail) {
   $dc=wdGetDatasetContext();
   $trail="&dataset=$dc";
+}
+
+function setupDataContextPermissions() {
+  global $wgGroupPermissions;
+  $dc=wdGetDataSetContext();
+  if($dc->getPrefix()=='tt') {
+    $wgGroupPermissions['wikidata']['editwikidata']=false;
+  }
+
 }
 
 # all DMs will be put in this class by default.
