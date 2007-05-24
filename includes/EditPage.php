@@ -290,23 +290,6 @@ class EditPage {
 		wfProfileIn( $fname );
 		wfDebug( "$fname: enter\n" );
 
-		# We may want to edit this page using a handler class
-		$ns=Namespace::get($wgTitle->getNamespace());
-                $handlerClass=$ns->getHandlerClass();
-                if(!empty($handlerClass)) {
-			$handlerPath=$ns->getHandlerPath();
-			$hfilename=$handlerPath.$handlerClass.".php"; 
-			if(file_exists($hfilename)) {
-                        	require_once($hfilename);
-	                        $handlerInstance=new $handlerClass();
-        	                $handlerInstance->edit();
-				return;
-			} else {
-				$wgOut->showErrorPage('namespace_handler_not_found','namespace_handler_not_found_error',$hfilename,$wgContLang->getFormattedNsText($ns));
-			}
-                }
-
-
 		// this is not an article
 		$wgOut->setArticleFlag(false);
 
@@ -359,6 +342,23 @@ class EditPage {
 			wfProfileOut( $fname );
 			return;
 		}
+		
+		# We may want to edit this page using a handler class
+		$ns=Namespace::get($wgTitle->getNamespace());
+                $handlerClass=$ns->getHandlerClass();
+                if(!empty($handlerClass)) {
+			$handlerPath=$ns->getHandlerPath();
+			$hfilename=$handlerPath.$handlerClass.".php"; 
+			if(file_exists($hfilename)) {
+                        	require_once($hfilename);
+	                        $handlerInstance=new $handlerClass();
+        	                $handlerInstance->edit();
+				return;
+			} else {
+				$wgOut->showErrorPage('namespace_handler_not_found','namespace_handler_not_found_error',$hfilename,$wgContLang->getFormattedNsText($ns));
+			}
+                }
+		
 		if ( wfReadOnly() ) {
 			wfDebug( "$fname: read-only mode is engaged\n" );
 			if( $this->save || $this->preview ) {
