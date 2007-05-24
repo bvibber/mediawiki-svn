@@ -398,7 +398,7 @@ class OAIRepo {
 		if( isset( $this->_request['identifier'] ) ) {
 			# We have the same formats for all records...
 			# If given an identifier, just check it for existence.
-			$row = $this->getRecordItem( $this->_request['identifier'] );
+			$row = $this->getRecordItem( $this->_request['identifier'], '' );
 			if( $this->errorCondition() ) {
 				return;
 			}
@@ -462,7 +462,7 @@ class OAIRepo {
 		$writer = new OAIDumpWriter();
 
 		# Fetch one extra row to check if we need a resumptionToken
-		$resultSet = $this->fetchRows( $from, $until, $this->chunkSize() + 1, $resume );
+		$resultSet = $this->fetchRows( $from, $until, $this->chunkSize() + 1, $resume, $metadataPrefix );
 		$count = min( $resultSet->numRows(), $this->chunkSize() );
 		if( $count ) {
 			echo "<$verb>\n";
@@ -496,7 +496,7 @@ class OAIRepo {
 		$writer = new OAIDumpWriter();
 		$metadataPrefix =  $this->validateMetadata( 'metadataPrefix' );
 		if( !$this->errorCondition() ) {
-			$row = $this->getRecordItem( $this->_request['identifier'] );
+			$row = $this->getRecordItem( $this->_request['identifier'], $metadataPrefix );
 			if( !$this->errorCondition() ) {
 				$item = new WikiOAIRecord( $row, $writer );
 				echo "<GetRecord>\n";
@@ -506,10 +506,10 @@ class OAIRepo {
 		}
 	}
 	
-	function getRecordItem( $identifier ) {
+	function getRecordItem( $identifier, $metadataPrefix ) {
 		$pageid = $this->stripIdentifier( $identifier );
 		if( $pageid ) {
-			$resultSet = $this->fetchRecord( $pageid );
+			$resultSet = $this->fetchRecord( $pageid, $metadataPrefix );
 			$row = $resultSet->fetchObject();
 			$resultSet->free();
 			if( $row ) {
@@ -562,16 +562,39 @@ class OAIRepo {
 		return version_compare( $wgVersion, '1.5alpha', 'ge' );
 	}
 	
-	function fetchRecord( $pageid ) {
-		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text' ) );
-		if( $this->newSchema() ) {
+	function fetchRecord( $pageid, $type ) {
+		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text', 'pagelinks' ) );
+		if( $type == 'lsearch' ){
 			$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
 			page_namespace,
 			page_title,
 			old_text,
 			old_flags,
 			rev_id,
-			rev_delete,
+			rev_deleted,
+			rev_comment,
+			rev_user,
+			rev_user_text,
+			rev_timestamp,
+			page_restrictions,
+			rev_minor_edit,
+      COUNT(pl_from) as num_page_ref
+			FROM $updates
+			LEFT JOIN $page ON page_id=up_page
+			LEFT JOIN $revision ON page_latest=rev_id
+			LEFT JOIN $text ON rev_text_id=old_id
+      LEFT JOIN $pagelinks ON page_namespace=pl_namespace AND page_title=pl_title
+			WHERE up_page=" . IntVal( $pageid ) . "
+      GROUP BY up_page LIMIT 1";
+		} else{
+			if( $this->newSchema() ) {
+				$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
+			page_namespace,
+			page_title,
+			old_text,
+			old_flags,
+			rev_id,
+			rev_deleted,
 			rev_comment,
 			rev_user,
 			rev_user_text,
@@ -584,8 +607,8 @@ class OAIRepo {
 			AND page_latest=rev_id
 			AND rev_text_id=old_id
 			LIMIT 1';
-		} else { // FIXME: this will work only with dublin core?
-			$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
+			} else { // FIXME: this will work only with dublin core?
+				$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
 			cur_namespace    AS namespace,
 			cur_title        AS title,
 			cur_text         AS text,
@@ -599,17 +622,40 @@ class OAIRepo {
 			FROM $updates LEFT JOIN $cur ON cur_id=up_page
 			WHERE up_page=" . IntVal( $pageid ) .
 			' LIMIT 1';
+			}
 		}
 		
 		return $this->_db->resultObject( $this->_db->query( $sql ) );
 	}
 	
-	function fetchRows( $from, $until, $chunk, $token = null ) {
-		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text' ) );
+	function fetchRows( $from, $until, $chunk, $token = null, $type ) {
+		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text', 'pagelinks' ) );
 		$chunk = IntVal( $chunk );
 		
-		if( $this->newSchema() ) {
+		// lucene-search output: joins pagelinks table to get page ranks
+		if( $type == "lsearch" ){
 			$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
+			page_namespace,
+			page_title,
+			old_text,
+			old_flags,
+			rev_id,
+			rev_deleted,
+			rev_comment,
+			rev_user,
+			rev_user_text,
+			rev_timestamp,
+			page_restrictions,
+			rev_minor_edit,
+      COUNT(pl_from) as num_page_ref
+			FROM $updates
+			LEFT JOIN $page ON page_id=up_page
+			LEFT JOIN $revision ON page_latest=rev_id
+			LEFT JOIN $text ON rev_text_id=old_id
+      LEFT JOIN $pagelinks ON page_namespace=pl_namespace AND page_title=pl_title";
+		} else{
+			if( $this->newSchema() ) {
+				$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
 			page_namespace,
 			page_title,
 			old_text,
@@ -626,8 +672,8 @@ class OAIRepo {
 			LEFT JOIN $page ON page_id=up_page
 			LEFT JOIN $revision ON page_latest=rev_id
 			LEFT JOIN $text ON rev_text_id=old_id ";
-		} else { // FIXME: this will only work with dublin core?
-			$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
+			} else { // FIXME: this will only work with dublin core?
+				$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
 			cur_namespace    AS namespace,
 			cur_title        AS title,
 			cur_text         AS text,
@@ -639,6 +685,7 @@ class OAIRepo {
 			cur_restrictions AS restrictions,
 			cur_minor_edit   AS minor_edit
 			FROM $updates LEFT JOIN $cur ON cur_id=up_page ";
+			}
 		}
 		$where = array();
 		if( $token ) {
@@ -656,6 +703,8 @@ class OAIRepo {
 		if( !empty( $where ) ) {
 			$sql .= ' WHERE ' . implode( ' AND ', $where );
 		}
+		if($type == 'lsearch')
+			$sql .= " GROUP BY up_page";
 		$sql .= " ORDER BY $order LIMIT $chunk";
 		
 		return $this->_db->resultObject( $this->_db->query( $sql ) );
@@ -685,8 +734,11 @@ class OAIRepo {
 				'namespace' => 'http://www.openarchives.org/OAI/2.0/oai_dc/',
 				'schema'    => 'http://www.openarchives.org/OAI/2.0/oai_dc.xsd' ),
 			'mediawiki' => array(
-				'namespace'	=> 'http://www.mediawiki.org/xml/export-0.2/',
-				'schema'    => 'http://www.mediawiki.org/xml/export-0.2.xsd' ) );
+				'namespace'	=> 'http://www.mediawiki.org/xml/export-0.3/',
+				'schema'    => 'http://www.mediawiki.org/xml/export-0.3.xsd' ) ,
+			'lsearch' => array(
+				'namespace'	=> 'http://www.mediawiki.org/xml/export-0.3/',
+				'schema'    => 'http://www.mediawiki.org/xml/export-0.3.xsd' ) );
 	}
 	
 }
@@ -789,6 +841,7 @@ class WikiOAIRecord extends OAIRecord {
 		case 'oai_dc':
 			$data = $this->renderDublinCore();
 			break;
+		case 'lsearch':
 		case 'mediawiki':
 			$data = $this->renderMediaWiki();
 			break;
