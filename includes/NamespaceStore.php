@@ -517,14 +517,9 @@ class NamespaceStore {
 		}
 		$this->nsarray = array();
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 
-			array('namespace','namespace_names'),
-			array('namespace.ns_id','ns_search_default','ns_subpages', 'ns_parent', 'ns_target', 'ns_system', 'ns_hidden', 'ns_count', 'ns_class','ns_name','ns_default','ns_canonical'),
-			array('namespace_names.ns_id=namespace.ns_id'),
-			'Setup',
-			array('ORDER BY'=>'namespace.ns_id ASC')
-		);
-
+		$ntable=$dbr->tableName('namespace');
+		$nntable=$dbr->tableName('namespace_names');
+		$res = $dbr->query( "SELECT $ntable.ns_id, ns_search_default, ns_subpages, ns_parent, ns_target, ns_system, ns_hidden, ns_count, ns_class, ns_name, ns_default, ns_canonical FROM $ntable LEFT JOIN $nntable ON ($nntable.ns_id=$ntable.ns_id) ORDER BY $ntable.ns_id ASC" );
 		while( $row = $dbr->fetchObject( $res ) ){	
 			# See Namespace.php for documentation on all namespace
 			# properties which are accessed below.	
