@@ -68,7 +68,6 @@ function updateSuggestions(suggestPrefix) {
 			URL + 
 			'&attributesLevel=' + encodeURI(suggestAttributesLevel.value) + 
 			'&objectId=' + encodeURI(suggestObjectId.value);
-
 	http.open('GET', URL, true);
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
@@ -76,11 +75,8 @@ function updateSuggestions(suggestPrefix) {
 
 			if (http.responseText != '') {
 				newTable.innerHTML = leftTrim(http.responseText);
-				//alert(">>"+http.responseText+"<<");
-				//newTable.innerHTML = "<table><tr><td>HELLO WORLD!</td></tr></table>";
 				table.parentNode.replaceChild(newTable.firstChild, table);
 			}
-
 			suggestText.className = "";
 		}
 	};

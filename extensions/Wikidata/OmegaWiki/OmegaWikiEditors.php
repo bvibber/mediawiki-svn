@@ -408,7 +408,8 @@ class AttributeEditorMap {
 	}
 	
 	public function getEditorForAttributeId($attributeId) {
-		return $this->attributeEditorMap[$attributeId];
+		# FIXME: check if this actually exists	
+		return @$this->attributeEditorMap[$attributeId];
 	}
 }
 

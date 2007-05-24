@@ -12,8 +12,8 @@ function addCollapsablePrefixToClass($class) {
 
 
 # End of line string for readable HTML, set to "\n" for testing
-define(EOL,"\n"); # Makes human (and vim :-p) readable output (somewhat...)
-#define(EOL,""); # Output only readable by browsers
+define('EOL',"\n"); # Makes human (and vim :-p) readable output (somewhat...)
+#define('EOL',""); # Output only readable by browsers
 
 class IdStack {
 	protected $keyStack;

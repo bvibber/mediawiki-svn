@@ -174,7 +174,6 @@ function getSuggestions() {
 			list($recordSet, $editor) = getTransactionAsRecordSet($queryResult);
 			break;
 	}
-	
 	$output=$editor->view(new IdStack($prefix . 'table'), $recordSet);
 	//$output="<table><tr><td>HELLO ERIK!</td></tr></table>";
 	//wfDebug($output);

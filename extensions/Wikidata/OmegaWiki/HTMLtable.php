@@ -4,7 +4,7 @@ require_once("Attribute.php");
 require_once("Record.php");
 require_once("RecordSet.php");
 
-define (SORT_IMAGE, ' <img src="skins/common/images/sort_none.gif"></img>');
+define ('SORT_IMAGE', ' <img src="skins/common/images/sort_none.gif"></img>');
 
 function parityClass($value) {
 	if ($value % 2 == 0)
@@ -79,6 +79,8 @@ function addChildNodesToRows($headerNode, &$rows, $currentDepth, $columnOffset, 
 		} else {
 			$class = '';
 			$sort = '';
+			$sort_image = '';			
+			$leftsort='';
 		}
 		
 		$rowSpan = $height - $childNode->height;

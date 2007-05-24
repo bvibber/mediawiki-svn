@@ -730,27 +730,28 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 		for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 			$record = $recordSet->getRecord($i);
 			$objectId = $record->getAttributeValue($objectIdAttribute);
-						
+			
+			// FIXME: Do some checks whether these values actually exist			
 			// Text attributes
-			$textAttributeValuesRecordSet = $textAttributeValuesRecordSets[$objectId]; 
+			@$textAttributeValuesRecordSet = $textAttributeValuesRecordSets[$objectId]; 
 			
 			if ($textAttributeValuesRecordSet == null) 
 				$textAttributeValuesRecordSet = $emptyTextAttributesRecordSet;
 
 			// Translated text attributes
-			$translatedTextAttributeValuesRecordSet = $translatedTextAttributeValuesRecordSets[$objectId]; 
+			@$translatedTextAttributeValuesRecordSet = $translatedTextAttributeValuesRecordSets[$objectId]; 
 			
 			if ($translatedTextAttributeValuesRecordSet == null) 
 				$translatedTextAttributeValuesRecordSet = $emptyTranslatedTextAttributesRecordSet;
 
 			// URL attributes
-			$urlAttributeValuesRecordSet = $urlAttributeValuesRecordSets[$objectId]; 
+			@$urlAttributeValuesRecordSet = $urlAttributeValuesRecordSets[$objectId]; 
 			
 			if ($urlAttributeValuesRecordSet == null) 
 				$urlAttributeValuesRecordSet = $emptyURLAttributesRecordSet;
 
 			// Option attributes
-			$optionAttributeValuesRecordSet = $optionAttributeValuesRecordSets[$objectId]; 
+			@$optionAttributeValuesRecordSet = $optionAttributeValuesRecordSets[$objectId]; 
 			
 			if ($optionAttributeValuesRecordSet == null) 
 				$optionAttributeValuesRecordSet = $emptyOptionAttributesRecordSet;
