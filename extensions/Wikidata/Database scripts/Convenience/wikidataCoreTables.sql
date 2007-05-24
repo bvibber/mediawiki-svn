@@ -109,7 +109,7 @@ DROP TABLE IF EXISTS wikidata_sets;
 
 CREATE TABLE wikidata_sets (
   set_prefix varchar(20) default NULL,
-  set_string varchar(100) default NULL,
+  set_fallback_name varchar(255) default NULL,
   set_dmid int(10) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
