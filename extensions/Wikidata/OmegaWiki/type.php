@@ -22,11 +22,17 @@ function booleanAsHTML($value) {
 		return '<input type="checkbox" disabled="disabled"/>';
 }
 
-function pageAsURL($nameSpace, $title) {
+function pageAsURL($nameSpace, $title, $usedc=true) {
 	global
 		$wgScript;
-	
-	return $wgScript. '/' . $nameSpace . ':' . htmlspecialchars($title);
+
+	$url= $wgScript. '?title=' . $nameSpace . ':' . htmlspecialchars($title);
+	if($usedc) {
+		$dc=wdGetDataSetContext();
+		$url.="&dataset=$dc";
+	}
+	return $url;
+		
 }
 
 function spellingAsURL($spelling) {
@@ -42,6 +48,7 @@ function definedMeaningIdAsURL($definedMeaningId) {
 }
 
 function createLink($url, $text) {
+	
 	return '<a href="'. $url . '">' . htmlspecialchars($text) . '</a>';	
 } 
 

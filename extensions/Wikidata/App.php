@@ -7,6 +7,8 @@ $wgNamespaceProtection[ 16 ] = array( 'editwikidata' );
 $wgNamespaceProtection[ 24 ] = array( 'editwikidata' );
 $wgGroupPermissions['wikidata']['editwikidata']=true;
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
+$wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail';
+$wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail';
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/Wikidata/OmegaWiki/");
 $wgDefaultClassMids = array(402295);
 
@@ -36,6 +38,16 @@ function addWikidataHeader() {
   $wgOut->addScript("<script type='text/javascript' src='{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js'></script>");
   $wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.css"));
   $wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/tables.css"));                                                                                                                                                                    
+}
+
+function addWikidataEditLinkTrail(&$trail) {
+  $dc=wdGetDatasetContext();
+  $trail="&dataset=$dc";
+}
+
+function addHistoryLinkTrail(&$trail) {
+  $dc=wdGetDatasetContext();
+  $trail="&dataset=$dc";
 }
 
 # all DMs will be put in this class by default.

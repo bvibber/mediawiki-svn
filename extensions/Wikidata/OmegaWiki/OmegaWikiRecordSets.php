@@ -329,11 +329,11 @@ function expandTextReferencesInRecordSet($recordSet, $textAttributes) {
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
-		
+		# FIXME - check for empty values		
 		foreach($textAttributes as $textAttribute)
 			$record->setAttributeValue(
 				$textAttribute, 
-				$textReferences[$record->getAttributeValue($textAttribute)]
+				@$textReferences[$record->getAttributeValue($textAttribute)]
 			);
 	} 
 }
@@ -683,7 +683,8 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 	if (count($objectIds) > 0) {
 		for ($i = 0; $i < count($objectIds); $i++) {
 			$record = new ArrayRecord($objectAttributesRecordStructure);
-			$objectAttributesRecords[$objectIds[$i]] = $record;
+			#FIXME- check value
+			@$objectAttributesRecords[$objectIds[$i]] = $record;
 		}
 
 		// Text attributes		
