@@ -29,11 +29,11 @@ DROP TABLE IF EXISTS language;
 CREATE TABLE language (
   language_id int(10) NOT NULL auto_increment,
   dialect_of_lid int(10) NOT NULL default '0',
-  iso639_2 varchar(10) collate latin1_general_ci NOT NULL default '',
-  iso639_3 varchar(10) collate latin1_general_ci NOT NULL default '',
-  wikimedia_key varchar(10) collate latin1_general_ci NOT NULL default '',
+  iso639_2 varchar(10) collate utf8_bin NOT NULL default '',
+  iso639_3 varchar(10) collate utf8_bin NOT NULL default '',
+  wikimedia_key varchar(10) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (language_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO language (language_id,dialect_of_lid,iso639_2,iso639_3,wikimedia_key) VALUES 
  (84,0,'','','bg'),
@@ -68,7 +68,7 @@ CREATE TABLE language_names (
   language_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (language_id,name_language_id),
   KEY language_id (language_id)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO language_names (language_id,name_language_id,language_name) VALUES 
  (84,85,'Bulgarian'),
@@ -124,7 +124,7 @@ CREATE TABLE wikidata_sets (
   set_prefix varchar(20) default NULL,
   set_fallback_name varchar(255) default NULL,
   set_dmid int(10) default NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO wikidata_sets (set_prefix,set_fallback_name,set_dmid) VALUES 
  ('uw','OmegaWiki community',0),

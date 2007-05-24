@@ -9,14 +9,14 @@ CREATE TABLE `archive` (
   `ar_text` mediumblob NOT NULL,
   `ar_comment` tinyblob NOT NULL,
   `ar_user` int(5) unsigned NOT NULL default '0',
-  `ar_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL,
-  `ar_timestamp` char(14) character set latin1 collate latin1_bin NOT NULL default '',
+  `ar_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
+  `ar_timestamp` varchar(14) character set latin1 collate latin1_bin NOT NULL default '',
   `ar_minor_edit` tinyint(1) NOT NULL default '0',
   `ar_flags` tinyblob NOT NULL,
   `ar_rev_id` int(8) unsigned default NULL,
   `ar_text_id` int(8) unsigned default NULL,
   KEY `name_title_timestamp` (`ar_namespace`,`ar_title`,`ar_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `categorylinks`
@@ -31,7 +31,7 @@ CREATE TABLE `categorylinks` (
   UNIQUE KEY `cl_from` (`cl_from`,`cl_to`),
   KEY `cl_sortkey` (`cl_to`,`cl_sortkey`),
   KEY `cl_timestamp` (`cl_to`,`cl_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `externallinks`
@@ -45,7 +45,7 @@ CREATE TABLE `externallinks` (
   KEY `el_from` (`el_from`,`el_to`(40)),
   KEY `el_to` (`el_to`(60),`el_from`),
   KEY `el_index` (`el_index`(60))
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `filearchive`
@@ -71,14 +71,14 @@ CREATE TABLE `filearchive` (
   `fa_minor_mime` varchar(32) default 'unknown',
   `fa_description` tinyblob,
   `fa_user` int(5) unsigned default '0',
-  `fa_user_text` varchar(255) character set latin1 collate latin1_bin default NULL,
+  `fa_user_text` varchar(255) character set latin1 collate latin1_bin default '',
   `fa_timestamp` char(14) character set latin1 collate latin1_bin default '',
   PRIMARY KEY  (`fa_id`),
   KEY `fa_name` (`fa_name`,`fa_timestamp`),
   KEY `fa_storage_group` (`fa_storage_group`,`fa_storage_key`),
   KEY `fa_deleted_timestamp` (`fa_deleted_timestamp`),
   KEY `fa_deleted_user` (`fa_deleted_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `hitcounter`
@@ -86,8 +86,8 @@ CREATE TABLE `filearchive` (
 
 DROP TABLE IF EXISTS `hitcounter`;
 CREATE TABLE `hitcounter` (
-  `hc_id` int(10) unsigned NOT NULL
-) ENGINE=MEMORY DEFAULT CHARSET=latin1 MAX_ROWS=25000;
+  `hc_id` int(10) unsigned NOT NULL default '0'
+) ENGINE=MEMORY DEFAULT CHARSET=utf8 MAX_ROWS=25000;
 
 --
 -- Definition of table `image`
@@ -106,12 +106,12 @@ CREATE TABLE `image` (
   `img_minor_mime` varchar(32) NOT NULL default 'unknown',
   `img_description` tinyblob NOT NULL,
   `img_user` int(5) unsigned NOT NULL default '0',
-  `img_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL,
-  `img_timestamp` char(14) character set latin1 collate latin1_bin NOT NULL default '',
+  `img_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
+  `img_timestamp` varchar(14) character set latin1 collate latin1_bin NOT NULL default '',
   PRIMARY KEY  (`img_name`),
   KEY `img_size` (`img_size`),
   KEY `img_timestamp` (`img_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `imagelinks`
@@ -123,7 +123,7 @@ CREATE TABLE `imagelinks` (
   `il_to` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   UNIQUE KEY `il_from` (`il_from`,`il_to`),
   KEY `il_to` (`il_to`,`il_from`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `interwiki`
@@ -131,12 +131,12 @@ CREATE TABLE `imagelinks` (
 
 DROP TABLE IF EXISTS `interwiki`;
 CREATE TABLE `interwiki` (
-  `iw_prefix` char(32) NOT NULL,
-  `iw_url` char(127) NOT NULL,
-  `iw_local` tinyint(1) NOT NULL,
+  `iw_prefix` char(32) NOT NULL default '',
+  `iw_url` char(127) NOT NULL default '',
+  `iw_local` tinyint(1) NOT NULL default '0',
   `iw_trans` tinyint(1) NOT NULL default '0',
   UNIQUE KEY `iw_prefix` (`iw_prefix`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `interwiki`
@@ -348,17 +348,17 @@ CREATE TABLE `ipblocks` (
   `ipb_auto` tinyint(1) NOT NULL default '0',
   `ipb_anon_only` tinyint(1) NOT NULL default '0',
   `ipb_create_account` tinyint(1) NOT NULL default '1',
-  `ipb_enable_autoblock` tinyint(1) NOT NULL default '1',
   `ipb_expiry` char(14) character set latin1 collate latin1_bin NOT NULL default '',
   `ipb_range_start` tinyblob NOT NULL,
   `ipb_range_end` tinyblob NOT NULL,
+  `ipb_enable_autoblock` tinyint(1) NOT NULL default '1',
   PRIMARY KEY  (`ipb_id`),
-  UNIQUE KEY `ipb_address` (`ipb_address`(255),`ipb_user`,`ipb_auto`,`ipb_anon_only`),
+  UNIQUE KEY `ipb_address_unique` (`ipb_address`(255),`ipb_user`,`ipb_auto`),
   KEY `ipb_user` (`ipb_user`),
   KEY `ipb_range` (`ipb_range_start`(8),`ipb_range_end`(8)),
   KEY `ipb_timestamp` (`ipb_timestamp`),
   KEY `ipb_expiry` (`ipb_expiry`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `job`
@@ -373,7 +373,7 @@ CREATE TABLE `job` (
   `job_params` blob NOT NULL,
   PRIMARY KEY  (`job_id`),
   KEY `job_cmd` (`job_cmd`,`job_namespace`,`job_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `langlinks`
@@ -386,7 +386,7 @@ CREATE TABLE `langlinks` (
   `ll_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   UNIQUE KEY `ll_from` (`ll_from`,`ll_lang`),
   KEY `ll_lang` (`ll_lang`,`ll_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `logging`
@@ -394,9 +394,9 @@ CREATE TABLE `langlinks` (
 
 DROP TABLE IF EXISTS `logging`;
 CREATE TABLE `logging` (
-  `log_type` char(10) NOT NULL default '',
-  `log_action` char(10) NOT NULL default '',
-  `log_timestamp` char(14) NOT NULL default '19700101000000',
+  `log_type` varchar(10) NOT NULL default '',
+  `log_action` varchar(10) NOT NULL default '',
+  `log_timestamp` varchar(14) NOT NULL default '19700101000000',
   `log_user` int(10) unsigned NOT NULL default '0',
   `log_namespace` int(11) NOT NULL default '0',
   `log_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
@@ -408,7 +408,7 @@ CREATE TABLE `logging` (
   KEY `user_time` (`log_user`,`log_timestamp`),
   KEY `page_time` (`log_namespace`,`log_title`,`log_timestamp`),
   KEY `times` (`log_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `math`
@@ -416,13 +416,13 @@ CREATE TABLE `logging` (
 
 DROP TABLE IF EXISTS `math`;
 CREATE TABLE `math` (
-  `math_inputhash` varchar(16) NOT NULL,
-  `math_outputhash` varchar(16) NOT NULL,
-  `math_html_conservativeness` tinyint(1) NOT NULL,
+  `math_inputhash` varchar(16) NOT NULL default '',
+  `math_outputhash` varchar(16) NOT NULL default '',
+  `math_html_conservativeness` tinyint(1) NOT NULL default '0',
   `math_html` text,
   `math_mathml` text,
   UNIQUE KEY `math_inputhash` (`math_inputhash`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `namespace`
@@ -437,10 +437,10 @@ CREATE TABLE `namespace` (
   `ns_target` varchar(200) default NULL,
   `ns_parent` int(8) default NULL,
   `ns_hidden` tinyint(1) default NULL,
+  `ns_class` varchar(100) default NULL,
   `ns_count` tinyint(1) default NULL,
-  `ns_class` varchar(255) default '',
   PRIMARY KEY  (`ns_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `namespace`
@@ -481,7 +481,7 @@ CREATE TABLE `namespace_names` (
   `ns_canonical` tinyint(1) default NULL,
   UNIQUE KEY `ns_name` (`ns_name`),
   KEY `ns_id` (`ns_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `namespace_names`
@@ -523,12 +523,27 @@ INSERT INTO `namespace_names` (`ns_id`,`ns_name`,`ns_default`,`ns_canonical`) VA
 
 DROP TABLE IF EXISTS `objectcache`;
 CREATE TABLE `objectcache` (
-  `keyname` char(255) character set latin1 collate latin1_bin NOT NULL default '',
+  `keyname` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   `value` mediumblob,
   `exptime` datetime default NULL,
   UNIQUE KEY `keyname` (`keyname`),
   KEY `exptime` (`exptime`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Table structure for table `objects`
+--
+
+DROP TABLE IF EXISTS `objects`;
+CREATE TABLE `objects` (
+  `object_id` int(11) NOT NULL auto_increment,
+  `table` varchar(100) collate latin1_general_ci NOT NULL,
+  `original_id` int(11) default NULL,
+  `UUID` varchar(36) collate latin1_general_ci NOT NULL,
+  PRIMARY KEY  (`object_id`),
+  KEY `table` (`table`),
+  KEY `original_id` (`original_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `oldimage`
@@ -544,10 +559,10 @@ CREATE TABLE `oldimage` (
   `oi_bits` int(3) NOT NULL default '0',
   `oi_description` tinyblob NOT NULL,
   `oi_user` int(5) unsigned NOT NULL default '0',
-  `oi_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL,
-  `oi_timestamp` char(14) character set latin1 collate latin1_bin NOT NULL default '',
+  `oi_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
+  `oi_timestamp` varchar(14) character set latin1 collate latin1_bin NOT NULL default '',
   KEY `oi_name` (`oi_name`(10))
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `page`
@@ -555,22 +570,22 @@ CREATE TABLE `oldimage` (
 
 DROP TABLE IF EXISTS `page`;
 CREATE TABLE `page` (
-  `page_id` int(8) unsigned NOT NULL auto_increment,
-  `page_namespace` int(11) NOT NULL,
-  `page_title` varchar(255) character set latin1 collate latin1_bin NOT NULL,
-  `page_restrictions` tinyblob NOT NULL,
+  `page_id` int(10) unsigned NOT NULL auto_increment,
+  `page_namespace` int(11) NOT NULL default '0',
+  `page_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
+  `page_restrictions` tinyblob,
   `page_counter` bigint(20) unsigned NOT NULL default '0',
   `page_is_redirect` tinyint(1) unsigned NOT NULL default '0',
   `page_is_new` tinyint(1) unsigned NOT NULL default '0',
-  `page_random` double unsigned NOT NULL,
-  `page_touched` char(14) character set latin1 collate latin1_bin NOT NULL default '',
-  `page_latest` int(8) unsigned NOT NULL,
-  `page_len` int(8) unsigned NOT NULL,
+  `page_random` double unsigned NOT NULL default '0',
+  `page_touched` varchar(14) character set latin1 collate latin1_bin NOT NULL default '',
+  `page_latest` int(8) unsigned NOT NULL default '0',
+  `page_len` int(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`page_id`),
-  UNIQUE KEY `name_title` (`page_namespace`,`page_title`),
   KEY `page_random` (`page_random`),
-  KEY `page_len` (`page_len`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  KEY `page_len` (`page_len`),
+  KEY `name_title` (`page_namespace`,`page_title`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `page`
@@ -594,14 +609,12 @@ CREATE TABLE `page_restrictions` (
   `pr_cascade` tinyint(4) NOT NULL,
   `pr_user` int(8) default NULL,
   `pr_expiry` char(14) character set latin1 collate latin1_bin default NULL,
-  `pr_id` int(10) unsigned NOT NULL auto_increment,
   PRIMARY KEY  (`pr_page`,`pr_type`),
-  UNIQUE KEY `pr_id` (`pr_id`),
   KEY `pr_page` (`pr_page`),
   KEY `pr_typelevel` (`pr_type`,`pr_level`),
   KEY `pr_level` (`pr_level`),
   KEY `pr_cascade` (`pr_cascade`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `pagelinks`
@@ -614,7 +627,7 @@ CREATE TABLE `pagelinks` (
   `pl_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   UNIQUE KEY `pl_from` (`pl_from`,`pl_namespace`,`pl_title`),
   KEY `pl_namespace` (`pl_namespace`,`pl_title`,`pl_from`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `querycache`
@@ -622,12 +635,12 @@ CREATE TABLE `pagelinks` (
 
 DROP TABLE IF EXISTS `querycache`;
 CREATE TABLE `querycache` (
-  `qc_type` char(32) NOT NULL,
+  `qc_type` char(32) NOT NULL default '',
   `qc_value` int(5) unsigned NOT NULL default '0',
   `qc_namespace` int(11) NOT NULL default '0',
   `qc_title` char(255) character set latin1 collate latin1_bin NOT NULL default '',
   KEY `qc_type` (`qc_type`,`qc_value`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `querycache_info`
@@ -638,7 +651,7 @@ CREATE TABLE `querycache_info` (
   `qci_type` varchar(32) NOT NULL default '',
   `qci_timestamp` char(14) NOT NULL default '19700101000000',
   UNIQUE KEY `qci_type` (`qci_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `querycachetwo`
@@ -655,7 +668,7 @@ CREATE TABLE `querycachetwo` (
   KEY `qcc_type` (`qcc_type`,`qcc_value`),
   KEY `qcc_title` (`qcc_type`,`qcc_namespace`,`qcc_title`),
   KEY `qcc_titletwo` (`qcc_type`,`qcc_namespacetwo`,`qcc_titletwo`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `recentchanges`
@@ -663,11 +676,11 @@ CREATE TABLE `querycachetwo` (
 
 DROP TABLE IF EXISTS `recentchanges`;
 CREATE TABLE `recentchanges` (
-  `rc_id` int(8) NOT NULL auto_increment,
+  `rc_id` int(8) unsigned NOT NULL auto_increment,
   `rc_timestamp` varchar(14) character set latin1 collate latin1_bin NOT NULL default '',
   `rc_cur_time` varchar(14) character set latin1 collate latin1_bin NOT NULL default '',
   `rc_user` int(10) unsigned NOT NULL default '0',
-  `rc_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL,
+  `rc_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   `rc_namespace` int(11) NOT NULL default '0',
   `rc_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   `rc_comment` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
@@ -681,7 +694,7 @@ CREATE TABLE `recentchanges` (
   `rc_moved_to_ns` tinyint(3) unsigned NOT NULL default '0',
   `rc_moved_to_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   `rc_patrolled` tinyint(3) unsigned NOT NULL default '0',
-  `rc_ip` char(15) NOT NULL default '',
+  `rc_ip` varchar(15) NOT NULL default '',
   `rc_old_len` int(10) default NULL,
   `rc_new_len` int(10) default NULL,
   PRIMARY KEY  (`rc_id`),
@@ -692,7 +705,7 @@ CREATE TABLE `recentchanges` (
   KEY `rc_ip` (`rc_ip`),
   KEY `rc_ns_usertext` (`rc_namespace`,`rc_user_text`),
   KEY `rc_user_text` (`rc_user_text`,`rc_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `redirect`
@@ -705,7 +718,7 @@ CREATE TABLE `redirect` (
   `rd_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   PRIMARY KEY  (`rd_from`),
   KEY `rd_ns_title` (`rd_namespace`,`rd_title`,`rd_from`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
 --
@@ -715,12 +728,12 @@ CREATE TABLE `redirect` (
 DROP TABLE IF EXISTS `revision`;
 CREATE TABLE `revision` (
   `rev_id` int(8) unsigned NOT NULL auto_increment,
-  `rev_page` int(8) unsigned NOT NULL,
-  `rev_text_id` int(8) unsigned NOT NULL,
+  `rev_page` int(8) unsigned NOT NULL default '0',
+  `rev_text_id` int(8) unsigned NOT NULL default '0',
   `rev_comment` tinyblob NOT NULL,
   `rev_user` int(5) unsigned NOT NULL default '0',
   `rev_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
-  `rev_timestamp` char(14) character set latin1 collate latin1_bin NOT NULL default '',
+  `rev_timestamp` varchar(14) character set latin1 collate latin1_bin NOT NULL default '',
   `rev_minor_edit` tinyint(1) unsigned NOT NULL default '0',
   `rev_deleted` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`rev_page`,`rev_id`),
@@ -729,7 +742,7 @@ CREATE TABLE `revision` (
   KEY `page_timestamp` (`rev_page`,`rev_timestamp`),
   KEY `user_timestamp` (`rev_user`,`rev_timestamp`),
   KEY `usertext_timestamp` (`rev_user_text`,`rev_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `revision`
@@ -747,13 +760,13 @@ INSERT INTO `revision` (`rev_id`,`rev_page`,`rev_text_id`,`rev_comment`,`rev_use
 
 DROP TABLE IF EXISTS `searchindex`;
 CREATE TABLE `searchindex` (
-  `si_page` int(8) unsigned NOT NULL,
+  `si_page` int(8) unsigned NOT NULL default '0',
   `si_title` varchar(255) NOT NULL default '',
   `si_text` mediumtext NOT NULL,
   UNIQUE KEY `si_page` (`si_page`),
   FULLTEXT KEY `si_title` (`si_title`),
   FULLTEXT KEY `si_text` (`si_text`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `site_stats`
@@ -761,7 +774,7 @@ CREATE TABLE `searchindex` (
 
 DROP TABLE IF EXISTS `site_stats`;
 CREATE TABLE `site_stats` (
-  `ss_row_id` int(8) unsigned NOT NULL,
+  `ss_row_id` int(8) unsigned NOT NULL default '0',
   `ss_total_views` bigint(20) unsigned default '0',
   `ss_total_edits` bigint(20) unsigned default '0',
   `ss_good_articles` bigint(20) unsigned default '0',
@@ -770,7 +783,7 @@ CREATE TABLE `site_stats` (
   `ss_admins` int(10) default '-1',
   `ss_images` int(10) default '0',
   UNIQUE KEY `ss_row_id` (`ss_row_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `site_stats`
@@ -793,7 +806,7 @@ CREATE TABLE `templatelinks` (
   `tl_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   UNIQUE KEY `tl_from` (`tl_from`,`tl_namespace`,`tl_title`),
   KEY `tl_namespace` (`tl_namespace`,`tl_title`,`tl_from`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `text`
@@ -803,9 +816,9 @@ DROP TABLE IF EXISTS `text`;
 CREATE TABLE `text` (
   `old_id` int(8) unsigned NOT NULL auto_increment,
   `old_text` mediumblob NOT NULL,
-  `old_flags` tinyblob NOT NULL,
+  `old_flags` tinyblob,
   PRIMARY KEY  (`old_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `text`
@@ -823,15 +836,15 @@ INSERT INTO `text` (`old_id`,`old_text`,`old_flags`) VALUES
 
 DROP TABLE IF EXISTS `trackbacks`;
 CREATE TABLE `trackbacks` (
-  `tb_id` int(11) NOT NULL auto_increment,
+  `tb_id` int(11) NOT NULL default '0',
   `tb_page` int(11) default NULL,
-  `tb_title` varchar(255) NOT NULL,
-  `tb_url` varchar(255) NOT NULL,
+  `tb_title` varchar(255) NOT NULL default '',
+  `tb_url` varchar(255) NOT NULL default '',
   `tb_ex` text,
   `tb_name` varchar(255) default NULL,
   PRIMARY KEY  (`tb_id`),
   KEY `tb_page` (`tb_page`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `transcache`
@@ -839,11 +852,11 @@ CREATE TABLE `trackbacks` (
 
 DROP TABLE IF EXISTS `transcache`;
 CREATE TABLE `transcache` (
-  `tc_url` varchar(255) NOT NULL,
+  `tc_url` varchar(255) NOT NULL default '',
   `tc_contents` text,
-  `tc_time` int(11) NOT NULL,
+  `tc_time` int(11) NOT NULL default '0',
   UNIQUE KEY `tc_url_idx` (`tc_url`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `user`
@@ -851,25 +864,25 @@ CREATE TABLE `transcache` (
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
-  `user_id` int(5) unsigned NOT NULL auto_increment,
+  `user_id` int(8) unsigned NOT NULL auto_increment,
   `user_name` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   `user_real_name` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   `user_password` tinyblob NOT NULL,
   `user_newpassword` tinyblob NOT NULL,
-  `user_newpass_time` char(14) character set latin1 collate latin1_bin default NULL,
   `user_email` tinytext NOT NULL,
   `user_options` blob NOT NULL,
-  `user_touched` char(14) character set latin1 collate latin1_bin NOT NULL default '',
-  `user_token` char(32) character set latin1 collate latin1_bin NOT NULL default '',
-  `user_email_authenticated` char(14) character set latin1 collate latin1_bin default NULL,
-  `user_email_token` char(32) character set latin1 collate latin1_bin default NULL,
-  `user_email_token_expires` char(14) character set latin1 collate latin1_bin default NULL,
+  `user_touched` varchar(14) character set latin1 collate latin1_bin NOT NULL default '',
+  `user_token` varchar(32) character set latin1 collate latin1_bin NOT NULL default '',
+  `user_email_authenticated` varchar(14) character set latin1 collate latin1_bin default NULL,
+  `user_email_token` varchar(32) character set latin1 collate latin1_bin default NULL,
+  `user_email_token_expires` varchar(14) character set latin1 collate latin1_bin default NULL,
   `user_registration` char(14) character set latin1 collate latin1_bin default NULL,
+  `user_newpass_time` char(14) character set latin1 collate latin1_bin default NULL,
   `user_editcount` int(11) default NULL,
   PRIMARY KEY  (`user_id`),
   UNIQUE KEY `user_name` (`user_name`),
   KEY `user_email_token` (`user_email_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
@@ -891,7 +904,7 @@ CREATE TABLE `user_groups` (
   `ug_group` char(16) NOT NULL default '',
   PRIMARY KEY  (`ug_user`,`ug_group`),
   KEY `ug_group` (`ug_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_groups`
@@ -914,7 +927,7 @@ CREATE TABLE `user_newtalk` (
   `user_ip` varchar(40) NOT NULL default '',
   KEY `user_id` (`user_id`),
   KEY `user_ip` (`user_ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `watchlist`
@@ -922,10 +935,10 @@ CREATE TABLE `user_newtalk` (
 
 DROP TABLE IF EXISTS `watchlist`;
 CREATE TABLE `watchlist` (
-  `wl_user` int(5) unsigned NOT NULL,
+  `wl_user` int(5) unsigned NOT NULL default '0',
   `wl_namespace` int(11) NOT NULL default '0',
   `wl_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   `wl_notificationtimestamp` varchar(14) character set latin1 collate latin1_bin default NULL,
   UNIQUE KEY `wl_user` (`wl_user`,`wl_namespace`,`wl_title`),
   KEY `namespace_title` (`wl_namespace`,`wl_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
