@@ -120,7 +120,7 @@ class Thread {
 	 * 	
 	*/
 	function setSuperthread($thread) {
-		$this->superthread = $thread->id();
+		$this->superthreadId = $thread->id();
 		$this->updateRecord();
 	}
 	

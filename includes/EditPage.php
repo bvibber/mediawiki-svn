@@ -45,6 +45,20 @@ class EditPage {
 	public $editFormTextAfterTools;
 	public $editFormTextBottom;
 
+	
+	##### LQT HACK
+	
+	var $didRedirect = false;
+	var $didSave = false;
+	
+	/** @param $action string URL that the form will submit to. */
+    function setAction($action) {
+            $this->mAction = $action;
+    }
+	
+	##### END
+
+
 	/**
 	 * @todo document
 	 * @param $article
@@ -723,6 +737,7 @@ class EditPage {
 			# Don't save a new article if it's blank.
 			if ( ( '' == $this->textbox1 ) ) {
 					$wgOut->redirect( $this->mTitle->getFullURL() );
+					$this->didRedirect = true; # LQT HACK
 					wfProfileOut( $fname );
 					return false;
 			}
@@ -1034,9 +1049,14 @@ class EditPage {
 		if ( $ew ) $ew = " style=\"width:100%\"";
 		else $ew = '';
 
-		$q = 'action=submit';
-		#if ( "no" == $redirect ) { $q .= "&redirect=no"; }
-		$action = $this->mTitle->escapeLocalURL( $q );
+        if ($this->mAction) {
+			$action = $this->mAction; ### LQT HACK
+        } else {
+			$q = 'action=submit';
+			#if ( "no" == $redirect ) { $q .= "&redirect=no"; }
+			$action = $this->mTitle->escapeLocalURL( $q );
+        }
+
 
 		$summary = wfMsg('summary');
 		$subject = wfMsg('subject');

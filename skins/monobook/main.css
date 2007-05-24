@@ -9,6 +9,146 @@
 ** All you guys rock :)
 */
 
+
+
+.bordered {
+  border: solid 1px #ddd;
+  margin: 2em;
+}
+
+/*ul {
+	line-height: 1.5em;
+	list-style-type: square;
+	margin: .3em 0 0 1.5em;
+	padding: 0;
+	list-style-image: url(bullet.gif);
+}
+ol {
+	line-height: 1.5em;
+	margin: .3em 0 0 3.2em;
+	padding: 0;
+	list-style-image: none;
+}
+li {
+	margin-bottom: .1em;
+}*/
+
+#lqt_archive_hide_show {
+        display: block;
+}
+
+#lqt_archive_toc {
+        display: none;
+}
+
+.lqt_thread {
+//        display: none;
+}
+
+.lqt_thread_disclosure_triangle {
+        margin-right: 4pt;
+}
+
+.lqt_archive_browser {
+        margin-top: 1em;
+	margin-bottom: 1em;
+}
+
+.lqt_deleted_notice {
+       color: #999;
+       font-style: italic;
+}
+
+.lqt_deleted_notice a {
+	 color: #5874d1;
+}
+.lqt_deleted_notice a:visited {
+	color: #937cba;
+}
+.lqt_deleted_notice a:active {
+	color: #faa700;
+}     
+}
+
+.lqt_channel_body {
+        background-color: white;
+}
+
+.ns-98 #content {
+        background-color: white;
+}
+
+.lqt_post { border: solid 1px #ddd; margin-top: 0.1in; padding: 0.2em; }
+
+.lqt_post_highlight { border: solid 1px #fabd23; margin-top: 0.1in; padding: 0.2em; }
+
+.lqt_replies { margin-left: 0.25in; }
+
+.lqt_footer {
+         margin: 0.5em 0 0em 0 ;
+         font-size: smaller;
+         color: #777;
+}
+
+.lqt_footer li {
+         display: inline;
+         list-style-type: none;
+         padding-right: 0.6em;
+}
+
+.lqt_topic_field { 
+         margin-top: 0.5em;
+         margin-bottom: 0.5em;
+ }
+
+.lqt_post .lqt_footer a {
+	color: #5874d1;
+}
+.lqt_post .lqt_footer a:visited {
+	color: #937cba;
+}
+.lqt_post .lqt_footer a:active {
+	color: #faa700;
+}
+.lqt_post .lqt_footer a.stub {
+	color: #a66e7a;
+}
+.lqt_post .lqt_footer a.new, #p-personal a.new {
+	color: #d25858;
+}
+.lqt_post .lqt_footer a.new:visited, #p-personal a.new:visited {
+	color: #c49292;
+}
+
+.lqt_post:hover .lqt_footer {
+        color: black;
+}
+
+.lqt_post:hover {
+        border-color: #aaa;
+}
+
+.lqt_post:hover a {
+	color: #002bb8;
+}
+.lqt_post:hover a:visited {
+	color: #5a3696;
+}
+.lqt_post:hover .lqt_footer a:active {
+	color: #faa700;
+}
+.lqt_post:hover a.stub {
+	color: #772233;
+}
+.lqt_post:hover a.new, #p-personal a.new {
+	color: #ba0000;
+}
+.lqt_post:hover a.new:visited, #p-personal a.new:visited {
+	color: #a55858;
+}
+
+
+
 /**
  * Stylesheet for screen/projection.  All rules not marked media-specific are
  * shared with handheld.css and should be updated in tandem.  The rules can't

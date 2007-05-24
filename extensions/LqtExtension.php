@@ -13,6 +13,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 else {
 
+/** database ID of post to edit. */
+define('LQT_COMMAND_EDIT_POST', 'lqt_edit_post');
+/** database ID of post to reply to */
+define('LQT_COMMAND_REPLY_TO_POST', 'lqt_reply_to');
+
 require_once('LqtModel.php');
 
 class LqtDispatch {
@@ -36,12 +41,14 @@ class LqtView {
 	protected $output;
 	protected $user;
 	protected $title;
+	protected $request;
 	
 	function __construct(&$output, &$article, &$title, &$user, &$request) {
 		$this->article = $article;
 		$this->output = $output;
 		$this->user = $user;
 		$this->title = $title;
+		$this->request = $request;
 	}
 	
 
@@ -74,8 +81,8 @@ class LqtView {
 		@return true if the value of the give query variable name is equal to the given post's ID.
 	*/
 	function commandApplies( $command, $post ) {
-		global $wgRequest;
-		return $wgRequest->getInt($command) == $post->getID();
+		
+		return $this->request->getInt($command) == $post->getID();
 	}
 	
 	/*************************
@@ -83,16 +90,16 @@ class LqtView {
 	*************************/
 
 	function openDiv( $class = null ) {
-		global $wgOut;
+		
 		if ( $class )
-			$wgOut->addHTML( wfOpenElement( 'div', array('class'=>$class) ) );
+			$this->output->addHTML( wfOpenElement( 'div', array('class'=>$class) ) );
 		else
-			$wgOut->addHTML( wfOpenElement( 'div') );
+			$this->output->addHTML( wfOpenElement( 'div') );
 	}
 
 	function closeDiv() {
-		global $wgOut;
-		$wgOut->addHTML( wfCloseElement( 'div' ) );
+		
+		$this->output->addHTML( wfCloseElement( 'div' ) );
 	}
 
 	/*******************************
@@ -100,100 +107,100 @@ class LqtView {
 	*******************************/
 
 	function showNewThreadForm() {
-		global $wgOut;
-		$wgOut->addHTML('<p>new thread form</p>');
+		$this->output->addHTML('<p>new thread form</p>');
 	}
 
 	function showPostEditingForm( $post ) {
-		global $wgRequest;
-		$pp = new PostProxy( $post, $wgRequest );
+		$pp = new PostProxy( $post, $this->request );
 		$this->showEditingFormInGeneral( $pp, 'editExisting', $post->getID() );
 	}
 
 	function showReplyForm( $post ) {
-		global $wgRequest;
-		$pp = new PostProxy( null, $wgRequest );
+		$pp = new PostProxy( null, $this->request );
 		$this->showEditingFormInGeneral( $pp, 'reply', $post->getID() );
 	}
 
 	function showEditingFormInGeneral( $post_proxy, $edit_type, $edit_applies_to ) {
-		global $wgOut, $wgRequest;
 
 		$pp = $post_proxy;
 		
-		if ( $pp->submittedPreview() ) {
-			$wgOut->addHTML("THIS IS ONLY A PREVIEW, FOO");
-			$wgOut->addWikiText( $pp->content() );
+		$this->output->addHTML("<p>Doing an $edit_type to $edit_applies_to.");
+		
+		// this only works for editing because we refer to the article directly.
+		
+		var_dump($pp->article->);
+		$e = new EditPage($pp->article);
+		$e->setAction( $this->title->getFullURL( "lqt_editing={$pp->article->getID()}" ) );
+
+/*		if ( $p->thread()->firstPost()->getID() == $p->getID() ) {
+			// This is the thread's root post; display topic field.
+			ThreadView::$callbackpost = $p;
+			ThreadView::$callbackeditpage = $e;
+			$e->formCallback = array('ThreadView', 'topicCallback');
+		}*/
+
+		$e->edit();
+
+		// Override what happens in EditPage::showEditForm, called from $e->edit():
+//		$wgOut->setArticleRelated( false ); 
+		$this->output->setArticleFlag( false );
+
+		// Override editpage's redirect.
+		if ($e->didRedirect) {
+			$t = $p->getTitle()->getPartialURL();
+			$wgOut->redirect( $this->title->getFullURL( "lqt_highlight=$t#lqt_post_$t" ) );
 		}
-		
-		$fields = array( array( 'type' => 'textarea',
-		                        'name' => 'content',
-		                        'value'=>$pp->content() ),
-		 		         array( 'type'=>'input',
-		                        'name'=>'summary',
-		                        'value'=>$pp->summary() ),
-		                 array( 'type'=>'hidden',
-		                        'name'=>'editType',
-								'value'=>$edit_type),
-						 array( 'type'=>'hidden',
-			                    'name'=>'editAppliesTo',
-								'value'=>$edit_applies_to),
- 						 array( 'type'=>'submit',
-						        'name'=>'save',
-								'label'=>'Save'),
-		                 array( 'type'=>'submit',
-						        'name'=>'preview',
-								'label'=>'Preview')
-						);
-		$f = new Form( $fields, 'POST', $wgRequest->getFullRequestURL() );
-		$wgOut->addHTML( $f->html() );
-		
-		$wgOut->addHTML( wfElement( 'a', array( 'href'=>$this->selflink()), 'Cancel' ) );
+
+/*		// Save new topic line if there is one:
+		if ( $e->mDidSave && $wgRequest->getVal('lqt_topic') ) {
+			$v = Sanitizer::stripAllTags($wgRequest->getVal('lqt_topic'));
+			$p->setSubject($v);
+		}*/
 	}
 
 	function showPostBody( $post ) {
-		global $wgOut, $wgUser, $wgEnableParserCache;
+		global $wgEnableParserCache;
 
 		// Should the parser cache be used?
 		$pcache = $wgEnableParserCache &&
-		intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
-				$post->exists() &&
-				empty( $oldid ); // FIXME oldid
+		          intval( $this->user->getOption( 'stubthreshold' ) ) == 0 &&
+		          $post->exists() &&
+		          empty( $oldid ); // FIXME oldid
 		wfDebug( 'LqtView::showPostBody using parser cache: ' . ($pcache ? 'yes' : 'no' ) . "\n" );
-		if ( $wgUser->getOption( 'stubthreshold' ) ) {
+		if ( $this->user->getOption( 'stubthreshold' ) ) {
 			wfIncrStats( 'pcache_miss_stub' );
 		}
 
 		$outputDone = false;
 		if ( $pcache ) {
-			$outputDone = $wgOut->tryParserCache( $post, $wgUser );
+			$outputDone = $this->output->tryParserCache( $post, $this->user );
 		}
 
 		if (!$outputDone) {
 			// Cache miss; parse and output it.
 			$rev = Revision::newFromTitle( $post->getTitle() );
-			$wgOut->addWikiText( $rev->getText() );
+			$this->output->addWikiText( $rev->getText() );
 		}
 	}
 
 	function showPostCommands( $post ) {
-		global $wgOut;
+		
 		$commands = array( 'Edit' => $this->selflink( array( LQT_COMMAND_EDIT_POST => $post->getID() ) ),
 						   'Reply' => $this->selflink( array( LQT_COMMAND_REPLY_TO_POST => $post->getID() ) ));
 						
-		$wgOut->addHTML(wfOpenElement('ul', array('class'=>'lqt_footer')));
+		$this->output->addHTML(wfOpenElement('ul', array('class'=>'lqt_footer')));
 		
 		foreach( $commands as $label => $href ) {
-			$wgOut->addHTML( wfOpenElement( 'li' ) );
-			$wgOut->addHTML( wfElement('a', array('href'=>$href), $label) );
-			$wgOut->addHTML( wfCloseElement( 'li' ) );
+			$this->output->addHTML( wfOpenElement( 'li' ) );
+			$this->output->addHTML( wfElement('a', array('href'=>$href), $label) );
+			$this->output->addHTML( wfCloseElement( 'li' ) );
 		}
 		
-		$wgOut->addHTML(wfCloseELement('ul'));
+		$this->output->addHTML(wfCloseELement('ul'));
 	}
 
 	function showPost( $post ) {
-		global $wgOut;
+		
 		$this->openDiv( 'lqt_post' );
 		
 		if( $this->commandApplies( LQT_COMMAND_EDIT_POST, $post ) ) {
@@ -213,13 +220,13 @@ class LqtView {
 	}
 
 	function showThreadHeading( $thread ) {
-		global $wgOut;
+		
 		if ( $thread->hasSubject() )
-		$wgOut->addHTML( wfElement( "h{$this->headerLevel}", null, $thread->subject() ) );
+			$this->output->addHTML( wfElement( "h{$this->headerLevel}", null, $thread->subject() ) );
 	}
 
 	function showThread( $thread ) {
-		global $wgOut;
+		
 
 		$this->showThreadHeading( $thread );
 		$this->showPost( $thread->rootPost() );
@@ -231,36 +238,31 @@ class LqtView {
 	}
 
 	function indent() {
-		global $wgOut;
-		$wgOut->addHTML( wfOpenElement( 'dl', array('class'=>'lqt_replies') ) );
-		$wgOut->addHTML( wfOpenElement( 'dd') );
+		
+		$this->output->addHTML( wfOpenElement( 'dl', array('class'=>'lqt_replies') ) );
+		$this->output->addHTML( wfOpenElement( 'dd') );
 		$this->headerLevel += 1;
 	}
 	function unindent() {
-		global $wgOut;
-		$wgOut->addHTML( wfCloseElement( 'dd') );
-		$wgOut->addHTML( wfCloseElement( 'dl') );
+		
+		$this->output->addHTML( wfCloseElement( 'dd') );
+		$this->output->addHTML( wfCloseElement( 'dl') );
 		$this->headerLevel -= 1;
 	}
 }
 
 class TalkpageView extends LqtView {
-	
 	function show() {
+		$this->output->setPageTitle( "Talk:" . $this->title->getText() );
+		
 		$threads = Thread::allThreadsOfArticle($this->article);
 		foreach($threads as $t) {
-			Thread::walk( $t, array($this,'showThread'),
+			$this->showThread($t);
+/*			Thread::walk( $t, array($this,'showThread'),
 			                  array($this,'indent'),
-			                  array($this,'unindent'));
+			                  array($this,'unindent'));*/
 		}
 	}
-	/*
-	function showThread($t) {
-		$this->output->addHTML($t->subject());
-		$this->showPost($t->rootPost());
-	}
-	function indent() {}
-	function unindent() {}*/
 }
 
 
