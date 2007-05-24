@@ -4,7 +4,7 @@ require_once("Attribute.php");
 require_once("Record.php");
 require_once("RecordSet.php");
 
-define (SORT_IMAGE, ' <image src="skins/common/images/sort_none.gif"></image>');
+define (SORT_IMAGE, ' <img src="skins/common/images/sort_none.gif"></img>');
 
 function parityClass($value) {
 	if ($value % 2 == 0)
