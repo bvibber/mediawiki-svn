@@ -16,7 +16,7 @@ function wfSpecialSuggest() {
 				$wgOut,	$IP;
 
 			$wgOut->disable();
-			
+			wfDebug("]]]Are we being called at all? \n");
 			require_once("$IP/includes/Setup.php");
 			require_once("Attribute.php");
 			require_once("RecordSet.php");
@@ -26,6 +26,7 @@ function wfSpecialSuggest() {
 			require_once("Transaction.php");
 			require_once("OmegaWikiEditors.php");
 			require_once("Wikidata.php");
+			echo getSuggestions();
 		}
 	}
 	
@@ -35,6 +36,7 @@ function wfSpecialSuggest() {
 
 function getSuggestions() {
 
+	wfDebug("]]]Are we doing getSuggestions? \n");
 	global $idAttribute;
 	global $wgUser;
 	$dc=wdGetDataSetContext();	
@@ -134,7 +136,7 @@ function getSuggestions() {
 	$sql .= "10";
 	
 	# == Actual query here
-	#wfdebug("]]]".$sql."\n");
+	wfdebug("]]]".$sql."\n");
 	$queryResult = $dbr->query($sql);
 	
 	$idAttribute = new Attribute("id", "ID", "id");
@@ -173,7 +175,10 @@ function getSuggestions() {
 			break;
 	}
 	
-	return $editor->view(new IdStack($prefix . 'table'), $recordSet);
+	$output=$editor->view(new IdStack($prefix . 'table'), $recordSet);
+	//$output="<table><tr><td>HELLO ERIK!</td></tr></table>";
+	//wfDebug($output);
+	return $output;
 }
 
 # Constructs a new SQL query from 2 other queries such that if a field exists
@@ -286,7 +291,7 @@ function getSQLForCollectionOfType($collectionType, $language="<ANY>") {
 }
 
 function getSQLForCollection($language="<ANY>") {
-	$dc=$wdGetDataSetContext();
+	$dc=wdGetDataSetContext();
 	$sql = 
 			"SELECT collection_id, spelling ".
 	    		" FROM {$dc}_expression_ns, {$dc}_collection_ns, {$dc}_syntrans " .

@@ -29,6 +29,15 @@ function getSuggestPrefix(node, postFix) {
 	return stripSuffix(nodeId, postFix);
 }
 
+function leftTrim(sString) {
+	while (sString.substring(0,1) == ' ' || sString.substring(0,1) == "\n") {
+			sString = sString.substring(1, sString.length);
+		}
+	return sString;
+}
+
+
+
 function updateSuggestions(suggestPrefix) {
 	var http = getHTTPObject();
 	var table = document.getElementById(suggestPrefix + "table");
@@ -61,13 +70,14 @@ function updateSuggestions(suggestPrefix) {
 			'&objectId=' + encodeURI(suggestObjectId.value);
 
 	http.open('GET', URL, true);
-
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
 			var newTable = document.createElement('div');
 
 			if (http.responseText != '') {
-				newTable.innerHTML = http.responseText;
+				newTable.innerHTML = leftTrim(http.responseText);
+				//alert(">>"+http.responseText+"<<");
+				//newTable.innerHTML = "<table><tr><td>HELLO WORLD!</td></tr></table>";
 				table.parentNode.replaceChild(newTable.firstChild, table);
 			}
 
