@@ -55,8 +55,12 @@ function ReadSQLFile( $database, $pattern, $prefix, $filename ){
 	return true;
 }
 
-$dbclass = 'Database' . ucfirst( $wgDBtype ) ;
-$comment = '';
+$dbclass  = 'Database' . ucfirst( $wgDBtype ) ;
+$comment  = '';
+$database = $wgDBname;
+$user     = $wgDBadminuser;
+$password = $wgDBadminpassword;
+$server   = $wgDBserver;
 
 # Parse arguments
 for( $arg = reset( $argv ); $arg !== false; $arg = next( $argv ) ) {
@@ -65,10 +69,22 @@ for( $arg = reset( $argv ); $arg !== false; $arg = next( $argv ) ) {
 		$wgWDprefix = $prefix . "_";
 	}
 	else if ( substr( $arg, 0, 9 ) == '-template' ) {
-			$wgWDtemplate = next( $argv );
+		$wgWDtemplate = next( $argv );
 	}
 	else if ( substr( $arg, 0, 8 ) == '-comment' ) {
 		$comment = next( $argv );
+	}
+	else if ( substr( $arg, 0, 7 ) == '-server' ) {
+		$server = next( $argv );
+	}
+	else if ( substr( $arg, 0, 9 ) == '-database' ) {
+		$database = next( $argv );
+	}
+	else if ( substr( $arg, 0, 5 ) == '-user' ) {
+		$user = next( $argv );
+	}
+	else if ( substr( $arg, 0, 9 ) == '-password' ) {
+		$password = next( $argv );
 	} else {
 		$args[] = $arg;
 	}
@@ -76,20 +92,20 @@ for( $arg = reset( $argv ); $arg !== false; $arg = next( $argv ) ) {
 
 if ( !isset( $wgWDtemplate ) ){
 	echo( "SQL template should be provided!");
-	echo( "usage: create wikidata.php -prefix <prefix> -template <sql template> [-comment '<comment line>']");
+	echo( "usage: create wikidata.php -prefix <prefix> -template <sql template> [-comment '<comment line>' -server <server> -database <database> -user <username> -password <password>]");
 	exit();
 }
 
 if ( !isset( $wgWDprefix ) ){
 	echo( "database prefix should be provided!");
-	echo( "usage: create wikidata.php -prefix <prefix> -template <sql template> [-comment '<comment line>']");
+	echo( "usage: create wikidata.php -prefix <prefix> -template <sql template> [-comment '<comment line>' -database <database> -user <username> -password <password>]");
 	exit();
 }
 
 # Do a pre-emptive check to ensure we've got credentials supplied
 # We can't, at this stage, check them, but we can detect their absence,
 # which seems to cause most of the problems people whinge about
-if( !isset( $wgDBadminuser ) || !isset( $wgDBadminpassword ) ) {
+if( !isset( $user ) || !isset( $password ) ) {
 	echo( "No superuser credentials could be found. Please provide the details\n" );
 	echo( "of a user with appropriate permissions to update the database. See\n" );
 	echo( "AdminSettings.sample for more details.\n\n" );
@@ -98,7 +114,7 @@ if( !isset( $wgDBadminuser ) || !isset( $wgDBadminpassword ) ) {
 
 # Attempt to connect to the database as a privileged user
 # This will vomit up an error if there are permissions problems
-$wdDatabase = new $dbclass( $wgDBserver, $wgDBadminuser, $wgDBadminpassword, $wgDBname, 1 );
+$wdDatabase = new $dbclass( $server, $user, $password, $database, 1 );
 
 if( !$wdDatabase->isOpen() ) {
 	# Appears to have failed
