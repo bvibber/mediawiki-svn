@@ -65,6 +65,7 @@
  */
 
 
+require_once("Defines.php");
 
 # Namespace name operations
 # used by save() function
