@@ -546,10 +546,6 @@ class NamespaceStore {
 				$this->nsarray[$id]->setHandlerClass($row->ns_class);
 				$this->nsarray[$id]->setCountable($row->ns_count);
 				$this->nsarray[$id]->setParentIndex($row->ns_parent);
-				$res2 = $dbr->select( 'namespace_names', array('ns_name','ns_default,ns_canonical'),
-						array('ns_id = '. $row->ns_id),
-						'Setup', array('order by'=>'ns_default desc,ns_canonical desc,ns_id asc'));
-				
 				$nsi=$this->nsarray[$id]->addName($row->ns_name);
 				if($row->ns_default) {
 					$this->nsarray[$id]->setDefaultNameIndex($nsi);
