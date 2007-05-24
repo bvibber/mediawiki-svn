@@ -1234,7 +1234,7 @@ class Title {
 	 * @access public
 	 */
 	function isMovable() {
-		return Namespace::isMovable( $this->getNamespace() )
+		return Namespace::get($this->mNamespace)->isMovable()
 			&& $this->getInterwiki() == '';
 	}
 
