@@ -125,7 +125,7 @@ if( !$wdDatabase->isOpen() ) {
 
 ReadSQLFile( $wdDatabase, "/*\$wgWDprefix*/", $wgWDprefix, $wgWDtemplate );
 $wdDatabase->query( "DELETE FROM wikidata_sets WHERE set_prefix = '$prefix'" );
-$wdDatabase->query( "INSERT INTO wikidata_sets (set_prefix,set_string,set_dmid) VALUES ('$prefix','$comment',0)" );
+$wdDatabase->query( "INSERT INTO wikidata_sets (set_prefix,set_fallback_name,set_dmid) VALUES ('$prefix','$comment',0)" );
 $wdDatabase->close();
 
 ?>
