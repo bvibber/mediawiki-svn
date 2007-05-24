@@ -113,7 +113,7 @@ CREATE TABLE wikidata_sets (
   set_dmid int(10) default NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-INSERT INTO wikidata_sets (set_prefix,set_string,set_dmid) VALUES 
+INSERT INTO wikidata_sets (set_prefix,set_fallback_name,set_dmid) VALUES 
  ('uw','OmegaWiki community',0),
  ('umls','Unified Medical Language System',0),
  ('sp','Swiss-Prot',0);
