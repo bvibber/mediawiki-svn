@@ -937,10 +937,10 @@ function getSpellingForLanguage($definedMeaningId, $languageCode, $fallbackLangu
 
 	$userLanguageId=getLanguageIdForCode($languageCode);
 
-	wfDebug("User language: $userLanguageId\n");
+	#wfDebug("User language: $userLanguageId\n");
 	$fallbackLanguageId=getLanguageIdForCode($fallbackLanguageCode);
 
-	wfDebug("Fallback language: $fallbackLanguageId\n");
+	#wfDebug("Fallback language: $fallbackLanguageId\n");
 	$dbr = & wfGetDB(DB_SLAVE);	
 
 	if($userLanguageId) {

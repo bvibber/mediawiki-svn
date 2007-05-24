@@ -148,6 +148,24 @@ ul.collapsable-items {
 	padding-bottom: 1px;
 }
 
-.option-panel th {
+.dataset-panel-heading {
 	vertical-align: top;
+	font-size:100%;
+}
+
+.dataset-panel-active {
+	background:#f0f0f0;
+	text-align:center;
+	border-style:solid;
+	border-width:1px;
+	font-size:110%;
+	font-weight:bold;
+}
+
+.dataset-panel-inactive {
+	background:white;
+	text-align:center;
+	border-style:solid;
+	border-width:1px;
+	font-size:110%;
 }

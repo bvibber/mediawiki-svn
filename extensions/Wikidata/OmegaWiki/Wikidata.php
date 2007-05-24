@@ -30,7 +30,8 @@ class DefaultWikidataApplication {
 				'ow_uilang'=>'Your user interface language: $1',
 				'ow_uilang_set'=>'Set your preferences',
 				'ow_save' => 'Save',
-				'ow_history' => 'History'
+				'ow_history' => 'History',
+				'ow_datasets' => 'Available data-sets',
 			)
 		);
 		
@@ -94,6 +95,7 @@ class DefaultWikidataApplication {
 		
 		if ($wgShowAuthoritativeContributionPanelAtTop)
 			$this->outputAuthoritativeContributionPanel();
+		$wgOut->addHTML($this->dataSetSelectBegin());
 	}
 
 	protected function outputViewFooter() {
@@ -103,6 +105,7 @@ class DefaultWikidataApplication {
 		if ($wgShowAuthoritativeContributionPanelAtBottom)	
 			$this->outputAuthoritativeContributionPanel();
 
+		$wgOut->addHTML($this->dataSetSelectEnd());
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 	} 
@@ -141,6 +144,33 @@ class DefaultWikidataApplication {
 			$this->viewQueryTransactionInformation = new QueryLatestTransactionInformation();
 	}
 	
+	protected function dataSetSelectBegin() {
+		global $wgTitle, $wgUser;
+		$html="<table border=\"0\"><tr valign=\"top\"><td width=\"80%\">";
+		return $html;
+	}
+
+	protected function dataSetSelectEnd() {
+		global $wgTitle, $wgUser;
+		$dc=wdGetDataSetContext();
+		$ow_datasets=wfMsg('ow_datasets');
+		$html="</td><td width=\"80%\">";
+		$html.="<table border=\"0\" width=\"100%\"><tr><th class=\"dataset-panel-heading\">$ow_datasets</th></tr>";
+		$dataSets=wdGetDataSets();
+		$sk=$wgUser->getSkin();
+		foreach ($dataSets as $dataset) {
+			$active=($dataset->getPrefix()==$dc->getPrefix());
+			$name=$dataset->fetchName();
+			$prefix=$dataset->getPrefix();
+
+			$class= $active ? 'dataset-panel-active' : 'dataset-panel-inactive';
+			$slot = $active ? "$name" : $sk->makeLinkObj($wgTitle,$name,"dataset=$prefix");
+			$html.="<tr><td class=\"$class\">$slot</td></tr>";
+		}
+		$html.="</table></td></tr></table>";
+		return $html;
+	}
+
 	protected function save($referenceTransaction) {
 		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
 		initializeObjectAttributeEditors($this->filterLanguageId, false, false);
@@ -277,7 +307,8 @@ function wdGetDataSetContext() {
 
 	global $wgRequest, $wdDefaultViewDataSet;
 	$datasets=wdGetDataSets();
-	if( ($ds=$wgRequest->getText('dataset')) && array_key_exists($ds,$datasets) ) {
+	$dbs=wfGetDB(DB_SLAVE);
+	if( ($ds=$wgRequest->getText('dataset')) && array_key_exists($ds,$datasets) && $dbs->tableExists($ds."_transactions") ) {
 		return $datasets[$ds];
 	} else {
 		return $datasets[$wdDefaultViewDataSet];
@@ -294,7 +325,6 @@ function &wdGetDataSets() {
 
 	static $datasets;
 	if(empty($datasets)) {
-
 		// Load defs from the DB
 		$dbs =& wfGetDB(DB_SLAVE);
 		$res=$dbs->select('wikidata_sets', array('set_prefix'));
