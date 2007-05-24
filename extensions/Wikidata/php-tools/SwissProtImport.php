@@ -179,6 +179,9 @@ class SwissProtXMLParser extends BaseXMLParser {
 	
 	
 	protected function bootstrapDefinedMeaning($spelling, $definition) {
+		if (!isset( $definition ) ){
+			$definition = $spelling;
+		}
 		$expression = $this->getOrCreateExpression($spelling);
 		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $definition);
 
@@ -187,116 +190,116 @@ class SwissProtXMLParser extends BaseXMLParser {
 	
 	protected function bootstrapConceptIds() {
 		if ($this->proteinConceptId == 0)
-			$this->proteinConceptId = $this->bootstrapDefinedMeaning("amino acid, peptide, or protein", "amino acid, peptide, or protein");
+			$this->proteinConceptId = $this->bootstrapDefinedMeaning("amino acid, peptide, or protein");
 
 		if ($this->proteinFragmentConceptId == 0)
-			$this->proteinFragmentConceptId = $this->bootstrapDefinedMeaning("protein fragment", "protein fragment");
+			$this->proteinFragmentConceptId = $this->bootstrapDefinedMeaning("protein fragment");
 		
 		if ($this->organismSpecificProteinConceptId == 0)
-			$this->organismSpecificProteinConceptId = $this->bootstrapDefinedMeaning("organism specific protein", "organism specific protein");
+			$this->organismSpecificProteinConceptId = $this->bootstrapDefinedMeaning("organism specific protein");
 
 		if ($this->organismSpecificGeneConceptId == 0)
-			$this->organismSpecificGeneConceptId = $this->bootstrapDefinedMeaning("organism specific gene", "organism specific gene");
+			$this->organismSpecificGeneConceptId = $this->bootstrapDefinedMeaning("organism specific gene");
 		
 		if ($this->geneConceptId == 0)
-			$this->geneConceptId = $this->bootstrapDefinedMeaning("gene or genome", "gene or genome");
+			$this->geneConceptId = $this->bootstrapDefinedMeaning("gene or genome");
 		
 		if ($this->organismConceptId == 0)
-			$this->organismConceptId = $this->bootstrapDefinedMeaning("organism", "organism");
+			$this->organismConceptId = $this->bootstrapDefinedMeaning("organism");
 
 		if ($this->functionalDomainConceptId == 0)
-			$this->functionalDomainConceptId = $this->bootstrapDefinedMeaning("functional domain", "functional domain");
+			$this->functionalDomainConceptId = $this->bootstrapDefinedMeaning("functional domain");
 		
 		if ($this->proteinComponentConceptId == 0)
-			$this->proteinComponentConceptId = $this->bootstrapDefinedMeaning("protein component", "protein component");
+			$this->proteinComponentConceptId = $this->bootstrapDefinedMeaning("protein component");
 			
 		if ($this->biologicalProcessConceptId == 0)
-			$this->biologicalProcessConceptId = $this->bootstrapDefinedMeaning("biological process", "biological process");		
+			$this->biologicalProcessConceptId = $this->bootstrapDefinedMeaning("biological process");		
 
 		if ($this->molecularFunctionConceptId == 0)
-			$this->molecularFunctionConceptId = $this->bootstrapDefinedMeaning("molecular function", "molecular function");		
+			$this->molecularFunctionConceptId = $this->bootstrapDefinedMeaning("molecular function");		
 
 		if ($this->cellularComponentConceptId == 0)
-			$this->cellularComponentConceptId = $this->bootstrapDefinedMeaning("cellular component", "cellular component");		
+			$this->cellularComponentConceptId = $this->bootstrapDefinedMeaning("cellular component");		
 		
 //		if ($this->keywordConceptId == 0)
-//			$this->keywordConceptId = $this->bootstrapDefinedMeaning("keyword", "keyword");
+//			$this->keywordConceptId = $this->bootstrapDefinedMeaning("keyword");
 				
 		if ($this->enzymeCommissionNumberConceptId == 0)
-			$this->enzymeCommissionNumberConceptId = $this->bootstrapDefinedMeaning("enzyme commission number", "enzyme commission number");
+			$this->enzymeCommissionNumberConceptId = $this->bootstrapDefinedMeaning("enzyme commission number");
 
 		if ($this->textAttributeConceptId == 0)
-			$this->textAttributeConceptId = $this->bootstrapDefinedMeaning("text attribute", "text attribute");
+			$this->textAttributeConceptId = $this->bootstrapDefinedMeaning("text attribute");
 		
 		// create root class for all defined meaning comment types
 		if ($this->textAttributeClassId == 0)
-			$this->textAttributeClassId = $this->bootstrapDefinedMeaning("text attribute class", "text attribute class");
+			$this->textAttributeClassId = $this->bootstrapDefinedMeaning("text attribute class");
 		
 		// create top class for semantic comment types and link it to the root class
 		if ($this->semanticGroupId == 0)
-			$this->semanticGroupId = $this->bootstrapDefinedMeaning("Semantic Group", "Semantic Group");
+			$this->semanticGroupId = $this->bootstrapDefinedMeaning("Semantic Group");
 		addClassMemberShip($this->semanticGroupId, $this->textAttributeClassId);
 		
 		// define a different comment type aspects and link them with the comment top class
 		if ($this->localizationAspectId == 0)
-			$this->localizationAspectId = $this->bootstrapDefinedMeaning("Localization aspects", "Localization aspects");
+			$this->localizationAspectId = $this->bootstrapDefinedMeaning("Localization aspects");
 		addClassMemberShip($this->localizationAspectId, $this->semanticGroupId);
 		
 		if ($this->functionalAspectId == 0)
-			$this->functionalAspectId = $this->bootstrapDefinedMeaning("Functional aspects", "Functional aspects");
+			$this->functionalAspectId = $this->bootstrapDefinedMeaning("Functional aspects");
 		addClassMemberShip($this->functionalAspectId, $this->semanticGroupId);
 			
 		if ($this->structuralAspectId == 0)
-			$this->structuralAspectId = $this->bootstrapDefinedMeaning("Structural aspects", "Structural aspects");
+			$this->structuralAspectId = $this->bootstrapDefinedMeaning("Structural aspects");
 		addClassMemberShip($this->structuralAspectId, $this->semanticGroupId);
 			
 		if ($this->pharmaceuticalAspectId == 0)
-			$this->pharmaceuticalAspectId = $this->bootstrapDefinedMeaning("Pharmaceutical aspects", "Pharmaceutical aspects");
+			$this->pharmaceuticalAspectId = $this->bootstrapDefinedMeaning("Pharmaceutical aspects");
 		addClassMemberShip($this->pharmaceuticalAspectId, $this->semanticGroupId);
 			
 		if ($this->externalInformationId == 0)
-			$this->externalInformationId = $this->bootstrapDefinedMeaning("External information", "External information");
+			$this->externalInformationId = $this->bootstrapDefinedMeaning("External information");
 		addClassMemberShip($this->externalInformationId, $this->semanticGroupId);
 			
 		if ($this->otherAspectId == 0)
-			$this->otherAspectId = $this->bootstrapDefinedMeaning("Other aspects", "Other aspects");
+			$this->otherAspectId = $this->bootstrapDefinedMeaning("Other aspects");
 		addClassMemberShip($this->otherAspectId, $this->semanticGroupId);
 			
 		if ($this->functionallyRelatedId == 0)
-			$this->functionallyRelatedId = $this->bootstrapDefinedMeaning("Functionally related", "Functionally related");
+			$this->functionallyRelatedId = $this->bootstrapDefinedMeaning("Functionally related");
 		addClassMemberShip($this->functionallyRelatedId, $this->semanticGroupId);
 			
 		if ($this->spatiallyRelatedId == 0)
-			$this->spatiallyRelatedId = $this->bootstrapDefinedMeaning("Spatially related", "Spatially related");
+			$this->spatiallyRelatedId = $this->bootstrapDefinedMeaning("Spatially related");
 		addClassMemberShip($this->spatiallyRelatedId, $this->semanticGroupId);
 			
 		if ($this->physicallyRelatedId == 0)
-			$this->physicallyRelatedId = $this->bootstrapDefinedMeaning("Physically related", "Physically related");
+			$this->physicallyRelatedId = $this->bootstrapDefinedMeaning("Physically related");
 		addClassMemberShip($this->physicallyRelatedId, $this->semanticGroupId);
 			
 		if ($this->temporallyRelatedId == 0)
-			$this->temporallyRelatedId = $this->bootstrapDefinedMeaning("Temporally related", "Temporally related");
+			$this->temporallyRelatedId = $this->bootstrapDefinedMeaning("Temporally related");
 		addClassMemberShip($this->temporallyRelatedId, $this->semanticGroupId);
 			
 		if ($this->terminologicallyRelatedId == 0)
-			$this->terminologicallyRelatedId = $this->bootstrapDefinedMeaning("Terminologically related", "Terminologically related");
+			$this->terminologicallyRelatedId = $this->bootstrapDefinedMeaning("Terminologically related");
 		addClassMemberShip($this->terminologicallyRelatedId, $this->semanticGroupId);
 			
 		if ($this->conceptuallyRelatedId == 0)
-			$this->conceptuallyRelatedId = $this->bootstrapDefinedMeaning("Conceptually related", "Conceptually related");
+			$this->conceptuallyRelatedId = $this->bootstrapDefinedMeaning("Conceptually related");
 		addClassMemberShip($this->conceptuallyRelatedId, $this->semanticGroupId);
 		
 		// some relation and there supper class
 		if ($this->activityConceptId == 0)
-			$this->activityConceptId = $this->bootstrapDefinedMeaning("performs", "performs");
+			$this->activityConceptId = $this->bootstrapDefinedMeaning("performs");
 		addClassMemberShip($this->activityConceptId, $this->functionallyRelatedId);
 			
 		if ($this->containsConceptId == 0)
-			$this->containsConceptId = $this->bootstrapDefinedMeaning("performs", "performs");
+			$this->containsConceptId = $this->bootstrapDefinedMeaning("performs");
 		addClassMemberShip($this->containsConceptId, $this->functionallyRelatedId);
 		
 		if ($this->includesConceptId == 0)
-			$this->includesConceptId = $this->bootstrapDefinedMeaning("consists of", "consists of");
+			$this->includesConceptId = $this->bootstrapDefinedMeaning("consists of");
 		addClassMemberShip($this->includesConceptId, $this->physicallyRelatedId);
 		
 		// assign each comment type to one type aspect (later perhaps to multiple aspects)
