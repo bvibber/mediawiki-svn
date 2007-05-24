@@ -1242,11 +1242,12 @@ END;
 	 */
 	function editUrlOptions() {
 		global $wgArticle;
-
+		$trail='';
+		wfRunHooks('GetEditLinkTrail',array(&$trail));
 		if( $this->mRevisionId && ! $wgArticle->isCurrent() ) {
-			return "action=edit&oldid=" . intval( $this->mRevisionId );
+			return "action=edit{$trail}&oldid=" . intval( $this->mRevisionId );
 		} else {
-			return "action=edit";
+			return "action=edit{$trail}";
 		}
 	}
 
@@ -1318,9 +1319,10 @@ END;
 
 	function historyLink() {
 		global $wgTitle;
-
+		$trail='';
+		wfRunHooks('GetHistoryLinkTrail',array(&$trail));
 		return $this->makeKnownLinkObj( $wgTitle,
-		  wfMsg( 'history' ), 'action=history' );
+		  wfMsg( 'history' ), "action=history$trail" );
 	}
 
 	function whatLinksHere() {

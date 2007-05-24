@@ -631,6 +631,7 @@ class SkinTemplate extends Skin {
 	 */
 	function buildContentActionUrls () {
 		global $wgContLang, $wgOut;
+
 		$fname = 'SkinTemplate::buildContentActionUrls';
 		wfProfileIn( $fname );
 
@@ -691,10 +692,11 @@ class SkinTemplate extends Skin {
 			wfProfileIn( "$fname-live" );
 			if ( $this->mTitle->getArticleId() ) {
 
+				wfRunHooks('GetHistoryLinkTrail',array(&$trail));
 				$content_actions['history'] = array(
 					'class' => ($action == 'history') ? 'selected' : false,
 					'text' => wfMsg('history_short'),
-					'href' => $this->mTitle->getLocalUrl( 'action=history')
+					'href' => $this->mTitle->getLocalUrl( "action=history$trail")
 				);
 
 				if ( $this->mTitle->getNamespace() !== NS_MEDIAWIKI && $wgUser->isAllowed( 'protect' ) ) {
