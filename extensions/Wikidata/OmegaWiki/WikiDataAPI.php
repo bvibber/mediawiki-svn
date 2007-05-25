@@ -1185,4 +1185,16 @@ function &getAssociatedByConcept($dm, $dc) {
 	return readConceptMapping($concept_id);
 }
 
+function &getDataSetsAssociatedByConcept($dm, $dc) {
+	$map=getAssociatedByConcept($dm, $dc);
+	$Sets=wdGetDataSets()
+	$newSets=array();
+	foreach ($map as $map_dc => $map_dm) {
+		$dataset=$Sets[$map_dc];
+		$dataset->setDefinedMeaningId($map_dm);
+		$newSets[$map_dc]=$dataset
+	}
+	return $newSets;
+}
+
 ?>

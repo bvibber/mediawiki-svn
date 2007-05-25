@@ -128,6 +128,36 @@ class DefinedMeaning extends DefaultWikidataApplication {
 					
 		return $prefix . definedMeaningExpression($this->getDefinedMeaningIdFromTitle($wgTitle->getText()));
 	}
+
+	public function getDefinedMeaningId() {
+		return $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
+	}
+	/** cut and paste getDataSetPanel with mods for Collection instead
+	 * Potential refactor candidate!
+	*/
+	protected function getConceptPanel() {
+		global $wgTitle, $wgUser;
+		$dm=$this->getDefinedMeaningId();
+		$dc=wdGetDataSetContext();
+		$ow_datasets="Concept Panel";
+
+		$html="<div class=\"dataset-panel\">";;
+		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_datasets</th></tr>";
+		$dataSets=getDataSetsAssociatedByConcept($dm,$dc);
+		$sk=$wgUser->getSkin();
+		foreach ($dataSets as $dataset) {
+			$active=($dataset->getPrefix()==$dc->getPrefix());
+			$name=$dataset->fetchName();
+			$prefix=$dataset->getPrefix();
+
+			$class= $active ? 'dataset-panel-active' : 'dataset-panel-inactive';
+			$slot = $active ? "$name" : $sk->makeLinkObj($wgTitle,$name,"dataset=$prefix");
+			$html.="<tr><td class=\"$class\">$slot</td></tr>";
+		}
+		$html.="</table>";
+		$html.="</div>";
+		return $html;
+	}
 }
 
 ?>
