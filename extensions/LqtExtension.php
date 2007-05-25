@@ -161,6 +161,7 @@ class LqtView {
 		}*/
 	}
 
+
 	function showPostBody( $post ) {
 		global $wgEnableParserCache;
 
