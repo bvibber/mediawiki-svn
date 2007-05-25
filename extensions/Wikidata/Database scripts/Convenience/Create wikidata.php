@@ -3,16 +3,15 @@
 # this module create a wikidata extension for mediawiki
 # it generates the tables in a database (passed as parameter) with a defined prefix (passed as parameter)
 
-define('MEDIAWIKI', true );
-
 $wgUseMasterForMaintenance = true;
-require_once( "../../../../LocalSettings.php");
-require_once( "install-utils.inc" );
-require_once( "AdminSettings.php");
-require_once( "GlobalFunctions.php" );
-require_once( "ProfilerStub.php");
-require_once( "Exception.php" );
-require_once( "Database.php" );
+require_once( "../../../../maintenance/commandLine.inc");
+#require_once( "../../../../LocalSettings.php");
+#require_once( "install-utils.inc" );
+#require_once( "AdminSettings.php");
+#require_once( "GlobalFunctions.php" );
+#require_once( "ProfilerStub.php");
+#require_once( "Exception.php" );
+#require_once( "Database.php" );
 
 function ReadSQLFile( $database, $pattern, $prefix, $filename ){
 	$fp = fopen( $filename, 'r' );
