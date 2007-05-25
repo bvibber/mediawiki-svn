@@ -139,10 +139,10 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		global $wgTitle, $wgUser;
 		$dm=$this->getDefinedMeaningId();
 		$dc=wdGetDataSetContext();
-		$ow_datasets="Concept Panel";
+		$ow_conceptpanel="Concept Panel";
 
 		$html="<div class=\"dataset-panel\">";;
-		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_datasets</th></tr>";
+		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_conceptpanel</th></tr>";
 		$dataSets=getDataSetsAssociatedByConcept($dm,$dc);
 		$sk=$wgUser->getSkin();
 		foreach ($dataSets as $dataset) {
