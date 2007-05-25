@@ -1056,4 +1056,133 @@ function getExpressionMeaningIds($spelling) {
 	return $result;
 }
 
+
+/** Write a concept mapping to db
+ * supply mapping as a valid
+ * array("dataset_prefix"=>defined_meaning_id,...)
+ */
+
+function createConceptMapping($concepts) {
+	$uuid= getUUID();
+	foreach ($concepts as $dc => $dm_id) {
+		$collid=getCollectionIdForDC($dc);
+		writeDmToCollection($dc, $collid, $uuid, $dm_id);
+	}
+}
+
+/** ask db to provide a universally unique id */
+
+function getUUID() {
+    	$dbr = & wfGetDB(DB_SLAVE);
+	$query="SELECT uuid() AS id";
+	$queryResult = $dbr->query($query);
+	$row=$dbr->fetchObject($queryResult);
+	return isset($row->id) ? $row->id : null;
+}
+
+/** this funtion assumes that there is only a single mapping collection */
+
+function getCollectionIdForDC($dc) {
+    	$dbr = & wfGetDB(DB_SLAVE);
+	$query="
+		SELECT collection_id FROM {$dc}_collection_ns
+		WHERE collection_type=\"MAPP\"
+         	AND  ". getLatestTransactionRestriction("{$dc}_collection_ns") ."
+		LIMIT 1
+		";
+	$queryResult = $dbr->query($query);
+	$row=$dbr->fetchObject($queryResult);
+	return isset($row->collection_id) ? $row->collection_id : null;
+}
+
+/** Write the dm to the correct collection for a particular dc */
+
+function writeDmToCollection($dc, $collid, $uuid, $dm_id) {
+	global 
+		$wgUser;
+	//if(is_null($dc)) {
+	//	$dc=wdGetDataSetContext();
+	//} 
+    	$dbr = & wfGetDB(DB_SLAVE);
+
+	$collection_contents="{$dc}_collection_contents";
+	$collid=$dbr->addQuotes($collid);
+	$uuid=$dbr->addQuotes($uuid);
+	$dm_id=$dbr->addQuotes($dm_id);
+
+	startNewTransaction($wgUser->getId(), wfGetIP(), "inserting collection $collid", $dc);
+	$add_transaction_id=getUpdateTransactionId();
+
+	$sql="
+		INSERT INTO $collection_contents
+		SET 	collection_id=$collid,
+			internal_member_id=$uuid,
+			member_mid=$dm_id,
+			add_transaction_id=$add_transaction_id		
+		";
+	global $wgOut;
+	$wgOut->addWikiText($sql);
+	$dbr->query($sql);
+}
+
+/**read a ConceptMapping from the database
+ * map is in the form;
+ * array("dataset_prefix"=>defined_meaning_id,...)
+ * (possibly to rename $map or $concepts, to remain consistent)
+ * note that we are using collection_contents.internal_member_id
+ * as our ConceptMap ID.
+ * see also: createConceptMapping($concepts)
+ */
+function &readConceptMapping($concept_id) {
+    	$dbr = & wfGetDB(DB_SLAVE);
+	$sets=wdGetDataSets();
+	$map=array();
+	$concept_id=$dbr->addQuotes($concept_id);
+	foreach ($sets as $key => $set) {
+		#wfdebug ("$key => $set");
+		$dc=$set->getPrefix();
+		$collection_id=getCollectionIdForDC($dc);
+		$collection_id=$dbr->addQuotes($collection_id);
+		$collection_contents="{$dc}_collection_contents";
+
+		$query="
+			SELECT member_mid FROM $collection_contents
+			WHERE collection_id = $collection_id
+			AND internal_member_id=$concept_id
+			";
+		wfDebug($query);
+		$queryResult = $dbr->query($query);
+		$row=$dbr->fetchObject($queryResult);
+		if (isset($row->member_mid)) {
+			wfDebug("do we have ".$row->member_mid."\n");
+			$map[$dc]=$row->member_mid;
+		}
+	}
+	return $map;
+}
+
+function getConceptId($dm,$dc){
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+	} 
+    	$dbr = & wfGetDB(DB_SLAVE);
+	$dm=$dbr->addQuotes($dm);
+	$query = "
+		SELECT internal_member_id AS concept_id
+		FROM {$dc}_collection_contents
+		WHERE member_mid=$dm
+		";
+	wfDebug($query);
+	$queryResult = $dbr->query($query);
+	$row=$dbr->fetchObject($queryResult);
+	return isset($row->concept_id) ? $row->concept_id : null;
+}
+
+function &getAssociatedByConcept($dm, $dc) {
+    	$dbr = & wfGetDB(DB_SLAVE);
+	$concept_id=getConceptId($dm,$dc);
+	wfDebug("concept id:".$concept_id."\n");
+	return readConceptMapping($concept_id);
+}
+
 ?>

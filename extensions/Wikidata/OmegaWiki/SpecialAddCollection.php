@@ -1,6 +1,8 @@
 <?php
 	if (!defined('MEDIAWIKI')) die();
 
+	require_once("WikiDataAPI.php"); // for bootstrapCollection
+	
 	$wgAvailableRights[] = 'addcollection';
 	$wgGroupPermissions['bureaucrat']['addcollection'] = true;
 
@@ -38,7 +40,7 @@
 					array(
 						'Collection name' => getTextBox('collection'),
 						'Language of name' => getSuggest('language','language'),
-						'Collection type' => getSelect('type',array('' => 'None','RELT' => 'RELT','LEVL' => 'LEVL','CLAS' => 'CLAS'))
+						'Collection type' => getSelect('type',array('' => 'None','RELT' => 'RELT','LEVL' => 'LEVL','CLAS' => 'CLAS', 'MAPP' => 'MAPP'))
 					),
 					'',array('create' => 'Create')
 				));

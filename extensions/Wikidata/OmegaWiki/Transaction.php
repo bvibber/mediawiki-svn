@@ -266,11 +266,15 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 global
 	$updateTransactionId;
 
-function startNewTransaction($userID, $userIP, $comment) {
+function startNewTransaction($userID, $userIP, $comment, $dc=null) {
 
 	global
 		$updateTransactionId;
-	$dc=wdGetDataSetContext();	
+
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+	} 
+
 	$dbr =& wfGetDB(DB_MASTER);
 	$timestamp = wfTimestampNow();
 	
