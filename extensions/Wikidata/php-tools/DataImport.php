@@ -1,25 +1,18 @@
 <?php
 
 define('MEDIAWIKI', true );
+
+require_once("../../../includes/Defines.php");
 require_once("../../../includes/ProfilerStub.php");
 require_once("../../../LocalSettings.php");
-echo "DataImport #0";
 require_once("Setup.php");
-echo "DataImport #1";
 require_once("../OmegaWiki/WikiDataAPI.php");
-echo "DataImport #2";
 require_once("../OmegaWiki/Transaction.php");
-echo "DataImport #3";
 require_once('SwissProtImport.php');
-echo "DataImport #4";
 require_once('XMLImport.php');
-echo "DataImport #5";
 require_once('2GoMappingImport.php');
-echo "DataImport #6";
 require_once("UMLSImport.php");
-echo "DataImport #7";
 require_once("../../../includes/Namespace.php");
-require_once("../../../includes/Defines.php");
 
 ob_end_flush();
 
