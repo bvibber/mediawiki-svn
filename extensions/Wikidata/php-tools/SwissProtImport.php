@@ -11,7 +11,10 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 	// Create mappings from EC numbers and SwissProt keywords to GO term meaning id's:	
 	$EC2GoMeaningId = array();
 	$keyword2GoMeaningId = array();
-
+	
+	$goCollection = NULL;
+	$hugoCollection = NULL;
+	
 	if ($goCollectionId != 0) {
 		$goCollection = getCollectionContents($goCollectionId);
 	
@@ -178,7 +181,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $cautionId = 0;
 	
 	
-	protected function bootstrapDefinedMeaning($spelling, $definition) {
+	protected function bootstrapDefinedMeaning($spelling, $definition = NULL) {
 		if (!isset( $definition ) ){
 			$definition = $spelling;
 		}
