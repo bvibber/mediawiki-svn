@@ -33,6 +33,11 @@ $wgDesysopMessages['cs'] = array(
 	'desysop'              => 'Odebrat práva',
 	'not_sysop'            => 'Tento uživatel není správce.',
 );
+$wgDesysopMessages['el'] = array(
+	'set_user_rights'      => 'Καθορισμός δικαιωμάτων χρήστη',
+	'user_rights_set'      => '<b>Τα δικαιώματα χρήστη για τον/την "$1" έχουν ενημερωθεί.</b>',
+	'set_rights_fail'      => '<b>Δεν ήταν δυνατή η ρύθμιση των δικαιωμάτων για το χρήστη "$1". Βεβαιωθείτε πως έχετε πληκτρολογήσει σωστά το όνομα.</b>',
+);
 $wgDesysopMessages['fr'] = array(
 	'desysoptitle'         => 'Enlever les droits d’administrateur à cet utilisateur',
 	'desysoptext'          => "Ce formulaire est utilisé par les bureaucrates pour enlever ses droits à un administrateur. Entrez le nom d’un administrateur ci-dessous et pressez le bouton pour enlever les droits.",

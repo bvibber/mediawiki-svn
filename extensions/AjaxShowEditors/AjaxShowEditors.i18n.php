@@ -23,6 +23,11 @@ $wgAjaxShowEditorsMessages['de'] = array(
 	'ajax-se-pending' => 'bevorstehende Aktualisierungen… (klicke auf diesen Kasten oder beginne mit der Bearbeitung)',
 	'ajax-se-idling'  => '(vor $1 s)',
 );
+$wgAjaxShowEditorsMessages['el'] = array(
+	'ajax-se-title'   => 'Τρέχουσα επεξεργασία:',
+	'ajax-se-pending' => 'εκκρεμή ανανέωση ... (κάντε κλικ σε αυτό το κουτί ή ξεκινήστε την επεξεργασία)',
+	'ajax-se-idling'  => '($1s πριν)',
+);
 $wgAjaxShowEditorsMessages['fi'] = array(
 	'ajax-se-title'   => 'Samanaikaiset muokkaajat:',
 	'ajax-se-pending' => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
