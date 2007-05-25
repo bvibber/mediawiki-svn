@@ -128,9 +128,8 @@ class LqtView {
 		
 		// this only works for editing because we refer to the article directly.
 		
-		var_dump($pp->article->);
 		$e = new EditPage($pp->article);
-		$e->setAction( $this->title->getFullURL( "lqt_editing={$pp->article->getID()}" ) );
+		$e->setAction( $this->title->getFullURL( "lqt_edit_post={$pp->article->getID()}" ) );
 
 /*		if ( $p->thread()->firstPost()->getID() == $p->getID() ) {
 			// This is the thread's root post; display topic field.
@@ -146,9 +145,13 @@ class LqtView {
 		$this->output->setArticleFlag( false );
 
 		// Override editpage's redirect.
-		if ($e->didRedirect) {
-			$t = $p->getTitle()->getPartialURL();
-			$wgOut->redirect( $this->title->getFullURL( "lqt_highlight=$t#lqt_post_$t" ) );
+//		if ($e->didRedirect) {
+		// I have lost track of where the redirect happens, so I can't set a flag there until I find it.
+		// In the meantime, just check if somewhere somebody redirected. I'm afraid this might have
+		// unwanted side-effects.
+		if ( $this->output->getRedirect() != '' ) {
+			$t = $pp->article->getTitle()->getPartialURL();
+			$this->output->redirect( $this->title->getFullURL() );
 		}
 
 /*		// Save new topic line if there is one:
