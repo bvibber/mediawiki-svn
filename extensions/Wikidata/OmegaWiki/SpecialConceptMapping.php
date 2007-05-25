@@ -16,7 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Kim Bruning',
 );
 
-define(help_text,
+define('help_text',
 	"<p>possible actions: <ul>
 	<li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
 	<li>&action=get&concept=<concept_id>  read a mapping back</li>

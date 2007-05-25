@@ -25,21 +25,6 @@ class DefaultWikidataApplication {
 
 
 	public function __construct() {
-		global 
-			$wgMessageCache;
-		
-		$wgMessageCache->addMessages(
-			array(
-				'ow_uilang'=>'Your user interface language: $1',
-				'ow_uilang_set'=>'Set your preferences',
-				'ow_save' => 'Save',
-				'ow_history' => 'History',
-				'ow_datasets' => 'Data-set selection',
-				'ow_noedit' => 'You are not permitted to edit pages in the dataset "$1". Please see [[Project:Permission policy|our editing policy]].',
-				'ow_noedit_title' => 'No permission to edit',
-
-			)
-		);
 		
 		global
 			$wgAvailableAuthorities, $wgFilterLanguageId, $wgShowLanguageSelector, 
@@ -155,7 +140,6 @@ class DefaultWikidataApplication {
 		global $wgTitle, $wgUser;
 		$dc=wdGetDataSetContext();
 		$ow_datasets=wfMsg('ow_datasets');
-
 		$html="<div class=\"dataset-panel\">";;
 		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_datasets</th></tr>";
 		$dataSets=wdGetDataSets();
@@ -324,6 +308,7 @@ function wdGetDataSetContext() {
 	$datasets=wdGetDataSets();
 	$groups=$wgUser->getGroups();
 	$dbs=wfGetDB(DB_SLAVE);
+	$pref=$wgUser->getOption('ow_uipref_context');
 
 	$trydefault='';
 	foreach($groups as $group) {
@@ -332,9 +317,16 @@ function wdGetDataSetContext() {
 			$trydefault=$wdGroupDefaultView[$group];
 		}
 	}
+
+	# URL parameter takes precedence over all else
 	if( ($ds=$wgRequest->getText('dataset')) && array_key_exists($ds,$datasets) && $dbs->tableExists($ds."_transactions") ) {
 		return $datasets[$ds];
-	} elseif(!empty($trydefault) && array_key_exists($trydefault,$datasets)) {
+	# User preference
+	} elseif(!empty($pref) && array_key_exists($pref,$datasets)) {
+		return $datasets[$pref];
+	}
+	# Group preference
+	 elseif(!empty($trydefault) && array_key_exists($trydefault,$datasets)) {
 		return $datasets[$trydefault];
 	} else {
 		return $datasets[$wdDefaultViewDataSet];

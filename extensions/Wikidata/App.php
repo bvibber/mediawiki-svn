@@ -4,6 +4,8 @@ $wgDefaultGoPrefix='Expression:';
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
 $wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail';
 $wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail';
+$wgExtensionFunctions[]='initializeWikidataMessages';
+
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/Wikidata/OmegaWiki/");
 $wgDefaultClassMids = array(402295);
 
@@ -31,6 +33,7 @@ $wgGroupPermissions['wikidata-omega']['editwikidata-uw']=true;
 $wgGroupPermissions['wikidata-omega']['editwikidata-tt']=false;
 $wgGroupPermissions['wikidata-test']['editwikidata-tt']=true;
 
+require_once("{$IP}/extensions/Wikidata/AddPrefs.php");
 require_once("{$IP}/extensions/Wikidata/SpecialLanguages.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSuggest.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSelect.php");
@@ -39,6 +42,13 @@ require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialTransaction.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialNeedsTranslation.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialImportLangNames.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialAddCollection.php");
+
+$wgExtensionPreferences[]=array(
+ 'name'=>'ow_uipref_context',
+ 'section'=>'ow_uiprefs',
+ 'type'=>PREF_TEXT_T,
+ 'size'=>10);
+
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialConceptMapping.php");
 function addWikidataHeader() {
   global $wgOut,$wgScriptPath;
@@ -63,6 +73,26 @@ function addHistoryLinkTrail(&$trail) {
     $dc=wdGetDatasetContext();
     $trail="&dataset=$dc";
   }
+}
+
+function initializeWikidataMessages() {
+	global 
+		$wgMessageCache;
+	
+	$wgMessageCache->addMessages(
+		array(
+			'ow_uilang'=>'Your user interface language: $1',
+			'ow_uilang_set'=>'Set your preferences',
+			'ow_save' => 'Save',
+			'ow_history' => 'History',
+			'ow_datasets' => 'Data-set selection',
+			'ow_noedit' => 'You are not permitted to edit pages in the dataset "$1". Please see [[Project:Permission policy|our editing policy]].',
+			'ow_noedit_title' => 'No permission to edit',
+			'ow_uipref_context' => 'Default dataset prefix (without underscore)',
+			'ow_uiprefs' => 'Wikidata',
+		)
+	);
+
 }
 
 ?>
