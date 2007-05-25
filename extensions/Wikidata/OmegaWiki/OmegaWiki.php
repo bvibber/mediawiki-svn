@@ -91,7 +91,7 @@ class OmegaWiki extends DefaultWikidataApplication {
 		global
 			$wgOut, $wgTitle, $wgUser;
 
-		parent::edit();
+		if(!parent::edit()) return false;
 		$this->outputEditHeader();
 
 		$spelling = $wgTitle->getText();

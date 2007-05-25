@@ -9,6 +9,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		global
 			$wgOut, $wgTitle;
 
+		$this->showDataSetPanel=false;
 		parent::view();
 
 		$this->outputViewHeader();
@@ -35,7 +36,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		global
 			$wgOut, $wgTitle;
 
-		parent::edit();
+		if(!parent::edit()) return false;
 
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 

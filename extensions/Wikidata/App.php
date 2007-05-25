@@ -1,11 +1,6 @@
 <?php
 
 $wgDefaultGoPrefix='Expression:';
-# FIXME - get NS ids from DB (need to put this in a loader hook)
-$wgNamespaceProtection[ 16 ] = array( 'editwikidata' );
-$wgNamespaceProtection[ 24 ] = array( 'editwikidata' );
-$wgGroupPermissions['wikidata']['editwikidata']=true;
-$wgExtensionFunctions[]='setupDataContextPermissions';
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
 $wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail';
 $wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail';
@@ -25,6 +20,17 @@ $wdTermDBDataSet='uw';
 # successfully.
 $wdDefaultViewDataSet='uw';
 
+
+$wdGroupDefaultView=array();
+# Here you can set group defaults.
+$wdGroupDefaultView['wikidata-omega']='uw';
+$wdGroupDefaultView['wikidata-test']='tt';
+
+# These are the user groups
+$wgGroupPermissions['wikidata-omega']['editwikidata-uw']=true;
+$wgGroupPermissions['wikidata-omega']['editwikidata-tt']=false;
+$wgGroupPermissions['wikidata-test']['editwikidata-tt']=true;
+
 require_once("{$IP}/extensions/Wikidata/SpecialLanguages.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSuggest.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialSelect.php");
@@ -41,25 +47,21 @@ function addWikidataHeader() {
 }
 
 function addWikidataEditLinkTrail(&$trail) {
-  $dc=wdGetDatasetContext();
-  $trail="&dataset=$dc";
+  global $wgTitle;
+  $ns=Namespace::get($wgTitle->getNamespace());
+  if($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning') {
+    $dc=wdGetDatasetContext();
+    $trail="&dataset=$dc";
+  }
 }
 
 function addHistoryLinkTrail(&$trail) {
-  $dc=wdGetDatasetContext();
-  $trail="&dataset=$dc";
-}
-
-function setupDataContextPermissions() {
-  global $wgGroupPermissions;
-  $dc=wdGetDataSetContext();
-  if($dc->getPrefix()=='tt') {
-    $wgGroupPermissions['wikidata']['editwikidata']=false;
+  global $wgTitle;
+  $ns=Namespace::get($wgTitle->getNamespace());  
+  if($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning') {  
+    $dc=wdGetDatasetContext();
+    $trail="&dataset=$dc";
   }
-
 }
-
-# all DMs will be put in this class by default.
-
 
 ?>

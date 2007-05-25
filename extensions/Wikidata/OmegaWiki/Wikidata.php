@@ -20,6 +20,9 @@ class DefaultWikidataApplication {
 	protected $showClassicPageTitles = true;				// Show classic page titles instead of prettier page titles
 	protected $possiblySynonymousRelationTypeId = 0;		// Put this relation type in a special section "Possibly synonymous"
 
+	// Show a panel to select expressions from available data-sets
+	protected $showDataSetPanel=true;
+
 
 	public function __construct() {
 		global 
@@ -31,7 +34,10 @@ class DefaultWikidataApplication {
 				'ow_uilang_set'=>'Set your preferences',
 				'ow_save' => 'Save',
 				'ow_history' => 'History',
-				'ow_datasets' => 'Available data-sets',
+				'ow_datasets' => 'Data-set selection',
+				'ow_noedit' => 'You are not permitted to edit pages in the dataset "$1". Please see [[Project:Permission policy|our editing policy]].',
+				'ow_noedit_title' => 'No permission to edit',
+
 			)
 		);
 		
@@ -95,7 +101,9 @@ class DefaultWikidataApplication {
 		
 		if ($wgShowAuthoritativeContributionPanelAtTop)
 			$this->outputAuthoritativeContributionPanel();
-		$wgOut->addHTML($this->dataSetSelectBegin());
+		if($this->showDataSetPanel) {
+			$wgOut->addHTML($this->getDataSetPanel());
+		}
 	}
 
 	protected function outputViewFooter() {
@@ -105,15 +113,14 @@ class DefaultWikidataApplication {
 		if ($wgShowAuthoritativeContributionPanelAtBottom)	
 			$this->outputAuthoritativeContributionPanel();
 
-		$wgOut->addHTML($this->dataSetSelectEnd());
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 	} 
 	
 	public function view() {
 		global
-			$wgOut, $wgTitle;
-			
+			$wgOut, $wgTitle, $wgUser;
+
 		$wgOut->enableClientCache(false);
 
 		$title = $wgTitle->getPrefixedText();
@@ -144,18 +151,13 @@ class DefaultWikidataApplication {
 			$this->viewQueryTransactionInformation = new QueryLatestTransactionInformation();
 	}
 	
-	protected function dataSetSelectBegin() {
-		global $wgTitle, $wgUser;
-		$html="<table border=\"0\"><tr valign=\"top\"><td width=\"80%\">";
-		return $html;
-	}
-
-	protected function dataSetSelectEnd() {
+	protected function getDataSetPanel() {
 		global $wgTitle, $wgUser;
 		$dc=wdGetDataSetContext();
 		$ow_datasets=wfMsg('ow_datasets');
-		$html="</td><td width=\"80%\">";
-		$html.="<table border=\"0\" width=\"100%\"><tr><th class=\"dataset-panel-heading\">$ow_datasets</th></tr>";
+
+		$html="<div class=\"dataset-panel\">";;
+		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_datasets</th></tr>";
 		$dataSets=wdGetDataSets();
 		$sk=$wgUser->getSkin();
 		foreach ($dataSets as $dataset) {
@@ -167,8 +169,10 @@ class DefaultWikidataApplication {
 			$slot = $active ? "$name" : $sk->makeLinkObj($wgTitle,$name,"dataset=$prefix");
 			$html.="<tr><td class=\"$class\">$slot</td></tr>";
 		}
-		$html.="</table></td></tr></table>";
+		$html.="</table>";
+		$html.="</div>";
 		return $html;
+
 	}
 
 	protected function save($referenceTransaction) {
@@ -189,11 +193,21 @@ class DefaultWikidataApplication {
 		$now = wfTimestampNow();
 		RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, $summary, 0, $now, false, '', 0, 0, 0);
 	}
-	
+
+	/**
+	 * @return true if permission to edit, false if not
+	**/
 	public function edit() {
 		global
-			$wgOut, $wgRequest;
+			$wgOut, $wgRequest, $wgUser;
 			
+		$dc=wdGetDataSetContext();
+ 		if(!$wgUser->isAllowed('editwikidata-'.$dc)) {
+ 			$wgOut->addWikiText(wfMsg('ow_noedit',$dc->fetchName()));
+			$wgOut->setPageTitle(wfMsg('ow_noedit_title'));
+ 			return false;
+ 		}
+
 		if ($wgRequest->getText('save') != '') 
 			$this->saveWithinTransaction();
 
@@ -202,6 +216,7 @@ class DefaultWikidataApplication {
 			
 		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
 		initializeObjectAttributeEditors($this->filterLanguageId, false, false);
+		return true;
 	}
 	
 	public function history() {
@@ -305,11 +320,22 @@ class DefaultWikidataApplication {
 **/
 function wdGetDataSetContext() {
 
-	global $wgRequest, $wdDefaultViewDataSet;
+	global $wgRequest, $wdDefaultViewDataSet, $wdGroupDefaultView, $wgUser;
 	$datasets=wdGetDataSets();
+	$groups=$wgUser->getGroups();
 	$dbs=wfGetDB(DB_SLAVE);
+
+	$trydefault='';
+	foreach($groups as $group) {
+		if(isset($wdGroupDefaultView[$group])) {
+			# We don't know yet if this prefix is valid.
+			$trydefault=$wdGroupDefaultView[$group];
+		}
+	}
 	if( ($ds=$wgRequest->getText('dataset')) && array_key_exists($ds,$datasets) && $dbs->tableExists($ds."_transactions") ) {
 		return $datasets[$ds];
+	} elseif(!empty($trydefault) && array_key_exists($trydefault,$datasets)) {
+		return $datasets[$trydefault];
 	} else {
 		return $datasets[$wdDefaultViewDataSet];
 	}
@@ -323,7 +349,7 @@ function wdGetDataSetContext() {
 **/
 function &wdGetDataSets() {
 
-	static $datasets;
+	static $datasets, $wgGroupPermissions;
 	if(empty($datasets)) {
 		// Load defs from the DB
 		$dbs =& wfGetDB(DB_SLAVE);

@@ -148,6 +148,11 @@ ul.collapsable-items {
 	padding-bottom: 1px;
 }
 
+.dataset-panel {
+	float:right;
+	margin-left:0.5em;
+}
+
 .dataset-panel-heading {
 	vertical-align: top;
 	font-size:100%;
