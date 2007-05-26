@@ -123,7 +123,7 @@ class LqtView {
 		// If there is no article (reply or new), we need a randomly-generated title.
 		// On the first pass, we generate one. After that, we find it in the request.
 		if ( $thread == null ) {
-			$rt = Title::newFromURL( $pp->request->getVal('lqt_edit_post') );
+			$rt = Title::newFromURL( $this->request->getVal('lqt_edit_post') );
 			$t = $rt ? $rt : $this->scratchTitle();
 			$article = new Article( $t );
 		} else {
