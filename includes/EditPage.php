@@ -46,6 +46,7 @@ class EditPage {
 	public $editFormTextBottom;
 
 	public $didSave = false; # LQT HACK.
+	public $suppressIntro = false; # LQT HACK.
 
 	/**
 	 * @todo document
@@ -591,6 +592,7 @@ class EditPage {
 	/** */
 	function showIntro() {
 		global $wgOut, $wgUser;
+		if ( $this->suppressIntro ) return; # LQT HACK.
 		$addstandardintro=true;
 		if($this->editintro) {
 			$introtitle=Title::newFromText($this->editintro);

@@ -107,7 +107,8 @@ class LqtView {
 	*******************************/
 
 	function showNewThreadForm() {
-		$this->output->addHTML('<p>new thread form</p>');
+		$pp = new PostProxy( null, $this->request );
+		$this->showEditingFormInGeneral( $pp, 'new', null );
 	}
 
 	function showPostEditingForm( $post ) {
@@ -124,8 +125,8 @@ class LqtView {
 
 		$pp = $post_proxy;
 		
-		// If there is no article, we need a randomly-generated title. On the first pass,
-		// we generate one. After that, we find it in the request.
+		// If there is no article (reply or new), we need a randomly-generated title.
+		// On the first pass, we generate one. After that, we find it in the request.
 		if ( $pp->article == null ) {
 			$rt = Title::newFromURL( $pp->request->getVal('lqt_edit_post') );
 			$t = $rt ? $rt : $this->scratchTitle();
@@ -134,21 +135,18 @@ class LqtView {
 			$article = $pp->article;
 		}
 		
-		// this only works for editing because we refer to the article directly.
-		
 		$e = new EditPage($article);
+		$e->suppressIntro = true;
+		
 		$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_edit_post\" value=\"{$article->getTitle()->getPrefixedURL()}\">";
 		
 		if ( $edit_type == 'reply' ) {
 			$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_reply_to\" value=\"{$edit_applies_to->id()}\">";
 		}
-
-/*		if ( $p->thread()->firstPost()->getID() == $p->getID() ) {
-			// This is the thread's root post; display topic field.
-			ThreadView::$callbackpost = $p;
-			ThreadView::$callbackeditpage = $e;
-			$e->formCallback = array('ThreadView', 'topicCallback');
-		}*/
+		
+		if ( $edit_type == 'new' ) {
+			$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_new_thread_form\" value=\"1\">";
+		}
 
 		$e->edit();
 
@@ -163,12 +161,12 @@ class LqtView {
 			$this->output->redirect( $this->title->getFullURL() );
 		}
 		
-		// If this is a reply and the page was saved, we need to create a new thread
-		// pointing to the new page and with the appropriate superthread.
-		if ($edit_type == 'reply' && $e->didSave) {
-			// TODO this is two database writes instead of one.
+		// For replies and new posts, insert the associated thread object into the DB.
+		if ($edit_type != 'editExisting' && $e->didSave) {
 			$t = Thread::newThread( $article, $this->article );
-			$t->setSuperthread( $edit_applies_to );
+			if ( $edit_type == 'reply' ) {
+				$t->setSuperthread( $edit_applies_to );
+			}
 		}
 
 /*		// Save new topic line if there is one:
@@ -277,12 +275,14 @@ class TalkpageView extends LqtView {
 	function show() {
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() );
 		
+		if( $this->request->getBool('lqt_new_thread_form') ) {
+			$this->showNewThreadForm();
+		} else {
+			$this->output->addHTML("<a href=\"{$this->title->getFullURL('lqt_new_thread_form=1')}\">New Thread</a>");
+		}
 		$threads = Thread::allThreadsOfArticle($this->article);
 		foreach($threads as $t) {
 			$this->showThread($t);
-/*			Thread::walk( $t, array($this,'showThread'),
-			                  array($this,'indent'),
-			                  array($this,'unindent'));*/
 		}
 	}
 }

@@ -150,7 +150,7 @@ class Thread {
 
 	function subthreads() {
 		return Thread::threadsWhere( array('thread_subthread_of' => $this->id),
-		                             array('ORDER BY' => 'thread_touched DESC') );
+		                             array('ORDER BY' => 'thread_touched') );
 	}
 
 	protected function updateRecord() {
