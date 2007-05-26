@@ -81,7 +81,7 @@ public class HTTPIndexDaemon extends HttpHandler {
 				String retVal = (String) ret;
 				byte[] bytes = retVal.getBytes();
 				sendHeaders(200,"OK",bytes.length);
-				sendBytes(bytes);				
+				sendBytes(retVal.toCharArray());				
 			} else{
 				sendHeaders(200,"OK");
 			}

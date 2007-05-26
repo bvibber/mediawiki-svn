@@ -1,11 +1,11 @@
 import string,cgi,time,urlparse,urllib2, urllib, cgi, copy
-import re, time
+import re, time, math
 from htmlentitydefs import name2codepoint
 from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from urllib2 import URLError, HTTPError
 
-search_host = "localhost:8123"
+search_host = { 'enwiki' : "srv79:8123", '<default>': 'srv80:8123' }
 
 canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     4 : 'Project', 5 : 'Project_talk', 6 : 'Image', 7 : 'Image_talk',
@@ -14,10 +14,6 @@ canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     100: 'Portal', 101: 'Portal_talk' }
 prefix_aliases = { 'm': 0, 'mt' : 1, 'u' : 2, 'ut' : 3, 'p': 4, 'pt':5, 'i':6, 'it':7,
                    'mw':8, 'mwt':9, 't':10, 'tt':11, 'h':12, 'ht':13, 'c':14, 'ct': 15}
-
-f = open(curdir + sep + "searchForm.html")
-search_form = f.read()
-f.close()
  
 def make_link(params,offset):
     ''' Duplicate existing query (denoted by params), but with a different offset '''
@@ -86,8 +82,13 @@ class MyHandler(BaseHTTPRequestHandler):
                 
                 rewritten = rewrite_query(query)
 
+                if search_host.has_key(dbname):
+                    host = search_host[dbname]
+                else:
+                    host = search_host['<default>']
+
                 # make search url for ls2
-                search_url = 'http://%s/search/%s/%s' % (search_host,dbname,urllib.quote(rewritten.encode('utf-8')))
+                search_url = 'http://%s/search/%s/%s' % (host,dbname,urllib.quote(rewritten.encode('utf-8')))
                 search_params = urllib.urlencode({'limit' : limit, 'offset' : offset, 'namespaces' : ','.join(namespaces)}, True)
                 
                 # process search results
@@ -128,8 +129,11 @@ class MyHandler(BaseHTTPRequestHandler):
                         if ns != '':
                             ns = ns +":"
                         title = ns+parts[2]
-                        link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
-                        decoded = urllib.unquote(title.replace('_',' '))
+                        if dbname.endswith('wiktionary'):
+                            link = 'http://%s.wiktionary.org/wiki/%s' % (dbname[0:2],title)
+                        else:
+                            link = 'http://%s.wikipedia.org/wiki/%s' % (dbname[0:2],title)
+                        decoded = urllib.unquote(title.replace('_',' '))                        
                         self.wfile.write('%1.2f -- <a href="%s">%s</a><br>' % (score,link,decoded))
                     self.wfile.write('<hr>')
                     
@@ -145,6 +149,10 @@ class MyHandler(BaseHTTPRequestHandler):
                 delta_time = time.time() - start_time
                 print '[%s] Processed query %s in %d ms' %(time.strftime("%Y-%m-%d %H:%M:%S"),self.path,int(delta_time*1000))
             else:
+                # show the search form
+                f = open(curdir + sep + "searchForm.html")
+                search_form = f.read()
+                f.close()
                 self.send_response(200)
                 self.send_header('Content-type','text/html')
                 self.end_headers()

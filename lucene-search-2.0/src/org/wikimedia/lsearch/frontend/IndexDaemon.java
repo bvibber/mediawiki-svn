@@ -25,15 +25,16 @@ public class IndexDaemon {
 	}
 
 	public void updatePage(String databaseName, String pageId, Title title, String isRedirect, String text ) {
-		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, isRedirect.equals("1"), IndexUpdateRecord.Action.UPDATE));
+		// FIXME: ranks are ignored!
+		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, isRedirect.equals("1"), 1, IndexUpdateRecord.Action.UPDATE));
 	}
 
 	public void deletePage(String databaseName, String pageId, Title title) {
-		IndexThread.enqueue(new IndexUpdateRecord(databaseName,Long.parseLong(pageId),title,"",false,IndexUpdateRecord.Action.DELETE));
+		IndexThread.enqueue(new IndexUpdateRecord(databaseName,Long.parseLong(pageId),title,"",false, 1, IndexUpdateRecord.Action.DELETE));
 	}
 
 	public void addPage(String databaseName, String pageId, Title title, String text) {
-		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, false, IndexUpdateRecord.Action.ADD));
+		IndexThread.enqueue(new IndexUpdateRecord(databaseName, Long.parseLong(pageId), title, text, false, 1, IndexUpdateRecord.Action.ADD));
 	}
 
 	public String getStatus() {

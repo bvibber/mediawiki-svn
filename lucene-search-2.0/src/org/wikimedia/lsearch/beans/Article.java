@@ -36,6 +36,7 @@ public class Article implements Serializable  {
 	private String namespace, title, contents;
 	private boolean redirect;
 	private long pageId;
+	private int rank;
 	
 	public Article(){
 		namespace="";
@@ -43,30 +44,25 @@ public class Article implements Serializable  {
 		contents="";
 		pageId = 0;
 		redirect=false;
-	}
-	public Article(String dbname, String namespace_, 
-			String title_, String contents_, long pageId_, boolean isRedirect_) {
-		namespace = namespace_;
-		title = title_;
-		contents = contents_;
-		pageId = pageId_;
-		redirect = isRedirect_;
+		rank=0;
 	}
 	
-	public Article(long pageId, Title title, String text, boolean redirect) {
+	public Article(long pageId, Title title, String text, boolean redirect, int rank) {
 		namespace = Integer.toString(title.getNamespace());
 		this.title = title.getTitle();
 		contents = text;
 		this.pageId = pageId;
 		this.redirect = redirect;
+		this.rank = rank;
 	}
 	
-	public Article(long pageId, int namespace, String titleText, String text, boolean redirect) {
+	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int rank) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		contents = text;
 		this.redirect = redirect;
 		this.pageId = pageId;
+		this.rank = rank;
 	}
 	
 	public boolean isRedirect() {
@@ -96,7 +92,7 @@ public class Article implements Serializable  {
 	public String getTitle() {
 		return title;
 	}
-
+	
 	public long getPageId() {
 		return pageId;
 	}
@@ -114,4 +110,9 @@ public class Article implements Serializable  {
 	public String toString() {
 		return "(" + namespace + ",\"" + title + "\")";
 	}
+	
+	public int getRank() {
+		return rank;
+	}
+	
 }

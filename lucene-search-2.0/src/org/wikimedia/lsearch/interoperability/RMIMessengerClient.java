@@ -163,11 +163,11 @@ public class RMIMessengerClient {
 		}
 	}
 	
-	public SearchResults searchPart(IndexId iid, Query query, NamespaceFilterWrapper filter, int offset, int limit, String host){
+	public SearchResults searchPart(IndexId iid, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain, String host){
 		try {
 			RMIMessenger r = messengerFromCache(host);
 			log.debug("Calling searchPart("+iid+",("+query+"),"+offset+","+limit+") on "+host);
-			SearchResults res = r.searchPart(iid.toString(),query,filter,offset,limit);
+			SearchResults res = r.searchPart(iid.toString(),query,filter,offset,limit,explain);
 			log.debug(" \\-> got: "+res);
 			return res;
 		} catch (Exception e) {

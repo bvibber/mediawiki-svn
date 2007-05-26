@@ -37,7 +37,8 @@ public class OAIParser extends DefaultHandler {
 	protected String oaiId,pageId,resumptionToken,responseDate;
 	protected boolean beginMW; // beginning of mediawiki stream
 	protected String mwUri, mwLocalName, mwQName;
-	protected boolean isDeleted;
+	protected boolean isDeleted, inReferences;
+	protected String references;
 	
 	
 	public OAIParser(InputStream in, IndexUpdatesCollector collector){
@@ -46,9 +47,9 @@ public class OAIParser extends DefaultHandler {
 		this.collector = collector;
 		inDump = false; inIdentifier = false; inResumptionToken = false;
 		inRecord = false; inHeader = false; inMetadata = false;
-		inResponseDate = false;
+		inResponseDate = false; inReferences = false;
 		oaiId = ""; resumptionToken = ""; responseDate = "";
-		beginMW = true;
+		beginMW = true; references = "";
 	}
 	
 	public void parse() throws IOException{
@@ -69,7 +70,11 @@ public class OAIParser extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName, Attributes attributes) throws SAXException {
 		if(inDump && qName.equals("upload"))
 			inDump = false; // mwdumper isn't parsing upload tag ... 
-		else if(inDump)
+		else if(inDump && qName.equals("references")){
+			inDump = false; // lsearch syntax
+			inReferences = true;
+			references = "";
+		} else if(inDump)
 			dumpReader.startElement(uri, localName, qName, attributes);
 		else if(qName.equals("record"))
 			inRecord = true;
@@ -109,8 +114,11 @@ public class OAIParser extends DefaultHandler {
 		} else if(inDump)
 			dumpReader.endElement(uri, localName, qName);
 		else if(qName.equals("upload"))
-			inDump = true; // we ignored upload tag, we can now resume
-		else if(qName.equals("record"))
+			inDump = true; // we ignored upload tag / parsed references, we can now resume
+		else if(qName.equals("references")){
+			inDump = true;
+			collector.setReferences(Integer.parseInt(references));
+		} else if(qName.equals("record"))
 			inRecord = false;
 		else if(qName.equals("header"))
 			inHeader = false;
@@ -143,6 +151,8 @@ public class OAIParser extends DefaultHandler {
 			resumptionToken += new String(ch,start,length);
 		} else if(inResponseDate){
 			responseDate += new String(ch,start,length);
+		} else if(inReferences){
+			references += new String(ch,start,length);
 		}
 	}
 	
@@ -164,5 +174,7 @@ public class OAIParser extends DefaultHandler {
 	public String getResponseDate() {
 		return responseDate;
 	}
+	
+	
 	
 }

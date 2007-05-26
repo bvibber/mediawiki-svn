@@ -25,6 +25,7 @@ using AND/OR and +/- operators.
 <li> Improved scoring. Short articles are not strongly favored any more,
 and stemmed words are penalized. Number are included in the index.
 
+<li> Accentless search. Accents are automatically removed in both indexed and searched terms.
 </ul>
 Send comments to: Robert Stojnić (rainmansr@gmail.com)
 </p>
@@ -58,8 +59,9 @@ Wiki:
 		<option value="fiwiki">fiwiki</option>
 		<option value="nowiki">nowiki</option>
 		<option value="srwiki">srwiki</option>	
-		<option value="wikilucene">wikilucene</option>
-		<option value="wikidev">wikidev</option> 
+		<option value="enwiktionary">enwiktionary</option>
+		<!-- <option value="wikilucene">wikilucene</option>
+		<option value="wikidev">wikidev</option>   -->
 	</select>
 	
 Search for <input type='text' name="query" value="" size="30" />

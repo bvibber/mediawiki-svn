@@ -70,6 +70,8 @@ public class SearchDaemon extends HttpHandler {
 				sendOutputLine(Integer.toString(res.getNumHits()));
 				for(ResultSet rs : res.getResults()){
 					sendResultLine(rs.score, rs.namespace, rs.title);
+					if(rs.getExplanation() != null)
+						sendOutputLine(rs.getExplanation().toString());
 				}
 			} else{
 				sendError(500, "Server error", res.getErrorMsg());

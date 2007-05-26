@@ -18,6 +18,7 @@ public class IndexUpdatesCollector implements DumpWriter {
 	protected Revision revision;
 	protected ArrayList<IndexUpdateRecord> records = new ArrayList<IndexUpdateRecord>();
 	protected IndexId iid;
+	protected int references;
 	
 	public IndexUpdatesCollector(IndexId iid){
 		this.iid = iid;
@@ -25,7 +26,7 @@ public class IndexUpdatesCollector implements DumpWriter {
 	
 	public void addDeletion(long pageId){
 		// pageId is enough for page deletion
-		Article article = new Article(pageId,-1,"","",false);
+		Article article = new Article(pageId,-1,"","",false,1);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.DELETE));
 		log.debug(iid+": Deletion for "+pageId);
 	}
@@ -40,8 +41,9 @@ public class IndexUpdatesCollector implements DumpWriter {
 	public void writeStartPage(Page page) throws IOException {
 		this.page = page;
 	}
-	public void writeEndPage() throws IOException {
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect());
+	public void writeEndPage() throws IOException {		
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),references);
+		log.info("Collected "+article+" with rank "+references);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.UPDATE));
 		log.debug(iid+": Update for "+article);
 	}	
@@ -58,4 +60,14 @@ public class IndexUpdatesCollector implements DumpWriter {
 	public void writeStartWiki() throws IOException {
 	}
 
+	public int getReferences() {
+		return references;
+	}
+
+	public void setReferences(int references) {
+		this.references = references;
+	}
+
+	
+	
 }

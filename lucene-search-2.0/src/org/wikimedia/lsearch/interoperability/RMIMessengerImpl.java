@@ -81,9 +81,9 @@ public class RMIMessengerImpl implements RMIMessenger {
 	}
 
 	// inherit javadoc
-	public SearchResults searchPart(String dbrole, Query query, NamespaceFilterWrapper filter, int offset, int limit) throws RemoteException {
+	public SearchResults searchPart(String dbrole, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
 		log.debug("Received request searchMainPart("+dbrole+","+query+","+offset+","+limit+")");
-		return new SearchEngine().searchPart(IndexId.get(dbrole),query,filter,offset,limit);
+		return new SearchEngine().searchPart(IndexId.get(dbrole),query,filter,offset,limit,explain);
 	}
 	
 	// inherit javadoc

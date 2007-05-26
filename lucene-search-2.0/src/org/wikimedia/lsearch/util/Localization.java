@@ -21,6 +21,8 @@ public class Localization {
 	static org.apache.log4j.Logger log = Logger.getLogger(Localization.class);
 	/** langCode -> name -> ns_id */ 
 	protected static Hashtable<String,Hashtable<String,Integer>> namespaces = new Hashtable<String,Hashtable<String,Integer>>();
+	/** langCode -> redirect magic wods */
+	protected static Hashtable<String,HashSet<String>> redirects = new Hashtable<String,HashSet<String>>();
 	protected static Object lock = new Object();
 	/** Languages for which loading of localization failed */
 	protected static HashSet<String> badLocalizations = new HashSet<String>();
@@ -36,11 +38,12 @@ public class Localization {
 	
 	public static HashSet<String> getLocalizedNamespace(String langCode, int nsId){
 		synchronized (lock){
+			langCode = langCode.toLowerCase();
 			if(namespaces.get(langCode)==null){
-				if(!readLocalization(langCode))
+				if(badLocalizations.contains(langCode) || !readLocalization(langCode))
 					return new HashSet<String>();
 			}
-			return collect(namespaces.get(langCode.toLowerCase()),nsId);
+			return collect(namespaces.get(langCode),nsId);
 		}
 	}
 	
@@ -63,23 +66,25 @@ public class Localization {
 
 	/** Reads localization for language, return true if success */
 	public static boolean readLocalization(String langCode){
+		langCode = langCode.toLowerCase();
 		return readLocalization(langCode,0);
 	}
 	
 	/** Level is recursion level (to detect infinite recursion if language
 	 * defines itself as a fallback) */
 	protected static boolean readLocalization(String langCode, int level){
+		Configuration config = Configuration.open();
 		if(langCode == null || langCode.equals(""))
 			return false;
 		if(level == 5) // max 5 recursions in depth
 			return false;
+		log.info("Reading localization for "+langCode);
 		// make title case
 		langCode = langCode.substring(0,1).toUpperCase()+langCode.substring(1).toLowerCase();
-		if(badLocalizations.contains(langCode)){
+		if(badLocalizations.contains(langCode.toLowerCase())){
 			log.debug("Localization for "+langCode.toLowerCase()+" previously failed");
 			return false;
-		}
-		Configuration config = Configuration.open();
+		}		
 		String loc = config.getString("Localization","url");
 		if(loc == null){
 			log.warn("Property Localization.url not set in config file. Localization disabled.");
@@ -93,8 +98,13 @@ public class Localization {
 			String text = parser.readURL(url);
 			if(text!=null && text.length()!=0){
 				Hashtable<String,Integer> ns = parser.getNamespaces(text);
+				HashSet<String> redirect = parser.getRedirectMagic(text);
+				if(redirect != null)
+					redirects.put(langCode.toLowerCase(),redirect);
+				else
+					redirects.put(langCode.toLowerCase(),new HashSet<String>());
 				if(ns!=null && ns.size()!=0){
-					namespaces.put(langCode.toLowerCase(),ns);
+					namespaces.put(langCode.toLowerCase(),ns);					
 					log.debug("Succesfully loaded localization for "+langCode.toLowerCase());
 					return true;
 				} else{ // maybe a fallback language is defines instead
@@ -102,8 +112,10 @@ public class Localization {
 					if(fallback!=null && !fallback.equals("")){
 						fallback = fallback.replace('-','_');
 						boolean succ = readLocalization(fallback,level+1);
-						if(succ)
+						if(succ){
 							namespaces.put(langCode.toLowerCase(),namespaces.get(fallback.toLowerCase()));
+							redirects.put(langCode.toLowerCase(),redirects.get(fallback.toLowerCase()));
+						}
 						return succ;
 					}
 				}
@@ -112,8 +124,49 @@ public class Localization {
 			log.warn("Error processing message file at "+MessageFormat.format(loc,langCode));
 		}
 		log.warn("Could not load localization for "+langCode);
-		badLocalizations.add(langCode);
+		badLocalizations.add(langCode.toLowerCase());
 		return false;
+	}
+	
+	/** Returns redirect taget if this is redirect, otherwise returns null */
+	public static String getRedirectTarget(String text, String lang){
+		// quick check
+		if(text.length()==0 || text.charAt(0)!='#')
+			return null;
+		int linesep = text.indexOf('\n');
+		String line; // fetch first line
+		if(linesep == -1)
+			line = text.toLowerCase();
+		else
+			line = text.substring(0,linesep).toLowerCase();
+		
+		if(lang != null){
+			lang = lang.toLowerCase();
+			if(redirects.get(lang)==null){
+				synchronized (lock){			
+					readLocalization(lang);
+				}
+			}
+		}
+		boolean isRed = false;
+		if(line.startsWith("#redirect"))
+			isRed = true;
+		else if(lang != null ){
+			for(String magic : redirects.get(lang)){
+				if(line.startsWith(magic)){
+					isRed = true;
+					break;
+				}
+			}
+		}
+		if(isRed){ // it's redirect now find target
+			int begin = line.indexOf("[[");
+			int end = line.indexOf("]]");
+			if(begin != -1 && end != -1 && end > begin){
+				return text.substring(begin+2,end);
+			}
+		}
+		return null;
 	}
 	
 	/** Loads interwiki from default location lib/interwiki.map */

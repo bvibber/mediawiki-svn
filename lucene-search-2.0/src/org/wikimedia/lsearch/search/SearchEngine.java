@@ -46,14 +46,14 @@ public class SearchEngine {
 		
 		if (what.equals("titlematch")) {
 			// TODO: return searchTitles(searchterm);
-		} else if (what.equals("search")) {
+		} else if (what.equals("search") || what.equals("explain")) {
 			int offset = 0, limit = 100;
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
 				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
-			SearchResults res = search(iid, searchterm, offset, limit, namespaces);
+			SearchResults res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"));
 			if(res.isRetry()){
 				int retries = 0;
 				if(iid.isSplit()){
@@ -62,7 +62,7 @@ public class SearchEngine {
 					retries = 1;
 				
 				while(retries > 0 && res.isRetry()){
-					res = search(iid, searchterm, offset, limit, namespaces);
+					res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"));
 					retries--;
 				}
 				if(res.isRetry())
@@ -74,7 +74,7 @@ public class SearchEngine {
 		} else {
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Unrecognized search type. Try one of: " +
-			              "titlematch, titleprefix, search, quit, raw.");
+			              "titlematch, titleprefix, search, explain, quit, raw.");
 			log.warn("Unknown request type [" + what + "].");
 			return res;
 		}
@@ -82,7 +82,7 @@ public class SearchEngine {
 	}
 	
 	/** Search mainpart or restpart of the split index */
-	public SearchResults searchPart(IndexId iid, Query q, NamespaceFilterWrapper filter, int offset, int limit){
+	public SearchResults searchPart(IndexId iid, Query q, NamespaceFilterWrapper filter, int offset, int limit, boolean explain){
 		if( ! iid.isMainsplit())
 			return null;
 		try {
@@ -93,7 +93,7 @@ public class SearchEngine {
 			searcher = cache.getLocalSearcher(iid);
 
 			Hits hits = searcher.search(q,filter);
-			return makeSearchResults(searcher,hits,offset,limit,iid,q.toString(),q,searchStart);		
+			return makeSearchResults(searcher,hits,offset,limit,iid,q.toString(),q,searchStart,explain);		
 		} catch (IOException e) {
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Internal error in SearchEngine: "+e.getMessage());
@@ -107,7 +107,7 @@ public class SearchEngine {
 	 * Search on iid, with query searchterm. View results from offset to offset+limit, using
 	 * the default namespaces filter
 	 */
-	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, NamespaceFilter nsDefault){
+	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, NamespaceFilter nsDefault, boolean explain){
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid);
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
@@ -154,7 +154,7 @@ public class SearchEngine {
 					return res;
 				}
 				RMIMessengerClient messenger = new RMIMessengerClient();
-				return messenger.searchPart(iid.getMainPart(),q,null,offset,limit,host);
+				return messenger.searchPart(iid.getMainPart(),q,null,offset,limit,explain,host);
 			// restpart special case
 			} else if(nsfw!=null && iid.isMainsplit() && !nsfw.getFilter().contains(0)){
 				String host = searcher.getRestPartHost();
@@ -165,11 +165,11 @@ public class SearchEngine {
 					return res;
 				}
 				RMIMessengerClient messenger = new RMIMessengerClient();
-				return messenger.searchPart(iid.getRestPart(),q,nsfw,offset,limit,host);
+				return messenger.searchPart(iid.getRestPart(),q,nsfw,offset,limit,explain,host);
 			} else{ // normal search
 				try{
 					hits = searcher.search(q,nsfw,offset+limit);
-					res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart);
+					res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 					return res;
 				} catch(Exception e){
 					e.printStackTrace();
@@ -193,7 +193,12 @@ public class SearchEngine {
 		}
 	}
 
-	protected SearchResults makeSearchResults(SearchableMul s, TopDocs hits, int offset, int limit, IndexId iid, String searchterm, Query q, long searchStart) throws IOException{
+	/** Our scores can span several orders of magnitude, transform them to be more relevant to the user */
+	public float transformScore(double score){
+		return (float) (Math.log10(1+score*99)/2);		
+	}
+	
+	protected SearchResults makeSearchResults(SearchableMul s, TopDocs hits, int offset, int limit, IndexId iid, String searchterm, Query q, long searchStart, boolean explain) throws IOException{
 		SearchResults res = new SearchResults();
 		int numhits = hits.totalHits;
 		res.setSuccess(true);			
@@ -215,15 +220,19 @@ public class SearchEngine {
 		for(Document doc : docs){
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
-			float score = scores[j++]/maxScore; 
-			res.addResult(new ResultSet(score,namespace,title));
+			float score = transformScore(scores[j]/maxScore); 
+			ResultSet rs = new ResultSet(score,namespace,title);
+			if(explain)
+				rs.setExplanation(((WikiSearcher)s).explain(q,docids[j]));
+			res.addResult(rs);
+			j++;
 		}
 		
 		return res;
 	}
 	
 	/** Make search results from Hits */
-	protected SearchResults makeSearchResults(SearchableMul s, Hits hits, int offset, int limit, IndexId iid, String searchterm, Query q, long searchStart) throws IOException{
+	protected SearchResults makeSearchResults(SearchableMul s, Hits hits, int offset, int limit, IndexId iid, String searchterm, Query q, long searchStart, boolean explain) throws IOException{
 		SearchResults res = new SearchResults();
 		int numhits = hits.length();
 		res.setSuccess(true);			
@@ -244,8 +253,12 @@ public class SearchEngine {
 		for(Document doc : docs){
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
-			float score = scores[j++]; 
-			res.addResult(new ResultSet(score,namespace,title));
+			float score = transformScore(scores[j]); 
+			ResultSet rs = new ResultSet(score,namespace,title);
+			if(explain)
+				rs.setExplanation(((IndexSearcherMul)s).explain(q,docids[j]));
+			res.addResult(rs);
+			j++;
 		}
 		
 		return res;

@@ -63,7 +63,7 @@ public interface RMIMessenger extends Remote {
 	 * @param limit
 	 * @throws RemoteException
 	 */
-	public SearchResults searchPart(String dbrole, Query query, NamespaceFilterWrapper filter, int offset, int limit) throws RemoteException;
+	public SearchResults searchPart(String dbrole, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException;
 	
 	/**
 	 * Returns index queue size. Needed for incremental updater, so it doesn't overload the indexer. 
