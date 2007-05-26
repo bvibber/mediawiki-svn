@@ -115,10 +115,6 @@ class Thread {
 	/* Identity */
 	protected $id;
 
-	/**
-	 * Make the given Post a reply to this.
-	 * 	
-	*/
 	function setSuperthread($thread) {
 		$this->superthreadId = $thread->id();
 		$this->updateRecord();
@@ -182,6 +178,22 @@ class Thread {
 		$t->subject = $line->thread_subject;
 		return $t;
 	}
+	
+	static function newFromId( $id ) {
+		$foo = Thread::threadsWhere( array('thread_id' => $id) );
+		return count($foo) > 0 ? $foo[0] : null;
+	}
+
+	static function newThread( $root_post, $article ) {
+		$dbr =& wfGetDB( DB_MASTER );
+		$res = $dbr->insert('lqt_thread',
+			array('thread_article' => $article->getID(),
+			      'thread_root_post' => $root_post->getID(),
+			      'thread_touched' => wfTimestampNow()),
+			__METHOD__);
+		// TODO we could avoid a query here.
+		return Thread::newFromId( $dbr->insertId() );
+	}
 
 	static function latestNThreadsOfArticle( $article, $n ) {
 		return Thread::threadsWhere( array('thread_article' => $article->getID(),
@@ -194,6 +206,10 @@ class Thread {
 		return Thread::threadsWhere( array('thread_article' => $article->getID(),
 		                                   'thread_subthread_of is null'),
 											array('ORDER BY' => 'thread_touched DESC') );
+	}
+	
+	static function threadsOfPost( $post ) {
+		return Thread::threadsWhere( array('thread_root_post' => $post->getID()) );
 	}
 
 	static function threadsWhere( $where_clause, $options = array() ) {

@@ -45,6 +45,7 @@ class EditPage {
 	public $editFormTextAfterTools;
 	public $editFormTextBottom;
 
+	public $didSave = false; # LQT HACK.
 
 	/**
 	 * @todo document
@@ -732,6 +733,7 @@ class EditPage {
 			$isComment=($this->section=='new');
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
 				$this->minoredit, $this->watchthis, false, $isComment);
+			$this->didSave = true; # LQT HACK.
 
 			wfProfileOut( $fname );
 			return false;
@@ -865,6 +867,7 @@ class EditPage {
 		# update the article here
 		if( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
 			$this->watchthis, '', $sectionanchor ) ) {
+			$this->didSave = true; # LQT HACK. 
 			wfProfileOut( $fname );
 			return false;
 		} else {

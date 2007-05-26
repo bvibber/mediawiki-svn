@@ -81,8 +81,10 @@ class LqtView {
 		@return true if the value of the give query variable name is equal to the given post's ID.
 	*/
 	function commandApplies( $command, $post ) {
-		
-		return $this->request->getInt($command) == $post->getID();
+		return $this->request->getVal($command) == $post->getTitle()->getPrefixedURL();
+	}
+	function commandAppliesToThread( $command, $thread ) {
+		return $this->request->getVal($command) == $thread->id();
 	}
 	
 	/*************************
@@ -90,7 +92,6 @@ class LqtView {
 	*************************/
 
 	function openDiv( $class = null ) {
-		
 		if ( $class )
 			$this->output->addHTML( wfOpenElement( 'div', array('class'=>$class) ) );
 		else
@@ -98,7 +99,6 @@ class LqtView {
 	}
 
 	function closeDiv() {
-		
 		$this->output->addHTML( wfCloseElement( 'div' ) );
 	}
 
@@ -112,25 +112,36 @@ class LqtView {
 
 	function showPostEditingForm( $post ) {
 		$pp = new PostProxy( $post, $this->request );
-		$this->showEditingFormInGeneral( $pp, 'editExisting', $post->getID() );
+		$this->showEditingFormInGeneral( $pp, 'editExisting', $post->getTitle() );
 	}
 
-	function showReplyForm( $post ) {
+	function showReplyForm( $thread ) {
 		$pp = new PostProxy( null, $this->request );
-		$this->showEditingFormInGeneral( $pp, 'reply', $post->getID() );
+		$this->showEditingFormInGeneral( $pp, 'reply', $thread );
 	}
 
 	function showEditingFormInGeneral( $post_proxy, $edit_type, $edit_applies_to ) {
 
 		$pp = $post_proxy;
 		
-		$this->output->addHTML("<p>Doing an $edit_type to $edit_applies_to.");
+		// If there is no article, we need a randomly-generated title. On the first pass,
+		// we generate one. After that, we find it in the request.
+		if ( $pp->article == null ) {
+			$rt = Title::newFromURL( $pp->request->getVal('lqt_edit_post') );
+			$t = $rt ? $rt : $this->scratchTitle();
+			$article = new Article( $t );
+		} else {
+			$article = $pp->article;
+		}
 		
 		// this only works for editing because we refer to the article directly.
 		
-		$e = new EditPage($pp->article);
-		$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_edit_post\" value=\"{$pp->article->getID()}\">";
-//		$e->setAction( $this->title->getFullURL( "lqt_edit_post={$pp->article->getID()}" ) );
+		$e = new EditPage($article);
+		$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_edit_post\" value=\"{$article->getTitle()->getPrefixedURL()}\">";
+		
+		if ( $edit_type == 'reply' ) {
+			$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_reply_to\" value=\"{$edit_applies_to->id()}\">";
+		}
 
 /*		if ( $p->thread()->firstPost()->getID() == $p->getID() ) {
 			// This is the thread's root post; display topic field.
@@ -145,14 +156,19 @@ class LqtView {
 //		$wgOut->setArticleRelated( false ); 
 		$this->output->setArticleFlag( false );
 
-		// Override editpage's redirect.
-//		if ($e->didRedirect) {
 		// I have lost track of where the redirect happens, so I can't set a flag there until I find it.
 		// In the meantime, just check if somewhere somebody redirected. I'm afraid this might have
 		// unwanted side-effects.
 		if ( $this->output->getRedirect() != '' ) {
-			$t = $pp->article->getTitle()->getPartialURL();
 			$this->output->redirect( $this->title->getFullURL() );
+		}
+		
+		// If this is a reply and the page was saved, we need to create a new thread
+		// pointing to the new page and with the appropriate superthread.
+		if ($edit_type == 'reply' && $e->didSave) {
+			// TODO this is two database writes instead of one.
+			$t = Thread::newThread( $article, $this->article );
+			$t->setSuperthread( $edit_applies_to );
 		}
 
 /*		// Save new topic line if there is one:
@@ -160,6 +176,11 @@ class LqtView {
 			$v = Sanitizer::stripAllTags($wgRequest->getVal('lqt_topic'));
 			$p->setSubject($v);
 		}*/
+	}
+	
+	function scratchTitle() {
+		$token = md5(uniqid(rand(), true));
+		return Title::newFromText( "Post:$token" );
 	}
 
 
@@ -188,10 +209,10 @@ class LqtView {
 		}
 	}
 
-	function showPostCommands( $post ) {
+	function showThreadCommands( $thread ) {
 		
-		$commands = array( 'Edit' => $this->selflink( array( LQT_COMMAND_EDIT_POST => $post->getID() ) ),
-						   'Reply' => $this->selflink( array( LQT_COMMAND_REPLY_TO_POST => $post->getID() ) ));
+		$commands = array( 'Edit' => $this->selflink( array( LQT_COMMAND_EDIT_POST => $thread->rootPost()->getTitle()->getPrefixedURL() ) ),
+						   'Reply' => $this->selflink( array( LQT_COMMAND_REPLY_TO_POST => $thread->id() ) ));
 						
 		$this->output->addHTML(wfOpenElement('ul', array('class'=>'lqt_footer')));
 		
@@ -204,21 +225,23 @@ class LqtView {
 		$this->output->addHTML(wfCloseELement('ul'));
 	}
 
-	function showPost( $post ) {
+	function showRootPost( $thread ) {
+		$post = $thread->rootPost();
+		
 		$this->openDiv( 'lqt_post' );
 		
 		if( $this->commandApplies( LQT_COMMAND_EDIT_POST, $post ) ) {
 			$this->showPostEditingForm( $post );
 		} else{
 			$this->showPostBody( $post );
-			$this->showPostCommands( $post );
+			$this->showThreadCommands( $thread );
 		}
 		
 		$this->closeDiv();
 		
-		if( $this->commandApplies( LQT_COMMAND_REPLY_TO_POST, $post ) ) {
+		if( $this->commandAppliesToThread( LQT_COMMAND_REPLY_TO_POST, $thread ) ) {
 			$this->indent();
-			$this->showReplyForm( $post );
+			$this->showReplyForm( $thread );
 			$this->unindent();
 		}
 	}
@@ -230,7 +253,7 @@ class LqtView {
 
 	function showThread( $thread ) {
 		$this->showThreadHeading( $thread );
-		$this->showPost( $thread->rootPost() );
+		$this->showRootPost( $thread );
 		$this->indent();
 		foreach( $thread->subthreads() as $st ) {
 			$this->showThread($st);
