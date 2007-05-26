@@ -2,93 +2,6 @@
 
 require_once('Article.php');
 
-/**
-	Contains the informaton needed to show an edit, reply, or new post form.
-	Can grab that information either from an article in the database, or from
-	the $wgRequest (or any other request). Can also present blank information
-	for the case of replies or new posts on the first run through the
-	edit-preview-diffs cycle.
-*/
-class PostProxy {
-
-	static $names = array( 'content', 'summary', 'preview', 'save', 'editType', 'editAppliesTo' );
-
-	/**
-		@param $article an Article object to first fetch values from, or null
-				if you want a blank form.
-		@param $request e.g. $wgRequest whose values will override the
-				values in $article.
-	*/
-	function __construct( $article = null, $request = null ) {
-		$this->article = $article;
-		$this->request = $request;
-	}
-	
-	function content() {
-		$from_request = $this->request->getVal('content', null);
-		if( $from_request ) {
-			return $from_request;
-		} else if ($this->article) {
-			$rev = Revision::newFromTitle( $this->article->getTitle() );
-			return $rev->getText();
-		} else {
-			return '';
-		}
-	}
-	
-	function summary() {
-		$from_request = $this->request->getVal('summary', null);
-		if( $from_request ) {
-			return $from_request;
-		} else {
-			return '';
-		}
-	}
-	
-	function submittedPreview() {
-		if ( $this->request ) return $this->request->getBool( 'preview' );
-		else return false;
-	}
-	
-	function submittedSave() {
-		if ( $this->request ) return $this->request->getBool( 'save' );
-		else return false;
-	}
-	
-	function editAppliesTo() {
-		if ( $this->request && $this->request->getVal('editAppliesTo') ) {
-			$title =  Title::newFromID();
-			return $title ? new Article($title) : null;
-		}
-		else return null;
-	}
-	
-	/**
-	 * 'reply' if we're replying to a post,
-	 * 'edit' if we're editing an existing post,
-	 * 'new' if we're writing a new top-level post.
-	*/
-	function editType() {
-		if ( $this->request ) return $this->request->getVal( 'editType' );
-		else return null;
-	}
-	
-	/**
-		All available information in the form:
-		array( array( 'name' => $name, 'value' => $value ), ... )
-		where 'name' and 'value' are literal strings.
-		The given name is what you probably want to use for form field names.
-		
-		NOTE: this no longer works because of submitted* methods.
-	*/
-	function dump() {
-		$result = array();
-		foreach( PostProxy::$names as $name ) {
-			$result[] = array( 'name' => $name, 'value' => $this->$name() );
-		}
-		return result;
-	}
-}
 
 class Post extends Article {
 	// Empty for the time being.
@@ -118,6 +31,12 @@ class Thread {
 	function setSuperthread($thread) {
 		$this->superthreadId = $thread->id();
 		$this->updateRecord();
+	}
+	
+	function superthread() {
+		if ( !$this->superthreadId ) return null;
+		if ( !$this->superthread ) $this->superthread = Thread::newFromId($this->superthreadId);
+		return $this->superthread;
 	}
 	
 	function id() {

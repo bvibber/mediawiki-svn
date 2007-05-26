@@ -78,7 +78,7 @@ li {
         background-color: white;
 }
 
-.lqt_post { border: solid 1px #ddd; margin-top: 0.1in; padding: 0.2em; }
+.lqt_post { border: solid 0px #ddd; margin-top: 0.1in; padding: 0.2em; }
 
 .lqt_post_highlight { border: solid 1px #fabd23; margin-top: 0.1in; padding: 0.2em; }
 

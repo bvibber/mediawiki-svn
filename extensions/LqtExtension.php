@@ -107,32 +107,27 @@ class LqtView {
 	*******************************/
 
 	function showNewThreadForm() {
-		$pp = new PostProxy( null, $this->request );
-		$this->showEditingFormInGeneral( $pp, 'new', null );
+		$this->showEditingFormInGeneral( null, 'new', null );
 	}
 
-	function showPostEditingForm( $post ) {
-		$pp = new PostProxy( $post, $this->request );
-		$this->showEditingFormInGeneral( $pp, 'editExisting', $post->getTitle() );
+	function showPostEditingForm( $thread ) {
+		$this->showEditingFormInGeneral( $thread, 'editExisting', null );
 	}
 
 	function showReplyForm( $thread ) {
-		$pp = new PostProxy( null, $this->request );
-		$this->showEditingFormInGeneral( $pp, 'reply', $thread );
+		$this->showEditingFormInGeneral( null, 'reply', $thread );
 	}
 
-	function showEditingFormInGeneral( $post_proxy, $edit_type, $edit_applies_to ) {
-
-		$pp = $post_proxy;
+	function showEditingFormInGeneral( $thread, $edit_type, $edit_applies_to ) {
 		
 		// If there is no article (reply or new), we need a randomly-generated title.
 		// On the first pass, we generate one. After that, we find it in the request.
-		if ( $pp->article == null ) {
+		if ( $thread == null ) {
 			$rt = Title::newFromURL( $pp->request->getVal('lqt_edit_post') );
 			$t = $rt ? $rt : $this->scratchTitle();
 			$article = new Article( $t );
 		} else {
-			$article = $pp->article;
+			$article = $thread->rootPost();
 		}
 		
 		$e = new EditPage($article);
@@ -229,7 +224,7 @@ class LqtView {
 		$this->openDiv( 'lqt_post' );
 		
 		if( $this->commandApplies( LQT_COMMAND_EDIT_POST, $post ) ) {
-			$this->showPostEditingForm( $post );
+			$this->showPostEditingForm( $thread );
 		} else{
 			$this->showPostBody( $post );
 			$this->showThreadCommands( $thread );
