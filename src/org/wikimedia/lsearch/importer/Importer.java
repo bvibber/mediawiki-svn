@@ -2,11 +2,15 @@ package org.wikimedia.lsearch.importer;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 import org.mediawiki.dumper.ProgressFilter;
 import org.mediawiki.dumper.Tools;
 import org.mediawiki.importer.XmlDumpReader;
+import org.wikimedia.lsearch.beans.Rank;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
@@ -22,7 +26,7 @@ import org.wikimedia.lsearch.util.UnicodeDecomposer;
  *
  */
 public class Importer {
-
+	static Logger log;  
 	/**
 	 * @param args
 	 */
@@ -38,7 +42,7 @@ public class Importer {
 		System.out.println("MediaWiki Lucene search indexer - index builder from xml database dumps.\n");
 		
 		Configuration.open();
-		Logger log = Logger.getLogger(Importer.class); 
+		log = Logger.getLogger(Importer.class);
 		
 		if(args.length < 2){
 			System.out.println("Syntax: java Importer [-n] [-s] [-l limit] [-o optimize] [-m mergeFactor] [-b maxBufDocs] <inputfile> <dbname>");
@@ -82,14 +86,29 @@ public class Importer {
 				return;
 			}
 
+			String langCode = GlobalConfiguration.getInstance().getLanguage(dbname);
 			// preload
 			UnicodeDecomposer.getInstance();
-			Localization.readLocalization(GlobalConfiguration.getInstance().getLanguage(dbname));
+			Localization.readLocalization(langCode);
 			Localization.loadInterwiki();
 
 			long start = System.currentTimeMillis();
-
-			// open
+			
+			HashMap<String,Rank> ranks = processRanks(inputfile,getTitles(inputfile),langCode);
+			
+			// add-up ranks of redirects to pages where they redirect to
+			for(Rank r : ranks.values()){
+				if(r.redirect != null){
+					Rank dest = ranks.get(r.redirect);
+					if(dest != null && dest != r){
+						dest.links += r.links;
+						r.links = 0;
+					}
+				}
+			}
+			log.info("Third pass, indexing articles...");
+			
+			// open			
 			InputStream input = null;
 			try {
 				input = Tools.openInputFile(inputfile);
@@ -99,7 +118,7 @@ public class Importer {
 			}
 
 			// read
-			DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex);
+			DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,ranks,langCode);
 			XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(dp, 100));
 			try {
 				reader.readDump();
@@ -135,6 +154,50 @@ public class Importer {
 			} else
 				IndexThread.makeIndexSnapshot(iid,iid.getImportPath());
 		}		
+	}
+
+	private static HashMap<String,Rank> processRanks(String inputfile, HashMap<String,Rank> ranks, String langCode) {
+		log.info("Second pass, calculating article ranks...");
+		InputStream input = null;
+		// second pass - calculate page ranks
+		try {
+			input = Tools.openInputFile(inputfile);
+		} catch (IOException e) {
+			log.fatal("I/O error opening "+inputfile);
+			return null;
+		}
+		// calculate ranks
+		RankReader rr = new RankReader(ranks,langCode);
+		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(rr, 100));
+		try {
+			reader.readDump();
+		} catch (IOException e) {
+			log.fatal("I/O error reading dump while calculating ranks for from "+inputfile);
+			return null;
+		}		
+		return ranks;
+	}
+
+	private static HashMap<String,Rank> getTitles(String inputfile) {
+		log.info("First pass, getting a list of valid articles...");
+		InputStream input = null;
+		try {
+			input = Tools.openInputFile(inputfile);
+		} catch (IOException e) {
+			log.fatal("I/O error opening "+inputfile);
+			return null;
+		}
+		// first pass, get titles
+		TitleReader tr = new TitleReader();
+		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(tr, 100));
+		try {
+			reader.readDump();
+			input.close();
+		} catch (IOException e) {
+			log.fatal("I/O error reading dump while getting titles from "+inputfile);
+			return null;
+		}
+		return tr.getTitles();
 	}
 
 	private static String formatTime(long l) {

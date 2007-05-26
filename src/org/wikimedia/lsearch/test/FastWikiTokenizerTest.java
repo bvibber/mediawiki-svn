@@ -78,7 +78,7 @@ public class FastWikiTokenizerTest {
 			
 			ArticlesParser ap = new ArticlesParser("./test-data/indexing-articles.test");
 			ArrayList<TestArticle> articles = ap.getArticles();
-			//timeTest(articles);
+			timeTest(articles);
 		}
 		
 		static void timeTest(ArrayList<TestArticle> articles) throws IOException{

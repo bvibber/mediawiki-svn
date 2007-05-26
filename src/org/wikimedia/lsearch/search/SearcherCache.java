@@ -20,6 +20,7 @@ import org.wikimedia.lsearch.beans.SearchHost;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
+import org.wikimedia.lsearch.index.WikiSimilarity;
 
 /**
  * Caches both local and remote {@link Searchable} objects.  
@@ -263,6 +264,7 @@ public class SearcherCache {
 			throw new IOException(iid+" is not searched by this host.");
 		try {
 			searcher = new IndexSearcherMul(iid.getCanonicalSearchPath());
+			searcher.setSimilarity(new WikiSimilarity());
 		} catch (IOException e) {
 			// tell registry this is not a good index
 			IndexRegistry.getInstance().invalidateCurrent(iid);

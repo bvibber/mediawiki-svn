@@ -4,16 +4,15 @@
  */
 package org.wikimedia.lsearch.frontend;
 
+import java.io.BufferedInputStream;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.Socket;
 import java.net.URI;
 import java.net.URISyntaxException;
-import java.util.Arrays;
 import java.util.HashMap;
 import org.apache.log4j.Logger;
-import org.apache.lucene.analysis.LengthFilter;
 
 /**
  * Simple HTTP 1.1 handler, used for Index and Search daemons
@@ -33,8 +32,8 @@ abstract public class HttpHandler extends Thread {
 	/** Client input stream */
 	DataInputStream istrm;
 	/** Client output stream */
-	DataOutputStream ostrm;
-
+	PrintWriter ostrm;
+	
 	protected String method;
 	protected String rawUri;
 	protected URI uri;
@@ -54,8 +53,8 @@ abstract public class HttpHandler extends Thread {
 
 	public HttpHandler(Socket s) {
 		try {
-			istrm = new DataInputStream(s.getInputStream());
-			ostrm = new DataOutputStream(s.getOutputStream());			
+			istrm = new DataInputStream(new BufferedInputStream(s.getInputStream()));
+			ostrm = new PrintWriter(s.getOutputStream());			
 		} catch (IOException e) {
 			log.error("I/O in opening http socket.");
 		}
@@ -236,14 +235,10 @@ abstract public class HttpHandler extends Thread {
 	}
 
 	/** Sending raw data to client */
-	protected void sendBytes(byte[] data){
+	protected void sendBytes(char[] data){
 		log.debug(">>> Writing "+data.length+" bytes of data");
-		try {
-			flushOutput();
-			ostrm.write(data);
-		} catch (IOException e) {
-			log.warn("Could not send raw data in bytes to output stream.");
-		}
+		flushOutput();
+		ostrm.write(data);
 	}
 
 	/** Read some number of bytes. Used to read the raw article in POST */
@@ -280,14 +275,11 @@ abstract public class HttpHandler extends Thread {
 
 	/** Flush output buffer, i.e. the one used by sendOutputLine() */
 	protected void flushOutput(){
-		try {
-			if(bufLength != 0){
-				ostrm.writeBytes(new String(outputBuffer,0,bufLength));
-				bufLength = 0;
-			}
-		} catch (IOException e) {
-			log.warn("Could not write to output stream.");
+		if(bufLength != 0){
+			ostrm.write(new String(outputBuffer,0,bufLength));
+			bufLength = 0;
 		}
+		ostrm.flush();
 	}
 
 }

@@ -6,15 +6,17 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
-
 /** 
  * Extract some variable from MediaWiki MessageXX.php files. In particular,
  * the localized namespace names (needed for proper parsing of wiki code).
+ * 
+ * One day, make this implementation suck less, and actually parse some PHP,
+ * instead of just catch stuff with regexps... 
  *  
  * @author rainman
  *
@@ -56,6 +58,28 @@ public class PHPParser {
 		}		
 		return ret;
 		
+	}
+	
+	/** Get redirect magic word */
+	public HashSet<String> getRedirectMagic(String text){
+		HashSet<String> red = new HashSet<String>();
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		Pattern nsnames = Pattern.compile("\\$magicWords\\s*=\\s*array\\s*\\((.*?)\\);",flags);
+		Pattern entry = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
+		Matcher matcher = nsnames.matcher(text);
+		if(matcher.find()){
+			String magic = matcher.group(1);		
+			Matcher en = entry.matcher(magic);
+			//System.out.println(magic);
+			while(en.find()){
+				if(en.groupCount()==2 && en.group(1).equalsIgnoreCase("redirect")){
+					String[] keys = en.group(2).split(",");
+					for(int i = 1 ; i<keys.length; i++) // add redirect magic, ignore first
+						red.add(keys[i].replace('\'',' ').replace('"',' ').trim().toLowerCase());
+				}
+			}
+		}
+		return red;
 	}
 	
 	/** Get a map of localized namespace names: name -> namespace_num */
@@ -148,8 +172,11 @@ public class PHPParser {
 		String file = "/var/www/html/wiki-lucene/phase3/languages/messages/MessagesEn.php";
 		
 		PHPParser p = new PHPParser();
-		Hashtable<String,Integer> map = p.getNamespaces(p.readFile(file));
+		String php = p.readFile(file);
+		Hashtable<String,Integer> map = p.getNamespaces(php);
 		System.out.println(map);
 		System.out.println(p.getFallBack(text2));
+		System.out.println(p.getRedirectMagic(php));
+		
 	}
 }

@@ -323,9 +323,12 @@ public class IndexThread extends Thread {
 					reader.close();
 					log.debug("Optimizing "+iid);
 					long start = System.currentTimeMillis();
+					Transaction trans = new Transaction(iid);
+					trans.begin();
 					IndexWriter writer = new IndexWriter(iid.getIndexPath(),new SimpleAnalyzer(),false);
 					writer.optimize();
 					writer.close();
+					trans.commit();
 					long delta = System.currentTimeMillis() - start;
 					log.info("Optimized "+iid+" in "+delta+" ms");
 				} else

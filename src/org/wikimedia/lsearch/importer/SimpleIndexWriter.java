@@ -31,6 +31,7 @@ public class SimpleIndexWriter {
 	protected Boolean optimize;
 	protected Integer mergeFactor, maxBufDocs;
 	protected boolean newIndex;
+	protected String langCode;
 	
 	public SimpleIndexWriter(IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
 		this.iid = iid;
@@ -38,7 +39,7 @@ public class SimpleIndexWriter {
 		this.mergeFactor = mergeFactor;
 		this.maxBufDocs = maxBufDocs;
 		this.newIndex = newIndex;
-		String langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
+		langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
 		filters = new FilterFactory(langCode);
 		indexes = new HashMap<String,IndexWriter>();
 		// open all relevant indexes
@@ -91,6 +92,9 @@ public class SimpleIndexWriter {
 
 	/** Add single article to logical index. It will add the article to the right index part */
 	public void addArticle(Article a){
+		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
+			return; // don't add if preconditions are not met
+		
 		IndexId target;
 		if(iid.isSingle())
 			target = iid;

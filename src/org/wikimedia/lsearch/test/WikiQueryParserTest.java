@@ -30,6 +30,7 @@ public class WikiQueryParserTest extends TestCase {
 	public void testParser() {
 		Configuration.setConfigFile(System.getProperty("user.dir")+"/test-data/mwsearch.conf.test");
 		Configuration.open();
+		WikiQueryParser.TITLE_BOOST = 2;
 		try{
 			WikiQueryParser parser = new WikiQueryParser("contents",new SimpleAnalyzer());
 			Query q;

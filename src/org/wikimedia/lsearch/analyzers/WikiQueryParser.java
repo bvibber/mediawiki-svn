@@ -69,7 +69,7 @@ public class WikiQueryParser {
 	/** boost for alias words from analyzer */
 	public final float ALIAS_BOOST = 0.5f; 
 	/** boost for title field */
-	public final float TITLE_BOOST = 2;
+	public static float TITLE_BOOST = 4;
 	
 	/** Policies in treating field names:
 	 * 
@@ -214,6 +214,8 @@ public class WikiQueryParser {
 			c = text[cur];
 			if(c == '"'){
 				inPhrase = !inPhrase;
+				if(inPhrase && fieldLevel == -1)
+					fields.add(defaultField);
 			}
 			
 			if(inPhrase)

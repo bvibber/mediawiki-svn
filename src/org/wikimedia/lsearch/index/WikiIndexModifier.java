@@ -30,6 +30,7 @@ import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.util.Localization;
 
 /**
  * IndexModifier for batch update of local lucene index. 
@@ -176,6 +177,8 @@ public class WikiIndexModifier {
 				if(rec.doAdd()){
 					if(!rec.isAlwaysAdd() && nonDeleteDocuments.contains(rec))
 						continue; // don't add if delete/add are paired operations
+					if(!checkPreconditions(rec))
+						continue; // article shoouldn't be added for some (heuristic) reason
 					IndexReportCard card = getReportCard(rec);
 					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),filters);
 					Document doc = (Document) ret[0];
@@ -207,10 +210,30 @@ public class WikiIndexModifier {
 			}
 			return succ;
 		}
-
-	
-
+		
+		public boolean checkPreconditions(IndexUpdateRecord rec){
+			return checkAddPreconditions(rec.getArticle(),langCode);
+		}
 	}
+	
+	/**
+	 * Check if the article should be added. For instance, we don't want
+	 * useless redirect in our index, i.e. Robin hood -> Robin Hood
+	 * @param rec
+	 * @param langCode
+	 * @return
+	 */	
+	public static boolean checkAddPreconditions(Article ar, String langCode){
+		if(ar.getNamespace().equals("0")){
+			String redirect = Localization.getRedirectTarget(ar.getContents(),langCode);
+			if(redirect != null && redirect.toLowerCase().equals(ar.getTitle().toLowerCase())){
+				log.debug("Not adding "+ar+" into index: "+ar.getContents());
+				return false;
+			}
+		}
+		return true;
+	}
+	
 	/**
 	 * Create necessary directories for index
 	 * @param dbname
@@ -331,7 +354,12 @@ public class WikiIndexModifier {
 		
 		// These fields are returned with results
 		doc.add(new Field("namespace", article.getNamespace(), Field.Store.YES, Field.Index.UN_TOKENIZED));
-		doc.add(new Field("title", article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED));
+		
+		// boost document title with it's article rank
+		Field title = new Field("title", article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);
+		log.debug(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank());
+		title.setBoost(calculateArticleRank(article.getRank()));
+		doc.add(title);
 		
 		// the next fields are generated using wikitokenizer 
 		doc.add(new Field("contents", "", 
@@ -348,6 +376,21 @@ public class WikiIndexModifier {
 		perFieldAnalyzer = Analyzers.getIndexerAnalyzer(text,filters);
 		
 		return new Object[] { doc, perFieldAnalyzer };
+	}
+	
+	/** 
+	 * 
+	 * Calculate document boost (article rank) from number of
+	 * pages that link this page.
+	 * 
+	 * @param rank
+	 * @return
+	 */
+	public static float calculateArticleRank(int rank){
+		if(rank == 0)
+			return 1;
+		else 
+			return (float) (1 + rank/15.0);
 	}
 
 }

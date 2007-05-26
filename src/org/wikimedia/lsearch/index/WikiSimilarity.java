@@ -1,5 +1,6 @@
 package org.wikimedia.lsearch.index;
 
+import org.apache.log4j.Logger;
 import org.apache.lucene.search.DefaultSimilarity;
 
 /**
@@ -11,20 +12,35 @@ import org.apache.lucene.search.DefaultSimilarity;
  *
  */
 public class WikiSimilarity extends DefaultSimilarity {
-
+	static Logger log = Logger.getLogger(WikiSimilarity.class);
 	/**
-	 * The length norm is a linear function, with f(1) = 1
+	 * For content: 
+	 *  * length norm is a linear function, with f(1) = 1
 	 * and f(10000) = 0.2
+	 * 
+	 * For titles:
+	 *  * 1/sqrt(term^3)
+	 * 
 	 */
 	@Override
 	public float lengthNorm(String fieldName, int numTokens) {
+		//log.debug("Called lengthNorm("+fieldName+","+numTokens+")");
 		if(fieldName.equals("contents")){
-			if( numTokens > 10000) return 0.2f;
-			else
-				return (float)((-0.00008*numTokens)+1.00008);
+			if( numTokens > 10000) return 0.5f;
+			else{
+				float f = (float)((-0.00005*numTokens)+1.00005);
+				//log.debug("Length-norm: "+f+", numtokens: "+numTokens);
+				return f;
+			}			
+		} else if(fieldName.equals("title")){
+			float f = (float) (1.0 / (Math.sqrt(numTokens) * numTokens));
+			//log.debug("Length-norm: "+f+", numtokens: "+numTokens);
+			return f;
 		} else
 			return super.lengthNorm(fieldName,numTokens);
 		
 	}
+
+	
 
 }

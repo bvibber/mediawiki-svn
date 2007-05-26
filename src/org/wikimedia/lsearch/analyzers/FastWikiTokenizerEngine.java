@@ -30,6 +30,7 @@ public class FastWikiTokenizerEngine {
 	private static final int IO_BUFFER_SIZE = 1024;
 	private final char[] ioBuffer = new char[IO_BUFFER_SIZE];
 	private char[] text;
+	private String textString; // original text in string format
 	private int textLength;
 	private ArrayList<Token> tokens;
 	protected ArrayList<String> categories;
@@ -84,7 +85,8 @@ public class FastWikiTokenizerEngine {
 		try {
 			reader.read(ioBuffer);
 			text = ioBuffer;
-			textLength = ioBuffer.length;		
+			textLength = ioBuffer.length;	
+			textString = new String(ioBuffer,0,ioBuffer.length);
 			init();
 		} catch (IOException e1) {
 			e1.printStackTrace();
@@ -97,6 +99,7 @@ public class FastWikiTokenizerEngine {
 	
 	public FastWikiTokenizerEngine(String text, String lang){
 		this.text = text.toCharArray();
+		this.textString = text;
 		this.language = lang;
 		textLength = text.length();
 		init();
@@ -252,22 +255,7 @@ public class FastWikiTokenizerEngine {
 		if(textLength == 0 || text[0] != '#') // quick test
 			return false;
 		
-		String line = null;
-		for(lookup = 0; lookup < textLength; lookup++){
-			lc = text[lookup];
-			if(lc == '\r' || lc == '\n'){
-				line = new String(text,0,lookup);
-				break;
-			}			
-		}
-		if(line == null) // only single line without a newline
-			line = new String(text,0,textLength);
-		
-		// kind of hackish but should work
-		if(line.matches("#.*? +\\[\\[.*?\\]\\]"))
-			return true;
-		
-		return false;			
+		return Localization.getRedirectTarget(textString,language)!=null;			
 	}
 	
 	/**

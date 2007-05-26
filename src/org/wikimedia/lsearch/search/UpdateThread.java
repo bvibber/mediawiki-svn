@@ -23,6 +23,7 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
+import org.wikimedia.lsearch.index.WikiSimilarity;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.interoperability.RMIServer;
 
@@ -202,6 +203,7 @@ public class UpdateThread extends Thread {
 
 			// check if updated index is a valid one (throws an exception on error)
 			IndexSearcherMul is = new IndexSearcherMul(li.path);
+			is.setSimilarity(new WikiSimilarity());
 			
 			// refresh the symlink
 			command = "/bin/rm -rf "+iid.getSearchPath();
