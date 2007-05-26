@@ -129,7 +129,8 @@ class LqtView {
 		// this only works for editing because we refer to the article directly.
 		
 		$e = new EditPage($pp->article);
-		$e->setAction( $this->title->getFullURL( "lqt_edit_post={$pp->article->getID()}" ) );
+		$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_edit_post\" value=\"{$pp->article->getID()}\">";
+//		$e->setAction( $this->title->getFullURL( "lqt_edit_post={$pp->article->getID()}" ) );
 
 /*		if ( $p->thread()->firstPost()->getID() == $p->getID() ) {
 			// This is the thread's root post; display topic field.
@@ -204,7 +205,6 @@ class LqtView {
 	}
 
 	function showPost( $post ) {
-		
 		$this->openDiv( 'lqt_post' );
 		
 		if( $this->commandApplies( LQT_COMMAND_EDIT_POST, $post ) ) {
@@ -224,14 +224,11 @@ class LqtView {
 	}
 
 	function showThreadHeading( $thread ) {
-		
 		if ( $thread->hasSubject() )
 			$this->output->addHTML( wfElement( "h{$this->headerLevel}", null, $thread->subject() ) );
 	}
 
 	function showThread( $thread ) {
-		
-
 		$this->showThreadHeading( $thread );
 		$this->showPost( $thread->rootPost() );
 		$this->indent();
@@ -242,13 +239,11 @@ class LqtView {
 	}
 
 	function indent() {
-		
 		$this->output->addHTML( wfOpenElement( 'dl', array('class'=>'lqt_replies') ) );
 		$this->output->addHTML( wfOpenElement( 'dd') );
 		$this->headerLevel += 1;
 	}
 	function unindent() {
-		
 		$this->output->addHTML( wfCloseElement( 'dd') );
 		$this->output->addHTML( wfCloseElement( 'dl') );
 		$this->headerLevel -= 1;

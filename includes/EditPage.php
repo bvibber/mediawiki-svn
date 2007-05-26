@@ -45,19 +45,6 @@ class EditPage {
 	public $editFormTextAfterTools;
 	public $editFormTextBottom;
 
-	
-	##### LQT HACK
-	
-	var $didRedirect = false;
-	var $didSave = false;
-	
-	/** @param $action string URL that the form will submit to. */
-    function setAction($action) {
-            $this->mAction = $action;
-    }
-	
-	##### END
-
 
 	/**
 	 * @todo document
@@ -65,14 +52,9 @@ class EditPage {
 	 */
 	function EditPage( $article ) {
 		$this->mArticle =& $article;
-//		if( $article ) {
-//			$this->mTitle =& $article->getTitle(); ### LQT HACK.
-//		}
-//		else { # non-existant article; shouldn't affect LQT so leave it this way.
-			global $wgTitle;
-			$this->mTitle =& $wgTitle;
-//		}
-		
+
+		global $wgTitle;
+		$this->mTitle =& $wgTitle;
 
 		# Placeholders for text injection by hooks (empty per default)
 		$this->editFormPageTop =
@@ -1054,14 +1036,9 @@ class EditPage {
 		if ( $ew ) $ew = " style=\"width:100%\"";
 		else $ew = '';
 
-        if ($this->mAction) {
-			$action = $this->mAction; ### LQT HACK
-        } else {
-			$q = 'action=submit';
-			#if ( "no" == $redirect ) { $q .= "&redirect=no"; }
-			$action = $this->mTitle->escapeLocalURL( $q );
-        }
-
+		$q = 'action=submit';
+		#if ( "no" == $redirect ) { $q .= "&redirect=no"; }
+		$action = $this->mTitle->escapeLocalURL( $q );
 
 		$summary = wfMsg('summary');
 		$subject = wfMsg('subject');
