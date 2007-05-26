@@ -16,6 +16,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		
+		$wgOut->addHTML($this->getConceptPanel());
 		$wgOut->addHTML(
 			getDefinedMeaningEditor(
 				$this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, $this->shouldShowAuthorities)->view(
@@ -130,6 +131,8 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	}
 
 	public function getDefinedMeaningId() {
+		global 
+			$wgTitle;
 		return $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 	}
 	/** cut and paste getDataSetPanel with mods for Collection instead
@@ -137,6 +140,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	*/
 	protected function getConceptPanel() {
 		global $wgTitle, $wgUser;
+		$active=True; # wrong place, but hey
 		$dm=$this->getDefinedMeaningId();
 		$dc=wdGetDataSetContext();
 		$ow_conceptpanel="Concept Panel";
@@ -156,6 +160,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		}
 		$html.="</table>";
 		$html.="</div>";
+		#$html="bla\n";
 		return $html;
 	}
 }

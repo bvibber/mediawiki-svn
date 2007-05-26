@@ -1165,12 +1165,14 @@ function getConceptId($dm,$dc){
 	if(is_null($dc)) {
 		$dc=wdGetDataSetContext();
 	} 
+	$collection_id=getCollectionIdForDC($dc);
     	$dbr = & wfGetDB(DB_SLAVE);
 	$dm=$dbr->addQuotes($dm);
 	$query = "
 		SELECT internal_member_id AS concept_id
 		FROM {$dc}_collection_contents
 		WHERE member_mid=$dm
+		AND collection_id=$collection_id;
 		";
 	wfDebug($query);
 	$queryResult = $dbr->query($query);
