@@ -21,7 +21,7 @@ define('LQT_COMMAND_REPLY_TO_POST', 'lqt_reply_to');
 require_once('LqtModel.php');
 
 class LqtDispatch {
-	/** Invoked from performAction() in Wiki.php if this is a discussion namespace. */
+	/* Invoked from performAction() in Wiki.php if this is a discussion namespace. */
 	static function talkpageMain(&$output, &$talk_article, &$title, &$user, &$request) {
 		// We are given a talkpage article and title. Find the associated
 		// non-talk article and pass that to the view.
@@ -67,18 +67,18 @@ class LqtView {
 		}
 		return $q;
 	}
-	
+
 	/**
-		@return href for a link to the same page as is being currently viewed, 
-		        but with additional query variables.
-		@param $vars array( 'query_variable_name' => 'value', ... ).
+	 *	@return href for a link to the same page as is being currently viewed, 
+	 *	        but with additional query variables.
+	 *	@param $vars array( 'query_variable_name' => 'value', ... ).
 	*/
 	function selflink( $vars = null ) {
 		return $this->title->getFullURL( $this->queryStringFromArray($vars) );
 	}
 	
 	/**
-		@return true if the value of the give query variable name is equal to the given post's ID.
+	 *	@return true if the value of the give query variable name is equal to the given post's ID.
 	*/
 	function commandApplies( $command, $post ) {
 		return $this->request->getVal($command) == $post->getTitle()->getPrefixedURL();
@@ -210,13 +210,18 @@ HTML;
 		}
 	}
 
-	function showThreadCommands( $thread ) {
-		
+	function showThreadFooter( $thread ) {
+
+		$this->output->addHTML(wfOpenElement('ul', array('class'=>'lqt_footer')));
+
+		$this->output->addHTML( wfOpenElement( 'li' ) );
+		$p = new Parser(); $sig = $p->getUserSig( $thread->rootPost()->originalAuthor() );
+		$this->output->addWikitext( $sig, false );
+		$this->output->addHTML( wfCloseElement( 'li' ) );
+			
 		$commands = array( 'Edit' => $this->selflink( array( LQT_COMMAND_EDIT_POST => $thread->rootPost()->getTitle()->getPrefixedURL() ) ),
 						   'Reply' => $this->selflink( array( LQT_COMMAND_REPLY_TO_POST => $thread->id() ) ));
 						
-		$this->output->addHTML(wfOpenElement('ul', array('class'=>'lqt_footer')));
-		
 		foreach( $commands as $label => $href ) {
 			$this->output->addHTML( wfOpenElement( 'li' ) );
 			$this->output->addHTML( wfElement('a', array('href'=>$href), $label) );
@@ -235,7 +240,7 @@ HTML;
 			$this->showPostEditingForm( $thread );
 		} else{
 			$this->showPostBody( $post );
-			$this->showThreadCommands( $thread );
+			$this->showThreadFooter( $thread );
 		}
 		
 		$this->closeDiv();
@@ -281,7 +286,7 @@ class TalkpageView extends LqtView {
 		if( $this->request->getBool('lqt_new_thread_form') ) {
 			$this->showNewThreadForm();
 		} else {
-			$this->output->addHTML("<a href=\"{$this->title->getFullURL('lqt_new_thread_form=1')}\">New Thread</a>");
+			$this->output->addHTML("<a href=\"{$this->title->getFullURL('lqt_new_thread_form=1')}\">Start a Discussion</a>");
 		}
 		$threads = Thread::allThreadsOfArticle($this->article);
 		foreach($threads as $t) {
