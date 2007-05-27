@@ -6,7 +6,7 @@
  * @addtogroup FileRepo
  */
 class OldLocalFile extends LocalFile {
-	var $requestedTime, $archive_name;
+	var $requestedTime, $archive_name, $deleted=0;
 
 	const CACHE_VERSION = 1;
 	const MAX_CACHE_ROWS = 20;
@@ -18,6 +18,7 @@ class OldLocalFile extends LocalFile {
 	function __construct( $title, $repo, $time ) {
 		parent::__construct( $title, $repo );
 		$this->requestedTime = $time;
+		$this->isOldFile = true;
 	}
 
 	function getCacheKey() {
@@ -138,6 +139,34 @@ class OldLocalFile extends LocalFile {
 
 	function getUrlRel() {
 		return 'archive/' . $this->getHashPath() . '/' . urlencode( $this->archive_name );
+	}
+	
+	/**
+	 * int $field one of DELETED_* bitfield constants
+	 * for file or revision rows
+	 * @return bool
+	 */
+	function isDeleted( $field ) {
+		return ($this->deleted & $field) == $field;
+	}
+	
+	/**
+	 * Determine if the current user is allowed to view a particular
+	 * field of this file, if it's marked as deleted.
+	 * @param int $field					
+	 * @return bool
+	 */
+	function userCan( $field ) {
+		if( ($this->deleted & $field) == $field ) {
+			global $wgUser;
+			$permission = ( $this->deleted & File::DELETED_RESTRICTED ) == File::DELETED_RESTRICTED
+				? 'hiderevision'
+				: 'deleterevision';
+			wfDebug( "Checking for $permission due to $field match on $this->mDeleted\n" );
+			return $wgUser->isAllowed( $permission );
+		} else {
+			return true;
+		}
 	}
 }
 

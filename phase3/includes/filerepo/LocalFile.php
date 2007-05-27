@@ -281,17 +281,34 @@ class LocalFile extends File
 
 		wfDebug(__METHOD__.': upgrading '.$this->getName()." to the current schema\n");
 
-		$dbw->update( 'image',
-			array(
-				'img_width' => $this->width,
-				'img_height' => $this->height,
-				'img_bits' => $this->bits,
-				'img_media_type' => $this->media_type,
-				'img_major_mime' => $major,
-				'img_minor_mime' => $minor,
-				'img_metadata' => $this->metadata,
-			), array( 'img_name' => $this->getName() ), __METHOD__
-		);
+		if( !$this->isOldImage ) {
+			$dbw->update( 'image',
+				array(
+					'img_width' => $this->width,
+					'img_height' => $this->height,
+					'img_bits' => $this->bits,
+					'img_media_type' => $this->media_type,
+					'img_major_mime' => $major,
+					'img_minor_mime' => $minor,
+					'img_metadata' => $this->metadata,
+				), array( 'img_name' => $this->getName() ),
+				__METHOD__
+			);
+		} else {
+			$dbw->update( 'oldimage',
+				array(
+					'oi_width' => $this->width,
+					'oi_height' => $this->height,
+					'oi_bits' => $this->bits,
+					'oi_media_type' => $this->media_type,
+					'oi_major_mime' => $major,
+					'oi_minor_mime' => $minor,
+					'oi_metadata' => $this->metadata,
+				), array( 'oi_name' => $this->getName(), 'oi_timestamp' => $this->requestedTime ),
+				__METHOD__
+			);
+		}
+		
 		wfProfileOut( __METHOD__ );
 	}
 

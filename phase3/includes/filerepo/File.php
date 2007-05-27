@@ -47,7 +47,7 @@ class File {
 	/**
 	 * The following member variables are not lazy-initialised
 	 */
-	var $repo, $title, $lastError;
+	var $repo, $title, $lastError, $isOldFile=false;
 
 	function __construct( $title, $repo ) {
 		$this->title = $title;
