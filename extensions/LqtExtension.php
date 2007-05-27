@@ -142,6 +142,15 @@ class LqtView {
 		if ( $edit_type == 'new' ) {
 			$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_new_thread_form\" value=\"1\">";
 		}
+		
+		if ( $thread == null || $thread->superthread() == null ) {
+			// This is a top-level post; show the subject line.
+			$subject = $this->request->getVal('lqt_subject_field', $thread ? $thread->subject() : '');
+			$e->editFormTextBeforeContent .= <<<HTML
+			<label for="lqt_subject_field">Subject: </label>
+			<input type="text" size="50" name="lqt_subject_field" id="lqt_subject_field" value="$subject"><br>
+HTML;
+		}
 
 		$e->edit();
 
@@ -158,15 +167,20 @@ class LqtView {
 		
 		// For replies and new posts, insert the associated thread object into the DB.
 		if ($edit_type != 'editExisting' && $e->didSave) {
-			$t = Thread::newThread( $article, $this->article );
+			$thread = Thread::newThread( $article, $this->article );
 			if ( $edit_type == 'reply' ) {
-				$t->setSuperthread( $edit_applies_to );
+				$thread->setSuperthread( $edit_applies_to );
 			}
 		}
 
-/*		// Save new topic line if there is one:
-		if ( $e->mDidSave && $wgRequest->getVal('lqt_topic') ) {
-			$v = Sanitizer::stripAllTags($wgRequest->getVal('lqt_topic'));
+		$subject = $this->request->getVal('lqt_subject_field', '');
+		if ( $e->didSave && $subject != '' ) {
+			$thread->setSubject( Sanitizer::stripAllTags($subject) );
+		}
+
+/*		// Save new subject line if there is one:
+		if ( $e->mDidSave && $wgRequest->getVal('lqt_subject') ) {
+			$v = Sanitizer::stripAllTags($wgRequest->getVal('lqt_subject'));
 			$p->setSubject($v);
 		}*/
 	}
