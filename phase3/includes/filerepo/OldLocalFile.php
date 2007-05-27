@@ -6,7 +6,7 @@
  * @addtogroup FileRepo
  */
 class OldLocalFile extends LocalFile {
-	var $requestedTime, $archive_name, $deleted=0;
+	var $requestedTime, $archive_name;
 
 	const CACHE_VERSION = 1;
 	const MAX_CACHE_ROWS = 20;
@@ -18,12 +18,20 @@ class OldLocalFile extends LocalFile {
 	function __construct( $title, $repo, $time ) {
 		parent::__construct( $title, $repo );
 		$this->requestedTime = $time;
-		$this->isOldFile = true;
 	}
 
 	function getCacheKey() {
 		$hashedName = md5($this->getName());
 		return wfMemcKey( 'oldfile', $hashedName );
+	}
+
+	function getArchiveName() {
+		$this->load();
+		return $this->archive_name;
+	}
+
+	function isOld() {
+		return true;
 	}
 
 	/**
@@ -122,6 +130,8 @@ class OldLocalFile extends LocalFile {
 		if ( $row ) {
 			$this->decodeRow( $row, 'oi_' );
 			$this->loadFromRow( $row, 'oi_' );
+			// Check for rows from a previous schema, quietly upgrade them
+			$this->maybeUpgradeRow();
 		} else {
 			$this->fileExists = false;
 		}
@@ -141,32 +151,28 @@ class OldLocalFile extends LocalFile {
 		return 'archive/' . $this->getHashPath() . '/' . urlencode( $this->archive_name );
 	}
 	
-	/**
-	 * int $field one of DELETED_* bitfield constants
-	 * for file or revision rows
-	 * @return bool
-	 */
-	function isDeleted( $field ) {
-		return ($this->deleted & $field) == $field;
-	}
-	
-	/**
-	 * Determine if the current user is allowed to view a particular
-	 * field of this file, if it's marked as deleted.
-	 * @param int $field					
-	 * @return bool
-	 */
-	function userCan( $field ) {
-		if( ($this->deleted & $field) == $field ) {
-			global $wgUser;
-			$permission = ( $this->deleted & File::DELETED_RESTRICTED ) == File::DELETED_RESTRICTED
-				? 'hiderevision'
-				: 'deleterevision';
-			wfDebug( "Checking for $permission due to $field match on $this->mDeleted\n" );
-			return $wgUser->isAllowed( $permission );
-		} else {
-			return true;
-		}
+	function upgradeRow() {
+		wfProfileIn( __METHOD__ );
+
+		$this->loadFromFile();
+
+		$dbw = $this->repo->getMasterDB();
+		list( $major, $minor ) = self::splitMime( $this->mime );
+
+		wfDebug(__METHOD__.': upgrading '.$this->archive_name." to the current schema\n");
+		$dbw->update( 'oldimage',
+			array(
+				'oi_width' => $this->width,
+				'oi_height' => $this->height,
+				'oi_bits' => $this->bits,
+				'oi_media_type' => $this->media_type,
+				'oi_major_mime' => $major,
+				'oi_minor_mime' => $minor,
+				'oi_metadata' => $this->metadata,
+			), array( 'oi_name' => $this->getName(), 'oi_timestamp' => $this->requestedTime ),
+			__METHOD__
+		);
+		wfProfileOut( __METHOD__ );
 	}
 }
 

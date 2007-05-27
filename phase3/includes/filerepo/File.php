@@ -47,7 +47,7 @@ class File {
 	/**
 	 * The following member variables are not lazy-initialised
 	 */
-	var $repo, $title, $lastError, $isOldFile=false;
+	var $repo, $title, $lastError;
 
 	function __construct( $title, $repo ) {
 		$this->title = $title;
@@ -825,6 +825,22 @@ class File {
 	}
 
 	/**
+	 * Returns true if the image is an old version
+	 * STUB
+	 */
+	function isOld() {
+		return false;
+	}
+
+	/**
+	 * Is this file a "deleted" file in a private archive?
+	 * STUB
+	 */
+	function isDeleted( $field ) {
+		return false;
+	}
+
+	/**
 	 * Was this file ever deleted from the wiki?
 	 *
 	 * @return bool
@@ -952,6 +968,17 @@ class File {
 			return false;
 		}
 		return wfTimestamp( filemtime( $path ) );
+	}
+	
+	/**
+	 * Determine if the current user is allowed to view a particular
+	 * field of this file, if it's marked as deleted.
+	 * STUB
+	 * @param int $field					
+	 * @return bool
+	 */
+	function userCan( $field ) {
+		return true;
 	}
 }
 
