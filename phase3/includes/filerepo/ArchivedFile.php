@@ -98,7 +98,7 @@ class ArchivedFile
 		if( isset($this->mDeleted) && ($this->mDeleted & $field) == $field ) {
 		// images
 			global $wgUser;
-			$permission = ( $this->mDeleted & Revision::DELETED_RESTRICTED ) == Revision::DELETED_RESTRICTED
+			$permission = ( $this->mDeleted & File::DELETED_RESTRICTED ) == File::DELETED_RESTRICTED
 				? 'hiderevision'
 				: 'deleterevision';
 			wfDebug( "Checking for $permission due to $field match on $this->mDeleted\n" );
