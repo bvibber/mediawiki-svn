@@ -139,24 +139,30 @@ getpos(int *row, int *col, int minrow, int mincol, int maxrow, int maxcol)
 			*col = mincol;
 			break;
 		case 'l':
+		case 's':
 			if ((*col += count) > maxcol)
 				*col = maxcol;
 			break;
 		case 'L':
+		case 'S':
 			*col = maxcol;
 			break;
 		case 'j':
+		case 't':
 			if ((*row += count) > maxrow)
 				*row = maxrow;
 			break;
 		case 'J':
+		case 'T':
 			*row = maxrow;
 			break;
 		case 'k':
+		case 'n':
 			if ((*row -= count) < minrow)
 				*row = minrow;
 			break;
 		case 'K':
+		case 'N':
 			*row = minrow;
 			break;
 		case ctrl('['):
