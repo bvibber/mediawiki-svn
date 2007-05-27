@@ -254,7 +254,7 @@ HTML;
 
 	function showThreadHeading( $thread ) {
 		if ( $thread->hasSubject() )
-			$this->output->addHTML( wfElement( "h{$this->headerLevel}", null, $thread->subject() ) );
+			$this->output->addHTML( wfElement( "h{$this->headerLevel}", array('class'=>'lqt_header'), $thread->subject() ) );
 	}
 
 	function showThread( $thread ) {
@@ -286,7 +286,7 @@ class TalkpageView extends LqtView {
 		if( $this->request->getBool('lqt_new_thread_form') ) {
 			$this->showNewThreadForm();
 		} else {
-			$this->output->addHTML("<a href=\"{$this->title->getFullURL('lqt_new_thread_form=1')}\">Start a Discussion</a>");
+			$this->output->addHTML("<strong><a href=\"{$this->title->getFullURL('lqt_new_thread_form=1')}\">Start a Discussion</a></strong>");
 		}
 		$threads = Thread::allThreadsOfArticle($this->article);
 		foreach($threads as $t) {
