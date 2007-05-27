@@ -2409,9 +2409,13 @@ class Title {
 	 * Currently, a self-link with a fragment and special pages are in
 	 * this category. System messages that have defined default values are also
 	 * always known.
+	 *
+	 * LQT HACK: Talk pages are also always known.
+	 * Should talk pages for non-existant articles be known?
+	 * Talk pages with no threads? With only archived threads?
 	 */
 	public function isAlwaysKnown() {
-		return ( $this->isExternal() ||
+		return ( $this->isExternal() || $this->mNamespace % 2 ||
 			 ( 0 == $this->mNamespace && "" == $this->mDbkeyform ) ||
 			 ( NS_MEDIAWIKI == $this->mNamespace && wfMsgWeirdKey( $this->mDbkeyform ) ) );
 	}

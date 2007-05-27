@@ -668,7 +668,7 @@ class SkinTemplate extends Skin {
 				true);
 
 			wfProfileIn( "$fname-edit" );
-			if ( $this->mTitle->quickUserCan( 'edit' ) && ( $this->mTitle->exists() || $this->mTitle->quickUserCan( 'create' ) ) ) {
+			if ( !$this->mTitle->isTalkPage() /*LQT HACK*/ && $this->mTitle->quickUserCan( 'edit' ) && ( $this->mTitle->exists() || $this->mTitle->quickUserCan( 'create' ) ) ) {
 				$istalk = $this->mTitle->isTalkPage();
 				$istalkclass = $istalk?' istalk':'';
 				$content_actions['edit'] = array(
@@ -684,7 +684,7 @@ class SkinTemplate extends Skin {
 						'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
 					);
 				}
-			} else {
+			} else if ( !$this->mTitle->isTalkPage() /*LQT HACK*/  ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
 					'text' => wfMsg('viewsource'),
