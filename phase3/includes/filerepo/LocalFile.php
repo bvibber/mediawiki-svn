@@ -76,7 +76,12 @@ class LocalFile extends File
 		// Check if the key existed and belongs to this version of MediaWiki
 		if ( isset($cachedValues['version']) && ( $cachedValues['version'] == MW_FILE_VERSION ) ) {
 			wfDebug( "Pulling file metadata from cache key $key\n" );
-			$this->loadFromRow( $cachedValues, '' );
+			$this->fileExists = $cachedValues['fileExists'];
+			if ( $this->fileExists ) {
+				unset( $cachedValues['version'] );
+				unset( $cachedValues['fileExists'] );
+				$this->loadFromRow( $cachedValues, '' );
+			}
 		}
 		if ( $this->dataLoaded ) {
 			wfIncrStats( 'image_cache_hit' );
@@ -100,8 +105,11 @@ class LocalFile extends File
 		}
 		$fields = $this->getCacheFields( '' );
 		$cache = array( 'version' => MW_FILE_VERSION );
-		foreach ( $fields as $field ) {
-			$cache[$field] = $this->$field;
+		$cache['fileExists'] = $this->fileExists;
+		if ( $this->fileExists ) {
+			foreach ( $fields as $field ) {
+				$cache[$field] = $this->$field;
+			}
 		}
 
 		$wgMemc->set( $key, $cache, 60 * 60 * 24 * 7 ); // A week
@@ -120,6 +128,7 @@ class LocalFile extends File
 			$magic=& MimeMagic::singleton();
 
 			$this->mime = $magic->guessMimeType($path,true);
+			list( $this->major_mime, $this->minor_mime ) = self::splitMime( $this->mime );
 			$this->media_type = $magic->getMediaType($path,$this->mime);
 			$handler = MediaHandler::getHandler( $this->mime );
 
@@ -168,7 +177,7 @@ class LocalFile extends File
 		static $fields = array( 'size', 'width', 'height', 'bits', 'media_type', 
 			'major_mime', 'minor_mime', 'metadata', 'timestamp' );
 		static $results = array();
-		if ( $prefix = '' ) {
+		if ( $prefix == '' ) {
 			return $fields;
 		}
 		if ( !isset( $results[$prefix] ) ) {
@@ -176,9 +185,9 @@ class LocalFile extends File
 			foreach ( $fields as $field ) {
 				$prefixedFields[] = $prefix . $field;
 			}
-			$fields[$prefix] = $prefixedFields;
+			$results[$prefix] = $prefixedFields;
 		}
-		return $fields[$prefix];
+		return $results[$prefix];
 	}
 
 	/**
@@ -192,6 +201,7 @@ class LocalFile extends File
 		$row = $dbr->selectRow( 'image', $this->getCacheFields( 'img_' ),
 			array( 'img_name' => $this->getName() ), __METHOD__ );
 		if ( $row ) {
+			$this->fileExists = true;
 			$this->decodeRow( $row );
 			$this->loadFromRow( $row );
 			// Check for rows from a previous schema, quietly upgrade them
@@ -207,7 +217,7 @@ class LocalFile extends File
 
 	function decodeRow( &$row, $prefix = 'img_' ) {
 		$tsName = $prefix . 'timestamp';
-		$row->$tsName = wfTimestamp( $row->$tsName );
+		$row->$tsName = wfTimestamp( TS_MW, $row->$tsName );
 	}
 
 	function encodeRow( &$row, $db, $prefix = 'img_' ) {
@@ -237,7 +247,6 @@ class LocalFile extends File
 			}
 			$this->mime = $this->major_mime.'/'.$this->minor_mime;
 		}
-		$this->fileExists = true;
 		$this->dataLoaded = true;
 	}
 

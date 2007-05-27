@@ -62,6 +62,9 @@ class FSRepo {
 	 */
 	function findFile( $title, $time = false ) {
 		$img = $this->newFile( $title );
+		if ( !$img ) {
+			return false;
+		}
 		if ( $img->exists() && $img->getTimestamp() <= $time ) {
 			return $img;
 		}
