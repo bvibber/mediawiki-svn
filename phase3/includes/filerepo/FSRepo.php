@@ -33,18 +33,41 @@ class FSRepo {
 	/**
 	 * Create a new File object from the local repository
 	 * @param mixed $title Title object or string
+	 * @param mixed $time Time at which the image is supposed to have existed. 
+	 *                    If this is specified, the returned object will be an 
+	 *                    instance of the repository's old file class instead of
+	 *                    a current file. Repositories not supporting version 
+	 *                    control should return false if this parameter is set.
 	 */
-
-	function newFile( $title ) {
-		if ( $title instanceof Title ) {
-			return call_user_func( $this->fileFactory, $title, $this );
-		} else {
+	function newFile( $title, $time = false ) {
+		if ( !($title instanceof Title) ) {
 			$title = Title::makeTitleSafe( NS_IMAGE, $title );
-			if ( is_object( $title ) ) {
-				return call_user_func( $this->fileFactory, $title, $this );
-			} else {
-				return NULL;
+			if ( !is_object( $title ) ) {
+				return null;
 			}
+		}
+		if ( $time ) {
+			return call_user_func( $this->oldFileFactor, $title, $this, $time );
+		} else {
+			return call_user_func( $this->fileFactory, $title, $this );
+		}
+	}
+
+	/**
+	 * Find an instance of the named file that existed at the specified time
+	 * Returns false if the file did not exist. Repositories not supporting 
+	 * version control should return false if the time is specified.
+	 *
+	 * @param mixed $time 14-character timestamp, or false for the current version
+	 */
+	function findFile( $title, $time = false ) {
+		$img = $this->newFile( $title );
+		if ( $img->exists() && $img->getTimestamp() <= $time ) {
+			return $img;
+		}
+		$img = $this->newFile( $title, $time );
+		if ( $img->exists() ) {
+			return $img;
 		}
 	}
 

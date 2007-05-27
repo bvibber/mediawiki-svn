@@ -31,20 +31,22 @@ class RepoGroup {
 	 * Search repositories for an image.
 	 * You can also use wfGetFile() to do this.
 	 * @param mixed $title Title object or string
+	 * @param mixed $time The 14-char timestamp before which the file should 
+	 *                    have been uploaded, or false for the current version
 	 * @return File object or false if it is not found
 	 */
-	function findFile( $title ) {
+	function findFile( $title, $time = false ) {
 		if ( !$this->reposInitialised ) {
 			$this->initialiseRepos();
 		}
 
-		$image = $this->localRepo->newFile( $title );
-		if ( $image->exists() ) {
+		$image = $this->localRepo->findFile( $title, $time );
+		if ( $image ) {
 			return $image;
 		}
 		foreach ( $this->foreignRepos as $repo ) {
-			$image = $repo->newFile( $title );
-			if ( $image->exists() ) {
+			$image = $repo->findFile( $image, $time );
+			if ( $image ) {
 				return $image;
 			}
 		}

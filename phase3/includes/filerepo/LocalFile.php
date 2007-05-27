@@ -5,7 +5,7 @@
 /**
  * Bump this number when serialized cache records may be incompatible.
  */
-define( 'MW_FILE_VERSION', 3 );
+define( 'MW_FILE_VERSION', 4 );
 
 /**
  * Class to represent a local file in the wiki's own database
@@ -27,10 +27,13 @@ class LocalFile extends File
 		$height,        #  |
 		$bits,          #   --- returned by getimagesize (loadFromXxx)
 		$attr,          # /
-		$type,          # MEDIATYPE_xxx (bitmap, drawing, audio...)
+		$media_type,    # MEDIATYPE_xxx (bitmap, drawing, audio...)
 		$mime,          # MIME type, determined by MimeMagic::guessMimeType
+		$major_mime,    # Major mime type
+		$minor_mine,    # Minor mime type
 		$size,          # Size in bytes (loadFromXxx)
 		$metadata,      # Metadata
+		$timestamp,     # Upload timestamp
 		$dataLoaded;    # Whether or not all this has been loaded from the database (loadFromXxx)
 
 	/**#@-*/
@@ -71,20 +74,9 @@ class LocalFile extends File
 		$cachedValues = $wgMemc->get( $key );
 
 		// Check if the key existed and belongs to this version of MediaWiki
-		if (!empty($cachedValues) && is_array($cachedValues)
-		  && isset($cachedValues['version']) && ( $cachedValues['version'] == MW_FILE_VERSION )
-		  && isset( $cachedValues['mime'] ) && isset( $cachedValues['metadata'] ) )
-		{
+		if ( isset($cachedValues['version']) && ( $cachedValues['version'] == MW_FILE_VERSION ) ) {
 			wfDebug( "Pulling file metadata from cache key $key\n" );
-			$this->fileExists = $cachedValues['fileExists'];
-			$this->width = $cachedValues['width'];
-			$this->height = $cachedValues['height'];
-			$this->bits = $cachedValues['bits'];
-			$this->type = $cachedValues['type'];
-			$this->mime = $cachedValues['mime'];
-			$this->metadata = $cachedValues['metadata'];
-			$this->size = $cachedValues['size'];
-			$this->dataLoaded = true;
+			$this->loadFromRow( $cachedValues, '' );
 		}
 		if ( $this->dataLoaded ) {
 			wfIncrStats( 'image_cache_hit' );
@@ -106,25 +98,19 @@ class LocalFile extends File
 		if ( !$key ) {
 			return;
 		}
-		$cachedValues = array(
-			'version'    => MW_FILE_VERSION,
-			'fileExists' => $this->fileExists,
-			'width'      => $this->width,
-			'height'     => $this->height,
-			'bits'       => $this->bits,
-			'type'       => $this->type,
-			'mime'       => $this->mime,
-			'metadata'   => $this->metadata,
-			'size'       => $this->size );
+		$fields = $this->getCacheFields( '' );
+		$cache = array( 'version' => MW_FILE_VERSION );
+		foreach ( $fields as $field ) {
+			$cache[$field] = $this->$field;
+		}
 
-		$wgMemc->set( $key, $cachedValues, 60 * 60 * 24 * 7 ); // A week
+		$wgMemc->set( $key, $cache, 60 * 60 * 24 * 7 ); // A week
 	}
 
 	/**
 	 * Load metadata from the file itself
 	 */
 	function loadFromFile() {
-		global $wgContLang;
 		wfProfileIn( __METHOD__ );
 		$path = $this->getPath();
 		$this->fileExists = file_exists( $path );
@@ -134,7 +120,7 @@ class LocalFile extends File
 			$magic=& MimeMagic::singleton();
 
 			$this->mime = $magic->guessMimeType($path,true);
-			$this->type = $magic->getMediaType($path,$this->mime);
+			$this->media_type = $magic->getMediaType($path,$this->mime);
 			$handler = MediaHandler::getHandler( $this->mime );
 
 			# Get size in bytes
@@ -152,7 +138,7 @@ class LocalFile extends File
 			wfDebug(__METHOD__.": $path loaded, {$this->size} bytes, {$this->mime}.\n");
 		} else {
 			$this->mime = NULL;
-			$this->type = MEDIATYPE_UNKNOWN;
+			$this->media_type = MEDIATYPE_UNKNOWN;
 			$this->metadata = '';
 			wfDebug(__METHOD__.": $path NOT FOUND!\n");
 		}
@@ -178,33 +164,40 @@ class LocalFile extends File
 		wfProfileOut( __METHOD__ );
 	}
 
+	function getCacheFields( $prefix = 'img_' ) {
+		static $fields = array( 'size', 'width', 'height', 'bits', 'media_type', 
+			'major_mime', 'minor_mime', 'metadata', 'timestamp' );
+		static $results = array();
+		if ( $prefix = '' ) {
+			return $fields;
+		}
+		if ( !isset( $results[$prefix] ) ) {
+			$prefixedFields = array();
+			foreach ( $fields as $field ) {
+				$prefixedFields[] = $prefix . $field;
+			}
+			$fields[$prefix] = $prefixedFields;
+		}
+		return $fields[$prefix];
+	}
+
 	/**
 	 * Load file metadata from the DB
 	 */
 	function loadFromDB() {
-		global $wgContLang;
 		wfProfileIn( __METHOD__ );
 
 		$dbr = $this->repo->getSlaveDB();
 
-		$row = $dbr->selectRow( 'image',
-			array( 'img_size', 'img_width', 'img_height', 'img_bits',
-			       'img_media_type', 'img_major_mime', 'img_minor_mime', 'img_metadata' ),
+		$row = $dbr->selectRow( 'image', $this->getCacheFields( 'img_' ),
 			array( 'img_name' => $this->getName() ), __METHOD__ );
 		if ( $row ) {
-			$this->fileExists = true;
+			$this->decodeRow( $row );
 			$this->loadFromRow( $row );
 			// Check for rows from a previous schema, quietly upgrade them
 			$this->maybeUpgradeRow();
 		} else {
-			$this->size = 0;
-			$this->width = 0;
-			$this->height = 0;
-			$this->bits = 0;
-			$this->type = 0;
 			$this->fileExists = false;
-			$this->metadata = '';
-			$this->mime = false;
 		}
 
 		# Unconditionally set loaded=true, we don't want the accessors constantly rechecking
@@ -212,26 +205,39 @@ class LocalFile extends File
 		wfProfileOut( __METHOD__ );
 	}
 
+	function decodeRow( &$row, $prefix = 'img_' ) {
+		$tsName = $prefix . 'timestamp';
+		$row->$tsName = wfTimestamp( $row->$tsName );
+	}
+
+	function encodeRow( &$row, $db, $prefix = 'img_' ) {
+		$tsName = $prefix . 'timestamp';
+		$row->$tsName = $db->timestamp( $row->$tsName );
+	}
+
 	/*
 	 * Load file metadata from a DB result row
 	 */
-	function loadFromRow( &$row ) {
-		$this->size = $row->img_size;
-		$this->width = $row->img_width;
-		$this->height = $row->img_height;
-		$this->bits = $row->img_bits;
-		$this->type = $row->img_media_type;
-
-		$major= $row->img_major_mime;
-		$minor= $row->img_minor_mime;
-
-		if (!$major) $this->mime = "unknown/unknown";
-		else {
-			if (!$minor) $minor= "unknown";
-			$this->mime = $major.'/'.$minor;
+	function loadFromRow( $row, $prefix = 'img_' ) {
+		$array = (array)$row;
+		$prefixLength = strlen( $prefix );
+		// Sanity check prefix once
+		if ( substr( key( $array ), 0, $prefixLength ) !== $prefix ) {
+			throw new MWException( __METHOD__. ': incorrect $prefix parameter' );
+		}	
+		foreach ( $array as $name => $value ) {
+			$deprefixedName = substr( $name, $prefixLength );
+			$this->$deprefixedName = $value;
 		}
-		$this->metadata = $row->img_metadata;
-
+		if ( !$this->major_mime ) {
+			$this->mime = "unknown/unknown";
+		} else {
+			if (!$this->minor_mime) {
+				$this->minor_mime = "unknown";
+			}
+			$this->mime = $this->major_mime.'/'.$this->minor_mime;
+		}
+		$this->fileExists = true;
 		$this->dataLoaded = true;
 	}
 
@@ -242,12 +248,7 @@ class LocalFile extends File
 		if ( !$this->dataLoaded ) {
 			if ( !$this->loadFromCache() ) {
 				$this->loadFromDB();
-				if ( $this->fileExists ) {
-					// FIXME: We can do negative caching for local files, because the cache
-					// will be purged on upload. But we can't do it when shared files
-					// are enabled, since updates to that won't purge foreign caches.
-					$this->saveToCache();
-				} 
+				$this->saveToCache();
 			}
 			$this->dataLoaded = true;
 		}
@@ -257,7 +258,7 @@ class LocalFile extends File
 	 * Upgrade a row if it needs it
 	 */
 	function maybeUpgradeRow() {
-		if ( is_null($this->type) || $this->mime == 'image/svg' ) {
+		if ( is_null($this->media_type) || $this->mime == 'image/svg' ) {
 			$this->upgradeRow();
 		} else {
 			$handler = $this->getHandler();
@@ -285,7 +286,7 @@ class LocalFile extends File
 				'img_width' => $this->width,
 				'img_height' => $this->height,
 				'img_bits' => $this->bits,
-				'img_media_type' => $this->type,
+				'img_media_type' => $this->media_type,
 				'img_major_mime' => $major,
 				'img_minor_mime' => $minor,
 				'img_metadata' => $this->metadata,
@@ -372,7 +373,7 @@ class LocalFile extends File
 	 */
 	function getMediaType() {
 		$this->load();
-		return $this->type;
+		return $this->media_type;
 	}
 
 	/** canRender inherited */
@@ -632,7 +633,7 @@ class LocalFile extends File
 				'img_width' => intval( $this->width ),
 				'img_height' => intval( $this->height ),
 				'img_bits' => $this->bits,
-				'img_media_type' => $this->type,
+				'img_media_type' => $this->media_type,
 				'img_major_mime' => $major,
 				'img_minor_mime' => $minor,
 				'img_timestamp' => $now,
@@ -670,7 +671,7 @@ class LocalFile extends File
 					'img_width' => intval( $this->width ),
 					'img_height' => intval( $this->height ),
 					'img_bits' => $this->bits,
-					'img_media_type' => $this->type,
+					'img_media_type' => $this->media_type,
 					'img_major_mime' => $major,
 					'img_minor_mime' => $minor,
 					'img_timestamp' => $now,
@@ -1254,14 +1255,18 @@ class LocalFile extends File
 		return $html;
 	}
 
-} //class
+	function getTimestamp() {
+		$this->load();
+		return $this->timestamp;
+	}
+} // LocalFile class
 
 /**
  * Backwards compatibility class
  */
 class Image extends LocalFile {
 	function __construct( $title ) {
-		$repo = FileRepoGroup::singleton()->getRepo( 0 );
+		$repo = FileRepoGroup::singleton()->getLocalRepo();
 		parent::__construct( $title, $repo );
 	}
 }

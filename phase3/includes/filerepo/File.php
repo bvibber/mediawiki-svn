@@ -90,6 +90,7 @@ class File {
 	/**
 	 * Upgrade the database row if there is one
 	 * Called by ImagePage
+	 * STUB
 	 */
 	function upgradeRow() {}
 
@@ -940,6 +941,17 @@ class File {
 		} else {
 			return false;
 		}
+	}
+
+	/**
+	 * Get the 14-character timestamp of the file upload, or false if 
+	 */
+	function getTimestmap() {
+		$path = $this->getPath();
+		if ( !file_exists( $path ) ) {
+			return false;
+		}
+		return wfTimestamp( filemtime( $path ) );
 	}
 }
 
