@@ -177,12 +177,6 @@ HTML;
 		if ( $e->didSave && $subject != '' ) {
 			$thread->setSubject( Sanitizer::stripAllTags($subject) );
 		}
-
-/*		// Save new subject line if there is one:
-		if ( $e->mDidSave && $wgRequest->getVal('lqt_subject') ) {
-			$v = Sanitizer::stripAllTags($wgRequest->getVal('lqt_subject'));
-			$p->setSubject($v);
-		}*/
 	}
 	
 	function scratchTitle() {
