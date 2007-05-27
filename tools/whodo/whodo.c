@@ -56,13 +56,17 @@ struct	utmpx	*ut;
 
 		if (ut->ut_type != USER_PROCESS)
 			continue;
-		printf("%-8s %-16s\n", ut->ut_line, ut->ut_user);
 
 		if ((pp = find_uproc(ut->ut_pid, 0)) != NULL) {
+			/* 
+			 * If we can't find ut_pid, we don't even print the 
+			 * utmp entry; it's probably stale.
+			 */
+			printf("%-8s %-16s\n", ut->ut_line, ut->ut_user);
 			show_uproc(pp, 0);
 			print_uproc_children(pp, 1);
+			printf("\n");
 		}
-		printf("\n");
 	}
 	endutxent();
 	return 0;
