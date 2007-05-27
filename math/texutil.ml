@@ -466,6 +466,8 @@ let find = function
     | "\\left"             -> LEFT
     | "\\right"            -> RIGHT
     | "\\hat"              -> FUN_AR1 "\\hat "
+    | "\\hline"            -> LITERAL (TEX_ONLY "\\hline ")
+    | "\\vline"            -> LITERAL (TEX_ONLY "\\vline ")
     | "\\widehat"          -> LITERAL (TEX_ONLY "\\widehat ")
     | "\\overline"         -> LITERAL (TEX_ONLY "\\overline ")
     | "\\overbrace"        -> LITERAL (TEX_ONLY "\\overbrace ")
@@ -702,7 +704,13 @@ let find = function
     | "\\nLeftrightarrow"  -> (tex_use_ams (); LITERAL (TEX_ONLY "\\nLeftrightarrow "))
     | "\\mathit"           -> (tex_use_ams (); FUN_AR1hf ("\\mathit ", FONTFORCE_IT))
     | "\\mathrm"           -> (tex_use_ams (); FUN_AR1hf ("\\mathrm ", FONTFORCE_RM))
+    | "\\mathord"          -> (tex_use_ams (); FUN_AR1 "\\mathord ")
     | "\\mathop"           -> (tex_use_ams (); FUN_AR1 "\\mathop ")
+    | "\\mathbin"          -> (tex_use_ams (); FUN_AR1 "\\mathbin ")
+    | "\\mathrel"          -> (tex_use_ams (); FUN_AR1 "\\mathrel ")
+    | "\\mathopen"         -> (tex_use_ams (); FUN_AR1 "\\mathopen ")
+    | "\\mathclose"        -> (tex_use_ams (); FUN_AR1 "\\mathclose ")
+    | "\\mathpunct"        -> (tex_use_ams (); FUN_AR1 "\\mathpunct ")
     | "\\boldsymbol"       -> (tex_use_ams (); FUN_AR1 "\\boldsymbol ")
     | "\\bold"             -> (tex_use_ams (); FUN_AR1 "\\mathbf ")
     | "\\Bbb"              -> (tex_use_ams (); FUN_AR1 "\\mathbb ")
