@@ -83,7 +83,10 @@ class ImageMap {
 				$thumbWidth = $imageNode->getAttribute('width');
 				$thumbHeight = $imageNode->getAttribute('height');
 
-				$imageObj = new Image( $imageTitle );
+				$imageObj = function_exists( 'wfFindFile' ) ? wfFindFile( $imageTitle ) : new Image( $imageTitle );
+				if ( !$imageObj || !$imageObj->exists() ) {
+					return self::error( 'imagemap_invalid_image' );
+				}
 				# Add the linear dimensions to avoid inaccuracy in the scale 
 				# factor when one is much larger than the other
 				# (sx+sy)/(x+y) = s

@@ -80,10 +80,8 @@ class UserImagesGallery {
 					$gallery->setCaption( $this->getCaption() );
 					$gallery->useSkin( $this->parser->getOptions()->getSkin() );
 					foreach( $images as $image ) {
-						$object = new Image( Title::makeTitleSafe( NS_IMAGE, $image->img_name ) );
-						$object->loadFromFile();
-						$object->loadFromRow( $image );
-						$gallery->add( $object );
+						$title = Title::makeTitleSafe( NS_IMAGE, $image->img_name );
+						$gallery->add( $title );
 					}
 					return $gallery->toHtml();
 				} else {

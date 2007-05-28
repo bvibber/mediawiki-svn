@@ -28,8 +28,8 @@ class SpecialFilepath extends SpecialPage {
 			$cform = new FilepathForm( $title );
 			$cform->execute();
 		} else {
-			$file = new Image( $title ); 
-			if ( $file->exists() ) {
+			$file = function_exists( 'wfFindFile' ) ? wfFindFile( $title ) : new Image( $title );
+			if ( $file && $file->exists() ) {
 				$wgOut->redirect( $file->getURL() );
 			} else {
 				$wgOut->setStatusCode( 404 );

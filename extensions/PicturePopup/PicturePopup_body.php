@@ -64,8 +64,8 @@ class PicturePopup {
 	}
 
 	function ajaxNoCache( $sizeSel ) {
-		$image = new Image( $this->mTitle );
-		if ( !$image->exists() ) {
+		$image = function_exists( 'wfFindFile' ) ? wfFindFile( $this->mTitle ) : new Image( $this->mTitle );
+		if ( !$image || !$image->exists() ) {
 			return self::jsonError( 'picturepopup_no_image' );
 		}
 		$licenseData = $this->getImageLicenseMetadata( $this->mTitle );

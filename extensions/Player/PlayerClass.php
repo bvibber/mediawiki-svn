@@ -49,9 +49,10 @@ class Player {
 	static function newFromTitle( $title, $options, $sizeDefault = 'imagesize' ) {
 		loadPlayerI18n();
 
-		if (!$title->exists()) throw new PlayerException(wfMsg("player-not-found"), 404);
-
-		$image = new Image( $title );
+		$image = function_exists( 'wfFindFile' ) ? wfFindFile( $title ) : new Image( $title );
+		if ( !$image || !$image->exists() ) {
+			throw new PlayerException(wfMsg("player-not-found"), 404);
+		}
 		
 		return new Player( $image, $options, $sizeDefault );
 	}

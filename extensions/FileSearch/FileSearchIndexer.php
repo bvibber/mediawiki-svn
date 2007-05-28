@@ -46,7 +46,12 @@ class FileSearchIndexer {
 	public static function index( $id, $namespace, $title, $text ) {
 		if( $namespace == NS_IMAGE ) {
 			wfDebugLog( 'filesearch', "Update called for `{$title}`" );
-			$image = new Image( Title::makeTitle( NS_IMAGE, $title ) );
+			$titleObj = Title::makeTitle( NS_IMAGE, $title );
+			$image = function_exists( 'wfFindFile' ) ? wfFindFile( $titleObj ) : new Image( $titleObj );
+			if ( !$image || !$image->exists() ) {
+				wfDebugLog( 'filesearch', "Image does not exist: $title" );
+				return;
+			}
 			$extractor = self::getExtractor( ( $mime = $image->getMimeType() ) );
 			if( $extractor instanceof Extractor ) {
 				wfDebugLog( 'filesearch', 'Using extractor ' . get_class( $extractor ) );
