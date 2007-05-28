@@ -12,12 +12,33 @@ class OldLocalFile extends LocalFile {
 	const MAX_CACHE_ROWS = 20;
 
 	function newFromTitle( $title, $repo, $time ) {
-		return new OldLocalFile( $title, $repo, $time );
+		return new self( $title, $repo, $time, null );
 	}
 
-	function __construct( $title, $repo, $time ) {
+	function newFromArchiveName( $title, $repo, $archiveName ) {
+		return new self( $title, $repo, null, $archiveName );
+	}
+
+	function newFromRow( $row, $repo ) {
+		$title = Title::makeTitle( NS_IMAGE, $row->oi_name );
+		$file = new self( $title, $repo, null, $row->oi_archive_name );
+		$file->loadFromRow( $row, 'oi_' );
+		return $file;
+	}
+
+	/**
+	 * @param Title $title
+	 * @param FileRepo $repo
+	 * @param string $time Timestamp or null to load by archive name
+	 * @param string $archiveName Archive name or null to load by timestamp
+	 */
+	function __construct( $title, $repo, $time, $archiveName ) {
 		parent::__construct( $title, $repo );
 		$this->requestedTime = $time;
+		$this->archive_name = $archiveName;
+		if ( is_null( $time ) && is_null( $archiveName ) ) {
+			throw new MWException( __METHOD__.': must specify at least one of $time or $archiveName' );
+		}
 	}
 
 	function getCacheKey() {
@@ -26,7 +47,9 @@ class OldLocalFile extends LocalFile {
 	}
 
 	function getArchiveName() {
-		$this->load();
+		if ( !isset( $this->archive_name ) ) {
+			$this->load();
+		}
 		return $this->archive_name;
 	}
 
@@ -48,22 +71,32 @@ class OldLocalFile extends LocalFile {
 		$oldImages = $wgMemc->get( $key );
 
 		if ( isset( $oldImages['version'] ) && $oldImages['version'] == MW_OLDFILE_VERSION ) {
-			unset( $oldImages['version'];
+			unset( $oldImages['version'] );
 			$more = isset( $oldImages['more'] );
 			unset( $oldImages['more'] );
-			krsort( $oldImages );
 			$found = false;
-			foreach ( $oldImages as $timestamp => $info ) {
-				if ( $timestamp <= $this->desiredTimestamp ) {
-					$found = true;
-					break;
+			if ( is_null( $this->requestedTime ) ) {
+				foreach ( $oldImages as $timestamp => $info ) {
+					if ( $info['archive_name'] == $this->archive_name ) {
+						$found = true;
+						break;
+					}
+				}
+			} else {
+				krsort( $oldImages );
+				foreach ( $oldImages as $timestamp => $info ) {
+					if ( $timestamp <= $this->requestedTime ) {
+						$found = true;
+						break;
+					}
 				}
 			}
 			if ( $found ) {
 				wfDebug( "Pulling file metadata from cache key {$key}[{$timestamp}]\n" );
-				$this->loadFromRow( (object)$cachedValues ) );
-				$this->fileExists = true;
 				$this->dataLoaded = true;
+				foreach ( $cachedValues as $name => $value ) {
+					$this->$name = $value;
+				}
 			} elseif ( $more ) {
 				wfDebug( "Cache key was truncated, oldimage row might be found in the database\n" );
 			} else {
@@ -122,16 +155,16 @@ class OldLocalFile extends LocalFile {
 	function loadFromDB() {
 		wfProfileIn( __METHOD__ );
 		$dbr = $this->repo->getSlaveDB();
+		$conds = array( 'oi_name' => $this->getName() );
+		if ( is_null( $this->requestedTimestamp ) ) {
+			$conds['oi_archive_name'] = $this->archive_name;
+		} else {
+			$conds[] = 'oi_timestamp <= ' . $dbr->addQuotes( $this->requestedTimestamp );
+		}
 		$row = $dbr->selectRow( 'oldimage', $this->getCacheFields( 'oi_' ),
-			array( 
-				'oi_name' => $this->getName(), 
-				'oi_timestamp <= ' . $this->requestedTimestamp
-			), __METHOD__, array( 'ORDER BY' => 'oi_timestamp DESC' ) );
+			$conds, __METHOD__, array( 'ORDER BY' => 'oi_timestamp DESC' ) );
 		if ( $row ) {
-			$this->decodeRow( $row, 'oi_' );
 			$this->loadFromRow( $row, 'oi_' );
-			// Check for rows from a previous schema, quietly upgrade them
-			$this->maybeUpgradeRow();
 		} else {
 			$this->fileExists = false;
 		}
@@ -141,14 +174,19 @@ class OldLocalFile extends LocalFile {
 	function getCacheFields( $prefix = 'img_' ) {
 		$fields = parent::getCacheFields( $prefix );
 		$fields[] = $prefix . 'archive_name';
+
+		// XXX: Temporary hack before schema update
+		$fields = array_diff( $fields, array( 
+			'oi_media_type', 'oi_major_mime', 'oi_minor_mime', 'oi_metadata' ) );
+		return $fields;
 	}
 
 	function getRel() {
-		return 'archive/' . $this->getHashPath() . '/' . $this->archive_name;
+		return 'archive/' . $this->getHashPath() . $this->getArchiveName();
 	}
 
 	function getUrlRel() {
-		return 'archive/' . $this->getHashPath() . '/' . urlencode( $this->archive_name );
+		return 'archive/' . $this->getHashPath() . urlencode( $this->getArchiveName() );
 	}
 	
 	function upgradeRow() {
@@ -165,15 +203,19 @@ class OldLocalFile extends LocalFile {
 				'oi_width' => $this->width,
 				'oi_height' => $this->height,
 				'oi_bits' => $this->bits,
-				'oi_media_type' => $this->media_type,
-				'oi_major_mime' => $major,
-				'oi_minor_mime' => $minor,
-				'oi_metadata' => $this->metadata,
+				#'oi_media_type' => $this->media_type,
+				#'oi_major_mime' => $major,
+				#'oi_minor_mime' => $minor,
+				#'oi_metadata' => $this->metadata,
 			), array( 'oi_name' => $this->getName(), 'oi_timestamp' => $this->requestedTime ),
 			__METHOD__
 		);
 		wfProfileOut( __METHOD__ );
 	}
+
+	// XXX: Temporary hack before schema update
+	function maybeUpgradeRow() {}
+
 }
 
 

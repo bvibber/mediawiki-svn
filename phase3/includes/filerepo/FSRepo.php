@@ -333,6 +333,36 @@ class FSRepo {
 			}
 		}
 	}
+
+	/**
+	 * Call a callback function for every file in the repository.
+	 * Uses the filesystem even in child classes.
+	 */
+	function enumFilesInFS( $callback ) {
+		$numDirs = 1 << ( $this->hashLevels * 4 );
+		for ( $flatIndex = 0; $flatIndex < $numDirs; $flatIndex++ ) {
+			$hexString = sprintf( "%0{$this->hashLevels}x", $flatIndex );
+			$path = $this->directory;
+			for ( $hexPos = 0; $hexPos < $this->hashLevels; $hexPos++ ) {
+				$path .= '/' . substr( $hexString, 0, $hexPos + 1 );
+			}
+			if ( !file_exists( $path ) || !is_dir( $path ) ) {
+				continue;
+			}
+			$dir = opendir( $path );
+			while ( false !== ( $name = readdir( $dir ) ) ) {
+				call_user_func( $callback, $path . '/' . $name );
+			}
+		}
+	}
+
+	/**
+	 * Call a callaback function for every file in the repository
+	 * May use either the database or the filesystem
+	 */
+	function enumFiles( $callback ) {
+		$this->enumFilesInFS( $callback );
+	}
 }
 
 ?>

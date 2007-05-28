@@ -257,6 +257,7 @@ function __autoload($className) {
 		'Image' => 'includes/filerepo/LocalFile.php',
 		'LocalFile' => 'includes/filerepo/LocalFile.php',
 		'LocalRepo' => 'includes/filerepo/LocalRepo.php',
+		'OldLocalFile' => 'includes/filerepo/OldLocalFile.php',
 		'RepoGroup' => 'includes/filerepo/RepoGroup.php',
 		'UnregisteredLocalFile' => 'includes/filerepo/UnregisteredLocalFile.php',
 

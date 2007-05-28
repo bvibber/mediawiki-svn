@@ -34,12 +34,20 @@ class LocalFile extends File
 		$size,          # Size in bytes (loadFromXxx)
 		$metadata,      # Metadata
 		$timestamp,     # Upload timestamp
-		$dataLoaded;    # Whether or not all this has been loaded from the database (loadFromXxx)
+		$dataLoaded,    # Whether or not all this has been loaded from the database (loadFromXxx)
+		$upgraded;      # Whether the row was upgraded on load
 
 	/**#@-*/
 
 	function newFromTitle( $title, $repo ) {
 		return new self( $title, $repo );
+	}
+
+	function newFromRow( $row, $repo ) {
+		$title = Title::makeTitle( NS_IMAGE, $row->img_name );
+		$file = new self( $title, $repo );
+		$file->loadFromRow( $row );
+		return $file;
 	}
 
 	function __construct( $title, $repo ) {
@@ -80,7 +88,9 @@ class LocalFile extends File
 			if ( $this->fileExists ) {
 				unset( $cachedValues['version'] );
 				unset( $cachedValues['fileExists'] );
-				$this->loadFromRow( $cachedValues, '' );
+				foreach ( $cachedValues as $name => $value ) {
+					$this->$name = $value;
+				}
 			}
 		}
 		if ( $this->dataLoaded ) {
@@ -196,58 +206,61 @@ class LocalFile extends File
 	function loadFromDB() {
 		wfProfileIn( __METHOD__ );
 
+		# Unconditionally set loaded=true, we don't want the accessors constantly rechecking
+		$this->dataLoaded = true;
+
 		$dbr = $this->repo->getSlaveDB();
 
 		$row = $dbr->selectRow( 'image', $this->getCacheFields( 'img_' ),
 			array( 'img_name' => $this->getName() ), __METHOD__ );
 		if ( $row ) {
-			$this->fileExists = true;
-			$this->decodeRow( $row );
 			$this->loadFromRow( $row );
-			// Check for rows from a previous schema, quietly upgrade them
-			$this->maybeUpgradeRow();
 		} else {
 			$this->fileExists = false;
 		}
 
-		# Unconditionally set loaded=true, we don't want the accessors constantly rechecking
-		$this->dataLoaded = true;
 		wfProfileOut( __METHOD__ );
 	}
 
-	function decodeRow( &$row, $prefix = 'img_' ) {
-		$tsName = $prefix . 'timestamp';
-		$row->$tsName = wfTimestamp( TS_MW, $row->$tsName );
-	}
-
-	function encodeRow( &$row, $db, $prefix = 'img_' ) {
-		$tsName = $prefix . 'timestamp';
-		$row->$tsName = $db->timestamp( $row->$tsName );
+	/**
+	 * Decode a row from the database (either object or array) to an array 
+	 * with timestamps and MIME types decoded, and the field prefix removed.
+	 */
+	function decodeRow( $row, $prefix = 'img_' ) {
+		$array = (array)$row;
+		$prefixLength = strlen( $prefix );
+		// Sanity check prefix once
+		if ( substr( key( $array ), 0, $prefixLength ) !== $prefix ) {
+			throw new MWException( __METHOD__. ': incorrect $prefix parameter' );
+		}
+		$decoded = array();
+		foreach ( $array as $name => $value ) {
+			$deprefixedName = substr( $name, $prefixLength );
+			$decoded[substr( $name, $prefixLength )] = $value;
+		}
+		$decoded['timestamp'] = wfTimestamp( TS_MW, $decoded['timestamp'] );
+		if ( empty( $decoded['major_mime'] ) ) {
+			$decoded['mime'] = "unknown/unknown";
+		} else {
+			if (!$decoded['minor_mime']) {
+				$decoded['minor_mime'] = "unknown";
+			}
+			$decoded['mime'] = $decoded['major_mime'].'/'.$decoded['minor_mime'];
+		}
+		return $decoded;
 	}
 
 	/*
 	 * Load file metadata from a DB result row
 	 */
 	function loadFromRow( $row, $prefix = 'img_' ) {
-		$array = (array)$row;
-		$prefixLength = strlen( $prefix );
-		// Sanity check prefix once
-		if ( substr( key( $array ), 0, $prefixLength ) !== $prefix ) {
-			throw new MWException( __METHOD__. ': incorrect $prefix parameter' );
-		}	
+		$array = $this->decodeRow( $row, $prefix );
 		foreach ( $array as $name => $value ) {
-			$deprefixedName = substr( $name, $prefixLength );
-			$this->$deprefixedName = $value;
+			$this->$name = $value;
 		}
-		if ( !$this->major_mime ) {
-			$this->mime = "unknown/unknown";
-		} else {
-			if (!$this->minor_mime) {
-				$this->minor_mime = "unknown";
-			}
-			$this->mime = $this->major_mime.'/'.$this->minor_mime;
-		}
-		$this->dataLoaded = true;
+		$this->fileExists = true;
+		// Check for rows from a previous schema, quietly upgrade them
+		$this->maybeUpgradeRow();
 	}
 
 	/**
@@ -267,14 +280,23 @@ class LocalFile extends File
 	 * Upgrade a row if it needs it
 	 */
 	function maybeUpgradeRow() {
+		if ( wfReadOnly() ) {
+			return;
+		}
 		if ( is_null($this->media_type) || $this->mime == 'image/svg' ) {
 			$this->upgradeRow();
+			$this->upgraded = true;
 		} else {
 			$handler = $this->getHandler();
 			if ( $handler && !$handler->isMetadataValid( $this, $this->metadata ) ) {
 				$this->upgradeRow();
+				$this->upgraded = true;
 			}
 		}
+	}
+
+	function getUpgraded() {
+		return $this->upgraded;
 	}
 
 	/**
@@ -302,6 +324,7 @@ class LocalFile extends File
 			), array( 'img_name' => $this->getName() ),
 			__METHOD__
 		);
+		$this->saveToCache();
 		wfProfileOut( __METHOD__ );
 	}
 
@@ -590,7 +613,9 @@ class LocalFile extends File
 	/**
 	 * Record a file upload in the upload log and the image table
 	 */
-	function recordUpload( $oldver, $desc, $license = '', $copyStatus = '', $source = '', $watch = false ) {
+	function recordUpload( $oldver, $desc, $license = '', $copyStatus = '', $source = '', 
+		$watch = false, $timestamp = false ) 
+	{
 		global $wgUser, $wgUseCopyrightUpload;
 
 		$dbw = $this->repo->getMasterDB();
@@ -622,7 +647,9 @@ class LocalFile extends File
 			}
 		}
 
-		$now = $dbw->timestamp();
+		if ( $timestamp === false ) {
+			$timestamp = $dbw->timestamp();
+		}
 
 		#split mime type
 		if (strpos($this->mime,'/')!==false) {
@@ -646,7 +673,7 @@ class LocalFile extends File
 				'img_media_type' => $this->media_type,
 				'img_major_mime' => $major,
 				'img_minor_mime' => $minor,
-				'img_timestamp' => $now,
+				'img_timestamp' => $timestamp,
 				'img_description' => $desc,
 				'img_user' => $wgUser->getID(),
 				'img_user_text' => $wgUser->getName(),
@@ -684,7 +711,7 @@ class LocalFile extends File
 					'img_media_type' => $this->media_type,
 					'img_major_mime' => $major,
 					'img_minor_mime' => $minor,
-					'img_timestamp' => $now,
+					'img_timestamp' => $timestamp,
 					'img_description' => $desc,
 					'img_user' => $wgUser->getID(),
 					'img_user_text' => $wgUser->getName(),

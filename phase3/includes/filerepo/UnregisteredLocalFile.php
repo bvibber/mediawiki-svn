@@ -76,7 +76,7 @@ class UnregisteredLocalFile extends File {
 		if ( !$this->getHandler() ) {
 			return false;
 		}
-		return $this->handler->getImageSize( $this, $this->getImagePath() );
+		return $this->handler->getImageSize( $this, $this->getPath() );
 	}
 
 	function getMetadata() {
@@ -84,7 +84,7 @@ class UnregisteredLocalFile extends File {
 			if ( !$this->getHandler() ) {
 				$this->metadata = false;
 			} else {
-				$this->metadata = $this->handler->getMetadata( $this, $this->getImagePath() );
+				$this->metadata = $this->handler->getMetadata( $this, $this->getPath() );
 			}
 		}
 		return $this->metadata;
