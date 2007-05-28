@@ -280,7 +280,17 @@ HTML;
 }
 
 class TalkpageView extends LqtView {
+	/* Added to SkinTemplateTabs hook in TalkpageView::show(). */
+	function customizeTabs( $skintemplate, $content_actions ) {
+		// The arguments are passed in by reference.
+		unset($content_actions['edit']);
+		unset($content_actions['addsection']);
+		unset($content_actions['history']);
+	}
 	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() );
 		
 		if( $this->request->getBool('lqt_new_thread_form') ) {
