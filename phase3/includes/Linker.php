@@ -414,11 +414,11 @@ class Linker {
 
 	/** @todo document */
 	function makeImageLinkObj( $nt, $label, $alt, $align = '', $params = array(), $framed = false,
-	  $thumb = false, $manual_thumb = '', $valign = '' )
+	  $thumb = false, $manual_thumb = '', $valign = '', $time = false )
 	{
 		global $wgContLang, $wgUser, $wgThumbLimits;
 
-		$img = wfFindFile( $nt );
+		$img = wfFindFile( $nt, $time );
 
 		if ( $img && !$img->allowInlineDisplay() ) {
 			wfDebug( __METHOD__.': '.$nt->getPrefixedDBkey()." does not allow inline display\n" );
