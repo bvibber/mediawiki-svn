@@ -6,12 +6,15 @@ if( !defined( 'MEDIAWIKI' ) )
 global $wgHooks;
 $wgHooks['AjaxAddScript'][] = 'wfAjaxQueryPagesAddJS';
 
+// Insert our javascript only for QueryPages
 function wfAjaxQueryPagesAddJS( $out ) {
 	global $wgTitle;
 	if( $wgTitle->getNamespace() != NS_SPECIAL ) {
 		return true;
 	}
-	if( !$spObj = SpecialPage::getPage( $wgTitle->getDBKey() ) ) {
+	global $wgQueryPages;
+	if( !$spObj = SpecialPage::getPage( $wgTitle->getDBKey() )
+		or !(isset($wgQueryPages) ) ) {
 		return true;
 	}
 
