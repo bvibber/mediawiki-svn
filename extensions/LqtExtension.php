@@ -13,11 +13,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 else {
 
-/** database ID of post to edit. */
-define('LQT_COMMAND_EDIT_POST', 'lqt_edit_post');
-/** database ID of post to reply to */
-define('LQT_COMMAND_REPLY_TO_POST', 'lqt_reply_to');
-
 require_once('LqtModel.php');
 
 class LqtDispatch {
@@ -106,6 +101,19 @@ class LqtView {
 	* Output methods with logic    *
 	*******************************/
 
+	/**
+	 * Return an HTML form element whose value is gotten from the request.
+	 * TODO: figure out a clean way to expand this to other forms.
+	 */
+	function perpetuate( $name, $as ) {
+		$value = $this->request->getVal($name, '');
+		if ( $as == 'hidden' ) {
+			return <<<HTML
+			<input type="hidden" name="$name" id="$name" value="$value">
+HTML;
+		}
+	}
+
 	function showNewThreadForm() {
 		$this->showEditingFormInGeneral( null, 'new', null );
 	}
@@ -133,22 +141,17 @@ class LqtView {
 		$e = new EditPage($article);
 		$e->suppressIntro = true;
 		
-		$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_edit_post\" value=\"{$article->getTitle()->getPrefixedURL()}\">";
-		
-		if ( $edit_type == 'reply' ) {
-			$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_reply_to\" value=\"{$edit_applies_to->id()}\">";
-		}
-		
-		if ( $edit_type == 'new' ) {
-			$e->editFormTextBottom .= "<input type=\"hidden\" name=\"lqt_new_thread_form\" value=\"1\">";
-		}
+		$e->editFormTextBeforeContent .=
+			$this->perpetuate('lqt_edit_post', 'hidden') .
+			$this->perpetuate('lqt_reply_to', 'hidden') .
+			$this->perpetuate('lqt_new_thread_form', 'hidden');
 		
 		if ( $thread == null || $thread->superthread() == null ) {
 			// This is a top-level post; show the subject line.
 			$subject = $this->request->getVal('lqt_subject_field', $thread ? $thread->subject() : '');
 			$e->editFormTextBeforeContent .= <<<HTML
 			<label for="lqt_subject_field">Subject: </label>
-			<input type="text" size="50" name="lqt_subject_field" id="lqt_subject_field" value="$subject"><br>
+			<input type="text" size="60" name="lqt_subject_field" id="lqt_subject_field" value="$subject"><br>
 HTML;
 		}
 
@@ -210,6 +213,19 @@ HTML;
 		}
 	}
 
+	function lqtTalkpageUrl( $title, $operator = null, $operand = null ) {
+		if ( $operator == 'lqt_reply_to' ) {
+			$query = array( 'lqt_reply_to' => $operand ? $operand->id() : null );
+		} else if ($operator == 'lqt_edit_post') {
+			$query = array( 'lqt_edit_post' => $operand ? $operand->rootPost()->getTitle()->getPrefixedURL() : null );
+		} else if ($operator == 'lqt_new_thread_form' ) {
+			$query = array( 'lqt_new_thread_form' => '1' );
+		} else {
+			$query = array();
+		}
+		return $title->getFullURL( $this->queryStringFromArray($query) );
+	}
+
 	function showThreadFooter( $thread ) {
 
 		$this->output->addHTML(wfOpenElement('ul', array('class'=>'lqt_footer')));
@@ -218,16 +234,16 @@ HTML;
 		$p = new Parser(); $sig = $p->getUserSig( $thread->rootPost()->originalAuthor() );
 		$this->output->addWikitext( $sig, false );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
-			
-		$commands = array( 'Edit' => $this->selflink( array( LQT_COMMAND_EDIT_POST => $thread->rootPost()->getTitle()->getPrefixedURL() ) ),
-						   'Reply' => $this->selflink( array( LQT_COMMAND_REPLY_TO_POST => $thread->id() ) ));
-						
+		
+		$commands = array( 'Edit' => $this->lqtTalkpageUrl( $this->title, 'lqt_edit_post', $thread ),
+		 					'Reply' => $this->lqtTalkpageUrl( $this->title, 'lqt_reply_to', $thread ) );
+
 		foreach( $commands as $label => $href ) {
 			$this->output->addHTML( wfOpenElement( 'li' ) );
 			$this->output->addHTML( wfElement('a', array('href'=>$href), $label) );
 			$this->output->addHTML( wfCloseElement( 'li' ) );
 		}
-		
+
 		$this->output->addHTML(wfCloseELement('ul'));
 	}
 
@@ -236,7 +252,7 @@ HTML;
 		
 		$this->openDiv( 'lqt_post' );
 		
-		if( $this->commandApplies( LQT_COMMAND_EDIT_POST, $post ) ) {
+		if( $this->commandApplies( 'lqt_edit_post', $post ) ) {
 			$this->showPostEditingForm( $thread );
 		} else{
 			$this->showPostBody( $post );
@@ -245,7 +261,7 @@ HTML;
 		
 		$this->closeDiv();
 		
-		if( $this->commandAppliesToThread( LQT_COMMAND_REPLY_TO_POST, $thread ) ) {
+		if( $this->commandAppliesToThread( 'lqt_reply_to', $thread ) ) {
 			$this->indent();
 			$this->showReplyForm( $thread );
 			$this->unindent();
@@ -296,7 +312,8 @@ class TalkpageView extends LqtView {
 		if( $this->request->getBool('lqt_new_thread_form') ) {
 			$this->showNewThreadForm();
 		} else {
-			$this->output->addHTML("<strong><a href=\"{$this->title->getFullURL('lqt_new_thread_form=1')}\">Start a Discussion</a></strong>");
+			$url = $this->lqtTalkpageUrl( $this->title, 'lqt_new_thread_form' );
+			$this->output->addHTML("<strong><a href=\"$url\">Start a Discussion</a></strong>");
 		}
 		$threads = Thread::allThreadsOfArticle($this->article);
 		foreach($threads as $t) {

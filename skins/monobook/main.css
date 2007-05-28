@@ -108,8 +108,9 @@ h1.lqt_header {
 }*/
 
 #lqt_subject_field { 
-         margin-top: 0.7em;
-         margin-bottom: 0.5em;
+	margin-top: 0.7em;
+	margin-bottom: 0.5em;
+	width: 80%;
  }
 
 .lqt_post .lqt_footer a {
