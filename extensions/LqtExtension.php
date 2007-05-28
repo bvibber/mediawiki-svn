@@ -322,6 +322,43 @@ class TalkpageView extends LqtView {
 	}
 }
 
+/*
+ The Thread special page pseudo-namespace follows. We have to do this goofy wgExtensionFunctions
+ run-around because the files required by SpecialPage aren't required_onced() yet by the time
+ this file is. Don't ask me why.
+*/
+
+$wgExtensionFunctions[] = 'wfLqtSpecialThreadPage';
+$wgExtensionCredits['specialpage'][] = array(
+    'name' => 'Thread',
+    'description' => 'An important part of Liquid Threads.',
+    'author' => 'David McCabe'
+);
+
+function wfLqtSpecialThreadPage() {
+	global $wgMessageCache;
+
+	require_once('SpecialPage.php');
+	
+    $wgMessageCache->addMessage( 'thread', 'Thread' );
+	
+	class SpecialThreadPage extends SpecialPage {
+
+		function __construct() {
+			SpecialPage::SpecialPage( 'Thread' );
+			$this->includable( false );
+		}
+
+		function execute( $par = null ) {
+			global $wgOut, $wgRequest, $wgUser, $wgTitle;
+			$this->sk = $wgUser->getSkin();
+			$this->setHeaders();
+			$wgOut->addHtml( "Foo." );
+		}
+	}
+	
+	 SpecialPage::addPage( new SpecialThreadPage() );
+}
 
 }
 
