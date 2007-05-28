@@ -131,6 +131,10 @@ class ImageGallery
 	 * @param $html  String: additional HTML text to be shown. The name and size of the image are always shown.
 	 */
 	function add( $title, $html='' ) {
+		if ( $title instanceof File ) {
+			// Old calling convention
+			$title = $title->getTitle();
+		}
 		$this->mImages[] = array( $title, $html );
 		wfDebug( "ImageGallery::add " . $title->getText() . "\n" );
 	}
