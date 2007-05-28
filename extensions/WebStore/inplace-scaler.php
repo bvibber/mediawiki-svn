@@ -69,7 +69,7 @@ class InplaceScaler extends WebStoreCommon {
 		$magic = MimeMagic::singleton();
 		$mime = $magic->guessTypesForExtension( $ext );
 
-		$image = new WebStoreLocalImage( $srcTemp, $mime );
+		$image = UnregisteredLocalFile::newFromPath( $srcTemp, $mime );
 
 		$handler = $image->getHandler();
 		if ( !$handler ) {

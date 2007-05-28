@@ -64,7 +64,6 @@ $wgWebStoreSettings = array(
 
 $wgAutoloadClasses['WebStoreClient'] = 'extensions/WebStore/WebStoreClient.php';
 $wgAutoloadClasses['WebStoreCommon'] = 'extensions/WebStore/WebStoreCommon.php';
-$wgAutoloadClasses['WebStoreLocalImage'] = 'extensions/WebStore/WebStoreCommon.php';
 $wgAutoloadClasses['WebStorePostFile'] = 'extensions/WebStore/WebStorePostFile.php';
 $wgHooks['LoadAllMessages'][] = 'WebStoreCommon::initialiseMessages';
 

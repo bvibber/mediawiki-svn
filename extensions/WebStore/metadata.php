@@ -59,7 +59,7 @@ class WebStoreMetadata extends WebStoreCommon {
 			return false;
 		}
 
-		$image = new WebStoreLocalImage( $fullPath, $mime );
+		$image = UnregisteredLocalFile::newFromPath( $fullPath, $mime );
 		if ( !$image->getHandler() ) {
 			$this->error( 400, 'webstore_no_handler' );
 			return false;
