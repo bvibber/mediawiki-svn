@@ -147,15 +147,17 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		$html="<div class=\"dataset-panel\">";;
 		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_conceptpanel</th></tr>";
-		$dataSets=getDataSetsAssociatedByConcept($dm,$dc);
 		$sk=$wgUser->getSkin();
-		foreach ($dataSets as $dataset) {
+		$meanings=getDefinedMeaningDataAssociatedByConcept($dm,$dc);
+		foreach ($meanings as $dm) {
+			$dataset=$dm->getDataset();
 			$active=($dataset->getPrefix()==$dc->getPrefix());
 			$name=$dataset->fetchName();
+			#$name="woo";
 			$prefix=$dataset->getPrefix();
 
 			$class= $active ? 'dataset-panel-active' : 'dataset-panel-inactive';
-			$slot = $active ? "$name" : $sk->makeLinkObj($wgTitle,$name,"dataset=$prefix");
+			$slot = $active ? "$name" : $sk->makeLinkObj($dm->getTitle(),$name,"dataset=$prefix");
 			$html.="<tr><td class=\"$class\">$slot</td></tr>";
 		}
 		$html.="</table>";

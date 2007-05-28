@@ -3,6 +3,7 @@
 require_once("forms.php");
 require_once("Transaction.php");
 require_once("OmegaWikiAttributes.php");
+require_once("WikiDataAPI.php");
 
 class DefaultWikidataApplication {
 	protected $showRecordLifeSpan;
@@ -431,4 +432,112 @@ class DataSet {
 
 }
 
+/**
+ * A representation and easy access to all defined-meaning related data in one handy spot
+ * or would be. Currently only holds data  that is eally needed. Please expand and
+ * use to replace WiKiDataAPI.
+ * Sometimes a getter or setter will query the database and/or attempt to deduce additional
+ * information based on what it already knows, but don't count on that (yet).
+ */
+
+class DefinedMeaningData {
+	private $languageId=null; # 85 = English, a pretty safe default.
+	private $languageCode=null; #the associated wikiId
+	private $spelling=null;
+	private $id=null;
+	private $dataset=null;
+
+	/** return spelling of associated expression in particular langauge
+	 * not nescesarily the correct langauge. 
+	 */
+	public function getSpelling() {
+		if ($this->spelling==null) {
+
+			$id=$this->getId();
+			if ($id==null) 
+				return null;
+			
+			$languageCode=$this->getLanguageCode();
+			if ($languageCode==null) 
+				return null; # this should probably never happen
+			
+			$dataset=$this->getDataset();
+			if ($dataset==null) 
+				return null;
+
+			$this->spelling=getSpellingForLanguage($id, $languageCode, "en", $dataset);
+		} 
+		return $this->spelling;
+	}
+
+	public function makeLinkObj() {
+		global 
+			$wgUser;
+
+		$skin=$wgUser->getSkin();
+		if ($skin==null) 
+			return null; # This is a bit of a guess
+			
+		$title=$this->getTitle();
+		if ($title==null)
+			return null;
+		
+		$dataset=$this->getDataset();
+		if ($dataset==null)
+			return null;
+		
+		$prefix=$dataset->getPrefix();
+		$name=$this->getSpelling();
+		
+		$skin->makeLinkObj($title, $name , "dataset=$prefix");
+	}
+	
+
+	public function &getTitle() {
+		$name=$this->getSpelling();
+		$id=$this->getId();
+		$text="DefinedMeaning:$name ($id)";
+		wfDebug($text);
+		$title=Title::newFromText($text);
+		return $title;
+	}
+	
+	public function setId($id) {
+		$this->id=$id;
+	}
+	
+	public function getId() {
+		return $this->id;
+	}
+
+	public function setDataset(&$dataset) {
+		$this->dataset=$dataset;
+	}
+
+	public function &getDataset() {
+		return $this->dataset;
+	}
+
+	public function setLanguageId($langaugeId) {
+		$this->langaugeId=$languageId;	
+	}
+
+	public function getLanguageId() {
+		return $this->languageId;
+	}
+
+	public function setLanguageCode($languageCode) {
+		return $this->langaugeCode;
+	}
+
+	public function getLanguageCode() {
+		if ($this->languageCode==null) {
+			global 
+				$wgUser;
+			$this->languageCode=$wgUser->getOption('language');
+		}
+		return $this->languageCode;
+	}
+}
+	
 ?>

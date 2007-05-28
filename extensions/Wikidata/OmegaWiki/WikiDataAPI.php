@@ -1198,5 +1198,17 @@ function &getDataSetsAssociatedByConcept($dm, $dc) {
 	}
 	return $newSets;
 }
+function &getDefinedMeaningDataAssociatedByConcept($dm, $dc) {
+	$meanings=array();
+	$map=getDataSetsAssociatedByConcept($dm, $dc);
+	foreach ($map as $map_dc => $map_dataset) {
+		$dmData=new DefinedMeaningData();
+		$dmData->setDataset($map_dataset);
+		$dmData->setId($map_dataset->getDefinedMeaningId());
+		$meanings[$map_dc]=$dmData;
+	}
+	return $meanings;
+}
+
 
 ?>
