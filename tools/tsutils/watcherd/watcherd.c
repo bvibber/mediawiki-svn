@@ -420,7 +420,7 @@ alias_t	*a;
 	a->alias = strdup(alias);
 	a->user = strdup(user);
 	a->next = aliaslist.next;
-	aliaslist.next = a->next;
+	aliaslist.next = a;
 }
 
 static char const *
