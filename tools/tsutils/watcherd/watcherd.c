@@ -255,7 +255,7 @@ MYSQL_ROW	 row;
 
 	mysql_free_result(res);
 	clean_seen_queries();
-	return 6;
+	return 60;
 }
 
 static void
