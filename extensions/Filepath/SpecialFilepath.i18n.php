@@ -44,9 +44,12 @@ $wgFilepathMessages['fr'] = array(
 	'filepath_submit' => 'Chemin',
 );
 $wgFilepathMessages['he'] = array(
-	'filepath'        => 'נתיב לקובץ',
-	'filepath_page'   => 'הקובץ:',
-	'filepath_submit' => 'מצא את הנתיב',
+	'filepath'         => 'נתיב לקובץ',
+	'filepath_page'    => 'הקובץ:',
+	'filepath_submit'  => 'מציאת הנתיב',
+	'filepath-summary' => 'דף זה מציג את הנתיב המלא לקבצים שהועלו. תמונות מוצגות ברזולוציה מלאה, ואילו סוגי קבצים אחרים מוצגים ישירות באמצעות התוכנה שהוגדרה להצגתם.
+	
+	יש להקליד את שם הקובץ ללא הקידומת "{{ns:image}}:".',
 );
 $wgFilepathMessages['hu'] = array(
 	'filepath'        => 'Fájl elérés',
