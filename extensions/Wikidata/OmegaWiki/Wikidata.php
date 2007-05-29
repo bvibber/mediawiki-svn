@@ -368,7 +368,7 @@ class DataSet {
 	private $dataSetPrefix;
 	private $isValidPrefix=false;
 	private $fallbackName='';
-	private $dmId=0;
+	private $dmId=0; # the dmId of the dataset name
 
 	public function getPrefix() {
 		return $this->dataSetPrefix;

@@ -1181,7 +1181,7 @@ function getConceptId($dm,$dc){
 }
 
 function &getAssociatedByConcept($dm, $dc) {
-    	$dbr = & wfGetDB(DB_SLAVE);
+    	#$dbr = & wfGetDB(DB_SLAVE);
 	$concept_id=getConceptId($dm,$dc);
 	wfDebug("concept id:".$concept_id."\n");
 	return readConceptMapping($concept_id);
@@ -1193,7 +1193,7 @@ function &getDataSetsAssociatedByConcept($dm, $dc) {
 	$newSets=array();
 	foreach ($map as $map_dc => $map_dm) {
 		$dataset=$sets[$map_dc];
-		$dataset->setDefinedMeaningId($map_dm);
+	#	$dataset->setDefinedMeaningId($map_dm);
 		$newSets[$map_dc]=$dataset;
 	}
 	return $newSets;
@@ -1201,10 +1201,11 @@ function &getDataSetsAssociatedByConcept($dm, $dc) {
 function &getDefinedMeaningDataAssociatedByConcept($dm, $dc) {
 	$meanings=array();
 	$map=getDataSetsAssociatedByConcept($dm, $dc);
+	$dm_map=getAssociatedByConcept($dm, $dc);
 	foreach ($map as $map_dc => $map_dataset) {
 		$dmData=new DefinedMeaningData();
 		$dmData->setDataset($map_dataset);
-		$dmData->setId($map_dataset->getDefinedMeaningId());
+		$dmData->setId($dm_map[$map_dc]);
 		$meanings[$map_dc]=$dmData;
 	}
 	return $meanings;

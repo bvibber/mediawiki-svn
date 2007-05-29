@@ -45,8 +45,7 @@ function wfSpecialConceptMapping() {
 			$wgOut->setPageTitle("ConceptMapping");
 			$action=$wgRequest->getText('action');
 			if(!$action) {
-				$wgOut->addWikiText("You didn't set an action. Now kicking back and being lazy.<br>");
-				$wgOut->addWikiText(help_text);
+				$this->ui();
 			} elseif ($action=="insert"){
 				$this->insert();
 			} elseif ($action=="get"){
@@ -63,6 +62,50 @@ function wfSpecialConceptMapping() {
 			}
 		}
 
+		protected function ui() {
+			global $wgOut;
+			require_once("forms.php");
+			
+			$sets=wdGetDataSets();
+			$options = array();
+			$html="";
+			foreach ($sets as $key=>$set) {
+				$options[$set->fetchName()]=$this->getDm($set);
+			}
+			$wgOut->addHTML(getOptionPanel($options));
+			#debug
+			global $wgRequest;
+			$mappings=array();
+			foreach ($sets as $key=>$set) {
+				$rq=$wgRequest->getText("set_".$key);
+				$rq=ltrim($rq);
+				$wgOut->addHTML("$key: $rq");
+				if ($rq!=null and $rq!="") {
+					$mappings[$key]=$rq;
+					$wgOut->addHTML(" (will insert)");
+				} else {
+					$wgOut->addHTML("(not supplied)");
+				}
+				$wgOut->addHTML("<br>\n");	
+			}
+			if (sizeOf($mappings)>1) { 
+				createConceptMapping($mappings);
+				$wgOut->addHTML("Mapped all fields marked with (will insert)<br>\n");
+			} else {
+				$wgOut->addHTML("Need to have at least two defined meanings before I can link them");
+			}
+
+		}
+
+		protected function getDm($dataset) {
+			global $wgRequest;
+			$setname="set_".$dataset->getPrefix();
+			$rq=$wgRequest->getText($setname);
+			$html=getTextBox($setname, $rq);
+			return $html;
+		}
+
+		
 		protected function help() {
 			global $wgOut;
 			$wgOut->addWikiText("<h2>Help</h2>");
