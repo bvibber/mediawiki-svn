@@ -226,6 +226,10 @@ HTML;
 		return $title->getFullURL( $this->queryStringFromArray($query) );
 	}
 
+	function permalinkUrl( $thread ) {
+		return SpecialPage::getTitleFor('Thread', $thread->id())->getFullURL();
+	}
+	
 	function showThreadFooter( $thread ) {
 
 		$this->output->addHTML(wfOpenElement('ul', array('class'=>'lqt_footer')));
@@ -236,7 +240,8 @@ HTML;
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
 		$commands = array( 'Edit' => $this->lqtTalkpageUrl( $this->title, 'lqt_edit_post', $thread ),
-		 					'Reply' => $this->lqtTalkpageUrl( $this->title, 'lqt_reply_to', $thread ) );
+		 					'Reply' => $this->lqtTalkpageUrl( $this->title, 'lqt_reply_to', $thread ),
+		 					'Permalink' => $this->permalinkUrl( $thread ) );
 
 		foreach( $commands as $label => $href ) {
 			$this->output->addHTML( wfOpenElement( 'li' ) );
@@ -322,6 +327,24 @@ class TalkpageView extends LqtView {
 	}
 }
 
+class ThreadPermalinkView extends LqtView {
+	function show() {
+		/* Extract the numeric ID after the slash in the URL. */
+		$title_string = $this->request->getVal('title');
+		$a = explode('/', $title_string);
+		if ( $a == false || count( $a ) < 2 || !ctype_digit($a[1])  ) {
+			echo("bad request"); // TODO this is not a very friendly way to handle this.
+			die();
+		}
+		$thread_id = intval($a[1]);
+		
+		$this->output->setPageTitle( "Thread #$thread_id" );
+		
+		$t = Thread::newFromId( $thread_id );
+		$this->showThread($t);
+	}
+}
+
 /*
  The Thread special page pseudo-namespace follows. We have to do this goofy wgExtensionFunctions
  run-around because the files required by SpecialPage aren't required_onced() yet by the time
@@ -329,11 +352,6 @@ class TalkpageView extends LqtView {
 */
 
 $wgExtensionFunctions[] = 'wfLqtSpecialThreadPage';
-$wgExtensionCredits['specialpage'][] = array(
-    'name' => 'Thread',
-    'description' => 'An important part of Liquid Threads.',
-    'author' => 'David McCabe'
-);
 
 function wfLqtSpecialThreadPage() {
 	global $wgMessageCache;
@@ -346,14 +364,17 @@ function wfLqtSpecialThreadPage() {
 
 		function __construct() {
 			SpecialPage::SpecialPage( 'Thread' );
+			SpecialPage::$mStripSubpages = false;
 			$this->includable( false );
 		}
 
 		function execute( $par = null ) {
-			global $wgOut, $wgRequest, $wgUser, $wgTitle;
-			$this->sk = $wgUser->getSkin();
+			global $wgOut, $wgRequest, $wgTitle, $wgArticle, $wgUser;
+
 			$this->setHeaders();
-			$wgOut->addHtml( "Foo." );
+			
+			$view = new ThreadPermalinkView( $wgOut, $wgArticle, $wgTitle, $wgUser, $wgRequest );
+			$view->show();
 		}
 	}
 	
