@@ -8,7 +8,6 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 
-import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.XmlDumpReader;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
@@ -24,6 +23,8 @@ import org.xml.sax.helpers.DefaultHandler;
  * appears as a continious stream. For this stream
  * calls to sax parser methods are delegated to XmlDumpReader.
  * 
+ * Note: implementation is very lazy and messy :(
+ * 
  * @author rainman
  *
  */
@@ -37,8 +38,8 @@ public class OAIParser extends DefaultHandler {
 	protected String oaiId,pageId,resumptionToken,responseDate;
 	protected boolean beginMW; // beginning of mediawiki stream
 	protected String mwUri, mwLocalName, mwQName;
-	protected boolean isDeleted, inReferences;
-	protected String references;
+	protected boolean isDeleted, inReferences, inRedirect, inRedirectTitle, inRedirectRef;
+	protected String references, redirectTitle, redirectRef;
 	
 	
 	public OAIParser(InputStream in, IndexUpdatesCollector collector){
@@ -50,6 +51,8 @@ public class OAIParser extends DefaultHandler {
 		inResponseDate = false; inReferences = false;
 		oaiId = ""; resumptionToken = ""; responseDate = "";
 		beginMW = true; references = "";
+		inRedirect = false; inRedirectTitle= false; inRedirectRef = false;
+		redirectTitle = ""; redirectRef = "";
 	}
 	
 	public void parse() throws IOException{
@@ -74,8 +77,17 @@ public class OAIParser extends DefaultHandler {
 			inDump = false; // lsearch syntax
 			inReferences = true;
 			references = "";
+		} else if(inDump && qName.equals("redirect")){ 
+			inDump = false;
+			inRedirect = true;
+			redirectTitle = "";
+			redirectRef = "";
 		} else if(inDump)
 			dumpReader.startElement(uri, localName, qName, attributes);
+		else if(inRedirect && qName.equals("title"))
+			inRedirectTitle = true;
+		else if(inRedirect && qName.equals("references"))
+			inRedirectRef = true;
 		else if(qName.equals("record"))
 			inRecord = true;
 		else if(qName.equals("header") && inRecord){
@@ -85,8 +97,7 @@ public class OAIParser extends DefaultHandler {
 				isDeleted = true;
 			else 
 				isDeleted = false;
-		}
-		else if(qName.equals("identifier") && inHeader){
+		} else if(qName.equals("identifier") && inHeader){
 			oaiId = "";
 			inIdentifier = true;
 		} else if(qName.equals("metadata"))
@@ -115,10 +126,23 @@ public class OAIParser extends DefaultHandler {
 			dumpReader.endElement(uri, localName, qName);
 		else if(qName.equals("upload"))
 			inDump = true; // we ignored upload tag / parsed references, we can now resume
-		else if(qName.equals("references")){
+		else if(!inRedirect && qName.equals("references")){
 			inDump = true;
-			collector.setReferences(Integer.parseInt(references));
-		} else if(qName.equals("record"))
+			inReferences = false;
+			if(!references.equals(""))
+				collector.addReferences(Integer.parseInt(references));
+		} if(qName.equals("redirect")){
+			inDump = true;
+			int ref = 0;
+			if(!redirectRef.equals(""))
+				ref = Integer.parseInt(redirectRef);
+			collector.addRedirect(redirectTitle,ref);
+			inRedirect = false;
+		} else if(inRedirect && qName.equals("title")) 
+			inRedirectTitle = false;
+		else if(inRedirect && qName.equals("references"))
+			inRedirectRef = false;
+		else if(qName.equals("record"))
 			inRecord = false;
 		else if(qName.equals("header"))
 			inHeader = false;
@@ -153,6 +177,10 @@ public class OAIParser extends DefaultHandler {
 			responseDate += new String(ch,start,length);
 		} else if(inReferences){
 			references += new String(ch,start,length);
+		} else if(inRedirectTitle){
+			redirectTitle += new String(ch,start,length);
+		} else if(inRedirectRef){
+			redirectRef += new String(ch,start,length);
 		}
 	}
 	

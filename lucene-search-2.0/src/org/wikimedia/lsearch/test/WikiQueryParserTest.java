@@ -273,8 +273,33 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("[1,12]:beans",NamespacePolicy.REWRITE);
 			assertEquals("(+(namespace:1 namespace:12) +(contents:beans contents:bean^0.5)) (+(namespace:1 namespace:12) +title:beans^2.0)",q.toString());
 			
+			q = parser.parseTwoPass("[1,12]:beans and others incategory:food",NamespacePolicy.REWRITE);
+			assertEquals("(+(namespace:1 namespace:12) +(+(contents:beans contents:bean^0.5) +contents:and +(contents:others contents:other^0.5) +category:food)) (+(namespace:1 namespace:12) +(+title:beans^2.0 +title:and^2.0 +title:others^2.0 +category:food))",q.toString());
+			
 			q = parser.parseTwoPass("[1,a12]:beans",NamespacePolicy.IGNORE);
 			assertEquals("(+contents:1 +contents:a12 +(contents:beans contents:bean^0.5)) (+title:1^2.0 +title:a12^2.0 +title:beans^2.0)",q.toString());
+			
+			// Redirect third pass tests
+			q = parser.parseThreePass("beans",NamespacePolicy.IGNORE);
+			assertEquals("(contents:beans contents:bean^0.5) title:beans^2.0 redirect:beans^2.0",q.toString());
+			
+			q = parser.parseThreePass("beans everyone",NamespacePolicy.IGNORE);			
+			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0) spanNear([redirect:beans^2.0, redirect:everyone^2.0], 52, false)",q.toString());
+			
+			q = parser.parseThreePass("beans everyone incategory:mouse",NamespacePolicy.IGNORE);
+			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5) +category:mouse) (+title:beans^2.0 +title:everyone^2.0 +category:mouse) (+spanNear([redirect:beans^2.0, redirect:everyone^2.0], 52, false) +category:mouse)",q.toString());
+			
+			q = parser.parseThreePass("beans OR everyone",NamespacePolicy.IGNORE);
+			assertEquals("((contents:beans contents:bean^0.5) (contents:everyone contents:everyon^0.5)) (title:beans^2.0 title:everyone^2.0)",q.toString());
+			
+			q = parser.parseThreePass("beans -everyone",NamespacePolicy.IGNORE);
+			assertEquals("(+(contents:beans contents:bean^0.5) -(contents:everyone)) (+title:beans^2.0 -title:everyone^2.0)",q.toString());
+			
+			q = parser.parseThreePass("[0,1,2]:beans everyone",NamespacePolicy.REWRITE);
+			assertEquals("(+(namespace:0 namespace:1 namespace:2) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+(namespace:0 namespace:1 namespace:2) +(+title:beans^2.0 +title:everyone^2.0)) (+(namespace:0 namespace:1 namespace:2) +spanNear([redirect:beans^2.0, redirect:everyone^2.0], 52, false))",q.toString());
+			
+			q = parser.parseThreePass("[0,1,2]:beans everyone [0]:mainly",NamespacePolicy.REWRITE);
+			assertEquals("((+(namespace:0 namespace:1 namespace:2) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+namespace:0 +(contents:mainly contents:main^0.5))) ((+(namespace:0 namespace:1 namespace:2) +(+title:beans^2.0 +title:everyone^2.0)) (+namespace:0 +title:mainly^2.0))",q.toString());
 
 			// Test field extraction
 			HashSet<NamespaceFilter> fs = parser.getFieldNamespaces("main:something [1]:else all:oh []:nja");

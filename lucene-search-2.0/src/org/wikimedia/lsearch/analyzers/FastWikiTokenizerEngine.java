@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 
+import org.apache.commons.lang.WordUtils;
 import org.apache.lucene.analysis.Token;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
@@ -35,6 +36,7 @@ public class FastWikiTokenizerEngine {
 	private ArrayList<Token> tokens;
 	protected ArrayList<String> categories;
 	protected HashMap<String,String> interwikis;
+	protected HashSet<String> keywords;
 	private int length = 0; // length of token
 	private int start = 0; // start position of token
 	private int cur = 0; // current position in the input string
@@ -45,10 +47,16 @@ public class FastWikiTokenizerEngine {
 	private int decompi;
 	private char cl; // lowercased character
 	private boolean numberToken; // if the buffer holds a number token
+	private int headings = 0; // how many headings did we see
 	
 	private int prefixLen = 0;
 	private final char[] prefixBuf = new char[MAX_WORD_LEN];
 	private int semicolonInx = -1;
+	private final char[] keywordBuf = new char[MAX_WORD_LEN];
+	private int keywordLen = 0;
+	
+	/** This many tokens from begining of text are eligable for keywords */ 
+	public static final int KEYWORD_TOKEN_LIMIT = 250;
 	
 	/** language code */
 	private String language;
@@ -60,12 +68,12 @@ public class FastWikiTokenizerEngine {
 	
 	private UnicodeDecomposer decomposer;
 	
-	enum ParserState { WORD, LINK_BEGIN, LINK_WORDS, LINK_END, 
+	enum ParserState { WORD, LINK_BEGIN, LINK_WORDS, LINK_END, LINK_KEYWORD, 
 		LINK_FETCH, IGNORE, EXTERNAL_URL, EXTERNAL_WORDS,
 		TEMPLATE_BEGIN, TEMPLATE_WORDS, TEMPLATE_END,
 		TABLE_BEGIN};
 		
-	enum FetchState { WORD, CATEGORY, INTERWIKI};
+	enum FetchState { WORD, CATEGORY, INTERWIKI, KEYWORD };
 	
 	
 	private void init(){
@@ -73,6 +81,7 @@ public class FastWikiTokenizerEngine {
 		categories = new ArrayList<String>();
 		interwikis = new HashMap<String,String>();
 		decomposer = UnicodeDecomposer.getInstance();
+		keywords = new HashSet<String>();
 		numberToken = false;
 	}
 	
@@ -258,6 +267,50 @@ public class FastWikiTokenizerEngine {
 		return Localization.getRedirectTarget(textString,language)!=null;			
 	}
 	
+	/** 
+	 * Decide if link that is currently being processed is to be appended to list of keywords
+	 * 
+	 * Criterion: link is within first 300 words, and before the 
+	 * first heading  
+	 * 
+	 */
+	protected boolean isGoodKeywordLink(){
+		return headings == 0 && tokens.size() <= KEYWORD_TOKEN_LIMIT;		
+	}
+	
+	/** When encountering '=' check if this line is actually a heading */ 
+	private void checkHeadings() {
+		// make sure = is at a begining of a line
+		if(cur == 0 || text[cur-1]=='\n' || text[cur-1]=='\r'){
+			int endOfLine;
+			// find end of line/text
+			for(endOfLine = cur ;  endOfLine < textLength ; endOfLine++ ){
+				lc = text[endOfLine];
+				if(lc == '\n' || lc =='\r')
+					break;
+			}
+			int start=0, end=0; // number of ='s at begining and end of line
+			// find first sequence of =
+			for(lookup = cur ; lookup < textLength && lookup < endOfLine ; lookup++ ){
+				if(text[lookup] == '=')
+					start++;
+				else
+					break;
+			}
+			// find the last squence of =
+			for(lookup = endOfLine-1 ; lookup > cur ; lookup-- ){
+				if(text[lookup] == '=')
+					end++;
+				else
+					break;
+			}
+			// check
+			if(start == end && start != 0 && start+end<endOfLine-cur && start>=2 && start<=4){
+				headings++;
+			}
+		}		
+	}
+	
 	/**
 	 * Parse Wiki text, and produce an arraylist of tokens.
 	 * Also fills the lists categories and interwikis.
@@ -281,6 +334,9 @@ public class FastWikiTokenizerEngine {
 			switch(state){
 			case WORD:
 				switch(c){
+				case '=':
+					checkHeadings();
+					break;
 				case '<':
 					addToken();
 					state = ParserState.IGNORE;
@@ -369,11 +425,17 @@ public class FastWikiTokenizerEngine {
 						fetch = FetchState.INTERWIKI;
 						state = ParserState.LINK_FETCH;
 						continue;
-					} else{
-						// unrecognized, ignore
-						cur--;
-						continue;
 					}
+				}
+				// add this link to keywords?
+				if(isGoodKeywordLink()){
+					fetch = FetchState.KEYWORD;
+					state = ParserState.LINK_KEYWORD;
+					if(pipeInx != -1)
+						cur = pipeInx; // ignore up to pipe
+					else
+						cur--; // return the first character of link 
+					continue;
 				}
 				
 				// no semicolon, search for pipe:
@@ -384,6 +446,11 @@ public class FastWikiTokenizerEngine {
 					addLetter();
 					continue;
 				}
+			case LINK_KEYWORD:
+				if(keywordLen < keywordBuf.length && c!=']'){
+					keywordBuf[keywordLen++] = c;
+				}
+				// fall-thru
 			case LINK_WORDS:
 				if(c == ']'){
 					state = ParserState.LINK_END;
@@ -419,7 +486,7 @@ public class FastWikiTokenizerEngine {
 				
 				if(length<buffer.length)
 					buffer[length++] = c;
-				continue;				
+				continue;			
 			case LINK_END:
 				if(c == ']'){ // good link ending
 					state = ParserState.WORD;
@@ -439,6 +506,11 @@ public class FastWikiTokenizerEngine {
 						length = 0;
 						fetch = FetchState.WORD;
 						continue;
+					case KEYWORD:
+						keywords.add(new String(keywordBuf,0,keywordLen));
+						keywordLen = 0;
+						fetch = FetchState.WORD;
+						continue;						
 					}
 				} else{
 					// bad syntax, ignore any categories, etc.. 
@@ -478,7 +550,7 @@ public class FastWikiTokenizerEngine {
 		addToken();
 		return tokens;
 	}
-	
+
 	/** Check if this is an "image" keyword using localization */
 	private final boolean isImage(String prefix){
 		prefix = prefix.toLowerCase();
@@ -530,4 +602,10 @@ public class FastWikiTokenizerEngine {
 	public ArrayList<Token> getTokens() {
 		return tokens;
 	}
+
+	public HashSet<String> getKeywords() {
+		return keywords;
+	}
+	
+	
 }

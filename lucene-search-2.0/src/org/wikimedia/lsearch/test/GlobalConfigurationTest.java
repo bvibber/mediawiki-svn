@@ -11,9 +11,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
+import java.util.Properties;
 
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 
 import junit.framework.TestCase;
 
@@ -57,6 +59,10 @@ public class GlobalConfigurationTest extends TestCase {
 			return searchGroup;
 		}
 		
+		public Properties getGlobalProps(){
+			return globalProperties;
+		}
+		
 		
 	}
 	
@@ -80,7 +86,7 @@ public class GlobalConfigurationTest extends TestCase {
 		String testurl = "file://"+System.getProperty("user.dir")+"/test-data/mwsearch-global.test";
 		try {
 			URL url = new URL(testurl);
-			testgc.readFromURL(url,"/usr/local/var/mwsearch","",null);
+			testgc.readFromURL(url,"/usr/local/var/mwsearch","");
 			
 			// database
 			Hashtable database = testgc.getDatabase();			
@@ -146,6 +152,23 @@ public class GlobalConfigurationTest extends TestCase {
 			String hostAddr = host.getHostAddress();
 			String hostName = host.getHostName();
 			System.out.println("Verify internet IP: "+hostAddr+", and hostname: "+hostName);
+			
+			// test prefixes 
+			Hashtable<String,NamespaceFilter> p = testgc.getNamespacePrefixes();
+			assertEquals(17,p.size());
+			
+			// check global properties
+			Properties prop = testgc.getGlobalProps();
+			assertEquals("wiki wiktionary test",prop.get("Database.suffix"));
+			assertEquals("wiki rutest",prop.get("KeywordScoring.suffix"));
+			
+			// check languages and keyword stuff
+			assertEquals("en",testgc.getLanguage("entest"));
+			assertEquals("sr",testgc.getLanguage("srwiki"));
+			assertFalse(testgc.useKeywordScoring("frtest"));
+			assertTrue(testgc.useKeywordScoring("srwiki"));
+			assertTrue(testgc.useKeywordScoring("rutest"));
+			
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

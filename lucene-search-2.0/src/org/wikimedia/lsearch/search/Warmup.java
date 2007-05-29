@@ -65,7 +65,7 @@ public class Warmup {
 		
 		try{	
 			for(int i=0; i < count ; i++){
-				Query q = parser.parseTwoPass(terms.next(),WikiQueryParser.NamespacePolicy.IGNORE);
+				Query q = parser.parseFourPass(terms.next(),WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 				Hits hits = is.search(q);
 				for(int j =0; j<20 && j<hits.length(); j++)
 					hits.doc(j); // retrieve some documents
@@ -117,7 +117,7 @@ public class Warmup {
 	public static void simpleWarmup(IndexSearcherMul is, IndexId iid){
 		try{
 			WikiQueryParser parser = new WikiQueryParser("contents","0",Analyzers.getSearcherAnalyzer(iid),WikiQueryParser.NamespacePolicy.IGNORE);
-			Query q = parser.parseTwoPass("a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",WikiQueryParser.NamespacePolicy.IGNORE);
+			Query q = parser.parseFourPass("a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 			is.search(q,new NamespaceFilterWrapper(new NamespaceFilter("0")));
 		} catch (IOException e) {
 			log.error("Error warming up local IndexSearcherMul for "+iid);

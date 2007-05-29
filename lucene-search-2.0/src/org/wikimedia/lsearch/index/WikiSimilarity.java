@@ -20,6 +20,9 @@ public class WikiSimilarity extends DefaultSimilarity {
 	 * 
 	 * For titles:
 	 *  * 1/sqrt(term^3)
+	 *  
+	 * For redirect:
+	 *  * no length norm
 	 * 
 	 */
 	@Override
@@ -36,6 +39,8 @@ public class WikiSimilarity extends DefaultSimilarity {
 			float f = (float) (1.0 / (Math.sqrt(numTokens) * numTokens));
 			//log.debug("Length-norm: "+f+", numtokens: "+numTokens);
 			return f;
+		} else if(fieldName.equals("redirect") || fieldName.equals("keyword")){
+			return 1;
 		} else
 			return super.lengthNorm(fieldName,numTokens);
 		

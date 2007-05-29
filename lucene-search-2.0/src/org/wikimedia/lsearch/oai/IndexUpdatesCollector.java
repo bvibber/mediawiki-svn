@@ -18,12 +18,17 @@ public class IndexUpdatesCollector implements DumpWriter {
 	protected Revision revision;
 	protected ArrayList<IndexUpdateRecord> records = new ArrayList<IndexUpdateRecord>();
 	protected IndexId iid;
-	protected int references;
+	protected int references = 0;
+	protected ArrayList<String> redirects = new ArrayList<String>();
 	
 	public IndexUpdatesCollector(IndexId iid){
 		this.iid = iid;
 	}
 	
+	public void addRedirect(String redirectTitle, int references) {
+		redirects.add(redirectTitle);
+		addReferences(references);		
+	}
 	public void addDeletion(long pageId){
 		// pageId is enough for page deletion
 		Article article = new Article(pageId,-1,"","",false,1);
@@ -42,10 +47,12 @@ public class IndexUpdatesCollector implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {		
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),references);
-		log.info("Collected "+article+" with rank "+references);
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),references,redirects);
+		//log.info("Collected "+article+" with rank "+references+" and "+redirects.size()+" redirects: "+redirects);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.UPDATE));
 		log.debug(iid+": Update for "+article);
+		references = 0;
+		redirects.clear();
 	}	
 	
 	public void close() throws IOException {
@@ -64,9 +71,11 @@ public class IndexUpdatesCollector implements DumpWriter {
 		return references;
 	}
 
-	public void setReferences(int references) {
-		this.references = references;
+	public void addReferences(int references) {
+		this.references += references;
 	}
+
+
 
 	
 	

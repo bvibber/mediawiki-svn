@@ -6,6 +6,8 @@ package org.wikimedia.lsearch.index;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashSet;
@@ -24,7 +26,9 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Analyzers;
+import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
+import org.wikimedia.lsearch.analyzers.WikiTokenizer;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
@@ -48,13 +52,13 @@ public class WikiIndexModifier {
 		}
 	}
 
+	static public final int MAX_FIELD_LENGTH = 100000;
 	/** Simple implementation of batch addition and deletion */
 	class SimpleIndexModifier {
 		protected IndexId iid;
 		protected IndexReader reader;
 		protected IndexWriter writer;
-		protected boolean rewrite;
-		protected int maxFieldLength;
+		protected boolean rewrite;		
 		protected String langCode;
 		
 		protected HashSet<IndexUpdateRecord> nonDeleteDocuments;
@@ -75,12 +79,7 @@ public class WikiIndexModifier {
 			this.iid = iid;
 			this.rewrite = rewrite;
 			this.langCode = langCode;
-			maxFieldLength = 0;
 			reportQueue = new Hashtable<IndexUpdateRecord,IndexReportCard>();
-		}
-		
-		public void setMaxFieldLength(int maxFieldLength) {
-			this.maxFieldLength = maxFieldLength;
 		}
 
 		protected IndexReportCard getReportCard(IndexUpdateRecord rec){
@@ -168,8 +167,7 @@ public class WikiIndexModifier {
 			writer.setMergeFactor(mergeFactor);
 			writer.setMaxBufferedDocs(maxBufDocs);
 			writer.setUseCompoundFile(true);
-			if(maxFieldLength!=0)
-				writer.setMaxFieldLength(maxFieldLength);
+			writer.setMaxFieldLength(MAX_FIELD_LENGTH);
 			
 			FilterFactory filters = new FilterFactory(langCode);
 
@@ -179,6 +177,7 @@ public class WikiIndexModifier {
 						continue; // don't add if delete/add are paired operations
 					if(!checkPreconditions(rec))
 						continue; // article shoouldn't be added for some (heuristic) reason
+					transformArticleForIndexing(rec.getArticle()); // tranform record so that unnecessary stuff is deleted, e.g. some redirects
 					IndexReportCard card = getReportCard(rec);
 					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),filters);
 					Document doc = (Document) ret[0];
@@ -210,7 +209,7 @@ public class WikiIndexModifier {
 			}
 			return succ;
 		}
-		
+
 		public boolean checkPreconditions(IndexUpdateRecord rec){
 			return checkAddPreconditions(rec.getArticle(),langCode);
 		}
@@ -226,12 +225,38 @@ public class WikiIndexModifier {
 	public static boolean checkAddPreconditions(Article ar, String langCode){
 		if(ar.getNamespace().equals("0")){
 			String redirect = Localization.getRedirectTarget(ar.getContents(),langCode);
-			if(redirect != null && redirect.toLowerCase().equals(ar.getTitle().toLowerCase())){
+			if(redirect != null)
+				return false; // don't add redirects
+			/*if(redirect != null && redirect.toLowerCase().equals(ar.getTitle().toLowerCase())){
 				log.debug("Not adding "+ar+" into index: "+ar.getContents());
 				return false;
-			}
+			} */
 		}
 		return true;
+	}
+	
+	/**
+	 * Changes the article, so that things we don't want to index are deleted,
+	 * e.g. it deletes redirects from nonmain namespace to article in main namespace
+	 * 
+	 * @param rec
+	 */
+	public static void transformArticleForIndexing(Article ar) {
+		ArrayList<String> redirects = ar.getRedirects();
+		String ns = ar.getNamespace()+":";
+		if(redirects != null){
+			ArrayList<String> filtered = new ArrayList<String>();
+			// index only redirects from the same namespace
+			// to avoid a lot of unusable redirects from/to
+			// user namespace, but always index redirect FROM main
+			for(String r : redirects){
+				if(r.startsWith(ns) || r.startsWith("0:")) 
+					filtered.add(r.split(":",2)[1]);
+				//else
+					//log.info("Ignoring redirect "+r+" to "+ar);
+			}
+			ar.setRedirects(filtered);
+		}
 	}
 	
 	/**
@@ -347,6 +372,7 @@ public class WikiIndexModifier {
 	 */
 	public static Object[] makeDocumentAndAnalyzer(Article article, FilterFactory filters){
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
+		WikiTokenizer tokenizer = null;
 		Document doc = new Document();
 		
 		// This will be used to look up and replace entries on index updates.
@@ -357,9 +383,21 @@ public class WikiIndexModifier {
 		
 		// boost document title with it's article rank
 		Field title = new Field("title", article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);
-		log.debug(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank());
-		title.setBoost(calculateArticleRank(article.getRank()));
+		//log.debug(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
+		float rankBoost = calculateArticleRank(article.getRank()); 
+		title.setBoost(rankBoost);
 		doc.add(title);
+		
+		// add titles of redirects, generated from analyzer
+		Field redirect = new Field("redirect", "", 
+				Field.Store.NO, Field.Index.TOKENIZED);
+		redirect.setBoost(rankBoost);
+		doc.add(redirect);
+		
+		// most significat words in the text, gets extra score, from analyzer 
+		Field keyword = new Field("keyword", "", 
+				Field.Store.NO, Field.Index.TOKENIZED); 
+		doc.add(keyword);
 		
 		// the next fields are generated using wikitokenizer 
 		doc.add(new Field("contents", "", 
@@ -372,9 +410,13 @@ public class WikiIndexModifier {
 		String text = article.getContents();
 		if(article.isRedirect())
 			text=""; // for redirects index only the title
+		Object[] ret = Analyzers.getIndexerAnalyzer(text,filters,article.getRedirects());
+		perFieldAnalyzer = (PerFieldAnalyzerWrapper) ret[0];
 		
-		perFieldAnalyzer = Analyzers.getIndexerAnalyzer(text,filters);
-		
+		// set boost for keyword field
+		tokenizer = (WikiTokenizer) ret[1];
+		keyword.setBoost(calculateKeywordsBoost(tokenizer.getTokens().size()));
+
 		return new Object[] { doc, perFieldAnalyzer };
 	}
 	
@@ -391,6 +433,20 @@ public class WikiIndexModifier {
 			return 1;
 		else 
 			return (float) (1 + rank/15.0);
+	}
+	
+	/**
+	 * We don't want whole stub articles fetched as keywords, so we penalize if 
+	 * the article is too short for keyword extraction.
+	 * 
+	 * @param numTokens
+	 * @return
+	 */
+	public static float calculateKeywordsBoost(int numTokens){
+		if(numTokens > 2 * FastWikiTokenizerEngine.KEYWORD_TOKEN_LIMIT)
+			return 1;
+		else
+			return ((float)numTokens)/FastWikiTokenizerEngine.KEYWORD_TOKEN_LIMIT/2;
 	}
 
 }

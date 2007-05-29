@@ -47,9 +47,9 @@ public class Analyzers {
 	 * 
 	 * @param text   text to be tokenized
 	 * @param languageAnalyzer  language filter class (e.g. PorterStemFilter)
-	 * @return
+	 * @return  {PerFieldAnalyzerWrapper,WikiTokenizer}
 	 */
-	public static PerFieldAnalyzerWrapper getIndexerAnalyzer(String text, FilterFactory filters) {
+	public static Object[] getIndexerAnalyzer(String text, FilterFactory filters, ArrayList<String> redirects) {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		// parse wiki-text to get categories
 		WikiTokenizer tokenizer = new WikiTokenizer(text,filters.getLanguage());
@@ -63,8 +63,11 @@ public class Analyzers {
 				new CategoryAnalyzer(categories));
 		perFieldAnalyzer.addAnalyzer("title",
 				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
-		
-		return perFieldAnalyzer;
+		perFieldAnalyzer.addAnalyzer("redirect", 
+				new KeywordsAnalyzer(redirects,filters.getNoStemmerFilterFactory()));
+		perFieldAnalyzer.addAnalyzer("keyword", 
+				new KeywordsAnalyzer(tokenizer.getKeywords(),filters.getNoStemmerFilterFactory()));
+		return new Object[] {perFieldAnalyzer,tokenizer};
 	}
 	
 	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(IndexId iid){

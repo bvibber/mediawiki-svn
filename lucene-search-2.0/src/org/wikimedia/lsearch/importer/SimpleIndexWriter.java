@@ -86,6 +86,7 @@ public class SimpleIndexWriter {
 		else
 			writer.setMaxBufferedDocs(glMaxBufDocs);		
 		writer.setUseCompoundFile(true);
+		writer.setMaxFieldLength(WikiIndexModifier.MAX_FIELD_LENGTH);
 		
 		return writer;
 	}
@@ -94,7 +95,7 @@ public class SimpleIndexWriter {
 	public void addArticle(Article a){
 		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
 			return; // don't add if preconditions are not met
-		
+		WikiIndexModifier.transformArticleForIndexing(a);
 		IndexId target;
 		if(iid.isSingle())
 			target = iid;

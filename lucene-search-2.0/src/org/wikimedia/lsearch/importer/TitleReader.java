@@ -29,7 +29,7 @@ public class TitleReader  implements DumpWriter{
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		String key = page.Title.Namespace+":"+page.Title.Text.toLowerCase();
+		String key = page.Title.Namespace+":"+page.Title.Text;
 		titles.put(key,new Rank(0));		
 	}
 	public HashMap<String,Rank> getTitles() {
