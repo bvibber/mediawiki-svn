@@ -57,6 +57,17 @@ class Thread {
 		return $this->superthread;
 	}
 	
+	function setArticle($a) {
+		$this->articleId = $a->getID();
+		$this->updateRecord();
+	}
+	
+	function article() {
+		if ( !$this->articleId ) return null;
+		if ( !$this->article ) $this->article = new Article(Title::newFromID($this->articleId));
+		return $this->article;
+	}
+	
 	function id() {
 		return $this->id;
 	}

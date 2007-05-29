@@ -127,7 +127,6 @@ HTML;
 	}
 
 	function showEditingFormInGeneral( $thread, $edit_type, $edit_applies_to ) {
-		
 		// If there is no article (reply or new), we need a randomly-generated title.
 		// On the first pass, we generate one. After that, we find it in the request.
 		if ( $thread == null ) {
@@ -341,6 +340,7 @@ class ThreadPermalinkView extends LqtView {
 		$this->output->setPageTitle( "Thread #$thread_id" );
 		
 		$t = Thread::newFromId( $thread_id );
+		$this->article = $t->article();
 		$this->showThread($t);
 	}
 }
