@@ -8,9 +8,12 @@
 $wgFilepathMessages = array();
 
 $wgFilepathMessages['en'] = array(
-	'filepath'        => 'File path',
-	'filepath_page'   => 'File:',
-	'filepath_submit' => 'Path',
+	'filepath'         => 'File path',
+	'filepath_page'    => 'File:',
+	'filepath_submit'  => 'Path',
+	'filepath-summary' => 'This special page returns the complete path for a file. Images are shown in full resolution, other file types are started with their associated program directly.
+	
+	Enter the file name without the "{{ns:image}}:" prefix.',
 );
 $wgFilepathMessages['cs'] = array(
 	'filepath'        => 'Cesta k souboru',
@@ -18,9 +21,12 @@ $wgFilepathMessages['cs'] = array(
 	'filepath_submit' => 'Cesta',
 );
 $wgFilepathMessages['de'] = array(
-	'filepath'        => 'Dateipfad',
-	'filepath_page'   => 'Datei:',
-	'filepath_submit' => 'Pfad suchen',
+	'filepath'         => 'Dateipfad',
+	'filepath_page'    => 'Datei:',
+	'filepath_submit'  => 'Pfad suchen',
+	'filepath-summary' => 'Mit dieser Spezialseite lässt sich der komplette Pfad der aktuellen Version einer Datei ohne Umweg abfragen. Die angefragte Datei wird direkt dargestellt bzw. mit der verknüpften Anwendung gestartet.
+
+	Die Eingabe muss ohne den Zusatz „{{ns:image}}:“ erfolgen.',
 );
 $wgFilepathMessages['fi'] = array(
 	'filepath'        => 'Tiedoston osoite',
