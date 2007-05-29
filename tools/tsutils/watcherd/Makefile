@@ -1,4 +1,6 @@
 PROG		= watcherd
+BINDIR		= /usr/local/sbin
+
 LIBTSUTILS	= YES
 LIBS		= -lmysqlclient -lz
 INCLUDES	= -I/usr/include/mysql

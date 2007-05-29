@@ -8,4 +8,5 @@ lint:
 	$(LINT) -o$(LIB) $(LINTFLAGS) $(SRCS)
 clean:
 	rm -f lib$(LIB).a $(OBJS)
-.PHONY: clean
+install:
+.PHONY: clean all lint install
