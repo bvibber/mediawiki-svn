@@ -135,10 +135,10 @@ public class SearchEngine {
 		
 		try {
 			if(nsfw == null){
-				q = parser.parseTwoPass(searchterm,WikiQueryParser.NamespacePolicy.REWRITE);				
+				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.REWRITE,iid.getDBname());				
 			}
 			else{
-				q = parser.parseTwoPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE);
+				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 				log.info("Using NamespaceFilterWrapper "+nsfw);
 			}
 			
@@ -250,10 +250,13 @@ public class SearchEngine {
 		// fetch documents
 		Document[] docs = s.docs(docids);
 		int j=0;
+		float maxScore = 1;
+		if(numhits>0)
+			maxScore = hits.score(0);
 		for(Document doc : docs){
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
-			float score = transformScore(scores[j]); 
+			float score = transformScore(scores[j]/maxScore); 
 			ResultSet rs = new ResultSet(score,namespace,title);
 			if(explain)
 				rs.setExplanation(((IndexSearcherMul)s).explain(q,docids[j]));

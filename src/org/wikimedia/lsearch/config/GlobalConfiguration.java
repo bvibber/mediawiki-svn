@@ -5,8 +5,10 @@
 package org.wikimedia.lsearch.config;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.StringReader;
 import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
@@ -19,6 +21,7 @@ import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Properties;
 import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -63,7 +66,11 @@ public class GlobalConfiguration {
 	/** OAI repo pattern from lsearch2.conf */
 	protected String OAIRepoPattern;
 	/** Database suffix if dbname, the rest is supposed to be language, e.g srwiki => (suffix wiki) => sr */
-	protected String[] databaseSuffixes;
+	protected String[] databaseSuffixes = null;	
+	/** Databases ending in suffix will use additional keyword scores */
+	protected String[] keywordScoringSuffixes = null;
+	
+	protected Properties globalProperties = null;
 	
 	/** All identifiers of all indexes (dbrole -> IndexId) */
 	protected static Hashtable<String,IndexId> indexIdPool = new Hashtable<String,IndexId>();
@@ -192,13 +199,13 @@ public class GlobalConfiguration {
 	 * @param url
 	 * @throws IOException
 	 */
-	public void readFromURL(URL url, String indexpath, String oaiRepo, String[] dbsuffixes) throws IOException{
+	public void readFromURL(URL url, String indexpath, String oaiRepo) throws IOException{
 		BufferedReader in;
 		try {
 			in = new BufferedReader(
 					new InputStreamReader(
 					url.openStream()));
-			read(in,indexpath,oaiRepo,dbsuffixes);
+			read(in,indexpath,oaiRepo);
 		} catch (IOException e) {
 			System.out.println("I/O Error in opening or reading global config at url "+url);
 			throw e;
@@ -221,6 +228,13 @@ public class GlobalConfiguration {
 		namespacePrefixAll = "all"; // default
 	}
 	
+	protected String[] getArrayProperty(String name){
+		String s = globalProperties.getProperty(name);
+		if (s != null)
+			return s.split(" ");
+		return null;
+	}
+	
 	/** 
 	 * Reads a config file from a bufferedreader, will
 	 * close the reader when done.
@@ -228,7 +242,7 @@ public class GlobalConfiguration {
 	 * @param in   opened reader
 	 * @throws IOException
 	 */
-	protected void read(BufferedReader in, String indexpath, String oaiRepo, String[] dbsuffixes) throws IOException{
+	protected void read(BufferedReader in, String indexpath, String oaiRepo) throws IOException{
 		String line="";		
 		int section = -1; 
 		Pattern roleRegexp = Pattern.compile("\\((.*?)\\)");
@@ -245,7 +259,6 @@ public class GlobalConfiguration {
 		init();
 		this.indexPath = indexpath;
 		this.OAIRepoPattern = oaiRepo == null? "" : oaiRepo;
-		this.databaseSuffixes = dbsuffixes;
 		
 		while((line = in.readLine()) != null){
 			lineNum ++;		
@@ -260,6 +273,27 @@ public class GlobalConfiguration {
 			if(line.startsWith("[") && line.length()>2 && !Character.isDigit(line.charAt(1))){ // section
 				int last = line.indexOf("]");
 				String s = line.substring(1,last);
+				
+				if(s.equalsIgnoreCase("properties")){
+					globalProperties = new Properties();
+					StringBuilder prop = new StringBuilder(line+"\n");
+					while((line = in.readLine()) != null){
+						if(line.startsWith("[") && line.length()>2 && !Character.isDigit(line.charAt(1)))
+							break;
+						prop.append(line);
+						prop.append("\n");
+					}					
+					globalProperties.load(new ByteArrayInputStream(prop.toString().getBytes("utf-8")));
+					// get some predifined global properties
+					this.databaseSuffixes = getArrayProperty("Database.suffix");
+					this.keywordScoringSuffixes = getArrayProperty("KeywordScoring.suffix");
+					if(line == null)
+						break;
+					// else: line points to beginning of next section
+					last = line.indexOf("]");
+					s = line.substring(1,last);
+				}
+				
 				if(s.equalsIgnoreCase("database"))
 					section = DATABASE;
 				else if(s.equalsIgnoreCase("index"))
@@ -314,8 +348,7 @@ public class GlobalConfiguration {
 				if(filter.equalsIgnoreCase("<all>"))
 					namespacePrefixAll = prefix;
 				else
-					namespacePrefix.put(prefix,new NamespaceFilter(filter));
-				
+					namespacePrefix.put(prefix,new NamespaceFilter(filter));				
 			}
 		}
 		if( !checkIntegrity() ){
@@ -767,6 +800,24 @@ public class GlobalConfiguration {
 
 	public String getNamespacePrefixAll() {
 		return namespacePrefixAll;
+	}
+	
+	/** Returns if keyword scoring should be used for this db, using
+	 *  the suffixes from the global configuration
+	 *  
+	 * @param dbname
+	 * @return
+	 */
+	public boolean useKeywordScoring(String dbname){
+		if(keywordScoringSuffixes == null)
+			return false;
+		else{
+			for (String suffix : keywordScoringSuffixes) {
+				if (dbname.endsWith(suffix))
+					return true;
+			}
+		}
+		return false;
 	}
 	
 	

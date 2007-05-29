@@ -1,7 +1,9 @@
 package org.wikimedia.lsearch.importer;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map.Entry;
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,21 +45,17 @@ public class DumpImporter implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		// get rank
-		String key = page.Title.Namespace+":"+page.Title.Text.toLowerCase();
+		String key = page.Title.Namespace+":"+page.Title.Text;
 		Rank r = ranks.get(key);
 		int rank;
-		boolean isRedirect = Localization.getRedirectTarget(revision.Text,langCode)!=null; 
+		boolean isRedirect = r.redirectsTo != null; 
 		if(r == null){
 			rank = 0;
-			log.error("Rank for "+(page.Title.Namespace+":"+page.Title.Text.toLowerCase())+" is undefined, which should never happen.");
-		} else{
-			if(r.redirect != null && key.equals(r.redirect) && isRedirect){
-				rank = 0;
-			} else
-				rank = r.links;
-		}
+			log.error("Rank for "+key+" is undefined, which should never happen.");
+		} else
+			rank = r.links;
 		// make article
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,rank);
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,rank,r.redirected);
 		writer.addArticle(article);
 		count++;
 		if(limit >= 0 && count > limit)

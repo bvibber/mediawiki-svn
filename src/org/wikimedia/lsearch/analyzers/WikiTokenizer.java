@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 
 import org.apache.log4j.Logger;
@@ -17,6 +18,7 @@ public class WikiTokenizer extends Tokenizer {
 	protected Iterator<Token> tokenIt = null;
 	protected ArrayList<String> categories = null;
 	protected HashMap<String,String> interwikis = null;
+	protected HashSet<String> keywords = null;
 	
 	/** Use <code>WikiTokenizer(String)</code> constructor */
 	@Deprecated
@@ -52,6 +54,7 @@ public class WikiTokenizer extends Tokenizer {
 			tokenIt = tokens.iterator();
 			categories = parser.getCategories();
 			interwikis = parser.getInterwikis();
+			keywords = parser.getKeywords();
 		}
 	}
 	
@@ -84,6 +87,11 @@ public class WikiTokenizer extends Tokenizer {
 	public ArrayList<Token> getTokens() {
 		return tokens;
 	}
+
+	public HashSet<String> getKeywords() {
+		return keywords;
+	}
+	
 	
 	
 

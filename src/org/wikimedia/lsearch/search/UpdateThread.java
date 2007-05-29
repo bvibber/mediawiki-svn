@@ -188,6 +188,7 @@ public class UpdateThread extends Thread {
 				}
 				long startTime = System.currentTimeMillis();
 				// rsync
+				log.info("Starting rsync of "+iid);
 				String snapshotpath = iid.getRsyncSnapshotPath()+"/"+li.timestamp;
 				command = "/usr/bin/rsync -W --delete -r rsync://"+iid.getIndexHost()+":"+snapshotpath+" "+iid.getUpdatePath();
 				log.debug("Running shell command: "+command);

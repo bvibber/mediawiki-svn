@@ -25,6 +25,8 @@
 package org.wikimedia.lsearch.beans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * Wiki article. 
@@ -37,6 +39,8 @@ public class Article implements Serializable  {
 	private boolean redirect;
 	private long pageId;
 	private int rank;
+	/** all redirects in format: ns:title */
+	private ArrayList<String> redirects; // pages that redirect to this page 
 	
 	public Article(){
 		namespace="";
@@ -44,7 +48,8 @@ public class Article implements Serializable  {
 		contents="";
 		pageId = 0;
 		redirect=false;
-		rank=0;
+		rank = 0;
+		redirects=new ArrayList<String>();
 	}
 	
 	public Article(long pageId, Title title, String text, boolean redirect, int rank) {
@@ -54,6 +59,7 @@ public class Article implements Serializable  {
 		this.pageId = pageId;
 		this.redirect = redirect;
 		this.rank = rank;
+		this.redirects = new ArrayList<String>();
 	}
 	
 	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int rank) {
@@ -63,6 +69,17 @@ public class Article implements Serializable  {
 		this.redirect = redirect;
 		this.pageId = pageId;
 		this.rank = rank;
+		this.redirects = new ArrayList<String>();
+	}
+	
+	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int rank, ArrayList<String> redirects) {
+		this.namespace = Integer.toString(namespace);
+		this.title = titleText;
+		contents = text;
+		this.redirect = redirect;
+		this.pageId = pageId;
+		this.rank = rank;
+		this.redirects = redirects;
 	}
 	
 	public boolean isRedirect() {
@@ -111,8 +128,29 @@ public class Article implements Serializable  {
 		return "(" + namespace + ",\"" + title + "\")";
 	}
 	
+	/** Get how many articles link to this article */
 	public int getRank() {
 		return rank;
 	}
+	
+	/** Register a redirect to this article */
+	public void addRedirect(String linkingArticle){
+		redirects.add(linkingArticle);
+	}
+	
+	/** Register a list of redirects to this article */
+	public void addRedirects(Collection<String> linkingArticles){
+		redirects.addAll(linkingArticles);
+	}
+	
+	/** Get list of articles that redirect to this article */
+	public ArrayList<String> getRedirects() {
+		return redirects;
+	}
+
+	public void setRedirects(ArrayList<String> redirects) {
+		this.redirects = redirects;
+	}
+	
 	
 }

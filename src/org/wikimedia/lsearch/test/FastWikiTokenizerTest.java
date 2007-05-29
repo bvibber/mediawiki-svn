@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map.Entry;
 
 import org.apache.lucene.analysis.Analyzer;
@@ -38,6 +39,16 @@ public class FastWikiTokenizerTest {
 				System.out.print("["+t.getKey()+"] => ["+t.getValue()+"] ");			
 			}
 			if(iw.size()!=0) System.out.println();
+			
+			HashSet<String> keywords = parser.getKeywords();
+			if(keywords.size()!=0){
+				System.out.print("KEYWORDS: ");
+			}
+			for(String t : keywords){
+				System.out.print("["+t+"] ");			
+			}
+			if(keywords.size()!=0) System.out.println();
+			
 			System.out.println();
 		}
 		
@@ -74,6 +85,10 @@ public class FastWikiTokenizerTest {
 			text = "[[sr:Glavna stranica]], and [[:Category:Link to category]]";
 			showTokens(text);
 			text = "{{IPstack|name = Hundai}} '''[[Hypertext]] Transfer [[communications protocol|Protocol]]''' ('''HTTP''') is a method used to transfer or convey information on the [[World Wide Web]]. Its original purpose was to provide a way to publish and retrieve [[HTML]] pages.";
+			showTokens(text);
+			text = "[[First link]]\n== Some caption ==\n[[Other link]]";
+			showTokens(text);
+			text = "[[First]] second third fourth and so on goes the ... [[last link]]";
 			showTokens(text);
 			
 			ArticlesParser ap = new ArticlesParser("./test-data/indexing-articles.test");

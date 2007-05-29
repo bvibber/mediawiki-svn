@@ -18,6 +18,9 @@ import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.WildcardQuery;
+import org.apache.lucene.search.spans.SpanNearQuery;
+import org.apache.lucene.search.spans.SpanQuery;
+import org.apache.lucene.search.spans.SpanTermQuery;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
@@ -69,7 +72,9 @@ public class WikiQueryParser {
 	/** boost for alias words from analyzer */
 	public final float ALIAS_BOOST = 0.5f; 
 	/** boost for title field */
-	public static float TITLE_BOOST = 4;
+	public static float TITLE_BOOST = 4;	
+	public static float REDIRECT_BOOST = 0.5f;
+	public static float KEYWORD_BOOST = 1;
 	
 	/** Policies in treating field names:
 	 * 
@@ -90,6 +95,7 @@ public class WikiQueryParser {
 	private Query namespaceRewriteQuery;
 	private NamespacePolicy namespacePolicy;
 	protected NamespaceFilter defaultNamespaceFilter;
+	protected static GlobalConfiguration global=null;
 	
 	/** default value for boolean queries */
 	public BooleanClause.Occur boolDefault = BooleanClause.Occur.MUST;
@@ -102,7 +108,8 @@ public class WikiQueryParser {
 	protected void initNamespaces(){
 		if(namespaceQueries != null)
 			return;
-		GlobalConfiguration global = GlobalConfiguration.getInstance();
+		if(global == null)
+		 global = GlobalConfiguration.getInstance();
 		namespaceAllKeyword = global.getNamespacePrefixAll();
 		namespaceQueries = new Hashtable<String,Query>();
 		namespacePrefixes = new Hashtable<NamespaceFilter,String>();
@@ -891,16 +898,146 @@ public class WikiQueryParser {
 		return query;		
 	}
 	
+	protected boolean isNamespaceQuery(Query q){
+		if(q instanceof TermQuery)
+			return ((TermQuery)q).getTerm().field().equals("namespace");
+		else if(q instanceof BooleanQuery){
+			for(BooleanClause cl : ((BooleanQuery)q).getClauses()){
+				if(cl.getQuery() instanceof TermQuery && 
+						((TermQuery)cl.getQuery()).getTerm().field().equals("namespace"));
+				else	
+					return false;
+			}
+			return true;
+		}
+		return false;
+	}
+	
 	/** 
-	 * Parse the query according to policy. Instead of rewrite phrase, simply pass 
-	 * twice the query with different default fields. 
+	 * Doing some very simple analysis extract span queries to use for
+	 * redirect field. Currently only extracts if all boolean clauses are
+	 * required or if it's a phrase query. This is since making span
+	 * queries in non-trivial in other cases. :(
+	 * 
+	 * The function heavily depends on the format of output of parser,
+	 * especially for rewrite. 
+	 * 
+	 * @param query
+	 * @param level - recursion level
+	 * @return
+	 */
+	protected Query extractSpans(Query query, int level, String fieldName, float boost) {
+		// phrase, or termquery just rewrite field name
+		if(query instanceof TermQuery){
+			TermQuery tq = (TermQuery)query;
+			TermQuery ret = new TermQuery(new Term(fieldName,tq.getTerm().text()));
+			ret.setBoost(boost);
+			return ret;
+		} else if(query instanceof PhraseQuery){
+			PhraseQuery phrase = new PhraseQuery();
+			for(Term term : ((PhraseQuery)query).getTerms()){
+				phrase.add(new Term(fieldName,term.text()));				
+			}
+			phrase.setBoost(boost);
+			return phrase;
+		} else if(query instanceof BooleanQuery){
+			BooleanQuery bq = (BooleanQuery)query;
+			// check for rewritten queries, TODO: parse complex multi-part rewrites
+			if(level==0 && namespacePolicy != null && namespacePolicy == NamespacePolicy.REWRITE){
+				if(bq.getClauses().length == 2 && isNamespaceQuery(bq.getClauses()[0].getQuery())){
+					BooleanQuery ret = new BooleanQuery();
+					ret.add(bq.getClauses()[0]);
+					// the second clause is always the query
+					ret.add(extractSpans(bq.getClauses()[1].getQuery(),level+1,fieldName,boost),BooleanClause.Occur.MUST);
+					return ret;
+				} else
+					return null;
+			}
+			// we can parse if all clauses are required
+			boolean canTransform = true;
+			for(BooleanClause cl : bq.getClauses()){
+				if(cl.getOccur() != BooleanClause.Occur.MUST){
+					canTransform = false;
+					break;
+				}
+			}
+			if(!canTransform)
+				return null;
+			// rewrite into span queries + categories
+			ArrayList<SpanQuery> spans = new ArrayList<SpanQuery>();
+			ArrayList<Query> categories = new ArrayList<Query>();
+			for(BooleanClause cl : bq.getClauses()){
+				Query q = cl.getQuery();
+				if(q instanceof TermQuery){ // -> SpanTermQuery
+					TermQuery tq = (TermQuery)q;
+					Term t = tq.getTerm(); 
+					if(t.field().equals("category")){
+						categories.add(q);
+					} else {
+						SpanTermQuery stq = new SpanTermQuery(new Term(fieldName,t.text()));
+						stq.setBoost(boost);
+						spans.add(stq);
+					}
+				} else if(q instanceof PhraseQuery){ // -> SpanNearQuery(slop=0,inOrder=true)
+					PhraseQuery pq = (PhraseQuery)q;
+					Term[] terms = pq.getTerms();
+					if(terms[0].field().equals("category")){
+						categories.add(q);
+					} else{
+						SpanTermQuery[] spanTerms = new SpanTermQuery[terms.length];
+						for(int i=0; i<terms.length; i++ ){
+							spanTerms[i] = new SpanTermQuery(new Term(fieldName,terms[i].text()));
+						}
+						SpanNearQuery snq = new SpanNearQuery(spanTerms,0,true);
+						snq.setBoost(boost);
+						spans.add(snq);
+					}
+				}
+			}
+			// create the queries
+			Query cat = null;
+			SpanQuery span = null;
+			if(categories.size() != 0){
+				if(categories.size() == 1)					
+					cat = categories.get(0);
+				else{
+					BooleanQuery b = new BooleanQuery();
+					for(Query q : categories)
+						b.add(q,BooleanClause.Occur.MUST);
+					cat = b; // intersection of categories, bool query 
+				}
+			}
+			if(spans.size() != 0){
+				if(spans.size() == 1)
+					span = spans.get(0);
+				else{
+					// make a span-near query that has a slop 1/2 of tokenGap
+					span = new SpanNearQuery(spans.toArray(new SpanQuery[] {}),(KeywordsAnalyzer.tokenGap-1)/2,false);
+				}
+			}
+			if(cat != null && span != null){
+				BooleanQuery ret = new BooleanQuery();
+				ret.add(span,BooleanClause.Occur.MUST);
+				ret.add(cat,BooleanClause.Occur.MUST);
+				return ret;
+			} else if(span != null)
+				return span;
+			else // we don't want categories only
+				return null; 
+			
+		}
+		return null;
+	}
+	
+	/**
+	 * Main function for multi-pass parsing.
 	 * 
 	 * @param queryText
 	 * @param policy
+	 * @param makeRedirect
 	 * @return
-	 * @throws ParseException
 	 */
-	public Query parseTwoPass(String queryText, NamespacePolicy policy) throws ParseException{
+	protected Query parseMultiPass(String queryText, NamespacePolicy policy, boolean makeRedirect, boolean makeKeywords){
 		if(policy != null)
 			this.namespacePolicy = policy;
 		float olfDefaultBoost = defaultBoost;
@@ -914,14 +1051,65 @@ public class WikiQueryParser {
 		defaultField = contentField;
 		defaultBoost = olfDefaultBoost;
 		if(qc == null || qt == null)
-			return new BooleanQuery();
-		
+			return new BooleanQuery();		
 		if(qc.equals(qt))
 			return qc; // don't duplicate (probably a query for categories only)
 		BooleanQuery bq = new BooleanQuery();
 		bq.add(qc,BooleanClause.Occur.SHOULD);
 		bq.add(qt,BooleanClause.Occur.SHOULD);
+		
+		// redirect pass
+		if(makeRedirect){
+			Query qr = extractSpans(qt,0,"redirect",REDIRECT_BOOST);
+			if(qr != null)
+				bq.add(qr,BooleanClause.Occur.SHOULD);
+		}
+		// keyword pass
+		if(makeKeywords){
+			Query qk = extractSpans(qt,0,"keyword",KEYWORD_BOOST);
+			if(qk != null)
+				bq.add(qk,BooleanClause.Occur.SHOULD);
+		}
+		
 		return bq;
+		
+	}
+	
+	/**
+	 * Three parse pases: contents, title, redirect
+	 * 
+	 * @param queryText
+	 * @param policy
+	 * @return
+	 * @throws ParseException
+	 */
+	public Query parseThreePass(String queryText, NamespacePolicy policy) throws ParseException{
+		return parseMultiPass(queryText,policy,true,false);
+	}
+	
+	/**
+	 * Depending on settings for db, do all 4 passes of parsing:
+	 * 1) contents
+	 * 2) titles
+	 * 3) redirects
+	 * 4) keywords
+	 */
+	public Query parseFourPass(String queryText, NamespacePolicy policy, String dbname) throws ParseException{
+		boolean makeKeywords = global.useKeywordScoring(dbname);
+		return parseMultiPass(queryText,policy,true,makeKeywords);
+	}
+	
+	/** 
+	 * Parse the query according to policy. Instead of rewrite phrase, simply pass 
+	 * twice the query with different default fields. 
+	 * 
+	 * @param queryText
+	 * @param policy
+	 * @return
+	 * @throws ParseException
+	 */
+	public Query parseTwoPass(String queryText, NamespacePolicy policy) throws ParseException{
+		return parseMultiPass(queryText,policy,false,false);
 	}
 
 	

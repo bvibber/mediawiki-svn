@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.mediawiki.dumper.ProgressFilter;
@@ -95,17 +96,19 @@ public class Importer {
 			long start = System.currentTimeMillis();
 			
 			HashMap<String,Rank> ranks = processRanks(inputfile,getTitles(inputfile),langCode);
-			
+
 			// add-up ranks of redirects to pages where they redirect to
-			for(Rank r : ranks.values()){
-				if(r.redirect != null){
-					Rank dest = ranks.get(r.redirect);
-					if(dest != null && dest != r){
-						dest.links += r.links;
-						r.links = 0;
-					}
+			for(Entry<String,Rank> e : ranks.entrySet()){
+				Rank r = e.getValue();
+				if(r.redirectsTo != null && r != r.redirectsTo){
+					r.redirectsTo.links += r.links;
+					r.links = 0;
+					if(r.redirectsTo.redirected == null)
+						r.redirectsTo.redirected = new ArrayList<String>();
+					r.redirectsTo.redirected.add(e.getKey());
 				}
 			}
+
 			log.info("Third pass, indexing articles...");
 			
 			// open			
@@ -119,7 +122,7 @@ public class Importer {
 
 			// read
 			DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,ranks,langCode);
-			XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(dp, 100));
+			XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(dp, 1000));
 			try {
 				reader.readDump();
 			} catch (IOException e) {
@@ -168,7 +171,7 @@ public class Importer {
 		}
 		// calculate ranks
 		RankReader rr = new RankReader(ranks,langCode);
-		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(rr, 100));
+		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(rr, 5000));
 		try {
 			reader.readDump();
 		} catch (IOException e) {
@@ -189,7 +192,7 @@ public class Importer {
 		}
 		// first pass, get titles
 		TitleReader tr = new TitleReader();
-		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(tr, 100));
+		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(tr, 5000));
 		try {
 			reader.readDump();
 			input.close();

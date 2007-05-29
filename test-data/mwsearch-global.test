@@ -12,6 +12,7 @@ entest : (mainsplit), (mainpart,false,2,10), (restpart,true,2)
 entest : (ngram), (aspell,en) 
 detest,rutest : (single,true,2,10)
 frtest : (split,3) (part1) (part2) (part3)
+srwiki : (single)
 
 # Search nodes
 # host : db1.role, db2.role
@@ -34,12 +35,20 @@ frtest : (split,3) (part1) (part2) (part3)
 192.168.0.5 : detest, rutest, frtest
 192.168.0.2 : entest.ngram
 192.168.0.2 : frtest.part1, frtest.part2, frtest.part3
+192.168.0.10 : srwiki
 
 # Path where indexes are on hosts, after default value put hosts where 
 # the location differs
 [Index-Path]
 <default> : /mwsearch
 192.168.0.5 : mwsearch2
+
+[Properties]
+# suffixes to database name, the rest is assumed to be language code
+Database.suffix=wiki wiktionary test
+
+# dbnames that end with the suffix will use additional keywords scores
+KeywordScoring.suffix=wiki rutest
 
 # databases can be writen as {file}, where file contains list of dbs
 
