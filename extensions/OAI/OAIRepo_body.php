@@ -459,22 +459,17 @@ class OAIRepo {
 			}
 		}
 		
-		$writer = new OAIDumpWriter();
-
 		# Fetch one extra row to check if we need a resumptionToken
-		$resultSet = $this->fetchRows( $from, $until, $this->chunkSize() + 1, $resume, $metadataPrefix );
+		$resultSet = $this->fetchRows( $from, $until, $this->chunkSize() + 1, $resume );
 		$count = min( $resultSet->numRows(), $this->chunkSize() );
 		if( $count ) {
 			echo "<$verb>\n";
+			// buffer everything up
+			$rows = array();
 			$this->_lastSequence = null;
 			for( $i = 0; $i < $count; $i++ ) {
 				$row = $resultSet->fetchObject();
-				$item = new WikiOAIRecord( $row, $writer );
-				if( $withData ) {
-					echo $item->renderRecord( $metadataPrefix, $this->timeGranularity() );
-				} else {
-					echo $item->renderHeader( $this->timeGranularity() );
-				}
+				$rows[] = $row;
 				$this->_lastSequence = $row->up_sequence;
 			}
 			if( $row = $resultSet->fetchObject() ) {
@@ -483,21 +478,34 @@ class OAIRepo {
 					$token = "$metadataPrefix:$row->up_sequence:$limit";
 				else
 					$token = "$metadataPrefix:$row->up_sequence";
+			}
+			$resultSet->free();
+			// init writer
+			$writer = $this->makeWriter($metadataPrefix,$rows);
+			// render
+			foreach( $rows as $row ) {
+				$item = new WikiOAIRecord( $row, $writer );
+				if( $withData ) {
+					echo $item->renderRecord( $metadataPrefix, $this->timeGranularity() );
+				} else {
+					echo $item->renderHeader( $this->timeGranularity() );
+				}
+			}
+			if( isset($token) ) {
 				echo oaiTag( 'resumptionToken', array(), $token ) . "\n";
 			}
 			echo "</$verb>\n";
 		} else {
 			$this->addError( 'noRecordsMatch', 'No records available match the request.' );
 		}
-		$resultSet->free();
 	}
 	
 	function getRecord() {
-		$writer = new OAIDumpWriter();
 		$metadataPrefix =  $this->validateMetadata( 'metadataPrefix' );
 		if( !$this->errorCondition() ) {
-			$row = $this->getRecordItem( $this->_request['identifier'], $metadataPrefix );
+			$row = $this->getRecordItem( $this->_request['identifier']);
 			if( !$this->errorCondition() ) {
+				$writer = $this->makeWriter($metadataPrefix,array($row));
 				$item = new WikiOAIRecord( $row, $writer );
 				echo "<GetRecord>\n";
 				echo $item->renderRecord( $metadataPrefix, $this->timeGranularity() );
@@ -506,10 +514,10 @@ class OAIRepo {
 		}
 	}
 	
-	function getRecordItem( $identifier, $metadataPrefix ) {
+	function getRecordItem( $identifier) {
 		$pageid = $this->stripIdentifier( $identifier );
 		if( $pageid ) {
-			$resultSet = $this->fetchRecord( $pageid, $metadataPrefix );
+			$resultSet = $this->fetchRecord( $pageid);
 			$row = $resultSet->fetchObject();
 			$resultSet->free();
 			if( $row ) {
@@ -556,39 +564,25 @@ class OAIRepo {
 			wfDebugDieBacktrace( 'Bogus result.' );
 		}
 	}
+
+	function makeWriter($metadataPrefix, $rows) {
+		if($metadataPrefix == 'lsearch'){
+			$res = $this->fetchReferenceData($rows);
+			$writer = new OAILSearchWriter($res);
+			$res->free();
+			return $writer;
+		} else
+			return new OAIDumpWriter;
+	}
 	
 	function newSchema() {
 		global $wgVersion;
 		return version_compare( $wgVersion, '1.5alpha', 'ge' );
 	}
 	
-	function fetchRecord( $pageid, $type ) {
-		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text', 'pagelinks' ) );
-		if( $type == 'lsearch' ){
-			$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
-			page_namespace,
-			page_title,
-			old_text,
-			old_flags,
-			rev_id,
-			rev_deleted,
-			rev_comment,
-			rev_user,
-			rev_user_text,
-			rev_timestamp,
-			page_restrictions,
-			rev_minor_edit,
-      COUNT(pl_from) as num_page_ref
-			FROM $updates
-			LEFT JOIN $page ON page_id=up_page
-			LEFT JOIN $revision ON page_latest=rev_id
-			LEFT JOIN $text ON rev_text_id=old_id
-      LEFT JOIN $pagelinks ON page_namespace=pl_namespace AND page_title=pl_title
-			WHERE up_page=" . IntVal( $pageid ) . "
-      GROUP BY up_page LIMIT 1";
-		} else{
-			if( $this->newSchema() ) {
-				$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
+	function fetchRecord( $pageid ) {
+		extract( $this->_db->tableNames( 'updates', 'page', 'revision', 'text' ) );
+		$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
 			page_namespace,
 			page_title,
 			old_text,
@@ -607,55 +601,15 @@ class OAIRepo {
 			AND page_latest=rev_id
 			AND rev_text_id=old_id
 			LIMIT 1';
-			} else { // FIXME: this will work only with dublin core?
-				$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
-			cur_namespace    AS namespace,
-			cur_title        AS title,
-			cur_text         AS text,
-			''               AS flags,
-			cur_comment      AS comment,
-			cur_user         AS user,
-			cur_user_text    AS user_text,
-			cur_timestamp    AS timestamp,
-			cur_restrictions AS restrictions,
-			cur_minor_edit   AS minor_edit
-			FROM $updates LEFT JOIN $cur ON cur_id=up_page
-			WHERE up_page=" . IntVal( $pageid ) .
-			' LIMIT 1';
-			}
-		}
 		
 		return $this->_db->resultObject( $this->_db->query( $sql ) );
 	}
 	
-	function fetchRows( $from, $until, $chunk, $token = null, $type ) {
-		extract( $this->_db->tableNames( 'updates', 'cur', 'page', 'revision', 'text', 'pagelinks' ) );
+	function fetchRows( $from, $until, $chunk, $token = null ) {
+		extract( $this->_db->tableNames( 'updates', 'page', 'revision', 'text' ) );
 		$chunk = IntVal( $chunk );
 		
-		// lucene-search output: joins pagelinks table to get page ranks
-		if( $type == "lsearch" ){
-			$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
-			page_namespace,
-			page_title,
-			old_text,
-			old_flags,
-			rev_id,
-			rev_deleted,
-			rev_comment,
-			rev_user,
-			rev_user_text,
-			rev_timestamp,
-			page_restrictions,
-			rev_minor_edit,
-      COUNT(pl_from) as num_page_ref
-			FROM $updates
-			LEFT JOIN $page ON page_id=up_page
-			LEFT JOIN $revision ON page_latest=rev_id
-			LEFT JOIN $text ON rev_text_id=old_id
-      LEFT JOIN $pagelinks ON page_namespace=pl_namespace AND page_title=pl_title";
-		} else{
-			if( $this->newSchema() ) {
-				$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
+		$sql = "SELECT up_page,page_id,up_timestamp,up_action,up_sequence,
 			page_namespace,
 			page_title,
 			old_text,
@@ -672,21 +626,7 @@ class OAIRepo {
 			LEFT JOIN $page ON page_id=up_page
 			LEFT JOIN $revision ON page_latest=rev_id
 			LEFT JOIN $text ON rev_text_id=old_id ";
-			} else { // FIXME: this will only work with dublin core?
-				$sql = "SELECT page_id,up_timestamp,up_action,up_sequence,
-			cur_namespace    AS namespace,
-			cur_title        AS title,
-			cur_text         AS text,
-			''               AS flags,
-			cur_comment      AS comment,
-			cur_user         AS user,
-			cur_user_text    AS user_text,
-			cur_timestamp    AS timestamp,
-			cur_restrictions AS restrictions,
-			cur_minor_edit   AS minor_edit
-			FROM $updates LEFT JOIN $cur ON cur_id=up_page ";
-			}
-		}
+
 		$where = array();
 		if( $token ) {
 			$where[] = 'up_sequence >= ' . IntVal( $token );
@@ -703,12 +643,40 @@ class OAIRepo {
 		if( !empty( $where ) ) {
 			$sql .= ' WHERE ' . implode( ' AND ', $where );
 		}
-		if($type == 'lsearch')
-			$sql .= " GROUP BY up_page";
 		$sql .= " ORDER BY $order LIMIT $chunk";
 		
 		return $this->_db->resultObject( $this->_db->query( $sql ) );
 	}
+
+	function fetchReferenceData( $rows ) {
+		$page_ids = array();
+		foreach($rows as $row){
+			$page_ids[] = $row->up_page;
+		}
+
+		if(count($page_ids) == 1)
+			$pages_where = " AND up_page = $page_ids[0] ";
+		else
+			$pages_where = " AND up_page IN (".implode(",",$page_ids).") ";
+
+		extract( $this->_db->tableNames( 'updates', 'page', 'revision', 'text', 'pagelinks' ) );
+		$sql = "SELECT up_page,up_sequence,
+    r.page_namespace AS page_namespace,
+    r.page_title AS page_title,
+    COUNT(pl.pl_from) AS num_page_ref
+    FROM updates
+    LEFT JOIN page AS p ON p.page_id=up_page
+    LEFT JOIN pagelinks AS pl ON p.page_namespace=pl.pl_namespace AND p.page_title=pl.pl_title
+    LEFT JOIN page AS ns ON pl.pl_from=ns.page_id 
+    LEFT JOIN page AS r ON pl.pl_from=r.page_id AND r.page_is_redirect=1
+    LEFT JOIN pagelinks AS rpl ON r.page_namespace=rpl.pl_namespace AND r.page_title=rpl.pl_title
+    WHERE ns.page_namespace = p.page_namespace
+    $pages_where
+    GROUP BY up_page,r.page_id";
+		
+		return $this->_db->resultObject( $this->_db->query( $sql ) );
+	}
+
 	
 	function identifyInfo() {
 		global $wgSitename;
@@ -737,8 +705,8 @@ class OAIRepo {
 				'namespace'	=> 'http://www.mediawiki.org/xml/export-0.3/',
 				'schema'    => 'http://www.mediawiki.org/xml/export-0.3.xsd' ) ,
 			'lsearch' => array(
-				'namespace'	=> 'http://www.mediawiki.org/xml/export-0.3/',
-				'schema'    => 'http://www.mediawiki.org/xml/export-0.3.xsd' ) );
+				'namespace'	=> 'http://www.mediawiki.org/xml/lsearch-0.1/',
+				'schema'    => 'http://www.mediawiki.org/xml/lsearch-0.1.xsd' ) );
 	}
 	
 }
@@ -841,9 +809,11 @@ class WikiOAIRecord extends OAIRecord {
 		case 'oai_dc':
 			$data = $this->renderDublinCore();
 			break;
-		case 'lsearch':
 		case 'mediawiki':
 			$data = $this->renderMediaWiki();
+			break;
+		case 'lsearch':
+			$data = $this->renderLSearch();
 			break;
 		default:
 			wfDebugDieBacktrace( 'Unsupported metadata format.' );
@@ -887,7 +857,23 @@ class WikiOAIRecord extends OAIRecord {
 		$out .= $this->_writer->closePage().$this->_writer->closeStream();
 
 		return $out;
-	}	
+	}
+
+	function renderLSearch() {
+		$title = Title::makeTitle( $this->_row->page_namespace, $this->_row->page_title );
+
+		$out = $this->_writer->openStream().$this->_writer->openPage($this->_row).
+			$this->_writer->writeRedirects($this->_row).
+			$this->_writer->writeRevision($this->_row);
+
+		if( $title->getNamespace() == NS_IMAGE ) {
+			$out .= $this->renderUpload();
+		}
+
+		$out .= $this->_writer->closePage().$this->_writer->closeStream();
+
+		return $out;
+	}		
 
 	function renderUpload() {
 		$fname = 'WikiOAIRecord::renderUpload';
@@ -957,7 +943,69 @@ class OAIDumpWriter extends XmlDumpWriter {
 		} else
 			return "";
 	}
+}
+
+/** 
+ * Extends the MW import/export format with the lsearch syntax,
+ * i.e. schema lsearch-0.1
+ */
+class OAILSearchWriter extends OAIDumpWriter {
+
+	function __construct($resultSet){
+		parent::__construct();
+		$this->_redirects = array();
+		$this->_references = array();
+		for($i = 0 ; $i < $resultSet->numRows(); $i++){
+			$row = $resultSet->fetchObject();
+			if(isset($row->page_title))
+				$this->_redirects[$row->up_page][] = $row;
+			else
+				$this->_references[$row->up_page] = $row;
+
+		}
+	}
+
+	function openStream() {
+		global $wgContLanguageCode;
+		$ver = "0.1";
+		return wfElement( 'mediawiki', array(
+			'xmlns'              => "http://www.mediawiki.org/xml/lsearch-$ver/",
+			'xmlns:xsi'          => "http://www.w3.org/2001/XMLSchema-instance",
+			'xsi:schemaLocation' => "http://www.mediawiki.org/xml/lsearch-$ver/ " .
+			                        "http://www.mediawiki.org/xml/lsearch-$ver.xsd",
+			'version'            => $ver,
+			'xml:lang'           => $wgContLanguageCode ),
+			null ) .
+			"\n" .
+			$this->siteInfo();
+	}
+
+	function openPage( $row ) {
+		$out = parent::openPage( $row );
+		if(isset($this->_references[$row->up_page]) && isset($this->_references[$row->up_page]->num_page_ref))
+			$page_ref = $this->_references[$row->up_page]->num_page_ref;
+		else
+			$page_ref = 0;
+		$out .= '    ' . wfElement( 'references', array(), strval( $page_ref ) ) . "\n";
+		return $out;
+	}
+
+	function writeRedirects($row){
+		$out = '';
+		if(isset($this->_redirects[$row->up_page])){
+			foreach($this->_redirects[$row->up_page] as $row){
+				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+				$out .= "    <redirect>\n";
+				$out .= '    ' . wfElementClean( 'title', array(), $title->getPrefixedText() ) . "\n";
+				if(isset($row->num_page_ref))
+					$out .= '    ' . wfElement( 'references', array(), strval( $row->num_page_ref ) ) . "\n";
+				$out .= "    </redirect>\n";
+			}
+		}
+		return $out;
+	}
 
 }
+
 
 ?>
