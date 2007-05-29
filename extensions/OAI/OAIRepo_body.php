@@ -659,18 +659,18 @@ class OAIRepo {
 		else
 			$pages_where = " AND up_page IN (".implode(",",$page_ids).") ";
 
-		extract( $this->_db->tableNames( 'updates', 'page', 'revision', 'text', 'pagelinks' ) );
+		extract( $this->_db->tableNames( 'updates', 'page', 'pagelinks' ) );
 		$sql = "SELECT up_page,up_sequence,
     r.page_namespace AS page_namespace,
     r.page_title AS page_title,
     COUNT(pl.pl_from) AS num_page_ref
-    FROM updates
-    LEFT JOIN page AS p ON p.page_id=up_page
-    LEFT JOIN pagelinks AS pl ON p.page_namespace=pl.pl_namespace AND p.page_title=pl.pl_title
-    LEFT JOIN page AS ns ON pl.pl_from=ns.page_id 
-    LEFT JOIN page AS r ON pl.pl_from=r.page_id AND r.page_is_redirect=1
-    LEFT JOIN pagelinks AS rpl ON r.page_namespace=rpl.pl_namespace AND r.page_title=rpl.pl_title
-    WHERE ns.page_namespace = p.page_namespace
+    FROM $updates
+    LEFT JOIN $page AS p ON p.page_id=up_page
+    LEFT JOIN $pagelinks AS pl ON p.page_namespace=pl.pl_namespace AND p.page_title=pl.pl_title
+    LEFT JOIN $page AS ns ON pl.pl_from=ns.page_id 
+    LEFT JOIN $page AS r ON pl.pl_from=r.page_id AND r.page_is_redirect=1
+    LEFT JOIN $pagelinks AS rpl ON r.page_namespace=rpl.pl_namespace AND r.page_title=rpl.pl_title
+    WHERE p.page_namespace != 0 OR p.page_namespace = ns.page_namespace
     $pages_where
     GROUP BY up_page,r.page_id";
 		
