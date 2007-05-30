@@ -52,7 +52,7 @@ public class ArticlesParser {
 		try {
 			while ((str = in.readLine()) != null){
 				if(readingContent){					
-					if(str.startsWith("#")){
+					if(str.startsWith("###")){
 						// done
 						articles.add(a);
 						a = new TestArticle();
@@ -62,8 +62,8 @@ public class ArticlesParser {
 						continue;
 					}
 				}
-				if(str.startsWith("#")){
-					String[] s = str.substring(1).split("=");
+				if(str.startsWith("###")){
+					String[] s = str.substring(3).split("=");
 					String key = s[0].trim();
 					String value = "";
 					if(s.length>1)

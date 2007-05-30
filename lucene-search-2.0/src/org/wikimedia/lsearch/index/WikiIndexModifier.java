@@ -436,17 +436,20 @@ public class WikiIndexModifier {
 	}
 	
 	/**
-	 * We don't want whole stub articles fetched as keywords, so we penalize if 
-	 * the article is too short for keyword extraction.
+	 * We currently don't penalize short articles on keywords.
+	 * 
 	 * 
 	 * @param numTokens
 	 * @return
 	 */
 	public static float calculateKeywordsBoost(int numTokens){
+		return 1;
+		/*
 		if(numTokens > 2 * FastWikiTokenizerEngine.KEYWORD_TOKEN_LIMIT)
 			return 1;
 		else
 			return ((float)numTokens)/FastWikiTokenizerEngine.KEYWORD_TOKEN_LIMIT/2;
+		*/
 	}
 
 }

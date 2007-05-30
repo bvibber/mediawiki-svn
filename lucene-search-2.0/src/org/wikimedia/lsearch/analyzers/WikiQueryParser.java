@@ -73,7 +73,7 @@ public class WikiQueryParser {
 	public final float ALIAS_BOOST = 0.5f; 
 	/** boost for title field */
 	public static float TITLE_BOOST = 4;	
-	public static float REDIRECT_BOOST = 0.5f;
+	public static float REDIRECT_BOOST = 0.2f;
 	public static float KEYWORD_BOOST = 1;
 	
 	/** Policies in treating field names:
