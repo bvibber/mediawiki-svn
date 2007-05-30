@@ -309,7 +309,7 @@ function wdGetDataSetContext() {
 	$datasets=wdGetDataSets();
 	$groups=$wgUser->getGroups();
 	$dbs=wfGetDB(DB_SLAVE);
-	$pref=$wgUser->getOption('ow_uipref_context');
+	$pref=$wgUser->getOption('ow_uipref_datasets');
 
 	$trydefault='';
 	foreach($groups as $group) {

@@ -4,7 +4,7 @@ $wgDefaultGoPrefix='Expression:';
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
 $wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail';
 $wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail';
-$wgExtensionFunctions[]='initializeWikidataMessages';
+$wgExtensionFunctions[]='initializeWikidata';
 
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/Wikidata/OmegaWiki/");
 $wgDefaultClassMids = array(402295);
@@ -21,7 +21,6 @@ $wdTermDBDataSet='uw';
 # It _must_ exist for the Wikidata application to be executed 
 # successfully.
 $wdDefaultViewDataSet='uw';
-
 
 $wdGroupDefaultView=array();
 # Here you can set group defaults.
@@ -42,14 +41,8 @@ require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialTransaction.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialNeedsTranslation.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialImportLangNames.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialAddCollection.php");
-
-$wgExtensionPreferences[]=array(
- 'name'=>'ow_uipref_context',
- 'section'=>'ow_uiprefs',
- 'type'=>PREF_TEXT_T,
- 'size'=>10);
-
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialConceptMapping.php");
+
 function addWikidataHeader() {
   global $wgOut,$wgScriptPath;
   $wgOut->addScript("<script type='text/javascript' src='{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js'></script>");
@@ -75,9 +68,9 @@ function addHistoryLinkTrail(&$trail) {
   }
 }
 
-function initializeWikidataMessages() {
+function initializeWikidata() {
 	global 
-		$wgMessageCache;
+		$wgMessageCache, $wgExtensionPreferences;
 	
 	$wgMessageCache->addMessages(
 		array(
@@ -88,10 +81,25 @@ function initializeWikidataMessages() {
 			'ow_datasets' => 'Data-set selection',
 			'ow_noedit' => 'You are not permitted to edit pages in the dataset "$1". Please see [[Project:Permission policy|our editing policy]].',
 			'ow_noedit_title' => 'No permission to edit',
-			'ow_uipref_context' => 'Default dataset prefix (without underscore)',
+			'ow_uipref_datasets' => 'Default view',
 			'ow_uiprefs' => 'Wikidata',
+			'ow_none_selected' => '&lt;None selected&gt;',
 		)
 	);
+
+	$datasets=wdGetDatasets();
+	$datasetarray['']=wfMsg('ow_none_selected');
+	foreach($datasets as $datasetid=>$dataset) {
+		$datasetarray[$datasetid]=$dataset->fetchName();
+	}
+	$wgExtensionPreferences[]=array(
+	'name'=>'ow_uipref_datasets',
+	'section'=>'ow_uiprefs',
+	'type'=>PREF_OPTIONS_T,
+	'size'=>10,
+	'options'=>$datasetarray
+	);
+	
 
 }
 

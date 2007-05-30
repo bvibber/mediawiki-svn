@@ -21,26 +21,12 @@ define('PREF_TOGGLE_T', 2);
 define('PREF_TEXT_T', 3);
 define('PREF_PASSWORD_T', 4);
 define('PREF_INT_T', 5);
+define('PREF_OPTIONS_T', 6);
  
 // each element of the following should be an array that can have keys:
 // name, section, type, size, validate, load, save, html, min, max, default
 if (!isset($wgExtensionPreferences))
      $wgExtensionPreferences = array();
- 
-/**
- * Adds an array of prefs to be displayed in the user preferences
- *
- * @param array $prefs
- */
-function wfAddPreferences($prefs)
-{
-    global $wgExtensionPreferences;
- 
-    foreach ($prefs as $pref)
-    {
-        $wgExtensionPreferences[] = $pref;
-    }
-}
  
 function wfOverridePreferences(&$list)
 {
@@ -64,33 +50,33 @@ function wfSpecialPreferencesExtension()
         // one for displaying the form and one for saving the values
  
         function savePreferences() 
-        {    
+        {
             // handle extension prefs first
             global $wgUser, $wgRequest;
             global $wgExtensionPreferences;
  
-            foreach ($wgExtensionPreferences as $p)
+            foreach ($wgExtensionPreferences as $pref)
             {
-                $name = isset($p['name']) ? $p['name'] : "";
+                $name = isset($pref['name']) ? $pref['name'] : "";
                 if (! $name)
                     continue;
  
                 $value = $wgRequest->getVal($name);
-                $type = isset($p['type']) ? $p['type'] : PREF_USER_T;
+                $type = isset($pref['type']) ? $pref['type'] : PREF_USER_T;
                 switch ($type)
                 {
                     case PREF_TOGGLE_T:
-                        if (isset($p['save']))
-                            $p['save']($name, $value);
+                        if (isset($pref['save']))
+                            $pref['save']($name, $value);
                         else
                             $wgUser->setOption($name, $wgRequest->getCheck("wpOp{$name}"));
                         break;
  
                     case PREF_INT_T:
-                        $min = isset($p['min']) ? $p['min'] : 0;
-                        $max = isset($p['max']) ? $p['max'] : 0x7fffffff;
-                        if (isset($p['save']))
-                            $p['save']($name, $value);
+                        $min = isset($pref['min']) ? $pref['min'] : 0;
+                        $max = isset($pref['max']) ? $pref['max'] : 0x7fffffff;
+                        if (isset($pref['save']))
+                            $pref['save']($name, $value);
                         else
                             $wgUser->setOption($name, $this->validateIntOrNull($value, $min, $max));
                         break;
@@ -99,10 +85,10 @@ function wfSpecialPreferencesExtension()
                     case PREF_TEXT_T:
                     case PREF_USER_T:
                     default:
-                        if (isset($p['validate']))
-                            $value = $p['validate']($value);
-                        if (isset($p['save']))
-                            $p['save']($name, $value);
+                        if (isset($pref['validate']))
+                            $value = $pref['validate']($value);
+                        if (isset($pref['save']))
+                            $pref['save']($name, $value);
                         else
                             $wgUser->setOption($name, $value);
                         break;
@@ -124,23 +110,23 @@ function wfSpecialPreferencesExtension()
             $wgOut->clearHTML();
  
             $sections = array();
-            foreach ($wgExtensionPreferences as $p)
+            foreach ($wgExtensionPreferences as $pref)
             {
-                if (! isset($p['section']) || ! $p['section'])
+                if (! isset($pref['section']) || ! $pref['section'])
                     continue;
-                 $section = $p['section'];
+                 $section = $pref['section'];
  
-                $name = isset($p['name']) ? $p['name'] : "";
+                $name = isset($pref['name']) ? $pref['name'] : "";
                 $value = "";
                 if ($name)
                 {
-                    if (isset($p['load']))
-                        $value = $p['load']($name);
+                    if (isset($pref['load']))
+                        $value = $pref['load']($name);
                     else
                         $value = $wgUser->getOption($name);
                 }
-                if ($value === '' && isset($p['default']))
-                    $value = $p['default'];
+                if ($value === '' && isset($pref['default']))
+                    $value = $pref['default'];
  
                 $sectext = htmlspecialchars(wfMsg($section));
                 $regex = "/(<fieldset>\s*<legend>\s*" . preg_quote($sectext) . 
@@ -161,18 +147,18 @@ function wfSpecialPreferencesExtension()
  
                 }
  
-                $type = isset($p['type']) ? $p['type'] : PREF_USER_T;
+                $type = isset($pref['type']) ? $pref['type'] : PREF_USER_T;
                 switch ($type)
                 {
-                    case PREF_TOGGLE_T:
+		case PREF_TOGGLE_T:
                         $addhtml = $this->getToggle($name);
                         break;
  
-                    case PREF_INT_T:
-                    case PREF_TEXT_T:
-                    case PREF_PASSWORD_T:
-                        $size = isset($p['size']) && $p['size'] ? "size=\"{$p['size']}\"" : "";
-                        $caption = isset($p['caption']) && $p['caption'] ? $p['caption'] : wfMsg($name);
+		case PREF_INT_T:
+		case PREF_TEXT_T:
+		case PREF_PASSWORD_T:
+                        $size = isset($pref['size']) && $pref['size'] ? "size=\"{$pref['size']}\"" : "";
+                        $caption = isset($pref['caption']) && $pref['caption'] ? $pref['caption'] : wfMsg($name);
                         if ($type == PREF_PASSWORD_T)
                             $type = "password";
                         else
@@ -180,11 +166,25 @@ function wfSpecialPreferencesExtension()
                         $addhtml = "<table>" . 
                             $this->addRow("<label for=\"{$name}\">$caption</label>",
                                           "<input type=\"$type\" name=\"{$name}\" value=\"{$value}\" $size />") . "</table>" ;
-                        break;
- 
-                    case PREF_USER_T:
+                        break; 
+		case PREF_OPTIONS_T:
+			$caption = isset($pref['caption']) && $pref['caption'] ? $pref['caption'] : wfMsg($name);
+			$addhtml="$caption <select name=\"$name\" id=\"$name\">";
+			if(isset($pref['options'])) {
+				$optval=$wgUser->getOption($name);
+				$defaultSet=!empty($optval);
+				foreach($pref['options'] as $option=>$optionlabel) {
+					$sel='';
+					if(!$defaultSet && !$option) $sel="SELECTED";
+					if($defaultSet && $optval==$option) $sel="SELECTED";
+					$addhtml.="<option value=\"$option\" $sel>$optionlabel</option>";				
+				}
+			}
+			$addhtml.="</select>";
+			break;
+		case PREF_USER_T:
                     default:
-                        $addhtml = preg_replace("/@VALUE@/", $value, isset($p['html']) ? $p['html'] : "");
+                        $addhtml = preg_replace("/@VALUE@/", $value, isset($pref['html']) ? $pref['html'] : "");
                         break;
                 }
  
