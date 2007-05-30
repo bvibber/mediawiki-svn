@@ -89,6 +89,7 @@ function wfSpecialConceptMapping() {
 			$mappings=array();
 			foreach ($sets as $key=>$set) {
 				$rq=$wgRequest->getText("set_".$key);
+				$noerror=$wgRequest->getText("suppressWarnings");
 				$rq=trim($rq);
 				$dmData=new DefinedMeaningData();
 				$dmData->setDataset($set);
@@ -103,13 +104,18 @@ function wfSpecialConceptMapping() {
 					$id=$dmData->getId();
 					$title=$dmData->getTitleText();
 				}
-				
-				$wgOut->addHTML("$key: $rq ($title)");
+				if(!$noerror) {
+					$wgOut->addHTML("$key: $rq ($title)");
+				}
 				if ($id!=null) {
 					$mappings[$key]=$id;
-					$wgOut->addHTML(' <span style="color:green">[OK]</span>');
+					if(!$noerror) {
+						$wgOut->addHTML(' <span style="color:green">[OK]</span>');
+					}
 				} else {
-					$wgOut->addHTML(' <span style="color:red">[not present or malformed]</span>');
+					if(!$noerror) {
+						$wgOut->addHTML(' <span style="color:red">[not present or malformed]</span>');
+					}
 				}
 				$wgOut->addHTML("<br>\n");	
 			}

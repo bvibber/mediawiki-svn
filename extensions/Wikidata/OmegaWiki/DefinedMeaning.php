@@ -163,7 +163,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		}
 		$cmtitle=Title::newFromText("Special:ConceptMapping");
 		$titleText=$wgTitle->getPrefixedURL();
-		$cmlink=$sk->makeLinkObj($cmtitle,"<small>link to other concepts</small>","set_$dc=$titleText");
+		$cmlink=$sk->makeLinkObj($cmtitle,"<small>Add link to other concepts</small>","set_$dc=$titleText&suppressWarnings=true");
 		$html.="<tr><td>$cmlink</td></tr>\n";
 		$html.="</table>\n";
 		$html.="</div>\n";
