@@ -16,13 +16,12 @@ function wfSpecialSuggest() {
 				$wgOut,	$IP;
 
 			$wgOut->disable();
-			wfDebug("]]]Are we being called at all? \n");
 			require_once("$IP/includes/Setup.php");
 			require_once("Attribute.php");
 			require_once("RecordSet.php");
 			require_once("Editor.php");
 			require_once("HTMLtable.php");
-			require_once("WikiDataAPI.php");
+			#require_once("WikiDataAPI.php");
 			require_once("Transaction.php");
 			require_once("OmegaWikiEditors.php");
 			require_once("Wikidata.php");
@@ -36,7 +35,6 @@ function wfSpecialSuggest() {
 
 function getSuggestions() {
 
-	wfDebug("]]]Are we doing getSuggestions? \n");
 	global $idAttribute;
 	global $wgUser;
 	$dc=wdGetDataSetContext();	
@@ -137,7 +135,7 @@ function getSuggestions() {
 	$sql .= "10";
 	
 	# == Actual query here
-	wfdebug("]]]".$sql."\n");
+	//wfdebug("]]]".$sql."\n");
 	$queryResult = $dbr->query($sql);
 	
 	$idAttribute = new Attribute("id", "ID", "id");
@@ -175,6 +173,13 @@ function getSuggestions() {
 			list($recordSet, $editor) = getTransactionAsRecordSet($queryResult);
 			break;
 	}
+	ob_start();
+	var_dump($queryResult);
+	var_dump($recordSet);
+	var_dump($editor);
+	wfDebug(ob_get_contents());
+	ob_end_clean();
+
 	$output=$editor->view(new IdStack($prefix . 'table'), $recordSet);
 	//$output="<table><tr><td>HELLO ERIK!</td></tr></table>";
 	//wfDebug($output);
@@ -191,7 +196,7 @@ function ConstructSQLWithFallback($actual_query, $fallback_query, $fields){
 	#if ($actual_query==$fallback_query)
 	#	return $actual_query; 
 
-	$sql.="SELECT * FROM (SELECT ";
+	$sql="SELECT * FROM (SELECT ";
 
 	$sql_with_comma=$sql;
 	foreach ($fields as $field) {
