@@ -215,9 +215,9 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
 
 	foreach ( $title_arr as $title ) {
 		//Get the image object from the database
-		$img_obj = function_exists( 'wfFindFile' ) ? wfFindFile( $title ) : new Image( $title );
+		$img_obj = Image::newFromTitle( $title );
 
-		if ( !$img_obj || !$img_obj->exists() ) {
+		if ( !$img_obj->exists() ) {
 			//The user asked for an image that doesn't exist, let's
 			//add this to the list of missing objects and not output
 			//any html

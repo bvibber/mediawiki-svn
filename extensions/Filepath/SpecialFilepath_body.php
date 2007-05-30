@@ -28,7 +28,7 @@ class SpecialFilepath extends SpecialPage {
 			$cform = new FilepathForm( $title );
 			$cform->execute();
 		} else {
-			$file = function_exists( 'wfFindFile' ) ? wfFindFile( $title ) : new Image( $title );
+			$file = Image::newFromTitle( $title );
 			if ( $file && $file->exists() ) {
 				$wgOut->redirect( $file->getURL() );
 			} else {

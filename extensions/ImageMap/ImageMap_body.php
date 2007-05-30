@@ -83,8 +83,8 @@ class ImageMap {
 				$thumbWidth = $imageNode->getAttribute('width');
 				$thumbHeight = $imageNode->getAttribute('height');
 
-				$imageObj = function_exists( 'wfFindFile' ) ? wfFindFile( $imageTitle ) : new Image( $imageTitle );
-				if ( !$imageObj || !$imageObj->exists() ) {
+				$imageObj = Image::newFromTitle( $imageTitle );
+				if ( !$imageObj->exists() ) {
 					return self::error( 'imagemap_invalid_image' );
 				}
 				# Add the linear dimensions to avoid inaccuracy in the scale 

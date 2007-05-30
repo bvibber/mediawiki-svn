@@ -23,8 +23,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 			if( is_object( $title ) ) {
 				if( $title->getNamespace() != NS_IMAGE )
 					$title = Title::makeTitle( NS_IMAGE, $title->getText() );
-				$logo = function_exists( 'wfFindFile' ) ? wfFindFile( $title ) : new Image( $title );
-				if( $logo && $logo->exists() )
+				$logo = Image::newFromTitle( $title );
+				if( $logo->exists() )
 					$wgLogo = $wgLogoAutoScale ? $logo->createThumb( 135 ) : $logo->getUrl();
 			}
 		}

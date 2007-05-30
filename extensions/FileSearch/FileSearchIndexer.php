@@ -47,8 +47,8 @@ class FileSearchIndexer {
 		if( $namespace == NS_IMAGE ) {
 			wfDebugLog( 'filesearch', "Update called for `{$title}`" );
 			$titleObj = Title::makeTitle( NS_IMAGE, $title );
-			$image = function_exists( 'wfFindFile' ) ? wfFindFile( $titleObj ) : new Image( $titleObj );
-			if ( !$image || !$image->exists() ) {
+			$image = Image::newFromTitle( $titleObj );
+			if ( !$image->exists() ) {
 				wfDebugLog( 'filesearch', "Image does not exist: $title" );
 				return;
 			}

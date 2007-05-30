@@ -613,7 +613,10 @@ class NewsRenderer {
 		
 		$ticon = $icon ? Title::newFromText($icon, NS_IMAGE) : NULL;
 		if ( $ticon ) {
-			$image = function_exists( 'wfFindFile' ) ? wfFindFile( $ticon ) : new Image( $ticon );
+			$image = Image::newFromTitle( $ticon );
+			if ( !$image->exists() ) {
+				$image = false;
+			}
 		} else {
 			$image = false;
 		}
