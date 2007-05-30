@@ -40,6 +40,10 @@ li {
 	top:-3.2em;
 }
 
+.lqt_hidden {
+	display: none;
+}
+
 h1.firstHeading {
 	padding-right: 4.5em;
 }
@@ -110,8 +114,8 @@ h1.lqt_header {
          font-size: smaller;
          color: #777;
 		
-		padding-left: 0.3em; /* for post colors */
-		border-left: 0.3em solid;
+//		padding-left: 0.3em; /* for post colors */
+//		border-left: 0.3em solid;
 }
 
 .lqt_post_color_1 { border-left-color: #cd9800; }

@@ -246,13 +246,11 @@ HTML;
 		$p = new Parser(); $sig = $p->getUserSig( $thread->rootPost()->originalAuthor() );
 		$this->output->addWikitext( $sig, false );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
-
-		global $wgContLang;
-		$this->output->addHTML(
-			wfOpenElement( 'li' ) .
-			$wgContLang->timeanddate( $thread->touched() ) .
-			wfCloseElement( 'li' )
-		);
+		
+		$this->output->addHTML( wfOpenElement( 'li' ) );
+		$d = new Date($thread->touched());
+		$this->output->addHTML( $d->lastMonth()->text() );
+		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
 		$commands = array( 'Edit' => $this->lqtTalkpageUrl( $this->title, 'lqt_edit_post', $thread ),
 		 					'Reply' => $this->lqtTalkpageUrl( $this->title, 'lqt_reply_to', $thread ),
@@ -349,6 +347,8 @@ class TalkpageView extends LqtView {
 	}
 
 	function showArchive($month) {
+		// TODO having a subtitle screws up our relative positioning on the widget.
+//		$this->output->setSubtitle("Archived threads from {$this->formattedMonth($month)}.");
 		$threads = Thread::threadsOfArticleInMonth( $this->article, $month );
 		foreach($threads as $t) {
 			$this->showThread($t);
@@ -369,19 +369,43 @@ class TalkpageView extends LqtView {
 		}
 	}
 	
+	function formattedMonth($yyyymm) {
+		global $wgLang; // TODO global.
+		return $wgLang->getMonthName( substr($yyyymm, 4, 2) ).' '.substr($yyyymm, 0, 4);
+	}
+	
 	function showArchiveWidget($month) {
 		global $wgLang; // TODO global.
 		
-		$options = Thread::monthsWhereArticleHasThreads($this->article);
-		array_unshift($options, 'Last 30 days' ); # prepend.
+		$sel = $this->request->getVal('lqt_archive_month', 'recent');
+		
+		$months = Thread::monthsWhereArticleHasThreads($this->article);
+
+		$options = array( 'Last 30 days' => 'recent' );
+		foreach($months as $m) {
+			$options[$this->formattedMonth($m)] = $m;
+		}
 		
 		$this->openDiv('lqt_archive_widget');
-		$this->output->addHTML('<form><select>');
-		foreach( $options as $o ) {
-			$this->output->addHTML("<option>$o</option>");
+		$this->output->addHTML(<<<HTML
+		<form id="lqt_archive_browser_form"><select name="lqt_archive_month" id="lqt_archive_month">
+HTML
+);
+		foreach( $options as $label => $value ) {
+			$selected = $sel == $value ? 'selected="true"' : '';
+			$this->output->addHTML("<option value=\"$value\" $selected>$label");
 		}
-		$this->output->addHTML('</select></form>');
+		$this->output->addHTML(<<<HTML
+		</select><input type="submit" id="lqt_archive_go_button" value="Go"></form>
+HTML
+		);
 		$this->closeDiv();
+	}
+	
+	function addJSandCSS() {
+		global $wgJsMimeType, $wgStylePath; // TODO globals.
+		$s = "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/lqt.js\"><!-- lqt js --></script>\n";
+		$this->output->addScript($s);
 	}
 	
 	function show() {
@@ -389,10 +413,11 @@ class TalkpageView extends LqtView {
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
 		
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() );
+		$this->addJSandCSS();
 		
 		$month = $this->request->getVal('lqt_archive_month');
 		$this->showArchiveWidget($month);
-		if ( $month ) {
+		if ( $month && $month != 'recent' ) {
 			$this->showArchive($month);
 		} else {
 			$this->showLatest();
