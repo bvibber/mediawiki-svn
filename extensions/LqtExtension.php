@@ -246,11 +246,13 @@ HTML;
 		$p = new Parser(); $sig = $p->getUserSig( $thread->rootPost()->originalAuthor() );
 		$this->output->addWikitext( $sig, false );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
-		
-		$this->output->addHTML( wfOpenElement( 'li' ) );
-		$d = new Date($thread->touched());
-		$this->output->addHTML( $d->lastMonth()->text() );
-		$this->output->addHTML( wfCloseElement( 'li' ) );
+
+		global $wgContLang;
+		$this->output->addHTML(
+			wfOpenElement( 'li' ) .
+			$wgContLang->timeanddate( $thread->touched() ) .
+			wfCloseElement( 'li' )
+		);
 		
 		$commands = array( 'Edit' => $this->lqtTalkpageUrl( $this->title, 'lqt_edit_post', $thread ),
 		 					'Reply' => $this->lqtTalkpageUrl( $this->title, 'lqt_reply_to', $thread ),
@@ -376,7 +378,7 @@ class TalkpageView extends LqtView {
 		$this->openDiv('lqt_archive_widget');
 		$this->output->addHTML('<form><select>');
 		foreach( $options as $o ) {
-			$this->output->addHTML("<option>$o");
+			$this->output->addHTML("<option>$o</option>");
 		}
 		$this->output->addHTML('</select></form>');
 		$this->closeDiv();
