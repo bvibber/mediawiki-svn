@@ -1310,7 +1310,7 @@ class Image extends LocalFile {
 	function newFromTitle( $title, $time = false ) {
 		$img = wfFindFile( $title, $time );
 		if ( !$img ) {
-			$img = wfLocalFile( $time );
+			$img = wfLocalFile( $title );
 		}
 		return $img;
 	}
