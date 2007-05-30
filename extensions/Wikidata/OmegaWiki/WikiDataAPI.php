@@ -943,6 +943,10 @@ function getSpellingForLanguage($definedMeaningId, $languageCode, $fallbackLangu
 	#wfDebug("Fallback language: $fallbackLanguageId\n");
 	$dbr = & wfGetDB(DB_SLAVE);	
 
+	$definedMeaningId=$dbr->addQuotes($definedMeaningId);
+	$userLangaugeId=$dbr->addQuotes($userLangaugeId);
+	$fallbackLanguageId=$dbr->addQuotes($fallbackLanguageId);
+	
 	if($userLanguageId) {
 		$actual_query="select spelling from {$dc}_syntrans,{$dc}_expression_ns where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id and language_id=$userLanguageId and {$dc}_expression_ns.remove_transaction_id is NULL";
 	
@@ -1120,8 +1124,6 @@ function writeDmToCollection($dc, $collid, $uuid, $dm_id) {
 			member_mid=$dm_id,
 			add_transaction_id=$add_transaction_id		
 		";
-	global $wgOut;
-	$wgOut->addWikiText($sql);
 	$dbr->query($sql);
 }
 
@@ -1150,11 +1152,9 @@ function &readConceptMapping($concept_id) {
 			WHERE collection_id = $collection_id
 			AND internal_member_id=$concept_id
 			";
-		wfDebug($query);
 		$queryResult = $dbr->query($query);
 		$row=$dbr->fetchObject($queryResult);
 		if (isset($row->member_mid)) {
-			wfDebug("do we have ".$row->member_mid."\n");
 			$map[$dc]=$row->member_mid;
 		}
 	}
@@ -1174,7 +1174,6 @@ function getConceptId($dm,$dc){
 		WHERE member_mid=$dm
 		AND collection_id=$collection_id;
 		";
-	wfDebug($query);
 	$queryResult = $dbr->query($query);
 	$row=$dbr->fetchObject($queryResult);
 	return isset($row->concept_id) ? $row->concept_id : null;
@@ -1183,7 +1182,6 @@ function getConceptId($dm,$dc){
 function &getAssociatedByConcept($dm, $dc) {
     	#$dbr = & wfGetDB(DB_SLAVE);
 	$concept_id=getConceptId($dm,$dc);
-	wfDebug("concept id:".$concept_id."\n");
 	return readConceptMapping($concept_id);
 }
 

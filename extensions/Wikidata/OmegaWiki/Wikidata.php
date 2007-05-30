@@ -446,6 +446,7 @@ class DefinedMeaningData {
 	private $spelling=null;
 	private $id=null;
 	private $dataset=null;
+	private $title=null;
 
 	/** return spelling of associated expression in particular langauge
 	 * not nescesarily the correct langauge. 
@@ -492,18 +493,119 @@ class DefinedMeaningData {
 		$skin->makeLinkObj($title, $name , "dataset=$prefix");
 	}
 	
-
+	/** returns the page title associated with this defined meaning (as a Title object)
+	 * First time from db lookup. Subsequently from cache 
+	 */
 	public function &getTitle() {
-		$name=$this->getSpelling();
-		$id=$this->getId();
-		$text="DefinedMeaning:$name ($id)";
-		wfDebug($text);
-		$title=Title::newFromText($text);
+		$title=&$this->title;
+		if ($title==null) {
+
+			$name=$this->getSpelling();
+			$id=$this->getId();
+			
+			if ($name==null or $id==null) 
+				return null;
+
+			$text="DefinedMeaning:$name ($id)";
+			$title=Title::newFromText($text);
+			$this->title=$title;
+		}
 		return $title;
 	}
 	
+	/** set the title (and associated ID) from text representation
+	 * This is partially copied from DefinedMeaning.getDefinedMeaningIdFromTitle
+	 * which is slightly less usable (and hence should be deprecated)
+	 * 
+	 * Also note the traditionally very weak error-checking, this may need
+	 * updating. Canonicalize helps a bit. 
+	 *
+	 * Will gladly eat invalid titles (in which case object state
+	 * may become somewhat undefined) 
+	 */
+	public function setTitleText($titleText){
+		// get id from title: DefinedMeaning:expression (id)
+		$this->title=Title::newFromText($titleText);
+		$bracketPosition = strrpos($titleText, "(");
+		if ($bracketPosition==false) 
+			return; # we accept that we may have a somewhat broken
+				# title string. 
+		$definedMeaningId = substr($titleText, $bracketPosition + 1, strlen($titleText) - $bracketPosition - 2);
+		$this->setId($definedMeaningId);
+	}
+	
+	/**set the title (and associated ID) from mediawiki Title object*/
+	public function setTitle(&$title){
+		$this->setTitleText($title->getFullText());
+	}
+	
+	/**retturn full text representation of title*/
+	public function getTitleText(){
+		$title=$this->getTitle();
+		return $title->getFullText();
+	}
+	/** 
+	 * Look up defined meaning id in db,
+	 * and attempt to get defined meaning into 
+	 * canonical form, with correct spelling, etc.
+	 * 
+	 * use canonicalize anytime you take user input.
+	 * note that the defined meaning must already 
+	 * be in the database for this to work.
+	 *
+	 * example(s):
+	 * For any user supplied defined meaning,
+	 * "traditionally" we have only looked at the part 
+	 * between parens.
+	 * For instance, for
+	 *	DefinedMeaning:Jump (6684)
+	 *
+	 * We only really look at (6684), and discard the rest.
+	 * This can lead to funny situations...
+	 *
+	 * If a user were to look for DefinedMeaning:YellowBus (6684)
+	 * they would get a page back with that title, but with 
+	 * the contents of DefinedMeaning:Jump (6684)... very confusing!
+	 *
+	 * This kind of odd behaviour (and anything else we might come across later)
+	 * gets corrected here.
+	 *
+	 * @return true on success (page (already) exists in db, title now updated);
+	 *         false on failure (page not (yet?) in db, or id was never set, 
+	 *	   or not enough info to perform lookup (need at least id or something with id in it:
+	 *         a horribly misformed title will work, as long as the id is correct :-P )
+	 */
+	public function canonicalize(){
+		$oldtitle=&$this->title;
+		$oldspelling=$this->spelling;
+	
+		$this->title=null; #    } clear cached values to force db fetch.
+		$this->spelling=null; # }
+		$this->title=$this->getTitle(); # will fetch from db!
+		
+		if ($this->title==null) { # db lookup failure
+			$this->title=&$oldtitle; 
+			$this->spelling=$oldspelling;
+			return false;
+		}
+
+		return true;
+	}
+
+	/** returns true if a database entry already exists for this dmid, and an expression is present in this langauge in this dataset, otherwise returns false. */
+	public function exists() {
+		/*reusing getSpelling for now as a hack. Probably better
+		 *to write a dedicated exists in WikiDataAPI, or here
+		 */
+		 if ($this->getSpelling()!=null) 
+		 	return true;
+		return false;
+	}
+	
+	/** sets id*/
 	public function setId($id) {
 		$this->id=$id;
+		$this->canonicalize();
 	}
 	
 	public function getId() {
@@ -515,6 +617,9 @@ class DefinedMeaningData {
 	}
 
 	public function &getDataset() {
+		if ($this->dataset==null) {
+			$this->dataset=wdGetDataSetContext();
+		}
 		return $this->dataset;
 	}
 

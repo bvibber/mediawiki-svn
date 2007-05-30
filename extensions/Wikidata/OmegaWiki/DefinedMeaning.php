@@ -111,6 +111,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		return $idStack;
 	}
 	
+	/** @deprecated, use DefinedMeaningData.setTitle instead */
 	protected function getDefinedMeaningIdFromTitle($title) {
 		// get id from title: DefinedMeaning:expression (id)
 		$bracketPosition = strrpos($title, "(");
@@ -160,11 +161,14 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$slot = $active ? "$name" : $sk->makeLinkObj($dm->getTitle(),$name,"dataset=$prefix");
 			$html.="<tr><td class=\"$class\">$slot</td></tr>";
 		}
-		$html.="</table>";
-		$html.="</div>";
+		$cmtitle=Title::newFromText("Special:ConceptMapping");
+		$titleText=$wgTitle->getPrefixedURL();
+		$cmlink=$sk->makeLinkObj($cmtitle,"<small>link to other concepts</small>","set_$dc=$titleText");
+		$html.="<tr><td>$cmlink</td></tr>\n";
+		$html.="</table>\n";
+		$html.="</div>\n";
 		#$html="bla\n";
 		return $html;
 	}
 }
-
 ?>

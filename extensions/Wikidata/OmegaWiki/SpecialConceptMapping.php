@@ -1,12 +1,13 @@
 <?php
 if (!defined('MEDIAWIKI')) die();
 /**
- * A Special Page extension to add languages, runnable by users with the 'addlanguage' right.
+ * A Special Page extension to create concept-mappings
+ * also provides a web-api. Minimal documentation is available by calling with &action=help, as a parameter
  * @addtogroup Extensions
  *
  * @author Erik Moeller <Eloquence@gmail.com>
  * @author Kim Bruning <kim@bruning.xs4all.nl>
- * @license public domain
+ * @license public domain or GPL? (requesting info)
  */
 
 
@@ -66,6 +67,16 @@ function wfSpecialConceptMapping() {
 			global $wgOut;
 			require_once("forms.php");
 			
+			$wgOut->addHTML("
+					<p>Concept Mapping allows you to identify
+					which defined meaning in one dataset is identical
+					to defined meanings in other datasets.</p>\n
+					<p>Please enter or cut and paste the defined 
+					meanings (with id), or simply the defined meaning ids
+					which are identical.</p>\n
+					<p> For example, you could paste <code>DefinedMeaning:Boat (7774)</code>
+					or simply type <code>7774</code>.</p>\n");
+			
 			$sets=wdGetDataSets();
 			$options = array();
 			$html="";
@@ -78,19 +89,33 @@ function wfSpecialConceptMapping() {
 			$mappings=array();
 			foreach ($sets as $key=>$set) {
 				$rq=$wgRequest->getText("set_".$key);
-				$rq=ltrim($rq);
-				$wgOut->addHTML("$key: $rq");
-				if ($rq!=null and $rq!="") {
-					$mappings[$key]=$rq;
-					$wgOut->addHTML(" (will insert)");
+				$rq=trim($rq);
+				$dmData=new DefinedMeaningData();
+				$dmData->setDataset($set);
+				$dmData->setTitleText($rq); #is $rq a page title?
+				if ($dmData->getId()==null) { #guess not
+					$dmData->setId($rq); # maybe it's a defined meaning id?
+				}
+				$dmData->canonicalize();
+				$id=null;
+				$title=null;
+				if ($dmData->exists()) {
+					$id=$dmData->getId();
+					$title=$dmData->getTitleText();
+				}
+				
+				$wgOut->addHTML("$key: $rq ($title)");
+				if ($id!=null) {
+					$mappings[$key]=$id;
+					$wgOut->addHTML(' <span style="color:green">[OK]</span>');
 				} else {
-					$wgOut->addHTML("(not supplied)");
+					$wgOut->addHTML(' <span style="color:red">[not present or malformed]</span>');
 				}
 				$wgOut->addHTML("<br>\n");	
 			}
 			if (sizeOf($mappings)>1) { 
 				createConceptMapping($mappings);
-				$wgOut->addHTML("Mapped all fields marked with (will insert)<br>\n");
+				$wgOut->addHTML("Mapped all fields marked with [OK]<br>\n");
 			} else {
 				$wgOut->addHTML("Need to have at least two defined meanings before I can link them");
 			}
