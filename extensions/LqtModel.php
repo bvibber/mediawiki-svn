@@ -25,6 +25,8 @@ class Post extends Article {
 	
 }
 
+// TODO when exactly do we update thraed_touched?
+
 class Thread {
 
 	/* ID references to other objects that are loaded on demand: */
@@ -55,6 +57,11 @@ class Thread {
 		if ( !$this->superthreadId ) return null;
 		if ( !$this->superthread ) $this->superthread = Thread::newFromId($this->superthreadId);
 		return $this->superthread;
+	}
+	
+	function topmostThread() {
+		if ( !$this->superthread() ) return $this;
+		else return $this->superthread()->topmostThread();
 	}
 	
 	function setArticle($a) {
@@ -100,10 +107,9 @@ class Thread {
 		return Thread::threadsWhere( array('thread_subthread_of' => $this->id),
 		                             array('ORDER BY' => 'thread_touched') );
 	}
-
+	
 	protected function updateRecord() {
 		$dbr =& wfGetDB( DB_MASTER );
-
         $res = $dbr->update( 'lqt_thread',
                              /* SET */   array( 'thread_root_post' => $this->rootPostId,
                        							'thread_article' => $this->articleId,

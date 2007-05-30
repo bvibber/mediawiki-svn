@@ -145,7 +145,7 @@ HTML;
 			$this->perpetuate('lqt_reply_to', 'hidden') .
 			$this->perpetuate('lqt_new_thread_form', 'hidden');
 		
-		if ( $thread == null || $thread->superthread() == null ) {
+		if ( /*$thread == null*/ $edit_type=='new' || ($thread && $thread->superthread() == null) ) {
 			// This is a top-level post; show the subject line.
 			$subject = $this->request->getVal('lqt_subject_field', $thread ? $thread->subject() : '');
 			$e->editFormTextBeforeContent .= <<<HTML
@@ -327,20 +327,42 @@ class TalkpageView extends LqtView {
 }
 
 class ThreadPermalinkView extends LqtView {
+	function showThreadHeading( $thread ) {
+		if ( $thread->hasSubject() && $this->headerLevel == 1 ) {
+			$this->output->setPageTitle( "Thread: " . $thread->subject() );
+		} else {
+			parent::showThreadHeading($thread);
+		}
+	}
+	
 	function show() {
 		/* Extract the numeric ID after the slash in the URL. */
 		$title_string = $this->request->getVal('title');
 		$a = explode('/', $title_string);
 		if ( $a == false || count( $a ) < 2 || !ctype_digit($a[1])  ) {
-			echo("bad request"); // TODO this is not a very friendly way to handle this.
+			echo("bad request (TODO real error msg?)");
 			die();
 		}
 		$thread_id = intval($a[1]);
-		
-		$this->output->setPageTitle( "Thread #$thread_id" );
-		
+
 		$t = Thread::newFromId( $thread_id );
-		$this->article = $t->article();
+		$this->article = $t->article(); # for creating reply threads.
+		
+		$this->output->setPageTitle( "Thread: #$thread_id" ); // Default if no subject line.
+
+$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($t->article()->getTitle()->getTalkpage());
+		if ( $t->superthread() ) {
+/*			$this->output->addHTML(<<<HTML
+			<p class="lqt_context_message">You are viewing a reply to another post.
+			<a href="{$this->permalinkUrl($t->topmostThread())}">View the entire discussion.</a></p>
+HTML
+);*/
+			$this->output->setSubtitle( "a fragment of <a href=\"{$this->permalinkUrl($t->topmostThread())}\">a discussion</a> from " . $talkpage_link );
+		} else {
+			
+			$this->output->setSubtitle( "from " . $talkpage_link );
+		}
+		
 		$this->showThread($t);
 	}
 }
