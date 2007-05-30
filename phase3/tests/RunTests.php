@@ -1,16 +1,11 @@
 <?php
 
-if( php_sapi_name() != 'cli' ) {
-	echo 'Must be run from the command line.';
-	die( -1 );
-}
+die( "This is broken, use run-test.php for now.\n" );
 
+require_once( dirname( __FILE__ ) . '/../maintenance/commandLine.inc' );
+ini_set( 'include_path', get_include_path() . PATH_SEPARATOR . /*$_SERVER['PHP_PEAR_INSTALL_DIR']*/ 'C:\php\pear' );
 error_reporting( E_ALL );
-define( "MEDIAWIKI", true );
-
-set_include_path( get_include_path() . PATH_SEPARATOR . 'PHPUnit' );
-set_include_path( get_include_path() . PATH_SEPARATOR . '..' );
-require_once( 'PHPUnit.php' );
+require_once( 'PHPUnit/Framework.php' );
 
 $testOptions = array(
 	'mysql4' => array(
@@ -25,10 +20,6 @@ $testOptions = array(
 		'database' => null ),
 	);
 
-if( file_exists( 'LocalTestSettings.php' ) ) {
-	include( './LocalTestSettings.php' );
-}
-
 $tests = array(
 	'GlobalTest',
 	'DatabaseTest',
@@ -38,14 +29,14 @@ $tests = array(
 	'ImageTest'
 	);
 
-if( isset( $_SERVER['argv'][1] ) ) {
+if( count( $args ) ) {
 	// to override...
-	$tests = array( $_SERVER['argv'][1] );
+	$tests = $args;
 }
 
 foreach( $tests as $test ) {
 	require_once( $test . '.php' );
-	$suite = new PHPUnit_TestSuite( $test );
+	$suite = new PHPUnit_Framework_TestSuite( $test );
 	$result = PHPUnit::run( $suite );
 	echo $result->toString();
 }
