@@ -944,7 +944,7 @@ function getSpellingForLanguage($definedMeaningId, $languageCode, $fallbackLangu
 	$dbr = & wfGetDB(DB_SLAVE);	
 
 	$definedMeaningId=$dbr->addQuotes($definedMeaningId);
-	$userLangaugeId=$dbr->addQuotes($userLangaugeId);
+	$userLanguageId=$dbr->addQuotes($userLanguageId);
 	$fallbackLanguageId=$dbr->addQuotes($fallbackLanguageId);
 	
 	if($userLanguageId) {

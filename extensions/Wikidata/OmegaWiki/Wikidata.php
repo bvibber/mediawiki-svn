@@ -496,8 +496,8 @@ class DefinedMeaningData {
 	/** returns the page title associated with this defined meaning (as a Title object)
 	 * First time from db lookup. Subsequently from cache 
 	 */
-	public function &getTitle() {
-		$title=&$this->title;
+	public function getTitle() {
+		$title=$this->title;
 		if ($title==null) {
 
 			$name=$this->getSpelling();
