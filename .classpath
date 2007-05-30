@@ -13,6 +13,6 @@
 	<classpathentry kind="lib" path="lib/snowball.jar"/>
 	<classpathentry kind="lib" path="lib/lucene-core-2.0.1-dev.jar" sourcepath="/lucene-2.0"/>
 	<classpathentry kind="lib" path="lib/mwdumper.jar" sourcepath="/sandbox/highlighter"/>
-	<classpathentry kind="lib" path="lib/highlighter.jar"/>
+	<classpathentry kind="lib" path="lib/highlighter.jar" sourcepath="/sandbox/highlighter"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -60,7 +60,7 @@ public class FastWikiTokenizerTest {
 		}
 		
 		public static void main(String args[]) throws IOException{
-			String text = "#Preusmenje [[Njanja]]";
+			String text = "(ant) and some";
 			showTokens(text);
 			text = "[[Category:Blah Blah?!|Caption]], and [[:Category:Link to category]]";
 			showTokens(text);
