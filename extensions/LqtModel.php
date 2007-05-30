@@ -195,22 +195,17 @@ class Thread {
 
 	/** List of months in which there are >0 threads, suitable for threadsOfArticleInMonth. */
 	static function monthsWhereArticleHasThreads( $article ) {
-
-		global $wgLang;
-
 		$threads = Thread::allThreadsOfArticle( $article );
 		$months = array();
 		foreach( $threads as $t ) {
 			$m = substr( $t->touched(), 0, 6 );
 			if ( !array_key_exists( $m, $months ) ) {
-				$year = substr($m, 0, 4);
-				$month_num = substr($m, 4, 2);
-				$months[$m] = $wgLang->getMonthName( $month_num ) . ' ' . $year;
+				if (!in_array( $m, $months )) $months[] = $m;
 			}
 		}
 		return $months;
 	}
-	
+
 	static function latestNThreadsOfArticle( $article, $n ) {
 		return Thread::threadsWhere( array('thread_article' => $article->getID(),
 		                                   'thread_subthread_of is null'),
