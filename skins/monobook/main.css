@@ -33,6 +33,17 @@ li {
 	margin-bottom: .1em;
 }*/
 
+.lqt_archive_widget {
+	/* floats to the right of the main h1 page title. */
+	float:right;
+	position:relative;
+	top:-3.2em;
+}
+
+h1.firstHeading {
+	padding-right: 4.5em;
+}
+
 #lqt_archive_hide_show {
         display: block;
 }

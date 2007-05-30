@@ -2,6 +2,41 @@
 
 require_once('Article.php');
 
+// TODO if we're gonna have a Date class we should really do it.
+class Date {
+	public $year, $month, $day, $hour, $minute, $second;
+	
+	// ex. "20070530033751"
+	function __construct( $text ) {
+		if ( !strlen( $text ) == 14 || !ctype_digit($text) ) {
+			$this->isValid = false;
+			return null;
+		}
+		$this->year = intval( substr( $text, 0, 4 ) );
+		$this->month = intval( substr( $text, 4, 2 ) );
+		$this->day = intval( substr( $text, 6, 2 ) );
+		$this->hour = intval( substr( $text, 8, 2 ) );
+		$this->minute = intval( substr( $text, 10, 2 ) );
+		$this->second = intval( substr( $text, 12, 2 ) );
+	}
+	function lastMonth() {
+		$d = clone $this;
+		$d->month -= 1;
+		return $d;
+	}
+/*	function monthString() {
+		return sprintf( '%04d%02d', $this->year, $this->month );
+	}*/
+	static function monthString($text) {
+		return substr($text, 0, 6);
+	}
+	static function beginningOfMonth($yyyymm) { return $yyyymm . '00000000'; }
+	static function endOfMonth($yyyymm) { return $yyyymm . '31235959'; }
+	function text() {
+		return sprintf( '%04d%02d%02d%02d%02d%02d', $this->year, $this->month, $this->day,
+						$this->hour, $this->minute, $this->second );
+	}
+}
 
 class Post extends Article {
 	/**
@@ -24,8 +59,6 @@ class Post extends Article {
 	}
 	
 }
-
-// TODO when exactly do we update thraed_touched?
 
 class Thread {
 
@@ -108,6 +141,17 @@ class Thread {
 		                             array('ORDER BY' => 'thread_touched') );
 	}
 	
+	function touch() {
+		$this->updateRecord(); // TODO side-effect, ugly, etc.
+		if ( $this->superthread() ) {
+			$this->superthread()->touch();
+		}
+	}
+	
+	function touched() {
+		return $this->touched;
+	}
+	
 	protected function updateRecord() {
 		$dbr =& wfGetDB( DB_MASTER );
         $res = $dbr->update( 'lqt_thread',
@@ -116,7 +160,7 @@ class Thread {
 												'thread_subthread_of' => $this->superthreadId,
 												'thread_summary_page' => $this->summaryId,
 												'thread_subject' => $this->subject,
-												'thread_touched' => $this->touched ),
+												'thread_touched' => wfTimestampNow() ),
                              /* WHERE */ array( 'thread_id' => $this->id, ),
                              __METHOD__);
 	}
@@ -149,6 +193,17 @@ class Thread {
 		return Thread::newFromId( $dbr->insertId() );
 	}
 
+	/** List of months in which there are >0 threads, suitable for threadsOfArticleInMonth. */
+	static function monthsWhereArticleHasThreads( $article ) {
+		$threads = Thread::allThreadsOfArticle( $article );
+		$months = array();
+		foreach( $threads as $t ) {
+			$m = substr( $t->touched(), 0, 6 );
+			if (!in_array( $m, $months )) $months[] = $m;
+		}
+		return $months;
+	}
+	
 	static function latestNThreadsOfArticle( $article, $n ) {
 		return Thread::threadsWhere( array('thread_article' => $article->getID(),
 		                                   'thread_subthread_of is null'),
@@ -159,16 +214,31 @@ class Thread {
 	static function allThreadsOfArticle( $article ) {
 		return Thread::threadsWhere( array('thread_article' => $article->getID(),
 		                                   'thread_subthread_of is null'),
-											array('ORDER BY' => 'thread_touched DESC') );
+		                             array('ORDER BY' => 'thread_touched DESC') );
 	}
 	
-	static function threadsOfPost( $post ) {
+	static function threadsOfArticleInMonth( $article, $yyyymm ) {
+		return Thread::threadsWhere( array('thread_article' => $article->getID(),
+		                                   'thread_subthread_of is null',
+		                                   'thread_touched >= "'.Date::beginningOfMonth($yyyymm).'"',
+										   'thread_touched <= "'.Date::endOfMonth($yyyymm).'"'),
+		                             array('ORDER BY' => 'thread_touched DESC') );
+	}
+	
+	/*
+	static function threadsOfArticleInLastNDays( $article, $n ) {
+		return Thread::threadsWhere( array('thread_article' => $article->getID(),
+		                                   'thread_subthread_of is null',
+											'thread_touched > ' . 'foo' ),
+		                             array('ORDER BY' => 'thread_touched DESC' );
+	}*/
+	
+	static function threadsWhoseRootPostIs( $post ) {
 		return Thread::threadsWhere( array('thread_root_post' => $post->getID()) );
 	}
 
 	static function threadsWhere( $where_clause, $options = array() ) {
 		$dbr =& wfGetDB( DB_SLAVE );
-
 		$res = $dbr->select( array('lqt_thread'),
 		                     array('*'),
 		                     $where_clause,

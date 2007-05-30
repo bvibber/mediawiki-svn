@@ -185,6 +185,8 @@ HTML;
 		if ( $e->didSave && $subject != '' ) {
 			$thread->setSubject( Sanitizer::stripAllTags($subject) );
 		}
+		
+		if ($e->didSave) $thread->touch(); // TODO reduntent if above $thread->setX called.
 	}
 	
 	function scratchTitle() {
@@ -243,6 +245,11 @@ HTML;
 		$this->output->addHTML( wfOpenElement( 'li' ) );
 		$p = new Parser(); $sig = $p->getUserSig( $thread->rootPost()->originalAuthor() );
 		$this->output->addWikitext( $sig, false );
+		$this->output->addHTML( wfCloseElement( 'li' ) );
+		
+		$this->output->addHTML( wfOpenElement( 'li' ) );
+		$d = new Date($thread->touched());
+		$this->output->addHTML( $d->lastMonth()->text() );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
 		$commands = array( 'Edit' => $this->lqtTalkpageUrl( $this->title, 'lqt_edit_post', $thread ),
@@ -338,21 +345,55 @@ class TalkpageView extends LqtView {
 		logged-in users, don't really fit the metaphor. What to do, what to do?
 		*/
 	}
-	function show() {
-		global $wgHooks;
-		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
-		
-		$this->output->setPageTitle( "Talk:" . $this->title->getText() );
-		
+
+	function showArchive($month) {
+		$threads = Thread::threadsOfArticleInMonth( $this->article, $month );
+		foreach($threads as $t) {
+			$this->showThread($t);
+		}
+	}
+
+	function showLatest() {
 		if( $this->request->getBool('lqt_new_thread_form') ) {
 			$this->showNewThreadForm();
 		} else {
 			$url = $this->lqtTalkpageUrl( $this->title, 'lqt_new_thread_form' );
 			$this->output->addHTML("<strong><a href=\"$url\">Start a Discussion</a></strong>");
 		}
-		$threads = Thread::latestNThreadsOfArticle($this->article, 10);
+
+		$threads = Thread::latestNThreadsOfArticle($this->article, 10);		
 		foreach($threads as $t) {
 			$this->showThread($t);
+		}
+	}
+	
+	function showArchiveWidget($month) {
+		global $wgLang; // TODO global.
+		
+		$options = Thread::monthsWhereArticleHasThreads($this->article);
+		array_unshift($options, 'Last 30 days' ); # prepend.
+		
+		$this->openDiv('lqt_archive_widget');
+		$this->output->addHTML('<form><select>');
+		foreach( $options as $o ) {
+			$this->output->addHTML("<option>$o");
+		}
+		$this->output->addHTML('</select></form>');
+		$this->closeDiv();
+	}
+	
+	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		
+		$this->output->setPageTitle( "Talk:" . $this->title->getText() );
+		
+		$month = $this->request->getVal('lqt_archive_month');
+		$this->showArchiveWidget($month);
+		if ( $month ) {
+			$this->showArchive($month);
+		} else {
+			$this->showLatest();
 		}
 	}
 }
