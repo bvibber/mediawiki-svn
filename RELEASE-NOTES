@@ -42,6 +42,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 6072) Introducing 'border' keyword to the [[Image:]] syntax
 * Introducing 'frameless' keyword to [[Image:]] syntax which respects the
   user preferences for image width like 'thumb' but without a frame.
+* (bug 7960) Link to "what links here" for each "what links here" entry
 
 == Bugfixes since 1.10 ==
 
@@ -91,6 +92,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 908) Unexistent special pages now generate a red link.
 * (bug 7899) Added \hline and \vline to the list of allowed TeX commands
 * (bug 7993) support mathematical symbol classes
+* (bug 10007) Allow Block IP to work with Postgrs again.
 
 == MediaWiki API changes since 1.10 ==
 
