@@ -38,14 +38,20 @@ class LqtView {
 	protected $title;
 	protected $request;
 	
+	protected $user_colors;
+	protected $user_color_index;
+	const number_of_user_colors = 6;
+	
 	function __construct(&$output, &$article, &$title, &$user, &$request) {
 		$this->article = $article;
 		$this->output = $output;
 		$this->user = $user;
 		$this->title = $title;
 		$this->request = $request;
+		$this->user_colors = array();
+		$this->user_color_index = 1;
 	}
-	
+
 
 	/** h1, h2, h3, etc. */
 	var $headerLevel = 1;
@@ -231,7 +237,8 @@ HTML;
 	
 	function showThreadFooter( $thread ) {
 
-		$this->output->addHTML(wfOpenElement('ul', array('class'=>'lqt_footer')));
+		$color_number = $this->selectNewUserColor( $thread->rootPost()->originalAuthor() );
+		$this->output->addHTML(wfOpenElement('ul', array('class'=>"lqt_footer lqt_post_color_$color_number" )));
 
 		$this->output->addHTML( wfOpenElement( 'li' ) );
 		$p = new Parser(); $sig = $p->getUserSig( $thread->rootPost()->originalAuthor() );
@@ -251,9 +258,24 @@ HTML;
 		$this->output->addHTML(wfCloseELement('ul'));
 	}
 
+	function selectNewUserColor( $user ) {
+		$userkey = $user->isAnon() ? "anon:" . $user->getName() : "user:" . $user->getId();
+		
+		if( !array_key_exists( $userkey, $this->user_colors ) ) {
+			$this->user_colors[$userkey] = $this->user_color_index;
+			$this->user_color_index += 1;
+			if ( $this->user_color_index > self::number_of_user_colors ) {
+				$this->user_color_index = 1;
+			}
+		}
+		return $this->user_colors[$userkey];
+	}
+
 	function showRootPost( $thread ) {
 		$post = $thread->rootPost();
 		
+/*		$color_number = $this->selectNewUserColor( $thread->rootPost()->originalAuthor() );
+		$this->openDiv( "lqt_post lqt_post_color_$color_number" );*/
 		$this->openDiv( 'lqt_post' );
 		
 		if( $this->commandApplies( 'lqt_edit_post', $post ) ) {
@@ -306,6 +328,15 @@ class TalkpageView extends LqtView {
 		unset($content_actions['edit']);
 		unset($content_actions['addsection']);
 		unset($content_actions['history']);
+		unset($content_actions['watch']);
+		
+		/*
+		TODO: 
+		We could make these tabs actually follow the tab metaphor if we repointed
+		the 'history' and 'edit' tabs to the original subject page. That way 'discussion'
+		would just be one of four ways to view the article. But then those other tabs, for
+		logged-in users, don't really fit the metaphor. What to do, what to do?
+		*/
 	}
 	function show() {
 		global $wgHooks;
@@ -319,7 +350,7 @@ class TalkpageView extends LqtView {
 			$url = $this->lqtTalkpageUrl( $this->title, 'lqt_new_thread_form' );
 			$this->output->addHTML("<strong><a href=\"$url\">Start a Discussion</a></strong>");
 		}
-		$threads = Thread::allThreadsOfArticle($this->article);
+		$threads = Thread::latestNThreadsOfArticle($this->article, 10);
 		foreach($threads as $t) {
 			$this->showThread($t);
 		}
