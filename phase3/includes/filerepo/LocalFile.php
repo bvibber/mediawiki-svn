@@ -1306,6 +1306,14 @@ class Image extends LocalFile {
 		$repo = FileRepoGroup::singleton()->getLocalRepo();
 		parent::__construct( $title, $repo );
 	}
+
+	function newFromTitle( $title, $time = false ) {
+		$img = wfFindFile( $title, $time );
+		if ( !$img ) {
+			$img = wfLocalFile( $time );
+		}
+		return $img;
+	}
 }
 
 /**
