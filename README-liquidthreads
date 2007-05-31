@@ -1,0 +1,20 @@
+Hello, thanks for your interest. Please read all of this; it's short and important.
+
+This is a pre-alpha. This code is in rapid flux. It is undocumented, or doesn't yet make sense, or is confused. I am sketching. Therefore, don't report or try to fix obvious bugs; I simply haven't gotten to them yet. Also, don't commit to this branch. Instead, send me patches.
+
+Liquid Threads is going to change a lot before release. Some of the coolest features haven't appeared yet. Don't let this pre-alpha disappoint you.
+
+To try Liquid Threads, first, install MediaWiki as usual. Then, source maintenance/lqt.sql from your mysql console. Finally, add the following to the end of your LocalSettings.php:
+
+ $wgExtraNamespaces =
+ 	array(100 => "Post",
+ 	      101 => "Post_Discussion");
+
+ require_once('extensions/LqtExtension.php');
+
+How to contact me:
+davemccabe@gmail.com (email or jabber)
+davidmccabe in #mediawiki on irc.freenode.net
+
+Thanks again! Please obey all signs.
+-- ~~~~
