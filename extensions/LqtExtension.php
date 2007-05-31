@@ -87,6 +87,10 @@ class LqtView {
 	function commandAppliesToThread( $command, $thread ) {
 		return $this->request->getVal($command) == $thread->id();
 	}
+
+	function permalinkUrl( $thread ) {
+		return SpecialPage::getTitleFor('Thread', $thread->id())->getFullURL();
+	}
 	
 	/*************************
 	* Simple HTML methods    *
@@ -103,9 +107,9 @@ class LqtView {
 		$this->output->addHTML( wfCloseElement( 'div' ) );
 	}
 
-	/*******************************
-	* Output methods with logic    *
-	*******************************/
+	/************************************
+	* Editing methods (here be dragons) *
+	*************************************/
 
 	/**
 	 * Return an HTML form element whose value is gotten from the request.
@@ -194,6 +198,9 @@ HTML;
 		return Title::newFromText( "Post:$token" );
 	}
 
+	/*************************
+	* Output methods         *
+	*************************/
 
 	function showPostBody( $post ) {
 		global $wgEnableParserCache;
@@ -233,10 +240,6 @@ HTML;
 		return $title->getFullURL( $this->queryStringFromArray($query) );
 	}
 
-	function permalinkUrl( $thread ) {
-		return SpecialPage::getTitleFor('Thread', $thread->id())->getFullURL();
-	}
-	
 	function showThreadFooter( $thread ) {
 
 		$color_number = $this->selectNewUserColor( $thread->rootPost()->originalAuthor() );
