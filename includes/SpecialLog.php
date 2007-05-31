@@ -712,7 +712,7 @@ class LogViewer {
 			// Restricted types
 			if ( isset($wgLogRestrictions[$type]) ) {
 				if ( $wgUser->isAllowed( $wgLogRestrictions[$type] ) ) {
-				$out .= Xml::option( $text, $type, $selected ) . "\n";
+					$out .= Xml::option( $text, $type, $selected ) . "\n";
 				}
 			} else {
 			$out .= Xml::option( $text, $type, $selected ) . "\n";

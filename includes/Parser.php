@@ -99,11 +99,6 @@ class Parser
 	# Persistent:
 	var $mTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables;
 	
-	# Are we trying to get revs from a certain timeframe?
-	# Use $mTimeframe to set the revision to show as it was at that time
-	# Deletions/moves can cause red linkage or templates to become mere links
-	var $mTimeframe;
-
 	# Cleared with clearState():
 	var $mOutput, $mAutonumber, $mDTopen, $mStripState;
 	var $mIncludeCount, $mArgStack, $mLastSection, $mInPre;
@@ -279,7 +274,7 @@ class Parser
 	 * @param int $revid number to pass in {{REVISIONID}}
 	 * @return ParserOutput a ParserOutput
 	 */
-	public function parse( $text, &$title, $options, $linestart = true, $clearState = true, $revid = null, $timeframe=null ) {
+	public function parse( $text, &$title, $options, $linestart = true, $clearState = true, $revid = null ) {
 		/**
 		 * First pass--just handle <nowiki> sections, pass the rest off
 		 * to internalParse() which does all the real work.
@@ -296,9 +291,6 @@ class Parser
 
 		$this->mOptions = $options;
 		$this->mTitle =& $title;
-		// This variable is used for gettings Templates/Images from a certain time
-		$this->mTimeframe = $timeframe;
-		
 		$oldRevisionId = $this->mRevisionId;
 		$oldRevisionTimestamp = $this->mRevisionTimestamp;
 		if( $revid !== null ) {
@@ -408,12 +400,15 @@ class Parser
 	 * Expand templates and variables in the text, producing valid, static wikitext.
 	 * Also removes comments.
 	 */
-	function preprocess( $text, $title, $options ) {
+	function preprocess( $text, $title, $options, $revid = null ) {
 		wfProfileIn( __METHOD__ );
 		$this->clearState();
 		$this->setOutputType( OT_PREPROCESS );
 		$this->mOptions = $options;
 		$this->mTitle = $title;
+		if( $revid !== null ) {
+			$this->mRevisionId = $revid;
+		}
 		wfRunHooks( 'ParserBeforeStrip', array( &$this, &$text, &$this->mStripState ) );
 		$text = $this->strip( $text, $this->mStripState );
 		wfRunHooks( 'ParserAfterStrip', array( &$this, &$text, &$this->mStripState ) );
@@ -1807,11 +1802,15 @@ class Parser
 				$this->mOutput->addImage( $nt->getDBkey() );
 				continue;
 			} elseif( $ns == NS_SPECIAL ) {
-				$s .= $this->makeKnownLinkHolder( $nt, $text, '', $trail, $prefix );
+				if( SpecialPage::exists( $nt->getDBkey() ) ) {
+					$s .= $this->makeKnownLinkHolder( $nt, $text, '', $trail, $prefix );
+				} else {
+					$s .= $this->makeLinkHolder( $nt, $text, '', $trail, $prefix );
+				}
 				continue;
 			} elseif( $ns == NS_IMAGE ) {
-				$img = new Image( $nt );
-				if( $img->exists() ) {
+				$img = wfFindFile( $nt );
+				if( $img ) {
 					// Force a blue link if the file exists; may be a remote
 					// upload on the shared repository, and we want to see its
 					// auto-generated page.
@@ -3268,18 +3267,25 @@ class Parser
 	 * Fetch the unparsed text of a template and register a reference to it.
 	 */
 	function fetchTemplateAndtitle( $title ) {
-		$text = false;
+		$text = $skip = false;
 		$finalTitle = $title;
 		// Loop to fetch the article, with up to 1 redirect
 		for ( $i = 0; $i < 2 && is_object( $title ); $i++ ) {
-			# Are we trying to get revs from a certain timeframe?
-			if ( $this->mTimeframe ) {
-				$rev = Revision::newFromTimeframe( $title, $this->mTimeframe );
-			} else {
-				$rev = Revision::newFromTitle( $title );
+			# Give extensions a chance to select the revision instead
+			$id = false; // Assume current
+			wfRunHooks( 'BeforeParserFetchTemplateAndtitle', array( &$this, &$title, &$skip, &$id ) );
+			
+			if( $skip ) {
+				$text = false;
+				$this->mOutput->addTemplate( $title, $title->getArticleID(), 0 );
+				break;
 			}
-			$this->mOutput->addTemplate( $title, $title->getArticleID() );
-			if ( $rev ) {
+			$rev = $id ? Revision::newFromId( $id ) : Revision::newFromTitle( $title );
+			$rev_id = $rev ? $rev->getId() : 0;
+			
+			$this->mOutput->addTemplate( $title, $title->getArticleID(), $rev_id );
+			
+			if( $rev ) {
 				$text = $rev->getText();
 			} elseif( $title->getNamespace() == NS_MEDIAWIKI ) {
 				global $wgLang;
@@ -4050,6 +4056,8 @@ class Parser
 					$this->mOutput->addLink( $title, $id );
 				} elseif ( $linkCache->isBadLink( $pdbk ) ) {
 					$colours[$pdbk] = 0;
+				} elseif ( $title->getNamespace() == NS_SPECIAL && !SpecialPage::exists( $pdbk ) ) {
+					$colours[$pdbk] = 0;
 				} else {
 					# Not in the link cache, add it to the query
 					if ( !isset( $current ) ) {
@@ -4131,7 +4139,7 @@ class Parser
 				}
 
 				// process categories, check if a category exists in some variant
-				foreach( $categories as $category){
+				foreach( $categories as $category ){
 					$variants = $wgContLang->convertLinkToAllVariants($category);
 					foreach($variants as $variant){
 						if($variant != $category){
@@ -4353,6 +4361,7 @@ class Parser
 		$ig->setShowFilename( false );
 		$ig->setParsing();
 		$ig->useSkin( $this->mOptions->getSkin() );
+		$ig->mRevisionId = $this->mRevisionId;
 
 		if( isset( $params['caption'] ) ) {
 			$caption = $params['caption'];
@@ -4369,6 +4378,8 @@ class Parser
 		if( isset( $params['heights'] ) ) {
 			$ig->setHeights( $params['heights'] );
 		}
+		
+		wfRunHooks( 'parserBeforerenderImageGallery', array( &$this, &$ig ) );
 
 		$lines = explode( "\n", $text );
 		foreach ( $lines as $line ) {
@@ -4400,7 +4411,7 @@ class Parser
 			);
 			$html = $pout->getText();
 
-			$ig->add( new Image( $nt ), $html );
+			$ig->add( $nt, $html );
 
 			# Only add real images (bug #5586)
 			if ( $nt->getNamespace() == NS_IMAGE ) {
@@ -4425,7 +4436,9 @@ class Parser
 		#  * ___px		scale to ___ pixels width, no aligning. e.g. use in taxobox
 		#  * center		center the image
 		#  * framed		Keep original image size, no magnify-button.
+		#  * frameless		like 'thumb' but without a frame. Keeps user preferences for width
 		#  * upright		reduce width for upright images, rounded to full __0 px
+		#  * border		draw a 1px border around the image
 		# vertical-align values (no % or length right now):
 		#  * baseline
 		#  * sub
@@ -4448,14 +4461,14 @@ class Parser
 		$mwManualThumb =& MagicWord::get( 'img_manualthumb' );
 		$mwWidth  =& MagicWord::get( 'img_width' );
 		$mwFramed =& MagicWord::get( 'img_framed' );
+		$mwFrameless =& MagicWord::get( 'img_frameless' );
 		$mwUpright =& MagicWord::get( 'img_upright' );
+		$mwBorder =& MagicWord::get( 'img_border' );
 		$mwPage   =& MagicWord::get( 'img_page' );
 		$caption = '';
 
 		$params = array();
 		$framed = $thumb = false;
-		$upright = false;
-		$upright_factor = 0;
 		$manual_thumb = '' ;
 		$align = $valign = '';
 		$sk = $this->mOptions->getSkin();
@@ -4464,8 +4477,12 @@ class Parser
 			if ( !is_null( $mwThumb->matchVariableStartToEnd($val) ) ) {
 				$thumb=true;
 			} elseif ( !is_null( $match = $mwUpright->matchVariableStartToEnd( $val ) ) ) {
-				$upright = true;
-				$upright_factor = floatval( $match );
+				$params['upright'] = true;
+				$params['upright_factor'] = floatval( $match );
+			} elseif ( !is_null( $match = $mwFrameless->matchVariableStartToEnd( $val ) ) ) {
+				$params['frameless'] = true;
+			} elseif ( !is_null( $mwBorder->matchVariableStartToEnd( $val ) ) ) {
+				$params['border'] = true;
 			} elseif ( ! is_null( $match = $mwManualThumb->matchVariableStartToEnd($val) ) ) {
 				# use manually specified thumbnail
 				$thumb=true;
@@ -4511,9 +4528,18 @@ class Parser
 		$alt = $this->mStripState->unstripBoth( $alt );
 		$alt = Sanitizer::stripAllTags( $alt );
 
+		# Give extensions a chance to select the file revision for us
+		$link = $skip = $time = false;
+		wfRunHooks( 'BeforeParserMakeImageLinkObj', array( &$this, &$nt, &$skip, &$time ) );
+
 		# Linker does the rest
-		return $sk->makeImageLinkObj( $nt, $caption, $alt, $align, $params, $framed, $thumb, $manual_thumb, 
-			$valign, $upright, $upright_factor, $this->mTimeframe );
+		if( $skip ) {
+			$link = $sk->makeLinkObj( $nt );
+		} else {
+			$link = $sk->makeImageLinkObj( $nt, $caption, $alt, $align, $params, $framed, $thumb, $manual_thumb, $valign, $time );
+		}
+		
+		return $link;
 	}
 
 	/**

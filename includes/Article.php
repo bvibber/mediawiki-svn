@@ -371,6 +371,10 @@ class Article {
 			}
 		}
 
+		// FIXME: Horrible, horrible! This content-loading interface just plain sucks.
+		// We should instead work with the Revision object when we need it...
+		$this->mContent = $revision->userCan( Revision::DELETED_TEXT ) ? $revision->getRawText() : "";
+		//$this->mContent   = $revision->getText();
 		$this->mContent   = $revision->revText(); // Loads if user is allowed
 
 		$this->mUser      = $revision->getUser();

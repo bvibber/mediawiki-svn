@@ -139,10 +139,10 @@ class PageArchive {
 	}
 	
 	function getRevisionConds( $timestamp, $id ) {
-		if ( $id ) {
+		if( $id ) {
 			$id = intval($id);
 			return "ar_rev_id=$id";
-		} else if ( $timestamp ) {
+		} else if( $timestamp ) {
 			return "ar_timestamp=$timestamp";
 		} else {
 			return 'ar_rev_id=0';
@@ -277,7 +277,7 @@ class PageArchive {
 		}
 		
 		if( $restoreFiles && $filetimestamp >= 0 && $this->title->getNamespace() == NS_IMAGE ) {
-			$img = new Image( $this->title );
+			$img = wfLocalFile( $this->title );
 			$filesRestored = $img->restore( $filetimestamp, $Unsuppress );
 		} else {
 			$filesRestored = 0;
@@ -349,7 +349,7 @@ class PageArchive {
 				array( 'rev_page' => $pageId ),
 				__METHOD__ );
 			
-			if ( $row = $dbw->fetchObject($result) ) {
+			if( $row = $dbw->fetchObject($result) ) {
 				$previousTimestamp = $row->latest;
 				$previousCreated   = $row->created;
 			} else {
@@ -396,7 +396,7 @@ class PageArchive {
 		$ret = $dbw->resultObject( $result );
 		
 		$rev_count = $dbw->numRows( $result );	
-		if ( $rev_count ) {
+		if( $rev_count ) {
 			# We need to seek around as just using DESC in the ORDER BY
 			# would leave the revisions inserted in the wrong order
 			$first = $ret->fetchObject();
@@ -509,8 +509,7 @@ class UndeleteForm {
 		$this->mDiff = $request->getVal( 'diff' );
 		$this->mOldid = $request->getVal( 'oldid' );
 		
-		$posted = $request->wasPosted() &&
-			$wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );
+		$posted = $request->wasPosted() && $wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );
 		$this->mRestore = $request->getCheck( 'restore' ) && $posted;
 		$this->mPreview = $request->getCheck( 'preview' ) && $posted;
 		$this->mComment = $request->getText( 'wpComment' );
@@ -520,21 +519,21 @@ class UndeleteForm {
 			$this->mTarget = $par;
 			$_GET['target'] = $par; // hack for Pager
 		}
-		if ( $wgUser->isAllowed( 'delete' ) && !$wgUser->isBlocked() ) {
+		if( $wgUser->isAllowed( 'delete' ) && !$wgUser->isBlocked() ) {
 			$this->mAllowed = true;
 		} else {
 			$this->mAllowed = false;
 			$this->mTimestamp = '';
 			$this->mRestore = false;
 		}
-		if ( $this->mTarget !== "" ) {
+		if( $this->mTarget !== "" ) {
 			$this->mTargetObj = Title::newFromURL( $this->mTarget );
 		} else {
 			$this->mTargetObj = NULL;
 		}
 		if( $this->mRestore ) {
-			$this->mFileTimestamp = $request->getVal('imgrestorepoint');
-			$this->mPageTimestamp = $request->getVal('restorepoint');
+			$this->mFileTimestamp = $request->getInt('imgrestorepoint');
+			$this->mPageTimestamp = $request->getInt('restorepoint');
 		}
 		$this->preCacheMessages();
 	}
@@ -554,7 +553,7 @@ class UndeleteForm {
 
 	function execute() {
 		global $wgOut, $wgUser;
-		if ( $this->mAllowed ) {
+		if( $this->mAllowed ) {
 			$wgOut->setPagetitle( wfMsgHtml( "undeletepage" ) );
 		} else {
 			$wgOut->setPagetitle( wfMsgHtml( "viewdeletedpage" ) );
@@ -562,7 +561,7 @@ class UndeleteForm {
 		
 		if( is_null( $this->mTargetObj ) ) {
 		# Not all users can just browse every deleted page from the list
-			if ( $wgUser->isAllowed( 'browsearchive' ) ) {
+			if( $wgUser->isAllowed( 'browsearchive' ) ) {
 				$this->showSearchForm();
 
 				# List undeletable articles
@@ -579,13 +578,13 @@ class UndeleteForm {
 			return $this->showRevision( $this->mTimestamp );
 		}
 		
-		if ( $this->mDiff && $this->mOldid )
+		if( $this->mDiff && $this->mOldid )
 			return $this->showDiff( $this->mDiff, $this->mOldid );
 		
 		if( $this->mFile !== null ) {
 			$file = new ArchivedFile( $this->mTargetObj, '', $this->mFile );
 			// Check if user is allowed to see this file
-			if ( !$file->userCan( Image::DELETED_FILE ) ) {
+			if( !$file->userCan( File::DELETED_FILE ) ) {
 				$wgOut->permissionRequired( 'hiderevision' ); 
 				return false;
 			} else {
@@ -727,7 +726,7 @@ class UndeleteForm {
 	private function showDiff( $newid, $oldid ) {
 		global $wgOut, $wgUser, $wgLang;
 	
-		if ( is_null($this->mTargetObj) )
+		if( is_null($this->mTargetObj) )
 			return;
 		$skin = $wgUser->getSkin();
 		
@@ -735,7 +734,7 @@ class UndeleteForm {
 		$oldRev = $archive->getRevision( null, $oldid );
 		$newRev = $archive->getRevision( null, $newid );
 		
-		if ( !$oldRev || !$newRev )
+		if( !$oldRev || !$newRev )
 			return;
 			
 		$oldTitle = $this->mTargetObj->getPrefixedText();
@@ -743,12 +742,12 @@ class UndeleteForm {
 		
 		$oldminor = $newminor = '';
 		
-		if ($oldRev->mMinorEdit == 1) {
+		if($oldRev->mMinorEdit == 1) {
 			$oldminor = wfElement( 'span', array( 'class' => 'minor' ),
 				wfMsg( 'minoreditletter') ) . ' ';
 		}
 
-		if ($newRev->mMinorEdit == 1) {
+		if($newRev->mMinorEdit == 1) {
 			$newminor = wfElement( 'span', array( 'class' => 'minor' ),
 			wfMsg( 'minoreditletter') ) . ' ';
 		}
@@ -807,7 +806,7 @@ class UndeleteForm {
 		global $wgLang, $wgUser, $wgOut;
 
 		$this->sk = $wgUser->getSkin();
-		if ( $this->mAllowed ) {
+		if( $this->mAllowed ) {
 			$wgOut->setPagetitle( wfMsg( "undeletepage" ) );
 		} else {
 			$wgOut->setPagetitle( wfMsg( 'viewdeletedpage' ) );
@@ -815,7 +814,7 @@ class UndeleteForm {
 
 		$archive = new PageArchive( $this->mTargetObj );
 
-		if ( $this->mAllowed ) {
+		if( $this->mAllowed ) {
 			$wgOut->addWikiText( '<p>' . wfMsgHtml( "undeletehistory" ) . '</p>' );
 			$wgOut->addHtml( '<p>' . wfMsgHtml( "undeleterevdel" ) . '</p>' );
 		} else {
@@ -840,7 +839,7 @@ class UndeleteForm {
 			$files->seek( 0 );
 		}
 
-		if ( $this->mAllowed ) {
+		if( $this->mAllowed ) {
 			$titleObj = SpecialPage::getTitleFor( "Undelete" );
 			$action = $titleObj->getLocalURL( "action=submit" );
 			# Start the form here
@@ -857,7 +856,7 @@ class UndeleteForm {
 						   'type' => 'delete' ) ) ) );
 		$logViewer->showList( $wgOut );
 		# Show relevant lines from the oversight log if user is allowed to see it:
-		if ( $wgUser->isAllowed( 'oversight' ) ) {
+		if( $wgUser->isAllowed( 'oversight' ) ) {
 			$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'oversight' ) ) . "</h2>\n" );
 			$logViewer = new LogViewer(
 				new LogReader(
@@ -873,7 +872,7 @@ class UndeleteForm {
 			$table .= '<td colspan="2">' . wfMsgWikiHtml( 'undeleteextrahelp' ) . '</td></tr><tr>';
 			$table .= '<td align="right"><strong>' . wfMsgHtml( 'undeletecomment' ) . '</strong></td>';
 			$table .= '<td>' . wfInput( 'wpComment', 50, $this->mComment ) . '</td>';
-			if ( $wgUser->isAllowed( 'oversight' ) ) {
+			if( $wgUser->isAllowed( 'oversight' ) ) {
 				$table .= '</tr><tr><td>&nbsp;</td><td>';
 				$table .= Xml::checkLabel( wfMsg( 'revdelete-unsuppress' ), 'wpUnsuppress', 'wpUnsuppress', false, array( 'tabindex' => '2' ) );
 			}
@@ -905,7 +904,7 @@ class UndeleteForm {
 			$wgOut->addHTML( "<li>" . wfRadio( "imgrestorepoint", -1, false ) . " " . wfMsgHtml('restorenone') . "</li>" );
 			while( $row = $files->fetchObject() ) {
 				$ts = wfTimestamp( TS_MW, $row->fa_timestamp );
-				if ( $this->mAllowed && $row->fa_storage_key ) {
+				if( $this->mAllowed && $row->fa_storage_key ) {
 					$checkBox = wfRadio( "imgrestorepoint", $ts, false );
 					$key = urlencode( $row->fa_storage_key );
 					$target = urlencode( $this->mTarget );
@@ -926,7 +925,7 @@ class UndeleteForm {
 				$rd='';
 				if( $wgUser->isAllowed( 'deleterevision' ) ) {
 					$revdel = SpecialPage::getTitleFor( 'Revisiondelete' );
-					if( !$this->userCan( $row, Image::DELETED_RESTRICTED ) ) {
+					if( !$this->userCan( $row, File::DELETED_RESTRICTED ) ) {
 					// If revision was hidden from sysops
 						$del = $this->message['rev-delundel'];
 					} else {
@@ -935,7 +934,7 @@ class UndeleteForm {
 							'target=' . urlencode( $this->mTarget ) .
 							'&fileid=' . urlencode( $row->fa_id ) );
 						// Bolden oversighted content
-						if( $this->isDeleted( $row, Image::DELETED_RESTRICTED ) )
+						if( $this->isDeleted( $row, File::DELETED_RESTRICTED ) )
 							$del = "<strong>$del</strong>";
 					}
 					$rd = "<tt>(<small>$del</small>)</tt>";
@@ -946,7 +945,7 @@ class UndeleteForm {
 			$wgOut->addHTML( "</ul>" );
 		}
 		
-		if ( $this->mAllowed ) {
+		if( $this->mAllowed ) {
 			# Slip in the hidden controls here
 			$misc  = wfHidden( 'target', $this->mTarget );
 			$misc .= wfHidden( 'wpEditToken', $wgUser->editToken() );
@@ -962,15 +961,15 @@ class UndeleteForm {
 		$stxt = ''; 
 		$last = $this->message['last'];
 		// We don't handle top edits with rev_deleted 
-		if ( $this->mAllowed ) {
+		if( $this->mAllowed ) {
 			$ts = wfTimestamp( TS_MW, $row->ar_timestamp );
 			$checkBox = wfRadio( "restorepoint", $ts, false );
 			$titleObj = SpecialPage::getTitleFor( "Undelete" );
 			$pageLink = $this->getPageLink( $row, $titleObj, $ts, $this->mTarget );
 			# Last link
-			if ( !$this->userCan( $row, Revision::DELETED_TEXT ) )
+			if( !$this->userCan( $row, Revision::DELETED_TEXT ) )
 				$last = $this->message['last'];
-			else if ( isset($this->prevId[$row->ar_rev_id]) )
+			else if( isset($this->prevId[$row->ar_rev_id]) )
 				$last = $this->sk->makeKnownLinkObj( $titleObj, $this->message['last'], "target=" . $this->mTarget .
 				"&diff=" . $row->ar_rev_id . "&oldid=" . $this->prevId[$row->ar_rev_id] );
 		} else {
@@ -979,8 +978,8 @@ class UndeleteForm {
 		}
 		
 		$userLink = $this->getUser( $row );
-		if (!is_null($size = $row->ar_len)) {
-			if ($size == 0)
+		if(!is_null($size = $row->ar_len)) {
+			if($size == 0)
 				$stxt = wfMsgHtml('historyempty');
 			else
 				$stxt = wfMsgHtml('historysize', $wgLang->formatNum( $size ) );
@@ -1018,11 +1017,11 @@ class UndeleteForm {
 	function getPageLink( $row, $titleObj, $ts, $target ) {
 		global $wgLang;
 		
-		if ( !$this->userCan($row, Revision::DELETED_TEXT) ) {
+		if( !$this->userCan($row, Revision::DELETED_TEXT) ) {
 			return '<span class="history-deleted">' . $wgLang->timeanddate( $ts, true ) . '</span>';
 		} else {
 			$link = $this->sk->makeKnownLinkObj( $titleObj, $wgLang->timeanddate( $ts, true ), "target=$target&timestamp=$ts" );
-			if ( $this->isDeleted($row, Revision::DELETED_TEXT) )
+			if( $this->isDeleted($row, Revision::DELETED_TEXT) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
 		}
@@ -1035,11 +1034,11 @@ class UndeleteForm {
 	function getFileLink( $row, $titleObj, $ts, $target, $key ) {
 		global $wgLang;
 
-		if ( !$this->userCan($row, Image::DELETED_FILE) ) {
+		if( !$this->userCan($row, File::DELETED_FILE) ) {
 			return '<span class="history-deleted">' . $wgLang->timeanddate( $ts, true ) . '</span>';
 		} else {
 			$link = $this->sk->makeKnownLinkObj( $titleObj, $wgLang->timeanddate( $ts, true ), "target=$target&file=$key" );
-			if ( $this->isDeleted($row, Image::DELETED_FILE) )
+			if( $this->isDeleted($row, File::DELETED_FILE) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
 		}
@@ -1050,11 +1049,11 @@ class UndeleteForm {
 	 * @return string
 	 */
 	function getUser( $row ) {	
-		if ( !$this->userCan($row, Revision::DELETED_USER) ) {
+		if( !$this->userCan($row, Revision::DELETED_USER) ) {
 			return '<span class="history-deleted">' . wfMsgHtml( 'rev-deleted-user' ) . '</span>';
 		} else {
 			$link = $this->sk->userLink( $row->ar_user, $row->ar_user_text ) . $this->sk->userToolLinks( $row->ar_user, $row->ar_user_text );
-			if ( $this->isDeleted($row, Revision::DELETED_USER) )
+			if( $this->isDeleted($row, Revision::DELETED_USER) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
 		}
@@ -1065,11 +1064,11 @@ class UndeleteForm {
 	 * @return string
 	 */
 	function getFileUser( $row ) {	
-		if ( !$this->userCan($row, Image::DELETED_USER) ) {
+		if( !$this->userCan($row, File::DELETED_USER) ) {
 			return '<span class="history-deleted">' . wfMsgHtml( 'rev-deleted-user' ) . '</span>';
 		} else {
 			$link = $this->sk->userLink( $row->fa_user, $row->fa_user_text ) . $this->sk->userToolLinks( $row->fa_user, $row->fa_user_text );
-			if ( $this->isDeleted($row, Image::DELETED_USER) )
+			if( $this->isDeleted($row, File::DELETED_USER) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
 		}
@@ -1080,11 +1079,11 @@ class UndeleteForm {
 	 * @return string
 	 */
 	function getComment( $row ) {
-		if ( !$this->userCan($row, Revision::DELETED_COMMENT) ) {
+		if( !$this->userCan($row, Revision::DELETED_COMMENT) ) {
 			return '<span class="history-deleted"><span class="comment">' . wfMsgHtml( 'rev-deleted-comment' ) . '</span></span>';
 		} else {
 			$link = $this->sk->commentBlock( $row->ar_comment );
-			if ( $this->isDeleted($row, Revision::DELETED_COMMENT) )
+			if( $this->isDeleted($row, Revision::DELETED_COMMENT) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
 		}
@@ -1095,11 +1094,11 @@ class UndeleteForm {
 	 * @return string
 	 */
 	function getFileComment( $row ) {
-		if ( !$this->userCan($row, Image::DELETED_COMMENT) ) {
+		if( !$this->userCan($row, File::DELETED_COMMENT) ) {
 			return '<span class="history-deleted"><span class="comment">' . wfMsgHtml( 'rev-deleted-comment' ) . '</span></span>';
 		} else {
 			$link = $this->sk->commentBlock( $row->fa_description );
-			if ( $this->isDeleted($row, Image::DELETED_COMMENT) )
+			if( $this->isDeleted($row, File::DELETED_COMMENT) )
 				$link = '<span class="history-deleted">' . $link . '</span>';
 			return $link;
 		}
@@ -1111,10 +1110,10 @@ class UndeleteForm {
 	 * @return bool
 	 */
 	function isDeleted( $row, $field ) {
-		if ( isset($row->ar_deleted) )
+		if( isset($row->ar_deleted) )
 		// page revisions
 			return ($row->ar_deleted & $field) == $field;
-		else if ( isset($row->fa_deleted) )
+		else if( isset($row->fa_deleted) )
 		// files
 			return ($row->fa_deleted & $field) == $field;
 		return false;
@@ -1138,7 +1137,7 @@ class UndeleteForm {
 			return $wgUser->isAllowed( $permission );
 		} else if( isset($row->fa_deleted) && ($row->fa_deleted & $field) == $field ) {
 		// files
-			$permission = ( $row->fa_deleted & Image::DELETED_RESTRICTED ) == Image::DELETED_RESTRICTED
+			$permission = ( $row->fa_deleted & File::DELETED_RESTRICTED ) == File::DELETED_RESTRICTED
 				? 'hiderevision'
 				: 'deleterevision';
 			wfDebug( "Checking for $permission due to $field match on $row->fa_deleted\n" );
@@ -1197,9 +1196,9 @@ class UndeleteRevisionsPager extends ReverseChronologicalPager {
 			$rev_id = isset($rev_id) ? $rev_id : $row->ar_rev_id;
 			$batch->addObj( Title::makeTitleSafe( NS_USER, $row->ar_user_text ) );
 			$batch->addObj( Title::makeTitleSafe( NS_USER_TALK, $row->ar_user_text ) );
-			if ( $rev_id > $row->ar_rev_id )
+			if( $rev_id > $row->ar_rev_id )
 				$this->mForm->prevId[$rev_id] = $row->ar_rev_id;
-			else if ( $rev_id < $row->ar_rev_id )
+			else if( $rev_id < $row->ar_rev_id )
 				$this->mForm->prevId[$row->ar_rev_id] = $rev_id;
 			
 			$rev_id = $row->ar_rev_id;

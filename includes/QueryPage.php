@@ -332,6 +332,8 @@ class QueryPage {
 		$num = $dbr->numRows($res);
 
 		$this->preprocessResults( $dbr, $res );
+
+		$wgOut->addHtml( XML::openElement( 'div', array('class' => 'mw-spcontent') ) );
 		
 		# Top header and navigation
 		if( $shownavigation ) {
@@ -346,6 +348,7 @@ class QueryPage {
 				# No results to show, so don't bother with "showing X of Y" etc.
 				# -- just let the user know and give up now
 				$wgOut->addHtml( '<p>' . wfMsgHtml( 'specialpage-empty' ) . '</p>' );
+				$wgOut->addHtml( XML::closeElement( 'div' ) );
 				return;
 			}
 		}
@@ -364,6 +367,8 @@ class QueryPage {
 		if( $shownavigation ) {
 			$wgOut->addHtml( '<p>' . $paging . '</p>' );
 		}
+
+		$wgOut->addHtml( XML::closeElement( 'div' ) );
 		
 		return $num;
 	}
@@ -427,11 +432,11 @@ class QueryPage {
 	}
 	
 	function openList( $offset ) {
-		return "<ol start='" . ( $offset + 1 ) . "' class='special'>";
+		return "\n<ol start='" . ( $offset + 1 ) . "' class='special'>\n";
 	}
 	
 	function closeList() {
-		return '</ol>';
+		return "</ol>\n";
 	}
 
 	/**

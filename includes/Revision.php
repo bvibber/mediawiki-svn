@@ -49,79 +49,6 @@ class Revision {
 			       'page_namespace' => $title->getNamespace(),
 			       'page_title'     => $title->getDbkey() ) );
 	}
-	
-	/**
-	 * Gets the revision that was current at said time
-	 * as accurately as possible. Archiving of individual 
-	 * revisions can cause this to become borked.
-	 * --Use of rev_deleted instead avoids that.
-	 * History merges can break this
-	 * --Requiring either all restored revs to be all newer
-	 * --or all older to than those of the live page avoids that.
-	 *
-	 * --Also, if a page has archived revs, deletion should have
-	 * --the same limitations
-	 *
-	 * @param Database $db
-	 * @param Title $title
- 	 * @param timestamp $timeframe, desired view time
-	 * @return Revision
-	 * @access public
-	 * @static
-	 */	
-	public static function newFromTimeframe( &$title, $timeframe ) {
-		$relocated = true; // Assume true to begin with
-		$isdeleted = false;
-		$id = 0;
-		
-		$dbr = wfGetDB( DB_SLAVE );
-		// Initial query conds...
-		$d = "log_action='delete'";
-		$r = '1 = 0'; // we don't care if it was restored yet
-		$m = "log_action='move'";
-		// Recursively check logs for page moves since $timeframe...
-		while( $relocated ) {
-			$result = $dbr->select( 'logging', array('log_params', 'log_action', 'log_id'),
-				array("log_timestamp >= $timeframe", "log_id > $id",
-					'log_namespace' => $title->getNamespace(), 'log_title' => $title->getDbkey(),
-					"($m) OR ($d) OR ($r)"),
-				__METHOD__,
-				array('ORDER BY' => 'log_timestamp ASC', 'LIMIT' => 1) );
-			if( $row = $dbr->fetchObject($result) ) {
-				// Was it deleted?
-				if( $row->log_action=='delete' ) {
-					$isdeleted = true;
-					$d = '1 = 0';
-					$r = "log_action='restore'";
-					$m = '1 = 0';
-				// Was it restored?
-				} else if( $row->log_action=='restore' ) {
-					// Check the restore point (format is <page time>\n<image time>)
-					$restpoints = explode('\n',$row->log_params);
-					if( $restpoints[0] >= 0 && $restpoints[0] <= $timeframe ) {
-						$isdeleted = false; // our desired revision was restored
-						$d = "log_action='delete'"; 
-						$r = '1 = 0'; 
-						$m = "log_action='move'";
-					}
-				// Was it moved?
-				} else {
-					$title = Title::newFromText( $row->log_params ); // New name is stored here
-				}
-				$id = $row->log_id;
-			} else if( $isdeleted ) {
-				return null;
-			} else {
-				$relocated = false;
-			}
-		}
-		// Fetch the revision
-		return Revision::newFromConds(
-			array( "rev_timestamp < $timeframe",
-			       'page_id=rev_page',
-			       'page_namespace' => $title->getNamespace(),
-			       'page_title'     => $title->getDbkey() ) );
-	}
 
 	/**
 	 * Load a page revision from a given revision ID number.
@@ -315,7 +242,7 @@ class Revision {
 			       'rev_len' ),
 			$conditions,
 			'Revision::fetchRow',
-			array( 'ORDER BY' => 'rev_id DESC', 'LIMIT' => 1 ) );
+			array( 'LIMIT' => 1 ) );
 		$ret = $db->resultObject( $res );
 		return $ret;
 	}

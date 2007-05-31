@@ -275,6 +275,30 @@ class SpecialPage
 	}
 
 	/**
+	 * Check if a given name exist as a special page or as a special page alias
+	 * @param $name string: name of a special page
+	 * @return boolean: true if a special page exists with this name
+	 */
+	static function exists( $name ) {
+		global $wgContLang;
+		if ( !self::$mListInitialised ) {
+			self::initList();
+		}
+		if( !self::$mAliases ) {
+			self::initAliasList();
+		}
+
+		# Remove special pages inline parameters:
+		$bits = explode( '/', $name );
+		$name = $wgContLang->caseFold($bits[0]);
+
+		return
+			array_key_exists( $name, self::$mList )
+			or array_key_exists( $name, self::$mAliases )
+		;
+	}
+
+	/**
 	 * Find the object with a given name and return it (or NULL)
 	 * @static
 	 * @param string $name
@@ -423,7 +447,7 @@ class SpecialPage
 			wfProfileOut( __METHOD__ );
 			return false;
 		} elseif ( !$including ) {
-			$wgTitle = $page->getTitle( $par );
+			$wgTitle = $page->getTitle();
 		}
 		$page->including( $including );
 

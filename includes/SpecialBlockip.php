@@ -61,7 +61,7 @@ class IPBlockForm {
 		$this->BlockCreateAccount = $wgRequest->getBool( 'wpCreateAccount', $byDefault );
 		$this->BlockEnableAutoblock = $wgRequest->getBool( 'wpEnableAutoblock', $byDefault );
 		# Re-check user's rights to hide names, very serious, defaults to 0
-		$this->BlockHideName = $wgRequest->getBool( 'wpHideName', 0 ) && $wgUser->isAllowed( 'hideuser' );
+		$this->BlockHideName = ( $wgRequest->getBool( 'wpHideName', 0 ) && $wgUser->isAllowed( 'hideuser' ) ) ? 1 : 0;
 	}
 
 	function showForm( $err ) {
@@ -196,7 +196,8 @@ class IPBlockForm {
 			<td align=\"$alignRight\">{$mIpbreason}</td>
 			<td>
 				" . Xml::input( 'wpBlockReason', 45, $this->BlockReason,
-					array( 'tabindex' => '5', 'id' => 'mw-bi-reason' ) ) . "
+					array( 'tabindex' => '5', 'id' => 'mw-bi-reason',
+			       		       'maxlength'=> '200' ) ) . "
 			</td>
 		</tr>
 		<tr id='wpAnonOnlyRow'>

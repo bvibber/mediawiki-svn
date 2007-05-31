@@ -218,6 +218,19 @@ class Linker {
 			$retVal = $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix );
 		} else {
 			wfProfileIn( $fname.'-immediate' );
+
+			# Handles links to special pages wich do not exist in the database:
+			if( $nt->getNamespace() == NS_SPECIAL ) {
+				if( SpecialPage::exists( $nt->getDbKey() ) ) {
+					$retVal = $this->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix );
+				} else {
+					$retVal = $this->makeBrokenLinkObj( $nt, $text, $query, $trail, $prefix );
+				}
+				wfProfileOut( $fname.'-immediate' );
+				wfProfileOut( $fname );
+				return $retVal;
+			}
+
 			# Work out link colour immediately
 			$aid = $nt->getArticleID() ;
 			if ( 0 == $aid ) {
@@ -318,7 +331,9 @@ class Linker {
 		$fname = 'Linker::makeBrokenLinkObj';
 		wfProfileIn( $fname );
 
-		if ( '' == $query ) {
+		if( $nt->getNamespace() == NS_SPECIAL ) {
+			$q = $query;
+		} else if ( '' == $query ) {
 			$q = 'action=edit';
 		} else {
 			$q = 'action=edit&'.$query;
@@ -412,15 +427,27 @@ class Linker {
 		return $s;
 	}
 
-	/** @todo document */
+	/** Creates the HTML source for images
+	* @param object $nt
+	* @param string $label label text
+	* @param string $alt alt text
+	* @param string $align horizontal alignment: none, left, center, right)
+	* @param array $params some format keywords: width, height, page, upright, upright_factor, frameless, border
+	* @param boolean $framed shows image in original size in a frame
+	* @param boolean $thumb shows image as thumbnail in a frame
+	* @param string $manual_thumb image name for the manual thumbnail
+	* @param string $valign vertical alignment: baseline, sub, super, top, text-top, middle, bottom, text-bottom
+	* @return string
+	*/
 	function makeImageLinkObj( $nt, $label, $alt, $align = '', $params = array(), $framed = false,
-	  $thumb = false, $manual_thumb = '', $valign = '', $upright = false, $upright_factor = 0, $timeframe=null )
+	  $thumb = false, $manual_thumb = '', $valign = '', $time = false )
 	{
 		global $wgContLang, $wgUser, $wgThumbLimits, $wgThumbUpright;
 
-		$img   = new Image( $nt, $timeframe );
+		$img = wfFindFile( $nt, $time );
 
-		if ( !$img->allowInlineDisplay() && $img->exists() ) {
+		if ( $img && !$img->allowInlineDisplay() ) {
+			wfDebug( __METHOD__.': '.$nt->getPrefixedDBkey()." does not allow inline display\n" );
 			return $this->makeKnownLinkObj( $nt );
 		}
 
@@ -433,10 +460,9 @@ class Linker {
 			$postfix = '</div>';
 			$align   = 'none';
 		}
-
-		if ( !isset( $params['width'] ) ) {
+		if ( $img && !isset( $params['width'] ) ) {
 			$params['width'] = $img->getWidth( $page );
-			if( $thumb || $framed ) {
+			if( $thumb || $framed || isset( $params['frameless'] ) ) {
 				$wopt = $wgUser->getOption( 'thumbsize' );
 
 				if( !isset( $wgThumbLimits[$wopt] ) ) {
@@ -444,12 +470,12 @@ class Linker {
 				}
 
 				// Reduce width for upright images when parameter 'upright' is used
-				if ( $upright_factor == 0 ) {
-					$upright_factor = $wgThumbUpright;
+				if ( !isset( $params['upright_factor'] ) || $params['upright_factor'] == 0 ) {
+					$params['upright_factor'] = $wgThumbUpright;
 				}
 				// Use width which is smaller: real image width or user preference width
 				// For caching health: If width scaled down due to upright parameter, round to full __0 pixel to avoid the creation of a lot of odd thumbs
-				$params['width'] = min( $params['width'], $upright ? round( $wgThumbLimits[$wopt] * $upright_factor, -1 ) : $wgThumbLimits[$wopt] );
+				$params['width'] = min( $params['width'], isset( $params['upright'] ) ? round( $wgThumbLimits[$wopt] * $params['upright_factor'], -1 ) : $wgThumbLimits[$wopt] );
 			}
 		}
 
@@ -465,10 +491,10 @@ class Linker {
 			if ( $align == '' ) {
 				$align = $wgContLang->isRTL() ? 'left' : 'right';
 			}
-			return $prefix.$this->makeThumbLinkObj( $img, $label, $alt, $align, $params, $framed, $manual_thumb, $upright ).$postfix;
+			return $prefix.$this->makeThumbLinkObj( $nt, $img, $label, $alt, $align, $params, $framed, $manual_thumb ).$postfix;
 		}
 
-		if ( $params['width'] && $img->exists() ) {
+		if ( $img && $params['width'] ) {
 			# Create a resized image, without the additional thumbnail features
 			$thumb = $img->transform( $params );
 		} else {
@@ -485,8 +511,12 @@ class Linker {
 			'alt' => $alt,
 			'longdesc' => $u
 		);
+
 		if ( $valign ) {
 			$imgAttribs['style'] = "vertical-align: $valign";
+		}
+		if ( isset( $params['border'] ) ) {
+			$imgAttribs['class'] = "thumbborder";
 		}
 		$linkAttribs = array(
 			'href' => $u,
@@ -495,7 +525,7 @@ class Linker {
 		);
 
 		if ( !$thumb ) {
-			$s = $this->makeBrokenImageLinkObj( $img->getTitle() );
+			$s = $this->makeBrokenImageLinkObj( $nt );
 		} else {
 			$s = $thumb->toHtml( $imgAttribs, $linkAttribs );
 		}
@@ -507,57 +537,68 @@ class Linker {
 
 	/**
 	 * Make HTML for a thumbnail including image, border and caption
-	 * $img is an Image object
+	 * @param Title $nt 
+	 * @param Image $img Image object or false if it doesn't exist
 	 */
-	function makeThumbLinkObj( $img, $label = '', $alt, $align = 'right', $params = array(), $framed=false , $manual_thumb = "", $upright = false ) {
+	function makeThumbLinkObj( Title $nt, $img, $label = '', $alt, $align = 'right', $params = array(), $framed=false , $manual_thumb = "" ) {
 		global $wgStylePath, $wgContLang;
+		$exists = $img && $img->exists();
 
 		$page = isset( $params['page'] ) ? $params['page'] : false;
 
 		if ( empty( $params['width'] ) ) {
 			// Reduce width for upright images when parameter 'upright' is used 
-			$params['width'] = $upright ? 130 : 180;
+			$params['width'] = isset( $params['upright'] ) ? 130 : 180;
 		}
 		$thumb = false;
-		if ( $manual_thumb != '' ) {
-			# Use manually specified thumbnail
-			$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb );
-			if( $manual_title ) {
-				$manual_img = new Image( $manual_title );
-				$thumb = $manual_img->getUnscaledThumb();
-			}
-		} elseif ( $framed ) {
-			// Use image dimensions, don't scale
-			$thumb = $img->getUnscaledThumb( $page );
-		} else {
-			# Do not present an image bigger than the source, for bitmap-style images
-			# This is a hack to maintain compatibility with arbitrary pre-1.10 behaviour
-			$srcWidth = $img->getWidth( $page );
-			if ( $srcWidth && !$img->mustRender() && $params['width'] > $srcWidth ) {
-				$params['width'] = $srcWidth;
-			}
-			$thumb = $img->transform( $params );
-		}
 
-		if ( $thumb ) {
-			$outerWidth = $thumb->getWidth() + 2;
-		} else {
+		if ( !$exists ) {
 			$outerWidth = $params['width'] + 2;
+		} else {
+			if ( $manual_thumb != '' ) {
+				# Use manually specified thumbnail
+				$manual_title = Title::makeTitleSafe( NS_IMAGE, $manual_thumb );
+				if( $manual_title ) {
+					$manual_img = wfFindFile( $manual_title );
+					if ( $manual_img ) {
+						$thumb = $manual_img->getUnscaledThumb();
+					} else {
+						$exists = false;
+					}
+				}
+			} elseif ( $framed ) {
+				// Use image dimensions, don't scale
+				$thumb = $img->getUnscaledThumb( $page );
+			} else {
+				# Do not present an image bigger than the source, for bitmap-style images
+				# This is a hack to maintain compatibility with arbitrary pre-1.10 behaviour
+				$srcWidth = $img->getWidth( $page );
+				if ( $srcWidth && !$img->mustRender() && $params['width'] > $srcWidth ) {
+					$params['width'] = $srcWidth;
+				}
+				$thumb = $img->transform( $params );
+			}
+
+			if ( $thumb ) {
+				$outerWidth = $thumb->getWidth() + 2;
+			} else {
+				$outerWidth = $params['width'] + 2;
+			}
 		}
 
 		$query = $page ? 'page=' . urlencode( $page ) : '';
-		$u = $img->getTitle()->getLocalURL( $query );
+		$u = $nt->getLocalURL( $query );
 
 		$more = htmlspecialchars( wfMsg( 'thumbnail-more' ) );
 		$magnifyalign = $wgContLang->isRTL() ? 'left' : 'right';
 		$textalign = $wgContLang->isRTL() ? ' style="text-align:right"' : '';
 
 		$s = "<div class=\"thumb t{$align}\"><div class=\"thumbinner\" style=\"width:{$outerWidth}px;\">";
-		if ( !$thumb ) {
-			$s .= htmlspecialchars( wfMsg( 'thumbnail_error', '' ) );
+		if( !$exists ) {
+			$s .= $this->makeBrokenImageLinkObj( $nt );
 			$zoomicon = '';
-		} elseif( !$img->exists() ) {
-			$s .= $this->makeBrokenImageLinkObj( $img->getTitle() );
+		} elseif ( !$thumb ) {
+			$s .= htmlspecialchars( wfMsg( 'thumbnail_error', '' ) );
 			$zoomicon = '';
 		} else {
 			$imgAttribs = array(
@@ -616,10 +657,10 @@ class Linker {
 		return $s;
 	}
 
-	/** @todo document */
-	function makeMediaLink( $name, /* wtf?! */ $url, $alt = '' ) {
+	/** @deprecated use Linker::makeMediaLinkObj() */
+	function makeMediaLink( $name, $unused = '', $text = '' ) {
 		$nt = Title::makeTitleSafe( NS_IMAGE, $name );
-		return $this->makeMediaLinkObj( $nt, $alt );
+		return $this->makeMediaLinkObj( $nt, $text );
 	}
 
 	/**
@@ -637,13 +678,13 @@ class Linker {
 			### HOTFIX. Instead of breaking, return empty string.
 			return $text;
 		} else {
-			$img  = new Image( $title );
-			if( $img->exists() ) {
+			$img  = wfFindFile( $title );
+			if( $img ) {
 				$url  = $img->getURL();
 				$class = 'internal';
 			} else {
 				$upload = SpecialPage::getTitleFor( 'Upload' );
-				$url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $img->getName() ) );
+				$url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $title->getText() ) );
 				$class = 'new';
 			}
 			$alt = htmlspecialchars( $title->getText() );
@@ -790,7 +831,7 @@ class Linker {
 	
 	/**
 	 * Generate a user link if the current user is allowed to view it
-	 * @param $event, log item.
+	 * @param $event, log row item.
 	 * @param $isPublic, bool, show only if all users can see it
 	 * @return string HTML
 	 */
@@ -815,19 +856,19 @@ class Linker {
 
 	/**
 	 * Generate a user link if the current user is allowed to view it
-	 * @param ArchivedFile or OldImage $file
+	 * @param File $file
 	 * @param $isPublic, bool, show only if all users can see it
 	 * @return string HTML
 	 */
 	function fileUserLink( $file, $isPublic = false ) {
-		if( $file->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
+		if( $file->isDeleted( File::DELETED_USER ) && $isPublic ) {
 			$link = wfMsgHtml( 'rev-deleted-user' );
-		} else if( $file->userCan( Revision::DELETED_USER ) ) {
-			$link = $this->userLink( $file->mUser, $file->mUserText );
+		} else if( $file->userCan( File::DELETED_USER ) ) {
+			$link = $this->userLink( $file->user, $file->userText );
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		}
-		if( $file->isDeleted( Revision::DELETED_USER ) ) {
+		if( $file->isDeleted( File::DELETED_USER ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
 		}
 		return $link;
@@ -883,7 +924,7 @@ class Linker {
 
 	/**
 	 * Generate a user tool link cluster if the current user is allowed to view it
-	 * @param ArchivedFile or OldImage $file
+	 * @param File $file
 	 * @param $isPublic, bool, show only if all users can see it
 	 * @return string HTML
 	 */
@@ -891,8 +932,8 @@ class Linker {
 		if( $file->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		} else if( $file->userCan( Revision::DELETED_USER ) ) {
-			$link = $this->userLink( $file->mUser, $file->mUserText ) .
-			$this->userToolLinks( $file->mUser, $file->mUserText );
+			$link = $this->userLink( $file->user, $file->userText ) .
+			$this->userToolLinks( $file->user, $file->userText );
 		} else {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		}
@@ -1094,18 +1135,18 @@ class Linker {
 	 * Wrap and format the given file's comment block, if the current
 	 * user is allowed to view it.
 	 *
-	 * @param ArchivedFile or OldImage $file
+	 * @param File $file
 	 * @return string HTML
 	 */
 	function fileComment( $file, $isPublic = false ) {
-		if( $file->isDeleted( Revision::DELETED_COMMENT ) && $isPublic ) {
+		if( $file->isDeleted( File::DELETED_COMMENT ) && $isPublic ) {
 			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
-		} else if( $file->userCan( Revision::DELETED_COMMENT ) ) {
-			$block = $this->commentBlock( $file->mDescription );
+		} else if( $file->userCan( File::DELETED_COMMENT ) ) {
+			$block = $this->commentBlock( $file->description );
 		} else {
 			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
 		}
-		if( $file->isDeleted( Revision::DELETED_COMMENT ) ) {
+		if( $file->isDeleted( File::DELETED_COMMENT ) ) {
 			return "<span class=\"history-deleted\">$block</span>";
 		}
 		return $block;

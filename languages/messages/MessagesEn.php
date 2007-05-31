@@ -282,6 +282,8 @@ $magicWords = array(
 	'img_center'             => array( 1,    'center', 'centre'       ),
 	'img_framed'             => array( 1,    'framed', 'enframed', 'frame' ),
 	'img_page'               => array( 1,    'page=$1', 'page $1'     ),
+	'img_upright'            => array( 1,    'upright', 'upright=$1', 'upright $1'  ),
+	'img_border'             => array( 1,    'border'                 ),
 	'img_baseline'           => array( 1,    'baseline'               ),
 	'img_sub'                => array( 1,    'sub'                    ),
 	'img_super'              => array( 1,    'super', 'sup'           ),
@@ -765,7 +767,9 @@ Please report this to an administrator, making note of the URL.',
 'unexpected'	=> 'Unexpected value: "$1"="$2".',
 'formerror'		=> 'Error: could not submit form',
 'badarticleerror' => 'This action cannot be performed on this page.',
-'cannotdelete'	=> 'Could not delete the page or file specified. (It may have already been deleted by someone else.)',
+'cannotdelete'	=> 'Could not delete the page or file specified. It may have already been deleted by someone else.<br/>
+Pages will not be deleted if it will result in an alternating archive history between these and any archived 
+revisions for this page. If such is the case, please move this page to another location and delete it there.',
 'badtitle'		=> 'Bad title',
 'badtitletext' => 'The requested page title was invalid, empty, or an incorrectly linked inter-language or inter-wiki title. It may contain one or more characters which cannot be used in titles.',
 'perfdisabled' => 'Sorry! This feature has been temporarily disabled because it slows the database down to the point that no one can use the wiki.',
@@ -1150,9 +1154,7 @@ for the list of currently operational bans and blocks. Note that deleted pages l
 the search function at [[Special:Undelete]].
 
 Blocked users listed here can cannot edit their talk pages and thus can only communicate via email. Their accounts 
-will remain hidden only as long as they are blocked.
-
-Content listed here should never be released to the general public unless it was hidden by mistake.',
+will remain hidden only as long as they are blocked.',
 
 # Diffs
 #
@@ -1767,7 +1769,9 @@ at the bottom of the screen (deleting a content page also deletes the accompanyi
 'enotif_subject' 	=> '{{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED by $PAGEEDITOR',
 'enotif_lastvisited' => 'See $1 for all changes since your last visit.',
 'enotif_lastdiff' => 'See $1 to view this change.',
+'enotif_anon_editor' => 'anonymous user $1',
 'enotif_body' => 'Dear $WATCHINGUSERNAME,
+	
 
 The {{SITENAME}} page $PAGETITLE has been $CHANGEDORCREATED on $PAGEEDITDATE by $PAGEEDITOR, see $PAGETITLE_URL for the current version.
 
@@ -2927,6 +2931,11 @@ Please confirm that really want to recreate this page.',
 'livepreview-ready'   => 'Loading… Ready!',
 'livepreview-failed'  => "Live preview failed!\nTry normal preview.",
 'livepreview-error'   => "Failed to connect: $1 \"$2\"\nTry normal preview.",
+
+# Friendlier slave lag warnings
+'lag-warn-normal' => 'Changes newer than $1 seconds may not be shown in this list.',
+'lag-warn-high' => 'Due to high database server lag, changes newer than $1 seconds
+may not be shown in this list.',
 
 );
 

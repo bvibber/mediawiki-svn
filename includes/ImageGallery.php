@@ -17,6 +17,7 @@ class ImageGallery
 	var $mImages, $mShowBytes, $mShowFilename;
 	var $mCaption = false;
 	var $mSkin = false;
+	var $mRevisionId = 0;
 
 	/**
 	 * Is the gallery on a wiki page (i.e. not a special page)
@@ -127,22 +128,26 @@ class ImageGallery
 	/**
 	 * Add an image to the gallery.
 	 *
-	 * @param $image Image object that is added to the gallery
+	 * @param $title Title object of the image that is added to the gallery
 	 * @param $html  String: additional HTML text to be shown. The name and size of the image are always shown.
 	 */
-	function add( $image, $html='' ) {
-		$this->mImages[] = array( &$image, $html );
-		wfDebug( "ImageGallery::add " . $image->getName() . "\n" );
+	function add( $title, $html='' ) {
+		if ( $title instanceof File ) {
+			// Old calling convention
+			$title = $title->getTitle();
+		}
+		$this->mImages[] = array( $title, $html );
+		wfDebug( "ImageGallery::add " . $title->getText() . "\n" );
 	}
 
 	/**
  	* Add an image at the beginning of the gallery.
  	*
- 	* @param $image Image object that is added to the gallery
+ 	* @param $title Title object of the image that is added to the gallery
  	* @param $html  String:  Additional HTML text to be shown. The name and size of the image are always shown.
  	*/
-	function insert( $image, $html='' ) {
-		array_unshift( $this->mImages, array( &$image, $html ) );
+	function insert( $title, $html='' ) {
+		array_unshift( $this->mImages, array( &$title, $html ) );
 	}
 
 
@@ -195,12 +200,16 @@ class ImageGallery
 		$params = array( 'width' => $this->mWidths, 'height' => $this->mHeights );
 		$i = 0;
 		foreach ( $this->mImages as $pair ) {
-			$img =& $pair[0];
+			$nt = $pair[0];
 			$text = $pair[1];
+			
+			# Give extensions a chance to select the file revision for us
+			$time = false;
+			wfRunHooks( 'BeforeGalleryFindFile', array( &$this, &$nt, &$time ) );
 
-			$nt = $img->getTitle();
+			$img = wfFindFile( $nt, $time );
 
-			if( $nt->getNamespace() != NS_IMAGE ) {
+			if( $nt->getNamespace() != NS_IMAGE || !$img ) {
 				# We're dealing with a non-image, spit out the name and be done with it.
 				$thumbhtml = "\n\t\t\t".'<div style="height: '.($this->mHeights*1.25+2).'px;">'
 					. htmlspecialchars( $nt->getText() ) . '</div>';
@@ -222,7 +231,7 @@ class ImageGallery
 			//$ul = $sk->makeLink( $wgContLang->getNsText( Namespace::getUser() ) . ":{$ut}", $ut );
 
 			if( $this->mShowBytes ) {
-				if( $img->exists() ) {
+				if( $img ) {
 					$nb = wfMsgExt( 'nbytes', array( 'parsemag', 'escape'),
 						$wgLang->formatNum( $img->getSize() ) );
 				} else {
