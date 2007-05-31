@@ -114,17 +114,17 @@ h1.lqt_header {
          font-size: smaller;
          color: #777;
 		
-//		padding-left: 0.3em; /* for post colors */
-//		border-left: 0.3em solid;
+		 /* for post colors */
+/*		padding-left: 0.3em;
+		border-left: 0.3em solid; */
 }
 
-.lqt_post_color_1 { border-left-color: #cd9800; }
-.lqt_post_color_2 { border-left-color: #cd0098; }
-.lqt_post_color_3 { border-left-color: #98cd00; }
-.lqt_post_color_4 { border-left-color: #9800cd; }
-.lqt_post_color_5 { border-left-color: #0098cd; }
-.lqt_post_color_6 { border-left-color: #00cd98; }
 
+/* color coding with left border: */
+/*.lqt_footer > li:first-child {
+	border-left: solid 1px #ddd;
+	padding-left: 2pt;
+}*/
 
 .lqt_footer li {
          display: inline;
@@ -133,10 +133,6 @@ h1.lqt_header {
 		border-bottom: solid 1px #ddd;
 }
 
-/*.lqt_footer > li:first-child {
-	border-left: solid 1px #ddd;
-	padding-left: 2pt;
-}*/
 
 #lqt_subject_field { 
 	margin-top: 0.7em;
@@ -204,6 +200,25 @@ h1.lqt_header {
 	margin: 2em 0;
 	padding: .5em;
 }
+
+
+/* light, background color scheme:
+.lqt_post_color_1 a { color: #E0BF96 !important; }
+.lqt_post_color_2 a { color: #D2E096 !important; }
+.lqt_post_color_3 a { color: #96E0B4 !important; }
+.lqt_post_color_4 a { color: #96CCE0 !important; }
+.lqt_post_color_5 a { color: #C096E0 !important; }
+.lqt_post_color_6 a { color: #E09696 !important; }
+*/
+
+/* bright, forground color scheme: */
+.lqt_post_color_1 a { color: #cd9800 !important; }
+.lqt_post_color_2 a { color: #cd0098 !important; }
+.lqt_post_color_3 a { color: #98cd00 !important; }
+.lqt_post_color_4 a { color: #9800cd !important; }
+.lqt_post_color_5 a { color: #0098cd !important; }
+.lqt_post_color_6 a { color: #00cd98 !important; }
+
 
 
 /**

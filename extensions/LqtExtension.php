@@ -243,9 +243,9 @@ HTML;
 	function showThreadFooter( $thread ) {
 
 		$color_number = $this->selectNewUserColor( $thread->rootPost()->originalAuthor() );
-		$this->output->addHTML(wfOpenElement('ul', array('class'=>"lqt_footer lqt_post_color_$color_number" )));
+		$this->output->addHTML(wfOpenElement('ul', array('class'=>"lqt_footer" )));
 
-		$this->output->addHTML( wfOpenElement( 'li' ) );
+		$this->output->addHTML( wfOpenElement( 'li', array('class'=>"lqt_author_sig  lqt_post_color_$color_number") ) );
 		$p = new Parser(); $sig = $p->getUserSig( $thread->rootPost()->originalAuthor() );
 		$this->output->addWikitext( $sig, false );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
