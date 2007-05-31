@@ -46,8 +46,15 @@ class Date {
 	}
 	function midnight() {
 		$d = clone $this;
-		$d->hours = $d->minutes = $d->seconds = 0;
+		$d->hour = $d->minute = $d->second = 0;
 		return $d;
+	}
+	function isBefore($d) {
+		foreach(array('year', 'month', 'day', 'hour', 'minute', 'second') as $part) {
+			if ( $this->$part < $d->$part ) return true;
+			if ( $this->$part > $d->$part ) return false;
+		}
+		return true; // exactly the same time; arguable.
 	}
 }
 
@@ -244,7 +251,7 @@ class Thread {
 		$startdate = Date::now()->nDaysAgo($n)->midnight();
 		return Thread::threadsWhere( array('thread_article' => $article->getID(),
 		                                   'thread_subthread_of is null',
-											'thread_touched > ' . $startdate->text() ),
+											'thread_touched >= ' . $startdate->text() ),
 		                             array('ORDER BY' => 'thread_touched DESC' ) );
 	}
 	

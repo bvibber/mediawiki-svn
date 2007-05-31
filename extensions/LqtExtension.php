@@ -388,7 +388,7 @@ class TalkpageView extends LqtView {
 		
 		$this->openDiv('lqt_archive_widget');
 		$this->output->addHTML(<<<HTML
-		<form id="lqt_archive_browser_form"><select name="lqt_archive_month" id="lqt_archive_month">
+		<form id="lqt_archive_browser_form" action="{$this->title->getLocalURL()}"><select name="lqt_archive_month" id="lqt_archive_month">
 HTML
 );
 		foreach( $options as $label => $value ) {
@@ -449,13 +449,16 @@ class ThreadPermalinkView extends LqtView {
 		
 		$this->output->setPageTitle( "Thread: #$thread_id" ); // Default if no subject line.
 
-$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($t->article()->getTitle()->getTalkpage());
+		// Make a link back to the talk page, including the correct archive month.
+		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($t->touched()) ))
+			$query = '';
+		else
+			$query = 'lqt_archive_month=' . substr($t->touched(),0,6);
+			
+		$talkpage = $t->article()->getTitle()->getTalkpage();
+		$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($talkpage, '', $query);
+		
 		if ( $t->superthread() ) {
-/*			$this->output->addHTML(<<<HTML
-			<p class="lqt_context_message">You are viewing a reply to another post.
-			<a href="{$this->permalinkUrl($t->topmostThread())}">View the entire discussion.</a></p>
-HTML
-);*/
 			$this->output->setSubtitle( "a fragment of <a href=\"{$this->permalinkUrl($t->topmostThread())}\">a discussion</a> from " . $talkpage_link );
 		} else {
 			
