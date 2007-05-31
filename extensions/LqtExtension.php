@@ -363,7 +363,7 @@ class TalkpageView extends LqtView {
 			$this->output->addHTML("<strong><a href=\"$url\">Start a Discussion</a></strong>");
 		}
 
-		$threads = Thread::latestNThreadsOfArticle($this->article, 10);		
+		$threads = Thread::threadsOfArticleInLastNDays($this->article, 30);		
 		foreach($threads as $t) {
 			$this->showThread($t);
 		}

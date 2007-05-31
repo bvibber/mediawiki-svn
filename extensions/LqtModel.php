@@ -36,6 +36,19 @@ class Date {
 		return sprintf( '%04d%02d%02d%02d%02d%02d', $this->year, $this->month, $this->day,
 						$this->hour, $this->minute, $this->second );
 	}
+	static function now() {
+		return new Date(wfTimestampNow());
+	}
+	function nDaysAgo($n) {
+		$d = new DateTime($this->text());
+		$d->modify("-$n days");
+		return new Date( $d->format('YmdHis') );
+	}
+	function midnight() {
+		$d = clone $this;
+		$d->hours = $d->minutes = $d->seconds = 0;
+		return $d;
+	}
 }
 
 class Post extends Article {
@@ -227,13 +240,13 @@ class Thread {
 		                             array('ORDER BY' => 'thread_touched DESC') );
 	}
 	
-	/*
 	static function threadsOfArticleInLastNDays( $article, $n ) {
+		$startdate = Date::now()->nDaysAgo($n)->midnight();
 		return Thread::threadsWhere( array('thread_article' => $article->getID(),
 		                                   'thread_subthread_of is null',
-											'thread_touched > ' . 'foo' ),
-		                             array('ORDER BY' => 'thread_touched DESC' );
-	}*/
+											'thread_touched > ' . $startdate->text() ),
+		                             array('ORDER BY' => 'thread_touched DESC' ) );
+	}
 	
 	static function threadsWhoseRootPostIs( $post ) {
 		return Thread::threadsWhere( array('thread_root_post' => $post->getID()) );

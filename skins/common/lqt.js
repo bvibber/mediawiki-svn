@@ -12,14 +12,17 @@ function lqt_add_event(obj, evType, fn){
 }
 
 function lqt_on_load() {
-	/* Hide the Go button on the archive widget, because we will
-	   automatically go when a selection is made. */
-	document.getElementById('lqt_archive_go_button').className = "lqt_hidden";
+	if(!document.getElementById) return;
+	
+	// Hide the Go button and turn on automatic submission on the archive browser.
 	
 	var dropdown = document.getElementById('lqt_archive_month');
-	lqt_add_event(dropdown, 'change', function(){
+	var success = lqt_add_event(dropdown, 'change', function(){
 		document.getElementById('lqt_archive_browser_form').submit();
 		});
+	if (success) {
+		document.getElementById('lqt_archive_go_button').className = "lqt_hidden";
+	}
 }
 
 addOnloadHook(lqt_on_load);
