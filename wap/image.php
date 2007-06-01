@@ -33,33 +33,18 @@
 		default :
 			$img = imagecreatefromstring($src);
 			break;
- 	}
-	$tf = ('.gif');
-/*
-	$tf = ('.wbmp');
-	$fmt = ($_SERVER['HTTP_ACCEPT']);
-	$fmts = (preg_split('/[ ,]+/', $fmt));
-	foreach($fmts as $fmt)
-	{
-		if(strtolower($fmt == 'image/gif'))
-		{
-			$tf = ('.gif');
-			break;
-		}
 	}
-*/
+
 	if($img)
 	{
-		switch($tf)
-		{
-			case '.gif' :
-				header('Content-Type: Image/gif');
-				imagegif($img);
-				break;
-			default :
-				header('Content-Type: Image/wbmp');
-				imagewbmp($img);
-				break;
+		$accept = isset( $_SERVER['HTTP_ACCEPT'] ) ? $_SERVER['HTTP_ACCEPT'] : '';
+		$types = array_map( 'trim', explode( ',', $accept ) );
+		if ( in_array( 'image/gif', $types ) ) {
+			header('Content-Type: image/gif');
+			imagegif($img);
+		} else {
+			header('Content-Type: image/vnd.wap.wbmp');
+			imagewbmp($img);
 		}
 	}
 ?>

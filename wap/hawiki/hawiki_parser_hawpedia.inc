@@ -245,11 +245,21 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 					#			$imagename . 
 					#			($width ? (DIRECTORY_SEPARATOR.$width.'px-'.$imagename) : ''));
 					# echo '<br />'.
-					$po['src'] = ((($imagetype == '.svg' || $imagetype == '.png')?('/image.php?'):'').	// convert image locally
-						$img_url_head .	// else load from wmf server, be it the wiki or commons
-						($width ? ('/' . translate_wikipedia_keyword('thumb')) : '' ).
-						$img_url_tail .
-						($width ? ("/{$width}px-{$imagename}") : ''));
+					if ( $imagetype == '.svg' ) {
+						$po['src'] = "image.php?$img_url_head/thumb$img_url_tail/{$width}px-{$imagename}.png";
+					} elseif ( $imagetype == '.png' ) {
+						if ( $width ) {
+							$po['src'] = "image.php?$img_url_head/thumb$img_url_tail/{$width}px-{$imagename}";
+						} else {
+							$po['src'] = "image.php?$img_url_head$img_url_tail";
+						}
+					} else {
+						if ( $width ) {
+							$po['src'] = "$img_url_head/thumb$img_url_tail/{$width}px-{$imagename}";
+						} else {
+							$po['src'] = "$img_url_head$img_url_tail";
+						}
+					}
 					$po["token"] = HAWIKI_TOKEN_IMAGE;
 					return($po);
 				}
