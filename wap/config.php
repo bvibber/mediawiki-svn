@@ -16,7 +16,7 @@ define('FORCE_DEFAULT_LANGUAGE', 'subdomain');	// not defined or FALSE - use bro
 define('DISABLE_IMAGES',	FALSE);	// do not output images, if set & true.
 define('LINKS_HAVE_NO_BRACKETS', TRUE);	// do not output brackets surrounding links, if set & true.
 define('IMG_MAX_WIDTH',		128);	// pixels maximum width for images (may be further reduced by displa size)
-define('EXPAND_TEMPLATES',	TRUE);	// expand {{...}} syntax, if set & true, else remove it.
+define('EXPAND_TEMPLATES',	false);	// expand {{...}} syntax, if set & true, else remove it.
 
 define("SEGLENGTH_WML",  600);
 define("SEGLENGTH_HDML", 600);

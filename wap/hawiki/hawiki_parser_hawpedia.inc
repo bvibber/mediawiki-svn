@@ -20,303 +20,304 @@ function namespace_regex($namespace_name /* english string */ , $separator='/')
 
 function HAWIKI_parser(&$input, $isFirstColumn)
 {
-  // lexical analyser for wikipedia pages
+	// lexical analyser for wikipedia pages
 
-  $po = array(); // array for parser output
+	$po = array(); // array for parser output
 
-  $po["text"] = ""; // init text output
+	$po["text"] = ""; // init text output
 
-  if (strlen($input) == 0)
-    return(0);  // end of input reached
+	if (strlen($input) == 0)
+		return(0);  // end of input reached
 
-  if (preg_match("/^([\r\n]+)/", $input, $matches))
-  {
-    // new line(s)
-    $po["count"] = substr_count($matches[1], "\n");
-    $input = substr($input, strlen($matches[1]));
-    $po["token"] = HAWIKI_TOKEN_NEWLINE;
-    return($po);
-  }
+	if (preg_match("/^([\r\n]+)/", $input, $matches))
+	{
+		// new line(s)
+		$po["count"] = substr_count($matches[1], "\n");
+		$input = substr($input, strlen($matches[1]));
+		$po["token"] = HAWIKI_TOKEN_NEWLINE;
+		return($po);
+	}
 
-  if (preg_match("/^('{3,})/", $input, $matches))
-  {
-    // format bold
-    $input = substr($input, strlen($matches[1]));
-    $po["token"] = HAWIKI_TOKEN_BOLD;
-    return($po);
-  }
+	if (preg_match("/^('{3,})/", $input, $matches))
+	{
+		// format bold
+		$input = substr($input, strlen($matches[1]));
+		$po["token"] = HAWIKI_TOKEN_BOLD;
+		return($po);
+	}
 
-  if (preg_match("/^''/", $input, $matches))
-  {
-    // format italic
-    $input = substr($input, 2);
-    $po["token"] = HAWIKI_TOKEN_ITALIC;
-    return($po);
-  }
+	if (preg_match("/^''/", $input, $matches))
+	{
+		// format italic
+		$input = substr($input, 2);
+		$po["token"] = HAWIKI_TOKEN_ITALIC;
+		return($po);
+	}
 
-  if (preg_match("/^(==+)/", $input, $matches))
-  {
-    // heading
-    $po["level"] = strlen($matches[1]) - 1;
-    $input = substr($input, strlen($matches[1]));
-    $po["token"] = HAWIKI_TOKEN_HEADING;
-    return($po);
-  }
+	if (preg_match("/^(==+)/", $input, $matches))
+	{
+		// heading
+		$po["level"] = strlen($matches[1]) - 1;
+		$input = substr($input, strlen($matches[1]));
+		$po["token"] = HAWIKI_TOKEN_HEADING;
+		return($po);
+	}
 
-  if ($isFirstColumn && preg_match("/^(\*+)/", $input, $matches))
-  {
-    // bullet list
-    $po["level"] = strlen($matches[1]);
-    $input = substr($input, $po["level"]);
-    $po["token"] = HAWIKI_TOKEN_BULLIST;
-    return($po);
-  }
+	if ($isFirstColumn && preg_match("/^(\*+)/", $input, $matches))
+	{
+		// bullet list
+		$po["level"] = strlen($matches[1]);
+		$input = substr($input, $po["level"]);
+		$po["token"] = HAWIKI_TOKEN_BULLIST;
+		return($po);
+	}
 
-  if ($isFirstColumn && preg_match("/^(#+)/", $input, $matches))
-  {
-    // numbered list
-    $po["level"] = strlen($matches[1]);
-    $input = substr($input, $po["level"]);
-    $po["token"] = HAWIKI_TOKEN_NUMLIST;
-    return($po);
-  }
+	if ($isFirstColumn && preg_match("/^(#+)/", $input, $matches))
+	{
+		// numbered list
+		$po["level"] = strlen($matches[1]);
+		$input = substr($input, $po["level"]);
+		$po["token"] = HAWIKI_TOKEN_NUMLIST;
+		return($po);
+	}
 
-  if ($isFirstColumn && preg_match("/^(----*\r?\n)/", $input, $matches))
-  {
-    // horizontal rule
-    $input = substr($input, strlen($matches[1]));
-    $po["token"] = HAWIKI_TOKEN_RULE;
-    return($po);
-  }
+	if ($isFirstColumn && preg_match("/^(----*\r?\n)/", $input, $matches))
+	{
+		// horizontal rule
+		$input = substr($input, strlen($matches[1]));
+		$po["token"] = HAWIKI_TOKEN_RULE;
+		return($po);
+	}
 
-  if (preg_match("/^\[\[(([^\[\]]+)|(\[[^\[\]]*\])*|(\[\[[^\[\]]*\]\])*)+\]\]/", $input, $matches))
-  {
-    // Forced WikiName ((a_page_with_any_name))
+	if (preg_match("/^\[\[([^\[\]]+)\]\]/", $input, $matches))
+	#if (preg_match("/^\[\[(([^\[\]]+)|(\[[^\[\]]*\])*|(\[\[[^\[\]]*\]\])*)+\]\]/", $input, $matches))
+	{
+		// Forced WikiName ((a_page_with_any_name))
 
-    // images can be nested like this: [[Image:...|[[link]]...]]
-    //                        or this: [[Image:...|[link]...]]
-# echo('<blockquote>'); print_r($matches); echo('</blockquote>');
-    $input = substr($input, strlen($matches[0]));
+		// images can be nested like this: [[Image:...|[[link]]...]]
+		//                        or this: [[Image:...|[link]...]]
+		# echo('<blockquote>'); print_r($matches); echo('</blockquote>');
+		$input = substr($input, strlen($matches[0]));
 
-    $wikipage = substr($matches[0], 2, -2);
+		$wikipage = substr($matches[0], 2, -2);
 
-    $po["extwiki"] = ""; // hawpedia supports no external wikis
+		$po["extwiki"] = ""; // hawpedia supports no external wikis
 
-    $link = explode("|", $wikipage); // test for alternative link label
-    if (count($link) > 1)
-    {
-      $po["page"]  = $link[0];
-      $po["label"] = $link[1];
-    }
-    else
-    {
-      $po["page"]  = $link[0]; // no extra labelling of link required
-      $po["label"] = $link[0];
-    }
-
-    if (strpos($po["page"], ':') != false)
-    {
-    	// category link
-
-      if (preg_match("/^[Ww]ikipedia:/", $po["page"])) {
-        // follow wikipedia category link
-        $po["token"] = HAWIKI_TOKEN_WIKINAME;
-        return($po);
-      }
-
-      if (preg_match("/^[Ww]iktionary:/", $po["page"])) {
-        // display wiktionary links as plain text
-        $po["text"] = $po["label"];
-        $po["token"] = HAWIKI_TOKEN_TEXT;
-        return($po);
-      }
-
-      // Image Link - added localization of property strings missing (not needed for lang =  en, es)
-
-      if (!defined('DISABLE_IMAGES') || !DISABLE_IMAGES) {
-        $temp = namespace_regex('Image:','/');
-        if (preg_match($temp, $po['page'])) {
-#          // image source
-#	  $imagename = preg_replace('/^[^\\:]+\\:/', '', $link[0]);
-#	  $temp = md5($imagename);
-##http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/ISS002-E-5456_2.JPG/180px-ISS002-E-5456_2.JPG
-#	  $po['src'] = (translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/').
-#			$_SESSION['language'] . DIRECTORY_SEPARATOR. 
-#			translate_wikipedia_keyword('thumb') . DIRECTORY_SEPARATOR.
-#			substr($temp,0,1) . DIRECTORY_SEPARATOR.
-#			substr($temp,0,2) . DIRECTORY_SEPARATOR.
-#			$imagename . DIRECTORY_SEPARATOR.
-#			HAWIKI_DISP_WIDTH.'px-'.$imagename);
-	  // isolate image description.
-	  $temp = substr($wikipage, strlen($link[0]));
-	  $ltemp = -1;
-	  while($ltemp != strlen($temp)) {
-	    $ltemp = strlen($temp);
-	    $temp = preg_replace(array('/^\|/', '/\|$/',
-				'/^(left|right|center|[0-9]+px|thumb)\|/', 
-				'/\|(left|right|center|[0-9]+px|thumb)$/',
-				'/^(left|right|center|[0-9]+px|thumb)$/'), '', $temp);
-	  }
-	  $po['subscript'] = $temp;
-	  // convert wikilinks to plain text in alt tag.
-	  $po['alt'] = preg_replace(
-	     			array('/\[\[([^|\]]+\|)([^\]]*)\]\]/', '/\[\[([^|\]]+)\]\]/'),
-				array('$2', '$1'), $temp);
-          // raw image source
-	  // - try wiki, if not there, it has to be on commons
-	  // - URL without scaling is e.g. http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/xyz.jpg
-	  $imagename = preg_replace('/^[^\\:]+\\:/', '', $link[0]);
-	  $imagetype = strtolower(preg_replace('/^.*\./', '.', $imagename));
-	  $temp = md5($imagename);
-#	  $img_url_tail = ( DIRECTORY_SEPARATOR. 
-#			translate_wikipedia_keyword('thumb') . DIRECTORY_SEPARATOR.
-	  $img_url_tail = ( DIRECTORY_SEPARATOR. 
-			substr($temp,0,1) . DIRECTORY_SEPARATOR.
-			substr($temp,0,2) . DIRECTORY_SEPARATOR.
-			$imagename );
-	  $img_url_head = ( translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/' ));
-# echo '<br />'.
-	  $img_w_url_head = ( $img_url_head . $_SESSION['language'] );
-	  $img_c_url_head = ( $img_url_head . 'commons' );
-	  $img_w_raw_url = ( $img_w_url_head . $img_url_tail );
-	  $img_c_raw_url = ( $img_c_url_head . $img_url_tail );
-	  if(uri_exists($img_w_raw_url))
-	  {
-	  	$img_raw_url =& $img_w_raw_url;
-	  	$img_url_head =& $img_w_url_head;
-	  }
-	  else
-	  //FIXME: image not on commons, then ? (we safe bandwith ignoring this possibility here)
-	  #  if(uri_exists($img_c_raw_url)) 
-	  {
-	  	$img_raw_url =& $img_c_raw_url;
-	  	$img_url_head =& $img_c_url_head;
-	  }
-	#  else
-	#  {
-	#  	$img_raw_uwl = FALSE;
-	#  }
-          // image width
-	  // - if width given in wiki code, use it,
-	  //   - else get it from the image.
-	  // - if width is less than both IMG_MAX_WIDTH and HAWIKI_DISP_WIDTH, use it,
-	  //   - else use the minimum of IMG_MAX_WIDTH and HAWIKI_DISP_WIDTH.
-	  // - don't request scaling to original size (unless wiki code gives a width)
-	  $width = (($imagetype == '.svg') ? (1+HAWIKI_DISP_WIDTH) : 0 ); // force thumbnail conversion for .svg
-	  $temp = substr($wikipage, strlen($link[0]));
-	  $temp = preg_replace('/\[\[[^\]]*\]\]/', '_', $temp);	// get rid of links
-    	  $temp = explode("|", $temp); // isolate elements
-	  foreach($temp as $tmp)
-	  {
-	  	if(preg_match('/^[0-9]+px$/', trim($tmp)))
-			$width = 0+preg_replace('/[^0-9]+/', '', $tmp); //keep last.
-	  }
-	  if(0 >= $width)
-	  {
-	  	$width = (($imagetype == '.svg') ? (1+HAWIKI_DISP_WIDTH) : 0 ); // force thumbnail conversion for .svg
-	  	$temp = @(getimagesize($img_raw_url));
-		$temp = ( isset($temp[0]) ? $temp[0] : $width );
-		if(($temp > IMG_MAX_WIDTH) || ($temp > HAWIKI_DISP_WIDTH))
+		$link = explode("|", $wikipage); // test for alternative link label
+		if (count($link) > 1)
 		{
-			$width = $temp;	// thumbnail only if known and too wide.
+			$po["page"]  = $link[0];
+			$po["label"] = $link[1];
 		}
-	  }
-	  $width = min($width, IMG_MAX_WIDTH, HAWIKI_DISP_WIDTH);
-          // image source
-#http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/ISS002-E-5456_2.JPG/180px-ISS002-E-5456_2.JPG
-#	  $po['src'] = ((($imagetype == '.svg' || $imagetype == '.png')?('/image.php?'):'').	// convert image locally
-#	  		translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/').	// else load from wmf server
-#			$_SESSION['language'] . DIRECTORY_SEPARATOR. 
-#			translate_wikipedia_keyword('thumb') . DIRECTORY_SEPARATOR.
-#			substr($temp,0,1) . DIRECTORY_SEPARATOR.
-#			substr($temp,0,2) . DIRECTORY_SEPARATOR.
-#			$imagename . 
-#			($width ? (DIRECTORY_SEPARATOR.$width.'px-'.$imagename) : ''));
-#          $po["token"] = HAWIKI_TOKEN_IMAGE;
-#http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/ISS002-E-5456_2.JPG/180px-ISS002-E-5456_2.JPG
-#	  $img_url_tail = ( DIRECTORY_SEPARATOR. 
-#			substr($temp,0,1) . DIRECTORY_SEPARATOR.
-#			substr($temp,0,2) . DIRECTORY_SEPARATOR.
-#			$imagename );
-#	  $img_url_head = ( translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/' ));
-			
-#	  = ( DIRECTORY_SEPARATOR. 
-#			$imagename . 
-#			($width ? (DIRECTORY_SEPARATOR.$width.'px-'.$imagename) : ''));
-# echo '<br />'.
-	  $po['src'] = ((($imagetype == '.svg' || $imagetype == '.png')?('/image.php?'):'').	// convert image locally
-	  		$img_url_head .	// else load from wmf server, be it the wiki or commons
-			($width ? (DIRECTORY_SEPARATOR . translate_wikipedia_keyword('thumb')) : '' ).
-			$img_url_tail .
-			($width ? (DIRECTORY_SEPARATOR.$width.'px-'.$imagename) : ''));
-          $po["token"] = HAWIKI_TOKEN_IMAGE;
-          return($po);
-        }
-      }
+		else
+		{
+			$po["page"]  = $link[0]; // no extra labelling of link required
+			$po["label"] = $link[0];
+		}
 
-      // other category links are not supported
-	    $po["token"] = HAWIKI_TOKEN_DUMMY;
-      if (preg_match("/^([\r\n]+)/", $input, $matches))
-      {
-        // skip whole line
-        $input = substr($input, strlen($matches[1]));
-        $po["firstColumn"] = true;
-      }
-      else
-        $po["firstColumn"] = false;
+		if (strpos($po["page"], ':') != false)
+		{
+			// category link
 
-      return($po);
-    }
+			if (preg_match("/^[Ww]ikipedia:/", $po["page"])) {
+				// follow wikipedia category link
+				$po["token"] = HAWIKI_TOKEN_WIKINAME;
+				return($po);
+			}
 
-    $po["token"] = HAWIKI_TOKEN_WIKINAME;
-    return($po);
-  }
+			if (preg_match("/^[Ww]iktionary:/", $po["page"])) {
+				// display wiktionary links as plain text
+				$po["text"] = $po["label"];
+				$po["token"] = HAWIKI_TOKEN_TEXT;
+				return($po);
+			}
 
-  if (preg_match("/^(\[(https?:\/\/.*?)\])/", $input, $matches) ||
-      preg_match("/^((https?:\/\/.*?)[ \r\n])/", $input, $matches))
-  {
-    // link
-    $input = substr($input, strlen($matches[1]));
+			// Image Link - added localization of property strings missing (not needed for lang =  en, es)
 
-    $seperator_pos = strpos($matches[2], ' ');
-    if ($seperator_pos == true) // alternative link label available
-    {
-      $po["url"]   = substr($matches[2], 0, $seperator_pos);
-      $po["label"] = substr($matches[2], $seperator_pos + 1);
-    }
-    else
-    {
-      $po["url"]   = $matches[2]; // no extra labelling of link required
-      $po["label"] = $matches[2];
-    }
+			if (!defined('DISABLE_IMAGES') || !DISABLE_IMAGES) {
+				$temp = namespace_regex('Image:','/');
+				if (preg_match($temp, $po['page'])) {
+					#          // image source
+					#	  $imagename = preg_replace('/^[^\\:]+\\:/', '', $link[0]);
+					#	  $temp = md5($imagename);
+					##http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/ISS002-E-5456_2.JPG/180px-ISS002-E-5456_2.JPG
+					#	  $po['src'] = (translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/').
+					#			$_SESSION['language'] . DIRECTORY_SEPARATOR. 
+					#			translate_wikipedia_keyword('thumb') . DIRECTORY_SEPARATOR.
+					#			substr($temp,0,1) . DIRECTORY_SEPARATOR.
+					#			substr($temp,0,2) . DIRECTORY_SEPARATOR.
+					#			$imagename . DIRECTORY_SEPARATOR.
+					#			HAWIKI_DISP_WIDTH.'px-'.$imagename);
+					// isolate image description.
+					$temp = substr($wikipage, strlen($link[0]));
+					$ltemp = -1;
+					while($ltemp != strlen($temp)) {
+						$ltemp = strlen($temp);
+						$temp = preg_replace(array('/^\|/', '/\|$/',
+							'/^(left|right|center|[0-9]+px|thumb)\|/', 
+							'/\|(left|right|center|[0-9]+px|thumb)$/',
+							'/^(left|right|center|[0-9]+px|thumb)$/'), '', $temp);
+					}
+					$po['subscript'] = $temp;
+					// convert wikilinks to plain text in alt tag.
+					$po['alt'] = preg_replace(
+						array('/\[\[([^|\]]+\|)([^\]]*)\]\]/', '/\[\[([^|\]]+)\]\]/'),
+						array('$2', '$1'), $temp);
+					// raw image source
+					// - try wiki, if not there, it has to be on commons
+					// - URL without scaling is e.g. http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/xyz.jpg
+					$imagename = preg_replace('/^[^\\:]+\\:/', '', $link[0]);
+					$imagetype = strtolower(preg_replace('/^.*\./', '.', $imagename));
+					$temp = md5($imagename);
+					#	  $img_url_tail = ( DIRECTORY_SEPARATOR. 
+					#			translate_wikipedia_keyword('thumb') . DIRECTORY_SEPARATOR.
+					$img_url_tail = ( '/'. 
+						substr($temp,0,1) . '/'.
+						substr($temp,0,2) . '/'.
+						$imagename );
+					$img_url_head = ( translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/' ));
+					# echo '<br />'.
+					$img_w_url_head = ( $img_url_head . $_SESSION['language'] );
+					$img_c_url_head = ( $img_url_head . 'commons' );
+					$img_w_raw_url = ( $img_w_url_head . $img_url_tail );
+					$img_c_raw_url = ( $img_c_url_head . $img_url_tail );
+					if(uri_exists($img_w_raw_url))
+					{
+						$img_raw_url =& $img_w_raw_url;
+						$img_url_head =& $img_w_url_head;
+					}
+					else
+						//FIXME: image not on commons, then ? (we safe bandwith ignoring this possibility here)
+						#  if(uri_exists($img_c_raw_url)) 
+					{
+						$img_raw_url =& $img_c_raw_url;
+						$img_url_head =& $img_c_url_head;
+					}
+					#  else
+					#  {
+					#  	$img_raw_uwl = FALSE;
+					#  }
+					// image width
+					// - if width given in wiki code, use it,
+					//   - else get it from the image.
+					// - if width is less than both IMG_MAX_WIDTH and HAWIKI_DISP_WIDTH, use it,
+					//   - else use the minimum of IMG_MAX_WIDTH and HAWIKI_DISP_WIDTH.
+					// - don't request scaling to original size (unless wiki code gives a width)
+					$width = (($imagetype == '.svg') ? (1+HAWIKI_DISP_WIDTH) : 0 ); // force thumbnail conversion for .svg
+					$temp = substr($wikipage, strlen($link[0]));
+					$temp = preg_replace('/\[\[[^\]]*\]\]/', '_', $temp);	// get rid of links
+					$temp = explode("|", $temp); // isolate elements
+					foreach($temp as $tmp)
+					{
+						if(preg_match('/^[0-9]+px$/', trim($tmp)))
+							$width = 0+preg_replace('/[^0-9]+/', '', $tmp); //keep last.
+					}
+					if(0 >= $width)
+					{
+						$width = (($imagetype == '.svg') ? (1+HAWIKI_DISP_WIDTH) : 0 ); // force thumbnail conversion for .svg
+						$temp = @(getimagesize($img_raw_url));
+						$temp = ( isset($temp[0]) ? $temp[0] : $width );
+						if(($temp > IMG_MAX_WIDTH) || ($temp > HAWIKI_DISP_WIDTH))
+						{
+							$width = $temp;	// thumbnail only if known and too wide.
+						}
+					}
+					$width = min($width, IMG_MAX_WIDTH, HAWIKI_DISP_WIDTH);
+					// image source
+					#http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/ISS002-E-5456_2.JPG/180px-ISS002-E-5456_2.JPG
+					#	  $po['src'] = ((($imagetype == '.svg' || $imagetype == '.png')?('/image.php?'):'').	// convert image locally
+					#	  		translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/').	// else load from wmf server
+					#			$_SESSION['language'] . DIRECTORY_SEPARATOR. 
+					#			translate_wikipedia_keyword('thumb') . DIRECTORY_SEPARATOR.
+					#			substr($temp,0,1) . DIRECTORY_SEPARATOR.
+					#			substr($temp,0,2) . DIRECTORY_SEPARATOR.
+					#			$imagename . 
+					#			($width ? (DIRECTORY_SEPARATOR.$width.'px-'.$imagename) : ''));
+					#          $po["token"] = HAWIKI_TOKEN_IMAGE;
+					#http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/ISS002-E-5456_2.JPG/180px-ISS002-E-5456_2.JPG
+					#	  $img_url_tail = ( DIRECTORY_SEPARATOR. 
+					#			substr($temp,0,1) . DIRECTORY_SEPARATOR.
+					#			substr($temp,0,2) . DIRECTORY_SEPARATOR.
+					#			$imagename );
+					#	  $img_url_head = ( translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/' ));
 
-    $po["ext"] = true;
-    $po["extlink_text"] = hawtra("external link");
+					#	  = ( DIRECTORY_SEPARATOR. 
+					#			$imagename . 
+					#			($width ? (DIRECTORY_SEPARATOR.$width.'px-'.$imagename) : ''));
+					# echo '<br />'.
+					$po['src'] = ((($imagetype == '.svg' || $imagetype == '.png')?('/image.php?'):'').	// convert image locally
+						$img_url_head .	// else load from wmf server, be it the wiki or commons
+						($width ? ('/' . translate_wikipedia_keyword('thumb')) : '' ).
+						$img_url_tail .
+						($width ? ("/{$width}px-{$imagename}") : ''));
+					$po["token"] = HAWIKI_TOKEN_IMAGE;
+					return($po);
+				}
+			}
 
-    $po["token"] = HAWIKI_TOKEN_LINK;
-    return($po);
-  }
+			// other category links are not supported
+			$po["token"] = HAWIKI_TOKEN_DUMMY;
+			if (preg_match("/^([\r\n]+)/", $input, $matches))
+			{
+				// skip whole line
+				$input = substr($input, strlen($matches[1]));
+				$po["firstColumn"] = true;
+			}
+			else
+				$po["firstColumn"] = false;
 
-  // plain text - search next syntax element resp. eof
-  //if (preg_match("/^(.*?)(~np~|__|''|===|-=|\^|::|~~|\)\)|\(\(|\[|\|\||\{img |\(:|[A-Z][a-z0-9_]+[A-Z][a-z0-9_]+[\|\w]*|[\r\n]|\{[A-Z]+\([^\)]*\)\}|<[aA]|$)/",
-  //    $input, $matches))
-  if (preg_match("/^(.*?)(''|==|\[\[|\[?https?:\/\/|[\r\n]|$)/",
-      $input, $matches))
-  {
-    // plain text
-    $po["text"] = $matches[1];
-    $input = substr($input, strlen($po["text"]));
+			return($po);
+		}
 
-    if (strlen($po["text"]) > 0)
-      $po["token"] = HAWIKI_TOKEN_TEXT;
-    else {
-      //echo "ERROR! input:<br />" . $input;
-      return(0); // can happen in case of syntax errors
-    }
-    return($po);
-  }
+		$po["token"] = HAWIKI_TOKEN_WIKINAME;
+		return($po);
+	}
 
-  return(0);
+	if (preg_match("/^(\[(https?:\/\/.*?)\])/", $input, $matches) ||
+		preg_match("/^((https?:\/\/.*?)[ \r\n])/", $input, $matches))
+		{
+			// link
+			$input = substr($input, strlen($matches[1]));
+
+			$seperator_pos = strpos($matches[2], ' ');
+			if ($seperator_pos == true) // alternative link label available
+			{
+				$po["url"]   = substr($matches[2], 0, $seperator_pos);
+				$po["label"] = substr($matches[2], $seperator_pos + 1);
+			}
+			else
+			{
+				$po["url"]   = $matches[2]; // no extra labelling of link required
+				$po["label"] = $matches[2];
+			}
+
+			$po["ext"] = true;
+			$po["extlink_text"] = hawtra("external link");
+
+			$po["token"] = HAWIKI_TOKEN_LINK;
+			return($po);
+		}
+
+	// plain text - search next syntax element resp. eof
+	//if (preg_match("/^(.*?)(~np~|__|''|===|-=|\^|::|~~|\)\)|\(\(|\[|\|\||\{img |\(:|[A-Z][a-z0-9_]+[A-Z][a-z0-9_]+[\|\w]*|[\r\n]|\{[A-Z]+\([^\)]*\)\}|<[aA]|$)/",
+	//    $input, $matches))
+	if (preg_match("/^(.*?)(''|==|\[\[|\[?https?:\/\/|[\r\n]|$)/",
+		$input, $matches))
+		{
+			// plain text
+			$po["text"] = $matches[1];
+			$input = substr($input, strlen($po["text"]));
+
+			if (strlen($po["text"]) > 0)
+				$po["token"] = HAWIKI_TOKEN_TEXT;
+			else {
+				//echo "ERROR! input:<br />" . $input;
+				return(0); // can happen in case of syntax errors
+			}
+			return($po);
+		}
+
+	return(0);
 }
 
 ?>
