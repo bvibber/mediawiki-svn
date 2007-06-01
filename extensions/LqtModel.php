@@ -138,6 +138,17 @@ class Thread {
 		return $this->rootPost;
 	}
 	
+	function summary() {
+		if ( !$this->summaryId ) return null;
+		if ( !$this->summary ) $this->summary = new Post( Title::newFromID( $this->summaryId ) );
+		return $this->summary;
+	}
+	
+	function setSummary( $post ) {
+		$this->summaryId = $post->getID();
+		$this->updateRecord();
+	}
+	
 	function hasSubject() {
 		return $this->subject != null;
 	}

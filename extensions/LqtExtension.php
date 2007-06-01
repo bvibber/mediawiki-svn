@@ -88,19 +88,16 @@ class LqtView {
 		return $this->request->getVal($command) == $thread->id();
 	}
 
-	function permalinkUrl( $thread ) {
-		return SpecialPage::getTitleFor('Thread', $thread->id())->getFullURL();
+	function permalinkUrl( $thread, $query ='' ) {
+		return SpecialPage::getTitleFor('Thread', $thread->id())->getFullURL($query);
 	}
 	
 	/*************************
 	* Simple HTML methods    *
 	*************************/
 
-	function openDiv( $class = null ) {
-		if ( $class )
-			$this->output->addHTML( wfOpenElement( 'div', array('class'=>$class) ) );
-		else
-			$this->output->addHTML( wfOpenElement( 'div') );
+	function openDiv( $class='', $id='' ) {
+		$this->output->addHTML( wfOpenElement( 'div', array('class'=>$class, 'id'=>$id) ) );
 	}
 
 	function closeDiv() {
@@ -136,13 +133,21 @@ HTML;
 		$this->showEditingFormInGeneral( null, 'reply', $thread );
 	}
 
-	function showEditingFormInGeneral( $thread, $edit_type, $edit_applies_to ) {
+	function showSummarizeForm( $thread ) {
+		$this->showEditingFormInGeneral( null, 'summarize', $thread );
+	}
+
+	private function showEditingFormInGeneral( $thread, $edit_type, $edit_applies_to ) {
 		// If there is no article (reply or new), we need a randomly-generated title.
 		// On the first pass, we generate one. After that, we find it in the request.
-		if ( $thread == null ) {
+		if ($edit_type == 'summarize' && $edit_applies_to->summary() ) {
+			$article = $edit_applies_to->summary();
+		} else if ( $thread == null ) {
 			$rt = Title::newFromURL( $this->request->getVal('lqt_edit_post') );
 			$t = $rt ? $rt : $this->scratchTitle();
 			$article = new Article( $t );
+		} else if ($edit_type == 'summarize') {
+			$article = $edit_applies_to->summary();
 		} else {
 			$article = $thread->rootPost();
 		}
@@ -153,7 +158,8 @@ HTML;
 		$e->editFormTextBeforeContent .=
 			$this->perpetuate('lqt_edit_post', 'hidden') .
 			$this->perpetuate('lqt_reply_to', 'hidden') .
-			$this->perpetuate('lqt_new_thread_form', 'hidden');
+			$this->perpetuate('lqt_new_thread_form', 'hidden') .
+			$this->perpetuate('lqt_summarize', 'hidden');
 		
 		if ( /*$thread == null*/ $edit_type=='new' || ($thread && $thread->superthread() == null) ) {
 			// This is a top-level post; show the subject line.
@@ -178,19 +184,23 @@ HTML;
 		}
 		
 		// For replies and new posts, insert the associated thread object into the DB.
-		if ($edit_type != 'editExisting' && $e->didSave) {
+		if ($edit_type != 'editExisting' && $edit_type != 'summarize' && $e->didSave) {
 			$thread = Thread::newThread( $article, $this->article );
 			if ( $edit_type == 'reply' ) {
 				$thread->setSuperthread( $edit_applies_to );
+			} else {
+				$thread->touch();
 			}
+		}
+		
+		if ($edit_type == 'summarize' && $e->didSave) {
+			$edit_applies_to->setSummary( $article );
 		}
 
 		$subject = $this->request->getVal('lqt_subject_field', '');
 		if ( $e->didSave && $subject != '' ) {
 			$thread->setSubject( Sanitizer::stripAllTags($subject) );
 		}
-		
-		if ($e->didSave) $thread->touch(); // TODO reduntent if above $thread->setX called.
 	}
 	
 	function scratchTitle() {
@@ -306,17 +316,37 @@ HTML;
 
 	function showThreadHeading( $thread ) {
 		if ( $thread->hasSubject() )
-			$this->output->addHTML( wfElement( "h{$this->headerLevel}", array('class'=>'lqt_header'), $thread->subject() ) );
+			$this->output->addHTML( wfElement( "h{$this->headerLevel}",
+				                               array('class'=>'lqt_header'),
+				                               $thread->subject() ) );
+		if ( !$thread->superthread() && !$thread->summary() ) {
+			$url = $this->permalinkUrl( $thread, 'lqt_summarize=1' );
+			$this->output->addHTML( <<<HTML
+			<span class="lqt_summarize_command">[<a href="{$url}">Summarize</a>]</span>
+HTML
+			);
+		}
 	}
 
-	function showThread( $thread ) {
+	function showThread( $thread, $suppress_summaries = false ) {
 		$this->showThreadHeading( $thread );
+		
+		if( $thread->summary() && !$suppress_summaries ) {
+			$this->showSummary($thread);
+			$this->openDiv('lqt_thread lqt_thread_hidden', "lqt_thread_id_{$thread->id()}");
+		} else {
+			$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");			
+		}
+
+		
 		$this->showRootPost( $thread );
 		$this->indent();
 		foreach( $thread->subthreads() as $st ) {
 			$this->showThread($st);
 		}
 		$this->unindent();
+		
+		$this->closeDiv();
 	}
 
 	function indent() {
@@ -328,6 +358,21 @@ HTML;
 		$this->output->addHTML( wfCloseElement( 'dd') );
 		$this->output->addHTML( wfCloseElement( 'dl') );
 		$this->headerLevel -= 1;
+	}
+	
+	function showSummary($t) {
+		if ( !$t->summary() ) return;
+		$this->output->addHTML(<<<HTML
+			<span class="lqt_thread_permalink_summary_title">
+			This thread has been summarized as follows:
+			</span><span class="lqt_thread_permalink_summary_edit">
+			[<a href="{$this->permalinkUrl($t,'lqt_summarize=1')}">edit</a>]
+			</span>
+HTML
+		);
+		$this->openDiv('lqt_thread_permalink_summary');
+		$this->showPostBody($t->summary());
+		$this->closeDiv();
 	}
 }
 
@@ -436,7 +481,7 @@ class ThreadPermalinkView extends LqtView {
 			parent::showThreadHeading($thread);
 		}
 	}
-	
+
 	function show() {
 		/* Extract the numeric ID after the slash in the URL. */
 		$title_string = $this->request->getVal('title');
@@ -468,8 +513,15 @@ class ThreadPermalinkView extends LqtView {
 			$this->output->setSubtitle( "from " . $talkpage_link );
 		}
 		
-		$this->showThread($t);
+		if( $this->request->getBool('lqt_summarize') ) {
+			$this->showSummarizeForm($t);
+		} else if ( $t->summary() ) {
+			$this->showSummary($t);
+		}
+		
+		$this->showThread($t, true);
 	}
+
 }
 
 /*

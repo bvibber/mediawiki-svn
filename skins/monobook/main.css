@@ -33,6 +33,42 @@ li {
 	margin-bottom: .1em;
 }*/
 
+.lqt_thread_showhide {
+	margin-left: 1em;
+	margin-bottom: 0.5em;
+}
+
+.lqt_thread_permalink_summary {
+	clear: both;
+	border: solid 1px #ddd;
+	padding-left: 1em; padding-right: 1em;
+	margin: 2em 2em 0.7em 1em;
+}
+.lqt_thread_permalink_summary_title {
+	float: left;
+	margin-left: 1em;
+	font-weight: bold;
+}
+.lqt_thread_permalink_summary_edit {
+	float: right;
+	margin-right: 2em;
+	font-weight: bold;
+	font-size: smaller;
+}
+
+.lqt_summarize_command {
+	display: block;
+	float: right;
+	position: relative;
+	top: -3em;
+	font-size: smaller;
+	font-weight: bold;
+}
+
+h1.lqt_header {
+	padding-right: 4.2em;
+}
+
 .lqt_archive_widget {
 	/* floats to the right of the main h1 page title. */
 	float:right;
@@ -48,13 +84,6 @@ h1.firstHeading {
 	padding-right: 4.5em;
 }
 
-#lqt_archive_hide_show {
-        display: block;
-}
-
-#lqt_archive_toc {
-        display: none;
-}
 
 h1.lqt_header {
 
@@ -67,11 +96,6 @@ h1.lqt_header {
 
 .lqt_thread_disclosure_triangle {
         margin-right: 4pt;
-}
-
-.lqt_archive_browser {
-        margin-top: 1em;
-	margin-bottom: 1em;
 }
 
 .lqt_deleted_notice {
