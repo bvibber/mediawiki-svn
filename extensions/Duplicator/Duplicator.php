@@ -64,9 +64,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efDuplicatorToolbox( &$monobook ) {
 		if ( isset( $monobook->data['nav_urls']['duplicator'] ) ) {
 			if ( $monobook->data['nav_urls']['duplicator']['href'] == '' ) {
-				?><li id="t-iscite"><?php echo $monobook->msg( 'duplicator-toolbox' ); ?></li><?php
+				?><li id="t-isduplicator"><?php echo $monobook->msg( 'duplicator-toolbox' ); ?></li><?php
 			} else {
-				?><li id="t-cite"><?php
+				?><li id="t-duplicator"><?php
 					?><a href="<?php echo htmlspecialchars( $monobook->data['nav_urls']['duplicator']['href'] ) ?>"><?php
 						echo $monobook->msg( 'duplicator-toolbox' );
 					?></a><?php

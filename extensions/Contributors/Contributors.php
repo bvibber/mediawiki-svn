@@ -73,9 +73,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efContributorsToolbox( &$monobook ) {
 		if ( isset( $monobook->data['nav_urls']['contributors'] ) )
 			if ( $monobook->data['nav_urls']['contributors']['href'] == '' ) {
-				?><li id="t-iscite"><?php echo $monobook->msg( 'contributors-toolbox' ); ?></li><?php
+				?><li id="t-iscontributors"><?php echo $monobook->msg( 'contributors-toolbox' ); ?></li><?php
 			} else {
-				?><li id="t-cite"><?php
+				?><li id="t-contributors"><?php
 					?><a href="<?php echo htmlspecialchars( $monobook->data['nav_urls']['contributors']['href'] ) ?>"><?php
 						echo $monobook->msg( 'contributors-toolbox' );
 					?></a><?php
