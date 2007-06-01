@@ -10,8 +10,8 @@ a img {
 }
 .sidebar ul {
 	list-style: none;
-	padding-left: 16px;
-	margin-left: 0;
+	padding-right: 16px;
+	margin-right: 0;
 }
 
 h1, h2, h3 {
@@ -46,7 +46,7 @@ h4 {
 	margin: 8px;
 }
 .date {
-	text-align: right;
+	text-align: left;
 }
 .date:before {
 	content: "[";
@@ -59,14 +59,14 @@ h4 {
 
 .sidebar {
 	position: absolute;
-	left: 0;
+	right: 0;
 	top: 0;
 	width: 180px;
 	padding: 8px;
 }
 
 h1, .daygroup {
-	margin-left: 200px;
+	margin-right: 200px;
 }
 
 /* Copied from monobook */
