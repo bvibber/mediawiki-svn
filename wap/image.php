@@ -39,7 +39,8 @@
 	{
 		$accept = isset( $_SERVER['HTTP_ACCEPT'] ) ? $_SERVER['HTTP_ACCEPT'] : '';
 		$types = array_map( 'trim', explode( ',', $accept ) );
-		if ( in_array( 'image/gif', $types ) ) {
+		$mozilla = substr( $_SERVER['HTTP_USER_AGENT'], 0, strlen( 'Mozilla' ) ) == 'Mozilla';
+		if ( $mozilla || in_array( 'image/gif', $types ) ) {
 			header('Content-Type: image/gif');
 			imagegif($img);
 		} else {

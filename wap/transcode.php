@@ -83,7 +83,7 @@ if (isset($_GET['mode']) && ($_GET['mode'] == "content"))
   // show page content only
   preg_match_all("/\n==([^=]+)/", $wikitext, $matches);
   
-  $contentDeck = new HAW_deck(hawtra("Content"));
+  $contentDeck = new HAW_deck(hawtra("Contents"));
   set_deck_properties($contentDeck);
 
   $titlebar = new HAW_text($title, HAW_TEXTFORMAT_BIG | HAW_TEXTFORMAT_BOXED);
@@ -183,7 +183,7 @@ else
 		}
 			
 		// set content link
-	  $wikipage->set_navlink(hawtra("Content"), $wikibase . urlencode($_GET['go']) . "&mode=content",
+	  $wikipage->set_navlink(hawtra("Contents"), $wikibase . urlencode($_GET['go']) . "&mode=content",
 	                         HAWIKI_NAVLINK_TOP | HAWIKI_NAVLINK_BOTTOM);
 		
 		// set copyright link

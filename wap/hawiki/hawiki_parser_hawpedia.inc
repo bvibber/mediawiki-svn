@@ -167,6 +167,8 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 					// - try wiki, if not there, it has to be on commons
 					// - URL without scaling is e.g. http://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/xyz.jpg
 					$imagename = preg_replace('/^[^\\:]+\\:/', '', $link[0]);
+					$imagename = str_replace( ' ', '_', $imagename );
+					$encImageName = urlencode( $imagename );
 					$imagetype = strtolower(preg_replace('/^.*\./', '.', $imagename));
 					$temp = md5($imagename);
 					#	  $img_url_tail = ( DIRECTORY_SEPARATOR. 
@@ -174,7 +176,7 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 					$img_url_tail = ( '/'. 
 						substr($temp,0,1) . '/'.
 						substr($temp,0,2) . '/'.
-						$imagename );
+						$encImageName );
 					$img_url_head = ( translate_wikipedia_keyword('http://upload.wikimedia.org/wikipedia/' ));
 					# echo '<br />'.
 					$img_w_url_head = ( $img_url_head . $_SESSION['language'] );
@@ -246,16 +248,16 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 					#			($width ? (DIRECTORY_SEPARATOR.$width.'px-'.$imagename) : ''));
 					# echo '<br />'.
 					if ( $imagetype == '.svg' ) {
-						$po['src'] = "image.php?$img_url_head/thumb$img_url_tail/{$width}px-{$imagename}.png";
+						$po['src'] = "image.php?$img_url_head/thumb$img_url_tail/{$width}px-{$encImageName}.png";
 					} elseif ( $imagetype == '.png' ) {
 						if ( $width ) {
-							$po['src'] = "image.php?$img_url_head/thumb$img_url_tail/{$width}px-{$imagename}";
+							$po['src'] = "image.php?$img_url_head/thumb$img_url_tail/{$width}px-{$encImageName}";
 						} else {
 							$po['src'] = "image.php?$img_url_head$img_url_tail";
 						}
 					} else {
 						if ( $width ) {
-							$po['src'] = "$img_url_head/thumb$img_url_tail/{$width}px-{$imagename}";
+							$po['src'] = "$img_url_head/thumb$img_url_tail/{$width}px-{$encImageName}";
 						} else {
 							$po['src'] = "$img_url_head$img_url_tail";
 						}
