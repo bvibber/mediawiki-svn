@@ -151,9 +151,10 @@ HTML;
 		} else {
 			$article = $thread->rootPost();
 		}
-		
+
 		$e = new EditPage($article);
 		$e->suppressIntro = true;
+				
 		
 		$e->editFormTextBeforeContent .=
 			$this->perpetuate('lqt_edit_post', 'hidden') .
@@ -333,11 +334,11 @@ HTML
 		
 		if( $thread->summary() && !$suppress_summaries ) {
 			$this->showSummary($thread);
-			$this->openDiv('lqt_thread lqt_thread_hidden', "lqt_thread_id_{$thread->id()}");
-		} else {
-			$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");			
+			$this->output->addHTML( "<a href=\"{$this->permalinkUrl($thread)}\" class=\"lqt_thread_show_summary\">Show this thread</a>" );
+			return;
 		}
-
+		
+		$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");			
 		
 		$this->showRootPost( $thread );
 		$this->indent();
@@ -517,6 +518,8 @@ class ThreadPermalinkView extends LqtView {
 			$this->showSummarizeForm($t);
 		} else if ( $t->summary() ) {
 			$this->showSummary($t);
+		} else {
+			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($t, 'lqt_summarize=1')}\">write a summary</a>.</p>");
 		}
 		
 		$this->showThread($t, true);
