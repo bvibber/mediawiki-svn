@@ -49,7 +49,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Improved thumb.php error handling
 * Display file history on local image description pages of shared images
 * Added $wgArticleRobotPolicies
-
+* (bug 10076) Additional parameter $7 added to MediaWiki:Blockedtext 
+  containing, the ip, ip range, or username whose block is affecting the
+* (bug 7691) Deletion log now shown when creating a new article, following
+  MediaWiki:Noarticletext(anon) or MediaWiki:Newarticletext(anon).
+  current user.
 
 == Bugfixes since 1.10 ==
 
@@ -101,6 +105,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 7993) support mathematical symbol classes
 * (bug 10007) Allow Block IP to work with Postgrs again.
 * Add Google Wireless Transcoder to the Unicode editing blacklist
+* (bug 10083) Fix for Special:Version breakage on PHP 5.2 with some hooks
 
 
 == MediaWiki API changes since 1.10 ==
@@ -162,6 +167,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Polish (pl)
 * Russian (ru)
 * Slovak (sk)
+* Shona (sn)
 * Somali (so)
 * Sundanese (su)
 * Swedish (sv)
