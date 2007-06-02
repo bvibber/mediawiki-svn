@@ -2415,7 +2415,7 @@ class Title {
 	 * Talk pages with no threads? With only archived threads?
 	 */
 	public function isAlwaysKnown() {
-		return ( $this->isExternal() || $this->mNamespace % 2 ||
+		return ( $this->isExternal() || $this->isTalkPage() ||
 			 ( 0 == $this->mNamespace && "" == $this->mDbkeyform ) ||
 			 ( NS_MEDIAWIKI == $this->mNamespace && wfMsgWeirdKey( $this->mDbkeyform ) ) );
 	}

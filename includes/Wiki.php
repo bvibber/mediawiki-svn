@@ -372,9 +372,8 @@ class MediaWiki {
 			$action = 'nosuchaction';
 		}
 
-		// TODO we need a non-hack way to hook in LQT.
-//		if ( defined('LQT_NS_CHANNEL') && $title->getNamespace() == LQT_NS_CHANNEL ) {
-		if ( $title->getNamespace() % 2 ) {
+		// TODO LQT HACK
+		if ( $title->isTalkPage() ) {
 			LqtDispatch::talkpageMain($output, $article, $title, $user, $request);
 			wfProfileOut( 'MediaWiki::performAction' );
 			return;

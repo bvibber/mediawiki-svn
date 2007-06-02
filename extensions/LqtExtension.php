@@ -11,7 +11,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( -1 );
 }
-else {
 
 require_once('LqtModel.php');
 
@@ -564,6 +563,3 @@ function wfLqtSpecialThreadPage() {
 	
 	 SpecialPage::addPage( new SpecialThreadPage() );
 }
-
-}
-
