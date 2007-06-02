@@ -520,7 +520,7 @@ class ThreadPermalinkView extends LqtView {
 			$this->showSummarizeForm($t);
 		} else if ( $t->summary() ) {
 			$this->showSummary($t);
-		} else {
+		} else if ( !$t->superthread() ) {
 			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($t, 'lqt_summarize=1')}\">write a summary</a>.</p>");
 		}
 		
