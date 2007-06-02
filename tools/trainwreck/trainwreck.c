@@ -20,10 +20,14 @@
 #include	<unistd.h>
 #include	<regex.h>
 #include	<pthread.h>
+#include	<door.h>
+#include	<port.h>
 
 #include	<my_global.h>
 #include	<mysql.h>
+
 #include	"queue.h"
+#include	"status.h"
 
 typedef uint32_t logpos_t;
 
@@ -34,19 +38,22 @@ static void usage(void);
 
 static void set_thread_name(char const *);
 static char const *get_thread_name(void);
-pthread_key_t threadname;
+static pthread_key_t threadname;
 
-char const *cfgfile = "trainwreck.conf";
+static char const *cfgfile = "trainwreck.conf";
 
 static void read_configuration(void);
 static void *read_master_logs(void *);
 static void *slave_write_thread(void *);
 static int process_master_logs_once(void);
 static int find_event_type(char const *);
-static void start_slave_write_thread(void);
-static void start_master_read_thread(void);
+static int start_slave_write_thread(void);
+static int start_master_read_thread(void);
+static void stop_slave_write_thread(void);
+static void stop_master_read_thread(void);
 static void executed_up_to(char const *, logpos_t);
 static int retrieve_binlog_position(void);
+static void setup_status_door(void);
 static void logmsg(char const *fmt, ...);
 static char *master_host, *master_user, *master_pass;
 static int master_port;
@@ -112,18 +119,36 @@ static int nignorable;
 static int can_ignore_errno(unsigned);
 static void do_ignore_errno(unsigned);
 
+static pthread_mutex_t rst_mtx = PTHREAD_MUTEX_INITIALIZER,
+		       wst_mtx = PTHREAD_MUTEX_INITIALIZER;
+static status_t reader_st = ST_STOPPED, writer_st = ST_STOPPED;
+static int autostart;
+static int master_thread_stop;
+
+static int ctl_port;
+
+#define CTL_STOP	1
+#define CTL_START	2
+
 int
 main(argc, argv)
 	int argc;
 	char *argv[];
 {
-int	c;
+int		c;
+port_event_t	pe;
 
 	pthread_key_create(&threadname, NULL);
 	set_thread_name("main");
 
-	while ((c = getopt(argc, argv, "f:F:p:D")) != -1) {
+	setup_status_door();
+
+	while ((c = getopt(argc, argv, "f:F:p:Da")) != -1) {
 		switch (c) {
+		case 'a':
+			autostart = 1;
+			break;
+
 		case 'f':
 			cfgfile = optarg;
 			break;
@@ -146,16 +171,46 @@ int	c;
 		}
 	}
 
+	if ((ctl_port = port_create()) == -1) {
+		(void) fprintf(stderr, "cannot create control port: %s\n",
+			       strerror(errno));
+		return 1;
+	}
+
 	read_configuration();
 
 	lq_init(&log_queue);
 
-	start_slave_write_thread();
-	start_master_read_thread();
-	
-	pthread_join(slave_thread, NULL);
-	pthread_join(master_thread, NULL);
+	if (autostart) {
+		start_slave_write_thread();
+		start_master_read_thread();
+	}
 
+	while (port_get(ctl_port, &pe, NULL) == 0) {
+		if (pe.portev_source != PORT_SOURCE_USER) {
+			logmsg("got ctl_port event from unknown source?");
+			continue;
+		}
+
+		switch (pe.portev_events) {
+		case CTL_STOP:
+			stop_master_read_thread();
+			stop_slave_write_thread();
+			break;
+
+		case CTL_START:
+			if (start_slave_write_thread() == -1) 
+				logmsg("slave thread is already running");
+			if (start_master_read_thread() == -1)
+				logmsg("master thread is already running");
+			break;
+
+		default:
+			logmsg("got ctl_port event with unknown request");
+			break;
+		}
+	}
+	
 	return 0;
 }
 
@@ -241,11 +296,42 @@ strdup_free(s, new)
 }
 
 static void
+stop_master_read_thread()
+{
+	master_thread_stop = 1;
+	if (pthread_join(master_thread, NULL) == -1) {
+		logmsg("cannot join master thread: %s",
+				strerror(errno));
+		return;
+	}
+	logmsg("master thread stopped");
+}
+
+static void
+stop_slave_write_thread() {
+	pthread_cancel(slave_thread);
+	if (pthread_join(slave_thread, NULL) == -1) {
+		logmsg("cannot join slave thread: %s",
+				strerror(errno));
+		return;
+	}
+	logmsg("slave thread stopped");
+}
+
+static int
 start_master_read_thread()
 {
+	pthread_mutex_lock(&rst_mtx);
+	if (reader_st != ST_STOPPED)
+		return -1;
+	
+	reader_st = ST_INITIALISING;
+	pthread_mutex_unlock(&rst_mtx);
+
 	if ((master_conn = mysql_init(NULL)) == NULL) {
 		logmsg("out of memory in mysql_init");
-		exit(1);
+		reader_st = ST_STOPPED;
+		return 0;
 	}
 
 	mysql_options(master_conn, MYSQL_READ_DEFAULT_GROUP, "trainwreck-master");
@@ -254,7 +340,8 @@ start_master_read_thread()
 				master_port, NULL, 0) == NULL) {
 		logmsg("cannot connect to master %s:%d: %s",
 				master_host, master_port, mysql_error(master_conn));
-		exit(1);
+		reader_st = ST_STOPPED;
+		return 0;
 	}
 
 	pthread_create(&master_thread, NULL, read_master_logs, NULL);
@@ -270,12 +357,10 @@ read_master_logs(p)
 		logmsg("resuming replication at %s,%lu",
 			binlog_file, (unsigned long) binlog_pos);
 
-	for (;;) {
-		if (process_master_logs_once() == 0) {
-			(void) fprintf(stderr, "no more binlogs!\n");
-			exit(1);
-		}
-	}
+	process_master_logs_once();
+
+	reader_st = ST_STOPPED;
+	return NULL;
 }
 
 static int
@@ -318,7 +403,17 @@ unsigned long	len;
 
 	for (;;) {
 	logentry_t	*ent;
+		reader_st = ST_WAIT_FOR_MASTER;
 		len = cli_safe_read(master_conn);
+		reader_st = ST_QUEUEING;
+
+		if (master_thread_stop) {
+			logmsg("shutting down");
+			mysql_close(master_conn);
+			reader_st = ST_STOPPED;
+			master_thread_stop = 0;
+			return 1;
+		}
 
 		if (len == packet_error) {
 			logmsg("%s,%lu: error retrieving binlogs from server: (%d) %s",
@@ -329,6 +424,7 @@ unsigned long	len;
 
 		if (len < 8 && master_conn->net.read_pos[0] == 254) {
 			logmsg("no more logs!");
+			reader_st = ST_STOPPED;
 			return 1;
 		}
 
@@ -482,25 +578,6 @@ err:
 	return NULL;
 }
 
-static int
-find_event_type(str)
-	char const *str;
-{
-static struct event_type {
-	char const *name;
-	int level;
-} types[] = {
-	{ "Query", ET_QUERY },
-	{ "Intvar", ET_INTVAR },
-	{ "Rotate", ET_ROTATE },
-};
-struct event_type *t;
-	for (t = &types[0]; t < &types[sizeof(types) / sizeof(*types)]; t++)
-		if (!strcmp(t->name, str))
-			return t->level;
-	return -1;
-}
-
 static void
 logmsg(char const *msg, ...)
 {
@@ -560,17 +637,39 @@ lq_entry_t	*entry;
 	pthread_mutex_unlock(&q->lq_mtx);
 }
 
+static void
+lq_get_cleanup(mtx)
+	void *mtx;
+{
+	logmsg("shutting down");
+	pthread_mutex_unlock((pthread_mutex_t *) mtx);
+	mysql_close(slave_conn);
+	pthread_mutex_lock(&wst_mtx);
+	writer_st = ST_STOPPED;
+	pthread_mutex_unlock(&wst_mtx);
+}
+
 static logentry_t *
 lq_get(q)
 	le_queue_t *q;
 {
 lq_entry_t	*qe;
 logentry_t	*ent;
+	/*
+	 * This function is a cancellation point.  Read the comment in 
+	 * slave_write_thread for details.
+	 */
 	pthread_mutex_lock(&q->lq_mtx);
+
+	pthread_cleanup_push(lq_get_cleanup, &q->lq_mtx);
+	pthread_setcancelstate(PTHREAD_CANCEL_ENABLE, NULL);
 
 	while (TAILQ_EMPTY(&q->lq_head)) {
 		pthread_cond_wait(&q->lq_cond, &q->lq_mtx);
 	}
+
+	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL);
+	pthread_cleanup_pop(0);
 
 	qe = TAILQ_FIRST(&q->lq_head);
 	TAILQ_REMOVE(&q->lq_head, qe, lqe_q);
@@ -582,12 +681,19 @@ logentry_t	*ent;
 	return ent;
 }
 
-static void
+static int
 start_slave_write_thread()
 {
+	pthread_mutex_lock(&wst_mtx);
+	if (writer_st != ST_STOPPED)
+		return -1;
+	
+	writer_st = ST_INITIALISING;
+	pthread_mutex_unlock(&wst_mtx);
+	
 	if ((slave_conn = mysql_init(NULL)) == NULL) {
 		logmsg("out of memory in mysql_init");
-		exit(1);
+		return 0;
 	}
 
 	mysql_options(slave_conn, MYSQL_READ_DEFAULT_GROUP, "trainwreck-slave");
@@ -596,10 +702,11 @@ start_slave_write_thread()
 				slave_port, NULL, 0) == NULL) {
 		logmsg("cannot connect to slave %s:%d: %s",
 				slave_host, slave_port, mysql_error(slave_conn));
-		exit(1);
+		return 0;
 	}
 
 	pthread_create(&slave_thread, NULL, slave_write_thread, NULL);
+	return 0;
 }
 
 static void *
@@ -607,14 +714,25 @@ slave_write_thread(p)
 	void *p;
 {
 logentry_t	*e;
+	/*
+	 * This thread is cancelled by the main thread when we want to stop 
+	 * replication.  However, we disallow cancellation at all times except 
+	 * during lq_get().  This is okay, because most operations should be 
+	 * fairly short; lq_get is the only one that blocks.  lq_get enables 
+	 * cancellation while it's running and will do proper cleanup for us.
+	 */
+	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL);
+
 	set_thread_name("writer");
 
+	writer_st = ST_WAIT_FOR_ENTRY;
 	while ((e = lq_get(&log_queue)) != NULL) {
-		logmsg("%s,%lld", e->le_file, (unsigned long long) e->le_pos);
+		logmsg("%s,%lu", e->le_file, (unsigned long) e->le_pos);
 
+		writer_st = ST_EXECUTING;
 		if (mysql_select_db(slave_conn, e->le_database) != 0) {
-			logmsg("%s,%lld: cannot select \"%s\": %s",
-				e->le_file, (unsigned long long) e->le_pos,
+			logmsg("%s,%lu: cannot select \"%s\": %s",
+				e->le_file, (unsigned long) e->le_pos,
 				e->le_database, mysql_error(slave_conn));
 			exit(1);
 		}
@@ -625,8 +743,8 @@ logentry_t	*e;
 			snprintf(query, sizeof(query), "SET INSERT_ID=%llu",
 					(unsigned long long) e->le_insert_id);
 			if (execute_query(slave_conn, query) != 0) {
-				logmsg("%s,%lld: query failed (%u: %s): \"%s\"",
-					e->le_file, (unsigned long long) e->le_pos,
+				logmsg("%s,%lu: query failed (%u: %s): \"%s\"",
+					e->le_file, (unsigned long) e->le_pos,
 					mysql_errno(slave_conn), mysql_error(slave_conn), 
 					query);
 				exit(1);
@@ -635,14 +753,15 @@ logentry_t	*e;
 		char	*query;
 			query = e->le_info;
 			if (execute_query(slave_conn, query) != 0) {
-				logmsg("%s,%lld: query failed (%u: %s): \"%s\"",
-					e->le_file, (unsigned long long) e->le_pos,
+				logmsg("%s,%lu: query failed (%u: %s): \"%s\"",
+					e->le_file, (unsigned long) e->le_pos,
 					mysql_errno(slave_conn), mysql_error(slave_conn), 
 					query);
 				exit(1);
 			}
 			executed_up_to(e->le_file, e->le_pos);
 		}
+		writer_st = ST_WAIT_FOR_ENTRY;
 	}
 	return NULL;
 }
@@ -760,4 +879,80 @@ char		*buf;
 	binlog_pos = uint4korr(buf);
 	strdup_free(&binlog_file, buf + 4);
 	return 0;
+}
+
+static int status_door;
+static void service_status_request(void *, char *, size_t, door_desc_t *, uint_t);
+
+static void
+setup_status_door()
+{
+int	i;
+	if ((status_door = door_create(service_status_request,
+					NULL, 0)) == -1) {
+		logmsg("creating status door: %s", strerror(errno));
+		exit(1);
+	}
+
+	(void) unlink(STATUS_DOOR);
+	if ((i = creat(STATUS_DOOR, 0600)) == -1) {
+		logmsg("creating status door \"%s\": %s",
+				STATUS_DOOR, strerror(errno));
+		exit(1);
+	}
+	(void) close(i);
+
+	(void) fdetach(STATUS_DOOR);
+	if (fattach(status_door, STATUS_DOOR) == -1) {
+		logmsg("attaching status door to \"%s\": %s",
+				STATUS_DOOR, strerror(errno));
+		exit(1);
+	}
+}
+
+static void
+service_status_request(cookie, args, arglen, desc, ndesc)
+	void *cookie;
+	char *args;
+	size_t arglen;
+	door_desc_t *desc;
+	uint_t ndesc;
+{
+char	c[3];
+	if (arglen < 1) {
+		c[0] = RR_INVALID_QUERY;
+		door_return(c, 1, NULL, 0);
+		return;
+	}
+
+	switch (args[0]) {
+	case RQ_PING:
+		c[0] = RR_OK;
+		door_return(c, 1, NULL, 0);
+		return;
+
+	case RQ_STATUS:
+		c[0] = RR_OK;
+		c[1] = reader_st;
+		c[2] = writer_st;
+		door_return(c, 3, NULL, 0);
+		return;
+
+	case RQ_START:
+		port_send(ctl_port, CTL_START, NULL);
+		c[0] = RR_OK;
+		door_return(c, 1, NULL, 0);
+		return;
+
+	case RQ_STOP:
+		port_send(ctl_port, CTL_STOP, NULL);
+		c[0] = RR_OK;
+		door_return(c, 1, NULL, 0);
+		return;
+
+	default:
+		c[0] = RR_INVALID_QUERY;
+		door_return(c, 1, NULL, 0);
+		return;
+	}
 }
