@@ -228,12 +228,12 @@ h1.lqt_header {
 
 
 /* light, background color scheme:
-.lqt_post_color_1 a { color: #E0BF96 !important; }
-.lqt_post_color_2 a { color: #D2E096 !important; }
-.lqt_post_color_3 a { color: #96E0B4 !important; }
-.lqt_post_color_4 a { color: #96CCE0 !important; }
-.lqt_post_color_5 a { color: #C096E0 !important; }
-.lqt_post_color_6 a { color: #E09696 !important; }
+.lqt_post_color_1 a { background-color: #E0BF96 !important; }
+.lqt_post_color_2 a { background-color: #D2E096 !important; }
+.lqt_post_color_3 a { background-color: #96E0B4 !important; }
+.lqt_post_color_4 a { background-color: #96CCE0 !important; }
+.lqt_post_color_5 a { background-color: #C096E0 !important; }
+.lqt_post_color_6 a { background-color: #E09696 !important; }
 */
 
 /* bright, forground color scheme: */

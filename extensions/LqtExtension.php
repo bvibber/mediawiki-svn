@@ -201,7 +201,7 @@ HTML;
 		$subject = $this->request->getVal('lqt_subject_field', '');
 		if ( $e->didSave && $subject != '' ) {
 			$thread->setSubject( Sanitizer::stripAllTags($subject) );
-		} else if ( $e->didSave && $subject == '' && !$thread->superthread() ) {
+		} else if ( $e->didSave && $edit_type !='summarize' && $subject == '' && !$thread->superthread() ) {
 				$thread->setSubject( '«no subject»' );
 		}
 	}
