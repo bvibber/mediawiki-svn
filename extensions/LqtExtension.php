@@ -23,10 +23,28 @@ class LqtDispatch {
 		                                  $title->getDBkey());
 		$article = new Article($article_title);
 
-		// Here we would check for POST data of importance.
-		
 		$view = new TalkpageView( $output, $article, $title, $user, $request );
 		$view->show();
+	}
+
+	static function threadPermalinkMain(&$output, &$article, &$title, &$user, &$request) {
+		$view = new ThreadPermalinkView( $output, $article, $title, $user, $request );
+		$view->show();
+	}
+	
+	/**
+	* If the page we recieve is a Liquid Threads page of any kind, process it
+	* as needed and return True. If it's a normal, non-liquid page, return false.
+	*/
+	static function tryPage( $output, $article, $title, $user, $request ) {
+		if ( $title->isTalkPage() ) {
+			self::talkpageMain ($output, $article, $title, $user, $request);
+			return true;
+		} else if ( $title->getNamespace() == NS_LQT_THREAD ) {
+			self::threadPermalinkMain($output, $article, $title, $user, $request);
+			return true;
+		}
+		return false;
 	}
 }
 
@@ -88,6 +106,7 @@ class LqtView {
 	}
 
 	function permalinkUrl( $thread, $query ='' ) {
+		return $thread->rootPost()->getTitle()->getFullURL($query);
 		return SpecialPage::getTitleFor('Thread', $thread->id())->getFullURL($query);
 	}
 	
@@ -462,7 +481,7 @@ HTML
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
 		
-		$this->output->setPageTitle( "Talk:" . $this->title->getText() );
+		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
 		$this->addJSandCSS();
 		
 		$month = $this->request->getVal('lqt_archive_month');
@@ -485,20 +504,16 @@ class ThreadPermalinkView extends LqtView {
 	}
 
 	function show() {
-		/* Extract the numeric ID after the slash in the URL. */
-		$title_string = $this->request->getVal('title');
-		$a = explode('/', $title_string);
-		if ( $a == false || count( $a ) < 2 || !ctype_digit($a[1])  ) {
-			echo("bad request (TODO real error msg?)");
-			die();
-		}
-		$thread_id = intval($a[1]);
+		$ts = Thread::threadsWhoseRootPostIs( $this->article );
+		if( count($ts) == 0 ) {echo "no such thread"; die();}
+		if ( count($ts) >1 ) {die();} // TODO handle this screwy situation.
+		$t = $ts[0];
 
-		$t = Thread::newFromId( $thread_id );
+		// TODO this is a holdover from the special page; not sure what's correct here.
+		// we now have a real true $this->article that makes some sense.
+		// but we still want to know about $t->article.
 		$this->article = $t->article(); # for creating reply threads.
 		
-		$this->output->setPageTitle( "Thread: #$thread_id" ); // Default if no subject line.
-
 		// Make a link back to the talk page, including the correct archive month.
 		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($t->touched()) ))
 			$query = '';

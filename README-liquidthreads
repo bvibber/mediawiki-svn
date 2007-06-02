@@ -6,15 +6,11 @@ Liquid Threads is going to change a lot before release. Some of the coolest feat
 
 To try Liquid Threads, first, install MediaWiki as usual. Then, source maintenance/lqt.sql from your mysql console. Finally, add the following to the end of your LocalSettings.php:
 
- $wgExtraNamespaces =
- 	array(100 => "Post",
- 	      101 => "Post_Discussion");
-
  require_once('extensions/LqtExtension.php');
 
 How to contact me:
 davemccabe@gmail.com (email or jabber)
 davidmccabe in #mediawiki on irc.freenode.net
 
-Thanks again! Please obey all signs.
+Thanks again! Obey all signs.
 -- ~~~~
