@@ -15,10 +15,13 @@
 
 #define STATUS_DOOR "trainwreck_door"
 
-#define RQ_PING		1
-#define RQ_STATUS	2
-#define RQ_STOP		3
-#define RQ_START	4
+#define RQ_PING			1 /* test server is alive		*/
+#define RQ_STATUS		2 /* get read/write thread status	*/
+#define RQ_STOP			3 /* stop read/write threads		*/
+#define RQ_START		4 /* start read/write threads		*/
+#define RQ_SHUTDOWN		5 /* stop read/write threads and exit	*/
+#define RQ_READER_POSITION	6 /* get reader thread binlog position	*/
+#define RQ_WRITER_POSITION	7 /* get reader thread binlog position	*/
 
 #define RR_OK			1
 #define RR_INVALID_QUERY	2

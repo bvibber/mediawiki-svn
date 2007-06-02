@@ -12,6 +12,32 @@
  * trainwreck: multi-threaded MySQL replication tool.
  */
 
+/*
+ * About multi-writer replication status:
+ *
+ * At startup, we create 1 reader thread to collect the binlogs from the 
+ * master, and N writers to send queries to the slaves.  The reader distributes 
+ * write queries between writers based on a hash of the database name, so 
+ * updates for the same database always go to the same writer.  This ensures 
+ * that replication within a database is always linear.  We don't make any 
+ * attempt to handle cross-database updates, and they probably won't work 
+ * properly.
+ *
+ * Each writer maintains its own on-disk state, holding the binlog it is 
+ * replicating, and the position it's replicated up to.  When the reader 
+ * detects a binlog rotation, it causes a synchronisation event to ensure that 
+ * all writers have caught up to the end of the current binlog before changing.  
+ * This ensures that all writers are executing the same binlog, which makes 
+ * recovery from saved state after startup much easier.
+ * 
+ * At startup, each writer reads its saved state.  A note is kept of the oldest 
+ * log position any writer has seen, and each writer also stores its own 
+ * current position.  Then the reader thread starts, and requests binlogs from 
+ * the master starting from the oldest state and sends them to the writers.  
+ * Each writer then discards logs it's already seen.  Once we pass the last 
+ * seen logs, it starts executing queries again.
+ */
+
 #include	<stdio.h>
 #include	<string.h>
 #include	<errno.h>
@@ -28,6 +54,7 @@
 
 #include	"queue.h"
 #include	"status.h"
+#include	"fnv.h"
 
 typedef uint32_t logpos_t;
 
@@ -51,8 +78,6 @@ static int start_slave_write_thread(void);
 static int start_master_read_thread(void);
 static void stop_slave_write_thread(void);
 static void stop_master_read_thread(void);
-static void executed_up_to(char const *, logpos_t);
-static int retrieve_binlog_position(void);
 static void setup_status_door(void);
 static void logmsg(char const *fmt, ...);
 static char *master_host, *master_user, *master_pass;
@@ -60,11 +85,9 @@ static int master_port;
 static char *slave_host, *slave_user, *slave_pass;
 static int slave_port;
 static MYSQL *master_conn;
-static MYSQL *slave_conn;
 static int debug;
 static int server_id = 4123;
 
-static pthread_t slave_thread;
 static pthread_t master_thread;
 
 static char *binlog_file;
@@ -111,7 +134,23 @@ static void lq_init(le_queue_t *);
 static void lq_put(le_queue_t *, logentry_t *);
 static logentry_t *lq_get(le_queue_t *);
 
-le_queue_t log_queue;
+typedef struct writer {
+	int		 wr_num;
+	pthread_t	 wr_thread;
+	logpos_t	 wr_last_executed_pos;
+	char		*wr_last_executed_file;
+	le_queue_t 	 wr_log_queue;
+	MYSQL		*wr_conn;
+	int		 wr_rstat;
+	int		 wr_status;
+} writer_t;
+
+writer_t *writers;
+static int nwriters = 1;
+
+static void writer_init(writer_t *);
+static int retrieve_binlog_position(writer_t *);
+static writer_t *get_writer_for_dbname(char const *);
 
 static int *ignorable_errno;
 static int nignorable;
@@ -121,21 +160,30 @@ static void do_ignore_errno(unsigned);
 
 static pthread_mutex_t rst_mtx = PTHREAD_MUTEX_INITIALIZER,
 		       wst_mtx = PTHREAD_MUTEX_INITIALIZER;
-static status_t reader_st = ST_STOPPED, writer_st = ST_STOPPED;
+static status_t reader_st = ST_STOPPED;
 static int autostart;
 static int master_thread_stop;
 
+static writer_t the_writer;
+static void executed_up_to(writer_t *, char const *, logpos_t);
+
 static int ctl_port;
+
+static int writers_initialising;
+static pthread_mutex_t wi_mtx = PTHREAD_MUTEX_INITIALIZER;
+static pthread_cond_t wi_cond = PTHREAD_COND_INITIALIZER;
+static logpos_t lowest_log_pos;
 
 #define CTL_STOP	1
 #define CTL_START	2
+#define CTL_SHUTDOWN	3
 
 int
 main(argc, argv)
 	int argc;
 	char *argv[];
 {
-int		c;
+int		c, i;
 port_event_t	pe;
 
 	pthread_key_create(&threadname, NULL);
@@ -179,7 +227,12 @@ port_event_t	pe;
 
 	read_configuration();
 
-	lq_init(&log_queue);
+	writers = calloc(1, sizeof(writer_t) * nwriters);
+
+	for (i = 0; i < nwriters; ++i) {
+		writer_init(&writers[i]);
+		writers[i].wr_num = i;
+	}
 
 	if (autostart) {
 		start_slave_write_thread();
@@ -197,6 +250,12 @@ port_event_t	pe;
 			stop_master_read_thread();
 			stop_slave_write_thread();
 			break;
+
+		case CTL_SHUTDOWN:
+			stop_master_read_thread();
+			stop_slave_write_thread();
+			logmsg("exiting");
+			return 0;
 
 		case CTL_START:
 			if (start_slave_write_thread() == -1) 
@@ -268,6 +327,8 @@ char	 line[1024];
 			slave_port = atoi(value);
 		} else if (!strcmp(opt, "ignore-errno")) {
 			do_ignore_errno(atoi(value));
+		} else if (!strcmp(opt, "nwriters")) {
+			nwriters = atoi(value);
 		} else if (!strcmp(opt, "only-replicate")) {
 		int	err;
 			db_regex = calloc(1, sizeof(*db_regex));
@@ -308,14 +369,19 @@ stop_master_read_thread()
 }
 
 static void
-stop_slave_write_thread() {
-	pthread_cancel(slave_thread);
-	if (pthread_join(slave_thread, NULL) == -1) {
-		logmsg("cannot join slave thread: %s",
-				strerror(errno));
-		return;
+stop_slave_write_thread()
+{
+int	i;
+	for (i = 0; i < nwriters; ++i) {
+		pthread_cancel(writers[i].wr_thread);
+		if (pthread_join(writers[i].wr_thread, NULL) == -1) {
+			logmsg("cannot join slave thread: %s",
+					strerror(errno));
+		}
+		mysql_close(writers[i].wr_conn);
+		writers[i].wr_status = ST_STOPPED;
 	}
-	logmsg("slave thread stopped");
+	logmsg("slave threads stopped");
 }
 
 static int
@@ -353,9 +419,20 @@ read_master_logs(p)
 {
 	set_thread_name("reader");
 
-	if (retrieve_binlog_position() == 0)
+	logmsg("waiting for writers to become ready...");
+
+	pthread_mutex_lock(&wi_mtx);
+	while (writers_initialising > 0)
+		pthread_cond_wait(&wi_cond, &wi_mtx);
+	pthread_mutex_unlock(&wi_mtx);
+
+	logmsg("all writers ready");
+
+	if (binlog_file) {
+		binlog_pos = lowest_log_pos;
 		logmsg("resuming replication at %s,%lu",
 			binlog_file, (unsigned long) binlog_pos);
+	}
 
 	process_master_logs_once();
 
@@ -380,44 +457,67 @@ char		 lastdb[128];
 	 * always proceeded by a BEGIN or another query on the same database.
 	 */
 
-char		buf[BINLOG_NAMELEN + 10];
-unsigned long	len;
-	int4store(buf, (uint32_t) binlog_pos);
+char		 buf[BINLOG_NAMELEN + 10];
+	/* So we don't hold rst_mtx across simple_command() */
+char		*curfile;
+logpos_t	 curpos;
+unsigned long	 len;
+
+	pthread_mutex_lock(&rst_mtx);
+	curfile = strdup(binlog_file);
+	curpos = binlog_pos;
+	pthread_mutex_unlock(&rst_mtx);
+
+	int4store(buf, (uint32_t) curpos);
 	int2store(buf + 4, (uint16_t) 2);
 	int4store(buf + 6, (uint32_t) server_id);
-	len = strlen(binlog_file);
+	len = strlen(curfile);
 	if (len > BINLOG_NAMELEN) {
 		logmsg("%s,%lu: binlog name is too long",
-				binlog_file, (unsigned long) binlog_pos);
+				curfile, (unsigned long) curpos);
 		exit(1);
 	}
 
-	memcpy(buf + 10, binlog_file, len);
+	memcpy(buf + 10, curfile, len);
 
 	if (simple_command(master_conn, COM_BINLOG_DUMP, buf, len + 10, 1) != 0) {
 		logmsg("%s,%lu: error retrieving binlogs from server: (%d) %s",
-				binlog_file, (unsigned long) binlog_pos,
+				curfile, (unsigned long) curpos,
 				mysql_errno(master_conn), mysql_error(master_conn));
 		exit(1);
 	}
 
 	for (;;) {
 	logentry_t	*ent;
+		pthread_mutex_lock(&rst_mtx);
 		reader_st = ST_WAIT_FOR_MASTER;
+		pthread_mutex_unlock(&rst_mtx);
+
 		len = cli_safe_read(master_conn);
+
+		pthread_mutex_lock(&rst_mtx);
 		reader_st = ST_QUEUEING;
 
 		if (master_thread_stop) {
 			logmsg("shutting down");
+			pthread_mutex_unlock(&rst_mtx);
 			mysql_close(master_conn);
+
+			pthread_mutex_lock(&rst_mtx);
 			reader_st = ST_STOPPED;
 			master_thread_stop = 0;
+			free(curfile);
+			free(binlog_file);
+			binlog_file = NULL;
+			pthread_mutex_unlock(&rst_mtx);
+
 			return 1;
 		}
 
+
 		if (len == packet_error) {
 			logmsg("%s,%lu: error retrieving binlogs from server: (%d) %s",
-				binlog_file, (unsigned long) binlog_pos,
+				curfile, (unsigned long) curpos,
 				mysql_errno(master_conn), mysql_error(master_conn));
 			exit(1);
 		}
@@ -425,16 +525,19 @@ unsigned long	len;
 		if (len < 8 && master_conn->net.read_pos[0] == 254) {
 			logmsg("no more logs!");
 			reader_st = ST_STOPPED;
+			pthread_mutex_unlock(&rst_mtx);
 			return 1;
 		}
+
+		pthread_mutex_unlock(&rst_mtx);
 
 		if ((ent = parse_binlog(master_conn->net.read_pos + 1, len - 1)) == NULL) {
 			logmsg("failed parsing binlog");
 			exit(1);
 		}
 
-		ent->le_file = strdup(binlog_file);
-		binlog_pos = ent->le_pos;
+		ent->le_file = strdup(curfile);
+		curpos = ent->le_pos;
 
 		if (ent->le_database[0])
 			strlcpy(lastdb, ent->le_database, sizeof(lastdb));
@@ -442,17 +545,30 @@ unsigned long	len;
 			strlcpy(ent->le_database, lastdb, sizeof(ent->le_database));
 
 		if (ent->le_type == ET_ROTATE && ent->le_time != 0) {
-			strdup_free(&binlog_file, ent->le_info);
-			logmsg("rotating to %s,4", binlog_file);
+			strdup_free(&curfile, ent->le_info);
+			curpos = 4;
+			logmsg("rotating to %s,4", curfile);
 			free_log_entry(ent);
+
+			pthread_mutex_lock(&rst_mtx);
+			strdup_free(&binlog_file, curfile);
+			binlog_pos = 4;
+			pthread_mutex_unlock(&rst_mtx);
 		} else {
+			pthread_mutex_lock(&rst_mtx);
+			binlog_pos = curpos;
+			pthread_mutex_unlock(&rst_mtx);
+
 			if ((db_regex == NULL || regexec(db_regex, ent->le_database, 0, NULL, 0) == 0) &&
-			    (ent->le_type == ET_INTVAR || ent->le_type == ET_QUERY))
-				lq_put(&log_queue, ent);
-			else {
+			    (ent->le_type == ET_INTVAR || ent->le_type == ET_QUERY)) {
+			writer_t	*writer;
+				writer = get_writer_for_dbname(ent->le_database);
+				lq_put(&writer->wr_log_queue, ent);
+			} else {
 				free_log_entry(ent);
 			}
 		}
+
 	}
 }
 
@@ -641,12 +757,9 @@ static void
 lq_get_cleanup(mtx)
 	void *mtx;
 {
+int	i;
 	logmsg("shutting down");
 	pthread_mutex_unlock((pthread_mutex_t *) mtx);
-	mysql_close(slave_conn);
-	pthread_mutex_lock(&wst_mtx);
-	writer_st = ST_STOPPED;
-	pthread_mutex_unlock(&wst_mtx);
 }
 
 static logentry_t *
@@ -684,28 +797,19 @@ logentry_t	*ent;
 static int
 start_slave_write_thread()
 {
+int	i;
 	pthread_mutex_lock(&wst_mtx);
-	if (writer_st != ST_STOPPED)
-		return -1;
-	
-	writer_st = ST_INITIALISING;
+	for (i = 0; i < nwriters; i++)
+		if (writers[i].wr_status != ST_STOPPED)
+			return -1;
+
+	writers_initialising = nwriters;
 	pthread_mutex_unlock(&wst_mtx);
 	
-	if ((slave_conn = mysql_init(NULL)) == NULL) {
-		logmsg("out of memory in mysql_init");
-		return 0;
+
+	for (i = 0; i < nwriters; ++i) {
+		pthread_create(&writers[i].wr_thread, NULL, slave_write_thread, &writers[i]);
 	}
-
-	mysql_options(slave_conn, MYSQL_READ_DEFAULT_GROUP, "trainwreck-slave");
-
-	if (mysql_real_connect(slave_conn, slave_host, slave_user, slave_pass, NULL,
-				slave_port, NULL, 0) == NULL) {
-		logmsg("cannot connect to slave %s:%d: %s",
-				slave_host, slave_port, mysql_error(slave_conn));
-		return 0;
-	}
-
-	pthread_create(&slave_thread, NULL, slave_write_thread, NULL);
 	return 0;
 }
 
@@ -714,6 +818,9 @@ slave_write_thread(p)
 	void *p;
 {
 logentry_t	*e;
+writer_t	*self = p;
+char		 namebuf[16];
+
 	/*
 	 * This thread is cancelled by the main thread when we want to stop 
 	 * replication.  However, we disallow cancellation at all times except 
@@ -723,45 +830,69 @@ logentry_t	*e;
 	 */
 	pthread_setcancelstate(PTHREAD_CANCEL_DISABLE, NULL);
 
-	set_thread_name("writer");
+	snprintf(namebuf, sizeof(namebuf), "writer-%d", self->wr_num);
+	set_thread_name(namebuf);
 
-	writer_st = ST_WAIT_FOR_ENTRY;
-	while ((e = lq_get(&log_queue)) != NULL) {
-		logmsg("%s,%lu", e->le_file, (unsigned long) e->le_pos);
+	self->wr_status = ST_INITIALISING;
 
-		writer_st = ST_EXECUTING;
-		if (mysql_select_db(slave_conn, e->le_database) != 0) {
+	if ((self->wr_conn = mysql_init(NULL)) == NULL) {
+		logmsg("out of memory in mysql_init");
+		return 0;
+	}
+
+	mysql_options(self->wr_conn, MYSQL_READ_DEFAULT_GROUP, "trainwreck-slave");
+
+	if (mysql_real_connect(self->wr_conn, slave_host, slave_user, slave_pass, NULL,
+				slave_port, NULL, 0) == NULL) {
+		logmsg("cannot connect to slave %s:%d: %s",
+				slave_host, slave_port, mysql_error(self->wr_conn));
+		return 0;
+	}
+
+	retrieve_binlog_position(self);
+
+	pthread_mutex_lock(&wi_mtx);
+	writers_initialising--;
+	pthread_cond_signal(&wi_cond);
+	pthread_mutex_unlock(&wi_mtx);
+	
+	self->wr_status = ST_WAIT_FOR_ENTRY;
+	while ((e = lq_get(&self->wr_log_queue)) != NULL) {
+		logmsg("%s,%lu [%d: %s]", e->le_file, (unsigned long) e->le_pos,
+				self->wr_num, e->le_database);
+
+		self->wr_status = ST_EXECUTING;
+		if (mysql_select_db(self->wr_conn, e->le_database) != 0) {
 			logmsg("%s,%lu: cannot select \"%s\": %s",
 				e->le_file, (unsigned long) e->le_pos,
-				e->le_database, mysql_error(slave_conn));
+				e->le_database, mysql_error(self->wr_conn));
 			exit(1);
 		}
 
 		if (e->le_type == ET_INTVAR) {
 		char	query[128];
-			/* info is e.g. INSERT_ID=3 */
 			snprintf(query, sizeof(query), "SET INSERT_ID=%llu",
 					(unsigned long long) e->le_insert_id);
-			if (execute_query(slave_conn, query) != 0) {
+			if (execute_query(self->wr_conn, query) != 0) {
 				logmsg("%s,%lu: query failed (%u: %s): \"%s\"",
 					e->le_file, (unsigned long) e->le_pos,
-					mysql_errno(slave_conn), mysql_error(slave_conn), 
+					mysql_errno(self->wr_conn), mysql_error(self->wr_conn), 
 					query);
 				exit(1);
 			}
 		} else if (e->le_type == ET_QUERY) {
 		char	*query;
 			query = e->le_info;
-			if (execute_query(slave_conn, query) != 0) {
+			if (execute_query(self->wr_conn, query) != 0) {
 				logmsg("%s,%lu: query failed (%u: %s): \"%s\"",
 					e->le_file, (unsigned long) e->le_pos,
-					mysql_errno(slave_conn), mysql_error(slave_conn), 
+					mysql_errno(self->wr_conn), mysql_error(self->wr_conn), 
 					query);
 				exit(1);
 			}
-			executed_up_to(e->le_file, e->le_pos);
+			executed_up_to(self, e->le_file, e->le_pos);
 		}
-		writer_st = ST_WAIT_FOR_ENTRY;
+		self->wr_status = ST_WAIT_FOR_ENTRY;
 	}
 	return NULL;
 }
@@ -827,57 +958,81 @@ char	*s;
 }
 
 static void
-executed_up_to(log, pos)
+executed_up_to(writer, log, pos)
+	writer_t *writer;
 	char const *log;
 	logpos_t pos;
 {
-static int	rstat = -1;
-char	buf[256];
-	if (rstat == -1) {
-		if ((rstat = open("logpos.stat", O_WRONLY | O_CREAT, 0600)) == -1) {
-			logmsg("cannot open state file \"logpos.stat\": %s",
-					strerror(errno));
+char	buf[BINLOG_NAMELEN + 4];
+
+	pthread_mutex_lock(&wst_mtx);
+	if (writer->wr_last_executed_file && !strcmp(log, writer->wr_last_executed_file)) {
+		if (pos == writer->wr_last_executed_pos) {
+			pthread_mutex_unlock(&wst_mtx);
+			return;
+		}
+	} else
+		strdup_free(&writer->wr_last_executed_file, log);
+	writer->wr_last_executed_pos = pos;
+	pthread_mutex_unlock(&wst_mtx);
+
+	if (writer->wr_rstat == 0) {
+		(void) snprintf(buf, sizeof(buf), "%d.logpos", writer->wr_num);
+		if ((writer->wr_rstat = open(buf, O_WRONLY | O_CREAT, 0600)) == -1) {
+			logmsg("cannot open state file \"%s\": %s",
+					buf, strerror(errno));
 			exit(1);
 		}
 	} else
-		lseek(rstat, 0, SEEK_SET);
+		(void) lseek(writer->wr_rstat, 0, SEEK_SET);
 
-	ftruncate(rstat, 0);
+	(void) ftruncate(writer->wr_rstat, 0);
 	int4store(buf, pos);
-	strlcpy(buf + 4, log, sizeof(buf) - 4);
-	write(rstat, buf, 4 + strlen(log));
-	fdatasync(rstat);
+	(void) strlcpy(buf + 4, log, sizeof(buf) - 4);
+	(void) write(writer->wr_rstat, buf, 4 + strlen(log));
+	(void) fdatasync(writer->wr_rstat);
 }
 
 static int
-retrieve_binlog_position()
+retrieve_binlog_position(writer)
+	writer_t *writer;
 {
 int		 rstat;
 struct stat	 st;
 char		*buf;
-	if ((rstat = open("logpos.stat", O_RDONLY)) == -1) {
-		logmsg("cannot open state file \"logpos.stat\": %s",
-				strerror(errno));
+char		 sname[128];
+	snprintf(sname, sizeof(sname), "%d.logpos", writer->wr_num);
+	if ((rstat = open(sname, O_RDONLY)) == -1) {
+		logmsg("cannot open state file \"%s\": %s",
+				sname, strerror(errno));
 		if (errno == ENOENT)
 			return 1;
 		exit(1);
 	}
 
 	if (fstat(rstat, &st) == -1) {
-		logmsg("cannot stat state file \"logpos.stat\": %s",
-				strerror(errno));
+		logmsg("cannot stat state file \"%s\": %s",
+				sname, strerror(errno));
 		exit(1);
 	}
 
 	buf = calloc(1, st.st_size + 1);
 	if (read(rstat, buf, st.st_size) != st.st_size) {
-		logmsg("short read on state file \"logpos.stat\": %s",
-				strerror(errno));
+		logmsg("short read on state file \"%s\": %s",
+				sname, strerror(errno));
 		exit(1);
 	}
 	
-	binlog_pos = uint4korr(buf);
-	strdup_free(&binlog_file, buf + 4);
+	writer->wr_last_executed_pos = uint4korr(buf);
+	strdup_free(&writer->wr_last_executed_file, buf + 4);
+
+	pthread_mutex_lock(&rst_mtx);
+	if (lowest_log_pos == 0 || writer->wr_last_executed_pos < lowest_log_pos)
+		lowest_log_pos = writer->wr_last_executed_pos;
+	if (binlog_file == NULL)
+		binlog_file = strdup(buf + 4);
+	pthread_mutex_unlock(&rst_mtx);
+
 	return 0;
 }
 
@@ -918,7 +1073,10 @@ service_status_request(cookie, args, arglen, desc, ndesc)
 	door_desc_t *desc;
 	uint_t ndesc;
 {
-char	c[3];
+char	 c[3];
+uchar_t	*st;
+size_t	 blen = 0, offs = 0;
+int	 i;
 	if (arglen < 1) {
 		c[0] = RR_INVALID_QUERY;
 		door_return(c, 1, NULL, 0);
@@ -932,10 +1090,61 @@ char	c[3];
 		return;
 
 	case RQ_STATUS:
-		c[0] = RR_OK;
-		c[1] = reader_st;
-		c[2] = writer_st;
-		door_return(c, 3, NULL, 0);
+		st = malloc(2 + nwriters);
+		st[0] = RR_OK;
+		pthread_mutex_lock(&rst_mtx);
+		st[1] = reader_st;
+		pthread_mutex_unlock(&rst_mtx);
+
+		pthread_mutex_lock(&wst_mtx);
+		for (i = 0; i < nwriters; i++)
+			st[2 + i] = writers[i].wr_status;
+		pthread_mutex_unlock(&wst_mtx);
+
+		door_return((char *) st, 2 + nwriters, NULL, 0);
+		return;
+
+	case RQ_READER_POSITION:
+		pthread_mutex_lock(&rst_mtx);
+		if (!binlog_file) {
+			pthread_mutex_unlock(&rst_mtx);
+			door_return(NULL, 0, NULL, 0);
+			return;
+		}
+
+		blen = strlen(binlog_file);
+		st = malloc(5 + blen);
+		st[0] = RR_OK;
+		int4store(st + 1, binlog_pos);
+		memcpy(st + 5, binlog_file, blen);
+		pthread_mutex_unlock(&rst_mtx);
+
+		door_return((char *) st, 5 + blen, NULL, 0);
+		return;
+
+	case RQ_WRITER_POSITION:
+		pthread_mutex_lock(&wst_mtx);
+		offs = 2;
+		st = alloca(1 + (6 + BINLOG_NAMELEN) * nwriters);
+		st[0] = RR_OK;
+		st[1] = nwriters;
+
+		for (i = 0; i < nwriters; ++i) {
+			if (!writers[i].wr_last_executed_file) {
+				int4store(st + offs, (uint32_t) 0);
+				offs += 4;
+				continue;
+			}
+
+			blen = strlen(writers[i].wr_last_executed_file);
+			int4store(st + offs, writers[i].wr_last_executed_pos);
+			int2store(st + offs + 4, (uint16_t) blen);
+			memcpy(st + offs + 6, writers[i].wr_last_executed_file, blen);
+			offs += 6 + blen;
+		}
+
+		pthread_mutex_unlock(&wst_mtx);
+		door_return((char *) st, offs, NULL, 0);
 		return;
 
 	case RQ_START:
@@ -950,9 +1159,32 @@ char	c[3];
 		door_return(c, 1, NULL, 0);
 		return;
 
+	case RQ_SHUTDOWN:
+		port_send(ctl_port, CTL_SHUTDOWN, NULL);
+		c[0] = RR_OK;
+		door_return(c, 1, NULL, 0);
+		return;
+
 	default:
 		c[0] = RR_INVALID_QUERY;
 		door_return(c, 1, NULL, 0);
 		return;
 	}
+}
+
+static writer_t *
+get_writer_for_dbname(name)
+	char const *name;
+{
+int	n = fnv_32a_str(name, FNV1_32A_INIT) % nwriters;
+	return &writers[n];
+}
+
+static void
+writer_init(wr)
+	writer_t *wr;
+{
+	memset(wr, 0, sizeof(*wr));
+	lq_init(&wr->wr_log_queue);
+	wr->wr_status = ST_STOPPED;
 }

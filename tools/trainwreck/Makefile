@@ -6,8 +6,9 @@ MYSQL_LIBS	= -L/usr/local/mysql/lib -R/usr/local/mysql/lib -lmysqlclient_r
 INCLUDES	=
 LIBS		= -lrt -ldoor
 PROG		= trainwreck
- SRCS		= 	\
+SRCS		= 	\
 	trainwreck.c	\
+	hash_32a.c	\
 
 OBJS		= $(SRCS:.c=.o)
 
@@ -16,8 +17,8 @@ all: $(PROG) twctl
 $(PROG): $(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(OBJS) -o $(PROG) $(MYSQL_LIBS) -lrt -ldoor
 
-twctl: twctl.c
-	$(CC) $(CFLAGS) $(CPPFLAGS) twctl.c -o twctl -ldoor
+twctl: twctl.o
+	$(CC) $(CFLAGS) $(CPPFLAGS) twctl.o -o twctl -ldoor
 
 .c.o:
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(MYSQL_INCLUDES) -c $<
