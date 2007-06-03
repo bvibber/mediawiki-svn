@@ -149,12 +149,28 @@ class Thread {
 		$this->updateRecord();
 	}
 	
-	function hasSubject() {
-		return $this->subject != null;
+	function wikilink() {
+		return $this->rootPost()->getTitle()->getPrefixedText();
+	}
+	
+	function hasDistinctSubject() {
+		if( $this->superthread() ) {
+			return $this->superthread()->subjectWithoutIncrement()
+				!= $this->subjectWithoutIncrement();
+		} else {
+			return true;
+		}
 	}
 
 	function subject() {
+		return $this->rootPost()->getTitle()->getText();
 		return $this->subject;
+	}
+	
+	function subjectWithoutIncrement() {
+		$foo = explode( ' ', $this->subject() );
+		array_pop($foo);
+		return implode( ' ', $foo );
 	}
 	
 	function setSubject($s) {

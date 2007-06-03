@@ -69,6 +69,7 @@ class LqtView {
 		$this->user_color_index = 1;
 	}
 
+	static protected $occupied_titles = array();
 
 	/** h1, h2, h3, etc. */
 	var $headerLevel = 1;
@@ -158,7 +159,7 @@ HTML;
 	private function showEditingFormInGeneral( $thread, $edit_type, $edit_applies_to ) {
 		// If there is no article (reply or new), we need a randomly-generated title.
 		// On the first pass, we generate one. After that, we find it in the request.
-		if ($edit_type == 'summarize' && $edit_applies_to->summary() ) {
+/*		if ($edit_type == 'summarize' && $edit_applies_to->summary() ) {
 			$article = $edit_applies_to->summary();
 		} else if ( $thread == null ) {
 			$rt = Title::newFromURL( $this->request->getVal('lqt_edit_post') );
@@ -168,11 +169,48 @@ HTML;
 			$article = $edit_applies_to->summary();
 		} else {
 			$article = $thread->rootPost();
-		}
+		}*/
+		
+		/*
+		 EditPage needs an Article. If there isn't a real one, as for new posts,
+		 replies, and new summaries, we need to generate a title. Auto-generated
+		 titles are based on the subject line. If the subject line is blank, we
+		 can temporarily use a random scratch title. It's fine if the title changes
+		 throughout the edit cycle, since the article doesn't exist yet anyways.
+		*/
+/*		if ($edit_type == 'summarize' && $edit_applies_to->summary() ) {
+			$article = $edit_applies_to->summary();
+		} else if ($edit_type == 'summarize') {
+			$t = $this->newSummaryTitle($edit_applies_to);
+			$article = new Article($t);
+		} else if ( $thread == null ) {
+			$subject = $this->request->getVal('lqt_subject_field', '');
+			if ( $subject != '' ) {
+				$t = Title::newFromText($subject, NS_LQT_THREAD);
+			} else if ($edit_type == 'new') {
+				$t = $this->scratchTitle();
+			} else if ($edit_type == 'reply') {
+				$t = $this->newReplyTitle( $edit_applies_to );
+			}
+			$article = new Article($t);
+		} else {
+			$article = $thread->rootPost();
+		}*/
 
+		// temporarily ignoring summaries while we figure this out.
+		if ( $thread == null ) {
+			$subject = $this->request->getVal('lqt_subject_field', '');
+			if ($edit_type == 'new') {
+				$t = $this->newScratchTitle($subject);
+			} else if ($edit_type == 'reply') {
+				$t = $this->newReplyTitle($subject, $edit_applies_to);
+			}
+			$article = new Article($t);
+		} else {
+			$article = $thread->rootPost();
+		}
 		$e = new EditPage($article);
 		$e->suppressIntro = true;
-				
 		
 		$e->editFormTextBeforeContent .=
 			$this->perpetuate('lqt_edit_post', 'hidden') .
@@ -182,7 +220,8 @@ HTML;
 		
 		if ( /*$thread == null*/ $edit_type=='new' || ($thread && $thread->superthread() == null) ) {
 			// This is a top-level post; show the subject line.
-			$subject = $this->request->getVal('lqt_subject_field', $thread ? $thread->subject() : '');
+			$sbjtxt = $thread ? $thread->subjectWithoutIncrement() : '';
+			$subject = $this->request->getVal('lqt_subject_field', $sbjtxt);
 			$e->editFormTextBeforeContent .= <<<HTML
 			<label for="lqt_subject_field">Subject: </label>
 			<input type="text" size="60" name="lqt_subject_field" id="lqt_subject_field" value="$subject"><br>
@@ -200,6 +239,7 @@ HTML;
 		// unwanted side-effects.
 		if ( $this->output->getRedirect() != '' ) {
 			$this->output->redirect( $this->title->getFullURL() );
+//			$this->output->redirect('');
 		}
 		
 		// For replies and new posts, insert the associated thread object into the DB.
@@ -215,18 +255,85 @@ HTML;
 		if ($edit_type == 'summarize' && $e->didSave) {
 			$edit_applies_to->setSummary( $article );
 		}
+		
+		// Move the thread and replies if subject changed.
+		if( $edit_type == 'editExisting' && $e->didSave ) {
+			$subject = $this->request->getVal('lqt_subject_field', '');
+			if ( $subject && $subject != $thread->subjectWithoutIncrement() ) {
+				$this->renameThread($thread, $subject);
+			}
+		}
 
-		$subject = $this->request->getVal('lqt_subject_field', '');
+/*		$subject = $this->request->getVal('lqt_subject_field', '');
 		if ( $e->didSave && $subject != '' ) {
 			$thread->setSubject( Sanitizer::stripAllTags($subject) );
 		} else if ( $e->didSave && $edit_type !='summarize' && $subject == '' && !$thread->superthread() ) {
 				$thread->setSubject( '«no subject»' );
+		} */
+	}
+	
+	function renameThread($t,$s) {
+		$this->simplePageMove($t->rootPost()->getTitle(),$s);
+		// TODO here create a redirect from old page to new.
+		foreach( $t->subthreads() as $st ) {
+			$this->renameThread($st, $s);
 		}
 	}
 	
 	function scratchTitle() {
 		$token = md5(uniqid(rand(), true));
-		return Title::newFromText( "Post:$token" );
+		return Title::newFromText( "Thread:$token" );
+	}
+	function newScratchTitle($subject) {
+		return $this->incrementedTitle( $subject?$subject:"«no subject»", NS_LQT_THREAD );
+	}
+	function newSummaryTitle($t) {
+		return $this->incrementedTitle( "Summary of " . $t->subject(), NS_LQT_SUMMARY );
+	}
+	function newReplyTitle($s, $t) {
+		return $this->incrementedTitle( $t->subjectWithoutIncrement(), NS_LQT_THREAD );
+	}
+	/** Keep trying titles starting with $basename until one is unoccupied. */
+	function incrementedTitle($basename, $namespace) {
+		$i = 1; do {
+			$t = Title::newFromText( $basename.'_'.$i, $namespace );
+			$i++;
+		} while ( $t->exists() || in_array($t->getPrefixedDBkey(), self::$occupied_titles) );
+		return $t;
+	}
+
+	/* Adapted from MovePageForm::doSubmit in SpecialMovepage.php. */
+	function simplePageMove( $old_title, $new_subject ) {
+		if ( $this->user->pingLimiter( 'move' ) ) {
+			$this->out->rateLimited();
+			return false;
+		}
+
+		# Variables beginning with 'o' for old article 'n' for new article
+
+		$ot = $old_title;
+		$nt = $this->incrementedTitle($new_subject, $old_title->getNamespace());
+
+		self::$occupied_titles[] = $nt->getPrefixedDBkey();
+
+		# don't allow moving to pages with # in
+		if ( !$nt || $nt->getFragment() != '' ) {
+			echo "malformed title"; // TODO real error reporting.
+			return false;
+		}
+
+		$error = $ot->moveTo( $nt, true, "changed thread subject" );
+		if ( $error !== true ) {
+			var_dump($error);
+			echo "something bad happened trying to rename the thread."; // TODO
+			return false;
+		}
+
+		# Move the talk page if relevant, if it exists, and if we've been told to
+		 // TODO we need to implement correct moving of talk pages everywhere later.
+		// Snipped.
+
+		return true;
 	}
 
 	/*************************
@@ -262,7 +369,8 @@ HTML;
 		if ( $operator == 'lqt_reply_to' ) {
 			$query = array( 'lqt_reply_to' => $operand ? $operand->id() : null );
 		} else if ($operator == 'lqt_edit_post') {
-			$query = array( 'lqt_edit_post' => $operand ? $operand->rootPost()->getTitle()->getPrefixedURL() : null );
+			$query = array( 'lqt_edit_post' => $operand ? $operand->id() : null );
+//			$query = array( 'lqt_edit_post' => $operand ? $operand->rootPost()->getTitle()->getPrefixedURL() : null );
 		} else if ($operator == 'lqt_new_thread_form' ) {
 			$query = array( 'lqt_new_thread_form' => '1' );
 		} else {
@@ -272,7 +380,6 @@ HTML;
 	}
 
 	function showThreadFooter( $thread ) {
-
 		$color_number = $this->selectNewUserColor( $thread->rootPost()->originalAuthor() );
 		$this->output->addHTML(wfOpenElement('ul', array('class'=>"lqt_footer" )));
 
@@ -314,12 +421,12 @@ HTML;
 
 	function showRootPost( $thread ) {
 		$post = $thread->rootPost();
-		
+
 /*		$color_number = $this->selectNewUserColor( $thread->rootPost()->originalAuthor() );
 		$this->openDiv( "lqt_post lqt_post_color_$color_number" );*/
 		$this->openDiv( 'lqt_post' );
 		
-		if( $this->commandApplies( 'lqt_edit_post', $post ) ) {
+		if( $this->commandAppliesToThread( 'lqt_edit_post', $thread ) ) {
 			$this->showPostEditingForm( $thread );
 		} else{
 			$this->showPostBody( $post );
@@ -336,7 +443,7 @@ HTML;
 	}
 
 	function showThreadHeading( $thread ) {
-		if ( $thread->hasSubject() )
+		if ( $thread->hasDistinctSubject() )
 			$this->output->addHTML( wfElement( "h{$this->headerLevel}",
 				                               array('class'=>'lqt_header'),
 				                               $thread->subject() ) );
@@ -496,8 +603,8 @@ HTML
 
 class ThreadPermalinkView extends LqtView {
 	function showThreadHeading( $thread ) {
-		if ( $thread->hasSubject() && $this->headerLevel == 1 ) {
-			$this->output->setPageTitle( "Thread: " . $thread->subject() );
+		if ( $this->headerLevel == 1 ) {
+			$this->output->setPageTitle( $thread->wikilink() );
 		} else {
 			parent::showThreadHeading($thread);
 		}
