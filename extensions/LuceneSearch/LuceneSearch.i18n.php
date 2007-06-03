@@ -333,7 +333,9 @@ $1\n
 Pesquisar por $3 $9",
 	'lucenefallback'        => "Há um problema com a busca neste wiki.
 Provavelmente seja apenas uma falha temporária; tente novamente mais tarde,
-ou procure por conteúdos neste wiki através de um mecanismo externo:\n"
+ou procure por conteúdos neste wiki através de um mecanismo externo:\n",
+	'searchall'             => 'tudo',
+	'searchincategory'      => 'na categoria',
 );
 $wgLuceneSearchMessages['ru'] = array(
 	'searchnumber'          => "<strong>Результаты $1—$2 из $3</strong>",

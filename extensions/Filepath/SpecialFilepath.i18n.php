@@ -98,9 +98,12 @@ $wgFilepathMessages['oc'] = array(
 	'filepath_submit' => 'Camin',
 );
 $wgFilepathMessages['pt'] = array(
-	'filepath'        => 'Diretório do ficheiro',
-	'filepath_page'   => 'Ficheiro:',
-	'filepath_submit' => 'Diretório',
+	'filepath'         => 'Diretório do ficheiro',
+	'filepath_page'    => 'Ficheiro:',
+	'filepath_submit'  => 'Diretório',
+	'filepath-summary' => 'Através dsta página especial é possível descobrir o endereço completo de um determinado ficheiro. As imagens serão exibidas em sua resolução máxima, outros tipos de ficheiros serão iniciados automaticamente em seus programas correspondentes.
+
+	Entre com o nome do ficheiro sem utilizar o prefixo "{{ns:image}}:".',
 );
 $wgFilepathMessages['pt-br'] = array(
 	'filepath'        => 'Diretório do arquivo',

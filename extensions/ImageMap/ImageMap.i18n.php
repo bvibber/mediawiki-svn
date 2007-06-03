@@ -194,6 +194,21 @@ function efImageMapMessages() {
 'imagemap_description'          => 'A prepaus d\'aqueste imatge',
 ),
 
+/* Portuguese (Lugusto) */
+'pt' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: é necessário especificar uma imagem na primeira linha',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: imagem inválida ou inexistente',
+'imagemap_no_link'              => '&lt;imagemap&gt;: não foi encontrado um link válido ao final da linha $1',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: título inválido no link da linha $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: coordenadas insuficientes para formar uma figura na linha $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: figura não reconhecida na linha $1. Cada linha precisa iniciar com: '.
+								   'default, rect, circle ou poly',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: é necessário fornecer ao menos uma especificação de área',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordenada inválida na linha $1. 0 necessário que seja um número',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: especificação desc inválida. 0 necessário que seja uma dentre: <tt>$1</tt>',
+'imagemap_description'          => 'Sobre esta imagem',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: musí mať na prvom riadku uvedený obrázok',

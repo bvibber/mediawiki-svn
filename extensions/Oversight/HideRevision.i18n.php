@@ -431,6 +431,9 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 'hiderevision-error-current' => 'Não é possível ocultar a edição mais recente de uma página. Reverta a alteração primeiro.',
 'hiderevision-error-delete' => 'Não é possível arquivar; não teria sido eliminada antes da tentativa?',
 'hiderevision-archive-status' => 'Revisão ocultada de $1: $2',
+'oversight-nodiff' => 'Não foi possível verificar as alterações, uma vez que não há edições anteriores para esta página. Motivos possíveis:
+*A página foi eliminada
+*Esta edição oculta era a primeira edição da página',
 // Logging
 'oversight-log-hiderev' => 'removida uma edição de $1',
 // Oversight review page
