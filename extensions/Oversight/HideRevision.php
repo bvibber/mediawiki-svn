@@ -487,12 +487,12 @@ function hrInsertRevision( $dbw, $title, $rev, $reason ) {
  * Special page handler function for Special:Oversight
  */
 function wfSpecialOversight( $par=null ) {
-	global $wgRequest, $wgUser;
+	global $wgRequest, $wgUser, $wgRCMaxAge;
 	$revision = $wgRequest->getIntOrNull( 'revision' );
 	if ( $wgRequest->getCheck( 'diff' ) && !is_null( $revision )) {
 		sosShowDiff( $revision);
 	} else if( is_null( $revision ) ) {
-		sosShowList();
+		sosShowList( $wgRCMaxAge );
 	} else {
 		sosShowRevision( $revision );
 	}
@@ -503,7 +503,7 @@ function sosShowList( $from=null ) {
 
 	$fromTime = $dbr->timestamp( $from );
 	$result = sosGetRevisions( $dbr,
-		array( 'hidden_on_timestamp < ' . $dbr->addQuotes( $fromTime ) ) );
+		array( 'hidden_on_timestamp >= ' . $dbr->addQuotes( $fromTime ) ) );
 
 	global $wgOut;
 	$wgOut->addWikiText( wfMsgNoTrans( 'oversight-header' ) );

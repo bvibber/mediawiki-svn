@@ -48,7 +48,7 @@ database administrator if you make a mistake.",
 'oversight-difference' => '(Difference from previous remaining revision)',
 'oversight-prev' => 'Last previous revision',
 'oversight-hidden' => 'Hidden revision',
-'oversight-header' => 'Below is a list of revisions permanently hidden from public view.
+'oversight-header' => 'Below is a list of revisions recently permanently hidden from public view.
 Releasing this information can result in permanent loss of Oversight privileges.',
 ),
 
