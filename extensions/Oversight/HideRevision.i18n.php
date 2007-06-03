@@ -176,8 +176,8 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 'oversight-difference' => '(שינויים מהגרסה הקודמת שנשארה)',
 'oversight-prev' => 'הגרסה הקודמת',
 'oversight-hidden' => 'גרסה מוסתרת',
-'oversight-header' => 'להלן רשימת גרסאות שנמחקו לצמיתות מתצוגה ציבורית.
-שיחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
+'oversight-header' => 'להלן רשימת גרסאות שנמחקו לאחרונה לצמיתות מתצוגה ציבורית.
+שחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
 ),
 
 /* Italian (BrokenArrow) */
