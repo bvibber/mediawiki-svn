@@ -268,6 +268,24 @@ function efImageMapMessages() {
 ),
 );
 
+/* Danish (Wegge) */
+'da' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: Billedet er ugyldigt eller findes ikke',
+'imagemap_no_link'              => '&lt;imagemap&gt;: Fandt ikke en brugbar henvisning i slutningen af linje $1',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: Ugyldig titel i henvisning på linje $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: Utilstrækkeligt antal koordinater til omridset i linje $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: Ukendt omridstype i linje $1. Alle linjer skal starte med en af:'.
+								   'default, rect, circle or poly',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: Der skal angives omrids af mindst et område',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: Ugyldig koordinat på linje $1, koordinater skal være tal',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Ugyldig specifikation af desc, skal være en af: <tt>$1</tt>',
+'imagemap_description'          => 'Om dette billede',
+# Note to translators: keep the same order
+'imagemap_desc_types'           => 'top-højre, bund-højre, bund-venstre, top-venstre, ingen',
+),
+
+
 	/* Kazakh default, fallback to kk-kz */
 	$messages['kk'] = $messages['kk-kz'];
 
