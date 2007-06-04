@@ -28,8 +28,7 @@ and provide a caption for the resulting image.
 
 == 2. Requirements ==
 
-The Random Image extension should be compatible with MediaWiki 1.5 upwards,
-including the 1.10alpha development version.
+The RandomImage extension requires MediaWiki 1.7.0 or above.
 
 == 3. Installing the extension ==
 
