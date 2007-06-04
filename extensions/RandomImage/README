@@ -1,6 +1,6 @@
 RANDOM IMAGE EXTENSION
 
-	Version 1.1
+	Version 1.2
 	© 2006 Rob Church
 
 This is free software licenced under the GNU General Public Licence. Please
@@ -79,6 +79,11 @@ Version 1.0
 Version 1.1
 	Introduced $wgRandomImageNoCache to disable parser cache on pages using
 	the tag; defaults to off
+	
+04/06/2007
+Version 1.2
+	Bug fix and minor code tweaks
+	If no image is selected in the first pass, a further attempt is made
 	
 == 7. Feedback ==
 

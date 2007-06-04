@@ -77,7 +77,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		}
 		
 		function pickImage() {
-			$dbr =& wfGetDB( DB_SLAVE );
+			$dbr = wfGetDB( DB_SLAVE );
 			$page = $dbr->tableName( 'page' );
 			$nspc = NS_IMAGE;
 			$rand = wfRandom();
@@ -107,6 +107,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 		
 		function render( $caption ) {
 			$title = $this->pickImage();
+			# One more attempt
+			if( !$title )
+				$title = $this->pickImage();
 			if( $title ) {
 				$wiki = $this->imageMarkup( $title, $caption );
 				$output = $this->parser->parse( $wiki, $this->parser->getTitle(), $this->parser->getOptions(), false, false );
@@ -120,7 +123,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 } else {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
-	die( 1 );
+	exit( 1 );
 }
 
 ?>
