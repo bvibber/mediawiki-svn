@@ -54,6 +54,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 7691) Deletion log now shown when creating a new article, following
   MediaWiki:Noarticletext(anon) or MediaWiki:Newarticletext(anon).
   current user.
+* Added variables 'wgRestrictionEdit' and 'wgRestrictionMove' for JS to header
 
 == Bugfixes since 1.10 ==
 
@@ -107,6 +108,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Add Google Wireless Transcoder to the Unicode editing blacklist
 * (bug 10083) Fix for Special:Version breakage on PHP 5.2 with some hooks
 * (bug 3624) TeX: \ker, \hom, \arg, \dim treated like \sin & \cos
+* (bug 10132, 10134) Restore back-compatibility Image::imageUrl() function
+* (bug 10113) Fix double-click for view source on protected pages
 
 
 == MediaWiki API changes since 1.10 ==
@@ -166,6 +169,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Burmese (my)
 * Norwegian (no)
 * Polish (pl)
+* Portuguese (pt)
 * Russian (ru)
 * Slovak (sk)
 * Shona (sn)
