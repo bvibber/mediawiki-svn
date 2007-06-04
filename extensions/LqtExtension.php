@@ -260,7 +260,7 @@ HTML;
 		if( $edit_type == 'editExisting' && $e->didSave ) {
 			$subject = $this->request->getVal('lqt_subject_field', '');
 			if ( $subject && $subject != $thread->subjectWithoutIncrement() ) {
-				$this->renameThread($thread, $subject);
+				//$this->renameThread($thread, $subject);
 			}
 		}
 
@@ -656,38 +656,3 @@ class ThreadPermalinkView extends LqtView {
 
 }
 
-/*
- The Thread special page pseudo-namespace follows. We have to do this goofy wgExtensionFunctions
- run-around because the files required by SpecialPage aren't required_onced() yet by the time
- this file is. Don't ask me why.
-*/
-
-$wgExtensionFunctions[] = 'wfLqtSpecialThreadPage';
-
-function wfLqtSpecialThreadPage() {
-	global $wgMessageCache;
-
-	require_once('SpecialPage.php');
-	
-    $wgMessageCache->addMessage( 'thread', 'Thread' );
-	
-	class SpecialThreadPage extends SpecialPage {
-
-		function __construct() {
-			SpecialPage::SpecialPage( 'Thread' );
-			SpecialPage::$mStripSubpages = false;
-			$this->includable( false );
-		}
-
-		function execute( $par = null ) {
-			global $wgOut, $wgRequest, $wgTitle, $wgArticle, $wgUser;
-
-			$this->setHeaders();
-			
-			$view = new ThreadPermalinkView( $wgOut, $wgArticle, $wgTitle, $wgUser, $wgRequest );
-			$view->show();
-		}
-	}
-	
-	 SpecialPage::addPage( new SpecialThreadPage() );
-}
