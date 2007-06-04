@@ -40,7 +40,7 @@ abstract public class HttpHandler extends Thread {
 	protected String version;
 	protected String postData;
 
-	protected final int BUF_SIZE = 4096;
+	protected final int BUF_SIZE = 8192;
 	protected final char[] outputBuffer = new char[BUF_SIZE];
 	protected int bufLength = 0;
 
@@ -229,9 +229,9 @@ abstract public class HttpHandler extends Thread {
 		char[] s = (sout+"\r\n").toCharArray(); 
 		if(bufLength + s.length >= BUF_SIZE)
 			flushOutput();
+		// FIXME: what if array is 2x larger than buffer?
 		System.arraycopy(s,0,outputBuffer,bufLength,s.length);
 		bufLength+=s.length;
-		//ostrm.writeBytes(sout+"\r\n");
 	}
 
 	/** Sending raw data to client */

@@ -31,6 +31,7 @@ import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
+import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
@@ -176,8 +177,7 @@ public class WikiIndexModifier {
 					if(!rec.isAlwaysAdd() && nonDeleteDocuments.contains(rec))
 						continue; // don't add if delete/add are paired operations
 					if(!checkPreconditions(rec))
-						continue; // article shoouldn't be added for some (heuristic) reason
-					transformArticleForIndexing(rec.getArticle()); // tranform record so that unnecessary stuff is deleted, e.g. some redirects
+						continue; // article shoouldn't be added for some (heuristic) reason					
 					IndexReportCard card = getReportCard(rec);
 					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),filters);
 					Document doc = (Document) ret[0];
@@ -236,26 +236,28 @@ public class WikiIndexModifier {
 	}
 	
 	/**
-	 * Changes the article, so that things we don't want to index are deleted,
-	 * e.g. it deletes redirects from nonmain namespace to article in main namespace
+	 * Generate the articles transient characterstics needed only for indexing, 
+	 * i.e. list of redirect keywords and Page Rank. 
 	 * 
-	 * @param rec
+	 * @param article
 	 */
-	public static void transformArticleForIndexing(Article ar) {
-		ArrayList<String> redirects = ar.getRedirects();
-		String ns = ar.getNamespace()+":";
+	protected static void transformArticleForIndexing(Article ar) {
+		ArrayList<Redirect> redirects = ar.getRedirects();
+		int ns = Integer.parseInt(ar.getNamespace());
+		ar.setRank(ar.getReferences()); // base rank value
 		if(redirects != null){
 			ArrayList<String> filtered = new ArrayList<String>();
 			// index only redirects from the same namespace
 			// to avoid a lot of unusable redirects from/to
 			// user namespace, but always index redirect FROM main
-			for(String r : redirects){
-				if(r.startsWith(ns) || r.startsWith("0:")) 
-					filtered.add(r.split(":",2)[1]);
-				//else
-					//log.info("Ignoring redirect "+r+" to "+ar);
+			for(Redirect r : redirects){
+				if((ns == 0 && r.getNamespace() == 0) || ns != 0){
+					filtered.add(r.getTitle());
+					ar.addToRank(r.getReferences()+1);
+				} else
+					log.debug("Ignoring redirect "+r+" to "+ar);
 			}
-			ar.setRedirects(filtered);
+			ar.setRedirectKeywords(filtered);
 		}
 	}
 	
@@ -374,6 +376,9 @@ public class WikiIndexModifier {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		WikiTokenizer tokenizer = null;
 		Document doc = new Document();
+
+		// tranform record so that unnecessary stuff is deleted, e.g. some redirects
+		transformArticleForIndexing(article); 
 		
 		// This will be used to look up and replace entries on index updates.
 		doc.add(new Field("key", article.getKey(), Field.Store.YES, Field.Index.UN_TOKENIZED));
@@ -383,7 +388,7 @@ public class WikiIndexModifier {
 		
 		// boost document title with it's article rank
 		Field title = new Field("title", article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);
-		//log.debug(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
+		//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
 		float rankBoost = calculateArticleRank(article.getRank()); 
 		title.setBoost(rankBoost);
 		doc.add(title);
@@ -394,9 +399,10 @@ public class WikiIndexModifier {
 		redirect.setBoost(rankBoost);
 		doc.add(redirect);
 		
-		// most significat words in the text, gets extra score, from analyzer 
+		// most significat words in the text, gets extra score, from analyzer
 		Field keyword = new Field("keyword", "", 
-				Field.Store.NO, Field.Index.TOKENIZED); 
+				Field.Store.NO, Field.Index.TOKENIZED);
+		keyword.setBoost(rankBoost);
 		doc.add(keyword);
 		
 		// the next fields are generated using wikitokenizer 
@@ -410,12 +416,12 @@ public class WikiIndexModifier {
 		String text = article.getContents();
 		if(article.isRedirect())
 			text=""; // for redirects index only the title
-		Object[] ret = Analyzers.getIndexerAnalyzer(text,filters,article.getRedirects());
+		Object[] ret = Analyzers.getIndexerAnalyzer(text,filters,article.getRedirectKeywords());
 		perFieldAnalyzer = (PerFieldAnalyzerWrapper) ret[0];
 		
 		// set boost for keyword field
-		tokenizer = (WikiTokenizer) ret[1];
-		keyword.setBoost(calculateKeywordsBoost(tokenizer.getTokens().size()));
+		// tokenizer = (WikiTokenizer) ret[1];
+		// keyword.setBoost(calculateKeywordsBoost(tokenizer.getTokens().size()));
 
 		return new Object[] { doc, perFieldAnalyzer };
 	}

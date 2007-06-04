@@ -80,16 +80,23 @@ public class FastWikiTokenizerTest {
 			showTokens(text);
 			text = "This is <!-- Unclosed";
 			showTokens(text);
-			text = "[[Category:Blah Blah?!]], and [[:Category:Link to category]]";
+			text = "[[Category:Blah Blah?!]], and [[:Category:Link to something]]";
 			showTokens(text);
 			text = "[[sr:Glavna stranica]], and [[:Category:Link to category]]";
 			showTokens(text);
 			text = "{{IPstack|name = Hundai}} '''[[Hypertext]] Transfer [[communications protocol|Protocol]]''' ('''HTTP''') is a method used to transfer or convey information on the [[World Wide Web]]. Its original purpose was to provide a way to publish and retrieve [[HTML]] pages.";
 			showTokens(text);
+			// test keyword extraction
+			FastWikiTokenizerEngine.KEYWORD_TOKEN_LIMIT = 10;
 			text = "[[First link]]\n== Some caption ==\n[[Other link]]";
 			showTokens(text);
 			text = "[[First]] second third fourth and so on goes the ... [[last link]]";
 			showTokens(text);
+			text = "{{Something| param = {{another}}[[First]]  } }} }} }} {{name| [[many]] many many tokens }} second third fourth and so on goes the ... [[good keyword]]";
+			showTokens(text);
+			
+			if(true)
+				return;
 			
 			ArticlesParser ap = new ArticlesParser("./test-data/indexing-articles.test");
 			ArrayList<TestArticle> articles = ap.getArticles();

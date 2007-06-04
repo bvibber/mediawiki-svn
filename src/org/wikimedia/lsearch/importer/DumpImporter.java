@@ -14,7 +14,8 @@ import org.mediawiki.importer.Page;
 import org.mediawiki.importer.Revision;
 import org.mediawiki.importer.Siteinfo;
 import org.wikimedia.lsearch.beans.Article;
-import org.wikimedia.lsearch.beans.Rank;
+import org.wikimedia.lsearch.beans.ArticleLinks;
+import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
@@ -26,11 +27,11 @@ public class DumpImporter implements DumpWriter {
 	Revision revision;
 	SimpleIndexWriter writer;
 	int count = 0, limit;
-	HashMap<String,Rank> ranks;
+	HashMap<String,ArticleLinks> ranks;
 	String langCode;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
-			Integer maxBufDocs, boolean newIndex, HashMap<String,Rank> ranks, String langCode){
+			Integer maxBufDocs, boolean newIndex, HashMap<String,ArticleLinks> ranks, String langCode){
 		Configuration.open(); // make sure configuration is loaded
 		writer = new SimpleIndexWriter(IndexId.get(dbname), optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;
@@ -44,18 +45,26 @@ public class DumpImporter implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		// get rank
+		// get reference count
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		Rank r = ranks.get(key);
-		int rank;
+		ArticleLinks r = ranks.get(key);
+		int references;
 		boolean isRedirect = r.redirectsTo != null; 
 		if(r == null){
-			rank = 0;
-			log.error("Rank for "+key+" is undefined, which should never happen.");
+			references = 0;
+			log.error("Reference count for "+key+" is undefined, which should never happen.");
 		} else
-			rank = r.links;
+			references = r.links;
+		// make list of redirects
+		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
+		if(r.redirected != null){
+			for(String rk : r.redirected){
+				String[] parts = rk.split(":",2);
+				redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],ranks.get(rk).links));
+			}
+		}		
 		// make article
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,rank,r.redirected);
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,references,redirects);
 		writer.addArticle(article);
 		count++;
 		if(limit >= 0 && count > limit)

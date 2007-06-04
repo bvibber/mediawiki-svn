@@ -72,9 +72,9 @@ public class WikiQueryParser {
 	/** boost for alias words from analyzer */
 	public final float ALIAS_BOOST = 0.5f; 
 	/** boost for title field */
-	public static float TITLE_BOOST = 4;	
+	public static float TITLE_BOOST = 8;	
 	public static float REDIRECT_BOOST = 0.2f;
-	public static float KEYWORD_BOOST = 1;
+	public static float KEYWORD_BOOST = 0.05f;
 	
 	/** Policies in treating field names:
 	 * 
@@ -239,7 +239,7 @@ public class WikiQueryParser {
 			} else if(fieldLevel != -1 && level>fieldLevel)
 				continue;
 			
-			if(Character.isLetter(c)){
+			if(Character.isLetterOrDigit(c)){
 				tokenType = fetchToken();
 				if(tokenType == TokenType.FIELD){
 					fieldLevel = level;
@@ -975,7 +975,6 @@ public class WikiQueryParser {
 						categories.add(q);
 					} else {
 						SpanTermQuery stq = new SpanTermQuery(new Term(fieldName,t.text()));
-						stq.setBoost(boost);
 						spans.add(stq);
 					}
 				} else if(q instanceof PhraseQuery){ // -> SpanNearQuery(slop=0,inOrder=true)
@@ -1013,6 +1012,7 @@ public class WikiQueryParser {
 				else{
 					// make a span-near query that has a slop 1/2 of tokenGap
 					span = new SpanNearQuery(spans.toArray(new SpanQuery[] {}),(KeywordsAnalyzer.tokenGap-1)/2,false);
+					span.setBoost(boost);
 				}
 			}
 			if(cat != null && span != null){

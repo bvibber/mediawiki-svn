@@ -32,7 +32,8 @@ public class KeywordsAnalyzer extends Analyzer{
 
 	public KeywordsAnalyzer(HashSet<String> keywords, FilterFactory filters){
 		ArrayList<String> k = new ArrayList<String>();
-		k.addAll(keywords);
+		if(keywords != null)
+			k.addAll(keywords);
 		tokens = new KeywordsTokenStream(k,filters);
 	}
 	
