@@ -153,6 +153,12 @@ class Thread {
 		return $this->rootPost()->getTitle()->getPrefixedText();
 	}
 	
+	function wikilinkWithoutIncrement() {
+		$foo = explode( ' ', $this->wikilink() );
+		array_pop($foo);
+		return implode( ' ', $foo );
+	}
+	
 	function hasDistinctSubject() {
 		if( $this->superthread() ) {
 			return $this->superthread()->subjectWithoutIncrement()
@@ -171,6 +177,10 @@ class Thread {
 		$foo = explode( ' ', $this->subject() );
 		array_pop($foo);
 		return implode( ' ', $foo );
+	}
+	
+	function increment() {
+		return array_pop( explode(' ', $this->subject()) );
 	}
 	
 	function setSubject($s) {

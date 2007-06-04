@@ -79,6 +79,14 @@ h1.lqt_header {
 	padding-right: 4.2em;
 }
 
+.lqt_subject_increment {
+	color: #999;
+	font-size: 50%;
+}
+/*h1:hover .lqt_subject_increment {
+	color: black;
+}*/
+
 .lqt_archive_widget {
 	/* floats to the right of the main h1 page title. */
 	float:right;

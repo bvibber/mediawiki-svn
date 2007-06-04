@@ -443,10 +443,16 @@ HTML;
 	}
 
 	function showThreadHeading( $thread ) {
-		if ( $thread->hasDistinctSubject() )
-			$this->output->addHTML( wfElement( "h{$this->headerLevel}",
-				                               array('class'=>'lqt_header'),
-				                               $thread->subject() ) );
+		if ( $thread->hasDistinctSubject() ) {
+			$html = $thread->subjectWithoutIncrement() .
+			        ' <span class="lqt_subject_increment">' .
+			        $thread->increment() . '</span>';
+			$this->output->addHTML( wfOpenElement( "h{$this->headerLevel}", array('class'=>'lqt_header') ) .
+			                        $html . wfCloseElement("h{$this->headerLevel}") );
+//			$this->output->addHTML( wfElement( "h{$this->headerLevel}",
+//				                               array('class'=>'lqt_header'),
+//				                               $html) );
+		}
 		if ( !$thread->superthread() && !$thread->summary() ) {
 			$url = $this->permalinkUrl( $thread, 'lqt_summarize=1' );
 			$this->output->addHTML( <<<HTML
