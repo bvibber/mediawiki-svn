@@ -65,7 +65,7 @@ public class SearchDaemon extends HttpHandler {
 			HashMap query = new QueryStringMap(uri);
 			SearchResults res = engine.search(IndexId.get(dbname),what,searchterm,query);
 			contentType = "text/plain";
-			if(res.isSuccess()){
+			if(res!=null && res.isSuccess()){
 				sendHeaders(200, "OK");
 				sendOutputLine(Integer.toString(res.getNumHits()));
 				for(ResultSet rs : res.getResults()){

@@ -9,7 +9,7 @@ import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.Page;
 import org.mediawiki.importer.Revision;
 import org.mediawiki.importer.Siteinfo;
-import org.wikimedia.lsearch.beans.Rank;
+import org.wikimedia.lsearch.beans.ArticleLinks;
 
 /**
  * Read a HashSet of titles from dump
@@ -20,7 +20,7 @@ import org.wikimedia.lsearch.beans.Rank;
 public class TitleReader  implements DumpWriter{
 	Page page;
 	Revision revision;
-	HashMap<String,Rank> titles = new HashMap<String,Rank>();
+	HashMap<String,ArticleLinks> titles = new HashMap<String,ArticleLinks>();
 
 	public void writeRevision(Revision revision) throws IOException {
 		this.revision = revision;		
@@ -30,9 +30,9 @@ public class TitleReader  implements DumpWriter{
 	}
 	public void writeEndPage() throws IOException {
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		titles.put(key,new Rank(0));		
+		titles.put(key,new ArticleLinks(0));		
 	}
-	public HashMap<String,Rank> getTitles() {
+	public HashMap<String,ArticleLinks> getTitles() {
 		return titles;
 	}
 	public void close() throws IOException {

@@ -54,7 +54,7 @@ public class SearchEngine {
 				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
 			SearchResults res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"));
-			if(res.isRetry()){
+			if(res!=null && res.isRetry()){
 				int retries = 0;
 				if(iid.isSplit()){
 					retries = iid.getSplitFactor()-2;

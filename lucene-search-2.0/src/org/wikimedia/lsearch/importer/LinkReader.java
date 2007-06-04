@@ -13,31 +13,31 @@ import org.mediawiki.importer.Page;
 import org.mediawiki.importer.Revision;
 import org.mediawiki.importer.Siteinfo;
 import org.wikimedia.lsearch.beans.Article;
-import org.wikimedia.lsearch.beans.Rank;
+import org.wikimedia.lsearch.beans.ArticleLinks;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.Localization;
 
 /** 
- * Reads page ranks, i.e. how many times a page is referenced
- *  within other articles.
+ * Reads page links and references, i.e. how many times a page 
+ * is referenced within other articles.
  *  
  * @author rainman
  *
  */
-public class RankReader implements DumpWriter {
-	static Logger log = Logger.getLogger(RankReader.class);
+public class LinkReader implements DumpWriter {
+	static Logger log = Logger.getLogger(LinkReader.class);
 	Page page;
 	Revision revision;
 	Siteinfo siteinfo;
 	/** ns:title -> number of referring articles */
-	HashMap<String,Rank> ranks = new HashMap<String,Rank>();
+	HashMap<String,ArticleLinks> links = new HashMap<String,ArticleLinks>();
 	HashSet<String> interwiki;
 	String langCode;
 
-	public RankReader(HashMap<String,Rank> ranks, String langCode){
-		this.ranks = ranks;
+	public LinkReader(HashMap<String,ArticleLinks> links, String langCode){
+		this.links = links;
 		if(langCode == null || langCode.equals(""))
 			langCode = "en";
 		this.langCode = langCode;
@@ -50,7 +50,7 @@ public class RankReader implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		Rank r = ranks.get(page.Title.Namespace+":"+page.Title.Text);
+		ArticleLinks r = links.get(page.Title.Namespace+":"+page.Title.Text);
 		// register redirect
 		String redirect = Localization.getRedirectTarget(revision.Text,langCode);
 		if( redirect !=null ){
@@ -64,47 +64,47 @@ public class RankReader implements DumpWriter {
 					title = parts[1];
 				}
 			}
-			r.redirectsTo = findRank(ns,title);
+			r.redirectsTo = findArticleLinks(ns,title);
 		} else // process links
-			processRanks(revision.Text,page.Title.Namespace);		
+			processLinks(revision.Text,page.Title.Namespace);		
 	}
 	
-	/** Find the rank object for the ns:title */
-	protected Rank findRank(int ns, String title){
+	/** Find the links object for the ns:title key */
+	protected ArticleLinks findArticleLinks(int ns, String title){
 		String key;
-		Rank rank;
+		ArticleLinks rank;
 		// try exact match
 		key = ns+":"+title;
-		rank = ranks.get(key);
+		rank = links.get(key);
 		if(rank != null)
 			return rank;
 		// try lowercase
 		key = ns+":"+title.toLowerCase();
-		rank = ranks.get(key);
+		rank = links.get(key);
 		if(rank != null)
 			return rank;
 		// try title case
 		key = ns+":"+WordUtils.capitalize(title);
-		rank = ranks.get(key);
+		rank = links.get(key);
 		if(rank != null)
 			return rank;
 		// try capitalizing at word breaks
 		key = ns+":"+WordUtils.capitalize(title,new char[] {' ','-','(',')','}','{','.',',','?','!'});
-		rank = ranks.get(key);
+		rank = links.get(key);
 		if(rank != null)
 			return rank;
 		
 		return null;
 	}
 	
-	/** Extract all links from this page, and increment ranks for linked pages */
-	protected void processRanks(String text, int namespace) {
+	/** Extract all links from this page, and increment ref count for linked pages */
+	protected void processLinks(String text, int namespace) {
 		Pattern linkPat = Pattern.compile("\\[\\[(.*?)(\\|(.*?))?\\]\\]");
 		Matcher matcher = linkPat.matcher(text);
 		int ns; String title;
 		boolean escaped;
 		
-		HashSet<Rank> links = new HashSet<Rank>(); 
+		HashSet<ArticleLinks> pagelinks = new HashSet<ArticleLinks>(); 
 		while(matcher.find()){
 			String link = matcher.group(1);
 			int fragment = link.lastIndexOf('#');
@@ -138,12 +138,12 @@ public class RankReader implements DumpWriter {
 				continue; // skip links from other namespaces into the main namespace
 			
 			// register as link
-			Rank target = findRank(ns,title);
+			ArticleLinks target = findArticleLinks(ns,title);			
 			if(target != null)
-				links.add(target);				
+				pagelinks.add(target);				
 		}
 		// increment page ranks 
-		for(Rank rank : links){
+		for(ArticleLinks rank : pagelinks){			
 			rank.links++;
 		}
 	}
@@ -159,8 +159,8 @@ public class RankReader implements DumpWriter {
 	public void writeStartWiki() throws IOException {
 		// nop		
 	}
-	public HashMap<String, Rank> getRanks() {
-		return ranks;
+	public HashMap<String, ArticleLinks> getRanks() {
+		return links;
 	}
 	
 }

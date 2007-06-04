@@ -48,15 +48,17 @@ public class FastWikiTokenizerEngine {
 	private char cl; // lowercased character
 	private boolean numberToken; // if the buffer holds a number token
 	private int headings = 0; // how many headings did we see
+	private int templateLevel = 0; // level of nestedness of templates
 	
 	private int prefixLen = 0;
 	private final char[] prefixBuf = new char[MAX_WORD_LEN];
 	private int semicolonInx = -1;
 	private final char[] keywordBuf = new char[MAX_WORD_LEN];
 	private int keywordLen = 0;
+	private int keywordTokens = 0; // number of tokens which can be keywords (i.e. which are not in templates)
 	
 	/** This many tokens from begining of text are eligable for keywords */ 
-	public static final int KEYWORD_TOKEN_LIMIT = 250;
+	public static int KEYWORD_TOKEN_LIMIT = 250;
 	
 	/** language code */
 	private String language;
@@ -77,7 +79,7 @@ public class FastWikiTokenizerEngine {
 	
 	
 	private void init(){
-		tokens = new ArrayList<Token>();
+		tokens = null;
 		categories = new ArrayList<String>();
 		interwikis = new HashMap<String,String>();
 		decomposer = UnicodeDecomposer.getInstance();
@@ -135,6 +137,8 @@ public class FastWikiTokenizerEngine {
 					new String(buffer, 0, length), start, start + length));
 			length = 0;
 			numberToken = false;
+			if(templateLevel == 0)
+				keywordTokens++;
 		}
 	}
 	
@@ -173,9 +177,9 @@ public class FastWikiTokenizerEngine {
 				if(length<buffer.length)
 					buffer[length++] = c;
 				// add dot and comma to digits if they are not at the beginning
-			} else if(numberToken && (c == '.' || c == ',')){
+			/* } else if(numberToken && (c == '.' || c == ',')){
 				if(length<buffer.length)
-					buffer[length++] = c; 
+					buffer[length++] = c; */ 
 			} else{
 				addToken();
 			}
@@ -270,12 +274,12 @@ public class FastWikiTokenizerEngine {
 	/** 
 	 * Decide if link that is currently being processed is to be appended to list of keywords
 	 * 
-	 * Criterion: link is within first 300 words, and before the 
-	 * first heading  
+	 * Criterion: link is within first KEYWORD_TOKEN_LIMIT words, before the 
+	 * first heading and not within a template
 	 * 
 	 */
 	protected boolean isGoodKeywordLink(){
-		return headings == 0 && tokens.size() <= KEYWORD_TOKEN_LIMIT;		
+		return headings == 0 && templateLevel == 0 && keywordTokens <= KEYWORD_TOKEN_LIMIT;		
 	}
 	
 	/** When encountering '=' check if this line is actually a heading */ 
@@ -322,6 +326,11 @@ public class FastWikiTokenizerEngine {
 		String prefix = "";
 		char ignoreEnd = ' '; // end of ignore block
 		int pipeInx = 0;
+		
+		if(tokens == null)
+			tokens = new ArrayList<Token>();
+		else 
+			return tokens; // already parsed
 		
 		// before starting, make sure this is not a redirect
 		if(isRedirect())
@@ -374,6 +383,18 @@ public class FastWikiTokenizerEngine {
 							cur++;
 							state = ParserState.TABLE_BEGIN;
 						}
+						continue;
+					} else
+						continue;
+				case '}':
+					addToken();
+					if(cur + 1 < textLength )
+						c1 = text[cur+1];
+					else 
+						continue; // last char in stream
+					
+					if(c1 == '}' && templateLevel>0){ // register end of previously started template
+						state = ParserState.TEMPLATE_END;
 						continue;
 					} else
 						continue;
@@ -526,12 +547,18 @@ public class FastWikiTokenizerEngine {
 				state = ParserState.WORD;
 				continue;
 			case TEMPLATE_BEGIN:
+				state = ParserState.WORD; // default next state in case of bad syntax
 				// ignore name of the template, index parameters
 				template_lookup: for( lookup = cur ; lookup < textLength ; lookup++ ){
 					switch(text[lookup]){
 					case '|':
-					case '}':
+						templateLevel++;
 						state = ParserState.WORD;
+						cur = lookup;
+						break template_lookup;
+					case '}':
+						templateLevel++;
+						state = ParserState.TEMPLATE_END;
 						cur = lookup;
 						break template_lookup;
 					// bad syntax, prevents text from being eaten up by lookup
@@ -542,7 +569,16 @@ public class FastWikiTokenizerEngine {
 						addLetter();
 						break template_lookup;
 					}					
-				}
+				}				
+				continue;			
+			case TEMPLATE_END:
+				if(c == '}'){
+					if(templateLevel > 0)
+						templateLevel--;
+					state = ParserState.WORD;
+					continue;
+				} else // not really end of template
+					state = ParserState.WORD;
 				continue;
 			default:
 				System.out.println("Parser Internal error, near '"+c+"' at index "+cur);

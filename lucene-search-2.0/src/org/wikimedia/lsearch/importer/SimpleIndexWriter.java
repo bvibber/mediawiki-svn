@@ -95,7 +95,6 @@ public class SimpleIndexWriter {
 	public void addArticle(Article a){
 		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
 			return; // don't add if preconditions are not met
-		WikiIndexModifier.transformArticleForIndexing(a);
 		IndexId target;
 		if(iid.isSingle())
 			target = iid;

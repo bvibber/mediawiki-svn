@@ -11,7 +11,7 @@ import org.apache.log4j.Logger;
 import org.mediawiki.dumper.ProgressFilter;
 import org.mediawiki.dumper.Tools;
 import org.mediawiki.importer.XmlDumpReader;
-import org.wikimedia.lsearch.beans.Rank;
+import org.wikimedia.lsearch.beans.ArticleLinks;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
@@ -95,19 +95,8 @@ public class Importer {
 
 			long start = System.currentTimeMillis();
 			
-			HashMap<String,Rank> ranks = processRanks(inputfile,getTitles(inputfile),langCode);
-
-			// add-up ranks of redirects to pages where they redirect to
-			for(Entry<String,Rank> e : ranks.entrySet()){
-				Rank r = e.getValue();
-				if(r.redirectsTo != null && r != r.redirectsTo){
-					r.redirectsTo.links += r.links;
-					r.links = 0;
-					if(r.redirectsTo.redirected == null)
-						r.redirectsTo.redirected = new ArrayList<String>();
-					r.redirectsTo.redirected.add(e.getKey());
-				}
-			}
+			// regenerate link and redirect information
+			HashMap<String,ArticleLinks> links = processLinks(inputfile,getTitles(inputfile),langCode);
 
 			log.info("Third pass, indexing articles...");
 			
@@ -121,7 +110,7 @@ public class Importer {
 			}
 
 			// read
-			DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,ranks,langCode);
+			DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,links,langCode);
 			XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(dp, 1000));
 			try {
 				reader.readDump();
@@ -159,8 +148,8 @@ public class Importer {
 		}		
 	}
 
-	private static HashMap<String,Rank> processRanks(String inputfile, HashMap<String,Rank> ranks, String langCode) {
-		log.info("Second pass, calculating article ranks...");
+	private static HashMap<String,ArticleLinks> processLinks(String inputfile, HashMap<String,ArticleLinks> links, String langCode) {
+		log.info("Second pass, calculating article links...");
 		InputStream input = null;
 		// second pass - calculate page ranks
 		try {
@@ -170,7 +159,7 @@ public class Importer {
 			return null;
 		}
 		// calculate ranks
-		RankReader rr = new RankReader(ranks,langCode);
+		LinkReader rr = new LinkReader(links,langCode);
 		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(rr, 5000));
 		try {
 			reader.readDump();
@@ -178,10 +167,19 @@ public class Importer {
 			log.fatal("I/O error reading dump while calculating ranks for from "+inputfile);
 			return null;
 		}		
-		return ranks;
+		// generate "redirects here" lists for each article
+		for(Entry<String,ArticleLinks> e : links.entrySet()){
+			ArticleLinks r = e.getValue();
+			if(r.redirectsTo != null && r != r.redirectsTo){
+				if(r.redirectsTo.redirected == null)
+					r.redirectsTo.redirected = new ArrayList<String>();
+				r.redirectsTo.redirected.add(e.getKey());
+			}
+		}
+		return links;
 	}
 
-	private static HashMap<String,Rank> getTitles(String inputfile) {
+	private static HashMap<String,ArticleLinks> getTitles(String inputfile) {
 		log.info("First pass, getting a list of valid articles...");
 		InputStream input = null;
 		try {
