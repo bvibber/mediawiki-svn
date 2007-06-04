@@ -69,10 +69,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 					$this->width = intval( $s ) . 'px'; # FIXME: Does "px" have a magic word equiv?
 			}
 			if( isset( $options['float'] ) ) {
-				$f = strtolower( $options['float'] );
+				$float = strtolower( $options['float'] );
 				# FIXME: Get the real magic words
 				if( in_array( $float, array( 'left', 'right', 'centre' ) ) )
-					$this->float = $f;
+					$this->float = $float;
 			}
 		}
 		
