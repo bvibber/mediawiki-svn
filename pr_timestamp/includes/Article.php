@@ -1733,10 +1733,15 @@ class Article {
 				# Update restrictions table
 				foreach( $limit as $action => $restrictions ) {
 					if ($restrictions != '' ) {
-						$dbw->replace( 'page_restrictions', array(array('pr_page', 'pr_type')),
-							array( 'pr_page' => $id, 'pr_type' => $action
-								, 'pr_level' => $restrictions, 'pr_cascade' => $cascade ? 1 : 0
-								, 'pr_expiry' => $encodedExpiry ), __METHOD__  );
+						$dbw->replace( 'page_restrictions', array( array( 'pr_page', 'pr_type' ) ),
+							array(
+								'pr_page' => $id,
+								'pr_type' => $action,
+								'pr_level' => $restrictions,
+								'pr_cascade' => $cascade ? 1 : 0,
+								'pr_timestamp' => $dbw->timestamp( wfTimestampNow() ),
+								'pr_expiry' => $encodedExpiry,
+							), __METHOD__ );
 					} else {
 						$dbw->delete( 'page_restrictions', array( 'pr_page' => $id,
 							'pr_type' => $action ), __METHOD__ );

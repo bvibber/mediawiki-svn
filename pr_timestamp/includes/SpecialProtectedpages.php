@@ -72,6 +72,10 @@ class ProtectedPagesForm {
 
 		$expiry_description = ''; $stxt = '';
 
+		$timestamp = $row->pr_timestamp
+			? $wgLang->timeAndDate( $row->pr_timestamp )
+			: wfMsgHtml( 'protectedpages-no-time' );
+		
 		if ( $row->pr_expiry != 'infinity' && strlen($row->pr_expiry) ) {
 			$expiry = Block::decodeExpiry( $row->pr_expiry );
 	
@@ -88,7 +92,12 @@ class ProtectedPagesForm {
 		}
 		wfProfileOut( __METHOD__ );
 
-		return '<li>' . wfSpecialList( $link . $stxt, implode( $description_items, ', ' ) ) . "</li>\n";
+		return '<li>'
+			. '(' . $timestamp . ') '
+			. $link
+			. $stxt . ' '
+			. implode( ', ', $description_items )
+			. '</li>';
 	}
 	
 	/**
@@ -250,7 +259,7 @@ class ProtectedPagesPager extends AlphabeticPager {
 			$conds[] = 'page_namespace=' . $this->mDb->addQuotes( $this->namespace );
 		return array(
 			'tables' => array( 'page_restrictions', 'page' ),
-			'fields' => 'pr_id,page_namespace,page_title,page_len,pr_type,pr_level,pr_expiry',
+			'fields' => 'pr_id,page_namespace,page_title,page_len,pr_type,pr_level,pr_timestamp,pr_expiry',
 			'conds' => $conds
 		);
 	}
