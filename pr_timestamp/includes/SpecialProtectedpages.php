@@ -53,51 +53,36 @@ class ProtectedPagesForm {
 	 */
 	function formatRow( $row ) {
 		global $wgUser, $wgLang;
-
 		wfProfileIn( __METHOD__ );
-
-		static $skin=null;
-
-		if( is_null( $skin ) )
-			$skin = $wgUser->getSkin();
 		
-		$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
-		$link = $skin->makeLinkObj( $title );
+		$skin = $wgUser->getSkin();
 
-		$description_items = array ();
-
-		$protType = wfMsgHtml( 'restriction-level-' . $row->pr_level );
-
-		$description_items[] = $protType;
-
-		$expiry_description = ''; $stxt = '';
-
+		# Date and time
 		$timestamp = $row->pr_timestamp
-			? $wgLang->timeAndDate( $row->pr_timestamp )
-			: wfMsgHtml( 'protectedpages-no-time' );
+			? '(' . $wgLang->timeAndDate( $row->pr_timestamp ) . ')'
+			: '';
+
+		# Page link and action text
+		$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
+		$page = $skin->makeLinkObj( $title );
 		
-		if ( $row->pr_expiry != 'infinity' && strlen($row->pr_expiry) ) {
-			$expiry = Block::decodeExpiry( $row->pr_expiry );
+		# Size indicator
+		$size = $row->page_len
+			? '<small>' . wfMsgHtml( 'historysize', $wgLang->formatNum( $row->page_len ) ) . '</small> '
+			: '';
+		
+		# Protection level
+		$level = wfMsgHtml( 'restriction-level-' . $row->pr_level );
+		
+		# Expiration
+		$expire = '';
+		if( $row->pr_expiry && $row->pr_expiry != 'infinity' ) {
+			$exptime = Block::decodeExpiry( $row->pr_expiry );
+			$expire = ', ' . wfMsgHtml( 'protect-expiring', $wgLang->timeAndDate( $exptime ) );
+		}
 	
-			$expiry_description = wfMsgForContent( 'protect-expiring', $wgLang->timeanddate( $expiry ) );
-
-			$description_items[] = $expiry_description;
-		}
-		
-		if (!is_null($size = $row->page_len)) {
-			if ($size == 0)
-				$stxt = ' <small>' . wfMsgHtml('historyempty') . '</small>';
-			else
-				$stxt = ' <small>' . wfMsgHtml('historysize', $wgLang->formatNum( $size ) ) . '</small>';
-		}
 		wfProfileOut( __METHOD__ );
-
-		return '<li>'
-			. '(' . $timestamp . ') '
-			. $link
-			. $stxt . ' '
-			. implode( ', ', $description_items )
-			. '</li>';
+		return "<li>{$timestamp} {$page} {$size}({$level}{$expire})</li>";
 	}
 	
 	/**
