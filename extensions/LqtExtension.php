@@ -156,21 +156,7 @@ HTML;
 		$this->showEditingFormInGeneral( null, 'summarize', $thread );
 	}
 
-	private function showEditingFormInGeneral( $thread, $edit_type, $edit_applies_to ) {
-		// If there is no article (reply or new), we need a randomly-generated title.
-		// On the first pass, we generate one. After that, we find it in the request.
-/*		if ($edit_type == 'summarize' && $edit_applies_to->summary() ) {
-			$article = $edit_applies_to->summary();
-		} else if ( $thread == null ) {
-			$rt = Title::newFromURL( $this->request->getVal('lqt_edit_post') );
-			$t = $rt ? $rt : $this->scratchTitle();
-			$article = new Article( $t );
-		} else if ($edit_type == 'summarize') {
-			$article = $edit_applies_to->summary();
-		} else {
-			$article = $thread->rootPost();
-		}*/
-		
+	private function showEditingFormInGeneral( $thread, $edit_type, $edit_applies_to ) {		
 		/*
 		 EditPage needs an Article. If there isn't a real one, as for new posts,
 		 replies, and new summaries, we need to generate a title. Auto-generated
@@ -178,27 +164,12 @@ HTML;
 		 can temporarily use a random scratch title. It's fine if the title changes
 		 throughout the edit cycle, since the article doesn't exist yet anyways.
 		*/
-/*		if ($edit_type == 'summarize' && $edit_applies_to->summary() ) {
+		if ($edit_type == 'summarize' && $edit_applies_to->summary() ) {
 			$article = $edit_applies_to->summary();
 		} else if ($edit_type == 'summarize') {
 			$t = $this->newSummaryTitle($edit_applies_to);
 			$article = new Article($t);
 		} else if ( $thread == null ) {
-			$subject = $this->request->getVal('lqt_subject_field', '');
-			if ( $subject != '' ) {
-				$t = Title::newFromText($subject, NS_LQT_THREAD);
-			} else if ($edit_type == 'new') {
-				$t = $this->scratchTitle();
-			} else if ($edit_type == 'reply') {
-				$t = $this->newReplyTitle( $edit_applies_to );
-			}
-			$article = new Article($t);
-		} else {
-			$article = $thread->rootPost();
-		}*/
-
-		// temporarily ignoring summaries while we figure this out.
-		if ( $thread == null ) {
 			$subject = $this->request->getVal('lqt_subject_field', '');
 			if ($edit_type == 'new') {
 				$t = $this->newScratchTitle($subject);
@@ -209,6 +180,7 @@ HTML;
 		} else {
 			$article = $thread->rootPost();
 		}
+		
 		$e = new EditPage($article);
 		$e->suppressIntro = true;
 		
@@ -239,7 +211,6 @@ HTML;
 		// unwanted side-effects.
 		if ( $this->output->getRedirect() != '' ) {
 			$this->output->redirect( $this->title->getFullURL() );
-//			$this->output->redirect('');
 		}
 		
 		// For replies and new posts, insert the associated thread object into the DB.
