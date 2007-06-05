@@ -606,7 +606,7 @@ main(int argc, char **argv)
 
 		for (std::size_t i = 0, end = users.size(); i < end; ++i) {
 			user &u = users[i];
-			std::size_t bytes = u.rss * pagesize;
+			std::size_t bytes = std::size_t(u.rss) * pagesize;
 
 			if (config.exempt.find(u.uid) != config.exempt.end())
 				continue;
@@ -635,15 +635,17 @@ main(int argc, char **argv)
 				if (!config.debug)
 					kill(p._pid, SIGKILL);
 
+				std::size_t thissize = std::size_t(p._mdata) * pagesize;
+
 				log(str(boost::format("    killed process \"%s\" (pid %d) using %dM, usage now %dM")
 						% comm % p._pid
-						% (p._mdata * pagesize / 1024 / 1024)
-						% ((bytes - p._mdata * pagesize) / 1024 / 1024)));
+						% (thissize / 1024 / 1024)
+						% ((bytes - thissize) / 1024 / 1024)));
 
 				process_list += str(boost::format("    %s (pid %d), using %d megabyte(s)\n")
-						% comm % p._pid % (p._mdata * pagesize / 1024 / 1024));
+						% comm % p._pid % (thissize / 1024 / 1024));
 
-				bytes -= p._mdata * pagesize;
+				bytes -= thissize;
 				u.processes.erase(u.processes.begin());
 			}
 
