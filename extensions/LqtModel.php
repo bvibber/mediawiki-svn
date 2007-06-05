@@ -320,7 +320,28 @@ class Thread {
 			call_user_func($pop_callback);
 		}
 	}
+}
 
+class QueryGroup {
+	protected $queries;
+	
+	function __construct() {
+		$this->queries = array();
+	}
+	
+	function addQuery( $name, $where, $options = array() ) {
+		$this->queries[$name] = array($where, $options);
+	}
+	
+	function deleteQuery( $name ) {
+		unset ($this->queries[$name]);
+	}
+	
+	function query($name) {
+		if ( !array_key_exists($name,$this->queries) ) return array();
+		list($where, $options) = $this->queries[$name];
+		return Thread::threadsWhere($where, $options);
+	}
 }
 
 ?>

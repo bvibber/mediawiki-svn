@@ -58,6 +58,8 @@ class LqtView {
 	protected $user_colors;
 	protected $user_color_index;
 	const number_of_user_colors = 6;
+
+	protected $queries;
 	
 	function __construct(&$output, &$article, &$title, &$user, &$request) {
 		$this->article = $article;
@@ -67,6 +69,24 @@ class LqtView {
 		$this->request = $request;
 		$this->user_colors = array();
 		$this->user_color_index = 1;
+		$this->queries = $this->initializeQueries();
+	}
+	
+	function initializeQueries() {
+		$g = new QueryGroup();
+		$startdate = Date::now()->nDaysAgo(14)->midnight();
+		$g->addQuery('fresh',
+		              array('thread_article' => $this->article->getID(),
+		                    'thread_subthread_of is null',
+		                    'thread_touched >= ' . $startdate->text() ),
+		              array('ORDER BY' => 'thread_touched DESC' ));
+		$g->addQuery('recently-archived',
+		             array('thread_article' => $this->article->getID(),
+		                   'thread_subthread_of is null',
+		                   'thread_touched < ' . $startdate->text(),
+		                   'thread_touched >=' . $startdate->nDaysAgo(5)->text()),
+		             array('ORDER BY' => 'thread_touched DESC'));
+		return $g;
 	}
 
 	static protected $occupied_titles = array();
@@ -517,7 +537,8 @@ class TalkpageView extends LqtView {
 			$this->output->addHTML("<strong><a href=\"$url\">Start a Discussion</a></strong>");
 		}
 
-		$threads = Thread::threadsOfArticleInLastNDays($this->article, 30);		
+//		$threads = Thread::threadsOfArticleInLastNDays($this->article, 30);		
+		$threads = $this->queries->query('fresh');
 		foreach($threads as $t) {
 			$this->showThread($t);
 		}
@@ -526,6 +547,16 @@ class TalkpageView extends LqtView {
 	function formattedMonth($yyyymm) {
 		global $wgLang; // TODO global.
 		return $wgLang->getMonthName( substr($yyyymm, 4, 2) ).' '.substr($yyyymm, 0, 4);
+	}
+	
+	function permalinksForThreads($ts, $query = '') {
+		$ps = array();
+		foreach ($ts as $t) {
+			$u = $this->permalinkUrl($t, $query);
+			$l = $t->subjectWithoutIncrement();
+			$ps[] = "<a href=\"$u\">$l</a>";
+		}
+		return $ps;
 	}
 	
 	function showArchiveWidget($month) {
@@ -540,15 +571,17 @@ class TalkpageView extends LqtView {
 			$options[$this->formattedMonth($m)] = $m;
 		}
 		
+		$threads = $this->queries->query('recently-archived');
+		$threadlinks = $this->permalinksForThreads($threads);
+		
 		$this->openDiv('lqt_archive_widget');
 		$this->output->addHTML(<<<HTML
 		<div class="lqt_header_content">
 			The following threads were archived recently:
-			<ul>
-				<li>Foo blah blah blah
-				<li>Quirks is a burps
-				<li>Lorem dipsum pompom tomtom.
-			</ul>
+HTML
+);
+		$this->outputList('ul', '', '', $threadlinks);
+		$this->output->addHTML(<<<HTML
 			<a href="#"><strong>Browse the Archive</strong></a>
 		</div>
 		<!--
