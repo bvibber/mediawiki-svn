@@ -1,17 +1,30 @@
 <?php
+
 /**
+ * Special page listing all protected pages in the wiki
  *
  * @addtogroup SpecialPage
  */
-
-/**
- * @todo document
- * @addtogroup SpecialPage
- */
-class ProtectedPagesForm {
+class SpecialProtectedPages extends SpecialPage {
 
 	protected $IdLevel = 'level';
 	protected $IdType  = 'type';
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		parent::__construct( 'Protectedpages' );
+	}
+	
+	/**
+	 * Special page execution function
+	 *
+	 * @param mixed $par Parameters passed to the page
+	 */
+	public function execute( $par = false ) {
+		$this->showList();
+	}
 
 	function showList( $msg = '' ) {
 		global $wgOut, $wgRequest;
@@ -86,106 +99,120 @@ class ProtectedPagesForm {
 	}
 	
 	/**
-	 * @param $namespace int
-	 * @param $type string
-	 * @param $level string
-	 * @param $minsize int
-	 * @private
+	 * Build the filtering option panel
+	 *
+	 * @param int $namespace Pre-select namespace
+	 * @param string $type Pre-select type
+	 * @param string $level Pre-select level
+	 * @param string $sizetype Pre-select size bound
+	 * @param string $size Pre-fill size
+	 * @return string
 	 */
-	function showOptions( $namespace, $type='edit', $level, $sizetype, $size ) {
+	function showOptions( $namespace, $type = 'edit', $level, $sizetype, $size ) {
 		global $wgScript;
-		$action = htmlspecialchars( $wgScript );
-		$title = SpecialPage::getTitleFor( 'ProtectedPages' );
-		$special = htmlspecialchars( $title->getPrefixedDBkey() );
-		return "<form action=\"$action\" method=\"get\">\n" .
-			'<fieldset>' .
-			Xml::element( 'legend', array(), wfMsg( 'protectedpages' ) ) .
-			Xml::hidden( 'title', $special ) . "&nbsp\n" .
-			$this->getNamespaceMenu( $namespace ) . "&nbsp\n" .
-			$this->getTypeMenu( $type ) . "&nbsp\n" .
-			$this->getLevelMenu( $level ) . "<br/>\n" .
-			$this->getSizeLimit( $sizetype, $size ) . "\n" .
-			"&nbsp" . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
-			"</fieldset></form>";
-	}
-	
-	function getNamespaceMenu( $namespace=NULL ) {
-		return "<label for='namespace'>" . wfMsgHtml('namespace') . "</label>" . HTMLnamespaceselector($namespace, '');
-	}
-
-	/**
-	 * @return string Formatted HTML
-	 * @private
-	 */
-	function getSizeLimit( $sizetype, $size ) {	
-		$out = Xml::radio( 'sizetype', 'min', ($sizetype=='min'), array('id' => 'wpmin') );
-		$out .= Xml::label( wfMsg("minimum-size"), 'wpmin' );
-		$out .= "&nbsp".Xml::radio( 'sizetype', 'max', ($sizetype=='max'), array('id' => 'wpmax') );
-		$out .= Xml::label( wfMsg("maximum-size"), 'wpmax' );
-		$out .= "&nbsp".Xml::input('size', 9, $size, array( 'id' => 'wpsize' ) );
-		$out .= ' '.wfMsgHtml('pagesize');
-		return $out;
-	}
-		
-	/**
-	 * @return string Formatted HTML
-	 * @private
-	 */
-	function getTypeMenu( $pr_type ) {
-		global $wgRestrictionTypes;
-	
-		$m = array(); // Temporary array
-		$options = array();
-
-		// First pass to load the log names
-		foreach( $wgRestrictionTypes as $type ) {
-			$text = wfMsg("restriction-$type");
-			$m[$text] = $type;
-		}
-
-		// Third pass generates sorted XHTML content
-		foreach( $m as $text => $type ) {
-			$selected = ($type == $pr_type );
-			$options[] = Xml::option( $text, $type, $selected ) . "\n";
-		}
-
+		$self = SpecialPage::getTitleFor( 'Protectedpages' );
 		return
-			Xml::label( wfMsg('restriction-type') , $this->IdType ) . '&nbsp;' .
-			Xml::tags( 'select',
-				array( 'id' => $this->IdType, 'name' => $this->IdType ),
-				implode( "\n", $options ) );
+			Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) )
+			. Xml::hidden( 'title', $self->getPrefixedUrl() )
+			. '<fieldset><legend>' . wfMsgHtml( 'protectedpages-legend' ). '</legend>'
+			. '<table>'
+			. '<tr>' . $this->getNamespaceMenu( $namespace ) . '</tr>'
+			. '<tr>' . $this->getTypeMenu( $type ) . '</tr>'
+			. '<tr>' . $this->getLevelMenu( $level ) . '</tr>'
+			. '<tr>' . $this->getSizeLimit( $sizetype, $size ) . '</tr>'
+			. '<tr><td></td><td>' . Xml::submitButton( wfMsg( 'protectedpages-submit' ) ) . '</td></tr>'
+			. '</table></fieldset></form>';
+	}
+	
+	/**
+	 * Build a namespace selector
+	 *
+	 * @param int $select Pre-selected namespace
+	 * @return string
+	 */
+	private function getNamespaceMenu( $select = null ) {
+		return
+			'<td><label for="namespace">' . wfMsgHtml( 'namespace' ) . '</label></td>'
+			. '<td>' . Xml::namespaceSelector( $select, '' ) . '</td>';
 	}
 
 	/**
-	 * @return string Formatted HTML
-	 * @private
-	 */	
-	function getLevelMenu( $pr_level ) {
-		global $wgRestrictionLevels;
-
-		$m = array( wfMsg('restriction-level-all') => 0 ); // Temporary array
+	 * Build a type selection list
+	 *
+	 * @param string $select Pre-selected type
+	 * @return string
+	 */
+	private function getTypeMenu( $select ) {
+		global $wgRestrictionTypes;
 		$options = array();
+		foreach( $wgRestrictionTypes as $type ) {
+			$options[] = Xml::option(
+				wfMsg( 'restriction-' . $type ),
+				$type,
+				$type == $select
+			);
+		}
+		return
+			'<td><label for="type">' . wfMsgHtml( 'restriction-type' ) . '</label></td>'
+			. '<td>' . Xml::tags( 'select', array( 'id' => 'type', 'name' => 'type' ),
+				implode( '', $options ) ) . '</td>';	
+	}
 
-		// First pass to load the log names
-		foreach( $wgRestrictionLevels as $type ) {
-			if ( $type !='' && $type !='*') {
-				$text = wfMsg("restriction-level-$type");
-				$m[$text] = $type;
+	/**
+	 * Build a level selection menu
+	 *
+	 * @param int $select Pre-selected level
+	 * @return string
+	 */
+	private function getLevelMenu( $select ) {
+		global $wgRestrictionLevels;
+		$options = array();
+		$options[] = Xml::option(
+			wfMsg( 'restriction-level-all' ),
+			0,
+			$select == 0
+		);
+		foreach( $wgRestrictionLevels as $level ) {
+			if( $level != '' && $level != '*' ) {
+				$options[] = Xml::option(
+					wfMsg( 'restriction-level-' . $level ),
+					$level,
+					$level == $select
+				);
 			}
 		}
-
-		// Third pass generates sorted XHTML content
-		foreach( $m as $text => $type ) {
-			$selected = ($type == $pr_level );
-			$options[] = Xml::option( $text, $type, $selected );
-		}
-
 		return
-			Xml::label( wfMsg('restriction-level') , $this->IdLevel ) . '&nbsp;' .
-			Xml::tags( 'select',
-				array( 'id' => $this->IdLevel, 'name' => $this->IdLevel ),
-				implode( "\n", $options ) );
+			'<td><label for="level">' . wfMsgHtml( 'restriction-level' ) . '</label></td>'
+			. '<td>' . Xml::tags( 'select', array( 'id' => 'level', 'name' => 'level' ),
+				implode( '', $options ) ); 
 	}
+
+
+	/**
+	 * Build a size limit box
+	 *
+	 * @param int $select Pre-select min or max
+	 * @param int $size Pre-fill size value
+	 * @return string
+	 */
+	private function getSizeLimit( $select, $size ) {
+		$radios = array();
+		foreach( array( 'min', 'max' ) as $bound ) {
+			$radios[] = Xml::radioLabel(
+				wfMsg( 'protectedpages-size-' . $bound ),
+				'sizetype',
+				$bound,
+				'wpSize' . $bound,
+				$bound == $select
+			);
+		}
+		return
+			'<tr><td><label for="wpSize">' . wfMsgHtml( 'protectedpages-size' ) . '</label></td>'
+			. '<td>' . Xml::input( 'size', 9, $size, array( 'id' => 'wpSize' ) )
+			. ' ' . wfMsgHtml( 'pagesize' ) . '</td></tr><tr><td></td><td>'
+			. implode( '&nbsp;', $radios ) . '</td>';
+	}
+	
 }
 
 /**
@@ -252,18 +279,6 @@ class ProtectedPagesPager extends AlphabeticPager {
 	function getIndexField() {
 		return 'pr_id';
 	}
-}
-
-/**
- * Constructor
- */
-function wfSpecialProtectedpages() {
-
-	list( $limit, $offset ) = wfCheckLimits();
-
-	$ppForm = new ProtectedPagesForm();
-
-	$ppForm->showList();
 }
 
 ?>
