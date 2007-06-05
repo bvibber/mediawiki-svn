@@ -115,7 +115,7 @@ Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d�
 );
 $wgLuceneSearchMessages['he'] = array(
 	'searchnumber'          => "<strong>תוצאות $1-$2 מתוך $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Prev</span>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>הקודם</span>",
 	'searchnext'            => "<span style='font-size: small'>הבא</span> &#x00BB;",
 	'searchscore'           => "קשר: $1",
 	'searchsize'            => "$1 קילובייטים ($2 מילים)",
