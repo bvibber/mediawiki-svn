@@ -489,6 +489,7 @@ class TalkpageView extends LqtView {
 		unset($content_actions['addsection']);
 		unset($content_actions['history']);
 		unset($content_actions['watch']);
+		unset($content_actions['move']);
 		
 		/*
 		TODO: 
@@ -541,6 +542,16 @@ class TalkpageView extends LqtView {
 		
 		$this->openDiv('lqt_archive_widget');
 		$this->output->addHTML(<<<HTML
+		<div class="lqt_header_content">
+			The following threads were archived recently:
+			<ul>
+				<li>Foo blah blah blah
+				<li>Quirks is a burps
+				<li>Lorem dipsum pompom tomtom.
+			</ul>
+			<a href="#"><strong>Browse the Archive</strong></a>
+		</div>
+		<!--
 		<form id="lqt_archive_browser_form" action="{$this->title->getLocalURL()}"><select name="lqt_archive_month" id="lqt_archive_month">
 HTML
 );
@@ -549,7 +560,7 @@ HTML
 			$this->output->addHTML("<option value=\"$value\" $selected>$label");
 		}
 		$this->output->addHTML(<<<HTML
-		</select><input type="submit" id="lqt_archive_go_button" value="Go"></form>
+		</select><input type="submit" id="lqt_archive_go_button" value="Go"></form>-->
 HTML
 		);
 		$this->closeDiv();
@@ -561,15 +572,65 @@ HTML
 		$this->output->addScript($s);
 	}
 	
+	function showHeader() {
+		/*
+		Right now the header wikitext is stored in the actual talkpage that we
+        are masking with the LQT stuff. I'm not sure I really like this. But
+        if we stored it in, say, Header:Namespace:Article, we would need to
+        move that whenever either the namespace or article name moved. We
+        might also store it as Header:namespace_id:article_id, but then that's
+        more crap to hide. Still, Header:Namespace:Article would look better
+        in RC than just Namespace_talk:Article. It's not really accurate to say
+		you're editing the talkpage itself here.
+		*/
+		
+		$action = $this->request->getVal('action');
+		
+		$article = new Article( $this->title );
+		if( $action == 'edit' || $action=='submit' ) {
+			$e = new EditPage($article);
+			$e->suppressIntro = true;
+			$e->edit();
+		} else if ( $action == 'history' ) {
+			$history = new PageHistory( $article );
+			$history->history();
+		} else if ( $article->exists() ) {
+			$edit = $this->title->getFullURL( 'action=edit' );
+			$history = $this->title->getFullURL( 'action=history' );
+			$this->outputList('ul', 'lqt_header_commands', null, array(
+				"<a href=\"$edit\">edit</a>", 
+				"<a href=\"$history\">history</a>"
+				));
+			$this->openDiv('lqt_header_content');
+			$this->showPostBody($article);
+			$this->closeDiv();
+		} else {
+			$this->output->addHTML("<p class=\"lqt_header_notice\"><a href=\"{$this->title->getFullURL('action=edit')}\">Add a header to this talk page</a></p>");
+		}
+	}
+	
+	function outputList( $kind, $class, $id, $contents ) {
+		$this->output->addHTML(wfOpenElement($kind, array('class'=>$class,'id'=>$id)));
+		foreach ($contents as $li) {
+			$this->output->addHTML( wfOpenElement('li') );
+			$this->output->addHTML( $li );
+			$this->output->addHTML( wfCloseElement('li') );
+		}
+		$this->output->addHTML(wfCloseElement($kind));
+	}
+	
 	function show() {
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
 		
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
 		$this->addJSandCSS();
+
+		$this->showHeader();	
 		
 		$month = $this->request->getVal('lqt_archive_month');
-		$this->showArchiveWidget($month);
+		$this->showArchiveWidget($month);	
+		
 		if ( $month && $month != 'recent' ) {
 			$this->showArchive($month);
 		} else {
