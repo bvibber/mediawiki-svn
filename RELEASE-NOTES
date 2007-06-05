@@ -51,10 +51,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added $wgArticleRobotPolicies
 * (bug 10076) Additional parameter $7 added to MediaWiki:Blockedtext 
   containing, the ip, ip range, or username whose block is affecting the
-* (bug 7691) Deletion log now shown when creating a new article, following
-  MediaWiki:Noarticletext(anon) or MediaWiki:Newarticletext(anon).
-  current user.
+* (bug 7691) Show relevant lines from the deletion log when viewing
+  a non-existent article or re-creating a previously-deleted article
 * Added variables 'wgRestrictionEdit' and 'wgRestrictionMove' for JS to header
+* (bug 9898) Allow viewing all namespaces in Special:Newpages
+* (bug 10139) Introduce 'EditSectionLink' and 'EditSectionLinkForOther' hooks;
+  see docs/hooks.txt for details
+* (bug 9769) Provide "watch this page" toggle on protection form
+* (bug 9886) Provide clear example "stub link" in Special:Preferences
 
 == Bugfixes since 1.10 ==
 
@@ -110,7 +114,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 3624) TeX: \ker, \hom, \arg, \dim treated like \sin & \cos
 * (bug 10132, 10134) Restore back-compatibility Image::imageUrl() function
 * (bug 10113) Fix double-click for view source on protected pages
-
+* (bug 10117) Special:Wantedpages doesn't handle invalid titles in result
+  set [now prints out a warning]
+* (bug 10118) Introduced Special:Mostlinkedtemplates, report which lists
+  templates with a high number of inclusion links
+* (bug 10104) Fixed Database::getLag() for PostgreSQL and Oracle
+* (bug 9820) session.save_path check no longer halts installation, but
+  warns of possible bad values
+* (bug 9978) Fixed session.save_path validation when using extended
+  configuration format, e.g. "5;/tmp"
+* Don't generate a diff link in the patrol log if the page doesn't exist
 
 == MediaWiki API changes since 1.10 ==
 

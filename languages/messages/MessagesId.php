@@ -228,7 +228,8 @@ $specialPageAliases = array(
 	'Wantedpages'               => array( 'Halamandiinginkan' ),
 	'Wantedcategories'          => array( 'Kategoridiinginkan' ),
 	'Mostlinked'                => array( 'Palingdituju' ),
-	'Mostlinkedcategories'      => array( 'Kategoripalingdituju' ),
+	'Mostlinkedcategories'      => array( 'Kategoripalingdigunakan' ),
+	'Mostlinkedtemplates'		=> array( 'Templatpalingdigunakan' ),
 	'Mostcategories'            => array( 'Kategoriterbanyak' ),
 	'Mostimages'                => array( 'Berkastersering' ),
 	'Mostrevisions'             => array( 'Perubahanterbanyak' ),
@@ -778,9 +779,9 @@ ID pemblokiran Anda adalah $5. Tolong sertakan ID ini dalam setiap pertanyaan An
 'longpagewarning'           => "'''PERINGATAN: Halaman ini panjangnya adalah $1 kilobita; beberapa penjelajah web mungkin mengalami masalah dalam menyunting halaman yang panjangnya 32 kb atau lebih. Harap pertimbangkan untuk memecah halaman menjadi beberapa bagian yang lebih kecil.'''",
 'longpageerror'             => '<strong>KESALAHAN: Teks yang Anda kirimkan sebesar $1 kilobita, yang berarti lebih besar dari jumlah maksimum $2 kilobita. Teks tidak dapat disimpan.</strong>',
 'readonlywarning'           => '<strong>PERINGATAN: Basis data sedang dikunci karena pemeliharaan, sehingga saat ini Anda tidak akan dapat menyimpan hasil penyuntingan Anda. Anda mungkin perlu memindahkan hasil penyuntingan Anda ini ke tempat lain untuk disimpan belakangan.</strong>',
-'protectedpagewarning'      => '<strong>PERINGATAN:  Halaman ini telah dikunci sehingga hanya pengguna dengan hak akses pengurus saja yang dapat menyuntingnya.</strong>',
+'protectedpagewarning'      => '<strong>PERINGATAN: Halaman ini sedang dilindungi sehingga hanya pengguna dengan hak akses pengurus saja yang dapat menyuntingnya.</strong>',
 'semiprotectedpagewarning'  => "'''Catatan:''' Halaman ini sedang dilindungi, sehingga hanya pengguna terdaftar yang bisa menyuntingnya.",
-'cascadeprotectedwarning'   => "<strong>PERINGATAN: Halaman ini telah dikunci sehingga hanya pengguna dengan hak akses pengurus saja yang dapat menyuntingnya karena disertakan dalam {{PLURAL:$1|halaman|halaman-halaman}} berikut yang telah dilindungi dengan opsi 'perlindungan runtun':</strong>",
+'cascadeprotectedwarning'   => "<strong>PERINGATAN: Halaman ini sedang dilindungi sehingga hanya pengguna dengan hak akses pengurus saja yang dapat menyuntingnya karena disertakan dalam {{PLURAL:$1|halaman|halaman-halaman}} berikut yang telah dilindungi dengan opsi 'perlindungan runtun':</strong>",
 'templatesused'             => 'Templat yang digunakan di halaman ini:',
 'templatesusedpreview'      => 'Templat yang digunakan di pratayang ini:',
 'templatesusedsection'      => 'Templat yang digunakan di bagian ini:',
@@ -789,6 +790,8 @@ ID pemblokiran Anda adalah $5. Tolong sertakan ID ini dalam setiap pertanyaan An
 'edittools'                 => '<!-- Teks di sini akan dimunculkan di bawah isian suntingan dan pemuatan.-->',
 'nocreatetitle'             => 'Pembuatan halaman baru dibatasi',
 'nocreatetext'              => 'Situs ini membatasi kemampuan membuat halaman baru. Anda dapat kembali dan menyunting halaman yang telah ada, atau silakan [[{{ns:special}}:Userlogin|masuk log atau mendaftar]]',
+'recreate-deleted-warn'     => "'''Peringatan: Anda membuat ulang suatu halaman yang sudah pernah dihapus.''' Harap pertimbangkan apakah layak untuk melanjutkan suntingan Anda. Berikut adalah log penghapusan dari halaman ini:",
+'recreate-deleted-dismiss'  => '(tutup)',
 
 # "Undo" feature
 'undo-success' => 'Suntingan ini dapat dibatalkan. Tolong cek perbandingan di bawah untuk meyakinkan bahwa benar itu yang Anda ingin lakukan, lalu simpan perubahan tersebut untuk menyelesaikan pembatalan suntingan.',
@@ -949,7 +952,7 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'resultsperpage'           => 'Hasil per halaman:',
 'contextlines'             => 'Baris ditampilkan per hasil:',
 'contextchars'             => 'Karakter untuk konteks per baris:',
-'stubthreshold'            => 'Ambang batas tampilan rintisan:',
+'stub-threshold'           => 'Ambang batas untuk format <a href="#" class="stub">pranala rintisan</a>:',
 'recentchangesdays'        => 'Jumlah hari yang ditampilkan di perubahan terbaru:',
 'recentchangescount'       => 'Jumlah suntingan yang ditampilkan di perubahan terbaru:',
 'savedprefs'               => 'Preferensi Anda telah disimpan',
@@ -1170,13 +1173,11 @@ Jika Anda memiliki versi resolusi penuh dari gambar ini, harap muatkan berkas te
 'statistics'             => 'Statistik',
 'sitestats'              => 'Statistik situs',
 'userstats'              => 'Statistik pengguna',
-'sitestatstext'          => "Terdapat total '''\$1''' halaman dalam basis data. Ini termasuk halaman \"pembicaraan\", halaman tentang {{SITENAME}}, halaman  \"rintisan\" minimum, halaman peralihan, dan halaman-halaman lain yang mungkin tidak masuk kriteria artikel. Selain itu, ada '''\$2''' halaman yang mungkin termasuk artikel yang sah.
+'sitestatstext'          => "{{SITENAME}} saat ini memiliki '''$2''' halaman yang termasuk artikel yang sah. Jumlah tersebut tidak memperhitungkan halaman pembicaraan, halaman tentang {{SITENAME}}, halaman rintisan minimum, halaman peralihan, dan halaman-halaman lain yang tidak masuk dalam kriteria artikel. Jika termasuk halaman-halaman ini, terdapat total '''$1''' halaman dalam basis data.
 
-'''\$8''' berkas telah dimuat.
+Telah terjadi sejumlah '''$3''' penampilan halaman dan '''$4''' penyuntingan sejak {{SITENAME}} dimulai. Ini berarti rata-rata '''$5''' suntingan per halaman, dan '''$6''' penampilan per penyuntingan.
 
-Ada sejumlah '''\$3''' penampilan halaman, dan sejumlah '''\$4''' penyuntingan sejak {{SITENAME}} dimulai. Ini berarti rata-rata '''\$5''' suntingan per halaman, dan '''\$6''' penampilan per penyuntingan.
-
-[http://meta.wikimedia.org/wiki/Help:Job_queue Antrian job] adalah sebanyak '''\$7'''.",
+Telah dimuat sejumlah '''$8''' berkas dan sedang terjadi '''$7''' [http://meta.wikimedia.org/wiki/Help:Job_queue antrian pekerjaan].",
 'userstatstext'          => "Terdapat '''$1''' pengguna terdaftar. '''$2''' (atau '''$4%''') diantaranya memiliki hak akses $5.",
 'statistics-mostpopular' => 'Halaman yang paling banyak ditampilkan',
 
@@ -1204,7 +1205,7 @@ Ada sejumlah '''\$3''' penampilan halaman, dan sejumlah '''\$4''' penyuntingan s
 'nmembers'                => '$1 pengguna',
 'nrevisions'              => '$1 revisi',
 'nviews'                  => '$1 penampilan',
-'specialpage-empty'       => 'Halaman ini kosong.',
+'specialpage-empty'       => 'Tak ada yang perlu dilaporkan.',
 'lonelypages'             => 'Halaman tak bertuan',
 'lonelypagestext'         => 'Halaman-halaman berikut tidak memiliki pranala dari halaman manapun di wiki ini.',
 'uncategorizedpages'      => 'Halaman yang tak terkategori',
@@ -1216,7 +1217,8 @@ Ada sejumlah '''\$3''' penampilan halaman, dan sejumlah '''\$4''' penyuntingan s
 'wantedcategories'        => 'Kategori yang diinginkan',
 'wantedpages'             => 'Halaman yang diinginkan',
 'mostlinked'              => 'Halaman yang tersering dituju',
-'mostlinkedcategories'    => 'Kategori dengan halaman terbanyak',
+'mostlinkedcategories'    => 'Kategori yang tersering digunakan',
+'mostlinkedtemplates'     => 'Templat yang tersering digunakan',
 'mostcategories'          => 'Artikel dengan kategori terbanyak',
 'mostimages'              => 'Berkas yang tersering digunakan',
 'mostrevisions'           => 'Artikel dengan perubahan terbanyak',
@@ -1427,14 +1429,14 @@ Masukan dan bantuan lanjutan:
 'confirmprotecttext'          => 'Apakah Anda benar-benar ingin melindungi halaman ini?',
 'confirmprotect'              => 'Konfirmasi perlindungan',
 'protectmoveonly'             => 'Lindungi dari pemindahan saja',
-'protectcomment'              => 'Alasan perlindungan',
-'protectexpiry'               => 'Kadaluwarsa',
+'protectcomment'              => 'Komentar:',
+'protectexpiry'               => 'Kadaluwarsa:',
 'protect_expiry_invalid'      => 'Waktu kadaluwarsa tidak sah.',
 'protect_expiry_old'          => 'Waktu kadaluwarsa adalah pada masa lampau.',
 'unprotectsub'                => '(Menghilangkan perlindungan terhadap "$1")',
 'confirmunprotecttext'        => 'Apakah Anda benar-benar ingin menghilangkan perlindungan terhadap halaman ini?',
 'confirmunprotect'            => 'Konfirmasi penghilangan perlindungan',
-'unprotectcomment'            => 'Alasan penghilangan perlindungan',
+'unprotectcomment'            => 'Komentar:',
 'protect-unchain'             => 'Buka perlindungan pemindahan',
 'protect-text'                => 'Anda dapat melihat atau mengganti tingkatan perlindungan untuk halaman <strong>$1</strong> di sini.',
 'protect-locked-blocked'      => 'Anda tak dapat mengganti tingkat perlindungan selagi diblokir. Berikut adalah konfigurasi saat ini untuk halaman <strong>$1</strong>:',
@@ -1446,7 +1448,7 @@ Masukan dan bantuan lanjutan:
 'protect-level-sysop'         => 'Hanya pengurus',
 'protect-summary-cascade'     => 'runtun',
 'protect-expiring'            => 'kadalawarsa $1 (UTC)',
-'protect-cascade'             => 'Perlindungan runtun - lindungi semua halaman yang termasuk dalam halaman ini.',
+'protect-cascade'             => 'Lindungi semua halaman yang termasuk dalam halaman ini (perlindungan runtun ).',
 'restriction-type'            => 'Perlindungan:',
 'restriction-level'           => 'Tingkatan:',
 'minimum-size'                => 'Ukuran minimum',
