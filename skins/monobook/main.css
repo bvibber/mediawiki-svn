@@ -33,6 +33,10 @@ li {
 	margin-bottom: .1em;
 }*/
 
+.lqt_start_discussion {
+	vertical-align: center;
+}
+
 .lqt_header_notice {
 	font-size: smaller;
 	float: right;
@@ -104,6 +108,7 @@ li {
 }*/
 
 .lqt_archive_teaser {
+	float: right;
 	border: 1px solid #ddd;
 	margin: 0.5em 0;
 	background-color: #eee;
@@ -129,7 +134,7 @@ h1.firstHeading {
 
 
 h1.lqt_header {
-
+	clear: both;
 	font-size: 150%; /* same as h2 normally is */
 }
 

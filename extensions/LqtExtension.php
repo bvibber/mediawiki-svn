@@ -537,7 +537,7 @@ class TalkpageView extends LqtView {
 			$this->showNewThreadForm();
 		} else {
 			$url = $this->lqtTalkpageUrl( $this->title, 'lqt_new_thread_form' );
-			$this->output->addHTML("<strong><a href=\"$url\">Start a Discussion</a></strong>");
+			$this->output->addHTML("<strong><a class=\"lqt_start_discussion\" href=\"$url\">Start&nbsp;a&nbsp;Discussion</a></strong>");
 		}
 
 //		$threads = Thread::threadsOfArticleInLastNDays($this->article, 30);		
