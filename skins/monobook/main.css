@@ -35,7 +35,6 @@ li {
 
 .lqt_header_notice {
 	font-size: x-small;
-	float: right;
 }
 .lqt_header_content {
 	background-color: #eee;
@@ -45,21 +44,20 @@ li {
 	padding: .5em 1em;
 	
 	/* make the command float *outside* the content box. */
-/*	display: table;
-	width: auto;    */
+	display: table;
+	width: auto;    
 }
 .lqt_header_commands {
-	float: right;
 	list-style: none;
-	font-size: 90%;
-	margin: 0 0 0.5em 0.5em;
-	padding: 0em 0.4em 0em 0.5em;
-	border: 1px solid #ddd;
-/*	border-top-color: #efefef; border-right-color: #efefef;*/
-	background-color: #f5f5f5;
+	margin: 0;
+	margin-top: 0.5em;
 }
-.lqt_header_commands li { display: inline; padding: 0 0.5em; }
-.lqt_header_commands li:first-child { border-right: 1px solid #ddd;}
+.lqt_header_commands li {
+	display: inline;
+	padding-right: 0.6em;
+	font-weight: bold;
+	font-size: smaller;
+}
 
 .lqt_thread_show_summary {
 	margin-left: 1em;
@@ -109,18 +107,26 @@ h1.lqt_header {
 
 .lqt_subject_increment {
 	color: #999;
-	font-size: 50%;
+/*	font-size: 50%;*/
 }
 /*h1:hover .lqt_subject_increment {
 	color: black;
 }*/
 
-.lqt_archive_widget {
-	/* floats to the right of the main h1 page title. */
-/*	float:right;
-	position:relative;
-	top:-3.2em;*/
-/*	display:none;*/
+.lqt_archive_teaser {
+	border: 1px solid #ddd;
+	margin: 0.5em 0;
+	background-color: #eee;
+	padding: 0.4em;
+	display: table; width: auto;
+}
+.lqt_browse_archive {
+	display: block;
+	margin-bottom: 0.5em;
+	font-weight: bold;
+}
+.lqt_archive_teaser .lqt_browse_archive {
+	display: inline;
 }
 
 .lqt_hidden {

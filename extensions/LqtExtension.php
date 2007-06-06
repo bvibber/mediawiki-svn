@@ -577,26 +577,15 @@ class TalkpageView extends LqtView {
 		$threads = $this->queries->query('recently-archived');
 		$threadlinks = $this->permalinksForThreads($threads);
 		
-		$this->openDiv('lqt_archive_widget');
-		$this->output->addHTML(<<<HTML
-		<div class="lqt_header_content">
-			The following threads were archived recently:
-HTML
-);
-		$this->outputList('ul', '', '', $threadlinks);
-		$this->output->addHTML(<<<HTML
-			<a href="#"><strong>Browse the Archive</strong></a>
-		</div>
-		<!--
-		<form id="lqt_archive_browser_form" action="{$this->title->getLocalURL()}"><select name="lqt_archive_month" id="lqt_archive_month">
-HTML
-);
-		foreach( $options as $label => $value ) {
-			$selected = $sel == $value ? 'selected="true"' : '';
-			$this->output->addHTML("<option value=\"$value\" $selected>$label");
+		if ( count($threadlinks) > 0 ) {
+			$this->openDiv('lqt_archive_teaser');
+			$this->output->addHTML('The following threads were archived recently:');
+			$this->outputList('ul', '', '', $threadlinks);
+		} else {
+			$this->openDiv();
 		}
 		$this->output->addHTML(<<<HTML
-		</select><input type="submit" id="lqt_archive_go_button" value="Go"></form>-->
+			<a href="#" class="lqt_browse_archive">Browse the Archive</a>
 HTML
 		);
 		$this->closeDiv();
@@ -624,6 +613,7 @@ HTML
 		
 		$article = new Article( $this->title );
 		if( $action == 'edit' || $action=='submit' ) {
+			// TODO this is scary and horrible.
 			$e = new EditPage($article);
 			$e->suppressIntro = true;
 			$e->editFormTextBeforeContent .=
@@ -636,12 +626,12 @@ HTML
 		} else if ( $article->exists() ) {
 			$edit = $this->title->getFullURL( 'lqt_header_action=edit' );
 			$history = $this->title->getFullURL( 'lqt_header_action=history' );
-			$this->outputList('ul', 'lqt_header_commands', null, array(
-				"<a href=\"$edit\">edit</a>", 
-				"<a href=\"$history\">history</a>"
-				));
 			$this->openDiv('lqt_header_content');
 			$this->showPostBody($article);
+			$this->outputList('ul', 'lqt_header_commands', null, array(
+				"[<a href=\"$edit\">edit</a>]", 
+				"[<a href=\"$history\">history</a>]"
+				));
 			$this->closeDiv();
 		} else {
 			$this->output->addHTML("<p class=\"lqt_header_notice\"><a href=\"{$this->title->getFullURL('action=edit')}\">Add a header to this talk page</a></p>");
