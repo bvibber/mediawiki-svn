@@ -684,7 +684,7 @@ class Linker {
 				$class = 'internal';
 			} else {
 				$upload = SpecialPage::getTitleFor( 'Upload' );
-				$url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $title->getText() ) );
+				$url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $title->getDbKey() ) );
 				$class = 'new';
 			}
 			$alt = htmlspecialchars( $title->getText() );
@@ -1064,7 +1064,7 @@ class Linker {
 		$result = null;
 		wfRunHooks( 'EditSectionLinkForOther', array( &$this, $title, $section, $url, &$result ) );
 		return is_null( $result )
-			? "<span class=\"editsection\"[{$url}]</span>"
+			? "<span class=\"editsection\">[{$url}]</span>"
 			: "<span class=\"editsection\">[{$result}]</span>";
 	}
 
@@ -1079,7 +1079,7 @@ class Linker {
 		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'editsectionhint', htmlspecialchars( $hint ) ) . '"';
 		$url = $this->makeKnownLinkObj( $nt, wfMsg('editsection'), 'action=edit'.$editurl, '', '', '',  $hint );
 		$result = null;
-		wfRunHooks( 'EditSectionLink', array( &$this, $nt, $section, $url, &$result ) );
+		wfRunHooks( 'EditSectionLink', array( &$this, $nt, $section, $hint, $url, &$result ) );
 		return is_null( $result )
 			? "<span class=\"editsection\">[{$url}]</span>"
 			: "<span class=\"editsection\">[{$result}]</span>";

@@ -8,8 +8,6 @@ $skinNames = array(
 	'standard' => 'استاندارد',
 	'nostalgia' => 'نوستالژی',
 	'cologneblue' => 'آبی کلون',
-	'smarty' => 'پدینگتون',
-	'montparnasse' => 'مون‌پارناس',
 );
 $namespaceNames = array(
 	NS_MEDIA          => 'مدیا',
@@ -127,7 +125,7 @@ $magicWords = array(
        'noeditsection'       => array( 0, "__بی‌بخش__", "__NOEDITSECTION__" ),
        'start'               => array( 0, "__آغاز__", "__START__" ),
        'currentmonth'        => array( 1, "ماه", "ماه‌کنونی", "CURRENTMONTH" ),
-       'currentmonthname'    => array( 1, "نام_ماه", "نام‌ماه‌کنونی", "CURRENTMONTHNAME" ),
+       'currentmonthname'    => array( 1, "نام‌ماه", "نام_ماه", "نام‌ماه‌کنونی", "CURRENTMONTHNAME" ),
        'currentday'          => array( 1, "روز", "CURRENTDAY" ),
        'currentday2'         => array( 1, "روز۲", "CURRENTDAY2" ),
        'currentdayname'      => array( 1, "نام‌روز", "CURRENTDAYNAME" ),

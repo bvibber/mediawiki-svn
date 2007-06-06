@@ -59,6 +59,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   see docs/hooks.txt for details
 * (bug 9769) Provide "watch this page" toggle on protection form
 * (bug 9886) Provide clear example "stub link" in Special:Preferences
+* (bug 10055) Populate email address and real name properties of User objects
+  passed to the 'AbortNewAccount' hook
 
 == Bugfixes since 1.10 ==
 
@@ -124,6 +126,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 9978) Fixed session.save_path validation when using extended
   configuration format, e.g. "5;/tmp"
 * Don't generate a diff link in the patrol log if the page doesn't exist
+* (bug 10067) Translations for former skins removed from message files
+* (bug 9993) Force $wgShowExceptionDetails on during installation
+* (bug 9980) Validate administrator username and password during
+  installation
+* (bug 9383) Don't set a default value for BLOB column in rc-deleted
+  database patch
+* (bug 10149) Don't show full template list on section-0 edit
+
 
 == MediaWiki API changes since 1.10 ==
 
