@@ -78,9 +78,9 @@ li {
 
 .lqt_thread_permalink_summary {
 	clear: both;
-	border: solid 1px #ddd;
+/*	border: solid 1px #ddd;*/
 	padding-left: 1em; padding-right: 1em;
-	margin: 2em 2em 0.7em 1em;
+	margin: 3em 2em 0.7em 1em;
 }
 .lqt_thread_permalink_summary_title {
 	float: left;

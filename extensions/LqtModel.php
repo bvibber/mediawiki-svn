@@ -103,7 +103,7 @@ class Thread {
 
 	function setSuperthread($thread) {
 		$this->superthreadId = $thread->id();
-		$this->updateRecord();
+		$this->touch();
 	}
 	
 	function superthread() {
@@ -119,7 +119,7 @@ class Thread {
 	
 	function setArticle($a) {
 		$this->articleId = $a->getID();
-		$this->updateRecord();
+		$this->touch();
 	}
 	
 	function article() {
@@ -185,7 +185,7 @@ class Thread {
 	
 	function setSubject($s) {
 		$this->subject = $s;
-		$this->updateRecord();
+		$this->touch();
 	}
 
 	function hasSubthreads() {
@@ -199,7 +199,8 @@ class Thread {
 	}
 	
 	function touch() {
-		$this->updateRecord(); // TODO side-effect, ugly, etc.
+		$this->touched = wfTimestampNow();
+		$this->updateRecord();
 		if ( $this->superthread() ) {
 			$this->superthread()->touch();
 		}
@@ -217,7 +218,7 @@ class Thread {
 												'thread_subthread_of' => $this->superthreadId,
 												'thread_summary_page' => $this->summaryId,
 												'thread_subject' => $this->subject,
-												'thread_touched' => wfTimestampNow() ),
+												'thread_touched' => $this->touched ),
                              /* WHERE */ array( 'thread_id' => $this->id, ),
                              __METHOD__);
 	}
@@ -331,6 +332,14 @@ class QueryGroup {
 	
 	function addQuery( $name, $where, $options = array() ) {
 		$this->queries[$name] = array($where, $options);
+	}
+	
+	function extendQuery( $original, $newname, $where, $options = array() ) {
+		if (!array_key_exists($original,$this->queries)) return;
+		$q = $this->queries[$original];
+		$q[0] += $where;
+		$q[1] += $options;
+		$this->queries[$newname] = $q;
 	}
 	
 	function deleteQuery( $name ) {

@@ -61,6 +61,9 @@ class LqtView {
 
 	protected $queries;
 	
+	public $archive_start_days = 14;
+	public $archive_recent_days = 5;
+	
 	function __construct(&$output, &$article, &$title, &$user, &$request) {
 		$this->article = $article;
 		$this->output = $output;
@@ -74,18 +77,21 @@ class LqtView {
 	
 	function initializeQueries() {
 		$g = new QueryGroup();
-		$startdate = Date::now()->nDaysAgo(14)->midnight();
+		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
 		$g->addQuery('fresh',
 		              array('thread_article' => $this->article->getID(),
 		                    'thread_subthread_of is null',
-		                    'thread_touched >= ' . $startdate->text() ),
+		                    '(thread_touched >= ' . $startdate->text() .
+		 					'  OR thread_summary_page is NULL)'),
 		              array('ORDER BY' => 'thread_touched DESC' ));
-		$g->addQuery('recently-archived',
+		$g->addQuery('archived',
 		             array('thread_article' => $this->article->getID(),
 		                   'thread_subthread_of is null',
-		                   'thread_touched < ' . $startdate->text(),
-		                   'thread_touched >=' . $startdate->nDaysAgo(5)->text()),
+		                   'thread_summary_page is not null',
+		                   'thread_touched < ' . $startdate->text()),
 		             array('ORDER BY' => 'thread_touched DESC'));
+		$g->extendQuery('archived', 'recently-archived',
+		                array('thread_touched >=' . $startdate->nDaysAgo($this->archive_recent_days)->text()));
 		return $g;
 	}
 
@@ -444,22 +450,19 @@ HTML;
 //				                               array('class'=>'lqt_header'),
 //				                               $html) );
 		}
-		if ( !$thread->superthread() && !$thread->summary() ) {
-			$url = $this->permalinkUrl( $thread, 'lqt_summarize=1' );
-			$this->output->addHTML( <<<HTML
-			<span class="lqt_summarize_command">[<a href="{$url}">Summarize</a>]</span>
-HTML
-			);
-		}
 	}
 
 	function showThread( $thread, $suppress_summaries = false ) {
 		$this->showThreadHeading( $thread );
 		
+		$touched = new Date($thread->touched());
 		if( $thread->summary() && !$suppress_summaries ) {
 			$this->showSummary($thread);
 			$this->output->addHTML( "<a href=\"{$this->permalinkUrl($thread)}\" class=\"lqt_thread_show_summary\">Show this thread</a>" );
 			return;
+		} else if ( $touched->isBefore(Date::now()->nDaysAgo($this->archive_start_days))
+		            && !$thread->summary() && !$thread->superthread() ) {
+			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'lqt_summarize=1')}\">write a summary</a>. There have been no changed here for at least $this->archive_start_days days.</p>");
 		}
 		
 		$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");			
@@ -617,19 +620,22 @@ HTML
 		you're editing the talkpage itself here.
 		*/
 		
-		$action = $this->request->getVal('action');
+		$action = $this->request->getVal('lqt_header_action');
 		
 		$article = new Article( $this->title );
 		if( $action == 'edit' || $action=='submit' ) {
 			$e = new EditPage($article);
 			$e->suppressIntro = true;
+			$e->editFormTextBeforeContent .=
+				$this->perpetuate('lqt_header_action', 'hidden');
 			$e->edit();
 		} else if ( $action == 'history' ) {
+			$this->output->addHTML("Disclaimer: history doesn't really work yet.");
 			$history = new PageHistory( $article );
 			$history->history();
 		} else if ( $article->exists() ) {
-			$edit = $this->title->getFullURL( 'action=edit' );
-			$history = $this->title->getFullURL( 'action=history' );
+			$edit = $this->title->getFullURL( 'lqt_header_action=edit' );
+			$history = $this->title->getFullURL( 'lqt_header_action=history' );
 			$this->outputList('ul', 'lqt_header_commands', null, array(
 				"<a href=\"$edit\">edit</a>", 
 				"<a href=\"$history\">history</a>"
@@ -712,8 +718,6 @@ class ThreadPermalinkView extends LqtView {
 			$this->showSummarizeForm($t);
 		} else if ( $t->summary() ) {
 			$this->showSummary($t);
-		} else if ( !$t->superthread() ) {
-			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($t, 'lqt_summarize=1')}\">write a summary</a>.</p>");
 		}
 		
 		$this->showThread($t, true);
