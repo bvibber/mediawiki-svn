@@ -634,7 +634,7 @@ HTML
 				));
 			$this->closeDiv();
 		} else {
-			$this->output->addHTML("<p class=\"lqt_header_notice\"><a href=\"{$this->title->getFullURL('action=edit')}\">Add a header to this talk page</a></p>");
+			$this->output->addHTML("<p class=\"lqt_header_notice\">[<a href=\"{$this->title->getFullURL('lqt_header_action=edit')}\">add header</a>]</p>");
 		}
 	}
 	
