@@ -452,14 +452,12 @@ HTML;
 		}
 	}
 
-	function showThread( $thread, $suppress_summaries = false ) {
+	function showThread( $thread ) {
 		$this->showThreadHeading( $thread );
 		
 		$touched = new Date($thread->touched());
-		if( $thread->summary() && !$suppress_summaries ) {
+		if( $thread->summary() ) {
 			$this->showSummary($thread);
-			$this->output->addHTML( "<a href=\"{$this->permalinkUrl($thread)}\" class=\"lqt_thread_show_summary\">Show this thread</a>" );
-			return;
 		} else if ( $touched->isBefore(Date::now()->nDaysAgo($this->archive_start_days))
 		            && !$thread->summary() && !$thread->superthread() ) {
 			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'lqt_summarize=1')}\">write a summary</a>. There have been no changes here for at least $this->archive_start_days days.</p>");
@@ -745,11 +743,9 @@ class ThreadPermalinkView extends LqtView {
 		
 		if( $this->request->getBool('lqt_summarize') ) {
 			$this->showSummarizeForm($t);
-		} else if ( $t->summary() ) {
-			$this->showSummary($t);
 		}
 		
-		$this->showThread($t, true);
+		$this->showThread($t);
 	}
 
 }
