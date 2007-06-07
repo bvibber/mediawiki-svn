@@ -373,12 +373,6 @@ class MediaWiki {
 		}
 
 		// TODO LQT HACK
-/*		if ( $title->isTalkPage() ) {
-			LqtDispatch::talkpageMain($output, $article, $title, $user, $request);
-			wfProfileOut( 'MediaWiki::performAction' );
-			return;
-		}*/
-		
 		if ( LqtDispatch::tryPage( $output, $article, $title, $user, $request ) ) {
 			wfProfileOut( 'MediaWiki::performAction' );
 			return;

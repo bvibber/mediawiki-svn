@@ -23,7 +23,11 @@ class LqtDispatch {
 		                                  $title->getDBkey());
 		$article = new Article($article_title);
 
-		$view = new TalkpageView( $output, $article, $title, $user, $request );
+		if ( $request->getBool('lqt_show_archive') ) {
+			$view = new TalkpageArchiveView( $output, $article, $title, $user, $request );
+		} else {
+			$view = new TalkpageView( $output, $article, $title, $user, $request );
+		}
 		$view->show();
 	}
 
@@ -55,6 +59,7 @@ class LqtView {
 	protected $title;
 	protected $request;
 	
+	protected $headerLevel = 1; 	/* h1, h2, h3, etc. */
 	protected $user_colors;
 	protected $user_color_index;
 	const number_of_user_colors = 6;
@@ -96,9 +101,6 @@ class LqtView {
 	}
 
 	static protected $occupied_titles = array();
-
-	/** h1, h2, h3, etc. */
-	var $headerLevel = 1;
 	
 	/*************************
 	* Utlity methods         *
@@ -362,14 +364,15 @@ HTML;
 		}
 	}
 
-	function lqtTalkpageUrl( $title, $operator = null, $operand = null ) {
+	function talkpageUrl( $title, $operator = null, $operand = null ) {
 		if ( $operator == 'lqt_reply_to' ) {
 			$query = array( 'lqt_reply_to' => $operand ? $operand->id() : null );
 		} else if ($operator == 'lqt_edit_post') {
 			$query = array( 'lqt_edit_post' => $operand ? $operand->id() : null );
-//			$query = array( 'lqt_edit_post' => $operand ? $operand->rootPost()->getTitle()->getPrefixedURL() : null );
 		} else if ($operator == 'lqt_new_thread_form' ) {
 			$query = array( 'lqt_new_thread_form' => '1' );
+		} else if ($operator == 'lqt_show_archive') {
+			$query = array( 'lqt_show_archive' => '1' );
 		} else {
 			$query = array();
 		}
@@ -390,8 +393,8 @@ HTML;
 		$this->output->addHTML( $d->lastMonth()->text() );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
-		$commands = array( 'Edit' => $this->lqtTalkpageUrl( $this->title, 'lqt_edit_post', $thread ),
-		 					'Reply' => $this->lqtTalkpageUrl( $this->title, 'lqt_reply_to', $thread ),
+		$commands = array( 'Edit' => $this->talkpageUrl( $this->title, 'lqt_edit_post', $thread ),
+		 					'Reply' => $this->talkpageUrl( $this->title, 'lqt_reply_to', $thread ),
 		 					'Permalink' => $this->permalinkUrl( $thread ) );
 
 		foreach( $commands as $label => $href ) {
@@ -446,9 +449,6 @@ HTML;
 			        $thread->increment() . '</span>';
 			$this->output->addHTML( wfOpenElement( "h{$this->headerLevel}", array('class'=>'lqt_header') ) .
 			                        $html . wfCloseElement("h{$this->headerLevel}") );
-//			$this->output->addHTML( wfElement( "h{$this->headerLevel}",
-//				                               array('class'=>'lqt_header'),
-//				                               $html) );
 		}
 	}
 
@@ -462,7 +462,7 @@ HTML;
 			return;
 		} else if ( $touched->isBefore(Date::now()->nDaysAgo($this->archive_start_days))
 		            && !$thread->summary() && !$thread->superthread() ) {
-			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'lqt_summarize=1')}\">write a summary</a>. There have been no changed here for at least $this->archive_start_days days.</p>");
+			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'lqt_summarize=1')}\">write a summary</a>. There have been no changes here for at least $this->archive_start_days days.</p>");
 		}
 		
 		$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");			
@@ -523,35 +523,6 @@ class TalkpageView extends LqtView {
 		*/
 	}
 
-	function showArchive($month) {
-		// TODO having a subtitle screws up our relative positioning on the widget.
-//		$this->output->setSubtitle("Archived threads from {$this->formattedMonth($month)}.");
-		$threads = Thread::threadsOfArticleInMonth( $this->article, $month );
-		foreach($threads as $t) {
-			$this->showThread($t);
-		}
-	}
-
-	function showLatest() {
-		if( $this->request->getBool('lqt_new_thread_form') ) {
-			$this->showNewThreadForm();
-		} else {
-			$url = $this->lqtTalkpageUrl( $this->title, 'lqt_new_thread_form' );
-			$this->output->addHTML("<strong><a class=\"lqt_start_discussion\" href=\"$url\">Start&nbsp;a&nbsp;Discussion</a></strong>");
-		}
-
-//		$threads = Thread::threadsOfArticleInLastNDays($this->article, 30);		
-		$threads = $this->queries->query('fresh');
-		foreach($threads as $t) {
-			$this->showThread($t);
-		}
-	}
-	
-	function formattedMonth($yyyymm) {
-		global $wgLang; // TODO global.
-		return $wgLang->getMonthName( substr($yyyymm, 4, 2) ).' '.substr($yyyymm, 0, 4);
-	}
-	
 	function permalinksForThreads($ts, $query = '') {
 		$ps = array();
 		foreach ($ts as $t) {
@@ -562,18 +533,7 @@ class TalkpageView extends LqtView {
 		return $ps;
 	}
 	
-	function showArchiveWidget($month) {
-		global $wgLang; // TODO global.
-		
-		$sel = $this->request->getVal('lqt_archive_month', 'recent');
-		
-		$months = Thread::monthsWhereArticleHasThreads($this->article);
-
-		$options = array( 'Last 30 days' => 'recent' );
-		foreach($months as $m) {
-			$options[$this->formattedMonth($m)] = $m;
-		}
-		
+	function showArchiveWidget() {
 		$threads = $this->queries->query('recently-archived');
 		$threadlinks = $this->permalinksForThreads($threads);
 		
@@ -584,8 +544,9 @@ class TalkpageView extends LqtView {
 		} else {
 			$this->openDiv();
 		}
+		$url = $this->talkpageUrl($this->title, 'lqt_show_archive');
 		$this->output->addHTML(<<<HTML
-			<a href="#" class="lqt_browse_archive">Browse the Archive</a>
+			<a href="$url" class="lqt_browse_archive">Browse the Archive</a>
 HTML
 		);
 		$this->closeDiv();
@@ -655,16 +616,94 @@ HTML
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
 		$this->addJSandCSS();
 
-		$this->showHeader();	
+		$this->showHeader();
 		
-		$month = $this->request->getVal('lqt_archive_month');
-		$this->showArchiveWidget($month);	
+		$this->showArchiveWidget();
 		
-		if ( $month && $month != 'recent' ) {
-			$this->showArchive($month);
+		if( $this->request->getBool('lqt_new_thread_form') ) {
+			$this->showNewThreadForm();
 		} else {
-			$this->showLatest();
+			$url = $this->talkpageUrl( $this->title, 'lqt_new_thread_form' );
+			$this->output->addHTML("<strong><a class=\"lqt_start_discussion\" href=\"$url\">Start&nbsp;a&nbsp;Discussion</a></strong>");
 		}
+
+		$threads = $this->queries->query('fresh');
+		foreach($threads as $t) {
+			$this->showThread($t);
+		}
+	}
+}
+
+class TalkpageArchiveView extends LqtView {
+	function __construct(&$output, &$article, &$title, &$user, &$request) {
+		parent::__construct($output, $article, $title, $user, $request);
+		$this->loadQueryFromRequest();
+	}
+	
+	function showThread($t) {
+		$this->output->addHTML(<<<HTML
+<tr>
+	<td>{$t->subjectWithoutIncrement()}</td>
+	<td>
+HTML
+);		$this->showPostBody($t->summary());
+		$this->output->addHTML(<<<HTML
+	</td>
+</tr>
+HTML
+);
+	}
+	
+	function loadQueryFromRequest() {
+		// Begin with with the requirements for being *in* the archive.
+		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
+		$where = array('thread_article' => $this->article->getID(),
+		                     'thread_subthread_of is null',
+		                     'thread_summary_page is not null',
+		                     'thread_touched < ' . $startdate->text());
+		$options = array('ORDER BY' => 'thread_touched DESC');
+		
+		$annotations = array("Searching for threads");
+
+		$r = $this->request;
+
+		/* START AND END DATES */
+		$m = $r->getVal('lqt_archive_start_month');
+		$y = $r->getVal('lqt_archive_start_year');
+		if ($m && $y && ctype_digit($m.$y) && strlen($m) == 2 && strlen($y) == 4) {
+			$start = "{$y}{$m}01010101";
+			$where[] = 'thread_touched >= ' . $start;
+		}
+		$m = $r->getVal('lqt_archive_end_month');
+		$y = $r->getVal('lqt_archive_end_year');
+		if ($m && $y && ctype_digit($m.$y) && strlen($m) == 2 && strlen($y) == 4){
+			$end = "{$y}{$m}01010101";
+			$where[] = 'thread_touched < ' . $end;
+		}
+		if ( isset($start) && isset($end) ) {
+			$annotations[] = "from $start to $end";
+		} else if (isset($start)) {
+			$annotations[] = "after $start";
+		} else if (isset($end)) {
+			$annotations[] = "before $end";
+		}
+		
+		$this->where = $where;
+		$this->options = $options;
+		$this->annotations = implode("<br>\n", $annotations);
+	}
+	function threads() {
+		return Thread::threadsWhere($this->where, $this->options);
+	}
+	
+	function show() {
+		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
+		$this->output->addHTML("<p>" . $this->annotations . ".</p>");
+		$this->output->addHTML('<table border="1">');
+		foreach ($this->threads() as $t) {
+			$this->showThread($t);
+		}
+		$this->output->addHTML('</table>');
 	}
 }
 
