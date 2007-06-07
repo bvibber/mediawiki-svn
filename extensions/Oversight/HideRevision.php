@@ -38,6 +38,12 @@ $wgGroupPermissions['*']['oversight'] = false;
 // $wgGroupPermissions['quiscustodiet']['oversight'] = true;
 
 $wgExtensionFunctions[] = 'hrSetup';
+$wgExtensionCredits['specialpage'][] = array(
+	'name' => 'Oversight',
+	'author' => 'Brion Vibber',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Oversight',
+	'description' => 'Hide individual revisions from all users for legal reasons, etc.',
+);
 
 $wgSpecialPages['HideRevision'] = array( 'SpecialPage', 'HideRevision', 'hiderevision',
 		/*listed*/ true, /*function*/ false, /*file*/ false );
