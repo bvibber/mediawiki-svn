@@ -666,17 +666,16 @@ HTML
 		$r = $this->request;
 
 		/* START AND END DATES */
-		$m = $r->getVal('lqt_archive_start_month');
-		$y = $r->getVal('lqt_archive_start_year');
-		if ($m && $y && ctype_digit($m.$y) && strlen($m) == 2 && strlen($y) == 4) {
-			$start = "{$y}{$m}01010101";
+		$ignore_dates = ! $r->getVal('lqt_archive_filter_by_date', true);
+		$s = $r->getVal('lqt_archive_start');
+		if ($s && ctype_digit($s) && strlen($s) == 6 && !$ignore_dates) {
+			$start = "{$s}00000000";
 			$where[] = 'thread_touched >= ' . $start;
 		}
-		$m = $r->getVal('lqt_archive_end_month');
-		$y = $r->getVal('lqt_archive_end_year');
-		if ($m && $y && ctype_digit($m.$y) && strlen($m) == 2 && strlen($y) == 4){
-			$end = "{$y}{$m}01010101";
-			$where[] = 'thread_touched < ' . $end;
+		$e = $r->getVal('lqt_archive_end');
+		if ($e && ctype_digit($e) && strlen($e) == 6 && !$ignore_dates) {
+			$end = "{$e}31235959";
+			$where[] = 'thread_touched <= ' . $end;
 		}
 		if ( isset($start) && isset($end) ) {
 			$annotations[] = "from $start to $end";
@@ -693,9 +692,61 @@ HTML
 	function threads() {
 		return Thread::threadsWhere($this->where, $this->options);
 	}
+    function formattedMonth($yyyymm) {
+        global $wgLang; // TODO global.
+        return $wgLang->getMonthName( substr($yyyymm, 4, 2) ).' '.substr($yyyymm, 0, 4);
+    }
+
+	function monthSelect($months, $name) {
+		$selection =  $this->request->getVal($name);
+        $options = array();
+        foreach($months as $m) {
+            $options[$this->formattedMonth($m)] = $m;
+        }
+		$result = <<<HTML
+		<select name="$name" id="$name">
+HTML;
+		foreach( $options as $label => $value ) {
+			$selected = $selection == $value ? 'selected="true"' : '';
+            $result .= "<option value=\"$value\" $selected>$label";
+		}
+		$result .= "</select>";
+		return $result;
+	}
+
+	function showSearchForm() {
+        $months = Thread::monthsWhereArticleHasThreads($this->article);
+
+		$use_dates = $this->request->getVal('lqt_archive_filter_by_date', null);
+		if ( $use_dates === null ) {
+			$use_dates = $this->request->getBool('lqt_archive_start', false) ||
+						 $this->request->getBool('lqt_archive_end', false);
+		}
+		$any_date_check    = !$use_dates ? 'checked="1"' : '';
+		$these_dates_check =  $use_dates ? 'checked="1"' : '';
+
+		$this->output->addHTML(<<<HTML
+<form id="lqt_archive_search_form" action="{$this->title->getLocalURL()}">
+	<input type="hidden" name="lqt_show_archive" value="1">
+	
+	<input type="radio" name="lqt_archive_filter_by_date" value="0" {$any_date_check}>
+	<label for="lqt_archive_filter_by_date_no">Any date</label>  <br>
+	<input type="radio" name="lqt_archive_filter_by_date" value="1" {$these_dates_check}>
+	<label for="lqt_archive_filter_by_date_yes">Only these dates:</label> <br>
+	
+	<label for="lqt_archive_start">Start</label>
+	{$this->monthSelect($months, 'lqt_archive_start')} <br>
+	<label for="lqt_archive_end">End</label>
+	{$this->monthSelect($months, 'lqt_archive_end')}
+	<input type="submit">
+</form>
+HTML
+);
+	}
 	
 	function show() {
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
+		$this->showSearchForm();
 		$this->output->addHTML("<p>" . $this->annotations . ".</p>");
 		$this->output->addHTML('<table border="1">');
 		foreach ($this->threads() as $t) {
