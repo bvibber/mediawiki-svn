@@ -595,7 +595,7 @@ main(int argc, char **argv)
 				u = &users[n];
 			}
 
-			u->rss += p._mdata;
+			u->rss += p._mres;
 			u->processes.push_back(p);
 		}
 
@@ -625,7 +625,7 @@ main(int argc, char **argv)
 						% (bytes / 1024 / 1024)
 						% (config.limit / 1024 / 1024)));
 
-			std::sort(u.processes.begin(), u.processes.end(), field_comparator<process, int, &process::_mdata>);
+			std::sort(u.processes.begin(), u.processes.end(), field_comparator<process, int, &process::_mres>);
 
 			while (bytes >= config.thresh && !u.processes.empty()) {
 				process &p = u.processes[0];
@@ -635,7 +635,7 @@ main(int argc, char **argv)
 				if (!config.debug)
 					kill(p._pid, SIGKILL);
 
-				std::size_t thissize = std::size_t(p._mdata) * pagesize;
+				std::size_t thissize = std::size_t(p._mres) * pagesize;
 
 				log(str(boost::format("    killed process \"%s\" (pid %d) using %dM, usage now %dM")
 						% comm % p._pid
