@@ -632,7 +632,7 @@ HTML
 	}
 }
 
-class TalkpageArchiveView extends LqtView {
+class TalkpageArchiveView extends TalkpageView {
 	function __construct(&$output, &$article, &$title, &$user, &$request) {
 		parent::__construct($output, $article, $title, $user, $request);
 		$this->loadQueryFromRequest();
@@ -689,9 +689,11 @@ HTML
 		$this->options = $options;
 		$this->annotations = implode("<br>\n", $annotations);
 	}
+
 	function threads() {
 		return Thread::threadsWhere($this->where, $this->options);
 	}
+
     function formattedMonth($yyyymm) {
         global $wgLang; // TODO global.
         return $wgLang->getMonthName( substr($yyyymm, 4, 2) ).' '.substr($yyyymm, 0, 4);
@@ -745,7 +747,12 @@ HTML
 	}
 	
 	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
+		$this->addJSandCSS();
+		
 		$this->showSearchForm();
 		$this->output->addHTML("<p>" . $this->annotations . ".</p>");
 		$this->output->addHTML('<table border="1">');
@@ -800,4 +807,3 @@ class ThreadPermalinkView extends LqtView {
 	}
 
 }
-
