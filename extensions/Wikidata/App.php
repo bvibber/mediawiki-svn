@@ -84,6 +84,31 @@ function initializeWikidata() {
 			'ow_uipref_datasets' => 'Default view',
 			'ow_uiprefs' => 'Wikidata',
 			'ow_none_selected' => '&lt;None selected&gt;',
+			'ow_conceptmapping_help' => "<p>possible actions: <ul>
+				<li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
+				<li>&action=get&concept=<concept_id>  read a mapping back</li>
+				<li>&action=list_sets  return a list of possible data context prefixes and what they refer to.</li>
+				<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> for one defined meaning in a concept, return all others</li>
+				<li>&action=help   Show helpful help.</li>
+				</ul></p>",
+			'ow_conceptmapping_uitext' => "
+					<p>Concept Mapping allows you to identify
+					which defined meaning in one dataset is identical
+					to defined meanings in other datasets.</p>\n
+					<p>Please enter or cut and paste the defined 
+					meanings (with id), or simply the defined meaning ids
+					which are identical.</p>\n
+					<p> For example, you could paste <code>DefinedMeaning:Boat (7774)</code>
+					or simply type <code>7774</code>.</p>\n",
+			'ow_conceptmapping_no_action_specified'=>"Apologies, I don't know how to '$1'.",
+			'ow_OK'=>'OK',
+			'ow_not_present_or_malformed'=>'not present or malformed',
+			'ow_mapping_successful'=>"Mapped all fields marked with [OK]<br>\n",
+			'ow_mapping_unsuccessful'=>"Need to have at least two defined meanings before I can link them.\n",
+			'ow_will_insert'=>"Will insert the following:",
+			'ow_contents_of_mapping'=>'Contents of mapping',
+			'ow_available_contexts'=>'Available contexts',
+			'add_concept_link'=>'Add link to other concepts'
 		)
 	);
 

@@ -72,7 +72,7 @@ function updateSuggestions(suggestPrefix) {
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {
 			var newTable = document.createElement('div');
-
+			//alert(http.responseText);
 			if (http.responseText != '') {
 				newTable.innerHTML = leftTrim(http.responseText);
 				table.parentNode.replaceChild(newTable.firstChild, table);

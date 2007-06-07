@@ -26,17 +26,17 @@ class Expression {
 		return createPage($expressionNameSpaceId, getPageTitle($this->spelling));
 	}
 	
-	function isBoundToDefinedMeaning($definedMeaningId) {
-		return expressionIsBoundToDefinedMeaning($definedMeaningId, $this->id);
+	function isBoundToDefinedMeaning($definedMeaningId, $dc=null) {
+		return expressionIsBoundToDefinedMeaning($definedMeaningId, $this->id, $dc);
 	}
 
-	function bindToDefinedMeaning($definedMeaningId, $identicalMeaning) {
-		createSynonymOrTranslation($definedMeaningId, $this->id, $identicalMeaning);	
+	function bindToDefinedMeaning($definedMeaningId, $identicalMeaning, $dc=null) {
+		createSynonymOrTranslation($definedMeaningId, $this->id, $identicalMeaning, $dc);	
 	}
 	
-	function assureIsBoundToDefinedMeaning($definedMeaningId, $identicalMeaning) {
-		if (!$this->isBoundToDefinedMeaning($definedMeaningId)) 
-			$this->bindToDefinedMeaning($definedMeaningId, $identicalMeaning);		
+	function assureIsBoundToDefinedMeaning($definedMeaningId, $identicalMeaning, $dc=null) {
+		if (!$this->isBoundToDefinedMeaning($definedMeaningId, $dc)) 
+			$this->bindToDefinedMeaning($definedMeaningId, $identicalMeaning, $dc);		
 	}
 }
 
@@ -78,9 +78,9 @@ function getTableNameWithObjectId($objectId) {
 		return "";
 }
 
-function getExpressionId($spelling, $languageId) {
+function getExpressionId($spelling, $languageId, $dc=null) {
 
-	$dc=wdGetDataSetContext();
+	$dc=wdGetDataSetContext($dc);
 
 	$dbr = &wfGetDB(DB_SLAVE);
 	$sql = "SELECT expression_id FROM {$dc}_expression_ns " .
@@ -91,9 +91,10 @@ function getExpressionId($spelling, $languageId) {
 	return isset($expression->expression_id) ? $expression->expression_id : null;
 }	
 
-function createExpressionId($spelling, $languageId) {
+function createExpressionId($spelling, $languageId, $dc=null) {
 	
-	$dc=wdGetDataSetContext();
+	$dc=wdGetDataSetContext($dc);
+	wfDebug("Context : $dc");
 	
 	$expressionId = newObjectId("{$dc}_expression_ns");
 
@@ -146,24 +147,24 @@ function createInitialRevisionForPage($pageId, $comment) {
 	return $revisionId;
 }
 	
-function findExpression($spelling, $languageId) {
-	if ($expressionId = getExpressionId($spelling, $languageId)) 
+function findExpression($spelling, $languageId, $dc=null) {
+	if ($expressionId = getExpressionId($spelling, $languageId, $dc)) 
 		return new Expression($expressionId, $spelling, $languageId);
 	else
 		return null;	
 }
 
-function createExpression($spelling, $languageId) {
-	$expression = new Expression(createExpressionId($spelling, $languageId), $spelling, $languageId);
+function createExpression($spelling, $languageId, $dc=null) {
+	$expression = new Expression(createExpressionId($spelling, $languageId, $dc), $spelling, $languageId);
 	$expression->createNewInDatabase();
 	return $expression;
 }
 
-function findOrCreateExpression($spelling, $languageId) {
-	if ($expression = findExpression($spelling, $languageId))
+function findOrCreateExpression($spelling, $languageId, $dc=null) {
+	if ($expression = findExpression($spelling, $languageId, $dc))
 		return $expression;
 	else
-		return createExpression($spelling, $languageId);
+		return createExpression($spelling, $languageId, $dc);
 }
 
 function getSynonymId($definedMeaningId, $expressionId) {
@@ -178,9 +179,9 @@ function getSynonymId($definedMeaningId, $expressionId) {
 		return 0;
 }
 
-function createSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning) {
+function createSynonymOrTranslation($definedMeaningId, $expressionId, $identicalMeaning, $dc=null) {
 	
-	$dc=wdGetDataSetContext();
+	$dc=wdGetDataSetContext($dc);
 
 	$synonymId = getSynonymId($definedMeaningId, $expressionId);
 	
@@ -194,8 +195,8 @@ function createSynonymOrTranslation($definedMeaningId, $expressionId, $identical
 	$queryResult = $dbr->query($sql);
 }
 
-function expressionIsBoundToDefinedMeaning($definedMeaningId, $expressionId) {
-	$dc=wdGetDataSetContext();
+function expressionIsBoundToDefinedMeaning($definedMeaningId, $expressionId, $dc=null) {
+	$dc=wdGetDataSetContext($dc);
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT expression_id FROM {$dc}_syntrans WHERE expression_id=$expressionId AND defined_meaning_id=$definedMeaningId AND ". getLatestTransactionRestriction("{$dc}_syntrans") ." LIMIT 1");
 	
@@ -431,8 +432,8 @@ function updateTranslatedText($setId, $languageId, $text) {
 	addTranslatedText($setId, $languageId, $text);
 }
  
-function createText($text) {
-	$dc=wdGetDataSetContext();
+function createText($text, $dc=null) {
+	$dc=wdGetDataSetContext($dc);
 	$dbr = &wfGetDB(DB_MASTER);
 	$text = $dbr->addQuotes($text);
 	$sql = "insert into {$dc}_text(text_text) values($text)";	
@@ -441,8 +442,8 @@ function createText($text) {
 	return $dbr->insertId();
 }
 
-function createTranslatedContent($translatedContentId, $languageId, $textId) {
-	$dc=wdGetDataSetContext();
+function createTranslatedContent($translatedContentId, $languageId, $textId, $dc=null) {
+	$dc=wdGetDataSetContext($dc);
 
 	$dbr = &wfGetDB(DB_MASTER);
 	$sql = "insert into {$dc}_translated_content(translated_content_id,language_id,text_id,add_transaction_id) values($translatedContentId, $languageId, $textId, ". getUpdateTransactionId() .")";	
@@ -451,8 +452,8 @@ function createTranslatedContent($translatedContentId, $languageId, $textId) {
 	return $dbr->insertId();
 }
 
-function translatedTextExists($textId, $languageId) {
-	$dc=wdGetDataSetContext();
+function translatedTextExists($textId, $languageId, $dc=null) {
+	$dc=wdGetDataSetContext($dc);
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT translated_content_id" .
@@ -465,18 +466,18 @@ function translatedTextExists($textId, $languageId) {
 	return $dbr->numRows($queryResult) > 0;	
 }
 
-function addTranslatedText($translatedContentId, $languageId, $text) {
-	$textId = createText($text);
-	createTranslatedContent($translatedContentId, $languageId, $textId);
+function addTranslatedText($translatedContentId, $languageId, $text,$dc=null) {
+	$textId = createText($text, $dc);
+	createTranslatedContent($translatedContentId, $languageId, $textId, $dc);
 }
 
-function addTranslatedTextIfNotPresent($translatedContentId, $languageId, $text) {
-	if (!translatedTextExists($translatedContentId, $languageId)) 	
-		addTranslatedText($translatedContentId, $languageId, $text);
+function addTranslatedTextIfNotPresent($translatedContentId, $languageId, $text, $dc=null) {
+	if (!translatedTextExists($translatedContentId, $languageId, $dc)) 	
+		addTranslatedText($translatedContentId, $languageId, $text, $dc);
 }
 
-function getDefinedMeaningDefinitionId($definedMeaningId) {
-	$dc=wdGetDataSetContext();
+function getDefinedMeaningDefinitionId($definedMeaningId, $dc=null) {
+	$dc=wdGetDataSetContext($dc);
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT meaning_text_tcid FROM {$dc}_defined_meaning WHERE defined_meaning_id=$definedMeaningId " .
 								" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning"));
@@ -484,9 +485,9 @@ function getDefinedMeaningDefinitionId($definedMeaningId) {
 	return $dbr->fetchObject($queryResult)->meaning_text_tcid;
 }
 
-function updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId) {
+function updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId, $dc=null) {
 	$dbr = &wfGetDB(DB_MASTER);
-	$dc=wdGetDataSetContext();
+	$dc=wdGetDataSetContext($dc);
 	$dbr->query("UPDATE {$dc}_defined_meaning SET meaning_text_tcid=$definitionId WHERE defined_meaning_id=$definedMeaningId" .
 				" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning"));
 }
@@ -496,19 +497,19 @@ function newTranslatedContentId() {
 	return newObjectId("{$dc}_translated_content");
 }
 
-function addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $text) {
+function addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $text, $dc=null) {
 	$definitionId = newTranslatedContentId();		
-	addTranslatedText($definitionId, $languageId, $text);
-	updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId);
+	addTranslatedText($definitionId, $languageId, $text, $dc);
+	updateDefinedMeaningDefinitionId($definedMeaningId, $definitionId, $dc);
 }
 
-function addDefinedMeaningDefinition($definedMeaningId, $languageId, $text) {
-	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
+function addDefinedMeaningDefinition($definedMeaningId, $languageId, $text, $dc=null) {
+	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId, $dc);
 	
 	if ($definitionId == 0)
-		addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $text);
+		addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $text, $dc);
 	else 
-		addTranslatedTextIfNotPresent($definitionId, $languageId, $text);
+		addTranslatedTextIfNotPresent($definitionId, $languageId, $text, $dc);
 }
 
 function createDefinedMeaningAlternativeDefinition($definedMeaningId, $translatedContentId, $sourceMeaningId) {
@@ -606,12 +607,12 @@ function updateDefinedMeaningInCollection($definedMeaningId, $collectionId, $int
 	addDefinedMeaningToCollection($definedMeaningId, $collectionId, $internalId);	
 }
 
-function bootstrapCollection($collection, $languageId, $collectionType){
-	$expression = findOrCreateExpression($collection, $languageId);
-	$definedMeaningId = addDefinedMeaning($expression->id);
-	$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
-	addDefinedMeaningDefinition($definedMeaningId, $languageId, $collection);
-	return addCollection($definedMeaningId, $collectionType);
+function bootstrapCollection($collection, $languageId, $collectionType,$dc=null){
+	$expression = findOrCreateExpression($collection, $languageId, $dc);
+	$definedMeaningId = addDefinedMeaning($expression->id, $dc);
+	$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true, $dc);
+	addDefinedMeaningDefinition($definedMeaningId, $languageId, $collection, $dc);
+	return addCollection($definedMeaningId, $collectionType, $dc);
 }
 
 function getCollectionMeaningId($collectionId) {
@@ -632,8 +633,8 @@ function getCollectionId($collectionMeaningId) {
 	return $dbr->fetchObject($queryResult)->collection_id;	
 }
 
-function addCollection($definedMeaningId, $collectionType) {
-	$dc=wdGetDataSetContext();
+function addCollection($definedMeaningId, $collectionType, $dc=null) {
+	$dc=wdGetDataSetContext($dc);
 	$collectionId = newObjectId("{$dc}_collection_ns");
 	
 	$dbr = &wfGetDB(DB_MASTER);
@@ -643,9 +644,9 @@ function addCollection($definedMeaningId, $collectionType) {
 	return $collectionId;	
 }
 
-function addDefinedMeaning($definingExpressionId) {
+function addDefinedMeaning($definingExpressionId, $dc=null) {
 	$definedMeaningNameSpaceId = Namespace::getIndexForName('definedmeaning');
-	$dc=wdGetDataSetContext();
+	$dc=wdGetDataSetContext($dc);
 	
 	$definedMeaningId = newObjectId("{$dc}_defined_meaning"); 
 	
@@ -759,8 +760,8 @@ function createTranslatedTextAttributeValue($valueId, $objectId, $attributeId, $
 			    "VALUES ($valueId, $objectId, $attributeId, $translatedContentId, ". getUpdateTransactionId() .")");
 }
 
-function addTranslatedTextAttributeValue($objectId, $attributeId, $languageId, $text) {
-	$dc=wdGetDataSetContext();
+function addTranslatedTextAttributeValue($objectId, $attributeId, $languageId, $text, $dc) {
+	$dc=wdGetDataSetContext($dc);
 	$translatedTextValueAttributeId = newObjectId("{$dc}_translated_content_attribute_values");
 	$translatedContentId = newTranslatedContentId();
 	

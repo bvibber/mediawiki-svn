@@ -17,18 +17,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Kim Bruning',
 );
 
-define('help_text',
-	"<p>possible actions: <ul>
-	<li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
-	<li>&action=get&concept=<concept_id>  read a mapping back</li>
-	<li>&action=list_sets  return a list of possible data context prefixes and what they refer to.</li>
-	<li>&action=get_associated&dm=<defined_meaning_id>&dc=<dataset_context_prefix> for one defined meaning in a concept, return all others</li>
-	<li>&action=help   Show helpful help.</li>
-	</ul></p>"); #brief help message
-
-
-
-
 function wfSpecialConceptMapping() {
 	# Add messages
 	#require_once "$IP/includes/SpecialPage.php";
@@ -58,8 +46,8 @@ function wfSpecialConceptMapping() {
 			} elseif ($action=="get_associated"){
 				$this->get_associated();
 			} else {
-				$wgOut->addWikiText("Apologies, I don't know how to '$action'.");	
-				$wgOut->addWikiText(help_text);
+				$wgOut->addWikiText(wfMsg('ow_conceptmapping_no_action_specified',$action));	
+				$wgOut->addWikiText(wfMsg('ow_conceptmapping_help'));
 			}
 		}
 
@@ -67,16 +55,7 @@ function wfSpecialConceptMapping() {
 			global $wgOut;
 			require_once("forms.php");
 			
-			$wgOut->addHTML("
-					<p>Concept Mapping allows you to identify
-					which defined meaning in one dataset is identical
-					to defined meanings in other datasets.</p>\n
-					<p>Please enter or cut and paste the defined 
-					meanings (with id), or simply the defined meaning ids
-					which are identical.</p>\n
-					<p> For example, you could paste <code>DefinedMeaning:Boat (7774)</code>
-					or simply type <code>7774</code>.</p>\n");
-			
+			$wgOut->addHTML(wfMsg('ow_conceptmapping_uitext'));
 			$sets=wdGetDataSets();
 			$options = array();
 			$html="";
@@ -110,20 +89,20 @@ function wfSpecialConceptMapping() {
 				if ($id!=null) {
 					$mappings[$key]=$id;
 					if(!$noerror) {
-						$wgOut->addHTML(' <span style="color:green">[OK]</span>');
+						$wgOut->addHTML(' <span style="color:green">['.wfMsg('ow_OK').']</span>');
 					}
 				} else {
 					if(!$noerror) {
-						$wgOut->addHTML(' <span style="color:red">[not present or malformed]</span>');
+						$wgOut->addHTML(' <span style="color:red">['.wfMsg('ow_not_present_or_malformed').']</span>');
 					}
 				}
 				$wgOut->addHTML("<br>\n");	
 			}
 			if (sizeOf($mappings)>1) { 
 				createConceptMapping($mappings);
-				$wgOut->addHTML("Mapped all fields marked with [OK]<br>\n");
+				$wgOut->addHTML(wfMsg('ow_mapping_successful'));
 			} else {
-				$wgOut->addHTML("Need to have at least two defined meanings before I can link them");
+				$wgOut->addHTML(wfMsg('ow_mapping_unsuccessful'));
 			}
 
 		}
@@ -140,7 +119,7 @@ function wfSpecialConceptMapping() {
 		protected function help() {
 			global $wgOut;
 			$wgOut->addWikiText("<h2>Help</h2>");
-			$wgOut->addWikiText(help_text);
+			$wgOut->addWikiText(wfMsg('ow_conceptmapping_help'));
 		}
 		
 		protected function insert() {
@@ -150,7 +129,7 @@ function wfSpecialConceptMapping() {
 			# $wgRequest->getText( 'page' );
 			$sets=wdGetDataSets();
 			#$requests=$wgRequest->getValues();
-			$wgOut->addWikiText("<h2>Will insert the following:</h2>");
+			$wgOut->addWikiText("<h2>".wfMsg('ow_will_insert')."</h2>");
 			$map=array();
 			foreach ($sets as $key => $set) {
 				$dc=$set->getPrefix();
@@ -171,7 +150,7 @@ function wfSpecialConceptMapping() {
 			global 
 				$wgOut, $wgRequest;
 			$concept_id=$wgRequest->getText("concept");
-			$wgOut->addWikiText("<h2>Contents of mapping:</h2>");
+			$wgOut->addWikiText("<h2>".wfMsg('ow_contents_of_mapping')."</h2>");
 			$map=readConceptMapping($concept_id);
 			#$sets=wdGetDataSets();
 
@@ -182,7 +161,7 @@ function wfSpecialConceptMapping() {
 
 		protected function list_sets() {
 			global $wgOut;
-			$wgOut->addWikiText("<h2>available contexts</h2>");
+			$wgOut->addWikiText("<h2>".wfMsg('available contexts')."</h2>");
 			$sets=wdGetDataSets();
 			foreach ($sets as $key => $set) {
 				$name=$set->fetchName();
