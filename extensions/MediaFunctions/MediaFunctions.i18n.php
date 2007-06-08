@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Internationalisation file for the MediaFunctions extension
+ *
+ * @addtogroup Extensions
+ * @author Rob Church <robchur@gmail.com>
+ */
+
+/**
+ * Get translated magic words, if available
+ *
+ * @param string $lang Language code
+ * @return array
+ */
+function efMediaFunctionsWords( $lang ) {
+	$words = array();
+	
+	/**
+	 * English
+	 */
+	$words['en'] = array(
+		'mediamime' => array( 0, 'mediamime' ),
+		'mediasize' => array( 0, 'mediasize' ),
+	);
+	
+	# English is used as a fallback, and the English synonyms are
+	# used if a translation has not been provided for a given word
+	return ( $lang == 'en' || !isset( $words[$lang] ) )
+		? $words['en']
+		: array_merge( $words['en'], $words[$lang] );
+}
+
+/**
+ * Get error message translations
+ *
+ * @return array
+ */
+function efMediaFunctionsMessages() {
+	$messages = array(
+
+/**
+ * English
+ */
+'en' => array(
+'mediafunctions-invalid-title' => '"$1" is not a valid title',
+'mediafunctions-not-exist' => '"$1" does not exist',
+),
+	
+	);
+	return $messages;
+}
+
+?>
