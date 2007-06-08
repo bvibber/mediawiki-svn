@@ -5,16 +5,12 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
+
 global $wgMessageCache;
-$wgMessageCache->addMessages( array(
-	'picturepopup_invalid_title' => 'Invalid image title',
-	'picturepopup_no_license' => 'Image has no license tag',
-	'picturepopup_no_image' => 'Image does not exist',
-	'picturepopup_no_license_list' => 'License list is invalid or missing',
-	'picturepopup_license_list' => 'Project:Image copyright tags',
-	'picturepopup_no_license_text' => 'License template has no element with id=imageLicenseText',
-	'picturepopup_invalid_icon' => 'License template has missing or invalid imageLicenseIcon element',
-));
+require_once( dirname( __FILE__ ) . '/PicturePopup.i18n.php' );
+foreach( efPicturePopupMessages() as $lang => $messages )
+	$wgMessageCache->addMessages( $messages, $lang );
+
 
 class PicturePopup {
 	var $mTitle;

@@ -77,16 +77,25 @@ $wgFilepathMessages['kk-kz'] = array(
 	'filepath'        => 'Файл орналасуы ',
 	'filepath_page'   => 'Файл аты:',
 	'filepath_submit' => 'Орналасуын табу ',
+	'filepath-summary' => 'Бұл арнайы бет файл орналасуы толық жолын қайтарады. Суреттер толық ажыратылымдығымен көрсетіледі, басқа файл түрлеріне қатысты бағдарламасы тура жегіледі.
+	
+	Файл атауын «{{ns:image}}:» деген бастауышсыз еңгізіңіз.',
 );
 $wgFilepathMessages['kk-tr'] = array(
 	'filepath'        => 'Faýl ornalaswı ',
 	'filepath_page'   => 'Faýl atı:',
 	'filepath_submit' => 'Ornalaswın tabw ',
+	'filepath-summary' => 'Bul arnaýı bet faýl ornalaswı tolıq jolın qaýtaradı. Swretter tolıq ajıratılımdığımen körsetiledi, basqa faýl türlerine qatıstı bağdarlaması twra jegiledi.
+	
+	Faýl atawın «{{ns:image}}:» degen bastawışsız eñgiziñiz.',
 );
 $wgFilepathMessages['kk-cn'] = array(
 	'filepath'        => 'فايل ورنالاسۋى ',
 	'filepath_page'   => 'فايل اتى:',
 	'filepath_submit' => 'ورنالاسۋىن تابۋ ',
+	'filepath-summary' => 'بۇل ارنايى بەت فايل ورنالاسۋى تولىق جولىن قايتارادى. سۋرەتتەر تولىق اجىراتىلىمدىعىمەن كٶرسەتٸلەدٸ, باسقا فايل تٷرلەرٸنە قاتىستى باعدارلاماسى تۋرا جەگٸلەدٸ.
+	
+	فايل اتاۋىن «{{ns:image}}:» دەگەن باستاۋىشسىز ەڭگٸزٸڭٸز.',
 );
 $wgFilepathMessages['kk'] = $wgFilepathMessages['kk-kz'];
 $wgFilepathMessages['nl'] = array(

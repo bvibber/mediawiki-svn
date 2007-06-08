@@ -5,7 +5,7 @@
  */
 
 function efImageMapMessages() {
-	return array(
+	$messages = array(
 
 /* English (Tim Starling) */
 'en' => array(
@@ -298,10 +298,13 @@ function efImageMapMessages() {
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
 'imagemap_description'          => '關於呢幅圖像',
 ),
+
 );
 
 	/* Kazakh default, fallback to kk-kz */
 	$messages['kk'] = $messages['kk-kz'];
+
+	return $messages;
 
 }
 ?>
