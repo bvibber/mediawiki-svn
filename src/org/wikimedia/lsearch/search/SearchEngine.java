@@ -10,6 +10,7 @@ import java.util.Hashtable;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.Query;
@@ -117,13 +118,15 @@ public class SearchEngine {
 		Query q = null;
 		SearchResults res = null;
 		long searchStart = System.currentTimeMillis();
-		Hashtable<String,NamespaceFilter> cachedFilters = GlobalConfiguration.getInstance().getNamespacePrefixes(); 
+		Hashtable<String,NamespaceFilter> cachedFilters = GlobalConfiguration.getInstance().getNamespacePrefixes();
+		boolean searchAll = false;
 		
 		// if search is over one field, try to use filters
 		if(fields.size()==1){
-			if(fields.contains(new NamespaceFilter()))
+			if(fields.contains(new NamespaceFilter())){
 				nsfw = null;  // empty filter: "all" keyword
-			else if(!fields.contains(nsDefault)){ 
+				searchAll = true;
+			} else if(!fields.contains(nsDefault)){ 
 				// use the specified prefix in the query (if it can be cached)
 				NamespaceFilter f = fields.toArray(new NamespaceFilter[] {})[0];
 				if(f.cardinality()==1 || NamespaceCache.isComposable(f))
@@ -135,7 +138,10 @@ public class SearchEngine {
 		
 		try {
 			if(nsfw == null){
-				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.REWRITE,iid.getDBname());				
+				if(searchAll)
+					q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
+				else
+					q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.REWRITE,iid.getDBname());				
 			}
 			else{
 				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());

@@ -22,6 +22,7 @@ import org.apache.lucene.search.spans.SpanNearQuery;
 import org.apache.lucene.search.spans.SpanQuery;
 import org.apache.lucene.search.spans.SpanTermQuery;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
+import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
@@ -57,6 +58,7 @@ public class WikiQueryParser {
 	private String field; // current field
 	private String defaultField; // the default field value
 	private float defaultBoost = 1;
+	private float defaultAliasBoost = ALIAS_BOOST;
 	protected enum TokenType {WORD, FIELD, AND, OR, EOF };
 		
 	private TokenStream tokenStream; 
@@ -70,11 +72,16 @@ public class WikiQueryParser {
 	protected boolean disableTitleAliases;
 	
 	/** boost for alias words from analyzer */
-	public final float ALIAS_BOOST = 0.5f; 
+	public static float ALIAS_BOOST = 0.5f; 
 	/** boost for title field */
-	public static float TITLE_BOOST = 8;	
+	public static float TITLE_BOOST = 6;	
+	public static float TITLE_ALIAS_BOOST = 0.2f;
+	public static float STEM_TITLE_BOOST = 2;	
+	public static float STEM_TITLE_ALIAS_BOOST = 0.4f;
 	public static float REDIRECT_BOOST = 0.2f;
-	public static float KEYWORD_BOOST = 0.05f;
+	public static float ALT_TITLE_BOOST = 2;
+	public static float ALT_TITLE_ALIAS_BOOST = 0.4f;
+	public static float KEYWORD_BOOST = 0.02f;
 	
 	/** Policies in treating field names:
 	 * 
@@ -663,9 +670,10 @@ public class WikiQueryParser {
 			return new TermQuery(makeTerm());
 		}
 		
-		// check for wildcard seaches, they are also not analyzed/stemmed
+		// check for wildcard seaches, they are also not analyzed/stemmed, only for titles
 		// wildcard signs are allowed only at the end of the word, minimum one letter word
-		if(length>1 && Character.isLetter(buffer[0]) && (buffer[length-1]=='*' || buffer[length-1]=='?')){
+		if(length>1 && Character.isLetter(buffer[0]) && (buffer[length-1]=='*' || buffer[length-1]=='?') &&
+				defaultField.equals("title")){
 			Query ret = new WildcardQuery(makeTerm());
 			ret.setBoost(defaultBoost);
 			return ret;
@@ -691,12 +699,12 @@ public class WikiQueryParser {
 					else if(token.type().equals("stemmed")){						
 						// stemmed word
 						t = new TermQuery(makeTerm(token));
-						t.setBoost(ALIAS_BOOST*defaultBoost);
+						t.setBoost(defaultAliasBoost*defaultBoost);
 						cur.add(t,aliasOccur);
 					} else if(token.type().equals("alias")){
 						// produced by alias engine (e.g. for sr)
 						t = new TermQuery(makeTerm(token));
-						t.setBoost(ALIAS_BOOST*defaultBoost);
+						t.setBoost(defaultAliasBoost*defaultBoost);
 						cur.add(t,aliasOccur);
 					}
 					if( cur != bq) // returned from nested query
@@ -763,7 +771,7 @@ public class WikiQueryParser {
 	
 	/** Duplicate a term query, setting "title" as field */
 	private TermQuery makeTitleTermQuery(TermQuery tq){
-		if(disableTitleAliases && tq.getBoost()==ALIAS_BOOST)
+		if(disableTitleAliases && tq.getBoost()==defaultAliasBoost)
 			return null;
 		Term term = tq.getTerm();
 		if(term.field().equals(defaultField)){
@@ -778,7 +786,7 @@ public class WikiQueryParser {
 	
 	/** Duplicate a phrase query, setting "title" as field */
 	private PhraseQuery makeTitlePhraseQuery(PhraseQuery pq){
-		if(disableTitleAliases && pq.getBoost()==ALIAS_BOOST)
+		if(disableTitleAliases && pq.getBoost()==defaultAliasBoost)
 			return null;
 		PhraseQuery pq2 = new PhraseQuery();
 		Term[] terms = pq.getTerms();
@@ -1011,7 +1019,7 @@ public class WikiQueryParser {
 					span = spans.get(0);
 				else{
 					// make a span-near query that has a slop 1/2 of tokenGap
-					span = new SpanNearQuery(spans.toArray(new SpanQuery[] {}),(KeywordsAnalyzer.tokenGap-1)/2,false);
+					span = new SpanNearQuery(spans.toArray(new SpanQuery[] {}),(KeywordsAnalyzer.TOKEN_GAP-1)/2,false);
 					span.setBoost(boost);
 				}
 			}
@@ -1028,6 +1036,80 @@ public class WikiQueryParser {
 		}
 		return null;
 	}
+
+	protected BooleanQuery multiplySpans(Query query, int level, String fieldName, float boost){
+		BooleanQuery bq = new BooleanQuery(true);
+		for(int i=1;i<=KeywordsAnalyzer.KEYWORD_LEVELS;i++){
+			Query q = extractSpans(query,0,fieldName+i,boost/i);
+			if(q != null)
+				bq.add(q,BooleanClause.Occur.SHOULD);
+		}
+		
+		if(bq.getClauses() == null || bq.getClauses().length==0)
+			return null;
+		else
+			return bq;
+	}
+	
+	/** Make a redirect query in format altitle1:query altitle2:query ... redirect:spanquery */
+	protected BooleanQuery makeRedirectQuery(String queryText, Query qt) {
+		BooleanQuery bq = new BooleanQuery(true);
+		float olfDefaultBoost = defaultBoost;
+		String contentField = defaultField;
+		defaultBoost = ALT_TITLE_BOOST;
+		defaultAliasBoost = ALT_TITLE_ALIAS_BOOST;
+		for(int i=1;i<=WikiIndexModifier.ALT_TITLES;i++){
+			defaultField = "alttitle"+i; 
+			Query q = parseRaw(queryText);
+			if(q != null)
+				bq.add(q,BooleanClause.Occur.SHOULD);
+		}
+		// pop stack
+		defaultField = contentField;
+		defaultBoost = olfDefaultBoost;
+		defaultAliasBoost = ALIAS_BOOST;
+		
+		Query qs = multiplySpans(qt,0,"redirect",REDIRECT_BOOST);
+		// merge queries
+		if(qs != null){
+			bq.add(qs,BooleanClause.Occur.SHOULD);
+		}
+		if(bq.getClauses() == null || bq.getClauses().length==0)
+			return null;
+		else
+			return bq;
+
+	}
+	
+	/** Make title query in format: title:query stemtitle:stemmedquery */
+	protected Query makeTitleQuery(String queryText) {
+		String contentField = defaultField;
+		float olfDefaultBoost = defaultBoost;
+		defaultField = "title"; // now parse the title part
+		defaultBoost = TITLE_BOOST;
+		defaultAliasBoost = TITLE_ALIAS_BOOST;
+		Query qt = parseRaw(queryText);
+		// stemmed title
+		defaultField = "stemtitle"; 
+		defaultBoost = STEM_TITLE_BOOST;
+		defaultAliasBoost = STEM_TITLE_ALIAS_BOOST;
+		Query qs = parseRaw(queryText);
+		// pop stack
+		defaultField = contentField;
+		defaultBoost = olfDefaultBoost;
+		defaultAliasBoost = ALIAS_BOOST;
+
+		if(qt == qs) // either null, or category query
+			return qt;
+		if(qt == null)
+			return qs;
+		if(qs == null)
+			return qt;
+		BooleanQuery bq = new BooleanQuery(true);
+		bq.add(qt,BooleanClause.Occur.SHOULD);
+		bq.add(qs,BooleanClause.Occur.SHOULD);
+		return bq;
+	}
 	
 	/**
 	 * Main function for multi-pass parsing.
@@ -1039,17 +1121,12 @@ public class WikiQueryParser {
 	 */
 	protected Query parseMultiPass(String queryText, NamespacePolicy policy, boolean makeRedirect, boolean makeKeywords){
 		if(policy != null)
-			this.namespacePolicy = policy;
-		float olfDefaultBoost = defaultBoost;
+			this.namespacePolicy = policy;		
 		defaultBoost = 1;
-		Query qc = parseRaw(queryText);
-		String contentField = defaultField;
-		defaultField = "title"; // now parse the title part
-		defaultBoost = TITLE_BOOST;
-		Query qt = parseRaw(queryText);
-		// pop stack
-		defaultField = contentField;
-		defaultBoost = olfDefaultBoost;
+		defaultAliasBoost = ALIAS_BOOST;
+		Query qc = parseRaw(queryText);		
+		
+		Query qt = makeTitleQuery(queryText);
 		if(qc == null || qt == null)
 			return new BooleanQuery();		
 		if(qc.equals(qt))
@@ -1058,15 +1135,23 @@ public class WikiQueryParser {
 		bq.add(qc,BooleanClause.Occur.SHOULD);
 		bq.add(qt,BooleanClause.Occur.SHOULD);
 		
+		Query nostem = null;
+		if(makeRedirect || makeKeywords){
+			String contentField = defaultField;
+			defaultField = "keyword"; // this field is never stemmed
+			nostem = parseRaw(queryText);
+			defaultField = contentField;
+		}
+		
 		// redirect pass
-		if(makeRedirect){
-			Query qr = extractSpans(qt,0,"redirect",REDIRECT_BOOST);
+		if(makeRedirect && nostem!=null){
+			BooleanQuery qr = makeRedirectQuery(queryText,nostem);
 			if(qr != null)
 				bq.add(qr,BooleanClause.Occur.SHOULD);
 		}
 		// keyword pass
-		if(makeKeywords){
-			Query qk = extractSpans(qt,0,"keyword",KEYWORD_BOOST);
+		if(makeKeywords && nostem!=null){
+			Query qk = multiplySpans(nostem,0,"keyword",KEYWORD_BOOST);
 			if(qk != null)
 				bq.add(qk,BooleanClause.Occur.SHOULD);
 		}
@@ -1074,7 +1159,7 @@ public class WikiQueryParser {
 		return bq;
 		
 	}
-	
+
 	/**
 	 * Three parse pases: contents, title, redirect
 	 * 
@@ -1096,6 +1181,10 @@ public class WikiQueryParser {
 	 */
 	public Query parseFourPass(String queryText, NamespacePolicy policy, String dbname) throws ParseException{
 		boolean makeKeywords = global.useKeywordScoring(dbname);
+		return parseMultiPass(queryText,policy,true,makeKeywords);
+	}
+	
+	public Query parseFourPass(String queryText, NamespacePolicy policy, boolean makeKeywords) throws ParseException{
 		return parseMultiPass(queryText,policy,true,makeKeywords);
 	}
 	

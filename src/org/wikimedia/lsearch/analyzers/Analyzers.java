@@ -14,6 +14,7 @@ import org.apache.lucene.analysis.ru.RussianStemFilter;
 import org.apache.lucene.analysis.th.ThaiWordFilter;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.test.AliasPorterStemFilter;
 
 /**
@@ -63,13 +64,29 @@ public class Analyzers {
 				new CategoryAnalyzer(categories));
 		perFieldAnalyzer.addAnalyzer("title",
 				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
-		perFieldAnalyzer.addAnalyzer("redirect", 
-				new KeywordsAnalyzer(redirects,filters.getNoStemmerFilterFactory()));
-		perFieldAnalyzer.addAnalyzer("keyword", 
-				new KeywordsAnalyzer(tokenizer.getKeywords(),filters.getNoStemmerFilterFactory()));
+		perFieldAnalyzer.addAnalyzer("stemtitle",
+				getTitleAnalyzer(filters));
+		setAltTitleAnalyzer(perFieldAnalyzer,"alttitle",
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
+		setKeywordAnalyzer(perFieldAnalyzer,"redirect",
+				new KeywordsAnalyzer(redirects,filters.getNoStemmerFilterFactory(),"redirect"));		
+		setKeywordAnalyzer(perFieldAnalyzer,"keyword", 
+				new KeywordsAnalyzer(tokenizer.getKeywords(),filters.getNoStemmerFilterFactory(),"keyword"));
 		return new Object[] {perFieldAnalyzer,tokenizer};
 	}
 	
+	protected static void setAltTitleAnalyzer(PerFieldAnalyzerWrapper perFieldAnalyzer, String prefix, Analyzer analyzer) {
+		for(int i=1;i<=WikiIndexModifier.ALT_TITLES;i++){
+			perFieldAnalyzer.addAnalyzer(prefix+i,analyzer);
+		}
+	}
+	
+	protected static void setKeywordAnalyzer(PerFieldAnalyzerWrapper perFieldAnalyzer, String prefix, KeywordsAnalyzer analyzer) {
+		for(int i=1;i<=KeywordsAnalyzer.KEYWORD_LEVELS;i++){
+			perFieldAnalyzer.addAnalyzer(prefix+i,analyzer);
+		}
+	}
+
 	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(IndexId iid){
 		if(global == null)
 			global = GlobalConfiguration.getInstance();
@@ -94,6 +111,12 @@ public class Analyzers {
 		perFieldAnalyzer.addAnalyzer("contents", 
 				new QueryLanguageAnalyzer(filters));
 		perFieldAnalyzer.addAnalyzer("title",
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
+		perFieldAnalyzer.addAnalyzer("stemtitle",
+				getTitleAnalyzer(filters));
+		setAltTitleAnalyzer(perFieldAnalyzer,"alttitle",
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
+		perFieldAnalyzer.addAnalyzer("keyword", 
 				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
 		
 		return perFieldAnalyzer;

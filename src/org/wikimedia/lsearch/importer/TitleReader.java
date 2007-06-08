@@ -4,12 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
 
 import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.Page;
 import org.mediawiki.importer.Revision;
 import org.mediawiki.importer.Siteinfo;
 import org.wikimedia.lsearch.beans.ArticleLinks;
+import org.wikimedia.lsearch.util.Localization;
 
 /**
  * Read a HashSet of titles from dump
@@ -21,6 +24,11 @@ public class TitleReader  implements DumpWriter{
 	Page page;
 	Revision revision;
 	HashMap<String,ArticleLinks> titles = new HashMap<String,ArticleLinks>();
+	protected String langCode;
+	
+	public TitleReader(String langCode){
+		this.langCode = langCode;
+	}
 
 	public void writeRevision(Revision revision) throws IOException {
 		this.revision = revision;		
@@ -42,7 +50,12 @@ public class TitleReader  implements DumpWriter{
 		// nop
 	}
 	public void writeSiteinfo(Siteinfo info) throws IOException {
-		// nop
+		// write siteinfo to localization
+		Iterator it = info.Namespaces.orderedEntries();
+		while(it.hasNext()){
+			Entry<Integer,String> pair = (Entry<Integer,String>)it.next();
+			Localization.addCustomMapping(pair.getValue(),pair.getKey(),langCode);
+		}
 	}	
 	public void writeStartWiki() throws IOException {
 		// nop		

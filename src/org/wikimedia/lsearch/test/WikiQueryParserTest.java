@@ -14,6 +14,7 @@ import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
+import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 
 /**
@@ -31,6 +32,10 @@ public class WikiQueryParserTest extends TestCase {
 		Configuration.setConfigFile(System.getProperty("user.dir")+"/test-data/mwsearch.conf.test");
 		Configuration.open();
 		WikiQueryParser.TITLE_BOOST = 2;
+		WikiQueryParser.REDIRECT_BOOST = 0.2f;
+		WikiQueryParser.ALT_TITLE_BOOST = 6;
+		WikiQueryParser.KEYWORD_BOOST = 0.05f;
+		WikiIndexModifier.ALT_TITLES = 3;
 		try{
 			WikiQueryParser parser = new WikiQueryParser("contents",new SimpleAnalyzer());
 			Query q;
@@ -249,10 +254,10 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("(+(+namespace:0 +(+contents:1991 +category:\"olympic cities\")) -contents:1990) (+(+namespace:0 +(+title:1991^2.0 +category:\"olympic cities\")) -title:1990^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("main:ba*",NamespacePolicy.IGNORE);
-			assertEquals("contents:ba* title:ba*^2.0",q.toString());
+			assertEquals("contents:ba title:ba*^2.0",q.toString());
 			
 			q = parser.parseTwoPass("main:ba* all:lele",NamespacePolicy.REWRITE);
-			assertEquals("(+(+namespace:0 +contents:ba*) +contents:lele) (+(+namespace:0 +title:ba*^2.0) +title:lele^2.0)",q.toString());
+			assertEquals("(+(+namespace:0 +contents:ba) +contents:lele) (+(+namespace:0 +title:ba*^2.0) +title:lele^2.0)",q.toString());
 			
 			q = parser.parseTwoPass("main:ba*beans",NamespacePolicy.IGNORE);
 			assertEquals("(+contents:ba +(contents:beans contents:bean^0.5)) (+title:ba^2.0 +title:beans^2.0)",q.toString());
@@ -279,27 +284,28 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("[1,a12]:beans",NamespacePolicy.IGNORE);
 			assertEquals("(+contents:1 +contents:a12 +(contents:beans contents:bean^0.5)) (+title:1^2.0 +title:a12^2.0 +title:beans^2.0)",q.toString());
 			
-			// Redirect third pass tests
-			q = parser.parseThreePass("beans",NamespacePolicy.IGNORE);
-			assertEquals("(contents:beans contents:bean^0.5) title:beans^2.0 redirect:beans^2.0",q.toString());
+			// Redirect third/forth pass tests
+			q = parser.parseFourPass("beans",NamespacePolicy.IGNORE,true);
+			assertEquals("(contents:beans contents:bean^0.5) title:beans^2.0 (alttitle1:beans^6.0 alttitle2:beans^6.0 alttitle3:beans^6.0 redirect1:beans^0.2 redirect2:beans^0.1 redirect3:beans^0.06666667 redirect4:beans^0.05 redirect5:beans^0.04) (keyword1:beans^0.05 keyword2:beans^0.025 keyword3:beans^0.016666668 keyword4:beans^0.0125 keyword5:beans^0.01)",q.toString());
 			
-			q = parser.parseThreePass("beans everyone",NamespacePolicy.IGNORE);			
-			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0) spanNear([redirect:beans^2.0, redirect:everyone^2.0], 52, false)",q.toString());
+			q = parser.parseFourPass("beans everyone",NamespacePolicy.IGNORE,true);			
+			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5)) (+title:beans^2.0 +title:everyone^2.0) ((+alttitle1:beans^6.0 +alttitle1:everyone^6.0) (+alttitle2:beans^6.0 +alttitle2:everyone^6.0) (+alttitle3:beans^6.0 +alttitle3:everyone^6.0) spanNear([redirect1:beans, redirect1:everyone], 100, false)^0.2 spanNear([redirect2:beans, redirect2:everyone], 100, false)^0.1 spanNear([redirect3:beans, redirect3:everyone], 100, false)^0.06666667 spanNear([redirect4:beans, redirect4:everyone], 100, false)^0.05 spanNear([redirect5:beans, redirect5:everyone], 100, false)^0.04) (spanNear([keyword1:beans, keyword1:everyone], 100, false)^0.05 spanNear([keyword2:beans, keyword2:everyone], 100, false)^0.025 spanNear([keyword3:beans, keyword3:everyone], 100, false)^0.016666668 spanNear([keyword4:beans, keyword4:everyone], 100, false)^0.0125 spanNear([keyword5:beans, keyword5:everyone], 100, false)^0.01)",q.toString());
 			
-			q = parser.parseThreePass("beans everyone incategory:mouse",NamespacePolicy.IGNORE);
-			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5) +category:mouse) (+title:beans^2.0 +title:everyone^2.0 +category:mouse) (+spanNear([redirect:beans^2.0, redirect:everyone^2.0], 52, false) +category:mouse)",q.toString());
+			// TODO: check if this query will be optimized by lucene (categories)
+			q = parser.parseFourPass("beans everyone incategory:mouse",NamespacePolicy.IGNORE,true);
+			assertEquals("(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5) +category:mouse) (+title:beans^2.0 +title:everyone^2.0 +category:mouse) ((+alttitle1:beans^6.0 +alttitle1:everyone^6.0 +category:mouse) (+alttitle2:beans^6.0 +alttitle2:everyone^6.0 +category:mouse) (+alttitle3:beans^6.0 +alttitle3:everyone^6.0 +category:mouse) (+spanNear([redirect1:beans, redirect1:everyone], 100, false)^0.2 +category:mouse) (+spanNear([redirect2:beans, redirect2:everyone], 100, false)^0.1 +category:mouse) (+spanNear([redirect3:beans, redirect3:everyone], 100, false)^0.06666667 +category:mouse) (+spanNear([redirect4:beans, redirect4:everyone], 100, false)^0.05 +category:mouse) (+spanNear([redirect5:beans, redirect5:everyone], 100, false)^0.04 +category:mouse)) ((+spanNear([keyword1:beans, keyword1:everyone], 100, false)^0.05 +category:mouse) (+spanNear([keyword2:beans, keyword2:everyone], 100, false)^0.025 +category:mouse) (+spanNear([keyword3:beans, keyword3:everyone], 100, false)^0.016666668 +category:mouse) (+spanNear([keyword4:beans, keyword4:everyone], 100, false)^0.0125 +category:mouse) (+spanNear([keyword5:beans, keyword5:everyone], 100, false)^0.01 +category:mouse))",q.toString());
 			
-			q = parser.parseThreePass("beans OR everyone",NamespacePolicy.IGNORE);
-			assertEquals("((contents:beans contents:bean^0.5) (contents:everyone contents:everyon^0.5)) (title:beans^2.0 title:everyone^2.0)",q.toString());
+			q = parser.parseFourPass("beans OR everyone",NamespacePolicy.IGNORE,true);
+			assertEquals("((contents:beans contents:bean^0.5) (contents:everyone contents:everyon^0.5)) (title:beans^2.0 title:everyone^2.0) ((alttitle1:beans^6.0 alttitle1:everyone^6.0) (alttitle2:beans^6.0 alttitle2:everyone^6.0) (alttitle3:beans^6.0 alttitle3:everyone^6.0))",q.toString());
 			
-			q = parser.parseThreePass("beans -everyone",NamespacePolicy.IGNORE);
-			assertEquals("(+(contents:beans contents:bean^0.5) -(contents:everyone)) (+title:beans^2.0 -title:everyone^2.0)",q.toString());
+			q = parser.parseFourPass("beans -everyone",NamespacePolicy.IGNORE,true);
+			assertEquals("(+(contents:beans contents:bean^0.5) -(contents:everyone)) (+title:beans^2.0 -title:everyone^2.0) ((+alttitle1:beans^6.0 -alttitle1:everyone^6.0) (+alttitle2:beans^6.0 -alttitle2:everyone^6.0) (+alttitle3:beans^6.0 -alttitle3:everyone^6.0))",q.toString());
 			
-			q = parser.parseThreePass("[0,1,2]:beans everyone",NamespacePolicy.REWRITE);
-			assertEquals("(+(namespace:0 namespace:1 namespace:2) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+(namespace:0 namespace:1 namespace:2) +(+title:beans^2.0 +title:everyone^2.0)) (+(namespace:0 namespace:1 namespace:2) +spanNear([redirect:beans^2.0, redirect:everyone^2.0], 52, false))",q.toString());
+			q = parser.parseFourPass("[0,1,2]:beans everyone",NamespacePolicy.REWRITE,true);
+			assertEquals("(+(namespace:0 namespace:1 namespace:2) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+(namespace:0 namespace:1 namespace:2) +(+title:beans^2.0 +title:everyone^2.0)) ((+(namespace:0 namespace:1 namespace:2) +(+alttitle1:beans^6.0 +alttitle1:everyone^6.0)) (+(namespace:0 namespace:1 namespace:2) +(+alttitle2:beans^6.0 +alttitle2:everyone^6.0)) (+(namespace:0 namespace:1 namespace:2) +(+alttitle3:beans^6.0 +alttitle3:everyone^6.0)) (+(namespace:0 namespace:1 namespace:2) +spanNear([redirect1:beans, redirect1:everyone], 100, false)^0.2) (+(namespace:0 namespace:1 namespace:2) +spanNear([redirect2:beans, redirect2:everyone], 100, false)^0.1) (+(namespace:0 namespace:1 namespace:2) +spanNear([redirect3:beans, redirect3:everyone], 100, false)^0.06666667) (+(namespace:0 namespace:1 namespace:2) +spanNear([redirect4:beans, redirect4:everyone], 100, false)^0.05) (+(namespace:0 namespace:1 namespace:2) +spanNear([redirect5:beans, redirect5:everyone], 100, false)^0.04)) ((+(namespace:0 namespace:1 namespace:2) +spanNear([keyword1:beans, keyword1:everyone], 100, false)^0.05) (+(namespace:0 namespace:1 namespace:2) +spanNear([keyword2:beans, keyword2:everyone], 100, false)^0.025) (+(namespace:0 namespace:1 namespace:2) +spanNear([keyword3:beans, keyword3:everyone], 100, false)^0.016666668) (+(namespace:0 namespace:1 namespace:2) +spanNear([keyword4:beans, keyword4:everyone], 100, false)^0.0125) (+(namespace:0 namespace:1 namespace:2) +spanNear([keyword5:beans, keyword5:everyone], 100, false)^0.01))",q.toString());
 			
-			q = parser.parseThreePass("[0,1,2]:beans everyone [0]:mainly",NamespacePolicy.REWRITE);
-			assertEquals("((+(namespace:0 namespace:1 namespace:2) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+namespace:0 +(contents:mainly contents:main^0.5))) ((+(namespace:0 namespace:1 namespace:2) +(+title:beans^2.0 +title:everyone^2.0)) (+namespace:0 +title:mainly^2.0))",q.toString());
+			q = parser.parseFourPass("[0,1,2]:beans everyone [0]:mainly",NamespacePolicy.REWRITE,true);
+			assertEquals("((+(namespace:0 namespace:1 namespace:2) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+namespace:0 +(contents:mainly contents:main^0.5))) ((+(namespace:0 namespace:1 namespace:2) +(+title:beans^2.0 +title:everyone^2.0)) (+namespace:0 +title:mainly^2.0)) (((+(namespace:0 namespace:1 namespace:2) +(+alttitle1:beans^6.0 +alttitle1:everyone^6.0)) (+namespace:0 +alttitle1:mainly^6.0)) ((+(namespace:0 namespace:1 namespace:2) +(+alttitle2:beans^6.0 +alttitle2:everyone^6.0)) (+namespace:0 +alttitle2:mainly^6.0)) ((+(namespace:0 namespace:1 namespace:2) +(+alttitle3:beans^6.0 +alttitle3:everyone^6.0)) (+namespace:0 +alttitle3:mainly^6.0)))",q.toString());
 
 			// Test field extraction
 			HashSet<NamespaceFilter> fs = parser.getFieldNamespaces("main:something [1]:else all:oh []:nja");

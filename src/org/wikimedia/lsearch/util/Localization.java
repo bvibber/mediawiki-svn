@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
+import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 
 /** 
@@ -27,6 +28,39 @@ public class Localization {
 	/** Languages for which loading of localization failed */
 	protected static HashSet<String> badLocalizations = new HashSet<String>();
 	protected static HashSet<String> interwiki = null;
+	/** lowecased canonical names of namespaces */
+	protected static Hashtable<String,Integer> canonicalNamespaces = new Hashtable<String,Integer>();		
+	static{
+		canonicalNamespaces.put("media",-2);
+		canonicalNamespaces.put("special",-1);
+		canonicalNamespaces.put("talk",1);
+		canonicalNamespaces.put("user",2);
+		canonicalNamespaces.put("user_talk",3);
+		canonicalNamespaces.put("project",4);
+		canonicalNamespaces.put("project_talk",5);
+		canonicalNamespaces.put("image",6);
+		canonicalNamespaces.put("image_talk",7);
+		canonicalNamespaces.put("mediawiki",8);
+		canonicalNamespaces.put("mediawiki_talk",9);
+		canonicalNamespaces.put("template",10);
+		canonicalNamespaces.put("template_talk",11);
+		canonicalNamespaces.put("help",12);
+		canonicalNamespaces.put("help_talk",13);
+		canonicalNamespaces.put("category",14);
+		canonicalNamespaces.put("category_talk",15);
+	}
+	
+	/** Add custom mapping not found in localization files from other source, e.g. project name, etc.. */
+	public static void addCustomMapping(String namespace, int index, String langCode){
+		synchronized(lock){
+			Hashtable<String,Integer> map = namespaces.get(langCode);
+			if(map == null){
+				map = new Hashtable<String,Integer>();
+				namespaces.put(langCode,map);
+			}
+			map.put(namespace.toLowerCase(),index);
+		}
+	}
 	
 	public static HashSet<String> getLocalizedImage(String langCode){
 		return getLocalizedNamespace(langCode,6);
@@ -167,6 +201,25 @@ public class Localization {
 			}
 		}
 		return null;
+	}
+	
+	public static Title getRedirectTitle(String text, String lang){
+		String full = getRedirectTarget(text,lang);
+		if(full == null)
+			return null;
+		String[] parts = full.split(":",2);
+		if(parts.length == 2){
+			String ns = parts[0].toLowerCase();
+			// check canonical
+			if(canonicalNamespaces.containsKey(ns))
+				return new Title(canonicalNamespaces.get(ns),parts[1]);
+			// check lang namespaces
+			Hashtable<String,Integer> map = namespaces.get(lang);
+			if(map.containsKey(ns))
+				return new Title(map.get(ns),parts[1]);
+		}
+		// not recognized namespace, using main
+		return new Title(0,full);		
 	}
 	
 	/** Loads interwiki from default location lib/interwiki.map */

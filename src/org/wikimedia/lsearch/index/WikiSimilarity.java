@@ -16,12 +16,12 @@ public class WikiSimilarity extends DefaultSimilarity {
 	/**
 	 * For content: 
 	 *  * length norm is a linear function, with f(1) = 1
-	 * and f(10000) = 0.2
+	 * and f(10000) = 0.5
 	 * 
-	 * For titles:
+	 * For titles / title aliases:
 	 *  * 1/sqrt(term^3)
 	 *  
-	 * For redirect:
+	 * For redirect / keywords:
 	 *  * no length norm
 	 * 
 	 */
@@ -35,11 +35,11 @@ public class WikiSimilarity extends DefaultSimilarity {
 				//log.debug("Length-norm: "+f+", numtokens: "+numTokens);
 				return f;
 			}			
-		} else if(fieldName.equals("title")){
+		} else if(fieldName.equals("title") || fieldName.startsWith("alttitle")){
 			float f = (float) (1.0 / (Math.sqrt(numTokens) * numTokens));
 			//log.debug("Length-norm: "+f+", numtokens: "+numTokens);
 			return f;
-		} else if(fieldName.equals("redirect") || fieldName.equals("keyword")){
+		} else if(fieldName.startsWith("redirect") || fieldName.startsWith("keyword")){
 			return 1;
 		} else
 			return super.lengthNorm(fieldName,numTokens);
