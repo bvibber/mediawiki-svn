@@ -24,6 +24,14 @@ function lqt_on_load() {
 	if (success) {
 		document.getElementById('lqt_archive_go_button').className = "lqt_hidden";
 	}
+	
+	var searchform = document.getElementById('lqt_archive_search_form');
+	if ( searchform ) {
+		alert("foo");
+		lqt_add_event( document.getElementById('lqt_archive_start' ), 'change', function(e) {
+			alert(e.target);
+		} );
+	}
 }
 
 addOnloadHook(lqt_on_load);
