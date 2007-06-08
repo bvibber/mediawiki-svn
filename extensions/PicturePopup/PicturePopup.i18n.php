@@ -20,6 +20,17 @@ function efPicturePopupMessages() {
 	'picturepopup_invalid_icon' => 'License template has missing or invalid imageLicenseIcon element',
 ),
 
+/* Indonesian */
+'id' => array(
+	'picturepopup_invalid_title' => 'Judul gambar tak sah',
+	'picturepopup_no_license' => 'Gambar tak memiliki tag lisensi',
+	'picturepopup_no_image' => 'Gambar tak ditemukan',
+	'picturepopup_no_license_list' => 'Daftar lisensi tak valid atau tak ditemukan',
+	'picturepopup_license_list' => 'Project:Tag hak cipta gambar',
+	'picturepopup_no_license_text' => 'Templat lisensi tak memiliki elemen dengan id=imageLicenseText',
+	'picturepopup_invalid_icon' => 'Templat lisensi tak memiliki atau memiliki elemen imageLicenseIcon tak sah',
+),
+
 /* Kazakh Cyrillic */
 'kk-kz' => array(
 	'picturepopup_invalid_title' => 'Сурет атауы жарамсыз ',

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * MiniPreview displays, next to an image, small previews 
+ * MiniPreview displays, next to an image, small previews
  * of other images in the same categories or displayed on the same pages
  *
  * @addtogroup Extensions
@@ -9,7 +9,7 @@
  * @copyright © 2007 Magnus Manske
  * @licence GNU General Public Licence 2.0 or later
  */
- 
+
 if( !defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	die( 1 );
@@ -37,9 +37,9 @@ $wgMiniPreviewMessagesInitialized = false;
  * Register extension setup hook and credits
  */
 $wgExtensionFunctions[] = 'efMiniPreview';
-$wgExtensionCredits['parserhook'][] = array( 
-	'name' => 'MiniPreview', 
-	'author' => 'Magnus Manske', 
+$wgExtensionCredits['parserhook'][] = array(
+	'name' => 'MiniPreview',
+	'author' => 'Magnus Manske',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:MiniPreview',
 	'description' => 'MiniPreview displays, next to an image, small previews of other images in the same categories or displayed on the same pages',
 );
@@ -59,15 +59,15 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
   global $wgMiniPreviewThumbnailSize, $wgMiniPreviewExtPath, $wgScriptPath;
   global $wgMiniPreviewShowCategories, $wgMiniPreviewShowGalleries;
   global $wgMiniPreviewMaxCategories, $wgMiniPreviewMaxGalleries, $wgMiniPreviewMaxTotal;
-  
+
   if ( !$wgMiniPreviewEnabled ) return ;
-  
+
   # Register CSS
-  $output->addLink( 
-    array( 
-      'rel' => 'stylesheet', 
-      'type' => 'text/css', 
-      'href' => $wgScriptPath . $wgMiniPreviewExtPath . '/MiniPreview.css' 
+  $output->addLink(
+    array(
+      'rel' => 'stylesheet',
+      'type' => 'text/css',
+      'href' => $wgScriptPath . $wgMiniPreviewExtPath . '/MiniPreview.css'
     ) ) ;
 
   $previews = array(); # Will contain objects, each having $entry[0] as BEFORE and $entry[1] as AFTER file
@@ -81,7 +81,7 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
     $line = trim ( substr ( $line , 1 ) ) ;
     $ignore_categories[] = $line;
   }
-  
+
 
   # Run categories
   if ( $wgMiniPreviewShowCategories ) {
@@ -100,7 +100,7 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
       $previews[] = wfMiniPreviewGetPreviewForCategory ( $category , $timestamp , $imagePage );
     }
   }
-  
+
   # Run galleries
   if ( $wgMiniPreviewShowGalleries ) {
     $cnt = 0;
@@ -129,7 +129,7 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
     'style' => "float:right;clear:right" ) ) ;
 
   if ( count ( $previews ) == 0 ) { # No results
-    $html .= "No categories or galleries!" ;
+    $html .= wfMiniPreviewMessage ( 'minipreview-no_category_gallery' ) ;
   } else {
     $last_type = $previews[0]->from_category;
     foreach ( $previews AS $p ) {
@@ -148,7 +148,7 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
       $html .= wfMiniPreviewGetThumbnail ( $p->entry[1] , $image_data ) ;
 
       $html .= wfOpenElement( 'td' );
-      $html .= wfOpenElement( 'div', array( 
+      $html .= wfOpenElement( 'div', array(
         'style' => "width:{$wgMiniPreviewThumbnailSize}px;height:{$wgMiniPreviewThumbnailSize}px;",
         'class' => 'MiniPreview_count' ));
       $html .= wfMiniPreviewMessage ( 'minipreview-files_in_'.$mode , array("<b>".$p->image_count."</b>") );
@@ -165,12 +165,12 @@ function efMiniPreviewShow ( &$imagePage, &$output )  {
 
 function wfMiniPreviewGetThumbnail ( $entry , &$image_data ) {
   global $wgMiniPreviewThumbnailSize;
-  
+
   $divclass = ( $entry->id == 0 ) ? 'MiniPreview_no_thumb' : 'MiniPreview_thumb' ;
-  
+
   $ret = '';
   $ret .= wfOpenElement( 'td' );
-  $ret .= wfOpenElement( 'div', array( 
+  $ret .= wfOpenElement( 'div', array(
     'style' => "width:{$wgMiniPreviewThumbnailSize}px;height:{$wgMiniPreviewThumbnailSize}px;overflow:hidden",
     'class' => $divclass ));
 
@@ -198,11 +198,11 @@ function wfMiniPreviewGetThumbnail ( $entry , &$image_data ) {
       $style .= "top:" . floor($o) . "px;";
       $style .= "left:" . floor($o) . "px;";
     }
-    
+
     $thumb_url = $image_data[$entry->title]->createThumb( $tw );
     $image_url = $image_data[$entry->title]->getTitle()->getLocalURL();
     $image_name = $image_data[$entry->title]->getTitle()->getText();
-    
+
     $ret .= wfOpenElement ( 'a' , array ( 'href' => $image_url ));
     $ret .= wfElement ( 'img' , array ( 'border' => '0', 'style' => $style, 'src' => $thumb_url , 'alt' => $image_name ));
     $ret .= wfCloseElement ( 'a' );
@@ -220,12 +220,12 @@ function wfMiniPreviewGetImageCategories ( &$imagePage ) {
   $res = $dbr->select(
     array( 'page', 'categorylinks' ),
     array( 'cl_to', 'cl_timestamp' ),
-    array( 
+    array(
       'cl_from          =  page_id',
       'page_namespace' => '6', # Image page only
       'page_title' => $imagePage->mTitle->getDBKey() )
   );
-  
+
   $ret = array();
   while( $x = $dbr->fetchObject ( $res ) ) {
     $ret[$x->cl_to] = $x->cl_timestamp;
@@ -241,12 +241,12 @@ function wfMiniPreviewGetImageGalleries ( &$imagePage ) {
   $res = $dbr->select(
     array( 'page', 'imagelinks' ),
     array( 'il_from' , 'page_title' ),
-    array( 
+    array(
       'page_id = il_from',
       'page_namespace' => $wgMiniPreviewGalleryNamespace,
       'il_to' => $imagePage->mTitle->getDBKey() )
   );
-  
+
   $ret = array();
   while( $x = $dbr->fetchObject ( $res ) ) {
     $ret[$x->il_from] = $x->page_title ;
@@ -265,12 +265,12 @@ function wfMiniPreviewGetPreviewForCategory ( $category , $timestamp , $imagePag
   $ret->entry = array();
 
 	$dbr = wfGetDB( DB_SLAVE );
-	
+
 	# Get the image BEFORE the current one (according to timestamp)
   $res = $dbr->select(
     array( 'page', 'categorylinks' ),
     array( 'page_title', 'page_id'),
-    array( 
+    array(
       'cl_to' => $category , # Same category as current one
       'cl_timestamp < ' . $dbr->addQuotes( $timestamp ), # Timestamp is before the current one
       'page_id = cl_from',
@@ -284,12 +284,12 @@ function wfMiniPreviewGetPreviewForCategory ( $category , $timestamp , $imagePag
     $ret->entry[0]->id = $x->page_id ;
   } else $ret->entry[0]->id = 0 ;
   $dbr->freeResult( $res );
-  
+
 	# Get the image AFTER the current one (according to timestamp)
   $res = $dbr->select(
     array( 'page', 'categorylinks' ),
     array( 'page_id', 'page_title' ),
-    array( 
+    array(
       'cl_to' => $category , # Same category as current one
       'cl_timestamp > ' . $dbr->addQuotes( $timestamp ), # Timestamp is after the current one
       'page_id = cl_from',
@@ -303,12 +303,12 @@ function wfMiniPreviewGetPreviewForCategory ( $category , $timestamp , $imagePag
     $ret->entry[1]->id = $x->page_id ;
   } else $ret->entry[1]->id = 0 ;
   $dbr->freeResult( $res );
-  
+
   # Get total image count for this category
   $res = $dbr->select(
     array( 'page', 'categorylinks' ),
     array( 'count(*) AS cnt' ),
-    array( 
+    array(
       'cl_to' => $category,
       'page_id = cl_from',
       'page_namespace=6' # Images only
@@ -328,14 +328,14 @@ function wfMiniPreviewGetPreviewForGallery ( $id , $title , $imagePage ) {
   $ret->from_gallery = true;
   $ret->source_title = $title;
   $ret->entry = array();
-  
+
 	$dbr = wfGetDB( DB_SLAVE );
 
 	# Get the image BEFORE the current one (according to title)
   $res = $dbr->select(
     array( 'page', 'imagelinks' ),
     array( 'il_from', 'page_id', 'max(il_to) AS maxto' ),
-    array( 
+    array(
       'il_from' => $id, # Same page
       'il_to < ' . $dbr->addQuotes( $imagePage->getTitle()->getDBKey() ), # Title comes before the current one
       'page_title = il_to',
@@ -354,7 +354,7 @@ function wfMiniPreviewGetPreviewForGallery ( $id , $title , $imagePage ) {
   $res = $dbr->select(
     array( 'page', 'imagelinks' ),
     array( 'il_from', 'page_id', 'min(il_to) AS minto' ),
-    array( 
+    array(
       'il_from' => $id, # Same page
       'il_to > ' . $dbr->addQuotes( $imagePage->mTitle->getDBKey() ), # Title comes after the current one
       'page_title = il_to',
@@ -401,13 +401,13 @@ function efInjectMiniPreviewMessages() {
 function wfMiniPreviewLoadMessages() {
   global $wgLang;
   $messages = array();
-  
+
   $f= dirname( __FILE__ ) . '/MiniPreview.i18n.php';
   include( $f );
-  
+
   $f= dirname( __FILE__ ) . '/MiniPreview.i18n.' . $wgLang->getCode() . '.php';
   if ( file_exists( $f ) ) include( $f );
-  
+
   return $messages;
 }
 

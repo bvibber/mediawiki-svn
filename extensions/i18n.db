@@ -82,6 +82,7 @@
 ./Newuserlog/Newuserlog.i18n.php wgNewuserlogMessages
 ./Oversight/HideRevision.i18n.php efHideRevisionMessages
 ./Patroller/Patroller.i18n.php efPatrollerMessages
+./PicturePopup/PicturePopup.i18n.php efPicturePopupMessages
 ./ProfileMonitor/ProfileMonitor.i18n.php efProfileMonitorMessages
 ./Quiz/Quiz.i18n.php wgQuizMessages
 ./Renameuser/SpecialRenameuser.i18n.php wgRenameuserMessages
