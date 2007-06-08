@@ -5,6 +5,7 @@
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
+ * @version 1.0
  */
 class MediaFunctions {
 
@@ -48,6 +49,46 @@ class MediaFunctions {
 			$file = wfFindFile( $title );
 			return $file instanceof File
 				? $parser->mOptions->getSkin()->formatSize( $file->getSize() )
+				: self::error( self::ERR_NOT_EXIST, $name );
+		} else {
+			return self::error( self::ERR_INVALID_TITLE, $name );
+		}
+	}
+
+	/**
+	 * Get the height of an image
+	 *
+	 * @param Parser $parser Calling parser
+	 * @param string $name File name
+	 * @return string
+	 */
+	public static function mediaheight( $parser, $name = '' ) {
+		$title = self::resolve( $name );
+		if( $title instanceof Title ) {
+			$parser->mOutput->addImage( $title->getDBkey() );
+			$file = wfFindFile( $title );
+			return $file instanceof File
+				? $file->getHeight()
+				: self::error( self::ERR_NOT_EXIST, $name );
+		} else {
+			return self::error( self::ERR_INVALID_TITLE, $name );
+		}
+	}
+
+	/**
+	 * Get the width of an image
+	 *
+	 * @param Parser $parser Calling parser
+	 * @param string $name File name
+	 * @return string
+	 */
+	public static function mediawidth( $parser, $name = '' ) {
+		$title = self::resolve( $name );
+		if( $title instanceof Title ) {
+			$parser->mOutput->addImage( $title->getDBkey() );
+			$file = wfFindFile( $title );
+			return $file instanceof File
+				? $file->getWidth()
 				: self::error( self::ERR_NOT_EXIST, $name );
 		} else {
 			return self::error( self::ERR_INVALID_TITLE, $name );

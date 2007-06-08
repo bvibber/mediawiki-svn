@@ -5,6 +5,7 @@
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
+ * @version 1.0
  */
 
 /**
@@ -20,8 +21,10 @@ function efMediaFunctionsWords( $lang ) {
 	 * English
 	 */
 	$words['en'] = array(
-		'mediamime' => array( 0, 'mediamime' ),
-		'mediasize' => array( 0, 'mediasize' ),
+		'mediamime' 	=> array( 0, 'mediamime' ),
+		'mediasize' 	=> array( 0, 'mediasize' ),
+		'mediaheight' 	=> array( 0, 'mediaheight' ),
+		'mediawidth' 	=> array( 0, 'mediawidth' ),
 	);
 	
 	# English is used as a fallback, and the English synonyms are

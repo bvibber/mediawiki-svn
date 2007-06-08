@@ -6,6 +6,7 @@
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
+ * @version 1.0
  */
  
 if( defined( 'MEDIAWIKI' ) ) {
@@ -28,6 +29,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 		global $wgParser, $wgMessageCache;
 		$wgParser->setFunctionHook( 'mediamime', array( 'MediaFunctions', 'mediamime' ) );
 		$wgParser->setFunctionHook( 'mediasize', array( 'MediaFunctions', 'mediasize' ) );
+		$wgParser->setFunctionHook( 'mediaheight', array( 'MediaFunctions', 'mediaheight' ) );
+		$wgParser->setFunctionHook( 'mediawidth', array( 'MediaFunctions', 'mediawidth' ) );
 		require_once( dirname( __FILE__ ) . '/MediaFunctions.i18n.php' );
 		foreach( efMediaFunctionsMessages() as $lang => $messages )
 			$wgMessageCache->addMessages( $messages, $lang );
