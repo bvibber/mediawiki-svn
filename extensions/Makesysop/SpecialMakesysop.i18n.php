@@ -785,11 +785,12 @@ $wgMakesysopMessages['ru'] = array(
 );
 $wgMakesysopMessages['sk'] = array(
 	'makesysoptitle' => 'Urob z používateľa správcu',
-	'makesysoptext' => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom.
+	'makesysoptext' => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 
 Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na správcu.',
 	'makesysopname' => 'Meno používateľa:',
 	'makesysopsubmit' => 'Urob z tohto redaktora správcu',
 	'makesysopok' => '<b>Redaktor "$1" je teraz správcom(sysop)</b>',
+	'makebureaucratok' => '<b>Používateľ "$1" je teraz byrokrat</b>',
 	'makesysopfail' => '<b>Redaktor "$1" nemôže byť správcom. (Zadali ste meno správne?)</b>',
 	'setbureaucratflag' => 'Nastav príznak byrokrat',
 	'rights' => 'Práva:',

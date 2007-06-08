@@ -363,9 +363,26 @@ $wgLuceneSearchMessages['sk'] = array(
 	'searchdidyoumean'      => 'Mali ste na mysli: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Ľutujeme, vyhľadávanie nevrátilo na Vašu požiadavku žiadne presné výsledky.',
 	'searchnearmatches'     => '<b>Tieto stránky majú názvy podobné Vášej požiadavke:</b>',
-	'searchnearmatch'       => '<li>$1</li>',
 	'lucenepowersearchtext' => 'Vyhľadávanie v menných priestoroch: $1 Hľadanie $3 $9',
 	'lucenefallback'        => 'S vyhľadávaním na wiki nastal problém. Je možné, že je to dočasné; o chvíľu to skúste znova alebo vyhľadávajte na wiki pomocou externej indexovacej služby:',
+	'searchall'             => 'všetko',
+	'searchincategory'      => 'vkategórii',
+	'searchaliases'         => 'm|
+mt|Diskusia
+u|Používateľ
+ut|Diskusia_s_používateľ
+p|Projekt
+pt|Diskusia_k_projektu
+i|Obrázok
+it|Diskusia_k_obrázku
+mw|MediaWiki
+mwt|Diskusia_k_MediaWiki
+t|Šablóna
+tt|Diskusia_k_šablóne
+h|Pomoc
+ht|Diskusia_k_pomoci
+c|Kategória
+ct|Diskusia_ku_kategórii',
 );
 $wgLuceneSearchMessages['sr-ec'] = array(
 	'searchnumber'          => "<strong>Резултати $1-$2 од $3</strong>",
