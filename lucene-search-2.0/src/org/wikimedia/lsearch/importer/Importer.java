@@ -96,7 +96,7 @@ public class Importer {
 			long start = System.currentTimeMillis();
 			
 			// regenerate link and redirect information
-			HashMap<String,ArticleLinks> links = processLinks(inputfile,getTitles(inputfile),langCode);
+			HashMap<String,ArticleLinks> links = processLinks(inputfile,getTitles(inputfile,langCode),langCode);
 
 			log.info("Third pass, indexing articles...");
 			
@@ -179,7 +179,7 @@ public class Importer {
 		return links;
 	}
 
-	private static HashMap<String,ArticleLinks> getTitles(String inputfile) {
+	private static HashMap<String,ArticleLinks> getTitles(String inputfile,String langCode) {
 		log.info("First pass, getting a list of valid articles...");
 		InputStream input = null;
 		try {
@@ -189,7 +189,7 @@ public class Importer {
 			return null;
 		}
 		// first pass, get titles
-		TitleReader tr = new TitleReader();
+		TitleReader tr = new TitleReader(langCode);
 		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(tr, 5000));
 		try {
 			reader.readDump();

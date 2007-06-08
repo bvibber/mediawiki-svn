@@ -106,7 +106,7 @@ public class SimpleIndexWriter {
 		IndexWriter writer = indexes.get(target.toString());
 		if(writer == null)
 			return;
-		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,filters);
+		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,filters,iid);
 		Document doc = (Document) ret[0];
 		Analyzer analyzer = (Analyzer) ret[1];
 		try {

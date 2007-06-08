@@ -52,19 +52,9 @@ public class LinkReader implements DumpWriter {
 	public void writeEndPage() throws IOException {
 		ArticleLinks r = links.get(page.Title.Namespace+":"+page.Title.Text);
 		// register redirect
-		String redirect = Localization.getRedirectTarget(revision.Text,langCode);
+		Title redirect = Localization.getRedirectTitle(revision.Text,langCode);
 		if( redirect !=null ){
-			int ns = 0;
-			String title = redirect;
-			String[] parts = redirect.split(":",2);
-			if(parts.length == 2 && parts[0].length()>1){
-				Integer inx = siteinfo.Namespaces.getIndex(parts[0].substring(0,1).toUpperCase()+parts[0].substring(1).toLowerCase());
-				if(inx != null){
-					ns = inx;
-					title = parts[1];
-				}
-			}
-			r.redirectsTo = findArticleLinks(ns,title);
+			r.redirectsTo = findArticleLinks(redirect.getNamespace(),redirect.getTitle());
 		} else // process links
 			processLinks(revision.Text,page.Title.Namespace);		
 	}

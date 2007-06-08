@@ -25,31 +25,68 @@ import org.apache.lucene.analysis.TokenStream;
  *
  */
 public class KeywordsAnalyzer extends Analyzer{
-	static Logger log = Logger.getLogger(KeywordsAnalyzer.class);
-	protected ArrayList<String> keywords;
-	protected FilterFactory filters;
-	protected KeywordsTokenStream tokens;
+	static Logger log = Logger.getLogger(KeywordsAnalyzer.class);	
+	protected KeywordsTokenStream[] tokensBySize = null;
+	protected String prefix;
+	
+	/** number of field to be generated, e.g. keyword1 for single-word keywords, 
+	 * keyword2 for two-word keywords, etc ... the last field has all the remaining keys
+	 */
+	public static final int KEYWORD_LEVELS = 5;
+	/** positional increment between different redirects */
+	public static final int TOKEN_GAP = 201;
 
-	public KeywordsAnalyzer(HashSet<String> keywords, FilterFactory filters){
+	public KeywordsAnalyzer(HashSet<String> keywords, FilterFactory filters, String prefix){
 		ArrayList<String> k = new ArrayList<String>();
 		if(keywords != null)
 			k.addAll(keywords);
-		tokens = new KeywordsTokenStream(k,filters);
+		init(k,filters,prefix);
 	}
+	public KeywordsAnalyzer(ArrayList<String> keywords, FilterFactory filters, String prefix){
+		init(keywords,filters,prefix);
+	}	
 	
-	public KeywordsAnalyzer(ArrayList<String> keywords, FilterFactory filters){
-		tokens = new KeywordsTokenStream(keywords,filters);
+	protected void init(ArrayList<String> keywords, FilterFactory filters, String prefix) {
+		this.prefix = prefix;
+		tokensBySize = new KeywordsTokenStream[KEYWORD_LEVELS];
+		if(keywords == null){
+			// init empty token streams
+			for(int i=0; i< KEYWORD_LEVELS; i++){
+				tokensBySize[i] = new KeywordsTokenStream(null,filters);			
+			}	
+			return;
+		}
+		ArrayList<ArrayList<String>> keywordsBySize = new ArrayList<ArrayList<String>>();
+		for(int i=0;i<KEYWORD_LEVELS;i++)
+			keywordsBySize.add(new ArrayList<String>());
+		// arange keywords into a list by token number 
+		for(String k : keywords){
+			ArrayList<Token> parsed = new FastWikiTokenizerEngine(k).parse();
+			if(parsed.size() == 0)
+				continue;
+			else if(parsed.size() < KEYWORD_LEVELS)
+				keywordsBySize.get(parsed.size()-1).add(k);
+			else
+				keywordsBySize.get(KEYWORD_LEVELS-1).add(k);
+		}		
+		for(int i=0; i< KEYWORD_LEVELS; i++){
+			tokensBySize[i] = new KeywordsTokenStream(keywordsBySize.get(i),filters);			
+		}
 	}
-	/** positional increment between different redirects */
-	public static final int tokenGap = 201;
 	
 	@Override
 	public TokenStream tokenStream(String fieldName, Reader reader) {
-		return tokens;		
+		if(fieldName.startsWith(prefix)){
+			int inx = Integer.parseInt(fieldName.substring(prefix.length()));
+			return tokensBySize[inx-1];
+		} else{
+			log.error("Trying to get tokenStream for wrong field "+fieldName);
+			return null;
+		}
 	}
 	@Override
 	public TokenStream tokenStream(String fieldName, String text) {
-		return tokens;
+		return tokenStream(fieldName,(Reader)null);
 	}
 	
 	class KeywordsTokenStream extends TokenStream {
@@ -80,7 +117,7 @@ public class KeywordsAnalyzer extends Analyzer{
 				if(t == null){
 					t = openNext();
 					if(t != null)
-						t.setPositionIncrement(tokenGap);
+						t.setPositionIncrement(TOKEN_GAP);
 				}
 				return t;
 			} else{

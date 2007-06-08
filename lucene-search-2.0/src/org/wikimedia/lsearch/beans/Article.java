@@ -43,6 +43,8 @@ public class Article implements Serializable  {
 	private ArrayList<Redirect> redirects;  
 	/** generated before indexing from the list of redirects */
 	private transient ArrayList<String> redirectKeywords;
+	/** paired with previous list, ranks for each redirect */
+	private transient ArrayList<Integer> redirectKeywordRanks;
 	/** generated before indexing from the reference sto this article, and references from redirects */
 	private transient int rank;
 	
@@ -182,6 +184,16 @@ public class Article implements Serializable  {
 	public void setRedirectKeywords(ArrayList<String> redirectKeywords) {
 		this.redirectKeywords = redirectKeywords;
 	}
+
+	public ArrayList<Integer> getRedirectKeywordRanks() {
+		return redirectKeywordRanks;
+	}
+
+	public void setRedirectKeywordRanks(ArrayList<Integer> redirectKeywordRanks) {
+		this.redirectKeywordRanks = redirectKeywordRanks;
+	}
+	
+	
 	
 	
 }

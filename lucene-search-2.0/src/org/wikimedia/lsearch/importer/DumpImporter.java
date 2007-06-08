@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.importer;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.concurrent.ThreadPoolExecutor.AbortPolicy;
 import java.util.regex.Matcher;

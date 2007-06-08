@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
@@ -28,10 +29,12 @@ import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
+import org.wikimedia.lsearch.analyzers.KeywordsAnalyzer;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.beans.Redirect;
+import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
@@ -54,6 +57,8 @@ public class WikiIndexModifier {
 	}
 
 	static public final int MAX_FIELD_LENGTH = 100000;
+	/** number of aditional title1, title2, .. etc fields to be filled in with redirects */
+	static public int ALT_TITLES = 3;
 	/** Simple implementation of batch addition and deletion */
 	class SimpleIndexModifier {
 		protected IndexId iid;
@@ -179,7 +184,7 @@ public class WikiIndexModifier {
 					if(!checkPreconditions(rec))
 						continue; // article shoouldn't be added for some (heuristic) reason					
 					IndexReportCard card = getReportCard(rec);
-					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),filters);
+					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),filters,iid);
 					Document doc = (Document) ret[0];
 					Analyzer analyzer = (Analyzer) ret[1];
 					try {
@@ -223,15 +228,17 @@ public class WikiIndexModifier {
 	 * @return
 	 */	
 	public static boolean checkAddPreconditions(Article ar, String langCode){
-		if(ar.getNamespace().equals("0")){
-			String redirect = Localization.getRedirectTarget(ar.getContents(),langCode);
-			if(redirect != null)
-				return false; // don't add redirects
-			/*if(redirect != null && redirect.toLowerCase().equals(ar.getTitle().toLowerCase())){
+		Title redirect = Localization.getRedirectTitle(ar.getContents(),langCode);
+		int ns = Integer.parseInt(ar.getNamespace());
+		if(redirect!=null && redirect.getNamespace() == ns){
+			return false; // don't add redirects to same namespace, always add as redirect field
+		} 
+		
+			/*if(ar.getNamespace().equals("0")){
+			  if(redirect != null && redirect.toLowerCase().equals(ar.getTitle().toLowerCase())){
 				log.debug("Not adding "+ar+" into index: "+ar.getContents());
 				return false;
 			} */
-		}
 		return true;
 	}
 	
@@ -243,22 +250,41 @@ public class WikiIndexModifier {
 	 */
 	protected static void transformArticleForIndexing(Article ar) {
 		ArrayList<Redirect> redirects = ar.getRedirects();
+		// sort redirect by their rank
+		Collections.sort(redirects,new Comparator<Redirect>() {
+			public int compare(Redirect o1,Redirect o2){
+				return o2.getReferences() - o1.getReferences();
+			}
+		});
 		int ns = Integer.parseInt(ar.getNamespace());
 		ar.setRank(ar.getReferences()); // base rank value
 		if(redirects != null){
 			ArrayList<String> filtered = new ArrayList<String>();
+			ArrayList<Integer> ranks = new ArrayList<Integer>();
 			// index only redirects from the same namespace
 			// to avoid a lot of unusable redirects from/to
 			// user namespace, but always index redirect FROM main
 			for(Redirect r : redirects){
-				if((ns == 0 && r.getNamespace() == 0) || ns != 0){
+				if(ns == r.getNamespace()){
 					filtered.add(r.getTitle());
+					ranks.add(r.getReferences());
 					ar.addToRank(r.getReferences()+1);
 				} else
 					log.debug("Ignoring redirect "+r+" to "+ar);
 			}
 			ar.setRedirectKeywords(filtered);
+			ar.setRedirectKeywordRanks(ranks);
 		}
+	}
+	
+	/** Check if for this article for this db we should extract keywords */ 
+	public static boolean checkKeywordPreconditions(Article article, IndexId iid) {
+		if(global == null)
+			global = GlobalConfiguration.getInstance();
+		if(article.getNamespace().equals("0") && global.useKeywordScoring(iid.getDBname()))
+			return true;
+		else
+			return false;
 	}
 	
 	/**
@@ -372,7 +398,7 @@ public class WikiIndexModifier {
 	 * @param languageAnalyzer
 	 * @return array { document, analyzer }
 	 */
-	public static Object[] makeDocumentAndAnalyzer(Article article, FilterFactory filters){
+	public static Object[] makeDocumentAndAnalyzer(Article article, FilterFactory filters, IndexId iid){
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		WikiTokenizer tokenizer = null;
 		Document doc = new Document();
@@ -387,24 +413,27 @@ public class WikiIndexModifier {
 		doc.add(new Field("namespace", article.getNamespace(), Field.Store.YES, Field.Index.UN_TOKENIZED));
 		
 		// boost document title with it's article rank
-		Field title = new Field("title", article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);
+		Field title = new Field("title", article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);				
 		//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
 		float rankBoost = calculateArticleRank(article.getRank()); 
 		title.setBoost(rankBoost);
 		doc.add(title);
 		
+		Field stemtitle = new Field("stemtitle", article.getTitle(),Field.Store.NO, Field.Index.TOKENIZED);				
+		//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
+		stemtitle.setBoost(rankBoost);
+		doc.add(stemtitle);
+		
+		// put the best redirects as alternative titles
+		makeAltTitles(doc,"alttitle",article);
+
 		// add titles of redirects, generated from analyzer
-		Field redirect = new Field("redirect", "", 
-				Field.Store.NO, Field.Index.TOKENIZED);
-		redirect.setBoost(rankBoost);
-		doc.add(redirect);
+		makeKeywordField(doc,"redirect",rankBoost);
 		
-		// most significat words in the text, gets extra score, from analyzer
-		Field keyword = new Field("keyword", "", 
-				Field.Store.NO, Field.Index.TOKENIZED);
-		keyword.setBoost(rankBoost);
-		doc.add(keyword);
-		
+		if(checkKeywordPreconditions(article,iid))
+			// most significat words in the text, gets extra score, from analyzer
+			makeKeywordField(doc,"keyword",rankBoost);
+				
 		// the next fields are generated using wikitokenizer 
 		doc.add(new Field("contents", "", 
 				Field.Store.NO, Field.Index.TOKENIZED));
@@ -425,7 +454,35 @@ public class WikiIndexModifier {
 
 		return new Object[] { doc, perFieldAnalyzer };
 	}
-	
+
+	/** Make a multiple keyword field, e.g. redirect1, redirect2, redirect3 ...  */
+	protected static void makeKeywordField(Document doc, String prefix, float boost) {
+		for(int i=1;i<=KeywordsAnalyzer.KEYWORD_LEVELS;i++){
+			Field keyfield = new Field(prefix+i, "", 
+					Field.Store.NO, Field.Index.TOKENIZED);
+			keyfield.setBoost(boost);
+			doc.add(keyfield);
+		}
+		
+	}
+
+	protected static void makeAltTitles(Document doc, String prefix, Article article) {
+		// the redirects, rank list are sorted..
+		final ArrayList<String> redirects = article.getRedirectKeywords();
+		final ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
+		if(redirects.size() == 0)
+			return;
+		// add alternative titles alttitle1, alttitle2 ...
+		for(int i=0;i<ALT_TITLES && i<redirects.size();i++){
+			if(ranks.get(i) == 0)
+				break; // we don't want redirects with zero links
+			//log.info("For "+article+" alttitle"+(i+1)+" "+redirects.get(i)+" = "+ranks.get(i));
+			Field alttitle = new Field("alttitle"+(i+1), redirects.get(i),Field.Store.NO, Field.Index.TOKENIZED);				
+			alttitle.setBoost(calculateArticleRank(ranks.get(i)));
+			doc.add(alttitle);			
+		}
+	}
+
 	/** 
 	 * 
 	 * Calculate document boost (article rank) from number of

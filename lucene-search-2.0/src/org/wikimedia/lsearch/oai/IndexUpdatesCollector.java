@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.oai;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 import org.mediawiki.importer.DumpWriter;
@@ -11,8 +12,10 @@ import org.mediawiki.importer.Siteinfo;
 import org.mediawiki.importer.Title;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.Redirect;
+import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.util.Localization;
 
 public class IndexUpdatesCollector implements DumpWriter {
 	Logger log = Logger.getLogger(DumpWriter.class);
@@ -23,9 +26,11 @@ public class IndexUpdatesCollector implements DumpWriter {
 	protected int references = 0;
 	protected ArrayList<Redirect> redirects = new ArrayList<Redirect>();
 	protected Siteinfo info = null;
+	protected String langCode;
 	
 	public IndexUpdatesCollector(IndexId iid){
 		this.iid = iid;
+		this.langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
 	}
 	
 	public void addRedirect(String redirectTitle, int references) {
@@ -69,6 +74,13 @@ public class IndexUpdatesCollector implements DumpWriter {
 	
 	public void writeSiteinfo(Siteinfo info) throws IOException {
 		this.info = info;
+		// write to localization
+		Iterator it = info.Namespaces.orderedEntries();
+		while(it.hasNext()){
+			Integer inx = (Integer)it.next();
+			String prefix = info.Namespaces.getPrefix(inx);
+			Localization.addCustomMapping(prefix,inx,langCode);
+		}
 	}
 		
 	public void close() throws IOException {
