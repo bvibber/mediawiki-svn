@@ -29,9 +29,11 @@ $wgFilepathMessages['de'] = array(
 	Die Eingabe muss ohne den Zusatz „{{ns:image}}:“ erfolgen.',
 );
 $wgFilepathMessages['fi'] = array(
-	'filepath'        => 'Tiedoston osoite',
-	'filepath_page'   => 'Tiedosto:',
-	'filepath_submit' => 'Selvitä osoite',
+	'filepath'         => 'Tiedoston osoite',
+	'filepath_page'    => 'Tiedosto',
+	'filepath_submit'  => 'Selvitä osoite',
+	'filepath-summary' => 'Tämä toimintosivu palauttaa tiedoston URL-osoitteen. Anna tiedoston nimi ilman {{ns:image}}-nimiavaruusliitettä.',
+
 );
 $wgFilepathMessages['fiu-vro'] = array(
 	'filepath'        => 'Teedüstü aadrõs',

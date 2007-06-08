@@ -52,9 +52,9 @@ $wgExpandTemplatesMessages['fi'] = array(
 	'expandtemplates'                  => 'Mallineiden laajennus',
 	'expand_templates_intro'           => 'Tämä toimintosivu ottaa syötteekseen tekstiä ja laajentaa kaikki mallineet rekursiivisesti sekä jäsenninfunktiot, kuten <nowiki>{{</nowiki>#if:...}}, ja -muuttujat, kuten
 <nowiki>{{</nowiki>CURRENTDAY}} &mdash  toisin sanoen melkein kaiken, joka on kaksoisaaltosulkeiden sisällä.',
-	'expand_templates_title'           => 'Otsikko ({{PAGENAME}} yms.):',
-	'expand_templates_input'           => 'Teksti:',
-	'expand_templates_output'          => 'Tulos:',
+	'expand_templates_title'           => 'Otsikko (esimerkiksi {{PAGENAME}})',
+	'expand_templates_input'           => 'Teksti',
+	'expand_templates_output'          => 'Tulos',
 	'expand_templates_ok'              => 'Laajenna',
 	'expand_templates_remove_comments' => 'Poista kommentit',
 );

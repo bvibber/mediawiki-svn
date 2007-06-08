@@ -96,6 +96,24 @@ Serĉo de $3 $9",
 Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
 aŭ vi povas esplori la vikion per eksteraj serĉservoj.\n"
 );
+$wgLuceneSearchMessages['fi'] = array(
+	'searchnumber'          => '<strong>Tulokset $1–$2 (yhteensä $3)</strong>',
+	'searchprev'            => '← <span style=\'font-size: small\'>edelliset</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>seuraavat</span> →',
+	'searchscore'           => 'Asiaankuuluvuus: $1',
+	'searchsize'            => '$1 KiB ($2 sanaa)',
+	'searchdidyoumean'      => 'Tarkoititko: <a href="$1">$2</a>',
+	'searchnoresults'       => 'Tarkkoja osumia ei löytynyt.',
+	'searchnearmatches'     => '<b>Vastaavannimisiä sivuja:</b>',
+	'lucenepowersearchtext' => 'Etsi nimiavaruuksista
+
+$1
+
+Hakulauseke $3 $9',
+	'lucenefallback'        => 'Haku epäonnistui. Yritä hetken päästä uudelleen tai käytä ulkoisia hakukoneita:',
+	'searchall'             => 'kaikki',
+	'searchincategory'      => 'luokassa',
+);
 $wgLuceneSearchMessages['fr'] = array(
 	'searchnumber'          => "<strong>Résultats $1-$2 sur $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Préc.</span>",
