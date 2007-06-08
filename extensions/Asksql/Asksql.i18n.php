@@ -99,6 +99,19 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 'querysuccessful'  => 'La requèsta es estada executada amb succès.',
 ),
 
+/* Romanian (KlaudiuMihăilă) */
+'ro' => array(
+'asksql'           => 'Interogare SQL',
+'asksqltext'       => 'Folosiţi formularul de mai jos pentru a face o interogare în mod direct asupra bazei de date.
+Folosiţi apostrofuri (\'în acest fel\') pentru a delimita şiruri de caractere.
+Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi cât mai puţin.',
+'sqlislogged'      => 'Atenţie, toate interogările sunt memorate.',
+'sqlquery'         => 'Introduceţi interogare',
+'querybtn'         => 'Trimite interogare',
+'selectonly'       => 'Sunt permise doar interogări care efectuează numai citiri.',
+'querysuccessful'  => 'Interogare terminată cu succes',
+),
+
 /* Russian (Alexander Sigachov) */
 'ru' => array(
 'asksql' => 'SQL-запрос',

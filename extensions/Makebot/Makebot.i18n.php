@@ -358,6 +358,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'removido estatuto de bot para [[$1]]',
 ),
 
+/* Romanian (KlaudiuMihăilă) */
+'ro' => array(
+'makebot'                 => 'Acordarea şi revocarea statutului de robot',
+'makebot-header'          => '\'\'\'Un birocrat poate folosi acest formular pentru a acorda sau revoca statutul de robot.\'\'\'<br />Statutul de robot ascunde modificările utilizatorului în lista de [[Special:Recentchanges|schimbări recente]] şi alte liste asemănătoare, ceea ce este util în cazul utilizatorilor care fac modificări automate. Acordarea şi revocarea statutului de robot se fac conform regulamentului.',
+'makebot-username'        => 'Nume de utilizator:',
+'makebot-search'          => 'Salt',
+'makebot-isbot'           => '[[Utilizator:$1|$1]] are statut de bot.',
+'makebot-notbot'          => '[[Utilizator:$1|$1]] nu are statut de robot.',
+'makebot-privileged'      => '[[Utilizator:$1|$1]] are [[Special:Listadmins|permisiuni de administrator sau birocrat]] şi nu poate primi statutul de robot.',
+'makebot-change'          => 'Schimbă statut:',
+'makebot-grant'           => 'Acordă',
+'makebot-revoke'          => 'Revocă',
+'makebot-comment'         => 'Comentariu:',
+'makebot-granted'         => '[[Utilizator:$1|$1]] are statut de robot.',
+'makebot-revoked'         => '[[Utilizator:$1|$1]] nu mai are statut de robot.',
+'makebot-logpage'         => 'Jurnal roboţi',
+'makebot-logpagetext'     => 'Acesta este jurnalul modificărilor în statutul de robot al utilizatorilor.',
+'makebot-logentrygrant'   => 'a acordat statutul de robot utilizatorului [[$1]]',
+'makebot-logentryrevoke'  => 'a revocat statutul de robot lui [[$1]]',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'makebot'                 => 'Udeliť alebo odobrať status bota',

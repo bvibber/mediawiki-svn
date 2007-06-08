@@ -90,6 +90,10 @@ $wgDismissableSiteNoticeMessages['pt'] = array(
 
 $wgDismissableSiteNoticeMessages['pt-br'] = $wgDismissableSiteNoticeMessages['pt'];
 
+$wgDismissableSiteNoticeMessages['ro'] = array(
+	'sitenotice_close' => 'ascunde',
+);
+
 $wgDismissableSiteNoticeMessages['ru'] = array(
 	'sitenotice_close' => 'спрятать',
 );

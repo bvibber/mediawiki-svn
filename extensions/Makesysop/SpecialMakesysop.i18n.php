@@ -743,24 +743,26 @@ $wgMakesysopMessages['rmy'] = array(
 	'rights'               => 'Chachimata (xakaya):',
 );
 $wgMakesysopMessages['ro'] = array(
-	'makesysoptitle'       => 'Fă dintr-un utilizator un administrator',
-	'makesysoptext'        => 'Acest formular este utilizat de birocraţi pentru a transforma utilizatori de rând în administratori. Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din utilizator un administrator',
-	'makesysopname'        => 'Numele utilizatorului:',
-	'makesysopsubmit'      => 'Fă din acest utilizator un administrator',
-	'makesysopok'          => "<b>Utilizatorul \"$1\" este acum administrator</b>",
-	'makesysopfail'        => "<b>Utilizatorul \"$1\" nu a putut deveni administrator. (Ai introdus numele corect?)</b>",
-	'setbureaucratflag'    => 'Acordă şi drepturi de birocrat',
-	'rights'               => 'Drepturi:',
-	'set_user_rights'      => 'Acordă drepturi de utilizator',
-	'user_rights_set'      => "<b>Drepturi de utilizator pentru \"$1\" actualizate</b>",
-	'set_rights_fail'      => "<b>Nu au putut fi acordate drepturi de utilizator lui \"$1\". (Ai introdus numele corect?)</b>",
-	'makesysop'            => 'Fă dintr-un utilizator un administrator',
-	'already_sysop'        => 'Acest utilizator este deja administrator.',
-	'already_bureaucrat'   => 'Acest utilizator este deja birocrat.',
+	'makesysoptitle' => 'Acordarea permisiunilor de administrator',
+	'makesysoptext' => 'Acest formular este utilizat de birocraţi pentru a transforma utilizatori în administratori. 
+Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din utilizator un administrator',
+	'makesysopname' => 'Numele utilizatorului:',
+	'makesysopsubmit' => 'Fă din acest utilizator un administrator',
+	'makesysopok' => '<b>Utilizatorul "$1" este acum administrator</b>',
+	'makebureaucratok' => '<b>Utilizatorul "$1" este acum birocrat</b>',
+	'makesysopfail' => '<b>Utilizatorul "$1" nu a putut deveni administrator. (Ai introdus numele corect?)</b>',
+	'setbureaucratflag' => 'Acordă şi drepturi de birocrat',
+	'rights' => 'Drepturi:',
+	'set_user_rights' => 'Acordă drepturi de utilizator',
+	'user_rights_set' => '<b>Drepturi de utilizator pentru "$1" actualizate</b>',
+	'set_rights_fail' => '<b>Nu au putut fi acordate drepturi de utilizator lui "$1". (Ai introdus numele corect?)</b>',
+	'makesysop' => 'Acordarea permisiunilor de administrator',
+	'already_sysop' => 'Acest utilizator este deja administrator.',
+	'already_bureaucrat' => 'Acest utilizator este deja birocrat.',
 	'makesysop-nodatabase' => 'Nume de utilizator interwiki invalid $1',
-	'group-steward'        => 'Stewarzi',
-	'group-steward-member' => 'Steward',
-	'grouppage-steward'    => '{{ns:project}}:Stewarzi',
+	'group-steward' => 'Stewarzi',
+	'group-steward-member' => 'Steward',#identical but defined
+	'grouppage-steward' => '{{ns:project}}:Stewarzi',
 );
 $wgMakesysopMessages['ru'] = array(
 

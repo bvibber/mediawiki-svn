@@ -115,6 +115,17 @@ $wgDesysopMessages['oc'] = array(
 	'desysop'              => 'Levar los dreches d’administrator',
 	'not_sysop'            => 'Aqueste utilizaire es pas un administrator',
 );
+$wgDesysopMessages['ro'] = array(
+	'desysoptitle'         => 'Revocarea permisiunilor de administrator',
+	'desysoptext'          => 'Acest formular este utilizat de birocraţi pentru a revoca permisiunile de administrator ale utilizatorilor. Tastează numele utilizatorului în cutie şi apasă butonul pentru a-i revoca permisiunile de administrator.',
+	'desysopname'          => 'Numele utilizatorului:',
+	'desysopok'            => '<b>Utilizatorului "$1" i-au fost revocate permisiunile de administrator</b>',
+	'set_user_rights'      => 'Acordă drepturi de utilizator',
+	'user_rights_set'      => '<b>Drepturi de utilizator pentru "$1" actualizate</b>',
+	'set_rights_fail'      => '<b>Nu au putut fi acordate drepturi de utilizator lui "$1". (Ai introdus numele corect?)</b>',
+	'desysop'              => 'Revocă permisiunile de administrator',
+	'not_sysop'            => 'Acest utilizator nu este administrator',
+);
 $wgDesysopMessages['ru'] = array(
 	'desysoptitle'         => 'Отозвать права администратора у участника',
 	'desysoptext'          => "Эту форму могут использовать «бюрократы» для того, чтобы отозвать права администратора у участника. Введите имя участника и нажмите на кнопку, чтобы запретить ему доступ к административным функциям.",

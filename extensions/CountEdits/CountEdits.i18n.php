@@ -214,6 +214,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Não possui contribuições neste wiki.',
 ),
 
+/* Romanian (KlaudiuMihăilă) */
+'ro' => array(
+'countedits' => 'Număr de modificări',
+'countedits-warning' => '\'\'\'Atenţie:\'\'\' Nu judeca o carte după copertă. Nu judeca un contribuitor după numărul de modificări.',
+'countedits-username' => 'Nume de utilizator:',
+'countedits-ok' => 'OK',#identical but defined
+'countedits-nosuchuser' => 'Nu există nici un utilizator cu numele $1.',
+'countedits-resultheader' => 'Rezultate pentru $1',
+'countedits-resulttext' => '$1 a efectuat {{PLURAL:$2|o modificare|$2 modificări}}',
+'countedits-mostactive' => 'Contribuitorii cei mai activi',
+'countedits-nocontribs' => 'Nu există contribuitori la acest wiki.',
+),
+
 'ru' => array(
 'countedits' => 'Подсчитать правки',
 'countedits-warning' => "'''Внимание:''' не судите о книге по её обложке. Не судите об участнике по количеству его правок.",
