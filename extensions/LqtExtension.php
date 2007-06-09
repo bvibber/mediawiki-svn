@@ -82,6 +82,7 @@ class LqtView {
 	function initializeQueries() {
 		$g = new QueryGroup();
 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
+		$recentstartdate = $startdate->nDaysAgo($this->archive_recent_days);
 		$g->addQuery('fresh',
 		              array('thread_article' => $this->article->getID(),
 		                    'thread_subthread_of is null',
@@ -95,7 +96,11 @@ class LqtView {
 		                   'thread_touched < ' . $startdate->text()),
 		             array('ORDER BY' => 'thread_touched DESC'));
 		$g->extendQuery('archived', 'recently-archived',
-		                array('thread_touched >=' . $startdate->nDaysAgo($this->archive_recent_days)->text()));
+		                array('( thread_touched >=' . $recentstartdate->text() .
+				      '  OR  rev_timestamp >= ' . $recentstartdate->text() . ')',
+				      'page_id = thread_summary_page', 'page_latest = rev_id'),
+				array(),
+				array('page', 'revision'));
 		return $g;
 	}
 

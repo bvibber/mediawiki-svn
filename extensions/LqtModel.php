@@ -297,10 +297,10 @@ class Thread {
 		return Thread::threadsWhere( array('thread_root_post' => $post->getID()) );
 	}
 
-	static function threadsWhere( $where_clause, $options = array() ) {
+	static function threadsWhere( $where_clause, $options = array(), $extra_tables = array() ) {
 		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( array('lqt_thread'),
-		                     array('*'),
+		$res = $dbr->select( array_merge(array('lqt_thread'), $extra_tables),
+		                     array('lqt_thread.*'),
 		                     $where_clause,
 		                     __METHOD__,
 		                     $options);
@@ -330,15 +330,16 @@ class QueryGroup {
 		$this->queries = array();
 	}
 	
-	function addQuery( $name, $where, $options = array() ) {
-		$this->queries[$name] = array($where, $options);
+	function addQuery( $name, $where, $options = array(), $extra_tables = array() ) {
+		$this->queries[$name] = array($where, $options, $extra_tables);
 	}
 	
-	function extendQuery( $original, $newname, $where, $options = array() ) {
+	function extendQuery( $original, $newname, $where, $options = array(), $extra_tables=array() ) {
 		if (!array_key_exists($original,$this->queries)) return;
 		$q = $this->queries[$original];
 		$this->queries[$newname] = array( array_merge($q[0], $where),
-						  array_merge($q[1], $options) );
+						  array_merge($q[1], $options),
+						  array_merge($q[2], $extra_tables) );
 	}
 	
 	function deleteQuery( $name ) {
@@ -347,8 +348,8 @@ class QueryGroup {
 	
 	function query($name) {
 		if ( !array_key_exists($name,$this->queries) ) return array();
-		list($where, $options) = $this->queries[$name];
-		return Thread::threadsWhere($where, $options);
+		list($where, $options, $extra_tables) = $this->queries[$name];
+		return Thread::threadsWhere($where, $options, $extra_tables);
 	}
 }
 
