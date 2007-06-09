@@ -41,12 +41,10 @@ CREATE TABLE user_groups (
 CREATE UNIQUE INDEX user_groups_unique ON user_groups (ug_user, ug_group);
 
 CREATE TABLE user_newtalk (
-  user_id  INTEGER NOT NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE,
+  user_id  INTEGER     NULL  REFERENCES mwuser(user_id) ON DELETE CASCADE,
   user_ip  TEXT        NULL
 );
-CREATE INDEX user_newtalk_id_idx ON user_newtalk (user_id);
-CREATE INDEX user_newtalk_ip_idx ON user_newtalk (user_ip);
-
+CREATE UNIQUE INDEX user_newtalk_unique ON user_newtalk(user_id, user_ip);
 
 CREATE SEQUENCE page_page_id_seq;
 CREATE TABLE page (
