@@ -15,7 +15,6 @@ if( !defined( 'MEDIAWIKI' ) ) {
 require_once('LqtModel.php');
 
 class LqtDispatch {
-	/* Invoked from performAction() in Wiki.php if this is a discussion namespace. */
 	static function talkpageMain(&$output, &$talk_article, &$title, &$user, &$request) {
 		// We are given a talkpage article and title. Find the associated
 		// non-talk article and pass that to the view.
@@ -731,9 +730,11 @@ HTML;
 <form id="lqt_archive_search_form" action="{$this->title->getLocalURL()}">
 	<input type="hidden" name="lqt_show_archive" value="1">
         <input type="hidden" name="title" value="{$this->title->getPrefixedURL()}"	
-	<input type="radio" id="lqt_archive_filter_by_date_no" name="lqt_archive_filter_by_date" value="0" {$any_date_check}>
+	<input type="radio" id="lqt_archive_filter_by_date_no"
+               name="lqt_archive_filter_by_date" value="0" {$any_date_check}>
 	<label for="lqt_archive_filter_by_date_no">Any date</label>  <br>
-	<input type="radio" id="lqt_archive_filter_by_date_yes" name="lqt_archive_filter_by_date" value="1" {$these_dates_check}>
+	<input type="radio" id="lqt_archive_filter_by_date_yes"
+               name="lqt_archive_filter_by_date" value="1" {$these_dates_check}>
 	<label for="lqt_archive_filter_by_date_yes">Only these dates:</label> <br>
 	
 	<label for="lqt_archive_start">Start</label>

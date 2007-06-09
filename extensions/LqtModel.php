@@ -337,9 +337,8 @@ class QueryGroup {
 	function extendQuery( $original, $newname, $where, $options = array() ) {
 		if (!array_key_exists($original,$this->queries)) return;
 		$q = $this->queries[$original];
-		$q[0] += $where;
-		$q[1] += $options;
-		$this->queries[$newname] = $q;
+		$this->queries[$newname] = array( array_merge($q[0], $where),
+						  array_merge($q[1], $options) );
 	}
 	
 	function deleteQuery( $name ) {
