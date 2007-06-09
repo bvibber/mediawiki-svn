@@ -964,7 +964,8 @@ function archive($name) {
  */
 function fix_newtalk() {
 	global $wgDatabase;
-	if( $wgDatabase->indexExists( 'user_newtalk', 'user_id' ) ) {
+	$info = $wgDatabase->fieldInfo( 'user_newtalk', 'user_id' );
+	if( !$info->nullable() ) {
 		echo( "Fixing up `user_newtalk`..." );
 		$wgDatabase->sourceFile( archive( 'patch-fix-newtalk.sql' ) );
 		echo( "done.\n" );
