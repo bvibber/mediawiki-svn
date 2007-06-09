@@ -161,16 +161,15 @@ CREATE TABLE /*$wgDBprefix*/user_groups (
 -- Stores notifications of user talk page changes, for the display
 -- of the "you have new messages" box
 CREATE TABLE /*$wgDBprefix*/user_newtalk (
-  -- Key to user.user_id
-  user_id int(5) NOT NULL default '0',
-  -- If the user is an anonymous user their IP address is stored here
-  -- since the user_id of 0 is ambiguous
-  user_ip varchar(40) NOT NULL default '',
-  INDEX user_id (user_id),
-  INDEX user_ip (user_ip)
 
+	-- User identifier if it's a registered account
+	user_id INT(5) NULL,
+	-- IP address if it's not a registered account
+	user_ip VARCHAR(40) NULL,
+	
+	UNIQUE( `user_ip` )
+	
 ) /*$wgDBTableOptions*/;
-
 
 --
 -- Core of the wiki: each page has an entry here which identifies
