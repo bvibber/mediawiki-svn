@@ -7,9 +7,6 @@
  */
 class SpecialProtectedPages extends SpecialPage {
 
-	protected $IdLevel = 'level';
-	protected $IdType  = 'type';
-
 	/**
 	 * Constructor
 	 */
@@ -39,8 +36,8 @@ class SpecialProtectedPages extends SpecialPage {
 			Title::purgeExpiredRestrictions();
 		}
 
-		$type = $wgRequest->getVal( $this->IdType );
-		$level = $wgRequest->getVal( $this->IdLevel );
+		$type = $wgRequest->getVal( 'type' );
+		$level = $wgRequest->getVal( 'level' );
 		$sizetype = $wgRequest->getVal( 'sizetype' );
 		$size = $wgRequest->getIntOrNull( 'size' );
 		$NS = $wgRequest->getIntOrNull( 'namespace' );
