@@ -16,19 +16,19 @@ function lqt_on_load() {
 	if(!document.getElementById) return;
 	
 	// Hide the Go button and turn on automatic submission on the archive browser.
-	
+	/*
 	var dropdown = document.getElementById('lqt_archive_month');
 	var success = lqt_add_event(dropdown, 'change', function(){
 		document.getElementById('lqt_archive_browser_form').submit();
 		});
 	if (success) {
 		document.getElementById('lqt_archive_go_button').className = "lqt_hidden";
-	}
-	
-	var searchform = document.getElementById('lqt_archive_search_form');
+	}*/
+
+
+	var searchform = document.getElementById("lqt_archive_search_form");
 	if ( searchform ) {
-		alert("foo");
-		lqt_add_event( document.getElementById('lqt_archive_start' ), 'change', function(e) {
+		lqt_add_event( document.getElementById("lqt_archive_start"), 'change', function(e) {
 			alert(e.target);
 		} );
 	}
