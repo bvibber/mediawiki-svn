@@ -668,19 +668,19 @@ HTML
 		$ignore_dates = ! $r->getVal('lqt_archive_filter_by_date', true);
 		$s = $r->getVal('lqt_archive_start');
 		if ($s && ctype_digit($s) && strlen($s) == 6 && !$ignore_dates) {
-			$start = "{$s}00000000";
-			$where[] = 'thread_touched >= ' . $start;
+			$this->start = "{$s}00000000";
+			$where[] = 'thread_touched >= ' . $this->start;
 		}
 		$e = $r->getVal('lqt_archive_end');
 		if ($e && ctype_digit($e) && strlen($e) == 6 && !$ignore_dates) {
-			$end = "{$e}31235959";
-			$where[] = 'thread_touched <= ' . $end;
+			$this->end = "{$e}31235959";
+			$where[] = 'thread_touched <= ' . $this->end;
 		}
-		if ( isset($start) && isset($end) ) {
+		if ( isset($this->start) && isset($this->end) ) {
 			$annotations[] = "from $start to $end";
-		} else if (isset($start)) {
+		} else if (isset($this->start)) {
 			$annotations[] = "after $start";
-		} else if (isset($end)) {
+		} else if (isset($this->end)) {
 			$annotations[] = "before $end";
 		}
 		
@@ -714,6 +714,24 @@ HTML;
 		$result .= "</select>";
 		return $result;
 	}
+	
+	/**
+         * Return a URL for the current page, including Title and query vars,
+	 * with the given replacements made.
+         * @param $repls array( 'name'=>new_value, ... )
+	*/
+	function queryReplace( $repls ) {
+	  $vs = $this->request->getValues();
+	  $rs = array();
+	  foreach ($vs as $k => $v) {
+	    if ( array_key_exists( $k, $repls ) ) {
+	      $rs[$k] = $repls[$k];
+	    } else {
+	      $rs[$k] = $vs[$k];
+	    }
+	  }
+	  return $this->title->getFullURL($this->queryStringFromArray($rs));
+	}
 
 	function showSearchForm() {
         $months = Thread::monthsWhereArticleHasThreads($this->article);
@@ -725,6 +743,25 @@ HTML;
 		}
 		$any_date_check    = !$use_dates ? 'checked="1"' : '';
 		$these_dates_check =  $use_dates ? 'checked="1"' : '';
+		
+		// bcsub() and bcadd() do arithmetic on strings.
+		// wouldn't want to overflow any puny 32-bit machines with these
+		// giants numbers that reperesent dates.
+
+		if( isset($this->start, $this->end) ) {
+		  var_dump($this->start, $this->end);
+		  $delta = bcsub($this->end, $this->start);
+		  $older_start = bcsub($this->start, $delta);
+		  $newer_start = bcadd($this->start, $delta);
+		  $older_end = bcsub($this->end, $delta);
+		  $newer_end = bcadd($this->end, $delta);
+		}
+
+		var_dump($older_start, $older_end);
+
+		$older = $this->queryReplace(array('lqt_archive_filter_by_date'=>'1',
+			     'lqt_archive_start' => substr($older_start, 0, 6),
+			     'lqt_archive_end' => substr($older_end, 0, 6) ));
 		
 		$this->output->addHTML(<<<HTML
 <form id="lqt_archive_search_form" action="{$this->title->getLocalURL()}">
@@ -742,6 +779,9 @@ HTML;
 	<label for="lqt_archive_end">End</label>
 	{$this->monthSelect($months, 'lqt_archive_end')}
 	<input type="submit">
+
+        <a href="$older">«older</a>
+	<a href="$newer">newer»</a>
 </form>
 HTML
 );
