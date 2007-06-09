@@ -673,8 +673,9 @@ HTML
 		}
 		$e = $r->getVal('lqt_archive_end');
 		if ($e && ctype_digit($e) && strlen($e) == 6 && !$ignore_dates) {
-			$this->end = "{$e}31235959";
-			$where[] = 'thread_touched <= ' . $this->end;
+			$this->end = "{$e}00000000";
+			$e += 1; // TODO addition on dates crossing years
+			$where[] = 'thread_touched < ' . "{$e}00000000";
 		}
 		if ( isset($this->start) && isset($this->end) ) {
 			$annotations[] = "from $start to $end";
@@ -745,23 +746,29 @@ HTML;
 		$these_dates_check =  $use_dates ? 'checked="1"' : '';
 		
 		// bcsub() and bcadd() do arithmetic on strings.
-		// wouldn't want to overflow any puny 32-bit machines with these
+		// Wouldn't want to overflow any puny 32-bit machines with these
 		// giants numbers that reperesent dates.
 
+		$one_month = '100000000';
 		if( isset($this->start, $this->end) ) {
 		  var_dump($this->start, $this->end);
-		  $delta = bcsub($this->end, $this->start);
-		  $older_start = bcsub($this->start, $delta);
-		  $newer_start = bcadd($this->start, $delta);
-		  $older_end = bcsub($this->end, $delta);
-		  $newer_end = bcadd($this->end, $delta);
-		}
 
-		var_dump($older_start, $older_end);
+		  $older_end = bcsub($this->start,$one_month);
+		  $older_start = bcsub($older_end, bcsub($this->end, $this->start));
+
+		  $newer_start = bcadd($this->end, $one_month);
+		  $newer_end = bcadd($newer_start, bcsub( $this->end, $this->start ));
+
+		  var_dump($newer_start, $newer_end);
+		}
 
 		$older = $this->queryReplace(array('lqt_archive_filter_by_date'=>'1',
 			     'lqt_archive_start' => substr($older_start, 0, 6),
 			     'lqt_archive_end' => substr($older_end, 0, 6) ));
+		$newer = $this->queryReplace(array('lqt_archive_filter_by_date'=>'1',
+			     'lqt_archive_start' => substr($newer_start, 0, 6),
+			     'lqt_archive_end' => substr($newer_end, 0, 6) ));
+		
 		
 		$this->output->addHTML(<<<HTML
 <form id="lqt_archive_search_form" action="{$this->title->getLocalURL()}">
@@ -774,9 +781,9 @@ HTML;
                name="lqt_archive_filter_by_date" value="1" {$these_dates_check}>
 	<label for="lqt_archive_filter_by_date_yes">Only these dates:</label> <br>
 	
-	<label for="lqt_archive_start">Start</label>
+	<label for="lqt_archive_start">From</label>
 	{$this->monthSelect($months, 'lqt_archive_start')} <br>
-	<label for="lqt_archive_end">End</label>
+	<label for="lqt_archive_end">To</label>
 	{$this->monthSelect($months, 'lqt_archive_end')}
 	<input type="submit">
 
