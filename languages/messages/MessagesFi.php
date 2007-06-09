@@ -72,7 +72,7 @@ $bookstoreList = array(
 );
 
 $magicWords = array(
-	'redirect'            => array( 0, "#UUDELLEENOHJAUS", "#REDIRECT" ),
+	'redirect'            => array( 0, "#OHJAUS", "#UUDELLEENOHJAUS", "#REDIRECT" ),
 	'toc'                 => array( 0, "__SISÄLLYSLUETTELO__", "__TOC__" ),
 	'img_right'           => array( 1, "oikea", "right" ),
 	'img_left'            => array( 1, "vasen", "left" ),
@@ -107,6 +107,7 @@ $specialPageAliases = array(
 	'Wantedcategories'          => array( 'Halutuimmat_luokat' ),
 	'Mostlinked'                => array( 'Viitatuimmat_sivut' ),
 	'Mostlinkedcategories'      => array( 'Viitatuimmat_luokat' ),
+	'Mostlinkedtemplates'       => array( 'Viitatuimmat_mallineet' ),
 	'Mostcategories'            => array( 'Luokitelluimmat_sivut' ),
 	'Mostimages'                => array( 'Viitatuimmat_kuvat' ),
 	'Mostrevisions'             => array( 'Muokatuimmat_sivut' ),
@@ -262,7 +263,7 @@ $messages = array(
 'pagecategories'        => '{{PLURAL:$1|Luokka|Luokat}}',
 'category_header'       => 'Sivut, jotka ovat luokassa $1',
 'subcategories'         => 'Alaluokat',
-'category-media-header' => 'Luokan ”$1” sisältämät mediatiedostot',
+'category-media-header' => 'Luokan ”$1” sisältämät tiedostot',
 
 'mainpagetext'      => "'''Mediawiki on onnistuneesti asennettu.'''",
 'mainpagedocfooter' => "Lisätietoja käytöstä on sivulla [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide User's Guide].
@@ -582,7 +583,9 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'blockedtitle'              => 'Pääsy estetty',
 'blockedtext'               => "<strong>Käyttäjätunnuksesi tai IP-osoitteesi on estetty.</strong>
 
-Ylläpitäjä $1 on poistanut '''muokkausoikeutesi'''  '''$6''' asti. Annettu syy estolle on ''$2''.
+Ylläpitäjä $1 on poistanut '''muokkausoikeutesi'''  ''$6'' asti estolla, jonka kohde on $7.
+
+Eston syyksi on annettu ''$2''.
 
 Jos olet sitä mieltä, että sinut on estetty syyttä, voit keskustella asiasta [[{{MediaWiki:grouppage-sysop}}|ylläpitäjän]] kanssa. Huomaa, ettet voi lähettää sähköpostia {{GRAMMAR:genitive|{{SITENAME}}}} kautta, ellet ole asettanut olemassa olevaa sähköpostiosoitetta [[Special:Preferences|asetuksissa]]. Jos IP-osoitteesi on dynaaminen, eli se voi toisinaan vaihtua, olet saattanut saada estetyn osoitteen käyttöösi, ja esto vaikuttaa nyt sinuun. IP-osoitteesi on $3 ja estotunnus on #$5. Liitä ne kyselyihisi.",
 'autoblockedtext'           => "IP-osoitteesti on estetty automaattisesti, koska sitä on käyttänyt toinen käyttäjä, jonka on estänyt ylläpitäjä $1.
@@ -644,7 +647,7 @@ Yritä uudelleen. Jos ongelma ei katoa, yritä kirjautua ulos ja takaisin sisä�
 'explainconflict'           => "Joku muu on muuttanut tätä sivua sen jälkeen, kun aloit muokata sitä. Ylempi tekstialue sisältää tämänhetkisen tekstin. Tekemäsi muutokset näkyvät alemmassa ikkunassa. Sinun täytyy yhdistää muutoksesi olemassa olevaan tekstiin. '''Vain''' ylemmässä alueessa oleva teksti tallentuu, kun tallennat sivun.",
 'yourtext'                  => 'Oma tekstisi',
 'storedversion'             => 'Tallennettu versio',
-'nonunicodebrowser'         => "'''Varoitus: Selaimesi ei ole Unicode-yhteensopiva. Ole hyvä ja vaihda selainta, ennen kuin muokkaat sivua.'''",
+'nonunicodebrowser'         => "'''Selaimesi ei ole Unicode-yhteensopiva. Ole hyvä ja vaihda selainta, ennen kuin muokkaat sivua.'''",
 'editingold'                => '<center><strong>Varoitus</strong>: Olet muokkaamassa vanhaa versiota tämän sivun tekstistä. Jos tallennat sen, kaikki tämän version jälkeen tehdyt muutokset katoavat.</center>',
 'yourdiff'                  => 'Eroavaisuudet',
 'copyrightwarning'          => '<strong>Muutoksesi astuvat voimaan välittömästi.</strong> Kaikki {{GRAMMAR:illative|{{SITENAME}}}} tehtävät tuotokset katsotaan julkaistuksi $2 -lisenssin mukaisesti ($1). Jos et halua, että kirjoitustasi muokataan armottomasti ja uudelleenkäytetään vapaasti, älä tallenna kirjoitustasi. Tallentamalla muutoksesi lupaat, että kirjoitit tekstisi itse, tai kopioit sen jostain vapaasta lähteestä. <strong>ÄLÄ KÄYTÄ TEKIJÄNOIKEUDEN ALAISTA MATERIAALIA ILMAN LUPAA!</strong>',
@@ -663,6 +666,10 @@ Yritä uudelleen. Jos ongelma ei katoa, yritä kirjautua ulos ja takaisin sisä�
 'edittools'                 => '<!-- Tässä oleva teksi näytetään muokkauskentän alla. -->',
 'nocreatetitle'             => 'Sivujen luominen on rajoitettu',
 'nocreatetext'              => 'Et voi luoda uusia sivuja. Voit muokata olemassa olevia sivuja tai luoda [[Special:Userlogin|käyttäjätunnuksen]].',
+'recreate-deleted-warn'     => "'''Olet luomassa sivua, joka on aikaisemmin poistettu.'''
+
+Harkitse, kannattaako sivua luoda uudelleen. Alla on tämän sivun poistohistoria:",
+'recreate-deleted-dismiss'  => '(piilota)',
 
 # "Undo" feature
 'undo-success' => 'Kumoaminen onnistui. Valitse <em>tallenna</em> toteuttaaksesi muutokset.',
@@ -826,7 +833,7 @@ $1 | $2',
 'resultsperpage'           => 'Tuloksia sivua kohti',
 'contextlines'             => 'Rivien määrä tulosta kohti',
 'contextchars'             => 'Sisällön merkkien määrä riviä kohden',
-'stubthreshold'            => 'Tynkäsivun osoituskynnys',
+'stub-threshold'           => '<a href="#" class="stub">Tynkäsivun</a> osoituskynnys',
 'recentchangesdays'        => 'Näytettävien päivien määrä tuoreissa muutoksissa',
 'recentchangescount'       => 'Sivujen määrä tuoreissa muutoksissa',
 'savedprefs'               => 'Asetuksesi tallennettiin onnistuneesti.',
@@ -878,7 +885,7 @@ $1 | $2',
 'recentchanges'                     => 'Tuoreet muutokset',
 'recentchangestext'                 => 'Tällä sivulla voi seurata tuoreita {{GRAMMAR:illative|{{SITENAME}}}} tehtyjä muutoksia.',
 'recentchanges-feed-description'    => 'Tällä sivulla voi seurata tuoreita {{GRAMMAR:illative|{{SITENAME}}}} tehtyjä muutoksia.',
-'rcnote'                            => 'Alla on {{PLURAL:$1|yksi muutos|$1 tuoreinta muutosta}} {{PLURAL:$2|viimeisen päivän|$2 viimepäivän}} ajalta $3 asti.',
+'rcnote'                            => 'Alla on {{PLURAL:$1|yksi muutos|$1 tuoreinta muutosta}} {{PLURAL:$2|yhden päivän|$2 viime päivän}} ajalta $3 asti.',
 'rcnotefrom'                        => 'Alla on muutokset <b>$2</b> lähtien. Enintään <b>$1</b> merkintää näytetään.',
 'rclistfrom'                        => 'Näytä uudet muutokset $1 alkaen',
 'rcshowhideminor'                   => '$1 pienet muutokset',
@@ -960,9 +967,9 @@ Jos sinulla on tämän kuvan alkuperäinen versio, tallenna se. Muussa tapaukses
 'fileuploaded'                => "Tiedosto '''$1''' on tallennettu onnistuneesti. Seuraa linkkiä ($2) kuvaussivulle, ja täytä tiedostoon liityvät tiedot, kuten mistä se on peräisin, milloin se on luotu, kuka sen loi ja mahdollisesti muita tietämiäsi tietoja. Jos tiedosto on kuva, voit lisätä sen sivulle näin: '''<nowiki>[[</nowiki>{{ns:image}}:$1|thumb|Kuvaus]]'''",
 'uploadwarning'               => 'Tallennusvaroitus',
 'savefile'                    => 'Tallenna',
-'uploadedimage'               => 'lisäsi tiedoston [[$1]]',
+'uploadedimage'               => 'tallensi tiedoston [[$1]]',
 'uploaddisabled'              => '{{GRAMMAR:genitive|{{SITENAME}}}} ei voi lisätä tiedostoja.',
-'uploaddisabledtext'          => 'Tiedostojen lisäys on poistettu käytöstä.',
+'uploaddisabledtext'          => 'Tiedostojen tallennus on poistettu käytöstä.',
 'uploadscripted'              => 'Tämä tiedosto sisältää HTML-koodia tai skriptejä, jotka selain saattaa virheellisesti suorittaa.',
 'uploadcorrupt'               => 'Tiedosto on vioittunut tai sillä on väärä tiedostopääte. Tarkista tiedosto ja lähetä se uudelleen.',
 'uploadvirus'                 => 'Tiedosto sisältää viruksen. Tarkemmat tiedot: $1',
@@ -1096,6 +1103,7 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'wantedpages'             => 'Halutut sivut',
 'mostlinked'              => 'Viitatuimmat sivut',
 'mostlinkedcategories'    => 'Viitatuimmat luokat',
+'mostlinkedtemplates'     => 'Viitatuimmat mallineet',
 'mostcategories'          => 'Luokitelluimmat sivut',
 'mostimages'              => 'Viitatuimmat kuvat',
 'mostrevisions'           => 'Muokatuimmat sivut',
@@ -1280,7 +1288,7 @@ Palaute ja lisäapu osoitteessa:
 'exblank'                     => 'oli tyhjä',
 'confirmdelete'               => 'Vahvista poisto',
 'deletesub'                   => 'Sivun $1 poisto',
-'historywarning'              => 'Varoitus: Sivulla, jonka aiot poistaa on muokkaushistoria:',
+'historywarning'              => 'Sivua, jonka aiot poistaa on muokattu useammin kuin kerran:',
 'confirmdeletetext'           => 'Olet poistamassa sivun tai tiedoston ja kaiken sen historian. Ymmärrä teon seuraukset ja tee poisto {{GRAMMAR:genitive|{{SITENAME}}}} [[{{MediaWiki:policy-url}}|käytäntöjen]] mukaisesti.',
 'actioncomplete'              => 'Toiminto suoritettu',
 'deletedtext'                 => "'''[[Special:Undelete/$1|$1]]''' on poistettu. Sivulla $2 on lista viimeaikaisista poistoista.",
@@ -1313,9 +1321,6 @@ Palaute ja lisäapu osoitteessa:
 'protect_expiry_invalid'      => 'Vanhenemisaika ei kelpaa.',
 'protect_expiry_old'          => 'Vanhenemisaika on menneisyydessä.',
 'unprotectsub'                => 'Suojauksen poisto sivulta $1',
-'confirmunprotecttext'        => 'Haluatko varmasti poistaa tämän sivun suojauksen?',
-'confirmunprotect'            => 'Vahvista suojauksen poisto',
-'unprotectcomment'            => 'Syy suojauksen poistoon',
 'protect-unchain'             => 'Käytä siirtosuojausta',
 'protect-text'                => 'Voit katsoa ja muuttaa sivun ”<strong>$1</strong>” suojauksia.',
 'protect-locked-blocked'      => 'Et voi muuttaa sivun suojauksia, koska sinut on estetty. Alla on sivun ”<strong>$1</strong>” nykyiset suojaukset:',
@@ -1399,17 +1404,18 @@ Palaute ja lisäapu osoitteessa:
 'sp-newimages-showfrom' => 'Näytä uudet kuvat alkaen $1',
 
 # What links here
-'whatlinkshere'      => 'Tänne viittaavat sivut',
-'notargettitle'      => 'Ei kohdetta',
-'notargettext'       => 'Et ole määritellyt kohdesivua tai -käyttäjää johon toiminto kohdistuu.',
-'linklistsub'        => 'Lista linkeistä',
-'linkshere'          => 'Seuraavilta sivuilta on linkki sivulle <strong>[[:$1]]</strong>:',
-'nolinkshere'        => 'Sivulle <strong>[[:$1]]</strong> ei ole linkkejä.',
-'nolinkshere-ns'     => 'Sivulle <strong>[[:$1]]</strong> ei ole linkkejä valitussa nimiavaruudessa.',
-'isredirect'         => 'uudelleenohjaussivu',
-'istemplate'         => 'sisällytetty mallineeseen',
-'whatlinkshere-prev' => '← {{PLURAL:$1|edellinen sivu|$1 edellistä sivua}}',
-'whatlinkshere-next' => '{{PLURAL:$1|seuraava sivu|$1 seuraavaa sivua}} →',
+'whatlinkshere'       => 'Tänne viittaavat sivut',
+'notargettitle'       => 'Ei kohdetta',
+'notargettext'        => 'Et ole määritellyt kohdesivua tai -käyttäjää johon toiminto kohdistuu.',
+'linklistsub'         => 'Lista linkeistä',
+'linkshere'           => 'Seuraavilta sivuilta on linkki sivulle <strong>[[:$1]]</strong>:',
+'nolinkshere'         => 'Sivulle <strong>[[:$1]]</strong> ei ole linkkejä.',
+'nolinkshere-ns'      => 'Sivulle <strong>[[:$1]]</strong> ei ole linkkejä valitussa nimiavaruudessa.',
+'isredirect'          => 'uudelleenohjaussivu',
+'istemplate'          => 'sisällytetty mallineeseen',
+'whatlinkshere-prev'  => '← {{PLURAL:$1|edellinen sivu|$1 edellistä sivua}}',
+'whatlinkshere-next'  => '{{PLURAL:$1|seuraava sivu|$1 seuraavaa sivua}} →',
+'whatlinkshere-links' => 'viittaukset',
 
 # Block/unblock
 'blockip'                     => 'Aseta muokkausesto',
@@ -2163,6 +2169,11 @@ Yritä normaalia esikatselua.',
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Muutokset, jotka ovat uudempia kuin $1 sekuntia, eivät välttämättä näy tällä sivulla.',
 'lag-warn-high'   => 'Tietokannoilla on työjonoa. Muutokset, jotka ovat uudempia kuin $1 sekuntia, eivät välttämättä näy tällä sivulla.',
+
+# Unknown messages
+'block-log-flags-noemail' => 'sähköpostin lähettäminen estetty',
+'emailblock'              => 'sähköpostin lähettäminen estetty',
+'ipbemailban'             => 'Estä käyttäjää lähettämästä sähköpostia',
 
 );
 

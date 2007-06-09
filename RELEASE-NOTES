@@ -64,6 +64,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Show result of Special:Booksources in wiki content language always, it's
   normally better maintained than the generic list from the standard message
   files
+* (bug 7997) Allow users to be blocked from using Special:Emailuser
+* (bug 8989) Blacklist 'mhtml' and 'mht' files from upload
+* (bug 8760) Allow wiki links in "protectexpiry" message
+* (bug 5908) Add "DEFAULTSORTKEY" and "DEFAULTCATEGORYSORT" aliases for
+  "DEFAULTSORT" magic word
+* (bug 10181) Support the XCache object caching mechanism
+* (bug 9058) Introduce '--aconf' option for all maintenance scripts, to provide
+  a path to the AdminSettings.php file
+* (bug 8781) Remind users to check file permissions for LocalSettings.php
+  post-installation
 
 == Bugfixes since 1.10 ==
 
@@ -136,7 +146,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 9383) Don't set a default value for BLOB column in rc-deleted
   database patch
 * (bug 10149) Don't show full template list on section-0 edit
-
+* Fix maintenance/importImages.php so it doesn't barf PHP errors when no suitable
+  files are found, and make the list of extensions an option (defaults to
+  $wgFileExtensions)
+* (bug 9909) Ensure access to binary fields in the math table use encodeBlob() 
+  and decodeBlob.
 
 == MediaWiki API changes since 1.10 ==
 
@@ -196,6 +210,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Norwegian (no)
 * Polish (pl)
 * Portuguese (pt)
+* Romanian (ro)
 * Russian (ru)
 * Slovak (sk)
 * Shona (sn)

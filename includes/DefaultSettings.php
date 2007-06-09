@@ -971,9 +971,10 @@ $wgHitcounterUpdateFreq = 1;
 
 # Basic user rights and block settings
 $wgSysopUserBans        = true; # Allow sysops to ban logged-in users
-$wgSysopRangeBans		= true; # Allow sysops to ban IP ranges
-$wgAutoblockExpiry		= 86400; # Number of seconds before autoblock entries expire
+$wgSysopRangeBans       = true; # Allow sysops to ban IP ranges
+$wgAutoblockExpiry      = 86400; # Number of seconds before autoblock entries expire
 $wgBlockAllowsUTEdit    = false; # Blocks allow users to edit their own user talk page
+$wgSysopEmailBans       = true; # Allow sysops to ban users from accessing Emailuser
 
 # Pages anonymous user may see as an array, e.g.:
 # array ( "Main Page", "Special:Userlogin", "Wikipedia:Help");
@@ -1060,6 +1061,7 @@ $wgGroupPermissions['sysop']['unwatchedpages']  = true;
 $wgGroupPermissions['sysop']['autoconfirmed']   = true;
 $wgGroupPermissions['sysop']['upload_by_url']   = true;
 $wgGroupPermissions['sysop']['ipblock-exempt']	= true;
+$wgGroupPermissions['sysop']['blockemail']      = true;
 
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
@@ -1474,7 +1476,7 @@ $wgFileExtensions = array( 'png', 'gif', 'jpg', 'jpeg' );
 /** Files with these extensions will never be allowed as uploads. */
 $wgFileBlacklist = array(
 	# HTML may contain cookie-stealing JavaScript and web bugs
-	'html', 'htm', 'js', 'jsb',
+	'html', 'htm', 'js', 'jsb', 'mhtml', 'mht',
 	# PHP scripts may execute arbitrary code on the server
 	'php', 'phtml', 'php3', 'php4', 'php5', 'phps',
 	# Other types that may be interpreted by some servers

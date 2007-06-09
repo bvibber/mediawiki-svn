@@ -253,6 +253,9 @@ abstract class SqlBagOStuff extends BagOStuff {
 	}
 
 	function set($key,$value,$exptime=0) {
+		if ( wfReadOnly() ) {
+			return false;
+		}
 		$exptime = intval($exptime);
 		if($exptime < 0) $exptime = 0;
 		if($exptime == 0) {
@@ -272,6 +275,9 @@ abstract class SqlBagOStuff extends BagOStuff {
 	}
 
 	function delete($key,$time=0) {
+		if ( wfReadOnly() ) {
+			return false;
+		}
 		$this->_query(
 			"DELETE FROM $0 WHERE keyname='$1'", $key );
 		return true; /* ? */
@@ -339,12 +345,18 @@ abstract class SqlBagOStuff extends BagOStuff {
 
 	function expireall() {
 		/* Remove any items that have expired */
+		if ( wfReadOnly() ) {
+			return false;
+		}
 		$now = $this->_fromunixtime( time() );
 		$this->_query( "DELETE FROM $0 WHERE exptime < '$now'" );
 	}
 
 	function deleteall() {
 		/* Clear *all* items from cache table */
+		if ( wfReadOnly() ) {
+			return false;
+		}
 		$this->_query( "DELETE FROM $0" );
 	}
 
@@ -550,6 +562,52 @@ class eAccelBagOStuff extends BagOStuff {
 		eaccelerator_unlock( $key );
 		return true;
 	}
+}
+
+/**
+ * Wrapper for XCache object caching functions; identical interface
+ * to the APC wrapper
+ */
+class XCacheBagOStuff extends APCBagOStuff {
+
+	/**
+	 * Get a value from the XCache object cache
+	 *
+	 * @param string $key Cache key
+	 * @return mixed
+	 */
+	public function get( $key ) {
+		$val = xcache_get( $key );
+		if( is_string( $val ) )
+			$val = unserialize( $val );
+		return $val;
+	}
+	
+	/**
+	 * Store a value in the XCache object cache
+	 *
+	 * @param string $key Cache key
+	 * @param mixed $value Object to store
+	 * @param int $expire Expiration time
+	 * @return bool
+	 */
+	public function set( $key, $value, $expire = 0 ) {
+		xcache_set( $key, serialize( $value ), $expire );
+		return true;
+	}
+	
+	/**
+	 * Remove a value from the XCache object cache
+	 *
+	 * @param string $key Cache key
+	 * @param int $time Not used in this implementation
+	 * @return bool
+	 */
+	public function delete( $key, $time = 0 ) {
+		xcache_unset( $key );
+		return true;
+	}
+	
 }
 
 /**
