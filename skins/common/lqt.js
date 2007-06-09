@@ -45,22 +45,22 @@ var LqtDateRangeRectifier = function( startsel, endsel ) {
 
 function lqt_on_load() {
 	if(!document.getElementById) return;
-	
-	// Hide the Go button and turn on automatic submission on the archive browser.
-	/*
-	var dropdown = document.getElementById('lqt_archive_month');
-	var success = lqt_add_event(dropdown, 'change', function(){
-		document.getElementById('lqt_archive_browser_form').submit();
-		});
-	if (success) {
-		document.getElementById('lqt_archive_go_button').className = "lqt_hidden";
-	}*/
-
 
 	var searchform = document.getElementById("lqt_archive_search_form");
 	if ( searchform ) {
-		new LqtDateRangeRectifier( document.getElementById("lqt_archive_start"),
-					   document.getElementById("lqt_archive_end"));
+		var start = document.getElementById("lqt_archive_start");
+		var end =  document.getElementById("lqt_archive_end");
+
+		new LqtDateRangeRectifier( start, end );
+
+		var filter = document.getElementById("lqt_archive_filter_by_date_yes");
+		function set_date_filter_radio(e) { filter.checked = true; }
+		lqt_add_event(start, 'change', set_date_filter_radio);
+		lqt_add_event(end, 'change', set_date_filter_radio);
+		if ( !filter.checked ) {
+			start.selectedIndex = end.selectedIndex = 0;
+		}
+		
 	}
 }
 
