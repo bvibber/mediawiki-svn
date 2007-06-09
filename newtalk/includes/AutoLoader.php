@@ -235,6 +235,7 @@ function __autoload($className) {
 		'StringUtils' => 'includes/StringUtils.php',
 		'Title' => 'includes/Title.php',
 		'User' => 'includes/User.php',
+		'NewTalk' => 'includes/NewTalk.php',
 		'MailAddress' => 'includes/UserMailer.php',
 		'EmailNotification' => 'includes/UserMailer.php',
 		'WatchedItem' => 'includes/WatchedItem.php',

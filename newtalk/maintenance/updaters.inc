@@ -932,6 +932,9 @@ function do_all_updates( $shared = false, $purge = true ) {
 
 	do_backlinking_indices_update(); flush();
 
+	fix_newtalk();
+	flush();
+
 	do_restrictions_update(); flush ();
 
 	echo "Deleting old default messages (this may take a long time!)..."; flush();
@@ -953,6 +956,20 @@ function archive($name) {
 		return "$IP/maintenance/postgres/archives/$name";
 	default:
 		return "$IP/maintenance/archives/$name";
+	}
+}
+
+/**
+ * Fixes up some columns and indices in `user_newtalk`
+ */
+function fix_newtalk() {
+	global $wgDatabase;
+	if( $wgDatabase->indexExists( 'user_newtalk', 'user_id' ) ) {
+		echo( "Fixing up `user_newtalk`..." );
+		$wgDatabase->sourceFile( archive( 'patch-fix-newtalk.sql' ) );
+		echo( "done.\n" );
+	} else {
+		echo( "`user_newtalk` seems to be fixed up.\n" );
 	}
 }
 

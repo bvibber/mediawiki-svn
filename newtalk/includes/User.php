@@ -1175,31 +1175,16 @@ class User {
 		return str_replace( ' ', '_', $this->getName() );
 	}
 
-	function getNewtalk() {
+	/**
+	 * Is the "new messages" flag set for this user?
+	 *
+	 * @return bool
+	 */
+	public function getNewtalk() {
 		$this->load();
-
-		# Load the newtalk status if it is unloaded (mNewtalk=-1)
-		if( $this->mNewtalk === -1 ) {
-			$this->mNewtalk = false; # reset talk page status
-
-			# Check memcached separately for anons, who have no
-			# entire User object stored in there.
-			if( !$this->mId ) {
-				global $wgMemc;
-				$key = wfMemcKey( 'newtalk', 'ip', $this->getName() );
-				$newtalk = $wgMemc->get( $key );
-				if( $newtalk != "" ) {
-					$this->mNewtalk = (bool)$newtalk;
-				} else {
-					$this->mNewtalk = $this->checkNewtalk( 'user_ip', $this->getName() );
-					$wgMemc->set( $key, (int)$this->mNewtalk, time() + 1800 );
-				}
-			} else {
-				$this->mNewtalk = $this->checkNewtalk( 'user_id', $this->mId );
-			}
-		}
-
-		return (bool)$this->mNewtalk;
+		if( $this->mNewtalk === -1 )
+			$this->mNewtalk = NewTalk::get( $this );
+		return $this->mNewtalk;
 	}
 
 	/**
@@ -1217,107 +1202,35 @@ class User {
 		return array(array("wiki" => wfWikiID(), "link" => $utp->getLocalURL()));
 	}
 
-		
 	/**
-	 * Perform a user_newtalk check on current slaves; if the memcached data
-	 * is funky we don't want newtalk state to get stuck on save, as that's
-	 * damn annoying.
+	 * Set the "new messages" flag for this user
 	 *
-	 * @param string $field
-	 * @param mixed $id
-	 * @return bool
-	 * @private
+	 * @param bool $set Flag state
 	 */
-	function checkNewtalk( $field, $id ) {
-		$dbr = wfGetDB( DB_SLAVE );
-		$ok = $dbr->selectField( 'user_newtalk', $field,
-			array( $field => $id ), __METHOD__ );
-		return $ok !== false;
-	}
-
-	/**
-	 * Add or update the
-	 * @param string $field
-	 * @param mixed $id
-	 * @private
-	 */
-	function updateNewtalk( $field, $id ) {
-		if( $this->checkNewtalk( $field, $id ) ) {
-			wfDebug( __METHOD__." already set ($field, $id), ignoring\n" );
-			return false;
-		}
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->insert( 'user_newtalk',
-			array( $field => $id ),
-			__METHOD__,
-			'IGNORE' );
-		wfDebug( __METHOD__.": set on ($field, $id)\n" );
-		return true;
-	}
-
-	/**
-	 * Clear the new messages flag for the given user
-	 * @param string $field
-	 * @param mixed $id
-	 * @private
-	 */
-	function deleteNewtalk( $field, $id ) {
-		if( !$this->checkNewtalk( $field, $id ) ) {
-			wfDebug( __METHOD__.": already gone ($field, $id), ignoring\n" );
-			return false;
-		}
-		$dbw = wfGetDB( DB_MASTER );
-		$dbw->delete( 'user_newtalk',
-			array( $field => $id ),
-			__METHOD__ );
-		wfDebug( __METHOD__.": killed on ($field, $id)\n" );
-		return true;
-	}
-
-	/**
-	 * Update the 'You have new messages!' status.
-	 * @param bool $val
-	 */
-	function setNewtalk( $val ) {
-		if( wfReadOnly() ) {
-			return;
-		}
-
-		$this->load();
-		$this->mNewtalk = $val;
-
-		if( $this->isAnon() ) {
-			$field = 'user_ip';
-			$id = $this->getName();
-		} else {
-			$field = 'user_id';
-			$id = $this->getId();
-		}
-
-		if( $val ) {
-			$changed = $this->updateNewtalk( $field, $id );
-		} else {
-			$changed = $this->deleteNewtalk( $field, $id );
-		}
-
-		if( $changed ) {
-			if( $this->isAnon() ) {
-				// Anons have a separate memcached space, since
-				// user records aren't kept for them.
-				global $wgMemc;
-				$key = wfMemcKey( 'newtalk', 'ip', $val );
-				$wgMemc->set( $key, $val ? 1 : 0 );
-			} else {
-				if( $val ) {
-					// Make sure the user page is watched, so a notification
-					// will be sent out if enabled.
-					$this->addWatch( $this->getTalkPage() );
-				}
-			}
+	public function setNewtalk( $set = true ) {
+		if( !$set ) {
+			$this->deleteNewtalk();
+		} elseif( !wfReadOnly() ) {
+			$this->load();
+			$this->mNewtalk = true;
+			NewTalk::set( $this );
+			$this->addWatch( $this->getTalkPage() );
 			$this->invalidateCache();
 		}
 	}
 	
+	/**
+	 * Unset the "new messages" flag for this user
+	 */
+	public function deleteNewtalk() {
+		if( !wfReadOnly() ) {
+			$this->load();
+			$this->mNewtalk = false;
+			NewTalk::remove( $this );
+			$this->invalidateCache();
+		}
+	}
+
 	/**
 	 * Generate a current or new-future timestamp to be stored in the
 	 * user_touched field when we update things.
