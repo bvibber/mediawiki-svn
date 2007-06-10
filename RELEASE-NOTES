@@ -51,8 +51,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added $wgArticleRobotPolicies
 * (bug 10076) Additional parameter $7 added to MediaWiki:Blockedtext 
   containing, the ip, ip range, or username whose block is affecting the
-* (bug 7691) Show relevant lines from the deletion log when viewing
-  a non-existent article or re-creating a previously-deleted article
+* (bug 7691) Show relevant lines from the deletion log when re-creating a
+  previously deleted article
 * Added variables 'wgRestrictionEdit' and 'wgRestrictionMove' for JS to header
 * (bug 9898) Allow viewing all namespaces in Special:Newpages
 * (bug 10139) Introduce 'EditSectionLink' and 'EditSectionLinkForOther' hooks;
@@ -150,7 +150,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   files are found, and make the list of extensions an option (defaults to
   $wgFileExtensions)
 * (bug 9909) Ensure access to binary fields in the math table use encodeBlob() 
-  and decodeBlob.
+  and decodeBlob()
+* (bug 6743) Don't link broken image links to the upload form when uploads
+  are disabled
 
 == MediaWiki API changes since 1.10 ==
 
@@ -196,6 +198,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Finnish (fi)
 * Võro (fiu-vro)
 * French (fr)
+* Galician (gl)
 * Hakka (hak)
 * Hebrew (he)
 * Indonesian (id)
