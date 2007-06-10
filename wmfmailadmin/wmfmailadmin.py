@@ -5,7 +5,7 @@ Simple mail account maintenance script
 Written by Mark Bergsma <mark@wikimedia.org>
 """
 
-import sys
+import sys, os
 
 dbname = 'user.db'
 conn = None
@@ -22,7 +22,7 @@ longactions = {}
 fieldmappings = {
 	# Option: ( fieldname, description, default )
 	'e': ('email',		"E-mail address",	None),
-	'p': ('password',	"Password",			None),
+	'p': ('password',	"Password",			'-'),
 	'r': ('realname',	"Real name",		None),
 	'i': ('id',			"Id",				None),
 	'q': ('quota',		"Quota",			2**30/1024),
@@ -32,6 +32,8 @@ fieldmappings = {
 longmappings = {}
 
 updateables = ('password', 'quota', 'realname', 'active')
+
+supported_hash_algorithms = ('{SHA1}')
 
 def list_accounts(fields):
 	"""
@@ -74,16 +76,19 @@ def create_account(fields):
 	
 	global conn, longmappings, updateables
 	
-	required_fields = ('email', 'password', 'realname')
+	required_fields = ('email', 'realname')		# password will be prompted for if needed
 	require_fields( (required_fields, ), fields)
 	
 	# Set default values for fields not given
-	value_fields = ['localpart', 'domain', 'password', 'realname']
+	value_fields = ['localpart', 'domain', 'realname']
 	for fieldname in updateables:
 		default = longmappings[fieldname][2]
 		if fieldname not in fields and default is not None:
 			fields[fieldname] = default
 			value_fields.append(fieldname)
+
+	# Input password if needed
+	password_input(fields)
 
 	# Construct list of fields that are either given, or should get default values
 	values_list = "(" + ", ".join(value_fields) + ") VALUES (:" + ", :".join(value_fields) + ")"
@@ -115,6 +120,9 @@ def update_account(fields):
 	
 	require_fields( (('id', ), ('email', )), fields)
 	require_fields( (('password', ), ('realname', ), ('quota', ), ('active', ), ), fields)
+
+	# Input password if needed
+	password_input(fields)
 	
 	# Build UPDATE clause from update arguments
 	update_clause = " AND ".join(
@@ -150,6 +158,26 @@ def split_email(fields):
 	fields['localpart'], fields['domain'] = fields['email'].rsplit('@')
 	# TODO: syntax checking
 	return fields
+
+def password_input(fields):
+	"""
+	Checks if the password argument on the commandline was "-",
+	and prompts for a password if that is the case
+	"""
+	
+	global supported_hash_algorithms
+	
+	if fields['password'] != '-': return
+	
+	# Simply outsource to dovecotpw
+	pipe = os.popen('dovecotpw -s sha1', 'r')
+	password = pipe.readline().rstrip('\n')
+	rval = pipe.close()
+	if rval is None and password.startswith(supported_hash_algorithms):
+		fields['password'] = password
+	else:
+		raise Exception("Problem invoking dovecotpw")
+		
 
 def add_index(dct, fieldindex):
 	"""
