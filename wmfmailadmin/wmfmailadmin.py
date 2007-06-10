@@ -28,7 +28,7 @@ fieldmappings = {
 	'i': ('id',			"Id",				None,		None),
 	'q': ('quota',		"Quota",			2**30/1024, None),
 	'a': ('active',		"Active",			True,		None),
-	'f': ('filter',		"Filter",			None,		None)
+	'f': ('filter',		"Filter",			None,		"Filter file or '-' for stdin")
 }
 longmappings = {}
 
@@ -36,6 +36,8 @@ updateables = ('password', 'quota', 'realname', 'active', 'filter')
 table_fields = ('id', 'localpart', 'domain', 'password', 'realname', 'active', 'quota', 'filter')
 
 supported_hash_algorithms = ('{SHA1}')
+
+max_filter_size = 4096
 
 def list_accounts(fields):
 	"""
@@ -171,11 +173,14 @@ def show_field(fields):
 	cur = conn.cursor()
 	cur.execute("SELECT " + field + " FROM account WHERE " + where_clause, fields)
 	
-	value = cur.fetchone()[0]
-	if value is not None:
-		print value
-	else:
-		print >> sys.stderr, "(NULL)"
+	try:
+		value = cur.fetchone()[0]
+		if value is not None:
+			print value
+		else:
+			print >> sys.stderr, "(NULL)"
+	except:
+		print >> sys.stderr, "(No rows returned)"
 
 def require_fields(required_fields, fields):
 	"""
@@ -222,6 +227,8 @@ def input_filter(fields):
 	Reads a filter from a file into fields['filter'] (overwriting)
 	"""
 	
+	global max_filter_size
+	
 	if fields['filter'] == "": return
 	
 	if fields['filter'] == '-':
@@ -232,7 +239,10 @@ def input_filter(fields):
 		except IOError, e:
 			raise Exception("Could not open filter file %s: %e" % (fields['filter'], e.message))
 	
-	fields['filter'] = filterfile.read(4096)
+	fields['filter'] = filterfile.read(max_filter_size)
+	
+	if len(fields['filter']) == max_filter_size and filterfile.read(1):
+		print >> sys.stderr, "Warning: filter truncated at %d bytes!" % max_filter_size
 
 def add_index(dct, fieldindex):
 	"""
