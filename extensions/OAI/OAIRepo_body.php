@@ -659,20 +659,13 @@ class OAIRepo {
 		else
 			$pages_where = " AND up_page IN (".implode(",",$page_ids).") ";
 
-		extract( $this->_db->tableNames( 'updates', 'page', 'pagelinks' ) );
+		extract( $this->_db->tableNames( 'updates', 'page', 'redirect' ) );
 		$sql = "SELECT up_page,up_sequence,
-    r.page_namespace AS page_namespace,
-    r.page_title AS page_title,
-    COUNT(pl.pl_from) AS num_page_ref
-    FROM $updates
-    LEFT JOIN $page AS p ON p.page_id=up_page
-    LEFT JOIN $pagelinks AS pl ON p.page_namespace=pl.pl_namespace AND p.page_title=pl.pl_title
-    LEFT JOIN $page AS ns ON pl.pl_from=ns.page_id 
-    LEFT JOIN $page AS r ON pl.pl_from=r.page_id AND r.page_is_redirect=1
-    LEFT JOIN $pagelinks AS rpl ON r.page_namespace=rpl.pl_namespace AND r.page_title=rpl.pl_title
-    WHERE p.page_namespace != 0 OR p.page_namespace = ns.page_namespace
-    $pages_where
-    GROUP BY up_page,r.page_id";
+    rp.page_namespace AS page_namespace,
+    rp.page_title AS page_title
+    FROM $updates AS u, $page AS p, $redirect AS r, $page AS rp
+    WHERE u.up_page=p.page_id AND p.page_namespace=r.rd_namespace 
+    AND p.page_title=r.rd_title AND r.rd_from=rp.page_id";
 		
 		return $this->_db->resultObject( $this->_db->query( $sql ) );
 	}
@@ -954,14 +947,9 @@ class OAILSearchWriter extends OAIDumpWriter {
 	function __construct($resultSet){
 		parent::__construct();
 		$this->_redirects = array();
-		$this->_references = array();
 		for($i = 0 ; $i < $resultSet->numRows(); $i++){
 			$row = $resultSet->fetchObject();
-			if(isset($row->page_title))
-				$this->_redirects[$row->up_page][] = $row;
-			else
-				$this->_references[$row->up_page] = $row;
-
+			$this->_redirects[$row->up_page][] = $row;			
 		}
 	}
 
@@ -982,11 +970,8 @@ class OAILSearchWriter extends OAIDumpWriter {
 
 	function openPage( $row ) {
 		$out = parent::openPage( $row );
-		if(isset($this->_references[$row->up_page]) && isset($this->_references[$row->up_page]->num_page_ref))
-			$page_ref = $this->_references[$row->up_page]->num_page_ref;
-		else
-			$page_ref = 0;
-		$out .= '    ' . wfElement( 'references', array(), strval( $page_ref ) ) . "\n";
+		if(isset($row->num_page_ref))
+			$out .= '    ' . wfElement( 'references', array(), strval( $row->num_page_ref ) ) . "\n";
 		return $out;
 	}
 
