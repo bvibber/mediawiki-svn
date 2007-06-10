@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.importer;
+package org.wikimedia.lsearch.ranks;
 
 import java.io.IOException;
 import java.util.HashMap;
@@ -32,12 +32,21 @@ public class LinkReader implements DumpWriter {
 	Revision revision;
 	Siteinfo siteinfo;
 	/** ns:title -> number of referring articles */
-	HashMap<String,ArticleLinks> links = new HashMap<String,ArticleLinks>();
+	Links links;
 	HashSet<String> interwiki;
 	String langCode;
+	boolean readRedirects;
+	
+	public static final boolean READ_REDIRECTS = true;
+	public static final boolean NO_REDIRECTS = false;
 
-	public LinkReader(HashMap<String,ArticleLinks> links, String langCode){
+	public LinkReader(Links links, String langCode){
+		this(links,langCode,false);
+	}
+	
+	public LinkReader(Links links, String langCode, boolean readRedirects){
 		this.links = links;
+		this.readRedirects = readRedirects;
 		if(langCode == null || langCode.equals(""))
 			langCode = "en";
 		this.langCode = langCode;
@@ -50,31 +59,50 @@ public class LinkReader implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		ArticleLinks r = links.get(page.Title.Namespace+":"+page.Title.Text);
-		// register redirect
-		Title redirect = Localization.getRedirectTitle(revision.Text,langCode);
-		if( redirect !=null ){
-			r.redirectsTo = findArticleLinks(redirect.getNamespace(),redirect.getTitle());
-		} else // process links
-			processLinks(revision.Text,page.Title.Namespace);		
+		if(readRedirects){
+			// register redirect
+			Title redirect = Localization.getRedirectTitle(revision.Text,langCode);
+			if( redirect !=null ){
+				CompactArticleLinks cs = findArticleLinks(redirect.getNamespace(),redirect.getTitle());
+				if(cs != null)
+					links.setRedirect(page.Title.Namespace+":"+page.Title.Text,cs);
+				return;
+			}
+		}
+		processLinks(revision.Text,page.Title.Namespace);
 	}
 	
 	/** Find the links object for the ns:title key */
-	protected ArticleLinks findArticleLinks(int ns, String title){
+	protected CompactArticleLinks findArticleLinks(int ns, String title){
 		String key;
-		ArticleLinks rank;
+		CompactArticleLinks rank;
+		if(title.length() == 0)
+			return null;
 		// try exact match
 		key = ns+":"+title;
 		rank = links.get(key);
 		if(rank != null)
 			return rank;
-		// try lowercase
+		// try lowercase 
 		key = ns+":"+title.toLowerCase();
+		rank = links.get(key);
+		if(rank != null)
+			return rank;
+		// try lowercase with first letter upper case
+		if(title.length()==1) 
+			key = ns+":"+title.toUpperCase();
+		else
+			key = ns+":"+title.substring(0,1).toUpperCase()+title.substring(1).toLowerCase();
 		rank = links.get(key);
 		if(rank != null)
 			return rank;
 		// try title case
 		key = ns+":"+WordUtils.capitalize(title);
+		rank = links.get(key);
+		if(rank != null)
+			return rank;
+		// try upper case
+		key = ns+":"+title.toUpperCase();
 		rank = links.get(key);
 		if(rank != null)
 			return rank;
@@ -94,7 +122,7 @@ public class LinkReader implements DumpWriter {
 		int ns; String title;
 		boolean escaped;
 		
-		HashSet<ArticleLinks> pagelinks = new HashSet<ArticleLinks>(); 
+		HashSet<CompactArticleLinks> pagelinks = new HashSet<CompactArticleLinks>(); 
 		while(matcher.find()){
 			String link = matcher.group(1);
 			int fragment = link.lastIndexOf('#');
@@ -126,14 +154,13 @@ public class LinkReader implements DumpWriter {
 			}
 			if(ns == 0 && namespace!=0)
 				continue; // skip links from other namespaces into the main namespace
-			
 			// register as link
-			ArticleLinks target = findArticleLinks(ns,title);			
+			CompactArticleLinks target = findArticleLinks(ns,title);			
 			if(target != null)
 				pagelinks.add(target);				
 		}
 		// increment page ranks 
-		for(ArticleLinks rank : pagelinks){			
+		for(CompactArticleLinks rank : pagelinks){			
 			rank.links++;
 		}
 	}
@@ -149,7 +176,7 @@ public class LinkReader implements DumpWriter {
 	public void writeStartWiki() throws IOException {
 		// nop		
 	}
-	public HashMap<String, ArticleLinks> getRanks() {
+	public Links getRanks() {
 		return links;
 	}
 	

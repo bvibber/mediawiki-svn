@@ -16,6 +16,8 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexThread;
+import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.ranks.RankBuilder;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
@@ -96,8 +98,9 @@ public class Importer {
 			long start = System.currentTimeMillis();
 			
 			// regenerate link and redirect information
-			HashMap<String,ArticleLinks> links = processLinks(inputfile,getTitles(inputfile,langCode),langCode);
-
+			Links links = RankBuilder.processLinks(inputfile,RankBuilder.getTitles(inputfile,langCode),langCode,org.wikimedia.lsearch.ranks.LinkReader.READ_REDIRECTS);
+			links.generateRedirectLists();
+			
 			log.info("Third pass, indexing articles...");
 			
 			// open			
@@ -146,59 +149,6 @@ public class Importer {
 			} else
 				IndexThread.makeIndexSnapshot(iid,iid.getImportPath());
 		}		
-	}
-
-	private static HashMap<String,ArticleLinks> processLinks(String inputfile, HashMap<String,ArticleLinks> links, String langCode) {
-		log.info("Second pass, calculating article links...");
-		InputStream input = null;
-		// second pass - calculate page ranks
-		try {
-			input = Tools.openInputFile(inputfile);
-		} catch (IOException e) {
-			log.fatal("I/O error opening "+inputfile);
-			return null;
-		}
-		// calculate ranks
-		LinkReader rr = new LinkReader(links,langCode);
-		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(rr, 5000));
-		try {
-			reader.readDump();
-		} catch (IOException e) {
-			log.fatal("I/O error reading dump while calculating ranks for from "+inputfile);
-			return null;
-		}		
-		// generate "redirects here" lists for each article
-		for(Entry<String,ArticleLinks> e : links.entrySet()){
-			ArticleLinks r = e.getValue();
-			if(r.redirectsTo != null && r != r.redirectsTo){
-				if(r.redirectsTo.redirected == null)
-					r.redirectsTo.redirected = new ArrayList<String>();
-				r.redirectsTo.redirected.add(e.getKey());
-			}
-		}
-		return links;
-	}
-
-	private static HashMap<String,ArticleLinks> getTitles(String inputfile,String langCode) {
-		log.info("First pass, getting a list of valid articles...");
-		InputStream input = null;
-		try {
-			input = Tools.openInputFile(inputfile);
-		} catch (IOException e) {
-			log.fatal("I/O error opening "+inputfile);
-			return null;
-		}
-		// first pass, get titles
-		TitleReader tr = new TitleReader(langCode);
-		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(tr, 5000));
-		try {
-			reader.readDump();
-			input.close();
-		} catch (IOException e) {
-			log.fatal("I/O error reading dump while getting titles from "+inputfile);
-			return null;
-		}
-		return tr.getTitles();
 	}
 
 	private static String formatTime(long l) {

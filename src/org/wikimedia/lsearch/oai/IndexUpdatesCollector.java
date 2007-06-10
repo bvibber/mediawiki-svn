@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.oai;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.mediawiki.importer.DumpWriter;
@@ -65,11 +66,11 @@ public class IndexUpdatesCollector implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),references,redirects);
-		log.info("Collected "+article+" with rank "+references+" and "+redirects.size()+" redirects: "+redirects);
+		log.debug("Collected "+article+" with rank "+references+" and "+redirects.size()+" redirects: "+redirects);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.UPDATE));
 		log.debug(iid+": Update for "+article);
 		references = 0;
-		redirects.clear();
+		redirects = new ArrayList<Redirect>();
 	}
 	
 	public void writeSiteinfo(Siteinfo info) throws IOException {
@@ -77,9 +78,8 @@ public class IndexUpdatesCollector implements DumpWriter {
 		// write to localization
 		Iterator it = info.Namespaces.orderedEntries();
 		while(it.hasNext()){
-			Integer inx = (Integer)it.next();
-			String prefix = info.Namespaces.getPrefix(inx);
-			Localization.addCustomMapping(prefix,inx,langCode);
+			Entry<Integer,String> pair = (Entry<Integer,String>)it.next();
+			Localization.addCustomMapping(pair.getValue(),pair.getKey(),langCode);
 		}
 	}
 		

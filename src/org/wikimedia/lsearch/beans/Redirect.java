@@ -34,6 +34,10 @@ public class Redirect implements Serializable {
 		return namespace+":"+title+" ("+references+")";
 	}
 	
+	public Title makeTitle(){
+		return new Title(namespace,title);
+	}
+	
 	
 	
 }

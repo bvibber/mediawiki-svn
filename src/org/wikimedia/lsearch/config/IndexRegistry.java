@@ -26,11 +26,20 @@ public class IndexRegistry {
 	protected Hashtable<String,LocalIndex> latestUpdate;	
 	/** current search index */
 	protected Hashtable<String,LocalIndex> currentSearch;
+	/** when was the last time when snapshot was refreshed */
+	protected Hashtable<String,Long> lastSnapshotRefresh = new Hashtable<String,Long>(); 
+	
+	protected Object lock = new Object();
 	
 	protected static IndexRegistry instance = null;
 
 	/** Get info about the latest index snapshot */
 	public LocalIndex getLatestSnapshot(IndexId iid){
+		synchronized (lock) {
+			// wait at least 5 second before the next refresh
+			if(lastSnapshotRefresh.get(iid.toString()) == null || (System.currentTimeMillis() - lastSnapshotRefresh.get(iid.toString()) > 5000))
+				refreshSnapshots(iid);	
+		}		
 		return latestSnapshot.get(iid.toString()); // hashtable is synchronized		
 	}
 	
@@ -95,10 +104,11 @@ public class IndexRegistry {
 		} else if(latestSnapshot.get(iid.toString()) != null){
 			latestSnapshot.remove((iid.toString()));
 		}
+		lastSnapshotRefresh.put(iid.toString(),System.currentTimeMillis());
 	}
 	
 	/** Refresh latest search update info */
-	public synchronized void refreshUpdates(IndexId iid){
+	public synchronized void refreshUpdates(IndexId iid){		
 		File updateDir = new File(iid.getUpdatePath());
 		LocalIndex latest = getLatestLocalIndex(updateDir,iid);
 		if(latest != null){
@@ -106,6 +116,7 @@ public class IndexRegistry {
 		} else if(latestUpdate.get(iid.toString()) != null){
 			latestUpdate.remove((iid.toString()));
 		}
+		
 	}
 	
 	/** Tell registry this is the most current version of search index */

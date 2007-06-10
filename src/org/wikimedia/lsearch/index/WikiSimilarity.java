@@ -35,7 +35,7 @@ public class WikiSimilarity extends DefaultSimilarity {
 				//log.debug("Length-norm: "+f+", numtokens: "+numTokens);
 				return f;
 			}			
-		} else if(fieldName.equals("title") || fieldName.startsWith("alttitle")){
+		} else if(fieldName.equals("title") || fieldName.equals("stemtitle") || fieldName.startsWith("alttitle")){
 			float f = (float) (1.0 / (Math.sqrt(numTokens) * numTokens));
 			//log.debug("Length-norm: "+f+", numtokens: "+numTokens);
 			return f;

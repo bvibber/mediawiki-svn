@@ -20,6 +20,8 @@ import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.ranks.CompactArticleLinks;
+import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.util.Localization;
 
 public class DumpImporter implements DumpWriter {
@@ -28,11 +30,11 @@ public class DumpImporter implements DumpWriter {
 	Revision revision;
 	SimpleIndexWriter writer;
 	int count = 0, limit;
-	HashMap<String,ArticleLinks> ranks;
+	Links ranks;
 	String langCode;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
-			Integer maxBufDocs, boolean newIndex, HashMap<String,ArticleLinks> ranks, String langCode){
+			Integer maxBufDocs, boolean newIndex, Links ranks, String langCode){
 		Configuration.open(); // make sure configuration is loaded
 		writer = new SimpleIndexWriter(IndexId.get(dbname), optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;
@@ -48,7 +50,7 @@ public class DumpImporter implements DumpWriter {
 	public void writeEndPage() throws IOException {
 		// get reference count
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		ArticleLinks r = ranks.get(key);
+		CompactArticleLinks r = ranks.get(key);
 		int references;
 		boolean isRedirect = r.redirectsTo != null; 
 		if(r == null){
@@ -59,9 +61,9 @@ public class DumpImporter implements DumpWriter {
 		// make list of redirects
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
 		if(r.redirected != null){
-			for(String rk : r.redirected){
-				String[] parts = rk.split(":",2);
-				redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],ranks.get(rk).links));
+			for(CompactArticleLinks rk : r.redirected){
+				String[] parts = rk.toString().split(":",2);
+				redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],rk.links));
 			}
 		}		
 		// make article

@@ -185,7 +185,7 @@ public class Localization {
 		boolean isRed = false;
 		if(line.startsWith("#redirect"))
 			isRed = true;
-		else if(lang != null ){
+		else if(lang != null && redirects.get(lang)!=null){
 			for(String magic : redirects.get(lang)){
 				if(line.startsWith(magic)){
 					isRed = true;
