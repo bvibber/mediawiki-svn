@@ -11,11 +11,12 @@ dbname = '/var/vmail/user.db'
 conn = None
 
 actions = {
-	# Option: ( action, description )
-	'l': ('list',	"List accounts"),
-	'c': ('create',	"Create account"),
-	'd': ('delete',	"Delete account"),
-	'u': ('update',	"Update account")
+	# Option: ( action, description, argument required )
+	'l': ('list',	"List accounts",	False),
+	'c': ('create',	"Create account",	False),
+	'd': ('delete',	"Delete account",	False),
+	'u': ('update',	"Update account",	False),
+	's': ('show',	"Show field",		True)
 }
 longactions = {}
 
@@ -31,7 +32,8 @@ fieldmappings = {
 }
 longmappings = {}
 
-updateables = ('password', 'quota', 'realname', 'active')
+updateables = ('password', 'quota', 'realname', 'active', 'filter')
+table_fields = ('id', 'localpart', 'domain', 'password', 'realname', 'active', 'quota', 'filter')
 
 supported_hash_algorithms = ('{SHA1}')
 
@@ -80,15 +82,22 @@ def create_account(fields):
 	require_fields( (required_fields, ), fields)
 	
 	# Set default values for fields not given
-	value_fields = ['localpart', 'domain', 'realname']
+	value_fields = ['localpart', 'domain', 'realname', 'filter']
 	for fieldname in updateables:
 		default = longmappings[fieldname][2]
-		if fieldname not in fields and default is not None:
-			fields[fieldname] = default
-			value_fields.append(fieldname)
-
+		if fieldname not in fields:
+			if default is not None:
+				# Use the default value
+				fields[fieldname] = default
+				value_fields.append(fieldname)
+			else:
+				# Field is not given on the command line, and apparently not required
+				value_fields.remote(fieldname)
+				
 	# Input password if needed
-	password_input(fields)
+	input_password(fields)
+	# Read filter file if needed
+	input_filter(fields)
 
 	# Construct list of fields that are either given, or should get default values
 	values_list = "(" + ", ".join(value_fields) + ") VALUES (:" + ", :".join(value_fields) + ")"
@@ -116,18 +125,20 @@ def update_account(fields):
 	Update an existing account
 	"""
 	
-	global conn
+	global conn, updateables
 	
 	require_fields( (('id', ), ('email', )), fields)
-	require_fields( (('password', ), ('realname', ), ('quota', ), ('active', ), ), fields)
+	require_fields( (('password', ), ('realname', ), ('quota', ), ('active', ), ('filter', ), ), fields)
 
 	# Input password if needed
-	password_input(fields)
+	input_password(fields)
+	# Read filter file if needed
+	input_filter(fields)
 	
 	# Build UPDATE clause from update arguments
 	update_clause = " AND ".join(
 		[f+'=:'+f
-		 for f in ('password', 'realname', 'quota', 'active')
+		 for f in updateables
 		 if f in fields])
 	
 	# Build WHERE clause from selectables
@@ -137,6 +148,34 @@ def update_account(fields):
 	
 	conn.cursor().execute("UPDATE account SET %s WHERE %s" % (update_clause, where_clause), fields)
 	conn.commit()
+
+def show_field(fields):
+	"""
+	Shows a single field of an account - useful for larger text fields such as 'filter'
+	"""
+	
+	global conn, table_fields
+	
+	require_fields( (('id', ), ('email', )), fields)
+	
+	# Determine the field to display
+	field = fields['show']
+	if not field in table_fields:
+		raise Exception("Invalid selected field " + field)
+	
+	# Build WHERE clause from selectables
+	where_clause = (fields.has_key('id')
+				and "id=:id"
+				or "localpart=:localpart AND domain=:domain")
+	
+	cur = conn.cursor()
+	cur.execute("SELECT " + field + " FROM account WHERE " + where_clause, fields)
+	
+	value = cur.fetchone()[0]
+	if value is not None:
+		print value
+	else:
+		print >> sys.stderr, "(NULL)"
 
 def require_fields(required_fields, fields):
 	"""
@@ -159,7 +198,7 @@ def split_email(fields):
 	# TODO: syntax checking
 	return fields
 
-def password_input(fields):
+def input_password(fields):
 	"""
 	Checks if the password argument on the commandline was "-" or empty,
 	and prompts for a password if that is the case
@@ -167,7 +206,7 @@ def password_input(fields):
 	
 	global supported_hash_algorithms
 	
-	if fields['password'] not in ('', '-'): return
+	if not fields.has_key('password') or fields['password'] not in ('', '-'): return
 	
 	# Simply outsource to dovecotpw
 	pipe = os.popen('dovecotpw -s sha1', 'r')
@@ -177,7 +216,23 @@ def password_input(fields):
 		fields['password'] = password
 	else:
 		raise Exception("Problem invoking dovecotpw")
-		
+
+def input_filter(fields):
+	"""
+	Reads a filter from a file into fields['filter'] (overwriting)
+	"""
+	
+	if fields['filter'] == "": return
+	
+	if fields['filter'] == '-':
+		filterfile = sys.stdin
+	else:
+		try:
+			filterfile = open(fields['filter'])
+		except IOError, e:
+			raise Exception("Could not open filter file %s: %e" % (fields['filter'], e.message))
+	
+	fields['filter'] = filterfile.read(4096)
 
 def add_index(dct, fieldindex):
 	"""
@@ -225,10 +280,19 @@ def parse_arguments():
 	import getopt
 	global actions, fieldmappings, dbname
 	
-	# Build option list
-	options = "".join(actions.keys() + [c+':' for c in fieldmappings.keys()]) + "h"
-	long_options = [o[0] for o in actions.values()] + \
-		[o[0]+'=' for o in fieldmappings.values()] + \
+	# Build option lists for actions
+	options, long_options = "", []
+	for action, attributes in actions.iteritems():
+		if attributes[2]:	# Argument required
+			options += action + ':'
+			long_options.append(attributes[0] + '=')
+		else:
+			options += action
+			long_options.append(attributes[0])
+	
+	# Build option lists for fields
+	options += "".join([c+':' for c in fieldmappings.keys()]) + "h"
+	long_options += [o[0]+'=' for o in fieldmappings.values()] + \
 		["--help"]
 
 	try:
@@ -253,6 +317,8 @@ def parse_arguments():
 			optionc = o[1]
 			if optionc in actions and action is None:
 				action = actions[optionc][0]
+				if actions[optionc][2]:	# Action with parameter, store in fields
+					fields[action] = a
 			elif optionc in fieldmappings:
 				fields[fieldmappings[optionc][0]] = a
 			else:
@@ -263,6 +329,8 @@ def parse_arguments():
 			loption = o[2:]
 			if loption in actions and action is None:
 				action = loption
+				if actions[action][2]:	# Action with parameter, store in fields
+					fields[action] = a
 			elif loption in fieldmappings:
 				fields[loption] = a
 			else:
@@ -308,6 +376,8 @@ def main():
 			update_account(fields)
 			print "Account updated:"
 			list_accounts(fields)
+		elif action == 'show':
+			show_field(fields)
 	except sqlite3.IntegrityError, e:
 		print >> sys.stderr, "SQL integrity error. Account does already exist? (%s)" % e.message
 		sys.exit(2)
