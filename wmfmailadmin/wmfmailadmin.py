@@ -5,9 +5,9 @@ Simple mail account maintenance script
 Written by Mark Bergsma <mark@wikimedia.org>
 """
 
-import sys, os
+import sys, os, sqlite3
 
-dbname = 'user.db'
+dbname = '/var/vmail/user.db'
 conn = None
 
 actions = {
@@ -20,14 +20,14 @@ actions = {
 longactions = {}
 
 fieldmappings = {
-	# Option: ( fieldname, description, default )
-	'e': ('email',		"E-mail address",	None),
-	'p': ('password',	"Password",			'-'),
-	'r': ('realname',	"Real name",		None),
-	'i': ('id',			"Id",				None),
-	'q': ('quota',		"Quota",			2**30/1024),
-	'a': ('active',		"Active",			True),
-	'f': ('filter',		"Filter",			None)
+	# Option: ( fieldname, description, default, explanation )
+	'e': ('email',		"E-mail address",	None,		None),
+	'p': ('password',	"Password",			'-',		"Password hash or '-' for prompting"),
+	'r': ('realname',	"Real name",		None,		None),
+	'i': ('id',			"Id",				None,		None),
+	'q': ('quota',		"Quota",			2**30/1024, None),
+	'a': ('active',		"Active",			True,		None),
+	'f': ('filter',		"Filter",			None,		None)
 }
 longmappings = {}
 
@@ -161,13 +161,13 @@ def split_email(fields):
 
 def password_input(fields):
 	"""
-	Checks if the password argument on the commandline was "-",
+	Checks if the password argument on the commandline was "-" or empty,
 	and prompts for a password if that is the case
 	"""
 	
 	global supported_hash_algorithms
 	
-	if fields['password'] != '-': return
+	if fields['password'] not in ('', '-'): return
 	
 	# Simply outsource to dovecotpw
 	pipe = os.popen('dovecotpw -s sha1', 'r')
@@ -195,7 +195,6 @@ def connect_db():
 	Creates a connection to the database
 	"""
 	
-	import sqlite3
 	global conn
 	
 	conn = sqlite3.connect(dbname)
@@ -208,7 +207,7 @@ def print_usage():
 	
 	global actions, fieldmappings
 	
-	print "Usage:", sys.argv[0], "[ACTION] [FIELDS]"
+	print "Usage:", sys.argv[0], "[ACTION] [FIELDS] [dbfile]"
 
 	print "\nActions:"
 	for a, action in actions.iteritems():
@@ -216,7 +215,7 @@ def print_usage():
 
 	print "\nFields:"
 	for f, field in fieldmappings.iteritems():
-		print "  -%s <...>   --%-10s\t%s" % (f, field[0], field[1])
+		print "  -%s <...>   --%-10s\t%s" % (f, field[0], field[3] or field[1])
 
 def parse_arguments():
 	"""
@@ -224,7 +223,7 @@ def parse_arguments():
 	"""
 	
 	import getopt
-	global actions, fieldmappings
+	global actions, fieldmappings, dbname
 	
 	# Build option list
 	options = "".join(actions.keys() + [c+':' for c in fieldmappings.keys()]) + "h"
@@ -238,6 +237,10 @@ def parse_arguments():
 		# Print help information and exit
 		print_usage()
 		sys.exit(2)
+
+	# (First, optional) argument should be dbfile
+	if len(args) > 0 and args[0] != "":
+		dbname = args[0]
 	
 	# Parse options	
 	action, fields = None, {}
@@ -266,36 +269,51 @@ def parse_arguments():
 				print_usage()
 				sys.exit(2)
 	
-	return action, fields
+	if action is None:
+		print_usage()
+		sys.exit(2)
+	else:
+		return action, fields
 
 def main():
 	"""
 	Main function
 	"""
 	
-	global longactions, longmappings
+	global longactions, longmappings, dbname
 
 	longactions, longmappings = add_index(actions, 0), add_index(fieldmappings, 0)
 	action, fields = parse_arguments()
 	
 	if action is not None:
-		connect_db()
+		try:
+			connect_db()
+		except sqlite3.OperationalError, e:
+			print >> sys.stderr, "Can't open database file %s: %s" % (dbname, e.message)
+			sys.exit(2)
 
 	# Split e-mail address into localpart and domain fields
 	if 'email' in fields: split_email(fields)
 	
-	if action == 'list':
-		list_accounts(fields)
-	elif action == 'create':
-		create_account(fields)
-		print "Account added:"
-		list_accounts(fields)
-	elif action == 'delete':
-		delete_account(fields)
-	elif action == 'update':
-		update_account(fields)
-		print "Account updated:"
-		list_accounts(fields)
+	try:
+		if action == 'list':
+			list_accounts(fields)
+		elif action == 'create':
+			create_account(fields)
+			print "Account added:"
+			list_accounts(fields)
+		elif action == 'delete':
+			delete_account(fields)
+		elif action == 'update':
+			update_account(fields)
+			print "Account updated:"
+			list_accounts(fields)
+	except sqlite3.IntegrityError, e:
+		print >> sys.stderr, "SQL integrity error. Account does already exist? (%s)" % e.message
+		sys.exit(2)
+	except Exception, e:
+		print >> sys.stderr, "Error:", e.message
+		sys.exit(2)
 
 if __name__ == "__main__":
 	main()
