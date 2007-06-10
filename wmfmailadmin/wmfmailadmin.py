@@ -7,7 +7,7 @@ Written by Mark Bergsma <mark@wikimedia.org>
 
 import sys, os, sqlite3
 
-dbname = '/var/vmail/user.db'
+dbname = '/var/vmaildb/user.db'
 conn = None
 
 actions = {
@@ -84,7 +84,7 @@ def create_account(fields):
 	require_fields( (required_fields, ), fields)
 	
 	# Set default values for fields not given
-	value_fields = ['localpart', 'domain', 'realname', 'filter']
+	value_fields = ['localpart', 'domain', 'realname', 'password', 'active', 'filter']
 	for fieldname in updateables:
 		default = longmappings[fieldname][2]
 		if fieldname not in fields:
@@ -94,7 +94,7 @@ def create_account(fields):
 				value_fields.append(fieldname)
 			else:
 				# Field is not given on the command line, and apparently not required
-				value_fields.remote(fieldname)
+				value_fields.remove(fieldname)
 				
 	# Input password if needed
 	input_password(fields)
@@ -229,7 +229,7 @@ def input_filter(fields):
 	
 	global max_filter_size
 	
-	if fields['filter'] == "": return
+	if not fields.has_key('filter') or fields['filter'] == "": return
 	
 	if fields['filter'] == '-':
 		filterfile = sys.stdin
@@ -389,7 +389,7 @@ def main():
 		elif action == 'show':
 			show_field(fields)
 	except sqlite3.IntegrityError, e:
-		print >> sys.stderr, "SQL integrity error. Account does already exist? (%s)" % e.message
+		print >> sys.stderr, "SQL integrity error. Maybe the account does already exist? (%s)" % e.message
 		sys.exit(2)
 	except Exception, e:
 		print >> sys.stderr, "Error:", e.message
