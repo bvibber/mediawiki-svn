@@ -152,4 +152,5 @@ public class IndexUpdateRecord implements Serializable {
 	public String getKey(){
 		return article.getKey();
 	}
+	
 }

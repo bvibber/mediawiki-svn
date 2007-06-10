@@ -10,15 +10,21 @@ import java.io.IOException;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
+import org.wikimedia.lsearch.beans.Article;
+import org.wikimedia.lsearch.beans.Redirect;
+import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.storage.Storage;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
@@ -160,6 +166,12 @@ public class IncrementalUpdater {
 						continue;
 					boolean hasMore = false;
 					do{
+						// fetch references for records
+						fetchReferences(records,dbname);
+						for(IndexUpdateRecord rec : records){
+							Article ar = rec.getArticle();
+							log.debug("Sending "+ar+" with rank "+ar.getReferences()+" and "+ar.getRedirects().size()+" redirects: "+ar.getRedirects());
+						}
 						// send to indexer
 						RMIMessengerClient messenger = new RMIMessengerClient(true);
 						try {
@@ -234,5 +246,35 @@ public class IncrementalUpdater {
 				} catch (InterruptedException e) { }
 			}
 		} while(daemon);
+	}
+
+	protected static void fetchReferences(ArrayList<IndexUpdateRecord> records, String dbname) throws IOException {
+		Storage store = Storage.getInstance();
+		ArrayList<Title> titles = new ArrayList<Title>();
+		for(IndexUpdateRecord rec : records){
+			if(rec.isDelete())
+				continue;
+			Article ar = rec.getArticle();
+			titles.add(ar.makeTitle());
+			if(ar.getRedirects() != null){
+				for(Redirect r : ar.getRedirects()){
+					titles.add(r.makeTitle());
+				}
+			}			
+		}
+		// fetch
+		Links links = new Links(store.getPageReferences(titles,dbname));
+		// update
+		for(IndexUpdateRecord rec : records){
+			if(rec.isDelete())
+				continue;
+			Article ar = rec.getArticle();
+			ar.setReferences(links.getLinks(ar.makeTitle().getKey()));
+			if(ar.getRedirects() != null){
+				for(Redirect r : ar.getRedirects()){
+					r.setReferences(links.getLinks(r.makeTitle().getKey()));
+				}
+			}			
+		}		
 	}
 }

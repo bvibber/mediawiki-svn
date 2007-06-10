@@ -193,6 +193,10 @@ public class Article implements Serializable  {
 		this.redirectKeywordRanks = redirectKeywordRanks;
 	}
 	
+	/** Get title object corresponding to this article */
+	public Title makeTitle(){
+		return new Title(Integer.parseInt(namespace),title);
+	}	
 	
 	
 	

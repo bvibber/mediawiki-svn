@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.importer;
+package org.wikimedia.lsearch.ranks;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -23,7 +23,7 @@ import org.wikimedia.lsearch.util.Localization;
 public class TitleReader  implements DumpWriter{
 	Page page;
 	Revision revision;
-	HashMap<String,ArticleLinks> titles = new HashMap<String,ArticleLinks>();
+	Links links = new Links();
 	protected String langCode;
 	
 	public TitleReader(String langCode){
@@ -38,10 +38,10 @@ public class TitleReader  implements DumpWriter{
 	}
 	public void writeEndPage() throws IOException {
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		titles.put(key,new ArticleLinks(0));		
+		links.add(key,0);
 	}
-	public HashMap<String,ArticleLinks> getTitles() {
-		return titles;
+	public Links getTitles() {
+		return links;
 	}
 	public void close() throws IOException {
 		// nop		

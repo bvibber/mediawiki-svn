@@ -16,6 +16,9 @@ public class Title implements java.io.Serializable {
    	 this.title = title;
     }
     
+    public String getKey(){
+   	 return namespace+":"+title;
+    }
 
     @Override
 	public String toString() {
