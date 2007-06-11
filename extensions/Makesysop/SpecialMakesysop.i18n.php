@@ -319,6 +319,10 @@ $wgMakesysopMessages['ga'] = array(
 	'already_sysop'		=> 'Is oibreoir córais é an usáideoir seo cheana féin',
 	'already_bureaucrat'	=> 'Is maorlathach é an úsáideoir seo cheana féin',
 );
+$wgMakesysopMessages['gsw'] = array(
+	'already_bureaucrat'	=> 'Selle Benutzer isch scho Bürokrat.',
+	'already_sysop'		=> 'Selle Benutzer isch scho Adminischtrator.',
+);
 $wgMakesysopMessages['he'] = array(
 	'makesysoptitle'       => 'הפוך משתמש למפעיל מערכת',
 	'makesysoptext'        => 'דף זה משמש ביורוקרטים להפיכת משתמש רגיל למפעיל מערכת. אנא הקישו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.',
@@ -405,6 +409,14 @@ $wgMakesysopMessages['id'] = array(
 	'group-steward'        => 'Steward',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => 'Project:Steward',
+);
+$wgMakesysopMessages['is'] = array(
+	'makesysop'            => 'Veita stjórnandaréttindi',
+	'makesysopname'        => 'Notandi:',
+	'makesysopok'          => '<strong>Notandanum „$1“ hefur verið veitt stjórnandastaða</strong>',
+	'makesysopsubmit'      => 'Gera að stjórnanda',
+	'makesysoptext'        => 'Kerfissíða þessi er notuð af möppudýrum til að veita venjulegum notendum stjórnendaréttindi.',
+	'setbureaucratflag'    => 'Einnig möppudýr',
 );
 $wgMakesysopMessages['it'] = array(
 	'makesysoptitle'       => "Trasforma un utente in amministratore",
@@ -930,6 +942,12 @@ $wgMakesysopMessages['sv'] = array(
 	'group-steward'        => 'Stewarder',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewarder',
+);
+$wgMakesysopMessages['tr'] = array(
+	'already_bureaucrat'   => 'Bu kullanıcı zaten bürokrat',
+	'already_sysop'        => 'Bu kullanıcı zaten yönetici',
+	'rights'               => 'Haklar:',
+	'user_rights_set'      => '<b>"$1" için kullanıcı hakları güncellendi</b>',
 );
 $wgMakesysopMessages['tt'] = array(
 	'makesysoptitle'	=> 'Äğzäne idäräçe itep quyu',
