@@ -42,12 +42,14 @@ function efMediaFunctionsWords( $lang ) {
 function efMediaFunctionsMessages() {
 	$messages = array(
 
-/**
- * English
- */
 'en' => array(
 'mediafunctions-invalid-title' => '"$1" is not a valid title',
-'mediafunctions-not-exist' => '"$1" does not exist',
+'mediafunctions-not-exist'     => '"$1" does not exist',
+),
+
+'de' => array(
+'mediafunctions-invalid-title' => '„$1“ ist kein gültiger Name',
+'mediafunctions-not-exist'     => '„$1“ ist nicht vorhanden',
 ),
 	
 	);
