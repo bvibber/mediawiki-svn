@@ -673,21 +673,21 @@ HTML
 		$ignore_dates = ! $r->getVal('lqt_archive_filter_by_date', true);
 		$s = $r->getVal('lqt_archive_start');
 		if ($s && ctype_digit($s) && strlen($s) == 6 && !$ignore_dates) {
-			$this->start = "{$s}00000000";
-			$where[] = 'thread_touched >= ' . $this->start;
+		  $this->start = new Date( "{$s}01000000" );
+			$where[] = 'thread_touched >= ' . $this->start->text();
 		}
 		$e = $r->getVal('lqt_archive_end');
 		if ($e && ctype_digit($e) && strlen($e) == 6 && !$ignore_dates) {
-			$this->end = "{$e}00000000";
-			$e += 1; // TODO addition on dates crossing years
-			$where[] = 'thread_touched < ' . "{$e}00000000";
+		  $end = new Date("{$e}01000000");
+		  $this->end = $end->nextMonth();
+			$where[] = 'thread_touched < ' . $this->end->text();
 		}
 		if ( isset($this->start) && isset($this->end) ) {
-			$annotations[] = "from $start to $end";
+			$annotations[] = "from {$this->start->text()} to {$this->end->text()}";
 		} else if (isset($this->start)) {
-			$annotations[] = "after $start";
+			$annotations[] = "after {$this->start->text()}";
 		} else if (isset($this->end)) {
-			$annotations[] = "before $end";
+			$annotations[] = "before {$this->end->text()}";
 		}
 		
 		$this->where = $where;
@@ -756,24 +756,22 @@ HTML;
 
 		$one_month = '100000000';
 		if( isset($this->start, $this->end) ) {
-		  var_dump($this->start, $this->end);
+			$older_end = $this->start->lastMonth();
+			$older_start = $older_end->moved( $this->start->delta( $this->end ) )->nextMonth();
 
-		  $older_end = bcsub($this->start,$one_month);
-		  $older_start = bcsub($older_end, bcsub($this->end, $this->start));
+			$newer_start = $this->end;
+			$newer_end = $newer_start->moved( $this->end->delta( $this->start ) )->lastMonth();
 
-		  $newer_start = bcadd($this->end, $one_month);
-		  $newer_end = bcadd($newer_start, bcsub( $this->end, $this->start ));
-
-		  var_dump($newer_start, $newer_end);
+			$older = $this->queryReplace(array(
+				     'lqt_archive_filter_by_date'=>'1',
+				     'lqt_archive_start' => substr($older_start->text(), 0, 6),
+				     'lqt_archive_end' => substr($older_end->text(), 0, 6) ));
+			$newer = $this->queryReplace(array(
+				     'lqt_archive_filter_by_date'=>'1',
+				     'lqt_archive_start' => substr($newer_start->text(), 0, 6),
+				     'lqt_archive_end' => substr($newer_end->text(), 0, 6) ));
+			
 		}
-
-		$older = $this->queryReplace(array('lqt_archive_filter_by_date'=>'1',
-			     'lqt_archive_start' => substr($older_start, 0, 6),
-			     'lqt_archive_end' => substr($older_end, 0, 6) ));
-		$newer = $this->queryReplace(array('lqt_archive_filter_by_date'=>'1',
-			     'lqt_archive_start' => substr($newer_start, 0, 6),
-			     'lqt_archive_end' => substr($newer_end, 0, 6) ));
-		
 		
 		$this->output->addHTML(<<<HTML
 <form id="lqt_archive_search_form" action="{$this->title->getLocalURL()}">

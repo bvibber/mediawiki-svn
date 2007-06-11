@@ -20,15 +20,38 @@ class Date {
 		$this->second = intval( substr( $text, 12, 2 ) );
 	}
 	function lastMonth() {
-		$d = clone $this;
-		$d->month -= 1;
-		return $d;
+	  return $this->moved('-1 month');
+	}
+	function nextMonth() {
+	  return $this->moved('+1 month');
+	}
+	function moved($str) {
+	  $d = new DateTime($this->text());
+	  $d->modify($str);
+	  return new Date($d->format('YmdHis'));
 	}
 /*	function monthString() {
 		return sprintf( '%04d%02d', $this->year, $this->month );
 	}*/
 	static function monthString($text) {
 		return substr($text, 0, 6);
+	}
+
+	function delta( $o ) {
+	  $t = clone $this;
+	  $els = array('year', 'month', 'day', 'hour', 'minute', 'second');
+	  $deltas = array();
+	  foreach ($els as $e) {
+	    $deltas[$e] = $t->$e - $o->$e;
+	    $t->$e +=     $t->$e - $o->$e;
+	  }
+	  
+	  // format in style of DateTime::modify().
+	  $result = "";
+	  foreach( $deltas as $name => $val ) {
+	    $result .= "$val $name ";
+	  }
+	  return $result;
 	}
 	static function beginningOfMonth($yyyymm) { return $yyyymm . '00000000'; }
 	static function endOfMonth($yyyymm) { return $yyyymm . '31235959'; }
@@ -40,9 +63,7 @@ class Date {
 		return new Date(wfTimestampNow());
 	}
 	function nDaysAgo($n) {
-		$d = new DateTime($this->text());
-		$d->modify("-$n days");
-		return new Date( $d->format('YmdHis') );
+	  return $this->moved("-$n days");
 	}
 	function midnight() {
 		$d = clone $this;
