@@ -18,8 +18,7 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 $originalDir = getcwd();
@@ -27,8 +26,7 @@ $originalDir = getcwd();
 $optionsWithArgs = array( 'pagelist', 'start', 'end' );
 
 require_once( 'commandLine.inc' );
-require_once( 'SpecialExport.php' );
-require_once( 'maintenance/backup.inc' );
+require_once( 'backup.inc' );
 
 $dumper = new BackupDumper( $argv );
 
@@ -57,12 +55,12 @@ if( isset( $options['end'] ) ) {
 $dumper->skipHeader = isset( $options['skip-header'] );
 $dumper->skipFooter = isset( $options['skip-footer'] );
 
-$textMode = isset( $options['stub'] ) ? MW_EXPORT_STUB : MW_EXPORT_TEXT;
+$textMode = isset( $options['stub'] ) ? WikiExporter::STUB : WikiExporter::TEXT;
 
 if( isset( $options['full'] ) ) {
-	$dumper->dump( MW_EXPORT_FULL, $textMode );
+	$dumper->dump( WikiExporter::FULL, $textMode );
 } elseif( isset( $options['current'] ) ) {
-	$dumper->dump( MW_EXPORT_CURRENT, $textMode );
+	$dumper->dump( WikiExporter::CURRENT, $textMode );
 } else {
 	$dumper->progress( <<<END
 This script dumps the wiki page database into an XML interchange wrapper

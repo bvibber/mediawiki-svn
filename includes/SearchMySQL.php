@@ -14,20 +14,14 @@
 #
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
-# 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 # http://www.gnu.org/copyleft/gpl.html
 
 /**
  * Search engine hook base class for MySQL.
  * Specific bits for MySQL 3 and 4 variants are in child classes.
- * @package MediaWiki
- * @subpackage Search
+ * @addtogroup Search
  */
-
-/** */
-require_once( 'SearchEngine.php' );
-
-/** @package MediaWiki */
 class SearchMySQL extends SearchEngine {
 	/**
 	 * Perform a full text search query and return a result set.
@@ -57,7 +51,7 @@ class SearchMySQL extends SearchEngine {
 	/**
 	 * Return a partial WHERE clause to exclude redirects, if so set
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function queryRedirect() {
 		if( $this->showRedirects ) {
@@ -70,7 +64,7 @@ class SearchMySQL extends SearchEngine {
 	/**
 	 * Return a partial WHERE clause to limit the search to the given namespaces
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function queryNamespaces() {
 		$namespaces = implode( ',', $this->namespaces );
@@ -83,7 +77,7 @@ class SearchMySQL extends SearchEngine {
 	/**
 	 * Return a LIMIT clause to limit results on the query.
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function queryLimit() {
 		return $this->db->limitResult( '', $this->limit, $this->offset );
@@ -93,7 +87,7 @@ class SearchMySQL extends SearchEngine {
 	 * Does not do anything for generic search engine
 	 * subclasses may define this though
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function queryRanking( $filteredTerm, $fulltext ) {
 		return '';
@@ -104,7 +98,7 @@ class SearchMySQL extends SearchEngine {
 	 * The guts shoulds be constructed in queryMain()
 	 * @param string $filteredTerm
 	 * @param bool $fulltext
-	 * @access private
+	 * @private
 	 */
 	function getQuery( $filteredTerm, $fulltext ) {
 		return $this->queryMain( $filteredTerm, $fulltext ) . ' ' .
@@ -133,24 +127,15 @@ class SearchMySQL extends SearchEngine {
 	 * @param string $filteredTerm
 	 * @param bool $fulltext
 	 * @return string
-	 * @access private
+	 * @private
 	 */
 	function queryMain( $filteredTerm, $fulltext ) {
-		global $wgArticleLanguage;//added by gkpr
 		$match = $this->parseQuery( $filteredTerm, $fulltext );
 		$page        = $this->db->tableName( 'page' );
-		$language = $this->db->tableExists('language') && $this->db->fieldExists('page', 'language_id') ? $this->db->tableName( 'language' ) : '';
 		$searchindex = $this->db->tableName( 'searchindex' );
-		if (!empty($language)) {
-			$qry = !empty($wgArticleLanguage) ? " AND  " . $page . ".language_id=$language.language_id AND $language.wikimedia_key='$wgArticleLanguage'" : '';//gkpr
-			return 'SELECT page_id, page_namespace, page_title ' .
-				"FROM $page,$searchindex,$language" .
-				'WHERE page_id=si_page AND ' . $match . $qry;
-		} else {
-			return 'SELECT page_id, page_namespace, page_title ' .
-				"FROM $page,$searchindex " .
-				'WHERE page_id=si_page AND ' . $match;
-		}
+		return 'SELECT page_id, page_namespace, page_title ' .
+			"FROM $page,$searchindex " .
+			'WHERE page_id=si_page AND ' . $match;
 	}
 
 	/**
@@ -162,7 +147,7 @@ class SearchMySQL extends SearchEngine {
 	 * @param string $text
 	 */
 	function update( $id, $title, $text ) {
-		$dbw=& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->replace( 'searchindex',
 			array( 'si_page' ),
 			array(
@@ -180,7 +165,7 @@ class SearchMySQL extends SearchEngine {
 	 * @param string $title
 	 */
     function updateTitle( $id, $title ) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 
 		$dbw->update( 'searchindex',
 			array( 'si_title' => $title ),
@@ -190,7 +175,9 @@ class SearchMySQL extends SearchEngine {
 	}
 }
 
-/** @package MediaWiki */
+/**
+ * @addtogroup Search
+ */
 class MySQLSearchResultSet extends SearchResultSet {
 	function MySQLSearchResultSet( $resultSet, $terms ) {
 		$this->mResultSet = $resultSet;
@@ -212,6 +199,10 @@ class MySQLSearchResultSet extends SearchResultSet {
 		} else {
 			return new SearchResult( $row );
 		}
+	}
+	
+	function free() {
+		$this->mResultSet->free();
 	}
 }
 

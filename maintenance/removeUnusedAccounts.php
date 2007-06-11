@@ -4,8 +4,7 @@
  * Remove unused user accounts from the database
  * An unused account is one which has made no edits
  *
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  * @author Rob Church <robchur@gmail.com>
  */
 
@@ -27,7 +26,7 @@ if( isset( $options['help'] ) ) {
 # Do an initial scan for inactive accounts and report the result
 echo( "Checking for unused user accounts...\n" );
 $del = array();
-$dbr =& wfGetDB( DB_SLAVE );
+$dbr = wfGetDB( DB_SLAVE );
 $res = $dbr->select( 'user', array( 'user_id', 'user_name' ), '', $fname );
 while( $row = $dbr->fetchObject( $res ) ) {
 	# Check the account, but ignore it if it's the primary administrator
@@ -43,10 +42,12 @@ echo( "...found {$count}.\n" );
 # If required, go back and delete each marked account
 if( $count > 0 && isset( $options['delete'] ) ) {
 	echo( "\nDeleting inactive accounts..." );
-	$dbw =& wfGetDB( DB_MASTER );
-	#$set = implode( ',', $del );
+	$dbw = wfGetDB( DB_MASTER );
 	$dbw->delete( 'user', array( 'user_id' => $del ), $fname );
 	echo( "done.\n" );
+	# Update the site_stats.ss_users field
+	$users = $dbw->selectField( 'user', 'COUNT(*)', array(), $fname );
+	$dbw->update( 'site_stats', array( 'ss_users' => $users ), array( 'ss_row_id' => 1 ), $fname );
 } else {
 	if( $count > 0 )
 		echo( "\nRun the script again with --delete to remove them from the database.\n" );

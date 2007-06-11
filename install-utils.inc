@@ -14,25 +14,21 @@ function install_version_checks() {
 		echo "PHP 5.0.0 or higher is required. ABORTING.\n";
 		die( -1 );
 	}
-
-	$gotdatabase = 0;
-	## XXX We should quiet the warnings thrown here
-	if (extension_loaded('mysql') or dl('mysql.so')) {
-		$gotdatabase = 'mysql';
-	}
-	else if (extension_loaded('pgsql') or dl('pgsql.so')) {
-		$gotdatabase = 'pg';
-	}
-	if (!$gotdatabase) {
-		print "Could not load the MySQL or the PostgreSQL driver! Please compile ".
-			  "php with either --with-mysql or --with-pgsql, or install the mysql.so or pg.so module.\n";
-		exit;
+	
+	// Test for PHP bug which breaks PHP 5.0.x on 64-bit...
+	// As of 1.8 this breaks lots of common operations instead
+	// of just some rare ones like export.
+	$borked = str_replace( 'a', 'b', array( -1 => -1 ) );
+	if( !isset( $borked[-1] ) ) {
+		echo "PHP 5.0.x is buggy on your 64-bit system; you must upgrade to PHP 5.1.x\n" .
+			"or higher. ABORTING. (http://bugs.php.net/bug.php?id=34879 for details)\n";
+		die( -1 );
 	}
 
 	global $wgCommandLineMode;
 	$wgCommandLineMode = true;
 	umask( 000 );
-	set_time_limit( 0 );
+	@set_time_limit( 0 );
 }
 
 function copyfile( $sdir, $name, $ddir, $perms = 0664 ) {
@@ -65,12 +61,9 @@ function copydirectory( $source, $dest ) {
 }
 
 function readconsole( $prompt = '' ) {
-	static $isatty = null, $fp = null;
-	if ( is_null( $fp ) ) {
-		$fp = fopen( 'php://stdin', 'r' );
-	}
+	static $isatty = null;
 	if ( is_null( $isatty ) ) {
-		if ( !function_exists( 'posix_isatty' ) || posix_isatty( $fp ) ) {
+		if ( !function_exists( 'posix_isatty' ) || posix_isatty( 0 /*STDIN*/ ) ) {
 			$isatty = true;
 		} else {
 			$isatty = false;
@@ -83,10 +76,10 @@ function readconsole( $prompt = '' ) {
 		if ( $isatty ) {
 			print $prompt;
 		}
-		if ( feof( $fp ) ) {
+		if ( feof( STDIN ) ) {
 			return false;
 		}
-		$st = fgets($fp, 1024);
+		$st = fgets(STDIN, 1024);
 		if ($st === false) return false;
 		$resp = trim( $st );
 		return $resp;
@@ -101,10 +94,10 @@ function dbsource( $fname, $db = false ) {
 		// Try $wgDatabase, which is used in the install and update scripts
 		global $wgDatabase;
 		if ( isset( $wgDatabase ) ) {
-			$db =& $wgDatabase;
+			$db = $wgDatabase;
 		} else {
 			// No? Well, we must be outside of those scripts, so use the standard method
-			$db =& wfGetDB( DB_MASTER );
+			$db = wfGetDB( DB_MASTER );
 		}
 	}
 	$error = $db->sourceFile( $fname );
@@ -114,47 +107,19 @@ function dbsource( $fname, $db = false ) {
 	}
 }
 
-# Obsolete, use Database::fieldExists()
-function field_exists( $table, $field ) {
-	$fname = 'Update script: field_exists';
-	$db =& wfGetDB( DB_SLAVE );
-	$res = $db->query( "DESCRIBE $table", $fname );
-	$found = false;
-
-	while ( $row = $db->fetchObject( $res ) ) {
-		if ( $row->Field == $field ) {
-			$found = true;
-			break;
-		}
-	}
-	return $found;
-}
-
-# Obsolete Database::tableExists()
-function table_exists( $db ) {
-	global $wgDBname;
-	$res = mysql_list_tables( $wgDBname );
-	if( !$res ) {
-		echo "** " . mysql_error() . "\n";
-		return false;
-	}
-	for( $i = mysql_num_rows( $res ) - 1; $i--; $i > 0 ) {
-		if( mysql_tablename( $res, $i ) == $db ) return true;
-	}
-	return false;
-}
-
-# Obsolete, use Database:fieldInfo()
-function field_info( $table, $field ) {
-	$res = mysql_query( "SELECT * FROM $table LIMIT 1" );
-	$n = mysql_num_fields( $res );
-	for( $i = 0; $i < $n; $i++ ) {
-		$meta = mysql_fetch_field( $res, $i );
-		if( $field == $meta->name ) {
-			return $meta;
-		}
-	}
-	return false;
+/**
+ * Get the value of session.save_path
+ *
+ * Per http://uk.php.net/manual/en/ref.session.php#ini.session.save-path,
+ * this might have some additional preceding parts which need to be
+ * ditched
+ *
+ * @return string
+ */
+function mw_get_session_save_path() {
+	$path = ini_get( 'session.save_path' );
+	$path = substr( $path, strrpos( $path, ';' ) );
+	return $path;
 }
 
 ?>

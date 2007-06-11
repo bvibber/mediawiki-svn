@@ -1,7 +1,6 @@
 <?php
 /**
- * @package MediaWiki
- * @subpackage Cache
+ * @addtogroup Cache
  */
 
 /**
@@ -9,8 +8,7 @@
  * It acts as a memcached server with no RAM, that is, all objects are
  * cleared the moment they are set. All set operations succeed and all
  * get operations return null.
- * @package MediaWiki
- * @subpackage Cache
+ * @addtogroup Cache
  */
 class FakeMemCachedClient {
 	function add ($key, $val, $exp = 0) { return true; }
@@ -69,10 +67,12 @@ function &wfGetCache( $inputType ) {
 	} elseif ( $type == CACHE_ACCEL ) {
 		if ( !array_key_exists( CACHE_ACCEL, $wgCaches ) ) {
 			if ( function_exists( 'eaccelerator_get' ) ) {
-				require_once( 'BagOStuff.php' );
 				$wgCaches[CACHE_ACCEL] = new eAccelBagOStuff;
+			} elseif ( function_exists( 'apc_fetch') ) {
+				$wgCaches[CACHE_ACCEL] = new APCBagOStuff;
+			} elseif( function_exists( 'xcache_get' ) ) {
+				$wgCaches[CACHE_ACCEL] = new XCacheBagOStuff();
 			} elseif ( function_exists( 'mmcache_get' ) ) {
-				require_once( 'BagOStuff.php' );
 				$wgCaches[CACHE_ACCEL] = new TurckBagOStuff;
 			} else {
 				$wgCaches[CACHE_ACCEL] = false;
@@ -81,11 +81,15 @@ function &wfGetCache( $inputType ) {
 		if ( $wgCaches[CACHE_ACCEL] !== false ) {
 			$cache =& $wgCaches[CACHE_ACCEL];
 		}
+	} elseif ( $type == CACHE_DBA ) {
+		if ( !array_key_exists( CACHE_DBA, $wgCaches ) ) {
+			$wgCaches[CACHE_DBA] = new DBABagOStuff;
+		}
+		$cache =& $wgCaches[CACHE_DBA];
 	}
-
+	
 	if ( $type == CACHE_DB || ( $inputType == CACHE_ANYTHING && $cache === false ) ) {
 		if ( !array_key_exists( CACHE_DB, $wgCaches ) ) {
-			require_once( 'BagOStuff.php' );
 			$wgCaches[CACHE_DB] = new MediaWikiBagOStuff('objectcache');
 		}
 		$cache =& $wgCaches[CACHE_DB];

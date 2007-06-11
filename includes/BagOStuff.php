@@ -19,7 +19,6 @@
 # http://www.gnu.org/copyleft/gpl.html
 /**
  *
- * @package MediaWiki
  */
 
 /**
@@ -29,16 +28,16 @@
  * the PHP memcached client.
  *
  * backends for local hash array and SQL table included:
- * $bag = new HashBagOStuff();
- * $bag = new MysqlBagOStuff($tablename); # connect to db first
+ * <code>
+ *   $bag = new HashBagOStuff();
+ *   $bag = new MysqlBagOStuff($tablename); # connect to db first
+ * </code>
  *
- * @package MediaWiki
- * @abstract
  */
 class BagOStuff {
 	var $debugmode;
 
-	function BagOStuff() {
+	function __construct() {
 		$this->set_debug( false );
 	}
 
@@ -147,13 +146,23 @@ class BagOStuff {
 		if($this->debugmode)
 			wfDebug("BagOStuff debug: $text\n");
 	}
+
+	/**
+	 * Convert an optionally relative time to an absolute time
+	 */
+	static function convertExpiry( $exptime ) {
+		if(($exptime != 0) && ($exptime < 3600*24*30)) {
+			return time() + $exptime;
+		} else {
+			return $exptime;
+		}
+	}
 }
 
 
 /**
  * Functional versions!
  * @todo document
- * @package MediaWiki
  */
 class HashBagOStuff extends BagOStuff {
 	/*
@@ -163,7 +172,7 @@ class HashBagOStuff extends BagOStuff {
 	*/
 	var $bag;
 
-	function HashBagOStuff() {
+	function __construct() {
 		$this->bag = array();
 	}
 
@@ -184,9 +193,7 @@ class HashBagOStuff extends BagOStuff {
 	}
 
 	function set($key,$value,$exptime=0) {
-		if(($exptime != 0) && ($exptime < 3600*24*30))
-			$exptime = time() + $exptime;
-		$this->bag[$key] = array( $value, $exptime );
+		$this->bag[$key] = array( $value, BagOStuff::convertExpiry( $exptime ) );
 	}
 
 	function delete($key,$time=0) {
@@ -210,13 +217,12 @@ CREATE TABLE objectcache (
 /**
  * @todo document
  * @abstract
- * @package MediaWiki
  */
-class SqlBagOStuff extends BagOStuff {
+abstract class SqlBagOStuff extends BagOStuff {
 	var $table;
 	var $lastexpireall = 0;
 
-	function SqlBagOStuff($tablename = 'objectcache') {
+	function __construct($tablename = 'objectcache') {
 		$this->table = $tablename;
 	}
 
@@ -232,7 +238,14 @@ class SqlBagOStuff extends BagOStuff {
 		}
 		if($row=$this->_fetchobject($res)) {
 			$this->_debug("get: retrieved data; exp time is " . $row->exptime);
-			return $this->_unserialize($row->value);
+			if ( $row->exptime != $this->_maxdatetime() && 
+			  wfTimestamp( TS_UNIX, $row->exptime ) < time() ) 
+			{
+				$this->_debug("get: key has expired, deleting");
+				$this->delete($key);
+				return false;
+			}
+			return $this->_unserialize($this->_blobdecode($row->value));
 		} else {
 			$this->_debug('get: no matching rows');
 		}
@@ -240,12 +253,15 @@ class SqlBagOStuff extends BagOStuff {
 	}
 
 	function set($key,$value,$exptime=0) {
+		if ( wfReadOnly() ) {
+			return false;
+		}
 		$exptime = intval($exptime);
 		if($exptime < 0) $exptime = 0;
 		if($exptime == 0) {
 			$exp = $this->_maxdatetime();
 		} else {
-			if($exptime < 3600*24*30)
+			if($exptime < 3.16e8) # ~10 years
 				$exptime += time();
 			$exp = $this->_fromunixtime($exptime);
 		}
@@ -259,6 +275,9 @@ class SqlBagOStuff extends BagOStuff {
 	}
 
 	function delete($key,$time=0) {
+		if ( wfReadOnly() ) {
+			return false;
+		}
 		$this->_query(
 			"DELETE FROM $0 WHERE keyname='$1'", $key );
 		return true; /* ? */
@@ -292,16 +311,12 @@ class SqlBagOStuff extends BagOStuff {
 	function _blobencode($str) {
 		return $str;
 	}
-	function _doinsert($table, $vals) {
-		wfDie( 'abstract function SqlBagOStuff::_doinsert() must be defined' );
-	}
-	function _doquery($sql) {
-		wfDie( 'abstract function SqlBagOStuff::_doquery() must be defined' );
+	function _blobdecode($str) {
+		return $str;
 	}
 
-	function _fetchrow($res) {
-		wfDie( 'abstract function SqlBagOStuff::_fetchrow() must be defined' );
-	}
+	abstract function _doinsert($table, $vals);
+	abstract function _doquery($sql);
 
 	function _freeresult($result) {
 		/* stub */
@@ -313,13 +328,8 @@ class SqlBagOStuff extends BagOStuff {
 		return 'unknown error';
 	}
 
-	function _maxdatetime() {
-		wfDie( 'abstract function SqlBagOStuff::_maxdatetime() must be defined' );
-	}
-
-	function _fromunixtime() {
-		wfDie( 'abstract function SqlBagOStuff::_fromunixtime() must be defined' );
-	}
+	abstract function _maxdatetime();
+	abstract function _fromunixtime($ts);
 
 	function garbageCollect() {
 		/* Ignore 99% of requests */
@@ -335,12 +345,18 @@ class SqlBagOStuff extends BagOStuff {
 
 	function expireall() {
 		/* Remove any items that have expired */
+		if ( wfReadOnly() ) {
+			return false;
+		}
 		$now = $this->_fromunixtime( time() );
 		$this->_query( "DELETE FROM $0 WHERE exptime < '$now'" );
 	}
 
 	function deleteall() {
 		/* Clear *all* items from cache table */
+		if ( wfReadOnly() ) {
+			return false;
+		}
 		$this->_query( "DELETE FROM $0" );
 	}
 
@@ -380,54 +396,61 @@ class SqlBagOStuff extends BagOStuff {
 
 /**
  * @todo document
- * @package MediaWiki
  */
 class MediaWikiBagOStuff extends SqlBagOStuff {
 	var $tableInitialised = false;
 
 	function _doquery($sql) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->query($sql, 'MediaWikiBagOStuff::_doquery');
 	}
 	function _doinsert($t, $v) {
-		$dbw =& wfGetDB( DB_MASTER );
-		return $dbw->insert($t, $v, 'MediaWikiBagOStuff::_doinsert');
+		$dbw = wfGetDB( DB_MASTER );
+		return $dbw->insert($t, $v, 'MediaWikiBagOStuff::_doinsert',
+			array( 'IGNORE' ) );
 	}
 	function _fetchobject($result) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->fetchObject($result);
 	}
 	function _freeresult($result) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->freeResult($result);
 	}
 	function _dberror($result) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->lastError();
 	}
 	function _maxdatetime() {
-		$dbw =& wfGetDB(DB_MASTER);
-		return $dbw->timestamp('9999-12-31 12:59:59');
+		if ( time() > 0x7fffffff ) {
+			return $this->_fromunixtime( 1<<62 );
+		} else {
+			return $this->_fromunixtime( 0x7fffffff );
+		}
 	}
 	function _fromunixtime($ts) {
-		$dbw =& wfGetDB(DB_MASTER);
+		$dbw = wfGetDB(DB_MASTER);
 		return $dbw->timestamp($ts);
 	}
 	function _strencode($s) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->strencode($s);
 	}
 	function _blobencode($s) {
-		$dbw =& wfGetDB( DB_MASTER );
+		$dbw = wfGetDB( DB_MASTER );
 		return $dbw->encodeBlob($s);
+	}
+	function _blobdecode($s) {
+		$dbw = wfGetDB( DB_MASTER );
+		return $dbw->decodeBlob($s);
 	}
 	function getTableName() {
 		if ( !$this->tableInitialised ) {
-			$dbw =& wfGetDB( DB_MASTER );
+			$dbw = wfGetDB( DB_MASTER );
 			/* This is actually a hack, we should be able
 			   to use Language classes here... or not */
 			if (!$dbw)
-				wfDie("Could not connect to database");
+				throw new MWException("Could not connect to database");
 			$this->table = $dbw->tableName( $this->table );
 			$this->tableInitialised = true;
 		}
@@ -448,7 +471,6 @@ class MediaWikiBagOStuff extends SqlBagOStuff {
  * that Turck's serializer is faster, so a possible future extension would be
  * to use it for arrays but not for objects.
  *
- * @package MediaWiki
  */
 class TurckBagOStuff extends BagOStuff {
 	function get($key) {
@@ -481,12 +503,36 @@ class TurckBagOStuff extends BagOStuff {
 }
 
 /**
+ * This is a wrapper for APC's shared memory functions
+ *
+ */
+class APCBagOStuff extends BagOStuff {
+	function get($key) {
+		$val = apc_fetch($key);
+		if ( is_string( $val ) ) {
+			$val = unserialize( $val );
+		}
+		return $val;
+	}
+	
+	function set($key, $value, $exptime=0) {
+		apc_store($key, serialize($value), $exptime);
+		return true;
+	}
+	
+	function delete($key, $time=0) {
+		apc_delete($key);
+		return true;
+	}
+}
+
+
+/**
  * This is a wrapper for eAccelerator's shared memory functions.
  *
  * This is basically identical to the Turck MMCache version,
  * mostly because eAccelerator is based on Turck MMCache.
  *
- * @package MediaWiki
  */
 class eAccelBagOStuff extends BagOStuff {
 	function get($key) {
@@ -517,4 +563,185 @@ class eAccelBagOStuff extends BagOStuff {
 		return true;
 	}
 }
+
+/**
+ * Wrapper for XCache object caching functions; identical interface
+ * to the APC wrapper
+ */
+class XCacheBagOStuff extends APCBagOStuff {
+
+	/**
+	 * Get a value from the XCache object cache
+	 *
+	 * @param string $key Cache key
+	 * @return mixed
+	 */
+	public function get( $key ) {
+		$val = xcache_get( $key );
+		if( is_string( $val ) )
+			$val = unserialize( $val );
+		return $val;
+	}
+	
+	/**
+	 * Store a value in the XCache object cache
+	 *
+	 * @param string $key Cache key
+	 * @param mixed $value Object to store
+	 * @param int $expire Expiration time
+	 * @return bool
+	 */
+	public function set( $key, $value, $expire = 0 ) {
+		xcache_set( $key, serialize( $value ), $expire );
+		return true;
+	}
+	
+	/**
+	 * Remove a value from the XCache object cache
+	 *
+	 * @param string $key Cache key
+	 * @param int $time Not used in this implementation
+	 * @return bool
+	 */
+	public function delete( $key, $time = 0 ) {
+		xcache_unset( $key );
+		return true;
+	}
+	
+}
+
+/**
+ * @todo document
+ */
+class DBABagOStuff extends BagOStuff {
+	var $mHandler, $mFile, $mReader, $mWriter, $mDisabled;
+	
+	function __construct( $handler = 'db3', $dir = false ) {
+		if ( $dir === false ) {
+			global $wgTmpDirectory;
+			$dir = $wgTmpDirectory;
+		}
+		$this->mFile = "$dir/mw-cache-" . wfWikiID();
+		$this->mFile .= '.db';
+		$this->mHandler = $handler;
+	}
+
+	/**
+	 * Encode value and expiry for storage
+	 */
+	function encode( $value, $expiry ) {
+		# Convert to absolute time
+		$expiry = BagOStuff::convertExpiry( $expiry );
+		return sprintf( '%010u', intval( $expiry ) ) . ' ' . serialize( $value );
+	}
+
+	/**
+	 * @return list containing value first and expiry second
+	 */
+	function decode( $blob ) {
+		if ( !is_string( $blob ) ) {
+			return array( null, 0 );
+		} else {
+			return array( 
+				unserialize( substr( $blob, 11 ) ),
+				intval( substr( $blob, 0, 10 ) )
+		   	);
+		}
+	}
+
+	function getReader() {
+		if ( file_exists( $this->mFile ) ) {
+			$handle = dba_open( $this->mFile, 'rl', $this->mHandler );
+		} else {
+			$handle = $this->getWriter();
+		}
+		if ( !$handle ) {
+			wfDebug( "Unable to open DBA cache file {$this->mFile}\n" );
+		}
+		return $handle;
+	}
+
+	function getWriter() {
+		$handle = dba_open( $this->mFile, 'cl', $this->mHandler );
+		if ( !$handle ) {
+			wfDebug( "Unable to open DBA cache file {$this->mFile}\n" );
+		}
+		return $handle;
+	}
+
+	function get( $key ) {
+		wfProfileIn( __METHOD__ );
+		wfDebug( __METHOD__."($key)\n" );
+		$handle = $this->getReader();
+		if ( !$handle ) {
+			return null;
+		}
+		$val = dba_fetch( $key, $handle );
+		list( $val, $expiry ) = $this->decode( $val );
+		# Must close ASAP because locks are held
+		dba_close( $handle );
+
+		if ( !is_null( $val ) && $expiry && $expiry < time() ) {
+			# Key is expired, delete it
+			$handle = $this->getWriter();
+			dba_delete( $key, $handle );
+			dba_close( $handle );
+			wfDebug( __METHOD__.": $key expired\n" );
+			$val = null;
+		}
+		wfProfileOut( __METHOD__ );
+		return $val;
+	}
+
+	function set( $key, $value, $exptime=0 ) {
+		wfProfileIn( __METHOD__ );
+		wfDebug( __METHOD__."($key)\n" );
+		$blob = $this->encode( $value, $exptime );
+		$handle = $this->getWriter();
+		if ( !$handle ) {
+			return false;
+		}
+		$ret = dba_replace( $key, $blob, $handle );
+		dba_close( $handle );
+		wfProfileOut( __METHOD__ );
+		return $ret;
+	}
+
+	function delete( $key, $time = 0 ) {
+		wfProfileIn( __METHOD__ );
+		$handle = $this->getWriter();
+		if ( !$handle ) {
+			return false;
+		}
+		$ret = dba_delete( $key, $handle );
+		dba_close( $handle );
+		wfProfileOut( __METHOD__ );
+		return $ret;
+	}
+
+	function add( $key, $value, $exptime = 0 ) {
+		wfProfileIn( __METHOD__ );
+		$blob = $this->encode( $value, $exptime );
+		$handle = $this->getWriter();
+		if ( !$handle ) {
+			return false;
+		}
+		$ret = dba_insert( $key, $blob, $handle );
+		# Insert failed, check to see if it failed due to an expired key
+		if ( !$ret ) {
+			list( $value, $expiry ) = $this->decode( dba_fetch( $key, $handle ) );
+			if ( $expiry < time() ) {
+				# Yes expired, delete and try again
+				dba_delete( $key, $handle );
+				$ret = dba_insert( $key, $blob, $handle );
+				# This time if it failed then it will be handled by the caller like any other race
+			}
+		}
+
+		dba_close( $handle );
+		wfProfileOut( __METHOD__ );
+		return $ret;
+	}
+}
+	
 ?>

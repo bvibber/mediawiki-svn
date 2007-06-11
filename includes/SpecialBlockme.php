@@ -1,21 +1,19 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
  *
  */
-function wfSpecialBlockme()
-{
-	global $wgBlockOpenProxies, $wgOut, $wgProxyKey;
+function wfSpecialBlockme() {
+	global $wgRequest, $wgBlockOpenProxies, $wgOut, $wgProxyKey;
 
 	$ip = wfGetIP();
-
-	if ( !$wgBlockOpenProxies || $_REQUEST['ip'] != md5( $ip . $wgProxyKey ) ) {
-		$wgOut->addWikiText( wfMsg( "disabled" ) );
+	
+	if( !$wgBlockOpenProxies || $wgRequest->getText( 'ip' ) != md5( $ip . $wgProxyKey ) ) {
+		$wgOut->addWikiText( wfMsg( 'disabled' ) );
 		return;
 	}
 

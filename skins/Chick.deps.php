@@ -5,6 +5,9 @@
 // changed on a subsequent page view.
 // see http://mail.wikipedia.org/pipermail/wikitech-l/2006-January/033660.html
 
-require_once('includes/SkinTemplate.php');
-require_once('MonoBook.php');
+if ( ! defined( 'MEDIAWIKI' ) )
+	die( 1 );
+
+require_once( dirname( dirname( __FILE__ ) ) . '/includes/SkinTemplate.php');
+require_once( dirname(__FILE__) . '/MonoBook.php' );
 ?>

@@ -20,51 +20,40 @@
 /**
  * @todo Make this more independent of the configuration (and if possible the database)
  * @todo document
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 /** */
-$options = array( 'quick', 'color', 'quiet', 'help' );
+$options = array( 'quick', 'color', 'quiet', 'help', 'show-output', 'record' );
 $optionsWithArgs = array( 'regex' );
 
 require_once( 'commandLine.inc' );
-require_once( "$IP/includes/ObjectCache.php" );
-require_once( "$IP/includes/BagOStuff.php" );
-require_once( "$IP/languages/LanguageUtf8.php" );
-require_once( "$IP/includes/Hooks.php" );
 require_once( "$IP/maintenance/parserTestsParserHook.php" );
 require_once( "$IP/maintenance/parserTestsStaticParserHook.php" );
 require_once( "$IP/maintenance/parserTestsParserTime.php" );
 
 /**
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 class ParserTest {
 	/**
 	 * boolean $color whereas output should be colorized
-	 * @private
 	 */
-	var $color;
+	private $color;
 
 	/**
-	 * boolean $lightcolor whereas output should use light colors
-	 * @private
+	 * boolean $showOutput Show test output
 	 */
-	var $lightcolor;
+	private $showOutput;
 
 	/**
 	 * Sets terminal colorization and diff/quick modes depending on OS and
 	 * command-line options (--color and --quick).
-	 *
-	 * @public
 	 */
-	function ParserTest() {
+	public function ParserTest() {
 		global $options;
 
 		# Only colorize output if stdout is a terminal.
-		$this->lightcolor = false;
 		$this->color = !wfIsWindows() && posix_isatty(1);
 
 		if( isset( $options['color'] ) ) {
@@ -72,19 +61,25 @@ class ParserTest {
 			case 'no':
 				$this->color = false;
 				break;
-			case 'light':
-				$this->lightcolor = true;
-				# Fall through
 			case 'yes':
 			default:
 				$this->color = true;
 				break;
 			}
 		}
+		$this->term = $this->color
+			? new AnsiTermColorer()
+			: new DummyTermColorer();
 
 		$this->showDiffs = !isset( $options['quick'] );
+		$this->showProgress = !isset( $options['quiet'] );
+		$this->showFailure = !(
+			isset( $options['quiet'] )
+			&& ( isset( $options['record'] )
+				|| isset( $options['compare'] ) ) ); // redundant output
+		
+		$this->showOutput = isset( $options['show-output'] );
 
-		$this->quiet = isset( $options['quiet'] );
 
 		if (isset($options['regex'])) {
 			$this->regex = $options['regex'];
@@ -92,13 +87,23 @@ class ParserTest {
 			# Matches anything
 			$this->regex = '';
 		}
+
+		if( isset( $options['record'] ) ) {
+			$this->recorder = new DbTestRecorder( $this->term );
+		} elseif( isset( $options['compare'] ) ) {
+			$this->recorder = new DbTestPreviewer( $this->term );
+		} else {
+			$this->recorder = new TestRecorder( $this->term );
+		}
+
+		$this->hooks = array();
+		$this->functionHooks = array();
 	}
 
 	/**
 	 * Remove last character if it is a newline
-	 * @private
 	 */
-	function chomp($s) {
+	private function chomp($s) {
 		if (substr($s, -1) === "\n") {
 			return substr($s, 0, -1);
 		}
@@ -108,53 +113,98 @@ class ParserTest {
 	}
 
 	/**
-	 * Run a series of tests listed in the given text file.
+	 * Run a series of tests listed in the given text files.
 	 * Each test consists of a brief description, wikitext input,
 	 * and the expected HTML output.
 	 *
 	 * Prints status updates on stdout and counts up the total
 	 * number and percentage of passed tests.
 	 *
-	 * @param string $filename
+	 * @param array of strings $filenames
 	 * @return bool True if passed all tests, false if any tests failed.
-	 * @public
 	 */
-	function runTestsFromFile( $filename ) {
+	public function runTestsFromFiles( $filenames ) {
+		$this->recorder->start();
+		$ok = true;
+		foreach( $filenames as $filename ) {
+			$ok = $this->runFile( $filename ) && $ok;
+		}
+		$this->recorder->report();
+		$this->recorder->end();
+		return $ok;
+	}
+
+	private function runFile( $filename ) {
 		$infile = fopen( $filename, 'rt' );
 		if( !$infile ) {
 			wfDie( "Couldn't open $filename\n" );
+		} else {
+			global $IP;
+			$relative = wfRelativePath( $filename, $IP );
+			print $this->term->color( 1 ) .
+				"Reading tests from \"$relative\"..." .
+				$this->term->reset() .
+				"\n";
 		}
 
 		$data = array();
 		$section = null;
-		$success = 0;
-		$total = 0;
 		$n = 0;
+		$ok = true;
 		while( false !== ($line = fgets( $infile ) ) ) {
 			$n++;
+			$matches = array();
 			if( preg_match( '/^!!\s*(\w+)/', $line, $matches ) ) {
 				$section = strtolower( $matches[1] );
 				if( $section == 'endarticle') {
 					if( !isset( $data['text'] ) ) {
-						wfDie( "'endarticle' without 'text' at line $n\n" );
+						wfDie( "'endarticle' without 'text' at line $n of $filename\n" );
 					}
 					if( !isset( $data['article'] ) ) {
-						wfDie( "'endarticle' without 'article' at line $n\n" );
+						wfDie( "'endarticle' without 'article' at line $n of $filename\n" );
 					}
 					$this->addArticle($this->chomp($data['article']), $this->chomp($data['text']), $n);
 					$data = array();
 					$section = null;
 					continue;
 				}
+				if( $section == 'endhooks' ) {
+					if( !isset( $data['hooks'] ) ) {
+						wfDie( "'endhooks' without 'hooks' at line $n of $filename\n" );
+					}
+					foreach( explode( "\n", $data['hooks'] ) as $line ) {
+						$line = trim( $line );
+						if( $line ) {
+							$this->requireHook( $line );
+						}
+					}
+					$data = array();
+					$section = null;
+					continue;
+				}
+				if( $section == 'endfunctionhooks' ) {
+					if( !isset( $data['functionhooks'] ) ) {
+						wfDie( "'endfunctionhooks' without 'functionhooks' at line $n of $filename\n" );
+					}
+					foreach( explode( "\n", $data['functionhooks'] ) as $line ) {
+						$line = trim( $line );
+						if( $line ) {
+							$this->requireFunctionHook( $line );
+						}
+					}
+					$data = array();
+					$section = null;
+					continue;
+				}
 				if( $section == 'end' ) {
 					if( !isset( $data['test'] ) ) {
-						wfDie( "'end' without 'test' at line $n\n" );
+						wfDie( "'end' without 'test' at line $n of $filename\n" );
 					}
 					if( !isset( $data['input'] ) ) {
-						wfDie( "'end' without 'input' at line $n\n" );
+						wfDie( "'end' without 'input' at line $n of $filename\n" );
 					}
 					if( !isset( $data['result'] ) ) {
-						wfDie( "'end' without 'result' at line $n\n" );
+						wfDie( "'end' without 'result' at line $n of $filename\n" );
 					}
 					if( !isset( $data['options'] ) ) {
 						$data['options'] = '';
@@ -169,20 +219,19 @@ class ParserTest {
 						$section = null;
 						continue;
 					}
-					if( $this->runTest(
+					$result = $this->runTest(
 						$this->chomp( $data['test'] ),
 						$this->chomp( $data['input'] ),
 						$this->chomp( $data['result'] ),
-						$this->chomp( $data['options'] ) ) ) {
-						$success++;
-					}
-					$total++;
+						$this->chomp( $data['options'] ) );
+					$ok = $ok && $result;
+					$this->recorder->record( $this->chomp( $data['test'] ), $result );
 					$data = array();
 					$section = null;
 					continue;
 				}
 				if ( isset ($data[$section] ) ) {
-					wfDie( "duplicate section '$section' at line $n\n" );
+					wfDie( "duplicate section '$section' at line $n of $filename\n" );
 				}
 				$data[$section] = '';
 				continue;
@@ -191,19 +240,10 @@ class ParserTest {
 				$data[$section] .= $line;
 			}
 		}
-		if( $total > 0 ) {
-			$ratio = wfPercent( 100 * $success / $total );
-			print $this->termColor( 1 ) . "\nPassed $success of $total tests ($ratio) ";
-			if( $success == $total ) {
-				print $this->termColor( 32 ) . "PASSED!";
-			} else {
-				print $this->termColor( 31 ) . "FAILED!";
-			}
-			print $this->termReset() . "\n";
-			return ($success == $total);
-		} else {
-			wfDie( "No tests found.\n" );
+		if ( $this->showProgress ) {
+			print "\n";
 		}
+		return $ok;
 	}
 
 	/**
@@ -215,23 +255,22 @@ class ParserTest {
 	 * @param string $result Result to output
 	 * @return bool
 	 */
-	function runTest( $desc, $input, $result, $opts ) {
-		if( !$this->quiet ) {
+	private function runTest( $desc, $input, $result, $opts ) {
+		if( $this->showProgress ) {
 			$this->showTesting( $desc );
 		}
 
 		$this->setupGlobals($opts);
 
-		$user =& new User();
+		$user = new User();
 		$options = ParserOptions::newFromUser( $user );
 
 		if (preg_match('/\\bmath\\b/i', $opts)) {
 			# XXX this should probably be done by the ParserOptions
-			require_once('Math.php');
-
 			$options->setUseTex(true);
 		}
 
+		$m = array();
 		if (preg_match('/title=\[\[(.*)\]\]/', $opts, $m)) {
 			$titleText = $m[1];
 		}
@@ -241,15 +280,29 @@ class ParserTest {
 
 		$noxml = (bool)preg_match( '~\\b noxml \\b~x', $opts );
 
-		$parser =& new Parser();
+		$parser = new Parser();
+		foreach( $this->hooks as $tag => $callback ) {
+			$parser->setHook( $tag, $callback );
+		}
+		foreach( $this->functionHooks as $tag => $callback ) {
+			$parser->setFunctionHook( $tag, $callback );
+		}
 		wfRunHooks( 'ParserTestParser', array( &$parser ) );
-		
+
 		$title =& Title::makeTitle( NS_MAIN, $titleText );
 
+		$matches = array();
 		if (preg_match('/\\bpst\\b/i', $opts)) {
 			$out = $parser->preSaveTransform( $input, $title, $user, $options );
 		} elseif (preg_match('/\\bmsg\\b/i', $opts)) {
 			$out = $parser->transformMsg( $input, $options );
+		} elseif( preg_match( '/\\bsection=(\d+)\b/i', $opts, $matches ) ) {
+			$section = intval( $matches[1] );
+			$out = $parser->getSection( $input, $section );
+		} elseif( preg_match( '/\\breplace=(\d+),"(.*?)"/i', $opts, $matches ) ) {
+			$section = intval( $matches[1] );
+			$replace = $matches[2];
+			$out = $parser->replaceSection( $input, $section, $replace );
 		} else {
 			$output = $parser->parse( $input, $title, $options, true, true, 1337 );
 			$out = $output->getText();
@@ -274,15 +327,29 @@ class ParserTest {
 		}
 	}
 
+
+	/**
+	 * Use a regex to find out the value of an option
+	 * @param $regex A regex, the first group will be the value returned
+	 * @param $opts Options line to look in
+	 * @param $defaults Default value returned if the regex does not match
+	 */
+	private static function getOptionValue( $regex, $opts, $default ) {
+		$m = array();
+		if( preg_match( $regex, $opts, $m ) ) {
+			return $m[1];
+		} else {
+			return $default;
+		}
+	}
+
 	/**
 	 * Set up the global variables for a consistent environment for each test.
 	 * Ideally this should replace the global configuration entirely.
-	 *
-	 * @private
 	 */
-	function setupGlobals($opts = '') {
+	private function setupGlobals($opts = '') {
 		# Save the prefixed / quoted table names for later use when we make the temporaries.
-		$db =& wfGetDB( DB_READ );
+		$db = wfGetDB( DB_READ );
 		$this->oldTableNames = array();
 		foreach( $this->listTables() as $table ) {
 			$this->oldTableNames[$table] = $db->tableName( $table );
@@ -290,14 +357,14 @@ class ParserTest {
 		if( !isset( $this->uploadDir ) ) {
 			$this->uploadDir = $this->setupUploadDir();
 		}
-		
-		if( preg_match( '/language=([a-z]+(?:_[a-z]+)?)/', $opts, $m ) ) {
-			$lang = $m[1];
-		} else {
-			$lang = 'en';
-		}
-		$langClass = 'Language' . str_replace( '-', '_', ucfirst( $lang ) );
-		$langObj = setupLangObj( $langClass );
+
+		# Find out values for some special options.
+		$lang =
+			self::getOptionValue( '/language=([a-z]+(?:_[a-z]+)?)/', $opts, 'en' );
+		$variant =
+			self::getOptionValue( '/variant=([a-z]+(?:-[a-z]+)?)/', $opts, false );
+		$maxtoclevel =
+			self::getOptionValue( '/wgMaxTocLevel=(\d+)/', $opts, 999 );
 
 		$settings = array(
 			'wgServer' => 'http://localhost',
@@ -305,44 +372,58 @@ class ParserTest {
 			'wgScriptPath' => '/',
 			'wgArticlePath' => '/wiki/$1',
 			'wgActionPaths' => array(),
-			'wgUploadPath' => 'http://example.com/images',
-			'wgUploadDirectory' => $this->uploadDir,
+			'wgLocalFileRepo' => array(
+				'class' => 'LocalRepo',
+				'name' => 'local',
+				'directory' => $this->uploadDir,
+				'url' => 'http://example.com/images',
+				'hashLevels' => 2,
+				'transformVia404' => false,
+			),
 			'wgStyleSheetPath' => '/skins',
 			'wgSitename' => 'MediaWiki',
 			'wgServerName' => 'Britney Spears',
 			'wgLanguageCode' => $lang,
 			'wgContLanguageCode' => $lang,
 			'wgDBprefix' => 'parsertest_',
-			'wgDefaultUserOptions' => array(),
-
-			'wgLang' => $langObj,
-			'wgContLang' => $langObj,
+			'wgRawHtml' => preg_match('/\\brawhtml\\b/i', $opts),
+			'wgLang' => null,
+			'wgContLang' => null,
 			'wgNamespacesWithSubpages' => array( 0 => preg_match('/\\bsubpage\\b/i', $opts)),
-			'wgMaxTocLevel' => 999,
+			'wgMaxTocLevel' => $maxtoclevel,
 			'wgCapitalLinks' => true,
-			'wgDefaultUserOptions' => array(),
 			'wgNoFollowLinks' => true,
 			'wgThumbnailScriptPath' => false,
 			'wgUseTeX' => false,
 			'wgLocaltimezone' => 'UTC',
+			'wgAllowExternalImages' => true,
+			'wgUseTidy' => false,
+			'wgDefaultLanguageVariant' => $variant,
+			'wgVariantArticlePath' => false,
 			);
 		$this->savedGlobals = array();
 		foreach( $settings as $var => $val ) {
 			$this->savedGlobals[$var] = $GLOBALS[$var];
 			$GLOBALS[$var] = $val;
 		}
+		$langObj = Language::factory( $lang );
+		$GLOBALS['wgLang'] = $langObj;
+		$GLOBALS['wgContLang'] = $langObj;
+
 		$GLOBALS['wgLoadBalancer']->loadMasterPos();
-		$GLOBALS['wgMessageCache']->initialise( new BagOStuff(), false, 0, $GLOBALS['wgDBname'] );
+		//$GLOBALS['wgMessageCache'] = new MessageCache( new BagOStuff(), false, 0, $GLOBALS['wgDBname'] );
 		$this->setupDatabase();
 
 		global $wgUser;
 		$wgUser = new User();
 	}
 
-	# List of temporary tables to create, without prefix
-	# Some of these probably aren't necessary
-	function listTables() {
-		$tables = array('user', 'page', 'revision', 'text',
+	/**
+	 * List of temporary tables to create, without prefix.
+	 * Some of these probably aren't necessary.
+	 */
+	private function listTables() {
+		$tables = array('user', 'page', 'page_restrictions', 'revision', 'text',
 			'pagelinks', 'imagelinks', 'categorylinks',
 			'templatelinks', 'externallinks', 'langlinks',
 			'site_stats', 'hitcounter',
@@ -350,16 +431,14 @@ class ParserTest {
 			'recentchanges',
 			'watchlist', 'math', 'searchindex',
 			'interwiki', 'querycache',
-			'objectcache', 'job'
+			'objectcache', 'job', 'redirect',
+			'querycachetwo'
 		);
-
-		// FIXME manually adding additional table for the tasks extension
-		// we probably need a better software wide system to register new
-		// tables.
-		global $wgExtensionFunctions;
-		if( in_array('wfTasksExtension' , $wgExtensionFunctions ) ) {
-			$tables[] = 'tasks';
-		}
+		
+		// Allow extensions to add to the list of tables to duplicate;
+		// may be necessary if they hook into page save or other code
+		// which will require them while running tests.
+		wfRunHooks( 'ParserTestTables', array( &$tables ) );
 
 		return $tables;
 	}
@@ -368,10 +447,8 @@ class ParserTest {
 	 * Set up a temporary set of wiki tables to work with for the tests.
 	 * Currently this will only be done once per run, and any changes to
 	 * the db will be visible to later tests in the run.
-	 *
-	 * @private
 	 */
-	function setupDatabase() {
+	private function setupDatabase() {
 		static $setupDB = false;
 		global $wgDBprefix;
 
@@ -379,14 +456,14 @@ class ParserTest {
 		if (!$setupDB && $wgDBprefix === 'parsertest_') {
 			# oh teh horror
 			$GLOBALS['wgLoadBalancer'] = LoadBalancer::newFromParams( $GLOBALS['wgDBservers'] );
-			$db =& wfGetDB( DB_MASTER );
+			$db = wfGetDB( DB_MASTER );
 
 			$tables = $this->listTables();
 
 			if (!(strcmp($db->getServerVersion(), '4.1') < 0 and stristr($db->getSoftwareLink(), 'MySQL'))) {
 				# Database that supports CREATE TABLE ... LIKE
 				global $wgDBtype;
-				if( $wgDBtype == 'PostgreSQL' ) {
+				if( $wgDBtype == 'postgres' ) {
 					$def = 'INCLUDING DEFAULTS';
 				} else {
 					$def = '';
@@ -453,7 +530,11 @@ class ParserTest {
 				'img_media_type'  => MEDIATYPE_BITMAP,
 				'img_major_mime'  => "image",
 				'img_minor_mime'  => "jpeg",
+				'img_metadata'    => serialize( array() ),
 				) );
+
+			# Update certain things in site_stats
+			$db->insert( 'site_stats', array( 'ss_row_id' => 1, 'ss_images' => 1, 'ss_good_articles' => 1 ) );
 
 			$setupDB = true;
 		}
@@ -463,34 +544,24 @@ class ParserTest {
 	 * Create a dummy uploads directory which will contain a couple
 	 * of files in order to pass existence tests.
 	 * @return string The directory
-	 * @private
 	 */
-	function setupUploadDir() {
+	private function setupUploadDir() {
 		global $IP;
-
 		$dir = wfTempDir() . "/mwParser-" . mt_rand() . "-images";
+		wfDebug( "Creating upload directory $dir\n" );
 		mkdir( $dir );
 		mkdir( $dir . '/3' );
 		mkdir( $dir . '/3/3a' );
-
-		$img = "$IP/skins/monobook/headbg.jpg";
-		$h = fopen($img, 'r');
-		$c = fread($h, filesize($img));
-		fclose($h);
-
-		$f = fopen( $dir . '/3/3a/Foobar.jpg', 'wb' );
-		fwrite( $f, $c );
-		fclose( $f );
+		copy( "$IP/skins/monobook/headbg.jpg", "$dir/3/3a/Foobar.jpg" );
 		return $dir;
 	}
 
 	/**
 	 * Restore default values and perform any necessary clean-up
 	 * after each test runs.
-	 *
-	 * @private
 	 */
-	function teardownGlobals() {
+	private function teardownGlobals() {
+		RepoGroup::destroySingleton();
 		foreach( $this->savedGlobals as $var => $val ) {
 			$GLOBALS[$var] = $val;
 		}
@@ -502,29 +573,62 @@ class ParserTest {
 
 	/**
 	 * Remove the dummy uploads directory
-	 * @private
 	 */
-	function teardownUploadDir( $dir ) {
-		unlink( "$dir/3/3a/Foobar.jpg" );
-		rmdir( "$dir/3/3a" );
-		rmdir( "$dir/3" );
-		@rmdir( "$dir/thumb/6/65" );
-		@rmdir( "$dir/thumb/6" );
+	private function teardownUploadDir( $dir ) {
+		// delete the files first, then the dirs.
+		self::deleteFiles(
+			array (
+				"$dir/3/3a/Foobar.jpg",
+				"$dir/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg",
+				"$dir/thumb/3/3a/Foobar.jpg/200px-Foobar.jpg",
+				"$dir/thumb/3/3a/Foobar.jpg/640px-Foobar.jpg",
+				"$dir/thumb/3/3a/Foobar.jpg/120px-Foobar.jpg",
+			)
+		);
 
-		@unlink( "$dir/thumb/3/3a/Foobar.jpg/180px-Foobar.jpg" );
-		@rmdir( "$dir/thumb/3/3a/Foobar.jpg" );
-		@rmdir( "$dir/thumb/3/3a" );
-		@rmdir( "$dir/thumb/3/39" ); # wtf?
-		@rmdir( "$dir/thumb/3" );
-		@rmdir( "$dir/thumb" );
-		rmdir( "$dir" );
+		self::deleteDirs(
+			array (
+				"$dir/3/3a",
+				"$dir/3",
+				"$dir/thumb/6/65",
+				"$dir/thumb/6",
+				"$dir/thumb/3/3a/Foobar.jpg",
+				"$dir/thumb/3/3a",
+				"$dir/thumb/3",
+				"$dir/thumb",
+				"$dir",
+			)
+		);
+	}
+
+	/**
+	 * @desc delete the specified files, if they exist.
+	 * @param array $files full paths to files to delete.
+	 */
+	private static function deleteFiles( $files ) {
+		foreach( $files as $file ) {
+			if( file_exists( $file ) ) {
+				unlink( $file );
+			}
+		}
+	}
+
+	/**
+	 * @desc delete the specified directories, if they exist. Must be empty.
+	 * @param array $dirs full paths to directories to delete.
+	 */
+	private static function deleteDirs( $dirs ) {
+		foreach( $dirs as $dir ) {
+			if( is_dir( $dir ) ) {
+				rmdir( $dir );
+			}
+		}
 	}
 
 	/**
 	 * "Running test $desc..."
-	 * @private
 	 */
-	function showTesting( $desc ) {
+	private function showTesting( $desc ) {
 		print "Running test $desc... ";
 	}
 
@@ -533,11 +637,10 @@ class ParserTest {
 	 *
 	 * @param string $desc The test name
 	 * @return bool
-	 * @private
 	 */
-	function showSuccess( $desc ) {
-		if( !$this->quiet ) {
-			print $this->termColor( '1;32' ) . 'PASSED' . $this->termReset() . "\n";
+	private function showSuccess( $desc ) {
+		if( $this->showProgress ) {
+			print $this->term->color( '1;32' ) . 'PASSED' . $this->term->reset() . "\n";
 		}
 		return true;
 	}
@@ -550,19 +653,23 @@ class ParserTest {
 	 * @param string $result Expected HTML output
 	 * @param string $html Actual HTML output
 	 * @return bool
-	 * @private
 	 */
-	function showFailure( $desc, $result, $html ) {
-		if( $this->quiet ) {
-			# In quiet mode we didn't show the 'Testing' message before the
-			# test, in case it succeeded. Show it now:
-			$this->showTesting( $desc );
-		}
-		print $this->termColor( '1;31' ) . 'FAILED!' . $this->termReset() . "\n";
-		if( $this->showDiffs ) {
-			print $this->quickDiff( $result, $html );
-			if( !$this->wellFormed( $html ) ) {
-				print "XML error: $this->mXmlError\n";
+	private function showFailure( $desc, $result, $html ) {
+		if( $this->showFailure ) {
+			if( !$this->showProgress ) {
+				# In quiet mode we didn't show the 'Testing' message before the
+				# test, in case it succeeded. Show it now:
+				$this->showTesting( $desc );
+			}
+			print $this->term->color( '31' ) . 'FAILED!' . $this->term->reset() . "\n";
+			if ( $this->showOutput ) {
+				print "--- Expected ---\n$result\n--- Actual ---\n$html\n";
+			}
+			if( $this->showDiffs ) {
+				print $this->quickDiff( $result, $html );
+				if( !$this->wellFormed( $html ) ) {
+					print "XML error: $this->mXmlError\n";
+				}
 			}
 		}
 		return false;
@@ -577,9 +684,8 @@ class ParserTest {
 	 * @param string $inFileTail Tailing for the input file name
 	 * @param string $outFileTail Tailing for the output file name
 	 * @return string
-	 * @private
 	 */
-	function quickDiff( $input, $output, $inFileTail='expected', $outFileTail='actual' ) {
+	private function quickDiff( $input, $output, $inFileTail='expected', $outFileTail='actual' ) {
 		$prefix = wfTempDir() . "/mwParser-" . mt_rand();
 
 		$infile = "$prefix-$inFileTail";
@@ -600,39 +706,11 @@ class ParserTest {
 	 *
 	 * @param string $data
 	 * @param string $filename
-	 * @private
 	 */
-	function dumpToFile( $data, $filename ) {
+	private function dumpToFile( $data, $filename ) {
 		$file = fopen( $filename, "wt" );
 		fwrite( $file, $data . "\n" );
 		fclose( $file );
-	}
-
-	/**
-	 * Return ANSI terminal escape code for changing text attribs/color,
-	 * or empty string if color output is disabled.
-	 *
-	 * @param string $color Semicolon-separated list of attribute/color codes
-	 * @return string
-	 * @private
-	 */
-	function termColor( $color ) {
-		if($this->lightcolor) {
-			return $this->color ? "\x1b[1;{$color}m" : '';
-		} else {
-			return $this->color ? "\x1b[{$color}m" : '';
-		}
-	}
-
-	/**
-	 * Return ANSI terminal escape code for restoring default text attributes,
-	 * or empty string if color output is disabled.
-	 *
-	 * @return string
-	 * @private
-	 */
-	function termReset() {
-		return $this->color ? "\x1b[0m" : '';
 	}
 
 	/**
@@ -641,13 +719,12 @@ class ParserTest {
 	 *
 	 * @param string $text
 	 * @return string
-	 * @private
 	 */
-	function colorDiff( $text ) {
+	private function colorDiff( $text ) {
 		return preg_replace(
 			array( '/^(-.*)$/m', '/^(\+.*)$/m' ),
-			array( $this->termColor( 34 ) . '$1' . $this->termReset(),
-			       $this->termColor( 31 ) . '$1' . $this->termReset() ),
+			array( $this->term->color( 34 ) . '$1' . $this->term->reset(),
+			       $this->term->color( 31 ) . '$1' . $this->term->reset() ),
 			$text );
 	}
 
@@ -656,10 +733,8 @@ class ParserTest {
 	 * @param string $name the title, including any prefix
 	 * @param string $text the article text
 	 * @param int $line the input line number, for reporting errors
-	 * @static
-	 * @private
 	 */
-	function addArticle($name, $text, $line) {
+	private function addArticle($name, $text, $line) {
 		$this->setupGlobals();
 		$title = Title::newFromText( $name );
 		if ( is_null($title) ) {
@@ -676,6 +751,36 @@ class ParserTest {
 		$this->teardownGlobals();
 	}
 
+	/**
+	 * Steal a callback function from the primary parser, save it for
+	 * application to our scary parser. If the hook is not installed,
+	 * die a painful dead to warn the others.
+	 * @param string $name
+	 */
+	private function requireHook( $name ) {
+		global $wgParser;
+		if( isset( $wgParser->mTagHooks[$name] ) ) {
+			$this->hooks[$name] = $wgParser->mTagHooks[$name];
+		} else {
+			wfDie( "This test suite requires the '$name' hook extension.\n" );
+		}
+	}
+
+	/**
+	 * Steal a callback function from the primary parser, save it for
+	 * application to our scary parser. If the hook is not installed,
+	 * die a painful dead to warn the others.
+	 * @param string $name
+	 */
+	private function requireFunctionHook( $name ) {
+		global $wgParser;
+		if( isset( $wgParser->mFunctionHooks[$name] ) ) {
+			$this->functionHooks[$name] = $wgParser->mFunctionHooks[$name];
+		} else {
+			wfDie( "This test suite requires the '$name' function hook extension.\n" );
+		}
+	}
+
 	/*
 	 * Run the "tidy" command on text if the $wgUseTidy
 	 * global is true
@@ -683,9 +788,8 @@ class ParserTest {
 	 * @param string $text the text to tidy
 	 * @return string
 	 * @static
-	 * @private
 	 */
-	function tidy( $text ) {
+	private function tidy( $text ) {
 		global $wgUseTidy;
 		if ($wgUseTidy) {
 			$text = Parser::tidy($text);
@@ -693,7 +797,7 @@ class ParserTest {
 		return $text;
 	}
 
-	function wellFormed( $text ) {
+	private function wellFormed( $text ) {
 		$html =
 			Sanitizer::hackDocType() .
 			'<html>' .
@@ -717,30 +821,325 @@ class ParserTest {
 		return true;
 	}
 
-	function extractFragment( $text, $position ) {
+	private function extractFragment( $text, $position ) {
 		$start = max( 0, $position - 10 );
 		$before = $position - $start;
 		$fragment = '...' .
-			$this->termColor( 34 ) .
+			$this->term->color( 34 ) .
 			substr( $text, $start, $before ) .
-			$this->termColor( 0 ) .
-			$this->termColor( 31 ) .
-			$this->termColor( 1 ) .
+			$this->term->color( 0 ) .
+			$this->term->color( 31 ) .
+			$this->term->color( 1 ) .
 			substr( $text, $position, 1 ) .
-			$this->termColor( 0 ) .
-			$this->termColor( 34 ) .
+			$this->term->color( 0 ) .
+			$this->term->color( 34 ) .
 			substr( $text, $position + 1, 9 ) .
-			$this->termColor( 0 ) .
+			$this->term->color( 0 ) .
 			'...';
 		$display = str_replace( "\n", ' ', $fragment );
 		$caret = '   ' .
 			str_repeat( ' ', $before ) .
-			$this->termColor( 31 ) .
+			$this->term->color( 31 ) .
 			'^' .
-			$this->termColor( 0 );
+			$this->term->color( 0 );
 		return "$display\n$caret";
 	}
+}
 
+class AnsiTermColorer {
+	function __construct() {
+	}
+
+	/**
+	 * Return ANSI terminal escape code for changing text attribs/color
+	 *
+	 * @param string $color Semicolon-separated list of attribute/color codes
+	 * @return string
+	 */
+	public function color( $color ) {
+		global $wgCommandLineDarkBg;
+		$light = $wgCommandLineDarkBg ? "1;" : "0;";
+		return "\x1b[{$light}{$color}m";
+	}
+
+	/**
+	 * Return ANSI terminal escape code for restoring default text attributes
+	 *
+	 * @return string
+	 */
+	public function reset() {
+		return $this->color( 0 );
+	}
+}
+
+/* A colour-less terminal */
+class DummyTermColorer {
+	public function color( $color ) {
+		return '';
+	}
+
+	public function reset() {
+		return '';
+	}
+}
+
+class TestRecorder {
+	function __construct( $term ) {
+		$this->term = $term;
+	}
+
+	function start() {
+		$this->total = 0;
+		$this->success = 0;
+	}
+
+	function record( $test, $result ) {
+		$this->total++;
+		$this->success += ($result ? 1 : 0);
+	}
+
+	function end() {
+		// dummy
+	}
+
+	function report() {
+		if( $this->total > 0 ) {
+			$this->reportPercentage( $this->success, $this->total );
+		} else {
+			wfDie( "No tests found.\n" );
+		}
+	}
+
+	function reportPercentage( $success, $total ) {
+		$ratio = wfPercent( 100 * $success / $total );
+		print $this->term->color( 1 ) . "Passed $success of $total tests ($ratio)... ";
+		if( $success == $total ) {
+			print $this->term->color( 32 ) . "ALL TESTS PASSED!";
+		} else {
+			$failed = $total - $success ;
+			print $this->term->color( 31 ) . "$failed tests failed!";
+		}
+		print $this->term->reset() . "\n";
+		return ($success == $total);
+	}
+}
+
+class DbTestRecorder extends TestRecorder  {
+	protected $db;      ///< Database connection to the main DB
+	protected $curRun;  ///< run ID number for the current run
+	protected $prevRun; ///< run ID number for the previous run, if any
+
+	function __construct( $term ) {
+		parent::__construct( $term );
+		$this->db = wfGetDB( DB_MASTER );
+	}
+
+	/**
+	 * Set up result recording; insert a record for the run with the date
+	 * and all that fun stuff
+	 */
+	function start() {
+		parent::start();
+
+		$this->db->begin();
+
+		if( ! $this->db->tableExists( 'testrun' ) or ! $this->db->tableExists( 'testitem') ) {
+			print "WARNING> `testrun` table not found in database. Trying to create table.\n";
+			dbsource( 'testRunner.sql',  $this->db );
+			echo "OK, resuming.\n";
+		}
+
+		// We'll make comparisons against the previous run later...
+		$this->prevRun = $this->db->selectField( 'testrun', 'MAX(tr_id)' );
+
+		$this->db->insert( 'testrun',
+			array(
+				'tr_date'        => $this->db->timestamp(),
+				'tr_mw_version'  => SpecialVersion::getVersion(),
+				'tr_php_version' => phpversion(),
+				'tr_db_version'  => $this->db->getServerVersion(),
+				'tr_uname'       => php_uname()
+			),
+			__METHOD__ );
+		$this->curRun = $this->db->insertId();
+	}
+
+	/**
+	 * Record an individual test item's success or failure to the db
+	 * @param string $test
+	 * @param bool $result
+	 */
+	function record( $test, $result ) {
+		parent::record( $test, $result );
+		$this->db->insert( 'testitem',
+			array(
+				'ti_run'     => $this->curRun,
+				'ti_name'    => $test,
+				'ti_success' => $result ? 1 : 0,
+			),
+			__METHOD__ );
+	}
+
+	/**
+	 * Commit transaction and clean up for result recording
+	 */
+	function end() {
+		$this->db->commit();
+		parent::end();
+	}
+
+	function report() {
+		if( $this->prevRun ) {
+			$table = array(
+				array( 'previously failing test(s) now PASSING! :)', 0, 1 ),
+				array( 'previously PASSING test(s) removed o_O', 1, null ),
+				array( 'new PASSING test(s) :)', null, 1 ),
+
+				array( 'previously passing test(s) now FAILING! :(', 1, 0 ),
+				array( 'previously FAILING test(s) removed O_o', 0, null ),
+				array( 'new FAILING test(s) :(', null, 0 ),
+				array( 'still FAILING test(s) :(', 0, 0 ),
+			);
+			foreach( $table as $criteria ) {
+				list( $label, $before, $after ) = $criteria;
+				$differences = $this->compareResult( $before, $after );
+				if( $differences ) {
+					$count = count($differences);
+					printf( "\n%4d %s\n", $count, $label );
+					foreach ($differences as $differing_test_name => $statusInfo) {
+						print "      * $differing_test_name  [$statusInfo]\n";
+					}
+				}
+			}
+		} else {
+			print "No previous test runs to compare against.\n";
+		}
+		print "\n";
+		parent::report();
+	}
+
+	/**
+	 ** Returns an array of the test names with changed results, based on the specified
+	 ** before/after criteria.
+	 */
+	private function compareResult( $before, $after ) {
+		$testitem = $this->db->tableName( 'testitem' );
+		$prevRun = intval( $this->prevRun );
+		$curRun = intval( $this->curRun );
+		$prevStatus = $this->condition( $before );
+		$curStatus = $this->condition( $after );
+
+		// note: requires mysql >= ver 4.1 for subselects
+		if( is_null( $after ) ) {
+			$sql = "
+				select prev.ti_name as t from $testitem as prev
+					where prev.ti_run=$prevRun and
+						prev.ti_success $prevStatus and
+						(select current.ti_success from $testitem as current
+							where current.ti_run=$curRun
+								and prev.ti_name=current.ti_name) $curStatus";
+		} else {
+			$sql = "
+				select current.ti_name as t from $testitem as current 
+					where current.ti_run=$curRun and
+						current.ti_success $curStatus and
+						(select prev.ti_success from $testitem as prev
+							where prev.ti_run=$prevRun
+								and prev.ti_name=current.ti_name) $prevStatus";
+		}
+		$result = $this->db->query( $sql, __METHOD__ );
+		$retval = array();
+		while ($row = $this->db->fetchObject( $result )) {
+			$testname = $row->t;
+			$retval[$testname] = $this->getTestStatusInfo( $testname, $after, $curRun );
+		}
+		$this->db->freeResult( $result );
+		return $retval;
+	}
+
+	/**
+	 ** Returns a string giving information about when a test last had a status change.
+	 ** Could help to track down when regressions were introduced, as distinct from tests
+	 ** which have never passed (which are more change requests than regressions).
+	 */
+	private function getTestStatusInfo($testname, $after, $curRun) {
+
+		// If we're looking at a test that has just been removed, then say when it first appeared.
+		if ( is_null( $after ) ) {
+			$changedRun = $this->db->selectField ( 'testitem',
+												   'MIN(ti_run)',
+												   array( 'ti_name' => $testname ),
+												   __METHOD__ );
+			$appear = $this->db->selectRow ( 'testrun',
+											 array( 'tr_date', 'tr_mw_version' ),
+											 array( 'tr_id' => $changedRun ),
+											 __METHOD__ );
+			return "First recorded appearance: "
+			       . date( "d-M-Y H:i:s",  strtotime ( $appear->tr_date ) )
+			       .  ", " . $appear->tr_mw_version;
+		}
+
+		// Otherwise, this test has previous recorded results.
+		// See when this test last had a different result to what we're seeing now.
+		$changedRun = $this->db->selectField ( 'testitem',
+											   'MAX(ti_run)',
+											   array( 
+											       'ti_name'    => $testname,
+											       'ti_success' => ($after ? "0" : "1"),
+											       "ti_run != " . $this->db->addQuotes ( $curRun )
+												), 
+												__METHOD__ );
+
+		// If no record of ever having had a different result.
+		if ( is_null ( $changedRun ) ) {
+			if ($after == "0") {
+				return "Has never passed";
+			} else {
+				return "Has never failed";
+			}
+		}
+
+		// Otherwise, we're looking at a test whose status has changed.
+		// (i.e. it used to work, but now doesn't; or used to fail, but is now fixed.)
+		// In this situation, give as much info as we can as to when it changed status.
+		$pre  = $this->db->selectRow ( 'testrun',
+										array( 'tr_date', 'tr_mw_version' ),
+										array( 'tr_id' => $changedRun ),
+										__METHOD__ );
+		$post = $this->db->selectRow ( 'testrun',
+										array( 'tr_date', 'tr_mw_version' ),
+										array( "tr_id > " . $this->db->addQuotes ( $changedRun) ),
+										__METHOD__,
+										array( "LIMIT" => 1, "ORDER BY" => 'tr_id' )
+									 );
+
+		return ( $after == "0" ? "Introduced" : "Fixed" ) . " between "
+				. date( "d-M-Y H:i:s",  strtotime ( $pre->tr_date ) ) .  ", " . $pre->tr_mw_version
+				. " and "
+				. date( "d-M-Y H:i:s",  strtotime ( $post->tr_date  ) ) .  ", " . $post->tr_mw_version ;
+	}
+
+	/**
+	 ** Helper function for compareResult() database querying.
+	 */
+	private function condition( $value ) {
+		if( is_null( $value ) ) {
+			return 'IS NULL';
+		} else {
+			return '=' . intval( $value );
+		}
+	}
+
+}
+
+class DbTestPreviewer extends DbTestRecorder  {
+	/**
+	 * Commit transaction and clean up for result recording
+	 */
+	function end() {
+		$this->db->rollback();
+		TestRecorder::end();
+	}
 }
 
 ?>

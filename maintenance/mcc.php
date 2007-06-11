@@ -3,13 +3,11 @@
  * memcached diagnostic tool
  *
  * @todo document
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  */
 
 /** */
 require_once( 'commandLine.inc' );
-require_once( 'memcached-client.php' );
 
 $mcc = new memcached( array('persistant' => true/*, 'debug' => true*/) );
 $mcc->set_servers( $wgMemCachedServers );
@@ -112,7 +110,11 @@ do {
 
 		case 'server':
 			$res = $mcc->get( $args[0] );
-			print $mcc->_buckets[$mcc->_hashfunc( $args[0] ) % $mcc->_bucketcount] . "\n";
+			$hv = $mcc->_hashfunc( $args[0] );
+			for ( $i = 0; $i < 3; $i++ ) {
+				print $mcc->_buckets[$hv % $mcc->_bucketcount] . "\n";
+				$hv += $mcc->_hashfunc( $i . $args[0] );
+			}
 			break;
 
 		case 'set':

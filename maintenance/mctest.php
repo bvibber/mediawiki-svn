@@ -5,12 +5,17 @@ $optionsWithArgs = array( 'i' );
 
 require_once('commandLine.inc');
 
+function microtime_float()
+{
+   list($usec, $sec) = explode(" ", microtime());
+   return ((float)$usec + (float)$sec);
+}
+
+
 #$wgDebugLogFile = '/dev/stdout';
 
 if ( isset( $args[0] ) ) {
 	$wgMemCachedServers = array( $args[0] );
-} else {
-	$wgMemCachedServers[] = 'localhost';
 }
 if ( isset( $options['i'] ) ) {
 	$iterations = $options['i'];
@@ -47,12 +52,6 @@ foreach ( $wgMemCachedServers as $server ) {
         $exectime=microtime_float()-$time_start;
 
 	print "set: $set   incr: $incr   get: $get time: $exectime\n";
-}
-
-function microtime_float()
-{
-   list($usec, $sec) = explode(" ", microtime());
-   return ((float)$usec + (float)$sec);
 }
 
 

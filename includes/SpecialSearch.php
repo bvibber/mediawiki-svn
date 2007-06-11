@@ -14,29 +14,23 @@
 #
 # You should have received a copy of the GNU General Public License along
 # with this program; if not, write to the Free Software Foundation, Inc.,
-# 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+# 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 # http://www.gnu.org/copyleft/gpl.html
 
 /**
  * Run text & title search and display the output
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
-
-/** */
-require_once( 'SearchEngine.php' );
-require_once( 'Revision.php' );
 
 /**
  * Entry point
  *
- * @param string $par (default '')
+ * @param $par String: (default '')
  */
 function wfSpecialSearch( $par = '' ) {
 	global $wgRequest, $wgUser;
 
-	$search = $wgRequest->getText( 'search', $par );//added by gkpr
-	$search = in_string(':', $search)  && strpos($search, ':') == 2 ? substr($search, strpos($search, ':') + 1) : $search;
+	$search = $wgRequest->getText( 'search', $par );
 	$searchPage = new SpecialSearch( $wgRequest, $wgUser );
 	if( $wgRequest->getVal( 'fulltext' ) ||
 		!is_null( $wgRequest->getVal( 'offset' ) ) ||
@@ -48,9 +42,8 @@ function wfSpecialSearch( $par = '' ) {
 }
 
 /**
- * @todo document
- * @package MediaWiki
- * @subpackage SpecialPage
+ * implements Special:Search - Run text & title search and display the output
+ * @addtogroup SpecialPage
  */
 class SpecialSearch {
 
@@ -60,7 +53,7 @@ class SpecialSearch {
 	 *
 	 * @param WebRequest $request
 	 * @param User $user
-	 * @access public
+	 * @public
 	 */
 	function SpecialSearch( &$request, &$user ) {
 		list( $this->limit, $this->offset ) = $request->getLimitOffset( 20, 'searchlimit' );
@@ -75,20 +68,17 @@ class SpecialSearch {
 	}
 
 	/**
-	 * If an exact title match can be found, jump straight ahead to
+	 * If an exact title match can be found, jump straight ahead to it.
 	 * @param string $term
-	 * @access public
+	 * @public
 	 */
 	function goResult( $term ) {
 		global $wgOut;
 		global $wgGoToEdit;
-		global $wgArticleLanguage;//gkpr
-		$search = !empty($wgArticleLanguage) ? "$wgArticleLanguage:$term" : $term;//gkpr
 
 		$this->setupPage( $term );
 
 		# Try to go to page as entered.
-		#
 		$t = Title::newFromText( $term );
 
 		# If the string cannot be used to create a title
@@ -105,27 +95,22 @@ class SpecialSearch {
 
 		# No match, generate an edit URL
 		$t = Title::newFromText( $term );
-		if( is_null( $t ) ) {
-			$editurl = ''; # hrm...
-		} else {
+		if( ! is_null( $t ) ) {
 			wfRunHooks( 'SpecialSearchNogomatch', array( &$t ) );
 			# If the feature is enabled, go straight to the edit page
 			if ( $wgGoToEdit ) {
 				$wgOut->redirect( $t->getFullURL( 'action=edit' ) );
 				return;
-			} else {
-				$editurl = $t->escapeLocalURL( 'action=edit' );
-			}
+			} 
 		}
-		$wgOut->addWikiText( wfMsg('nogomatch', ":$term", $search ) );
-		//previous line modified by gkpr
+		$wgOut->addWikiText( wfMsg( 'noexactmatch', wfEscapeWikiText( $term ) ) );
 
 		return $this->showResults( $term );
 	}
 
 	/**
 	 * @param string $term
-	 * @access public
+	 * @public
 	 */
 	function showResults( $term ) {
 		$fname = 'SpecialSearch::showResults';
@@ -133,8 +118,7 @@ class SpecialSearch {
 
 		$this->setupPage( $term );
 
-		global $wgUser, $wgOut;
-		$sk = $wgUser->getSkin();
+		global $wgOut;
 		$wgOut->addWikiText( wfMsg( 'searchresulttext' ) );
 
 		#if ( !$this->parseQuery() ) {
@@ -159,7 +143,7 @@ class SpecialSearch {
 				wfMsg( 'googlesearch',
 					htmlspecialchars( $term ),
 					htmlspecialchars( $wgInputEncoding ),
-					htmlspecialchars( wfMsg( 'search' ) )
+					htmlspecialchars( wfMsg( 'searchbutton' ) )
 				)
 			);
 			wfProfileOut( $fname );
@@ -175,19 +159,22 @@ class SpecialSearch {
 
 		$num = ( $titleMatches ? $titleMatches->numRows() : 0 )
 			+ ( $textMatches ? $textMatches->numRows() : 0);
-		if ( $num >= $this->limit ) {
-			$top = wfShowingResults( $this->offset, $this->limit );
-		} else {
-			$top = wfShowingResultsNum( $this->offset, $this->limit, $num );
+		if ( $num > 0 ) {
+			if ( $num >= $this->limit ) {
+				$top = wfShowingResults( $this->offset, $this->limit );
+			} else {
+				$top = wfShowingResultsNum( $this->offset, $this->limit, $num );
+			}
+			$wgOut->addHTML( "<p>{$top}</p>\n" );
 		}
-		$wgOut->addHTML( "<p>{$top}</p>\n" );
 
 		if( $num || $this->offset ) {
 			$prevnext = wfViewPrevNext( $this->offset, $this->limit,
-				'Special:Search',
+				SpecialPage::getTitleFor( 'Search' ),
 				wfArrayToCGI(
 					$this->powerSearchOptions(),
-					array( 'search' => $term ) ) );
+					array( 'search' => $term ) ),
+					($num < $this->limit) );
 			$wgOut->addHTML( "<br />{$prevnext}\n" );
 		}
 
@@ -198,6 +185,7 @@ class SpecialSearch {
 			} else {
 				$wgOut->addWikiText( '==' . wfMsg( 'notitlematches' ) . "==\n" );
 			}
+			$titleMatches->free();
 		}
 
 		if( $textMatches ) {
@@ -208,6 +196,7 @@ class SpecialSearch {
 				# Don't show the 'no text matches' if we received title matches
 				$wgOut->addWikiText( '==' . wfMsg( 'notextmatches' ) . "==\n" );
 			}
+			$textMatches->free();
 		}
 
 		if ( $num == 0 ) {
@@ -228,10 +217,9 @@ class SpecialSearch {
 	 */
 	function setupPage( $term ) {
 		global $wgOut;
-		global $wgArticleLanguage;
 		$wgOut->setPageTitle( wfMsg( 'searchresults' ) );
-		$term = empty($wgArticleLanguage) ? $term : $wgArticleLanguage . ":" . $term; //added by gkpr -- for mlmw
-		$wgOut->setSubtitle( htmlspecialchars( wfMsg( 'searchquery', $term ) ) );
+		$subtitlemsg = ( Title::newFromText($term) ? 'searchsubtitle' : 'searchsubtitleinvalid' );
+		$wgOut->setSubtitle( $wgOut->parse( wfMsg( $subtitlemsg, wfEscapeWikiText($term) ) ) );
 		$wgOut->setArticleRelated( false );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 	}
@@ -242,7 +230,7 @@ class SpecialSearch {
 	 *
 	 * @param User $user
 	 * @return array
-	 * @access private
+	 * @private
 	 */
 	function userNamespaces( &$user ) {
 		$arr = array();
@@ -260,7 +248,7 @@ class SpecialSearch {
 	 *
 	 * @param WebRequest $request
 	 * @return array
-	 * @access private
+	 * @private
 	 */
 	function powerSearch( &$request ) {
 		$arr = array();
@@ -275,7 +263,7 @@ class SpecialSearch {
 	/**
 	 * Reconstruct the 'power search' options for links
 	 * @return array
-	 * @access private
+	 * @private
 	 */
 	function powerSearchOptions() {
 		$opt = array();
@@ -322,32 +310,31 @@ class SpecialSearch {
 	function showHit( $result, $terms ) {
 		$fname = 'SpecialSearch::showHit';
 		wfProfileIn( $fname );
-		global $wgUser, $wgContLang;
+		global $wgUser, $wgContLang, $wgLang;
 
 		$t = $result->getTitle();
-		//for multilingual -- gkpr
-		$dbr =& wfGetDB( DB_SLAVE);
-	        if ( $dbr->tableExists('language') && $dbr->tableExists('user_languages') && $dbr->fieldExists('page', 'language_id')) {
-			$language = $dbr->selectField ( 'language', 'native_name', array('language_id' => $dbr->selectField ( 'page', 'language_id', array('page_title' => $t->mUrlform))), 'IGNORE' );
-		}
-		//endfor multilingual -- gkpr
-		
 		if( is_null( $t ) ) {
 			wfProfileOut( $fname );
 			return "<!-- Broken link in search result -->\n";
 		}
-		$sk =& $wgUser->getSkin();
+		$sk = $wgUser->getSkin();
 
-		$contextlines = $wgUser->getOption( 'contextlines' );
-		if ( '' == $contextlines ) { $contextlines = 5; }
-		$contextchars = $wgUser->getOption( 'contextchars' );
-		if ( '' == $contextchars ) { $contextchars = 50; }
+		$contextlines = $wgUser->getOption( 'contextlines',  5 );
+		$contextchars = $wgUser->getOption( 'contextchars', 50 );
 
 		$link = $sk->makeKnownLinkObj( $t );
+
+		//If page content is not readable, just return the title.
+		//This is not quite safe, but better than showing excerpts from non-readable pages
+		//Note that hiding the entry entirely would screw up paging.
+		if (!$t->userCanRead()) {
+			return "<li>{$link}</li>\n";
+		}
+
 		$revision = Revision::newFromTitle( $t );
 		$text = $revision->getText();
-		//line modified for multilingual
-		$size = $language ? wfMsg( 'nbytes', strlen( $text ) ) . " - " . wfMsg( 'yourlanguage' ) . $language : wfMsg( 'nbytes', strlen( $text ) );
+		$size = wfMsgExt( 'nbytes', array( 'parsemag', 'escape'),
+			$wgLang->formatNum( strlen( $text ) ) );
 
 		$lines = explode( "\n", $text );
 
@@ -363,6 +350,7 @@ class SpecialSearch {
 				break;
 			}
 			++$lineno;
+			$m = array();
 			if ( ! preg_match( $pat1, $line, $m ) ) {
 				continue;
 			}
@@ -419,7 +407,7 @@ class SpecialSearch {
 			'', '', '', '', '', # Dummy placeholders
 			$searchButton );
 
-		$title = Title::makeTitle( NS_SPECIAL, 'Search' );
+		$title = SpecialPage::getTitleFor( 'Search' );
 		$action = $title->escapeLocalURL();
 		return "<br /><br />\n<form id=\"powersearch\" method=\"get\" " .
 		  "action=\"$action\">\n{$ret}\n</form>\n";

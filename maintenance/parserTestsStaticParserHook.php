@@ -5,8 +5,7 @@ if ( ! defined( 'MEDIAWIKI' ) )
  * A basic extension that's used by the parser tests to test whether the parser
  * calls extensions when they're called inside comments, it shouldn't do that
  *
- * @package MediaWiki
- * @subpackage Maintenance
+ * @addtogroup Maintenance
  *
  * @author Ævar Arnfjörð Bjarmason <avarab@gmail.com>
  * @copyright Copyright © 2005, 2006 Ævar Arnfjörð Bjarmason
@@ -36,7 +35,9 @@ function wfParserTestStaticParserHookHook( $in, $argv ) {
 		// wtf?
 		die(
 			"\nCall this extension as <statictag>string</statictag> or as" .
-			" <statictag action=flush/>, not in any other way.\n"
+			" <statictag action=flush/>, not in any other way.\n" .
+			"text: " . var_export( $in, true ) . "\n" .
+			"argv: " . var_export( $argv, true ) . "\n"
 		);
 }
 ?>

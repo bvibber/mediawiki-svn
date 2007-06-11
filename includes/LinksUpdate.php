@@ -1,19 +1,15 @@
 <?php
 /**
- * See deferred.txt
- * @package MediaWiki
- */
-
-/**
- * @todo document
- * @package MediaWiki
+ * See docs/deferred.txt
+ * 
+ * @todo document (e.g. one-sentence top-level class description).
  */
 class LinksUpdate {
 
 	/**@{{
 	 * @private
 	 */
-	var $mId,            //!< Page ID of the article linked from
+	var 	$mId,            //!< Page ID of the article linked from
 		$mTitle,         //!< Title object of the article linked from
 		$mLinks,         //!< Map of title strings to IDs for the links in the document
 		$mImages,        //!< DB keys of the images used, in the array key only
@@ -41,10 +37,10 @@ class LinksUpdate {
 		} else {
 			$this->mOptions = array( 'FOR UPDATE' );
 		}
-		$this->mDb =& wfGetDB( DB_MASTER );
+		$this->mDb = wfGetDB( DB_MASTER );
 
 		if ( !is_object( $title ) ) {
-			wfDebugDieBacktrace( "The calling convention to LinksUpdate::LinksUpdate() has changed. " .
+			throw new MWException( "The calling convention to LinksUpdate::LinksUpdate() has changed. " .
 				"Please see Article::editUpdates() for an invocation example.\n" );
 		}
 		$this->mTitle = $title;
@@ -80,12 +76,13 @@ class LinksUpdate {
 		} else {
 			$this->doIncrementalUpdate();
 		}
+		wfRunHooks( 'TitleLinkUpdatesAfterCompletion', array( &$this->mTitle ) );
 	}
 
 	function doIncrementalUpdate() {
 		$fname = 'LinksUpdate::doIncrementalUpdate';
 		wfProfileIn( $fname );
-
+		
 		# Page links
 		$existing = $this->getExistingLinks();
 		$this->incrTableUpdate( 'pagelinks', 'pl', $this->getLinkDeletions( $existing ),
@@ -115,15 +112,6 @@ class LinksUpdate {
 		$this->incrTableUpdate( 'templatelinks', 'tl', $this->getTemplateDeletions( $existing ),
 			$this->getTemplateInsertions( $existing ) );
 
-		# Refresh links of all pages including this page
-		if ( $this->mRecursive ) {
-			$tlto = $this->mTitle->getTemplateLinksTo();
-			if ( count( $tlto ) ) {
-				require_once( 'JobQueue.php' );
-				Job::queueLinksJobs( $tlto );
-			}
-		}
-
 		# Category links
 		$existing = $this->getExistingCategories();
 		$this->incrTableUpdate( 'categorylinks', 'cl', $this->getCategoryDeletions( $existing ),
@@ -133,6 +121,12 @@ class LinksUpdate {
 		$categoryUpdates = array_diff_assoc( $existing, $this->mCategories ) + array_diff_assoc( $this->mCategories, $existing );
 		$this->invalidateCategories( $categoryUpdates );
 
+		# Refresh links of all pages including this page
+		# This will be in a separate transaction
+		if ( $this->mRecursive ) {
+			$this->queueRecursiveJobs();
+		}
+		
 		wfProfileOut( $fname );
 	}
 
@@ -151,15 +145,6 @@ class LinksUpdate {
 		$existing = $this->getExistingImages();
 		$imageUpdates = array_diff_key( $existing, $this->mImages ) + array_diff_key( $this->mImages, $existing );
 
-		# Refresh links of all pages including this page
-		if ( $this->mRecursive ) {
-			$tlto = $this->mTitle->getTemplateLinksTo();
-			if ( count( $tlto ) ) {
-				require_once( 'JobQueue.php' );
-				Job::queueLinksJobs( $tlto );
-			}
-		}
-
 		$this->dumbTableUpdate( 'pagelinks',     $this->getLinkInsertions(),     'pl_from' );
 		$this->dumbTableUpdate( 'imagelinks',    $this->getImageInsertions(),    'il_from' );
 		$this->dumbTableUpdate( 'categorylinks', $this->getCategoryInsertions(), 'cl_from' );
@@ -171,7 +156,45 @@ class LinksUpdate {
 		$this->invalidateCategories( $categoryUpdates );
 		$this->invalidateImageDescriptions( $imageUpdates );
 
+		# Refresh links of all pages including this page
+		# This will be in a separate transaction
+		if ( $this->mRecursive ) {
+			$this->queueRecursiveJobs();
+		}
+
 		wfProfileOut( $fname );
+	}
+
+	function queueRecursiveJobs() {
+		wfProfileIn( __METHOD__ );
+		
+		$batchSize = 100;
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select( array( 'templatelinks', 'page' ), 
+			array( 'page_namespace', 'page_title' ),
+			array( 
+				'page_id=tl_from', 
+				'tl_namespace' => $this->mTitle->getNamespace(),
+				'tl_title' => $this->mTitle->getDBkey()
+			), __METHOD__
+		);
+
+		$done = false;
+		while ( !$done ) {
+			$jobs = array();
+			for ( $i = 0; $i < $batchSize; $i++ ) {
+				$row = $dbr->fetchObject( $res );
+				if ( !$row ) {
+					$done = true;
+					break;
+				}
+				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+				$jobs[] = Job::factory( 'refreshLinks', $title );
+			}
+			Job::batchInsert( $jobs );
+		}
+		$dbr->freeResult( $res );
+		wfProfileOut( __METHOD__ );
 	}
 	
 	/**

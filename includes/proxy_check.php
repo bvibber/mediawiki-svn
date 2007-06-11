@@ -1,11 +1,10 @@
 <?php
 /**
  * Command line script to check for an open proxy at a specified location
- * @package MediaWiki
  */
 
 if( php_sapi_name() != 'cli' ) {
-	die( -1 );
+	die( 1 );
 }
 
 /**

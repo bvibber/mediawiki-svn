@@ -1,14 +1,12 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
 /**
- *
+ * You will need the extension MogileClient to use this special page.
  */
-require_once( 'SpecialUpload.php' );
 require_once( 'MogileFS.php' );
 
 /**
@@ -20,7 +18,10 @@ function wfSpecialUploadMogile() {
 	$form->execute();
 }
 
-/** @package MediaWiki */
+/**
+ * Extends Special:Upload with MogileFS.
+ * @addtogroup SpecialPage
+ */
 class UploadFormMogile extends UploadForm {
 	/**
 	 * Move the uploaded file from its temporary location to the final
@@ -42,7 +43,7 @@ class UploadFormMogile extends UploadForm {
 		if( $mfs->getPaths( $this->mSavedFile )) {
 			$this->mUploadOldVersion = gmdate( 'YmdHis' ) . "!{$saveName}";
 			if( !$mfs->rename( $this->mSavedFile, "archive!{$this->mUploadOldVersion}" ) ) {
-				$wgOut->fileRenameError( $this->mSavedFile,
+				$wgOut->showFileRenameError( $this->mSavedFile,
 				  "archive!{$this->mUploadOldVersion}" );
 				return false;
 			}
@@ -52,12 +53,12 @@ class UploadFormMogile extends UploadForm {
 
 		if ( $this->mStashed ) {
 			if (!$mfs->rename($tempName,$this->mSavedFile)) {
-				$wgOut->fileRenameError($tempName, $this->mSavedFile );
+				$wgOut->showFileRenameError($tempName, $this->mSavedFile );
 				return false;
 			}
 		} else {
 			if ( !$mfs->saveFile($this->mSavedFile,'normal',$tempName )) {
-				$wgOut->fileCopyError( $tempName, $this->mSavedFile );
+				$wgOut->showFileCopyError( $tempName, $this->mSavedFile );
 				return false;
 			}
 			unlink($tempName);
@@ -83,7 +84,7 @@ class UploadFormMogile extends UploadForm {
 		$stash = 'stash!' . gmdate( "YmdHis" ) . '!' . $saveName;
 		$mfs = MogileFS::NewMogileFS();
 		if ( !$mfs->saveFile( $stash, 'normal', $tempName ) ) {
-			$wgOut->fileCopyError( $tempName, $stash );
+			$wgOut->showFileCopyError( $tempName, $stash );
 			return false;
 		}
 		unlink($tempName);
@@ -119,12 +120,16 @@ class UploadFormMogile extends UploadForm {
 	/**
 	 * Remove a temporarily kept file stashed by saveTempUploadedFile().
 	 * @access private
+	 * @return success
 	 */
 	function unsaveUploadedFile() {
 		global $wgOut;
 		$mfs = MogileFS::NewMogileFS();
 		if ( ! $mfs->delete( $this->mUploadTempName ) ) {
-			$wgOut->fileDeleteError( $this->mUploadTempName );
+			$wgOut->showFileDeleteError( $this->mUploadTempName );
+			return false;
+		} else {
+			return true;
 		}
 	}
 }

@@ -1,7 +1,6 @@
 <?php
 /**
  * Contain everything related to <math> </math> parsing
- * @package MediaWiki
  */
 
 /**
@@ -11,7 +10,6 @@
  *
  * by Tomasz Wegrzanowski, with additions by Brion Vibber (2003, 2004)
  *
- * @package MediaWiki
  */
 class MathRenderer {
 	var $mode = MW_MATH_MODERN;
@@ -22,7 +20,7 @@ class MathRenderer {
 	var $mathml = '';
 	var $conservativeness = 0;
 
-	function MathRenderer( $tex ) {
+	function __construct( $tex ) {
 		$this->tex = $tex;
  	}
 
@@ -38,6 +36,9 @@ class MathRenderer {
 		if( $this->mode == MW_MATH_SOURCE ) {
 			# No need to render or parse anything more!
 			return ('$ '.htmlspecialchars( $this->tex ).' $');
+		}
+		if( $this->tex == '' ) {
+			return; # bug 8372
 		}
 
 		if( !$this->_recall() ) {
@@ -73,13 +74,15 @@ class MathRenderer {
 			}
 
 			$retval = substr ($contents, 0, 1);
+			$errmsg = '';
 			if (($retval == 'C') || ($retval == 'M') || ($retval == 'L')) {
-				if ($retval == 'C')
+				if ($retval == 'C') {
 					$this->conservativeness = 2;
-				else if ($retval == 'M')
+				} else if ($retval == 'M') {
 					$this->conservativeness = 1;
-				else
+				} else {
 					$this->conservativeness = 0;
+				}
 				$outdata = substr ($contents, 33);
 
 				$i = strpos($outdata, "\000");
@@ -88,12 +91,13 @@ class MathRenderer {
 				$this->mathml = substr($outdata, $i+1);
 			} else if (($retval == 'c') || ($retval == 'm') || ($retval == 'l'))  {
 				$this->html = substr ($contents, 33);
-				if ($retval == 'c')
+				if ($retval == 'c') {
 					$this->conservativeness = 2;
-				else if ($retval == 'm')
+				} else if ($retval == 'm') {
 					$this->conservativeness = 1;
-				else
+				} else {
 					$this->conservativeness = 0;
+				}
 				$this->mathml = NULL;
 			} else if ($retval == 'X') {
 				$this->html = NULL;
@@ -106,14 +110,23 @@ class MathRenderer {
 			} else {
 				$errbit = htmlspecialchars( substr($contents, 1) );
 				switch( $retval ) {
-					case 'E': return $this->_error( 'math_lexing_error', $errbit );
-					case 'S': return $this->_error( 'math_syntax_error', $errbit );
-					case 'F': return $this->_error( 'math_unknown_function', $errbit );
-					default:  return $this->_error( 'math_unknown_error', $errbit );
+					case 'E': $errmsg = $this->_error( 'math_lexing_error', $errbit );
+					case 'S': $errmsg = $this->_error( 'math_syntax_error', $errbit );
+					case 'F': $errmsg = $this->_error( 'math_unknown_function', $errbit );
+					default:  $errmsg = $this->_error( 'math_unknown_error', $errbit );
 				}
 			}
 
-			$this->hash = substr ($contents, 1, 32);
+			if ( !$errmsg ) {
+				 $this->hash = substr ($contents, 1, 32);
+			}
+
+			wfRunHooks( 'MathAfterTexvc', array( &$this, &$errmsg ) );
+
+			if ( $errmsg ) {
+				 return $errmsg;
+			}
+
 			if (!preg_match("/^[a-f0-9]{32}$/", $this->hash)) {
 				return $this->_error( 'math_unknown_error' );
 			}
@@ -141,11 +154,11 @@ class MathRenderer {
 
 				$md5_sql = pack('H32', $this->md5); # Binary packed, not hex
 
-				$dbw =& wfGetDB( DB_MASTER );
+				$dbw = wfGetDB( DB_MASTER );
 				$dbw->replace( 'math', array( 'math_inputhash' ),
 				  array(
-					'math_inputhash' => $md5_sql,
-					'math_outputhash' => $outmd5_sql,
+					'math_inputhash' => $dbw->encodeBlob($md5_sql),
+					'math_outputhash' => $dbw->encodeBlob($outmd5_sql),
 					'math_html_conservativeness' => $this->conservativeness,
 					'math_html' => $this->html,
 					'math_mathml' => $this->mathml,
@@ -170,16 +183,16 @@ class MathRenderer {
 		$fname = 'MathRenderer::_recall';
 
 		$this->md5 = md5( $this->tex );
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$rpage = $dbr->selectRow( 'math',
 			array( 'math_outputhash','math_html_conservativeness','math_html','math_mathml' ),
-			array( 'math_inputhash' => pack("H32", $this->md5)), # Binary packed, not hex
+			array( 'math_inputhash' => $dbr->encodeBlob(pack("H32", $this->md5))), # Binary packed, not hex
 			$fname
 		);
 
 		if( $rpage !== false ) {
 			# Tailing 0x20s can get dropped by the database, add it back on if necessary:
-			$xhash = unpack( 'H32md5', $rpage->math_outputhash . "                " );
+			$xhash = unpack( 'H32md5', $dbr->decodeBlob($rpage->math_outputhash) . "                " );
 			$this->hash = $xhash ['md5'];
 
 			$this->conservativeness = $rpage->math_html_conservativeness;
@@ -249,14 +262,11 @@ class MathRenderer {
 		return $path;
 	}
 
-
+	public static function renderMath( $tex ) {
+		global $wgUser;
+		$math = new MathRenderer( $tex );
+		$math->setOutputMode( $wgUser->getOption('math'));
+		return $math->render();
+	}
 }
-
-function renderMath( $tex ) {
-	global $wgUser;
-	$math = new MathRenderer( $tex );
-	$math->setOutputMode( $wgUser->getOption('math'));
-	return $math->render();
-}
-
 ?>

@@ -1,8 +1,12 @@
 <?php
 /**
  * A few constants that might be needed during LocalSettings.php
- * @package MediaWiki
  */
+
+/**
+ * Version constants for the benefit of extensions
+ */
+define( 'MW_SPECIALPAGE_VERSION', 2 );
 
 /**#@+
  * Database related constants
@@ -14,6 +18,17 @@ define( 'DBO_TRX', 8 );
 define( 'DBO_DEFAULT', 16 );
 define( 'DBO_PERSISTENT', 32 );
 /**#@-*/
+
+# Valid database indexes
+# Operation-based indexes
+define( 'DB_SLAVE', -1 );     # Read from the slave (or only server)
+define( 'DB_MASTER', -2 );    # Write to master (or only server)
+define( 'DB_LAST', -3 );     # Whatever database was used last
+
+# Obsolete aliases
+define( 'DB_READ', -1 );
+define( 'DB_WRITE', -2 );
+
 
 /**#@+
  * Virtual namespaces; don't appear in the page database
@@ -70,10 +85,8 @@ define( 'MW_MATH_MATHML', 5 );
 /**#@-*/
 
 /**
- * User rights management
- * a big array of string defining a right, that's how they are saved in the
- * database.
- * @todo Is this necessary?
+ * User rights list
+ * @deprecated
  */
 $wgAvailableRights = array(
 	'block',
@@ -103,6 +116,7 @@ define( 'CACHE_NONE', 0 );       // Do not cache
 define( 'CACHE_DB', 1 );         // Store cache objects in the DB
 define( 'CACHE_MEMCACHED', 2 );  // MemCached, must specify servers in $wgMemCacheServers
 define( 'CACHE_ACCEL', 3 );      // eAccelerator or Turck, whichever is available
+define( 'CACHE_DBA', 4 );        // Use PHP's DBA extension to store in a DBM-style database
 /**#@-*/
 
 
@@ -146,10 +160,15 @@ define( 'ALF_NO_BLOCK_LOCK', 8 );
  * Date format selectors; used in user preference storage and by
  * Language::date() and co.
  */
-define( 'MW_DATE_DEFAULT', '0' );
+/*define( 'MW_DATE_DEFAULT', '0' );
 define( 'MW_DATE_MDY', '1' );
 define( 'MW_DATE_DMY', '2' );
 define( 'MW_DATE_YMD', '3' );
+define( 'MW_DATE_ISO', 'ISO 8601' );*/
+define( 'MW_DATE_DEFAULT', 'default' );
+define( 'MW_DATE_MDY', 'mdy' );
+define( 'MW_DATE_DMY', 'dmy' );
+define( 'MW_DATE_YMD', 'ymd' );
 define( 'MW_DATE_ISO', 'ISO 8601' );
 /**#@-*/
 
@@ -163,6 +182,84 @@ define( 'RC_MOVE', 2);
 define( 'RC_LOG', 3);
 define( 'RC_MOVE_OVER_REDIRECT', 4);
 /**#@-*/
+
+/**#@+
+ * Article edit flags
+ */
+define( 'EDIT_NEW', 1 );
+define( 'EDIT_UPDATE', 2 );
+define( 'EDIT_MINOR', 4 ); 
+define( 'EDIT_SUPPRESS_RC', 8 );
+define( 'EDIT_FORCE_BOT', 16 );
+define( 'EDIT_DEFER_UPDATES', 32 );
+define( 'EDIT_AUTOSUMMARY', 64 );
+/**#@-*/
+
+/** 
+ * Flags for Database::makeList() 
+ * These are also available as Database class constants
+ */
+define( 'LIST_COMMA', 0 );
+define( 'LIST_AND', 1 );
+define( 'LIST_SET', 2 );
+define( 'LIST_NAMES', 3);
+define( 'LIST_OR', 4);
+
+/**
+ * Unicode and normalisation related
+ */
+define( 'UNICODE_HANGUL_FIRST', 0xac00 );
+define( 'UNICODE_HANGUL_LAST',  0xd7a3 );
+
+define( 'UNICODE_HANGUL_LBASE', 0x1100 );
+define( 'UNICODE_HANGUL_VBASE', 0x1161 );
+define( 'UNICODE_HANGUL_TBASE', 0x11a7 );
+
+define( 'UNICODE_HANGUL_LCOUNT', 19 );
+define( 'UNICODE_HANGUL_VCOUNT', 21 );
+define( 'UNICODE_HANGUL_TCOUNT', 28 );
+define( 'UNICODE_HANGUL_NCOUNT', UNICODE_HANGUL_VCOUNT * UNICODE_HANGUL_TCOUNT );
+
+define( 'UNICODE_HANGUL_LEND', UNICODE_HANGUL_LBASE + UNICODE_HANGUL_LCOUNT - 1 );
+define( 'UNICODE_HANGUL_VEND', UNICODE_HANGUL_VBASE + UNICODE_HANGUL_VCOUNT - 1 );
+define( 'UNICODE_HANGUL_TEND', UNICODE_HANGUL_TBASE + UNICODE_HANGUL_TCOUNT - 1 );
+
+define( 'UNICODE_SURROGATE_FIRST', 0xd800 );
+define( 'UNICODE_SURROGATE_LAST', 0xdfff );
+define( 'UNICODE_MAX', 0x10ffff );
+define( 'UNICODE_REPLACEMENT', 0xfffd );
+
+
+define( 'UTF8_HANGUL_FIRST', "\xea\xb0\x80" /*codepointToUtf8( UNICODE_HANGUL_FIRST )*/ );
+define( 'UTF8_HANGUL_LAST', "\xed\x9e\xa3" /*codepointToUtf8( UNICODE_HANGUL_LAST )*/ );
+
+define( 'UTF8_HANGUL_LBASE', "\xe1\x84\x80" /*codepointToUtf8( UNICODE_HANGUL_LBASE )*/ );
+define( 'UTF8_HANGUL_VBASE', "\xe1\x85\xa1" /*codepointToUtf8( UNICODE_HANGUL_VBASE )*/ );
+define( 'UTF8_HANGUL_TBASE', "\xe1\x86\xa7" /*codepointToUtf8( UNICODE_HANGUL_TBASE )*/ );
+
+define( 'UTF8_HANGUL_LEND', "\xe1\x84\x92" /*codepointToUtf8( UNICODE_HANGUL_LEND )*/ );
+define( 'UTF8_HANGUL_VEND', "\xe1\x85\xb5" /*codepointToUtf8( UNICODE_HANGUL_VEND )*/ );
+define( 'UTF8_HANGUL_TEND', "\xe1\x87\x82" /*codepointToUtf8( UNICODE_HANGUL_TEND )*/ );
+
+define( 'UTF8_SURROGATE_FIRST', "\xed\xa0\x80" /*codepointToUtf8( UNICODE_SURROGATE_FIRST )*/ );
+define( 'UTF8_SURROGATE_LAST', "\xed\xbf\xbf" /*codepointToUtf8( UNICODE_SURROGATE_LAST )*/ );
+define( 'UTF8_MAX', "\xf4\x8f\xbf\xbf" /*codepointToUtf8( UNICODE_MAX )*/ );
+define( 'UTF8_REPLACEMENT', "\xef\xbf\xbd" /*codepointToUtf8( UNICODE_REPLACEMENT )*/ );
+#define( 'UTF8_REPLACEMENT', '!' );
+
+define( 'UTF8_OVERLONG_A', "\xc1\xbf" );
+define( 'UTF8_OVERLONG_B', "\xe0\x9f\xbf" );
+define( 'UTF8_OVERLONG_C', "\xf0\x8f\xbf\xbf" );
+
+# These two ranges are illegal
+define( 'UTF8_FDD0', "\xef\xb7\x90" /*codepointToUtf8( 0xfdd0 )*/ );
+define( 'UTF8_FDEF', "\xef\xb7\xaf" /*codepointToUtf8( 0xfdef )*/ );
+define( 'UTF8_FFFE', "\xef\xbf\xbe" /*codepointToUtf8( 0xfffe )*/ );
+define( 'UTF8_FFFF', "\xef\xbf\xbf" /*codepointToUtf8( 0xffff )*/ );
+
+define( 'UTF8_HEAD', false );
+define( 'UTF8_TAIL', true );
+
 
 
 ?>

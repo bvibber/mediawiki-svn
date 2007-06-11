@@ -1,26 +1,25 @@
 <?php
 /**
  *
- * @package MediaWiki
- * @subpackage SpecialPage
+ * @addtogroup SpecialPage
  */
 
-/**
- *
- */
 require_once('UserMailer.php');
 
+/**
+ * @todo document
+ */
 function wfSpecialEmailuser( $par ) {
 	global $wgUser, $wgOut, $wgRequest, $wgEnableEmail, $wgEnableUserEmail;
 
 	if( !( $wgEnableEmail && $wgEnableUserEmail ) ) {
-		$wgOut->errorpage( "nosuchspecialpage", "nospecialpagetext" );
+		$wgOut->showErrorPage( "nosuchspecialpage", "nospecialpagetext" );
 		return;
 	}
 
 	if( !$wgUser->canSendEmail() ) {
 		wfDebug( "User can't send.\n" );
-		$wgOut->errorpage( "mailnologin", "mailnologintext" );
+		$wgOut->showErrorPage( "mailnologin", "mailnologintext" );
 		return;
 	}
 
@@ -28,30 +27,44 @@ function wfSpecialEmailuser( $par ) {
 	$target = isset($par) ? $par : $wgRequest->getVal( 'target' );
 	if ( "" == $target ) {
 		wfDebug( "Target is empty.\n" );
-		$wgOut->errorpage( "notargettitle", "notargettext" );
+		$wgOut->showErrorPage( "notargettitle", "notargettext" );
 		return;
 	}
 
 	$nt = Title::newFromURL( $target );
 	if ( is_null( $nt ) ) {
 		wfDebug( "Target is invalid title.\n" );
-		$wgOut->errorpage( "notargettitle", "notargettext" );
+		$wgOut->showErrorPage( "notargettitle", "notargettext" );
 		return;
 	}
 
 	$nu = User::newFromName( $nt->getText() );
 	if( is_null( $nu ) || !$nu->canReceiveEmail() ) {
 		wfDebug( "Target is invalid user or can't receive.\n" );
-		$wgOut->errorpage( "noemailtitle", "noemailtext" );
+		$wgOut->showErrorPage( "noemailtitle", "noemailtext" );
+		return;
+	}
+
+	if ( $wgUser->isBlockedFromEmailUser() ) {
+		// User has been blocked from sending e-mail. Show the std blocked form.
+		wfDebug( "User is blocked from sending e-mail.\n" );
+		$wgOut->blockedPage();
 		return;
 	}
 
 	$f = new EmailUserForm( $nu );
 
 	if ( "success" == $action ) {
-		$f->showSuccess();
+		$f->showSuccess( $nu );
 	} else if ( "submit" == $action && $wgRequest->wasPosted() &&
-		$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) {
+				$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) ) ) 
+	{
+		# Check against the rate limiter
+		if( $wgUser->pingLimiter( 'emailuser' ) ) {
+			$wgOut->rateLimited();
+			return;
+		}
+
 		$f->doSubmit();
 	} else {
 		$f->showForm();
@@ -59,14 +72,14 @@ function wfSpecialEmailuser( $par ) {
 }
 
 /**
- * @todo document
- * @package MediaWiki
- * @subpackage SpecialPage
+ * Implements the Special:Emailuser web interface, and invokes userMailer for sending the email message.
+ * @addtogroup SpecialPage
  */
 class EmailUserForm {
 
 	var $target;
 	var $text, $subject;
+	var $cc_me;     // Whether user requested to be sent a separate copy of their email.
 
 	/**
 	 * @param User $target
@@ -76,6 +89,7 @@ class EmailUserForm {
 		$this->target = $target;
 		$this->text = $wgRequest->getText( 'wpText' );
 		$this->subject = $wgRequest->getText( 'wpSubject' );
+		$this->cc_me = $wgRequest->getBool( 'wpCCMe' );
 	}
 
 	function showForm() {
@@ -95,9 +109,10 @@ class EmailUserForm {
 		$emr = wfMsg( "emailsubject" );
 		$emm = wfMsg( "emailmessage" );
 		$ems = wfMsg( "emailsend" );
+		$emc = wfMsg( "emailccme" );
 		$encSubject = htmlspecialchars( $this->subject );
 
-		$titleObj = Title::makeTitle( NS_SPECIAL, "Emailuser" );
+		$titleObj = SpecialPage::getTitleFor( "Emailuser" );
 		$action = $titleObj->escapeLocalURL( "target=" .
 			urlencode( $this->target->getName() ) . "&action=submit" );
 		$token = $wgUser->editToken();
@@ -117,9 +132,10 @@ class EmailUserForm {
 </td>
 </tr>
 </table>
-<span id='wpTextLabel'><label for=\"wpText\">{$emm}:</label><br></span>
+<span id='wpTextLabel'><label for=\"wpText\">{$emm}:</label><br /></span>
 <textarea name=\"wpText\" rows='20' cols='80' wrap='virtual' style=\"width: 100%;\">" . htmlspecialchars( $this->text ) .
 "</textarea>
+" . wfCheckLabel( $emc, 'wpCCMe', 'wpCCMe', $wgUser->getBoolOption( 'ccmeonemails' ) ) . "<br />
 <input type='submit' name=\"wpSend\" value=\"{$ems}\" />
 <input type='hidden' name='wpEditToken' value=\"$token\" />
 </form>\n" );
@@ -140,7 +156,26 @@ class EmailUserForm {
 			if( WikiError::isError( $mailResult ) ) {
 				$wgOut->addHTML( wfMsg( "usermailererror" ) . $mailResult);
 			} else {
-				$titleObj = Title::makeTitle( NS_SPECIAL, "Emailuser" );
+				
+				// if the user requested a copy of this mail, do this now,
+				// unless they are emailing themselves, in which case one copy of the message is sufficient.
+				if ($this->cc_me && $to != $from) {
+					$cc_subject = wfMsg('emailccsubject', $this->target->getName(), $subject);
+					if( wfRunHooks( 'EmailUser', array( &$from, &$from, &$cc_subject, &$this->text ) ) ) {
+						$ccResult = userMailer( $from, $from, $cc_subject, $this->text );
+						if( WikiError::isError( $ccResult ) ) {
+							// At this stage, the user's CC mail has failed, but their 
+							// original mail has succeeded. It's unlikely, but still, what to do?
+							// We can either show them an error, or we can say everything was fine,
+							// or we can say we sort of failed AND sort of succeeded. Of these options, 
+							// simply saying there was an error is probably best.
+							$wgOut->addHTML( wfMsg( "usermailererror" ) . $ccResult);
+							return;
+						}
+					}
+				}
+				
+				$titleObj = SpecialPage::getTitleFor( "Emailuser" );
 				$encTarget = wfUrlencode( $this->target->getName() );
 				$wgOut->redirect( $titleObj->getFullURL( "target={$encTarget}&action=success" ) );
 				wfRunHooks( 'EmailUserComplete', array( $to, $from, $subject, $this->text ) );
@@ -148,13 +183,13 @@ class EmailUserForm {
 		}
 	}
 
-	function showSuccess() {
+	function showSuccess( &$user ) {
 		global $wgOut;
 
 		$wgOut->setPagetitle( wfMsg( "emailsent" ) );
 		$wgOut->addHTML( wfMsg( "emailsenttext" ) );
 
-		$wgOut->returnToMain( false );
+		$wgOut->returnToMain( false, $user->getUserPage() );
 	}
 }
 ?>
