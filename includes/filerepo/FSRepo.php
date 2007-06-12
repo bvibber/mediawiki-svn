@@ -226,13 +226,16 @@ class FSRepo {
 	 * @param string $srcPath The current location of the file.
 	 */
 	function storeTemp( $originalName, $srcPath ) {
-		$dstRel = $this->getHashPath( $originalName ) . 
-			gmdate( "YmdHis" ) . '!' . $originalName;
+		$date = gmdate( "YmdHis" );
+		$hashPath = $this->getHashPath( $originalName );
+		$dstRel = "$hashPath$date!$originalName";
+		$dstUrlRel = $hashPath . $date . '!' . rawurlencode( $originalName );
+
 		$result = $this->store( $srcPath, 'temp', $dstRel );
 		if ( WikiError::isError( $result ) ) {
 			return $result;
 		} else {
-			return $this->getVirtualUrl( "temp/$dstRel" );
+			return $this->getVirtualUrl( 'temp' ) . '/' . $dstUrlRel;
 		}
 	}
 
@@ -318,7 +321,7 @@ class FSRepo {
 	
 	/**
 	 * Get a relative path including trailing slash, e.g. f/fa/
-	 * If the repo is not hashed, returns a slash
+	 * If the repo is not hashed, returns an empty string
 	 */
 	function getHashPath( $name ) {
 		if ( $this->isHashed() ) {
@@ -329,7 +332,7 @@ class FSRepo {
 			}
 			return $path;
 		} else {
-			return '/';
+			return '';
 		}
 	}
 

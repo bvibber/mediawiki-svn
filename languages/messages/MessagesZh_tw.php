@@ -362,7 +362,6 @@ MySQL返回錯誤「$3: $4」。',
 'badtitle'             => '錯誤的標題',
 'badtitletext'         => '所請求頁面的標題是無效的、不存在，跨語言或跨wiki連結的標題錯誤。',
 'perfdisabled'         => '抱歉！由於此項操作有可能造成資料庫癱瘓，目前暫時無法使用。',
-'perfdisabledsub'      => '這裡是自$1的複製版本：', # obsolete?
 'perfcached'           => '下列是快取資料，因此可能不是最新的:',
 'perfcachedts'         => '下列是快取資料，其最後更新時間是$1。',
 'querypage-no-updates' => '當前禁止對此頁面進行更新。此處的資料將不能被立即重新整理。',
@@ -504,9 +503,9 @@ MySQL返回錯誤「$3: $4」。',
 對於被查封者：$7
 
 你可以聯絡$1或者其他的[[{{MediaWiki:grouppage-sysop}}|管理員]]，討論這次查封。
+除非你已經在你的[[Special:Preferences|帳號參數設置]]中設定了一個有效的電子郵件地址，否則你是不能使用「電郵這位用戶」的功能。當設定了一個有效的電子郵件地址後，這個功能是不會封鎖的。
 
-除非你已經在你的[[Special:Preferences|帳號參數設置]]中設定了一個有效的電子郵件地址，
-否則你是不能使用「電郵這位用戶」的功能。你的IP地址是$3，而該查封ID是 #$5。 請你在所有查詢中註明這地址及／或查封ID。",
+你的IP地址是$3，而該查封ID是 #$5。 請你在所有查詢中註明這地址及／或查封ID。",
 'autoblockedtext'           => '你的IP地址已經被自動查封，由於先前的另一位用戶被$1所查封。
 而查封的原因是：
 
@@ -515,9 +514,7 @@ MySQL返回錯誤「$3: $4」。',
 這次查封的到期時間是：$6
 
 你可以聯絡$1或者其他的[[{{MediaWiki:grouppage-sysop}}|管理員]]，討論這次查封。
-
-除非你已經在你的[[Special:Preferences|帳號參數設置]]中設定了一個有效的電子郵件地址，
-否則你是不能使用「電郵這位用戶」的功能。
+除非你已經在你的[[Special:Preferences|帳號參數設置]]中設定了一個有效的電子郵件地址，否則你是不能使用「電郵這位用戶」的功能。當設定了一個有效的電子郵件地址後，這個功能是不會封鎖的。
 
 您的查封ID是 $5。 請你在所有查詢中註明這個查封ID。',
 'blockedoriginalsource'     => "以下是'''$1'''的原始碼:",
@@ -598,7 +595,6 @@ MySQL返回錯誤「$3: $4」。',
 
 你應該要考慮一下繼續編輯這一個頁面是否合適。
 為方便起見，這一個頁面的刪除記錄已經在下面提供:",
-'recreate-deleted-dismiss' => '(關閉)',
 
 # "Undo" feature
 'undo-success' => '該編輯可以被撤銷。請檢查以下對比以核實這正是您想做的，然後儲存以下更改以完成撤銷編輯。',
@@ -1406,6 +1402,7 @@ $NEWPAGE
 ** 不能接受的用戶名',
 'ipbanononly'                 => '僅阻止匿名用戶',
 'ipbcreateaccount'            => '阻止創建新帳號',
+'ipbemailban'                 => '阻止用戶傳送電郵',
 'ipbenableautoblock'          => '自動查封此用戶最後所用的IP位址，以及後來試圖編輯所用的所有位址',
 'ipbsubmit'                   => '查封該地址',
 'ipbother'                    => '其它時間:',
@@ -1435,6 +1432,7 @@ $NEWPAGE
 'anononlyblock'               => '僅限匿名用戶',
 'noautoblockblock'            => '禁用自動查封',
 'createaccountblock'          => '禁止創建賬戶',
+'emailblock'                  => '禁止電子郵件',
 'ipblocklist-empty'           => '查封列表為空。',
 'ipblocklist-no-results'      => '所要求的IP地址/用戶名沒有被查封。',
 'blocklink'                   => '禁封',
@@ -1448,6 +1446,7 @@ $NEWPAGE
 'block-log-flags-anononly'    => '僅限匿名用戶',
 'block-log-flags-nocreate'    => '禁止此IP/用戶建立新帳戶',
 'block-log-flags-noautoblock' => '停用自動封禁',
+'block-log-flags-noemail'     => '禁止電子郵件',
 'range_block_disabled'        => '只有管理員才能創建禁止查封的範圍。',
 'ipb_expiry_invalid'          => '無效的終止時間。',
 'ipb_already_blocked'         => '已經封鎖"$1"',
@@ -1831,7 +1830,6 @@ Variants for Chinese language
 'exif-exposuretime'                => '曝光時間',
 'exif-exposuretime-format'         => '$1 秒 ($2)',
 'exif-fnumber'                     => '光圈(F值)',
-'exif-fnumber-format'              => 'f/$1',
 'exif-exposureprogram'             => '曝光模式',
 'exif-spectralsensitivity'         => '感光',
 'exif-isospeedratings'             => 'ISO 速率',
@@ -1846,7 +1844,6 @@ Variants for Chinese language
 'exif-lightsource'                 => '光源',
 'exif-flash'                       => '閃光燈',
 'exif-focallength'                 => '焦距',
-'exif-focallength-format'          => '$1 mm',
 'exif-subjectarea'                 => '主體區域',
 'exif-flashenergy'                 => '閃光燈強度',
 'exif-spatialfrequencyresponse'    => '空間頻率附應',
@@ -1906,10 +1903,6 @@ Variants for Chinese language
 
 # EXIF attributes
 'exif-compression-1' => '未壓縮',
-'exif-compression-6' => 'JPEG',
-
-'exif-photometricinterpretation-2' => 'RGB',
-'exif-photometricinterpretation-6' => 'YCbCr',
 
 'exif-unknowndate' => '未知的日期',
 
@@ -1925,19 +1918,7 @@ Variants for Chinese language
 'exif-planarconfiguration-1' => '矮胖格式',
 'exif-planarconfiguration-2' => '平面格式',
 
-'exif-xyresolution-i' => '$1 dpi',
-'exif-xyresolution-c' => '$1 dpc',
-
-'exif-colorspace-1'      => 'sRGB',
-'exif-colorspace-ffff.h' => 'FFFF.H',
-
 'exif-componentsconfiguration-0' => '不存在',
-'exif-componentsconfiguration-1' => 'Y',
-'exif-componentsconfiguration-2' => 'Cb',
-'exif-componentsconfiguration-3' => 'Cr',
-'exif-componentsconfiguration-4' => 'R',
-'exif-componentsconfiguration-5' => 'G',
-'exif-componentsconfiguration-6' => 'B',
 
 'exif-exposureprogram-0' => '未定義',
 'exif-exposureprogram-1' => '手動',
@@ -1975,10 +1956,6 @@ Variants for Chinese language
 'exif-lightsource-17'  => '標準燈光A',
 'exif-lightsource-18'  => '標準燈光B',
 'exif-lightsource-19'  => '標準燈光C',
-'exif-lightsource-20'  => 'D55',
-'exif-lightsource-21'  => 'D65',
-'exif-lightsource-22'  => 'D75',
-'exif-lightsource-23'  => 'D50',
 'exif-lightsource-24'  => 'ISO攝影棚鎢燈',
 'exif-lightsource-255' => '其他光源',
 
@@ -1991,8 +1968,6 @@ Variants for Chinese language
 'exif-sensingmethod-5' => '連續彩色區域傳感器',
 'exif-sensingmethod-7' => '三線傳感器',
 'exif-sensingmethod-8' => '連續彩色線性傳感器',
-
-'exif-filesource-3' => 'DSC',
 
 'exif-scenetype-1' => '直接照像圖片',
 

@@ -222,6 +222,7 @@ $specialPageAliases = array(
 	'Lonelypages'               => array( 'Halamantakbertuan' ),
 	'Uncategorizedpages'        => array( 'Halamantakterkategori' ),
 	'Uncategorizedcategories'   => array( 'Kategoritakterkategori' ),
+	'Uncategorizedtemplates'    => array( 'Templattakterkategori' ),
 	'Uncategorizedimages'       => array( 'Berkastakterkategori' ),
 	'Unusedcategories'          => array( 'Kategoritakdigunakan' ),
 	'Unusedimages'              => array( 'Berkastakdigunakan' ),
@@ -229,7 +230,7 @@ $specialPageAliases = array(
 	'Wantedcategories'          => array( 'Kategoridiinginkan' ),
 	'Mostlinked'                => array( 'Palingdituju' ),
 	'Mostlinkedcategories'      => array( 'Kategoripalingdigunakan' ),
-	'Mostlinkedtemplates'		=> array( 'Templatpalingdigunakan' ),
+	'Mostlinkedtemplates'       => array( 'Templatpalingdigunakan' ),
 	'Mostcategories'            => array( 'Kategoriterbanyak' ),
 	'Mostimages'                => array( 'Berkastersering' ),
 	'Mostrevisions'             => array( 'Perubahanterbanyak' ),
@@ -570,7 +571,6 @@ Jika ini bukan sebabnya, Anda mungkin menemukan bug dalam perangkat lunak. Silak
 'badtitle'             => 'Judul tidak sah',
 'badtitletext'         => 'Judul halaman yang diminta tidak sah, kosong, atau judul antarbahasa atau antarwiki yang salah sambung.',
 'perfdisabled'         => 'Maaf! Fitur ini dimatikan sementara karena memperlambat basis data hingga tidak ada yang dapat menggunakan wiki ini.',
-'perfdisabledsub'      => 'Ini adalah salinan tersimpan dari $1:', # obsolete?
 'perfcached'           => 'Data berikut ini diambil dari <em>cache</em> dan mungkin bukan data mutakhir:',
 'perfcachedts'         => 'Data berikut ini diambil dari <em>cache</em>, dan terakhir diperbarui pada $1.',
 'querypage-no-updates' => 'Pemutakhiran dari halaman ini sedang dimatikan. Data yang ada di sini saat ini tidak akan dimuat ulang.',
@@ -791,7 +791,6 @@ ID pemblokiran Anda adalah $5. Tolong sertakan ID ini dalam setiap pertanyaan An
 'nocreatetitle'             => 'Pembuatan halaman baru dibatasi',
 'nocreatetext'              => 'Situs ini membatasi kemampuan membuat halaman baru. Anda dapat kembali dan menyunting halaman yang telah ada, atau silakan [[{{ns:special}}:Userlogin|masuk log atau mendaftar]]',
 'recreate-deleted-warn'     => "'''Peringatan: Anda membuat ulang suatu halaman yang sudah pernah dihapus.''' Harap pertimbangkan apakah layak untuk melanjutkan suntingan Anda. Berikut adalah log penghapusan dari halaman ini:",
-'recreate-deleted-dismiss'  => '(tutup)',
 
 # "Undo" feature
 'undo-success' => 'Suntingan ini dapat dibatalkan. Tolong cek perbandingan di bawah untuk meyakinkan bahwa benar itu yang Anda ingin lakukan, lalu simpan perubahan tersebut untuk menyelesaikan pembatalan suntingan.',
@@ -1211,6 +1210,7 @@ Telah dimuat sejumlah '''$8''' berkas dan sedang terjadi '''$7''' [http://meta.w
 'uncategorizedpages'      => 'Halaman yang tak terkategori',
 'uncategorizedcategories' => 'Kategori yang tak terkategori',
 'uncategorizedimages'     => 'Berkas yang tak terkategori',
+'uncategorizedtemplates'  => 'Templat yang tak terkategori',
 'unusedcategories'        => 'Kategori yang tak digunakan',
 'unusedimages'            => 'Berkas yang tak digunakan',
 'popularpages'            => 'Halaman populer',
@@ -1969,7 +1969,6 @@ Variants for Chinese language
 'exif-exposuretime'                => 'Waktu pajanan',
 'exif-exposuretime-format'         => '$1 detik ($2)',
 'exif-fnumber'                     => 'Nilai F',
-'exif-fnumber-format'              => 'f/$1',
 'exif-exposureprogram'             => 'Program pajanan',
 'exif-spectralsensitivity'         => 'Sensitivitas spektral',
 'exif-isospeedratings'             => 'Rating kecepatan ISO',
@@ -1984,7 +1983,6 @@ Variants for Chinese language
 'exif-lightsource'                 => 'Sumber cahaya',
 'exif-flash'                       => 'Kilas',
 'exif-focallength'                 => 'Jarak fokus lensa',
-'exif-focallength-format'          => '$1 mm',
 'exif-subjectarea'                 => 'Wilayah subjek',
 'exif-flashenergy'                 => 'Energi kilas',
 'exif-spatialfrequencyresponse'    => 'Respons frekuensi spasial',
@@ -2044,10 +2042,6 @@ Variants for Chinese language
 
 # EXIF attributes
 'exif-compression-1' => 'Tak terkompresi',
-'exif-compression-6' => 'JPEG',
-
-'exif-photometricinterpretation-2' => 'RGB',
-'exif-photometricinterpretation-6' => 'YCbCr',
 
 'exif-unknowndate' => 'Tanggal tak diketahui',
 
@@ -2063,19 +2057,7 @@ Variants for Chinese language
 'exif-planarconfiguration-1' => 'format chunky',
 'exif-planarconfiguration-2' => 'format planar',
 
-'exif-xyresolution-i' => '$1 dpi',
-'exif-xyresolution-c' => '$1 dpc',
-
-'exif-colorspace-1'      => 'sRGB',
-'exif-colorspace-ffff.h' => 'FFFF.H',
-
 'exif-componentsconfiguration-0' => 'tak tersedia',
-'exif-componentsconfiguration-1' => 'Y',
-'exif-componentsconfiguration-2' => 'Cb',
-'exif-componentsconfiguration-3' => 'Cr',
-'exif-componentsconfiguration-4' => 'R',
-'exif-componentsconfiguration-5' => 'G',
-'exif-componentsconfiguration-6' => 'B',
 
 'exif-exposureprogram-0' => 'Tak terdefinisi',
 'exif-exposureprogram-1' => 'Manual',
@@ -2113,10 +2095,6 @@ Variants for Chinese language
 'exif-lightsource-17'  => 'Cahaya standar A',
 'exif-lightsource-18'  => 'Cahaya standar B',
 'exif-lightsource-19'  => 'Cahaya standar C',
-'exif-lightsource-20'  => 'D55',
-'exif-lightsource-21'  => 'D65',
-'exif-lightsource-22'  => 'D75',
-'exif-lightsource-23'  => 'D50',
 'exif-lightsource-24'  => 'ISO studio tungsten',
 'exif-lightsource-255' => 'Sumber cahaya lain',
 
@@ -2129,8 +2107,6 @@ Variants for Chinese language
 'exif-sensingmethod-5' => 'Sensor area warna berurut',
 'exif-sensingmethod-7' => 'Sensor trilinear',
 'exif-sensingmethod-8' => 'Sensor linear warna berurut',
-
-'exif-filesource-3' => 'DSC',
 
 'exif-scenetype-1' => 'Gambar foto langsung',
 

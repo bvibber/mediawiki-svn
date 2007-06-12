@@ -79,6 +79,7 @@ $specialPageAliases = array(
         'Uncategorizedpages'        => array( 'Nicht_kategorisierte_Seiten' ),
         'Uncategorizedcategories'   => array( 'Nicht_kategorisierte_Kategorien' ),
         'Uncategorizedimages'       => array( 'Nicht_kategorisierte_Dateien' ),
+	'Uncategorizedtemplates'    => array( 'Nicht_kategorisierte_Vorlagen' ),
         'Unusedcategories'          => array( 'Unbenutzte_Kategorien' ),
         'Unusedimages'              => array( 'Unbenutzte_Dateien' ),
         'Wantedpages'               => array( 'Gewünschte_Seiten' ),
@@ -438,7 +439,6 @@ Falls dies nicht der Fall ist, haben Sie eventuell einen Fehler in der Software 
 'badtitle'             => 'Ungültiger Titel',
 'badtitletext'         => 'Der Titel der angeforderten Seite ist ungültig, leer oder ein ungültiger Sprachlink von einem anderen Wiki.',
 'perfdisabled'         => "'''Entschuldigung!''' Diese Funktion wurde wegen Überlastung des Servers vorübergehend deaktiviert.",
-'perfdisabledsub'      => 'Hier ist eine gespeicherte Kopie von $1:', # obsolete?
 'perfcached'           => 'Die folgenden Daten stammen aus dem Cache und sind möglicherweise nicht aktuell:',
 'perfcachedts'         => 'Diese Daten stammen aus dem Cache, letztes Update: $1',
 'querypage-no-updates' => "'''Die Aktualisierungsfunktion für diese Seite ist zur Zeit deaktiviert. Die Daten werden bis auf weiteres nicht erneuert.'''",
@@ -711,7 +711,6 @@ speichern können. Sichern Sie den Text und versuchen Sie die Änderungen späte
  
 Bitte prüfen Sie sorgfältig, ob die erneute Seitenerstellung den Richtlinien entspricht.
 Zu Ihrer Information folgt das Lösch-Logbuch mit der Begründung für die vorhergende Löschung:",
-'recreate-deleted-dismiss'  => '(Schließen)',
 
 # "Undo" feature
 'undo-success' => 'Die Änderung konnte erfolgreich rückgängig gemacht werden. Bitte die Bearbeitung in der Vergleichsansicht kontrollieren und dann auf „Seite speichern“ klicken, um sie zu speichern.',
@@ -1178,6 +1177,8 @@ Davon {{PLURAL:$2|hat|haben}} '''$2''' (=$4%) $5-Rechte.",
 'uncategorizedcategories-summary' => 'Diese Spezialseite zeigt alle Kategorien, die selbst noch keiner Kategorie zugewiesen wurden.',
 'uncategorizedimages'             => 'Nicht kategorisierte Dateien',
 'uncategorizedimages-summary'     => 'Diese Spezialseite zeigt alle Dateien, die in keine Kategorie eingeordnet wurden.',
+'uncategorizedtemplates'          => 'Nicht kategorisierte Vorlagen',
+'uncategorizedtemplates-summary'  => 'Diese Spezialseite zeigt alle Vorlagen, die in keine Kategorie eingeordnet wurden.',
 'unusedcategories'                => 'Verwaiste Kategorien',
 'unusedimages'                    => 'Verwaiste Dateien',
 'popularpages'                    => 'Beliebte Seiten',
@@ -1560,6 +1561,7 @@ Bitte geben Sie den Grund für die Sperre an.',
 ** Proxy, wegen Vandalismus einzelner Benutzer längerfristig gesperrt',
 'ipbanononly'                 => 'Nur anonyme Benutzer sperren',
 'ipbcreateaccount'            => 'Erstellung von Benutzerkonten verhindern',
+'ipbemailban'                 => 'E-Mail-Versand sperren',
 'ipbenableautoblock'          => 'Sperre die aktuell von diesem Benutzer genutzte IP-Adresse sowie automatisch alle folgenden, von denen aus er Bearbeitungen oder das Anlegen von Benutzeraccounts versucht',
 'ipbsubmit'                   => 'IP-Adresse/Benutzer sperren',
 'ipbother'                    => 'Andere Dauer (englisch):',
@@ -1591,6 +1593,7 @@ Zur Aufhebung der Sperre siehe die [[{{ns:special}}:Ipblocklist|Liste aller akti
 'anononlyblock'               => 'nur Anonyme',
 'noautoblockblock'            => 'Autoblock deaktiviert',
 'createaccountblock'          => 'Erstellung von Benutzerkonten gesperrt',
+'emailblock'                  => 'E-Mail-Versand gesperrt',
 'ipblocklist-empty'           => 'Die Liste enthält keine Einträge.',
 'ipblocklist-no-results'      => 'Die gesuchte IP-Adresse/der Benutzername ist nicht gesperrt.',
 'blocklink'                   => 'sperren',
@@ -1604,6 +1607,7 @@ Zur Aufhebung der Sperre siehe die [[{{ns:special}}:Ipblocklist|Liste aller akti
 'block-log-flags-anononly'    => 'nur Anonyme',
 'block-log-flags-nocreate'    => 'Erstellung von Benutzerkonten gesperrt',
 'block-log-flags-noautoblock' => 'Autoblock deaktiviert',
+'block-log-flags-noemail'     => 'E-Mail-Versand gesperrt',
 'range_block_disabled'        => 'Die Möglichkeit, ganze Adressräume zu sperren, ist nicht aktiviert.',
 'ipb_expiry_invalid'          => 'Die eingegebene Dauer ist ungültig.',
 'ipb_already_blocked'         => '„$1“ wurde bereits gesperrt',
@@ -1986,7 +1990,6 @@ Variants for Chinese language
 'exif-exposuretime'                => 'Belichtungsdauer',
 'exif-exposuretime-format'         => '$1 Sekunden ($2)',
 'exif-fnumber'                     => 'Blende',
-'exif-fnumber-format'              => 'f/$1',
 'exif-exposureprogram'             => 'Belichtungsprogramm',
 'exif-spectralsensitivity'         => 'Spectral Sensitivity',
 'exif-isospeedratings'             => 'Film- oder Sensorempfindlichkeit (ISO)',
@@ -2001,7 +2004,6 @@ Variants for Chinese language
 'exif-lightsource'                 => 'Lichtquelle',
 'exif-flash'                       => 'Blitz',
 'exif-focallength'                 => 'Brennweite',
-'exif-focallength-format'          => '$1 mm',
 'exif-subjectarea'                 => 'Bereich',
 'exif-flashenergy'                 => 'Blitzstärke',
 'exif-focalplanexresolution'       => 'Sensorauflösung horizontal',
@@ -2060,10 +2062,6 @@ Variants for Chinese language
 
 # EXIF attributes
 'exif-compression-1' => 'Unkomprimiert',
-'exif-compression-6' => 'JPEG',
-
-'exif-photometricinterpretation-2' => 'RGB',
-'exif-photometricinterpretation-6' => 'YCbCr',
 
 'exif-unknowndate' => 'Unbekanntes Datum',
 
@@ -2079,19 +2077,7 @@ Variants for Chinese language
 'exif-planarconfiguration-1' => 'Grobformat',
 'exif-planarconfiguration-2' => 'Planarformat',
 
-'exif-xyresolution-i' => '$1 dpi',
-'exif-xyresolution-c' => '$1 dpc',
-
-'exif-colorspace-1'      => 'sRGB',
-'exif-colorspace-ffff.h' => 'FFFF.H',
-
 'exif-componentsconfiguration-0' => 'Existiert nicht',
-'exif-componentsconfiguration-1' => 'Y',
-'exif-componentsconfiguration-2' => 'Cb',
-'exif-componentsconfiguration-3' => 'Cr',
-'exif-componentsconfiguration-4' => 'R',
-'exif-componentsconfiguration-5' => 'G',
-'exif-componentsconfiguration-6' => 'B',
 
 'exif-exposureprogram-0' => 'Unbekannt',
 'exif-exposureprogram-1' => 'Manuell',
@@ -2129,10 +2115,6 @@ Variants for Chinese language
 'exif-lightsource-17'  => 'Standardlicht A',
 'exif-lightsource-18'  => 'Standardlicht B',
 'exif-lightsource-19'  => 'Standardlicht C',
-'exif-lightsource-20'  => 'D55',
-'exif-lightsource-21'  => 'D65',
-'exif-lightsource-22'  => 'D75',
-'exif-lightsource-23'  => 'D50',
 'exif-lightsource-24'  => 'ISO Studio Kunstlicht',
 'exif-lightsource-255' => 'Andere Lichtquelle',
 
@@ -2143,8 +2125,6 @@ Variants for Chinese language
 'exif-sensingmethod-3' => 'Zwei-Chip-Farbsensor',
 'exif-sensingmethod-4' => 'Drei-Chip-Farbsensor',
 'exif-sensingmethod-7' => 'Trilinearer Sensor',
-
-'exif-filesource-3' => 'DSC',
 
 'exif-scenetype-1' => 'Normal',
 

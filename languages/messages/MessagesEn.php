@@ -372,6 +372,7 @@ $specialPageAliases = array(
 	'Uncategorizedpages'        => array( 'Uncategorizedpages' ),
 	'Uncategorizedcategories'   => array( 'Uncategorizedcategories' ),
 	'Uncategorizedimages'       => array( 'Uncategorizedimages' ),
+	'Uncategorizedtemplates' 	=> array( 'Uncategorizedtemplates' ),
 	'Unusedcategories'          => array( 'Unusedcategories' ),
 	'Unusedimages'              => array( 'Unusedimages' ),
 	'Wantedpages'               => array( 'Wantedpages', 'Brokenlinks' ),
@@ -777,7 +778,6 @@ Please report this to an administrator, making note of the URL.',
 'badtitle'             => 'Bad title',
 'badtitletext'         => 'The requested page title was invalid, empty, or an incorrectly linked inter-language or inter-wiki title. It may contain one or more characters which cannot be used in titles.',
 'perfdisabled'         => 'Sorry! This feature has been temporarily disabled because it slows the database down to the point that no one can use the wiki.',
-'perfdisabledsub'      => 'Here is a saved copy from $1:', # obsolete?
 'perfcached'           => 'The following data is cached and may not be up to date.',
 'perfcachedts'         => 'The following data is cached, and was last updated $1.',
 'querypage-no-updates' => 'Updates for this page are currently disabled. Data here will not presently be refreshed.',
@@ -1052,7 +1052,6 @@ You can go back and edit an existing page, or [[Special:Userlogin|log in or crea
 
 You should consider whether it is appropriate to continue editing this page.
 The deletion log for this page is provided here for convenience:",
-'recreate-deleted-dismiss'  => '(dismiss)',
 
 # "Undo" feature
 'undo-success' => 'The edit can be undone. Please check the comparison below to verify that this is what you want to do, and then save the changes below to finish undoing the edit.',
@@ -1548,6 +1547,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'uncategorizedcategories-summary' => '', # only translate this message to other languages if you have to change it
 'uncategorizedimages'             => 'Uncategorized images',
 'uncategorizedimages-summary'     => '', # only translate this message to other languages if you have to change it
+'uncategorizedtemplates' => 'Uncategorized templates',
+'uncategorizedtemplates-summary' => '',
 'unusedcategories'                => 'Unused categories',
 'unusedimages'                    => 'Unused files',
 'popularpages'                    => 'Popular pages',
