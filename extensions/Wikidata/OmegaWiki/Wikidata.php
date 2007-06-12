@@ -261,11 +261,15 @@ class DefaultWikidataApplication {
  * - the URL can have a dataset parameter
  * - there is a global default
  * - there can be defaults for different user groups
- *
+ * @param $dc	optional, for convenience.
+ *		if the dataset context is already set, will
+		return that value, else will find the relevant value
  * @return prefix (without underscore)
 **/
-function wdGetDataSetContext() {
+function wdGetDataSetContext($dc=null) {
 
+	if (!is_null($dc)) 
+		return $dc; 
 	global $wgRequest, $wdDefaultViewDataSet, $wdGroupDefaultView, $wgUser;
 	$datasets=wdGetDataSets();
 	$groups=$wgUser->getGroups();

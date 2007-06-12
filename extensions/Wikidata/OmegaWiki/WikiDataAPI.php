@@ -1167,6 +1167,8 @@ function getConceptId($dm,$dc){
 		$dc=wdGetDataSetContext();
 	} 
 	$collection_id=getCollectionIdForDC($dc);
+	if (is_null($collection_id))
+		return null;
     	$dbr = & wfGetDB(DB_SLAVE);
 	$dm=$dbr->addQuotes($dm);
 	$query = "
@@ -1175,7 +1177,7 @@ function getConceptId($dm,$dc){
 		WHERE member_mid=$dm
 		AND collection_id=$collection_id;
 		";
-	$queryResult = $dbr->query($query);
+	$queryResult = $dbr->query($query,"getConceptId");
 	$row=$dbr->fetchObject($queryResult);
 	return isset($row->concept_id) ? $row->concept_id : null;
 }
