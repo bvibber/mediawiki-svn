@@ -1,3 +1,10 @@
+squid (2.6.13-1wm1) edgy; urgency=low
+
+  * New upstream version 2.6.STABLE13
+    - Dropped patch 24-coss-rebuild-meta-key-length, included upstream
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 12 Jun 2007 18:31:13 +0000
+
 squid (2.6.12-1wm6) edgy; urgency=low
 
   * Increase default nr of FDs to 32768 in squid-frontend

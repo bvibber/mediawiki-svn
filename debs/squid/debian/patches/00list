@@ -8,5 +8,4 @@
 22-udplog
 23-storedir-minobjsize.dpatch
 23-variant-invalidation.dpatch
-24-coss-rebuild-meta-key-length.dpatch
 25-coss-remove-swap-log
