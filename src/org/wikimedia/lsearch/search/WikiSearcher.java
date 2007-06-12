@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
@@ -40,7 +41,8 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	static org.apache.log4j.Logger log = Logger.getLogger(WikiSearcher.class);
 	protected SearchableMul searcher;
 	protected SearcherCache cache;
-	protected Searchable mainpart,restpart;
+	/** parts of the multisearcher, dbrole -> searchable */
+	protected Hashtable<String,Searchable> searcherParts = new Hashtable<String,Searchable>();
 	protected MultiSearcherMul ms = null;
 	
 	public static final boolean INVALIDATE_CACHE = true;
@@ -62,12 +64,8 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 			
 			if(s != null){
 				ss.add(s);
-				if(iid.isMainPart())
-					mainpart = s;
-				else if(iid.isRestPart())
-					restpart = s;
-			}
-			else
+				searcherParts.put(iid.toString(),s);
+			} else
 				log.warn("Cannot get a search index (nor local or remote) for "+iid);				
 		}
 		if(ss.size() == 0)
@@ -79,7 +77,6 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	/** New object from cache */
 	public WikiSearcher(IndexId iid) throws Exception {
 		cache = SearcherCache.getInstance();
-		mainpart = null; restpart = null;
 		
 		if(iid.isSingle()){ // is always local 
 			searcher = cache.getLocalSearcher(iid);
@@ -91,7 +88,7 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 			
 			ms = makeMultiSearcher(parts);
 			searcher = ms;
-		} else if(iid.isSplit()){			
+		} else if(iid.isSplit() || iid.isNssplit()){			
 			ArrayList<IndexId> parts = new ArrayList<IndexId>();
 			for(int i=1; i<=iid.getSplitFactor(); i++){
 				parts.add(iid.getPart(i));
@@ -105,21 +102,16 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 		
 		cache.checkout(searcher);
 	}
-	
-	public String getMainPartHost(){
-		if(mainpart == null)
+
+	/** Got host for the iid within this multi searcher */
+	public String getHost(IndexId iid){
+		Searchable s = searcherParts.get(iid.toString());
+		if(s == null)
 			return null;
 		else
-			return cache.getSearchableHost(mainpart);
+			return cache.getSearchableHost(s);
 	}
-	
-	public String getRestPartHost(){
-		if(restpart == null)
-			return null;
-		else
-			return cache.getSearchableHost(restpart);
-	}
-	
+
 	@Override
 	public void close() throws IOException {
 		cache.release(searcher);

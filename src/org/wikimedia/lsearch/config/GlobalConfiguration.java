@@ -160,7 +160,7 @@ public class GlobalConfiguration {
 			for(String typeid : database.get(dbname).keySet()){
 				String type = "";
 				String dbrole = "";
-				if(typeid.equals("single") || typeid.equals("mainsplit") || typeid.equals("split")){
+				if(typeid.equals("single") || typeid.equals("mainsplit") || typeid.equals("split") || typeid.equals("nssplit")){
 					type = typeid;
 					dbrole = dbname;
 				} else if(typeid.equals("mainpart") || typeid.equals("restpart")){
@@ -168,6 +168,9 @@ public class GlobalConfiguration {
 					dbrole = dbname + "." + typeid;
 				} else if(typeid.matches("part[1-9][0-9]*")){
 					type = "split";
+					dbrole = dbname + "." + typeid;
+				} else if(typeid.matches("nspart[1-9][0-9]*")){
+					type = "nssplit";
 					dbrole = dbname + "." + typeid;
 				} else
 					continue; // uknown type, skip
@@ -404,7 +407,7 @@ public class GlobalConfiguration {
 			for(String typeid : database.get(dbname).keySet()){
 				String type = "";
 				String dbrole = "";
-				if(typeid.equals("single") || typeid.equals("mainsplit") || typeid.equals("split")){
+				if(typeid.equals("single") || typeid.equals("mainsplit") || typeid.equals("split") || typeid.equals("nssplit")){
 					type = typeid;
 					dbrole = dbname;
 				} else if(typeid.equals("mainpart") || typeid.equals("restpart")){
@@ -412,6 +415,9 @@ public class GlobalConfiguration {
 					dbrole = dbname + "." + typeid;
 				} else if(typeid.matches("part[1-9][0-9]*")){
 					type = "split";
+					dbrole = dbname + "." + typeid;
+				} else if(typeid.matches("nspart[1-9][0-9]*")){
+					type = "nssplit";
 					dbrole = dbname + "." + typeid;
 				} else
 					continue; // uknown type, skip
@@ -452,6 +458,8 @@ public class GlobalConfiguration {
 						                    oairepo);
 				indexIdPool.put(dbrole,iid);
 			}
+			if(indexIdPool.get(dbname).isNssplit())
+				indexIdPool.get(dbname).rebuildNsMap(indexIdPool);
 		}
 		
 	}
@@ -628,7 +636,7 @@ public class GlobalConfiguration {
 		} else if(type.equals("mainsplit")){
 			// currently no params
 			dbroles.put(type,params);
-		} else if(type.equals("split")){
+		} else if(type.equals("split") || type.equals("nssplit")){
 			if(tokens.length>1) // number of segments
 				params.put("number",tokens[1]);
 			else{
@@ -656,6 +664,27 @@ public class GlobalConfiguration {
 			
 			dbroles.put(type,params);
 			
+		} else if(type.matches("nspart[1-9][0-9]*")){
+			// [0,1,2] syntax gets split up in first split, retokenize
+			String ns = role.substring(role.indexOf(",")+1,role.lastIndexOf("]")+1).trim();
+			tokens = role.substring(role.lastIndexOf("]")+1).split(",");
+			// definition of namespaces, e.g. [0,1,2]			
+			if(ns.length() > 2 && ns.startsWith("[") && ns.endsWith("]"))
+				ns = ns.substring(1,ns.length()-1);
+			else
+				ns = "<default>";
+			params.put("namespaces",ns);
+			
+			// all params are optional, if absent default will be used
+			if(tokens.length>1)
+				params.put("optimize",tokens[1].trim().toLowerCase());
+			if(tokens.length>2)
+				params.put("mergeFactor",tokens[2]);
+			if(tokens.length>3)
+				params.put("maxBufDocs", tokens[3]);
+			
+			dbroles.put(type,params);
+						
 		} else{
 			System.out.println("Warning: Unrecognized role \""+role+"\".Ignoring.");
 		}
@@ -670,10 +699,10 @@ public class GlobalConfiguration {
 				dbr = new Hashtable<String, Hashtable<String, String>>();				
 				database.put(db,dbr);
 			}
-			if(type.equals("split") || type.equals("mainsplit") || type.equals("single")){
-				if(dbr.get("split")!=null || dbr.get("mainsplit")!=null || dbr.get("single")!=null){
+			if(type.equals("split") || type.equals("mainsplit") || type.equals("single") || type.equals("nssplit")){
+				if(dbr.get("split")!=null || dbr.get("mainsplit")!=null || dbr.get("single")!=null || dbr.get("nssplit")!=null){
 					System.out.println("WARNING: in Global Configuration: defined new architecture "+type+" for "+db);
-					dbr.remove("split"); dbr.remove("mainsplit"); dbr.remove("single");
+					dbr.remove("split"); dbr.remove("mainsplit"); dbr.remove("single"); dbr.remove("nssplit");
 				}
 			}
 			if(dbr.get(type)!=null)

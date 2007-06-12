@@ -363,23 +363,19 @@ public class IndexThread extends Thread {
 
 			if( iid.isSingle() ){
 				enqueueLocally(record);			
-			} else if( iid.isMainsplit() ){
+			} else if( iid.isMainsplit() || iid.isNssplit()){
 				IndexId piid;
 				Article ar = record.getArticle();
-				// deletion when we have only page_id needs to be sent to both parts, 
+				// deletion when we have only page_id needs to be sent to all parts, 
 				// because we don't have namespace info
 				if(record.isDelete() && ar.getTitle().equals("")){
-					IndexUpdateRecord rec1 = (IndexUpdateRecord) record.clone();
-					IndexUpdateRecord rec2 = (IndexUpdateRecord) record.clone();
-					rec1.setIndexId(iid.getMainPart());
-					rec2.setIndexId(iid.getRestPart());
-					enqueueRemotely(rec1.getIndexId().getIndexHost(),rec1);
-					enqueueRemotely(rec2.getIndexId().getIndexHost(),rec2);
+					for(String dbrole : iid.getSplitParts()){
+						IndexUpdateRecord recp = (IndexUpdateRecord) record.clone();
+						recp.setIndexId(IndexId.get(dbrole));
+						enqueueRemotely(recp.getIndexId().getIndexHost(),recp);
+					}					
 				} else{
-					if( ar.getNamespace().equals("0") )
-						piid = iid.getMainPart();
-					else
-						piid = iid.getRestPart();
+					piid = iid.getPartByNamespace(ar.getNamespace());					
 					// set recipient to new host
 					record.setIndexId(piid);
 					enqueueRemotely(piid.getIndexHost(),record);

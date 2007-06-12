@@ -333,8 +333,8 @@ public class FastWikiTokenizerEngine {
 			return tokens; // already parsed
 		
 		// before starting, make sure this is not a redirect
-		if(isRedirect())
-			return tokens;
+		//if(isRedirect())
+		//	return tokens;
 		
 		for(cur = 0; cur < textLength; cur++ ){
 			c = text[cur];			
@@ -514,7 +514,7 @@ public class FastWikiTokenizerEngine {
 					
 					switch(fetch){
 					case WORD:
-						addToken();
+						// don't add token to get syntax like [[bean]]s
 						continue;
 					case CATEGORY:
 						categories.add(new String(buffer,0,length));
