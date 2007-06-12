@@ -665,8 +665,9 @@ class OAIRepo {
     rp.page_title AS page_title
     FROM $updates AS u, $page AS p, $redirect AS r, $page AS rp
     WHERE u.up_page=p.page_id AND p.page_namespace=r.rd_namespace 
-    AND p.page_title=r.rd_title AND r.rd_from=rp.page_id";
-		
+    AND p.page_title=r.rd_title AND r.rd_from=rp.page_id
+    $pages_where";
+
 		return $this->_db->resultObject( $this->_db->query( $sql ) );
 	}
 
