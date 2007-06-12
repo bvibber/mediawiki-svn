@@ -58,35 +58,14 @@ class DefaultWikidataApplication {
 		return wfMsg('ow_uilang',"<b>$userlang</b>").  " &mdash; " . $skin->makeLink("Special:Preferences", wfMsg('ow_uilang_set'));
 	}
 
-	protected function outputAuthoritativeContributionPanel() {
-		global
-			$wgOut;
-		
-		if (count($this->availableAuthorities) > 0) {
-			$authorityOptions = array(
-				"Show contribution by the community" => getCheckBox('authority-community', $this->showCommunityContribution)
-			);
-			
-			foreach ($this->availableAuthorities as $authorityId => $authorityName) 
-				$authorityOptions["Show contribution by " . $authorityName] = 
-					getCheckBox(
-						'authority-' . $authorityId, 
-						in_array($authorityId, $this->authoritiesToShow)
-					);
-	
-			$wgOut->addHTML(getOptionPanel($authorityOptions));
-		}
-	}
 
 	protected function outputViewHeader() {
 		global
-			$wgOut, $wgShowAuthoritativeContributionPanelAtTop;
+			$wgOut;
 		
 		if ($this->showLanguageSelector)
 			$wgOut->addHTML($this->getLanguageSelector());
 		
-		if ($wgShowAuthoritativeContributionPanelAtTop)
-			$this->outputAuthoritativeContributionPanel();
 		if($this->showDataSetPanel) {
 			$wgOut->addHTML($this->getDataSetPanel());
 		}
@@ -94,11 +73,8 @@ class DefaultWikidataApplication {
 
 	protected function outputViewFooter() {
 		global
-			$wgOut, $wgShowAuthoritativeContributionPanelAtBottom;
+			$wgOut;
 		
-		if ($wgShowAuthoritativeContributionPanelAtBottom)	
-			$this->outputAuthoritativeContributionPanel();
-
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 	} 
@@ -116,26 +92,11 @@ class DefaultWikidataApplication {
 
 		$wgOut->setPageTitle($title);
 		
-		if (count($this->availableAuthorities) > 0) {
-			$this->showCommunityContribution = isset($_GET['authority-community']);
-			$this->authoritiesToShow = array();
-			
-			foreach ($this->availableAuthorities as $authorityId => $authorityName) 
-				if (isset($_GET['authority-' . $authorityId]))
-					$this->authoritiesToShow[] = $authorityId;
-		}
-		else
-			$this->showCommunityContribution = false;
-		
-		$this->shouldShowAuthorities = count($this->authoritiesToShow) > 0 || $this->showCommunityContribution;
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0, $this->shouldShowAuthorities);	
-		initializeObjectAttributeEditors($this->filterLanguageId, false, $this->shouldShowAuthorities);
-		
-		if ($this->shouldShowAuthorities) 
-			$this->viewQueryTransactionInformation = new QueryAuthoritativeContributorTransactionInformation($this->availableAuthorities, $this->authoritiesToShow, $this->showCommunityContribution);
-		else
-			$this->viewQueryTransactionInformation = new QueryLatestTransactionInformation();
-	}
+		initializeOmegaWikiAttributes($this->filterLanguageId != 0);	
+		initializeObjectAttributeEditors($this->filterLanguageId, false);		
+		$this->viewQueryTransactionInformation = new QueryLatestTransactionInformation();
+	
+}
 	
 	protected function getDataSetPanel() {
 		global $wgTitle, $wgUser;

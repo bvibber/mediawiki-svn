@@ -7,7 +7,8 @@ require_once('Fetcher.php');
 require_once('WikiDataGlobals.php');
 require_once('GotoSourceTemplate.php');
 
-function initializeObjectAttributeEditors($filterLanguageId, $showRecordLifeSpan, $showAuthority) {
+function initializeObjectAttributeEditors($filterLanguageId, $showRecordLifeSpan) {
+	$showAuthority=false;
 	global
 		$objectAttributesAttribute, $definedMeaningAttributesAttribute,
 		$definedMeaningObjectAttributesEditor, $definedMeaningIdAttribute,

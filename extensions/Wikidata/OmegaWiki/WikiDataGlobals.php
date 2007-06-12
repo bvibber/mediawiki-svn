@@ -163,14 +163,6 @@ global
 $wgDefinedMeaningPageTitlePrefix = "";
 $wgExpressionPageTitlePrefix = "Multiple meanings";
 
-// Authoritative versioning
-
-global
-	$wgShowAuthoritativeContributionPanelAtBottom,
-	$wgShowAuthoritativeContributionPanelAtTop;
-	
-$wgShowAuthoritativeContributionPanelAtBottom = false;
-$wgShowAuthoritativeContributionPanelAtTop = true;
 
 // Search page
 

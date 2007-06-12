@@ -36,12 +36,20 @@ class Attribute {
 	public $id = "";	
 	public $name = "";
 	public $type = "";
-	
+
+	/**
+ 	 * @param $name (String)
+	 * @param $id   (String)
+	 * @param $type (String) "language", "spelling", "boolean", "defined-meaning", 
+	 *                       "defining-expression", "relation-type", "attribute", "collection", "short-text", 
+	 *               	 "text"..?
+ 	 */
 	public function __construct($id, $name, $type) {
 		$this->id = $id;	
 		$this->name = $name;
 		$this->type = $type;
 	}
+
 }
 
 class Structure {
