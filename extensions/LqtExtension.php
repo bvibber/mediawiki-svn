@@ -645,7 +645,7 @@ class TalkpageArchiveView extends TalkpageView {
 	function showThread($t) {
 		$this->output->addHTML(<<<HTML
 <tr>
-	<td>{$t->subjectWithoutIncrement()}</td>
+	<td><a href="{$this->permalinkUrl($t)}">{$t->subjectWithoutIncrement()}</a></td>
 	<td>
 HTML
 );		$this->showPostBody($t->summary());

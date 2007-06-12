@@ -144,6 +144,11 @@ li {
 	padding-bottom: 1em;
 	vertical-align: top;
 }
+.lqt_archive_listing td p:first-child {
+	/* The summary is wrapped in <p> tags by the wikitext parser,
+	   which messes up the vertical alignment. */
+	margin: 0; padding: 0;
+}
 .lqt_archive_listing th {
 	text-align: left;
 	vertical-align: baseline;
