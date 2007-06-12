@@ -673,13 +673,13 @@ HTML
 		$ignore_dates = ! $r->getVal('lqt_archive_filter_by_date', true);
 		$s = $r->getVal('lqt_archive_start');
 		if ($s && ctype_digit($s) && strlen($s) == 6 && !$ignore_dates) {
-		  $this->start = new Date( "{$s}01000000" );
+			$this->start = new Date( "{$s}01000000" );
 			$where[] = 'thread_touched >= ' . $this->start->text();
 		}
 		$e = $r->getVal('lqt_archive_end');
 		if ($e && ctype_digit($e) && strlen($e) == 6 && !$ignore_dates) {
-		  $end = new Date("{$e}01000000");
-		  $this->end = $end->nextMonth();
+			$end = new Date("{$e}01000000");
+			$this->end = $end->nextMonth();
 			$where[] = 'thread_touched < ' . $this->end->text();
 		}
 		if ( isset($this->start) && isset($this->end) ) {
@@ -699,23 +699,21 @@ HTML
 		return Thread::threadsWhere($this->where, $this->options);
 	}
 
-    function formattedMonth($yyyymm) {
-        global $wgLang; // TODO global.
-        return $wgLang->getMonthName( substr($yyyymm, 4, 2) ).' '.substr($yyyymm, 0, 4);
-    }
+	function formattedMonth($yyyymm) {
+		global $wgLang; // TODO global.
+		return $wgLang->getMonthName( substr($yyyymm, 4, 2) ).' '.substr($yyyymm, 0, 4);
+	}
 
 	function monthSelect($months, $name) {
 		$selection =  $this->request->getVal($name);
-        $options = array();
-        foreach($months as $m) {
-            $options[$this->formattedMonth($m)] = $m;
-        }
-		$result = <<<HTML
-		<select name="$name" id="$name">
-HTML;
+		$options = array();
+		foreach($months as $m) {
+			$options[$this->formattedMonth($m)] = $m;
+		}
+		$result = "<select name=\"$name\" id=\"$name\">";
 		foreach( $options as $label => $value ) {
 			$selected = $selection == $value ? 'selected="true"' : '';
-            $result .= "<option value=\"$value\" $selected>$label";
+			$result .= "<option value=\"$value\" $selected>$label";
 		}
 		$result .= "</select>";
 		return $result;
@@ -727,20 +725,20 @@ HTML;
          * @param $repls array( 'name'=>new_value, ... )
 	*/
 	function queryReplace( $repls ) {
-	  $vs = $this->request->getValues();
-	  $rs = array();
-	  foreach ($vs as $k => $v) {
-	    if ( array_key_exists( $k, $repls ) ) {
-	      $rs[$k] = $repls[$k];
-	    } else {
-	      $rs[$k] = $vs[$k];
-	    }
-	  }
-	  return $this->title->getFullURL($this->queryStringFromArray($rs));
+		$vs = $this->request->getValues();
+		$rs = array();
+		foreach ($vs as $k => $v) {
+			if ( array_key_exists( $k, $repls ) ) {
+				$rs[$k] = $repls[$k];
+			} else {
+				$rs[$k] = $vs[$k];
+			}
+		}
+		return $this->title->getFullURL($this->queryStringFromArray($rs));
 	}
 
 	function showSearchForm() {
-        $months = Thread::monthsWhereArticleHasThreads($this->article);
+		$months = Thread::monthsWhereArticleHasThreads($this->article);
 
 		$use_dates = $this->request->getVal('lqt_archive_filter_by_date', null);
 		if ( $use_dates === null ) {
@@ -749,12 +747,7 @@ HTML;
 		}
 		$any_date_check    = !$use_dates ? 'checked="1"' : '';
 		$these_dates_check =  $use_dates ? 'checked="1"' : '';
-		
-		// bcsub() and bcadd() do arithmetic on strings.
-		// Wouldn't want to overflow any puny 32-bit machines with these
-		// giants numbers that reperesent dates.
 
-		$one_month = '100000000';
 		if( isset($this->start, $this->end) ) {
 			$older_end = $this->start->lastMonth();
 			$older_start = $older_end->moved( $this->start->delta( $this->end ) )->nextMonth();
@@ -762,36 +755,43 @@ HTML;
 			$newer_start = $this->end;
 			$newer_end = $newer_start->moved( $this->end->delta( $this->start ) )->lastMonth();
 
-			$older = $this->queryReplace(array(
+			$older = '<a href="' . $this->queryReplace(array(
 				     'lqt_archive_filter_by_date'=>'1',
 				     'lqt_archive_start' => substr($older_start->text(), 0, 6),
-				     'lqt_archive_end' => substr($older_end->text(), 0, 6) ));
-			$newer = $this->queryReplace(array(
+				     'lqt_archive_end' => substr($older_end->text(), 0, 6) ))
+				. '">«older</a>';
+			$newer = '<a href="' . $this->queryReplace(array(
 				     'lqt_archive_filter_by_date'=>'1',
 				     'lqt_archive_start' => substr($newer_start->text(), 0, 6),
-				     'lqt_archive_end' => substr($newer_end->text(), 0, 6) ));
-			
+				     'lqt_archive_end' => substr($newer_end->text(), 0, 6) ))
+				. '">newer»</a>';
+		}
+		else {
+			$older = '<span class="lqt_disabled_link">«older</span>';
+			$newer = '<span class="lqt_disabled_link">newer»</span>';
 		}
 		
 		$this->output->addHTML(<<<HTML
 <form id="lqt_archive_search_form" action="{$this->title->getLocalURL()}">
 	<input type="hidden" name="lqt_show_archive" value="1">
         <input type="hidden" name="title" value="{$this->title->getPrefixedURL()}"	
+
 	<input type="radio" id="lqt_archive_filter_by_date_no"
                name="lqt_archive_filter_by_date" value="0" {$any_date_check}>
 	<label for="lqt_archive_filter_by_date_no">Any date</label>  <br>
 	<input type="radio" id="lqt_archive_filter_by_date_yes"
                name="lqt_archive_filter_by_date" value="1" {$these_dates_check}>
 	<label for="lqt_archive_filter_by_date_yes">Only these dates:</label> <br>
-	
-	<label for="lqt_archive_start">From</label>
-	{$this->monthSelect($months, 'lqt_archive_start')} <br>
-	<label for="lqt_archive_end">To</label>
-	{$this->monthSelect($months, 'lqt_archive_end')}
-	<input type="submit">
 
-        <a href="$older">«older</a>
-	<a href="$newer">newer»</a>
+<table>	
+<tr><td><label for="lqt_archive_start">From</label>
+    <td>{$this->monthSelect($months, 'lqt_archive_start')} <br>
+<tr><td><label for="lqt_archive_end">To</label>
+    <td>{$this->monthSelect($months, 'lqt_archive_end')}
+</table>
+	<input type="submit">
+        $older $newer
+</table>
 </form>
 HTML
 );
