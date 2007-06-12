@@ -38,7 +38,7 @@ var LqtDateRangeRectifier = function( startsel, endsel ) {
 	// In order for this instance to recieve the events, we need to capture the
 	// current value of 'this' with a closure, because this = the target object
 	// in event handlers.
-	me = this;
+	var me = this;
 	lqt_add_event( this.startsel, 'change', function(e) { me.handle_start_changed(e) });
 	lqt_add_event( this.endsel, 'change', function(e) { me.handle_end_changed(e) });
 }

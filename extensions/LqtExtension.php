@@ -670,26 +670,36 @@ HTML
 		$r = $this->request;
 
 		/* START AND END DATES */
+		// $this->start and $this->end are clipped into the range of available
+		// months, for use in the actual query and the selects. $this->raw* are
+		// as actually provided, for use by the 'older' and 'newer' buttons.
 		$ignore_dates = ! $r->getVal('lqt_archive_filter_by_date', true);
+		if ( !$ignore_dates ) {
+			$months = Thread::monthsWhereArticleHasThreads($this->article);
+		}
 		$s = $r->getVal('lqt_archive_start');
 		if ($s && ctype_digit($s) && strlen($s) == 6 && !$ignore_dates) {
-			$this->start = new Date( "{$s}01000000" );
-			$where[] = 'thread_touched >= ' . $this->start->text();
+			$this->selstart = new Date( "{$s}01000000" );
+			$this->starti = array_search($s, $months);
+			$where[] = 'thread_touched >= ' . $this->selstart->text();
 		}
 		$e = $r->getVal('lqt_archive_end');
 		if ($e && ctype_digit($e) && strlen($e) == 6 && !$ignore_dates) {
-			$end = new Date("{$e}01000000");
-			$this->end = $end->nextMonth();
-			$where[] = 'thread_touched < ' . $this->end->text();
+			$this->selend = new Date("{$e}01000000");
+			$this->endi = array_search($e, $months);
+			$where[] = 'thread_touched < ' . $this->selend->nextMonth()->text();
 		}
-		if ( isset($this->start) && isset($this->end) ) {
-			$annotations[] = "from {$this->start->text()} to {$this->end->text()}";
-		} else if (isset($this->start)) {
-			$annotations[] = "after {$this->start->text()}";
-		} else if (isset($this->end)) {
-			$annotations[] = "before {$this->end->text()}";
+		if ( isset($this->selstart) && isset($this->selend) ) {
+
+			$this->datespan = $this->starti - $this->endi;
+
+			$annotations[] = "from {$this->selstart->text()} to {$this->selend->text()}";
+		} else if (isset($this->selstart)) {
+			$annotations[] = "after {$this->selstart->text()}";
+		} else if (isset($this->selend)) {
+			$annotations[] = "before {$this->selend->text()}";
 		}
-		
+
 		$this->where = $where;
 		$this->options = $options;
 		$this->annotations = implode("<br>\n", $annotations);
@@ -706,6 +716,10 @@ HTML
 
 	function monthSelect($months, $name) {
 		$selection =  $this->request->getVal($name);
+
+		// Silently adjust to stay in range.
+		$selection = max( min( $selection, $months[0] ), $months[count($months)-1] );
+
 		$options = array();
 		foreach($months as $m) {
 			$options[$this->formattedMonth($m)] = $m;
@@ -737,9 +751,15 @@ HTML
 		return $this->title->getFullURL($this->queryStringFromArray($rs));
 	}
 
+	function clip( $vals, $min, $max ) {
+		$res = array();
+		foreach($vals as $val) $res[] =  max( min( $val, $max ), $min );
+		return $res;
+	}
+
 	function showSearchForm() {
 		$months = Thread::monthsWhereArticleHasThreads($this->article);
-
+		
 		$use_dates = $this->request->getVal('lqt_archive_filter_by_date', null);
 		if ( $use_dates === null ) {
 			$use_dates = $this->request->getBool('lqt_archive_start', false) ||
@@ -748,27 +768,31 @@ HTML
 		$any_date_check    = !$use_dates ? 'checked="1"' : '';
 		$these_dates_check =  $use_dates ? 'checked="1"' : '';
 
-		if( isset($this->start, $this->end) ) {
-			$older_end = $this->start->lastMonth();
-			$older_start = $older_end->moved( $this->start->delta( $this->end ) )->nextMonth();
+		if( isset($this->datespan) ) {
+			$oatte = $this->starti + 1;
+			$oatts = $this->starti + 1 + $this->datespan;
 
-			$newer_start = $this->end;
-			$newer_end = $newer_start->moved( $this->end->delta( $this->start ) )->lastMonth();
+			$natts = $this->endi - 1;
+			$natte = $this->endi - 1 - $this->datespan;
+
+			list($oe, $os, $ns, $ne) =
+				$this->clip( array($oatte, $oatts, $natts, $natte),
+					     0, count($months)-1 );
 
 			$older = '<a href="' . $this->queryReplace(array(
 				     'lqt_archive_filter_by_date'=>'1',
-				     'lqt_archive_start' => substr($older_start->text(), 0, 6),
-				     'lqt_archive_end' => substr($older_end->text(), 0, 6) ))
+				     'lqt_archive_start' => $months[$os],
+				     'lqt_archive_end' => $months[$oe]))
 				. '">«older</a>';
 			$newer = '<a href="' . $this->queryReplace(array(
 				     'lqt_archive_filter_by_date'=>'1',
-				     'lqt_archive_start' => substr($newer_start->text(), 0, 6),
-				     'lqt_archive_end' => substr($newer_end->text(), 0, 6) ))
+				     'lqt_archive_start' => $months[$ns],
+				     'lqt_archive_end' => $months[$ne]))
 				. '">newer»</a>';
 		}
 		else {
-			$older = '<span class="lqt_disabled_link">«older</span>';
-			$newer = '<span class="lqt_disabled_link">newer»</span>';
+			$older = '<span class="lqt_disabled_link" title="This link is disabled because you are viewing threads from all dates.">«older</span>';
+			$newer = '<span class="lqt_disabled_link" title="This link is disabled because you are viewing threads from all dates.">newer»</span>';
 		}
 		
 		$this->output->addHTML(<<<HTML
@@ -805,8 +829,9 @@ HTML
 		$this->addJSandCSS();
 		
 		$this->showSearchForm();
-		$this->output->addHTML("<p>" . $this->annotations . ".</p>");
+
 		$this->output->addHTML(<<<HTML
+<p class="lqt_search_annotations">{$this->annotations}</p>
 <table class="lqt_archive_listing">
 <col class="lqt_titles" />
 <col class="lqt_summaries" />
