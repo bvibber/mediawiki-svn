@@ -58,12 +58,18 @@ public class IndexId {
 	/** If true, this machine is an indexer for this index */
 	protected boolean myIndex;
 	
-	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT };
+	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT };
 	
 	/** Type of index, enumeration */
 	protected IndexType type;
 	/** Part number in split repestnation, e.g. 1..N */
 	protected int partNum;
+	
+	/** Namespace -> part (for nssplit indexes) */
+	protected Hashtable<String,String> nssplitMap;
+	
+	/** Set of namespaces for this nssplit part */
+	protected HashSet<String> namespaceSet;
 	
 	/** All parameters as they appear in the global conf, e.g. merge factor, optimize, etc.. */
 	protected Hashtable<String,String> params;
@@ -146,6 +152,8 @@ public class IndexId {
 			this.type = IndexType.MAINSPLIT;
 		else if(type.equals("split"))
 			this.type = IndexType.SPLIT;
+		else if(type.equals("nssplit"))
+			this.type = IndexType.NSSPLIT;
 		
 		// parts
 		String[] parts = dbrole.split("\\.");
@@ -177,9 +185,22 @@ public class IndexId {
 				partNum = Integer.parseInt(part.substring(4));
 			else
 				partNum = 0;
+		} else if(this.type == IndexType.NSSPLIT){
+			splitFactor = Integer.parseInt(typeParams.get("number"));
+			splitParts = new String[splitFactor];
+			for(int i=0;i<splitFactor;i++)
+				splitParts[i] = dbname+".nspart"+(i+1);			
+			if(part!=null){
+				partNum = Integer.parseInt(part.substring(6));
+				namespaceSet = new HashSet<String>();
+				String[] nss = params.get("namespaces").split(",");
+				for(String ns : nss)
+					namespaceSet.add(ns.trim());	 
+			} else
+				partNum = 0;
 		}
 		// for split/mainsplit the main iid is logical, it doesn't have local path
-		if(myIndex && !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT))){
+		if(myIndex && !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT || this.type==IndexType.NSSPLIT))){
 			indexPath = localIndexPath + "index" + sep + dbrole;
 			importPath = localIndexPath + "import" + sep + dbrole;
 			snapshotPath = localIndexPath + "snapshot" + sep + dbrole;
@@ -219,9 +240,13 @@ public class IndexId {
 	public boolean isSplit(){
 		return type == IndexType.SPLIT;
 	}
+	/** If type of this index is mainsplit */
+	public boolean isNssplit(){
+		return type == IndexType.NSSPLIT;
+	}
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
 	public int getPartNum() {
-		if(type == IndexType.SPLIT)
+		if(type == IndexType.SPLIT || type == IndexType.NSSPLIT || type == IndexType.MAINSPLIT)
 			return partNum;
 		else{
 			log.error("Called getPartNum() on non-split object! Probably a bug in the code.");
@@ -414,14 +439,50 @@ public class IndexId {
 		HashSet<String> ret = new HashSet<String>();
 		if(isSingle())
 			ret.add(dbrole);
-		else if(isMainsplit() || isSplit()){
+		else if(isMainsplit() || isSplit() || isNssplit()){
 			for(String p : splitParts)
 				ret.add(p);
 		}
 		
 		return ret;
 	}
+
+	/** Rebuild namespace map from information, call only when sure that iid's for all parts are constructed.
+	 *  Note: always call on main iid, not parts */
+	public void rebuildNsMap(Hashtable<String,IndexId> pool) {
+		if(isNssplit() && part==null){
+			// rebuild
+			nssplitMap = new Hashtable<String,String>();
+			for(String part : splitParts){
+				for(String ns : pool.get(part).namespaceSet){
+					nssplitMap.put(ns,part);
+				}
+			}
+			// set on all parts as well
+			for(String part : splitParts){
+				pool.get(part).nssplitMap = nssplitMap;
+			}
+		}		
+	}	
 	
+	public IndexId getPartByNamespace(int ns){
+		return getPartByNamespace(Integer.toString(ns));
+	}
 	
+	/** If this is nssplit/mainsplit index, get part with certain namespace */
+	public IndexId getPartByNamespace(String ns){
+		if(isNssplit()){
+			String dbrole = nssplitMap.get(ns);
+			if(dbrole == null)
+				dbrole = nssplitMap.get("<default>");
+			return get(dbrole);
+		} else if(isMainsplit()){
+			if(ns.equals("0"))
+				return getMainPart();
+			else
+				return getRestPart();
+		} else
+			return null;
+	}
 		
 }

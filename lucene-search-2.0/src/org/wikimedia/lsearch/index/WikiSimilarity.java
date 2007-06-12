@@ -36,7 +36,8 @@ public class WikiSimilarity extends DefaultSimilarity {
 				return f;
 			}			
 		} else if(fieldName.equals("title") || fieldName.equals("stemtitle") || fieldName.startsWith("alttitle")){
-			float f = (float) (1.0 / (Math.sqrt(numTokens) * numTokens));
+			//float f = (float) (1.0 / (Math.sqrt(numTokens) * numTokens));
+			float f = (float) (1.0 / numTokens);
 			//log.debug("Length-norm: "+f+", numtokens: "+numTokens);
 			return f;
 		} else if(fieldName.startsWith("redirect") || fieldName.startsWith("keyword")){

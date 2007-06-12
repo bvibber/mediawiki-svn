@@ -57,7 +57,7 @@ public class SearchEngine {
 			SearchResults res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"));
 			if(res!=null && res.isRetry()){
 				int retries = 0;
-				if(iid.isSplit()){
+				if(iid.isSplit() || iid.isNssplit()){
 					retries = iid.getSplitFactor()-2;
 				} else if(iid.isMainsplit())
 					retries = 1;
@@ -84,7 +84,7 @@ public class SearchEngine {
 	
 	/** Search mainpart or restpart of the split index */
 	public SearchResults searchPart(IndexId iid, Query q, NamespaceFilterWrapper filter, int offset, int limit, boolean explain){
-		if( ! iid.isMainsplit())
+		if( ! (iid.isMainsplit() || iid.isNssplit()))
 			return null;
 		try {
 			SearcherCache cache = SearcherCache.getInstance();
@@ -150,40 +150,43 @@ public class SearchEngine {
 			
 			WikiSearcher searcher = new WikiSearcher(iid);
 			TopDocs hits=null;
-			// mainpart special case
-			if(nsfw!=null && iid.isMainsplit() && nsfw.getFilter().cardinality()==1 && nsfw.getFilter().contains(0)){
-				String host = searcher.getMainPartHost();
-				if(host == null){
-					res = new SearchResults();
-					res.setErrorMsg("Error contacting searcher for mainpart of the index.");
-					log.error("Error contacting searcher for mainpart of the index.");
-					return res;
+			// see if we can search only part of the index
+			if(nsfw!=null && (iid.isMainPart() || iid.isNssplit())){
+				String part = null;
+				for(NamespaceFilter f : nsfw.getFilter().decompose()){
+					if(part == null)
+						part = iid.getPartByNamespace(f.getNamespace()).toString();
+					else{
+						if(!part.equals(iid.getPartByNamespace(f.getNamespace()).toString())){
+							part = null; // namespace filter wants to search more than one index parts
+							break;
+						}
+					}					
+				}				
+				if(part!=null){
+					IndexId piid = IndexId.get(part);
+					String host = searcher.getHost(piid);
+					if(host == null){
+						res = new SearchResults();
+						res.setErrorMsg("Error contacting searcher for "+part);
+						log.error("Error contacting searcher for "+part);
+						return res;
+					}
+					RMIMessengerClient messenger = new RMIMessengerClient();
+					return messenger.searchPart(piid,q,nsfw,offset,limit,explain,host);
 				}
-				RMIMessengerClient messenger = new RMIMessengerClient();
-				return messenger.searchPart(iid.getMainPart(),q,null,offset,limit,explain,host);
-			// restpart special case
-			} else if(nsfw!=null && iid.isMainsplit() && !nsfw.getFilter().contains(0)){
-				String host = searcher.getRestPartHost();
-				if(host == null){
-					res = new SearchResults();
-					res.setErrorMsg("Error contacting searcher for restpart of the index.");
-					log.error("Error contacting searcher for restpart of the index.");
-					return res;
-				}
-				RMIMessengerClient messenger = new RMIMessengerClient();
-				return messenger.searchPart(iid.getRestPart(),q,nsfw,offset,limit,explain,host);
-			} else{ // normal search
-				try{
-					hits = searcher.search(q,nsfw,offset+limit);
-					res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
-					return res;
-				} catch(Exception e){
-					e.printStackTrace();
-					res = new SearchResults();
-					res.retry();
-					log.warn("Retry, temportal error for query: ["+q+"] on "+iid);
-					return res;
-				}
+			}
+			// normal search
+			try{
+				hits = searcher.search(q,nsfw,offset+limit);
+				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
+				return res;
+			} catch(Exception e){
+				e.printStackTrace();
+				res = new SearchResults();
+				res.retry();
+				log.warn("Retry, temportal error for query: ["+q+"] on "+iid);
+				return res;
 			}			
 		} catch(ParseException e){
 			res = new SearchResults();

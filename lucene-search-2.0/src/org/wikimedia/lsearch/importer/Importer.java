@@ -141,7 +141,7 @@ public class Importer {
 			if(iid.isMainsplit()){
 				IndexThread.makeIndexSnapshot(iid.getMainPart(),iid.getMainPart().getImportPath());
 				IndexThread.makeIndexSnapshot(iid.getRestPart(),iid.getRestPart().getImportPath());
-			} else if(iid.isSplit()){
+			} else if(iid.isSplit() || iid.isNssplit()){
 				for(String part : iid.getSplitParts()){
 					IndexId iidp = IndexId.get(part);
 					IndexThread.makeIndexSnapshot(iidp,iidp.getImportPath());

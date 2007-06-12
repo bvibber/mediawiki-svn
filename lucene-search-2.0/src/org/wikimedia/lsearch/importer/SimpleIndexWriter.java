@@ -48,7 +48,7 @@ public class SimpleIndexWriter {
 		else if(iid.isMainsplit()){
 			indexes.put(iid.getMainPart().toString(),openIndex(iid.getMainPart()));
 			indexes.put(iid.getRestPart().toString(),openIndex(iid.getRestPart()));
-		} else if(iid.isSplit()){
+		} else if(iid.isSplit() || iid.isNssplit()){
 			for(String dbpart : iid.getSplitParts()){
 				indexes.put(IndexId.get(dbpart).toString(),openIndex(IndexId.get(dbpart)));
 			}
@@ -98,8 +98,8 @@ public class SimpleIndexWriter {
 		IndexId target;
 		if(iid.isSingle())
 			target = iid;
-		else if(iid.isMainsplit()) // assign according to namespace
-			target = (a.getNamespace().equals("0"))? iid.getMainPart() : iid.getRestPart();
+		else if(iid.isMainsplit() || iid.isNssplit()) // assign according to namespace
+			target = iid.getPartByNamespace(a.getNamespace());
 		else // split index, randomly assign to some index part
 			target = iid.getPart(1+(int)(Math.random()*iid.getSplitFactor()));
 		

@@ -80,6 +80,8 @@ public class FastWikiTokenizerTest {
 			showTokens(text);
 			text = "This is <!-- Unclosed";
 			showTokens(text);
+			text = "This are [[bean]]s and more [[bla]]njah also Großmann";
+			showTokens(text);
 			text = "[[Category:Blah Blah?!]], and [[:Category:Link to something]]";
 			showTokens(text);
 			text = "[[sr:Glavna stranica]], and [[:Category:Link to category]]";
@@ -92,7 +94,7 @@ public class FastWikiTokenizerTest {
 			showTokens(text);
 			text = "[[First]] second third fourth and so on goes the ... [[last link]]";
 			showTokens(text);
-			text = "{{Something| param = {{another}}[[First]]  } }} }} }} {{name| [[many]] many many tokens }} second third fourth and so on goes the ... [[good keyword]]";
+			text = "{{Something| param = {{another}}[[First]]  } }} }} }} [[first good]]s {{name| [[many]] many many tokens }} second third fourth and so on goes the ... [[good keyword]]";
 			showTokens(text);
 			
 			if(true)

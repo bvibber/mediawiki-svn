@@ -203,10 +203,13 @@ public class Localization {
 		return null;
 	}
 	
+	/** If text redirects to some page, get that page's title object */
 	public static Title getRedirectTitle(String text, String lang){
 		String full = getRedirectTarget(text,lang);
 		if(full == null)
 			return null;
+		if(full.startsWith(":"))
+			full = full.substring(1);
 		String[] parts = full.split(":",2);
 		if(parts.length == 2){
 			String ns = parts[0].toLowerCase();

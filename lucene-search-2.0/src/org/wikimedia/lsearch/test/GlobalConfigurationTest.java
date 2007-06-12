@@ -106,6 +106,10 @@ public class GlobalConfigurationTest extends TestCase {
 			assertNotNull(splitroles.get("part2"));
 			assertNotNull(splitroles.get("part3"));
 			
+			Hashtable nspart1 = (Hashtable) ((Hashtable) database.get("njawiki")).get("nspart1");
+			assertEquals("false",nspart1.get("optimize"));
+			assertEquals("5",nspart1.get("mergeFactor"));
+			
 			// search
 			Hashtable search = testgc.getSearch();
 			ArrayList sr = (ArrayList) search.get("192.168.0.2"); 
@@ -170,6 +174,8 @@ public class GlobalConfigurationTest extends TestCase {
 			assertTrue(testgc.useKeywordScoring("rutest"));
 			
 			
+			
+			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
@@ -223,6 +229,22 @@ public class GlobalConfigurationTest extends TestCase {
 		IndexId detest = IndexId.get("detest");
 		assertFalse(detest.isLogical());
 		
+		// check nssplit
+		IndexId njawiki = IndexId.get("njawiki");
+		assertTrue(njawiki.isLogical());
+		assertFalse(njawiki.isSplit());
+		assertTrue(njawiki.isNssplit());
+		assertEquals(3,njawiki.getSplitFactor());
+		assertEquals("njawiki.nspart3",njawiki.getPartByNamespace("4").toString());
+		assertEquals("njawiki.nspart1",njawiki.getPartByNamespace("0").toString());
+		assertEquals("njawiki.nspart2",njawiki.getPartByNamespace("12").toString());
+		
+		IndexId njawiki2 = IndexId.get("njawiki.nspart2");
+		assertFalse(njawiki2.isLogical());
+		assertFalse(njawiki2.isSplit());
+		assertTrue(njawiki2.isNssplit());
+		assertEquals(3,njawiki2.getSplitFactor());
+		assertEquals(2,njawiki2.getPartNum());
 		
 	}
 }
