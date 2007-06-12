@@ -806,7 +806,13 @@ HTML
 		
 		$this->showSearchForm();
 		$this->output->addHTML("<p>" . $this->annotations . ".</p>");
-		$this->output->addHTML('<table border="1">');
+		$this->output->addHTML(<<<HTML
+<table class="lqt_archive_listing">
+<col class="lqt_titles" />
+<col class="lqt_summaries" />
+<tr><th>Title<th>Summary</tr>
+HTML
+                );
 		foreach ($this->threads() as $t) {
 			$this->showThread($t);
 		}

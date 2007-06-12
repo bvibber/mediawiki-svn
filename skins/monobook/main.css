@@ -128,6 +128,29 @@ li {
 	display: inline;
 }
 
+#lqt_archive_search_form {
+	border: 1px solid #ddd;
+	margin: 0.5em 0;
+	background-color: #eee;
+	padding: 0.4em;
+	display: table; width: auto;
+}
+#lqt_archive_search_form table {
+	background-color: transparent;
+}
+
+.lqt_archive_listing td {
+	padding-right: 2em;
+	padding-bottom: 1em;
+	vertical-align: top;
+}
+.lqt_archive_listing th {
+	text-align: left;
+	vertical-align: baseline;
+	font-weight: bold; 
+	border-bottom: 1px solid #ddd;
+}
+
 .lqt_hidden {
 	display: none;
 }
