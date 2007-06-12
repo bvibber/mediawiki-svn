@@ -28,17 +28,28 @@ class ArrayRecord implements Record {
 
 	public function project($structure) {
 		$result = project($this, $structure);
+		return $result;
 	}
 
 	public function setAttributeValue($attribute, $value) {
 		$this->values[$attribute->id] = $value;
 	}
 	
+	/**
+	 *
+	 * @param $values Array to write into the record, by order of the structure
+	 *
+	 */
 	public function setAttributeValuesByOrder($values) {
 		for ($i = 0; $i < count($this->structure->attributes); $i++)
 			$this->values[$this->structure->attributes[$i]->id] = $values[$i];
 	}
 	
+	/*
+	 *
+	 * @param $record Another record object whose values get written into this one
+	 *
+	 */
 	public function setSubRecord($record) {
 		foreach($record->getStructure()->attributes as $attribute)
 			$this->values[$attribute->id] = $record->getAttributeValue($attribute);
