@@ -379,6 +379,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke'  => 'a revocat statutul de robot lui [[$1]]',
 ),
 
+/* Russian */
+'ru' => array(
+'makebot' => 'Присвоить/снять статус бота',
+'makebot-header' => "'''Бюрократы могут использовать эту страницу для присвоения участнику статуса бота и лишения его.'''<br />Статус бота позволяет скрывать правки участника на странице [[Special:Recentchanges|свежих правок]] и в других подобных местах и полезен для пометки участников, делающих множество правок в автоматизированном режиме. Присвоение и лишение статуса должно осуществляться согласно действующим правилам.",
+'makebot-username' => 'Имя участника:',
+'makebot-search' => 'Искать',
+'makebot-isbot' => '[[User:$1|Участник $1]] имеет статус бота.',
+'makebot-notbot' => '[[User:$1|Участник $1]] не имеет статуса бота.',
+'makebot-privileged' => '[[User:$1|Участник $1]] является [[Special:Listadmins|администратором или бюрократом]] и не может получить статус бота.',
+'makebot-change' => 'Изменить статус:',
+'makebot-grant' => 'Присвоить',
+'makebot-revoke' => 'Снять',
+'makebot-comment' => 'Комментарий:',
+'makebot-granted' => '[[User:$1|Участнику $1]] присвоен статус бота.',
+'makebot-revoked' => 'С [[User:$1|участник $1]] снят статус бота.',
+'makebot-logpage' => 'Журнал изменения статуса бота',
+'makebot-logpagetext' => 'В данном журнале отображены изменения статуса бота.',
+'makebot-logentrygrant' => 'присвоил статус бота участнику [[$1]]',
+'makebot-logentryrevoke' => 'снял статус бота с участника [[$1]]',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'makebot'                 => 'Udeliť alebo odobrať status bota',

@@ -80,6 +80,13 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 'blacklistedusernametext' => 'Lo nom d’utilizaire qu\'avètz causit se tròba sus la [[MediaWiki:Usernameblacklist|lista dels noms interdiches]]. Causissètz un autre nom.',
 ),
 
+/* Russian */
+'ru' => array(
+'blacklistedusername' => 'Запрещённое имя пользователя',
+'blacklistedusernametext' => 'Имя пользователя, которое вы выбрали, находится в [[MediaWiki:Usernameblacklist|
+списке запрещённых имён]]. Пожалуйста, выберите другое имя.',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'blacklistedusername' => 'Nome de utilizador na lista negra',

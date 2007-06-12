@@ -125,6 +125,9 @@ $wgFilepathMessages['ru'] = array(
 	'filepath'        => 'Путь к файлу',
 	'filepath_page'   => 'Файл:',
 	'filepath_submit' => 'Путь',
+	'filepath-summary' => 'Данная служебная страница возвращает полный путь к файлу в том виде, в котором он хранится на диске.
+	
+	Введите имя файла без префикса <code>{{ns:image}}:</code>.',
 );
 $wgFilepathMessages['sk'] = array(
 	'filepath'        => 'Cesta k súboru',

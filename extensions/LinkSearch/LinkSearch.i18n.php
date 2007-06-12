@@ -134,8 +134,11 @@ $wgLinkSearchMessages['pt-br'] = $wgLinkSearchMessages['pt'];
 
 $wgLinkSearchMessages['ru'] = array(
 	'linksearch'       => 'Поиск внешних ссылок',
-	'linksearch-text'  => 'Можно использовать подстановочные символы, например: «*.wikipedia.org».',
-	'linksearch-line'  => 'Из $2 ссылка на $1',
+	'linksearch-pat'   => 'Шаблон для поиска:',
+	'linksearch-ns'    => 'Пространство имён:',
+	'linksearch-ok'    => 'Искать',
+	'linksearch-text'  => 'Можно использовать подстановочные символы, например, <code>*.wikipedia.org</code>.',
+	'linksearch-line'  => 'Ссылка на $1 из $2',
 	'linksearch-error' => 'Подстановочные символы могут использоваться только в начале адресов.',
 );
 $wgLinkSearchMessages['sk'] = array(
