@@ -44,7 +44,6 @@ static void usage(void);
 static void read_configuration(void);
 static int run_check(void);
 static void notify_query(char const *id, char const *user, char const *db, char const *query, int t);
-static int seen_query(int64_t);
 static void clean_seen_queries(void);
 static void add_seen_query(int64_t);
 static int has_warned(int64_t);
@@ -343,17 +342,6 @@ query	*q;
 	q->q_iter = iter;
 	q->q_next = querylist.q_next;
 	querylist.q_next = q;
-}
-
-static int
-seen_query(qid)
-	int64_t qid;
-{
-query	*q;
-	for (q = querylist.q_next; q; q = q->q_next)
-		if (q->q_id == qid)
-			return 1;
-	return 0;
 }
 
 static void
