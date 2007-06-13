@@ -14,6 +14,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		$this->outputViewHeader();
 
+		// Obtain ID from title of the form "DefinedMeaning:Foo (1234)" for database lookup
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		
 		$wgOut->addHTML($this->getConceptPanel());
@@ -77,6 +78,19 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
+	}
+
+	/**
+		@return Basic CSV data dump
+	*/
+	public function raw() {
+		$record=getDefinedMeaningRecord(
+			$definedMeaningId, 
+			$this->filterLanguageId,
+			$this->possiblySynonymousRelationTypeId, 
+			$this->viewQueryTransactionInformation
+		);
+		return $recurd;
 	}
 
 	protected function save($referenceTransaction) {

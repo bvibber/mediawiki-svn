@@ -48,6 +48,13 @@ class ArrayRecordSet implements RecordSet {
 	public function getRecord($index) {
 		return $this->records[$index];
 	}
+
+	/**
+	 * @return carriage return separated list of values
+	 */
+	public function __tostring() {
+		return implode("\n",$this->records);
+	}
 }
 
 class ConvertingRecordSet implements RecordSet {

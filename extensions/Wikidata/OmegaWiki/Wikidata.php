@@ -95,8 +95,7 @@ class DefaultWikidataApplication {
 		initializeOmegaWikiAttributes($this->filterLanguageId != 0);	
 		initializeObjectAttributeEditors($this->filterLanguageId, false);		
 		$this->viewQueryTransactionInformation = new QueryLatestTransactionInformation();
-	
-}
+	}
 	
 	protected function getDataSetPanel() {
 		global $wgTitle, $wgUser;
@@ -118,12 +117,11 @@ class DefaultWikidataApplication {
 		$html.="</table>";
 		$html.="</div>";
 		return $html;
-
 	}
 
 	protected function save($referenceTransaction) {
 		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
-		initializeObjectAttributeEditors($this->filterLanguageId, false, false);
+		initializeObjectAttributeEditors($this->filterLanguageId, false);
 	}
 	
 	public function saveWithinTransaction() {
@@ -132,10 +130,16 @@ class DefaultWikidataApplication {
 
 		$summary = $wgRequest->getText('summary');
 
+		// Insert transaction information into the DB
 		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
+
+		// Perform regular save
 		$this->save(new QueryAtTransactionInformation($wgRequest->getInt('transaction'), false));
 
+		// Update page caches
 		Title::touchArray(array($wgTitle));
+
+		// Add change to RC log
 		$now = wfTimestampNow();
 		RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, $summary, 0, $now, false, '', 0, 0, 0);
 	}
@@ -177,7 +181,7 @@ class DefaultWikidataApplication {
 
 		$wgOut->setPageTitle(wfMsg('ow_history',$title));
 
-		
+		# Plain filter for the lifespan info about each record
 		if (isset($_GET['show'])) {
 			$this->showRecordLifeSpan = isset($_GET["show-record-life-span"]);
 			$this->transaction = (int) $_GET["transaction"];
@@ -187,6 +191,7 @@ class DefaultWikidataApplication {
 			$this->transaction = 0;
 		}
 		
+		# Up to which transaction to view the data
 		if ($this->transaction == 0)
 			$this->queryTransactionInformation = new QueryHistoryTransactionInformation();
 		else

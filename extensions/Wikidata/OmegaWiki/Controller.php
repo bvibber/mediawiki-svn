@@ -18,7 +18,7 @@ interface PermissionController {
 	public function allowRemovalOfValue($idPath, $value);
 }
 
-class SimplePermissionController {
+class SimplePermissionController implements PermissionController {
 	protected $allowUpdate;
 	protected $allowRemove;
 	
@@ -44,7 +44,6 @@ class DefinedMeaningDefinitionController implements UpdateController {
 	public function add($keyPath, $record) {
 		global
 			$definedMeaningIdAttribute, $languageAttribute, $textAttribute;
-
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$languageId = $record->getAttributeValue($languageAttribute);
 		$text = $record->getAttributeValue($textAttribute);

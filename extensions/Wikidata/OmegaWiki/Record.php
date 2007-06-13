@@ -54,6 +54,13 @@ class ArrayRecord implements Record {
 		foreach($record->getStructure()->attributes as $attribute)
 			$this->values[$attribute->id] = $record->getAttributeValue($attribute);
 	}
+
+	/** 
+	 * @return comma-separated values
+	 */
+	public function __tostring() {
+		return implode(",",$this->values);
+	}
 }
 
 function project($record, $structure) {
