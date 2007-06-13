@@ -139,6 +139,9 @@ $wgMakesysopMessages['cs'] = array(
 	'group-steward-member' => 'Stevard',
 	'grouppage-steward'    => '{{ns:project}}:Stevardi',
 );
+$wgMakesysopMessages['csb'] = array(
+	'rights'               => 'Prawa:',
+);
 $wgMakesysopMessages['cv'] = array(
 	'rights'               => 'Тума пултарать:',
 );
@@ -522,6 +525,10 @@ $wgMakesysopMessages['kk-cn'] = array(
 	'grouppage-steward'    => '{{ns:project}}:جەتەكشٸلەر',
 );
 $wgMakesysopMessages['kk'] = $wgMakesysopMessages['kk-kz'];
+$wgMakesysopMessages['kn'] = array(
+	'makesysopname'        => 'ಸದಸ್ಯನ ಹೆಸರು:',
+	'rights'               => 'ಹಕ್ಕುಗಳು:',
+);
 $wgMakesysopMessages['ko'] = array(
 	'makesysoptitle'       => '사용자에게 관리자 권한 주기',
 	'makesysoptext'        => '이 양식은 뷰로크랫 권한이 있는 사용자가 다른 사용자에게 관리자 권한을 줄 때 사용됩니다. 사용자 이름을 입력하고 확인을 눌러 관리자 권한을 줄 수 있습니다.',
@@ -689,6 +696,10 @@ $wgMakesysopMessages['oc'] = array(
 	'already_sysop' => 'Aqueste utilizaire ja es administrator',
 	'already_bureaucrat' => 'Aqueste utilizaire ja es burocrata',
 	'makesysop-nodatabase' => 'Marrit nom d’utilizaire interwiki : $1',
+);
+$wgMakesysopMessages['os'] = array(
+	'makesysopname' => 'Архайæджы ном:',
+	'rights'        => 'Бартæ',
 );
 $wgMakesysopMessages['pl'] = array(
 	'makesysoptitle'       => 'Nadaj użytkownikowi uprawnienia administratora',
@@ -942,6 +953,18 @@ $wgMakesysopMessages['sv'] = array(
 	'group-steward'        => 'Stewarder',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewarder',
+);
+$wgMakesysopMessages['te'] = array(
+	'already_bureaucrat'   => 'ఈ సభ్యుడు ఇప్పటికే అధికారి',
+	'already_sysop'        => 'ఈ సభ్యుడు ఇప్పటికే నిర్వాహకుడు',
+	'makesysop'            => 'సభ్యుడిని నిర్వాహకుడిగా మార్చు',
+	'makesysopfail'        => '<b>సభ్యుడు "$1"ని నిర్వాహకుడిగా మార్చలేక పోయాం. (పేరు సరిగానే రాసారా?)</b>',
+	'makesysopname'        => 'సభ్యుని పేరు:',
+	'makesysopok'          => '<b>సభ్యుడు "$1" ఇప్పుడు నిర్వాహకుడు</b>',
+	'makesysopsubmit'      => 'ఈ సభ్యుని నిర్వాహకుడిని చెయ్యి',
+	'makesysoptext'        => 'మామూలు సభ్యులను నిర్వాహకులు చెయ్యడానికి అధికారులు ఈ ఫారంను వాడతారు. దీని కొరకు సభ్యుని పేరు పెట్టెలో టైపు చేసి, మీట నొక్కండి.',
+	'rights'               => 'హక్కులు:',
+
 );
 $wgMakesysopMessages['tr'] = array(
 	'already_bureaucrat'   => 'Bu kullanıcı zaten bürokrat',
