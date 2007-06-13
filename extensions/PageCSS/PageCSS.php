@@ -10,43 +10,30 @@ if (!defined('MEDIAWIKI')) die();
  * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
  */
 
-$wgExtensionFunctions[] = 'wfCssHook';
+$wgExtensionFunctions[] = array( 'CssHook', 'setup' );
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Page CSS',
 	'description' => 'A parser hook to add per-page css to pages with the <nowiki><css></nowiki> tag',
 	'author' => 'Ævar Arnfjörð Bjarmason'
 );
 
-function wfCssHook() {
-	wfUsePHP( 5.1 );
-	wfUseMW( '1.6alpha' );
+class CssHook {
+
+	public static function setup() {
+		global $wgParser;
+		$wgParser->setHook( 'css', array( 'CssHook', 'parse' ) );
+	}
 	
-	class CssHook {
-		private $mCss;
-		
-		public function __construct() {
-			global $wgParser, $wgHooks;
-
-			$wgParser->setHook( 'css' , array( &$this, 'parseHook' ) );
-			
-			$wgHooks['SkinTemplateSetupPageCss'][] = array( &$this, 'hook' );
-		}
-
-		public function parseHook( $in, array $argv, Parser $parser ) {
-			global $wgCssHookCss;
-
-			$this->mCss .= trim( Sanitizer::checkCss( $in ) );
-			$parser->disableCache(); // workaround for now
-		}
-
-		public function hook( &$css ) {
-			if ( $this->mCss != '' )
-				$css = "/*<![CDATA[*/\n" . htmlspecialchars( $this->mCss ) . "\n/*]]>*/";
-
-			return false;
-		}
+	public static function parse( $content, array $args, Parser $parser ) {
+		$css = htmlspecialchars( trim( Sanitizer::checkCss( $content ) ) );
+		$parser->mOutput->addHeadItem( <<<EOT
+<style type="text/css">
+/*<![CDATA[*/
+{$css}
+/*]]>*/
+</style>
+EOT
+		);
 	}
 
-	// Establish a singleton.
-	new CssHook;
 }
