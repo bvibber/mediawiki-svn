@@ -857,6 +857,7 @@ $wgRedirectSources = false;
 
 $wgShowIPinHeader	= true; # For non-logged in users
 $wgMaxNameChars		= 255;  # Maximum number of bytes in username
+$wgMaxSigChars      = 255;  # Maximum number of bytes in signature
 $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
 
 $wgExtraSubtitle	= '';
@@ -2219,6 +2220,7 @@ $wgLogActions = array(
 	'block/block'       => 'blocklogentry',
 	'block/unblock'     => 'unblocklogentry',
 	'protect/protect'   => 'protectedarticle',
+	'protect/modify'    => 'modifiedarticleprotection',
 	'protect/unprotect' => 'unprotectedarticle',
 	'rights/rights'     => 'rightslogentry',
 	'delete/delete'     => 'deletedarticle',
