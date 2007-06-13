@@ -83,7 +83,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$rand = wfRandom();
 			$index = $dbr->useIndexClause( 'page_random' );
 			$sql = "SELECT page_title FROM {$page} {$index} WHERE page_namespace = {$nspc}
-					AND page_is_redirect = 0 AND page_random > {$rand}";
+					AND page_is_redirect = 0 AND page_random > {$rand} ORDER BY page_random LIMIT 1";
 			$res = $dbr->query( $sql, 'RandomImage::pickImage' );
 			if( $row = $dbr->fetchObject( $res ) ) {
 				$ret = Title::makeTitleSafe( $nspc, $row->page_title );
