@@ -22,7 +22,7 @@ $wgExtensionFunctions[]="wfPoemExtension";
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Poem',
 	'author' => 'Nikola Smolenski, Brion Vibber, Steve Sanbeg',
-	'description' => 'adds <nowiki><poem></nowiki> tag for poem formatting',
+	'description' => 'Adds <nowiki><poem></nowiki> tag for poem formatting',
 	'url' => 'http://meta.wikimedia.org/wiki/Poem_Extension'
 );
 $wgParserTestFiles[] = dirname( __FILE__ ) . "/poemParserTests.txt";
