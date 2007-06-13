@@ -7,11 +7,20 @@ require_once('OmegaWikiEditors.php');
 class DefinedMeaning extends DefaultWikidataApplication {
 	public function view() {
 		global
-			$wgOut, $wgTitle;
+			$wgOut, $wgTitle, $wgRequest;
 
 		$this->showDataSetPanel=false;
 		parent::view();
 
+		$view_as=$wgRequest->getText('view_as');
+
+		if ($view_as=="raw") {
+			$wgOut->disable();
+			
+			header("Content-Type: text/plain; charset=UTF-8");
+			echo($this->raw());
+			return;
+		}
 		$this->outputViewHeader();
 
 		// Obtain ID from title of the form "DefinedMeaning:Foo (1234)" for database lookup
@@ -30,7 +39,6 @@ class DefinedMeaning extends DefaultWikidataApplication {
 				)
 			)
 		);
-		
 		$this->outputViewFooter();
 	}
 	
@@ -84,13 +92,17 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		@return Basic CSV data dump
 	*/
 	public function raw() {
+		global 
+			$wgTitle;
+	
+		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		$record=getDefinedMeaningRecord(
 			$definedMeaningId, 
 			$this->filterLanguageId,
 			$this->possiblySynonymousRelationTypeId, 
 			$this->viewQueryTransactionInformation
 		);
-		return $recurd;
+		return $record;
 	}
 
 	protected function save($referenceTransaction) {
