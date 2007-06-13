@@ -663,7 +663,8 @@ function sosShowDiff( $revision )
 		}
 		$ntext = strval( $rev->getText());
 
-		$wgOut->addStyle( 'common/diff.css' );
+		$diffEngine = new DifferenceEngine();
+		$diffEngine->showDiffStyle();
 		$wgOut->addHtml(
 			"<ul>" .
 			$info .
@@ -683,7 +684,7 @@ function sosShowDiff( $revision )
 				"<td colspan='2' width='50%' align='center' class='diff-otitle'>" . wfMsgHTML('oversight-prev') . " (#$prevId)" . "</td>" .
 				"<td colspan='2' width='50%' align='center' class='diff-ntitle'>" . wfMsgHTML('oversight-hidden') . "</td>" .
 			"</tr>" .
-			DifferenceEngine::generateDiffBody( $otext, $ntext ) .
+			$diffEngine->generateDiffBody( $otext, $ntext ) .
 			"</table>" .
 			"</div>\n" );
 	}
