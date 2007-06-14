@@ -7,6 +7,7 @@ require_once('WikiDataAPI.php');
 require_once('Transaction.php');
 require_once('WikiDataTables.php');
 require_once('RecordSetQueries.php');
+require_once('DefinedMeaningModel.php');
 
 function getSynonymSQLForLanguage($languageId, &$definedMeaningIds) {
 

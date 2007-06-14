@@ -59,8 +59,33 @@ class ArrayRecord implements Record {
 	 * @return comma-separated values
 	 */
 	public function __tostring() {
-		return implode(",",$this->values);
+		return $this->tostring_indent();
 	}
+	
+	public function tostring_indent($depth=0,$key="") {
+		$rv="\n".str_pad("",$depth*8);	
+		$rv.="$key:Record {";
+		$rv2=$rv;
+		foreach ($this->values as $key=>$value) {
+			$rv=$rv2;
+			$methods=get_class_methods(get_class($value));
+			$repr="$key:$value";
+			if (!is_null($methods)) {
+				if (in_array("tostring_indent",$methods)) {
+					$repr=$value->tostring_indent($depth+1,$key);
+					
+					
+				} 
+			}
+			$rv.=$repr;
+
+			$rv2=$rv;
+			$rv2.=", ";
+		}
+		$rv.="}";
+		return $rv;
+	}
+
 }
 
 function project($record, $structure) {
