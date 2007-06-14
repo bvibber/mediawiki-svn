@@ -359,11 +359,12 @@ function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLan
 
 	while($definedMeaning = $dbr->fetchObject($queryResult)) {
 		$definedMeaningId = $definedMeaning->defined_meaning_id;
+		$dmModel=new DefinedMeaningModel($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation);
 		$recordSet->addRecord(
 			array(
 				$definedMeaningId, 
 				getDefinedMeaningDefinition($definedMeaningId), 
-				getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation)
+				$dmModel->getRecord()
 			)
 		);
 	}
@@ -449,35 +450,6 @@ function getExpressionIdThatHasSynonyms($spelling, $languageId) {
 		return 0;
 }
  
-function getDefinedMeaningRecord($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
-	global
-		$definedMeaningAttribute, $definitionAttribute, $classAttributesAttribute, 
-		$alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
-		$relationsAttribute, $reciprocalRelationsAttribute,
-		$classMembershipAttribute, $collectionMembershipAttribute, $definedMeaningAttributesAttribute,
-		$possiblySynonymousAttribute;
-
-	$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
-	$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
-	$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation));
-	$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
-	$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
-	
-	$filterRelationTypes = array();
-
-	if ($possiblySynonymousRelationTypeId != 0) {
-		$record->setAttributeValue($possiblySynonymousAttribute, getPossiblySynonymousRecordSet($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation));
-		$filterRelationTypes[] = $possiblySynonymousRelationTypeId;
-	}
-	
-	$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageId, $filterRelationTypes, $queryTransactionInformation));
-	$record->setAttributeValue($reciprocalRelationsAttribute, getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
-	$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
-	$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
-	$record->setAttributeValue($definedMeaningAttributesAttribute, getObjectAttributesRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
-
-	return $record;
-}
 
 function getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation) {
 	global

@@ -3,6 +3,7 @@
 require_once('Wikidata.php');
 require_once('OmegaWikiRecordSets.php');
 require_once('OmegaWikiEditors.php');
+require_once('DefinedMeaningModel.php');
 
 class DefinedMeaning extends DefaultWikidataApplication {
 	public function view() {
@@ -27,16 +28,18 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		
 		$wgOut->addHTML($this->getConceptPanel());
+
+		$dmModel=new DefinedMeaningModel(
+				$definedMeaningId, 
+				$this->filterLanguageId,
+				$this->possiblySynonymousRelationTypeId, 
+				$this->viewQueryTransactionInformation);
+
 		$wgOut->addHTML(
 			getDefinedMeaningEditor(
 				$this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, $this->shouldShowAuthorities)->view(
 				$this->getIdStack($definedMeaningId), 
-				getDefinedMeaningRecord(
-					$definedMeaningId, 
-					$this->filterLanguageId,
-					$this->possiblySynonymousRelationTypeId, 
-					$this->viewQueryTransactionInformation
-				)
+				$dmModel->getRecord()
 			)
 		);
 		$this->outputViewFooter();
@@ -51,15 +54,16 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 
 		$this->outputEditHeader();
+		$dmModel=new DefinedMeaningModel(
+			$definedMeaningId, 
+			$this->filterLanguageId, 
+			$this->possiblySynonymousRelationTypeId, 
+			new QueryLatestTransactionInformation()
+		);
 		$wgOut->addHTML(
 			getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->edit(
 				$this->getIdStack($definedMeaningId), 
-				getDefinedMeaningRecord(
-					$definedMeaningId, 
-					$this->filterLanguageId, 
-					$this->possiblySynonymousRelationTypeId, 
-					new QueryLatestTransactionInformation()
-				)
+				$dmModel->getRecord()
 			)
 		);
 		$this->outputEditFooter();
@@ -72,15 +76,16 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		parent::history();
 
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$wgOut->addHTML(
-			getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, $this->showRecordLifeSpan, false)->view(
-				new IdStack("defined-meaning"), 
-				getDefinedMeaningRecord(
+		$dmModel=new DefinedMeaningModel(
 					$definedMeaningId, 
 					$this->filterLanguageId, 
 					$this->possiblySynonymousRelationTypeId, 
 					$this->queryTransactionInformation
-				)
+				);
+		$wgOut->addHTML(
+			getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, $this->showRecordLifeSpan, false)->view(
+				new IdStack("defined-meaning"), 
+				$dmModel->getRecord()
 			)
 		);
 		
@@ -96,13 +101,13 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$wgTitle;
 	
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$record=getDefinedMeaningRecord(
+		$dmModel=new DefinedMeaningModel(
 			$definedMeaningId, 
 			$this->filterLanguageId,
 			$this->possiblySynonymousRelationTypeId, 
 			$this->viewQueryTransactionInformation
 		);
-		return $record;
+		return $dmModel->getRecord();
 	}
 
 	protected function save($referenceTransaction) {
@@ -111,7 +116,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		parent::save($referenceTransaction);
 
-		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
+/*		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
 			$this->getIdStack($definedMeaningId), 
 			getDefinedMeaningRecord(
@@ -120,7 +125,22 @@ class DefinedMeaning extends DefaultWikidataApplication {
 				$this->possiblySynonymousRelationTypeId, 
 				$referenceTransaction
 			)
+		);*/
+
+		global 
+			$wgTitle;
+	
+		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
+		
+		$dmModel=new DefinedMeaningModel(
+			$definedMeaningId, 
+			$this->filterLanguageId,
+			$this->possiblySynonymousRelationTypeId, 
+			$referenceTransaction
 		);
+
+		echo $dmModel->getRecord();
+
 	}
 	
 	protected function getIdStack($definedMeaningId) {

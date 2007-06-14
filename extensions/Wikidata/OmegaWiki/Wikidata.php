@@ -404,7 +404,7 @@ class DataSet {
 
 /**
  * A representation and easy access to all defined-meaning related data in one handy spot
- * or would be. Currently only holds data  that is eally needed. Please expand and
+ * or would be. Currently only holds data  that is really needed. Please expand and
  * use to replace WiKiDataAPI.
  * Sometimes a getter or setter will query the database and/or attempt to deduce additional
  * information based on what it already knows, but don't count on that (yet).
