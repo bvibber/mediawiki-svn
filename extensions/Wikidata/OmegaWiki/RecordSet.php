@@ -5,15 +5,45 @@ require_once('converter.php');
 require_once('Attribute.php');
 require_once('Record.php');
 
-interface RecordSet {
-	public function getStructure();
-	public function getKey();
-	public function getRecordCount();
-	public function getRecord($index);
+abstract class RecordSet {
+	public abstract function getStructure();
+	public abstract function getKey();
+	public abstract function getRecordCount();
+	public abstract function getRecord($index);
 	# public function save(); # <- we first need to implement, then uncomment
+/**
+	 * @return carriage return separated list of values
+	 */
+	public function __tostring() {
+		return $this->tostring_indent();
+	}
+	
+	public function tostring_indent($depth=0,$key="",$myname="RecordSet") {
+		$rv="\n".str_pad("",$depth*8);
+		$rv.="$key:$myname {";
+		$rv2=$rv;
+		foreach ($this->records as $value) {
+			$rv=$rv2;
+			$methods=get_class_methods(get_class($value));
+			if (!is_null($methods)) {
+				if (in_array("tostring_indent",$methods)) {
+					$value=$value->tostring_indent($depth+1);
+				}
+			}
+			$rv.="$value";
+
+			$rv2=$rv;
+			$rv2.=", ";
+		}
+		$rv.="}";
+
+		return $rv;
+	}
+
+
 }
 
-class ArrayRecordSet implements RecordSet {
+class ArrayRecordSet extends RecordSet {
 	protected $structure;
 	protected $key;
 	protected $records = array();
@@ -49,38 +79,14 @@ class ArrayRecordSet implements RecordSet {
 	public function getRecord($index) {
 		return $this->records[$index];
 	}
-
-	/**
-	 * @return carriage return separated list of values
-	 */
-	public function __tostring() {
-		return $this->tostring_indent();
-	}
 	
-	public function tostring_indent($depth=0,$key="") {
-		$rv="\n".str_pad("",$depth*8);
-		$rv.="$key:ArrayRecordSet {";
-		$rv2=$rv;
-		foreach ($this->records as $value) {
-			$rv=$rv2;
-			$methods=get_class_methods(get_class($value));
-			if (!is_null($methods)) {
-				if (in_array("tostring_indent",$methods)) {
-					$value=$value->tostring_indent($depth+1);
-				}
-			}
-			$rv.="$value";
-
-			$rv2=$rv;
-			$rv2.=", ";
-		}
-		$rv.="}";
-
-		return $rv;
+	public function tostring_indent($depth=0,$key="",$myname="") {
+		return parent::tostring_indent($depth,$key,$myname."_ArrayRecordSet");
 	}
+
 }
 
-class ConvertingRecordSet implements RecordSet {
+class ConvertingRecordSet extends RecordSet {
 	protected $relation;
 	protected $converters;
 	protected $structure;
@@ -120,6 +126,10 @@ class ConvertingRecordSet implements RecordSet {
 			$attributes = array_merge($attributes, $converter->getStructure()->attributes);
 			
 		return new Structure($attributes);
+	}
+
+	public function tostring_indent($depth=0,$key="",$myname="") {
+		return parent::tostring_indent($depth,$key,$myname."_ConvertingRecordSet");
 	}
 }
 
