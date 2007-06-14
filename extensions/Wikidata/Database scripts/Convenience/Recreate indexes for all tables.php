@@ -10,8 +10,8 @@ require_once("Setup.php");
 
 ob_end_flush();
 
-function createIndexesForTable($tableName) {
-	$handle = fopen("Create " . $tableName . " indices.sql", "r");
+function createIndexesForTable($dc,$tableName) {
+	$handle = fopen("Create uw_" . $tableName . " indices.sql", "r");
 	$sql = "";
 	
 	while (!feof($handle)) {
@@ -21,22 +21,25 @@ function createIndexesForTable($tableName) {
 			$sql .= $line;
 	}
 	
+	$sql = str_replace("%dc%", $dc, $sql);
+	
 	$dbr =& wfGetDB(DB_MASTER);
 	$queryResult = $dbr->query($sql);
 	
 	fclose($handle);
 }
 
-function recreateIndexesForTable($tableName) {
-	echo "Dropping indices from table $tableName.\n";
-	dropAllIndicesFromTable($tableName);
-	echo "Creating new indices for table $tableName.\n";
-	createIndexesForTable($tableName);
+function recreateIndexesForTable($dc, $tableName) {
+	echo "Dropping indices from table " . $dc . "_" . $tableName . ".\n";
+	dropAllIndicesFromTable($dc . "_" . $tableName);
+	echo "Creating new indices for table " . $dc . "_" . $tableName . ".\n";
+	createIndexesForTable($dc,$tableName);
 }
 
-function recreateIndexesForTables($tableNames) {
-	foreach ($tableNames as $tableName)
-		recreateIndexesForTable($tableName);
+function recreateIndexesForTables($dc, $tableNames) {
+	foreach ($tableNames as $tableName){
+		recreateIndexesForTable($dc,$tableName);
+	}
 }
 
 global
@@ -44,26 +47,27 @@ global
 
 $beginTime = time();
 $wgCommandLineMode = true;
+$dc = "sp";
 
-recreateIndexesForTables(
+recreateIndexesForTables( "sp",
 	array(
 		"bootstrapped_defined_meanings",
 		"transactions",
 		"translated_content",
-		"uw_alt_meaningtexts",
-		"uw_class_attributes",
-		"uw_class_membership",
-		"uw_collection_contents",
-		"uw_collection_ns",
-		"uw_defined_meaning",
-		"uw_expression_ns",
-		"uw_meaning_relations",
-		"uw_option_attribute_options",
-		"uw_option_attribute_values",
-		"uw_syntrans",
-		"uw_text_attribute_values",
-		"uw_translated_content_attribute_values",
-		"uw_url_attribute_values"
+		"alt_meaningtexts",
+		"class_attributes",
+		"class_membership",
+		"collection_contents",
+		"collection_ns",
+		"defined_meaning",
+		"expression_ns",
+		"meaning_relations",
+		"option_attribute_options",
+		"option_attribute_values",
+		"syntrans",
+		"text_attribute_values",
+		"translated_content_attribute_values",
+		"url_attribute_values"
 	)
 );
 

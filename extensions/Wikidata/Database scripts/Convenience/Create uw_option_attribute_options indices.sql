@@ -1,4 +1,4 @@
-ALTER TABLE `uw_option_attribute_options` 
+ALTER TABLE `%dc%_option_attribute_options` 
 	ADD INDEX `versioned_end_option` (`remove_transaction_id`, `option_mid`, `attribute_id`, `option_id`),
 	ADD INDEX `versioned_end_attribute` (`remove_transaction_id`, `attribute_id`, `option_id`, `option_mid`),
 	ADD INDEX `versioned_end_id` (`remove_transaction_id`, `option_id`),

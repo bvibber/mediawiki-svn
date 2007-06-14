@@ -3,12 +3,9 @@
 # this module create a wikidata extension for mediawiki
 # it generates the tables in a database (passed as parameter) with a defined prefix (passed as parameter)
 
-define('MEDIAWIKI', true );
-
 $wgUseMasterForMaintenance = true;
-require_once( "../../../../LocalSettings.php");
 require_once( "../../../../maintenance/commandLine.inc");
-require_once( "../../OmegaWiki/WikiDataAPI.php");
+#require_once( "../../../../LocalSettings.php");
 #require_once( "install-utils.inc" );
 #require_once( "AdminSettings.php");
 #require_once( "GlobalFunctions.php" );
@@ -128,8 +125,14 @@ if( !$wdDatabase->isOpen() ) {
 ReadSQLFile( $wdDatabase, "/*\$wgWDprefix*/", $wgWDprefix, $wgWDtemplate );
 $wdDatabase->query( "DELETE FROM wikidata_sets WHERE set_prefix = '$prefix'" );
 $wdDatabase->query( "INSERT INTO wikidata_sets (set_prefix,set_fallback_name,set_dmid) VALUES ('$prefix','$comment',0)" );
-bootstrapCollection("datasets",85,"MAPP",$wgWDprefix);
 
+$queryResult = $wdDatabase->query( "SELECT user_name FROM user WHERE user_real_name = '$prefix'" );
+if ( $row = $wdDatabase->fetchObject( $queryResult ) ){
+	echo "user already existed";
+}
+else{
+	$wdDatabase->query( "INSERT INTO user (user_name,user_real_name,user_password,user_newpassword,user_email,user_options) VALUES ('$comment','$prefix','','','','')" );
+}
 $wdDatabase->close();
 
 ?>

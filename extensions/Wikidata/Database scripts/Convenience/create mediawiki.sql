@@ -16,7 +16,7 @@ CREATE TABLE `archive` (
   `ar_rev_id` int(8) unsigned default NULL,
   `ar_text_id` int(8) unsigned default NULL,
   KEY `name_title_timestamp` (`ar_namespace`,`ar_title`,`ar_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `categorylinks`
@@ -31,7 +31,7 @@ CREATE TABLE `categorylinks` (
   UNIQUE KEY `cl_from` (`cl_from`,`cl_to`),
   KEY `cl_sortkey` (`cl_to`,`cl_sortkey`),
   KEY `cl_timestamp` (`cl_to`,`cl_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `externallinks`
@@ -45,7 +45,7 @@ CREATE TABLE `externallinks` (
   KEY `el_from` (`el_from`,`el_to`(40)),
   KEY `el_to` (`el_to`(60),`el_from`),
   KEY `el_index` (`el_index`(60))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `filearchive`
@@ -78,7 +78,7 @@ CREATE TABLE `filearchive` (
   KEY `fa_storage_group` (`fa_storage_group`,`fa_storage_key`),
   KEY `fa_deleted_timestamp` (`fa_deleted_timestamp`),
   KEY `fa_deleted_user` (`fa_deleted_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `hitcounter`
@@ -111,7 +111,7 @@ CREATE TABLE `image` (
   PRIMARY KEY  (`img_name`),
   KEY `img_size` (`img_size`),
   KEY `img_timestamp` (`img_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `imagelinks`
@@ -123,7 +123,7 @@ CREATE TABLE `imagelinks` (
   `il_to` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   UNIQUE KEY `il_from` (`il_from`,`il_to`),
   KEY `il_to` (`il_to`,`il_from`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `interwiki`
@@ -136,7 +136,7 @@ CREATE TABLE `interwiki` (
   `iw_local` tinyint(1) NOT NULL default '0',
   `iw_trans` tinyint(1) NOT NULL default '0',
   UNIQUE KEY `iw_prefix` (`iw_prefix`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `interwiki`
@@ -358,7 +358,7 @@ CREATE TABLE `ipblocks` (
   KEY `ipb_range` (`ipb_range_start`(8),`ipb_range_end`(8)),
   KEY `ipb_timestamp` (`ipb_timestamp`),
   KEY `ipb_expiry` (`ipb_expiry`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `job`
@@ -373,7 +373,7 @@ CREATE TABLE `job` (
   `job_params` blob NOT NULL,
   PRIMARY KEY  (`job_id`),
   KEY `job_cmd` (`job_cmd`,`job_namespace`,`job_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `langlinks`
@@ -386,7 +386,7 @@ CREATE TABLE `langlinks` (
   `ll_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   UNIQUE KEY `ll_from` (`ll_from`,`ll_lang`),
   KEY `ll_lang` (`ll_lang`,`ll_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `logging`
@@ -408,7 +408,7 @@ CREATE TABLE `logging` (
   KEY `user_time` (`log_user`,`log_timestamp`),
   KEY `page_time` (`log_namespace`,`log_title`,`log_timestamp`),
   KEY `times` (`log_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `math`
@@ -422,7 +422,7 @@ CREATE TABLE `math` (
   `math_html` text,
   `math_mathml` text,
   UNIQUE KEY `math_inputhash` (`math_inputhash`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `namespace`
@@ -440,7 +440,7 @@ CREATE TABLE `namespace` (
   `ns_class` varchar(100) default NULL,
   `ns_count` tinyint(1) default NULL,
   PRIMARY KEY  (`ns_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `namespace`
@@ -481,7 +481,7 @@ CREATE TABLE `namespace_names` (
   `ns_canonical` tinyint(1) default NULL,
   UNIQUE KEY `ns_name` (`ns_name`),
   KEY `ns_id` (`ns_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `namespace_names`
@@ -528,7 +528,7 @@ CREATE TABLE `objectcache` (
   `exptime` datetime default NULL,
   UNIQUE KEY `keyname` (`keyname`),
   KEY `exptime` (`exptime`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Table structure for table `objects`
@@ -543,7 +543,7 @@ CREATE TABLE `objects` (
   PRIMARY KEY  (`object_id`),
   KEY `table` (`table`),
   KEY `original_id` (`original_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `oldimage`
@@ -562,7 +562,7 @@ CREATE TABLE `oldimage` (
   `oi_user_text` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   `oi_timestamp` varchar(14) character set latin1 collate latin1_bin NOT NULL default '',
   KEY `oi_name` (`oi_name`(10))
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `page`
@@ -585,7 +585,7 @@ CREATE TABLE `page` (
   KEY `page_random` (`page_random`),
   KEY `page_len` (`page_len`),
   KEY `name_title` (`page_namespace`,`page_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `page`
@@ -614,7 +614,7 @@ CREATE TABLE `page_restrictions` (
   KEY `pr_typelevel` (`pr_type`,`pr_level`),
   KEY `pr_level` (`pr_level`),
   KEY `pr_cascade` (`pr_cascade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `pagelinks`
@@ -627,7 +627,7 @@ CREATE TABLE `pagelinks` (
   `pl_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   UNIQUE KEY `pl_from` (`pl_from`,`pl_namespace`,`pl_title`),
   KEY `pl_namespace` (`pl_namespace`,`pl_title`,`pl_from`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `querycache`
@@ -640,7 +640,7 @@ CREATE TABLE `querycache` (
   `qc_namespace` int(11) NOT NULL default '0',
   `qc_title` char(255) character set latin1 collate latin1_bin NOT NULL default '',
   KEY `qc_type` (`qc_type`,`qc_value`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `querycache_info`
@@ -651,7 +651,7 @@ CREATE TABLE `querycache_info` (
   `qci_type` varchar(32) NOT NULL default '',
   `qci_timestamp` char(14) NOT NULL default '19700101000000',
   UNIQUE KEY `qci_type` (`qci_type`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `querycachetwo`
@@ -668,7 +668,7 @@ CREATE TABLE `querycachetwo` (
   KEY `qcc_type` (`qcc_type`,`qcc_value`),
   KEY `qcc_title` (`qcc_type`,`qcc_namespace`,`qcc_title`),
   KEY `qcc_titletwo` (`qcc_type`,`qcc_namespacetwo`,`qcc_titletwo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `recentchanges`
@@ -705,7 +705,7 @@ CREATE TABLE `recentchanges` (
   KEY `rc_ip` (`rc_ip`),
   KEY `rc_ns_usertext` (`rc_namespace`,`rc_user_text`),
   KEY `rc_user_text` (`rc_user_text`,`rc_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `redirect`
@@ -718,7 +718,7 @@ CREATE TABLE `redirect` (
   `rd_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   PRIMARY KEY  (`rd_from`),
   KEY `rd_ns_title` (`rd_namespace`,`rd_title`,`rd_from`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
 --
@@ -742,7 +742,7 @@ CREATE TABLE `revision` (
   KEY `page_timestamp` (`rev_page`,`rev_timestamp`),
   KEY `user_timestamp` (`rev_user`,`rev_timestamp`),
   KEY `usertext_timestamp` (`rev_user_text`,`rev_timestamp`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `revision`
@@ -783,7 +783,7 @@ CREATE TABLE `site_stats` (
   `ss_admins` int(10) default '-1',
   `ss_images` int(10) default '0',
   UNIQUE KEY `ss_row_id` (`ss_row_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `site_stats`
@@ -806,7 +806,7 @@ CREATE TABLE `templatelinks` (
   `tl_title` varchar(255) character set latin1 collate latin1_bin NOT NULL default '',
   UNIQUE KEY `tl_from` (`tl_from`,`tl_namespace`,`tl_title`),
   KEY `tl_namespace` (`tl_namespace`,`tl_title`,`tl_from`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `text`
@@ -818,7 +818,7 @@ CREATE TABLE `text` (
   `old_text` mediumblob NOT NULL,
   `old_flags` tinyblob,
   PRIMARY KEY  (`old_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `text`
@@ -844,7 +844,7 @@ CREATE TABLE `trackbacks` (
   `tb_name` varchar(255) default NULL,
   PRIMARY KEY  (`tb_id`),
   KEY `tb_page` (`tb_page`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `transcache`
@@ -856,7 +856,7 @@ CREATE TABLE `transcache` (
   `tc_contents` text,
   `tc_time` int(11) NOT NULL default '0',
   UNIQUE KEY `tc_url_idx` (`tc_url`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `user`
@@ -882,7 +882,7 @@ CREATE TABLE `user` (
   PRIMARY KEY  (`user_id`),
   UNIQUE KEY `user_name` (`user_name`),
   KEY `user_email_token` (`user_email_token`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
@@ -904,7 +904,7 @@ CREATE TABLE `user_groups` (
   `ug_group` char(16) NOT NULL default '',
   PRIMARY KEY  (`ug_user`,`ug_group`),
   KEY `ug_group` (`ug_group`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user_groups`
@@ -927,7 +927,7 @@ CREATE TABLE `user_newtalk` (
   `user_ip` varchar(40) NOT NULL default '',
   KEY `user_id` (`user_id`),
   KEY `user_ip` (`user_ip`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Definition of table `watchlist`
@@ -941,4 +941,4 @@ CREATE TABLE `watchlist` (
   `wl_notificationtimestamp` varchar(14) character set latin1 collate latin1_bin default NULL,
   UNIQUE KEY `wl_user` (`wl_user`,`wl_namespace`,`wl_title`),
   KEY `namespace_title` (`wl_namespace`,`wl_title`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

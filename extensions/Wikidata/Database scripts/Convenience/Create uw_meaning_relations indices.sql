@@ -1,4 +1,4 @@
-ALTER TABLE `uw_meaning_relations` 
+ALTER TABLE `%dc%_meaning_relations` 
 	ADD INDEX `versioned_end_outgoing` (`remove_transaction_id`, `meaning1_mid`, `relationtype_mid`, `meaning2_mid`),
 	ADD INDEX `versioned_end_incoming` (`remove_transaction_id`, `meaning2_mid`, `relationtype_mid`, `meaning1_mid`),
 	ADD INDEX `versioned_end_relation` (`remove_transaction_id`, `relation_id`),

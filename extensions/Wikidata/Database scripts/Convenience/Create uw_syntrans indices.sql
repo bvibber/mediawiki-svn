@@ -1,4 +1,4 @@
-ALTER TABLE `uw_syntrans` 
+ALTER TABLE `%dc%_syntrans` 
 	ADD INDEX `versioned_end_syntrans` (`remove_transaction_id`, `syntrans_sid`),
 	ADD INDEX `versioned_end_expression` (`remove_transaction_id`, `expression_id`, `identical_meaning`, `defined_meaning_id`),
 	ADD INDEX `versioned_end_defined_meaning` (`remove_transaction_id`, `defined_meaning_id`, `identical_meaning`, `expression_id`),

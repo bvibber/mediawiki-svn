@@ -7,12 +7,12 @@ DELETE FROM namespace where ns_id = 17;
 DELETE FROM namespace where ns_id = 24;
 DELETE FROM namespace where ns_id = 25;
 
-INSERT INTO namespace (ns_id,ns_system,ns_subpages,ns_search_default,ns_target,ns_parent,ns_hidden,ns_class,ns_count) VALUES 
- (16,NULL,0,0,'',NULL,0,'OmegaWiki',1),
- (17,NULL,1,0,'',16,0,NULL,NULL),
- (24,NULL,0,0,'',NULL,0,'DefinedMeaning',1),
- (25,NULL,1,0,'',24,0,NULL,NULL);
-
+INSERT INTO `namespace` (`ns_id`,`ns_system`,`ns_parent`, `ns_count`, `ns_class` ) VALUES 
+ (16,'NS_EXPRESSION',         NULL,0,NULL),
+ (17,'NS_EXPRESSION_TALK',    16,  0,NULL),
+ (24,'NS_DEFINEDMEANING',     NULL,0,NULL),
+ (25,'NS_DEFINEDMEANING_TALK',24,  0,NULL);
+ 
 DELETE FROM namespace_names where ns_id = 16;
 DELETE FROM namespace_names where ns_id = 17;
 DELETE FROM namespace_names where ns_id = 24;
@@ -33,7 +33,7 @@ CREATE TABLE language (
   iso639_3 varchar(10) collate utf8_bin NOT NULL default '',
   wikimedia_key varchar(10) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (language_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO language (language_id,dialect_of_lid,iso639_2,iso639_3,wikimedia_key) VALUES 
  (84,0,'','','bg'),
@@ -68,7 +68,7 @@ CREATE TABLE language_names (
   language_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (language_id,name_language_id),
   KEY language_id (language_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO language_names (language_id,name_language_id,language_name) VALUES 
  (84,85,'Bulgarian'),
@@ -124,7 +124,7 @@ CREATE TABLE wikidata_sets (
   set_prefix varchar(20) default NULL,
   set_fallback_name varchar(255) default NULL,
   set_dmid int(10) default NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 INSERT INTO wikidata_sets (set_prefix,set_fallback_name,set_dmid) VALUES 
  ('uw','OmegaWiki community',0),

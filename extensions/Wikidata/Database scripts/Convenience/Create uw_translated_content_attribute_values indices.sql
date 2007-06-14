@@ -1,4 +1,4 @@
-ALTER TABLE `uw_translated_content_attribute_values` 
+ALTER TABLE `%dc%_translated_content_attribute_values` 
 	ADD INDEX `versioned_end_object` (`remove_transaction_id`, `object_id`, `attribute_mid`, `value_tcid`),
 	ADD INDEX `versioned_end_attribute` (`remove_transaction_id`, `attribute_mid`, `object_id`, `value_tcid`),
 	ADD INDEX `versioned_end_translated_content` (`remove_transaction_id`, `value_tcid`, `value_id`),
