@@ -220,7 +220,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 					$idPath->popAttribute();
 				}
 
-			$relation->addRecord($values,"(from RecordSet getAddValue)");
+			$relation->addRecord($values);
 
 			return $relation;
 		}
@@ -313,7 +313,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 	}
 
 	public function getAddRecord($idPath, $structure, $editors) {
-		$result = new ArrayRecord($structure,"AddRecord");
+		$result = new ArrayRecord($structure);
 
 		foreach($editors as $editor)
 			if ($attribute = $editor->getAddAttribute()) {
@@ -326,7 +326,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 	}
 
 	public function getUpdateRecord($idPath, $structure, $editors) {
-		$result = new ArrayRecord($structure,"UpdateRecord");
+		$result = new ArrayRecord($structure);
 
 		foreach($editors as $editor)
 			if ($attribute = $editor->getUpdateAttribute()) {
@@ -577,7 +577,7 @@ abstract class RecordEditor extends DefaultEditor {
 	}
 
 	public function getUpdateValue($idPath) {
-		$result = new ArrayRecord($this->getUpdateStructure(),"UpdateStructure");
+		$result = new ArrayRecord($this->getUpdateStructure());
 
 		foreach($this->editors as $editor)
 			if ($attribute = $editor->getUpdateAttribute()) {
@@ -590,7 +590,7 @@ abstract class RecordEditor extends DefaultEditor {
 	}
 
 	public function getAddValue($idPath) {
-		$result = new ArrayRecord($this->getAddStructure(),"AddStructure");
+		$result = new ArrayRecord($this->getAddStructure());
 
 		foreach($this->editors as $editor)
 			if ($attribute = $editor->getAddAttribute()) {

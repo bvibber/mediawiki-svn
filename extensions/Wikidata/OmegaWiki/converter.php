@@ -22,7 +22,7 @@ class ProjectConverter implements Converter {
 	}
 	
 	public function convert($record) {
-		$result = new ArrayRecord($this->structure,"Project (Converted)");
+		$result = new ArrayRecord($this->structure);
 		
 		foreach($this->structure->attributes as $attribute)
 			$result->setAttributeValue($attribute, $record->getAttributeValue($attribute));
@@ -41,7 +41,7 @@ class DefaultConverter implements Converter {
 	}
 	
 	public function convert($record) {
-		$result = new ArrayRecord($this->structure,"converted (Default)");
+		$result = new ArrayRecord($this->structure);
 		$result->setAttributeValue($this->attribute, convertToHTML($record->getAttributeValue($this->attribute), $this->attribute->type));
 		
 		return $result;
@@ -79,11 +79,11 @@ class ExpressionIdConverter extends DefaultConverter {
 									" AND ". getLatestTransactionRestriction("{$dc}_expression_ns"));
 		$expression = $dbr->fetchObject($queryResult); 
 
-		$expressionRecord = new ArrayRecord(new Structure($languageAttribute, $spellingAttribute),"ExpressionID (sub)(converted)");
+		$expressionRecord = new ArrayRecord(new Structure($languageAttribute, $spellingAttribute));
 		$expressionRecord->setAttributeValue($languageAttribute, $expression->language_id);
 		$expressionRecord->setAttributeValue($spellingAttribute, $expression->spelling);
 
-		$result = new ArrayRecord($this->structure,"ExpressionID (converted)");
+		$result = new ArrayRecord($this->structure);
 		$result->setAttributeValue($expressionAttribute, $expressionRecord);
 	
 		return $result;

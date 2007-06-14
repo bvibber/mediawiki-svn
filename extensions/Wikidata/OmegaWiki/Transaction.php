@@ -399,7 +399,7 @@ function getTransactionRecord($transactionId) {
 		$transactionStructure, $transactionIdAttribute, $userAttribute, $timestampAttribute, $summaryAttribute;
 	
 	$dc=wdGetDataSetContext();
-	$result = new ArrayRecord($transactionStructure,"TransactionRecord");
+	$result = new ArrayRecord($transactionStructure);
 	$result->setAttributeValue($transactionIdAttribute, $transactionId);
 	
 	if ($transactionId > 0) {
@@ -429,7 +429,7 @@ function getRecordLifeSpanTuple($addTransactionId, $removeTransactionId) {
 	global
 		$recordLifeSpanStructure, $addTransactionAttribute, $removeTransactionAttribute;
 	
-	$result = new ArrayRecord($recordLifeSpanStructure,"RecordLifeSpanTuple");
+	$result = new ArrayRecord($recordLifeSpanStructure);
 	$result->setAttributeValue($addTransactionAttribute, getTransactionRecord($addTransactionId));
 	$result->setAttributeValue($removeTransactionAttribute, getTransactionRecord($removeTransactionId));
 	

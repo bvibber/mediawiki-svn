@@ -79,11 +79,11 @@ function fetchDefinedMeaningReferenceRecords($sql, &$definedMeaningIds, &$define
 	while ($row = $dbr->fetchObject($queryResult)) {
 		$definedMeaningId = $row->defined_meaning_id;
 		
-		$record = new ArrayRecord($definedMeaningReferenceStructure,"DefinedMeaningReferenceRecords");
+		$record = new ArrayRecord($definedMeaningReferenceStructure);
 		$record->setAttributeValue($definedMeaningIdAttribute, $definedMeaningId);
 		$record->setAttributeValue($definedMeaningLabelAttribute, $row->label);
 				
-		$definedmeaningreferencerecords[$definedMeaningId] = $record;
+		$definedMeaningReferenceRecords[$definedMeaningId] = $record;
 		$foundDefinedMeaningIds[] = $definedMeaningId;
 	}
 	
@@ -111,7 +111,7 @@ function fetchDefinedMeaningDefiningExpressions(&$definedMeaningIds, &$definedMe
 		$definedMeaningReferenceRecord = $definedMeaningReferenceRecords[$row->defined_meaning_id];
 		
 		if ($definedMeaningReferenceRecord == null) {
-			$definedMeaningReferenceRecord = new ArrayRecord($definedMeaningReferenceStructure,"DefinedMeaningDefiningExpression");
+			$definedMeaningReferenceRecord = new ArrayRecord($definedMeaningReferenceStructure);
 			$definedMeaningReferenceRecord->setAttributeValue($definedMeaningIdAttribute, $row->defined_meaning_id);
 			$definedMeaningReferenceRecord->setAttributeValue($definedMeaningLabelAttribute, $row->spelling);
 			$definedMeaningReferenceRecords[$row->defined_meaning_id] = $definedMeaningReferenceRecord; 
@@ -126,7 +126,7 @@ function getNullDefinedMeaningReferenceRecord() {
 		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute,
 		$definedMeaningDefiningExpressionAttribute;
 	
-	$record = new ArrayRecord($definedMeaningReferenceStructure, "DefinedMeaningReferenceRecord");
+	$record = new ArrayRecord($definedMeaningReferenceStructure);
 	$record->setAttributeValue($definedMeaningIdAttribute, 0);
 	$record->setAttributeValue($definedMeaningLabelAttribute, "");
 	$record->setAttributeValue($definedMeaningDefiningExpressionAttribute, "");
@@ -236,7 +236,7 @@ function getExpressionReferenceRecords($expressionIds) {
 		$result = array();
 	
 		while ($row = $dbr->fetchObject($queryResult)) {
-			$record = new ArrayRecord($expressionStructure, "ExpressionReferenceRecord");
+			$record = new ArrayRecord($expressionStructure);
 			$record->setAttributeValue($languageAttribute, $row->language_id);
 			$record->setAttributeValue($spellingAttribute, $row->spelling);
 			
@@ -377,7 +377,7 @@ function getExpressionMeaningsRecord($expressionId, $filterLanguageId, $possibly
 	global
 		$expressionMeaningsStructure, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute;
 		
-	$record = new ArrayRecord($expressionMeaningsStructure,"ExpressionMeaningsRecord");
+	$record = new ArrayRecord($expressionMeaningsStructure);
 	$record->setAttributeValue($expressionExactMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, true, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation));
 	$record->setAttributeValue($expressionApproximateMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, false, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation));
 	
@@ -414,7 +414,7 @@ function getExpressionsRecordSet($spelling, $filterLanguageId, $possiblySynonymo
 	$expressionStructure = new Structure($languageAttribute);
 
 	while($expression = $dbr->fetchObject($queryResult)) {
-		$expressionRecord = new ArrayRecord($expressionStructure, "ExpressionsRecord");
+		$expressionRecord = new ArrayRecord($expressionStructure);
 		$expressionRecord->setAttributeValue($languageAttribute, $expression->language_id);
 
 		$result->addRecord(array(
@@ -527,7 +527,7 @@ function getObjectAttributesRecord($objectId, $filterLanguageId, $queryTransacti
 		$urlAttributeValuesAttribute, $textAttributeValuesAttribute, 
 		$translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute; 
 		
-	$record = new ArrayRecord($objectAttributesAttribute->type->getStructure(),"ObjectAttributesRecord");
+	$record = new ArrayRecord($objectAttributesAttribute->type->getStructure());
 	
 	$record->setAttributeValue($objectIdAttribute, $objectId);
 	$record->setAttributeValue($textAttributeValuesAttribute, getTextAttributesValuesRecordSet(array($objectId), $filterLanguageId, $queryTransactionInformation));
@@ -655,7 +655,7 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 	
 	if (count($objectIds) > 0) {
 		for ($i = 0; $i < count($objectIds); $i++) {
-			$record = new ArrayRecord($objectAttributesRecordStructure,"ObjectAttributesRecordStructure");
+			$record = new ArrayRecord($objectAttributesRecordStructure);
 			#FIXME- check value
 			@$objectAttributesRecords[$objectIds[$i]] = $record;
 		}
@@ -730,7 +730,7 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 			if ($optionAttributeValuesRecordSet == null) 
 				$optionAttributeValuesRecordSet = $emptyOptionAttributesRecordSet;
 
-			$objectAttributesRecord = new ArrayRecord($objectAttributesRecordStructure,"OptionAttributeRecord (?)");
+			$objectAttributesRecord = new ArrayRecord($objectAttributesRecordStructure);
 			$objectAttributesRecord->setAttributeValue($objectIdAttribute, $objectId);
 			$objectAttributesRecord->setAttributeValue($textAttributeValuesAttribute, $textAttributeValuesRecordSet);
 			$objectAttributesRecord->setAttributeValue($translatedTextAttributeValuesAttribute, $translatedTextAttributeValuesRecordSet);
@@ -747,7 +747,7 @@ function getDefinedMeaningReferenceRecord($definedMeaningId) {
 		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute,
 		$definedMeaningDefiningExpressionAttribute;
 	
-	$record = new ArrayRecord($definedMeaningReferenceStructure,"DefinedMeaningReferenceStructure");
+	$record = new ArrayRecord($definedMeaningReferenceStructure);
 	$record->setAttributeValue($definedMeaningIdAttribute, $definedMeaningId);
 	$record->setAttributeValue($definedMeaningLabelAttribute, definedMeaningExpression($definedMeaningId));
 	$record->setAttributeValue($definedMeaningDefiningExpressionAttribute, definingExpression($definedMeaningId));
@@ -850,7 +850,7 @@ function getGotoSourceRecord($record) {
 	global
 		$gotoSourceStructure, $collectionIdAttribute, $sourceIdentifierAttribute;	
 		
-	$result = new ArrayRecord($gotoSourceStructure,"gotoSourceStructure");
+	$result = new ArrayRecord($gotoSourceStructure);
 	$result->setAttributeValue($collectionIdAttribute, $record->getAttributeValue($collectionIdAttribute));
 	$result->setAttributeValue($sourceIdentifierAttribute, $record->getAttributeValue($sourceIdentifierAttribute));
 	
