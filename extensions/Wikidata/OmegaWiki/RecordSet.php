@@ -11,14 +11,25 @@ abstract class RecordSet {
 	public abstract function getRecordCount();
 	public abstract function getRecord($index);
 	# public function save(); # <- we first need to implement, then uncomment
-/**
-	 * @return carriage return separated list of values
+
+	/**
+	 * @return a string representation of this object
 	 */
 	public function __tostring() {
-		return $this->tostring_indent();
+		return $this->_tostring_indent();
 	}
 	
-	public function tostring_indent($depth=0,$key="",$myname="RecordSet") {
+	/**
+	 * Replacement for the __tostring contract, with support for indentation.
+	 * Splitting structures out over multiple lines and using indentation
+	 * helps a lot! 
+	 *  
+	 * Uses duck-typing to discover if an entity supports _tostring_indent,
+	 * else uses the original/normal php string-conversion.
+	 *
+	 * lots of shared code, so might be nice to refactor if we use it a lot.
+	 */
+	public function _tostring_indent($depth=0,$key="",$myname="RecordSet") {
 		$rv="\n".str_pad("",$depth*8);
 		$rv.="$key:$myname {";
 		$rv2=$rv;
@@ -26,8 +37,8 @@ abstract class RecordSet {
 			$rv=$rv2;
 			$methods=get_class_methods(get_class($value));
 			if (!is_null($methods)) {
-				if (in_array("tostring_indent",$methods)) {
-					$value=$value->tostring_indent($depth+1);
+				if (in_array("_tostring_indent",$methods)) {
+					$value=$value->_tostring_indent($depth+1);
 				}
 			}
 			$rv.="$value";
@@ -57,8 +68,8 @@ class ArrayRecordSet extends RecordSet {
 		$this->records[] = $record;
 	}
 
-	public function addRecord($values) {
-		$record = new ArrayRecord($this->structure);
+	public function addRecord($values, $type="") {
+		$record = new ArrayRecord($this->structure, $type);
 		$record->setAttributeValuesByOrder($values);
 
 		$this->records[] = $record;				
@@ -83,7 +94,7 @@ class ArrayRecordSet extends RecordSet {
 	public function tostring_indent($depth=0,$key="",$myname="") {
 		return parent::tostring_indent($depth,$key,$myname."_ArrayRecordSet");
 	}
-
+	
 }
 
 class ConvertingRecordSet extends RecordSet {

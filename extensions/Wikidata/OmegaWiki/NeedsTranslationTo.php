@@ -71,7 +71,7 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 		$recordSet = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $definitionAttribute), new Structure($definedMeaningIdAttribute, $expressionIdAttribute));
 		
 		while ($row = $dbr->fetchObject($queryResult)) {
-			$expressionRecord = new ArrayRecord($expressionStructure);
+			$expressionRecord = new ArrayRecord($expressionStructure,"Expression (needing translation)");
 			$expressionRecord->setAttributeValue($languageAttribute, $row->source_language_id);
 			$expressionRecord->setAttributeValue($spellingAttribute, $row->source_spelling);
 

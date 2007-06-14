@@ -70,7 +70,7 @@ function getSearchResultAsRecordSet($queryResult) {
 		$meaningRecord->setAttributeValue($definedMeaningAttribute, getDefinedMeaningReferenceRecord($row->defined_meaning_id));
 		$meaningRecord->setAttributeValue($definitionAttribute, getDefinedMeaningDefinition($row->defined_meaning_id));
 
-		$recordSet->addRecord(array($row->defined_meaning_id, $expressionRecord, $meaningRecord));
+		$recordSet->addRecord(array($row->defined_meaning_id, $expressionRecord, $meaningRecord),"SearchResultRecord");
 	}			
 
 	$expressionEditor = new RecordTableCellEditor($expressionAttribute);
