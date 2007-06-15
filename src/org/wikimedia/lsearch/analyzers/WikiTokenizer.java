@@ -35,12 +35,12 @@ public class WikiTokenizer extends Tokenizer {
 	 * 
 	 * @param str
 	 */
-	public WikiTokenizer(String str){
-		this(str,null);
+	public WikiTokenizer(String str, boolean exactCase){
+		this(str,null,exactCase);
 	}
 	
-	public WikiTokenizer(String str, String lang){
-		parser = new FastWikiTokenizerEngine(str,lang);		
+	public WikiTokenizer(String str, String lang, boolean exactCase){
+		parser = new FastWikiTokenizerEngine(str,lang,exactCase);		
 		this.input = null;
 	}
 	

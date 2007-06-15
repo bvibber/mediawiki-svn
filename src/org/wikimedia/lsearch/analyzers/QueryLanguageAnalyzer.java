@@ -13,9 +13,11 @@ import org.apache.lucene.analysis.TokenStream;
  */
 public class QueryLanguageAnalyzer extends LanguageAnalyzer {
 	static org.apache.log4j.Logger log = Logger.getLogger(QueryLanguageAnalyzer.class);
+	protected boolean exactCase;
 	
-	public QueryLanguageAnalyzer(FilterFactory filters){
+	public QueryLanguageAnalyzer(FilterFactory filters, boolean exactCase){
 		super(filters,null);
+		this.exactCase = exactCase;
 	}
 	
 	/**
@@ -23,7 +25,7 @@ public class QueryLanguageAnalyzer extends LanguageAnalyzer {
 	 */
 	@Override
 	public TokenStream tokenStream(String fieldName, String text) {
-		wikitokenizer = new WikiTokenizer(text); 
+		wikitokenizer = new WikiTokenizer(text,exactCase); 
 		return super.tokenStream(fieldName,(Reader)null);
 	}
 

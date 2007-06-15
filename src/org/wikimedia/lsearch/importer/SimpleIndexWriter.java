@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
+import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
@@ -27,7 +28,7 @@ public class SimpleIndexWriter {
 	static Logger log = Logger.getLogger(SimpleIndexWriter.class);
 	protected IndexId iid;
 	protected HashMap<String,IndexWriter> indexes;
-	protected FilterFactory filters;
+	protected FieldBuilder builder;
 	protected Boolean optimize;
 	protected Integer mergeFactor, maxBufDocs;
 	protected boolean newIndex;
@@ -39,8 +40,9 @@ public class SimpleIndexWriter {
 		this.mergeFactor = mergeFactor;
 		this.maxBufDocs = maxBufDocs;
 		this.newIndex = newIndex;
-		langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
-		filters = new FilterFactory(langCode);
+		GlobalConfiguration global = GlobalConfiguration.getInstance(); 
+		langCode = global.getLanguage(iid.getDBname());
+		builder = new FieldBuilder(langCode,global.exactCaseIndex(iid.getDBname()));
 		indexes = new HashMap<String,IndexWriter>();
 		// open all relevant indexes
 		if(iid.isSingle())
@@ -106,7 +108,7 @@ public class SimpleIndexWriter {
 		IndexWriter writer = indexes.get(target.toString());
 		if(writer == null)
 			return;
-		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,filters,iid);
+		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,builder,iid);
 		Document doc = (Document) ret[0];
 		Analyzer analyzer = (Analyzer) ret[1];
 		try {

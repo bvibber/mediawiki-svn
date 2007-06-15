@@ -231,6 +231,8 @@ public class Benchmark extends Thread {
 			terms = new WordTerms("./lib/dict/german.txt.gz");
 		else if(lang.equals("fr"))
 			terms = new WordTerms("./lib/dict/french.txt.gz");
+		else if(lang.equals("sample"))
+			terms = new SampleTerms();
 		else
 			terms = new WordTerms("./test-data/words-wikilucene.ngram.gz");
 		

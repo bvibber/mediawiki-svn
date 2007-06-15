@@ -134,7 +134,6 @@ public class Importer {
 			System.out.println("Finished indexing in "+formatTime(end-start)+", with final index optimization in "+formatTime(finalEnd-end));
 			System.out.println("Total time: "+formatTime(finalEnd-start));
 		}
-		
 		// make snapshot if needed
 		if(makeSnapshot || snapshotDb){
 			IndexId iid = IndexId.get(dbname);
