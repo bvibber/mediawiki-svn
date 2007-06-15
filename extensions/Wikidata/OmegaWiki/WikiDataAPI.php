@@ -946,9 +946,7 @@ function getDefinedMeaningDefinition($definedMeaningId) {
 
 function getSpellingForLanguage($definedMeaningId, $languageCode, $fallbackLanguageCode='en', $dc=null) {
 
-	if(is_null($dc)) {
-		$dc=wdGetDataSetContext();
-	} 
+	$dc=wdGetDataSetContext($dc);
 
 	$userLanguageId=getLanguageIdForCode($languageCode);
 
@@ -976,6 +974,11 @@ function getSpellingForLanguage($definedMeaningId, $languageCode, $fallbackLangu
 	$row=$dbr->fetchObject($res);
 	if(isset($row->spelling)) return $row->spelling;
 
+	$final_fallback="select spelling from {$dc}_syntrans,{$dc}_expression_ns where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id and {$dc}_expression_ns.remove_transaction_id is NULL LIMIT 1";
+
+	$res=$dbr->query($final_fallback);
+	$row=$dbr->fetchObject($res);
+	if(isset($row->spelling)) return $row->spelling;
 	return null;
 
 }

@@ -419,7 +419,7 @@ class DefinedMeaningData {
 	private $title=null;
 
 	/** return spelling of associated expression in particular langauge
-	 * not nescesarily the correct langauge. 
+	 *  not nescesarily the correct language. 
 	 */
 	public function getSpelling() {
 		if ($this->spelling==null) {
@@ -435,7 +435,6 @@ class DefinedMeaningData {
 			$dataset=$this->getDataset();
 			if ($dataset==null) 
 				return null;
-
 			$this->spelling=getSpellingForLanguage($id, $languageCode, "en", $dataset);
 		} 
 		return $this->spelling;
@@ -469,14 +468,13 @@ class DefinedMeaningData {
 	public function getTitle() {
 		$title=$this->title;
 		if ($title==null) {
-
 			$name=$this->getSpelling();
 			$id=$this->getId();
 			
-			if ($name==null or $id==null) 
+			if (is_null($name) or is_null($id)) 
 				return null;
 
-			$text="DefinedMeaning:$name ($id)";
+			$text="DefinedMeaning:".$name."_($id)";
 			$title=Title::newFromText($text);
 			$this->title=$title;
 		}
@@ -487,7 +485,10 @@ class DefinedMeaningData {
 	 * This is partially copied from DefinedMeaning.getDefinedMeaningIdFromTitle
 	 * which is slightly less usable (and hence should be deprecated)
 	 * 
-	 * Also note the traditionally very weak error-checking, this may need
+	 * Also note the traditionally very weak error-checking, th$this->title=Title::newFromText($titleText);
+		$bracketPosition = strrpos($titleText, "(");
+		if ($bracketPosition==false) 
+			return; # we accept that we may have a someis may need
 	 * updating. Canonicalize helps a bit. 
 	 *
 	 * Will gladly eat invalid titles (in which case object state
@@ -498,8 +499,7 @@ class DefinedMeaningData {
 		$this->title=Title::newFromText($titleText);
 		$bracketPosition = strrpos($titleText, "(");
 		if ($bracketPosition==false) 
-			return; # we accept that we may have a somewhat broken
-				# title string. 
+			return; # Defined Meaning ID is missing from title string
 		$definedMeaningId = substr($titleText, $bracketPosition + 1, strlen($titleText) - $bracketPosition - 2);
 		$this->setId($definedMeaningId);
 	}
@@ -546,7 +546,7 @@ class DefinedMeaningData {
 	 *         a horribly misformed title will work, as long as the id is correct :-P )
 	 */
 	public function canonicalize(){
-		$oldtitle=&$this->title;
+		$oldtitle=$this->title;
 		$oldspelling=$this->spelling;
 	
 		$this->title=null; #    } clear cached values to force db fetch.
@@ -554,7 +554,7 @@ class DefinedMeaningData {
 		$this->title=$this->getTitle(); # will fetch from db!
 		
 		if ($this->title==null) { # db lookup failure
-			$this->title=&$oldtitle; 
+			$this->title=$oldtitle; 
 			$this->spelling=$oldspelling;
 			return false;
 		}
