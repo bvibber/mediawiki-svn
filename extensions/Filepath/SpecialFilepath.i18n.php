@@ -103,6 +103,14 @@ $wgFilepathMessages['nl'] = array(
 	'filepath_page'   => 'Bestand:',
 	'filepath_submit' => 'Zoeken',
 );
+$wgFilepathMessages['no'] = array(
+	'filepath'        => 'Filsti',
+	'filepath_page'   => 'Fil:',
+	'filepath_submit' => 'Sti',
+	'filepath-summary' => 'Denne spesialsiden gir den fullstendige stien for en fil. Bilder vises i full oppløsning; andre filtyper startes direkte i sine assosierte programmer.
+
+	Skriv inn filnavnet uten «{{ns:image}}:»-prefikset.',
+);
 $wgFilepathMessages['oc'] = array(
 	'filepath'        => 'Camin d\'un fichièr',
 	'filepath_page'   => 'Fichièr:',

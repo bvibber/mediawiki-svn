@@ -52,6 +52,12 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Onjuiste gebruikersnaam of geen naam opgegeven.',
 'userimages-noimages' => '$1 heeft geen afbeeldingen toegevoegd.',
 ),
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'userimages-caption' => 'Bilder lastet opp av $1',
+'userimages-noname' => 'Ugyldig brukernavn, eller intet oppgitt brukernavn.',
+'userimages-noimages' => '$1 har ingen bildeopplastinger.',
+),
 'oc' => array(
 'userimages-caption' => 'Imatges importats per $1',
 'userimages-noname' => 'Nom d’utilizaire invalid o mancant.',

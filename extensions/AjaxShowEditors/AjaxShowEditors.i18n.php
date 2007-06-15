@@ -53,6 +53,11 @@ $wgAjaxShowEditorsMessages['nl'] = array(
 	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',
 	'ajax-se-idling' => '($1s geleden)',
 );
+$wgAjaxShowEditorsMessages['no'] = array(
+	'ajax-se-title' => 'Redigerer:',
+	'ajax-se-pending' => 'Avventer gjenoppfriskning … (klikk denne boksen eller start å redigere)',
+	'ajax-se-idling' => '($1s siden)',
+);
 $wgAjaxShowEditorsMessages['oc'] = array(
 	'ajax-se-title' => 'A èsser modificat per :',
 	'ajax-se-pending' => 'refrescament en cors ... (clicatz sus aqueste messatge o modificatz la pagina)',

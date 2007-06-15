@@ -274,6 +274,29 @@ kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzov
 'duplicator-toomanyrevisions' => '[[$1]] heeft te veel versies ($2) en kan niet gekopieerd worden. De huidige limiet is $3.',
 ),
 
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'duplicator' => 'Kopier en artikkel',
+'duplicator-toolbox' => 'Kopier denne artikkelen',
+'duplicator-header' => 'Denne siden muliggjør fullstendig kopiering av en artikkel, med uavhengige kopier av all historikk. Dette er nyttig for oppdeling av artikler, etc.',
+'duplicator-options' => 'Alternativer',
+'duplicator-source' => 'Kilde:',
+'duplicator-dest' => 'Mål:',
+'duplicator-dotalk' => 'Kopier diskusjonsside (om mulig)',
+'duplicator-submit' => 'Kopier',
+'duplicator-summary' => 'Kopiert fra [[$1]]',
+'duplicator-success' => '<big>\'\'\'[[$1]]\'\'\' ble kopiert til [[$2]].\'\'\'</big>',
+'duplicator-success-revisions' => '$1 {{PLURAL:$1|revisjon|revisjoner}} ble kopiert.',
+'duplicator-success-talkcopied' => 'Diskusjonssiden ble også kopiert.',
+'duplicator-success-talknotcopied' => 'Diskusjonssiden kunne ikke kopieres.',
+'duplicator-failed' => 'Siden kunne ikke kopieres. En ukjent feil forekom.',
+'duplicator-source-invalid' => 'Vennligst angi en gyldig kildetittel.',
+'duplicator-source-notexist' => '[[$1]] finnes ikike. Oppgi tittelen til en eksisterende side.',
+'duplicator-dest-invalid' => 'Angi en gyldig måltittel.',
+'duplicator-dest-exists' => '[[$1]] finnes allerede. Oppgi en måltittel som ikke eksisterer.',
+'duplicator-toomanyrevisions' => '[[$1]] har for mange revisjoner, og kan ikke kopieres. Nåværende grense er $3.',
+),
+
 'oc' => array(
 'duplicator' => 'Duplicar un article',
 'duplicator-toolbox' => 'Duplicar aqueste article',

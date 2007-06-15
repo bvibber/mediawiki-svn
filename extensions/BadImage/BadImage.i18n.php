@@ -231,6 +231,28 @@ function efBadImageMessages() {
 'badimages-log-remove' => '[[$1]] is verwijderd uit de verwijderlijst afbeeldingen',
 ),
 
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'badimages' => 'Liste over blokkerte bilder',
+'badimages-add-btn' => 'Legg til',
+'badimages-added' => '$1 ble lagt til i listen.',
+'badimages-count' => 'Det er \'\'\'$1\'\'\' bilder på lista over blokkerte bilder.',
+'badimages-name' => 'Navn:',
+'badimages-not-added' => 'Bildet kunne ikke legges til.',
+'badimages-not-removed' => 'Bildet kunne ikke fjernes.',
+'badimages-reason' => 'Grunn:',
+'badimages-remove' => '(fjern)',
+'badimages-remove-btn' => 'Fjern',
+'badimages-remove-confirm' => 'Bekreft at du ønsker å fjerne $1 fra listen:',
+'badimages-removed' => '$1 ble fjernet fra listen.',
+'badimages-subheading' => 'Nåværende objekter',
+'badimages-unprivileged' => '(Du har ikke rettigheter til å endre listen)',
+'badimages-log-name' => 'Liste over blokkerte bilder',
+'badimages-log-header' => 'Dette er en logg over endringer i [[Help:Bad image list|lista over blokkerte bilder]].',
+'badimages-log-add' => 'la til [[$1]] på lista over blokkerte bilder',
+'badimages-log-remove' => 'fjernet [[$1]] fra lista over blokkerte bilder',
+),
+
 'oc' => array(
 'badimages' => 'Lista dels imatges indesirables',
 'badimages-add-btn' => 'Ajustar',

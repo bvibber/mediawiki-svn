@@ -189,6 +189,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Er zijn geen bewerkingen op deze wiki.',
 ),
 
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'countedits' => 'Tell redigeringer',
+'countedits-warning' => '\'\'\'Advarsel:\'\'\' Ikke sku hunden på hårene. Ikke døm en bidragsyter på antall redigeringer.',
+'countedits-username' => 'Brukernavn:',
+'countedits-ok' => 'OK',#identical but defined
+'countedits-nosuchuser' => 'Det er ingen bruker ved navnet $1.',
+'countedits-resultheader' => 'Resultater for $1',
+'countedits-resulttext' => '$1 har gjort $2 redigeringer',
+'countedits-mostactive' => 'Mest aktive bidragsytere',
+'countedits-nocontribs' => 'Det har ikke vært noen redigeringer på denne wikien.',
+),
+
 'oc' => array(
 'countedits' => 'Comptaire d’edicions',
 'countedits-warning' => '\'\'\'Avertiment\'\'\' : jutjetz pas un libre per sa cobertura. Jutjetz pas tanpauc un utilizaire en foncion del nombre de sas contribucions.',

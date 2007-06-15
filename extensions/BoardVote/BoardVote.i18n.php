@@ -621,6 +621,47 @@ uitgebracht. $1 voor de versleutelde gegevens.</p>",
 	'group-boardvote-member'  => 'Board vote beheerder',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote beheerder',
 );
+$wgBoardVoteMessages['no'] = array(
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Stem]]
+* [[Special:Boardvote/list|Liste over stemmer]]
+* [[Special:Boardvote/dump|Dump med kryptert stemmehistorie]]',
+	'boardvote_intro_change'  => '<p>Du har stemt før. Du kan imidlertid endre din stemme ved hjelp av skjemaet nedenunder. Vennligst merk av boksene ved siden av kandidatene du vil gå god for.</p>',
+	'boardvote_entered'       => 'Takk, din stemme er registrert.
+
+Om du ønsker, kan du ta vare på følgende resultater. Din stemmegivingshistorikk er:
+
+<pre>$1</pre>
+
+Det er blitt kryptert med den offentlige nøkkelen fra valgadminsitratorene:
+
+<pre>$2</pre>
+
+Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig på [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Tilbake]]',
+	'boardvote_notloggedin'   => 'Du er ikke logget inn. For å stemme må du bruke en konto med minst $1&nbsp;redigeringer før $2, og må ha redigert før $3.',
+	'boardvote_notqualified'  => 'Du er ikke kvalifisert til å stemme i dette valget. Du må ha hatt minst $3&nbsp;redigeringer før $2, du hadde $1. Din første redigering måtte også være før $5, mens din var $4.',
+	'boardvote_novotes'       => 'Ingen har stemt enda.',
+	'boardvote_time'          => 'Tid',
+	'boardvote_user'          => 'Bruker',
+	'boardvote_edits'         => 'Redigeringer',
+	'boardvote_days'          => 'Dager',
+	'boardvote_ip'            => 'IP',#identical but defined
+	'boardvote_ua'            => 'Brukeragent',
+	'boardvote_listintro'     => '<p>Dette er en liste over alle stemmer som har blitt registrert hittil. $1 for krypterte data.</p>',
+	'boardvote_dumplink'      => 'Klikk her',
+	'boardvote_submit'        => 'OK',#identical but defined
+	'boardvote_strike'        => 'Stryk',
+	'boardvote_unstrike'      => 'Fjern strykning',
+	'boardvote_needadmin'     => 'Kun valgadministratorer kan utføre dette.',
+	'boardvote_notstarted'    => 'Valget har ikke startet',
+	'boardvote_edits_many'    => 'mange',
+	'group-boardvote'         => 'valgadministratorer',
+	'group-boardvote-member'  => 'valgadministrator',
+	'grouppage-boardvote'     => '{{ns:project}}:Valgadministrator',
+);
 $wgBoardVoteMessages['oc'] = array(
 	'boardvote'               => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vòte]]

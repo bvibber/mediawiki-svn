@@ -217,6 +217,20 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'De pagina $1 bestaat niet.',
 ),
 
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'contributors' => 'Bidragsytere',
+'contributors-toolbox' => 'Hovedbidragsytere',
+'contributors-legend' => 'Liste over hovedbidragsytere til en artikkel',
+'contributors-target' => 'Tittel:',
+'contributors-submit' => 'Vis',
+'contributors-subtitle' => 'Hovedbidragsytere på $1',
+'contributors-others-long' => 'Det er $1 andre bidragsytere på denne siden.',
+'contributors-others' => 'og $1 andre',
+'contributors-badtitle' => 'Ugyldig tittel.',
+'contributors-nosuchpage' => 'Artikkelen $1 eksisterer ikke.',
+),
+
 'oc' => array(
 
 'contributors-toolbox' => 'Contributors principals',

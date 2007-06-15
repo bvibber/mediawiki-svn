@@ -61,6 +61,16 @@ function efPicturePopupMessages() {
 	'picturepopup_no_license_text' => 'ليتسەنزييا ٷلگٸسٸندە  id=imageLicenseText دەگەن دانا جوق',
 	'picturepopup_invalid_icon' => 'ليتسەنزييا ٷلگٸسٸندە imageLicenseIcon دەگەن دانا جوعالتىلعان نە جارامسىز',
 ),
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'picturepopup_invalid_title' => 'Ugyldig bildetittel',
+'picturepopup_no_license' => 'Bildet har ingen lisensmerking',
+'picturepopup_no_image' => 'Bildet finnes ikke',
+'picturepopup_no_license_list' => 'Lisenslisten er ugyldig eller mangler',
+'picturepopup_license_list' => 'Project:Bildelisensmerking',
+'picturepopup_no_license_text' => 'Lisensmalen har intet element med id=imageLicenseText',
+'picturepopup_invalid_icon' => 'Lisensmalen mangler eller har ugyldig imageLicenseIcon-element',
+),
 	);
 
 	/* Kazakh default, fallback to kk-kz */

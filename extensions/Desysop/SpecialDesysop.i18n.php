@@ -104,6 +104,17 @@ $wgDesysopMessages['nl'] = array(
 	'desysop'              => 'Beheerdersrechten intrekken',
 	'not_sysop'            => 'Deze gebruiker is geen beheerder',
 );
+$wgDesysopMessages['no'] = array(
+	'desysoptitle'         => 'Fjern administratorstatus for en bruker',
+	'desysoptext'          => 'Dette skjemaet brukes av byråkrater for å fjerne brukeres administratorrettigheter. Skriv inn brukernavnet i boksen og trykk på knappen for å fjerne brukerens administratortilgang.',
+	'desysopname'          => 'Brukernavn:',
+	'desysopok'            => '<b>«$1» har mistet administratorstatuse</b>',
+	'set_user_rights'      => 'Sett brukerrettigheter',
+	'user_rights_set'      => '<b>Brukerrettigheter for «$1» er oppdatert</b>',
+	'set_rights_fail'      => '<b>Brukerrettigheter for «$1» kunne ikke settes. (Skrev du navnet riktig?)</b>',
+	'desysop'              => 'Fjern administratortilgang for en bruker',
+	'not_sysop'            => 'Denne brukeren er ikke en administrator',
+);
 $wgDesysopMessages['oc'] = array(
 	'desysoptitle'         => 'Levar los dreches d’administrator a aqueste utilizaire',
 	'desysoptext'          => 'Aqueste formulari es utilizat pels burocratas per levar sos dreches a un administrator. Entratz lo nom d’un administrator çai jos e clicatz lo boton per levar los dreches.',

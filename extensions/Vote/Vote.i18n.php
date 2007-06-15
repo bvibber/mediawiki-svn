@@ -77,6 +77,28 @@ riddler|Riddler",
 'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
 ),
 
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'vote' => 'Avstemning',
+'vote-header' => 'Du kan stemme på \'\'\'(eksempelbruker)\'\'\' her!',
+'vote-current' => 'Din nåværende stemme er på \'\'\'$1\'\'\'.',
+'vote-legend' => 'Velg hvordan du vil stemme',
+'vote-caption' => 'Ditt valg:',
+'vote-choices' => 'bruker1|Første brukernavn
+bruker2|Andre brukernavn
+bruker3|Tredje brukernavn',
+'vote-submit' => 'Stem',
+'vote-registered' => 'Din stemme har blitt registrert.',
+'vote-view-results' => 'Vis resultater',
+'vote-results' => 'Avstemningsresultater',
+'vote-results-choice' => 'Valg',
+'vote-results-count' => 'Antall',
+'vote-results-none' => 'Ingen stemmer har blitt avgitt enda.',
+'vote-login' => 'Du må $1 for å stemme.',
+'vote-login-link' => 'logge inn',
+'vote-invalid-choice' => 'Du må velge en av de tilgjengelige alternativene.',
+),
+
 /* Occitan (Cedric31) */
 'oc' => array(
 'vote' => 'Vòte',

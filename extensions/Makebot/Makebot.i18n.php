@@ -316,6 +316,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'heeft de botstatus van [[$1]] ingetrokken',
 ),
 
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'makebot'                 => 'Gi eller fjern botstatus',
+'makebot-header'          => '\'\'\'En byråkrat kan bruke denne siden til å gi eller fjerne [[Help:Bot|botstatus]] på en brukerkonto.\'\'\'<br />Botstatus skjuler en kontos redigeringer fra [[Special:Recentchanges|siste endringer]] og lignende lister, og er nyttig for flagging av kontoer som gjør automatiske endringer. Dette burde gjøres i samsvar med gjeldende retningslinjer.',
+'makebot-username'        => 'Brukernavn:',
+'makebot-search'          => 'Gå',
+'makebot-isbot'           => '[[User:$1|$1]] har botstatus.',
+'makebot-notbot'          => '[[User:$1|$1]] har ikke botstatus.',
+'makebot-privileged'      => '[[User:$1|$1]] har [[Special:Listadmins|administrator- eller byråkratrettigheter]], og kan ikke gis botstatus.',
+'makebot-change'          => 'Endre status:',
+'makebot-grant'           => 'Gi',
+'makebot-revoke'          => 'Fjern',
+'makebot-comment'         => 'Kommentar:',
+'makebot-granted'         => '[[User:$1|$1]] har nå botstatus.',
+'makebot-revoked'         => '[[User:$1|$1]] har ikke lenger botstatus.',
+'makebot-logpage'         => 'Botstatuslogg',
+'makebot-logpagetext'     => 'Dette er en logg over endringer i kontoers [[Help:Bot|botstatus]].',
+'makebot-logentrygrant'   => 'ga botstatus til [[User:$1|$1]]',
+'makebot-logentryrevoke'  => 'fjernet botstatus fra [[User:$1|$1]]',
+),
+
 /* Occitan (Cedric31) */
 'oc' => array(
 'makebot'                 => 'Donar o levar los dreches de bòt',

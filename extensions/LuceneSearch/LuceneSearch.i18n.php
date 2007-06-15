@@ -306,6 +306,22 @@ Zoek naar $3 $9",
 Deze is waarschijnlijk tijdelijk van aard; probeer het over enige tijd opnieuw
 of doorzoek de wiki via een externe zoekmachine:\n"
 );
+$wgLuceneSearchMessages['no'] = array(
+	'searchnumber'          => '<strong>Resultat $1–$2 av $3</strong>',
+	'searchprev'            => '« <span style="font-size:small;">Forrige</span>',
+	'searchnext'            => '<span style="font-size:small;">Neste</span> »',
+	'searchscore'           => 'Relevans: $1',
+	'searchsize'            => '$1&nbsp;kB ($2 ord)',
+	'searchdidyoumean'      => 'Mente du: «<a href="$1">$2</a>»?',
+	'searchnoresults'       => 'Beklager, det var ingen eksakte treff på ditt søk.',
+	'searchnearmatches'     => '<b>Disse sidene har titler som ligner ditt søk:</b>',
+	'lucenepowersearchtext' => 'Søk i navnerom:
+
+$1
+
+Søk etter $3 $9',
+	'lucenefallback'        => 'Det var et problem med søket. Dette er sannsynligvis midlertidig; prøv igjen om et øyeblikk, eller søk ved hjelp av en ekstern søketjeneste:',
+);
 $wgLuceneSearchMessages['oc'] = array(
 	'searchnumber'          => '<strong>Resultats $1-$2 sus $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Prec.</span>',

@@ -180,6 +180,20 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'rechtsboven, rechtsonder, linksonder, linksboven, geen',
 ),
 
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: må angi et bilde i første linje',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: bilde er ugyldig eller ikke-eksisterende',
+'imagemap_no_link'              => '&lt;imagemap&gt;: ingen gyldig lenke ble funnet i slutten av linje $1',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: ugyldig tittel i lenke på linje $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: ikke nok koordinater for form på linje $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: ugjenkjennelig form på linje $1; hver linje må starte med enten: default, rect, circle eller poly',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: minst en områdespesifikasjon må gis',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: ugyldig koordinat i slutten av linje $1, må være et tall',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: ugyldig desc-spesifisering, må være enten: <tt>$1</tt>',
+'imagemap_description'          => 'Om dette bildet',
+),
+
 /* Occitan (Cedric31) */
 'oc' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt; : devètz especificar un imatge dins la primièra linha',

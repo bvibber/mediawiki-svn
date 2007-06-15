@@ -104,6 +104,12 @@ $wgNewuserlogMessages['nl'] = array(
 	'newuserlog-create-entry'  => 'heeft zich ingeschreven',
 	'newuserlog-create2-entry' => 'heeft gebruiker $1 ingeschreven',
 );
+$wgNewuserlogMessages['no'] = array(
+	'newuserlogpage'           => 'Brukeropprettelseslogg',
+	'newuserlogpagetext'       => 'Dette er en logg over brukeropprettelser',
+	'newuserlog-create-entry'  => 'Ny bruker',
+	'newuserlog-create2-entry' => 'opprettet konto for $1',
+);
 $wgNewuserlogMessages['oc'] = array(
 	'newuserlogpage'           => 'Istoric de las creacions de comptes',
 	'newuserlogpagetext'       => 'Jornal de las creacions de comptes d\'utilizaires',

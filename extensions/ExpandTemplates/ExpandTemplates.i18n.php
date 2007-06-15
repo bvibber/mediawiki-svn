@@ -181,6 +181,15 @@ Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_output'          => 'Resultaat:',
 	'expand_templates_remove_comments' => 'Verwijder opmerkingen',
 );
+$wgExpandTemplatesMessages['no'] = array(
+	'expandtemplates'                  => 'Utvid maler',
+	'expand_templates_intro'           => 'Denne siden tar en tekst og utvider alle maler brukt i teksten. Den utvider også alle funksjoner som <nowiki>{{</nowiki>#if:…}}, og variabler som <nowiki>{{</nowiki>CURRENTDAY}}. <!--It does this by calling the relevant parser stage from MediaWiki itself.-->',
+	'expand_templates_title'           => 'Konteksttittel, for {{PAGENAME}}, etc.:',
+	'expand_templates_input'           => 'Skriv inn tekst:',
+	'expand_templates_output'          => 'Resultat:',
+	'expand_templates_ok'              => 'OK',#identical but defined
+	'expand_templates_remove_comments' => 'Fjern kommentarer',
+);
 $wgExpandTemplatesMessages['oc'] = array(
 	'expandtemplates'                  => 'Espandiment dels modèls',
 	'expand_templates_intro'           => 'Aquesta pagina permet de testar l’espandiment de modèls, que son desvolopats recursivament. Las foncions e las variablas predefinidas, coma <nowiki>{{</nowiki>#if:...}} e <nowiki>{{</nowiki>CURRENTDAY}} tanben son desvolopadas.',

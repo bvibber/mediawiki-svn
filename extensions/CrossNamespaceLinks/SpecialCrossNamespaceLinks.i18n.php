@@ -80,6 +80,11 @@ $wgCrossNamespaceLinksMessages['nl'] = array(
 	'crossnamespacelinks'     => 'Pagina\'s met verwijzingen naar andere naamruimten',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3'
 );
+$wgCrossNamespaceLinksMessages['no'] = array(
+	'crossnamespacelinks'         => 'Lenker mellom navnerom',
+	'crossnamespacelinks-summary' => 'Denne siden gir ei liste over lenker fra sider i hovednavnerommet til sider i andre navnerom (utenom navnerommene {{ns:special}}, {{ns:talk}}, {{ns:project}} og {{ns:template}}), som det er frarådd å bruke.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|lenke|lenker}} til $3',
+);
 $wgCrossNamespaceLinksMessages['oc'] = array(
 	'crossnamespacelinks'         => 'Paginas contenent de ligams vèrs un autre espaci de nom',
 	'crossnamespacelinks-summary' => 'Aquesta pagina fornís una lista de las paginas de l’espaci de nom principal qu\'an un ligam vèrs un autre espaci de nom (exceptat pels espacis de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), çò qu’es recomandat.',

@@ -74,6 +74,12 @@ Basqa ataw talğañız.',
 zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 ),
 
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'blacklistedusername' => 'Svartelistet brukernavn',
+'blacklistedusernametext' => 'Brukernavnet du har valgt tilsvarer et navn på [[MediaWiki:Usernameblacklist|listen over svartelistede brukernavn]]. Velg et annet navn.',
+),
+
 /* Occitan (Cedric31) */
 'oc' => array(
 'blacklistedusername' => 'Noms d’utilizaires en lista negra',
