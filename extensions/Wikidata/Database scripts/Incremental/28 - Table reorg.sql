@@ -7,7 +7,7 @@ RENAME TABLE transactions to uw_transactions;
 RENAME TABLE objects to uw_objects;
 
 -- Drop table so that the next create doesn't crash
-DROP TABLE IF EXISTS `uw_text`;
+DROP TABLE `uw_text`;
 
 -- We used to share this with MediaWiki, but it makes more sense to
 -- have our own within each data set.
