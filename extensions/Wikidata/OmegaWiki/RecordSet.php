@@ -10,6 +10,8 @@ abstract class RecordSet {
 	public abstract function getKey();
 	public abstract function getRecordCount();
 	public abstract function getRecord($index);
+	protected $type=null;
+	protected $records;
 	# public function save(); # <- we first need to implement, then uncomment
 /**
 	 * @return carriage return separated list of values
@@ -20,7 +22,8 @@ abstract class RecordSet {
 	
 	public function tostring_indent($depth=0,$key="",$myname="RecordSet") {
 		$rv="\n".str_pad("",$depth*8);
-		$rv.="$key:$myname {";
+		$type=$this->type;
+		$rv.="$key:$myname(... $type) {";
 		$rv2=$rv;
 		foreach ($this->records as $value) {
 			$rv=$rv2;
@@ -39,8 +42,38 @@ abstract class RecordSet {
 
 		return $rv;
 	}
+	
+	public function getType(){
+		return $this->type;
+	}
 
+	public function setType($type) {
+		$this->type=$type;
+	}
 
+	/**only setType if it wasn't set yet
+	* @param the type you would like to suggest
+	* @returns the type this arrayset finally got
+	*/
+	public function suggestType($type) {
+		if(is_null($this->type)) 
+			$this->setType($type);
+		return $this->getType();
+	}
+
+	public function finish($type) {
+		$type=$this->suggestType($type);
+		
+
+		foreach ($this->records as $key=>$value) { 
+			$methods=get_class_methods(get_class($value));
+			if (!is_null($methods)) {
+				if (in_array("finish",$methods)) {
+					$value->finish($this->type);
+				} 
+			}
+		}	
+	}
 }
 
 class ArrayRecordSet extends RecordSet {

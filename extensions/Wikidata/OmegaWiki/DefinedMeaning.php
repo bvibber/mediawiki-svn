@@ -107,7 +107,9 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$this->possiblySynonymousRelationTypeId, 
 			$this->viewQueryTransactionInformation
 		);
-		return $dmModel->getRecord();
+		$record=$dmModel->getRecord();
+		$record->finish("DefinedMeaning");
+		return $record;
 	}
 
 	protected function save($referenceTransaction) {
