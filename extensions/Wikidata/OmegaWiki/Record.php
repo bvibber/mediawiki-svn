@@ -1,6 +1,7 @@
 <?php
 
 require_once('Attribute.php');
+require_once('RecordHelper.php');
 
 interface Record {
 	public function getStructure();
@@ -12,9 +13,11 @@ class ArrayRecord implements Record {
 	protected $structure;
 	protected $values = array();
 	protected $type = null;
+	protected $helper=null;
 	
 	public function __construct($structure) {
 		$this->structure = $structure;
+		$this->helper=new RecordHelper($this);
 	}
 	
 	public function getStructure() {
