@@ -42,7 +42,7 @@ public class CompactArticleLinks{
 	@Override
 	public String toString() {
 		try {
-			return new String(str,0,str.length,"utf-8")+", count="+links;
+			return new String(str,0,str.length,"utf-8");
 		} catch (UnsupportedEncodingException e) {
 			return "";
 		}

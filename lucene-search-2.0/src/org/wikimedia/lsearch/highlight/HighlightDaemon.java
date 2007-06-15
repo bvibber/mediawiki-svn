@@ -23,6 +23,7 @@ import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
 import org.apache.lucene.search.highlight.TextFragment;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
+import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
@@ -121,10 +122,13 @@ public class HighlightDaemon extends Thread {
 		}
 		
 		// highlight all articles and return results
-		String lang = GlobalConfiguration.getInstance().getLanguage(dbname);
-		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid);
-		WikiQueryParser parser = new WikiQueryParser("contents",
-				new NamespaceFilter("0"),analyzer,WikiQueryParser.NamespacePolicy.IGNORE);
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
+		boolean exactCase = global.exactCaseIndex(iid.getDBname());
+		String lang = global.getLanguage(dbname);
+		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
+		FieldNameFactory fields = new FieldNameFactory(exactCase);
+		WikiQueryParser parser = new WikiQueryParser(fields.contents(),
+				new NamespaceFilter("0"),analyzer,fields,WikiQueryParser.NamespacePolicy.IGNORE);
 		Query q = parser.parseFourPass(query,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 		Scorer scorer = new QueryScorer(q);
 		SimpleHTMLFormatter formatter = new SimpleHTMLFormatter("<span class=\"searchmatch\">","</span>");

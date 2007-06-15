@@ -5,7 +5,7 @@ from os import curdir, sep
 from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from urllib2 import URLError, HTTPError
 
-search_host = { 'enwiki' : "srv79:8123", '<default>': 'srv80:8123' }
+search_host = { 'enwiki' : "srv79:8123", '<default>': 'srv79:8123' }
 
 canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     4 : 'Project', 5 : 'Project_talk', 6 : 'Image', 7 : 'Image_talk',
@@ -66,6 +66,7 @@ class MyHandler(BaseHTTPRequestHandler):
                 limit = 20
                 offset = 0
                 namespaces = []
+                case = "ignore"
                 
                 # parameters 
                 for key,val in params.iteritems():
@@ -87,9 +88,13 @@ class MyHandler(BaseHTTPRequestHandler):
                 else:
                     host = search_host['<default>']
 
+                if dbname.endswith("-exact"):
+                    case = "exact"
+                    dbname = dbname[0:-6]
+
                 # make search url for ls2
                 search_url = 'http://%s/search/%s/%s' % (host,dbname,urllib.quote(rewritten.encode('utf-8')))
-                search_params = urllib.urlencode({'limit' : limit, 'offset' : offset, 'namespaces' : ','.join(namespaces)}, True)
+                search_params = urllib.urlencode({'limit' : limit, 'offset' : offset, 'namespaces' : ','.join(namespaces), "case" : case}, True)
                 
                 # process search results
                 try:    
@@ -98,6 +103,7 @@ class MyHandler(BaseHTTPRequestHandler):
                     lasthit = min(offset+limit,numhits) 
                     # html headers
                     self.send_response(200)
+                    self.send_header('Cache-Control','no-cache')
                     self.send_header('Content-type','text/html')
                     self.end_headers()
                     self.wfile.write('<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>')
@@ -154,6 +160,7 @@ class MyHandler(BaseHTTPRequestHandler):
                 search_form = f.read()
                 f.close()
                 self.send_response(200)
+                self.send_header('Cache-Control','no-cache')
                 self.send_header('Content-type','text/html')
                 self.end_headers()
                 self.wfile.write(search_form)

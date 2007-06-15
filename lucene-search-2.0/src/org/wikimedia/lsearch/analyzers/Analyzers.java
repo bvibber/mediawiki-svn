@@ -12,6 +12,7 @@ import org.apache.lucene.analysis.fr.FrenchStemFilter;
 import org.apache.lucene.analysis.nl.DutchStemFilter;
 import org.apache.lucene.analysis.ru.RussianStemFilter;
 import org.apache.lucene.analysis.th.ThaiWordFilter;
+import org.apache.lucene.search.FieldSortedHitQueue;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
@@ -34,8 +35,8 @@ public class Analyzers {
 	 * @param language
 	 * @return
 	 */
-	public static Analyzer getTitleAnalyzer(FilterFactory filters){
-		return new QueryLanguageAnalyzer(filters);
+	public static Analyzer getTitleAnalyzer(FilterFactory filters, boolean exactCase){
+		return new QueryLanguageAnalyzer(filters,exactCase);
 	}
 
 	/**
@@ -50,29 +51,40 @@ public class Analyzers {
 	 * @param languageAnalyzer  language filter class (e.g. PorterStemFilter)
 	 * @return  {PerFieldAnalyzerWrapper,WikiTokenizer}
 	 */
-	public static Object[] getIndexerAnalyzer(String text, FilterFactory filters, ArrayList<String> redirects) {
-		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
+	public static Object[] getIndexerAnalyzer(String text, FieldBuilder builder, ArrayList<String> redirects) {
+		PerFieldAnalyzerWrapper perFieldAnalyzer = new PerFieldAnalyzerWrapper(new SimpleAnalyzer());
+		WikiTokenizer tokenizer = null;
+		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
+			tokenizer = addFieldsForIndexing(perFieldAnalyzer,text,bs.getFilters(),bs.getFields(),redirects,bs.isExactCase());
+		} 
+		return new Object[] {perFieldAnalyzer,tokenizer};
+	}
+	
+	/**
+	 * Add some fields to indexer's analyzer.
+	 * 
+	 */
+	public static WikiTokenizer addFieldsForIndexing(PerFieldAnalyzerWrapper perFieldAnalyzer, String text, FilterFactory filters, FieldNameFactory fields, ArrayList<String> redirects, boolean exactCase) {
 		// parse wiki-text to get categories
-		WikiTokenizer tokenizer = new WikiTokenizer(text,filters.getLanguage());
+		WikiTokenizer tokenizer = new WikiTokenizer(text,filters.getLanguage(),exactCase);
 		tokenizer.tokenize();
 		ArrayList<String> categories = tokenizer.getCategories();
 		
-		perFieldAnalyzer = new PerFieldAnalyzerWrapper(new SimpleAnalyzer());
-		perFieldAnalyzer.addAnalyzer("contents", 
+		perFieldAnalyzer.addAnalyzer(fields.contents(), 
 				new LanguageAnalyzer(filters,tokenizer));
 		perFieldAnalyzer.addAnalyzer("category", 
 				new CategoryAnalyzer(categories));
-		perFieldAnalyzer.addAnalyzer("title",
-				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
-		perFieldAnalyzer.addAnalyzer("stemtitle",
-				getTitleAnalyzer(filters));
-		setAltTitleAnalyzer(perFieldAnalyzer,"alttitle",
-				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
-		setKeywordAnalyzer(perFieldAnalyzer,"redirect",
-				new KeywordsAnalyzer(redirects,filters.getNoStemmerFilterFactory(),"redirect"));		
-		setKeywordAnalyzer(perFieldAnalyzer,"keyword", 
-				new KeywordsAnalyzer(tokenizer.getKeywords(),filters.getNoStemmerFilterFactory(),"keyword"));
-		return new Object[] {perFieldAnalyzer,tokenizer};
+		perFieldAnalyzer.addAnalyzer(fields.title(),
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+		perFieldAnalyzer.addAnalyzer(fields.stemtitle(),
+				getTitleAnalyzer(filters,exactCase));
+		setAltTitleAnalyzer(perFieldAnalyzer,fields.alttitle(),
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+		setKeywordAnalyzer(perFieldAnalyzer,fields.redirect(),
+				new KeywordsAnalyzer(redirects,filters.getNoStemmerFilterFactory(),fields.redirect(),exactCase));		
+		setKeywordAnalyzer(perFieldAnalyzer,fields.keyword(), 
+				new KeywordsAnalyzer(tokenizer.getKeywords(),filters.getNoStemmerFilterFactory(),fields.keyword(),exactCase));
+		return tokenizer;
 	}
 	
 	protected static void setAltTitleAnalyzer(PerFieldAnalyzerWrapper perFieldAnalyzer, String prefix, Analyzer analyzer) {
@@ -87,15 +99,19 @@ public class Analyzers {
 		}
 	}
 
-	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(IndexId iid){
+	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(IndexId iid, boolean exactCase){
 		if(global == null)
 			global = GlobalConfiguration.getInstance();
-		return getSearcherAnalyzer(global.getLanguage(iid.getDBname()));
+		return getSearcherAnalyzer(global.getLanguage(iid.getDBname()),exactCase);
 		
 	}
 	
 	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(String langCode){
-		return getSearcherAnalyzer(new FilterFactory(langCode));
+		return getSearcherAnalyzer(langCode,false);
+	}
+	
+	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(String langCode, boolean exactCase){
+		return getSearcherAnalyzer(new FilterFactory(langCode),new FieldNameFactory(exactCase));
 	}
 	
 	/**
@@ -104,20 +120,21 @@ public class Analyzers {
 	 * @param text
 	 * @return
 	 */
-	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(FilterFactory filters) {
+	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(FilterFactory filters, FieldNameFactory fields) {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
+		boolean exactCase = fields.isExactCase();
 		
-		perFieldAnalyzer = new PerFieldAnalyzerWrapper(getTitleAnalyzer(filters));
-		perFieldAnalyzer.addAnalyzer("contents", 
-				new QueryLanguageAnalyzer(filters));
-		perFieldAnalyzer.addAnalyzer("title",
-				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
-		perFieldAnalyzer.addAnalyzer("stemtitle",
-				getTitleAnalyzer(filters));
-		setAltTitleAnalyzer(perFieldAnalyzer,"alttitle",
-				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
-		perFieldAnalyzer.addAnalyzer("keyword", 
-				getTitleAnalyzer(filters.getNoStemmerFilterFactory()));
+		perFieldAnalyzer = new PerFieldAnalyzerWrapper(getTitleAnalyzer(filters,exactCase));
+		perFieldAnalyzer.addAnalyzer(fields.contents(), 
+				new QueryLanguageAnalyzer(filters,exactCase));
+		perFieldAnalyzer.addAnalyzer(fields.title(),
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+		perFieldAnalyzer.addAnalyzer(fields.stemtitle(),
+				getTitleAnalyzer(filters,exactCase));
+		setAltTitleAnalyzer(perFieldAnalyzer,fields.alttitle(),
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
+		perFieldAnalyzer.addAnalyzer(fields.keyword(), 
+				getTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		
 		return perFieldAnalyzer;
 	}

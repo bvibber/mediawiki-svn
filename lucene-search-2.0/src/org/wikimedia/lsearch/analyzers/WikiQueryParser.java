@@ -83,6 +83,8 @@ public class WikiQueryParser {
 	public static float ALT_TITLE_ALIAS_BOOST = 0.4f;
 	public static float KEYWORD_BOOST = 0.02f;
 	
+	public static boolean ADD_STEM_TITLE = true;
+	
 	/** Policies in treating field names:
 	 * 
 	 * LEAVE - don't mess with field rewriting
@@ -103,13 +105,10 @@ public class WikiQueryParser {
 	private NamespacePolicy namespacePolicy;
 	protected NamespaceFilter defaultNamespaceFilter;
 	protected static GlobalConfiguration global=null;
+	protected FieldNameFactory fields;
 	
 	/** default value for boolean queries */
 	public BooleanClause.Occur boolDefault = BooleanClause.Occur.MUST;
-	
-	private UnicodeDecomposer decomposer;
-	private char[] decomp; // unicode decomposition letters
-	private int decompi;
 	
 	/** Init namespace queries */
 	protected void initNamespaces(){
@@ -131,8 +130,8 @@ public class WikiQueryParser {
 	 * @param field   default field name
 	 * @param analyzer
 	 */
-	public WikiQueryParser(String field, Analyzer analyzer){
-		this(field,(NamespaceFilter)null,analyzer,NamespacePolicy.LEAVE);
+	public WikiQueryParser(String field, Analyzer analyzer, FieldNameFactory fields){
+		this(field,(NamespaceFilter)null,analyzer,fields,NamespacePolicy.LEAVE);
 	}
 	
 	/**
@@ -143,14 +142,14 @@ public class WikiQueryParser {
 	 * @param analyzer
 	 * @param nsPolicy
 	 */
-	public WikiQueryParser(String field, String namespace, Analyzer analyzer, NamespacePolicy nsPolicy){
-		this(field,new NamespaceFilter(namespace),analyzer,nsPolicy);
+	public WikiQueryParser(String field, String namespace, Analyzer analyzer, FieldNameFactory fields, NamespacePolicy nsPolicy){
+		this(field,new NamespaceFilter(namespace),analyzer,fields,nsPolicy);
 	}
 	
-	public WikiQueryParser(String field, NamespaceFilter nsfilter, Analyzer analyzer, NamespacePolicy nsPolicy){
+	public WikiQueryParser(String field, NamespaceFilter nsfilter, Analyzer analyzer, FieldNameFactory fields, NamespacePolicy nsPolicy){
 		defaultField = field;		
 		this.analyzer = analyzer;
-		decomposer = UnicodeDecomposer.getInstance();
+		this.fields = fields;
 		tokens = new ArrayList<Token>();
 		this.namespacePolicy = nsPolicy;
 		disableTitleAliases = true;
@@ -284,8 +283,6 @@ public class WikiQueryParser {
 	/**
 	 * Fetch token into <code>buffer</code> starting from current position (<code>cur</code>)
 	 * 
-	 * Similar to <code>FastWikiTokenizerEngine</code>, automatically
-	 * normalizes (strip accents) and lowercases the words
 	 * @return type of the token in buffer
 	 */
 	private TokenType fetchToken(){
@@ -298,14 +295,7 @@ public class WikiQueryParser {
 			
 			// pluses and minuses, underscores can be within words, *,? are for wildcard queries
 			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_' || ch=='*' || ch=='?'){
-				// unicode normalization -> delete accents
-				decomp = decomposer.decompose(ch);
-				if(decomp == null)
-					buffer[length++] = ch;
-				else{
-					for(decompi = 0; decompi < decomp.length; decompi++)
-						buffer[length++] = decomp[decompi];
-				}				
+				buffer[length++] = ch;
 			} else{
 				cur--; // position before the nonletter character
 				break;
@@ -373,11 +363,11 @@ public class WikiQueryParser {
 		cur = prev_cur;
 	}
 
-	/** make <code>tokenStream</code> from lowercased <code>buffer</code> via analyzer */
+	/** make <code>tokenStream</code> from <code>buffer</code> via analyzer */
 	private void analyzeBuffer(){
 		String analysisField = defaultField;
 		tokenStream = analyzer.tokenStream(analysisField, 
-				new String(buffer,0,length).toLowerCase());
+				new String(buffer,0,length));
 		
 		Token token;
 		tokens.clear();
@@ -404,15 +394,15 @@ public class WikiQueryParser {
 	/** Make a lucene term from string */
 	private Term makeTerm(String t){
 		if(field == null)
-			return new Term(defaultField,t.toLowerCase());
+			return new Term(defaultField,t);
 		else if(!field.equals("incategory") && 
 				(namespacePolicy == NamespacePolicy.IGNORE || 
 						namespacePolicy == NamespacePolicy.REWRITE))
-			return new Term(defaultField,t.toLowerCase());
+			return new Term(defaultField,t);
 		else if(field.equals("incategory"))
-			return new Term("category",t.toLowerCase());
+			return new Term("category",t);
 		else
-			return new Term(field,t.toLowerCase());
+			return new Term(field,t);
 	}
 	
 	/** Parses a phrase query (i.e. between ""), the cur
@@ -673,7 +663,7 @@ public class WikiQueryParser {
 		// check for wildcard seaches, they are also not analyzed/stemmed, only for titles
 		// wildcard signs are allowed only at the end of the word, minimum one letter word
 		if(length>1 && Character.isLetter(buffer[0]) && (buffer[length-1]=='*' || buffer[length-1]=='?') &&
-				defaultField.equals("title")){
+				defaultField.equals(fields.title())){
 			Query ret = new WildcardQuery(makeTerm());
 			ret.setBoost(defaultBoost);
 			return ret;
@@ -706,6 +696,21 @@ public class WikiQueryParser {
 						t = new TermQuery(makeTerm(token));
 						t.setBoost(defaultAliasBoost*defaultBoost);
 						cur.add(t,aliasOccur);
+					} else if (token.type().equals("transliteration")){
+						// if not in nested query make one
+						if(cur == bq  && (i+1) < tokens.size() && tokens.get(i+1).getPositionIncrement()==0){
+							t = new TermQuery(makeTerm(token));
+							t.setBoost(defaultBoost);
+							cur = new BooleanQuery();
+							cur.add(t,BooleanClause.Occur.SHOULD);
+							bq.add(cur,boolDefault);
+							continue;
+						} else{
+							// alternative transliteration
+							t = new TermQuery(makeTerm(token));
+							t.setBoost(defaultBoost);
+							cur.add(t,aliasOccur);
+						}
 					}
 					if( cur != bq) // returned from nested query
 						cur = bq;
@@ -715,7 +720,7 @@ public class WikiQueryParser {
 					if(tokens.size() > 2 && (i+1) < tokens.size() && tokens.get(i+1).getPositionIncrement()==0){
 						// make nested query. this is needed when single word is tokenized
 						// into many words of which they all have aliases
-						// e.g. anti-hero => anti stemmed:anti hero stemmed:hero
+						// e.g. anti-hero => anti hero
 						cur = new BooleanQuery();
 						cur.add(t,BooleanClause.Occur.SHOULD);
 						bq.add(cur,boolDefault);
@@ -776,7 +781,7 @@ public class WikiQueryParser {
 		Term term = tq.getTerm();
 		if(term.field().equals(defaultField)){
 			TermQuery tq2 = new TermQuery(
-					new Term("title",term.text()));
+					new Term(fields.title(),term.text()));
 			tq2.setBoost(tq.getBoost()*TITLE_BOOST);
 			
 			return tq2;
@@ -792,7 +797,7 @@ public class WikiQueryParser {
 		Term[] terms = pq.getTerms();
 		if(terms.length > 0 && terms[0].field().equals(defaultField)){
 			for(int j=0;j<terms.length;j++){
-				pq2.add(new Term("title",terms[j].text()));
+				pq2.add(new Term(fields.title(),terms[j].text()));
 			}
 			pq2.setBoost(pq.getBoost()*TITLE_BOOST);
 			
@@ -999,7 +1004,8 @@ public class WikiQueryParser {
 						snq.setBoost(boost);
 						spans.add(snq);
 					}
-				}
+				} else // nested boolean or wildcard query
+					return null;
 			}
 			// create the queries
 			Query cat = null;
@@ -1059,7 +1065,7 @@ public class WikiQueryParser {
 		defaultBoost = ALT_TITLE_BOOST;
 		defaultAliasBoost = ALT_TITLE_ALIAS_BOOST;
 		for(int i=1;i<=WikiIndexModifier.ALT_TITLES;i++){
-			defaultField = "alttitle"+i; 
+			defaultField = fields.alttitle()+i; 
 			Query q = parseRaw(queryText);
 			if(q != null)
 				bq.add(q,BooleanClause.Occur.SHOULD);
@@ -1069,10 +1075,11 @@ public class WikiQueryParser {
 		defaultBoost = olfDefaultBoost;
 		defaultAliasBoost = ALIAS_BOOST;
 		
-		Query qs = multiplySpans(qt,0,"redirect",REDIRECT_BOOST);
+		BooleanQuery qs = multiplySpans(qt,0,fields.redirect(),REDIRECT_BOOST);
 		// merge queries
 		if(qs != null){
-			bq.add(qs,BooleanClause.Occur.SHOULD);
+			for(BooleanClause bc : qs.getClauses())
+				bq.add(bc);
 		}
 		if(bq.getClauses() == null || bq.getClauses().length==0)
 			return null;
@@ -1085,15 +1092,18 @@ public class WikiQueryParser {
 	protected Query makeTitleQuery(String queryText) {
 		String contentField = defaultField;
 		float olfDefaultBoost = defaultBoost;
-		defaultField = "title"; // now parse the title part
+		defaultField = fields.title(); // now parse the title part
 		defaultBoost = TITLE_BOOST;
 		defaultAliasBoost = TITLE_ALIAS_BOOST;
 		Query qt = parseRaw(queryText);
+		Query qs = null;
 		// stemmed title
-		defaultField = "stemtitle"; 
-		defaultBoost = STEM_TITLE_BOOST;
-		defaultAliasBoost = STEM_TITLE_ALIAS_BOOST;
-		Query qs = parseRaw(queryText);
+		if(ADD_STEM_TITLE){
+			defaultField = fields.stemtitle(); 
+			defaultBoost = STEM_TITLE_BOOST;
+			defaultAliasBoost = STEM_TITLE_ALIAS_BOOST;
+			qs = parseRaw(queryText);
+		}
 		// pop stack
 		defaultField = contentField;
 		defaultBoost = olfDefaultBoost;
@@ -1138,7 +1148,7 @@ public class WikiQueryParser {
 		Query nostem = null;
 		if(makeRedirect || makeKeywords){
 			String contentField = defaultField;
-			defaultField = "keyword"; // this field is never stemmed
+			defaultField = fields.keyword(); // this field is never stemmed
 			nostem = parseRaw(queryText);
 			defaultField = contentField;
 		}
@@ -1151,7 +1161,7 @@ public class WikiQueryParser {
 		}
 		// keyword pass
 		if(makeKeywords && nostem!=null){
-			Query qk = multiplySpans(nostem,0,"keyword",KEYWORD_BOOST);
+			Query qk = multiplySpans(nostem,0,fields.keyword(),KEYWORD_BOOST);
 			if(qk != null)
 				bq.add(qk,BooleanClause.Occur.SHOULD);
 		}

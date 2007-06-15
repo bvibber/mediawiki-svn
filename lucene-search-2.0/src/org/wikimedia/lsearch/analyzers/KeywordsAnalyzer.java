@@ -36,23 +36,23 @@ public class KeywordsAnalyzer extends Analyzer{
 	/** positional increment between different redirects */
 	public static final int TOKEN_GAP = 201;
 
-	public KeywordsAnalyzer(HashSet<String> keywords, FilterFactory filters, String prefix){
+	public KeywordsAnalyzer(HashSet<String> keywords, FilterFactory filters, String prefix, boolean exactCase){
 		ArrayList<String> k = new ArrayList<String>();
 		if(keywords != null)
 			k.addAll(keywords);
-		init(k,filters,prefix);
+		init(k,filters,prefix,exactCase);
 	}
-	public KeywordsAnalyzer(ArrayList<String> keywords, FilterFactory filters, String prefix){
-		init(keywords,filters,prefix);
+	public KeywordsAnalyzer(ArrayList<String> keywords, FilterFactory filters, String prefix, boolean exactCase){
+		init(keywords,filters,prefix,exactCase);
 	}	
 	
-	protected void init(ArrayList<String> keywords, FilterFactory filters, String prefix) {
+	protected void init(ArrayList<String> keywords, FilterFactory filters, String prefix, boolean exactCase) {
 		this.prefix = prefix;
 		tokensBySize = new KeywordsTokenStream[KEYWORD_LEVELS];
 		if(keywords == null){
 			// init empty token streams
 			for(int i=0; i< KEYWORD_LEVELS; i++){
-				tokensBySize[i] = new KeywordsTokenStream(null,filters);			
+				tokensBySize[i] = new KeywordsTokenStream(null,filters,exactCase);			
 			}	
 			return;
 		}
@@ -61,7 +61,7 @@ public class KeywordsAnalyzer extends Analyzer{
 			keywordsBySize.add(new ArrayList<String>());
 		// arange keywords into a list by token number 
 		for(String k : keywords){
-			ArrayList<Token> parsed = new FastWikiTokenizerEngine(k).parse();
+			ArrayList<Token> parsed = new FastWikiTokenizerEngine(k,exactCase).parse();
 			if(parsed.size() == 0)
 				continue;
 			else if(parsed.size() < KEYWORD_LEVELS)
@@ -70,7 +70,7 @@ public class KeywordsAnalyzer extends Analyzer{
 				keywordsBySize.get(KEYWORD_LEVELS-1).add(k);
 		}		
 		for(int i=0; i< KEYWORD_LEVELS; i++){
-			tokensBySize[i] = new KeywordsTokenStream(keywordsBySize.get(i),filters);			
+			tokensBySize[i] = new KeywordsTokenStream(keywordsBySize.get(i),filters,exactCase);			
 		}
 	}
 	
@@ -96,8 +96,8 @@ public class KeywordsAnalyzer extends Analyzer{
 		protected String keyword;
 		protected TokenStream tokens;
 		
-		public KeywordsTokenStream(ArrayList<String> keywords, FilterFactory filters){
-			this.analyzer = new QueryLanguageAnalyzer(filters);
+		public KeywordsTokenStream(ArrayList<String> keywords, FilterFactory filters, boolean exactCase){
+			this.analyzer = new QueryLanguageAnalyzer(filters,exactCase);
 			this.keywords = keywords;
 			this.index = 0;
 			this.keyword = null;

@@ -19,6 +19,7 @@ import org.apache.lucene.search.SearchableMul;
 import org.apache.lucene.search.Searcher;
 import org.apache.lucene.search.TopDocs;
 import org.wikimedia.lsearch.analyzers.Analyzers;
+import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
@@ -41,6 +42,12 @@ public class SearchEngine {
 
 	protected final int maxlines = 1000;
 	protected final int maxoffset = 10000;
+	protected static GlobalConfiguration global = null;
+	
+	public SearchEngine(){
+		if(global == null)
+			global = GlobalConfiguration.getInstance();
+	}
 	
 	/** Main search method, call this from the search frontend */
 	public SearchResults search(IndexId iid, String what, String searchterm, HashMap query) {
@@ -48,13 +55,15 @@ public class SearchEngine {
 		if (what.equals("titlematch")) {
 			// TODO: return searchTitles(searchterm);
 		} else if (what.equals("search") || what.equals("explain")) {
-			int offset = 0, limit = 100;
+			int offset = 0, limit = 100; boolean exactCase = false;
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
 			if (query.containsKey("limit"))
 				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
+			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
+				exactCase = true;
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
-			SearchResults res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"));
+			SearchResults res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"), exactCase);
 			if(res!=null && res.isRetry()){
 				int retries = 0;
 				if(iid.isSplit() || iid.isNssplit()){
@@ -63,7 +72,7 @@ public class SearchEngine {
 					retries = 1;
 				
 				while(retries > 0 && res.isRetry()){
-					res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"));
+					res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"), exactCase);
 					retries--;
 				}
 				if(res.isRetry())
@@ -108,11 +117,12 @@ public class SearchEngine {
 	 * Search on iid, with query searchterm. View results from offset to offset+limit, using
 	 * the default namespaces filter
 	 */
-	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, NamespaceFilter nsDefault, boolean explain){
-		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid);
+	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, NamespaceFilter nsDefault, boolean explain, boolean exactCase){
+		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
-		WikiQueryParser parser = new WikiQueryParser("contents",nsDefault,analyzer,WikiQueryParser.NamespacePolicy.IGNORE);
+		FieldNameFactory ff = new FieldNameFactory(exactCase);
+		WikiQueryParser parser = new WikiQueryParser(ff.contents(),nsDefault,analyzer,ff,WikiQueryParser.NamespacePolicy.IGNORE);
 		HashSet<NamespaceFilter> fields = parser.getFieldNamespaces(searchterm);
 		NamespaceFilterWrapper nsfw = null;
 		Query q = null;

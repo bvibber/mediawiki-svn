@@ -69,6 +69,8 @@ public class GlobalConfiguration {
 	protected String[] databaseSuffixes = null;	
 	/** Databases ending in suffix will use additional keyword scores */
 	protected String[] keywordScoringSuffixes = null;
+	/** Databases ending in suffix will have 2 indexes, one with lowercased words, and one with exact case words */
+	protected String[] exactCaseSuffix = null;
 	
 	protected Properties globalProperties = null;
 	
@@ -290,6 +292,7 @@ public class GlobalConfiguration {
 					// get some predifined global properties
 					this.databaseSuffixes = getArrayProperty("Database.suffix");
 					this.keywordScoringSuffixes = getArrayProperty("KeywordScoring.suffix");
+					this.exactCaseSuffix = getArrayProperty("ExactCase.suffix");
 					if(line == null)
 						break;
 					// else: line points to beginning of next section
@@ -457,6 +460,7 @@ public class GlobalConfiguration {
 						                    mySearch,
 						                    oairepo);
 				indexIdPool.put(dbrole,iid);
+				
 			}
 			if(indexIdPool.get(dbname).isNssplit())
 				indexIdPool.get(dbname).rebuildNsMap(indexIdPool);
@@ -831,17 +835,12 @@ public class GlobalConfiguration {
 		return namespacePrefixAll;
 	}
 	
-	/** Returns if keyword scoring should be used for this db, using
-	 *  the suffixes from the global configuration
-	 *  
-	 * @param dbname
-	 * @return
-	 */
-	public boolean useKeywordScoring(String dbname){
-		if(keywordScoringSuffixes == null)
+	/** Check wether dbname has some of the suffixes */
+	protected boolean checkSuffix(String[] suffixes, String dbname){
+		if(suffixes == null)
 			return false;
 		else{
-			for (String suffix : keywordScoringSuffixes) {
+			for (String suffix : suffixes) {
 				if (dbname.endsWith(suffix))
 					return true;
 			}
@@ -849,6 +848,25 @@ public class GlobalConfiguration {
 		return false;
 	}
 	
+	/** Returns if keyword scoring should be used for this db, using
+	 *  the suffixes from the global configuration
+	 *  
+	 * @param dbname
+	 * @return
+	 */
+	public boolean useKeywordScoring(String dbname){
+		return checkSuffix(keywordScoringSuffixes,dbname);		
+	}
+	
+	/**
+	 * If this dbname is assigned an exact-case additional index. 
+	 * 
+	 * @param dbname
+	 * @return
+	 */
+	public boolean exactCaseIndex(String dbname){
+		return checkSuffix(exactCaseSuffix,dbname);		
+	}
 	
 
 }

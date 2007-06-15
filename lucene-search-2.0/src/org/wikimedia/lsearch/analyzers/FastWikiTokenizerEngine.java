@@ -27,7 +27,9 @@ import org.wikimedia.lsearch.util.UnicodeDecomposer;
  */
 public class FastWikiTokenizerEngine {
 	private static final int MAX_WORD_LEN = 255;
-	private final char[] buffer = new char[MAX_WORD_LEN+1];
+	private final char[] buffer = new char[MAX_WORD_LEN]; // buffer of text, e.g. gödel
+	private final char[] aliasBuffer = new char[MAX_WORD_LEN]; // buffer for aliases, e.g. goedel
+	private final char[] decompBuffer = new char[MAX_WORD_LEN]; // buffer for dedomposed text e.g. godel
 	private static final int IO_BUFFER_SIZE = 1024;
 	private final char[] ioBuffer = new char[IO_BUFFER_SIZE];
 	private char[] text;
@@ -37,6 +39,7 @@ public class FastWikiTokenizerEngine {
 	protected ArrayList<String> categories;
 	protected HashMap<String,String> interwikis;
 	protected HashSet<String> keywords;
+	private int decompLength=0, aliasLength=0;
 	private int length = 0; // length of token
 	private int start = 0; // start position of token
 	private int cur = 0; // current position in the input string
@@ -68,6 +71,8 @@ public class FastWikiTokenizerEngine {
 	private static Hashtable<String,HashSet<String>> categoryLocalized = new Hashtable<String,HashSet<String>>();
 	private static HashSet<String> interwiki;
 	
+	/** if true, words won't be lowercased */
+	private boolean exactCase = false;
 	private UnicodeDecomposer decomposer;
 	
 	enum ParserState { WORD, LINK_BEGIN, LINK_WORDS, LINK_END, LINK_KEYWORD, 
@@ -104,14 +109,15 @@ public class FastWikiTokenizerEngine {
 		}
 	}
 	
-	public FastWikiTokenizerEngine(String text){
-		this(text,null);
+	public FastWikiTokenizerEngine(String text, boolean exactCase){
+		this(text,null,exactCase);
 	}
 	
-	public FastWikiTokenizerEngine(String text, String lang){
+	public FastWikiTokenizerEngine(String text, String lang, boolean exactCase){
 		this.text = text.toCharArray();
 		this.textString = text;
 		this.language = lang;
+		this.exactCase = exactCase;
 		textLength = text.length();
 		init();
 	}
@@ -125,23 +131,112 @@ public class FastWikiTokenizerEngine {
 		return decomposer.decompose(c);
 	}
 	
+	/** Add transliteration to token alias, create alias if it doesn't exist */
+	private final void addToTokenAlias(String transliteration) {
+		if(aliasLength == 0){
+			System.arraycopy(decompBuffer,0,aliasBuffer,0,decompLength);
+			aliasLength = decompLength;
+		}
+		for(char cc : transliteration.toCharArray())
+			if(aliasLength < aliasBuffer.length)
+				aliasBuffer[aliasLength++] = cc;
+	}
+	
 	/** 
 	 * This function is called at word boundaries, it is used to 
 	 * make a new token and add it to token stream
+	 * 
+	 * Does unicode decomposition, and will make alias token with 
+	 * alternative transliterations (e.g. ö -> oe)
 	 */
 	private final void addToken(){
 		if(length!=0){
 			if(numberToken && (buffer[length-1]=='.' ||buffer[length-1]==','))
 				length--; // strip trailing . and , in numbers
-			tokens.add(new Token(
-					new String(buffer, 0, length), start, start + length));
+			// decompose token, maintain alias if needed
+			decompLength = 0;
+			aliasLength = 0;
+			boolean addToAlias;
+			for(int i=0;i<length;i++){
+				addToAlias = true;
+				if( ! exactCase )
+					cl = Character.toLowerCase(buffer[i]);
+				else{
+					cl = buffer[i];
+					// check additional (uppercase) character aliases
+					if(cl == 'Ä' ){
+						addToTokenAlias("Ae");
+						addToAlias = false;
+					} else if(cl == 'Ö'){
+						addToTokenAlias("Oe");
+						addToAlias = false;
+					} else if(cl == 'Ü'){
+						addToTokenAlias("Ue");
+						addToAlias = false;
+					} else if(cl == 'Ñ'){
+						addToTokenAlias("Nh");
+						addToAlias = false;
+					} else if(cl == 'Å'){
+						addToTokenAlias("Aa");
+						addToAlias = false;
+					}
+				}
+				// special alias transliterations ä -> ae, etc ... 
+				if(cl == 'ä' ){
+					addToTokenAlias("ae");
+					addToAlias = false;
+				} else if(cl == 'ö'){
+					addToTokenAlias("oe");
+					addToAlias = false;
+				} else if(cl == 'ü'){
+					addToTokenAlias("ue");
+					addToAlias = false;
+				} else if(cl == 'ß'){
+					addToTokenAlias("ss");
+					addToAlias = false;
+				} else if(cl == 'ñ'){
+					addToTokenAlias("nh");
+					addToAlias = false;
+				} else if(cl == 'å'){
+					addToTokenAlias("aa");
+					addToAlias = false;
+				}
+				
+				decomp = decompose(cl);
+				// no decomposition
+				if(decomp == null){
+					if(decompLength<decompBuffer.length)
+						decompBuffer[decompLength++] = cl;
+					if(addToAlias && aliasLength!=0 && aliasLength<aliasBuffer.length)
+						aliasBuffer[aliasLength++] = cl;
+				} else{
+					for(decompi = 0; decompi < decomp.length; decompi++){
+						if(decompLength<decompBuffer.length)
+							decompBuffer[decompLength++] = decomp[decompi];
+						if(addToAlias && aliasLength!=0 && aliasLength<aliasBuffer.length)
+							aliasBuffer[aliasLength++] = decomp[decompi];
+					}
+				}			
+			}
+			// add decomposed token to stream
+			if(decompLength!=0)
+				tokens.add(new Token(
+						new String(decompBuffer, 0, decompLength), start, start + length));
+			// add alias (if any) token to stream
+			if(aliasLength!=0){
+				Token t = new Token(
+						new String(aliasBuffer, 0, aliasLength), start, start + length);
+				t.setPositionIncrement(0);
+				t.setType("transliteration");
+				tokens.add(t);
+			}
 			length = 0;
 			numberToken = false;
 			if(templateLevel == 0)
 				keywordTokens++;
 		}
 	}
-	
+
 	/**
 	 * Tries to add the current letter (variable c) to the
 	 * buffer, if it's not a letter, new token is created
@@ -156,19 +251,9 @@ public class FastWikiTokenizerEngine {
 				if(length == 0)
 					start = cur;
 
-				cl = Character.toLowerCase(c);
-				decomp = decompose(cl);
-				if(decomp == null){
-					if(length<buffer.length)
-						buffer[length++] = cl;
-				}
-				else{
-					for(decompi = 0; decompi < decomp.length; decompi++){
-						if(length<buffer.length)
-							buffer[length++] = decomp[decompi];
-					}
-				}
-				// add digits
+				if(length < buffer.length)
+					buffer[length++] = c;
+			// add digits
 			} else if(Character.isDigit(c)){				
 				if(length == 0)
 					start = cur;

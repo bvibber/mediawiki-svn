@@ -15,7 +15,7 @@ import org.wikimedia.lsearch.index.WikiIndexModifier;
 
 public class FastWikiTokenizerTest {		
 		public static void displayTokensForParser(String text) {
-			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,"sr");
+			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,"sr",false);
 			Token[] tokens = parser.parse().toArray(new Token[] {});
 			for (int i = 0; i < tokens.length; i++) {
 				Token token = tokens[i];
@@ -61,6 +61,8 @@ public class FastWikiTokenizerTest {
 		
 		public static void main(String args[]) throws IOException{
 			String text = "(ant) and some";
+			showTokens(text);
+			text = " ä, ö, ü; for instance, Ø ÓóÒò Goedel for Gödel; čakšire";
 			showTokens(text);
 			text = "[[Category:Blah Blah?!|Caption]], and [[:Category:Link to category]]";
 			showTokens(text);
@@ -110,7 +112,7 @@ public class FastWikiTokenizerTest {
 			for(int i=0;i<2000;i++){
 				for(TestArticle article : articles){
 					String text = article.content;
-					FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text);
+					FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,false);
 					parser.parse();
 				}
 			}

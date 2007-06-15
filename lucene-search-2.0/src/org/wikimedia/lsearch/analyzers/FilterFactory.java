@@ -20,7 +20,7 @@ public class FilterFactory {
 	protected Class stemmer = null;
 	protected Class customFilter = null;
 	
-	protected FilterFactory noStemmerFilterFactory;
+	protected FilterFactory noStemmerFilterFactory=null;
 	
 	public FilterFactory(String lang){
 		this.lang = lang;
@@ -38,7 +38,10 @@ public class FilterFactory {
 	}
 	
 	public FilterFactory getNoStemmerFilterFactory() {
-		return noStemmerFilterFactory;
+		if(noStemmerFilterFactory == null)
+			return this;
+		else
+			return noStemmerFilterFactory;
 	}
 
 	protected void init(){

@@ -46,7 +46,7 @@ public class CategoryAnalyzer extends Analyzer {
 
 	@Override
 	public TokenStream tokenStream(String fieldName, Reader reader) {
-		return new LowerCaseFilter(new ArrayTokenStream(categories));
+		return new ArrayTokenStream(categories);
 	}
 
 }

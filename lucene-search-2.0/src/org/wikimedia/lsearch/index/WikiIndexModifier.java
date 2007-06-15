@@ -28,6 +28,8 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
+import org.wikimedia.lsearch.analyzers.FieldBuilder;
+import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.KeywordsAnalyzer;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
@@ -66,6 +68,7 @@ public class WikiIndexModifier {
 		protected IndexWriter writer;
 		protected boolean rewrite;		
 		protected String langCode;
+		protected boolean exactCase;
 		
 		protected HashSet<IndexUpdateRecord> nonDeleteDocuments;
 		
@@ -81,10 +84,11 @@ public class WikiIndexModifier {
 		 * @param analyzer
 		 * @param rewrite - if true, will create new index
 		 */
-		SimpleIndexModifier(IndexId iid, String langCode, boolean rewrite){
+		SimpleIndexModifier(IndexId iid, String langCode, boolean rewrite, boolean exactCase){
 			this.iid = iid;
 			this.rewrite = rewrite;
 			this.langCode = langCode;
+			this.exactCase = exactCase;
 			reportQueue = new Hashtable<IndexUpdateRecord,IndexReportCard>();
 		}
 
@@ -175,16 +179,16 @@ public class WikiIndexModifier {
 			writer.setUseCompoundFile(true);
 			writer.setMaxFieldLength(MAX_FIELD_LENGTH);
 			
-			FilterFactory filters = new FilterFactory(langCode);
+			FieldBuilder builder = new FieldBuilder(langCode,exactCase);
 
 			for(IndexUpdateRecord rec : records){								
 				if(rec.doAdd()){
 					if(!rec.isAlwaysAdd() && nonDeleteDocuments.contains(rec))
 						continue; // don't add if delete/add are paired operations
 					if(!checkPreconditions(rec))
-						continue; // article shoouldn't be added for some (heuristic) reason					
+						continue; // article shouldn't be added for some reason					
 					IndexReportCard card = getReportCard(rec);
-					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),filters,iid);
+					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),builder,iid);
 					Document doc = (Document) ret[0];
 					Analyzer analyzer = (Analyzer) ret[1];
 					try {
@@ -244,7 +248,7 @@ public class WikiIndexModifier {
 	
 	/**
 	 * Generate the articles transient characterstics needed only for indexing, 
-	 * i.e. list of redirect keywords and Page Rank. 
+	 * i.e. list of redirect keywords and article rank. 
 	 * 
 	 * @param article
 	 */
@@ -345,7 +349,7 @@ public class WikiIndexModifier {
 		long now = System.currentTimeMillis();
 		log.info("Starting update of "+updateRecords.size()+" records on "+iid+", started at "+now);
 			
-		SimpleIndexModifier modifier = new SimpleIndexModifier(iid,global.getLanguage(iid.getDBname()),false);
+		SimpleIndexModifier modifier = new SimpleIndexModifier(iid,global.getLanguage(iid.getDBname()),false,global.exactCaseIndex(iid.getDBname()));
 		
 		Transaction trans = new Transaction(iid);
 		trans.begin();
@@ -398,60 +402,66 @@ public class WikiIndexModifier {
 	 * @param languageAnalyzer
 	 * @return array { document, analyzer }
 	 */
-	public static Object[] makeDocumentAndAnalyzer(Article article, FilterFactory filters, IndexId iid){
+	public static Object[] makeDocumentAndAnalyzer(Article article, FieldBuilder builder, IndexId iid){
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
 		WikiTokenizer tokenizer = null;
 		Document doc = new Document();
 
 		// tranform record so that unnecessary stuff is deleted, e.g. some redirects
-		transformArticleForIndexing(article); 
+		transformArticleForIndexing(article);
 		
 		// This will be used to look up and replace entries on index updates.
 		doc.add(new Field("key", article.getKey(), Field.Store.YES, Field.Index.UN_TOKENIZED));
-		
+
 		// These fields are returned with results
 		doc.add(new Field("namespace", article.getNamespace(), Field.Store.YES, Field.Index.UN_TOKENIZED));
-		
-		// boost document title with it's article rank
-		Field title = new Field("title", article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);				
-		//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
-		float rankBoost = calculateArticleRank(article.getRank()); 
-		title.setBoost(rankBoost);
-		doc.add(title);
-		
-		Field stemtitle = new Field("stemtitle", article.getTitle(),Field.Store.NO, Field.Index.TOKENIZED);				
-		//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
-		stemtitle.setBoost(rankBoost);
-		doc.add(stemtitle);
-		
-		// put the best redirects as alternative titles
-		makeAltTitles(doc,"alttitle",article);
-
-		// add titles of redirects, generated from analyzer
-		makeKeywordField(doc,"redirect",rankBoost);
-		
-		if(checkKeywordPreconditions(article,iid))
-			// most significat words in the text, gets extra score, from analyzer
-			makeKeywordField(doc,"keyword",rankBoost);
-				
-		// the next fields are generated using wikitokenizer 
-		doc.add(new Field("contents", "", 
-				Field.Store.NO, Field.Index.TOKENIZED));
 		
 		// each token is one category (category names themself are not tokenized)
 		doc.add(new Field("category", "", 
 				Field.Store.NO, Field.Index.TOKENIZED));
-
-		String text = article.getContents();
-		if(article.isRedirect())
-			text=""; // for redirects index only the title
-		Object[] ret = Analyzers.getIndexerAnalyzer(text,filters,article.getRedirectKeywords());
-		perFieldAnalyzer = (PerFieldAnalyzerWrapper) ret[0];
 		
-		// set boost for keyword field
-		// tokenizer = (WikiTokenizer) ret[1];
-		// keyword.setBoost(calculateKeywordsBoost(tokenizer.getTokens().size()));
+		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
+			FieldNameFactory fields = bs.getFields();
+			// boost document title with it's article rank
+			Field title = new Field(fields.title(), article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);				
+			//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
+			float rankBoost = calculateArticleRank(article.getRank()); 
+			title.setBoost(rankBoost);
+			doc.add(title);
 
+			Field stemtitle = new Field(fields.stemtitle(), article.getTitle(),Field.Store.NO, Field.Index.TOKENIZED);				
+			//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
+			stemtitle.setBoost(rankBoost);
+			doc.add(stemtitle);
+
+			// put the best redirects as alternative titles
+			makeAltTitles(doc,fields.alttitle(),article);
+
+			// add titles of redirects, generated from analyzer
+			makeKeywordField(doc,fields.redirect(),rankBoost);
+
+			if(checkKeywordPreconditions(article,iid))
+				// most significat words in the text, gets extra score, from analyzer
+				makeKeywordField(doc,fields.keyword(),rankBoost);
+
+			// the next fields are generated using wikitokenizer 
+			doc.add(new Field(fields.contents(), "", 
+					Field.Store.NO, Field.Index.TOKENIZED));
+
+			// set boost for keyword field
+			// tokenizer = (WikiTokenizer) ret[1];
+			// keyword.setBoost(calculateKeywordsBoost(tokenizer.getTokens().size()));
+		}
+		// make analyzer
+		if(article.getTitle().equalsIgnoreCase("wiki")){
+			int b =10;
+			b++;
+		}
+		String text = article.getContents();
+		Object[] ret = Analyzers.getIndexerAnalyzer(text,builder,article.getRedirectKeywords());
+		perFieldAnalyzer = (PerFieldAnalyzerWrapper) ret[0];
+
+		
 		return new Object[] { doc, perFieldAnalyzer };
 	}
 

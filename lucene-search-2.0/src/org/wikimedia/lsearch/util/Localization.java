@@ -197,7 +197,11 @@ public class Localization {
 			int begin = line.indexOf("[[");
 			int end = line.indexOf("]]");
 			if(begin != -1 && end != -1 && end > begin){
-				return text.substring(begin+2,end);
+				String redirectText = text.substring(begin+2,end);
+				int fragment = redirectText.lastIndexOf('#');
+				if(fragment != -1)
+					redirectText = redirectText.substring(0,fragment);
+				return redirectText;
 			}
 		}
 		return null;
