@@ -19,6 +19,19 @@ import org.wikimedia.lsearch.index.IndexThread;
  *
  */
 public class UnicodeDecomposer {
+	class Buffer {
+		char[] buffer;
+		int len;
+		public Buffer(char[] buffer, int len) {
+			this.buffer = buffer;
+			this.len = len;
+		}
+		public void add(char ch){
+			if(len<buffer.length)
+				buffer[len++] = ch;
+		}
+		
+	}
 	static org.apache.log4j.Logger log = Logger.getLogger(UnicodeDecomposer.class);
 	final protected static char[][] decomposition = new char[65536][];
 	protected static UnicodeDecomposer instance = null;
@@ -50,12 +63,7 @@ public class UnicodeDecomposer {
 		
 		return instance;
 	}
-	
-	protected final void nodecomp(char ch){
-		//decomposition[ch] = new char[] { ch };
-		decomposition[ch] = null;
-	}
-	
+		
 	/**
 	 * Read unicode data from the UnicodeData.txt file
 	 * @param path
@@ -80,11 +88,16 @@ public class UnicodeDecomposer {
 			}
 			in.close();
 			
-			// default for all chars: no decomposition
-			for(int ich = 0; ich <= 0xFFFF; ich++)
-				nodecomp((char)ich);
+			// decomposition table
+			char[][] table = new char[65536][];
 			
-			// second pass, make the decomposition mapping
+			// default for all chars: no decomposition
+			for(int ich = 0; ich <= 0xFFFF; ich++){
+				decomposition[ich]=null;
+				table[ich]=null;
+			}
+			
+			// second pass, make the decomposition table
 			in = new BufferedReader(new FileReader(path));
 			while((line = in.readLine()) != null){
 				String[] parts = line.split(";");
@@ -106,11 +119,23 @@ public class UnicodeDecomposer {
 							buf[len++] = chd;
 					}
 					if( len != 0 ){
-						decomposition[ch]= new char[len];
+						table[ch]= new char[len];
 						for(i=0;i<len;i++)
-							decomposition[ch][i] = buf[i];
+							table[ch][i] = buf[i];
 					} 
 				} 				
+			}
+			// using decomposition table recursively decompose characters
+			for(int ich = 0; ich <= 0xFFFF; ich++){
+				if(table[ich]==null)
+					continue;
+				Buffer buffer = new Buffer(buf,0);
+				recursiveDecompose(buffer,table,letters,(char)ich);
+				if(buffer.len != 0){
+					decomposition[ich]= new char[buffer.len];
+					for(i=0;i<len;i++)
+						decomposition[ich][i] = buffer.buffer[i];
+				}					
 			}
 			in.close();
 		} catch (FileNotFoundException e) {
@@ -122,6 +147,26 @@ public class UnicodeDecomposer {
 		} catch (Exception e){
 			e.printStackTrace();
 			log.error("Error in unicode data file at "+path+" : "+e.getMessage());
+		}
+	}
+
+	/**
+	 * Depth-first recursion, gradually decompose characters (if it has many diacritics)
+	 * 
+	 * @param buf - buffer where to write resulting decompositions
+	 * @param table - mapping char -> decomposing letters
+	 * @param letters - bitset of letter characters
+	 * @param c - char to decompose
+	 */
+	protected void recursiveDecompose(Buffer buf, char[][] table, BitSet letters, char c) {
+		// terminal
+		if(table[c]==null && letters.get(c)){
+			buf.add(c);
+		} else if(table[c]!=null && letters.get(c)){
+			// depth-first recursion
+			for(char ch : table[c]){
+				recursiveDecompose(buf,table,letters,ch);
+			}
 		}
 	}
 }

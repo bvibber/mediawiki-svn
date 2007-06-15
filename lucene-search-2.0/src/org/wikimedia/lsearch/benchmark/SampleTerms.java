@@ -4,7 +4,7 @@ package org.wikimedia.lsearch.benchmark;
 public class SampleTerms implements Terms {
 	protected int pos;
 	
-	SampleTerms(){
+	public SampleTerms(){
 		pos = 0;
 	}
 	

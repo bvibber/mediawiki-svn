@@ -315,10 +315,10 @@ public class WikiQueryParserTest extends TestCase {
 			
 			// alternative transliterations
 			q = parser.parseFourPass("Something for Gödels",NamespacePolicy.IGNORE,true);
-			assertEquals("(+(contents:something contents:someth^0.5) +contents:for +(+(contents:godels contents:godel^0.5) +(contents:goedels contents:goedel^0.5))) (+title:something^2.0 +title:for^2.0 +(title:godels^2.0 title:goedels^2.0)) ((+alttitle1:something^6.0 +alttitle1:for^6.0 +(alttitle1:godels^6.0 alttitle1:goedels^6.0)) (+alttitle2:something^6.0 +alttitle2:for^6.0 +(alttitle2:godels^6.0 alttitle2:goedels^6.0)) (+alttitle3:something^6.0 +alttitle3:for^6.0 +(alttitle3:godels^6.0 alttitle3:goedels^6.0)))",q.toString());
+			assertEquals("(+(contents:something contents:someth^0.5) +contents:for +((contents:gödels contents:gödel^0.5) (contents:godels contents:godel^0.5) (contents:goedels contents:goedel^0.5))) (+title:something^2.0 +title:for^2.0 +((title:gödels^2.0 title:godels^2.0 title:goedels^2.0))) ((+alttitle1:something^6.0 +alttitle1:for^6.0 +((alttitle1:gödels^6.0 alttitle1:godels^6.0 alttitle1:goedels^6.0))) (+alttitle2:something^6.0 +alttitle2:for^6.0 +((alttitle2:gödels^6.0 alttitle2:godels^6.0 alttitle2:goedels^6.0))) (+alttitle3:something^6.0 +alttitle3:for^6.0 +((alttitle3:gödels^6.0 alttitle3:godels^6.0 alttitle3:goedels^6.0))))",q.toString());
 			
 			q = parser.parseFourPass("Something for Gödel",NamespacePolicy.IGNORE,true);
-			assertEquals("(+(contents:something contents:someth^0.5) +contents:for +(contents:godel contents:goedel)) (+title:something^2.0 +title:for^2.0 +(title:godel^2.0 title:goedel^2.0)) ((+alttitle1:something^6.0 +alttitle1:for^6.0 +(alttitle1:godel^6.0 alttitle1:goedel^6.0)) (+alttitle2:something^6.0 +alttitle2:for^6.0 +(alttitle2:godel^6.0 alttitle2:goedel^6.0)) (+alttitle3:something^6.0 +alttitle3:for^6.0 +(alttitle3:godel^6.0 alttitle3:goedel^6.0)))",q.toString());
+			assertEquals("(+(contents:something contents:someth^0.5) +contents:for +((contents:gödel contents:godel contents:goedel))) (+title:something^2.0 +title:for^2.0 +((title:gödel^2.0 title:godel^2.0 title:goedel^2.0))) ((+alttitle1:something^6.0 +alttitle1:for^6.0 +((alttitle1:gödel^6.0 alttitle1:godel^6.0 alttitle1:goedel^6.0))) (+alttitle2:something^6.0 +alttitle2:for^6.0 +((alttitle2:gödel^6.0 alttitle2:godel^6.0 alttitle2:goedel^6.0))) (+alttitle3:something^6.0 +alttitle3:for^6.0 +((alttitle3:gödel^6.0 alttitle3:godel^6.0 alttitle3:goedel^6.0))))",q.toString());
 
 			// Test field extraction
 			HashSet<NamespaceFilter> fs = parser.getFieldNamespaces("main:something [1]:else all:oh []:nja");
@@ -335,7 +335,7 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("(+(contents:добродошли contents:dobrodosli^0.5) +(contents:на contents:na^0.5) +(contents:википедију contents:vikipediju^0.5)) (+(title:добродошли^2.0 title:dobrodosli^0.4) +(title:на^2.0 title:na^0.4) +(title:википедију^2.0 title:vikipediju^0.4))",q.toString());
 			
 			q = parser.parseTwoPass("all:dobrodošli na šđčćž",NamespacePolicy.IGNORE);
-			assertEquals("(+contents:dobrodosli +contents:na +contents:sdjccz) (+title:dobrodosli^2.0 +title:na^2.0 +title:sdjccz^2.0)",q.toString());
+			assertEquals("(+(contents:dobrodošli contents:dobrodosli) +contents:na +(+contents:šdjčćž +contents:sdjccz)) (+(title:dobrodošli^2.0 title:dobrodosli^2.0) +title:na^2.0 +(+title:šdjčćž^2.0 +title:sdjccz^2.0))",q.toString());
 			
 			analyzer = Analyzers.getSearcherAnalyzer("th");
 			parser = new WikiQueryParser(ff.contents(),"0",analyzer,ff,NamespacePolicy.LEAVE);
