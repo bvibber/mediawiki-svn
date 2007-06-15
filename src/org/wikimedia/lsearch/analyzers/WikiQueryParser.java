@@ -703,13 +703,16 @@ public class WikiQueryParser {
 							t.setBoost(defaultBoost);
 							cur = new BooleanQuery();
 							cur.add(t,BooleanClause.Occur.SHOULD);
-							bq.add(cur,boolDefault);
+							bq.add(cur,BooleanClause.Occur.SHOULD);
 							continue;
 						} else{
 							// alternative transliteration
 							t = new TermQuery(makeTerm(token));
 							t.setBoost(defaultBoost);
 							cur.add(t,aliasOccur);
+							// fetch the next token to same query if it's transliteration
+							if((i+1) < tokens.size() && tokens.get(i+1).getPositionIncrement()==0 && tokens.get(i+1).type().equals("transliteration"))
+								continue;
 						}
 					}
 					if( cur != bq) // returned from nested query
@@ -723,7 +726,10 @@ public class WikiQueryParser {
 						// e.g. anti-hero => anti hero
 						cur = new BooleanQuery();
 						cur.add(t,BooleanClause.Occur.SHOULD);
-						bq.add(cur,boolDefault);
+						if(token.type().equals("unicode"))
+							bq.add(cur,BooleanClause.Occur.SHOULD);
+						else
+							bq.add(cur,boolDefault);
 					} else if((i+1) >= tokens.size() || tokens.get(i+1).getPositionIncrement()!=0)
 						cur.add(t,boolDefault);
 					else

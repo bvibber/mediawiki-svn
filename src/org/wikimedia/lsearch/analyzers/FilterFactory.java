@@ -84,6 +84,8 @@ public class FilterFactory {
 			customFilter = ThaiWordFilter.class;
 		else if(lang.equals("sr"))
 			customFilter = SerbianFilter.class;
+		else if(lang.equals("vi"))
+			customFilter = VietnameseFilter.class;
 		else if(lang.equals("zh") || lang.equals("cjk") || lang.equals("ja") ||
 				lang.equals("ko") || lang.equals("zh-classical") || lang.equals("zh-yue"))
 			customFilter = CJKFilter.class;

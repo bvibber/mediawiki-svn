@@ -12,6 +12,7 @@ import org.apache.lucene.search.TermQuery;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
+import org.wikimedia.lsearch.benchmark.SampleTerms;
 import org.wikimedia.lsearch.benchmark.Terms;
 import org.wikimedia.lsearch.benchmark.WordTerms;
 import org.wikimedia.lsearch.config.Configuration;
@@ -89,8 +90,8 @@ public class Warmup {
 	/** Get database of example search terms for language */
 	protected static Terms getTermsForLang(String language) {
 		String lib = Configuration.open().getString("MWConfig","lib","./lib");
-		if(language.equals("en") && langTerms.get("en")==null)
-			langTerms.put("en",new WordTerms(lib+"/dict/english.txt.gz"));
+		if(language.equals("en"))
+			return new SampleTerms();
 		if(language.equals("fr") && langTerms.get("fr")==null)
 			langTerms.put("fr",new WordTerms(lib+"/dict/french.txt.gz"));
 		if(language.equals("de") && langTerms.get("de")==null)

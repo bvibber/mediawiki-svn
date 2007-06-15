@@ -64,6 +64,8 @@ public class FastWikiTokenizerTest {
 			showTokens(text);
 			text = " ä, ö, ü; for instance, Ø ÓóÒò Goedel for Gödel; čakšire";
 			showTokens(text);
+			text = "Алекса́ндр Серге́евич Пу́шкин Đ đViệt Nam Đ/đ ↔ D/d";
+			showTokens(text);
 			text = "[[Category:Blah Blah?!|Caption]], and [[:Category:Link to category]]";
 			showTokens(text);
 			text = "{{IPstack}} '''[[Hypertext]] Transfer [[communications protocol|Protocol]]''' ('''HTTP''') is a method used to transfer or convey information on the [[World Wide Web]]. Its original purpose was to provide a way to publish and retrieve [[HTML]] pages.";

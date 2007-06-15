@@ -157,6 +157,7 @@ public class FastWikiTokenizerEngine {
 			decompLength = 0;
 			aliasLength = 0;
 			boolean addToAlias;
+			boolean addDecomposed = false;
 			for(int i=0;i<length;i++){
 				addToAlias = true;
 				if( ! exactCase )
@@ -179,6 +180,9 @@ public class FastWikiTokenizerEngine {
 					} else if(cl == 'Å'){
 						addToTokenAlias("Aa");
 						addToAlias = false;
+					} else if(cl == 'Ø'){
+						addToTokenAlias("O");
+						addToAlias = false;
 					}
 				}
 				// special alias transliterations ä -> ae, etc ... 
@@ -200,6 +204,9 @@ public class FastWikiTokenizerEngine {
 				} else if(cl == 'å'){
 					addToTokenAlias("aa");
 					addToAlias = false;
+				} else if(cl == 'ø'){
+					addToTokenAlias("o");
+					addToAlias = false;
 				}
 				
 				decomp = decompose(cl);
@@ -210,6 +217,7 @@ public class FastWikiTokenizerEngine {
 					if(addToAlias && aliasLength!=0 && aliasLength<aliasBuffer.length)
 						aliasBuffer[aliasLength++] = cl;
 				} else{
+					addDecomposed = true; // there are differences to the original version 
 					for(decompi = 0; decompi < decomp.length; decompi++){
 						if(decompLength<decompBuffer.length)
 							decompBuffer[decompLength++] = decomp[decompi];
@@ -218,10 +226,25 @@ public class FastWikiTokenizerEngine {
 					}
 				}			
 			}
+			// make the original buffered version
+			Token exact;
+			if(exactCase)
+				exact = new Token(
+						new String(buffer, 0, length), start, start + length);
+			else
+				exact = new Token(
+						new String(buffer, 0, length).toLowerCase(), start, start + length);
+			if(addDecomposed && decompLength!=0)
+				exact.setType("unicode");
+			tokens.add(exact);
 			// add decomposed token to stream
-			if(decompLength!=0)
-				tokens.add(new Token(
-						new String(decompBuffer, 0, decompLength), start, start + length));
+			if(addDecomposed && decompLength!=0){
+				Token t = new Token(
+						new String(decompBuffer, 0, decompLength), start, start + length);
+				t.setPositionIncrement(0);
+				t.setType("transliteration");
+				tokens.add(t);				
+			}
 			// add alias (if any) token to stream
 			if(aliasLength!=0){
 				Token t = new Token(
