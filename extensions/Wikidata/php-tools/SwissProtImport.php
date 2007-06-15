@@ -881,6 +881,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public function getOrCreateExpression($spelling) {
 		$expression = findExpression($spelling, $this->languageId);
 		if (!$expression) {
+			//wfDebug( "create expression $spelling in database");
 			$expression = createExpression($spelling, $this->languageId);
 		}
 		return $expression;		
