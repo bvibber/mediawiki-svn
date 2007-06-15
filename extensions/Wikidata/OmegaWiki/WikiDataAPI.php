@@ -109,23 +109,21 @@ function getPageTitle($spelling) {
 	return str_replace(' ', '_', $spelling);
 }
 
+
 function createPage($namespace, $title) {
 	$dbr = &wfGetDB(DB_MASTER);
 	$title = $dbr->addQuotes($title);
 	$timestamp = $dbr->timestamp(); 
-	
-	echo "createPage(): namespace = $namespace and title = $title\n"; 
 	$sql = "select page_id from page where page_namespace = $namespace and page_title = $title";
 	$queryResult = $dbr->query($sql);
 	$page = $dbr->fetchObject($queryResult);
 	if (isset($page->page_id) ){
 		return $page->page_id;
 	}
-	else{
+	else {
 		$sql = "insert into page(page_namespace,page_title,page_is_new,page_touched) ".
-		       "values($namespace, $title, 1, $timestamp)";
+		"values($namespace, $title, 1, $timestamp)";
 		$dbr->query($sql);
-		
 		return $dbr->insertId();
 	}
 }
