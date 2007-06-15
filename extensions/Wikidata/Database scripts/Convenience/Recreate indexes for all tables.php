@@ -10,6 +10,20 @@ require_once("Setup.php");
 
 ob_end_flush();
 
+/*
+ * This function wil retrieve a list of the data sets defined in this
+ * database and return it as an array
+ */
+function retrieve_datasets(){
+	$prefixes = array();
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("select set_prefix from wikidata_sets");
+	while ($datasetRecord = $dbr->fetchObject($queryResult) ) {
+		array_push( $prefixes, $datasetRecord->set_prefix );
+	}
+	return $prefixes;
+}
+
 function createIndexesForTable($dc,$tableName) {
 	$handle = fopen("Create uw_" . $tableName . " indices.sql", "r");
 	$sql = "";
@@ -43,33 +57,37 @@ function recreateIndexesForTables($dc, $tableNames) {
 }
 
 global
-	$beginTime, $wgCommandLineMode;
+$beginTime, $wgCommandLineMode;
 
 $beginTime = time();
 $wgCommandLineMode = true;
-$dc = "sp";
+$dc = "uw";
 
-recreateIndexesForTables( "sp",
-	array(
-		"bootstrapped_defined_meanings",
-		"transactions",
-		"translated_content",
-		"alt_meaningtexts",
-		"class_attributes",
-		"class_membership",
-		"collection_contents",
-		"collection_ns",
-		"defined_meaning",
-		"expression_ns",
-		"meaning_relations",
-		"option_attribute_options",
-		"option_attribute_values",
-		"syntrans",
-		"text_attribute_values",
-		"translated_content_attribute_values",
-		"url_attribute_values"
-	)
-);
+$tables =	array(
+					"bootstrapped_defined_meanings",
+					"transactions",
+					"translated_content",
+					"alt_meaningtexts",
+					"class_attributes",
+					"class_membership",
+					"collection_contents",
+					"collection_ns",
+					"defined_meaning",
+					"expression_ns",
+					"meaning_relations",
+					"option_attribute_options",
+					"option_attribute_values",
+					"syntrans",
+					"text_attribute_values",
+					"translated_content_attribute_values",
+					"url_attribute_values"
+				);
+					
+$prefixes = retrieve_datasets();
+
+foreach( $prefixes as $prefix ){
+	recreateIndexesForTables( $prefix, $tables );
+}
 
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 
