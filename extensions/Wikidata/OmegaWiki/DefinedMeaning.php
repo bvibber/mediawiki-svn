@@ -141,8 +141,6 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$referenceTransaction
 		);
 
-		echo $dmModel->getRecord();
-
 	}
 	
 	protected function getIdStack($definedMeaningId) {
