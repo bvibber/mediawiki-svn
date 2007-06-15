@@ -8,9 +8,9 @@ DELETE FROM namespace where ns_id = 24;
 DELETE FROM namespace where ns_id = 25;
 
 INSERT INTO `namespace` (`ns_id`,`ns_system`,`ns_parent`, `ns_count`, `ns_class` ) VALUES 
- (16,'NS_EXPRESSION',         NULL,0,NULL),
+ (16,'NS_EXPRESSION',         NULL,0,'Expression'),
  (17,'NS_EXPRESSION_TALK',    16,  0,NULL),
- (24,'NS_DEFINEDMEANING',     NULL,0,NULL),
+ (24,'NS_DEFINEDMEANING',     NULL,0,'DefinedMeaning'),
  (25,'NS_DEFINEDMEANING_TALK',24,  0,NULL);
  
 DELETE FROM namespace_names where ns_id = 16;
