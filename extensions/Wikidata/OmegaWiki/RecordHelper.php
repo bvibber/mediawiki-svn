@@ -9,38 +9,38 @@ class RecordHelperFactory {
 		echo "HELPING $type .... ";
 		switch($type) {
 			case "definition":
-				return new DefinitionHelper();
+				return new DefinitionHelper($record);
 			case "translated-text":
-				return new TranslatedTextHelper();
+				return new TranslatedTextHelper($record);
 			case "object-attributes":
-				return new ObjectAttributesHelper();
+				return new ObjectAttributesHelper($record);
 			case "synonyms-translations":
-				return new SynonymsTranslationsHelper();
+				return new SynonymsTranslationsHelper($record);
 				break;
 			case "expression":
-				return new ExpressionHelper();
+				return new ExpressionHelper($record);
 				break;
 			case "relations":
-				return new RelationsHelper();
+				return new RelationsHelper($record);
 				break;
 			case "relation-type":
-				return new RelationTypeHelper();
+				return new RelationTypeHelper($record);
 				break;
 			case "other-defined-meaning":
-				return new OtherDefinedMeaningHelper();
+				return new OtherDefinedMeaningHelper($record);
 				break;
 			case "reciprocal-relations":
-				return new ReciprocalRelationsHelper();
+				return new ReciprocalRelationsHelper($record);
 				break;
 			case "collection-membership":
-				return new CollectionMembershipHelper();
+				return new CollectionMembershipHelper($record);
 				break;
 			case "collection-meaning":
-				return new CollectionMeaningHelper();
+				return new CollectionMeaningHelper($record);
 			case "goto-source":
-				return new GotoSourceHelper();
+				return new GotoSourceHelper($record);
 			case "defined-meaning-attributes":
-				return new DefinedMeaningAttributesHelper();
+				return new DefinedMeaningAttributesHelper($record);
 			default :
 				echo "IGIVEUP ($type) I Give Up! \n";
 				break;
@@ -50,7 +50,9 @@ class RecordHelperFactory {
 }
 
 abstract class Helper {
-	public function __construct() {
+	protected $record;
+	public function __construct($record) {
+		$this->record=$record;	
 	}
 	
 	public abstract function save();
@@ -58,9 +60,9 @@ abstract class Helper {
 }
 
 class DefinitionHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "DefinitionHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -71,9 +73,9 @@ class DefinitionHelper extends Helper {
 }
 
 class TranslatedTextHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "TranslatedTextHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -84,9 +86,9 @@ class TranslatedTextHelper extends Helper {
 }
 
 class ObjectAttributesHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "ObjectAttributesHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -97,9 +99,9 @@ class ObjectAttributesHelper extends Helper {
 }
 
 class SynonymsTranslationsHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "SynonymsTranslationsHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -110,9 +112,10 @@ class SynonymsTranslationsHelper extends Helper {
 }
 
 class ExpressionHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "ExpressionHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
+		echo $record;
 	}
 	
 	public function save() {
@@ -124,9 +127,9 @@ class ExpressionHelper extends Helper {
 
 
 class RelationsHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "RelationsHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -137,9 +140,9 @@ class RelationsHelper extends Helper {
 }
 
 class RelationTypeHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "RelationTypeHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -148,9 +151,9 @@ class RelationTypeHelper extends Helper {
 }
 
 class OtherDefinedMeaningHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "OtherDefinedMeaningHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -161,9 +164,9 @@ class OtherDefinedMeaningHelper extends Helper {
 }
 
 class ReciprocalRelationsHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "ReciprocalRelationsHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -174,9 +177,9 @@ class ReciprocalRelationsHelper extends Helper {
 }
 
 class CollectionMembershipHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "CollectionMembershipHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -187,9 +190,9 @@ class CollectionMembershipHelper extends Helper {
 }
 
 class CollectionMeaningHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "CollectionMeaningHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -200,9 +203,9 @@ class CollectionMeaningHelper extends Helper {
 }
 
 class GotoSourceHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "GotoSourceHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
@@ -213,9 +216,9 @@ class GotoSourceHelper extends Helper {
 }
 
 class DefinedMeaningAttributesHelper extends Helper {
-	public function __construct() {
+	public function __construct($record) {
 		echo "DefinedMeaningAttributesHelper\n";
-		Helper::__construct();
+		Helper::__construct($record);
 	}
 	
 	public function save() {
