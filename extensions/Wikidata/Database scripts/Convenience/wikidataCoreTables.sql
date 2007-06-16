@@ -1,3 +1,9 @@
+ALTER TABLE page MODIFY COLUMN page_restrictions TINYBLOB DEFAULT NULL;
+ALTER TABLE page MODIFY COLUMN page_random DOUBLE UNSIGNED NOT NULL DEFAULT 0;
+ALTER TABLE page MODIFY COLUMN page_latest INT(8) UNSIGNED NOT NULL DEFAULT 0;
+ALTER TABLE page MODIFY COLUMN page_len INT(8) UNSIGNED NOT NULL DEFAULT 0;
+ALTER TABLE revision MODIFY COLUMN rev_text_id INT(8) UNSIGNED NOT NULL DEFAULT 0;
+
 --
 -- Add the wikidata specific namespaces
 --
@@ -126,8 +132,4 @@ CREATE TABLE wikidata_sets (
   set_dmid int(10) default NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-INSERT INTO wikidata_sets (set_prefix,set_fallback_name,set_dmid) VALUES 
- ('uw','OmegaWiki community',0),
- ('umls','Unified Medical Language System',0),
- ('sp','Swiss-Prot',0);
  
