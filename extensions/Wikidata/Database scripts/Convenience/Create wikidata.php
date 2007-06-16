@@ -4,14 +4,19 @@
 # it generates the tables in a database (passed as parameter) with a defined prefix (passed as parameter)
 
 $wgUseMasterForMaintenance = true;
-require_once( "../../../../maintenance/commandLine.inc");
-#require_once( "../../../../LocalSettings.php");
-#require_once( "install-utils.inc" );
-#require_once( "AdminSettings.php");
-#require_once( "GlobalFunctions.php" );
-#require_once( "ProfilerStub.php");
-#require_once( "Exception.php" );
-#require_once( "Database.php" );
+
+$sep = PATH_SEPARATOR;
+$IP = realpath( dirname( __FILE__ ) . "../../../../../" );
+$currentdir = dirname( __FILE__ );
+chdir( $IP );
+
+ini_set( 'include_path', ".$sepIP$sep$IP/includes$sep$IP/languages$sep$IP/maintenance" );
+
+require_once( "StartProfiler.php" );
+require_once( "includes/Exception.php");
+require_once( "includes/GlobalFunctions.php");
+require_once( "includes/Database.php");
+
 
 function ReadSQLFile( $database, $pattern, $prefix, $filename ){
 	$fp = fopen( $filename, 'r' );
@@ -110,7 +115,6 @@ if( !isset( $user ) || !isset( $password ) ) {
 	echo( "AdminSettings.sample for more details.\n\n" );
 	exit();
 }
-
 # Attempt to connect to the database as a privileged user
 # This will vomit up an error if there are permissions problems
 $wdDatabase = new $dbclass( $server, $user, $password, $database, 1 );
@@ -122,7 +126,7 @@ if( !$wdDatabase->isOpen() ) {
 	exit();
 }
 
-ReadSQLFile( $wdDatabase, "/*\$wgWDprefix*/", $wgWDprefix, $wgWDtemplate );
+ReadSQLFile( $wdDatabase, "/*\$wgWDprefix*/", $wgWDprefix, $currentdir . DIRECTORY_SEPARATOR . $wgWDtemplate );
 $wdDatabase->query( "DELETE FROM wikidata_sets WHERE set_prefix = '$prefix'" );
 $wdDatabase->query( "INSERT INTO wikidata_sets (set_prefix,set_fallback_name,set_dmid) VALUES ('$prefix','$comment',0)" );
 
