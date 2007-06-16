@@ -1,37 +1,5 @@
 <?php
 
-class ScalarType {
-	protected $id;
-	
-	public function __construct($id) {
-		$this->id = $id;
-	}
-}
-
-class RecordType {
-	protected $structure;	
-	
-	public function __construct($structure) {
-		$this->structure = $structure;
-	}
-	
-	public function getStructure() {
-		return $this->structure;
-	}
-}
-
-class RecordSetType {
-	protected $structure;
-
-	public function __construct($structure) {
-		$this->structure = $structure;
-	}
-	
-	public function getStructure() {
-		return $this->structure;
-	}
-}
-
 class Attribute {
 	public $id = "";	
 	public $name = "";
@@ -53,13 +21,22 @@ class Attribute {
 }
 
 class Structure {
-	public $attributes;
 	
-	public function __construct($attributes) {
-		if (is_array($attributes))
-			$this->attributes = $attributes;
+	private $structure; # Array of attributes
+	
+	public function getAttributes() {
+		return $this->structure;
+	}
+
+	public function addAttribute($attribute) {
+		$this->structure[]=$attribute;
+	}
+
+	public function __construct($structure) {
+		if (is_array($structure))
+			$this->structure = $structure;
 		else
-			$this->attributes = func_get_args();
+			$this->structure = func_get_args();
 	}
 }
 

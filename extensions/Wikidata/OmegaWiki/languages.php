@@ -1,9 +1,17 @@
 <?php
 
-function getOwLanguageNames() {
+/** 
+ * @param $purge purge cache
+ * @return array of language names for the user's language preference
+ **/
+function getOwLanguageNames($purge=false) {
 	global $wgUser;
-	$owLanguageNames = getLangNames($wgUser->getOption('language'));
+	static $owLanguageNames=null;
+	if(is_null($owLanguageNames) && !$purge) {
+		$owLanguageNames = getLangNames($wgUser->getOption('language'));
+	}
 	return $owLanguageNames;
+
 }
 
 /* Return an array containing all language names translated into the language
@@ -20,10 +28,21 @@ function getLangNames($code) {
 }
 
 function getLanguageIdForCode($code) {
-	$dbr =& wfGetDB( DB_SLAVE );
-	$id_res=$dbr->query("select language_id from language where wikimedia_key='".$code."'");
-	$id_row=$dbr->fetchObject($id_res);
-	return $id_row->language_id;
+
+	static $languages=null;
+	if(is_null($languages)) {
+		$dbr =& wfGetDB( DB_SLAVE );
+		$id_res=$dbr->query("select language_id,wikimedia_key from language");
+		while($id_row=$dbr->fetchObject($id_res)) {
+			$languages[$id_row->wikimedia_key]=$id_row->language_id;
+		}
+	}
+	if(is_array($languages) && array_key_exists($code,$languages)) {
+		return $languages[$code];
+	} else {
+		return null;
+	}
+	
 }
 
 /* Return SQL query string for fetching language names. */

@@ -31,7 +31,7 @@ class IdStack {
 	protected function getKeyIds($record) {
 		$ids = array();
 
-		foreach($record->getStructure()->attributes as $attribute)
+		foreach($record->getStructure() as $attribute)
 			$ids[] = $record->getAttributeValue($attribute);
 
 		return $ids;
@@ -209,7 +209,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 	public function getAddValue($idPath) {
 		$addStructure = $this->getAddStructure();
 
-		if (count($addStructure->attributes) > 0) {
+		if (count($addStructure->getAttributes()) > 0) {
 			$relation = new ArrayRecordSet($addStructure, $addStructure);  // TODO Determine real key
 			$values = array();
 
@@ -342,7 +342,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 		if ($this->allowAddController->check($idPath) && $this->controller != null) {
 			$addStructure = $this->getAddStructure();
 
-			if (count($addStructure->attributes) > 0) {
+			if (count($addStructure->getAttributes()) > 0) {
 				$addEditors = $this->getAddEditors();
 				$record = $this->getAddRecord($idPath, $addStructure, $addEditors);
 				$this->controller->add($idPath->getKeyStack(), $record);
@@ -377,8 +377,8 @@ abstract class RecordSetEditor extends DefaultEditor {
 		if ($this->isAddField) {
 			$addStructure = $this->getAddStructure();
 
-			if (count($addStructure->attributes) > 0)
-				$result = new Attribute($this->attribute->id, $this->attribute->name, new RecordSetType($addStructure));
+			if (count($addStructure->getAttributes()) > 0)
+				$result = new Attribute($this->attribute->id, $this->attribute->name, $addStructure);
 		}
 
 		return $result;
@@ -544,7 +544,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 			$childAttribute = $childEditor->getAttribute();
 
 			if ($childEditor instanceof RecordTableCellEditor)
-				$type = new RecordType($this->getTableStructure($childEditor));
+				$type = $this->getTableStructure($childEditor);
 			else
 				$type = 'short-text';
 
@@ -605,8 +605,8 @@ abstract class RecordEditor extends DefaultEditor {
 	public function getUpdateAttribute() {
 		$updateStructure = $this->getUpdateStructure();
 
-		if (count($updateStructure->attributes) > 0)
-			return new Attribute($this->attribute->id, $this->attribute->name, new RecordType($updateStructure));
+		if (count($updateStructure->getAttributes()) > 0)
+			return new Attribute($this->attribute->id, $this->attribute->name, $updateStructure);
 		else
 			return null;
 	}
@@ -614,8 +614,8 @@ abstract class RecordEditor extends DefaultEditor {
 	public function getAddAttribute() {
 		$addStructure = $this->getAddStructure();
 
-		if (count($addStructure->attributes) > 0)
-			return new Attribute($this->attribute->id, $this->attribute->name, new RecordType($addStructure));
+		if (count($addStructure->getAttributes()) > 0)
+			return new Attribute($this->attribute->id, $this->attribute->name, $addStructure);
 		else
 			return null;
 	}
@@ -967,7 +967,6 @@ class DefinedMeaningReferenceEditor extends SuggestEditor {
 	public function getViewHTML($idPath, $value) {
 		global
 			$definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute;
-
 		$definedMeaningId = $value->getAttributeValue($definedMeaningIdAttribute);
 		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
 		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);

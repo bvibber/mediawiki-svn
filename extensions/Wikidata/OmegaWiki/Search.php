@@ -51,13 +51,13 @@ function getSearchResultAsRecordSet($queryResult) {
 	$languageAttribute = new Attribute("language", "Language", "language");
 	
 	$expressionStructure = new Structure($spellingAttribute, $languageAttribute);
-	$expressionAttribute = new Attribute("expression", "Expression", new RecordType($expressionStructure));
+	$expressionAttribute = new Attribute("expression", "Expression", $expressionStructure);
 	
 	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", $definedMeaningReferenceType);
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
 	$meaningStructure = new Structure($definedMeaningAttribute, $definitionAttribute);
-	$meaningAttribute = new Attribute("meaning", "Meaning", new RecordSetType($meaningStructure));
+	$meaningAttribute = new Attribute("meaning", "Meaning", $meaningStructure);
 
 	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $expressionAttribute, $meaningAttribute), new Structure($idAttribute));
 	

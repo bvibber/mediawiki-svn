@@ -346,11 +346,11 @@ $timestampAttribute = new Attribute('timestamp', 'Time', 'timestamp');
 $summaryAttribute = new Attribute('summary', 'Summary', 'text');
 $transactionStructure = new Structure($transactionIdAttribute, $userAttribute, $userIPAttribute, $timestampAttribute, $summaryAttribute);
 
-$addTransactionAttribute = new Attribute('add-transaction', 'Added', new RecordType($transactionStructure));
-$removeTransactionAttribute = new Attribute('remove-transaction', 'Removed', new RecordType($transactionStructure));
+$addTransactionAttribute = new Attribute('add-transaction', 'Added', $transactionStructure);
+$removeTransactionAttribute = new Attribute('remove-transaction', 'Removed', $transactionStructure);
 
 $recordLifeSpanStructure = new Structure($addTransactionAttribute, $removeTransactionAttribute);
-$recordLifeSpanAttribute = new Attribute('record-life-span', 'Record life span', new RecordType($recordLifeSpanStructure));
+$recordLifeSpanAttribute = new Attribute('record-life-span', 'Record life span', $recordLifeSpanStructure);
 
 function getUserName($userId) {
 	$dbr =& wfGetDB(DB_SLAVE);

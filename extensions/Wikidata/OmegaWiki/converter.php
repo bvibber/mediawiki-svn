@@ -24,7 +24,7 @@ class ProjectConverter implements Converter {
 	public function convert($record) {
 		$result = new ArrayRecord($this->structure);
 		
-		foreach($this->structure->attributes as $attribute)
+		foreach($this->structure->getStructure() as $attribute)
 			$result->setAttributeValue($attribute, $record->getAttributeValue($attribute));
 			
 		return $result;

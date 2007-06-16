@@ -28,12 +28,13 @@ class TableHeaderNode {
 function getTableHeaderNode($structure, &$currentColumn=0) {
 	$tableHeaderNode = new TableHeaderNode();
 	
-	foreach($structure->attributes as $attribute) {
+	foreach($structure->getAttributes() as $attribute) {
 		$type = $attribute->type;
 		
-		if ($type instanceof RecordType) 
-			$childNode = getTableHeaderNode($type->getStructure(), $currentColumn);
-		else { 
+		if ($type instanceof Structure) {
+			$atts=$type->getAttributes();
+			$childNode = getTableHeaderNode(new Structure($atts), $currentColumn);
+		} else { 
 			$childNode = new TableHeaderNode();
 			$childNode->width = 1;
 			$childNode->height = 1;
@@ -58,7 +59,7 @@ function addChildNodesToRows($headerNode, &$rows, $currentDepth, $columnOffset, 
 		$idPath->pushAttribute($attribute);		
 		$type = $attribute->type;
 		
-		if (!$type instanceof RecordType && !$type instanceof RecordSetType) {
+		if (!$type instanceof Structure) {
 			$skipRows=count($rows);
 			$columnIndex=$childNode->column + $columnOffset;
 			$sort = 'sortTable(this, '. $skipRows .', '. $columnIndex.')';
@@ -106,9 +107,7 @@ function getStructureAsTableHeaderRows($structure, $columnOffset, $idPath) {
 }
 
 function getHTMLClassForType($type,$attribute) {
-	if ($type instanceof RecordSetType)  
-		return "relation";
-	else if ($type instanceof RecordType) 
+	if ($type instanceof Structure) 
 		return $attribute->id;
 	else 
 		return $type;

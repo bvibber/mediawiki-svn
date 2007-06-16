@@ -75,8 +75,9 @@ class ArrayRecord implements Record {
 	 *
 	 */
 	public function setAttributeValuesByOrder($values) {
-		for ($i = 0; $i < count($this->structure->attributes); $i++)
-			$this->values[$this->structure->attributes[$i]->id] = $values[$i];
+		$atts=$this->structure->getAttributes();
+		for ($i = 0; $i < count($atts); $i++)
+			$this->values[$atts[$i]->id] = $values[$i];
 	}
 	
 	/*
@@ -85,7 +86,7 @@ class ArrayRecord implements Record {
 	 *
 	 */
 	public function setSubRecord($record) {
-		foreach($record->getStructure()->attributes as $attribute)
+		foreach($record->getStructure()->getAttributes() as $attribute)
 			$this->values[$attribute->id] = $record->getAttributeValue($attribute);
 	}
 
@@ -124,11 +125,11 @@ class ArrayRecord implements Record {
 function project($record, $structure) {
 	$result = new ArrayRecord($structure);
 	
-	foreach ($structure->attributes as $attribute) {
+	foreach ($structure->getAttributes() as $attribute) {
 		$type = $attribute->type;
 		$value = $record->getAttributeValue($attribute);
 		
-		if ($type instanceof RecordType)
+		if ($type instanceof Structure)
 			$result->setAttributeValue($attribute, project($record, $type->getStructure()));
 		else
 			$result->setAttributeValue($attribute, $value);
@@ -139,7 +140,7 @@ function project($record, $structure) {
 
 function equalRecords($structure, $lhs, $rhs) {
 	$result = true;
-	$attributes = $structure->attributes;
+	$attributes = $structure->getAttributes();
 	$i = 0;
 	
 	while($result && $i < count($attributes)) {
@@ -148,7 +149,7 @@ function equalRecords($structure, $lhs, $rhs) {
 		$lhsValue = $lhs->getAttributeValue($attribute);
 		$rhsValue = $rhs->getAttributeValue($attribute);
 		
-		if ($type instanceof RecordType)
+		if ($type instanceof Structure)
 			$result = equalRecords($type->getStructure(), $lhsValue, $rhsValue);
 		else
 			$result = $lhsValue == $rhsValue;

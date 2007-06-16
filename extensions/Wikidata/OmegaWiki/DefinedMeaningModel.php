@@ -15,7 +15,7 @@ class DefinedMeaningModel {
 			$classMembershipAttribute, $collectionMembershipAttribute, $definedMeaningAttributesAttribute,
 			$possiblySynonymousAttribute;
 	
-		$record = new ArrayRecord($definedMeaningAttribute->type->getStructure());
+		$record = new ArrayRecord($definedMeaningAttribute->type->getAttributes());
 		$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
 		$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation));
 		$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));

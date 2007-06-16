@@ -134,7 +134,7 @@ function initializeAttributes() {
 	$isLatestAttribute = new Attribute('is-latest', 'Is latest', 'boolean');
 
 	$rollBackStructure = new Structure($isLatestAttribute, $operationAttribute);
-	$rollBackAttribute = new Attribute('roll-back', 'Roll back', new RecordType($rollBackStructure));
+	$rollBackAttribute = new Attribute('roll-back', 'Roll back', $rollBackStructure);
 	
 	global
 		$translatedContentHistoryStructure, $translatedContentHistoryKeyStructure, $translatedContentHistoryAttribute, 
@@ -144,14 +144,14 @@ function initializeAttributes() {
 		
 	$translatedContentHistoryStructure = new Structure($addTransactionIdAttribute, $textAttribute, $recordLifeSpanAttribute);
 	$translatedContentHistoryKeyStructure = new Structure($addTransactionIdAttribute);
-	$translatedContentHistoryAttribute = new Attribute('translated-content-history', 'History', new RecordSetType($translatedContentHistoryStructure));
+	$translatedContentHistoryAttribute = new Attribute('translated-content-history', 'History', $translatedContentHistoryStructure);
 	$translatedContentIdAttribute = new Attribute('translated-content-id', 'Translated content ID', 'object-id');
 
 	global
 		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute;
 
 	$rollBackTranslatedContentStructure = new Structure($isLatestAttribute, $operationAttribute, $translatedContentHistoryAttribute);
-	$rollBackTranslatedContentAttribute = new Attribute('roll-back', 'Roll back', new RecordType($rollBackTranslatedContentStructure));
+	$rollBackTranslatedContentAttribute = new Attribute('roll-back', 'Roll back', $rollBackTranslatedContentStructure);
 
 	global
 		$updatedDefinitionStructure, $updatedDefinitionAttribute;
@@ -167,7 +167,7 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);		
 	
-	$updatedDefinitionAttribute = new Attribute('updated-definition', 'Definition', new RecordSetType($updatedDefinitionStructure));
+	$updatedDefinitionAttribute = new Attribute('updated-definition', 'Definition', $updatedDefinitionStructure);
 
 	global
 		$expressionAttribute, $expressionIdAttribute, $identicalMeaningAttribute, $syntransIdAttribute, $updatedSyntransesAttribute;
@@ -182,14 +182,14 @@ function initializeAttributes() {
 		$operationAttribute
 	); 
 	
-	$updatedSyntransesAttribute = new Attribute('updated-syntranses', 'Synonyms and translations', new RecordSetType($updatedSyntransesStructure));
+	$updatedSyntransesAttribute = new Attribute('updated-syntranses', 'Synonyms and translations', $updatedSyntransesStructure);
 	
 	global
 		$relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, $relationTypeAttribute, 
 		$updatedRelationsStructure, $updatedRelationsAttribute;
 	
-	$firstMeaningAttribute = new Attribute('first-meaning', "First defined meaning", new RecordType($definedMeaningReferenceStructure));
-	$secondMeaningAttribute = new Attribute('second-meaning', "Second defined meaning", new RecordType($definedMeaningReferenceStructure));
+	$firstMeaningAttribute = new Attribute('first-meaning', "First defined meaning", $definedMeaningReferenceStructure);
+	$secondMeaningAttribute = new Attribute('second-meaning', "Second defined meaning", $definedMeaningReferenceStructure);
 
 	$updatedRelationsStructure = new Structure(
 		$rollBackAttribute,
@@ -201,13 +201,13 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);
 	
-	$updatedRelationsAttribute = new Attribute('updated-relations', 'Relations', new RecordSetType($updatedRelationsStructure));
+	$updatedRelationsAttribute = new Attribute('updated-relations', 'Relations', $updatedRelationsStructure);
 	
 	global
 		$classMembershipIdAttribute, $classAttribute, $classMemberAttribute,
 		$updatedClassMembershipStructure, $updatedClassMembershipAttribute;
 		
-	$classMemberAttribute = new Attribute('class-member', 'Class member', new RecordType($definedMeaningReferenceStructure));
+	$classMemberAttribute = new Attribute('class-member', 'Class member', $definedMeaningReferenceStructure);
 	
 	$updatedClassMembershipStructure = new Structure(
 		$rollBackAttribute,
@@ -218,13 +218,13 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);
 	
-	$updatedClassMembershipAttribute = new Attribute('updated-class-membership', 'Class membership', new RecordSetType($updatedClassMembershipStructure));
+	$updatedClassMembershipAttribute = new Attribute('updated-class-membership', 'Class membership', $updatedClassMembershipStructure);
 	
 	global
 		$collectionIdAttribute, $collectionMeaningAttribute, $collectionMemberAttribute, $sourceIdentifierAttribute,
 		$updatedCollectionMembershipStructure, $updatedCollectionMembershipAttribute, $collectionMemberIdAttribute;
 		
-	$collectionMemberAttribute = new Attribute('collection-member', 'Collection member', new RecordType($definedMeaningReferenceStructure));
+	$collectionMemberAttribute = new Attribute('collection-member', 'Collection member', $definedMeaningReferenceStructure);
 	$collectionMemberIdAttribute = new Attribute('collection-member-id', 'Collection member identifier', 'defined-meaning-id');
 	
 	$updatedCollectionMembershipStructure = new Structure(
@@ -237,14 +237,14 @@ function initializeAttributes() {
 		$operationAttribute
 	);
 	
-	$updatedCollectionMembershipAttribute = new Attribute('updated-collection-membership', 'Collection membership', new RecordSetType($updatedCollectionMembershipStructure));
+	$updatedCollectionMembershipAttribute = new Attribute('updated-collection-membership', 'Collection membership', $updatedCollectionMembershipStructure);
 	
 	global
 		$objectIdAttribute, $valueIdAttribute, $attributeAttribute;
 		
 	$objectIdAttribute = new Attribute('object-id', 'Object', 'object-id');
 	$valueIdAttribute = new Attribute('value-id', 'Value identifier', 'object-id');
-	$attributeAttribute = new Attribute('attribute', 'Attribute', new RecordType($definedMeaningReferenceStructure));
+	$attributeAttribute = new Attribute('attribute', 'Attribute', $definedMeaningReferenceStructure);
 		
 	global
 		$updatedURLAttribute, $updatedURLStructure, $URLAttribute;	
@@ -261,7 +261,7 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);
 
-	$updatedURLAttribute = new Attribute('updated-url', 'URL properties', new RecordSetType($updatedURLStructure));
+	$updatedURLAttribute = new Attribute('updated-url', 'URL properties', $updatedURLStructure);
 	
 	global
 		$updatedTextAttribute, $updatedTextStructure, $textAttribute;	
@@ -276,13 +276,13 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);
 
-	$updatedTextAttribute = new Attribute('updated-text', 'Unstructured text properties', new RecordSetType($updatedTextStructure));
+	$updatedTextAttribute = new Attribute('updated-text', 'Unstructured text properties', $updatedTextStructure);
 	
 	global
 		$translatedTextStructure, 
 		$updatedTranslatedTextPropertyAttribute, $updatedTranslatedTextPropertyStructure, $translatedTextTextAttribute;
 	
-	$translatedTextTextAttribute = new Attribute('translated-text-property-text', 'Text', new RecordSetType($translatedTextStructure)); 
+	$translatedTextTextAttribute = new Attribute('translated-text-property-text', 'Text', $translatedTextStructure); 
 	
 	$updatedTranslatedTextPropertyStructure = new Structure(
 		$rollBackAttribute,
@@ -295,7 +295,7 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);
 	
-	$updatedTranslatedTextPropertyAttribute = new Attribute('updated-translated-text-property', 'Text properties', new RecordSetType($updatedTranslatedTextPropertyStructure));
+	$updatedTranslatedTextPropertyAttribute = new Attribute('updated-translated-text-property', 'Text properties', $updatedTranslatedTextPropertyStructure);
 
 	global
 		$updatedTranslatedTextStructure, $updatedTranslatedTextAttribute;
@@ -312,14 +312,14 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);		
 	
-	$updatedTranslatedTextAttribute = new Attribute('updated-translated-text', 'Texts', new RecordSetType($updatedTranslatedTextStructure));
+	$updatedTranslatedTextAttribute = new Attribute('updated-translated-text', 'Texts', $updatedTranslatedTextStructure);
 
 	global
 		$updatedClassAttributesAttribute, $updatedClassAttributesStructure, $classAttributeId, $levelAttribute, 
 		$typeAttribute;
 
 	$classAttributeId = new Attribute('class-attribute-id', 'Class attribute id', 'object-id');
-	$levelAttribute = new Attribute('level', 'Level', new RecordType($definedMeaningReferenceStructure));
+	$levelAttribute = new Attribute('level', 'Level', $definedMeaningReferenceStructure);
 	$typeAttribute = new Attribute('type', 'Type', 'text');
 
 	$updatedClassAttributesStructure = new Structure(
@@ -333,14 +333,14 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);
 	
-	$updatedClassAttributesAttribute = new Attribute('updated-class-attributes', 'Class attributes', new RecordSetType($updatedClassAttributesStructure));
+	$updatedClassAttributesAttribute = new Attribute('updated-class-attributes', 'Class attributes', $updatedClassAttributesStructure);
 
 	global
 		$updatedAlternativeDefinitionsStructure, $updatedAlternativeDefinitionsAttribute, $sourceAttribute, 
 		$alternativeDefinitionTextAttribute;
 
-	$alternativeDefinitionTextAttribute = new Attribute('alternative-definition-text', 'Definition', new RecordSetType($translatedTextStructure));
-	$sourceAttribute = new Attribute('source', 'Source', new RecordType($definedMeaningReferenceStructure));
+	$alternativeDefinitionTextAttribute = new Attribute('alternative-definition-text', 'Definition', $translatedTextStructure);
+	$sourceAttribute = new Attribute('source', 'Source', $definedMeaningReferenceStructure);
 
 	$updatedAlternativeDefinitionsStructure = new Structure(
 		$rollBackAttribute,
@@ -353,7 +353,7 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);	
 
-	$updatedAlternativeDefinitionsAttribute = new Attribute('updated-alternative-definitions', 'Alternative definitions', new RecordSetType($updatedAlternativeDefinitionsStructure));
+	$updatedAlternativeDefinitionsAttribute = new Attribute('updated-alternative-definitions', 'Alternative definitions', $updatedAlternativeDefinitionsStructure);
 
 	global
 		$updatedAlternativeDefinitionTextAttribute, $updatedAlternativeDefinitionTextStructure;
@@ -370,7 +370,7 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);
 
-	$updatedAlternativeDefinitionTextAttribute = new Attribute('updated-alternative-definition-text', 'Alternative definition text', new RecordSetType($updatedAlternativeDefinitionTextStructure));	
+	$updatedAlternativeDefinitionTextAttribute = new Attribute('updated-alternative-definition-text', 'Alternative definition text', $updatedAlternativeDefinitionTextStructure);	
 
 	global
 		$updatesInTransactionAttribute;
@@ -386,7 +386,7 @@ function initializeAttributes() {
 		$updatedAlternativeDefinitionsAttribute
 	);
 
-	$updatesInTransactionAttribute = new Attribute('updates-in-transaction', 'Updates in transaction', new RecordType($updatesInTransactionStructure));
+	$updatesInTransactionAttribute = new Attribute('updates-in-transaction', 'Updates in transaction', $updatesInTransactionStructure);
 }
 
 function getTransactionRecordSet($fromTransactionId, $transactionCount, $userName) {
@@ -412,10 +412,10 @@ function getTransactionRecordSet($fromTransactionId, $transactionCount, $userNam
 		$transactionCount
 	);
 	
-	$recordSet->getStructure()->attributes[] = $transactionIdAttribute;
+	$recordSet->getStructure()->addAttribute($transactionIdAttribute);
 	expandTransactionIDsInRecordSet($recordSet, $transactionIdAttribute, $transactionAttribute);
 	
-	$recordSet->getStructure()->attributes[] = $updatesInTransactionAttribute;
+	$recordSet->getStructure()->addAttribute($updatesInTransactionAttribute);
 	expandUpdatesInTransactionInRecordSet($recordSet);
 
 	return $recordSet;	
@@ -1248,7 +1248,7 @@ function getUpdatedClassAttributesEditor($attribute, $showRollBackOptions) {
 }
 
 function simpleRecord($structure, $values) {
-	$attributes = $structure->attributes;
+	$attributes = $structure->getAttributes();
 	$result = new ArrayRecord($structure);
 	
 	for ($i = 0; $i < count($attributes); $i++) 

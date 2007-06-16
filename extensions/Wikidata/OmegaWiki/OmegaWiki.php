@@ -23,7 +23,6 @@ class OmegaWiki extends DefaultWikidataApplication {
 			$wgOut, $wgTitle;
 
 		parent::view();
-
 		$this->outputViewHeader();
 
 		$spelling = $wgTitle->getText();

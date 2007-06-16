@@ -33,7 +33,7 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 		$expressionAttribute = new Attribute("expression", $wgSpellingAttributeName, "spelling");
 	else {
 		$expressionStructure = new Structure($languageAttribute, $spellingAttribute);
-		$expressionAttribute = new Attribute("expression", $wgExpressionAttributeName, new RecordType($expressionStructure));
+		$expressionAttribute = new Attribute("expression", $wgExpressionAttributeName, $expressionStructure);
 	}
 	
 	global
@@ -49,7 +49,7 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	$definedMeaningLabelAttribute = new Attribute("defined-meaning-label", "Defined meaning label", "short-text");
 	$definedMeaningReferenceStructure = new Structure($definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute);
 	$definedMeaningReferenceKeyStructure = new Structure($definedMeaningIdAttribute);
-	$definedMeaningReferenceType = new RecordType($definedMeaningReferenceStructure);
+	$definedMeaningReferenceType = $definedMeaningReferenceStructure;
 	$definedMeaningReferenceAttribute = new Attribute("defined-meaning", $wgDefinedMeaningReferenceAttributeName, $definedMeaningReferenceType);
 	
 	global
@@ -58,22 +58,22 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 		$wgCollectionAttributeName, $wgSourceIdentifierAttributeName, $wgGotoSourceAttributeName;
 	
 	$collectionIdAttribute = new Attribute("collection", "Collection", "collection-id");
-	$collectionMeaningType = new RecordType($definedMeaningReferenceStructure);
+	$collectionMeaningType = $definedMeaningReferenceStructure;
 	$collectionMeaningAttribute = new Attribute("collection-meaning", $wgCollectionAttributeName, $collectionMeaningType);
 	$sourceIdentifierAttribute = new Attribute("source-identifier", $wgSourceIdentifierAttributeName, "short-text");
 	$gotoSourceStructure = new Structure($collectionIdAttribute, $sourceIdentifierAttribute);
-	$gotoSourceAttribute = new Attribute("goto-source", $wgGotoSourceAttributeName, new RecordType($gotoSourceStructure)); 
+	$gotoSourceAttribute = new Attribute("goto-source", $wgGotoSourceAttributeName, $gotoSourceStructure); 
 	
 	global
 		$collectionMembershipAttribute, $wgCollectionMembershipAttributeName, $wgCollectionMembershipAttributeId;
 	
-	$collectionMembershipAttribute = new Attribute($wgCollectionMembershipAttributeId, $wgCollectionMembershipAttributeName, new RecordSetType(new Structure($collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute)));
+	$collectionMembershipAttribute = new Attribute($wgCollectionMembershipAttributeId, $wgCollectionMembershipAttributeName, new Structure($collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute));
 	
 	global
 		 $classMembershipIdAttribute, $classAttribute;
 		 
 	$classMembershipIdAttribute = new Attribute("class-membership-id", "Class membership id", "integer");	 
-	$classAttribute = new Attribute("class", "Class", new RecordType($definedMeaningReferenceStructure));
+	$classAttribute = new Attribute("class", "Class", $definedMeaningReferenceStructure);
 		
 	global
 		$classMembershipStructure, $classMembershipKeyStructure, $classMembershipAttribute, 
@@ -81,13 +81,13 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	
 	$classMembershipStructure = new Structure($classMembershipIdAttribute, $classAttribute);
 	$classMembershipKeyStructure = new Structure($classMembershipIdAttribute);
-	$classMembershipAttribute = new Attribute($wgClassMembershipAttributeId, $wgClassMembershipAttributeName, new RecordSetType($classMembershipStructure));
+	$classMembershipAttribute = new Attribute($wgClassMembershipAttributeId, $wgClassMembershipAttributeName, $classMembershipStructure);
 	
 	global
 		 $possiblySynonymousIdAttribute, $possibleSynonymAttribute, $wgPossibleSynonymAttributeName;
 		 
 	$possiblySynonymousIdAttribute = new Attribute("possibly-synonymous-id", "Possibly synonymous id", "integer");	 
-	$possibleSynonymAttribute = new Attribute("possible-synonym", $wgPossibleSynonymAttributeName, new RecordType($definedMeaningReferenceStructure));
+	$possibleSynonymAttribute = new Attribute("possible-synonym", $wgPossibleSynonymAttributeName, $definedMeaningReferenceStructure);
 		
 	global
 		$possiblySynonymousStructure, $possiblySynonymousKeyStructure, $possiblySynonymousAttribute,
@@ -95,14 +95,14 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	
 	$possiblySynonymousStructure = new Structure($possiblySynonymousIdAttribute, $possiblySynonymousAttribute);
 	$possiblySynonymousKeyStructure = new Structure($possiblySynonymousIdAttribute);
-	$possiblySynonymousAttribute = new Attribute($wgPossiblySynonymousAttributeId, $wgPossiblySynonymousAttributeName, new RecordSetType($possiblySynonymousStructure));
+	$possiblySynonymousAttribute = new Attribute($wgPossiblySynonymousAttributeId, $wgPossiblySynonymousAttributeName, $possiblySynonymousStructure);
 
 	global
 		$relationIdAttribute, $relationTypeAttribute, $relationTypeType, $otherDefinedMeaningAttribute,
 		$wgRelationTypeAttributeName, $wgOtherDefinedMeaningAttributeName;
 	
 	$relationIdAttribute = new Attribute("relation-id", "Relation identifier", "object-id");
-	$relationTypeType = new RecordType($definedMeaningReferenceStructure);	
+	$relationTypeType = $definedMeaningReferenceStructure;	
 	$relationTypeAttribute = new Attribute("relation-type", $wgRelationTypeAttributeName, $relationTypeType); 
 	$otherDefinedMeaningAttribute = new Attribute("other-defined-meaning", $wgOtherDefinedMeaningAttributeName, $definedMeaningReferenceType);
 	
@@ -112,8 +112,8 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 		
 	$relationStructure = new Structure($relationIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $objectAttributesAttribute);
 	$relationKeyStructure = new Structure($relationIdAttribute);	
-	$relationsAttribute = new Attribute($wgRelationsAttributeId, $wgRelationsAttributeName, new RecordSetType($relationStructure));
-	$reciprocalRelationsAttribute = new Attribute($wgIncomingRelationsAttributeId, $wgIncomingRelationsAttributeName, new RecordSetType($relationStructure));
+	$relationsAttribute = new Attribute($wgRelationsAttributeId, $wgRelationsAttributeName, $relationStructure);
+	$reciprocalRelationsAttribute = new Attribute($wgIncomingRelationsAttributeId, $wgIncomingRelationsAttributeName, $relationStructure);
 	
 	global
 		$translatedTextIdAttribute, $translatedTextStructure;
@@ -130,14 +130,14 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	if ($filterOnLanguage && !$hasMetaDataAttributes)
 		$alternativeDefinitionAttribute = new Attribute("alternative-definition", $wgAlternativeDefinitionAttributeName, "text");
 	else
-		$alternativeDefinitionAttribute = new Attribute("alternative-definition", $wgAlternativeDefinitionAttributeName, new RecordSetType($translatedTextStructure));
+		$alternativeDefinitionAttribute = new Attribute("alternative-definition", $wgAlternativeDefinitionAttributeName, $translatedTextStructure);
 	
 	$sourceAttribute = new Attribute("source-id", $wgSourceAttributeName, $definedMeaningReferenceType);
 	
 	global
 		$alternativeDefinitionsAttribute, $wgAlternativeDefinitionsAttributeName, $wgAlternativeDefinitionsAttributeId;
 		
-	$alternativeDefinitionsAttribute = new Attribute($wgAlternativeDefinitionsAttributeId, $wgAlternativeDefinitionsAttributeName, new RecordSetType(new Structure($definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute)));
+	$alternativeDefinitionsAttribute = new Attribute($wgAlternativeDefinitionsAttributeId, $wgAlternativeDefinitionsAttributeName, new Structure($definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute));
 	
 	global
 		$synonymsAndTranslationsAttribute, $syntransIdAttribute, 
@@ -149,7 +149,7 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 		$synonymsAndTranslationsCaption = $wgSynonymsAndTranslationsAttributeName;	
 	
 	$syntransIdAttribute = new Attribute("syntrans-id", "$synonymsAndTranslationsCaption identifier", "integer");
-	$synonymsAndTranslationsAttribute = new Attribute($wgSynonymsAndTranslationsAttributeId, "$synonymsAndTranslationsCaption", new RecordSetType(new Structure($syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute)));
+	$synonymsAndTranslationsAttribute = new Attribute($wgSynonymsAndTranslationsAttributeId, "$synonymsAndTranslationsCaption", new Structure($syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute));
 	
 	global
 		$translatedTextAttributeIdAttribute, $translatedTextValueIdAttribute, 
@@ -164,10 +164,10 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	if ($filterOnLanguage && !$hasMetaDataAttributes)
 		$translatedTextValueAttribute = new Attribute("translated-text-value", $wgTranslatedTextAttributeValueAttributeName, "text");
 	else
-		$translatedTextValueAttribute = new Attribute("translated-text-value", $wgTranslatedTextAttributeValueAttributeName, new RecordSetType($translatedTextStructure));
+		$translatedTextValueAttribute = new Attribute("translated-text-value", $wgTranslatedTextAttributeValueAttributeName, $translatedTextStructure);
 	
 	$translatedTextAttributeValuesStructure = new Structure($translatedTextAttributeIdAttribute, $translatedTextAttributeObjectAttribute, $translatedTextAttributeAttribute, $translatedTextValueIdAttribute, $translatedTextValueAttribute, $objectAttributesAttribute);
-	$translatedTextAttributeValuesAttribute = new Attribute("translated-text-attribute-values", $wgTranslatedTextAttributeValuesAttributeName, new RecordSetType($translatedTextAttributeValuesStructure));
+	$translatedTextAttributeValuesAttribute = new Attribute("translated-text-attribute-values", $wgTranslatedTextAttributeValuesAttributeName, $translatedTextAttributeValuesStructure);
 	
 	global
 		$textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttributeValuesStructure, 
@@ -176,9 +176,9 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	
 	$textAttributeIdAttribute = new Attribute("text-attribute-id", "Attribute identifier", "object-id");
 	$textAttributeObjectAttribute = new Attribute("text-attribute-object-id", "Attribute object", "object-id");
-	$textAttributeAttribute = new Attribute("text-attribute", $wgTextAttributeAttributeName, new RecordSetType($definedMeaningReferenceStructure));
+	$textAttributeAttribute = new Attribute("text-attribute", $wgTextAttributeAttributeName, $definedMeaningReferenceStructure);
 	$textAttributeValuesStructure = new Structure($textAttributeIdAttribute, $textAttributeObjectAttribute, $textAttributeAttribute, $textAttribute, $objectAttributesAttribute);	
-	$textAttributeValuesAttribute = new Attribute("text-attribute-values", $wgTextAttributeValuesAttributeName, new RecordSetType($textAttributeValuesStructure));
+	$textAttributeValuesAttribute = new Attribute("text-attribute-values", $wgTextAttributeValuesAttributeName, $textAttributeValuesStructure);
 
 	global
 		$urlAttribute, $urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttributeValuesStructure, $urlAttributeValuesAttribute,
@@ -187,9 +187,9 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	$urlAttribute = new Attribute("url", "URL", "url");
 	$urlAttributeIdAttribute = new Attribute("url-attribute-id", "Attribute identifier", "object-id");
 	$urlAttributeObjectAttribute = new Attribute("url-attribute-object-id", "Attribute object", "object-id");
-	$urlAttributeAttribute = new Attribute("url-attribute", $wgUrlAttributeAttributeName, new RecordSetType($definedMeaningReferenceStructure));
+	$urlAttributeAttribute = new Attribute("url-attribute", $wgUrlAttributeAttributeName, $definedMeaningReferenceStructure);
 	$urlAttributeValuesStructure = new Structure($urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttribute, $objectAttributesAttribute);	
-	$urlAttributeValuesAttribute = new Attribute("url-attribute-values", $wgUrlAttributeValuesAttributeName, new RecordSetType($urlAttributeValuesStructure));
+	$urlAttributeValuesAttribute = new Attribute("url-attribute-values", $wgUrlAttributeValuesAttributeName, $urlAttributeValuesStructure);
 	
 	global
 		$optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute,
@@ -200,14 +200,14 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	$optionAttributeAttribute = new Attribute('option-attribute', $wgOptionAttributeAttributeName, $definedMeaningReferenceType);
 	$optionAttributeOptionAttribute = new Attribute('option-attribute-option', $wgOptionAttributeOptionAttributeName, $definedMeaningReferenceType);
 	$optionAttributeValuesStructure = new Structure($optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionAttribute, $objectAttributesAttribute);
-	$optionAttributeValuesAttribute = new Attribute('option-attribute-values', $wgOptionAttributeValuesAttributeName, new RecordSetType($optionAttributeValuesStructure));
+	$optionAttributeValuesAttribute = new Attribute('option-attribute-values', $wgOptionAttributeValuesAttributeName, $optionAttributeValuesStructure);
 	
 	global
 		$optionAttributeOptionIdAttribute, $optionAttributeOptionsAttribute, $wgOptionAttributeOptionsAttributeName;
 		
 	$optionAttributeOptionIdAttribute = new Attribute('option-attribute-option-id', 'Option identifier', 'object-id');
 	$optionAttributeOptionsStructure = new Structure($optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $languageAttribute);
-	$optionAttributeOptionsAttribute = new Attribute('option-attribute-options', $wgOptionAttributeOptionsAttributeName, new RecordSetType($optionAttributeOptionsStructure));
+	$optionAttributeOptionsAttribute = new Attribute('option-attribute-options', $wgOptionAttributeOptionsAttributeName, $optionAttributeOptionsStructure);
 	
 	global
 		$definitionAttribute, $translatedTextAttribute, $classAttributesAttribute,
@@ -216,9 +216,9 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	if ($filterOnLanguage && !$hasMetaDataAttributes)
 		$translatedTextAttribute = new Attribute("translated-text", $wgTextAttributeName, "text");	
 	else
-		$translatedTextAttribute = new Attribute("translated-text", $wgTranslatedTextAttributeName, new RecordSetType($translatedTextStructure));
+		$translatedTextAttribute = new Attribute("translated-text", $wgTranslatedTextAttributeName, $translatedTextStructure);
 		
-	$definitionAttribute = new Attribute($wgDefinitionAttributeId, $wgDefinitionAttributeName, new RecordType(new Structure($translatedTextAttribute, $objectAttributesAttribute)));
+	$definitionAttribute = new Attribute($wgDefinitionAttributeId, $wgDefinitionAttributeName, new Structure($translatedTextAttribute, $objectAttributesAttribute));
 
 	global
 		$classAttributesStructure,
@@ -228,17 +228,17 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 		$wgClassAttributeTypeAttributeName, $wgClassAttributesAttributeName, $wgClassAttributesAttributeId;
 	
 	$classAttributeIdAttribute = new Attribute("class-attribute-id", "Class attribute identifier", "object-id");
-	$classAttributeAttributeAttribute = new Attribute("class-attribute-attribute", $wgClassAttributeAttributeAttributeName, new RecordType($definedMeaningReferenceStructure));
-	$classAttributeLevelAttribute = new Attribute("class-attribute-level", $wgClassAttributeLevelAttributeName, new RecordType($definedMeaningReferenceStructure));
+	$classAttributeAttributeAttribute = new Attribute("class-attribute-attribute", $wgClassAttributeAttributeAttributeName, $definedMeaningReferenceStructure);
+	$classAttributeLevelAttribute = new Attribute("class-attribute-level", $wgClassAttributeLevelAttributeName, $definedMeaningReferenceStructure);
 	$classAttributeTypeAttribute = new Attribute("class-attribute-type", $wgClassAttributeTypeAttributeName, "short-text");
 	$classAttributesStructure = new Structure($classAttributeIdAttribute, $classAttributeAttributeAttribute, $classAttributeLevelAttribute, $classAttributeTypeAttribute, $optionAttributeOptionsAttribute);
-	$classAttributesAttribute = new Attribute($wgClassAttributesAttributeId, $wgClassAttributesAttributeName, new RecordSetType($classAttributesStructure));
+	$classAttributesAttribute = new Attribute($wgClassAttributesAttributeId, $wgClassAttributesAttributeName, $classAttributesStructure);
 	
 	global
 		$definedMeaningAttribute, $wgDefinedMeaningAttributeName;
 		
 	$definedMeaningAttribute = new Attribute("defined-meaning", $wgDefinedMeaningAttributeName, 
-		new RecordType(new Structure(
+		new Structure(
 			$definitionAttribute, 
 			$classAttributesAttribute, 
 			$alternativeDefinitionsAttribute, 
@@ -248,7 +248,6 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 			$classMembershipAttribute, 
 			$collectionMembershipAttribute, 
 			$definedMeaningAttributesAttribute)
-		)
 	);
 	
 	global
@@ -256,25 +255,25 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 		$wgExactMeaningsAttributeName, $wgApproximateMeaningsAttributeName;
 		
 	$expressionMeaningStructure = new Structure($definedMeaningIdAttribute, $textAttribute, $definedMeaningAttribute); 	
-	$expressionExactMeaningsAttribute = new Attribute("expression-exact-meanings", $wgExactMeaningsAttributeName, new RecordSetType($expressionMeaningStructure));
-	$expressionApproximateMeaningsAttribute = new Attribute("expression-approximate-meanings", $wgApproximateMeaningsAttributeName, new RecordSetType($expressionMeaningStructure));
+	$expressionExactMeaningsAttribute = new Attribute("expression-exact-meanings", $wgExactMeaningsAttributeName, $expressionMeaningStructure);
+	$expressionApproximateMeaningsAttribute = new Attribute("expression-approximate-meanings", $wgApproximateMeaningsAttributeName, $expressionMeaningStructure);
 	
 	global
 		$expressionMeaningsAttribute, $expressionMeaningsStructure, $expressionApproximateMeaningAttribute,
 		$wgExpressionMeaningsAttributeName, $wgExpressionsAttributeName;
 	
 	$expressionMeaningsStructure = new Structure($expressionExactMeaningsAttribute, $expressionApproximateMeaningAttribute);
-	$expressionMeaningsAttribute = new Attribute("expression-meanings", $wgExpressionMeaningsAttributeName, new RecordType($expressionMeaningsStructure));
+	$expressionMeaningsAttribute = new Attribute("expression-meanings", $wgExpressionMeaningsAttributeName, $expressionMeaningsStructure);
 	
-	$expressionsAttribute = new Attribute("expressions", $wgExpressionsAttributeName, new RecordSetType(new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute)));
+	$expressionsAttribute = new Attribute("expressions", $wgExpressionsAttributeName, new Structure($expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute));
 	
 	global
 		$objectIdAttribute, $objectAttributesStructure, $wgAnnotationAttributeName;
 	
 	$objectIdAttribute = new Attribute("object-id", "Object identifier", "object-id");
 	$objectAttributesStructure = new Structure($objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute);
-	$objectAttributesAttribute->type = new RecordType($objectAttributesStructure);
-	$definedMeaningAttributesAttribute->type = new RecordType($objectAttributesStructure);
+	$objectAttributesAttribute->type = $objectAttributesStructure;
+	$definedMeaningAttributesAttribute->type = $objectAttributesStructure;
 }
 
 ?>

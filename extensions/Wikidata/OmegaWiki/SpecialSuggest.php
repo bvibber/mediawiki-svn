@@ -429,7 +429,7 @@ function getDefinedMeaningAsRecordSet($queryResult) {
 	$languageAttribute = new Attribute("language", "Language", "language");
 	
 	$expressionStructure = new Structure($spellingAttribute, $languageAttribute);
-	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", new RecordType($expressionStructure));
+	$definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", $expressionStructure);
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
 	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $definedMeaningAttribute, $definitionAttribute), new Structure($idAttribute));

@@ -156,7 +156,7 @@ class ConvertingRecordSet extends RecordSet {
 		$attributes = array();
 
 		foreach ($this->converters as $converter) 
-			$attributes = array_merge($attributes, $converter->getStructure()->attributes);
+			$attributes = array_merge($attributes, $converter->getStructure()->getAttributes());
 			
 		return new Structure($attributes);
 	}
@@ -186,7 +186,7 @@ function getRelationAsHTMLList($relation) {
 function getStructureAsListStructure($structure) {
 	$result = '<h5>';
 	
-	foreach($structure->attributes as $attribute) {
+	foreach($structure->getAttributes() as $attribute) {
 		$result .= getAttributeAsText($attribute);
 		$result .= ' - ';
 	}
@@ -197,9 +197,9 @@ function getStructureAsListStructure($structure) {
 
 function getAttributeAsText($attribute){
 	$type = $attribute->type;
-	if (is_a($type, RecordType)) {
+	if (is_a($type, Structure)) {
 		$structure = $type->getStructure();
-		foreach($structure->attributes as $innerAttribute) {
+		foreach($structure->getAttributes() as $innerAttribute) {
 			$result .= getAttributeAsText($innerAttribute);
 			$result .= ' - ';
 		}
@@ -214,11 +214,11 @@ function getAttributeAsText($attribute){
 function getRecordAsListItem($structure, $record) {
 	$result = '';
 	
-	foreach($structure->attributes as $attribute) {
+	foreach($structure->getAttributes() as $attribute) {
 		$type = $attribute->type;
 		$value = $record->getAttributeValue($attribute);
 		
-		if (is_a($type, RecordType)) {
+		if (is_a($type, Structure)) {
 			$result .= getRecordAsListItem($type->getStructure(), $value);	
 		}
 		else {
@@ -248,7 +248,7 @@ function splitRecordSet($recordSet, $groupAttribute) {
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
 		$groupAttributeValue = $record->getAttributeValue($groupAttribute);
-		$groupRecordSet = $result[$groupAttributeValue];
+		@$groupRecordSet = $result[$groupAttributeValue]; # FIXME - check existence in array
 		
 		if ($groupRecordSet == null) {
 			$groupRecordSet = new ArrayRecordSet($structure, $key);

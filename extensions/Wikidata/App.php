@@ -29,6 +29,7 @@ $wdGroupDefaultView['wikidata-test']='tt';
 
 # These are the user groups
 $wgGroupPermissions['wikidata-omega']['editwikidata-uw']=true;
+$wgGroupPermissions['wikidata-omega']['editwikidata-moo']=true;
 $wgGroupPermissions['wikidata-omega']['editwikidata-tt']=false;
 $wgGroupPermissions['wikidata-test']['editwikidata-tt']=true;
 

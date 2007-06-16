@@ -51,13 +51,13 @@ function wfSpecialDatasearch() {
 			$this->languageAttribute = new Attribute("language", "Language", "language");
 			
 			$this->expressionStructure = new Structure($this->spellingAttribute, $this->languageAttribute);
-			$this->expressionAttribute = new Attribute("expression", "Expression", new RecordType($this->expressionStructure));
+			$this->expressionAttribute = new Attribute("expression", "Expression", $this->expressionStructure);
 			
 			$this->definedMeaningAttribute = new Attribute("defined-meaning", "Defined meaning", $definedMeaningReferenceType);
 			$this->definitionAttribute = new Attribute("definition", "Definition", "definition");
 			
 			$this->meaningStructure = new Structure($this->definedMeaningAttribute, $this->definitionAttribute);
-			$this->meaningAttribute = new Attribute("meaning", "Meaning", new RecordSetType($this->meaningStructure));
+			$this->meaningAttribute = new Attribute("meaning", "Meaning", $this->meaningStructure);
 
 			$this->externalIdentifierAttribute = new Attribute("external-identifier", "External identifier", "short-text");
 			$this->collectionAttribute = new Attribute("collection", "Collection", $definedMeaningReferenceType);
