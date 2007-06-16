@@ -17,7 +17,6 @@ class ArrayRecord implements Record {
 	
 	public function __construct($structure) {
 		$this->structure = $structure;
-		$this->helper=new RecordHelper($this);
 	}
 	
 	public function getStructure() {
@@ -45,6 +44,7 @@ class ArrayRecord implements Record {
 
 	public function setType($type) {
 		$this->type=$type;
+		$this->helper=RecordHelperFactory::getRecordHelper($this);
 	}	
 
 	/**only setType if it wasn't set yet.
