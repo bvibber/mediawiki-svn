@@ -501,9 +501,9 @@ function getLanguageAsRecordSet($queryResult) {
 	
 	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $languageAttribute), new Structure($idAttribute));
 	
-	while ($row = $dbr->fetchObject($queryResult)) 
+	while ($row = $dbr->fetchObject($queryResult))  {
 		$recordSet->addRecord(array($row->row_id, $row->language_name));			
-
+	}
 	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor(createShortTextViewer($languageAttribute));
 

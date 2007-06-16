@@ -128,7 +128,6 @@ function project($record, $structure) {
 	foreach ($structure->getAttributes() as $attribute) {
 		$type = $attribute->type;
 		$value = $record->getAttributeValue($attribute);
-		
 		if ($type instanceof Structure)
 			$result->setAttributeValue($attribute, project($record, $type->getStructure()));
 		else

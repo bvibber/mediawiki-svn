@@ -31,7 +31,7 @@ class IdStack {
 	protected function getKeyIds($record) {
 		$ids = array();
 
-		foreach($record->getStructure() as $attribute)
+		foreach($record->getStructure()->getAttributes() as $attribute)
 			$ids[] = $record->getAttributeValue($attribute);
 
 		return $ids;
