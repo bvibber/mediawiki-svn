@@ -254,6 +254,7 @@ function __autoload($className) {
 		# filerepo
 		'ArchivedFile' => 'includes/filerepo/ArchivedFile.php',
 		'File' => 'includes/filerepo/File.php',
+		'FileRepo' => 'includes/filerepo/FileRepo.php',
 		'ForeignDBFile' => 'includes/filerepo/ForeignDBFile.php',
 		'ForeignDBRepo' => 'includes/filerepo/ForeignDBRepo.php',
 		'FSRepo' => 'includes/filerepo/FSRepo.php',
@@ -305,6 +306,7 @@ function __autoload($className) {
 		'ApiQueryBase' => 'includes/api/ApiQueryBase.php',
 		'ApiQueryBacklinks' => 'includes/api/ApiQueryBacklinks.php',
 		'ApiQueryCategories' => 'includes/api/ApiQueryCategories.php',
+		'ApiQueryCategoryMembers' => 'includes/api/ApiQueryCategoryMembers.php',
 		'ApiQueryContributions' => 'includes/api/ApiQueryUserContributions.php',
 		'ApiQueryExternalLinks' => 'includes/api/ApiQueryExternalLinks.php',
 		'ApiQueryImages' => 'includes/api/ApiQueryImages.php',

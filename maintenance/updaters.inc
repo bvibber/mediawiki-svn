@@ -837,6 +837,14 @@ function do_backlinking_indices_update() {
 	}
 }
 
+function do_categorylinks_indices_update() {
+	echo( "Checking for categorylinks indices...\n" );
+	if (!index_has_field('categorylinks', 'cl_sortkey', 'cl_from'))
+	{	
+		dbsource( archive( 'patch-categorylinksindex.sql' ) );
+	}
+}
+
 function do_stats_init() {
 	// Sometimes site_stats table is not properly populated.
 	global $wgDatabase;
@@ -931,6 +939,8 @@ function do_all_updates( $shared = false, $purge = true ) {
 	add_table( 'redirect', 'patch-redirect.sql' );
 
 	do_backlinking_indices_update(); flush();
+
+	do_categorylinks_indices_update(); flush();
 
 	do_restrictions_update(); flush ();
 
@@ -1222,6 +1232,7 @@ function do_postgres_updates() {
 	$newcols = array(
 		array("archive",       "ar_len",               "INTEGER"),
 		array("ipblocks",      "ipb_anon_only",        "CHAR NOT NULL DEFAULT '0'"),
+		array("ipblocks",      "ipb_block_email",      "CHAR NOT NULL DEFAULT '0'"),
 		array("ipblocks",      "ipb_create_account",   "CHAR NOT NULL DEFAULT '1'"),
 		array("ipblocks",      "ipb_deleted",          "INTEGER NOT NULL DEFAULT 0"),
 		array("ipblocks",      "ipb_enable_autoblock", "CHAR NOT NULL DEFAULT '1'"),

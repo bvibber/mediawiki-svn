@@ -61,15 +61,15 @@ class ApiQuery extends ApiBase {
 
 	private $mQueryListModules = array (
 		'allpages' => 'ApiQueryAllpages',
-		'logevents' => 'ApiQueryLogEvents',
-		'watchlist' => 'ApiQueryWatchlist',
-		'recentchanges' => 'ApiQueryRecentChanges',
 		'backlinks' => 'ApiQueryBacklinks',
+		'categorymembers' => 'ApiQueryCategoryMembers',
 		'embeddedin' => 'ApiQueryBacklinks',
 		'imageusage' => 'ApiQueryBacklinks',
-		'usercontribs' => 'ApiQueryContributions'
+		'logevents' => 'ApiQueryLogEvents',
+		'recentchanges' => 'ApiQueryRecentChanges',
+		'usercontribs' => 'ApiQueryContributions',
+		'watchlist' => 'ApiQueryWatchlist',
 	);
-	//	'categorymembers' => 'ApiQueryCategorymembers',
 	//	'recentchanges' => 'ApiQueryRecentchanges',
 	//	'users' => 'ApiQueryUsers',
 	//	'watchlist' => 'ApiQueryWatchlist',
@@ -243,7 +243,21 @@ class ApiQuery extends ApiBase {
 			$result->setIndexedTagName($normValues, 'n');
 			$result->addValue('query', 'normalized', $normValues);
 		}
+		
+		// Interwiki titles
+		$intrwValues = array ();
+		foreach ($pageSet->getInterwikiTitles() as $rawTitleStr => $interwikiStr) {
+			$intrwValues[] = array (
+				'title' => $rawTitleStr,
+				'iw' => $interwikiStr
+			);
+		}
 
+		if (!empty ($intrwValues)) {
+			$result->setIndexedTagName($intrwValues, 'i');
+			$result->addValue('query', 'interwiki', $intrwValues);
+		}
+		
 		// Show redirect information
 		$redirValues = array ();
 		foreach ($pageSet->getRedirectTitles() as $titleStrFrom => $titleStrTo) {

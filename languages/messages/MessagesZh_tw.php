@@ -411,6 +411,7 @@ MySQL返回錯誤「$3: $4」。',
 'yourvariant'                => '字體變換:',
 'yournick'                   => '暱稱:',
 'badsig'                     => '錯誤的原始簽名；請檢查HTML標籤。',
+'badsiglength' 	             => '暱稱過長；它的長度必須在$1個字元以下。',
 'email'                      => '電子郵件',
 'prefs-help-realname'        => '真實姓名是可選的，如果您選擇提供它，那它便用以對您的貢獻署名。',
 'loginerror'                 => '登入錯誤',
@@ -1249,9 +1250,7 @@ $NEWPAGE
 'deletedarticle'              => '已刪除「$1」',
 'dellogpage'                  => '刪除紀錄',
 'dellogpagetext'              => '以下是最近刪除的紀錄列表。
-所有的時間都是使用伺服器時間。
-<ul>
-</ul>',
+所有的時間都是使用伺服器時間。',
 'deletionlog'                 => '刪除紀錄',
 'reverted'                    => '恢復到早期版本',
 'deletecomment'               => '刪除理由',
