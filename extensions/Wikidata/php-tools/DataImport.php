@@ -32,7 +32,7 @@ function getUserId($real_name){
 
 $beginTime = time();
 $wgCommandLineMode = true;
-$wdDefaultViewDataSet = 'sp';
+$wdDefaultViewDataSet = 'uw';
 
 /*
  * User IDs to use during the import of both UMLS and Swiss-Prot
