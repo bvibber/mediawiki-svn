@@ -32,10 +32,10 @@ function wfSpecialTransaction() {
 			initializeOmegaWikiAttributes(false, false);
 			initializeAttributes();
 			
-			$fromTransactionId = (int) $_GET['from-transaction'];
-			$transactionCount = (int) $_GET['transaction-count'];
-			$userName = "" . $_GET['user-name'];
-			$showRollBackOptions = isset($_GET['show-roll-back-options']);
+			@$fromTransactionId = (int) $_GET['from-transaction']; # FIXME - check parameter
+			@$transactionCount = (int) $_GET['transaction-count']; # FIXME - check parameter
+			@$userName = "" . $_GET['user-name']; # FIXME - check parameter
+			@$showRollBackOptions = isset($_GET['show-roll-back-options']); # FIXME - check parameter
 			
 			if (isset($_POST['roll-back'])) {
 				$fromTransactionId = (int) $_POST['from-transaction'];
@@ -477,7 +477,7 @@ function getUpdatesInTransactionRecord($transactionId) {
 		$updatedAlternativeDefinitionsAttribute, $updatedAlternativeDefinitionTextAttribute,
 		$updatedTranslatedTextPropertyAttribute;
 		
-	$record = new ArrayRecord($updatesInTransactionAttribute->type->getStructure());
+	$record = new ArrayRecord($updatesInTransactionAttribute->type->getAttributes());
 	$record->setAttributeValue($updatedDefinitionAttribute, getUpdatedDefinedMeaningDefinitionRecordSet($transactionId));
 	$record->setAttributeValue($updatedAlternativeDefinitionsAttribute, getUpdatedAlternativeDefinitionsRecordSet($transactionId));
 	$record->setAttributeValue($updatedAlternativeDefinitionTextAttribute, getUpdatedAlternativeDefinitionTextRecordSet($transactionId));
@@ -551,7 +551,7 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 		"SELECT defined_meaning_id, translated_content_id, language_id, text_text, " . 
 			getOperationSelectColumn("{$dc}_translated_content", $transactionId) . ', ' .
 			getIsLatestSelectColumn("{$dc}_translated_content", array('translated_content_id', 'language_id'), $transactionId) . 
-		" FROM {$dc}_defined_meaning, {$dc}_translated_content, text " .
+		" FROM {$dc}_defined_meaning, {$dc}_translated_content, {$dc}_text " .
 		" WHERE {$dc}_defined_meaning.meaning_text_tcid={$dc}_translated_content.translated_content_id ".
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND " . getInTransactionRestriction("${dc}_translated_content", $transactionId) .
@@ -624,7 +624,7 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 		"SELECT meaning_mid, translated_content_id, source_id, language_id, text_text, " . 
 			getOperationSelectColumn("{$dc}_translated_content", $transactionId) . ', ' .
 			getIsLatestSelectColumn("{$dc}_translated_content", array('translated_content_id', 'language_id'), $transactionId) . 
-		" FROM {$dc}_alt_meaningtexts, {$dc}_translated_content, text " .
+		" FROM {$dc}_alt_meaningtexts, {$dc}_translated_content, {$dc}_text " .
 		" WHERE {$dc}_alt_meaningtexts.meaning_text_tcid={$dc}_translated_content.translated_content_id ".
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND " . getInTransactionRestriction("{$dc}_translated_content", $transactionId) .
@@ -829,7 +829,7 @@ function getUpdatedClassAttributesRecordSet($transactionId) {
 			getOperationSelectColumn("{$dc}_class_attributes", $transactionId) . ', ' .
 			getIsLatestSelectColumn("{$dc}_class_attributes", array('object_id'), $transactionId) . 
 		" FROM {$dc}_class_attributes " .
-		" WHERE " . getInTransactionRestriction('{$dc}_class_attributes', $transactionId)
+		" WHERE " . getInTransactionRestriction("{$dc}_class_attributes", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedClassAttributesStructure, new Structure($classAttributeIdAttribute));
@@ -898,7 +898,7 @@ function getUpdatedTextRecordSet($transactionId) {
 		getOperationSelectColumn("{$dc}_text_attribute_values", $transactionId) . ', ' .
 		getIsLatestSelectColumn("{$dc}_text_attribute_values", array('value_id'), $transactionId) . 
 		" FROM {$dc}_text_attribute_values " .
-		" WHERE " . getInTransactionRestriction('{$dc}_text_attribute_values', $transactionId) 
+		" WHERE " . getInTransactionRestriction("{$dc}_text_attribute_values", $transactionId) 
 	);
 		
 	$recordSet = new ArrayRecordSet($updatedTextStructure, new Structure($valueIdAttribute));
@@ -967,7 +967,7 @@ function getUpdatedTranslatedTextRecordSet($transactionId) {
 		"SELECT value_id, object_id, attribute_mid, translated_content_id, language_id, text_text, " . 
 			getOperationSelectColumn("{$dc}_translated_content", $transactionId) . ', ' .
 			getIsLatestSelectColumn("{$dc}_translated_content", array('translated_content_id', 'language_id'), $transactionId) . 
-		" FROM {$dc}_translated_content_attribute_values, {$dc}_translated_content, text " .
+		" FROM {$dc}_translated_content_attribute_values, {$dc}_translated_content, {$dc}_text " .
 		" WHERE {$dc}_translated_content_attribute_values.value_tcid={$dc}_translated_content.translated_content_id ".
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND " . getInTransactionRestriction("{$dc}_translated_content", $transactionId) .
@@ -1448,7 +1448,7 @@ function getTranslatedContentFromHistory($translatedContentId, $languageId, $add
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT text_text " .
-		" FROM {$dc}_translated_content, text " .
+		" FROM {$dc}_translated_content, {$dc}_text " .
 		" WHERE {$dc}_translated_content.translated_content_id=$translatedContentId " .
 		" AND {$dc}_translated_content.text_id={$dc}_text.text_id " .
 		" AND {$dc}_translated_content.add_transaction_id=$addTransactionId");

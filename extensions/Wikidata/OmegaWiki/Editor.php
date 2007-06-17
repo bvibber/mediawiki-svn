@@ -61,8 +61,10 @@ class IdStack {
 	}
 
 	public function pushAttribute($attribute) {
-		$this->pushId($attribute->id);
-		$this->pushClass($attribute->id);
+		# FIXME: check attribute id existence
+		@$id=$attribute->id;
+		$this->pushId($id);
+		$this->pushClass($id);
 	}
 
 	public function popKey() {

@@ -35,7 +35,8 @@ class ArrayRecord implements Record {
 	}
 
 	public function setAttributeValue($attribute, $value) {
-		$this->values[$attribute->id] = $value;
+		#FIXME: check if valid
+		@$this->values[$attribute->id] = $value;
 	}
 	
 	public function getType() {
