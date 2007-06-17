@@ -117,21 +117,6 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$wgTitle;
 
 		parent::save($referenceTransaction);
-
-/*		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
-			$this->getIdStack($definedMeaningId), 
-			getDefinedMeaningRecord(
-				$definedMeaningId, 
-				$this->filterLanguageId, 
-				$this->possiblySynonymousRelationTypeId, 
-				$referenceTransaction
-			)
-		);*/
-
-		global 
-			$wgTitle;
-	
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		
 		$dmModel=new DefinedMeaningModel(
@@ -141,6 +126,12 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$referenceTransaction
 		);
 
+		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
+		getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
+			$this->getIdStack($definedMeaningId), 
+			$dmModel->getRecord()
+		);
+	
 	}
 	
 	protected function getIdStack($definedMeaningId) {
