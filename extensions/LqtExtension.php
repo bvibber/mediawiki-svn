@@ -107,7 +107,8 @@ class LqtView {
 	static protected $occupied_titles = array();
 	
 	/*************************
-	* Utlity methods         *
+         * (1) linking to liquidthreads pages and
+         * (2) figuring out what page you're on and what you need to do.
 	*************************/
 	
 	function queryStringFromArray( $vars ) {
@@ -139,21 +140,11 @@ class LqtView {
 		return $title->getFullURL( $query );
 	}
 
-	/*************************
-	* Simple HTML methods    *
-	*************************/
-
-	function openDiv( $class='', $id='' ) {
-		$this->output->addHTML( wfOpenElement( 'div', array('class'=>$class, 'id'=>$id) ) );
-	}
-
-	function closeDiv() {
-		$this->output->addHTML( wfCloseElement( 'div' ) );
-	}
-
-	/************************************
-	* Editing methods (here be dragons) *
-	*************************************/
+	/*************************************************************
+	* Editing methods (here be dragons)                          *
+        * Forget dragons: This section distorts the rest of the code *
+        * like a star bending spacetime around itself.               *
+	*************************************************************/
 
 	/**
 	 * Return an HTML form element whose value is gotten from the request.
@@ -467,6 +458,14 @@ HTML;
 		$this->output->addHTML( wfCloseElement( 'dd') );
 		$this->output->addHTML( wfCloseElement( 'dl') );
 		$this->headerLevel -= 1;
+	}
+
+	function openDiv( $class='', $id='' ) {
+		$this->output->addHTML( wfOpenElement( 'div', array('class'=>$class, 'id'=>$id) ) );
+	}
+
+	function closeDiv() {
+		$this->output->addHTML( wfCloseElement( 'div' ) );
 	}
 	
 	function showSummary($t) {
