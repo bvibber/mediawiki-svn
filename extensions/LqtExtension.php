@@ -22,7 +22,7 @@ class LqtDispatch {
 		                                  $title->getDBkey());
 		$article = new Article($article_title);
 
-		if ( $request->getBool('lqt_show_archive') ) {
+		if ( $request->getVal('lqt_method') == 'talkpage_archive' ) {
 			$view = new TalkpageArchiveView( $output, $article, $title, $user, $request );
 		} else {
 			$view = new TalkpageView( $output, $article, $title, $user, $request );
@@ -119,30 +119,26 @@ class LqtView {
 		return $q;
 	}
 
-	/**
-	 *	@return href for a link to the same page as is being currently viewed, 
-	 *	        but with additional query variables.
-	 *	@param $vars array( 'query_variable_name' => 'value', ... ).
-	*/
-	function selflink( $vars = null ) {
-		return $this->title->getFullURL( $this->queryStringFromArray($vars) );
+	function methodAppliesToThread( $method, $thread ) {
+		return $this->request->getVal('lqt_method') == $method &&
+			$this->request->getVal('lqt_operand') == $thread->id();
 	}
-	
-	/**
-	 *	@return true if the value of the give query variable name is equal to the given post's ID.
-	*/
-	function commandApplies( $command, $post ) {
-		return $this->request->getVal($command) == $post->getTitle()->getPrefixedURL();
-	}
-	function commandAppliesToThread( $command, $thread ) {
-		return $this->request->getVal($command) == $thread->id();
+	function methodApplies( $method ) {
+		return $this->request->getVal('lqt_method') == $method;
 	}
 
-	function permalinkUrl( $thread, $query ='' ) {
-		return $thread->rootPost()->getTitle()->getFullURL($query);
-		return SpecialPage::getTitleFor('Thread', $thread->id())->getFullURL($query);
+	function permalinkUrl( $thread, $method = null, $operand = null ) {
+		$query = $method ? "lqt_method=$method" : "";
+		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
+		return $thread->rootPost()->getTitle()->getFullUrl($query);
 	}
-	
+
+	function talkpageUrl( $title, $method = null, $operand = null ) {
+		$query = $method ? "lqt_method=$method" : "";
+		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
+		return $title->getFullURL( $query );
+	}
+
 	/*************************
 	* Simple HTML methods    *
 	*************************/
@@ -217,10 +213,8 @@ HTML;
 		$e->suppressIntro = true;
 		
 		$e->editFormTextBeforeContent .=
-			$this->perpetuate('lqt_edit_post', 'hidden') .
-			$this->perpetuate('lqt_reply_to', 'hidden') .
-			$this->perpetuate('lqt_new_thread_form', 'hidden') .
-			$this->perpetuate('lqt_summarize', 'hidden');
+			$this->perpetuate('lqt_method', 'hidden') .
+			$this->perpetuate('lqt_operand', 'hidden');
 		
 		if ( /*$thread == null*/ $edit_type=='new' || ($thread && $thread->superthread() == null) ) {
 			// This is a top-level post; show the subject line.
@@ -368,21 +362,6 @@ HTML;
 		}
 	}
 
-	function talkpageUrl( $title, $operator = null, $operand = null ) {
-		if ( $operator == 'lqt_reply_to' ) {
-			$query = array( 'lqt_reply_to' => $operand ? $operand->id() : null );
-		} else if ($operator == 'lqt_edit_post') {
-			$query = array( 'lqt_edit_post' => $operand ? $operand->id() : null );
-		} else if ($operator == 'lqt_new_thread_form' ) {
-			$query = array( 'lqt_new_thread_form' => '1' );
-		} else if ($operator == 'lqt_show_archive') {
-			$query = array( 'lqt_show_archive' => '1' );
-		} else {
-			$query = array();
-		}
-		return $title->getFullURL( $this->queryStringFromArray($query) );
-	}
-
 	function showThreadFooter( $thread ) {
 		$color_number = $this->selectNewUserColor( $thread->rootPost()->originalAuthor() );
 		$this->output->addHTML(wfOpenElement('ul', array('class'=>"lqt_footer" )));
@@ -397,8 +376,8 @@ HTML;
 		$this->output->addHTML( $d->lastMonth()->text() );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
-		$commands = array( 'Edit' => $this->talkpageUrl( $this->title, 'lqt_edit_post', $thread ),
-		 					'Reply' => $this->talkpageUrl( $this->title, 'lqt_reply_to', $thread ),
+		$commands = array( 'Edit' => $this->talkpageUrl( $this->title, 'edit', $thread ),
+		 					'Reply' => $this->talkpageUrl( $this->title, 'reply', $thread ),
 		 					'Permalink' => $this->permalinkUrl( $thread ) );
 
 		foreach( $commands as $label => $href ) {
@@ -430,7 +409,7 @@ HTML;
 		$this->openDiv( "lqt_post lqt_post_color_$color_number" );*/
 		$this->openDiv( 'lqt_post' );
 		
-		if( $this->commandAppliesToThread( 'lqt_edit_post', $thread ) ) {
+		if( $this->methodAppliesToThread( 'edit', $thread ) ) {
 			$this->showPostEditingForm( $thread );
 		} else{
 			$this->showPostBody( $post );
@@ -439,7 +418,7 @@ HTML;
 		
 		$this->closeDiv();
 		
-		if( $this->commandAppliesToThread( 'lqt_reply_to', $thread ) ) {
+		if( $this->methodAppliesToThread( 'reply', $thread ) ) {
 			$this->indent();
 			$this->showReplyForm( $thread );
 			$this->unindent();
@@ -464,7 +443,7 @@ HTML;
 			$this->showSummary($thread);
 		} else if ( $touched->isBefore(Date::now()->nDaysAgo($this->archive_start_days))
 		            && !$thread->summary() && !$thread->superthread() ) {
-			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'lqt_summarize=1')}\">write a summary</a>. There have been no changes here for at least $this->archive_start_days days.</p>");
+			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'summarize')}\">write a summary</a>. There have been no changes here for at least $this->archive_start_days days.</p>");
 		}
 		
 		$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");			
@@ -496,7 +475,7 @@ HTML;
 			<span class="lqt_thread_permalink_summary_title">
 			This thread has been summarized as follows:
 			</span><span class="lqt_thread_permalink_summary_edit">
-			[<a href="{$this->permalinkUrl($t,'lqt_summarize=1')}">edit</a>]
+			[<a href="{$this->permalinkUrl($t,'summarize')}">edit</a>]
 			</span>
 HTML
 		);
@@ -525,10 +504,10 @@ class TalkpageView extends LqtView {
 		*/
 	}
 
-	function permalinksForThreads($ts, $query = '') {
+	function permalinksForThreads($ts, $method = null, $operand = null) {
 		$ps = array();
 		foreach ($ts as $t) {
-			$u = $this->permalinkUrl($t, $query);
+			$u = $this->permalinkUrl($t, $method, $operand);
 			$l = $t->subjectWithoutIncrement();
 			$ps[] = "<a href=\"$u\">$l</a>";
 		}
@@ -546,7 +525,7 @@ class TalkpageView extends LqtView {
 		} else {
 			$this->openDiv();
 		}
-		$url = $this->talkpageUrl($this->title, 'lqt_show_archive');
+		$url = $this->talkpageUrl($this->title, 'talkpage_archive');
 		$this->output->addHTML(<<<HTML
 			<a href="$url" class="lqt_browse_archive">Browse the Archive</a>
 HTML
@@ -622,10 +601,10 @@ HTML
 		
 		$this->showArchiveWidget();
 		
-		if( $this->request->getBool('lqt_new_thread_form') ) {
+		if( $this->methodApplies('talkpage_new_thread') ) {
 			$this->showNewThreadForm();
 		} else {
-			$url = $this->talkpageUrl( $this->title, 'lqt_new_thread_form' );
+			$url = $this->talkpageUrl( $this->title, 'talkpage_new_thread' );
 			$this->output->addHTML("<strong><a class=\"lqt_start_discussion\" href=\"$url\">Start&nbsp;a&nbsp;Discussion</a></strong>");
 		}
 
@@ -797,7 +776,7 @@ HTML
 		
 		$this->output->addHTML(<<<HTML
 <form id="lqt_archive_search_form" action="{$this->title->getLocalURL()}">
-	<input type="hidden" name="lqt_show_archive" value="1">
+	<input type="hidden" name="lqt_method" value="talkpage_archive">
         <input type="hidden" name="title" value="{$this->title->getPrefixedURL()}"	
 
 	<input type="radio" id="lqt_archive_filter_by_date_no"
@@ -881,7 +860,7 @@ class ThreadPermalinkView extends LqtView {
 			$this->output->setSubtitle( "from " . $talkpage_link );
 		}
 		
-		if( $this->request->getBool('lqt_summarize') ) {
+		if( $this->methodApplies('summarize') ) {
 			$this->showSummarizeForm($t);
 		}
 		
