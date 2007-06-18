@@ -446,6 +446,49 @@ por administrador da base de dados, caso você tenha cometido um engano.",
 Liberar tais dados poderá resultar na perda em definitivo dos privilégios de oversight.',
 ),
 
+/* Russian */
+'ru' => array(
+'hiderevision' => 'Скрыть версию страницы',
+// Empty form
+'hiderevision-prompt' => 'Номер версии, которую требуется скрыть:',
+'hiderevision-continue' => 'Продолжить',
+// Confirmation form
+'hiderevision-text' =>
+"Данная страница должна использоваться '''только''' в случае разглашения личной информации —''реальные имя и фамилия, домашние адреса и номера телефонов, паспортов, и тому подобное''.
+
+'''Злоупотребление данной системой повлечёт за собой лишение прав.'''
+
+Скрытые версии страниц не будут видны через интерфейс MediaWiki,
+но они записываются в журнал и могут быть восстановлены
+администратором базы данных, если вы случайно сделаете ошибку.",
+'hiderevision-reason' => 'Причина (будет записана в закрытый журнал):',
+'hiderevision-submit' => 'Скрыть данные',
+// Tab displayed to allowed users on old revision display
+'hiderevision-tab' => 'Скрыть версию',
+// Status & errors on action
+'hiderevision-norevisions' => 'Не были указаны версии, которые следует скрыть.',
+'hiderevision-noreason' => 'Вы должны написать причину сокрытия.',
+'hiderevision-status' => 'Версия №$1: $2',
+'hiderevision-success' => 'Успешно заархивирована и скрыта.',
+'hiderevision-error-missing' => 'Не найдена в базе данных.',
+'hiderevision-error-current' => 'Невозможно удалить текущую версию страницы. Сначала откатите изменения',
+'hiderevision-error-delete' => 'Невзможно заархивировать. Проверьте, не была-ли версия удалена ранее?',
+'hiderevision-archive-status' => 'Удалена версия со страницы $1: $2',
+'oversight-nodiff' => 'Невозможно опрдеделить изменения из-за недоступности предыдущей версии страницы. Возможно:
+*Данная страница была удалена
+*Скрытая версия была первой',
+// Logging
+'oversight-log-hiderev' => 'скрыта правка со страницы $1',
+// Oversight review page
+'oversight' => 'Журнал скрытия версий',
+'oversight-view' => 'детали',
+'oversight-difference' => '(Разница с предыдущей неудалённой версией)',
+'oversight-prev' => 'Предыдущая версия',
+'oversight-hidden' => 'Скрытая версия',
+'oversight-header' => 'Ниже приведены версии, которые недавно были скрыты.
+Распространение данной информации может повлечь лишение прав ревизора.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'hiderevision' => 'Natrvalo skryť revízie',
