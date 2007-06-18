@@ -4,18 +4,6 @@ DROP TABLE IF EXISTS bootstrapped_defined_meanings;
 DROP TABLE IF EXISTS translated_content;
 DROP TABLE IF EXISTS transactions;
 
--- Drop table so that the next create doesn't crash
-DROP TABLE IF EXISTS `uw_text`;
-
--- We used to share this with MediaWiki, but it makes more sense to
--- have our own within each data set.
-CREATE TABLE `uw_text` (
-  `text_id` int(8) unsigned NOT NULL auto_increment,
-  `text_text` mediumblob NOT NULL,
-  `text_flags` tinyblob NOT NULL,
-  PRIMARY KEY  (`text_id`)
-) DEFAULT CHARSET=utf8;
-
 DROP TABLE IF EXISTS /*$wgWDprefix*/alt_meaningtexts;
 
 CREATE TABLE /*$wgWDprefix*/alt_meaningtexts (
@@ -358,7 +346,7 @@ DROP TABLE IF EXISTS /*$wgWDprefix*/text;
 CREATE TABLE /*$wgWDprefix*/text (
   `text_id` int(8) unsigned NOT NULL auto_increment,
   `text_text` mediumblob NOT NULL,
-  `text_flags` tinyblob,
+  `text_flags` tinyblob default NULL,
   PRIMARY KEY  (`text_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
