@@ -111,8 +111,7 @@ public class Localization {
 		if(langCode == null || langCode.equals(""))
 			return false;
 		if(level == 5) // max 5 recursions in depth
-			return false;
-		log.info("Reading localization for "+langCode);
+			return false;		
 		// make title case
 		langCode = langCode.substring(0,1).toUpperCase()+langCode.substring(1).toLowerCase();
 		if(badLocalizations.contains(langCode.toLowerCase())){
@@ -124,6 +123,7 @@ public class Localization {
 			log.warn("Property Localization.url not set in config file. Localization disabled.");
 			return false;
 		}
+		log.info("Reading localization for "+langCode);
 		URL url;
 		try {
 			url = new URL(MessageFormat.format(loc,langCode));

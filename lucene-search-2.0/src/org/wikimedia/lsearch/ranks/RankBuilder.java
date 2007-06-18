@@ -43,7 +43,7 @@ public class RankBuilder {
 		log = Logger.getLogger(RankBuilder.class);
 		
 		if(args.length < 2){
-			System.out.println("Syntax: java Importer <inputfile> <dbname>");
+			System.out.println("Syntax: java RankBuilder <inputfile> <dbname>");
 			return;
 		}
 		inputfile = args[0];

@@ -105,7 +105,6 @@ public class Configuration {
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		String globalurl = getString("MWConfig","global");
 		String indexpath = getString("Indexes","path");
-		String oairepo = getString("OAI","repo");
 		if(globalurl==null){
 			System.out.println("FATAL: Need to define global configuration url in local config file.");
 			System.exit(1);
@@ -114,7 +113,7 @@ public class Configuration {
 			System.exit(1);
 		}
 		try {
-			global.readFromURL(new URL(globalurl),indexpath,oairepo);
+			global.readFromURL(new URL(globalurl),indexpath);
 		} catch (MalformedURLException e) {
 			System.out.println("Malformed URL "+globalurl+" cannot read global configuration (check MWConfig.global in "+CONF_FILE_NAME+"), exiting...");
 			System.exit(1);

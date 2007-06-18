@@ -38,6 +38,10 @@ public class MySQLStorage extends Storage {
 	protected String username;
 	/** mysql password */
 	protected String password;
+	/** administrator's username */
+	protected String adminUsername;
+	/** administrator's password */
+	protected String adminPassword;
 	/** If we should separate data in many dbs */
 	protected boolean separate;
 	/** db where to put everything, if we are not using one db per dbname */
@@ -82,6 +86,9 @@ public class MySQLStorage extends Storage {
 		username = config.getString("Storage","username","root");
 		password = config.getString("Storage","password","");
 		
+		adminUsername = config.getString("Storage","adminuser",username);
+		adminPassword = config.getString("Storage","adminpass",password);
+		
 		// figure out db configuration
 		separate = config.getBoolean("Storage","useSeparateDBs");
 		if(!separate){
@@ -94,16 +101,21 @@ public class MySQLStorage extends Storage {
 	
 	/** Get connection for writing stuff, i.e. on the master */
 	protected Connection getReadConnection(String dbname) throws IOException{
-		return openConnection(dbname,false);
+		return openConnection(dbname,false,false);
 	}
 	
 	/** Get connection for reading of (possibly lagged) stuff, i.e. on slaves (or master if there are no slaves) */
 	protected Connection getWriteConnection(String dbname) throws IOException{
-		return openConnection(dbname,true);
+		return openConnection(dbname,true,false);
+	}
+	
+	/** Get administrators connection for creating tables/db, etc.. (on master) */
+	protected Connection getAdminConnection(String dbname) throws IOException {
+		return openConnection(dbname,true,true);
 	}
 	
 	/** Open connection on the master, or load-balanced on one of the slaves */
-	protected Connection openConnection(String dbname, boolean onMaster) throws IOException {
+	protected Connection openConnection(String dbname, boolean onMaster, boolean admin) throws IOException {
 		String host=null;
 		if(onMaster || slaves == null)
 			host = master;
@@ -121,8 +133,12 @@ public class MySQLStorage extends Storage {
 		String dburl = "jdbc:mysql://"+host+":3306/";
 		if(!separate && defaultDB!=null)
 			dburl += defaultDB;
+		dburl += "?useUnicode=yes&characterEncoding=UTF-8";
 		try {
-			return DriverManager.getConnection(dburl, username, password);
+			if(admin)
+				return DriverManager.getConnection(dburl, adminUsername, adminPassword);
+			else
+				return DriverManager.getConnection(dburl, username, password);
 		} catch (SQLException e) {
 			log.error("Cannot establish connection to "+dburl+" - check host, db, username and password : "+e.getMessage());
 			throw new IOException("Cannot establish connection to mysql database.");
@@ -134,7 +150,7 @@ public class MySQLStorage extends Storage {
 	}
 	
 	public String escape(String str){
-		return str.replace("'","\\'");
+		return str.replace("\\","\\\\").replace("'","\\'");
 	}
 	
 	public String getTableName(String name, String dbname){
@@ -147,7 +163,9 @@ public class MySQLStorage extends Storage {
 	// inherit javadoc 
 	public Collection<CompactArticleLinks> getPageReferences(Collection<Title> titles, String dbname) throws IOException {		
 		String sql = "SELECT rf_key, rf_references from "+getTableName("references",dbname)+" WHERE ";
-		if(titles.size()==1){
+		if(titles == null || titles.size()==0)
+			return new ArrayList<CompactArticleLinks>();
+		else if(titles.size()==1){
 			sql += "rf_key="+quote(escape(titles.iterator().next().getKey()));
 		} else{			
 			StringBuilder sb = new StringBuilder(sql);
@@ -155,7 +173,7 @@ public class MySQLStorage extends Storage {
 			Iterator<Title> it = titles.iterator();
 			while(it.hasNext()){
 				sb.append('\'');
-				sb.append(it.next().getKey());
+				sb.append(escape(it.next().getKey()));
 				sb.append('\'');
 				if(it.hasNext())
 					sb.append(',');
@@ -256,9 +274,11 @@ public class MySQLStorage extends Storage {
 			tdef = def;		
 		// create
 		try {
+			Connection admin = getAdminConnection(dbname);
 			log.info("Creating table "+name+" on "+dbname);
-			Statement stmt = conn.createStatement();
-			stmt.executeUpdate(tdef);						
+			Statement stmt = admin.createStatement();
+			stmt.executeUpdate(tdef);
+			admin.close();
 		} catch (SQLException e) {
 			log.error("Cannot create table "+table+" : "+e.getMessage());
 			throw new IOException(e.getMessage());

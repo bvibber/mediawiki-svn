@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -123,6 +124,42 @@ public class PHPParser {
 		return ns;
 	}
 	
+	/** Get wgLanguages from InitialiseSettings */
+	public Hashtable<String,String> getLanguages(String text){
+		text = text.replaceAll("(#.*)",""); // strip comments
+		Hashtable<String,String> langs = new Hashtable<String,String>();
+		
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		Pattern wglang = Pattern.compile("[\"']wgLanguageCode[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
+		Pattern entry = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*[\"'](.*?)[\"']",flags);
+		Matcher matcher = wglang.matcher(text);
+		while(matcher.find()){
+			Matcher me = entry.matcher(matcher.group(1));
+			while(me.find()){
+				langs.put(me.group(1),me.group(2));				
+			}
+		}
+		return langs;
+	}
+	
+	/** Get wgServer from InitialiseSettings */
+	public Hashtable<String,String> getServer(String text){
+		text = text.replaceAll("(#.*)",""); // strip comments
+		Hashtable<String,String> servers = new Hashtable<String,String>();
+		
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		Pattern wgserv = Pattern.compile("[\"']wgServer[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
+		Pattern entry = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*[\"'](.*?)[\"']",flags);
+		Matcher matcher = wgserv.matcher(text);
+		while(matcher.find()){
+			Matcher me = entry.matcher(matcher.group(1));
+			while(me.find()){
+				servers.put(me.group(1),me.group(2));				
+			}
+		}
+		return servers;
+	}
+	
 	public String readFile(String path){
 		char buffer[] = new char[32768];
 		String text = "";
@@ -141,7 +178,7 @@ public class PHPParser {
 		return text;		
 	}
 	
-	public String readURL(URL url){
+	public String readURL(URL url) throws IOException{
 		char buffer[] = new char[32768];
 		String text = "";
 		try {
@@ -155,13 +192,15 @@ public class PHPParser {
 			} while(len > 0);
 			r.close();
 		} catch (IOException e) {
-			// silent
+			throw e;
 		}
 		return text;		
 	}
 	
-	/** Test stuff */
-	public static void main(String args[]){
+	/** Test stuff 
+	 * @throws IOException 
+	 * @throws MalformedURLException */
+	public static void main(String args[]) throws MalformedURLException, IOException{
 		String text = "$namespaceNames = array(\n"+
 		"NS_MEDIA            => \"Medija\",\n"+
 		"NS_SPECIAL          => \"Posebno\",\n"+
@@ -177,6 +216,12 @@ public class PHPParser {
 		System.out.println(map);
 		System.out.println(p.getFallBack(text2));
 		System.out.println(p.getRedirectMagic(php));
+		
+		System.out.println(p.getLanguages("'wgLanguageCode' => array('default' => '$lang')"));
+		String initset = p.readURL(new URL("file:///home/rainman/Desktop/InitialiseSettings.php"));
+		System.out.println(p.getLanguages(initset));
+		System.out.println(p.getServer(initset));
+		
 		
 	}
 }

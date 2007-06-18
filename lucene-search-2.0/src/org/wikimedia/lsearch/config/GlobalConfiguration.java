@@ -17,6 +17,7 @@ import java.net.URL;
 import java.net.UnknownHostException;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Enumeration;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -27,6 +28,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.wikimedia.lsearch.search.NamespaceFilter;
+import org.wikimedia.lsearch.util.PHPParser;
 
 /**
  * Read and parse the global configuration file, is also used
@@ -58,13 +60,17 @@ public class GlobalConfiguration {
 	protected Hashtable<String,NamespaceFilter> namespacePrefix;
 	/** keyword for all namespaces (i.e. no filtering) */
 	protected String namespacePrefixAll; 
+	/** suffx -> OAI Repo url pattern */
+	protected Hashtable<String,String> oaiRepo;
+	/** wgLanguageCode from InitialiseSettings, suffix -> lang code */
+	protected Hashtable<String,String> wgLanguageCode = null;
+	/** wgServer, suffix -> server (default server is "default")*/
+	protected Hashtable<String,String> wgServer = null;
 	
 	/** info about this host */
 	protected static InetAddress myHost;
 	protected static String hostAddr, hostName;	
 	
-	/** OAI repo pattern from lsearch2.conf */
-	protected String OAIRepoPattern;
 	/** Database suffix if dbname, the rest is supposed to be language, e.g srwiki => (suffix wiki) => sr */
 	protected String[] databaseSuffixes = null;	
 	/** Databases ending in suffix will use additional keyword scores */
@@ -204,13 +210,13 @@ public class GlobalConfiguration {
 	 * @param url
 	 * @throws IOException
 	 */
-	public void readFromURL(URL url, String indexpath, String oaiRepo) throws IOException{
+	public void readFromURL(URL url, String indexpath) throws IOException{
 		BufferedReader in;
 		try {
 			in = new BufferedReader(
 					new InputStreamReader(
 					url.openStream()));
-			read(in,indexpath,oaiRepo);
+			read(in,indexpath);
 		} catch (IOException e) {
 			System.out.println("I/O Error in opening or reading global config at url "+url);
 			throw e;
@@ -231,6 +237,7 @@ public class GlobalConfiguration {
 		indexRsyncPath = new Hashtable<String, String>();
 		namespacePrefix = new Hashtable<String,NamespaceFilter>();
 		namespacePrefixAll = "all"; // default
+		oaiRepo = new Hashtable<String,String>();
 	}
 	
 	protected String[] getArrayProperty(String name){
@@ -247,7 +254,7 @@ public class GlobalConfiguration {
 	 * @param in   opened reader
 	 * @throws IOException
 	 */
-	protected void read(BufferedReader in, String indexpath, String oaiRepo) throws IOException{
+	protected void read(BufferedReader in, String indexpath) throws IOException{
 		String line="";		
 		int section = -1; 
 		Pattern roleRegexp = Pattern.compile("\\((.*?)\\)");
@@ -258,12 +265,12 @@ public class GlobalConfiguration {
 		final int SEARCH = 2;
 		final int INDEXPATH = 3;
 		final int NAMESPACE_PREFIX = 4;
+		final int OAI = 5;
 		
 		int searchGroupNum = -1;
 		
 		init();
 		this.indexPath = indexpath;
-		this.OAIRepoPattern = oaiRepo == null? "" : oaiRepo;
 		
 		while((line = in.readLine()) != null){
 			lineNum ++;		
@@ -293,6 +300,10 @@ public class GlobalConfiguration {
 					this.databaseSuffixes = getArrayProperty("Database.suffix");
 					this.keywordScoringSuffixes = getArrayProperty("KeywordScoring.suffix");
 					this.exactCaseSuffix = getArrayProperty("ExactCase.suffix");
+					// try reading intialisesettings
+					String initset = globalProperties.getProperty("WMF.InitialiseSettings");
+					if(initset != null)
+						initializeWmfSettings(initset);
 					if(line == null)
 						break;
 					// else: line points to beginning of next section
@@ -311,6 +322,8 @@ public class GlobalConfiguration {
 					section = INDEXPATH;
 				else if(s.equalsIgnoreCase("namespace-prefix"))
 					section = NAMESPACE_PREFIX;
+				else if(s.equalsIgnoreCase("oai"))
+					section = OAI;
 			} else if(section==-1 && !line.trim().equals("")){
 				System.out.println("Ignoring a line up to first section heading...");
 			} else if(section == DATABASE){
@@ -355,17 +368,42 @@ public class GlobalConfiguration {
 					namespacePrefixAll = prefix;
 				else
 					namespacePrefix.put(prefix,new NamespaceFilter(filter));				
+			} else if(section == OAI){
+				String[] parts = splitBySemicolon(line,lineNum);
+				if(parts == null) continue;
+				String suffix = parts[0].trim();
+				String url = parts[1].trim();				
+				
+				oaiRepo.put(suffix,url);
 			}
 		}
 		if( !checkIntegrity() ){
 			in.close();
 			System.exit(1);
 		}
+		
 		makeIndexIdPool();
 		in.close();
 	}
 	
-	
+	/**
+	 * A bit hackish: read InitialiseSettings which we know have a certain
+	 * format to avoid maintaining two copies for config files (one in php
+	 * other for lsearch in global conf)
+	 * 
+	 * @param initset
+	 */
+	protected void initializeWmfSettings(String initset) {
+		try {
+			PHPParser parser = new PHPParser();
+			String text = parser.readURL(new URL(initset));
+			wgLanguageCode = parser.getLanguages(text);
+			wgServer = parser.getServer(text);
+		} catch (IOException e) {
+			System.out.println("Error: Cannot read InitialiseSettings.php from url "+initset+" : "+e.getMessage());
+		}	
+	}
+
 	/** Get all hosts which search this inxedId (dbrole) */
 	protected HashSet<String> getSearchHosts(String dbrole){
 		HashSet<String> searchHosts = new HashSet<String>();
@@ -445,7 +483,7 @@ public class GlobalConfiguration {
 					if(rsyncIndexPath == null)
 						rsyncIndexPath = indexRsyncPath.get("<default>");
 				}
-				String oairepo = MessageFormat.format(OAIRepoPattern,new Object[] {dbname,getLanguage(dbname)});
+				String oairepo = getOAIRepo(dbname);
 				
 				IndexId iid = new IndexId(dbrole,
 						                    type,
@@ -523,7 +561,7 @@ public class GlobalConfiguration {
 	}
 
 	protected String[] splitBySemicolon(String line, int lineNum){
-		String[] parts = line.split(":");
+		String[] parts = line.split(":",2);
 		if(parts.length!=2){
 			System.out.println("Error at line "+lineNum+": semicolon missing. Ignoring this line.");
 			return null;
@@ -779,9 +817,18 @@ public class GlobalConfiguration {
 	/** Get language for a dbname */
 	public String getLanguage(String dbname) {
 		// first check explicit language paramter in global settings
-		Hashtable<String,String> lang = database.get(dbname).get("language");
-		if(lang!=null)
-			return lang.get("code");
+		Hashtable<String,Hashtable<String,String>> dbparam = database.get(dbname);
+		if(dbparam !=null){
+			Hashtable<String,String> lang = dbparam.get("language");
+			if(lang!=null)
+				return lang.get("code");
+		}
+		// try to get from initialise settings
+		if(wgLanguageCode!=null){
+			String key = findSuffix(wgLanguageCode.keySet(),dbname);
+			if(key != null)
+				return wgLanguageCode.get(key);
+		}
 		// try to get languages from suffixes
 		if(databaseSuffixes != null){
 			for (String suffix : databaseSuffixes) {
@@ -866,6 +913,51 @@ public class GlobalConfiguration {
 	 */
 	public boolean exactCaseIndex(String dbname){
 		return checkSuffix(exactCaseSuffix,dbname);		
+	}
+
+	/** Find suffix that matches dbname */
+	public String findSuffix(Collection<String> suffixes, String dbname){
+		for(String suffix : suffixes){
+			if(dbname.endsWith(suffix)){
+				return suffix;
+			}
+		}
+		return null;
+	}
+	
+	/** Get OAI-repo url for dbname */
+	public String getOAIRepo(String dbname){
+		String repo = null;
+		// try to get from initialise settings
+		if(wgServer != null){
+			String key = findSuffix(wgServer.keySet(),dbname);
+			if(key == null)
+				key = "default";
+			repo = wgServer.get(key);
+			if(repo != null){
+				if(!repo.endsWith("/"))
+					repo += "/";
+				repo += "w/index.php"; // FIXME: we take this as generic path to index.php
+			}
+				
+		}
+		// get from global config
+		if(repo == null){
+			repo = findSuffix(oaiRepo.keySet(),dbname);
+			if(repo != null)
+				repo = oaiRepo.get(repo);
+			if(repo == null && oaiRepo.containsKey("<default>"))
+				repo = oaiRepo.get("<default>");
+		}
+		if(repo == null)
+			return ""; // failed, no url
+		
+		// process $lang
+		String lang = getLanguage(dbname);
+		repo = repo.replace("$lang",lang);
+		repo = repo += "?title=Special:OAIRepository";
+		
+		return repo;
 	}
 	
 
