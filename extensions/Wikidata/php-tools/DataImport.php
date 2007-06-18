@@ -32,7 +32,12 @@ function getUserId($real_name){
 
 $beginTime = time();
 $wgCommandLineMode = true;
-$wdDefaultViewDataSet = 'uw';
+$wdDefaultViewDataSet = 'sp';
+
+$arg = reset( $argv ); 
+if ( $arg !== false ){
+ 	$wdDefaultViewDataSet = next( $argv );
+}
 
 /*
  * User IDs to use during the import of both UMLS and Swiss-Prot
@@ -48,9 +53,9 @@ if ( $sibUserId == -1 ){
 
 //$linkEC2GoFileName = "LinksEC2Go.txt";
 //$linkSwissProtKeyWord2GoFileName = "LinksSP2Go.txt";
-//$swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\uniprot_sprot.xml";
+$swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\uniprot_sprot.xml";
 //$swissProtXMLFileName =  "100000lines.xml";
-$swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\SPentriesForWPTest.xml";
+//$swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\SPentriesForWPTest.xml";
 //$swissProtXMLFileName =  "C:\Users\mulligen\Desktop\SPentriesForWPTest.xml";
 
 //$wgUser->setID($nlmUserID);
