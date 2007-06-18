@@ -77,6 +77,39 @@ if(    isset( $_SERVER['SERVER_PORT'] )
 	$wgServer .= ":" . $_SERVER['SERVER_PORT'];
 }
 
+/**
+ * If set, specifies the "canonical" base URL of the site, as $wgServer:
+ *
+ *   $wgCanonicalserver = 'http://example.com';
+ *
+ * Contrasts with $wgSecureServer when constructing a mixed HTTP and HTTPS
+ * site.
+ *
+ * If not set, $wgServer will be returned by Title::getCanonicalURL().
+ */
+$wgCanonicalServer = false;
+
+/**
+ * If set, specifies the "secure" base URL of the site, as $wgServer:
+ *
+ *   $wgCanonicalserver = 'https://secure.example.com';
+ *
+ * Contrasts with $wgSecureServer when constructing a mixed HTTP and HTTPS
+ * site.
+ *
+ * If not set, $wgServer will be returned by Title::getCanonicalURL().
+ */
+$wgSecureServer = false;
+
+/**
+ * If true, all login forms will be forced to redirect to the secure site
+ * as specified by $wgSecureServer.
+ *
+ * When false, logins may be done on both the secure and insecure domains.
+ */
+$wgSecureLogin = false;
+
+
 
 /**
  * The path we should point to.

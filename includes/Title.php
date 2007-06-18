@@ -761,6 +761,57 @@ class Title {
 		wfRunHooks( 'GetFullURL', array( &$this, &$url, $query ) );
 		return $url;
 	}
+	
+	/**
+	 * Get a fully-qualified URL referring to this page at the secure
+	 * domain for this site, if configured in $wgSecureServer.
+	 *
+	 * If no separate secure site is setup, will return the default URL,
+	 * which may or may not be SSL depending on your configuration.
+	 *
+	 * @todo support for SSL variants of interwiki links.
+	 *
+	 * @param string $query an optional query string, not used
+	 * 	for interwiki links
+	 * @param string $variant language variant of url (for sr, zh..)
+	 * @return string the URL
+	 */
+	public function getSecureURL( $query = '', $variant = false ) {
+		global $wgSecureServer;
+		if( '' == $this->mInterwiki && $wgSecureServer ) {
+			return $wgSecureServer .
+				$this->getLocalUrl( $query, $variant ) .
+				$this->getFragmentForURL();
+		} else {
+			return $this->getFullURL( $query, $variant );
+		}
+	}
+	
+	/**
+	 * Get a fully-qualified URL referring to this page at the canonical
+	 * domain for this site, if configured in $wgCanonicalServer. This
+	 * will usually be contrasted with an SSL domain in $wgSecureServer.
+	 *
+	 * If no separate secure site is setup, will return the default URL,
+	 * which may or may not be SSL depending on your configuration.
+	 *
+	 * @todo support for SSL variants of interwiki links.
+	 *
+	 * @param string $query an optional query string, not used
+	 * 	for interwiki links
+	 * @param string $variant language variant of url (for sr, zh..)
+	 * @return string the URL
+	 */
+	public function getCanonicalURL( $query = '', $variant = false ) {
+		global $wgCanonicalServer;
+		if( '' == $this->mInterwiki && $wgCanonicalServer ) {
+			return $wgCanonicalServer .
+				$this->getLocalUrl( $query, $variant ) .
+				$this->getFragmentForURL();
+		} else {
+			return $this->getFullURL( $query, $variant );
+		}
+	}
 
 	/**
 	 * Get a URL with no fragment or server name.  If this page is generated

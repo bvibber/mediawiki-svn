@@ -8,11 +8,7 @@
  * constructor
  */
 function wfSpecialUserlogin() {
-	global $wgCommandLineMode;
 	global $wgRequest;
-	if( session_id() == '' ) {
-		wfSetupSession();
-	}
 
 	$form = new LoginForm( $wgRequest );
 	$form->execute();
@@ -87,6 +83,26 @@ class LoginForm {
 	}
 
 	function execute() {
+		global $wgSecureLogin;
+		if( $wgSecureLogin && empty( $_SERVER['HTTPS'] ) ) {
+			// Force a redirect to the secure site
+			$self = SpecialPage::getTitleFor( 'Userlogin' );
+			
+			$vars = array();
+			if( $this->mReturnTo != '' ) {
+				$vars['returnto'] = $this->mReturnTo;
+			}
+			$dest = $self->getSecureURL( wfArrayToCGI( $vars ) );
+		
+			global $wgOut;
+			$wgOut->redirect( $dest );
+			return;
+		}
+	
+		if( session_id() == '' ) {
+			wfSetupSession();
+		}
+		
 		if ( !is_null( $this->mCookieCheck ) ) {
 			$this->onCookieRedirectCheck( $this->mCookieCheck );
 			return;
