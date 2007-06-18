@@ -5,7 +5,6 @@
 package org.wikimedia.lsearch.test;
 
 import java.io.IOException;
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -63,6 +62,10 @@ public class GlobalConfigurationTest extends TestCase {
 			return globalProperties;
 		}
 		
+		public Hashtable<String,String> getOaiRepo(){
+			return oaiRepo;
+		}
+		
 		
 	}
 	
@@ -86,7 +89,7 @@ public class GlobalConfigurationTest extends TestCase {
 		String testurl = "file://"+System.getProperty("user.dir")+"/test-data/mwsearch-global.test";
 		try {
 			URL url = new URL(testurl);
-			testgc.readFromURL(url,"/usr/local/var/mwsearch","");
+			testgc.readFromURL(url,"/usr/local/var/mwsearch");
 			
 			// database
 			Hashtable database = testgc.getDatabase();			
@@ -173,8 +176,18 @@ public class GlobalConfigurationTest extends TestCase {
 			assertTrue(testgc.useKeywordScoring("srwiki"));
 			assertTrue(testgc.useKeywordScoring("rutest"));
 			
+			// test oai repo stuff
+			Hashtable<String,String> oairepo = testgc.getOaiRepo();
+			assertEquals("http://$lang.wiktionary.org/w/index.php",oairepo.get("wiktionary"));
+			assertEquals("http://localhost/wiki-lucene/phase3/index.php",oairepo.get("frtest"));
+			assertEquals("http://$lang.wikipedia.org/w/index.php",oairepo.get("<default>"));
 			
+			assertEquals("http://sr.wikipedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("srwiki"));
+			assertEquals("http://fr.wikipedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("frtest"));
 			
+			// InitialiseSettings test
+			assertEquals("sr",testgc.getLanguage("rswikimedia"));
+			assertEquals("http://commons.wikimedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("commonswiki"));
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();

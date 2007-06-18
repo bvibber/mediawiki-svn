@@ -18,6 +18,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.RankBuilder;
+import org.wikimedia.lsearch.storage.Storage;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
@@ -39,8 +40,8 @@ public class Importer {
 		String dbname = null;
 		Boolean optimize = null;
 		Integer mergeFactor = null, maxBufDocs = null;
-		boolean newIndex = false, makeSnapshot = false;
-		boolean snapshotDb = false;
+		boolean newIndex = true, makeSnapshot = false;
+		boolean snapshotDb = false; boolean updateReferences=false;
 		
 		System.out.println("MediaWiki Lucene search indexer - index builder from xml database dumps.\n");
 		
@@ -48,10 +49,11 @@ public class Importer {
 		log = Logger.getLogger(Importer.class);
 		
 		if(args.length < 2){
-			System.out.println("Syntax: java Importer [-n] [-s] [-l limit] [-o optimize] [-m mergeFactor] [-b maxBufDocs] <inputfile> <dbname>");
+			System.out.println("Syntax: java Importer [-n] [-s] [-r] [-l limit] [-o optimize] [-m mergeFactor] [-b maxBufDocs] <inputfile> <dbname>");
 			System.out.println("Options: ");
-			System.out.println("  -n              - create a new index (erase the old one if exists)");
+			System.out.println("  -a              - don't create new index, append to old");
 			System.out.println("  -s              - make index snapshot when finished");
+			System.out.println("  -r              - update references info on storage backend");
 			System.out.println("  -l limit_num    - add at most limit_num articles");
 			System.out.println("  -o optimize     - true/false overrides optimization param from global settings");
 			System.out.println("  -m mergeFactor  - overrides param from global settings");
@@ -68,8 +70,10 @@ public class Importer {
 				mergeFactor = Integer.parseInt(args[++i]);
 			else if(args[i].equals("-b"))
 				maxBufDocs = Integer.parseInt(args[++i]);
-			else if(args[i].equals("-n"))
-				newIndex = true;
+			else if(args[i].equals("-a"))
+				newIndex = false;
+			else if(args[i].equals("-r"))
+				updateReferences = true;
 			else if(args[i].equals("-s"))
 				makeSnapshot = true;
 			else if(args[i].equals("--snapshot")){
@@ -99,6 +103,14 @@ public class Importer {
 			
 			// regenerate link and redirect information
 			Links links = RankBuilder.processLinks(inputfile,RankBuilder.getTitles(inputfile,langCode),langCode,org.wikimedia.lsearch.ranks.LinkReader.READ_REDIRECTS);
+			
+			if(updateReferences){				
+				try {
+					Storage.getInstance().storePageReferences(links.getAll(),dbname);
+				} catch (IOException e) {
+					log.error("Failed to update references info: "+e.getMessage());
+				}
+			}
 			links.generateRedirectLists();
 			
 			log.info("Third pass, indexing articles...");
