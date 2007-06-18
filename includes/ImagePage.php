@@ -542,7 +542,7 @@ EOT
 		# Deleting old images doesn't require confirmation
 		if ( !is_null( $oldimage ) || $confirm ) {
 			if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ), $oldimage ) ) {
-				$this->doDeleteImage( $reason );
+				$this->doDeleteImage( $reason, $suppress );
 			} else {
 				$wgOut->showFatalError( wfMsg( 'sessionfailure' ) );
 			}
@@ -566,7 +566,7 @@ EOT
 	 *
 	 * @param $reason User provided reason for deletion.
 	 */
-	function doDeleteImage( $reason ) {
+	function doDeleteImage( $reason, $suppress = false ) {
 		global $wgOut, $wgRequest;
 
 		$oldimage = $wgRequest->getVal( 'oldimage' );
