@@ -51,6 +51,7 @@ $result = mysql_query("
 		GROUP BY uw_collection_ns.collection_id
 	) AS counts
 		ON spellings.id=counts.id
+		ORDER BY spelling
 ")or die ("error ".mysql_error());
 
 
