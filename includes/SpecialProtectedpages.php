@@ -147,6 +147,11 @@ class ProtectedPagesForm {
 		foreach( $wgRestrictionTypes as $type ) {
 			$text = wfMsg("restriction-$type");
 			$m[$text] = $type;
+			if( $type=='edit' ) {
+				// Upload rights for images, a subtype of edit
+				$text = wfMsg("restriction-upload");
+				$m[$text] = 'upload';
+			}
 		}
 
 		// Third pass generates sorted XHTML content

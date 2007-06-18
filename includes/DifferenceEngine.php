@@ -47,7 +47,7 @@ class DifferenceEngine {
 			# Show diff between revision $old and the previous one.
 			# Get previous one from DB.
 			#
-			$this->mNewid = intval($old);
+			$this->mNewid = intval($old); 
 
 			$this->mOldid = $this->mTitle->getPreviousRevisionID( $this->mNewid );
 
@@ -63,6 +63,13 @@ class DifferenceEngine {
 				$this->mNewid = 0;
 			}
 
+		} else if( 'cur' === $new ) {
+			# Show diff between revision $old and the current one.
+			# Get previous one from DB.
+			#
+			$this->mNewid = $this->mTitle->getLatestRevID();
+
+			$this->mOldid = intval($old);
 		} else {
 			$this->mOldid = intval($old);
 			$this->mNewid = intval($new);
@@ -333,10 +340,21 @@ CONTROL;
 			$wgOut->addWikitext( wfMsg( 'missingarticle', "<nowiki>(fixme, bug)</nowiki>" ) );
 			return false;
 		} else {
-			$wgOut->addStyle( 'common/diff.css' );
+			$this->showDiffStyle();
 			$wgOut->addHTML( $diff );
 			return true;
 		}
+	}
+	
+	/**
+	 * Add style sheets and supporting JS for diff display.
+	 */
+	function showDiffStyle() {
+		global $wgStylePath, $wgStyleVersion, $wgOut;
+		$wgOut->addStyle( 'common/diff.css' );
+		
+		// JS is needed to detect old versions of Mozilla to work around an annoyance bug.
+		$wgOut->addScript( "<script type=\"text/javascript\" src=\"$wgStylePath/common/diff.js?$wgStyleVersion\"></script>" );
 	}
 
 	/**
@@ -588,6 +606,8 @@ CONTROL;
 		if( is_null( $this->mNewRev ) ) {
 			return false;
 		}
+		
+		$this->mNewid = $this->mNewRev->getId(); // Make this explicit, for undo links
 
 		// Set assorted variables
 		$timestamp = $wgLang->timeanddate( $this->mNewRev->getTimestamp(), true );

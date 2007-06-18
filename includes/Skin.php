@@ -300,7 +300,7 @@ class Skin extends Linker {
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
-		
+
 		$vars = array( 
 			'skin' => $data['skinname'],
 			'stylepath' => $wgStylePath,
@@ -313,6 +313,8 @@ class Skin extends Linker {
 			'wgPageName' => $wgTitle->getPrefixedDBKey(),
 			'wgTitle' => $wgTitle->getText(),
 			'wgAction' => $wgRequest->getText( 'action', 'view' ),
+			'wgRestrictionEdit' => $wgTitle->getRestrictions( 'edit' ),
+			'wgRestrictionMove' => $wgTitle->getRestrictions( 'move' ),
 			'wgArticleId' => $wgTitle->getArticleId(),
 			'wgIsArticle' => $wgOut->isArticle(),
 			'wgUserName' => $wgUser->isAnon() ? NULL : $wgUser->getName(),
@@ -386,7 +388,8 @@ class Skin extends Linker {
 	function getUserStylesheet() {
 		global $wgStylePath, $wgRequest, $wgContLang, $wgSquidMaxage, $wgStyleVersion;
 		$sheet = $this->getStylesheet();
-		$s = "@import \"$wgStylePath/common/common.css?$wgStyleVersion\";\n";
+		$s = "@import \"$wgStylePath/common/shared.css?$wgStyleVersion\";\n";
+		$s .= "@import \"$wgStylePath/common/oldshared.css?$wgStyleVersion\";\n";
 		$s .= "@import \"$wgStylePath/$sheet?$wgStyleVersion\";\n";
 		if($wgContLang->isRTL()) $s .= "@import \"$wgStylePath/common/common_rtl.css?$wgStyleVersion\";\n";
 

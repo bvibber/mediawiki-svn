@@ -437,6 +437,7 @@ class Linker {
 	* @param boolean $thumb shows image as thumbnail in a frame
 	* @param string $manual_thumb image name for the manual thumbnail
 	* @param string $valign vertical alignment: baseline, sub, super, top, text-top, middle, bottom, text-bottom
+	* @param string $timestamp: revision time
 	* @return string
 	*/
 	function makeImageLinkObj( $nt, $label, $alt, $align = '', $params = array(), $framed = false,
@@ -627,34 +628,38 @@ class Linker {
 	}
 
 	/**
-	 * Pass a title object, not a title string
+	 * Make a "broken" link to an image
+	 *
+	 * @param Title $title Image title
+	 * @param string $text Link label
+	 * @param string $query Query string
+	 * @param string $trail Link trail
+	 * @param string $prefix Link prefix
+	 * @return string
 	 */
-	function makeBrokenImageLinkObj( $nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
-		# Fail gracefully
-		if ( ! isset($nt) ) {
-			# throw new MWException();
+	public function makeBrokenImageLinkObj( $title, $text = '', $query = '', $trail = '', $prefix = '' ) {
+		global $wgEnableUploads;
+		if( $title instanceof Title ) {
+			wfProfileIn( __METHOD__ );
+			if( $wgEnableUploads ) {
+				$upload = SpecialPage::getTitleFor( 'Upload' );
+				if( $text == '' )
+					$text = htmlspecialchars( $title->getPrefixedText() );
+				$q = 'wpDestFile=' . $title->getPartialUrl();
+				if( $query != '' )
+					$q .= '&' . $query;
+				list( $inside, $trail ) = self::splitTrail( $trail );
+				$style = $this->getInternalLinkAttributesObj( $title, $text, 'yes' );
+				wfProfileOut( __METHOD__ );
+				return '<a href="' . $upload->escapeLocalUrl( $q ) . '"'
+					. $style . '>' . $prefix . $text . $inside . '</a>' . $trail;
+			} else {
+				wfProfileOut( __METHOD__ );
+				return $this->makeKnownLinkObj( $title, $text, $query, $trail, $prefix );
+			}
+		} else {
 			return "<!-- ERROR -->{$prefix}{$text}{$trail}";
 		}
-
-		$fname = 'Linker::makeBrokenImageLinkObj';
-		wfProfileIn( $fname );
-
-		$q = 'wpDestFile=' . urlencode( $nt->getDBkey() );
-		if ( '' != $query ) {
-			$q .= "&$query";
-		}
-		$uploadTitle = SpecialPage::getTitleFor( 'Upload' );
-		$url = $uploadTitle->escapeLocalURL( $q );
-
-		if ( '' == $text ) {
-			$text = htmlspecialchars( $nt->getPrefixedText() );
-		}
-		$style = $this->getInternalLinkAttributesObj( $nt, $text, "yes" );
-		list( $inside, $trail ) = Linker::splitTrail( $trail );
-		$s = "<a href=\"{$url}\"{$style}>{$prefix}{$text}{$inside}</a>{$trail}";
-
-		wfProfileOut( $fname );
-		return $s;
 	}
 
 	/** @deprecated use Linker::makeMediaLinkObj() */
@@ -684,7 +689,7 @@ class Linker {
 				$class = 'internal';
 			} else {
 				$upload = SpecialPage::getTitleFor( 'Upload' );
-				$url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $title->getText() ) );
+				$url = $upload->getLocalUrl( 'wpDestFile=' . urlencode( $title->getDbKey() ) );
 				$class = 'new';
 			}
 			$alt = htmlspecialchars( $title->getText() );
@@ -855,26 +860,6 @@ class Linker {
 	}
 
 	/**
-	 * Generate a user link if the current user is allowed to view it
-	 * @param File $file
-	 * @param $isPublic, bool, show only if all users can see it
-	 * @return string HTML
-	 */
-	function fileUserLink( $file, $isPublic = false ) {
-		if( $file->isDeleted( File::DELETED_USER ) && $isPublic ) {
-			$link = wfMsgHtml( 'rev-deleted-user' );
-		} else if( $file->userCan( File::DELETED_USER ) ) {
-			$link = $this->userLink( $file->user, $file->userText );
-		} else {
-			$link = wfMsgHtml( 'rev-deleted-user' );
-		}
-		if( $file->isDeleted( File::DELETED_USER ) ) {
-			return '<span class="history-deleted">' . $link . '</span>';
-		}
-		return $link;
-	}
-
-	/**
 	 * Generate a user tool link cluster if the current user is allowed to view it
 	 * @param $rev Revision object.
 	 * @param $isPublic, bool, show only if all users can see it
@@ -917,27 +902,6 @@ class Linker {
 			$link = wfMsgHtml( 'rev-deleted-user' );
 		}
 		if( LogViewer::isDeleted( $event, LogViewer::DELETED_USER ) ) {
-			return '<span class="history-deleted">' . $link . '</span>';
-		}
-		return $link;
-	}
-
-	/**
-	 * Generate a user tool link cluster if the current user is allowed to view it
-	 * @param File $file
-	 * @param $isPublic, bool, show only if all users can see it
-	 * @return string HTML
-	 */
-	function fileUserTools( $file, $isPublic = false ) {
-		if( $file->isDeleted( Revision::DELETED_USER ) && $isPublic ) {
-			$link = wfMsgHtml( 'rev-deleted-user' );
-		} else if( $file->userCan( Revision::DELETED_USER ) ) {
-			$link = $this->userLink( $file->user, $file->userText ) .
-			$this->userToolLinks( $file->user, $file->userText );
-		} else {
-			$link = wfMsgHtml( 'rev-deleted-user' );
-		}
-		if( $file->isDeleted( Revision::DELETED_USER ) ) {
 			return '<span class="history-deleted">' . $link . '</span>';
 		}
 		return $link;
@@ -1024,12 +988,13 @@ class Linker {
 	}
 
 	/**
-	 * Format regular and media links - all other wiki formatting is ignored
-	 * Called by Linker::formatComment.
-	 * @param $comment The comment text.
-	 * @return Comment text with links using HTML.
+	 * Formats wiki links and media links in text; all other wiki formatting
+	 * is ignored
+	 *
+	 * @param string $comment Text to format links in
+	 * @return string
 	 */
-	private function formatLinksInComment( $comment ) {
+	public function formatLinksInComment( $comment ) {
 		global $wgContLang;
 
 		$medians = '(?:' . preg_quote( Namespace::getCanonicalName( NS_MEDIA ), '/' ) . '|';
@@ -1131,27 +1096,6 @@ class Linker {
 		return $block;
 	}
 
-	/**
-	 * Wrap and format the given file's comment block, if the current
-	 * user is allowed to view it.
-	 *
-	 * @param File $file
-	 * @return string HTML
-	 */
-	function fileComment( $file, $isPublic = false ) {
-		if( $file->isDeleted( File::DELETED_COMMENT ) && $isPublic ) {
-			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
-		} else if( $file->userCan( File::DELETED_COMMENT ) ) {
-			$block = $this->commentBlock( $file->description );
-		} else {
-			$block = ' ' . wfMsgHtml( 'rev-deleted-comment' );
-		}
-		if( $file->isDeleted( File::DELETED_COMMENT ) ) {
-			return "<span class=\"history-deleted\">$block</span>";
-		}
-		return $block;
-	}
-
 	/** @todo document */
 	function tocIndent() {
 		return "\n<ul>";
@@ -1200,13 +1144,14 @@ class Linker {
 	/** @todo document */
 	public function editSectionLinkForOther( $title, $section ) {
 		global $wgContLang;
-
 		$title = Title::newFromText( $title );
 		$editurl = '&section='.$section;
 		$url = $this->makeKnownLinkObj( $title, wfMsg('editsection'), 'action=edit'.$editurl );
-
-		return "<span class=\"editsection\">[".$url."]</span>";
-
+		$result = null;
+		wfRunHooks( 'EditSectionLinkForOther', array( &$this, $title, $section, $url, &$result ) );
+		return is_null( $result )
+			? "<span class=\"editsection\">[{$url}]</span>"
+			: "<span class=\"editsection\">[{$result}]</span>";
 	}
 
 	/**
@@ -1216,12 +1161,14 @@ class Linker {
 	 */
 	public function editSectionLink( $nt, $section, $hint='' ) {
 		global $wgContLang;
-
 		$editurl = '&section='.$section;
 		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'editsectionhint', htmlspecialchars( $hint ) ) . '"';
 		$url = $this->makeKnownLinkObj( $nt, wfMsg('editsection'), 'action=edit'.$editurl, '', '', '',  $hint );
-
-		return "<span class=\"editsection\">[".$url."]</span>";
+		$result = null;
+		wfRunHooks( 'EditSectionLink', array( &$this, $nt, $section, $hint, $url, &$result ) );
+		return is_null( $result )
+			? "<span class=\"editsection\">[{$url}]</span>"
+			: "<span class=\"editsection\">[{$result}]</span>";
 	}
 
 	/**

@@ -532,8 +532,8 @@ class UndeleteForm {
 			$this->mTargetObj = NULL;
 		}
 		if( $this->mRestore ) {
-			$this->mFileTimestamp = $request->getInt('imgrestorepoint');
-			$this->mPageTimestamp = $request->getInt('restorepoint');
+			$this->mFileTimestamp = $request->getVal('imgrestorepoint');
+			$this->mPageTimestamp = $request->getVal('restorepoint');
 		}
 		$this->preCacheMessages();
 	}
@@ -811,6 +811,8 @@ class UndeleteForm {
 		} else {
 			$wgOut->setPagetitle( wfMsg( 'viewdeletedpage' ) );
 		}
+		
+		$wgOut->addWikiText( wfMsgHtml( 'undeletepagetitle', $this->mTargetObj->getPrefixedText()) );
 
 		$archive = new PageArchive( $this->mTargetObj );
 
@@ -847,24 +849,6 @@ class UndeleteForm {
 			$wgOut->addHtml( $top );
 		}
 
-		# Show relevant lines from the deletion log:
-		$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'delete' ) ) . "</h2>\n" );
-		$logViewer = new LogViewer(
-			new LogReader(
-				new FauxRequest(
-					array( 'page' => $this->mTargetObj->getPrefixedText(),
-						   'type' => 'delete' ) ) ) );
-		$logViewer->showList( $wgOut );
-		# Show relevant lines from the oversight log if user is allowed to see it:
-		if( $wgUser->isAllowed( 'oversight' ) ) {
-			$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'oversight' ) ) . "</h2>\n" );
-			$logViewer = new LogViewer(
-				new LogReader(
-					new FauxRequest(
-						array( 'page' => $this->mTargetObj->getPrefixedText(),
-							   'type' => 'oversight' ) ) ) );
-			$logViewer->showList( $wgOut );
-		}
 		if( $this->mAllowed && ( $haveRevisions || $haveFiles ) ) {
 			# Format the user-visible controls (comment field, submission button)
 			# in a nice little table
@@ -943,6 +927,25 @@ class UndeleteForm {
 			}
 			$files->free();
 			$wgOut->addHTML( "</ul>" );
+		}
+		
+		# Show relevant lines from the deletion log:
+		$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'delete' ) ) . "</h2>\n" );
+		$logViewer = new LogViewer(
+			new LogReader(
+				new FauxRequest(
+					array( 'page' => $this->mTargetObj->getPrefixedText(),
+						   'type' => 'delete' ) ) ) );
+		$logViewer->showList( $wgOut );
+		# Show relevant lines from the oversight log if user is allowed to see it:
+		if( $wgUser->isAllowed( 'oversight' ) ) {
+			$wgOut->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'oversight' ) ) . "</h2>\n" );
+			$logViewer = new LogViewer(
+				new LogReader(
+					new FauxRequest(
+						array( 'page' => $this->mTargetObj->getPrefixedText(),
+							   'type' => 'oversight' ) ) ) );
+			$logViewer->showList( $wgOut );
 		}
 		
 		if( $this->mAllowed ) {
@@ -1193,9 +1196,10 @@ class UndeleteRevisionsPager extends ReverseChronologicalPager {
 		# Give some pointers to make (last) links
 		$this->mForm->prevId = array();
 		while( $row = $this->mResult->fetchObject() ) {
-			$rev_id = isset($rev_id) ? $rev_id : $row->ar_rev_id;
 			$batch->addObj( Title::makeTitleSafe( NS_USER, $row->ar_user_text ) );
 			$batch->addObj( Title::makeTitleSafe( NS_USER_TALK, $row->ar_user_text ) );
+			
+			$rev_id = isset($rev_id) ? $rev_id : $row->ar_rev_id;
 			if( $rev_id > $row->ar_rev_id )
 				$this->mForm->prevId[$rev_id] = $row->ar_rev_id;
 			else if( $rev_id < $row->ar_rev_id )

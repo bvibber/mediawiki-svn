@@ -72,14 +72,27 @@ class LogPage {
 		$newId = $dbw->insertId();
 
 		# And update recentchanges
-		if ( $this->updateRecentChanges ) {
-			# Don't add private logs to RC!!!
-			if ( !isset($wgLogRestrictions[$this->type]) || $wgLogRestrictions[$this->type]=='*' ) {
-				RecentChange::notifyLog( $now, $this->target, $wgUser, $this->actionText, '',
-				$this->type, $this->action, $this->target, $this->comment, $this->params, $newId );
+		if( $this->updateRecentChanges ) {
+			# Don't add private logs to RC!
+			if( !isset($wgLogRestrictions[$this->type]) || $wgLogRestrictions[$this->type]=='*' ) {
+				$titleObj = SpecialPage::getTitleFor( 'Log', $this->type );
+				$rcComment = $this->getRcComment();
+				RecentChange::notifyLog( $now, $titleObj, $wgUser, $rcComment, '',
+					$this->type, $this->action, $this->target, $this->comment, $this->params );
 			}
 		}
 		return true;
+	}
+
+	public function getRcComment() {
+		$rcComment = $this->actionText;
+		if( '' != $this->comment ) {
+			if ($rcComment == '')
+				$rcComment = $this->comment;
+			else
+				$rcComment .= ': ' . $this->comment;
+		}
+		return $rcComment;
 	}
 
 	/**

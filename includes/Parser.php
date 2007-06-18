@@ -2431,17 +2431,17 @@ class Parser
 
 		switch ( $index ) {
 			case 'currentmonth':
-				return $varCache[$index] = $wgContLang->formatNum( date( 'm', $ts ) );
+				return $varCache[$index] = $wgContLang->formatNum( gmdate( 'm', $ts ) );
 			case 'currentmonthname':
-				return $varCache[$index] = $wgContLang->getMonthName( date( 'n', $ts ) );
+				return $varCache[$index] = $wgContLang->getMonthName( gmdate( 'n', $ts ) );
 			case 'currentmonthnamegen':
-				return $varCache[$index] = $wgContLang->getMonthNameGen( date( 'n', $ts ) );
+				return $varCache[$index] = $wgContLang->getMonthNameGen( gmdate( 'n', $ts ) );
 			case 'currentmonthabbrev':
-				return $varCache[$index] = $wgContLang->getMonthAbbreviation( date( 'n', $ts ) );
+				return $varCache[$index] = $wgContLang->getMonthAbbreviation( gmdate( 'n', $ts ) );
 			case 'currentday':
-				return $varCache[$index] = $wgContLang->formatNum( date( 'j', $ts ) );
+				return $varCache[$index] = $wgContLang->formatNum( gmdate( 'j', $ts ) );
 			case 'currentday2':
-				return $varCache[$index] = $wgContLang->formatNum( date( 'd', $ts ) );
+				return $varCache[$index] = $wgContLang->formatNum( gmdate( 'd', $ts ) );
 			case 'localmonth':
 				return $varCache[$index] = $wgContLang->formatNum( $localMonth );
 			case 'localmonthname':
@@ -2515,19 +2515,19 @@ class Parser
 			case 'subjectspacee':
 				return( wfUrlencode( $this->mTitle->getSubjectNsText() ) );
 			case 'currentdayname':
-				return $varCache[$index] = $wgContLang->getWeekdayName( date( 'w', $ts ) + 1 );
+				return $varCache[$index] = $wgContLang->getWeekdayName( gmdate( 'w', $ts ) + 1 );
 			case 'currentyear':
-				return $varCache[$index] = $wgContLang->formatNum( date( 'Y', $ts ), true );
+				return $varCache[$index] = $wgContLang->formatNum( gmdate( 'Y', $ts ), true );
 			case 'currenttime':
 				return $varCache[$index] = $wgContLang->time( wfTimestamp( TS_MW, $ts ), false, false );
 			case 'currenthour':
-				return $varCache[$index] = $wgContLang->formatNum( date( 'H', $ts ), true );
+				return $varCache[$index] = $wgContLang->formatNum( gmdate( 'H', $ts ), true );
 			case 'currentweek':
 				// @bug 4594 PHP5 has it zero padded, PHP4 does not, cast to
 				// int to remove the padding
-				return $varCache[$index] = $wgContLang->formatNum( (int)date( 'W', $ts ) );
+				return $varCache[$index] = $wgContLang->formatNum( (int)gmdate( 'W', $ts ) );
 			case 'currentdow':
-				return $varCache[$index] = $wgContLang->formatNum( date( 'w', $ts ) );
+				return $varCache[$index] = $wgContLang->formatNum( gmdate( 'w', $ts ) );
 			case 'localdayname':
 				return $varCache[$index] = $wgContLang->getWeekdayName( $localDayOfWeek + 1 );
 			case 'localyear':
@@ -3277,7 +3277,7 @@ class Parser
 			
 			if( $skip ) {
 				$text = false;
-				$this->mOutput->addTemplate( $title, $title->getArticleID(), 0 );
+				$this->mOutput->addTemplate( $title, $title->getArticleID(), null );
 				break;
 			}
 			$rev = $id ? Revision::newFromId( $id ) : Revision::newFromTitle( $title );
@@ -3405,7 +3405,13 @@ class Parser
 	}
 
 	/**
-	 * Detect __TOC__ magic word and set a placeholder
+	 * Find the first __TOC__ magic word and set a <!--MWTOC-->
+	 * placeholder that will then be replaced by the real TOC in
+	 * ->formatHeadings, this works because at this points real
+	 * comments will have already been discarded by the sanitizer.
+	 *
+	 * Any additional __TOC__ magic words left over will be discarded
+	 * as there can only be one TOC on the page.
 	 */
 	function stripToc( $text ) {
 		# if the string __NOTOC__ (not case-sensitive) occurs in the HTML,
@@ -3797,11 +3803,16 @@ class Parser
 	 * @private
 	 */
 	function getUserSig( &$user ) {
+		global $wgMaxSigChars;
+		
 		$username = $user->getName();
 		$nickname = $user->getOption( 'nickname' );
 		$nickname = $nickname === '' ? $username : $nickname;
-
-		if( $user->getBoolOption( 'fancysig' ) !== false ) {
+		
+		if( strlen( $nickname ) > $wgMaxSigChars ) {
+			$nickname = $username;
+			wfDebug( __METHOD__ . ": $username has overlong signature.\n" );
+		} elseif( $user->getBoolOption( 'fancysig' ) !== false ) {
 			# Sig. might contain markup; validate this
 			if( $this->validateSig( $nickname ) !== false ) {
 				# Validated; clean up (if needed) and return it
@@ -4379,7 +4390,7 @@ class Parser
 			$ig->setHeights( $params['heights'] );
 		}
 		
-		wfRunHooks( 'parserBeforerenderImageGallery', array( &$this, &$ig ) );
+		wfRunHooks( 'BeforeParserrenderImageGallery', array( &$this, &$ig ) );
 
 		$lines = explode( "\n", $text );
 		foreach ( $lines as $line ) {
@@ -4529,7 +4540,7 @@ class Parser
 		$alt = Sanitizer::stripAllTags( $alt );
 
 		# Give extensions a chance to select the file revision for us
-		$link = $skip = $time = false;
+		$skip = $time = false;
 		wfRunHooks( 'BeforeParserMakeImageLinkObj', array( &$this, &$nt, &$skip, &$time ) );
 
 		# Linker does the rest

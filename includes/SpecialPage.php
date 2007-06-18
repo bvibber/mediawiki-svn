@@ -94,12 +94,14 @@ class SpecialPage
 		'Uncategorizedpages'        => array( 'SpecialPage', 'Uncategorizedpages' ),
 		'Uncategorizedcategories'   => array( 'SpecialPage', 'Uncategorizedcategories' ),
 		'Uncategorizedimages'       => array( 'SpecialPage', 'Uncategorizedimages' ),
+		'Uncategorizedtemplates'	=> array( 'SpecialPage', 'Uncategorizedtemplates' ),
 		'Unusedcategories'          => array( 'SpecialPage', 'Unusedcategories' ),
 		'Unusedimages'              => array( 'SpecialPage', 'Unusedimages' ),
 		'Wantedpages'               => array( 'IncludableSpecialPage', 'Wantedpages' ),
 		'Wantedcategories'          => array( 'SpecialPage', 'Wantedcategories' ),
 		'Mostlinked'                => array( 'SpecialPage', 'Mostlinked' ),
 		'Mostlinkedcategories'      => array( 'SpecialPage', 'Mostlinkedcategories' ),
+		'Mostlinkedtemplates'		=> array( 'SpecialPage', 'Mostlinkedtemplates' ),
 		'Mostcategories'            => array( 'SpecialPage', 'Mostcategories' ),
 		'Mostimages'                => array( 'SpecialPage', 'Mostimages' ),
 		'Mostrevisions'             => array( 'SpecialPage', 'Mostrevisions' ),
@@ -177,7 +179,7 @@ class SpecialPage
 		}
 
 		if( $wgEmailAuthentication ) {
-			self::$mList['Confirmemail'] = array( 'UnlistedSpecialPage', 'Confirmemail' );
+			self::$mList['Confirmemail'] = 'EmailConfirmation';
 		}
 
 		# Add extension special pages
@@ -371,6 +373,28 @@ class SpecialPage
 			if ( $page->isListed() ) {
 				$restriction = $page->getRestriction();
 				if ( $restriction != '' && $wgUser->isAllowed( $restriction ) ) {
+					$pages[$name] = $page;
+				}
+			}
+		}
+		return $pages;
+	}
+	
+	/**
+	 * Return categorised listable log pages which are available
+	 * for the current user, but not for everyone
+	 * @static
+	 */
+	static function getRestrictedLogs() {
+		global $wgUser, $wgLogRestrictions, $wgLogNames;
+	
+		$pages = array();
+	
+		if ( isset($wgLogRestrictions) ) {
+			foreach ( $wgLogRestrictions as $type => $restriction ) {
+				$page = SpecialPage::getTitleFor( 'Log', $type );
+				if ( $restriction !='' && $restriction !='*' && $wgUser->isAllowed( $restriction ) ) {
+					$name = wfMsgHtml( $wgLogNames[$type] );
 					$pages[$name] = $page;
 				}
 			}

@@ -557,7 +557,7 @@ class EnhancedChangesList extends ChangesList {
 		$r .= ' '.$this->recentChangesFlags( $isnew, false, $unpatrolled, '&nbsp;', $bot );
 
 		# Timestamp
-		$r .= ' '.$block[0]->timestamp.'&nbsp;&nbsp;</td><td>';
+		$r .= '&nbsp;'.$block[0]->timestamp.'&nbsp;&nbsp;</td><td>';
 
 		# Article link
 		if ( $namehidden )

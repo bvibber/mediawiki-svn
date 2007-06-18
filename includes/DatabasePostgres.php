@@ -601,13 +601,9 @@ class DatabasePostgres extends Database {
 		if ( !$res ) {
 			return NULL;
 		}
-
 		while ( $row = $this->fetchObject( $res ) ) {
 			if ( $row->indexname == $index ) {
 				return $row;
-				
-				// BUG: !!!! This code needs to be synced up with database.php
-				
 			}
 		}
 		return false;
@@ -923,7 +919,7 @@ class DatabasePostgres extends Database {
 		$count = $res ? pg_num_rows($res) : 0;
 		if ($res)
 			$this->freeResult( $res );
-		return $count;
+		return $count ? true : false;
 	}
 
 	/*
@@ -1102,10 +1098,10 @@ END;
 		$this->doQuery("COMMIT");
 	}
 
-	function encodeBlob($b) {
+	function encodeBlob( $b ) {
 		return array('bytea',pg_escape_bytea($b));
 	}
-	function decodeBlob($b) {
+	function decodeBlob( $b ) {
 		return pg_unescape_bytea( $b );
 	}
 
@@ -1177,7 +1173,16 @@ END;
 		wfDebug( "Function ping() not written for DatabasePostgres.php yet");
 		return true;
 	}
-
+	
+	/**
+	 * How lagged is this slave?
+	 *
+	 * @return int
+	 */
+	public function getLag() {
+		# Not implemented for PostgreSQL
+		return 0;
+	}
 
 } // end DatabasePostgres class
 

@@ -410,9 +410,10 @@ class EditPage {
 			}
 		}
 
-		if(!$this->mTitle->getArticleID() && ('initial' == $this->formtype || $this->firsttime )) { # new article
+		# Show applicable editing introductions
+		if( $this->formtype == 'initial' || $this->firsttime )
 			$this->showIntro();
-		}
+	
 		if( $this->mTitle->isTalkPage() ) {
 			$wgOut->addWikiText( wfMsg( 'talkpagetext' ) );
 		}
@@ -585,25 +586,39 @@ class EditPage {
 		return $this->mTokenOk;
 	}
 
-	/** */
-	function showIntro() {
+	/**
+	 * Show all applicable editing introductions
+	 */
+	private function showIntro() {
 		global $wgOut, $wgUser;
-		$addstandardintro=true;
-		if($this->editintro) {
-			$introtitle=Title::newFromText($this->editintro);
-			if(isset($introtitle) && $introtitle->userCanRead()) {
-				$rev=Revision::newFromTitle($introtitle);
-				if($rev) {
-					$wgOut->addSecondaryWikiText($rev->getText());
-					$addstandardintro=false;
-				}
-			}
-		}
-		if($addstandardintro) {
-			if ( $wgUser->isLoggedIn() )
+		if( !$this->showCustomIntro() && !$this->mTitle->exists() ) {
+			if( $wgUser->isLoggedIn() ) {
 				$wgOut->addWikiText( wfMsg( 'newarticletext' ) );
-			else
+			} else {
 				$wgOut->addWikiText( wfMsg( 'newarticletextanon' ) );
+			}
+			$this->showDeletionLog( $wgOut );
+		}
+	}
+	
+	/**
+	 * Attempt to show a custom editing introduction, if supplied
+	 *
+	 * @return bool
+	 */
+	private function showCustomIntro() {
+		if( $this->editintro ) {
+			$title = Title::newFromText( $this->editintro );
+			if( $title instanceof Title && $title->exists() && $title->userCanRead() ) {
+				global $wgOut;
+				$revision = Revision::newFromTitle( $title );
+				$wgOut->addSecondaryWikiText( $revision->getText() );
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
 		}
 	}
 
@@ -1089,8 +1104,7 @@ class EditPage {
 			}
 
 			if ( 'diff' == $this->formtype ) {
-				$wgOut->addStyle( 'common/diff.css' );
-				$wgOut->addHTML( $this->getDiff() );
+				$this->showDiff();
 			}
 		}
 
@@ -1116,7 +1130,7 @@ class EditPage {
 		if( !$this->preview && !$this->diff ) {
 			$wgOut->setOnloadHandler( 'document.editform.wpTextbox1.focus()' );
 		}
-		$templates = ($this->preview || $this->section) ? $this->mPreviewTemplates : $this->mArticle->getUsedTemplates();
+		$templates = ($this->preview || $this->section != '') ? $this->mPreviewTemplates : $this->mArticle->getUsedTemplates();
 		$formattedtemplates = $sk->formatTemplates( $templates, $this->preview, $this->section != '');
 
 		global $wgUseMetadataEdit ;
@@ -1272,8 +1286,7 @@ END
 			}
 
 			if ( $this->formtype == 'diff') {
-				$wgOut->addStyle( 'common/diff.css' );
-				$wgOut->addHTML( $this->getDiff() );
+				$this->showDiff();
 			}
 
 		}
@@ -1895,10 +1908,8 @@ END
 	 *
 	 * If this is a section edit, we'll replace the section as for final
 	 * save and then make a comparison.
-	 *
-	 * @return string HTML
 	 */
-	function getDiff() {
+	function showDiff() {
 		$oldtext = $this->mArticle->fetchContent();
 		$newtext = $this->mArticle->replaceSection(
 			$this->section, $this->textbox1, $this->summary, $this->edittime );
@@ -1909,11 +1920,13 @@ END
 			$de = new DifferenceEngine( $this->mTitle );
 			$de->setText( $oldtext, $newtext );
 			$difftext = $de->getDiff( $oldtitle, $newtitle );
+			$de->showDiffStyle();
 		} else {
 			$difftext = '';
 		}
 
-		return '<div id="wikiDiff">' . $difftext . '</div>';
+		global $wgOut;
+		$wgOut->addHtml( '<div id="wikiDiff">' . $difftext . '</div>' );
 	}
 
 	/**
@@ -2036,7 +2049,32 @@ END
 		$wgOut->setPageTitle( wfMsg( 'nocreatetitle' ) );
 		$wgOut->addWikiText( wfMsg( 'nocreatetext' ) );
 	}
-
+	
+	/**
+	 * If there are rows in the deletion log for this page, show them,
+	 * along with a nice little note for the user
+	 *
+	 * @param OutputPage $out
+	 */
+	private function showDeletionLog( $out ) {
+		$title = $this->mArticle->getTitle();
+		$reader = new LogReader(
+			new FauxRequest(
+				array(
+					'page' => $title->getPrefixedText(),
+					'type' => 'delete',
+					)
+			)
+		);
+		if( $reader->hasRows() ) {
+			$out->addHtml( '<div id="mw-recreate-deleted-warn">' );
+			$out->addWikiText( wfMsg( 'recreate-deleted-warn' ) );
+			$viewer = new LogViewer( $reader );
+			$viewer->showList( $out );
+			$out->addHtml( '</div>' );			
+		}				
+	}
+	
 }
 
 ?>

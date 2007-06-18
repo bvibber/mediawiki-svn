@@ -50,6 +50,25 @@ class LogReader {
 		$this->db = wfGetDB( DB_SLAVE );
 		$this->setupQuery( $request );
 	}
+	
+	/**
+	 * Returns a row of log data
+	 * @param Title $title
+	 * @param integer $logid, optional
+	 * @private
+	 */	
+	function newRowFromTitle( $title, $logid ) {
+		$fname = 'LogReader::newFromTitle';
+
+		$dbr = wfGetDB( DB_SLAVE );
+		$row = $dbr->selectRow( 'logging', array('*'),
+			array('log_id' => intval( $logid ), 
+				'log_namespace' => $title->getNamespace(), 
+				'log_title' => $title->getDBkey() ), 
+			$fname );
+
+		return $row;
+	}
 
 	/**
 	 * Basic setup and applies the limiting factors from the WebRequest object.
@@ -74,7 +93,8 @@ class LogReader {
 		
 		// XXX This all needs to use Pager, ugly hack for now.
 		global $wgMiserMode;
-		if ($wgMiserMode && ($this->offset >10000)) $this->offset=10000;
+		if( $wgMiserMode )
+			$this->offset = min( $this->offset, 10000 );
 	}
 
 	/**
@@ -236,29 +256,21 @@ class LogReader {
 	}
 	
 	/**
-	 * Returns a row of log data
-	 * @param Title $title
-	 * @param integer $logid, optional
-	 * @private
-	 */	
-	function newFromTitle( $title, $logid=0 ) {
-		$fname = 'LogReader::newFromTitle';
-
-		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'logging', array('*'),
-			array('log_id' => intval( $logid ), 
-				'log_namespace' => $title->getNamespace(), 
-				'log_title' => $title->getDBkey() ), 
-			$fname );
-
-		if ( $res ) {
-		   $ret = $dbr->fetchObject( $res );
-		   if ( $ret ) {
-		   	  return $ret;
-			}
-		} 
-		return null;
+	 * Is there at least one row?
+	 *
+	 * @return bool
+	 */
+	public function hasRows() {
+		# Little hack...
+		$limit = $this->limit;
+		$this->limit = 1;
+		$res = $this->db->query( $this->getQuery() );
+		$this->limit = $limit;
+		$ret = $this->db->numRows( $res ) > 0;
+		$this->db->freeResult( $res );
+		return $ret;
 	}
+
 }
 
 /**
@@ -315,33 +327,6 @@ class LogViewer {
 		} else {
 			$this->showError( $wgOut );
 		}
-	}
-	
-	/**
-	 * Determine if the current user is allowed to view a particular
-	 * field of this event, if it's marked as deleted.
-	 * @param int $field
-	 * @return bool
-	 */
-	function userCan( $event, $field ) {
-		if( ( $event->log_deleted & $field ) == $field ) {
-			global $wgUser;
-			$permission = ( $event->log_deleted & Revision::DELETED_RESTRICTED ) == Revision::DELETED_RESTRICTED
-				? 'hiderevision'
-				: 'deleterevision';
-			wfDebug( "Checking for $permission due to $field match on $event->log_deleted\n" );
-			return $wgUser->isAllowed( $permission );
-		} else {
-			return true;
-		}
-	}
-	
-	/**
-	 * int $field one of DELETED_* bitfield constants
-	 * @return bool
-	 */
-	function isDeleted( $event, $field ) {
-		return ($event->log_deleted & $field) == $field;
 	}
 	
 		/**
@@ -478,13 +463,25 @@ class LogViewer {
 	}
 
 	function doShowList( &$out, $result ) {
+		global $wgLang;
+
+		$lastdate = '';
+		$listopen = false;
 		// Rewind result pointer and go through it again, making the HTML
-		$html = "\n<ul>\n";
+		$html = '';
 		$result->seek( 0 );
 		while( $s = $result->fetchObject() ) {
-			$html .= $this->logLine( $s );
+			$date = $wgLang->date( $s->log_timestamp, /* adj */ true );
+			if ( $date != $lastdate ) {
+				if ( $listopen ) { $html .= Xml::closeElement( 'ul' ); }
+				$html .= Xml::element('h4', null, $date) . "\n";
+				$html .= Xml::openElement( 'ul' );
+				$listopen = true;
+				$lastdate = $date;
+			}
+			$html .= Xml::tags('li', null, $this->logLine( $s ) ) . "\n";
 		}
-		$html .= "\n</ul>\n";
+		if ( $listopen ) { $html .= Xml::closeElement( 'ul' ); }
 		$out->addHTML( $html );
 		$result->free();
 	}
@@ -503,7 +500,7 @@ class LogViewer {
 		
 		$skin = $wgUser->getSkin();
 		$title = Title::makeTitle( $s->log_namespace, $s->log_title );
-		$time = $wgLang->timeanddate( wfTimestamp(TS_MW, $s->log_timestamp), true );
+		$time = $wgLang->time( wfTimestamp(TS_MW, $s->log_timestamp), true );
 
 		// Enter the existence or non-existence of this page into the link cache,
 		// for faster makeLinkObj() in LogPage::actionText()
@@ -535,7 +532,7 @@ class LogViewer {
 		else
 			$action = $this->logActionText( $s->log_type, $s->log_action, $title, $this->skin, $paramArray );
 		
-		$out = "<li><tt>$del</tt> $time $userLink $action $comment $revert</li>\n";
+		$out = "<tt>$del</tt> $time $userLink $action $comment $revert";
 		return $out;
 	}
 
@@ -580,7 +577,7 @@ class LogViewer {
 		if( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
 			$destTitle = Title::newFromText( $paramArray[0] );
 			if ( $destTitle ) {
-				$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
+				$reviewlink = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
 					wfMsg( 'revertmove' ),
 					'wpOldTitle=' . urlencode( $destTitle->getPrefixedDBkey() ) .
 					'&wpNewTitle=' . urlencode( $title->getPrefixedDBkey() ) .
@@ -598,13 +595,14 @@ class LogViewer {
 				wfMsg( 'unblocklink' ),
 				'action=unblock&ip=' . urlencode( $s->log_title ) );
 		// show change protection link
-		} elseif( $s->log_action == 'protect' && $wgUser->isAllowed( 'protect' ) ) {
+		} elseif( ($s->log_action == 'protect' || $s->log_action == 'modify') && $wgUser->isAllowed( 'protect' ) ) {
+			$title = Title::makeTitle( $s->log_namespace, $s->log_title );
 			$reviewlink = $this->skin->makeKnownLink( $title->getPrefixedDBkey() ,
 				wfMsg( 'protect_change' ),
 				'action=unprotect' );
 		// show user tool links for self created users
 		} elseif( $s->log_action == 'create2' ) {
-			$revert = $this->skin->userToolLinksRedContribs( $s->log_user, $s->log_title );
+			$reviewlink = $this->skin->userToolLinksRedContribs( $s->log_user, $s->log_title );
 			// do not show $comment for self created accounts. It includes wrong user tool links:
 			// 'blockip' for users w/o block allowance and broken links for very long usernames (bug 4756)
 			$comment = '';
@@ -644,11 +642,11 @@ class LogViewer {
 				$Ids = explode( ',', $paramArray[2] );
 				foreach ( $Ids as $n => $id ) {
 					$reviewlink .= ' '.$this->skin->makeKnownLinkObj( $revdel, '#'.($n+1),
-					wfArrayToCGI( array('target' => $paramArray[0], $paramArray[1] => $id ) ) );
+						wfArrayToCGI( array('target' => $paramArray[0], $paramArray[1] => $id ) ) );
 				}
 			}
 		}
-		$reviewlink = ( $reviewlink=='' ) ? "" : "&nbsp;&nbsp;&nbsp;($reviewlink) ";
+		$reviewlink = ($reviewlink=='') ? "" : "&nbsp;&nbsp;&nbsp;($reviewlink) ";
 		return $reviewlink;
 	}
 
@@ -771,6 +769,33 @@ class LogViewer {
 			$bits,
 			$this->numResults < $limit);
 		$out->addHTML( '<p>' . $html . '</p>' );
+	}
+	
+	/**
+	 * Determine if the current user is allowed to view a particular
+	 * field of this event, if it's marked as deleted.
+	 * @param int $field
+	 * @return bool
+	 */
+	public static function userCan( $event, $field ) {
+		if( ( $event->log_deleted & $field ) == $field ) {
+			global $wgUser;
+			$permission = ( $event->log_deleted & Revision::DELETED_RESTRICTED ) == Revision::DELETED_RESTRICTED
+				? 'hiderevision'
+				: 'deleterevision';
+			wfDebug( "Checking for $permission due to $field match on $event->log_deleted\n" );
+			return $wgUser->isAllowed( $permission );
+		} else {
+			return true;
+		}
+	}
+	
+	/**
+	 * int $field one of DELETED_* bitfield constants
+	 * @return bool
+	 */
+	public static function isDeleted( $event, $field ) {
+		return ($event->log_deleted & $field) == $field;
 	}
 }
 

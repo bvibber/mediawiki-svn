@@ -609,7 +609,7 @@ class Article {
 	function view()	{
 		global $wgUser, $wgOut, $wgRequest, $wgContLang;
 		global $wgEnableParserCache, $wgStylePath, $wgUseRCPatrol, $wgParser;
-		global $wgUseTrackbacks, $wgNamespaceRobotPolicies;
+		global $wgUseTrackbacks, $wgNamespaceRobotPolicies, $wgArticleRobotPolicies;
 		$sk = $wgUser->getSkin();
 
 		wfProfileIn( __METHOD__ );
@@ -637,6 +637,8 @@ class Article {
 		# Discourage indexing of printable versions, but encourage following
 		if( $wgOut->isPrintable() ) {
 			$policy = 'noindex,follow';
+		} elseif ( isset( $wgArticleRobotPolicies[$this->mTitle->getPrefixedText()] ) ) {
+			$policy = $wgArticleRobotPolicies[$this->mTitle->getPrefixedText()];
 		} elseif( isset( $wgNamespaceRobotPolicies[$ns] ) ) {
 			# Honour customised robot policies for this namespace
 			$policy = $wgNamespaceRobotPolicies[$ns];
@@ -780,10 +782,10 @@ class Article {
 			# XXX: use $this->mTitle->usCssJsSubpage() when php is fixed/ a workaround is found
 			if (
 				$ns == NS_USER &&
-				preg_match('/\\/[\\w]+\\.(?:css|js)$/', $this->mTitle->getDBkey())
+				preg_match('!/[\w]+\.(css|js)$!', $this->mTitle->getDBkey(), $matches)
 			) {
 				$wgOut->addWikiText( wfMsg('clearyourcache'));
-				$wgOut->addHTML( '<pre>'.htmlspecialchars($this->mContent)."\n</pre>" );
+				$wgOut->addHTML( "<pre class=\"mw-user-{$matches[1]}\" dir=\"ltr\">".htmlspecialchars($this->mContent)."\n</pre>" );
 			} else if ( $rt = Title::newFromRedirect( $text ) ) {
 				# Display redirect
 				$imageDir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
@@ -1696,7 +1698,13 @@ class Article {
 				}
 
 				# Prepare a null revision to be added to the history
-				$comment = $wgContLang->ucfirst( wfMsgForContent( $protect ? 'protectedarticle' : 'unprotectedarticle', $this->mTitle->getPrefixedText() ) );
+				$modified = $current != '' && $protect;
+				if ( $protect ) {
+					$comment_type = $modified ? 'modifiedarticleprotection' : 'protectedarticle';
+				} else {
+					$comment_type = 'unprotectedarticle';
+				}
+				$comment = $wgContLang->ucfirst( wfMsgForContent( $comment_type, $this->mTitle->getPrefixedText() ) );
 
 				foreach( $limit as $action => $restrictions ) {
 					# Check if the group level required to edit also can protect pages
@@ -1756,7 +1764,7 @@ class Article {
 				}
 
 				if( $protect ) {
-					$log->addEntry( 'protect', $this->mTitle, trim( $reason . " [$updated]$cascade_description$expiry_description" ) );
+					$log->addEntry( $modified ? 'modify' : 'protect', $this->mTitle, trim( $reason . " [$updated]$cascade_description$expiry_description" ) );
 				} else {
 					$log->addEntry( 'unprotect', $this->mTitle, $reason );
 				}
@@ -2016,11 +2024,10 @@ class Article {
 
 
 	/**
-	 * Fetch deletion log
+	 * Show relevant lines from the deletion log
 	 */
-	function showLogExtract( &$out ) {
-		# Show relevant lines from the deletion log:
-		$out->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'delete' ) ) . "</h2>\n" );
+	function showLogExtract( $out ) {
+		$out->addHtml( '<h2>' . htmlspecialchars( LogPage::logName( 'delete' ) ) . '</h2>' );
 		$logViewer = new LogViewer(
 			new LogReader(
 				new FauxRequest(

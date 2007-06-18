@@ -295,11 +295,9 @@ class RecentChange
 	public static function notifyNew( $timestamp, &$title, $minor, &$user, $comment, $bot = 'default',
 	  $ip='', $size = 0, $newId = 0 )
 	{
-		if ( !$ip ) {
+		if( !$ip ) {
 			$ip = wfGetIP();
-			if ( !$ip ) {
-				$ip = '';
-			}
+			if( !$ip ) $ip = '';
 		}
 		if ( $bot === 'default' ) {
 			$bot = $user->isAllowed( 'bot' );
@@ -347,11 +345,9 @@ class RecentChange
 	# Makes an entry in the database corresponding to a rename
 	/*static*/ function notifyMove( $timestamp, &$oldTitle, &$newTitle, &$user, $comment, $ip='', $overRedir = false )
 	{
-		if ( !$ip ) {
+		if( !$ip ) {
 			$ip = wfGetIP();
-			if ( !$ip ) {
-				$ip = '';
-			}
+			if( !$ip ) $ip = '';
 		}
 
 		$rc = new RecentChange;
@@ -404,16 +400,17 @@ class RecentChange
 	/*static*/ function notifyLog( $timestamp, &$title, &$user, $comment, $ip='',
 	   $type, $action, $target, $logComment, $params, $newId=0 )
 	{
-		if ( !$ip ) {
+		if( !$ip ) {
 			$ip = wfGetIP();
-			if ( !$ip ) $ip = '';
+			if( !$ip ) $ip = '';
 		}
+
 		$rc = new RecentChange;
 		$rc->mAttribs = array(
 			'rc_timestamp'	=> $timestamp,
 			'rc_cur_time'	=> $timestamp,
-			'rc_namespace'	=> $title->getNamespace(),
-			'rc_title'	=> $title->getDBkey(),
+			'rc_namespace'	=> $target->getNamespace(),
+			'rc_title'	=> $target->getDBkey(),
 			'rc_type'	=> RC_LOG,
 			'rc_minor'	=> 0,
 			'rc_cur_id'	=> $title->getArticleID(),

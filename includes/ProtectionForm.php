@@ -27,6 +27,7 @@ class ProtectionForm {
 	var $mRestrictions = array();
 	var $mReason = '';
 	var $mCascade = false;
+	var $mFileOnly = false;
 	var $mExpiry = null;
 
 	function __construct( &$article ) {
@@ -42,6 +43,14 @@ class ProtectionForm {
 				// Fixme: this form currently requires individual selections,
 				// but the db allows multiples separated by commas.
 				$this->mRestrictions[$action] = implode( '', $this->mTitle->getRestrictions( $action ) );
+				// For Images only, see if only the file is protected...
+				// We want to list EITHER the edit OR upload rights in the db,
+				// otherwise ProtectedPages may show dups when 'Upload' is selected
+				if( $action=='edit' && !$this->mRestrictions['edit'] && $this->mTitle->getRestrictions('upload') ) {
+					$this->mFileOnly = true;
+					// Show these under the edit box, for viewing purposes only
+					$this->mRestrictions['edit'] = implode( '', $this->mTitle->getRestrictions( 'upload' ) );
+				}
 			}
 
 			$this->mCascade = $this->mTitle->areRestrictionsCascading();
@@ -65,6 +74,7 @@ class ProtectionForm {
 			$this->mReason = $wgRequest->getText( 'mwProtect-reason' );
 			$this->mCascade = $wgRequest->getBool( 'mwProtect-cascade' );
 			$this->mExpiry = $wgRequest->getText( 'mwProtect-expiry' );
+			$this->mFileOnly = $wgRequest->getText( 'mwProtect-fileonly' );
 
 			foreach( $wgRestrictionTypes as $action ) {
 				$val = $wgRequest->getVal( "mwProtect-level-$action" );
@@ -184,10 +194,25 @@ class ProtectionForm {
 
 		}
 
+		// For images, the edit right is more general than the upload right
+		if( $this->mTitle->getNamespace()==NS_IMAGE ) {
+			if( $this->mFileOnly ) {
+				$this->mRestrictions['upload'] = $this->mRestrictions['edit'];
+				$this->mRestrictions['edit'] = '';
+			}
+		}
+
 		$ok = $this->mArticle->updateRestrictions( $this->mRestrictions, $this->mReason, $this->mCascade, $expiry );
 		if( !$ok ) {
 			throw new FatalError( "Unknown error at restriction save time." );
 		}
+		
+		if( $wgRequest->getCheck( 'mwProtectWatch' ) ) {
+			$this->mArticle->doWatch();
+		} elseif( $this->mTitle->userIsWatching() ) {
+			$this->mArticle->doUnwatch();
+		}
+		
 		return $ok;
 	}
 
@@ -232,13 +257,19 @@ class ProtectionForm {
 		$out .= "</tbody>\n";
 		$out .= "</table>\n";
 
-		global $wgEnableCascadingProtection;
-
-		if ($wgEnableCascadingProtection)
-			$out .= $this->buildCascadeInput();
-
 		$out .= "<table>\n";
 		$out .= "<tbody>\n";
+
+		global $wgEnableCascadingProtection;
+		
+		if( $this->mTitle->getNamespace() == NS_IMAGE )
+			$out .= '<p>' . $this->buildUploadInput() . '</p>';
+
+		if ($wgEnableCascadingProtection)
+			$out .= '<tr><td></td><td>' . $this->buildCascadeInput() . "</td></tr>\n";
+
+		if( !$this->disabled )
+			$out .= '<tr><td></td><td>' . $this->buildWatchInput() . "</td></tr>\n";
 
 		$out .= $this->buildExpiryInput();
 
@@ -302,6 +333,12 @@ class ProtectionForm {
 				'value' => $this->mReason ) );
 	}
 
+	function buildUploadInput() {
+		$id = 'mwProtect-fileonly';
+		$ci = wfCheckLabel( wfMsg( 'protect-fileonly' ), $id, $id, $this->mFileOnly, $this->disabledAttrib);
+		return $ci;
+	}
+
 	function buildCascadeInput() {
 		$id = 'mwProtect-cascade';
 		$ci = wfCheckLabel( wfMsg( 'protect-cascade' ), $id, $id, $this->mCascade, $this->disabledAttrib);
@@ -309,22 +346,21 @@ class ProtectionForm {
 	}
 
 	function buildExpiryInput() {
-		$id = 'mwProtect-expiry';
-
-		$ci = "<tr> <td align=\"right\">";
-		$ci .= wfElement( 'label', array (
-				'id' => "$id-label",
-				'for' => $id ),
-				wfMsg( 'protectexpiry' ) );
-		$ci .= "</td> <td align=\"left\">";
-		$ci .= wfElement( 'input', array(
-				'size' => 60,
-				'name' => $id,
-				'id' => $id,
-				'value' => $this->mExpiry ) + $this->disabledAttrib );
-		$ci .= "</td></tr>";
-
-		return $ci;
+		$attribs = array( 'id' => 'expires' ) + $this->disabledAttrib;
+		return '<tr>'
+			. '<td><label for="expires">' . wfMsgWithLinks( 'protectexpiry' ) . '</label></td>'
+			. '<td>' . Xml::input( 'mwProtect-expiry', 60, $this->mExpiry, $attribs ) . '</td>'
+			. '</tr>';
+	}
+	
+	function buildWatchInput() {
+		global $wgUser;
+		return Xml::checkLabel(
+			wfMsg( 'watchthis' ),
+			'mwProtectWatch',
+			'mwProtectWatch',
+			$this->mTitle->userIsWatching() || $wgUser->getOption( 'watchdefault' )
+		);
 	}
 
 	function buildSubmit() {
@@ -360,7 +396,7 @@ class ProtectionForm {
 	 * @access private
 	 */
 	function showLogExtract( &$out ) {
-		# Show relevant lines from the deletion log:
+		# Show relevant lines from the protection log:
 		$out->addHTML( "<h2>" . htmlspecialchars( LogPage::logName( 'protect' ) ) . "</h2>\n" );
 		$logViewer = new LogViewer(
 			new LogReader(

@@ -274,7 +274,7 @@ class ImagePage extends Article {
 					if ( $page > 1 ) {
 						$label = $wgOut->parse( wfMsg( 'imgmultipageprev' ), false );
 						$link = $sk->makeKnownLinkObj( $this->mTitle, $label, 'page='. ($page-1) );
-						$thumb1 = $sk->makeThumbLinkObj( $this->img, $link, $label, 'none', 
+						$thumb1 = $sk->makeThumbLinkObj( $this->mTitle, $this->img, $link, $label, 'none', 
 							array( 'page' => $page - 1 ) );
 					} else {
 						$thumb1 = '';
@@ -283,7 +283,7 @@ class ImagePage extends Article {
 					if ( $page < $count ) {
 						$label = wfMsg( 'imgmultipagenext' );
 						$link = $sk->makeKnownLinkObj( $this->mTitle, $label, 'page='. ($page+1) );
-						$thumb2 = $sk->makeThumbLinkObj( $this->img, $link, $label, 'none', 
+						$thumb2 = $sk->makeThumbLinkObj( $this->mTitle, $this->img, $link, $label, 'none', 
 							array( 'page' => $page + 1 ) );
 					} else {
 						$thumb2 = '';
@@ -503,6 +503,12 @@ EOT
 	{
 		global $wgUser, $wgOut, $wgRequest;
 
+		if ( !$this->img->exists() || !$this->img->isLocal() ) {
+			# Use standard article deletion
+			Article::delete();
+			return;
+		}
+
 		$confirm = $wgRequest->wasPosted();
 		$reason = $wgRequest->getVal( 'wpReason' );
 		$image = $wgRequest->getVal( 'image' );
@@ -536,7 +542,7 @@ EOT
 		# Deleting old images doesn't require confirmation
 		if ( !is_null( $oldimage ) || $confirm ) {
 			if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ), $oldimage ) ) {
-				$this->doDelete( $reason, $suppress );
+				$this->doDeleteImage( $reason );
 			} else {
 				$wgOut->showFatalError( wfMsg( 'sessionfailure' ) );
 			}
@@ -555,9 +561,12 @@ EOT
 
 	/*
 	 * Delete an image.
+	 * Called doDeleteImage() not doDelete() so that Article::delete() doesn't 
+	 * call back to here.
+	 *
 	 * @param $reason User provided reason for deletion.
 	 */
-	function doDelete( $reason, $suppress=false ) {
+	function doDeleteImage( $reason ) {
 		global $wgOut, $wgRequest;
 
 		$oldimage = $wgRequest->getVal( 'oldimage' );
@@ -644,7 +653,7 @@ EOT
 			$wgOut->showErrorPage( 'uploadnologin', 'uploadnologintext' );
 			return;
 		}
-		if ( ! $this->mTitle->userCan( 'edit' ) ) {
+		if ( !$this->mTitle->userCan( 'edit' ) || !$this->mTitle->userCan( 'upload' ) ) {
 			$wgOut->readOnlyPage( $this->getContent(), true );
 			return;
 		}
@@ -658,7 +667,8 @@ EOT
 		}
 
 		$sourcePath = $this->img->getArchiveVirtualUrl( $oldimage );
-		$result = $this->img->publish( $sourcePath );
+		$comment = wfMsg( "reverted" );
+		$result = $this->img->upload( $sourcePath, $comment, $comment );
 
 		if ( WikiError::isError( $result ) ) {
 			$this->showError( $result );
@@ -753,7 +763,7 @@ class ImageHistoryList {
 			}
 		} else {		
 			$url = htmlspecialchars( $this->img->getArchiveUrl( $img ) );
-			if( $local && $wgUser->getID() != 0 && $wgTitle->userCan( 'edit' ) ) {
+			if( $local && $wgUser->getID() != 0 && $wgTitle->userCan( 'edit' ) && $wgTitle->userCan( 'upload' ) ) {
 				# Revert link, for public files only
 				if ( $deleted ) {
 					$rlink = wfMsgHtml( 'revertimg' );
@@ -867,7 +877,7 @@ class ImageHistoryList {
 		if( ($bitfield & $field) == $field ) {
 		// images
 			global $wgUser;
-			$permission = ( $bitfield & Image::DELETED_RESTRICTED ) == Image::DELETED_RESTRICTED
+			$permission = ( $bitfield & File::DELETED_RESTRICTED ) == File::DELETED_RESTRICTED
 				? 'hiderevision'
 				: 'deleterevision';
 			wfDebug( "Checking for $permission due to $field match on $bitfield\n" );

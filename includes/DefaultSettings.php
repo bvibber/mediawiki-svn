@@ -27,7 +27,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
  * Create a site configuration object
  * Not used for much in a default install
  */
-require_once( 'includes/SiteConfiguration.php' );
+require_once( "$IP/includes/SiteConfiguration.php" );
 $wgConf = new SiteConfiguration;
 
 /** MediaWiki version number */
@@ -209,6 +209,10 @@ $wgFileStore['hidden']['hash'] = 3;         // 3-level subdirectory split
  *    thumbScriptUrl    The URL for thumb.php (optional, not recommended)
  *    transformVia404   Whether to skip media file transformation on parse and rely on a 404 
  *                      handler instead.
+ *    initialCapital    Equivalent to $wgCapitalLinks, determines whether filenames implicitly 
+ *                      start with a capital letter. The current implementation may give incorrect
+ *                      description page links when the local $wgCapitalLinks and initialCapital 
+ *                      are mismatched.
  *
  * These settings describe a foreign MediaWiki installation. They are optional, and will be ignored
  * for local repositories:
@@ -310,34 +314,34 @@ $wgAntivirus= NULL;
  *
  * @global array $wgAntivirusSetup
  */
-$wgAntivirusSetup= array(
+$wgAntivirusSetup = array(
 
 	#setup for clamav
 	'clamav' => array (
 		'command' => "clamscan --no-summary ",
 
-		'codemap'=> array (
-			"0"=>  AV_NO_VIRUS, #no virus
-			"1"=>  AV_VIRUS_FOUND, #virus found
-			"52"=> AV_SCAN_ABORTED, #unsupported file format (probably imune)
-			"*"=>  AV_SCAN_FAILED, #else scan failed
+		'codemap' => array (
+			"0" =>  AV_NO_VIRUS, # no virus
+			"1" =>  AV_VIRUS_FOUND, # virus found
+			"52" => AV_SCAN_ABORTED, # unsupported file format (probably imune)
+			"*" =>  AV_SCAN_FAILED, # else scan failed
 		),
 
-		'messagepattern'=> '/.*?:(.*)/sim',
+		'messagepattern' => '/.*?:(.*)/sim',
 	),
 
 	#setup for f-prot
 	'f-prot' => array (
 		'command' => "f-prot ",
 
-		'codemap'=> array (
-			"0"=> AV_NO_VIRUS, #no virus
-			"3"=> AV_VIRUS_FOUND, #virus found
-			"6"=> AV_VIRUS_FOUND, #virus found
-			"*"=> AV_SCAN_FAILED, #else scan failed
+		'codemap' => array (
+			"0" => AV_NO_VIRUS, # no virus
+			"3" => AV_VIRUS_FOUND, # virus found
+			"6" => AV_VIRUS_FOUND, # virus found
+			"*" => AV_SCAN_FAILED, # else scan failed
 		),
 
-		'messagepattern'=> '/.*?Infection:(.*)$/m',
+		'messagepattern' => '/.*?Infection:(.*)$/m',
 	),
 );
 
@@ -859,6 +863,7 @@ $wgRedirectSources = false;
 
 $wgShowIPinHeader	= true; # For non-logged in users
 $wgMaxNameChars		= 255;  # Maximum number of bytes in username
+$wgMaxSigChars      = 255;  # Maximum number of bytes in signature
 $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
 
 $wgExtraSubtitle	= '';
@@ -973,9 +978,10 @@ $wgHitcounterUpdateFreq = 1;
 
 # Basic user rights and block settings
 $wgSysopUserBans        = true; # Allow sysops to ban logged-in users
-$wgSysopRangeBans		= true; # Allow sysops to ban IP ranges
-$wgAutoblockExpiry		= 86400; # Number of seconds before autoblock entries expire
+$wgSysopRangeBans       = true; # Allow sysops to ban IP ranges
+$wgAutoblockExpiry      = 86400; # Number of seconds before autoblock entries expire
 $wgBlockAllowsUTEdit    = false; # Blocks allow users to edit their own user talk page
+$wgSysopEmailBans       = true; # Allow sysops to ban users from accessing Emailuser
 
 # Pages anonymous user may see as an array, e.g.:
 # array ( "Main Page", "Special:Userlogin", "Wikipedia:Help");
@@ -1064,6 +1070,7 @@ $wgGroupPermissions['sysop']['autoconfirmed']   = true;
 $wgGroupPermissions['sysop']['upload_by_url']   = true;
 $wgGroupPermissions['sysop']['ipblock-exempt']	= true;
 $wgGroupPermissions['sysop']['deleterevision']  = true;
+$wgGroupPermissions['sysop']['blockemail']      = true;
 
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
@@ -1093,6 +1100,10 @@ $wgRestrictionTypes = array( 'edit', 'move' );
 /**
  * Set of permission keys that can be selected via action=protect.
  * 'autoconfirm' allows all registerd users if $wgAutoConfirmAge is 0.
+ *
+ * You can add a new protection level that requires a specific
+ * permission by manipulating this array. The ordering of elements
+ * dictates the order on the protection form's lists.
  */
 $wgRestrictionLevels = array( '', 'autoconfirmed', 'sysop' );
 
@@ -1183,7 +1194,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '73';
+$wgStyleVersion = '76';
 
 
 # Server-side caching:
@@ -1416,6 +1427,13 @@ $wgEnableUploads = false;
 /**
  * Show EXIF data, on by default if available.
  * Requires PHP's EXIF extension: http://www.php.net/manual/en/ref.exif.php
+ *
+ * NOTE FOR WINDOWS USERS:
+ * To enable EXIF functions, add the folloing lines to the
+ * "Windows extensions" section of php.ini:
+ *
+ * extension=extensions/php_mbstring.dll
+ * extension=extensions/php_exif.dll
  */
 $wgShowEXIF = function_exists( 'exif_read_data' );
 
@@ -1470,7 +1488,7 @@ $wgFileExtensions = array( 'png', 'gif', 'jpg', 'jpeg' );
 /** Files with these extensions will never be allowed as uploads. */
 $wgFileBlacklist = array(
 	# HTML may contain cookie-stealing JavaScript and web bugs
-	'html', 'htm', 'js', 'jsb',
+	'html', 'htm', 'js', 'jsb', 'mhtml', 'mht',
 	# PHP scripts may execute arbitrary code on the server
 	'php', 'phtml', 'php3', 'php4', 'php5', 'phps',
 	# Other types that may be interpreted by some servers
@@ -1526,9 +1544,14 @@ $wgNamespacesToBeSearchedDefault = array(
 	NS_MAIN           => true,
 );
 
-/** If set, a bold ugly notice will show up at the top of every page. */
+/**
+ * Site notice shown at the top of each page
+ *
+ * This message can contain wiki text, and can also be set through the
+ * MediaWiki:Sitenotice page. You can also provide a separate message for
+ * logged-out users using the MediaWiki:Anonnotice page.
+ */
 $wgSiteNotice = '';
-
 
 #
 # Images settings
@@ -2180,7 +2203,7 @@ $wgLogRestrictions = array(
  * Extensions with custom log types may add to this array.
  */
 $wgLogNames = array(
-	''        => 'log',
+	''        => 'all-logs-page',
 	'block'   => 'blocklogpage',
 	'protect' => 'protectlogpage',
 	'rights'  => 'rightslog',
@@ -2221,6 +2244,7 @@ $wgLogActions = array(
 	'block/block'       => 'blocklogentry',
 	'block/unblock'     => 'unblocklogentry',
 	'protect/protect'   => 'protectedarticle',
+	'protect/modify'    => 'modifiedarticleprotection',
 	'protect/unprotect' => 'unprotectedarticle',
 	'rights/rights'     => 'rightslogentry',
 	'delete/delete'     => 'deletedarticle',
@@ -2289,6 +2313,16 @@ $wgNoFollowNsExceptions = array();
  *   $wgNamespaceRobotPolicies = array( NS_TALK => 'noindex' );
  */
 $wgNamespaceRobotPolicies = array();
+
+/**
+ * Robot policies per article.
+ * These override the per-namespace robot policies.
+ * Must be in the form of an array where the key part is a properly 
+ * canonicalised text form title and the value is a robot policy.
+ * Example:
+ *   $wgArticleRobotPolicies = array( 'Main Page' => 'noindex' );
+ */
+$wgArticleRobotPolicies = array();
 
 /**
  * Specifies the minimal length of a user password. If set to
