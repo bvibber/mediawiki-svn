@@ -207,7 +207,7 @@ HTML;
 			$this->perpetuate('lqt_method', 'hidden') .
 			$this->perpetuate('lqt_operand', 'hidden');
 		
-		if ( /*$thread == null*/ $edit_type=='new' || ($thread && $thread->superthread() == null) ) {
+		if ( /*$thread == null*/ $edit_type=='new' || ($thread && !$thread->hasSuperthread()) ) {
 			// This is a top-level post; show the subject line.
 			$sbjtxt = $thread ? $thread->subjectWithoutIncrement() : '';
 			$subject = $this->request->getVal('lqt_subject_field', $sbjtxt);
@@ -255,7 +255,7 @@ HTML;
 /*		$subject = $this->request->getVal('lqt_subject_field', '');
 		if ( $e->didSave && $subject != '' ) {
 			$thread->setSubject( Sanitizer::stripAllTags($subject) );
-		} else if ( $e->didSave && $edit_type !='summarize' && $subject == '' && !$thread->superthread() ) {
+		} else if ( $e->didSave && $edit_type !='summarize' && $subject == '' && !$thread->hasSuperthread() ) {
 				$thread->setSubject( '«no subject»' );
 		} */
 	}
@@ -433,7 +433,7 @@ HTML;
 		if( $thread->summary() ) {
 			$this->showSummary($thread);
 		} else if ( $timestamp->isBefore(Date::now()->nDaysAgo($this->archive_start_days))
-		            && !$thread->summary() && !$thread->superthread() ) {
+		            && !$thread->summary() && !$thread->hasSuperthread() ) {
 			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'summarize')}\">write a summary</a>. There have been no changes here for at least $this->archive_start_days days.</p>");
 		}
 		
@@ -855,7 +855,7 @@ class ThreadPermalinkView extends LqtView {
 		$talkpage = $t->article()->getTitle()->getTalkpage();
 		$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($talkpage, '', $query);
 		
-		if ( $t->superthread() ) {
+		if ( $t->hasSuperthread() ) {
 			$this->output->setSubtitle( "a fragment of <a href=\"{$this->permalinkUrl($t->topmostThread())}\">a discussion</a> from " . $talkpage_link );
 		} else {
 			

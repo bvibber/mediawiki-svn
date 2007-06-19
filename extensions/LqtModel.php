@@ -106,7 +106,6 @@ class LiveThread {
 	protected $rootId;
 	protected $articleId;
 	protected $summaryId;
-	protected $superthreadId;
 
 	/* Actual objects loaded on demand from the above when accessors are called: */
 	protected $root;
@@ -117,6 +116,7 @@ class LiveThread {
 	/* Simple strings: */
 	protected $subject;
 	protected $timestamp;
+	protected $path;
 	
 	/* Identity */
 	protected $id;
@@ -132,14 +132,23 @@ class LiveThread {
 	}
 
 	function setSuperthread($thread) {
-		$this->superthreadId = $thread->id();
-		$this->touch();
+		var_dump("warning setSuperthread unimplemented");
 	}
 	
 	function superthread() {
-		if ( !$this->superthreadId ) return null;
-		if ( !$this->superthread ) $this->superthread = Thread::newFromId($this->superthreadId);
-		return $this->superthread;
+		var_dump("warning superthread unimplemented"); return;
+		// TODO we have to find threads that may not be looked up yet
+		// and look them up if needed.
+		if( false === strpos($this->path,'.') ) {
+			return null;
+		} else {
+			return array_slice( $this->path, strpos($this->path, '.') );
+		}
+	}
+
+	function hasSuperthread() {
+		if( false === strpos($this->path,'.') ) return false;
+		else return true;
 	}
 	
 	function topmostThread() {
@@ -274,8 +283,9 @@ SQL;
 			$lines[] = $line;
 		}
 
-		foreach( $lines as $l ) {
+		foreach( $lines as $key => $l ) {
 			if( $l->is_root ) {
+				unset($lines[$key]);
 				$threads[] = Threads::buildLiveThread( &$lines, $l );
 			}
 		}
@@ -285,10 +295,11 @@ SQL;
 
 	private static function buildLiveThread( $lines, $l ) {
 		$children = array();
-		foreach( $lines as $m ) {
+		foreach( $lines as $key => $m ) {
 			if ( $m->thread_path != $l->thread_path &&
 			     strpos( $m->thread_path, $l->thread_path ) === 0 ) {
 				// $m->path begins with $l->path; this is a child.
+				unset($lines[$key]);
 				$children[] = Threads::buildLiveThread( &$lines, $m );
 			}
 		}
