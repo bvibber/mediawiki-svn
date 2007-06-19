@@ -254,56 +254,45 @@ class Threads {
 			$tables = "";
 		}
 		
-		/* Select the client's threads, AND all their children: */
+		/* Select the client's threads, AND all their children.
+		  The ones the client actually asked for are marked with root_test. */
+
+		$root_test = str_replace( 'thread.', 'children.', $where ); // TODO fragile?
 
 		$sql = <<< SQL
-SELECT children.* FROM $tables thread, thread children
+SELECT children.*, ($root_test) as is_root FROM $tables thread, thread children
 WHERE $where AND
 children.thread_path LIKE CONCAT(thread.thread_path, "%")
 $options
 SQL;
                 $res = $dbr->query($sql); 
 
-		/*
-                 God probably kills a kitten whenever this next section of code is run.
-                 We're creating a tree of objects from the flat list of rows. Please someone
-                 think of a way to do this in one pass.
-		*/
-
-                $tree = array(); 
-		while ( $line = $dbr->fetchObject($res) ) {
-			$path = explode('.', $line->thread_path);
-			Threads::setDeepArray( $tree, $line, $path );
-		}
-		var_dump($tree);
-
+		$lines = array();
 		$threads = array();
-		foreach( $tree as $root ) {
-			$threads[] = Threads::createThreads($root);
+
+		while ( $line = $dbr->fetchObject($res) ) {
+			$lines[] = $line;
+		}
+
+		foreach( $lines as $l ) {
+			if( $l->is_root ) {
+				$threads[] = Threads::buildLiveThread( &$lines, $l );
+			}
 		}
 		
 		return $threads;
 	}
 
-	private static function createThreads( $thread ) {
-		$subthreads = array();
-		foreach( $thread as $key => $val ) {
-			if ( $key != 'root' ) {
-				$subthreads[] = Threads::createThreads( $val );
+	private static function buildLiveThread( $lines, $l ) {
+		$children = array();
+		foreach( $lines as $m ) {
+			if ( $m->thread_path != $l->thread_path &&
+			     strpos( $m->thread_path, $l->thread_path ) === 0 ) {
+				// $m->path begins with $l->path; this is a child.
+				$children[] = Threads::buildLiveThread( &$lines, $m );
 			}
 		}
-		return new LiveThread( $thread['root'], $subthreads );
-	}
-
-	/** setDeepArray( $a, $v, array(1,2,3) ) <=> $a[1][2][3]['root'] = $v; */
-	private static function setDeepArray( &$a, $v, $p ) {
-		if( count($p) == 1 ) {
-			$a[$p[0]]["root"] = $v;
-		} else {
-			if( !array_key_exists( $p[0], $a ) )
-				$a[$p[0]] = array();
-			Threads::setDeepArray( $a[$p[0]], $v, array_slice($p, 1) );
-		}
+		return new LiveThread($l, $children);
 	}
 
 	static function withRoot( $post ) {
