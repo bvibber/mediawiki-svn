@@ -2,12 +2,14 @@ CREATE TABLE /*$wgDBprefix*/thread (
   thread_id int(8) unsigned NOT NULL auto_increment,
   thread_root int(8) unsigned NOT NULL,
   thread_article int(8) unsigned NOT NULL,
-  thread_path varchar(1000000) NOT NULL,
+  thread_path text NOT NULL,
   thread_summary_page int(8) unsigned NULL,
   thread_touched char(14) binary NOT NULL default '',
 
   PRIMARY KEY thread_id (thread_id),
-  UNIQUE INDEX thread_id (thread_id)
+  UNIQUE INDEX thread_id (thread_id),
+  INDEX( thread_path(255) ),
+  INDEX thread_touched (thread_touched)
 ) TYPE=InnoDB;
 
 /*

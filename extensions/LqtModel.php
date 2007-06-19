@@ -102,26 +102,165 @@ class Post extends Article {
 }
 
 class LiveThread {
+	/* ID references to other objects that are loaded on demand: */
+	protected $rootId;
+	protected $articleId;
+	protected $summaryId;
+	protected $superthreadId;
 
+	/* Actual objects loaded on demand from the above when accessors are called: */
+	protected $root;
+	protected $article;
+	protected $summary;
+	protected $superthread;
+
+	/* Simple strings: */
+	protected $subject;
+	protected $timestamp;
+	
+	/* Identity */
+	protected $id;
+
+	function __construct($line, $children) {
+		$this->id = $line->thread_id;
+		$this->rootId = $line->thread_root;
+		$this->articleId = $line->thread_article;
+		$this->summaryId = $line->thread_summary_page;
+		$this->path = $line->thread_path;
+		$this->timestamp = $line->thread_timestamp;
+		$this->replies = $children;
+	}
+
+	function setSuperthread($thread) {
+		$this->superthreadId = $thread->id();
+		$this->touch();
+	}
+	
+	function superthread() {
+		if ( !$this->superthreadId ) return null;
+		if ( !$this->superthread ) $this->superthread = Thread::newFromId($this->superthreadId);
+		return $this->superthread;
+	}
+	
+	function topmostThread() {
+		if ( !$this->superthread() ) return $this;
+		else return $this->superthread()->topmostThread();
+	}
+	
+	function setArticle($a) {
+		$this->articleId = $a->getID();
+		$this->touch();
+	}
+	
+	function article() {
+		if ( !$this->articleId ) return null;
+		if ( !$this->article ) $this->article = new Article(Title::newFromID($this->articleId));
+		return $this->article;
+	}
+	
+	function id() {
+		return $this->id;
+	}
+
+	function root() {
+		if ( !$this->rootId ) return null;
+		if ( !$this->root ) $this->root = new Post( Title::newFromID( $this->rootId ) );
+		return $this->root;
+	}
+	
+	function summary() {
+		if ( !$this->summaryId ) return null;
+		if ( !$this->summary ) $this->summary = new Post( Title::newFromID( $this->summaryId ) );
+		return $this->summary;
+	}
+	
+	function setSummary( $post ) {
+		$this->summaryId = $post->getID();
+		$this->updateRecord();
+	}
+	
+	function wikilink() {
+		return $this->root()->getTitle()->getPrefixedText();
+	}
+	
+	function wikilinkWithoutIncrement() {
+		$foo = explode( ' ', $this->wikilink() );
+		array_pop($foo);
+		return implode( ' ', $foo );
+	}
+	
+	function hasDistinctSubject() {
+		if( $this->superthread() ) {
+			return $this->superthread()->subjectWithoutIncrement()
+				!= $this->subjectWithoutIncrement();
+		} else {
+			return true;
+		}
+	}
+
+	function subject() {
+		return $this->root()->getTitle()->getText();
+		return $this->subject;
+	}
+	
+	function subjectWithoutIncrement() {
+		$foo = explode( ' ', $this->subject() );
+		array_pop($foo);
+		return implode( ' ', $foo );
+	}
+	
+	function increment() {
+		return array_pop( explode(' ', $this->subject()) );
+	}
+	
+	function hasSubthreads() {
+		return count($replies) != 0;
+	}
+
+	function subthreads() {
+		return $this->replies;
+	}
+
+	function timestamp() {
+		return $this->timestamp;
+	}
+	
+	protected function updateRecord() {
+		$dbr =& wfGetDB( DB_MASTER );
+		$res = $dbr->update( 'lqt_thread',
+				     /* SET */   array( 'thread_root_post' => $this->rootId,
+							'thread_article' => $this->articleId,
+							'thread_subthread_of' => $this->superthreadId,
+							'thread_summary_page' => $this->summaryId,
+							'thread_subject' => $this->subject,
+							'thread_timestamp' => $this->timestamp ),
+				     /* WHERE */ array( 'thread_id' => $this->id, ),
+				     __METHOD__);
+	}
 }
 
 /** Module of factory methods. */
 class Threads {
 	
-	static function threadsWhere( $where_clause, $options = array(), $extra_tables = array() ) {
+	static function threadsWhere( $where, $options = array(), $extra_tables = array() ) {
 		$dbr =& wfGetDB( DB_SLAVE );
-		if ( is_array($where_clause) ) {
-			$where = implode( 'and ', $where_clause );
+		if ( is_array($where) ) $where = $dbr->makeList( $where, LIST_AND );
+		if ( is_array($options) ) $options = implode(',', $options);
+		if( is_array($extra_tables) && count($extra_tables) != 0 ) {
+			$tables = implode(',', $extra_tables) . ', ';
+		} else if ( is_string( $extra_tables ) ) {
+			$tables = $extra_tables . ', ';
 		} else {
-			$where = $where_clause;
+			$tables = "";
 		}
-
+		
 		/* Select the client's threads, AND all their children: */
 
 		$sql = <<< SQL
-SELECT children.* FROM thread, thread children
+SELECT children.* FROM $tables thread, thread children
 WHERE $where AND
 children.thread_path LIKE CONCAT(thread.thread_path, "%")
+$options
 SQL;
                 $res = $dbr->query($sql); 
 
@@ -137,21 +276,23 @@ SQL;
 			Threads::setDeepArray( $tree, $line, $path );
 
 		}
-		function createThreads( $thread ) {
-			$subthreads = array();
-			foreach( $thread as $key => $val ) {
-				if ( $key != 'root' ) {
-					$subthreads[] = createThreads( $val );
-				}
-			}
-			return Threads::newLiveThreadFromDBLine( $thread['root'], $subthreads );
-		}
+
 		$threads = array();
 		foreach( $tree as $root ) {
-			$threads[] = createThreads($root);
+			$threads[] = Threads::createThreads($root);
 		}
 		
 		return $threads;
+	}
+
+	private static function createThreads( $thread ) {
+		$subthreads = array();
+		foreach( $thread as $key => $val ) {
+			if ( $key != 'root' ) {
+				$subthreads[] = Threads::createThreads( $val );
+			}
+		}
+		return new LiveThread( $thread['root'], $subthreads );
 	}
 
 	/** setDeepArray( $a, $v, array(1,2,3) ) <=> $a[1][2][3]['root'] = $v; */
@@ -163,27 +304,14 @@ SQL;
 				$a[$p[0]] = array();
 			Threads::setDeepArray( $a[$p[0]], $v, array_slice($p, 1) );
 		}
-	}
-   
-	static function newLiveThreadFromDBLine( $line, $children ) {
-		$t = new LiveThread();
-		$t->id = $line->thread_id;
-		$t->rootId = $line->thread_root;
-		$t->articleId = $line->thread_article;
-		$t->summaryId = $line->thread_summary_page;
-		$t->path = $line->thread_path;
-		$t->touched = $line->thread_touched;
-		$t->replies = $children;
-		return $t;
-	}
-	
+	}	
 }
-
+/*
 function lqtCheapTest() {
-	$threads = Threads::threadsWhere( "thread.thread_id = 1" );
+	$threads = Threads::threadsWhere( "thread.thread_id = 1", "order by thread_timestamp" );
 	function cheapShowThread($t) {
 		global $wgOut;
-		$wgOut->addHTML($t->id);
+		$wgOut->addHTML($t->id());
 		$wgOut->addHTML('<dl><dd>');
 		foreach( $t->replies as $r ) {
 			cheapShowThread($r);
@@ -194,7 +322,7 @@ function lqtCheapTest() {
 		cheapShowThread($t);
 	}
 }
-
+*/
 class QueryGroup {
 	protected $queries;
 	
@@ -221,7 +349,7 @@ class QueryGroup {
 	function query($name) {
 		if ( !array_key_exists($name,$this->queries) ) return array();
 		list($where, $options, $extra_tables) = $this->queries[$name];
-		return Thread::threadsWhere($where, $options, $extra_tables);
+		return Threads::threadsWhere($where, $options, $extra_tables);
 	}
 }
 

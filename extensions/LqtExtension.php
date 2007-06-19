@@ -84,21 +84,21 @@ class LqtView {
 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
 		$recentstartdate = $startdate->nDaysAgo($this->archive_recent_days);
 		$g->addQuery('fresh',
-		              array('thread_article' => $this->article->getID(),
-		                    'thread_subthread_of is null',
-		                    '(thread_touched >= ' . $startdate->text() .
-		 					'  OR thread_summary_page is NULL)'),
-		              array('ORDER BY' => 'thread_touched DESC' ));
+		              array('thread.thread_article' => $this->article->getID(),
+		                   'instr(thread.thread_path, ".")' => '0',
+		                    '(thread.thread_timestamp >= ' . $startdate->text() .
+		 					'  OR thread.thread_summary_page is NULL)'),
+		              array('ORDER BY thread.thread_timestamp DESC'));
 		$g->addQuery('archived',
-		             array('thread_article' => $this->article->getID(),
-		                   'thread_subthread_of is null',
-		                   'thread_summary_page is not null',
-		                   'thread_touched < ' . $startdate->text()),
-		             array('ORDER BY' => 'thread_touched DESC'));
+		             array('thread.thread_article' => $this->article->getID(),
+		                   'instr(thread.thread_path, ".")' => '0',
+		                   'thread.thread_summary_page is not null',
+		                   'thread.thread_timestamp < ' . $startdate->text()),
+		             array('ORDER BY thread.thread_timestamp DESC'));
 		$g->extendQuery('archived', 'recently-archived',
-		                array('( thread_touched >=' . $recentstartdate->text() .
+		                array('( thread.thread_timestamp >=' . $recentstartdate->text() .
 				      '  OR  rev_timestamp >= ' . $recentstartdate->text() . ')',
-				      'page_id = thread_summary_page', 'page_latest = rev_id'),
+				      'page_id = thread.thread_summary_page', 'page_latest = rev_id'),
 				array(),
 				array('page', 'revision'));
 		return $g;
@@ -131,7 +131,7 @@ class LqtView {
 	function permalinkUrl( $thread, $method = null, $operand = null ) {
 		$query = $method ? "lqt_method=$method" : "";
 		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
-		return $thread->rootPost()->getTitle()->getFullUrl($query);
+		return $thread->root()->getTitle()->getFullUrl($query);
 	}
 
 	function talkpageUrl( $title, $method = null, $operand = null ) {
@@ -197,7 +197,7 @@ HTML;
 			}
 			$article = new Article($t);
 		} else {
-			$article = $thread->rootPost();
+			$article = $thread->root();
 		}
 		
 		$e = new EditPage($article);
@@ -261,7 +261,7 @@ HTML;
 	}
 	
 	function renameThread($t,$s) {
-		$this->simplePageMove($t->rootPost()->getTitle(),$s);
+		$this->simplePageMove($t->root()->getTitle(),$s);
 		// TODO here create a redirect from old page to new.
 		foreach( $t->subthreads() as $st ) {
 			$this->renameThread($st, $s);
@@ -354,16 +354,16 @@ HTML;
 	}
 
 	function showThreadFooter( $thread ) {
-		$color_number = $this->selectNewUserColor( $thread->rootPost()->originalAuthor() );
+		$color_number = $this->selectNewUserColor( $thread->root()->originalAuthor() );
 		$this->output->addHTML(wfOpenElement('ul', array('class'=>"lqt_footer" )));
 
 		$this->output->addHTML( wfOpenElement( 'li', array('class'=>"lqt_author_sig  lqt_post_color_$color_number") ) );
-		$p = new Parser(); $sig = $p->getUserSig( $thread->rootPost()->originalAuthor() );
+		$p = new Parser(); $sig = $p->getUserSig( $thread->root()->originalAuthor() );
 		$this->output->addWikitext( $sig, false );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
 		$this->output->addHTML( wfOpenElement( 'li' ) );
-		$d = new Date($thread->touched());
+		$d = new Date($thread->timestamp());
 		$this->output->addHTML( $d->lastMonth()->text() );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
@@ -394,9 +394,9 @@ HTML;
 	}
 
 	function showRootPost( $thread ) {
-		$post = $thread->rootPost();
+		$post = $thread->root();
 
-/*		$color_number = $this->selectNewUserColor( $thread->rootPost()->originalAuthor() );
+/*		$color_number = $this->selectNewUserColor( $thread->root()->originalAuthor() );
 		$this->openDiv( "lqt_post lqt_post_color_$color_number" );*/
 		$this->openDiv( 'lqt_post' );
 		
@@ -429,10 +429,10 @@ HTML;
 	function showThread( $thread ) {
 		$this->showThreadHeading( $thread );
 		
-		$touched = new Date($thread->touched());
+		$timestamp = new Date($thread->timestamp());
 		if( $thread->summary() ) {
 			$this->showSummary($thread);
-		} else if ( $touched->isBefore(Date::now()->nDaysAgo($this->archive_start_days))
+		} else if ( $timestamp->isBefore(Date::now()->nDaysAgo($this->archive_start_days))
 		            && !$thread->summary() && !$thread->superthread() ) {
 			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'summarize')}\">write a summary</a>. There have been no changes here for at least $this->archive_start_days days.</p>");
 		}
@@ -596,8 +596,8 @@ HTML
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
 		$this->addJSandCSS();
 
-		lqtCheapTest( );
-		return;
+		//		lqtCheapTest( );
+		//		return;
 
 		$this->showHeader();
 		
@@ -643,8 +643,8 @@ HTML
 		$where = array('thread_article' => $this->article->getID(),
 		                     'thread_subthread_of is null',
 		                     'thread_summary_page is not null',
-		                     'thread_touched < ' . $startdate->text());
-		$options = array('ORDER BY' => 'thread_touched DESC');
+		                     'thread_timestamp < ' . $startdate->text());
+		$options = array('ORDER BY' => 'thread_timestamp DESC');
 		
 		$annotations = array("Searching for threads");
 
@@ -662,13 +662,13 @@ HTML
 		if ($s && ctype_digit($s) && strlen($s) == 6 && !$ignore_dates) {
 			$this->selstart = new Date( "{$s}01000000" );
 			$this->starti = array_search($s, $months);
-			$where[] = 'thread_touched >= ' . $this->selstart->text();
+			$where[] = 'thread_timestamp >= ' . $this->selstart->text();
 		}
 		$e = $r->getVal('lqt_archive_end');
 		if ($e && ctype_digit($e) && strlen($e) == 6 && !$ignore_dates) {
 			$this->selend = new Date("{$e}01000000");
 			$this->endi = array_search($e, $months);
-			$where[] = 'thread_touched < ' . $this->selend->nextMonth()->text();
+			$where[] = 'thread_timestamp < ' . $this->selend->nextMonth()->text();
 		}
 		if ( isset($this->selstart) && isset($this->selend) ) {
 
@@ -847,10 +847,10 @@ class ThreadPermalinkView extends LqtView {
 		$this->article = $t->article(); # for creating reply threads.
 		
 		// Make a link back to the talk page, including the correct archive month.
-		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($t->touched()) ))
+		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($t->timestamp()) ))
 			$query = '';
 		else
-			$query = 'lqt_archive_month=' . substr($t->touched(),0,6);
+			$query = 'lqt_archive_month=' . substr($t->timestamp(),0,6);
 			
 		$talkpage = $t->article()->getTitle()->getTalkpage();
 		$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($talkpage, '', $query);
