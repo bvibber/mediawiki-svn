@@ -836,10 +836,7 @@ class ThreadPermalinkView extends LqtView {
 	}
 
 	function show() {
-		$ts = Threads::withRoot( $this->article );
-		if( count($ts) == 0 ) {echo "no such thread"; die();}
-		if ( count($ts) >1 ) {die();} // TODO handle this screwy situation.
-		$t = $ts[0];
+		$t = Threads::withRoot( $this->article );
 
 		// TODO this is a holdover from the special page; not sure what's correct here.
 		// we now have a real true $this->article that makes some sense.

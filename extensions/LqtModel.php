@@ -136,13 +136,12 @@ class LiveThread {
 	}
 	
 	function superthread() {
-		var_dump("warning superthread unimplemented"); return;
-		// TODO we have to find threads that may not be looked up yet
-		// and look them up if needed.
-		if( false === strpos($this->path,'.') ) {
+		if( !$this->hasSuperthread() ) {
 			return null;
 		} else {
-			return array_slice( $this->path, strpos($this->path, '.') );
+			preg_match("/(\d+)\.\d+$/", $this->path, $matches);
+			$superthread_id = $matches[1];
+			return Threads::withId( $superthread_id );
 		}
 	}
 
@@ -152,8 +151,13 @@ class LiveThread {
 	}
 	
 	function topmostThread() {
-		if ( !$this->superthread() ) return $this;
-		else return $this->superthread()->topmostThread();
+		if( !$this->hasSuperthread() ) {
+			return $this;
+		} else {
+			preg_match("/^(\d+)\..*/", $this->path, $matches);
+			$superthread_id = $matches[1];
+			return Threads::withId( $superthread_id );
+		}
 	}
 	
 	function setArticle($a) {
@@ -199,7 +203,7 @@ class LiveThread {
 	}
 	
 	function hasDistinctSubject() {
-		if( $this->superthread() ) {
+		if( $this->hasSuperthread() ) {
 			return $this->superthread()->subjectWithoutIncrement()
 				!= $this->subjectWithoutIncrement();
 		} else {
@@ -250,6 +254,8 @@ class LiveThread {
 
 /** Module of factory methods. */
 class Threads {
+
+	static $loadedLiveThreads = array();
 	
 	static function where( $where, $options = array(), $extra_tables = array() ) {
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -289,7 +295,6 @@ SQL;
 				$threads[] = Threads::buildLiveThread( &$lines, $l );
 			}
 		}
-		
 		return $threads;
 	}
 
@@ -303,31 +308,41 @@ SQL;
 				$children[] = Threads::buildLiveThread( &$lines, $m );
 			}
 		}
-		return new LiveThread($l, $children);
+		$t = new LiveThread($l, $children);
+		Threads::$loadedLiveThreads[$l->thread_id] = $t;
+		return $t;
+	}
+
+	private static function databaseError( $msg ) {
+		// TODO tie into MW's error reporting facilities.
+		echo("Corrupt liquidthreads database: $msg");
+		die();
 	}
 
 	static function withRoot( $post ) {
-		return Threads::where( array('thread.thread_root' => $post->getID()) );
+		$ts = Threads::where( array('thread.thread_root' => $post->getID()) );
+		if( count($ts) == 0 ) { return null; }
+		if ( count($ts) >1 ) {
+			Threads::databaseError("More than one thread with thread_root = {$post->getID()}.");
+		}
+		return $ts[0];
+	}
+
+	static function withId( $id ) {
+		if( array_key_exists( $id, Threads::$loadedLiveThreads ) ) {
+			return Threads::$loadedLiveThreads[ $id ];
+		}
+			
+		$ts = Threads::where( array('thread.thread_id' => $id ) );
+		if( count($ts) == 0 ) { return null; }
+		if ( count($ts) >1 ) {
+			Threads::databaseError("More than one thread with thread_id = {$id}.");
+		}
+		return $ts[0];
 	}
 
 }
-/*
-function lqtCheapTest() {
-	$threads = Threads::threadsWhere( "thread.thread_id = 1", "order by thread_timestamp" );
-	function cheapShowThread($t) {
-		global $wgOut;
-		$wgOut->addHTML($t->id());
-		$wgOut->addHTML('<dl><dd>');
-		foreach( $t->replies as $r ) {
-			cheapShowThread($r);
-		}
-		$wgOut->addHTML('</dd></dl>');
-	}
-	foreach( $threads as $t ) {
-		cheapShowThread($t);
-	}
-}
-*/
+
 class QueryGroup {
 	protected $queries;
 	
