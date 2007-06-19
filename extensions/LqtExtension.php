@@ -596,6 +596,9 @@ HTML
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
 		$this->addJSandCSS();
 
+		lqtCheapTest( );
+		return;
+
 		$this->showHeader();
 		
 		$this->showArchiveWidget();

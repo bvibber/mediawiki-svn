@@ -101,246 +101,97 @@ class Post extends Article {
 	
 }
 
-class Thread {
+class LiveThread {
 
-	/* ID references to other objects that are loaded on demand: */
-	protected $rootPostId;
-	protected $articleId;
-	protected $summaryId;
-	protected $superthreadId;
+}
 
-	/* Actual objects loaded on demand from the above when accessors are called: */
-	protected $rootPost;
-	protected $article;
-	protected $summary;
-	protected $superthread;
-
-	/* Simple strings: */
-	protected $subject;
-	protected $touched;
+/** Module of factory methods. */
+class Threads {
 	
-	/* Identity */
-	protected $id;
-
-	function setSuperthread($thread) {
-		$this->superthreadId = $thread->id();
-		$this->touch();
-	}
-	
-	function superthread() {
-		if ( !$this->superthreadId ) return null;
-		if ( !$this->superthread ) $this->superthread = Thread::newFromId($this->superthreadId);
-		return $this->superthread;
-	}
-	
-	function topmostThread() {
-		if ( !$this->superthread() ) return $this;
-		else return $this->superthread()->topmostThread();
-	}
-	
-	function setArticle($a) {
-		$this->articleId = $a->getID();
-		$this->touch();
-	}
-	
-	function article() {
-		if ( !$this->articleId ) return null;
-		if ( !$this->article ) $this->article = new Article(Title::newFromID($this->articleId));
-		return $this->article;
-	}
-	
-	function id() {
-		return $this->id;
-	}
-
-	function rootPost() {
-		if ( !$this->rootPostId ) return null;
-		if ( !$this->rootPost ) $this->rootPost = new Post( Title::newFromID( $this->rootPostId ) );
-		return $this->rootPost;
-	}
-	
-	function summary() {
-		if ( !$this->summaryId ) return null;
-		if ( !$this->summary ) $this->summary = new Post( Title::newFromID( $this->summaryId ) );
-		return $this->summary;
-	}
-	
-	function setSummary( $post ) {
-		$this->summaryId = $post->getID();
-		$this->updateRecord();
-	}
-	
-	function wikilink() {
-		return $this->rootPost()->getTitle()->getPrefixedText();
-	}
-	
-	function wikilinkWithoutIncrement() {
-		$foo = explode( ' ', $this->wikilink() );
-		array_pop($foo);
-		return implode( ' ', $foo );
-	}
-	
-	function hasDistinctSubject() {
-		if( $this->superthread() ) {
-			return $this->superthread()->subjectWithoutIncrement()
-				!= $this->subjectWithoutIncrement();
+	static function threadsWhere( $where_clause, $options = array(), $extra_tables = array() ) {
+		$dbr =& wfGetDB( DB_SLAVE );
+		if ( is_array($where_clause) ) {
+			$where = implode( 'and ', $where_clause );
 		} else {
-			return true;
+			$where = $where_clause;
+		}
+
+		/* Select the client's threads, AND all their children: */
+
+		$sql = <<< SQL
+SELECT children.* FROM thread, thread children
+WHERE $where AND
+children.thread_path LIKE CONCAT(thread.thread_path, "%")
+SQL;
+                $res = $dbr->query($sql); 
+
+		/*
+                 God probably kills a kitten whenever this next section of code is run.
+                 We're creating a tree of objects from the flat list of rows. Please someone
+                 think of a way to do this in one pass.
+		*/
+
+                $tree = array(); 
+		while ( $line = $dbr->fetchObject($res) ) {
+			$path = explode('.', $line->thread_path);
+			Threads::setDeepArray( $tree, $line, $path );
+
+		}
+		function createThreads( $thread ) {
+			$subthreads = array();
+			foreach( $thread as $key => $val ) {
+				if ( $key != 'root' ) {
+					$subthreads[] = createThreads( $val );
+				}
+			}
+			return Threads::newLiveThreadFromDBLine( $thread['root'], $subthreads );
+		}
+		$threads = array();
+		foreach( $tree as $root ) {
+			$threads[] = createThreads($root);
+		}
+		
+		return $threads;
+	}
+
+	/** setDeepArray( $a, $v, array(1,2,3) ) <=> $a[1][2][3]['root'] = $v; */
+	private static function setDeepArray( &$a, $v, $p ) {
+		if( count($p) == 1 ) {
+			$a[$p[0]]["root"] = $v;
+		} else {
+			if( !array_key_exists( $p[0], $a ) )
+				$a[$p[0]] = array();
+			Threads::setDeepArray( $a[$p[0]], $v, array_slice($p, 1) );
 		}
 	}
-
-	function subject() {
-		return $this->rootPost()->getTitle()->getText();
-		return $this->subject;
-	}
-	
-	function subjectWithoutIncrement() {
-		$foo = explode( ' ', $this->subject() );
-		array_pop($foo);
-		return implode( ' ', $foo );
-	}
-	
-	function increment() {
-		return array_pop( explode(' ', $this->subject()) );
-	}
-	
-	function setSubject($s) {
-		$this->subject = $s;
-		$this->touch();
-	}
-
-	function hasSubthreads() {
-		// TODO inefficient.
-		return count( $this->subthreads() ) != 0;
-	}
-
-	function subthreads() {
-		return Thread::threadsWhere( array('thread_subthread_of' => $this->id),
-		                             array('ORDER BY' => 'thread_touched') );
-	}
-	
-	function touch() {
-		$this->touched = wfTimestampNow();
-		$this->updateRecord();
-		if ( $this->superthread() ) {
-			$this->superthread()->touch();
-		}
-	}
-	
-	function touched() {
-		return $this->touched;
-	}
-	
-	protected function updateRecord() {
-		$dbr =& wfGetDB( DB_MASTER );
-        $res = $dbr->update( 'lqt_thread',
-                             /* SET */   array( 'thread_root_post' => $this->rootPostId,
-                       							'thread_article' => $this->articleId,
-												'thread_subthread_of' => $this->superthreadId,
-												'thread_summary_page' => $this->summaryId,
-												'thread_subject' => $this->subject,
-												'thread_touched' => $this->touched ),
-                             /* WHERE */ array( 'thread_id' => $this->id, ),
-                             __METHOD__);
-	}
-
-	static function newFromDBLine( $line ) {
-		$t = new Thread();
+   
+	static function newLiveThreadFromDBLine( $line, $children ) {
+		$t = new LiveThread();
 		$t->id = $line->thread_id;
-		$t->rootPostId = $line->thread_root_post;
+		$t->rootId = $line->thread_root;
 		$t->articleId = $line->thread_article;
 		$t->summaryId = $line->thread_summary_page;
-		$t->superthreadId = $line->thread_subthread_of;
+		$t->path = $line->thread_path;
 		$t->touched = $line->thread_touched;
-		$t->subject = $line->thread_subject;
+		$t->replies = $children;
 		return $t;
 	}
 	
-	static function newFromId( $id ) {
-		$foo = Thread::threadsWhere( array('thread_id' => $id) );
-		return count($foo) > 0 ? $foo[0] : null;
-	}
+}
 
-	static function newThread( $root_post, $article ) {
-		$dbr =& wfGetDB( DB_MASTER );
-		$res = $dbr->insert('lqt_thread',
-			array('thread_article' => $article->getID(),
-			      'thread_root_post' => $root_post->getID(),
-			      'thread_touched' => wfTimestampNow()),
-			__METHOD__);
-		// TODO we could avoid a query here.
-		return Thread::newFromId( $dbr->insertId() );
-	}
-
-	/** List of months in which there are >0 threads, suitable for threadsOfArticleInMonth. */
-	static function monthsWhereArticleHasThreads( $article ) {
-		$threads = Thread::allThreadsOfArticle( $article );
-		$months = array();
-		foreach( $threads as $t ) {
-			$m = substr( $t->touched(), 0, 6 );
-			if ( !array_key_exists( $m, $months ) ) {
-				if (!in_array( $m, $months )) $months[] = $m;
-			}
+function lqtCheapTest() {
+	$threads = Threads::threadsWhere( "thread.thread_id = 1" );
+	function cheapShowThread($t) {
+		global $wgOut;
+		$wgOut->addHTML($t->id);
+		$wgOut->addHTML('<dl><dd>');
+		foreach( $t->replies as $r ) {
+			cheapShowThread($r);
 		}
-		return $months;
+		$wgOut->addHTML('</dd></dl>');
 	}
-
-	static function latestNThreadsOfArticle( $article, $n ) {
-		return Thread::threadsWhere( array('thread_article' => $article->getID(),
-		                                   'thread_subthread_of is null'),
-		                             array('ORDER BY' => 'thread_touched DESC',
-		                                   'LIMIT' => $n) );
-	}
-
-	static function allThreadsOfArticle( $article ) {
-		return Thread::threadsWhere( array('thread_article' => $article->getID(),
-		                                   'thread_subthread_of is null'),
-		                             array('ORDER BY' => 'thread_touched DESC') );
-	}
-	
-	static function threadsOfArticleInMonth( $article, $yyyymm ) {
-		return Thread::threadsWhere( array('thread_article' => $article->getID(),
-		                                   'thread_subthread_of is null',
-		                                   'thread_touched >= "'.Date::beginningOfMonth($yyyymm).'"',
-										   'thread_touched <= "'.Date::endOfMonth($yyyymm).'"'),
-		                             array('ORDER BY' => 'thread_touched DESC') );
-	}
-	
-	static function threadsOfArticleInLastNDays( $article, $n ) {
-		$startdate = Date::now()->nDaysAgo($n)->midnight();
-		return Thread::threadsWhere( array('thread_article' => $article->getID(),
-		                                   'thread_subthread_of is null',
-											'thread_touched >= ' . $startdate->text() ),
-		                             array('ORDER BY' => 'thread_touched DESC' ) );
-	}
-	
-	static function threadsWhoseRootPostIs( $post ) {
-		return Thread::threadsWhere( array('thread_root_post' => $post->getID()) );
-	}
-
-	static function threadsWhere( $where_clause, $options = array(), $extra_tables = array() ) {
-		$dbr =& wfGetDB( DB_SLAVE );
-		$res = $dbr->select( array_merge(array('lqt_thread'), $extra_tables),
-		                     array('lqt_thread.*'),
-		                     $where_clause,
-		                     __METHOD__,
-		                     $options);
-		$threads = array();
-		while ( $line = $dbr->fetchObject($res) ) {
-			$threads[] = Thread::newFromDBLine( $line );
-		}
-		return $threads;	  
-	}
-
-	static function walk( $root, $thread_callback, $push_callback, $pop_callback ) {
-		call_user_func($thread_callback, $root);
-		$s = $root->subthreads(); if ($s) {
-			call_user_func($push_callback);
-			foreach ($s as $t) {
-				Thread::walk($t, $thread_callback, $push_callback, $pop_callback);
-			}
-			call_user_func($pop_callback);
-		}
+	foreach( $threads as $t ) {
+		cheapShowThread($t);
 	}
 }
 
