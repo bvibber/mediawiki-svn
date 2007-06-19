@@ -687,7 +687,7 @@ HTML
 	}
 
 	function threads() {
-		return Thread::threadsWhere($this->where, $this->options);
+		return Thread::where($this->where, $this->options);
 	}
 
 	function formattedMonth($yyyymm) {
@@ -836,7 +836,7 @@ class ThreadPermalinkView extends LqtView {
 	}
 
 	function show() {
-		$ts = Thread::threadsWhoseRootPostIs( $this->article );
+		$ts = Threads::withRoot( $this->article );
 		if( count($ts) == 0 ) {echo "no such thread"; die();}
 		if ( count($ts) >1 ) {die();} // TODO handle this screwy situation.
 		$t = $ts[0];

@@ -242,7 +242,7 @@ class LiveThread {
 /** Module of factory methods. */
 class Threads {
 	
-	static function threadsWhere( $where, $options = array(), $extra_tables = array() ) {
+	static function where( $where, $options = array(), $extra_tables = array() ) {
 		$dbr =& wfGetDB( DB_SLAVE );
 		if ( is_array($where) ) $where = $dbr->makeList( $where, LIST_AND );
 		if ( is_array($options) ) $options = implode(',', $options);
@@ -274,8 +274,8 @@ SQL;
 		while ( $line = $dbr->fetchObject($res) ) {
 			$path = explode('.', $line->thread_path);
 			Threads::setDeepArray( $tree, $line, $path );
-
 		}
+		var_dump($tree);
 
 		$threads = array();
 		foreach( $tree as $root ) {
@@ -304,7 +304,12 @@ SQL;
 				$a[$p[0]] = array();
 			Threads::setDeepArray( $a[$p[0]], $v, array_slice($p, 1) );
 		}
-	}	
+	}
+
+	static function withRoot( $post ) {
+		return Threads::where( array('thread.thread_root' => $post->getID()) );
+	}
+
 }
 /*
 function lqtCheapTest() {
@@ -349,7 +354,7 @@ class QueryGroup {
 	function query($name) {
 		if ( !array_key_exists($name,$this->queries) ) return array();
 		list($where, $options, $extra_tables) = $this->queries[$name];
-		return Threads::threadsWhere($where, $options, $extra_tables);
+		return Threads::where($where, $options, $extra_tables);
 	}
 }
 
