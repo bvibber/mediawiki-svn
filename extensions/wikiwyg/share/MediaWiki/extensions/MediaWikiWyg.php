@@ -75,6 +75,7 @@ $block
         }
     }
     $text = $full;
+    return true;
 }
 
 # Not a valid entry point, skip unless MEDIAWIKI is defined

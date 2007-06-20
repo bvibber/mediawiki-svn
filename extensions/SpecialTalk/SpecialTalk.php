@@ -45,6 +45,8 @@ function wfSpecialTalk() {
 				// check existance
 				true
 			);
+			
+			return true;
 		}
 	}
 

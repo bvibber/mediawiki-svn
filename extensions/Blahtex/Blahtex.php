@@ -118,6 +118,8 @@ function efBlahtexMathAfterTexvc( &$mathRenderer, &$errmsg ) {
 	 $errmsg = $br->getErrmsg();
 	 wfDebug('Blahtex MathML: ' . $br->mr->mathml . "\n");
 	 wfDebug('Blahtex errmsg: ' . $errmsg . "\n");
+	 
+	 return true;
 }
 
 /**
@@ -152,6 +154,8 @@ function efBlahtexParserBeforeTidy( &$parser, &$text ) {
 	}
 	$parser->blahtexMathtags = $mathtags;
 	$text = $stripped . substr( $text, $pos );
+	
+	return true;
 }
 
 /**
@@ -162,6 +166,8 @@ function efBlahtexParserBeforeTidy( &$parser, &$text ) {
 function efBlahtexParserAfterTidy( &$parser, &$text ) {
 	global $wgBlahtexMathContent, $wgBlahtexMathTags;
 	$text = strtr( $text, $parser->blahtexMathtags );
+	
+	return true;
 }
 
 class BlahtexRenderer {

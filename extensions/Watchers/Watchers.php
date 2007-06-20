@@ -62,11 +62,11 @@ function wfWatchersExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL
 	global $wgTitle;
 	if( $wgTitle->isTalkPage() ) {
 		# No talk pages please
-		return;
+		return false;
 	}
 	if( $wgTitle->getNamespace() < 0 ) {
 		# No special pages please
-		return;
+		return false;
 	}
 	
 	wfWatchersAddCache();
@@ -79,6 +79,7 @@ function wfWatchersExtensionAfterToolbox( &$tpl ) { # Checked for HTML and MySQL
 	echo wfMsg('watchers_link_title');
 	echo "</a></li>\n" ;
 	
+	return true;
 }
 
 /**

@@ -27,6 +27,7 @@ function wfSisterDisplay( $out ) {
 			$out->addHtml( wfSisterList( $matches ) );
 		}
 	}
+	return true;
 }
 
 function wfSisterList( $sites ) {

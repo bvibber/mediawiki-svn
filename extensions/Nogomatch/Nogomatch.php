@@ -16,4 +16,5 @@ $wgExtensionCredits['other'][] = array(
 
 function wfNogomatchHook( &$title ) {
 	wfDebugLog( 'nogomatch', $title->getText(), false );
+	return true;
 }

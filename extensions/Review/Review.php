@@ -341,7 +341,7 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 	if(    !wfReviewExtensionDoesNamespaceApply ( $wgTitle->getNamespace() )
 	    or $wgUser->isBlocked()
 	    or ( $action != "view" )
-	) return;
+	) return false;
 
 	# Initialize
 	$do_merge = $wgRequest->getBool ( 'do_merge' , false ) ;

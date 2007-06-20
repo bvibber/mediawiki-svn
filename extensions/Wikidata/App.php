@@ -45,28 +45,31 @@ require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialAddCollection.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialConceptMapping.php");
 
 function addWikidataHeader() {
-  global $wgOut,$wgScriptPath;
-  $wgOut->addScript("<script type='text/javascript' src='{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js'></script>");
-  $wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.css"));
-  $wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/tables.css"));                                                                                                                                                                    
+	global $wgOut,$wgScriptPath;
+	$wgOut->addScript("<script type='text/javascript' src='{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js'></script>");
+	$wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.css"));
+	$wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/tables.css"));                                                                                                                                                                    
+	return true;
 }
 
 function addWikidataEditLinkTrail(&$trail) {
-  global $wgTitle;
-  $ns=Namespace::get($wgTitle->getNamespace());
-  if($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning') {
-    $dc=wdGetDatasetContext();
-    $trail="&dataset=$dc";
-  }
+	global $wgTitle;
+	$ns=Namespace::get($wgTitle->getNamespace());
+	if($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning') {
+		$dc=wdGetDatasetContext();
+		$trail="&dataset=$dc";
+	}
+	return true;
 }
 
 function addHistoryLinkTrail(&$trail) {
-  global $wgTitle;
-  $ns=Namespace::get($wgTitle->getNamespace());  
-  if($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning') {  
-    $dc=wdGetDatasetContext();
-    $trail="&dataset=$dc";
-  }
+	global $wgTitle;
+	$ns=Namespace::get($wgTitle->getNamespace());  
+	if($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning') {  
+    	$dc=wdGetDatasetContext();
+    	$trail="&dataset=$dc";
+  	}
+	return true;
 }
 
 function initializeWikidata() {
@@ -126,7 +129,7 @@ function initializeWikidata() {
 	'options'=>$datasetarray
 	);
 	
-
+	return true;
 }
 
 ?>

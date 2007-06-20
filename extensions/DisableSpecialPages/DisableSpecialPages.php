@@ -35,6 +35,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			if( $title && !efDspWhitelisted( $title ) && isset( $list[ $title->getText() ] ) )
 				unset( $list[ $title->getText() ] );
 		}
+		return true;
 	}
 
 	function efDspOldMethod() {
@@ -44,6 +45,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 			if( $title && !efDspWhitelisted( $title ) && isset( $wgSpecialPages[ $title->getText() ] ) )
 				SpecialPage::removePage( $title->getText() );
 		}
+		return true;
 	}
 
 	function efDspMakeTitle( $page ) {

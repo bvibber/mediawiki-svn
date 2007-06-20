@@ -51,8 +51,8 @@ function insert_endnotes( $parser , $text ) {
 	
 	wfDebug("insert_endnotes:\n<<<$text>>>\n");
 
-	if( $footnoteRecursionGuard ) return;
-	if( count( $footnoteNotes ) == 0 ) return ;
+	if( $footnoteRecursionGuard ) return false;
+	if( count( $footnoteNotes ) == 0 ) return false;
 	
 	$ret = "" ;
 	foreach( $footnoteNotes AS $num => $entry ) {
@@ -67,6 +67,8 @@ function insert_endnotes( $parser , $text ) {
 	/* Clear global array after rendering */
 	$footnoteNotes = array();
 	$footnoteCount = 1 ;
+	
+	return true;
 }
 
 function parse_footnote( $text, $params, &$parser ) {

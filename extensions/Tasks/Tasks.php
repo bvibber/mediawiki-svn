@@ -419,6 +419,7 @@ function wfTasksExtensionArticleSaveComplete( &$article, &$user, $text, $summary
 function wfTasksExtensionPreventOtherActiveTabs( &$skin, &$prevent_active_tabs ) { # Checked for HTML and MySQL insertion attacks
 	global $action;
 	$prevent_active_tabs = ( $action == 'tasks' );
+	return true;
 }
 
 /**

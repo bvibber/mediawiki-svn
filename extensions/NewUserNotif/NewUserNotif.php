@@ -34,6 +34,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$user =& $wgUser;
 		$notifier = new NewUserNotifier();
 		$notifier->execute( $user );
+		
+		return true;
 	}
 	
 	class NewUserNotifier {

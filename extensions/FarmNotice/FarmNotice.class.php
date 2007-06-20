@@ -29,6 +29,8 @@ class FarmNotice {
 		$extra = $this->fetchNotice();
 		if( $extra )
 			$notice = $extra . $notice;
+			
+		return true;
 	}
 	
 	function fetchNotice() {
@@ -125,6 +127,7 @@ class FarmNotice {
 				$wgMemc->delete( $this->getLocalCacheKey() );
 			}
 		}
+		return true;
 	}
 	
 	function getSourceUrl( $lang ) {
