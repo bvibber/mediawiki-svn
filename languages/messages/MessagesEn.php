@@ -1076,6 +1076,7 @@ Please check the URL you used to access this page.',
 'currentrev'          => 'Current revision',
 'revisionasof'        => 'Revision as of $1',
 'revision-info'       => 'Revision as of $1 by $2',
+'revision-info-current' => '-',
 'revision-nav'        => '($1) $2 | $3 ($4) | $5 ($6)', # don't translate or duplicate this message to other languages
 'previousrevision'    => '←Older revision',
 'nextrevision'        => 'Newer revision→',
