@@ -13,6 +13,25 @@ CREATE TABLE /*$wgDBprefix*/thread (
   INDEX thread_timestamp (thread_timestamp)
 ) TYPE=InnoDB;
 
+CREATE TABLE /*$wgDBprefix*/historical_thread (
+  -- Note that many hthreads can share an id, which is the same as the id
+  -- of the live thread. It is only the id/revision combo which must be unique.
+  hthread_id int(8) unsigned NOT NULL,
+  hthread_revision int(8) unsigned NOT NULL,
+  hthread_contents TEXT NOT NULL,
+  PRIMARY KEY hthread_id_revision (hthread_id, hthread_revision)
+) TYPE=InnoDB;
+
+-- Because hthreads are only stored one per root, this lists
+-- the subthreads that can be found within each one.
+CREATE TABLE /*$wgDBprefix*/hthread_contents {
+  htcontents_child int(8) unsigned NOT NULL,
+  htcontents_hthread int(8) unsigned NOT NULL,
+  htcontents_rev_start int(8) unsigned NOT NULL,
+  htcontents_rev_end int(8) unsigned NULL,
+  PRIMARY KEY 
+}
+
 /*
 	old_superthread and old_article are mutually exclusive.
 	New position is recorded either in the text movement or in the
