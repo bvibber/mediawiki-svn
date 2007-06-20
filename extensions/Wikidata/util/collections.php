@@ -48,6 +48,8 @@ $result = mysql_query("
 		SELECT uw_collection_ns.collection_id AS id ,count(*) AS total
 		FROM  uw_collection_contents, uw_collection_ns
 		WHERE uw_collection_ns.collection_id=uw_collection_contents.collection_id
+		AND uw_collection_contents.remove_transaction_id is NULL
+		AND uw_collection_ns.remove_transaction_id is NULL
 		GROUP BY uw_collection_ns.collection_id
 	) AS counts
 		ON spellings.id=counts.id
@@ -71,6 +73,6 @@ echo"<hr><div align=\"right\"><small>Page time: ".substr((stopwatch()-$start),0,
 <p align="left">
 <h3> see also</h3>
 <ul>
-<li><a href="stats.php">Overview, expressions per langauge</a></li>
+<li><a href="stats.php">Overview, expressions per language</a></li>
 <li><a href="../../..">return to Omegawiki proper</li></a>
 </p>

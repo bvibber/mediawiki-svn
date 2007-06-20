@@ -43,11 +43,11 @@ echo"<center>
 <hr width=950 size=1 noshade><br>
 ";
 
-$expressions_r=mysql_query("SELECT  COUNT(*) FROM uw_expression_ns");
+$expressions_r=mysql_query("SELECT  COUNT(*) FROM uw_expression_ns WHERE remove_transaction_id IS NULL");
 $expressions_a=mysql_fetch_row($expressions_r);
 $expressions=$expressions_a[0];
 
-$defined_meanings_r=mysql_query("SELECT  COUNT(*) FROM uw_defined_meaning");
+$defined_meanings_r=mysql_query("SELECT  COUNT(*) FROM uw_defined_meaning WHERE remove_transaction_id IS NULL");
 $defined_meanings_a=mysql_fetch_row($defined_meanings_r);
 $defined_meanings=$defined_meanings_a[0];
 echo"<br>\n";
@@ -69,7 +69,7 @@ $lang[$row[0]]=$row[2];
 ////////////////////////////////////////////////////////
 $result = mysql_query("
 SELECT 
-language_id, count(*)
+language_id, count(*) as tot
 FROM uw_expression_ns
 WHERE expression_id IN
 (
@@ -77,8 +77,9 @@ WHERE expression_id IN
 	FROM uw_syntrans
 	WHERE remove_transaction_id IS NULL
 )
+AND remove_transaction_id IS NULL
 group by language_id
-order by count(*) desc
+order by tot desc
  ")or die ("error ".mysql_error());
 
 echo ' 

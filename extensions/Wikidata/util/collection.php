@@ -77,7 +77,9 @@ FROM uw_collection_contents, uw_syntrans, uw_expression_ns
 WHERE  collection_id = $collection_esc
 AND  uw_syntrans.defined_meaning_id= uw_collection_contents.member_mid
 AND uw_expression_ns.expression_id = uw_syntrans.expression_id
+AND uw_expression_ns.remove_transaction_id IS NULL
 AND uw_syntrans.remove_transaction_id IS NULL
+AND uw_collection_contents.remove_transaction_id is NULL
 GROUP BY language_id
 ORDER BY counts DESC
  ")or die ("error ".mysql_error());
@@ -160,6 +162,6 @@ Notes:
 <h3> see also</h3>
 <ul>
 <li><a href="collections.php">Other collections</a></li>
-<li><a href="stats.php">Overview, expressions per langauge</a></li>
+<li><a href="stats.php">Overview, expressions per language</a></li>
 <li><a href="../../..">return to Omegawiki proper</li></a>
 </p>

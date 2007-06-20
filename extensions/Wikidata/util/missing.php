@@ -63,6 +63,8 @@ echo"
 
 ";
 
+# Malafaya: Here lies the old query, assuming there's always an English expression for the DM
+/*
 $result = mysql_query(" 
 	SELECT en.id, en.spelling 
 	FROM 
@@ -90,18 +92,69 @@ $result = mysql_query("
 	ON en.id=actual.id 
 	WHERE actual.id IS NULL
 ")or die ("error ".mysql_error());
+*/
 
+# Malafaya: This is my query (performance must be checked live) for missing expressions based on
+#                       * don't count deleted stuff (old query did)
+#                       * do 2 joins: between members of collection and target language, and then with english for default, but only for elements having target language expression as NULL (non-existing)
+#		  * this gives us the DM id, the spelling in target language (or NULL, if none), the spelling in English (or NULL, if none)
+#                    Warning: some DMs came up in OLPC and Swadesh collections belonging to those collections but having no expressions associated... These are visible in this query
+
+$result = mysql_query("
+		SELECT member.id, translation_en.spelling_en
+		FROM
+		(
+		 SELECT member_mid as id
+		 FROM uw_collection_contents WHERE
+		 collection_id = $collection_esc 
+		 AND remove_transaction_id IS NULL
+		) as member
+		LEFT JOIN
+		(
+		 SELECT spelling, defined_meaning_id
+		 FROM uw_syntrans, uw_expression_ns WHERE
+		 uw_expression_ns.expression_id = uw_syntrans.expression_id 
+		 AND uw_syntrans.remove_transaction_id IS NULL 
+		 AND language_id = $language_esc 
+		) as translation
+		ON
+		translation.defined_meaning_id = member.id
+		LEFT JOIN
+		(
+		 SELECT spelling as spelling_en, defined_meaning_id
+		 FROM uw_syntrans, uw_expression_ns WHERE
+		 uw_expression_ns.expression_id = uw_syntrans.expression_id
+		 AND uw_syntrans.remove_transaction_id IS NULL
+		 AND language_id = 85
+		) as translation_en
+		ON
+		translation_en.defined_meaning_id = member.id
+		WHERE translation.spelling IS NULL
+		ORDER BY spelling_en
+")or die ("error ".mysql_error());
 
 
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
 	$id=$row[0];
-	$spelling=$row[1];
-	print "<a href=\"../../../index.php?title=DefinedMeaning:".$spelling."_($id)\">$spelling</a>;\n";
+	$spelling_en=$row[1];
+	
+	# Malafaya: Not translated to target language
+	if ($spelling_en == null)
+		# Malafaya: Not translated to English either; use a placeholder expression
+		print "<a href=\"../../../index.php?title=DefinedMeaning:(untranslated)_($id)\">(untranslated)</a>;\n";
+	else
+		# Malafaya: English translation exists; use it
+		print "<a href=\"../../../index.php?title=DefinedMeaning:".$spelling_en."_($id)\">$spelling_en</a>;\n";
 }
 print "<br>\n";
 
+
 print "<hr>\n
 <h3>Already present</h3>\n";
+
+# Malafaya: Old query with same caveats as the one above
+
+/*
 $result = mysql_query(" 
 	SELECT actual.id, actual.spelling 
 	FROM 
@@ -129,6 +182,25 @@ $result = mysql_query("
 	ON en.id=actual.id 
 	WHERE actual.id IS NOT NULL
 ")or die ("error ".mysql_error());
+*/
+
+# Malafaya: my new query, not counting deleted stuff; just select target language expression for DMs in collection (whether translated to English or not, it's not relevant)
+
+$result = mysql_query(" 
+		SELECT defined_meaning_id, spelling
+		FROM uw_syntrans, uw_expression_ns WHERE
+		uw_expression_ns.expression_id = uw_syntrans.expression_id 
+		AND uw_syntrans.remove_transaction_id IS NULL 
+		AND language_id = $language_esc 
+		AND uw_syntrans.defined_meaning_id IN
+		(
+		 SELECT member_mid as id
+		 FROM uw_collection_contents WHERE
+		 collection_id = $collection_esc 
+		 AND remove_transaction_id IS NULL
+		)
+		ORDER BY spelling
+")or die ("error ".mysql_error());
 
 
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
@@ -153,8 +225,9 @@ Notes:
 <h3> see also</h3>
 <ul>
 <li><a href=\"collection.php?collection=$collection_id\">Return to  Number of Expressions per language in this collection</a></li>
-<li><a href=\"stats.php\">Overview, expressions per langauge</a></li>
+<li><a href=\"stats.php\">Overview, expressions per language</a></li>
 <li><a href=\"../../..\">return to Omegawiki proper</li></a>
 </p>
 "
+
 ?>
