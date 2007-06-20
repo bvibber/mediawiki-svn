@@ -232,9 +232,9 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 	$dbr =& wfGetDB(DB_SLAVE);
 	$sql = 
 		'SELECT attribute_mid, spelling' .
-		" FROM bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression_ns" .
+		" FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression_ns" .
 		' WHERE bootstrapped_defined_meanings.name = ' . $dbr->addQuotes($attributesLevel) .
-		" AND bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
+		" AND {$dc}_bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
 		" AND {$dc}_class_attributes.attribute_type = " . $dbr->addQuotes($attributesType) .
 		" AND {$dc}_syntrans.defined_meaning_id = {$dc}_class_attributes.attribute_mid" .
 		" AND {$dc}_expression_ns.expression_id = {$dc}_syntrans.expression_id";
