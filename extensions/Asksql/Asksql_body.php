@@ -18,7 +18,7 @@ class SpecialAsksql extends SpecialPage {
 		SpecialPage::SpecialPage("Asksql");
 	}
 
-	function execute() {
+	function execute( $par ) {
 		global $wgAllowSysopQueries, $wgUser, $wgRequest, $wgOut;
 
 		if( !$wgAllowSysopQueries ) {
