@@ -26,7 +26,7 @@ function wfPurge() {
 			$wgMessageCache->addMessage( 'purge', 'Purge' );
 			
 			$wgHooks['SkinTemplateContentActions'][] = array( &$this, 'contentHook' );
-			$wgHooks['ArticlePurge'][] = array( &$this, 'purgeHook' );
+			#$wgHooks['ArticlePurge'][] = array( &$this, 'purgeHook' );
 		}
 		
 		public static function contentHook( array &$content_actions ) {
