@@ -87,7 +87,7 @@ public class DumpImporter implements DumpWriter {
 		// nop		
 	}
 	
-	public void closeIndex(){
+	public void closeIndex() throws IOException {
 		writer.close();
 	}
 	

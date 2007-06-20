@@ -10,6 +10,7 @@ import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.wikimedia.lsearch.analyzers.Analyzers;
+import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.benchmark.SampleTerms;
@@ -62,9 +63,10 @@ public class Warmup {
 	
 	/** Warmup index using some number of simple searches */
 	protected static void warmupSearchTerms(IndexSearcherMul is, IndexId iid, int count, boolean useDelay) {
-		FieldNameFactory fields = new FieldNameFactory();
-		WikiQueryParser parser = new WikiQueryParser(fields.contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),fields,WikiQueryParser.NamespacePolicy.IGNORE);
-		Terms terms = getTermsForLang(global.getLanguage(iid.getDBname()));
+		String lang = global.getLanguage(iid.getDBname());
+		FieldBuilder.BuilderSet b = new FieldBuilder(lang).getBuilder();
+		WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE);
+		Terms terms = getTermsForLang(lang);
 		
 		try{	
 			for(int i=0; i < count ; i++){
@@ -88,17 +90,15 @@ public class Warmup {
 	}
 
 	/** Get database of example search terms for language */
-	protected static Terms getTermsForLang(String language) {
+	protected static Terms getTermsForLang(String lang) {
 		String lib = Configuration.open().getString("MWConfig","lib","./lib");
-		if(language.equals("en"))
+		if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang))
+			langTerms.put(lang,new WordTerms(lib+"/dict/terms-"+lang+".txt.gz"));		
+		if(lang.equals("sample"))
 			return new SampleTerms();
-		if(language.equals("fr") && langTerms.get("fr")==null)
-			langTerms.put("fr",new WordTerms(lib+"/dict/french.txt.gz"));
-		if(language.equals("de") && langTerms.get("de")==null)
-			langTerms.put("de",new WordTerms(lib+"/dict/german.txt.gz"));
 		
-		if(langTerms.containsKey(language))
-			return langTerms.get(language);
+		if(langTerms.containsKey(lang))
+			return langTerms.get(lang);
 		else
 			return langTerms.get("en");
 	}
@@ -119,8 +119,9 @@ public class Warmup {
 	/** Just run one complex query and rebuild the main namespace filter */
 	public static void simpleWarmup(IndexSearcherMul is, IndexId iid){
 		try{
-			FieldNameFactory fields = new FieldNameFactory();
-			WikiQueryParser parser = new WikiQueryParser(fields.contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),fields,WikiQueryParser.NamespacePolicy.IGNORE);
+			String lang = global.getLanguage(iid.getDBname());
+			FieldBuilder.BuilderSet b = new FieldBuilder(lang).getBuilder();
+			WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE);
 			Query q = parser.parseFourPass("a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 			is.search(q,new NamespaceFilterWrapper(new NamespaceFilter("0")));
 		} catch (IOException e) {

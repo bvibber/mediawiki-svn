@@ -12,9 +12,12 @@ public class FieldBuilder {
 	public class BuilderSet{
 		FilterFactory filters;
 		FieldNameFactory fields;
+		boolean addKeywords; // wether to add keywords from beginning of article
+		
 		public BuilderSet(FilterFactory filters, FieldNameFactory fields) {
 			this.filters = filters;
 			this.fields = fields;
+			this.addKeywords = false;
 		}
 		public FieldNameFactory getFields() {
 			return fields;
@@ -24,10 +27,22 @@ public class FieldBuilder {
 		}
 		public boolean isExactCase() {
 			return fields.isExactCase();
-		}				
+		}
+		public boolean isAddKeywords() {
+			return addKeywords;
+		}
+		public void setAddKeywords(boolean addKeywords) {
+			this.addKeywords = addKeywords;
+		}
+		
 	}
 	
 	protected BuilderSet[] builders = new BuilderSet[2];
+	
+	/** Construct case-insensitive field builder */
+	public FieldBuilder(String lang){
+		this(lang,false);
+	}
 	
 	public FieldBuilder(String lang, boolean exactCase){
 		if(exactCase){
@@ -47,6 +62,19 @@ public class FieldBuilder {
 
 	public BuilderSet[] getBuilders() {
 		return builders;
+	}
+	
+	/** Get the case-insensitive builder */
+	public BuilderSet getBuilder(){
+		return getBuilder(false);
+	}
+	
+	/** Get BuilderSet for exactCase value */
+	public BuilderSet getBuilder(boolean exactCase){
+		if(exactCase && builders.length > 1)
+			return builders[1];
+		else
+			return builders[0];
 	}
 	
 	

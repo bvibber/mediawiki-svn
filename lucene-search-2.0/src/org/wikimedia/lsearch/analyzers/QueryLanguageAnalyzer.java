@@ -25,7 +25,7 @@ public class QueryLanguageAnalyzer extends LanguageAnalyzer {
 	 */
 	@Override
 	public TokenStream tokenStream(String fieldName, String text) {
-		wikitokenizer = new WikiTokenizer(text,exactCase); 
+		wikitokenizer = new WikiTokenizer(text,filters.getLanguage(),exactCase); 
 		return super.tokenStream(fieldName,(Reader)null);
 	}
 

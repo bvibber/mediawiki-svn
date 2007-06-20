@@ -123,10 +123,12 @@ public class Localization {
 			log.warn("Property Localization.url not set in config file. Localization disabled.");
 			return false;
 		}
+		if(!loc.endsWith("/"))
+			loc += "/";
 		log.info("Reading localization for "+langCode);
 		URL url;
 		try {
-			url = new URL(MessageFormat.format(loc,langCode));
+			url = new URL(MessageFormat.format(loc+"Messages{0}.php",langCode));
 			
 			PHPParser parser = new PHPParser();
 			String text = parser.readURL(url);

@@ -77,7 +77,7 @@ public class SimpleIndexWriter {
 			}				
 		}
 		writer.setSimilarity(new WikiSimilarity());
-		int glMergeFactor = iid.getIntParam("mergeFactor",2);
+		int glMergeFactor = iid.getIntParam("mergeFactor",10);
 		int glMaxBufDocs = iid.getIntParam("maxBufDocs",10);
 		if(mergeFactor!=null)
 			writer.setMergeFactor(mergeFactor);
@@ -122,8 +122,9 @@ public class SimpleIndexWriter {
 		}
 	}
 	
-	/** Close and (if specified in global config) optimize indexes */
-	public void close(){
+	/** Close and (if specified in global config) optimize indexes 
+	 * @throws IOException */
+	public void close() throws IOException{
 		for(Entry<String,IndexWriter> en : indexes.entrySet()){
 			IndexId iid = IndexId.get(en.getKey());
 			IndexWriter writer = en.getValue();
@@ -137,6 +138,7 @@ public class SimpleIndexWriter {
 				writer.close();
 			} catch(IOException e){
 				log.warn("I/O error optimizing/closing index at "+iid.getImportPath());
+				throw e;
 			}
 		}
 	}

@@ -23,6 +23,7 @@ import org.apache.lucene.search.highlight.SimpleHTMLFormatter;
 import org.apache.lucene.search.highlight.TextFragment;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
+import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
@@ -126,9 +127,9 @@ public class HighlightDaemon extends Thread {
 		boolean exactCase = global.exactCaseIndex(iid.getDBname());
 		String lang = global.getLanguage(dbname);
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
-		FieldNameFactory fields = new FieldNameFactory(exactCase);
-		WikiQueryParser parser = new WikiQueryParser(fields.contents(),
-				new NamespaceFilter("0"),analyzer,fields,WikiQueryParser.NamespacePolicy.IGNORE);
+		FieldBuilder.BuilderSet bs = new FieldBuilder(lang,exactCase).getBuilder(exactCase);
+		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),
+				new NamespaceFilter("0"),analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE);
 		Query q = parser.parseFourPass(query,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 		Scorer scorer = new QueryScorer(q);
 		SimpleHTMLFormatter formatter = new SimpleHTMLFormatter("<span class=\"searchmatch\">","</span>");

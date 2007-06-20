@@ -86,7 +86,7 @@ public class FastWikiTokenizerTest {
 			showTokens(text);
 			text = "This are [[bean]]s and more [[bla]]njah also Großmann";
 			showTokens(text);
-			text = "[[Category:Blah Blah?!]], and [[:Category:Link to something]]";
+			text = "[[Category:Blah Blah?!]], and [[:Category:Link to something]] [[Category:Mathematics|Name]]";
 			showTokens(text);
 			text = "[[sr:Glavna stranica]], and [[:Category:Link to category]]";
 			showTokens(text);
@@ -114,7 +114,7 @@ public class FastWikiTokenizerTest {
 			for(int i=0;i<2000;i++){
 				for(TestArticle article : articles){
 					String text = article.content;
-					FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,false);
+					FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,"en",false);
 					parser.parse();
 				}
 			}

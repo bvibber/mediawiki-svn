@@ -19,6 +19,7 @@ import org.apache.lucene.search.SearchableMul;
 import org.apache.lucene.search.Searcher;
 import org.apache.lucene.search.TopDocs;
 import org.wikimedia.lsearch.analyzers.Analyzers;
+import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.beans.ResultSet;
@@ -92,18 +93,24 @@ public class SearchEngine {
 	}
 	
 	/** Search mainpart or restpart of the split index */
-	public SearchResults searchPart(IndexId iid, Query q, NamespaceFilterWrapper filter, int offset, int limit, boolean explain){
+	public SearchResults searchPart(IndexId iid, String searchterm, Query q, NamespaceFilterWrapper filter, int offset, int limit, boolean explain){
 		if( ! (iid.isMainsplit() || iid.isNssplit()))
 			return null;
-		try {
+		try {			
 			SearcherCache cache = SearcherCache.getInstance();
 			IndexSearcherMul searcher;
 			long searchStart = System.currentTimeMillis();
 
 			searcher = cache.getLocalSearcher(iid);
-
-			Hits hits = searcher.search(q,filter);
-			return makeSearchResults(searcher,hits,offset,limit,iid,q.toString(),q,searchStart,explain);		
+			NamespaceFilterWrapper localfilter = filter;
+			if(iid.isMainsplit() && iid.isMainPart())
+				localfilter = null;
+			else if(iid.isNssplit() && !iid.isLogical() && iid.getNamespaceSet().size()==1)
+				localfilter = null;
+			if(localfilter != null)
+				log.info("Using local filter: "+localfilter);
+			Hits hits = searcher.search(q,localfilter);
+			return makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);		
 		} catch (IOException e) {
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Internal error in SearchEngine: "+e.getMessage());
@@ -121,8 +128,8 @@ public class SearchEngine {
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
-		FieldNameFactory ff = new FieldNameFactory(exactCase);
-		WikiQueryParser parser = new WikiQueryParser(ff.contents(),nsDefault,analyzer,ff,WikiQueryParser.NamespacePolicy.IGNORE);
+		FieldBuilder.BuilderSet bs = new FieldBuilder(global.getLanguage(iid.getDBname()),exactCase).getBuilder(exactCase);
+		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE);
 		HashSet<NamespaceFilter> fields = parser.getFieldNamespaces(searchterm);
 		NamespaceFilterWrapper nsfw = null;
 		Query q = null;
@@ -183,7 +190,7 @@ public class SearchEngine {
 						return res;
 					}
 					RMIMessengerClient messenger = new RMIMessengerClient();
-					return messenger.searchPart(piid,q,nsfw,offset,limit,explain,host);
+					return messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
 				}
 			}
 			// normal search

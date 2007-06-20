@@ -139,7 +139,13 @@ public class Importer {
 			long end = System.currentTimeMillis();
 
 			log.info("Closing/optimizing index...");
-			dp.closeIndex();
+			try{
+				dp.closeIndex();
+			} catch(IOException e){
+				e.printStackTrace();
+				log.fatal("Cannot close/optimize index : "+e.getMessage());
+				System.exit(1);
+			}
 
 			long finalEnd = System.currentTimeMillis();
 			

@@ -165,6 +165,8 @@ public class SearcherCache {
 		HashSet<IndexId> mys =  global.getMySearch();
 		for(IndexId iid : mys){
 			try {
+				if(iid.isLogical())
+					continue;
 				IndexSearcherMul is = getLocalSearcher(iid);
 				Warmup.warmupIndexSearcher(is,iid,false);
 			} catch (IOException e) {
@@ -262,6 +264,8 @@ public class SearcherCache {
 		log.debug("Openning local index for "+iid);
 		if(!iid.isMySearch())
 			throw new IOException(iid+" is not searched by this host.");
+		if(iid.isLogical())
+			throw new IOException(iid+" will not open logical index.");
 		try {
 			searcher = new IndexSearcherMul(iid.getCanonicalSearchPath());
 			searcher.setSimilarity(new WikiSimilarity());

@@ -172,7 +172,7 @@ public class WikiIndexModifier {
 				}				
 			}
 			writer.setSimilarity(new WikiSimilarity());
-			int mergeFactor = iid.getIntParam("mergeFactor",2);
+			int mergeFactor = iid.getIntParam("mergeFactor",10);
 			int maxBufDocs = iid.getIntParam("maxBufDocs",10);
 			writer.setMergeFactor(mergeFactor);
 			writer.setMaxBufferedDocs(maxBufDocs);
@@ -429,20 +429,19 @@ public class WikiIndexModifier {
 			title.setBoost(rankBoost);
 			doc.add(title);
 
-			Field stemtitle = new Field(fields.stemtitle(), article.getTitle(),Field.Store.NO, Field.Index.TOKENIZED);				
-			//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
-			stemtitle.setBoost(rankBoost);
-			doc.add(stemtitle);
+			if(bs.getFilters().hasStemmer()){
+				Field stemtitle = new Field(fields.stemtitle(), article.getTitle(),Field.Store.NO, Field.Index.TOKENIZED);				
+				//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
+				stemtitle.setBoost(rankBoost);
+				doc.add(stemtitle);
+			}
 
 			// put the best redirects as alternative titles
 			makeAltTitles(doc,fields.alttitle(),article);
 
-			// add titles of redirects, generated from analyzer
-			makeKeywordField(doc,fields.redirect(),rankBoost);
-
-			if(checkKeywordPreconditions(article,iid))
-				// most significat words in the text, gets extra score, from analyzer
-				makeKeywordField(doc,fields.keyword(),rankBoost);
+			bs.setAddKeywords(checkKeywordPreconditions(article,iid));
+			// most significant words in the text, gets extra score, from analyzer
+			makeKeywordField(doc,fields.keyword(),rankBoost);
 
 			// the next fields are generated using wikitokenizer 
 			doc.add(new Field(fields.contents(), "", 
@@ -453,10 +452,6 @@ public class WikiIndexModifier {
 			// keyword.setBoost(calculateKeywordsBoost(tokenizer.getTokens().size()));
 		}
 		// make analyzer
-		if(article.getTitle().equalsIgnoreCase("wiki")){
-			int b =10;
-			b++;
-		}
 		String text = article.getContents();
 		Object[] ret = Analyzers.getIndexerAnalyzer(text,builder,article.getRedirectKeywords());
 		perFieldAnalyzer = (PerFieldAnalyzerWrapper) ret[0];
@@ -487,7 +482,7 @@ public class WikiIndexModifier {
 			if(ranks.get(i) == 0)
 				break; // we don't want redirects with zero links
 			//log.info("For "+article+" alttitle"+(i+1)+" "+redirects.get(i)+" = "+ranks.get(i));
-			Field alttitle = new Field("alttitle"+(i+1), redirects.get(i),Field.Store.NO, Field.Index.TOKENIZED);				
+			Field alttitle = new Field(prefix+(i+1), redirects.get(i),Field.Store.NO, Field.Index.TOKENIZED);				
 			alttitle.setBoost(calculateArticleRank(ranks.get(i)));
 			doc.add(alttitle);			
 		}

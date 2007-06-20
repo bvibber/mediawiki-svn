@@ -55,7 +55,7 @@ public class Analyzers {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = new PerFieldAnalyzerWrapper(new SimpleAnalyzer());
 		WikiTokenizer tokenizer = null;
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
-			tokenizer = addFieldsForIndexing(perFieldAnalyzer,text,bs.getFilters(),bs.getFields(),redirects,bs.isExactCase());
+			tokenizer = addFieldsForIndexing(perFieldAnalyzer,text,bs.getFilters(),bs.getFields(),redirects,bs.isExactCase(),bs.isAddKeywords());
 		} 
 		return new Object[] {perFieldAnalyzer,tokenizer};
 	}
@@ -64,26 +64,30 @@ public class Analyzers {
 	 * Add some fields to indexer's analyzer.
 	 * 
 	 */
-	public static WikiTokenizer addFieldsForIndexing(PerFieldAnalyzerWrapper perFieldAnalyzer, String text, FilterFactory filters, FieldNameFactory fields, ArrayList<String> redirects, boolean exactCase) {
+	public static WikiTokenizer addFieldsForIndexing(PerFieldAnalyzerWrapper perFieldAnalyzer, String text, FilterFactory filters, FieldNameFactory fields, ArrayList<String> redirects, boolean exactCase, boolean addKeywords) {
 		// parse wiki-text to get categories
 		WikiTokenizer tokenizer = new WikiTokenizer(text,filters.getLanguage(),exactCase);
 		tokenizer.tokenize();
 		ArrayList<String> categories = tokenizer.getCategories();
 		
+		ArrayList<String> allKeywords = new ArrayList<String>();
+		if(addKeywords && tokenizer.getKeywords()!=null) 
+			allKeywords.addAll(tokenizer.getKeywords());
+		if(redirects!=null)
+			allKeywords.addAll(redirects);
+		
 		perFieldAnalyzer.addAnalyzer(fields.contents(), 
 				new LanguageAnalyzer(filters,tokenizer));
 		perFieldAnalyzer.addAnalyzer("category", 
-				new CategoryAnalyzer(categories));
+				new CategoryAnalyzer(categories,exactCase));
 		perFieldAnalyzer.addAnalyzer(fields.title(),
 				getTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		perFieldAnalyzer.addAnalyzer(fields.stemtitle(),
 				getTitleAnalyzer(filters,exactCase));
 		setAltTitleAnalyzer(perFieldAnalyzer,fields.alttitle(),
 				getTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
-		setKeywordAnalyzer(perFieldAnalyzer,fields.redirect(),
-				new KeywordsAnalyzer(redirects,filters.getNoStemmerFilterFactory(),fields.redirect(),exactCase));		
 		setKeywordAnalyzer(perFieldAnalyzer,fields.keyword(), 
-				new KeywordsAnalyzer(tokenizer.getKeywords(),filters.getNoStemmerFilterFactory(),fields.keyword(),exactCase));
+				new KeywordsAnalyzer(allKeywords,filters.getNoStemmerFilterFactory(),fields.keyword(),exactCase));
 		return tokenizer;
 	}
 	
