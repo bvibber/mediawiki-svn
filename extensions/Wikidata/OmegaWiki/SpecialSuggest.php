@@ -233,7 +233,7 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 	$sql = 
 		'SELECT attribute_mid, spelling' .
 		" FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression_ns" .
-		' WHERE bootstrapped_defined_meanings.name = ' . $dbr->addQuotes($attributesLevel) .
+		" WHERE {$dc}_bootstrapped_defined_meanings.name = " . $dbr->addQuotes($attributesLevel) .
 		" AND {$dc}_bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
 		" AND {$dc}_class_attributes.attribute_type = " . $dbr->addQuotes($attributesType) .
 		" AND {$dc}_syntrans.defined_meaning_id = {$dc}_class_attributes.attribute_mid" .
