@@ -353,6 +353,8 @@ HTML;
 	}
 
 	function showThreadFooter( $thread ) {
+		global $wgLang; // TODO global.
+		
 		$color_number = $this->selectNewUserColor( $thread->root()->originalAuthor() );
 		$this->output->addHTML(wfOpenElement('ul', array('class'=>"lqt_footer" )));
 
@@ -362,8 +364,7 @@ HTML;
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
 		$this->output->addHTML( wfOpenElement( 'li' ) );
-		$d = new Date($thread->timestamp());
-		$this->output->addHTML( $d->lastMonth()->text() );
+		$this->output->addHTML( $wgLang->timeanddate($thread->timestamp()) );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
 		$commands = array( 'Edit' => $this->talkpageUrl( $this->title, 'edit', $thread ),
