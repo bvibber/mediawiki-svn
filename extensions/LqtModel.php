@@ -5,7 +5,7 @@ require_once('Article.php');
 // TODO if we're gonna have a Date class we should really do it.
 class Date {
 	public $year, $month, $day, $hour, $minute, $second;
-	
+
 	// ex. "20070530033751"
 	function __construct( $text ) {
 		if ( !strlen( $text ) == 14 || !ctype_digit($text) ) {
@@ -20,50 +20,50 @@ class Date {
 		$this->second = intval( substr( $text, 12, 2 ) );
 	}
 	function lastMonth() {
-	  return $this->moved('-1 month');
+		return $this->moved('-1 month');
 	}
 	function nextMonth() {
-	  return $this->moved('+1 month');
+		return $this->moved('+1 month');
 	}
 	function moved($str) {
-	  $d = new DateTime($this->text());
-	  $d->modify($str);
-	  return new Date($d->format('YmdHis'));
+		$d = new DateTime($this->text());
+		$d->modify($str);
+		return new Date($d->format('YmdHis'));
 	}
-/*	function monthString() {
+	/*	function monthString() {
 		return sprintf( '%04d%02d', $this->year, $this->month );
-	}*/
+	}
+	*/
 	static function monthString($text) {
 		return substr($text, 0, 6);
 	}
 
 	function delta( $o ) {
-	  $t = clone $this;
-	  $els = array('year', 'month', 'day', 'hour', 'minute', 'second');
-	  $deltas = array();
-	  foreach ($els as $e) {
-	    $deltas[$e] = $t->$e - $o->$e;
-	    $t->$e +=     $t->$e - $o->$e;
-	  }
-	  
-	  // format in style of DateTime::modify().
-	  $result = "";
-	  foreach( $deltas as $name => $val ) {
-	    $result .= "$val $name ";
-	  }
-	  return $result;
+		$t = clone $this;
+		$els = array('year', 'month', 'day', 'hour', 'minute', 'second');
+		$deltas = array();
+		foreach ($els as $e) {$deltas[$e] = $t->$e - $o->$e;
+			$t->$e +=     $t->$e - $o->$e;
+		}
+
+		// format in style of DateTime::modify().
+		$result = "";
+		foreach( $deltas as $name => $val ) {
+			$result .= "$val $name ";
+		}
+		return $result;
 	}
 	static function beginningOfMonth($yyyymm) { return $yyyymm . '00000000'; }
 	static function endOfMonth($yyyymm) { return $yyyymm . '31235959'; }
 	function text() {
 		return sprintf( '%04d%02d%02d%02d%02d%02d', $this->year, $this->month, $this->day,
-						$this->hour, $this->minute, $this->second );
+			$this->hour, $this->minute, $this->second );
 	}
 	static function now() {
 		return new Date(wfTimestampNow());
 	}
 	function nDaysAgo($n) {
-	  return $this->moved("-$n days");
+		return $this->moved("-$n days");
 	}
 	function midnight() {
 		$d = clone $this;
@@ -81,9 +81,9 @@ class Date {
 
 class Post extends Article {
 	/**
-	 * Return the User object representing the author of the first revision
-	 * (or null, if the database is screwed up).
-	 */
+	* Return the User object representing the author of the first revision
+	* (or null, if the database is screwed up).
+	*/
 	function originalAuthor() {
 		$dbr =& wfGetDB( DB_SLAVE );
 
@@ -98,7 +98,6 @@ class Post extends Article {
 		else
 			return null;
 	}
-	
 }
 
 class LiveThread {
@@ -134,7 +133,7 @@ class LiveThread {
 	function setSuperthread($thread) {
 		var_dump("warning setSuperthread unimplemented");
 	}
-	
+
 	function superthread() {
 		if( !$this->hasSuperthread() ) {
 			return null;
@@ -149,7 +148,7 @@ class LiveThread {
 		if( false === strpos($this->path,'.') ) return false;
 		else return true;
 	}
-	
+
 	function topmostThread() {
 		if( !$this->hasSuperthread() ) {
 			return $this;
@@ -164,13 +163,13 @@ class LiveThread {
 		$this->articleId = $a->getID();
 		$this->touch();
 	}
-	
+
 	function article() {
 		if ( !$this->articleId ) return null;
 		if ( !$this->article ) $this->article = new Article(Title::newFromID($this->articleId));
 		return $this->article;
 	}
-	
+
 	function id() {
 		return $this->id;
 	}
@@ -280,7 +279,7 @@ WHERE $where AND
 children.thread_path LIKE CONCAT(thread.thread_path, "%")
 $options
 SQL;
-                $res = $dbr->query($sql); 
+		$res = $dbr->query($sql); 
 
 		$lines = array();
 		$threads = array();
@@ -302,8 +301,8 @@ SQL;
 		$children = array();
 		foreach( $lines as $key => $m ) {
 			if ( $m->thread_path != $l->thread_path &&
-			     strpos( $m->thread_path, $l->thread_path ) === 0 ) {
-				// $m->path begins with $l->path; this is a child.
+			     	strpos( $m->thread_path, $l->thread_path ) === 0 ) {
+					// $m->path begins with $l->path; this is a child.
 				unset($lines[$key]);
 				$children[] = Threads::buildLiveThread( &$lines, $m );
 			}
