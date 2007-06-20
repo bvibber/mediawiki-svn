@@ -64,6 +64,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 */
 	function efBookInformation( $isbn, $output ) {
 		BookInformation::show( $isbn, $output );
+		
+		return true;
 	}
 	
 	/**

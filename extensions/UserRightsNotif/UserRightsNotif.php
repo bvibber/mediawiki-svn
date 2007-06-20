@@ -38,7 +38,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$subject = wfMsg( 'userrightsnotifysubject', $wgSitename );
 			$message = wfMsg( 'userrightsnotifybody', $user->getName(), $wgSitename, $wgUser->getName(), $wgContLang->timeAndDate( wfTimestampNow() ), $added, $removed );
 			$user->sendMail( $subject, $message, $wgUserRightsNotif['sender'] );
-		}		
+		}
+		return true;	
 	}
 
 } else {

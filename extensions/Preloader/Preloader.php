@@ -44,6 +44,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 				if( $stx )
 					$text = $stx;
 			}
+			return true;
 		}
 		
 		/** Hook function for the parser */

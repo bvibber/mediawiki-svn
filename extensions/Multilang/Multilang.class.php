@@ -91,6 +91,7 @@ class Multilang {
 	public function clearState() {
 		$this->text = array();
 		$this->fallback = '';
+		return true;
 	}
 	
 }

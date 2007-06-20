@@ -53,6 +53,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	function efContributorsInvalidateCache( &$article ) {
 		global $wgMemc;
 		$wgMemc->delete( wfMemcKey( 'contributors', $article->getId() ) );
+		
+		return true;
 	}
 	
 	/**

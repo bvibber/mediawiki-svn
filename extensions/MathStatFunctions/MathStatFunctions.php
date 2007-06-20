@@ -421,6 +421,8 @@ function wfSetupMathStatFunctions() {
         foreach( $wgMathStatFunctionsMessages as $key => $value ) {
                 $wgMessageCache->addMessages( $value, $key );
         }
+        
+        return true;
 }
 
 function wfMathStatFunctionsLanguageGetMagic( &$magicWords, $langCode ) {

@@ -42,6 +42,7 @@ function wfRegexBlockCheck ($current_user) {
 			wfGetRegexBlocked ($blocker, $current_user, $ip_to_check) ;
 		}		
 	}
+	return true;
 }
 
 /* 

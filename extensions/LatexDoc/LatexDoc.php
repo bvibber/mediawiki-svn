@@ -18,6 +18,8 @@ class LatexDoc {
 
 		$this->workingDir = "$wgUploadDirectory/latexdoc";
 		$this->workingPath = "$wgUploadPath/latexdoc";
+		
+		return true;
 	}
 	
 	function onUnknownAction( $action, &$article ) {
