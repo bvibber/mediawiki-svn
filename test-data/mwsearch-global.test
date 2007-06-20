@@ -19,14 +19,16 @@ njawiki : (nssplit,3) (nspart1,[0,1],false,5) (nspart2,[12,13,14,15]) (nspart3,[
 # host : db1.role, db2.role
 # Mulitple hosts can search multiple dbs (N-N mapping)
 [Search-Group]
-192.168.0.2 : entest, entest.mainpart
+192.168.0.2 : entest.mainpart
 192.168.0.5 : entest.mainpart, entest.restpart
 [Search-Group]
 192.168.0.4 : frtest.part1, frtest.part2
 192.168.0.6 : frtest.part3, detest
 [Search-Group]
-192.168.0.10 : entest, entest.mainpart
+192.168.0.10 :entest.mainpart
 192.168.0.2 : entest.restpart, rutest
+[Search-Group]
+192.168.0.1 : njawiki
 
 # Index nodes
 # host: db1.role, db2.role

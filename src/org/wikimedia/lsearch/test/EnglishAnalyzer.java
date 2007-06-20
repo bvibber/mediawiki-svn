@@ -58,6 +58,6 @@ public class EnglishAnalyzer extends Analyzer {
 		if(streams.get(fieldName) != null)
 			return streams.get(fieldName);
  
-		return new AliasPorterStemFilter(new WikiTokenizer(text,false));		
+		return new AliasPorterStemFilter(new WikiTokenizer(text,"en",false));		
 	}
 }

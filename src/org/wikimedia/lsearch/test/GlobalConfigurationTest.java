@@ -119,19 +119,19 @@ public class GlobalConfigurationTest extends TestCase {
 			
 			String[] ssr = (String[]) sr.toArray(new String [] {} );
 			
-			assertEquals("entest",ssr[0]);
-			assertEquals("entest.mainpart",ssr[1]);
-			assertEquals("entest.restpart",ssr[2]);
-			assertEquals("rutest",ssr[3]);
-			assertEquals(4,ssr.length);
+			assertEquals("entest.mainpart",ssr[0]);
+			assertEquals("entest.restpart",ssr[1]);
+			assertEquals("rutest",ssr[2]);
+			assertEquals(3,ssr.length);
 			
 			// search groups
 			Hashtable<Integer,Hashtable<String,ArrayList<String>>> sg = testgc.getSearchGroups();
 			
 			Hashtable<String,ArrayList<String>> g0 = sg.get(new Integer(0));
-			assertEquals("{192.168.0.5=[entest.mainpart, entest.restpart], 192.168.0.2=[entest, entest.mainpart]}",g0.toString());
+			assertEquals("{192.168.0.5=[entest.mainpart, entest.restpart], 192.168.0.2=[entest.mainpart]}",g0.toString());
 			Hashtable<String,ArrayList<String>> g1 = sg.get(new Integer(1));
-			assertEquals("{192.168.0.6=[frtest.part3, detest], 192.168.0.4=[frtest.part1, frtest.part2]}",g1.toString());
+			assertEquals("{192.168.0.6=[frtest.part3, detest], 192.168.0.4=[frtest.part1, frtest.part2]}",g1.toString());			
+			
 			
 			// index
 			Hashtable index = testgc.getIndex();
@@ -251,6 +251,7 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals("njawiki.nspart3",njawiki.getPartByNamespace("4").toString());
 		assertEquals("njawiki.nspart1",njawiki.getPartByNamespace("0").toString());
 		assertEquals("njawiki.nspart2",njawiki.getPartByNamespace("12").toString());
+		assertEquals("[192.168.0.1]",njawiki.getSearchHosts().toString());
 		
 		IndexId njawiki2 = IndexId.get("njawiki.nspart2");
 		assertFalse(njawiki2.isLogical());
@@ -258,6 +259,7 @@ public class GlobalConfigurationTest extends TestCase {
 		assertTrue(njawiki2.isNssplit());
 		assertEquals(3,njawiki2.getSplitFactor());
 		assertEquals(2,njawiki2.getPartNum());
+		assertEquals("[192.168.0.1]",njawiki2.getSearchHosts().toString());
 		
 	}
 }

@@ -57,9 +57,14 @@ public class UpdateThread extends Thread {
 			}
 			// get the new snapshots via rsync, might be lengthy
 			for(LocalIndex li : forUpdate){
-				log.debug("Syncing "+li.iid);
-				rebuild(li); // rsync, update registry, cache
-				pending.remove(li.iid.toString());
+				try{
+					log.debug("Syncing "+li.iid);
+					rebuild(li); // rsync, update registry, cache
+					pending.remove(li.iid.toString());
+				} catch(Exception e){
+					e.printStackTrace();
+					log.error("Error syncing "+li+" : "+e.getMessage());
+				}
 			}
 		}		
 	}

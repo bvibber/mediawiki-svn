@@ -171,15 +171,16 @@ public class Benchmark extends Thread {
 	public static void main(String[] args) {
 		String host = "127.0.0.1";
 		int port = 8123;
-		String database = "wikilucene";
+		String database = "enwiki";
 		String verb = "search";
-		String namespace = "main";
+		String namespace = "";
 		String namespaceFilter= "0";
 		String lang = "en-b";
 		int runs = 5000;
 		int threads = 10;
-		int words = 2;
+		int words = 1;
 		sample = true;
+		String wordfile = null;
 		Terms terms;
 		
 		for(int i = 0; i < args.length; i++) {
@@ -195,6 +196,8 @@ public class Benchmark extends Thread {
 				runs = Integer.parseInt(args[++i]);
 			} else if (args[i].equals("-v")) {
 				database = args[++i];
+			} else if (args[i].equals("-wf")) {
+				wordfile = args[++i];
 			} else if (args[i].equals("-n") || args[i].equals("-ns")) {
 				namespace = args[++i];
 			} else if (args[i].equals("-f") ) {
@@ -218,19 +221,17 @@ public class Benchmark extends Thread {
 				                   "  -n  namespace (default: "+namespace+")\n"+
 				                   "  -f  namespace filter (default: "+namespaceFilter+")\n"+
 				                   "  -l  language (default: "+lang+")\n"+
-				                   "  -s  show sample url (default: "+sample+")\n");
+				                   "  -s  show sample url (default: "+sample+")\n"+
+				                   "  -wf <file> use file with search terms (default: none)\n");
 				return;
 			} else{
 				System.out.println("Unrecognized switch: "+args[i]);
 				return;
 			}
 		}
-		if(lang.equals("en"))
-			terms = new WordTerms("./lib/dict/english.txt.gz");
-		else if(lang.equals("de"))
-			terms = new WordTerms("./lib/dict/german.txt.gz");
-		else if(lang.equals("fr"))
-			terms = new WordTerms("./lib/dict/french.txt.gz");
+		if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang))
+			terms = new WordTerms("./lib/dict/terms-"+lang+".txt.gz");
+		
 		else if(lang.equals("sample"))
 			terms = new SampleTerms();
 		else

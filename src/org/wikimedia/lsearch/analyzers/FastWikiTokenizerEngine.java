@@ -51,7 +51,7 @@ public class FastWikiTokenizerEngine {
 	private char cl; // lowercased character
 	private boolean numberToken; // if the buffer holds a number token
 	private int headings = 0; // how many headings did we see
-	private int templateLevel = 0; // level of nestedness of templates
+	private int templateLevel = 0; // level of nestedness of templates	
 	
 	private int prefixLen = 0;
 	private final char[] prefixBuf = new char[MAX_WORD_LEN];
@@ -78,7 +78,7 @@ public class FastWikiTokenizerEngine {
 	enum ParserState { WORD, LINK_BEGIN, LINK_WORDS, LINK_END, LINK_KEYWORD, 
 		LINK_FETCH, IGNORE, EXTERNAL_URL, EXTERNAL_WORDS,
 		TEMPLATE_BEGIN, TEMPLATE_WORDS, TEMPLATE_END,
-		TABLE_BEGIN};
+		TABLE_BEGIN, CATEGORY_WORDS };
 		
 	enum FetchState { WORD, CATEGORY, INTERWIKI, KEYWORD };
 	
@@ -107,10 +107,6 @@ public class FastWikiTokenizerEngine {
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-	}
-	
-	public FastWikiTokenizerEngine(String text, boolean exactCase){
-		this(text,null,exactCase);
 	}
 	
 	public FastWikiTokenizerEngine(String text, String lang, boolean exactCase){
@@ -227,22 +223,27 @@ public class FastWikiTokenizerEngine {
 				}			
 			}
 			// make the original buffered version
-			Token exact;
-			if(exactCase)
-				exact = new Token(
-						new String(buffer, 0, length), start, start + length);
-			else
-				exact = new Token(
-						new String(buffer, 0, length).toLowerCase(), start, start + length);
-			if(addDecomposed && decompLength!=0)
-				exact.setType("unicode");
-			tokens.add(exact);
+			// TODO: maybe do this optionally for some languages
+			/* if(!("de".equals(language) && aliasLength!=0)){ 
+				Token exact;
+				if(exactCase)
+					exact = new Token(
+							new String(buffer, 0, length), start, start + length);
+				else
+					exact = new Token(
+							new String(buffer, 0, length).toLowerCase(), start, start + length);
+				if(addDecomposed && decompLength!=0)
+					exact.setType("unicode");
+				tokens.add(exact);
+			} */
 			// add decomposed token to stream
-			if(addDecomposed && decompLength!=0){
+			if(decompLength!=0){
 				Token t = new Token(
 						new String(decompBuffer, 0, decompLength), start, start + length);
-				t.setPositionIncrement(0);
-				t.setType("transliteration");
+				/*if(!"de".equals(language)){
+					t.setPositionIncrement(0);
+					t.setType("transliteration");
+				} */
 				tokens.add(t);				
 			}
 			// add alias (if any) token to stream
@@ -434,6 +435,7 @@ public class FastWikiTokenizerEngine {
 		String prefix = "";
 		char ignoreEnd = ' '; // end of ignore block
 		int pipeInx = 0;
+		int fetchStart = -1; // start index if link fetching
 		
 		if(tokens == null)
 			tokens = new ArrayList<Token>();
@@ -448,7 +450,7 @@ public class FastWikiTokenizerEngine {
 			c = text[cur];			
 			
 			// actions for various parser states
-			switch(state){
+			switch(state){			
 			case WORD:
 				switch(c){
 				case '=':
@@ -548,6 +550,7 @@ public class FastWikiTokenizerEngine {
 						cur = semicolonInx;
 						fetch = FetchState.CATEGORY;
 						state = ParserState.LINK_FETCH;
+						fetchStart = cur;
 						continue;
 					} else if(isInterwiki(prefix)){
 						cur = semicolonInx;
@@ -615,7 +618,7 @@ public class FastWikiTokenizerEngine {
 				
 				if(length<buffer.length)
 					buffer[length++] = c;
-				continue;			
+				continue;					
 			case LINK_END:
 				if(c == ']'){ // good link ending
 					state = ParserState.WORD;
@@ -628,6 +631,13 @@ public class FastWikiTokenizerEngine {
 						categories.add(new String(buffer,0,length));
 						length = 0;
 						fetch = FetchState.WORD;
+						// index category words
+						if(fetchStart != -1){
+							cur = fetchStart;
+							state = ParserState.CATEGORY_WORDS;
+						} else
+							System.err.print("ERROR: Inconsistent parser state, attepmted category backtrace for uninitalized fetchStart.");
+						fetchStart = -1;
 						continue;
 					case INTERWIKI:
 						interwikis.put(prefix,
@@ -647,6 +657,22 @@ public class FastWikiTokenizerEngine {
 					fetch = FetchState.WORD;
 					continue;
 				}
+				continue;
+			case CATEGORY_WORDS:
+				if(c == ']'){
+					state = ParserState.WORD; // end of category
+					continue;
+				} else if(c == '|'){ // ignore everything up to ]
+					for( lookup = cur + 1 ; lookup < textLength ; lookup++ ){
+						if(text[lookup] == ']'){ // we know the syntax is correct since we checked it in LINK_FETCH
+							state = ParserState.WORD;
+							cur = lookup;
+							break;
+						}
+					}
+					continue;
+				}
+				addLetter();
 				continue;
 			case TABLE_BEGIN:
 				// ignore everything up to the newspace, since they are table display params

@@ -105,6 +105,7 @@ public class WikiQueryParser {
 	private NamespacePolicy namespacePolicy;
 	protected NamespaceFilter defaultNamespaceFilter;
 	protected static GlobalConfiguration global=null;
+	protected FieldBuilder.BuilderSet builder;
 	protected FieldNameFactory fields;
 	
 	/** default value for boolean queries */
@@ -130,8 +131,8 @@ public class WikiQueryParser {
 	 * @param field   default field name
 	 * @param analyzer
 	 */
-	public WikiQueryParser(String field, Analyzer analyzer, FieldNameFactory fields){
-		this(field,(NamespaceFilter)null,analyzer,fields,NamespacePolicy.LEAVE);
+	public WikiQueryParser(String field, Analyzer analyzer, FieldBuilder.BuilderSet builder){
+		this(field,(NamespaceFilter)null,analyzer,builder,NamespacePolicy.LEAVE);
 	}
 	
 	/**
@@ -142,14 +143,15 @@ public class WikiQueryParser {
 	 * @param analyzer
 	 * @param nsPolicy
 	 */
-	public WikiQueryParser(String field, String namespace, Analyzer analyzer, FieldNameFactory fields, NamespacePolicy nsPolicy){
-		this(field,new NamespaceFilter(namespace),analyzer,fields,nsPolicy);
+	public WikiQueryParser(String field, String namespace, Analyzer analyzer, FieldBuilder.BuilderSet builder, NamespacePolicy nsPolicy){
+		this(field,new NamespaceFilter(namespace),analyzer,builder,nsPolicy);
 	}
 	
-	public WikiQueryParser(String field, NamespaceFilter nsfilter, Analyzer analyzer, FieldNameFactory fields, NamespacePolicy nsPolicy){
+	public WikiQueryParser(String field, NamespaceFilter nsfilter, Analyzer analyzer, FieldBuilder.BuilderSet builder, NamespacePolicy nsPolicy){
 		defaultField = field;		
 		this.analyzer = analyzer;
-		this.fields = fields;
+		this.builder = builder;
+		this.fields = builder.getFields();
 		tokens = new ArrayList<Token>();
 		this.namespacePolicy = nsPolicy;
 		disableTitleAliases = true;
@@ -999,6 +1001,8 @@ public class WikiQueryParser {
 				} else if(q instanceof PhraseQuery){ // -> SpanNearQuery(slop=0,inOrder=true)
 					PhraseQuery pq = (PhraseQuery)q;
 					Term[] terms = pq.getTerms();
+					if(terms == null || terms.length==0)
+						continue;
 					if(terms[0].field().equals("category")){
 						categories.add(q);
 					} else{
@@ -1081,12 +1085,6 @@ public class WikiQueryParser {
 		defaultBoost = olfDefaultBoost;
 		defaultAliasBoost = ALIAS_BOOST;
 		
-		BooleanQuery qs = multiplySpans(qt,0,fields.redirect(),REDIRECT_BOOST);
-		// merge queries
-		if(qs != null){
-			for(BooleanClause bc : qs.getClauses())
-				bq.add(bc);
-		}
 		if(bq.getClauses() == null || bq.getClauses().length==0)
 			return null;
 		else
@@ -1099,12 +1097,15 @@ public class WikiQueryParser {
 		String contentField = defaultField;
 		float olfDefaultBoost = defaultBoost;
 		defaultField = fields.title(); // now parse the title part
-		defaultBoost = TITLE_BOOST;
+		if(ADD_STEM_TITLE && builder.getFilters().hasStemmer())
+			defaultBoost = TITLE_BOOST; // we have stem titles
+		else
+			defaultBoost = TITLE_BOOST+STEM_TITLE_BOOST; // no stem titles, add-up boosts
 		defaultAliasBoost = TITLE_ALIAS_BOOST;
 		Query qt = parseRaw(queryText);
 		Query qs = null;
 		// stemmed title
-		if(ADD_STEM_TITLE){
+		if(ADD_STEM_TITLE && builder.getFilters().hasStemmer()){
 			defaultField = fields.stemtitle(); 
 			defaultBoost = STEM_TITLE_BOOST;
 			defaultAliasBoost = STEM_TITLE_ALIAS_BOOST;

@@ -46,13 +46,6 @@ public class FieldNameFactory {
 			return "alttitle"; 
 	}
 	
-	public String redirect(){
-		if(exactCase)
-			return "redirect_exact";
-		else
-			return "redirect";
-	}
-	
 	public String keyword(){
 		if(exactCase)
 			return "keyword_exact";

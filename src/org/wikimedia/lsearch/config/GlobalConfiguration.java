@@ -145,6 +145,27 @@ public class GlobalConfiguration {
 			System.out.println("ERROR in GlobalConfiguration: Default path for index absent. Check section [Index-Path].");
 			return false;
 		}
+		// expand logical index names on searchers
+		for(String host : search.keySet()){
+			ArrayList<String> hostsearch = search.get(host);
+			for(String dbname : hostsearch.toArray(new String[]{})){				
+				Hashtable<String, Hashtable<String,String>> types = database.get(dbname);
+				if(types != null){ // if not null, dbrole is dbname
+					if(types.containsKey("mainsplit")){
+						hostsearch.add(dbname+".mainpart");
+						hostsearch.add(dbname+".restpart");
+					} else if(types.containsKey("split")){
+						int factor = Integer.parseInt(database.get(dbname).get("split").get("number"));
+						for(int i=1;i<=factor;i++)
+							hostsearch.add(dbname+".part"+i);
+					} else if(types.containsKey("nssplit")){
+						int factor = Integer.parseInt(database.get(dbname).get("nssplit").get("number"));
+						for(int i=1;i<=factor;i++)
+							hostsearch.add(dbname+".nspart"+i);
+					}
+				}
+			}
+		}
 		// for each DB check if the corresponding parts are defined
 		// if not, put them in with default values
 		for(String dbname : database.keySet()){
@@ -158,6 +179,13 @@ public class GlobalConfiguration {
 				int factor = Integer.parseInt(database.get(dbname).get("split").get("number"));
 				for(int i=1;i<factor+1;i++){
 					String dbpart = "part"+i;
+					if(!types.contains(dbpart))
+						database.get(dbname).put(dbpart,new Hashtable<String,String>());
+				}
+			} else if(types.contains("nssplit")){
+				int factor = Integer.parseInt(database.get(dbname).get("nssplit").get("number"));
+				for(int i=1;i<factor+1;i++){
+					String dbpart = "nspart"+i;
 					if(!types.contains(dbpart))
 						database.get(dbname).put(dbpart,new Hashtable<String,String>());
 				}
@@ -196,7 +224,7 @@ public class GlobalConfiguration {
 					}
 				}
 				boolean searched = (getSearchHosts(dbrole).size() != 0); 
-				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split"))){
+				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split") || typeid.equals("nssplit"))){
 					System.out.println("WARNING: in Global Configuration: index "+dbrole+" is not searched by any host.");
 				}
 			}
@@ -663,8 +691,15 @@ public class GlobalConfiguration {
 		   type.equals("restpart") || type.matches("part[1-9][0-9]*")){		
 			
 			// all params are optional, if absent default will be used
-			if(tokens.length>1)
-				params.put("optimize",tokens[1].trim().toLowerCase());
+			if(tokens.length>1){
+				String token = tokens[1].trim().toLowerCase();
+				if(token.equals("true") || token.equals("false"))
+					params.put("optimize",token);
+				else{
+					System.err.println("Expecting true/false as second paramter of type "+type+" in database def: "+role);
+					System.exit(1);
+				}
+			}
 			if(tokens.length>2)
 				params.put("mergeFactor",tokens[2]);
 			if(tokens.length>3)
@@ -718,8 +753,15 @@ public class GlobalConfiguration {
 			params.put("namespaces",ns);
 			
 			// all params are optional, if absent default will be used
-			if(tokens.length>1)
-				params.put("optimize",tokens[1].trim().toLowerCase());
+			if(tokens.length>1){
+				String token = tokens[1].trim().toLowerCase();
+				if(token.equals("true") || token.equals("false"))
+					params.put("optimize",token);
+				else{
+					System.err.println("Expecting true/false as third paramter of type "+type+" in database def: "+role);
+					System.exit(1);
+				}
+			}
 			if(tokens.length>2)
 				params.put("mergeFactor",tokens[2]);
 			if(tokens.length>3)

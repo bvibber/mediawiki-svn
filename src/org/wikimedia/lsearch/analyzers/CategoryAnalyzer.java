@@ -19,6 +19,7 @@ public class CategoryAnalyzer extends Analyzer {
 		protected Iterator<String> tokensIt;
 		protected int start;
 		
+		
 		ArrayTokenStream(ArrayList<String> tokens){
 			this.tokens = tokens;
 			tokensIt = tokens.iterator();
@@ -28,7 +29,12 @@ public class CategoryAnalyzer extends Analyzer {
 		@Override
 		public Token next() throws IOException {
 			if(tokensIt.hasNext()){
-				String text = tokensIt.next();
+				String text;
+				if(!exactCase)
+					text = tokensIt.next().toLowerCase();
+				else
+					text = tokensIt.next();
+				
 				Token token = new Token(text,start,start+text.length());
 				start += text.length()+1;
 				return token;
@@ -39,9 +45,11 @@ public class CategoryAnalyzer extends Analyzer {
 	}
 	
 	ArrayList<String> categories;
+	protected boolean exactCase;
 		
-	public CategoryAnalyzer(ArrayList<String> categories) {
+	public CategoryAnalyzer(ArrayList<String> categories, boolean exactCase) {
 		this.categories = categories;
+		this.exactCase = exactCase;
 	}
 
 	@Override

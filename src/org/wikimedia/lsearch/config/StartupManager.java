@@ -63,12 +63,12 @@ public class StartupManager {
 			}
 		}
 		if(global.isSearcher()){
-			// warmup local indexes
-			SearcherCache.getInstance().warmupLocalCache();
 			// startup
 			(new SearchServer()).start();
+			// warmup local indexes
+			SearcherCache.getInstance().warmupLocalCache();
 			UpdateThread.getInstance().start(); // updater for local indexes
-			NetworkStatusThread.getInstance().start(); // network monitor
+			NetworkStatusThread.getInstance().start(); // network monitor			
 		}
 		
 	}

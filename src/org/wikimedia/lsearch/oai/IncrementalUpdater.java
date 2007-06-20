@@ -60,14 +60,15 @@ public class IncrementalUpdater {
 	
 	/** 
 	 * Syntax:
-	 * java IncrementalUpdater [-d] [-t timestamp] [-s sleep] [-f dblist] [-e dbname] [-n] dbname1 dbname2 ... 
+	 * java IncrementalUpdater [-d] [-t timestamp] [-s sleep] [-f dblist] [-e dbname] [-n] [--no-ranks] dbname1 dbname2 ... 
 	 * Options:
 	 *   -d   - daemonize, otherwise runs only one round of updates to dbs
-	 *   -s   - sleep time after one cycle (default: 30000ms)
+	 *   -s   - sleep time after one cycle (default: 30s)
 	 *   -t   - default timestamp if status file is missing (default: 2001-01-01)
 	 *   -f   - file to read databases from
 	 *   -n   - wait for notification of flush after done updating one db (default: true)
 	 *   -e   - exclude dbname from incremental updates (overrides -f)
+	 *   --no-ranks - don't fetch ranks
 	 * 
 	 * @param args
 	 */
@@ -81,12 +82,13 @@ public class IncrementalUpdater {
 		boolean notification = true;
 		HashSet<String> excludeList = new HashSet<String>();
 		HashSet<String> firstPass = new HashSet<String>(); // if dbname is here, then it's our update pass
+		boolean fetchReferences = true;
 		// args
 		for(int i=0; i<args.length; i++){
 			if(args[i].equals("-d"))
 				daemon = true;
 			else if(args[i].equals("-s"))
-				sleepTime = Long.parseLong(args[++i]);
+				sleepTime = Long.parseLong(args[++i])*1000;
 			else if(args[i].equals("-t"))
 				timestamp = args[++i];
 			else if(args[i].equals("-f"))
@@ -95,6 +97,8 @@ public class IncrementalUpdater {
 				excludeList.add(args[++i]);
 			else if(args[i].equals("-n"))
 				notification = true;
+			else if(args[i].equals("--no-ranks"))
+				fetchReferences = false;
 			else if(args[i].equals("--help"))
 				break;
 			else if(args[i].startsWith("-")){
@@ -119,14 +123,15 @@ public class IncrementalUpdater {
 			}
 		}
 		if(dbnames.size() == 0){
-			System.out.println("Syntax: java IncrementalUpdater [-d] [-s sleep] [-t timestamp] [-e dbname] [-f dblist] dbname1 dbname2 ...");
+			System.out.println("Syntax: java IncrementalUpdater [-d] [-s sleep] [-t timestamp] [-e dbname] [-f dblist] [-n] [--no-ranks] dbname1 dbname2 ...");
 			System.out.println("Options:");
 			System.out.println("  -d   - daemonize, otherwise runs only one round of updates to dbs");
-			System.out.println("  -s   - sleep time after one cycle (default: "+sleepTime+"ms)");
+			System.out.println("  -s   - sleep time in seconds after one cycle (default: "+sleepTime+"ms)");
 			System.out.println("  -t   - timestamp to start from (if status is missing default: "+timestamp+")");
 			System.out.println("  -f   - dblist file, one dbname per line");
 			System.out.println("  -n   - wait for notification of flush after done updating one db (default: "+notification+")");
 			System.out.println("  -e   - exclude dbname from incremental updates (overrides -f)");
+			System.out.println("  --no-ranks - don't try to fetch any article rank data");
 			return;
 		}
 		// config
@@ -173,8 +178,10 @@ public class IncrementalUpdater {
 						continue;
 					boolean hasMore = false;
 					do{
-						// fetch references for records
-						fetchReferences(records,dbname);
+						if(fetchReferences){
+							// fetch references for records
+							fetchReferences(records,dbname);
+						}
 						for(IndexUpdateRecord rec : records){
 							Article ar = rec.getArticle();
 							log.info("Sending "+ar+" with rank "+ar.getReferences()+" and "+ar.getRedirects().size()+" redirects: "+ar.getRedirects());

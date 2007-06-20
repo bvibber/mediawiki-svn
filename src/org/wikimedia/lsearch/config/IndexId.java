@@ -484,5 +484,12 @@ public class IndexId {
 		} else
 			return null;
 	}
+
+	/** Return the set of namespaces which are searched by this nssplit part */
+	public HashSet<String> getNamespaceSet() {
+		return namespaceSet;
+	}
+	
+	
 		
 }

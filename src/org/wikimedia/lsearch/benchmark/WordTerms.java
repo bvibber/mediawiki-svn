@@ -7,16 +7,19 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.zip.GZIPInputStream;
 
+import org.apache.log4j.Logger;
+
 /** Benchmark terms from a dictionary of words (word : frequency) */
 public class WordTerms implements Terms {
+	Logger log = Logger.getLogger(WordTerms.class);
 	/** load words from file, e.g. ./test-data/words-wikilucene.ngram.gz */
 	public static ArrayList<String> loadWordFreq(String path) throws IOException {
 		BufferedReader in;
 		if(path.endsWith(".gz"))
 			in = new BufferedReader(
-				new InputStreamReader(
-						new GZIPInputStream(
-								new FileInputStream(path))));
+					new InputStreamReader(
+							new GZIPInputStream(
+									new FileInputStream(path))));
 		else 
 			in = new BufferedReader(
 					new InputStreamReader(
@@ -27,13 +30,17 @@ public class WordTerms implements Terms {
 		int freqSum = 0;
 		int freq,count=0;
 		while((line = in.readLine())!=null){
-			String[] parts = line.split(" : ");
-			if(parts.length > 1){
-				freq = Integer.parseInt(parts[1]);
-				freqSum += freq;
+			try{
+				String[] parts = line.split(" : ");
+				if(parts.length > 1){				
+					freq = Integer.parseInt(parts[1]);
+					freqSum += freq;					
+				}
+				words.add(parts[0].trim());
+			} catch(NumberFormatException e){
+				words.add(line.trim());
 			}
 			count++;
-			words.add(parts[0].trim());
 		}
 		//System.out.println("Loaded "+count+" words with frequency sum of "+freqSum);
 		return words;
@@ -45,6 +52,7 @@ public class WordTerms implements Terms {
 		try {
 			words = loadWordFreq(path);
 		} catch (IOException e) {
+			log.error("Cannot open dictionary of search terms in "+path);
 			e.printStackTrace();
 		}
 	}

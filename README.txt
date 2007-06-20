@@ -21,8 +21,9 @@ Setup:
  	* edit mwsearch.conf:
  	 	+ MWConfig.global to point to URL of mwsearch-global.conf
  	 	+ MWConfig.lib to point to local library path (ie with unicode-data etc)
- 		+ Localization.url to point to URL pattern of latest 
- 		  message files from MediaWiki
+ 		+ Localization.url to point to URL of latest message files from MediaWiki
+ 		+ Indexes.path - base path where you want the deamon to store the indexes, 
+		+ Logging.logconfig - local path to log4j configuration file, e.g. /etc/lsearch.log4j (the lsearch package has a sample log4j file you can use)
    	* setup rsync daemon (see rsyncd.conf-example)
   	* setup log4j logging subsystem (see mwsearch.log4j-example)
  	
