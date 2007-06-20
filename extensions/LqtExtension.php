@@ -232,11 +232,10 @@ HTML;
 		
 		// For replies and new posts, insert the associated thread object into the DB.
 		if ($edit_type != 'editExisting' && $edit_type != 'summarize' && $e->didSave) {
-			$thread = Thread::newThread( $article, $this->article );
 			if ( $edit_type == 'reply' ) {
-				$thread->setSuperthread( $edit_applies_to );
+				$thread = Threads::newThread( $article, $this->article, $edit_applies_to );
 			} else {
-				$thread->touch();
+				$thread = Threads::newThread( $article, $this->article );
 			}
 		}
 		

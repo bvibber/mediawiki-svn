@@ -100,6 +100,12 @@ class Post extends Article {
 	}
 }
 
+class HistoricalThread {
+	static function create( $livethread ) {
+		echo ("pretended to create new historical thread.");
+	}
+}
+
 class LiveThread {
 	/* ID references to other objects that are loaded on demand: */
 	protected $rootId;
@@ -117,8 +123,30 @@ class LiveThread {
 	protected $timestamp;
 	protected $path;
 	
-	/* Identity */
 	protected $id;
+	protected $revisionNumber;
+	
+	/* Copy of $this made when first loaded from database, to store the data
+	   we will write to the history if a new revision is commited. */
+	protected $double;
+	
+	function commitRevision() {
+		// TODO open a transaction.
+		HistoricalThread::create( $this->double );
+
+		$this->revisionNumber += 1;
+
+		$dbr =& wfGetDB( DB_MASTER );
+		$res = $dbr->update( 'thread',
+		     /* SET */array( 'thread_root' => $this->rootId,
+					'thread_article' => $this->articleId,
+					'thread_path' => $this->path,
+					'thread_summary_page' => $this->summaryId,
+					'thread_timestamp' => $this->timestamp,
+					'thread_revision' => $this->revisionNumber ),
+		     /* WHERE */ array( 'thread_id' => $this->id, ),
+		     __METHOD__);
+	}
 
 	function __construct($line, $children) {
 		$this->id = $line->thread_id;
@@ -127,11 +155,13 @@ class LiveThread {
 		$this->summaryId = $line->thread_summary_page;
 		$this->path = $line->thread_path;
 		$this->timestamp = $line->thread_timestamp;
+		$this->revisionNumber = $line->thread_revision;
 		$this->replies = $children;
+		//$this->double = clone $this;
 	}
 
 	function setSuperthread($thread) {
-		var_dump("warning setSuperthread unimplemented");
+		$this->path = $thread->path . '.' . $this->id;
 	}
 
 	function superthread() {
@@ -173,6 +203,10 @@ class LiveThread {
 	function id() {
 		return $this->id;
 	}
+	
+	function path() {
+		return $this->path;
+	}
 
 	function root() {
 		if ( !$this->rootId ) return null;
@@ -187,8 +221,8 @@ class LiveThread {
 	}
 	
 	function setSummary( $post ) {
+		$this->summary = null;
 		$this->summaryId = $post->getID();
-		$this->updateRecord();
 	}
 	
 	function wikilink() {
@@ -256,6 +290,31 @@ class Threads {
 
 	static $loadedLiveThreads = array();
 	
+    static function newThread( $root, $article, $superthread = null ) {
+        $dbr =& wfGetDB( DB_MASTER );
+        $res = $dbr->insert('thread',
+            array('thread_article' => $article->getID(),
+                  'thread_root' => $root->getID(),
+                  'thread_timestamp' => wfTimestampNow()),
+            __METHOD__);
+		
+		$newid = $dbr->insertId();
+		
+		if( $superthread ) {
+			$newpath = $superthread->path() . '.' . $newid;
+		} else
+		{
+			$newpath = $newid;
+		}
+		$res = $dbr->update( 'thread',
+			     /* SET */   array( 'thread_path' => $newpath ),
+			     /* WHERE */ array( 'thread_id' => $newid, ),
+			     __METHOD__);
+		
+		// TODO we could avoid a query here.
+        return Threads::withId($newid);
+     }
+	
 	static function where( $where, $options = array(), $extra_tables = array() ) {
 		$dbr =& wfGetDB( DB_SLAVE );
 		if ( is_array($where) ) $where = $dbr->makeList( $where, LIST_AND );
@@ -269,7 +328,11 @@ class Threads {
 		}
 		
 		/* Select the client's threads, AND all their children.
-		  The ones the client actually asked for are marked with root_test. */
+		  The ones the client actually asked for are marked with root_test.
+		  In theory we could also grab the page and revision data, to avoid having
+		  to do an additional query for each page, but Article's prodedure for grabbing
+		  its own data is complicated and it's just not my problem. Plus parser cache.
+		*/
 
 		$root_test = str_replace( 'thread.', 'children.', $where ); // TODO fragile?
 
@@ -290,7 +353,7 @@ SQL;
 
 		foreach( $lines as $key => $l ) {
 			if( $l->is_root ) {
-				unset($lines[$key]);
+//				unset($lines[$key]);
 				$threads[] = Threads::buildLiveThread( &$lines, $l );
 			}
 		}
@@ -299,11 +362,11 @@ SQL;
 
 	private static function buildLiveThread( $lines, $l ) {
 		$children = array();
+		$l_path = preg_quote($l->thread_path);
 		foreach( $lines as $key => $m ) {
-			if ( $m->thread_path != $l->thread_path &&
-			     	strpos( $m->thread_path, $l->thread_path ) === 0 ) {
+			if ( preg_match( "/^{$l_path}\.\d+$/", $m->thread_path ) ) {
 					// $m->path begins with $l->path; this is a child.
-				unset($lines[$key]);
+//				unset($lines[$key]);
 				$children[] = Threads::buildLiveThread( &$lines, $m );
 			}
 		}
