@@ -418,6 +418,15 @@ ht|Diskusia_k_pomoci
 c|Kategória
 ct|Diskusia_ku_kategórii',
 );
+$wgLuceneSearchMessages['sq'] = array(
+	'lucenepowersearchtext' => 'Kërko në hapësirat: $1 për $3 $9',
+	'searchnext'            => "<span style='font-size: small'>Më pas</span> &#x00BB;",
+	'searchnoresults'       => 'Nuk u gjet asnjë përputhje. Për ndihmë rreth kërkimit ju lutem shikoni Kërkime.',
+	'searchnumber'          => '<strong>Rezultatet $1-$2 nga $3</strong>',
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Më parë</span>",
+	'searchscore'           => 'Përkatësia: $1',
+	'searchsize'            => '$1KB ($2 fjalë)',
+);
 $wgLuceneSearchMessages['sr-ec'] = array(
 	'searchnumber'          => "<strong>Резултати $1-$2 од $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Претходна</span>",
