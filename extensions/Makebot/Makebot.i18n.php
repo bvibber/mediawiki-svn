@@ -442,6 +442,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke'  => 'odobratý status bot používateľovi [[$1]]',
 ),
 
+/* Albanian */
+'sq' => array(
+'makebot'                => 'Jepni ose hiqni titullin robot',
+'makebot-change'         => 'Ndrysho titullin:',
+'makebot-comment'        => 'Shënim:',
+'makebot-grant'          => 'Jepja',
+'makebot-granted'        => '[[User:$1|$1]] tani ka titullin robot.',
+'makebot-header'         => "'''Një burokrat mund të përdori këtë faqe për t'i dhënë apo hequr titullin robot një përdoruesi tjetër.'''<br />Titulli robot fsheh redaktimet automatike të përdoruesit nga [[Special:Recentchanges|ndryshime së fundmi]] dhe lista të ngjashme. Titulli duhet dhënë sipas rregullave të vendosura.",
+'makebot-isbot'          => '[[User:$1|$1]] ka titull robot.',
+'makebot-logentrygrant'  => 'i dha titullin robot [[$1]]',
+'makebot-logentryrevoke' => 'i hoqi titullin robot [[$1]]',
+'makebot-logpage'        => 'Regjistri i robotëve',
+'makebot-logpagetext'    => 'Ky është një regjistër për ndryshimin e privilegjit robot të përdoruesve.',
+'makebot-notbot'         => '[[User:$1|$1]] nuk ka status robot.',
+'makebot-privileged'     => "[[User:$1|$1]] ka privilegje [[Special:Listadmins|administruesi ose burokrati]] dhe s'mund t'i jepet statusi robot.",
+'makebot-revoke'         => 'Hiqja',
+'makebot-revoked'        => '[[User:$1|$1]] nuk ka më status robot.',
+'makebot-search'         => 'Shko',
+'makebot-username'       => 'Përdoruesi:',
+),
+
 /* Serbian default (Sasa Stefanovic) */
 'sr' => array(
 'makebot' => 'Давање или одузимање статуса бота',

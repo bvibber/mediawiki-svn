@@ -143,6 +143,13 @@ $wgNewuserlogMessages['sk'] = array(
 	'newuserlog-create2-entry' => 'Bol vytvorený účet pre $1',
 );
 
+$wgNewuserlogMessages['sq'] = array(
+	'newuserlog-create-entry'  => 'Përdorues i ri',
+	'newuserlog-create2-entry' => 'krijoi llogarin për përdouesin $1',
+	'newuserlogpage'           => 'Regjistri i llogarive',
+	'newuserlogpagetext'       => 'Ky është një regjistër i llogarive të fundit që janë hapur',
+);
+
 $wgNewuserlogMessages['sr-ec'] = array(
 	'newuserlogpage'           => 'историја креирања корисника',
 	'newuserlogpagetext'       => 'Ово је историја скорашњих креација корисника',

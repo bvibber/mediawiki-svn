@@ -77,6 +77,9 @@ $wgSiteMatrixMessages['ru'] = array(
 $wgSiteMatrixMessages['sk'] = array(
 	"sitematrix" => "Zoznam wiki projektov Nadácie Wikimedia",
 );
+$wgSiteMatrixMessages['sq'] = array(
+	'sitematrix' => 'Lista e wiki-ve të Wikimedia-s',
+);
 $wgSiteMatrixMessages['sr-ec'] = array(
 	"sitematrix" => "Табела свих викија",
 );

@@ -115,6 +115,11 @@ $wgCrossNamespaceLinksMessages['sk'] = array(
 	'crossnamespacelinks-summary' => 'Táto stránka poskytuje zoznam odkazov zo stránky v hlavnom mennom priestore na stránky v ostatných menných priestoroch (okrem menných priestorov {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), ktoré neradno používať.',
 	'crossnamespacelinkstext'     => '$1: $2 odkazuje na $3',
 );
+$wgCrossNamespaceLinksMessages['sq'] = array(
+	'crossnamespacelinks'         => 'Lidhje ndër-hapësira',
+	'crossnamespacelinks-summary' => 'Kjo faqe jep një listë lidhjesh nga një faqe e hapësirës kryesore tek një faqe në hapësirat e tjera (përveç hapësirave {{ns:special}}, {{ns:talk}}, {{ns:project}} dhe {{ns:template}}).',
+	'crossnamespacelinkstext'     => '$1: $2 lidhje tek hapësira $3',
+);
 $wgCrossNamespaceLinksMessages['sr-ec'] = array(
 	'crossnamespacelinks'         => 'Везе ка именским просторима',
 	'crossnamespacelinks-summary' => 'Ова страница пружа списак веза са странице у главном именском простору ка страници у неком другом именском простору (осим за {{ns:special}}, {{ns:talk}}, {{ns:project}} и {{ns:template}} именске просторе), чија се употреба не препоручује.',

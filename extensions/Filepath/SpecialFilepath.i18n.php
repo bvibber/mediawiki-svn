@@ -134,7 +134,7 @@ $wgFilepathMessages['ru'] = array(
 	'filepath_page'   => 'Файл:',
 	'filepath_submit' => 'Путь',
 	'filepath-summary' => 'Данная служебная страница возвращает полный путь к файлу в том виде, в котором он хранится на диске.
-	
+
 	Введите имя файла без префикса <code>{{ns:image}}:</code>.',
 );
 $wgFilepathMessages['sk'] = array(
@@ -142,8 +142,13 @@ $wgFilepathMessages['sk'] = array(
 	'filepath_page'   => 'Súbor:',
 	'filepath_submit' => 'Cesta',
 	'filepath-summary' => 'Táto špeciálna stránka vráti úplnú cestu k súboru. Obrázky sa zobrazia v plnom rozlíšení, ostatné typy súborov sa spustia v príslušnom priradenom programe.
-	
+
 	Zadajte názov súboru bez predpony "{{ns:image}}:".',
+);
+$wgFilepathMessages['sq'] = array(
+	'filepath'        => 'Vendndodhja e skedave',
+	'filepath_page'   => 'Skeda:',
+	'filepath_submit' => 'Shko',
 );
 $wgFilepathMessages['sr-ec'] = array(
 	'filepath'        => 'Путања фајла',

@@ -225,6 +225,15 @@ volania relevantnej fázy parsera samotného MediaWiki.',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Odstrániť komentáre',
 );
+$wgExpandTemplatesMessages['sq'] = array(
+	'expand_templates_input'           => 'Teksti me stampa:',
+	'expand_templates_intro'           => 'Kjo faqe speciale merr tekstin me stampa dhe të tregon se si do të duket teksti pasi të jenë stamposur të tëra. Kjo faqe gjithashtu tregon parapamjen e funksioneve dhe fjalëve magjike si p.sh. <nowiki>{{</nowiki>#if:...}} dhe <nowiki>{{</nowiki>CURRENTDAY}}.',
+	'expand_templates_ok'              => 'Shko',
+	'expand_templates_output'          => 'Parapamja:',
+	'expand_templates_remove_comments' => 'Hiq komentet',
+	'expand_templates_title'           => 'Titulli i faqes për rrethanën, si <nowiki>{{</nowiki>PAGENAME}} etj.:',
+	'expandtemplates'                  => 'Parapamje stampash',
+);
 $wgExpandTemplatesMessages['sr-ec'] = array(
 	'expandtemplates'                  => 'Замена шаблона',
 	'expand_templates_intro'           => 'Ова посебна страница узима неки текст и мења све шаблоне у њему рекурзивно.

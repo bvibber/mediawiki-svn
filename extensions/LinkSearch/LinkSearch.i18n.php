@@ -147,6 +147,13 @@ $wgLinkSearchMessages['sk'] = array(
 	'linksearch-line'  => 'Na $1 odkazuje $2',
 	'linksearch-error' => 'Zástupné znaky je možné použiť iba na začiatku názvu domény.',
 );
+$wgLinkSearchMessages['sq'] = array(
+	'linksearch'       => 'Kërkoni lidhje të jashtme',
+	'linksearch-error' => 'Ylli mund të përdoret vetëm në fillim të emrit',
+	'linksearch-ok'    => 'Kërko',
+	'linksearch-pat'   => 'Motivi kërkimor:',
+	'linksearch-text'  => 'Ylli zëvëndësues mund të përdoret si p.sh. "*.wikipedia.org".',
+);
 $wgLinkSearchMessages['sr'] = array(
 	'linksearch'	   => 'Претрага интернет веза',
 	'linksearch-text'  => 'Џокери као што су "*.wikipedia.org" могу да се користе.',

@@ -106,6 +106,10 @@ $wgDismissableSiteNoticeMessages['sk'] = array(
 	'sitenotice_close' => 'nezobrazovať',
 );
 
+$wgDismissableSiteNoticeMessages['sq'] = array(
+	'sitenotice_close' => 'fshihe',
+);
+
 $wgDismissableSiteNoticeMessages['su'] = array(
 	'sitenotice_close' => 'bubarkeun',
 );
