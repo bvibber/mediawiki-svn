@@ -26,9 +26,7 @@ class Date {
 		return $this->moved('+1 month');
 	}
 	function moved($str) {
-		$d = new DateTime($this->text());
-		$d->modify($str);
-		return new Date($d->format('YmdHis'));
+	  return new Date( date('YmdHis', strtotime($this->text() . ' ' . $str)) );
 	}
 	/*	function monthString() {
 		return sprintf( '%04d%02d', $this->year, $this->month );
@@ -43,10 +41,10 @@ class Date {
 		$els = array('year', 'month', 'day', 'hour', 'minute', 'second');
 		$deltas = array();
 		foreach ($els as $e) {$deltas[$e] = $t->$e - $o->$e;
-			$t->$e +=     $t->$e - $o->$e;
+			$t->$e += $t->$e - $o->$e;
 		}
 
-		// format in style of DateTime::modify().
+		// format in style of date().
 		$result = "";
 		foreach( $deltas as $name => $val ) {
 			$result .= "$val $name ";
