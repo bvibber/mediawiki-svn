@@ -30,17 +30,24 @@
 					require_once('WikiDataAPI.php');
 					require_once('Transaction.php');
 
+					$dc = $wgRequest->getText('Dataset');
 					$collectionName = $wgRequest->getText('collection');
 					startNewTransaction($wgUser->getID(), wfGetIP(), 'Add collection ' . $collectionName);
-					bootstrapCollection($collectionName,$wgRequest->getText('language'),$wgRequest->getText('type'));
+					bootstrapCollection($collectionName,$wgRequest->getText('language'),$wgRequest->getText('type'), $dc);
 					$wgOut->addHTML('<strong>Collection ' . $collectionName . ' added.</strong><br />');	
+				}
+				$datasets=wdGetDatasets();
+				$datasetarray['']=wfMsg('ow_none_selected');
+				foreach($datasets as $datasetid=>$dataset) {
+					$datasetarray[$datasetid]=$dataset->fetchName();
 				}
 
 				$wgOut->addHTML(getOptionPanel(
 					array(
 						'Collection name' => getTextBox('collection'),
 						'Language of name' => getSuggest('language','language'),
-						'Collection type' => getSelect('type',array('' => 'None','RELT' => 'RELT','LEVL' => 'LEVL','CLAS' => 'CLAS', 'MAPP' => 'MAPP'))
+						'Collection type' => getSelect('type',array('' => 'None','RELT' => 'RELT','LEVL' => 'LEVL','CLAS' => 'CLAS', 'MAPP' => 'MAPP')),
+						'Dataset' => getSelect('Dataset',$datasetarray)
 					),
 					'',array('create' => 'Create')
 				));

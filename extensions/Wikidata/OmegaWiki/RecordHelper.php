@@ -55,7 +55,8 @@ abstract class Helper {
 		$this->record=$record;	
 	}
 	
-	public abstract function save();
+	//public abstract function getSQL();
+	//public abstract function save();
 
 }
 
@@ -118,6 +119,10 @@ class ExpressionHelper extends Helper {
 		echo $record;
 	}
 	
+	public function getSQL() {
+
+	}
+
 	public function save() {
 		/*what to do here eh?*/
 	}
