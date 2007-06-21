@@ -83,14 +83,20 @@ class LqtView {
 		$g = new QueryGroup();
 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
 		$recentstartdate = $startdate->nDaysAgo($this->archive_recent_days);
+		$article_clause = <<<SQL
+		IF(thread.thread_article = 0,
+				thread.thread_article_title = "{$this->article->getTitle()->getDBkey()}"
+				AND thread.thread_article_namespace = {$this->article->getTitle()->getNamespace()}
+			, thread.thread_article = {$this->article->getID()})
+SQL;
 		$g->addQuery('fresh',
-		              array('thread.thread_article' => $this->article->getID(),
+		              array($article_clause,
 		                   'instr(thread.thread_path, ".")' => '0',
 		                    '(thread.thread_timestamp >= ' . $startdate->text() .
 		 					'  OR thread.thread_summary_page is NULL)'),
 		              array('ORDER BY thread.thread_timestamp DESC'));
 		$g->addQuery('archived',
-		             array('thread.thread_article' => $this->article->getID(),
+		             array($article_clause,
 		                   'instr(thread.thread_path, ".")' => '0',
 		                   'thread.thread_summary_page is not null',
 		                   'thread.thread_timestamp < ' . $startdate->text()),
@@ -844,6 +850,7 @@ class ThreadPermalinkView extends LqtView {
 		$this->article = $t->article(); # for creating reply threads.
 		
 		// Make a link back to the talk page, including the correct archive month.
+		// TODO this is obsolete.
 		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($t->timestamp()) ))
 			$query = '';
 		else

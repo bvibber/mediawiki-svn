@@ -1,14 +1,21 @@
 CREATE TABLE /*$wgDBprefix*/thread (
   thread_id int(8) unsigned NOT NULL auto_increment,
   thread_root int(8) unsigned UNIQUE NOT NULL,
-  thread_article int(8) unsigned NOT NULL,
+  thread_article int(8) unsigned NOT NULL default 0,
   thread_path text NOT NULL,
   thread_summary_page int(8) unsigned NULL,
   thread_timestamp char(14) binary NOT NULL default '',
   thread_revision int(8) unsigned NOT NULL default 1,
 
+  -- The following are used only for non-existant article where
+  -- thread_article = 0. They should be ignored if thread_article != 0.
+  thread_article_namespace int NULL,
+  thread_article_title varchar(255) binary NULL,
+
   PRIMARY KEY thread_id (thread_id),
   UNIQUE INDEX thread_id (thread_id),
+  INDEX thread_article (thread_article),
+  INDEX thread_article_title (thread_article_namespace, thread_article_title),
   INDEX( thread_path(255) ),
   INDEX thread_timestamp (thread_timestamp)
 ) TYPE=InnoDB;
@@ -24,13 +31,12 @@ CREATE TABLE /*$wgDBprefix*/historical_thread (
 
 -- Because hthreads are only stored one per root, this lists
 -- the subthreads that can be found within each one.
-CREATE TABLE /*$wgDBprefix*/hthread_contents {
+CREATE TABLE /*$wgDBprefix*/hthread_contents (
   htcontents_child int(8) unsigned NOT NULL,
   htcontents_hthread int(8) unsigned NOT NULL,
   htcontents_rev_start int(8) unsigned NOT NULL,
-  htcontents_rev_end int(8) unsigned NULL,
-  PRIMARY KEY 
-}
+  htcontents_rev_end int(8) unsigned NULL
+) TYPE=InnoDB;
 
 /*
 	old_superthread and old_article are mutually exclusive.

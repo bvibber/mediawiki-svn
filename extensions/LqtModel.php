@@ -109,6 +109,10 @@ class LiveThread {
 	protected $rootId;
 	protected $articleId;
 	protected $summaryId;
+	
+	/* These are only used in the case of a non-existant article. */
+	protected $articleNamespace;
+	protected $articleTitle;
 
 	/* Actual objects loaded on demand from the above when accessors are called: */
 	protected $root;
@@ -150,12 +154,14 @@ class LiveThread {
 		$this->id = $line->thread_id;
 		$this->rootId = $line->thread_root;
 		$this->articleId = $line->thread_article;
+		$this->articleNamespace = $line->thread_article_namespace;
+		$this->articleTitle = $line->thread_article_title;
 		$this->summaryId = $line->thread_summary_page;
 		$this->path = $line->thread_path;
 		$this->timestamp = $line->thread_timestamp;
 		$this->revisionNumber = $line->thread_revision;
 		$this->replies = $children;
-		//$this->double = clone $this;
+		$this->double = clone $this;
 	}
 
 	function setSuperthread($thread) {
@@ -189,13 +195,19 @@ class LiveThread {
 	
 	function setArticle($a) {
 		$this->articleId = $a->getID();
+		$this->articleNamespace = $a->getTitle()->getNamespace();
+		$this->articleTitle = $a->getTitle()->getDBkey();
 		$this->touch();
 	}
 
 	function article() {
-		if ( !$this->articleId ) return null;
-		if ( !$this->article ) $this->article = new Article(Title::newFromID($this->articleId));
-		return $this->article;
+		if ( $this->article ) return $this->article;
+		$a = new Article(Title::newFromID($this->articleId));
+		if ($a->exists()) {
+			return $a;
+		} else {
+			return new Article( Title::makeTitle($this->articleNamespace, $this->articleTitle) );
+		}
 	}
 
 	function id() {
@@ -268,19 +280,6 @@ class LiveThread {
 	function timestamp() {
 		return $this->timestamp;
 	}
-	
-	protected function updateRecord() {
-		$dbr =& wfGetDB( DB_MASTER );
-		$res = $dbr->update( 'lqt_thread',
-				     /* SET */   array( 'thread_root_post' => $this->rootId,
-							'thread_article' => $this->articleId,
-							'thread_subthread_of' => $this->superthreadId,
-							'thread_summary_page' => $this->summaryId,
-							'thread_subject' => $this->subject,
-							'thread_timestamp' => $this->timestamp ),
-				     /* WHERE */ array( 'thread_id' => $this->id, ),
-				     __METHOD__);
-	}
 }
 
 /** Module of factory methods. */
@@ -290,10 +289,17 @@ class Threads {
 	
     static function newThread( $root, $article, $superthread = null ) {
         $dbr =& wfGetDB( DB_MASTER );
+			
+		if( $article->exists() ) {
+			$aclause = array("thread_article" => $article->getID());
+		} else {
+			$aclause = array("thread_article_namespace" => $article->getTitle()->getNamespace(),
+						     "thread_article_title" => $article->getTitle()->getDBkey());
+		}
+
         $res = $dbr->insert('thread',
-            array('thread_article' => $article->getID(),
-                  'thread_root' => $root->getID(),
-                  'thread_timestamp' => wfTimestampNow()),
+            array('thread_root' => $root->getID(),
+                  'thread_timestamp' => wfTimestampNow()) + $aclause,
             __METHOD__);
 		
 		$newid = $dbr->insertId();
