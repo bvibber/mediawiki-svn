@@ -43,8 +43,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Service identification/authentication information
 	 * (Consult driver documentation for specifics)
 	 */
-	$wgBookInformationService = array(
-	);
+	$wgBookInformationService = array();
 	
 	/**
 	 * Extension setup function
@@ -64,7 +63,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 */
 	function efBookInformation( $isbn, $output ) {
 		BookInformation::show( $isbn, $output );
-		
 		return true;
 	}
 	
