@@ -19,13 +19,14 @@ $wgCitationCache = array() ;
 $wgCitationCounter = 1 ;
 $wgCitationRunning = false ;
 
-function citation_hooker( $parser , $text ) {
+function citation_hooker( &$parser, &$text ) {
 	global $wgCitationCache , $wgCitationCounter , $wgCitationRunning ;
-	if( $wgCitationRunning ) return ;
+	if( $wgCitationRunning ) 
+		return true;
 	if( count( $wgCitationCache ) == 0 ) 
-		return false;
+		return true;
 	if( !isset( $parser->isMainParser ) )
-		return false;
+		return true;
 	$ret = "" ;
 	foreach( $wgCitationCache AS $num => $entry ) {
 		$x = "<li>" . $entry . " <a href='#citeback{$num}'>&uarr;</a></li>\n" ;
@@ -34,6 +35,8 @@ function citation_hooker( $parser , $text ) {
 	$ret = "<hr /><ol>" . $ret . "</ol>" ;
 	
 	$text .= $ret ;
+	
+	return true;
 }
 
 function citation_clear_state() {
@@ -42,7 +45,7 @@ function citation_clear_state() {
 	$wgCitationCounter = 1 ;
 	$wgCitationRunning = false;
 	
-	return false;
+	return true;
 }
 
 function parse_citation( $text , $params , $parser ) {

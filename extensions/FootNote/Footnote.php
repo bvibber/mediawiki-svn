@@ -46,13 +46,13 @@ $footnoteNotes = array() ;
 $footnoteCount = 1 ;
 $footnoteRecursionGuard = false;
 
-function insert_endnotes( $parser , $text ) {
+function insert_endnotes( &$parser, &$text ) {
 	global $footnoteNotes , $footnoteCount, $footnoteRecursionGuard ;
 	
 	wfDebug("insert_endnotes:\n<<<$text>>>\n");
 
-	if( $footnoteRecursionGuard ) return false;
-	if( count( $footnoteNotes ) == 0 ) return false;
+	if( $footnoteRecursionGuard ) return true;
+	if( count( $footnoteNotes ) == 0 ) return true;
 	
 	$ret = "" ;
 	foreach( $footnoteNotes AS $num => $entry ) {

@@ -338,10 +338,10 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 	global $wgTitle, $wgUser , $wgReviewExtensionTopics, $wgArticle, $action, $wgRequest;
 
 	# Do we care?
-	if(    !wfReviewExtensionDoesNamespaceApply ( $wgTitle->getNamespace() )
+	if( !wfReviewExtensionDoesNamespaceApply ( $wgTitle->getNamespace() )
 	    or $wgUser->isBlocked()
 	    or ( $action != "view" )
-	) return false;
+	) return true;
 
 	# Initialize
 	$do_merge = $wgRequest->getBool ( 'do_merge' , false ) ;
