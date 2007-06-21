@@ -28,7 +28,7 @@ fieldmappings = {
 	'i': ('id',			"Id",				None,		None),
 	'q': ('quota',		"Quota",			2**30/1024, None),
 	'a': ('active',		"Active",			True,		None),
-	'f': ('filter',		"Filter",			None,		"Filter file or '-' for stdin")
+	'f': ('filter',		"Filter",			None,		"Filter file or '-' for stdin, or 'None'")
 }
 longmappings = {}
 
@@ -231,7 +231,11 @@ def input_filter(fields):
 	
 	if not fields.has_key('filter') or fields['filter'] == "": return
 	
-	if fields['filter'] == '-':
+	if fields['filter'].lower() == 'none':
+		# Set to NULL in the db
+		fields['filter'] = None
+		return
+	elif fields['filter'] == '-':
 		filterfile = sys.stdin
 	else:
 		try:
