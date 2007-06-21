@@ -640,11 +640,11 @@ HTML
 	function loadQueryFromRequest() {
 		// Begin with with the requirements for being *in* the archive.
 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
-		$where = array('thread_article' => $this->article->getID(),
-		                     'thread_subthread_of is null',
-		                     'thread_summary_page is not null',
-		                     'thread_timestamp < ' . $startdate->text());
-		$options = array('ORDER BY' => 'thread_timestamp DESC');
+		$where = array('thread.thread_article' => $this->article->getID(),
+		                     'instr(thread.thread_path, ".")' => '0',
+		                     'thread.thread_summary_page is not null',
+		                     'thread.thread_timestamp < ' . $startdate->text());
+		$options = array('ORDER BY thread.thread_timestamp DESC');
 		
 		$annotations = array("Searching for threads");
 
@@ -656,7 +656,7 @@ HTML
 		// as actually provided, for use by the 'older' and 'newer' buttons.
 		$ignore_dates = ! $r->getVal('lqt_archive_filter_by_date', true);
 		if ( !$ignore_dates ) {
-			$months = Thread::monthsWhereArticleHasThreads($this->article);
+			$months = Threads::monthsWhereArticleHasThreads($this->article);
 		}
 		$s = $r->getVal('lqt_archive_start');
 		if ($s && ctype_digit($s) && strlen($s) == 6 && !$ignore_dates) {
@@ -687,7 +687,7 @@ HTML
 	}
 
 	function threads() {
-		return Thread::where($this->where, $this->options);
+		return Threads::where($this->where, $this->options);
 	}
 
 	function formattedMonth($yyyymm) {
@@ -739,7 +739,7 @@ HTML
 	}
 
 	function showSearchForm() {
-		$months = Thread::monthsWhereArticleHasThreads($this->article);
+		$months = Threads::monthsWhereArticleHasThreads($this->article);
 		
 		$use_dates = $this->request->getVal('lqt_archive_filter_by_date', null);
 		if ( $use_dates === null ) {

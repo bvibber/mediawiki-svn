@@ -400,6 +400,21 @@ SQL;
 		}
 		return $ts[0];
 	}
+	
+	/**
+	* Horrible, horrible!
+	* List of months in which there are >0 threads, suitable for threadsOfArticleInMonth. */
+	static function monthsWhereArticleHasThreads( $article ) {
+		$threads = Threads::where( array('thread.thread_article' => $article->getID()) );
+		$months = array();
+		foreach( $threads as $t ) {
+			$m = substr( $t->timestamp(), 0, 6 );
+			if ( !array_key_exists( $m, $months ) ) {
+				if (!in_array( $m, $months )) $months[] = $m;
+			}
+		}
+		return $months;
+	}
 
 }
 
