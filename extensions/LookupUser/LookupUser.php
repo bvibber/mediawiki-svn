@@ -68,14 +68,15 @@ $8
 		}
 
 		function showForm( $target ) {
-			global $wgOut;
-			$title = $this->getTitle();
-			$action = htmlspecialchars( $title->getLocalURL() );
+			global $wgScript, $wgOut;
+			$title = htmlspecialchars( $this->getTitle()->getPrefixedText() );
+			$action = htmlspecialchars( $wgScript );
 			$target = htmlspecialchars( $target );
 			$username = htmlspecialchars( wfMsg( 'lookupuser_username' ) );
 
 			$wgOut->addHTML( <<<EOT
 <form method="get" action="$action">
+<input type="hidden" name="title" value="{$title}" />
 <table border="0">
 <tr>
 <td align="right">$username</td>
