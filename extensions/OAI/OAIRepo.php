@@ -58,7 +58,7 @@ $oaiAuditDatabase = false;
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'OAIRepository',
 	'author' => 'Brion Vibber',
-	'description' => 'Provides [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-MPH] repository interface',
+	'description' => 'Provides [http://www.openarchives.org/OAI/openarchivesprotocol.html OAI-PMH] repository interface',
 );
 
 /* Set up the repository entry point */
