@@ -958,7 +958,6 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'minoreditletter' 	=> 'm',
 'newpageletter' 	=> 'N',
 'boteditletter' 	=> 'b',
-'sectionlink' 		=> '→',
 'number_of_watching_users_pageview' 	=> '[$1位用戶監視]',
 'rc_categories'		=> '限定到分類（以"|"作分隔）',
 'rc_categories_any'	=> '任何',
@@ -1204,7 +1203,6 @@ MySQL 嘅錯誤回應 "$3: $4"',
 # Book sources
 'booksources'		=> '書籍來源',
 'booksources-search-legend' => '搵書源',
-'booksources-isbn' 	=> 'ISBN:',
 'booksources-go' 	=> '去',
 'booksources-text' 	=> '以下嘅連結清單列出其它一啲賣新書同二手書嘅網站，
 可能可以提供到有關你想搵嘅書嘅更多資料：',
@@ -1213,7 +1211,6 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'data'			=> '資料',
 'userrights' 		=> '用戶權限管理',
 'groups' 		=> '用戶組',
-'isbn'			=> 'ISBN',
 'alphaindexline' 	=> "$1到$2",
 'version'		=> '版本',
 
@@ -2278,8 +2275,6 @@ $1
 : \'\'$2\'\'
 你係咪真係想重新整過呢版？',
 'recreate' => '重新整過',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => '跳轉去[[$1]]...',

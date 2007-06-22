@@ -940,7 +940,6 @@ Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pom
 'minoreditletter'                   => 'm',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'b',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[$1 {{plural:$1|sledující uživatel|sledující uživatelé|sledujících uživatelů}}]',
 'rc_categories'                     => 'Omezit na kategorie (oddělené „|“)',
 'rc_categories_any'                 => 'Všechny',
@@ -1163,7 +1162,6 @@ Aktuální délka fronty údržby je '''$7'''.",
 # Book sources
 'booksources'               => 'Zdroje knih',
 'booksources-search-legend' => 'Vyhledat knižní zdroje',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'Vyhledat',
 'booksources-text'          => 'Níže je seznam odkazů na servery prodávající knihy, nebo které mohou mít další informace o knihách, které hledáte.',
 
@@ -1171,7 +1169,6 @@ Aktuální délka fronty údržby je '''$7'''.",
 'data'               => 'Data',
 'userrights'         => 'Správa uživatelských skupin',
 'groups'             => 'Uživatelské skupiny',
-'isbn'               => 'ISBN',
 'alphaindexline'     => 'od $1 do $2',
 'version'            => 'Verze',
 
@@ -2068,8 +2065,6 @@ $1
 : „$2“
 Opravdu si přejete znovu tuto stránku založit?',
 'recreate'            => 'Znovu založit',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'Přesměrovává se na [[$1]]…',

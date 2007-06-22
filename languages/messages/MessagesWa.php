@@ -902,7 +902,6 @@ Li longueur del [http://meta.wikimedia.org/wiki/Help:Job_queue cawêye des bouye
 'data'               => 'Dinêyes',
 'userrights'         => 'Manaedjî les liveas des uzeus',
 'groups'             => "Groupes d' uzeus",
-'isbn'               => 'ISBN',
 'alphaindexline'     => 'di $1 a $2',
 'version'            => 'Modêye des programes',
 
@@ -1558,8 +1557,6 @@ po l' $4.",
 : ''$2''.
 Acertinez s' i vs plait ki vos vloz vormint rifé cist årtike ci.",
 'recreate'            => 'Rifé',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'Redjiblant viè [[$1]]...',

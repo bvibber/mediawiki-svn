@@ -1063,6 +1063,7 @@ $wgGroupPermissions['sysop']['autoconfirmed']   = true;
 $wgGroupPermissions['sysop']['upload_by_url']   = true;
 $wgGroupPermissions['sysop']['ipblock-exempt']	= true;
 $wgGroupPermissions['sysop']['blockemail']      = true;
+$wgGroupPermissions['sysop']['editrobots']      = true;
 
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
@@ -1358,6 +1359,18 @@ $wgQueryCacheLimit = 1000;
 $wgWantedPagesThreshold = 1;
 /** Enable slow parser functions */
 $wgAllowSlowParserFunctions = false;
+
+/**
+ * Maps jobs to their handling classes; extensions
+ * can add to this to provide custom jobs
+ */
+$wgJobClasses = array(
+	'refreshLinks' => 'RefreshLinksJob',
+	'htmlCacheUpdate' => 'HTMLCacheUpdateJob',
+	'html_cache_update' => 'HTMLCacheUpdateJob', // backwards-compatible
+	'sendMail' => 'EmaillingJob',
+	'enotifNotify' => 'EnotifNotifyJob',
+);
 
 /**
  * To use inline TeX, you need to compile 'texvc' (in the 'math' subdirectory of

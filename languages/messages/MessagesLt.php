@@ -868,7 +868,6 @@ Nepasirinktos grupės nebus pakeistos. Galite atžymėti grupę laikydami Ctrl i
 'minoreditletter'                   => 'S',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'R',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[$1 stebintys naudotojai]',
 'rc_categories'                     => 'Rodyti tik šias kategorijas (atskirkite naudodami „|“)',
 'rc_categories_any'                 => 'Bet kokia',
@@ -1110,7 +1109,6 @@ Iš to išeina, kad vidutiniškai kiekvienas puslapis keistas '''$5''' karto, be
 # Book sources
 'booksources'               => 'Knygų šaltiniai',
 'booksources-search-legend' => 'Knygų šaltinių paieška',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'Rodyti',
 'booksources-text'          => 'Žemiau yra nuorodų sąrašas į kitas svetaines, kurios parduoda naujas ar naudotas knygas, bei galbūt turinčias daugiau informacijos apie knygas, kurių ieškote:',
 
@@ -1118,7 +1116,6 @@ Iš to išeina, kad vidutiniškai kiekvienas puslapis keistas '''$5''' karto, be
 'data'               => 'Duomenys',
 'userrights'         => 'Naudotojų teisių valdymas',
 'groups'             => 'Naudotojų grupės',
-'isbn'               => 'ISBN',
 'alphaindexline'     => 'Nuo $1 iki $2',
 'version'            => 'Versija',
 
@@ -2145,8 +2142,6 @@ $1
 : ''$2''
 Prašome patvirtinti, kad tikrai norite iš naujo sukurti straipsnį.",
 'recreate'            => 'Atkurti',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'Peradresuojama į [[$1]]...',

@@ -296,8 +296,6 @@ $messages = array(
 'restorelink'         => '{{PLURAL:$1|1 modification effacée|$1 modifications effacées}}',
 'feedlinks'           => 'Flux',
 'feed-invalid'        => 'Type de flux invalide.',
-'feed-atom'           => 'Atom',
-'feed-rss'            => 'RSS',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Article',
@@ -818,7 +816,6 @@ $2 Inclure les page de redirections<br /> Rechercher $3 $9',
 'minoreditletter'                   => 'm',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'b',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[$1 utilisateur(s) suivant]',
 'rc_categories'                     => 'Limite des catégories (séparation avec « | »)',
 'rc_categories_any'                 => 'Toutes',
@@ -1056,7 +1053,6 @@ Cela représente une moyenne de <b>\$5</b> modifications par page et de <b>\$6</
 # Book sources
 'booksources'               => 'Ouvrages de référence',
 'booksources-search-legend' => 'Rechercher parmi des ouvrages de référence',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'Valider',
 'booksources-text'          => 'Voici une liste de liens vers d’autres sites qui vendent des livres neufs et d’occasion et sur lesquels vous trouverez peut-être des informations sur les ouvrages que vous cherchez. {{SITENAME}} n’étant liée à aucune de ces sociétés, elle n’a aucunement l’intention d’en faire la promotion.',
 
@@ -1064,7 +1060,6 @@ Cela représente une moyenne de <b>\$5</b> modifications par page et de <b>\$6</
 'data'               => 'Données',
 'userrights'         => 'Gestion des droits utilisateur',
 'groups'             => 'Groupes utilisateurs',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 à $2',
 'version'            => 'Version',
 
@@ -2035,8 +2030,6 @@ Si il ne s’agit pas de vous, n’ouvrez pas le lien. Ce code de confirmation e
 : ''$2'' 
 Veuillez confirmer que vous désirez recréer cet article.",
 'recreate'            => 'Recréer',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'Redirection vers [[$1]]',

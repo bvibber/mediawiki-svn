@@ -667,7 +667,6 @@ Teksten må du ha skrive sjølv eller ha kopiert frå ein ressurs som er kompati
 'show'                              => 'vis',
 'minoreditletter'                   => 'u',
 'newpageletter'                     => 'n',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[$1 brukar(ar) overvakar]',
 
 # Recent changes linked
@@ -800,7 +799,6 @@ Alle sidene er vortne viste '''$3''' gonger og endra '''$4''' gonger sidan progr
 'data'               => 'Data',
 'userrights'         => 'Administrering av brukartilgang',
 'groups'             => 'Brukargrupper',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 til $2',
 'version'            => 'Versjon',
 
@@ -1511,8 +1509,6 @@ $1
 : ''$2''
 Du må stadfesta om du verkjeleg vil nyopprette denne sida.",
 'recreate'            => 'Nyopprett',
-
-'unit-pixel' => 'px',
 
 );
 

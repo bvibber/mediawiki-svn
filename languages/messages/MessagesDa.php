@@ -379,8 +379,6 @@ $messages = array(
 'restorelink'         => '{{PLURAL:$1|en slettet ændring|$1 slettede ændringer}}',
 'feedlinks'           => 'Feed:',
 'feed-invalid'        => 'Ugyldig abonnementstype.',
-'feed-atom'           => 'Atom',
-'feed-rss'            => 'RSS',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'artikel',
@@ -929,7 +927,6 @@ Grupper som ikke er valgt, vil ikke blive ændret. Du kan ophæve valget af en g
 'minoreditletter'                   => 'm',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'b',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[$1 overvågende bruger/e]',
 'rc_categories'                     => 'Kun sider fra kategorierne (adskilt med „|“):',
 'rc_categories_any'                 => 'Alle',
@@ -1209,7 +1206,6 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'booksources'               => 'Bogkilder',
 'booksources-summary'       => 'På denne specialside kan du indtaste et ISBN og får så en liste med informations- og bestillingsmuligheder til det søgte ISBN. Bindestreger og mellemrum mellem cifrene spiller ingen rolle.',
 'booksources-search-legend' => 'Søgning efter bøger',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'Søg',
 'booksources-text'          => 'Dette er en liste med henvisninger til Internetsider, som sælger nye og brugte bøger. Der kan der også findes yderligere informationer om bøgerne. {{SITENAME}} er ikke forbundet med nogen af dem.',
 
@@ -1217,7 +1213,6 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'data'               => 'Data',
 'userrights'         => 'Forvaltning af brugerrettigheder',
 'groups'             => 'Brugergrupper',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 til $2',
 'version'            => 'Information om MediaWiki',
 
@@ -1405,6 +1400,7 @@ eller et billede sammen med hele den tilhørende historie fra databasen. Bekræf
 'protect-summary-cascade'     => 'nedarvende',
 'protect-expiring'            => 'til $1 (UTC)',
 'protect-cascade'             => 'Nedarvende spærring – alle skabeloner, som er indbundet i denne side spærres også.',
+'protect-robotspolicy'        => 'Indekseringsfravalg:',
 'restriction-type'            => 'Beskyttelsesstatus',
 'restriction-level'           => 'Beskyttelseshøjde',
 'minimum-size'                => 'Mindste størrelse',
@@ -1848,31 +1844,6 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 'newimages-summary' => 'Denne specialside viser de nyeste uploadede billeder og filer.',
 'showhidebots'      => '(Bots $1)',
 'noimages'          => 'Ingen filer fundet.',
-
-/*
-Short names for language variants used for language conversion links.
-To disable showing a particular link, set it to 'disable', e.g.
-'variantname-zh-sg' => 'disable',
-Variants for Chinese language
-*/
-'variantname-zh-cn' => 'cn',
-'variantname-zh-tw' => 'tw',
-'variantname-zh-hk' => 'hk',
-'variantname-zh-sg' => 'sg',
-'variantname-zh'    => 'zh',
-
-# Variants for Serbian language
-'variantname-sr-ec' => 'sr-ec',
-'variantname-sr-el' => 'sr-el',
-'variantname-sr-jc' => 'sr-jc',
-'variantname-sr-jl' => 'sr-jl',
-'variantname-sr'    => 'sr',
-
-# Variants for Kazakh language
-'variantname-kk-tr' => 'kk-tr',
-'variantname-kk-kz' => 'kk-kz',
-'variantname-kk-cn' => 'kk-cn',
-'variantname-kk'    => 'kk',
 
 'passwordtooshort' => 'Dit kodeord er for kort. Det skal være mindst $1 tegn langt.',
 

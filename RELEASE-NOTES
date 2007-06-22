@@ -92,6 +92,15 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 9328) Use "revision-info-current" message in place of "revision-info"
   when viewing the current revision of a page, if available
 * (bug 8890) Enable wiki text for "license" message
+* Throw a showstopper exception when a hook function fails to return a value.
+  Forgetting to give a 'true' return value is a very common error which tends
+  to cause hard-to-track-down interactions between extensions.
+* (bug 9415) Added options to Special:Protect to allow setting of per-page robot
+  policies. This can be done only by users with the 'editrobots' permission
+* Use $wgJobClasses to determine the correct Job to instantiate for a particular
+  queued task; allows extensions to introduce custom jobs
+* Special:Randompage with no parameters now selects a random page from any 
+  namespace in $wgContentNamespaces, rather than just from NS_MAIN.
 
 == Bugfixes since 1.10 ==
 
@@ -185,6 +194,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Avoid PHP notice errors when doing HTTP proxy purges for an empty list
 * As intended, *skip* the HTTP proxy purges when doing HTCP purges
 * (bug 9696) Fix handling of brace transformations in "pagemovedtext"
+* (bug 10325) Fix regression in form action on Special:Listusers
 
 == API changes since 1.10 ==
 
@@ -263,6 +273,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Slovak (sk)
 * Shona (sn)
 * Somali (so)
+* Albanian (sq)
 * Sundanese (su)
 * Swedish (sv)
 * Volapük (vo)

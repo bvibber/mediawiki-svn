@@ -182,7 +182,6 @@ $messages = array(
 'subcategories'         => '亚类',
 'category-media-header' => '"$1"分类中的媒体',
 
-'linkprefix'        => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD',
 'mainpagetext'      => "<big>'''已成功安装 MediaWiki!'''</big>",
 'mainpagedocfooter' => '请访问 [http://meta.wikimedia.org/wiki/Help:Contents 用户手册] 以获得使用此 wiki 软件的信息！
 
@@ -1103,7 +1102,6 @@ MySQL返回错误“$3: $4”。',
 # Book sources
 'booksources'               => '网络书源',
 'booksources-search-legend' => '搜索网络书源',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => '转到',
 'booksources-text'          => '以下是一些网络书店的链接列表，其中可能有您要找的书籍的更多信息:',
 
@@ -1111,7 +1109,6 @@ MySQL返回错误“$3: $4”。',
 'data'               => '数据',
 'userrights'         => '用户权限管理',
 'groups'             => '用户群组',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1到$2',
 'version'            => '版本',
 
@@ -1789,19 +1786,6 @@ Variants for Chinese language
 'variantname-zh-sg' => '新加坡简体',
 'variantname-zh'    => '不转换',
 
-# Variants for Serbian language
-'variantname-sr-ec' => 'sr-ec',
-'variantname-sr-el' => 'sr-el',
-'variantname-sr-jc' => 'sr-jc',
-'variantname-sr-jl' => 'sr-jl',
-'variantname-sr'    => 'sr',
-
-# Variants for Kazakh language
-'variantname-kk-tr' => 'kk-tr',
-'variantname-kk-kz' => 'kk-kz',
-'variantname-kk-cn' => 'kk-cn',
-'variantname-kk'    => 'kk',
-
 'passwordtooshort' => '您的密码不正确或太短，不能少于$1个字元，而且必须跟用户名不同。',
 
 # Metadata
@@ -2136,8 +2120,6 @@ $1
 'deletedwhileediting' => '警告: 此页在您开始编辑之后已经被删除！',
 'confirmrecreate'     => '在您编辑这个页面后，用户[[User:$1|$1]]([[User talk:$1|对话]])以下列原因删除了这个页面: $2。请在重新创建页面前三思。',
 'recreate'            => '重建',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => '重定向到[[$1]]...',

@@ -589,8 +589,6 @@ $messages = array(
 'restorelink'         => 'жойылған {{PLURAL:$1|бір|$1}} түзету',
 'feedlinks'           => 'Арна:',
 'feed-invalid'        => 'Жарамсыз жазылым арна түрі.',
-'feed-atom'           => 'Atom',
-'feed-rss'            => 'RSS',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Мағлұмат',
@@ -1181,7 +1179,6 @@ $1',
 'minoreditletter'                   => 'ш',
 'newpageletter'                     => 'Ж',
 'boteditletter'                     => 'б',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[бақылаған $1 қатысушы]',
 'rc_categories'                     => 'Санаттарға шектеу ("|" белгісімен бөліктеңіз)',
 'rc_categories_any'                 => 'Қайсыбір',
@@ -1427,7 +1424,6 @@ URL жайына тікелей сілтеуі мүмкін. Сондықтан,
 # Book sources
 'booksources'               => 'Кітап қайнарлары',
 'booksources-search-legend' => 'Кітап қайнарларын іздеу',
-'booksources-isbn'          => 'ISBN белгісі:',
 'booksources-go'            => 'Өту',
 'booksources-text'          => 'Төменде жаңа және қолданған кітаптар сататынтораптарының сілтемелері тізімделген.
 Бұл тораптарда ізделген кітаптар туралы былайғы ақпарат болуға мүмкін.',
@@ -1436,7 +1432,6 @@ URL жайына тікелей сілтеуі мүмкін. Сондықтан,
 'data'               => 'Деректер',
 'userrights'         => 'Қатысушылар құқықтарын меңгеру',
 'groups'             => 'Қатысушы топтары',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 — $2',
 'version'            => 'Жүйе нұсқасы',
 
@@ -1654,6 +1649,7 @@ $NEWPAGE
 'protect-summary-cascade'     => 'баулы',
 'protect-expiring'            => 'бітуі: $1 (UTC)',
 'protect-cascade'             => 'Бұл бетке кіріктірілген беттерді қорғау (баулы қорғау).',
+'protect-robotspolicy'        => 'Робот ережесі:',
 'restriction-type'            => 'Рұқсаты:',
 'restriction-level'           => 'Рұқсат шектеу деңгейі:',
 'minimum-size'                => 'Ең аз мөлшері',
@@ -1738,7 +1734,6 @@ $NEWPAGE
 
 # What links here
 'whatlinkshere'        => 'Сілтеген беттер',
-'whatlinkshere-barrow' => '&lt;',
 'notargettitle'        => 'Ақырғы атау жоқ',
 'notargettext'         => 'Осы әрекет орындалатын нысана бет,
 не қатысушы көрсетілмеген.',
@@ -2546,8 +2541,6 @@ $1
 : ''$2''
 Осы бетті шынынан қайта жасауын растаңыз.",
 'recreate'            => 'Қайта жасау',
-
-'unit-pixel' => ' px',
 
 # HTML dump
 'redirectingto' => '[[$1]] бетіне айдатуда…',

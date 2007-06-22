@@ -808,7 +808,6 @@ Els grups no seleccionats no es canviaran. Podeu treure la selecció d'un grup a
 'minoreditletter'                   => 'm',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'b',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[Usuaris que vigilen aquesta pàgina: $1]',
 'rc_categories'                     => 'Limita a les categories (separades amb "|")',
 'rc_categories_any'                 => 'Qualsevol',
@@ -1034,7 +1033,6 @@ segon redireccionament, la qual cosa dóna normalment l\'article "real", al que 
 # Book sources
 'booksources'               => 'Obres de referència',
 'booksources-search-legend' => 'Cerca fonts de llibres',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'Vés-hi',
 'booksources-text'          => "A sota hi ha una llista d'enllaços d'altres llocs que venen llibres nous i de segona mà, i també podrien tenir més informació dels llibres que esteu cercant:",
 
@@ -1042,7 +1040,6 @@ segon redireccionament, la qual cosa dóna normalment l\'article "real", al que 
 'data'               => 'Dades',
 'userrights'         => "Gestió dels permisos d'usuari",
 'groups'             => "Grups d'usuaris",
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 a $2',
 'version'            => 'Versió',
 
@@ -2017,8 +2014,6 @@ $1
 : ''$2''
 Confirmeu que realment voleu tornar-la a crear.",
 'recreate'            => 'Recrea',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => "S'està redirigint a [[$1]]...",

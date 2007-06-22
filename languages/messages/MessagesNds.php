@@ -692,7 +692,6 @@ Disse Siet warrt wiel dat Laden automatsch aktualiseert. Wiest warrn Sieten, de 
 'minoreditletter'   => 'L',
 'newpageletter'     => 'N',
 'boteditletter'     => 'b',
-'sectionlink'       => '→',
 
 # Recent changes linked
 'recentchangeslinked' => 'Ännern an lenkte Sieden',
@@ -869,12 +868,10 @@ to den vun den tweeten Wiederleiden wiest warrt, un to den de eerste Wiederleide
 
 # Book sources
 'booksources'      => 'Bookhannel',
-'booksources-isbn' => 'ISBN:',
 
 'categoriespagetext' => 'In dit Wiki gifft dat disse Kategorien:',
 'data'               => 'Daten',
 'groups'             => 'Brukergruppen',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 bet $2',
 
 # Special:Log
@@ -1412,8 +1409,6 @@ $1
 : ''$2''
 Wist du de Siet würklich nee anleggen?",
 'recreate'            => 'wedder nee anleggen',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'Redirect sett na [[$1]]...',

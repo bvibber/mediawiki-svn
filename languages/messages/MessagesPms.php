@@ -712,7 +712,6 @@ Le partìe nen selessionà a saran nen tocà. Për deselessioné na partìa a ve
 'minoreditletter'                   => 'c',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'b',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[$1 utent che as ten-o sossì sot euj]',
 'rc_categories'                     => 'Limité a le categorìe (che a jë scriva separand-je antra lor con un "|")',
 'rc_categories_any'                 => 'Qualsëssìa',
@@ -917,7 +916,6 @@ Vira riga a l'ha andrinta j'anliure a la prima e a la sconda rediression, ant s�
 'data'               => 'Dat',
 'userrights'         => "Gestion dij drit dj'utent",
 'groups'             => "Partìe d'utent",
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 a $2',
 'version'            => 'Version',
 
@@ -1514,7 +1512,6 @@ Tute le amportassion antra wiki diferente a resto marcà ant ël [[Special:Log/i
 'exif-exposuretime'                => "Temp d'esposission",
 'exif-exposuretime-format'         => '$1 sec ($2)',
 'exif-fnumber'                     => "Nùmer d'F",
-'exif-fnumber-format'              => 'f/$1',
 'exif-exposureprogram'             => "Programa d'esposission",
 'exif-spectralsensitivity'         => 'Sensibilità dë spetro',
 'exif-isospeedratings'             => 'Sensibilità ISO',
@@ -1790,8 +1787,6 @@ $1
 ''$2''
 Për piasì, che an conferma che da bon a veul torna creélo.",
 'recreate'            => "Créa n'àutra vira",
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'I soma antramentr che i foma na ridiression a [[$1]]...',

@@ -862,7 +862,6 @@ liczba znalezionych artykułów: $3.',
 'minoreditletter'                   => 'd',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'b',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[$1 {{PLURAL:$1|obserwujący użytkownik|obserwujących użytkowników}}/s]',
 'rc_categories'                     => 'Ogranicz do kategorii (oddzielaj za pomocą "|")',
 'rc_categories_any'                 => 'Wszystkie',
@@ -1099,7 +1098,6 @@ Długość [http://meta.wikimedia.org/wiki/Help:Job_queue kolejki zadań] wynosi
 # Book sources
 'booksources'               => 'Książki',
 'booksources-search-legend' => 'Szukaj źródeł książek',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'Pokaż',
 'booksources-text'          => 'Poniżej znajduje się lista odnośników do innych stron, które pośredniczą w sprzedaży nowych i używanych książek, a także mogą posiadać dalsze informacje na temat poszukiwanej przez ciebie książki.',
 
@@ -1107,7 +1105,6 @@ Długość [http://meta.wikimedia.org/wiki/Help:Job_queue kolejki zadań] wynosi
 'data'               => 'Dane',
 'userrights'         => 'Zarządzanie prawami użytkowników',
 'groups'             => 'Grupy użytkowników',
-'isbn'               => 'ISBN',
 'alphaindexline'     => 'od $1 do $2',
 'version'            => 'Wersja oprogramowania',
 
@@ -2019,8 +2016,6 @@ $1
 : '''$2'''
 Potwierdź chęć odtworzenia tej strony.",
 'recreate'            => 'Odtwórz',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'Przechodzenie do [[:$1|$1]]...',

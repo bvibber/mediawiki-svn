@@ -1066,36 +1066,35 @@ This is probably due to persistent vandalism from your school or Internet servic
 provider.',
 
 # History pages
-'revhistory'          => 'Revision history',
-'viewpagelogs'        => 'View logs for this page',
-'nohistory'           => 'There is no edit history for this page.',
-'revnotfound'         => 'Revision not found',
-'revnotfoundtext'     => 'The old revision of the page you asked for could not be found.
-Please check the URL you used to access this page.',
-'loadhist'            => 'Loading page history',
-'currentrev'          => 'Current revision',
-'revisionasof'        => 'Revision as of $1',
-'revision-info'       => 'Revision as of $1 by $2',
-'revision-info-current' => '-',
-'revision-nav'        => '($1) $2 | $3 ($4) | $5 ($6)', # don't translate or duplicate this message to other languages
-'previousrevision'    => '←Older revision',
-'nextrevision'        => 'Newer revision→',
-'currentrevisionlink' => 'Current revision',
-'cur'                 => 'cur',
-'next'                => 'next',
-'last'                => 'last',
-'orig'                => 'orig',
-'page_first'          => 'first',
-'page_last'           => 'last',
-'histlegend'          => 'Diff selection: mark the radio boxes of the versions to compare and hit enter or the button at the bottom.<br />
+'revhistory'            => 'Revision history',
+'viewpagelogs'          => 'View logs for this page',
+'nohistory'             => 'There is no edit history for this page.',
+'revnotfound'           => 'Revision not found',
+'revnotfoundtext'       => 'The old revision of the page you asked for could not be found. Please check the URL you used to access this page.',
+'loadhist'              => 'Loading page history',
+'currentrev'            => 'Current revision',
+'revisionasof'          => 'Revision as of $1',
+'revision-info'         => 'Revision as of $1 by $2',
+'revision-info-current' => '-', # don't translate or duplicate this message to other languages
+'revision-nav'          => '($1) $2 | $3 ($4) | $5 ($6)', # don't translate or duplicate this message to other languages
+'previousrevision'      => '←Older revision',
+'nextrevision'          => 'Newer revision→',
+'currentrevisionlink'   => 'Current revision',
+'cur'                   => 'cur',
+'next'                  => 'next',
+'last'                  => 'last',
+'orig'                  => 'orig',
+'page_first'            => 'first',
+'page_last'             => 'last',
+'histlegend'            => 'Diff selection: mark the radio boxes of the versions to compare and hit enter or the button at the bottom.<br />
 Legend: (cur) = difference with current version,
 (last) = difference with preceding version, M = minor edit.',
-'history_copyright'   => '-', # don't translate or duplicate this message to other languages
-'deletedrev'          => '[deleted]',
-'histfirst'           => 'Earliest',
-'histlast'            => 'Latest',
-'historysize'         => '($1 bytes)',
-'historyempty'        => '(empty)',
+'history_copyright'     => '-', # don't translate or duplicate this message to other languages
+'deletedrev'            => '[deleted]',
+'histfirst'             => 'Earliest',
+'histlast'              => 'Latest',
+'historysize'           => '($1 bytes)',
+'historyempty'          => '(empty)',
 
 # Revision feed
 'history-feed-title'          => 'Revision history',
@@ -1549,8 +1548,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'uncategorizedcategories-summary' => '', # only translate this message to other languages if you have to change it
 'uncategorizedimages'             => 'Uncategorized images',
 'uncategorizedimages-summary'     => '', # only translate this message to other languages if you have to change it
-'uncategorizedtemplates' => 'Uncategorized templates',
-'uncategorizedtemplates-summary' => '',
+'uncategorizedtemplates'          => 'Uncategorized templates',
+'uncategorizedtemplates-summary'  => '', # only translate this message to other languages if you have to change it
 'unusedcategories'                => 'Unused categories',
 'unusedimages'                    => 'Unused files',
 'popularpages'                    => 'Popular pages',
@@ -1613,7 +1612,7 @@ in active use.</p>',
 'booksources'               => 'Book sources',
 'booksources-summary'       => '', # only translate this message to other languages if you have to change it
 'booksources-search-legend' => 'Search for book sources',
-'booksources-isbn'          => 'ISBN:',
+'booksources-isbn'          => 'ISBN:', # only translate this message to other languages if you have to change it
 'booksources-go'            => 'Go',
 'booksources-text'          => 'Below is a list of links to other sites that sell new and used books, and may also have
 further information about books you are looking for:',
@@ -1623,7 +1622,7 @@ further information about books you are looking for:',
 'userrights'         => 'User rights management',
 'userrights-summary' => '', # only translate this message to other languages if you have to change it
 'groups'             => 'User groups',
-'isbn'               => 'ISBN',
+'isbn'               => 'ISBN', # only translate this message to other languages if you have to change it
 'rfcurl'             => 'http://tools.ietf.org/html/rfc$1', # don't translate or duplicate this message to other languages
 'pubmedurl'          => 'http://www.ncbi.nlm.nih.gov/entrez/query.fcgi?cmd=Retrieve&db=pubmed&dopt=Abstract&list_uids=$1', # don't translate or duplicate this message to other languages
 'alphaindexline'     => '$1 to $2',
@@ -1844,6 +1843,9 @@ Here are the current settings for the page <strong>$1</strong>:',
 'protect-summary-cascade'     => 'cascading',
 'protect-expiring'            => 'expires $1 (UTC)',
 'protect-cascade'             => 'Protect pages included in this page (cascading protection)',
+'protect-robotspolicy'        => 'Robot policy:',
+'protect-robots-noindex'      => 'Do not index',
+'protect-robots-nofollow'     => 'Do not follow links',
 'restriction-type'            => 'Permission:',
 'restriction-level'           => 'Restriction level:',
 'minimum-size'                => 'Min size',
@@ -2087,11 +2089,11 @@ proceeding.",
 *You uncheck the box below.
 
 In those cases, you will have to move or merge the page manually if desired.",
-'movearticle'             => 'Move page',
+'movearticle'             => 'Move page:',
 'movenologin'             => 'Not logged in',
 'movenologintext'         => 'You must be a registered user and [[Special:Userlogin|logged in]]
 to move a page.',
-'newtitle'                => 'To new title',
+'newtitle'                => 'To new title:',
 'move-watch'              => 'Watch this page',
 'movepagebtn'             => 'Move page',
 'pagemovedsub'            => 'Move succeeded',
@@ -2108,7 +2110,7 @@ Please choose another name.',
 '1movedto2_redir'         => '[[$1]] moved to [[$2]] over redirect',
 'movelogpage'             => 'Move log',
 'movelogpagetext'         => 'Below is a list of page moved.',
-'movereason'              => 'Reason',
+'movereason'              => 'Reason:',
 'revertmove'              => 'revert',
 'delete_and_move'         => 'Delete and move',
 'delete_and_move_text'    => '==Deletion required==
@@ -2498,7 +2500,7 @@ is collapsed. Others will be hidden by default.
 'exif-exposuretime'                => 'Exposure time',
 'exif-exposuretime-format'         => '$1 sec ($2)',
 'exif-fnumber'                     => 'F Number',
-'exif-fnumber-format'              => 'f/$1',
+'exif-fnumber-format'              => 'f/$1', # only translate this message to other languages if you have to change it
 'exif-exposureprogram'             => 'Exposure Program',
 'exif-spectralsensitivity'         => 'Spectral sensitivity',
 'exif-isospeedratings'             => 'ISO speed rating',
@@ -2513,7 +2515,7 @@ is collapsed. Others will be hidden by default.
 'exif-lightsource'                 => 'Light source',
 'exif-flash'                       => 'Flash',
 'exif-focallength'                 => 'Lens focal length',
-'exif-focallength-format'          => '$1 mm',
+'exif-focallength-format'          => '$1 mm', # only translate this message to other languages if you have to change it
 'exif-subjectarea'                 => 'Subject area',
 'exif-flashenergy'                 => 'Flash energy',
 'exif-spatialfrequencyresponse'    => 'Spatial frequency response',
@@ -2578,10 +2580,10 @@ is collapsed. Others will be hidden by default.
 
 # EXIF attributes
 'exif-compression-1' => 'Uncompressed',
-'exif-compression-6' => 'JPEG',
+'exif-compression-6' => 'JPEG', # only translate this message to other languages if you have to change it
 
-'exif-photometricinterpretation-2' => 'RGB',
-'exif-photometricinterpretation-6' => 'YCbCr',
+'exif-photometricinterpretation-2' => 'RGB', # only translate this message to other languages if you have to change it
+'exif-photometricinterpretation-6' => 'YCbCr', # only translate this message to other languages if you have to change it
 
 'exif-unknowndate' => 'Unknown date',
 
@@ -2597,19 +2599,19 @@ is collapsed. Others will be hidden by default.
 'exif-planarconfiguration-1' => 'chunky format',
 'exif-planarconfiguration-2' => 'planar format',
 
-'exif-xyresolution-i' => '$1 dpi',
-'exif-xyresolution-c' => '$1 dpc',
+'exif-xyresolution-i' => '$1 dpi', # only translate this message to other languages if you have to change it
+'exif-xyresolution-c' => '$1 dpc', # only translate this message to other languages if you have to change it
 
-'exif-colorspace-1'      => 'sRGB',
-'exif-colorspace-ffff.h' => 'FFFF.H',
+'exif-colorspace-1'      => 'sRGB', # only translate this message to other languages if you have to change it
+'exif-colorspace-ffff.h' => 'FFFF.H', # only translate this message to other languages if you have to change it
 
 'exif-componentsconfiguration-0' => 'does not exist',
-'exif-componentsconfiguration-1' => 'Y',
-'exif-componentsconfiguration-2' => 'Cb',
-'exif-componentsconfiguration-3' => 'Cr',
-'exif-componentsconfiguration-4' => 'R',
-'exif-componentsconfiguration-5' => 'G',
-'exif-componentsconfiguration-6' => 'B',
+'exif-componentsconfiguration-1' => 'Y', # only translate this message to other languages if you have to change it
+'exif-componentsconfiguration-2' => 'Cb', # only translate this message to other languages if you have to change it
+'exif-componentsconfiguration-3' => 'Cr', # only translate this message to other languages if you have to change it
+'exif-componentsconfiguration-4' => 'R', # only translate this message to other languages if you have to change it
+'exif-componentsconfiguration-5' => 'G', # only translate this message to other languages if you have to change it
+'exif-componentsconfiguration-6' => 'B', # only translate this message to other languages if you have to change it
 
 'exif-exposureprogram-0' => 'Not defined',
 'exif-exposureprogram-1' => 'Manual',
@@ -2647,10 +2649,10 @@ is collapsed. Others will be hidden by default.
 'exif-lightsource-17'  => 'Standard light A',
 'exif-lightsource-18'  => 'Standard light B',
 'exif-lightsource-19'  => 'Standard light C',
-'exif-lightsource-20'  => 'D55',
-'exif-lightsource-21'  => 'D65',
-'exif-lightsource-22'  => 'D75',
-'exif-lightsource-23'  => 'D50',
+'exif-lightsource-20'  => 'D55', # only translate this message to other languages if you have to change it
+'exif-lightsource-21'  => 'D65', # only translate this message to other languages if you have to change it
+'exif-lightsource-22'  => 'D75', # only translate this message to other languages if you have to change it
+'exif-lightsource-23'  => 'D50', # only translate this message to other languages if you have to change it
 'exif-lightsource-24'  => 'ISO studio tungsten',
 'exif-lightsource-255' => 'Other light source',
 
@@ -2664,7 +2666,7 @@ is collapsed. Others will be hidden by default.
 'exif-sensingmethod-7' => 'Trilinear sensor',
 'exif-sensingmethod-8' => 'Color sequential linear sensor',
 
-'exif-filesource-3' => 'DSC',
+'exif-filesource-3' => 'DSC', # only translate this message to other languages if you have to change it
 
 'exif-scenetype-1' => 'A directly photographed image',
 

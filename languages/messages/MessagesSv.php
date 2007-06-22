@@ -37,6 +37,89 @@ $namespaceAliases = array(
 	'Hjälp_diskussion'     => NS_HELP_TALK
 );
 
+/**
+ * Alternate names of special pages. All names are case-insensitive. The first
+ * listed alias will be used as the default. Aliases from the fallback
+ * localisation (usually English) will be included by default.
+ *
+ * This array may be altered at runtime using the LangugeGetSpecialPageAliases
+ * hook.
+ */
+$specialPageAliases = array(
+	'DoubleRedirects'           => array( 'Dubbla_omdirigeringar' ),
+	'BrokenRedirects'           => array( 'Dåliga_omdirigeringar' ),
+	'Disambiguations'           => array( 'Förgreningssidor' ),
+	'Userlogin'                 => array( 'Inloggning' ),
+	'Userlogout'                => array( 'Utloggning' ),
+	'Preferences'               => array( 'Inställningar' ),
+	'Watchlist'                 => array( 'Övervakningslista' ),
+	'Recentchanges'             => array( 'Senaste_ändringar' ),
+	'Upload'                    => array( 'Uppladdning' ),
+	'Imagelist'                 => array( 'Bildlista' ),
+	'Newimages'                 => array( 'Nya_bilder' ),
+	'Listusers'                 => array( 'Användare', 'Användarlista' ),
+	'Statistics'                => array( 'Statistik' ),
+	'Randompage'                => array( 'Slumpsida' ),
+	'Lonelypages'               => array( 'Sidor_utan_länkar_till' ),
+	'Uncategorizedpages'        => array( 'Okategoriserade_sidor' ),
+	'Uncategorizedcategories'   => array( 'Okategoriserade_kategorier' ),
+	'Uncategorizedimages'       => array( 'Okategoriserade_bilder' ),
+	'Uncategorizedtemplates'    => array( 'Okategoriserade_mallar' ),
+	'Unusedcategories'          => array( 'Oanvända_kategorier' ),
+	'Unusedimages'              => array( 'Oanvända_bilder' ),
+	'Wantedpages'               => array( 'Önskade_sidor', 'Trasiga_länkar' ),
+	'Wantedcategories'          => array( 'Önskade_kategorier' ),
+	'Mostlinked'                => array( 'Mest_länkade_sidor' ),
+	'Mostlinkedcategories'      => array( 'Största_kategorier' ),
+	'Mostlinkedtemplates'       => array( 'Mest_använda_mallar' ),
+	'Mostcategories'            => array( 'Flest_kategorier' ),
+	'Mostimages'                => array( 'Flest_bilder' ),
+	'Mostrevisions'             => array( 'Flest_versioner' ),
+	'Fewestrevisions'           => array( 'Minst_versioner' ),
+	'Shortpages'                => array( 'Korta_sidor' ),
+	'Longpages'                 => array( 'Långa_sidor' ),
+	'Newpages'                  => array( 'Nya_sidor' ),
+	'Ancientpages'              => array( 'Gamla_sidor' ),
+	'Deadendpages'              => array( 'Sidor_utan_länkar_från' ),
+	'Protectedpages'            => array( 'Skyddade_sidor' ),
+	'Allpages'                  => array( 'Alla_sidor' ),
+	'Prefixindex'               => array( 'Prefixindex' ) ,
+	'Ipblocklist'               => array( 'Blockeringslista' ),
+	'Specialpages'              => array( 'Specialsidor' ),
+	'Contributions'             => array( 'Bidrag' ),
+	'Emailuser'                 => array( 'E-mail' ),
+	'Whatlinkshere'             => array( 'Länkar_hit' ),
+	'Recentchangeslinked'       => array( 'Senaste_relaterade_ändringar' ),
+	'Movepage'                  => array( 'Flytta' ),
+	'Blockme'                   => array( 'Blockme' ),
+	'Booksources'               => array( 'Bokkällor' ),
+	'Categories'                => array( 'Kategorier' ),
+	'Export'                    => array( 'Exportera' ),
+	'Version'                   => array( 'Version' ),
+	'Allmessages'               => array( 'Systemmeddelanden' ),
+	'Log'                       => array( 'Logg' ),
+	'Blockip'                   => array( 'Blockera' ),
+	'Undelete'                  => array( 'Återställ' ),
+	'Import'                    => array( 'Importera' ),
+	'Lockdb'                    => array( 'Lockdb' ),
+	'Unlockdb'                  => array( 'Unlockdb' ),
+	'Userrights'                => array( 'Rättigheter' ),
+	'MIMEsearch'                => array( 'MIME-sökning' ),
+	'Unwatchedpages'            => array( 'Obevakade_sidor' ),
+	'Listredirects'             => array( 'Omdirigeringar' ),
+	'Revisiondelete'            => array( 'Radera_version' ),
+	'Unusedtemplates'           => array( 'Oanvända_mallar' ),
+	'Randomredirect'            => array( 'Slumpomdirigering' ),
+	'Mypage'                    => array( 'Min_sida' ),
+	'Mytalk'                    => array( 'Min_diskussion' ),
+	'Mycontributions'           => array( 'Mina_bidrag' ),
+	'Listadmins'                => array( 'Administratörer' ),
+	'Popularpages'              => array( 'Populära_sidor' ),
+	'Search'                    => array( 'Sök' ),
+	'Resetpass'                 => array( 'Resetpass' ),
+	'Withoutinterwiki'          => array( 'Utan_interwikilänkar' ),
+);
+
 $linkTrail = '/^([a-zåäöéÅÄÖÉ]+)(.*)$/sDu';
 $separatorTransformTable =  array(
 	',' => "\xc2\xa0", // @bug 2749
@@ -391,6 +474,7 @@ felaktigt länkad till.',
 'yourvariant'                => 'Variant',
 'yournick'                   => 'Ditt smeknamn (till signaturer)',
 'badsig'                     => 'Det är något fel med råsignaturen, kontrollera HTML-koden.',
+'badsiglength'               => 'Signaturen är för lång; den får innehålla högst $1 tecken.',
 'email'                      => 'E-post',
 'prefs-help-realname'        => '¹ Riktigt namn (valfritt): Om du väljer att ange ditt riktiga namn, kommer det att användas för att tillskriva dig ditt arbete.',
 'loginerror'                 => 'Inloggningsproblem',
@@ -815,7 +899,6 @@ $3',
 'minoreditletter'                   => 'm',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'b',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[$1 användare bevakar]',
 'rc_categories'                     => 'Begränsa till följande kategorier (separera med "|")',
 'rc_categories_any'                 => 'Vilken som helst',
@@ -1011,6 +1094,7 @@ Sedan denna wiki startades har sidor visats totalt <b>$3</b> {{PLURAL:$3|gång|g
 'uncategorizedpages'      => 'Ej kategoriserade sidor',
 'uncategorizedcategories' => 'Ej kategoriserade kategorier',
 'uncategorizedimages'     => 'Bilder utan kategori',
+'uncategorizedtemplates'  => 'Ej kategoriserade mallar',
 'unusedcategories'        => 'Tomma kategorier',
 'unusedimages'            => 'Oanvända bilder',
 'popularpages'            => 'Populära sidor',
@@ -1051,7 +1135,6 @@ med en direkt URL, och kan därför bli listade här trots att de används konti
 # Book sources
 'booksources'               => 'Bokkällor',
 'booksources-search-legend' => 'Sök efter bokkällor',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'Sök',
 'booksources-text'          => 'Nedan följer en lista över länkar till webbplatser som säljer nya och begagnade böcker, och som kanske har ytterligare information om de böcker du söker.',
 
@@ -1059,7 +1142,6 @@ med en direkt URL, och kan därför bli listade här trots att de används konti
 'data'               => 'Data',
 'userrights'         => 'Användarrättigheter',
 'groups'             => 'Användargrupper',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 till $2',
 'version'            => 'Version',
 
@@ -1067,6 +1149,7 @@ med en direkt URL, och kan därför bli listade här trots att de används konti
 'specialloguserlabel'  => 'Användare:',
 'speciallogtitlelabel' => 'Titel:',
 'log'                  => 'Loggar',
+'all-logs-page'        => 'Alla loggar',
 'log-search-legend'    => 'Sök efter loggar',
 'log-search-submit'    => 'Sök',
 'alllogstext'          => 'Kombinerad visning av alla tillgängliga loggar för {{SITENAME}}. Du kan avgränsa sökningen och få färre träffar genom att ange typ av logg, användarnamn, eller sida.',
@@ -1235,6 +1318,7 @@ detta leder till, och att det följer {{SITENAME}}s allmänna riktlinjer.',
 'protectlogpage'              => 'Skrivskydd',
 'protectlogtext'              => 'Detta är en lista över applicerande och borttagande av skrivskydd.',
 'protectedarticle'            => 'skyddade [[$1]]',
+'modifiedarticleprotection'   => 'ändrade skyddsnivån för "[[$1]]"',
 'unprotectedarticle'          => 'tog bort skydd av $1',
 'protectsub'                  => '(Skyddar "$1")',
 'confirmprotect'              => 'Bekräfta skrivskydd av sida',
@@ -1700,25 +1784,6 @@ All överföring mellan wikier (transwiki) listas i  [[Special:Log/import|import
 'showhidebots' => '($1 robotar)',
 'noimages'     => 'Ingenting att se.',
 
-/*
-Short names for language variants used for language conversion links.
-To disable showing a particular link, set it to 'disable', e.g.
-'variantname-zh-sg' => 'disable',
-Variants for Chinese language
-*/
-'variantname-zh-cn' => 'cn',
-'variantname-zh-tw' => 'tw',
-'variantname-zh-hk' => 'hk',
-'variantname-zh-sg' => 'sg',
-'variantname-zh'    => 'zh',
-
-# Variants for Serbian language
-'variantname-sr-ec' => 'sr-ec',
-'variantname-sr-el' => 'sr-el',
-'variantname-sr-jc' => 'sr-jc',
-'variantname-sr-jl' => 'sr-jl',
-'variantname-sr'    => 'sr',
-
 'passwordtooshort' => 'Ditt lösenord är för kort. Det måste innehålla minst $1 tecken.',
 
 # Metadata
@@ -1753,6 +1818,7 @@ bildsidan när metadatatabellen är minimerad. Övriga fält
 'exif-whitepoint'                  => 'Vitpunktens renhet',
 'exif-primarychromaticities'       => 'Primärfärgernas renhet',
 'exif-ycbcrcoefficients'           => 'Koefficienter för färgrymdstransformationsmatris',
+'exif-referenceblackwhite'         => 'Referensvärden för svart och vitt',
 'exif-datetime'                    => 'Ändringstidpunkt',
 'exif-imagedescription'            => 'Bildtitel',
 'exif-make'                        => 'Kameratillverkare',
@@ -1795,6 +1861,7 @@ bildsidan när metadatatabellen är minimerad. Övriga fält
 'exif-exposureindex'               => 'Exponeringsindex',
 'exif-sensingmethod'               => 'Avkänningsmetod',
 'exif-filesource'                  => 'Filkälla',
+'exif-scenetype'                   => 'Scentyp',
 'exif-cfapattern'                  => 'CFA-mönster',
 'exif-customrendered'              => 'Anpassad bildbehandling',
 'exif-exposuremode'                => 'Exponeringsläge',
@@ -1827,6 +1894,7 @@ bildsidan när metadatatabellen är minimerad. Övriga fält
 'exif-gpstrack'                    => 'Rörelsens riktning',
 'exif-gpsimgdirectionref'          => 'Referens för bildens riktning',
 'exif-gpsimgdirection'             => 'Bildens riktning',
+'exif-gpsmapdatum'                 => 'Använd geodetisk data',
 'exif-gpsdestlatituderef'          => 'Referenspunkt för målets latitud',
 'exif-gpsdestlatitude'             => 'Målets latitud',
 'exif-gpsdestlongituderef'         => 'Referenspunkt för målets longitud',
@@ -1904,6 +1972,8 @@ bildsidan när metadatatabellen är minimerad. Övriga fält
 'exif-sensingmethod-5' => 'Färgsekventiell områdessensor',
 'exif-sensingmethod-7' => 'Trilinjär sensor',
 'exif-sensingmethod-8' => 'Färgsekventiell linjär sensor',
+
+'exif-scenetype-1' => 'Direkt fotograferad bild',
 
 'exif-customrendered-0' => 'Normal',
 'exif-customrendered-1' => 'Anpassad',
@@ -2019,8 +2089,6 @@ Om det *inte* är du som registrerat kontot, följ inte länken. Efter $4 kommer
 'deletedwhileediting' => 'Varning: Denna sida har tagits bort efter att du började redigera den!',
 'confirmrecreate'     => "Användaren [[User:$1|$1]] ([[User talk:$1|diskussion]]) raderade den här artikeln efter att du påbörjade redigering av den med motiveringen: : ''$2'' Bekräfta att du verkligen vill återskapa artikeln.",
 'recreate'            => 'Återskapa',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'Omdirigerar till [[:$1|$1]]...',

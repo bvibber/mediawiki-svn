@@ -831,7 +831,6 @@ Los grupos no seleccionados no cambiarán. Puede deseleccionar pulsando la tecla
 'minoreditletter'                   => 'm',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'b',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '[$1 usuarios vigilando]',
 'rc_categories'                     => 'Limitar a categorías (separadas por "|")',
 'rc_categories_any'                 => 'Any',
@@ -1083,7 +1082,6 @@ Cada fila contiene enlaces al segundo y tercer redirect, así como la primera l�
 'data'               => 'Datos',
 'userrights'         => 'Configuración de permisos de usuarios',
 'groups'             => 'Grupos de usuarios',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 a $2',
 'version'            => 'Versión',
 
@@ -1713,25 +1711,6 @@ La siguiente expresión regular define los enlaces que se encuentran bloqueados 
 'showhidebots' => '($1 bots)',
 'noimages'     => 'No hay nada que ver.',
 
-/*
-Short names for language variants used for language conversion links.
-To disable showing a particular link, set it to 'disable', e.g.
-'variantname-zh-sg' => 'disable',
-Variants for Chinese language
-*/
-'variantname-zh-cn' => 'cn',
-'variantname-zh-tw' => 'tw',
-'variantname-zh-hk' => 'hk',
-'variantname-zh-sg' => 'sg',
-'variantname-zh'    => 'zh',
-
-# Variants for Serbian language
-'variantname-sr-ec' => 'sr-ec',
-'variantname-sr-el' => 'sr-el',
-'variantname-sr-jc' => 'sr-jc',
-'variantname-sr-jl' => 'sr-jl',
-'variantname-sr'    => 'sr',
-
 'passwordtooshort' => 'Su contraseña es muy corta. Debe tener al menos $1 caracteres.',
 
 # Metadata
@@ -2053,8 +2032,6 @@ $1
 'deletedwhileediting' => 'Aviso: ¡Esta página ha sido borrada después de que iniciase la edición!',
 'confirmrecreate'     => "El usuario [[User:$1|$1]] ([[User talk:$1|discusión]]) borró este artículo después de que usted empezase a editarlo y dio esta razón: ''$2'' Por favor, confirme que realmente desea crear de nuevo el artículo.",
 'recreate'            => 'Crear de nuevo',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'Redirigiendo a [[$1]]...',

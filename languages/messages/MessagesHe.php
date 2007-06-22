@@ -1226,7 +1226,6 @@ $messages = array(
 # Book sources
 'booksources'               => 'משאבי ספרות חיצוניים',
 'booksources-search-legend' => 'חיפוש משאבי ספרות חיצוניים',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'עבור',
 'booksources-text'          => 'להלן רשימת קישורים לאתרים אחרים המוכרים ספרים חדשים ויד־שנייה, ושבהם עשוי להיות מידע נוסף לגבי ספרים שאתם מחפשים:',
 
@@ -1234,7 +1233,6 @@ $messages = array(
 'data'               => 'נתונים',
 'userrights'         => 'ניהול הרשאות משתמש',
 'groups'             => 'קבוצות משתמשים',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 עד $2',
 'version'            => 'גרסת התוכנה',
 
@@ -1435,7 +1433,10 @@ $NEWPAGE
 'protect-level-sysop'         => 'מפעילי מערכת בלבד',
 'protect-summary-cascade'     => 'מדורג',
 'protect-expiring'            => 'פוקעת $1 (UTC)',
-'protect-cascade'             => 'הגן על כל הדפים המוכללים בדף זה (הגנה מדורגת).',
+'protect-cascade'             => 'הגן על כל הדפים המוכללים בדף זה (הגנה מדורגת)',
+'protect-robotspolicy'        => 'גישת מנועי חיפוש חיצוניים:',
+'protect-robots-noindex'      => 'ללא אינדוקס',
+'protect-robots-nofollow'     => 'ללא מעקב אחרי קישורים',
 'restriction-type'            => 'הרשאה:',
 'restriction-level'           => 'רמת ההגבלה:',
 'minimum-size'                => 'גודל מינימלי',
@@ -1643,10 +1644,10 @@ $NEWPAGE
 * הורדתם את הסימון בתיבה שלהלן.
 
 במקרים אלו, תצטרכו להעביר או לשלב את הדפים באופן ידני, אם תרצו.',
-'movearticle'             => 'העבר דף',
+'movearticle'             => 'העבר דף:',
 'movenologin'             => 'לא נכנסתם לאתר',
 'movenologintext'         => 'עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]] כדי להעביר דפים.',
-'newtitle'                => 'לשם החדש',
+'newtitle'                => 'לשם החדש:',
 'move-watch'              => 'מעקב אחרי דף זה',
 'movepagebtn'             => 'העבר דף',
 'pagemovedsub'            => 'ההעברה הושלמה בהצלחה',
@@ -1662,7 +1663,7 @@ $NEWPAGE
 '1movedto2_redir'         => '[[$1]] הועבר לשם [[$2]] במקום הפניה',
 'movelogpage'             => 'יומן העברות',
 'movelogpagetext'         => 'להלן רשימה של העברות דפים.',
-'movereason'              => 'סיבה',
+'movereason'              => 'סיבה:',
 'revertmove'              => 'החזר',
 'delete_and_move'         => 'מחק והעבר',
 'delete_and_move_text'    => '== בקשת מחיקה ==
@@ -1892,31 +1893,6 @@ $NEWPAGE
 'newimages'    => 'גלריית תמונות חדשות',
 'showhidebots' => '($1 בוטים)',
 'noimages'     => 'אין תמונות.',
-
-/*
-Short names for language variants used for language conversion links.
-To disable showing a particular link, set it to 'disable', e.g.
-'variantname-zh-sg' => 'disable',
-Variants for Chinese language
-*/
-'variantname-zh-cn' => 'cn',
-'variantname-zh-tw' => 'tw',
-'variantname-zh-hk' => 'hk',
-'variantname-zh-sg' => 'sg',
-'variantname-zh'    => 'zh',
-
-# Variants for Serbian language
-'variantname-sr-ec' => 'sr-ec',
-'variantname-sr-el' => 'sr-el',
-'variantname-sr-jc' => 'sr-jc',
-'variantname-sr-jl' => 'sr-jl',
-'variantname-sr'    => 'sr',
-
-# Variants for Kazakh language
-'variantname-kk-tr' => 'kk-tr',
-'variantname-kk-kz' => 'kk-kz',
-'variantname-kk-cn' => 'kk-cn',
-'variantname-kk'    => 'kk',
 
 'passwordtooshort' => 'סיסמתכם בלתי תקינה או קצרה מדי. עליה להיות מורכבת מ־$1 תווים לפחות ושונה משם המשתמש.',
 
@@ -2246,8 +2222,6 @@ $1
 :'''$2'''
 אנא אשרו שאתם אכן רוצים ליצור מחדש את הדף.",
 'recreate'            => 'צור מחדש',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'מפנה ל־[[$1]]…',

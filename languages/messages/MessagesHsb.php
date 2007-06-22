@@ -427,7 +427,6 @@ format. Prošu zapodaj płaćiwu adresu abo wuprózdń polo.',
 # Password reset dialog
 'resetpass'               => 'Hesło za wužiwarske konto wróćo stajić',
 'resetpass_announce'      => 'Sy so z nachwilnym e-mejlowanym hesłom přizjewił. Zo by přizjewjenje zakónčił, dyrbiš nětko nowe hesło postajić.',
-'resetpass_text'          => '<!-- Add text here -->',
 'resetpass_header'        => 'Hesło wróćo stajić',
 'resetpass_submit'        => 'Hesło posrědkować a so přizjewić',
 'resetpass_success'       => 'Twoje hesło bu wuspěšnje změnjene! Nětko přizjewjenje běži...',
@@ -767,7 +766,6 @@ Móžeš [[{{ns:special}}:Allpages|alfabetiski indeks přepytować]] abo [[:$1|s
 'minoreditletter'                   => 'S',
 'newpageletter'                     => 'N',
 'boteditletter'                     => 'B',
-'sectionlink'                       => '→',
 'number_of_watching_users_pageview' => '$1 {{PLURAL:$1|wobkedźbowacy wužiwar|wobkedźbowacaj wužiwarjej|wobkedźbowacy wužiwarjo|wobkedźbowacych wužiwarjow}}',
 'rc_categories'                     => 'Jenož kategorije (dźělene z "|")',
 'rc_categories_any'                 => 'wšě',
@@ -1013,7 +1011,6 @@ Dołhota [http://meta.wikimedia.org/wiki/Help:Job_queue rynka nadawkow] je <b>$7
 'booksources'               => 'Pytanje po ISBN',
 'booksources-summary'       => 'Na tutej specialnej stronje móžeš ISBN zapodać zo by lisćinu z informacijemi k pytanej knize dóstał. Wjazace smužki abo prózdne znamješka so na naprašowanje njewuskutkuja.',
 'booksources-search-legend' => 'Žórła za knihi pytać',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'Pytać',
 'booksources-text'          => 'To je lisćina wotkazow k druhim sydłam, kotrež nowe a trjebane knihi předawaja. Tam móžeš tež dalše informacije wo knihach dóstać, kotrež pytaš:',
 
@@ -1021,7 +1018,6 @@ Dołhota [http://meta.wikimedia.org/wiki/Help:Job_queue rynka nadawkow] je <b>$7
 'data'               => 'Daty',
 'userrights'         => 'Zrjadowanje wužiwarskich prawow',
 'groups'             => 'Skupiny wužiwarjow',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 do $2',
 'version'            => 'Wersija',
 
@@ -1929,8 +1925,6 @@ $1</div>',
 : <i>$2</i>
 Prošu wobkruć, zo chceš ju woprawdźe znowa wutworić.',
 'recreate'            => 'Znowa wutworić',
-
-'unit-pixel' => 'px',
 
 # HTML dump
 'redirectingto' => 'Posrědkuju k stronje [[$1]]',
