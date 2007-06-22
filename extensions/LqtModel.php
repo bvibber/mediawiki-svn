@@ -254,6 +254,14 @@ class LiveThread {
 		return $this->root;
 	}
 	
+	function setRootRevision($rr) {
+		if( (is_object($rr)) ) {
+			$this->rootRevision = $rr->getId();
+		} else if (is_int($rr)) {
+			$this->rootRevision = $rr;
+		}
+	}
+	
 	function summary() {
 		if ( !$this->summaryId ) return null;
 		if ( !$this->summary ) $this->summary = new Post( Title::newFromID( $this->summaryId ) );

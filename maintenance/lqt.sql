@@ -26,7 +26,7 @@ CREATE TABLE /*$wgDBprefix*/historical_thread (
   -- of the live thread. It is only the id/revision combo which must be unique.
   hthread_id int(8) unsigned NOT NULL,
   hthread_revision int(8) unsigned NOT NULL,
-  hthread_contents TEXT NOT NULL,
+  hthread_contents BLOB NOT NULL,
   PRIMARY KEY hthread_id_revision (hthread_id, hthread_revision)
 ) TYPE=InnoDB;
 

@@ -256,7 +256,7 @@ HTML;
 				//$this->renameThread($thread, $subject);
 			}
 			// this is unrelated to the subject change and is for all edits:
-//			$thread->setRootRevision(  );
+			$thread->setRootRevision( Revision::newFromTitle($thread->root()->getTitle()) );
 			$thread->commitRevision();
 		}
 
@@ -610,7 +610,7 @@ HTML
 		
 		$this->showArchiveWidget();
 
-		var_dump(HistoricalThread::withIdAtRevision(3,3));
+		var_dump(HistoricalThread::withIdAtRevision(3,5));
 		
 		if( $this->methodApplies('talkpage_new_thread') ) {
 			$this->showNewThreadForm();
