@@ -25,11 +25,13 @@ function fnBreadCrumbsShowHook( &$m_pageObj ) {
   if( isset( $_SESSION['BreadCrumbs'] ) ) $m_BreadCrumbs = $_SESSION['BreadCrumbs'];
   # cache index of last element:
   $m_count = count( $m_BreadCrumbs ) - 1;
-  
+
   # check for doubles:
-  if( $m_BreadCrumbs[ $m_count ] != $wgTitle->getPrefixedText() ) {
-    # reduce the array set, remove older elements:
-    $m_BreadCrumbs = array_slice( $m_BreadCrumbs, ( 1 - $wgBreadCrumbsCount ) );
+  if( $m_count < 1 || $m_BreadCrumbs[ $m_count ] != $wgTitle->getPrefixedText() ) {
+    if( $m_count >= 1) {
+      # reduce the array set, remove older elements:
+      $m_BreadCrumbs = array_slice( $m_BreadCrumbs, ( 1 - $wgBreadCrumbsCount ) );
+    }
     # add new page:
     array_push( $m_BreadCrumbs, $wgTitle->getPrefixedText() );
   }
@@ -37,7 +39,7 @@ function fnBreadCrumbsShowHook( &$m_pageObj ) {
   $_SESSION['BreadCrumbs'] = $m_BreadCrumbs;
   # update cache:
   $m_count = count( $m_BreadCrumbs ) - 1;
-  
+
   # acquire a skin object:
   $m_skin =& $wgUser->getSkin();
   # build the breadcrumbs trail:
@@ -48,11 +50,11 @@ function fnBreadCrumbsShowHook( &$m_pageObj ) {
   }
   $m_trail .= '</div>';
   $wgOut->addHTML( $m_trail );
-  
+
   # invalidate internal MediaWiki cache:
   $wgTitle->invalidateCache();
   $wgUser->invalidateCache();
-  
+
   # Return true to let the rest work:
   return true;
 }
