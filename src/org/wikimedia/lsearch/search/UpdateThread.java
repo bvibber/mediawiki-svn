@@ -208,8 +208,7 @@ public class UpdateThread extends Thread {
 				searchpath.mkdir();
 
 			// check if updated index is a valid one (throws an exception on error)
-			IndexSearcherMul is = new IndexSearcherMul(li.path);
-			is.setSimilarity(new WikiSimilarity());
+			SearcherCache.SearcherPool pool = new SearcherCache.SearcherPool(iid,li.path); 
 			
 			// refresh the symlink
 			command = "/bin/rm -rf "+iid.getSearchPath();
@@ -221,7 +220,7 @@ public class UpdateThread extends Thread {
 			
 			// update registry, cache, rmi object
 			registry.refreshUpdates(iid);
-			updateCache(is,li);
+			updateCache(pool,li);
 			RMIServer.rebind(iid);
 			registry.refreshCurrent(li);
 			
@@ -236,11 +235,12 @@ public class UpdateThread extends Thread {
 	}
 	
 	/** Update search cache after successful rsync of update version of index */
-	protected void updateCache(IndexSearcherMul is, LocalIndex li){
+	protected void updateCache(SearcherCache.SearcherPool pool, LocalIndex li){
 		// do some typical queries to preload some lucene caches, pages into memory, etc..
-		Warmup.warmupIndexSearcher(is,li.iid,true);			
+		for(IndexSearcherMul is : pool.searchers)
+			Warmup.warmupIndexSearcher(is,li.iid,true);			
 		// add to cache
-		cache.invalidateLocalSearcher(li.iid,is);		
+		cache.invalidateLocalSearcher(li.iid,pool);		
 	}
 	
 	protected UpdateThread(){
