@@ -133,7 +133,7 @@ class DeletedContribsPager extends IndexPager {
 		}
 
 		if( $row->ar_minor_edit ) {
-			$mflag = '<span class="minor">' . $messages['minoreditletter'] . '</span> ';
+			$mflag = '<span class="minor">' . $this->messages['minoreditletter'] . '</span> ';
 		} else {
 			$mflag = '';
 		}
