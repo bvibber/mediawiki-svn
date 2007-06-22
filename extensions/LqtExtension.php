@@ -510,6 +510,7 @@ class TalkpageView extends LqtView {
 		would just be one of four ways to view the article. But then those other tabs, for
 		logged-in users, don't really fit the metaphor. What to do, what to do?
 		*/
+		return true;
 	}
 
 	function permalinksForThreads($ts, $method = null, $operand = null) {
