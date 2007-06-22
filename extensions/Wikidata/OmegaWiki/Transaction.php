@@ -41,6 +41,10 @@ class DefaultQueryTransactionInformation {
 	
 	public function setVersioningAttributes($record, $row) {
 	}
+
+	public function __toString() {
+		return "QueryTransactionInformation (...)";
+	}
 }
 
 class QueryLatestTransactionInformation extends DefaultQueryTransactionInformation {

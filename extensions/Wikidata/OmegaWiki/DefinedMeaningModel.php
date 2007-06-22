@@ -8,6 +8,7 @@ class DefinedMeaningModel {
 
 	public function __construct($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 
+		wfDebug("definedMeaningId:$definedMeaningId, filterLanguageId:$filterLanguageId, possiblySynonymousRelationTypeId:$possiblySynonymousRelationTypeId, queryTransactionInformation:$queryTransactionInformation\n");
 		global
 			$definedMeaningAttribute, $definitionAttribute, $classAttributesAttribute, 
 			$alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
