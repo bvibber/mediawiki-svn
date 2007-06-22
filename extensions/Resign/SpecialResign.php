@@ -16,9 +16,6 @@ $wgExtensionCredits['specialpage'][] = array(
 	'description' => 'Gives users the ability to remove their permissions'
 );
 
-# Internationalisation file
-require_once( dirname(__FILE__) . '/SpecialResign.i18n.php' );
-
 # Add resign permission for every group set in the database
 foreach( $wgGroupPermissions as $key => $value ) {
 	if ( $key != '*' && $key != 'user' && $key != 'autoconfirmed' && $key != 'emailconfirmed' ) {
@@ -29,16 +26,13 @@ foreach( $wgGroupPermissions as $key => $value ) {
 # Add log action
 $wgLogActions['rights/resign'] = 'resign-logentry';
 
-# Register special page
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-extAddSpecialPage( dirname(__FILE__) . '/SpecialResign_body.php', 'Resign', 'ResignPage' );
+$wgAutoloadClasses['ResignPage'] = dirname( __FILE__ ) . '/SpecialResign_body.php';
+$wgSpecialPages['Resign'] = 'ResignPage';
 
 function wfSpecialResign() {
-	# Add messages
-	global $wgMessageCache, $wgResignMessages;
-	$wgMessageCache->addMessagesByLang( $wgResignMessages );
+	global $wgMessageCache;
+	require_once( dirname(__FILE__) . '/SpecialResign.i18n.php' );
+	$wgMessageCache->addMessagesByLang( efResignMessages() );
 }
 
 ?>
