@@ -92,7 +92,12 @@ class SpecialCountEdits extends SpecialPage {
 		global $wgUser, $wgLang;
 		$dbr =& wfGetDB( DB_SLAVE );
 		$rev = $dbr->tableName( 'revision' );
-		$sql  = "SELECT COUNT(*) AS count, rev_user, rev_user_text FROM $rev GROUP BY rev_user_text ORDER BY count DESC LIMIT 0,11";
+		$sql  = "SELECT COUNT(*) AS count, rev_user, rev_user_text FROM $rev";
+		$groupby = "GROUP BY rev_user_text";
+		if( !$dbr->implicitGroupby() )
+			$groupby .= ", rev_user";
+		$orderby = "ORDER BY count DESC LIMIT 11";
+		$sql .= " $groupby $orderby";
 		$res = $dbr->query( $sql );
 		if( $res && $dbr->numRows( $res ) > 0 ) {
 			$skin = $wgUser->getSkin();
