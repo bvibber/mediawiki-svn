@@ -34,6 +34,7 @@ public class UnicodeDecomposer {
 	}
 	static org.apache.log4j.Logger log = Logger.getLogger(UnicodeDecomposer.class);
 	final protected static char[][] decomposition = new char[65536][];
+	final protected static boolean[] combining = new boolean[65536];
 	protected static UnicodeDecomposer instance = null;
 	
 	/**
@@ -48,6 +49,10 @@ public class UnicodeDecomposer {
 	protected UnicodeDecomposer(String path){
 		initFromFile(path);
 		log.info("Loaded unicode decomposer");
+	}
+	
+	public boolean isCombiningChar(char ch){
+		return combining[ch];
 	}
 	
 	/**
@@ -85,6 +90,11 @@ public class UnicodeDecomposer {
 					continue; // ignore any additional chars
 				if(parts[2].charAt(0) == 'L')
 					letters.set(chVal);
+				
+				if(parts[2].charAt(0) == 'M')
+					combining[chVal] = true;
+				else
+					combining[chVal] = false;
 			}
 			in.close();
 			
@@ -133,7 +143,7 @@ public class UnicodeDecomposer {
 				recursiveDecompose(buffer,table,letters,(char)ich);
 				if(buffer.len != 0){
 					decomposition[ich]= new char[buffer.len];
-					for(i=0;i<len;i++)
+					for(i=0;i<buffer.len;i++)
 						decomposition[ich][i] = buffer.buffer[i];
 				}					
 			}
