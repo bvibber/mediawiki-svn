@@ -21,7 +21,7 @@ class BookInformationCache {
 			$dbr = wfGetDB( DB_SLAVE );
 			$res = $dbr->selectRow( 'bookinfo', '*', array( 'bi_isbn' => $isbn ), __METHOD__ );
 			if( $res ) {
-				$result = unserialize( $res->bi_result );
+				$result = unserialize( $dbr->decodeBlob( $res->bi_result ) );
 				if( is_object( $result ) && $result instanceof BookInformationResult ) {
 					wfDebugLog( 'bookinfo', "Cache hit for {$isbn}\n" );
 					return $result;
@@ -43,14 +43,14 @@ class BookInformationCache {
 		global $wgBookInformationCache;
 		if( $wgBookInformationCache ) {
 			$dbw = wfGetDB( DB_MASTER );
-			$dbw->insert( 'bookinfo', self::prepareValues( $isbn, $result ), __METHOD__, 'IGNORE' );
+			$dbw->insert( 'bookinfo', self::prepareValues( $isbn, $result, $dbw ), __METHOD__, 'IGNORE' );
 		}
 	}
 	
-	private static function prepareValues( $isbn, $result ) {
+	private static function prepareValues( $isbn, $result, $dbw ) {
 		return array(
 			'bi_isbn' => $isbn,
-			'bi_result' => serialize( $result ),
+			'bi_result' => $dbw->encodeBlob( serialize( $result ) ),
 		);
 	}
 
