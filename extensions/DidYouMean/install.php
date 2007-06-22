@@ -51,7 +51,11 @@ if( !$dba->isOpen() ) {
 }
 
 # Do nothing if the tables exist
-if( !$dba->tableExists( 'dympage' ) || !$dba->tableExists( 'dymnorm' ) ) {
+if( $dba->tableExists( 'dympage' ) || $dba->tableExists( 'dymnorm' ) ) {
+	echo( "The tables already exist. No action was taken.\n" );
+} else {
+	if( $wgDBtype == 'postgres' )
+		$sql = dirname( __FILE__ ) . '/didyoumean.pg.sql';
 	echo( "Sourcing: $sql\n" );
 	$res = $dba->sourceFile( $sql );
 	echo( "Result: $res\n" );
@@ -88,10 +92,7 @@ if( !$dba->tableExists( 'dympage' ) || !$dba->tableExists( 'dymnorm' ) ) {
 		}
 		$dba->freeResult( $result );
 	}
-} else {
-	echo( "The tables already exist. No action was taken.\n" );
 }
-
 # Close the connection
 $dba->close();
 echo( "\n" );

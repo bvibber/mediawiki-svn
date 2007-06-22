@@ -70,10 +70,10 @@ function wfDymParserBeforeStrip( &$parser, &$text, &$stripState ) {
 	#wfDebug( 'HIPP: ' . __METHOD__ . "\n" );
 
 	# if revisionid is 0 this is not an article chunk
-	if ($parser->mDymFirstChunk == 'no' || !$parser->getVariableValue('revisionid') || $parser->getVariableValue('namespace'))
+	if( isset( $parser->mDymFirstChunk ) || !$parser->getVariableValue('revisionid') || $parser->getVariableValue('namespace'))
 		return true;
 
-	$parser->mDymFirstChunk = 'no';
+	$parser->mDymFirstChunk = 'done';
 
 	$title = $parser->getTitle();
 	$parser->mDymSees = wfDymLookup( $title->getArticleID(), $title->getText() );
@@ -318,14 +318,27 @@ function wfDoInsert( $pageid , $title ) {
 	$dbw->insert( 'dympage', array( 'dp_pageid' => $pageid, 'dp_normid' => $normid ) );
 
 	# touch all pages which will now link here
-	$dbw->query( 'UPDATE ' . $dbw->tableName('page') . ',' . $dbw->tableName('dympage') . ' SET page_touched=' . $dbw->addQuotes($dbw->timestamp()) .
-	       " WHERE page_id=dp_pageid AND dp_normid=$normid"  );
-	#$dbw->update(
-	#	array('page', 'dympage'),
-	#	array('page_touched' => $dbw->timestamp()),
-	#	array('page_id=dp_pageid', 'dp_normid' => $normid),
-	#	__METHOD__
-	#);
+	wfTouchPages( "dp_normid=$normid" );
+
+}
+
+
+function wfTouchPages( $condition ) {
+	global $wgDBtype;
+
+	$dbw = wfGetDB( DB_MASTER );
+	$page = $dbw->tableName('page');
+	$dpage = $dbw->tableName('dympage');
+
+	$whereclause = "WHERE page_id = dp_pageid AND $condition";
+	if ($wgDBtype == 'postgres') {
+		$sql = "UPDATE $page SET page_touched=now() FROM $dpage $whereclause";
+	} else {
+		$sql = "UPDATE $page, $dpage SET page_touched = " . $dbw->addQuotes( $dbw->timestamp() ) . $whereclause;
+	}
+
+	$dbw->query( $sql, __METHOD__ );
+
 }
 
 function wfDoDelete( $pageid ) {
@@ -341,15 +354,8 @@ function wfDoDelete( $pageid ) {
 	if ($count == 0)
 		$dbw->delete( 'dymnorm', array('dn_normid' => $normid) );
 
-	# touch all pages which used to link here
-	$dbw->query( 'UPDATE ' . $dbw->tableName('page') . ',' . $dbw->tableName('dympage') . ' SET page_touched=' . $dbw->addQuotes($dbw->timestamp()) .
-	       " WHERE page_id=dp_pageid AND dp_normid=$normid"  );
-	#$dbw->update(
-	#	array('page', 'dympage'),
-	#	array('page_touched' => $dbw->timestamp()),
-	#	array('page_id=dp_pageid', 'dp_normid' => $normid),
-	#	__METHOD__
-	#);
+	# touch all pages which will now link here
+	wfTouchPages( "dp_normid=$normid" );
 }
 
 function wfDoUpdate( $pageid, $title ) {
@@ -379,20 +385,8 @@ function wfDoUpdate( $pageid, $title ) {
 			$dbw->delete( 'dymnorm', array('dn_normid' => $oldnormid) );
 
 		# touch all pages which linked to the old name or will link to the new one
-		$dbw->query( 'UPDATE ' . $dbw->tableName('page') . ',' . $dbw->tableName('dympage') . ' SET page_touched=' . $dbw->addQuotes($dbw->timestamp()) .
-		       " WHERE page_id=dp_pageid AND (dp_normid=$normid OR dp_normid=$oldnormid)"  );
-		#$dbw->update(
-		#	array('page', 'dympage'),
-		#	array('page_touched' => $dbw->timestamp()),
-		#	array('page_id=dp_pageid', 'dp_normid' => $normid),
-		#	__METHOD__
-		#);
-		#$dbw->update(
-		#	array('page', 'dympage'),
-		#	array('page_touched' => $dbw->timestamp()),
-		#	array('page_id=dp_pageid', 'dp_normid' => $oldnormid),
-		#	__METHOD__
-		#);
+		wfTouchPages( "(dp_normid=$normid OR dp_normid=$oldnormid)" );
+
 	}
 }
 
