@@ -483,7 +483,7 @@ function wfReviewExtensionFunction () {
 					/* FROM   */ 'validate',
 					/* SELECT */ '*',
 					/* WHERE  */ $conds,
-					$fname
+					__METHOD__
 			);
 
 			$ret = array() ;
