@@ -13,7 +13,7 @@ $wgResignMessages['en'] = array(
 	
 	Remember: '''You cannot get your permissions back this way!''' You will have to convince a bureaucrat or steward to grant you back the permissions. Please use this page very carefully.",
 	'resign-reason'    => 'Reason:',
-	'resign-confirm'   => 'I confirm I would like to remove all the permissions I checked, and I know I cannot get my permissions back this way.',
+	'resign-confirm'   => 'I confirm that I would like to remove all the permissions I checked.',
 	'resign-noconfirm' => 'Please check the confirm checkbox if you would like to remove your permissions.',
 	'resign-nogroups'  => 'Please check the permissions you would like to remove.',
 	'resign-success'   => "'''The permissions were successfully removed.'''",
