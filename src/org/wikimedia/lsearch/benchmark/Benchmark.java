@@ -175,7 +175,7 @@ public class Benchmark extends Thread {
 		String verb = "search";
 		String namespace = "";
 		String namespaceFilter= "0";
-		String lang = "en-b";
+		String lang = "en";
 		int runs = 5000;
 		int threads = 10;
 		int words = 1;
@@ -230,8 +230,7 @@ public class Benchmark extends Thread {
 			}
 		}
 		if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang))
-			terms = new WordTerms("./lib/dict/terms-"+lang+".txt.gz");
-		
+			terms = new WordTerms("./lib/dict/terms-"+lang+".txt.gz");		
 		else if(lang.equals("sample"))
 			terms = new SampleTerms();
 		else

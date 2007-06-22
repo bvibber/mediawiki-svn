@@ -179,6 +179,12 @@ public class FastWikiTokenizerEngine {
 					} else if(cl == 'Ø'){
 						addToTokenAlias("O");
 						addToAlias = false;
+					} else if(cl == 'Æ'){
+						addToTokenAlias("AE");
+						addToAlias = false;
+					} else if(cl == 'Œ'){
+						addToTokenAlias("OE");
+						addToAlias = false;
 					}
 				}
 				// special alias transliterations ä -> ae, etc ... 
@@ -202,6 +208,12 @@ public class FastWikiTokenizerEngine {
 					addToAlias = false;
 				} else if(cl == 'ø'){
 					addToTokenAlias("o");
+					addToAlias = false;
+				} else if(cl == 'æ'){
+					addToTokenAlias("ae");
+					addToAlias = false;
+				} else if(cl == 'œ'){
+					addToTokenAlias("oe");
 					addToAlias = false;
 				}
 				
@@ -266,9 +278,9 @@ public class FastWikiTokenizerEngine {
 	 * buffer, if it's not a letter, new token is created
 	 */
 	private final void addLetter(){
-		try{
+		try{			
 			// add new character to buffer
-			if(Character.isLetter(c)){
+			if(Character.isLetter(c)){				
 				if(numberToken) // we were fetching a number
 					addToken();
 
@@ -285,11 +297,8 @@ public class FastWikiTokenizerEngine {
 
 				if(length<buffer.length)
 					buffer[length++] = c;
-				// add dot and comma to digits if they are not at the beginning
-			/* } else if(numberToken && (c == '.' || c == ',')){
-				if(length<buffer.length)
-					buffer[length++] = c; */ 
-			} else{
+			} else if(decomposer.isCombiningChar(c)); // ignore 
+			else{
 				addToken();
 			}
 		} catch(Exception e){
