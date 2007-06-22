@@ -42,8 +42,9 @@ class ResignPage extends SpecialPage {
 
 	function showForm() {
 		global $wgOut, $wgUser;
+		$self = SpecialPage::getTitleFor( 'Resign' );
 		$wgOut->addHTML(
-			Xml::openElement( 'form' , array( 'method' => 'post' ) ) .
+			Xml::openElement( 'form' , array( 'method' => 'post', 'action' => $self->getLocalUrl() ) ) .
 			wfMsgExt( 'resign-text', array( 'parse' ) ) .
 			Xml::openElement( 'ul' )
 		);
