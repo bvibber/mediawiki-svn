@@ -97,7 +97,7 @@ $result = mysql_query("
 # Malafaya: This is my query (performance must be checked live) for missing expressions based on
 #                       * don't count deleted stuff (old query did)
 #                       * do 2 joins: between members of collection and target language, and then with english for default, but only for elements having target language expression as NULL (non-existing)
-#		  * this gives us the DM id, the spelling in target language (or NULL, if none), the spelling in English (or NULL, if none)
+#                       * this gives us the DM id, the spelling in target language (or NULL, if none), the spelling in English (or NULL, if none)
 #                    Warning: some DMs came up in OLPC and Swadesh collections belonging to those collections but having no expressions associated... These are visible in this query
 
 $result = mysql_query("
@@ -116,6 +116,13 @@ $result = mysql_query("
 		 uw_expression_ns.expression_id = uw_syntrans.expression_id 
 		 AND uw_syntrans.remove_transaction_id IS NULL 
 		 AND language_id = $language_esc 
+		 AND defined_meaning_id IN
+	 	(
+			SELECT member_mid as id
+			FROM uw_collection_contents WHERE
+			collection_id = $collection_esc 
+			AND remove_transaction_id IS NULL
+		)
 		) as translation
 		ON
 		translation.defined_meaning_id = member.id
@@ -126,6 +133,13 @@ $result = mysql_query("
 		 uw_expression_ns.expression_id = uw_syntrans.expression_id
 		 AND uw_syntrans.remove_transaction_id IS NULL
 		 AND language_id = 85
+		 AND defined_meaning_id IN
+	 	(
+			SELECT member_mid as id
+			FROM uw_collection_contents WHERE
+			collection_id = $collection_esc 
+			AND remove_transaction_id IS NULL
+		)
 		) as translation_en
 		ON
 		translation_en.defined_meaning_id = member.id
