@@ -99,8 +99,29 @@ class Post extends Article {
 }
 
 class HistoricalThread {
-	static function create( $livethread ) {
-		echo ("pretended to create new historical thread.");
+	static function textRepresentation($t) {
+		return serialize($t);
+	}
+	static function create( $t ) {
+		$tmt = $t->topmostThread();
+		$contents = HistoricalThread::textRepresentation($tmt);
+		$dbr =& wfGetDB( DB_MASTER );
+		$res = $dbr->insert( 'historical_thread', array(
+			'hthread_id'=>$tmt->id(),
+			'hthread_revision'=>$tmt->revisionNumber(),
+			'hthread_contents'=>$contents), __METHOD__ );
+	}
+	static function withIdAtRevision( $id, $rev ) {
+		$dbr =& wfGetDB( DB_SLAVE );
+		$line = $dbr->selectRow(
+			'historical_thread',
+			'hthread_contents',
+			array('hthread_id' => $id, 'hthread_revision' => $rev),
+			__METHOD__);
+		if ( $line )
+			return unserialize($line->hthread_contents);
+		else
+			return null;
 	}
 }
 
@@ -127,10 +148,15 @@ class LiveThread {
 	
 	protected $id;
 	protected $revisionNumber;
+	protected $rootRevision;
 	
 	/* Copy of $this made when first loaded from database, to store the data
 	   we will write to the history if a new revision is commited. */
 	protected $double;
+	
+	function revisionNumber() {
+		return $this->revisionNumber;
+	}
 	
 	function commitRevision() {
 		// TODO open a transaction.
@@ -141,11 +167,14 @@ class LiveThread {
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
 		     /* SET */array( 'thread_root' => $this->rootId,
+					'thread_root_rev' => $this->rootRevision,
 					'thread_article' => $this->articleId,
 					'thread_path' => $this->path,
 					'thread_summary_page' => $this->summaryId,
 					'thread_timestamp' => $this->timestamp,
-					'thread_revision' => $this->revisionNumber ),
+					'thread_revision' => $this->revisionNumber,
+					'thread_article_namespace' => $this->articleNamespace,
+				    'thread_article_title' => $this->articleTitle),
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     __METHOD__);
 	}
@@ -156,6 +185,7 @@ class LiveThread {
 		$this->articleId = $line->thread_article;
 		$this->articleNamespace = $line->thread_article_namespace;
 		$this->articleTitle = $line->thread_article_title;
+		$this->rootRevision = $line->thread_root_rev;
 		$this->summaryId = $line->thread_summary_page;
 		$this->path = $line->thread_path;
 		$this->timestamp = $line->thread_timestamp;
@@ -220,7 +250,7 @@ class LiveThread {
 
 	function root() {
 		if ( !$this->rootId ) return null;
-		if ( !$this->root ) $this->root = new Post( Title::newFromID( $this->rootId ) );
+		if ( !$this->root ) $this->root = new Post( Title::newFromID( $this->rootId ), $this->rootRevision );
 		return $this->root;
 	}
 	
@@ -369,7 +399,6 @@ SQL;
 		$l_path = preg_quote($l->thread_path);
 		foreach( $lines as $key => $m ) {
 			if ( preg_match( "/^{$l_path}\.\d+$/", $m->thread_path ) ) {
-					// $m->path begins with $l->path; this is a child.
 //				unset($lines[$key]);
 				$children[] = Threads::buildLiveThread( &$lines, $m );
 			}

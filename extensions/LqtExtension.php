@@ -255,6 +255,9 @@ HTML;
 			if ( $subject && $subject != $thread->subjectWithoutIncrement() ) {
 				//$this->renameThread($thread, $subject);
 			}
+			// this is unrelated to the subject change and is for all edits:
+//			$thread->setRootRevision(  );
+			$thread->commitRevision();
 		}
 
 /*		$subject = $this->request->getVal('lqt_subject_field', '');
@@ -281,7 +284,7 @@ HTML;
 		return $this->incrementedTitle( $subject?$subject:"«no subject»", NS_LQT_THREAD );
 	}
 	function newSummaryTitle($t) {
-		return $this->incrementedTitle( "Summary of " . $t->subject(), NS_LQT_SUMMARY );
+		return $this->incrementedTitle( $t->subject(), NS_LQT_SUMMARY );
 	}
 	function newReplyTitle($s, $t) {
 		return $this->incrementedTitle( $t->subjectWithoutIncrement(), NS_LQT_THREAD );
@@ -602,12 +605,11 @@ HTML
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
 		$this->addJSandCSS();
 
-		//		lqtCheapTest( );
-		//		return;
-
 		$this->showHeader();
 		
 		$this->showArchiveWidget();
+
+		var_dump(HistoricalThread::withIdAtRevision(3,3));
 		
 		if( $this->methodApplies('talkpage_new_thread') ) {
 			$this->showNewThreadForm();
