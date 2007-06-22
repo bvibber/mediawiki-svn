@@ -255,6 +255,7 @@ if ( get_param('doit',false) ) { # Process
 	}
 
 	if ( $whatsthis == "wikitext" ) {
+    $content_provider->first_title = "Raw wikitext page" ;
 		$wiki2xml_authors = array () ;
 		$xml = $converter->article2xml ( "" , $wikitext , $xmlg ) ;
 	} else {

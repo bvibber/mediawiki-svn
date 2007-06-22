@@ -293,13 +293,18 @@ class wiki2xml
 			else $replace_template = false ;
 		}
 		
-		if ( $replace_template ) { # Do not generate <template> sections, but rather replace the template call with the template text
-			# Get template text
-			$between = trim ( $content_provider->get_template_text ( $target ) ) ;
-			add_authors ( $content_provider->authors ) ;
-			
-#			if ( $a > 0 && explode ( "\n" , $between , 2 ) > 1 ) # Multi-lined templates get leading newline
-#				$between = "\n" . $between ;
+    if ( substr ( $target , 0 , 1 ) == '#' ) { # Try template logic
+      $between = $this->process_template_logic ( $target , $variables ) ;
+			# Change source (!)
+			$w1 = substr ( $this->w , 0 , $a ) ;
+			$w2 = substr ( $this->w , $b ) ;
+			$this->w = $w1 . $between . $w2 ;
+			$this->wl = strlen ( $this->w ) ;
+    } else if ( $replace_template ) { # Do not generate <template> sections, but rather replace the template call with the template text
+
+      # Get template text
+      $between = trim ( $content_provider->get_template_text ( $target ) ) ;
+      add_authors ( $content_provider->authors ) ;
 			
 			# Removing <noinclude> stuff
 			$between = preg_replace( '?<noinclude>.*</noinclude>?msU', '', $between);
@@ -307,9 +312,15 @@ class wiki2xml
 			$between = str_replace ( "</include>" , "" , $between ) ;
 			$between = str_replace ( "<includeonly>" , "" , $between ) ;
 			$between = str_replace ( "</includeonly>" , "" , $between ) ;
-			
+
+      # Remove HTML comments
+      $between = preg_replace( '?<!--.*-->?msU', '', $between) ;
+
 			# Replacing template variables.
 			# ATTENTION: Template variables within <nowiki> sections of templates will be replaced as well!
+			
+			if ( $a > 0 && substr ( $between , 0 , 2 ) == '{|' )
+				$between = "\n" . $between ;
 			
 			$this->replace_template_variables ( $between , $variables ) ;
 			
@@ -324,6 +335,30 @@ class wiki2xml
 		}
 		return true ;
 		}
+
+	function process_template_logic ( $title , $variables ) {
+	
+    # TODO : Process title and variables for sub-template-replacements
+	
+    if ( substr ( $title , 0 , 4 ) == "#if:" ) {
+      $title = trim ( substr ( $title , 4 ) ) ;
+      if ( $title == '' ) return array_pop ( $variables ) ; # ELSE
+      return array_shift ( $variables ) ; # THEN
+    }
+
+    if ( substr ( $title , 0 , 8 ) == "#switch:" ) {
+      $title = trim ( array_pop ( explode ( ':' , $title , 2 ) ) ) ;
+      foreach ( $variables AS $v ) {
+        $v = explode ( '=' , $v , 2 ) ;
+        $key = trim ( array_shift ( $v ) ) ;
+        if ( $key != $title ) continue ; # Wrong key
+        return array_pop ( $v ) ; # Correct key, return value
+      }
+    }
+    
+    # BAD PARSER FUNCTION! Ignoring...
+    return $title ;
+	}
 	
 	function replace_template_variables ( &$text , &$variables ) {
 		for ( $a = 0 ; $a+3 < strlen ( $text ) ; $a++ ) {
