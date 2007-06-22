@@ -51,12 +51,14 @@ if( !$dba->isOpen() ) {
 }
 
 # Do nothing if the table exists
-if( !$dba->tableExists( 'bad_images' ) ) {
+if( $dba->tableExists( 'bad_images' ) ) {
+	echo( "The table already exists. No action was taken.\n" );
+} else {
+	if ($wgDBtype == 'postgres')
+		$sql = dirname( __FILE__ ) . '/badimage.pg.sql';
 	if( $dba->sourceFile( $sql ) ) {
 		echo( "The table has been set up correctly.\n" );
 	}
-} else {
-	echo( "The table already exists. No action was taken.\n" );
 }
 
 # Close the connection

@@ -38,7 +38,7 @@ class BadImageList {
 		global $wgMemc;
 		wfProfileIn( __METHOD__ );
 		$dbw =& wfGetDB( DB_MASTER );
-		$dbw->insert( 'bad_images', array( 'bil_name' => $name, 'bil_user' => $user, 'bil_timestamp' => wfTimestampNow(), 'bil_reason' => $reason ), __METHOD__, 'IGNORE' );
+		$dbw->insert( 'bad_images', array( 'bil_name' => $name, 'bil_user' => $user, 'bil_timestamp' => $dbw->timestamp(), 'bil_reason' => $reason ), __METHOD__, 'IGNORE' );
 		$wgMemc->delete( BadImageList::key( $name ) );
 		wfProfileOut( __METHOD__ );
 	}
