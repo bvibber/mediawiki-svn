@@ -147,7 +147,13 @@ class SpecialContributors extends IncludableSpecialPage {
 			$dbr =& wfGetDB( DB_SLAVE );
 			$rev = $dbr->tableName( 'revision' );
 			$aid = $this->target->getArticleId();
-			$res = $dbr->query( "SELECT COUNT(*) AS count, rev_user, rev_user_text FROM {$rev} WHERE rev_page = {$aid} GROUP BY rev_user_text ORDER BY count DESC", __METHOD__ );
+			$sql = "SELECT COUNT(*) AS count, rev_user, rev_user_text FROM {$rev} WHERE rev_page = {$aid}";
+			$groupby = "GROUP BY rev_user_text";
+			if( !$dbr->implicitGroupby() )
+				$groupby .= ",rev_user";
+			$orderby = "ORDER BY count DESC";
+			$sql .= " $groupby $orderby";
+			$res = $dbr->query( $sql, __METHOD__ );
 			if( $res && $dbr->numRows( $res ) > 0 ) {
 				while( $row = $dbr->fetchObject( $res ) )
 					$contributors[ $row->rev_user_text ] = array( $row->rev_user, $row->count );
