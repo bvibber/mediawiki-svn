@@ -209,7 +209,6 @@ function __autoload($className) {
 		'RevisionDeleteForm' => 'includes/SpecialRevisiondelete.php',
 		'RevisionDeleter' => 'includes/SpecialRevisiondelete.php',
 		'SpecialSearch' => 'includes/SpecialSearch.php',
-		'ShortPagesPage' => 'includes/SpecialShortpages.php',
 		'UncategorizedCategoriesPage' => 'includes/SpecialUncategorizedcategories.php',
 		'UncategorizedPagesPage' => 'includes/SpecialUncategorizedpages.php',
 		'UncategorizedTemplatesPage' => 'includes/SpecialUncategorizedtemplates.php',
@@ -291,6 +290,7 @@ function __autoload($className) {
 		'ReportCache' => 'includes/reports/ReportCache.php',
 		'ReportPager' => 'includes/reports/ReportPager.php',
 		'CachedReportPager' => 'includes/reports/CachedReportPager.php',
+		'ShortPagesReport' => 'includes/reports/ShortPagesReport.php',
 		'RedirectReport' => 'includes/reports/RedirectReport.php',
 
 		# API

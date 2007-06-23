@@ -44,19 +44,20 @@ class ReportPager extends IndexPager {
 		$conds = array();
 		if( ( $ns = $this->getNamespace() ) !== false )
 			$conds[] = $this->report->getNamespaceClause( $ns );
-		if( !$this->getRedirects() )
+		if( !$this->getRedirects() || $this->report->excludeRedirects() )
 			$conds[] = $this->report->getRedirectClause();
 			
 		# Paging conditions
 		if( $this->mDefaultDirection ) {
 			# DESC
 			$op = ' < ';
-			$options[] = 'ORDER BY ' . $this->report->getPagingColumn() . ' DESC';
+			$order = $this->report->getPagingColumn() . ' DESC';
 		} else {
 			# ASC
 			$op = ' > ';
-			$options[] = 'ORDER BY ' . $this->report->getPagingColumn();
+			$order = $this->report->getPagingColumn();
 		}
+		$options[] = 'ORDER BY ' . implode( ', ', $this->report->getOrderingClauses() + array( $order ) );
 		$options[] = 'LIMIT ' . ( $this->mLimit + 1 );
 		$conds[] = $this->report->getPagingColumn() . $op . $this->mDb->addQuotes( $this->mOffset );
 		

@@ -106,7 +106,7 @@ class SpecialPage
 		'Mostimages'                => array( 'SpecialPage', 'Mostimages' ),
 		'Mostrevisions'             => array( 'SpecialPage', 'Mostrevisions' ),
 		'Fewestrevisions'             => array( 'SpecialPage', 'Fewestrevisions' ),
-		'Shortpages'                => array( 'SpecialPage', 'Shortpages' ),
+		'Shortpages'                => 'ShortPagesReport',
 		'Longpages'                 => array( 'SpecialPage', 'Longpages' ),
 		'Newpages'                  => array( 'IncludableSpecialPage', 'Newpages' ),
 		'Ancientpages'              => array( 'SpecialPage', 'Ancientpages' ),

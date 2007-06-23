@@ -29,7 +29,7 @@ class CachedReportPager extends ReportPager {
 		$conds['rp_report'] = $this->report->getName();
 		if( ( $ns = $this->getNamespace() ) !== false )
 			$conds['rp_namespace'] = $ns;
-		if( !$this->getRedirects() )
+		if( !$this->getRedirects() || $this->report->excludeRedirects() )
 			$conds['rp_redirect'] = 0;
 		
 		# Paging conditions

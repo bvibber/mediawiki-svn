@@ -52,6 +52,15 @@ abstract class Report extends SpecialPage {
 	}
 	
 	/**
+	 * Should redirects be filtered from results?
+	 *
+	 * @return bool
+	 */
+	public function excludeRedirects() {
+		return false;
+	}
+	
+	/**
 	 * Is it appropriate to allow filtering namespaces?
 	 *
 	 * @return bool
@@ -106,6 +115,16 @@ abstract class Report extends SpecialPage {
 	 */
 	public function getRedirectClause() {
 		return 'page_is_redirect = 0';
+	}
+	
+	/**
+	 * Get ORDER BY clauses to be applied when the
+	 * report is run live
+	 *
+	 * @return array
+	 */
+	public function getOrderingClauses() {
+		return array();
 	}
 
 	/**
@@ -220,10 +239,11 @@ abstract class Report extends SpecialPage {
 	public function buildNamespaceSelector( $select ) {
 		global $wgContLang;
 		$html  = Xml::openElement( 'select', array( 'id' => 'namespace', 'name' => 'namespace' ) );
-		$html .= Xml::option( wfMsg( 'report-filter-namespace-all' ), '' );
 		$namespaces = $this->getApplicableNamespaces();
-		if( $namespaces === false )
+		if( $namespaces === false ) {
+			$html .= Xml::option( wfMsg( 'report-filter-namespace-all' ), '' );
 			$namespaces = array_keys( $wgContLang->getNamespaces() );
+		}
 		foreach( $namespaces as $index ) {
 			if( $index >= 0 ) {
 				$label = $index != 0
@@ -262,6 +282,7 @@ abstract class Report extends SpecialPage {
 	public static function getReports() {
 		return array(
 			'RedirectReport',
+			'ShortPagesReport',
 		);
 	}
 	
