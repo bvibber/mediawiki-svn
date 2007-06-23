@@ -30,7 +30,7 @@ def get_mailboxes(mbroot):
         if not domain.startswith('.') and os.path.isdir(domaindir):
             try:
                 for localpart in os.listdir(domaindir):
-                    if not localpart.startswith('.') and not localpart.find('@') and \
+                    if not localpart.startswith('.') and localpart.find('@') < 0 and \
                         os.path.isdir(os.path.join(domaindir, localpart)):
                         mailboxes.add((unicode(domain), unicode(localpart)))
             except OSError, e:
