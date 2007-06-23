@@ -43,7 +43,7 @@ class ReportCache {
 						'rp_namespace' => $row->rp_namespace,
 						'rp_title' => $row->rp_title,
 						'rp_redirect' => $row->rp_redirect,
-						'rp_params' => $dbw->encodeBlob( self::encodeParams( $row ) ),
+						'rp_params' => $dbw->encodeBlob( self::encodeParams( $report->extractParameters( $row ) ) ),
 					),
 					__METHOD__
 				);
