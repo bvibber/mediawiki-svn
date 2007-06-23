@@ -116,8 +116,8 @@ class ReportPager extends IndexPager {
 	public function getNavigationBar() {
 		foreach( array( 'first', 'last', 'prev', 'next' ) as $link )
 			$labels[$link] = wfMsgHtml( 'report-paging-' . $link );
-		return '(' . implode( ' | ', $this->getPagingLinks( $labels ) ) . ' ) ('
-			. implode( ' | ', $this->getLimitLinks() ) . ')';
+		return '( ' . implode( ' | ', $this->getPagingLinks( $labels ) ) . ' ) ( '
+			. implode( ' | ', $this->getLimitLinks() ) . ' )';
 	}
 	
 	public function getStartBody() {

@@ -138,9 +138,10 @@ abstract class Report extends SpecialPage {
 		# Report results
 		$pager = new ReportPager( $this );
 		if( ( $count = $pager->getNumRows() ) > 0 ) {
-			$wgOut->addHtml( '<p>' . wfMsgHtml( 'report-num-results', $wgLang->formatNum( $count ) ) . '</p>' );
+			#$wgOut->addHtml( '<p>' . wfMsgHtml( 'report-num-results', $wgLang->formatNum( $count ) ) . '</p>' );
 			$wgOut->addHtml( $pager->getNavigationBar() );
 			$wgOut->addHtml( $pager->getBody() );
+			$wgOut->addHtml( $pager->getNavigationBar() );
 		} else {
 			$wgOut->addHtml( '<p>' . wfMsgHtml( 'report-no-results' ) . '</p>' );
 		}
