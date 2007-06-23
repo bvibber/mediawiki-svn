@@ -138,7 +138,7 @@ class DeletedContribsPager extends IndexPager {
 			$link = $sk->makeKnownLinkObj( $undelete, $d, 'target=' . $page->getPrefixedUrl() . '&timestamp=' . $timestamp);
 		}
 		
-		$pagelink = $sk->makeKnownLinkObj( $page );
+		$pagelink = $sk->makeLinkObj( $page );
 
 		if( $row->ar_minor_edit ) {
 			$mflag = '<span class="minor">' . $this->messages['minoreditletter'] . '</span> ';
