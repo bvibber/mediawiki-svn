@@ -11,7 +11,7 @@ class ReportPager extends IndexPager {
 	/**
 	 * Report we're paging for
 	 */
-	private $report = null;
+	protected $report = null;
 	
 	/**
 	 * Constructor
@@ -52,7 +52,7 @@ class ReportPager extends IndexPager {
 			$where[] = $this->report->getNamespaceClause( $ns );
 		
 		# Redirect filter
-		if( $this->report->allowRedirectFilter() && !$this->getRedirects() )
+		if( !$this->getRedirects() )
 			$where[] = $this->report->getRedirectClause();
 		
 		# Paging, indexing and the guts of the Pager logic
