@@ -19,6 +19,7 @@ import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Searchable;
 import org.apache.lucene.search.SearchableMul;
 import org.wikimedia.lsearch.beans.SearchHost;
+import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
@@ -57,16 +58,15 @@ public class SearcherCache {
 				log.warn("I/O error closing searchables "+s);
 			}
 		}		
-	}
-	
-	public static final int OPEN_SEARCHERS = 4;
+	}	
 	
 	/** Holds OPEN_SEARCHERS num of index searchers, for multiprocessor workstations */
 	public static class SearcherPool {
-		IndexSearcherMul searchers[] = new IndexSearcherMul[OPEN_SEARCHERS];
+		IndexSearcherMul searchers[];
 		
-		SearcherPool(IndexId iid, String path) throws IOException {
-			for(int i=0;i<OPEN_SEARCHERS;i++){
+		SearcherPool(IndexId iid, String path, int poolsize) throws IOException {
+			searchers = new IndexSearcherMul[poolsize];
+			for(int i=0;i<poolsize;i++){
 				searchers[i] = open(iid, path);
 			}
 		}
@@ -105,17 +105,14 @@ public class SearcherCache {
 	/** searchable -> host */
 	protected Hashtable<Searchable,String> searchableHost;
 	
+	public int searchPoolSize = 1;
+	
 	/** lazy initalization of search indexes (set of dbroles) */
 	protected Set<String> initialized;
 	
 	/** Hosts for which RemoteSearcher could not be created,
 	 *  update via NetworkStatusThread */
 	protected Set<SearchHost> deadHosts;
-	
-	/** Instances of searchables in use by some searcher */
-	protected Hashtable<Searchable,SimpleInt> inUse;
-	/** Searchables that should be closed after all searchers are done with them */
-	protected HashSet<Searchable> closeQueue;
 	
 	static protected SearcherCache instance = null;
 	
@@ -212,14 +209,22 @@ public class SearcherCache {
 			try {
 				if(iid.isLogical())
 					continue;
-				IndexSearcherMul is = getLocalSearcher(iid);
-				Warmup.warmupIndexSearcher(is,iid,false);
+				for(IndexSearcherMul is : getSearcherPool(iid))				
+					Warmup.warmupIndexSearcher(is,iid,false);
 			} catch (IOException e) {
 				log.warn("I/O error warming index for "+iid);				
 			}
 		}
 	}
-	
+
+	/** Get all searchers for iid, open/create if doesn't exist */
+	private IndexSearcherMul[] getSearcherPool(IndexId iid) throws IOException {
+		SearcherPool pool = localCache.get(iid.toString());
+		if(pool == null)
+			addLocalSearcherToCache(iid);
+		return localCache.get(iid.toString()).searchers;
+	}
+
 	/** 
 	 * Make a searchable instance, and add it to cache
 	 * @return   the created searchable instance
@@ -254,7 +259,11 @@ public class SearcherCache {
 		synchronized(iid){
 			// make sure some other thread has not opened the searcher
 			if(localCache.get(iid.toString()) == null){
-				SearcherPool pool = new SearcherPool(iid,iid.getCanonicalSearchPath());
+				if(!iid.isMySearch())
+					throw new IOException(iid+" is not searched by this host.");
+				if(iid.isLogical())
+					throw new IOException(iid+" will not open logical index.");
+				SearcherPool pool = new SearcherPool(iid,iid.getCanonicalSearchPath(),searchPoolSize);
 				localCache.put(iid.toString(),pool);
 				for(IndexSearcherMul s : pool.searchers)
 					searchableHost.put(s,"");
@@ -392,9 +401,7 @@ public class SearcherCache {
 	 * @param searcher
 	 */
 	public IndexSearcherMul[] invalidateLocalSearcher(IndexId iid, SearcherPool newpool) {
-		IndexSearcherMul olds;
 		log.debug("Invalidating local searcher for "+iid);		
-		ArrayList<SearchableMul> close = new ArrayList<SearchableMul>();
 		synchronized(lock){
 			SearcherPool oldpool = localCache.get(iid.toString());			
 			// put in the new value
@@ -405,66 +412,13 @@ public class SearcherCache {
 				return newpool.searchers; // no old searcher
 			for(IndexSearcherMul s : oldpool.searchers){
 				searchableHost.remove(s);
-				// close the old index searcher (imediatelly, or queue if in use)
-				SimpleInt useCount = inUse.get(s);
-				if(useCount == null || useCount.count == 0)
-					close.add(s);
-				else{
-					log.debug("Searcher for "+iid+" will be closed after local searches are done.");
-				}
-				
-				closeQueue.add(s);
+				// deferred close
+				log.debug("Deferred closure of searcher "+s);
+				new DeferredClose(s,15000).start();
 			}
 		}
-		// close outside of sync block
-		for(SearchableMul s : close)
-			closeSearcher(s);
-		
 		return newpool.searchers;
 	}	
-
-	/** Tell the cache that the searcher is in use */
-	public void checkout(SearchableMul searcher) {
-		synchronized(lock){
-			SimpleInt i = inUse.get(searcher);
-			if(i == null)
-				inUse.put(searcher,new SimpleInt(1));
-			else
-				i.count++;
-		}
-	}
-
-	/** Tell the cache that the searcher is no longer in use */
-	public void release(SearchableMul searcher) {		
-		synchronized(lock){
-			SimpleInt i = inUse.get(searcher);
-			if(i == null)
-				log.warn("Error in returnBack, returned Searcher that is not checked out. "+searcher);
-			else
-				i.count--;
-		}
-		
-		closeSearcher(searcher);
-	}
-	
-	protected void closeSearcher(SearchableMul searcher){
-		boolean close = false;
-		synchronized(lock){
-			SimpleInt used = inUse.get(searcher); 
-			if(used == null || used.count == 0){
-				if(closeQueue.contains(searcher)){
-					closeQueue.remove(searcher);
-					searchableHost.remove(searcher);
-					close = true;
-				}
-			} 
-		}
-		// deferred close
-		if(close){
-			log.debug("Deferred closure of searcher "+searcher);
-			new DeferredClose(searcher,15000).start();
-		}
-	}
 	
 	/** Get a copy of array of dead hosts */
 	public HashSet<SearchHost> getDeadHosts(){
@@ -488,12 +442,15 @@ public class SearcherCache {
 		localCache = new Hashtable<String,SearcherPool>();
 		deadHosts = Collections.synchronizedSet(new HashSet<SearchHost>());
 		global = GlobalConfiguration.getInstance();
-		inUse = new Hashtable<Searchable,SimpleInt>();
-		closeQueue = new HashSet<Searchable>();
 		searchableHost = new Hashtable<Searchable,String>();
 		remoteKeys = new Hashtable<String,Set<String>>();
 		lock = new Object();
 		initialized = Collections.synchronizedSet(new HashSet<String>());
+		searchPoolSize = Configuration.open().getInt("SearcherPool","size",1);
+	}
+
+	public int getSearchPoolSize() {
+		return searchPoolSize;
 	}
 
 

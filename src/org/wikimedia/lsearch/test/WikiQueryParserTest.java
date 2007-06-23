@@ -34,7 +34,6 @@ public class WikiQueryParserTest extends TestCase {
 		Configuration.setConfigFile(System.getProperty("user.dir")+"/test-data/mwsearch.conf.test");
 		Configuration.open();
 		WikiQueryParser.TITLE_BOOST = 2;
-		WikiQueryParser.REDIRECT_BOOST = 0.2f;
 		WikiQueryParser.ALT_TITLE_BOOST = 6;
 		WikiQueryParser.KEYWORD_BOOST = 0.05f;
 		WikiIndexModifier.ALT_TITLES = 3;
@@ -173,7 +172,7 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("+(+(contents:beans contents:bean^0.5) +category:food) +(+contents:orchid +category:\"some flowers\")",q.toString());
 
 			q = parser.parseRaw("(Beans AND incategory:FOod) (orchID AND incategory:\"some FLOWERS\")");
-			assertEquals("+(+(contents:beans contents:bean^0.5) +category:FOod) +(+contents:orchid +category:\"some FLOWERS\")",q.toString());
+			assertEquals("+(+(contents:beans contents:bean^0.5) +category:food) +(+contents:orchid +category:\"some flowers\")",q.toString());
 
 			q = parser.parse("(beans AND incategory:food) (orchid AND incategory:\"some flowers\")");
 			assertEquals("+(+(+(contents:beans contents:bean^0.5) title:beans^2.0) +category:food) +(+(+contents:orchid +category:\"some flowers\") title:orchid^2.0)",q.toString());
@@ -341,6 +340,12 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("all_talk: beans everyone",NamespacePolicy.REWRITE);
 			assertEquals("(+(namespace:1 namespace:3 namespace:5 namespace:7 namespace:9 namespace:11 namespace:13 namespace:15) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+(namespace:1 namespace:3 namespace:5 namespace:7 namespace:9 namespace:11 namespace:13 namespace:15) +(+title:beans^2.0 +title:everyone^2.0))",q.toString());
 			
+			// German
+			analyzer = Analyzers.getSearcherAnalyzer("de");
+			bs = new FieldBuilder("de").getBuilder();
+			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.IGNORE);
+			q = parser.parseTwoPass("welche rolle spielen Mineralstoffe in der Ernährung?",NamespacePolicy.IGNORE);
+			assertEquals("(+(contents:welche contents:welch^0.5) +(contents:rolle contents:roll^0.5) +(contents:spielen contents:spiel^0.5) +(contents:mineralstoffe contents:mineralstoff^0.5) +contents:in +contents:der +(+(contents:ernahrung contents:ernahr^0.5) (contents:ernaehrung contents:ernaehr^0.5))) (+title:welche^2.0 +title:rolle^2.0 +title:spielen^2.0 +title:mineralstoffe^2.0 +title:in^2.0 +title:der^2.0 +(title:ernahrung^2.0 title:ernaehrung^2.0))",q.toString());			
 			
 			// Test field extraction
 			HashSet<NamespaceFilter> fs = parser.getFieldNamespaces("main:something [1]:else all:oh []:nja");

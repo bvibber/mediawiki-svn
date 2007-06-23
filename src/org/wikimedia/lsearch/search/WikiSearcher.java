@@ -100,7 +100,6 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 		if(searcher == null)
 			throw new Exception("Error constructing searcher, check logs.");
 		
-		cache.checkout(searcher);
 	}
 
 	/** Got host for the iid within this multi searcher */
@@ -114,8 +113,6 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 
 	@Override
 	public void close() throws IOException {
-		cache.release(searcher);
-
 	}
 
 	@Override

@@ -224,7 +224,7 @@ public class Localization {
 				return new Title(canonicalNamespaces.get(ns),parts[1]);
 			// check lang namespaces
 			Hashtable<String,Integer> map = namespaces.get(lang);
-			if(map.containsKey(ns))
+			if(map!=null && map.containsKey(ns))
 				return new Title(map.get(ns),parts[1]);
 		}
 		// not recognized namespace, using main

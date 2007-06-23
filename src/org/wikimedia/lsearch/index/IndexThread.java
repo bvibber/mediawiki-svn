@@ -321,7 +321,7 @@ public class IndexThread extends Thread {
 				IndexReader reader = IndexReader.open(iid.getImportPath());
 				if(!reader.isOptimized()){
 					reader.close();
-					log.debug("Optimizing "+iid);
+					log.info("Optimizing "+iid);
 					long start = System.currentTimeMillis();
 					Transaction trans = new Transaction(iid);
 					trans.begin();
