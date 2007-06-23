@@ -291,6 +291,7 @@ function __autoload($className) {
 		'Report' => 'includes/reports/Report.php',
 		'ReportCache' => 'includes/reports/ReportCache.php',
 		'ReportPager' => 'includes/reports/ReportPager.php',
+		'CachedReportPager' => 'includes/reports/CachedReportPager.php',
 		'RedirectReport' => 'includes/reports/RedirectReport.php',
 
 		# API

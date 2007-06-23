@@ -136,7 +136,9 @@ abstract class Report extends SpecialPage {
 			)
 		);
 		# Report results
-		$pager = new ReportPager( $this );
+		$pager = $this->getPager();
+		if( $pager instanceof CachedReportPager )
+			$wgOut->addHtml( '<div class="mw-report-cached">' . wfMsgExt( 'report-cached', 'parse' ) . '</div>' );
 		if( ( $count = $pager->getNumRows() ) > 0 ) {
 			#$wgOut->addHtml( '<p>' . wfMsgHtml( 'report-num-results', $wgLang->formatNum( $count ) ) . '</p>' );
 			$wgOut->addHtml( $pager->getNavigationBar() );
@@ -145,6 +147,18 @@ abstract class Report extends SpecialPage {
 		} else {
 			$wgOut->addHtml( '<p>' . wfMsgHtml( 'report-no-results' ) . '</p>' );
 		}
+	}
+	
+	/**
+	 * Get an appropriate pager for this report
+	 *
+	 * @return ReportPager
+	 */
+	private function getPager() {
+		global $wgMiserMode;
+		return $wgMiserMode && $this->isCacheable()
+			? new CachedReportPager( $this )
+			: new ReportPager( $this );
 	}
 	
 	/**

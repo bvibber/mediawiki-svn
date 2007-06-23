@@ -83,7 +83,7 @@ class ReportPager extends IndexPager {
 	 * Loop through the results and do a batch existence
 	 * check on all titles
 	 */
-	private function preprocessResults() {
+	protected function preprocessResults() {
 		if( $this->mResult->numRows() > 0 ) {
 			$batch = new LinkBatch();
 			while( $row = $this->mResult->fetchObject() )
