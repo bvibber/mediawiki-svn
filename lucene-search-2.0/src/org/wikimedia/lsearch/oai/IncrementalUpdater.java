@@ -193,8 +193,10 @@ public class IncrementalUpdater {
 							int queueSize = 0;
 							do{
 								queueSize = messenger.getIndexerQueueSize(iid.getIndexHost());
-								if(queueSize >= maxQueueSize)
+								if(queueSize >= maxQueueSize){
+									log.info("Remote queue is "+queueSize+", sleeping for 5s");
 									Thread.sleep(5000); // sleep five seconds then retry
+								}
 							} while(queueSize >= maxQueueSize);
 
 							log.info(iid+": Sending "+records.size()+" records to indexer");

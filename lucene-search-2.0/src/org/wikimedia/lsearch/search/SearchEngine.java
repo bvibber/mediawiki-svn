@@ -105,7 +105,7 @@ public class SearchEngine {
 			NamespaceFilterWrapper localfilter = filter;
 			if(iid.isMainsplit() && iid.isMainPart())
 				localfilter = null;
-			else if(iid.isNssplit() && !iid.isLogical() && iid.getNamespaceSet().size()==1)
+			else if(iid.isNssplit() && !iid.isLogical() && iid.getNamespaceSet().size()==1 && !iid.getNamespaceSet().contains("<default>"))
 				localfilter = null;
 			if(localfilter != null)
 				log.info("Using local filter: "+localfilter);

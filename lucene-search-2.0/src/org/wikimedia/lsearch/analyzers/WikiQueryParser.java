@@ -21,6 +21,7 @@ import org.apache.lucene.search.WildcardQuery;
 import org.apache.lucene.search.spans.SpanNearQuery;
 import org.apache.lucene.search.spans.SpanQuery;
 import org.apache.lucene.search.spans.SpanTermQuery;
+import org.mediawiki.importer.ExactListFilter;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.search.NamespaceFilter;
@@ -78,7 +79,6 @@ public class WikiQueryParser {
 	public static float TITLE_ALIAS_BOOST = 0.2f;
 	public static float STEM_TITLE_BOOST = 2;	
 	public static float STEM_TITLE_ALIAS_BOOST = 0.4f;
-	public static float REDIRECT_BOOST = 0.2f;
 	public static float ALT_TITLE_BOOST = 2;
 	public static float ALT_TITLE_ALIAS_BOOST = 0.4f;
 	public static float KEYWORD_BOOST = 0.02f;
@@ -296,7 +296,7 @@ public class WikiQueryParser {
 				continue; // ignore whitespaces
 			
 			// pluses and minuses, underscores can be within words, *,? are for wildcard queries
-			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_' || ch=='*' || ch=='?'){
+			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_' || ch=='*'){
 				buffer[length++] = ch;
 			} else{
 				cur--; // position before the nonletter character
@@ -396,13 +396,13 @@ public class WikiQueryParser {
 	/** Make a lucene term from string */
 	private Term makeTerm(String t){
 		if(field == null)
-			return new Term(defaultField,t);
+			return new Term(defaultField,builder.isExactCase()? t : t.toLowerCase());
 		else if(!field.equals("incategory") && 
 				(namespacePolicy == NamespacePolicy.IGNORE || 
 						namespacePolicy == NamespacePolicy.REWRITE))
 			return new Term(defaultField,t);
 		else if(field.equals("incategory"))
-			return new Term("category",t);
+			return new Term("category",builder.isExactCase()? t : t.toLowerCase());
 		else
 			return new Term(field,t);
 	}
@@ -664,7 +664,7 @@ public class WikiQueryParser {
 		
 		// check for wildcard seaches, they are also not analyzed/stemmed, only for titles
 		// wildcard signs are allowed only at the end of the word, minimum one letter word
-		if(length>1 && Character.isLetter(buffer[0]) && (buffer[length-1]=='*' || buffer[length-1]=='?') &&
+		if(length>1 && Character.isLetter(buffer[0]) && buffer[length-1]=='*' &&
 				defaultField.equals(fields.title())){
 			Query ret = new WildcardQuery(makeTerm());
 			ret.setBoost(defaultBoost);

@@ -208,7 +208,7 @@ public class UpdateThread extends Thread {
 				searchpath.mkdir();
 
 			// check if updated index is a valid one (throws an exception on error)
-			SearcherCache.SearcherPool pool = new SearcherCache.SearcherPool(iid,li.path); 
+			SearcherCache.SearcherPool pool = new SearcherCache.SearcherPool(iid,li.path,cache.getSearchPoolSize()); 
 			
 			// refresh the symlink
 			command = "/bin/rm -rf "+iid.getSearchPath();
