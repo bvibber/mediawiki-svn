@@ -1593,7 +1593,9 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'rclsub'                          => '(to pages linked from "$1")',
 'newpages'                        => 'New pages',
 'newpages-summary'                => '', # only translate this message to other languages if you have to change it
+'newpages-legend' => 'Find new pages',
 'newpages-username'               => 'Username:',
+'newpages-no-results' => 'There are no new pages matching the selected criteria.',
 'ancientpages'                    => 'Oldest pages',
 'ancientpages-summary'            => '', # only translate this message to other languages if you have to change it
 'intl'                            => 'Interlanguage links',
@@ -2841,6 +2843,12 @@ $1',
 'imgmultigotopre'    => 'Go to page',
 'imgmultigotopost'   => '', # only translate this message to other languages if you have to change it
 'imgmultiparseerror' => 'The image file appears to be corrupted or incorrect, so {{SITENAME}} cannot retrieve a list of pages.',
+
+# General-purpose pager links
+'paging-next' => 'next',
+'paging-prev' => 'previous',
+'paging-first' => 'first',
+'paging-last' => 'last',
 
 # Table pager
 'ascending_abbrev'         => 'asc',

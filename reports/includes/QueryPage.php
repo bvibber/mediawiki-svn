@@ -29,12 +29,6 @@ $wgQueryPages = array(
 	array( 'MostrevisionsPage',             'Mostrevisions'                 ),
 	array( 'FewestrevisionsPage',           'Fewestrevisions'               ),
 	array( 'NewPagesPage',                  'Newpages'                      ),
-	#
-	array( 'UncategorizedCategoriesPage',   'Uncategorizedcategories'       ),
-	array( 'UncategorizedPagesPage',        'Uncategorizedpages'            ),
-	array( 'UncategorizedImagesPage',       'Uncategorizedimages' 			),
-	array( 'UncategorizedTemplatesPage',	'Uncategorizedtemplates'		),
-	#
 	array( 'UnusedCategoriesPage',          'Unusedcategories'              ),
 	array( 'UnusedimagesPage',              'Unusedimages'                  ),
 	array( 'WantedCategoriesPage',          'Wantedcategories'              ),
