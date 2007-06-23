@@ -40,40 +40,36 @@ class ReportPager extends IndexPager {
 		$fname = get_class( $this->report ) . '::doQuery';
 		wfProfileIn( $fname );
 		
-		$desc = $this->mIsBackwards == $this->mDefaultDirection;
-		$limit = $this->mLimit + 1;
-		
-		$sql = $this->report->getBaseSql( $this->mDb );
-		$indexField = $this->report->getPagingColumn();
-		$where = array();
-		
-		# Namespace filter
+		# Base conditions
+		$conds = array();
 		if( ( $ns = $this->getNamespace() ) !== false )
-			$where[] = $this->report->getNamespaceClause( $ns );
-		
-		# Redirect filter
+			$conds[] = $this->report->getNamespaceClause( $ns );
 		if( !$this->getRedirects() )
-			$where[] = $this->report->getRedirectClause();
-		
-		# Paging, indexing and the guts of the Pager logic
-		$options = ' ORDER BY ' . $this->mIndexField;
+			$conds[] = $this->report->getRedirectClause();
+			
+		# Paging conditions
 		if( $this->mDefaultDirection ) {
-			# Descending
-			$options .= ' DESC';
-			$op = '<';
+			# DESC
+			$op = ' < ';
+			$options[] = 'ORDER BY ' . $this->report->getPagingColumn() . ' DESC';
 		} else {
-			# Ascending
-			$op = '>';
+			# ASC
+			$op = ' > ';
+			$options[] = 'ORDER BY ' . $this->report->getPagingColumn();
 		}
-		$options .= ' LIMIT ' . $limit;
-		$where[] = "{$indexField} {$op} " . $this->mDb->addQuotes( $this->mOffset );
+		$options[] = 'LIMIT ' . ( $this->mLimit + 1 );
+		$conds[] = $this->report->getPagingColumn() . $op . $this->mDb->addQuotes( $this->mOffset );
 		
-		$sql .= ' WHERE ' . implode( ' AND ', $where );
-		$res = $this->mDb->query( $sql, $fname );
-		$this->mResult = new ResultWrapper( $this->mDb, $res );
+		$sql = $this->report->getBaseSql( $this->mDb )
+			. ' WHERE ' . implode( ' AND ', $conds )
+			. ' ' . implode( ' ', $options );
+		$this->mResult = new ResultWrapper(
+			$this->mDb,
+			$this->mDb->query( $sql, $fname )
+		);
 		$this->preprocessResults();
 
-		$this->extractResultInfo( $this->mOffset, $limit, $this->mResult );
+		$this->extractResultInfo( $this->mOffset, $this->mLimit + 1, $this->mResult );
 		$this->mQueryDone = true;
 
 		wfProfileOut( $fname );
@@ -120,16 +116,29 @@ class ReportPager extends IndexPager {
 			. implode( ' | ', $this->getLimitLinks() ) . ' )';
 	}
 	
+	/**
+	 * Return start-of-list markup
+	 *
+	 * @return string
+	 */
 	public function getStartBody() {
 		return "<ul>\n";
 	}
 	
+	/**
+	 * Return end-of-list markup
+	 *
+	 * @return string
+	 */
 	public function getEndBody() {
 		return "</ul>\n";
 	}
 	
 	/**
-	 blah
+	 * Get the namespace to filter results for
+	 * (Returns false if all namespaces should be used)
+	 *
+	 * @return mixed
 	 */
 	public function getNamespace() {
 		if( $this->report->allowNamespaceFilter() ) {
