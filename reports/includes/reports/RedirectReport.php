@@ -30,7 +30,7 @@ class RedirectReport extends Report {
 	 * @return bool
 	 */
 	public function allowRedirectFilter() {
-		return true; // fixme!
+		return false;
 	}
 	
 	/**
