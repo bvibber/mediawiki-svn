@@ -1183,7 +1183,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '77';
+$wgStyleVersion = '78';
 
 
 # Server-side caching:
@@ -2646,10 +2646,10 @@ $wgParserTestFiles = array(
 $wgBreakFrames = false;
 
 /**
- * Set this to an array of special page names to prevent 
- * maintenance/updateSpecialPages.php from updating those pages.
+ * Set this to an array of report names to disable
+ * cache updates for those pages
  */
-$wgDisableQueryPageUpdate = false;
+$wgDisabledReports = array();
 
 /**
  * Set this to false to disable cascading protection

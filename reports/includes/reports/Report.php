@@ -33,6 +33,16 @@ abstract class Report extends SpecialPage {
 	}
 	
 	/**
+	 * Are updates for this report disabled?
+	 *
+	 * @return bool
+	 */
+	public function isDisabled() {
+		global $wgDisabledReports;
+		return in_array( $this->getName(), $wgDisabledReports );
+	}
+	
+	/**
 	 * Is it appropriate to allow filtering redirects?
 	 *
 	 * @return bool
@@ -128,6 +138,12 @@ abstract class Report extends SpecialPage {
 	public function execute( $par = false ) {
 		global $wgOut, $wgRequest, $wgLang;
 		$this->setHeaders();
+		$pager = $this->getPager();
+		if( $this->isDisabled() ) {
+			$wgOut->addHtml( '<div class="mw-report-disabled">' . wfMsgExt( 'report-disabled', 'parse' ) . '</div>' );
+		} elseif( $pager instanceof CachedReportPager ) {
+			$wgOut->addHtml( $this->getCacheInfo() );
+		}
 		# Filtering UI
 		$wgOut->addHtml(
 			$this->buildFilterUI(
@@ -136,11 +152,7 @@ abstract class Report extends SpecialPage {
 			)
 		);
 		# Report results
-		$pager = $this->getPager();
-		if( $pager instanceof CachedReportPager )
-			$wgOut->addHtml( '<div class="mw-report-cached">' . wfMsgExt( 'report-cached', 'parse' ) . '</div>' );
 		if( ( $count = $pager->getNumRows() ) > 0 ) {
-			#$wgOut->addHtml( '<p>' . wfMsgHtml( 'report-num-results', $wgLang->formatNum( $count ) ) . '</p>' );
 			$wgOut->addHtml( $pager->getNavigationBar() );
 			$wgOut->addHtml( $pager->getBody() );
 			$wgOut->addHtml( $pager->getNavigationBar() );
@@ -221,6 +233,24 @@ abstract class Report extends SpecialPage {
 			}
 		}
 		$html .= Xml::closeElement( 'select' );
+		return $html;
+	}
+	
+	/**
+	 * Build a box containing information about when the
+	 * cache for this report was last updated
+	 *
+	 * @return string
+	 */
+	private function getCacheInfo() {
+		global $wgLang;
+		$html  = '<div class="mw-report-cached">';
+		if( ( $ts = ReportCache::getUpdateTime( $this ) ) !== false ) {
+			$html .= wfMsgExt( 'report-cached-timestamp', 'parse', $wgLang->timeAndDate( $ts, true ) );
+		} else {
+			$html .= wfMsgExt( 'report-cached', 'parse' );
+		}
+		$html .= '</div>';
 		return $html;
 	}
 	

@@ -1613,6 +1613,22 @@ div.mw-lag-warn-high {
 	background-color: #CC9999;
 }
 
+/* Report cache information and disabled warnings */
+div.mw-report-cached,
+div.mw-report-disabled {
+	font-weight: bold;
+	text-align: center;
+	padding: 2px;
+}
+div.mw-report-cached {
+	border: 1px solid #FFFF99;
+	background-color: #FFFFCC;
+}
+div.mw-report-disabled {
+	border: 2px solid #CC6666;
+	background-color: #CC9999;
+}
+
 /* Recreating-deleted-page warning and log entries */
 div#mw-recreate-deleted-warn {
 	padding: 3px;

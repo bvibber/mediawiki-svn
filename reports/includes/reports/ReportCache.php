@@ -49,6 +49,16 @@ class ReportCache {
 				);
 			}
 			$dbr->freeResult( $res );
+			# Update the cache state table
+			$dbw->replace(
+				'reportcache_info',
+				array( 'rci_report' ),
+				array(
+					'rci_report' => $report->getName(),
+					'rci_updated' => $dbw->timestamp(),
+				),
+				__METHOD__
+			);
 			# Callback?
 			if( is_callable( $namespaceCallback ) )
 				call_user_func( $namespaceCallback, $report, $namespace, $rows );
@@ -73,6 +83,29 @@ class ReportCache {
 			}
 		}
 		return $namespaces;
+	}
+	
+	/**
+	 * Get the timestamp of the last update to a cached
+	 * result set, or false if not available
+	 *
+	 * @param Report $report Report to check
+	 * @return mixed
+	 */
+	public static function getUpdateTime( $report ) {
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			'reportcache_info',
+			'*',
+			array( 'rci_report' => $report->getName() ),
+			__METHOD__
+		);
+		if( $dbr->numRows( $res ) > 0 ) {
+			$row = $dbr->fetchObject( $res );
+			return wfTimestamp( TS_MW, $row->rci_updated );
+		} else {
+			return false;
+		}
 	}
 
 	/**

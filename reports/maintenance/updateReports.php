@@ -21,8 +21,13 @@ echo( "Updating report cache\n\n" );
 
 foreach( $reports as $report ) {
 	if( class_exists( $report ) ) {
-		echo( "{$report}:\n" );
-		ReportCache::recache( new $report, $limit, 'updateReportsCallback' );
+		$obj = new $report;
+		if( !$obj->isDisabled() ) {
+			echo( "{$report}:\n" );
+			ReportCache::recache( $obj, $limit, 'updateReportsCallback' );
+		} else {
+			echo( "{$report} is disabled\n" );
+		}
 	} else {
 		echo( "Unknown report '{$report}'\n" );
 	}
