@@ -2902,6 +2902,19 @@ Try normal preview.',
 'lag-warn-high'   => 'Due to high database server lag, changes newer than $1 seconds
 may not be shown in this list.',
 
+# Reports
+'report-paging-first' => 'first',
+'report-paging-last' => 'last',
+'report-paging-next' => 'next',
+'report-paging-prev' => 'previous',
+'report-num-results' => 'Showing $1 results:',
+'report-no-results' => 'There are no results for this report.',
+'report-filter-legend' => 'Filter results',
+'report-filter-namespace' => 'Namespace:',
+'report-filter-namespace-all' => '(all)',
+'report-filter-redirects' => 'Include redirect pages',
+'report-filter-submit' => 'Go',
+
 );
 
 ?>

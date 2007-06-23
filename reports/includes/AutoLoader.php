@@ -285,6 +285,11 @@ function __autoload($className) {
 		# Languages
 		'Language' => 'languages/Language.php',
 		'RandomPage' => 'includes/SpecialRandompage.php',
+		
+		# Reports
+		'Report' => 'includes/reports/Report.php',
+		'ReportPager' => 'includes/reports/ReportPager.php',
+		'RedirectReport' => 'includes/reports/RedirectReport.php',
 
 		# API
 		'ApiBase' => 'includes/api/ApiBase.php',
