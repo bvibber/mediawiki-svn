@@ -288,6 +288,7 @@ function __autoload($className) {
 		
 		# Reports
 		'Report' => 'includes/reports/Report.php',
+		'ReportCache' => 'includes/reports/ReportCache.php',
 		'ReportPager' => 'includes/reports/ReportPager.php',
 		'RedirectReport' => 'includes/reports/RedirectReport.php',
 

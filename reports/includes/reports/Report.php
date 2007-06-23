@@ -211,26 +211,16 @@ abstract class Report extends SpecialPage {
 	}
 	
 	/**
-	 * Encode a set of parameters for insertion
-	 * into the cache
+	 * Get a list of all reports
 	 *
-	 * @param array $params
-	 * @return string
-	 */
-	public static function encodeParams( $params ) {
-		return serialize( $params );
-	}
-
-	/**
-	 * Decode a set of parameters from the cache
-	 *
-	 * @param string $params
 	 * @return array
 	 */
-	public static function decodeParams( $params ) {
-		return unserialize( $params );
+	public static function getReports() {
+		return array(
+			'RedirectReport',
+		);
 	}
-
+	
 }
 
 ?>
