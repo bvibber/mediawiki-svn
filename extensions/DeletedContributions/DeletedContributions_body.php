@@ -1,8 +1,6 @@
 <?php
 /**
  * Extension based on SpecialContributions for arhived revisions
- * Modifications made to SpecialContributions.php by Aaron Schulz
- * Key code snipets from HideRevision.php also modified for use here
  */
 
 class DeletedContribsPager extends IndexPager {

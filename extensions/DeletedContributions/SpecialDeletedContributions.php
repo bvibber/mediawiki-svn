@@ -1,9 +1,16 @@
 <?php
 /**
- * Extension based on SpecialContributions for arhived revisions
- * Modifications made to SpecialContributions.php by Aaron Schulz
- * Key code snipets from HideRevision.php also modified for use here
+ @ Extension based on SpecialContributions for arhived revisions
+ @ Modifications made to SpecialContributions.php
+ @ copyright © 2007 Aaron Schulz
  */
+
+$wgExtensionCredits['specialpage'][] = array(
+	'author' => 'Aaron Schulz',
+	'name' => 'Deleted user contributions',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:DeletedContributions',
+	'description' => 'Gives sysops the ability to browse a user\'s deleted edits.'
+);
 
 # Internationalisation
 $wgExtensionFunctions[] = 'efLoadDeletedContribsMessages';
