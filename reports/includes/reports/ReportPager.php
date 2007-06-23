@@ -69,7 +69,6 @@ class ReportPager extends IndexPager {
 		$where[] = "{$indexField} {$op} " . $this->mDb->addQuotes( $this->mOffset );
 		
 		$sql .= ' WHERE ' . implode( ' AND ', $where );
-		echo( '<pre>' . $sql . '</pre>' );
 		$res = $this->mDb->query( $sql, $fname );
 		$this->mResult = new ResultWrapper( $this->mDb, $res );
 		$this->preprocessResults();
