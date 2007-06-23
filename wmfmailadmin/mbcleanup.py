@@ -27,9 +27,10 @@ def get_mailboxes(mbroot):
     mailboxes = set()
     for domain in os.listdir(mbroot):
         domaindir = os.path.join(mbroot, domain)
-        if os.path.isdir(domaindir):
+        if not domain.startswith('.') and os.path.isdir(domaindir):
             for localpart in os.listdir(domaindir):
-                if os.path.isdir(os.path.join(domaindir, localpart)):
+                if not localpart.startswith('.') and not localpart.find('@') and \
+                    os.path.isdir(os.path.join(domaindir, localpart)):
                     mailboxes.add((unicode(domain), unicode(localpart)))
 
     return mailboxes
@@ -42,7 +43,7 @@ def move_mailboxes(mbroot, mbbackuproot, mailboxes):
     for mb in mailboxes:
         date = time.strftime('%Y%m%d%H%M')
         oldpath = os.path.join(mbroot, mb[0], mb[1])
-        newpath = os.path.join(mbbackuproot, mb[0], mb[1]) + '.' + date
+        newpath = os.path.join(mbbackuproot, mb[0], mb[1]) + '@' + date
         print 'Moving', oldpath, '=>', newpath
         os.makedirs(newpath)
         os.rename(oldpath, newpath)
