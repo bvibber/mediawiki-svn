@@ -1,4 +1,69 @@
 <?php
+
+/**
+ * Special page lists new pages on the wiki
+ *
+ * @addtogroup SpecialPage
+ */
+class SpecialNewPages extends SpecialPage {
+
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		parent::__construct( 'Newpages' );
+	}
+	
+	/**
+	 * Main execution function
+	 *
+	 * @param mixed $par Parameter passed to the page
+	 */
+	public function execute( $par = false ) {
+		global $wgOut, $wgRequest;
+		$this->setHeaders();
+		
+		$namespace = $wgRequest->getVal( 'namespace', NS_MAIN );
+		$username = $wgRequest->getText( 'username' );
+		
+		$wgOut->addHtml( $this->buildFilterUI( $namespace, $username ) );
+		
+		$pager = new NewPagesPager( $namespace, $username );
+		if( $pager->getNumRows() > 0 ) {
+			$wgOut->addHtml(
+				$pager->getNavigationBar()
+				. $pager->getBody()
+				. $pager->getNavigationBar()
+			);
+		} else {
+			# ???
+		}		
+	}
+	
+	/**
+	 * Build the namespace/username filtering from
+	 *
+	 * @param mixed $namespace
+	 * @param mixed $username
+	 * @return string
+	 */
+	private function buildFilterUI( $namespace, $username ) {
+		$self = SpecialPage::getTitleFor( 'Newpages' );
+		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		# Namespace selector
+		$form .= '<table><tr><td align="right">' . Xml::label( wfMsg( 'namespace' ), 'namespace' ) . '</td>';
+		$form .= '<td>' . Xml::namespaceSelector( $namespace, 'all' ) . '</td></tr>';
+		# Username filter
+		$form .= '<tr><td align="right">' . Xml::label( wfMsg( 'newpages-username' ), 'mw-np-username' ) . '</td>';
+		$form .= '<td>' . Xml::input( 'username', 30, $username, array( 'id' => 'mw-np-username' ) ) . '</td></tr>';
+		$form .= '<tr><td></td><td>' . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . '</td></tr></table>';
+		$form .= '</form>';
+		return $form;
+	}
+
+}
+
+
 /**
  *
  * @addtogroup SpecialPage
@@ -8,7 +73,7 @@
  * implements Special:Newpages
  * @addtogroup SpecialPage
  */
-class NewPagesPage extends QueryPage {
+/*class NewPagesPage extends QueryPage {
 
 	var $namespace;
 	var $username = '';
@@ -42,38 +107,6 @@ class NewPagesPage extends QueryPage {
 			: '';
 	}
 
-	function getSQL() {
-		global $wgUser, $wgUseRCPatrol;
-		$usepatrol = ( $wgUseRCPatrol && $wgUser->isAllowed( 'patrol' ) ) ? 1 : 0;
-		$dbr = wfGetDB( DB_SLAVE );
-		list( $recentchanges, $page ) = $dbr->tableNamesN( 'recentchanges', 'page' );
-
-		$nsfilter = $this->makeNamespaceWhere();
-		$uwhere = $this->makeUserWhere( $dbr );
-
-		# FIXME: text will break with compression
-		return
-			"SELECT 'Newpages' as type,
-				rc_namespace AS namespace,
-				rc_title AS title,
-				rc_cur_id AS cur_id,
-				rc_user AS \"user\",
-				rc_user_text AS user_text,
-				rc_comment as \"comment\",
-				rc_timestamp AS timestamp,
-				rc_timestamp AS value,
-				'{$usepatrol}' as usepatrol,
-				rc_patrolled AS patrolled,
-				rc_id AS rcid,
-				page_len as length,
-				page_latest as rev_id
-			FROM $recentchanges,$page
-			WHERE rc_cur_id=page_id AND rc_new=1
-			{$nsfilter}
-			AND page_is_redirect = 0
-			{$uwhere}";
-	}
-	
 	function preprocessResults( &$dbo, &$res ) {
 		# Do a batch existence check on the user and talk pages
 		$linkBatch = new LinkBatch();
@@ -87,13 +120,6 @@ class NewPagesPage extends QueryPage {
 			$dbo->dataSeek( $res, 0 );
 	}
 
-	/**
-	 * Format a row, providing the timestamp, links to the page/history, size, user links, and a comment
-	 *
-	 * @param $skin Skin to use
-	 * @param $result Result row
-	 * @return string
-	 */
 	function formatResult( $skin, $result ) {
 		global $wgLang, $wgContLang;
 		$dm = $wgContLang->getDirMark();
@@ -109,12 +135,6 @@ class NewPagesPage extends QueryPage {
 		return "{$time} {$dm}{$plink} ({$hist}) {$dm}[{$length}] {$dm}{$ulink} {$comment}";
 	}
 
-	/**
-	 * Should a specific result row provide "patrollable" links?
-	 *
-	 * @param $result Result row
-	 * @return bool
-	 */
 	function patrollable( $result ) {
 		global $wgUser, $wgUseRCPatrol;
 		return $wgUseRCPatrol && $wgUser->isAllowed( 'patrol' ) && !$result->patrolled;
@@ -132,11 +152,6 @@ class NewPagesPage extends QueryPage {
 		return parent::feedItemDesc( $row );
 	}
 	
-	/**
-	 * Show a form for filtering namespace and username
-	 *
-	 * @return string
-	 */	
 	function getPageHeader() {
 		$self = SpecialPage::getTitleFor( $this->getName() );
 		$form = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
@@ -152,21 +167,16 @@ class NewPagesPage extends QueryPage {
 		return $form;
 	}
 	
-	/**
-	 * Link parameters
-	 *
-	 * @return array
-	 */
 	function linkParameters() {
 		return( array( 'namespace' => $this->namespace, 'username' => $this->username ) );
 	}
 	
-}
+}*/
 
 /**
  * constructor
  */
-function wfSpecialNewpages($par, $specialPage) {
+/*function wfSpecialNewpages($par, $specialPage) {
 	global $wgRequest, $wgContLang;
 
 	list( $limit, $offset ) = wfCheckLimits();
@@ -174,7 +184,7 @@ function wfSpecialNewpages($par, $specialPage) {
 	$username = '';
 
 	if ( $par ) {
-		$bits = preg_split( '/\s*,\s*/', trim( $par ) );
+		$bits = preg_split( '/\s*,\s*'/', trim( $par ) );
 		foreach ( $bits as $bit ) {
 			if ( 'shownav' == $bit )
 				$shownavigation = true;
@@ -207,6 +217,6 @@ function wfSpecialNewpages($par, $specialPage) {
 
 	if ( ! $npp->doFeed( $wgRequest->getVal( 'feed' ), $limit ) )
 		$npp->doQuery( $offset, $limit, $shownavigation );
-}
+}*/
 
 ?>

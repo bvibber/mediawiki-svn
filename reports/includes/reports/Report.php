@@ -88,6 +88,18 @@ abstract class Report extends SpecialPage {
 	public abstract function getBaseSql( $dbr );
 
 	/**
+	 * Return additional WHERE clauses and other conditions
+	 * to which the paging clauses will be appened when
+	 * the report runs live
+	 *
+	 * @param Database $dbr Database object being queried
+	 * @return array
+	 */
+	public function getExtraConditions( $dbr ) {
+		return array();
+	}
+
+	/**
 	 * Get the column used for paging when the report is run live
 	 *
 	 * @return string
@@ -283,6 +295,7 @@ abstract class Report extends SpecialPage {
 		return array(
 			'RedirectReport',
 			'ShortPagesReport',
+			'UncategorisedPagesReport',
 		);
 	}
 	

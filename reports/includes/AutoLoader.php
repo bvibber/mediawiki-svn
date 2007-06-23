@@ -197,7 +197,8 @@ function __autoload($className) {
 		'FewestrevisionsPage' => 'includes/SpecialFewestrevisions.php',
 		'MovePageForm' => 'includes/SpecialMovepage.php',
 		'NewbieContributionsPage' => 'includes/SpecialNewbieContributions.php',
-		'NewPagesPage' => 'includes/SpecialNewpages.php',
+		'SpecialNewPages' => 'includes/SpecialNewpages.php',
+		'NewPagesPager' => 'includes/NewPagesPager.php',
 		'SpecialPage' => 'includes/SpecialPage.php',
 		'UnlistedSpecialPage' => 'includes/SpecialPage.php',
 		'IncludableSpecialPage' => 'includes/SpecialPage.php',
@@ -292,6 +293,7 @@ function __autoload($className) {
 		'CachedReportPager' => 'includes/reports/CachedReportPager.php',
 		'ShortPagesReport' => 'includes/reports/ShortPagesReport.php',
 		'RedirectReport' => 'includes/reports/RedirectReport.php',
+		'UncategorisedPagesReport' => 'includes/reports/UncategorisedPagesReport.php',
 
 		# API
 		'ApiBase' => 'includes/api/ApiBase.php',

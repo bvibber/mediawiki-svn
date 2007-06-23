@@ -41,7 +41,7 @@ class ReportPager extends IndexPager {
 		wfProfileIn( $fname );
 		
 		# Base conditions
-		$conds = array();
+		$conds = $this->report->getExtraConditions( $this->mDb );
 		if( ( $ns = $this->getNamespace() ) !== false )
 			$conds[] = $this->report->getNamespaceClause( $ns );
 		if( !$this->getRedirects() || $this->report->excludeRedirects() )
