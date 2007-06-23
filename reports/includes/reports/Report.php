@@ -112,6 +112,16 @@ abstract class Report extends SpecialPage {
 	}
 
 	/**
+	 * Get ORDER BY clauses to be applied when the
+	 * report is run live
+	 *
+	 * @return array
+	 */
+	public function getOrderingClauses() {
+		return array();
+	}
+
+	/**
 	 * Get the column used for paging when the report is run live
 	 *
 	 * @return string
@@ -141,16 +151,6 @@ abstract class Report extends SpecialPage {
 		return 'page_is_redirect = 0';
 	}
 	
-	/**
-	 * Get ORDER BY clauses to be applied when the
-	 * report is run live
-	 *
-	 * @return array
-	 */
-	public function getOrderingClauses() {
-		return array();
-	}
-
 	/**
 	 * Given a result object, extract additional parameters
 	 * as a dictionary for later use
