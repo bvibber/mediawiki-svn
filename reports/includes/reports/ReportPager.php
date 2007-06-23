@@ -52,7 +52,7 @@ class ReportPager extends IndexPager {
 			$where[] = $this->report->getNamespaceClause( $ns );
 		
 		# Redirect filter
-		if( $this->report->allowRedirectFilter() && $this->getRedirects() )
+		if( $this->report->allowRedirectFilter() && !$this->getRedirects() )
 			$where[] = $this->report->getRedirectClause();
 		
 		# Paging, indexing and the guts of the Pager logic
@@ -69,6 +69,7 @@ class ReportPager extends IndexPager {
 		$where[] = "{$indexField} {$op} " . $this->mDb->addQuotes( $this->mOffset );
 		
 		$sql .= ' WHERE ' . implode( ' AND ', $where );
+		echo( '<pre>' . $sql . '</pre>' );
 		$res = $this->mDb->query( $sql, $fname );
 		$this->mResult = new ResultWrapper( $this->mDb, $res );
 		$this->preprocessResults();

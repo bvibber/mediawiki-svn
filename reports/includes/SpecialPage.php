@@ -137,7 +137,6 @@ class SpecialPage
 		'Userrights'                => array( 'SpecialPage', 'Userrights', 'userrights' ),
 		'MIMEsearch'                => array( 'SpecialPage', 'MIMEsearch' ),
 		'Unwatchedpages'            => array( 'SpecialPage', 'Unwatchedpages', 'unwatchedpages' ),
-		#'Listredirects'             => array( 'SpecialPage', 'Listredirects' ),
 		'Listredirects'				=> 'RedirectReport',
 		'Revisiondelete'            => array( 'SpecialPage', 'Revisiondelete', 'deleterevision' ),
 		'Unusedtemplates'           => array( 'SpecialPage', 'Unusedtemplates' ),
