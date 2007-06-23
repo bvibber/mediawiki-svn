@@ -48,6 +48,27 @@ class UncategorisedPagesReport extends Report {
 			NS_CATEGORY
 		);
 	}
+
+	/**
+	 * Is there a more appropriate title to show when
+	 * a particular namespace is selected? Return the
+	 * message name here
+	 *
+	 * @param int $namespace
+	 * @return string
+	 */
+	public function getNamespaceTitleVariant( $namespace ) {
+		switch( $namespace ) {
+			case NS_IMAGE:
+				return 'uncategorizedimages';
+			case NS_TEMPLATE:
+				return 'uncategorizedtemplates';
+			case NS_CATEGORY:
+				return 'uncategorizedcategories';
+			default:
+				return false;
+		}
+	}
 	
 	/**
 	 * Return base SQL for the report

@@ -80,6 +80,18 @@ abstract class Report extends SpecialPage {
 	}
 	
 	/**
+	 * Is there a more appropriate title to show when
+	 * a particular namespace is selected? Return the
+	 * message name here
+	 *
+	 * @param int $namespace
+	 * @return string
+	 */
+	public function getNamespaceTitleVariant( $namespace ) {
+		return false;
+	}
+	
+	/**
 	 * Return base SQL for the report
 	 *
 	 * @param Database $dbr Database object being queried
@@ -169,6 +181,12 @@ abstract class Report extends SpecialPage {
 	public function execute( $par = false ) {
 		global $wgOut, $wgRequest, $wgLang;
 		$this->setHeaders();
+		# Per-namespace title variants
+		if( ( $ns = $wgRequest->getVal( 'namespace', false ) ) !== false ) {
+			if( ( $msg = $this->getNamespaceTitleVariant( $ns ) ) !== false )
+				$wgOut->setPageTitle( wfMsg( $msg ) );
+		}
+		# Cache information, etc.
 		$pager = $this->getPager();
 		if( $this->isDisabled() ) {
 			$wgOut->addHtml( '<div class="mw-report-disabled">' . wfMsgExt( 'report-disabled', 'parse' ) . '</div>' );
