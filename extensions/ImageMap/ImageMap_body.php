@@ -32,7 +32,7 @@ class ImageMap {
 	const NONE = 4;
 
 	static function render( $input, $params, $parser ) {
-		global $wgScriptPath, $wgUser, $wgImageMapAllowExternalLinks, $wgUrlProtocols, $wgNoFollowLinks;
+		global $wgScriptPath, $wgUser, $wgUrlProtocols, $wgNoFollowLinks;
 
 		$lines = explode( "\n", $input );
 
@@ -130,7 +130,7 @@ class ImageMap {
 				if (is_null($title))
 					return self::error('imagemap_invalid_title', $lineNum);
 				$alt = $title->getFullText();
-			} elseif ( $wgImageMapAllowExternalLinks && ( in_array( substr( $link , 1 , strpos($link, '//' )+1 ) , $wgUrlProtocols ) || in_array( substr( $link , 1 , strpos($link, ':' ) ) , $wgUrlProtocols ) ) ) {
+			} elseif ( in_array( substr( $link , 1 , strpos($link, '//' )+1 ) , $wgUrlProtocols ) || in_array( substr( $link , 1 , strpos($link, ':' ) ) , $wgUrlProtocols ) ) {
 				if ( preg_match( '/^ \[  ([^\s]*+)  \s  ([^\]]*+)  \] \w* $ /x', $link, $m ) ) {
 					$title = htmlspecialchars( $m[1] );
 					$alt = htmlspecialchars( trim( $m[2] ) );

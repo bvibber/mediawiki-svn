@@ -1,11 +1,5 @@
 <?php
 
-/**
- * Set this to true to enable extern links [http://www.example.com] as
- * link destination
- */
-$wgImageMapAllowExternalLinks = false;
-
 $wgExtensionFunctions[] = 'wfSetupImageMap';
 $wgAutoloadClasses['ImageMap'] = dirname(__FILE__).'/ImageMap_body.php';
 $wgExtensionCredits['parserhook']['ImageMap'] = array(
