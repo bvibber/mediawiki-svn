@@ -115,7 +115,7 @@ class SpecialPage
 		'Allpages'                  => array( 'IncludableSpecialPage', 'Allpages' ),
 		'Prefixindex'               => array( 'IncludableSpecialPage', 'Prefixindex' ) ,
 		'Ipblocklist'               => array( 'SpecialPage', 'Ipblocklist' ),
-		'Specialpages'              => array( 'UnlistedSpecialPage', 'Specialpages' ),
+		'Specialpages'              => 'SpecialSpecialPages',
 		'Contributions'             => array( 'SpecialPage', 'Contributions' ),
 		'Emailuser'                 => array( 'UnlistedSpecialPage', 'Emailuser' ),
 		'Whatlinkshere'             => array( 'UnlistedSpecialPage', 'Whatlinkshere' ),

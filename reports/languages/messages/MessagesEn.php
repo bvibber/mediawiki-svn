@@ -2903,6 +2903,7 @@ Try normal preview.',
 may not be shown in this list.',
 
 # Reports
+'specialpages-reports' => 'Report pages',
 'report-paging-first' => 'first',
 'report-paging-last' => 'last',
 'report-paging-next' => 'next',

@@ -1,59 +1,68 @@
 <?php
+
 /**
+ * Special page listing other special pages and reports
  *
  * @addtogroup SpecialPage
  */
+class SpecialSpecialPages extends SpecialPage {
 
-/**
- *
- */
-function wfSpecialSpecialpages() {
-	global $wgOut, $wgUser;
-
-	$wgOut->setRobotpolicy( 'index,nofollow' );
-	$sk = $wgUser->getSkin();
-
-	/** Pages available to all */
-	wfSpecialSpecialpages_gen( SpecialPage::getRegularPages(), 'spheading', $sk );
-
-	/** Restricted special pages */
-	wfSpecialSpecialpages_gen( SpecialPage::getRestrictedPages(), 'restrictedpheading', $sk );
-}
-
-/**
- * sub function generating the list of pages
- * @param $pages the list of pages
- * @param $heading header to be used
- * @param $sk skin object ???
- */
-function wfSpecialSpecialpages_gen($pages,$heading,$sk) {
-	global $wgOut, $wgSortSpecialPages;
-
-	if( count( $pages ) == 0 ) {
-		# Yeah, that was pointless. Thanks for coming.
-		return;
+	/**
+	 * Constructor
+	 */
+	public function __construct() {
+		parent::__construct( 'Specialpages' );
 	}
-
-	/** Put them into a sortable array */
-	$sortedPages = array();
-	foreach ( $pages as $page ) {
-		if ( $page->isListed() ) {
-			$sortedPages[$page->getDescription()] = $page->getTitle();
+	
+	/**
+	 * Main execution function
+	 *
+	 * @param mixed $par Parameters passed to the page
+	 */
+	public function execute( $par = false ) {
+		global $wgOut, $wgUser;
+		$this->setHeaders();
+		$skin = $wgUser->getSkin();
+		# Reports will be mixed in with "regular pages", so
+		# we'll fish these out into a separate list
+		$reports = array();
+		$normal = array();
+		foreach( SpecialPage::getRegularPages() as $page ) {
+			if( $page instanceof Report ) {
+				$reports[] = $page;
+			} else {
+				$normal[] = $page;
+			}
+		}
+		# Normal pages
+		$wgOut->addHtml( $this->buildList( $normal, 'spheading', $skin ) );
+		# Reports
+		$wgOut->addHtml( $this->buildList( $reports, 'specialpages-reports', $skin ) );
+		# Restricted pages
+		$wgOut->addHtml( $this->buildList( SpecialPage::getRestrictedPages(), 'restrictedpheading', $skin ) );
+	}
+	
+	/**
+	 * Build a sorted list of special pages
+	 *
+	 * @param array $pages Special pages
+	 * @param string $heading Heading message key
+	 * @param Skin $skin User skin
+	 * @return string
+	 */
+	private function buildList( $pages, $heading, $skin ) {
+		if( count( $pages ) > 0 ) {
+			foreach( $pages as $page )
+				$list[ $page->getDescription() ] = $skin->makeKnownLinkObj( $page->getTitle(),
+					htmlspecialchars( $page->getDescription() ) );
+			ksort( $list );
+			return "<h2>" . wfMsgHtml( $heading ) . "</h2>\n<ul>\n<li>"
+				. implode( "</li>\n<li>", array_values( $list ) ) . "</ul>\n";
+		} else {
+			return '';
 		}
 	}
 
-	/** Sort */
-	if ( $wgSortSpecialPages ) {
-		ksort( $sortedPages );
-	}
-
-	/** Now output the HTML */
-	$wgOut->addHTML( '<h2>' . wfMsgHtml( $heading ) . "</h2>\n<ul>" );
-	foreach ( $sortedPages as $desc => $title ) {
-		$link = $sk->makeKnownLinkObj( $title , htmlspecialchars( $desc ) );
-		$wgOut->addHTML( "<li>{$link}</li>\n" );
-	}
-	$wgOut->addHTML( "</ul>\n" );
 }
 
 ?>

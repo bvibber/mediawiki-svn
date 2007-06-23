@@ -202,6 +202,7 @@ function __autoload($className) {
 		'SpecialPage' => 'includes/SpecialPage.php',
 		'UnlistedSpecialPage' => 'includes/SpecialPage.php',
 		'IncludableSpecialPage' => 'includes/SpecialPage.php',
+		'SpecialSpecialPages' => 'includes/SpecialSpecialpages.php',
 		'PopularPagesPage' => 'includes/SpecialPopularpages.php',
 		'PreferencesForm' => 'includes/SpecialPreferences.php',
 		'SpecialPrefixindex' => 'includes/SpecialPrefixindex.php',
