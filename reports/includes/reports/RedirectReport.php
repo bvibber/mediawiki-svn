@@ -40,9 +40,7 @@ class RedirectReport extends Report {
 	 * @return mixed
 	 */
 	public function getApplicableNamespaces() {
-		return array(
-			NS_MAIN,
-		);
+		return false;
 	}
 	
 	/**

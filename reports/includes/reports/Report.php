@@ -47,7 +47,7 @@ abstract class Report extends SpecialPage {
 	 * @return bool
 	 */
 	public function allowNamespaceFilter() {
-		return $this->getApplicableNamespaces() !== false;
+		return true;
 	}
 	
 	/**
@@ -195,11 +195,16 @@ abstract class Report extends SpecialPage {
 		global $wgContLang;
 		$html  = Xml::openElement( 'select', array( 'id' => 'namespace', 'name' => 'namespace' ) );
 		$html .= Xml::option( wfMsg( 'report-filter-namespace-all' ), '' );
-		foreach( $this->getApplicableNamespaces() as $index ) {
-			$label = $index > 0
-				? $wgContLang->getFormattedNsText( $index )
-				: wfMsg( 'blanknamespace' );
-			$html .= Xml::option( $label, $index, $select !== '' && $select == $index );
+		$namespaces = $this->getApplicableNamespaces();
+		if( $namespaces === false )
+			$namespaces = array_keys( $wgContLang->getNamespaces() );
+		foreach( $namespaces as $index ) {
+			if( $index >= 0 ) {
+				$label = $index != 0
+					? $wgContLang->getFormattedNsText( $index )
+					: wfMsg( 'blanknamespace' );
+				$html .= Xml::option( $label, $index, $select !== '' && $select == $index );
+			}
 		}
 		$html .= Xml::closeElement( 'select' );
 		return $html;
