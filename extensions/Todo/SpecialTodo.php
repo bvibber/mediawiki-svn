@@ -34,7 +34,7 @@ function todoSetup() {
 		'todo' => 'Todo list',
 		'todo-new-queue' => 'new',
 		'todo-mail-subject' => "Completed item on $1's todo list",
-		'todo-mail-body' => <<<END
+		'todo-mail-body' => <<<ENDS
 You requested e-mail confirmation about the completion of an item you submitted to $1's online todo list.
 
 Item: $2
@@ -42,7 +42,7 @@ Submitted: $3
 
 This item has been marked as completed, with this comment:
 $4
-END
+ENDS
 	) );
     SpecialPage::addPage( new SpecialPage( 'Todo' ) );
 }

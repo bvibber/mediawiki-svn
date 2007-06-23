@@ -91,7 +91,6 @@ class MakesysopForm {
 		$reason = htmlspecialchars( wfMsg( "userrights-reason" ) );
 		$makebureaucrat = wfMsg( "setbureaucratflag" );
 		$mss = wfMsg( "set_user_rights" );
-		$token = htmlspecialchars( $wgUser->editToken() );
 
 		$wgOut->addHTML(
 			Xml::openElement( 'form', array( 'method' => 'post', 'action' => $action, 'id' => 'makesysop' ) ) .
@@ -112,7 +111,7 @@ class MakesysopForm {
 				<td align='left'>" . Xml::submitButton( $mss, array( 'name' => 'wpMakesysopSubmit' ) ) . "</td>
 			</tr>
 			</table>" .
-			Xml::hidden( 'wpEditToken', $token ) .
+			Xml::hidden( 'wpEditToken', $wgUser->editToken() ) .
 			Xml::closeElement( 'fieldset' ) .
 			Xml::closeElement( 'form' ) . "\n"
 		);
