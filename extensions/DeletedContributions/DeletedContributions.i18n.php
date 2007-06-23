@@ -2,6 +2,6 @@
 $wgDeletedContribsMessages = array();
 
 $wgDeletedContribsMessages['en'] = array(
-	'deletedcontributions'		 => 'Deleted contributions'
+	'deletedcontributions'		 => 'Deleted user contributions'
 );
 ?>
