@@ -961,24 +961,6 @@ CREATE TABLE /*$wgDBprefix*/interwiki (
 ) /*$wgDBTableOptions*/;
 
 --
--- Used for caching expensive grouped queries
---
-CREATE TABLE /*$wgDBprefix*/querycache (
-  -- A key name, generally the base name of of the special page.
-  qc_type varbinary(32) NOT NULL,
-  
-  -- Some sort of stored value. Sizes, counts...
-  qc_value int unsigned NOT NULL default '0',
-  
-  -- Target namespace+title
-  qc_namespace int NOT NULL default '0',
-  qc_title varchar(255) binary NOT NULL default '',
-  
-  KEY (qc_type,qc_value)
-
-) /*$wgDBTableOptions*/;
-
---
 -- For a few generic cache operations if not using Memcached
 --
 CREATE TABLE /*$wgDBprefix*/objectcache (
@@ -1073,20 +1055,6 @@ CREATE TABLE /*$wgDBprefix*/job (
 ) /*$wgDBTableOptions*/;
 
 
--- Details of updates to cached special pages
-CREATE TABLE /*$wgDBprefix*/querycache_info (
-
-  -- Special page name
-  -- Corresponds to a qc_type value
-  qci_type varbinary(32) NOT NULL default '',
-
-  -- Timestamp of last update
-  qci_timestamp binary(14) NOT NULL default '19700101000000',
-
-  UNIQUE KEY ( qci_type )
-
-) /*$wgDBTableOptions*/;
-
 -- For each redirect, this table contains exactly one row defining its target
 CREATE TABLE /*$wgDBprefix*/redirect (
   -- Key to the page_id of the redirect page
@@ -1101,28 +1069,6 @@ CREATE TABLE /*$wgDBprefix*/redirect (
 
   PRIMARY KEY rd_from (rd_from),
   KEY rd_ns_title (rd_namespace,rd_title,rd_from)
-) /*$wgDBTableOptions*/;
-
--- Used for caching expensive grouped queries that need two links (for example double-redirects)
-CREATE TABLE /*$wgDBprefix*/querycachetwo (
-  -- A key name, generally the base name of of the special page.
-  qcc_type varbinary(32) NOT NULL,
-  
-  -- Some sort of stored value. Sizes, counts...
-  qcc_value int unsigned NOT NULL default '0',
-  
-  -- Target namespace+title
-  qcc_namespace int NOT NULL default '0',
-  qcc_title varchar(255) binary NOT NULL default '',
-  
-  -- Target namespace+title2
-  qcc_namespacetwo int NOT NULL default '0',
-  qcc_titletwo varchar(255) binary NOT NULL default '',
-
-  KEY qcc_type (qcc_type,qcc_value),
-  KEY qcc_title (qcc_type,qcc_namespace,qcc_title),
-  KEY qcc_titletwo (qcc_type,qcc_namespacetwo,qcc_titletwo)
-
 ) /*$wgDBTableOptions*/;
 
 -- Used for storing page restrictions (i.e. protection levels)
