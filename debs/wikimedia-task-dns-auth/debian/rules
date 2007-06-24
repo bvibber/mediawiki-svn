@@ -58,6 +58,7 @@ install: build
 	#$(MAKE) install DESTDIR=$(CURDIR)/debian/wikimedia-task-dns-auth
 	install -d $(DESTDIR)/etc/powerdns $(DESTDIR)/etc/powerdns/templates \
 		$(DESTDIR)/etc/powerdns/zones
+	install -d -o pdns $(DESTDIR)/etc/powerdns/ip-map
 	install -d $(DESTDIR)/etc/default
 	install -d $(DESTDIR)/usr/lib/wikimedia-task-dns-auth/bin
 	install -d $(DESTDIR)/usr/sbin
@@ -67,7 +68,7 @@ install: build
 	install gen-zones $(DESTDIR)/usr/lib/wikimedia-task-dns-auth/bin/
 	install gen-bind.conf $(DESTDIR)/usr/lib/wikimedia-task-dns-auth/bin/
 	install authdns-update authdns-scenario $(DESTDIR)/usr/sbin/
-	install -m 0644 zz.countries.nerd.dk.rbldnsd $(DESTDIR)/etc/powerdns/
+	install -m 0644 -o pdns zz.countries.nerd.dk.rbldnsd $(DESTDIR)/etc/powerdns/ip-map/
 	install -d $(DESTDIR)/etc/powerdns/scenarios/
 	install -d $(DESTDIR)/etc/powerdns/scenarios/normal
 	install -d $(DESTDIR)/etc/powerdns/scenarios/knams-down

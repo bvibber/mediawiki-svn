@@ -19,7 +19,7 @@ set -e
 
 case "$1" in
     remove|deconfigure)
-        # Add a line to /etc/motd describing the task of this server
+        # Remove the line to /etc/motd describing the task of this server
         if [ -f /etc/motd.tail ]
         then
                 MOTDFILE=/etc/motd.tail

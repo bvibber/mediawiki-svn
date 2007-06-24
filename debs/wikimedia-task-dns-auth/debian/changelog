@@ -1,3 +1,13 @@
+wikimedia-task-dns-auth (0.05) feisty; urgency=medium
+
+  * Depend on pdns >= 2.9.21
+  * Update the configuration file to use the bind(2) backend
+  * Move the countries file to a subdir owned by user pdns,
+    so the nonprivileged cron job can update the zone file
+  * Make the postrm script work with dash
+
+ -- Mark Bergsma <mark@mint.knams.wikimedia.org>  Sun, 24 Jun 2007 15:10:36 +0000
+
 wikimedia-task-dns-auth (0.04) edgy; urgency=medium
 
   * Fix bug in authdns-update where the /etc/powerdns/geomaps sanity check

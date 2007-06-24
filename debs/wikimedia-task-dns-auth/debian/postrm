@@ -17,14 +17,13 @@ set -e
 # for details, see http://www.debian.org/doc/debian-policy/ or
 # the debian-policy package
 
-
 case "$1" in
        purge)
 	dpkg-divert --package wikimedia-task-dns-auth --remove --rename \
 		--divert /etc/powerdns/pdns.conf.default /etc/powerdns/pdns.conf
-
-	rm -f /etc/powerdns/{bind.conf,langlist,langlist-cnames}
-	rm -rf /etc/powerdns/{templates,zones,scenarios,geomaps}
+	rm -f /etc/powerdns/geomaps
+	rm -rf /etc/powerdns/scenarios
+	rm -rf /etc/powerdns/ip-map
 	;;
        remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
 
