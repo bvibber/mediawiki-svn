@@ -1,3 +1,15 @@
+pdns (2.9.21-1wm1) feisty; urgency=high
+
+  * Incorporate zoneparser-tng parser fixes from r1056
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 24 Jun 2007 14:51:00 +0000
+
+pdns (2.9.21-1) feisty; urgency=medium
+
+  * New upstream version 2.9.21
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 24 Jun 2007 12:43:46 +0000
+
 pdns (2.9.20+r924-1) edgy; urgency=medium
 
   * Change upstream version to SVN revision 924

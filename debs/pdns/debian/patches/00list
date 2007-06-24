@@ -1,2 +1,3 @@
 # Apply following patches
 addconfigdir
+10-fix-zoneparser-apostrophe-bug
