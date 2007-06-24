@@ -311,6 +311,22 @@ class WebRequest {
 	}
 
 	/**
+	 * Fetch a boolean value from the input or return null if not set.
+	 * Has normal PHP semantics for boolean interpretation of strings.
+	 *
+	 * @param string $name
+	 * @return mixed bool or null
+	 */
+	function getBoolOrNull( $name ) {
+		$ret = $this->getVal( $name );
+		if( $ret === null ) {
+			return null;
+		} else {
+			return (bool)$ret;
+		}
+	}
+	
+	/**
 	 * Return true if the named value is set in the input, whatever that
 	 * value is (even "0"). Return false if the named value is not set.
 	 * Example use is checking for the presence of check boxes in forms.
