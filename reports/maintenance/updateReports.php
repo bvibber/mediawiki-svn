@@ -11,7 +11,7 @@ require_once( dirname( __FILE__ ) . '/commandLine.inc' );
 
 $limit = isset( $options['limit'] )
 	? $options['limit']
-	: 1000;
+	: $GLOBALS['wgReportCacheLimit'];
 	
 $reports = isset( $options['reports'] )
 	? explode( ',', $options['reports'] )

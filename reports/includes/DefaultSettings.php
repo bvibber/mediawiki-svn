@@ -1350,14 +1350,27 @@ $wgAllowExternalImagesFrom = '';
 
 /** Disable database-intensive features */
 $wgMiserMode = false;
-/** Disable all query pages if miser mode is on, not just some */
-$wgDisableQueryPages = false;
-/** Number of rows to cache in 'querycache' table when miser mode is on */
-$wgQueryCacheLimit = 1000;
 /** Number of links to a page required before it is deemed "wanted" */
 $wgWantedPagesThreshold = 1;
 /** Enable slow parser functions */
 $wgAllowSlowParserFunctions = false;
+
+/**
+ * Default cache set size for report cache
+ */
+$wgReportCacheLimit = 1000;
+
+/**
+ * Set this to an array of report names to disable
+ * cache updates for those pages
+ */
+$wgDisabledReports = array();
+
+/**
+ * Extensions can add to this to register custom
+ * Report classes
+ */
+$wgCustomReports = array();
 
 /**
  * Maps jobs to their handling classes; extensions
@@ -2644,12 +2657,6 @@ $wgParserTestFiles = array(
  * framing your site with ads.  
  */
 $wgBreakFrames = false;
-
-/**
- * Set this to an array of report names to disable
- * cache updates for those pages
- */
-$wgDisabledReports = array();
 
 /**
  * Set this to false to disable cascading protection

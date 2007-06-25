@@ -13,7 +13,7 @@ abstract class Report extends SpecialPage {
 	 * Constructor
 	 */
 	public function __construct() {
-		parent::__construct( $this->getName() );
+		parent::__construct( $this->getName(), $this->getPermission() );
 	}
 
 	/**
@@ -22,6 +22,15 @@ abstract class Report extends SpecialPage {
 	 * @return string
 	 */
 	public function getName() {}
+	
+	/**
+	 * Permission required to view the report
+	 *
+	 * @return string
+	 */
+	public function getPermission() {
+		return '';
+	}
 	
 	/**
 	 * Should this report be cached?
@@ -338,7 +347,7 @@ abstract class Report extends SpecialPage {
 			'RedirectReport',
 			'ShortPagesReport',
 			'UncategorisedPagesReport',
-		);
+		) + GLOBALS['wgCustomReports'];
 	}
 	
 }
