@@ -120,7 +120,6 @@ $wgOptionalMessages = array(
 	'whatlinkshere-barrow',
 	'imagelist-summary',
 	'mostlinked-summary',
-	'mostlinkedcategories-summary',
 	'mostlinkedtemplates-summary',
 	'mostcategories-summary',
 	'mostimages-summary',

@@ -380,6 +380,7 @@ abstract class Report extends SpecialPage {
 			'BrokenRedirectsReport',
 			'DeadEndPagesReport',
 			'DoubleRedirectsReport',
+			'LargestCategoriesReport',
 			'LongPagesReport',
 			'OrphanedPagesReport',
 			'PopularPagesReport',
