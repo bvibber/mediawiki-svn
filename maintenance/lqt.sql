@@ -1,7 +1,6 @@
 CREATE TABLE /*$wgDBprefix*/thread (
   thread_id int(8) unsigned NOT NULL auto_increment,
   thread_root int(8) unsigned UNIQUE NOT NULL,
-  thread_root_rev int(8) unsigned NOT NULL default 0,
   thread_article int(8) unsigned NOT NULL default 0,
   thread_path text NOT NULL,
   thread_summary_page int(8) unsigned NULL,

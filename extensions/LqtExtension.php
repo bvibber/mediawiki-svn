@@ -610,7 +610,7 @@ HTML
 		
 		$this->showArchiveWidget();
 
-		var_dump(HistoricalThread::withIdAtRevision(3,5));
+//		var_dump(HistoricalThread::withIdAtRevision(3,9));
 		
 		if( $this->methodApplies('talkpage_new_thread') ) {
 			$this->showNewThreadForm();

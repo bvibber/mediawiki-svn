@@ -102,6 +102,9 @@ class HistoricalThread {
 	static function textRepresentation($t) {
 		return serialize($t);
 	}
+	static function fromTextRepresentation($r) {
+		return unserialize($r);
+	}
 	static function create( $t ) {
 		$tmt = $t->topmostThread();
 		$contents = HistoricalThread::textRepresentation($tmt);
@@ -119,7 +122,7 @@ class HistoricalThread {
 			array('hthread_id' => $id, 'hthread_revision' => $rev),
 			__METHOD__);
 		if ( $line )
-			return unserialize($line->hthread_contents);
+			return HistoricalThread::fromTextRepresentation($line->hthread_contents);
 		else
 			return null;
 	}
@@ -148,6 +151,8 @@ class LiveThread {
 	
 	protected $id;
 	protected $revisionNumber;
+	
+	/* Only used by $double to be saved into a historical thread. */
 	protected $rootRevision;
 	
 	/* Copy of $this made when first loaded from database, to store the data
@@ -167,7 +172,6 @@ class LiveThread {
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
 		     /* SET */array( 'thread_root' => $this->rootId,
-					'thread_root_rev' => $this->rootRevision,
 					'thread_article' => $this->articleId,
 					'thread_path' => $this->path,
 					'thread_summary_page' => $this->summaryId,
@@ -185,13 +189,25 @@ class LiveThread {
 		$this->articleId = $line->thread_article;
 		$this->articleNamespace = $line->thread_article_namespace;
 		$this->articleTitle = $line->thread_article_title;
-		$this->rootRevision = $line->thread_root_rev;
 		$this->summaryId = $line->thread_summary_page;
 		$this->path = $line->thread_path;
 		$this->timestamp = $line->thread_timestamp;
 		$this->revisionNumber = $line->thread_revision;
 		$this->replies = $children;
+		
 		$this->double = clone $this;
+		
+		/*
+		Root revision is ignored on live threads but will be important when
+		when we save a historical thread, since by that time an edit will
+		have already taken place and it will be more difficult to find
+		the pre-edit revision number. But I hate this.
+		
+		(we could do Revision::getPrevious() we just need to know whether or not
+		there was a new revision saved at save time. make it run then make it right.)
+		*/
+		$rev = Revision::newFromTitle( $this->root()->getTitle() );
+		$this->double->rootRevision = $rev->getId();
 	}
 
 	function setSuperthread($thread) {
@@ -250,7 +266,7 @@ class LiveThread {
 
 	function root() {
 		if ( !$this->rootId ) return null;
-		if ( !$this->root ) $this->root = new Post( Title::newFromID( $this->rootId ), $this->rootRevision );
+		if ( !$this->root ) $this->root = new Post( Title::newFromID( $this->rootId ) );
 		return $this->root;
 	}
 	

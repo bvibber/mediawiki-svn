@@ -44,7 +44,6 @@ class Article {
 	function __construct( &$title, $oldId = null ) {
 		$this->mTitle =& $title;
 		$this->mOldId = $oldId;
-		var_dump($oldId);
 		$this->clear();
 	}
 
