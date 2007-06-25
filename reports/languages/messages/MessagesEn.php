@@ -1468,6 +1468,7 @@ this old version, (rev) = revert to this old version.
 # Unwatched pages
 'unwatchedpages'         => 'Unwatched pages',
 'unwatchedpages-header' => 'This report lists pages which are not being watched and could be prone to unnoticed vandalism.',
+'unwatchedpages-watch' => 'watch',
 
 # List redirects
 'listredirects'         => 'List redirects',

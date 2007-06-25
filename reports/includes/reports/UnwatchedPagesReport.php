@@ -115,7 +115,7 @@ class UnwatchedPagesReport extends Report {
 	 */
 	public function formatRow( $title, $row, $params, $skin ) {
 		$plink = $skin->makeLinkObj( $title );
-		$wlink = $skin->makeKnownLinkObj( $title, wfMsgHtml( 'watch' ), 'action=watch' );
+		$wlink = $skin->makeKnownLinkObj( $title, wfMsgHtml( 'unwatchedpages-watch' ), 'action=watch' );
 		return "<li>{$plink} ({$wlink})</li>\n";
 	}
 	
