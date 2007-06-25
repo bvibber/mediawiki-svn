@@ -64,6 +64,7 @@ class ReportPager extends IndexPager {
 			. ' WHERE ' . implode( ' AND ', $conds )
 			. $this->report->getExtraSql( $this->mDb )
 			. ' ' . implode( ' ', $options );
+		$sql = preg_replace( '!\s{2,}!ui', ' ', $sql );
 		wfDebugLog( 'reports', __METHOD__ . " executing `{$sql}`" );
 		$this->mResult = new ResultWrapper(
 			$this->mDb,
