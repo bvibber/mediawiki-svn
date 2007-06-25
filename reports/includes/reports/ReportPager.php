@@ -43,7 +43,7 @@ class ReportPager extends IndexPager {
 		# Base conditions
 		$conds = $this->report->getExtraConditions( $this->mDb );
 		if( ( $ns = $this->getNamespace() ) !== false )
-			$conds[] = $this->report->getNamespaceClause( $ns );
+			$conds[] = $this->report->getNamespaceClause( intval( $ns ) );
 		if( !$this->getRedirects() || $this->report->excludeRedirects() )
 			$conds[] = $this->report->getRedirectClause();
 			
@@ -136,18 +136,13 @@ class ReportPager extends IndexPager {
 	}
 	
 	/**
-	 * Get the namespace to filter results for
-	 * (Returns false if all namespaces should be used)
+	 * Get the namespace to filter results for, or false
+	 * to omit filtering
 	 *
 	 * @return mixed
 	 */
 	public function getNamespace() {
-		if( $this->report->allowNamespaceFilter() ) {
-			$ns = $this->mRequest->getVal( 'namespace', '' );
-			return $ns !== '' ? intval( $ns ) : false;
-		} else {
-			return false;
-		}
+		return $this->report->getNamespace();
 	}
 	
 	/**

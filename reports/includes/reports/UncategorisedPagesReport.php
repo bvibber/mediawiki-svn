@@ -46,7 +46,7 @@ class UncategorisedPagesReport extends Report {
 			NS_IMAGE,
 			NS_TEMPLATE,
 			NS_CATEGORY
-		);
+		) + $GLOBALS['wgContentNamespaces'];
 	}
 
 	/**

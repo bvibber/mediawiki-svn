@@ -80,6 +80,18 @@ abstract class Report extends SpecialPage {
 	}
 	
 	/**
+	 * Get the default namespace to filter on;
+	 * false to indicate no filtering per default
+	 *
+	 * @return bool
+	 */
+	public function getDefaultNamespace() {
+		return ( $ns = $this->getApplicableNamespaces() ) !== false
+			? $ns[0]
+			: false;
+	}
+	
+	/**
 	 * Is there a more appropriate title to show when
 	 * a particular namespace is selected? Return the
 	 * message name here
@@ -181,11 +193,12 @@ abstract class Report extends SpecialPage {
 	public function execute( $par = false ) {
 		global $wgOut, $wgRequest, $wgLang;
 		$this->setHeaders();
+		# Namespace and redirect filter values
+		$namespace = $this->getNamespace();
+		$redirects = $wgRequest->getCheck( 'redirects' );		
 		# Per-namespace title variants
-		if( ( $ns = $wgRequest->getVal( 'namespace', false ) ) !== false ) {
-			if( ( $msg = $this->getNamespaceTitleVariant( $ns ) ) !== false )
-				$wgOut->setPageTitle( wfMsg( $msg ) );
-		}
+		if( ( $msg = $this->getNamespaceTitleVariant( $namespace ) ) !== false )
+			$wgOut->setPageTitle( wfMsg( $msg ) );
 		# Cache information, etc.
 		$pager = $this->getPager();
 		if( $this->isDisabled() ) {
@@ -194,12 +207,7 @@ abstract class Report extends SpecialPage {
 			$wgOut->addHtml( $this->getCacheInfo() );
 		}
 		# Filtering UI
-		$wgOut->addHtml(
-			$this->buildFilterUI(
-				$wgRequest->getVal( 'namespace', '' ),
-				$wgRequest->getCheck( 'redirects' )
-			)
-		);
+		$wgOut->addHtml( $this->buildFilterUI( $namespace, $redirects ) );
 		# Report results
 		if( ( $count = $pager->getNumRows() ) > 0 ) {
 			$wgOut->addHtml( $pager->getNavigationBar() );
@@ -221,6 +229,23 @@ abstract class Report extends SpecialPage {
 			? new CachedReportPager( $this )
 			: new ReportPager( $this );
 	}
+
+	/**
+	 * Get the namespace to filter results for, or false
+	 * to omit filtering
+	 *
+	 * @return mixed
+	 */
+	public function getNamespace() {
+		global $wgRequest;
+		if( $this->allowNamespaceFilter() ) {
+			return $wgRequest->getCheck( 'namespace' )
+				? $wgRequest->getInt( 'namespace' )
+				: $this->getDefaultNamespace();
+		} else {
+			return false;
+		}
+	}
 	
 	/**
 	 * Build the filtering form for the top of the page
@@ -241,7 +266,6 @@ abstract class Report extends SpecialPage {
 			# Namespace selector
 			if( $this->allowNamespaceFilter() ) {
 				$form .= '<tr><td>' . Xml::label( wfMsg( 'report-filter-namespace' ), 'namespace' ) . '</td>';
-				#$form .= '<td>' . Xml::namespaceSelector( $namespace, '' ) . '</td></tr>';
 				$form .= '<td>' . $this->buildNamespaceSelector( $namespace ) . '</td></tr>';
 			}
 			# Redirect toggle
@@ -271,7 +295,7 @@ abstract class Report extends SpecialPage {
 		$html  = Xml::openElement( 'select', array( 'id' => 'namespace', 'name' => 'namespace' ) );
 		$namespaces = $this->getApplicableNamespaces();
 		if( $namespaces === false ) {
-			$html .= Xml::option( wfMsg( 'report-filter-namespace-all' ), '' );
+			$html .= Xml::option( wfMsg( 'report-filter-namespace-all' ), '', $select === false );
 			$namespaces = array_keys( $wgContLang->getNamespaces() );
 		}
 		foreach( $namespaces as $index ) {
@@ -279,7 +303,7 @@ abstract class Report extends SpecialPage {
 				$label = $index != 0
 					? $wgContLang->getFormattedNsText( $index )
 					: wfMsg( 'blanknamespace' );
-				$html .= Xml::option( $label, $index, $select !== '' && $select == $index );
+				$html .= Xml::option( $label, $index, $select === $index );
 			}
 		}
 		$html .= Xml::closeElement( 'select' );
