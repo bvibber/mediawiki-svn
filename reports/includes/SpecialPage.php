@@ -136,7 +136,7 @@ class SpecialPage
 		'Unlockdb'                  => array( 'SpecialPage', 'Unlockdb', 'siteadmin' ),
 		'Userrights'                => array( 'SpecialPage', 'Userrights', 'userrights' ),
 		'MIMEsearch'                => array( 'SpecialPage', 'MIMEsearch' ),
-		'Unwatchedpages'            => array( 'SpecialPage', 'Unwatchedpages', 'unwatchedpages' ),
+		'Unwatchedpages'            => 'UnwatchedPagesReport',
 		'Listredirects'				=> 'RedirectReport',
 		'Revisiondelete'            => array( 'SpecialPage', 'Revisiondelete', 'deleterevision' ),
 		'Unusedtemplates'           => array( 'SpecialPage', 'Unusedtemplates' ),

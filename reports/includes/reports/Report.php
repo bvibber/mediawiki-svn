@@ -200,8 +200,13 @@ abstract class Report extends SpecialPage {
 	 * @param mixed $par Parameters passed to the page
 	 */
 	public function execute( $par = false ) {
-		global $wgOut, $wgRequest, $wgLang;
+		global $wgUser, $wgOut, $wgRequest, $wgLang;
 		$this->setHeaders();
+		# Check permissions
+		if( $this->getPermission() != '' && !$wgUser->isAllowed( $this->getPermission() ) ) {
+			$wgOut->permissionRequired( $this->getPermission() );
+			return;
+		}
 		# Namespace and redirect filter values
 		$namespace = $this->getNamespace();
 		$redirects = $wgRequest->getCheck( 'redirects' );		
@@ -347,6 +352,7 @@ abstract class Report extends SpecialPage {
 			'RedirectReport',
 			'ShortPagesReport',
 			'UncategorisedPagesReport',
+			'UnwatchedPagesReport',
 			'WithoutInterwikiReport',
 		) + $GLOBALS['wgCustomReports'];
 	}

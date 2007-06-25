@@ -217,7 +217,6 @@ function __autoload($className) {
 		'UnusedCategoriesPage' => 'includes/SpecialUnusedcategories.php',
 		'UnusedimagesPage' => 'includes/SpecialUnusedimages.php',
 		'UnusedtemplatesPage' => 'includes/SpecialUnusedtemplates.php',
-		'UnwatchedpagesPage' => 'includes/SpecialUnwatchedpages.php',
 		'UploadForm' => 'includes/SpecialUpload.php',
 		'UploadFormMogile' => 'includes/SpecialUploadMogile.php',
 		'LoginForm' => 'includes/SpecialUserlogin.php',
@@ -291,6 +290,7 @@ function __autoload($className) {
 		'ShortPagesReport' => 'includes/reports/ShortPagesReport.php',
 		'RedirectReport' => 'includes/reports/RedirectReport.php',
 		'UncategorisedPagesReport' => 'includes/reports/UncategorisedPagesReport.php',
+		'UnwatchedPagesReport' => 'includes/reports/UnwatchedPagesReport.php',
 		'WithoutInterwikiReport' => 'includes/reports/WithoutInterwikiReport.php',
 
 		# API
