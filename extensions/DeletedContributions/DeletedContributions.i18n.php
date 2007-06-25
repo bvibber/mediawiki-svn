@@ -8,4 +8,8 @@ $wgDeletedContribsMessages['en'] = array(
 $wgDeletedContribsMessages['de'] = array(
 	'deletedcontributions'		 => 'Gelöschte Benutzerbeiträge'
 );
+
+$wgDeletedContribsMessages['id'] = array(
+	'deletedcontributions'		 => 'Kontribusi yang dihapus'
+);
 ?>

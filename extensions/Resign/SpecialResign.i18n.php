@@ -47,6 +47,19 @@ Wichtig: '''Dieser Schritt ist unwiderruflich.!''' Sie müssen einen Bürokraten
 'resign-success'   => "'''ההרשאות הוסרו בהצלחה.'''",
 'resign-logentry'  => 'הסיר את ההרשאות $2 שלו',
 ),
+	
+'id' => array(
+'resign'           => 'Pengunduran diri',
+'resign-text'      => "Anda dapat melepaskan hak Anda (mis. pengurus) melalui halaman ini. Silakan tandai hak yang ingin Anda lepas.
+
+Ingat: '''Anda tidak dapat memperoleh kembali hak Anda melalui ini!''' Anda harus meyakinkan seorang birokrat atau steward untuk memberikan kembali hak tersebut. Harap gunakan halaman ini dengan sangat hati-hati.",
+'resign-reason'    => 'Alasan:',
+'resign-confirm'   => 'Saya menyetujui untuk melepas hak-hak yang saya tandai.',
+'resign-noconfirm' => 'Harap pilih kotak cek konfirmasi untuk melepaskan hak Anda.',
+'resign-nogroups'  => 'Harap pilih hak yang ingin Anda lepas.',
+'resign-success'   => "'''Proses pelepasan hak berhasil.'''",
+'resign-logentry'  => 'melepaskan hak $2 dari dirinya sendiri',
+),
 
 	);
 	return $messages;

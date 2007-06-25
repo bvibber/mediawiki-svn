@@ -60,6 +60,7 @@
 ./Contributors/Contributors.i18n.php efContributorsMessages
 ./CountEdits/CountEdits.i18n.php efCountEditsMessages
 ./CrossNamespaceLinks/SpecialCrossNamespaceLinks.i18n.php wgCrossNamespaceLinksMessages
+./DeletedContributions/DeletedContributions.i18n.php wgDeletedContribsMessages
 ./Desysop/SpecialDesysop.i18n.php wgDesysopMessages
 ./DismissableSiteNotice/DismissableSiteNotice.i18n.php wgDismissableSiteNoticeMessages
 ./Duplicator/Duplicator.i18n.php efDuplicatorMessages
@@ -86,6 +87,7 @@
 ./ProfileMonitor/ProfileMonitor.i18n.php efProfileMonitorMessages
 ./Quiz/Quiz.i18n.php wgQuizMessages
 ./Renameuser/SpecialRenameuser.i18n.php wgRenameuserMessages
+./Resign/SpecialResign.i18n.php efResignMessages
 #./SelectCategory/i18n/SelectCategory.i18n.gsw.php
 #./SelectCategory/i18n/SelectCategory.i18n.php
 #./SelectCategory/i18n/SelectCategory.i18n.fr.php
