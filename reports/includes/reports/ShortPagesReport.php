@@ -71,6 +71,8 @@ class ShortPagesReport extends Report {
 	 */
 	public function getBaseSql( $dbr ) {
 		$page = $dbr->tableName( 'page' );
+		# Even with the improved index, MySQL still has to be
+		# forced to use it...
 		$index = $dbr->useIndexClause( 'page_len' );
 		return
 			"SELECT
