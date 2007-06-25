@@ -15,7 +15,6 @@ $wgQueryPages = array(
 //         QueryPage subclass           Special page name         Limit (false for none, none for the default)
 //----------------------------------------------------------------------------
 	array( 'DisambiguationsPage',           'Disambiguations'               ),
-	array( 'MostimagesPage',                'Mostimages'                    ),
 	array( 'UnusedCategoriesPage',          'Unusedcategories'              ),
 	array( 'UnusedimagesPage',              'Unusedimages'                  ),
 	array( 'UnusedtemplatesPage',           'Unusedtemplates' 				),
