@@ -34,8 +34,9 @@ foreach( $reports as $report ) {
 }
 echo( "Done!\n" );
 
-function updateReportsCallback( $report, $namespace, $rows ) {
-	echo( "\tNamespace {$namespace}\t{$rows} rows\n" );
+function updateReportsCallback( $report, $namespace, $rows, $time ) {
+	$time = round( $time, 3 );
+	echo( "\tNamespace {$namespace}\t{$rows} rows\t{$time}s\n" );
 }
 
 ?>

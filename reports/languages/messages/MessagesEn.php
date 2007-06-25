@@ -1576,7 +1576,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'wantedcategories'             => 'Wanted categories',
 'wantedcategories-summary'     => '', # only translate this message to other languages if you have to change it
 'wantedpages'                  => 'Wanted pages',
-'wantedpages-summary'          => '', # only translate this message to other languages if you have to change it
+'wantedpages-header'          => 'This report lists pages which don\'t exist, but have $1 or more incoming links.',
 'mostlinked'                   => 'Most linked to pages',
 'mostlinked-summary'           => '', # only translate this message to other languages if you have to change it
 'mostlinkedcategories'         => 'Most linked to categories',

@@ -97,7 +97,7 @@ class SpecialPage
 		'Uncategorizedtemplates'	=> array( 'SpecialRedirect', 'Uncategorizedpages', array( 'namespace' => NS_TEMPLATE ) ),
 		'Unusedcategories'          => array( 'SpecialPage', 'Unusedcategories' ),
 		'Unusedimages'              => array( 'SpecialPage', 'Unusedimages' ),
-		'Wantedpages'               => array( 'IncludableSpecialPage', 'Wantedpages' ),
+		'Wantedpages'               => 'WantedPagesReport',
 		'Wantedcategories'          => array( 'SpecialPage', 'Wantedcategories' ),
 		'Mostlinked'                => array( 'SpecialPage', 'Mostlinked' ),
 		'Mostlinkedcategories'      => array( 'SpecialPage', 'Mostlinkedcategories' ),

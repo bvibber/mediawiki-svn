@@ -16,7 +16,9 @@ class ReportCache {
 	 * @param callback $namespaceCallback Callback after each namespace
 	 */
 	public static function recache( $report, $limit = 1000, $namespaceCallback = null ) {
+		wfProfileIn( __METHOD__ );
 		foreach( self::getNamespaces( $report ) as $namespace ) {
+			$fname = __METHOD__ . '::' . $report->getName() . '_(' . $namespace . ')';
 			# Clear existing cached entries for this report and namespace
 			$dbw = wfGetDB( DB_MASTER );
 			$dbw->delete(
@@ -27,15 +29,19 @@ class ReportCache {
 				),
 				__METHOD__
 			);
-			# Obtain fresh entries for the report			
+			# Obtain fresh entries for the report
+			wfProfileIn( "{$fname}-read" );
+			$start = time();
 			$dbr  = wfGetDB( DB_SLAVE );
 			$sql  = $report->getBaseSql( $dbr );
 			$conds = $report->getExtraConditions( $dbr );
 			$conds[] = $report->getNamespaceClause( $namespace );
 			$sql .= ' WHERE ' . implode( ' AND ', $conds );
+			$sql .= $report->getExtraSql( $dbr );
 			$sql .= " LIMIT {$limit}";
 			$res = $dbr->query( $sql, __METHOD__ );
 			$rows = $dbr->numRows( $res );
+			wfProfileOut( "{$fname}-read" );
 			# Insert the new entries into the cache
 			while( $row = $dbr->fetchObject( $res ) ) {
 				$dbw->insert(
@@ -61,10 +67,12 @@ class ReportCache {
 				),
 				__METHOD__
 			);
+			$time = time() - $start;
 			# Callback?
 			if( is_callable( $namespaceCallback ) )
-				call_user_func( $namespaceCallback, $report, $namespace, $rows );
+				call_user_func( $namespaceCallback, $report, $namespace, $rows, $time );
 		}
+		wfProfileOut( __METHOD__ );
 	}
 	
 	/**

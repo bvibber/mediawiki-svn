@@ -143,6 +143,17 @@ abstract class Report extends SpecialPage {
 	}
 
 	/**
+	 * Get additional SQL to be inserted between the
+	 * conditions and ORDER clauses when the report is run live
+	 *
+	 * @param Database $dbr Database object being queried
+	 * @return string
+	 */
+	public function getExtraSql( $dbr ) {
+		return '';
+	}
+
+	/**
 	 * Get ORDER BY clauses to be applied when the
 	 * report is run live
 	 *
@@ -375,6 +386,7 @@ abstract class Report extends SpecialPage {
 			'ShortPagesReport',
 			'UncategorisedPagesReport',
 			'UnwatchedPagesReport',
+			'WantedPagesReport',
 			'WithoutInterwikiReport',
 		) + $GLOBALS['wgCustomReports'];
 	}
