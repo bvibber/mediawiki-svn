@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Report lists all pages which don't exist but have
- * incoming links
+ * Report lists all categories without a description page
  *
  * @addtogroup Reports
  * @author Rob Church <robchur@gmail.com>
