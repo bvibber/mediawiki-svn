@@ -15,10 +15,8 @@ $wgQueryPages = array(
 //         QueryPage subclass           Special page name         Limit (false for none, none for the default)
 //----------------------------------------------------------------------------
 	array( 'AncientPagesPage',              'Ancientpages'                  ),
-	array( 'BrokenRedirectsPage',           'BrokenRedirects'               ),
 	array( 'DeadendPagesPage',              'Deadendpages'                  ),
 	array( 'DisambiguationsPage',           'Disambiguations'               ),
-	array( 'DoubleRedirectsPage',           'DoubleRedirects'               ),
 	array( 'LonelyPagesPage',               'Lonelypages'                   ),
 	array( 'LongPagesPage',                 'Longpages'                     ),
 	array( 'MostcategoriesPage',            'Mostcategories'                ),

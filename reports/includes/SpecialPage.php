@@ -74,8 +74,8 @@ class SpecialPage
 	var $mAllowedRedirectParams = array();
 
 	static public $mList = array(
-		'DoubleRedirects'           => array( 'SpecialPage', 'DoubleRedirects' ),
-		'BrokenRedirects'           => array( 'SpecialPage', 'BrokenRedirects' ),
+		'DoubleRedirects'           => 'DoubleRedirectsReport',
+		'BrokenRedirects'           => 'BrokenRedirectsReport',
 		'Disambiguations'           => array( 'SpecialPage', 'Disambiguations' ),
 
 		'Userlogin'                 => array( 'SpecialPage', 'Userlogin' ),
