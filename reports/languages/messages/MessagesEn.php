@@ -1512,6 +1512,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 
 'doubleredirects'         => 'Double redirects',
 'doubleredirects-header' => 'This report lists pages which redirect to a redirect page.',
+'doubleredirects-edit' => 'edit',
 
 'brokenredirects'         => 'Broken redirects',
 'brokenredirects-header' => 'This report lists pages which redirect to non-existent pages.',

@@ -133,7 +133,8 @@ class DoubleRedirectsReport extends Report {
 		$arrow = $GLOBALS['wgContLang']->getArrow();
 		$ititle = Title::makeTitleSafe( $params['in_namespace'], $params['in_title'] );
 		$ttitle = Title::makeTitleSafe( $params['tr_namespace'], $params['tr_title'] );
-		return "<li>" . $skin->makeLinkObj( $rtitle ) . " {$arrow} "
+		$edit = $skin->makeKnownLinkObj( $rtitle, wfMsgHtml( 'doubleredirects-edit' ), 'action=edit' );
+		return "<li>" . $skin->makeLinkObj( $rtitle ) . " ({$edit}) {$arrow} "
 			. $skin->makeLinkObj( $ititle ) . " {$arrow} "
 			. $skin->makeLinkObj( $ttitle ) . "</li>\n";
 	}
