@@ -363,6 +363,7 @@ abstract class Report extends SpecialPage {
 		return array(
 			'BrokenRedirectsReport',
 			'DoubleRedirectsReport',
+			'PopularPagesReport',
 			'RedirectReport',
 			'ShortPagesReport',
 			'UncategorisedPagesReport',
