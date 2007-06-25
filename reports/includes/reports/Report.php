@@ -308,7 +308,7 @@ abstract class Report extends SpecialPage {
 			$namespaces = array_keys( $wgContLang->getNamespaces() );
 		}
 		foreach( $namespaces as $index ) {
-			if( $index >= 0 ) {
+			if( $index >= 0 && $index != NS_MEDIAWIKI && $index != NS_MEDIAWIKI_TALK ) {
 				$label = $index != 0
 					? $wgContLang->getFormattedNsText( $index )
 					: wfMsg( 'blanknamespace' );

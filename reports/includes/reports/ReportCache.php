@@ -80,7 +80,7 @@ class ReportCache {
 		if( $namespaces === false ) {
 			$namespaces = array();
 			foreach( $wgContLang->getNamespaces() as $index => $name ) {
-				if( $index >= 0 )
+				if( $index >= 0 && $index != NS_MEDIAWIKI && $index != NS_MEDIAWIKI_TALK )
 					$namespaces[] = $index;
 			}
 		}
