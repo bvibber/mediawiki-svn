@@ -919,7 +919,7 @@ $wgMessageStructure = array(
 	),
 	'fewestrevisions' => array(
 		'fewestrevisions',
-		'fewestrevisions-summary',
+		'fewestrevisions-header',
 	),
 	'uncategorizedpages' => array(
 		'uncategorizedpages',

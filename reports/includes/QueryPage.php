@@ -16,8 +16,6 @@ $wgQueryPages = array(
 //----------------------------------------------------------------------------
 	array( 'DisambiguationsPage',           'Disambiguations'               ),
 	array( 'MostimagesPage',                'Mostimages'                    ),
-	array( 'MostrevisionsPage',             'Mostrevisions'                 ),
-	array( 'FewestrevisionsPage',           'Fewestrevisions'               ),
 	array( 'UnusedCategoriesPage',          'Unusedcategories'              ),
 	array( 'UnusedimagesPage',              'Unusedimages'                  ),
 	array( 'UnusedtemplatesPage',           'Unusedtemplates' 				),

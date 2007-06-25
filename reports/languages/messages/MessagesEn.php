@@ -1528,8 +1528,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'withoutinterwiki-header' => 'This report lists pages which do not link to other language editions.',
 
 # Fewest revisions report
-'fewestrevisions'         => 'Articles with the fewest revisions',
-'fewestrevisions-summary' => '', # only translate this message to other languages if you have to change it
+'fewestrevisions'         => 'Pages with the fewest revisions',
+'fewestrevisions-header' => 'This report lists pages with the fewest number of revisions on the wiki.',
 
 # Uncategorised pages report
 'uncategorizedpages'        => 'Uncategorized pages',
@@ -1586,8 +1586,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'mostcategories-header'       => 'This report lists pages belonging to the largest number of categories.',
 'mostusedimages'                   => 'Most used images',
 'mostusedimages-header'           => 'This report lists the most-used images on the wiki.',
-'mostrevisions'                => 'Articles with the most revisions',
-'mostrevisions-summary'        => '', # only translate this message to other languages if you have to change it
+'mostrevisions'                => 'Pages with the most revisions',
+'mostrevisions-header'        => 'This report lists pages with the greatest number of revisions on the wiki.',
 'allpages'                     => 'All pages',
 'allpages-summary'             => '', # only translate this message to other languages if you have to change it
 'prefixindex'                  => 'Prefix index',
