@@ -35,7 +35,6 @@ $wgQueryPages = array(
 	array( 'WantedPagesPage',               'Wantedpages'                   ),
 	array( 'UnwatchedPagesPage',            'Unwatchedpages'                ),
 	array( 'UnusedtemplatesPage',           'Unusedtemplates' 				),
-	array( 'WithoutInterwikiPage',			'Withoutinterwiki'				),
 );
 wfRunHooks( 'wgQueryPages', array( &$wgQueryPages ) );
 
