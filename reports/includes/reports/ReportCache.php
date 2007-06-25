@@ -30,7 +30,7 @@ class ReportCache {
 			# Obtain fresh entries for the report			
 			$dbr  = wfGetDB( DB_SLAVE );
 			$sql  = $report->getBaseSql( $dbr );
-			$conds = $report->getExtraConditions();
+			$conds = $report->getExtraConditions( $dbr );
 			$conds[] = $report->getNamespaceClause( $namespace );
 			$sql .= ' WHERE ' . implode( ' AND ', $conds );
 			$sql .= " LIMIT {$limit}";
