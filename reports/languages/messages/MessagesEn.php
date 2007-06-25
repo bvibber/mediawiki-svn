@@ -1582,10 +1582,10 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'largestcategories-header' => 'This report lists categories with the most members.',
 'mostlinkedtemplates'          => 'Most used templates',
 'mostlinkedtemplates-header' => 'This report lists the most-used templates on the wiki.',
-'mostcategories'               => 'Articles with the most categories',
-'mostcategories-summary'       => '', # only translate this message to other languages if you have to change it
-'mostimages'                   => 'Most linked to images',
-'mostimages-summary'           => '', # only translate this message to other languages if you have to change it
+'mostcategories'               => 'Pages with the most categories',
+'mostcategories-header'       => 'This report lists pages belonging to the largest number of categories.',
+'mostusedimages'                   => 'Most used images',
+'mostusedimages-header'           => 'This report lists the most-used images on the wiki.',
 'mostrevisions'                => 'Articles with the most revisions',
 'mostrevisions-summary'        => '', # only translate this message to other languages if you have to change it
 'allpages'                     => 'All pages',

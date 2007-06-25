@@ -974,7 +974,7 @@ $wgMessageStructure = array(
 		'mostlinkedtemplates',
 		'mostlinkedtemplates-header',
 		'mostcategories',
-		'mostcategories-summary',
+		'mostcategories-header',
 		'mostimages',
 		'mostimages-summary',
 		'mostrevisions',
