@@ -1380,7 +1380,7 @@ $wgWantedPagesThreshold = 1;
  * Pages smaller than this number of bytes will be
  * considered "short" for the purpose of Special:Shortpages
  */
-$wgShortPagesThreshold = 100 * 1024;
+$wgShortPagesThreshold = 250;
 
 /**
  * Maps jobs to their handling classes; extensions
