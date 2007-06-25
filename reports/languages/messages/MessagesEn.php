@@ -1466,17 +1466,17 @@ this old version, (rev) = revert to this old version.
 'download'           => 'download',
 
 # Unwatched pages
-'unwatchedpages'         => 'Unwatched pages',
+'unwatchedpages'        => 'Unwatched pages',
 'unwatchedpages-header' => 'This report lists pages which are not being watched and could be prone to unnoticed vandalism.',
-'unwatchedpages-watch' => 'watch',
+'unwatchedpages-watch'  => 'watch',
 
 # List redirects
-'listredirects'         => 'List redirects',
+'listredirects'        => 'List redirects',
 'listredirects-header' => 'This report lists pages which redirect to another page.',
 
 # Unused templates
 'unusedtemplates'         => 'Unused templates',
-'unusedtemplates-summary' => '',
+'unusedtemplates-summary' => '', # only translate this message to other languages if you have to change it
 'unusedtemplatestext'     => 'This page lists all pages in the template namespace which are not included in another page. Remember to check for other links to the templates before deleting them.',
 'unusedtemplateswlh'      => 'other links',
 
@@ -1506,101 +1506,126 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'statistics-mostpopular' => 'Most viewed pages',
 'statistics-footer'      => '', # don't translate or duplicate this message to other languages
 
+# Links to disambiguation pages report
 'disambiguations'         => 'Disambiguation pages',
 'disambiguations-summary' => '', # only translate this message to other languages if you have to change it
 'disambiguationspage'     => 'Template:disambig',
 'disambiguations-text'    => "The following pages link to a '''disambiguation page'''. They should link to the appropriate topic instead.<br />A page is treated as disambiguation page if it uses a template which is linked from [[MediaWiki:disambiguationspage]]",
 
-'doubleredirects'         => 'Double redirects',
+# Double redirects report
+'doubleredirects'        => 'Double redirects',
 'doubleredirects-header' => 'This report lists pages which redirect to a redirect page.',
-'doubleredirects-edit' => 'edit',
+'doubleredirects-edit'   => 'edit',
 
-'brokenredirects'         => 'Broken redirects',
+# Broken redirects report
+'brokenredirects'        => 'Broken redirects',
 'brokenredirects-header' => 'This report lists pages which redirect to non-existent pages.',
-'brokenredirects-edit'    => 'edit',
-'brokenredirects-delete'  => 'delete',
+'brokenredirects-edit'   => 'edit',
+'brokenredirects-delete' => 'delete',
 
-'withoutinterwiki'         => 'Pages without language links',
-'withoutinterwiki-header'  => 'This report lists pages which do not link to other language editions.',
+# Without interwiki report
+'withoutinterwiki'        => 'Pages without language links',
+'withoutinterwiki-header' => 'This report lists pages which do not link to other language editions.',
 
+# Fewest revisions report
 'fewestrevisions'         => 'Articles with the fewest revisions',
 'fewestrevisions-summary' => '', # only translate this message to other languages if you have to change it
 
+# Uncategorised pages report
+'uncategorizedpages'        => 'Uncategorized pages',
+'uncategorizedcategories'   => 'Uncategorized categories',
+'uncategorizedimages'       => 'Uncategorized images',
+'uncategorizedtemplates'    => 'Uncategorized templates',
+'uncategorizedpages-header' => 'This report lists pages which have not been categorised.',
+
+# Short pages report
+'shortpages'        => 'Short pages',
+'shortpages-header' => 'This page lists pages which are shorter than $1.',
+
+# Report pages
+'specialpages-reports'        => 'Report pages',
+'report-paging-first'         => 'first',
+'report-paging-last'          => 'last',
+'report-paging-next'          => 'next',
+'report-paging-prev'          => 'previous',
+'report-cached'               => 'This information is cached.',
+'report-cached-timestamp'     => 'This information is cached, and was last updated $1.',
+'report-disabled'             => 'Updates for this report are disabled at present. Data here will not be refreshed.',
+'report-no-results'           => 'There are no results for this report.',
+'report-filter-legend'        => 'Filter results',
+'report-filter-namespace'     => 'Namespace:',
+'report-filter-namespace-all' => '(all)',
+'report-filter-redirects'     => 'Include redirect pages',
+'report-filter-submit'        => 'Go',
+
 # Miscellaneous special pages
-'nbytes'                          => '$1 {{PLURAL:$1|byte|bytes}}',
-'ncategories'                     => '$1 {{PLURAL:$1|category|categories}}',
-'nlinks'                          => '$1 {{PLURAL:$1|link|links}}',
-'nmembers'                        => '$1 {{PLURAL:$1|member|members}}',
-'nrevisions'                      => '$1 {{PLURAL:$1|revision|revisions}}',
-'nviews'                          => '$1 {{PLURAL:$1|view|views}}',
-'specialpage-empty'               => 'There are no results for this report.',
-'lonelypages'                     => 'Orphaned pages',
-'lonelypages-summary'             => '', # only translate this message to other languages if you have to change it
-'lonelypagestext'                 => 'The following pages are not linked from other pages in this wiki.',
-'uncategorizedpages'              => 'Uncategorized pages',
-'uncategorizedcategories'         => 'Uncategorized categories',
-'uncategorizedimages'             => 'Uncategorized images',
-'uncategorizedtemplates'          => 'Uncategorized templates',
-'uncategorizedpages-header'      => 'This report lists pages which have not been categorised.',
-'unusedcategories'                => 'Unused categories',
-'unusedimages'                    => 'Unused files',
-'popularpages'                    => 'Popular pages',
-'popularpages-summary'            => '', # only translate this message to other languages if you have to change it
-'wantedcategories'                => 'Wanted categories',
-'wantedcategories-summary'        => '', # only translate this message to other languages if you have to change it
-'wantedpages'                     => 'Wanted pages',
-'wantedpages-summary'             => '', # only translate this message to other languages if you have to change it
-'mostlinked'                      => 'Most linked to pages',
-'mostlinked-summary'              => '', # only translate this message to other languages if you have to change it
-'mostlinkedcategories'            => 'Most linked to categories',
-'mostlinkedcategories-summary'    => '', # only translate this message to other languages if you have to change it
-'mostlinkedtemplates'             => 'Most linked-to templates',
-'mostlinkedtemplates-summary'     => '', # only translate this message to other languages if you have to change it
-'mostcategories'                  => 'Articles with the most categories',
-'mostcategories-summary'          => '', # only translate this message to other languages if you have to change it
-'mostimages'                      => 'Most linked to images',
-'mostimages-summary'              => '', # only translate this message to other languages if you have to change it
-'mostrevisions'                   => 'Articles with the most revisions',
-'mostrevisions-summary'           => '', # only translate this message to other languages if you have to change it
-'allpages'                        => 'All pages',
-'allpages-summary'                => '', # only translate this message to other languages if you have to change it
-'prefixindex'                     => 'Prefix index',
-'prefixindex-summary'             => '', # only translate this message to other languages if you have to change it
-'randompage'                      => 'Random page',
-'randompage-nopages'              => 'There are no pages in this namespace.',
-'randompage-url'                  => 'Special:Random', # don't translate or duplicate this message to other languages
-'shortpages'                      => 'Short pages',
-'shortpages-summary'              => 'This page lists pages which are shorter than $1.',
-'longpages'                       => 'Long pages',
-'longpages-summary'               => '', # only translate this message to other languages if you have to change it
-'deadendpages'                    => 'Dead-end pages',
-'deadendpages-summary'            => '', # only translate this message to other languages if you have to change it
-'deadendpagestext'                => 'The following pages do not link to other pages in this wiki.',
-'protectedpages'                  => 'Protected pages',
-'protectedpages-summary'          => '', # only translate this message to other languages if you have to change it
-'protectedpagestext'              => 'The following pages are protected from moving or editing',
-'protectedpagesempty'             => 'No pages are currently protected with these parameters.',
-'listusers'                       => 'User list',
-'listusers-summary'               => '', # only translate this message to other languages if you have to change it
-'specialpages'                    => 'Special pages',
-'specialpages-summary'            => '', # only translate this message to other languages if you have to change it
-'spheading'                       => 'Special pages for all users',
-'restrictedpheading'              => 'Restricted special pages',
-'rclsub'                          => '(to pages linked from "$1")',
-'newpages'                        => 'New pages',
-'newpages-summary'                => '', # only translate this message to other languages if you have to change it
-'newpages-legend' => 'Find new pages',
-'newpages-username'               => 'Username:',
-'newpages-no-results' => 'There are no new pages matching the selected criteria.',
-'ancientpages'                    => 'Oldest pages',
-'ancientpages-summary'            => '', # only translate this message to other languages if you have to change it
-'intl'                            => 'Interlanguage links',
-'move'                            => 'Move',
-'movethispage'                    => 'Move this page',
-'unusedimagestext'                => '<p>Please note that other web sites may link to an image with
+'nbytes'                       => '$1 {{PLURAL:$1|byte|bytes}}',
+'ncategories'                  => '$1 {{PLURAL:$1|category|categories}}',
+'nlinks'                       => '$1 {{PLURAL:$1|link|links}}',
+'nmembers'                     => '$1 {{PLURAL:$1|member|members}}',
+'nrevisions'                   => '$1 {{PLURAL:$1|revision|revisions}}',
+'nviews'                       => '$1 {{PLURAL:$1|view|views}}',
+'specialpage-empty'            => 'There are no results for this report.',
+'lonelypages'                  => 'Orphaned pages',
+'lonelypages-summary'          => '', # only translate this message to other languages if you have to change it
+'lonelypagestext'              => 'The following pages are not linked from other pages in this wiki.',
+'unusedcategories'             => 'Unused categories',
+'unusedimages'                 => 'Unused files',
+'popularpages'                 => 'Popular pages',
+'popularpages-summary'         => '', # only translate this message to other languages if you have to change it
+'wantedcategories'             => 'Wanted categories',
+'wantedcategories-summary'     => '', # only translate this message to other languages if you have to change it
+'wantedpages'                  => 'Wanted pages',
+'wantedpages-summary'          => '', # only translate this message to other languages if you have to change it
+'mostlinked'                   => 'Most linked to pages',
+'mostlinked-summary'           => '', # only translate this message to other languages if you have to change it
+'mostlinkedcategories'         => 'Most linked to categories',
+'mostlinkedcategories-summary' => '', # only translate this message to other languages if you have to change it
+'mostlinkedtemplates'          => 'Most linked-to templates',
+'mostlinkedtemplates-summary'  => '', # only translate this message to other languages if you have to change it
+'mostcategories'               => 'Articles with the most categories',
+'mostcategories-summary'       => '', # only translate this message to other languages if you have to change it
+'mostimages'                   => 'Most linked to images',
+'mostimages-summary'           => '', # only translate this message to other languages if you have to change it
+'mostrevisions'                => 'Articles with the most revisions',
+'mostrevisions-summary'        => '', # only translate this message to other languages if you have to change it
+'allpages'                     => 'All pages',
+'allpages-summary'             => '', # only translate this message to other languages if you have to change it
+'prefixindex'                  => 'Prefix index',
+'prefixindex-summary'          => '', # only translate this message to other languages if you have to change it
+'randompage'                   => 'Random page',
+'randompage-nopages'           => 'There are no pages in this namespace.',
+'randompage-url'               => 'Special:Random', # don't translate or duplicate this message to other languages
+'longpages'                    => 'Long pages',
+'longpages-summary'            => '', # only translate this message to other languages if you have to change it
+'deadendpages'                 => 'Dead-end pages',
+'deadendpages-summary'         => '', # only translate this message to other languages if you have to change it
+'deadendpagestext'             => 'The following pages do not link to other pages in this wiki.',
+'protectedpages'               => 'Protected pages',
+'protectedpages-summary'       => '', # only translate this message to other languages if you have to change it
+'protectedpagestext'           => 'The following pages are protected from moving or editing',
+'protectedpagesempty'          => 'No pages are currently protected with these parameters.',
+'listusers'                    => 'User list',
+'listusers-summary'            => '', # only translate this message to other languages if you have to change it
+'specialpages'                 => 'Special pages',
+'specialpages-summary'         => '', # only translate this message to other languages if you have to change it
+'spheading'                    => 'Special pages for all users',
+'restrictedpheading'           => 'Restricted special pages',
+'rclsub'                       => '(to pages linked from "$1")',
+'newpages'                     => 'New pages',
+'newpages-legend'              => 'Find new pages',
+'newpages-no-results'          => 'There are no new pages matching the selected criteria.',
+'newpages-summary'             => '', # only translate this message to other languages if you have to change it
+'newpages-username'            => 'Username:',
+'ancientpages'                 => 'Oldest pages',
+'ancientpages-summary'         => '', # only translate this message to other languages if you have to change it
+'intl'                         => 'Interlanguage links',
+'move'                         => 'Move',
+'movethispage'                 => 'Move this page',
+'unusedimagestext'             => '<p>Please note that other web sites may link to an image with
 a direct URL, and so may still be listed here despite being
 in active use.</p>',
-'unusedcategoriestext'            => 'The following category pages exist although no other article or category make use of them.',
+'unusedcategoriestext'         => 'The following category pages exist although no other article or category make use of them.',
 
 # Book sources
 'booksources'               => 'Book sources',
@@ -2421,8 +2446,8 @@ Variants for Chinese language
 'variantname-kk'    => 'kk', # only translate this message to other languages if you have to change it
 
 # Variants for Kurdish language
-'variantname-ku-latn' => 'ku-latn', # only translate this message to other languages if you have to change it
 'variantname-ku-arab' => 'ku-arab', # only translate this message to other languages if you have to change it
+'variantname-ku-latn' => 'ku-latn', # only translate this message to other languages if you have to change it
 'variantname-ku'      => 'ku', # only translate this message to other languages if you have to change it
 
 'passwordtooshort' => 'Your password is invalid or too short. It must have at least $1 characters and be different from your username.',
@@ -2840,11 +2865,11 @@ $1',
 'imgmultigotopost'   => '', # only translate this message to other languages if you have to change it
 'imgmultiparseerror' => 'The image file appears to be corrupted or incorrect, so {{SITENAME}} cannot retrieve a list of pages.',
 
-# General-purpose pager links
-'paging-next' => 'next',
-'paging-prev' => 'previous',
+# General-purpose paging links
+'paging-next'  => 'next',
+'paging-prev'  => 'previous',
 'paging-first' => 'first',
-'paging-last' => 'last',
+'paging-last'  => 'last',
 
 # Table pager
 'ascending_abbrev'         => 'asc',
@@ -2905,22 +2930,6 @@ Try normal preview.',
 'lag-warn-normal' => 'Changes newer than $1 seconds may not be shown in this list.',
 'lag-warn-high'   => 'Due to high database server lag, changes newer than $1 seconds
 may not be shown in this list.',
-
-# Reports
-'specialpages-reports' => 'Report pages',
-'report-paging-first' => 'first',
-'report-paging-last' => 'last',
-'report-paging-next' => 'next',
-'report-paging-prev' => 'previous',
-'report-cached' => 'This information is cached.',
-'report-cached-timestamp' => 'This information is cached, and was last updated $1.',
-'report-disabled' => 'Updates for this report are disabled at present. Data here will not be refreshed.',
-'report-no-results' => 'There are no results for this report.',
-'report-filter-legend' => 'Filter results',
-'report-filter-namespace' => 'Namespace:',
-'report-filter-namespace-all' => '(all)',
-'report-filter-redirects' => 'Include redirect pages',
-'report-filter-submit' => 'Go',
 
 );
 
