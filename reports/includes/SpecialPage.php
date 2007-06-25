@@ -171,7 +171,7 @@ class SpecialPage
 		self::$mListInitialised = true;
 
 		if( !$wgDisableCounters ) {
-			self::$mList['Popularpages'] = array( 'SpecialPage', 'Popularpages' );
+			self::$mList['Popularpages'] = 'PopularPagesReport';
 		}
 
 		if( !$wgDisableInternalSearch ) {

@@ -963,7 +963,7 @@ $wgMessageStructure = array(
 		'unusedcategories',
 		'unusedimages',
 		'popularpages',
-		'popularpages-summary',
+		'popularpages-header',
 		'wantedcategories',
 		'wantedcategories-summary',
 		'wantedpages',

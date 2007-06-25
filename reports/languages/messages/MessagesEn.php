@@ -1572,7 +1572,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'unusedcategories'             => 'Unused categories',
 'unusedimages'                 => 'Unused files',
 'popularpages'                 => 'Popular pages',
-'popularpages-summary'         => '', # only translate this message to other languages if you have to change it
+'popularpages-header' => 'This report lists the most-viewed pages on the wiki.',
 'wantedcategories'             => 'Wanted categories',
 'wantedcategories-summary'     => '', # only translate this message to other languages if you have to change it
 'wantedpages'                  => 'Wanted pages',

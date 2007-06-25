@@ -202,7 +202,6 @@ function __autoload($className) {
 		'IncludableSpecialPage' => 'includes/SpecialPage.php',
 		'SpecialRedirect' => 'includes/SpecialRedirect.php',
 		'SpecialSpecialPages' => 'includes/SpecialSpecialpages.php',
-		'PopularPagesPage' => 'includes/SpecialPopularpages.php',
 		'PreferencesForm' => 'includes/SpecialPreferences.php',
 		'SpecialPrefixindex' => 'includes/SpecialPrefixindex.php',
 		'PasswordResetForm' => 'includes/SpecialResetpass.php',
@@ -285,8 +284,10 @@ function __autoload($className) {
 		'ReportCache' => 'includes/reports/ReportCache.php',
 		'ReportPager' => 'includes/reports/ReportPager.php',
 		'CachedReportPager' => 'includes/reports/CachedReportPager.php',
+		
 		'BrokenRedirectsReport' => 'includes/reports/BrokenRedirectsReport.php',
 		'DoubleRedirectsReport' => 'includes/reports/DoubleRedirectsReport.php',
+		'PopularPagesReport' => 'includes/reports/PopularPagesReport.php',
 		'RedirectReport' => 'includes/reports/RedirectReport.php',
 		'ShortPagesReport' => 'includes/reports/ShortPagesReport.php',
 		'UncategorisedPagesReport' => 'includes/reports/UncategorisedPagesReport.php',
