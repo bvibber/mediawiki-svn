@@ -1350,8 +1350,6 @@ $wgAllowExternalImagesFrom = '';
 
 /** Disable database-intensive features */
 $wgMiserMode = false;
-/** Number of links to a page required before it is deemed "wanted" */
-$wgWantedPagesThreshold = 1;
 /** Enable slow parser functions */
 $wgAllowSlowParserFunctions = false;
 
@@ -1371,6 +1369,18 @@ $wgDisabledReports = array();
  * Report classes
  */
 $wgCustomReports = array();
+
+/**
+ * Pages with this number of incoming links will be
+ * deemd "wanted" for the purpose of Special:Wantedpages
+ */
+$wgWantedPagesThreshold = 1;
+
+/**
+ * Pages smaller than this number of bytes will be
+ * considered "short" for the purpose of Special:Shortpages
+ */
+$wgShortPagesThreshold = 100 * 1024;
 
 /**
  * Maps jobs to their handling classes; extensions

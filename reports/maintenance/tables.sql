@@ -227,7 +227,7 @@ CREATE TABLE /*$wgDBprefix*/page (
   
   -- Special-purpose indexes
   INDEX (page_random),
-  INDEX (page_len)
+  KEY `page_len` (`page_len`,`page_id`,`page_namespace`,`page_title`,`page_is_redirect`)
 
 ) /*$wgDBTableOptions*/;
 

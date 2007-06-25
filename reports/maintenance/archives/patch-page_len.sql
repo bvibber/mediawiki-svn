@@ -7,7 +7,7 @@
 
 ALTER TABLE /*$wgDBprefix*/page
   ADD page_len int unsigned NOT NULL,
-  ADD INDEX (page_len);
+  ADD INDEX `page_len` ( `page_len` , `page_id` , `page_namespace` , `page_title` , `page_is_redirect` );
 
 -- Not accurate if upgrading from intermediate
 -- 1.5 alpha and have revision compression on.

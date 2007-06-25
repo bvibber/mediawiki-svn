@@ -869,6 +869,24 @@ function purge_cache() {
 	echo( "done.\n" );
 }
 
+function do_page_len_index_update() {
+	global $wgDatabase;
+	echo( "Checking page_len index..." );
+	$info = $wgDatabase->indexInfo( 'page', 'page_len', __METHOD__ );
+	if( $info ) {
+		foreach( $info as $row ) {
+			if( $row->Column_name == 'page_id' ) {
+				# Index contains page.page_id? Then it's up-to-date.
+				echo( "seems up-to-date.\n" );
+				return;
+			}
+		}
+		echo( "updating..." );
+		$wgDatabase->sourceFile( archive( 'patch-update-page_len.sql' ) );
+	}
+	echo( "done.\n" );
+}
+
 function do_all_updates( $shared = false, $purge = true ) {
 	global $wgNewTables, $wgNewFields, $wgRenamedTables, $wgSharedDB, $wgDatabase, $wgDBtype, $IP;
 
@@ -942,6 +960,8 @@ function do_all_updates( $shared = false, $purge = true ) {
 	do_categorylinks_indices_update(); flush();
 
 	do_restrictions_update(); flush ();
+	
+	do_page_len_index_update(); flush();
 
 	echo "Deleting old default messages (this may take a long time!)..."; flush();
 	deleteDefaultMessages();

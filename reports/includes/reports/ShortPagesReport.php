@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Report generates a list of short pages in the main namespace
+ * Report generates a list of short content pages
  *
  * @addtogroup Reports
  * @author Rob Church <robchur@gmail.com>
@@ -48,7 +48,7 @@ class ShortPagesReport extends Report {
 	 * @return bool
 	 */
 	public function allowNamespaceFilter() {
-		return false;
+		return true;
 	}
 	
 	/**
@@ -58,7 +58,9 @@ class ShortPagesReport extends Report {
 	 * @return mixed
 	 */
 	public function getApplicableNamespaces() {
-		return array( NS_MAIN );
+		return array(
+			NS_MAIN,
+		) + $GLOBALS['wgContentNamespaces'];
 	}
 	
 	/**
@@ -78,6 +80,20 @@ class ShortPagesReport extends Report {
 				page_is_redirect AS rp_redirect,
 				page_len
 			FROM {$page} {$index}";
+	}
+	
+	/**
+	 * Return additional WHERE clauses and other conditions
+	 * to which the paging clauses will be appened when
+	 * the report runs live
+	 *
+	 * @param Database $dbr Database object being queried
+	 * @return array
+	 */
+	public function getExtraConditions( $dbr ) {
+		return array(
+			'page_len < ' . intval( $GLOBALS['wgShortPagesThreshold'] )
+		);
 	}
 	
 	/**
