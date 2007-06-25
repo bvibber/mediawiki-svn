@@ -1515,8 +1515,8 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 
 'brokenredirects'         => 'Broken redirects',
 'brokenredirects-header' => 'This report lists pages which redirect to non-existent pages.',
-'brokenredirects-edit'    => '(edit)',
-'brokenredirects-delete'  => '(delete)',
+'brokenredirects-edit'    => 'edit',
+'brokenredirects-delete'  => 'delete',
 
 'withoutinterwiki'         => 'Pages without language links',
 'withoutinterwiki-header'  => 'This report lists pages which do not link to other language editions.',

@@ -125,10 +125,16 @@ class BrokenRedirectsReport extends Report {
 	 * @return string
 	 */
 	public function formatRow( $rtitle, $row, $params, $skin ) {
+		global $wgContLang, $wgUser;
 		$arrow = $GLOBALS['wgContLang']->getArrow();
 		$ttitle = Title::makeTitleSafe( $params['rd_namespace'], $params['rd_title'] );
-		return "<li>" . $skin->makeLinkObj( $rtitle ) . " {$arrow} "
-			. $skin->makeLinkObj( $ttitle ) . "</li>\n";
+		$tools[] = $skin->makeKnownLinkObj( $rtitle, wfMsgHtml( 'brokenredirects-edit' ), 'action=edit' );
+		if( $wgUser->isAllowed( 'delete' ) )
+			$tools[] = $skin->makeKnownLinkObj( $rtitle, wfMsgHtml( 'brokenredirects-delete' ), 'action=delete' );
+		
+	
+		return "<li>" . $skin->makeLinkObj( $rtitle ) . ' (' . implode( ' | ', $tools ) . ')'
+			. " {$arrow} " . $skin->makeLinkObj( $ttitle ) . "</li>\n";
 	}
 	
 }
