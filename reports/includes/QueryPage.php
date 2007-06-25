@@ -25,9 +25,6 @@ $wgQueryPages = array(
 	array( 'FewestrevisionsPage',           'Fewestrevisions'               ),
 	array( 'UnusedCategoriesPage',          'Unusedcategories'              ),
 	array( 'UnusedimagesPage',              'Unusedimages'                  ),
-	
-	array( 'WantedCategoriesPage',          'Wantedcategories'              ),
-	
 	array( 'UnusedtemplatesPage',           'Unusedtemplates' 				),
 );
 wfRunHooks( 'wgQueryPages', array( &$wgQueryPages ) );

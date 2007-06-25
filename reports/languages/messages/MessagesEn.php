@@ -1574,7 +1574,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'popularpages'                 => 'Popular pages',
 'popularpages-header' => 'This report lists the most-viewed pages on the wiki.',
 'wantedcategories'             => 'Wanted categories',
-'wantedcategories-summary'     => '', # only translate this message to other languages if you have to change it
+'wantedcategories-header'     => 'This report lists categories which contain pages, but which don\'t have an associated description page.',
 'wantedpages'                  => 'Wanted pages',
 'wantedpages-header'          => 'This report lists pages which don\'t exist, but have $1 or more incoming links.',
 'mostlinked'                   => 'Most linked to pages',

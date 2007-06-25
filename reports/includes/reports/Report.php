@@ -386,6 +386,7 @@ abstract class Report extends SpecialPage {
 			'ShortPagesReport',
 			'UncategorisedPagesReport',
 			'UnwatchedPagesReport',
+			'WantedCategoriesReport',
 			'WantedPagesReport',
 			'WithoutInterwikiReport',
 		) + $GLOBALS['wgCustomReports'];

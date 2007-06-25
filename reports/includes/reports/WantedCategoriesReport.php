@@ -7,7 +7,7 @@
  * @addtogroup Reports
  * @author Rob Church <robchur@gmail.com>
  */
-class WantedPagesReport extends Report {
+class WantedCategoriesReport extends Report {
 
 	/**
 	 * Constructor
@@ -22,18 +22,7 @@ class WantedPagesReport extends Report {
 	 * @return string
 	 */
 	public function getName() {
-		return 'Wantedpages';
-	}
-	
-	/**
-	 * Get a HTML header for the top of the page
-	 *
-	 * @return string
-	 */
-	public function getHeader() {
-		global $wgLang, $wgWantedPagesThreshold;
-		return wfMsgExt( 'wantedpages-header', 'parse',
-			$wgLang->formatNum( $wgWantedPagesThreshold ) );
+		return 'Wantedcategories';
 	}
 	
 	/**
@@ -51,9 +40,9 @@ class WantedPagesReport extends Report {
 	 * @return bool
 	 */
 	public function allowNamespaceFilter() {
-		return true;
+		return false;
 	}
-	
+
 	/**
 	 * Get a list of namespaces this report can be run
 	 * against - false indicates *all* namespaces
@@ -62,8 +51,8 @@ class WantedPagesReport extends Report {
 	 */
 	public function getApplicableNamespaces() {
 		return array(
-			NS_MAIN,
-		) + $GLOBALS['wgContentNamespaces'];
+			NS_CATEGORY,
+		);
 	}
 	
 	/**
@@ -73,22 +62,16 @@ class WantedPagesReport extends Report {
 	 * @return string
 	 */
 	public function getBaseSql( $dbr ) {
-		list( $page, $pagelinks ) = $dbr->tableNamesN( 'page', 'pagelinks' );
-		# Note: We have no page identifier, but we can use pagelinks.pl_title
-		# instead, since pagers can handle it \o/
+		list( $page, $categorylinks ) = $dbr->tableNamesN( 'page', 'categorylinks' );
 		return
 			"SELECT
-				pl_title AS rp_id,
-				pl_namespace AS rp_namespace,
-				pl_title AS rp_title,
+				cl_to AS rp_id,
+				" . NS_CATEGORY . " AS rp_namespace,
+				cl_to AS rp_title,
 				0 AS rp_redirect,
 				COUNT(*) AS count
-			FROM {$pagelinks}
-			LEFT JOIN {$page} AS pg1 ON
-				pl_namespace = pg1.page_namespace
-				AND pl_title = pg1.page_title
-			LEFT JOIN {$page} AS pg2 ON
-				pl_from = pg2.page_id";
+			FROM {$categorylinks}
+			LEFT JOIN {$page} ON cl_to = page_title AND page_namespace = " . NS_CATEGORY;
 	}
 
 	/**
@@ -101,10 +84,7 @@ class WantedPagesReport extends Report {
 	 */
 	public function getExtraConditions( $dbr ) {
 		return array(
-			'pg1.page_namespace IS NULL',
-			// Excludes links from the MediaWiki namespace; works around
-			// an old bug which causes pages like "$1" to appear on the list
-			'pg2.page_namespace != 8',
+			'page_title IS NULL',
 		);
 	}
 	
@@ -114,7 +94,7 @@ class WantedPagesReport extends Report {
 	 * @return string
 	 */
 	public function getPagingColumn() {
-		return 'pl_title';
+		return 'cl_to';
 	}
 
 	/**
@@ -125,7 +105,8 @@ class WantedPagesReport extends Report {
 	 * @return string
 	 */
 	public function getNamespaceClause( $namespace ) {
-		return "pl_namespace = {$namespace}";
+		// Not applicable to this report
+		return '1 = 1';
 	}
 
 	/**
@@ -136,10 +117,7 @@ class WantedPagesReport extends Report {
 	 * @return string
 	 */
 	public function getExtraSql( $dbr ) {
-		$count = intval( $GLOBALS['wgWantedPagesThreshold'] ) - 1;
-		return
-			" GROUP BY 1, 2, 3
-			HAVING count > {$count}";
+		return ' GROUP BY 1, 2, 3';
 	}
 
 	/**
@@ -178,28 +156,11 @@ class WantedPagesReport extends Report {
 	 */
 	public function formatRow( $title, $row, $params, $skin ) {
 		global $wgLang;
-		$links = $this->makeLinksLink(
-			$title,
-			wfMsgExt( 'nlinks', array( 'parsemag', 'escape' ), $params['count'] ),
-			$skin
-		);
-		return "<li>" . $skin->makeLinkObj( $title ) . " ({$links})</li>\n";
+		$members = wfMsgExt( 'nmembers', array( 'parsemag', 'escape' ), $params['count'] );
+		return "<li>" . $skin->makeLinkObj( $title, htmlspecialchars( $title->getText() ) )
+			. " ({$members})</li>\n";
 	}
-	
-	/**
-	 * Build a "what links here" link with the
-	 * specified title as a target
-	 *
-	 * @param Title $target Title to show links to
-	 * @param string $label Link label
-	 * @param Skin $skin Skin to use
-	 * @return string
-	 */
-	private function makeLinksLink( $target, $label, $skin ) {
-		$wlh = SpecialPage::getTitleFor( 'Whatlinkshere' );
-		return $skin->makeKnownLinkObj( $wlh, $label, 'target=' . $target->getPrefixedUrl() );		
-	}
-	
+
 }
 
 ?>

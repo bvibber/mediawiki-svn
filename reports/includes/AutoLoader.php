@@ -216,7 +216,6 @@ function __autoload($className) {
 		'LoginForm' => 'includes/SpecialUserlogin.php',
 		'UserrightsForm' => 'includes/SpecialUserrights.php',
 		'SpecialVersion' => 'includes/SpecialVersion.php',
-		'WantedCategoriesPage' => 'includes/SpecialWantedcategories.php',
 		'WhatLinksHerePage' => 'includes/SpecialWhatlinkshere.php',
 		'SquidUpdate' => 'includes/SquidUpdate.php',
 		'ReplacementArray' => 'includes/StringUtils.php',
@@ -291,6 +290,7 @@ function __autoload($className) {
 		'ShortPagesReport' => 'includes/reports/ShortPagesReport.php',
 		'UncategorisedPagesReport' => 'includes/reports/UncategorisedPagesReport.php',
 		'UnwatchedPagesReport' => 'includes/reports/UnwatchedPagesReport.php',
+		'WantedCategoriesReport' => 'includes/reports/WantedCategoriesReport.php',
 		'WantedPagesReport' => 'includes/reports/WantedPagesReport.php',
 		'WithoutInterwikiReport' => 'includes/reports/WithoutInterwikiReport.php',
 

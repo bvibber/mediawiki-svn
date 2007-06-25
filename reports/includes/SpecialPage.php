@@ -98,7 +98,7 @@ class SpecialPage
 		'Unusedcategories'          => array( 'SpecialPage', 'Unusedcategories' ),
 		'Unusedimages'              => array( 'SpecialPage', 'Unusedimages' ),
 		'Wantedpages'               => 'WantedPagesReport',
-		'Wantedcategories'          => array( 'SpecialPage', 'Wantedcategories' ),
+		'Wantedcategories'          => 'WantedCategoriesReport',
 		'Mostlinked'                => array( 'SpecialPage', 'Mostlinked' ),
 		'Mostlinkedcategories'      => array( 'SpecialPage', 'Mostlinkedcategories' ),
 		'Mostlinkedtemplates'		=> array( 'SpecialPage', 'Mostlinkedtemplates' ),
