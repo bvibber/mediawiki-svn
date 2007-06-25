@@ -857,7 +857,7 @@ $wgRedirectSources = false;
 
 $wgShowIPinHeader	= true; # For non-logged in users
 $wgMaxNameChars		= 255;  # Maximum number of bytes in username
-$wgMaxSigChars      = 255;  # Maximum number of bytes in signature
+$wgMaxSigChars      = 255;  # Maximum number of Unicode characters in signature
 $wgMaxArticleSize	= 2048; # Maximum article size in kilobytes
 
 $wgExtraSubtitle	= '';
@@ -1063,7 +1063,6 @@ $wgGroupPermissions['sysop']['autoconfirmed']   = true;
 $wgGroupPermissions['sysop']['upload_by_url']   = true;
 $wgGroupPermissions['sysop']['ipblock-exempt']	= true;
 $wgGroupPermissions['sysop']['blockemail']      = true;
-$wgGroupPermissions['sysop']['editrobots']      = true;
 
 // Permission to change users' group assignments
 $wgGroupPermissions['bureaucrat']['userrights'] = true;
@@ -1184,7 +1183,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '76';
+$wgStyleVersion = '77';
 
 
 # Server-side caching:
@@ -2515,7 +2514,7 @@ $wgUpdateRowsPerQuery = 10;
 /**
  * Enable AJAX framework
  */
-$wgUseAjax = false;
+$wgUseAjax = true;
 
 /**
  * Enable auto suggestion for the search bar 
@@ -2535,12 +2534,12 @@ $wgAjaxExportList = array( );
  * Requires $wgUseAjax to be true too.
  * Causes wfAjaxWatch to be added to $wgAjaxExportList
  */
-$wgAjaxWatch = false;
+$wgAjaxWatch = true;
 
 /**
  * Allow DISPLAYTITLE to change title display
  */
-$wgAllowDisplayTitle = false ;
+$wgAllowDisplayTitle = true;
 
 /**
  * Array of usernames which may not be registered or logged in from

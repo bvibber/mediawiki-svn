@@ -95,12 +95,15 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Throw a showstopper exception when a hook function fails to return a value.
   Forgetting to give a 'true' return value is a very common error which tends
   to cause hard-to-track-down interactions between extensions.
-* (bug 9415) Added options to Special:Protect to allow setting of per-page robot
-  policies. This can be done only by users with the 'editrobots' permission
 * Use $wgJobClasses to determine the correct Job to instantiate for a particular
   queued task; allows extensions to introduce custom jobs
-* Special:Randompage with no parameters now selects a random page from any 
-  namespace in $wgContentNamespaces, rather than just from NS_MAIN.
+* (bug 10326) AJAX-based page watching and unwatching has been cleaned up and
+  enabled by default.
+* Added option to install to MyISAM
+* (bug 9250) Remove hardcoded minimum image name length of three characters
+* (bug 10338) Enforce signature length limit in Unicode characters instead of bytes
+* Fixed DISPLAYTITLE behaviour to reject titles which don't normalise to the
+  same title as the current page, and enabled per default
 
 == Bugfixes since 1.10 ==
 
@@ -195,6 +198,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * As intended, *skip* the HTTP proxy purges when doing HTCP purges
 * (bug 9696) Fix handling of brace transformations in "pagemovedtext"
 * (bug 10325) Fix regression in form action on Special:Listusers
+* Fixed installation on MyISAM or old InnoDB with charset=utf8, was giving 
+  overlong key errors.
+* Fixed zero-padding issues with MySQL 5 binary schema
+* (bug 10344) Don't follow a redirect after changing its protection level
+* (bug 10333) Correct date format in Slovenian
 
 == API changes since 1.10 ==
 
@@ -243,6 +251,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 == Languages updated since 1.10 ==
 
 * Arabic (ar)
+* Bulgarian (bg)
 * Catalan (ca)
 * Danish (da)
 * German (de)
@@ -271,6 +280,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Romanian (ro)
 * Russian (ru)
 * Slovak (sk)
+* Slovenian (sl)
 * Shona (sn)
 * Somali (so)
 * Albanian (sq)

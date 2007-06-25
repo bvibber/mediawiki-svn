@@ -1365,7 +1365,7 @@ To include the image in a page, use a link in the form
 'uploadedfiles'               => 'Uploaded files',
 'ignorewarning'               => 'Ignore warning and save file anyway.',
 'ignorewarnings'              => 'Ignore any warnings',
-'minlength'                   => 'File names must be at least three letters.',
+'minlength1'                  => 'File names must be at least one letter.',
 'illegalfilename'             => 'The filename "$1" contains characters that are not allowed in page titles. Please rename the file and try uploading it again.',
 'badfilename'                 => 'File name has been changed to "$1".',
 'filetype-badmime'            => 'Files of the MIME type "$1" are not allowed to be uploaded.',
@@ -1516,7 +1516,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 
 'doubleredirects'         => 'Double redirects',
 'doubleredirects-summary' => '', # only translate this message to other languages if you have to change it
-'doubleredirectstext'     => 'Each row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the "real" target page, which the first redirect should point to.',
+'doubleredirectstext'     => 'Each row contains links to the first and second redirect, as well as the target of the second redirect, which is usually "real" target page, which the first redirect should point to.',
 
 'brokenredirects'         => 'Broken redirects',
 'brokenredirects-summary' => '', # only translate this message to other languages if you have to change it
@@ -1843,9 +1843,6 @@ Here are the current settings for the page <strong>$1</strong>:',
 'protect-summary-cascade'     => 'cascading',
 'protect-expiring'            => 'expires $1 (UTC)',
 'protect-cascade'             => 'Protect pages included in this page (cascading protection)',
-'protect-robotspolicy'        => 'Robot policy:',
-'protect-robots-noindex'      => 'Do not index',
-'protect-robots-nofollow'     => 'Do not follow links',
 'restriction-type'            => 'Permission:',
 'restriction-level'           => 'Restriction level:',
 'minimum-size'                => 'Min size',
@@ -1914,6 +1911,9 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'ucnote'        => "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
 'uclinks'       => 'View the last $1 changes; view the last $2 days.',
 'uctop'         => ' (top)',
+
+'month'         => 'Month:',
+'year'          => 'Year:',
 
 'sp-contributions-newest'      => 'Newest',
 'sp-contributions-oldest'      => 'Oldest',
@@ -2741,6 +2741,7 @@ is collapsed. Others will be hidden by default.
 'watchlistall1'    => 'all',
 'watchlistall2'    => 'all',
 'namespacesall'    => 'all',
+'monthsall'        => 'all',
 
 # E-mail address confirmation
 'confirmemail'            => 'Confirm E-mail address',
@@ -2825,9 +2826,6 @@ $1',
 'searchnamed'      => "Search for articles named ''$1''.",
 'articletitles'    => "Articles starting with ''$1''",
 'hideresults'      => 'Hide results',
-
-# DISPLAYTITLE
-'displaytitle' => '(Link to this page as [[$1]])',
 
 # Separator for categories in page lists
 'catseparator' => '|', # don't translate or duplicate this message to other languages

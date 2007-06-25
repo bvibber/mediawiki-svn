@@ -12,7 +12,7 @@
  * changes in an incompatible way, so the parser cache
  * can automatically discard old data.
  */
-define( 'MW_PARSER_VERSION', '1.6.1' );
+define( 'MW_PARSER_VERSION', '1.6.2' );
 
 define( 'RLH_FOR_UPDATE', 1 );
 
@@ -3812,7 +3812,7 @@ class Parser
 		$nickname = $user->getOption( 'nickname' );
 		$nickname = $nickname === '' ? $username : $nickname;
 		
-		if( strlen( $nickname ) > $wgMaxSigChars ) {
+		if( mb_strlen( $nickname ) > $wgMaxSigChars ) {
 			$nickname = $username;
 			wfDebug( __METHOD__ . ": $username has overlong signature.\n" );
 		} elseif( $user->getBoolOption( 'fancysig' ) !== false ) {

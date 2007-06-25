@@ -1025,7 +1025,7 @@ $messages = array(
 'uploadedfiles'               => 'קבצים שהועלו',
 'ignorewarning'               => 'התעלם מהאזהרה ושמור את הקובץ בכל זאת.',
 'ignorewarnings'              => 'התעלם מכל האזהרות',
-'minlength'                   => 'שמות של קבצי תמונה צריכים להיות בני שלושה תווים לפחות.',
+'minlength1'                  => 'שמות של קבצי תמונה צריכים להיות בני תו אחד לפחות.',
 'illegalfilename'             => 'הקובץ "$1" מכיל תוים בלתי חוקיים. אנא שנו את שמו ונסו להעלותו שנית.',
 'badfilename'                 => 'שם התמונה שונה ל־"$1".',
 'filetype-badmime'            => 'לא ניתן להעלות קבצים עם סוג ה־MIME "$1".',
@@ -1161,7 +1161,7 @@ $messages = array(
 'disambiguations-text' => "הדפים הבאים מקשרים ל'''דפי פירושונים'''. עליהם לקשר לדף הנושא הרלוונטי במקום זאת.<br />הדף נחשב לדף פירושונים אם הוא משתמש בתבנית המקושרת מההודעה [[{{ns:mediawiki}}:Disambiguationspage|disambiguationspage]].",
 
 'doubleredirects'     => 'הפניות כפולות',
-'doubleredirectstext' => 'כל שורה מכילה קישור להפניות הראשונה והשנייה, וכן את שורת הטקסט הראשונה של ההפניה השנייה, שלרוב נמצא בה היעד האמיתי של ההפניה, אליו אמורה ההפניה הראשונה להצביע.',
+'doubleredirectstext' => 'כל שורה מכילה קישור להפניות הראשונה והשנייה, וכן את היעד של ההפניה השנייה, שהיא לרוב היעד האמיתי של ההפניה, אליו אמורה ההפניה הראשונה להצביע.',
 
 'brokenredirects'        => 'הפניות לא תקינות',
 'brokenredirectstext'    => 'ההפניות שלהלן מפנות לדפים שאינם קיימים:',
@@ -1434,9 +1434,6 @@ $NEWPAGE
 'protect-summary-cascade'     => 'מדורג',
 'protect-expiring'            => 'פוקעת $1 (UTC)',
 'protect-cascade'             => 'הגן על כל הדפים המוכללים בדף זה (הגנה מדורגת)',
-'protect-robotspolicy'        => 'גישת מנועי חיפוש חיצוניים:',
-'protect-robots-noindex'      => 'ללא אינדוקס',
-'protect-robots-nofollow'     => 'ללא מעקב אחרי קישורים',
 'restriction-type'            => 'הרשאה:',
 'restriction-level'           => 'רמת ההגבלה:',
 'minimum-size'                => 'גודל מינימלי',
@@ -1493,6 +1490,8 @@ $NEWPAGE
 'ucnote'        => "להלן '''$1''' השינויים האחרונים שביצע משתמש זה ב־'''$2''' הימים האחרונים:",
 'uclinks'       => 'צפה ב־$1 השינויים האחרונים; צפה ב־$2 הימים האחרונים',
 'uctop'         => '(אחרון)',
+'month'         => 'חודש:',
+'year'          => 'שנה:',
 
 'sp-contributions-newest'      => 'חדשות ביותר',
 'sp-contributions-oldest'      => 'ישנות ביותר',
@@ -1796,12 +1795,12 @@ $NEWPAGE
 'tooltip-ca-nstab-help'           => 'צפו בדף העזרה',
 'tooltip-ca-nstab-category'       => 'צפו בדף הקטגוריה',
 'tooltip-minoredit'               => 'סימון עריכה זו כמשנית',
-'tooltip-save'                    => 'שמירת את השינויים שביצעתם',
+'tooltip-save'                    => 'שמירת השינויים שביצעתם',
 'tooltip-preview'                 => 'תצוגה מקדימה, אנא השתמשו באפשרות זו לפני השמירה!',
-'tooltip-diff'                    => 'צפו בשינויים שערכתם בטקסט',
-'tooltip-compareselectedversions' => 'צפו בהשוואה של שתי גרסאות של דף זה',
-'tooltip-watch'                   => 'הוסיפו דף זה לרשימת המעקב',
-'tooltip-recreate'                => 'צור מחדש את הדף למרות שהוא נמחק',
+'tooltip-diff'                    => 'צפיה בשינויים שערכתם בטקסט',
+'tooltip-compareselectedversions' => 'צפיה בהשוואת שתי גרסאות של דף זה',
+'tooltip-watch'                   => 'הוספת דף זה לרשימת המעקב',
+'tooltip-recreate'                => 'יצירת הדף מחדש למרות שהוא נמחק',
 
 # Stylesheets
 'common.css'   => '/* הסגנונות הנכתבים כאן ישפיעו על כל הרקעים */',
@@ -2171,6 +2170,7 @@ $NEWPAGE
 'watchlistall1'    => 'הכול',
 'watchlistall2'    => 'הכול',
 'namespacesall'    => 'הכול',
+'monthsall'        => 'הכול',
 
 # E-mail address confirmation
 'confirmemail'            => 'אמתו כתובת דוא"ל',

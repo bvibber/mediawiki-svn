@@ -72,7 +72,7 @@ class UnregisteredLocalFile extends File {
 		return $this->mime;
 	}
 
-	function getImageSize() {
+	function getImageSize( $filename ) {
 		if ( !$this->getHandler() ) {
 			return false;
 		}
