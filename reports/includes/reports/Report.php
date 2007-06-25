@@ -33,6 +33,16 @@ abstract class Report extends SpecialPage {
 	}
 	
 	/**
+	 * Get a HTML header for the top of the page
+	 *
+	 * @return string
+	 */
+	public function getHeader() {
+		$msg = strtolower( $this->getName() ) . '-header';
+		return wfMsgExt( $msg, 'parse' );
+	}
+	
+	/**
 	 * Should this report be cached?
 	 *
 	 * @return bool
@@ -220,6 +230,8 @@ abstract class Report extends SpecialPage {
 		} elseif( $pager instanceof CachedReportPager ) {
 			$wgOut->addHtml( $this->getCacheInfo() );
 		}
+		# Standard header message
+		$wgOut->addHtml( $this->getHeader() );
 		# Filtering UI
 		$wgOut->addHtml( $this->buildFilterUI( $namespace, $redirects ) );
 		# Report results

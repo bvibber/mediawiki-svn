@@ -1467,15 +1467,15 @@ this old version, (rev) = revert to this old version.
 
 # Unwatched pages
 'unwatchedpages'         => 'Unwatched pages',
-'unwatchedpages-summary' => '', # only translate this message to other languages if you have to change it
+'unwatchedpages-header' => 'This report lists pages which are not being watched and could be prone to unnoticed vandalism.',
 
 # List redirects
 'listredirects'         => 'List redirects',
-'listredirects-summary' => '', # only translate this message to other languages if you have to change it
+'listredirects-header' => 'This report lists pages which redirect to another page.',
 
 # Unused templates
 'unusedtemplates'         => 'Unused templates',
-'unusedtemplates-summary' => '', # only translate this message to other languages if you have to change it
+'unusedtemplates-summary' => '',
 'unusedtemplatestext'     => 'This page lists all pages in the template namespace which are not included in another page. Remember to check for other links to the templates before deleting them.',
 'unusedtemplateswlh'      => 'other links',
 
@@ -1511,18 +1511,15 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'disambiguations-text'    => "The following pages link to a '''disambiguation page'''. They should link to the appropriate topic instead.<br />A page is treated as disambiguation page if it uses a template which is linked from [[MediaWiki:disambiguationspage]]",
 
 'doubleredirects'         => 'Double redirects',
-'doubleredirects-summary' => '', # only translate this message to other languages if you have to change it
-'doubleredirectstext'     => 'Each row contains links to the first and second redirect, as well as the first line of the second redirect text, usually giving the "real" target page, which the first redirect should point to.',
+'doubleredirects-header' => 'This report lists pages which redirect to a redirect page.',
 
 'brokenredirects'         => 'Broken redirects',
-'brokenredirects-summary' => '', # only translate this message to other languages if you have to change it
-'brokenredirectstext'     => 'The following redirects link to non-existent pages:',
+'brokenredirects-header' => 'This report lists pages which redirect to non-existent pages.',
 'brokenredirects-edit'    => '(edit)',
 'brokenredirects-delete'  => '(delete)',
 
 'withoutinterwiki'         => 'Pages without language links',
-'withoutinterwiki-header'  => 'The following pages do not link to other language versions:',
-'withoutinterwiki-summary' => '', # only translate this message to other languages if you have to change it
+'withoutinterwiki-header'  => 'This report lists pages which do not link to other language editions.',
 
 'fewestrevisions'         => 'Articles with the fewest revisions',
 'fewestrevisions-summary' => '', # only translate this message to other languages if you have to change it
@@ -1539,13 +1536,10 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'lonelypages-summary'             => '', # only translate this message to other languages if you have to change it
 'lonelypagestext'                 => 'The following pages are not linked from other pages in this wiki.',
 'uncategorizedpages'              => 'Uncategorized pages',
-'uncategorizedpages-summary'      => '', # only translate this message to other languages if you have to change it
 'uncategorizedcategories'         => 'Uncategorized categories',
-'uncategorizedcategories-summary' => '', # only translate this message to other languages if you have to change it
 'uncategorizedimages'             => 'Uncategorized images',
-'uncategorizedimages-summary'     => '', # only translate this message to other languages if you have to change it
 'uncategorizedtemplates'          => 'Uncategorized templates',
-'uncategorizedtemplates-summary'  => '', # only translate this message to other languages if you have to change it
+'uncategorizedpages-header'      => 'This report lists pages which have not been categorised.',
 'unusedcategories'                => 'Unused categories',
 'unusedimages'                    => 'Unused files',
 'popularpages'                    => 'Popular pages',
@@ -1574,7 +1568,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'randompage-nopages'              => 'There are no pages in this namespace.',
 'randompage-url'                  => 'Special:Random', # don't translate or duplicate this message to other languages
 'shortpages'                      => 'Short pages',
-'shortpages-summary'              => '', # only translate this message to other languages if you have to change it
+'shortpages-summary'              => 'This page lists pages which are shorter than $1.',
 'longpages'                       => 'Long pages',
 'longpages-summary'               => '', # only translate this message to other languages if you have to change it
 'deadendpages'                    => 'Dead-end pages',

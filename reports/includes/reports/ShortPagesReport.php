@@ -25,6 +25,17 @@ class ShortPagesReport extends Report {
 	}
 	
 	/**
+	 * Get a HTML header for the top of the page
+	 *
+	 * @return string
+	 */
+	public function getHeader() {
+		global $wgUser, $wgShortPagesThreshold;
+		return wfMsgExt( 'shortpages-header', 'parse',
+			$wgUser->getSkin()->formatSize( $wgShortPagesThreshold ) );
+	}
+	
+	/**
 	 * Is it appropriate to allow filtering redirects?
 	 *
 	 * @return bool
