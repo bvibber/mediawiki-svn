@@ -6,8 +6,8 @@
 
 @DPATCH@
 diff -urNad pdns-2.9.21~/pdns/zoneparser-tng.cc pdns-2.9.21/pdns/zoneparser-tng.cc
---- pdns-2.9.21~/pdns/zoneparser-tng.cc	2007-04-21 13:56:36.000000000 +0000
-+++ pdns-2.9.21/pdns/zoneparser-tng.cc	2007-06-07 21:10:21.000000000 +0000
+--- pdns-2.9.21~/pdns/zoneparser-tng.cc	2007-06-24 15:00:24.000000000 +0000
++++ pdns-2.9.21/pdns/zoneparser-tng.cc	2007-06-25 18:20:34.000000000 +0000
 @@ -40,14 +40,16 @@
    FILE *fp=fopen(fname.c_str(), "r");
    if(!fp)
@@ -117,7 +117,15 @@ diff -urNad pdns-2.9.21~/pdns/zoneparser-tng.cc pdns-2.9.21/pdns/zoneparser-tng.
      }
    }
    if(!haveQTYPE) 
-@@ -364,14 +390,15 @@
+@@ -309,6 +335,7 @@
+   rr.content=d_line.substr(range.first);
+ 
+   chopComment(rr.content);
++  trim(rr.content);
+ 
+   if(equals(rr.content, "@"))
+     rr.content=d_zonename;
+@@ -364,14 +391,15 @@
  
  bool ZoneParserTNG::getLine()
  {
@@ -138,8 +146,8 @@ diff -urNad pdns-2.9.21~/pdns/zoneparser-tng.cc pdns-2.9.21/pdns/zoneparser-tng.
    return false;
  }
 diff -urNad pdns-2.9.21~/pdns/zoneparser-tng.hh pdns-2.9.21/pdns/zoneparser-tng.hh
---- pdns-2.9.21~/pdns/zoneparser-tng.hh	2007-04-21 13:56:36.000000000 +0000
-+++ pdns-2.9.21/pdns/zoneparser-tng.hh	2007-06-07 21:10:21.000000000 +0000
+--- pdns-2.9.21~/pdns/zoneparser-tng.hh	2007-06-24 15:00:24.000000000 +0000
++++ pdns-2.9.21/pdns/zoneparser-tng.hh	2007-06-25 18:23:34.000000000 +0000
 @@ -39,7 +39,7 @@
    bool getLine();
    bool getTemplateLine();

@@ -1,3 +1,9 @@
+pdns (2.9.21-1wm2) feisty; urgency=high
+
+  * Fix bug in zoneparser-tng.cc where it doesn't trim tabs
+
+ -- Mark Bergsma <mark@wikimedia.org>  Mon, 25 Jun 2007 18:25:32 +0000
+
 pdns (2.9.21-1wm1) feisty; urgency=high
 
   * Incorporate zoneparser-tng parser fixes from r1056
