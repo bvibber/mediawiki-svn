@@ -22,6 +22,19 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 'resign-logentry'  => 'removed permissions $2 from himself',
 ),
 
+'de' => array(
+'resign'           => 'Rücktritt',
+'resign-text'      => "Sie können auf dieser Seite '''Ihre Berechtigungen zurückgeben''' (z.B. die Administrator-Berechtigung). Bitte prüfen Sie die Berechtigungen, die Sie zurückgeben möchten.
+
+Wichtig: '''Dieser Schritt ist unwiderruflich.!''' Sie müssen einen Bürokraten oder Steward kontaktieren, um Ihre Rechte wiederzuerhalten. Bitte benutzen Sie diese Seite daher nur nach sorgfäliger Überlegung.",
+'resign-reason'    => 'Grund:',
+'resign-confirm'   => 'Ich bestätige, dass ich alle markierten Berechtigungen zurückgeben möchte.',
+'resign-noconfirm' => 'Bitte markieren Sie das Bestätigungsfeld um Ihre Berechtigungen zurückzugeben.',
+'resign-nogroups'  => 'Bitte markieren Sie die Berechtigungen, die Sie zurückgeben möchten.',
+'resign-success'   => "'''Die Rückgabe der Berechtigungen war erfolgreich.'''",
+'resign-logentry'  => 'gab die Berechtigung(en) $2 zurück',
+),
+
 'he' => array(
 'resign'           => 'התפטרות',
 'resign-text'      => "בדף זה תוכלו '''להסיר את ההרשאות שלכם''' (למשל, הרשאות מפעיל מערכת). אנא סמנו את ההרשאות שברצונכם להסיר.
