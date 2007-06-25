@@ -1383,6 +1383,12 @@ $wgWantedPagesThreshold = 1;
 $wgShortPagesThreshold = 250;
 
 /**
+ * Pages larger than this number of bytes will be
+ * considered "long" for the purposes of Special:Longpages
+ */
+$wgLongPagesThreshold = 80 * 1024;
+
+/**
  * Maps jobs to their handling classes; extensions
  * can add to this to provide custom jobs
  */

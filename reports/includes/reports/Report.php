@@ -362,7 +362,9 @@ abstract class Report extends SpecialPage {
 	public static function getReports() {
 		return array(
 			'BrokenRedirectsReport',
+			'DeadEndPagesReport',
 			'DoubleRedirectsReport',
+			'LongPagesReport',
 			'PopularPagesReport',
 			'RedirectReport',
 			'ShortPagesReport',

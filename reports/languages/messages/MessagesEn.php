@@ -1597,10 +1597,9 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'randompage-nopages'           => 'There are no pages in this namespace.',
 'randompage-url'               => 'Special:Random', # don't translate or duplicate this message to other languages
 'longpages'                    => 'Long pages',
-'longpages-summary'            => '', # only translate this message to other languages if you have to change it
+'longpages-header'            => 'This report lists pages which are longer than $1.',
 'deadendpages'                 => 'Dead-end pages',
-'deadendpages-summary'         => '', # only translate this message to other languages if you have to change it
-'deadendpagestext'             => 'The following pages do not link to other pages in this wiki.',
+'deadendpages-header'         => 'This report lists pages which contain no outgoing links.',
 'protectedpages'               => 'Protected pages',
 'protectedpages-summary'       => '', # only translate this message to other languages if you have to change it
 'protectedpagestext'           => 'The following pages are protected from moving or editing',
