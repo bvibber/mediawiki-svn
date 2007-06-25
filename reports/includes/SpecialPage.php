@@ -90,7 +90,7 @@ class SpecialPage
 		'Listusers'                 => array( 'SpecialPage', 'Listusers' ),
 		'Statistics'                => array( 'SpecialPage', 'Statistics' ),
 		'Randompage'                => array( 'SpecialPage', 'Randompage' ),
-		'Lonelypages'               => array( 'SpecialPage', 'Lonelypages' ),
+		'Orphanedpages'             => 'OrphanedPagesReport',
 		'Uncategorizedpages'        => 'UncategorisedPagesReport',
 		'Uncategorizedcategories'   => array( 'SpecialRedirect', 'Uncategorizedpages', array( 'namespace' => NS_CATEGORY ) ),
 		'Uncategorizedimages'       => array( 'SpecialRedirect', 'Uncategorizedpages', array( 'namespace' => NS_IMAGE ) ),

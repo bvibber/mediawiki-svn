@@ -131,7 +131,6 @@ $wgOptionalMessages = array(
 	'userrights-summary',
 	'protectedpages-summary',
 	'disambiguations-summary',
-	'lonelypages-summary',
 	'unusedtemplates-summary',
 	'fewestrevisions-summary',
 	'variantname-zh-cn',
