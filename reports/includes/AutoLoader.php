@@ -167,7 +167,6 @@ function __autoload($className) {
 		'SkinTemplate' => 'includes/SkinTemplate.php',
 		'QuickTemplate' => 'includes/SkinTemplate.php',
 		'SpecialAllpages' => 'includes/SpecialAllpages.php',
-		'AncientPagesPage' => 'includes/SpecialAncientpages.php',
 		'IPBlockForm' => 'includes/SpecialBlockip.php',
 		'SpecialBookSources' => 'includes/SpecialBooksources.php',
 		'EmailConfirmation' => 'includes/SpecialConfirmemail.php',
@@ -283,6 +282,7 @@ function __autoload($className) {
 		'ReportPager' => 'includes/reports/ReportPager.php',
 		'CachedReportPager' => 'includes/reports/CachedReportPager.php',
 		
+		'AncientPagesReport' => 'includes/reports/AncientPagesReport.php',
 		'BrokenRedirectsReport' => 'includes/reports/BrokenRedirectsReport.php',
 		'DeadEndPagesReport' => 'includes/reports/DeadEndPagesReport.php',
 		'DoubleRedirectsReport' => 'includes/reports/DoubleRedirectsReport.php',

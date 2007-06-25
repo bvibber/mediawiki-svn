@@ -109,7 +109,7 @@ class SpecialPage
 		'Shortpages'                => 'ShortPagesReport',
 		'Longpages'                 => 'LongPagesReport',
 		'Newpages'                  => 'SpecialNewPages',//array( 'IncludableSpecialPage', 'Newpages' ),
-		'Ancientpages'              => array( 'SpecialPage', 'Ancientpages' ),
+		'Ancientpages'              => 'AncientPagesReport',
 		'Deadendpages'              => 'DeadEndPagesReport',
 		'Protectedpages'            => array( 'SpecialPage', 'Protectedpages' ),
 		'Allpages'                  => array( 'IncludableSpecialPage', 'Allpages' ),

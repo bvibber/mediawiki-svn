@@ -1389,6 +1389,13 @@ $wgShortPagesThreshold = 250;
 $wgLongPagesThreshold = 80 * 1024;
 
 /**
+ * Pages which haven't been edited for at least this
+ * number of days will be considered "ancient"
+ * for the purposes of Special:Ancientpages
+ */
+$wgAncientPagesThreshold = 100;
+
+/**
  * Maps jobs to their handling classes; extensions
  * can add to this to provide custom jobs
  */

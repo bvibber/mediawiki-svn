@@ -129,7 +129,6 @@ $wgOptionalMessages = array(
 	'mostrevisions-summary',
 	'prefixindex-summary',
 	'newpages-summary',
-	'ancientpages-summary',
 	'newimages-summary',
 	'userrights-summary',
 	'protectedpages-summary',

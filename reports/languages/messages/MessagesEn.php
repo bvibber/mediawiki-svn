@@ -1617,7 +1617,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 'newpages-summary'             => '', # only translate this message to other languages if you have to change it
 'newpages-username'            => 'Username:',
 'ancientpages'                 => 'Oldest pages',
-'ancientpages-summary'         => '', # only translate this message to other languages if you have to change it
+'ancientpages-header'         => 'This report lists pages which haven\'t been edited in at least $1 days.',
 'intl'                         => 'Interlanguage links',
 'move'                         => 'Move',
 'movethispage'                 => 'Move this page',

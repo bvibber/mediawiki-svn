@@ -14,7 +14,6 @@ global $wgQueryPages; // not redundant
 $wgQueryPages = array(
 //         QueryPage subclass           Special page name         Limit (false for none, none for the default)
 //----------------------------------------------------------------------------
-	array( 'AncientPagesPage',              'Ancientpages'                  ),
 	array( 'DisambiguationsPage',           'Disambiguations'               ),
 	array( 'LonelyPagesPage',               'Lonelypages'                   ),
 	array( 'MostcategoriesPage',            'Mostcategories'                ),

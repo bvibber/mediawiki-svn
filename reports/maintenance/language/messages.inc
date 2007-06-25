@@ -1008,7 +1008,7 @@ $wgMessageStructure = array(
 		'newpages-summary',
 		'newpages-username',
 		'ancientpages',
-		'ancientpages-summary',
+		'ancientpages-header',
 		'intl',
 		'move',
 		'movethispage',
