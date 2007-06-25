@@ -29,7 +29,8 @@ class SpecialSpecialPages extends SpecialPage {
 		$normal = array();
 		foreach( SpecialPage::getRegularPages() as $page ) {
 			if( $page instanceof Report ) {
-				$reports[] = $page;
+				if( !$page->isDisabled() )
+					$reports[] = $page;
 			} else {
 				$normal[] = $page;
 			}
