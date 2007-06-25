@@ -21,7 +21,6 @@ class ReportPager extends IndexPager {
 	public function __construct( Report $report ) {
 		$this->report = $report;
 		parent::__construct();
-		$this->mLimitsShown = array( 50, 100, 250, 500, 1000 );
 	}
 	
 	/**
@@ -107,11 +106,46 @@ class ReportPager extends IndexPager {
 	}
 	
 	/**
+	 * Build results into a large image gallery; suitable
+	 * for reports which are returning items from the
+	 * image namespace
+	 *
+	 * @return string
+	 */
+	public function getGalleryBody() {
+		if( !$this->mQueryDone )
+			$this->doQuery();
+		$numRows = min( $this->mResult->numRows(), $this->mLimit );
+		if( $numRows ) {
+			$gallery = new ImageGallery();
+			if( $this->mIsBackwards ) {
+				for( $i = $numRows - 1; $i >= 0; $i-- ) {
+					$this->mResult->seek( $i );
+					$row = $this->mResult->fetchObject();
+					$gallery->add( Title::makeTitleSafe( $row->rp_namespace, $row->rp_title ) );
+				}
+			} else {
+				$this->mResult->seek( 0 );
+				for( $i = 0; $i < $numRows; $i++ ) {
+					$row = $this->mResult->fetchObject();
+					$gallery->add( Title::makeTitleSafe( $row->rp_namespace, $row->rp_title ) );
+				}
+			}
+			return $gallery->toHtml();
+		} else {
+			return $this->getEmptyBody();
+		}
+	}
+	
+	/**
 	 * Build the navigation bar with paging and limit links
 	 *
 	 * @return string
 	 */
 	public function getNavigationBar() {
+		$this->mLimitsShown = $this->getNamespace() === NS_IMAGE
+			? array( 12, 24, 48, 96, 192 )
+			: array( 50, 100, 250, 500, 1000 );
 		foreach( array( 'first', 'last', 'prev', 'next' ) as $link )
 			$labels[$link] = wfMsgHtml( 'report-paging-' . $link );
 		return '( ' . implode( ' | ', $this->getPagingLinks( $labels ) ) . ' ) ( '

@@ -237,7 +237,11 @@ abstract class Report extends SpecialPage {
 		# Report results
 		if( ( $count = $pager->getNumRows() ) > 0 ) {
 			$wgOut->addHtml( $pager->getNavigationBar() );
-			$wgOut->addHtml( $pager->getBody() );
+			if( $namespace === NS_IMAGE ) {
+				$wgOut->addHtml( $pager->getGalleryBody() );
+			} else {
+				$wgOut->addHtml( $pager->getBody() );
+			}
 			$wgOut->addHtml( $pager->getNavigationBar() );
 		} else {
 			$wgOut->addHtml( '<p>' . wfMsgHtml( 'report-no-results' ) . '</p>' );
