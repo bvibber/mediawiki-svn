@@ -382,6 +382,8 @@ abstract class Report extends SpecialPage {
 			'DoubleRedirectsReport',
 			'LargestCategoriesReport',
 			'LongPagesReport',
+			'MostLinkedPagesReport',
+			'MostUsedTemplatesReport',
 			'OrphanedPagesReport',
 			'PopularPagesReport',
 			'RedirectReport',
