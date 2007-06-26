@@ -36,7 +36,7 @@ $wgExpandTemplatesMessages['cs'] = array(
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
 	'expand_templates_title'           => 'Název stránky kvůli kontextu pro <code>{{PAGENAME}}</code> apod.:',
 	'expand_templates_input'           => 'Vstupní text:',
-	'expand_templates_output'          => 'Výstup:',
+	'expand_templates_output'          => 'Výstup',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Odstranit komentáře',
 );
@@ -45,7 +45,7 @@ $wgExpandTemplatesMessages['de'] = array(
 	'expand_templates_intro'           => 'In diese Spezialseite kann Text eingegeben werden und alle Vorlagen in ihr werden rekursiv expandiert. Auch Parserfunkionen wie <nowiki>{{</nowiki>#if:...}} und Variablen wie <nowiki>{{</nowiki>CURRENTDAY}} werden ausgewertet - faktisch alles was in doppelten geschweiften Klammern enthalten ist. Dies geschieht durch den Aufruf der jeweiligen Parser-Phasen in MediaWiki.',
 	'expand_templates_title'           => 'Kontexttitel, für {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Eingabefeld:',
-	'expand_templates_output'          => 'Ergebnis:',
+	'expand_templates_output'          => 'Ergebnis',
 	'expand_templates_ok'              => 'Ausführen',
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
 );
@@ -66,7 +66,7 @@ qui sont développés recursivement. Les fonctions et les variables prédéfinie
 telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont aussi développées.',
 	'expand_templates_title'           => 'Titre de l’article, utile par exemple si le modèle utilise {{PAGENAME}} :',
 	'expand_templates_input'           => 'Entrez votre texte ici :',
-	'expand_templates_output'          => 'Visualisez le résultat :',
+	'expand_templates_output'          => 'Visualisez le résultat',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Supprimer les commentaires.',
 );
@@ -75,7 +75,7 @@ $wgExpandTemplatesMessages['he'] = array(
 	'expand_templates_intro'           => 'דף זה מקבל כמות מסוימת של טקסט ופורס ומפרש את כל התבניות שבתוכו באופן רקורסיבי. בנוסף, הוא פורס הוראות פירוש כגון <nowiki>{{</nowiki>#תנאי:...}}, ומשתנים כגון <nowiki>{{</nowiki>יום נוכחי}}, ולמעשה בערך כל דבר בסוגריים מסולסלות כפולות. הוא עושה זאת באמצעות קריאה לפונקציות הפענוח המתאימות מתוך תוכנת מדיה־ויקי עצמה.',
 	'expand_templates_title'           => 'כותרת ההקשר לפענוח, בשביל משתנים כגון {{שם הדף}} וכדומה:',
 	'expand_templates_input'           => 'טקסט:',
-	'expand_templates_output'          => 'תוצאה:',
+	'expand_templates_output'          => 'תוצאה',
 	'expand_templates_ok'              => 'פרוס תבניות',
 	'expand_templates_remove_comments' => 'הסר הערות',
 );
@@ -93,7 +93,7 @@ $wgExpandTemplatesMessages['id'] = array(
 	'expand_templates_intro'           => 'Halaman istimewa ini menerima teks dan mengembangkan semua templat di dalamnya secara rekursif. Halaman ini juga menerjemahkan semua fungsi parser seperti <nowiki>{{</nowiki>#if:...}}, dan variabel seperti <nowiki>{{</nowiki>CURRENTDAY}}&mdash;bahkan bisa dibilang segala sesuatu yang berada di antara dua tanda kurung. Ini dilakukan dengan memanggil tahapan parser yang sesuai dari MediaWiki.',
 	'expand_templates_title'           => 'Judul konteks, untuk {{PAGENAME}} dll.:',
 	'expand_templates_input'           => 'Teks sumber:',
-	'expand_templates_output'          => 'Hasil:',
+	'expand_templates_output'          => 'Hasil',
 	'expand_templates_ok'              => 'Jalankan',
 	'expand_templates_remove_comments' => 'Buang komentar',
 );
@@ -102,7 +102,7 @@ $wgExpandTemplatesMessages['it'] = array(
 	'expand_templates_intro'           => 'Questa pagina speciale elabora un testo espandendo tutti i template presenti. Calcola inoltre il risultato delle funzioni supportate dal parser come <nowiki>{{</nowiki>#if:...}} e delle variabili di sistema quali <nowiki>{{</nowiki>CURRENTDAY}}, ovvero praticamente tutto ciò che si trova tra doppie parentesi graffe. Funziona richiamando le opportune funzioni del parser di MediaWiki.',
 	'expand_templates_title'           => 'Contesto (per {{PAGENAME}} ecc.):',
 	'expand_templates_input'           => 'Testo da espandere:',
-	'expand_templates_output'          => 'Risultato:',
+	'expand_templates_output'          => 'Risultato',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Ignora i commenti',
 );
@@ -126,7 +126,7 @@ $wgExpandTemplatesMessages['kk-kz'] = array(
 Бұны өз MediaWiki бағдарламасынан қатысты жөңдету сатын шақырып істелінеді.',
 	'expand_templates_title'           => '{{PAGENAME}} т.б. беттер үшін мәтін аралық атауы:',
 	'expand_templates_input'           => 'Кіріс мәтіні:',
-	'expand_templates_output'          => 'Нәтижесі:',
+	'expand_templates_output'          => 'Нәтижесі',
 	'expand_templates_ok'              => 'Жарайды',
 	'expand_templates_remove_comments' => 'Мәндемелерін аластатып?',
 );
@@ -139,7 +139,7 @@ sïyaqtı aýnamalıların da ulğaýtadı (naqtı aýtqanda, qos qabat sadaq ja
 Bunı öz MediaWiki bağdarlamasınan qatıstı jöñdetw satın şaqırıp istelinedi.',
 	'expand_templates_title'           => '{{PAGENAME}} t.b. better üşin mätin aralıq atawı:',
 	'expand_templates_input'           => 'Kiris mätini:',
-	'expand_templates_output'          => 'Nätïjesi:',
+	'expand_templates_output'          => 'Nätïjesi',
 	'expand_templates_ok'              => 'Jaraýdı',
 	'expand_templates_remove_comments' => 'Mändemelerin alastatıp?',
 );
@@ -152,7 +152,7 @@ $wgExpandTemplatesMessages['kk-cn'] = array(
 بۇنى ٶز MediaWiki باعدارلاماسىنان قاتىستى جٶڭدەتۋ ساتىن شاقىرىپ ٸستەلٸنەدٸ.',
 	'expand_templates_title'           => '{{PAGENAME}} ت.ب. بەتتەر ٷشٸن مٵتٸن ارالىق اتاۋى:',
 	'expand_templates_input'           => 'كٸرٸس مٵتٸنٸ:',
-	'expand_templates_output'          => 'نٵتيجەسٸ:',
+	'expand_templates_output'          => 'نٵتيجەسٸ',
 	'expand_templates_ok'              => 'جارايدى',
 	'expand_templates_remove_comments' => 'مٵندەمەلەرٸن الاستاتىپ؟',
 );
@@ -166,7 +166,7 @@ un esu, bes nix mieh üvverich es, wat mer noch oplöse künnt. Wann jet en <now
 sinn kriss wat erus kütt.',
 	'expand_templates_title'           => 'Dä Siggetitel, also wat för {{PAGENAME}} uew. enjeföllt weed:',
 	'expand_templates_input'           => 'Wat De üvverpröfe wells:',
-	'expand_templates_output'          => 'Wat erus kütt es:',
+	'expand_templates_output'          => 'Wat erus kütt es',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'De ennere Kommentare fottlooße',
 );
@@ -179,7 +179,7 @@ variabelen als <nowiki>{{</nowiki>CURRENTDAY}} &mdash; vrijwel alles tussen dubb
 Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_title'           => 'Contexttitel, voor {{PAGENAME}}, enzovoort:',
 	'expand_templates_input'           => 'Inputtekst:',
-	'expand_templates_output'          => 'Resultaat:',
+	'expand_templates_output'          => 'Resultaat',
 	'expand_templates_remove_comments' => 'Verwijder opmerkingen',
 );
 $wgExpandTemplatesMessages['no'] = array(
@@ -187,7 +187,7 @@ $wgExpandTemplatesMessages['no'] = array(
 	'expand_templates_intro'           => 'Denne siden tar en tekst og utvider alle maler brukt i teksten. Den utvider også alle funksjoner som <nowiki>{{</nowiki>#if:…}}, og variabler som <nowiki>{{</nowiki>CURRENTDAY}}. <!--It does this by calling the relevant parser stage from MediaWiki itself.-->',
 	'expand_templates_title'           => 'Konteksttittel, for {{PAGENAME}}, etc.:',
 	'expand_templates_input'           => 'Skriv inn tekst:',
-	'expand_templates_output'          => 'Resultat:',
+	'expand_templates_output'          => 'Resultat',
 	'expand_templates_ok'              => 'OK',#identical but defined
 	'expand_templates_remove_comments' => 'Fjern kommentarer',
 );
@@ -196,7 +196,7 @@ $wgExpandTemplatesMessages['oc'] = array(
 	'expand_templates_intro'           => 'Aquesta pagina permet de testar l’espandiment de modèls, que son desvolopats recursivament. Las foncions e las variablas predefinidas, coma <nowiki>{{</nowiki>#if:...}} e <nowiki>{{</nowiki>CURRENTDAY}} tanben son desvolopadas.',
 	'expand_templates_title'           => 'Títol de l’article, util per exemple se lo modèl utiliza {{PAGENAME}} :',
 	'expand_templates_input'           => 'Picatz vòstre tèxt aicí :',
-	'expand_templates_output'          => 'Visualizatz lo resultat :',
+	'expand_templates_output'          => 'Visualizatz lo resultat',
 	'expand_templates_ok'              => 'D\'acòrdi',
 	'expand_templates_remove_comments' => 'Suprimir los comentaris.',
 );
@@ -207,7 +207,7 @@ $wgExpandTemplatesMessages['ru'] = array(
 Это производится корректным образом, с вызовом соответствующего обработчика MediaWiki.',
 	'expand_templates_title'           => 'Заголовок страницы для {{PAGENAME}} и т.&nbsp;п.:',
 	'expand_templates_input'           => 'Входной текст:',
-	'expand_templates_output'          => 'Результат:',
+	'expand_templates_output'          => 'Результат',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Удалить комментарии',
 );
@@ -222,7 +222,7 @@ takmer všetko v zložených zátvorkách. Robí to pomocou
 volania relevantnej fázy parsera samotného MediaWiki.',
 	'expand_templates_title'           => 'Názov kontextu pre {{PAGENAME}} atď.:',
 	'expand_templates_input'           => 'Vstupný text:',
-	'expand_templates_output'          => 'Výsledok:',
+	'expand_templates_output'          => 'Výsledok',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Odstrániť komentáre',
 );
@@ -230,7 +230,7 @@ $wgExpandTemplatesMessages['sq'] = array(
 	'expand_templates_input'           => 'Teksti me stampa:',
 	'expand_templates_intro'           => 'Kjo faqe speciale merr tekstin me stampa dhe të tregon se si do të duket teksti pasi të jenë stamposur të tëra. Kjo faqe gjithashtu tregon parapamjen e funksioneve dhe fjalëve magjike si p.sh. <nowiki>{{</nowiki>#if:...}} dhe <nowiki>{{</nowiki>CURRENTDAY}}.',
 	'expand_templates_ok'              => 'Shko',
-	'expand_templates_output'          => 'Parapamja:',
+	'expand_templates_output'          => 'Parapamja',
 	'expand_templates_remove_comments' => 'Hiq komentet',
 	'expand_templates_title'           => 'Titulli i faqes për rrethanën, si <nowiki>{{</nowiki>PAGENAME}} etj.:',
 	'expandtemplates'                  => 'Parapamje stampash',
@@ -243,7 +243,7 @@ $wgExpandTemplatesMessages['sr-ec'] = array(
 До овога долази тако што се зове одговарајуће стање парсера из самог МедијаВикија.',
 	'expand_templates_title'           => 'Назив контекста; за <nowiki>{{</nowiki>СТРАНИЦА}} итд.:',
 	'expand_templates_input'           => 'Унос:',
-	'expand_templates_output'          => 'Резултат:',
+	'expand_templates_output'          => 'Резултат',
 	'expand_templates_ok'              => 'У реду',
 	'expand_templates_remove_comments' => 'Уклони коментаре',
 );
@@ -255,7 +255,7 @@ Takođe menja funkcije parsera kao što je <nowiki>{{</nowiki>#if:...}}, i prome
 Do ovoga dolazi tako što se zove odgovarajuće stanje parsera iz samog MedijaVikija.',
 	'expand_templates_title'           => 'Naziv konteksta; za <nowiki>{{</nowiki>STRANICA}} itd.:',
 	'expand_templates_input'           => 'Unos:',
-	'expand_templates_output'          => 'Rezultat:',
+	'expand_templates_output'          => 'Rezultat',
 	'expand_templates_ok'              => 'U redu',
 	'expand_templates_remove_comments' => 'Ukloni komentare',
 );
@@ -263,7 +263,7 @@ $wgExpandTemplatesMessages['sr'] = $wgExpandTemplatesMessages['sr-ec'];
 
 $wgExpandTemplatesMessages['su'] = array(
 	'expandtemplates'                  => 'Mekarkeun citakan',
-	'expand_templates_output'          => 'Hasil:',#identical but defined
+	'expand_templates_output'          => 'Hasil',#identical but defined
 	'expand_templates_ok'              => 'Heug',
 );
 
