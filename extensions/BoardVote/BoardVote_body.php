@@ -31,7 +31,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 		#$url = "http://eva/w2/extensions/BotQuery/query.php?what=userinfo&format=php";
 		wfDebug( "Fetching URL $url\n" );
 		$c = curl_init( $url );
-		curl_setopt( $c, CURLOPT_CAINFO, dirname( __FILE__ ) . '/cacert-both.crt' );
+		#curl_setopt( $c, CURLOPT_CAINFO, dirname( __FILE__ ) . '/cacert-both.crt' );
 		curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
 		curl_setopt( $c, CURLOPT_COOKIE, "{$db}_session=" . urlencode( $sid ) );
 		curl_setopt( $c, CURLOPT_FOLLOWLOCATION, true );
@@ -39,6 +39,7 @@ class BoardVotePage extends UnlistedSpecialPage {
 		$value = curl_exec( $c );
 		if ( !$value ) {
 			wfDebug( __METHOD__.": No response from server\n" );
+			$_SESSION['bvCurlError'] = curl_error( $c );
 			return array( false, false, false );
 		}
 
