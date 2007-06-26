@@ -13,6 +13,7 @@ $wgExtensionFunctions[] = 'wfSpecialResign';
 $wgExtensionCredits['specialpage'][] = array(
 	'author' => 'Rotem Liss',
 	'name' => 'Resign',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Resign',
 	'description' => 'Gives users the ability to remove their permissions'
 );
 
