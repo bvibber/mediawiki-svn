@@ -289,6 +289,7 @@ $wgBoardVoteMessages['he'] = array(
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|חזרה]]",
+	'boardvote_nosession'     => "לא ניתן לוודא את מספר המשתמש שלכם בוויקימדיה. אנא היכנסו לוויקי שבו אתם רשאים להצביע, ואז היכנסו ל<nowiki>[[מיוחד:Go to board vote]]</nowiki>. עליכם להשתמש בחשבון שיש לו לפחות $1 תרומות לפני $2, ושעריכתו הראשונה בוצעה לפני $3.",
 	'boardvote_notloggedin'   => "אינכם רשומים לחשבון. כדי להצביע, עליכם להשתמש בחשבון שיש לו לפחות $1 תרומות לפני $2, ושעריכתו הראשונה בוצעה לפני $3.",
 	'boardvote_notqualified'  => "אינכם רשאים להצביע בבחירות הללו. תנאי הסף הם ביצוע $3 עריכות לפני $2, בעוד שאתם ביצעתם רק $1 עריכות. בנוסף, עריכתכם הראשונה הייתה בתאריך $4, בעוד היא צריכה להיות לנפי $5.",
 	'boardvote_novotes'       => "איש לא הצביע עדיין.",
@@ -311,6 +312,9 @@ $wgBoardVoteMessages['he'] = array(
 	'group-boardvote'         => 'מנהלי הבחירות לחבר הנאמנים',
 	'group-boardvote-member'  => 'מנהל הבחירות לחבר הנאמנים',
 	'grouppage-boardvote'     => '{{ns:project}}:מנהל הבחירות לחבר הנאמנים',
+	'boardvote_blocked'       => 'מצטערים, אתה חסום בוויקי הרשומה שלך. משתמשים חסומים לא יכולים להצביע.',
+	'boardvote_welcome'       => "ברוכים הבאים, '''$1'''!",
+	'go_to_board_vote'        => 'בחירות לחבר הנאמנים של ויקימדיה, 2007',
 );
 $wgBoardVoteMessages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
