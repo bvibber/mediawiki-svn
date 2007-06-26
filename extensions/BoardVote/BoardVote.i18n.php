@@ -150,13 +150,12 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 );
 $wgBoardVoteMessages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
-	'boardvote_entry'         => "* [[meta:Election candidates 2006/De|Kandidatenvorstellungen]]
+	'boardvote_entry'         => "* [[meta:Board elections/2007/Candidates/de|Kandidatenvorstellungen]]
 * [[{{ns:special}}:Boardvote/vote|Abstimmen]]
 * [[{{ns:special}}:Boardvote/list|Bislang abgegebene Stimmen]]
 * [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]", # to be updated before the next election
 	'boardvote_intro'         => '',                          # to be updated before the next election
 	'boardvote_intro_change'  => "<p>Du hast bereits abgestimmt. Jedoch kannst du deine Stimme(n) mit dem folgenden Formular ändern. Markiere dazu die Kästchen der Kandidaten, die du befürwortest.</p>",
-	'boardvote_footer'        => "&nbsp;",                    # Don't translate this
 	'boardvote_entered'       => "Danke, deine Stimme wurde gespeichert.
 
 Wenn du möchtest, kannst du folgende Details festhalten. Deine Abstimmungsaufzeichnung ist:
@@ -172,6 +171,7 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|Zurück]]",
+	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden. Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Go to board vote]]</nowiki>. Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, die erste Bearbeitung muss vor dem $3 erfolgt sein.",
 	'boardvote_notloggedin'   => "Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem bereits vor dem Stichtag ($2) mindestens $1 Bearbeitungen gemacht wurden.",
 	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Du musst $3 Bearbeitungen vor $2 gemacht haben, du hast $1 Bearbeitungen. Deine erste Bearbeitung erfolgte $4, sie muss vor $5 erfolgt sein. Alle Bedingungen müssen zur Wahlteilnahme erfüllt sein.",
 	'boardvote_novotes'       => "Bislang hat noch keiner abgestimmt.",
@@ -194,6 +194,9 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 	'group-boardvote'         => 'Wahl-Administratoren',
 	'group-boardvote-member'  => 'Wahl-Administrator',
 	'grouppage-boardvote'     => '{{ns:project}}:Wahl-Administrator',
+	'boardvote_blocked'       => 'Entschuldigung, aber du wurdest in deinem Wiki gesperrt. Gesperrten Benutzern ist es nicht erlaubt an der Wahl teilzunehmen.',
+	'boardvote_welcome'       => "Willkommen '''$1'''!",
+	'go_to_board_vote'        => 'Wahlen zum Wikimedia-Kuratorium 2007',
 );
 $wgBoardVoteMessages['fr'] = array(
 	'boardvote'               => "Élections au conseil d’administration de la Wikimedia Foundation",

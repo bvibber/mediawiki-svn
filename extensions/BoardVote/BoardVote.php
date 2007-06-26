@@ -10,6 +10,12 @@ if (!defined('MEDIAWIKI')) {
 # Internationalisation file
 require_once( dirname(__FILE__ ) . '/BoardVote.i18n.php' );
 
+# Extension credits
+$wgExtensionCredits['other'][] = array(
+	'name' => 'BoardVote',
+	'description' => '[[meta:Board elections|Wikimedia Board of Trustees election]]'
+);
+
 # Default settings
 $wgBoardVoteDB = "boardvote";
 $wgBoardCandidates = array();
