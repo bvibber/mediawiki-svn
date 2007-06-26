@@ -4,19 +4,15 @@ if (!defined('MEDIAWIKI')) {
 	die( "Not a valid entry point\n" );
 }
 
-# Add messages
-global $wgMessageCache, $wgBoardVoteMessages;
-foreach( $wgBoardVoteMessages as $lang => $messages ) {
-	$wgMessageCache->addMessages( $messages, $lang );
-}
+wfBoardVoteInitMessages();
 
-class BoardVotePage extends SpecialPage {
+class BoardVotePage extends UnlistedSpecialPage {
 	var $mPosted, $mVotedFor, $mUserDays, $mUserEdits;
 	var $mHasVoted, $mAction, $mUserKey, $mId, $mFinished;
 	var $mDb;
 
 	function BoardVotePage() {
-		SpecialPage::SpecialPage( "Boardvote" );
+		parent::__construct( "Boardvote" );
 	}
 
 	function getUserFromRemote( $sid, $db, $site, $lang ) {

@@ -7,9 +7,6 @@ if (!defined('MEDIAWIKI')) {
 	die( "Not a valid entry point\n" );
 }
 
-# Internationalisation file
-require_once( dirname(__FILE__ ) . '/BoardVote.i18n.php' );
-
 # Extension credits
 $wgExtensionCredits['other'][] = array(
 	'name' => 'BoardVote',
@@ -24,14 +21,16 @@ $wgGPGRecipient = "boardvote";
 $wgGPGHomedir = false;
 $wgGPGPubKey = "C:\\Program Files\\gpg\\pub.txt";
 $wgBoardVoteEditCount = 400;
-$wgBoardVoteFirstEdit = '20060503000000';
-$wgBoardVoteCountDate = '20060801000000';
-$wgBoardVoteStartDate = '20060901000000';
-$wgBoardVoteEndDate =   '20060922000000';
+$wgBoardVoteFirstEdit = '20070301000000';
+$wgBoardVoteCountDate = '20070601000000';
+$wgBoardVoteStartDate = '20070628000000';
+$wgBoardVoteEndDate =   '20070708000000';
 $wgBoardVoteDBServer = $wgDBserver;
 
 # Vote admins
 $wgGroupPermissions['boardvote']['boardvote'] = true;
+
+$wgHooks['LoadAllMessages'][] = 'wfBoardVoteInitMessages';
 
 # Register special page
 if ( !function_exists( 'extAddSpecialPage' ) ) {
@@ -47,6 +46,20 @@ function wfSetupBoardVote() {
 		wfDebug( __METHOD__.": Setting user language to {$_SESSION['bvLang']}\n" );
 		$_REQUEST['uselang'] = $_SESSION['bvLang'];
 	}
+}
+function wfBoardVoteInitMessages() {
+	static $done = false;
+	if ( $done ) return true;
+	$done = true;
+	require_once( dirname(__FILE__ ) . '/BoardVote.i18n.php' );
+
+	# Add messages
+	global $wgMessageCache;
+	foreach( $wgBoardVoteMessages as $lang => $messages ) {
+		$wgMessageCache->addMessages( $messages, $lang );
+	}
+
+	return true;
 }
 
 

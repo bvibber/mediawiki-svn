@@ -1,14 +1,10 @@
 <?php
 
-# Add messages
-global $wgMessageCache, $wgBoardVoteMessages;
-foreach( $wgBoardVoteMessages as $lang => $messages ) {
-	$wgMessageCache->addMessages( $messages, $lang );
-}
+wfBoardVoteInitMessages();
 
-class GoToBoardVotePage extends SpecialPage {
+class GoToBoardVotePage extends UnlistedSpecialPage {
 	function __construct() {
-		SpecialPage::SpecialPage( "Go_to_board_vote" );
+		parent::__construct( "Go_to_board_vote" );
 	}
 
 	function execute( $par ) {
