@@ -16,7 +16,7 @@ all templates in it recursively. It also expands parser functions like
 It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_title'           => 'Context title, for {{PAGENAME}} etc.:',
 	'expand_templates_input'           => 'Input text:',
-	'expand_templates_output'          => 'Result:',
+	'expand_templates_output'          => 'Result',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Remove comments',
 	'expand_templates_preview'			=> 'Preview',

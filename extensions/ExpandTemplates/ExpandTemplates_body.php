@@ -59,6 +59,7 @@ class ExpandTemplates extends SpecialPage {
 	private function makeForm( $title, $removeComments, $input ) {
 		$self = $this->getTitle();
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $self->getLocalUrl() ) );
+		$form .= "<fieldset><legend>" . wfMsgHtml( 'expandtemplates' ) . "</legend>\n";
 		$form .= '<p>' . Xml::inputLabel( wfMsgNoTrans( 'expand_templates_title' ), 'contexttitle', 'contexttitle', 60, $title ) . '</p>';
 		$form .= '<p>' . Xml::label( wfMsg( 'expand_templates_input' ), 'input' ) . '</p>';
 		$form .= Xml::openElement( 'textarea', array( 'name' => 'input', 'id' => 'input', 'rows' => 10, 'cols' => 10 ) );
@@ -66,18 +67,19 @@ class ExpandTemplates extends SpecialPage {
 		$form .= Xml::closeElement( 'textarea' );
 		$form .= '<p>' . Xml::checkLabel( wfMsg( 'expand_templates_remove_comments' ), 'removecomments', 'removecomments', $removeComments ) . '</p>';
 		$form .= '<p>' . Xml::submitButton( wfMsg( 'expand_templates_ok' ) ) . '</p>';
+		$form .= "</fieldset>\n";
 		$form .= Xml::closeElement( 'form' );
 		return $form;
 	}
 	
 	/**
-	 * Generate a nice little box with a label for output
+	 * Generate a nice little box with a heading for output
 	 *
 	 * @param $output Wiki text output
 	 * @return string
 	 */
 	private function makeOutput( $output ) {
-		$out  = '<p>' . Xml::label( wfMsg( 'expand_templates_output' ), 'output' ) . '</p>';
+		$out  = "<h2>" . wfMsgHtml( 'expand_templates_output' ) . "</h2>\n";
 		$out .= Xml::openElement( 'textarea', array( 'id' => 'output', 'rows' => 10, 'cols' => 10, 'readonly' => 'readonly' ) );
 		$out .= htmlspecialchars( $output );
 		$out .= Xml::closeElement( 'textarea' );
