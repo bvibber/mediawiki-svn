@@ -8,7 +8,7 @@ if (!defined('MEDIAWIKI')) {
 }
 
 # Internationalisation file
-require_once( 'BoardVote.i18n.php' );
+require_once( dirname(__FILE__ ) . '/BoardVote.i18n.php' );
 
 # Default settings
 $wgBoardVoteDB = "boardvote";
@@ -32,5 +32,16 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
 extAddSpecialPage( dirname(__FILE__) . '/BoardVote_body.php', 'Boardvote', 'BoardVotePage' );
+extAddSpecialPage( dirname(__FILE__) . '/GoToBoardVote_body.php', 'Go_to_board_vote', 'GoToBoardVotePage' );
+
+$wgExtensionFunctions[] = 'wfSetupBoardVote';
+function wfSetupBoardVote() {
+	wfSetupSession();
+	if ( isset( $_SESSION['bvLang'] ) && !isset( $_REQUEST['uselang'] ) ) {
+		wfDebug( __METHOD__.": Setting user language to {$_SESSION['bvLang']}\n" );
+		$_REQUEST['uselang'] = $_SESSION['bvLang'];
+	}
+}
+
 
 ?>

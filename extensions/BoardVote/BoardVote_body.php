@@ -19,12 +19,85 @@ class BoardVotePage extends SpecialPage {
 		SpecialPage::SpecialPage( "Boardvote" );
 	}
 
-	function execute( $par ) {
-		global $wgUser, $wgDBname, $wgInputEncoding, $wgRequest, 
-			$wgBoardVoteEditCount, $wgBoardVoteEndDate, $wgBoardVoteStartDate, 
-			$wgBoardVoteFirstEdit;
+	function getUserFromRemote( $sid, $db, $site, $lang ) {
+		$regex = '/^[\w.-]+$/';
+		if ( !preg_match( $regex, $sid ) || 
+			!preg_match( $regex, $db ) || 
+			!preg_match( $regex, $site ) || 
+			!preg_match( $regex, $lang )
+		) {
+			wfDebug( __METHOD__.": Invalid parameter\n" );
+			return array( false, false, false );
+		}
 
-		$this->mUserKey = iconv( $wgInputEncoding, "UTF-8", $wgUser->getName() ) . "@$wgDBname";
+		$url = "https://secure.wikimedia.org/$site/$lang/w/query.php?what=userinfo&format=php";
+		#$url = "http://$lang.$site.org/w/query.php?what=userinfo&format=php";
+		#$url = "http://eva/w2/extensions/BotQuery/query.php?what=userinfo&format=php";
+		wfDebug( "Fetching URL $url\n" );
+		$c = curl_init( $url );
+		curl_setopt( $c, CURLOPT_CAINFO, dirname( __FILE__ ) . '/cacert-both.crt' );
+		curl_setopt( $c, CURLOPT_RETURNTRANSFER, true );
+		curl_setopt( $c, CURLOPT_COOKIE, "{$db}_session=" . urlencode( $sid ) );
+		curl_setopt( $c, CURLOPT_FOLLOWLOCATION, true );
+		curl_setopt( $c, CURLOPT_FAILONERROR, true );
+		$value = curl_exec( $c );
+		if ( !$value ) {
+			wfDebug( __METHOD__.": No response from server\n" );
+			return array( false, false, false );
+		}
+
+		$decoded = unserialize( $value );
+		if ( isset( $decoded['meta']['user']['anonymous'] ) ) {
+			wfDebug( __METHOD__.": User is not logged in\n" );
+			return array( false, false, false );
+		}
+		if ( !isset( $decoded['meta']['user']['name'] ) ) {
+			wfDebug( __METHOD__.": No username in response\n" );
+			return array( false, false, false );
+		}
+		wfDebug( __METHOD__." got response for user {$decoded['meta']['user']['name']}@$db\n" );
+		return array( 
+			$decoded['meta']['user']['name'] . '@' . $db,
+			$db,
+			isset( $decoded['meta']['user']['blocked'] ),
+		);
+	}
+
+	function init( $par ) {
+		global $wgRequest;
+		if( session_id() == '' ) {
+			wfSetupSession();
+		}
+
+		$this->mRemoteSession = $wgRequest->getVal( 'sid' );
+		$this->mRemoteDB = $wgRequest->getVal( 'db' );
+		$this->mRemoteSite = $wgRequest->getVal( 'site' );
+		$this->mRemoteLanguage = $wgRequest->getVal( 'lang' );
+
+		if ( $this->mRemoteSession ) {
+			$info = $this->getUserFromRemote( 
+				$this->mRemoteSession,
+				$this->mRemoteDB,
+				$this->mRemoteSite,
+				$this->mRemoteLanguage
+			);
+			list( $this->mUserKey, $this->mDBname, $this->mBlocked ) = $info;
+			list( $_SESSION['bvUserKey'], $_SESSION['bvDBname'], $_SESSION['bvBlocked'] ) = $info;
+			if ( !is_null( $wgRequest->getVal( 'uselang' ) ) ) {
+				$_SESSION['bvLang'] = $wgRequest->getVal( 'uselang' );
+			} else {
+				$_SESSION['bvLang'] = $this->mRemoteLanguage;
+			}
+		} elseif ( isset( $_SESSION['bvUserKey'] ) ) {
+			$this->mUserKey = $_SESSION['bvUserKey'];
+			$this->mDBname = $_SESSION['bvDBname'];
+			$this->mBlocked = $_SESSION['bvBlocked'];
+		} else {
+			$this->mUserKey = false;
+			$this->mDBname = false;
+			$this->mBlocked = false;
+		}
+
 		$this->mPosted = $wgRequest->wasPosted();
 		if ( method_exists( $wgRequest, 'getArray' ) ) {
 			$this->mVotedFor = $wgRequest->getArray( "votedfor", array() );
@@ -33,25 +106,39 @@ class BoardVotePage extends SpecialPage {
 		}
 		$this->mId = $wgRequest->getInt( "id", 0 );
 		
-		$this->mHasVoted = $this->hasVoted( $wgUser );
+		$this->mHasVoted = $this->hasVoted();
 		
 		if ( $par ) {
 			$this->mAction = $par;
 		} else {
 			$this->mAction = $wgRequest->getText( "action" );
 		}
+	}
 
+
+	function execute( $par ) {
+		global $wgBoardVoteEditCount, $wgBoardVoteEndDate, $wgBoardVoteStartDate, 
+			$wgBoardVoteFirstEdit, $wgOut;
+
+		$this->init( $par );
 		$this->setHeaders();
 
-		global $wgOut;
-		
+		if ( $this->mRemoteSession ) {
+			$wgOut->redirect( $this->getTitle( $par )->getFullUrl() );
+			return;
+		}
+
+		if ( $this->mUserKey ) {
+			$wgOut->addWikiText( wfMsg( 'boardvote_welcome', wfEscapeWikiText( $this->mUserKey ) ) );
+		}
+
 		if ( wfTimestampNow() < $wgBoardVoteStartDate && !$this->isAdmin() ) {
 			$wgOut->addWikiText( wfMsg( 'boardvote_notstarted' ) );
 			return;
 		}
 
-		if ( $wgUser->isBlocked() ) {
-			$wgOut->blockedPage();
+		if ( $this->mBlocked ) {
+			$wgOut->addWikiText( wfMsg( 'boardvote_blocked' ) );
 			return;
 		}
 		
@@ -75,14 +162,10 @@ class BoardVotePage extends SpecialPage {
 		} elseif ( $this->mAction == "unstrike" ) {
 			$this->strike( $this->mId, true );
 		} elseif( $this->mAction == "vote" && !$this->mFinished ) {
-			if ( !$wgUser->getID() ) {
+			if ( !$this->mUserKey ) {
 				$this->notLoggedIn();
 			} else {
-				$this->getQualifications( $wgUser );
-				if ( !$this->isAdmin() && 
-					( $this->mUserEdits < $wgBoardVoteEditCount || 
-					$this->mFirstEdit > $wgBoardVoteFirstEdit )
-				) {
+				if ( !$this->isQualified( $this->mUserKey ) ) {
 					$this->notQualified();
 				} elseif ( $this->mPosted ) {
 					$this->logVote();
@@ -114,9 +197,9 @@ class BoardVotePage extends SpecialPage {
 		return $this->mDb;
 	}
 
-	function hasVoted( &$user ) {
+	function hasVoted() {
 		$dbr =& $this->getDB();
-		$row = $dbr->selectRow( 'log', array( "1" ), 
+		$row = $dbr->selectRow( 'vote_log', array( "1" ), 
 		  array( "log_user_key" => $this->mUserKey ), "BoardVotePage::getUserVote" );
 		if ( $row === false ) {
 			return false;
@@ -126,7 +209,7 @@ class BoardVotePage extends SpecialPage {
 	}
 
 	function logVote() {
-		global $wgUser, $wgDBname, $wgIP, $wgOut, $wgGPGPubKey, $wgRequest;
+		global $wgUser, $wgDBname, $wgOut, $wgGPGPubKey, $wgRequest;
 		$fname = "BoardVotePage::logVote";
 		
 		$now = wfTimestampNow();
@@ -134,7 +217,7 @@ class BoardVotePage extends SpecialPage {
 		$encrypted = $this->encrypt( $record );
 		$gpgKey = file_get_contents( $wgGPGPubKey );
 		$dbw =& $this->getDB();
-		$log = $dbw->tableName( "log" );
+		$log = $dbw->tableName( "vote_log" );
 
 		# Mark previous votes as old
 		$encKey = $dbw->strencode( $this->mUserKey );
@@ -150,13 +233,12 @@ class BoardVotePage extends SpecialPage {
 		$tokenMatch = $wgUser->matchEditToken( $wgRequest->getVal( 'edit_token' ) );
 		
 		$dbw->insert( $log, array(
-			"log_user" => $wgUser->getID(),
-			"log_user_text" => $wgUser->getName(),
+			"log_user" => 0,
+			"log_user_text" => '',
 			"log_user_key" => $this->mUserKey,
 			"log_wiki" => $wgDBname,
-			"log_edits" => $this->mUserEdits,
 			"log_record" => $encrypted,
-			"log_ip" => $wgIP,
+			"log_ip" => wfGetIP(),
 			"log_xff" => $xff,
 			"log_ua" => $_SERVER['HTTP_USER_AGENT'],
 			"log_timestamp" => $now,
@@ -217,7 +299,7 @@ class BoardVotePage extends SpecialPage {
 
 	function notLoggedIn() {
 		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang, $wgBoardVoteFirstEdit;
-		$wgOut->addWikiText( wfMsg( "boardvote_notloggedin", $wgBoardVoteEditCount, 
+		$wgOut->addWikiText( wfMsg( "boardvote_nosession", $wgBoardVoteEditCount, 
 			$wgLang->timeanddate( $wgBoardVoteCountDate ),
 			$wgLang->timeanddate( $wgBoardVoteFirstEdit )
 	   	) );
@@ -225,9 +307,8 @@ class BoardVotePage extends SpecialPage {
 	
 	function notQualified() {
 		global $wgOut, $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgLang, $wgBoardVoteFirstEdit;
-		$wgOut->addWikiText( wfMsg( "boardvote_notqualified", $this->mUserEdits, 
-			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteEditCount,
-			$wgLang->timeanddate( $this->mFirstEdit ), 
+		$wgOut->addWikiText( wfMsg( "boardvote_notqualified", '[unknown]', 
+			$wgLang->timeanddate( $wgBoardVoteCountDate ), $wgBoardVoteEditCount, '[unknown]', 
 			$wgLang->timeanddate( $wgBoardVoteFirstEdit )
 		) );
 	}
@@ -266,7 +347,7 @@ class BoardVotePage extends SpecialPage {
 		} 
 		$command .= " " . wfEscapeShellArg( $input ) . " 2>&1";
 
-		$error = shell_exec( $command );
+		$error = wfShellExec( $command );
 
 		# Read result
 		$result = file_get_contents( $output );
@@ -283,27 +364,10 @@ class BoardVotePage extends SpecialPage {
 		return $result;
 	}
 
-	function getQualifications( &$user ) {
-		global $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgVersion;
-
-		// Use the local database, not the boardvote database
-		$dbr =& wfGetDB( DB_SLAVE );
-
-		# Count contributions before $wgBoardVoteCountDate
-		
-		$id = $user->getID();
-		if ( !$id ) {
-			$this->mUserEdits = 0;
-			return;
-		}
-		$date = $dbr->addQuotes( $wgBoardVoteCountDate );
-
-		extract( $dbr->tableNames( 'revision' ) );
-		$sql = "SELECT MIN(rev_timestamp) as first, COUNT(*) as n FROM $revision WHERE rev_timestamp<=$date AND rev_user=$id";
-		$res = $dbr->query( $sql, "BoardVotePage::getQualifications" );
-		$row = $dbr->fetchObject( $res );
-		$this->mUserEdits = $row->n;
-		$this->mFirstEdit = $row->first;
+	function isQualified( $key ) {
+		$db = $this->getDB();
+		$qualified = $db->selectField( 'voters', '1', array( 'user_key' => $key ), __METHOD__ );
+		return (bool)$qualified;
 	}
 	
 	function displayList() {
@@ -312,7 +376,7 @@ class BoardVotePage extends SpecialPage {
 		$userRights = $wgUser->getRights();
 		$admin = $this->isAdmin();
 		$dbr =& $this->getDB();
-		$log = $dbr->tableName( "log" );
+		$log = $dbr->tableName( "vote_log" );
 
 		$sql = "SELECT * FROM $log ORDER BY log_user_key";
 		$res = $dbr->query( $sql, "BoardVotePage::list" );
@@ -327,7 +391,6 @@ class BoardVotePage extends SpecialPage {
 		$intro = wfMsg( "boardvote_listintro", $dumpLink );
 		$hTime = wfMsg( "boardvote_time" );
 		$hUser = wfMsg( "boardvote_user" );
-		$hEdits = wfMsg( "boardvote_edits" );
 		$hIp = wfMsg( "boardvote_ip" );
 		$hUa = wfMsg( "boardvote_ua" );
 
@@ -335,8 +398,6 @@ class BoardVotePage extends SpecialPage {
 			$hUser
 		  </th><th>
 			$hTime
-		  </th><th>
-			$hEdits
 		  </th>";
 
 		if ( $admin ) {
@@ -349,13 +410,7 @@ class BoardVotePage extends SpecialPage {
 		$s .= "</tr>";
 
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			# Earlier versions of medaiwiki had selectable character set, wfUtf8HTML is removed
-			# in later versions.
-			if ( $wgOutputEncoding != "utf-8" && function_exists( 'wfUtf8ToHTML' ) ) {
-				$user = wfUtf8ToHTML( $row->log_user_key );
-			} else {
-				$user = $row->log_user_key;
-			}
+			$user = $row->log_user_key;
 			$time = $wgLang->timeanddate( $row->log_timestamp );
 			$cellOpen = "<td>";
 			$cellClose = "</td>";
@@ -367,13 +422,10 @@ class BoardVotePage extends SpecialPage {
 				$cellOpen .= "<del>";
 				$cellClose = "</del>$cellClose";
 			}
-			$edits = $row->log_edits == 0x7fffffff ? wfMsgHtml( 'boardvote_edits_many' ) : $row->log_edits;
 			$s .= "<tr>$cellOpen
 				  $user
 				{$cellClose}{$cellOpen}
 				  $time
-				{$cellClose}{$cellOpen}
-				  $edits
 				{$cellClose}";
 
 			if ( $admin ) {
@@ -401,9 +453,9 @@ class BoardVotePage extends SpecialPage {
 	}
 
 	function dump() {
-		global $wgOut, $wgOutputEncoding, $wgLang, $wgUser;
+		global $wgOut, $wgOutputEncoding, $wgLang;
 		$dbr =& $this->getDB();
-		$log = $dbr->tableName( "log" );
+		$log = $dbr->tableName( "vote_log" );
 
 		$sql = "SELECT log_record FROM $log WHERE log_current=1 AND log_strike=0";
 		$res = $dbr->query( $sql, DB_SLAVE, "BoardVotePage::list" );
@@ -434,7 +486,7 @@ class BoardVotePage extends SpecialPage {
 		global $wgOut;
 		
 		$dbw =& $this->getDB();
-		$log = $dbw->tableName( "log" );
+		$log = $dbw->tableName( "vote_log" );
 
 		if ( !$this->isAdmin() ) {
 			$wgOut->addWikiText( wfMsg( "boardvote_needadmin" ) );
