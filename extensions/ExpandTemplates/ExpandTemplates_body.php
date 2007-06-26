@@ -41,8 +41,10 @@ class ExpandTemplates extends SpecialPage {
 		$wgOut->addWikiText( wfMsg( 'expand_templates_intro' ) );
 		$wgOut->addHtml( $this->makeForm( $titleStr, $removeComments, $input ) );
 		
-		if( $output )
+		if( $output ) {
 			$wgOut->addHtml( $this->makeOutput( $output ) );
+			$this->showHtmlPreview( $title, $output, $wgOut );
+		}
 		
 	}
 	
@@ -80,6 +82,20 @@ class ExpandTemplates extends SpecialPage {
 		$out .= htmlspecialchars( $output );
 		$out .= Xml::closeElement( 'textarea' );
 		return $out;
+	}
+	
+	/**
+	 * Render the supplied wiki text and append to the page as a preview
+	 *
+	 * @param Title $title
+	 * @param string $text
+	 * @param OutputPage $out
+	 */
+	private function showHtmlPreview( $title, $text, $out ) {
+		global $wgParser;
+		$pout = $wgParser->parse( $text, $title, new ParserOptions() );
+		$out->addHtml( "<h2>" . wfMsgHtml( 'expand_templates_preview' ) . "</h2>\n" );
+		$out->addHtml( $pout->getText() );
 	}
 	
 }

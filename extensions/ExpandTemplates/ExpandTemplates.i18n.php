@@ -19,6 +19,7 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_output'          => 'Result:',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Remove comments',
+	'expand_templates_preview'			=> 'Preview',
 );
 
 $wgExpandTemplatesMessages['ar'] = array(
