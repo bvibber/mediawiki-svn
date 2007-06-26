@@ -337,6 +337,7 @@ Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Kembali]]",
+	'boardvote_nosession'     => "Saya tak dapat menentukan ID pengguna Wikimedia Anda. Harap masuk log pada Wiki yang dapat mengkualifikasikan Anda, dan gunakan <nowiki>[[Special:Go to board vote]]</nowiki>. Anda harus menggunakan suatu akun yang paling tidak telah memiliki $1 kontribusi sebelum $2, dengan suntingan pertama sebelum $3.",
 	'boardvote_notloggedin'   => "Anda tidak masuk log. Untuk dapat memilih Anda harus menggunakan akun dengan paling tidak $1 suntingan sebelum $2, dan dengan suntingan pertama sebelum $3.",
 	'boardvote_notqualified'  => "Anda tidak memiliki hak untuk memberikan suara dalam pemilihan ini. Anda harus memiliki $3 suntingan sebelum $2, sedangkan Anda hanya memiliki $1. Terlebih lagi, suntingan pertama Anda adalah pada $4, dimana disyaratkan harus sebelum $5.",
 	'boardvote_novotes'       => "Belum ada pemilih.",
@@ -358,6 +359,9 @@ Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik 
 	'group-boardvote'         => 'Pengurus pemilihan anggota dewan',
 	'group-boardvote-member'  => 'Pengurus pemilihan anggota dewan',
 	'grouppage-boardvote'     => '{{ns:project}}:Pengurus pemilihan anggota dewan',
+	'boardvote_blocked'       => 'Maaf, Anda telah diblokir pada wiki tempat Anda terdaftar. Pengguna yang diblokir tidak diizinkan untuk memberikan suaranya.',
+	'boardvote_welcome'       => "Selamat datang '''$1'''!",
+	'go_to_board_vote'        => 'Pemilihan Dewan Wikimedia 2007',
 );
 $wgBoardVoteMessages['it'] = array(
 	'boardvote'               => "Elezioni del Consiglio direttivo della Wikimedia Foundation",
