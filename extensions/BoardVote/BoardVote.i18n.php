@@ -54,7 +54,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 [[Special:Boardvote/entry|Back]]",
 	'boardvote_nosession'     => "I can't determine your Wikimedia user ID. Please log in to the wiki where you are qualified, and go to <nowiki>[[Special:Go to board vote]]</nowiki>. You must use an account with at least $1 contributions before $2, and with a first edit before $3.",
 	'boardvote_notloggedin'   => "You are not logged in. To vote, you must use an account with at least $1 contributions before $2, and with a first edit before $3.",
-	'boardvote_notqualified'  => "You are not qualified to vote in this election. You need to have made $3 edits before $2, you have made $1. Also, your first edit was at $4, it needs to be before $5.",
+	'boardvote_notqualified'  => "You are not qualified to vote in this election. You need to have made $3 edits before $2, and your first edit must be before $5.",
 	'boardvote_novotes'       => "Nobody has voted yet.",
 	'boardvote_time'          => "Time",
 	'boardvote_user'          => "User",
