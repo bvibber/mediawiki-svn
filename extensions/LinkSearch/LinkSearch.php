@@ -34,6 +34,7 @@ function wfLinkSearchLoadMessages() {
 }
 
 function wfSpecialLinksearch( $par=null, $ns=null ) {
+	wfLinkSearchLoadMessages();
 	list( $limit, $offset ) = wfCheckLimits();
 	global $wgOut, $wgRequest, $wgUrlProtocols, $wgMiserMode;
 	$target = $GLOBALS['wgRequest']->getVal( 'target', $par );
