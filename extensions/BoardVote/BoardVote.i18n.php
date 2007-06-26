@@ -52,7 +52,7 @@ The resulting encrypted version follows. It will be displayed publicly on [[Spec
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Back]]",
-	'boardvote_nosession'     => "I can't determine your Wikimedia user ID. Please log in to the wiki where you are qualified, and go to <nowiki>[[Special:Go to board vote]]</nowiki>. You must use an account with at least $1 contributions before $2, and with a first edit before $3.",
+	'boardvote_nosession'     => "I can't determine your Wikimedia user ID. Please log in to the wiki where you are qualified, and go to <nowiki>[[Special:Boardvote]]</nowiki>. You must use an account with at least $1 contributions before $2, and with a first edit before $3.",
 	'boardvote_notloggedin'   => "You are not logged in. To vote, you must use an account with at least $1 contributions before $2, and with a first edit before $3.",
 	'boardvote_notqualified'  => "You are not qualified to vote in this election. You need to have made $3 edits before $2, and your first edit must be before $5.",
 	'boardvote_novotes'       => "Nobody has voted yet.",
@@ -171,7 +171,7 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|Zurück]]",
-	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden. Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Go to board vote]]</nowiki>. Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, die erste Bearbeitung muss vor dem $3 erfolgt sein.",
+	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden. Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, die erste Bearbeitung muss vor dem $3 erfolgt sein.",
 	'boardvote_notloggedin'   => "Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem bereits vor dem Stichtag ($2) mindestens $1 Bearbeitungen gemacht wurden.",
 	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Du musst $3 Bearbeitungen vor $2 gemacht haben, du hast $1 Bearbeitungen. Deine erste Bearbeitung erfolgte $4, sie muss vor $5 erfolgt sein. Alle Bedingungen müssen zur Wahlteilnahme erfüllt sein.",
 	'boardvote_novotes'       => "Bislang hat noch keiner abgestimmt.",
@@ -289,7 +289,7 @@ $wgBoardVoteMessages['he'] = array(
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|חזרה]]",
-	'boardvote_nosession'     => "לא ניתן לוודא את מספר המשתמש שלכם בוויקימדיה. אנא היכנסו לוויקי שבו אתם רשאים להצביע, ואז היכנסו ל<nowiki>[[מיוחד:Go to board vote]]</nowiki>. עליכם להשתמש בחשבון שיש לו לפחות $1 תרומות לפני $2, ושעריכתו הראשונה בוצעה לפני $3.",
+	'boardvote_nosession'     => "לא ניתן לוודא את מספר המשתמש שלכם בוויקימדיה. אנא היכנסו לוויקי שבו אתם רשאים להצביע, ואז היכנסו ל<nowiki>[[מיוחד:Boardvote]]</nowiki>. עליכם להשתמש בחשבון שיש לו לפחות $1 תרומות לפני $2, ושעריכתו הראשונה בוצעה לפני $3.",
 	'boardvote_notloggedin'   => "אינכם רשומים לחשבון. כדי להצביע, עליכם להשתמש בחשבון שיש לו לפחות $1 תרומות לפני $2, ושעריכתו הראשונה בוצעה לפני $3.",
 	'boardvote_notqualified'  => "אינכם רשאים להצביע בבחירות הללו. תנאי הסף הם ביצוע $3 עריכות לפני $2, בעוד שאתם ביצעתם רק $1 עריכות. בנוסף, עריכתכם הראשונה הייתה בתאריך $4, בעוד היא צריכה להיות לנפי $5.",
 	'boardvote_novotes'       => "איש לא הצביע עדיין.",
@@ -337,7 +337,7 @@ Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik 
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Kembali]]",
-	'boardvote_nosession'     => "Saya tak dapat menentukan ID pengguna Wikimedia Anda. Harap masuk log pada Wiki yang dapat mengkualifikasikan Anda, dan gunakan <nowiki>[[Special:Go to board vote]]</nowiki>. Anda harus menggunakan suatu akun yang paling tidak telah memiliki $1 kontribusi sebelum $2, dengan suntingan pertama sebelum $3.",
+	'boardvote_nosession'     => "Saya tak dapat menentukan ID pengguna Wikimedia Anda. Harap masuk log pada Wiki yang dapat mengkualifikasikan Anda, dan gunakan <nowiki>[[Special:Boardvote]]</nowiki>. Anda harus menggunakan suatu akun yang paling tidak telah memiliki $1 kontribusi sebelum $2, dengan suntingan pertama sebelum $3.",
 	'boardvote_notloggedin'   => "Anda tidak masuk log. Untuk dapat memilih Anda harus menggunakan akun dengan paling tidak $1 suntingan sebelum $2, dan dengan suntingan pertama sebelum $3.",
 	'boardvote_notqualified'  => "Anda tidak memiliki hak untuk memberikan suara dalam pemilihan ini. Anda harus memiliki $3 suntingan sebelum $2, sedangkan Anda hanya memiliki $1. Terlebih lagi, suntingan pertama Anda adalah pada $4, dimana disyaratkan harus sebelum $5.",
 	'boardvote_novotes'       => "Belum ada pemilih.",
