@@ -77,7 +77,8 @@ $wgNewFields = array(
  	array( 'revision',	    'rev_parent_id',    'patch-rev_parent_id.sql' ),
 	array( 'page_restrictions', 'pr_id',		'patch-page_restrictions_sortkey.sql' ),
 	array( 'ipblocks',          'ipb_block_email',  'patch-ipb_emailban.sql' ),
-	array( 'oldimage',       'oi_metadata',     'patch-oi_metadata.sql'),
+	array( 'oldimage',       'oi_metadata',     'patch-oi_metadata.sql' ),
+	array( 'recentchanges', 'rc_params', 'patch-rc_logging.sql' ),
 );
 
 function rename_table( $from, $to, $patch ) {
