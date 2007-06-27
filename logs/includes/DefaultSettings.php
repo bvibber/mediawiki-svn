@@ -2249,15 +2249,34 @@ $wgLogActions = array(
 	'protect/modify'    => 'modifiedarticleprotection',
 	'protect/unprotect' => 'unprotectedarticle',
 	'rights/rights'     => 'rightslogentry',
-	'delete/delete'     => 'deletedarticle',
-	'delete/restore'    => 'undeletedarticle',
-	'delete/revision'   => 'revdelete-logentry',
+	'delete/delete'     => 'logging-delete-delete',
+	'delete/restore'    => 'logging-delete-restore',
+	'delete/revision'   => 'logging-delete-revision',
 	'upload/upload'     => 'uploadedimage',
 	'upload/revert'     => 'uploadedimage',
 	'move/move'         => '1movedto2',
 	'move/move_redir'   => '1movedto2_redir',
 	'import/upload'     => 'import-logentry-upload',
 	'import/interwiki'  => 'import-logentry-interwiki',
+);
+
+/**
+ * Dictionary of callbacks for partial log formatting
+ * purposes; if set, the output of each is appended to
+ * a log line during formatting
+ */
+$wgLogFormatAppenders = array(
+
+);
+
+/**
+ * Dictionary of callbacks for complete log formatting
+ * purposes; these have the same contract as
+ * LogFormatter::format() and should return a complete
+ * line including <li></li>
+ */
+$wgLogFormatters = array(
+	'patrol' => array( 'PatrolLog', 'formatLine' ),
 );
 
 /**

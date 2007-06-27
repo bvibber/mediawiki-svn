@@ -33,6 +33,30 @@ class PatrolLog {
 	}
 	
 	/**
+	 * Format a complete patrol log line
+	 *
+	 * @param LogItem $item
+	 * @param int $flags
+	 * @return string
+	 */
+	public static function formatLine( $item, $flags ) {
+		global $wgUser, $wgLang, $wgLogActions;
+		$skin = $wgUser->getSkin();
+		
+		# Time
+		$parts[] = $flags & LogFormatter::NO_DATE
+			? $wgLang->time( $item->getTimestamp() )
+			: $wgLang->timeAndDate( $item->getTimestamp() );
+		# User
+		$parts[] = $skin->userLink( $item->getUser()->getId(), $item->getUser()->getName() )
+			. $skin->userToolLinks( $item->getUser()->getId(), $item->getUser()->getName() );
+		# Action
+		$parts[] = self::makeActionText( $item->getTarget(), $item->getParameters(), $skin );
+		
+		return "<li>" . implode( ' ', $parts ) . "</li>\n";
+	}
+	
+	/**
 	 * Generate the log action text corresponding to a patrol log item
 	 *
 	 * @param Title $title Title of the page that was patrolled
@@ -40,32 +64,24 @@ class PatrolLog {
 	 * @param Skin $skin Skin to use for building links, etc.
 	 * @return string
 	 */
-	public static function makeActionText( $title, $params, $skin ) {
-		# This is a bit of a hack, but...if $skin is not a Skin, then *do nothing*
-		# -- this is fine, because the action text we would be queried for under
-		# these conditions would have gone into recentchanges, which we aren't
-		# supposed to be updating
-		if( is_object( $skin ) ) {
-			list( $cur, /* $prev */, $auto ) = $params;
-			# Standard link to the page in question
-			$link = $skin->makeLinkObj( $title );
-			if( $title->exists() ) {
-				# Generate a diff link
-				$bits[] = 'oldid=' . urlencode( $cur );
-				$bits[] = 'diff=prev';
-				$bits = implode( '&', $bits );
-				$diff = $skin->makeKnownLinkObj( $title, htmlspecialchars( wfMsg( 'patrol-log-diff', $cur ) ), $bits );
-			} else {
-				# Don't bother with a diff link, it's useless
-				$diff = htmlspecialchars( wfMsg( 'patrol-log-diff', $cur ) );
-			}
-			# Indicate whether or not the patrolling was automatic
-			$auto = $auto ? wfMsgHtml( 'patrol-log-auto' ) : '';
-			# Put it all together
-			return wfMsgHtml( 'patrol-log-line', $diff, $link, $auto );
+	private static function makeActionText( $title, $params, $skin ) {
+		list( $cur, /* $prev */, $auto ) = $params;
+		# Standard link to the page in question
+		$link = $skin->makeLinkObj( $title );
+		if( $title->exists() ) {
+			# Generate a diff link
+			$bits[] = 'oldid=' . urlencode( $cur );
+			$bits[] = 'diff=prev';
+			$bits = implode( '&', $bits );
+			$diff = $skin->makeKnownLinkObj( $title, htmlspecialchars( wfMsg( 'patrol-log-diff', $cur ) ), $bits );
 		} else {
-			return '';
+			# Don't bother with a diff link, it's useless
+			$diff = htmlspecialchars( wfMsg( 'patrol-log-diff', $cur ) );
 		}
+		# Indicate whether or not the patrolling was automatic
+		$auto = $auto ? wfMsgHtml( 'patrol-log-auto' ) : '';
+		# Put it all together
+		return wfMsgHtml( 'patrol-log-line', $diff, $link, $auto );
 	}
 	
 	/**

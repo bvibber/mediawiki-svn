@@ -2908,6 +2908,12 @@ Try normal preview.',
 'lag-warn-high'   => 'Due to high database server lag, changes newer than $1 seconds
 may not be shown in this list.',
 
+# Logging
+'logging-delete-delete' => 'deleted $1',
+'logging-delete-restore' => 'restored $1',
+'logging-delete-revision' => '',
+
+
 );
 
 ?>

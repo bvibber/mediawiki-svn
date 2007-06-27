@@ -161,10 +161,7 @@ class LogReader {
 	 */
 	function getQuery() {
 		$logging = $this->db->tableName( "logging" );
-		$sql = "SELECT /*! STRAIGHT_JOIN */ log_type, log_action, log_timestamp,
-			log_user, user_name,
-			log_namespace, log_title, page_id,
-			log_comment, log_params FROM $logging ";
+		$sql = "SELECT /*! STRAIGHT_JOIN */ * FROM $logging ";
 		if( !empty( $this->joinClauses ) ) {
 			$sql .= implode( ' ', $this->joinClauses );
 		}
@@ -338,7 +335,8 @@ class LogViewer {
 				$listopen = true;
 				$lastdate = $date;
 			}
-			$html .= Xml::tags('li', null, $this->logLine( $s ) ) . "\n";
+			$html .= $this->logLine( $s );
+			#$html .= Xml::tags('li', null, $this->logLine( $s ) ) . "\n";
 		}
 		if ( $listopen ) { $html .= Xml::closeElement( 'ul' ); }
 		$out->addHTML( $html );
@@ -355,6 +353,10 @@ class LogViewer {
 	 * @private
 	 */
 	function logLine( $s ) {
+	
+		$line = LogItem::newFromRow( $s );
+		return $line->format( LogFormatter::NO_DATE );	
+	
 		global $wgLang, $wgUser;;
 		$skin = $wgUser->getSkin();
 		$title = Title::makeTitle( $s->log_namespace, $s->log_title );
