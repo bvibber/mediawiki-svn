@@ -2262,10 +2262,12 @@ $wgLogActions = array(
 
 /**
  * Dictionary of callbacks for partial log formatting
- * purposes; if set, the output of each is appended to
- * a log line during formatting
+ * purposes; if set, the output of each is used to build
+ * the "action text" when formatting a log line
  */
-$wgLogFormatAppenders = array(
+$wgLogActionCallbacks = array(
+	'block' => array( 'BlockLogFormatter', 'makeActionText' ),
+	'patrol' => array( 'PatrolLog', 'makeActionText' ),
 );
 
 /**
@@ -2275,8 +2277,6 @@ $wgLogFormatAppenders = array(
  * line including <li></li>
  */
 $wgLogFormatters = array(
-	'block' => array( 'BlockLogFormatter', 'formatBlock' ),
-	'patrol' => array( 'PatrolLog', 'formatLine' ),
 );
 
 /**

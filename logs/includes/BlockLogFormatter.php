@@ -15,22 +15,15 @@ class BlockLogFormatter {
 	const LINK_UNBLOCK = 2;
 
 	/**
-	 * Format a complete block log item
+	 * Build the action text for a block log item
 	 *
 	 * @param LogItem $item
-	 * @param int $flags
 	 * @return string
 	 */
-	public static function formatBlock( $item, $flags ) {
+	public static function makeActionText( $item ) {
 		global $wgUser, $wgLang, $wgLogActions;
 		$skin = $wgUser->getSkin();
 		$data = $item->getParameters();
-		
-		$parts[] = $flags & LogFormatter::NO_DATE
-			? $wgLang->time( $item->getTimestamp() )
-			: $wgLang->timeAndDate( $item->getTimestamp() );
-		$parts[] = $skin->userLink( $item->getUser()->getId(), $item->getUser()->getName() )
-			. $skin->userToolLinks( $item->getUser()->getId(), $item->getUser()->getName() );
 		
 		# Target link
 		$link = $item->getAction() == 'block' ? self::LINK_BLOCK : self::LINK_UNBLOCK;
@@ -42,8 +35,7 @@ class BlockLogFormatter {
 			$params[] = ( isset( $data[1] ) ? self::formatBlockFlags( $data[1] ) : '' );
 		}
 		
-		$parts[] = wfMsgReal( $wgLogActions[ $item->getActionKey() ], $params );
-		return "<li>" . implode( ' ', $parts ) . "</li>\n";
+		return LogFormatter::getActionText( $item, $params );
 	}
 	
 	/**

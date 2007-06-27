@@ -35,8 +35,8 @@ class LogFormatter {
 	}
 	
 	/**
-	 * Default formatter; all the standard bits plus the
-	 * appropriate "appender" if set
+	 * Default formatter; all the standard bits, using custom
+	 * action formatter if set
 	 *
 	 * @param LogItem $item
 	 * @param int $flags
@@ -54,16 +54,32 @@ class LogFormatter {
 		$parts[] = $skin->userLink( $item->getUser()->getId(), $item->getUser()->getName() )
 			. $skin->userToolLinks( $item->getUser()->getId(), $item->getUser()->getName() );
 		# Action
-		$params = $item->getParameters();
-		array_unshift( $params, $skin->makeLinkObj( $item->getTarget() ) );
-		$parts[] = wfMsgReal( $wgLogActions[ $item->getActionKey() ], $params );
-		# Custom appended bits
-		if( ( $appender = self::getAppender( $item ) ) !== false )
-			$parts[] .= call_user_func( $appender, $item );
+		if( ( $callback = self::getActionCallback( $item ) ) !== false ) {
+			# Custom action text callback
+			$parts[] = call_user_func( $callback, $item );
+		} else {
+			# Use the message
+			$params = $item->getParameters();
+			array_unshift( $params, $skin->makeLinkObj( $item->getTarget() ) );
+			$parts[] = self::getActionText( $item, $params );
+		}
+		# Comment
+		$parts[] = $skin->commentBlock( $item->getComment() );
 		
 		return "<li>" . implode( ' ', $parts ) . "</li>\n";
 	}
 	
+	/**
+	 * Get the action text for a particular log item
+	 *
+	 * @param LogItem $item
+	 * @param array $params
+	 * @return string
+	 */
+	public static function getActionText( $item, $params ) {
+		global $wgLogActions;
+		return wfMsgReal( $wgLogActions[ $item->getActionKey() ], $params );
+	}
 	
 	/**
 	 * Get the LogFormatter::format()-compliant callback
@@ -80,16 +96,16 @@ class LogFormatter {
 	}
 	
 	/**
-	 * Get the callback to append to the log line for
+	 * Get the callback to build action text for the
 	 * specified log item, if there is one
 	 *
 	 * @param LogItem $item
 	 * @return mixed
 	 */
-	private static function getAppender( $item ) {
-		global $wgLogFormatAppenders;
-		return isset( $wgLogFormatAppenders[ $item->getType() ] )
-			? $wgLogFormatAppenders[ $item->getType() ]
+	private static function getActionCallback( $item ) {
+		global $wgLogActionCallbacks;
+		return isset( $wgLogActionCallbacks[ $item->getType() ] )
+			? $wgLogActionCallbacks[ $item->getType() ]
 			: false;
 	}
 	
