@@ -2243,8 +2243,8 @@ $wgLogHeaders = array(
  * Extensions with custom log types may add to this array.
  */
 $wgLogActions = array(
-	'block/block'       => 'blocklogentry',
-	'block/unblock'     => 'unblocklogentry',
+	'block/block'       => 'block-log-blocked',
+	'block/unblock'     => 'block-log-unblocked',
 	'protect/protect'   => 'protectedarticle',
 	'protect/modify'    => 'modifiedarticleprotection',
 	'protect/unprotect' => 'unprotectedarticle',
@@ -2266,7 +2266,6 @@ $wgLogActions = array(
  * a log line during formatting
  */
 $wgLogFormatAppenders = array(
-
 );
 
 /**
@@ -2276,6 +2275,7 @@ $wgLogFormatAppenders = array(
  * line including <li></li>
  */
 $wgLogFormatters = array(
+	'block' => array( 'BlockLogFormatter', 'formatBlock' ),
 	'patrol' => array( 'PatrolLog', 'formatLine' ),
 );
 

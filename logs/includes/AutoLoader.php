@@ -254,6 +254,8 @@ function __autoload($className) {
 		'EmaillingJob' => 'includes/JobQueue.php',
 		
 		# Logging
+		'BlockLogFormatter' => 'includes/BlockLogFormatter.php',
+		'CoreLogFormatter' => 'includes/CoreLogFormatter.php',
 		'LogFormatter' => 'includes/LogFormatter.php',
 		'LogItem' => 'includes/LogItem.php',
 		'LogUser' => 'includes/LogUser.php',

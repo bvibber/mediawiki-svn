@@ -392,11 +392,6 @@ class LogViewer {
 				wfMsg( 'undeletebtn' ) ,
 				'target='. urlencode( $title->getPrefixedDBkey() ) ) . ')';
 		
-		// show unblock link
-		} elseif ( $s->log_action == 'block' && $wgUser->isAllowed( 'block' ) ) {
-			$revert = '(' .  $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Ipblocklist' ),
-				wfMsg( 'unblocklink' ),
-				'action=unblock&ip=' . urlencode( $s->log_title ) ) . ')';
 		// show change protection link
 		} elseif ( ( $s->log_action == 'protect' || $s->log_action == 'modify' ) && $wgUser->isAllowed( 'protect' ) ) {
 			$revert = '(' .  $skin->makeKnownLinkObj( $title, wfMsg( 'protect_change' ), 'action=unprotect' ) . ')';
