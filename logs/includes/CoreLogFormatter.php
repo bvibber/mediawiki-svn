@@ -17,9 +17,23 @@ class CoreLogFormatter {
 	 * @return string
 	 */
 	public static function formatMove( $item, $skin ) {
+		global $wgUser;
 		$data = $item->getParameters();
+		$dest = Title::newFromText( $data[0] );
 		$params[] = $skin->makeLinkObj( $item->getTarget(), '', 'redirect=no' );
-		$params[] = $skin->makeLinkObj( Title::newFromText( $data[0] ) );
+		$params[] = $skin->makeLinkObj( $dest );
+		if( $wgUser->isAllowed( 'move' ) ) {
+			$params[] = $skin->makeKnownLinkObj(
+				SpecialPage::getTitleFor( 'Movepage' ),
+				'(' . wfMsgHtml( 'revertmove' ) . ')',
+				'wpOldTitle=' . $dest->getPrefixedUrl()
+				. '&wpNewTitle=' . $item->getTarget()->getPrefixedUrl()
+				. '&wpReason=' . urlencode( wfMsgForContent( 'revertmove' ) )
+				. '&wpMovetalk=0'
+			);
+		} else {
+			$params[] = '';
+		}
 		return LogFormatter::getActionText( $item, $params );		
 	}
 

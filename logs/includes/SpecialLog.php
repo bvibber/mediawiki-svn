@@ -340,7 +340,6 @@ class LogViewer {
 				$lastdate = $date;
 			}
 			$html .= $this->logLine( $s );
-			#$html .= Xml::tags('li', null, $this->logLine( $s ) ) . "\n";
 		}
 		if ( $listopen ) { $html .= Xml::closeElement( 'ul' ); }
 		$out->addHTML( $html );
@@ -365,16 +364,6 @@ class LogViewer {
 	/**
 	function logLine( $s ) {
 	
-		if ( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
-			$destTitle = Title::newFromText( $paramArray[0] );
-			if ( $destTitle ) {
-				$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Movepage' ),
-					wfMsg( 'revertmove' ),
-					'wpOldTitle=' . urlencode( $destTitle->getPrefixedDBkey() ) .
-					'&wpNewTitle=' . urlencode( $title->getPrefixedDBkey() ) .
-					'&wpReason=' . urlencode( wfMsgForContent( 'revertmove' ) ) .
-					'&wpMovetalk=0' ) . ')';
-			}
 		// show undelete link
 		} elseif ( $s->log_action == 'delete' && $wgUser->isAllowed( 'delete' ) ) {
 			$revert = '(' . $this->skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Undelete' ),
