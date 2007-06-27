@@ -161,7 +161,8 @@ class LogReader {
 	 */
 	function getQuery() {
 		$logging = $this->db->tableName( "logging" );
-		$sql = "SELECT /*! STRAIGHT_JOIN */ * FROM $logging ";
+		# Note: Fake out log_id until it's live on Wikimedia
+		$sql = "SELECT /*! STRAIGHT_JOIN */ *, 0 AS log_id FROM $logging ";
 		if( !empty( $this->joinClauses ) ) {
 			$sql .= implode( ' ', $this->joinClauses );
 		}
