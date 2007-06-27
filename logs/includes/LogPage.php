@@ -112,27 +112,12 @@ class LogPage {
 							$titleLink = $skin->makeLinkObj( $title, $title->getPrefixedText(), 'redirect=no' );
 							$params[0] = $skin->makeLinkObj( Title::newFromText( $params[0] ), $params[0] );
 							break;
-						case 'rights':
-							$text = $wgContLang->ucfirst( $title->getText() );
-							$titleLink = $skin->makeLinkObj( Title::makeTitle( NS_USER, $text ) );
-							break;
 						default:
 							$titleLink = $skin->makeLinkObj( $title );
 					}
 
 				} else {
 					$titleLink = $title->getPrefixedText();
-				}
-				if( $key == 'rights/rights' ) {
-					if ($skin) {
-						$rightsnone = wfMsg( 'rightsnone' );
-					} else {
-						$rightsnone = wfMsgForContent( 'rightsnone' );
-					}
-					if( !isset( $params[0] ) || trim( $params[0] ) == '' )
-						$params[0] = $rightsnone;
-					if( !isset( $params[1] ) || trim( $params[1] ) == '' )
-						$params[1] = $rightsnone;
 				}
 				if( count( $params ) == 0 ) {
 					if ( $skin ) {

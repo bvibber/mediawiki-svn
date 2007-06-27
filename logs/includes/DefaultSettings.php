@@ -2268,6 +2268,7 @@ $wgLogActions = array(
 $wgLogActionCallbacks = array(
 	'block' => array( 'BlockLogFormatter', 'makeActionText' ),
 	'patrol' => array( 'PatrolLog', 'makeActionText' ),
+	'rights' => array( 'CoreLogFormatter', 'formatRights' ),
 );
 
 /**
