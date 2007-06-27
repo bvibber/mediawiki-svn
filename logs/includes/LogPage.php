@@ -91,9 +91,8 @@ class LogPage {
 		return wfMsg( $wgLogHeaders[$type] );
 	}
 
+
 	/**
-	 * @static
-	 */
 	static function actionText( $type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks=false, $translate=false ) {
 		global $wgLang, $wgContLang, $wgLogActions;
 
@@ -171,7 +170,7 @@ class LogPage {
 			$rv = str_replace( "]]", "", $rv );
 		}
 		return $rv;
-	}
+	}*/
 
 	/**
 	 * Insert a new log row, updating recent changes if

@@ -50,6 +50,9 @@ class BlockLogFormatter {
 		global $wgUser;
 		$skin = $wgUser->getSkin();
 		
+		if( substr( $target->getText(), 0, 1 ) == '#' )
+			return $target->getText();
+		
 		$tools[] = $skin->makeLinkObj( $target->getTalkPage(), wfMsgHtml( 'talkpagelinktext' ) );
 		$tools[] = $skin->makeKnownLinkObj(
 			SpecialPage::getTitleFor( 'Contributions', $target->getText() ), wfMsgHtml( 'contribslink' ) );
