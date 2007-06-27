@@ -54,11 +54,9 @@ class LogFormatter {
 		$parts[] = $skin->userLink( $item->getUser()->getId(), $item->getUser()->getName() )
 			. $skin->userToolLinks( $item->getUser()->getId(), $item->getUser()->getName() );
 		# Action
-		$parts[] = wfMsgExt(
-			$wgLogActions[ $item->getActionKey() ],
-			array( 'parseinline', 'replaceafter' ),
-			$skin->makeLinkObj( $item->getTarget() )
-		);
+		$params = $item->getParameters();
+		array_unshift( $params, $skin->makeLinkObj( $item->getTarget() ) );
+		$parts[] = wfMsgReal( $wgLogActions[ $item->getActionKey() ], $params );
 		# Custom appended bits
 		if( ( $appender = self::getAppender( $item ) ) !== false )
 			$parts[] .= call_user_func( $appender, $item );
@@ -89,9 +87,9 @@ class LogFormatter {
 	 * @return mixed
 	 */
 	private static function getAppender( $item ) {
-		global $wgLogAppenders;
-		return isset( $wgLogAppenders[ $item->getType() ] )
-			? $wgLogAppenders[ $item->getType() ]
+		global $wgLogFormatAppenders;
+		return isset( $wgLogFormatAppenders[ $item->getType() ] )
+			? $wgLogFormatAppenders[ $item->getType() ]
 			: false;
 	}
 	
