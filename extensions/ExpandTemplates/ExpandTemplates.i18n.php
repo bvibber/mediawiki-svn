@@ -19,7 +19,7 @@ It does this by calling the relevant parser stage from MediaWiki itself.',
 	'expand_templates_output'          => 'Result',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Remove comments',
-	'expand_templates_preview'			=> 'Preview',
+	'expand_templates_preview'         => 'Preview',
 );
 
 $wgExpandTemplatesMessages['ar'] = array(
@@ -48,6 +48,7 @@ $wgExpandTemplatesMessages['de'] = array(
 	'expand_templates_output'          => 'Ergebnis',
 	'expand_templates_ok'              => 'Ausführen',
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
+	'expand_templates_preview'         => 'Vorschau',
 );
 $wgExpandTemplatesMessages['fi'] = array(
 	'expandtemplates'                  => 'Mallineiden laajennus',

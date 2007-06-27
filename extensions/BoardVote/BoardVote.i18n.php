@@ -173,7 +173,7 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 [[{{ns:special}}:Boardvote/entry|Zurück]]",
 	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden. Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, die erste Bearbeitung muss vor dem $3 erfolgt sein.",
 	'boardvote_notloggedin'   => "Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem bereits vor dem Stichtag ($2) mindestens $1 Bearbeitungen gemacht wurden.",
-	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Du musst $3 Bearbeitungen vor $2 gemacht haben, du hast $1 Bearbeitungen. Deine erste Bearbeitung erfolgte $4, sie muss vor $5 erfolgt sein. Alle Bedingungen müssen zur Wahlteilnahme erfüllt sein.",
+	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Du musst $3 Bearbeitungen vor dem $2 getätigt haben und deine erste Bearbeitung muss vor dem $5 erfolgt sein. Alle Bedingungen müssen zur Wahlteilnahme erfüllt sein.",
 	'boardvote_novotes'       => "Bislang hat noch keiner abgestimmt.",
 	'boardvote_time'          => "Zeit",
 	'boardvote_user'          => "Benutzer",

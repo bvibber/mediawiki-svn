@@ -11,6 +11,13 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 # Internationalisation file
 require_once( 'ExpandTemplates.i18n.php' );
 
+$wgExtensionCredits['specialpage'][] = array(
+	// 'author' => '', Who is the author?
+	'name' => 'ExpandTemplates',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:ExpandTemplates',
+	'description' => 'Expands templates, parser functions and variables to show expanded wikitext and preview rendered page'
+);
+
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
