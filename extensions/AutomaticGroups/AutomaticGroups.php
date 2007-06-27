@@ -12,7 +12,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'Automatic Groups',
 		'author' => 'Rob Church',
-		'url' => '',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:Automatic_Groups',
 		'description' => 'Provides a convenient means to configure automatic group
 			membership based on user account age and edit count',
 	);
@@ -27,12 +27,10 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 *
 	 * Index is the group being assigned, with a second array
 	 * of account properties; acceptable keys are 'age' and 'edits'
+	 *
+	 * See README for more information and examples
 	 */
 	$wgAutomaticGroups = array();
-	// Example: "autoconfirmed" for accounts which are 4 days old
-	//$wgAutomaticGroups['autoconfirmed'] = array( 'age' => 86400 * 4 );
-	// Example: "patroller" for accounts with 250 edits
-	//$wgAutomaticGroups['patroller'] = array( 'edits' => 250 );
 	
 	/**
 	 * Main execution function
