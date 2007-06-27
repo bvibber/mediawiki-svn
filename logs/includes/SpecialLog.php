@@ -285,6 +285,9 @@ class LogViewer {
 		// Fetch results and form a batch link existence query
 		$batch = new LinkBatch;
 		while ( $s = $result->fetchObject() ) {
+			// Target title
+			$batch->addObj( Title::makeTitleSafe( $s->log_namespace, $s->log_title ) );
+		
 			// User link
 			$batch->addObj( Title::makeTitleSafe( NS_USER, $s->user_name ) );
 			$batch->addObj( Title::makeTitleSafe( NS_USER_TALK, $s->user_name ) );
@@ -348,34 +351,19 @@ class LogViewer {
 	}
 
 	/**
-	 * @param Object $s a single row from the result set
-	 * @return string Formatted HTML list item
-	 * @private
+	 * Format a single result row
+	 *
+	 * @param object $row Result row
+	 * @return string
 	 */
+	private function logLine( $row ) {
+		$line = LogItem::newFromRow( $row );
+		return $line->format( LogFormatter::NO_DATE );
+	}
+
+	/**
 	function logLine( $s ) {
 	
-		$line = LogItem::newFromRow( $s );
-		return $line->format( LogFormatter::NO_DATE );	
-	
-		global $wgLang, $wgUser;;
-		$skin = $wgUser->getSkin();
-		$title = Title::makeTitle( $s->log_namespace, $s->log_title );
-		$time = $wgLang->time( wfTimestamp(TS_MW, $s->log_timestamp), true );
-
-		// Enter the existence or non-existence of this page into the link cache,
-		// for faster makeLinkObj() in LogPage::actionText()
-		$linkCache =& LinkCache::singleton();
-		if( $s->page_id ) {
-			$linkCache->addGoodLinkObj( $s->page_id, $title );
-		} else {
-			$linkCache->addBadLinkObj( $title );
-		}
-
-		$userLink = $this->skin->userLink( $s->log_user, $s->user_name ) . $this->skin->userToolLinksRedContribs( $s->log_user, $s->user_name );
-		$comment = $this->skin->commentBlock( $s->log_comment );
-		$paramArray = LogPage::extractParams( $s->log_params );
-		$revert = '';
-		// show revertmove link
 		if ( $s->log_type == 'move' && isset( $paramArray[0] ) ) {
 			$destTitle = Title::newFromText( $paramArray[0] );
 			if ( $destTitle ) {
@@ -411,7 +399,7 @@ class LogViewer {
 		$action = LogPage::actionText( $s->log_type, $s->log_action, $title, $this->skin, $paramArray, true, true );
 		$out = "$time $userLink $action $comment $revert";
 		return $out;
-	}
+	}*/
 
 	/**
 	 * @param OutputPage &$out where to send output
