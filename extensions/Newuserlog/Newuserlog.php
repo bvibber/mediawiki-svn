@@ -74,7 +74,7 @@ function wfNewuserlogHook( $user ) {
 	}
 
 	$log = new LogPage( 'newusers' );
-	$log->addEntry( $action, $user->getUserPage(), $message );
+	$log->addEntry( $action, $user->getUserPage(), $message, array( $user->getId() ) );
 
 	return true;
 }
