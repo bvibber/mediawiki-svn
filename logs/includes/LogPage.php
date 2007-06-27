@@ -91,56 +91,6 @@ class LogPage {
 		return wfMsg( $wgLogHeaders[$type] );
 	}
 
-
-	/**
-	static function actionText( $type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks=false, $translate=false ) {
-		global $wgLang, $wgContLang, $wgLogActions;
-
-		$key = "$type/$action";
-		
-		if( $key == 'patrol/patrol' )
-			return PatrolLog::makeActionText( $title, $params, $skin );
-		
-		if( isset( $wgLogActions[$key] ) ) {
-			if( is_null( $title ) ) {
-				$rv=wfMsg( $wgLogActions[$key] );
-			} else {
-				if( $skin ) {
-
-					switch( $type ) {
-						case 'move':
-							$titleLink = $skin->makeLinkObj( $title, $title->getPrefixedText(), 'redirect=no' );
-							$params[0] = $skin->makeLinkObj( Title::newFromText( $params[0] ), $params[0] );
-							break;
-						default:
-							$titleLink = $skin->makeLinkObj( $title );
-					}
-
-				} else {
-					$titleLink = $title->getPrefixedText();
-				}
-				if( count( $params ) == 0 ) {
-					if ( $skin ) {
-						$rv = wfMsg( $wgLogActions[$key], $titleLink );
-					} else {
-						$rv = wfMsgForContent( $wgLogActions[$key], $titleLink );
-					}
-				} else {
-					array_unshift( $params, $titleLink );
-					$rv = wfMsgReal( $wgLogActions[$key], $params, true, !$skin );
-				}
-			}
-		} else {
-			wfDebug( "LogPage::actionText - unknown action $key\n" );
-			$rv = "$action";
-		}
-		if( $filterWikilinks ) {
-			$rv = str_replace( "[[", "", $rv );
-			$rv = str_replace( "]]", "", $rv );
-		}
-		return $rv;
-	}*/
-
 	/**
 	 * Insert a new log row, updating recent changes if
 	 * we've been asked to do so
