@@ -112,14 +112,6 @@ class LogPage {
 							$titleLink = $skin->makeLinkObj( $title, $title->getPrefixedText(), 'redirect=no' );
 							$params[0] = $skin->makeLinkObj( Title::newFromText( $params[0] ), $params[0] );
 							break;
-						case 'block':
-							if( substr( $title->getText(), 0, 1 ) == '#' ) {
-								$titleLink = $title->getText();
-							} else {
-								$titleLink = $skin->makeLinkObj( $title, $title->getText() );
-								$titleLink .= ' (' . $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $title->getDBkey() ), wfMsg( 'contribslink' ) ) . ')';
-							}
-							break;
 						case 'rights':
 							$text = $wgContLang->ucfirst( $title->getText() );
 							$titleLink = $skin->makeLinkObj( Title::makeTitle( NS_USER, $text ) );
@@ -150,14 +142,6 @@ class LogPage {
 					}
 				} else {
 					array_unshift( $params, $titleLink );
-					if ( $key == 'block/block' ) {
-						if ( $translate ) {
-							$params[1] = $wgLang->translateBlockExpiry( $params[1] );
-						}
-						$params[2] = isset( $params[2] )
-										? self::formatBlockFlags( $params[2] )
-										: '';
-					}
 					$rv = wfMsgReal( $wgLogActions[$key], $params, true, !$skin );
 				}
 			}
