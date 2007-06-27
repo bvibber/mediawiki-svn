@@ -30,7 +30,7 @@ function addMatchedText ( &$parserOutput , &$text ) {
 
 	$match_request = $wgRequest->getText( 'match' );
 	if ( $match_request === '' ) { 
-		return true; 
+		return true;
 	}
 
 	foreach( $parserOutput->mLanguageLinks as $l ) {
