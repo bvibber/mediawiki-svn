@@ -209,7 +209,7 @@ class LogPage {
 				'',
 				$this->type,
 				$action,
-				$params
+				self::makeParamBlob( $params )
 			);
 		}
 
