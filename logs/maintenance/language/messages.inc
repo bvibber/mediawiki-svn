@@ -1384,6 +1384,8 @@ $wgMessageStructure = array(
 		'1movedto2_redir',
 		'movelogpage',
 		'movelogpagetext',
+		'movelog-moved',
+		'movelog-movedredir',
 		'movereason',
 		'revertmove',
 		'delete_and_move',

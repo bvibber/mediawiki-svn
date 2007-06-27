@@ -10,6 +10,23 @@
 class CoreLogFormatter {
 
 	/**
+	 * Build the action text for a move log item
+	 *
+	 * @param LogItem $item Item to format
+	 * @return string
+	 */
+	public static function formatMove( $item ) {
+		global $wgUser;
+		$skin = $wgUser->getSkin();
+		$data = $item->getParameters();
+
+		$params[] = $skin->makeLinkObj( $item->getTarget(), '', 'redirect=no' );
+		$params[] = $skin->makeLinkObj( Title::newFromText( $data[0] ) );
+		
+		return LogFormatter::getActionText( $item, $params );		
+	}
+
+	/**
 	 * Build the action text for a user rights log item
 	 *
 	 * @param LogItem $item Item to format

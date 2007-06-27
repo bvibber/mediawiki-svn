@@ -2254,8 +2254,8 @@ $wgLogActions = array(
 	'delete/revision'   => 'logging-delete-revision',
 	'upload/upload'     => 'uploadedimage',
 	'upload/revert'     => 'uploadedimage',
-	'move/move'         => '1movedto2',
-	'move/move_redir'   => '1movedto2_redir',
+	'move/move'         => 'movelog-moved',
+	'move/move_redir'   => 'movelog-movedredir',
 	'import/upload'     => 'import-logentry-upload',
 	'import/interwiki'  => 'import-logentry-interwiki',
 );
@@ -2267,6 +2267,7 @@ $wgLogActions = array(
  */
 $wgLogActionCallbacks = array(
 	'block' => array( 'BlockLogFormatter', 'makeActionText' ),
+	'move' => array( 'CoreLogFormatter', 'formatMove' ),
 	'patrol' => array( 'PatrolLog', 'makeActionText' ),
 	'rights' => array( 'CoreLogFormatter', 'formatRights' ),
 );
