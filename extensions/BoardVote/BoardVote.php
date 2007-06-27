@@ -36,11 +36,12 @@ $wgHooks['LoadAllMessages'][] = 'wfBoardVoteInitMessages';
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 }
-extAddSpecialPage( dirname(__FILE__) . '/GoToBoardVote_body.php', 'Go_to_board_vote', 'GoToBoardVotePage' );
 
 if ( !defined( 'BOARDVOTE_REDIRECT_ONLY' ) ) {
 	extAddSpecialPage( dirname(__FILE__) . '/BoardVote_body.php', 'Boardvote', 'BoardVotePage' );
 	$wgExtensionFunctions[] = 'wfSetupBoardVote';
+} else {
+	extAddSpecialPage( dirname(__FILE__) . '/GoToBoardVote_body.php', 'Boardvote', 'GoToBoardVotePage' );
 }
 
 function wfSetupBoardVote() {

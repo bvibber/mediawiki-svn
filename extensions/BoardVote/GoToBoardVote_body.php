@@ -4,7 +4,7 @@ wfBoardVoteInitMessages();
 
 class GoToBoardVotePage extends UnlistedSpecialPage {
 	function __construct() {
-		parent::__construct( "Go_to_board_vote" );
+		parent::__construct( "Boardvote" );
 	}
 
 	function execute( $par ) {
@@ -12,7 +12,7 @@ class GoToBoardVotePage extends UnlistedSpecialPage {
 		global $wgBoardVoteEditCount, $wgBoardVoteCountDate, $wgBoardVoteFirstEdit;
 
 		if ( $wgUser->isLoggedIn() ) {
-			$url = 'https://secure.wikimedia.org/wikipedia/test/w/index.php?' . wfArrayToCGI( array(
+			$url = 'http://wikimedia.spi-inc.org/index.php?' . wfArrayToCGI( array(
 				'title' => 'Special:Boardvote' . ( $par ? "/$par" : '' ),
 				'sid' => session_id(),
 				'db' => $wgDBname,
