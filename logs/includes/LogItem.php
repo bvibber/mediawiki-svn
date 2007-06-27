@@ -100,6 +100,27 @@ class LogItem {
 	}
 	
 	/**
+	 * Instantiate a LogItem using data from a RecentChange
+	 *
+	 * @param RecentChange $change
+	 * @return LogItem
+	 */
+	public static function newFromRecentChange( $change ) {
+		$attr =& $change->mAttribs;
+		return new self(
+			$attr['rc_logid'],
+			$attr['rc_log_type'],
+			$attr['rc_log_action'],
+			$attr['rc_timestamp'],
+			new LogUser( $attr['rc_user'], $attr['rc_user_text'] ),
+			Title::makeTitleSafe( $attr['rc_namespace'], $attr['rc_title'] ),
+			$attr['rc_comment'],
+			$attr['rc_params'],
+			$attr['rc_deleted']
+		);
+	}
+	
+	/**
 	 * Get the log type
 	 *
 	 * @return string

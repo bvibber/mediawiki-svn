@@ -66,7 +66,7 @@ class LogPage {
 			'log_namespace' => $this->target->getNamespace(),
 			'log_title' => $this->target->getDBkey(),
 			'log_comment' => $this->comment,
-			'log_params' => $this->params
+			'log_params' => $this->params,
 		);
 
 		# log_id doesn't exist on Wikimedia servers yet, and it's a tricky 
@@ -76,25 +76,21 @@ class LogPage {
 		}
 		$dbw->insert( 'logging', $data, $fname );
 
-		# And update recentchanges
-		if ( $this->updateRecentChanges ) {
-			$titleObj = SpecialPage::getTitleFor( 'Log', $this->type );
-			$rcComment = $this->getRcComment();
-			RecentChange::notifyLog( $now, $titleObj, $wgUser, $rcComment, '',
-				$this->type, $this->action, $this->target, $this->comment, $this->params );
+		# Update recent changes
+		if( $this->updateRecentChanges ) {
+			RecentChange::notifyLog(
+				$now,
+				$this->target,
+				$wgUser,
+				$this->comment,
+				'',
+				$this->type,
+				$this->action,
+				$this->params
+			);
 		}
-		return true;
-	}
 
-	public function getRcComment() {
-		$rcComment = $this->actionText;
-		if( '' != $this->comment ) {
-			if ($rcComment == '')
-				$rcComment = $this->comment;
-			else
-				$rcComment .= ': ' . $this->comment;
-		}
-		return $rcComment;
+		return true;
 	}
 
 	/**
@@ -234,7 +230,7 @@ class LogPage {
 		$this->comment = $comment;
 		$this->params = LogPage::makeParamBlob( $params );
 
-		$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params );
+		#$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params );
 
 		return $this->saveContent();
 	}

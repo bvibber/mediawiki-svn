@@ -248,12 +248,20 @@ class OldChangesList extends ChangesList {
 
 		$this->insertDateHeader($s,$rc_timestamp);
 
+		# New log entries use the standard formatter
+		if( $rc_log_type && $rc_log_action ) {
+			$item = LogItem::newFromRecentChange( $rc );
+			$s .= $item->format( LogFormatter::NO_DATE );
+			wfProfileOut( $fname );
+			return $s;			
+		}
+
 		$s .= '<li>';
 
 		// moved pages
 		if( $rc_type == RC_MOVE || $rc_type == RC_MOVE_OVER_REDIRECT ) {
 			$this->insertMove( $s, $rc );
-		// log entries
+		# Old log entries use the...old method
 		} elseif ( $rc_namespace == NS_SPECIAL ) {
 			list( $specialName, $specialSubpage ) = SpecialPage::resolveAliasWithSubpage( $rc_title );
 			if ( $specialName == 'Log' ) {

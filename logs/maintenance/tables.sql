@@ -848,15 +848,18 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   -- Visibility of deleted revisions, bitfield
   rc_deleted tinyint unsigned NOT NULL default '0',
 
-  -- Value corresonding to log_id, specific log entries
-  rc_logid int unsigned NOT NULL default '0',
-  -- Store log type info here, or null
-  rc_log_type varbinary(255) NULL default NULL,
-  -- Store log action or null
-  rc_log_action varbinary(255) NULL default NULL,
-  -- Log params
-  rc_params BLOB NULL,
+  -- These columns store additional data used for formatting
   
+  -- when the change represents a log item
+  -- `logging`.`log_id` value
+  rc_logid INT UNSIGNED NOT NULL DEFAULT '0',
+  -- `logging`.`log_type` value
+  rc_log_type VARBINARY(255) NULL,
+  -- `logging`.`log_action` value
+  rc_log_action VARBINARY(255) NULL,
+  -- `logging`.`log_params` value
+  rc_params BLOB NULL,
+
   PRIMARY KEY rc_id (rc_id),
   INDEX rc_timestamp (rc_timestamp),
   INDEX rc_namespace_title (rc_namespace, rc_title),

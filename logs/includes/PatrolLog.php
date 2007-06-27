@@ -41,7 +41,7 @@ class PatrolLog {
 	public static function makeActionText( $item ) {
 		global $wgUser;
 		$skin = $wgUser->getSkin();
-		
+
 		list( $cur, /* $prev */, $auto ) = $item->getParameters();
 		# Standard link to the page in question
 		$link = $skin->makeLinkObj( $item->getTarget() );

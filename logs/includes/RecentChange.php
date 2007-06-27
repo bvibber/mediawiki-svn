@@ -25,6 +25,7 @@
  * 	rc_patrolled    boolean whether or not someone has marked this edit as patrolled
  * 	rc_old_len	integer byte length of the text before the edit
  * 	rc_new_len	the same after the edit
+ *  rc_params
  *
  * mExtra:
  * 	prefixedDBkey   prefixed db key, used by external app via msg queue
@@ -379,27 +380,33 @@ class RecentChange
 		RecentChange::notifyMove( $timestamp, $oldTitle, $newTitle, $user, $comment, $ip, true );
 	}
 
-	# A log entry is different to an edit in that previous revisions are
-	# not kept
-	/*static*/ function notifyLog( $timestamp, &$title, &$user, $comment, $ip='',
-	   $type, $action, $target, $logComment, $params )
-	{
-		if ( !$ip ) {
+	/**
+	 * Insert a change corresponding to a log item
+	 *
+	 * @param string $timestamp
+	 * @param Title $target
+	 * @param User $user
+	 * @param string $comment
+	 * @param string $ip
+	 * @param string $type
+	 * @param string $action
+	 * @param string $comment
+	 * @param string $params
+	 */
+	public static function notifyLog( $timestamp, $target, $user, $comment, $ip, $type, $action, $params ) {
+		if( !$ip )
 			$ip = wfGetIP();
-			if ( !$ip ) {
-				$ip = '';
-			}
-		}
-
-		$rc = new RecentChange;
+		if( !$ip )
+			$ip = '';
+		$rc = new RecentChange();
 		$rc->mAttribs = array(
 			'rc_timestamp'	=> $timestamp,
 			'rc_cur_time'	=> $timestamp,
-			'rc_namespace'	=> $title->getNamespace(),
-			'rc_title'	=> $title->getDBkey(),
+			'rc_namespace'	=> $target->getNamespace(),
+			'rc_title'	=> $target->getDBkey(),
 			'rc_type'	=> RC_LOG,
 			'rc_minor'	=> 0,
-			'rc_cur_id'	=> $title->getArticleID(),
+			'rc_cur_id'	=> $target->getArticleID(),
 			'rc_user'	=> $user->getID(),
 			'rc_user_text'	=> $user->getName(),
 			'rc_comment'	=> $comment,
@@ -413,19 +420,22 @@ class RecentChange
 			'rc_new'	=> 0, # obsolete
 			'rc_old_len'	=> NULL,
 			'rc_new_len'	=> NULL,
+			'rc_log_type' => $type,
+			'rc_log_action' => $action,
+			'rc_params' => $params,
 		);
 		$rc->mExtra =  array(
-			'prefixedDBkey'	=> $title->getPrefixedDBkey(),
+			'prefixedDBkey'	=> $target->getPrefixedDBkey(),
 			'lastTimestamp' => 0,
 			'logType' => $type,
 			'logAction' => $action,
-			'logComment' => $logComment,
+			'logComment' => $comment,
 			'logTarget' => $target,
-			'logParams' => $params
+			'logParams' => $params,
 		);
 		$rc->save();
 	}
-
+	 
 	# Initialises the members of this object from a mysql row object
 	function loadFromRow( $row )
 	{
