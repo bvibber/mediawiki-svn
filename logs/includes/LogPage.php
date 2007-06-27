@@ -30,67 +30,27 @@
  *
  */
 class LogPage {
-	/* @access private */
-	var $type, $action, $comment, $params, $target;
-	/* @acess public */
-	var $updateRecentChanges;
+
+	/**
+	 * Log type
+	 */
+	private $type = '';
+
+	/**
+	 * Should we update recent changes when adding a
+	 * new log item?
+	 */
+	private $updateRecentChanges = true;
 
 	/**
 	  * Constructor
 	  *
-	  * @param string $type One of '', 'block', 'protect', 'rights', 'delete',
-	  *               'upload', 'move'
-	  * @param bool $rc Whether to update recent changes as well as the logging table
+	  * @param string $type Log type
+	  * @param bool $rc Update recent changes?
 	  */
-	function __construct( $type, $rc = true ) {
+	public function __construct( $type, $rc = true ) {
 		$this->type = $type;
 		$this->updateRecentChanges = $rc;
-	}
-
-	function saveContent() {
-		if( wfReadOnly() ) return false;
-
-		global $wgUser;
-		$fname = 'LogPage::saveContent';
-
-		$dbw = wfGetDB( DB_MASTER );
-		$uid = $wgUser->getID();
-		$log_id = $dbw->nextSequenceValue( 'log_log_id_seq' );
-
-		$this->timestamp = $now = wfTimestampNow();
-		$data = array(
-			'log_type' => $this->type,
-			'log_action' => $this->action,
-			'log_timestamp' => $dbw->timestamp( $now ),
-			'log_user' => $uid,
-			'log_namespace' => $this->target->getNamespace(),
-			'log_title' => $this->target->getDBkey(),
-			'log_comment' => $this->comment,
-			'log_params' => $this->params,
-		);
-
-		# log_id doesn't exist on Wikimedia servers yet, and it's a tricky 
-		# schema update to do. Hack it for now to ignore the field on MySQL.
-		if ( !is_null( $log_id ) ) {
-			$data['log_id'] = $log_id;
-		}
-		$dbw->insert( 'logging', $data, $fname );
-
-		# Update recent changes
-		if( $this->updateRecentChanges ) {
-			RecentChange::notifyLog(
-				$now,
-				$this->target,
-				$wgUser,
-				$this->comment,
-				'',
-				$this->type,
-				$this->action,
-				$this->params
-			);
-		}
-
-		return true;
 	}
 
 	/**
@@ -105,7 +65,7 @@ class LogPage {
 	 * @static
 	 */
 	public static function isLogType( $type ) {
-		return in_array( $type, LogPage::validTypes() );
+		return in_array( $type, self::validTypes() );
 	}
 
 	/**
@@ -214,79 +174,86 @@ class LogPage {
 	}
 
 	/**
-	 * Add a log entry
-	 * @param string $action one of '', 'block', 'protect', 'rights', 'delete', 'upload', 'move', 'move_redir'
-	 * @param object &$target A title object.
-	 * @param string $comment Description associated
-	 * @param array $params Parameters passed later to wfMsg.* functions
+	 * Insert a new log row, updating recent changes if
+	 * we've been asked to do so
+	 *
+	 * @param string $action Log action
+	 * @param Title $target Associated title object
+	 * @param string $comment Log comment/rationale
+	 * @param array $params Log parameters
 	 */
-	function addEntry( $action, $target, $comment, $params = array() ) {
-		if ( !is_array( $params ) ) {
-			$params = array( $params );
+	public function addEntry( $action, $target, $comment, $params = array() ) {
+		global $wgUser;
+		wfProfileIn( __METHOD__ );
+		
+		if( wfReadOnly() ) {
+			wfProfileOut( __METHOD__ );
+			return false;
 		}
 
-		$this->action = $action;
-		$this->target = $target;
-		$this->comment = $comment;
-		$this->params = LogPage::makeParamBlob( $params );
+		if( !is_array( $params ) )
+			$params = array( $params );
 
-		#$this->actionText = LogPage::actionText( $this->type, $action, $target, NULL, $params );
+		$dbw = wfGetDB( DB_MASTER );
+		$now = wfTimestampNow();
+		$log_id = $dbw->nextSequenceValue( 'log_log_id_seq' );
 
-		return $this->saveContent();
+		$data = array(
+			'log_type' => $this->type,
+			'log_action' => $action,
+			'log_timestamp' => $dbw->timestamp( $now ),
+			'log_user' => $wgUser->getId(),
+			'log_namespace' => $target->getNamespace(),
+			'log_title' => $target->getDBkey(),
+			'log_comment' => $comment,
+			'log_params' => self::makeParamBlob( $params ),
+		);
+
+		# log_id doesn't exist on Wikimedia servers yet, and it's a tricky 
+		# schema update to do. Hack it for now to ignore the field on MySQL.
+		if ( !is_null( $log_id ) ) {
+			$data['log_id'] = $log_id;
+		}
+		$dbw->insert( 'logging', $data, __METHOD__ );
+
+		# Update recent changes if required
+		if( $this->updateRecentChanges ) {
+			RecentChange::notifyLog(
+				$now,
+				$target,
+				$wgUser,
+				$comment,
+				'',
+				$this->type,
+				$action,
+				$params
+			);
+		}
+
+		wfProfileOut( __METHOD__ );
+		return true;
 	}
 
 	/**
-	 * Create a blob from a parameter array
-	 * @static
+	 * Encode parameters into a BLOB-safe value
+	 *
+	 * @param array $params Parameters
+	 * @return string
 	 */
-	static function makeParamBlob( $params ) {
+	public static function makeParamBlob( $params ) {
 		return implode( "\n", $params );
 	}
 
 	/**
-	 * Extract a parameter array from a blob
-	 * @static
-	 */
-	static function extractParams( $blob ) {
-		if ( $blob === '' ) {
-			return array();
-		} else {
-			return explode( "\n", $blob );
-		}
-	}
-	
-	/**
-	 * Convert a comma-delimited list of block log flags
-	 * into a more readable (and translated) form
+	 * Decode parameters from a BLOB value
 	 *
-	 * @param $flags Flags to format
-	 * @return string
+	 * @param string $blob Parameter blob
+	 * @return array
 	 */
-	public static function formatBlockFlags( $flags ) {
-		$flags = explode( ',', trim( $flags ) );
-		if( count( $flags ) > 0 ) {
-			for( $i = 0; $i < count( $flags ); $i++ )
-				$flags[$i] = self::formatBlockFlag( $flags[$i] );
-			return '(' . implode( ', ', $flags ) . ')';
-		} else {
-			return '';
-		}
-	}
-	
-	/**
-	 * Translate a block log flag if possible
-	 *
-	 * @param $flag Flag to translate
-	 * @return string
-	 */
-	public static function formatBlockFlag( $flag ) {
-		static $messages = array();
-		if( !isset( $messages[$flag] ) ) {
-			$k = 'block-log-flags-' . $flag;
-			$msg = wfMsg( $k );
-			$messages[$flag] = htmlspecialchars( wfEmptyMsg( $k, $msg ) ? $flag : $msg );
-		}
-		return $messages[$flag];
+	public static function extractParams( $blob ) {
+		return $blob === ''
+			? array()
+			: explode( "\n", $blob );
 	}
 	
 }
