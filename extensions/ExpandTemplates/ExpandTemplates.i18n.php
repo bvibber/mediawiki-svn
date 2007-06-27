@@ -79,6 +79,7 @@ $wgExpandTemplatesMessages['he'] = array(
 	'expand_templates_output'          => 'תוצאה',
 	'expand_templates_ok'              => 'פרוס תבניות',
 	'expand_templates_remove_comments' => 'הסר הערות',
+	'expand_templates_preview'         => 'תצוגה מקדימה',
 );
 $wgExpandTemplatesMessages['hu'] = array(
 	'expandtemplates'                  => 'Sablonok kibontása',
