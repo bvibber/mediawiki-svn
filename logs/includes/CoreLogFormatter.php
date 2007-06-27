@@ -12,29 +12,26 @@ class CoreLogFormatter {
 	/**
 	 * Build the action text for a move log item
 	 *
-	 * @param LogItem $item Item to format
+	 * @param LogItem $item Log item to format
+	 * @param Skin $skin Skin to use for link building, etc.
 	 * @return string
 	 */
-	public static function formatMove( $item ) {
-		global $wgUser;
-		$skin = $wgUser->getSkin();
+	public static function formatMove( $item, $skin ) {
 		$data = $item->getParameters();
-
 		$params[] = $skin->makeLinkObj( $item->getTarget(), '', 'redirect=no' );
 		$params[] = $skin->makeLinkObj( Title::newFromText( $data[0] ) );
-		
 		return LogFormatter::getActionText( $item, $params );		
 	}
 
 	/**
 	 * Build the action text for a user rights log item
 	 *
-	 * @param LogItem $item Item to format
+	 * @param LogItem $item Log item to format
+	 * @param Skin $skin Skin to use for link building, etc.
 	 * @return string
 	 */
-	public static function formatRights( $item ) {
-		global $wgUser, $wgContLang;
-		$skin = $wgUser->getSkin();
+	public static function formatRights( $item, $skin ) {
+		global $wgContLang;
 		$target = $wgContLang->ucfirst( $item->getTarget()->getText() );
 		$data = $item->getParameters();
 		

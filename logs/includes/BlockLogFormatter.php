@@ -17,12 +17,12 @@ class BlockLogFormatter {
 	/**
 	 * Build the action text for a block log item
 	 *
-	 * @param LogItem $item
+	 * @param LogItem $item Log item to format
+	 * @param Skin $skin Skin to use for link building, etc.
 	 * @return string
 	 */
-	public static function makeActionText( $item ) {
+	public static function makeActionText( $item, $skin ) {
 		global $wgUser, $wgLang, $wgLogActions;
-		$skin = $wgUser->getSkin();
 		$data = $item->getParameters();
 		
 		# Target link

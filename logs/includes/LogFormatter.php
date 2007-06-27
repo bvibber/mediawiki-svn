@@ -56,7 +56,7 @@ class LogFormatter {
 		# Action
 		if( ( $callback = self::getActionCallback( $item ) ) !== false ) {
 			# Custom action text callback
-			$parts[] = call_user_func( $callback, $item );
+			$parts[] = call_user_func( $callback, $item, $skin );
 		} else {
 			# Use the message
 			$params = $item->getParameters();
