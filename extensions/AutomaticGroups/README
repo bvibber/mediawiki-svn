@@ -12,6 +12,8 @@ Groups can be added based on
 	* account age
 	* edit count
 	
+The extension requires MediaWiki 1.11.0 or above.
+	
 == Configuration ==
 
 Group criteria are set using the $wgAutomaticGroups global, which is an
