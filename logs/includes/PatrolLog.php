@@ -33,54 +33,32 @@ class PatrolLog {
 	}
 	
 	/**
-	 * Format a complete patrol log line
-	 *
-	 * @param LogItem $item
-	 * @param int $flags
-	 * @return string
-	 */
-	public static function formatLine( $item, $flags ) {
-		global $wgUser, $wgLang, $wgLogActions;
-		$skin = $wgUser->getSkin();
-		
-		# Time
-		$parts[] = $flags & LogFormatter::NO_DATE
-			? $wgLang->time( $item->getTimestamp() )
-			: $wgLang->timeAndDate( $item->getTimestamp() );
-		# User
-		$parts[] = $skin->userLink( $item->getUser()->getId(), $item->getUser()->getName() )
-			. $skin->userToolLinks( $item->getUser()->getId(), $item->getUser()->getName() );
-		# Action
-		$parts[] = self::makeActionText( $item->getTarget(), $item->getParameters(), $skin );
-		
-		return "<li>" . implode( ' ', $parts ) . "</li>\n";
-	}
-	
-	/**
 	 * Generate the log action text corresponding to a patrol log item
 	 *
-	 * @param Title $title Title of the page that was patrolled
-	 * @param array $params Log parameters (from logging.log_params)
-	 * @param Skin $skin Skin to use for building links, etc.
+	 * @param LogItem $item
 	 * @return string
 	 */
-	private static function makeActionText( $title, $params, $skin ) {
-		list( $cur, /* $prev */, $auto ) = $params;
+	public static function makeActionText( $item ) {
+		global $wgUser;
+		$skin = $wgUser->getSkin();
+		
+		list( $cur, /* $prev */, $auto ) = $item->getParameters();
 		# Standard link to the page in question
-		$link = $skin->makeLinkObj( $title );
-		if( $title->exists() ) {
+		$link = $skin->makeLinkObj( $item->getTarget() );
+		if( $item->getTarget()->exists() ) {
 			# Generate a diff link
 			$bits[] = 'oldid=' . urlencode( $cur );
 			$bits[] = 'diff=prev';
 			$bits = implode( '&', $bits );
-			$diff = $skin->makeKnownLinkObj( $title, htmlspecialchars( wfMsg( 'patrol-log-diff', $cur ) ), $bits );
+			$diff = $skin->makeKnownLinkObj( $item->getTarget(),
+				htmlspecialchars( wfMsg( 'patrol-log-diff', $cur ) ), $bits );
 		} else {
 			# Don't bother with a diff link, it's useless
 			$diff = htmlspecialchars( wfMsg( 'patrol-log-diff', $cur ) );
 		}
 		# Indicate whether or not the patrolling was automatic
 		$auto = $auto ? wfMsgHtml( 'patrol-log-auto' ) : '';
-		# Put it all together
+
 		return wfMsgHtml( 'patrol-log-line', $diff, $link, $auto );
 	}
 	

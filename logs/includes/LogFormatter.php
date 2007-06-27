@@ -35,8 +35,8 @@ class LogFormatter {
 	}
 	
 	/**
-	 * Default formatter; all the standard bits plus the
-	 * appropriate "appender" if set
+	 * Default formatter; all the standard bits, using custom
+	 * action formatter if set
 	 *
 	 * @param LogItem $item
 	 * @param int $flags
@@ -54,14 +54,17 @@ class LogFormatter {
 		$parts[] = $skin->userLink( $item->getUser()->getId(), $item->getUser()->getName() )
 			. $skin->userToolLinks( $item->getUser()->getId(), $item->getUser()->getName() );
 		# Action
-		$parts[] = wfMsgExt(
-			$wgLogActions[ $item->getActionKey() ],
-			array( 'parseinline', 'replaceafter' ),
-			$skin->makeLinkObj( $item->getTarget() )
-		);
-		# Custom appended bits
-		if( ( $appender = self::getAppender( $item ) ) !== false )
-			$parts[] .= call_user_func( $appender, $item );
+		if( ( $callback = self::getActionCallback( $item ) ) !== false ) {
+			# Custom action text callback
+			$parts[] = call_user_func( $callback, $item );
+		} else {
+			# Use the message, first parameter is a link to the page
+			$parts[] = wfMsgExt(
+				$wgLogActions[ $item->getActionKey() ],
+				array( 'parseinline', 'replaceafter' ),
+				$skin->makeLinkObj( $item->getTarget() )
+			);
+		}
 		
 		return "<li>" . implode( ' ', $parts ) . "</li>\n";
 	}
@@ -82,16 +85,16 @@ class LogFormatter {
 	}
 	
 	/**
-	 * Get the callback to append to the log line for
+	 * Get the callback to build action text for the
 	 * specified log item, if there is one
 	 *
 	 * @param LogItem $item
 	 * @return mixed
 	 */
-	private static function getAppender( $item ) {
-		global $wgLogAppenders;
-		return isset( $wgLogAppenders[ $item->getType() ] )
-			? $wgLogAppenders[ $item->getType() ]
+	private static function getActionCallback( $item ) {
+		global $wgLogActionCallbacks;
+		return isset( $wgLogActionCallbacks[ $item->getType() ] )
+			? $wgLogActionCallbacks[ $item->getType() ]
 			: false;
 	}
 	
