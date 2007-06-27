@@ -380,6 +380,10 @@ HTML;
 		 					'Reply' => $this->talkpageUrl( $this->title, 'reply', $thread ),
 		 					'Permalink' => $this->permalinkUrl( $thread ) );
 
+		if( !$thread->hasSuperthread() ) {
+			$commands['History'] = $this->permalinkUrl($thread, 'history_listing');
+		}
+
 		foreach( $commands as $label => $href ) {
 			$this->output->addHTML( wfOpenElement( 'li' ) );
 			$this->output->addHTML( wfElement('a', array('href'=>$href), $label) );
@@ -437,7 +441,7 @@ HTML;
 
 	function showThread( $thread ) {
 		$this->showThreadHeading( $thread );
-		
+
 		$timestamp = new Date($thread->timestamp());
 		if( $thread->summary() ) {
 			$this->showSummary($thread);
@@ -490,6 +494,12 @@ HTML
 		$this->openDiv('lqt_thread_permalink_summary');
 		$this->showPostBody($t->summary());
 		$this->closeDiv();
+	}
+	
+	function showHistoryListing($t) {
+		foreach( $t->historicalRevisions() as $r ) {
+			$this->output->addHTML($r->revisionNumber());
+		}
 	}
 }
 
@@ -610,7 +620,7 @@ HTML
 		
 		$this->showArchiveWidget();
 
-//		var_dump(HistoricalThread::withIdAtRevision(3,9));
+		var_dump(HistoricalThread::withIdAtRevision(3,11));
 		
 		if( $this->methodApplies('talkpage_new_thread') ) {
 			$this->showNewThreadForm();
@@ -865,12 +875,14 @@ class ThreadPermalinkView extends LqtView {
 		if ( $t->hasSuperthread() ) {
 			$this->output->setSubtitle( "a fragment of <a href=\"{$this->permalinkUrl($t->topmostThread())}\">a discussion</a> from " . $talkpage_link );
 		} else {
-			
 			$this->output->setSubtitle( "from " . $talkpage_link );
 		}
 		
 		if( $this->methodApplies('summarize') ) {
 			$this->showSummarizeForm($t);
+			
+		} else if( $this->methodApplies('history_listing') ) {
+			$this->showHistoryListing($t);
 		}
 		
 		$this->showThread($t);

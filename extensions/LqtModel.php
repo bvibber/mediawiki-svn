@@ -98,9 +98,26 @@ class Post extends Article {
 	}
 }
 
-class HistoricalThread {
+class HistoricalThread extends Thread {
+	function __construct($t) {
+		$this->rootId = $t->rootId;
+		$this->articleId = $t->articleId;
+		$this->summaryId = $t->summaryId;
+		$this->articleNamespace = $t->articleNamespace;
+		$this->articleTitle = $t->articleTitle;
+		$this->timestamp = $t->timestamp;
+		$this->path = $t->path;
+		$this->id = $t->id;
+		$this->revisionNumber = $t->revisionNumber;
+		
+		$this->replies = array();
+		foreach ($t->replies as $r) {
+			$this->replies[] = new HistoricalThread($r);
+		}
+	}
 	static function textRepresentation($t) {
-		return serialize($t);
+		$ht = new HistoricalThread($t);
+		return serialize($ht);
 	}
 	static function fromTextRepresentation($r) {
 		return unserialize($r);
@@ -128,7 +145,7 @@ class HistoricalThread {
 	}
 }
 
-class LiveThread {
+class Thread {
 	/* ID references to other objects that are loaded on demand: */
 	protected $rootId;
 	protected $articleId;
@@ -159,8 +176,24 @@ class LiveThread {
 	   we will write to the history if a new revision is commited. */
 	protected $double;
 	
+	protected $replies;
+	
 	function revisionNumber() {
 		return $this->revisionNumber;
+	}
+	
+	function historicalRevisions() {
+		$dbr =& wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			'historical_thread',
+			'hthread_contents',
+			array('hthread_id' => $this->id()),
+			__METHOD__);
+		$results = array();
+		while($l = $dbr->fetchObject($res)) {
+			$results[] = HistoricalThread::fromTextRepresentation($l->hthread_contents);
+		}
+		return $results;
 	}
 	
 	function commitRevision() {
@@ -339,7 +372,7 @@ class LiveThread {
 /** Module of factory methods. */
 class Threads {
 
-	static $loadedLiveThreads = array();
+	static $loadedThreads = array();
 	
     static function newThread( $root, $article, $superthread = null ) {
         $dbr =& wfGetDB( DB_MASTER );
@@ -412,23 +445,23 @@ SQL;
 		foreach( $lines as $key => $l ) {
 			if( $l->is_root ) {
 //				unset($lines[$key]);
-				$threads[] = Threads::buildLiveThread( &$lines, $l );
+				$threads[] = Threads::buildThread( &$lines, $l );
 			}
 		}
 		return $threads;
 	}
 
-	private static function buildLiveThread( $lines, $l ) {
+	private static function buildThread( $lines, $l ) {
 		$children = array();
 		$l_path = preg_quote($l->thread_path);
 		foreach( $lines as $key => $m ) {
 			if ( preg_match( "/^{$l_path}\.\d+$/", $m->thread_path ) ) {
 //				unset($lines[$key]);
-				$children[] = Threads::buildLiveThread( &$lines, $m );
+				$children[] = Threads::buildThread( &$lines, $m );
 			}
 		}
-		$t = new LiveThread($l, $children);
-		Threads::$loadedLiveThreads[$l->thread_id] = $t;
+		$t = new Thread($l, $children);
+		Threads::$loadedThreads[$l->thread_id] = $t;
 		return $t;
 	}
 
@@ -448,8 +481,8 @@ SQL;
 	}
 
 	static function withId( $id ) {
-		if( array_key_exists( $id, Threads::$loadedLiveThreads ) ) {
-			return Threads::$loadedLiveThreads[ $id ];
+		if( array_key_exists( $id, Threads::$loadedThreads ) ) {
+			return Threads::$loadedThreads[ $id ];
 		}
 			
 		$ts = Threads::where( array('thread.thread_id' => $id ) );
