@@ -522,13 +522,6 @@ unsigned long	 len;
 			exit(1);
 		}
 
-		if (len < 8 && master_conn->net.read_pos[0] == 254) {
-			logmsg("no more logs!");
-			reader_st = ST_STOPPED;
-			pthread_mutex_unlock(&rst_mtx);
-			return 1;
-		}
-
 		pthread_mutex_unlock(&rst_mtx);
 
 		if ((ent = parse_binlog(master_conn->net.read_pos + 1, len - 1)) == NULL) {
