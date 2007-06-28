@@ -396,26 +396,20 @@ $wgBoardVoteMessages['it'] = array(
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vota]]
 * [[Special:Boardvote/list|Visualizza i voti espressi sinora]]
 * [[Special:Boardvote/dump|Scarica i voti in forma cifrata]]",
-	'boardvote_intro'         => "
-<p>Benvenuti alla seconda elezione per il Consiglio direttivo della Wikimedia Foundation.
-Si vota per eleggere due rappresentanti della comunità degli utenti sui vari progetti
-Wikimedia. Queste persone daranno un contributo nelle scelte sugli indirizzi futuri dei
-progetti Wikimedia, sia individualmente che come gruppo. Essi rappresentano i <em>vostri</em>
-interessi e preoccupazioni nei confronti del Consiglio direttivo; decideranno inoltre con
-quali mezzi procurare le risorse finanziarie e come gestire i frutti della raccolta fondi.</p>
+	'boardvote_intro'         => "<blockquote>
+<p>
+Benvenuto/a alla quarta elezione per il consiglio direttivo Wikimedia, l'autorità a capo della Wikimedia Foundation. Si vota per le tre persone che rappresenteranno la comunità di utenti dei vari progetti Wikimedia. Gli eletti rimarranno in carica per due anni nel consiglio direttivo ed aiuteranno a determinare il futuro orientamento dei progetti Wikimedia, individualmente e come gruppo, rappresentando i <em>tuoi</em> interessi e le tue idee. Decideranno in merito a vari temi, tra cui, in particolare, le modalità di raccolta e investimento dei fondi.</p>
 
-<p>Si prega di leggere con attenzione le presentazioni dei candidati e le risposte alle domande
-prima di votare. Tutti i candidati sono utenti stimati che si sono dedicati in modo considerevole,
-in termini di tempo e di impegno personale, per fare di questi progetti un ambiente accogliente e
-impegnato nella ricerca e la distribuzione libera della conoscenza umana.</p>
+<p>Per favore, prima di votare, leggi attentamente le presentazioni dei candidati e le risposte alle domande che sono state loro poste. Ognuno dei candidati è un utente rispettato, che ha contribuito con molto del proprio tempo e con notevoli sforzi a rendere questi progetti un ambiente accogliente e dedicato alla libera raccolta, organizzazione e distribuzione della conoscenza umana.</p>  
 
-<p>È possibile votare per un qualsiasi numero di candidati. Verrà eletto il candidato con il
-maggior numero di voti per ciascun seggio. In caso di parità si terrà un turno di ballottaggio.</p>
+<p>Puoi votare per più candidati a tua scelta: i tre con il maggior numero di voti saranno dichiarati eletti. Nel caso di pareggio, sarà tenuta una votazione di ballottaggio.</p>
 
-<p>Per maggiori informazioni, si rimanda ai seguenti documenti:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">FAQ su questa elezione</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Presentazione dei candidati</a></li></ul>
-",
+<p>Per favore, ricorda che puoi effettuare il tuo voto solamente in un progetto. Anche se hai 400 edit su più progetti, non significa che tu abbia il diritto di votare più di una volta. Se successivamente vorrai cambiare il tuo voto, ricorda di votare dal progetto da cui hai precedentemente votato.</p>
+
+<p>Per maggiori informazioni, vedi:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ\" class=\"external\">FAQ sulle elezioni (in inglese)</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/it\" class=\"external\">Candidati</a></li></ul>
+</blockquote>",
 	'boardvote_intro_change'  => "<p>Il voto è già stato espresso. Per cambiarlo, usare il modulo sottostante. Spuntare la casella a fianco di ciascuno dei candidati che si desidera sostenere.</p>",
 	'boardvote_entered'       => "Il voto è stato registrato. Grazie.
 
@@ -432,8 +426,11 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Indietro]]",
+        'boardvote_nosession'     => "Non siamo in grado di determinare il tuo ID utente Wikimedia. Per favore, esegui il login nel progetto in cui hai i requisiti per votare, e vai alla pagina <nowiki>[[Speciale:Boardvote]]</nowiki>. Devi usare un account con almeno $1 contributi prima di $2 e con il primo contributo precedente a $3.
+
+È necessario impostare il proprio browser affinché accetti i cookie dal nostro server di voto esterno: '''wikimedia.spi-inc.org'''.",
 	'boardvote_notloggedin'   => "Accesso non effettuato. Per esprimere un voto è necessario disporre di un'utenza che abbia effettuato almeno $1 contributi prima del $2; la prima modifica registrata deve essere precedente al $3.",
-	'boardvote_notqualified'  => "Questa utenza non possiede i requisiti necessari per votare. È necessario aver effettuato $3 modifiche prima del $2, ne risultano registrate $1. Inoltre, la prima modifica registrata è del $4, mentre deve essere precedente al $5.",
+	'boardvote_notqualified'  => "Non hai i requisiti necessari per votare in questa elezione. Devi necessariamente avere $3 contributi prima di $2, e il tuo primo contributo deve essere stato compiuto prima di $5.",
 	'boardvote_novotes'       => "Non ha ancora votato nessuno.",
 	'boardvote_time'          => "Data e ora",
 	'boardvote_user'          => "Utente",
@@ -454,6 +451,8 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
 	'group-boardvote'         => 'Commissione elettorale',
 	'group-boardvote-member'  => 'Commissario elettorale',
 	'grouppage-boardvote'     => '{{ns:project}}:Commissario elettorale',
+        'boardvote_blocked'       => 'Siamo spiacenti, sei stato bloccato nel progetto in cui sei registrato. Gli utenti bloccati non hanno diritto di voto.',
+        'boardvote_welcome'       => "Benvenuto/a '''$1'''!",
 );
 $wgBoardVoteMessages['kk-kz'] = array(
 	'boardvote'               => "Wikimedia қорының Уәкілдер еңесінің сайлауы ",
