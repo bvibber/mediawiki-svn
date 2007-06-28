@@ -85,29 +85,18 @@ $wgBoardVoteMessages['cs'] = array(
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Hlasovat]]
 * [[Special:Boardvote/list|Seznam již hlasujících]]
 * [[Special:Boardvote/dump||Šifrovaný záznam hlasování]]",
-	'boardvote_intro'         => "
-<p>Vítejte u třetích voleb do Správní rady nadace Wikimedia. Hlasováním
-bude zvolen jeden zástupce komunity uživatelů všech projektů nadace. Tento
-zástupce budou pomáhat v rozhodování o budoucím směru rozvoje projektů,
-jednotlivě i jako skupina, a budou reprezentovat <em>vaše</em> zájmy a
-ohledy ve Správní radě. Bude také rozhodovat o způsobech získávání
-finančních prostředků a využívání získaných peněz.</p>
+	'boardvote_intro'         => '
+<blockquote>
+<p>Vítejte u čtvrtých voleb do Správní rady nadace Wikimedia. Hlasováním bude zvoleni tři zástupci komunity uživatelů všech projektů nadace na dvouleté období do Správní rady. Tito zástupci budou pomáhat v rozhodování o budoucím směru rozvoje projektů, jednotlivě i jako skupina, a budou reprezentovat <em>vaše</em> zájmy a ohledy ve Správní radě. Budou také rozhodovat o způsobech získávání finančních prostředků a využívání získaných peněz.</p>
 
-<p>Před hlasováním si laskavě důkladně přečtěte vyjádření kandidátů a jejich
-odpovědi na dotazy. Všichni kandidáti jsou respektovanými uživateli, kteří
-přispěli velkým množstvím času a úsilí při snaze učinit z projektů přátelské
-prostředí cílené na shromažďování a volné šíření znalostí lidstva.</p>
+<p>Před hlasováním si laskavě důkladně přečtěte vyjádření kandidátů a jejich odpovědi na dotazy. Všichni kandidáti jsou respektovanými uživateli, kteří přispěli velkým množstvím času a úsilí při snaze učinit z projektů přátelské prostředí cílené na shromažďování a volné šíření znalostí lidstva.</p>
 
-<p>Můžete hlasovat pro libovolně mnoho kandidátů. Kandidát, který bude mít
-pro příslušnou pozici nejvíce hlasů, bude do této pozice nominován. V případě
-shody bude pořádáno druhé kolo hlasování.</p>
+<p>Můžete hlasovat pro libovolně mnoho kandidátů. Tři kandidáti, kteří bude mít nejvíce hlasů, bude do této pozice zvoleni. V případě shody bude pořádáno druhé kolo hlasování.</p>
 
-<p>Pamatujte, že můžete hlasovat jen jednou. I pokud máte více než 400 editací na více projektech, tak to neznamená, že máte právo volit dvakrát. Pokud se později rozhodnete změnit své hlasy, učiňte tak na projektu, kde jste hlasování provedl(a) předtím.</p>
+<p>Pamatujte, že můžete hlasovat jen jednou. I pokud máte více než 400 editací na více projektech, tak to neznamená, že máte právo volit dvakrát. Pokud se později rozhodnete změnit své hlasy, učiňte tak na projektu, kde jste hlasování provedl(a) předtím.</p> 
 
-<p>Další informace (anglicky a v dalších jazycích) najdete na následujících stránkách:</p>
-<ul><li><a href=\"http://meta.wikipedia.org/wiki/Election_FAQ_2006\" class=\"external\">Často kladené otázky o hlasování</a></li>
-<li><a href=\"http://meta.wikipedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidáti</a></li></ul>
-",
+<p>Další informace (anglicky a v dalších jazycích) najdete na následujících stránkách:</p> <ul><li><a href="http://meta.wikipedia.org/wiki/Board_elections/2007/FAQ" class="external">Často kladené otázky o hlasování</a></li> <li><a href="http://meta.wikipedia.org/wiki/Board_elections/2007/Candidates/cs" class="external">Kandidáti</a></li></ul>
+</blockquote>',
 	'boardvote_intro_change'  => "<p>Již jste hlasoval(a). Můžete však svůj hlas změnit prostřednictvím níže uvedeného formuláře. Zaškrtněte čtvereček u každého kandidáta, kterého schvalujete.</p>",
 	'boardvote_entered'       => "Děkujeme vám, váš hlas byl zaznamenán.
 
@@ -124,8 +113,9 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Zpět]]",
+  'boardvote_nosession'     => "Nemohu určit vaše ID uživatele Wikimedie. Přihlaste se na wiki, kde splňujete podmínky a a přejděte na stránku <nowiki>[[Special:Boardvote]]</nowiki>. Musíte mít učet s alespoň $1 editacemi před $2 a první editací před $3.",
   'boardvote_notloggedin'   => 'Nejste přihlášen(a). Pro hlasování musíte použít účet s nejméně $1 příspěvky před $2 a první editací před $3.',
-  'boardvote_notqualified'  => 'Litujeme, nejste oprávněn(a) hlasovat v těchto volbách, protože před $2 jste provedl(a) pouze $1 editací. Je vyžadováno $3 editací. Nebo Vaše první editace nebyla před $5, ale až $4.',
+  'boardvote_notqualified'  => 'Litujeme, nejste oprávněn(a) hlasovat v těchto volbách. Musíte mít $3 editací před datem $2 a vaše první editace musí být provedena před $5.',
   'boardvote_notstarted'    => 'Volby ještě nezačaly.',
   'boardvote_novotes'       => 'Nikdo dosud nehlasoval.',
 	'boardvote_time'          => "Datum a čas",
@@ -147,6 +137,8 @@ Výsledná šifrovaná podoba následuje. Bude veřejně dostupná na stránce [
 	'group-boardvote'         => 'Volební správci',
 	'group-boardvote-member'  => 'Volební správce',
 	'grouppage-boardvote'     => '{{ns:project}}:Volební správce',
+	'boardvote_blocked'       => 'Je nám líto, ale na své wiki jste zablokován. Zablokovaní uživatelé nemohou hlasovat.',
+	'boardvote_welcome'       => "Vítáme uživatele '''$1'''!",
 );
 $wgBoardVoteMessages['de'] = array(
 	'boardvote'               => "Wahlen zum Wikimedia-Kuratorium",
@@ -185,7 +177,9 @@ Die daraus folgende, verschlüsselte Version folgt unten. Sie wird öffentlich a
 <pre>$3</pre>
 
 [[{{ns:special}}:Boardvote/entry|Zurück]]",
-	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden. Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, die erste Bearbeitung muss vor dem $3 erfolgt sein.",
+	'boardvote_nosession'     => "Deine Wikimedia-Benutzer-ID kann nicht ermittelt werden. Bitte melde dich in dem Wiki an, in dem du zur Wahl zugelassen bist und gehe dort nach <nowiki>[[Special:Boardvote]]</nowiki>. Wählen darf, dessen Benutzerkonto mindestens $1 Bearbeitungen vor dem $2 aufweist, die erste Bearbeitung muss vor dem $3 erfolgt sein.
+
+Dein Browser muss so konfiguriert sein, dass er Cookies von dem externen Wahlcomputer <tt>wikimedia.spi-inc.org</tt> akzeptiert.",
 	'boardvote_notloggedin'   => "Du bist nicht eingeloggt. Um abstimmen zu können, musst du eingeloggt sein und ein Benutzerkonto verwenden, mit dem bereits vor dem Stichtag ($2) mindestens $1 Bearbeitungen gemacht wurden.",
 	'boardvote_notqualified'  => "Du bist nicht berechtigt an dieser Wahl teilzunehmen. Du musst $3 Bearbeitungen vor dem $2 getätigt haben und deine erste Bearbeitung muss vor dem $5 erfolgt sein. Alle Bedingungen müssen zur Wahlteilnahme erfüllt sein.",
 	'boardvote_novotes'       => "Bislang hat noch keiner abgestimmt.",
