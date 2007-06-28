@@ -24,6 +24,13 @@
  
 $wgHooks['OutputPageBeforeHTML'][] = 'addMatchedText' ;
 
+$wgExtensionCredits['other'][] = array(
+	'name' => 'DoubleWiki',
+	//'author' => '',
+	//'url' => '',
+	'description' => 'Displays an article and its translation from another wiki on two columns of the same page',
+);
+
 function addMatchedText ( &$parserOutput , &$text ) { 
 
 	global $wgContLang, $wgRequest, $wgLang, $wgContLanguageCode, $wgTitle;
