@@ -79,6 +79,12 @@ to date. $1 for the encrypted data.</p>",
 	'boardvote_blocked'       => 'Sorry, you have been blocked on your registered wiki. Blocked users are not allowed to vote.',
 	'boardvote_welcome'       => "Welcome '''$1'''!",
 	'go_to_board_vote'        => 'Wikimedia Board Elections 2007',
+	'boardvote_redirecting'   => 'For improved security and transparency, we are running the vote on an
+external, independently controlled server.
+
+You will be redirected to this external server in 20 seconds. [$1 Click here] to go there now.
+
+A security warning about an unsigned certificate may be displayed.',
 );
 $wgBoardVoteMessages['cs'] = array(
 	'boardvote'               => "Volby do Správní rady nadace Wikimedia",
