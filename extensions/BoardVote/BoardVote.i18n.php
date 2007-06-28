@@ -332,28 +332,41 @@ $wgBoardVoteMessages['he'] = array(
 );
 $wgBoardVoteMessages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
-	'boardvote_entry'         => "* [[Special:Boardvote/vote|Masukkan pilihan]]
-* [[Special:Boardvote/list|Daftar pemilih sampai saat ini]]
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Berikan suara]]
+* [[Special:Boardvote/list|Daftar suara hingga saat ini]]
 * [[Special:Boardvote/dump|Data pemilihan terenkripsi]]",
-	'boardvote_intro_change'  => "<p>Anda sudah pernah memilih. Walaupun demikian, Anda dapat mengganti pilihan Anda dengan menggunakan formulir di bawah. Harap cek kotak di samping tiap kandidat yang Anda setujui.</p>",
-	'boardvote_entered'       => "Terima kasih, suara Anda telah dicatat.
+	'boardvote_intro'         => "
+<p>Selamat datang di pemilihan keempat Dewan Kepercayaan Wikimedia, otoritas pemerintahan bagi Yayasan Wikimedia. Kita akan memilih tiga orang untuk mewakili komunitas pengguna untuk berbagai proyek Wikimedia. Tiga orang terpilih tersebut akan bertugas selama dua tahun di Dewan Kepercayaan. Mereka akan membantu menentukan arah ke depan dari proyek-proyek Wikimedia, baik untuk tiap proyek maupun secara keseluruhan, dan mereka akan mewakili kepentingan dan kepedulian <em>Anda</em>. Mereka akan menentukan cara-cara mendapatkan pemasukan dan alokasinya serta berbagai isu lainnya.</p>
 
-Jika ingin, Anda dapat menyimpan detil berikut. Catatan pilihan Anda adalah:
+<p>Sebelum memberikan suara, harap baca dengan seksama pernyataan dan jawaban kandidat terhadap pertanyaan. Tiap kandidat adalah pengguna yang diakui, yang telah menyumbangkan cukup waktu dan upaya untuk menjadikan proyek-proyek ini menjadi suatu lingkungan yang ramah dan berkomitmen untuk pencapaian dan penyebaran bebas pengetahuan manusia.</p>
+
+<p>Anda dapat memberikan suara untuk sebanyak mungkin kandidat yang Anda inginkan. Tiga kandidat dengan suara terbanyak akan dinyatakan sebagai pemenang. Jika terjadi seri, akan dilakukan suatu pemilihan lanjutan.</p>
+
+<p>Harap diingat bahwa Anda hanya dapat memberikan suara dari satu proyek. Bahkan jika Anda memiliki 400 suntingan pada berbagai proyek, tidak berarti bahwa Anda memiliki hak memberikan suara dua kali. Jika Anda kemudian ingin mengganti pilihan Anda, silakan memberikannya melalui proyek yang telah Anda pilih sebelumnya.</p>
+
+<p>Untuk informasi tambahan, lihat:</p>
+<ul><li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ\" class=\"external\">Tanya jawab Pemilihan</a></li>
+<li><a href=\"http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/en\" class=\"external\">Kandidat</a></li></ul>",
+	'boardvote_intro_change'  => "<p>Anda telah memilih sebelumnya. Meskipun demikian, Anda masih dapat mengganti pilihan Anda pada isian berikut. Harap pilih kotak disamping masing-masing kandidat yang Anda pilih.</p>",
+	'boardvote_footer'        => "&nbsp;", # Don't translate this
+	'boardvote_entered'       => "Terima kasih, pilihan Anda telah dicatat.
+
+Jika mau, Anda dapat mencatat detil berikut. Catatan suara Anda adalah:
 
 <pre>$1</pre>
 
-Data tersebut telah dienkripsi dengan kunci publik Pengurus Pemilihan:
+Catatan tersebut telah dienkripsi dengan kunci publik Administrator Pemilihan:
 
 <pre>$2</pre>
 
-Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik di [[Special:Boardvote/sini]].
+Versi terenkripsi tercantum di bawah ini. Hasil tersebut akan ditampilkan untuk publik di [[Special:Boardvote/dump]].
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Kembali]]",
+[[Special:Boardvote/entry|Back]]",
 	'boardvote_nosession'     => "Saya tak dapat menentukan ID pengguna Wikimedia Anda. Harap masuk log pada Wiki yang dapat mengkualifikasikan Anda, dan gunakan <nowiki>[[Special:Boardvote]]</nowiki>. Anda harus menggunakan suatu akun yang paling tidak telah memiliki $1 kontribusi sebelum $2, dengan suntingan pertama sebelum $3.",
 	'boardvote_notloggedin'   => "Anda tidak masuk log. Untuk dapat memilih Anda harus menggunakan akun dengan paling tidak $1 suntingan sebelum $2, dan dengan suntingan pertama sebelum $3.",
-	'boardvote_notqualified'  => "Anda tidak memiliki hak untuk memberikan suara dalam pemilihan ini. Anda harus memiliki $3 suntingan sebelum $2, sedangkan Anda hanya memiliki $1. Terlebih lagi, suntingan pertama Anda adalah pada $4, dimana disyaratkan harus sebelum $5.",
+	'boardvote_notqualified'  => "Anda tidak memiliki hak untuk memberikan suara dalam pemilihan ini. Anda harus memiliki $3 suntingan sebelum $2, dan suntingan pertama Anda harus sebelum $5.",
 	'boardvote_novotes'       => "Belum ada pemilih.",
 	'boardvote_time'          => "Waktu",
 	'boardvote_user'          => "Pengguna",
@@ -367,6 +380,7 @@ Berikut adalah hasil dari enkripsi. Data tersebut akan ditampilkan untuk publik 
 	'boardvote_strike'        => "Coret",
 	'boardvote_unstrike'      => "Hapus coretan",
 	'boardvote_needadmin'     => "Hanya pengurus pemilihan yang dapat melakukan tindakan ini.",
+	'boardvote_sitenotice'    => "<a href=\"{{localurle:Special:Boardvote/vote}}\">Pemilihan Dewan Wikimedia</a>: Pemilihan dibuka sampai 12 Juli",
 	'boardvote_notstarted'    => 'Pemilihan belum dimulai',
 	'boardvote_closed'        => 'Pemilihan telah ditutup, lihat [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En halaman pemilihan untuk mengetahui hasilnya] sebentar lagi.',
 	'boardvote_edits_many'    => 'banyak',
