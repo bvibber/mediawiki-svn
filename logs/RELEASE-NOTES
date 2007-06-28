@@ -109,6 +109,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   classes: mw-code, mw-css, mw-js)
 * (bug 6711) Add $wgAddGroups and $wgRemoveGroups to allow finer control over
   usergroup assignment.
+* Introduce 'UserEffectiveGroups' hook; see docs/hooks.txt for more information
 
 == Bugfixes since 1.10 ==
 
@@ -217,6 +218,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * namespaceDupes.php should work better for initial-lowercase wikis
 * (bug 10377) "Permanent links" to revisions still work if the page is moved
   and the redirect deleted
+* (bug 7071) Properly handle an 'oldid' passed to view or edit that doesn't
+  match the given title. Fixes inconsistencies with talk, history, edit links.
+
 
 == API changes since 1.10 ==
 
@@ -253,6 +257,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   "interwiki" section of the output.
 * Added categorymembers list to query for pages in a category.
 * (bug 10260) Show page protection status
+* (bug 10392) Include MediaWiki version details in version output
 
 == Maintenance script changes since 1.10 ==
 
@@ -300,6 +305,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Albanian (sq)
 * Sundanese (su)
 * Swedish (sv)
+* Tigrinya (ti)
 * Volapük (vo)
 * Old Chinese / Late Middle Chinese (zh-classical)
 * Chinese (PRC) (zh-cn)

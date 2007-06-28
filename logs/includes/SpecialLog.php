@@ -323,25 +323,13 @@ class LogViewer {
 	}
 
 	function doShowList( &$out, $result ) {
-		global $wgLang;
-
-		$lastdate = '';
-		$listopen = false;
 		// Rewind result pointer and go through it again, making the HTML
-		$html = '';
+		$html = "\n<ul>\n";
 		$result->seek( 0 );
 		while( $s = $result->fetchObject() ) {
-			$date = $wgLang->date( $s->log_timestamp, /* adj */ true );
-			if ( $date != $lastdate ) {
-				if ( $listopen ) { $html .= Xml::closeElement( 'ul' ); }
-				$html .= Xml::element('h4', null, $date) . "\n";
-				$html .= Xml::openElement( 'ul' );
-				$listopen = true;
-				$lastdate = $date;
-			}
 			$html .= $this->logLine( $s );
 		}
-		if ( $listopen ) { $html .= Xml::closeElement( 'ul' ); }
+		$html .= "\n</ul>\n";
 		$out->addHTML( $html );
 		$result->free();
 	}
@@ -358,7 +346,7 @@ class LogViewer {
 	 */
 	private function logLine( $row ) {
 		$line = LogItem::newFromRow( $row );
-		return $line->format( LogFormatter::NO_DATE );
+		return $line->format();
 	}
 
 	/**
