@@ -86,6 +86,13 @@ You will be redirected to this external server in 20 seconds. [$1 Click here] to
 
 A security warning about an unsigned certificate may be displayed.',
 );
+$wgBoardVoteMessages['ca'] = array(
+	'boardvote_redirecting'   => "Per millorar la seguretat i la transparència de la votació, aquesta es farà en un servidor independent extern.
+
+D'aquí 20 segons sereu redirigit a aquesta pàgina. [$1 Cliqueu aquí] per anar-hi ara mateix.
+
+Tingueu en compte que us pot aparèixer un avís de certificat de seguretat.",
+);
 $wgBoardVoteMessages['cs'] = array(
 	'boardvote'               => "Volby do Správní rady nadace Wikimedia",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Hlasovat]]
@@ -275,6 +282,11 @@ La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvo
 	'group-boardvote'         => 'Membres votants du conseil d’administration',
 	'group-boardvote-member'  => 'Membre votant du conseil d’administration',
 	'grouppage-boardvote'     => '{{ns:project}}:membre votant du conseil d’administration',
+	'boardvote_redirecting'   => 'Pour plus de transparence et sécurité le vote se déroule sur un serveur externe et indépendant.
+
+Vous serez redirigé à ce serveur externe en 20 secondes. [$1 Cliquez ici] pour y aller maintenant.
+
+Un avertissement concernant un certificat non signé sera peut-être affiché.',
 );
 $wgBoardVoteMessages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",
@@ -1230,6 +1242,11 @@ $wgBoardVoteMessages['zh-cn'] = array(
 	'group-boardvote'         => '理事会投票管理员',
 	'group-boardvote-member'  => '理事会投票管理员',
 	'grouppage-boardvote'     => '{{ns:project}}:理事会投票管理员',
+	'boardvote_redirecting'   => '為改善投票的保安和透明度，這次選舉將會在一個站外獨立的伺服器上進行。
+
+20秒後瀏覽器將會自動轉到這個站外伺服器。你也可以馬上[$1 點擊這裡]直接到那裡。
+
+稍後，你的瀏覽器可能會彈出未驗證安全憑證的警告。',
 );
 $wgBoardVoteMessages['zh-hk'] = array(
 	'boardvote'               => "維基媒體基金會理事會選舉",
