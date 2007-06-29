@@ -42,5 +42,3 @@ function efExportWatchlistMessages() {
 	);
 	return $messages;
 }
-
-?>

@@ -136,5 +136,3 @@ class SpecialExportWatchlist extends SpecialPage {
 	}
 
 }
-
-?>
