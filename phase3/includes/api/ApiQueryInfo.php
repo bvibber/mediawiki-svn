@@ -118,6 +118,8 @@ class ApiQueryInfo extends ApiQueryBase {
 			}
 
 			$tokenArr = array();
+			if(!isset($params['tokens']))
+				$params['tokens'] = array();
 			foreach($params['tokens'] as $token => $unused)
 				switch($token)
 				{
