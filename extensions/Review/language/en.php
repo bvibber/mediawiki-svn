@@ -50,4 +50,4 @@ $wgMessageCache->addMessages(
 		'review_comment' => "Comment",
 	)
 );
-?>
+

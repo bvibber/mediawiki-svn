@@ -22,4 +22,4 @@ class MakeDBErrorPage extends UnlistedSpecialPage
 	}
 }
 
-?>
+

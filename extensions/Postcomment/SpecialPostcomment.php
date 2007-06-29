@@ -213,4 +213,4 @@ function wfSpecialPostcomment( $par )
 		$article->insertNewArticle($text, "", true, $watch, false, false, true);
 	}
 }
-?>
+

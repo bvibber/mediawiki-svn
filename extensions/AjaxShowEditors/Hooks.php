@@ -70,4 +70,4 @@ function wfAjaxShowEditorsShowBox( ) {
 		. '</div>'
 		);
 }
-?>
+

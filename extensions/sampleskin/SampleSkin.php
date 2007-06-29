@@ -64,4 +64,4 @@ class SkinSampleSkin extends SkinPHPTal {
 	}
 }
 
-?>
+

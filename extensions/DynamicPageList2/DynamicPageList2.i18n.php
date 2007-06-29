@@ -1000,4 +1000,4 @@ $wgDPL2Messages['zh-yue'] = array(
 );
 $wgDPL2Messages['zh-hk'] = $wgDPL2Messages['zh-tw'];
 $wgDPL2Messages['zh-sg'] = $wgDPL2Messages['zh-cn'];
-?>
+

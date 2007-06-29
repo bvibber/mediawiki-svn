@@ -30,4 +30,3 @@ class SampleAuth extends AuthPlugin {
 	}
 }
 
-?>

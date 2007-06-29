@@ -189,4 +189,3 @@ function loadTalkHereI18n() {
 	$wgMessageCache->addMessages( $messages );
 }
 
-?>

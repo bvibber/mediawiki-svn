@@ -144,4 +144,4 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 	return $single ? $messages['en'] : $messages;
 }
 
-?>
+

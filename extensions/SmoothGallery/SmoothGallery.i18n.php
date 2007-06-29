@@ -10,4 +10,4 @@ $messages['smoothgallery-not-found'] = "No images were added into the gallery. P
 $messages['smoothgallery-no-images'] = "No images were found in this gallery. Make sure all images requested exist. The following images were not found: $1";
 $messages['smoothgallery-unexpected-error'] = "There was an unexpected error. Please file a bug report.";
 
-?>
+

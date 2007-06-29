@@ -176,4 +176,4 @@ class GisDatabase {
 		return $this->db->fetchObject ( $this->result );
 	}
 }
-?>
+

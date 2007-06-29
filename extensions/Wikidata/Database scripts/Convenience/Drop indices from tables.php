@@ -24,4 +24,4 @@ for ($i = 1; $i < $argc; $i++) {
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 
 
-?>
+

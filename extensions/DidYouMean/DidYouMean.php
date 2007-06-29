@@ -390,4 +390,4 @@ function wfDoUpdate( $pageid, $title ) {
 	}
 }
 
-?>
+

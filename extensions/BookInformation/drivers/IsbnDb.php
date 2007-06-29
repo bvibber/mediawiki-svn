@@ -105,4 +105,3 @@ class BookInformationIsbnDb implements BookInformationDriver {
 	
 }
 
-?>

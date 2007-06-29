@@ -14,4 +14,4 @@ function wfSetupImageMap() {
 	$wgParser->setHook( 'imagemap', array( 'ImageMap', 'render' ) );
 }
 
-?>
+

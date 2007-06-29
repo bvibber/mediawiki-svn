@@ -11,4 +11,4 @@
 
 $messages['selectcategory-title']	= 'Kategorien auswählen';
 $messages['selectcategory-subtitle']	= 'Shift-Maus um mehrere nachfolgende Einträge zu (de-)selektieren, Strg-Maus um einzelne Einträge zu (de-)selektieren.';
-?>
+

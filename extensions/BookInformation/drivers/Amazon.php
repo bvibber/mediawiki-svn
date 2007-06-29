@@ -116,4 +116,3 @@ class BookInformationAmazon implements BookInformationDriver {
 	
 }
 
-?>

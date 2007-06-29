@@ -15,4 +15,4 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 extAddSpecialPage( dirname(__FILE__) . '/ShowProcesslist_body.php', 'ShowProcesslist', 'ShowProcesslistPage' );
 
-?>
+

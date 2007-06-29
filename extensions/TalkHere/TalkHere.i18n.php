@@ -24,4 +24,4 @@ $messages['talkhere-afterform']= '';
 
 $messages['talkhere-loading']= 'loading editor...';
 $messages['talkhere-collapse']= 'hide editor';
-?>
+

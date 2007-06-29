@@ -11,4 +11,4 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 extAddSpecialPage( dirname(__FILE__) . '/ListChangedArticles_body.php', 'ListChangedArticles', 'ListChangedArticles' );
 
-?>
+

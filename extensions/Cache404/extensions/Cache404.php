@@ -750,4 +750,4 @@ else if (typeof window.attachEvent != \"undefined\") {
 	$wgExtensionFunctions[] = 'setupCache404';
 }
 
-?>
+

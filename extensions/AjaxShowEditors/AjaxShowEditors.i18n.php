@@ -95,4 +95,4 @@ $wgAjaxShowEditorsMessages['zh-yue'] = array(
 );
 $wgAjaxShowEditorsMessages['zh-hk'] = $wgAjaxShowEditorsMessages['zh-tw'];
 $wgAjaxShowEditorsMessages['zh-sg'] = $wgAjaxShowEditorsMessages['zh-cn'];
-?>
+

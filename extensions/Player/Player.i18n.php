@@ -27,4 +27,4 @@ $messages['player-clicktoplay']= 'Play $1';
 $messages['player-goto-player']= 'player';
 $messages['player-goto-page']= 'Page';
 $messages['player-goto-file']= 'file';
-?>
+

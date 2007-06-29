@@ -18,4 +18,4 @@ $wgDataSearchMessages['fr'] = array(
 $wgDataSearchMessages['id'] = array(
 	'datasearch' => 'Pencarian data',
 );
-?>
+

@@ -9,4 +9,4 @@
 
 $messages['selectcategory-title']	= 'Select categories';
 $messages['selectcategory-subtitle']	= 'Shift-mouse to select multiple contiguous entries, Ctrl-mouse to select non-contiguous entries.';
-?>
+

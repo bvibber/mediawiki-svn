@@ -97,4 +97,4 @@ if( $dba->tableExists( 'dympage' ) || $dba->tableExists( 'dymnorm' ) ) {
 $dba->close();
 echo( "\n" );
 
-?>
+

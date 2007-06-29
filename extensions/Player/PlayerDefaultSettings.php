@@ -201,4 +201,3 @@ $wgPlayerMimeOverride = array(
 	'audio/ogg' => 'application/ogg', #audio/ogg is hardcoded for vorbis, but isn't supported by all browsers
 );
 
-?>

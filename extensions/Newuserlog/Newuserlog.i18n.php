@@ -209,4 +209,4 @@ $wgNewuserlogMessages['zh-yue'] = array(
 );
 $wgNewuserlogMessages['zh-hk'] = $wgNewuserlogMessages['zh-tw'];
 $wgNewuserlogMessages['zh-sg'] = $wgNewuserlogMessages['zh-cn'];
-?>
+

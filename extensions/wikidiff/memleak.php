@@ -46,4 +46,3 @@ for( $i = 0; $i <= $maxruns; $i++ ) {
 
 echo "(" . (memory_get_usage() - $membase) . " used)\n";
 
-?>

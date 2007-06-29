@@ -159,4 +159,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 }
 
 
-?>

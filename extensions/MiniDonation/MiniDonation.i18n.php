@@ -75,4 +75,4 @@ $wgMiniDonationMessages['zh-yue'] = array(
 $wgMiniDonationMessages['zh-hk'] = $wgMiniDonationMessages['zh-tw'];
 $wgMiniDonationMessages['zh-sg'] = $wgMiniDonationMessages['zh-cn'];
 
-?>
+

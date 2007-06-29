@@ -21,4 +21,4 @@ function wfSpamRegexGetTable() {
 	//will need more, maybe Core?
 	require_once ($IP.SPAMREGEX_PATH."extensions/SpamRegex/SpamRegexCore.php") ;
 	require_once ($IP.SPAMREGEX_PATH."extensions/SimplifiedRegex.php") ;
-?>
+

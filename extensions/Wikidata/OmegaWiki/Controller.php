@@ -726,4 +726,4 @@ class AlternativeDefinitionsPermissionController implements PermissionController
 	}
 }
 
-?>
+

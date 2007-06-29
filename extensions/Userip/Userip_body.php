@@ -102,4 +102,4 @@ class Espionage extends SpecialPage {
 }
 
 
-?>
+

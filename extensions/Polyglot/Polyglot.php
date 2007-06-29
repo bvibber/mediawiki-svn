@@ -266,4 +266,3 @@ function wfPolyglotSkinTemplateOutputPageBeforeExec($skin, $tpl) {
 	return true;
 }
 
-?>

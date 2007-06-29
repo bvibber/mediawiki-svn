@@ -1839,4 +1839,4 @@ function rollBackCollectionMembership($rollBackAction, $collectionId, $collectio
 		addDefinedMeaningToCollection($collectionMemberId, $collectionId, $sourceIdentifier);	
 }
 
-?>
+

@@ -308,4 +308,3 @@ function getCatOption(&$value,&$input,$name) {
 	} 
 }
 
-?>

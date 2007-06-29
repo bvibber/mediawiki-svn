@@ -55,4 +55,3 @@ function wfPageNoticeHook( &$out, &$text ) {
 	return true;
 }
 
-?>

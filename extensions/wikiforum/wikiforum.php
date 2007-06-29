@@ -559,4 +559,4 @@ function wfForum() {
 
 } // end if(defined('MEDIAWIKI'))
 
-?>
+

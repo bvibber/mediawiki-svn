@@ -58,4 +58,3 @@ function fixedImageHandler( $key, $text, $params=null ) {
 	return wfElement( 'img', $wgFixedImageHooks[$key] );
 }
 
-?>

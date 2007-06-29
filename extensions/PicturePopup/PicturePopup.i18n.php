@@ -79,4 +79,4 @@ function efPicturePopupMessages() {
 	return $messages;
 }
 
-?>
+

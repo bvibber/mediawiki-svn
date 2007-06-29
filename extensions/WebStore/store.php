@@ -74,4 +74,4 @@ EOT;
 $s = new WebStoreStore;
 $s->executeCommon();
 
-?>
+

@@ -518,4 +518,4 @@ function efBadImageMessages() {
 	);
 }
 
-?>
+

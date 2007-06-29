@@ -152,4 +152,3 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 }
-?>

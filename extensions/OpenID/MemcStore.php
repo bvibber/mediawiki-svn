@@ -255,4 +255,4 @@ if (defined('MEDIAWIKI')) {
 		}
 	}
 }
-?>
+

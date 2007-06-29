@@ -50,4 +50,4 @@ require_once("includes/Utf8Case.php");
 
 dump( $wikiUpperChars );
 
-?>
+

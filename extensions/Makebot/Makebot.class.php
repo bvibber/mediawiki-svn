@@ -189,4 +189,4 @@ class MakeBot extends SpecialPage {
 
 }
 
-?>
+

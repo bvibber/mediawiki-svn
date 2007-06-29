@@ -81,4 +81,4 @@ class AjaxTestPage extends SpecialPage {
 	}
 }
 
-?>
+

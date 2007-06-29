@@ -126,4 +126,4 @@ if( defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-?>
+

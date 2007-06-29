@@ -234,4 +234,4 @@ function wfGetRegexBlocked ($blocker, $user, $user_ip) {
 	}
 }
 
-?>
+

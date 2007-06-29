@@ -11,4 +11,4 @@
 
 $messages['selectcategory-title']	= 'Pilih kategori';
 $messages['selectcategory-subtitle']	= 'Shift-mouse untuk memilih entri yang berurutan, Ctrl-mouse untuk memilih entri yang tidak berurutan.';
-?>
+

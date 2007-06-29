@@ -132,4 +132,4 @@ if (defined('MEDIAWIKI')) {
 	$wgExtensionFunctions[] = 'setupSyslog';
 }
 
-?>
+

@@ -534,4 +534,4 @@ function getTransactionAsRecordSet($queryResult) {
 	return array($recordSet, $editor);		
 }
 
-?>
+

@@ -63,4 +63,4 @@ $wgQueryPages[] = array('InteractPage', 'Interact');
 
 require_once($IP.'/includes/SpecialPage.php');
 SpecialPage::addPage( new SpecialPage('Interact') );
-?>
+

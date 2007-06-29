@@ -85,4 +85,4 @@ class FindSpamPage extends SpecialPage {
 	}
 }
 
-?>
+

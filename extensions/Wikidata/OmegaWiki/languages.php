@@ -73,4 +73,4 @@ function getLanguageIdForName($name) {
 		return 0;	
 }
 
-?>
+

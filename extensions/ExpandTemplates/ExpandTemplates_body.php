@@ -102,4 +102,4 @@ class ExpandTemplates extends SpecialPage {
 	
 }
 
-?>
+

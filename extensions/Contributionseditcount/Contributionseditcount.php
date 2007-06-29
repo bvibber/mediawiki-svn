@@ -45,4 +45,4 @@ function wfContributionseditcount() {
 	// Establish a singleton.
 	new Contributionseditcount;
 }
-?>
+

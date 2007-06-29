@@ -123,4 +123,3 @@ END
 	
 	SpecialPage::addPage( new SpecialLanguages );
 }
-?>

@@ -24,4 +24,4 @@ function wfAjaxQueryPages( $specialpagename, $offset, $limit ) {
 	global $wgOut;
 	return $wgOut->getHTML();
 }
-?>
+

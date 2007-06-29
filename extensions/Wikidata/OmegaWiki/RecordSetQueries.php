@@ -74,4 +74,4 @@ function getUniqueIdsInRecordSet($recordSet, $idAttributes) {
 	return array_unique($ids);
 }
 
-?>
+

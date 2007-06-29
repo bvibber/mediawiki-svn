@@ -36,4 +36,4 @@ $optionAttributeOptionsTable = new Table("{$dc}_option_attribute_options", true,
 $optionAttributeValuesTable = new Table("{$dc}_option_attribute_values", true, array('value_id'));
 $urlAttributeValuesTable = new Table("{$dc}_url_attribute_values", true, array('value_id'));
 
-?>
+

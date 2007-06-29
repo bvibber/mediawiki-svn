@@ -203,4 +203,3 @@ function wfSpecialPreferencesExtension()
 	$prefs = new SpecialPreferencesExtension($wgRequest);
 	$prefs->execute();
 }
-?>

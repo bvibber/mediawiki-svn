@@ -293,4 +293,4 @@ function efBookInformationMessages() {
 	return $messages;
 }
 
-?>
+

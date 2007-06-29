@@ -26,4 +26,4 @@
 	$dbr->query('INSERT INTO script_log (time, script_name) ' .
 				'VALUES ('. wfTimestampNow() . ',' . $dbr->addQuotes('29 - Extract Wikidata text.php') . ')');
 				
-?>
+

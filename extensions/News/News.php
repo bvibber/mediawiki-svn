@@ -113,4 +113,3 @@ function wfNewsSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
     true;
 }
 
-?>

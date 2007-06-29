@@ -29,4 +29,4 @@ $wgMessageCache->addMessages(
 	)
 );
 
-?>
+

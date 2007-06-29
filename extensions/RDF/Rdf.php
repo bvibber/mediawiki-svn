@@ -1028,4 +1028,4 @@ if (defined('MEDIAWIKI')) {
 
 }
 
-?>
+

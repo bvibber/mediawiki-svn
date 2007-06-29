@@ -81,4 +81,4 @@ function wfUtf8ToHTML($string) {
 }
 
 
-?>
+

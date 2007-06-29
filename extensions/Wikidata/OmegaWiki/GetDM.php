@@ -33,4 +33,4 @@ echo $record;
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 
 
-?>
+

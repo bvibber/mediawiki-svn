@@ -49,4 +49,4 @@ if(defined('MEDIAWIKI'))
 	);
 } // end if(defined('MEDIAWIKI'))
 
-?>
+

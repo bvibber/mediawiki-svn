@@ -186,4 +186,4 @@ $wgLinkSearchMessages['zh-yue'] = array(
 );
 $wgLinkSearchMessages['zh-hk'] = $wgLinkSearchMessages['zh-tw'];
 $wgLinkSearchMessages['zh-sg'] = $wgLinkSearchMessages['zh-cn'];
-?>
+

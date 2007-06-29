@@ -771,4 +771,3 @@ if (defined('MEDIAWIKI')) {
 	}
 }
 
-?>

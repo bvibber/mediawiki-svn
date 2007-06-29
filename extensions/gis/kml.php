@@ -61,7 +61,7 @@ echo '<kml xmlns="http://earth.google.com/kml/2.0">';
 if ( $wgRequest->getVal('BBOX', '') ==  '' ) {
 	$title = $wgRequest->getVal( 'title','' );
 	$coords = $wgRequest->getVal( 'coords','0,0' );
-?>
+
 	<Folder>
   	<description>Wikipedia</description>
     		<name>Wikipedia</name>
@@ -120,4 +120,4 @@ if ( $wgRequest->getVal('BBOX', '') ==  '' ) {
 
 exit ( 0 ) ;
 
-?>
+

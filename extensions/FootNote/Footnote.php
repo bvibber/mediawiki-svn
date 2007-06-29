@@ -98,4 +98,4 @@ function parse_footnote( $text, $params, &$parser ) {
 
 	return $ret ;
 }
-?>
+

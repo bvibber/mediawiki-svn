@@ -40,4 +40,3 @@ if( $failed ) {
 	exit( 0 );
 }
 
-?>

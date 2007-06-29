@@ -494,4 +494,4 @@ class WebStoreWarning extends WebStoreError {
 	}
 }
 
-?>
+

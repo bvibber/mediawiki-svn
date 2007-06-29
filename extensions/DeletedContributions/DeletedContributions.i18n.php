@@ -12,4 +12,4 @@ $wgDeletedContribsMessages['de'] = array(
 $wgDeletedContribsMessages['id'] = array(
 	'deletedcontributions'		 => 'Kontribusi yang dihapus'
 );
-?>
+

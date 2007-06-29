@@ -189,4 +189,4 @@ function getStructureAsAddCells($idPath, $editor, &$startColumn = 0) {
 	return $result;
 }
 
-?>
+

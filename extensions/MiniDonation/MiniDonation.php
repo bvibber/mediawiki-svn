@@ -65,4 +65,4 @@ function wfMiniDonationHook( $text, $params, $parser ) {
 EOT;
 }
 
-?>
+

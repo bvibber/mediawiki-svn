@@ -116,4 +116,4 @@ function wfStaticEditHook ( $a ) {
 }
 
 
-?>
+

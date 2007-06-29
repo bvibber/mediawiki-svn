@@ -23,4 +23,4 @@ if( version_compare( $wgVersion, '1.11alpha', '<' ) ) {
 	// Set up AJAX entry point:
 	require_once('extensions/AjaxQueryPages/Response.php');
 }
-?>
+

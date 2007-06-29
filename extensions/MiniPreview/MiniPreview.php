@@ -426,4 +426,3 @@ function wfMiniPreviewMessage( $msg , $args = array() ) {
 }
 
 
-?>

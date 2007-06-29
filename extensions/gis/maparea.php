@@ -158,4 +158,4 @@ class maparea {
 		return $out;
 	}
 }
-?>
+

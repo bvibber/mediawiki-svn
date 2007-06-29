@@ -814,4 +814,4 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 	$messages['kk'] = $messages['kk-kz'];
 
 }
-?>
+

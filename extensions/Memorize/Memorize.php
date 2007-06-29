@@ -65,4 +65,4 @@ $wgExtensionCredits['other'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Memorizable'
 	);
 
-?>
+

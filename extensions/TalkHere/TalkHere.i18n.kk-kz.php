@@ -20,4 +20,4 @@ $messages['talkhere-afterform']= '';
 $messages['talkhere-loading']= 'өңдеуішті жүктеуде...';
 $messages['talkhere-collapse']= 'өңдеуішті жасыр';
 
-?>
+

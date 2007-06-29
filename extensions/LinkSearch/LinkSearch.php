@@ -19,4 +19,4 @@ $wgSpecialPages['Linksearch'] = array( /*class*/ 'LinkSearchSpecialPage',
 	/*function*/ false, /*file*/ false );
 $wgAutoloadClasses['LinkSearchPage'] = dirname(__FILE__) . '/LinkSearch_body.php';
 $wgAutoloadClasses['LinkSearchSpecialPage'] = dirname(__FILE__) . '/LinkSearch_body.php';
-?>
+

@@ -261,4 +261,4 @@ function splitRecordSet($recordSet, $groupAttribute) {
 	return $result; 
 }
 
-?>
+

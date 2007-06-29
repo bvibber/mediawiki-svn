@@ -28,4 +28,4 @@ $messages['player-goto-player']= 'Player';
 $messages['player-goto-page']= 'Seite';
 $messages['player-goto-file']= 'Datei';
 
-?>
+

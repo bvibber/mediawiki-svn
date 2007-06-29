@@ -17,4 +17,4 @@ function mwBlockerCheck() {
 	return true;
 }
 
-?>
+

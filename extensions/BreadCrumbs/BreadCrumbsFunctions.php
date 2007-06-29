@@ -75,4 +75,3 @@ function fnBreadCrumbsOutputHook( &$m_pageObj, &$m_parserOutput ) {
   # Be nice:
   return true;
 }
-?>

@@ -63,4 +63,3 @@ function loadPageByI18n() {
 }
 
 
-?>

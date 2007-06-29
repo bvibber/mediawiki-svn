@@ -365,4 +365,4 @@ function importUMLSSemanticTypes($sab, $collectionId, $attributeTypes) {
 	clearProgressBar();	
 }
 
-?>
+

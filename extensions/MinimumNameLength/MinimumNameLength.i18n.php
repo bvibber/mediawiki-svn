@@ -75,4 +75,4 @@ function efMinimumNameLengthMessages() {
 	return $messages;
 }
 
-?>
+

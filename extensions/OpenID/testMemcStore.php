@@ -310,4 +310,3 @@ $suite->addTest(new Tests_OpenID_MemcStore('testMemcStore'));
 $result = PHPUnit::run($suite);
 print $result->toString();
 
-?>

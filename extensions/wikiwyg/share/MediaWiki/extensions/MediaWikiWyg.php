@@ -162,4 +162,4 @@ $wgMessageCache->addMessage( 'ezparser', 'Simple parser test' );
 }
 } # End if(defined MEDIAWIKI)
 
-?>
+

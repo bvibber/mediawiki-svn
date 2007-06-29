@@ -140,4 +140,4 @@ class SiteMatrixPage extends SpecialPage {
 	}
 }
 
-?>
+

@@ -406,4 +406,4 @@ class MakesysopStewardForm extends UserrightsForm {
 	}
 }
 
-?>
+

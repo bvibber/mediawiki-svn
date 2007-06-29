@@ -1472,4 +1472,4 @@ class DPL2Logger {
 	}
 	
 }
-?>
+

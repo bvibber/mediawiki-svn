@@ -48,4 +48,3 @@ while ($res && $row = $dbr->fetchObject($res)) {
 }
 $dbr->freeResult($res);
 
-?>

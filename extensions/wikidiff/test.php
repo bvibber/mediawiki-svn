@@ -8,4 +8,4 @@ $f2 = implode("\n", file("t2.txt"));
 for ($i = 0; $i < 100; ++$i) {
 	$v = wikidiff_do_diff($f1, $f2, 2);
 }
-?>
+

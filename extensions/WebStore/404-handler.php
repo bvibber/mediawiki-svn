@@ -267,4 +267,4 @@ $h = new WebStore404Handler;
 $h->setErrorHandler();
 $h->execute();
 
-?>
+

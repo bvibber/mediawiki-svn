@@ -276,4 +276,4 @@ function wfSpecialData() {
 	
 	return '' ;
 	}
-?>
+

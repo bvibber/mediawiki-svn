@@ -11,4 +11,4 @@
 
 $messages['selectcategory-title']	= 'Kategori ussueche';
 $messages['selectcategory-subtitle']	= 'Gross-Muus go verschiedeni Iiträg hintrenander go uswähle, Strg-Muus go einzelni Iiträg go uswähle';
-?>
+

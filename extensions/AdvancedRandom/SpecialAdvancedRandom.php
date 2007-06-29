@@ -33,4 +33,4 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 extAddSpecialPage( dirname(__FILE__) . '/AdvancedRandom_body.php', 'AdvancedRandom', 'SpecialAdvancedRandom' );
 
-?>
+

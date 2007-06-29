@@ -2033,4 +2033,4 @@ class GotoSourceEditor extends Viewer {
 	}
 }
 
-?>
+

@@ -14,4 +14,4 @@ $messages['pageby-first']= 'Pagina creata da $1 ($2)';
 $messages['pageby-last']= 'Ultima <a href="$3">modifica</a> da parte di $1 ($2)';
 $messages['pageby-contributors']= 'Autori:';
 $messages['pageby-anon']= '<i>anonimo</i>';
-?>
+

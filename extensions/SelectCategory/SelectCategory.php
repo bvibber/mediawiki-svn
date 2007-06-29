@@ -92,4 +92,3 @@ function fnSelectCategory() {
 
 ## Load the file containing the hook functions:
 require_once( 'SelectCategoryFunctions.php' );
-?>

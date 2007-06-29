@@ -11,4 +11,4 @@ $relationMeaningName = "Relation";
 $synTransMeaningName = "SynTrans";
 $annotationMeaningName = "Annotation";
 
-?>
+

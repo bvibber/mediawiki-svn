@@ -108,4 +108,3 @@ function throttleDebug( $text, $full=false ) {
 	wfDebugLog( 'UserThrottle', "UserThrottle: $text $info" );
 }
 
-?>

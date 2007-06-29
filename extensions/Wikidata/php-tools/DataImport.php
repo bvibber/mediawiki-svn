@@ -108,4 +108,4 @@ echo "\n\nTime elapsed: " . durationToString($endTime - $beginTime);
 //	echo "</uniprot>";
 //}
 
-?>
+

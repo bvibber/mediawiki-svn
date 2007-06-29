@@ -67,4 +67,4 @@ require_once ($IP.REGEXBLOCK_PATH."extensions/regexBlock/SpecialRegexBlockStats.
 /* simplified regexes, this is shared with SpamRegex */
 require_once ($IP.REGEXBLOCK_PATH."extensions/SimplifiedRegex.php") ;
 
-?>
+

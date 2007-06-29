@@ -36,4 +36,4 @@ function wfSpecialResign() {
 	$wgMessageCache->addMessagesByLang( efResignMessages() );
 }
 
-?>
+

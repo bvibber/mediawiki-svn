@@ -12,4 +12,4 @@
 
 /* Inherited from Chinese (Simplified) messages */
 require_once('PageBy.i18n.zh-cn.php');
-?>
+

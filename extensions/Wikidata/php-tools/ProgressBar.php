@@ -67,4 +67,4 @@ function clearProgressBar() {
 	echo "\r" . str_repeat(" ", 79) . "\r";
 }
 	
-?>
+

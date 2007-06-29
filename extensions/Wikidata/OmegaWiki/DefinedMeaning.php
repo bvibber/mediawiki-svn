@@ -208,4 +208,4 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		return $html;
 	}
 }
-?>
+

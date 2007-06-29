@@ -55,4 +55,4 @@ function renderRSS( $paramstring )
 	return $text;
 }
 
-?>
+

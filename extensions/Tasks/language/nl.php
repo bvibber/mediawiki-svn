@@ -89,4 +89,4 @@ $wgMessageCache->addMessages(
 		'tog-show_task_comments' => 'Transcludeer opmerkingenpagina voor taak.',
 	)
 );
-?>
+

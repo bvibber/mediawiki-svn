@@ -50,4 +50,4 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 extAddSpecialPage( dirname(__FILE__) . '/SpecialMakesysop_body.php', 'Makesysop', 'MakeSysopPage' );
 
-?>
+

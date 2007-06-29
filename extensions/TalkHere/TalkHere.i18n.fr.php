@@ -25,4 +25,4 @@ $messages['talkhere-afterform']= '';
 
 $messages['talkhere-loading']= 'chargement de l’éditeur...';
 $messages['talkhere-collapse']= 'cacher l’éditeur';
-?>
+

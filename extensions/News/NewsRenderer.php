@@ -856,4 +856,4 @@ class NewsFeedPage extends Article {
 		$this->view( false );
 	}
 }
-?>
+

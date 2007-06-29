@@ -89,4 +89,4 @@ $wgMessageCache->addMessages(
 		'tog-show_task_comments' => 'Transklúzia diskusnej stránky úlohy.',
 	)
 );
-?>
+

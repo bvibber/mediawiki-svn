@@ -499,4 +499,4 @@ class BoardVotePage extends UnlistedSpecialPage {
 }
 
 
-?>
+

@@ -1354,4 +1354,4 @@ class GOReference {
 		}
 	}
 }
-?>
+

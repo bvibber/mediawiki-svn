@@ -319,4 +319,4 @@ function wfSpecialDatasearch() {
 	SpecialPage::addPage(new SpecialDatasearch());
 }
 
-?>
+

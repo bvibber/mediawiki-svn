@@ -331,4 +331,4 @@ function deletedContributionsForm( $options ) {
 	return $f;
 }
 
-?>
+

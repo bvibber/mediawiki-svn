@@ -690,4 +690,4 @@ function sosShowDiff( $revision )
 	}
 	$dbr->freeResult( $result );
 }
-?>
+

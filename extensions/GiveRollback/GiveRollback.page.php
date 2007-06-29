@@ -184,4 +184,3 @@ class GiveRollback extends SpecialPage {
 
 }
 
-?>

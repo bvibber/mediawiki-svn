@@ -160,4 +160,4 @@ $wgCrossNamespaceLinksMessages['zh-yue'] = array(
 );
 $wgCrossNamespaceLinksMessages['zh-hk'] = $wgCrossNamespaceLinksMessages['zh-tw'];
 $wgCrossNamespaceLinksMessages['zh-sg'] = $wgCrossNamespaceLinksMessages['zh-cn'];
-?>
+

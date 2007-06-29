@@ -108,4 +108,4 @@
 
 		SpecialPage::addPage(new SpecialNeedsTranslation);
 	}
-?>
+

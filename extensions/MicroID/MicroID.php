@@ -100,4 +100,3 @@ if (defined('MEDIAWIKI')) {
 	}
 }
 
-?>

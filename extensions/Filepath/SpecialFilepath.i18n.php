@@ -190,4 +190,4 @@ $wgFilepathMessages['zh-yue'] = array(
 );
 $wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-tw'];
 $wgFilepathMessages['zh-sg'] = $wgFilepathMessages['zh-cn'];
-?>
+

@@ -11,4 +11,4 @@
 
 # Inherited from Chinese (Traditional) messages
 require_once('SelectCategory.i18n.zh.php');
-?>
+

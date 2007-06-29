@@ -41,4 +41,4 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 extAddSpecialPage( dirname(__FILE__) . '/SpecialDesysop_body.php', 'Desysop', 'DesysopPage' );
 
-?>
+

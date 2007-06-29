@@ -232,4 +232,4 @@ class DefinedMeaningAttributesHelper extends Helper {
 	
 
 }
-?>
+

@@ -65,4 +65,4 @@ Ingat: '''Anda tidak dapat memperoleh kembali hak Anda melalui ini!''' Anda haru
 	return $messages;
 }
 
-?>
+

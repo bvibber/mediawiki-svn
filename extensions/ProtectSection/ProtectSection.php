@@ -109,4 +109,4 @@ function wfCheckProtectSection ( $editpage, $textbox1, $section )  {
 	}
 	return true;
 }
-?>
+

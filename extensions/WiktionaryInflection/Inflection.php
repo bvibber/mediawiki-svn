@@ -104,4 +104,4 @@ function renderInflection($input, $argv) {
 		return "?<!-- " . $e->getMessage() . " -->";
 	}
 }
-?>
+

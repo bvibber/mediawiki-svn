@@ -132,4 +132,4 @@ function initializeWikidata() {
 	return true;
 }
 
-?>
+

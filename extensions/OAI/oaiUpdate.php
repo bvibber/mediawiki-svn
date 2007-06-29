@@ -47,4 +47,3 @@ if( isset( $options['debug'] ) ) {
 
 $result = $harvester->listUpdates( $lastUpdate, $callback );
 
-?>

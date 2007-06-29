@@ -16,4 +16,3 @@ function renderHashAppend( &$hash ) {
 	return true;
 }
 
-?>

@@ -416,4 +416,4 @@ $wgExtensionCredits['other'][] = array(
 	'description' => 'Allows users to create galleries with images that have been uploaded. Allows most options of SmoothGallery',
 	'url' => 'http://www.mediawiki.org/wiki/Extension:SmoothGallery'
 );
-?>
+

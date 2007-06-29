@@ -325,5 +325,5 @@ function wfSpecialImportFreeImages( $par )
                 //print_r($photo);
 	}
 }
-?>
+
 

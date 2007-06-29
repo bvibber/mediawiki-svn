@@ -166,4 +166,3 @@ class BadImageManipulator extends SpecialPage {
 
 }
 
-?>

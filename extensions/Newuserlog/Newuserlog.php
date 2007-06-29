@@ -78,4 +78,4 @@ function wfNewuserlogHook( $user ) {
 
 	return true;
 }
-?>
+

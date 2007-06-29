@@ -176,4 +176,4 @@ function getOptionPanel($fields, $action = '', $buttons = array("show" => "Show"
 		
 	return $result;
 }
-?>
+

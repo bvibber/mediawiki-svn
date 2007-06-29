@@ -36,4 +36,4 @@ function parse_seealso ( $text, $params, &$parser ) {
 	return $ret ;
 }
 
-?>
+

@@ -41,4 +41,4 @@ class PurgeCache extends SpecialPage {
 }
 
 
-?>
+

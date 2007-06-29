@@ -456,4 +456,4 @@ class regexBlockForm {
 	}
 }
 
-?>
+

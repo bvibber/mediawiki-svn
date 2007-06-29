@@ -164,4 +164,4 @@
 
 		SpecialPage::addPage(new SpecialImportLangNames);
 	}
-?>
+

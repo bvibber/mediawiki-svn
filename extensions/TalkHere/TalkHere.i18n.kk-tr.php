@@ -20,4 +20,4 @@ $messages['talkhere-afterform']= '';
 $messages['talkhere-loading']= 'öñdewişti jüktewde...';
 $messages['talkhere-collapse']= 'öñdewişti jasır';
 
-?>
+

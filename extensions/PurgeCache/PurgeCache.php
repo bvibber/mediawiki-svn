@@ -22,4 +22,4 @@ extAddSpecialPage( dirname(__FILE__) . '/PurgeCache_body.php', 'PurgeCache', 'Pu
 $wgAvailableRights[] = 'purgecache';
 $wgGroupPermissions['developer']['purgecache'] = true;
 
-?>
+

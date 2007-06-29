@@ -131,4 +131,4 @@ function oaiUpdateUndelete( $title, $isnewid ) {
 	return true;
 }
 
-?>
+

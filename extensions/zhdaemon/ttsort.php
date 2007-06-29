@@ -17,4 +17,3 @@ function printlines($lines, $start, $end) {
 	if($end>$mid)
 		printlines($lines, $mid+1, $end);
 }
-?>

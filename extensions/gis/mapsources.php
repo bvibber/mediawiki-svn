@@ -290,4 +290,4 @@ class map_sources {
 	}
 }
 
-?>
+

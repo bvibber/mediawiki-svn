@@ -1157,4 +1157,4 @@ $wgMakesysopMessages['zh-yue'] = array(
 );
 $wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-cn'];
 
-?>
+

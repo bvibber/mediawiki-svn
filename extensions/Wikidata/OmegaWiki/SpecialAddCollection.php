@@ -56,4 +56,4 @@
 
 		SpecialPage::addPage(new SpecialAddCollection);
 	}
-?>
+

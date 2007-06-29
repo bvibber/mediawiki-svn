@@ -250,4 +250,4 @@ function getInputFieldValueForType($name, $type) {
 	}
 }
 
-?>
+

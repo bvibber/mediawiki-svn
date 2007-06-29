@@ -70,4 +70,4 @@ function bootstrapDefinedMeaning($spelling, $languageId, $definition) {
 	return $definedMeaningId;
 }
 
-?>
+

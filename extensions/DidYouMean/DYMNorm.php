@@ -247,4 +247,4 @@ function wfDymNormalise( $norm ) {
 	return $norm;
 }
 
-?>
+

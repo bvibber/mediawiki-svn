@@ -85,4 +85,4 @@ function PoemExtension( $in, $param=array(), $parser=null ) {
 		"\n</div>";
 }
 
-?>
+

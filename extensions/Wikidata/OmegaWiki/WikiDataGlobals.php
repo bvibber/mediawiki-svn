@@ -177,4 +177,3 @@ $wgSearchWithinWordsDefaultValue = true;
 $wgShowSearchWithinExternalIdentifiersOption = true;
 $wgShowSearchWithinWordsOption = true;
 
-?>

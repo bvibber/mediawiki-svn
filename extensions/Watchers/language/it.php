@@ -17,4 +17,4 @@ $wgMessageCache->addMessages(
 		'watchers_less_than_x' => "La pagina è osservata da meno di $1 utenti.",
 	)
 );
-?>
+

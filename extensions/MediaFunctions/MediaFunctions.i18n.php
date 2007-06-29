@@ -56,4 +56,3 @@ function efMediaFunctionsMessages() {
 	return $messages;
 }
 
-?>

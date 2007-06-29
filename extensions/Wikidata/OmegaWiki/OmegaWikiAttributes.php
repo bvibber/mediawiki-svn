@@ -276,4 +276,4 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	$definedMeaningAttributesAttribute->type = $objectAttributesStructure;
 }
 
-?>
+

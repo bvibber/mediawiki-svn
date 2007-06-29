@@ -27,4 +27,3 @@ function oaiDebugNode( $node, $die=false ) {
 	}
 }
 
-?>

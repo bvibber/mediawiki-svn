@@ -431,4 +431,4 @@ function wfMathStatFunctionsLanguageGetMagic( &$magicWords, $langCode ) {
         $magicWords = array_merge($magicWords, $wgMathStatFunctionsMagic[$langCode]);
         return true;
 }
-?>
+

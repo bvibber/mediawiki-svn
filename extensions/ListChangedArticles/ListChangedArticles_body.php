@@ -58,4 +58,4 @@ class ListChangedArticles extends UnlistedSpecialPage
 	}
 
 }
-?>
+

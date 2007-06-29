@@ -23,4 +23,4 @@ function wfAjaxQueryPagesAddJS( $out ) {
 	return true;
 }
 
-?>
+

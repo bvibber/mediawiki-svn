@@ -113,4 +113,4 @@ $wgSiteMatrixMessages['zh-tw'] = array(
 $wgSiteMatrixMessages['zh-yue'] = array(
 	"sitematrix" => "Wikimedia嘅wiki一覽",
 );
-?>
+

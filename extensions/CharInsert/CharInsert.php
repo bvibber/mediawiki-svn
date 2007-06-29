@@ -120,4 +120,4 @@ function charInsertDisplay( $text ) {
 			str_replace( $invisibles, $visibles, $text ) );
 }
 
-?>
+

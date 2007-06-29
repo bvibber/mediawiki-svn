@@ -320,4 +320,4 @@ class TalkHereEditTarget {
 	}
 
 }
-?>
+

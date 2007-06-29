@@ -93,4 +93,4 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 	}
 }
 
-?>
+

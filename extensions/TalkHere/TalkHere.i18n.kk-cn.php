@@ -20,4 +20,4 @@ $messages['talkhere-afterform']= '';
 $messages['talkhere-loading']= 'ٶڭدەۋٸشتٸ جٷكتەۋدە...';
 $messages['talkhere-collapse']= 'ٶڭدەۋٸشتٸ جاسىر';
 
-?>
+

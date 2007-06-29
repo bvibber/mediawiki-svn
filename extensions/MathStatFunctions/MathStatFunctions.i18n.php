@@ -91,4 +91,4 @@ $wgMathStatFunctionsMagic['en'] = array(
         'csc'           => array( 0, 'csc' ),
         'acsc'          => array( 0, 'acsc', 'arccsc' ),
 );
-?>
+

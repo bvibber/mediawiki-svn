@@ -149,4 +149,3 @@ class SpecialVote extends SpecialPage {
 
 }
 
-?>

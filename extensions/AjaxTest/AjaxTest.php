@@ -65,4 +65,4 @@ function efAjaxTest( $text, $usestring, $httpcache, $lastmod, $error ) {
 	}
 }
 
-?>
+

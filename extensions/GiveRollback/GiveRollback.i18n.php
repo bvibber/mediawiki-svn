@@ -346,4 +346,4 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	);
 }
 
-?>
+

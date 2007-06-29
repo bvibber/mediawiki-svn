@@ -348,4 +348,3 @@ function wfLanguageSelectorHTML( $style = NULL, $class = NULL, $selectorstyle = 
 	return $html;
 }
 
-?>

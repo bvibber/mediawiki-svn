@@ -388,4 +388,4 @@ function DynamicPageList( $input ) {
 
     return $output;
 }
-?>
+

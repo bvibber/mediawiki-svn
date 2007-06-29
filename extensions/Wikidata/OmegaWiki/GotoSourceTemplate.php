@@ -22,4 +22,4 @@ class PrefixGotoSourceTemplate implements GotoSourceTemplate {
 $swissProtGotoSourceTemplate = new PrefixGotoSourceTemplate("http://www.expasy.org/uniprot/");
 
 
-?>
+

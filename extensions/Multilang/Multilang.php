@@ -25,4 +25,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 }
 
-?>

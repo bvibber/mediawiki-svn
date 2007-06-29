@@ -994,4 +994,4 @@ class OAILSearchWriter extends OAIDumpWriter {
 }
 
 
-?>
+

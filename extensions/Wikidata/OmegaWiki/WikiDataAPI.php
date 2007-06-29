@@ -1228,4 +1228,4 @@ function &getDefinedMeaningDataAssociatedByConcept($dm, $dc) {
 }
 
 
-?>
+

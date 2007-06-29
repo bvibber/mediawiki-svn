@@ -204,4 +204,3 @@ class SpecialContributors extends IncludableSpecialPage {
 
 }
 
-?>

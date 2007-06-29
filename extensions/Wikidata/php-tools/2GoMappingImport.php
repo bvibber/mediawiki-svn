@@ -56,4 +56,4 @@ function loadSwissProtKeyWord2GoMapping($fileName) {
 	fclose($fileHandle);
 	return $mapping;	
 }
-?>
+

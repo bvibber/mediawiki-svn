@@ -321,4 +321,3 @@ class Patroller extends SpecialPage {
 	
 }
 
-?>

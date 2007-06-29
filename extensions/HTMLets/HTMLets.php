@@ -120,4 +120,3 @@ function wfRenderHTMLetHackPostProcess( &$parser, &$text ) {
    return true;
 }
 
-?>

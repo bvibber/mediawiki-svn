@@ -92,4 +92,4 @@ foreach( $prefixes as $prefix ){
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 
 
-?>
+

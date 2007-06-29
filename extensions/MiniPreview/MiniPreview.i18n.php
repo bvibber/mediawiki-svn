@@ -15,4 +15,3 @@ that start with "PD-", such as "PD-old".
 ' ;
 $messages['minipreview-no_category_gallery'] = "No categories or galleries!";
 
-?>

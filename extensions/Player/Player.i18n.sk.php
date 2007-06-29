@@ -27,4 +27,4 @@ $messages['player-clicktoplay']= 'Prehrať $1';
 $messages['player-goto-player']= 'prehrávač';
 $messages['player-goto-page']= 'Stránka';
 $messages['player-goto-file']= 'súbor';
-?>
+

@@ -150,4 +150,4 @@ class neighbors {
 		       . "</td></tr>\r\n";
 	}
 }
-?>
+

@@ -11,4 +11,4 @@
 
 $messages['selectcategory-title']	= '選擇分類';
 $messages['selectcategory-subtitle']	= '按著Shift鍵再以滑鼠選取連續的項目，按著Ctrl鍵再以滑鼠選取非連續的項目。';
-?>
+

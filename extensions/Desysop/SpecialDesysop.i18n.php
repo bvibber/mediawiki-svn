@@ -230,4 +230,4 @@ $wgDesysopMessages['zh-yue'] = array(
 );
 $wgDesysopMessages['zh-hk'] = $wgDesysopMessages['zh-tw'];
 $wgDesysopMessages['zh-sg'] = $wgDesysopMessages['zh-cn'];
-?>
+

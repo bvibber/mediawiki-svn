@@ -523,4 +523,3 @@ function createTranslatedTextViewer($attribute) {
 	return $result;
 }
 
-?>

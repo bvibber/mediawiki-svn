@@ -83,4 +83,3 @@ class ProfileMonitor extends SpecialPage {
 
 }
 
-?>

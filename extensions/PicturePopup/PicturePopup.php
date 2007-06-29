@@ -16,4 +16,4 @@ function wfPicturePopupAjax( $image, $recache = false ) {
 	return PicturePopup::ajax( $image, $recache );
 }
 
-?>
+

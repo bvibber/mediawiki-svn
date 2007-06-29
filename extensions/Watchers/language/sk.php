@@ -17,4 +17,4 @@ $wgMessageCache->addMessages(
 		'watchers_less_than_x' => "Menej ako $1 ľudí sleduje túto stránku.",
 	)
 );
-?>
+

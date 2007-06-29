@@ -129,4 +129,4 @@ $wgDismissableSiteNoticeMessages['zh-yue'] = array(
 $wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-tw'];
 $wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-cn'];
 
-?>
+

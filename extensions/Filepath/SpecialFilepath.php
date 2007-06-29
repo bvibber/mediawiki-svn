@@ -23,4 +23,4 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 extAddSpecialPage( dirname(__FILE__) . '/SpecialFilepath_body.php', 'Filepath', 'SpecialFilepath' );
 
-?>
+

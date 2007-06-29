@@ -14,4 +14,4 @@ $messages['pageby-first']= 'Stránku vytvoril $1, $2';
 $messages['pageby-last']= 'Naposledy <a href="$3">zmenil</a> $1, $2';
 $messages['pageby-contributors']= 'Prispievatelia:';
 $messages['pageby-anon']= '<i>anonymní</i>';
-?>
+

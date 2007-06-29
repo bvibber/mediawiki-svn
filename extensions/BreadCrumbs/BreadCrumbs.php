@@ -44,4 +44,3 @@ function fnBreadCrumbs() {
 
 ## Load the file containing the hook functions:
 require_once( 'BreadCrumbsFunctions.php' );
-?>

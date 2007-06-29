@@ -889,4 +889,4 @@ class LuceneSearchSet {
 	}
 }
 
-?>
+

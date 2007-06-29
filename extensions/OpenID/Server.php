@@ -789,4 +789,3 @@ if (defined('MEDIAWIKI')) {
 	}
 }
 
-?>

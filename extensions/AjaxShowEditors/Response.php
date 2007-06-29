@@ -103,4 +103,4 @@ function wfAjaxShowEditors( $articleId, $username ) {
 	}
 	return $wikitext ;
 }
-?>
+

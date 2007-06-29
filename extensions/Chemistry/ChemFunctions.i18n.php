@@ -341,4 +341,4 @@ $wgChemFunctions_Messages['vi'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: lỗi nhập!'
 );
 
-?>
+

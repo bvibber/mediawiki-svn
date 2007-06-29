@@ -43,4 +43,4 @@ function wfGetSpamRegex () {
 	return true ;
 }
 
-?>
+

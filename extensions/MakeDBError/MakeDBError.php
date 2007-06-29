@@ -14,4 +14,4 @@ if ( !function_exists( 'extAddSpecialPage' ) ) {
 }
 extAddSpecialPage( dirname(__FILE__) . '/MakeDBError_body.php', 'MakeDBError', 'MakeDBErrorPage' );
 
-?>
+

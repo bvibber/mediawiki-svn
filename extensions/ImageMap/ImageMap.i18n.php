@@ -321,4 +321,4 @@ function efImageMapMessages() {
 	return $messages;
 
 }
-?>
+

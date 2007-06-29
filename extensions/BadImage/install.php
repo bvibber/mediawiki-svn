@@ -65,4 +65,3 @@ if( $dba->tableExists( 'bad_images' ) ) {
 $dba->close();
 echo( "\n" );
 
-?>

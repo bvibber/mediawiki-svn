@@ -199,4 +199,3 @@ if (defined('MEDIAWIKI')) {
 	}
 }
 
-?>

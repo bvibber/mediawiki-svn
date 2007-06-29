@@ -100,4 +100,4 @@ function getSelectOptions() {
 	return $optionsString;
 }
 
-?>
+

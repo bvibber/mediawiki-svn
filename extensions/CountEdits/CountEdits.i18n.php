@@ -323,4 +323,4 @@ function efCountEditsMessages( $single = false ) {
 	return $single ? $messages['en'] : $messages;
 }
 
-?>
+

@@ -11,4 +11,4 @@
 
 $messages['selectcategory-title']       = 'Selezionare le categorie';
 $messages['selectcategory-subtitle']    = 'Fare clic con il mouse tenendo premuto MAIUSC per selezionare più voci adiacenti o CTRL per selezionare più voci non adiacenti.';
-?>
+

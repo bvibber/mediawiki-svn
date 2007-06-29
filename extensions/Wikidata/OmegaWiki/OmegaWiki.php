@@ -127,4 +127,4 @@ class OmegaWiki extends DefaultWikidataApplication {
 	}
 }
 
-?>
+

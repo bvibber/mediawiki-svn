@@ -241,4 +241,3 @@ class SpecialDuplicator extends SpecialPage {
 	
 }
 
-?>

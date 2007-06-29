@@ -11,4 +11,4 @@
 
 $messages['selectcategory-title']	= 'Vybrať kategórie';
 $messages['selectcategory-subtitle']	= 'Shift+kliknutie označí súvislú skupinu položiek, ctrl+kliknutie označí jednotlivé nesúvislé položky.';
-?>
+

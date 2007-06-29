@@ -91,4 +91,4 @@ class greatcircle
 		/* Assumes Earth radius of 6366.71 km */
 	}
 }
-?>
+

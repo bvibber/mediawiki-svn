@@ -298,4 +298,4 @@ $wgExpandTemplatesMessages['zh-yue'] = array(
 );
 $wgExpandTemplatesMessages['zh-hk'] = $wgExpandTemplatesMessages['zh-tw'];
 $wgExpandTemplatesMessages['zh-sg'] = $wgExpandTemplatesMessages['zh-cn'];
-?>
+

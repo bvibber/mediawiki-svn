@@ -339,4 +339,4 @@ class PicturePopup {
 			'thumbWidth', 'thumbHeight', 'thumbURL' );
 	}
 }
-?>
+

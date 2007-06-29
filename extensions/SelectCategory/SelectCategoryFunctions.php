@@ -242,4 +242,3 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 	# Return the list of categories as an array:
 	return $m_catLinks;
 }
-?>

@@ -13,4 +13,4 @@ if (!defined('MEDIAWIKI')) {
 require_once( dirname(__FILE__) . '/../ExtensionFunctions.php' );
 extAddSpecialPage( dirname(__FILE__) . '/InspectCache_body.php', 'InspectCache', 'InspectCache' );
 
-?>
+

@@ -19,4 +19,4 @@ echo "$str\n";
 echo "\n\n".utf8_decode(mediawiki_ucfirst(utf8_encode("überfall")))."\n";
 echo        utf8_decode(mediawiki_ucfirst(utf8_encode("anton")))."\n";
 echo        utf8_decode(mediawiki_ucfirst(utf8_encode("JeLuF")))."\n";
-?>
+

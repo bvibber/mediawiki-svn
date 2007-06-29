@@ -36,4 +36,4 @@ function mwSearchUpdateMove( $from, $to, $user, $pageid, $redirid ) {
 	MWSearchUpdater::updatePage( $wgDBname, $from, $redirText );
 	return true;
 }
-?>
+

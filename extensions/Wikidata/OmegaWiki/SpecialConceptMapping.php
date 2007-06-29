@@ -184,4 +184,4 @@ function wfSpecialConceptMapping() {
 	SpecialPage::addPage( new SpecialConceptMapping );
 	
 }
-?>
+

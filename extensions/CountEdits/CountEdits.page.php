@@ -120,4 +120,4 @@ class SpecialCountEdits extends SpecialPage {
 
 }
 
-?>
+

@@ -88,4 +88,4 @@ function getSearchResultAsRecordSet($queryResult) {
 	return array($recordSet, $editor);		
 }
 
-?>
+

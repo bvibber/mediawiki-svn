@@ -74,4 +74,4 @@ $wgExtensionCredits['other'][] = array(
 );
 
 define( 'MW_WEBSTORE_ENABLED', 1 );
-?>
+

@@ -89,4 +89,4 @@ $wgMessageCache->addMessages(
 		'tog-show_task_comments' => 'Включить страницу примечаний задачи.',
 	)
 );
-?>
+

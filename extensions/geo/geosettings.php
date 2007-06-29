@@ -12,4 +12,4 @@ $wikibaseurl = "http://127.0.0.1/phase3/index.php" ;
 # $gisbasedir = "../../phase3/extensions/gis" ;
 # $gisbaseurl = "http://127.0.0.1/phase3/extensions/gis/index.php" ; 
 
-?>
+

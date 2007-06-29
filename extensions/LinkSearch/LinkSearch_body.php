@@ -177,4 +177,4 @@ class LinkSearchPage extends QueryPage {
 		return '';
 	}
 }
-?>
+

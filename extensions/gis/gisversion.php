@@ -65,4 +65,4 @@ class gis_version {
 	}
 }
 
-?>
+

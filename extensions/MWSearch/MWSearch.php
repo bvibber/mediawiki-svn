@@ -298,4 +298,4 @@ class LuceneSearchSet extends SearchResultSet {
 
 } # End of extension function
 } # End of invocation guard
-?>
+

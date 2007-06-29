@@ -78,4 +78,4 @@ $wgMessageCache->addMessages(
 //		'tog-show_task_comments' => 'Transclude task comments page.',
 	)
 );
-?>
+

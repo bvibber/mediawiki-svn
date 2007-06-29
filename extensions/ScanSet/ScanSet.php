@@ -28,4 +28,4 @@ function wfScanSetHook( $content, $params, &$parser ) {
 	return $ss->execute();
 }
 
-?>
+

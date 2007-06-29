@@ -90,4 +90,4 @@ $wgHooks['LoadAllMessages'][] = 'wfInitSiteNoticeMessage';
 
 $wgMajorSiteNoticeID = 1;
 
-?>
+

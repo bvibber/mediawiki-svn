@@ -69,4 +69,4 @@ function point_to_coords ( $s , $cx , $cy )
 	return array ( $x , $y ) ;
 	}
 
-?>
+

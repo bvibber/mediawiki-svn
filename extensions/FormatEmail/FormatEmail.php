@@ -48,5 +48,5 @@ function wfFormatEmail (&$to, &$from, &$subject, &$text ) {
 }
 
 
-?>
+
 

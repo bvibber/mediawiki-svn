@@ -125,4 +125,4 @@ $messages['zh-sg'] = $messages['zh-cn'];
 return $messages;
 }
 
-?>
+

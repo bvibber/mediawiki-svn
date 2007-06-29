@@ -42,4 +42,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	die( 1 );
 }
 
-?>

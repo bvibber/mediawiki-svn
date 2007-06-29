@@ -28,4 +28,4 @@ function efLoadDeletedContribsMessages() {
 $wgSpecialPages['DeletedContributions'] = array( 'SpecialPage', 'DeletedContributions', 'delete',
 		/*listed*/ true, /*function*/ false, /*file*/ false );
 
-?>
+

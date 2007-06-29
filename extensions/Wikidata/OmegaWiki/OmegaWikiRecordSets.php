@@ -1085,4 +1085,4 @@ function getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTran
 	return $recordSet;
 }
 
-?>
+

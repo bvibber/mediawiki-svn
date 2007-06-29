@@ -41,4 +41,4 @@ $wgLanguageManagerMessages['nl'] = array(
 $wgLanguageManagerMessages['sk'] = array(
 	'langman_title' => 'Správca jazykov',
 );
-?>
+

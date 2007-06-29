@@ -89,4 +89,4 @@ $wgMessageCache->addMessages(
 		'tog-show_task_comments' => 'Inclusione della pagina dei commenti dell\'attività',
 	)
 );
-?>
+

@@ -229,4 +229,4 @@ používajte túto funkciu s rozmyslom.",
 	);
 }
 
-?>
+

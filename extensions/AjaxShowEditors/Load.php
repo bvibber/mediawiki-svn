@@ -23,4 +23,4 @@ function wfAjaxShowEditorsLoadI18n() {
 		$wgMessageCache->addMessages( $msg, $lang );
 	}
 }
-?>
+

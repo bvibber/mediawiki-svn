@@ -56,4 +56,4 @@ function wfCheckBlockTitles (&$article ) {
 }
 
 
-?>
+

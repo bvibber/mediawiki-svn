@@ -116,4 +116,4 @@ class CrossNamespaceLinksPage extends QueryPage {
 	
 }
 
-?>
+
