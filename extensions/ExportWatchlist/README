@@ -1,0 +1,49 @@
+Export Watchlist Extension
+© 2007 Rob Church
+See LICENSE file for full licencing information
+
+The Export Watchlist extension provides two special pages which can be
+used to dump one's watchlist to a plain text list of titles, and to bulk-add
+pages to the watchlist from such a list.
+
+This is convenient for keeping copies of watchlists, duplicating watchlists
+across accounts, sharing watchlists with other users (and making them public)
+and also for bulk-adding titles from a number of sources to the watchlist.
+
+== Requirements ==
+
+The Export Watchlist extension requires MediaWiki 1.8.0 or above.
+
+== Installation ==
+
+1. Place extension files into an "ExportWatchlist" directory in your
+   MediaWiki "extensions/" directory
+   
+2. Add the line
+   `require_once( "{$IP}/extensions/ExportWatchlist/ExportWatchlist.php" );`
+   to LocalSettings.php.
+
+Installation can be verified through the Special:Version page on the wiki.
+
+== Usage ==
+
+The extension introduces two new special pages:
+
+* Special:ExportWatchlist
+* Special:ImportWatchlist
+
+=== Export ===
+
+Logged-in users can export pages from their watchlist using the
+Special:ExportWatchlist page, and can filter according to namespace.
+
+Note: Discussion namespaces are not included in the exported list. This would be
+redundant, as a watch is considered to exist for both a page and the associated
+discussion page at the same time.
+
+=== Import ===
+
+Logged-in users can bulk-add/import pages to their watchlist using the
+Special:ImportWatchlist page; when accessing the page, enter one or more titles,
+one per line, in the text box provided, then click "Import". A list of watched
+pages will be shown.
