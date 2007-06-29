@@ -151,17 +151,17 @@ $wgBoardVoteMessages['de'] = array(
 	'boardvote_entry'         => "* [[meta:Board elections/2007/Candidates/de|Kandidatenvorstellungen]]
 * [[{{ns:special}}:Boardvote/vote|Abstimmen]]
 * [[{{ns:special}}:Boardvote/list|Bislang abgegebene Stimmen]]
-* [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]", # to be updated before the next election
+* [[{{ns:special}}:Boardvote/dump|Verschlüsselte Wahleinträge]]",
 	'boardvote_intro'         => '<blockquote>
 <p>
 Willkommen zur vierten Wahl zum Wikimedia-Kuratorium, dem Verwaltungsorgan der Wikimedia-Foundation. Es werden drei Benutzer gewählt, um die Community der Wikimedianer in den verschiedenen Wikimedia-Projekten zu repräsentieren. Diese drei Benutzer werden für einen Zeitraum von zwei Jahren gewählt. Sie werden dabei helfen, die künftige Richtung der Wikimedia-Projekte festzulegen, einzeln und als Gruppe und sie repräsentieren <em>deine</em> Interessen und Belange. Sie werden neben vielen anderen Dingen über die Einnahmen und Ausgaben entscheiden.
 </p>
 
-<p>Vor deiner Wahl lese bitte die Kandidatenvorstellungen und ihre Antworten auf Fragen. Jeder Kandidat ist ein respektierter Benutzer, der bereits beträchtliche Zeit aufgewendet hat, um den Projekten ein positives Umfeld für die freie Verbreitung menschlichen Wissens zu verschaffen.</p>
+<p>Vor deiner Wahl lies bitte die Kandidatenvorstellungen und ihre Antworten auf Fragen. Jeder Kandidat ist ein respektierter Benutzer, der bereits beträchtliche Zeit aufgewendet hat, um den Projekten ein positives Umfeld für die freie Verbreitung menschlichen Wissens zu verschaffen.</p>
 
 <p>Du darfst für so viele Kandidaten stimmen wie du möchtest. Die drei Kandidaten mit den meisten Stimmen werden die Sieger sein. Gibt es ein Unentschieden, wird es eine Stichwahl geben.</p>
 
-<p>Bitte beachte, dass du nur aus einem Projekt heraus wählen darfst. Auch wenn du jeweils mehr als 400 Bearbeitungen in mehreren Projekten hast, so berechtigt dies nicht zu einer Doppelabstimmung. Wenn du deine Stimmabgabe ändern möchtest, wähle bitte erneut von dem Projekt, in dem bereits vorher abgestimmt hast.</p>
+<p>Bitte beachte, dass du nur aus einem Projekt heraus wählen darfst. Auch wenn du jeweils mehr als 400 Bearbeitungen in mehreren Projekten hast, so berechtigt dies nicht zu einer Doppelabstimmung. Wenn du deine Stimmabgabe ändern möchtest, wähle bitte erneut von dem Projekt, in dem du bereits vorher abgestimmt hast.</p>
 
 <p>Weitere Informationen:</p>
 <ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ/de" class="external">Election FAQ</a></li>
@@ -211,6 +211,11 @@ Dein Browser muss so konfiguriert sein, dass er Cookies von dem externen Wahlcom
 	'boardvote_blocked'       => 'Entschuldigung, aber du wurdest in deinem Wiki gesperrt. Gesperrten Benutzern ist es nicht erlaubt an der Wahl teilzunehmen.',
 	'boardvote_welcome'       => "Willkommen '''$1'''!",
 	'go_to_board_vote'        => 'Wahlen zum Wikimedia-Kuratorium 2007',
+	'boardvote_redirecting'   => 'Um eine erhöhte Sicherung und Transparenz zu gewährleisten, findet die Wahl auf einem externen, unabhängig kontrollierten Server statt.
+
+Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hier], um sofort dorthin zu gelangen.
+
+Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
 );
 $wgBoardVoteMessages['fr'] = array(
 	'boardvote'               => "Élections au conseil d’administration de la Wikimedia Foundation",
