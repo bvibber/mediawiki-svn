@@ -553,4 +553,4 @@ $1\n
 );
 $wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-tw'];
 $wgLuceneSearchMessages['zh-sg'] = $wgLuceneSearchMessages['zh-cn'];
-?>
+
