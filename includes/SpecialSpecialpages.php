@@ -10,6 +10,8 @@
 function wfSpecialSpecialpages() {
 	global $wgOut, $wgUser;
 
+	MessageCache::loadAllMessages();
+
 	$wgOut->setRobotpolicy( 'index,nofollow' );
 	$sk = $wgUser->getSkin();
 
@@ -56,4 +58,4 @@ function wfSpecialSpecialpages_gen($pages,$heading,$sk) {
 	$wgOut->addHTML( "</ul>\n" );
 }
 
-?>
+

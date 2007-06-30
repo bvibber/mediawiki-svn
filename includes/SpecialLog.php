@@ -124,9 +124,10 @@ class LogReader {
 	function limitTitle( $page , $pattern ) {
 		global $wgMiserMode;
 		$title = Title::newFromText( $page );
-		if( empty( $page ) || is_null( $title )  ) {
+		
+		if( strlen( $page ) == 0 || !$title instanceof Title )
 			return false;
-		}
+
 		$this->title =& $title;
 		$this->pattern = $pattern;
 		$ns = $title->getNamespace();
@@ -322,25 +323,13 @@ class LogViewer {
 	}
 
 	function doShowList( &$out, $result ) {
-		global $wgLang;
-
-		$lastdate = '';
-		$listopen = false;
 		// Rewind result pointer and go through it again, making the HTML
-		$html = '';
+		$html = "\n<ul>\n";
 		$result->seek( 0 );
 		while( $s = $result->fetchObject() ) {
-			$date = $wgLang->date( $s->log_timestamp, /* adj */ true );
-			if ( $date != $lastdate ) {
-				if ( $listopen ) { $html .= Xml::closeElement( 'ul' ); }
-				$html .= Xml::element('h4', null, $date) . "\n";
-				$html .= Xml::openElement( 'ul' );
-				$listopen = true;
-				$lastdate = $date;
-			}
-			$html .= Xml::tags('li', null, $this->logLine( $s ) ) . "\n";
+			$html .= $this->logLine( $s );
 		}
-		if ( $listopen ) { $html .= Xml::closeElement( 'ul' ); }
+		$html .= "\n</ul>\n";
 		$out->addHTML( $html );
 		$result->free();
 	}
@@ -358,7 +347,7 @@ class LogViewer {
 		global $wgLang, $wgUser;;
 		$skin = $wgUser->getSkin();
 		$title = Title::makeTitle( $s->log_namespace, $s->log_title );
-		$time = $wgLang->time( wfTimestamp(TS_MW, $s->log_timestamp), true );
+		$time = $wgLang->timeanddate( wfTimestamp(TS_MW, $s->log_timestamp), true );
 
 		// Enter the existence or non-existence of this page into the link cache,
 		// for faster makeLinkObj() in LogPage::actionText()
@@ -397,19 +386,22 @@ class LogViewer {
 				'action=unblock&ip=' . urlencode( $s->log_title ) ) . ')';
 		// show change protection link
 		} elseif ( ( $s->log_action == 'protect' || $s->log_action == 'modify' ) && $wgUser->isAllowed( 'protect' ) ) {
-			$revert = '(' .  $skin->makeKnownLink( $title->getPrefixedDBkey() ,
-				wfMsg( 'protect_change' ),
-				'action=unprotect' ) . ')';
+			$revert = '(' .  $skin->makeKnownLinkObj( $title, wfMsg( 'protect_change' ), 'action=unprotect' ) . ')';
 		// show user tool links for self created users
+		// TODO: The extension should be handling this, get it out of core!
 		} elseif ( $s->log_action == 'create2' ) {
-			$revert = $this->skin->userToolLinksRedContribs( $s->log_user, $s->log_title );
-			// do not show $comment for self created accounts. It includes wrong user tool links:
-			// 'blockip' for users w/o block allowance and broken links for very long usernames (bug 4756)
+			if( isset( $paramArray[0] ) ) {
+				$revert = $this->skin->userToolLinks( $paramArray[0], $s->log_title, true );
+			} else {
+				# Fall back to a blue contributions link
+				$revert = $this->skin->userToolLinks( 1, $s->log_title );
+			}
+			# Suppress $comment from old entries, not needed and can contain incorrect links
 			$comment = '';
 		}
 
 		$action = LogPage::actionText( $s->log_type, $s->log_action, $title, $this->skin, $paramArray, true, true );
-		$out = "$time $userLink $action $comment $revert";
+		$out = "<li>$time $userLink $action $comment $revert</li>\n";
 		return $out;
 	}
 
@@ -527,4 +519,4 @@ class LogViewer {
 }
 
 
-?>
+

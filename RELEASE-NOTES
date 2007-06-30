@@ -22,12 +22,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
 * $wgThumbUpright - Adjust width of upright images when parameter 'upright' is
   used
+* $wgAddGroups, $wgRemoveGroups - Finer control over who can assign which
+  usergroups
+* $wgEnotifImpersonal, $wgEnotifUseJobQ - Bulk mail options for large sites
 
 == New features since 1.10 ==
 
 * (bug 8868) Separate "blocked" message for autoblocks
 * Adding expiry of block to block messages
-* Bulk mail options ($wgEnotifImpersonal, $wgEnotifUseJobQ) for large sites
 * Links to redirect pages in categories are wrapped in
   <span class="redirect-in-category"></span>
 * Introduced 'ImageOpenShowImageInlineBefore' hook; see docs/hooks.txt for
@@ -75,14 +77,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   a path to the AdminSettings.php file
 * (bug 8781) Remind users to check file permissions for LocalSettings.php
   post-installation
-* (bug 10196) Add classes and dir="ltr" to the <pre>s on user CSS and JS pages
-  (new classes: mw-user-css, mw-user-js)
 * Use shared.css for all skins and oldshared.css in place of common.css for
   pre-Monobook skins.  As always, modifications should go in-wiki to MediaWiki:
   Common.css and MediaWiki:Monobook.css.
 * (bug 8869) Introduce Special:Uncategorizedtemplates
 * (bug 8734) Different log message when article protection level is changed
-* (bug 8458) Limit custom signature length to $wgMaxSigChars bytes
+* (bug 8458, 10338) Limit custom signature length to $wgMaxSigChars Unicode
+  characters
 * (bug 10096) Added an ability to query interwiki map table
 * On reupload, add a null revision to the image description page
 * Group log output by date
@@ -101,9 +102,18 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   enabled by default.
 * Added option to install to MyISAM
 * (bug 9250) Remove hardcoded minimum image name length of three characters
-* (bug 10338) Enforce signature length limit in Unicode characters instead of bytes
 * Fixed DISPLAYTITLE behaviour to reject titles which don't normalise to the
   same title as the current page, and enabled per default
+* Wrap site CSS and JavaScript in a <pre> tag, like user JS/CSS
+* (bug 10196) Add classes and dir="ltr" to the <pre>s on CSS and JS pages (new
+  classes: mw-code, mw-css, mw-js)
+* (bug 6711) Add $wgAddGroups and $wgRemoveGroups to allow finer control over
+  usergroup assignment.
+* Introduce 'UserEffectiveGroups' hook; see docs/hooks.txt for more information
+* (bug 10387) Detect and handle '.php5' extension environments at install time
+  Patch by Edward Z. Yang.
+* Introduce 'ShowRawCssJs' hook; see docs/hooks.txt for more information
+* (bug 10404) Show rights log fragment for the selected user in Special:Userrights
 
 == Bugfixes since 1.10 ==
 
@@ -203,6 +213,41 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Fixed zero-padding issues with MySQL 5 binary schema
 * (bug 10344) Don't follow a redirect after changing its protection level
 * (bug 10333) Correct date format in Slovenian
+* (bug 10160) Show error message for unknown namespace on Special:Allpages and
+  Special:Prefixindex; making forms prettier for RTL wikis.
+* (bug 10334) Replace normal spaces before percent (%) signs with non-breaking
+  spaces
+* (bug 10372) namespaceDupes.php no longer ignores namespace aliases
+* (bug 10198) namespaceDupes.php no longer ignores interwiki prefixes
+* namespaceDupes.php should work better for initial-lowercase wikis
+* (bug 10377) "Permanent links" to revisions still work if the page is moved
+  and the redirect deleted
+* (bug 7071) Properly handle an 'oldid' passed to view or edit that doesn't
+  match the given title. Fixes inconsistencies with talk, history, edit links.
+* (bug 10397) Fix AJAX watch error fallback when we receive a bogus result
+* (bug 10396) Fix AJAX error when $wgScriptPath/index.php is not valid;
+  using $wgScript now included in JS info
+* Use native XMLHttpRequest class in preference to ActiveX on IE 7; this
+  avoids the "ActiveX "Do you want to allow ActiveX?" prompt when something
+  security settings are cranked this way and AJAX-y gets used.
+* Delay AJAX watch initialization until click so IE 6 with ugly security
+  settings doesn't prompt you until you use the link.
+* (bug 10401) Provide non-redirecting link to original title in Special:Movepage
+* Fix broken handling of log views for page titles consisting of one
+  or more zeros, e.g. "0", "00" etc.
+* Fix read permission check for special pages with subpage parameters, e.g.
+  Special:Confirmemail
+* Fix read permission check for unreadable page titles which are numerically
+  equivalent to a whitelisted title
+* '?>' closing tag removed from all files to help avoid problems with extraneous
+  whitespace (broken XML feeds, etc.)
+* Don't use garbled parser cache output when viewing custom CSS or JavaScript
+  pages
+* (bug 10406) Fix Special:Listusers filter form for non-ASCII localizations
+* Fix empty message checks for message names containing &
+  This corrects some odd behavior with sidebar items and custom namespaces
+  containing ampersands.
+
 
 == API changes since 1.10 ==
 
@@ -239,6 +284,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   "interwiki" section of the output.
 * Added categorymembers list to query for pages in a category.
 * (bug 10260) Show page protection status
+* (bug 10392) Include MediaWiki version details in version output
+* (bug 10411) Site language in meta=siteinfo
+* (bug 10391) action=help doesn't return help if format is fancy markup
 
 == Maintenance script changes since 1.10 ==
 
@@ -286,6 +334,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Albanian (sq)
 * Sundanese (su)
 * Swedish (sv)
+* Tigrinya (ti)
 * Volapük (vo)
 * Old Chinese / Late Middle Chinese (zh-classical)
 * Chinese (PRC) (zh-cn)

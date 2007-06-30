@@ -693,6 +693,9 @@ $wgMessageStructure = array(
 		'userrights-groupsavailable',
 		'userrights-groupshelp',
 		'userrights-reason',
+		'userrights-available-none',
+		'userrights-available-add',
+		'userrights-available-remove',
 	),
 	'group' => array(
 		'group',
@@ -1041,6 +1044,7 @@ $wgMessageStructure = array(
 		'allpagessubmit',
 		'allpagesprefix',
 		'allpagesbadtitle',
+		'allpages-bad-ns',
 	),
 	'listusers' => array(
 		'listusersfrom',
@@ -1368,7 +1372,7 @@ $wgMessageStructure = array(
 		'move-watch',
 		'movepagebtn',
 		'pagemovedsub',
-		'pagemovedtext',
+		'movepage-moved',
 		'articleexists',
 		'talkexists',
 		'movedto',
@@ -2309,6 +2313,7 @@ $wgMessageComments = array(
 	'exif-orientation-7'          => '0th row: right; 0th column: bottom',
 	'exif-orientation-8'          => '0th row: left; 0th column: bottom',
 	'autoredircomment'            => 'This should be changed to the new naming convention, but existed beforehand',
+	'movepage-moved'              => 'The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.'
 );
 
 /** Messages which contain dollar signs (which are not followed by numbers), and therefore should use a single apostrophe */

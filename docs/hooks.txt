@@ -637,6 +637,10 @@ $article: article object watched
 $user: user that watched
 $article: article object that was watched
 
+'UserEffectiveGroups': Called in User::getEffectiveGroups()
+$user: User to get groups for
+&$groups: Current effective groups
+
 'CategoryPageView': before viewing a categorypage in CategoryPage::view
 $catpage: CategoryPage instance
 
@@ -651,6 +655,11 @@ $content_actions: The array of content actions
 		     articles, special, history, preview, diff, edit, ...)
 		     Can be used to set custom CSS/JS
 $out: OutputPage object
+
+'ShowRawCssJs': Customise the output of raw CSS and JavaScript in page views
+$text: Text being shown
+$title: Title of the custom script/stylesheet page
+$output: Current OutputPage object
 
 'AjaxAddScript': Called in output page just before the initialisation
 of the javascript ajax engine. The hook is only called when ajax
