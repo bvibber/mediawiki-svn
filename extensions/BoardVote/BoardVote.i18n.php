@@ -346,6 +346,11 @@ $wgBoardVoteMessages['he'] = array(
 	'boardvote_blocked'       => 'מצטערים, אתה חסום בוויקי הרשומה שלך. משתמשים חסומים לא יכולים להצביע.',
 	'boardvote_welcome'       => "ברוכים הבאים, '''$1'''!",
 	'go_to_board_vote'        => 'בחירות לחבר הנאמנים של ויקימדיה, 2007',
+	'boardvote_redirecting'   => 'לשם אבטחה ושקיפות רבות יותר בתהליך ההצבעה, אנו מריצים שרתים חיצוניים ובלתי תלויים.
+
+בתוך 20 שניות תבוצע הפניה לשרת החיצוני הזה.. [$1 לחצו כאן] כדי להגיע לשם עכשיו.
+
+ייתכן שתוצג אזהרת אבטחה בגלל תעודת אישור בלתי חתומה.',
 );
 $wgBoardVoteMessages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
