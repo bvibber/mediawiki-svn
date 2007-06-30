@@ -1801,6 +1801,65 @@ class Article {
 		return implode( ':', $bits );
 	}
 
+	/** Auto-generates a deletion reason */
+	public function generateReason()
+	{
+		global $wgContLang;
+		$dbw = wfGetDB(DB_MASTER);
+		// Get the last revision
+		$rev = Revision::newFromTitle($this->mTitle);
+		if(is_null($rev))
+			return false;
+		// Get the article's contents
+		$contents = $rev->getText();
+		$blank = false;
+		// If the page is blank, use the text from the previous revision (which can't be blank)
+		if($contents == '')
+		{
+			$prev = $rev->getPrevious();
+			if($prev)
+			{
+				$contents = $prev->getText();
+				$blank = true;
+			}
+		}
+		// Get the first 150 chars
+		$contents = $wgContLang->truncate($contents, 150, '...');
+		// Replace newlines with spaces to prevent uglyness
+		$contents = preg_replace("/[\n\r]/", ' ', $contents);
+
+		// Find out if there was only one contributor
+		// Only scan the last 20 revisions
+		$limit = 20;
+		$res = $dbw->select('revision', 'rev_user_text', array('rev_page' => $this->getID()), __METHOD__,
+				array('LIMIT' => $limit));
+		if($res === false)
+			// This page has no revisions, which is very weird
+			return false;
+		$row = $dbw->fetchObject($res);
+		$onlyAuthor = $row->rev_user_text;
+		// Try to find a second contributor
+		while(($row = $dbw->fetchObject($res)))
+			if($row->rev_user_text != $onlyAuthor)
+			{
+				$onlyAuthor = false;
+				break;
+			}
+		$dbw->freeResult($res);
+
+		// Summary generation time
+		if($blank)
+			$reason = wfMsgForContent('exbeforeblank');
+		else
+		{
+			if($onlyAuthor)
+				$reason = wfMsgForContent('excontentauthor', $contents, $onlyAuthor);
+			else
+				$reason = wfMsgForContent('excontent', $contents);
+		}
+		return $reason;
+	}
+
 	/*
 	 * UI entry point for page deletion
 	 */
@@ -1851,72 +1910,14 @@ class Article {
 
 		# determine whether this page has earlier revisions
 		# and insert a warning if it does
-		$maxRevisions = 20;
-		$authors = $this->getLastNAuthors( $maxRevisions, $latest );
+		$authors = $this->getLastNAuthors( 2, $latest );
 
 		if( count( $authors ) > 1 && !$confirm ) {
 			$skin=$wgUser->getSkin();
 			$wgOut->addHTML( '<strong>' . wfMsg( 'historywarning' ) . ' ' . $skin->historyLink() . '</strong>' );
 		}
 
-		# If a single user is responsible for all revisions, find out who they are
-		if ( count( $authors ) == $maxRevisions ) {
-			// Query bailed out, too many revisions to find out if they're all the same
-			$authorOfAll = false;
-		} else {
-			$authorOfAll = reset( $authors );
-			foreach ( $authors as $author ) {
-				if ( $authorOfAll != $author ) {
-					$authorOfAll = false;
-					break;
-				}
-			}
-		}
-		# Fetch article text
-		$rev = Revision::newFromTitle( $this->mTitle );
-
-		if( !is_null( $rev ) ) {
-			# if this is a mini-text, we can paste part of it into the deletion reason
-			$text = $rev->getText();
-
-			#if this is empty, an earlier revision may contain "useful" text
-			$blanked = false;
-			if( $text == '' ) {
-				$prev = $rev->getPrevious();
-				if( $prev ) {
-					$text = $prev->getText();
-					$blanked = true;
-				}
-			}
-
-			$length = strlen( $text );
-
-			# this should not happen, since it is not possible to store an empty, new
-			# page. Let's insert a standard text in case it does, though
-			if( $length == 0 && $reason === '' ) {
-				$reason = wfMsgForContent( 'exblank' );
-			}
-
-			if( $reason === '' ) {
-				# comment field=255, let's grep the first 150 to have some user
-				# space left
-				global $wgContLang;
-				$text = $wgContLang->truncate( $text, 150, '...' );
-
-				# let's strip out newlines
-				$text = preg_replace( "/[\n\r]/", '', $text );
-
-				if( !$blanked ) {
-					if( $authorOfAll === false ) {
-						$reason = wfMsgForContent( 'excontent', $text );
-					} else {
-						$reason = wfMsgForContent( 'excontentauthor', $text, $authorOfAll );
-					}
-				} else {
-					$reason = wfMsgForContent( 'exbeforeblank', $text );
-				}
-			}
-		}
+		$reason = $this->generateReason();
 
 		return $this->confirmDelete( '', $reason );
 	}
@@ -2091,6 +2092,7 @@ class Article {
 		//
 		// In the future, we may keep revisions and mark them with
 		// the rev_deleted field, which is reserved for this purpose.
+		$dbw->begin();
 		$dbw->insertSelect( 'archive', array( 'page', 'revision' ),
 			array(
 				'ar_namespace'  => 'page_namespace',
@@ -2152,6 +2154,7 @@ class Article {
 		# Clear the cached article id so the interface doesn't act like we exist
 		$this->mTitle->resetArticleID( 0 );
 		$this->mTitle->mArticleID = 0;
+		$dbw->commit();
 		return true;
 	}
 

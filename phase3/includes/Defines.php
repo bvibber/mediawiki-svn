@@ -203,7 +203,7 @@ define('ROLLBACK_PERM', 1); // Permission denied
 define('ROLLBACK_BLOCKED', 2); // User has been blocked
 define('ROLLBACK_READONLY', 3); // Wiki is in read-only mode
 define('ROLLBACK_BADTOKEN', 4);  // Invalid token specified
-define('ROLLBACK_BADARTICLE', 5); // $article is not a valid Article
+define('ROLLBACK_BADARTICLE', 5); // $this is not a valid Article
 define('ROLLBACK_ALREADYROLLED', 6); // Someone else already rolled this back. $info['usertext'] and $info['comment'] will be set
 define('ROLLBACK_ONLYAUTHOR', 7); // User is the only author of the page
 define('ROLLBACK_EDITFAILED', 8); // Article::doEdit() failed. This is a very weird error
