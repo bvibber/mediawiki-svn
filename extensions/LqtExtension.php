@@ -113,11 +113,11 @@ SQL;
 	static protected $occupied_titles = array();
 	
 	/*************************
-         * (1) linking to liquidthreads pages and
-         * (2) figuring out what page you're on and what you need to do.
+     * (1) linking to liquidthreads pages and
+     * (2) figuring out what page you're on and what you need to do.
 	*************************/
 	
-	function queryStringFromArray( $vars ) {
+	static function queryStringFromArray( $vars ) {
 		$q = '';
 		if ( $vars && count( $vars ) != 0 ) {
 			foreach( $vars as $name => $value )
@@ -137,6 +137,13 @@ SQL;
 	function permalinkUrl( $thread, $method = null, $operand = null ) {
 		$query = $method ? "lqt_method=$method" : "";
 		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
+		return $thread->root()->getTitle()->getFullUrl($query);
+	}
+
+	/* This is used for action=history so that the history tab works, which is
+	   why we break the lqt_method paradigm. */
+	function permalinkUrlWithQuery( $thread, $query ) {
+		if ( is_array($query) ) $query = self::queryStringFromArray($query);
 		return $thread->root()->getTitle()->getFullUrl($query);
 	}
 
@@ -379,11 +386,11 @@ HTML;
 		$commands = array( 'Edit' => $this->talkpageUrl( $this->title, 'edit', $thread ),
 		 					'Reply' => $this->talkpageUrl( $this->title, 'reply', $thread ),
 		 					'Permalink' => $this->permalinkUrl( $thread ) );
-
+/*
 		if( !$thread->hasSuperthread() ) {
 			$commands['History'] = $this->permalinkUrl($thread, 'history_listing');
 		}
-
+*/
 		foreach( $commands as $label => $href ) {
 			$this->output->addHTML( wfOpenElement( 'li' ) );
 			$this->output->addHTML( wfElement('a', array('href'=>$href), $label) );
@@ -734,9 +741,9 @@ HTML
 	}
 	
 	/**
-         * Return a URL for the current page, including Title and query vars,
+     * Return a URL for the current page, including Title and query vars,
 	 * with the given replacements made.
-         * @param $repls array( 'name'=>new_value, ... )
+     * @param $repls array( 'name'=>new_value, ... )
 	*/
 	function queryReplace( $repls ) {
 		$vs = $this->request->getValues();
@@ -748,7 +755,7 @@ HTML
 				$rs[$k] = $vs[$k];
 			}
 		}
-		return $this->title->getFullURL($this->queryStringFromArray($rs));
+		return $this->title->getFullURL(self::queryStringFromArray($rs));
 	}
 
 	function clip( $vals, $min, $max ) {
@@ -846,6 +853,8 @@ HTML
 }
 
 class ThreadPermalinkView extends LqtView {
+	protected $thread;
+	
 	function showThreadHeading( $thread ) {
 		if ( $this->headerLevel == 1 ) {
 			$this->output->setPageTitle( $thread->wikilink() );
@@ -855,7 +864,9 @@ class ThreadPermalinkView extends LqtView {
 	}
 
 	function show() {
+		
 		$t = Threads::withRoot( $this->article );
+		$this->thread = $t;
 
 		// TODO this is a holdover from the special page; not sure what's correct here.
 		// we now have a real true $this->article that makes some sense.
@@ -880,9 +891,12 @@ class ThreadPermalinkView extends LqtView {
 		
 		if( $this->methodApplies('summarize') ) {
 			$this->showSummarizeForm($t);
-			
-		} else if( $this->methodApplies('history_listing') ) {
+		
+		/* breaking the lqt_method paradigm to make the history tab work. */
+		} else if( $this->request->getVal('action') === 'history') {
+			$this->showThreadHeading($t);
 			$this->showHistoryListing($t);
+			return;
 		}
 		
 		$this->showThread($t);
