@@ -1,3 +1,0 @@
-version=3
-# this matches only version numbers without suffix (rc, beta etc):
-http://sf.net/mailman/mailman-(\d+\.\d+\.?\d*)\.tgz
