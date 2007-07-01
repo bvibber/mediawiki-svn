@@ -67,8 +67,19 @@ abstract class Helper {
 		$this->saved=$saved;
 	}
 
-	//public abstract function getSQL();
-	//public abstract function save();
+	# should probably be abstract. Making non-abstract
+	# to save me from tearing my hair out while worrying about
+	# initial implementation
+	#public abstract function getSaveSQL($dc="uw");
+	public function getSaveSQL($dc="uw") {
+		$dc=wdGetDataSetContext($dc);
+	}
+
+	public function save() {
+		$sql=$this->getSaveSQL();
+		$dbr = &wfGetDB(DB_MASTER);
+		$dbr->query($sql);
+	}
 
 }
 
@@ -78,11 +89,7 @@ class DefinitionHelper extends Helper {
 		Helper::__construct($record);
 	}
 	
-	public function save() {
-		/*what to do here eh?*/
-	}
 	
-
 }
 
 class TranslatedTextHelper extends Helper {
@@ -90,12 +97,6 @@ class TranslatedTextHelper extends Helper {
 		echo "TranslatedTextHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 class ObjectAttributesHelper extends Helper {
@@ -103,12 +104,6 @@ class ObjectAttributesHelper extends Helper {
 		echo "ObjectAttributesHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 class SynonymsTranslationsHelper extends Helper {
@@ -116,12 +111,6 @@ class SynonymsTranslationsHelper extends Helper {
 		echo "SynonymsTranslationsHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 class ExpressionHelper extends Helper {
@@ -131,15 +120,9 @@ class ExpressionHelper extends Helper {
 		echo $record;
 	}
 	
-	public function getSQL() {
-
+	public function getSaveSQL($dc="uw") {
+		$dc=wdGetDataSetContext($dc);
 	}
-
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 
@@ -148,12 +131,6 @@ class RelationsHelper extends Helper {
 		echo "RelationsHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 class RelationTypeHelper extends Helper {
@@ -161,23 +138,13 @@ class RelationTypeHelper extends Helper {
 		echo "RelationTypeHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-}
+}	
 
 class OtherDefinedMeaningHelper extends Helper {
 	public function __construct($record) {
 		echo "OtherDefinedMeaningHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 class ReciprocalRelationsHelper extends Helper {
@@ -185,12 +152,6 @@ class ReciprocalRelationsHelper extends Helper {
 		echo "ReciprocalRelationsHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 class CollectionMembershipHelper extends Helper {
@@ -198,12 +159,6 @@ class CollectionMembershipHelper extends Helper {
 		echo "CollectionMembershipHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 class CollectionMeaningHelper extends Helper {
@@ -211,12 +166,6 @@ class CollectionMeaningHelper extends Helper {
 		echo "CollectionMeaningHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 class GotoSourceHelper extends Helper {
@@ -224,12 +173,6 @@ class GotoSourceHelper extends Helper {
 		echo "GotoSourceHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
 class DefinedMeaningAttributesHelper extends Helper {
@@ -237,11 +180,5 @@ class DefinedMeaningAttributesHelper extends Helper {
 		echo "DefinedMeaningAttributesHelper\n";
 		Helper::__construct($record);
 	}
-	
-	public function save() {
-		/*what to do here eh?*/
-	}
-	
-
 }
 
