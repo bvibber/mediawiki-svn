@@ -33,12 +33,12 @@ class CreateSignDocument extends SpecialPage {
 	}
 
 	function buildCreateForm() {
-		global $wgOut, $wgGroupPermissions;
+		global $wgOut, $wgGroupPermissions, $wgTitle;
 
 		$wgOut->addWikiText( wfMsg( 'createsigndoc-head' ) );
 
 		$wgOut->addHTML('
-			<form action="'. $_SERVER['PHP_SELF'] .'" method="post">
+			<form action="'. $wgTitle->escapeLocalUrl() .'" method="post">
 			<table><tr><td>
 			<strong>' . wfMsg( 'createsigndoc-pagename' ) . '&nbsp;</strong>
 			</td><td>
