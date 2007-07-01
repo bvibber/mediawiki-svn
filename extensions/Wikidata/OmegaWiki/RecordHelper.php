@@ -6,7 +6,6 @@ class RecordHelperFactory {
 		$type=$record->getType();
 		if (empty($type))
 			return null;
-		echo "HELPING $type .... ";
 		switch($type) {
 			case "definition":
 				return new DefinitionHelper($record);
@@ -66,6 +65,10 @@ abstract class Helper {
 	public function setSaved($saved) {
 		$this->saved=$saved;
 	}
+	
+	public function getRecord() {
+		return $record;
+	}
 
 	# should probably be abstract. Making non-abstract
 	# to save me from tearing my hair out while worrying about
@@ -122,6 +125,7 @@ class ExpressionHelper extends Helper {
 	
 	public function getSaveSQL($dc="uw") {
 		$dc=wdGetDataSetContext($dc);
+		
 	}
 }
 
