@@ -171,8 +171,14 @@ public class RMIMessengerClient {
 			log.debug(" \\-> got: "+res);
 			return res;
 		} catch (Exception e) {
-			log.warn("Error invoking remote method searchMainPart on host "+host);
-			return null;
+			// invalidate the searcher cache
+			if(cache == null)
+				cache = SearcherCache.getInstance();
+			cache.invalidateSearchable(iid,host);
+			SearchResults res = new SearchResults();
+			res.retry();
+			log.warn("Error invoking remote method searchPart on host "+host);
+			return res;
 		}
 	}
 	

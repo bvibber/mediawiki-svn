@@ -157,7 +157,7 @@ public class Localization {
 				}
 			}
 		} catch (Exception e) {
-			log.warn("Error processing message file at "+MessageFormat.format(loc,langCode));
+			log.warn("Error processing message file at "+MessageFormat.format(loc+"Messages{0}.php",langCode));
 		}
 		log.warn("Could not load localization for "+langCode);
 		badLocalizations.add(langCode.toLowerCase());

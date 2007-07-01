@@ -9,6 +9,7 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.util.Command;
 
 /**
  * Simple transaction support for indexing. Wrap index operations by 
@@ -100,9 +101,15 @@ public class Transaction {
 
 	protected int exec(String command) throws Exception {
 		log.debug("Running shell command: "+command);
-		Process p = Runtime.getRuntime().exec(command); 
-		p.waitFor();
-		return p.exitValue();
+		Process p = null;
+		try{
+			p = Runtime.getRuntime().exec(command); 
+			p.waitFor();
+			int exitValue = p.exitValue();
+			return exitValue;
+		} finally {
+			Command.closeStreams(p);
+		}
 	}
 	
 	/** 

@@ -79,7 +79,7 @@ public class WikiQueryParser {
 	public static float TITLE_ALIAS_BOOST = 0.2f;
 	public static float STEM_TITLE_BOOST = 2;	
 	public static float STEM_TITLE_ALIAS_BOOST = 0.4f;
-	public static float ALT_TITLE_BOOST = 2;
+	public static float ALT_TITLE_BOOST = 4;
 	public static float ALT_TITLE_ALIAS_BOOST = 0.4f;
 	public static float KEYWORD_BOOST = 0.02f;
 	

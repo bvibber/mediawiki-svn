@@ -373,24 +373,8 @@ public class WikiIndexModifier {
 		return succ;
 	}
 
-	/** Close all IndexModifier instances, and optimize if needed */
+	/** Close all IndexModifier instances */
 	public synchronized static HashSet<IndexId> closeAllModifiers(){
-		for(IndexId iid : modifiedDBs){
-			if(iid.isLogical()) continue;
-			if(iid.getBooleanParam("optimize",true)){
-				try {
-					log.debug("Optimizing "+iid);
-					long start = System.currentTimeMillis();
-					IndexWriter writer = new IndexWriter(iid.getIndexPath(),new SimpleAnalyzer(),false);
-					writer.optimize();
-					writer.close();
-					long delta = System.currentTimeMillis() - start;
-					log.info("Optimized "+iid+" in "+delta+" ms");
-				} catch (IOException e) {
-					log.error("Could not optimize index at "+iid.getIndexPath());
-				}
-			}
-		}
 		HashSet<IndexId> retVal = modifiedDBs;
 		modifiedDBs = new HashSet<IndexId>();
 		return retVal;

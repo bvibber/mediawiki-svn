@@ -37,6 +37,7 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.util.Command;
 
 /**
  * Indexer.  
@@ -266,11 +267,15 @@ public class IndexThread extends Thread {
 				indexes.add(iid);
 		}
 		for( IndexId iid : indexes ){
-			if(iid.isLogical())
-				continue;
-			optimizeIndex(iid);
-			makeIndexSnapshot(iid,iid.getIndexPath());
-			registry.refreshSnapshots(iid);
+			try{
+				if(iid.isLogical())
+					continue;
+				optimizeIndex(iid);
+				makeIndexSnapshot(iid,iid.getIndexPath());
+				registry.refreshSnapshots(iid);
+			} catch(IOException e){
+				log.error("Could not make snapshot for index "+iid);
+			}
 		}
 	}
 	
@@ -298,13 +303,9 @@ public class IndexThread extends Thread {
 		File ind =new File(indexPath);
 		for(File f: ind.listFiles()){
 			// use a cp -lr command for each file in the index
-			String command = "/bin/cp -lr "+indexPath+sep+f.getName()+" "+snapshot+sep+f.getName();
-			Process copy;
 			try {
-				log.debug("Running shell command: "+command);
-				copy = Runtime.getRuntime().exec(command);
-				copy.waitFor();
-			} catch (Exception e) {
+				Command.exec("/bin/cp -lr "+indexPath+sep+f.getName()+" "+snapshot+sep+f.getName());
+			} catch (IOException e) {
 				log.error("Error making snapshot "+snapshot+": "+e.getMessage());
 				continue;
 			}
@@ -312,13 +313,14 @@ public class IndexThread extends Thread {
 		log.info("Made snapshot "+snapshot);		
 	}
 	
-	/** Optimizes index if needed */
-	protected static void optimizeIndex(IndexId iid){
+	/** Optimizes index if needed 
+	 * @throws IOException */
+	protected static void optimizeIndex(IndexId iid) throws IOException{
 		if(iid.isLogical()) 
 			return;
 		if(iid.getBooleanParam("optimize",true)){
 			try {
-				IndexReader reader = IndexReader.open(iid.getImportPath());
+				IndexReader reader = IndexReader.open(iid.getIndexPath());
 				if(!reader.isOptimized()){
 					reader.close();
 					log.info("Optimizing "+iid);
@@ -334,7 +336,8 @@ public class IndexThread extends Thread {
 				} else
 					reader.close();
 			} catch (IOException e) {
-				log.error("Could not optimize index at "+iid.getIndexPath());
+				log.error("Could not optimize index at "+iid.getIndexPath()+" : "+e.getMessage());
+				throw e;
 			}
 		}
 	}

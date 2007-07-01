@@ -179,8 +179,16 @@ public class IncrementalUpdater {
 					boolean hasMore = false;
 					do{
 						if(fetchReferences){
-							// fetch references for records
-							fetchReferences(records,dbname);
+							try{
+								// fetch references for records
+								fetchReferences(records,dbname);
+							} catch(IOException e){
+								// FIXME: quick hack, if the table cannot be found (e.g. for new wikis) don't abort 
+								if(e.getMessage().contains("Base table or view not found")){
+									log.warn("Continuing, but could not fetch references for "+iid+": "+e.getMessage());
+								} else
+									throw e;
+							}
 						}
 						for(IndexUpdateRecord rec : records){
 							Article ar = rec.getArticle();

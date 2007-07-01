@@ -235,7 +235,7 @@ public class MySQLStorage extends Storage {
 		} catch (SQLException e) {
 		}
 	}
-
+	
 	/** Creates table if it doesn't exist  */
 	protected void verifyTable(String name, String dbname, Connection conn) throws IOException {
 		// verify if table exists

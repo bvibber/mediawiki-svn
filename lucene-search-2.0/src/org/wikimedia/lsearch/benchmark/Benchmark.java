@@ -229,7 +229,9 @@ public class Benchmark extends Thread {
 				return;
 			}
 		}
-		if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang))
+		if(wordfile != null)
+			terms = new StreamTerms(wordfile);
+		else if("en".equals(lang) || "de".equals(lang) || "es".equals(lang) || "fr".equals(lang) || "it".equals(lang) || "pt".equals(lang))
 			terms = new WordTerms("./lib/dict/terms-"+lang+".txt.gz");		
 		else if(lang.equals("sample"))
 			terms = new SampleTerms();

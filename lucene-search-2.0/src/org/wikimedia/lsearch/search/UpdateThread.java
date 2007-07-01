@@ -26,6 +26,7 @@ import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.index.WikiSimilarity;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.interoperability.RMIServer;
+import org.wikimedia.lsearch.util.Command;
 
 
 /**
@@ -77,8 +78,9 @@ public class UpdateThread extends Thread {
 	protected SearcherCache cache;
 	protected long delayInterval;
 	/** Pending updates, dbrole -> timestamp */
-	protected Hashtable<String,Long> pending = new Hashtable<String,Long>();
-	
+	protected Hashtable<String,Long> pending = new Hashtable<String,Long>();	
+	/** Bad indexes at indexer, prevent infinite rsync attempts */
+	protected Hashtable<String,Long> badIndexes =  new Hashtable<String,Long>();
 	protected static UpdateThread instance = null;
 	
 	@Override
@@ -143,8 +145,11 @@ public class UpdateThread extends Thread {
 	
 	/** Rsync a remote snapshot to a local one, updates registry, cache */
 	protected void rebuild(LocalIndex li){
+		// check if index has previously failed
+		if(badIndexes.containsKey(li.iid.toString()) && badIndexes.get(li.iid.toString()).equals(li.timestamp))
+			return;
+
 		final String sep = Configuration.PATH_SEP;
-		String command;
 		IndexId iid = li.iid;		
 		// update path:  updatepath/timestamp
 		String updatepath = iid.getUpdatePath();
@@ -171,9 +176,7 @@ public class UpdateThread extends Thread {
 		try{
 			// if local, use cp -lr instead of rsync
 			if(global.isLocalhost(iid.getIndexHost())){
-				command = "/bin/cp -lr "+iid.getSnapshotPath()+sep+li.timestamp+" "+iid.getUpdatePath();
-				log.debug("Running shell command: "+command);
-				Runtime.getRuntime().exec(command).waitFor();
+				Command.exec("/bin/cp -lr "+iid.getSnapshotPath()+sep+li.timestamp+" "+iid.getUpdatePath());
 			} else{
 				File ind = new File(iid.getCanonicalSearchPath());
 
@@ -181,23 +184,14 @@ public class UpdateThread extends Thread {
 					ind = ind.getCanonicalFile();
 					for(File f: ind.listFiles()){
 						//  a cp -lr command for each file in the index
-						command = "/bin/cp -lr "+ind.getCanonicalPath()+sep+f.getName()+" "+updatepath+sep+f.getName();
-						try {
-							log.debug("Running shell command: "+command);
-							Runtime.getRuntime().exec(command).waitFor();
-						} catch (Exception e) {
-							log.error("Error making update hardlinked copy "+updatepath+": "+e.getMessage());
-							continue;
-						}
+						Command.exec("/bin/cp -lr "+ind.getCanonicalPath()+sep+f.getName()+" "+updatepath+sep+f.getName());
 					}
 				}
 				long startTime = System.currentTimeMillis();
 				// rsync
 				log.info("Starting rsync of "+iid);
 				String snapshotpath = iid.getRsyncSnapshotPath()+"/"+li.timestamp;
-				command = "/usr/bin/rsync -W --delete -r rsync://"+iid.getIndexHost()+":"+snapshotpath+" "+iid.getUpdatePath();
-				log.debug("Running shell command: "+command);
-				Runtime.getRuntime().exec(command).waitFor();
+				Command.exec("/usr/bin/rsync -W --delete -r rsync://"+iid.getIndexHost()+snapshotpath+" "+iid.getUpdatePath());
 				log.info("Finished rsync of "+iid+" in "+(System.currentTimeMillis()-startTime)+" ms");
 
 			}
@@ -211,12 +205,8 @@ public class UpdateThread extends Thread {
 			SearcherCache.SearcherPool pool = new SearcherCache.SearcherPool(iid,li.path,cache.getSearchPoolSize()); 
 			
 			// refresh the symlink
-			command = "/bin/rm -rf "+iid.getSearchPath();
-			log.debug("Running shell command: "+command);
-			Runtime.getRuntime().exec(command).waitFor();
-			command = "/bin/ln -fs "+updatepath+" "+iid.getSearchPath();
-			log.debug("Running shell command: "+command);
-			Runtime.getRuntime().exec(command).waitFor();
+			Command.exec("/bin/rm -rf "+iid.getSearchPath());
+			Command.exec("/bin/ln -fs "+updatepath+" "+iid.getSearchPath());			
 			
 			// update registry, cache, rmi object
 			registry.refreshUpdates(iid);
@@ -228,9 +218,8 @@ public class UpdateThread extends Thread {
 			messenger.notifyIndexUpdated(iid,iid.getDBSearchHosts());
 			
 		} catch(IOException ioe){
-			log.error("I/O error on index "+iid+" at "+li.path);
-		} catch (InterruptedException e) {
-			log.error("Failed to complete rsync of: "+updatepath);
+			log.error("I/O error updating index "+iid+" at "+li.path+" : "+ioe.getMessage());
+			badIndexes.put(li.iid.toString(),li.timestamp);
 		}
 	}
 	
