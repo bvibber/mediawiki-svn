@@ -58,6 +58,18 @@ class ArrayRecord implements Record {
 		return $this->getType();
 	}
 
+	/** temporary hack to complete an arrayrecord structure
+	 * Uses knowlege already present in our Record based structure
+	 * to explain to records what they are. (ie, finish completes the
+	 * building of the structure, to leave it in a usable state)
+	 * @param $type  the type that this record should have.
+	 * 		 (if you have no idea, use some random but readily
+	 * 		 recognisable string, other records should still get
+	 *		 correct types)
+	 * The brokenness of the system ends here, and only pretty code
+ 	 * should run beyond this point. (One day ). Erik Moeller is working
+	 * on eliminating this function which would be excellent.
+	 */
 	public function finish($type) {
 		$type=$this->suggestType($type);
 
