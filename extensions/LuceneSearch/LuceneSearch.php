@@ -60,6 +60,11 @@ $wgExtensionCredits['specialpage'][] = array(
 /** Lucene-search (mwsearch) version. from 2.0 we support search prefixes */
 $wgLuceneSearchVersion = 1.0;
 
+/** Show additional "exact case" search button, 
+ index needs to be built with exact case option */
+$wgLuceneSearchExactCase = false;
+
+
 # Internationalisation file
 require_once( 'LuceneSearch.i18n.php' );
 

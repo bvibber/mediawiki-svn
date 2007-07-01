@@ -20,10 +20,11 @@ $wgLuceneSearchMessages['en'] = array(
 	'lucenepowersearchtext' => "
 Search in namespaces:\n
 $1\n
-Search for $3 $9",
+Search for $3 $9 $10",
 	'lucenefallback'        => "There was a problem with the wiki search.
 This is probably temporary; try again in a few moments,
 or you can search the wiki through an external search service:\n",
+	'searchexactcase'       => 'Exact-case search',
 	'searchall'             => 'all',
 	'searchincategory'      => 'incategory',
 	'searchaliases'         => 
@@ -58,7 +59,7 @@ $wgLuceneSearchMessages['cs'] = array(
 	'lucenepowersearchtext' => "
 Hledat ve jmenných prostorech:\n
 $1\n
-Hledat $3 $9",
+Hledat $3 $9 $10",
 	'lucenefallback'        => 'Při hledání došlo k chybě. Problém je pravděpodobně dočasný, zkuste hledání později, případně můžete vyzkoušet externí vyhledávač:\n'
 );
 $wgLuceneSearchMessages['de'] = array(
@@ -71,7 +72,7 @@ $wgLuceneSearchMessages['de'] = array(
 	'searchnoresults'       => "Es wurden keine passenden Seiten für Ihre Suchanfrage gefunden.",
 	'searchnearmatches'     => "<b>Diese Seiten haben zu der Suchanfrage ähnliche Titel:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "Suche in den Namensräumen $1<br />Suchbegriff: $3 $9",
+	'lucenepowersearchtext' => "Suche in den Namensräumen $1<br />Suchbegriff: $3 $9 $10",
 	'lucenefallback'        => "Bei der {{SITENAME}}-internen Suche ist ein Problem aufgetreten.
 Dies ist normalerweise ein vorübergehendes Problem. Bitte versuchen Sie es nochmal.
 Alternativ können Sie auch die externen Suchmöglichkeiten nutzen:\n",
@@ -91,7 +92,7 @@ $wgLuceneSearchMessages['eo'] = array(
 	'lucenepowersearchtext' => "
 Serĉo en nomspacoj:\n
 $1\n
-Serĉo de $3 $9",
+Serĉo de $3 $9 $10",
 	'lucenefallback'        => "Estis problemo kun la serĉilo de ĉi vikio.
 Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
 aŭ vi povas esplori la vikion per eksteraj serĉservoj.\n"
@@ -126,7 +127,7 @@ $wgLuceneSearchMessages['fr'] = array(
 	'searchnearmatch'       => "<li>$1</li>\n",
 	'lucenepowersearchtext' => "
 Rechercher dans les espaces : $1 <br/>
-Texte à rechercher : $3 $9",
+Texte à rechercher : $3 $9 $10",
 	'lucenefallback'        => "
 Un problème est survenu avec la recherche wiki. 
 Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d’utiliser un service de recherche externe."
@@ -144,7 +145,7 @@ $wgLuceneSearchMessages['he'] = array(
 	'lucenepowersearchtext' => "
 חיפוש במרחבי השם:\n
 $1\n
-חיפוש של $3 $9",
+חיפוש של $3 $9 $10",
 	'lucenefallback'        => "יש בעיה עם מנוע הוויקי.
 סביר להניח שהיא זמנית; אנא נסו שנית בעוד מספר דקות.
 באפשרותכם גם לחפש בוויקי באמצעות שירותי חיפוש חיצוניים:\n"
@@ -162,7 +163,7 @@ $wgLuceneSearchMessages['hu'] = array(
 
 $1
 
-$3 $9",
+$3 $9 $10",
 	'lucenefallback'        => "Hiba adódott a wiki keresés során.
 A hiba átmeneti; próbáld újra néhány másodperc múlva vagy kereshetsz a wikin egy külső keresőszolgáltatáson keresztül is:"
 );
@@ -178,7 +179,7 @@ $wgLuceneSearchMessages['id'] = array(
 	'lucenepowersearchtext' => "
 Pencarian di namespace:\n
 $1\n
-Pencarian terhadap $3 $9",
+Pencarian terhadap $3 $9 $10",
 	'lucenefallback'        => "Ada masalah pada pencarian wiki.
 Masalah ini mungkin hanya sementara; silakan coba lagi dalam beberapa saat,
 atau gunakan layanan pencari eksternal:\n"
@@ -196,7 +197,7 @@ $wgLuceneSearchMessages['it'] = array(
 	'lucenepowersearchtext' => "
 Cerca nei namespace selezionati:\n
 $1\n
-Testo da ricercare $3 $9",
+Testo da ricercare $3 $9 $10",
 	'lucenefallback'        => "Il motore di ricerca interno ha un problema. 
 	Probabilmente si tratta di un errore temporaneo, destinato a risolversi in breve tempo. 
 	Nel frattempo, si consiglia di riprovare tra qualche istante o di utilizzare un motore di ricerca esterno:\n"
@@ -218,7 +219,7 @@ $wgLuceneSearchMessages['ja'] = array(
 
 $1
 
-検索語: $3 $9',
+検索語: $3 $9 $10',
 	'lucenefallback'        => '検索中に一時的な問題が発生しました。しばらく経ってから再度検索するか、外部の検索サービスを使用してください:
 ',
 );
@@ -233,7 +234,7 @@ $wgLuceneSearchMessages['kk-kz'] = array(
 	'searchnearmatches'     => "<b>Мына бет атауларында сұранысыңызға ұқсастығы бар:</b>\n",
 	'lucenepowersearchtext' => "Мына есім аяларда іздеу:<br />
 $1<br />
-Іздестіру сұранысы: $3 $9",
+Іздестіру сұранысы: $3 $9 $10",
 	'lucenefallback'        => "Іздеу кезінде мына уикиде шатақ шықты.
 Бәлкім, бұл уақытша кедергі; біршама сәттен соң қайталаңыз,
 немесе осы уикиден іздеу үшін сыртқы қызметтерін қолданыңыз:<br />"
@@ -249,7 +250,7 @@ $wgLuceneSearchMessages['kk-tr'] = array(
 	'searchnearmatches'     => "<b>Mına bet atawlarında suranısıñızğa uqsastığı bar:</b>\n",
 	'lucenepowersearchtext' => "Mına esim ayalarda izdew:<br />
 $1<br />
-İzdestirw suranısı: $3 $9",
+İzdestirw suranısı: $3 $9 $10",
 	'lucenefallback'        => "İzdew kezinde mına wïkïde şataq şıqtı.
 Bälkim, bul waqıtşa kedergi; birşama sätten soñ qaýtalañız,
 nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />"
@@ -265,7 +266,7 @@ $wgLuceneSearchMessages['kk-cn'] = array(
 	'searchnearmatches'     => "<b>مىنا بەت اتاۋلارىندا سۇرانىسىڭىزعا ۇقساستىعى بار:</b>\n",
 	'lucenepowersearchtext' => "مىنا ەسٸم ايالاردا ٸزدەۋ:<br />
 $1<br />
-ٸزدەستٸرۋ سۇرانىسى: $3 $9",
+ٸزدەستٸرۋ سۇرانىسى: $3 $9 $10",
 	'lucenefallback'        => "ٸزدەۋ كەزٸندە مىنا ۋيكيدە شاتاق شىقتى.
 بٵلكٸم, بۇل ۋاقىتشا كەدەرگٸ; بٸرشاما سٵتتەن سوڭ قايتالاڭىز,
 نەمەسە وسى ۋيكيدەن ٸزدەۋ ٷشٸن سىرتقى قىزمەتتەرٸن قولدانىڭىز:<br />"
@@ -284,7 +285,7 @@ $wgLuceneSearchMessages['lt'] = array(
 	'lucenepowersearchtext' => "
 Ieškoti vardų srityse:\n
 $1\n
-Ieškoma $3 $9",
+Ieškoma $3 $9 $10",
 	'lucenefallback'        => "Buvo problemų su projekto paieška.
 Tai turbūt laikina; pamėginkite šiek tiek vėliau,
 arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:\n"
@@ -301,7 +302,7 @@ $wgLuceneSearchMessages['nl'] = array(
 	'lucenepowersearchtext' => "
 Zoek in de volgende naamruimten:\n
 $1\n
-Zoek naar $3 $9",
+Zoek naar $3 $9 $10",
 	'lucenefallback'        => "Er is een storing in de wikizoekmachine.
 Deze is waarschijnlijk tijdelijk van aard; probeer het over enige tijd opnieuw
 of doorzoek de wiki via een externe zoekmachine:\n"
@@ -331,7 +332,7 @@ $wgLuceneSearchMessages['oc'] = array(
 	'searchdidyoumean'      => 'Pensavetz a : « <a href="$1">$2</a> » ?',
 	'searchnoresults'       => 'O planhem, existís pas cap de correspondéncia exacta a vòstra requèsta.',
 	'searchnearmatches'     => '<strong>Aquestas paginas an un títol similar a vòstra requèsta.</strong>',
-	'lucenepowersearchtext' => 'Recercar dins los espacis : $1<br />Tèxt de recercar : $3 $9',
+	'lucenepowersearchtext' => 'Recercar dins los espacis : $1<br />Tèxt de recercar : $3 $9 $10',
 	'lucenefallback'        => 'Un problèma es subrevengut amb la recèrca wiki. Aqueste problèma es probablament temporari ; mercé de tornar ensajar dins un moment o d’utilizar un servici de recèrca extèrna.',
 );
 $wgLuceneSearchMessages['pl'] = array(
@@ -346,7 +347,7 @@ $wgLuceneSearchMessages['pl'] = array(
 	'lucenepowersearchtext' => "
 Szukaj w przestrzeniach nazw:\n
 $1\n
-Szukana fraza $3 $9",
+Szukana fraza $3 $9 $10",
 	'lucenefallback'        => "Wystąpił błąd z wyszukiwaniem w wiki.
 Jest to tymczasowe; spróbuj ponownie za parę chwil
 lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:\n"
@@ -364,7 +365,7 @@ $wgLuceneSearchMessages['pt'] = array(
 	'lucenepowersearchtext' => "
 Pesquisar nos espaços nominais:\n
 $1\n
-Pesquisar por $3 $9",
+Pesquisar por $3 $9 $10",
 	'lucenefallback'        => "Há um problema com a busca neste wiki.
 Provavelmente seja apenas uma falha temporária; tente novamente mais tarde,
 ou procure por conteúdos neste wiki através de um mecanismo externo:\n",
@@ -383,7 +384,7 @@ $wgLuceneSearchMessages['ru'] = array(
 	'lucenepowersearchtext' => "
 Поиск в пространствах имён:\n
 $1\n
-Поисковый запрос $3 $9",
+Поисковый запрос $3 $9 $10",
 	'lucenefallback'        => "Возникла проблема с поиском по вики.
 Вероятно, эта временная проблема, попробуйте ещё раз чуть позже,
 либо воспользуйтесь поиском во внешних поисковых системах.\n"
@@ -397,7 +398,7 @@ $wgLuceneSearchMessages['sk'] = array(
 	'searchdidyoumean'      => 'Mali ste na mysli: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Ľutujeme, vyhľadávanie nevrátilo na Vašu požiadavku žiadne presné výsledky.',
 	'searchnearmatches'     => '<b>Tieto stránky majú názvy podobné Vášej požiadavke:</b>',
-	'lucenepowersearchtext' => 'Vyhľadávanie v menných priestoroch: $1 Hľadanie $3 $9',
+	'lucenepowersearchtext' => 'Vyhľadávanie v menných priestoroch: $1 Hľadanie $3 $9 $10',
 	'lucenefallback'        => 'S vyhľadávaním na wiki nastal problém. Je možné, že je to dočasné; o chvíľu to skúste znova alebo vyhľadávajte na wiki pomocou externej indexovacej služby:',
 	'searchall'             => 'všetko',
 	'searchincategory'      => 'vkategórii',
@@ -440,10 +441,11 @@ $wgLuceneSearchMessages['sr-ec'] = array(
 	'lucenepowersearchtext' => "
 Претрага у именским просторима:\n
 $1\n
-Претрага за $3 $9",
+Претрага за $3 $9 $10",
 	'lucenefallback'        => "Дошло је до проблема у вики претрази...
 Ово је вероватно привремено; покушајте поново након неколико момената,
 или претражите вики преко неког од спољних претраживачких сервиса:\n",
+	'searchexactcase'       => 'Тражи са капитализацијом',
 	'searchall'             => "све\nsve",
 	'searchincategory'      => "укатегорији\nukategoriji"
 );
@@ -460,10 +462,11 @@ $wgLuceneSearchMessages['sr-el'] = array(
 	'lucenepowersearchtext' => "
 Pretraga u imenskim prostorima:\n
 $1\n
-Pretraga za $3 $9",
+Pretraga za $3 $9 $10",
 	'lucenefallback'        => "Došlo je do problema u viki pretrazi...
 Ovo je verovatno privremeno; pokušajte ponovo nakon nekoliko momenata,
 ili pretražite viki preko nekog od spoljnih pretraživačkih servisa:\n",
+	'searchexactcase'       => 'Traži sa kapitalizacijom',
 	'searchall'             => "све\nsve",
 	'searchincategory'      => "укатегорији\nukategoriji"
 );
@@ -480,7 +483,7 @@ $wgLuceneSearchMessages['sv'] = array(
 	'searchnearmatch'       => "<li>$1</li>\n",
 	'lucenepowersearchtext' => "Sök i följande namnrymder:\n
 $1\n
-Sök efter $3 $9",
+Sök efter $3 $9 $10",
 	'lucenefallback'        => "På grund av ett problem kunde inte sökningen utföras. 
 Det var troligen bara något tillfälligt; försök igen om en liten stund,
 eller sök på wikin med någon extern söktjänst:\n"
@@ -492,7 +495,7 @@ $wgLuceneSearchMessages['ur'] = array(
 	'searchscore'           => 'مشابہت: $1',
 	'searchsize'            => '$1کلوبائٹ ($2 الفاظ)',
 	'searchnoresults'       => 'بہ تاسف، کوئی ایسا صفحہ نہیں مـلا جو آپکی مطلوبہ تلاش کے عین مطابق ہو۔',
-	'lucenepowersearchtext' => 'تلاش کریں، فضاۓ نام : $1 میں براۓ $3 $9',
+	'lucenepowersearchtext' => 'تلاش کریں، فضاۓ نام : $1 میں براۓ $3 $9 $10',
 );
 $wgLuceneSearchMessages['wa'] = array(
 	'searchnumber'          => '<strong>Rizultats: $1-$2 di $3</strong>',
@@ -501,7 +504,7 @@ $wgLuceneSearchMessages['wa'] = array(
 	'searchnoresults'       => 'Mande escuzes, mins i gn a rén ki corespond.',
 	'searchnearmatches'     => '<b>Les pådjes shuvantes ont des tites ki ravizèt çou k\' vos avoz cwerou:</b>',
 	'lucenepowersearchtext' => 'Cweraedje dins les espåces di lomaedje: $1 <br />
-Cweraedje di: $3 $9',
+Cweraedje di: $3 $9 $10',
 );
 $wgLuceneSearchMessages['zh-cn'] = array(
 	'searchnumber'          => "<strong>共有$3项搜索结果，以下是第$1-$2项结果</strong>",
@@ -516,7 +519,7 @@ $wgLuceneSearchMessages['zh-cn'] = array(
 	'lucenepowersearchtext' => "
 在名字空间中搜索：\n
 $1\n
-搜索：$3 $9",
+搜索：$3 $9 $10",
 	'lucenefallback'        => "系统搜索发生错误。这可能是暂时性的，请稍后重试。你也可以通过使用外部搜索服务搜索本站：\n"
 );
 $wgLuceneSearchMessages['zh-tw'] = array(
@@ -532,7 +535,7 @@ $wgLuceneSearchMessages['zh-tw'] = array(
 	'lucenepowersearchtext' => "
 在名字空間中搜尋：\n
 $1\n
-搜尋：$3 $9",
+搜尋：$3 $9 $10",
 	'lucenefallback'        => "系統搜尋發生錯誤。這可能是暫時性的，請稍後重試。你也可以通過使用外部搜尋服務搜尋本站：\n"
 );
 $wgLuceneSearchMessages['zh-yue'] = array(
@@ -548,7 +551,7 @@ $wgLuceneSearchMessages['zh-yue'] = array(
 	'lucenepowersearchtext' => "
 響空間名度搵：\n
 $1\n
-搜尋：$3 $9",
+搜尋：$3 $9 $10",
 	'lucenefallback'        => "Wiki搜尋出咗問題。呢個可能係暫時性嘅，請稍後再試。你亦都可以通過利用外部搜尋服務來去搵呢個wiki：\n"
 );
 $wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-tw'];

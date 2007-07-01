@@ -44,10 +44,14 @@ class LuceneSearch extends SpecialPage
 		SpecialPage::SpecialPage('Search');
 	}
 
-	function makelink($term, $offset, $limit) {
+	function makelink($term, $offset, $limit, $case='ignore') {
 		global $wgRequest, $wgScript;
+		if( $case == 'exact')
+			$fulltext = htmlspecialchars(wfMsg('searchexactcase'));
+		else
+			$fulltext = htmlspecialchars(wfMsg('powersearch'));
 		$link = $wgScript.'?title=Special:Search&amp;search='.
-			urlencode($term).'&amp;fulltext=Search';
+			urlencode($term).'&amp;fulltext='.$fulltext;
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name)
 			if ($wgRequest->getCheck('ns' . $ns))
 				$link .= '&amp;ns'.$ns.'=1';
@@ -160,16 +164,19 @@ class LuceneSearch extends SpecialPage
                 		$wgOut->addWikiText( wfMsg( 'noexactmatch', $t->getPrefixedText() ) );
 			}
 
+			$case = 'ignore';
 			# Replace localized namespace prefixes (from lucene-search 2.0)
 			global $wgLuceneSearchVersion;
-			if($wgLuceneSearchVersion >= 2)
+			if($wgLuceneSearchVersion >= 2){
 				$searchq = $this->replacePrefixes($q);
-			else
+				if($wgRequest->getText('fulltext') == wfMsg('searchexactcase'))
+					$case = 'exact';
+			} else
 				$searchq = $q;
 
 			global $wgDisableTextSearch;
 			if( !$wgDisableTextSearch ) {
-				$results = LuceneSearchSet::newFromQuery( 'search', $searchq, $this->namespaces, $limit, $offset );
+				$results = LuceneSearchSet::newFromQuery( 'search', $searchq, $this->namespaces, $limit, $offset, $case );
 			}
 
 			if( $wgDisableTextSearch || $results === false ) {
@@ -195,14 +202,14 @@ class LuceneSearch extends SpecialPage
 			if( $results->hasSuggestion() ) {
 				$suggestion = $results->getSuggestion();
 				$o = ' ' . wfMsg('searchdidyoumean',
-						$this->makeLink( $suggestion, $offset, $limit ),
+						$this->makeLink( $suggestion, $offset, $limit, $case ),
 						htmlspecialchars( $suggestion ) );
 				$wgOut->addHTML( '<div style="text-align: center;">'.$o.'</div>' );
 			}
 
 			$nmtext = '';
 			if ($offset == 0 && !$wgLuceneDisableTitleMatches) {
-				$titles = LuceneSearchSet::newFromQuery( 'titlematch', $q, $this->namespaces, 5 );
+				$titles = LuceneSearchSet::newFromQuery( 'titlematch', $q, $this->namespaces, 5, $case );
 				if( $titles && $titles->hasResults() ) {
 					$nmtext = '<p>'.wfMsg('searchnearmatches').'</p>';
 					$nmtext .= '<ul>';
@@ -238,7 +245,7 @@ class LuceneSearch extends SpecialPage
 				$prevnext = "";
 				if ($whichchunk > 0)
 					$prevnext .= '<a href="'.
-						$this->makelink($q, $offset-$limit, $limit).'">'.
+						$this->makelink($q, $offset-$limit, $limit, $case).'">'.
 						wfMsg('searchprev').'</a> ';
 				$first = max($whichchunk - 11, 0);
 				$last = min($numchunks, $whichchunk + 11);
@@ -250,12 +257,12 @@ class LuceneSearch extends SpecialPage
 						else
 							$prevnext .= '<a href="'.
 								$this->makelink($q, $limit*$i,
-								$limit).'">'.($i+1).'</a> ';
+								$limit, $case).'">'.($i+1).'</a> ';
 					}
 				}
 				if ($whichchunk < $last-1)
 					$prevnext .= '<a href="'.
-						$this->makelink($q, $offset + $limit, $limit).'">'.
+						$this->makelink($q, $offset + $limit, $limit, $case).'">'.
 						wfMsg('searchnext').'</a> ';
 				$prevnext = '<div style="text-align: center;">'.$prevnext.'</div>';
 				$top .= $prevnext;
@@ -531,18 +538,28 @@ class LuceneSearch extends SpecialPage
 
 	function showShortDialog($term) {
 		global $wgScript, $wgLuceneDisableSuggestions;
+		global $wgLuceneSearchExactCase;
 
 		$action = "$wgScript";
 		$searchButton = '<input type="submit" name="fulltext" value="' .
 			htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
+		if($wgLuceneSearchExactCase){
+			$exactSearch = '<input type="submit" name="fulltext" value="' .
+			htmlspecialchars(wfMsg('searchexactcase')) . "\" />\n";
+			$leftMargin = "10%";
+		} else{
+			$exactSearch = "";
+			$leftMargin = "25%";
+		}
 		$onkeyup = $wgLuceneDisableSuggestions ? '' :
 			' onkeyup="resultType()" autocomplete="off" ';
 		$searchField = "<div><input type='text' id='lsearchbox' $onkeyup "
-			. "style='margin-left: 25%; width: 50%; ' value=\""
+			. "style='margin-left: $leftMargin; width: 50%; ' value=\""
 			. htmlspecialchars($term) . '"'
 			. " name=\"search\" />\n"
 			. "<span id='loadStatus'></span>"
 			. $searchButton
+			. $exactSearch
 			. "<div id='results'></div></div>";
 
 		$ret = $searchField /*. $searchButton*/;
@@ -552,7 +569,7 @@ class LuceneSearch extends SpecialPage
 	}
 
 	function showFullDialog($term) {
-		global $wgContLang;
+		global $wgContLang, $wgLuceneSearchExactCase;
 		$namespaces = '';
 		foreach(SearchEngine::searchableNamespaces() as $ns => $name) {
 			$checked = in_array($ns, $this->namespaces)
@@ -571,11 +588,17 @@ class LuceneSearch extends SpecialPage
 		$searchButton = '<input type="submit" name="fulltext" value="' .
 						htmlspecialchars(wfMsg('powersearch')) . "\" />\n";
 
+		if($wgLuceneSearchExactCase){
+			$exactSearch = '<input type="submit" name="fulltext" value="' .
+			htmlspecialchars(wfMsg('searchexactcase')) . "\" />\n";
+		} else
+			$exactSearch = "";
+
 		$redirect = ''; # What's this for?
 		$ret = wfMsg('lucenepowersearchtext',
 			$namespaces, $redirect, $searchField,
 			'', '', '', '', '', # Dummy placeholders
-			$searchButton);
+			$searchButton, $exactSearch);
 
 		$title = Title::makeTitle(NS_SPECIAL, 'Search');
 		$action = $title->escapeLocalURL();
@@ -720,7 +743,7 @@ class LuceneSearchSet {
 	 * @access public
 	 * @static
 	 */
-	function newFromQuery( $method, $query, $namespaces = array(), $limit = 10, $offset = 0 ) {
+	function newFromQuery( $method, $query, $namespaces = array(), $limit = 10, $offset = 0, $case = 'ignore' ) {
 		$fname = 'LuceneSearchSet::newFromQuery';
 		wfProfileIn( $fname );
 
@@ -735,6 +758,7 @@ class LuceneSearchSet {
 				'namespaces' => implode( ',', $namespaces ),
 				'offset'     => $offset,
 				'limit'      => $limit,
+				'case'       => $case,
 			) );
 
 		global $wgOut;
