@@ -94,4 +94,4 @@ function wfLogSignDocumentSignature( $sig ) {
 		'id=' . $sig->mId );
 
 }
-?>			       
+?> 

@@ -58,8 +58,8 @@ class CreateSignDocument extends SpecialPage {
 			</td><td><input id="minage" type="text" name="minage" style="width: 400px;"/>
 			</td></tr><tr><td valign="top">
 			<strong>' .wfMsg( 'createsigndoc-introtext' ) . '&nbsp;</strong>
-			</td><td><textarea id="introtext" name="introtext" wrap="soft" style="height: 300px; width: 400px;">
-			</textarea>
+			</td><td><textarea id="introtext" name="introtext" wrap="soft" style="height: 300px; width: 400px;">' .
+			'</textarea>
 			</td></tr><tr><td></td><td>
 			<input type="submit" id="create" name="create" value="' . 
 			wfMsg( 'createsigndoc-create' ) . '" />
