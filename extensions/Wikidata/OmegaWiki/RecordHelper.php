@@ -37,10 +37,13 @@ class RecordHelperFactory {
 				break;
 			case "collection-meaning":
 				return new CollectionMeaningHelper($record);
+				break;
 			case "goto-source":
 				return new GotoSourceHelper($record);
+				break;
 			case "defined-meaning-attributes":
 				return new DefinedMeaningAttributesHelper($record);
+				break;
 			default :
 				echo "IGIVEUP ($type) I Give Up! \n";
 				break;
@@ -51,10 +54,19 @@ class RecordHelperFactory {
 
 abstract class Helper {
 	protected $record;
+	protected $saved;
 	public function __construct($record) {
 		$this->record=$record;	
 	}
 	
+	public function isSaved() {
+		return $this->saved;
+	}
+
+	public function setSaved($saved) {
+		$this->saved=$saved;
+	}
+
 	//public abstract function getSQL();
 	//public abstract function save();
 

@@ -2,7 +2,7 @@
 
 define('MEDIAWIKI', true );
 
-# do we seriously need ALL of thesE?
+# do we seriously need ALL of these?
 require_once("../../../StartProfiler.php");
 require_once("../../../LocalSettings.php");
 require_once("../php-tools/ProgressBar.php");
@@ -13,20 +13,21 @@ require_once("Transaction.php");
 
 
 global
-$beginTime, $wgCommandLineMode;
+$beginTime, $wgCommandLineMode, $dc;
 
 $beginTime = time();
 $wgCommandLineMode = true;
-$dc = "uw";
+# $dc = "uw"; < can't modify from here
 
 /* insert code here */
-$definedMeaningId=1087; # education
+$definedMeaningId=663665; # UnitTest 
 $filterLanguageId=0; # ??? What does this do ???
 $possiblySynonymousRelationTypeId=0; # ??? What does this do ???
 $queryTransactionInformation= new QueryLatestTransactionInformation();
 
 $model=new DefinedMeaningModel($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation);
 $record=$model->getRecord();
+$record->finish("DefinedMeaning");
 echo $record;
 
 
