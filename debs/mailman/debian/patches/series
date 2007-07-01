@@ -34,3 +34,4 @@
 indexing-2.1.9-0.1.patch -p1
 htdig-2.1.9-0.1.patch 
 htdig_cron.patch -p1
+90_i18n_valueerror.dpatch
