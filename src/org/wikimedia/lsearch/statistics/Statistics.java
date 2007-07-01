@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.text.MessageFormat;
 
 import org.apache.log4j.Logger;
+import org.wikimedia.lsearch.util.Command;
 
 /**
  * Class that reports statistics to ganglia daemon via gmetric. 
@@ -142,19 +143,10 @@ public class Statistics {
 		String command = MessageFormat.format(
 				"/usr/bin/gmetric --name={0} --value={1,number,#.###} --type=double --units={2} --dmax={3} {4} {5}",
 				new Object [] {	name, new Double(value), units, new Long(maxDelta / 1000L), portOverride, ifOverride});
-		Process gmetric;
 		try {
-			log.debug("Executing shell command "+command);
-			gmetric = Runtime.getRuntime().exec(command);
-			gmetric.waitFor();
-			if(gmetric.exitValue()!=0){
-				log.warn("Got exit value "+gmetric.exitValue()+" while executing "+command);
-				//log.warn("Error was: "+new BufferedReader(new InputStreamReader(gmetric.getInputStream())).readLine());
-			}
+			Command.exec(command);
 		} catch (IOException e) {
 			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}		
+		}
 	}
 }

@@ -15,6 +15,7 @@ import java.util.Map.Entry;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.lucene.index.Term;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.Searchable;
 import org.apache.lucene.search.SearchableMul;
@@ -60,11 +61,14 @@ public class SearcherCache {
 		}		
 	}	
 	
-	/** Holds OPEN_SEARCHERS num of index searchers, for multiprocessor workstations */
+	/** Holds a number of index searchers, for multiprocessor workstations */
 	public static class SearcherPool {
 		IndexSearcherMul searchers[];
+		IndexId iid;
+		int index = 0;
 		
 		SearcherPool(IndexId iid, String path, int poolsize) throws IOException {
+			this.iid = iid;
 			searchers = new IndexSearcherMul[poolsize];
 			for(int i=0;i<poolsize;i++){
 				searchers[i] = open(iid, path);
@@ -73,7 +77,7 @@ public class SearcherCache {
 		
 		private IndexSearcherMul open(IndexId iid, String path) throws IOException {
 			IndexSearcherMul searcher = null;
-			log.debug("Openning local index for "+iid);
+			log.debug("Opening local index for "+iid);
 			if(!iid.isMySearch())
 				throw new IOException(iid+" is not searched by this host.");
 			if(iid.isLogical())
@@ -91,7 +95,10 @@ public class SearcherCache {
 		}
 		
 		IndexSearcherMul get(){
-			return searchers[(int)(Math.random()*searchers.length)];
+			if(index >= searchers.length)
+				index = 0;
+			log.debug("Using "+iid+" searcher "+index);
+			return searchers[index++];
 		}
 		
 	}	
@@ -277,7 +284,7 @@ public class SearcherCache {
 	protected void registerBadIndex(IndexId iid, String host){ 
 		deadHosts.add(new SearchHost(iid,host));
 		String key = makeKey(iid,host);
-		if(remoteKeys.get(key)!=null)
+		if(remoteKeys.get(iid.toString())!=null)
 			remoteKeys.get(iid.toString()).remove(key);
 	}
 	

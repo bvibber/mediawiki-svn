@@ -164,8 +164,7 @@ public class SearchEngine {
 				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 				log.info("Using NamespaceFilterWrapper "+nsfw);
 			}
-			
-			WikiSearcher searcher = new WikiSearcher(iid);
+						
 			TopDocs hits=null;
 			// see if we can search only part of the index
 			if(nsfw!=null && (iid.isMainPart() || iid.isNssplit())){
@@ -182,7 +181,14 @@ public class SearchEngine {
 				}				
 				if(part!=null){
 					IndexId piid = IndexId.get(part);
-					String host = searcher.getHost(piid);
+					String host;
+					if(piid.isMySearch())
+						host = "localhost";
+					else{
+						// load balance remote hosts
+						WikiSearcher searcher = new WikiSearcher(iid);
+						host = searcher.getHost(piid);
+					}
 					if(host == null){
 						res = new SearchResults();
 						res.setErrorMsg("Error contacting searcher for "+part);
@@ -193,6 +199,7 @@ public class SearchEngine {
 					return messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
 				}
 			}
+			WikiSearcher searcher = new WikiSearcher(iid);
 			// normal search
 			try{
 				hits = searcher.search(q,nsfw,offset+limit);

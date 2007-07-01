@@ -8,7 +8,7 @@
 	<property name="pack.name" value="lucene-search-2.0"/>
 	<property name="binary.name" value="ls2-bin"/>
 	<property name="jar.name" value="LuceneSearch.jar"/>
-	
+	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/*"/>
 	
 	<property file="${basedir}/hostname"/>
 	
@@ -65,27 +65,29 @@
 	
 	<target name="build" description="Compile classes">
 	    <mkdir dir="${bin}"/>
-	    <javac srcdir="${src}/org/" debug="on" includes="**/*.java" destdir="${bin}/">
+	    <javac srcdir="${src}/org/" debug="on" encoding="UTF-8" includes="**/*.java" destdir="${bin}/">
 	      <classpath refid="classpath"/>
 	    </javac>
   	</target>
 	
 	<target name="pack" description="Make tar.gz distribution">
+		<mkdir dir="${dist}"/>
 		<delete file="${dist}/${pack.name}.tar"/>
 		<delete file="${dist}/${pack.name}.tar.gz"/>
 		<tar tarfile="${dist}/${pack.name}.tar">
-			<tarfileset prefix="${pack.name}" dir="." includes="**/*" excludes="dist/ bin/ ${jar.name}"/>
+			<tarfileset prefix="${pack.name}" dir="." includes="${include}"/>
 		</tar>
 
 		<gzip zipfile="${dist}/${pack.name}.tar.gz" src="${dist}/${pack.name}.tar"/>
 		<delete file="${dist}/${pack.name}.tar"/>
 	</target>
 	
-	<target name="binary" depends="makejar" description="Make binary tar.gz distribution">
+	<target name="binary" depends="alljar" description="Make binary tar.gz distribution">
+		<mkdir dir="${bin}"/>
 		<delete file="${dist}/${binary.name}.tar"/>
 		<delete file="${dist}/${binary.name}.tar.gz"/>
 		<tar tarfile="${dist}/${binary.name}.tar">
-			<tarfileset prefix="${binary.name}" dir="." includes="**/*" excludes="dist/ doc/ src/ test-data/ bin/ TODO .svn **/.svn"/>
+			<tarfileset prefix="${binary.name}" dir="." includes="${jar.name} ${include}" excludes="src/ test-data/ lib/*.jar"/>
 		</tar>
 
 		<gzip zipfile="${dist}/${binary.name}.tar.gz" src="${dist}/${binary.name}.tar"/>
