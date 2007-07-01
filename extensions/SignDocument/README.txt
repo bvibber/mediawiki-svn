@@ -39,7 +39,7 @@ fit for actual use.
 	applications).
 
 	[1.4] Then, add to your LocalSettings.php: 
-	"require_once( '$IP/extensions/SignDocument/SignDocument.php' )".
+	'require_once( "$IP/extensions/SignDocument/SignDocument.php" )'.
 
 	[1.5] You can then add a user on your wiki to the group "sigadmin" via
 	Special:Userrights.
@@ -106,7 +106,7 @@ fit for actual use.
 [4] File manifest
 	[4.1] README.txt
 		-> This file.
-	[4.2] signdocument.php
+	[4.2] signdocument.sql
 		-> MySQL script to set up the needed tables.
 	[4.3] SignDocument.php
 		-> The initialization file for the extension.
