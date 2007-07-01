@@ -1,0 +1,84 @@
+# $URL: svn+ssh://lmamane@svn.debian.org/svn/pkg-mailman/trunk/debian/templates $
+# $Id: templates 414 2006-10-06 14:26:52Z thijs $
+Template: mailman/site_languages
+Type: multiselect
+__Choices: ar (Arabic), ca (Catalan), cs (Czech), da (Danish), de (German), en (English), es (Spanish), et (Estonian), eu (Basque), fi (Finnish), fr (French), hr (Croatian), hu (Hungarian), ia (Interlingua), it (Italian), ja (Japanese), ko (Korean), lt (Lithuanian), nl (Dutch), no (Norwegian), pl (Polish), pt (Portuguese), pt_BR (Brasilian Portuguese), ro (Romanian), ru (Russian), sl (Slovenian), sr (Serbian), sv (Swedish), tr (Turkish), uk (Ukrainian), vi (Vietnamese), zh_CN (Chinese - China), zh_TW (Chinese - Taiwan)
+#  You must NOT translate this string, but you can change its value.
+#  The comment between brackets is used to distinguish this msgid
+#  from the one in the Choices list; you do not have to worry about
+#  them, and have to simply choose a msgstr among the English values
+#  listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+_DefaultChoice: en (English)[ default language ]
+_Description: Languages to support:
+ For each supported language, Mailman stores default language
+ specific texts in /etc/mailman/LANG/ giving them conffile like
+ treatment with the help of ucf.  This means approximately 150kB for
+ each supported language on the root file system.
+ .
+ If you need a different set of languages at a later time, just run
+ dpkg-reconfigure mailman.
+ .
+ NOTE: Languages enabled on existing mailing lists are forcibly
+ re-enabled when deselected and mailman needs at least one language for
+ displaying its messages.
+
+Template: mailman/used_languages
+Type: string
+Description: for internal use: holding result of scan
+
+Template: mailman/gate_news
+Type: boolean
+Default: false
+_Description: Gate news to mail?
+ Mailman allows to gate news to mail, that is, send all the messages
+ which appear in a Usenet newsgroup to a mailing list.
+ .
+ Most people won't need this.
+
+Template: mailman/create_site_list
+Type: note
+_Description: Missing site list
+ Mailman needs a so-called "site list", which is the list from which
+ password reminders and such are sent out from.  This list needs to be
+ created before mailman will start.
+ .
+ To create the list, run "newlist mailman" and follow the instructions
+ on-screen.  Note that you also need to start mailman after that,
+ using /etc/init.d/mailman start.
+
+Template: mailman/default_server_language
+Type: select
+Choices: ${site_languages}
+#  You must NOT translate this string, but you can change its value.
+#  The comment between brackets is used to distinguish this msgid
+#  from the one in the Choices list; you do not have to worry about
+#  them, and have to simply choose a msgstr among the English values
+#  listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+_DefaultChoice: en (English)[ default language ]
+_Description: Default language for Mailman:
+ The web page will be shown in this language, and in general, Mailman
+ will use this language to communicate with the user.
+
+Template: mailman/queue_files_present
+Type: note
+_Description: Old queue files present
+ The directory /var/lib/mailman/qfiles contains files. It needs to be
+ empty for the upgrade to work properly. You can try to handle them by:
+  - Stop new messages from coming in (at the MTA level).
+  - Start a mailman queue runner: /etc/init.d/mailman start
+  - Let it run until all messages are handled.
+    If they don't all get handled in a timely manner, look at the logs
+    to try to understand why and solve the cause.
+  - Stop it: /etc/init.d/mailman stop
+  - Retry the upgrade.
+  - Let messages come in again.
+ You can also decide to simply remove the files, which will make
+ Mailman forget about (and lose) the corresponding emails.
+ .
+ If these files correspond to shunted messages, you have to either
+ delete them or unshunt them (with /var/lib/mailman/bin/unshunt).
+ Shunted messages are messages on which Mailman has already abandoned
+ any further processing because of an error condition, but that are
+ kept for admin review. You can use /var/lib/mailman/bin/show_qfiles to
+ examine the contents of the queues.
+

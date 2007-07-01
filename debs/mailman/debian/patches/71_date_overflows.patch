@@ -1,0 +1,16 @@
+Patch: 71_date_overflows.patch
+Author: Lionel Elie Mamane <lionel@mamane.lu>
+React sensibly on integer overflow in date handling
+Index: Mailman/Handlers/Scrubber.py
+===================================================================
+--- Mailman/Handlers/Scrubber.py.orig	2006-08-15 15:14:54.000000000 +0800
++++ Mailman/Handlers/Scrubber.py	2006-08-15 15:14:55.000000000 +0800
+@@ -143,7 +143,7 @@
+                      }.get(parts[3], 0)
+             day = int(parts[4])
+             year = int(parts[6])
+-        except (IndexError, ValueError):
++        except (OverflowError, IndexError, ValueError):
+             # Best we can do I think
+             month = day = year = 0
+         datedir = '%04d%02d%02d' % (year, month, day)

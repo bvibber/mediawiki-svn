@@ -1,0 +1,75 @@
+Patch: 16_update_debian.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+update is called from the Debian maintainer scripts and
+prints non-appropriate output.  Change that.
+Index: bin/update
+===================================================================
+--- bin/update.orig	2006-08-15 15:12:18.000000000 +0800
++++ bin/update	2006-08-15 15:14:30.000000000 +0800
+@@ -300,8 +300,7 @@
+         else:
+             # directory
+             print _("""\
+-    looks like you have a really recent CVS installation...
+-    you're either one brave soul, or you already ran me""")
++    Your installation seems up-to-date, great!""")
+ 
+ 
+     #
+@@ -323,8 +322,7 @@
+         %(newname)s""")
+         else: # directory
+             print _("""\
+-    looks like you have a really recent CVS installation...
+-    you're either one brave soul, or you already ran me""")
++    Your installation seems up-to-date, great!""")
+ 
+     #
+     # move the html archives there
+@@ -338,31 +336,6 @@
+     # BAW: Is this still necessary?!
+     mlist.Save()
+     #
+-    # check to see if pre-b4 list-specific templates are around
+-    # and move them to the new place if there's not already
+-    # a new one there
+-    #
+-    tmpl_dir = os.path.join(mm_cfg.PREFIX, "templates")
+-    list_dir = os.path.join(mm_cfg.PREFIX, "lists")
+-    b4_tmpl_dir = os.path.join(tmpl_dir, mlist._internal_name)
+-    new_tmpl_dir = os.path.join(list_dir, mlist._internal_name)
+-    if os.path.exists(b4_tmpl_dir):
+-        print _("""\
+-- This list looks like it might have <= b4 list templates around""")
+-        for f in os.listdir(b4_tmpl_dir):
+-            o_tmpl = os.path.join(b4_tmpl_dir, f)
+-            n_tmpl = os.path.join(new_tmpl_dir, f)
+-            if os.path.exists(o_tmpl):
+-                if not os.path.exists(n_tmpl):
+-                    os.rename(o_tmpl, n_tmpl)
+-                    print _('- moved %(o_tmpl)s to %(n_tmpl)s')
+-                else:
+-                    print _("""\
+-- both %(o_tmpl)s and %(n_tmpl)s exist, leaving untouched""")
+-            else:
+-                print _("""\
+-- %(o_tmpl)s doesn't exist, leaving untouched""")
+-    #
+     # Move all the templates to the en language subdirectory as required for
+     # Mailman 2.1
+     #
+@@ -656,12 +629,12 @@
+                 'Mailman/HyperDatabase.py', 'Mailman/pipermail.py',
+                 'Mailman/smtplib.py', 'Mailman/Cookie.py',
+                 'bin/update_to_10b6', 'scripts/mailcmd',
+-                'scripts/mailowner', 'mail/wrapper', 'Mailman/pythonlib',
++                'scripts/mailowner', 'Mailman/pythonlib',
+                 'cgi-bin/archives', 'Mailman/MailCommandHandler'):
+         remove_old_sources(mod)
+     listnames = Utils.list_names()
+     if not listnames:
+-        print _('no lists == nothing to do, exiting')
++#        print _('no lists == nothing to do, exiting')
+         return
+     #
+     # for people with web archiving, make sure the directories

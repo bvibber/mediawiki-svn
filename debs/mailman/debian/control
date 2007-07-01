@@ -1,0 +1,32 @@
+Source: mailman
+Section: mail
+Priority: optional
+Maintainer: Mailman for Debian <pkg-mailman-hackers@lists.alioth.debian.org>
+Uploaders: Tollef Fog Heen <tfheen@debian.org>, Lionel Elie Mamane <lmamane@debian.org>, Thijs Kinkhorst <thijs@debian.org>, Hector Garcia <hector@debian.org>
+Build-Depends: debhelper (>= 5), autoconf, python-dev, python-support (>= 0.5.3), quilt (>= 0.40)
+Standards-Version: 3.7.2
+XS-Vcs-Svn: svn://svn.debian.org/svn/pkg-mailman
+XS-Python-Version: current
+XB-Python-Version: ${python:Versions}
+
+Package: mailman
+Architecture: any
+Pre-Depends: debconf (>= 1.4.16) | debconf-2.0
+Depends: ${shlibs:Depends}, ${python:Depends}, logrotate, cron (>= 3.0pl1-42), postfix | mail-transport-agent, apache2 | httpd, ucf (>= 0.28), pwgen, adduser, lsb-base (>= 3.0-6)
+Conflicts: suidmanager (<< 0.50), sendmail (<< 8.12.6)
+Suggests: spamassassin, lynx, python-korean-codecs, python-japanese-codecs, listadmin
+Description: Powerful, web-based mailing list manager
+ The GNU Mailing List Manager, which manages email discussion lists
+ much like Majordomo and Smartmail. Unlike most similar products,
+ Mailman gives each mailing list a web page, and allows users to
+ subscribe, unsubscribe, etc. over the web.  Even the list manager can
+ administer his or her list entirely from the web.
+ .
+ Mailman also integrates most things people want to do with mailing
+ lists, including archiving, mail <-> news gateways, and so on.  It
+ has all of the features you expect from such a product, plus
+ integrated support for the web (including web based archiving),
+ automated bounce handling and integrated spam prevention.
+ .
+ Homepage: http://www.list.org/
+

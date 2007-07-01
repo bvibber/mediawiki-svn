@@ -1,0 +1,31 @@
+Patch: 20_qmail_to_mailman.debian.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Fix some paths in the qmail_to_mailman wrapper
+Index: contrib/qmail-to-mailman.py
+===================================================================
+--- contrib/qmail-to-mailman.py.orig	2006-08-15 15:12:18.000000000 +0800
++++ contrib/qmail-to-mailman.py	2006-08-15 15:14:31.000000000 +0800
+@@ -28,12 +28,12 @@
+ #
+ # INSTALLATION:
+ #
+-# Install this file as ~mailman/qmail-to-mailman.py
++# Install this file as ~mailman/bin/qmail-to-mailman.py
+ #
+ # To configure a virtual domain to connect to mailman, create these files:
+ #
+ # ~mailman/.qmail-default
+-# |preline @PYTHON@ @prefix@/mail-in.py
++# |preline /usr/bin/python /usr/lib/mailman/bin/mail-in.py
+ #
+ # /var/qmail/control/virtualdomains:
+ # DOMAIN.COM:mailman
+@@ -64,7 +64,7 @@
+         sys.exit(100)
+ 
+     local = string.lower(local)
+-    local = re.sub("^mailman-","",local)
++    local = re.sub("^" + MailmanUser + "-","",local)
+ 
+     names = ("root", "postmaster", "mailer-daemon", "mailman-owner", "owner",
+              "abuse")

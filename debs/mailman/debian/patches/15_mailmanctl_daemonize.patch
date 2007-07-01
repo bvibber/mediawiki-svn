@@ -1,0 +1,21 @@
+Patch: 15_mailmanctl_daemonize.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Daemonize mailmanctl properly
+Index: bin/mailmanctl
+===================================================================
+--- bin/mailmanctl.orig	2006-08-15 15:12:18.000000000 +0800
++++ bin/mailmanctl	2006-08-15 15:14:29.000000000 +0800
+@@ -417,6 +417,13 @@
+         # won't be opening any terminal devices, don't do the ultra-paranoid
+         # suggestion of doing a second fork after the setsid() call.
+         os.setsid()
++
++        # Be sure to close any open std{in,out,err}
++        devnull = os.open('/dev/null', 0)
++        os.dup2(devnull, 0)
++        os.dup2(devnull, 1)
++        os.dup2(devnull, 2)
++
+         # Instead of cd'ing to root, cd to the Mailman installation home
+         os.chdir(mm_cfg.PREFIX)
+         # Set our file mode creation umask

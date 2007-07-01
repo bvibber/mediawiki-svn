@@ -1,0 +1,16 @@
+Patch: 65_handle_templates_directories.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Skip directories when updating
+Index: bin/update
+===================================================================
+--- bin/update.orig	2006-08-15 15:14:46.000000000 +0800
++++ bin/update	2006-08-15 15:14:50.000000000 +0800
+@@ -127,7 +127,7 @@
+         try:
+             fp = open(os.path.join(mm_cfg.TEMPLATE_DIR, gtemplate))
+         except IOError, e:
+-            if e.errno <> errno.ENOENT: raise
++            if not (e.errno in [errno.ENOENT, errno.EISDIR, ]): raise
+             # No global template
+             continue
+ 

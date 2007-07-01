@@ -1,0 +1,22 @@
+Patch: 62_new_list_bad_pending_requests.patch
+Author: Richard Mortimer <richm@oldelvet.org.uk>
+Only mail 'pending admin requests' if the database for the
+particular list exists, so we do not send out '-1' requests.
+Index: Mailman/ListAdmin.py
+===================================================================
+--- Mailman/ListAdmin.py.orig	2006-08-15 15:12:17.000000000 +0800
++++ Mailman/ListAdmin.py	2006-08-15 15:14:45.000000000 +0800
+@@ -130,8 +130,11 @@
+ 
+     def NumRequestsPending(self):
+         self.__opendb()
+-        # Subtract one for the version pseudo-entry
+-        return len(self.__db) - 1
++        if self.__db.has_key('version'):
++            # Subtract one for the version pseudo-entry
++            return len(self.__db) - 1
++        else:
++            return len(self.__db)
+ 
+     def __getmsgids(self, rtype):
+         self.__opendb()

@@ -1,0 +1,25 @@
+Patch: 56_fix_de_broken_links.patch
+Author: based on work by Ralf Doeblitz <r.doeblitz@asco.de> (see bug #233048)
+Submitted upstream: via email to translation maintainer
+Index: messages/de/LC_MESSAGES/mailman.po
+===================================================================
+--- messages/de/LC_MESSAGES/mailman.po.orig	2006-08-15 15:12:18.000000000 +0800
++++ messages/de/LC_MESSAGES/mailman.po	2006-08-15 15:14:40.000000000 +0800
+@@ -7201,7 +7201,7 @@
+ "\">topics_bodylines_limit</a>\n"
+ "             configuration variable."
+ msgstr ""
+-"Der Themenfilter kategorisiert jede eingehende e-Mailnachricht gemäss href="
++"Der Themenfilter kategorisiert jede eingehende e-Mailnachricht gemäss <a href="
+ "\"http://www.python.org/doc/current/lib/module-re.html\">Filterregeln mit "
+ "regulären Ausdrücken</a>, die Sie weiter unten festlegen können. Wenn die "
+ "<code>Subject:</code> oder <code>Keywords:</code> Header der Nachricht mit "
+@@ -7214,7 +7214,7 @@
+ "nicht mit Sammelnachrichten.\n"
+ " <p>Optional kann auch der Nachrichtentext auf Vorkommen von <code>Subject:</"
+ "code> und <code>Keyword:</code> Header durchsucht werden. Spezifizieren Sie "
+-"hierzu die Optionhref=\"?VARHELP=topics/topics_bodylines_limit"
++"hierzu die Option <a href=\"?VARHELP=topics/topics_bodylines_limit"
+ "\">topics_bodylines_limit</a>."
+ 
+ # Mailman/Gui/Topics.py:57

@@ -1,0 +1,34 @@
+Patch: 01_defaults.debian.dpatch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Set sane defaults in Defaults.py.in
+Index: Mailman/Defaults.py.in
+===================================================================
+--- Mailman/Defaults.py.in.orig	2006-08-15 15:12:19.000000000 +0800
++++ Mailman/Defaults.py.in	2006-08-15 15:14:18.000000000 +0800
+@@ -54,7 +54,7 @@
+ # disable Mailman's logo footer altogther, hack
+ # Mailman/htmlformat.py:MailmanLogo(), which also contains the hardcoded links
+ # and image names.
+-IMAGE_LOGOS = '/icons/'
++IMAGE_LOGOS = '/doc/mailman/images/'
+ 
+ # The name of the Mailman favicon
+ SHORTCUT_ICON = 'mm-icon.png'
+@@ -85,7 +85,7 @@
+ # because otherwise the default mappings won't be correct.
+ DEFAULT_EMAIL_HOST = '@MAILHOST@'
+ DEFAULT_URL_HOST = '@URLHOST@'
+-DEFAULT_URL_PATTERN = 'http://%s/mailman/'
++DEFAULT_URL_PATTERN = 'http://%s/cgi-bin/mailman/'
+ 
+ # DEFAULT_HOST_NAME has been replaced with DEFAULT_EMAIL_HOST, however some
+ # sites may have the former in their mm_cfg.py files.  If so, we'll believe
+@@ -1300,7 +1300,7 @@
+ MAILDIR_DIR     = os.path.join(QUEUE_DIR, 'maildir')
+ 
+ # Other useful files
+-PIDFILE = os.path.join(DATA_DIR, 'master-qrunner.pid')
++PIDFILE = "/var/run/mailman/mailman.pid"
+ SITE_PW_FILE = os.path.join(DATA_DIR, 'adm.pw')
+ LISTCREATOR_PW_FILE = os.path.join(DATA_DIR, 'creator.pw')
+ 

@@ -1,0 +1,26 @@
+Patch: 78_DeprecationWarning.patch
+Author: Lionel Elie Mamane <lionel@mamane.lu>
+Shut up DeprecationWarning in Python 2.4
+Index: Mailman/Handlers/Scrubber.py
+===================================================================
+--- Mailman/Handlers/Scrubber.py.orig	2006-08-15 15:14:55.000000000 +0800
++++ Mailman/Handlers/Scrubber.py	2006-08-15 15:14:58.000000000 +0800
+@@ -26,6 +26,7 @@
+ import errno
+ import binascii
+ import tempfile
++import warnings
+ from cStringIO import StringIO
+ from types import IntType, StringType
+ 
+@@ -77,6 +78,10 @@
+             check(mimetypes.common_types)
+         return all
+ 
++# FIXME: Remove for Mailman 2.2 (which will drop support for Python 2.1)
++# and then actually replace part.get_type(part.get_default_type())
++# with part.get_content_type()
++warnings.filterwarnings("ignore","^get_type\(\) deprecated;",DeprecationWarning,"Mailman")
+ 
+ 
+ def guess_extension(ctype, ext):

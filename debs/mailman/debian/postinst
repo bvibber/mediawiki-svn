@@ -1,0 +1,219 @@
+#! /bin/sh -e
+#
+# postinst script for Debian python packages
+# Written 1998 by Gregor Hoffleit <flight@debian.org>.
+# Updated 2001 by Tollef Fog Heen <tfheen@debian.org>
+# mailman modifications 2004 by Bernd S. Brentrup <bsb@debian.org>
+#
+# $URL: svn+ssh://lmamane@svn.debian.org/svn/pkg-mailman/trunk/debian/postinst $
+# $Id: postinst 471 2006-12-16 09:04:22Z lmamane $
+#
+. /usr/share/debconf/confmodule
+
+PACKAGE=mailman
+DIRLIST="/usr/lib/mailman/Mailman /usr/lib/mailman/bin /usr/lib/mailman/cron /usr/lib/mailman/scripts"
+PYLIBDIR="/usr/lib/python`python -c 'import sys; print sys.version[:3]'`"
+
+if md5sum -c /dev/null 2>/dev/null; [ "$?" = 3 ]; then
+    # We are using dpkg's md5sum
+    md5sum="md5sum -v"
+else
+    # We are using coreutils' md5sum (hopefully)
+    md5sum=md5sum
+fi
+
+if [ "$1" = "configure" ]; then
+
+    ## Special magick to upgrade from versions between 1:2.1.8-3 and 1:2.1.9-2
+    if [ -d /var/lib/mailman/pythonlib ] && [ ! -h /var/lib/mailman/pythonlib ]; then
+	# It had better already be empty!
+	rmdir /var/lib/mailman/pythonlib
+    fi
+    if [ ! -h /var/lib/mailman/pythonlib ]; then
+	ln -s /usr/lib/mailman/pythonlib /var/lib/mailman/pythonlib
+    fi
+    ## End special magick to upgrade
+
+    mm_etc=/etc/mailman
+    mm_dist=/usr/share/mailman
+
+    # Install only languages selected by the administrator
+    # forcing used languages to be always available.
+    db_get mailman/site_languages
+    site_languages="$(echo $RET | sed -e 's/, */ /g' | sed -r 's/ \([^\)]*\)//g')"
+    need_languages="${site_languages}"
+    db_get  mailman/used_languages
+    db_fset mailman/used_languages seen true
+    db_fset mailman/used_languages scanned false
+    for lang in ${used_languages} ; do
+      if echo " ${site_languages} " | grep -v -q " ${lang} " ; then
+        need_languages="${need_languages:+${need_languages} }${lang}"
+      fi
+    done
+    if [ "${need_languages}" != "${site_languages}" ]; then
+      db_set mailman/site_languages "$(echo ${need_languages} | sed -e 's/  */, /g')"
+    fi
+
+    # At present ALL directories in /etc/mailman are language directories
+    # but this may change in the future, better check.
+    for dir in $(find ${mm_etc} -maxdepth 1 -mindepth 1 -type d -printf '%P\n'); do
+      if [ -f ${mm_dist}/${dir}/options.html ]; then
+        old_languages="${old_languages} ${dir}"
+      fi
+    done
+
+    # Remove languages no longer used, but purging modified files
+    # is a bad thing[TM].
+    leftover=/etc/mailman/leftover
+    : >${leftover}
+    for lang in ${old_languages}; do
+      if  echo " ${site_languages} " | grep -v -q " ${lang} " ; then
+        echo -n "Removing unmodified files from ${mm_etc}/${lang} " >&2
+        # UGLY HACK: Since ucf doesn't support conditional removal
+        #            we access its hashfile directly
+        md5sums=$(tempfile --prefix=mm_${lang})
+        grep "^[[:xdigit:]]{32}[[:space:]]\+${mm_etc}/$lang/" /var/lib/ucf/hashfile >${md5sums} || true
+          # Language files are under ucf control, check md5sums
+          # LEM: The ":\?" is there to accomodate both md5sum from dpkg (in sarge)
+          #      and md5sum from coreutils (in etch and onwards).
+          #      It breaks with md5sum-from-dpkg if a filename ends with ":",
+          #      but this is not expected to happen.
+          for file in $(${md5sum} -c ${md5sums} 2>&1 | sed -n 's/:\? *OK$//p'); do 
+            ucf --debconf-ok --purge ${file}
+            rm -f ${file} ${file}.dpkg-dist
+            echo -n . >&2
+          done
+          # For modified files remove corresponding .dpkg-dist
+          for file in $(grep "^[[:xdigit:]]{32}[[:space:]]\+${mm_etc}/$lang/" /var/lib/ucf/hashfile | awk '{ print $2 }'); do
+            rm -f ${file}.dpkg-dist
+            echo -n . >&2
+          done
+        echo " done." >&2
+        rmdir ${mm_etc}/${lang} 2>/dev/null \
+          || echo "Directory ${mm_etc}/${lang} not empty, not removed." >&2
+        rm -f ${md5sums}
+      fi
+    done
+
+    for lang in ${site_languages}; do
+      echo -n "Installing site language ${lang} " >&2
+      mkdir -p ${mm_etc}/${lang}
+      for file in $(ls ${mm_dist}/${lang}); do
+        echo -n . >&2
+        langfile=${lang}/${file}
+        ucf --debconf-ok --three-way ${mm_dist}/${langfile} ${mm_etc}/${langfile} 2>/dev/null
+        # Upon install ucf leaves a duplicate in .dpkg-dist (Bug #238730), remove it
+        cmp -s ${mm_etc}/${langfile} ${mm_etc}/${langfile}.dpkg-dist \
+          && rm ${mm_etc}/${langfile}.dpkg-dist
+      done
+      echo " done." >&2
+    done
+    # Done with site language stuff
+
+    # Don't forget the qmail specific stuff
+    ucf --debconf-ok --three-way ${mm_dist}/qmail-to-mailman.py ${mm_etc}/qmail-to-mailman.py 2>/dev/null
+    # Install postfix-to-mailman.py as well
+    ucf --debconf-ok --three-way ${mm_dist}/postfix-to-mailman.py ${mm_etc}/postfix-to-mailman.py 2>/dev/null
+    # Upon install ucf leaves a duplicate in .dpkg-dist (Bug #238730), remove it
+    for file in qmail-to-mailman.py postfix-to-mailman.py; do
+      cmp -s ${mm_etc}/${file} ${mm_etc}/${file}.dpkg-dist \
+        && rm ${mm_etc}/${file}.dpkg-dist
+    done
+
+    # Configure Mailman crontab
+
+    # Ensure the file exists before we awk it.
+    if [ ! -f /etc/cron.d/mailman ]; then
+    cat > /etc/cron.d/mailman <<EOF
+# At 8AM every day, mail reminders to admins as to pending requests.
+# They are less likely to ignore these reminders if they're mailed
+# early in the morning, but of course, this is local time... ;)
+0 8 * * * list [ -x /usr/lib/mailman/cron/checkdbs ] && /usr/lib/mailman/cron/checkdbs
+#
+# At 9AM, send notifications to disabled members that are due to be
+# reminded to re-enable their accounts.
+0 9 * * * list [ -x /usr/lib/mailman/cron/disabled ] && /usr/lib/mailman/cron/disabled
+#
+# Noon, mail digests for lists that do periodic as well as threshold delivery.
+0 12 * * * list [ -x /usr/lib/mailman/cron/senddigests ] && /usr/lib/mailman/cron/senddigests
+#
+# 5 AM on the first of each month, mail out password reminders.
+0 5 1 * * list [ -x /usr/lib/mailman/cron/mailpasswds ] && /usr/lib/mailman/cron/mailpasswds
+#
+# Every 5 mins, try to gate news to mail.  You can comment this one out
+# if you don't want to allow gating, or don't have any going on right now,
+# or want to exclusively use a callback strategy instead of polling.
+# */5 * * * * list [ -x /usr/lib/mailman/cron/gate_news ] && /usr/lib/mailman/cron/gate_news
+#
+# At 3:27am every night, regenerate the gzip'd archive file.  Only
+# turn this on if the internal archiver is used and
+# GZIP_ARCHIVE_TXT_FILES is false in mm_cfg.py
+27 3 * * * list [ -x /usr/lib/mailman/cron/nightly_gzip ] && /usr/lib/mailman/cron/nightly_gzip
+EOF
+    fi
+
+    # This should be removed after etch is released, it crept in in 2.1.5-1
+    if grep -q "gate_news]" /etc/cron.d/mailman; then
+        sed -e 's/gate_news]/gate_news ]/' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
+        mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
+    fi
+
+    db_get mailman/gate_news || true
+    if [ "$RET" = "false" ]; then
+	# Comment out any lines containing the words "gate_news"
+	awk '/^[^#]*gate_news/ { print "# " $LINE;next }; //' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
+    else
+	# Remove commenting of any lines containing gate_news
+	awk '/^[ \t]*#.*gate_news/ { sub(/^[ \t]*#[ \t]*/, ""); print; next }; //' < /etc/cron.d/mailman > /etc/cron.d/mailman.$$
+    fi
+    mv -f /etc/cron.d/mailman.$$ /etc/cron.d/mailman
+
+    if [ -e /etc/mailman/mm_cfg.py ]; then
+        db_get mailman/default_server_language || true
+        if [ -n "$RET" ]; then
+            default_server_language="$(echo $RET | sed -r 's/ \([^\)]*\)//g')"
+            sed -e s/DEFAULT_SERVER_LANGUAGE.*=.*\'..\'/DEFAULT_SERVER_LANGUAGE\ =\ \'${default_server_language}\'/ ${mm_etc}/mm_cfg.py > ${mm_etc}/mm_cfg.py.$$
+            mv -f ${mm_etc}/mm_cfg.py.$$ ${mm_etc}/mm_cfg.py
+        fi
+    fi
+fi
+
+db_stop || true
+
+case "$1" in
+    configure|abort-upgrade|abort-remove|abort-deconfigure)
+        if [ -e /etc/mailname ]
+	    then 
+            DOMAIN=$(head -n 1 /etc/mailname)
+            # fixme - should we look for a dot in the domainname?
+        else
+            DOMAIN=localhost.localdomain
+        fi
+	if [ ! -e /etc/$PACKAGE/mm_cfg.py ]; then
+	    echo "Configuring $PACKAGE for domain $DOMAIN ..."
+	    sed s/thunderchild.aszi.sztaki.hu/$DOMAIN/g /usr/lib/mailman/Mailman/mm_cfg.py.dist \
+		> /etc/$PACKAGE/mm_cfg.py
+	fi
+
+	if grep -q mm_defaults /etc/mailman/mm_cfg.py; then
+		echo "Changing mm_defaults to Defaults in mm_cfg.py"
+		echo "Fixing host name in /etc/mm_cfg.py"
+		sed s/mm_defaults/Defaults/ "s/'localhost'/$DOMAIN/g" "s#http://localhost#http://$DOMAIN#g" </etc/mailman/mm_cfg.py >/etc/mailman/mm_cfg.py.new
+		mv /etc/mailman/mm_cfg.py /etc/mailman/mm_cfg.py.old
+		mv /etc/mailman/mm_cfg.py.new /etc/mailman/mm_cfg.py
+	fi
+	sg list -c "umask 002; /usr/lib/mailman/bin/update;"
+
+	# fix permissions
+	find /var/lib/mailman/ -type d -exec chmod g+s \{\} \;
+	chmod o-rx /var/lib/mailman/archives/private
+	chown www-data /var/lib/mailman/archives/private
+    ;;
+
+    *)
+        echo "postinst called with unknown argument \`$1'" >&2
+        exit 1
+    ;;
+esac
+
+#DEBHELPER#

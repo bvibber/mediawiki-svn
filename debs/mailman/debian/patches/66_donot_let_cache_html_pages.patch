@@ -1,0 +1,15 @@
+Patch to prevent browser from caching pages.
+Index: Mailman/htmlformat.py
+===================================================================
+--- Mailman/htmlformat.py.orig	2006-09-19 13:43:51.000000000 +0200
++++ Mailman/htmlformat.py	2006-09-19 15:47:16.000000000 +0200
+@@ -300,7 +300,8 @@
+         charset = 'us-ascii'
+         if self.language and Utils.IsLanguage(self.language):
+             charset = Utils.GetCharSet(self.language)
+-        output = ['Content-Type: text/html; charset=%s\n' % charset]
++        output = ['Content-Type: text/html; charset=%s' % charset]
++        output.append('Cache-control: no-cache\n')
+         if not self.suppress_head:
+             kws.setdefault('bgcolor', self.bgcolor)
+             tab = ' ' * indent

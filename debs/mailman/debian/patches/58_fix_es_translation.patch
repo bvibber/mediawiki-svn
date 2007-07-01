@@ -1,0 +1,16 @@
+Patch: 58_fix_translations.patch
+Author: Siggy Brentrup <bsb@debian.org>
+Fix translation errors
+Index: messages/es/LC_MESSAGES/mailman.po
+===================================================================
+--- messages/es/LC_MESSAGES/mailman.po.orig	2006-09-19 16:12:12.000000000 +0200
++++ messages/es/LC_MESSAGES/mailman.po	2006-09-19 16:13:34.000000000 +0200
+@@ -1989,7 +1989,7 @@
+ #: Mailman/Cgi/create.py:214 bin/.svn/text-base/newlist.svn-base:200
+ #: bin/newlist:200
+ msgid "Illegal list name: %(s)s"
+-msgstr "Nombre de lista ilegal: %(opt)s"
++msgstr "Nombre de lista ilegal: %(s)s"
+ 
+ #: Mailman/Cgi/create.py:219
+ msgid ""

@@ -1,0 +1,40 @@
+Patch: 30_pipermail_threads.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Pipermail non-appropriate output.  Change that.
+Index: Mailman/Archiver/pipermail.py
+===================================================================
+--- Mailman/Archiver/pipermail.py.orig	2006-08-15 15:12:18.000000000 +0800
++++ Mailman/Archiver/pipermail.py	2006-08-15 15:14:34.000000000 +0800
+@@ -122,9 +122,9 @@
+         parentID = article.parentID
+         if parentID is not None and self.articleIndex.has_key(parentID):
+             parent = self.getArticle(archive, parentID)
+-            myThreadKey = parent.threadKey + article.date + '-'
++            myThreadKey = parent.threadKey + article.date + '/' + article.msgid + '-'
+         else:
+-            myThreadKey = article.date + '-'
++            myThreadKey = article.date + '/' + article.msgid + '-'
+         article.threadKey = myThreadKey
+         key = myThreadKey, article.msgid
+         self.setThreadKey(archive, key, article.msgid)
+@@ -418,7 +418,7 @@
+                 else:
+                     parent = self.database.getArticle(self.archive,
+                                                     article.parentID)
+-                    article.threadKey = parent.threadKey+article.date+'-'
++                    article.threadKey = parent.threadKey + article.date + '/' + article.msgid + '-'
+                 self.database.setThreadKey(self.archive,
+                     (article.threadKey, article.msgid),
+                     msgid)
+@@ -632,9 +632,9 @@
+             article.parentID = parentID = self.get_parent_info(arch, article)
+             if parentID:
+                 parent = self.database.getArticle(arch, parentID)
+-                article.threadKey = parent.threadKey + article.date + '-'
++                article.threadKey = parent.threadKey + article.date + '/' + article.msgid + '-'
+             else:
+-                article.threadKey = article.date + '-'
++                article.threadKey = article.date + '/' + article.msgid + '-'
+             key = article.threadKey, article.msgid
+ 
+             self.database.setThreadKey(arch, key, article.msgid)

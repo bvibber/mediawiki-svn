@@ -1,0 +1,25 @@
+Patch: 11_handle_propfind.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1578756&group_id=103&atid=300103
+Don't fall flat on our face if we get a request type which we
+don't understand.
+Index: scripts/driver
+===================================================================
+--- scripts/driver.orig	2006-08-15 15:12:18.000000000 +0800
++++ scripts/driver	2006-08-15 15:14:26.000000000 +0800
+@@ -95,6 +95,15 @@
+         module = getattr(pkg, scriptname)
+         main = getattr(module, 'main')
+         try:
++            import os
++            request_method = os.environ.get('REQUEST_METHOD')
++            if not request_method in ['GET', 'POST', 'HEAD']:
++                print "Status: 405 Method not allowed"
++                print "Content-type: text/plain"
++                print
++                print "The method is not allowed"
++                sys.exit()
++                
+             try:
+                 sys.stderr = logger
+                 sys.stdout = tempstdout

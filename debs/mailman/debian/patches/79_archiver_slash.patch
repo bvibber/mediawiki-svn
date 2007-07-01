@@ -1,0 +1,30 @@
+Patch: 79_archiver_slash.patch
+Author: Lionel Elie Mamane <lionel@mamane.lu>
+Fixes: #350388
+Some non-pipermail archivers require _no_ final slash.
+Index: Mailman/Archiver/Archiver.py
+===================================================================
+--- Mailman/Archiver/Archiver.py.orig	2006-08-15 15:12:10.000000000 +0800
++++ Mailman/Archiver/Archiver.py	2006-08-15 15:14:59.000000000 +0800
+@@ -146,8 +146,6 @@
+                 'listname': self.internal_name(),
+                 'hostname': hostname
+                 }
+-            if not url.endswith('/'):
+-                url += '/'
+             return url
+ 
+     def __archive_file(self, afn):
+Index: Mailman/Defaults.py.in
+===================================================================
+--- Mailman/Defaults.py.in.orig	2006-08-15 15:14:18.000000000 +0800
++++ Mailman/Defaults.py.in	2006-08-15 15:14:59.000000000 +0800
+@@ -205,7 +205,7 @@
+ # interpolate the name of the list into this.  You can also include a
+ # "%(hostname)s" in the string, into which Mailman will interpolate
+ # the host name (usually DEFAULT_URL_HOST).
+-PUBLIC_ARCHIVE_URL = 'http://%(hostname)s/pipermail/%(listname)s'
++PUBLIC_ARCHIVE_URL = 'http://%(hostname)s/pipermail/%(listname)s/'
+ 
+ # Are archives on or off by default?
+ DEFAULT_ARCHIVE = On

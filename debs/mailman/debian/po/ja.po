@@ -1,0 +1,406 @@
+#
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'
+#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans
+#
+#    Developers do not need to manually edit POT or PO files.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: mailman\n"
+"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"PO-Revision-Date: 2006-10-07 15:59+0900\n"
+"Last-Translator: Kenshi Muto <kmuto@debian.org>\n"
+"Language-Team: Japanese <debian-japanese@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ar (Arabic)"
+msgstr "ar (アラビア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ca (Catalan)"
+msgstr "ca (カタルニア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "cs (Czech)"
+msgstr "cs (チェコ語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "da (Danish)"
+msgstr "da (デンマーク語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "de (German)"
+msgstr "de (ドイツ語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "en (English)"
+msgstr "en (英語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "es (Spanish)"
+msgstr "es (スペイン語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "et (Estonian)"
+msgstr "et (エストニア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "eu (Basque)"
+msgstr "eu (バスク語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "fi (Finnish)"
+msgstr "fi (フィンランド語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "fr (French)"
+msgstr "fr (フランス語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "hr (Croatian)"
+msgstr "hr (クロアチア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "hu (Hungarian)"
+msgstr "hu (ハンガリー語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ia (Interlingua)"
+msgstr "ia (インターリングア)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "it (Italian)"
+msgstr "it (イタリア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ja (Japanese)"
+msgstr "ja (日本語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ko (Korean)"
+msgstr "ko (韓国語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "lt (Lithuanian)"
+msgstr "lt (リトアニア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "nl (Dutch)"
+msgstr "nl (オランダ語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "no (Norwegian)"
+msgstr "no (ノルウェー語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "pl (Polish)"
+msgstr "pl (ポーランド語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "pt (Portuguese)"
+msgstr "pt (ポルトガル語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "pt_BR (Brasilian Portuguese)"
+msgstr "pt_BR (ブラジルポルトガル語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ro (Romanian)"
+msgstr "ro (ルーマニア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ru (Russian)"
+msgstr "ru (ロシア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "sl (Slovenian)"
+msgstr "sl (スロヴェニア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "sr (Serbian)"
+msgstr "sr (セルビア語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "sv (Swedish)"
+msgstr "sv (スウェーデン語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "tr (Turkish)"
+msgstr "tr (トルコ語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "uk (Ukrainian)"
+msgstr "uk (ウクライナ語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "vi (Vietnamese)"
+msgstr "vi (ベトナム語)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_CN (Chinese - China)"
+msgstr "zh_CN (中国語 - 中国)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_TW (Chinese - Taiwan)"
+msgstr "zh_TW (中国語 - 台湾)"
+
+#. Type: multiselect
+#. DefaultChoice
+#. You must NOT translate this string, but you can change its value.
+#. The comment between brackets is used to distinguish this msgid
+#. from the one in the Choices list; you do not have to worry about
+#. them, and have to simply choose a msgstr among the English values
+#. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+#. Type: select
+#. DefaultChoice
+#. You must NOT translate this string, but you can change its value.
+#. The comment between brackets is used to distinguish this msgid
+#. from the one in the Choices list; you do not have to worry about
+#. them, and have to simply choose a msgstr among the English values
+#. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+#: ../templates:1002 ../templates:5001
+msgid "en (English)[ default language ]"
+msgstr "ja (Japanese)"
+
+#. Type: multiselect
+#. Description
+#: ../templates:1003
+msgid "Languages to support:"
+msgstr "サポートする言語:"
+
+#. Type: multiselect
+#. Description
+#: ../templates:1003
+msgid ""
+"For each supported language, Mailman stores default language specific texts "
+"in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
+"ucf.  This means approximately 150kB for each supported language on the root "
+"file system."
+msgstr ""
+"サポートされている各言語のために、Mailman はデフォルト言語固有のテキストを /"
+"etc/mailman/言語/ に保有しています。このテキストは、ucf のヘルプなどに使われ"
+"る設定ファイルを提供します。各サポート言語ごとにおよそ 150kB、ルートファイル"
+"システム上のスペースを費します。"
+
+#. Type: multiselect
+#. Description
+#: ../templates:1003
+msgid ""
+"If you need a different set of languages at a later time, just run dpkg-"
+"reconfigure mailman."
+msgstr ""
+"あとになって異なる言語セットが必要になったら、単に dpkg-reconfigure mailman "
+"を実行してください。"
+
+#. Type: multiselect
+#. Description
+#: ../templates:1003
+msgid ""
+"NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
+"when deselected and mailman needs at least one language for displaying its "
+"messages."
+msgstr ""
+"注意: 既存のメーリングリストで有効になっている言語は、選択解除されたときに強"
+"制的に再度有効にされます。また、mailman は、そのメッセージを表示するために少"
+"なくとも 1 つの言語を必要とします。"
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid "Gate news to mail?"
+msgstr "ニュースからメールへゲートしますか?"
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid ""
+"Mailman allows to gate news to mail, that is, send all the messages which "
+"appear in a Usenet newsgroup to a mailing list."
+msgstr ""
+"Mailman はニュースをメールにゲート、つまり、Usenet ニュースグループに投稿され"
+"たすべてのメッセージをメーリングリストに送ることができます。"
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid "Most people won't need this."
+msgstr "ほとんどの人にはこれは必要ありません。"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid "Missing site list"
+msgstr "サイトリストがありません"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid ""
+"Mailman needs a so-called \"site list\", which is the list from which "
+"password reminders and such are sent out from.  This list needs to be "
+"created before mailman will start."
+msgstr ""
+"mailman は、パスワードリマインダとそれがどこから送られるのかのリストである "
+"\"サイトリスト\" と呼ばれるものを必要とします。このリストは mailman を開始す"
+"る前に作成されていなければなりません。"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid ""
+"To create the list, run \"newlist mailman\" and follow the instructions on-"
+"screen.  Note that you also need to start mailman after that, using /etc/"
+"init.d/mailman start."
+msgstr ""
+"リストを作成するには、\"newlist mailman\" を実行して、画面に現れる指示に従っ"
+"てください。このあと、/etc/init.d/mailman start を使って mailman を開始する必"
+"要があることにも注意してください。"
+
+#. Type: select
+#. Description
+#: ../templates:5002
+msgid "Default language for Mailman:"
+msgstr "Mailman のデフォルト言語"
+
+#. Type: select
+#. Description
+#: ../templates:5002
+msgid ""
+"The web page will be shown in this language, and in general, Mailman will "
+"use this language to communicate with the user."
+msgstr ""
+"Web ページはこの言語で表示されます。また、概して Mailman はユーザとのやり取り"
+"にこの言語を使います。"
+
+#. Type: note
+#. Description
+#: ../templates:6001
+msgid "Old queue files present"
+msgstr "古いキューファイルが存在します"
+
+#. Type: note
+#. Description
+#: ../templates:6001
+msgid ""
+"The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
+"for the upgrade to work properly. You can try to handle them by:\n"
+" - Stop new messages from coming in (at the MTA level).\n"
+" - Start a mailman queue runner: /etc/init.d/mailman start\n"
+" - Let it run until all messages are handled.\n"
+"   If they don't all get handled in a timely manner, look at the logs\n"
+"   to try to understand why and solve the cause.\n"
+" - Stop it: /etc/init.d/mailman stop\n"
+" - Retry the upgrade.\n"
+" - Let messages come in again.\n"
+"You can also decide to simply remove the files, which will make Mailman "
+"forget about (and lose) the corresponding emails."
+msgstr ""
+"ディレクトリ /var/lib/mailman/qfiles がファイルを含んでいます。更新作業を正し"
+"く行うために、この中を空にする必要があります。次のようにこの処理を試みること"
+"ができます。\n"
+" - キューに新しいメッセージが入ってくるのを停止する (MTA レベルで)。\n"
+" - mailman キューランナーを起動する: /etc/init.d/mailman start\n"
+" - すべてのメッセージが処理されるまで実行させておく。\n"
+"   いつになっても処理が終わらない場合には、どのような問題が発生し解決したら\n"
+"   よいかを理解するためにログを参照する。\n"
+" - キューランナーを停止する: /etc/init.d/mailman stop\n"
+" - 更新を再試行する。\n"
+" - 再びメッセージをやってこさせる。\n"
+"Mailman に対応するメールを忘れさせる (そして失わせる)ことになりますが、単に"
+"ファイルを削除すると決めることもできます。"
+
+#. Type: note
+#. Description
+#: ../templates:6001
+msgid ""
+"If these files correspond to shunted messages, you have to either delete "
+"them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
+"are messages on which Mailman has already abandoned any further processing "
+"because of an error condition, but that are kept for admin review. You can "
+"use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
+msgstr ""
+"これらのファイルが分路されたメッセージに関連付けられている場合、両方を削除す"
+"るかあるいは (/var/lib/mailman/bin/unshunt で) 主路に戻すかする必要がありま"
+"す。分路されたメッセージは、Mailman がエラー状態のためにすでにその後の処理を"
+"放棄してしまったメッセージですが、管理者のレビュー用に保持されます。キューの"
+"内容の調査には /var/lib/mailman/bin/show_qfiles を使用できます。"
+
+#~ msgid "big5 (Chinese big5)"
+#~ msgstr "big5 (中国語 big5)"

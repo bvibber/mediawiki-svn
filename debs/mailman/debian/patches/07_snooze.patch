@@ -1,0 +1,15 @@
+Patch: 07_snooze.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Snooze a bit to avoid eating too much CPU if you get an SMTP error.
+Index: Mailman/Queue/OutgoingRunner.py
+===================================================================
+--- Mailman/Queue/OutgoingRunner.py.orig	2006-08-15 15:12:19.000000000 +0800
++++ Mailman/Queue/OutgoingRunner.py	2006-08-15 15:14:24.000000000 +0800
+@@ -88,6 +88,7 @@
+                 syslog('error', 'Cannot connect to SMTP server %s on port %s',
+                        mm_cfg.SMTPHOST, port)
+                 self.__logged = True
++            self._snooze(0)
+             return True
+         except Errors.SomeRecipientsFailed, e:
+             # Handle local rejects of probe messages differently.

@@ -1,0 +1,17 @@
+Patch: fix_admin.py.patch
+Author: Riccardo Setti <giskard@debian.org>
+Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1532081&group_id=103&atid=300103
+Improve the search method in the admin page wich list members (Closes: #359721)
+Index: Mailman/Cgi/admin.py
+===================================================================
+--- Mailman/Cgi/admin.py.orig	2006-08-15 15:14:56.000000000 +0800
++++ Mailman/Cgi/admin.py	2006-08-15 15:14:59.000000000 +0800
+@@ -949,7 +949,7 @@
+         for letter in digits + lowercase:
+             if not buckets.get(letter):
+                 continue
+-            url = adminurl + '/members?letter=%s' % letter
++            url = adminurl + '/members?findmember=%s&letter=%s' %(urllib.quote(regexp) ,letter)
+             if letter == bucket:
+                 show = Bold('[%s]' % letter.upper()).Format()
+             else:

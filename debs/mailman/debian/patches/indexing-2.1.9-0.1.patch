@@ -1,0 +1,1856 @@
+diff -ruP --exclude=.DS_Store mailman-2.1.9/Mailman/Archiver/HyperArch.py mailman-2.1.9-index/Mailman/Archiver/HyperArch.py
+--- mailman-2.1.9/Mailman/Archiver/HyperArch.py	2006-03-20 18:31:35.000000000 +0000
++++ mailman-2.1.9-index/Mailman/Archiver/HyperArch.py	2006-09-18 22:14:58.000000000 +0100
+@@ -476,6 +476,8 @@
+             d['listurl'] = self._mlist.GetScriptURL('listinfo', absolute=1)
+             d['listname'] = self._mlist.real_name
+             d['encoding'] = ''
++            d["indexing_enable"] = mm_cfg.ARCHIVE_INDEXING_ENABLE
++            d["indexing_disable"] = mm_cfg.ARCHIVE_INDEXING_DISABLE
+         finally:
+             i18n.set_translation(otrans)
+ 
+@@ -686,6 +688,8 @@
+                  "archivedate": quotetime(self.archivedate),
+                  "listinfo": mlist.GetScriptURL('listinfo', absolute=1),
+                  "version": self.version,
++                 "indexing_enable": mm_cfg.ARCHIVE_INDEXING_ENABLE,
++                 "indexing_disable": mm_cfg.ARCHIVE_INDEXING_DISABLE,
+                  }
+             i = {"thread": _("thread"),
+                  "subject": _("subject"),
+@@ -722,6 +726,8 @@
+                  "firstdate": quotetime(self.firstdate),
+                  "lastdate": quotetime(self.lastdate),
+                  "size": self.size,
++                 "indexing_enable": mm_cfg.ARCHIVE_INDEXING_ENABLE,
++                 "indexing_disable": mm_cfg.ARCHIVE_INDEXING_DISABLE,
+                  }
+             i = {"thread": _("thread"),
+                  "subject": _("subject"),
+@@ -756,6 +762,8 @@
+              "fullarch": '../%s.mbox/%s.mbox' % (listname, listname),
+              "size": sizeof(mbox, mlist.preferred_language),
+              'meta': '',
++             "indexing_enable": mm_cfg.ARCHIVE_INDEXING_ENABLE,
++             "indexing_disable": mm_cfg.ARCHIVE_INDEXING_DISABLE,
+              }
+         # Avoid i18n side-effects
+         otrans = i18n.get_translation()
+@@ -822,7 +830,9 @@
+             'archtocentry.html',
+             {'archive': arch,
+              'archivelabel': self.volNameToDesc(arch),
+-             'textlink': textlink
++             'textlink': textlink,
++             'indexing_enable': mm_cfg.ARCHIVE_INDEXING_ENABLE,
++             'indexing_disable': mm_cfg.ARCHIVE_INDEXING_DISABLE,
+              },
+             mlist=self.maillist)
+ 
+diff -ruP --exclude=.DS_Store mailman-2.1.9/Mailman/Defaults.py.in mailman-2.1.9-index/Mailman/Defaults.py.in
+--- mailman-2.1.9/Mailman/Defaults.py.in	2006-08-04 13:20:33.000000000 +0100
++++ mailman-2.1.9-index/Mailman/Defaults.py.in	2006-09-18 22:14:58.000000000 +0100
+@@ -1307,6 +1307,23 @@
+ # Import a bunch of version numbers
+ from Version import *
+ 
++# Strings for wrapping html stuff we do not want a search engine to
++# pay attention to in the pipermail archives. Of course the search engine
++# must be able to interpret such strings.
++ARCHIVE_INDEXING_ENABLE = ''
++ARCHIVE_INDEXING_DISABLE = ''
++# For example, you could insert the following into your mm_cfg if you
++# were using htdig for searching archives. They are default values for 
++# htdig config attributes noindex_end and noindex_start respectively
++#ARCHIVE_INDEXING_ENABLE = '<!--/htdig_noindex-->'
++#ARCHIVE_INDEXING_DISABLE = '<!--htdig_noindex-->'
++# You can also cater for controlling multiple search engines that 
++# recognise different tags to control what they should add to their 
++# indexes by putting the tags recognised by each search engine 
++# into the strings. For instance: 
++#ARCHIVE_INDEXING_ENABLE = '<!--/htdig_noindex-->\n</NOINDEX>'
++#ARCHIVE_INDEXING_DISABLE = '<NOINDEX>\n<!--htdig_noindex-->'
++
+ # Vgg: Language descriptions and charsets dictionary, any new supported
+ # language must have a corresponding entry here. Key is the name of the
+ # directories that hold the localized texts. Data are tuples with first
+diff -ruP --exclude=.DS_Store mailman-2.1.9/README.NOINDEXtags mailman-2.1.9-index/README.NOINDEXtags
+--- mailman-2.1.9/README.NOINDEXtags	1970-01-01 01:00:00.000000000 +0100
++++ mailman-2.1.9-index/README.NOINDEXtags	2006-09-18 22:14:58.000000000 +0100
+@@ -0,0 +1,29 @@
++If you are defining values for the ARCHIVE_INDEXING_ENABLE and 
++ARCHIVE_INDEXING_DISABLE configuration attributes in MM_cfg.py you
++may want to try and control the indexing activities of multiple search 
++engines that you let access your mail archives.
++
++At the time of writing this, the problem you face is that there is no standard 
++tag defined to exert partial control over search engine indexing of a page. By 
++this I mean a way of telling the search engine to index only a specified part of 
++the page content. There is no formal or de facto standard equivalent to the 
++robot property on the HTML 4.0 META tag e.g.
++<META NAME=robots CONTENT="noindex,follow">,
++which gives whole page control with most search engines.
++
++However, you should be able to put multiple start and stop indexing tags in the 
++values you assign to the ARCHIVE_INDEXING_ENABLE/DISABLE strings in mm_cfg.py.
++
++For example, some writers on the web suggest using <NOINDEX> and </NOINDEX> tags 
++because they are recognised and honoured by a number of search engines.
++
++The defaults recognised by htdig are actually HTML comments of the form 
++<!--htdig_noindex--> and <!--/htdig_noindex-->.
++
++You could combine these in your mm_cfg.py file as follows:
++
++ARCHIVE_INDEXING_ENABLE = '<!--/htdig_noindex-->\n</NOINDEX>'
++ARCHIVE_INDEXING_DISABLE = '<NOINDEX>\n<!--htdig_noindex-->'
++
++Most browsers and search engines should be happy with the results of this as, in 
++general, they will ignore tags they do not understand and act on those they do.
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/cs/article.html mailman-2.1.9-index/templates/cs/article.html
+--- mailman-2.1.9/templates/cs/article.html	2002-12-13 18:13:46.000000000 +0000
++++ mailman-2.1.9-index/templates/cs/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -45,4 +48,5 @@
+        </UL>
+ <hr>
+ <a href="%(listurl)s">DalπÌ informace o konferenci %(listname)s</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/da/archidxfoot.html mailman-2.1.9-index/templates/da/archidxfoot.html
+--- mailman-2.1.9/templates/da/archidxfoot.html	2004-11-12 00:09:48.000000000 +0000
++++ mailman-2.1.9-index/templates/da/archidxfoot.html	2006-09-18 22:19:20.000000000 +0100
+@@ -1,4 +1,5 @@
+     </ul>
++%(indexing_disable)s
+     <p>
+       <a name="end"><b>Dato for nyeste meddelelse:</b></a>
+        <i>%(lastdate)s</i><br>
+@@ -16,6 +17,7 @@
+      <p>
+      <hr>
+      <i>Dette arkiv blev genereret af
++%(indexing_enable)s
+      Pipermail %(version)s.</i>
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/da/archidxhead.html mailman-2.1.9-index/templates/da/archidxhead.html
+--- mailman-2.1.9/templates/da/archidxhead.html	2004-11-12 00:09:48.000000000 +0000
++++ mailman-2.1.9-index/templates/da/archidxhead.html	2006-09-18 22:22:01.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>Arkivet for %(archive)s sorteret efter %(archtype)s</h1>
+       <ul>
+@@ -21,4 +22,5 @@
+       <p><b>Startdato:</b> <i>%(firstdate)s</i><br>
+          <b>Slutdato:</b> <i>%(lastdate)s</i><br>
+          <b>Meddelelser:</b> %(size)s<p>
++%(indexing_enable)s
+      <ul>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/da/archtoc.html mailman-2.1.9-index/templates/da/archtoc.html
+--- mailman-2.1.9/templates/da/archtoc.html	2004-11-12 00:09:48.000000000 +0000
++++ mailman-2.1.9-index/templates/da/archtoc.html	2006-09-18 22:23:50.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>%(listname)s arkiv</h1>
+      <p>
+       Du kan se <a href="%(listinfo)s">mere information om denne liste</a>
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/da/archtocentry.html mailman-2.1.9-index/templates/da/archtocentry.html
+--- mailman-2.1.9/templates/da/archtocentry.html	2004-11-12 00:09:48.000000000 +0000
++++ mailman-2.1.9-index/templates/da/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ TrÂd ]</a>
+               <A href="%(archive)s/subject.html">[ Emne ]</a>
+               <A href="%(archive)s/author.html">[ Afsender ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ Dato ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/da/article.html mailman-2.1.9-index/templates/da/article.html
+--- mailman-2.1.9/templates/da/article.html	2004-11-12 00:09:48.000000000 +0000
++++ mailman-2.1.9-index/templates/da/article.html	2006-09-18 22:27:12.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B>
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -46,4 +49,5 @@
+ 
+ <hr>
+ <a href="%(listurl)s">Mere information om maillisten %(listname)s</a>.<br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/de/article.html mailman-2.1.9-index/templates/de/article.html
+--- mailman-2.1.9/templates/de/article.html	2002-03-21 16:09:33.000000000 +0000
++++ mailman-2.1.9-index/templates/de/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -13,6 +13,7 @@
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s
+    </H1>
++%(indexing_disable)s
+     <B>%(author_html)s
+     </B> 
+     <A HREF="mailto:%(email_url)s"
+@@ -30,9 +31,11 @@
+          </LI>
+        </UL>
+     <HR>
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -45,4 +48,5 @@
+               <a href="author.html#%(sequence)s">[ Autor ]</a>
+          </LI>
+        </UL>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/en/archidxfoot.html mailman-2.1.9-index/templates/en/archidxfoot.html
+--- mailman-2.1.9/templates/en/archidxfoot.html	2002-10-08 17:50:42.000000000 +0100
++++ mailman-2.1.9-index/templates/en/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,4 +1,5 @@
+-    </ul>
++%(indexing_disable)s
++	</ul>
+     <p>
+       <a name="end"><b>Last message date:</b></a> 
+        <i>%(lastdate)s</i><br>
+@@ -17,5 +18,6 @@
+      <hr>
+      <i>This archive was generated by
+      Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/en/archidxhead.html mailman-2.1.9-index/templates/en/archidxhead.html
+--- mailman-2.1.9/templates/en/archidxhead.html	2002-10-08 17:50:42.000000000 +0100
++++ mailman-2.1.9-index/templates/en/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,7 +6,8 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
+-      <a name="start"></A>
++%(indexing_disable)s
++	  <a name="start"></A>
+       <h1>%(archive)s Archives by %(archtype)s</h1>
+       <ul>
+          <li> <b>Messages sorted by:</b>
+@@ -22,3 +23,4 @@
+          <b>Ending:</b> <i>%(lastdate)s</i><br>
+          <b>Messages:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/en/archtoc.html mailman-2.1.9-index/templates/en/archtoc.html
+--- mailman-2.1.9/templates/en/archtoc.html	2002-11-18 21:04:57.000000000 +0000
++++ mailman-2.1.9-index/templates/en/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>The %(listname)s Archives </h1>
+      <p>
+       You can get <a href="%(listinfo)s">more information about this list</a>
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/en/archtocentry.html mailman-2.1.9-index/templates/en/archtocentry.html
+--- mailman-2.1.9/templates/en/archtocentry.html	2002-10-08 17:50:42.000000000 +0100
++++ mailman-2.1.9-index/templates/en/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ Thread ]</a>
+               <A href="%(archive)s/subject.html">[ Subject ]</a>
+               <A href="%(archive)s/author.html">[ Author ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ Date ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/en/archtocnombox.html mailman-2.1.9-index/templates/en/archtocnombox.html
+--- mailman-2.1.9/templates/en/archtocnombox.html	2003-12-01 00:17:34.000000000 +0000
++++ mailman-2.1.9-index/templates/en/archtocnombox.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>The %(listname)s Archives </h1>
+      <p>
+       You can get <a href="%(listinfo)s">more information about this list</a>.
+@@ -14,5 +15,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/en/article.html mailman-2.1.9-index/templates/en/article.html
+--- mailman-2.1.9/templates/en/article.html	2002-11-04 19:36:05.000000000 +0000
++++ mailman-2.1.9-index/templates/en/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -47,4 +50,5 @@
+ <hr>
+ <a href="%(listurl)s">More information about the %(listname)s
+ mailing list</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/es/article.html mailman-2.1.9-index/templates/es/article.html
+--- mailman-2.1.9/templates/es/article.html	2003-11-27 16:32:12.000000000 +0000
++++ mailman-2.1.9-index/templates/es/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s </H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -46,4 +49,5 @@
+ 
+ <hr>
+ <a href="%(listurl)s">M·s informaciÛn sobre la lista de distribuciÛn %(listname)s </a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/et/article.html mailman-2.1.9-index/templates/et/article.html
+--- mailman-2.1.9/templates/et/article.html	2003-09-28 17:46:23.000000000 +0100
++++ mailman-2.1.9-index/templates/et/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -13,6 +13,7 @@
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s
+    </H1>
++%(indexing_disable)s
+     <B>%(author_html)s
+     </B> 
+         <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+@@ -31,9 +32,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -48,4 +51,5 @@
+        </UL>
+ <hr>
+ <a href="%(listurl)s">%(listname)s info</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/fi/article.html mailman-2.1.9-index/templates/fi/article.html
+--- mailman-2.1.9/templates/fi/article.html	2002-04-02 06:43:47.000000000 +0100
++++ mailman-2.1.9-index/templates/fi/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -14,6 +14,7 @@
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s
+    </H1>
++%(indexing_disable)s
+     <B>%(author_html)s
+     </B> 
+     <A HREF="mailto:%(email_url)s"
+@@ -31,9 +32,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -46,4 +49,5 @@
+               <a href="author.html#%(sequence)s">[ kirjoittaja ]</a>
+          </LI>
+        </UL>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/fr/archidxfoot.html mailman-2.1.9-index/templates/fr/archidxfoot.html
+--- mailman-2.1.9/templates/fr/archidxfoot.html	2003-04-20 05:53:00.000000000 +0100
++++ mailman-2.1.9-index/templates/fr/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+ </ul>
+ <p>      
+  <a name="end"><b>Date du dernier message:</b></a>         
+@@ -16,5 +17,6 @@
+         <p>
+  	<hr>      
+ 	<i>Archive g&eacute;n&eacute;r&eacute;e par Pipermail %(version)s.</i>
++%(indexing_enable)s
+      </body>
+ </html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/fr/archidxhead.html mailman-2.1.9-index/templates/fr/archidxhead.html
+--- mailman-2.1.9/templates/fr/archidxhead.html	2004-03-30 16:01:28.000000000 +0100
++++ mailman-2.1.9-index/templates/fr/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+   %(encoding)s          
+ </head>
+     <body bgcolor="#ffffff">
++%(indexing_disable)s
+ <a name="start"></a>       
+ <h1>%(archive)s Archives par %(archtype)s</h1>
+     <ul>
+@@ -22,3 +23,4 @@
+           <b>Fin:</b> <i>%(lastdate)s</i><br>
+           <b>Messages:</b> %(size)s</p>
+ <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/fr/archtoc.html mailman-2.1.9-index/templates/fr/archtoc.html
+--- mailman-2.1.9/templates/fr/archtoc.html	2002-12-27 15:41:04.000000000 +0000
++++ mailman-2.1.9-index/templates/fr/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+   %(meta)s
+ </head>
+ <body bgcolor="#ffffff">
++%(indexing_disable)s
+ 	<h1>Les Archives de %(listname)s</h1>
+         <p>vous pouvez obtenir <a href="%(listinfo)s">plus d' informations &agrave;
+ 	propos de cette  liste</a> ou vous pouvez&nbsp; <a href="%(fullarch)s">t&eacute;l&eacute;charger les archives compl&egrave;tes</a>
+@@ -15,5 +16,6 @@
+ 	%(archive_listing_start)s      
+ 	%(archive_listing)s 
+       	%(archive_listing_end)s        
++%(indexing_enable)s
+ </body>
+ </html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/fr/archtocentry.html mailman-2.1.9-index/templates/fr/archtocentry.html
+--- mailman-2.1.9/templates/fr/archtocentry.html	2005-12-24 05:48:28.000000000 +0000
++++ mailman-2.1.9-index/templates/fr/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+ 	<A href="%(archive)s/thread.html">[ Enfilade ]</a>               
+ 	<A href="%(archive)s/subject.html">[ Sujet ]</a>               
+ 	<A href="%(archive)s/author.html">[ Auteur ]</a>               
++%(indexing_enable)s
+ 	<A href="%(archive)s/date.html">[ Date ]</a>                          
++%(indexing_disable)s
+ 	</td>
+ 	%(textlink)s 
+         </tr>     
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/fr/article.html mailman-2.1.9-index/templates/fr/article.html
+--- mailman-2.1.9/templates/fr/article.html	2002-12-27 15:41:04.000000000 +0000
++++ mailman-2.1.9-index/templates/fr/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -13,6 +13,7 @@
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s
+    </H1>
++%(indexing_disable)s
+     <B>%(author_html)s
+     </B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+@@ -30,9 +31,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -47,6 +50,7 @@
+        </UL>
+ <hr>
+ <a href="%(listurl)s">Plus d'informations sur la liste de diffusion %(listname)s</a><br>
++%(indexing_enable)s
+ </body></html>
+ 
+ 
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/hr/archidxfoot.html mailman-2.1.9-index/templates/hr/archidxfoot.html
+--- mailman-2.1.9/templates/hr/archidxfoot.html	2003-11-30 23:04:03.000000000 +0000
++++ mailman-2.1.9-index/templates/hr/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>Datum zadnje poruke:</b></a> 
+@@ -17,5 +18,6 @@
+      <hr>
+      <i>Ova arhiva je generirana sa 
+      Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/hr/archidxhead.html mailman-2.1.9-index/templates/hr/archidxhead.html
+--- mailman-2.1.9/templates/hr/archidxhead.html	2003-11-30 23:04:03.000000000 +0000
++++ mailman-2.1.9-index/templates/hr/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>%(archive)s Arhiva od %(archtype)s</h1>
+       <ul>
+@@ -22,3 +23,4 @@
+          <b>Kraj:</b> <i>%(lastdate)s</i><br>
+          <b>Poruke:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/hr/archtoc.html mailman-2.1.9-index/templates/hr/archtoc.html
+--- mailman-2.1.9/templates/hr/archtoc.html	2003-11-30 23:04:03.000000000 +0000
++++ mailman-2.1.9-index/templates/hr/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>%(listname)s Arhiva </h1>
+      <p>
+       Moæete dobiti <a href="%(listinfo)s">viπe informacija o ovoj listi</a>
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/hr/article.html mailman-2.1.9-index/templates/hr/article.html
+--- mailman-2.1.9/templates/hr/article.html	2003-11-30 23:04:03.000000000 +0000
++++ mailman-2.1.9-index/templates/hr/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -47,4 +50,5 @@
+ <hr>
+ <a href="%(listurl)s">Viπe informacija o %(listname)s
+ mailing listi</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/hu/archidxfoot.html mailman-2.1.9-index/templates/hu/archidxfoot.html
+--- mailman-2.1.9/templates/hu/archidxfoot.html	2002-12-12 03:31:33.000000000 +0000
++++ mailman-2.1.9-index/templates/hu/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+     <a name="end"><b>UtolsÛ levÈl idıpontja:</b></a> 
+@@ -15,5 +16,6 @@
+      <p>
+      <hr>
+      <i>Az archÌvum a Pipermail %(version)s verzÛj·val kÈsz¸lt.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/hu/archidxhead.html mailman-2.1.9-index/templates/hu/archidxhead.html
+--- mailman-2.1.9/templates/hu/archidxhead.html	2002-12-12 03:31:33.000000000 +0000
++++ mailman-2.1.9-index/templates/hu/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>%(archive)si ArchÌvum %(archtype)s szerint rendezve</h1>
+       <ul>
+@@ -21,3 +22,5 @@
+          <b>UtolsÛ idıpont:</b> <i>%(lastdate)s</i><br>
+ 	 <b>‹zenetek:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
++
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/hu/archtoc.html mailman-2.1.9-index/templates/hu/archtoc.html
+--- mailman-2.1.9/templates/hu/archtoc.html	2002-12-12 03:31:33.000000000 +0000
++++ mailman-2.1.9-index/templates/hu/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+ 	 %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+ 	 <h1>A(z) %(listname)s ArchÌvum </h1>
+      <p>
+       Tov·bbi inform·ciÛkat <a href="%(listinfo)s">a list·rÛl itt olvashatsz</a>
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/hu/archtocentry.html mailman-2.1.9-index/templates/hu/archtocentry.html
+--- mailman-2.1.9/templates/hu/archtocentry.html	2002-12-12 03:31:33.000000000 +0000
++++ mailman-2.1.9-index/templates/hu/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ TÈma ]</a>
+               <A href="%(archive)s/subject.html">[ T·rgy ]</a>
+               <A href="%(archive)s/author.html">[ Szerzı ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ D·tum ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/hu/article.html mailman-2.1.9-index/templates/hu/article.html
+--- mailman-2.1.9/templates/hu/article.html	2002-12-12 03:31:33.000000000 +0000
++++ mailman-2.1.9-index/templates/hu/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -13,6 +13,7 @@
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s
+    </H1>
++%(indexing_disable)s
+      <B>%(author_html)s    </B> 
+      <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -29,9 +30,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -46,4 +49,5 @@
+        </UL>
+ <HR>
+ <a href="%(listurl)s">Tov·bbi inform·ciÛk a(z) %(listname)s levelezılist·rÛl</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/it/archidxfoot.html mailman-2.1.9-index/templates/it/archidxfoot.html
+--- mailman-2.1.9/templates/it/archidxfoot.html	2002-10-10 20:33:47.000000000 +0100
++++ mailman-2.1.9-index/templates/it/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>Data dell'ultimo messaggio:</b></a> 
+@@ -17,5 +18,6 @@
+      <hr>
+      <i>Questo archivio &egrave; stato generato da 
+      Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/it/archidxhead.html mailman-2.1.9-index/templates/it/archidxhead.html
+--- mailman-2.1.9/templates/it/archidxhead.html	2002-10-10 20:33:47.000000000 +0100
++++ mailman-2.1.9-index/templates/it/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>Archivio %(archive)s ordinato per %(archtype)s</h1>
+       <ul>
+@@ -22,3 +23,4 @@
+       <b>Data fine:</b> <i>%(lastdate)s</i><br>
+       <b>Messaggi:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/it/archtoc.html mailman-2.1.9-index/templates/it/archtoc.html
+--- mailman-2.1.9/templates/it/archtoc.html	2002-11-18 21:04:57.000000000 +0000
++++ mailman-2.1.9-index/templates/it/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+ 	  <h1>Gli archivi della lista %(listname)s</h1>
+      <p>
+      Puoi ottenere <a href="%(listinfo)s">ulteriori informazioni su questa lista</a>
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/it/archtocentry.html mailman-2.1.9-index/templates/it/archtocentry.html
+--- mailman-2.1.9/templates/it/archtocentry.html	2002-12-02 19:25:18.000000000 +0000
++++ mailman-2.1.9-index/templates/it/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+ 	      <A href="%(archive)s/thread.html">[ Thread ]</a>
+               <A href="%(archive)s/subject.html">[ Soggetto ]</a>
+ 	      <A href="%(archive)s/author.html">[ Autore ]</a>
++%(indexing_enable)s
+ 	      <A href="%(archive)s/date.html">[ Data ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/it/archtocnombox.html mailman-2.1.9-index/templates/it/archtocnombox.html
+--- mailman-2.1.9/templates/it/archtocnombox.html	2003-12-28 22:16:30.000000000 +0000
++++ mailman-2.1.9-index/templates/it/archtocnombox.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>Gli archivi di %(listname)s</h1>
+      <p>
+       <a href="%(listinfo)s">Maggiori informazioni su questa lista</a>.
+@@ -14,5 +15,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/it/article.html mailman-2.1.9-index/templates/it/article.html
+--- mailman-2.1.9/templates/it/article.html	2002-12-02 19:25:18.000000000 +0000
++++ mailman-2.1.9-index/templates/it/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -46,4 +49,5 @@
+        <hr>
+        <a href="%(listurl)s">Maggiori informazioni sulla lista 
+ 	       %(listname)s</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ja/archidxfoot.html mailman-2.1.9-index/templates/ja/archidxfoot.html
+--- mailman-2.1.9/templates/ja/archidxfoot.html	2004-01-23 00:58:03.000000000 +0000
++++ mailman-2.1.9-index/templates/ja/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>∫«ø∑µ≠ªˆ§Œ∆¸…’:</b></a> 
+@@ -17,5 +18,6 @@
+      <hr>
+      <i>§≥§Œ ›¬∏ΩÒ∏À§œ
+      Pipermail %(version)s §«∫Ó¿Æ§µ§Ï§ﬁ§∑§ø.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ja/archidxhead.html mailman-2.1.9-index/templates/ja/archidxhead.html
+--- mailman-2.1.9/templates/ja/archidxhead.html	2004-01-23 00:58:03.000000000 +0000
++++ mailman-2.1.9-index/templates/ja/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>%(archive)s  ›¬∏ΩÒ∏À %(archtype)s</h1>
+       <ul>
+@@ -22,3 +23,4 @@
+          <b>∫«Ω™:</b> <i>%(lastdate)s</i><br>
+          <b>µ≠ªˆøÙ:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ja/archtoc.html mailman-2.1.9-index/templates/ja/archtoc.html
+--- mailman-2.1.9/templates/ja/archtoc.html	2004-01-23 00:58:03.000000000 +0000
++++ mailman-2.1.9-index/templates/ja/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>%(listname)s  ›¬∏ΩÒ∏À</h1>
+      <p>
+       <a href="%(listinfo)s">•Í•π•»§Œ∞∆∆‚</a> *
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ja/archtocentry.html mailman-2.1.9-index/templates/ja/archtocentry.html
+--- mailman-2.1.9/templates/ja/archtocentry.html	2002-10-08 17:50:42.000000000 +0100
++++ mailman-2.1.9-index/templates/ja/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ •π•Ï•√•… ]</a>
+               <A href="%(archive)s/subject.html">[ ∑ÔÃæ ]</a>
+               <A href="%(archive)s/author.html">[ »ØøÆº‘ ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ ∆¸…’ ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ja/article.html mailman-2.1.9-index/templates/ja/article.html
+--- mailman-2.1.9/templates/ja/article.html	2002-12-03 07:02:19.000000000 +0000
++++ mailman-2.1.9-index/templates/ja/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B>
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -47,4 +50,5 @@
+ <hr>
+ <a href="%(listurl)s">%(listname)s •·°º•Í•Û•∞•Í•π•»§Œ∞∆∆‚
+ </a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ko/article.html mailman-2.1.9-index/templates/ko/article.html
+--- mailman-2.1.9/templates/ko/article.html	2002-03-28 18:32:11.000000000 +0000
++++ mailman-2.1.9-index/templates/ko/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -13,6 +13,7 @@
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s
+    </H1>
++%(indexing_disable)s
+     <B>%(author_html)s
+     </B> 
+     <A HREF="mailto:%(email_url)s"
+@@ -30,9 +31,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -45,4 +48,5 @@
+               <a href="author.html#%(sequence)s">[ ¿˙¿⁄ ]</a>
+          </LI>
+        </UL>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/lt/archidxfoot.html mailman-2.1.9-index/templates/lt/archidxfoot.html
+--- mailman-2.1.9/templates/lt/archidxfoot.html	2002-12-24 19:05:13.000000000 +0000
++++ mailman-2.1.9-index/templates/lt/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>Paskutiniojo laiko data:</b></a>
+@@ -16,5 +17,6 @@
+      <p>
+      <hr>
+      <i>Archyv¯ generavo Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/lt/archidxhead.html mailman-2.1.9-index/templates/lt/archidxhead.html
+--- mailman-2.1.9/templates/lt/archidxhead.html	2002-12-24 19:05:13.000000000 +0000
++++ mailman-2.1.9-index/templates/lt/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>%(archive)s Archyvas %(archtype)s</h1>
+       <ul>
+@@ -21,3 +22,5 @@
+          <b>Paskutinysis:</b> <i>%(lastdate)s</i><br>
+          <b>Laik¯:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
++
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/lt/archtoc.html mailman-2.1.9-index/templates/lt/archtoc.html
+--- mailman-2.1.9/templates/lt/archtoc.html	2002-12-24 19:05:13.000000000 +0000
++++ mailman-2.1.9-index/templates/lt/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,6 +5,7 @@
+      <META NAME="robots" CONTENT="noindex,follow">
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>Forumo %(listname)s archyvai</h1>
+      <p>
+       <a href="%(listinfo)s">PaspaudÊ Ëia galite su˛inoti daugiau apie forum‡</a>;
+@@ -15,5 +16,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/lt/archtocentry.html mailman-2.1.9-index/templates/lt/archtocentry.html
+--- mailman-2.1.9/templates/lt/archtocentry.html	2002-12-24 19:05:13.000000000 +0000
++++ mailman-2.1.9-index/templates/lt/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ Gija ]</a>
+               <A href="%(archive)s/subject.html">[ Tema ]</a>
+               <A href="%(archive)s/author.html">[ Autorius ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ Data ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/lt/article.html mailman-2.1.9-index/templates/lt/article.html
+--- mailman-2.1.9/templates/lt/article.html	2002-12-24 19:05:13.000000000 +0000
++++ mailman-2.1.9-index/templates/lt/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -13,6 +13,7 @@
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s
+    </H1>
++%(indexing_disable)s
+     <B>%(author_html)s
+     </B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+@@ -30,9 +31,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -45,5 +48,6 @@
+               <a href="author.html#%(sequence)s">[ autori¯ ]</a>
+          </LI>
+        </UL>
++%(indexing_enable)s
+ </body></html>
+ 
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/nl/article.html mailman-2.1.9-index/templates/nl/article.html
+--- mailman-2.1.9/templates/nl/article.html	2006-07-21 06:46:44.000000000 +0100
++++ mailman-2.1.9-index/templates/nl/article.html	2006-09-18 22:29:24.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -47,4 +50,5 @@
+ <hr>
+ <a href="%(listurl)s">Meer informatie over de %(listname)s
+ maillijst</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/no/archidxfoot.html mailman-2.1.9-index/templates/no/archidxfoot.html
+--- mailman-2.1.9/templates/no/archidxfoot.html	2002-10-28 00:02:27.000000000 +0000
++++ mailman-2.1.9-index/templates/no/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>Dato pÂ nyeste melding:</b></a> 
+@@ -17,5 +18,6 @@
+      <hr>
+      <i>Dette arkivet ble generert av
+      Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/no/archidxhead.html mailman-2.1.9-index/templates/no/archidxhead.html
+--- mailman-2.1.9/templates/no/archidxhead.html	2002-10-28 00:02:27.000000000 +0000
++++ mailman-2.1.9-index/templates/no/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>Arkivet for %(archive)s sortert pÂ %(archtype)s</h1>
+       <ul>
+@@ -22,3 +23,5 @@
+          <b>Sluttdato:</b> <i>%(lastdate)s</i><br>
+          <b>Meldinger:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
++
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/no/archtoc.html mailman-2.1.9-index/templates/no/archtoc.html
+--- mailman-2.1.9/templates/no/archtoc.html	2002-11-18 21:04:57.000000000 +0000
++++ mailman-2.1.9-index/templates/no/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>%(listname)s arkivet </h1>
+      <p>
+       Du kan se <a href="%(listinfo)s">mer informasjon om denne listen</a>
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/no/archtocentry.html mailman-2.1.9-index/templates/no/archtocentry.html
+--- mailman-2.1.9/templates/no/archtocentry.html	2002-10-28 00:02:27.000000000 +0000
++++ mailman-2.1.9-index/templates/no/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ TrÂd ]</a>
+               <A href="%(archive)s/subject.html">[ Tittel ]</a>
+               <A href="%(archive)s/author.html">[ Forfatter ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ Dato ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/no/archtocnombox.html mailman-2.1.9-index/templates/no/archtocnombox.html
+--- mailman-2.1.9/templates/no/archtocnombox.html	2003-12-30 23:49:01.000000000 +0000
++++ mailman-2.1.9-index/templates/no/archtocnombox.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>%(listname)s arkivet </h1>
+      <p>
+       Du kan se <a href="%(listinfo)s">mer informasjon om denne listen</a>.
+@@ -14,5 +15,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/no/article.html mailman-2.1.9-index/templates/no/article.html
+--- mailman-2.1.9/templates/no/article.html	2002-11-04 23:15:59.000000000 +0000
++++ mailman-2.1.9-index/templates/no/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -46,4 +49,5 @@
+ 
+ <hr>
+ <a href="%(listurl)s">Mer informasjon om epostlisten %(listname)s</a>.<br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pl/archidxfoot.html mailman-2.1.9-index/templates/pl/archidxfoot.html
+--- mailman-2.1.9/templates/pl/archidxfoot.html	2003-04-20 05:53:00.000000000 +0100
++++ mailman-2.1.9-index/templates/pl/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>Data ostatniej wiadomo∂ci:</b></a> 
+@@ -17,5 +18,6 @@
+      <hr>
+      <i>Archiwum zosta≥o wygenerowane przez program
+      Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pl/archidxhead.html mailman-2.1.9-index/templates/pl/archidxhead.html
+--- mailman-2.1.9/templates/pl/archidxhead.html	2003-04-20 05:53:00.000000000 +0100
++++ mailman-2.1.9-index/templates/pl/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>Archiwum za %(archive)s posortowane wed≥ug %(archtype)s</h1>
+       <ul>
+@@ -22,3 +23,4 @@
+          <b>Koniec:</b> <i>%(lastdate)s</i><br>
+          <b>Ilo∂Ê wiadomo∂ci:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pl/archtoc.html mailman-2.1.9-index/templates/pl/archtoc.html
+--- mailman-2.1.9/templates/pl/archtoc.html	2003-04-20 05:53:00.000000000 +0100
++++ mailman-2.1.9-index/templates/pl/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>Archiwum listy %(listname)s</h1>
+      <p>
+       Moøesz odwiedziÊ <a href="%(listinfo)s">stronÍ informacyjn± tej listy</a>,
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pl/archtocentry.html mailman-2.1.9-index/templates/pl/archtocentry.html
+--- mailman-2.1.9/templates/pl/archtocentry.html	2003-04-20 05:53:00.000000000 +0100
++++ mailman-2.1.9-index/templates/pl/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ W±tku ]</a>
+               <A href="%(archive)s/subject.html">[ Tematu ]</a>
+               <A href="%(archive)s/author.html">[ Autora ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ Daty ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pl/article.html mailman-2.1.9-index/templates/pl/article.html
+--- mailman-2.1.9/templates/pl/article.html	2003-04-20 05:53:00.000000000 +0100
++++ mailman-2.1.9-index/templates/pl/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -11,6 +11,7 @@
+    %(next)s
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+    <H1>%(subject_html)s</H1>
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -47,4 +50,5 @@
+ <hr>
+ <a href="%(listurl)s">WiÍcej informacji o li∂cie dyskusyjnej %(listname)s
+ </a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pt/archidxfoot.html mailman-2.1.9-index/templates/pt/archidxfoot.html
+--- mailman-2.1.9/templates/pt/archidxfoot.html	2003-04-09 06:09:57.000000000 +0100
++++ mailman-2.1.9-index/templates/pt/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>Data da ˙ltima mensagem:</b></a> 
+@@ -17,5 +18,6 @@
+      <hr>
+      <i>Este arquivo foi criado pelo
+      Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pt/archidxhead.html mailman-2.1.9-index/templates/pt/archidxhead.html
+--- mailman-2.1.9/templates/pt/archidxhead.html	2003-04-09 06:09:57.000000000 +0100
++++ mailman-2.1.9-index/templates/pt/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>%(archive)s Arquivos por %(archtype)s</h1>
+       <ul>
+@@ -22,3 +23,4 @@
+          <b>Fim:</b> <i>%(lastdate)s</i><br>
+          <b>Mensagens:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pt/archtoc.html mailman-2.1.9-index/templates/pt/archtoc.html
+--- mailman-2.1.9/templates/pt/archtoc.html	2003-04-09 06:09:57.000000000 +0100
++++ mailman-2.1.9-index/templates/pt/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>Arquivos de %(listname)s</h1>
+      <p>
+       Pode ter <a href="%(listinfo)s">mais informaÁ„o sobre esta lista</a>
+@@ -17,5 +18,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pt/archtocentry.html mailman-2.1.9-index/templates/pt/archtocentry.html
+--- mailman-2.1.9/templates/pt/archtocentry.html	2003-04-09 06:09:57.000000000 +0100
++++ mailman-2.1.9-index/templates/pt/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ TÛpico ]</a>
+               <A href="%(archive)s/subject.html">[ Assunto ]</a>
+               <A href="%(archive)s/author.html">[ Autor ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ Data ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pt/article.html mailman-2.1.9-index/templates/pt/article.html
+--- mailman-2.1.9/templates/pt/article.html	2003-04-09 06:09:57.000000000 +0100
++++ mailman-2.1.9-index/templates/pt/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -11,6 +11,7 @@
+    %(next)s
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+    <H1>%(subject_html)s</H1>
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -46,4 +49,5 @@
+ 
+ <hr>
+ <a href="%(listurl)s">Mais informaÁıes acerca da lista %(listname)s</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/pt_BR/article.html mailman-2.1.9-index/templates/pt_BR/article.html
+--- mailman-2.1.9/templates/pt_BR/article.html	2002-12-10 19:07:10.000000000 +0000
++++ mailman-2.1.9-index/templates/pt_BR/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -47,4 +50,5 @@
+ <hr>
+ <a href="%(listurl)s">Mais detalhes sobre a lista de discuss„o %(listname)s
+ </a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ro/archidxfoot.html mailman-2.1.9-index/templates/ro/archidxfoot.html
+--- mailman-2.1.9/templates/ro/archidxfoot.html	2003-12-13 16:35:54.000000000 +0000
++++ mailman-2.1.9-index/templates/ro/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>Data ultimului mesaj:</b></a>
+@@ -16,5 +17,6 @@
+      <p>
+      <hr>
+      <i>Aceast„ arhiv„ a fost generat„ de Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ro/archidxhead.html mailman-2.1.9-index/templates/ro/archidxhead.html
+--- mailman-2.1.9/templates/ro/archidxhead.html	2003-12-13 16:35:54.000000000 +0000
++++ mailman-2.1.9-index/templates/ro/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -7,6 +7,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>Arhivele %(archive)s dup„ %(archtype)s</h1>
+       <ul>
+@@ -22,3 +23,4 @@
+          <b>Se termin„ la:</b> <i>%(lastdate)s</i><br>
+          <b>Mesaje:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ro/archtoc.html mailman-2.1.9-index/templates/ro/archtoc.html
+--- mailman-2.1.9/templates/ro/archtoc.html	2003-12-13 16:35:54.000000000 +0000
++++ mailman-2.1.9-index/templates/ro/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -7,6 +7,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>Arhivele listei de discu˛ii %(listname)s</h1>
+      <p>
+       Pute˛i ob˛ine <a href="%(listinfo)s">mai multe detalii despre aceast„ list„</a>
+@@ -17,5 +18,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ro/archtocentry.html mailman-2.1.9-index/templates/ro/archtocentry.html
+--- mailman-2.1.9/templates/ro/archtocentry.html	2003-12-13 16:35:54.000000000 +0000
++++ mailman-2.1.9-index/templates/ro/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ Fir ]</a>
+               <A href="%(archive)s/subject.html">[ Subiect ]</a>
+               <A href="%(archive)s/author.html">[ Autor ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ Dat„ ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ro/article.html mailman-2.1.9-index/templates/ro/article.html
+--- mailman-2.1.9/templates/ro/article.html	2003-12-13 16:35:54.000000000 +0000
++++ mailman-2.1.9-index/templates/ro/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -11,6 +11,7 @@
+    %(next)s
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+    <H1>%(subject_html)s</H1>
+     <B>%(author_html)s</B>
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -46,4 +49,5 @@
+ 
+ <hr>
+ <a href="%(listurl)s">Mai multe informa˛ii despre lista de discu˛ii %(listname)s</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ru/archidxfoot.html mailman-2.1.9-index/templates/ru/archidxfoot.html
+--- mailman-2.1.9/templates/ru/archidxfoot.html	2002-10-11 01:43:36.000000000 +0100
++++ mailman-2.1.9-index/templates/ru/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>‰¡‘¡ –œ”Ã≈ƒŒ≈«œ ”œœ¬›≈Œ…—:</b></a> 
+@@ -15,5 +16,6 @@
+      <p>
+      <hr>
+      <i>¸‘œ‘ ¡“»…◊ ¬ŸÃ ”œ⁄ƒ¡Œ –“œ«“¡ÕÕœ  Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ru/archidxhead.html mailman-2.1.9-index/templates/ru/archidxhead.html
+--- mailman-2.1.9/templates/ru/archidxhead.html	2002-10-11 01:43:36.000000000 +0100
++++ mailman-2.1.9-index/templates/ru/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>ÙœÕ %(archive)s, ”œœ¬›≈Œ…— ’–œ“—ƒœﬁ≈ŒŸ –œ %(archtype)s</h1>
+       <ul>
+@@ -21,3 +22,4 @@
+          <b>œ”Ã≈ƒŒ≈≈ ”œœ¬›≈Œ…≈:</b> <i>%(lastdate)s</i><br>
+          <b>Ûœœ¬›≈Œ… :</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ru/archtoc.html mailman-2.1.9-index/templates/ru/archtoc.html
+--- mailman-2.1.9/templates/ru/archtoc.html	2002-11-18 21:04:57.000000000 +0000
++++ mailman-2.1.9-index/templates/ru/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>·“»…◊ %(listname)s</h1>
+      <p><a href="%(listinfo)s">˙ƒ≈”ÿ</a> ◊Ÿ Œ¡ ƒ≈‘≈ …Œ∆œ“Õ¡√…¿ œ ”–…”À≈
+      “¡””ŸÃÀ….  ˜Ÿ ‘¡À÷≈ Õœ÷≈‘≈ <a href="%(fullarch)s">⁄¡«“’⁄…‘ÿ</a> ◊≈”ÿ
+@@ -15,5 +16,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ru/archtocentry.html mailman-2.1.9-index/templates/ru/archtocentry.html
+--- mailman-2.1.9/templates/ru/archtocentry.html	2002-10-11 01:43:36.000000000 +0100
++++ mailman-2.1.9-index/templates/ru/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ –œ ƒ…”À’””…—Õ ]</a>
+               <A href="%(archive)s/subject.html">[ –œ ‘≈Õ≈ ]</a>
+               <A href="%(archive)s/author.html">[ –œ ¡◊‘œ“’ ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ –œ ƒ¡‘≈ ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/ru/article.html mailman-2.1.9-index/templates/ru/article.html
+--- mailman-2.1.9/templates/ru/article.html	2002-11-05 14:38:01.000000000 +0000
++++ mailman-2.1.9-index/templates/ru/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -45,4 +48,5 @@
+        </UL>
+ <hr>
+ <a href="%(listurl)s">œƒ“œ¬Œ¡— …Œ∆œ“Õ¡√…— œ ”–…”À≈ “¡””ŸÃÀ… %(listname)s</a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/sl/archidxfoot.html mailman-2.1.9-index/templates/sl/archidxfoot.html
+--- mailman-2.1.9/templates/sl/archidxfoot.html	2003-10-04 03:57:36.000000000 +0100
++++ mailman-2.1.9-index/templates/sl/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>Datum zadnjega sporoËila:</b></a>
+@@ -17,5 +18,6 @@
+      <hr>
+      <i>Ta arhiv je bil ustvarjen s programom
+      Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/sl/archidxhead.html mailman-2.1.9-index/templates/sl/archidxhead.html
+--- mailman-2.1.9/templates/sl/archidxhead.html	2003-10-04 03:57:36.000000000 +0100
++++ mailman-2.1.9-index/templates/sl/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>Arhivi %(archive)s glede na %(archtype)s</h1>
+       <ul>
+@@ -22,3 +23,4 @@
+          <b>Konec:</b> <i>%(lastdate)s</i><br>
+          <b>SporoËil:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/sl/archtoc.html mailman-2.1.9-index/templates/sl/archtoc.html
+--- mailman-2.1.9/templates/sl/archtoc.html	2003-10-04 03:57:36.000000000 +0100
++++ mailman-2.1.9-index/templates/sl/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>Arhivi za seznam %(listname)s</h1>
+      <p>
+       Ogledate si lahko <a href="%(listinfo)s">dodatne informacije o tem seznamu</a>
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/sl/archtocentry.html mailman-2.1.9-index/templates/sl/archtocentry.html
+--- mailman-2.1.9/templates/sl/archtocentry.html	2003-10-04 03:57:36.000000000 +0100
++++ mailman-2.1.9-index/templates/sl/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ Tema ]</a>
+               <A href="%(archive)s/subject.html">[ Zadeva ]</a>
+               <A href="%(archive)s/author.html">[ Avtor ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ Datum ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/sl/article.html mailman-2.1.9-index/templates/sl/article.html
+--- mailman-2.1.9/templates/sl/article.html	2003-10-04 03:57:36.000000000 +0100
++++ mailman-2.1.9-index/templates/sl/article.html	2006-09-18 22:14:58.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -47,4 +50,5 @@
+ <hr>
+ <a href="%(listurl)s">Dodatne informacije o seznamu %(listname)s
+ </a><br>
++%(indexing_enable)s
+ </body></html>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/tr/archidxfoot.html mailman-2.1.9-index/templates/tr/archidxfoot.html
+--- mailman-2.1.9/templates/tr/archidxfoot.html	2004-04-25 03:30:04.000000000 +0100
++++ mailman-2.1.9-index/templates/tr/archidxfoot.html	2006-09-18 22:14:58.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>Son mesaj tarihi:</b></a> 
+@@ -17,6 +18,7 @@
+      <hr>
+      <i>Bu ar˛iv Pipermail %(version)s ile
+      olu˛turulmu˛tur.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+ 
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/tr/archidxhead.html mailman-2.1.9-index/templates/tr/archidxhead.html
+--- mailman-2.1.9/templates/tr/archidxhead.html	2004-04-25 03:30:04.000000000 +0100
++++ mailman-2.1.9-index/templates/tr/archidxhead.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>%(archtype)s s˝ralamas˝ ile %(archive)s Ar˛ivleri</h1>
+       <ul>
+@@ -22,4 +23,5 @@
+          <b>Biti˛ tarihi:</b> <i>%(lastdate)s</i><br>
+          <b>Mesaj say˝s˝:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+ 
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/tr/archtoc.html mailman-2.1.9-index/templates/tr/archtoc.html
+--- mailman-2.1.9/templates/tr/archtoc.html	2004-04-25 03:30:04.000000000 +0100
++++ mailman-2.1.9-index/templates/tr/archtoc.html	2006-09-18 22:14:58.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>%(listname)s Ar˛ivleri </h1>
+      <p>
+       <a href="%(listinfo)s">Bu listeyle ilgili daha fazla bilgi</a> alabilirsiniz
+@@ -16,6 +17,7 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+ 
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/tr/archtocentry.html mailman-2.1.9-index/templates/tr/archtocentry.html
+--- mailman-2.1.9/templates/tr/archtocentry.html	2004-04-25 03:30:04.000000000 +0100
++++ mailman-2.1.9-index/templates/tr/archtocentry.html	2006-09-18 22:14:58.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ Thread ]</a>
+               <A href="%(archive)s/subject.html">[ Konu ]</a>
+               <A href="%(archive)s/author.html">[ Yazar ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ Tarih ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/tr/article.html mailman-2.1.9-index/templates/tr/article.html
+--- mailman-2.1.9/templates/tr/article.html	2004-04-25 03:30:04.000000000 +0100
++++ mailman-2.1.9-index/templates/tr/article.html	2006-09-18 22:14:59.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -47,5 +50,6 @@
+ <hr>
+ <a href="%(listurl)s">%(listname)s mesaj listesiyle ilgili
+ daha fazla bilgi</a><br>
++%(indexing_enable)s
+ </body></html>
+ 
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/uk/archidxfoot.html mailman-2.1.9-index/templates/uk/archidxfoot.html
+--- mailman-2.1.9/templates/uk/archidxfoot.html	2003-09-22 04:52:35.000000000 +0100
++++ mailman-2.1.9-index/templates/uk/archidxfoot.html	2006-09-18 22:14:59.000000000 +0100
+@@ -1,3 +1,4 @@
++%(indexing_disable)s
+     </ul>
+     <p>
+       <a name="end"><b>–î–∞—Ç–∞ –æ—Å—Ç–∞–Ω–Ω—å–æ–≥–æ –ø–æ–≤—ñ–¥–æ–º–ª–µ–Ω–Ω—è:</b></a> 
+@@ -16,5 +17,6 @@
+      <p>
+      <hr>
+      <i>–¶–µ–π –∞—Ä—Ö—ñ–≤ –±—É–ª–æ —Å—Ç–≤–æ—Ä–µ–Ω–æ –ø—Ä–æ–≥—Ä–∞–º–æ—é Pipermail %(version)s.</i>
++%(indexing_enable)s
+   </BODY>
+ </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/uk/archidxhead.html mailman-2.1.9-index/templates/uk/archidxhead.html
+--- mailman-2.1.9/templates/uk/archidxhead.html	2003-09-22 04:52:35.000000000 +0100
++++ mailman-2.1.9-index/templates/uk/archidxhead.html	2006-09-18 22:14:59.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(encoding)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+       <a name="start"></A>
+       <h1>–¢–æ–º %(archive)s, –ø–æ–≤—ñ–¥–æ–º–ª–µ–Ω–Ω—è –≤–ø–æ—Ä—è–¥–∫–æ–≤–∞–Ω—ñ %(archtype)s</h1>
+       <ul>
+@@ -22,3 +23,4 @@
+          <b>–ö—ñ–Ω–µ—Ü—å:</b> <i>%(lastdate)s</i><br>
+          <b>–ü–æ–≤—ñ–¥–æ–º–ª–µ–Ω—å:</b> %(size)s<p>
+      <ul>
++%(indexing_enable)s
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/uk/archtoc.html mailman-2.1.9-index/templates/uk/archtoc.html
+--- mailman-2.1.9/templates/uk/archtoc.html	2003-09-22 04:52:35.000000000 +0100
++++ mailman-2.1.9-index/templates/uk/archtoc.html	2006-09-18 22:14:59.000000000 +0100
+@@ -6,6 +6,7 @@
+      %(meta)s
+   </HEAD>
+   <BODY BGCOLOR="#ffffff">
++%(indexing_disable)s
+      <h1>–ê—Ä—Ö—ñ–≤–∏ %(listname)s</h1>
+      <p>
+       –í–∏ –º–æ–∂–µ—Ç–µ –æ—Ç—Ä–∏–º–∞—Ç–∏ <a href="%(listinfo)s">–¥–æ–∫–ª–∞–¥–Ω—É —ñ–Ω—Ñ–æ—Ä–º–∞—Ü—ñ—é  –ø—Ä–æ —Ü–µ–π —Å–ø–∏—Å–æ–∫ —Ä–æ–∑—Å–∏–ª–∞–Ω–Ω—è</a>
+@@ -16,5 +17,6 @@
+      %(archive_listing_start)s
+      %(archive_listing)s
+      %(archive_listing_end)s
++%(indexing_enable)s
+      </BODY>
+      </HTML>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/uk/archtocentry.html mailman-2.1.9-index/templates/uk/archtocentry.html
+--- mailman-2.1.9/templates/uk/archtocentry.html	2003-09-22 04:52:35.000000000 +0100
++++ mailman-2.1.9-index/templates/uk/archtocentry.html	2006-09-18 22:14:59.000000000 +0100
+@@ -5,7 +5,9 @@
+               <A href="%(archive)s/thread.html">[ –∑–∞ –≥—ñ–ª–∫–∞–º–∏ ]</a>
+               <A href="%(archive)s/subject.html">[ –∑–∞ —Ç–µ–º–∞–º–∏ ]</a>
+               <A href="%(archive)s/author.html">[ –∑–∞ –∞–≤—Ç–æ—Ä–∞–º–∏ ]</a>
++%(indexing_enable)s
+               <A href="%(archive)s/date.html">[ –∑–∞ –¥–∞—Ç–æ—é ]</a>
++%(indexing_disable)s
+             </td>
+             %(textlink)s
+             </tr>
+diff -ruP --exclude=.DS_Store mailman-2.1.9/templates/uk/article.html mailman-2.1.9-index/templates/uk/article.html
+--- mailman-2.1.9/templates/uk/article.html	2003-09-22 04:52:35.000000000 +0100
++++ mailman-2.1.9-index/templates/uk/article.html	2006-09-18 22:14:59.000000000 +0100
+@@ -12,6 +12,7 @@
+  </HEAD>
+  <BODY BGCOLOR="#ffffff">
+    <H1>%(subject_html)s</H1>
++%(indexing_disable)s
+     <B>%(author_html)s</B> 
+     <A HREF="mailto:%(email_url)s?Subject=%(subject_url)s&In-Reply-To=%(in_reply_to_url)s"
+        TITLE="%(subject_html)s">%(email_html)s
+@@ -28,9 +29,11 @@
+          </LI>
+        </UL>
+     <HR>  
++%(indexing_enable)s
+ <!--beginarticle-->
+ %(body)s
+ <!--endarticle-->
++%(indexing_disable)s
+     <HR>
+     <P><UL>
+         <!--threads-->
+@@ -46,4 +49,5 @@
+ 
+ <hr>
+ <a href="%(listurl)s">–î–æ–∫–ª–∞–¥–Ω–∞ —ñ–Ω—Ñ–æ—Ä–º–∞—Ü—ñ—è –ø—Ä–æ —Å–ø–∏—Å–æ–∫ –ª–∏—Å—Ç—É–≤–∞–Ω–Ω—è %(listname)s </a><br>
++%(indexing_enable)s
+ </body></html>

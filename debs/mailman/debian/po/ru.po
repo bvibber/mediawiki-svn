@@ -1,0 +1,409 @@
+# translation of mailman-ru.po to Russian
+# Russian messages:
+#    Translators, if you are not familiar with the PO format, gettext
+#    documentation is worth reading, especially sections dedicated to
+#    this format, e.g. by running:
+#         info -n '(gettext)PO Files'
+#         info -n '(gettext)Header Entry'#
+#    Some information specific to po-debconf are available at
+#            /usr/share/doc/po-debconf/README-trans
+#         or http://www.debian.org/intl/l10n/po-debconf/README-trans#
+#    Developers do not need to manually edit POT or PO files.
+#
+# Ilgiz Kalmetev <translator@ilgiz.pp.ru>, 2003.
+# Yuri Kozlov <kozlov.y@gmail.com>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: mailman_2.1.8-2\n"
+"Report-Msgid-Bugs-To: pkg-mailman-hackers@lists.alioth.debian.org\n"
+"POT-Creation-Date: 2006-10-06 16:25+0200\n"
+"PO-Revision-Date: 2006-10-07 17:20+0400\n"
+"Last-Translator: Yuri Kozlov <kozlov.y@gmail.com>\n"
+"Language-Team: Russian <debian-l10n-russian@lists.debian.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: KBabel 1.11.2\n"
+"Plural-Forms:  nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ar (Arabic)"
+msgstr "ar (арабский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ca (Catalan)"
+msgstr "ca (каталонский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "cs (Czech)"
+msgstr "cs (чешский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "da (Danish)"
+msgstr "da (датский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "de (German)"
+msgstr "de (немецкий)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "en (English)"
+msgstr "en (английский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "es (Spanish)"
+msgstr "es (испанский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "et (Estonian)"
+msgstr "et (эстонский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "eu (Basque)"
+msgstr "eu (баскский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "fi (Finnish)"
+msgstr "fi (финский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "fr (French)"
+msgstr "fr (французский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "hr (Croatian)"
+msgstr "hr (хорватский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "hu (Hungarian)"
+msgstr "hu (венгерский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ia (Interlingua)"
+msgstr "ia (интерлингва)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "it (Italian)"
+msgstr "it (итальянский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ja (Japanese)"
+msgstr "ja (японский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ko (Korean)"
+msgstr "ko (корейский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "lt (Lithuanian)"
+msgstr "lt (литовский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "nl (Dutch)"
+msgstr "nl (голландский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "no (Norwegian)"
+msgstr "no (норвежский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "pl (Polish)"
+msgstr "pl (польский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "pt (Portuguese)"
+msgstr "pt (португальский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "pt_BR (Brasilian Portuguese)"
+msgstr "pt_BR (португальский в Бразилии)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ro (Romanian)"
+msgstr "ro (румынский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "ru (Russian)"
+msgstr "ru (русский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "sl (Slovenian)"
+msgstr "sl (словенский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "sr (Serbian)"
+msgstr "sr (сербский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "sv (Swedish)"
+msgstr "sv (шведский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "tr (Turkish)"
+msgstr "tr (турецкий)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "uk (Ukrainian)"
+msgstr "uk (украинский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "vi (Vietnamese)"
+msgstr "vi (вьетнамский)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_CN (Chinese - China)"
+msgstr "zh_CN (китайский в Китае)"
+
+#. Type: multiselect
+#. Choices
+#: ../templates:1001
+msgid "zh_TW (Chinese - Taiwan)"
+msgstr "zh_TW (китайский в Тайване)"
+
+#. Type: multiselect
+#. DefaultChoice
+#. You must NOT translate this string, but you can change its value.
+#. The comment between brackets is used to distinguish this msgid
+#. from the one in the Choices list; you do not have to worry about
+#. them, and have to simply choose a msgstr among the English values
+#. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+#. Type: select
+#. DefaultChoice
+#. You must NOT translate this string, but you can change its value.
+#. The comment between brackets is used to distinguish this msgid
+#. from the one in the Choices list; you do not have to worry about
+#. them, and have to simply choose a msgstr among the English values
+#. listed in the Choices field above, e.g. msgstr "nl (Dutch)".
+#: ../templates:1002 ../templates:5001
+msgid "en (English)[ default language ]"
+msgstr "ru (Russian)"
+
+#. Type: multiselect
+#. Description
+#: ../templates:1003
+msgid "Languages to support:"
+msgstr "Поддерживаемые языки:"
+
+#. Type: multiselect
+#. Description
+#: ../templates:1003
+msgid ""
+"For each supported language, Mailman stores default language specific texts "
+"in /etc/mailman/LANG/ giving them conffile like treatment with the help of "
+"ucf.  This means approximately 150kB for each supported language on the root "
+"file system."
+msgstr ""
+"Для каждого поддерживаемого языка Mailman хранит текст с заданным языком по "
+"умолчанию в каталоге /etc/mailman/LANG/, давая настроить конфигурационные "
+"файлы типа обращения за помощью в ucf. Это занимает приблизительно 150Кб в "
+"корневой файловой системе на каждый поддерживаемый язык."
+
+#. Type: multiselect
+#. Description
+#: ../templates:1003
+msgid ""
+"If you need a different set of languages at a later time, just run dpkg-"
+"reconfigure mailman."
+msgstr ""
+"Если позже вам захочется изменить список языков, просто запустите dpkg-"
+"reconfigure mailman."
+
+#. Type: multiselect
+#. Description
+#: ../templates:1003
+msgid ""
+"NOTE: Languages enabled on existing mailing lists are forcibly re-enabled "
+"when deselected and mailman needs at least one language for displaying its "
+"messages."
+msgstr ""
+"ЗАМЕЧАНИЕ: При повторной настройке в списке отмечены языки, которые уже "
+"включены у существующих списков рассылки, и для mailman требуется по крайней "
+"мере один язык для отображения своих сообщений."
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid "Gate news to mail?"
+msgstr "Шлюзовать новости в почту?"
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid ""
+"Mailman allows to gate news to mail, that is, send all the messages which "
+"appear in a Usenet newsgroup to a mailing list."
+msgstr ""
+"Mailman позволяет шлюзовать новости в почту, то есть отправлять все "
+"сообщения, которые приходят из групп новостей Usenet в список почтовой "
+"рассылки."
+
+#. Type: boolean
+#. Description
+#: ../templates:3001
+msgid "Most people won't need this."
+msgstr "Большинству людей это не нужно."
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid "Missing site list"
+msgstr "Отсутствует список рассылки сайта"
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid ""
+"Mailman needs a so-called \"site list\", which is the list from which "
+"password reminders and such are sent out from.  This list needs to be "
+"created before mailman will start."
+msgstr ""
+"Для работы mailman нужен так называемый \"список рассылки сайта\", "
+"являющийся списком рассылки, из которого отправляются напоминания паролей. "
+"Этот список рассылки должен быть создан до запуска mailman."
+
+#. Type: note
+#. Description
+#: ../templates:4001
+msgid ""
+"To create the list, run \"newlist mailman\" and follow the instructions on-"
+"screen.  Note that you also need to start mailman after that, using /etc/"
+"init.d/mailman start."
+msgstr ""
+"Чтобы создать список рассылки, выполните команду \"newlist mailman\" и "
+"следуйте инструкциям на экране. Заметим, что после этого вы также должны "
+"запустить mailman с помощью команды /etc/init.d/mailman start."
+
+#. Type: select
+#. Description
+#: ../templates:5002
+msgid "Default language for Mailman:"
+msgstr "Язык по умолчанию для Mailman:"
+
+#. Type: select
+#. Description
+#: ../templates:5002
+msgid ""
+"The web page will be shown in this language, and in general, Mailman will "
+"use this language to communicate with the user."
+msgstr ""
+"На этом языке будет отображаться веб страница, и вообще, Mailman будет "
+"использовать этот язык для общения с пользователем."
+
+#. Type: note
+#. Description
+#: ../templates:6001
+msgid "Old queue files present"
+msgstr "Найдены старые файлы очереди"
+
+#. Type: note
+#. Description
+#: ../templates:6001
+msgid ""
+"The directory /var/lib/mailman/qfiles contains files. It needs to be empty "
+"for the upgrade to work properly. You can try to handle them by:\n"
+" - Stop new messages from coming in (at the MTA level).\n"
+" - Start a mailman queue runner: /etc/init.d/mailman start\n"
+" - Let it run until all messages are handled.\n"
+"   If they don't all get handled in a timely manner, look at the logs\n"
+"   to try to understand why and solve the cause.\n"
+" - Stop it: /etc/init.d/mailman stop\n"
+" - Retry the upgrade.\n"
+" - Let messages come in again.\n"
+"You can also decide to simply remove the files, which will make Mailman "
+"forget about (and lose) the corresponding emails."
+msgstr ""
+"Найдены файлы в каталоге /var/lib/mailman/qfiles. Для правильного выполнения "
+"процедуры обновления он должен быть пуст. Вы можете попытаться разобрать "
+"их:\n"
+"- Остановить появление новых сообщений в очереди (на уровне MTA).\n"
+"- Запустить обработчик очереди mailman: /etc/init.d/mailman start\n"
+"- Дождаться пока все сообщения не будут обработаны.\n"
+"   Если они не обработаются за приемлемое время, посмотрите в файлы\n"
+"   журнала, чтобы попытаться понять в чём причина и решите проблему.\n"
+"- Остановить его: /etc/init.d/mailman stop\n"
+" - Повторить процедуру обновления.\n"
+"- Позволить сообщениям поступать снова.\n"
+"Также вы можете просто удалить эти файлы, и Mailman забудет (и потеряет) "
+"соответствующие почтовые сообщения."
+
+#. Type: note
+#. Description
+#: ../templates:6001
+msgid ""
+"If these files correspond to shunted messages, you have to either delete "
+"them or unshunt them (with /var/lib/mailman/bin/unshunt). Shunted messages "
+"are messages on which Mailman has already abandoned any further processing "
+"because of an error condition, but that are kept for admin review. You can "
+"use /var/lib/mailman/bin/show_qfiles to examine the contents of the queues."
+msgstr ""
+"Если эти файлы соответствуют отложенным сообщениям, вы можете удалить их или "
+"сделать их обычными сообщениями (с помощью /var/lib/mailman/bin/unshunt). "
+"Отложенные сообщения -- это сообщения, для которых Mailman уже отменил "
+"обработку, так как возникла ошибка, но они хранятся для просмотра "
+"администратором. Для просмотра содержимого очередей вы можете "
+"воспользоваться программой /var/lib/mailman/bin/show_qfiles."
+

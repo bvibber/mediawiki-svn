@@ -1,0 +1,14 @@
+Patch: 61_fix_ru_siteowner.patch
+Author: LАszlС 'GCS' BЖszЖrmИnyi <gcs@lsc.hu>
+Submitted upstream: http://sourceforge.net/tracker/index.php?func=detail&aid=1578766&group_id=103&atid=300103
+Correct siteowner variable in ru template for newer Mailman versions.
+Index: templates/ru/newlist.txt
+===================================================================
+--- templates/ru/newlist.txt.orig	2006-08-15 15:12:17.000000000 +0800
++++ templates/ru/newlist.txt	2006-08-15 15:14:44.000000000 +0800
+@@ -37,4 +37,4 @@
+ пользователя.
+ 
+ Все вопросы о системе Вы можете задать, отправив письмо по адресу
+-mailman-owner@%(hostname)s.
++    %(siteowner)s.

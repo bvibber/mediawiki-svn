@@ -1,0 +1,21 @@
+Patch: 74_admin_non-ascii_emails.patch
+Author: Lionel Elie Mamane <lionel@mamane.lu>
+Don't assume emails are ASCII
+Index: Mailman/Cgi/admin.py
+===================================================================
+--- Mailman/Cgi/admin.py.orig	2006-08-15 15:12:11.000000000 +0800
++++ Mailman/Cgi/admin.py	2006-08-15 15:14:56.000000000 +0800
+@@ -866,7 +866,12 @@
+     chunksz = mlist.admin_member_chunksize
+     # The email addresses had /better/ be ASCII, but might be encoded in the
+     # database as Unicodes.
+-    all = [_m.encode() for _m in mlist.getMembers()]
++    all = []
++    for _m in mlist.getMembers():
++        try:
++            all.append( _m.encode() )
++        except:
++            all.append( _m )
+     all.sort(lambda x, y: cmp(x.lower(), y.lower()))
+     # See if the query has a regular expression
+     regexp = cgidata.getvalue('findmember', '').strip()

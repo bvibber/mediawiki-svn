@@ -1,0 +1,828 @@
+Patch: 99_js_templates.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Do some javascript magic to automatically select the password
+field when appropriate.
+Index: templates/cs/admlogin.html
+===================================================================
+--- templates/cs/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/cs/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s p¯ihl·πenÌ</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/cs/private.html
+===================================================================
+--- templates/cs/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/cs/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>Konference %(realname)s - p¯ihl·πenÌ pro p¯Ìstup do priv·tnÌho archivu </title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/da/admlogin.html
+===================================================================
+--- templates/da/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/da/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Login</title>
++  <script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/da/private.html
+===================================================================
+--- templates/da/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/da/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Login til Private Arkiver</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/de/admlogin.html
+===================================================================
+--- templates/de/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/de/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>Anmeldung als %(listname)s-%(who)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/de/private.html
+===================================================================
+--- templates/de/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/de/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>Authentifizierung f¸r den Zugriff auf die Archive von %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/en/admlogin.html
+===================================================================
+--- templates/en/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/en/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/en/listinfo.html
+===================================================================
+--- templates/en/listinfo.html.orig	2006-09-19 16:14:06.000000000 +0200
++++ templates/en/listinfo.html	2006-09-19 16:15:38.000000000 +0200
+@@ -4,7 +4,7 @@
+     <TITLE><MM-List-Name> Info Page</TITLE>
+   
+   </HEAD>
+-  <BODY BGCOLOR="#ffffff">
++  <BODY>
+ 
+     <P>
+       <TABLE COLS="1" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/en/private.html
+===================================================================
+--- templates/en/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/en/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Private Archives Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/es/admlogin.html
+===================================================================
+--- templates/es/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/es/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>AutentificaciÛn del %(who)s de %(listname)s </title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/es/private.html
+===================================================================
+--- templates/es/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/es/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+   <title>Autentificaci&oacute;n para los archivos privados de %(realname)s </title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/et/admlogin.html
+===================================================================
+--- templates/et/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/et/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s autoriseerimine</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/et/private.html
+===================================================================
+--- templates/et/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/et/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s privaatarhiiv</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/eu/admlogin.html
+===================================================================
+--- templates/eu/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/eu/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s Zerrendako %(who)s Identifikatzen</title>
++  <script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/eu/private.html
+===================================================================
+--- templates/eu/private.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/eu/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+     <title>%(realname)s Artxibo Pribatuak Egiaztatzea</title>
++	<script>function sf(){document.f.username.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(action)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/fi/admlogin.html
+===================================================================
+--- templates/fi/admlogin.html.orig	2006-09-19 16:12:10.000000000 +0200
++++ templates/fi/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -2,9 +2,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/fi/private.html
+===================================================================
+--- templates/fi/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/fi/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -2,8 +2,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Private Archives Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/fr/admlogin.html
+===================================================================
+--- templates/fr/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/fr/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>Authentification %(who)s sur %(listname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/fr/private.html
+===================================================================
+--- templates/fr/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/fr/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -2,8 +2,9 @@
+ <head>
+     <title>Authentification pour l'acc&egrave;s aux archives priv&eacute;es de
+ %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/hu/admlogin.html
+===================================================================
+--- templates/hu/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/hu/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+    <title>%(listname)s %(who)s AzonosÌt·s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/hu/private.html
+===================================================================
+--- templates/hu/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/hu/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+  <title>%(realname)s Priv·t archÌvum azonosÌt·s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/it/admlogin.html
+===================================================================
+--- templates/it/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/it/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+ <title>Autenticazione per %(who)s di %(listname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/it/private.html
+===================================================================
+--- templates/it/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/it/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+ <title>Autenticazione per gli archivi privati di %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/ja/admlogin.html
+===================================================================
+--- templates/ja/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/ja/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s «ßæ⁄</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/ja/private.html
+===================================================================
+--- templates/ja/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/ja/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s ∏¬ƒÍ∏¯≥´ ›¬∏ΩÒ∏À «ßæ⁄</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/ko/admlogin.html
+===================================================================
+--- templates/ko/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/ko/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s ∞¸∏Æ¿⁄ ¿Œ¡ı</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/ko/private.html
+===================================================================
+--- templates/ko/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/ko/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s ∫Ò∞¯∞≥ ¿˙¿Âº“ ¿Œ¡ı</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/lt/admlogin.html
+===================================================================
+--- templates/lt/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/lt/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s prisijungimas</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/lt/private.html
+===================================================================
+--- templates/lt/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/lt/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s privataus archyvo prisijungimas</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/nl/admlogin.html
+===================================================================
+--- templates/nl/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/nl/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s inloggen</title>
++  <script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+@@ -32,4 +33,4 @@
+       de <em>Uitloggen</em> link te klikken in de hierna volgende schermen.
+ </FORM>
+ </body>
+-</html>
+\ No newline at end of file
++</html>
+Index: templates/nl/private.html
+===================================================================
+--- templates/nl/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/nl/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+     <title>%(realname)s PrivÈ-archief Login</title>
++	<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(action)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+@@ -34,4 +35,4 @@
+       als u de browser afsluit, of wanneer u zelf het cookie actief doet verlopen door de pagina 'lidmaatschapsinstellingen' te bezoeken en daar op de link <em>Uitloggen</em> te klikken.
+ </FORM>
+ </body>
+-</html>
+\ No newline at end of file
++</html>
+Index: templates/no/admlogin.html
+===================================================================
+--- templates/no/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/no/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Innlogging</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/no/private.html
+===================================================================
+--- templates/no/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/no/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Innlogging til Private Arkiver</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/pl/admlogin.html
+===================================================================
+--- templates/pl/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/pl/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -2,9 +2,10 @@
+ <head>
+   <title>Uwierzytelnienie %(who)s %(listname)s</title>
+ <meta http-equiv="content-type" content="text/html; charset=ISO-8859-2">
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/pl/private.html
+===================================================================
+--- templates/pl/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/pl/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s Private Archives Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/pt/admlogin.html
+===================================================================
+--- templates/pt/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/pt/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/pt/private.html
+===================================================================
+--- templates/pt/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/pt/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s AutenticaÁ„o de Arquivos Privados</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/pt_BR/admlogin.html
+===================================================================
+--- templates/pt_BR/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/pt_BR/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>AutenticaÁ„o de %(who)s na lista %(listname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/pt_BR/private.html
+===================================================================
+--- templates/pt_BR/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/pt_BR/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>AutenticaÁ„o para acesso aos arquivos privados da %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/ru/admlogin.html
+===================================================================
+--- templates/ru/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/ru/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+     <title>·’‘≈Œ‘…∆…À¡√…— %(who)s ”–…”À¡ “¡””ŸÃÀ… %(listname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/ru/private.html
+===================================================================
+--- templates/ru/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/ru/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>·’‘≈Œ‘…∆…À¡√…— ƒÃ— ƒœ”‘’–¡ À ⁄¡À“Ÿ‘œÕ’ ¡“»…◊’ ”–…”À¡ “¡””ŸÃÀ… %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/sr/admlogin.html
+===================================================================
+--- templates/sr/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/sr/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,11 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
+-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++  <script>function sf(){document.f.adminpw.focus();}</script>
++  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
++</head>
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/sr/private.html
+===================================================================
+--- templates/sr/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/sr/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,11 @@
+ Ôªø<html>
+ <head>
+     <title>–ü—Ä–∏—ò–∞–≤–∞ –∑–∞ —É–ª–∞–∑ —É –ø—Ä–∏–≤–∞—Ç–Ω—É –∞—Ä—Ö–∏–≤—É –ª–∏—Å—Ç–µ: %(realname)s </title>
+-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s">
++	<script>function sf(){document.f.adminpw.focus();}</script>
++    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
++</head>
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(action)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/sv/admlogin.html
+===================================================================
+--- templates/sv/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/sv/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Inloggning</title>
++  <script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/sv/private.html
+===================================================================
+--- templates/sv/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/sv/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+     <title>%(realname)s Inloggning till Privata Arkiv</title>
++	<script>function sf(){document.f.username.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(action)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(action)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/uk/admlogin.html
+===================================================================
+--- templates/uk/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/uk/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>–ê–≤—Ç–µ–Ω—Ç–∏—Ñ—ñ–∫–∞—Ü—ñ—è –∫–æ—Ä–∏—Å—Ç—É–≤–∞—á–∞ %(who)s —Å–ø–∏—Å–∫—É –ª–∏—Å—Ç—É–≤–∞–Ω–Ω—è %(listname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onLoad="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/uk/private.html
+===================================================================
+--- templates/uk/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/uk/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>–ê–≤—Ç–µ–Ω—Ç–∏—Ñ—ñ–∫–∞—Ü—ñ—è –¥–æ—Å—Ç—É–ø—É –¥–æ –∑–∞–∫—Ä–∏—Ç–æ–≥–æ —Å–ø–∏—Å–∫—É —Ä–æ–∑—Å–∏–ª–∫–∏ %(realname)s</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/zh_CN/admlogin.html
+===================================================================
+--- templates/zh_CN/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/zh_CN/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s %(who)s Authentication</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onload="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>
+Index: templates/zh_CN/private.html
+===================================================================
+--- templates/zh_CN/private.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/zh_CN/private.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,8 +1,9 @@
+ <html>
+ <head>
+     <title>%(realname)s ÁßÅÊúâÂΩíÊ°£ËÆ§ËØÅ</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
++<body bgcolor="#ffffff" onLoad="sf()">
+ <FORM METHOD=POST ACTION="%(action)s">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+Index: templates/zh_TW/admlogin.html
+===================================================================
+--- templates/zh_TW/admlogin.html.orig	2006-09-19 16:12:11.000000000 +0200
++++ templates/zh_TW/admlogin.html	2006-09-19 16:15:38.000000000 +0200
+@@ -1,9 +1,10 @@
+ <html>
+ <head>
+   <title>%(listname)s Ë´ñÂ£á Â£á‰∏ªÈ©óË≠â</title>
++<script>function sf(){document.f.adminpw.focus();}</script>
+ </head>
+-<body bgcolor="#ffffff">
+-<FORM METHOD=POST ACTION="%(path)s">
++<body bgcolor="#ffffff" onload="sf()">
++<FORM METHOD=POST ACTION="%(path)s" name="f">
+ %(message)s
+   <TABLE WIDTH="100%%" BORDER="0" CELLSPACING="4" CELLPADDING="5">
+     <TR>

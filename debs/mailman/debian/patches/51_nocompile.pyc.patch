@@ -1,0 +1,16 @@
+Patch: 51_nocompile.pyc.patch
+Author: Tollef Fog Heen <tfheen@debian.org>
+Don't do the compileall dance.  It'll just waste CPU cycles.
+Index: Makefile.in
+===================================================================
+--- Makefile.in.orig	2006-08-15 15:12:18.000000000 +0800
++++ Makefile.in	2006-08-15 15:14:36.000000000 +0800
+@@ -124,7 +124,7 @@
+ 	do \
+ 	    (cd $$d; $(MAKE) DESTDIR=$(DESTDIR) install); \
+ 	done
+-	$(PYTHON) -c 'from compileall import *; compile_dir("$(DESTDIR)$(prefix)/Mailman")'
++	#$(PYTHON) -c 'from compileall import *; compile_dir("$(DESTDIR)$(prefix)/Mailman")'
+ 
+ # Only run bin/update if we aren't installing in DESTDIR, as this
+ # means there are probably no lists to deal with, and it wouldn't
