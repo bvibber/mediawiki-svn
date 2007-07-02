@@ -18,13 +18,16 @@ function wfSpecialSuggest() {
 			$wgOut->disable();
 			require_once("$IP/includes/Setup.php");
 			require_once("Attribute.php");
+			require_once("WikiDataBootstrappedMeanings.php");
 			require_once("RecordSet.php");
 			require_once("Editor.php");
 			require_once("HTMLtable.php");
 			#require_once("WikiDataAPI.php");
 			require_once("Transaction.php");
 			require_once("OmegaWikiEditors.php");
+			require_once("Utilities.php");
 			require_once("Wikidata.php");
+			require_once("WikiDataTables.php");
 			echo getSuggestions();
 		}
 	}
@@ -50,25 +53,26 @@ function getSuggestions() {
 	$rowText = 'spelling';
 	switch ($query) {
 		case 'relation-type':
-			$sql_actual = getSQLForCollectionOfType('RELT', $wgUser->getOption('language'));
-			$sql_fallback = getSQLForCollectionOfType('RELT', 'en');
-			$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("member_mid", "spelling", "collection_mid"));
+			$sqlActual = getSQLForCollectionOfType('RELT', $wgUser->getOption('language'));
+			$sqlFallback = getSQLForCollectionOfType('RELT', 'en');
+			$sql=constructSQLWithFallback($sqlActual, $sqlFallback, array("member_mid", "spelling", "collection_mid"));
 			break;
 		case 'class':
-			$sql_actual = getSQLForCollectionOfType('CLAS', $wgUser->getOption('language'));
-			$sql_fallback = getSQLForCollectionOfType('CLAS', 'en');
-			$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("member_mid", "spelling", "collection_mid"));
+			$sqlActual = getSQLForCollectionOfType('CLAS', $wgUser->getOption('language'));
+			$sqlFallback = getSQLForCollectionOfType('CLAS', 'en');
+			$sql=constructSQLWithFallback($sqlActual, $sqlFallback, array("member_mid", "spelling", "collection_mid"));
 			break;
 		case 'option-attribute':
-			$sql_actual = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', $wgUser->getOption('language'));
-			$sql_fallback = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN', 'en');
-			$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("attribute_mid", "spelling"));
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN');
 			break;
 		case 'translated-text-attribute':
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TRNS');
+			break;
 		case 'text-attribute':	
-			$sql_actual = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', $wgUser->getOption('language'));
-			$sql_fallback = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT', 'en');
-			$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("attribute_mid", "spelling"));
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT');
+			break;
+		case 'url-attribute':	
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'URL');
 			break;
 		case 'language':
 			require_once('languages.php');
@@ -85,12 +89,12 @@ function getSuggestions() {
 	            " AND " . getLatestTransactionRestriction("{$dc}_expression_ns");
 	        break;
 	    case 'class-attributes-level':
-	    	$sql = getSQLForCollectionOfType('LEVL');
+	    	$sql = getSQLForLevels($wgUser->getOption('language'));
 	    	break;
 	    case 'collection':
-	 	$sql_actual=getSQLForCollection($wgUser->getOption('language'));
-	 	$sql_fallback=getSQLForCollection('en');
-		$sql=ConstructSQLWithFallback($sql_actual, $sql_fallback, Array("collection_id", "spelling"));
+	 	$sqlActual=getSQLForCollection($wgUser->getOption('language'));
+	 	$sqlFallback=getSQLForCollection('en');
+		$sql=constructSQLWithFallback($sqlActual, $sqlFallback, array("collection_id", "spelling"));
 	    	break;
 	    case 'transaction':
 	    	$sql = 
@@ -157,6 +161,9 @@ function getSuggestions() {
 		case 'option-attribute':
 			list($recordSet, $editor) = getOptionAttributeAsRecordSet($queryResult);
 			break;
+		case 'url-attribute':
+			list($recordSet, $editor) = getURLAttributeAsRecordSet($queryResult);
+			break;
 		case 'defined-meaning':
 			list($recordSet, $editor) = getDefinedMeaningAsRecordSet($queryResult);
 			break;
@@ -191,7 +198,7 @@ function getSuggestions() {
 # fallback query will be returned. Fields not in the fallback are ignored.
 # You will need to state which fields in your query need to be returned.
 # As a (minor) hack, the 0th element of $fields is assumed to be the key field. 
-function ConstructSQLWithFallback($actual_query, $fallback_query, $fields){
+function constructSQLWithFallback($actual_query, $fallback_query, $fields){
 
 	#if ($actual_query==$fallback_query)
 	#	return $actual_query; 
@@ -217,9 +224,19 @@ function ConstructSQLWithFallback($actual_query, $fallback_query, $fields){
 	return $sql;
 }
 
-# langauge is the 2 letter wikimedia code. use "<ANY>" if you don't want language filtering
+function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType) {
+	global
+		$wgUser;
+	
+	$sqlActual = getSQLToSelectPossibleAttributesForLanguage($objectId, $attributesLevel, $attributesType, $wgUser->getOption('language'));
+	$sqlFallback = getSQLToSelectPossibleAttributesForLanguage($objectId, $attributesLevel, $attributesType, 'en');
+	
+	return constructSQLWithFallback($sqlActual, $sqlFallback, array("attribute_mid", "spelling"));
+}
+
+# language is the 2 letter wikimedia code. use "<ANY>" if you don't want language filtering
 # (any does set limit 1 hmph)
-function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType, $language="<ANY>") {
+function getSQLToSelectPossibleAttributesForLanguage($objectId, $attributesLevel, $attributesType, $language="<ANY>") {
 	global $wgDefaultClassMids;
 	global $wgUser;
 	$dc=wdGetDataSetContext();
@@ -298,14 +315,14 @@ function getSQLForCollectionOfType($collectionType, $language="<ANY>") {
 function getSQLForCollection($language="<ANY>") {
 	$dc=wdGetDataSetContext();
 	$sql = 
-			"SELECT collection_id, spelling ".
-	    		" FROM {$dc}_expression_ns, {$dc}_collection_ns, {$dc}_syntrans " .
-	    		" WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
-	    		" AND {$dc}_syntrans.defined_meaning_id={$dc}_collection_ns.collection_mid " .
-	    		" AND {$dc}_syntrans.identical_meaning=1" .
-	    		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
-	    		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
-	    		" AND " . getLatestTransactionRestriction("{$dc}_collection_ns");
+		"SELECT collection_id, spelling ".
+		" FROM {$dc}_expression_ns, {$dc}_collection_ns, {$dc}_syntrans " .
+		" WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
+		" AND {$dc}_syntrans.defined_meaning_id={$dc}_collection_ns.collection_mid " .
+		" AND {$dc}_syntrans.identical_meaning=1" .
+		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		" AND " . getLatestTransactionRestriction("{$dc}_collection_ns");
 	
 	if ($language!="<ANY>") {
 		$dbr =& wfGetDB(DB_SLAVE);
@@ -320,6 +337,22 @@ function getSQLForCollection($language="<ANY>") {
 	return $sql;
 }
 
+function getSQLForLevels($language="<ANY>") {
+	global
+		$definedMeaningTable, $expressionTable, $bootstrappedDefinedMeaningsTable, $classAttributeLevels;
+	
+	// TO DO: Add support for multiple languages here
+	return
+		selectLatest(
+			array($bootstrappedDefinedMeaningsTable->definedMeaningId, $expressionTable->spelling), 
+			array($definedMeaningTable, $expressionTable, $bootstrappedDefinedMeaningsTable),
+			array(
+				'name IN (' . implodeFixed($classAttributeLevels) . ')',
+				equals($definedMeaningTable->definedMeaningId, $bootstrappedDefinedMeaningsTable->definedMeaningId),
+				equals($definedMeaningTable->expressionId, $expressionTable->expressionId) 
+			)
+		);
+}
 
 function getRelationTypeAsRecordSet($queryResult) {
 	global
@@ -370,15 +403,30 @@ function getTextAttributeAsRecordSet($queryResult) {
 	
 	$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "short-text");
 	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute), new Structure($idAttribute));
-//	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute, $collectionAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-//		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
 		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
 
 	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor(createShortTextViewer($textAttributeAttribute));
-//	$editor->addEditor(createShortTextViewer($collectionAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+function getURLAttributeAsRecordSet($queryResult) {
+	global
+		$idAttribute;
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$urlAttributeAttribute = new Attribute("url-attribute", "URL attribute", "short-text");
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $urlAttributeAttribute), new Structure($idAttribute));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($urlAttributeAttribute));
 
 	return array($recordSet, $editor);		
 }
@@ -397,7 +445,6 @@ function getTranslatedTextAttributeAsRecordSet($queryResult) {
 
 	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor(createShortTextViewer($translatedTextAttributeAttribute));
-//	$editor->addEditor(createShortTextViewer($collectionAttribute));
 
 	return array($recordSet, $editor);		
 }
@@ -460,16 +507,13 @@ function getClassAttributeLevelAsRecordSet($queryResult) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$classAttributeLevelAttribute = new Attribute("class-attribute-level", "Level", "short-text");
-	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
-	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $classAttributeLevelAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $classAttributeLevelAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
-		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
+		$recordSet->addRecord(array($row->defined_meaning_id, $row->spelling));			
 
 	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor(createShortTextViewer($classAttributeLevelAttribute));
-	$editor->addEditor(createShortTextViewer($collectionAttribute));
 	
 	return array($recordSet, $editor);		
 }

@@ -344,19 +344,16 @@ function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLan
 		$expressionMeaningStructure, $definedMeaningIdAttribute;
 
 	$dc=wdGetDataSetContext();
+	$identicalMeaning = $exactMeaning ? 1 : 0;
 
-
-	if ($exactMeaning)
-		$identicalMeaning = 1;
-	else
-		$identicalMeaning = 0;
-		
 	$recordSet = new ArrayRecordSet($expressionMeaningStructure, new Structure($definedMeaningIdAttribute));
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT defined_meaning_id FROM {$dc}_syntrans" .
-								" WHERE expression_id=$expressionId AND identical_meaning=" . $identicalMeaning .
-								" AND ". getLatestTransactionRestriction("{$dc}_syntrans"));
+	$queryResult = $dbr->query(
+		"SELECT defined_meaning_id FROM {$dc}_syntrans" .
+		" WHERE expression_id=$expressionId AND identical_meaning=" . $identicalMeaning .
+		" AND ". getLatestTransactionRestriction("{$dc}_syntrans")
+	);
 
 	while($definedMeaning = $dbr->fetchObject($queryResult)) {
 		$definedMeaningId = $definedMeaning->defined_meaning_id;

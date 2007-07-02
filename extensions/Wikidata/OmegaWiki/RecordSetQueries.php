@@ -1,14 +1,14 @@
 <?php
 
 function getTransactedSQL($transactionInformation, $selectFields, $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
-	$tableNames = array($table->name);
+	$tableNames = array($table->identifier);
 
 	if ($table->isVersioned) {
 		$restrictions[] = $transactionInformation->getRestriction($table);
 		$tableNames = array_merge($tableNames, $transactionInformation->getTables());
 		$orderBy = array_merge($orderBy, $transactionInformation->versioningOrderBy());
 		$groupBy = $transactionInformation->versioningGroupBy($table);
-		$selectFields = array_merge($selectFields, $transactionInformation->versioningFields($table->name));
+		$selectFields = array_merge($selectFields, $transactionInformation->versioningFields($table->identifier));
 	}
 	else 
 		$groupBy = array();

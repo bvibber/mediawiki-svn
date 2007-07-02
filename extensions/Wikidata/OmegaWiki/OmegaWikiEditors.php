@@ -296,7 +296,7 @@ function getURLAttributeValuesEditor($showRecordLifeSpan, $showAuthority, $contr
 		$wgPopupAnnotationName;
 
 	$editor = new RecordSetTableEditor($urlAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
-	$editor->addEditor(new TextAttributeEditor($urlAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
+	$editor->addEditor(new URLAttributeEditor($urlAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
 	$editor->addEditor(new URLEditor($urlAttribute, new SimplePermissionController(true), true));
 	$editor->addEditor(new PopUpEditor($urlValueObjectAttributesEditor, $wgPopupAnnotationName));
 

@@ -309,6 +309,7 @@ function createClassAttribute($classMeaningId, $levelMeaningId, $attributeMeanin
 	if ($objectId == 0)
 		$objectId = newObjectId("{$dc}_class_attributes");
 		
+	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_MASTER);
 	$sql = "INSERT INTO {$dc}_class_attributes(object_id, class_mid, level_mid, attribute_mid, attribute_type, add_transaction_id) " .
 			" VALUES ($objectId, $classMeaningId, $levelMeaningId, $attributeMeaningId, " . $dbr->addQuotes($attributeType) . ', ' . getUpdateTransactionId() . ')';

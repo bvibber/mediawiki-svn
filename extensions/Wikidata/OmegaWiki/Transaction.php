@@ -49,7 +49,7 @@ class DefaultQueryTransactionInformation {
 
 class QueryLatestTransactionInformation extends DefaultQueryTransactionInformation {
 	public function getRestriction($table) {
-		return getLatestTransactionRestriction($table->name);
+		return getLatestTransactionRestriction($table->identifier);
 	}
 	
 	public function setVersioningAttributes($record, $row) {
@@ -90,7 +90,7 @@ class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 	}
 	
 	public function getRestriction($table) {
-		return getAtTransactionRestriction($table->name, $this->transactionId);
+		return getAtTransactionRestriction($table->identifier, $this->transactionId);
 	}
 	
 	public function versioningAttributes() {
@@ -125,8 +125,8 @@ class QueryUpdateTransactionInformation extends DefaultQueryTransactionInformati
 	
 	public function getRestriction($table) {
 		return 
-			" " . $table->name . ".add_transaction_id =". $this->transactionId . 
-			" OR " . $table->name . ".removeTransactionId =" . $this->transactionId;
+			" " . $table->identifier . ".add_transaction_id =". $this->transactionId . 
+			" OR " . $table->identifier . ".removeTransactionId =" . $this->transactionId;
 	}
 	
 //	public function versioningAttributes() {
@@ -163,7 +163,7 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 		$result = array();
 		
 		foreach ($table->keyFields as $keyField)
-			$result[] = $table->name . "." . $keyField . "=" . $prefix . $table->name . "." . $keyField; 
+			$result[] = $table->identifier . "." . $keyField . "=" . $prefix . $table->identifier . "." . $keyField; 
 		
 		return implode(" AND ", $result);
 	}
@@ -172,7 +172,7 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 
 		$dc=wdGetDataSetContext();
 		$result =  
-			$table->name . ".add_transaction_id={$dc}_transactions.transaction_id";
+			$table->identifier . ".add_transaction_id={$dc}_transactions.transaction_id";
 
 		$showAnyAuthorities = count($this->authoritiesToShow) > 0;
 
@@ -181,27 +181,27 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 			$availableAuthoritiesSet = "(" . implode(", ", $availableAuthorityIds) . ")";
 			
 			$result =  
-				$table->name . ".add_transaction_id={$dc}_transactions.transaction_id" .
+				$table->identifier . ".add_transaction_id={$dc}_transactions.transaction_id" .
 				" AND (";
 				
 			if ($this->showCommunityContribution)
 				$result .=	
 					"(" .
 						" {$dc}_transactions.user_id NOT IN " . $availableAuthoritiesSet . 
-						" AND " .$table->name . ".add_transaction_id=(" .
+						" AND " .$table->identifier . ".add_transaction_id=(" .
 							" SELECT max(add_transaction_id) " .
-							" FROM " . $table->name . " AS latest_" . $table->name . ", {$dc}_transactions as latest_transactions" .
+							" FROM " . $table->identifier . " AS latest_" . $table->identifier . ", {$dc}_transactions as latest_transactions" .
 							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
-							" AND latest_transactions.transaction_id=latest_" . $table->name . ".add_transaction_id" .
+							" AND latest_transactions.transaction_id=latest_" . $table->identifier . ".add_transaction_id" .
 							" AND latest_transactions.user_id NOT IN (" . implode(", ", $availableAuthorityIds) . ")" .
 							")" .
 						" AND NOT EXISTS (" .
 							" SELECT * " .
-							" FROM " . $table->name . " AS latest_" . $table->name . ", {$dc}_transactions as latest_transactions" .
+							" FROM " . $table->identifier . " AS latest_" . $table->identifier . ", {$dc}_transactions as latest_transactions" .
 							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
-							" AND latest_transactions.transaction_id=latest_" . $table->name . ".remove_transaction_id" .
+							" AND latest_transactions.transaction_id=latest_" . $table->identifier . ".remove_transaction_id" .
 							" AND latest_transactions.user_id NOT IN " . $availableAuthoritiesSet .
-							" AND latest_" . $table->name . ".remove_transaction_id > " . $table->name . ".add_transaction_id" .
+							" AND latest_" . $table->identifier . ".remove_transaction_id > " . $table->identifier . ".add_transaction_id" .
 						")" . 
 					" )";
 			else 
@@ -211,20 +211,20 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 				$result .=
 					" OR (" .
 						" {$dc}_transactions.user_id IN (" . implode(", ", $this->authoritiesToShow) . ") " .
-						" AND " .$table->name . ".add_transaction_id=(" .
+						" AND " .$table->identifier . ".add_transaction_id=(" .
 							" SELECT max(add_transaction_id) " .
-							" FROM " . $table->name . " AS latest_" . $table->name . ", {$dc}_transactions as latest_transactions" .
+							" FROM " . $table->identifier . " AS latest_" . $table->identifier . ", {$dc}_transactions as latest_transactions" .
 							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
-							" AND latest_transactions.transaction_id=latest_" . $table->name . ".add_transaction_id" .
+							" AND latest_transactions.transaction_id=latest_" . $table->identifier . ".add_transaction_id" .
 							" AND latest_transactions.user_id={$dc}_transactions.user_id" .
 							")" .
 						" AND NOT EXISTS (" .
 							" SELECT * " .
-							" FROM " . $table->name . " AS latest_" . $table->name . ", {$dc}_transactions as latest_transactions" .
+							" FROM " . $table->identifier . " AS latest_" . $table->identifier . ", {$dc}_transactions as latest_transactions" .
 							" WHERE " . $this->getKeyFieldRestrictions($table, 'latest_') .
-							" AND latest_transactions.transaction_id=latest_" . $table->name . ".remove_transaction_id" .
+							" AND latest_transactions.transaction_id=latest_" . $table->identifier . ".remove_transaction_id" .
 							" AND latest_transactions.user_id={$dc}_transactions.user_id" .
-							" AND latest_" . $table->name . ".remove_transaction_id > " . $table->name . ".add_transaction_id" .
+							" AND latest_" . $table->identifier . ".remove_transaction_id > " . $table->identifier . ".add_transaction_id" .
 						")" . 
 					" )";
 			

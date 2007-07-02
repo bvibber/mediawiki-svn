@@ -1024,7 +1024,12 @@ abstract class SelectEditor extends ScalarEditor {
 /* XXX: Should these options be stored somewhere else? */
 class ClassAttributesTypeEditor extends SelectEditor {
 	protected function getOptions() {
-		return array('TEXT' => 'Text', 'OPTN' => 'Option');
+		return array(
+			'TRNS' => 'Translatable text', 
+			'TEXT' => 'Plain text', 
+			'URL' => 'URL', 
+			'OPTN' => 'Option list'
+		);
 	}
 }
 
@@ -1075,9 +1080,11 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 	}
 
 	public function add($idPath) {
-		if ($this->isAddField){
-				$parameters = array("attributesLevel" => $this->attributesLevelName, 
-									"attributesObjectId" => $this->objectIdFetcher->fetch($idPath->getKeyStack()));
+		if ($this->isAddField) {
+			$parameters = array(
+				"attributesLevel" => $this->attributesLevelName, 
+				"attributesObjectId" => $this->objectIdFetcher->fetch($idPath->getKeyStack())
+			);
 								
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);			
 		}
@@ -1103,6 +1110,12 @@ class TranslatedTextAttributeEditor extends AttributeEditor {
 	}
 }
 
+class URLAttributeEditor extends AttributeEditor {
+	protected function suggestType() {
+		return "url-attribute";
+	}
+}
+
 class OptionAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
 		return 'option-attribute';
@@ -1114,9 +1127,11 @@ class OptionAttributeEditor extends AttributeEditor {
 				$syntransIdAttribute;
 
 			$syntransId = $idPath->getKeyStack()->peek(0)->getAttributeValue($syntransIdAttribute);
-			$parameters = array('attributesLevel' => $this->attributesLevelName, 
-								'attributesObjectId' => $this->objectIdFetcher->fetch($idPath->getKeyStack()),
-								'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId);
+			$parameters = array(
+				'attributesLevel' => $this->attributesLevelName, 
+				'attributesObjectId' => $this->objectIdFetcher->fetch($idPath->getKeyStack()),
+				'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId
+			);
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);
 		}
 		else
@@ -1124,8 +1139,11 @@ class OptionAttributeEditor extends AttributeEditor {
 	}
 
 	public function getEditHTML($idPath, $value) {
-		$parameters = array('attributesLevel' => $this->attributesLevelName,
-							'onUpdate' => 'updateSelectOptions(\'' . $this->updateId($idPath->getId()) . '-option\'');
+		$parameters = array(
+			'attributesLevel' => $this->attributesLevelName,
+			'onUpdate' => 'updateSelectOptions(\'' . $this->updateId($idPath->getId()) . '-option\''
+		);
+		
 		return getSuggest($this->updateId($idPath->getId()), $this->suggestType(), $parameters); 
 	}
 }

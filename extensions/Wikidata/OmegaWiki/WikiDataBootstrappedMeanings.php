@@ -1,9 +1,13 @@
 <?php
 
 global
-	$definedMeaningMeaningName, $definitionMeaningName,
-	$relationMeaningName, $synTransMeaningName,
-	$annotationMeaningName;
+	$annotationMeaningName,
+	$definedMeaningMeaningName, 
+	$definitionMeaningName,
+	$relationMeaningName, 
+	$synTransMeaningName,
+	
+	$classAttributeLevels;
 
 $definedMeaningMeaningName = "DefinedMeaning";
 $definitionMeaningName = "Definition";
@@ -11,4 +15,12 @@ $relationMeaningName = "Relation";
 $synTransMeaningName = "SynTrans";
 $annotationMeaningName = "Annotation";
 
+$classAttributeLevels = array(
+	$definedMeaningMeaningName,
+	$definitionMeaningName,
+	$relationMeaningName,
+	$synTransMeaningName,
+	$annotationMeaningName
+);
 
+?>
