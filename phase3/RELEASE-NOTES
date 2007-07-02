@@ -116,7 +116,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   "destination filename" already exists.
 * (bug 10422) Do not wrap user JS/CSS in <pre>; allow it to render as wikitext.
   like site CSS/JS.
-* (bug 10404) Show rights log fragment for the selected user in Special:Userrights
 
 == Bugfixes since 1.10 ==
 
