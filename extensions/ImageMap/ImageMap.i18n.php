@@ -238,6 +238,23 @@ function efImageMapMessages() {
 'imagemap_description'          => 'O tomto obrázku',
 ),
 
+/* Swedish */
+'sv' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: en bild måste anges på första raden',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: bilden är ogiltig eller existerar inte',
+'imagemap_no_link'              => '&lt;imagemap&gt;: ingen giltig länk fanns i slutet av rad $1',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: felaktig titel i länken på rad $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: koordinater saknas för området på rad $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: okänd områdesform på rad $1, varje rad måste börja med något av följande: '.
+								   '<tt>default, rect, circle, poly</tt>',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: minst ett område måste specificeras',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: ogiltig koordinat på rad $1, koordinater måste vara tal',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: ogiltig specifikation av desc, den måste var en av följande: <tt>$1</tt>',
+'imagemap_description'          => 'Bildinformation',
+# Note to translators: keep the same order
+'imagemap_desc_types'           => 'uppe till höger, nere till höger, nere till vänster, uppe till vänster, ingen',
+),
+
 /* Chinese (China) (Shinjiman) */
 'zh-cn' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
@@ -321,4 +338,5 @@ function efImageMapMessages() {
 	return $messages;
 
 }
+
 

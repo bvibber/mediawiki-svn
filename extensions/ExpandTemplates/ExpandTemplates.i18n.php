@@ -269,6 +269,17 @@ $wgExpandTemplatesMessages['su'] = array(
 	'expand_templates_ok'              => 'Heug',
 );
 
+$wgExpandTemplatesMessages['sv'] = array(
+	'expandtemplates'                  => 'Expandera mallar',
+	'expand_templates_intro'           => 'Den här specialsidan tar en text och expanderar rekursivt alla mallar som används. Även parserfunktioner (som <nowiki>{{</nowiki>#if:...}}), variabler som <nowiki>{{</nowiki>CURRENTDAY}} och annan kod med dubbla klammerparenteser expanderas.',
+	'expand_templates_title'           => 'Sidans titel, används för t.ex. {{PAGENAME}}:',
+	'expand_templates_input'           => 'Text som ska expanderas:',
+	'expand_templates_output'          => 'Expanderad kod',
+	'expand_templates_ok'              => 'OK',
+	'expand_templates_remove_comments' => 'Ta bort kommentarer',
+	'expand_templates_preview'         => 'Förhandsvisning',
+);
+
 $wgExpandTemplatesMessages['zh-cn'] = array(
 	'expandtemplates'                  => '展开模板',
 	'expand_templates_intro'           => '本特殊页面用于将一些文字中的模板展开，包括模板中引用的模板。同时也展开解释器函数如<nowiki>{{</nowiki>#if:...}}，以及变量如<nowiki>{{</nowiki>CURRENTDAY}}&mdash;实际上，几乎所有在双括号中的内容都被展开。本特殊页面是通过调用MediaWiki的相关解释阶段的功能完成的。',
@@ -298,4 +309,5 @@ $wgExpandTemplatesMessages['zh-yue'] = array(
 );
 $wgExpandTemplatesMessages['zh-hk'] = $wgExpandTemplatesMessages['zh-tw'];
 $wgExpandTemplatesMessages['zh-sg'] = $wgExpandTemplatesMessages['zh-cn'];
+
 

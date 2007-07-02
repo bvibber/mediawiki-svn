@@ -114,6 +114,9 @@ $wgDismissableSiteNoticeMessages['su'] = array(
 	'sitenotice_close' => 'bubarkeun',
 );
 
+$wgDismissableSiteNoticeMessages['sv'] = array(
+	'sitenotice_close' => 'dölj',
+);
 $wgDismissableSiteNoticeMessages['ur'] = array(
 	'sitenotice_close' => 'ترک',
 );
@@ -128,5 +131,6 @@ $wgDismissableSiteNoticeMessages['zh-yue'] = array(
 );
 $wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-tw'];
 $wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-cn'];
+
 
 

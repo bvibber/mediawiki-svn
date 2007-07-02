@@ -169,9 +169,12 @@ $wgFilepathMessages['su'] = array(
 );
 
 $wgFilepathMessages['sv'] = array(
-	'filepath'        => 'Sökväg till fil',
-	'filepath_page'   => 'Fil:',
-	'filepath_submit' => 'Sökväg',
+	'filepath'         => 'Sökväg till fil',
+	'filepath_page'    => 'Fil:',
+	'filepath_submit'  => 'Sökväg',
+	'filepath-summary' => 'Den här sidan ger den fullständiga sökvägen till en fil. Bilder visas i full upplösning i din webbläsare, andra filtyper öppnas direkt i de program som är associerade till dem.
+	
+	Ange filens namn utan prefixet "{{ns:image}}:".',
 );
 $wgFilepathMessages['zh-cn'] = array(
 	'filepath'        => '文件路径',
@@ -190,4 +193,5 @@ $wgFilepathMessages['zh-yue'] = array(
 );
 $wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-tw'];
 $wgFilepathMessages['zh-sg'] = $wgFilepathMessages['zh-cn'];
+
 

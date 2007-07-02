@@ -160,6 +160,15 @@ $wgLinkSearchMessages['sr'] = array(
 	'linksearch-line'  => '$1 повезана са $2',
 	'linksearch-error' => 'Џокери могу да се појављују само на почетку домена.'
 );
+$wgLinkSearchMessages['sv'] = array(
+	'linksearch'       => 'Sök webblänkar',
+	'linksearch-pat'   => 'Sökmönster:',
+	'linksearch-ns'    => 'Namnrymd:',
+	'linksearch-ok'    => 'Sök',
+	'linksearch-text'  => 'Jokertecken (wildcards) kan användas i början av domännamn, t.ex.  "*.wikipedia.org".<br />Stödda protokoll: <tt>$1</tt>',
+	'linksearch-line'  => '$1 länkas från $2',
+	'linksearch-error' => 'Jokertecken kan bara användas i början av domännamnet.',
+);
 $wgLinkSearchMessages['zh-cn'] = array(
 	'linksearch'       => '搜索网页链接',
     'linksearch-pat'   => '搜索网址:',
@@ -186,4 +195,5 @@ $wgLinkSearchMessages['zh-yue'] = array(
 );
 $wgLinkSearchMessages['zh-hk'] = $wgLinkSearchMessages['zh-tw'];
 $wgLinkSearchMessages['zh-sg'] = $wgLinkSearchMessages['zh-cn'];
+
 
