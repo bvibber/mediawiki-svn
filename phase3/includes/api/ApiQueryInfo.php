@@ -72,12 +72,13 @@ class ApiQueryInfo extends ApiQueryBase {
 		$pageLatest = $pageSet->getCustomField('page_latest');
 		$pageLength = $pageSet->getCustomField('page_len');
 
+		$db = $this->getDB();
 		if ($fld_protection && count($titles) > 0) {
+			// Query all restrictions we need in one go and put them in the $protections array
 			$this->addTables('page_restrictions');
 			$this->addFields(array('pr_page', 'pr_type', 'pr_level', 'pr_expiry'));
 			$this->addWhereFld('pr_page', array_keys($titles));
 
-			$db = $this->getDB();
 			$res = $this->select(__METHOD__);
 			while($row = $db->fetchObject($res)) {
 				$protections[$row->pr_page][] = array(
@@ -88,7 +89,21 @@ class ApiQueryInfo extends ApiQueryBase {
 			}
 			$db->freeResult($res);
 		}
-		
+
+		if($fld_lastrevby || isset($params['tokens']['rollback']))
+		{
+			// Query all revisions we need in one go and put them in the $lastrevby array
+			$this->resetQueryParams();
+			$this->addTables('revision');
+			$this->addFields(array('rev_id', 'rev_user_text'));
+			$this->addWhereFld('rev_id', $pageLatest);
+
+			$res = $this->select(__METHOD__);
+			while($row = $db->fetchObject($res))
+				$lastrevby[intval($row->rev_id)] = $row->rev_user_text;
+		}
+
+		$et = null; // Cached edit token is stored here
 		foreach ( $titles as $pageid => $title ) {
 			$pageInfo = array (
 				'touched' => wfTimestamp(TS_ISO_8601, $pageTouched[$pageid]),
@@ -96,11 +111,9 @@ class ApiQueryInfo extends ApiQueryBase {
 				'counter' => intval($pageCounter[$pageid]),
 				'length' => intval($pageLength[$pageid])
 			);
-			if(isset($params['tokens']) || $fld_lastrevby)
-			{
-				$lastrev = Revision::newFromId($pageInfo['lastrevid']);
-				$pageInfo['lastrevby'] = $lastrev->getUserText();
-			}
+
+			if($fld_lastrevby)
+				$pageInfo['lastrevby'] = $lastrevby[$pageInfo['lastrevid']];
 
 			if ($pageIsRedir[$pageid])
 				$pageInfo['redirect'] = '';
@@ -124,17 +137,23 @@ class ApiQueryInfo extends ApiQueryBase {
 				switch($token)
 				{
 					case 'rollback':
-						$tokenArr[$token] = $wgUser->editToken(array($title->getPrefixedText(), $pageInfo['lastrevby']));
+						$tokenArr[$token] = $wgUser->editToken(array($title->getPrefixedText(), $lastrevby[$pageInfo['lastrevid']]));
 						break;
 					case 'edit':
 					case 'move':
 					case 'delete':
 					case 'protect':
 					case 'unprotect':
-						if($wgUser->isAnon())
-							$tokenArr[$token] = EDIT_TOKEN_SUFFIX;
+						// All these tokens are constant, so we can cache them
+						if(!is_null($et))
+							$tokenArr[$token] = $et;
 						else
-							$tokenArr[$token] = $wgUser->editToken();
+						{
+							if($wgUser->isAnon())
+								$et = $tokenArr[$token] = EDIT_TOKEN_SUFFIX;
+							else
+								$et = $tokenArr[$token] = $wgUser->editToken();
+						}
 					// default: can't happen, ignore it if it does happen in some weird way
 				}
 			if(count($tokenArr) > 0)
@@ -178,7 +197,7 @@ class ApiQueryInfo extends ApiQueryBase {
 			'prop' => array (
 				'Which additional properties to get:',
 				' "protection"   - List the protection level of each page',
-				' "lastrevby"    - The name of the user who made the last edit. You may need this for action=rollback.'	
+				' "lastrevby"    - List the name of the user who made the last edit'	
 			),
 			'tokens' => 'Which tokens to get.'
 		);
