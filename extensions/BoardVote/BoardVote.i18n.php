@@ -483,6 +483,13 @@ Il voto espresso in forma cifrata è riportato di seguito. È inoltre visibile a
         'boardvote_blocked'       => 'Siamo spiacenti, sei stato bloccato nel progetto in cui sei registrato. Gli utenti bloccati non hanno diritto di voto.',
         'boardvote_welcome'       => "Benvenuto/a '''$1'''!",
 );
+$wgBoardVoteMessages['ja'] = array(
+	'boardvote_redirecting'   => 'セキュリティと透明性を確保するため、外部の独立したサーバ上で投票を行っています。
+
+20秒後に外部サーバへ転送されます。[$1 ここをクリック]するとすぐに投票ページに移動できます。
+
+サーバ証明書のセキュリティに関する警告が表示される場合があります。',
+);
 $wgBoardVoteMessages['kk-kz'] = array(
 	'boardvote'               => "Wikimedia қорының Уәкілдер еңесінің сайлауы ",
 	'boardvote_entry'         => "* [[{{ns:special}}:Boardvote/vote|Дауыс беру]]
