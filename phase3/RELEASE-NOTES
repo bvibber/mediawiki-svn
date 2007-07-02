@@ -116,6 +116,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   "destination filename" already exists.
 * (bug 10422) Do not wrap user JS/CSS in <pre>; allow it to render as wikitext.
   like site CSS/JS.
+* Add 'editsection-brackets' message to allow localization (or removal) of the
+  brackets in the "[edit]" link for sections.
+* (bug 10437) Move texvc styling to shared.css.
+* (bug 10438) HTML TeX formulas should not wrap.
 
 == Bugfixes since 1.10 ==
 
@@ -249,6 +253,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Fix empty message checks for message names containing &
   This corrects some odd behavior with sidebar items and custom namespaces
   containing ampersands.
+* (bug 10375) Change thousands separator character to &nbsp; for Latin (la)
 
 
 == API changes since 1.10 ==
@@ -321,6 +326,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Kabyle (kab)
 * Kazakh (kk)
 * Kurdish (ku)
+* Latin (la)
 * Lithuanian (lt)
 * Malayalam (ml)
 * Burmese (my)
