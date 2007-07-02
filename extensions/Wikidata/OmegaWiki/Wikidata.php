@@ -151,6 +151,8 @@ class DefaultWikidataApplication {
 		global
 			$wgOut, $wgRequest, $wgUser;
 			
+		$wgOut->enableClientCache(false);
+
 		$dc=wdGetDataSetContext();
  		if(!$wgUser->isAllowed('editwikidata-'.$dc)) {
  			$wgOut->addWikiText(wfMsg('ow_noedit',$dc->fetchName()));
@@ -173,6 +175,7 @@ class DefaultWikidataApplication {
 		global
 			$wgOut, $wgTitle, $wgRequest;
 			
+		$wgOut->enableClientCache(false);
 
 		$title = $wgTitle->getPrefixedText();
 
@@ -272,7 +275,6 @@ class DefaultWikidataApplication {
  * @return prefix (without underscore)
 **/
 function wdGetDataSetContext($dc=null) {
-
 	if (!is_null($dc)) 
 		return $dc; 
 	global $wgRequest, $wdDefaultViewDataSet, $wdGroupDefaultView, $wgUser;

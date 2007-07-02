@@ -178,7 +178,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	*/
 	protected function getConceptPanel() {
 		global $wgTitle, $wgUser;
-		$active=True; # wrong place, but hey
+		$active=true; # wrong place, but hey
 		$dm=$this->getDefinedMeaningId();
 		$dc=wdGetDataSetContext();
 		$ow_conceptpanel="Concept Panel";

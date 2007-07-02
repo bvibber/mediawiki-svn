@@ -48,7 +48,6 @@ class OmegaWiki extends DefaultWikidataApplication {
 
 		parent::history();
 
-
 		$spelling = $wgTitle->getText();
 		
 		$wgOut->addHTML(
