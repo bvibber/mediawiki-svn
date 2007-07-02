@@ -766,33 +766,6 @@ function toggle_element_check(ida,idb) {
 	document.getElementById(idb).checked=false;
 }
 
-function fillDestFilename(id) {
-	if (!document.getElementById) {
-		return;
-	}
-	var path = document.getElementById(id).value;
-	// Find trailing part
-	var slash = path.lastIndexOf('/');
-	var backslash = path.lastIndexOf('\\');
-	var fname;
-	if (slash == -1 && backslash == -1) {
-		fname = path;
-	} else if (slash > backslash) {
-		fname = path.substring(slash+1, 10000);
-	} else {
-		fname = path.substring(backslash+1, 10000);
-	}
-
-	// Capitalise first letter and replace spaces by underscores
-	fname = fname.charAt(0).toUpperCase().concat(fname.substring(1,10000)).replace(/ /g, '_');
-
-	// Output result
-	var destFile = document.getElementById('wpDestFile');
-	if (destFile) {
-		destFile.value = fname;
-	}
-}
-
 function scrollEditBox() {
 	var editBoxEl = document.getElementById("wpTextbox1");
 	var scrollTopEl = document.getElementById("wpScrolltop");
