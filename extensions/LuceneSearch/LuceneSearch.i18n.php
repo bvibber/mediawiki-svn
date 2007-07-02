@@ -76,6 +76,7 @@ $wgLuceneSearchMessages['de'] = array(
 	'lucenefallback'        => "Bei der {{SITENAME}}-internen Suche ist ein Problem aufgetreten.
 Dies ist normalerweise ein vorübergehendes Problem. Bitte versuchen Sie es nochmal.
 Alternativ können Sie auch die externen Suchmöglichkeiten nutzen:\n",
+	'searchexactcase'       => 'Exakte Groß-/Kleinschreibungssuche',
 	'searchall'             => 'alle',
 	'searchincategory'      => 'in Kategorie',
 
