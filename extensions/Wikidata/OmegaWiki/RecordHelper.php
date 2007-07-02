@@ -88,7 +88,6 @@ abstract class Helper {
 
 class DefinitionHelper extends Helper {
 	public function __construct($record) {
-		echo "DefinitionHelper\n";
 		Helper::__construct($record);
 	}
 	
@@ -97,34 +96,34 @@ class DefinitionHelper extends Helper {
 
 class TranslatedTextHelper extends Helper {
 	public function __construct($record) {
-		echo "TranslatedTextHelper\n";
 		Helper::__construct($record);
 	}
 }
 
 class ObjectAttributesHelper extends Helper {
 	public function __construct($record) {
-		echo "ObjectAttributesHelper\n";
 		Helper::__construct($record);
 	}
 }
 
 class SynonymsTranslationsHelper extends Helper {
 	public function __construct($record) {
-		echo "SynonymsTranslationsHelper\n";
 		Helper::__construct($record);
 	}
 }
 
 class ExpressionHelper extends Helper {
 	public function __construct($record) {
-		echo "ExpressionHelper\n";
 		Helper::__construct($record);
-		echo $record;
+		#echo $record;
 	}
 	
+	// Actually going to use save for now (kind of hack)
 	public function getSaveSQL($dc="uw") {
 		$dc=wdGetDataSetContext($dc);
+	}
+
+	public function save() {
 		
 	}
 }
@@ -132,56 +131,48 @@ class ExpressionHelper extends Helper {
 
 class RelationsHelper extends Helper {
 	public function __construct($record) {
-		echo "RelationsHelper\n";
 		Helper::__construct($record);
 	}
 }
 
 class RelationTypeHelper extends Helper {
 	public function __construct($record) {
-		echo "RelationTypeHelper\n";
 		Helper::__construct($record);
 	}
 }	
 
 class OtherDefinedMeaningHelper extends Helper {
 	public function __construct($record) {
-		echo "OtherDefinedMeaningHelper\n";
 		Helper::__construct($record);
 	}
 }
 
 class ReciprocalRelationsHelper extends Helper {
 	public function __construct($record) {
-		echo "ReciprocalRelationsHelper\n";
 		Helper::__construct($record);
 	}
 }
 
 class CollectionMembershipHelper extends Helper {
 	public function __construct($record) {
-		echo "CollectionMembershipHelper\n";
 		Helper::__construct($record);
 	}
 }
 
 class CollectionMeaningHelper extends Helper {
 	public function __construct($record) {
-		echo "CollectionMeaningHelper\n";
 		Helper::__construct($record);
 	}
 }
 
 class GotoSourceHelper extends Helper {
 	public function __construct($record) {
-		echo "GotoSourceHelper\n";
 		Helper::__construct($record);
 	}
 }
 
 class DefinedMeaningAttributesHelper extends Helper {
 	public function __construct($record) {
-		echo "DefinedMeaningAttributesHelper\n";
 		Helper::__construct($record);
 	}
 }
