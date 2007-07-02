@@ -129,7 +129,6 @@ class ApiQueryInfo extends ApiQueryBase {
 					case 'edit':
 					case 'move':
 					case 'delete':
-					case 'undelete':
 					case 'protect':
 					case 'unprotect':
 						if($wgUser->isAnon())
@@ -167,7 +166,6 @@ class ApiQueryInfo extends ApiQueryBase {
 					'edit',
 					'move',
 					'delete',
-					'undelete',
 					'rollback',
 					'protect',
 					'unprotect'
