@@ -125,7 +125,7 @@ class ApiDelete extends ApiBase {
 				$this->dieUsage('The wiki is in read-only mode', 'readonly');
 			case DELETE_BADTOKEN:
 				$this->dieUsage('Invalid token', 'badtoken');
-			case ROLLBACK_BADARTICLE:
+			case Article::RB_BADARTICLE:
 				$this->dieUsage("The article ``{$params['title']}'' doesn't exist or has already been deleted", 'missingtitle');
 			default:
 				// delete() has apparently invented a new error, which is extremely weird

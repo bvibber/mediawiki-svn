@@ -67,29 +67,29 @@ class ApiRollback extends ApiBase {
 
 		switch($retval)
 		{
-			case ROLLBACK_SUCCESS:
+			case Article::SUCCESS:
 				break; // We'll deal with that later
-			case ROLLBACK_PERM:
-				$this->dieUsage('You don\'t have permission to rollback', 'permissiondenied');
-			case ROLLBACK_BLOCKED: // If we get BLOCKED or PERM that's very weird, but it's possible
+			case Article::PERM_DENIED:
+				$this->dieUsage("You don't have permission to rollback", 'permissiondenied');
+			case Article::BLOCKED: // If we get BLOCKED or PERM_DENIED that's very weird, but it's possible
 				$this->dieUsage('You have been blocked from editing', 'blocked');
-			case ROLLBACK_READONLY:
+			case Article::READONLY:
 				$this->dieUsage('The wiki is in read-only mode', 'readonly');
-			case ROLLBACK_BADTOKEN:
+			case Article::BAD_TOKEN:
 				$this->dieUsage('Invalid token', 'badtoken');
-			case ROLLBACK_BADARTICLE:
+			case Article::BAD_TITLE:
 				$this->dieUsage("The article ``{$params['title']}'' doesn't exist", 'missingtitle');
-			case ROLLBACK_ALREADYROLLED:
+			case Article::ALREADYROLLED:
 				$this->dieUsage('The edit(s) you tried to rollback is/are already rolled back', 'alreadyrolled');
-			case ROLLBACK_ONLYAUTHOR:
+			case Article::ONLY_AUTHOR:
 				$this->dieUsage("{$params['user']} is the only author of the page", 'onlyauthor');
-			case ROLLBACK_EDITFAILED:
+			case Article::EDIT_FAILED:
 				$this->dieDebug(__METHOD__, 'Article::doEdit() failed');
 			default:
 				// rollback() has apparently invented a new error, which is extremely weird
 				$this->dieDebug(__METHOD__, "rollback() returned an unknown error ($retval)");
 		}
-		// $retval has to be ROLLBACK_SUCCESS if we get here
+		// $retval has to be Article::SUCCESS if we get here
 		$this->getResult()->addValue(null, 'rollback', $info);
 	}
 
