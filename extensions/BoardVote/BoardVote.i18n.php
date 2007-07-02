@@ -224,6 +224,13 @@ Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hie
 
 Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
 );
+$wgBoardVoteMessages['es'] = array(
+	'boardvote_redirecting'   => 'Para mejorar la seguridad y la transparencia, la votación se está realizando en un servidor externo y controlado independientemente.
+
+Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aquí] para ir ahora.
+
+Un aviso de seguridad sobre un certificado no cifrado podría aparacer.',
+);
 $wgBoardVoteMessages['fr'] = array(
 	'boardvote'               => "Élections au conseil d’administration de la Wikimedia Foundation",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
@@ -1477,5 +1484,10 @@ $1去睇加密嘅資料。</p>",
 	'group-boardvote'         => '理事會投票管理員',
 	'group-boardvote-member'  => '理事會投票管理員',
 	'grouppage-boardvote'     => '{{ns:project}}:理事會投票管理員',
+	'boardvote_redirecting'   => '為咗好啲嘅保安同埋透明度，我哋用一個外置、獨立控制嘅伺服器去搞呢次嘅投票。
+
+20秒之內你會彈去呢個外置伺服器。如果你想即刻去，就[$1 撳呢度]。
+
+你有可能會收到一個安全警告，話個憑證冇簽到。',
 );
 
