@@ -2080,7 +2080,7 @@ class ObjectPathEditor extends Viewer {
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query(
 			"SELECT spelling, defined_meaning_id" .
-			" FROM {$dc}_syntrans, _expression_ns" .
+			" FROM {$dc}_syntrans, {$dc}_expression_ns" .
 			" WHERE syntrans_sid=$objectId" .
 			" AND {$dc}_syntrans.expression_id={$dc}_expression_ns.expression_id"
 		);

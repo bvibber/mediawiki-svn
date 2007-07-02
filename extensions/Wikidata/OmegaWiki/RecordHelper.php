@@ -3,7 +3,7 @@
 class RecordHelperFactory {
 
 	public static function getRecordHelper($record) {
-		$type=$record->getType();
+		$type=$record->getStructure()->getStructureType();
 		if (empty($type))
 			return null;
 		switch($type) {
@@ -13,7 +13,7 @@ class RecordHelperFactory {
 				return new TranslatedTextHelper($record);
 			case "object-attributes":
 				return new ObjectAttributesHelper($record);
-			case "synonyms-translations":
+			case "syntrans-id":
 				return new SynonymsTranslationsHelper($record);
 				break;
 			case "expression":
@@ -43,8 +43,17 @@ class RecordHelperFactory {
 			case "defined-meaning-attributes":
 				return new DefinedMeaningAttributesHelper($record);
 				break;
+			case "defined-meaning-id":
+				// Relax
+				break;
+			case "defined-meaning":
+				// ...
+				break;
+			case "language":
+				break;
 			default :
-				echo "IGIVEUP ($type) I Give Up! \n";
+				# Need to do more checks here
+#				throw new Exception("Record with unknown type: '$type'");			
 				break;
 		}
 

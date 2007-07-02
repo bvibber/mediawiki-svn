@@ -17,9 +17,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		if ($view_as=="raw") {
 			$wgOut->disable();
-			
-			header("Content-Type: text/plain; charset=UTF-8");
-			echo($this->raw());
+			echo("<pre>".$this->raw()."</pre>");
 			return;
 		}
 		$this->outputViewHeader();
@@ -108,7 +106,6 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$this->viewQueryTransactionInformation
 		);
 		$record=$dmModel->getRecord();
-		$record->finish("DefinedMeaning");
 		return $record;
 	}
 

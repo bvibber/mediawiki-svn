@@ -170,7 +170,8 @@ function initializeAttributes() {
 	$updatedDefinitionAttribute = new Attribute('updated-definition', 'Definition', $updatedDefinitionStructure);
 
 	global
-		$expressionAttribute, $expressionIdAttribute, $identicalMeaningAttribute, $syntransIdAttribute, $updatedSyntransesAttribute;
+		$expressionAttribute, $expressionIdAttribute, $identicalMeaningAttribute, $syntransIdAttribute, $updatedSyntransesAttribute,
+		$updatedSyntransesStructure;
 
 	$updatedSyntransesStructure = new Structure(
 		$syntransIdAttribute,
@@ -401,6 +402,7 @@ function getTransactionRecordSet($fromTransactionId, $transactionCount, $userNam
 		$restrictions[] = "EXISTS (SELECT user_name FROM user WHERE user.user_id={$dc}_transactions.user_id AND user.user_name='" . $userName . "')"; 
 
 	$recordSet = queryRecordSet(
+		'transaction-id',
 		$queryTransactionInformation,
 		$transactionIdAttribute,
 		array(
@@ -477,7 +479,7 @@ function getUpdatesInTransactionRecord($transactionId) {
 		$updatedAlternativeDefinitionsAttribute, $updatedAlternativeDefinitionTextAttribute,
 		$updatedTranslatedTextPropertyAttribute;
 		
-	$record = new ArrayRecord($updatesInTransactionAttribute->type->getAttributes());
+	$record = new ArrayRecord($updatesInTransactionAttribute->type);
 	$record->setAttributeValue($updatedDefinitionAttribute, getUpdatedDefinedMeaningDefinitionRecordSet($transactionId));
 	$record->setAttributeValue($updatedAlternativeDefinitionsAttribute, getUpdatedAlternativeDefinitionsRecordSet($transactionId));
 	$record->setAttributeValue($updatedAlternativeDefinitionTextAttribute, getUpdatedAlternativeDefinitionTextRecordSet($transactionId));

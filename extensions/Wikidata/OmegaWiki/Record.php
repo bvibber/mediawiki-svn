@@ -12,11 +12,11 @@ interface Record {
 class ArrayRecord implements Record {
 	protected $structure;
 	protected $values = array();
-	protected $type = null;
 	protected $helper=null;
 	
-	public function __construct($structure) {
+	public function __construct(Structure $structure) {
 		$this->structure = $structure;
+		$this->helper=RecordHelperFactory::getRecordHelper($this);		
 	}
 	
 	public function getStructure() {
@@ -39,49 +39,6 @@ class ArrayRecord implements Record {
 		@$this->values[$attribute->id] = $value;
 	}
 	
-	public function getType() {
-		return $this->type;
-	}
-
-	public function setType($type) {
-		$this->type=$type;
-		$this->helper=RecordHelperFactory::getRecordHelper($this);
-	}	
-
-	/**only setType if it wasn't set yet.
-	*@param $type the type to set
-	*@return the type that is actually used now.
-	*/ 
-	public function suggestType($type) {
-		if(is_null($this->type))
-			$this->setType($type);
-		return $this->getType();
-	}
-
-	/** temporary hack to complete an arrayrecord structure
-	 * Uses knowlege already present in our Record based structure
-	 * to explain to records what they are. (ie, finish completes the
-	 * building of the structure, to leave it in a usable state)
-	 * @param $type  the type that this record should have.
-	 * 		 (if you have no idea, use some random but readily
-	 * 		 recognisable string, other records should still get
-	 *		 correct types)
-	 * The brokenness of the system ends here, and only pretty code
- 	 * should run beyond this point. (One day ). Erik Moeller is working
-	 * on eliminating this function which would be excellent.
-	 */
-	public function finish($type) {
-		$type=$this->suggestType($type);
-
-		foreach ($this->values as $key=>$value) {
-			$methods=get_class_methods(get_class($value));
-			if (!is_null($methods)) {
-				if (in_array("finish",$methods)) {
-					$value->finish($key);
-				} 
-			}
-		}
-	}
 	/**
 	 *
 	 * @param $values Array to write into the record, by order of the structure
@@ -112,7 +69,8 @@ class ArrayRecord implements Record {
 	
 	public function tostring_indent($depth=0,$key="") {
 		$rv="\n".str_pad("",$depth*8);	
-		$type=$this->type;
+		$str=$this->getStructure();
+		$type=$str->getStructureType();
 		$rv.="$key:ArrayRecord(..., $type) {";
 		$rv2=$rv;
 		foreach ($this->values as $key=>$value) {

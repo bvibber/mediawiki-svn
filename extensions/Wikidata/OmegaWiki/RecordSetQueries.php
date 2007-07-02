@@ -31,7 +31,7 @@ function getTransactedSQL($transactionInformation, $selectFields, $table, $restr
 	return $query;
 }
 
-function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeMapping, $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
+function queryRecordSet($recordSetStructureId, $transactionInformation, $keyAttribute, $fieldAttributeMapping, Table $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$selectFields = array_keys($fieldAttributeMapping);
@@ -44,8 +44,11 @@ function queryRecordSet($transactionInformation, $keyAttribute, $fieldAttributeM
 	
 	$query = getTransactedSQL($transactionInformation, $selectFields, $table, $restrictions, $orderBy, $count, $offset);
 	$queryResult = $dbr->query($query);
-	
-	$structure = new Structure($allAttributes);
+	if(!is_null($recordSetStructureId)) {	
+		$structure = new Structure($recordSetStructureId, $allAttributes);
+	} else {
+		$structure = new Structure($allAttributes);
+	}
 	$recordSet = new ArrayRecordSet($structure, new Structure($keyAttribute));
 
 	while ($row = $dbr->fetchRow($queryResult)) {

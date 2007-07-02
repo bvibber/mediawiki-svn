@@ -415,7 +415,7 @@ class AttributeEditorMap {
 
 function getDefinedMeaningEditor($filterLanguageId, $possiblySynonymousRelationTypeId, $showRecordLifeSpan, $showAuthority) {
 	global
-		$wgDefinedMeaningAttributesOrder,
+		$wdDefinedMeaningAttributesOrder,
 		$definedMeaningAttribute, $possiblySynonymousIdAttribute, $possiblySynonymousAttribute, 
 		$possibleSynonymAttribute, $definedMeaningObjectAttributesEditor, $possiblySynonymousObjectAttributesEditor;
 	
@@ -453,7 +453,7 @@ function getDefinedMeaningEditor($filterLanguageId, $possiblySynonymousRelationT
 
 	$definedMeaningEditor = new RecordUnorderedListEditor($definedMeaningAttribute, 4);
 	
-	foreach ($wgDefinedMeaningAttributesOrder as $attributeId) {
+	foreach ($wdDefinedMeaningAttributesOrder as $attributeId) {
 		$editor = $availableEditors->getEditorForAttributeId($attributeId);
 		
 		if ($editor != null)

@@ -1,5 +1,6 @@
 <?php
 
+require_once('OmegaWikiAttributes.php');
 require_once('OmegaWikiRecordSets.php');
 require_once('OmegaWikiAttributes.php');
 require_once("Transaction.php");
@@ -22,7 +23,7 @@ class DefinedMeaningModel {
 			$possiblySynonymousAttribute;
 	
 		$this->setDefinedMeaningID($definedMeaningId);
-		$record = new ArrayRecord($definedMeaningAttribute->type->getAttributes());
+		$record = new ArrayRecord($definedMeaningAttribute->type);
 		$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
 		$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation));
 		$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
