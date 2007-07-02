@@ -9,6 +9,7 @@ require_once("WikiDataAPI.php");
 class DefinedMeaningModel {
 
 	protected $record=null;
+	protected $definedMeaningID=null;
 
 	public function __construct($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
 
@@ -20,6 +21,7 @@ class DefinedMeaningModel {
 			$classMembershipAttribute, $collectionMembershipAttribute, $definedMeaningAttributesAttribute,
 			$possiblySynonymousAttribute;
 	
+		$this->setDefinedMeaningID($definedMeaningId);
 		$record = new ArrayRecord($definedMeaningAttribute->type->getAttributes());
 		$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
 		$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation));
@@ -46,12 +48,8 @@ class DefinedMeaningModel {
 	public function save() {
 		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
 		initializeObjectAttributeEditors($this->filterLanguageId, false);
-	global
-		$wgTitle;
-
-		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
+		$definedMeaningId = $this->getDefinedMeaningID();
 		
-		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
 			$this->getIdStack($definedMeaningId), 
 			$this->getRecord()
@@ -96,6 +94,14 @@ class DefinedMeaningModel {
 
 	public function getRecord() {
 		return $this->record;
+	}
+
+	public function setDefinedMeaningID($definedMeaningID) {
+		$this->definedMeaningID=$definedMeaningID;
+	}
+
+	public function getDefinedMeaningID() {
+		return $this->definedMeaningID;
 	}
 
 }

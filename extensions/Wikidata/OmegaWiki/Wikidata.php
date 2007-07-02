@@ -263,6 +263,11 @@ class DefaultWikidataApplication {
 
 }
 
+
+# Global context override. This is an evil hack to allow saving, basically.
+global $wdCurrentContext;
+$wdCurrentContext=null;
+
 /**
  * A Wikidata application can manage multiple data sets.
  * The current "context" is dependent on multiple factors:
@@ -275,9 +280,15 @@ class DefaultWikidataApplication {
  * @return prefix (without underscore)
 **/
 function wdGetDataSetContext($dc=null) {
+	global $wgRequest, $wdDefaultViewDataSet, $wdGroupDefaultView, $wgUser,
+		$wdCurrentContext;
+
+	# overrides
 	if (!is_null($dc)) 
 		return $dc; 
-	global $wgRequest, $wdDefaultViewDataSet, $wdGroupDefaultView, $wgUser;
+	if (!is_null($wdCurrentContext))
+		return $wdCurrentContext;
+		
 	$datasets=wdGetDataSets();
 	$groups=$wgUser->getGroups();
 	$dbs=wfGetDB(DB_SLAVE);

@@ -14,8 +14,10 @@ require_once("DefinedMeaningModel.php");
 require_once("Transaction.php");
 
 /** Just get a defined meaning */
-function getDM($dm_id,$dc="uw") {
-	$definedMeaningId=663665; # UnitTest 
+function getDM($definedMeaningId,$dc="uw") {
+	global 
+		$wdCurrentContext;
+	$wdCurrentContext=$dc;
 	$filterLanguageId=0; # ??? What does this do ???
 	$possiblySynonymousRelationTypeId=0; # ??? What does this do ???
 	$queryTransactionInformation= new QueryLatestTransactionInformation();
@@ -25,8 +27,12 @@ function getDM($dm_id,$dc="uw") {
 	return $model;
 }
 
-function saveDM($model) {
-	$model->saveWithinTransaction();
+function saveDM($model,$dc="uw") {
+	global 
+		$wdCurrentContext;
+	$wdCurrentContext=$dc;
+	#echo $model->getRecord();
+	$model->save();
 }
 
 global
@@ -38,9 +44,12 @@ $wgCommandLineMode = true;
 
 /* insert code here */
 
-$model=getDM(663655);
-$record=$model->getRecord();
-echo $record;
+$model=getDM(663672,"uw");
+
+#$record=$model->getRecord();
+#echo $record;
+
+SaveDM($model,"tt");
 
 
 $endTime = time();
