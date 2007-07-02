@@ -593,8 +593,8 @@ class DefinedMeaningData {
 		return $this->dataset;
 	}
 
-	public function setLanguageId($langaugeId) {
-		$this->langaugeId=$languageId;	
+	public function setLanguageId($languageId) {
+		$this->languageId = $languageId;	
 	}
 
 	public function getLanguageId() {

@@ -113,28 +113,27 @@ function getHTMLClassForType($type,$attribute) {
 		return $type;
 }
 
-function getRecordAsTableCells($idPath, $editor, $record, &$startColumn = 0) {
+function getRecordAsTableCells($idPath, $editor, $visibleColumnEditors, $record, &$startColumn = 0) {
 	$result = '';
 	
-	foreach($editor->getEditors() as $childEditor) {
-		$attribute = $childEditor->getAttribute();
-		$type = $attribute->type;
-		$value = $record->getAttributeValue($attribute);
-		$idPath->pushAttribute($attribute);
-		$attributeId = $idPath->getId();
-		
-		if ($childEditor instanceof RecordTableCellEditor) 
-			$result .= getRecordAsTableCells($idPath, $childEditor, $value, $startColumn);	
-		else {
-			if($childEditor->showsData($value))
-				$displayValue = $childEditor->view($idPath, $value);
-			else
-				$displayValue = "";
-			$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
-			$startColumn++;
+	foreach ($editor->getEditors() as $childEditor) {
+		if (in_array($childEditor, $visibleColumnEditors, true)) { 
+			$attribute = $childEditor->getAttribute();
+			$type = $attribute->type;
+			$value = $record->getAttributeValue($attribute);
+			$idPath->pushAttribute($attribute);
+			$attributeId = $idPath->getId();
+			
+			if ($childEditor instanceof RecordTableCellEditor) 
+				$result .= getRecordAsTableCells($idPath, $childEditor, $visibleColumnEditors, $value, $startColumn);	
+			else {
+				$displayValue = $childEditor->showsData($value) ? $childEditor->view($idPath, $value) : "";
+				$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
+				$startColumn++;
+			}
+			
+			$idPath->popAttribute();
 		}
-		
-		$idPath->popAttribute();
 	}
 	
 	return $result;

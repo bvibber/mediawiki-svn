@@ -412,21 +412,82 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$this->rowHTMLAttributes = $rowHTMLAttributes;
 	}
 	
+	protected function columnShowsData($columnEditor, $value, $attributePath) {
+		$result = false;
+		$recordCount = $value->getRecordCount();
+		$i = 0;
+		
+		while (!$result && $i < $recordCount) {
+			$recordOrScalar = $value->getRecord($i);
+			
+			foreach ($attributePath as $attribute)
+				$recordOrScalar = $recordOrScalar->getAttributeValue($attribute);
+				
+			$result = $columnEditor->showsData($recordOrScalar); 						
+			$i++;
+		}
+		
+		return $result;
+	}
+
+	protected function getColumnEditorsShowingData($editor, $value, $attributePath = array()) {
+		$result = array();
+		
+		foreach ($editor->getEditors() as $childEditor) {
+			array_push($attributePath, $childEditor->getAttribute());
+
+			if ($childEditor instanceof RecordTableCellEditor) { 
+				$visibleChildColumnEditors = $this->getColumnEditorsShowingData($childEditor, $value, $attributePath);
+				
+				if (count($visibleChildColumnEditors) > 0) {
+					$result[] = $childEditor;
+					$result = array_merge($result, $visibleChildColumnEditors);
+				}	
+			}
+			else if ($this->columnShowsData($childEditor, $value, $attributePath))
+				$result[] = $childEditor;	
+
+			array_pop($attributePath);
+		}			
+		
+		return $result;
+	}
+	
+	protected function getAllColumnEditors($editor, $value) {
+		$result = array();
+		
+		foreach ($editor->getEditors() as $childEditor) {
+			if ($childEditor instanceof RecordTableCellEditor) { 
+				$result[] = $childEditor;
+				$result = array_merge($result, $this->getAllColumnEditors($childEditor, $value));	
+			}
+			else 
+				$result[] = $childEditor;	
+		}			
+		
+		return $result;
+	}
+
 	public function view($idPath, $value) {
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$structure = $value->getStructure();
 		$key = $value->getKey();
 		$rowAttributes = $this->getRowAttributesText();
+		$visibleColumnEditors = $this->getColumnEditorsShowingData($this, $value);
 
-		foreach(getStructureAsTableHeaderRows($this->getTableStructure($this), 0, $idPath) as $headerRow)
+		foreach (getStructureAsTableHeaderRows($this->getTableStructure($this, $visibleColumnEditors), 0, $idPath) as $headerRow)
 			$result .= '<tr>' . $headerRow . '</tr>'.EOL;
 
 		$recordCount = $value->getRecordCount();
 
-		for($i = 0; $i < $recordCount; $i++) {
+		for ($i = 0; $i < $recordCount; $i++) {
 			$record = $value->getRecord($i);
 			$idPath->pushKey(project($record, $key));
-			$result .= '<tr id="'. $idPath->getId() .'" '.  $rowAttributes . '>' . getRecordAsTableCells($idPath, $this, $record) .'</tr>'.EOL;
+			$result .= 
+				'<tr id="'. $idPath->getId() .'" '.  $rowAttributes . '>' . 
+					getRecordAsTableCells($idPath, $this, $visibleColumnEditors, $record) .
+				'</tr>'.EOL;
+				
 			$idPath->popKey();
 		}
 
@@ -442,13 +503,9 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$key = $value->getKey();
 		$rowAttributes = $this->getRowAttributesText();
-
-		if ($this->allowRemove)
-			$columnOffset = 1;
-		else
-			$columnOffset = 0;
-			
-		$headerRows = getStructureAsTableHeaderRows($this->getTableStructure($this), $columnOffset, $idPath);
+		$visibleColumnEditors = $this->getAllColumnEditors($this, $value);
+		$columnOffset = $this->allowRemove ? 1 : 0;
+		$headerRows = getStructureAsTableHeaderRows($this->getTableStructure($this, $visibleColumnEditors), $columnOffset, $idPath);
 
 		if ($this->allowRemove)
 			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="'.$wgStylePath.'/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];
@@ -478,7 +535,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 			if ($this->permissionController->allowUpdateOfValue($idPath, $record))
 				$result .= getRecordAsEditTableCells($record, $idPath, $this);
 			else
-				$result .= getRecordAsTableCells($idPath, $this, $record);
+				$result .= getRecordAsTableCells($idPath, $this, $visibleColumnEditors, $record);
 			
 			$idPath->popKey();
 
@@ -539,18 +596,20 @@ class RecordSetTableEditor extends RecordSetEditor {
 		return $result . '</tr>' . EOL;
 	}
 
-	public function getTableStructure($editor) {
+	public function getTableStructure($editor, $visibleColumnEditors) {
 		$attributes = array();
 
 		foreach($editor->getEditors() as $childEditor) {
-			$childAttribute = $childEditor->getAttribute();
-
-			if ($childEditor instanceof RecordTableCellEditor)
-				$type = $this->getTableStructure($childEditor);
-			else
-				$type = 'short-text';
-
-			$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, $type);
+			if (in_array($childEditor, $visibleColumnEditors, true)) {
+				$childAttribute = $childEditor->getAttribute();
+	
+				if ($childEditor instanceof RecordTableCellEditor)
+					$type = $this->getTableStructure($childEditor, $visibleColumnEditors);
+				else
+					$type = 'short-text';
+	
+				$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, $type);
+			}
 		}
 
 		return new Structure($attributes);
@@ -632,7 +691,16 @@ abstract class RecordEditor extends DefaultEditor {
 	}
 	
 	public function showsData($value) {
-		return true;
+		$result = true;
+		$i = 0;
+		
+		while ($result && $i < count($this->editors)) {
+			$editor = $this->editors[$i];
+			$result = $editor->showsData($value->getAttributeValue($editor->getAttribute()));
+			$i++;
+		}
+		
+		return $result;
 	}
 	
 	public function showEditField($idPath) {
@@ -715,7 +783,7 @@ abstract class ScalarEditor extends DefaultEditor {
 	}
 	
 	public function showsData($value) {
-		return true;
+		return ($value != null) && (trim($value) != "");
 	}
 	
 	public function showEditField($idPath) {
@@ -725,7 +793,7 @@ abstract class ScalarEditor extends DefaultEditor {
 
 class LanguageEditor extends ScalarEditor {
 	public function getViewHTML($idPath, $value) {
-			return languageIdAsText($value);
+		return languageIdAsText($value);
 	}
 
 	public function getEditHTML($idPath, $value) {
@@ -741,6 +809,10 @@ class LanguageEditor extends ScalarEditor {
 			$wgRequest;
 
 		return $wgRequest->getInt($id);
+	}
+	
+	public function showsData($value) {
+		return ($value != null) && ($value != 0);
 	}
 }
 
@@ -1161,16 +1233,18 @@ class RecordListEditor extends RecordEditor {
 	}
 	
 	public function showsData($value) {
-		$index = 0;
-		$showsData = false;
-		while($index < count($this->editors) && !$showsData) {
-			$editor = $this->editors[$index];
+		$i = 0;
+		$result = false;
+		
+		while(!$result && $i < count($this->editors)) {
+			$editor = $this->editors[$i];
 			$attribute = $editor->getAttribute();
 			$attributeValue = $value->getAttributeValue($attribute);
-			$showsData = $editor->showsData($attributeValue);
-			$index += 1;			
+			$result = $editor->showsData($attributeValue);
+			$i++;			
 		}
-		return $showsData;
+		
+		return $result;
 	}
 	
 	public function view($idPath, $value) {
