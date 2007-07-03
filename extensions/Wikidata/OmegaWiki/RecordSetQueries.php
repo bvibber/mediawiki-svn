@@ -1,6 +1,8 @@
 <?php
 
-function getTransactedSQL($transactionInformation, $selectFields, $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
+require_once('Transaction.php');
+
+function getTransactedSQL(QueryTransactionInformation $transactionInformation, array $selectFields, Table $table, array $restrictions, array $orderBy = array(), $count = -1, $offset = 0) {
 	$tableNames = array($table->identifier);
 
 	if ($table->isVersioned) {
@@ -32,7 +34,7 @@ function getTransactedSQL($transactionInformation, $selectFields, $table, $restr
 	return $query;
 }
 
-function queryRecordSet($recordSetStructureId, QueryTransactionInformation $transactionInformation, Attribute $keyAttribute, $fieldAttributeMapping, Table $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
+function queryRecordSet($recordSetStructureId, QueryTransactionInformation $transactionInformation, Attribute $keyAttribute, array $fieldAttributeMapping, Table $table, array $restrictions, array $orderBy = array(), $count = -1, $offset = 0) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$selectFields = array_keys($fieldAttributeMapping);
@@ -66,7 +68,7 @@ function queryRecordSet($recordSetStructureId, QueryTransactionInformation $tran
 	return $recordSet;
 }
 
-function getUniqueIdsInRecordSet($recordSet, $idAttributes) {
+function getUniqueIdsInRecordSet(RecordSet $recordSet, array $idAttributes) {
 	$ids = array();
 	
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
