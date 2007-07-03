@@ -248,6 +248,7 @@ $wgMessageStructure = array(
 		'newmessageslink',
 		'newmessagesdifflink',
 		'editsection',
+		'editsection-brackets',
 		'editold',
 		'editsectionhint',
 		'toc',
@@ -477,6 +478,7 @@ $wgMessageStructure = array(
 		'previewconflict',
 		'session_fail_preview',
 		'session_fail_preview_html',
+		'token_suffix_mismatch',
 		'importing',
 		'editing',
 		'editinguser',
@@ -2312,7 +2314,6 @@ $wgMessageComments = array(
 	'exif-orientation-6'          => '0th row: right; 0th column: top',
 	'exif-orientation-7'          => '0th row: right; 0th column: bottom',
 	'exif-orientation-8'          => '0th row: left; 0th column: bottom',
-	'autoredircomment'            => 'This should be changed to the new naming convention, but existed beforehand',
 	'movepage-moved'              => 'The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.'
 );
 

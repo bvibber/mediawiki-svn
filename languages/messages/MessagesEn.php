@@ -686,29 +686,30 @@ XHTML id names.
 'versionrequired'     => 'Version $1 of MediaWiki required',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page. See [[Special:Version|version page]].',
 
-'ok'                  => 'OK',
-'sitetitle'           => '{{SITENAME}}', # don't translate or duplicate this message to other languages
-'pagetitle'           => '$1 - {{SITENAME}}',
-'sitesubtitle'        => '', # don't translate or duplicate this message to other languages
-'retrievedfrom'       => 'Retrieved from "$1"',
-'youhavenewmessages'  => 'You have $1 ($2).',
-'newmessageslink'     => 'new messages',
-'newmessagesdifflink' => 'last change',
-'editsection'         => 'edit',
-'editold'             => 'edit',
-'editsectionhint'     => 'Edit section: $1',
-'toc'                 => 'Contents',
-'showtoc'             => 'show',
-'hidetoc'             => 'hide',
-'thisisdeleted'       => 'View or restore $1?',
-'viewdeleted'         => 'View $1?',
-'restorelink'         => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
-'feedlinks'           => 'Feed:',
-'feed-invalid'        => 'Invalid subscription feed type.',
-'feed-atom'           => 'Atom', # only translate this message to other languages if you have to change it
-'feed-rss'            => 'RSS', # only translate this message to other languages if you have to change it
-'sitenotice'          => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
-'anonnotice'          => '-', # don't translate or duplicate this message to other languages
+'ok'                   => 'OK',
+'sitetitle'            => '{{SITENAME}}', # don't translate or duplicate this message to other languages
+'pagetitle'            => '$1 - {{SITENAME}}',
+'sitesubtitle'         => '', # don't translate or duplicate this message to other languages
+'retrievedfrom'        => 'Retrieved from "$1"',
+'youhavenewmessages'   => 'You have $1 ($2).',
+'newmessageslink'      => 'new messages',
+'newmessagesdifflink'  => 'last change',
+'editsection'          => 'edit',
+'editsection-brackets' => '[$1]', # only translate this message to other languages if you have to change it
+'editold'              => 'edit',
+'editsectionhint'      => 'Edit section: $1',
+'toc'                  => 'Contents',
+'showtoc'              => 'show',
+'hidetoc'              => 'hide',
+'thisisdeleted'        => 'View or restore $1?',
+'viewdeleted'          => 'View $1?',
+'restorelink'          => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
+'feedlinks'            => 'Feed:',
+'feed-invalid'         => 'Invalid subscription feed type.',
+'feed-atom'            => 'Atom', # only translate this message to other languages if you have to change it
+'feed-rss'             => 'RSS', # only translate this message to other languages if you have to change it
+'sitenotice'           => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
+'anonnotice'           => '-', # don't translate or duplicate this message to other languages
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Article',
@@ -999,6 +1000,9 @@ Please try again. If it still doesn't work, try logging out and logging back in.
 ''Because this wiki has raw HTML enabled, the preview is hidden as a precaution against JavaScript attacks.''
 
 <strong>If this is a legitimate edit attempt, please try again. If it still doesn't work, try logging out and logging back in.</strong>",
+'token_suffix_mismatch'     => '<strong>Your edit has been rejected because your client mangled the punctuation characters 
+in the edit token. The edit has been rejected to prevent corruption of the article text. 
+This sometimes happens when you are using a buggy web-based anonymous proxy service.</strong>',
 'importing'                 => 'Importing $1',
 'editing'                   => 'Editing $1',
 'editinguser'               => 'Editing user <b>$1</b>',
@@ -1267,18 +1271,18 @@ containing all of the search terms will appear in the result).",
 'files'                    => 'Files',
 
 # User rights
-'userrights-lookup-user'     => 'Manage user groups',
-'userrights-user-editname'   => 'Enter a username:',
-'editusergroup'              => 'Edit User Groups',
-'userrights-editusergroup'   => 'Edit user groups',
-'saveusergroups'             => 'Save User Groups',
-'userrights-groupsmember'    => 'Member of:',
-'userrights-groupsavailable' => 'Available groups:',
-'userrights-groupshelp'      => 'Select groups you want the user to be removed from or added to.
+'userrights-lookup-user'      => 'Manage user groups',
+'userrights-user-editname'    => 'Enter a username:',
+'editusergroup'               => 'Edit User Groups',
+'userrights-editusergroup'    => 'Edit user groups',
+'saveusergroups'              => 'Save User Groups',
+'userrights-groupsmember'     => 'Member of:',
+'userrights-groupsavailable'  => 'Available groups:',
+'userrights-groupshelp'       => 'Select groups you want the user to be removed from or added to.
 Unselected groups will not be changed. You can deselect a group with CTRL + Left Click',
-'userrights-reason'          => 'Reason for change:',
-'userrights-available-none' => 'You may not alter group membership.',
-'userrights-available-add' => 'You can add users to $1.',
+'userrights-reason'           => 'Reason for change:',
+'userrights-available-none'   => 'You may not alter group membership.',
+'userrights-available-add'    => 'You can add users to $1.',
 'userrights-available-remove' => 'You can remove users from $1.',
 
 # Groups
@@ -2853,7 +2857,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Removing all content from page',
 'autosumm-replace' => "Replacing page with '$1'",
-'autoredircomment' => 'Redirecting to [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => 'Redirecting to [[$1]]',
 'autosumm-new'     => 'New page: $1',
 
 # Autoblock whitelist
@@ -2889,16 +2893,11 @@ $1',
 # Live preview
 'livepreview-loading' => 'Loading…',
 'livepreview-ready'   => 'Loading… Ready!',
-'livepreview-failed'  => 'Live preview failed!
-Try normal preview.',
-'livepreview-error'   => 'Failed to connect: $1 "$2"
-Try normal preview.',
+'livepreview-failed'  => 'Live preview failed! Try normal preview.',
+'livepreview-error'   => 'Failed to connect: $1 "$2". Try normal preview.',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Changes newer than $1 seconds may not be shown in this list.',
-'lag-warn-high'   => 'Due to high database server lag, changes newer than $1 seconds
-may not be shown in this list.',
+'lag-warn-high'   => 'Due to high database server lag, changes newer than $1 seconds may not be shown in this list.',
 
 );
-
-
