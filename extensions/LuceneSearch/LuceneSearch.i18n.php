@@ -27,23 +27,7 @@ or you can search the wiki through an external search service:\n",
 	'searchexactcase'       => 'Exact-case search',
 	'searchall'             => 'all',
 	'searchincategory'      => 'incategory',
-	'searchaliases'         => 
-"m|
-mt|Talk
-u|User
-ut|User_talk
-p|Project
-pt|Project_talk
-i|Image
-it|Image_talk
-mw|MediaWiki
-mwt|MediaWiki_talk
-t|Template
-tt|Template_talk
-h|Help
-ht|Help_talk
-c|Category
-ct|Category_talk"
+	'searchaliases'         => ""
 );
 
 $wgLuceneSearchMessages['cs'] = array(
