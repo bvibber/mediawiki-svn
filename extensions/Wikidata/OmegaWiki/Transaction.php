@@ -4,6 +4,7 @@ require_once('Attribute.php');
 require_once('Record.php');
 require_once('RecordSet.php');
 require_once('Wikidata.php');
+
 interface QueryTransactionInformation {
 	public function getRestriction($table);
 	public function getTables();
@@ -14,7 +15,7 @@ interface QueryTransactionInformation {
 	public function setVersioningAttributes($record, $row);
 }
 
-class DefaultQueryTransactionInformation {
+class DefaultQueryTransactionInformation implements QueryTransactionInformation {
 	public function getRestriction($table) {
 		return "1";
 	}

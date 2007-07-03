@@ -32,7 +32,7 @@ function getTransactedSQL($transactionInformation, $selectFields, $table, $restr
 	return $query;
 }
 
-function queryRecordSet($recordSetStructureId, $transactionInformation, $keyAttribute, $fieldAttributeMapping, Table $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
+function queryRecordSet($recordSetStructureId, QueryTransactionInformation $transactionInformation, Attribute $keyAttribute, $fieldAttributeMapping, Table $table, $restrictions, $orderBy = array(), $count = -1, $offset = 0) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$selectFields = array_keys($fieldAttributeMapping);

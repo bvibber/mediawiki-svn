@@ -10,8 +10,7 @@ require_once('RecordSetQueries.php');
 require_once('DefinedMeaningModel.php');
 require_once('ViewInformation.php');
 
-function getSynonymSQLForLanguage($languageId, &$definedMeaningIds) {
-
+function getSynonymSQLForLanguage($languageId, array &$definedMeaningIds) {
 	$dc=wdGetDataSetContext();
 
 	return 
@@ -28,8 +27,7 @@ function getSynonymSQLForLanguage($languageId, &$definedMeaningIds) {
 		" GROUP BY {$dc}_defined_meaning.defined_meaning_id";
 }
 
-function getSynonymSQLForAnyLanguage(&$definedMeaningIds) {
-
+function getSynonymSQLForAnyLanguage(array &$definedMeaningIds) {
 	$dc=wdGetDataSetContext();
 
 	return 
@@ -45,8 +43,7 @@ function getSynonymSQLForAnyLanguage(&$definedMeaningIds) {
 		" GROUP BY {$dc}_defined_meaning.defined_meaning_id";
 }
 
-function getDefiningSQLForLanguage($languageId, &$definedMeaningIds) {
-
+function getDefiningSQLForLanguage($languageId, array &$definedMeaningIds) {
 	$dc=wdGetDataSetContext();
 
 	return 
@@ -64,8 +61,7 @@ function getDefiningSQLForLanguage($languageId, &$definedMeaningIds) {
 		" GROUP BY {$dc}_defined_meaning.defined_meaning_id";
 }
 
-function fetchDefinedMeaningReferenceRecords($sql, &$definedMeaningIds, &$definedMeaningReferenceRecords, $usedAs='defined-meaning') {
-
+function fetchDefinedMeaningReferenceRecords($sql, array &$definedMeaningIds, array &$definedMeaningReferenceRecords, $usedAs='defined-meaning') {
 	$dc=wdGetDataSetContext();
 
 	global
@@ -93,7 +89,7 @@ function fetchDefinedMeaningReferenceRecords($sql, &$definedMeaningIds, &$define
 	$definedMeaningIds = array_diff($definedMeaningIds, $foundDefinedMeaningIds);
 }
 
-function fetchDefinedMeaningDefiningExpressions(&$definedMeaningIds, &$definedMeaningReferenceRecords) {
+function fetchDefinedMeaningDefiningExpressions(array &$definedMeaningIds, array &$definedMeaningReferenceRecords) {
 	global
 		$definedMeaningReferenceStructure, $definedMeaningIdAttribute, $definedMeaningLabelAttribute,
 		$definedMeaningDefiningExpressionAttribute;
@@ -137,7 +133,7 @@ function getNullDefinedMeaningReferenceRecord() {
 	return $record;
 }
 
-function getDefinedMeaningReferenceRecords($definedMeaningIds, $usedAs) {
+function getDefinedMeaningReferenceRecords(array $definedMeaningIds, $usedAs) {
 	global
 		$wgUser;
 	
@@ -200,8 +196,7 @@ function getDefinedMeaningReferenceRecords($definedMeaningIds, $usedAs) {
 	return $result;
 }
 
-function expandDefinedMeaningReferencesInRecordSet($recordSet, $definedMeaningAttributes) {
-
+function expandDefinedMeaningReferencesInRecordSet(RecordSet $recordSet, array $definedMeaningAttributes) {
 	$definedMeaningReferenceRecords=array();
 
 	foreach($definedMeaningAttributes as $dmatt) {
@@ -220,14 +215,14 @@ function expandDefinedMeaningReferencesInRecordSet($recordSet, $definedMeaningAt
 	} 
 }
 
-function expandTranslatedContentInRecord($record, $idAttribute, $translatedContentAttribute, ViewInformation $viewInformation) {
+function expandTranslatedContentInRecord(Record $record, Attribute $idAttribute, Attribute $translatedContentAttribute, ViewInformation $viewInformation) {
 	$record->setAttributeValue(
 		$translatedContentAttribute, 
 		getTranslatedContentValue($record->getAttributeValue($idAttribute), $viewInformation)
 	);
 }
 
-function expandTranslatedContentsInRecordSet($recordSet, $idAttribute, $translatedContentAttribute, ViewInformation $viewInformation) {
+function expandTranslatedContentsInRecordSet(RecordSet $recordSet, Attribute $idAttribute, Attribute $translatedContentAttribute, ViewInformation $viewInformation) {
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) 
 		expandTranslatedContentInRecord($recordSet->getRecord($i), $idAttribute, $translatedContentAttribute, $viewInformation);
 }									
@@ -263,7 +258,7 @@ function getExpressionReferenceRecords($expressionIds) {
 		return array();
 }
 
-function expandExpressionReferencesInRecordSet($recordSet, $expressionAttributes) {
+function expandExpressionReferencesInRecordSet(RecordSet $recordSet, array $expressionAttributes) {
 	$expressionReferenceRecords = getExpressionReferenceRecords(getUniqueIdsInRecordSet($recordSet, $expressionAttributes));
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
@@ -277,7 +272,7 @@ function expandExpressionReferencesInRecordSet($recordSet, $expressionAttributes
 	} 
 }
 
-function getExpressionSpellings($expressionIds) {
+function getExpressionSpellings(array $expressionIds) {
 	global
 		$expressionAttribute;
 	
@@ -303,7 +298,7 @@ function getExpressionSpellings($expressionIds) {
 		return array();
 }
 
-function expandExpressionSpellingsInRecordSet($recordSet, $expressionAttributes) {
+function expandExpressionSpellingsInRecordSet(RecordSet $recordSet, array $expressionAttributes) {
 	$expressionSpellings = getExpressionSpellings(getUniqueIdsInRecordSet($recordSet, $expressionAttributes));
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
@@ -317,8 +312,7 @@ function expandExpressionSpellingsInRecordSet($recordSet, $expressionAttributes)
 	} 
 }
 
-function getTextReferences($textIds) {
-
+function getTextReferences(array $textIds) {
 	$dc=wdGetDataSetContext();
 	if (count($textIds) > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
@@ -339,7 +333,7 @@ function getTextReferences($textIds) {
 		return array();
 }
 
-function expandTextReferencesInRecordSet($recordSet, $textAttributes) {
+function expandTextReferencesInRecordSet(RecordSet $recordSet, array $textAttributes) {
 	$textReferences = getTextReferences(getUniqueIdsInRecordSet($recordSet, $textAttributes));
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
@@ -485,7 +479,7 @@ function getClassAttributesRecordSet($definedMeaningId, ViewInformation $viewInf
 	return $recordSet;
 }
 
-function expandOptionAttributeOptionsInRecordSet($recordSet, $attributeIdAttribute, ViewInformation $viewInformation) {
+function expandOptionAttributeOptionsInRecordSet(RecordSet $recordSet, Attribute $attributeIdAttribute, ViewInformation $viewInformation) {
 	global
 		$definedMeaningIdAttribute, $optionAttributeOptionsAttribute;
 
@@ -663,7 +657,7 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, ViewInformation $v
 	return $recordSet;
 }
 
-function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, ViewInformation $viewInformation) {
+function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $objectIdAttribute, ViewInformation $viewInformation) {
 	global
 		$objectAttributesAttribute, 
 		$textAttributeObjectAttribute, $textAttributeValuesAttribute, 
@@ -776,7 +770,7 @@ function getDefinedMeaningReferenceRecord($definedMeaningId) {
 	return $record;
 }
 
-function getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterRelationTypes, ViewInformation $viewInformation) {
+function getDefinedMeaningRelationsRecordSet($definedMeaningId, array $filterRelationTypes, ViewInformation $viewInformation) {
 	global
 		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, 
 		$objectAttributesAttribute, $otherDefinedMeaningAttribute,
@@ -916,7 +910,7 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, ViewI
 	return $recordSet;
 }
 
-function getTextAttributesValuesRecordSet($objectIds, ViewInformation $viewInformation) {
+function getTextAttributesValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
 		$textAttributeValuesTable, $textAttributeIdAttribute, $textAttributeObjectAttribute,
 		$textAttributeAttribute, $textAttribute, $objectAttributesAttribute,
@@ -946,7 +940,7 @@ function getTextAttributesValuesRecordSet($objectIds, ViewInformation $viewInfor
 	return $recordSet;
 }
 
-function getURLAttributeValuesRecordSet($objectIds, ViewInformation $viewInformation) {
+function getURLAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
 		$urlAttributeValuesTable, $urlAttributeIdAttribute, $urlAttributeObjectAttribute,
 		$urlAttributeAttribute, $urlAttribute, $objectAttributesAttribute,
@@ -976,7 +970,7 @@ function getURLAttributeValuesRecordSet($objectIds, ViewInformation $viewInforma
 	return $recordSet;
 }
 
-function getTranslatedTextAttributeValuesRecordSet($objectIds, ViewInformation $viewInformation) {
+function getTranslatedTextAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
 		$translatedTextAttributeIdAttribute, $translatedContentAttributeValuesTable, $translatedTextAttributeAttribute,
 		$objectAttributesAttribute, $translatedTextAttributeObjectAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute,
@@ -1031,7 +1025,7 @@ function getOptionAttributeOptionsRecordSet($attributeId, ViewInformation $viewI
 	return $recordSet;
 }
 
-function getOptionAttributeValuesRecordSet($objectIds, ViewInformation $viewInformation) {
+function getOptionAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
 		$optionAttributeIdAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionIdAttribute, $optionAttributeAttribute,$optionAttributeOptionAttribute, $optionAttributeValuesTable, $objectAttributesAttribute,
 		$optionAttributeValuesStructure;
@@ -1061,7 +1055,7 @@ function getOptionAttributeValuesRecordSet($objectIds, ViewInformation $viewInfo
 }
 
 /* XXX: This can probably be combined with other functions. In fact, it probably should be. Do it. */
-function expandOptionsInRecordSet($recordSet, ViewInformation $viewInformation) {
+function expandOptionsInRecordSet(RecordSet $recordSet, ViewInformation $viewInformation) {
 	global
 		$optionAttributeOptionIdAttribute, $optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeOptionsTable, $classAttributesTable;
 

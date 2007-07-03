@@ -5,8 +5,8 @@ require_once('RecordHelper.php');
 
 interface Record {
 	public function getStructure();
-	public function getAttributeValue($attribute);
-	public function project($structure);
+	public function getAttributeValue(Attribute $attribute);
+	public function project(Structure $structure);
 }
 
 class ArrayRecord implements Record {
@@ -23,18 +23,18 @@ class ArrayRecord implements Record {
 		return $this->structure;
 	}
 	
-	public function getAttributeValue($attribute) {
+	public function getAttributeValue(Attribute $attribute) {
 		#FIXME: check if valid
 		return @$this->values[$attribute->id];
 	}
 	
 
-	public function project($structure) {
+	public function project(Structure $structure) {
 		$result = project($this, $structure);
 		return $result;
 	}
 
-	public function setAttributeValue($attribute, $value) {
+	public function setAttributeValue(Attribute $attribute, $value) {
 		#FIXME: check if valid
 		@$this->values[$attribute->id] = $value;
 	}
@@ -55,7 +55,7 @@ class ArrayRecord implements Record {
 	 * @param $record Another record object whose values get written into this one
 	 *
 	 */
-	public function setSubRecord($record) {
+	public function setSubRecord(Record $record) {
 		foreach($record->getStructure()->getAttributes() as $attribute)
 			$this->values[$attribute->id] = $record->getAttributeValue($attribute);
 	}
@@ -93,7 +93,7 @@ class ArrayRecord implements Record {
 
 }
 
-function project($record, $structure) {
+function project(Record $record, Structure $structure) {
 	$result = new ArrayRecord($structure);
 	
 	foreach ($structure->getAttributes() as $attribute) {
@@ -109,7 +109,7 @@ function project($record, $structure) {
 	return $result;
 }
 
-function equalRecords($structure, $lhs, $rhs) {
+function equalRecords(Structure $structure, Record $lhs, Record $rhs) {
 	$result = true;
 	$attributes = $structure->getAttributes();
 	$i = 0;
@@ -134,7 +134,7 @@ function equalRecords($structure, $lhs, $rhs) {
 class RecordStack {
 	protected $stack = array();
 	
-	public function push($record) {
+	public function push(Record $record) {
 		$this->stack[] = $record;
 	}
 	
