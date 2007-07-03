@@ -29,7 +29,7 @@ class OmegaWiki extends DefaultWikidataApplication {
 		$spelling = $wgTitle->getText();
 		
 		$wgOut->addHTML(
-			getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, $this->shouldShowAuthorities)->view(
+			getExpressionsEditor($spelling, $this->viewInformation)->view(
 				$this->getIdStack(), 
 				getExpressionsRecordSet($spelling, $this->viewInformation)
 			)
@@ -47,7 +47,7 @@ class OmegaWiki extends DefaultWikidataApplication {
 		$spelling = $wgTitle->getText();
 
 		$wgOut->addHTML(
-			getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, $this->showRecordLifeSpan, false)->view(
+			getExpressionsEditor($spelling, $this->viewInformation)->view(
 				$this->getIdStack(), 
 				getExpressionsRecordSet($spelling, $this->viewInformation)
 			)
@@ -65,7 +65,7 @@ class OmegaWiki extends DefaultWikidataApplication {
 
 		$spelling = $wgTitle->getText();
 		
-		getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
+		getExpressionsEditor($spelling, $this->viewInformation)->save(
 			$this->getIdStack(), 
 			getExpressionsRecordSet($spelling, $this->viewInformation)
 		);
@@ -81,7 +81,7 @@ class OmegaWiki extends DefaultWikidataApplication {
 		$spelling = $wgTitle->getText();
 
 		$wgOut->addHTML(
-			getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->edit(
+			getExpressionsEditor($spelling, $this->viewInformation)->edit(
 				$this->getIdStack(), 
 				getExpressionsRecordSet($spelling, $this->viewInformation)
 			)

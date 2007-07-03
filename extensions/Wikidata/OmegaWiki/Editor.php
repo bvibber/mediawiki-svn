@@ -398,6 +398,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 class RecordSetTableEditor extends RecordSetEditor {
 	protected $rowHTMLAttributes = array();
 	protected $repeatInput = false;
+	protected $hideEmptyColumns = true;
 	
 	protected function getRowAttributesText() {
 		$result = array();
@@ -473,7 +474,11 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$structure = $value->getStructure();
 		$key = $value->getKey();
 		$rowAttributes = $this->getRowAttributesText();
-		$visibleColumnEditors = $this->getColumnEditorsShowingData($this, $value);
+		
+		if ($this->hideEmptyColumns)
+			$visibleColumnEditors = $this->getColumnEditorsShowingData($this, $value);
+		else	
+			$visibleColumnEditors = $this->getAllColumnEditors($this, $value);		
 
 		foreach (getStructureAsTableHeaderRows($this->getTableStructure($this, $visibleColumnEditors), 0, $idPath) as $headerRow)
 			$result .= '<tr>' . $headerRow . '</tr>'.EOL;
@@ -613,6 +618,10 @@ class RecordSetTableEditor extends RecordSetEditor {
 		}
 
 		return new Structure($attributes);
+	}
+	
+	public function setHideEmptyColumns($hideEmptyColumns) {
+		$this->hideEmptyColumns = $hideEmptyColumns;
 	}
 }
 
@@ -1144,7 +1153,7 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 	protected $attributesLevelName;
 	protected $objectIdFetcher;
 
-	public function __construct($attribute, $permissionController, $isAddField, $attributesLevelName, $objectIdFetcher) {
+	public function __construct($attribute, $permissionController, $isAddField, $attributesLevelName, Fetcher $objectIdFetcher) {
 		parent::__construct($attribute, $permissionController, $isAddField);
 
 		$this->attributesLevelName = $attributesLevelName;

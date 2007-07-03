@@ -46,12 +46,16 @@ class DefinedMeaningModel {
 	}
 
 	/*horrible cannibalised hack. Use at own risk*/
+	/* Sorry, don't know what horrible cannibalised hacks are. Therefore I cannot update code properly. 
+	 * Please check if it still works correctly. Peter-Jan Roes.  
+	 */
 	public function save() {
 		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
-		initializeObjectAttributeEditors($this->filterLanguageId, false);
+		initializeObjectAttributeEditors($this->viewInformation);
+
 		$definedMeaningId = $this->getDefinedMeaningID();
 		
-		getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
+		getDefinedMeaningEditor($this->viewInformation)->save(
 			$this->getIdStack($definedMeaningId), 
 			$this->getRecord()
 		);

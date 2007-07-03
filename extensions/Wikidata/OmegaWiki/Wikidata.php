@@ -88,8 +88,6 @@ class DefaultWikidataApplication {
 
 		$wgOut->setPageTitle($title);
 		
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0);	
-		initializeObjectAttributeEditors($this->filterLanguageId, false);		
 		$this->queryTransactionInformation = new QueryLatestTransactionInformation();
 		
 		$viewInformation = new ViewInformation();
@@ -100,6 +98,9 @@ class DefaultWikidataApplication {
 		$viewInformation->queryTransactionInformation = $this->queryTransactionInformation;
 		
 		$this->viewInformation = $viewInformation;
+
+		initializeOmegaWikiAttributes($this->filterLanguageId != 0);	
+		initializeObjectAttributeEditors($viewInformation);		
 	}
 	
 	protected function getDataSetPanel() {
@@ -125,15 +126,15 @@ class DefaultWikidataApplication {
 	}
 
 	protected function save($referenceQueryTransactionInformation) {
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
-		initializeObjectAttributeEditors($this->filterLanguageId, false);
-		
 		$viewInformation = new ViewInformation();
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->queryTransactionInformation = $referenceQueryTransactionInformation; 
 		
 		$this->viewInformation = $viewInformation;
+
+		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
+		initializeObjectAttributeEditors($this->viewInformation);
 	}
 	
 	public function saveWithinTransaction() {
@@ -178,9 +179,6 @@ class DefaultWikidataApplication {
 		if ($this->showLanguageSelector)
 			$wgOut->addHTML($this->getLanguageSelector());
 			
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
-		initializeObjectAttributeEditors($this->filterLanguageId, false, false);
-		
 		$viewInformation = new ViewInformation();
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
@@ -190,6 +188,9 @@ class DefaultWikidataApplication {
 		
 		$this->viewInformation = $viewInformation;
 		
+		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
+		initializeObjectAttributeEditors($this->viewInformation);
+
 		return true;
 	}
 	
@@ -235,17 +236,17 @@ class DefaultWikidataApplication {
 			'history'
 		));
 
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0, true);	
-		initializeObjectAttributeEditors($this->filterLanguageId, $this->showRecordLifeSpan, false);
-
 		$viewInformation = new ViewInformation();
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = $this->showRecordLifeSpan;
-		$viewInformation->showAuthority = $this->shouldShowAuthorities;
+		$viewInformation->showAuthority = false;
 		$viewInformation->queryTransactionInformation = $this->queryTransactionInformation;
 		
 		$this->viewInformation = $viewInformation;
+
+		initializeOmegaWikiAttributes($this->filterLanguageId != 0, true);	
+		initializeObjectAttributeEditors($viewInformation);
 	}
 	
 	protected function outputEditHeader() {

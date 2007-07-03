@@ -30,8 +30,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$dmModel=new DefinedMeaningModel($definedMeaningId,	$this->viewInformation);
 
 		$wgOut->addHTML(
-			getDefinedMeaningEditor(
-				$this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, $this->shouldShowAuthorities)->view(
+			getDefinedMeaningEditor($this->viewInformation)->view(
 				$this->getIdStack($definedMeaningId), 
 				$dmModel->getRecord()
 			)
@@ -51,7 +50,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$dmModel = new DefinedMeaningModel($definedMeaningId, $this->viewInformation);
 		 
 		$wgOut->addHTML(
-			getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->edit(
+			getDefinedMeaningEditor($this->viewInformation)->edit(
 				$this->getIdStack($definedMeaningId), 
 				$dmModel->getRecord()
 			)
@@ -68,7 +67,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		$dmModel=new DefinedMeaningModel($definedMeaningId, $this->viewInformation);
 		$wgOut->addHTML(
-			getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, $this->showRecordLifeSpan, false)->view(
+			getDefinedMeaningEditor($this->viewInformation)->view(
 				new IdStack("defined-meaning"), 
 				$dmModel->getRecord()
 			)
@@ -98,10 +97,10 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		parent::save($referenceQueryTransactionInformation);
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		
-		$dmModel =new DefinedMeaningModel($definedMeaningId, $this->viewInformation); 
+		$dmModel = new DefinedMeaningModel($definedMeaningId, $this->viewInformation); 
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 
-		getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
+		getDefinedMeaningEditor($this->viewInformation)->save(
 			$this->getIdStack($definedMeaningId), 
 			$dmModel->getRecord()
 		);

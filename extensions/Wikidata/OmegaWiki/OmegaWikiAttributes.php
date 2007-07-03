@@ -84,10 +84,13 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	$classMembershipAttribute = new Attribute(null, $wgClassMembershipAttributeName, $classMembershipStructure);
 	
 	global
-		 $possiblySynonymousIdAttribute, $possiblySynonymousAttribute, $wgPossibleSynonymAttributeName, $possiblySynonymousStructure, $possiblySynonymousAttribute, $wgPossiblySynonymousAttributeName, $wgPossiblySynonymousAttributeId;
+		 $possiblySynonymousIdAttribute, 
+		 $possibleSynonymAttribute, 
+		 $wgPossibleSynonymAttributeName, $possiblySynonymousStructure, $possiblySynonymousAttribute, 
+		 $wgPossiblySynonymousAttributeName, $wgPossiblySynonymousAttributeId;
 		 
 	$possiblySynonymousIdAttribute = new Attribute("possibly-synonymous-id", "Possibly synonymous id", "integer");	 
-	$possiblySynonymousAttribute = new Attribute("possible-synonym", $wgPossibleSynonymAttributeName, $definedMeaningReferenceStructure);
+	$possibleSynonymAttribute = new Attribute("possible-synonym", $wgPossibleSynonymAttributeName, $definedMeaningReferenceStructure);
 	$possiblySynonymousStructure = new Structure("possibly-synonymous", $possiblySynonymousIdAttribute, $possiblySynonymousAttribute);
 	$possiblySynonymousAttribute = new Attribute(null, $wgPossiblySynonymousAttributeName, $possiblySynonymousStructure);
 

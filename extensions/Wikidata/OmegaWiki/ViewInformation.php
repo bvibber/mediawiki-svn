@@ -2,8 +2,8 @@
 
 /**
  * ViewInformation is used to capture various settings that influence the way a page will be viewed
- * depending on different use case scenarios. For instance, by specifying a filterLanguageId a page
- * with be filtered entirely on one language, collapsing record sets to records where appropiate.
+ * depending on different use case scenarios. For instance, by specifying a filterLanguageId, a page
+ * will be filtered entirely on one language, collapsing record sets to records where appropiate.
  * 
  * A ViewInformation can be constructed based on various conditions. The language filtering for instance
  * could be an application wide setting, or a setting that can be controlled by the user. Functions that
