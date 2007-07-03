@@ -6,17 +6,17 @@ require_once('RecordSet.php');
 require_once('Wikidata.php');
 
 interface QueryTransactionInformation {
-	public function getRestriction($table);
+	public function getRestriction(Table $table);
 	public function getTables();
 	public function versioningAttributes();
 	public function versioningFields($tableName);
 	public function versioningOrderBy();
-	public function versioningGroupBy($table);
-	public function setVersioningAttributes($record, $row);
+	public function versioningGroupBy(Table $table);
+	public function setVersioningAttributes(Record $record, $row);
 }
 
 class DefaultQueryTransactionInformation implements QueryTransactionInformation {
-	public function getRestriction($table) {
+	public function getRestriction(Table $table) {
 		return "1";
 	}
 	
@@ -36,11 +36,11 @@ class DefaultQueryTransactionInformation implements QueryTransactionInformation 
 		return array();
 	}
 	
-	public function versioningGroupBy($table) {
+	public function versioningGroupBy(Table $table) {
 		return array();
 	}
 	
-	public function setVersioningAttributes($record, $row) {
+	public function setVersioningAttributes(Record $record, $row) {
 	}
 
 	public function __toString() {
@@ -49,11 +49,11 @@ class DefaultQueryTransactionInformation implements QueryTransactionInformation 
 }
 
 class QueryLatestTransactionInformation extends DefaultQueryTransactionInformation {
-	public function getRestriction($table) {
+	public function getRestriction(Table $table) {
 		return getLatestTransactionRestriction($table->identifier);
 	}
 	
-	public function setVersioningAttributes($record, $row) {
+	public function setVersioningAttributes(Record $record, $row) {
 	}
 }
 
@@ -73,7 +73,7 @@ class QueryHistoryTransactionInformation extends DefaultQueryTransactionInformat
 		return array('is_live DESC', 'add_transaction_id DESC');
 	}
 	
-	public function setVersioningAttributes($record, $row) {
+	public function setVersioningAttributes(Record $record, $row) {
 		global
 			$recordLifeSpanAttribute;
 			
@@ -90,7 +90,7 @@ class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 		$this->addAttributes = $addAttributes;
 	}
 	
-	public function getRestriction($table) {
+	public function getRestriction(Table $table) {
 		return getAtTransactionRestriction($table->identifier, $this->transactionId);
 	}
 	
@@ -108,7 +108,7 @@ class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 		return array($tableName . '.add_transaction_id', $tableName . '.remove_transaction_id', $tableName . '.remove_transaction_id IS NULL AS is_live');
 	}
 	
-	public function setVersioningAttributes($record, $row) {
+	public function setVersioningAttributes(Record $record, $row) {
 		global
 			$recordLifeSpanAttribute;
 			
@@ -124,7 +124,7 @@ class QueryUpdateTransactionInformation extends DefaultQueryTransactionInformati
 		$this->transactionId = $transactionId;
 	}
 	
-	public function getRestriction($table) {
+	public function getRestriction(Table $table) {
 		return 
 			" " . $table->identifier . ".add_transaction_id =". $this->transactionId . 
 			" OR " . $table->identifier . ".removeTransactionId =" . $this->transactionId;
@@ -160,7 +160,7 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 		$this->showCommunityContribution = $showCommunityContribution;
 	}
 	
-	protected function getKeyFieldRestrictions($table, $prefix) {
+	protected function getKeyFieldRestrictions(Table $table, $prefix) {
 		$result = array();
 		
 		foreach ($table->keyFields as $keyField)
@@ -169,8 +169,7 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 		return implode(" AND ", $result);
 	}
 	
-	public function getRestriction($table) {
-
+	public function getRestriction(Table $table) {
 		$dc=wdGetDataSetContext();
 		$result =  
 			$table->identifier . ".add_transaction_id={$dc}_transactions.transaction_id";
@@ -253,7 +252,7 @@ class QueryAuthoritativeContributorTransactionInformation extends DefaultQueryTr
 		return array("{$dc}_transactions.user_id", $tableName . '.add_transaction_id');
 	}
 
-	public function setVersioningAttributes($record, $row) {
+	public function setVersioningAttributes(Record $record, $row) {
 		global
 			$authorityAttribute;
 			
