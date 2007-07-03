@@ -22,7 +22,7 @@ function getDM($definedMeaningId,$dc="uw") {
 	$viewInformation->queryTransactionInformation= new QueryLatestTransactionInformation();
 	$model=new DefinedMeaningModel($definedMeaningId, $viewInformation);
 	$record=$model->getRecord();
-	$record->finish("DefinedMeaning");
+	#$record->finish("DefinedMeaning");
 	return $model;
 }
 
@@ -44,12 +44,10 @@ $wgCommandLineMode = true;
 /* insert code here */
 
 $model=getDM(663672,"uw");
+saveDM($model,"tt");
 
 #$record=$model->getRecord();
 #echo $record;
-
-SaveDM($model,"tt");
-
 
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 
