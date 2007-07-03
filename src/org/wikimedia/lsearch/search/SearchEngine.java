@@ -167,7 +167,7 @@ public class SearchEngine {
 						
 			TopDocs hits=null;
 			// see if we can search only part of the index
-			if(nsfw!=null && (iid.isMainPart() || iid.isNssplit())){
+			if(nsfw!=null && (iid.isMainsplit() || iid.isNssplit())){
 				String part = null;
 				for(NamespaceFilter f : nsfw.getFilter().decompose()){
 					if(part == null)
