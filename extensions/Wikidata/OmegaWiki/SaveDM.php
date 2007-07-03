@@ -1,6 +1,9 @@
 <?php
 
 # let's see...
+# start out with a test skeleton, get a record from one dataset
+# then save it to the other. Once this works, we can wrap it up nicely, and 
+# apply it to our actual code.
 
 define('MEDIAWIKI', true );
 
@@ -18,9 +21,9 @@ function getDM($definedMeaningId,$dc="uw") {
 	global 
 		$wdCurrentContext;
 	$wdCurrentContext=$dc;
-	$viewInformation = new ViewInformation();
-	$viewInformation->queryTransactionInformation= new QueryLatestTransactionInformation();
-	$model=new DefinedMeaningModel($definedMeaningId, $viewInformation);
+	#$viewInformation = new ViewInformation();
+	#$viewInformation->queryTransactionInformation= new QueryLatestTransactionInformation();
+	$model=new DefinedMeaningModel($definedMeaningId);
 	$record=$model->getRecord();
 	#$record->finish("DefinedMeaning");
 	return $model;
@@ -44,10 +47,10 @@ $wgCommandLineMode = true;
 /* insert code here */
 
 $model=getDM(663672,"uw");
-saveDM($model,"tt");
+#saveDM($model,"tt");
 
-#$record=$model->getRecord();
-#echo $record;
+$record=$model->getRecord();
+echo $record;
 
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 

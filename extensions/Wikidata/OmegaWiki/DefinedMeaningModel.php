@@ -6,22 +6,38 @@ require_once('OmegaWikiAttributes.php');
 require_once("Transaction.php");
 require_once("WikiDataAPI.php");
 
-
+/** A front end for the database information/ArrayRecord and any other information
+ * to do with defined meanings (as per MVC)
+ * Will collect code for instantiating and loading and saving DMs here for now.
+ */
 class DefinedMeaningModel {
 
 	protected $record=null;
 	protected $definedMeaningID=null;
 
-	public function __construct($definedMeaningId, $viewInformation) {
+	/**
+	 *Construct a new DefinedMeaningModel for a particular defined meaning
+ 	 * will fetch the appropriate record for the provided definedMeaningId
+	 * you can't use this to construct a new DM from scratch (yet)
+	 * you can't (yet) provide a dataset-context ($dc) 
+	 * @param $definedMeaningId	the database ID of the DM 
+	 * @param $viewInformation	Specify specific ViewInformation, if needed.
+         */
+	public function __construct($definedMeaningId, $viewInformation=null) {
 
-		wfDebug("definedMeaningId:$definedMeaningId, filterLanguageId:$viewInformation->filterLanguageId, possiblySynonymousRelationTypeId:$viewInformation->possiblySynonymousRelationTypeId, queryTransactionInformation:$viewInformation->queryTransactionInformation\n");
 		global
 			$definedMeaningAttribute, $definitionAttribute, $classAttributesAttribute, 
 			$alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 			$relationsAttribute, $reciprocalRelationsAttribute,
 			$classMembershipAttribute, $collectionMembershipAttribute, $definedMeaningAttributesAttribute,
 			$possiblySynonymousAttribute;
+		
+		if (is_null($viewInformation)) {	
+			$viewInformation = new ViewInformation();
+			$viewInformation->queryTransactionInformation= new QueryLatestTransactionInformation();
+		}
 	
+		#wfDebug("definedMeaningId:$definedMeaningId, filterLanguageId:$viewInformation->filterLanguageId, possiblySynonymousRelationTypeId:$viewInformation->possiblySynonymousRelationTypeId, queryTransactionInformation:$viewInformation->queryTransactionInformation\n");
 		$this->setDefinedMeaningID($definedMeaningId);
 		$record = new ArrayRecord($definedMeaningAttribute->type);
 		$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $viewInformation));
