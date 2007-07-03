@@ -82,6 +82,7 @@ public class IncrementalUpdater {
 		boolean notification = true;
 		HashSet<String> excludeList = new HashSet<String>();
 		HashSet<String> firstPass = new HashSet<String>(); // if dbname is here, then it's our update pass
+		String defaultTimestamp = "2001-01-01";
 		boolean fetchReferences = true;
 		// args
 		for(int i=0; i<args.length; i++){
@@ -91,6 +92,8 @@ public class IncrementalUpdater {
 				sleepTime = Long.parseLong(args[++i])*1000;
 			else if(args[i].equals("-t"))
 				timestamp = args[++i];
+			else if(args[i].equals("-dt"))
+				defaultTimestamp = args[++i];
 			else if(args[i].equals("-f"))
 				dblist = args[++i];
 			else if(args[i].equals("-e"))
@@ -127,7 +130,8 @@ public class IncrementalUpdater {
 			System.out.println("Options:");
 			System.out.println("  -d   - daemonize, otherwise runs only one round of updates to dbs");
 			System.out.println("  -s   - sleep time in seconds after one cycle (default: "+sleepTime+"ms)");
-			System.out.println("  -t   - timestamp to start from (if status is missing default: "+timestamp+")");
+			System.out.println("  -t   - timestamp to start from");
+			System.out.println("  -dt  - default timestamp (default: "+defaultTimestamp+")");
 			System.out.println("  -f   - dblist file, one dbname per line");
 			System.out.println("  -n   - wait for notification of flush after done updating one db (default: "+notification+")");
 			System.out.println("  -e   - exclude dbname from incremental updates (overrides -f)");
@@ -171,7 +175,7 @@ public class IncrementalUpdater {
 					if(firstPass.contains(dbname) && timestamp!=null)
 						from = timestamp;
 					else
-						from = status.getProperty("timestamp","2001-01-01");
+						from = status.getProperty("timestamp",defaultTimestamp);
 					log.info("Resuming update of "+iid+" from "+from);
 					ArrayList<IndexUpdateRecord> records = harvester.getRecords(from);
 					if(records.size() == 0)
