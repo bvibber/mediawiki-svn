@@ -27,11 +27,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		
 		$wgOut->addHTML($this->getConceptPanel());
 
-		$dmModel=new DefinedMeaningModel(
-				$definedMeaningId, 
-				$this->filterLanguageId,
-				$this->possiblySynonymousRelationTypeId, 
-				$this->viewQueryTransactionInformation);
+		$dmModel=new DefinedMeaningModel($definedMeaningId,	$this->viewInformation);
 
 		$wgOut->addHTML(
 			getDefinedMeaningEditor(
@@ -52,12 +48,8 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 
 		$this->outputEditHeader();
-		$dmModel=new DefinedMeaningModel(
-			$definedMeaningId, 
-			$this->filterLanguageId, 
-			$this->possiblySynonymousRelationTypeId, 
-			new QueryLatestTransactionInformation()
-		);
+		$dmModel = new DefinedMeaningModel($definedMeaningId, $this->viewInformation);
+		 
 		$wgOut->addHTML(
 			getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->edit(
 				$this->getIdStack($definedMeaningId), 
@@ -74,12 +66,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		parent::history();
 
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$dmModel=new DefinedMeaningModel(
-					$definedMeaningId, 
-					$this->filterLanguageId, 
-					$this->possiblySynonymousRelationTypeId, 
-					$this->queryTransactionInformation
-				);
+		$dmModel=new DefinedMeaningModel($definedMeaningId, $this->viewInformation);
 		$wgOut->addHTML(
 			getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, $this->showRecordLifeSpan, false)->view(
 				new IdStack("defined-meaning"), 
@@ -99,31 +86,21 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$wgTitle;
 	
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$dmModel=new DefinedMeaningModel(
-			$definedMeaningId, 
-			$this->filterLanguageId,
-			$this->possiblySynonymousRelationTypeId, 
-			$this->viewQueryTransactionInformation
-		);
+		$dmModel = new DefinedMeaningModel($definedMeaningId, $this->viewInformation);
 		$record=$dmModel->getRecord();
 		return $record;
 	}
 
-	protected function save($referenceTransaction) {
+	protected function save($referenceQueryTransactionInformation) {
 		global
 			$wgTitle;
 
-		parent::save($referenceTransaction);
+		parent::save($referenceQueryTransactionInformation);
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 		
-		$dmModel=new DefinedMeaningModel(
-			$definedMeaningId, 
-			$this->filterLanguageId,
-			$this->possiblySynonymousRelationTypeId, 
-			$referenceTransaction
-		);
-
+		$dmModel =new DefinedMeaningModel($definedMeaningId, $this->viewInformation); 
 		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
+
 		getDefinedMeaningEditor($this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
 			$this->getIdStack($definedMeaningId), 
 			$dmModel->getRecord()

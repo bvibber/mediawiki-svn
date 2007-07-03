@@ -76,7 +76,7 @@ abstract class Helper {
 	}
 	
 	public function getRecord() {
-		return $record;
+		return $this->record;
 	}
 
 	# should probably be abstract. Making non-abstract

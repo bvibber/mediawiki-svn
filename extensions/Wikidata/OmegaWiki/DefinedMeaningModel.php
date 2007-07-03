@@ -12,9 +12,9 @@ class DefinedMeaningModel {
 	protected $record=null;
 	protected $definedMeaningID=null;
 
-	public function __construct($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
+	public function __construct($definedMeaningId, $viewInformation) {
 
-		wfDebug("definedMeaningId:$definedMeaningId, filterLanguageId:$filterLanguageId, possiblySynonymousRelationTypeId:$possiblySynonymousRelationTypeId, queryTransactionInformation:$queryTransactionInformation\n");
+		wfDebug("definedMeaningId:$definedMeaningId, filterLanguageId:$viewInformation->filterLanguageId, possiblySynonymousRelationTypeId:$viewInformation->possiblySynonymousRelationTypeId, queryTransactionInformation:$viewInformation->queryTransactionInformation\n");
 		global
 			$definedMeaningAttribute, $definitionAttribute, $classAttributesAttribute, 
 			$alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
@@ -24,23 +24,23 @@ class DefinedMeaningModel {
 	
 		$this->setDefinedMeaningID($definedMeaningId);
 		$record = new ArrayRecord($definedMeaningAttribute->type);
-		$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
-		$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation));
-		$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
-		$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
+		$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $viewInformation));
+		$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($definedMeaningId, $viewInformation));
+		$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $viewInformation));
+		$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($definedMeaningId, $viewInformation));
 		
 		$filterRelationTypes = array();
 	
-		if ($possiblySynonymousRelationTypeId != 0) {
-			$record->setAttributeValue($possiblySynonymousAttribute, getPossiblySynonymousRecordSet($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation));
-			$filterRelationTypes[] = $possiblySynonymousRelationTypeId;
+		if ($viewInformation->possiblySynonymousRelationTypeId != 0) {
+			$record->setAttributeValue($possiblySynonymousAttribute, getPossiblySynonymousRecordSet($definedMeaningId, $viewInformation));
+			$filterRelationTypes[] = $viewInformation->possiblySynonymousRelationTypeId;
 		}
 		
-		$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageId, $filterRelationTypes, $queryTransactionInformation));
-		$record->setAttributeValue($reciprocalRelationsAttribute, getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
-		$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
-		$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation));
-		$record->setAttributeValue($definedMeaningAttributesAttribute, getObjectAttributesRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation));
+		$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterRelationTypes, $viewInformation));
+		$record->setAttributeValue($reciprocalRelationsAttribute, getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $viewInformation));
+		$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $viewInformation));
+		$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $viewInformation));
+		$record->setAttributeValue($definedMeaningAttributesAttribute, getObjectAttributesRecord($definedMeaningId, $viewInformation));
 		$this->record=$record;
 	
 	}

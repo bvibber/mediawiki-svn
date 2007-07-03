@@ -8,6 +8,7 @@ require_once('Transaction.php');
 require_once('WikiDataTables.php');
 require_once('RecordSetQueries.php');
 require_once('DefinedMeaningModel.php');
+require_once('ViewInformation.php');
 
 function getSynonymSQLForLanguage($languageId, &$definedMeaningIds) {
 
@@ -219,16 +220,16 @@ function expandDefinedMeaningReferencesInRecordSet($recordSet, $definedMeaningAt
 	} 
 }
 
-function expandTranslatedContentInRecord($record, $idAttribute, $translatedContentAttribute, $filterLanguageId, $queryTransactionInformation) {
+function expandTranslatedContentInRecord($record, $idAttribute, $translatedContentAttribute, ViewInformation $viewInformation) {
 	$record->setAttributeValue(
 		$translatedContentAttribute, 
-		getTranslatedContentValue($record->getAttributeValue($idAttribute), $filterLanguageId, $queryTransactionInformation)
+		getTranslatedContentValue($record->getAttributeValue($idAttribute), $viewInformation)
 	);
 }
 
-function expandTranslatedContentsInRecordSet($recordSet, $idAttribute, $translatedContentAttribute, $filterLanguageId, $queryTransactionInformation) {
+function expandTranslatedContentsInRecordSet($recordSet, $idAttribute, $translatedContentAttribute, ViewInformation $viewInformation) {
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) 
-		expandTranslatedContentInRecord($recordSet->getRecord($i), $idAttribute, $translatedContentAttribute, $filterLanguageId, $queryTransactionInformation);
+		expandTranslatedContentInRecord($recordSet->getRecord($i), $idAttribute, $translatedContentAttribute, $viewInformation);
 }									
 
 function getExpressionReferenceRecords($expressionIds) {
@@ -352,7 +353,7 @@ function expandTextReferencesInRecordSet($recordSet, $textAttributes) {
 	} 
 }
 
-function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
+function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, ViewInformation $viewInformation) {
 	global
 		$expressionMeaningStructure, $definedMeaningIdAttribute;
 
@@ -370,7 +371,7 @@ function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLan
 
 	while($definedMeaning = $dbr->fetchObject($queryResult)) {
 		$definedMeaningId = $definedMeaning->defined_meaning_id;
-		$dmModel=new DefinedMeaningModel($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation);
+		$dmModel=new DefinedMeaningModel($definedMeaningId, $viewInformation);
 		$recordSet->addRecord(
 			array(
 				$definedMeaningId, 
@@ -383,27 +384,24 @@ function getExpressionMeaningsRecordSet($expressionId, $exactMeaning, $filterLan
 	return $recordSet;
 }
 
-function getExpressionMeaningsRecord($expressionId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
+function getExpressionMeaningsRecord($expressionId, ViewInformation $viewInformation) {
 	global
 		$expressionMeaningsStructure, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute;
 		
 	$record = new ArrayRecord($expressionMeaningsStructure);
-	$record->setAttributeValue($expressionExactMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, true, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation));
-	$record->setAttributeValue($expressionApproximateMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, false, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation));
+	$record->setAttributeValue($expressionExactMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, true, $viewInformation));
+	$record->setAttributeValue($expressionApproximateMeaningsAttribute, getExpressionMeaningsRecordSet($expressionId, false, $viewInformation));
 	
 	return $record;
 }
 
-function getExpressionsRecordSet($spelling, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
+function getExpressionsRecordSet($spelling, ViewInformation $viewInformation) {
 	global
 		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute, $expressionsStructure;
 
 	$dc=wdGetDataSetContext();
 
-	if ($filterLanguageId != 0)
-		$languageRestriction = " AND language_id=$filterLanguageId";
-	else
-		$languageRestriction = "";
+	$languageRestriction = $viewInformation->filterLanguageId != 0 ? " AND language_id=". $viewInformation->filterLanguageId : "";
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -430,7 +428,7 @@ function getExpressionsRecordSet($spelling, $filterLanguageId, $possiblySynonymo
 		$result->addRecord(array(
 			$expression->expression_id, 
 			$expressionRecord, 
-			getExpressionMeaningsRecord($expression->expression_id, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation)
+			getExpressionMeaningsRecord($expression->expression_id, $viewInformation)
 		));
 	}
 
@@ -462,14 +460,14 @@ function getExpressionIdThatHasSynonyms($spelling, $languageId) {
 }
  
 
-function getClassAttributesRecordSet($definedMeaningId, $queryTransactionInformation) {
+function getClassAttributesRecordSet($definedMeaningId, ViewInformation $viewInformation) {
 	global
 		$classAttributesTable, $classAttributeIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute, $optionAttributeOptionsAttribute,
 		$classAttributesStructure;
 
 	$recordSet = queryRecordSet(
 		$classAttributesStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$classAttributeIdAttribute,
 		array(
 			'object_id' => $classAttributeIdAttribute,
@@ -482,30 +480,30 @@ function getClassAttributesRecordSet($definedMeaningId, $queryTransactionInforma
 	);
 	
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($classAttributeLevelAttribute ,$classAttributeAttributeAttribute));
-	expandOptionAttributeOptionsInRecordSet($recordSet, $classAttributeIdAttribute, $queryTransactionInformation);
+	expandOptionAttributeOptionsInRecordSet($recordSet, $classAttributeIdAttribute, $viewInformation);
 
 	return $recordSet;
 }
 
-function expandOptionAttributeOptionsInRecordSet($recordSet, $attributeIdAttribute, $queryTransactionInformation) {
+function expandOptionAttributeOptionsInRecordSet($recordSet, $attributeIdAttribute, ViewInformation $viewInformation) {
 	global
 		$definedMeaningIdAttribute, $optionAttributeOptionsAttribute;
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
 
-		$record->setAttributeValue($optionAttributeOptionsAttribute, getOptionAttributeOptionsRecordSet($record->getAttributeValue($attributeIdAttribute), $queryTransactionInformation));
+		$record->setAttributeValue($optionAttributeOptionsAttribute, getOptionAttributeOptionsRecordSet($record->getAttributeValue($attributeIdAttribute), $viewInformation));
 	}
 }
 
-function getAlternativeDefinitionsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
+function getAlternativeDefinitionsRecordSet($definedMeaningId, ViewInformation $viewInformation) {
 	global
 		$alternativeDefinitionsTable, $definitionIdAttribute, $alternativeDefinitionAttribute, $sourceAttribute,
 		$alternativeDefinitionsStructure;
 
 	$recordSet = queryRecordSet(
 		$alternativeDefinitionsStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$definitionIdAttribute,
 		array(
 			'meaning_text_tcid' => $definitionIdAttribute, 
@@ -517,56 +515,55 @@ function getAlternativeDefinitionsRecordSet($definedMeaningId, $filterLanguageId
 
 	$recordSet->getStructure()->addAttribute($alternativeDefinitionAttribute);
 	
-	expandTranslatedContentsInRecordSet($recordSet, $definitionIdAttribute, $alternativeDefinitionAttribute, $filterLanguageId, $queryTransactionInformation);									
+	expandTranslatedContentsInRecordSet($recordSet, $definitionIdAttribute, $alternativeDefinitionAttribute, $viewInformation);									
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($sourceAttribute));
 
 	return $recordSet;
 }
 
-function getDefinedMeaningDefinitionRecord($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
+function getDefinedMeaningDefinitionRecord($definedMeaningId, ViewInformation $viewInformation) {
 	global
 		$definitionAttribute, $translatedTextAttribute, $objectAttributesAttribute;
 		
 	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
 	$record = new ArrayRecord(new Structure($definitionAttribute));
-	$record->setAttributeValue($translatedTextAttribute, getTranslatedContentValue($definitionId, $filterLanguageId, $queryTransactionInformation));
-	$record->setAttributeValue($objectAttributesAttribute, getObjectAttributesRecord($definitionId, $filterLanguageId, $queryTransactionInformation,$objectAttributesAttribute->id));
+	$record->setAttributeValue($translatedTextAttribute, getTranslatedContentValue($definitionId, $viewInformation));
+	$record->setAttributeValue($objectAttributesAttribute, getObjectAttributesRecord($definitionId, $viewInformation, $objectAttributesAttribute->id));
 
 	return $record;
 }
 
-function getObjectAttributesRecord($objectId, $filterLanguageId, $queryTransactionInformation, $structuralOverride=null) {
+function getObjectAttributesRecord($objectId, ViewInformation $viewInformation, $structuralOverride = null) {
 	global
 		$objectAttributesAttribute, $objectIdAttribute, 
 		$urlAttributeValuesAttribute, $textAttributeValuesAttribute, 
 		$translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute,
 		$definedMeaningAttributesAttribute; 
 
-	if($structuralOverride) {		
+	if ($structuralOverride) 
 		$record = new ArrayRecord(new Structure($structuralOverride,$definedMeaningAttributesAttribute));
-	} else {
+	else 
 		$record = new ArrayRecord(new Structure($definedMeaningAttributesAttribute));
-	}
 	
 	$record->setAttributeValue($objectIdAttribute, $objectId);
-	$record->setAttributeValue($textAttributeValuesAttribute, getTextAttributesValuesRecordSet(array($objectId), $filterLanguageId, $queryTransactionInformation));
-	$record->setAttributeValue($translatedTextAttributeValuesAttribute, getTranslatedTextAttributeValuesRecordSet(array($objectId), $filterLanguageId, $queryTransactionInformation));
-	$record->setAttributeValue($urlAttributeValuesAttribute, getURLAttributeValuesRecordSet(array($objectId), $filterLanguageId, $queryTransactionInformation));	
-	$record->setAttributeValue($optionAttributeValuesAttribute, getOptionAttributeValuesRecordSet(array($objectId), $filterLanguageId, $queryTransactionInformation));	
+	$record->setAttributeValue($textAttributeValuesAttribute, getTextAttributesValuesRecordSet(array($objectId), $viewInformation));
+	$record->setAttributeValue($translatedTextAttributeValuesAttribute, getTranslatedTextAttributeValuesRecordSet(array($objectId), $viewInformation));
+	$record->setAttributeValue($urlAttributeValuesAttribute, getURLAttributeValuesRecordSet(array($objectId), $viewInformation));	
+	$record->setAttributeValue($optionAttributeValuesAttribute, getOptionAttributeValuesRecordSet(array($objectId), $viewInformation));	
 
 	return $record;
 }
 
-function getTranslatedContentValue($translatedContentId, $filterLanguageId, $queryTransactionInformation) {
+function getTranslatedContentValue($translatedContentId, ViewInformation $viewInformation) {
 	global
 		$textAttribute;
 	
-	if ($filterLanguageId == 0)
-		return getTranslatedContentRecordSet($translatedContentId, $queryTransactionInformation);
+	if ($viewInformation->filterLanguageId == 0)
+		return getTranslatedContentRecordSet($translatedContentId, $viewInformation);
 	else {
-		$recordSet = getFilteredTranslatedContentRecordSet($translatedContentId, $filterLanguageId, $queryTransactionInformation);
+		$recordSet = getFilteredTranslatedContentRecordSet($translatedContentId, $viewInformation);
 		
-		if (count($queryTransactionInformation->versioningAttributes()) > 0) 
+		if (count($viewInformation->queryTransactionInformation->versioningAttributes()) > 0) 
 			return $recordSet;
 		else {
 			if ($recordSet->getRecordCount() > 0) 
@@ -577,14 +574,14 @@ function getTranslatedContentValue($translatedContentId, $filterLanguageId, $que
 	}
 }
 
-function getTranslatedContentRecordSet($translatedContentId, $queryTransactionInformation) {
+function getTranslatedContentRecordSet($translatedContentId, ViewInformation $viewInformation) {
 	global
 		$translatedContentTable, $languageAttribute, $textAttribute,
 		$translatedTextStructure;
 
 	$recordSet = queryRecordSet(
 		$translatedTextStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$languageAttribute,
 		array(
 			'language_id' => $languageAttribute, 
@@ -599,13 +596,13 @@ function getTranslatedContentRecordSet($translatedContentId, $queryTransactionIn
 	return $recordSet;
 } 
 
-function getFilteredTranslatedContentRecordSet($translatedContentId, $filterLanguageId, $queryTransactionInformation) {
+function getFilteredTranslatedContentRecordSet($translatedContentId, ViewInformation $viewInformation) {
 	global
 		$translatedContentTable, $languageAttribute, $textAttribute;
 
 	$recordSet = queryRecordSet(
 		null,
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$languageAttribute,
 		array(
 			'language_id' => $languageAttribute, 
@@ -614,7 +611,7 @@ function getFilteredTranslatedContentRecordSet($translatedContentId, $filterLang
 		$translatedContentTable,
 		array(
 			"translated_content_id=$translatedContentId",
-			"language_id=$filterLanguageId"
+			"language_id=" . $viewInformation->filterLanguageId
 		)
 	);
 	
@@ -623,7 +620,7 @@ function getFilteredTranslatedContentRecordSet($translatedContentId, $filterLang
 	return $recordSet;
 }
 
-function getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
+function getSynonymAndTranslationRecordSet($definedMeaningId, ViewInformation $viewInformation) {
 	global
 		$syntransTable, $syntransIdAttribute, $expressionAttribute, $identicalMeaningAttribute, $objectAttributesAttribute,
 		$synonymsTranslationsStructure;
@@ -631,19 +628,19 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId,
 	$dc=wdGetDataSetContext();
 	$restrictions = array("defined_meaning_id=$definedMeaningId");
 	
-	if ($filterLanguageId != 0) 
+	if ($viewInformation->filterLanguageId != 0) 
 		$restrictions[] =
 			"expression_id IN (" .
 				"SELECT expressions.expression_id" .
 				" FROM {$dc}_expression_ns AS expressions" .
 				" WHERE expressions.expression_id=expression_id" .
-				" AND language_id=$filterLanguageId" .
+				" AND language_id=" . $viewInformation->filterLanguageId .
 				" AND " . getLatestTransactionRestriction('expressions') .
 			")";
 	
 	$recordSet = queryRecordSet(
 		$synonymsTranslationsStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$syntransIdAttribute,
 		array(
 			'syntrans_sid' => $syntransIdAttribute, 
@@ -654,7 +651,7 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId,
 		$restrictions
 	);
 	
-	if ($filterLanguageId == 0)
+	if ($viewInformation->filterLanguageId == 0)
 		expandExpressionReferencesInRecordSet($recordSet, array($expressionAttribute));
 	else
 		expandExpressionSpellingsInRecordSet($recordSet, array($expressionAttribute));
@@ -662,11 +659,11 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, $filterLanguageId,
 	//add object attributes attribute to the generated structure 
 	//and expand the records
 	$recordSet->getStructure()->addAttribute($objectAttributesAttribute);
-	expandObjectAttributesAttribute($recordSet, $syntransIdAttribute, $filterLanguageId, $queryTransactionInformation);
+	expandObjectAttributesAttribute($recordSet, $syntransIdAttribute, $viewInformation);
 	return $recordSet;
 }
 
-function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filterLanguageId, $queryTransactionInformation) {
+function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, ViewInformation $viewInformation) {
 	global
 		$objectAttributesAttribute, 
 		$textAttributeObjectAttribute, $textAttributeValuesAttribute, 
@@ -685,7 +682,7 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 		}
 
 		// Text attributes		
-		$allTextAttributeValuesRecordSet = getTextAttributesValuesRecordSet($objectIds, $filterLanguageId, $queryTransactionInformation); 
+		$allTextAttributeValuesRecordSet = getTextAttributesValuesRecordSet($objectIds, $viewInformation); 
 		$textAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allTextAttributeValuesRecordSet,
@@ -695,7 +692,7 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 		$emptyTextAttributesRecordSet = new ArrayRecordSet($allTextAttributeValuesRecordSet->getStructure(), $allTextAttributeValuesRecordSet->getKey());
 		
 		// Translated text attributes	
-		$allTranslatedTextAttributeValuesRecordSet = getTranslatedTextAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTransactionInformation); 
+		$allTranslatedTextAttributeValuesRecordSet = getTranslatedTextAttributeValuesRecordSet($objectIds, $viewInformation); 
 		$translatedTextAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allTranslatedTextAttributeValuesRecordSet,
@@ -705,7 +702,7 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 		$emptyTranslatedTextAttributesRecordSet = new ArrayRecordSet($allTranslatedTextAttributeValuesRecordSet->getStructure(), $allTranslatedTextAttributeValuesRecordSet->getKey());
 
 		// URL attributes		
-		$allURLAttributeValuesRecordSet = getURLAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTransactionInformation); 
+		$allURLAttributeValuesRecordSet = getURLAttributeValuesRecordSet($objectIds, $viewInformation); 
 		$urlAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allURLAttributeValuesRecordSet,
@@ -715,7 +712,7 @@ function expandObjectAttributesAttribute($recordSet, $objectIdAttribute, $filter
 		$emptyURLAttributesRecordSet = new ArrayRecordSet($allURLAttributeValuesRecordSet->getStructure(), $allURLAttributeValuesRecordSet->getKey());
 		
 		// Option attributes		
-		$allOptionAttributeValuesRecordSet = getOptionAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTransactionInformation); 
+		$allOptionAttributeValuesRecordSet = getOptionAttributeValuesRecordSet($objectIds, $viewInformation); 
 		$optionAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allOptionAttributeValuesRecordSet,
@@ -779,7 +776,7 @@ function getDefinedMeaningReferenceRecord($definedMeaningId) {
 	return $record;
 }
 
-function getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageId, $filterRelationTypes, $queryTransactionInformation) {
+function getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterRelationTypes, ViewInformation $viewInformation) {
 	global
 		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, 
 		$objectAttributesAttribute, $otherDefinedMeaningAttribute,
@@ -792,7 +789,7 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageI
 
 	$recordSet = queryRecordSet(
 		$relationStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$relationIdAttribute,
 		array(
 			'relation_id' => $relationIdAttribute, 
@@ -810,12 +807,12 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId, $filterLanguageI
 	//and expand the records
 	$struct=$recordSet->getStructure();
 	$struct->addAttribute($objectAttributesAttribute);
-	expandObjectAttributesAttribute($recordSet, $relationIdAttribute, $filterLanguageId, $queryTransactionInformation);
+	expandObjectAttributesAttribute($recordSet, $relationIdAttribute, $viewInformation);
 	
 	return $recordSet;
 }
 
-function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $filterLanguageId, $queryTransactionInformation) {
+function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, ViewInformation $viewInformation) {
 	global
 		$meaningRelationsTable, $relationIdAttribute, $relationTypeAttribute, 
 		$otherDefinedMeaningAttribute, $objectAttributesAttribute,
@@ -823,7 +820,7 @@ function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $filte
 
 	$recordSet = queryRecordSet(
 		$reciprocalRelationsAttribute->id,
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$relationIdAttribute,
 		array(
 			'relation_id' => $relationIdAttribute, 
@@ -841,19 +838,19 @@ function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, $filte
 	//and expand the records
 	$struct=$recordSet->getStructure();
 	$struct->addAttribute($objectAttributesAttribute);
-	expandObjectAttributesAttribute($recordSet, $relationIdAttribute, $filterLanguageId, $queryTransactionInformation);
+	expandObjectAttributesAttribute($recordSet, $relationIdAttribute, $viewInformation);
 	
 	return $recordSet;
 }
 
-function getPossiblySynonymousRecordSet($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation) {
+function getPossiblySynonymousRecordSet($definedMeaningId, ViewInformation $viewInformation) {
 	global
 		$meaningRelationsTable, $possiblySynonymousIdAttribute, $possibleSynonymAttribute, 
 		$objectAttributesAttribute, $otherDefinedMeaningAttribute;
 
 	$recordSet = queryRecordSet(
 		null,
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$possiblySynonymousIdAttribute,
 		array(
 			'relation_id' => $possiblySynonymousIdAttribute, 
@@ -862,7 +859,7 @@ function getPossiblySynonymousRecordSet($definedMeaningId, $filterLanguageId, $p
 		$meaningRelationsTable,
 		array(
 			"meaning1_mid=$definedMeaningId",
-			"relationtype_mid=" . $possiblySynonymousRelationTypeId
+			"relationtype_mid=" . $viewInformation->possiblySynonymousRelationTypeId
 		),
 		array('add_transaction_id')
 	);
@@ -873,7 +870,7 @@ function getPossiblySynonymousRecordSet($definedMeaningId, $filterLanguageId, $p
 	//and expand the records
 	$struct=$recordSet->getStructure();
 	$struct->addAttribute($objectAttributesAttribute);
-	expandObjectAttributesAttribute($recordSet, $possiblySynonymousIdAttribute, $filterLanguageId, $queryTransactionInformation);
+	expandObjectAttributesAttribute($recordSet, $possiblySynonymousIdAttribute, $viewInformation);
 	
 	return $recordSet;
 }
@@ -889,14 +886,14 @@ function getGotoSourceRecord($record) {
 	return $result;
 }
 
-function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $queryTransactionInformation) {
+function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, ViewInformation $viewInformation) {
 	global
 		$collectionMembershipsTable, $collectionIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute,
 		$gotoSourceAttribute, $collectionMembershipStructure;
 
 	$recordSet = queryRecordSet(
 		$collectionMembershipStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$collectionIdAttribute,
 		array(
 			'collection_id' => $collectionIdAttribute,
@@ -919,7 +916,7 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, $quer
 	return $recordSet;
 }
 
-function getTextAttributesValuesRecordSet($objectIds, $filterLanguageId, $queryTransactionInformation) {
+function getTextAttributesValuesRecordSet($objectIds, ViewInformation $viewInformation) {
 	global
 		$textAttributeValuesTable, $textAttributeIdAttribute, $textAttributeObjectAttribute,
 		$textAttributeAttribute, $textAttribute, $objectAttributesAttribute,
@@ -927,7 +924,7 @@ function getTextAttributesValuesRecordSet($objectIds, $filterLanguageId, $queryT
 
 	$recordSet = queryRecordSet(
 		$textAttributeValuesStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$textAttributeIdAttribute,
 		array(
 			'value_id' => $textAttributeIdAttribute,
@@ -944,12 +941,12 @@ function getTextAttributesValuesRecordSet($objectIds, $filterLanguageId, $queryT
 	//add object attributes attribute to the generated structure 
 	//and expand the records
 	$recordSet->getStructure()->addAttribute($objectAttributesAttribute);
-	expandObjectAttributesAttribute($recordSet, $textAttributeIdAttribute, $filterLanguageId, $queryTransactionInformation);	
+	expandObjectAttributesAttribute($recordSet, $textAttributeIdAttribute, $viewInformation);	
 	
 	return $recordSet;
 }
 
-function getURLAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTransactionInformation) {
+function getURLAttributeValuesRecordSet($objectIds, ViewInformation $viewInformation) {
 	global
 		$urlAttributeValuesTable, $urlAttributeIdAttribute, $urlAttributeObjectAttribute,
 		$urlAttributeAttribute, $urlAttribute, $objectAttributesAttribute,
@@ -957,7 +954,7 @@ function getURLAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTra
 
 	$recordSet = queryRecordSet(
 		$urlAttributeValuesStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$urlAttributeIdAttribute,
 		array(
 			'value_id' => $urlAttributeIdAttribute,
@@ -974,12 +971,12 @@ function getURLAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTra
 	//add object attributes attribute to the generated structure 
 	//and expand the records
 	$recordSet->getStructure()->addAttribute($objectAttributesAttribute);
-	expandObjectAttributesAttribute($recordSet, $urlAttributeIdAttribute, $filterLanguageId, $queryTransactionInformation);	
+	expandObjectAttributesAttribute($recordSet, $urlAttributeIdAttribute, $viewInformation);	
 	
 	return $recordSet;
 }
 
-function getTranslatedTextAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTransactionInformation) {
+function getTranslatedTextAttributeValuesRecordSet($objectIds, ViewInformation $viewInformation) {
 	global
 		$translatedTextAttributeIdAttribute, $translatedContentAttributeValuesTable, $translatedTextAttributeAttribute,
 		$objectAttributesAttribute, $translatedTextAttributeObjectAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute,
@@ -987,7 +984,7 @@ function getTranslatedTextAttributeValuesRecordSet($objectIds, $filterLanguageId
 
 	$recordSet = queryRecordSet(
 		$translatedTextAttributeValuesStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$translatedTextAttributeIdAttribute,
 		array(
 			'value_id' => $translatedTextAttributeIdAttribute,
@@ -1001,23 +998,23 @@ function getTranslatedTextAttributeValuesRecordSet($objectIds, $filterLanguageId
 	
 	$recordSet->getStructure()->addAttribute($translatedTextValueAttribute);
 	
-	expandTranslatedContentsInRecordSet($recordSet, $translatedTextValueIdAttribute, $translatedTextValueAttribute, $filterLanguageId, $queryTransactionInformation);
+	expandTranslatedContentsInRecordSet($recordSet, $translatedTextValueIdAttribute, $translatedTextValueAttribute, $viewInformation);
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($translatedTextAttributeAttribute));
 
 	//add object attributes attribute to the generated structure 
 	//and expand the records
 	$recordSet->getStructure()->addAttribute($objectAttributesAttribute);
-	expandObjectAttributesAttribute($recordSet, $translatedTextAttributeIdAttribute, $filterLanguageId, $queryTransactionInformation);
+	expandObjectAttributesAttribute($recordSet, $translatedTextAttributeIdAttribute, $viewInformation);
 	return $recordSet;
 }
 
-function getOptionAttributeOptionsRecordSet($attributeId, $queryTransactionInformation) {
+function getOptionAttributeOptionsRecordSet($attributeId, ViewInformation $viewInformation) {
 	global
 		$optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $languageAttribute, $optionAttributeOptionsTable;
 
 	$recordSet = queryRecordSet(
 		null,
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$optionAttributeOptionIdAttribute,
 		array(
 			'option_id' => $optionAttributeOptionIdAttribute,
@@ -1034,14 +1031,14 @@ function getOptionAttributeOptionsRecordSet($attributeId, $queryTransactionInfor
 	return $recordSet;
 }
 
-function getOptionAttributeValuesRecordSet($objectIds, $filterLanguageId, $queryTransactionInformation) {
+function getOptionAttributeValuesRecordSet($objectIds, ViewInformation $viewInformation) {
 	global
 		$optionAttributeIdAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionIdAttribute, $optionAttributeAttribute,$optionAttributeOptionAttribute, $optionAttributeValuesTable, $objectAttributesAttribute,
 		$optionAttributeValuesStructure;
 
 	$recordSet = queryRecordSet(
 		$optionAttributeValuesStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$optionAttributeIdAttribute,
 		array(
 			'value_id' => $optionAttributeIdAttribute,
@@ -1052,19 +1049,19 @@ function getOptionAttributeValuesRecordSet($objectIds, $filterLanguageId, $query
 		array("object_id IN (" . implode(", ", $objectIds) . ")")
 	);
 
-	expandOptionsInRecordSet($recordSet, $queryTransactionInformation);
+	expandOptionsInRecordSet($recordSet, $viewInformation);
 	expandDefinedMeaningReferencesInRecordSet($recordSet, array($optionAttributeAttribute, $optionAttributeOptionAttribute));
 
 	/* Add object attributes attribute to the generated structure
 		and expand the records. */
 	$recordSet->getStructure()->addAttribute($objectAttributesAttribute);
-	expandObjectAttributesAttribute($recordSet, $optionAttributeIdAttribute, $filterLanguageId, $queryTransactionInformation);
+	expandObjectAttributesAttribute($recordSet, $optionAttributeIdAttribute, $viewInformation);
 
 	return $recordSet;
 }
 
 /* XXX: This can probably be combined with other functions. In fact, it probably should be. Do it. */
-function expandOptionsInRecordSet($recordSet, $queryTransactionInformation) {
+function expandOptionsInRecordSet($recordSet, ViewInformation $viewInformation) {
 	global
 		$optionAttributeOptionIdAttribute, $optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeOptionsTable, $classAttributesTable;
 
@@ -1073,7 +1070,7 @@ function expandOptionsInRecordSet($recordSet, $queryTransactionInformation) {
 
 		$optionRecordSet = queryRecordSet(
 			null,
-			$queryTransactionInformation,
+			$viewInformation->queryTransactionInformation,
 			$optionAttributeOptionIdAttribute,
 			array(
 				'attribute_id' => $optionAttributeIdAttribute,
@@ -1091,7 +1088,7 @@ function expandOptionsInRecordSet($recordSet, $queryTransactionInformation) {
 
 		$optionRecordSet = queryRecordSet(
 			null,
-			$queryTransactionInformation,
+			$viewInformation->queryTransactionInformation,
 			$optionAttributeIdAttribute,
 			array('attribute_mid' => $optionAttributeAttribute),
 			$classAttributesTable,
@@ -1106,14 +1103,14 @@ function expandOptionsInRecordSet($recordSet, $queryTransactionInformation) {
 	} 
 }
 
-function getDefinedMeaningClassMembershipRecordSet($definedMeaningId, $queryTransactionInformation) {
+function getDefinedMeaningClassMembershipRecordSet($definedMeaningId, ViewInformation $viewInformation) {
 	global
 		$classMembershipsTable, $classMembershipIdAttribute, $classAttribute,
 		$classMembershipStructure;
 
 	$recordSet = queryRecordSet(
 		$classMembershipStructure->getStructureType(),
-		$queryTransactionInformation,
+		$viewInformation->queryTransactionInformation,
 		$classMembershipIdAttribute,
 		array(
 			'class_membership_id' => $classMembershipIdAttribute, 

@@ -21,11 +21,11 @@ $wgCommandLineMode = true;
 
 /* insert code here */
 $definedMeaningId=663665; # UnitTest 
-$filterLanguageId=0; # ??? What does this do ???
-$possiblySynonymousRelationTypeId=0; # ??? What does this do ???
-$queryTransactionInformation= new QueryLatestTransactionInformation();
 
-$model=new DefinedMeaningModel($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation);
+$viewInformation = new ViewInformation();
+$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
+
+$model=new DefinedMeaningModel($definedMeaningId, $viewInformation);
 $record=$model->getRecord();
 $record->finish("DefinedMeaning");
 echo $record;

@@ -10,6 +10,7 @@ require_once('languages.php');
 require_once('HTMLtable.php');
 require_once('OmegaWikiRecordSets.php');
 require_once('OmegaWikiEditors.php');
+require_once('ViewInformation.php');
 require_once('WikiDataGlobals.php');
 
 /**
@@ -30,12 +31,7 @@ class OmegaWiki extends DefaultWikidataApplication {
 		$wgOut->addHTML(
 			getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, $this->shouldShowAuthorities)->view(
 				$this->getIdStack(), 
-				getExpressionsRecordSet(
-					$spelling, 
-					$this->filterLanguageId, 
-					$this->possiblySynonymousRelationTypeId, 
-					$this->viewQueryTransactionInformation
-				)
+				getExpressionsRecordSet($spelling, $this->viewInformation)
 			)
 		);
 		
@@ -49,16 +45,11 @@ class OmegaWiki extends DefaultWikidataApplication {
 		parent::history();
 
 		$spelling = $wgTitle->getText();
-		
+
 		$wgOut->addHTML(
 			getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, $this->showRecordLifeSpan, false)->view(
 				$this->getIdStack(), 
-				getExpressionsRecordSet(
-					$spelling, 
-					$this->filterLanguageId, 
-					$this->possiblySynonymousRelationTypeId, 
-					$this->queryTransactionInformation
-				)
+				getExpressionsRecordSet($spelling, $this->viewInformation)
 			)
 		);
 		
@@ -66,22 +57,17 @@ class OmegaWiki extends DefaultWikidataApplication {
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
 	}
 
-	protected function save($referenceTransaction) {
+	protected function save($referenceQueryTransactionInformation) {
 		global
 			$wgTitle;
 
-		parent::save($referenceTransaction);
+		parent::save($referenceQueryTransactionInformation);
 
 		$spelling = $wgTitle->getText();
 		
 		getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->save(
 			$this->getIdStack(), 
-			getExpressionsRecordSet(
-				$spelling, 
-				$this->filterLanguageId, 
-				$this->possiblySynonymousRelationTypeId, 
-				$referenceTransaction
-			)
+			getExpressionsRecordSet($spelling, $this->viewInformation)
 		);
 	}
 
@@ -97,12 +83,7 @@ class OmegaWiki extends DefaultWikidataApplication {
 		$wgOut->addHTML(
 			getExpressionsEditor($spelling, $this->filterLanguageId, $this->possiblySynonymousRelationTypeId, false, false)->edit(
 				$this->getIdStack(), 
-				getExpressionsRecordSet(
-					$spelling, 
-					$this->filterLanguageId, 
-					$this->possiblySynonymousRelationTypeId, 
-					new QueryLatestTransactionInformation()
-				)
+				getExpressionsRecordSet($spelling, $this->viewInformation)
 			)
 		);
 

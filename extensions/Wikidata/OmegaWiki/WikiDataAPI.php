@@ -273,7 +273,7 @@ function addRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
 }
 
 function removeRelation($definedMeaning1Id, $relationTypeId, $definedMeaning2Id) {
-	$dc=$wdGetDataSetContext();
+	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("UPDATE {$dc}_meaning_relations SET remove_transaction_id=" . getUpdateTransactionId() .
 				" WHERE meaning1_mid=$definedMeaning1Id AND meaning2_mid=$definedMeaning2Id AND relationtype_mid=$relationTypeId " .

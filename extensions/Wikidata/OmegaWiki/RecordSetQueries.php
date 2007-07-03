@@ -13,8 +13,9 @@ function getTransactedSQL($transactionInformation, $selectFields, $table, $restr
 	else 
 		$groupBy = array();
 	
-	$query = "SELECT ". implode(", ", $selectFields) . 
-			" FROM ". implode(", ", $tableNames);
+	$query = 
+		"SELECT ". implode(", ", $selectFields) . 
+		" FROM ". implode(", ", $tableNames);
 
 	if (count($restrictions) > 0)
 		$query .= " WHERE ". implode(' AND ', $restrictions);
@@ -44,11 +45,12 @@ function queryRecordSet($recordSetStructureId, $transactionInformation, $keyAttr
 	
 	$query = getTransactedSQL($transactionInformation, $selectFields, $table, $restrictions, $orderBy, $count, $offset);
 	$queryResult = $dbr->query($query);
-	if(!is_null($recordSetStructureId)) {	
+	
+	if (!is_null($recordSetStructureId)) 	
 		$structure = new Structure($recordSetStructureId, $allAttributes);
-	} else {
+	else 
 		$structure = new Structure($allAttributes);
-	}
+
 	$recordSet = new ArrayRecordSet($structure, new Structure($keyAttribute));
 
 	while ($row = $dbr->fetchRow($queryResult)) {

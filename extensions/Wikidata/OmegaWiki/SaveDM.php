@@ -18,10 +18,9 @@ function getDM($definedMeaningId,$dc="uw") {
 	global 
 		$wdCurrentContext;
 	$wdCurrentContext=$dc;
-	$filterLanguageId=0; # ??? What does this do ???
-	$possiblySynonymousRelationTypeId=0; # ??? What does this do ???
-	$queryTransactionInformation= new QueryLatestTransactionInformation();
-	$model=new DefinedMeaningModel($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation);
+	$viewInformation = new ViewInformation();
+	$viewInformation->queryTransactionInformation= new QueryLatestTransactionInformation();
+	$model=new DefinedMeaningModel($definedMeaningId, $viewInformation);
 	$record=$model->getRecord();
 	$record->finish("DefinedMeaning");
 	return $model;

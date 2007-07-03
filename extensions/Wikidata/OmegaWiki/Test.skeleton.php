@@ -43,11 +43,10 @@ class RecordHelperTest extends PHPUnit_Framework_TestCase {
 		$wgCommandLineMode = true;
 		$dc = "uw";
 		$definedMeaningId=663665; # education
-		$filterLanguageId=0; # ??? What does this do ???
-		$possiblySynonymousRelationTypeId=0; # ??? What does this do ???
-		$queryTransactionInformation= new QueryLatestTransactionInformation();
+		$viewInformation = new ViewInformation();
+		$viewInformation->queryTransactionInformation= new QueryLatestTransactionInformation();
 
-		$model=new DefinedMeaningModel($definedMeaningId, $filterLanguageId, $possiblySynonymousRelationTypeId, $queryTransactionInformation);
+		$model=new DefinedMeaningModel($definedMeaningId, $viewInformation);
 		$testRecord=$model->getRecord();
 	}
 	
