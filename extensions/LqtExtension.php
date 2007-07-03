@@ -13,6 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 require_once('LqtModel.php');
+require_once('Pager.php');
 
 class LqtDispatch {
 	static function talkpageMain(&$output, &$talk_article, &$title, &$user, &$request) {
@@ -31,7 +32,13 @@ class LqtDispatch {
 	}
 
 	static function threadPermalinkMain(&$output, &$article, &$title, &$user, &$request) {
-		$view = new ThreadPermalinkView( $output, $article, $title, $user, $request );
+			/* breaking the lqt_method paradigm to make the history tab work. 
+			  (just changing the href doesn't make the highlighting correct.) */
+		if( $request->getVal('action') == 'history' ) {
+			$view = new ThreadHistoryView( $output, $article, $title, $user, $request );
+		} else {
+			$view = new ThreadPermalinkView( $output, $article, $title, $user, $request );
+		}
 		$view->show();
 	}
 	
@@ -502,12 +509,7 @@ HTML
 		$this->showPostBody($t->summary());
 		$this->closeDiv();
 	}
-	
-	function showHistoryListing($t) {
-		foreach( $t->historicalRevisions() as $r ) {
-			$this->output->addHTML($r->revisionNumber());
-		}
-	}
+
 }
 
 class TalkpageView extends LqtView {
@@ -851,6 +853,87 @@ HTML
 		$this->output->addHTML('</table>');
 	}
 }
+/*
+CREATE TABLE historical_thread (
+  -- Note that many hthreads can share an id, which is the same as the id
+  -- of the live thread. It is only the id/revision combo which must be unique.
+  hthread_id int(8) unsigned NOT NULL,
+  hthread_revision int(8) unsigned NOT NULL,
+  hthread_contents BLOB NOT NULL,
+  PRIMARY KEY hthread_id_revision (hthread_id, hthread_revision)
+) TYPE=InnoDB;
+*/
+/**
+ * @addtogroup Pager
+ */
+class ThreadHistoryPager extends ReverseChronologicalPager {
+	public $mLastRow = false;
+	protected $thread;
+	
+	function __construct( $thread ) {
+		parent::__construct();
+		$this->thread = $thread;
+	}
+
+	function getQueryInfo() {
+		return array(
+			'tables' => 'historical_thread',
+			'fields' => 'hthread_id, hthread_revision, hthread_contents',
+			'conds' => array('hthread_id' => $this->thread->id() ),
+			'options' => array()
+		);
+	}
+
+	function getIndexField() {
+		return 'hthread_revision';
+	}
+
+	function formatRow( $row ) {
+		return '<li>' . $row->hthread_revision;
+	}
+	
+	function getStartBody() {
+		$this->mLastRow = false;
+		$this->mCounter = 1;
+		return 'start';
+	}
+
+	function getEndBody() {
+		return "";
+	}
+}
+
+class ThreadHistoryView extends ThreadPermalinkView {
+		
+	function showHistoryListing($t) {
+		$pager = new ThreadHistoryPager( $this->thread );
+		$this->linesonpage = $pager->getNumRows();
+		$this->output->addHTML(
+			$pager->getNavigationBar() . 
+//			$this->beginHistoryList() . 
+			$pager->getBody() .
+//			$this->endHistoryList() .
+			$pager->getNavigationBar()
+		);
+	}
+	
+	function show() {
+		$t = Threads::withRoot( $this->article );
+		$this->thread = $t;
+
+		// TODO this is a holdover from the special page; not sure what's correct here.
+		// we now have a real true $this->article that makes some sense.
+		// but we still want to know about $t->article.
+		$this->article = $t->article(); # for creating reply threads.
+		
+		$this->output->setSubtitle("viewing a historical thread...");
+				
+		$this->showThreadHeading($t);
+		$this->showHistoryListing($t);
+
+		$this->showThread($t);
+	}
+}
 
 class ThreadPermalinkView extends LqtView {
 	protected $thread;
@@ -864,7 +947,6 @@ class ThreadPermalinkView extends LqtView {
 	}
 
 	function show() {
-		
 		$t = Threads::withRoot( $this->article );
 		$this->thread = $t;
 
@@ -889,17 +971,9 @@ class ThreadPermalinkView extends LqtView {
 			$this->output->setSubtitle( "from " . $talkpage_link );
 		}
 		
-		if( $this->methodApplies('summarize') ) {
+		if( $this->methodApplies('summarize') )
 			$this->showSummarizeForm($t);
-		
-		/* breaking the lqt_method paradigm to make the history tab work. */
-		} else if( $this->request->getVal('action') === 'history') {
-			$this->showThreadHeading($t);
-			$this->showHistoryListing($t);
-			return;
-		}
 		
 		$this->showThread($t);
 	}
-
 }
