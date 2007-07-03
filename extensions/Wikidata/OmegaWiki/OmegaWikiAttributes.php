@@ -59,10 +59,22 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 	}
 	
 	global
-		$definedMeaningIdAttribute, $definedMeaningDefiningExpressionAttribute;
+		$definedMeaningIdAttribute, $definedMeaningDefiningExpressionAttribute,
+		$definedMeaningCompleteDefiningExpressionStructure,
+		$definedMeaningCompleteDefiningExpressionAttribute;
 	
 	$definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
 	$definedMeaningDefiningExpressionAttribute = new Attribute("defined-meaning-defining-expression", "Defined meaning defining expression", "short-text");
+
+	$definedMeaningCompleteDefiningExpressionStructure = 
+	new Structure("defined-meaning-full-defining-expression",
+		  $definedMeaningDefiningExpressionAttribute,
+		  $expressionIdAttribute,
+		  $languageAttribute
+	);
+	$definedMeaningCompleteDefiningExpressionAttribute=new Attribute(null, "Defining expression", $definedMeaningCompleteDefiningExpressionStructure);
+
+
 	
 	global
 		$definedMeaningReferenceStructure, $definedMeaningLabelAttribute, $definedMeaningReferenceType,

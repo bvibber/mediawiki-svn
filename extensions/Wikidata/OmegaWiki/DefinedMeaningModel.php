@@ -30,8 +30,8 @@ class DefinedMeaningModel {
 			$alternativeDefinitionsAttribute, $synonymsAndTranslationsAttribute,
 			$relationsAttribute, $reciprocalRelationsAttribute,
 			$classMembershipAttribute, $collectionMembershipAttribute, $definedMeaningAttributesAttribute,
-			$possiblySynonymousAttribute;
-		
+			$possiblySynonymousAttribute, $definedMeaningCompleteDefiningExpressionAttribute;
+
 		if (is_null($viewInformation)) {	
 			$viewInformation = new ViewInformation();
 			$viewInformation->queryTransactionInformation= new QueryLatestTransactionInformation();
@@ -40,6 +40,7 @@ class DefinedMeaningModel {
 		#wfDebug("definedMeaningId:$definedMeaningId, filterLanguageId:$viewInformation->filterLanguageId, possiblySynonymousRelationTypeId:$viewInformation->possiblySynonymousRelationTypeId, queryTransactionInformation:$viewInformation->queryTransactionInformation\n");
 		$this->setDefinedMeaningID($definedMeaningId);
 		$record = new ArrayRecord($definedMeaningAttribute->type);
+		$record->setAttributeValue($definedMeaningCompleteDefiningExpressionAttribute, getDefiningExpressionRecord($definedMeaningId));
 		$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($definedMeaningId, $viewInformation));
 		$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($definedMeaningId, $viewInformation));
 		$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($definedMeaningId, $viewInformation));

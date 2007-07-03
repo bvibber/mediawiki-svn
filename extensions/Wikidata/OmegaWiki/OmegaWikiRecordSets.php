@@ -1119,4 +1119,19 @@ function getDefinedMeaningClassMembershipRecordSet($definedMeaningId, ViewInform
 	return $recordSet;
 }
 
+function getDefiningExpressionRecord($definedMeaningId) {
 
+		global 		
+			$definedMeaningCompleteDefiningExpressionAttribute,
+			$definedMeaningDefiningExpressionAttribute,
+			$expressionIdAttribute,
+		  	$languageAttribute;	
+
+		$definingExpression=definingExpressionRow($definedMeaningId);
+		$definingExpressionRecord = new ArrayRecord($definedMeaningCompleteDefiningExpressionAttribute->type);
+		$definingExpressionRecord->setAttributeValue($expressionIdAttribute, $definingExpression[0]);
+		$definingExpressionRecord->setAttributeValue($definedMeaningDefiningExpressionAttribute, $definingExpression[1]);
+		$definingExpressionRecord->setAttributeValue($languageAttribute, $definingExpression[2]);
+		return $definingExpressionRecord;
+
+}
