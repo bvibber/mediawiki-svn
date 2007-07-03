@@ -4,6 +4,27 @@ require_once("Attribute.php");
 require_once("WikiDataGlobals.php");
 require_once("ViewInformation.php");
 
+/**
+ *
+ * This file models the structure of the OmegaWiki database in a
+ * database-independent fashion. To do so, it follows a simplified
+ * relational model, consisting of Attribute objects which are hierarchically
+ * grouped together using Structure objects. See Attribute.php for details.
+ *
+ * The actual data is stored in Records, grouped together as RecordSets.
+ * See Record.php and RecordSet.php for details.
+ *
+ * TODO:
+ * - The current model of a ton of hardcoded globals is highly inadequate
+ * and should be replaced with a more abstract schema description. 
+ * - Attribute names are in WikidataGlobals.php, but should really be 
+ * localizable through MediaWiki's wfMsg() function.
+ * - Records and RecordSets are currently capable of storing most (not all)
+ * data, but can't actually commit them to the database again. To achieve
+ * proper separation of architectural layers, the Records should learn
+ * to talk directly with the DB layer.
+ *
+ */
 function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 	global
 		$languageAttribute, $spellingAttribute, $textAttribute, 
@@ -281,6 +302,10 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 
 	global $wdDefinedMeaningAttributesOrder;
 
+	/** 
+	 * This global determines the order of the different
+	 * attributes in the user interface.
+	 */
 	$wdDefinedMeaningAttributesOrder=array(
 		$definitionAttribute->id,
 		$classAttributesAttribute->id,

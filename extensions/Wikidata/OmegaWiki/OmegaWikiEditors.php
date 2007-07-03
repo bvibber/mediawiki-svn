@@ -75,14 +75,6 @@ function addTableLifeSpanEditor(Editor $editor, $showRecordLifeSpan) {
 		$editor->addEditor(createTableLifeSpanEditor($recordLifeSpanAttribute));
 }
 
-function addTableAuthorityEditor(Editor $editor, $showAuthority) {
-	global
-		$authorityAttribute;
-	
-	if ($showAuthority)
-		$editor->addEditor(createShortTextViewer($authorityAttribute));
-} 
-
 function addTableMetadataEditors($editor, ViewInformation $viewInformation) {
 	addTableLifeSpanEditor($editor, $viewInformation->showRecordLifeSpan);
 }

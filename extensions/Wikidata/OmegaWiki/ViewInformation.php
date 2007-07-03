@@ -16,22 +16,20 @@ class ViewInformation {
 	public $possiblySynonymousRelationTypeId;
 	public $queryTransactionInformation;
 	public $showRecordLifeSpan; 
-	public $showAuthority;
-	
+
 	public function __construct() {
 		$this->filterLanguageId = 0;
 		$this->possiblySynonymousRelationTypeId = 0;
 		$this->queryTransactionInformation;
 		$this->showRecordLifeSpan = false; 
-		$this->showAuthority = false;
 	}
 	
 	public function hasMetaDataAttributes() {
-		return $this->showRecordLifeSpan || $this->showAuthority;
+		return $this->showRecordLifeSpan;
 	}
 	
 	public function filterOnLanguage() {
-		return $this->filterOnLanguage != 0;
+		return $this->filterLanguageId != 0;
 	}
 }
 

@@ -65,6 +65,10 @@ contained class name.
 Other than initial hook functions and command-line scripts, all 
 functions should exist in a class context.
 
+== Function parameters ==
+
+Add type hints and default values where appropriate.
+
 == Variables ==
 
 Variable names are generally written in CamelCase (lower case first

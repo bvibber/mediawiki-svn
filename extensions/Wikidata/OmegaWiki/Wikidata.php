@@ -9,12 +9,9 @@ class DefaultWikidataApplication {
 	protected $showRecordLifeSpan;
 	protected $transaction;
 	protected $queryTransactionInformation;
-	protected $shouldShowAuthorities;
 	protected $showCommunityContribution;
-	protected $authoritiesToShow;
 	
 	// The following member variables control some application specific preferences
-	protected $availableAuthorities = array();				// A map containing (userId => displayName) combination for authoritative contribution view
 	protected $filterLanguageId = 0;						// Filter pages on this languageId, set to 0 to show all languages
 	protected $possiblySynonymousRelationTypeId = 0;		// Put this relation type in a special section "Possibly synonymous"
 	protected $showLanguageSelector = true;					// Show language selector at the top of each wiki data page
@@ -27,12 +24,9 @@ class DefaultWikidataApplication {
 
 	public function __construct() {
 		global
-			$wgAvailableAuthorities, $wgFilterLanguageId, $wgShowLanguageSelector, 
+			$wgFilterLanguageId, $wgShowLanguageSelector, 
 			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId;
 					
-		if (isset($wgAvailableAuthorities))
-			$this->availableAuthorities = $wgAvailableAuthorities;
-			
 		if (isset($wgFilterLanguageId))
 			$this->filterLanguageId = $wgFilterLanguageId;
 			
@@ -94,7 +88,6 @@ class DefaultWikidataApplication {
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = false;
-		$viewInformation->showAuthority = $this->shouldShowAuthorities;
 		$viewInformation->queryTransactionInformation = $this->queryTransactionInformation;
 		
 		$this->viewInformation = $viewInformation;
@@ -183,7 +176,6 @@ class DefaultWikidataApplication {
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = false;
-		$viewInformation->showAuthority = false;
 		$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
 		
 		$this->viewInformation = $viewInformation;
@@ -240,7 +232,6 @@ class DefaultWikidataApplication {
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = $this->showRecordLifeSpan;
-		$viewInformation->showAuthority = false;
 		$viewInformation->queryTransactionInformation = $this->queryTransactionInformation;
 		
 		$this->viewInformation = $viewInformation;
