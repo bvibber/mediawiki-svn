@@ -22,7 +22,7 @@ function efExportWatchlistMessages() {
 	'exportwatchlist' => 'Export watchlist',
 	'exportwatchlist-header' => 'Use this page to export [[Special:Watchlist|your watchlist]]
 		to a list of titles so you can move it to another account or share it with other users.',
-	'exportwatchlist-login' => 'You need to have an account and be $1 to export a watchlist.',
+	'exportwatchlist-login' => 'You need to have an account and be $1 to export your watchlist.',
 	'exportwatchlist-login-link' => 'logged in',
 	'exportwatchlist-legend' => 'Export watchlist',
 	'exportwatchlist-namespace' => 'Namespace:',
@@ -32,7 +32,7 @@ function efExportWatchlistMessages() {
 	'importwatchlist' => 'Import watchlist',
 	'importwatchlist-header' => 'Use this page to bulk-add a list of titles to
 	[[Special:Watchlist|your watchlist]].',
-	'importwatchlist-login' => 'You need to have an account and be $1 to import a watchlist.',
+	'importwatchlist-login' => 'You need to have an account and be $1 to import pages to your watchlist.',
 	'importwatchlist-legend' => 'Import titles into watchlist',
 	'importwatchlist-titles' => 'Enter a list of titles below, one per line:',
 	'importwatchlist-submit' => 'Import',
