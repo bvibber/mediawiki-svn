@@ -220,7 +220,7 @@ function getInTransactionRestriction($table, $transactionId) {
 
 global
 	$transactionIdAttribute, $userAttribute, $userIPAttribute, $timestampAttribute,
-	$transactionStructure, $summaryAttribute, 
+	$transactionStructure, $transactionAttribute, $summaryAttribute, 
 	$addTransactionAttribute, $removeTransactionAttribute, 
 	$recordLifeSpanAttribute, $recordLifeSpanStructure;
 	
@@ -230,6 +230,7 @@ $userIPAttribute = new Attribute('user-ip', 'User IP', 'IP');
 $timestampAttribute = new Attribute('timestamp', 'Time', 'timestamp');
 $summaryAttribute = new Attribute('summary', 'Summary', 'text');
 $transactionStructure = new Structure($transactionIdAttribute, $userAttribute, $userIPAttribute, $timestampAttribute, $summaryAttribute);
+$transactionAttribute = new Attribute('transaction', 'Transaction', $transactionStructure);
 
 $addTransactionAttribute = new Attribute('add-transaction', 'Added', $transactionStructure);
 $removeTransactionAttribute = new Attribute('remove-transaction', 'Removed', $transactionStructure);
@@ -256,7 +257,7 @@ function getUserLabel($userId, $userIP) {
 		return "Unknown"; 
 }
 
-function expandUserIDsInRecordSet($recordSet, $userIDAttribute, $userIPAttribute) {
+function expandUserIDsInRecordSet(RecordSet $recordSet, Attribute $userIDAttribute, Attribute $userIPAttribute) {
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) { 
 		$record = $recordSet->getRecord($i);
 		$record->setAttributeValue(
@@ -269,7 +270,7 @@ function expandUserIDsInRecordSet($recordSet, $userIDAttribute, $userIPAttribute
 	}
 }								
 
-function expandTransactionIdsInRecordSet($recordSet, $transactionIdAttribute, $transactionAttribute) {
+function expandTransactionIdsInRecordSet(RecordSet $recordSet, Attribute $transactionIdAttribute, Attribute $transactionAttribute) {
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) { 
 		$record = $recordSet->getRecord($i);
 		$record->setAttributeValue(

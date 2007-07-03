@@ -393,7 +393,8 @@ function initializeAttributes() {
 
 function getTransactionRecordSet($fromTransactionId, $transactionCount, $userName) {
 	global
-			$transactionAttribute, $transactionIdAttribute, $transactionsTable, $updatesInTransactionAttribute;
+		$transactionAttribute, $transactionIdAttribute, $transactionsTable, $updatesInTransactionAttribute;
+		
 	$dc=wdGetDataSetContext();	
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
 
@@ -610,7 +611,9 @@ function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
 		$recordSet->add($record);	
 	}
 	
-	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $alternativeDefinitionTextAttribute, 0, new QueryLatestTransactionInformation());
+	$viewInformation = new ViewInformation();
+	$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
+	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $alternativeDefinitionTextAttribute, $viewInformation);
 	
 	return $recordSet;
 }
@@ -953,7 +956,9 @@ function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
 		$recordSet->add($record);	
 	}
 	
-	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $translatedTextTextAttribute, 0, new QueryLatestTransactionInformation());
+	$viewInformation = new ViewInformation();
+	$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
+	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $translatedTextTextAttribute, $viewInformation);
 	
 	return $recordSet;
 }
@@ -1084,9 +1089,12 @@ function getUpdatedSyntransesEditor($attribute, $showRollBackOptions) {
 	
 	if ($showRollBackOptions)
 		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+	
+	$viewInformation = new ViewInformation();
+	$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
 		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
-	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute, 0));
+	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute, $viewInformation));
 	$editor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(false), false, false));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
 	$editor->addEditor(createBooleanViewer($isLatestAttribute));
