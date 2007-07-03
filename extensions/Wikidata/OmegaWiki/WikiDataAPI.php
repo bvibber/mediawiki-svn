@@ -1228,5 +1228,110 @@ function &getDefinedMeaningDataAssociatedByConcept($dm, $dc) {
 	return $meanings;
 }
 
+function definingExpressionRow($definedMeaningId) {
+	$dc=wdGetDataSetContext();
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT {$dc}_expression_ns.expression_id, spelling, language_id " .
+								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
+								" WHERE {$dc}_defined_meaning.defined_meaning_id=$definedMeaningId " .
+								" AND {$dc}_expression_ns.expression_id={$dc}_defined_meaning.expression_id".
+								" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning").
+								" AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
+	$expression = $dbr->fetchObject($queryResult);
+	return array($expression->expression_id, $expression->spelling, $expression->language_id); 
+}
+
+function definingExpression($definedMeaningId) {
+	$dc=wdGetDataSetContext();
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT spelling " .
+								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
+								" WHERE {$dc}_defined_meaning.defined_meaning_id=$definedMeaningId " .
+								" AND {$dc}_expression_ns.expression_id={$dc}_defined_meaning.expression_id".
+								" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning").
+								" AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
+	$expression = $dbr->fetchObject($queryResult);
+	return $expression->spelling; 
+}
+
+function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
+	$dc=wdGetDataSetContext();
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT spelling" .
+		" FROM {$dc}_syntrans, {$dc}_expression_ns " .
+		" WHERE defined_meaning_id=$definedMeaningId" .
+		" AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
+		" AND {$dc}_expression_ns.language_id=$languageId" .
+		" AND {$dc}_syntrans.identical_meaning=1" .
+		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		" LIMIT 1"
+	);
+
+	if ($expression = $dbr->fetchObject($queryResult))
+		return $expression->spelling;
+	else
+		return "";
+}
+
+function definedMeaningExpressionForAnyLanguage($definedMeaningId) {
+	$dc=wdGetDataSetContext();
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query(
+		"SELECT spelling " .
+		" FROM {$dc}_syntrans, {$dc}_expression_ns" .
+		" WHERE defined_meaning_id=$definedMeaningId" .
+		" AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
+		" AND {$dc}_syntrans.identical_meaning=1" .
+		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		" LIMIT 1");
+
+	if ($expression = $dbr->fetchObject($queryResult))
+		return $expression->spelling;
+	else
+		return "";
+}
+
+function definedMeaningExpression($definedMeaningId) {
+	global
+		$wgUser;
+	
+	$userLanguage = getLanguageIdForCode($wgUser->getOption('language'));
+	
+	list($definingExpressionId, $definingExpression, $definingExpressionLanguage) = definingExpressionRow($definedMeaningId);
+	
+	if ($definingExpressionLanguage == $userLanguage && expressionIsBoundToDefinedMeaning($definingExpressionId, $definedMeaningId))  
+		return $definingExpression;
+	else {	
+		if ($userLanguage > 0)
+			$result = definedMeaningExpressionForLanguage($definedMeaningId, $userLanguage);
+		else
+			$result = "";
+		
+		if ($result == "") {
+			$result = definedMeaningExpressionForLanguage($definedMeaningId, 85);
+			
+			if ($result == "") {
+				$result = definedMeaningExpressionForAnyLanguage($definedMeaningId);
+				
+				if ($result == "")
+					$result = $definingExpression;
+			}
+		}
+	}
+
+	return $result;
+}
+
+function getTextValue($textId) {
+	$dc=wdGetDataSetContext();
+	$dbr =& wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query("SELECT text_text from {$dc}_text where text_id=$textId");
+
+	return $dbr->fetchObject($queryResult)->text_text; 
+}
+
 
 
