@@ -90,7 +90,7 @@ class ApiRollback extends ApiBase {
 				$this->dieDebug(__METHOD__, "rollback() returned an unknown error ($retval)");
 		}
 		// $retval has to be Article::SUCCESS if we get here
-		$this->getResult()->addValue(null, 'rollback', $info);
+		$this->getResult()->addValue(null, $this->getModuleName(), $info);
 	}
 
 	protected function getAllowedParams() {

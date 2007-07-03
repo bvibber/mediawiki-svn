@@ -128,7 +128,7 @@ class ApiDelete extends ApiBase {
 		}
 		// $retval has to be self::DELETE_SUCCESS if we get here
 		$r = array('title' => $titleObj->getPrefixedText(), 'reason' => $reason);
-		$this->getResult()->addValue(null, 'delete', $r);
+		$this->getResult()->addValue(null, $this->getModuleName(), $r);
 	}
 
 	protected function getAllowedParams() {
@@ -149,8 +149,8 @@ class ApiDelete extends ApiBase {
 
 	protected function getDescription() {
 		return array(
-				'Deletes a page. You need to be logged in as a sysop to use this function, see also action=login.'
-			);
+			'Deletes a page. You need to be logged in as a sysop to use this function, see also action=login.'
+		);
 	}
 
 	protected function getExamples() {

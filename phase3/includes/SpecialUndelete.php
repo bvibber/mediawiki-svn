@@ -263,6 +263,8 @@ class PageArchive {
 	function undelete( $timestamps, $comment = '', $fileVersions = array() ) {
 		// If both the set of text revisions and file revisions are empty,
 		// restore everything. Otherwise, just restore the requested items.
+		$dbw = wfGetDB(DB_MASTER);
+		$dbw->begin();
 		$restoreAll = empty( $timestamps ) && empty( $fileVersions );
 		
 		$restoreText = $restoreAll || !empty( $timestamps );
@@ -303,7 +305,8 @@ class PageArchive {
 		if( trim( $comment ) != '' )
 			$reason .= ": {$comment}";
 		$log->addEntry( 'restore', $this->title, $reason );
-		
+
+		$dbw->commit();
 		return true;
 	}
 	

@@ -56,6 +56,7 @@ class ApiMain extends ApiBase {
 		'query' => 'ApiQuery',
 		'rollback' => 'ApiRollback',
 		'delete' => 'ApiDelete',
+		'undelete' => 'ApiUndelete',
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
 		'help' => 'ApiHelp',
