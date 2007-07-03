@@ -51,6 +51,7 @@ $model=getDM(663672,"uw");
 
 $record=$model->getRecord();
 echo $record;
+echo $record->getAttributeValue(new Attribute("defined-meaning-full-defining-expression"));
 
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 

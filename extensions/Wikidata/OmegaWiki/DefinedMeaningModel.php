@@ -21,7 +21,7 @@ class DefinedMeaningModel {
 	 * you can't use this to construct a new DM from scratch (yet)
 	 * you can't (yet) provide a dataset-context ($dc) 
 	 * @param $definedMeaningId	the database ID of the DM 
-	 * @param $viewInformation	Specify specific ViewInformation, if needed.
+	 * @param $viewInformation	Optional: Specify specific ViewInformation, if needed.
          */
 	public function __construct($definedMeaningId, $viewInformation=null) {
 
@@ -66,6 +66,7 @@ class DefinedMeaningModel {
 	/* Sorry, don't know what horrible cannibalised hacks are. Therefore I cannot update code properly. 
 	 * Please check if it still works correctly. Peter-Jan Roes.  
 	 */
+	/* :-D */
 	public function save() {
 		initializeOmegaWikiAttributes($this->viewInformation);	
 		initializeObjectAttributeEditors($this->viewInformation);
