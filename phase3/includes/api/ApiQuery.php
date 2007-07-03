@@ -63,6 +63,7 @@ class ApiQuery extends ApiBase {
 		'allpages' => 'ApiQueryAllpages',
 		'backlinks' => 'ApiQueryBacklinks',
 		'categorymembers' => 'ApiQueryCategoryMembers',
+		'deletedrevs' => 'ApiQueryDeletedrevs',
 		'embeddedin' => 'ApiQueryBacklinks',
 		'imageusage' => 'ApiQueryBacklinks',
 		'logevents' => 'ApiQueryLogEvents',

@@ -103,7 +103,7 @@ class ApiQueryInfo extends ApiQueryBase {
 				$lastrevby[intval($row->rev_id)] = $row->rev_user_text;
 		}
 
-		$et = null; // Cached edit token is stored here
+		$cachedToken = $wgUser->editToken(); // We cache universal tokens like edit,delete,etc.
 		foreach ( $titles as $pageid => $title ) {
 			$pageInfo = array (
 				'touched' => wfTimestamp(TS_ISO_8601, $pageTouched[$pageid]),
@@ -144,16 +144,7 @@ class ApiQueryInfo extends ApiQueryBase {
 					case 'delete':
 					case 'protect':
 					case 'unprotect':
-						// All these tokens are constant, so we can cache them
-						if(!is_null($et))
-							$tokenArr[$token] = $et;
-						else
-						{
-							if($wgUser->isAnon())
-								$et = $tokenArr[$token] = EDIT_TOKEN_SUFFIX;
-							else
-								$et = $tokenArr[$token] = $wgUser->editToken();
-						}
+						$tokenArr[$token] = $cachedToken;
 					// default: can't happen, ignore it if it does happen in some weird way
 				}
 			if(count($tokenArr) > 0)
