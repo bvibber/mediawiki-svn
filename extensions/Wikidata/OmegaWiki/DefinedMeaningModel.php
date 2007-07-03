@@ -50,7 +50,7 @@ class DefinedMeaningModel {
 	 * Please check if it still works correctly. Peter-Jan Roes.  
 	 */
 	public function save() {
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
+		initializeOmegaWikiAttributes($this->viewInformation);	
 		initializeObjectAttributeEditors($this->viewInformation);
 
 		$definedMeaningId = $this->getDefinedMeaningID();

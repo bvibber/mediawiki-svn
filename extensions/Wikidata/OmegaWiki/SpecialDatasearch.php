@@ -19,6 +19,8 @@ function wfSpecialDatasearch() {
 		protected $externalIdentifierAttribute;
 		protected $collectionAttribute;
 		protected $collectionMemberAttribute;
+		protected $externalIdentifierMatchStructure;
+		
 		protected $spellingAttribute;
 		protected $languageAttribute;
 		
@@ -37,12 +39,13 @@ function wfSpecialDatasearch() {
 			require_once("WikiDataGlobals.php");
 			require_once("forms.php");
 			require_once("type.php");
+			require_once("ViewInformation.php");
 			require_once("WikiDataAPI.php");
 			require_once("OmegaWikiAttributes.php");
 			require_once("OmegaWikiRecordSets.php");
 			require_once("OmegaWikiEditors.php");
 
-			initializeOmegaWikiAttributes(false, false);
+			initializeOmegaWikiAttributes(new ViewInformation());
 
 			global
 				$definedMeaningReferenceType;
@@ -62,6 +65,12 @@ function wfSpecialDatasearch() {
 			$this->externalIdentifierAttribute = new Attribute("external-identifier", "External identifier", "short-text");
 			$this->collectionAttribute = new Attribute("collection", "Collection", $definedMeaningReferenceType);
 			$this->collectionMemberAttribute = new Attribute("collection-member", "Collection member", $definedMeaningReferenceType);
+			
+			$this->externalIdentifierMatchStructure = new Structure(
+				$this->externalIdentifierAttribute,
+				$this->collectionAttribute,
+				$this->collectionMemberAttribute
+			);
 		}
 		
 		function execute($parameter) {
@@ -221,10 +230,10 @@ function wfSpecialDatasearch() {
 		
 		function getWordsSearchResultAsRecordSet($queryResult) {
 			global
-				$idAttribute;
+				$definedMeaningIdAttribute;
 		
 			$dbr =& wfGetDB(DB_SLAVE);
-			$recordSet = new ArrayRecordSet(new Structure($idAttribute, $this->expressionAttribute, $this->meaningAttribute), new Structure($idAttribute));
+			$recordSet = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $this->expressionAttribute, $this->meaningAttribute), new Structure($definedMeaningIdAttribute));
 			
 			while ($row = $dbr->fetchObject($queryResult)) {
 				$expressionRecord = new ArrayRecord($this->expressionStructure);

@@ -99,7 +99,7 @@ class DefaultWikidataApplication {
 		
 		$this->viewInformation = $viewInformation;
 
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0);	
+		initializeOmegaWikiAttributes($viewInformation);	
 		initializeObjectAttributeEditors($viewInformation);		
 	}
 	
@@ -133,7 +133,7 @@ class DefaultWikidataApplication {
 		
 		$this->viewInformation = $viewInformation;
 
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
+		initializeOmegaWikiAttributes($this->viewInformation);	
 		initializeObjectAttributeEditors($this->viewInformation);
 	}
 	
@@ -188,7 +188,7 @@ class DefaultWikidataApplication {
 		
 		$this->viewInformation = $viewInformation;
 		
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0, false);	
+		initializeOmegaWikiAttributes($this->viewInformation);	
 		initializeObjectAttributeEditors($this->viewInformation);
 
 		return true;
@@ -245,7 +245,7 @@ class DefaultWikidataApplication {
 		
 		$this->viewInformation = $viewInformation;
 
-		initializeOmegaWikiAttributes($this->filterLanguageId != 0, true);	
+		initializeOmegaWikiAttributes($this->viewInformation);	
 		initializeObjectAttributeEditors($viewInformation);
 	}
 	

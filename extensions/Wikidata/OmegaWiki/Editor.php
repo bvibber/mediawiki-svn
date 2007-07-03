@@ -940,7 +940,7 @@ class TextEditor extends ScalarEditor {
 	protected $addText = "";
 	protected $controller;
 
-	public function __construct(Attribute $attribute = null, PermissionController $permissionController, $isAddField, $truncate=false, $truncateAt=0, UpdateController $controller = null) {
+	public function __construct(Attribute $attribute = null, PermissionController $permissionController, $isAddField, $truncate=false, $truncateAt=0, UpdateAttributeController $controller = null) {
 		parent::__construct($attribute, $permissionController, $isAddField);
 
 		$this->truncate = $truncate;

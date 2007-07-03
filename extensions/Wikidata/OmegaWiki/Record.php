@@ -114,14 +114,14 @@ function equalRecords(Structure $structure, Record $lhs, Record $rhs) {
 	$attributes = $structure->getAttributes();
 	$i = 0;
 	
-	while($result && $i < count($attributes)) {
+	while ($result && $i < count($attributes)) {
 		$attribute = $attributes[$i];
 		$type = $attribute->type;
 		$lhsValue = $lhs->getAttributeValue($attribute);
 		$rhsValue = $rhs->getAttributeValue($attribute);
 		
 		if ($type instanceof Structure)
-			$result = equalRecords($type->getStructure(), $lhsValue, $rhsValue);
+			$result = $lhsValue instanceof Record && $rhsValue instanceof Record && equalRecords($type, $lhsValue, $rhsValue);
 		else
 			$result = $lhsValue == $rhsValue;
 			

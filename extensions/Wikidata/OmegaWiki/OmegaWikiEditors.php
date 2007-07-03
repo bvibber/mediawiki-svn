@@ -91,24 +91,24 @@ function getDefinitionEditor(ViewInformation $viewInformation) {
 	global
 		$definitionAttribute, $translatedTextAttribute, $definitionObjectAttributesEditor, $wgPopupAnnotationName;
 
-	if ($viewInformation->filterLanguageId == 0)
-		$controller = new DefinedMeaningDefinitionController();
-	else
-		$controller = new DefinedMeaningFilteredDefinitionController($viewInformation->filterLanguageId);
-
 	$editor = new RecordDivListEditor($definitionAttribute);
-	$editor->addEditor(getTranslatedTextEditor($translatedTextAttribute, $controller, $viewInformation));
+	$editor->addEditor(getTranslatedTextEditor(
+		$translatedTextAttribute, 
+		new DefinedMeaningDefinitionController(),
+		new DefinedMeaningFilteredDefinitionController($viewInformation->filterLanguageId), 
+		$viewInformation
+	));
 	$editor->addEditor(new PopUpEditor($definitionObjectAttributesEditor, $wgPopupAnnotationName));
 
 	return $editor;	
 }	
 
-function getTranslatedTextEditor(Attribute $attribute, UpdateController $controller, ViewInformation $viewInformation) {
+function getTranslatedTextEditor(Attribute $attribute, UpdateController $updateController, UpdateAttributeController $updateAttributeController, ViewInformation $viewInformation) {
 	global
 		$languageAttribute, $textAttribute;
 
 	if ($viewInformation->filterLanguageId == 0 || $viewInformation->showRecordLifeSpan) {
-		$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, true, $controller);
+		$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, true, $updateController);
 		
 		if ($viewInformation->filterLanguageId == 0)
 			$editor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), true));
@@ -117,7 +117,7 @@ function getTranslatedTextEditor(Attribute $attribute, UpdateController $control
 		addTableMetadataEditors($editor, $viewInformation);
 	}
 	else 
-		$editor = new TextEditor($attribute, new SimplePermissionController(true), true, false, 0, $controller);
+		$editor = new TextEditor($attribute, new SimplePermissionController(true), true, false, 0, $updateAttributeController);
 
 	return $editor;
 }
@@ -133,11 +133,6 @@ function getAlternativeDefinitionsEditor(ViewInformation $viewInformation) {
 	global
 		$alternativeDefinitionsAttribute, $alternativeDefinitionAttribute, $sourceAttribute;
 
-	if ($viewInformation->filterLanguageId == 0)
-		$alternativeDefinitionController = new DefinedMeaningAlternativeDefinitionController();
-	else
-		$alternativeDefinitionController = new DefinedMeaningFilteredAlternativeDefinitionController($viewInformation);
-
 	$editor = new RecordSetTableEditor(
 		$alternativeDefinitionsAttribute, 
 		new SimplePermissionController(true), 
@@ -148,7 +143,12 @@ function getAlternativeDefinitionsEditor(ViewInformation $viewInformation) {
 		new DefinedMeaningAlternativeDefinitionsController($viewInformation->filterLanguageId)
 	);
 	
-	$editor->addEditor(getTranslatedTextEditor($alternativeDefinitionAttribute, $alternativeDefinitionController, $viewInformation));
+	$editor->addEditor(getTranslatedTextEditor(
+		$alternativeDefinitionAttribute, 
+		new DefinedMeaningAlternativeDefinitionController(),
+		new DefinedMeaningFilteredAlternativeDefinitionController($viewInformation), 
+		$viewInformation)
+	);
 	$editor->addEditor(new DefinedMeaningReferenceEditor($sourceAttribute, new SimplePermissionController(false), true));
 	
 	addTableMetadataEditors($editor, $viewInformation);
@@ -328,14 +328,14 @@ function getTranslatedTextAttributeValuesEditor(ViewInformation $viewInformation
 		$translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, 
 		$translatedTextValueObjectAttributesEditor, $wgPopupAnnotationName;
 
-	if ($viewInformation->filterLanguageId == 0)
-		$translatedTextAttributeValueController = new TranslatedTextAttributeValueController();
-	else
-		$translatedTextAttributeValueController = new FilteredTranslatedTextAttributeValueController($viewInformation->filterLanguageId); 
-
 	$editor = new RecordSetTableEditor($translatedTextAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TranslatedTextAttributeEditor($translatedTextAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
-	$editor->addEditor(getTranslatedTextEditor($translatedTextValueAttribute, $translatedTextAttributeValueController, $viewInformation));
+	$editor->addEditor(getTranslatedTextEditor(
+		$translatedTextValueAttribute, 
+		new TranslatedTextAttributeValueController(),
+		new FilteredTranslatedTextAttributeValueController($viewInformation->filterLanguageId), 
+		$viewInformation
+	));
 	$editor->addEditor(new PopUpEditor($translatedTextValueObjectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($editor, $viewInformation);

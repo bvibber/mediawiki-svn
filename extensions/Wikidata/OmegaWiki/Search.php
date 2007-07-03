@@ -44,7 +44,7 @@ class Search extends DefaultWikidataApplication {
 
 function getSearchResultAsRecordSet($queryResult) {
 	global
-		$idAttribute, $definedMeaningReferenceType;
+		$definedMeaningIdAttribute, $definedMeaningReferenceType;
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$spellingAttribute = new Attribute("found-word", "Found word", "short-text");
@@ -59,7 +59,7 @@ function getSearchResultAsRecordSet($queryResult) {
 	$meaningStructure = new Structure($definedMeaningAttribute, $definitionAttribute);
 	$meaningAttribute = new Attribute("meaning", "Meaning", $meaningStructure);
 
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $expressionAttribute, $meaningAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $expressionAttribute, $meaningAttribute), new Structure($definedMeaningIdAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
 		$expressionRecord = new ArrayRecord($expressionStructure);

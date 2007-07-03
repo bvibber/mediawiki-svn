@@ -2,8 +2,9 @@
 
 require_once("Attribute.php");
 require_once("WikiDataGlobals.php");
+require_once("ViewInformation.php");
 
-function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes=false) {
+function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 	global
 		$languageAttribute, $spellingAttribute, $textAttribute, 
 		$wgLanguageAttributeName, $wgSpellingAttributeName, $wgTextAttributeName;
@@ -29,7 +30,7 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	global
 		$expressionStructure, $expressionAttribute, $wgExpressionAttributeName;
 	
-	if ($filterOnLanguage) 
+	if ($viewInformation->filterOnLanguage()) 
 		$expressionAttribute = new Attribute("expression", $wgSpellingAttributeName, "spelling");
 	else {
 		$expressionStructure = new Structure("expression", $languageAttribute, $spellingAttribute);
@@ -122,7 +123,7 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	
 	$definitionIdAttribute = new Attribute("definition-id", "Definition identifier", "integer");
 
-	if ($filterOnLanguage && !$hasMetaDataAttributes)
+	if ($viewInformation->filterOnLanguage() && !$viewInformation->hasMetaDataAttributes())
 		$alternativeDefinitionAttribute = new Attribute("alternative-definition", $wgAlternativeDefinitionAttributeName, "text");
 	else
 		$alternativeDefinitionAttribute = new Attribute("alternative-definition", $wgAlternativeDefinitionAttributeName, $translatedTextStructure);
@@ -142,7 +143,7 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 		$wgSynonymsAttributeName, $wgSynonymsAndTranslationsAttributeName, $wgSynonymsAndTranslationsAttributeId,
 		$synonymsTranslationsStructure;
 	
-	if ($filterOnLanguage)
+	if ($viewInformation->filterOnLanguage())
 		$synonymsAndTranslationsCaption = $wgSynonymsAttributeName;
 	else
 		$synonymsAndTranslationsCaption = $wgSynonymsAndTranslationsAttributeName;
@@ -161,7 +162,7 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", $wgTranslatedTextAttributeAttributeName, $definedMeaningReferenceType);
 	$translatedTextValueIdAttribute = new Attribute("translated-text-value-id", "Translated text value identifier", "translated-text-value-id");
 	
-	if ($filterOnLanguage && !$hasMetaDataAttributes)
+	if ($viewInformation->filterOnLanguage() && !$viewInformation->hasMetaDataAttributes())
 		$translatedTextValueAttribute = new Attribute("translated-text-value", $wgTranslatedTextAttributeValueAttributeName, "text");
 	else
 		$translatedTextValueAttribute = new Attribute("translated-text", $wgTranslatedTextAttributeValueAttributeName, $translatedTextStructure);
@@ -213,7 +214,7 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 		$definitionAttribute, $translatedTextAttribute, $classAttributesAttribute,
 		$wgDefinitionAttributeName, $wgTranslatedTextAttributeName;
 	
-	if ($filterOnLanguage && !$hasMetaDataAttributes)
+	if ($viewInformation->filterOnLanguage() && !$viewInformation->hasMetaDataAttributes())
 		$translatedTextAttribute = new Attribute("translated-text", $wgTextAttributeName, "text");	
 	else
 		$translatedTextAttribute = new Attribute(null, $wgTranslatedTextAttributeName, $translatedTextStructure);
@@ -292,9 +293,6 @@ function initializeOmegaWikiAttributes($filterOnLanguage, $hasMetaDataAttributes
 		$collectionMembershipAttribute->id,
 		$definedMeaningAttributesAttribute->id
 	);
-		
-
-
 }
 
 

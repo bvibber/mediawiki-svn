@@ -20,8 +20,9 @@
 				require_once("forms.php");
 				require_once("type.php");
 				require_once("OmegaWikiAttributes.php");
+				require_once("ViewInformation.php");
 
-				initializeOmegaWikiAttributes(false, false);
+				initializeOmegaWikiAttributes(new ViewInformation());
 				$wgOut->setPageTitle('Expressions needing translation');
 
 				$sourceLanguageId = $_GET['from-lang'];

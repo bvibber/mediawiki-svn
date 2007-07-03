@@ -28,8 +28,9 @@ function wfSpecialTransaction() {
 			require_once("Editor.php");
 			require_once("Controller.php");
 			require_once("type.php");
+			require_once("ViewInformation.php");
 			
-			initializeOmegaWikiAttributes(false, false);
+			initializeOmegaWikiAttributes(new ViewInformation());
 			initializeAttributes();
 			
 			@$fromTransactionId = (int) $_GET['from-transaction']; # FIXME - check parameter

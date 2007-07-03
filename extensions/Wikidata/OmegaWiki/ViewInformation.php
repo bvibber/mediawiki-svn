@@ -25,6 +25,14 @@ class ViewInformation {
 		$this->showRecordLifeSpan = false; 
 		$this->showAuthority = false;
 	}
+	
+	public function hasMetaDataAttributes() {
+		return $this->showRecordLifeSpan || $this->showAuthority;
+	}
+	
+	public function filterOnLanguage() {
+		return $this->filterOnLanguage != 0;
+	}
 }
 
 ?>
