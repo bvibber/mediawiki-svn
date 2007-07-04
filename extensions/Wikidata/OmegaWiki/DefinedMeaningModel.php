@@ -169,10 +169,23 @@ class DefinedMeaningModel {
 	/** Copy this defined meaning to specified dataset-context 
 	 * Warning: This is somewhat new  code, which still needs
 	 * shoring up. 
-	 * @param $dc	dataset-context to copy to.
+	 * @param $dataset	dataset to copy to.
+	 * @returns 	defined meaning id in the new dataset
 	 */
-	public function copyTo($dc) {
-
+	public function copyTo($dataset) {
+		$definedMeaningID=$this->getDefinedMeaningID();
+		#$from_dc=$this->getDataset();
+		$to_dc=$dataset;
+		# TODO We should actually thoroughly check that everything
+		# is present before proceding, and throw some exceptions
+		# if not.
+		
+		global 
+			$wdCurrentContext;
+		$wdCurrentContext=$to_dc;	# set global override (DIRTY!)
+		$this->saveWithinTransaction();
+		$wdCurrentContext=null;		# unset override, we probably should
+						# use proper OO for this.
 	}
 
 }
