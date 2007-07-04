@@ -7,7 +7,7 @@
 
 	function wfSpecialNeedsTranslation() {
 	        global $wgMessageCache;
-                $wgMessageCache->addMessages(array('needstranslation'=>'Expressions needing translation'),'en');
+                $wgMessageCache->addMessages(array('needstranslation'=>'Wikidata: Expressions needing translation'),'en');
                 
 		class SpecialNeedsTranslation extends SpecialPage {
 			function SpecialNeedsTranslation() {

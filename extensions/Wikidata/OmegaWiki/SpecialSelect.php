@@ -9,7 +9,7 @@ require_once("Wikidata.php");
 function wfSpecialSelect() {
 	class SpecialSelect extends SpecialPage {
 		function SpecialSelect() {
-			SpecialPage::SpecialPage('Select');
+			SpecialPage::SpecialPage('Select','UnlistedSpecialPage');
 		}
 
 		function execute( $par ) {

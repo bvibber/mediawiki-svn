@@ -21,6 +21,9 @@ function wfSpecialConceptMapping() {
 	# Add messages
 	#require_once "$IP/includes/SpecialPage.php";
 
+        global $wgMessageCache;
+        $wgMessageCache->addMessages(array('conceptmapping'=>'Wikidata: Concept mapping'),'en');
+                
 	require_once("Wikidata.php");
 	require_once("WikiDataAPI.php");
 	class SpecialConceptMapping extends SpecialPage {

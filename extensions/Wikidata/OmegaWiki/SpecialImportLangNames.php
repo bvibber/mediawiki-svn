@@ -9,7 +9,7 @@
 	function wfSpecialImportLangNames() {
 
 	global $wgMessageCache;
-	$wgMessageCache->addMessages(array('importlangnames'=>'Import language names'),'en');
+	$wgMessageCache->addMessages(array('importlangnames'=>'Wikidata: Import language names'),'en');
 
 		class SpecialImportLangNames extends SpecialPage {
 			function SpecialImportLangNames() {

@@ -8,7 +8,7 @@ require_once("Wikidata.php");
 
 function wfSpecialTransaction() {
         global $wgMessageCache;
-                $wgMessageCache->addMessages(array('transaction'=>'Transaction log'),'en');
+                $wgMessageCache->addMessages(array('transaction'=>'Wikidata: Transaction log'),'en');
                 
 	class SpecialTransaction extends SpecialPage {
 		function SpecialTransaction() {
