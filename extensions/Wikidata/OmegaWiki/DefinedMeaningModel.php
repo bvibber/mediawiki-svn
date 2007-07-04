@@ -165,6 +165,15 @@ class DefinedMeaningModel {
 		$language=$expression->getValue("language");
 		return findOrCreateExpression($spelling, $language);
 	}
+	
+	/** Copy this defined meaning to specified dataset-context 
+	 * Warning: This is somewhat new  code, which still needs
+	 * shoring up. 
+	 * @param $dc	dataset-context to copy to.
+	 */
+	public function copyTo($dc) {
+
+	}
 
 }
 
