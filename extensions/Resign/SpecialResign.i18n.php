@@ -35,6 +35,19 @@ Wichtig: '''Dieser Schritt ist unwiderruflich.!''' Sie müssen einen Bürokraten
 'resign-logentry'  => 'gab die Berechtigung(en) $2 zurück',
 ),
 
+'fi' => array(
+'resign'           => 'Eroa',
+'resign-text'      => "Voit '''poistaa omat oikeutesi''' (esim. ylläpitäjän oikeudet) tällä sivulla. Ole hyvä ja rastita oikeudet, jotka haluaisit poistaa.
+
+Muista: '''Et voi saada oikeuksiasi takaisin tämän sivun avulla!''' Sinun täytyy vakuuttaa byrokraatti tai ylivalvoja antamaan oikeutesi takaisin. Ole hyvä ja käytä tätä sivua erittäin varovasti.",
+'resign-reason'    => 'Syy:',
+'resign-confirm'   => 'Vakuutan, että haluan poistaa kaikki rastitsemani oikeudet.',
+'resign-noconfirm' => 'Ole hyvä ja rastita varmistusruutu, jos haluat poistaa oikeutesi.',
+'resign-nogroups'  => 'Ole hyvä ja rastita oikeudet, jotka haluat poistaa.',
+'resign-success'   => "'''Oikeudet poistettiin onnistuneesti.'''",
+'resign-logentry'  => 'poisti oikeudet $2 itseltään',
+),
+
 'he' => array(
 'resign'           => 'התפטרות',
 'resign-text'      => "בדף זה תוכלו '''להסיר את ההרשאות שלכם''' (למשל, הרשאות מפעיל מערכת). אנא סמנו את ההרשאות שברצונכם להסיר.
