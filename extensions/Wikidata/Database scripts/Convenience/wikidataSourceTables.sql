@@ -41,13 +41,6 @@ ALTER TABLE /*$wgWDprefix*/bootstrapped_defined_meanings
 	ADD INDEX /*$wgWDprefix*/unversioned_meaning (`defined_meaning_id`),
 	ADD INDEX /*$wgWDprefix*/unversioned_name (`name` (255), `defined_meaning_id`);
 
-INSERT INTO /*$wgWDprefix*/bootstrapped_defined_meanings (name,defined_meaning_id) VALUES 
- ('DefinedMeaning',49),
- ('Definition',52),
- ('SynTrans',55),
- ('Relation',58),
- ('Annotation',61);
-
 DROP TABLE IF EXISTS /*$wgWDprefix*/class_attributes;
 
 CREATE TABLE /*$wgWDprefix*/class_attributes (
