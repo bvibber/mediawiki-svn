@@ -53,7 +53,9 @@ if (!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'LuceneSearch',
-	'author' => array( 'Brion Vibber' ),
+	//'version' => '2.0',
+	'author' => array( 'Brion Vibber', 'Robert Stojnić' ),
+	'url' => 'http://www.mediawiki.org/wiki/Extension:LuceneSearch',
 	'description' => 'Interface for the Apache Lucene search engine',
 );
 
