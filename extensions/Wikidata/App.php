@@ -112,7 +112,8 @@ function initializeWikidata() {
 			'ow_will_insert'=>"Will insert the following:",
 			'ow_contents_of_mapping'=>'Contents of mapping',
 			'ow_available_contexts'=>'Available contexts',
-			'add_concept_link'=>'Add link to other concepts'
+			'add_concept_link'=>'Add link to other concepts',
+			'ow_concept_panel'=>'Concept Panel'
 		)
 	);
 

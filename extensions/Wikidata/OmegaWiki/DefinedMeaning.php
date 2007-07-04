@@ -154,22 +154,27 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$active=true; # wrong place, but hey
 		$dm=$this->getDefinedMeaningId();
 		$dc=wdGetDataSetContext();
-		$ow_conceptpanel="Concept Panel";
+		$ow_conceptpanel=wfMsg("ow_concept_panel");
 
 		$html="<div class=\"dataset-panel\">";;
 		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_conceptpanel</th></tr>";
 		$sk=$wgUser->getSkin();
 		$meanings=getDefinedMeaningDataAssociatedByConcept($dm,$dc);
-		foreach ($meanings as $dm) {
-			$dataset=$dm->getDataset();
-			$active=($dataset->getPrefix()==$dc->getPrefix());
-			$name=$dataset->fetchName();
-			#$name="woo";
-			$prefix=$dataset->getPrefix();
-
-			$class= $active ? 'dataset-panel-active' : 'dataset-panel-inactive';
-			$slot = $active ? "$name" : $sk->makeLinkObj($dm->getTitle(),$name,"dataset=$prefix");
-			$html.="<tr><td class=\"$class\">$slot</td></tr>";
+		if($meanings) {
+			foreach ($meanings as $dm) {
+				$dataset=$dm->getDataset();
+				$active=($dataset->getPrefix()==$dc->getPrefix());
+				$name=$dataset->fetchName();
+				#$name="woo";
+				$prefix=$dataset->getPrefix();
+	
+				$class= $active ? 'dataset-panel-active' : 'dataset-panel-inactive';
+				$slot = $active ? "$name" : $sk->makeLinkObj($dm->getTitle(),$name,"dataset=$prefix");
+				$html.="<tr><td class=\"$class\">$slot</td></tr>";
+			}
+		} else {
+				$name=$dc->fetchName();
+				$html.="<tr><td class=\"dataset-panel-active\">$name</td></tr>";
 		}
 		$cmtitle=Title::newFromText("Special:ConceptMapping");
 		$titleText=$wgTitle->getPrefixedURL();
