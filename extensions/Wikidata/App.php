@@ -75,6 +75,9 @@ function addHistoryLinkTrail(&$trail) {
 function initializeWikidata() {
 	global 
 		$wgMessageCache, $wgExtensionPreferences;
+		
+	$dbr =& wfGetDB(DB_MASTER);
+	$dbr->query("SET NAMES utf8");
 	
 	$wgMessageCache->addMessages(
 		array(

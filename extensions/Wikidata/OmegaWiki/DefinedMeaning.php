@@ -78,7 +78,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	}
 
 	/**
-		@return Basic CSV data dump
+		@return Basic structured data dump
 	*/
 	public function raw() {
 		global 
@@ -146,7 +146,12 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$wgTitle;
 		return $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
 	}
-	/** cut and paste getDataSetPanel with mods for Collection instead
+
+	/** 
+	 * Creates sidebar HTML for indicating concepts which exist
+	 * in multiple datasets, and providing a link to add new
+	 * mappings.
+	 *
 	 * Potential refactor candidate!
 	*/
 	protected function getConceptPanel() {
@@ -165,7 +170,6 @@ class DefinedMeaning extends DefaultWikidataApplication {
 				$dataset=$dm->getDataset();
 				$active=($dataset->getPrefix()==$dc->getPrefix());
 				$name=$dataset->fetchName();
-				#$name="woo";
 				$prefix=$dataset->getPrefix();
 	
 				$class= $active ? 'dataset-panel-active' : 'dataset-panel-inactive';
@@ -182,7 +186,6 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$html.="<tr><td>$cmlink</td></tr>\n";
 		$html.="</table>\n";
 		$html.="</div>\n";
-		#$html="bla\n";
 		return $html;
 	}
 }

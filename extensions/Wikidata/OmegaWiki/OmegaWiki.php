@@ -27,11 +27,11 @@ class OmegaWiki extends DefaultWikidataApplication {
 		$this->outputViewHeader();
 
 		$spelling = $wgTitle->getText();
-		
+		$recordset = getExpressionsRecordSet($spelling, $this->viewInformation);
 		$wgOut->addHTML(
 			getExpressionsEditor($spelling, $this->viewInformation)->view(
 				$this->getIdStack(), 
-				getExpressionsRecordSet($spelling, $this->viewInformation)
+				$recordset
 			)
 		);
 		
