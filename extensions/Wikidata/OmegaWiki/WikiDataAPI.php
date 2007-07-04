@@ -154,10 +154,7 @@ function createInitialRevisionForPage($pageId, $comment) {
 }
 	
 function findExpression($spelling, $languageId) {
-	wfDebug( "findExpression $spelling" ); 
 	if ($expressionId = getExpressionId($spelling, $languageId)){ 
-		//wfDebug( "expression $spelling found in database" ); 
-		//exit();
 		return new Expression($expressionId, $spelling, $languageId);
 	}
 	else{
@@ -177,6 +174,8 @@ function findOrCreateExpression($spelling, $languageId) {
 	else
 		return createExpression($spelling, $languageId);
 }
+
+
 
 function getSynonymId($definedMeaningId, $expressionId) {
 	$dc=wdGetDataSetContext();

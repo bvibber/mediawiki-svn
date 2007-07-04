@@ -14,6 +14,7 @@ class DefinedMeaningModel {
 
 	protected $record=null;
 	protected $definedMeaningID=null;
+	protected $viewInformation=null;
 
 	/**
 	 *Construct a new DefinedMeaningModel for a particular defined meaning
@@ -37,6 +38,7 @@ class DefinedMeaningModel {
 			$viewInformation->queryTransactionInformation= new QueryLatestTransactionInformation();
 		}
 	
+		$this->viewInformation=$viewInformation;
 		#wfDebug("definedMeaningId:$definedMeaningId, filterLanguageId:$viewInformation->filterLanguageId, possiblySynonymousRelationTypeId:$viewInformation->possiblySynonymousRelationTypeId, queryTransactionInformation:$viewInformation->queryTransactionInformation\n");
 		$this->setDefinedMeaningID($definedMeaningId);
 		$record = new ArrayRecord($definedMeaningAttribute->type);
@@ -66,12 +68,30 @@ class DefinedMeaningModel {
 	/* Sorry, don't know what horrible cannibalised hacks are. Therefore I cannot update code properly. 
 	 * Please check if it still works correctly. Peter-Jan Roes.  
 	 */
-	/* :-D */
+	/* You are a wise man! :-D */
 	public function save() {
 		initializeOmegaWikiAttributes($this->viewInformation);	
 		initializeObjectAttributeEditors($this->viewInformation);
 
-		$definedMeaningId = $this->getDefinedMeaningID();
+		# Nice try sherlock, but we really need to get our DMID from elsewhere
+		#$definedMeaningId = $this->getDefinedMeaningID();
+		
+		#Need 3 steps: copy defining expression, create new dm, then update
+		
+		$expression=$this->dupDefiningExpression();
+		# to make the expression really work, we may need to call
+		# more here?
+		
+		# shouldn't this stuff be protected?
+		$expressionId=$expression->id;
+		$languageId=$expression->languageId;
+		$text="Copied Defined Meaning"; // this might work for now
+						// but where to get useful
+						// text?
+
+		#here we assume the DM is not there yet.. not entirely wise
+		#in the long run.
+		$definedMeaningId=createNewDefinedMeaning($expressionId, $langaugeId, $text);
 		
 		getDefinedMeaningEditor($this->viewInformation)->save(
 			$this->getIdStack($definedMeaningId), 
@@ -95,6 +115,7 @@ class DefinedMeaningModel {
 	}
 
 	/*horrible cannibalised hack. Use at own risk*/
+	/* this particular function doesn't actually work yet */
 	public function saveWithinTransaction() {
 		global
 			$wgTitle, $wgUser, $wgRequest;
@@ -125,6 +146,19 @@ class DefinedMeaningModel {
 
 	public function getDefinedMeaningID() {
 		return $this->definedMeaningID;
+	}
+	
+	/** Attempts to save defining expression if it does not exist "here"
+	 * (This works right now because we override the datasetcontext in 
+	 * SaveDM.php . dc should be handled more solidly) */
+	protected function dupDefiningExpression() {
+
+		$record=$this->getRecord();
+		$expression=$record->getValue("defined-meaning-full-defining-expression");
+
+		$spelling=$expression->getValue("defined-meaning-defining-expression");
+		$language=$expression->getValue("language");
+		return findOrCreateExpression($spelling, $language);
 	}
 
 }

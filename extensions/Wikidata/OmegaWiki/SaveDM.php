@@ -51,7 +51,14 @@ $model=getDM(663672,"uw");
 
 $record=$model->getRecord();
 echo $record;
-echo $record->getAttributeValue(new Attribute("defined-meaning-full-defining-expression"));
+$defexp=$record->getValue("defined-meaning-full-defining-expression");
+echo $defexp."\n";
+#$expid=$record->getAttributeValue(new Attribute("expression-id"));
+$id=$defexp->getValue("expression-id");
+$spelling=$defexp->getValue("defined-meaning-defining-expression");
+$language=$defexp->getValue("language");
+
+echo "id: $id, spelling:$spelling, language:$language";
 
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 

@@ -28,6 +28,15 @@ class ArrayRecord implements Record {
 		return @$this->values[$attribute->id];
 	}
 	
+	/** 
+	 * Obtains a value based on the provided key.
+	 * In future, this should check against an attributes global with string
+	 * lookup, and might even be smart.
+	 * For now, this just does a direct lookup.
+	 */
+	public function getValue ($key) {
+		return @$this->values[$key];	
+	}
 
 	public function project(Structure $structure) {
 		$result = project($this, $structure);
@@ -72,11 +81,12 @@ class ArrayRecord implements Record {
 		$str=$this->getStructure();
 		$type=$str->getStructureType();
 		$rv.="$key:ArrayRecord(..., $type) {";
-		$rv2=$rv;
+		$comma=$rv;
 		foreach ($this->values as $key=>$value) {
-			$rv=$rv2;
-			$methods=get_class_methods(get_class($value));
+			$rv=$comma;
 			$repr="$key:$value";
+			#Duck typing (should refactor this to a has_attr() function);
+			$methods=get_class_methods(get_class($value));
 			if (!is_null($methods)) {
 				if (in_array("tostring_indent",$methods)) {
 					$repr=$value->tostring_indent($depth+1,$key);
@@ -84,8 +94,8 @@ class ArrayRecord implements Record {
 			}
 			$rv.=$repr;
 
-			$rv2=$rv;
-			$rv2.=", ";
+			$comma=$rv;
+			$comma.=", ";
 		}
 		$rv.="}";
 		return $rv;
