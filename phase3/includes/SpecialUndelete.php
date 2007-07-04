@@ -249,6 +249,9 @@ class PageArchive {
 		return ($n > 0);
 	}
 
+	const UNDELETE_NOTHINGRESTORED = 0; // No revisions could be restored
+	const UNDELETE_NOTAVAIL = -1; // Not all requested revisions are available
+	const UNDELETE_UNKNOWNERR = -2; // Unknown error
 	/**
 	 * Restore the given (or all) text and file revisions for the page.
 	 * Once restored, the items will be removed from the archive tables.
@@ -258,7 +261,7 @@ class PageArchive {
 	 * @param string $comment
 	 * @param array $fileVersions
 	 *
-	 * @return true on success.
+	 * @return array(number of revisions restored, number of file versions restored, log reason) on success or UNDELETE_* on failure
 	 */
 	function undelete( $timestamps, $comment = '', $fileVersions = array() ) {
 		// If both the set of text revisions and file revisions are empty,
@@ -273,12 +276,18 @@ class PageArchive {
 		if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
 			$img = wfLocalFile( $this->title );
 			$filesRestored = $img->restore( $fileVersions );
+			// TODO: includes/filerepo/LocalFile.php
 		} else {
 			$filesRestored = 0;
 		}
 		
 		if( $restoreText ) {
 			$textRestored = $this->undeleteRevisions( $timestamps );
+			if($textRestored < 0) // It must be one of UNDELETE_*
+			{
+				$dbw->rollback();
+				return $textRestored;
+			}
 		} else {
 			$textRestored = 0;
 		}
@@ -299,7 +308,7 @@ class PageArchive {
 				$wgContLang->formatNum( $filesRestored ) );
 		} else {
 			wfDebug( "Undelete: nothing undeleted...\n" );
-			return false;
+			return UNDELETE_NOTHINGRESTORED;
 		}
 		
 		if( trim( $comment ) != '' )
@@ -307,9 +316,9 @@ class PageArchive {
 		$log->addEntry( 'restore', $this->title, $reason );
 
 		$dbw->commit();
-		return true;
+		return array($textRestored, $filesRestored, $reason);
 	}
-	
+
 	/**
 	 * This is the meaty bit -- restores archived revisions of the given page
 	 * to the cur/old tables. If the page currently exists, all revisions will
@@ -319,7 +328,7 @@ class PageArchive {
 	 * @param string $comment
 	 * @param array $fileVersions
 	 *
-	 * @return int number of revisions restored
+	 * @return int number of revisions restored on success or UNDELETE_* on failure
 	 */
 	private function undeleteRevisions( $timestamps ) {
 		$restoreAll = empty( $timestamps );
@@ -385,7 +394,7 @@ class PageArchive {
 			);
 		if( $dbw->numRows( $result ) < count( $timestamps ) ) {
 			wfDebug( __METHOD__.": couldn't find all requested rows\n" );
-			return false;
+			return self::UNDELETE_NOTAVAIL;
 		}
 		
 		$revision = null;
@@ -437,7 +446,8 @@ class PageArchive {
 				Article::onArticleEdit( $this->title );
 			}
 		} else {
-			# Something went terribly wrong!
+			// Revision couldn't be created. This is very weird
+			return self::UNDELETE_UNKNOWNERR;
 		}
 
 		# Now that it's safely stored, take it out of the archive
@@ -840,7 +850,7 @@ class UndeleteForm {
 				$this->mComment,
 				$this->mFileVersions );
 			
-			if( $ok ) {
+			if( is_array($ok) ) {
 				$skin = $wgUser->getSkin();
 				$link = $skin->makeKnownLinkObj( $this->mTargetObj );
 				$wgOut->addHtml( wfMsgWikiHtml( 'undeletedpage', $link ) );

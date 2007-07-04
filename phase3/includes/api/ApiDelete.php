@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Created on Jun 21, 2007
+ * Created on Jun 30, 2007
  * API for MediaWiki 1.8+
  *
  * Copyright (C) 2007 Roan Kattouw <Firstname>.<Lastname>@home.nl

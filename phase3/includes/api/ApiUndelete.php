@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Created on Jun 20, 2007
+ * Created on Jul 3, 2007
  * API for MediaWiki 1.8+
  *
  * Copyright (C) 2007 Roan Kattouw <Firstname>.<Lastname>@home.nl
@@ -59,11 +59,22 @@ class ApiUndelete extends ApiBase {
 		if(!$titleObj)
 			$this->dieUsage("bad title {$params['title']}", 'invalidtitle');
 		$pa = new PageArchive($titleObj);
-		if(!$pa->undelete((isset($params['timestamps']) ? $params['timestamps'] : array()), $params['reason']))
-			$this->dieUsage('Undeletion failed for unknown reason', 'failed');
+		$retval = $pa->undelete((isset($params['timestamps']) ? $params['timestamps'] : array()), $params['reason']);
+		if(!is_array($retval))
+			switch($retval)
+			{
+				case PageArchive::UNDELETE_NOTHINGRESTORED:
+					$this->dieUsage('No revisions could be restored', 'norevs');
+				case PageArchive::UNDELETE_NOTAVAIL:
+					$this->dieUsage('Not all requested revisions could be found', 'revsnotfound');
+				case PageArchive::UNDELETE_UNKNOWN:
+					$this->dieUsage('Undeletion failed with unknown error', 'unknownerror');
+			}
 
-		$info['title'] = $params['title'];
-		$info['reason'] = $params['reason']; // FIXME
+		$info['title'] = $titleObj->getPrefixedText();
+		$info['revisions'] = $retval[0];
+		$info['fileversions'] = $retval[1];
+		$info['reason'] = $retval[2];
 		$this->getResult()->addValue(null, $this->getModuleName(), $info);
 	}
 

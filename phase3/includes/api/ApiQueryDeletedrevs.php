@@ -1,7 +1,7 @@
 <?php
 
 /*
- * Created on June 30, 2007
+ * Created on Jul 2, 2007
  *
  * API for MediaWiki 1.8+
  *
