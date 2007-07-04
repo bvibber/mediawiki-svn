@@ -34,7 +34,7 @@ function saveDM($model,$dc="uw") {
 		$wdCurrentContext;
 	$wdCurrentContext=$dc;
 	#echo $model->getRecord();
-	$model->save();
+	$model->saveWithinTransaction();
 }
 
 global
@@ -47,7 +47,6 @@ $wgCommandLineMode = true;
 /* insert code here */
 
 $model=getDM(663672,"uw");
-#saveDM($model,"tt");
 
 $record=$model->getRecord();
 echo $record;
@@ -59,6 +58,8 @@ $spelling=$defexp->getValue("defined-meaning-defining-expression");
 $language=$defexp->getValue("language");
 
 echo "id: $id, spelling:$spelling, language:$language";
+
+saveDM($model,"tt");
 
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 

@@ -91,7 +91,8 @@ class DefinedMeaningModel {
 
 		#here we assume the DM is not there yet.. not entirely wise
 		#in the long run.
-		$definedMeaningId=createNewDefinedMeaning($expressionId, $langaugeId, $text);
+		echo "id: $expressionId lang: $languageId";
+		$definedMeaningId=createNewDefinedMeaning($expressionId, $languageId, $text);
 		
 		getDefinedMeaningEditor($this->viewInformation)->save(
 			$this->getIdStack($definedMeaningId), 
@@ -117,23 +118,26 @@ class DefinedMeaningModel {
 	/*horrible cannibalised hack. Use at own risk*/
 	/* this particular function doesn't actually work yet */
 	public function saveWithinTransaction() {
-		global
-			$wgTitle, $wgUser, $wgRequest;
+		#global
+		#	$wgTitle, $wgUser, $wgRequest;
 
-		$summary = $wgRequest->getText('summary');
+		#$summary = $wgRequest->getText('summary');
 
+		
 		// Insert transaction information into the DB
-		startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
+		#startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
+		startNewTransaction(0, "0.0.0.0", "copy operation");
 
 		// Perform regular save
-		$this->save(new QueryAtTransactionInformation($wgRequest->getInt('transaction'), false));
+		#$this->save(new QueryAtTransactionInformation($wgRequest->getInt('transaction'), false));
+		$this->save();
 
 		// Update page caches
-		Title::touchArray(array($wgTitle));
+		#Title::touchArray(array($wgTitle));
 
 		// Add change to RC log
-		$now = wfTimestampNow();
-		RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, $summary, 0, $now, false, '', 0, 0, 0);
+		#$now = wfTimestampNow();
+		#RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, $summary, 0, $now, false, '', 0, 0, 0);
 	}
 
 	public function getRecord() {
