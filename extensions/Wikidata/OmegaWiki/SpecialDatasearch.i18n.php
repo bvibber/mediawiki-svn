@@ -8,14 +8,14 @@
 $wgDataSearchMessages = array();
 
 $wgDataSearchMessages['en'] = array(
-	'datasearch' => 'Data search',
+	'datasearch' => 'Wikidata: Data search',
 );
 
 $wgDataSearchMessages['fr'] = array(
-	'datasearch' => 'Recherche de données',
+	'datasearch' => 'Wikidata: Recherche de données',
 );
 
 $wgDataSearchMessages['id'] = array(
-	'datasearch' => 'Pencarian data',
+	'datasearch' => 'Wikidata: Pencarian data',
 );
 
