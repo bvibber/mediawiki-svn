@@ -186,6 +186,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$rowArr = $this->extractRowInfo($row);
 
 			if($this->fld_lastid) {
+				// Queries in loops are EVIL, FIXME
 				$this->resetQueryParams();
 				$this->addTables('revision');
 				$this->addFields('rev_id');

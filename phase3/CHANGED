@@ -1,0 +1,46 @@
+This file lists all changes in the apiedit branch relative to the trunk.
+Please add to this file when making a change worth mentioning
+It serves merely as a reference and should NOT be merged with the trunk.
+All paths are relative to branches/apiedit/phase3/includes/
+
+Article.php
+* Separated UI and DB code in Article::rollback() (r23562)
+** doRollback() does the dirty work, rollback() wraps around it
+** Introduced Article::ROLLBACK_* constants for rollback()'s return values (r23627)
+* Made a separate function (Article::generateReason()) for generating deletion reasons (r23590)
+* Added begin() and commit() to Article::doDeleteArticle() (r23590)
+
+SpecialUndelete.php
+* Added begin() and commit() to PageArchive::undelete() (r23687)
+* Changed PageArchive::undelete() to return useful information (r23697)
+** Introduced UNDELETE_* class constants
+** undelete() returns array with number of restored revisions/file versions and undeletion summary on success, UNDELETE_* on failure
+** Updated SpecialUndelete::undelete() to recognize changed PageArchive::undelete() return values
+
+api/ApiQueryInfo.php
+* Implemented tokens (r23562, r23568,r23638, r23668)
+* Added lastrevby field (r23562)
+
+api/ApiQueryRevisions.php
+* Adding lastid field (UNSTABLE, FIXME) (r23585, r23590)
+
+api/ApiRollback.php (NEW)
+* action=rollback module that wraps around Article::doRollback() (r23562)
+
+api/ApiDelete.php (NEW)
+* action=delete module that wraps around Article::doDeleteArticle() (r23590)
+
+api/ApiQueryDeletedRevs.php (NEW)
+* action=query&list=deletedrevs module that lists deleted revisions from the archive table (r23668)
+
+api/ApiUndelete.php (NEW)
+* action=undelete module that wraps around PageArchive::undelete() (r23687, r23697)
+
+AutoLoader.php
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687)
+
+api/ApiMain.php
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687)
+
+api/ApiQuery.php
+* Added entry for ApiQueryDeletedRevs (r23668)
