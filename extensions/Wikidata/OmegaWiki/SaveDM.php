@@ -46,7 +46,7 @@ $wgCommandLineMode = true;
 
 /* insert code here */
 
-$model=getDM(663672,"uw");
+$model=getDM(663674,"tt");
 
 $record=$model->getRecord();
 echo $record;
@@ -59,7 +59,7 @@ $language=$defexp->getValue("language");
 
 echo "id: $id, spelling:$spelling, language:$language";
 
-saveDM($model,"tt");
+saveDM($model,"uw");
 
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 

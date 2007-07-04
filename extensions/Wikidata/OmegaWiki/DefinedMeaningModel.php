@@ -81,6 +81,7 @@ class DefinedMeaningModel {
 		$expression=$this->dupDefiningExpression();
 		# to make the expression really work, we may need to call
 		# more here?
+		$expression->createNewInDatabase();
 		
 		# shouldn't this stuff be protected?
 		$expressionId=$expression->id;
