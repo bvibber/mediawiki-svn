@@ -76,8 +76,12 @@ function wfSpecialDatasearch() {
 		function execute($parameter) {
 			global
 				$wgOut, $wgTitle;
-
-			$searchText = ltrim($_GET['search-text']);
+			
+			if(array_key_exists('search-text', $_GET)) {
+				$searchText = ltrim($_GET['search-text']);
+			} else {
+				$searchText = null;
+			}
 			
 			if (isset($_GET['go'])) 
 				$this->go($searchText);	
