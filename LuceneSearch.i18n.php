@@ -95,7 +95,7 @@ $wgLuceneSearchMessages['fi'] = array(
 
 $1
 
-Hakulauseke $3 $9',
+Hakulauseke $3 $9 $10',
 	'lucenefallback'        => 'Haku epäonnistui. Yritä hetken päästä uudelleen tai käytä ulkoisia hakukoneita:',
 	'searchall'             => 'kaikki',
 	'searchincategory'      => 'luokassa',
@@ -305,7 +305,7 @@ $wgLuceneSearchMessages['no'] = array(
 
 $1
 
-Søk etter $3 $9',
+Søk etter $3 $9 $10',
 	'lucenefallback'        => 'Det var et problem med søket. Dette er sannsynligvis midlertidig; prøv igjen om et øyeblikk, eller søk ved hjelp av en ekstern søketjeneste:',
 );
 $wgLuceneSearchMessages['oc'] = array(
