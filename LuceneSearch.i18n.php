@@ -133,7 +133,11 @@ $1\n
 חיפוש של $3 $9 $10",
 	'lucenefallback'        => "יש בעיה עם מנוע הוויקי.
 סביר להניח שהיא זמנית; אנא נסו שנית בעוד מספר דקות.
-באפשרותכם גם לחפש בוויקי באמצעות שירותי חיפוש חיצוניים:\n"
+באפשרותכם גם לחפש בוויקי באמצעות שירותי חיפוש חיצוניים:\n",
+	'searchexactcase'       => 'חיפוש תלוי־רישיות',
+	'searchall'             => 'הכל',
+	'searchincategory'      => 'בקטגוריה',
+	'searchaliases'         => '',
 );
 $wgLuceneSearchMessages['hu'] = array(
 	'searchnumber'          => "<strong>$1-$2, összesen: $3 találat</strong>",
