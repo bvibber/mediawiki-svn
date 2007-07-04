@@ -153,8 +153,8 @@ function getSourceName($sourceAbbreviation) {
 
 function importUMLSTerms($sab, $umlsCollectionId, $sourceCollectionId, $languageId, $isoLanguages) {
 	global
-		$db;
-	
+	$db;
+
 	$queryResult = mysql_query("select str, cui, lat, code from MRCONSO where sab like '$sab'", $db);
 	initializeProgressBar(mysql_num_rows($queryResult), 100);
 
@@ -162,7 +162,7 @@ function importUMLSTerms($sab, $umlsCollectionId, $sourceCollectionId, $language
 
 	while ($umlsTerm = mysql_fetch_object($queryResult)) {
 		$definedMeaningId = getDefinedMeaningFromCollection($umlsCollectionId, $umlsTerm->cui);
-		$string = str_replace('_', ' ', trim($umlsTerm->str));
+		$string = str_replace('_', ' ', substr( trim($umlsTerm->str), 0, 240 ) );
 		$expression = findOrCreateExpression($string, $isoLanguages[strtolower($umlsTerm->lat)]);
 		
 		if(!$definedMeaningId) {
@@ -257,9 +257,14 @@ function importUMLSRelations($umlsCollectionId, $relationCollectionContents, $qu
 			$relationType='RB';
 		}
 		
+		//echo "$definedMeaningId1 = $relation[0]\n";
 		$definedMeaningId1 = getDefinedMeaningFromCollection($umlsCollectionId, $relation[0]);
 		$definedMeaningId2 = getDefinedMeaningFromCollection($umlsCollectionId, $relation[1]);
 		$relationMeaningId = $relationCollectionContents[$relationType];
+
+//		echo "$definedMeaningId1 = $relation[0]\n";
+//		echo "$definedMeaningId1 = $relation[1]\n";
+//		echo "umlsCollectionId = $umlsCollectionId\n";
 		
 		if(!$definedMeaningId1){
 			echo "Unknown cui $relation[0]\n";
@@ -339,30 +344,35 @@ function importUMLSSemanticTypes($sab, $collectionId, $attributeTypes) {
 		$db;
 
 	$query = "SELECT MRSTY.CUI, MRSTY.STY FROM MRCONSO,MRSTY where MRCONSO.SAB like '$sab' and MRCONSO.CUI=MRSTY.CUI";
-	$queryResult = mysql_query($query, $db);
+	if ( $queryResult = mysql_query($query, $db) ){
+		
+		initializeProgressBar(mysql_num_rows($queryResult), 100);
+		
+		while ($attribute = mysql_fetch_object($queryResult)) {
+			$definedMeaningId = getDefinedMeaningFromCollection($collectionId, $attribute->CUI);
+			$attributeMeaningId = $attributeTypes[$attribute->STY];
 	
-	initializeProgressBar(mysql_num_rows($queryResult), 100);
-	
-	while ($attribute = mysql_fetch_object($queryResult)) {
-		$definedMeaningId = getDefinedMeaningFromCollection($collectionId, $attribute->CUI);
-		$attributeMeaningId = $attributeTypes[$attribute->STY];
-
-		if(!$definedMeaningId){
-			echo "Unknown cui $attribute->CUI\n";
-			print_r($attribute);
+			if(!$definedMeaningId){
+				echo "Unknown cui $attribute->CUI\n";
+				print_r($attribute);
+				echo "get definedmeaning from collection = $collectionId, $attribute->CUI\n";
+				die;
+			}
+			if(!$attributeMeaningId){
+				echo "Unknown attribute $attribute->STY\n";
+				print_r($attribute);
+				echo "get definedmeaning from collection = $collectionId, $attribute->CUI\n";
+				die;
+			}
+		
+			if ($definedMeaningId > 0 && $attributeMeaningId > 0)
+				addClassMembership($definedMeaningId, $attributeMeaningId);
+				
+			advanceProgressBar(1);
 		}
-		if(!$attributeMeaningId){
-			echo "Unknown attribute $attribute->STY\n";
-			print_r($attribute);
-		}
-	
-		if ($definedMeaningId > 0 && $attributeMeaningId > 0)
-			addClassMembership($definedMeaningId, $attributeMeaningId);
-			
-		advanceProgressBar(1);
-	}
-	
-	clearProgressBar();	
+		
+		clearProgressBar();
+	}	
 }
 
-
+?>
