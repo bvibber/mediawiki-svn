@@ -4,7 +4,11 @@ require_once("Attribute.php");
 require_once("Record.php");
 require_once("RecordSet.php");
 
-define ('SORT_IMAGE', ' <img src="skins/common/images/sort_none.gif"></img>');
+global
+	$wgSitename;
+	
+$URL = "/$wgSitename/skins/common/images/sort_none.gif";
+define ('SORT_IMAGE', ' <img src="' . $URL . '"></img>');
 
 function parityClass($value) {
 	if ($value % 2 == 0)
