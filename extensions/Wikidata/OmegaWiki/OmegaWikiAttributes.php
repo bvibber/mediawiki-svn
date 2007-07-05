@@ -311,6 +311,21 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 	$objectAttributesStructure = new Structure("object-attributes", $objectIdAttribute, $textAttributeValuesAttribute, $translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute);
 	$objectAttributesAttribute->setAttributeType($objectAttributesStructure);
 	$definedMeaningAttributesAttribute->setAttributeType($objectAttributesStructure);
+	
+	$annotatedAttributes = array(
+		$definitionAttribute, 
+		$synonymsAndTranslationsAttribute, 
+		$relationsAttribute,
+		$reciprocalRelationsAttribute
+	);
+	
+	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) {
+		$attribute = $propertyToColumnFilter->getAttribute();
+		$attribute->setAttributeType($objectAttributesStructure);
+		
+		foreach ($annotatedAttributes as $annotatedAttribute) 		
+			$annotatedAttribute->type->addAttribute($attribute);
+	}
 
 	global $wdDefinedMeaningAttributesOrder;
 

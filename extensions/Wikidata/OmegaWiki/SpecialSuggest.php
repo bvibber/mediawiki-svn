@@ -72,7 +72,7 @@ function getSuggestions() {
 			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT');
 			break;
 		case 'url-attribute':	
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'URL');
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT');
 			break;
 		case 'language':
 			require_once('languages.php');
@@ -118,6 +118,7 @@ function getSuggestions() {
 			$query == 'option-attribute' or
 			$query == 'translated-text-attribute' or
 			$query == 'text-attribute' or
+			$query == 'url-attribute' or
 			$query == 'collection') 
 			$searchCondition = " WHERE $rowText LIKE " . $dbr->addQuotes("$search%");
 		else	
@@ -231,7 +232,7 @@ function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attribut
 	$sqlActual = getSQLToSelectPossibleAttributesForLanguage($objectId, $attributesLevel, $attributesType, $wgUser->getOption('language'));
 	$sqlFallback = getSQLToSelectPossibleAttributesForLanguage($objectId, $attributesLevel, $attributesType, 'en');
 	
-	return constructSQLWithFallback($sqlActual, $sqlFallback, array("attribute_mid", "spelling"));
+	return constructSQLWithFallback($sqlActual, $sqlFallback, array("attribute_mid", "spelling")); 
 }
 
 # language is the 2 letter wikimedia code. use "<ANY>" if you don't want language filtering

@@ -1,14 +1,18 @@
 <?php
 
+require_once('Attribute.php');
+
 class PropertyToColumnFilter {
-	public $identifier; 	// The identifier of the attribute that will be created
-	public $caption;   	 	// The caption of the attribute that will be created
 	public $attributeIDs;   // Array containing the defined meaning ids of the attributes that should be filtered
+	protected $attribute;   // Attribute
 	
 	public function __construct($identifier, $caption, array $attributeIDs) {
-		$this->identifier = $identifier;
-		$this->caption = $caption;
 		$this->attributeIDs = $attributeIDs;
+		$this->attribute = new Attribute($identifier, $caption, "will-be-specified-later");		
+	}
+	
+	public function getAttribute() {
+		return $this->attribute;
 	} 
 }
 

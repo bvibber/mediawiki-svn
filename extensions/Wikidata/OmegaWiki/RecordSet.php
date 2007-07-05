@@ -58,6 +58,10 @@ class ArrayRecordSet extends RecordSet {
 	public function add($record) {
 		$this->records[] = $record;
 	}
+	
+	public function remove($index) {
+		array_splice($this->records, $index, 1);
+	}
 
 	public function addRecord($values) {
 		$record = new ArrayRecord($this->structure);

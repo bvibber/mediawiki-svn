@@ -16,7 +16,6 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 		$translatedTextValueObjectAttributesEditor, $translatedTextAttributeIdAttribute,
 		$optionValueObjectAttributesEditor, $optionAttributeIdAttribute, $annotationMeaningName;
 		
-	
 	$textValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$urlValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$translatedTextValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
@@ -74,8 +73,17 @@ function getDefinitionEditor(ViewInformation $viewInformation) {
 		new DefinedMeaningFilteredDefinitionController($viewInformation->filterLanguageId), 
 		$viewInformation
 	));
+	
+	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) {
+		$attribute = $propertyToColumnFilter->getAttribute();
+		$editor->addEditor(new PopUpEditor(
+			createDefinitionObjectAttributesEditor($viewInformation, $attribute, $definedMeaningIdAttribute, 0, $definitionMeaningName),	
+			$attribute->name
+		));
+	}
+		
 	$editor->addEditor(new PopUpEditor(
-		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $definedMeaningIdAttribute, 0, $definitionMeaningName),	
+		createDefinitionObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $definedMeaningIdAttribute, 0, $definitionMeaningName),	
 		$wgPopupAnnotationName
 	));
 
@@ -118,6 +126,23 @@ function createObjectAttributesEditor(ViewInformation $viewInformation, Attribut
 		$result, 
 		$viewInformation, 
 		new ObjectIdFetcher(0, $idAttribute), 
+		$levelName, 
+		new ObjectIdFetcher($levelsFromDefinedMeaning, $definedMeaningIdAttribute)
+	);
+	
+	return $result;
+}
+
+function createDefinitionObjectAttributesEditor(ViewInformation $viewInformation, Attribute $attribute, Attribute $idAttribute, $levelsFromDefinedMeaning, $levelName) {
+	global
+		$objectAttributesAttribute, $definedMeaningIdAttribute;
+	
+	$result = new RecordUnorderedListEditor($attribute, 5); 
+	
+	setObjectAttributesEditor(
+		$result, 
+		$viewInformation, 
+		new DefinitionObjectIdFetcher(0, $idAttribute), 
 		$levelName, 
 		new ObjectIdFetcher($levelsFromDefinedMeaning, $definedMeaningIdAttribute)
 	);

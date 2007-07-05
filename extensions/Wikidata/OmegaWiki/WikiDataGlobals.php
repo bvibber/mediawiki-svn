@@ -92,13 +92,13 @@ $wgSourceAttributeName = "Source";
 $wgSourceIdentifierAttributeName = "Source identifier";
 $wgTextAttributeAttributeName = "Property";
 $wgTextAttributeName = "Text";
-$wgTextAttributeValuesAttributeName = "Plain text properties";
+$wgTextAttributeValuesAttributeName = "Plain texts";
 $wgTranslatedTextAttributeAttributeName = "Property";
 $wgTranslatedTextAttributeName = "Translated text";
 $wgTranslatedTextAttributeValueAttributeName = "Text";
-$wgTranslatedTextAttributeValuesAttributeName = "Translatable text properties";
+$wgTranslatedTextAttributeValuesAttributeName = "Translatable texts";
 $wgUrlAttributeAttributeName = "Property";
-$wgUrlAttributeValuesAttributeName = "URL properties";
+$wgUrlAttributeValuesAttributeName = "URLs";
 
 // Go to source templates
 

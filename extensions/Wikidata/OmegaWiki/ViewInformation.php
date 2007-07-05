@@ -24,6 +24,7 @@ class ViewInformation {
 		$this->possiblySynonymousRelationTypeId = 0;
 		$this->queryTransactionInformation;
 		$this->showRecordLifeSpan = false; 
+		$this->propertyToColumnFilters = array();
 	}
 	
 	public function hasMetaDataAttributes() {
@@ -36,6 +37,10 @@ class ViewInformation {
 	
 	public function setPropertyToColumnFilters(array $propertyToColumnFilters) {
 		$this->propertyToColumnFilters = $propertyToColumnFilters;
+	}
+	
+	public function getPropertyToColumnFilters() {
+		return $this->propertyToColumnFilters;
 	}
 }
 
