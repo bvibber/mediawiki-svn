@@ -1,8 +1,8 @@
 <?php
 
 require_once('Transaction.php');
-
 require_once('Wikidata.php');
+
 class Expression {
 	public $id;
 	public $spelling;
@@ -41,7 +41,6 @@ class Expression {
 }
 
 function getExpression($expressionId) {
-
 	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT spelling, language_id " .
@@ -305,10 +304,11 @@ function classAttributeExists($classMeaningId, $levelMeaningId, $attributeMeanin
 function createClassAttribute($classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType) {
 	$objectId = getClassAttributeId($classMeaningId, $levelMeaningId, $attributeMeaningId, $attributeType);
 	
+	$dc=wdGetDataSetContext();
+
 	if ($objectId == 0)
 		$objectId = newObjectId("{$dc}_class_attributes");
 		
-	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_MASTER);
 	$sql = "INSERT INTO {$dc}_class_attributes(object_id, class_mid, level_mid, attribute_mid, attribute_type, add_transaction_id) " .
 			" VALUES ($objectId, $classMeaningId, $levelMeaningId, $attributeMeaningId, " . $dbr->addQuotes($attributeType) . ', ' . getUpdateTransactionId() . ')';
