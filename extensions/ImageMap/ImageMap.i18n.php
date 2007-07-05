@@ -271,21 +271,6 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
 ),
 
-/* Chinese (China) (Shinjiman) */
-'zh-cn' => array(
-'imagemap_no_image'             => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
-'imagemap_invalid_image'        => '&lt;imagemap&gt;: 图像不正确或者不存在',
-'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行结尾中找不到一个正式的链接',
-'imagemap_invalid_title'        => '&lt;imagemap&gt;: 在第$1行中的标题链接不正确',
-'imagemap_missing_coord'        => '&lt;imagemap&gt;: 在第$1行中未有足够的座标组成一个形状',
-'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: 在第$1行中有未能认出的形状，每一行必须使用以下其中一组字开始: '.
-								   'default, rect, circle 或者是 poly',
-'imagemap_no_areas'             => '&lt;imagemap&gt;: 最少要给出一个指定的空间',
-'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正确的座标，它必须是一个数字',
-'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正确的 desc 参数，必须是以下的其中之一: $1',
-'imagemap_description'          => '关于这幅图像',
-),
-
 /* Chinese (Simplified) (Shinjiman) */
 'zh-hans' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
@@ -333,5 +318,6 @@ function efImageMapMessages() {
 	return $messages;
 
 }
+
 
 
