@@ -10,36 +10,18 @@ require_once('ViewInformation.php');
 
 function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 	global
-		$objectAttributesAttribute, $definedMeaningAttributesAttribute,
-		$definedMeaningObjectAttributesEditor, $definedMeaningIdAttribute,
-		$definitionObjectAttributesEditor, $definedMeaningIdAttribute,
-		$synonymsAndTranslationsObjectAttributesEditor, $syntransIdAttribute,
-		$relationsObjectAttributesEditor, $relationIdAttribute,
-		$possiblySynonymousObjectAttributesEditor, $possiblySynonymousIdAttribute,
+		$objectAttributesAttribute, $definedMeaningIdAttribute,
 		$textValueObjectAttributesEditor, $textAttributeIdAttribute,
 		$urlValueObjectAttributesEditor, $urlAttributeIdAttribute,
 		$translatedTextValueObjectAttributesEditor, $translatedTextAttributeIdAttribute,
-		$optionValueObjectAttributesEditor, $optionAttributeIdAttribute,
-		$definedMeaningMeaningName, $definitionMeaningName,
-		$relationMeaningName, $synTransMeaningName,
-		$annotationMeaningName;
+		$optionValueObjectAttributesEditor, $optionAttributeIdAttribute, $annotationMeaningName;
 		
-	$definedMeaningObjectAttributesEditor =	new RecordUnorderedListEditor($definedMeaningAttributesAttribute, 5);
-	$definitionObjectAttributesEditor =	new RecordUnorderedListEditor($objectAttributesAttribute, 5); 
-	$synonymsAndTranslationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
-	$possiblySynonymousObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
-	$relationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	
 	$textValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$urlValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$translatedTextValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$optionValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	
-	setObjectAttributesEditor($definedMeaningObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $definedMeaningIdAttribute), $definedMeaningMeaningName, new ObjectIdFetcher(0, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($definitionObjectAttributesEditor, $viewInformation, new DefinitionObjectIdFetcher(0, $definedMeaningIdAttribute), $definitionMeaningName, new ObjectIdFetcher(0, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($synonymsAndTranslationsObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $syntransIdAttribute), $synTransMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($possiblySynonymousObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $possiblySynonymousIdAttribute), $relationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($relationsObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $relationIdAttribute), $relationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($textValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($urlValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $urlAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($translatedTextValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
@@ -82,7 +64,8 @@ function addTableMetadataEditors($editor, ViewInformation $viewInformation) {
 
 function getDefinitionEditor(ViewInformation $viewInformation) {
 	global
-		$definitionAttribute, $translatedTextAttribute, $definitionObjectAttributesEditor, $wgPopupAnnotationName;
+		$definitionAttribute, $translatedTextAttribute, $wgPopupAnnotationName, 
+		$objectAttributesAttribute, $definedMeaningIdAttribute, $definitionMeaningName, $objectAttributesAttribute;
 
 	$editor = new RecordDivListEditor($definitionAttribute);
 	$editor->addEditor(getTranslatedTextEditor(
@@ -91,7 +74,10 @@ function getDefinitionEditor(ViewInformation $viewInformation) {
 		new DefinedMeaningFilteredDefinitionController($viewInformation->filterLanguageId), 
 		$viewInformation
 	));
-	$editor->addEditor(new PopUpEditor($definitionObjectAttributesEditor, $wgPopupAnnotationName));
+	$editor->addEditor(new PopUpEditor(
+		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $definedMeaningIdAttribute, 0, $definitionMeaningName),	
+		$wgPopupAnnotationName
+	));
 
 	return $editor;	
 }	
@@ -120,6 +106,23 @@ function setObjectAttributesEditor(Editor $objectAttributesEditor, ViewInformati
 	$objectAttributesEditor->addEditor(getTranslatedTextAttributeValuesEditor($viewInformation, new TranslatedTextAttributeValuesController($objectIdFetcher, $viewInformation->filterLanguageId), $levelDefinedMeaningName, $dmObjectIdFetcher));
 	$objectAttributesEditor->addEditor(getURLAttributeValuesEditor($viewInformation, new URLAttributeValuesController($objectIdFetcher), $levelDefinedMeaningName, $dmObjectIdFetcher));
 	$objectAttributesEditor->addEditor(getOptionAttributeValuesEditor($viewInformation, new OptionAttributeValuesController($objectIdFetcher), $levelDefinedMeaningName, $dmObjectIdFetcher));
+}
+
+function createObjectAttributesEditor(ViewInformation $viewInformation, Attribute $attribute, Attribute $idAttribute, $levelsFromDefinedMeaning, $levelName) {
+	global
+		$objectAttributesAttribute, $definedMeaningIdAttribute;
+	
+	$result = new RecordUnorderedListEditor($attribute, 5); 
+	
+	setObjectAttributesEditor(
+		$result, 
+		$viewInformation, 
+		new ObjectIdFetcher(0, $idAttribute), 
+		$levelName, 
+		new ObjectIdFetcher($levelsFromDefinedMeaning, $definedMeaningIdAttribute)
+	);
+	
+	return $result;
 }
 
 function getAlternativeDefinitionsEditor(ViewInformation $viewInformation) {
@@ -182,7 +185,8 @@ function getClassAttributesEditor(ViewInformation $viewInformation) {
 function getSynonymsAndTranslationsEditor(ViewInformation $viewInformation) {
 	global
 		$synonymsAndTranslationsAttribute, $identicalMeaningAttribute, $expressionIdAttribute, 
-		$expressionAttribute, $synonymsAndTranslationsObjectAttributesEditor, $wgPopupAnnotationName;
+		$expressionAttribute, $wgPopupAnnotationName,
+		$syntransIdAttribute, $synTransMeaningName, $objectAttributesAttribute;
 
 	$tableEditor = new RecordSetTableEditor(
 		$synonymsAndTranslationsAttribute, 
@@ -196,7 +200,10 @@ function getSynonymsAndTranslationsEditor(ViewInformation $viewInformation) {
 	
 	$tableEditor->addEditor(getExpressionTableCellEditor($expressionAttribute, $viewInformation));
 	$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(true), true, true));
-	$tableEditor->addEditor(new PopUpEditor($synonymsAndTranslationsObjectAttributesEditor, $wgPopupAnnotationName));
+	$tableEditor->addEditor(new PopUpEditor(
+		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $syntransIdAttribute, 1, $synTransMeaningName), 
+		$wgPopupAnnotationName
+	));
 
 	addTableMetadataEditors($tableEditor, $viewInformation);
 
@@ -205,13 +212,16 @@ function getSynonymsAndTranslationsEditor(ViewInformation $viewInformation) {
 
 function getDefinedMeaningRelationsEditor(ViewInformation $viewInformation) {
 	global
-		$relationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute,
-		$relationsObjectAttributesEditor, $wgPopupAnnotationName;
+		$relationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $objectAttributesAttribute,
+		$relationsObjectAttributesEditor, $relationIdAttribute, $relationMeaningName, $wgPopupAnnotationName;
 
 	$editor = new RecordSetTableEditor($relationsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningRelationController());
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
-	$editor->addEditor(new PopUpEditor($relationsObjectAttributesEditor, $wgPopupAnnotationName));
+	$editor->addEditor(new PopUpEditor(
+		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $relationIdAttribute, 1, $relationMeaningName), 
+		$wgPopupAnnotationName
+	));
 
 	addTableMetadataEditors($editor, $viewInformation);
 
@@ -220,13 +230,16 @@ function getDefinedMeaningRelationsEditor(ViewInformation $viewInformation) {
 
 function getDefinedMeaningReciprocalRelationsEditor(ViewInformation $viewInformation) {
 	global
-		$reciprocalRelationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute,
-		$relationsObjectAttributesEditor, $wgPopupAnnotationName;
+		$reciprocalRelationsAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute, $objectAttributesAttribute,
+		$relationsObjectAttributesEditor, $relationIdAttribute, $relationMeaningName, $wgPopupAnnotationName;
 
 	$editor = new RecordSetTableEditor($reciprocalRelationsAttribute, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
-	$editor->addEditor(new PopUpEditor($relationsObjectAttributesEditor, $wgPopupAnnotationName));
+	$editor->addEditor(new PopUpEditor(
+		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $relationIdAttribute, 1, $relationMeaningName), 
+		$wgPopupAnnotationName
+	));
 
 	addTableMetadataEditors($editor, $viewInformation);
 
@@ -444,9 +457,9 @@ class AttributeEditorMap {
 
 function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	global
-		$wdDefinedMeaningAttributesOrder,
+		$wdDefinedMeaningAttributesOrder, $definedMeaningIdAttribute, $definedMeaningMeaningName,
 		$definedMeaningAttribute, $possiblySynonymousIdAttribute, $possiblySynonymousAttribute, 
-		$possibleSynonymAttribute, $definedMeaningObjectAttributesEditor, $possiblySynonymousObjectAttributesEditor;
+		$possibleSynonymAttribute, $relationMeaningName, $objectAttributesAttribute, $definedMeaningAttributesAttribute;
 	
 	$definitionEditor = getDefinitionEditor($viewInformation);
 	$alternativeDefinitionsEditor = getAlternativeDefinitionsEditor($viewInformation);
@@ -463,7 +476,7 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 		$possibleSynonymAttribute, 
 		$viewInformation->possiblySynonymousRelationTypeId,
 		$viewInformation, 
-		$possiblySynonymousObjectAttributesEditor
+		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $possiblySynonymousIdAttribute, 1, $relationMeaningName)
 	); 
 	
 	$availableEditors = new AttributeEditorMap();
@@ -475,7 +488,7 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	$availableEditors->addEditor($reciprocalRelationsEditor);
 	$availableEditors->addEditor($classMembershipEditor);
 	$availableEditors->addEditor($collectionMembershipEditor);
-	$availableEditors->addEditor($definedMeaningObjectAttributesEditor);
+	$availableEditors->addEditor(createObjectAttributesEditor($viewInformation, $definedMeaningAttributesAttribute, $definedMeaningIdAttribute, 0, $definedMeaningMeaningName));
 
 	if ($viewInformation->possiblySynonymousRelationTypeId != 0)
 		$availableEditors->addEditor($possiblySynonymousEditor);
@@ -484,7 +497,7 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	
 	foreach ($wdDefinedMeaningAttributesOrder as $attributeId) {
 		$editor = $availableEditors->getEditorForAttributeId($attributeId);
-		
+
 		if ($editor != null)
 			$definedMeaningEditor->addEditor($editor);
 	}

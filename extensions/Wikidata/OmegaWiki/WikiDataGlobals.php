@@ -92,11 +92,11 @@ $wgSourceAttributeName = "Source";
 $wgSourceIdentifierAttributeName = "Source identifier";
 $wgTextAttributeAttributeName = "Property";
 $wgTextAttributeName = "Text";
-$wgTextAttributeValuesAttributeName = "String properties";
+$wgTextAttributeValuesAttributeName = "Plain text properties";
 $wgTranslatedTextAttributeAttributeName = "Property";
 $wgTranslatedTextAttributeName = "Translated text";
 $wgTranslatedTextAttributeValueAttributeName = "Text";
-$wgTranslatedTextAttributeValuesAttributeName = "Text properties";
+$wgTranslatedTextAttributeValuesAttributeName = "Translatable text properties";
 $wgUrlAttributeAttributeName = "Property";
 $wgUrlAttributeValuesAttributeName = "URL properties";
 
