@@ -598,7 +598,7 @@ function getDefinedMeaningFromCollection($collectionId, $internalMemberId) {
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT member_mid FROM {$dc}_collection_contents WHERE collection_id=$collectionId AND internal_member_id=". $dbr->addQuotes($internalMemberId) .
-								" AND " .getLatestTransactionRestriction("{$dc}_collection_contentsr"));
+								" AND " .getLatestTransactionRestriction("{$dc}_collection_contents"));
 	
 	if ($definedMeaningObject = $dbr->fetchObject($queryResult)) 
 		return $definedMeaningObject->member_mid;
@@ -1002,7 +1002,8 @@ function findCollection($name) {
 	$query = "SELECT collection_id, collection_mid, collection_type FROM {$dc}_collection_ns" .
 			" WHERE ".getLatestTransactionRestriction("{$dc}_collection_ns") .
 			" AND collection_mid = (SELECT defined_meaning_id FROM {$dc}_syntrans WHERE expression_id = " . 
-             "(SELECT expression_id FROM {$dc}_expression_ns WHERE spelling LIKE " . $dbr->addQuotes($name) . " limit 1))";
+             "(SELECT expression_id FROM {$dc}_expression_ns WHERE spelling LIKE " . $dbr->addQuotes($name) . " limit 1) limit 1)";
+    echo $query;
 	$queryResult = $dbr->query($query);
 	
 	if ($collectionObject = $dbr->fetchObject($queryResult)) 
