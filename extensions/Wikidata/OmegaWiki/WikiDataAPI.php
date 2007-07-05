@@ -597,8 +597,9 @@ function addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectio
 function getDefinedMeaningFromCollection($collectionId, $internalMemberId) {
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT member_mid FROM {$dc}_collection_contents WHERE collection_id=$collectionId AND internal_member_id=". $dbr->addQuotes($internalMemberId) .
-								" AND " .getLatestTransactionRestriction("{$dc}_collection_contents"));
+	$query = "SELECT member_mid FROM {$dc}_collection_contents WHERE collection_id=$collectionId AND internal_member_id=". $dbr->addQuotes($internalMemberId) . " AND " .getLatestTransactionRestriction("{$dc}_collection_contents");
+	echo "$query\n"; 
+	$queryResult = $dbr->query( $query );
 	
 	if ($definedMeaningObject = $dbr->fetchObject($queryResult)) 
 		return $definedMeaningObject->member_mid;
@@ -1085,21 +1086,59 @@ function getExpressionMeaningIds($spelling) {
  */
 
 function createConceptMapping($concepts) {
-	$uuid= getUUID();
+	$uuid_map = getUUID($concepts);
 	foreach ($concepts as $dc => $dm_id) {
 		$collid=getCollectionIdForDC($dc);
-		writeDmToCollection($dc, $collid, $uuid, $dm_id);
+		if ( $uuid_map[$dc] != -1 ){
+			writeDmToCollection($dc, $collid, $uuid_map[$dc], $dm_id);
+		}
+	}
+}
+
+function getMapping( $dc, $collid, $dm_id ){
+	$dbr = &wfGetDB(DB_SLAVE);
+	$queryResult = $dbr->query( "select internal_member_id from {$dc}_collection_contents where collection_id = $collid AND member_mid = $dm_id" );
+	if ( $record = $dbr->fetchObject($queryResult) ){
+		return $record->internal_member_id;
+	}
+	else{
+		return -1;
 	}
 }
 
 /** ask db to provide a universally unique id */
 
-function getUUID() {
-    	$dbr = & wfGetDB(DB_SLAVE);
-	$query="SELECT uuid() AS id";
-	$queryResult = $dbr->query($query);
-	$row=$dbr->fetchObject($queryResult);
-	return isset($row->id) ? $row->id : null;
+function getUUID($concepts) {
+    $dbr = & wfGetDB(DB_SLAVE);
+    
+    $uuid_array = array();
+ 	$uuid = -1;
+    
+    foreach ($concepts as $dc => $dm_id) {
+		$collid = getCollectionIdForDC($dc);
+		$uuid_array[$dc] = getMapping( $dc, $collid, $dm_id );
+		if ( ( $uuid == -1 ) && ( $uuid_array[$dc] != -1 ) ){
+			$uuid = $uuid_array[$dc]; 
+		}
+	}
+	
+	if ( $uuid == -1 ){
+		$query="SELECT uuid() AS id";
+		$queryResult = $dbr->query($query);
+		$row=$dbr->fetchObject($queryResult);
+		$uuid = isset($row->id) ? $row->id : -1;
+	}
+	
+    foreach ($concepts as $dc => $dm_id) {
+    	if ( $uuid_array[$dc] == -1 ){
+    		$uuid_array[$dc] = $uuid;
+    	}
+    	else{
+    		$uuid_array[$dc] = -1;
+    	}
+    }
+	
+	return $uuid_array;
 }
 
 /** this funtion assumes that there is only a single mapping collection */
