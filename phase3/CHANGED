@@ -21,9 +21,6 @@ api/ApiQueryInfo.php
 * Implemented tokens (r23562, r23568,r23638, r23668)
 * Added lastrevby field (r23562)
 
-api/ApiQueryRevisions.php
-* Adding lastid field (UNSTABLE, FIXME) (r23585, r23590)
-
 api/ApiRollback.php (NEW)
 * action=rollback module that wraps around Article::doRollback() (r23562)
 
