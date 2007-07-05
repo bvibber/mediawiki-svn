@@ -15,8 +15,10 @@ class ViewInformation {
 	public $filterLanguageId;
 	public $possiblySynonymousRelationTypeId;
 	public $queryTransactionInformation;
-	public $showRecordLifeSpan; 
-
+	public $showRecordLifeSpan;
+	
+	protected $propertyToColumnFilters;
+	
 	public function __construct() {
 		$this->filterLanguageId = 0;
 		$this->possiblySynonymousRelationTypeId = 0;
@@ -30,6 +32,10 @@ class ViewInformation {
 	
 	public function filterOnLanguage() {
 		return $this->filterLanguageId != 0;
+	}
+	
+	public function setPropertyToColumnFilters(array $propertyToColumnFilters) {
+		$this->propertyToColumnFilters = $propertyToColumnFilters;
 	}
 }
 

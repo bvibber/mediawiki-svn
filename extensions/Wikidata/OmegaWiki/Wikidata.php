@@ -16,7 +16,8 @@ class DefaultWikidataApplication {
 	protected $possiblySynonymousRelationTypeId = 0;		// Put this relation type in a special section "Possibly synonymous"
 	protected $showLanguageSelector = true;					// Show language selector at the top of each wiki data page
 	protected $showClassicPageTitles = true;				// Show classic page titles instead of prettier page titles
-
+	
+	protected $propertyToColumnFilters = array();	
 	protected $viewInformation;
 
 	// Show a panel to select expressions from available data-sets
@@ -25,8 +26,9 @@ class DefaultWikidataApplication {
 	public function __construct() {
 		global
 			$wgFilterLanguageId, $wgShowLanguageSelector, 
-			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId;
-					
+			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId,
+			$wgPropertyToColumnFilters;
+			
 		if (isset($wgFilterLanguageId))
 			$this->filterLanguageId = $wgFilterLanguageId;
 			
@@ -37,7 +39,10 @@ class DefaultWikidataApplication {
 			$this->showClassicPageTitles = $wgShowClassicPageTitles;
 			
 		if (isset($wgPossiblySynonymousRelationTypeId))
-			$this->possiblySynonymousRelationTypeId = $wgPossiblySynonymousRelationTypeId; 
+			$this->possiblySynonymousRelationTypeId = $wgPossiblySynonymousRelationTypeId;
+			
+		if (isset($wgPropertyToColumnFilters))
+			$this->propertyToColumnFilters = $wgPropertyToColumnFilters;  
 	}
 
 	function getLanguageSelector() {
@@ -89,6 +94,7 @@ class DefaultWikidataApplication {
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = false;
 		$viewInformation->queryTransactionInformation = $this->queryTransactionInformation;
+		$viewInformation->setPropertyToColumnFilters($this->propertyToColumnFilters);
 		
 		$this->viewInformation = $viewInformation;
 

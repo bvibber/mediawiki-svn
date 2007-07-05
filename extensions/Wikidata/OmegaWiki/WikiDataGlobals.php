@@ -118,7 +118,6 @@ global
 $wgDefinedMeaningPageTitlePrefix = "";
 $wgExpressionPageTitlePrefix = "Multiple meanings";
 
-
 // Search page
 
 global
@@ -132,3 +131,20 @@ $wgSearchWithinWordsDefaultValue = true;
 $wgShowSearchWithinExternalIdentifiersOption = true;
 $wgShowSearchWithinWordsOption = true;
 
+// Annotation to column filtering
+
+require_once("PropertyToColumnFilter.php"); 
+
+global
+	$wgPropertyToColumnFilters;
+	
+/** 
+ * $wgPropertyToColumnFilters is an array of property to column filters 
+ * 
+ * Example:
+ *   $wgPropertyToColumnFilters = array(
+ *     new PropertyToColumnFilter("references", "References", array(1000, 2000, 3000)) // Defined meaning ids are the attribute ids to filter
+ *   )
+ * 
+ */	
+$wgPropertyToColumnFilters = array(); 
