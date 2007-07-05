@@ -29,6 +29,7 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 	$synonymsAndTranslationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$possiblySynonymousObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$relationsObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
+	
 	$textValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$urlValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$translatedTextValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
@@ -40,7 +41,7 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 	setObjectAttributesEditor($possiblySynonymousObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $possiblySynonymousIdAttribute), $relationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($relationsObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $relationIdAttribute), $relationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($textValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($urlValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+	setObjectAttributesEditor($urlValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $urlAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($translatedTextValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 	setObjectAttributesEditor($optionValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $optionAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 }
