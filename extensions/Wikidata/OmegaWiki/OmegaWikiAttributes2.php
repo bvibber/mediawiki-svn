@@ -39,38 +39,51 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 class OmegaWikiAttributes {
 	protected $attributes = null;
 	function __construct(ViewInformation $viewInformation) {
-		$a=$this->attributes; # <- wrist/RSI protection
+		$this->hardValues();
+	}
 
+	/** Hardcoded schema for now. Later refactor to load from file or DB 
+	 * 
+	 * Naming: keys are previous name minus -"Attribute"
+	 * 	(-"Structure" is retained)
+	*/
+	private function hardValues() {
+		
+		$a=$this->attributes; # <- wrist/RSI protection 
+
+		# TODO these will be replaced with i18n 
 		global
-			$languageAttribute, $spellingAttribute, $textAttribute, 
 			$wgLanguageAttributeName, $wgSpellingAttributeName, $wgTextAttributeName;
 		
-		$languageAttribute = new Attribute("language", $wgLanguageAttributeName, "language");
-		$spellingAttribute = new Attribute("spelling", $wgSpellingAttributeName, "spelling");
-		$textAttribute = new Attribute("text", $wgTextAttributeName, "text");
+		$a["language"] = new Attribute("language", $wgLanguageAttributeName, "language");
+		$a["spelling"] = new Attribute("spelling", $wgSpellingAttributeName, "spelling");
+		$a["text"] = new Attribute("text", $wgTextAttributeName, "text");
 		
+		#TODO replace with i18n
 		global
-			$objectAttributesAttribute, $definedMeaningAttributesAttribute, 
 			$wgDefinedMeaningAttributesAttributeName, 
-			$wgDefinedMeaningAttributesAttributeName, $wgDefinedMeaningAttributesAttributeId, $wgAnnotationAttributeName;
+			$wgDefinedMeaningAttributesAttributeName, 
+			$wgAnnotationAttributeName;
 			
-		$definedMeaningAttributesAttribute = new Attribute("defined-meaning-attributes", $wgDefinedMeaningAttributesAttributeName, "will-be-specified-below");
-		$objectAttributesAttribute = new Attribute("object-attributes", $wgAnnotationAttributeName, "will-be-specified-below");
-		
+		$a["definedMeaningAttributes"] = new Attribute("defined-meaning-attributes", $wgDefinedMeaningAttributesAttributeName, "will-be-specified-below");
+		$a["objectAttributes"] = new Attribute("object-attributes", $wgAnnotationAttributeName, "will-be-specified-below");
+
+		# TODO replace with i18n
 		global
-			$expressionIdAttribute, $identicalMeaningAttribute, $wgIdenticalMeaningAttributeName;
+			$expressionIdAttribute, $identicalMeaningAttribute;
 			
-		$expressionIdAttribute = new Attribute("expression-id", "Expression Id", "expression-id");
-		$identicalMeaningAttribute = new Attribute("indentical-meaning", $wgIdenticalMeaningAttributeName, "boolean");
+		$a["expressionId"] = new Attribute("expression-id", "Expression Id", "expression-id");
+		$a["identicalMeaning"] = new Attribute("indentical-meaning", $wgIdenticalMeaningAttributeName, "boolean");
 		
+		#TODO replace with i18n
 		global
-			$expressionStructure, $expressionAttribute, $wgExpressionAttributeName;
+			 $wgExpressionAttributeName;
 		
 		if ($viewInformation->filterOnLanguage()) 
-			$expressionAttribute = new Attribute("expression", $wgSpellingAttributeName, "spelling");
+			$a["expression"] = new Attribute("expression", $wgSpellingAttributeName, "spelling");
 		else {
-			$expressionStructure = new Structure("expression", $languageAttribute, $spellingAttribute);
-			$expressionAttribute = new Attribute(null, $wgExpressionAttributeName, $expressionStructure);
+			$a["expressionStructure"] = new Structure("expression", $languageAttribute, $spellingAttribute);
+			$a["expression"] = new Attribute(null, $wgExpressionAttributeName, $expressionStructure);
 		}
 		
 		global
@@ -78,18 +91,21 @@ class OmegaWikiAttributes {
 			$definedMeaningCompleteDefiningExpressionStructure,
 			$definedMeaningCompleteDefiningExpressionAttribute;
 		
-		$definedMeaningIdAttribute = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
-		$definedMeaningDefiningExpressionAttribute = new Attribute("defined-meaning-defining-expression", "Defined meaning defining expression", "short-text");
+		$a["definedMeaningId"] = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
+		$a["definedMeaningDefiningExpression"] = new Attribute("defined-meaning-defining-expression", "Defined meaning defining expression", "short-text");
 
-		$definedMeaningCompleteDefiningExpressionStructure = 
+		$a["definedMeaningCompleteDefiningExpressionStructure"] = 
 		new Structure("defined-meaning-full-defining-expression",
 			  $definedMeaningDefiningExpressionAttribute,
 			  $expressionIdAttribute,
 			  $languageAttribute
 		);
-		$definedMeaningCompleteDefiningExpressionAttribute=new Attribute(null, "Defining expression", $definedMeaningCompleteDefiningExpressionStructure);
+		$a["definedMeaningCompleteDefiningExpression"]=new Attribute(null, "Defining expression", $definedMeaningCompleteDefiningExpressionStructure);
 
-
+		#==============================================
+		# Done refactoring up to here (to maintain sanity, will do a little every day
+		# if you want to do a good deed, shift this line down please)
+		# ===============================================
 		
 		global
 			$definedMeaningReferenceStructure, $definedMeaningLabelAttribute, $definedMeaningReferenceType,
@@ -346,6 +362,11 @@ class OmegaWikiAttributes {
 			$definedMeaningAttributesAttribute->id
 		);
 	}
+
+	function getAttribute($key) {
+		$attributes=$this->attributes;
+		return $attributes[$key];
+	}	
 }
 
 
