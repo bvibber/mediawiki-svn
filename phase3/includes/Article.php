@@ -2172,52 +2172,58 @@ class Article {
 	}
 
 	/** Backend rollback implementation. UI logic is in rollback()
-	 * @param string $user - Name of the user whose edits to rollback.
+	 * @param string $fromP - Name of the user whose edits to rollback.
 	 * @param string $token - Rollback token.
 	 * @param bool $bot - If true, mark all reverted edits as bot.
-	 * @param string $summary - Custom summary. Set to default summary if empty.
+	 * @param string $newComment - Custom summary. Set to default summary if empty.
 	 * @param array $info - Reference to associative array that will be set to contain the revision ID, edit summary, etc.
 	 * @return self::SUCCESS on succes, self::* on failure
 	 */
-	public function doRollback($user, $token, $bot = false, $summary = "", &$info = NULL) {
+	public function doRollback($fromP, $token, $bot = false, $newComment = "", &$info = NULL) {
 		global $wgUser, $wgUseRCPatrol;
 		
-		if(!$wgUser->isAllowed('rollback')) {
+		if( $wgUser->isAllowed( 'rollback' ) ) {
+			if( $wgUser->isBlocked() ) {
+				return self::BLOCKED;
+			}
+		} else {
 			return self::PERM_DENIED;
 		}
-		if( $wgUser->isBlocked() ) {
-			return self::BLOCKED;
-		}
+			
 		if ( wfReadOnly() ) {
 			return self::READONLY;
 		}
-
-		// Check token first
 		if( !$wgUser->matchEditToken( $token,
 			array( $this->mTitle->getPrefixedText(),
-				$user )  ) ) {
+				$fromP )  ) ) {
 			return self::BAD_TOKEN;
 		}
 		$dbw = wfGetDB( DB_MASTER );
 
-		$current = Revision::newFromTitle($this->mTitle);
-		if(is_null($current))
-			return self::BAD_TITLE;
+		# Replace all this user's current edits with the next one down
 
-		// Check if someone else was there first
-		if( $user != $current->getUserText() ) {
+		# Get the last editor
+		$current = Revision::newFromTitle( $this->mTitle );
+		if( is_null( $current ) ) {
+			# Something wrong... no page?
+			return self::BAD_TITLE;
+		}
+
+		$from = str_replace( '_', ' ', $fromP );
+		if( $from != $current->getUserText() ) {
 			$info['usertext'] = $current->getUserText();
 			$info['comment'] = $current->getComment();
 			return self::ALREADYROLLED;
 		}
 
-		// Get the last edit not by $user
-		$userid = intval($current->getUser());
-		$s = $dbw->selectRow('revision',
-			array('rev_id', 'rev_timestamp'),
+		# Get the last edit not by this guy
+		$user = intval( $current->getUser() );
+		$user_text = $dbw->addQuotes( $current->getUserText() );
+		$s = $dbw->selectRow( 'revision',
+			array( 'rev_id', 'rev_timestamp' ),
 			array(
 				'rev_page' => $current->getPage(),
-				"rev_user <> $userid OR rev_user_text <> {$dbw->addQuotes($user)}"
+				"rev_user <> {$user} OR rev_user_text <> {$user_text}"
 			), __METHOD__,
 			array(
 				'USE INDEX' => 'page_timestamp',
@@ -2228,8 +2234,6 @@ class Article {
 			return self::ONLY_AUTHOR;
 		}
 	
-		$target = Revision::newFromID($s->rev_id);
-
 		// If the reverted edits should be marked bot or patrolled, do so
 		$set = array();
 		if ( $bot ) {
@@ -2245,21 +2249,22 @@ class Article {
 			$dbw->update( 'recentchanges', $set,
 					array( /* WHERE */
 						'rc_cur_id' => $current->getPage(),
-						'rc_user_text' => $user,
-						"rc_timestamp > '{$s->rev_timestamp}'"
+						'rc_user_text' => $current->getUserText(),
+						"rc_timestamp > '{$s->rev_timestamp}'",
 					), __METHOD__
 				);
 		}
 
-		// Generate an edit summary
-		if(empty($summary))
-			$summary = wfMsgForContent('revertpage', $target->getUserText(), $user);
+		# Get the edit summary
+		$target = Revision::newFromId( $s->rev_id );
+		if(empty($newComment))
+			$newComment = wfMsgForContent( 'revertpage', $target->getUserText(), $from );
 
-		// Now we *finally* get to commit the edit
+		# Save it!
 		$flags = EDIT_UPDATE | EDIT_MINOR;
 		if($bot)
 			$flags |= EDIT_FORCE_BOT;
-		if(!$this->doEdit($target->getText(), $summary, $flags))
+		if(!$this->doEdit( $target->getText(), $newComment, $flags))
 			return self::EDIT_FAILED;
 
 		if(is_null($info))
@@ -2268,13 +2273,13 @@ class Article {
 
 		$info['title'] = $this->mTitle->getPrefixedText();
 		$info['pageid'] = $current->getPage();
-		$info['summary'] = $summary;
+		$info['summary'] = $newComment;
 		// NOTE: If the rollback turned out to be a null edit, revid and old_revid will be equal
 		$info['revid'] = $this->mTitle->getLatestRevID(); // The revid of your rollback
 		$info['old_revid'] = $current->getId(); // The revid of the last edit before your rollback
 		$info['last_revid'] = $s->rev_id; // The revid of the last edit that was not rolled back
-		$info['user'] = $user; // The name of the victim
-		$info['userid'] = $userid; // And their userid
+		$info['user'] = $fromP; // The name of the victim
+		$info['userid'] = $user; // And their userid
 		$info['to'] = $target->getUserText(); // The user whose last version was reverted to
 		if($bot)
 			$info['bot'] = "";
@@ -2291,6 +2296,9 @@ class Article {
 						$wgRequest->getText('summary'), &$info);
 		switch($retval)
 		{
+			default:
+				throw new MWException( "Unknown retval $retval" );
+				break;
 			case self::SUCCESS:
 			case self::EDIT_FAILED: // Is ignored
 				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
@@ -2298,23 +2306,23 @@ class Article {
 				$wgOut->addHTML( '<h2>' . htmlspecialchars( $info['summary'] ) . "</h2>\n<hr />\n" );
 				$this->doRedirect(true);
 				$wgOut->returnToMain(false);
-				return;
+				break;
 			case self::PERM_DENIED:
 				$wgOut->permissionRequired('rollback');
-				return;
+				break;
 			case self::BLOCKED:
 				$wgOut->blockedPage();
-				return;
+				break;
 			case self::READONLY:
 				$wgOut->readOnlyPage($this->getContent());
-				return;
+				break;
 			case self::BAD_TOKEN:
 				$wgOut->setPageTitle(wfMsg('rollbackfailed'));
 				$wgOut->addWikiText(wfMsg('sessionfailure'));
-				return;
+				break;
 			case self::BAD_TITLE:
 				$wgOut->addHTML(wfMsg('notanarticle'));
-				return;
+				break;
 			case self::ALREADYROLLED:
 				$wgOut->setPageTitle(wfMsg('rollbackfailed'));
 				$wgOut->addWikiText(wfMsg('alreadyrolled',
@@ -2324,13 +2332,14 @@ class Article {
 				if($info['comment'] != '')
 					$wgOut->addHTML(wfMsg('editcomment',
 						$wgUser->getSkin()->formatComment($info['comment'])));
-				return;
+				break;
 			case self::ONLY_AUTHOR:
 				$wgOut->setPageTitle(wfMsg('rollbackfailed'));
 				$wgOut->addHTML(wfMsg('cantrollback'));
-				return;
+				break;
 		}
 	}
+
 
 	/**
 	 * Do standard deferred updates after page view
