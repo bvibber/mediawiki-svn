@@ -1003,7 +1003,6 @@ function findCollection($name) {
 			" WHERE ".getLatestTransactionRestriction("{$dc}_collection_ns") .
 			" AND collection_mid = (SELECT defined_meaning_id FROM {$dc}_syntrans WHERE expression_id = " . 
              "(SELECT expression_id FROM {$dc}_expression_ns WHERE spelling LIKE " . $dbr->addQuotes($name) . " limit 1) limit 1)";
-    echo $query;
 	$queryResult = $dbr->query($query);
 	
 	if ($collectionObject = $dbr->fetchObject($queryResult)) 
