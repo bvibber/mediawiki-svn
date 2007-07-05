@@ -78,21 +78,25 @@ $wgAjaxShowEditorsMessages['su'] = array(
 	'ajax-se-pending' => 'muatkeun koropak deui ditunda... (klik kotak ieu atawa mimiti ngédit)',
 	'ajax-se-idling' => '($1 nu kaliwat)',
 );
-$wgAjaxShowEditorsMessages['zh-cn'] = array(
-	'ajax-se-title' => '当前编辑中:',
-	'ajax-se-pending' => '正在正在刷新 ... (单击这个框或开始编辑)',
-	'ajax-se-idling' => '($1秒前)',
-);
-$wgAjaxShowEditorsMessages['zh-tw'] = array(
-	'ajax-se-title' => '目前編輯中:',
-	'ajax-se-pending' => '正在重新整理 ... (按一下這個框開始編輯)',
-	'ajax-se-idling' => '($1秒前)',
-);
-$wgAjaxShowEditorsMessages['zh-yue'] = array(
+$wgAjaxShowEditorsMessages['yue'] = array(
 	'ajax-se-title' => '而家編輯緊:',
 	'ajax-se-pending' => '而家重新整理緊 ... (click this box or start editing)',
 	'ajax-se-idling' => '($1秒前)',
 );
-$wgAjaxShowEditorsMessages['zh-hk'] = $wgAjaxShowEditorsMessages['zh-tw'];
-$wgAjaxShowEditorsMessages['zh-sg'] = $wgAjaxShowEditorsMessages['zh-cn'];
+$wgAjaxShowEditorsMessages['zh-hans'] = array(
+	'ajax-se-title' => '当前编辑中:',
+	'ajax-se-pending' => '正在正在刷新 ... (单击这个框或开始编辑)',
+	'ajax-se-idling' => '($1秒前)',
+);
+$wgAjaxShowEditorsMessages['zh-hant'] = array(
+	'ajax-se-title' => '目前編輯中:',
+	'ajax-se-pending' => '正在重新整理 ... (按一下這個框開始編輯)',
+	'ajax-se-idling' => '($1秒前)',
+);
+$wgAjaxShowEditorsMessages['zh-cn'] = $wgAjaxShowEditorsMessages['zh-hans'];
+$wgAjaxShowEditorsMessages['zh-hk'] = $wgAjaxShowEditorsMessages['zh-hant'];
+$wgAjaxShowEditorsMessages['zh-sg'] = $wgAjaxShowEditorsMessages['zh-hans'];
+$wgAjaxShowEditorsMessages['zh-tw'] = $wgAjaxShowEditorsMessages['zh-hant'];
+$wgAjaxShowEditorsMessages['zh-yue'] = $wgAjaxShowEditorsMessages['yue'];
+
 

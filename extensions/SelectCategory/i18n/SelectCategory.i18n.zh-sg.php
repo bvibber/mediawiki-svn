@@ -10,5 +10,6 @@
 # translation done by Shinjiman
 
 # Inherited from Chinese (Simplified) messages
-require_once('SelectCategory.i18n.zh-cn.php');
+require_once('SelectCategory.i18n.zh-hans.php');
+
 

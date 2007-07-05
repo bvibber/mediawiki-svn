@@ -9,7 +9,7 @@
 
 # translation done by Shinjiman
 
-# Inherited from Chinese (Traditional) messages
-require_once('SelectCategory.i18n.zh-hant.php');
+$messages['selectcategory-title']	= '選擇分類';
+$messages['selectcategory-subtitle']	= '撳住Shift掣再用個mouse去揀連續嘅項目，撳住Ctrl掣再用個mouse去揀非連續嘅項目。';
 
 

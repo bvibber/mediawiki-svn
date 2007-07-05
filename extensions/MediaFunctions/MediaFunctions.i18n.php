@@ -51,8 +51,33 @@ function efMediaFunctionsMessages() {
 'mediafunctions-invalid-title' => '„$1“ ist kein gültiger Name',
 'mediafunctions-not-exist'     => '„$1“ ist nicht vorhanden',
 ),
+
+'yue' => array(
+'mediafunctions-invalid-title' => '"$1" 唔係一個有效嘅標題',
+'mediafunctions-not-exist'     => '"$1" 唔存在',
+),
+
+'zh-hans' => array(
+'mediafunctions-invalid-title' => '"$1" 不是一个有效的标题',
+'mediafunctions-not-exist'     => '"$1" 不存在',
+),
+
+'zh-hant' => array(
+'mediafunctions-invalid-title' => '"$1" 不是一個有效的標題',
+'mediafunctions-not-exist'     => '"$1" 不存在',
+),
 	
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
 	return $messages;
 }
+
 

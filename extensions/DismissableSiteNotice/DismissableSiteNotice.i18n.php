@@ -120,17 +120,20 @@ $wgDismissableSiteNoticeMessages['sv'] = array(
 $wgDismissableSiteNoticeMessages['ur'] = array(
 	'sitenotice_close' => 'ترک',
 );
-$wgDismissableSiteNoticeMessages['zh-cn'] = array(
-	'sitenotice_close' => '关闭',
-);
-$wgDismissableSiteNoticeMessages['zh-tw'] = array(
-	'sitenotice_close' => '關閉',
-);
-$wgDismissableSiteNoticeMessages['zh-yue'] = array(
+$wgDismissableSiteNoticeMessages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',
 );
-$wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-tw'];
-$wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-cn'];
+$wgDismissableSiteNoticeMessages['zh-hans'] = array(
+	'sitenotice_close' => '关闭',
+);
+$wgDismissableSiteNoticeMessages['zh-hant'] = array(
+	'sitenotice_close' => '關閉',
+);
+$wgDismissableSiteNoticeMessages['zh-cn'] = $wgDismissableSiteNoticeMessages['zh-hans'];
+$wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
+$wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-hnas'];
+$wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
+$wgDismissableSiteNoticeMessages['zh-yue'] = $wgDismissableSiteNoticeMessages['yue'];
 
 
 

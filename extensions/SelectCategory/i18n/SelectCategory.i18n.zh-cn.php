@@ -9,6 +9,6 @@
 
 # translation done by Shinjiman
 
-$messages['selectcategory-title']	= '选择分类';
-$messages['selectcategory-subtitle']	= '按着Shift键再以鼠标选取连续的项目，按着Ctrl键再以鼠标选取非连续的项目。';
+# Inherited from Chinese (Simplified) messages
+require_once('SelectCategory.i18n.zh-hans.php');
 

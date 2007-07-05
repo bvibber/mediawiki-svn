@@ -11,5 +11,6 @@
  */
 
 /* Inherited from Chinese (Traditional) messages */
-require_once('PageBy.i18n.zh.php');
+require_once('PageBy.i18n.zh-hant.php');
+
 

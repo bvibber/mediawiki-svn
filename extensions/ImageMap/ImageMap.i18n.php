@@ -255,6 +255,22 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'uppe till höger, nere till höger, nere till vänster, uppe till vänster, ingen',
 ),
 
+/* Cantonese (Shinjiman) */
+'yue' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: 一定要響第一行指定一幅圖像',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像唔正確或者唔存在',
+'imagemap_no_link'              => '&lt;imagemap&gt;: 響第$1行結尾度搵唔到一個正式嘅連結',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: 響第$1行度嘅標題連結唔正確',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: 響第$1行度未有足夠嘅座標組成一個形狀',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: 響第$1行度有未能認出嘅形狀，每一行一定要用以下其中一樣開始: '.
+								   'default, rect, circle 或者係 poly',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: 最少要畀出一個指定嘅空間',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 響第$1行度有唔正確嘅座標，佢一定係一個數字',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
+'imagemap_description'          => '關於呢幅圖像',
+'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
+),
+
 /* Chinese (China) (Shinjiman) */
 'zh-cn' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
@@ -270,23 +286,8 @@ function efImageMapMessages() {
 'imagemap_description'          => '关于这幅图像',
 ),
 
-/* Chinese (Hong Kong) (Shinjiman) */
-'zh-hk' => array(
-'imagemap_no_image'             => '&lt;imagemap&gt;: 必須要在第一行指定一幅圖像',
-'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像不正確或者不存在',
-'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行結尾中找不到一個正式的連結',
-'imagemap_invalid_title'        => '&lt;imagemap&gt;: 在第$1行中的標題連結不正確',
-'imagemap_missing_coord'        => '&lt;imagemap&gt;: 在第$1行中未有足夠的座標組成一個形狀',
-'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: 在第$1行中有未能認出的形狀，每一行必須使用以下其中一組字開始: '.
-								   'default, rect, circle 或者是 poly',
-'imagemap_no_areas'             => '&lt;imagemap&gt;: 最少要給出一個指定的空間',
-'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正確的座標，它必須是一個數字',
-'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正確的 desc 參數，必須是以下的其中之一: $1',
-'imagemap_description'          => '關於這幅圖像',
-),
-
-/* Chinese (Singapore) (Shinjiman) */
-'zh-sg' => array(
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: 必须要在第一行指定一幅图像',
 'imagemap_invalid_image'        => '&lt;imagemap&gt;: 图像不正确或者不存在',
 'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行结尾中找不到一个正式的链接',
@@ -298,10 +299,11 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正确的座标，它必须是一个数字',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正确的 desc 参数，必须是以下的其中之一: $1',
 'imagemap_description'          => '关于这幅图像',
+'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 无',
 ),
 
-/* Chinese (Taiwan) (Shinjiman) */
-'zh-tw' => array(
+/* Chinese (Traditional) (Shinjiman) */
+'zh-hant' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: 必須要在第一行指定一幅圖像',
 'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像不正確或者不存在',
 'imagemap_no_link'              => '&lt;imagemap&gt;: 在第$1行結尾中找不到一個正式的連結',
@@ -313,27 +315,20 @@ function efImageMapMessages() {
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 在第$1行中有不正確的座標，它必須是一個數字',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 不正確的 desc 參數，必須是以下的其中之一: $1',
 'imagemap_description'          => '關於這幅圖像',
+'imagemap_desc_types'           => '右上, 右下, 左下, 左上, 無',
 ),
 
-/* Cantonese (Shinjiman) */
-'zh-yue' => array(
-'imagemap_no_image'             => '&lt;imagemap&gt;: 一定要響第一行指定一幅圖像',
-'imagemap_invalid_image'        => '&lt;imagemap&gt;: 圖像唔正確或者唔存在',
-'imagemap_no_link'              => '&lt;imagemap&gt;: 響第$1行結尾度搵唔到一個正式嘅連結',
-'imagemap_invalid_title'        => '&lt;imagemap&gt;: 響第$1行度嘅標題連結唔正確',
-'imagemap_missing_coord'        => '&lt;imagemap&gt;: 響第$1行度未有足夠嘅座標組成一個形狀',
-'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: 響第$1行度有未能認出嘅形狀，每一行一定要用以下其中一樣開始: '.
-								   'default, rect, circle 或者係 poly',
-'imagemap_no_areas'             => '&lt;imagemap&gt;: 最少要畀出一個指定嘅空間',
-'imagemap_invalid_coord'        => '&lt;imagemap&gt;: 響第$1行度有唔正確嘅座標，佢一定係一個數字',
-'imagemap_invalid_desc'         => '&lt;imagemap&gt;: 唔正確嘅 desc 參數，一定係要以下嘅其中之一: $1',
-'imagemap_description'          => '關於呢幅圖像',
-),
-
-);
+	);
 
 	/* Kazakh default, fallback to kk-kz */
 	$messages['kk'] = $messages['kk-kz'];
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
 
 	return $messages;
 

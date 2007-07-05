@@ -71,8 +71,33 @@ function efMinimumNameLengthMessages() {
 'minnamelength-error' => 'Landihan anjeun pondok teuing. Paling henteu kudu $1.',
 ),
 
+/* Cantonese (Shinjiman) */
+'yue' => array(
+'minnamelength-error' => '你嘅用戶名太短喇。最少嘅長度係$1個字元。',
+),
+
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
+'minnamelength-error' => '你的用户名太短。最少的长度是$1个字元。',
+),
+
+/* Chinese (Traditional) (Shinjiman) */
+'zh-hant' => array(
+'minnamelength-error' => '你的用戶名太短。最少的長度是$1個字元。',
+),
+
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-sg'] = $messages['zh-hans'];
+	$messages['zh-tw'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
 	return $messages;
 }
+
 
 

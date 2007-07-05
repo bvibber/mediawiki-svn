@@ -1074,12 +1074,35 @@ $wgMakesysopMessages['zh-classical'] = array(
 	'already_sysop'        => '早封有秩矣',
 	'already_bureaucrat'   => '早封門下矣',
 );
-$wgMakesysopMessages['zh-cn'] = array(
+$wgMakesysopMessages['yue'] = array(
+	'makesysoptitle'       => '整一位用戶做操作員',
+	'makesysoptext'        => '呢一個表格係畀事務員用嘅，去轉普通嘅用戶到管理員。
+喺個框入面打用戶嘅名，然後撳個掣嚟設佢為管理員',
+	'makesysopname'        => '用戶嘅名：',
+	'makesysopsubmit'      => '整呢位用戶做一位操作員',
+	'makesysopok'          => "<b>用戶 \"$1\" 而家係一位操作員</b>",
+	'makebureaucratok'     => "<b>用戶 \"$1\" 而家係一位事務員</b>",
+	'makesysopfail'        => "<b>用戶 \"$1\" 唔可以整做一位操作員。（你有冇正確噉樣輸入正確嘅名？）</b>",
+	'setbureaucratflag'    => '設定事務員旗',
+	'rights'               => '權力:',
+	'set_user_rights'      => '設定用戶權限',
+	'user_rights_set'      => "<b>用戶 \"$1\" 嘅權限已經更新</b>",
+	'set_rights_fail'      => "<b>無法設定用戶 \"$1\" 嘅權限。（你有冇打啱個名？）</b>",
+	'makesysop'            => '整一位用戶做操作員',
+	'already_sysop'        => '呢位用戶已經係一位管理員',
+	'already_bureaucrat'   => '呢位用戶已經係一位事務員',
+	'makesysop-nodatabase' => '錯誤嘅跨維基用戶名：$1',
+	'group-steward'        => '執行員',
+	'group-steward-member' => '執行員',
+	'grouppage-steward'    => '{{ns:project}}:執行員',
+);
+$wgMakesysopMessages['zh-hans'] = array(
 	'makesysoptitle'       => '将用户设置为操作员',
 	'makesysoptext'        => '这个由行政管理员使用的表单可以将普通用户变为管理员。在输入框中输入用户名并点击按钮就可以将用户设置为管理员。',
 	'makesysopname'        => '用户名：',
 	'makesysopsubmit'      => '将这位用户设置为操作员',
 	'makesysopok'          => "<b>用户\"$1\"现在是操作员了</b>",
+	'makebureaucratok'     => "<b>用户\"$1\"现在是行政员了</b>",
 	'makesysopfail'        => "<b>不能把用户\"$1\"设置为操作员。（你输入的用户名正确吗？）</b>",
 	'setbureaucratflag'    => '设置行政员标记',
 	'rights'               => '权限：',
@@ -1094,12 +1117,13 @@ $wgMakesysopMessages['zh-cn'] = array(
 	'group-steward-member' => '监管员',
 	'grouppage-steward'    => '{{ns:project}}:监管员',
 );
-$wgMakesysopMessages['zh-hk'] = array(
+$wgMakesysopMessages['zh-hant'] = array(
 	'makesysoptitle'       => '將用戶設置為操作員',
 	'makesysoptext'        => '這個由行政管理員使用的表單可以將普通用戶變為管理員。在輸入框中輸入用戶名並點擊按鈕就可以將用戶設置為管理員。',
 	'makesysopname'        => '用戶名：',
 	'makesysopsubmit'      => '將這位用戶設置為操作員',
 	'makesysopok'          => "<b>用戶\"$1\"現在是操作員了</b>",
+	'makebureaucratok'     => "<b>用戶\"$1\"現在是行政員了</b>",
 	'makesysopfail'        => "<b>不能把用戶\"$1\"設置為操作員。（你輸入的用戶名正確嗎？）</b>",
 	'setbureaucratflag'    => '設置行政員標記',
 	'rights'               => '權限：',
@@ -1120,6 +1144,7 @@ $wgMakesysopMessages['zh-tw'] = array(
 	'makesysopname'        => '用戶名：',
 	'makesysopsubmit'      => '將這位用戶設置為操作員',
 	'makesysopok'          => "<b>用戶\"$1\"現在是操作員了</b>",
+	'makebureaucratok'     => "<b>用戶\"$1\"現在是行政員了</b>",
 	'makesysopfail'        => "<b>不能把用戶\"$1\"設置為操作員。（你輸入的用戶名正確嗎？）</b>",
 	'setbureaucratflag'    => '設置行政員標記',
 	'rights'               => '許可權：',
@@ -1134,27 +1159,10 @@ $wgMakesysopMessages['zh-tw'] = array(
 	'group-steward-member' => '監管員',
 	'grouppage-steward'    => '{{ns:project}}:監管員',
 );
-$wgMakesysopMessages['zh-yue'] = array(
-	'makesysoptitle'       => '整一位用戶做操作員',
-	'makesysoptext'        => '呢一個表格係畀事務員用嘅，去轉普通嘅用戶到管理員。
-喺個框入面打用戶嘅名，然後撳個掣嚟設佢為管理員',
-	'makesysopname'        => '用戶嘅名：',
-	'makesysopsubmit'      => '整呢位用戶做一位操作員',
-	'makesysopok'          => "<b>用戶 \"$1\" 而家係一位操作員</b>",
-	'makesysopfail'        => "<b>用戶 \"$1\" 唔可以整做一位操作員。（你有冇正確噉樣輸入正確嘅名？）</b>",
-	'setbureaucratflag'    => '設定事務員旗',
-	'rights'               => '權力:',
-	'set_user_rights'      => '設定用戶權限',
-	'user_rights_set'      => "<b>用戶 \"$1\" 嘅權限已經更新</b>",
-	'set_rights_fail'      => "<b>無法設定用戶 \"$1\" 嘅權限。（你有冇打啱個名？）</b>",
-	'makesysop'            => '整一位用戶做操作員',
-	'already_sysop'        => '呢位用戶已經係一位管理員',
-	'already_bureaucrat'   => '呢位用戶已經係一位事務員',
-	'makesysop-nodatabase' => '錯誤嘅跨維基用戶名：$1',
-	'group-steward'        => '執行員',
-	'group-steward-member' => '執行員',
-	'grouppage-steward'    => '{{ns:project}}:執行員',
-);
-$wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-cn'];
+$wgMakesysopMessages['zh-cn'] = $wgMakesysopMessages['zh-hans'];
+$wgMakesysopMessages['zh-hk'] = $wgMakesysopMessages['zh-hant'];
+$wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-hans'];
+$wgMakesysopMessages['zh-yue'] = $wgMakesysopMessages['yue'];
+
 
 

@@ -95,34 +95,41 @@ function efUserImagesMessages() {
 'userimages-noimages' => '$1 can kungsi ngamuatkeun gambar.',
 ),
 
-/* Chinese (China) (下一次登录) */
-'zh-cn' => array(
-'userimages-caption' => '$1上传的图像',
-'userimages-noname' => '没有或者错误的用户名。',
-'userimages-noimages' => '$1没有上传过图像。',
-),
-
-/* Chinese (Taiwan) (KilluaZaoldyeck) */
-'zh-tw' => array(
-'userimages-caption' => '$1上傳的圖像',
-'userimages-noname' => '無效或未有填寫帳號名稱。',
-'userimages-noimages' => '$1沒有上傳圖像。',
-),
-
 /* Cantonese (Shinjiman) */
-'zh-yue' => array(
+'yue' => array(
 'userimages-caption' => '由$1上載嘅圖像',
 'userimages-noname' => '唔正確嘅用戶名或者冇畀到用戶名。',
 'userimages-noimages' => '$1並冇圖像上載。',
 ),
 
+/* Chinese (Simplified) (下一次登录) */
+'zh-hans' => array(
+'userimages-caption' => '$1上传的图像',
+'userimages-noname' => '没有或者错误的用户名。',
+'userimages-noimages' => '$1没有上传过图像。',
+),
+
+/* Chinese (Traditional) (KilluaZaoldyeck) */
+'zh-hant' => array(
+'userimages-caption' => '$1上傳的圖像',
+'userimages-noname' => '無效或未有填寫帳號名稱。',
+'userimages-noimages' => '$1沒有上傳圖像。',
+),
+
 	);
-/* Chinese (Hong Kong), inherited from Chinese (Taiwan) */
-$messages['zh-hk'] = $messages['zh-tw'];
-/* Chinese (Singapore), inherited from Chinese (China) */
-$messages['zh-sg'] = $messages['zh-cn'];
+/* Chinese (PRC), inherited from Chinese (Simplified) */
+$messages['zh-cn'] = $messages['zh-hans'];
+/* Chinese (Hong Kong), inherited from Chinese (Traditional) */
+$messages['zh-hk'] = $messages['zh-hant'];
+/* Chinese (Singapore), inherited from Chinese (Simplified) */
+$messages['zh-sg'] = $messages['zh-hans'];
+/* Chinese (Taiwan), inherited from Chinese (Traditional) */
+$messages['zh-hk'] = $messages['zh-hant'];
+/* Cantonese, fallback to yue */
+$messages['zh-yue'] = $messages['yue'];
 
 return $messages;
 }
+
 
 

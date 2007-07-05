@@ -63,16 +63,19 @@ $wgMiniDonationMessages['sr-el'] = array(
 	'donationform-submit' => 'Donirajte PayPal',
 );
 $wgMiniDonationMessages['sr'] = $wgMiniDonationMessages['sr-ec'];
-$wgMiniDonationMessages['zh-cn'] = array(
-	'donationform-submit' => '经PayPal捐款',
-);
-$wgMiniDonationMessages['zh-tw'] = array(
-	'donationform-submit' => '經PayPal捐款',
-);
-$wgMiniDonationMessages['zh-yue'] = array(
+$wgMiniDonationMessages['yue'] = array(
 	'donationform-submit' => '透過PayPal捐款',
 );
-$wgMiniDonationMessages['zh-hk'] = $wgMiniDonationMessages['zh-tw'];
-$wgMiniDonationMessages['zh-sg'] = $wgMiniDonationMessages['zh-cn'];
+$wgMiniDonationMessages['zh-hans'] = array(
+	'donationform-submit' => '经PayPal捐款',
+);
+$wgMiniDonationMessages['zh-hant'] = array(
+	'donationform-submit' => '經PayPal捐款',
+);
+$wgMiniDonationMessages['zh-cn'] = $wgMiniDonationMessages['zh-hans'];
+$wgMiniDonationMessages['zh-hk'] = $wgMiniDonationMessages['zh-hant'];
+$wgMiniDonationMessages['zh-sg'] = $wgMiniDonationMessages['zh-hans'];
+$wgMiniDonationMessages['zh-tw'] = $wgMiniDonationMessages['zh-hant'];
+
 
 

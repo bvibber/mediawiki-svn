@@ -48,23 +48,26 @@ $wgMathStatFunctionsMessages['sr-el'] = array(
         'msfunc_div_zero' => "Deljivo sa nulom",
 );
 $wgMathStatFunctionsMessages['sr'] = $wgMathStatFunctionsMessages['sr-ec'];
-$wgMathStatFunctionsMessages['zh-cn'] = array(
-        'msfunc_nan' => "结果数值是一个数字" ,
-        'msfunc_inf' => "结果数值是无限" ,
-        'msfunc_div_zero' => "除以零",
-);
-$wgMathStatFunctionsMessages['zh-tw'] = array(
-        'msfunc_nan' => "結果數值是一個數字" ,
-        'msfunc_inf' => "結果數值是無限" ,
-        'msfunc_div_zero' => "除以零",
-);
-$wgMathStatFunctionsMessages['zh-hk'] = $wgMathStatFunctionsMessages['zh-tw'];
-$wgMathStatFunctionsMessages['zh-sg'] = $wgMathStatFunctionsMessages['zh-cn'];
-$wgMathStatFunctionsMessages['zh-yue'] = array(
+$wgMathStatFunctionsMessages['yue'] = array(
         'msfunc_nan' => "結果數值係一個數字" ,
         'msfunc_inf' => "結果數值係無限" ,
         'msfunc_div_zero' => "除以零",
 );
+$wgMathStatFunctionsMessages['zh-hans'] = array(
+        'msfunc_nan' => "结果数值是一个数字" ,
+        'msfunc_inf' => "结果数值是无限" ,
+        'msfunc_div_zero' => "除以零",
+);
+$wgMathStatFunctionsMessages['zh-hant'] = array(
+        'msfunc_nan' => "結果數值是一個數字" ,
+        'msfunc_inf' => "結果數值是無限" ,
+        'msfunc_div_zero' => "除以零",
+);
+$wgMathStatFunctionsMessages['zh-cn'] = $wgMathStatFunctionsMessages['zh-hans'];
+$wgMathStatFunctionsMessages['zh-hk'] = $wgMathStatFunctionsMessages['zh-hant'];
+$wgMathStatFunctionsMessages['zh-sg'] = $wgMathStatFunctionsMessages['zh-hans'];
+$wgMathStatFunctionsMessages['zh-tw'] = $wgMathStatFunctionsMessages['zh-hant'];
+$wgMathStatFunctionsMessages['zh-yue'] = $wgMathStatFunctionsMessages['yue'];
 $wgMathStatFunctionsMagic['en'] = array(
         'const'         => array( 0, 'const' ),
         'median'        => array( 0, 'median' ),
@@ -91,4 +94,5 @@ $wgMathStatFunctionsMagic['en'] = array(
         'csc'           => array( 0, 'csc' ),
         'acsc'          => array( 0, 'acsc', 'arccsc' ),
 );
+
 

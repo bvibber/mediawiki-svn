@@ -10,8 +10,7 @@
  * @licence GNU General Public Licence 2.0 or later
  */
 
-$messages['pageby-first']= '頁面由$1，在$2創建';
-$messages['pageby-last']= '上次在$2，由$1<a href="$3">修改</a>';
-$messages['pageby-contributors']= '貢獻者:';
-$messages['pageby-anon']= '<i>匿名</i>';
+/* Inherited from Chinese (Traditional) messages */
+require_once('PageBy.i18n.zh-hant.php');
+
 

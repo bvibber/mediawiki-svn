@@ -113,22 +113,22 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 'blacklistedusernametext' => 'Ngaran pamaké nu dipilih cocog jeung [[MediaWiki:Usernameblacklist|ngaran pamaké nu dicorét]]. Mangga pilih ngaran séjén.',
 ),
 
-/* Chinese (China) (Shinjiman) */
-'zh-cn' => array(
+/* Cantonese (Shinjiman) */
+'yue' => array(
+'blacklistedusername' => '列入黑名單嘅用戶名',
+'blacklistedusernametext' => '你所揀嘅用戶名係同[[MediaWiki:Usernameblacklist|用戶名黑名單一覽]]符合。請揀過另一個名喇。',
+),
+
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
 'blacklistedusername' => '列入黑名单的用户名',
 'blacklistedusernametext' => '您所选择的用户名是与[[MediaWiki:Usernameblacklist|用户名黑名单列表]]匹配。请选择另一个名称。',
 ),
 
-/* Chinese (Taiwan) (Shinjiman) */
-'zh-tw' => array(
+/* Chinese (Traditional) (Shinjiman) */
+'zh-hant' => array(
 'blacklistedusername' => '列入黑名單的用戶名',
 'blacklistedusernametext' => '您所選擇的用戶名是與[[MediaWiki:Usernameblacklist|用戶名黑名單列表]]符合。請選擇另一個名稱。',
-),
-
-/* Cantonese (Shinjiman) */
-'zh-yue' => array(
-'blacklistedusername' => '列入黑名單嘅用戶名',
-'blacklistedusernametext' => '你所揀嘅用戶名係同[[MediaWiki:Usernameblacklist|用戶名黑名單一覽]]符合。請揀過另一個名喇。',
 ),
 
 	);
@@ -136,12 +136,17 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 	/* Kazakh default, fallback to kk-kz */
 	$messages['kk'] = $messages['kk-kz'];
 
-	/* Chinese (Hong Kong), inherited from Chinese (Taiwan) */
-	$messages['zh-hk'] = $messages['zh-tw'];
-	/* Chinese (Singapore), inherited from Chinese (China) */
-	$messages['zh-sg'] = $messages['zh-cn'];
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-sg'] = $messages['zh-hans'];
+	$messages['zh-tw'] = $messages['zh-hant'];
+
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
 
 	return $single ? $messages['en'] : $messages;
 }
+
 
 

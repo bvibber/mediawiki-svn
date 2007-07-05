@@ -495,39 +495,7 @@ $wgLuceneSearchMessages['wa'] = array(
 	'lucenepowersearchtext' => 'Cweraedje dins les espåces di lomaedje: $1 <br />
 Cweraedje di: $3 $9 $10',
 );
-$wgLuceneSearchMessages['zh-cn'] = array(
-	'searchnumber'          => "<strong>共有$3项搜索结果，以下是第$1-$2项结果</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一页</span>",
-	'searchnext'            => "<span style='font-size: small'>下一页</span> &#x00BB;",
-	'searchscore'           => "关联度：$1",
-	'searchsize'            => "$1KB ($2 个字)",
-	'searchdidyoumean'      => "是\"<a href=\"$1\">$2</a>\"吗?",
-	'searchnoresults'       => "对不起，找不到和您匹配的查询。",
-	'searchnearmatches'     => "<b>以下页面与你查询的内容有相似的标题：</b>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-在名字空间中搜索：\n
-$1\n
-搜索：$3 $9 $10",
-	'lucenefallback'        => "系统搜索发生错误。这可能是暂时性的，请稍后重试。你也可以通过使用外部搜索服务搜索本站：\n"
-);
-$wgLuceneSearchMessages['zh-tw'] = array(
-	'searchnumber'          => "<strong>共有$3項搜尋結果，以下是第$1-$2項結果</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一頁</span>",
-	'searchnext'            => "<span style='font-size: small'>下一頁</span> &#x00BB;",
-	'searchscore'           => "關聯度：$1",
-	'searchsize'            => "$1KB ($2 個字)",
-	'searchdidyoumean'      => "是\"<a href=\"$1\">$2</a>\"嗎?",
-	'searchnoresults'       => "對不起，找不到和您匹配的查詢。",
-	'searchnearmatches'     => "<b>以下頁面與你查詢的内容有相似的標題：</b>\n",
-	'searchnearmatch'       => "<li>$1</li>\n",
-	'lucenepowersearchtext' => "
-在名字空間中搜尋：\n
-$1\n
-搜尋：$3 $9 $10",
-	'lucenefallback'        => "系統搜尋發生錯誤。這可能是暫時性的，請稍後重試。你也可以通過使用外部搜尋服務搜尋本站：\n"
-);
-$wgLuceneSearchMessages['zh-yue'] = array(
+$wgLuceneSearchMessages['yue'] = array(
 	'searchnumber'          => "<strong>一共有$3項搜尋結果，以下係第$1-$2項結果</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一版</span>",
 	'searchnext'            => "<span style='font-size: small'>下一版</span> &#x00BB;",
@@ -541,8 +509,51 @@ $wgLuceneSearchMessages['zh-yue'] = array(
 響空間名度搵：\n
 $1\n
 搜尋：$3 $9 $10",
-	'lucenefallback'        => "Wiki搜尋出咗問題。呢個可能係暫時性嘅，請稍後再試。你亦都可以通過利用外部搜尋服務來去搵呢個wiki：\n"
+	'lucenefallback'        => "Wiki搜尋出咗問題。呢個可能係暫時性嘅，請稍後再試。你亦都可以通過利用外部搜尋服務來去搵呢個wiki：\n",
+	'searchall'             => '全部',
+	'searchincategory'      => '響分類度'
 );
-$wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-tw'];
-$wgLuceneSearchMessages['zh-sg'] = $wgLuceneSearchMessages['zh-cn'];
+$wgLuceneSearchMessages['zh-hans'] = array(
+	'searchnumber'          => "<strong>共有$3项搜索结果，以下是第$1-$2项结果</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一页</span>",
+	'searchnext'            => "<span style='font-size: small'>下一页</span> &#x00BB;",
+	'searchscore'           => "关联度：$1",
+	'searchsize'            => "$1KB ($2 个字)",
+	'searchdidyoumean'      => "是\"<a href=\"$1\">$2</a>\"吗?",
+	'searchnoresults'       => "对不起，找不到和您匹配的查询。",
+	'searchnearmatches'     => "<b>以下页面与你查询的内容有相似的标题：</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+在名字空间中搜索：\n
+$1\n
+搜索：$3 $9 $10",
+	'lucenefallback'        => "系统搜索发生错误。这可能是暂时性的，请稍后重试。你也可以通过使用外部搜索服务搜索本站：\n",
+	'searchall'             => '所有',
+	'searchincategory'      => '在分类中'
+);
+$wgLuceneSearchMessages['zh-hant'] = array(
+	'searchnumber'          => "<strong>共有$3項搜尋結果，以下是第$1-$2項結果</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>上一頁</span>",
+	'searchnext'            => "<span style='font-size: small'>下一頁</span> &#x00BB;",
+	'searchscore'           => "關聯度：$1",
+	'searchsize'            => "$1KB ($2 個字)",
+	'searchdidyoumean'      => "是\"<a href=\"$1\">$2</a>\"嗎?",
+	'searchnoresults'       => "對不起，找不到和您匹配的查詢。",
+	'searchnearmatches'     => "<b>以下頁面與你查詢的内容有相似的標題：</b>\n",
+	'searchnearmatch'       => "<li>$1</li>\n",
+	'lucenepowersearchtext' => "
+在名字空間中搜尋：\n
+$1\n
+搜尋：$3 $9 $10",
+	'lucenefallback'        => "系統搜尋發生錯誤。這可能是暫時性的，請稍後重試。你也可以通過使用外部搜尋服務搜尋本站：\n",
+	'searchall'             => '所有',
+	'searchincategory'      => '在分類中'
+);
+
+$wgLuceneSearchMessages['zh-cn'] = $wgLuceneSearchMessages['zh-hans'];
+$wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-hant'];
+$wgLuceneSearchMessages['zh-sg'] = $wgLuceneSearchMessages['zh-hans'];
+$wgLuceneSearchMessages['zh-tw'] = $wgLuceneSearchMessages['zh-hant'];
+$wgLuceneSearchMessages['zh-yue'] = $wgLuceneSearchMessages['yue'];
+
 

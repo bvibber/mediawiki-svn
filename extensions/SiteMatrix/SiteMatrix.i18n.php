@@ -98,19 +98,19 @@ $wgSiteMatrixMessages['sv'] = array(
 $wgSiteMatrixMessages['ur'] = array(
 	"sitematrix" => 'فہرست وکی میڈیا کے دیگر وکییوں کی',
 );
-$wgSiteMatrixMessages['zh-cn'] = array(
-	"sitematrix" => "维基媒体站点列表",
-);
-$wgSiteMatrixMessages['zh-hk'] = array(
-	"sitematrix" => "維基媒體網站清單",
-);
-$wgSiteMatrixMessages['zh-sg'] = array(
-	"sitematrix" => "维基媒体站点列表",
-);
-$wgSiteMatrixMessages['zh-tw'] = array(
-	"sitematrix" => "維基媒體網站清單",
-);
-$wgSiteMatrixMessages['zh-yue'] = array(
+$wgSiteMatrixMessages['yue'] = array(
 	"sitematrix" => "Wikimedia嘅wiki一覽",
 );
+$wgSiteMatrixMessages['zh-hans'] = array(
+	"sitematrix" => "维基媒体站点列表",
+);
+$wgSiteMatrixMessages['zh-hant'] = array(
+	"sitematrix" => "維基媒體網站清單",
+);
+$wgSiteMatrixMessages['zh-cn'] = $wgSiteMatrixMessages['zh-hans'];
+$wgSiteMatrixMessages['zh-hk'] = $wgSiteMatrixMessages['zh-hant'];
+$wgSiteMatrixMessages['zh-sg'] = $wgSiteMatrixMessages['zh-hans'];
+$wgSiteMatrixMessages['zh-tw'] = $wgSiteMatrixMessages['zh-hant'];
+$wgSiteMatrixMessages['zh-yue'] = $wgSiteMatrixMessages['yue'];
+
 

@@ -176,22 +176,35 @@ $wgFilepathMessages['sv'] = array(
 	
 	Ange filens namn utan prefixet "{{ns:image}}:".',
 );
-$wgFilepathMessages['zh-cn'] = array(
-	'filepath'        => '文件路径',
-	'filepath_page'   => '文件名：',
-	'filepath_submit' => '查找路径',
-);
-$wgFilepathMessages['zh-tw'] = array(
-	'filepath'        => '檔案路徑',
-	'filepath_page'   => '檔案名：',
-	'filepath_submit' => '搜尋路徑',
-);
-$wgFilepathMessages['zh-yue'] = array(
+$wgFilepathMessages['yue'] = array(
 	'filepath'        => '檔案路徑',
 	'filepath_page'   => '檔名：',
 	'filepath_submit' => '搵路徑',
+	'filepath-summary' => '呢個特別頁拎一個檔案嘅完整路徑。圖像會以完整嘅解像度顯示，其它嘅檔案類型會以同佢哋關聯咗嘅程式啟動。
+	
+	請輸入檔名，唔好連埋個"{{ns:image}}:"開頭。',
 );
-$wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-tw'];
-$wgFilepathMessages['zh-sg'] = $wgFilepathMessages['zh-cn'];
+$wgFilepathMessages['zh-hans'] = array(
+	'filepath'        => '文件路径',
+	'filepath_page'   => '文件名：',
+	'filepath_submit' => '查找路径',
+	'filepath-summary' => '这个特殊页面撷取一个文件的完整路径。图像会以完整的解像度显示，其它的文件类型会以同它们已关联程序启动。
+	
+	请输入档名，不要包含"{{ns:image}}:"开头。',
+
+);
+$wgFilepathMessages['zh-hant'] = array(
+	'filepath'        => '檔案路徑',
+	'filepath_page'   => '檔案名：',
+	'filepath_submit' => '搜尋路徑',
+	'filepath-summary' => '這個特殊頁面擷取一個檔案的完整路徑。圖像會以完整的解像度顯示，其它的檔案類型會以同它們已關聯程式啟動。
+	
+	請輸入檔名，不要包含"{{ns:image}}:"開頭。',
+);
+$wgFilepathMessages['zh-cn'] = $wgFilepathMessages['zh-hans'];
+$wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-hant'];
+$wgFilepathMessages['zh-sg'] = $wgFilepathMessages['zh-hans'];
+$wgFilepathMessages['zh-tw'] = $wgFilepathMessages['zh-hant'];
+$wgFilepathMessages['zh-yue'] = $wgFilepathMessages['yue'];
 
 
