@@ -598,7 +598,6 @@ function getDefinedMeaningFromCollection($collectionId, $internalMemberId) {
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_SLAVE);
 	$query = "SELECT member_mid FROM {$dc}_collection_contents WHERE collection_id=$collectionId AND internal_member_id=". $dbr->addQuotes($internalMemberId) . " AND " .getLatestTransactionRestriction("{$dc}_collection_contents");
-	echo "$query\n"; 
 	$queryResult = $dbr->query( $query );
 	
 	if ($definedMeaningObject = $dbr->fetchObject($queryResult)) 
