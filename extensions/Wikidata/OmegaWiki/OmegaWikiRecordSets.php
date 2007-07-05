@@ -526,14 +526,27 @@ function getDefinedMeaningDefinitionRecord($definedMeaningId, ViewInformation $v
 	$objectAttributesRecord = getObjectAttributesRecord($definitionId, $viewInformation, $objectAttributesAttribute->id);
 	$record->setAttributeValue($objectAttributesAttribute, $objectAttributesRecord);
 	
-	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) { 
-		$record->setAttributeValue(
-			$propertyToColumnFilter->getAttribute(), 
-			filterObjectAttributesRecord($objectAttributesRecord, $propertyToColumnFilter->attributeIDs)
-		);		
-	}
+	applyPropertyToColumnFiltersToRecord($record, $objectAttributesRecord, $viewInformation);
 
 	return $record;
+}
+
+function applyPropertyToColumnFiltersToRecord(Record $destinationRecord, Record $sourceRecord, ViewInformation $viewInformation) {
+	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) { 
+		$destinationRecord->setAttributeValue(
+			$propertyToColumnFilter->getAttribute(), 
+			filterObjectAttributesRecord($sourceRecord, $propertyToColumnFilter->attributeIDs)
+		);		
+	}
+}
+
+function applyPropertyToColumnFiltersToRecordSet(RecordSet $recordSet, Attribute $sourceAttribute, ViewInformation $viewInformation) {
+	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
+		$record = $recordSet->getRecord($i);
+		$attributeValuesRecord = $recordSet->getAttributeValue($sourceAttribute);
+		
+		applyPropertyToColumnFiltersToRecord($record, $attributeValuesRecord, $viewInformation);
+	}	
 }
 
 function getObjectAttributesRecord($objectId, ViewInformation $viewInformation, $structuralOverride = null) {
@@ -819,6 +832,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 			$objectAttributesRecord->setAttributeValue($optionAttributeValuesAttribute, $optionAttributeValuesRecordSet);
 			
 			$record->setAttributeValue($attributeToExpand, $objectAttributesRecord);
+			applyPropertyToColumnFiltersToRecord($record, $objectAttributesRecord, $viewInformation);
 		}
 	}	
 }
@@ -1123,7 +1137,7 @@ function expandOptionsInRecordSet(RecordSet $recordSet, ViewInformation $viewInf
 			$classAttributesTable,
 			array('object_id = ' . $optionRecord->getAttributeValue($optionAttributeIdAttribute))
 		);
-
+	
 		$optionRecord = $optionRecordSet->getRecord(0);
 		$record->setAttributeValue(
 			$optionAttributeAttribute,

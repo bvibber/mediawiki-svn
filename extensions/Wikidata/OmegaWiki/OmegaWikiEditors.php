@@ -88,6 +88,19 @@ function getDefinitionEditor(ViewInformation $viewInformation) {
 	));
 
 	return $editor;	
+}
+
+function addPropertyToColumnFilterEditors(Editor $editor, ViewInformation $viewInformation, $levelsFromDefinedMeaning, $levelName) {
+	global
+		$definedMeaningIdAttribute;
+	
+	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) {
+		$attribute = $propertyToColumnFilter->getAttribute();
+		$editor->addEditor(new PopUpEditor(
+			createObjectAttributesEditor($viewInformation, $attribute, $definedMeaningIdAttribute, $levelsFromDefinedMeaning, $levelName),	
+			$attribute->name
+		));
+	}
 }	
 
 function getTranslatedTextEditor(Attribute $attribute, UpdateController $updateController, UpdateAttributeController $updateAttributeController, ViewInformation $viewInformation) {
@@ -225,6 +238,9 @@ function getSynonymsAndTranslationsEditor(ViewInformation $viewInformation) {
 	
 	$tableEditor->addEditor(getExpressionTableCellEditor($expressionAttribute, $viewInformation));
 	$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(true), true, true));
+	
+	addPropertyToColumnFilterEditors($tableEditor, $viewInformation, 1, $synTransMeaningName);
+	
 	$tableEditor->addEditor(new PopUpEditor(
 		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $syntransIdAttribute, 1, $synTransMeaningName), 
 		$wgPopupAnnotationName
@@ -243,6 +259,9 @@ function getDefinedMeaningRelationsEditor(ViewInformation $viewInformation) {
 	$editor = new RecordSetTableEditor($relationsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningRelationController());
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
+	
+	addPropertyToColumnFilterEditors($editor, $viewInformation, 1, $relationMeaningName);
+	
 	$editor->addEditor(new PopUpEditor(
 		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $relationIdAttribute, 1, $relationMeaningName), 
 		$wgPopupAnnotationName
@@ -261,6 +280,9 @@ function getDefinedMeaningReciprocalRelationsEditor(ViewInformation $viewInforma
 	$editor = new RecordSetTableEditor($reciprocalRelationsAttribute, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
+	
+	addPropertyToColumnFilterEditors($editor, $viewInformation, 1, $relationMeaningName);
+	
 	$editor->addEditor(new PopUpEditor(
 		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $relationIdAttribute, 1, $relationMeaningName), 
 		$wgPopupAnnotationName

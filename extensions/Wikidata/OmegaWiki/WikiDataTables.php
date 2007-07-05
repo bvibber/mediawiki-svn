@@ -20,7 +20,7 @@ class TableColumn implements DatabaseExpression {
 	}
 	
 	public function qualifiedName() {
-		return $this->table->identifier . '.' . $this->identifier;
+		return $this->table->getIdentifier() . '.' . $this->identifier;
 	}
 	
 	public function toExpression() {
@@ -44,8 +44,9 @@ class Table {
 
 	public function getIdentifier() {
 		$dc = wdGetDataSetContext();
-		return "{$dc}_".$this->identifier;
+		return "{$dc}_" . $this->identifier;
 	}	
+	
 	protected function createColumn($identifier) {
 		$result = new TableColumn($this, $identifier);
 		$this->columns[] = $result;

@@ -72,7 +72,7 @@ function getSuggestions() {
 			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT');
 			break;
 		case 'url-attribute':	
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT');
+			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'URL');
 			break;
 		case 'language':
 			require_once('languages.php');
