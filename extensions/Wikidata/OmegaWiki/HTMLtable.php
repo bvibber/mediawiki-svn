@@ -5,9 +5,9 @@ require_once("Record.php");
 require_once("RecordSet.php");
 
 global
-	$wgSitename;
+	$wgStylePath;
 	
-$URL = "/$wgSitename/skins/common/images/sort_none.gif";
+$URL = "$wgStylePath/common/images/sort_none.gif";
 define ('SORT_IMAGE', ' <img src="' . $URL . '"></img>');
 
 function parityClass($value) {

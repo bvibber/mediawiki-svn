@@ -40,16 +40,22 @@ class Expression {
 	}
 }
 
-function getExpression($expressionId) {
-	$dc=wdGetDataSetContext();
+function getExpression($expressionId, $dc=null) {
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+	}
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT spelling, language_id " .
 								" FROM {$dc}_expression_ns " .
 								" WHERE {$dc}_expression_ns.expression_id=$expressionId".
 								" AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
 	$expressionRecord = $dbr->fetchObject($queryResult);
-	$expression = new Expression($expressionId, $expressionRecord->spelling, $expressionRecord->language_id);
-	return $expression; 
+	if($expressionRecord) {
+		$expression = new Expression($expressionId, $expressionRecord->spelling, $expressionRecord->language_id);
+		return $expression;
+	} else {
+		return null;
+	}
 }
 
 function newObjectId($table) {
@@ -1257,10 +1263,8 @@ function &getDefinedMeaningDataAssociatedByConcept($dm, $dc) {
 	$map=getDataSetsAssociatedByConcept($dm, $dc);
 	$dm_map=getAssociatedByConcept($dm, $dc);
 	foreach ($map as $map_dc => $map_dataset) {
-		$dmData=new DefinedMeaningData();
-		$dmData->setDataset($map_dataset);
-		$dmData->setId($dm_map[$map_dc]);
-		$meanings[$map_dc]=$dmData;
+		$dmModel=new DefinedMeaningModel($dm_map[$map_dc], null, $map_dataset);
+		$meanings[$map_dc]=$dmModel;
 	}
 	return $meanings;
 }
@@ -1278,8 +1282,10 @@ function definingExpressionRow($definedMeaningId) {
 	return array($expression->expression_id, $expression->spelling, $expression->language_id); 
 }
 
-function definingExpression($definedMeaningId) {
-	$dc=wdGetDataSetContext();
+function definingExpression($definedMeaningId, $dc=null) {
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+	} 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT spelling " .
 								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
@@ -1288,7 +1294,11 @@ function definingExpression($definedMeaningId) {
 								" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning").
 								" AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
 	$expression = $dbr->fetchObject($queryResult);
-	return $expression->spelling; 
+	if($expression) {
+		return $expression->spelling; 
+	} else {
+		return null;
+	}
 }
 
 function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
@@ -1369,6 +1379,4 @@ function getTextValue($textId) {
 
 	return $dbr->fetchObject($queryResult)->text_text; 
 }
-
-
 

@@ -9,7 +9,8 @@ ob_end_flush();
 $wgUseMasterForMaintenance = true;
 
 $sep = PATH_SEPARATOR;
-$IP = realpath( dirname( __FILE__ ) . "../../../../../" );
+
+$IP = realpath( dirname( __FILE__ ) .  "/../../../../" );
 $currentdir = dirname( __FILE__ );
 chdir( $IP );
 

@@ -1303,7 +1303,6 @@ class RecordListEditor extends RecordEditor {
 			$class = $idPath->getClass();
 			$attributeId = $idPath->getId();
 			$attributeValue = $value->getAttributeValue($attribute);			
-
 			if ($editor->showsData($attributeValue)) 	
 				$result .=	'<' . $this->htmlTag . '>' . 
 				           		$this->childHeader($editor, $attribute, $class, $attributeId) .

@@ -3,14 +3,14 @@
 require_once('Transaction.php');
 
 function getTransactedSQL(QueryTransactionInformation $transactionInformation, array $selectFields, Table $table, array $restrictions, array $orderBy = array(), $count = -1, $offset = 0) {
-	$tableNames = array($table->identifier);
+	$tableNames = array($table->getIdentifier());
 
 	if ($table->isVersioned) {
 		$restrictions[] = $transactionInformation->getRestriction($table);
 		$tableNames = array_merge($tableNames, $transactionInformation->getTables());
 		$orderBy = array_merge($orderBy, $transactionInformation->versioningOrderBy());
 		$groupBy = $transactionInformation->versioningGroupBy($table);
-		$selectFields = array_merge($selectFields, $transactionInformation->versioningFields($table->identifier));
+		$selectFields = array_merge($selectFields, $transactionInformation->versioningFields($table->getIdentifier()));
 	}
 	else 
 		$groupBy = array();

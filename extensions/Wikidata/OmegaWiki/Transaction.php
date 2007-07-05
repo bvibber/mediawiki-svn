@@ -50,7 +50,7 @@ class DefaultQueryTransactionInformation implements QueryTransactionInformation 
 
 class QueryLatestTransactionInformation extends DefaultQueryTransactionInformation {
 	public function getRestriction(Table $table) {
-		return getLatestTransactionRestriction($table->identifier);
+		return getLatestTransactionRestriction($table->getIdentifier());
 	}
 	
 	public function setVersioningAttributes(Record $record, $row) {
@@ -91,7 +91,7 @@ class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 	}
 	
 	public function getRestriction(Table $table) {
-		return getAtTransactionRestriction($table->identifier, $this->transactionId);
+		return getAtTransactionRestriction($table->getIdentifier(), $this->transactionId);
 	}
 	
 	public function versioningAttributes() {
@@ -126,8 +126,8 @@ class QueryUpdateTransactionInformation extends DefaultQueryTransactionInformati
 	
 	public function getRestriction(Table $table) {
 		return 
-			" " . $table->identifier . ".add_transaction_id =". $this->transactionId . 
-			" OR " . $table->identifier . ".removeTransactionId =" . $this->transactionId;
+			" " . $table->getIdentifier() . ".add_transaction_id =". $this->transactionId . 
+			" OR " . $table->getIdentifier() . ".removeTransactionId =" . $this->transactionId;
 	}
 	
 //	public function versioningAttributes() {

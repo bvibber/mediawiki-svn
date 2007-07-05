@@ -621,7 +621,6 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, ViewInformation $v
 
 	$dc=wdGetDataSetContext();
 	$restrictions = array("defined_meaning_id=$definedMeaningId");
-	
 	if ($viewInformation->filterLanguageId != 0) 
 		$restrictions[] =
 			"expression_id IN (" .
@@ -649,7 +648,6 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, ViewInformation $v
 		expandExpressionReferencesInRecordSet($recordSet, array($expressionAttribute));
 	else
 		expandExpressionSpellingsInRecordSet($recordSet, array($expressionAttribute));
-
 	//add object attributes attribute to the generated structure 
 	//and expand the records
 	$recordSet->getStructure()->addAttribute($objectAttributesAttribute);

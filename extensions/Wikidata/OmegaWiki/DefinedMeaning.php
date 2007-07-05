@@ -8,33 +8,49 @@ require_once('DefinedMeaningModel.php');
 class DefinedMeaning extends DefaultWikidataApplication {
 	public function view() {
 		global
-			$wgOut, $wgTitle, $wgRequest;
+			$wgOut, $wgTitle, $wgRequest, $wdCurrentContext;
 
+		// Split title into defining expression and ID
+		$titleText = $wgTitle->getText();
+		$dmInfo = DefinedMeaningModel::splitTitleText($titleText);
+
+		// Title doesn't have an ID in it (or ID 0)
+		if(is_null($dmInfo) || !$dmInfo["id"]) {
+			$wgOut->showErrorPage('errorpagetitle','ow_dm_badtitle');
+			return false;
+		}
+		$definedMeaningModel = new DefinedMeaningModel($dmInfo["id"]);
+
+		if(!empty($dmInfo["expression"]))
+		  $definedMeaningModel->setDefiningExpression($dmInfo["expression"]);
+
+		// Search for this DM in all data-sets, beginning with the current one.
+		// Switch dataset context if found elsewhere.
+		$match=$definedMeaningModel->checkExistence(true, true);
+
+		if(is_null($match)) {
+			$wgOut->showErrorPage('errorpagetitle','ow_dm_missing');
+			return false;
+		}
+
+		$definedMeaningModel->loadRecord();
 		$this->showDataSetPanel=false;
 		parent::view();
 
+		# Raw mode
 		$view_as=$wgRequest->getText('view_as');
-
 		if ($view_as=="raw") {
-			$wgOut->disable();
-			echo("<pre>".$this->raw()."</pre>");
+			$wgOut->addHTML("<pre>".$definedMeaningModel->getRecord()."</pre>");
+			#$wgOut->disable();
 			return;
 		}
+
 		$this->outputViewHeader();
-
-		// Obtain ID from title of the form "DefinedMeaning:Foo (1234)" for database lookup
-		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		
 		$wgOut->addHTML($this->getConceptPanel());
-
-		$dmModel=new DefinedMeaningModel($definedMeaningId,	$this->viewInformation);
-
-		$wgOut->addHTML(
-			getDefinedMeaningEditor($this->viewInformation)->view(
-				$this->getIdStack($definedMeaningId), 
-				$dmModel->getRecord()
-			)
-		);
+		$editor=getDefinedMeaningEditor($this->viewInformation);
+		$idStack=$this->getIdStack($definedMeaningModel->getId());
+		$html=$editor->view($idStack,$definedMeaningModel->getRecord());
+		$wgOut->addHTML($html);
 		$this->outputViewFooter();
 	}
 	
@@ -51,7 +67,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		 
 		$wgOut->addHTML(
 			getDefinedMeaningEditor($this->viewInformation)->edit(
-				$this->getIdStack($definedMeaningId), 
+				$this->getIdStack($dmModel->getId()), 
 				$dmModel->getRecord()
 			)
 		);
@@ -75,19 +91,6 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		
 		$wgOut->addHTML(DefaultEditor::getExpansionCss());
 		$wgOut->addHTML("<script language='javascript'><!--\nexpandEditors();\n--></script>");
-	}
-
-	/**
-		@return Basic structured data dump
-	*/
-	public function raw() {
-		global 
-			$wgTitle;
-	
-		$definedMeaningId = $this->getDefinedMeaningIdFromTitle($wgTitle->getText());
-		$dmModel = new DefinedMeaningModel($definedMeaningId, $this->viewInformation);
-		$record=$dmModel->getRecord();
-		return $record;
 	}
 
 	protected function save($referenceQueryTransactionInformation) {
@@ -164,7 +167,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$html="<div class=\"dataset-panel\">";;
 		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_conceptpanel</th></tr>";
 		$sk=$wgUser->getSkin();
-		$meanings=getDefinedMeaningDataAssociatedByConcept($dm,$dc);
+		$meanings=getDefinedMeaningDataAssociatedByConcept($dm, $dc);
 		if($meanings) {
 			foreach ($meanings as $dm) {
 				$dataset=$dm->getDataset();
@@ -173,7 +176,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 				$prefix=$dataset->getPrefix();
 	
 				$class= $active ? 'dataset-panel-active' : 'dataset-panel-inactive';
-				$slot = $active ? "$name" : $sk->makeLinkObj($dm->getTitle(),$name,"dataset=$prefix");
+				$slot = $active ? "$name" : $sk->makeLinkObj($dm->getTitleObject(),$name,"dataset=$prefix");
 				$html.="<tr><td class=\"$class\">$slot</td></tr>";
 			}
 		} else {

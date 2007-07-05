@@ -15,6 +15,10 @@ class TableColumn implements DatabaseExpression {
 		$this->identifier = $identifier;
 	}
 	
+	public function getIdentifier() {
+		return $this->identifier;
+	}
+	
 	public function qualifiedName() {
 		return $this->table->identifier . '.' . $this->identifier;
 	}
@@ -31,12 +35,17 @@ class Table {
 	public $columns;
 	
 	public function __construct($identifier, $isVersioned, $keyFields) {
+		# Without dataset prefix!
 		$this->identifier = $identifier;
 		$this->isVersioned = $isVersioned;
 		$this->keyFields = $keyFields;
 		$this->columns = array();
 	}
-	
+
+	public function getIdentifier() {
+		$dc = wdGetDataSetContext();
+		return "{$dc}_".$this->identifier;
+	}	
 	protected function createColumn($identifier) {
 		$result = new TableColumn($this, $identifier);
 		$this->columns[] = $result;
@@ -116,22 +125,22 @@ global
 	$urlAttributeValuesTable;
 
 $dc=wdGetDataSetContext();
-$alternativeDefinitionsTable = new Table("{$dc}_alt_meaningtexts", true, array('meaning_mid', 'meaning_text_tcid'));
-$bootstrappedDefinedMeaningsTable = new BootstrappedDefinedMeaningsTable("{$dc}_bootstrapped_defined_meanings");
-$classAttributesTable = new Table("{$dc}_class_attributes", true, array('object_id'));
-$classMembershipsTable = new Table("{$dc}_class_membership", true, array('class_membership_id'));
-$collectionMembershipsTable = new Table("{$dc}_collection_contents", true, array('collection_id', 'member_mid'));
-$definedMeaningTable = new DefinedMeaningTable("{$dc}_defined_meaning");
-$expressionTable = new ExpressionTable("{$dc}_expression_ns");
-$meaningRelationsTable = new Table("{$dc}_meaning_relations", true, array('relation_id'));
-$syntransTable = new Table("{$dc}_syntrans", true, array('syntrans_sid'));
-$textAttributeValuesTable = new Table("{$dc}_text_attribute_values", true, array('value_id'));
-$transactionsTable = new Table("{$dc}_transactions", false, array('transaction_id'));
-$translatedContentAttributeValuesTable = new Table("{$dc}_translated_content_attribute_values", true, array('value_id'));
-$translatedContentTable = new Table("{$dc}_translated_content", true, array('translated_content_id', 'language_id'));
-$optionAttributeOptionsTable = new Table("{$dc}_option_attribute_options", true, array('attribute_id', 'option_mid'));
-$optionAttributeValuesTable = new Table("{$dc}_option_attribute_values", true, array('value_id'));
-$urlAttributeValuesTable = new Table("{$dc}_url_attribute_values", true, array('value_id'));
+$alternativeDefinitionsTable = new Table("alt_meaningtexts", true, array('meaning_mid', 'meaning_text_tcid'));
+$bootstrappedDefinedMeaningsTable = new BootstrappedDefinedMeaningsTable("bootstrapped_defined_meanings");
+$classAttributesTable = new Table("class_attributes", true, array('object_id'));
+$classMembershipsTable = new Table("class_membership", true, array('class_membership_id'));
+$collectionMembershipsTable = new Table("collection_contents", true, array('collection_id', 'member_mid'));
+$definedMeaningTable = new DefinedMeaningTable("defined_meaning");
+$expressionTable = new ExpressionTable("expression_ns");
+$meaningRelationsTable = new Table("meaning_relations", true, array('relation_id'));
+$syntransTable = new Table("syntrans", true, array('syntrans_sid'));
+$textAttributeValuesTable = new Table("text_attribute_values", true, array('value_id'));
+$transactionsTable = new Table("transactions", false, array('transaction_id'));
+$translatedContentAttributeValuesTable = new Table("translated_content_attribute_values", true, array('value_id'));
+$translatedContentTable = new Table("translated_content", true, array('translated_content_id', 'language_id'));
+$optionAttributeOptionsTable = new Table("option_attribute_options", true, array('attribute_id', 'option_mid'));
+$optionAttributeValuesTable = new Table("option_attribute_values", true, array('value_id'));
+$urlAttributeValuesTable = new Table("url_attribute_values", true, array('value_id'));
 
 function select($expressions, $tables, $restrictions) {
 	$result = "SELECT " . $expressions[0]->toExpression();
@@ -140,10 +149,10 @@ function select($expressions, $tables, $restrictions) {
 		$result .= ", " . $expressions[$i]->toExpression();
 		
 	if (count($tables) > 0) {
-		$result .= " FROM " . $tables[0]->identifier;
+		$result .= " FROM " . $tables[0]->getIdentifier();
 		
 		for ($i = 1; $i < count($tables); $i++)
-			$result .= ", " . $tables[$i]->identifier;
+			$result .= ", " . $tables[$i]->getIdentifier();
 	}
 	
 	if (count($restrictions) > 0) {

@@ -73,30 +73,31 @@ function wfSpecialConceptMapping() {
 				$rq=$wgRequest->getText("set_".$key);
 				$noerror=$wgRequest->getText("suppressWarnings");
 				$rq=trim($rq);
-				$dmData=new DefinedMeaningData();
-				$dmData->setDataset($set);
-				$dmData->setTitleText($rq); #is $rq a page title?
-				if ($dmData->getId()==null) { #guess not
-					$dmData->setId($rq); # maybe it's a defined meaning id?
-				}
-				$dmData->canonicalize();
-				$id=null;
-				$title=null;
-				if ($dmData->exists()) {
-					$id=$dmData->getId();
-					$title=$dmData->getTitleText();
-				}
-				if(!$noerror) {
-					$wgOut->addHTML("$key: $rq ($title)");
-				}
-				if ($id!=null) {
-					$mappings[$key]=$id;
-					if(!$noerror) {
-						$wgOut->addHTML(' <span style="color:green">['.wfMsg('ow_OK').']</span>');
+				$dmInfo=DefinedMeaningModel::splitTitleText($rq);
+				if(!$dmInfo["id"]) {
+					$wgOut->addHTML(' <span style="color:yellow">['.wfMsg('ow_dm_not_present').']</span>');
+				} else  {
+					$dmModel=new DefinedMeaningModel($dmInfo["id"],null,$set);
+					$dmModel->checkExistence();
+					if ($dmModel->exists()) {
+						$id=$dmModel->getId();
+						$title=$dmModel->getTitleText();
+					} else {
+						$id=null;
+						$title=null;
 					}
-				} else {
 					if(!$noerror) {
-						$wgOut->addHTML(' <span style="color:red">['.wfMsg('ow_not_present_or_malformed').']</span>');
+						$wgOut->addHTML("$key: $rq ($title)");
+					}
+					if ($id!=null) {
+						$mappings[$key]=$id;
+						if(!$noerror) {
+							$wgOut->addHTML(' <span style="color:green">['.wfMsg('ow_dm_OK').']</span>');
+						}
+					} else {
+						if(!$noerror) {
+							$wgOut->addHTML(' <span style="color:red">['.wfMsg('ow_dm_not_found').']</span>');
+						}
 					}
 				}
 				$wgOut->addHTML("<br>\n");	

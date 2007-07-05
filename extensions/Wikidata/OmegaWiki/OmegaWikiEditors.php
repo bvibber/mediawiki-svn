@@ -491,7 +491,6 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 
 	$definedMeaningEditor->expandEditor($definitionEditor);
 	$definedMeaningEditor->expandEditor($synonymsAndTranslationsEditor);
-
 	return $definedMeaningEditor;
 }
 

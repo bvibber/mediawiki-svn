@@ -25,7 +25,7 @@ $wdDefaultViewDataSet='uw';
 $wdGroupDefaultView=array();
 # Here you can set group defaults.
 $wdGroupDefaultView['wikidata-omega']='uw';
-$wdGroupDefaultView['wikidata-test']='tt';
+#$wdGroupDefaultView['wikidata-test']='tt';
 
 # These are the user groups
 $wgGroupPermissions['wikidata-omega']['editwikidata-uw']=true;
@@ -108,15 +108,18 @@ function initializeWikidata() {
 					<p> For example, you could paste <code>DefinedMeaning:Boat (7774)</code>
 					or simply type <code>7774</code>.</p>\n",
 			'ow_conceptmapping_no_action_specified'=>"Apologies, I don't know how to '$1'.",
-			'ow_OK'=>'OK',
-			'ow_not_present_or_malformed'=>'not present or malformed',
+			'ow_dm_OK'=>'OK',
+			'ow_dm_not_present'=>'not entered',
+			'ow_dm_not_found'=>'not found in database or malformed',
 			'ow_mapping_successful'=>"Mapped all fields marked with [OK]<br>\n",
 			'ow_mapping_unsuccessful'=>"Need to have at least two defined meanings before I can link them.\n",
 			'ow_will_insert'=>"Will insert the following:",
 			'ow_contents_of_mapping'=>'Contents of mapping',
 			'ow_available_contexts'=>'Available contexts',
 			'add_concept_link'=>'Add link to other concepts',
-			'ow_concept_panel'=>'Concept Panel'
+			'ow_concept_panel'=>'Concept Panel',
+			'ow_dm_badtitle'=>'This page does not point to any DefinedMeaning (concept). Please check the web address.',
+			'ow_dm_missing'=>'This page seems to point to a non-existent DefinedMeaning (concept). Please check the web address.',
 		)
 	);
 
