@@ -1,5 +1,11 @@
 <?php
 
+# let's see...
+# start out with a test skeleton, get a record from one dataset
+# and print it out
+# This is just saveDM with the actual save call removed :-P
+# (it's simply too handy not to do ;-))
+
 define('MEDIAWIKI', true );
 
 # do we seriously need ALL of these?
@@ -11,6 +17,26 @@ require_once("Setup.php");
 require_once("DefinedMeaningModel.php");
 require_once("Transaction.php");
 
+/** Just get a defined meaning */
+function getDM($definedMeaningId,$dc="uw") {
+	global 
+		$wdCurrentContext;
+	$wdCurrentContext=$dc;
+	#$viewInformation = new ViewInformation();
+	#$viewInformation->queryTransactionInformation= new QueryLatestTransactionInformation();
+	$model=new DefinedMeaningModel($definedMeaningId);
+	$record=$model->getRecord();
+	#$record->finish("DefinedMeaning");
+	return $model;
+}
+
+function saveDM($model,$dc="uw") {
+	global 
+		$wdCurrentContext;
+	$wdCurrentContext=$dc;
+	#echo $model->getRecord();
+	$model->saveWithinTransaction();
+}
 
 global
 $beginTime, $wgCommandLineMode, $dc;
@@ -20,16 +46,21 @@ $wgCommandLineMode = true;
 # $dc = "uw"; < can't modify from here
 
 /* insert code here */
-$definedMeaningId=663665; # UnitTest 
 
-$viewInformation = new ViewInformation();
-$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
+$model=getDM(663674,"tt");
 
-$model=new DefinedMeaningModel($definedMeaningId, $viewInformation);
 $record=$model->getRecord();
-$record->finish("DefinedMeaning");
 echo $record;
+$defexp=$record->getValue("defined-meaning-full-defining-expression");
+echo $defexp."\n";
+#$expid=$record->getAttributeValue(new Attribute("expression-id"));
+$id=$defexp->getValue("expression-id");
+$spelling=$defexp->getValue("defined-meaning-defining-expression");
+$language=$defexp->getValue("language");
 
+echo "id: $id, spelling:$spelling, language:$language";
+
+#saveDM($model,"uw");
 
 $endTime = time();
 echo("\n\nTime elapsed: " . durationToString($endTime - $beginTime)); 
