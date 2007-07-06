@@ -223,7 +223,7 @@ class Dumper {
 			return new OutputWrapper(conn);
 		} catch (Exception e) {
 			//e.printStackTrace();
-			throw new IOException(e.getMessage());
+			throw (IOException)new IOException(e.getMessage()).initCause(e);
 		}
 	}
 	

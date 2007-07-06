@@ -84,9 +84,9 @@ public class XmlDumpReader  extends DefaultHandler {
 	
 			parser.parse(input, this);
 		} catch (ParserConfigurationException e) {
-			throw new IOException(e.getMessage());
+			throw (IOException)new IOException(e.getMessage()).initCause(e);
 		} catch (SAXException e) {
-			throw new IOException(e.getMessage());
+			throw (IOException)new IOException(e.getMessage()).initCause(e);
 		}
 		writer.close();
 	}
@@ -202,7 +202,7 @@ public class XmlDumpReader  extends DefaultHandler {
 			else if (qName == "namespaces") closeNamespaces();
 			else if (qName == "namespace") closeNamespace();
 		} catch (IOException e) {
-			throw new SAXException(e);
+			throw (SAXException)new SAXException(e.getMessage()).initCause(e);
 		}
 	}
 
