@@ -35,6 +35,8 @@ public class NamespaceFilter extends PageFilter {
 		super(sink);
 		
 		invert = configString.startsWith("!");
+		if (invert)
+			configString = configString.substring(1);
 		matches = new HashMap();
 		
 		String[] namespaceKeys = {

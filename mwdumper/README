@@ -168,6 +168,7 @@ TODO:
 
 
 Change history (abbreviated):
+2007-07-06: Fixed namespace filter inversion (brion)
 2007-03-09: Added PostgreSQL support (river)
 2006-10-25: Added before and after filters by Aurimas Fischer
 2005-10-25: Switched SqlWriter.sqlEscape back to less memory-hungry StringBuffer
