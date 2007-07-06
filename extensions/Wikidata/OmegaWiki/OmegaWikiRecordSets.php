@@ -338,12 +338,17 @@ function expandTextReferencesInRecordSet(RecordSet $recordSet, array $textAttrib
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
-		# FIXME - check for empty values		
-		foreach($textAttributes as $textAttribute)
-			$record->setAttributeValue(
-				$textAttribute, 
-				@$textReferences[$record->getAttributeValue($textAttribute)]
-			);
+
+		foreach($textAttributes as $textAttribute) {
+			$textId = $record->getAttributeValue($textAttribute);
+			
+			if (isset($textReferences[$textId])) 
+				$textValue = $textReferences[$textId]; 
+			else
+				$textValue = "";
+			
+			$record->setAttributeValue($textAttribute, $textValue);
+		}
 	} 
 }
 
@@ -750,8 +755,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 	if (count($objectIds) > 0) {
 		for ($i = 0; $i < count($objectIds); $i++) {
 			$record = new ArrayRecord($objectAttributesRecordStructure);
-			#FIXME- check value
-			@$objectAttributesRecords[$objectIds[$i]] = $record;
+			$objectAttributesRecords[$objectIds[$i]] = $record;
 		}
 
 		// Text attributes		
@@ -799,29 +803,28 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 			$record = $recordSet->getRecord($i);
 			$objectId = $record->getAttributeValue($objectIdAttribute);
 			
-			// FIXME: Do some checks whether these values actually exist			
 			// Text attributes
-			@$textAttributeValuesRecordSet = $textAttributeValuesRecordSets[$objectId]; 
-			
-			if ($textAttributeValuesRecordSet == null) 
+			if (isset($textAttributeValuesRecordSets[$objectId]))
+				$textAttributeValuesRecordSet = $textAttributeValuesRecordSets[$objectId];
+			else 
 				$textAttributeValuesRecordSet = $emptyTextAttributesRecordSet;
 
 			// Translated text attributes
-			@$translatedTextAttributeValuesRecordSet = $translatedTextAttributeValuesRecordSets[$objectId]; 
-			
-			if ($translatedTextAttributeValuesRecordSet == null) 
+			if (isset($translatedTextAttributeValuesRecordSets[$objectId]))
+				$translatedTextAttributeValuesRecordSet = $translatedTextAttributeValuesRecordSets[$objectId];				
+			else 
 				$translatedTextAttributeValuesRecordSet = $emptyTranslatedTextAttributesRecordSet;
 
 			// URL attributes
-			@$urlAttributeValuesRecordSet = $urlAttributeValuesRecordSets[$objectId]; 
-			
-			if ($urlAttributeValuesRecordSet == null) 
+			if (isset($urlAttributeValuesRecordSets[$objectId]))
+				$urlAttributeValuesRecordSet = $urlAttributeValuesRecordSets[$objectId];
+			else 
 				$urlAttributeValuesRecordSet = $emptyURLAttributesRecordSet;
 
 			// Option attributes
-			@$optionAttributeValuesRecordSet = $optionAttributeValuesRecordSets[$objectId]; 
-			
-			if ($optionAttributeValuesRecordSet == null) 
+			if (isset($optionAttributeValuesRecordSets[$objectId]))
+				$optionAttributeValuesRecordSet = $optionAttributeValuesRecordSets[$objectId]; 
+			else
 				$optionAttributeValuesRecordSet = $emptyOptionAttributesRecordSet;
 
 			$objectAttributesRecord = new ArrayRecord($objectAttributesRecordStructure);
