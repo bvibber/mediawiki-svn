@@ -666,14 +666,20 @@ logentry_t	*ent;
 
 	case ET_INTVAR:
 		/*
+		 * 1: id type
 		 * 8 bytes: next INSERT_ID
 		 */
-		 if (len < 8) {
+		 if (len < 9) {
 			 logmsg("binlog is truncated");
 			 goto err;
 		 }
 
+		 ADVANCE(1);
 		 ent->le_insert_id = uint8korr(buf);
+
+		 if (debug)
+			 printf("got intvar: %llu (%llx)\n", (unsigned long long) ent->le_insert_id,
+						 (unsigned long long) ent->le_insert_id);
 		 return ent;
 
 	default:
@@ -998,6 +1004,15 @@ char		 sname[128];
 	if ((rstat = open(sname, O_RDONLY)) == -1) {
 		logmsg("cannot open state file \"%s\": %s",
 				sname, strerror(errno));
+		/*
+		 * Use the binlog position specified on command line.
+		 */
+		writer->wr_last_executed_pos = binlog_pos;
+		strdup_free(&writer->wr_last_executed_file, binlog_file);
+		pthread_mutex_lock(&rst_mtx);
+		if (lowest_log_pos == 0 || writer->wr_last_executed_pos < lowest_log_pos)
+			lowest_log_pos = writer->wr_last_executed_pos;
+		pthread_mutex_unlock(&rst_mtx);
 		if (errno == ENOENT)
 			return 1;
 		exit(1);
