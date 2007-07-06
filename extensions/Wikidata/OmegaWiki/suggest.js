@@ -38,12 +38,13 @@ function leftTrim(sString) {
 
 
 
-function updateSuggestions(suggestPrefix) {
+function updateSuggestions(suggestPrefix, dataSetOverride) {
 	var http = getHTTPObject();
 	var table = document.getElementById(suggestPrefix + "table");
 	var suggestQuery = document.getElementById(suggestPrefix + "query").value;
 	var suggestOffset = document.getElementById(suggestPrefix + "offset").value;
-
+	var currentDataSet = dataset;
+	
 	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
 
@@ -61,7 +62,8 @@ function updateSuggestions(suggestPrefix) {
 		'/Special:Suggest?search-text=' + encodeURI(suggestText.value) + 
 		'&prefix=' + encodeURI(suggestPrefix) + 
 		'&query=' + encodeURI(suggestQuery) + 
-		'&offset=' + encodeURI(suggestOffset);
+		'&offset=' + encodeURI(suggestOffset) + 
+		'&dataset='+currentDataSet;
 
 	if((suggestAttributesLevel != null) && (suggestObjectId != null)) 
 		URL = 

@@ -187,7 +187,7 @@ class DefinedMeaningModel {
 		initializeObjectAttributeEditors($this->viewInformation);
 
 		# Nice try sherlock, but we really need to get our DMID from elsewhere
-		#$definedMeaningId = $this->getDefinedMeaningID();
+		#$definedMeaningId = $this->getId();
 		
 		#Need 3 steps: copy defining expression, create new dm, then update
 		
@@ -438,26 +438,6 @@ class DefinedMeaningModel {
 		return $this->dataset;
 	}
 
-	public function setLanguageId($languageId) {
-		$this->languageId = $languageId;	
-	}
-
-	public function getLanguageId() {
-		return $this->languageId;
-	}
-
-	public function setLanguageCode($languageCode) {
-		return $this->langaugeCode;
-	}
-
-	public function getLanguageCode() {
-		if ($this->languageCode==null) {
-			global 
-				$wgUser;
-			$this->languageCode=$wgUser->getOption('language');
-		}
-		return $this->languageCode;
-	}
 	public function exists() {
 		return $this->exists;
 	}

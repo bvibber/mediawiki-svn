@@ -46,7 +46,9 @@ require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialConceptMapping.php");
 
 function addWikidataHeader() {
 	global $wgOut,$wgScriptPath;
+	$dc=wdGetDataSetContext();
 	$wgOut->addScript("<script type='text/javascript' src='{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js'></script>");
+	$wgOut->addScript("<script type='text/javascript'>var dataset='$dc';</script>");
 	$wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.css"));
 	$wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/tables.css"));                                                                                                                                                                    
 	return true;
@@ -90,7 +92,7 @@ function initializeWikidata() {
 			'ow_noedit_title' => 'No permission to edit',
 			'ow_uipref_datasets' => 'Default view',
 			'ow_uiprefs' => 'Wikidata',
-			'ow_none_selected' => '&lt;None selected&gt;',
+			'ow_none_selected' => '<None selected>',
 			'ow_conceptmapping_help' => "<p>possible actions: <ul>
 				<li>&action=insert&<data_context_prefix>=<defined_id>&...  insert a mapping</li>
 				<li>&action=get&concept=<concept_id>  read a mapping back</li>
@@ -101,12 +103,7 @@ function initializeWikidata() {
 			'ow_conceptmapping_uitext' => "
 					<p>Concept Mapping allows you to identify
 					which defined meaning in one dataset is identical
-					to defined meanings in other datasets.</p>\n
-					<p>Please enter or cut and paste the defined 
-					meanings (with id), or simply the defined meaning ids
-					which are identical.</p>\n
-					<p> For example, you could paste <code>DefinedMeaning:Boat (7774)</code>
-					or simply type <code>7774</code>.</p>\n",
+					to defined meanings in other datasets.</p>\n",
 			'ow_conceptmapping_no_action_specified'=>"Apologies, I don't know how to '$1'.",
 			'ow_dm_OK'=>'OK',
 			'ow_dm_not_present'=>'not entered',
@@ -124,7 +121,7 @@ function initializeWikidata() {
 	);
 
 	$datasets=wdGetDatasets();
-	$datasetarray['']=wfMsg('ow_none_selected');
+	$datasetarray['']=wfMsgHtml('ow_none_selected');
 	foreach($datasets as $datasetid=>$dataset) {
 		$datasetarray[$datasetid]=$dataset->fetchName();
 	}

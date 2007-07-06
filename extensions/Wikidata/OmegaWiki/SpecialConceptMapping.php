@@ -55,29 +55,40 @@ function wfSpecialConceptMapping() {
 		}
 
 		protected function ui() {
-			global $wgOut;
-			require_once("forms.php");
-			
+
+			global $wgOut, $wgRequest, $wgUser;
+			$lang=$wgUser->getOption("language");
+			require_once("forms.php");			
 			$wgOut->addHTML(wfMsg('ow_conceptmapping_uitext'));
 			$sets=wdGetDataSets();
 			$options = array();
 			$html="";
-			foreach ($sets as $key=>$set) {
-				$options[$set->fetchName()]=$this->getDm($set);
+			$mappings=array();
+			$rq=array();
+
+			foreach ($sets as $key=>$setObject) {
+				$set=$setObject->getPrefix();
+				$rq[$set]=$wgRequest->getText("set_".$set);
+				$rq[$set]=trim($rq[$set]);
+				$rq[$set]=(int)$rq[$set];
+				if($rq[$set]) {
+					$dmModel=new DefinedMeaningModel($rq[$set],null,$setObject);
+					$defaultSel=$dmModel->getSyntransByLanguageCode($lang);
+					$options[$setObject->fetchName()]=getSuggest("set_$set", 'defined-meaning',array(), $rq[$set], $defaultSel);
+				} else {
+					$options[$setObject->fetchName()]=getSuggest("set_$set", 'defined-meaning');
+				}
+
 			}
 			$wgOut->addHTML(getOptionPanel($options));
-			#debug
-			global $wgRequest;
-			$mappings=array();
-			foreach ($sets as $key=>$set) {
-				$rq=$wgRequest->getText("set_".$key);
-				$noerror=$wgRequest->getText("suppressWarnings");
-				$rq=trim($rq);
-				$dmInfo=DefinedMeaningModel::splitTitleText($rq);
-				if(!$dmInfo["id"]) {
+			$noerror=$wgRequest->getText("suppressWarnings");
+
+			foreach ($sets as $key=>$setObject) {
+				$set=$setObject->getPrefix();
+				if(!$rq[$set]) {
 					$wgOut->addHTML(' <span style="color:yellow">['.wfMsg('ow_dm_not_present').']</span>');
 				} else  {
-					$dmModel=new DefinedMeaningModel($dmInfo["id"],null,$set);
+					$dmModel=new DefinedMeaningModel($rq[$set],null,$setObject);
 					$dmModel->checkExistence();
 					if ($dmModel->exists()) {
 						$id=$dmModel->getId();
@@ -87,7 +98,7 @@ function wfSpecialConceptMapping() {
 						$title=null;
 					}
 					if(!$noerror) {
-						$wgOut->addHTML("$key: $rq ($title)");
+						$wgOut->addHTML("$key: ".$rq[$set]." ($title)");
 					}
 					if ($id!=null) {
 						$mappings[$key]=$id;

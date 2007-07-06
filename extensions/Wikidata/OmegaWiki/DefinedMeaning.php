@@ -165,14 +165,14 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	protected function getConceptPanel() {
 		global $wgTitle, $wgUser;
 		$active=true; # wrong place, but hey
-		$dm=$this->getDefinedMeaningId();
+		$dmId=$this->getDefinedMeaningId();
 		$dc=wdGetDataSetContext();
 		$ow_conceptpanel=wfMsg("ow_concept_panel");
 
 		$html="<div class=\"dataset-panel\">";;
 		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_conceptpanel</th></tr>";
 		$sk=$wgUser->getSkin();
-		$meanings=getDefinedMeaningDataAssociatedByConcept($dm, $dc);
+		$meanings=getDefinedMeaningDataAssociatedByConcept($dmId, $dc);
 		if($meanings) {
 			foreach ($meanings as $dm) {
 				$dataset=$dm->getDataset();
@@ -190,7 +190,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		}
 		$cmtitle=Title::newFromText("Special:ConceptMapping");
 		$titleText=$wgTitle->getPrefixedURL();
-		$cmlink=$sk->makeLinkObj($cmtitle,"<small>".wfMsg("add_concept_link")."</small>","set_$dc=$titleText&suppressWarnings=true");
+		$cmlink=$sk->makeLinkObj($cmtitle,"<small>".wfMsg("add_concept_link")."</small>","set_$dc=$dmId&suppressWarnings=true");
 		$html.="<tr><td>$cmlink</td></tr>\n";
 		$html.="<tr><td>".$this->getCopyPanel()."<td><tr>";
 		$html.="</table>\n";
