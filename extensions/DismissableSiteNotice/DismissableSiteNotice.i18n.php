@@ -131,7 +131,7 @@ $wgDismissableSiteNoticeMessages['zh-hant'] = array(
 );
 $wgDismissableSiteNoticeMessages['zh-cn'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
-$wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-hnas'];
+$wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
 $wgDismissableSiteNoticeMessages['zh-yue'] = $wgDismissableSiteNoticeMessages['yue'];
 
