@@ -52,10 +52,25 @@ function getSelect($name, $options, $selectedValue="", $onChangeHandler="") {
 	return $result . '</select>';
 }
 
-function getSuggest($name, $query, $parameters = array(), $value=0, $label='', $displayLabelColumns = array(0)) {
+/**
+ *
+ * Returns HTML for an autocompleted form field.
+ *
+ * @param String unique identifier for this form field
+ * @param String type of query to run
+ * @param Integer Default value
+ * @param String How default value will be shown
+ * @param Array Override column titles
+ * @param DataSet Override standard dataset
+ *
+*/
+function getSuggest($name, $query, $parameters = array(), $value=0, $label='', $displayLabelColumns = array(0), DataSet $dc=null) {
 	global
 		$wgScriptPath;
 
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+	}
 	if ($label == "")
 		$label = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 	
@@ -64,7 +79,8 @@ function getSuggest($name, $query, $parameters = array(), $value=0, $label='', $
 			'<input type="hidden" id="'. $name .'-suggest-query" value="'. $query .'"/>' .
 			'<input type="hidden" id="'. $name .'-suggest-offset" value="0"/>' .
 			'<input type="hidden" id="'. $name .'-suggest-label-columns" value="'. implode(', ', $displayLabelColumns) .'"/>' .
-			'<input type="hidden" id="'. $name .'" name="'. $name .'" value="'. $value .'"/>';
+			'<input type="hidden" id="'. $name .'" name="'. $name .'" value="'. $value .'"/>' .
+			'<input type="hidden" id="'.$name.'-suggest-dataset" value="'.$dc.'"/>';
 
 	foreach ($parameters as $parameter => $parameterValue)
 		$result .= 

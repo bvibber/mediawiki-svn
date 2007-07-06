@@ -38,13 +38,13 @@ function leftTrim(sString) {
 
 
 
-function updateSuggestions(suggestPrefix, dataSetOverride) {
+function updateSuggestions(suggestPrefix) {
 	var http = getHTTPObject();
 	var table = document.getElementById(suggestPrefix + "table");
 	var suggestQuery = document.getElementById(suggestPrefix + "query").value;
 	var suggestOffset = document.getElementById(suggestPrefix + "offset").value;
-	var currentDataSet = dataset;
-	
+	var dataSet = document.getElementById(suggestPrefix + "dataset").value;	
+
 	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
 
@@ -63,7 +63,7 @@ function updateSuggestions(suggestPrefix, dataSetOverride) {
 		'&prefix=' + encodeURI(suggestPrefix) + 
 		'&query=' + encodeURI(suggestQuery) + 
 		'&offset=' + encodeURI(suggestOffset) + 
-		'&dataset='+currentDataSet;
+		'&dataset='+dataSet;
 
 	if((suggestAttributesLevel != null) && (suggestObjectId != null)) 
 		URL = 
@@ -190,11 +190,10 @@ function suggestCloseClicked(event, suggestClose) {
 	stopEventHandling(event);
 }
 
-function suggestNextClicked(event, suggestNext) {
+function suggestNextClicked(event, suggestNext, dataSetOverride) {
 	var suggestPrefix = getSuggestPrefix(suggestNext, 'next');
 	var suggestOffset = document.getElementById(suggestPrefix + 'offset');
 	suggestOffset.value = parseInt(suggestOffset.value) + 10;
-	updateSuggestions(suggestPrefix);
 	stopEventHandling(event);
 }
 
@@ -202,7 +201,6 @@ function suggestPreviousClicked(event, suggestPrevious) {
 	var suggestPrefix = getSuggestPrefix(suggestPrevious, 'previous');
 	var suggestOffset = document.getElementById(suggestPrefix + 'offset');
 	suggestOffset.value = Math.max(parseInt(suggestOffset.value) - 10, 0);
-	updateSuggestions(suggestPrefix);
 	stopEventHandling(event);
 }
 

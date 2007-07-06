@@ -48,7 +48,6 @@ function addWikidataHeader() {
 	global $wgOut,$wgScriptPath;
 	$dc=wdGetDataSetContext();
 	$wgOut->addScript("<script type='text/javascript' src='{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.js'></script>");
-	$wgOut->addScript("<script type='text/javascript'>var dataset='$dc';</script>");
 	$wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/suggest.css"));
 	$wgOut->addLink(array('rel'=>'stylesheet','type'=>'text/css','media'=>'screen, projection','href'=>"{$wgScriptPath}/extensions/Wikidata/OmegaWiki/tables.css"));                                                                                                                                                                    
 	return true;

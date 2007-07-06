@@ -33,8 +33,13 @@ function wfSpecialConceptMapping() {
 		}
 
 		function execute( $par ) {
-			global $wgOut, $wgRequest, $wgTitle, $wgUser;
+			global $wgOut, $wgRequest, $wgTitle, $wgUser, $wdTermDBDataSet;
 			$wgOut->setPageTitle("ConceptMapping");
+
+			if(!$wgUser->isAllowed('editwikidata-'.$wdTermDBDataSet)) {
+				$wgOut->addHTML("Permission denied.");
+				return false;
+			}
 			$action=$wgRequest->getText('action');
 			if(!$action) {
 				$this->ui();
@@ -74,9 +79,9 @@ function wfSpecialConceptMapping() {
 				if($rq[$set]) {
 					$dmModel=new DefinedMeaningModel($rq[$set],null,$setObject);
 					$defaultSel=$dmModel->getSyntransByLanguageCode($lang);
-					$options[$setObject->fetchName()]=getSuggest("set_$set", 'defined-meaning',array(), $rq[$set], $defaultSel);
+					$options[$setObject->fetchName()]=getSuggest("set_$set", 'defined-meaning',array(), $rq[$set], $defaultSel, array(0), $setObject);
 				} else {
-					$options[$setObject->fetchName()]=getSuggest("set_$set", 'defined-meaning');
+					$options[$setObject->fetchName()]=getSuggest("set_$set", 'defined-meaning', array(), null, null, array(0), $setObject);
 				}
 
 			}
