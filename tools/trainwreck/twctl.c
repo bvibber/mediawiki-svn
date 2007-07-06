@@ -25,6 +25,7 @@ static int rq_start(void);
 static int rq_shutdown(void);
 
 static char const *status_to_name(int);
+static char const *format_seconds(uint32_t nsecs);
 
 static int		door;
 static door_arg_t	args;
@@ -135,7 +136,7 @@ static int
 rq_status()
 {
 char		 rq = RQ_STATUS;
-uint32_t	 logpos;
+uint32_t	 logpos, logtime;
 char		*logname;
 int		 rstat;
 char		*wstats;
@@ -243,10 +244,16 @@ int		 nwstats, i, j;
 					continue;
 				}
 
-				loglen = uint2korr(args.rbuf + 4);
+				logtime = uint4korr(args.rbuf + 4);
+				loglen = uint2korr(args.rbuf + 8);
 				(void) printf("    log position: %.*s,%lu\n",
-					      loglen, args.rbuf + 6,
+					      loglen, args.rbuf + 10,
 					      (unsigned long) logpos);
+				if (logtime != 0) {
+				time_t	now = time(NULL);
+					(void) printf("    seconds behind master: %s\n",
+							format_seconds(now - logtime));
+				}
 				args.rbuf += 6 + loglen;
 				i++;
 			}
@@ -345,4 +352,32 @@ status_to_name(st)
 	default:
 		return "unknown";
 	}
+}
+
+static char const *
+format_seconds(t)
+	uint32_t t;
+{
+static char	buf[512], *p = buf;
+int		weeks, days, hours, minutes, seconds;
+	weeks = t / (60 * 60 * 24 * 7);
+	t %= (60 * 60 * 24 * 7);
+	days = t / (60 * 60 * 24);
+	t %= (60 * 60 * 24);
+	hours = t / (60 * 60);
+	t %= (60 * 60);
+	minutes = t / 60;
+	t %= 60;
+	seconds = t;
+
+	if (weeks)
+		p += sprintf(p, " %dw", weeks);
+	if (days)
+		p += sprintf(p, " %dd", days);
+	if (hours)
+		p += sprintf(p, " %dh", hours);
+	if (minutes)
+		p += sprintf(p, " %dm", minutes);
+	sprintf(p, " %ds", seconds);
+	return buf + 1;
 }

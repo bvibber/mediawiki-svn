@@ -141,6 +141,7 @@ typedef struct writer {
 	pthread_t	 wr_thread;
 	logpos_t	 wr_last_executed_pos;
 	char		*wr_last_executed_file;
+	uint32_t	 wr_last_executed_time;
 	le_queue_t 	 wr_log_queue;
 	MYSQL		*wr_conn;
 	int		 wr_rstat;
@@ -875,6 +876,7 @@ char		 namebuf[16];
 				self->wr_num, e->le_database);
 
 		self->wr_status = ST_EXECUTING;
+		self->wr_last_executed_time = e->le_time;
 		if (mysql_select_db(self->wr_conn, e->le_database) != 0) {
 			logmsg("%s,%lu: cannot select \"%s\": %s",
 				e->le_file, (unsigned long) e->le_pos,
@@ -1148,7 +1150,7 @@ int	 i;
 	case RQ_WRITER_POSITION:
 		pthread_mutex_lock(&wst_mtx);
 		offs = 2;
-		st = alloca(1 + (6 + BINLOG_NAMELEN) * nwriters);
+		st = alloca(1 + (10 + BINLOG_NAMELEN) * nwriters);
 		st[0] = RR_OK;
 		st[1] = nwriters;
 
@@ -1161,9 +1163,10 @@ int	 i;
 
 			blen = strlen(writers[i].wr_last_executed_file);
 			int4store(st + offs, writers[i].wr_last_executed_pos);
-			int2store(st + offs + 4, (uint16_t) blen);
-			memcpy(st + offs + 6, writers[i].wr_last_executed_file, blen);
-			offs += 6 + blen;
+			int4store(st + offs + 4, (uint32_t) writers[i].wr_last_executed_time);
+			int2store(st + offs + 8, (uint16_t) blen);
+			memcpy(st + offs + 10, writers[i].wr_last_executed_file, blen);
+			offs += 10 + blen;
 		}
 
 		pthread_mutex_unlock(&wst_mtx);
