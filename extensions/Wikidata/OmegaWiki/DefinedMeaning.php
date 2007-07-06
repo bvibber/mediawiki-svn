@@ -21,6 +21,11 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		}
 		$definedMeaningModel = new DefinedMeaningModel($dmInfo["id"]);
 
+		$copyTo=$wgRequest->getText('CopyTo');
+		if ($copyTo) {
+			$definedMeaningModel->copyTo($copyTo);
+		}
+
 		if(!empty($dmInfo["expression"]))
 		  $definedMeaningModel->setDefiningExpression($dmInfo["expression"]);
 
@@ -187,9 +192,29 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$titleText=$wgTitle->getPrefixedURL();
 		$cmlink=$sk->makeLinkObj($cmtitle,"<small>".wfMsg("add_concept_link")."</small>","set_$dc=$titleText&suppressWarnings=true");
 		$html.="<tr><td>$cmlink</td></tr>\n";
+		$html.="<tr><td>".$this->getCopyPanel()."<td><tr>";
 		$html.="</table>\n";
 		$html.="</div>\n";
 		return $html;
 	}
+	
+	/** 
+	 * @returns user interface html for copying Defined Meanings between
+		datasets
+	 */
+	protected function getCopyPanel() {
+
+		# mostly same code as in SpecialAddCollection... possibly might 
+		# make a nice separate function 
+		$datasets=wdGetDatasets();
+		$datasetarray['']=wfMsg('ow_none_selected');
+		foreach($datasets as $datasetid=>$dataset) {
+			$datasetarray[$datasetid]=$dataset->fetchName();
+		}
+		$html= getOptionPanel( array (
+			'Copy to' => getSelect('CopyTo', $datasetarray)
+		));
+		return $html;
+	}	
 }
 

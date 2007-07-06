@@ -297,7 +297,8 @@ class DefinedMeaningModel {
 	 * @returns 	defined meaning id in the new dataset
 	 */
 	public function copyTo($dataset) {
-		$definedMeaningID=$this->getDefinedMeaningID();
+		#$definedMeaningID=$this->getId();
+		echo "copy to:$dataset   ";
 		#$from_dc=$this->getDataset();
 		$to_dc=$dataset;
 		# TODO We should actually thoroughly check that everything
