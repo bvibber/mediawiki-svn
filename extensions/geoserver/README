@@ -1,0 +1,2 @@
+This is a module that updates a geoserver (http://www.geoserver.org/) using
+WFS-T transactions.
