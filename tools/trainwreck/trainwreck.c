@@ -92,6 +92,7 @@ static pthread_t master_thread;
 
 static char *binlog_file;
 static int64_t binlog_pos = 4;
+static int max_buffer = 0;
 
 regex_t *db_regex;
 
@@ -128,6 +129,7 @@ typedef struct le_queue {
 	pthread_mutex_t		lq_mtx;
 	pthread_cond_t		lq_cond;
 	struct lqhead		lq_head;
+	int			lq_entries;
 } le_queue_t;
 
 static void lq_init(le_queue_t *);
@@ -329,6 +331,8 @@ char	 line[1024];
 			do_ignore_errno(atoi(value));
 		} else if (!strcmp(opt, "nwriters")) {
 			nwriters = atoi(value);
+		} else if (!strcmp(opt, "max-buffer")) {
+			max_buffer = atoi(value);
 		} else if (!strcmp(opt, "only-replicate")) {
 		int	err;
 			db_regex = calloc(1, sizeof(*db_regex));
@@ -736,6 +740,7 @@ lq_init(q)
 	le_queue_t *q;
 {
 	TAILQ_INIT(&q->lq_head);
+	q->lq_entries = 0;
 }
 
 static void
@@ -745,9 +750,17 @@ lq_put(q, e)
 {
 lq_entry_t	*entry;
 	pthread_mutex_lock(&q->lq_mtx);
+	while (q->lq_entries >= max_buffer) {
+		logmsg("queue is full, sleeping...");
+		pthread_mutex_unlock(&q->lq_mtx);
+		sleep(5);
+		pthread_mutex_lock(&q->lq_mtx);
+	}
+
 	entry = calloc(1, sizeof(lq_entry_t));
 	entry->lqe_item = e;
 	TAILQ_INSERT_TAIL(&q->lq_head, entry, lqe_q);
+	q->lq_entries++;
 	pthread_cond_signal(&q->lq_cond);
 	pthread_mutex_unlock(&q->lq_mtx);
 }
@@ -785,6 +798,7 @@ logentry_t	*ent;
 
 	qe = TAILQ_FIRST(&q->lq_head);
 	TAILQ_REMOVE(&q->lq_head, qe, lqe_q);
+	q->lq_entries--;
 
 	pthread_mutex_unlock(&q->lq_mtx);
 
@@ -891,6 +905,7 @@ char		 namebuf[16];
 			}
 			executed_up_to(self, e->le_file, e->le_pos);
 		}
+		free_log_entry(e);
 		self->wr_status = ST_WAIT_FOR_ENTRY;
 	}
 	return NULL;
