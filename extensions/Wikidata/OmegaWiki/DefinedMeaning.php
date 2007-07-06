@@ -19,7 +19,8 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$wgOut->showErrorPage('errorpagetitle','ow_dm_badtitle');
 			return false;
 		}
-		$definedMeaningModel = new DefinedMeaningModel($dmInfo["id"]);
+		parent::view();
+		$definedMeaningModel = new DefinedMeaningModel($dmInfo["id"], $this->viewInformation);
 
 		$copyTo=$wgRequest->getText('CopyTo');
 		if ($copyTo) {
@@ -40,7 +41,6 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		$definedMeaningModel->loadRecord();
 		$this->showDataSetPanel=false;
-		parent::view();
 
 		# Raw mode
 		$view_as=$wgRequest->getText('view_as');
