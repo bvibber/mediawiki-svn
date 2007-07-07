@@ -92,13 +92,56 @@ $wgSourceAttributeName = "Source";
 $wgSourceIdentifierAttributeName = "Source identifier";
 $wgTextAttributeAttributeName = "Property";
 $wgTextAttributeName = "Text";
-$wgTextAttributeValuesAttributeName = "Plain texts";
+$wgTextAttributeValuesAttributeName = "String properties";
 $wgTranslatedTextAttributeAttributeName = "Property";
 $wgTranslatedTextAttributeName = "Translated text";
 $wgTranslatedTextAttributeValueAttributeName = "Text";
-$wgTranslatedTextAttributeValuesAttributeName = "Translatable texts";
+$wgTranslatedTextAttributeValuesAttributeName = "Text properties";
 $wgUrlAttributeAttributeName = "Property";
 $wgUrlAttributeValuesAttributeName = "URLs";
+
+// Attribute Ids
+
+global
+	$wgAlternativeDefinitionsAttributeId,
+	$wgClassAttributesAttributeId,
+	$wgClassMembershipAttributeId,
+	$wgCollectionMembershipAttributeId,
+	$wgDefinedMeaningAttributesAttributeId,
+	$wgDefinitionAttributeId,
+	$wgIncomingRelationsAttributeId,
+	$wgPossiblySynonymousAttributeId,
+	$wgRelationsAttributeId, 
+	$wgSynonymsAndTranslationsAttributeId;
+	
+$wgAlternativeDefinitionsAttributeId = "alternative-definitions";
+$wgClassAttributesAttributeId = "class-attributes";
+$wgClassMembershipAttributeId = "class-membership";
+$wgCollectionMembershipAttributeId = "collection-membership";
+$wgDefinedMeaningAttributesAttributeId = "defined-meaning-attributes";
+$wgDefinitionAttributeId = "definition";
+$wgIncomingRelationsAttributeId = "reciprocal-relations";
+$wgPossiblySynonymousAttributeId = "possibly-synonymous";
+$wgRelationsAttributeId = "relations"; 
+$wgSynonymsAndTranslationsAttributeId = "synonyms-translations";
+
+// Defined meaning editor
+
+global
+	$wgDefinedMeaningAttributesOrder;
+	
+$wgDefinedMeaningAttributesOrder = array(
+	$wgDefinitionAttributeId,
+	$wgClassAttributesAttributeId,
+	$wgAlternativeDefinitionsAttributeId,
+	$wgSynonymsAndTranslationsAttributeId,
+	$wgPossiblySynonymousAttributeId,
+	$wgRelationsAttributeId, 
+	$wgIncomingRelationsAttributeId,
+	$wgClassMembershipAttributeId,
+	$wgCollectionMembershipAttributeId,
+	$wgDefinedMeaningAttributesAttributeId
+);
 
 // Go to source templates
 
@@ -148,3 +191,4 @@ global
  * 
  */	
 $wgPropertyToColumnFilters = array(); 
+?>
