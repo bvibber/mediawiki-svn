@@ -1557,6 +1557,8 @@ $wgMediaHandlers = array(
 	'image/x-ms-bmp' => 'BmpHandler',
 	'image/svg+xml' => 'SvgHandler',
 	'image/vnd.djvu' => 'DjVuHandler',
+	MEDIATYPE_VIDEO => 'VideoHandler',
+	MEDIATYPE_AUDIO => 'AudioHandler'
 );
 
 
@@ -1646,6 +1648,18 @@ $wgGenerateThumbnailOnParse = true;
 /** Obsolete, always true, kept for compatibility with extensions */
 $wgUseImageResize		= true;
 
+/**
+ * Available bitrates at which audio uploads should be streamable.
+ * Leave empty to skip making ogg vorbis recodes of audio uploads.
+ */
+ $wgAudioRecoding = array();
+
+/**
+* Available widths in pixels for streamable video, and associated bitrates.
+* Index is integer pixel width, value is integer bitrate.
+* Leave empty to skip making ogg theora recodes of video uploads.
+*/
+ $wgVideoRecoding = array(320 => 500);
 
 /** Set $wgCommandLineMode if it's not set already, to avoid notices */
 if( !isset( $wgCommandLineMode ) ) {

@@ -105,7 +105,36 @@ function wfRunHooks($event, $args = null) {
 		} elseif ( false !== ( $pos = strpos( $func, '::' ) ) ) {
 			$callback = array( substr( $func, 0, $pos ), substr( $func, $pos + 2 ) );
 		} else {
-			$callback = $func;
+			if(function_exists($func))
+			{
+				$callback = $func;
+			} else {
+				//see if it's really a class (without a static method specified)
+				//I will document this feature if there aren't objections to it
+				if(class_exists($func, true))
+				{
+					//see if it has an on[Event] method
+					if(in_array("on$event", get_class_methods($func)))
+					{
+						//see if it's static & callable
+						$method = new ReflectionMethod($func, "on$event");
+						if($method->isStatic() && $method->isPublic())
+						{
+							$callback = array($func, "on$event");
+						} else {
+							throw new MWException("Method on$event in class $func must be public and static to be used in hooks for $event\n");
+						}
+					} else {
+						throw new MWException("$func is a class, not a function in hooks for $event. Define $func::on$event or see docs/hooks.txt for more usage information.");
+					}
+				} else {
+					/*past behavior was to try to call it anyway...slightly 
+					* worried throwing an exception instead might break
+					* something
+					*/
+					throw new MWException("No function or class \"$func\" in hooks for $event.");
+				}
+			}
 		}
 
 		/* Call the hook. */
@@ -126,4 +155,5 @@ function wfRunHooks($event, $args = null) {
 
 	return true;
 }
+
 ?>

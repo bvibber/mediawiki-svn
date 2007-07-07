@@ -63,7 +63,8 @@ abstract class Job {
 
 		if ($affected == 0) {
 			wfProfileOut( __METHOD__ );
-			return false;
+			//but there may still be other jobs of $type we can claim...
+			return self::pop_type($type);
 		}
 
 		$namespace = $row->job_namespace;
@@ -180,6 +181,12 @@ abstract class Job {
 				return new EmaillingJob($params);
 			case 'enotifNotify':
 				return new EnotifNotifyJob($title, $params);
+			case 'AudioRecode': case 'VideoRecode':
+				$class = $command . 'Job';
+				if(class_exists($class, true))
+				{
+					return new $class($title, $params, $id);
+				}
 			default:
 				throw new MWException( "Invalid job command \"$command\"" );
 		}

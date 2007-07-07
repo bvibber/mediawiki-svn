@@ -214,9 +214,11 @@ the hooks related to a particular event, like so:
 		# ...
 		function protect() {
 			global $wgUser;
-			if (wfRunHooks('ArticleProtect', array(&$this, &$wgUser))) {
+			if (wfRunHooks('ArticleProtect', array(&$this, 
+			&$wgUser))) {
 				# protect the article
-				wfRunHooks('ArticleProtectComplete', array(&$this, &$wgUser));
+				wfRunHooks('ArticleProtectComplete', 
+				array(&$this, &$wgUser));
 			}
 		}
 	}
@@ -304,7 +306,8 @@ $title: Title corresponding to the article restored
 $create: Whether or not the restoration caused the page to be created
 (i.e. it didn't exist before)
 
-'ArticleViewHeader': Before the parser cache is about to be tried for article viewing.
+'ArticleViewHeader': Before the parser cache is about to be tried for article 
+viewing.
 &$pcache: whether to try the parser cache or not
 &$outputDone: whether the output for this page finished or not
 
@@ -372,7 +375,8 @@ $newRev: Revision object of the "new" revision
 saved, that is before insertNewArticle() is called
 &$editpage_Obj: the current EditPage object
 
-'EditFormPreloadText': Allows population of the edit form when creating new pages
+'EditFormPreloadText': Allows population of the edit form when creating new 
+pages
 &$text: Text to preload with
 &$title: Title object representing the page being created
 
@@ -387,9 +391,12 @@ $text: Contents of the edit box
 $section: Section being edited
 &$error: Error message to return
 
-Return false to halt editing; you'll need to handle error messages, etc. yourself.
-Alternatively, modifying $error and returning true will cause the contents of $error
-to be echoed at the top of the edit form as wikitext. Return true without altering
+Return false to halt editing; you'll need to handle error messages, etc. 
+yourself.
+Alternatively, modifying $error and returning true will cause the contents of 
+$error
+to be echoed at the top of the edit form as wikitext. Return true without 
+altering
 $error to allow the edit to proceed.
 
 'EditSectionLink': Override the return value of Linker::editSectionLink()
@@ -399,7 +406,8 @@ $section: Section to link to
 $link: Default link
 $result: Result (alter this to override the generated links)
 
-'EditSectionLinkForOther': Override the return value of Linker::editSectionLinkForOther()
+'EditSectionLinkForOther': Override the return value of 
+Linker::editSectionLinkForOther()
 $skin: Skin rendering the UI
 $title: Title being linked to
 $section: Section to link to
@@ -425,10 +433,12 @@ $from: address of sending user
 $subject: subject of the mail
 $text: text of the mail
 
-'FetchChangesList': When fetching the ChangesList derivative for a particular user
+'FetchChangesList': When fetching the ChangesList derivative for a particular 
+user
 &$user: User the list is being fetched for
 &$skin: Skin object to be used with the list
-&$list: List object (defaults to NULL, change it to an object instance and return
+&$list: List object (defaults to NULL, change it to an object instance and 
+return
 false override the list derivative used)
 
 'FileUpload': When a file upload occurs
@@ -449,21 +459,26 @@ $title: Title object of page
 $url: string value as output (out parameter, can modify)
 $query: query options passed to Title::getFullURL()
 
-'ImageOpenShowImageInlineBefore': Call potential extension just before showing the image on an image page
+'ImageOpenShowImageInlineBefore': Call potential extension just before showing 
+the image on an image page
 $imagePage: ImagePage object ($this)
 $output: $wgOut
 
-'InternalParseBeforeLinks': during Parser's internalParse method before links but
+'InternalParseBeforeLinks': during Parser's internalParse method before links 
+but
 after noinclude/includeonly/onlyinclude and other processing.
 &$this: Parser object
 &$text: string containing partially parsed text
 &$this->mStripState: Parser's internal StripState object
 
-'LoginAuthenticateAudit': a login attempt for a valid user account either succeeded or failed.
-                          No return data is accepted; this hook is for auditing only.
+'LoginAuthenticateAudit': a login attempt for a valid user account either 
+succeeded or failed.
+                          No return data is accepted; this hook is for auditing 
+			  only.
 $user: the User object being authenticated against
 $password: the password being submitted and found wanting
-$retval: a LoginForm class constant with authenticateUserData() return value (SUCCESS, WRONG_PASS, etc)
+$retval: a LoginForm class constant with authenticateUserData() return value 
+(SUCCESS, WRONG_PASS, etc)
 
 'LogPageValidTypes': action being logged. DEPRECATED: Use $wgLogTypes
 &$type: array of strings
@@ -471,10 +486,12 @@ $retval: a LoginForm class constant with authenticateUserData() return value (SU
 'LogPageLogName': name of the logging page(s). DEPRECATED: Use $wgLogNames
 &$typeText: array of strings
 
-'LogPageLogHeader': strings used by wfMsg as a header. DEPRECATED: Use $wgLogHeaders
+'LogPageLogHeader': strings used by wfMsg as a header. DEPRECATED: Use 
+$wgLogHeaders
 &$headerText: array of strings
 
-'LogPageActionText': strings used by wfMsg as a header. DEPRECATED: Use $wgLogActions
+'LogPageActionText': strings used by wfMsg as a header. DEPRECATED: Use 
+$wgLogActions
 &$actionText: array of strings
 
 'MarkPatrolled': before an edit is marked patrolled
@@ -493,6 +510,10 @@ $wcOnlySysopsCanPatrol: config setting indicating whether the user
 $mathRenderer: instance of MathRenderer
 $errmsg: error message, in HTML (string). Nonempty indicates failure
  of rendering the formula
+
+'MimeMagicRegisterPlugins': Tell the MIME detection module to consider a 
+plugin for more accurate identification of particular MIME type(s).
+This hook should do nothing more than instantiate MimePlugin(s).
 
 'OutputPageBeforeHTML': a page has been processed by the parser and
 the resulting HTML is about to be displayed.  
@@ -529,7 +550,8 @@ $action : Action being performed
 Change $result and return false to give a definitive answer, otherwise
 the built-in rate limiting checks are used, if enabled.
 
-'PreferencesUserInformationPanel': Add HTML bits to user information list in preferences form
+'PreferencesUserInformationPanel': Add HTML bits to user information list in 
+preferences form
 $form : PreferencesForm object
 &$html : HTML to append to
 
@@ -552,7 +574,8 @@ or change the value of $siteNotice and return false to alter it.
 &$siteNotice: HTML sitenotice
 Alter the contents of $siteNotice to add to/alter the sitenotice/anonnotice.
 
-'SkinTemplateOutputPageBeforeExec': Before SkinTemplate::outputPage() starts page output
+'SkinTemplateOutputPageBeforeExec': Before SkinTemplate::outputPage() starts 
+page output
 &$sktemplate: SkinTemplate object
 &$tpl: Template engine object
 
@@ -643,7 +666,9 @@ $catpage: CategoryPage instance
 'SkinTemplateContentActions': after building the $content_action array right
                               before returning it, see Content_action.php in
                               the extensions/examples/ directory
-                              ( http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/examples/ )
+                              ( 
+			      http://svn.wikimedia.org/viewvc/mediawiki/trunk/ex
+			      tensions/examples/ )
                               for a demonstration of how to use this hook.
 $content_actions: The array of content actions
 

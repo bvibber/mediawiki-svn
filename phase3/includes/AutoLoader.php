@@ -266,12 +266,20 @@ function __autoload($className) {
 		'UnregisteredLocalFile' => 'includes/filerepo/UnregisteredLocalFile.php',
 
 		# Media
+		'AudioHandler' => 'includes/media/AV.php',
+		'AudioUploadHandler' => 'includes/media/AV.php',
 		'BitmapHandler' => 'includes/media/Bitmap.php',
 		'BmpHandler' => 'includes/media/BMP.php',
 		'DjVuHandler' => 'includes/media/DjVu.php',
 		'MediaHandler' => 'includes/media/Generic.php',
 		'ImageHandler' => 'includes/media/Generic.php',
 		'SvgHandler' => 'includes/media/SVG.php',
+		'VideoHandler' => 'includes/media/AV.php',
+		'VideoUploadHandler' => 'includes/media/AV.php',
+
+		# MIME plugins
+		'AVMimePlugin' => 'includes/media/AV.php',
+		'MimePlugin' => 'includes/media/MimePlugin.php',
 
 		# Normal
 		'UtfNormal' => 'includes/normal/UtfNormal.php',

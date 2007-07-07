@@ -4,7 +4,6 @@
  * @addtogroup SpecialPage
  */
 
-
 /**
  * Entry point
  */
@@ -262,6 +261,14 @@ class UploadForm {
 	function processUpload() {
 		global $wgUser, $wgOut;
 
+		/*
+		* Add audio and video checking. Probably there is a better place to put
+		* these.
+		*/
+		global $wgHooks;
+		$wgHooks['UploadVerification'][] = new AudioUploadHandler;
+		$wgHooks['UploadVerification'][] = new VideoUploadHandler;
+
 		if( !wfRunHooks( 'UploadForm:BeforeProcessing', array( &$this ) ) )
 		{
 			wfDebug( "Hook 'UploadForm:BeforeProcessing' broke processing the file." );
@@ -372,7 +379,7 @@ class UploadForm {
 			 */
 			$error = '';
 			if( !wfRunHooks( 'UploadVerification',
-					array( $this->mDestName, $this->mTempPath, &$error ) ) ) {
+					array( $this->mDestName, $this->mTempPath, &$error, $finalExt ) ) ) {
 				return $this->uploadError( $error );
 			}
 		}
@@ -383,6 +390,17 @@ class UploadForm {
 		 */
 		if ( ! $this->mIgnoreWarning ) {
 			$warning = '';
+
+			/* if upload hooks wrote to $error, report as warning.
+			* This isn't perfect in that if multiple UploadVerification hooks 
+			* made warnings, only the last one will show. As if that's really
+			* ever going to happen. Easy fix is to have the hooks append to an
+			* array instead.
+			*/
+			if(strlen($error))
+			{
+				$warning .= "<li>$error</li>";
+			}
 
 			global $wgCapitalLinks;
 			if( $wgCapitalLinks ) {
@@ -920,7 +938,6 @@ EOT
 		#magically determine mime type
 		$magic=& MimeMagic::singleton();
 		$mime= $magic->guessMimeType($tmpfile,false);
-
 		#check mime type, if desired
 		global $wgVerifyMimeType;
 		if ($wgVerifyMimeType) {
