@@ -665,6 +665,8 @@ Bitte versuchen Sie es erneut. Sollte das Problem bestehen bleiben, loggen Sie s
 ''Da in diesem Wiki reines HTML aktiviert ist, wurde die Vorschau ausgeblendet um JavaScript Attacken vorzubeugen.''
 
 <strong>Bitte versuchen Sie es erneut. Sollte das Problem bestehen bleiben, melden Sie sich kurz ab und wieder an.</strong>",
+'token_suffix_mismatch'     => '<strong>Ihre Bearbeitung wurde zurückgewiesen, da Ihr Browser Zeichen im Bearbeiten-Token verstümmelt hat.
+Eine Speicherung kann den Seiteninhalt zerstören. Dies geschieht bisweilen durch die Benutzung eines fehlerhaft arbeitenden, anonymen Proxy-Dienstes.</strong>',
 'importing'                 => 'importiere $1',
 'editing'                   => 'Bearbeiten von $1',
 'editinguser'               => 'Bearbeiten von Benutzer <b>$1</b>',
@@ -902,20 +904,19 @@ Wenn Sie sich mit dem Thema auskennen, können Sie selbst die Seite „[[$1]]“
 'files'                    => 'Dateien',
 
 # User rights
-'userrights-lookup-user'     => 'Verwalte Gruppenzugehörigkeit',
-'userrights-user-editname'   => 'Benutzername:',
-'editusergroup'              => 'Benutzerrechte bearbeiten',
-'userrights-editusergroup'   => 'Bearbeite Gruppenzugehörigkeit des Benutzers',
-'saveusergroups'             => 'Gruppenzugehörigkeiten speichern',
-'userrights-groupsmember'    => 'Mitglied von:',
-'userrights-groupsavailable' => 'Verfügbare Gruppen:',
-'userrights-groupshelp'      => "Wählen Sie die Gruppen, aus denen der Benutzer entfernt oder zu denen er hinzugefügt werden soll.
+'userrights-lookup-user'      => 'Verwalte Gruppenzugehörigkeit',
+'userrights-user-editname'    => 'Benutzername:',
+'editusergroup'               => 'Benutzerrechte bearbeiten',
+'userrights-editusergroup'    => 'Bearbeite Gruppenzugehörigkeit des Benutzers',
+'saveusergroups'              => 'Gruppenzugehörigkeit speichern',
+'userrights-groupsmember'     => 'Mitglied von:',
+'userrights-groupsavailable'  => 'Verfügbare Gruppen:',
+'userrights-groupshelp'       => "Wählen Sie die Gruppen, aus denen der Benutzer entfernt oder zu denen er hinzugefügt werden soll.
 Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit '''Strg + Linksklick''' (bzw. Ctrl + Linksklick) entfernt werden.",
-'userrights-reason'          => 'Grund:',
-'userrights-list'            => 'Sie sind ein Mitglied der $1 und dürfen Berechtigungen für $2 hinzufügen und für $3 entfernen.',
-'userrights-list-nogroups'   => 'keine Gruppe',
-'userrights-list-groups'     => '{{PLURAL:$1|Gruppe|Gruppen}} $2',
-'userrights-list-separator'  => ', ',
+'userrights-reason'           => 'Grund:',
+'userrights-available-none'   => 'Sie dürfen keine Benutzerrechte verändern.',
+'userrights-available-add'    => 'Sie dürfen Benutzer den Grupppen $1 hinzufügen.',
+'userrights-available-remove' => 'Sie dürfen Benutzer aus den Grupppen $1 entfernen.',
 
 # Groups
 'group'            => 'Gruppe:',
@@ -1083,7 +1084,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[</nowi
 'deleteimg'                 => 'Löschen',
 'deleteimgcompletely'       => 'Alle Versionen dieser Datei löschen',
 'imghistlegend'             => 'Legende: (Aktuell) = Dies ist die aktuelle Datei, (Löschen) = lösche diese alte Version, (Zurücksetzen) = verwende wieder diese alte Version.',
-'imagelinks'                => 'Dateilinks',
+'imagelinks'                => 'Verwendung',
 'linkstoimage'              => 'Die folgenden Seiten benutzen diese Datei:',
 'nolinkstoimage'            => 'Keine Seite benutzt diese Datei.',
 'sharedupload'              => 'Diese Datei ist ein gemeinsam genutzter Upload und kann von anderen Projekten verwendet werden.',
@@ -1307,10 +1308,6 @@ Davon {{PLURAL:$2|hat|haben}} '''$2''' (=$4%) $5-Rechte.",
 'nowatchlist'          => 'Sie haben keine Einträge auf Ihrer Beobachtungsliste.',
 'watchlistanontext'    => 'Sie müssen sich $1, um Ihre Beobachtungsliste zu sehen oder Einträge auf ihr zu bearbeiten.',
 'watchlistcount'       => "'''Sie haben $1 {{PLURAL:$1|Eintrag|Einträge}} auf Ihrer Beobachtungsliste (inkl. Diskussionsseiten).'''",
-'clearwatchlist'       => 'Beobachtungsliste löschen',
-'watchlistcleartext'   => 'Sind Sie sicher, dass Sie diese vollständig löschen wollen?',
-'watchlistclearbutton' => 'Beobachtungsliste löschen',
-'watchlistcleardone'   => 'Ihre Beobachtungsliste wurde gelöscht. {{PLURAL:$1|Ein Eintrag wurde|$1 Einträge wurden}} entfernt.',
 'watchnologin'         => 'Sie sind nicht angemeldet',
 'watchnologintext'     => 'Sie müssen [[Special:Userlogin|angemeldet]]
 sein, um Ihre Beobachtungsliste zu bearbeiten.',
@@ -1334,11 +1331,7 @@ Wenn Sie die Seite wieder von Ihrer Beobachtungsliste entfernen möchten, klicke
 'wlheader-showupdated' => "Seiten mit noch nicht gesehenen Änderungen werden '''fett''' dargestellt.<br />",
 'watchmethod-recent'   => 'Überprüfen der letzten Bearbeitungen für die Beobachtungsliste',
 'watchmethod-list'     => 'Überprüfen der Beobachtungsliste nach letzten Bearbeitungen',
-'removechecked'        => 'Markierte Einträge löschen',
 'watchlistcontains'    => 'Ihre Beobachtungsliste enthält $1 {{PLURAL:$1|Seite|Seiten}}.',
-'watcheditlist'        => 'Dies ist eine alphabetische und nach Namensräumen gruppierte Liste aller von Ihnen beobachteten Seiten. Wenn Sie Einträge von der Beobachtungsliste wieder entfernen möchten, markieren Sie diese und klicken auf die Schaltfläche „Markierte Einträge löschen“ am Ende dieser Seite.',
-'removingchecked'      => 'Die ausgewählten Einträge werden aus der Beobachtungsliste entfernt...',
-'couldntremove'        => 'Der Eintrag „$1“ kann nicht gelöscht werden.',
 'iteminvalidname'      => 'Problem mit dem Eintrag „$1“, ungültiger Name.',
 'wlnote'               => "Es {{PLURAL:$1|folgt die letzte Änderung|folgen die letzten '''$1''' Änderungen}} der letzten {{PLURAL:$2|Stunde|'''$2''' Stunden}}.",
 'wlshowlast'           => 'Zeige die Änderungen der letzten $1 Stunden, $2 Tage oder $3 (in den letzten 30 Tagen).',
@@ -1349,7 +1342,6 @@ Wenn Sie die Seite wieder von Ihrer Beobachtungsliste entfernen möchten, klicke
 'watchlist-hide-own'   => 'eigene Änderungen ausblenden',
 'watchlist-show-minor' => 'kleine Änderungen einblenden',
 'watchlist-hide-minor' => 'kleine Änderungen ausblenden',
-'wldone'               => 'Erfolgreich ausgeführt.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'Beobachten …',
@@ -1658,7 +1650,7 @@ In diesen Fällen müssen Sie, falls gewünscht, den Inhalt der Seite von Hand v
 'move-watch'              => 'Diese Seite beobachten',
 'movepagebtn'             => 'Seite verschieben',
 'pagemovedsub'            => 'Verschiebung erfolgreich',
-'pagemovedtext'           => 'Seite „[[$1]]“ wurde nach „[[$2]]“ verschoben.',
+'movepage-moved'          => "<big>'''Die Seite „$1“ wurde nach „$2“ verschoben.'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message
 'articleexists'           => 'Unter diesem Namen existiert bereits eine Seite.
 Bitte wählen Sie einen anderen Namen.',
 'talkexists'              => 'Die Seite selbst wurde erfolgreich verschoben, aber die zugehörige Diskussions-Seite nicht, da bereits eine mit dem neuen Titel existiert. Bitte gleichen Sie die Inhalte von Hand ab.',
@@ -2292,6 +2284,31 @@ Bitte bestätigen Sie, dass Sie diese Seite wirklich neu erstellen möchten.",
 'lag-warn-normal' => 'Bearbeitungen der letzten $1 Sekunden werden in dieser Liste noch nicht angezeigt.',
 'lag-warn-high'   => 'Auf Grund hoher Datenbankauslastung werden die Bearbeitungen der letzten $1 Sekunden in dieser Liste noch nicht angezeigt.',
 
-);
+# Watchlist editor
+'watchlistedit-numitems'       => 'Ihre Beobachtungsliste enthält {{PLURAL:$1|1 Eintrag |$1 Einträge}}, Diskussionsseiten werden nicht gezählt.',
+'watchlistedit-noitems'        => 'Ihre Beobachtungsliste ist leer.',
+'watchlistedit-clear-title'    => 'Beobachtungsliste löschen',
+'watchlistedit-clear-legend'   => 'Beobachtungsliste löschen',
+'watchlistedit-clear-confirm'  => 'Hiermit löschen Sie alle Einträge von Ihrer Beobachtungsliste. Sind Sie sicher?
+	Sie können die Beobachtungsliste auch [[Special:Watchlist/edit|im Listenformat bearbeiten]], um einzelne Bereiche individuell zu entfernen.',
+'watchlistedit-clear-submit'   => 'Beobachtungsliste löschen',
+'watchlistedit-clear-done'     => 'Ihre Beobachtungsliste wurde gelöscht. Alle Einträge wurden entfernt.',
+'watchlistedit-normal-title'   => 'Beobachtungsliste bearbeiten',
+'watchlistedit-normal-legend'  => 'Einträge von der Beobachtungsliste entfernen',
+'watchlistedit-normal-explain' => 'Dies sind die Einträge Ihrer Beobachtungsliste. Um Einträge zu entfernen, markieren Sie die Kästchen neben den Einträgen
+	und klicken Sie auf „Einträge entfernen“. Sie können Ihre Beobachtungsliste auch im [[Special:Watchlist/raw|Listenformat bearbeiten]]
+	oder sie [[Special:Watchlist/clear|komplett löschen]].',
+'watchlistedit-normal-submit'  => 'Einträge entfernen',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|1 Eintrag wurde|$1 Einträge wurden}} von Ihrer Beobachtungsliste entfernt:',
+'watchlistedit-raw-title'      => 'Beobachtungsliste im Listenformat bearbeiten',
+'watchlistedit-raw-legend'     => 'Beobachtungsliste im Listenformat bearbeiten',
+'watchlistedit-raw-explain'    => 'Dies sind die Einträge Ihrer Beobachtungsliste im Listenformat. Die Einträge können zeilenweise gelöscht oder hinzugefügt werden.
+	Pro Zeile ist ein Eintrag erlaubt. Wenn Sie fertig sind, klicken Sie auf „Beobachtungsliste speichern“.
+	Sie können auch die [[Special:Watchlist/edit|Standard-Bearbeitungsseite]] benutzen.',
+'watchlistedit-raw-titles'     => 'Einträge:',
+'watchlistedit-raw-submit'     => 'Beobachtungsliste speichern',
+'watchlistedit-raw-done'       => 'Ihre Beobachtungsliste wurde gespeichert.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 Eintrag wurde|$1 Einträge wurden}} hinzugefügt:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 Eintrag wurde|$1 Einträge wurden}} entfernt:',
 
-?>
+);

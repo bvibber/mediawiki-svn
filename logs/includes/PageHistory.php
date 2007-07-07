@@ -244,9 +244,25 @@ class PageHistory {
 		if( $row->rev_deleted & Revision::DELETED_TEXT ) {
 			$s .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
+		
+		$tools = array();
+		
 		if( $wgUser->isAllowed( 'rollback' ) && $latest ) {
-			$s .= ' '.$this->mSkin->generateRollback( $rev );
+			$tools[] = '<span class="mw-rollback-link">'
+				. $this->mSkin->buildRollbackLink( $rev )
+				. '</span>';
 		}
+			
+		if ( !is_null( $next ) ) {
+			$undolink = $this->mSkin->makeKnownLinkObj(
+				$this->mTitle,
+				wfMsgHtml( 'editundo' ),
+				'action=edit&undoafter=' . $next->rev_id . '&undo=' . $rev->getId()
+			);
+			$tools[] = "<span class=\"mw-history-undo\">{$undolink}</span>";
+		}
+		
+		$s .= ' (' . implode( ' | ', $tools ) . ')';
 		
 		wfRunHooks( 'PageHistoryLineEnding', array( &$row , &$s ) );
 		
@@ -589,4 +605,5 @@ class PageHistoryPager extends ReverseChronologicalPager {
 	}
 }
 
-?>
+
+

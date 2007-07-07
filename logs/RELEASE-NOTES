@@ -110,6 +110,21 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 6711) Add $wgAddGroups and $wgRemoveGroups to allow finer control over
   usergroup assignment.
 * Introduce 'UserEffectiveGroups' hook; see docs/hooks.txt for more information
+* (bug 10387) Detect and handle '.php5' extension environments at install time
+  Patch by Edward Z. Yang.
+* Introduce 'ShowRawCssJs' hook; see docs/hooks.txt for more information
+* (bug 10404) Show rights log for the selected user in Special:Userrights
+* New javascript for upload page that will show a warning if a file with the
+  "destination filename" already exists.
+* Add 'editsection-brackets' message to allow localization (or removal) of the
+  brackets in the "[edit]" link for sections
+* (bug 10437) Move texvc styling to shared.css
+* (bug 10438) HTML TeX formulas should not wrap
+* Introduce "raw editing" mode for the watchlist, to allow bulk additions,
+  removals, and convenient exporting of watchlist contents
+* Show "undo" links in page histories
+* Option to jump to specified time period in user contributions
+* Improved feedback on "rollback success" page
 
 == Bugfixes since 1.10 ==
 
@@ -220,11 +235,35 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   and the redirect deleted
 * (bug 7071) Properly handle an 'oldid' passed to view or edit that doesn't
   match the given title. Fixes inconsistencies with talk, history, edit links.
+* (bug 10397) Fix AJAX watch error fallback when we receive a bogus result
+* (bug 10396) Fix AJAX error when $wgScriptPath/index.php is not valid;
+  using $wgScript now included in JS info
+* Use native XMLHttpRequest class in preference to ActiveX on IE 7; this
+  avoids the "ActiveX "Do you want to allow ActiveX?" prompt when something
+  security settings are cranked this way and AJAX-y gets used.
+* Delay AJAX watch initialization until click so IE 6 with ugly security
+  settings doesn't prompt you until you use the link.
+* (bug 10401) Provide non-redirecting link to original title in Special:Movepage
+* Fix broken handling of log views for page titles consisting of one
+  or more zeros, e.g. "0", "00" etc.
+* Fix read permission check for special pages with subpage parameters, e.g.
+  Special:Confirmemail
+* Fix read permission check for unreadable page titles which are numerically
+  equivalent to a whitelisted title
+* '?>' closing tag removed from all files to help avoid problems with extraneous
+  whitespace (broken XML feeds, etc.)
+* Don't use garbled parser cache output when viewing custom CSS or JavaScript
+  pages
+* (bug 10406) Fix Special:Listusers filter form for non-ASCII localizations
+* Fix empty message checks for message names containing &
+  This corrects some odd behavior with sidebar items and custom namespaces
+  containing ampersands.
+* (bug 10375) Change thousands separator character to &nbsp; for Latin (la)
 
 
 == API changes since 1.10 ==
 
-(For ongoing development discussion, see http://www.mediawiki.org/wiki/API)
+Full API documentation is available at http://www.mediawiki.org/wiki/API
 
 * New properties: links, templates, images, langlinks, categories, external
   links
@@ -258,6 +297,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Added categorymembers list to query for pages in a category.
 * (bug 10260) Show page protection status
 * (bug 10392) Include MediaWiki version details in version output
+* (bug 10411) Site language in meta=siteinfo
+* (bug 10391) action=help doesn't return help if format is fancy markup
+* (bug 10297) include previous revision ID in prop=revisions
+* backlinks, embeddedin and imageusage lists should use (bl|ei|iu)title parameter
+  instead of titles. Titles for these lists is obsolete and might stop working soon.
+* Added prop=imageinfo - gets image properties and upload history
 
 == Maintenance script changes since 1.10 ==
 
@@ -266,6 +311,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Fix maintenance/importImages.php so it doesn't barf PHP errors when no
   suitable files are found, and make the list of extensions an option (defaults
   to $wgFileExtensions)
+* Add option to maintenance/createAndPromote.php to give the user bureaucrat
+  permissions (--bureaucrat)
 
 == Languages updated since 1.10 ==
 
@@ -290,13 +337,17 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Kabyle (kab)
 * Kazakh (kk)
 * Kurdish (ku)
+* Latin (la)
 * Lithuanian (lt)
 * Malayalam (ml)
 * Burmese (my)
+* Dutch (nl)
 * Norwegian (no)
 * Polish (pl)
+* Piedmontese (pms)
 * Portuguese (pt)
 * Romanian (ro)
+* Aromanian (roa-rup)
 * Russian (ru)
 * Slovak (sk)
 * Slovenian (sl)

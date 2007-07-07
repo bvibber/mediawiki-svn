@@ -492,12 +492,6 @@ img.thumbborder {
 	display: none;
 	speak: none;
 }
-img.tex {
-	vertical-align: middle;
-}
-span.texhtml {
-	font-family: serif;
-}
 
 /* Have a checkered background on images on the description pages and in galleries
    to make transparency visible
@@ -1598,7 +1592,6 @@ p.mw-ipb-conveniencelinks {
 /* Friendlier slave lag warnings */
 div.mw-lag-warn-normal,
 div.mw-lag-warn-high {
-	width: 75%;
 	padding: 3px;
 	text-align: center;
 	margin: 3px auto;
@@ -1609,8 +1602,8 @@ div.mw-lag-warn-normal {
 }
 div.mw-lag-warn-high {
 	font-weight: bold;
-	border: 2px solid #CC3333;
-	background-color: #CC9999;
+	border: 2px solid #FF0033;
+	background-color: #FFCCCC;
 }
 
 /* Recreating-deleted-page warning and log entries */

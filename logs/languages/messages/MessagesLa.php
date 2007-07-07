@@ -29,6 +29,8 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK  => 'Disputatio_Categoriae',
 );
 
+$separatorTransformTable = array( ',' => "\xc2\xa0" );
+
 $dateFormats = array(
 	'mdy time' => 'H:i',
 	'mdy date' => 'xg j, Y',
@@ -1181,4 +1183,4 @@ Quaesumus, adfirma ut iterum hanc paginam crees.",
 
 );
 
-?>
+

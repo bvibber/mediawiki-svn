@@ -445,10 +445,6 @@ do not contain | are also discarded, but don't depend on this behaviour for
 future releases. Also note that since each list value is wrapped in a unique
 XHTML id it should only appear once and include characters that are legal
 XHTML id names.
-
-Note to translators: Do not include this message in the language files you
-submit for inclusion in MediaWiki, it should always be inherited from the
-parent class in order maintain consistency across languages.
 */
 'sidebar' => '
 * navigation
@@ -686,29 +682,30 @@ parent class in order maintain consistency across languages.
 'versionrequired'     => 'Version $1 of MediaWiki required',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page. See [[Special:Version|version page]].',
 
-'ok'                  => 'OK',
-'sitetitle'           => '{{SITENAME}}', # don't translate or duplicate this message to other languages
-'pagetitle'           => '$1 - {{SITENAME}}',
-'sitesubtitle'        => '', # don't translate or duplicate this message to other languages
-'retrievedfrom'       => 'Retrieved from "$1"',
-'youhavenewmessages'  => 'You have $1 ($2).',
-'newmessageslink'     => 'new messages',
-'newmessagesdifflink' => 'last change',
-'editsection'         => 'edit',
-'editold'             => 'edit',
-'editsectionhint'     => 'Edit section: $1',
-'toc'                 => 'Contents',
-'showtoc'             => 'show',
-'hidetoc'             => 'hide',
-'thisisdeleted'       => 'View or restore $1?',
-'viewdeleted'         => 'View $1?',
-'restorelink'         => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
-'feedlinks'           => 'Feed:',
-'feed-invalid'        => 'Invalid subscription feed type.',
-'feed-atom'           => 'Atom', # only translate this message to other languages if you have to change it
-'feed-rss'            => 'RSS', # only translate this message to other languages if you have to change it
-'sitenotice'          => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
-'anonnotice'          => '-', # don't translate or duplicate this message to other languages
+'ok'                   => 'OK',
+'sitetitle'            => '{{SITENAME}}', # don't translate or duplicate this message to other languages
+'pagetitle'            => '$1 - {{SITENAME}}',
+'sitesubtitle'         => '', # don't translate or duplicate this message to other languages
+'retrievedfrom'        => 'Retrieved from "$1"',
+'youhavenewmessages'   => 'You have $1 ($2).',
+'newmessageslink'      => 'new messages',
+'newmessagesdifflink'  => 'last change',
+'editsection'          => 'edit',
+'editsection-brackets' => '[$1]', # only translate this message to other languages if you have to change it
+'editold'              => 'edit',
+'editsectionhint'      => 'Edit section: $1',
+'toc'                  => 'Contents',
+'showtoc'              => 'show',
+'hidetoc'              => 'hide',
+'thisisdeleted'        => 'View or restore $1?',
+'viewdeleted'          => 'View $1?',
+'restorelink'          => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
+'feedlinks'            => 'Feed:',
+'feed-invalid'         => 'Invalid subscription feed type.',
+'feed-atom'            => 'Atom', # only translate this message to other languages if you have to change it
+'feed-rss'             => 'RSS', # only translate this message to other languages if you have to change it
+'sitenotice'           => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
+'anonnotice'           => '-', # don't translate or duplicate this message to other languages
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Article',
@@ -999,6 +996,9 @@ Please try again. If it still doesn't work, try logging out and logging back in.
 ''Because this wiki has raw HTML enabled, the preview is hidden as a precaution against JavaScript attacks.''
 
 <strong>If this is a legitimate edit attempt, please try again. If it still doesn't work, try logging out and logging back in.</strong>",
+'token_suffix_mismatch'     => '<strong>Your edit has been rejected because your client mangled the punctuation characters 
+in the edit token. The edit has been rejected to prevent corruption of the article text. 
+This sometimes happens when you are using a buggy web-based anonymous proxy service.</strong>',
 'importing'                 => 'Importing $1',
 'editing'                   => 'Editing $1',
 'editinguser'               => 'Editing user <b>$1</b>',
@@ -1267,20 +1267,19 @@ containing all of the search terms will appear in the result).",
 'files'                    => 'Files',
 
 # User rights
-'userrights-lookup-user'     => 'Manage user groups',
-'userrights-user-editname'   => 'Enter a username:',
-'editusergroup'              => 'Edit User Groups',
-'userrights-editusergroup'   => 'Edit user groups',
-'saveusergroups'             => 'Save User Groups',
-'userrights-groupsmember'    => 'Member of:',
-'userrights-groupsavailable' => 'Available groups:',
-'userrights-groupshelp'      => 'Select groups you want the user to be removed from or added to.
+'userrights-lookup-user'      => 'Manage user groups',
+'userrights-user-editname'    => 'Enter a username:',
+'editusergroup'               => 'Edit User Groups',
+'userrights-editusergroup'    => 'Edit user groups',
+'saveusergroups'              => 'Save User Groups',
+'userrights-groupsmember'     => 'Member of:',
+'userrights-groupsavailable'  => 'Available groups:',
+'userrights-groupshelp'       => 'Select groups you want the user to be removed from or added to.
 Unselected groups will not be changed. You can deselect a group with CTRL + Left Click',
-'userrights-reason'          => 'Reason for change:',
-'userrights-list'            => 'Because you are a member of $1, you can add $2 and remove $3.',
-'userrights-list-nogroups'   => 'no groups',
-'userrights-list-groups'     => 'the {{PLURAL:$1|group|groups}} $2',
-'userrights-list-separator'  => ', ', # only translate this message to other languages if you have to change it
+'userrights-reason'           => 'Reason for change:',
+'userrights-available-none'   => 'You may not alter group membership.',
+'userrights-available-add'    => 'You can add users to $1.',
+'userrights-available-remove' => 'You can remove users from $1.',
 
 # Groups
 'group'            => 'Group:',
@@ -1693,10 +1692,6 @@ or has chosen not to receive e-mail from other users.',
 'nowatchlist'          => 'You have no items on your watchlist.',
 'watchlistanontext'    => 'Please $1 to view or edit items on your watchlist.',
 'watchlistcount'       => "'''You have {{PLURAL:$1|$1 item|$1 items}} on your watchlist, including talk pages.'''",
-'clearwatchlist'       => 'Clear watchlist',
-'watchlistcleartext'   => 'Are you sure you wish to remove them?',
-'watchlistclearbutton' => 'Clear watchlist',
-'watchlistcleardone'   => 'Your watchlist has been cleared. {{PLURAL:$1|$1 item was|$1 items were}} removed.',
 'watchnologin'         => 'Not logged in',
 'watchnologintext'     => 'You must be [[Special:Userlogin|logged in]] to modify your watchlist.',
 'addedwatch'           => 'Added to watchlist',
@@ -1721,13 +1716,7 @@ If you want to remove the page from your watchlist later, click \"Unwatch\" in t
 'wlheader-showupdated' => "* Pages which have been changed since you last visited them are shown in '''bold'''",
 'watchmethod-recent'   => 'checking recent edits for watched pages',
 'watchmethod-list'     => 'checking watched pages for recent edits',
-'removechecked'        => 'Remove checked items from watchlist',
 'watchlistcontains'    => 'Your watchlist contains $1 {{PLURAL:$1|page|pages}}.',
-'watcheditlist'        => "Here's an alphabetical list of your
-watched content pages. Check the boxes of pages you want to remove from your watchlist and click the 'remove checked' button
-at the bottom of the screen (deleting a content page also deletes the accompanying talk page and vice versa).",
-'removingchecked'      => 'Removing requested items from watchlist...',
-'couldntremove'        => "Couldn't remove item '$1'...",
 'iteminvalidname'      => "Problem with item '$1', invalid name...",
 'wlnote'               => "Below {{PLURAL:$1|is the last change|are the last '''$1''' changes}} in the last {{PLURAL:$2|hour|'''$2''' hours}}.",
 'wlshowlast'           => 'Show last $1 hours $2 days $3',
@@ -1738,7 +1727,6 @@ at the bottom of the screen (deleting a content page also deletes the accompanyi
 'watchlist-hide-own'   => 'Hide my edits',
 'watchlist-show-minor' => 'Show minor edits',
 'watchlist-hide-minor' => 'Hide minor edits',
-'wldone'               => 'Done.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'Watching...',
@@ -1814,6 +1802,7 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'editcomment'                 => 'The edit comment was: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'                  => 'Reverted edits by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); changed back to last version by [[User:$1|$1]]',
+'rollback-success' => 'Reverted edits by $1; changed back to last version by $2.',
 'sessionfailure'              => 'There seems to be a problem with your login session;
 this action has been canceled as a precaution against session hijacking.
 Please hit "back" and reload the page you came from, then try again.',
@@ -1912,9 +1901,8 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'ucnote'        => "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
 'uclinks'       => 'View the last $1 changes; view the last $2 days.',
 'uctop'         => ' (top)',
-
-'month'         => 'Month:',
-'year'          => 'Year:',
+'month'         => 'From month (and earlier):',
+'year'          => 'From year (and earlier):',
 
 'sp-contributions-newest'      => 'Newest',
 'sp-contributions-oldest'      => 'Oldest',
@@ -1961,13 +1949,6 @@ pages that were vandalized).',
 'ipbexpiry'                   => 'Expiry:',
 'ipbreason'                   => 'Reason:',
 'ipbreasonotherlist'          => 'Other reason',
-
-// These are examples only. They can be translated but should be adjusted via
-// [[MediaWiki:ipbreason-list]] by the local community
-// defines a block reason not part of a group
-// * defines a block reason group in the drow down menu
-// ** defines a block reason
-// To disable this drop down menu enter '-' in [[MediaWiki:ipbreason-dropdown]].
 'ipbreason-dropdown'          => '
 *Common block reasons
 ** Inserting false information
@@ -2098,7 +2079,7 @@ to move a page.',
 'move-watch'              => 'Watch this page',
 'movepagebtn'             => 'Move page',
 'pagemovedsub'            => 'Move succeeded',
-'pagemovedtext'           => 'Page "[[$1]]" moved to "[[$2]]".',
+'movepage-moved'          => '<big>\'\'\'"$1" has been moved to "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'A page of that name already exists, or the
 name you have chosen is not valid.
 Please choose another name.',
@@ -2433,8 +2414,8 @@ Variants for Chinese language
 'variantname-kk'    => 'kk', # only translate this message to other languages if you have to change it
 
 # Variants for Kurdish language
-'variantname-ku-latn' => 'ku-latn', # only translate this message to other languages if you have to change it
 'variantname-ku-arab' => 'ku-arab', # only translate this message to other languages if you have to change it
+'variantname-ku-latn' => 'ku-latn', # only translate this message to other languages if you have to change it
 'variantname-ku'      => 'ku', # only translate this message to other languages if you have to change it
 
 'passwordtooshort' => 'Your password is invalid or too short. It must have at least $1 characters and be different from your username.',
@@ -2864,7 +2845,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Removing all content from page',
 'autosumm-replace' => "Replacing page with '$1'",
-'autoredircomment' => 'Redirecting to [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => 'Redirecting to [[$1]]',
 'autosumm-new'     => 'New page: $1',
 
 # Autoblock whitelist
@@ -2900,22 +2881,43 @@ $1',
 # Live preview
 'livepreview-loading' => 'Loading…',
 'livepreview-ready'   => 'Loading… Ready!',
-'livepreview-failed'  => 'Live preview failed!
-Try normal preview.',
-'livepreview-error'   => 'Failed to connect: $1 "$2"
-Try normal preview.',
+'livepreview-failed'  => 'Live preview failed! Try normal preview.',
+'livepreview-error'   => 'Failed to connect: $1 "$2". Try normal preview.',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Changes newer than $1 seconds may not be shown in this list.',
-'lag-warn-high'   => 'Due to high database server lag, changes newer than $1 seconds
-may not be shown in this list.',
+'lag-warn-high'   => 'Due to high database server lag, changes newer than $1 seconds may not be shown in this list.',
+
+# Watchlist editor
+'watchlistedit-numitems'       => 'Your watchlist contains {{PLURAL:$1|1 title|$1 titles}}, excluding talk pages.',
+'watchlistedit-noitems'        => 'Your watchlist contains no titles.',
+'watchlistedit-clear-title'    => 'Clear watchlist',
+'watchlistedit-clear-legend'   => 'Clear watchlist',
+'watchlistedit-clear-confirm'  => 'This will remove all titles from your watchlist. Are you sure you
+	want to do this? You can also [[Special:Watchlist/edit|remove individual titles]].',
+'watchlistedit-clear-submit'   => 'Clear',
+'watchlistedit-clear-done'     => 'Your watchlist has been cleared. All titles were removed.',
+'watchlistedit-normal-title'   => 'Edit watchlist',
+'watchlistedit-normal-legend'  => 'Remove titles from watchlist',
+'watchlistedit-normal-explain' => 'Titles on your watchlist are shown below. To remove a title, check
+	the box next to it, and click Remove Titles. You can also [[Special:Watchlist/raw|edit the raw list]],
+	or [[Special:Watchlist/clear|remove all titles]].',
+'watchlistedit-normal-submit'  => 'Remove Titles',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|1 title was|$1 titles were}} removed from your watchlist:',
+'watchlistedit-raw-title'      => 'Edit raw watchlist',
+'watchlistedit-raw-legend'     => 'Edit raw watchlist',
+'watchlistedit-raw-explain'    => 'Titles on your watchlist are shown below, and can be edited by
+	adding to and removing from the list; one title per line. When finished, click Update Watchlist.
+	You can also [[Special:Watchlist/edit|use the standard editor]].',
+'watchlistedit-raw-titles'     => 'Titles:',
+'watchlistedit-raw-submit'     => 'Update Watchlist',
+'watchlistedit-raw-done'       => 'Your watchlist has been updated.',
+'watchlistedit-raw-added' => '{{PLURAL:$1|1 title was|$1 titles were}} added:',
+'watchlistedit-raw-removed' => '{{PLURAL:$1|1 title was|$1 titles were}} removed:',
 
 # Logging
 'logging-delete-delete' => 'deleted $1',
 'logging-delete-restore' => 'restored $1',
 'logging-delete-revision' => '',
 
-
 );
-
-?>

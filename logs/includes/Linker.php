@@ -1060,34 +1060,66 @@ class Linker {
 		 . "</script>\n";
 	}
 
-	/** @todo document */
+	/**
+	 * Used to generate section edit links that point to "other" pages
+	 * (sections that are really part of included pages).
+	 *
+	 * @param $title Title string.
+	 * @param $section Integer: section number.
+	 */
 	public function editSectionLinkForOther( $title, $section ) {
-		global $wgContLang;
 		$title = Title::newFromText( $title );
-		$editurl = '&section='.$section;
-		$url = $this->makeKnownLinkObj( $title, wfMsg('editsection'), 'action=edit'.$editurl );
-		$result = null;
-		wfRunHooks( 'EditSectionLinkForOther', array( &$this, $title, $section, $url, &$result ) );
-		return is_null( $result )
-			? "<span class=\"editsection\">[{$url}]</span>"
-			: "<span class=\"editsection\">[{$result}]</span>";
+		return $this->doEditSectionLink( $title, $section, '', 'EditSectionLinkForOther' );
 	}
 
 	/**
-	 * @param $title Title object.
+	 * @param $nt Title object.
 	 * @param $section Integer: section number.
 	 * @param $hint Link String: title, or default if omitted or empty
 	 */
-	public function editSectionLink( $nt, $section, $hint='' ) {
+	public function editSectionLink( Title $nt, $section, $hint='' ) {
+		if( $hint != '' ) {
+			$hint = wfMsgHtml( 'editsectionhint', htmlspecialchars( $hint ) );
+			$hint = " title=\"$hint\"";
+		}
+		return $this->doEditSectionLink( $nt, $section, $hint, 'EditSectionLink' );
+	}
+
+	/**
+	 * Implement editSectionLink and editSectionLinkForOther.
+	 *
+	 * @param $nt      Title object
+	 * @param $section Integer, section number
+	 * @param $hint    String, for HTML title attribute
+	 * @param $hook    String, name of hook to run
+	 * @return         String, HTML to use for edit link
+	 */
+	private function doEditSectionLink( Title $nt, $section, $hint, $hook ) {
 		global $wgContLang;
 		$editurl = '&section='.$section;
-		$hint = ( $hint=='' ) ? '' : ' title="' . wfMsgHtml( 'editsectionhint', htmlspecialchars( $hint ) ) . '"';
-		$url = $this->makeKnownLinkObj( $nt, wfMsg('editsection'), 'action=edit'.$editurl, '', '', '',  $hint );
+		$url = $this->makeKnownLinkObj(
+			$nt,
+			wfMsg('editsection'),
+			'action=edit'.$editurl,
+			'', '', '',  $hint
+		);
 		$result = null;
-		wfRunHooks( 'EditSectionLink', array( &$this, $nt, $section, $hint, $url, &$result ) );
-		return is_null( $result )
-			? "<span class=\"editsection\">[{$url}]</span>"
-			: "<span class=\"editsection\">[{$result}]</span>";
+
+		// The two hooks have slightly different interfaces . . .
+		if( $hook == 'EditSectionLink' ) {
+			wfRunHooks( $hook, array( &$this, $nt, $section, $hint, $url, &$result ) );
+		} elseif( $hook == 'EditSectionLinkForOther' ) {
+			wfRunHooks( $hook, array( &$this, $nt, $section, $url, &$result ) );
+		}
+		
+		// For reverse compatibility, add the brackets *after* the hook is run,
+		// and even add them to hook-provided text.
+		if( is_null( $result ) ) {
+			$result = wfMsg( 'editsection-brackets', $url );
+		} else {
+			$result = wfMsg( 'editsection-brackets', $result );
+		}
+		return "<span class=\"editsection\">$result</span>";
 	}
 
 	/**
@@ -1143,15 +1175,28 @@ class Linker {
 	 * @param Revision $rev
 	 */
 	function generateRollback( $rev ) {
-		global $wgUser, $wgRequest;
+		return '<span class="mw-rollback-link">['
+			. $this->buildRollbackLink( $rev )
+			. ']</span>';
+	}
+	
+	/**
+	 * Build a raw rollback link, useful for collections of "tool" links
+	 *
+	 * @param Revision $rev
+	 * @return string
+	 */
+	public function buildRollbackLink( $rev ) {
+		global $wgRequest, $wgUser;
 		$title = $rev->getTitle();
-
-		$extraRollback = $wgRequest->getBool( 'bot' ) ? '&bot=1' : '';
-		$extraRollback .= '&token=' . urlencode(
-			$wgUser->editToken( array( $title->getPrefixedText(), $rev->getUserText() ) ) );
-		return '<span class="mw-rollback-link">['. $this->makeKnownLinkObj( $title,
-		  	wfMsg('rollbacklink'),
-		  	'action=rollback&from=' . urlencode( $rev->getUserText() ) . $extraRollback ) .']</span>';
+		$extra  = $wgRequest->getBool( 'bot' ) ? '&bot=1' : '';
+		$extra .= '&token=' . urlencode( $wgUser->editToken( array( $title->getPrefixedText(),
+			$rev->getUserText() ) ) );
+		return $this->makeKnownLinkObj(
+			$title,
+			wfMsgHtml( 'rollbacklink' ),
+			'action=rollback&from=' . urlencode( $rev->getUserText() ) . $extra
+		);		
 	}
 
 	/**
@@ -1290,4 +1335,5 @@ class Linker {
 	}
 }
 
-?>
+
+

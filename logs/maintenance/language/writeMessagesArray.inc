@@ -1,6 +1,8 @@
 <?php
 /**
  * Write a messages array as a PHP text.
+ * TODO: make it possible to use Windows endlines
+ * TODO: remove PHP ending tags recently removed from MediaWiki files
  *
  * @addtogroup Maintenance
  */
@@ -27,13 +29,12 @@ function writeMessagesToFile( $messages, $code, $write, $listUnknown ) {
 	$contents = file_get_contents( $filename );
 	if ( strpos( $contents, '$messages' ) !== false ) {
 		$contents = explode( '$messages', $contents );
-		if ( $messagesText . "\n?>\n" == '$messages' . $contents[1] ) {
-			echo "Generated messages for language $code. Same to the current file.\n";
+		if ( $messagesText == '$messages' . $contents[1] ) {
+			echo "Generated messages for language $code. Same as the current file.\n";
 		} else {
 			if ( $write ) {
 				$new = $contents[0];
 				$new .= $messagesText;
-				$new .= "\n?>\n";
 				file_put_contents( $filename, $new );
 				echo "Generated and wrote messages for language $code.\n";
 			} else {

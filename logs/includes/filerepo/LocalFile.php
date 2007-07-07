@@ -78,6 +78,7 @@ class LocalFile extends File
 		parent::__construct( $title, $repo );
 		$this->metadata = '';
 		$this->historyLine = 0;
+		$this->historyRes = null;
 		$this->dataLoaded = false;
 	}
 
@@ -552,9 +553,12 @@ class LocalFile extends File
 				__METHOD__
 			);
 			if ( 0 == $dbr->numRows( $this->historyRes ) ) {
+				$dbr->freeResult($this->historyRes);
+				$this->historyRes = null;
 				return FALSE;
 			}
 		} else if ( $this->historyLine == 1 ) {
+			$dbr->freeResult($this->historyRes);
 			$this->historyRes = $dbr->select( 'oldimage',
 				array(
 					'oi_size AS img_size',
@@ -582,6 +586,10 @@ class LocalFile extends File
 	 */
 	function resetHistory() {
 		$this->historyLine = 0;
+		if (!is_null($this->historyRes)) {
+			$this->repo->getSlaveDB()->freeResult($this->historyRes);
+			$this->historyRes = null;
+		}
 	}
 
 	/** getFullPath inherited */
@@ -607,7 +615,8 @@ class LocalFile extends File
 	 *                         is already known
 	 * @param string $timestamp Timestamp for img_timestamp, or false to use the current time
 	 *
-	 * @return Wikitext-formatted WikiError or true on success
+	 * @return Returns the archive name on success or an empty string if it was a new upload. 
+	 *      Returns a wikitext-formatted WikiError on failure. 
 	 */
 	function upload( $srcPath, $comment, $pageText, $flags = 0, $props = false, $timestamp = false ) {
 		$archive = $this->publish( $srcPath, $flags );
@@ -617,7 +626,7 @@ class LocalFile extends File
 		if ( !$this->recordUpload2( $archive, $comment, $pageText, $props, $timestamp ) ) {
 			return new WikiErrorMsg( 'filenotfound', wfEscapeWikiText( $srcPath ) );
 		}
-		return true;
+		return $archive;
 	}
 
 	/**
@@ -1378,4 +1387,4 @@ define( 'MW_IMG_DELETED_COMMENT', File::DELETED_COMMENT );
 define( 'MW_IMG_DELETED_USER', File::DELETED_USER );
 define( 'MW_IMG_DELETED_RESTRICTED', File::DELETED_RESTRICTED );
 
-?>
+

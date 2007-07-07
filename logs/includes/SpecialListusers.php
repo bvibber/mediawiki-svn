@@ -122,7 +122,7 @@ class UsersPager extends AlphabeticPager {
 		$out  = Xml::openElement( 'form', array( 'method' => 'get', 'action' => $wgScript ) ) .
 			'<fieldset>' .
 			Xml::element( 'legend', array(), wfMsg( 'listusers' ) );
-		$out .= Xml::hidden( 'title', $self->getPrefixedUrl() );
+		$out .= Xml::hidden( 'title', $self->getPrefixedDbKey() );
 
 		# Username field
 		$out .= Xml::label( wfMsg( 'listusersfrom' ), 'offset' ) . ' ' .
@@ -218,4 +218,4 @@ function wfSpecialListusers( $par = null ) {
 	$wgOut->addHTML( $s );
 }
 
-?>
+

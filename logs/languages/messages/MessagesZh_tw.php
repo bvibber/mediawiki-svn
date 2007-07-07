@@ -551,6 +551,8 @@ MySQL返回錯誤「$3: $4」。',
 'previewconflict'           => '這個預覽顯示了上面文字編輯區中的內容。它將在你選擇保存後出現。',
 'session_fail_preview'      => '<strong>很抱歉！由於部份資料遺失，我們無法處理您的編輯。請再試一次，如果仍然失敗，請登出後重新登入。</strong>',
 'session_fail_preview_html' => '<strong>很抱歉！部份資料已遺失，我們無法處理您的編輯。</strong><strong>如果這個編輯過程沒有問題，請再試一次。如果仍然有問題，請登出後再重新登入一次。</strong>',
+'token_suffix_mismatch'     => '<strong>由於您用戶端中的編輯信符毀損了一些標點符號字元，為防止編輯的文字損壞，您的編輯已經被拒絕。
+這種情況通常出現於使用含有很多臭蟲、以網絡為主的匿名代理服務的時候。</strong>',
 'importing'                 => '正在匯入$1',
 'editing'                   => '正在編輯$1',
 'editinguser'               => '正在編輯用戶<b>$1</b>',
@@ -791,9 +793,9 @@ MySQL返回錯誤「$3: $4」。',
 'userrights-groupsavailable' => '可用群組:',
 'userrights-groupshelp'      => '請選擇您想讓用戶加入或退出的群組。沒有選擇的群組將不會被改變。您也可以用"CTRL + 左擊滑鼠"複選或取消已經選擇的群組。',
 'userrights-reason'          => '更改原因:',
-'userrights-list'            => '因為您是$1的成員，您可以加入$2以及移除$3。',
-'userrights-list-nogroups'   => '無組別',
-'userrights-list-groups'     => '$2{{PLURAL:$1|組別|組別}}',
+'userrights-available-none' 	=> '您不可以更改組別成員。',
+'userrights-available-add' 	=> '您可以加入用戶到$1。',
+'userrights-available-remove' 	=> '您可以從$1中移除用戶。',
 
 # Groups
 'group'            => '群組:',
@@ -1112,6 +1114,7 @@ MySQL返回錯誤「$3: $4」。',
 'allpagessubmit'    => '提交',
 'allpagesprefix'    => '顯示具有此前綴(名字空間)的頁面:',
 'allpagesbadtitle'  => '給定的頁面標題是非法的，或者具有一個內部語言或內部 wiki 的前綴。它可能包含一個或更多的不能用於標題的字元。',
+'allpages-bad-ns'   => '在{{SITENAME}}中沒有一個叫做"$1"的名字空間。',
 
 # Special:Listusers
 'listusersfrom'      => '給定顯示用戶條件:',
@@ -1148,10 +1151,6 @@ MySQL返回錯誤「$3: $4」。',
 'nowatchlist'          => '您的監視列表為空。',
 'watchlistanontext'    => '請$1以檢視或編輯您的監視列表。',
 'watchlistcount'       => "'''您的監視列表中共有$1個項目，包括討論頁。'''",
-'clearwatchlist'       => '清除監視列表',
-'watchlistcleartext'   => '確定要移除所有的項目嗎？',
-'watchlistclearbutton' => '清除監視列表',
-'watchlistcleardone'   => '您的監視列表已經清除完畢。總共清除$1個項目。',
 'watchnologin'         => '未登入',
 'watchnologintext'     => '您必須先[[Special:Userlogin|登入]]
 才能更改您的監視列表',
@@ -1177,11 +1176,7 @@ MySQL返回錯誤「$3: $4」。',
 'wlheader-showupdated' => "* 在你上次檢視後有被修改過的頁面會顯示為'''粗體'''",
 'watchmethod-recent'   => '檢查被監視頁面的最近編輯',
 'watchmethod-list'     => '檢查最近編輯的被監視頁面',
-'removechecked'        => '將被選頁面從監視列表中移除',
 'watchlistcontains'    => '您的監視列表包含$1個頁面。',
-'watcheditlist'        => '這裡是您所監視的頁面的清單。要移除某一頁面，只要選擇該頁面然後點擊"移除頁面"按鈕(刪除內容頁面將同時刪除與之相關的討論頁，反之亦然)。',
-'removingchecked'      => '從監視清單中移除已要求項目...',
-'couldntremove'        => "無法移除'$1'...",
 'iteminvalidname'      => "頁面'$1'錯誤，無效命名...",
 'wlnote'               => '以下是最近<b>$2</b>小時內的最後$1次修改。',
 'wlshowlast'           => '顯示最近$1小時；$2天；$3的修改。',
@@ -1192,7 +1187,6 @@ MySQL返回錯誤「$3: $4」。',
 'watchlist-hide-own'   => '隱藏我的修改',
 'watchlist-show-minor' => '顯示小修改',
 'watchlist-hide-minor' => '隱藏小修改',
-'wldone'               => '完成。',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => '正在監視...',
@@ -1353,7 +1347,6 @@ $NEWPAGE
 'ucnote'        => '以下是該用戶最近<b>$2</b>天內的最後<b>$1</b>次修改。',
 'uclinks'       => '參看最後$1次修改；參看最後$2天。',
 'uctop'         => ' (最新修改)',
-
 'month'         => '月份:',
 'year'          => '年份:',
 
@@ -1512,7 +1505,7 @@ $NEWPAGE
 'move-watch'              => '監視此頁',
 'movepagebtn'             => '移動頁面',
 'pagemovedsub'            => '移動成功',
-'pagemovedtext'           => '頁面「[[$1]]」已經移動到「[[$2]]」。',
+'movepage-moved'          => '<big>\'\'\'「$1」已經移動到「$2」\'\'\'</big>',
 'articleexists'           => '該名字的頁面已經存在，或者您選擇的名字無效。請再選一個名字。',
 'talkexists'              => '頁面本身移動成功，
 但是由於新標題下已經有對話頁存在，所以對話頁無法移動。請手工合併兩個頁面。',
@@ -2140,7 +2133,7 @@ $1
 # Auto-summaries
 'autosumm-blank'   => '移除所有頁面內容',
 'autosumm-replace' => "正在將頁面替換為 '$1'",
-'autoredircomment' => '正在重定向到 [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => '正在重定向到 [[$1]]',
 'autosumm-new'     => '新頁面: $1',
 
 # Size units
@@ -2152,13 +2145,37 @@ $1
 # Live preview
 'livepreview-loading' => '正在載入…',
 'livepreview-ready'   => '正在載入… 完成!',
-'livepreview-failed'  => "實時預覽失敗!\n嘗試標準預覽。",
-'livepreview-error'   => "連接失敗: $1 \"$2\"\n嘗試標準預覽。",
+'livepreview-failed'  => "實時預覽失敗! 嘗試標準預覽。",
+'livepreview-error'   => "連接失敗: $1 \"$2\" 嘗試標準預覽。",
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => '新於$1秒的更改可能不會在這個清單中顯示。',
 'lag-warn-high' => '由於資料庫的過度延遲，新於$1秒的更改可能不會在這個清單中顯示。',
 
+# Watchlist editor
+'watchlistedit-numitems'       => '您的監視列表中共有$1個標題，當中不包括對話頁面。',
+'watchlistedit-noitems'        => '您的監視列表並無標題。',
+'watchlistedit-clear-title'    => '清除監視列表',
+'watchlistedit-clear-legend'   => '清除監視列表',
+'watchlistedit-clear-confirm'  => '這樣做會在您的監視列表中移除所有的項目。您是否真的要這樣做？您亦都可以[[Special:Watchlist/edit|移除個別的標題]]。',
+'watchlistedit-clear-submit'   => '清除',
+'watchlistedit-clear-done'     => '您的監視列表已經剛剛清除完畢。所有的項目已經被移除。',
+'watchlistedit-normal-title'   => '編輯監視列表',
+'watchlistedit-normal-legend'  => '從監視列表中移除標題',
+'watchlistedit-normal-explain' => '在您的監視列表中的標題在下面顯示。要移除一個標題，在它前面剔一下，接著點擊移除標題。您亦都可以[[Special:Watchlist/raw|編輯原始監視列表]]或者[[Special:Watchlist/clear|移除所有標題]]。',
+'watchlistedit-normal-submit'  => '移除標題',
+'watchlistedit-normal-done'    => '$1個標題已經從您的監視列表中移除:',
+'watchlistedit-raw-title'      => '編輯原始監視列表',
+'watchlistedit-raw-legend'     => '編輯原始監視列表',
+'watchlistedit-raw-explain'    => '您的監視列表中的標題在下面顯示，同時亦都可以透過編輯這個表去加入以及移除標題；一行一個標題。當完成以後，點擊更新監視列表。你亦都可以去用[[Special:Watchlist/edit|標準編輯器]]。',
+'watchlistedit-raw-titles'     => '標題:',
+'watchlistedit-raw-submit'     => '更新監視列表',
+'watchlistedit-raw-done'       => '您的監視列表已經更新。',
+'watchlistedit-raw-added'      => '已經加入了$1個標題:',
+'watchlistedit-raw-removed'    => '已經移除了$1個標題:',
+
 );
 
-?>
+
+
+

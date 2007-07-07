@@ -293,10 +293,11 @@ class Skin extends Linker {
 	 * The odd calling convention is for backwards compatibility
 	 */
 	static function makeGlobalVariablesScript( $data ) {
-		global $wgStylePath, $wgUser;
+		global $wgScript, $wgStylePath, $wgUser;
 		global $wgArticlePath, $wgScriptPath, $wgServer, $wgContLang, $wgLang;
 		global $wgTitle, $wgCanonicalNamespaceNames, $wgOut, $wgArticle;
 		global $wgBreakFrames, $wgRequest;
+		global $wgUseAjax, $wgAjaxWatch;
 
 		$ns = $wgTitle->getNamespace();
 		$nsname = isset( $wgCanonicalNamespaceNames[ $ns ] ) ? $wgCanonicalNamespaceNames[ $ns ] : $wgTitle->getNsText();
@@ -306,6 +307,7 @@ class Skin extends Linker {
 			'stylepath' => $wgStylePath,
 			'wgArticlePath' => $wgArticlePath,
 			'wgScriptPath' => $wgScriptPath,
+			'wgScript' => $wgScript,
 			'wgServer' => $wgServer,
 			'wgCanonicalNamespace' => $nsname,
 			'wgCanonicalSpecialPageName' => SpecialPage::resolveAlias( $wgTitle->getDBKey() ),
@@ -331,6 +333,14 @@ class Skin extends Linker {
 			$vars['wgLivepreviewMessageReady']   = wfMsg( 'livepreview-ready' );
 			$vars['wgLivepreviewMessageFailed']  = wfMsg( 'livepreview-failed' );
 			$vars['wgLivepreviewMessageError']   = wfMsg( 'livepreview-error' );
+		}
+
+		if($wgUseAjax && $wgAjaxWatch && $wgUser->isLoggedIn() ) {
+			$msgs = (object)array();
+			foreach ( array( 'watch', 'unwatch', 'watching', 'unwatching' ) as $msgName ) {
+				$msgs->{$msgName . 'Msg'} = wfMsg( $msgName );
+			}
+			$vars['wgAjaxWatch'] = $msgs;
 		}
 
 		return self::makeVariablesScript( $vars );
@@ -402,12 +412,17 @@ class Skin extends Linker {
 	}
 
 	/**
-	 * This returns MediaWiki:Common.js.  For some bizarre reason, it does
-	 * *not* return any custom user JS from user subpages.  Huh?
+	 * This returns MediaWiki:Common.js, and derived classes may add other JS.
+	 * Despite its name, it does *not* return any custom user JS from user
+	 * subpages.  The returned script is sitewide and publicly cacheable and
+	 * therefore must not include anything that varies according to user,
+	 * interface language, etc. (although it may vary by skin).  See
+	 * makeGlobalVariablesScript for things that can vary per page view and are
+	 * not cacheable.
 	 *
-	 * @return string
+	 * @return string Raw JavaScript to be returned
 	 */
-	function getUserJs() {
+	public function getUserJs() {
 		wfProfileIn( __METHOD__ );
 
 		global $wgStylePath;
@@ -418,20 +433,6 @@ class Skin extends Linker {
 		if ( !wfEmptyMsg ( 'common.js', $commonJs ) ) {
 			$s .= $commonJs;
 		}
-
-		global $wgUseAjax, $wgAjaxWatch;
-		if($wgUseAjax && $wgAjaxWatch) {
-			$s .= "
-
-/* AJAX (un)watch (see /skins/common/ajaxwatch.js) */
-var wgAjaxWatch = {
-	watchMsg: '".       str_replace( array("'", "\n"), array("\\'", ' '), wfMsgExt( 'watch', array() ) )."',
-	unwatchMsg: '".     str_replace( array("'", "\n"), array("\\'", ' '), wfMsgExt( 'unwatch', array() ) )."',
-	watchingMsg: '".    str_replace( array("'", "\n"), array("\\'", ' '), wfMsgExt( 'watching', array() ) )."',
-	unwatchingMsg: '".  str_replace( array("'", "\n"), array("\\'", ' '), wfMsgExt( 'unwatching', array() ) )."'
-};";
-		}
-
 		wfProfileOut( __METHOD__ );
 		return $s;
 	}
@@ -1650,4 +1651,4 @@ END;
 		return $bar;
 	}
 }
-?>
+

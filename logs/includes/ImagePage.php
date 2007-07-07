@@ -108,7 +108,7 @@ class ImagePage extends Article {
 			<li><a href="#file">' . $wgLang->getNsText( NS_IMAGE ) . '</a></li>
 			<li><a href="#filehistory">' . wfMsgHtml( 'imghistory' ) . '</a></li>
 			<li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . '</a></li>' .
-			($metadata ? '<li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>' : '') . '
+			($metadata ? ' <li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>' : '') . '
 		</ul>';
 		return $r;
 	}
@@ -460,6 +460,8 @@ EOT
 		} else { $s=''; }
 		$wgOut->addHTML( $s );
 
+		$this->img->resetHistory();	// free db resources
+
 		# Exist check because we don't want to show this on pages where an image
 		# doesn't exist along with the noimage message, that would suck. -ævar
 		if( $wgUseExternalEditor && $this->img->exists() ) {
@@ -792,4 +794,4 @@ class ImageHistoryList {
 }
 
 
-?>
+

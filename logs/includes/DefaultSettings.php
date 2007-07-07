@@ -125,8 +125,9 @@ $wgUsePathInfo =
  * in LocalSettings.php. Generally you should not need to change this
  * unless you don't like seeing "index.php".
  */
-$wgScript           = false; /// defaults to "{$wgScriptPath}/index.php"
-$wgRedirectScript   = false; /// defaults to "{$wgScriptPath}/redirect.php"
+$wgScriptExtension  = '.php'; /// extension to append to script names by default
+$wgScript           = false; /// defaults to "{$wgScriptPath}/index{$wgScriptExtension}"
+$wgRedirectScript   = false; /// defaults to "{$wgScriptPath}/redirect{$wgScriptExtension}"
 /**#@-*/
 
 
@@ -443,7 +444,7 @@ $wgUploadNavigationUrl = false;
  * apache servers don't have read/write access to the thumbnail path.
  *
  * Example:
- *   $wgThumbnailScriptPath = "{$wgScriptPath}/thumb.php";
+ *   $wgThumbnailScriptPath = "{$wgScriptPath}/thumb{$wgScriptExtension}";
  */
 $wgThumbnailScriptPath = false;
 $wgSharedThumbnailScriptPath = false;
@@ -1197,7 +1198,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '77';
+$wgStyleVersion = '81';
 
 
 # Server-side caching:
@@ -1487,7 +1488,7 @@ $wgAntiLockFlags = 0;
 $wgDiff3 = '/usr/bin/diff3';
 
 /**
- * We can also compress text in the old revisions table. If this is set on, old
+ * We can also compress text stored in the 'text' table. If this is set on, new
  * revisions will be compressed on page save if zlib support is available. Any
  * compressed revisions will be decompressed on load regardless of this setting
  * *but will not be readable at all* if zlib support is not available.
@@ -2572,6 +2573,11 @@ $wgAjaxExportList = array( );
 $wgAjaxWatch = true;
 
 /**
+ * Enable AJAX check for file overwrite, pre-upload
+ */
+$wgAjaxUploadDestCheck = true;
+
+/**
  * Allow DISPLAYTITLE to change title display
  */
 $wgAllowDisplayTitle = true;
@@ -2704,4 +2710,4 @@ $wgDisableOutputCompression = false;
 $wgSlaveLagWarning = 10;
 $wgSlaveLagCritical = 30;
 
-?>
+

@@ -684,10 +684,12 @@ class Article {
 		}
 
 		# Should the parser cache be used?
-		$pcache = $wgEnableParserCache &&
-			intval( $wgUser->getOption( 'stubthreshold' ) ) == 0 &&
-			$this->exists() &&
-			empty( $oldid );
+		$pcache = $wgEnableParserCache
+			&& intval( $wgUser->getOption( 'stubthreshold' ) ) == 0
+			&& $this->exists()
+			&& empty( $oldid )
+			&& !$this->mTitle->isCssOrJsPage()
+			&& !$this->mTitle->isCssJsSubpage();
 		wfDebug( 'Article::view using parser cache: ' . ($pcache ? 'yes' : 'no' ) . "\n" );
 		if ( $wgUser->getOption( 'stubthreshold' ) ) {
 			wfIncrStats( 'pcache_miss_stub' );
@@ -777,21 +779,23 @@ class Article {
 		}
 		if( !$outputDone ) {
 			$wgOut->setRevisionId( $this->getRevIdFetched() );
-			// Wrap site/user css/js in pre and don't parse.  User pages need
-			// to be subpages, site pages just need to end in ".css" or ".js".
+			
+			 // Pages containing custom CSS or JavaScript get special treatment
+			if( $this->mTitle->isCssOrJsPage() || $this->mTitle->isCssJsSubpage() ) {
+				$wgOut->addHtml( wfMsgExt( 'clearyourcache', 'parse' ) );
 
-			// @todo: use $this->mTitle->isCssJsSubpage() when php is fixed/
-			// a workaround is found.
-			if (
-				($ns == NS_USER and preg_match('#/\w+\.(css|js)$#',$this->mTitle->getDBkey(),$matches))
-				or ($ns == NS_MEDIAWIKI and preg_match('/.(css|js)$/', $this->mTitle->getDBkey(), $matches))
-			) {
-				$wgOut->addWikiText( wfMsg('clearyourcache'));
-				$wgOut->addHTML(
-					"<pre class=\"mw-code mw-{$matches[1]}\" dir=\"ltr\">"
-					.htmlspecialchars($this->mContent)."\n</pre>"
-				);
-			} else if ( $rt = Title::newFromRedirect( $text ) ) {
+				// Give hooks a chance to customise the output
+				if( wfRunHooks( 'ShowRawCssJs', array( $this->mContent, $this->mTitle, $wgOut ) ) ) {
+					// Wrap the whole lot in a <pre> and don't parse
+					preg_match( '!\.(css|js)$!u', $this->mTitle->getText(), $m );
+					$wgOut->addHtml( "<pre class=\"mw-code mw-{$m[1]}\" dir=\"ltr\">\n" );
+					$wgOut->addHtml( htmlspecialchars( $this->mContent ) );
+					$wgOut->addHtml( "\n</pre>\n" );
+				}
+			
+			}
+			
+			elseif ( $rt = Title::newFromRedirect( $text ) ) {
 				# Display redirect
 				$imageDir = $wgContLang->isRTL() ? 'rtl' : 'ltr';
 				$imageUrl = $wgStylePath.'/common/images/redirect' . $imageDir . '.png';
@@ -2253,12 +2257,20 @@ class Article {
 		$newComment = wfMsgForContent( 'revertpage', $target->getUserText(), $from );
 		$newComment = $wgRequest->getText( 'summary', $newComment );
 
-		# Save it!
-		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
-		$wgOut->addHTML( '<h2>' . htmlspecialchars( $newComment ) . "</h2>\n<hr />\n" );
+		# Save
+		$flags = EDIT_UPDATE | EDIT_MINOR;
+		if( $bot )
+			$flags |= EDIT_FORCE_BOT;
+		$this->doEdit( $target->getText(), $newComment, $flags );
 
-		$this->updateArticle( $target->getText(), $newComment, 1, $this->mTitle->userIsWatching(), $bot );
+		# User feedback
+		$wgOut->setPageTitle( wfMsg( 'actioncomplete' ) );
+		$wgOut->setRobotPolicy( 'noindex,nofollow' );
+		$old = $wgUser->getSkin()->userLink( $current->getUser(), $current->getUserText() )
+			. $wgUser->getSkin()->userToolLinks( $current->getUser(), $current->getUserText() );
+		$new = $wgUser->getSkin()->userLink( $target->getUser(), $target->getUserText() )
+			. $wgUser->getSkin()->userToolLinks( $target->getUser(), $target->getUserText() );
+		$wgOut->addHtml( wfMsgExt( 'rollback-success', array( 'parse', 'replaceafter' ), $old, $new ) );
 
 		$wgOut->returnToMain( false );
 	}
@@ -2984,5 +2996,3 @@ class Article {
 	}
 
 }
-
-?>

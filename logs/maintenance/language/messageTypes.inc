@@ -106,6 +106,7 @@ $wgIgnoredMessages = array(
 $wgOptionalMessages = array(
 	'imgmultigotopost',
 	'linkprefix',
+	'editsection-brackets',
 	'feed-atom',
 	'feed-rss',
 	'sectionlink',
@@ -192,8 +193,7 @@ $wgOptionalMessages = array(
 	'exif-filesource-3',
 	'booksources-isbn',
 	'isbn',
-	'userrights-list-separator',
-	);
+);
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */
 $wgEXIFMessages = array(

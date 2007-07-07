@@ -20,6 +20,7 @@ class EditPage {
 	var $firsttime;
 	var $lastDelete;
 	var $mTokenOk = false;
+	var $mTokenOkExceptSuffix = false;
 	var $mTriedSave = false;
 	var $tooBig = false;
 	var $kblength = false;
@@ -96,6 +97,11 @@ class EditPage {
 			// information.
 
 			$text = $this->mArticle->getContent();
+
+			if ($undo > 0 && $undoafter > 0 && $undo < $undoafter) {
+				# If they got undoafter and undo round the wrong way, switch them
+				list( $undo, $undoafter ) = array( $undoafter, $undo );
+			}
 
 			if ( $undo > 0 && $undo > $undoafter ) {
 				# Undoing a specific edit overrides section editing; section-editing
@@ -576,7 +582,9 @@ class EditPage {
 	 */
 	function tokenOk( &$request ) {
 		global $wgUser;
-		$this->mTokenOk = $wgUser->matchEditToken( $request->getVal( 'wpEditToken' ) );
+		$token = $request->getVal( 'wpEditToken' );
+		$this->mTokenOk = $wgUser->matchEditToken( $token );
+		$this->mTokenOkExceptSuffix = $wgUser->matchEditTokenNoSuffix( $token );
 		return $this->mTokenOk;
 	}
 
@@ -1369,7 +1377,11 @@ END
 		wfProfileIn( $fname );
 
 		if ( $this->mTriedSave && !$this->mTokenOk ) {
-			$msg = 'session_fail_preview';
+			if ( $this->mTokenOkExceptSuffix ) {
+				$msg = 'token_suffix_mismatch';
+			} else {
+				$msg = 'session_fail_preview';
+			}
 		} else {
 			$msg = 'previewnote';
 		}
@@ -2071,4 +2083,4 @@ END
 	
 }
 
-?>
+

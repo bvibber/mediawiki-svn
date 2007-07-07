@@ -123,6 +123,28 @@ class Xml {
 		$s .= "</select>\n";
 		return $s;
 	}
+	
+	/**
+	* Create a date selector 	 
+	* 	 
+	* @param $selected Mixed: the month which should be selected, default '' 	 
+	* @param $allmonths String: value of a special item denoting all month. Null to not include (default) 	 
+	* @param string $id Element identifier 	 
+	* @return String: Html string containing the month selector 	 
+	*/ 	 
+	public static function monthSelector( $selected = '', $allmonths = null, $id = 'month' ) { 	 
+		global $wgLang; 	 
+		$options = array(); 	 
+	    if( is_null( $selected ) ) 	 
+			$selected = ''; 	 
+	    if( !is_null( $allmonths ) ) 	 
+			$options[] = self::option( wfMsg( 'monthsall' ), $allmonths, $selected === $allmonths ); 	 
+		for( $i = 1; $i < 13; $i++ ) 	 
+				$options[] = self::option( $wgLang->getMonthName( $i ), $i, $selected === $i ); 	 
+		return self::openElement( 'select', array( 'id' => $id, 'name' => 'month' ) ) 	 
+			. implode( "\n", $options ) 	 
+			. self::closeElement( 'select' ); 	 
+	}
 
 	/**
 	 *
@@ -330,7 +352,9 @@ class Xml {
 
 	/**
 	 * Encode a variable of unknown type to JavaScript.
-	 * Doesn't support hashtables just yet.
+	 * Arrays are converted to JS arrays, objects are converted to JS associative 
+	 * arrays (objects). So cast your PHP associative arrays to objects before 
+	 * passing them to here.
 	 */
 	public static function encodeJsVar( $value ) {
 		if ( is_bool( $value ) ) {
@@ -341,13 +365,23 @@ class Xml {
 			$s = $value;
 		} elseif ( is_array( $value ) ) {
 			$s = '[';
-			foreach ( $value as $name => $elt ) {
+			foreach ( $value as $elt ) {
 				if ( $s != '[' ) {
 					$s .= ', ';
 				}
 				$s .= self::encodeJsVar( $elt );
 			}
 			$s .= ']';
+		} elseif ( is_object( $value ) ) {
+			$s = '{';
+			foreach ( (array)$value as $name => $elt ) {
+				if ( $s != '{' ) {
+					$s .= ', ';
+				}
+				$s .= '"' . self::escapeJsString( $name ) . '": ' . 
+					self::encodeJsVar( $elt );
+			}
+			$s .= '}';
 		} else {
 			$s = '"' . self::escapeJsString( $value ) . '"';
 		}
@@ -413,4 +447,4 @@ class Xml {
 			$in );
 	}
 }
-?>
+

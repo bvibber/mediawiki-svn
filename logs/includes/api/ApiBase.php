@@ -52,15 +52,15 @@ abstract class ApiBase {
 	const LIMIT_SML1 = 50; // Slow query, std user limit
 	const LIMIT_SML2 = 500; // Slow query, bot/sysop limit
 
-	private $mMainModule, $mModuleName, $mParamPrefix;
+	private $mMainModule, $mModuleName, $mModulePrefix;
 
 	/**
 	* Constructor
 	*/
-	public function __construct($mainModule, $moduleName, $paramPrefix = '') {
+	public function __construct($mainModule, $moduleName, $modulePrefix = '') {
 		$this->mMainModule = $mainModule;
 		$this->mModuleName = $moduleName;
-		$this->mParamPrefix = $paramPrefix;
+		$this->mModulePrefix = $modulePrefix;
 	}
 
 	/**
@@ -78,8 +78,8 @@ abstract class ApiBase {
 	/**
 	 * Get parameter prefix (usually two letters or an empty string). 
 	 */
-	public function getParamPrefix() {
-		return $this->mParamPrefix;
+	public function getModulePrefix() {
+		return $this->mModulePrefix;
 	}	
 
 	/**
@@ -122,6 +122,15 @@ abstract class ApiBase {
 	 */
 	public function & getResultData() {
 		return $this->getResult()->getData();
+	}
+
+	/**
+	 * Set warning section for this module. Users should monitor this section to notice any changes in API.
+	 */
+	public function setWarning($warning) {
+		$msg = array();
+		ApiResult :: setContent($msg, $warning);
+		$this->getResult()->addValue('warnings', $this->getModuleName(), $msg);
 	}
 
 	/**
@@ -287,7 +296,7 @@ abstract class ApiBase {
 	 * Override this method to change parameter name during runtime 
 	 */
 	public function encodeParamName($paramName) {
-		return $this->mParamPrefix . $paramName;
+		return $this->mModulePrefix . $paramName;
 	}
 
 	/**
@@ -603,4 +612,4 @@ abstract class ApiBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

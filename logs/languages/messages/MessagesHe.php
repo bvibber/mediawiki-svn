@@ -710,6 +710,7 @@ $messages = array(
 כיוון שבאתר זה אפשרות השימוש ב־HTML מאופשרת, התצוגה המקדימה מוסתרת כדי למנוע התקפות JavaScript.
 
 '''אם זהו ניסיון עריכה לגיטימי, אנא נסו שנית. אם זה לא עוזר, נסו לצאת מהחשבון ולהיכנס אליו שנית.'''",
+'token_suffix_mismatch'     => '<strong>עריכתכם נדחתה כיוון שהדפדפן שלכם מחק את תווי הניקוד בסימון העריכה. העריכה נדחתה כדי למנוע בעיות כאלה בטקסט הערך. ייתכן שזה קרה בגלל שירות פרוקסי אנונימי פגום.</strong>',
 'importing'                 => 'מייבא את $1',
 'editing'                   => 'עורך את $1',
 'editinguser'               => 'עורך את המשתמש <b>$1</b>',
@@ -938,19 +939,19 @@ $messages = array(
 'files'                    => 'קבצים',
 
 # User rights
-'userrights-lookup-user'     => 'נהלו קבוצות משתמש',
-'userrights-user-editname'   => 'הכניסו שם משתמש:',
-'editusergroup'              => 'ערכו קבוצות משתמשים',
-'userrights-editusergroup'   => 'ערכו קבוצות משתמש',
-'saveusergroups'             => 'שמור קבוצות משתמש',
-'userrights-groupsmember'    => 'חבר בקבוצות:',
-'userrights-groupsavailable' => 'קבוצות זמינות:',
-'userrights-groupshelp'      => 'אנא בחרו קבוצות שברצונכם שהמשתמש יתווסף אליהן או יוסר מהן.
+'userrights-lookup-user'      => 'נהלו קבוצות משתמש',
+'userrights-user-editname'    => 'הכניסו שם משתמש:',
+'editusergroup'               => 'ערכו קבוצות משתמשים',
+'userrights-editusergroup'    => 'ערכו קבוצות משתמש',
+'saveusergroups'              => 'שמור קבוצות משתמש',
+'userrights-groupsmember'     => 'חבר בקבוצות:',
+'userrights-groupsavailable'  => 'קבוצות זמינות:',
+'userrights-groupshelp'       => 'אנא בחרו קבוצות שברצונכם שהמשתמש יתווסף אליהן או יוסר מהן.
 קבוצות שלא נבחרו לא ישתנו. באפשרותכם לבטל בחירה של קבוצה באמצעות לחיצה על הכפתור השמאלי של העכבר ועל Ctrl מעליה.',
-'userrights-reason'          => 'סיבה לשינוי:',
-'userrights-list'            => 'כיוון שאתם חברים בקבוצה $1, באפשרותכם להוסיף $2 ולהסיר $3.',
-'userrights-list-nogroups'   => 'אין קבוצות',
-'userrights-list-groups'     => '{{PLURAL:$1|הקבוצה|הקבוצות}} $2',
+'userrights-reason'           => 'סיבה לשינוי:',
+'userrights-available-none'   => 'אינכם יכולים לשנות את ההשתייכות לקבוצות.',
+'userrights-available-add'    => 'באפשרותכם להוסיף משתמשים לקבוצות $1.',
+'userrights-available-remove' => 'באפשרותכם להסיר משתמשים מהקבוצות $1.',
 
 # Groups
 'group'            => 'קבוצה:',
@@ -1297,10 +1298,6 @@ $messages = array(
 'nowatchlist'          => 'אין דפים ברשימת המעקב.',
 'watchlistanontext'    => 'עליכם $1 כדי לצפות או לערוך פריטים ברשימת המעקב.',
 'watchlistcount'       => "'''יש לכם {{plural:$1|פריט אחד|$1 פריטים}} ברשימת המעקב, כולל דפי שיחה.'''",
-'clearwatchlist'       => 'ניקוי רשימת המעקב',
-'watchlistcleartext'   => 'האם אתם בטוחים שברצונכם להסירם?',
-'watchlistclearbutton' => 'נקה את רשימת המעקב',
-'watchlistcleardone'   => 'רשימת המעקב רוקנה. {{plural:$1|פריט אחד הוסר|$1 פריטים הוסרו}} ממנה.',
 'watchnologin'         => 'לא נכנסתם לאתר',
 'watchnologintext'     => 'עליכם [[{{ns:special}}:Userlogin|להיכנס לחשבון]] כדי לערוך את רשימת המעקב.',
 'addedwatch'           => 'הדף נוסף לרשימת המעקב',
@@ -1324,11 +1321,7 @@ $messages = array(
 'wlheader-showupdated' => "* דפים שהשתנו מאז ביקורכם האחרון בהם מוצגים ב'''הדגשה'''.",
 'watchmethod-recent'   => 'בודק את הדפים שברשימת המעקב לשינויים אחרונים.',
 'watchmethod-list'     => 'בודק את העריכות האחרונות בדפים שברשימת המעקב',
-'removechecked'        => 'הסר דפים מסומנים מרשימת המעקב',
 'watchlistcontains'    => 'רשימת המעקב כוללת {{plural:$1|דף אחד|$1 דפים}}.',
-'watcheditlist'        => 'להלן רשימה מסודרת של הדפים ברשימת המעקב. בחרו את הדפים שאתם רוצים להסיר מהרשימה ולחצו על "הסר דפים מסומנים" בתחתית הדף (הסרת דף גם מסירה את דף השיחה שלו, וכיוצא בזה).',
-'removingchecked'      => 'מסיר את הדפים המסומנים מרשימת המעקב…',
-'couldntremove'        => 'לא ניתן להסיר את $1…',
 'iteminvalidname'      => 'בעיה עם $1, שם שגוי…',
 'wlnote'               => "להלן {{plural:$1|השינוי האחרון|'''$1''' השינויים האחרונים}} {{plural:$2|בשעה האחרונה|ב־'''$2''' השעות האחרונות}}.",
 'wlshowlast'           => '(הצג $1 שעות אחרונות | $2 ימים אחרונים | $3)',
@@ -1339,7 +1332,6 @@ $messages = array(
 'watchlist-hide-own'   => 'הסתר עריכות שלי',
 'watchlist-show-minor' => 'הצג עריכות משניות',
 'watchlist-hide-minor' => 'הסתר עריכות משניות',
-'wldone'               => 'בוצע.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'מוסיף לרשימת המעקב…',
@@ -1410,6 +1402,7 @@ $NEWPAGE
 העריכה האחרונה היתה של [[{{ns:user}}:$3|$3]] ([[{{ns:user_talk}}:$3|שיחה]]).',
 'editcomment'                 => "תקציר העריכה היה: \"'''\$1'''\".", # only shown if there is an edit comment
 'revertpage'                  => 'שוחזר מעריכה של [[{{ns:special}}:Contributions/$2|$2]] ([[{{ns:user_talk}}:$2|שיחה]]) לעריכה האחרונה של [[{{ns:user}}:$1|$1]]',
+'rollback-success'            => 'שוחזר מעריכה של $2 לעריכה האחרונה של $1',
 'sessionfailure'              => 'נראה שיש בעיה בחיבורכם לאתר. פעולתכם בוטלה כאמצעי זהירות כנגד התחזות לתקשורת ממחשבכם. אנא חיזרו לדף הקודם ונסו שנית.',
 'protectlogpage'              => 'יומן הגנות',
 'protectlogtext'              => 'להלן רשימה של הגנות וביטולי הגנות על דפים. ראו גם את [[{{ns:special}}:Protectedpages|רשימת הדפים המוגנים]] הנוכחית.',
@@ -1494,8 +1487,8 @@ $NEWPAGE
 'ucnote'        => "להלן '''$1''' השינויים האחרונים שביצע משתמש זה ב־'''$2''' הימים האחרונים:",
 'uclinks'       => 'צפה ב־$1 השינויים האחרונים; צפה ב־$2 הימים האחרונים',
 'uctop'         => '(אחרון)',
-'month'         => 'חודש:',
-'year'          => 'שנה:',
+'month'         => 'עד החודש:',
+'year'          => 'עד השנה:',
 
 'sp-contributions-newest'      => 'חדשות ביותר',
 'sp-contributions-oldest'      => 'ישנות ביותר',
@@ -1654,7 +1647,7 @@ $NEWPAGE
 'move-watch'              => 'מעקב אחרי דף זה',
 'movepagebtn'             => 'העבר דף',
 'pagemovedsub'            => 'ההעברה הושלמה בהצלחה',
-'pagemovedtext'           => 'הדף "[[$1]]" הועבר לשם "[[$2]]".',
+'movepage-moved'          => '<big>הדף "$1" הועבר לשם "$2".</big>',
 'articleexists'           => 'קיים כבר דף עם אותו שם, או שהשם שבחרתם אינו חוקי.
 אנא בחרו שם אחר.',
 'talkexists'              => 'הדף עצמו הועבר בהצלחה, אבל דף השיחה לא הועבר כיוון שקיים כבר דף שיחה במיקום החדש. אנא מזגו אותם ידנית.',
@@ -2278,15 +2271,33 @@ $1',
 # Live preview
 'livepreview-loading' => 'בטעינה…',
 'livepreview-ready'   => 'בטעינה… נטען!',
-'livepreview-failed'  => 'התצוגה המקדימה החיה נכשלה!
-נסו להשתמש בתצוגה מקדימה רגילה.',
-'livepreview-error'   => 'ההתחברות נכשלה: $1 "$2"
-נסו להשתמש בתצוגה מקדימה רגילה.',
+'livepreview-failed'  => 'התצוגה המקדימה החיה נכשלה! נסו להשתמש בתצוגה מקדימה רגילה.',
+'livepreview-error'   => 'ההתחברות נכשלה: $1 "$2". נסו להשתמש בתצוגה מקדימה רגילה.',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'שינויים שבוצעו לפני פחות מ־$1 שניות לא מוצגים ברשימה זו.',
 'lag-warn-high'   => 'בגלל עיכוב בעדכון מסד הנתונים, שינויים שבוצעו לפני פחות מ־$1 שניות לא מוצגים ברשימה זו.',
 
-);
+# Watchlist editor
+'watchlistedit-numitems'       => 'יש לכם {{plural:$1|פריט אחד|$1 פריטים}} ברשימת המעקב, לא כולל דפי שיחה.',
+'watchlistedit-noitems'        => 'רשימת המעקב ריקה.',
+'watchlistedit-clear-title'    => 'ניקוי רשימת המעקב',
+'watchlistedit-clear-legend'   => 'ניקוי רשימת המעקב',
+'watchlistedit-clear-confirm'  => 'פעולה זו תסיר את כל הדפים מרשימת המעקב. האם אתם בטוחים שברצונכם לעשות זאת? באפשרותכם גם [[Special:Watchlist/edit|לבחור כותרות להסרה]].',
+'watchlistedit-clear-submit'   => 'ניקוי',
+'watchlistedit-clear-done'     => 'רשימת המעקב שלכם רוקנה. כל הדפים הוסרו ממנה.',
+'watchlistedit-normal-title'   => 'עריכת רשימת המעקב',
+'watchlistedit-normal-legend'  => 'הסרת דפים מרשימת המעקב',
+'watchlistedit-normal-explain' => 'כל הדפים ברשימת המעקב מוצגים להלן. כדי להסיר דף, יש לסמן את התיבה לידו, וללחוץ על "הסרת הדפים". באפשרותכם גם [[Special:Watchlist/raw|לערוך את הרשימה הגולמית]], או [[Special:Watchlist/clear|להסיר את כל הדפים]].',
+'watchlistedit-normal-submit'  => 'הסרת הדפים',
+'watchlistedit-normal-done'    => '{{plural:$1|כותרת אחת הוסרה|$1 כותרות הוסרו}} מרשימת המעקב:',
+'watchlistedit-raw-title'      => 'עריכת הרשימה הגולמית',
+'watchlistedit-raw-legend'     => 'עריכת הרשימה הגולמית',
+'watchlistedit-raw-explain'    => 'הדפים ברשימת המעקב מוצגים להלן, וניתן לערוך אותם באמצעות הוספה והסרה שלהם מהרשימה; כל כותרת מופיעה בשורה נפרדת. לאחר סיום העריכה, יש ללחוץ על "עדכון הרשימה". באפשרותכם גם [[Special:Watchlist/edit|להשתמש בעורך הרגיל]].',
+'watchlistedit-raw-titles'     => 'דפים:',
+'watchlistedit-raw-submit'     => 'עדכון הרשימה',
+'watchlistedit-raw-done'       => 'רשימת המעקב עודכנה.',
+'watchlistedit-raw-added'      => '{{plural:$1|כותרת אחת נוספה|$1 כותרות נוספו}}:',
+'watchlistedit-raw-removed'    => '{{plural:$1|כותרת אחת הוסרה|$1 כותרות הוסרו}}:',
 
-?>
+);

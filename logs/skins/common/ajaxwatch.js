@@ -52,6 +52,14 @@ wgAjaxWatch.ajaxCall = function() {
 	} else if (wgAjaxWatch.inprogress) {
 		return false;
 	}
+	if(!wfSupportsAjax()) {
+		// Lazy initialization so we don't toss up
+		// ActiveX warnings on initial page load
+		// for IE 6 users with security settings.
+		wgAjaxWatch.supported = false;
+		return true;
+	}
+
 	wgAjaxWatch.inprogress = true;
 	wgAjaxWatch.setLinkText( wgAjaxWatch.watching
 		? wgAjaxWatch.unwatchingMsg : wgAjaxWatch.watchingMsg);
@@ -73,10 +81,7 @@ wgAjaxWatch.processResult = function(request) {
 		return;
 	}
 	var response = request.responseText;
-	if( response.match(/^<err#>/) ) {
-		window.location.href = wgAjaxWatch.watchLinks[0].href;
-		return;
-	} else if( response.match(/^<w#>/) ) {
+	if( response.match(/^<w#>/) ) {
 		wgAjaxWatch.watching = true;
 		wgAjaxWatch.setLinkText(wgAjaxWatch.unwatchMsg);
 		wgAjaxWatch.setLinkID("ca-unwatch");
@@ -86,6 +91,10 @@ wgAjaxWatch.processResult = function(request) {
 		wgAjaxWatch.setLinkText(wgAjaxWatch.watchMsg);
 		wgAjaxWatch.setLinkID("ca-watch");
 		wgAjaxWatch.setHref( 'watch' );
+	} else {
+		// Either we got a <err#> error code or it just plain broke.
+		window.location.href = wgAjaxWatch.watchLinks[0].href;
+		return;
 	}
 	jsMsg( response.substr(4), 'watch' );
 	wgAjaxWatch.inprogress = false;
@@ -117,11 +126,6 @@ wgAjaxWatch.onLoad = function() {
 			wgAjaxWatch.supported = false;
 			return;
 		}
-	}
-
-	if(!wfSupportsAjax()) {
-		wgAjaxWatch.supported = false;
-		return;
 	}
 
 	// The id can be either for the parent (Monobook-based) or the element

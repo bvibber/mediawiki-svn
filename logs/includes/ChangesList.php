@@ -711,4 +711,4 @@ class EnhancedChangesList extends ChangesList {
 	}
 
 }
-?>
+
