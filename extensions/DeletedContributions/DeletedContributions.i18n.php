@@ -17,6 +17,10 @@ $wgDeletedContribsMessages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
 );
 
+$wgDeletedContribsMessages['sk'] = array(
+	'deletedcontributions' => 'Zmazané príspevky používateľa',
+);
+
 $wgDeletedContribsMessages['yue'] = array(
 	'deletedcontributions'		 => '已經刪除咗嘅用戶貢獻'
 );

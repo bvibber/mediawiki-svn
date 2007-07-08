@@ -401,33 +401,18 @@ $1\n
 );
 $wgLuceneSearchMessages['sk'] = array(
 	'searchnumber'          => '<strong>Výsledky $1-$2 zo $3</strong>',
-	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Späť</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Ďalej</span> &#x00BB;',
+	'searchprev'            => '« <span style=\'font-size: small\'>Späť</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Ďalej</span> »',
 	'searchscore'           => 'Relevantnosť: $1',
 	'searchsize'            => '$1KB ($2 slov)',
 	'searchdidyoumean'      => 'Mali ste na mysli: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Ľutujeme, vyhľadávanie nevrátilo na Vašu požiadavku žiadne presné výsledky.',
 	'searchnearmatches'     => '<b>Tieto stránky majú názvy podobné Vášej požiadavke:</b>',
-	'lucenepowersearchtext' => 'Vyhľadávanie v menných priestoroch: $1 Hľadanie $3 $9 $10',
+	'lucenepowersearchtext' => 'Vyhľadávanie v menných priestoroch: $1 Hľadanie $3 $9',
 	'lucenefallback'        => 'S vyhľadávaním na wiki nastal problém. Je možné, že je to dočasné; o chvíľu to skúste znova alebo vyhľadávajte na wiki pomocou externej indexovacej služby:',
+	'searchexactcase'       => 'Vyhľadávanie zohľadňujúce veľkosť písmen',
 	'searchall'             => 'všetko',
 	'searchincategory'      => 'vkategórii',
-	'searchaliases'         => 'm|
-mt|Diskusia
-u|Používateľ
-ut|Diskusia_s_používateľ
-p|Projekt
-pt|Diskusia_k_projektu
-i|Obrázok
-it|Diskusia_k_obrázku
-mw|MediaWiki
-mwt|Diskusia_k_MediaWiki
-t|Šablóna
-tt|Diskusia_k_šablóne
-h|Pomoc
-ht|Diskusia_k_pomoci
-c|Kategória
-ct|Diskusia_ku_kategórii',
 );
 $wgLuceneSearchMessages['sq'] = array(
 	'lucenepowersearchtext' => 'Kërko në hapësirat: $1 për $3 $9',

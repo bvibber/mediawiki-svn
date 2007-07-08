@@ -234,14 +234,15 @@ $wgExpandTemplatesMessages['sk'] = array(
 vstup text a rekurzívne substituuje všetky šablóny,
 ktoré sú v ňom použité. Tiež expanduje funkcie parsera
 ako <nowiki>{{</nowiki>#if:...}} a premenné ako
-<nowiki>{{</nowiki>CURRENTDAY}}&mdash;v podstate
+<nowiki>{{</nowiki>CURRENTDAY}}—v podstate
 takmer všetko v zložených zátvorkách. Robí to pomocou
 volania relevantnej fázy parsera samotného MediaWiki.',
 	'expand_templates_title'           => 'Názov kontextu pre {{PAGENAME}} atď.:',
 	'expand_templates_input'           => 'Vstupný text:',
 	'expand_templates_output'          => 'Výsledok',
-	'expand_templates_ok'              => 'OK',
+	'expand_templates_ok'              => 'OK',#identical but defined
 	'expand_templates_remove_comments' => 'Odstrániť komentáre',
+	'expand_templates_preview'         => 'Náhľad',
 );
 $wgExpandTemplatesMessages['sq'] = array(
 	'expand_templates_input'           => 'Teksti me stampa:',

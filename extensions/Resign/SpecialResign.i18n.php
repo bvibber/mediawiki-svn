@@ -88,6 +88,19 @@ Ch\'a ten-a da ment: \'\'\'a podrà pì nen pijeje andré ën dovrand l\'istess 
 'resign-logentry' => 'a l\'ha gavasse ij drit dë $2',
 ),
 
+'sk' => array(
+'resign' => 'Rezignovať',
+'resign-text' => 'Na tejto stránke sa môžete \'\'\'vzdať svojich privilégií\'\'\' (napr. správca). Prosím, zaškrtnite, ktoré privilégiá chcete odstrániť.
+
+Pamätajte: \'\'\'Týmto spôsobom už svoje privilégiá nedostanete naspäť!\'\'\' Budete musieť presvedčiť byrokrata alebo stewarda, aby vám privilégiá udelil. Používajte preto túto stránku veľmi opatrne.',
+'resign-reason' => 'Dôvod:',
+'resign-confirm' => 'Potvrdzujem, že chcem, aby mi boli odstránené všetky privilégiá, ktoré som začiarkol.',
+'resign-noconfirm' => 'Prosím, zaškrtnite pole ak chcete odstrániť svoje privilégiá.',
+'resign-nogroups' => 'Prosím, zaškrtnite privilégiá, ktoré chcete odstrániť.',
+'resign-success' => '\'\'\'Privilégiá boli úspešne odňaté.\'\'\'',
+'resign-logentry' => 'odstránil svoje privilégiá $2',
+),
+
 	);
 	return $messages;
 }

@@ -82,6 +82,17 @@ function efPicturePopupMessages() {
 'picturepopup_no_license_text' => 'Lë stamp dla licensa a l\'ha pa gnun element con id=imageLicenseText',
 'picturepopup_invalid_icon' => 'Lë stamp dla licensa ò ch\'a manca d\'autut ò ch\'a l\'ha n\'icòna imageLicenseIcon nen bon-a',
 ),
+
+/* Slovak (Helix84) */
+'sk' => array(
+'picturepopup_invalid_title' => 'Neplatný názov obrázka',
+'picturepopup_no_license' => 'Obrázok nemá šablónu licencie',
+'picturepopup_no_image' => 'Obrázok neexistuje',
+'picturepopup_no_license_list' => 'Zoznam licencií je neplatný alebo chýba',
+'picturepopup_license_list' => 'Project:Šablóny licencií',
+'picturepopup_no_license_text' => 'Šablóna licencie nemá značku s atribútom id=imageLicenseText',
+'picturepopup_invalid_icon' => 'Šablóna licencie má neplatnú alebo chýbajúcu značku s atribútom id=imageLicenseText',
+),
 	);
 
 	/* Kazakh default, fallback to kk-kz */
