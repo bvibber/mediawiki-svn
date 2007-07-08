@@ -126,6 +126,18 @@ $wgDesysopMessages['oc'] = array(
 	'desysop'              => 'Levar los dreches d’administrator',
 	'not_sysop'            => 'Aqueste utilizaire es pas un administrator',
 );
+/* Piedmontese (Bèrto 'd Sèra) */
+$wgDesysopMessages['pms'] = array(
+	'desysoptitle'         => 'Révoca dla qualìfica da aministrator',
+	'desysoptext'          => 'Sta domanda-sì a la dòvro ij mangiapapé për gavé le qualìfiche da aministrator. Ch\'a buta lë stranòm dl\'utent e ch\'a-i bata ansima al boton për fé la révoca dla qualìfica.',
+	'desysopname'          => 'Stranòm:',
+	'desysopok'            => '<b>L\'utent "$1" a l\'ha pì nen la qualìfica d\'aministrator</b>',
+	'set_user_rights'      => 'Deje sò drit a j\'utent',
+	'user_rights_set'      => '<b>Ij drit dl\'utent për "$1" a son stait modificà</b>',
+	'set_rights_fail'      => '<b>As peul pa buteje sò drit a "$1". (Ha-lo pa mai scrivù mal lë stranòm?)</b>',
+	'desysop'              => 'Gaveje la qualìfica d\'aministrator a n\'utent',
+	'not_sysop'            => 'St\'utent-sì a l\'é pa n\'aministrator',
+);
 $wgDesysopMessages['ro'] = array(
 	'desysoptitle'         => 'Revocarea permisiunilor de administrator',
 	'desysoptext'          => 'Acest formular este utilizat de birocraţi pentru a revoca permisiunile de administrator ale utilizatorilor. Tastează numele utilizatorului în cutie şi apasă butonul pentru a-i revoca permisiunile de administrator.',

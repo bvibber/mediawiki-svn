@@ -319,6 +319,29 @@ kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzov
 'duplicator-toomanyrevisions' => '[[$1]] a tròp ($2) de revisions e pòt pas èsser copiat. La limita actuala es de $3.',
 ),
 
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'duplicator' => 'Dupliché n\'artìcol',
+'duplicator-toolbox' => 'Sdobié st\'artìcol-sì',
+'duplicator-header' => 'Sòn a lassa feje na duplicassion completa a n\'artìcol, ën fasend-ne ëdcò la còpia dla stòria. A ven motobin a taj quand n\'artìcol a ven tròp gròss e a venta sdobielo, e via fòrt',
+'duplicator-options' => 'Opsion',
+'duplicator-source' => 'Sorgiss:',
+'duplicator-dest' => 'Destinassion:',
+'duplicator-dotalk' => 'Dupliché ëdcò la pàgina ëd discussion (s\'a-i é)',
+'duplicator-submit' => 'Dùplica',
+'duplicator-summary' => 'Copià da [[$1]]',
+'duplicator-success' => '<big>La pàgina \'\'\'[[$1]] a l\'é staita sdobià con la còpia neuva an [[$2]].\'\'\'</big>',
+'duplicator-success-revisions' => '$1 revision {{PLURAL:$1|a l\'é staita|a son ëstaite}} copià.',
+'duplicator-success-talkcopied' => 'A l\'é sdobiasse ëdcò la pàgina ëd discussion.',
+'duplicator-success-talknotcopied' => 'La pàgina ëd discussion a l\'é pa podusse sdobié.',
+'duplicator-failed' => 'Sta pàgina a l\'é pa podusse dupliché. A l\'é riva-ie n\'eror nen identificà.',
+'duplicator-source-invalid' => 'Për piasì ch\'a-i buta un tìtol bon ant la sorgiss',
+'duplicator-source-notexist' => '[[$1]] a-i é pa. Për piasì, ch\'a buta ël tìtol ëd na pàgina ch\'a-i sia.',
+'duplicator-dest-invalid' => 'Për piasì, ch\'a-i buta un tìtol bon ant la destinassion',
+'duplicator-dest-exists' => '[[$1]] a-i é già. Për piasì, ch\'a buta un tìtol ch\'a-i sia anco\' nen.',
+'duplicator-toomanyrevisions' => '[[$1]] a l\'ha tròpe ($2) revision e as peul pa copiesse. Al dì d\'ancheuj ël màssim a l\'é $3.',
+),
+
 /* Russian */
 'ru' => array(
 'duplicator' => 'Клонировать статью',

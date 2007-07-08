@@ -62,6 +62,10 @@ function efMinimumNameLengthMessages() {
 'oc' => array(
 'minnamelength-error' => 'Vòstre nom d\'utilizaire es tròp cort. La longor minimom es $1.',
 ),
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'minnamelength-error' => 'Sò stranòm a l\'é tròp curt. A venta ch\'al sia longh almanch $1 caràter.',
+),
 
 'sk' => array(
 'minnamelength-error' => 'Vaše používateľské meno je príliš krátke. Minimálna dĺžka je $1.',

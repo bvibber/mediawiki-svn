@@ -358,6 +358,27 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke'  => 'a levat l\'estatut de bòt de [[$1]]',
 ),
 
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'makebot'                 => 'Gava ò buta la qualìfica da trigomiro',
+'makebot-header'          => '\'\'\'Un mangiapapé a peul dovré sta pàgina-sì për buteje ò gaveje la [[Help:Bot|qualìfica da trigomiro]] al cont ëd n\'àotr utent.\'\'\'<br />Le qualìfiche da trigomiro a stërmo le modìfiche ëd n\'utent da \'nt j\'[[Special:Recentchanges|ùltime modìfiche]] e da dj\'àotre liste parej, e a ven-o a taj për marché coj utent ch\'a fan dij travaj aotomàtich. Sòn a ventrìa sempe dovrelo conforma a le polìtiche corente.',
+'makebot-username'        => 'Stranòm:',
+'makebot-search'          => 'Va',
+'makebot-isbot'           => '[[User:$1|$1]] a l\'ha la qualìfica da trigomiro.',
+'makebot-notbot'          => '[[User:$1|$1]] a l\'ha pa la qualìfica da trigomiro.',
+'makebot-privileged'      => '[[User:$1|$1]] a l\'ha la [[Special:Listadmins|qualìfica da aministrator ò da mangiapapé]], e a peul nen avej cola da trigomiro.',
+'makebot-change'          => 'Modìfica lë stat:',
+'makebot-grant'           => 'Buta',
+'makebot-revoke'          => 'Gava',
+'makebot-comment'         => 'Coment:',
+'makebot-granted'         => '[[User:$1|$1]] adess a l\'ha la qualìfica da trigomiro.',
+'makebot-revoked'         => '[[User:$1|$1]] a l\'ha pì nen la qualìfica da trigomiro.',
+'makebot-logpage'         => 'Registr dle qualìfiche da trigomiro',
+'makebot-logpagetext'     => 'Cost-sì a l\'é un registr ch\'a marca le modìfiche faite a le qualìfiche da [[Help:Bot|trigomiro]] dj\'utent.',
+'makebot-logentrygrant'   => 'qualìfica da trigomiro daita a [[$1]]',
+'makebot-logentryrevoke'  => 'gavà la qualìfica da trigomiro a [[$1]]',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'makebot' => 'Conceder ou remover estatuto de bot',

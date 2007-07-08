@@ -86,11 +86,10 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 'blacklistedusernametext' => 'Lo nom d’utilizaire qu\'avètz causit se tròba sus la [[MediaWiki:Usernameblacklist|lista dels noms interdiches]]. Causissètz un autre nom.',
 ),
 
-/* Russian */
-'ru' => array(
-'blacklistedusername' => 'Запрещённое имя пользователя',
-'blacklistedusernametext' => 'Имя пользователя, которое вы выбрали, находится в [[MediaWiki:Usernameblacklist|
-списке запрещённых имён]]. Пожалуйста, выберите другое имя.',
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'blacklistedusername' => 'Stranòm vietà',
+'blacklistedusernametext' => 'Lë stranòm ch\'a l\'ha sërnusse a l\'é ant la [[MediaWiki:Usernameblacklist|lista djë stranòm vietà]]. Për piasì, ch\'as në sërna n\'àotr.',
 ),
 
 /* Portuguese (Lugusto) */
@@ -98,6 +97,13 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 'blacklistedusername' => 'Nome de utilizador na lista negra',
 'blacklistedusernametext' => 'O nome de utilizador selecionado é similar a um presente na [[MediaWiki:Usernameblacklist|
 lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
+),
+
+/* Russian */
+'ru' => array(
+'blacklistedusername' => 'Запрещённое имя пользователя',
+'blacklistedusernametext' => 'Имя пользователя, которое вы выбрали, находится в [[MediaWiki:Usernameblacklist|
+списке запрещённых имён]]. Пожалуйста, выберите другое имя.',
 ),
 
 /* Slovak (helix84) */

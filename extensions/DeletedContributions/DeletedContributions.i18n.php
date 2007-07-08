@@ -13,6 +13,10 @@ $wgDeletedContribsMessages['id'] = array(
 	'deletedcontributions'		 => 'Kontribusi yang dihapus'
 );
 
+$wgDeletedContribsMessages['pms'] = array(
+	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
+);
+
 $wgDeletedContribsMessages['yue'] = array(
 	'deletedcontributions'		 => '已經刪除咗嘅用戶貢獻'
 );

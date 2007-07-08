@@ -74,6 +74,20 @@ Ingat: '''Anda tidak dapat memperoleh kembali hak Anda melalui ini!''' Anda haru
 'resign-logentry'  => 'melepaskan hak $2 dari dirinya sendiri',
 ),
 
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'resign' => 'Dimission',
+'resign-text' => 'A peul \'\'\'gavesse sò drit\'\'\' (pr\'esempi, la qualìfica da aministrator) ant sta pàgina-sì. Për piasì, ch\'a-i fasa la crosëtta ansima a ij drit ch\'a veul gavesse.
+
+Ch\'a ten-a da ment: \'\'\'a podrà pì nen pijeje andré ën dovrand l\'istess sistema!\'\'\' A l\'avra da convince un mangiapapé ò un vardian a buteje torna sò drit. Për piasì, sta pàgina ch\'a la dòvra con criteri.',
+'resign-reason' => 'Rason:',
+'resign-confirm' => 'I confermo ch\'i veuj gaveme tuti ij drit dont casela i l\'hai fa-ie la crosëtta ansima.',
+'resign-noconfirm' => 'Për piasì, ch\'a-i buta la crosëtta ansima a la casela ëd conferma s\'a veul gavesse sò drit.',
+'resign-nogroups' => 'Për piasì, ch\'a-i buta la crosëtta ansima a le casele dij drit ch\'a veul gavesse.',
+'resign-success' => '\'\'\'Soe dimission a son andaite a bon fin.\'\'\'',
+'resign-logentry' => 'a l\'ha gavasse ij drit dë $2',
+),
+
 	);
 	return $messages;
 }

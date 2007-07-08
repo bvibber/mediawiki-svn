@@ -88,6 +88,10 @@ $wgDismissableSiteNoticeMessages['oc'] = array(
 	'sitenotice_close' => 'amagar',
 );
 
+$wgDismissableSiteNoticeMessages['pms'] = array(
+	'sitenotice_close' => 'stërma',
+);
+
 $wgDismissableSiteNoticeMessages['pt'] = array(
 	'sitenotice_close' => 'ignorar',
 );

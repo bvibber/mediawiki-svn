@@ -208,6 +208,20 @@ function efImageMapMessages() {
 'imagemap_description'          => 'A prepaus d\'aqueste imatge',
 ),
 
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: ant la prima riga a venta ch\'a-i sia la specìfica ëd na figura',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: la figura ò ch\'a l\'ha chèich-còs ch\'a va nen, ò ch\'a-i é nen d\'autut',
+'imagemap_no_link'              => '&lt;imagemap&gt;: pa gnun-a anliura bon-a a la fin dla riga $1',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: tìtol nen bon ant l\'anliura dla riga $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: pa basta ëd coordinà për fé na forma a la riga $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: forma nen arconossùa a la riga $1, minca riga a la dev anandiesse con un ëd: default, rect, circle ò poly',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: almanch n\'area a venta ch\'a sia specificà',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: coordinà nen bon-a a la riga $1, a l\'ha da esse un nùmer',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: specìfica dla descrission nen bon-a, a l\'ha da esse un-a ëd coste-sì: <tt>$1</tt>',
+'imagemap_description'          => 'Rësgoard a sta figura-sì',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: é necessário especificar uma imagem na primeira linha',

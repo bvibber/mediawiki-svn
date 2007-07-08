@@ -116,6 +116,15 @@ $wgFilepathMessages['oc'] = array(
 	'filepath_page'   => 'Fichièr:',
 	'filepath_submit' => 'Camin',
 );
+/* Piedmontese (Bèrto 'd Sèra) */
+$wgFilepathMessages['pms'] = array(
+	'filepath'        => 'Përcors d\'archivi',
+	'filepath_page'   => 'Archivi:',
+	'filepath_submit' => 'Përcors',
+	'filepath-summary' => 'Sta pàgina special-sì a la smon ël përcors complet për rive-ie a n\'archivi. Le figure as ësmon-o a amzura pijn-a, j\'àotre sòrt d\'archivi a ven-o faite parte da sò programa a pòsta.
+	
+	Ch\'a buta mach ël nòm dl\'archivi sensa pa ël prefiss "{{ns:image}}:".',
+);
 $wgFilepathMessages['pt'] = array(
 	'filepath'         => 'Diretório do ficheiro',
 	'filepath_page'    => 'Ficheiro:',

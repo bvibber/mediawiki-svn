@@ -202,6 +202,21 @@ $wgExpandTemplatesMessages['oc'] = array(
 	'expand_templates_ok'              => 'D\'acòrdi',
 	'expand_templates_remove_comments' => 'Suprimir los comentaris.',
 );
+/* Piedmontese (Bèrto 'd Sèra) */
+$wgExpandTemplatesMessages['pms'] = array(
+	'expandtemplates'                  => 'Anàlisi djë stamp',
+	'expand_templates_intro'           => 'Sta pàgina special-sì a pija dël test e a-i fa n\'anàlisi arcorsiva ëd tuti jë stamp ch\'a l\'ha andrinta. 
+A l\'analisa ëdcò le fonsion anterpretà coma
+<nowiki>{{</nowiki>#if:...}}, e le variabij coma
+<nowiki>{{</nowiki>CURRENTDAY}}&mdash;visadì bele che tut lòn ch\'a-i é antra dobie grafe.
+Sòn a lo fa ën ciamand l\'anterprete dal programa MediaWiki.',
+	'expand_templates_title'           => 'Tìtol ëd contest për {{PAGENAME}} e via fòrt:',
+	'expand_templates_input'           => 'Test da analisé:',
+	'expand_templates_output'          => 'Arzultà',
+	'expand_templates_ok'              => 'Bin parèj',
+	'expand_templates_remove_comments' => 'Gava via ij coment',
+	'expand_templates_preview'         => 'Preuva',
+);
 $wgExpandTemplatesMessages['ru'] = array(
 	'expandtemplates'                  => 'Развёртка шаблонов',
 	'expand_templates_intro'           => 'Эта служебная страница преобразует текст, рекурсивно разворачивая все шаблоны в нём.

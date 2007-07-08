@@ -110,6 +110,19 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 'querysuccessful'  => 'La requèsta es estada executada amb succès.',
 ),
 
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'asksql'           => 'Operassion SQL',
+'asksqltext'       => 'Ch\'a dòvra ël quàder ëd domanda ambelessì sota për fé dj\'operassion bele drita ant sla base dat.
+Ch\'a dòvra le virgolëtte sìngole (\'parèj\') për marchèj\'espression leteraj.
+Sòn soèns a men-a a carié ëd travaj la màchina serventa, donca për piasì ch\'a lo dòvra con criteri.',
+'sqlislogged'      => 'Ch\'a ten-a da ment che tute j\'operassion a resto marcà ant un registr a pòsta.',
+'sqlquery'         => 'Ch\'a scriva soa operassion',
+'querybtn'         => 'Mandé an là l\'operassion',
+'selectonly'       => 'As peul mach fesse operassion ëd letura.',
+'querysuccessful'  => 'Operassion andaita a bon fin',
+),
+
 /* Romanian (KlaudiuMihăilă) */
 'ro' => array(
 'asksql'           => 'Interogare SQL',

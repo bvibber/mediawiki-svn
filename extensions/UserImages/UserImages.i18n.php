@@ -63,6 +63,12 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Nom d’utilizaire invalid o mancant.',
 'userimages-noimages' => '$1 a pas importat cap d\'imatge.',
 ),
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'userimages-caption' => 'Figure carià da $1',
+'userimages-noname' => 'Stranòm nen bon ò ch\'a-i é nen d\'autut.',
+'userimages-noimages' => '$1 a l\'ha pa carià gnun-a figura.',
+),
 /* Slovak (by helix84) */
 'sk' => array(
 'userimages-caption' => 'Obrázky nahrané používateľom $1',

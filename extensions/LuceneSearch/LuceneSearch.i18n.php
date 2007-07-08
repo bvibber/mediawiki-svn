@@ -341,6 +341,27 @@ Szukana fraza $3 $9 $10",
 Jest to tymczasowe; spróbuj ponownie za parę chwil
 lub przeszukaj wiki za pomocą zewnętrznych wyszukiwarek:\n"
 );
+/* Piedmontese (Bèrto 'd Sèra) */
+$wgLuceneSearchMessages['pms'] = array(
+	'searchnumber'          => '<strong>Arzultà $1-$2 ëd $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>andré</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Anans</span> &#x00BB;',
+	'searchscore'           => 'Arlevansa: $1',
+	'searchsize'            => '$1 KB ($2 paròle)',
+	'searchdidyoumean'      => 'Veul-lo dì: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Darmagi, a l\'é pa trovasse un chèich-còs ch\'a fussa giust ëscarpì lòn ch\'a sërcava chiel/chila.',
+	'searchnearmatches'     => '<b>Ste pàgine-sì a l\'han un tìtol ch\'a-j ësmija a lòn ch\'a sërca chiel/chila:</b>',
+	'lucenepowersearchtext' => 'Sërchè ant jë spassi nominaj:
+
+$1
+
+Sërchè $3 $9',
+	'lucenefallback'        => 'Ël motor d\'arsërca a l\'ha chèich gran-a.
+A l\'é belfé ch\'a sia già butasse a pòst daspërchiel; ch\'a lassa passé na minuta e peuj ch\'a preuva torna,
+ò pura ch\'a preuva a sërché ant la wiki ën dovrand un motor d\'arsërca estern:',
+	'searchall'             => 'tuti',
+	'searchincategory'      => 'ant la categorìa',
+);
 $wgLuceneSearchMessages['pt'] = array(
 	'searchnumber'          => "<strong>Resultados $1-$2 de $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Anterior</span>",

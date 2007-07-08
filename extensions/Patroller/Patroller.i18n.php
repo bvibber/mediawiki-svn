@@ -214,8 +214,32 @@ function efPatrollerMessages() {
 'grouppage-patroller' => '{{ns:project}}:Patrolhaire',
 ),
 
-/* Slovak (helix84) */
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'patrol' => 'Patojé le modìfiche',
+'patrol-endorse' => 'Aprové',
+'patrol-revert' => 'Buté com a l\'era',
+'patrol-revert-reason' => 'Rason:',
+'patrol-skip' => 'Sàota',
+'patrol-reverting' => 'Ën tirand andré: $1',
+'patrol-nonefound' => 'Gnun-a modìfica da patojé.',
+'patrol-endorsed-ok' => 'La modìfica a l\'é staita marcà "patojà".',
+'patrol-endorsed-failed' => 'La modìfica a l\'é nen podusse marché coma "patojà"',
+'patrol-reverted-ok' => 'La modìfica a l\'é staita tirà andré com a l\'era.',
+'patrol-reverted-failed' => 'Sta modìfica-sì as peul pa buté andré com a l\'era.',
+'patrol-skipped-ok' => 'Lassa beuje la modìfica.',
+'patrol-reasons' => '* vandalism sempi
+* preuva ëd n\'utent neuv
+* ch\'a varda la pàgina ëd discussion',
+'patrol-another' => 'Smon n\'àotra modìfica, s\'a-i n\'a-i é un-a da smon-e.',
+'patrol-stopped' => 'A l\'ha sërnù dë nen patojé n\'àotra modìfica. $1',
+'patrol-resume' => 'Ch\'a bata ambelessì për andé anans da andova a l\'era.',
+'group-patroller' => 'Gent ëd patoja',
+'group-patroller-member' => 'ëd patoja',
+'grouppage-patroller' => '{{ns:project}}:patoja',
+),
 
+/* Slovak (helix84) */
 'sk' => array(
 'patrol' => 'Strážiť úpravy',
 'patrol-endorse' => 'Schváliť',

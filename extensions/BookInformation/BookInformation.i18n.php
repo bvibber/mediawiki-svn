@@ -185,6 +185,21 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Fornidor de donadas : $1',
 ),
 
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'bookinfo-header' => 'Anformassion ant sëj lìber',
+'bookinfo-result-title' => 'Tìtol:',
+'bookinfo-result-author' => 'Aotor:',
+'bookinfo-result-publisher' => 'Editor:',
+'bookinfo-result-year' => 'Ann:',
+'bookinfo-error-invalidisbn' => 'ISBN pa giusta',
+'bookinfo-error-nosuchitem' => 'Vos che ò ch\'a-i é nen ò ch\'a l\'é pa trovasse.',
+'bookinfo-error-nodriver' => 'As riess nen a fé parte ël pilòta dj\'Anformassion ant sëj Lìber',
+'bookinfo-error-noresponse' => 'Pa d\'arspòsta, ò miraco a la riva mach tròp tard',
+'bookinfo-purchase' => 'Caté ël lìber da: $1',
+'bookinfo-provider' => 'Sorgiss dij dat: $1',
+),
+
 /* Russian (Alexander Sigaachov) */
 'ru' => array(
 'bookinfo-header' => 'Информация о книге',

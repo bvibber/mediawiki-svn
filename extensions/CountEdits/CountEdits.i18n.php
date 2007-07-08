@@ -214,6 +214,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Cap de contribucion sus aqueste wiki.',
 ),
 
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'countedits' => 'Total dle modìfiche',
+'countedits-warning' => '\'\'\'Avis:\'\'\' Mai giudiché un lìber da soa coertin-a. Ch\'a giùdica pa n\'utent da vàire modìfiche ch\'a l\'ha fait.',
+'countedits-username' => 'Stranòm:',
+'countedits-ok' => 'Bin parèj',
+'countedits-nosuchuser' => 'A-i é pa gnun ch\'a l\'abia lë stranòm $1.',
+'countedits-resultheader' => 'Arzultà për $1',
+'countedits-resulttext' => '$1 a l\'ha fait $2 modìfiche',
+'countedits-mostactive' => 'Contributor pì ativ',
+'countedits-nocontribs' => 'A-i é pa anco\' sta-ie gnun-a modìfica a sta wiki-sì.',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'countedits' => 'Contador de edições',

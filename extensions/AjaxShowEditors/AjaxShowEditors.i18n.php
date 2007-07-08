@@ -63,6 +63,11 @@ $wgAjaxShowEditorsMessages['oc'] = array(
 	'ajax-se-pending' => 'refrescament en cors ... (clicatz sus aqueste messatge o modificatz la pagina)',
 	'ajax-se-idling' => '(i a $1 s)',
 );
+$wgAjaxShowEditorsMessages['pms'] = array(
+	'ajax-se-title' => 'Antramentr ch\'as modìfica:',
+	'ajax-se-pending' => 'a l\'ha dë esse agiornà ... (Ch\'a-i bata ansima a sta casela ò pura ch\'a fasa che fé soa modìfica)',
+	'ajax-se-idling' => '(da $1 second)',
+);
 $wgAjaxShowEditorsMessages['ru'] = array(
 	'ajax-se-title' => 'В настоящий момент редактируют:',
 	'ajax-se-pending' => 'ожидание обновления... (нажмите здесь или начните редактирование)',

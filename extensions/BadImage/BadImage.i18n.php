@@ -187,28 +187,6 @@ function efBadImageMessages() {
 'badimages-log-remove' => '[[$1]] を一覧から削除しました。',
 ),
 
-/* Portuguese (Lugusto) */
-'pt' => array(
-'badimages' => 'Imagens com problemas',
-'badimages-add-btn' => 'Adicionar',
-'badimages-added' => '$1 foi adicionado à lista.',
-'badimages-count' => "Atualmente existem '''$1''' imagens na lista de imagens com problemas.",
-'badimages-name' => 'Nome:',
-'badimages-not-added' => 'Não foi possível adicionar a imagem.',
-'badimages-not-removed' => 'Não foi possível remover a imagem.',
-'badimages-reason' => 'Motivo:',
-'badimages-remove' => '(remover)',
-'badimages-remove-btn' => 'Remover',
-'badimages-remove-confirm' => 'Confirme a remoção $1 da listagem:',
-'badimages-removed' => '$1 foi removido da lista.',
-'badimages-subheading' => 'Itens atuais',
-'badimages-unprivileged' => '(Você não possui permissões suficientes para alterar a listagem)',
-'badimages-log-name' => 'Registo de imagens com problemas',
-'badimages-log-header' => 'Este é um registo das alterações feitas na [[Help:Lista de imagens com problemas|lista de imagens com problemas]].',
-'badimages-log-add' => 'adicionada [[$1]] na lista de imagens com problemas',
-'badimages-log-remove' => 'removida [[$1]] da lista de imagens com problemas',
-),
-
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'badimages' => 'Verwijderlijst afbeeldingen',
@@ -272,6 +250,50 @@ function efBadImageMessages() {
 'badimages-log-header' => 'Istoric de las modificacions de la [[Ajuda:Lista dels imatges indesirables|lista dels imatges indesirables]].',
 'badimages-log-add' => 'a ajustat [[$1]] a la lista dels imatges indesirables',
 'badimages-log-remove' => 'a levat [[$1]] de la lista dels imatges indesirables',
+),
+
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'badimages' => 'Lista dle figure da deje deuit',
+'badimages-add-btn' => 'Gionta',
+'badimages-added' => '$1 a l\'é stait giontà a la lista.',
+'badimages-count' => 'A-i son \'\'\'$1\'\'\' figure marcà ch\'a venta deje deuit.',
+'badimages-name' => 'Nòm:',
+'badimages-not-added' => 'La figura a l\'é pa podusse gionté.',
+'badimages-not-removed' => 'La figura a l\'é pa podusse gavé.',
+'badimages-reason' => 'Rason:',
+'badimages-remove' => '(gava)',
+'badimages-remove-btn' => 'Gava',
+'badimages-remove-confirm' => 'Për piasì, ch\'an conferma ch\'a veul gavé via $1 da \'nt la lista:',
+'badimages-removed' => '$1 a l\'é stait gavà via da \'nt la lista.',
+'badimages-subheading' => 'Al dì d\'ancheuj andrinta a-i son:',
+'badimages-unprivileged' => '(A l\'ha pa la qualìfica dont a fa da manca për modifichè sta lista-sì)',
+'badimages-log-name' => 'Figure ch\'a venta deje deuit.',
+'badimages-log-header' => 'Sossì a l\'é lòn ch\'a l\'é riva-ie a la [[Help:Bad image list|lista dle figure ch\'a venta deje deuit]].',
+'badimages-log-add' => '[[$1]] a l\'é stait marcà ch\'a venta deje deuit.',
+'badimages-log-remove' => '[[$1]] a l\'é stait gavà da lòn ch\'a venta deje deuit.',
+),
+
+/* Portuguese (Lugusto) */
+'pt' => array(
+'badimages' => 'Imagens com problemas',
+'badimages-add-btn' => 'Adicionar',
+'badimages-added' => '$1 foi adicionado à lista.',
+'badimages-count' => "Atualmente existem '''$1''' imagens na lista de imagens com problemas.",
+'badimages-name' => 'Nome:',
+'badimages-not-added' => 'Não foi possível adicionar a imagem.',
+'badimages-not-removed' => 'Não foi possível remover a imagem.',
+'badimages-reason' => 'Motivo:',
+'badimages-remove' => '(remover)',
+'badimages-remove-btn' => 'Remover',
+'badimages-remove-confirm' => 'Confirme a remoção $1 da listagem:',
+'badimages-removed' => '$1 foi removido da lista.',
+'badimages-subheading' => 'Itens atuais',
+'badimages-unprivileged' => '(Você não possui permissões suficientes para alterar a listagem)',
+'badimages-log-name' => 'Registo de imagens com problemas',
+'badimages-log-header' => 'Este é um registo das alterações feitas na [[Help:Lista de imagens com problemas|lista de imagens com problemas]].',
+'badimages-log-add' => 'adicionada [[$1]] na lista de imagens com problemas',
+'badimages-log-remove' => 'removida [[$1]] da lista de imagens com problemas',
 ),
 
 /* Russian (Alexander Sigachov) */

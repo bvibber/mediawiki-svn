@@ -71,6 +71,17 @@ function efPicturePopupMessages() {
 'picturepopup_no_license_text' => 'Lisensmalen har intet element med id=imageLicenseText',
 'picturepopup_invalid_icon' => 'Lisensmalen mangler eller har ugyldig imageLicenseIcon-element',
 ),
+
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'picturepopup_invalid_title' => 'Tìtol dla figura nen bon',
+'picturepopup_no_license' => 'La figura a l\'ha pa gnun tacolèt da licensa',
+'picturepopup_no_image' => 'Pa gnun-a figura parej',
+'picturepopup_no_license_list' => 'La lista dle license ò ch\'a l\'é nen bon-a ò ch\'a-i é nen d\'autut',
+'picturepopup_license_list' => 'Tacolèt dij drit d\'aotor an Project:Figura',
+'picturepopup_no_license_text' => 'Lë stamp dla licensa a l\'ha pa gnun element con id=imageLicenseText',
+'picturepopup_invalid_icon' => 'Lë stamp dla licensa ò ch\'a manca d\'autut ò ch\'a l\'ha n\'icòna imageLicenseIcon nen bon-a',
+),
 	);
 
 	/* Kazakh default, fallback to kk-kz */

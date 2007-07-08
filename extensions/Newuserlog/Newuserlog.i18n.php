@@ -122,6 +122,13 @@ $wgNewuserlogMessages['pl'] = array(
 	'newuserlog-create-entry'  => 'Nowy użytkownik',
 	'newuserlog-create2-entry' => 'utworzono konto dla $1',
 );
+/* Piedmontese (Bèrto 'd Sèra) */
+$wgNewuserlogMessages['pms'] = array(
+	'newuserlogpage'           => 'Registr dla creassion dj\'utent',
+	'newuserlogpagetext'       => 'Sossì a l\'é un registr andova ch\'as marco le creassion dj\'utent',
+	'newuserlog-create-entry'  => 'Neuv utent',
+	'newuserlog-create2-entry' => 'Cont doertà për $1',
+);
 $wgNewuserlogMessages['pt'] = array(
 	'newuserlogpage'           => 'Registo de criação de utilizadores',
 	'newuserlogpagetext'       => 'Este é um registo de novas contas de utilizador',

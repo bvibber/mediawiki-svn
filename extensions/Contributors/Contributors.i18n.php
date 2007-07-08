@@ -244,6 +244,20 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'L’article $1 existís pas.',
 ),
 
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'contributors' => 'A l\'han contribuì',
+'contributors-toolbox' => 'Contributor prinsipaj',
+'contributors-legend' => 'Lista dij contributor prinsipaj a n\'artìcol',
+'contributors-target' => 'Tìtol:',
+'contributors-submit' => 'Smon',
+'contributors-subtitle' => 'Contributor prinsipaj ëd $1',
+'contributors-others-long' => 'J\'àotri contributor dë sta pàgina-sì a son antra $1.',
+'contributors-others' => 'e antra $1 dj\'àotri',
+'contributors-badtitle' => 'Tìtol nen bon',
+'contributors-nosuchpage' => 'L\'artìcol $1 a-i é pa.',
+),
+
 /* Portuguese (Lugusto) */
 'pt' => array(
 'contributors' => 'Contribuidores',

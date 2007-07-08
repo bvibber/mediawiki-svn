@@ -121,6 +121,28 @@ sphinx|Esfinx',
 'vote-invalid-choice' => 'Devètz causir una de las opcions disponibla.',
 ),
 
+/* Piedmontese (Bèrto 'd Sèra) */
+'pms' => array(
+'vote' => 'Voté',
+'vote-header' => 'A peul voté për \'\'\'ël superbargé dl<nowiki>\'</nowiki>ann\'\'\' ambelessì!',
+'vote-current' => 'Sò vot corent a l\'é për \'\'\'$1\'\'\'.',
+'vote-legend' => 'Voté ò cambié sò vot',
+'vote-caption' => 'Soa selession:',
+'vote-choices' => 'Mini|Dumini
+Chin-a|Chin-a
+Gioanin|Gioanin',
+'vote-submit' => 'Voté',
+'vote-registered' => 'Sò vot a l\'é stait registrà.',
+'vote-view-results' => 'Vardé j\'arzultà',
+'vote-results' => 'Arzultà dël vot',
+'vote-results-choice' => 'Sërnùa',
+'vote-results-count' => 'Cont',
+'vote-results-none' => 'Al dì d\'ancheuj a l\'ha anco\' pa votà gnun.',
+'vote-login' => 'Për voté a venta $1.',
+'vote-login-link' => 'ch\'a rintra ant ël sistema',
+'vote-invalid-choice' => 'A venta ch\'as selession-a un-a dj\'opsion disponibij.',
+),
+
 'sk' => array(
 'vote' => 'Hlasovať',
 'vote-header' => 'Tu môžete hlasovať o \'\'\'Hlavnom diktátorovi sveta\'\'\'!',

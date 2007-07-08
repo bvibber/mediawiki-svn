@@ -827,6 +827,75 @@ Oto zakodowana wersja. Będzie ona publicznie wyświetlona w [[Special:Boardvote
 	'group-boardvote'         => 'Koordynatorzy wyborów',
 	'group-boardvote-member'  => 'Koordynator wyborów',
 );
+$wgBoardVoteMessages['pms'] = array(
+	'boardvote'               => 'Elession dël Consej ëd Gestion dla Fondassion Wikimedia',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Voté]]
+* [[Special:Boardvote/list|Vardé ij vot ch\'a-i son al dì d\'ancheuj]]
+* [[Special:Boardvote/dump|Dëscarié la version segretà dij vot]]',
+	'boardvote_intro'         => '<blockquote>
+<p>
+Bin ëvnù a la quarta elession dël Consej ëd Gestion dla Wikimedia, visadì dl\'aotorità ch\'a la goèrna la Fondassion Wikimedia. I soma antramentr ch\'i votoma për sërne tre person-e ch\'a rapresento la comun-a dj\'utent dij vàire proget dla Wikimedia. Ste tre person-e ch\'a saran elegiùe a travajeran për doj agn ant ël Consej ëd Gestion. A giutëran a determiné le diression che ij proget dla Wikimedia a l\'avran ant lë vnì, tant pijait un për un che tuti ansema, e a rapresenteran j\'anteressi e ij but <em>dj\'eletor</em>. A l\'avran da decide coma fé dl\'incass për andé anans e coma spend-lo, antra vàire àotre ròbe.</p>
+
+<p>Anans dë voté, për piasì ch\'as lesa bin ij programa dij candidà e lòn ch\'a l\'han arspondù a vàire question. Minca candidà a l\'é n\'utent ch\'a l\'é vagnasse sò rispet ant sël camp, ën dand-se da fé con sò temp e sò sfòrs a fé an manera che sti proget a fusso un pòst ch\'a fa piasì ess-ie, e ch\'a fusso motobin dedicà a arsërchè e a spantié a gràtis la conossensa dl\'òmo.</p>
+
+<p>A peul voté për vàire candidà ch\'a veul. Ij tre candidà che a la fin dle fin a l\'avran pì \'d vot a saran elegiù. S\'a-i dovèissa mai riveie na parità as ciamërìa n\'elession supletiva antra coj ch\'a son a pari mèrit.</p>
+
+<p>Për piasì, ch\'as visa ch\'a peul mach voté da \'nt un proget sol. Bele che se a l\'avèissa fait pì che 400 modìfiche an pì che un proget, lòn a vorerìa nen dì ch\'a peul voté doe vire. Se pì anans a vorèissa cambié sò vot a podrìa felo, ma sempe da \'nt ël proget d\'andova ch\'a l\'ha votà la prima vira.</p>
+
+<p>Për savejne dë pì, ch\'a varda:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ" class="external">Soèns an ciamo - Elession</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/en" class="external">Candidà</a></li></ul>
+</blockquote>',
+	'boardvote_intro_change'  => '<p>Chiel/Chila a l\'ha già votà. Comsëssìa, a peul sempe cambié sò vot ën dovrand la domanda ambelessì sota.
+Për piasì, ch\'a-i buta la crosëtta ansima a le casele dij candidà ch\'a veul voté.</p>',
+	'boardvote_entered'       => 'Motobin mersì, sò vot a l\'é stait registrà.
+
+S\'a veul, a peul marchesse sò detaj dla votassion. Sò vot a resta:
+
+<pre>$1</pre>
+
+A l\'é stait butà via segretà con la ciav pùblica dj\'Aministrator dj\'Elession:
+
+<pre>$2</pre>
+
+Coma arzultà a në ven la version segretà ch\'i jë smonoma ambelessì sota. A resta smonù al pùblich ant sla pàgina [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|André]]',
+	'boardvote_nosession'     => 'Ël sistema a-i la fa pa a determiné soa utensa ant la Wikimedia. Për piasì, ch\'a rintra ant ël sistema da \'nt la wiki andova ch\'a l\'ha drit ëd vot, e d\'ambelelì ch\'a vada a<nowiki>[[Special:Boardvote]]</nowiki>. A dev dovré un cont ch\'a l\'abia fait almanch $1 contribussion anans dël $2, e dont soa prima modìfica a sia staita faita anans dël $3.
+
+Ch\'as visa ch\'a l\'ha dë regolé sò navigator (browser) an manera ch\'a pija ij cookies da \'nt la màchina serventa esterna dle votassion: \'\'\'wikimedia.spi-inc.org\'\'\'.',
+	'boardvote_notloggedin'   => 'A l\'é anco\' pa rintra ant ël sistema. Për voté a venta dovré un cont con almanch $1 modìfiche faite anans dij $2, e dont prima modìfica a la sia staita faita anans dij $3.',
+	'boardvote_notqualified'  => 'Chiel a l\'ha nen drit al vot an st\'elession-sì. Un për podej voté a dev avej fait almanch $3 modìfiche anans dël $2, e soa prima modìfica a dovrìa esse staita faita anans dël $5.',
+	'boardvote_novotes'       => 'A l\'ha anco\' pa votà gnun.',
+	'boardvote_time'          => 'Data e ora',#identical but defined
+	'boardvote_user'          => 'Utent',
+	'boardvote_edits'         => 'Modìfiche',
+	'boardvote_days'          => 'Dì',
+	'boardvote_ip'            => 'IP',#identical but defined
+	'boardvote_ua'            => 'Agent dl\'utent',
+	'boardvote_listintro'     => '<p>Sòn a l\'é la lista ëd tuti ij vot ch\'a son ëstait registrà al dì d\'ancheuj. $1 për ës-ciairé ij dat segretà.</p>',
+	'boardvote_dumplink'      => 'Ch\'a-i bata ansima a sossì',
+	'boardvote_submit'        => 'Bin parèj',
+	'boardvote_strike'        => 'Gava ës vot-sì',
+	'boardvote_unstrike'      => 'Gava via l\'anulament',
+	'boardvote_needadmin'     => 'Sossì a peulo felo mach j\'aministrator dj\'elession.',
+	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Elession dël Consej ëd Gestion dla Wikimedia</a>:  vot doèrt fin-a ij 12 ëd Luj',
+	'boardvote_notstarted'    => 'Ël vot a l\'é anco\' pa doèrt',
+	'boardvote_closed'        => 'La votassion a l\'é già sarà, ch\'a varda [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/Pms la pàgina dj\'elession] antra nen vàire për vëdde j\'arzultà.',
+	'boardvote_edits_many'    => 'vàire',
+	'group-boardvote'         => 'Comità Eletoral',
+	'group-boardvote-member'  => 'Comissari eletoral',
+	'grouppage-boardvote'     => '{{ns:project}}:Comissari eletoral',
+	'boardvote_blocked'       => 'Ch\'a në scusa, ma chiel/chila a l\'é stait(a) blocà ansima a la wiki andova a l\'é registrà. J\'utent blocà as ësmon-o sò drit ëd vot.',
+	'boardvote_welcome'       => 'Bin ëvnù(a) \'\'\'$1\'\'\'!',
+	'go_to_board_vote'        => 'Elession dël Consej ëd Gestion dla Wikimedia dël 2007',
+	'boardvote_redirecting'   => 'Për na question a sigurëssa e trasparensa, ël vot as fa ansima a na màchina esterna, controlà daspërchila da an manera andipendenta.
+A sarà ëmnà a sta màchina esterna antra 20 second. [$1 Ch;a bata ambelessì] për tramudesse prima.
+
+Ch\'a ten-a da ment che ën bogiandse a peul arsèive n\'avis dla sigurëssa ëd sò calcolator, rësgoard a un certificà sensa firma.',
+);
 $wgBoardVoteMessages['pt'] = array(
 	'boardvote'               => "Eleições para o Comité da Fundação Wikimedia",
 	'boardvote_entry'         => "<!--* [[Special:Boardvote/vote|Votar]]-->

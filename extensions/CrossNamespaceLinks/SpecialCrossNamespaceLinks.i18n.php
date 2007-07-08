@@ -94,6 +94,11 @@ $wgCrossNamespaceLinksMessages['pl'] = array(
 	'crossnamespacelinks'     => 'Linki między przestrzeniami nazw',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linki}} do $3'
 );
+$wgCrossNamespaceLinksMessages['pms'] = array(
+	'crossnamespacelinks'         => 'Anliure antra spassi nominaj diferent',
+	'crossnamespacelinks-summary' => 'Sta pàgina-sì a la smon na lista d\'anliure ch\'a men-o da na pàgina d\'un chèich ëspassi nominal a na pàgina ch\'a la sta ant n\'àotr. (Sòn gavà jë spassi {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), sòn a l\'é mej nen felo.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|anliura|anliure}} anvers a $3',
+);
 $wgCrossNamespaceLinksMessages['pt'] = array(
 	'crossnamespacelinks'         => 'Saltos de Espaços Nominais',
 	'crossnamespacelinks-summary' => 'Esta página proporciona uma lista de links provenientes a partir de uma página no espaço nominal principal para outra alocada em outro espaço nominal (exceção feita para os espaços nominais {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}), os quais costuma-se não ser aconselhável de existirem.',
