@@ -1,5 +1,5 @@
 CC		= cc
-CFLAGS		= -g -mt -xarch=amd64 -xc99=none
+CFLAGS		= -g -mt -m64 -xc99=none
 LDFLAGS		=
 MYSQL_INCLUDES	= -I/usr/local/mysql/include
 MYSQL_LIBS	= -L/usr/local/mysql/lib -R/usr/local/mysql/lib -lmysqlclient_r 

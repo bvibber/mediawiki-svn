@@ -34,5 +34,4 @@ typedef uchar_t status_t;
 #define ST_WAIT_FOR_ENTRY	4
 #define ST_INITIALISING		5
 
-
 #endif	/* !STATUS_H */

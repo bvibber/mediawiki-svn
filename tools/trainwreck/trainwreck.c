@@ -95,6 +95,7 @@ static int64_t binlog_pos = 4;
 static int max_buffer = 0;
 
 regex_t *db_regex;
+regex_t *ignore_regex;
 
 static int execute_query(MYSQL *, char const *);
 
@@ -343,6 +344,15 @@ char	 line[1024];
 				(void) fprintf(stderr, "error in regular expression \"%s\": %s\n",
 					       value, errbuf);
 			}
+		} else if (!strcmp(opt, "ignore-database")) {
+		int	err;
+			ignore_regex = calloc(1, sizeof(*ignore_regex));
+			if ((err = regcomp(ignore_regex, value, REG_EXTENDED | REG_NOSUB)) != 0) {
+			char	errbuf[1024];
+				(void) regerror(err, NULL, errbuf, sizeof(errbuf));
+				(void) fprintf(stderr, "error in regular expression \"%s\": %s\n",
+					       value, errbuf);
+			}
 		} else {
 			(void) fprintf(stderr, "unknown option \"%s\" in configuration file \"%s\"\n",
 				       opt, cfgfile);
@@ -558,6 +568,7 @@ unsigned long	 len;
 			pthread_mutex_unlock(&rst_mtx);
 
 			if ((db_regex == NULL || regexec(db_regex, ent->le_database, 0, NULL, 0) == 0) &&
+			    (ignore_regex == NULL || regexec(ignore_regex, ent->le_database, 0, NULL, 0) != 0) &&
 			    (ent->le_type == ET_INTVAR || ent->le_type == ET_QUERY)) {
 			writer_t	*writer;
 				writer = get_writer_for_dbname(ent->le_database);
@@ -872,7 +883,8 @@ char		 namebuf[16];
 	
 	self->wr_status = ST_WAIT_FOR_ENTRY;
 	while ((e = lq_get(&self->wr_log_queue)) != NULL) {
-		logmsg("%s,%lu [%d: %s]", e->le_file, (unsigned long) e->le_pos,
+		if (debug)
+			logmsg("%s,%lu [%d: %s]", e->le_file, (unsigned long) e->le_pos,
 				self->wr_num, e->le_database);
 
 		self->wr_status = ST_EXECUTING;
@@ -889,8 +901,9 @@ char		 namebuf[16];
 			snprintf(query, sizeof(query), "SET INSERT_ID=%llu",
 					(unsigned long long) e->le_insert_id);
 			if (execute_query(self->wr_conn, query) != 0) {
-				logmsg("%s,%lu: query failed (%u: %s): \"%s\"",
+				logmsg("%s,%lu: %s: query failed (%u: %s): \"%s\"",
 					e->le_file, (unsigned long) e->le_pos,
+					e->le_database,
 					mysql_errno(self->wr_conn), mysql_error(self->wr_conn), 
 					query);
 				exit(1);
@@ -899,8 +912,9 @@ char		 namebuf[16];
 		char	*query;
 			query = e->le_info;
 			if (execute_query(self->wr_conn, query) != 0) {
-				logmsg("%s,%lu: query failed (%u: %s): \"%s\"",
+				logmsg("%s,%lu: %s: query failed (%u: %s): \"%s\"",
 					e->le_file, (unsigned long) e->le_pos,
+					e->le_database,
 					mysql_errno(self->wr_conn), mysql_error(self->wr_conn), 
 					query);
 				exit(1);
