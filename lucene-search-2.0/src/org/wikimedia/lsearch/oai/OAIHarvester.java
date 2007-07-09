@@ -30,6 +30,7 @@ public class OAIHarvester {
 	public OAIHarvester(IndexId iid, String url, Authenticator auth){
 		this.urlbase = url;
 		this.iid = iid;
+		log.info(iid+" using base url: "+url);
 		Authenticator.setDefault(auth); 
 	}
 	

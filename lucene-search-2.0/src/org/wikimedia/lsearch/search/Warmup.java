@@ -85,7 +85,8 @@ public class Warmup {
 			log.error("Error warming up local IndexSearcherMul for "+iid);
 		} catch (ParseException e) {
 			log.error("Error parsing query in warmup of IndexSearcherMul for "+iid);
-		} catch (InterruptedException e) {
+		} catch (Exception e) {
+			log.error("Exception during warmup "+e.getMessage());
 		}		
 	}
 

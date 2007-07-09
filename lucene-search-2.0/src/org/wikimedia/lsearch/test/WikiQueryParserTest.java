@@ -347,6 +347,16 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("welche rolle spielen Mineralstoffe in der Ernährung?",NamespacePolicy.IGNORE);
 			assertEquals("(+(contents:welche contents:welch^0.5) +(contents:rolle contents:roll^0.5) +(contents:spielen contents:spiel^0.5) +(contents:mineralstoffe contents:mineralstoff^0.5) +contents:in +contents:der +(+(contents:ernahrung contents:ernahr^0.5) (contents:ernaehrung contents:ernaehr^0.5))) (+title:welche^2.0 +title:rolle^2.0 +title:spielen^2.0 +title:mineralstoffe^2.0 +title:in^2.0 +title:der^2.0 +(title:ernahrung^2.0 title:ernaehrung^2.0))",q.toString());			
 			
+			// CJK
+			analyzer = Analyzers.getSearcherAnalyzer("ja");
+			bs = new FieldBuilder("ja").getBuilder();
+			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.IGNORE);
+			q = parser.parseFourPass("うろパン",NamespacePolicy.IGNORE,false);
+			assertEquals("contents:\"うろ ろハ ハン\" title:\"うろ ろハ ハン\"^2.0 (alttitle1:\"うろ ろハ ハン\"^6.0 alttitle2:\"うろ ろハ ハン\"^6.0 alttitle3:\"うろ ろハ ハン\"^6.0)",q.toString());
+			
+			q = parser.parseFourPass("ナイロン100C other ャポン! ",NamespacePolicy.IGNORE,false);
+			assertEquals("(+contents:\"ナイ イロ ロン\" +(+contents:100 +contents:c) +contents:other +contents:\"ャホ ホン\") (+title:\"ナイ イロ ロン\"^2.0 +(+title:100^2.0 +title:c^2.0) +title:other^2.0 +title:\"ャホ ホン\"^2.0) ((+alttitle1:\"ナイ イロ ロン\"^6.0 +(+alttitle1:100^6.0 +alttitle1:c^6.0) +alttitle1:other^6.0 +alttitle1:\"ャホ ホン\"^6.0) (+alttitle2:\"ナイ イロ ロン\"^6.0 +(+alttitle2:100^6.0 +alttitle2:c^6.0) +alttitle2:other^6.0 +alttitle2:\"ャホ ホン\"^6.0) (+alttitle3:\"ナイ イロ ロン\"^6.0 +(+alttitle3:100^6.0 +alttitle3:c^6.0) +alttitle3:other^6.0 +alttitle3:\"ャホ ホン\"^6.0))",q.toString());			
+			
 			// Test field extraction
 			HashSet<NamespaceFilter> fs = parser.getFieldNamespaces("main:something [1]:else all:oh []:nja");
 			assertEquals(3,fs.size());

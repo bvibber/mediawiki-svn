@@ -19,6 +19,7 @@ public class FilterFactory {
 	protected boolean useStemmer,useCustomFilter;
 	protected Class stemmer = null;
 	protected Class customFilter = null;
+	protected boolean usingCJK = false;
 	
 	protected FilterFactory noStemmerFilterFactory=null;
 	
@@ -87,9 +88,10 @@ public class FilterFactory {
 		else if(lang.equals("vi"))
 			customFilter = VietnameseFilter.class;
 		else if(lang.equals("zh") || lang.equals("cjk") || lang.equals("ja") ||
-				lang.equals("ko") || lang.equals("zh-classical") || lang.equals("zh-yue"))
+				lang.equals("zh-classical") || lang.equals("zh-yue")){
 			customFilter = CJKFilter.class;
-		else 
+			usingCJK = true;
+		} else 
 			useCustomFilter = false;
 		
 	}
@@ -128,6 +130,10 @@ public class FilterFactory {
 		return useStemmer;
 	}
 	
+	public boolean isUsingCJK() {
+		return usingCJK;
+	}
+
 	public boolean hasCustomFilter(){
 		return useCustomFilter;
 	}
@@ -135,4 +141,6 @@ public class FilterFactory {
 	public String getLanguage(){
 		return lang;
 	}
+	
+	
 }

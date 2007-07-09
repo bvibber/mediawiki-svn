@@ -46,6 +46,7 @@ njawiki : (nssplit,3) (nspart1,[0,1],false,5) (nspart2,[12,13,14,15]) (nspart3,[
 [OAI]
 wiktionary : http://$lang.wiktionary.org/w/index.php
 frtest : http://localhost/wiki-lucene/phase3/index.php
+rswikimedia : http://rs.wikimedia.org/w/index.php
 <default> : http://$lang.wikipedia.org/w/index.php
 
 # Path where indexes are on hosts, after default value put hosts where 
