@@ -392,6 +392,7 @@ MySQL返回错误“$3: $4”。',
 'editinginterface'     => "'''警告:''' 您正在编辑的页面是用于提供软件的界面文本。改变此页将影响其他用户的界面外观。",
 'sqlhidden'            => '(SQL查询已隐藏)',
 'cascadeprotected'     => '这个页面已经被保护，因为这个页面被以下已标注"联锁保护"的{{PLURAL:$1|一个|多个}}被保护页面包含:',
+'namespaceprotected' 	=> "您并没有权限去编辑在'''$1'''名字空间内的页面。",
 
 # Login and logout pages
 'logouttitle'                => '退出',
@@ -577,6 +578,8 @@ MySQL返回错误“$3: $4”。',
 ''由于此 wiki 允许使用原始的 HTML，为了防范 JavaScript 攻击，预览已被隐藏。''
 
 <strong>如果这是一次合法的编辑，请重新进行尝试。如果还不行，请退出并重新登录。</strong>",
+'token_suffix_mismatch'     => '<strong>由于您用户端中的编辑令牌毁损了一些标点符号字元，为防止编辑的文字损坏，您的编辑已经被拒绝。
+这种情况通常出现于使用含有很多臭虫、以网络为主的匿名代理服务的时候。</strong>',
 'importing'                 => '正在导入$1',
 'editing'                   => '正在编辑$1',
 'editinguser'               => '正在编辑用户<b>$1</b>',
@@ -809,15 +812,15 @@ MySQL返回错误“$3: $4”。',
 'files'                    => '文件',
 
 # User rights
-'userrights-lookup-user'     => '管理用户群组',
-'userrights-user-editname'   => '输入用户名:',
-'editusergroup'              => '编辑用户群组',
-'userrights-editusergroup'   => '编辑用户群组',
-'saveusergroups'             => '存储用户群组',
-'userrights-groupsmember'    => '隶属于:',
-'userrights-groupsavailable' => '可加入群组:',
-'userrights-groupshelp'      => '选择您想使该用户退出或加入的组群。反选时组群将不改变。您可以通过按住 CTRL 键 + 单击鼠标左键来反选',
-'userrights-reason'          => '更改原因:',
+'userrights-lookup-user'        => '管理用户群组',
+'userrights-user-editname'      => '输入用户名:',
+'editusergroup'                 => '编辑用户群组',
+'userrights-editusergroup'      => '编辑用户群组',
+'saveusergroups'                => '存储用户群组',
+'userrights-groupsmember'       => '隶属于:',
+'userrights-groupsavailable'    => '可加入群组:',
+'userrights-groupshelp'         => '选择您想使该用户退出或加入的组群。反选时组群将不改变。您可以通过按住 CTRL 键 + 单击鼠标左键来反选',
+'userrights-reason'             => '更改原因:',
 'userrights-available-none' 	=> '您不可以更改组别成员。',
 'userrights-available-add' 	=> '您可以加入用户到$1。',
 'userrights-available-remove' 	=> '您可以从$1中移除用户。',
@@ -1176,10 +1179,6 @@ MySQL返回错误“$3: $4”。',
 'nowatchlist'          => '您的监视列表为空。',
 'watchlistanontext'    => '请$1以查看或编辑您的监视列表。',
 'watchlistcount'       => "'''您的监视列表有$1项，其中包括讨论页。'''",
-'clearwatchlist'       => '清空监视列表',
-'watchlistcleartext'   => '您确定要将它们移除吗？',
-'watchlistclearbutton' => '清空监视列表',
-'watchlistcleardone'   => '您的监视列表已被清空。有$1项被移除。',
 'watchnologin'         => '未登录',
 'watchnologintext'     => '您必须先[[Special:Userlogin|登录]]才能更改您的监视列表。',
 'addedwatch'           => '已添加至监视列表',
@@ -1204,11 +1203,7 @@ MySQL返回错误“$3: $4”。',
 'wlheader-showupdated' => "* 在你上次查看后有被修改过的页面会显示为'''粗体'''",
 'watchmethod-recent'   => '检查被监视页面的最近编辑',
 'watchmethod-list'     => '查看监视页中的最新修改',
-'removechecked'        => '将被选页面从监视列表中移除',
 'watchlistcontains'    => '您的监视列表包含$1个页面。',
-'watcheditlist'        => '这里是您所监视的页面的列表。要移除某一页面，只要选择该页面然后点击"移除页面"按钮(删除内容页面将同时删除与之相关的讨论页，反之亦然)。',
-'removingchecked'      => '从监视列表中移除选中项...',
-'couldntremove'        => '无法移除"$1"...',
 'iteminvalidname'      => "页面'$1'错误，无效命名...",
 'wlnote'               => "以下是最近'''$2'''小时内的最后'''$1'''次修改:",
 'wlshowlast'           => '显示最近$1小时 $2天 $3的修改',
@@ -1219,7 +1214,6 @@ MySQL返回错误“$3: $4”。',
 'watchlist-hide-own'   => '隐藏我的编辑',
 'watchlist-show-minor' => '显示小编辑',
 'watchlist-hide-minor' => '隐藏小编辑',
-'wldone'               => '已完成。',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => '监视...',
@@ -1293,6 +1287,7 @@ $NEWPAGE
 最后编辑者: [[User:$3|$3]] ([[User talk:$3|讨论]])。',
 'editcomment'                 => '编辑说明: "<i>$1</i>"。', # only shown if there is an edit comment
 'revertpage'                  => '恢复由[[Special:Contributions/$2|$2]] ([[User talk:$2|对话]])的编辑；更改回[[User:$1|$1]]的最后一个版本',
+'rollback-success'            => '恢复由$1的编辑；更改回$2的最后一个版本。',
 'sessionfailure'              => '似乎在您登录时发生问题，作为一项防范性措施，该动作已经被取消。请单击"后退"再次尝试！',
 'protectlogpage'              => '保护日志',
 'protectlogtext'              => '下面是页面锁定和取消锁定的列表。请参考[[Special:Protectedpages|保护页面列表]]以查看当前进行的页面保护。',
@@ -1380,8 +1375,8 @@ $NEWPAGE
 'ucnote'        => '以下是该用户最近<b>$2</b>天内的最后<b>$1</b>次修改。',
 'uclinks'       => '参看最后$1次修改；参看最后$2天。',
 'uctop'         => ' (最新修改)',
-'month'         => '月份:',
-'year'          => '年份:',
+'month'         => '从该月份 (或更早):',
+'year'          => '从该年份 (或更早):',
 
 'sp-contributions-newest'      => '最新',
 'sp-contributions-oldest'      => '最早',
@@ -2166,7 +2161,7 @@ $1
 # Auto-summaries
 'autosumm-blank'   => '移除所有页面内容',
 'autosumm-replace' => "正在将页面替换为 '$1'",
-'autoredircomment' => '正在重定向到 [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => '正在重定向到 [[$1]]',
 'autosumm-new'     => '新页面: $1',
 
 # Size units
@@ -2178,14 +2173,39 @@ $1
 # Live preview
 'livepreview-loading' => '正在加载…',
 'livepreview-ready'   => '正在加载… 完成!',
-'livepreview-failed'  => "实时预览失败!\n尝试标准预览。",
-'livepreview-error'   => "连接失败: $1 \"$2\"\n尝试标准预览。",
+'livepreview-failed'  => "实时预览失败! 尝试标准预览。",
+'livepreview-error'   => "连接失败: $1 \"$2\" 尝试标准预览。",
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => '新于$1秒的更改可能不会在这个列表中显示。',
 'lag-warn-high' => '由于数据库的过度延迟，新于$1秒的更改可能不会在这个列表中显示。',
 
+# Watchlist editor
+'watchlistedit-numitems'       => '您的监视列表中共有$1个标题，当中不包括对话页面。',
+'watchlistedit-noitems'        => '您的监视列表并无标题。',
+'watchlistedit-clear-title'    => '清除监视列表',
+'watchlistedit-clear-legend'   => '清除监视列表',
+'watchlistedit-clear-confirm'  => '这样做会在您的监视列表中移除所有的项目。您是否真的要这样做？您亦都可以[[Special:Watchlist/edit|移除个别的标题]]。',
+'watchlistedit-clear-submit'   => '清除',
+'watchlistedit-clear-done'     => '您的监视列表已经刚刚清除完毕。所有的项目已经被移除。',
+'watchlistedit-normal-title'   => '编辑监视列表',
+'watchlistedit-normal-legend'  => '从监视列表中移除标题',
+'watchlistedit-normal-explain' => '在您的监视列表中的标题在下面显示。要移除一个标题，在它前面剔一下，接着点击移除标题。您亦都可以[[Special:Watchlist/raw|编辑原始监视列表]]或者[[Special:Watchlist/clear|移除所有标题]]。',
+'watchlistedit-normal-submit'  => '移除标题',
+'watchlistedit-normal-done'    => '$1个标题已经从您的监视列表中移除:',
+'watchlistedit-raw-title'      => '编辑原始监视列表',
+'watchlistedit-raw-legend'     => '编辑原始监视列表',
+'watchlistedit-raw-explain'    => '您的监视列表中的标题在下面显示，同时亦都可以通过编辑这个表去加入以及移除标题；一行一个标题。当完成以后，点击更新监视列表。你亦都可以去用[[Special:Watchlist/edit|标准编辑器]]。',
+'watchlistedit-raw-titles'     => '标题:',
+'watchlistedit-raw-submit'     => '更新监视列表',
+'watchlistedit-raw-done'       => '您的监视列表已经更新。',
+'watchlistedit-raw-added'      => '已经加入了$1个标题:',
+'watchlistedit-raw-removed'    => '已经移除了$1个标题:',
+
+
 );
+
+
 
 
 

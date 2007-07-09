@@ -104,6 +104,11 @@ class EditPage {
 
 			$text = $this->mArticle->getContent();
 
+			if ($undo > 0 && $undoafter > 0 && $undo < $undoafter) {
+				# If they got undoafter and undo round the wrong way, switch them
+				list( $undo, $undoafter ) = array( $undoafter, $undo );
+			}
+
 			if ( $undo > 0 && $undo > $undoafter ) {
 				# Undoing a specific edit overrides section editing; section-editing
 				# doesn't work with undoing.

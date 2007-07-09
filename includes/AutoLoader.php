@@ -252,6 +252,7 @@ function __autoload($className) {
 		'ZhClient' => 'includes/ZhClient.php',
 		'memcached' => 'includes/memcached-client.php',
 		'EmaillingJob' => 'includes/JobQueue.php',
+		'WatchlistEditor' => 'includes/WatchlistEditor.php',
 
 		# filerepo
 		'ArchivedFile' => 'includes/filerepo/ArchivedFile.php',
@@ -305,6 +306,8 @@ function __autoload($className) {
 		'ApiPageSet' => 'includes/api/ApiPageSet.php',
 		'ApiQuery' => 'includes/api/ApiQuery.php',
 		'ApiQueryAllpages' => 'includes/api/ApiQueryAllpages.php',
+		'ApiQueryAllLinks' => 'includes/api/ApiQueryAllLinks.php',
+		'ApiQueryAllUsers' => 'includes/api/ApiQueryAllUsers.php',
 		'ApiQueryBase' => 'includes/api/ApiQueryBase.php',
 		'ApiQueryGeneratorBase' => 'includes/api/ApiQueryBase.php',
 		'ApiQueryBacklinks' => 'includes/api/ApiQueryBacklinks.php',
@@ -312,7 +315,9 @@ function __autoload($className) {
 		'ApiQueryCategoryMembers' => 'includes/api/ApiQueryCategoryMembers.php',
 		'ApiQueryContributions' => 'includes/api/ApiQueryUserContributions.php',
 		'ApiQueryExternalLinks' => 'includes/api/ApiQueryExternalLinks.php',
+		'ApiQueryExtLinksUsage' => 'includes/api/ApiQueryExtLinksUsage.php',
 		'ApiQueryImages' => 'includes/api/ApiQueryImages.php',
+		'ApiQueryImageInfo' => 'includes/api/ApiQueryImageInfo.php',
 		'ApiQueryInfo' => 'includes/api/ApiQueryInfo.php',
 		'ApiQueryLangLinks' => 'includes/api/ApiQueryLangLinks.php',
 		'ApiQueryLinks' => 'includes/api/ApiQueryLinks.php',

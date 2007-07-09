@@ -117,9 +117,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * New javascript for upload page that will show a warning if a file with the
   "destination filename" already exists.
 * Add 'editsection-brackets' message to allow localization (or removal) of the
-  brackets in the "[edit]" link for sections.
-* (bug 10437) Move texvc styling to shared.css.
-* (bug 10438) HTML TeX formulas should not wrap.
+  brackets in the "[edit]" link for sections
+* (bug 10437) Move texvc styling to shared.css
+* (bug 10438) HTML TeX formulas should not wrap
+* Introduce "raw editing" mode for the watchlist, to allow bulk additions,
+  removals, and convenient exporting of watchlist contents
+* Show "undo" links in page histories
+* Option to jump to specified time period in user contributions
+* Improved feedback on "rollback success" page
+* Show distinct 'namespaceprotected' message to users when namespace protection
+  prevents page editing
 
 == Bugfixes since 1.10 ==
 
@@ -254,11 +261,15 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   This corrects some odd behavior with sidebar items and custom namespaces
   containing ampersands.
 * (bug 10375) Change thousands separator character to &nbsp; for Latin (la)
-
+* (bug 10477) Fix AJAX watch for Farsi on Firefox: JavaScript encoding tweak
+* (bug 10496) Fix broken DISTINCT option logic in database backend
+* Fix CSS media declaration for "screen, projection"; was causing some
+  validation issues
+* (bug 10495) $wgMemcachedDebug set twice in includes/DefaultSettings.php
 
 == API changes since 1.10 ==
 
-(For ongoing development discussion, see http://www.mediawiki.org/wiki/API)
+Full API documentation is available at http://www.mediawiki.org/wiki/API
 
 * New properties: links, templates, images, langlinks, categories, external
   links
@@ -295,6 +306,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 10411) Site language in meta=siteinfo
 * (bug 10391) action=help doesn't return help if format is fancy markup
 * (bug 10297) include previous revision ID in prop=revisions
+* backlinks, embeddedin and imageusage lists should use (bl|ei|iu)title parameter
+  instead of titles. Titles for these lists is obsolete and might stop working soon.
+* Added prop=imageinfo - gets image properties and upload history
+* (bug 10211) Added db server replication lag information in meta=siteinfo
+* Added external url search within wiki pages (list=exturlusage)
+* Added link enumeration (list=alllinks)
+* Added registered users enumeration (list=allusers)
 
 == Maintenance script changes since 1.10 ==
 
@@ -303,6 +321,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Fix maintenance/importImages.php so it doesn't barf PHP errors when no
   suitable files are found, and make the list of extensions an option (defaults
   to $wgFileExtensions)
+* Add option to maintenance/createAndPromote.php to give the user bureaucrat
+  permissions (--bureaucrat)
 
 == Languages updated since 1.10 ==
 
@@ -331,10 +351,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Lithuanian (lt)
 * Malayalam (ml)
 * Burmese (my)
+* Dutch (nl)
 * Norwegian (no)
 * Polish (pl)
+* Piedmontese (pms)
 * Portuguese (pt)
 * Romanian (ro)
+* Aromanian (roa-rup)
 * Russian (ru)
 * Slovak (sk)
 * Slovenian (sl)

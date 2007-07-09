@@ -576,6 +576,7 @@ Jika ini bukan sebabnya, Anda mungkin menemukan bug dalam perangkat lunak. Silak
 'viewsource'           => 'Lihat sumber',
 'viewsourcefor'        => 'dari $1',
 'protectedpagetext'    => 'Halaman ini telah dikunci untuk menghindari penyuntingan.',
+'namespaceprotected'   => "Anda tak memiliki hak untuk menyunting halaman di ruang nama '''$1'''.",
 'viewsourcetext'       => 'Anda dapat melihat atau menyalin sumber halaman ini:',
 'protectedinterface'   => 'Halaman ini berisi teks antarmuka untuk digunakan oleh perangkat lunak dan telah dikunci untuk menghindari kesalahan.',
 'editinginterface'     => "'''Peringatan:''' Anda menyunting halaman yang digunakan untuk menyediakan teks antarmuka dengan perangkat lunak. Perubahan teks ini akan mempengaruhi tampilan pada pengguna lain.",
@@ -761,6 +762,7 @@ ID pemblokiran Anda adalah $5. Tolong sertakan ID ini dalam setiap pertanyaan An
 ''Karena wiki ini mengizinkan penggunaan HTML mentah, pratayang disembunyikan sebagai pencegahan terhadap serangan JavaScript.''
 
 <strong>Jika ini merupakan upaya suntingan yang sahih, silakan coba lagi. Jika masih tetap tidak berhasil, cobalah keluar log dan masuk kembali.</strong>",
+'token_suffix_mismatch'     => '<strong>Suntingan Anda ditolak karena aplikasi klien Anda mengubah karakter tanda baca pada suntingan. Suntingan tersebut ditolak untuk mencegah kesalahan pada artikel teks. Hal ini kadang terjadi jika Anda menggunakan layanan proxy anonim berbasis web yang bermasalah.</strong>',
 'importing'                 => 'Sedang mengimpor $1',
 'editing'                   => 'Menyunting $1',
 'editinguser'               => 'Menyunting $1',
@@ -1318,10 +1320,6 @@ Telah dimuat sejumlah '''$8''' berkas dan sedang terjadi '''$7''' [http://meta.w
 'nowatchlist'          => 'Daftar pantauan Anda kosong.',
 'watchlistanontext'    => 'Silakan $1 untuk melihat atau menyunting daftar pantauan Anda.',
 'watchlistcount'       => "'''Anda memiliki $1 entri di daftar pantauan Anda, termasuk halaman pembicaraan.'''",
-'clearwatchlist'       => 'Kosongkan daftar pantauan',
-'watchlistcleartext'   => 'Apakah Anda yakin untuk menghapusnya?',
-'watchlistclearbutton' => 'Kosongkan daftar pantauan',
-'watchlistcleardone'   => 'Daftar pantauan Anda telah dikosongkan. $1 entri telah dihapus.',
 'watchnologin'         => 'Belum masuk log',
 'watchnologintext'     => 'Anda harus [[{{ns:special}}:Userlogin|masuk log]] untuk mengubah daftar pantauan.',
 'addedwatch'           => 'Telah ditambahkan ke daftar pantauan',
@@ -1339,11 +1337,7 @@ Telah dimuat sejumlah '''$8''' berkas dan sedang terjadi '''$7''' [http://meta.w
 'wlheader-showupdated' => "* Halaman-halaman yang telah berubah sejak kunjungan terakhir Anda ditampilkan dengan '''huruf tebal'''",
 'watchmethod-recent'   => 'periksa daftar perubahan terbaru terhadap halaman yang dipantau',
 'watchmethod-list'     => 'periksa halaman yang dipantau terhadap perubahan terbaru',
-'removechecked'        => 'Keluarkan halaman yang ditandai dari daftar pantauan',
 'watchlistcontains'    => 'Daftar pantauan Anda berisi $1 halaman.',
-'watcheditlist'        => "Berikut ini adalah daftar halaman-halaman yang Anda pantau. Untuk menghapus halaman dari daftar pantauan Anda, berikan tanda cek pada kotak cek di sebelah judul halaman yang ingin Anda hapus, lalu klik tombol ''keluarkan halaman''  di bagian bawah layar.",
-'removingchecked'      => 'Menghapus halaman yang diminta dari daftar pantauan Anda...',
-'couldntremove'        => "Tidak dapat menghapus halaman '$1' dari daftar pantauan...",
 'iteminvalidname'      => "Ada masalah dengan '$1', namanya tidak sah...",
 'wlnote'               => "Di bawah ini adalah $1 perubahan terakhir dalam '''$2''' jam terakhir.",
 'wlshowlast'           => 'Tampilkan $1 jam $2 hari $3 terakhir',
@@ -1354,7 +1348,6 @@ Telah dimuat sejumlah '''$8''' berkas dan sedang terjadi '''$7''' [http://meta.w
 'watchlist-hide-own'   => 'Sembunyikan suntingan saya',
 'watchlist-show-minor' => 'Tampilkan suntingan kecil',
 'watchlist-hide-minor' => 'Sembunyikan suntingan kecil',
-'wldone'               => 'Selesai.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'Memantau...',
@@ -1421,6 +1414,7 @@ Umpan balik dan bantuan lanjutan:
 'alreadyrolled'               => 'Tidak dapat melakukan pengembalian ke suntingan terakhir [[:$1]] oleh [[{{ns:user}}:$2|$2]] ([[{{ns:user_talk}}:$2|Pembicaraan]]); orang lain telah menyunting atau melakukan pengembalian terhadap artikel tersebut. Suntingan terakhir oleh [[{{ns:user}}:$3|$3]] ([[{{ns:user_talk}}:$3|Pembicaraan]]).',
 'editcomment'                 => 'Komentar penyuntingan adalah: "<em>$1</em>".', # only shown if there is an edit comment
 'revertpage'                  => 'Suntingan [[{{ns:special}}:Contributions/$2|$2]] ([[{{ns:user_talk}}:$2|Pembicaraan]]) dikembalikan ke versi terakhir oleh [[{{ns:user}}:$1|$1]]',
+'rollback-success'            => 'Pengembalian suntingan oleh $1; dikembalikan ke versi terakhir oleh $2.',
 'sessionfailure'              => 'Sepertinya ada masalah dengan sesi log anda; log anda telah dibatalkan untuk mencegah pembajakan. Silahkan tekan tombol "back" dan muat kembali halaman sebelum anda masuk, lalu coba lagi.',
 'protectlogpage'              => 'Log perlindungan',
 'protectlogtext'              => 'Di bawah ini adalah log perlindungan dan penghilangan perlindungan halaman. Lihat [[Special:Protectedpages|daftar halaman yang dilindungi]] untuk daftar perlindungan halaman yang berlaku sekarang.',
@@ -1502,8 +1496,8 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 'ucnote'        => 'Berikut adalah <strong>$1</strong> suntingan terakhir pengguna ini dalam <strong>$2</strong> hari terakhir.',
 'uclinks'       => 'Menampilkan $1 perubahan terakhir; menampilkan $2 hari terakhir.',
 'uctop'         => ' (atas)',
-'month'         => 'Bulan:',
-'year'          => 'Tahun:',
+'month'         => 'Sejak bulan (dan sebelumnya):',
+'year'          => 'Sejak tahun (dan sebelumnya):',
 
 'sp-contributions-newest'      => 'Terbaru',
 'sp-contributions-oldest'      => 'Terlama',
@@ -2248,7 +2242,7 @@ $1",
 # Auto-summaries
 'autosumm-blank'   => '←Mengosongkan halaman',
 'autosumm-replace' => "←Mengganti halaman dengan '$1'",
-'autoredircomment' => '←Mengalihkan ke [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => '←Mengalihkan ke [[$1]]',
 'autosumm-new'     => "←Membuat halaman berisi '$1'",
 
 # Size units
@@ -2269,6 +2263,26 @@ Coba dengan pratayang normal.',
 'lag-warn-normal' => 'Perubahan yang lebih baru dari $1 detik mungkin tidak muncul di daftar ini.',
 'lag-warn-high'   => 'Karenanya besarnya lag basis data server, perubahan yang lebih baru dari $1 detik mungkin tidak muncul di daftar ini.',
 
-);
+# Watchlist editor
+'watchlistedit-numitems'       => 'Daftar pantauan Anda berisi {{PLURAL:$1|1 judul|$1 judul}},tidak termasuk halaman pembicaraan.',
+'watchlistedit-noitems'        => 'Daftar pantauan Anda kosong.',
+'watchlistedit-clear-title'    => 'Kosongkan daftar pantauan',
+'watchlistedit-clear-legend'   => 'Kosongkan daftar pantauan',
+'watchlistedit-clear-confirm'  => 'Tindakan ini akan menghapus seluruh judul dari daftar pantauan Anda. Anda yakin? Anda juga dapat [[Special:Watchlist/edit|menghapus suatu judul tertentu]].',
+'watchlistedit-clear-submit'   => 'Kosongkan',
+'watchlistedit-clear-done'     => 'Daftar pantauan Anda telah dikosongkan. Semua judul telah dihapus.',
+'watchlistedit-normal-title'   => 'Sunting daftar pantauan',
+'watchlistedit-normal-legend'  => 'Hapus judul dari daftar pantauan',
+'watchlistedit-normal-explain' => 'Judul-judul pada daftar pantauan Anda ditampilkan di bawah ini. Untuk menghapus suatu judul, centang kotak di sampingnya, dan klik Hapus judul. Anda juga dapat [[Special:Watchlist/raw|menyunting daftar mentah]], atau [[Special:Watchlist/clear|menghapus seluruh judul]].',
+'watchlistedit-normal-submit'  => 'Hapus judul',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|satu|$1}} judul telah dihapus dari daftar pantauan Anda:',
+'watchlistedit-raw-title'      => 'Sunting daftar mentah',
+'watchlistedit-raw-legend'     => 'Sunting daftar mentah',
+'watchlistedit-raw-explain'    => 'Judul-judul pada daftar pantauan Anda ditampilkan di bawah ini, dan dapat diubah dengan menambahkan atau menghapus daftar; satu judul pada setiap barisnya. Jika telah selesai, klik Perbarui daftar pantauan. Anda juga dapat [[Special:Watchlist/edit|menggunakan editor standar Anda]].',
+'watchlistedit-raw-titles'     => 'Judul:',
+'watchlistedit-raw-submit'     => 'Perbarui daftar pantauan',
+'watchlistedit-raw-done'       => 'Daftar pantauan Anda telah diperbarui.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 judul telah|$1 judul telah}} ditambahkan:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 judul telah|$1 judul telah}} dikeluarkan:',
 
-?>
+);

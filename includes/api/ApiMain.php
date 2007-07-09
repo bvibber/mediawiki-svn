@@ -322,14 +322,28 @@ class ApiMain extends ApiBase {
 	protected function getDescription() {
 		return array (
 			'',
-			'This API allows programs to access various functions of MediaWiki software.',
-			'For more details see API Home Page @ http://www.mediawiki.org/wiki/API',
 			'',
-			'Status: ALPHA -- all features shown on this page should be working,',
-			'                 but the API is still in active development, and  may change at any time.',
-			'                 Make sure you monitor changes to this page, wikitech-l mailing list,',
-			'                 or the source code in the includes/api directory for any changes.',
-			''
+			'******************************************************************',
+			'**                                                              **',
+			'**  This is an auto-generated MediaWiki API documentation page  **',
+			'**                                                              **',
+			'**                  Documentation and Examples:                 **',
+			'**               http://www.mediawiki.org/wiki/API              **',
+			'**                                                              **',
+			'******************************************************************',
+			'',
+			'Status:          All features shown on this page should be working, but the API',
+			'                 is still in active development, and  may change at any time.',
+			'                 Make sure to monitor our mailing list for any updates.',
+			'',
+			'Documentation:   http://www.mediawiki.org/wiki/API',
+			'Mailing list:    http://lists.wikimedia.org/mailman/listinfo/mediawiki-api',
+			'Bugs & Requests: http://bugzilla.wikimedia.org/buglist.cgi?component=API&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&order=bugs.delta_ts',
+			'',
+			'',
+			'',
+			'',
+			'',
 		);
 	}
 	
@@ -379,11 +393,11 @@ class ApiMain extends ApiBase {
 	}
 
 	public static function makeHelpMsgHeader($module, $paramName) {
-		$paramPrefix = $module->getParamPrefix();
-		if (!empty($paramPrefix))
-			$paramPrefix = "($paramPrefix) "; 
+		$modulePrefix = $module->getModulePrefix();
+		if (!empty($modulePrefix))
+			$modulePrefix = "($modulePrefix) "; 
 		
-		return "* $paramName={$module->getModuleName()} $paramPrefix*";
+		return "* $paramName={$module->getModuleName()} $modulePrefix*";
 	} 
 
 	private $mIsBot = null;

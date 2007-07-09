@@ -451,6 +451,7 @@ Abfrage: $2',
 'editinginterface'     => "'''Warnung:''' Diese Seite enthält von der MediaWiki-Software benutzten Text. Änderungen wirken sich auf die Benutzeroberfläche aus.",
 'sqlhidden'            => '(SQL-Abfrage versteckt)',
 'cascadeprotected'     => 'Diese Seite ist zur Bearbeitung gesperrt. Sie ist in die {{PLURAL:$1|folgende Seite|folgenden Seiten}} eingebunden, die mittels der Kaskadensperroption geschützt {{PLURAL:$1|ist|sind}}:',
+'namespaceprotected'   => "Sie haben keine Berechtigung, die Seite in dem '''$1'''-Namensraum zu bearbeiten.",
 
 # Login and logout pages
 'logouttitle'                => 'Benutzer-Abmeldung',
@@ -1084,7 +1085,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[</nowi
 'deleteimg'                 => 'Löschen',
 'deleteimgcompletely'       => 'Alle Versionen dieser Datei löschen',
 'imghistlegend'             => 'Legende: (Aktuell) = Dies ist die aktuelle Datei, (Löschen) = lösche diese alte Version, (Zurücksetzen) = verwende wieder diese alte Version.',
-'imagelinks'                => 'Dateilinks',
+'imagelinks'                => 'Verwendung',
 'linkstoimage'              => 'Die folgenden Seiten benutzen diese Datei:',
 'nolinkstoimage'            => 'Keine Seite benutzt diese Datei.',
 'sharedupload'              => 'Diese Datei ist ein gemeinsam genutzter Upload und kann von anderen Projekten verwendet werden.',
@@ -1308,10 +1309,6 @@ Davon {{PLURAL:$2|hat|haben}} '''$2''' (=$4%) $5-Rechte.",
 'nowatchlist'          => 'Sie haben keine Einträge auf Ihrer Beobachtungsliste.',
 'watchlistanontext'    => 'Sie müssen sich $1, um Ihre Beobachtungsliste zu sehen oder Einträge auf ihr zu bearbeiten.',
 'watchlistcount'       => "'''Sie haben $1 {{PLURAL:$1|Eintrag|Einträge}} auf Ihrer Beobachtungsliste (inkl. Diskussionsseiten).'''",
-'clearwatchlist'       => 'Beobachtungsliste löschen',
-'watchlistcleartext'   => 'Sind Sie sicher, dass Sie diese vollständig löschen wollen?',
-'watchlistclearbutton' => 'Beobachtungsliste löschen',
-'watchlistcleardone'   => 'Ihre Beobachtungsliste wurde gelöscht. {{PLURAL:$1|Ein Eintrag wurde|$1 Einträge wurden}} entfernt.',
 'watchnologin'         => 'Sie sind nicht angemeldet',
 'watchnologintext'     => 'Sie müssen [[Special:Userlogin|angemeldet]]
 sein, um Ihre Beobachtungsliste zu bearbeiten.',
@@ -1335,11 +1332,7 @@ Wenn Sie die Seite wieder von Ihrer Beobachtungsliste entfernen möchten, klicke
 'wlheader-showupdated' => "Seiten mit noch nicht gesehenen Änderungen werden '''fett''' dargestellt.<br />",
 'watchmethod-recent'   => 'Überprüfen der letzten Bearbeitungen für die Beobachtungsliste',
 'watchmethod-list'     => 'Überprüfen der Beobachtungsliste nach letzten Bearbeitungen',
-'removechecked'        => 'Markierte Einträge löschen',
 'watchlistcontains'    => 'Ihre Beobachtungsliste enthält $1 {{PLURAL:$1|Seite|Seiten}}.',
-'watcheditlist'        => 'Dies ist eine alphabetische und nach Namensräumen gruppierte Liste aller von Ihnen beobachteten Seiten. Wenn Sie Einträge von der Beobachtungsliste wieder entfernen möchten, markieren Sie diese und klicken auf die Schaltfläche „Markierte Einträge löschen“ am Ende dieser Seite.',
-'removingchecked'      => 'Die ausgewählten Einträge werden aus der Beobachtungsliste entfernt...',
-'couldntremove'        => 'Der Eintrag „$1“ kann nicht gelöscht werden.',
 'iteminvalidname'      => 'Problem mit dem Eintrag „$1“, ungültiger Name.',
 'wlnote'               => "Es {{PLURAL:$1|folgt die letzte Änderung|folgen die letzten '''$1''' Änderungen}} der letzten {{PLURAL:$2|Stunde|'''$2''' Stunden}}.",
 'wlshowlast'           => 'Zeige die Änderungen der letzten $1 Stunden, $2 Tage oder $3 (in den letzten 30 Tagen).',
@@ -1350,7 +1343,6 @@ Wenn Sie die Seite wieder von Ihrer Beobachtungsliste entfernen möchten, klicke
 'watchlist-hide-own'   => 'eigene Änderungen ausblenden',
 'watchlist-show-minor' => 'kleine Änderungen einblenden',
 'watchlist-hide-minor' => 'kleine Änderungen ausblenden',
-'wldone'               => 'Erfolgreich ausgeführt.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'Beobachten …',
@@ -1419,6 +1411,7 @@ und dass Sie in Übereinstimmung mit den [[{{MediaWiki:policy-url}}|Richtlinien]
 Änderungen an diesem Artikel vorgenommen hat.<br />Die letzte Änderung stammt von [[{{ns:user}}:$3|$3]] <span style='font-size: smaller'>([[{{ns:user_talk}}:$3|Diskussion]])</span>.",
 'editcomment'                 => 'Der Änderungskommentar lautet: „<i>$1</i>“.', # only shown if there is an edit comment
 'revertpage'                  => 'Änderungen von [[{{ns:user}}:$2|$2]] ([[{{ns:special}}:Contributions/$2|Beiträge]]) rückgängig gemacht und letzte Version von $1 wiederhergestellt',
+'rollback-success'            => 'Die Änderungen von $1 wurden rückgängig gemacht und die letzte Version von $2 wurde wiederhergestellt.',
 'sessionfailure'              => 'Es gab ein Problem mit Ihrer Benutzersitzung.
 Diese Aktion wurde aus Sicherheitsgründen abgebrochen, um eine falsche Zuordnung Ihrer Änderungen zu einem anderen Benutzer zu verhindern.
 Bitte gehen Sie zurück und versuchen den Vorgang erneut auszuführen.',
@@ -1513,8 +1506,8 @@ Im [[Special:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht der kürzlic
 'uclinks'       => 'Zeige die letzten $1 Beiträge; zeige die letzten $2 Tage.',
 'uctop'         => ' (aktuell)',
 
-'month'         => 'Monat:',
-'year'          => 'Jahr:',
+'month'         => 'ab Monat (und vorher):',
+'year'          => 'ab Jahr (und vorher):',
 
 'sp-contributions-newest'      => 'Jüngste',
 'sp-contributions-oldest'      => 'Älteste',
@@ -2292,5 +2285,38 @@ Bitte bestätigen Sie, dass Sie diese Seite wirklich neu erstellen möchten.",
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Bearbeitungen der letzten $1 Sekunden werden in dieser Liste noch nicht angezeigt.',
 'lag-warn-high'   => 'Auf Grund hoher Datenbankauslastung werden die Bearbeitungen der letzten $1 Sekunden in dieser Liste noch nicht angezeigt.',
+
+# Watchlist editor
+'watchlistedit-numitems'       => 'Ihre Beobachtungsliste enthält {{PLURAL:$1|1 Eintrag |$1 Einträge}}, Diskussionsseiten werden nicht gezählt.',
+'watchlistedit-noitems'        => 'Ihre Beobachtungsliste ist leer.',
+'watchlistedit-clear-title'    => 'Beobachtungsliste löschen',
+'watchlistedit-clear-legend'   => 'Beobachtungsliste löschen',
+'watchlistedit-clear-confirm'  => 'Hiermit löschen Sie alle Einträge von Ihrer Beobachtungsliste. Sind Sie sicher?
+	Sie können die Beobachtungsliste auch [[Special:Watchlist/edit|im Listenformat bearbeiten]], um einzelne Bereiche individuell zu entfernen.',
+'watchlistedit-clear-submit'   => 'Beobachtungsliste löschen',
+'watchlistedit-clear-done'     => 'Ihre Beobachtungsliste wurde gelöscht. Alle Einträge wurden entfernt.',
+'watchlistedit-normal-title'   => 'Beobachtungsliste bearbeiten',
+'watchlistedit-normal-legend'  => 'Einträge von der Beobachtungsliste entfernen',
+'watchlistedit-normal-explain' => 'Dies sind die Einträge Ihrer Beobachtungsliste. Um Einträge zu entfernen, markieren Sie die Kästchen neben den Einträgen
+	und klicken Sie auf „Einträge entfernen“. Sie können Ihre Beobachtungsliste auch im [[Special:Watchlist/raw|Listenformat bearbeiten]]
+	oder sie [[Special:Watchlist/clear|komplett löschen]].',
+'watchlistedit-normal-submit'  => 'Einträge entfernen',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|1 Eintrag wurde|$1 Einträge wurden}} von Ihrer Beobachtungsliste entfernt:',
+'watchlistedit-raw-title'      => 'Beobachtungsliste im Listenformat bearbeiten',
+'watchlistedit-raw-legend'     => 'Beobachtungsliste im Listenformat bearbeiten',
+'watchlistedit-raw-explain'    => 'Dies sind die Einträge Ihrer Beobachtungsliste im Listenformat. Die Einträge können zeilenweise gelöscht oder hinzugefügt werden.
+	Pro Zeile ist ein Eintrag erlaubt. Wenn Sie fertig sind, klicken Sie auf „Beobachtungsliste speichern“.
+	Sie können auch die [[Special:Watchlist/edit|Standard-Bearbeitungsseite]] benutzen.',
+'watchlistedit-raw-titles'     => 'Einträge:',
+'watchlistedit-raw-submit'     => 'Beobachtungsliste speichern',
+'watchlistedit-raw-done'       => 'Ihre Beobachtungsliste wurde gespeichert.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 Eintrag wurde|$1 Einträge wurden}} hinzugefügt:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 Eintrag wurde|$1 Einträge wurden}} entfernt:',
+
+# Watchlist editing tools
+'watchlisttools-view'  => 'Beobachtungsliste: Änderungen',
+'watchlisttools-edit'  => 'normal bearbeiten',
+'watchlisttools-raw'   => 'Listenformat bearbeiten (Import/Export)',
+'watchlisttools-clear' => 'löschen',
 
 );

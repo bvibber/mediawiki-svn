@@ -789,6 +789,7 @@ Query: $2',
 'editinginterface'     => "'''Warning:''' You are editing a page which is used to provide interface text for the software. Changes to this page will affect the appearance of the user interface for other users.",
 'sqlhidden'            => '(SQL query hidden)',
 'cascadeprotected'     => 'This page has been protected from editing, because it is included in the following {{PLURAL:$1|page|pages}}, which are protected with the "cascading" option turned on:',
+'namespaceprotected' => "You do not have permission to edit pages in the '''$1''' namespace.",
 
 # Login and logout pages
 'logouttitle'                => 'User logout',
@@ -1696,10 +1697,6 @@ or has chosen not to receive e-mail from other users.',
 'nowatchlist'          => 'You have no items on your watchlist.',
 'watchlistanontext'    => 'Please $1 to view or edit items on your watchlist.',
 'watchlistcount'       => "'''You have {{PLURAL:$1|$1 item|$1 items}} on your watchlist, including talk pages.'''",
-'clearwatchlist'       => 'Clear watchlist',
-'watchlistcleartext'   => 'Are you sure you wish to remove them?',
-'watchlistclearbutton' => 'Clear watchlist',
-'watchlistcleardone'   => 'Your watchlist has been cleared. {{PLURAL:$1|$1 item was|$1 items were}} removed.',
 'watchnologin'         => 'Not logged in',
 'watchnologintext'     => 'You must be [[Special:Userlogin|logged in]] to modify your watchlist.',
 'addedwatch'           => 'Added to watchlist',
@@ -1724,13 +1721,7 @@ If you want to remove the page from your watchlist later, click \"Unwatch\" in t
 'wlheader-showupdated' => "* Pages which have been changed since you last visited them are shown in '''bold'''",
 'watchmethod-recent'   => 'checking recent edits for watched pages',
 'watchmethod-list'     => 'checking watched pages for recent edits',
-'removechecked'        => 'Remove checked items from watchlist',
 'watchlistcontains'    => 'Your watchlist contains $1 {{PLURAL:$1|page|pages}}.',
-'watcheditlist'        => "Here's an alphabetical list of your
-watched content pages. Check the boxes of pages you want to remove from your watchlist and click the 'remove checked' button
-at the bottom of the screen (deleting a content page also deletes the accompanying talk page and vice versa).",
-'removingchecked'      => 'Removing requested items from watchlist...',
-'couldntremove'        => "Couldn't remove item '$1'...",
 'iteminvalidname'      => "Problem with item '$1', invalid name...",
 'wlnote'               => "Below {{PLURAL:$1|is the last change|are the last '''$1''' changes}} in the last {{PLURAL:$2|hour|'''$2''' hours}}.",
 'wlshowlast'           => 'Show last $1 hours $2 days $3',
@@ -1741,7 +1732,6 @@ at the bottom of the screen (deleting a content page also deletes the accompanyi
 'watchlist-hide-own'   => 'Hide my edits',
 'watchlist-show-minor' => 'Show minor edits',
 'watchlist-hide-minor' => 'Hide minor edits',
-'wldone'               => 'Done.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'Watching...',
@@ -1817,6 +1807,7 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'editcomment'                 => 'The edit comment was: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'                  => 'Reverted edits by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); changed back to last version by [[User:$1|$1]]',
+'rollback-success' => 'Reverted edits by $1; changed back to last version by $2.',
 'sessionfailure'              => 'There seems to be a problem with your login session;
 this action has been canceled as a precaution against session hijacking.
 Please hit "back" and reload the page you came from, then try again.',
@@ -1915,8 +1906,8 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'ucnote'        => "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
 'uclinks'       => 'View the last $1 changes; view the last $2 days.',
 'uctop'         => ' (top)',
-'month'         => 'Month:',
-'year'          => 'Year:',
+'month'         => 'From month (and earlier):',
+'year'          => 'From year (and earlier):',
 
 'sp-contributions-newest'      => 'Newest',
 'sp-contributions-oldest'      => 'Oldest',
@@ -2899,5 +2890,38 @@ $1',
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Changes newer than $1 seconds may not be shown in this list.',
 'lag-warn-high'   => 'Due to high database server lag, changes newer than $1 seconds may not be shown in this list.',
+
+# Watchlist editor
+'watchlistedit-numitems'       => 'Your watchlist contains {{PLURAL:$1|1 title|$1 titles}}, excluding talk pages.',
+'watchlistedit-noitems'        => 'Your watchlist contains no titles.',
+'watchlistedit-clear-title'    => 'Clear watchlist',
+'watchlistedit-clear-legend'   => 'Clear watchlist',
+'watchlistedit-clear-confirm'  => 'This will remove all titles from your watchlist. Are you sure you
+	want to do this? You can also [[Special:Watchlist/edit|remove individual titles]].',
+'watchlistedit-clear-submit'   => 'Clear',
+'watchlistedit-clear-done'     => 'Your watchlist has been cleared. All titles were removed.',
+'watchlistedit-normal-title'   => 'Edit watchlist',
+'watchlistedit-normal-legend'  => 'Remove titles from watchlist',
+'watchlistedit-normal-explain' => 'Titles on your watchlist are shown below. To remove a title, check
+	the box next to it, and click Remove Titles. You can also [[Special:Watchlist/raw|edit the raw list]],
+	or [[Special:Watchlist/clear|remove all titles]].',
+'watchlistedit-normal-submit'  => 'Remove Titles',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|1 title was|$1 titles were}} removed from your watchlist:',
+'watchlistedit-raw-title'      => 'Edit raw watchlist',
+'watchlistedit-raw-legend'     => 'Edit raw watchlist',
+'watchlistedit-raw-explain'    => 'Titles on your watchlist are shown below, and can be edited by
+	adding to and removing from the list; one title per line. When finished, click Update Watchlist.
+	You can also [[Special:Watchlist/edit|use the standard editor]].',
+'watchlistedit-raw-titles'     => 'Titles:',
+'watchlistedit-raw-submit'     => 'Update Watchlist',
+'watchlistedit-raw-done'       => 'Your watchlist has been updated.',
+'watchlistedit-raw-added' => '{{PLURAL:$1|1 title was|$1 titles were}} added:',
+'watchlistedit-raw-removed' => '{{PLURAL:$1|1 title was|$1 titles were}} removed:',
+
+# Watchlist editing tools
+'watchlisttools-view' => 'View relevant changes',
+'watchlisttools-edit' => 'View and edit watchlist',
+'watchlisttools-raw' => 'Edit raw watchlist',
+'watchlisttools-clear' => 'Clear watchlist',
 
 );

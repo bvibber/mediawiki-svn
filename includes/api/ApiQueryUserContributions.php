@@ -75,7 +75,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		while ( $row = $db->fetchObject( $res ) ) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter('start', $row->rev_timestamp);
+				$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->rev_timestamp));
 				break;
 			}
 
@@ -134,6 +134,8 @@ class ApiQueryContributions extends ApiQueryBase {
 		// ... and in the specified timeframe.
 		$this->addWhereRange('rev_timestamp', 
 			$this->params['dir'], $this->params['start'], $this->params['end'] );
+
+		$this->addWhereFld('page_namespace', $this->params['namespace']);
 
 		$show = $this->params['show'];
 		if (!is_null($show)) {
@@ -226,6 +228,10 @@ class ApiQueryContributions extends ApiQueryBase {
 					'older'
 				)
 			),
+			'namespace' => array (
+				ApiBase :: PARAM_ISMULTI => true,
+				ApiBase :: PARAM_TYPE => 'namespace'
+			),
 			'prop' => array (
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_DFLT => 'ids|title|timestamp|flags|comment',
@@ -254,13 +260,14 @@ class ApiQueryContributions extends ApiQueryBase {
 			'end' => 'The end timestamp to return to.',
 			'user' => 'The user to retrieve contributions for.',
 			'dir' => 'The direction to search (older or newer).',
+			'namespace' => 'Only list contributions in these namespaces',
 			'prop' => 'Include additional pieces of information',
 			'show' => 'Show only items that meet this criteria, e.g. non minor edits only: show=!minor',
 		);
 	}
 
 	protected function getDescription() {
-		return 'Get edits by a user..';
+		return 'Get all edits by a user';
 	}
 
 	protected function getExamples() {

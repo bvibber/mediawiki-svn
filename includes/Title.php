@@ -995,6 +995,23 @@ class Title {
 		return $this->userCan( $action, false );
 	}
 
+	/**
+	 * Determines if $wgUser is unable to edit this page because it has been protected
+	 * by $wgNamespaceProtection.
+	 * 
+	 * @return boolean
+	 */
+	public function isNamespaceProtected() {
+		global $wgNamespaceProtection, $wgUser;
+		if( isset( $wgNamespaceProtection[ $this->mNamespace ] ) ) {
+			foreach( (array)$wgNamespaceProtection[ $this->mNamespace ] as $right ) {
+				if( $right != '' && !$wgUser->isAllowed( $right ) )
+					return true;
+			}
+		}
+		return false;
+	}
+	
  	/**
 	 * Can $wgUser perform $action on this page?
 	 * @param string $action action that permission needs to be checked for
@@ -1005,7 +1022,7 @@ class Title {
 		$fname = 'Title::userCan';
 		wfProfileIn( $fname );
 
-		global $wgUser, $wgNamespaceProtection;
+		global $wgUser;
 
 		$result = null;
 		wfRunHooks( 'userCan', array( &$this, &$wgUser, $action, &$result ) );
@@ -1019,15 +1036,9 @@ class Title {
 			return false;
 		}
 		
-		if ( array_key_exists( $this->mNamespace, $wgNamespaceProtection ) ) {
-			$nsProt = $wgNamespaceProtection[ $this->mNamespace ];
-			if ( !is_array($nsProt) ) $nsProt = array($nsProt);
-			foreach( $nsProt as $right ) {
-				if( '' != $right && !$wgUser->isAllowed( $right ) ) {
-					wfProfileOut( $fname );
-					return false;
-				}
-			}
+		if ( $this->isNamespaceProtected() ) {
+			wfProfileOut( $fname );
+			return false;
 		}
 
 		if( $this->mDbkeyform == '_' ) {
@@ -2305,6 +2316,16 @@ class Title {
 		# Return true if there was no history
 		return $row === false;
 	}
+	
+	/**
+	 * Can this title be added to a user's watchlist?
+	 *
+	 * @return bool
+	 */
+	public function isWatchable() {
+		return !$this->isExternal()
+			&& Namespace::isWatchable( $this->getNamespace() );
+	}
 
 	/**
 	 * Get categories to which this Title belongs and return an array of
@@ -2428,6 +2449,15 @@ class Title {
 		return $this->getInterwiki() === $title->getInterwiki()
 			&& $this->getNamespace() == $title->getNamespace()
 			&& $this->getDbkey() === $title->getDbkey();
+	}
+	
+	/**
+	 * Return a string representation of this title
+	 *
+	 * @return string
+	 */
+	public function __toString() {
+		return $this->getPrefixedText();
 	}
 
 	/**

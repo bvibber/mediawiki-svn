@@ -671,7 +671,6 @@ $wgLinkCacheMemcached = false; # Not fully tested
 $wgUseMemCached     = false;
 $wgMemCachedDebug   = false; # Will be set to false in Setup.php, if the server isn't working
 $wgMemCachedServers = array( '127.0.0.1:11000' );
-$wgMemCachedDebug   = false;
 $wgMemCachedPersistent = false;
 
 /**
@@ -1198,7 +1197,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '80';
+$wgStyleVersion = '81';
 
 
 # Server-side caching:

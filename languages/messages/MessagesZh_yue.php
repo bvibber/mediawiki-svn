@@ -452,6 +452,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'editinginterface' 	=> "'''警告：'''你而家編輯緊嘅呢一個用嚟提供介面文字嘅頁面。響呢一頁嘅更改會影響到其他用戶使用中嘅介面外觀。",
 'sqlhidden' 		=> '(SQL 查詢隱藏)',
 'cascadeprotected' 	=> '呢一版已經保護咗唔能夠編輯，因為佢係響以下嘅{{PLURAL:$1|一|幾}}頁度包含咗，當中啟用咗"連串"保護選項來保護嗰一版：',
+'namespaceprotected' 	=> "你並無許可權去編輯響'''$1'''空間名裏面嘅呢一版。",
 
 # Login and logout pages
 #
@@ -656,6 +657,8 @@ MySQL 嘅錯誤回應 "$3: $4"',
 \'\'由於哩個 wiki 已經開放咗原 HTML 碼，預覽已經隱藏落嚟以預防 JavaScript 嘅攻擊。\'\'
 
 <strong>如果呢個係正當嘅編輯嘗試，請再試過。如果重係唔得嘅話，請先登出然後再登入。</strong>',
+'token_suffix_mismatch'     => '<strong>因為你嘅用戶端度嘅編輯幣整壞咗一啲標點符號字元，你嘅編輯已經拒絕咗。個編輯已經拒絕，以防止文章嘅文字損毀。 
+當你響度用緊一啲好多臭蟲，以網絡為主嘅匿名代理服務。</strong>',
 'importing' 		=> '而家喺度滙入$1',
 'editing' 		=> '而家喺度編輯$1',
 'editinguser' 		=> '而家喺度編輯用戶<b>$1</b>',
@@ -738,7 +741,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'deletedrev' 		=> '[刪除咗]',
 'histfirst' 		=> '最早',
 'histlast' 		=> '最近',
-'historysize' 		=> '($1 bytes)',
+'historysize' 		=> '($1 {{PLURAL:$1|byte|bytes}})',
 'historyempty' 		=> '(空)',
 
 # Revision feed
@@ -902,10 +905,9 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'files'			=> '檔案',
 
 # User rights
-'userrights-lookup-user' => '管理用戶組',
-'userrights-user-editname' => '輸入一個用戶名：',
-'editusergroup' 	=> '編輯用戶組',
-
+'userrights-lookup-user' 	=> '管理用戶組',
+'userrights-user-editname' 	=> '輸入一個用戶名：',
+'editusergroup' 		=> '編輯用戶組',
 'userrights-editusergroup' 	=> '編輯用戶組',
 'saveusergroups' 		=> '儲存用戶組',
 'userrights-groupsmember' 	=> '屬於：',
@@ -1280,10 +1282,6 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'nowatchlist'		=> '你嘅監視清單度並冇任何項目。',
 'watchlistanontext' 	=> '請先$1去睇或者改響你監視清單度嘅項目。',
 'watchlistcount' 	=> "'''你有 $1 個項目喺你嘅監視清單度，包括埋對話頁。'''",
-'clearwatchlist' 	=> '清除監視清單',
-'watchlistcleartext' 	=> '你係咪肯定想移除全部嘅項目？',
-'watchlistclearbutton' 	=> '清除監視清單',
-'watchlistcleardone' 	=> '你嘅監視清單已經啱啱清除咗。 $1 個項目已經被移除。',
 'watchnologin'		=> '未登入',
 'watchnologintext'	=> '你必須先[[Special:Userlogin|登入]]至可以更改你嘅監視清單。',
 'addedwatch'		=> '加到監視清單度',
@@ -1307,11 +1305,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'wlheader-showupdated' 	=> "* '''粗體字'''嘅頁響你上次嚟之後被人改過",
 'watchmethod-recent' 	=> '睇緊最近修改中有邊頁監視緊',
 'watchmethod-list'	=> '睇緊被監視頁有乜新修改',
-'removechecked' 	=> '將剔咗嘅項目由監視清單中刪除',
 'watchlistcontains' 	=> "你嘅監視清單裏面有$1頁。",
-'watcheditlist'		=> '呢度係以字母順序排列你所監視嘅內容頁嘅一覽表。要喺你個監視清單中移除某個頁面，只需要選擇嗰一頁嘅複選框，然後撳屏幕底部嘅「移除已複選嘅頁面」按鈕。（移除內容頁亦都會一併將佢相應嘅對話頁移除，相反嘅亦都係咁）。',
-'removingchecked' 	=> '刪除緊已經請求嘅項目出監視清單...',
-'couldntremove' 	=> "項目'$1'刪除唔到...",
 'iteminvalidname' 	=> "項目'$1'出錯，無效嘅名稱...",
 'wlnote' 		=> '以下係最近<b>$2</b>個鐘之內嘅最新$1次修改。',
 'wlshowlast' 		=> '顯示最近 $1 個鐘 $2 日 $3 嘅修改',
@@ -1322,7 +1316,7 @@ MySQL 嘅錯誤回應 "$3: $4"',
 'watchlist-hide-own' 	=> '隱藏我嘅編輯',
 'watchlist-show-minor' 	=> '顯示小修改',
 'watchlist-hide-minor' 	=> '隱藏小修改',
-'wldone' 		=> '完成。',
+
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching' 		=> '監視緊...',
 'unwatching' 		=> '唔再監視緊...',
@@ -1396,7 +1390,8 @@ wiki: $PAGEEDITOR_WIKI
 上次編輯係由[[User:$3|$3]]（[[User talk:$3|留言]]）做嘅。",
 #   only shown if there is an edit comment
 'editcomment' 		=> "編輯摘要係：\"<i>$1</i>\".",
-'revertpage'		=> "已經反轉由[[Special:Contributions/$2|$2]]（[[User talk:$2|對話]]）所寫嘅編輯，恢復到[[User:$1|$1]]嘅最後版本。",
+'revertpage'		=> "已經反轉由[[Special:Contributions/$2|$2]]（[[User talk:$2|對話]]）所寫嘅編輯；恢復到[[User:$1|$1]]嘅最後版本。",
+'rollback-success' => '已經反轉由$1所寫嘅編輯；恢復到$2嘅最後版本。',
 'sessionfailure' 	=> '你嘅登入會話 (session) 好似有啲問題；
 為咗防止會話劫持，呢個操作已經取消。
 請撳「返轉頭」然後重新載入你嚟自嘅頁面，然後再試吓啦。',
@@ -1492,8 +1487,8 @@ wiki: $PAGEEDITOR_WIKI
 'ucnote'        => "以下係呢個用戶喺最近<b>$2</b>日內嘅最後<b>$1</b>次修改。",
 'uclinks'       => "睇吓最近$2日；睇吓最近嘅$1次修改。",
 'uctop'         => ' (最頂)' ,
-'month'         => '月:',
-'year'          => '年:',
+'month'         => '由呢個月 (同更早):',
+'year'          => '由呢一年 (同更早):',
 
 'sp-contributions-newest' 	=> '最新',
 'sp-contributions-oldest' 	=> '最舊',
@@ -2321,7 +2316,7 @@ $1
 # Auto-summaries
 'autosumm-blank' => '移除緊響嗰一版嘅全部內容',
 'autosumm-replace' => '用 \'$1\' 取代緊嗰一版',
-'autoredircomment' 	=> '跳緊轉到[[$1]]', # This should be changed to the new naming convention, but existed beforehand.
+'autoredircomment' 	=> '跳緊轉到[[$1]]',
 'autosumm-new' => '新頁： $1',
 
 # Size units
@@ -2333,14 +2328,38 @@ $1
 # Live preview
 'livepreview-loading' 	=> '載入緊…',
 'livepreview-ready' 	=> '載入緊… 預備好！',
-'livepreview-failed' 	=> "實時預覽失敗！\n試吓標準預覽。",
-'livepreview-error' 	=> "連接失敗： $1 \"$2\"\n試吓標準預覽。",
+'livepreview-failed' 	=> "實時預覽失敗！ 試吓標準預覽。",
+'livepreview-error' 	=> "連接失敗： $1 \"$2\" 試吓標準預覽。",
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => '新過$1秒嘅更改可能唔會響呢個表度顯示。',
 'lag-warn-high' => '由於資料庫嘅過度延遲，新過$1秒嘅更改可能唔會響呢個表度顯示。',
 
+# Watchlist editor
+'watchlistedit-numitems'       => '你嘅監視清單總共有$1個標題，當中唔包括對話版。',
+'watchlistedit-noitems'        => '你嘅監視清單並無標題。',
+'watchlistedit-clear-title'    => '清除監視清單',
+'watchlistedit-clear-legend'   => '清除監視清單',
+'watchlistedit-clear-confirm'  => '噉會響你個監視清單度拎走全部嘅標題。你係咪真係要噉做？你亦都可以[[Special:Watchlist/edit|拎走個別嘅標題]]。',
+'watchlistedit-clear-submit'   => '清除',
+'watchlistedit-clear-done'     => '你嘅監視清單已經啱啱清除咗。全部嘅標題已經被拎走。',
+'watchlistedit-normal-title'   => '編輯監視清單',
+'watchlistedit-normal-legend'  => '響監視清單度拎走',
+'watchlistedit-normal-explain' => '響你張監視清單度嘅標題響下面度顯示。要拎走一個標題，響佢前面剔一剔，跟住要撳拎走標題。你亦都可以[[Special:Watchlist/raw|編輯原始清單]]或者[[Special:Watchlist/clear|拎走所有標題]]。',
+'watchlistedit-normal-submit'  => '拎走標題',
+'watchlistedit-normal-done'    => '$1個標題已經響你嘅監視清單度拎走咗:',
+'watchlistedit-raw-title'      => '編輯原始監視清單',
+'watchlistedit-raw-legend'     => '編輯原始監視清單',
+'watchlistedit-raw-explain'    => '你張監視清單嘅標題響下面度顯示，同時亦都可以透過編輯呢個表去加入同埋拎走標題；一行一個標題。當完成咗之後，撳更新監視清單。你亦都可以去用[[Special:Watchlist/edit|標準編輯器]]。',
+'watchlistedit-raw-titles'     => '標題:',
+'watchlistedit-raw-submit'     => '更新監視清單',
+'watchlistedit-raw-done'       => '你嘅監視清單已經更新。',
+'watchlistedit-raw-added'      => '已經加入咗$1個標題:',
+'watchlistedit-raw-removed'    => '已經拎走咗$1個標題:',
+
 );
+
+
 
 
 
