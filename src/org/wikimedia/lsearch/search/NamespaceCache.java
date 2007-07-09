@@ -36,12 +36,13 @@ public class NamespaceCache {
 	
 	/** Returns true if the filter can be composed from filters in cache */
 	public static boolean isComposable(NamespaceFilter key){
-		ArrayList<NamespaceFilter> dec = key.decompose();
+		return true;
+		/* ArrayList<NamespaceFilter> dec = key.decompose();
 		for(NamespaceFilter nsf : dec){
 			if(!cache.containsKey(nsf))
 				return false;
 		}
-		return true;
+		return true; */
 	}
 		
 	/** 
@@ -63,31 +64,32 @@ public class NamespaceCache {
 			if(key.cardinality() > 1){
 				ArrayList<NamespaceFilter> dec = key.decompose();
 				ArrayList<Filter> filters = new ArrayList<Filter>();
-				boolean succ = true;
 				for(NamespaceFilter nsf : dec){
 					if(cache.containsKey(nsf))
 						filters.add(cache.get(nsf));
-					else{ // didn't find the apropriate filter in cache :(
-						succ = false;
-						break;
+					else{ // didn't find the apropriate filter, make it
+						log.info("Making filter for "+nsf);
+						CachingWrapperFilter cwf = makeFilter(nsf);
+						cache.put(nsf,cwf);
+						filters.add(cwf);
 					}
 				}
-				if(succ){
-					log.debug("Made composite filter for "+key);
-					// never cache composite filters
-					return new NamespaceCompositeFilter(filters).bits(reader);
-				} else {
-					log.info("Cannot compose filter "+key+" from cache. This should happen only in warmup phase.");
-				}
+				log.debug("Made composite filter for "+key);
+				// never cache composite filters
+				return new NamespaceCompositeFilter(filters).bits(reader);				
 			}
 			// build new filter from query
-			Query q = WikiQueryParser.generateRewrite(key);
-			CachingWrapperFilter cwf = new CachingWrapperFilter(new QueryFilter(q));
+			CachingWrapperFilter cwf = makeFilter(key);
 			// cache only if defined as a textual prefix in global conf, or filters one namespace
 			if(GlobalConfiguration.getInstance().getNamespacePrefixes().containsValue(key) || key.cardinality()==1)
 				cache.put(key,cwf);
 			log.debug("Making new bitset for nsfilter "+key);
 			return cwf.bits(reader);
 		}
+	}
+	
+	protected static CachingWrapperFilter makeFilter(NamespaceFilter key){
+		Query q = WikiQueryParser.generateRewrite(key);
+		return new CachingWrapperFilter(new QueryFilter(q));
 	}
 }

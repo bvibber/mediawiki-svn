@@ -297,7 +297,8 @@ public class WikiQueryParser {
 			
 			// pluses and minuses, underscores can be within words, *,? are for wildcard queries
 			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_' || ch=='*'){
-				buffer[length++] = ch;
+				if(length<buffer.length)
+					buffer[length++] = ch;
 			} else{
 				cur--; // position before the nonletter character
 				break;
@@ -421,7 +422,7 @@ public class WikiQueryParser {
 			// end of phrase query
 			if(text[cur] == '"')
 				break;
-			else
+			else if(length < buffer.length)
 				buffer[length++] = text[cur];
 		}
 		if(length != 0){
@@ -1128,6 +1129,46 @@ public class WikiQueryParser {
 		return bq;
 	}
 	
+	/** Quote CJK chars to avoid frequency-based analysis */
+	protected String quoteCJK(String queryText){
+		if(!builder.filters.isUsingCJK())
+			return queryText;
+		
+		StringBuilder sb = new StringBuilder();
+		int c;
+		boolean prevCJK = false;
+		int offset = 0;
+		boolean closeQuote = false;
+		for(int i=0;i<queryText.length();i++){
+			c = queryText.codePointAt(i);
+			if(CJKFilter.isCJKChar(c)){
+				if(!prevCJK){ // begin of CJK stream
+					if(i!=0)
+						sb.append(queryText.substring(offset,i));
+					offset = i;
+					sb.append('"');
+					closeQuote = true;
+					prevCJK = true;
+				}
+			} else if(prevCJK){
+				// end of CJK stream
+				sb.append(queryText.substring(offset,i));
+				offset = i;
+				sb.append('"');
+				closeQuote = true;
+				prevCJK = false;
+			}
+		}
+		if(offset == 0  && !closeQuote)
+			return queryText;
+		else{
+			sb.append(queryText.substring(offset,queryText.length()));
+			if(closeQuote)
+				sb.append('"');
+			return sb.toString();
+		}
+	}
+	
 	/**
 	 * Main function for multi-pass parsing.
 	 * 
@@ -1137,6 +1178,7 @@ public class WikiQueryParser {
 	 * @return
 	 */
 	protected Query parseMultiPass(String queryText, NamespacePolicy policy, boolean makeRedirect, boolean makeKeywords){
+		queryText = quoteCJK(queryText);
 		if(policy != null)
 			this.namespacePolicy = policy;		
 		defaultBoost = 1;

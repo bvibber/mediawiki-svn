@@ -6,6 +6,7 @@ package org.wikimedia.lsearch.config;
 
 import java.util.HashSet;
 
+import org.apache.lucene.search.BooleanQuery;
 import org.wikimedia.lsearch.frontend.HTTPIndexServer;
 import org.wikimedia.lsearch.frontend.RPCIndexServer;
 import org.wikimedia.lsearch.frontend.SearchServer;
@@ -34,7 +35,7 @@ public class StartupManager {
 				Configuration.setConfigFile(args[++i]);
 			}
 		}
-		
+		BooleanQuery.setMaxClauseCount(10000);
 		Configuration config = Configuration.open();
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		// preload localizations

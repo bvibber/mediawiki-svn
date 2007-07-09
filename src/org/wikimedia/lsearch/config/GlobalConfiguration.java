@@ -970,8 +970,12 @@ public class GlobalConfiguration {
 	/** Get OAI-repo url for dbname */
 	public String getOAIRepo(String dbname){
 		String repo = null;
+		// try non-default values from global settings
+		repo = findSuffix(oaiRepo.keySet(),dbname);
+		if(repo != null)
+			repo = oaiRepo.get(repo);
 		// try to get from initialise settings
-		if(wgServer != null){
+		if(repo == null && wgServer != null){
 			String key = findSuffix(wgServer.keySet(),dbname);
 			if(key == null)
 				key = "default";
@@ -992,7 +996,7 @@ public class GlobalConfiguration {
 				repo = oaiRepo.get("<default>");
 		}
 		if(repo == null)
-			return ""; // failed, no url
+			return ""; // failed, no url		
 		
 		// process $lang
 		String lang = getLanguage(dbname);

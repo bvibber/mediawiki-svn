@@ -183,10 +183,11 @@ public class GlobalConfigurationTest extends TestCase {
 			assertEquals("http://$lang.wikipedia.org/w/index.php",oairepo.get("<default>"));
 			
 			assertEquals("http://sr.wikipedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("srwiki"));
-			assertEquals("http://fr.wikipedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("frtest"));
+			assertEquals("http://localhost/wiki-lucene/phase3/index.php?title=Special:OAIRepository",testgc.getOAIRepo("frtest"));
 			
 			// InitialiseSettings test
 			assertEquals("sr",testgc.getLanguage("rswikimedia"));
+			assertEquals("http://rs.wikimedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("rswikimedia"));
 			assertEquals("http://commons.wikimedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("commonswiki"));
 			
 		} catch (MalformedURLException e) {
