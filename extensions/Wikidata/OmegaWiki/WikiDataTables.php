@@ -46,14 +46,13 @@ class TableColumn implements DatabaseExpression {
 class Table {
 	public $identifier;
 	public $isVersioned;
-	public $keyFields;
+	public $keyColumns;
 	public $columns;
 	
-	public function __construct($identifier, $isVersioned, $keyFields) {
+	public function __construct($identifier, $isVersioned) {
 		# Without dataset prefix!
 		$this->identifier = $identifier;
 		$this->isVersioned = $isVersioned;
-		$this->keyFields = $keyFields;
 		$this->columns = array();
 	}
 
@@ -68,14 +67,18 @@ class Table {
 		
 		return $result;
 	}
+	
+	protected function setKeyColumns(array $keyColumns) {
+		$this->keyColumns = $keyColumns;
+	}
 }
 
 class VersionedTable extends Table {
 	public $addTransactionId;
 	public $removeTransactionId;
 	
-	public function __construct($identifier, $keyFields) {
-		parent::__construct($identifier, true, $keyFields);
+	public function __construct($identifier) {
+		parent::__construct($identifier, true);
 		
 		$this->addTransactionId = $this->createColumn("add_transaction_id");
 		$this->removeTransactionId = $this->createColumn("remove_transaction_id");
@@ -87,10 +90,12 @@ class BootstrappedDefinedMeaningsTable extends Table {
 	public $definedMeaningId;
 	
 	public function __construct($identifier) {
-		parent::__construct($identifier, false, array("name"));
+		parent::__construct($identifier, false);
 		
 		$this->name = $this->createColumn("name");
 		$this->definedMeaningId = $this->createColumn("defined_meaning_id");
+		
+		$this->setKeyColumns(array($this->name));	
 	}
 }
 
@@ -102,13 +107,15 @@ class TransactionsTable extends Table {
 	public $comment;
 	
 	public function __construct($identifier) {
-		parent::__construct($identifier, false, array("transaction_id"));
+		parent::__construct($identifier, false);
 		
 		$this->transactionId = $this->createColumn("transaction_id"); 	
 		$this->userId = $this->createColumn("user_id"); 	
 		$this->userIp = $this->createColumn("user_ip"); 	
 		$this->timestamp = $this->createColumn("timestamp"); 	
 		$this->comment = $this->createColumn("comment");
+		
+		$this->setKeyColumns(array($this->transactionId));	
 	}
 }
 
@@ -118,11 +125,13 @@ class DefinedMeaningTable extends VersionedTable {
 	public $meaningTextTcid;
 	
 	public function __construct($identifier) {
-		parent::__construct($identifier, array("defined_meaning_id"));
+		parent::__construct($identifier);
 		
 		$this->definedMeaningId = $this->createColumn("defined_meaning_id");
 		$this->expressionId = $this->createColumn("expression_id");
 		$this->meaningTextTcid = $this->createColumn("meaning_text_tcid");
+		
+		$this->setKeyColumns(array($this->definedMeaningId));	
 	}
 }
 
@@ -132,11 +141,13 @@ class AlternativeDefinitionsTable extends VersionedTable {
 	public $sourceId;
 
 	public function __construct($identifier) {
-		parent::__construct($identifier, array("meaning_mid", "meaning_text_tcid"));
+		parent::__construct($identifier);
 		
 		$this->meaningMid = $this->createColumn("meaning_mid");
 		$this->meaningTextTcid = $this->createColumn("meaning_text_tcid");
 		$this->sourceId = $this->createColumn("source_id");
+		
+		$this->setKeyColumns(array($this->meaningMid, $this->meaningTextTcid));	
 	}
 }
 
@@ -147,12 +158,14 @@ class ExpressionTable extends VersionedTable {
 	public $languageId;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("expression_id"));
+		parent::__construct($name);
 		
 		$this->expressionId = $this->createColumn("expression_id");
 		$this->spelling = $this->createColumn("spelling");
 		$this->hyphenation = $this->createColumn("hyphenation");
 		$this->languageId = $this->createColumn("language_id");
+		
+		$this->setKeyColumns(array($this->expressionId));	
 	}
 }
 
@@ -164,13 +177,15 @@ class ClassAttributesTable extends VersionedTable {
 	public $attributeType;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("object_id"));
+		parent::__construct($name);
 	
 		$this->objectId = $this->createColumn("object_id");
 		$this->classMid = $this->createColumn("class_mid");
 		$this->levelMid = $this->createColumn("level_mid"); 	
 		$this->attributeMid = $this->createColumn("attribute_mid"); 	
-		$this->attributeType = $this->createColumn("attribute_type");	
+		$this->attributeType = $this->createColumn("attribute_type");
+		
+		$this->setKeyColumns(array($this->objectId));	
 	}
 }
 
@@ -180,11 +195,13 @@ class ClassMembershipsTable extends VersionedTable {
 	public $classMemberMid;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("class_membership_id"));
+		parent::__construct($name);
 		
 		$this->classMembershipId = $this->createColumn("class_membership_id"); 	
 		$this->classMid = $this->createColumn("class_mid"); 	
 		$this->classMemberMid = $this->createColumn("class_member_mid");
+		
+		$this->setKeyColumns(array($this->classMembershipId));	
 	}
 }
 
@@ -195,12 +212,14 @@ class CollectionMembershipsTable extends VersionedTable {
 	public $applicableLanguageId;
 	
 	public function __construct($name) {
-		parent::__construct($name, array('collection_id', 'member_mid'));
+		parent::__construct($name);
 		
 		$this->collectionId = $this->createColumn("collection_id"); 	
 		$this->memberMid = $this->createColumn("member_mid"); 	
 		$this->internalMemberId = $this->createColumn("internal_member_id"); 	
 		$this->applicableLanguageId = $this->createColumn("applicable_language_id");
+		
+		$this->setKeyColumns(array($this->collectionId, $this->memberMid));	
 	}
 }
 
@@ -211,12 +230,14 @@ class MeaningRelationsTable extends VersionedTable {
 	public $relationTypeMid;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("relation_id"));
+		parent::__construct($name);
 		
 		$this->relationId = $this->createColumn("relation_id"); 	
 		$this->meaning1Mid = $this->createColumn("meaning1_mid"); 	
 		$this->meaning2Mid = $this->createColumn("meaning2_mid"); 	
 		$this->relationTypeMid = $this->createColumn("relationtype_mid");
+		
+		$this->setKeyColumns(array($this->relationId));	
 	}
 }
 
@@ -228,13 +249,15 @@ class SyntransTable extends VersionedTable {
 	public $identicalMeaning;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("syntrans_sid"));
+		parent::__construct($name);
 		
 		$this->syntransSid = $this->createColumn("syntrans_sid"); 	
 		$this->definedMeaningId = $this->createColumn("defined_meaning_id"); 	
 		$this->expressionId = $this->createColumn("expression_id"); 	
 		$this->firstUse = $this->createColumn("firstuse"); 	
 		$this->identicalMeaning = $this->createColumn("identical_meaning");
+		
+		$this->setKeyColumns(array($this->syntransSid));	
 	}
 }
 
@@ -245,12 +268,14 @@ class TextAttributeValuesTable extends VersionedTable {
 	public $text;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("value_id"));
+		parent::__construct($name);
 		
 		$this->valueId = $this->createColumn("value_id"); 	
 		$this->objectId = $this->createColumn("object_id"); 	
 		$this->attributeMid = $this->createColumn("attribute_mid"); 	
 		$this->text = $this->createColumn("text");
+		
+		$this->setKeyColumns(array($this->valueId));	
 	}
 }
 
@@ -261,12 +286,14 @@ class TranslatedContentAttributeValuesTable extends VersionedTable {
 	public $valueTcid;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("value_id"));
+		parent::__construct($name);
 		
 		$this->valueId = $this->createColumn("value_id"); 	
 		$this->objectId = $this->createColumn("object_id"); 	
 		$this->attributeMid = $this->createColumn("attribute_mid"); 	
 		$this->valueTcid = $this->createColumn("value_tcid");
+		
+		$this->setKeyColumns(array($this->valueId));	
 	}
 }
 
@@ -278,13 +305,15 @@ class TranslatedContentTable extends VersionedTable {
 	public $originalLanguageId;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("translated_content_id", "language_id"));
+		parent::__construct($name);
 		
 		$this->translatedContentId = $this->createColumn("translated_content_id"); 	
 		$this->languageId = $this->createColumn("language_id"); 	
 		$this->shortTextId = $this->createColumn("shorttext_id"); 	
 		$this->textId = $this->createColumn("text_id"); 	
 		$this->originalLanguageId = $this->createColumn("original_language_id");
+		
+		$this->setKeyColumns(array($this->translatedContentId, $this->languageId));	
 	}
 }
 
@@ -295,12 +324,14 @@ class OptionAttributeOptionsTable extends VersionedTable {
 	public $languageId;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("attribute_id", "option_mid"));
+		parent::__construct($name);
 		
 		$this->optionId = $this->createColumn("option_id"); 	
 		$this->attributeId = $this->createColumn("attribute_id"); 	
 		$this->optionMid = $this->createColumn("option_mid"); 	
 		$this->languageId = $this->createColumn("language_id");
+		
+		$this->setKeyColumns(array($this->attributeId, $this->optionMid)); // TODO: is this the correct key?	
 	}
 }
 
@@ -310,11 +341,13 @@ class OptionAttributeValuesTable extends VersionedTable {
 	public $optionId;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("value_id"));
+		parent::__construct($name);
 		
 		$this->valueId = $this->createColumn("value_id"); 	
 		$this->objectId = $this->createColumn("object_id"); 	
 		$this->optionId = $this->createColumn("option_id"); 	
+		
+		$this->setKeyColumns(array($this->valueId));	
 	}
 }
 
@@ -326,13 +359,15 @@ class URLAttributeValuesTable extends VersionedTable {
 	public $label;
 	
 	public function __construct($name) {
-		parent::__construct($name, array("value_id"));
+		parent::__construct($name);
 		
 		$this->valueId = $this->createColumn("value_id"); 	
 		$this->objectId = $this->createColumn("object_id"); 	
 		$this->attributeMid = $this->createColumn("attribute_mid"); 	
 		$this->url = $this->createColumn("url");
 		$this->label = $this->createColumn("label");
+		
+		$this->setKeyColumns(array($this->valueId));	
 	}
 }
 
