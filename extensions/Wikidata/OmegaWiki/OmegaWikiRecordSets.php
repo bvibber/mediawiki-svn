@@ -754,8 +754,10 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 	
 	if (count($objectIds) > 0) {
 		for ($i = 0; $i < count($objectIds); $i++) {
-			$record = new ArrayRecord($objectAttributesRecordStructure);
-			$objectAttributesRecords[$objectIds[$i]] = $record;
+			if (isset($objectIds[$i])) {
+				$record = new ArrayRecord($objectAttributesRecordStructure);
+				$objectAttributesRecords[$objectIds[$i]] = $record;
+			}
 		}
 
 		// Text attributes		
