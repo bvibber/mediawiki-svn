@@ -2,6 +2,62 @@
 
 require_once('Transaction.php');
 
+class TableColumnsToAttribute {
+	protected $tableColumns;
+	protected $attribute;
+	
+	public function __construct(array $tableColumns, Attribute $attribute) {
+		$this->tableColumns = $tableColumns;
+		$this->attribute = $attribute;
+	}
+	
+	public function getTableColumns() {
+		return $this->tableColumns;
+	}
+	
+	public function getAttribute() {
+		return $this->attribute;
+	}
+}
+
+class TableColumnsToAttributesMapping {
+	protected $tableColumnsToAttributes;
+	
+	public function __construct($tableColumnsToAttributes) {
+		if (is_array($tableColumnsToAttributes))
+			$this->tableColumnsToAttributes = $tableColumnsToAttributes; 
+		else
+			$this->tableColumnsToAttributes = func_get_args();
+	}
+	
+	public function getSelectColumns() {
+		$result = array();
+		
+		foreach ($this->tableColumnsToAttributes as $tableColumnToAttribute) 
+			foreach($tableColumnToAttribute->getTableColumns() as $tableColumn)
+				$result[] = $tableColumn;
+		
+		return $result;
+	}
+
+	public function getAttributes() {
+		$result = array();
+		
+		foreach ($this->tableColumnsToAttributes as $tableColumnToAttribute) 
+			$result[] = $tableColumnToAttribute->getAttribute();
+		
+		return $result;
+	}
+	
+	public function getCount() {
+		return count($this->tableColumnsToAttributes);
+	}
+	
+	public function getMapping($index) {
+		return $this->tableColumnsToAttributes[$index];
+	}
+}
+
 function getTransactedSQL(QueryTransactionInformation $transactionInformation, array $selectFields, Table $table, array $restrictions, array $orderBy = array(), $count = -1, $offset = 0) {
 	$tableNames = array($table->getIdentifier());
 
@@ -34,11 +90,22 @@ function getTransactedSQL(QueryTransactionInformation $transactionInformation, a
 	return $query;
 }
 
-function queryRecordSet($recordSetStructureId, QueryTransactionInformation $transactionInformation, Attribute $keyAttribute, array $fieldAttributeMapping, Table $table, array $restrictions, array $orderBy = array(), $count = -1, $offset = 0) {
+function getRecordFromRow($row, $columnIndex, Structure $structure) {
+	$result = new ArrayRecord($structure);
+	
+	foreach ($structure->getAttributes() as $attribute) {
+		$result->setAttributeValue($attribute, $row[$columnIndex]);
+		$columnIndex++;
+	}
+	
+	return $result;
+}
+
+function queryRecordSet($recordSetStructureId, QueryTransactionInformation $transactionInformation, Attribute $keyAttribute, TableColumnsToAttributesMapping $tableColumnsToAttributeMapping, Table $table, array $restrictions, array $orderBy = array(), $count = -1, $offset = 0) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$selectFields = array_keys($fieldAttributeMapping);
-	$attributes = array_values($fieldAttributeMapping);
+	$selectFields =  $tableColumnsToAttributeMapping->getSelectColumns();
+	$attributes = $tableColumnsToAttributeMapping->getAttributes();
 
 	if ($table->isVersioned) 
 		$allAttributes = array_merge($attributes, $transactionInformation->versioningAttributes());
@@ -57,9 +124,21 @@ function queryRecordSet($recordSetStructureId, QueryTransactionInformation $tran
 
 	while ($row = $dbr->fetchRow($queryResult)) {
 		$record = new ArrayRecord($structure);
+		$columnIndex = 0;
 
-		for ($i = 0; $i < count($attributes); $i++)
-			$record->setAttributeValue($attributes[$i], $row[$i]);
+		for ($i = 0; $i < $tableColumnsToAttributeMapping->getCount(); $i++) {
+			$mapping = $tableColumnsToAttributeMapping->getMapping($i);
+			$attribute = $mapping->getAttribute();
+			$tableColumns = $mapping->getTableColumns();
+			
+			if (count($tableColumns) == 1)
+				$value = $row[$columnIndex];
+			else 
+				$value = getRecordFromRow($row, $columnIndex, $attribute->getStructure());
+			
+			$record->setAttributeValue($attribute, $value);
+			$columnIndex += count($tableColumns);
+		}
 			
 		$transactionInformation->setVersioningAttributes($record, $row);	
 		$recordSet->add($record);

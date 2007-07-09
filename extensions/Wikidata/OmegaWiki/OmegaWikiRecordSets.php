@@ -468,11 +468,11 @@ function getClassAttributesRecordSet($definedMeaningId, ViewInformation $viewInf
 		$classAttributesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$classAttributeIdAttribute,
-		array(
-			'object_id' => $classAttributeIdAttribute,
-			'level_mid' => $classAttributeLevelAttribute,
-			'attribute_mid' => $classAttributeAttributeAttribute,
-			'attribute_type' => $classAttributeTypeAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('object_id'), $classAttributeIdAttribute),
+			new TableColumnsToAttribute(array('level_mid'), $classAttributeLevelAttribute),
+			new TableColumnsToAttribute(array('attribute_mid'), $classAttributeAttributeAttribute),
+			new TableColumnsToAttribute(array('attribute_type'),$classAttributeTypeAttribute)
 		),
 		$classAttributesTable,
 		array("class_mid=$definedMeaningId")
@@ -504,9 +504,9 @@ function getAlternativeDefinitionsRecordSet($definedMeaningId, ViewInformation $
 		$alternativeDefinitionsStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$definitionIdAttribute,
-		array(
-			'meaning_text_tcid' => $definitionIdAttribute, 
-			'source_id' => $sourceAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('meaning_text_tcid'), $definitionIdAttribute), 
+			new TableColumnsToAttribute(array('source_id'), $sourceAttribute)
 		),
 		$alternativeDefinitionsTable,
 		array("meaning_mid=$definedMeaningId")
@@ -663,9 +663,9 @@ function getTranslatedContentRecordSet($translatedContentId, ViewInformation $vi
 		$translatedTextStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$languageAttribute,
-		array(
-			'language_id' => $languageAttribute, 
-			'text_id' => $textAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('language_id'), $languageAttribute), 
+			new TableColumnsToAttribute(array('text_id'), $textAttribute)
 		),
 		$translatedContentTable,
 		array("translated_content_id=$translatedContentId")
@@ -684,9 +684,9 @@ function getFilteredTranslatedContentRecordSet($translatedContentId, ViewInforma
 		null,
 		$viewInformation->queryTransactionInformation,
 		$languageAttribute,
-		array(
-			'language_id' => $languageAttribute, 
-			'text_id' => $textAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('language_id'), $languageAttribute), 
+			new TableColumnsToAttribute(array('text_id'), $textAttribute)
 		),
 		$translatedContentTable,
 		array(
@@ -721,10 +721,10 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, ViewInformation $v
 		$synonymsTranslationsStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$syntransIdAttribute,
-		array(
-			'syntrans_sid' => $syntransIdAttribute, 
-			'expression_id' => $expressionAttribute,
-			'identical_meaning' => $identicalMeaningAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('syntrans_sid'), $syntransIdAttribute), 
+			new TableColumnsToAttribute(array('expression_id'), $expressionAttribute),
+			new TableColumnsToAttribute(array('identical_meaning'),$identicalMeaningAttribute)
 		),
 		$syntransTable,
 		$restrictions
@@ -868,10 +868,10 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId, array $filterRel
 		$relationStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$relationIdAttribute,
-		array(
-			'relation_id' => $relationIdAttribute, 
-			'relationtype_mid' => $relationTypeAttribute, 
-			'meaning2_mid' => $otherDefinedMeaningAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('relation_id'), $relationIdAttribute), 
+			new TableColumnsToAttribute(array('relationtype_mid'), $relationTypeAttribute), 
+			new TableColumnsToAttribute(array('meaning2_mid'), $otherDefinedMeaningAttribute)
 		),
 		$meaningRelationsTable,
 		$restrictions,
@@ -894,10 +894,10 @@ function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, ViewIn
 		$reciprocalRelationsAttribute->id,
 		$viewInformation->queryTransactionInformation,
 		$relationIdAttribute,
-		array(
-			'relation_id' => $relationIdAttribute, 
-			'relationtype_mid' => $relationTypeAttribute, 
-			'meaning1_mid' => $otherDefinedMeaningAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('relation_id'), $relationIdAttribute), 
+			new TableColumnsToAttribute(array('relationtype_mid'), $relationTypeAttribute), 
+			new TableColumnsToAttribute(array('meaning1_mid'), $otherDefinedMeaningAttribute)
 		),
 		$meaningRelationsTable,
 		array("meaning2_mid=$definedMeaningId"),
@@ -919,9 +919,9 @@ function getPossiblySynonymousRecordSet($definedMeaningId, ViewInformation $view
 		null,
 		$viewInformation->queryTransactionInformation,
 		$possiblySynonymousIdAttribute,
-		array(
-			'relation_id' => $possiblySynonymousIdAttribute, 
-			'meaning2_mid' => $possibleSynonymAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('relation_id'), $possiblySynonymousIdAttribute), 
+			new TableColumnsToAttribute(array('meaning2_mid'), $possibleSynonymAttribute)
 		),
 		$meaningRelationsTable,
 		array(
@@ -957,9 +957,9 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, ViewI
 		$collectionMembershipStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$collectionIdAttribute,
-		array(
-			'collection_id' => $collectionIdAttribute,
-			'internal_member_id' => $sourceIdentifierAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('collection_id'), $collectionIdAttribute),
+			new TableColumnsToAttribute(array('internal_member_id'), $sourceIdentifierAttribute)
 		),
 		$collectionMembershipsTable,
 		array("member_mid=$definedMeaningId")
@@ -988,11 +988,11 @@ function getTextAttributesValuesRecordSet(array $objectIds, ViewInformation $vie
 		$textAttributeValuesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$textAttributeIdAttribute,
-		array(
-			'value_id' => $textAttributeIdAttribute,
-			'object_id' => $textAttributeObjectAttribute,
-			'attribute_mid' => $textAttributeAttribute,
-			'text' => $textAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('value_id'), $textAttributeIdAttribute),
+			new TableColumnsToAttribute(array('object_id'), $textAttributeObjectAttribute),
+			new TableColumnsToAttribute(array('attribute_mid'), $textAttributeAttribute),
+			new TableColumnsToAttribute(array('text'), $textAttribute)
 		),
 		$textAttributeValuesTable,
 		array("object_id IN (" . implode(", ", $objectIds) . ")")
@@ -1014,11 +1014,11 @@ function getURLAttributeValuesRecordSet(array $objectIds, ViewInformation $viewI
 		$urlAttributeValuesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$urlAttributeIdAttribute,
-		array(
-			'value_id' => $urlAttributeIdAttribute,
-			'object_id' => $urlAttributeObjectAttribute,
-			'attribute_mid' => $urlAttributeAttribute,
-			'url' => $urlAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('value_id'), $urlAttributeIdAttribute),
+			new TableColumnsToAttribute(array('object_id'), $urlAttributeObjectAttribute),
+			new TableColumnsToAttribute(array('attribute_mid'), $urlAttributeAttribute),
+			new TableColumnsToAttribute(array('url'), $urlAttribute)
 		),
 		$urlAttributeValuesTable,
 		array("object_id IN (" . implode(", ", $objectIds) . ")")
@@ -1040,11 +1040,11 @@ function getTranslatedTextAttributeValuesRecordSet(array $objectIds, ViewInforma
 		$translatedTextAttributeValuesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$translatedTextAttributeIdAttribute,
-		array(
-			'value_id' => $translatedTextAttributeIdAttribute,
-			'object_id' => $translatedTextAttributeObjectAttribute,
-			'attribute_mid' => $translatedTextAttributeAttribute,
-			'value_tcid' => $translatedTextValueIdAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('value_id'), $translatedTextAttributeIdAttribute),
+			new TableColumnsToAttribute(array('object_id'), $translatedTextAttributeObjectAttribute),
+			new TableColumnsToAttribute(array('attribute_mid'), $translatedTextAttributeAttribute),
+			new TableColumnsToAttribute(array('value_tcid'), $translatedTextValueIdAttribute)
 		),
 		$translatedContentAttributeValuesTable,
 		array("object_id IN (" . implode(", ", $objectIds) . ")")
@@ -1066,11 +1066,11 @@ function getOptionAttributeOptionsRecordSet($attributeId, ViewInformation $viewI
 		null,
 		$viewInformation->queryTransactionInformation,
 		$optionAttributeOptionIdAttribute,
-		array(
-			'option_id' => $optionAttributeOptionIdAttribute,
-			'attribute_id' => $optionAttributeAttribute,
-			'option_mid' => $optionAttributeOptionAttribute,
-			'language_id' => $languageAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('option_id'), $optionAttributeOptionIdAttribute),
+			new TableColumnsToAttribute(array('attribute_id'), $optionAttributeAttribute),
+			new TableColumnsToAttribute(array('option_mid'), $optionAttributeOptionAttribute),
+			new TableColumnsToAttribute(array('language_id'), $languageAttribute)
 		),
 		$optionAttributeOptionsTable,
 		array('attribute_id = ' . $attributeId)
@@ -1090,10 +1090,10 @@ function getOptionAttributeValuesRecordSet(array $objectIds, ViewInformation $vi
 		$optionAttributeValuesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$optionAttributeIdAttribute,
-		array(
-			'value_id' => $optionAttributeIdAttribute,
-			'object_id' => $optionAttributeObjectAttribute,
-			'option_id' => $optionAttributeOptionIdAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('value_id'), $optionAttributeIdAttribute),
+			new TableColumnsToAttribute(array('object_id'), $optionAttributeObjectAttribute),
+			new TableColumnsToAttribute(array('option_id'), $optionAttributeOptionIdAttribute)
 		),
 		$optionAttributeValuesTable,
 		array("object_id IN (" . implode(", ", $objectIds) . ")")
@@ -1118,9 +1118,9 @@ function expandOptionsInRecordSet(RecordSet $recordSet, ViewInformation $viewInf
 			null,
 			$viewInformation->queryTransactionInformation,
 			$optionAttributeOptionIdAttribute,
-			array(
-				'attribute_id' => $optionAttributeIdAttribute,
-				'option_mid' => $optionAttributeOptionAttribute
+			new TableColumnsToAttributesMapping(
+				new TableColumnsToAttribute(array('attribute_id'), $optionAttributeIdAttribute),
+				new TableColumnsToAttribute(array('option_mid'), $optionAttributeOptionAttribute)
 			),
 			$optionAttributeOptionsTable,
 			array('option_id = ' . $record->getAttributeValue($optionAttributeOptionIdAttribute))
@@ -1136,7 +1136,7 @@ function expandOptionsInRecordSet(RecordSet $recordSet, ViewInformation $viewInf
 			null,
 			$viewInformation->queryTransactionInformation,
 			$optionAttributeIdAttribute,
-			array('attribute_mid' => $optionAttributeAttribute),
+			new TableColumnsToAttributesMapping(new TableColumnsToAttribute(array('attribute_mid'), $optionAttributeAttribute)),
 			$classAttributesTable,
 			array('object_id = ' . $optionRecord->getAttributeValue($optionAttributeIdAttribute))
 		);
@@ -1158,9 +1158,9 @@ function getDefinedMeaningClassMembershipRecordSet($definedMeaningId, ViewInform
 		$classMembershipStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
 		$classMembershipIdAttribute,
-		array(
-			'class_membership_id' => $classMembershipIdAttribute, 
-			'class_mid' => $classAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('class_membership_id'), $classMembershipIdAttribute), 
+			new TableColumnsToAttribute(array('class_mid'), $classAttribute)
 		),
 		$classMembershipsTable,
 		array("class_member_mid=$definedMeaningId")

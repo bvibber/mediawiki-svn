@@ -407,8 +407,8 @@ function getTransactionRecordSet($fromTransactionId, $transactionCount, $userNam
 		'transaction-id',
 		$queryTransactionInformation,
 		$transactionIdAttribute,
-		array(
-			'transaction_id' => $transactionIdAttribute
+		new TableColumnsToAttributesMapping(
+			new TableColumnsToAttribute(array('transaction_id'), $transactionIdAttribute)
 		),
 		$transactionsTable,
 		$restrictions,

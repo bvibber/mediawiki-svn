@@ -216,8 +216,12 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 
 	global
 		$urlAttribute, $urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttributeValuesStructure, $urlAttributeValuesAttribute,
-		$wgUrlAttributeValuesAttributeName, $wgUrlAttributeAttributeName;
+		$wgUrlAttributeValuesAttributeName, $wgUrlAttributeAttributeName, $hyperLinkAttribute, $hyperLinkLabelAttribute, $hyperLinkURLAttribute;
 		
+	$hyperLinkLabelAttribute = new Attribute("label", "Label", "short-text"); 
+	$hyperLinkURLAttribute = new Attribute("url", "URL", "url");
+	$hyperLinkAttribute = new Attribute("hyperlink", "Link", new Structure($hyperLinkLabelAttribute, $hyperLinkURLAttribute));
+	
 	$urlAttribute = new Attribute("url", "URL", "url");
 	$urlAttributeIdAttribute = new Attribute("url-attribute-id", "Attribute identifier", "object-id");
 	$urlAttributeObjectAttribute = new Attribute("url-attribute-object-id", "Attribute object", "object-id");
