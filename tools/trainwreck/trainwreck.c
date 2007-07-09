@@ -304,6 +304,9 @@ char	 line[1024];
 		if (line[n] == '\n')
 			line[n] = '\0';
 
+		if (*line == '#')
+			continue;
+
 		opt = line;
 		if ((value = strchr(opt, ' ')) == NULL) {
 			(void) fprintf(stderr, "syntax error in configuration file \"%s\"\n",

@@ -1,0 +1,46 @@
+# $Id$
+#
+# This is the trainwreck configuration file.  It defines the master and slave 
+# servers and some miscellaneous options.
+
+# Host or IP of the master server.
+master-host 127.0.0.1
+
+# Username/password to connect to master as.  Needs REPLICATION CLIENT 
+# privilege.
+master-user repl
+master-pass whatever
+# Optional
+master-port 3306
+
+# Slave connection.  Should probably have ALL PRIVILEGES on databases being 
+# replicated.
+slave-host localhost
+slave-user dbsyncer
+slave-pass whatever
+slave-port 3306
+
+# For multi-writer replication: number of concurrent writers to use.  Incoming 
+# transactions from the master will be split between them to improve speed.
+#
+# WARNING: THIS DOES NOT WORK YET.  Set it to 1 unless you're testing, or you 
+# risk replication state getting out of sync, corrupting your database.
+nwriters 1
+
+# Number of binlog events to buffer in memory.  Too small values will stall 
+# waiting for master events; too large values will use excessive memory.  This 
+# is per-writer - nwriters=2 and max-buffer=1024 gives 2048 buffer entries.
+max-buffer 8192
+
+# Only replicate these database.  Should be an anchored POSIX Extended regular 
+# expression.
+only-replicate ^.*wiki(books)?$
+
+# Don't replicate these databases.  Should be an anchored POSIX Extended 
+# regular expression.  This is applied after only-replicate.
+ignore-database ^commonswiki$
+
+# Ignore this error when executing a query on slaves.  Can be set multiple 
+# times.  Note: if you need this, it might indicate out-of-sync replication.  
+# DO NOT set this for transient error likes 'Lock wait timeout exceeded'.
+ignore-errno 1061
