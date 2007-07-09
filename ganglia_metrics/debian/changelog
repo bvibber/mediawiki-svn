@@ -1,3 +1,9 @@
+ganglia-metrics (1.1-1) edgy; urgency=low
+
+  * Added MySQL metrics
+
+ -- Tim Starling <tstarling@wikimedia.org> Mon, 9 Jul 2007 19:30:00 +0000
+
 ganglia-metrics (1.0-2) edgy; urgency=medium
 
   * Add dependency on gmond so install doesn't fail

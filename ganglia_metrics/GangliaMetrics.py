@@ -15,6 +15,8 @@ class Metric(object):
 		self.tmax = 60
 		self.dmax = 0
 		self.interval = 10
+
+		self.value = 0
 	
 	def isReady(self):
 		return time.time() - self.lastSendTime >= self.interval
@@ -40,7 +42,10 @@ class Metric(object):
 			self.lastSendTime = time.time()
 	
 	def getValue(self):
-		raise NotImplementedError
+		return self.value
+
+	def set(self, value):
+		self.value = value
 
 """
 A metric which works by querying a system counter. The counter typically 
@@ -82,6 +87,36 @@ class DeltaMetric(Metric):
 
 	def getCounterValue(self):
 		raise NotImplementedError
+
+"""
+A rolling average metric
+"""
+class RollingMetric(Metric):
+	def __init__(self, name, avPeriod = 60, units = '', type = 'double'):
+		Metric.__init__(self, name, units, type)
+		self.queue = []
+		self.sum = 0
+		self.targetSize = avPeriod / self.interval
+		self.head = 0
+
+	def getValue(self):
+		if len(self.queue) == 0:
+			return None
+		else:
+			return float(self.sum) / len(self.queue)
+
+	def set(self, value):
+		if value == None:
+			self.queue = []
+			return
+
+		self.sum += value
+		if len(self.queue) == self.targetSize:
+			self.head = (self.head + 1) % self.targetSize
+			self.sum -= self.queue[self.head]
+			self.queue[self.head] = value
+		else:
+			self.queue.append(value)
 
 
 """

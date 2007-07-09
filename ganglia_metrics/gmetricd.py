@@ -1,7 +1,7 @@
 #! /usr/bin/env python
 
 from xdrlib import Packer
-import sys, socket, re, GangliaMetrics, time, os, signal, pwd, logging
+import sys, socket, re, GangliaMetrics, MySQLStats, time, os, signal, pwd, logging, commands
 from SelectServer import *
 
 # Configuration
@@ -11,7 +11,9 @@ conf = {
 	'sock': '/tmp/gmetric.sock',
 	'log': '/var/log/gmetricd/gmetricd.log',
 	'pid': '/var/run/gmetricd.pid',
-	'user': 'gmetric'
+	'user': 'gmetric',
+	'dbuser': 'wikiadmin',
+	'dbpassword': commands.getoutput('/home/wikipedia/bin/wikiadmin_pass')
 }
 
 unixSocket = None
@@ -161,7 +163,9 @@ selectServer.addReader(unixSocket)
 # Create the metrics
 diskStats = GangliaMetrics.DiskStats()
 pushMetrics = GangliaMetrics.MetricCollection()
-allMetrics = (diskStats, pushMetrics)
+
+mysqlStats = MySQLStats.MySQLStats( conf['dbuser'], conf['dbpassword'] )
+allMetrics = (diskStats, pushMetrics, mysqlStats)
 
 # Daemonize
 pid = os.fork()
