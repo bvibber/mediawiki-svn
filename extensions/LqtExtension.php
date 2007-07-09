@@ -241,7 +241,7 @@ HTML;
 			$this->perpetuate('lqt_method', 'hidden') .
 			$this->perpetuate('lqt_operand', 'hidden');
 		
-		if ( /*$thread == null*/ $edit_type=='new' || ($thread && !$thread->hasSuperthread()) ) {
+		if ( $edit_type=='new' || ($thread && !$thread->hasSuperthread()) ) {
 			// This is a top-level post; show the subject line.
 			$sbjtxt = $thread ? $thread->subjectWithoutIncrement() : '';
 			$subject = $this->request->getVal('lqt_subject_field', $sbjtxt);
@@ -268,6 +268,7 @@ HTML;
 		if ($edit_type != 'editExisting' && $edit_type != 'summarize' && $e->didSave) {
 			if ( $edit_type == 'reply' ) {
 				$thread = Threads::newThread( $article, $this->article, $edit_applies_to );
+				$edit_applies_to->commitRevision();
 			} else {
 				$thread = Threads::newThread( $article, $this->article );
 			}
@@ -275,6 +276,7 @@ HTML;
 		
 		if ($edit_type == 'summarize' && $e->didSave) {
 			$edit_applies_to->setSummary( $article );
+			$edit_applies_to->commitRevision();
 		}
 		
 		// Move the thread and replies if subject changed.
@@ -287,13 +289,6 @@ HTML;
 			$thread->setRootRevision( Revision::newFromTitle($thread->root()->getTitle()) );
 			$thread->commitRevision();
 		}
-
-/*		$subject = $this->request->getVal('lqt_subject_field', '');
-		if ( $e->didSave && $subject != '' ) {
-			$thread->setSubject( Sanitizer::stripAllTags($subject) );
-		} else if ( $e->didSave && $edit_type !='summarize' && $subject == '' && !$thread->hasSuperthread() ) {
-				$thread->setSubject( '«no subject»' );
-		} */
 	}
 	
 	function renameThread($t,$s) {

@@ -208,7 +208,7 @@ class Thread {
 					'thread_article' => $this->articleId,
 					'thread_path' => $this->path,
 					'thread_summary_page' => $this->summaryId,
-					'thread_timestamp' => $this->timestamp,
+					'thread_timestamp' => wfTimestampNow(),
 					'thread_revision' => $this->revisionNumber,
 					'thread_article_namespace' => $this->articleNamespace,
 				    'thread_article_title' => $this->articleTitle),
@@ -241,6 +241,29 @@ class Thread {
 		*/
 		$rev = Revision::newFromTitle( $this->root()->getTitle() );
 		$this->double->rootRevision = $rev->getId();
+	}
+
+	/*
+	More evidence that the way I'm doing history is totally screwed.
+	These methods do not alter the childrens' superthread field. All they do
+	is make sure the latest info gets into any historicalthreads we commit.
+	 */
+	function addReply($thread) {
+		$this->replies[] = $thread;
+	}
+	function removeReplyWithId($id) {
+		$target = null;
+		foreach($this->replies as $k=>$r) {
+			if ($r->id() == $id) {
+				$target = $k; break;
+			}
+		}
+		if ($target) {
+			unset($this->replies[$target]);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	function setSuperthread($thread) {
@@ -393,8 +416,7 @@ class Threads {
 		
 		if( $superthread ) {
 			$newpath = $superthread->path() . '.' . $newid;
-		} else
-		{
+		} else {
 			$newpath = $newid;
 		}
 		$res = $dbr->update( 'thread',
@@ -403,7 +425,11 @@ class Threads {
 			     __METHOD__);
 		
 		// TODO we could avoid a query here.
-        return Threads::withId($newid);
+        $newthread =  Threads::withId($newid);
+		if($superthread) {
+			$superthread->addReply( $newthread );
+		}
+		return $newthread;
      }
 	
 	static function where( $where, $options = array(), $extra_tables = array() ) {
