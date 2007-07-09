@@ -557,7 +557,7 @@ function applyPropertyToColumnFiltersToRecordSet(RecordSet $recordSet, Attribute
 function getObjectAttributesRecord($objectId, ViewInformation $viewInformation, $structuralOverride = null) {
 	global
 		$objectIdAttribute, 
-		$urlAttributeValuesAttribute, $textAttributeValuesAttribute, 
+		$linkAttributeValuesAttribute, $textAttributeValuesAttribute, 
 		$translatedTextAttributeValuesAttribute, $optionAttributeValuesAttribute,
 		$definedMeaningAttributesAttribute; 
 
@@ -569,7 +569,7 @@ function getObjectAttributesRecord($objectId, ViewInformation $viewInformation, 
 	$record->setAttributeValue($objectIdAttribute, $objectId);
 	$record->setAttributeValue($textAttributeValuesAttribute, getTextAttributesValuesRecordSet(array($objectId), $viewInformation));
 	$record->setAttributeValue($translatedTextAttributeValuesAttribute, getTranslatedTextAttributeValuesRecordSet(array($objectId), $viewInformation));
-	$record->setAttributeValue($urlAttributeValuesAttribute, getURLAttributeValuesRecordSet(array($objectId), $viewInformation));	
+	$record->setAttributeValue($linkAttributeValuesAttribute, getLinkAttributeValuesRecordSet(array($objectId), $viewInformation));	
 	$record->setAttributeValue($optionAttributeValuesAttribute, getOptionAttributeValuesRecordSet(array($objectId), $viewInformation));	
 
 	return $record;
@@ -601,7 +601,7 @@ function filterObjectAttributesRecord(Record $sourceRecord, array &$attributeIds
 		$definedMeaningAttributesAttribute, $objectIdAttribute, 
 		$textAttributeValuesAttribute, $textAttributeAttribute,
 		$translatedTextAttributeAttribute, $translatedTextAttributeValuesAttribute,
-		$urlAttributeAttribute, $urlAttributeValuesAttribute, 
+		$linkAttributeAttribute, $linkAttributeValuesAttribute, 
 		$optionAttributeAttribute, $optionAttributeValuesAttribute;
 	
 	$result = new ArrayRecord(new Structure($definedMeaningAttributesAttribute));
@@ -619,9 +619,9 @@ function filterObjectAttributesRecord(Record $sourceRecord, array &$attributeIds
 		$attributeIds
 	));
 	
-	$result->setAttributeValue($urlAttributeValuesAttribute, filterAttributeValues(
-		$sourceRecord->getAttributeValue($urlAttributeValuesAttribute), 
-		$urlAttributeAttribute,
+	$result->setAttributeValue($linkAttributeValuesAttribute, filterAttributeValues(
+		$sourceRecord->getAttributeValue($linkAttributeValuesAttribute), 
+		$linkAttributeAttribute,
 		$attributeIds
 	));	
 	
@@ -743,7 +743,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 	global
 		$textAttributeObjectAttribute, $textAttributeValuesAttribute, 
 		$translatedTextAttributeObjectAttribute, $translatedTextAttributeValuesAttribute,
-		$urlAttributeObjectAttribute, $urlAttributeValuesAttribute,
+		$linkAttributeObjectAttribute, $linkAttributeValuesAttribute,
 		$optionAttributeObjectAttribute, $optionAttributeValuesAttribute;
 		
 	$recordSetStructure = $recordSet->getStructure();
@@ -780,15 +780,15 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 			
 		$emptyTranslatedTextAttributesRecordSet = new ArrayRecordSet($allTranslatedTextAttributeValuesRecordSet->getStructure(), $allTranslatedTextAttributeValuesRecordSet->getKey());
 
-		// URL attributes		
-		$allURLAttributeValuesRecordSet = getURLAttributeValuesRecordSet($objectIds, $viewInformation); 
-		$urlAttributeValuesRecordSets = 
+		// Link attributes		
+		$allLinkAttributeValuesRecordSet = getLinkAttributeValuesRecordSet($objectIds, $viewInformation); 
+		$linkAttributeValuesRecordSets = 
 			splitRecordSet(
-				$allURLAttributeValuesRecordSet,
-				$urlAttributeObjectAttribute
+				$allLinkAttributeValuesRecordSet,
+				$linkAttributeObjectAttribute
 			);	
 			
-		$emptyURLAttributesRecordSet = new ArrayRecordSet($allURLAttributeValuesRecordSet->getStructure(), $allURLAttributeValuesRecordSet->getKey());
+		$emptyLinkAttributesRecordSet = new ArrayRecordSet($allLinkAttributeValuesRecordSet->getStructure(), $allLinkAttributeValuesRecordSet->getKey());
 		
 		// Option attributes		
 		$allOptionAttributeValuesRecordSet = getOptionAttributeValuesRecordSet($objectIds, $viewInformation); 
@@ -817,11 +817,11 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 			else 
 				$translatedTextAttributeValuesRecordSet = $emptyTranslatedTextAttributesRecordSet;
 
-			// URL attributes
-			if (isset($urlAttributeValuesRecordSets[$objectId]))
-				$urlAttributeValuesRecordSet = $urlAttributeValuesRecordSets[$objectId];
+			// Link attributes
+			if (isset($linkAttributeValuesRecordSets[$objectId]))
+				$linkAttributeValuesRecordSet = $linkAttributeValuesRecordSets[$objectId];
 			else 
-				$urlAttributeValuesRecordSet = $emptyURLAttributesRecordSet;
+				$linkAttributeValuesRecordSet = $emptyLinkAttributesRecordSet;
 
 			// Option attributes
 			if (isset($optionAttributeValuesRecordSets[$objectId]))
@@ -833,7 +833,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 			$objectAttributesRecord->setAttributeValue($objectIdAttribute, $objectId);
 			$objectAttributesRecord->setAttributeValue($textAttributeValuesAttribute, $textAttributeValuesRecordSet);
 			$objectAttributesRecord->setAttributeValue($translatedTextAttributeValuesAttribute, $translatedTextAttributeValuesRecordSet);
-			$objectAttributesRecord->setAttributeValue($urlAttributeValuesAttribute, $urlAttributeValuesRecordSet);
+			$objectAttributesRecord->setAttributeValue($linkAttributeValuesAttribute, $linkAttributeValuesRecordSet);
 			$objectAttributesRecord->setAttributeValue($optionAttributeValuesAttribute, $optionAttributeValuesRecordSet);
 			
 			$record->setAttributeValue($attributeToExpand, $objectAttributesRecord);
@@ -1006,28 +1006,28 @@ function getTextAttributesValuesRecordSet(array $objectIds, ViewInformation $vie
 	return $recordSet;
 }
 
-function getURLAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
+function getLinkAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
-		$urlAttributeValuesTable, $urlAttributeIdAttribute, $urlAttributeObjectAttribute,
-		$urlAttributeAttribute, $urlAttribute, $objectAttributesAttribute,
-		$urlAttributeValuesStructure;
+		$linkAttributeValuesTable, $linkAttributeIdAttribute, $linkAttributeObjectAttribute,
+		$linkAttributeAttribute, $linkAttribute, $objectAttributesAttribute,
+		$linkAttributeValuesStructure;
 
 	$recordSet = queryRecordSet(
-		$urlAttributeValuesStructure->getStructureType(),
+		$linkAttributeValuesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
-		$urlAttributeIdAttribute,
+		$linkAttributeIdAttribute,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('value_id'), $urlAttributeIdAttribute),
-			new TableColumnsToAttribute(array('object_id'), $urlAttributeObjectAttribute),
-			new TableColumnsToAttribute(array('attribute_mid'), $urlAttributeAttribute),
-			new TableColumnsToAttribute(array('url'), $urlAttribute)
+			new TableColumnsToAttribute(array('value_id'), $linkAttributeIdAttribute),
+			new TableColumnsToAttribute(array('object_id'), $linkAttributeObjectAttribute),
+			new TableColumnsToAttribute(array('attribute_mid'), $linkAttributeAttribute),
+			new TableColumnsToAttribute(array('url'), $linkAttribute)
 		),
-		$urlAttributeValuesTable,
+		$linkAttributeValuesTable,
 		array("object_id IN (" . implode(", ", $objectIds) . ")")
 	);
 	
-	expandDefinedMeaningReferencesInRecordSet($recordSet, array($urlAttributeAttribute));
-	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $urlAttributeIdAttribute, $viewInformation);	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($linkAttributeAttribute));
+	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $linkAttributeIdAttribute, $viewInformation);	
 	
 	return $recordSet;
 }

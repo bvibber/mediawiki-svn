@@ -1016,7 +1016,7 @@ class ShortTextEditor extends ScalarEditor {
 	}
 }
 
-class URLEditor extends ShortTextEditor {
+class LinkEditor extends ShortTextEditor {
 	public function getViewHTML(IdStack $idPath, $value) {
 		global
 			$escapedValue;
@@ -1230,9 +1230,9 @@ class TranslatedTextAttributeEditor extends AttributeEditor {
 	}
 }
 
-class URLAttributeEditor extends AttributeEditor {
+class LinkAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
-		return "url-attribute";
+		return "link-attribute";
 	}
 }
 

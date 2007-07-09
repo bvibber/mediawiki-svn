@@ -351,7 +351,7 @@ class OptionAttributeValuesTable extends VersionedTable {
 	}
 }
 
-class URLAttributeValuesTable extends VersionedTable {
+class LinkAttributeValuesTable extends VersionedTable {
 	public $valueId;
 	public $objectId;	
 	public $attributeMid;
@@ -381,6 +381,7 @@ global
 	$collectionMembershipsTable,
 	$definedMeaningTable, 
 	$expressionTable,
+	$linkAttributeValuesTable,
 	$meaningRelationsTable, 
 	$optionAttributeOptionsTable, 
 	$optionAttributeValuesTable, 
@@ -388,8 +389,7 @@ global
 	$textAttributeValuesTable, 
 	$translatedContentAttributeValuesTable, 
 	$translatedContentTable, 
-	$transactionsTable,
-	$urlAttributeValuesTable;
+	$transactionsTable;
 
 $dc=wdGetDataSetContext();
 $alternativeDefinitionsTable = new AlternativeDefinitionsTable("alt_meaningtexts");
@@ -399,6 +399,7 @@ $classMembershipsTable = new ClassMembershipsTable("class_membership");
 $collectionMembershipsTable = new CollectionMembershipsTable("collection_contents");
 $definedMeaningTable = new DefinedMeaningTable("defined_meaning");
 $expressionTable = new ExpressionTable("expression_ns");
+$linkAttributeValuesTable = new LinkAttributeValuesTable("url_attribute_values");
 $meaningRelationsTable = new MeaningRelationsTable("meaning_relations");
 $syntransTable = new SyntransTable("syntrans");
 $textAttributeValuesTable = new TextAttributeValuesTable("text_attribute_values");
@@ -407,7 +408,6 @@ $translatedContentAttributeValuesTable = new TranslatedContentAttributeValuesTab
 $translatedContentTable = new TranslatedContentTable("translated_content");
 $optionAttributeOptionsTable = new OptionAttributeOptionsTable("option_attribute_options");
 $optionAttributeValuesTable = new OptionAttributeValuesTable("option_attribute_values");
-$urlAttributeValuesTable = new URLAttributeValuesTable("url_attribute_values");
 
 function select(array $expressions, array $tables, array $restrictions) {
 	$result = "SELECT " . $expressions[0]->toExpression();

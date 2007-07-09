@@ -71,7 +71,7 @@ function getSuggestions() {
 		case 'text-attribute':	
 			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT');
 			break;
-		case 'url-attribute':	
+		case 'link-attribute':	
 			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'URL');
 			break;
 		case 'language':
@@ -118,7 +118,7 @@ function getSuggestions() {
 			$query == 'option-attribute' or
 			$query == 'translated-text-attribute' or
 			$query == 'text-attribute' or
-			$query == 'url-attribute' or
+			$query == 'link-attribute' or
 			$query == 'collection') 
 			$searchCondition = " WHERE $rowText LIKE " . $dbr->addQuotes("$search%");
 		else	
@@ -162,8 +162,8 @@ function getSuggestions() {
 		case 'option-attribute':
 			list($recordSet, $editor) = getOptionAttributeAsRecordSet($queryResult);
 			break;
-		case 'url-attribute':
-			list($recordSet, $editor) = getURLAttributeAsRecordSet($queryResult);
+		case 'link-attribute':
+			list($recordSet, $editor) = getLinkAttributeAsRecordSet($queryResult);
 			break;
 		case 'defined-meaning':
 			list($recordSet, $editor) = getDefinedMeaningAsRecordSet($queryResult);
@@ -414,20 +414,20 @@ function getTextAttributeAsRecordSet($queryResult) {
 	return array($recordSet, $editor);		
 }
 
-function getURLAttributeAsRecordSet($queryResult) {
+function getLinkAttributeAsRecordSet($queryResult) {
 	global
 		$idAttribute;
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
-	$urlAttributeAttribute = new Attribute("url-attribute", "URL attribute", "short-text");
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $urlAttributeAttribute), new Structure($idAttribute));
+	$linkAttributeAttribute = new Attribute("link-attribute", "Link attribute", "short-text");
+	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $linkAttributeAttribute), new Structure($idAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
 
 	$editor = createSuggestionsTableViewer(null);
-	$editor->addEditor(createShortTextViewer($urlAttributeAttribute));
+	$editor->addEditor(createShortTextViewer($linkAttributeAttribute));
 
 	return array($recordSet, $editor);		
 }

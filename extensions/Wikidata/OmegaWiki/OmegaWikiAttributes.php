@@ -215,19 +215,19 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 	$textAttributeValuesAttribute = new Attribute(null, $wgTextAttributeValuesAttributeName, $textAttributeValuesStructure);
 
 	global
-		$urlAttribute, $urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttributeValuesStructure, $urlAttributeValuesAttribute,
-		$wgUrlAttributeValuesAttributeName, $wgUrlAttributeAttributeName, $hyperLinkAttribute, $hyperLinkLabelAttribute, $hyperLinkURLAttribute;
+		$linkAttributeIdAttribute, $linkAttributeObjectAttribute, $linkAttributeAttribute, $linkAttributeValuesStructure, $linkAttributeValuesAttribute,
+		$wgLinkAttributeValuesAttributeName, $wgLinkAttributeAttributeName, 
+		$linkAttribute, $linkLabelAttribute, $linkURLAttribute;
 		
-	$hyperLinkLabelAttribute = new Attribute("label", "Label", "short-text"); 
-	$hyperLinkURLAttribute = new Attribute("url", "URL", "url");
-	$hyperLinkAttribute = new Attribute("hyperlink", "Link", new Structure($hyperLinkLabelAttribute, $hyperLinkURLAttribute));
+	$linkLabelAttribute = new Attribute("label", "Label", "short-text"); 
+	$linkURLAttribute = new Attribute("url", "URL", "url");
+	$linkAttribute = new Attribute("link", "Link", "url");// new Structure($linkLabelAttribute, $linkURLAttribute));
 	
-	$urlAttribute = new Attribute("url", "URL", "url");
-	$urlAttributeIdAttribute = new Attribute("url-attribute-id", "Attribute identifier", "object-id");
-	$urlAttributeObjectAttribute = new Attribute("url-attribute-object-id", "Attribute object", "object-id");
-	$urlAttributeAttribute = new Attribute("url-attribute", $wgUrlAttributeAttributeName, $definedMeaningReferenceStructure);
-	$urlAttributeValuesStructure = new Structure("url-attribute-values", $urlAttributeIdAttribute, $urlAttributeObjectAttribute, $urlAttributeAttribute, $urlAttribute, $objectAttributesAttribute);	
-	$urlAttributeValuesAttribute = new Attribute(null, $wgUrlAttributeValuesAttributeName, $urlAttributeValuesStructure);
+	$linkAttributeIdAttribute = new Attribute("link-attribute-id", "Attribute identifier", "object-id");
+	$linkAttributeObjectAttribute = new Attribute("link-attribute-object-id", "Attribute object", "object-id");
+	$linkAttributeAttribute = new Attribute("link-attribute", $wgLinkAttributeAttributeName, $definedMeaningReferenceStructure);
+	$linkAttributeValuesStructure = new Structure("link-attribute-values", $linkAttributeIdAttribute, $linkAttributeObjectAttribute, $linkAttributeAttribute, $linkAttribute, $objectAttributesAttribute);	
+	$linkAttributeValuesAttribute = new Attribute(null, $wgLinkAttributeValuesAttributeName, $linkAttributeValuesStructure);
 	
 	global
 		$optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute,

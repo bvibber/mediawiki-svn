@@ -730,22 +730,22 @@ function getTextValueAttribute($textValueAttributeId) {
 	return $dbr->fetchObject($queryResult);
 }
 
-function addURLAttributeValue($objectId, $urlAttributeId, $url) {
+function addLinkAttributeValue($objectId, $linkAttributeId, $url) {
 	$dc=wdGetDataSetContext();
 	$urlValueAttributeId = newObjectId("{$dc}_url_attribute_values");
-	createURLAttributeValue($urlValueAttributeId, $objectId, $urlAttributeId, $url);
+	createLinkAttributeValue($urlValueAttributeId, $objectId, $linkAttributeId, $url);
 }
 
-function createURLAttributeValue($urlValueAttributeId, $objectId, $urlAttributeId, $url) {
+function createLinkAttributeValue($urlValueAttributeId, $objectId, $linkAttributeId, $url) {
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query(
 		"INSERT INTO {$dc}_url_attribute_values (value_id, object_id, attribute_mid, url, label, add_transaction_id) " .
-		"VALUES ($urlValueAttributeId, $objectId, $urlAttributeId, " . $dbr->addQuotes($url) . ", " . $dbr->addQuotes($url) . ", ". getUpdateTransactionId() .")"
+		"VALUES ($urlValueAttributeId, $objectId, $linkAttributeId, " . $dbr->addQuotes($url) . ", " . $dbr->addQuotes($url) . ", ". getUpdateTransactionId() .")"
 	);	
 }
 
-function removeURLAttributeValue($urlValueAttributeId) {
+function removeLinkAttributeValue($urlValueAttributeId) {
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query(
@@ -755,10 +755,10 @@ function removeURLAttributeValue($urlValueAttributeId) {
 	);	
 }
 
-function updateURLAttributeValue($url, $urlValueAttributeId) {
+function updateLinkAttributeValue($url, $urlValueAttributeId) {
 	$urlValueAttribute = getURLValueAttribute($urlValueAttributeId);
-	removeURLAttributeValue($urlValueAttributeId);
-	createURLAttributeValue($urlValueAttributeId, $urlValueAttribute->object_id, $urlValueAttribute->attribute_mid, $url);
+	removeLinkAttributeValue($urlValueAttributeId);
+	createLinkAttributeValue($urlValueAttributeId, $urlValueAttribute->object_id, $urlValueAttribute->attribute_mid, $url);
 }
 
 function getURLValueAttribute($urlValueAttributeId) {

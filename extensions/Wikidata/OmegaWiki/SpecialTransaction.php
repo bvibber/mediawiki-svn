@@ -1169,7 +1169,7 @@ function getUpdatedURLEditor($attribute, $showRollBackOptions) {
 		
 	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
-	$editor->addEditor(createURLViewer($URLAttribute));
+	$editor->addEditor(createLinkViewer($URLAttribute));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
 	$editor->addEditor(createBooleanViewer($isLatestAttribute));
 	
@@ -1666,9 +1666,9 @@ function rollBackURLAttributes($idStack, $urlAttributes) {
 
 function rollBackURLAttribute($rollBackAction, $valueId, $objectId, $attributeId, $url, $operation) {
 	if (shouldRemove($rollBackAction, $operation))
-		removeURLAttributeValue($valueId);
+		removeLinkAttributeValue($valueId);
 	else if (shouldRestore($rollBackAction, $operation))	
-		createURLAttributeValue($valueId, $objectId, $attributeId, $url);	
+		createLinkAttributeValue($valueId, $objectId, $attributeId, $url);	
 }
 
 function rollBackTextAttributes($idStack, $textAttributes) {

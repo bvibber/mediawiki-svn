@@ -27,6 +27,8 @@ global
 	$wgIdenticalMeaningAttributeName,
 	$wgIncomingRelationsAttributeName, 
 	$wgLevelAnnotationAttributeName,
+	$wgLinkAttributeAttributeName,
+	$wgLinkAttributeValuesAttributeName,
 	$wgOptionAttributeOptionAttributeName,
 	$wgOptionAttributeOptionsAttributeName,
 	$wgOptionAttributeValuesAttributeName,
@@ -47,9 +49,7 @@ global
 	$wgTranslatedTextAttributeAttributeName,
 	$wgTranslatedTextAttributeName,
 	$wgTranslatedTextAttributeValueAttributeName,
-	$wgTranslatedTextAttributeValuesAttributeName,
-	$wgUrlAttributeAttributeName,
-	$wgUrlAttributeValuesAttributeName;
+	$wgTranslatedTextAttributeValuesAttributeName;
 
 $wgAlternativeDefinitionAttributeName = "Alternative definition";
 $wgAlternativeDefinitionsAttributeName = "Alternative definitions";	
@@ -97,8 +97,8 @@ $wgTranslatedTextAttributeAttributeName = "Property";
 $wgTranslatedTextAttributeName = "Translated text";
 $wgTranslatedTextAttributeValueAttributeName = "Text";
 $wgTranslatedTextAttributeValuesAttributeName = "Text properties";
-$wgUrlAttributeAttributeName = "Property";
-$wgUrlAttributeValuesAttributeName = "URLs";
+$wgLinkAttributeAttributeName = "Property";
+$wgLinkAttributeValuesAttributeName = "Links";
 
 // Attribute Ids
 
