@@ -993,17 +993,25 @@ class TextEditor extends ScalarEditor {
 }
 
 class ShortTextEditor extends ScalarEditor {
+	protected $onChangeHandler;
+
+	public function __construct(Attribute $attribute = null, PermissionController $permissionController, $isAddField, $onChangeHandler = "") {
+		parent::__construct($attribute, $permissionController, $isAddField);
+		
+		$this->onChangeHandler = $onChangeHandler;
+	}
+
 	public function getViewHTML(IdStack $idPath, $value) {
 		return htmlspecialchars($value);
 	}
 
 	public function getEditHTML(IdStack $idPath, $value) {
-		return getTextBox($this->updateId($idPath->getId()), $value);
+		return getTextBox($this->updateId($idPath->getId()), $value, $this->onChangeHandler);
 	}
 
 	public function add(IdStack $idPath) {
 		if ($this->isAddField)
-			return getTextBox($this->addId($idPath->getId()), "");
+			return getTextBox($this->addId($idPath->getId()), "", $this->onChangeHandler);
 		else
 			return "";
 	}

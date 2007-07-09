@@ -373,7 +373,7 @@ function getLinkAttributeValuesEditor(ViewInformation $viewInformation, UpdateCo
 		$linkEditor = new LinkEditor($linkAttribute, new SimplePermissionController(true), true);
 	else {
 		$linkEditor = new RecordTableCellEditor($linkAttribute);
-		$linkEditor->addEditor(new ShortTextEditor($linkURLAttribute, new SimplePermissionController(true), true));
+		$linkEditor->addEditor(new ShortTextEditor($linkURLAttribute, new SimplePermissionController(true), true, "urlFieldChanged(this);"));
 		$linkEditor->addEditor(new ShortTextEditor($linkLabelAttribute, new SimplePermissionController(true), true));
 	}	
 		

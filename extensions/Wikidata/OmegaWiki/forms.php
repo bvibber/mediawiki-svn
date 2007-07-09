@@ -2,8 +2,13 @@
 
 require_once('languages.php');
 
-function getTextBox($name, $value = "", $maximumLength = 255) {
-	return '<input type="text" id="'. $name .'" name="'. $name .'" value="'. $value .'" maxlength="'. $maximumLength .'" style="width: 100%; padding: 0px; margin: 0px;"/>';
+function getTextBox($name, $value = "", $onChangeHandler = "", $maximumLength = 255) {
+	if ($onChangeHandler != "")
+		$onChangeAttribute = ' onchange="'. $onChangeHandler . '"';
+	else
+		$onChangeAttribute = '';
+
+	return '<input type="text" id="'. $name .'" name="'. $name .'" value="'. $value .'" maxlength="'. $maximumLength .'"' . $onChangeAttribute . ' style="width: 100%; padding: 0px; margin: 0px;"/>';
 }
  
 function getTextArea($name, $text = "", $rows = 5, $columns = 80) {

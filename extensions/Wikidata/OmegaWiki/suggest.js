@@ -667,3 +667,147 @@ function toSort(elementName,skipRows, columnIndex) {
 	
 	elementsToSort.push(params);
 }
+
+function startsWith(value, prefix) {
+	return value.toLowerCase().substr(0, prefix.length) == prefix.toLowerCase();
+}
+
+function urlFieldChanged(urlField) {
+	var labelField = document.getElementById(stripSuffix(urlField.id, "url") + "label");
+	var url = urlField.value;
+	
+//	if (startsWith(url, "http://www.ncbi.nlm.nih.gov")) {
+//		var pubMedId = 1000;	
+//		labelField.value = getPubMedTitle(pubMedId);
+//	}
+}
+
+// Knewco specific Javascript
+
+function GetOffset( text, Pattern, inclusive ){
+    var extra = 0;
+
+    try{
+        offset = text.indexOf( Pattern );
+
+        if ( offset != -1 ){
+            if ( inclusive ){
+                 offset = offset + Pattern.length;
+            }
+        
+             return offset;
+        }
+        return -1;
+    }
+    catch(e){
+        return -1;
+    }   
+   
+}
+
+function ExtractText( text, startTag, startOffset, endTag, endOffset ){
+    var extra  = 0;
+    var offset = 0;
+    var endPos = 0;
+   
+    try{
+        /* search for a starting pattern in the text and return the remainder */
+        offset = GetOffset( text, startTag, true );       
+        if ( offset == -1 ){
+            return null;
+        }
+       
+        offset += startOffset;
+        text2 = text.slice( offset );
+       
+        if ( endTag != '' ){
+            /* search for an ending pattern in the text and return the part before */
+            endPos = GetOffset( text2, endTag, false );
+           
+            if ( endPos == -1 ){
+                return [offset,text2];
+            }
+            endPos += endOffset + offset;
+            text3 = text.slice( offset, endPos );   
+        }
+        else{
+            return [offset,text2];
+        }       
+        return [offset,text3];
+    }
+    catch(e){
+        return null;
+    }   
+}
+
+function getPubMedTitle( pmid ){
+    try {
+        xmlhttp = GetXMLHttpRequest();
+        try{
+            xmlhttp.async = false;
+        } catch(e){
+        }
+
+        xmlhttp.open( "GET", "http://"+ HOST + "/knewco/get.py?http://www.ncbi.nlm.nih.gov/entrez/utils/pmfetch.fcgi?db=PubMed&id="+pmid+"&report=xml&mode=text", false );
+         xmlhttp.send(null);
+
+        if ( xmlhttp.status == 200){
+            AuthorsRec = ExtractText( xmlhttp.responseText, "<AuthorList>", 0, "</AuthorList>", 0 );
+            if ( AuthorsRec != null ) {
+                Authors = AuthorsRec[1];
+            }
+            else{
+                Authors = "";
+            }
+
+            var Offset = 0;
+            var AuthorText = "";
+            while (true) {
+                AuthorRec = ExtractText( Authors.slice( Offset ), "<Author>", 0, "</Author>", 0 );
+                if ( AuthorRec == null ){
+                    break;
+                }
+                Offset += AuthorRec[0]
+                AuthorXml = AuthorRec[1]
+                LastNameRec  = ExtractText( AuthorXml, "<LastName>", 0, "</LastName>", 0 );
+                if ( LastNameRec != null ){
+                    LastName = LastNameRec[1];
+                } else{
+                    LastName = "";
+                }
+                FirstNameRec = ExtractText( AuthorXml, "<FirstName>", 0, "</FirstName>", 0 );
+                if ( FirstNameRec == null ){
+                    FirstNameRec = ExtractText( AuthorXml, "<ForeName>", 0, "</ForeName>", 0 );
+                }
+                
+                if ( FirstNameRec != null ){
+                    FirstName = FirstNameRec[1];
+                } else {
+                    FirstName = "";
+                }
+
+                if ( LastName != "" ){
+                    if ( AuthorText != "" ){
+                        AuthorText += "; "
+                    }
+
+                    if ( FirstName != "" ){
+                        AuthorText += LastName + ", " + FirstName;
+                    }
+                    else {
+                        AuthorText += LastName;
+                    }
+                }
+            }
+            TitleRec = ExtractText( xmlhttp.responseText, "<ArticleTitle>", 0, "</ArticleTitle>", 0 );
+            if ( TitleRec != null ){
+                return [AuthorText, TitleRec[1]];
+            }
+            else {
+                return [AuthorText, "unknown title"];
+            }
+        }
+    } catch(e){
+    }
+    return "";
+}
