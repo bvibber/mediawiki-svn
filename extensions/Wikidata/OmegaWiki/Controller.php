@@ -521,14 +521,16 @@ class TextAttributeValuesController extends ObjectAttributeValuesController {
 class LinkAttributeValuesController extends ObjectAttributeValuesController {
 	public function add($keyPath, $record)  {
 		global
-			$linkAttribute, $linkAttributeAttribute;
+			$linkAttribute, $linkAttributeAttribute, $linkLabelAttribute, $linkURLAttribute;
 			
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
 		$linkAttributeId = $record->getAttributeValue($linkAttributeAttribute);
-		$url = $record->getAttributeValue($linkAttribute);
+		$linkValue = $record->getAttributeValue($linkAttribute);
+		$label = $linkValue->getAttributeValue($linkLabelAttribute);
+		$url = $linkValue->getAttributeValue($linkURLAttribute);		
 		
-		if ($linkAttributeId != 0 && $url != '')		
-			addLinkAttributeValue($objectId, $linkAttributeId, $url);
+		if ($linkAttributeId != 0 && $url != "")		
+			addLinkAttributeValue($objectId, $linkAttributeId, $url, $label);
 	}
 
 	public function remove($keyPath) {
@@ -541,12 +543,15 @@ class LinkAttributeValuesController extends ObjectAttributeValuesController {
 
 	public function update($keyPath, $record) {
 		global
-			$linkAttributeIdAttribute, $linkAttribute;
+			$linkAttributeIdAttribute, $linkAttribute, $linkLabelAttribute, $linkURLAttribute;
 			
 		$linkId = $keyPath->peek(0)->getAttributeValue($linkAttributeIdAttribute);
-		$url = $record->getAttributeValue($linkAttribute);		
-		
-		updateLinkAttributeValue($url, $linkId);
+		$linkValue = $record->getAttributeValue($linkAttribute);
+		$label = $linkValue->getAttributeValue($linkLabelAttribute);
+		$url = $linkValue->getAttributeValue($linkURLAttribute);		
+				
+		if ($url != "")
+			updateLinkAttributeValue($linkId, $url, $label);
 	}
 }
 

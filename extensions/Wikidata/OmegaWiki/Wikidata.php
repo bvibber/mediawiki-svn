@@ -129,6 +129,7 @@ class DefaultWikidataApplication {
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->queryTransactionInformation = $referenceQueryTransactionInformation; 
+		$viewInformation->viewOrEdit = "edit";
 		
 		$this->viewInformation = $viewInformation;
 
@@ -183,6 +184,7 @@ class DefaultWikidataApplication {
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = false;
 		$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
+		$viewInformation->viewOrEdit = "edit";
 		
 		$this->viewInformation = $viewInformation;
 		

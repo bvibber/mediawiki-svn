@@ -1019,11 +1019,16 @@ class ShortTextEditor extends ScalarEditor {
 class LinkEditor extends ShortTextEditor {
 	public function getViewHTML(IdStack $idPath, $value) {
 		global
-			$escapedValue;
+			$linkLabelAttribute, $linkURLAttribute;
 		
-		$escapedValue = htmlspecialchars($value);
-			
-		return '<a href="' . $escapedValue . '">' . $escapedValue . '</a>' . EOL;
+		$label = htmlspecialchars($value->getAttributeValue($linkLabelAttribute));
+		$url = htmlspecialchars($value->getAttributeValue($linkURLAttribute));
+		
+		if ($label == "")
+			$label = $url;
+		
+		return 
+			'<a href="' . $url . '">' . $label . '</a>' . EOL;
 	}
 }
 
@@ -1903,7 +1908,11 @@ class RollBackEditor extends ScalarEditor {
 
 class RecordSetRecordSelector extends WrappingEditor {
 	public function view(IdStack $idPath, $value) {
-		return getStaticSuggest($idPath->getId(), $this->wrappedEditor->view($idPath, $value), count($value->getKey()->attributes));
+		return getStaticSuggest(
+			$idPath->getId(), 
+			$this->wrappedEditor->view($idPath, $value), 
+			count($value->getKey()->getAttributes())
+		);
 	}
 }
 

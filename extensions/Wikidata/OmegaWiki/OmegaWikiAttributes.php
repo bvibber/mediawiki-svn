@@ -221,7 +221,7 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 		
 	$linkLabelAttribute = new Attribute("label", "Label", "short-text"); 
 	$linkURLAttribute = new Attribute("url", "URL", "url");
-	$linkAttribute = new Attribute("link", "Link", "url");// new Structure($linkLabelAttribute, $linkURLAttribute));
+	$linkAttribute = new Attribute("link", "Link", new Structure($linkLabelAttribute, $linkURLAttribute));
 	
 	$linkAttributeIdAttribute = new Attribute("link-attribute-id", "Attribute identifier", "object-id");
 	$linkAttributeObjectAttribute = new Attribute("link-attribute-object-id", "Attribute object", "object-id");

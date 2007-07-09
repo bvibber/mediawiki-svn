@@ -16,6 +16,7 @@ class ViewInformation {
 	public $possiblySynonymousRelationTypeId;
 	public $queryTransactionInformation;
 	public $showRecordLifeSpan;
+	public $viewOrEdit;
 	
 	protected $propertyToColumnFilters;
 	
@@ -25,6 +26,7 @@ class ViewInformation {
 		$this->queryTransactionInformation;
 		$this->showRecordLifeSpan = false; 
 		$this->propertyToColumnFilters = array();
+		$this->viewOrEdit = "view";
 	}
 	
 	public function hasMetaDataAttributes() {

@@ -730,43 +730,43 @@ function getTextValueAttribute($textValueAttributeId) {
 	return $dbr->fetchObject($queryResult);
 }
 
-function addLinkAttributeValue($objectId, $linkAttributeId, $url) {
+function addLinkAttributeValue($objectId, $linkAttributeId, $url, $label = "") {
 	$dc=wdGetDataSetContext();
-	$urlValueAttributeId = newObjectId("{$dc}_url_attribute_values");
-	createLinkAttributeValue($urlValueAttributeId, $objectId, $linkAttributeId, $url);
+	$linkValueAttributeId = newObjectId("{$dc}_url_attribute_values");
+	createLinkAttributeValue($linkValueAttributeId, $objectId, $linkAttributeId, $url, $label);
 }
 
-function createLinkAttributeValue($urlValueAttributeId, $objectId, $linkAttributeId, $url) {
+function createLinkAttributeValue($linkValueAttributeId, $objectId, $linkAttributeId, $url, $label = "") {
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query(
 		"INSERT INTO {$dc}_url_attribute_values (value_id, object_id, attribute_mid, url, label, add_transaction_id) " .
-		"VALUES ($urlValueAttributeId, $objectId, $linkAttributeId, " . $dbr->addQuotes($url) . ", " . $dbr->addQuotes($url) . ", ". getUpdateTransactionId() .")"
+		"VALUES ($linkValueAttributeId, $objectId, $linkAttributeId, " . $dbr->addQuotes($url) . ", " . $dbr->addQuotes($label) . ", ". getUpdateTransactionId() .")"
 	);	
 }
 
-function removeLinkAttributeValue($urlValueAttributeId) {
+function removeLinkAttributeValue($linkValueAttributeId) {
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_MASTER);
 	$dbr->query(
 		"UPDATE {$dc}_url_attribute_values SET remove_transaction_id=". getUpdateTransactionId() .
-		" WHERE value_id=$urlValueAttributeId" .
+		" WHERE value_id=$linkValueAttributeId" .
 		" AND remove_transaction_id IS NULL"
 	);	
 }
 
-function updateLinkAttributeValue($url, $urlValueAttributeId) {
-	$urlValueAttribute = getURLValueAttribute($urlValueAttributeId);
-	removeLinkAttributeValue($urlValueAttributeId);
-	createLinkAttributeValue($urlValueAttributeId, $urlValueAttribute->object_id, $urlValueAttribute->attribute_mid, $url);
+function updateLinkAttributeValue($linkValueAttributeId, $url, $label = "") {
+	$linkValueAttribute = getLinkValueAttribute($linkValueAttributeId);
+	removeLinkAttributeValue($linkValueAttributeId);
+	createLinkAttributeValue($linkValueAttributeId, $linkValueAttribute->object_id, $linkValueAttribute->attribute_mid, $url, $label);
 }
 
-function getURLValueAttribute($urlValueAttributeId) {
+function getLinkValueAttribute($linkValueAttributeId) {
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT object_id, attribute_mid, url" .
-		" FROM {$dc}_url_attribute_values WHERE value_id=$urlValueAttributeId " .
+		" FROM {$dc}_url_attribute_values WHERE value_id=$linkValueAttributeId " .
 		" AND " . getLatestTransactionRestriction("{$dc}_url_attribute_values")
 	);
 

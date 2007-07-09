@@ -364,11 +364,20 @@ function getTextAttributeValuesEditor(ViewInformation $viewInformation, $control
 function getLinkAttributeValuesEditor(ViewInformation $viewInformation, UpdateController $controller, $levelDefinedMeaningName, Fetcher $objectIdFetcher) {
 	global
 		$linkAttributeAttribute, $linkAttribute, $linkAttributeValuesAttribute, $linkValueObjectAttributesEditor, 
-		$wgPopupAnnotationName;
+		$wgPopupAnnotationName, $linkLabelAttribute, $linkURLAttribute;
 
 	$editor = new RecordSetTableEditor($linkAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new LinkAttributeEditor($linkAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
-	$editor->addEditor(new LinkEditor($linkAttribute, new SimplePermissionController(true), true));
+	
+	if ($viewInformation->viewOrEdit == "view")
+		$linkEditor = new LinkEditor($linkAttribute, new SimplePermissionController(true), true);
+	else {
+		$linkEditor = new RecordTableCellEditor($linkAttribute);
+		$linkEditor->addEditor(new ShortTextEditor($linkURLAttribute, new SimplePermissionController(true), true));
+		$linkEditor->addEditor(new ShortTextEditor($linkLabelAttribute, new SimplePermissionController(true), true));
+	}	
+		
+	$editor->addEditor($linkEditor);
 	$editor->addEditor(new PopUpEditor($linkValueObjectAttributesEditor, $wgPopupAnnotationName));
 
 	addTableMetadataEditors($editor, $viewInformation);

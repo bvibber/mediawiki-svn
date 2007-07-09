@@ -1020,7 +1020,7 @@ function getLinkAttributeValuesRecordSet(array $objectIds, ViewInformation $view
 			new TableColumnsToAttribute(array('value_id'), $linkAttributeIdAttribute),
 			new TableColumnsToAttribute(array('object_id'), $linkAttributeObjectAttribute),
 			new TableColumnsToAttribute(array('attribute_mid'), $linkAttributeAttribute),
-			new TableColumnsToAttribute(array('url'), $linkAttribute)
+			new TableColumnsToAttribute(array('label', 'url'), $linkAttribute)
 		),
 		$linkAttributeValuesTable,
 		array("object_id IN (" . implode(", ", $objectIds) . ")")

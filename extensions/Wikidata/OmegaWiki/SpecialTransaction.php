@@ -249,21 +249,19 @@ function initializeAttributes() {
 	$attributeAttribute = new Attribute('attribute', 'Attribute', $definedMeaningReferenceStructure);
 		
 	global
-		$updatedURLAttribute, $updatedURLStructure, $URLAttribute;	
+		$updatedLinkAttribute, $updatedLinkStructure, $linkAttribute;	
 		
-	$URLAttribute = new Attribute('url', 'URL', 'url');	
-		
-	$updatedURLStructure = new Structure(
+	$updatedLinkStructure = new Structure(
 		$rollBackAttribute,
 		$valueIdAttribute,
 		$objectIdAttribute,
 		$attributeAttribute,
-		$URLAttribute,
+		$linkAttribute,
 		$operationAttribute,
 		$isLatestAttribute
 	);
 
-	$updatedURLAttribute = new Attribute('updated-url', 'URL properties', $updatedURLStructure);
+	$updatedLinkAttribute = new Attribute('updated-link', 'Link properties', $updatedLinkStructure);
 	
 	global
 		$updatedTextAttribute, $updatedTextStructure, $textAttribute;	
@@ -382,7 +380,7 @@ function initializeAttributes() {
 		$updatedSyntransesAttribute,
 		$updatedRelationsAttribute,
 		$updatedClassMembershipAttribute,
-		$updatedURLAttribute,
+		$updatedLinkAttribute,
 		$updatedTextAttribute,
 		$updatedTranslatedTextAttribute,
 		$updatedAlternativeDefinitionsAttribute
@@ -430,7 +428,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 		$transactionAttribute, $userAttribute,  $timestampAttribute, $summaryAttribute, 
 		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
 		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute,
-		$updatedURLAttribute, $updatedTextAttribute, $updatedTranslatedTextAttribute, $updatedClassAttributesAttribute,
+		$updatedLinkAttribute, $updatedTextAttribute, $updatedTranslatedTextAttribute, $updatedClassAttributesAttribute,
 		$updatedAlternativeDefinitionsAttribute, $updatedAlternativeDefinitionTextAttribute,
 		$updatedTranslatedTextPropertyAttribute;
 
@@ -448,7 +446,7 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 	$valueEditor->addEditor(getUpdatedClassAttributesEditor($updatedClassAttributesAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedURLEditor($updatedURLAttribute, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedLinkEditor($updatedLinkAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedTextEditor($updatedTextAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedTranslatedTextPropertyEditor($updatedTranslatedTextPropertyAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedTranslatedTextEditor($updatedTranslatedTextAttribute, $showRollBackOptions));
@@ -477,7 +475,7 @@ function getUpdatesInTransactionRecord($transactionId) {
 	global	
 		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
 		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute,
-		$updatedURLAttribute, $updatedTextAttribute, $updatedTranslatedTextAttribute, $updatedClassAttributesAttribute,
+		$updatedLinkAttribute, $updatedTextAttribute, $updatedTranslatedTextAttribute, $updatedClassAttributesAttribute,
 		$updatedAlternativeDefinitionsAttribute, $updatedAlternativeDefinitionTextAttribute,
 		$updatedTranslatedTextPropertyAttribute;
 		
@@ -489,7 +487,7 @@ function getUpdatesInTransactionRecord($transactionId) {
 	$record->setAttributeValue($updatedRelationsAttribute, getUpdatedRelationsRecordSet($transactionId));
 	$record->setAttributeValue($updatedClassMembershipAttribute, getUpdatedClassMembershipRecordSet($transactionId));
 	$record->setAttributeValue($updatedCollectionMembershipAttribute, getUpdatedCollectionMembershipRecordSet($transactionId));
-	$record->setAttributeValue($updatedURLAttribute, getUpdatedURLRecordSet($transactionId));
+	$record->setAttributeValue($updatedLinkAttribute, getUpdatedLinkRecordSet($transactionId));
 	$record->setAttributeValue($updatedTextAttribute, getUpdatedTextRecordSet($transactionId));
 	$record->setAttributeValue($updatedTranslatedTextPropertyAttribute, getUpdatedTranslatedTextPropertyRecordSet($transactionId));
 	$record->setAttributeValue($updatedTranslatedTextAttribute, getUpdatedTranslatedTextRecordSet($transactionId));
@@ -857,30 +855,41 @@ function getUpdatedClassAttributesRecordSet($transactionId) {
 	return $recordSet;
 }
 
-function getUpdatedURLRecordSet($transactionId) {
+function createLinkRecord($url, $label) {
 	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $URLAttribute, 
-		$updatedURLStructure, $operationAttribute, $isLatestAttribute, 
+		$linkAttribute, $linkLabelAttribute, $linkURLAttribute;
+		
+	$result = new ArrayRecord($linkAttribute->type);
+	$result->setAttributeValue($linkLabelAttribute, $label);
+	$result->setAttributeValue($linkURLAttribute, $url);
+	
+	return $result;
+}
+
+function getUpdatedLinkRecordSet($transactionId) {
+	global
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $linkAttribute, 
+		$updatedLinkStructure, $operationAttribute, $isLatestAttribute, 
 		$rollBackAttribute, $rollBackStructure;
 
 	$dc=wdGetDataSetContext();		
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
-		"SELECT value_id, object_id, attribute_mid, url, " . 
+		"SELECT value_id, object_id, attribute_mid, url, label, " . 
 		getOperationSelectColumn("{$dc}_url_attribute_values", $transactionId) . ', ' .
 		getIsLatestSelectColumn("{$dc}_url_attribute_values", array('value_id'), $transactionId) . 
 		" FROM {$dc}_url_attribute_values " .
 		" WHERE " . getInTransactionRestriction("{$dc}_url_attribute_values", $transactionId) 
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedURLStructure, new Structure($valueIdAttribute));
+	$recordSet = new ArrayRecordSet($updatedLinkStructure, new Structure($valueIdAttribute));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedURLStructure);
+		$record = new ArrayRecord($updatedLinkStructure);
 		$record->setAttributeValue($valueIdAttribute, $row->value_id);
 		$record->setAttributeValue($objectIdAttribute, $row->object_id);
 		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
-		$record->setAttributeValue($URLAttribute, $row->url);
+		$record->setAttributeValue($linkAttribute, createLinkRecord($row->url, $row->label));
 		$record->setAttributeValue($operationAttribute, $row->operation);
 		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
 		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
@@ -1157,9 +1166,9 @@ function getUpdatedCollectionMembershipEditor($attribute, $showRollBackOptions) 
 	return $editor;
 }
 
-function getUpdatedURLEditor($attribute, $showRollBackOptions) {
+function getUpdatedLinkEditor($attribute, $showRollBackOptions) {
 	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $URLAttribute, 
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $linkAttribute, 
 		$rollBackAttribute, $operationAttribute, $isLatestAttribute;
 		
 	$editor = createTableViewer($attribute);
@@ -1169,7 +1178,7 @@ function getUpdatedURLEditor($attribute, $showRollBackOptions) {
 		
 	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
 	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
-	$editor->addEditor(createLinkViewer($URLAttribute));
+	$editor->addEditor(createLinkViewer($linkAttribute));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
 	$editor->addEditor(createBooleanViewer($isLatestAttribute));
 	
@@ -1274,7 +1283,7 @@ function rollBackTransactions($recordSet) {
 		$transactionIdAttribute, $updatesInTransactionAttribute, 
 		$updatedDefinitionAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
 		$updatedTranslatedTextAttribute, $updatedClassAttributesAttribute, $updatedTranslatedTextPropertyAttribute,
-		$updatedURLAttribute, $updatedTextAttribute, $updatedSyntransesAttribute,
+		$updatedLinkAttribute, $updatedTextAttribute, $updatedSyntransesAttribute,
 		$updatedAlternativeDefinitionTextAttribute, $updatedAlternativeDefinitionsAttribute,
 		$updatedCollectionMembershipAttribute;
 		
@@ -1323,9 +1332,9 @@ function rollBackTransactions($recordSet) {
 		rollBackTranslatedTextProperties($idStack, $updatedTranslatedTextProperties);
 		$idStack->popAttribute();
 
-		$updatedURLAttributes = $updatesInTransaction->getAttributeValue($updatedURLAttribute);
-		$idStack->pushAttribute($updatedURLAttribute);
-		rollBackURLAttributes($idStack, $updatedURLAttributes);
+		$updatedLinkAttributes = $updatesInTransaction->getAttributeValue($updatedLinkAttribute);
+		$idStack->pushAttribute($updatedLinkAttribute);
+		rollBackLinkAttributes($idStack, $updatedLinkAttributes);
 		$idStack->popAttribute();
 
 		$updatedTextAttributes = $updatesInTransaction->getAttributeValue($updatedTextAttribute);
@@ -1634,29 +1643,32 @@ function rollBackTranslatedTextProperty($rollBackAction, $valueId, $objectId, $a
 		createTranslatedTextAttributeValue($valueId, $objectId, $attributeId, $translatedContentId);	
 }
 
-function rollBackURLAttributes($idStack, $urlAttributes) {
+function rollBackLinkAttributes($idStack, $linkAttributes) {
 	global
-		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $URLAttribute,
-		$valueIdAttribute, $objectIdAttribute, $attributeAttribute, $translatedContentIdAttribute;
+		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $linkAttribute,
+		$valueIdAttribute, $objectIdAttribute, $attributeAttribute, $translatedContentIdAttribute,
+		$linkURLAttribute, $linkLabelAttribute;
 	
-	$urlAttributesKeyStructure = $urlAttributes->getKey();
+	$linkAttributesKeyStructure = $linkAttributes->getKey();
 	
-	for ($i = 0; $i < $urlAttributes->getRecordCount(); $i++) {
-		$urlAttributeRecord = $urlAttributes->getRecord($i);
+	for ($i = 0; $i < $linkAttributes->getRecordCount(); $i++) {
+		$linkAttributeRecord = $linkAttributes->getRecord($i);
 
-		$valueId = $urlAttributeRecord->getAttributeValue($valueIdAttribute);
-		$isLatest = $urlAttributeRecord->getAttributeValue($isLatestAttribute);
+		$valueId = $linkAttributeRecord->getAttributeValue($valueIdAttribute);
+		$isLatest = $linkAttributeRecord->getAttributeValue($isLatestAttribute);
 
 		if ($isLatest) {
-			$idStack->pushKey(simpleRecord($urlAttributesKeyStructure, array($valueId)));
+			$idStack->pushKey(simpleRecord($linkAttributesKeyStructure, array($valueId)));
+			$link = $linkAttributeRecord->getAttributeValue($linkAttribute);
 			
-			rollBackURLAttribute(
+			rollBackLinkAttribute(
 				getRollBackAction($idStack, $rollBackAttribute),
 				$valueId,
-				$urlAttributeRecord->getAttributeValue($objectIdAttribute),
-				getMeaningId($urlAttributeRecord, $attributeAttribute),
-				$urlAttributeRecord->getAttributeValue($URLAttribute),
-				$urlAttributeRecord->getAttributeValue($operationAttribute)
+				$linkAttributeRecord->getAttributeValue($objectIdAttribute),
+				getMeaningId($linkAttributeRecord, $attributeAttribute),
+				$link->getAttributeValue($linkURLAttribute),
+				$link->getAttributeValue($linkLabelAttribute),
+				$linkAttributeRecord->getAttributeValue($operationAttribute)
 			);
 				
 			$idStack->popKey();
@@ -1664,11 +1676,11 @@ function rollBackURLAttributes($idStack, $urlAttributes) {
 	}	
 }
 
-function rollBackURLAttribute($rollBackAction, $valueId, $objectId, $attributeId, $url, $operation) {
+function rollBackLinkAttribute($rollBackAction, $valueId, $objectId, $attributeId, $url, $label, $operation) {
 	if (shouldRemove($rollBackAction, $operation))
 		removeLinkAttributeValue($valueId);
 	else if (shouldRestore($rollBackAction, $operation))	
-		createLinkAttributeValue($valueId, $objectId, $attributeId, $url);	
+		createLinkAttributeValue($valueId, $objectId, $attributeId, $url, $label);	
 }
 
 function rollBackTextAttributes($idStack, $textAttributes) {
