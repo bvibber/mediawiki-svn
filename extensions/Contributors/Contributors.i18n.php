@@ -8,7 +8,7 @@
  */
 
 function efContributorsMessages() {
-	return array(
+	$messages = array(
 
 /* English (Rob Church) */
 'en' => array(
@@ -145,20 +145,6 @@ function efContributorsMessages() {
 'contributors-others' => '及びその他 $1 名',
 'contributors-badtitle' => '不正なページ名です。',
 'contributors-nosuchpage' => 'ページ $1 は存在しません。',
-),
-
-/* Kazakh default (AlefZet) */
-'kk' => array(
-'contributors' => 'Үлескерлер',
-'contributors-toolbox' => 'Басты үлескерлер',
-'contributors-legend' => 'Мақала басты үлескерлері тізімі',
-'contributors-target' => 'Атауы:',
-'contributors-submit' => 'Көрсет',
-'contributors-subtitle' => '$1 бетінің басты үлескерлері',
-'contributors-others-long' => 'Бұл беттің басқа $1 үлескері бар.',
-'contributors-others' => 'және $1 басқалар',
-'contributors-badtitle' => 'Жарамсыз атау.',
-'contributors-nosuchpage' => '$1 деген мақала бізде жоқ.',
 ),
 
 /* Kazakh Cyrillic (AlefZet) */
@@ -369,64 +355,8 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'Teu aya artikel $1.',
 ),
 
-/* Chinese (China) (Shinjiman) */
-'zh-cn' => array(
-'contributors' => '贡献者',
-'contributors-toolbox' => '主要贡献者',
-'contributors-legend' => '列示这篇条目的主要贡献者',
-'contributors-target' => '标题:',
-'contributors-submit' => '显示',
-'contributors-subtitle' => '$1的主要贡献者',
-'contributors-others-long' => '在这一页中还有$1位更多的贡献者。',
-'contributors-others' => '以及另外$1位',
-'contributors-badtitle' => '不正确的标题。',
-'contributors-nosuchpage' => '条目$1不存在。',
-),
-
-/* Chinese (Hong Kong) (Shinjiman) */
-'zh-hk' => array(
-'contributors' => '貢獻者',
-'contributors-toolbox' => '主要貢獻者',
-'contributors-legend' => '列示這篇條目的主要貢獻者',
-'contributors-target' => '標題:',
-'contributors-submit' => '顯示',
-'contributors-subtitle' => '$1的主要貢獻者',
-'contributors-others-long' => '在這一頁中還有$1位更多的貢獻者。',
-'contributors-others' => '以及另外$1位',
-'contributors-badtitle' => '不正確的標題。',
-'contributors-nosuchpage' => '條目$1不存在。',
-),
-
-/* Chinese (Singapore) (Shinjiman) */
-'zh-sg' => array(
-'contributors' => '贡献者',
-'contributors-toolbox' => '主要贡献者',
-'contributors-legend' => '列示这篇条目的主要贡献者',
-'contributors-target' => '标题:',
-'contributors-submit' => '显示',
-'contributors-subtitle' => '$1的主要贡献者',
-'contributors-others-long' => '在这一页中还有$1位更多的贡献者。',
-'contributors-others' => '以及另外$1位',
-'contributors-badtitle' => '不正确的标题。',
-'contributors-nosuchpage' => '条目$1不存在。',
-),
-
-/* Chinese (Taiwan) (Shinjiman) */
-'zh-tw' => array(
-'contributors' => '貢獻者',
-'contributors-toolbox' => '主要貢獻者',
-'contributors-legend' => '列示這篇條目的主要貢獻者',
-'contributors-target' => '標題:',
-'contributors-submit' => '顯示',
-'contributors-subtitle' => '$1的主要貢獻者',
-'contributors-others-long' => '在這一頁中還有$1位更多的貢獻者。',
-'contributors-others' => '以及另外$1位',
-'contributors-badtitle' => '不正確的標題。',
-'contributors-nosuchpage' => '條目$1不存在。',
-),
-
 /* Cantonese (Shinjiman) */
-'zh-yue' => array(
+'yue' => array(
 'contributors' => '貢獻者',
 'contributors-toolbox' => '主要貢獻者',
 'contributors-legend' => '列示呢篇文章嘅主要貢獻者',
@@ -439,7 +369,49 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => '文章$1唔存在。',
 ),
 
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
+'contributors' => '贡献者',
+'contributors-toolbox' => '主要贡献者',
+'contributors-legend' => '列示这篇条目的主要贡献者',
+'contributors-target' => '标题:',
+'contributors-submit' => '显示',
+'contributors-subtitle' => '$1的主要贡献者',
+'contributors-others-long' => '在这一页中还有$1位更多的贡献者。',
+'contributors-others' => '以及另外$1位',
+'contributors-badtitle' => '不正确的标题。',
+'contributors-nosuchpage' => '条目$1不存在。',
+),
+
+/* Chinese (Traditional) (Shinjiman) */
+'zh-hant' => array(
+'contributors' => '貢獻者',
+'contributors-toolbox' => '主要貢獻者',
+'contributors-legend' => '列示這篇條目的主要貢獻者',
+'contributors-target' => '標題:',
+'contributors-submit' => '顯示',
+'contributors-subtitle' => '$1的主要貢獻者',
+'contributors-others-long' => '在這一頁中還有$1位更多的貢獻者。',
+'contributors-others' => '以及另外$1位',
+'contributors-badtitle' => '不正確的標題。',
+'contributors-nosuchpage' => '條目$1不存在。',
+),
+
 	);
+
+	/* Kazakh default, fallback to kk-kz */
+	$messages['kk'] = $messages['kk-kz'];
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
+	return $messages;
+
 }
+
 
 

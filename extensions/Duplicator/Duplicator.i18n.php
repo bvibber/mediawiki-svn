@@ -8,7 +8,7 @@
  */
 
 function efDuplicatorMessages() {
-	return array(
+	$messages = array(
 
 /* English (Rob Church) */
 'en' => array(
@@ -392,116 +392,8 @@ kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzov
 'duplicator-toomanyrevisions' => '[[$1]] má príliš veľa ($2) revízií a preto ho nie je možné skopírovať. Aktuálny limit je $3.',
 ),
 
-/* Chinese (China) (Shinjiman) */
-'zh-cn' => array(
-'duplicator' => '复制一条条目',
-'duplicator-toolbox' => '复制这条条目',
-'duplicator-header' => '这一版可以完全复制一条条目，建立一个完整的修订历史。这对于文章分叉等的动作是很有用的。',
-
-'duplicator-options' => '选项',
-'duplicator-source' => '来源:',
-'duplicator-dest' => '目标:',
-'duplicator-dotalk' => '复制讨论页 (如可用的话)',
-'duplicator-submit' => '复制',
-
-'duplicator-summary' => '由[[$1]]复制过来',
-
-'duplicator-success' => "<big>'''[[$1]]已经复制到[[$2]]。'''</big>",
-'duplicator-success-revisions' => '$1个修订已经复制。',
-'duplicator-success-talkcopied' => '讨论页亦已经复制。',
-'duplicator-success-talknotcopied' => '讨论页不能够复制。',
-'duplicator-failed' => '这一页唔能够复制落来。发生了未知的错误。',
-
-'duplicator-source-invalid' => '请提供一个正确的来源标题。',
-'duplicator-source-notexist' => '[[$1]]并不存在。请提供一个已经存在的页面标题。',
-'duplicator-dest-invalid' => '请提供一个正确的目标标题。',
-'duplicator-dest-exists' => '[[$1]]已经存在。请提供一个未存在的目标标题。',
-'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修订，不能够复制。当前的上限有$3次。',
-),
-
-/* Chinese (Hong Kong) (Shinjiman) */
-'zh-hk' => array(
-'duplicator' => '複製一條條目',
-'duplicator-toolbox' => '複製這條條目',
-'duplicator-header' => '這一版可以完全複製一條條目，建立一個完整的修訂歷史。這對於文章分叉等的動作是很有用的。',
-
-'duplicator-options' => '選項',
-'duplicator-source' => '來源:',
-'duplicator-dest' => '目標:',
-'duplicator-dotalk' => '複製討論頁 (如可用的話)',
-'duplicator-submit' => '複製',
-
-'duplicator-summary' => '由[[$1]]複製過來',
-
-'duplicator-success' => "<big>'''[[$1]]已經複製到[[$2]]。'''</big>",
-'duplicator-success-revisions' => '$1個修訂已經複製。',
-'duplicator-success-talkcopied' => '討論頁亦已經複製。',
-'duplicator-success-talknotcopied' => '討論頁不能夠複製。',
-'duplicator-failed' => '這一頁唔能夠複製落來。發生了未知的錯誤。',
-
-'duplicator-source-invalid' => '請提供一個正確的來源標題。',
-'duplicator-source-notexist' => '[[$1]]並不存在。請提供一個已經存在的頁面標題。',
-'duplicator-dest-invalid' => '請提供一個正確的目標標題。',
-'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
-'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修訂，不能夠複製。目前的上限有$3次。',
-),
-
-/* Chinese (Singapore) (Shinjiman) */
-'zh-sg' => array(
-'duplicator' => '复制一条条目',
-'duplicator-toolbox' => '复制这条条目',
-'duplicator-header' => '这一版可以完全复制一条条目，建立一个完整的修订历史。这对于文章分叉等的动作是很有用的。',
-
-'duplicator-options' => '选项',
-'duplicator-source' => '来源:',
-'duplicator-dest' => '目标:',
-'duplicator-dotalk' => '复制讨论页 (如可用的话)',
-'duplicator-submit' => '复制',
-
-'duplicator-summary' => '由[[$1]]复制过来',
-
-'duplicator-success' => "<big>'''[[$1]]已经复制到[[$2]]。'''</big>",
-'duplicator-success-revisions' => '$1个修订已经复制。',
-'duplicator-success-talkcopied' => '讨论页亦已经复制。',
-'duplicator-success-talknotcopied' => '讨论页不能够复制。',
-'duplicator-failed' => '这一页唔能够复制落来。发生了未知的错误。',
-
-'duplicator-source-invalid' => '请提供一个正确的来源标题。',
-'duplicator-source-notexist' => '[[$1]]并不存在。请提供一个已经存在的页面标题。',
-'duplicator-dest-invalid' => '请提供一个正确的目标标题。',
-'duplicator-dest-exists' => '[[$1]]已经存在。请提供一个未存在的目标标题。',
-'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修订，不能够复制。当前的上限有$3次。',
-),
-
-/* Chinese (Taiwan) (Shinjiman) */
-'zh-tw' => array(
-'duplicator' => '複製一條條目',
-'duplicator-toolbox' => '複製這條條目',
-'duplicator-header' => '這一版可以完全複製一條條目，建立一個完整的修訂歷史。這對於文章分叉等的動作是很有用的。',
-
-'duplicator-options' => '選項',
-'duplicator-source' => '來源:',
-'duplicator-dest' => '目標:',
-'duplicator-dotalk' => '複製討論頁 (如可用的話)',
-'duplicator-submit' => '複製',
-
-'duplicator-summary' => '由[[$1]]複製過來',
-
-'duplicator-success' => "<big>'''[[$1]]已經複製到[[$2]]。'''</big>",
-'duplicator-success-revisions' => '$1個修訂已經複製。',
-'duplicator-success-talkcopied' => '討論頁亦已經複製。',
-'duplicator-success-talknotcopied' => '討論頁不能夠複製。',
-'duplicator-failed' => '這一頁唔能夠複製落來。發生了未知的錯誤。',
-
-'duplicator-source-invalid' => '請提供一個正確的來源標題。',
-'duplicator-source-notexist' => '[[$1]]並不存在。請提供一個已經存在的頁面標題。',
-'duplicator-dest-invalid' => '請提供一個正確的目標標題。',
-'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
-'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修訂，不能夠複製。目前的上限有$3次。',
-),
-
 /* Cantonese (Shinjiman) */
-'zh-yue' => array(
+'yue' => array(
 'duplicator' => '複製一篇文章',
 'duplicator-toolbox' => '複製呢篇文章',
 'duplicator-header' => '呢一版可以完全複製一篇文章，建立一個完整嘅修訂歷史。呢個係對於文章分叉等嘅動作係好有用嘅。',
@@ -527,7 +419,73 @@ kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzov
 'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修訂，唔能夠複製。現時嘅上限係有$3次。',
 ),
 
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
+'duplicator' => '复制一条条目',
+'duplicator-toolbox' => '复制这条条目',
+'duplicator-header' => '这一版可以完全复制一条条目，建立一个完整的修订历史。这对于文章分叉等的动作是很有用的。',
+
+'duplicator-options' => '选项',
+'duplicator-source' => '来源:',
+'duplicator-dest' => '目标:',
+'duplicator-dotalk' => '复制讨论页 (如可用的话)',
+'duplicator-submit' => '复制',
+
+'duplicator-summary' => '由[[$1]]复制过来',
+
+'duplicator-success' => "<big>'''[[$1]]已经复制到[[$2]]。'''</big>",
+'duplicator-success-revisions' => '$1个修订已经复制。',
+'duplicator-success-talkcopied' => '讨论页亦已经复制。',
+'duplicator-success-talknotcopied' => '讨论页不能够复制。',
+'duplicator-failed' => '这一页唔能够复制落来。发生了未知的错误。',
+
+'duplicator-source-invalid' => '请提供一个正确的来源标题。',
+'duplicator-source-notexist' => '[[$1]]并不存在。请提供一个已经存在的页面标题。',
+'duplicator-dest-invalid' => '请提供一个正确的目标标题。',
+'duplicator-dest-exists' => '[[$1]]已经存在。请提供一个未存在的目标标题。',
+'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修订，不能够复制。当前的上限有$3次。',
+),
+
+/* Chinese (Traditional) (Shinjiman) */
+'zh-hant' => array(
+'duplicator' => '複製一條條目',
+'duplicator-toolbox' => '複製這條條目',
+'duplicator-header' => '這一版可以完全複製一條條目，建立一個完整的修訂歷史。這對於文章分叉等的動作是很有用的。',
+
+'duplicator-options' => '選項',
+'duplicator-source' => '來源:',
+'duplicator-dest' => '目標:',
+'duplicator-dotalk' => '複製討論頁 (如可用的話)',
+'duplicator-submit' => '複製',
+
+'duplicator-summary' => '由[[$1]]複製過來',
+
+'duplicator-success' => "<big>'''[[$1]]已經複製到[[$2]]。'''</big>",
+'duplicator-success-revisions' => '$1個修訂已經複製。',
+'duplicator-success-talkcopied' => '討論頁亦已經複製。',
+'duplicator-success-talknotcopied' => '討論頁不能夠複製。',
+'duplicator-failed' => '這一頁唔能夠複製落來。發生了未知的錯誤。',
+
+'duplicator-source-invalid' => '請提供一個正確的來源標題。',
+'duplicator-source-notexist' => '[[$1]]並不存在。請提供一個已經存在的頁面標題。',
+'duplicator-dest-invalid' => '請提供一個正確的目標標題。',
+'duplicator-dest-exists' => '[[$1]]已經存在。請提供一個未存在的目標標題。',
+'duplicator-toomanyrevisions' => '[[$1]]有太多 ($2次) 修訂，不能夠複製。目前的上限有$3次。',
+),
+
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
+	return $messages;
+
 }
+
 
 

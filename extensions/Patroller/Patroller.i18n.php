@@ -10,7 +10,7 @@
  */
 
 function efPatrollerMessages() {
-	return array(
+	$messages = array(
 
 /* English (Rob Church) */
 'en' => array(
@@ -289,88 +289,8 @@ function efPatrollerMessages() {
 'grouppage-patroller' => '{{ns:project}}:Nu ngaronda',
 ),
 
-/* Chinese (China) (下一次登录) */
-'zh-cn' => array(
-'patrol' => '编辑巡逻',
-'patrol-endorse' => '批注',
-'patrol-revert' => '回退',
-'patrol-revert-reason' => '原因：',
-'patrol-skip' => '跳过',
-'patrol-reverting' => '正在回退：$1',
-'patrol-nonefound' => '没有找到可巡逻编辑。',
-'patrol-endorsed-ok' => '此修改已标记巡逻记录。',
-'patrol-endorsed-failed' => '此修改无法标记巡逻记录。',
-'patrol-reverted-ok' => '编辑被回退。',
-'patrol-reverted-failed' => '编辑不能回退。',
-'patrol-skipped-ok' => '忽略编辑。',
-'patrol-reasons' => "* 纯粹破坏\n* 新手测试\n* 参见讨论页",
-'patrol-another' => '显示其他存在的编辑。',
-'patrol-stopped' => '您选择不巡逻其他编辑。$1',
-'patrol-resume' => '点击这里继续。',
-),
-
-/* Chinese (Hong Kong) (KilluaZaoldyeck, Shinjiman) */
-'zh-hk' => array(
-'patrol' => '覆查編輯',
-'patrol-endorse' => '批註',
-'patrol-revert' => '回退',
-'patrol-revert-reason' => '原因：',
-'patrol-skip' => '略過',
-'patrol-reverting' => '正在回退：$1',
-'patrol-nonefound' => '沒有覆查修改的記錄。',
-'patrol-endorsed-ok' => '此編輯已標記覆查記錄。',
-'patrol-endorsed-failed' => '此編輯無法標記覆查記錄。',
-'patrol-reverted-ok' => '編輯被回退。',
-'patrol-reverted-failed' => '編輯無法回退。',
-'patrol-skipped-ok' => '忽略編輯。',
-'patrol-reasons' => "* 純粹破壞\n* 新人測試\n* 參看討論頁",
-'patrol-another' => '列出其他存在的編輯。',
-'patrol-stopped' => '你選擇不覆查其他編輯。$1',
-'patrol-resume' => '點擊這裡繼續。',
-),
-
-/* Chinese (Singapore) (下一次登录) */
-'zh-sg' => array(
-'patrol' => '编辑巡逻',
-'patrol-endorse' => '批注',
-'patrol-revert' => '回退',
-'patrol-revert-reason' => '原因：',
-'patrol-skip' => '跳过',
-'patrol-reverting' => '正在回退：$1',
-'patrol-nonefound' => '没有找到可巡逻编辑。',
-'patrol-endorsed-ok' => '此修改已标记巡逻记录。',
-'patrol-endorsed-failed' => '此修改无法标记巡逻记录。',
-'patrol-reverted-ok' => '编辑被回退。',
-'patrol-reverted-failed' => '编辑不能回退。',
-'patrol-skipped-ok' => '忽略编辑。',
-'patrol-reasons' => "* 纯粹破坏\n* 新手测试\n* 参见讨论页",
-'patrol-another' => '显示其他存在的编辑。',
-'patrol-stopped' => '您选择不巡逻其他编辑。$1',
-'patrol-resume' => '点击这里继续。',
-),
-
-/* Chinese (Taiwan) (KilluaZaoldyeck, Shinjiman) */
-'zh-tw' => array(
-'patrol' => '覆查編輯',
-'patrol-endorse' => '批註',
-'patrol-revert' => '回退',
-'patrol-revert-reason' => '原因：',
-'patrol-skip' => '略過',
-'patrol-reverting' => '正在回退：$1',
-'patrol-nonefound' => '沒有覆查修改的記錄。',
-'patrol-endorsed-ok' => '此編輯已標記覆查記錄。',
-'patrol-endorsed-failed' => '此編輯無法標記覆查記錄。',
-'patrol-reverted-ok' => '編輯被回退。',
-'patrol-reverted-failed' => '編輯無法回退。',
-'patrol-skipped-ok' => '忽略編輯。',
-'patrol-reasons' => "* 純粹破壞\n* 新人測試\n* 參看討論頁",
-'patrol-another' => '列出其他存在的編輯。',
-'patrol-stopped' => '你選擇不覆查其他編輯。$1',
-'patrol-resume' => '點擊這裡繼續。',
-),
-
 /* Cantonese (Hillgentleman, Shinjiman) */
-'zh-yue' => array(
+'yue' => array(
 'patrol' => '巡啲編輯',
 'patrol-endorse' => '簽署支持',
 'patrol-revert' => '打回頭',
@@ -387,9 +307,70 @@ function efPatrollerMessages() {
 'patrol-another' => '試揾另一版睇吓。',
 'patrol-stopped' => '你决定唔再巡。 $1',
 'patrol-resume' => '撳呢度繼續。',
+'group-patroller' => '巡邏員',
+'group-patroller-member' => '巡邏員',
+'grouppage-patroller' => '{{ns:project}}:巡邏員',
+),
+
+/* Chinese (Simplified) (下一次登录) */
+'zh-hans' => array(
+'patrol' => '编辑巡逻',
+'patrol-endorse' => '批注',
+'patrol-revert' => '回退',
+'patrol-revert-reason' => '原因：',
+'patrol-skip' => '跳过',
+'patrol-reverting' => '正在回退：$1',
+'patrol-nonefound' => '没有找到可巡逻编辑。',
+'patrol-endorsed-ok' => '此修改已标记巡逻记录。',
+'patrol-endorsed-failed' => '此修改无法标记巡逻记录。',
+'patrol-reverted-ok' => '编辑被回退。',
+'patrol-reverted-failed' => '编辑不能回退。',
+'patrol-skipped-ok' => '忽略编辑。',
+'patrol-reasons' => "* 纯粹破坏\n* 新手测试\n* 参见讨论页",
+'patrol-another' => '显示其他存在的编辑。',
+'patrol-stopped' => '您选择不巡逻其他编辑。$1',
+'patrol-resume' => '点击这里继续。',
+'group-patroller' => '巡逻员',
+'group-patroller-member' => '巡逻员',
+'grouppage-patroller' => '{{ns:project}}:巡逻员',
+),
+
+/* Chinese (Traditional) (KilluaZaoldyeck, Shinjiman) */
+'zh-hant' => array(
+'patrol' => '覆查編輯',
+'patrol-endorse' => '批註',
+'patrol-revert' => '回退',
+'patrol-revert-reason' => '原因：',
+'patrol-skip' => '略過',
+'patrol-reverting' => '正在回退：$1',
+'patrol-nonefound' => '沒有覆查修改的記錄。',
+'patrol-endorsed-ok' => '此編輯已標記覆查記錄。',
+'patrol-endorsed-failed' => '此編輯無法標記覆查記錄。',
+'patrol-reverted-ok' => '編輯被回退。',
+'patrol-reverted-failed' => '編輯無法回退。',
+'patrol-skipped-ok' => '忽略編輯。',
+'patrol-reasons' => "* 純粹破壞\n* 新人測試\n* 參看討論頁",
+'patrol-another' => '列出其他存在的編輯。',
+'patrol-stopped' => '你選擇不覆查其他編輯。$1',
+'patrol-resume' => '點擊這裡繼續。',
+'group-patroller' => '巡邏員',
+'group-patroller-member' => '巡邏員',
+'grouppage-patroller' => '{{ns:project}}:巡邏員',
 ),
 
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
+	return $messages;
+
 }
+
 
 

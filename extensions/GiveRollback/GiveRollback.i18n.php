@@ -10,7 +10,7 @@
  */
 
 function efGiveRollbackMessages() {
-	return array(
+	$messages = array(
 	
 /* English (Rob Church) */
 'en' => array(
@@ -233,96 +233,8 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentryrevoke' => 'oduzeo prava vraćanja korisniku [[$1]]',
 ),
 
-/* Chinese (China) (Shinjiman) */
-'zh-cn' => array(
-'giverollback' => '给予或撤销快速回退权限',
-'giverollback-header' => "'''一位本地行政员可以使用这一页来给予或撤销另一位用户的[[Help:快速回退|快速回退权限]]。'''<br />这可容许非操作员快速地回退破坏。这应该要在合适的方针之下进行。",
-'giverollback-username' => '用户名称:',
-'giverollback-search' => '进入',
-'giverollback-hasrb' => '[[User:$1|$1]] 已经拥有快速回退权限。',
-'giverollback-norb' => '[[User:$1|$1]] 尚未拥有快速回退权限。',
-'giverollback-toonew' => '[[User:$1|$1]] 太新了，不能给予快速回退权限。',
-'giverollback-sysop' => '[[User:$1|$1]] 是一位操作员，已经拥有快速回退权限。',
-'giverollback-change' => '更改状态:',
-'giverollback-grant' => '给予',
-'giverollback-revoke' => '撤销',
-'giverollback-comment' => '注解:',
-'giverollback-granted' => '[[User:$1|$1]] 现在拥有快速回退权限。',
-'giverollback-revoked' => '[[User:$1|$1]] 不再拥有快速回退权限。',
-'giverollback-logpage' => '快速回退权限日志',
-'giverollback-logpagetext' => '这个是非操作员的[[Help:快速回退|快速回退]]权限记录。',
-'giverollback-logentrygrant' => '已经给予 [[$1]] 的快速回退权限',
-'giverollback-logentryrevoke' => '已经撤销 [[$1]] 的快速回退权限',
-),
-
-/* Chinese (Hong Kong) (Shinjiman) */
-'zh-hk' => array(
-'giverollback' => '給予或撤銷快速回退權限',
-'giverollback-header' => "'''一位本地行政員可以使用這一頁來給予或撤銷另一位用戶的[[Help:快速回退|快速回退權限]]。'''<br />這可容許非操作員快速地回退破壞。這應該要在合適的方針之下進行。",
-'giverollback-username' => '用戶名稱:',
-'giverollback-search' => '進入',
-'giverollback-hasrb' => '[[User:$1|$1]] 已經擁有快速回退權限。',
-'giverollback-norb' => '[[User:$1|$1]] 尚未擁有快速回退權限。',
-'giverollback-toonew' => '[[User:$1|$1]] 太新了，不能給予快速回退權限。',
-'giverollback-sysop' => '[[User:$1|$1]] 是一位操作員，已經擁有快速回退權限。',
-'giverollback-change' => '更改狀態:',
-'giverollback-grant' => '給予',
-'giverollback-revoke' => '撤銷',
-'giverollback-comment' => '註解:',
-'giverollback-granted' => '[[User:$1|$1]] 現在擁有快速回退權限。',
-'giverollback-revoked' => '[[User:$1|$1]] 不再擁有快速回退權限。',
-'giverollback-logpage' => '快速回退權限日誌',
-'giverollback-logpagetext' => '這個是非操作員的[[Help:快速回退|快速回退]]權限記錄。',
-'giverollback-logentrygrant' => '已經給予 [[$1]] 的快速回退權限',
-'giverollback-logentryrevoke' => '已經撤銷 [[$1]] 的快速回退權限',
-),
-
-/* Chinese (Singapore) (Shinjiman) */
-'zh-sg' => array(
-'giverollback' => '给予或撤销快速回退权限',
-'giverollback-header' => "'''一位本地行政员可以使用这一页来给予或撤销另一位用户的[[Help:快速回退|快速回退权限]]。'''<br />这可容许非操作员快速地回退破坏。这应该要在合适的方针之下进行。",
-'giverollback-username' => '用户名称:',
-'giverollback-search' => '进入',
-'giverollback-hasrb' => '[[User:$1|$1]] 已经拥有快速回退权限。',
-'giverollback-norb' => '[[User:$1|$1]] 尚未拥有快速回退权限。',
-'giverollback-toonew' => '[[User:$1|$1]] 太新了，不能给予快速回退权限。',
-'giverollback-sysop' => '[[User:$1|$1]] 是一位操作员，已经拥有快速回退权限。',
-'giverollback-change' => '更改状态:',
-'giverollback-grant' => '给予',
-'giverollback-revoke' => '撤销',
-'giverollback-comment' => '注解:',
-'giverollback-granted' => '[[User:$1|$1]] 现在拥有快速回退权限。',
-'giverollback-revoked' => '[[User:$1|$1]] 不再拥有快速回退权限。',
-'giverollback-logpage' => '快速回退权限日志',
-'giverollback-logpagetext' => '这个是非操作员的[[Help:快速回退|快速回退]]权限记录。',
-'giverollback-logentrygrant' => '已经给予 [[$1]] 的快速回退权限',
-'giverollback-logentryrevoke' => '已经撤销 [[$1]] 的快速回退权限',
-),
-
-/* Chinese (Taiwan) (Shinjiman) */
-'zh-tw' => array(
-'giverollback' => '給予或撤銷快速回退權限',
-'giverollback-header' => "'''一位本地行政員可以使用這一頁來給予或撤銷另一位用戶的[[Help:快速回退|快速回退權限]]。'''<br />這可容許非操作員快速地回退破壞。這應該要在合適的方針之下進行。",
-'giverollback-username' => '用戶名稱:',
-'giverollback-search' => '進入',
-'giverollback-hasrb' => '[[User:$1|$1]] 已經擁有快速回退權限。',
-'giverollback-norb' => '[[User:$1|$1]] 尚未擁有快速回退權限。',
-'giverollback-toonew' => '[[User:$1|$1]] 太新了，不能給予快速回退權限。',
-'giverollback-sysop' => '[[User:$1|$1]] 是一位操作員，已經擁有快速回退權限。',
-'giverollback-change' => '更改狀態:',
-'giverollback-grant' => '給予',
-'giverollback-revoke' => '撤銷',
-'giverollback-comment' => '註解:',
-'giverollback-granted' => '[[User:$1|$1]] 現在擁有快速回退權限。',
-'giverollback-revoked' => '[[User:$1|$1]] 不再擁有快速回退權限。',
-'giverollback-logpage' => '快速回退權限日誌',
-'giverollback-logpagetext' => '這個是非操作員的[[Help:快速回退|快速回退]]權限記錄。',
-'giverollback-logentrygrant' => '已經給予 [[$1]] 的快速回退權限',
-'giverollback-logentryrevoke' => '已經撤銷 [[$1]] 的快速回退權限',
-),
-
 /* Cantonese (Shinjiman) */
-'zh-yue' => array(
+'yue' => array(
 'giverollback' => '畀或收番一撳還原權限',
 'giverollback-header' => "'''一位事務員可以用呢一版去畀或收番呢一個用戶戶口嘅[[Help:一撳還原|一撳還原權限]]。'''<br />呢個係可以容許非操作員可以更加快噉去回復破壞。呢個應該要在合適嘅政策來進行。",
 'giverollback-username' => '用戶名:',
@@ -343,7 +255,63 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentryrevoke' => '已經收番 [[$1]] 嘅一撳還原權限',
 ),
 
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
+'giverollback' => '给予或撤销快速回退权限',
+'giverollback-header' => "'''一位本地行政员可以使用这一页来给予或撤销另一位用户的[[Help:快速回退|快速回退权限]]。'''<br />这可容许非操作员快速地回退破坏。这应该要在合适的方针之下进行。",
+'giverollback-username' => '用户名称:',
+'giverollback-search' => '进入',
+'giverollback-hasrb' => '[[User:$1|$1]] 已经拥有快速回退权限。',
+'giverollback-norb' => '[[User:$1|$1]] 尚未拥有快速回退权限。',
+'giverollback-toonew' => '[[User:$1|$1]] 太新了，不能给予快速回退权限。',
+'giverollback-sysop' => '[[User:$1|$1]] 是一位操作员，已经拥有快速回退权限。',
+'giverollback-change' => '更改状态:',
+'giverollback-grant' => '给予',
+'giverollback-revoke' => '撤销',
+'giverollback-comment' => '注解:',
+'giverollback-granted' => '[[User:$1|$1]] 现在拥有快速回退权限。',
+'giverollback-revoked' => '[[User:$1|$1]] 不再拥有快速回退权限。',
+'giverollback-logpage' => '快速回退权限日志',
+'giverollback-logpagetext' => '这个是非操作员的[[Help:快速回退|快速回退]]权限记录。',
+'giverollback-logentrygrant' => '已经给予 [[$1]] 的快速回退权限',
+'giverollback-logentryrevoke' => '已经撤销 [[$1]] 的快速回退权限',
+),
+
+/* Chinese (Traditional) (Shinjiman) */
+'zh-hant' => array(
+'giverollback' => '給予或撤銷快速回退權限',
+'giverollback-header' => "'''一位本地行政員可以使用這一頁來給予或撤銷另一位用戶的[[Help:快速回退|快速回退權限]]。'''<br />這可容許非操作員快速地回退破壞。這應該要在合適的方針之下進行。",
+'giverollback-username' => '用戶名稱:',
+'giverollback-search' => '進入',
+'giverollback-hasrb' => '[[User:$1|$1]] 已經擁有快速回退權限。',
+'giverollback-norb' => '[[User:$1|$1]] 尚未擁有快速回退權限。',
+'giverollback-toonew' => '[[User:$1|$1]] 太新了，不能給予快速回退權限。',
+'giverollback-sysop' => '[[User:$1|$1]] 是一位操作員，已經擁有快速回退權限。',
+'giverollback-change' => '更改狀態:',
+'giverollback-grant' => '給予',
+'giverollback-revoke' => '撤銷',
+'giverollback-comment' => '註解:',
+'giverollback-granted' => '[[User:$1|$1]] 現在擁有快速回退權限。',
+'giverollback-revoked' => '[[User:$1|$1]] 不再擁有快速回退權限。',
+'giverollback-logpage' => '快速回退權限日誌',
+'giverollback-logpagetext' => '這個是非操作員的[[Help:快速回退|快速回退]]權限記錄。',
+'giverollback-logentrygrant' => '已經給予 [[$1]] 的快速回退權限',
+'giverollback-logentryrevoke' => '已經撤銷 [[$1]] 的快速回退權限',
+),
+
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
+	return $messages;
+
 }
+
 
 

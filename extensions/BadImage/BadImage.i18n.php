@@ -10,7 +10,7 @@
  */
 
 function efBadImageMessages() {
-	return array(
+	$messages = array(
 
 /* English (Rob Church) */
 'en' => array(
@@ -426,97 +426,8 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'ngahapus [[$1]] ti daptar gambar rusak',
 ),
 
-/* Chinese (China) (Shinjiman) */
-'zh-cn' => array(
-'badimages' => '坏图像列表',
-'badimages-add-btn' => '加入',
-'badimages-added' => '已经加入 $1 到列表中。',
-'badimages-count' => "在坏图列表中共有 '''$1''' 幅图像。",
-'badimages-name' => '名称:',
-'badimages-not-added' => '这幅图像不能加入。',
-'badimages-not-removed' => '这幅图像不能移除。',
-'badimages-reason' => '原因:',
-'badimages-remove' => '(移除)',
-'badimages-remove-btn' => '移除',
-'badimages-remove-confirm' => '请确认您打算要将 $1 由列表中移除:',
-'badimages-removed' => '$1 已经从列表中移除。',
-'badimages-subheading' => '当前的项目',
-'badimages-unprivileged' => '(您没有足够的权限去修改这个列表)',
-'badimages-log-name' => '坏图像列表',
-'badimages-log-header' => '这是在[[Help:坏图像列表|坏图像列表]]中的修订记录。',
-'badimages-log-add' => '已经加入 [[$1]] 到坏图像列表',
-'badimages-log-remove' => '已经由坏图像列表中移除 [[$1]]',
-),
-
-/* Chinese (Hong Kong) (Rob Church) */
-'zh-hk' => array(
-'badimages' => '壞圖像列表',
-'badimages-add-btn' => '加入',
-'badimages-added' => '已經加入 $1 到列表中。',
-'badimages-count' => "在壞圖列表中共有 '''$1''' 幅圖像。",
-'badimages-name' => '名稱:',
-'badimages-not-added' => '這幅圖像不能加入。',
-'badimages-not-removed' => '這幅圖像不能移除。',
-'badimages-reason' => '原因:',
-'badimages-remove' => '(移除)',
-'badimages-remove-btn' => '移除',
-'badimages-remove-confirm' => '請確認您打算要將 $1 由列表中移除:',
-'badimages-removed' => '$1 已經從列表中移除。',
-'badimages-subheading' => '目前的項目',
-'badimages-unprivileged' => '(您沒有足夠的權限去修改這個列表)',
-'badimages-log-name' => '壞圖像列表',
-'badimages-log-header' => '這是在[[Help:壞圖像列表|壞圖像列表]]中的修訂記錄。',
-'badimages-log-add' => '已經加入 [[$1]] 到壞圖像列表',
-'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
-),
-
-/* Chinese (Singapore) (Shinjiman) */
-'zh-sg' => array(
-'badimages' => '坏图像列表',
-'badimages-add-btn' => '加入',
-'badimages-added' => '已经加入 $1 到列表中。',
-'badimages-count' => "在坏图列表中共有 '''$1''' 幅图像。",
-'badimages-name' => '名称:',
-'badimages-not-added' => '这幅图像不能加入。',
-'badimages-not-removed' => '这幅图像不能移除。',
-'badimages-reason' => '原因:',
-'badimages-remove' => '(移除)',
-'badimages-remove-btn' => '移除',
-'badimages-remove-confirm' => '请确认您打算要将 $1 由列表中移除:',
-'badimages-removed' => '$1 已经从列表中移除。',
-'badimages-subheading' => '当前的项目',
-'badimages-unprivileged' => '(您没有足够的权限去修改这个列表)',
-'badimages-log-name' => '坏图像列表',
-'badimages-log-header' => '这是在[[Help:坏图像列表|坏图像列表]]中的修订记录。',
-'badimages-log-add' => '已经加入 [[$1]] 到坏图像列表',
-'badimages-log-remove' => '已经由坏图像列表中移除 [[$1]]',
-),
-
-/*
- * Chinese (Taiwan) (Shinjiman) */
-'zh-tw' => array(
-'badimages' => '壞圖像列表',
-'badimages-add-btn' => '加入',
-'badimages-added' => '已經加入 $1 到列表中。',
-'badimages-count' => "在壞圖列表中共有 '''$1''' 幅圖像。",
-'badimages-name' => '名稱:',
-'badimages-not-added' => '這幅圖像不能加入。',
-'badimages-not-removed' => '這幅圖像不能移除。',
-'badimages-reason' => '原因:',
-'badimages-remove' => '(移除)',
-'badimages-remove-btn' => '移除',
-'badimages-remove-confirm' => '請確認您打算要將 $1 由列表中移除:',
-'badimages-removed' => '$1 已經從列表中移除。',
-'badimages-subheading' => '目前的項目',
-'badimages-unprivileged' => '(您沒有足夠的權限去修改這個列表)',
-'badimages-log-name' => '壞圖像列表',
-'badimages-log-header' => '這是在[[Help:壞圖像列表|壞圖像列表]]中的修訂記錄。',
-'badimages-log-add' => '已經加入 [[$1]] 到壞圖像列表',
-'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
-),
-
 /* Cantonese (Hillgentleman, Shinjiman) */
-'zh-yue' => array(
+'yue' => array(
 'badimages' => '壞圖清單',
 'badimages-add-btn' => '加',
 'badimages-added' => '加咗$1入壞圖列表度。',
@@ -537,7 +448,63 @@ function efBadImageMessages() {
 'badimages-log-remove' => '由壞圖清單度減[[$1]]',
 ),
 
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
+'badimages' => '坏图像列表',
+'badimages-add-btn' => '加入',
+'badimages-added' => '已经加入 $1 到列表中。',
+'badimages-count' => "在坏图列表中共有 '''$1''' 幅图像。",
+'badimages-name' => '名称:',
+'badimages-not-added' => '这幅图像不能加入。',
+'badimages-not-removed' => '这幅图像不能移除。',
+'badimages-reason' => '原因:',
+'badimages-remove' => '(移除)',
+'badimages-remove-btn' => '移除',
+'badimages-remove-confirm' => '请确认您打算要将 $1 由列表中移除:',
+'badimages-removed' => '$1 已经从列表中移除。',
+'badimages-subheading' => '当前的项目',
+'badimages-unprivileged' => '(您没有足够的权限去修改这个列表)',
+'badimages-log-name' => '坏图像列表',
+'badimages-log-header' => '这是在[[Help:坏图像列表|坏图像列表]]中的修订记录。',
+'badimages-log-add' => '已经加入 [[$1]] 到坏图像列表',
+'badimages-log-remove' => '已经由坏图像列表中移除 [[$1]]',
+),
+
+/* Chinese (Hong Kong) (Shinjiman) */
+'zh-hant' => array(
+'badimages' => '壞圖像列表',
+'badimages-add-btn' => '加入',
+'badimages-added' => '已經加入 $1 到列表中。',
+'badimages-count' => "在壞圖列表中共有 '''$1''' 幅圖像。",
+'badimages-name' => '名稱:',
+'badimages-not-added' => '這幅圖像不能加入。',
+'badimages-not-removed' => '這幅圖像不能移除。',
+'badimages-reason' => '原因:',
+'badimages-remove' => '(移除)',
+'badimages-remove-btn' => '移除',
+'badimages-remove-confirm' => '請確認您打算要將 $1 由列表中移除:',
+'badimages-removed' => '$1 已經從列表中移除。',
+'badimages-subheading' => '目前的項目',
+'badimages-unprivileged' => '(您沒有足夠的權限去修改這個列表)',
+'badimages-log-name' => '壞圖像列表',
+'badimages-log-header' => '這是在[[Help:壞圖像列表|壞圖像列表]]中的修訂記錄。',
+'badimages-log-add' => '已經加入 [[$1]] 到壞圖像列表',
+'badimages-log-remove' => '已經由壞圖像列表中移除 [[$1]]',
+),
+
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
+	return $messages;
+
 }
+
 
 

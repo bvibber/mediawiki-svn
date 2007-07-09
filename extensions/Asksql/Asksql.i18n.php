@@ -8,7 +8,7 @@
  */
 
 function efAsksqlMessages() {
-	return array(
+	$messages = array(
 
 /* English (Rob Church) */
 'en' => array(
@@ -174,60 +174,8 @@ používajte túto funkciu s rozmyslom.",
 'querysuccessful'  => 'Pamundut tos laksana',
 ),
 
-/* Chinese (China) (Formulax, Shizhao) */
-'zh-cn' => array(
-'asksql' => 'SQL查询',
-'asksqltext' => "使用下面的表单可以直接查询数据库。
-使用单引号（'像这样'）来界定字串符。
-这样做有可能增加服务器的负担，所以请慎用本功能。",
-'sqlislogged' => '请注意全部的查询会被记录。',
-'sqlquery' => '输入查询',
-'querybtn' => '提交查询',
-'selectonly' => '只允许只读方式的查询。',
-'querysuccessful' => '查询完成',
-),
-
-/* Chinese (Hong Kong) (Shinjiman, Vipuser) */
-'zh-hk' => array(
-'asksql' => 'SQL查詢',
-'asksqltext' => "使用下面的表單可以直接查詢數據庫。
-使用單引號（'像這樣'）來界定字串符。
-這樣做有可能增加伺服器的負擔，所以請慎用本功能。",
-'sqlislogged' => '請注意全部的查詢會被記錄。',
-'sqlquery' => '輸入查詢',
-'querybtn' => '遞交查詢',
-'selectonly' => '只允許唯讀模式的查詢。',
-'querysuccessful' => '查詢完成',
-),
-
-/* Chinese (Singapore) (Formulax, Shizhao) */
-'zh-sg' => array(
-'asksql' => 'SQL查询',
-'asksqltext' => "使用下面的表单可以直接查询数据库。
-使用单引号（'像这样'）来界定字串符。
-这样做有可能增加服务器的负担，所以请慎用本功能。",
-'sqlislogged' => '请注意全部的查询会被记录。',
-'sqlquery' => '输入查询',
-'querybtn' => '提交查询',
-'selectonly' => '只允许只读方式的查询。',
-'querysuccessful' => '查询完成',
-),
-
-/* Chinese (Taiwan) (Shinjiman, Vipuser) */
-'zh-tw' => array(
-'asksql' => 'SQL查詢',
-'asksqltext' => "使用下面的表單可以直接查詢資料庫。
-使用單引號（'像這樣'）來界定字串符。
-這樣做有可能增加伺服器的負擔，所以請慎用本功能。",
-'sqlislogged' => '請注意全部的查詢會被記錄。',
-'sqlquery' => '輸入查詢',
-'querybtn' => '遞交查詢',
-'selectonly' => '只允許唯讀模式的查詢。',
-'querysuccessful' => '查詢完成',
-),
-
 /* Cantonese (Shinjiman) */
-'zh-yue' => array(
+'yue' => array(
 'asksql' => 'SQL查詢',
 'asksqltext' => "使用下面嘅表可以直接查詢數據庫。
 用單引號（'好似咁'）來界定字串符。
@@ -239,7 +187,45 @@ používajte túto funkciu s rozmyslom.",
 'querysuccessful' => '查詢完成',
 ),
 
+/* Chinese (Simplified) (Formulax, Shizhao) */
+'zh-hans' => array(
+'asksql' => 'SQL查询',
+'asksqltext' => "使用下面的表单可以直接查询数据库。
+使用单引号（'像这样'）来界定字串符。
+这样做有可能增加服务器的负担，所以请慎用本功能。",
+'sqlislogged' => '请注意全部的查询会被记录。',
+'sqlquery' => '输入查询',
+'querybtn' => '提交查询',
+'selectonly' => '只允许只读方式的查询。',
+'querysuccessful' => '查询完成',
+),
+
+/* Chinese (Traditional) (Shinjiman, Vipuser) */
+'zh-hant' => array(
+'asksql' => 'SQL查詢',
+'asksqltext' => "使用下面的表單可以直接查詢數據庫。
+使用單引號（'像這樣'）來界定字串符。
+這樣做有可能增加伺服器的負擔，所以請慎用本功能。",
+'sqlislogged' => '請注意全部的查詢會被記錄。',
+'sqlquery' => '輸入查詢',
+'querybtn' => '遞交查詢',
+'selectonly' => '只允許唯讀模式的查詢。',
+'querysuccessful' => '查詢完成',
+),
+
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
+	return $messages;
+
 }
+
 
 
