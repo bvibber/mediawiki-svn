@@ -373,16 +373,16 @@ class MediaWiki {
 
 		wfProfileIn( 'MediaWiki::performAction' );
 
+		// TODO LQT HACK
+		if ( !wfRunHooks('MediaWikiPerformAction', array($output, $article, $title, $user, $request)) ) {
+			wfProfileOut( 'MediaWiki::performAction' );
+			return;
+		}
+
 		$action = $this->getVal('Action');
 		if( in_array( $action, $this->getVal('DisabledActions',array()) ) ) {
 			/* No such action; this will switch to the default case */
 			$action = 'nosuchaction';
-		}
-
-		// TODO LQT HACK
-		if ( LqtDispatch::tryPage( $output, $article, $title, $user, $request ) ) {
-			wfProfileOut( 'MediaWiki::performAction' );
-			return;
 		}
 
 		switch( $action ) {

@@ -17,6 +17,13 @@ require_once('Pager.php');
 require_once('PageHistory.php');
 
 class LqtDispatch {
+	public static $views = array(
+		'TalkpageArchiveView' => 'TalkpageArchiveView',
+		'TalkpageView' => 'TalkpageView',
+		'ThreadHistoryView' => 'ThreadHistoryView',
+		'ThreadPermalinkView' => 'ThreadPermalinkView'
+		);
+
 	static function talkpageMain(&$output, &$talk_article, &$title, &$user, &$request) {
 		// We are given a talkpage article and title. Find the associated
 		// non-talk article and pass that to the view.
@@ -25,10 +32,11 @@ class LqtDispatch {
 		$article = new Article($article_title);
 
 		if ( $request->getVal('lqt_method') == 'talkpage_archive' ) {
-			$view = new TalkpageArchiveView( $output, $article, $title, $user, $request );
+			$viewname = self::$views['TalkpageArchiveView'];
 		} else {
-			$view = new TalkpageView( $output, $article, $title, $user, $request );
+			$viewname = self::$views['TalkpageView'];
 		}
+		$view = new $viewname( $output, $article, $title, $user, $request );
 		$view->show();
 	}
 
@@ -36,10 +44,11 @@ class LqtDispatch {
 			/* breaking the lqt_method paradigm to make the history tab work. 
 			  (just changing the href doesn't make the highlighting correct.) */
 		if( $request->getVal('action') == 'history' ) {
-			$view = new ThreadHistoryView( $output, $article, $title, $user, $request );
+			$viewname = self::$views['ThreadHistoryView'];
 		} else {
-			$view = new ThreadPermalinkView( $output, $article, $title, $user, $request );
+			$viewname = self::$views['ThreadPermalinkView'];
 		}
+		$view = new $viewname( $output, $article, $title, $user, $request );
 		$view->show();
 	}
 	
@@ -58,6 +67,8 @@ class LqtDispatch {
 		return false;
 	}
 }
+
+$wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
 
 class LqtView {
 	protected $article;
