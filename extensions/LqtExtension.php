@@ -14,6 +14,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 require_once('LqtModel.php');
 require_once('Pager.php');
+require_once('PageHistory.php');
 
 class LqtDispatch {
 	static function talkpageMain(&$output, &$talk_article, &$title, &$user, &$request) {
@@ -866,12 +867,12 @@ CREATE TABLE historical_thread (
 /**
  * @addtogroup Pager
  */
-class ThreadHistoryPager extends ReverseChronologicalPager {
-	public $mLastRow = false;
+class ThreadHistoryPager extends PageHistoryPager {
 	protected $thread;
 	
 	function __construct( $thread ) {
-		parent::__construct();
+		// mPageHistory = this in the PageHistoryPager methods now.
+		parent::__construct($this);
 		$this->thread = $thread;
 	}
 
@@ -887,11 +888,27 @@ class ThreadHistoryPager extends ReverseChronologicalPager {
 	function getIndexField() {
 		return 'hthread_revision';
 	}
-
+	
+	/**
+	 * Returns a row from the history printout.
+	 *
+	 * @param object $row The database row corresponding to the line (or is it the previous line?).
+	 * @param object $next The database row corresponding to the next line (or is it this one?).
+	 * @param int $counter Apparently a counter of what row number we're at, counted from the top row = 1.
+	 * @param $notificationtimestamp
+	 * @param bool $latest Whether this row corresponds to the page's latest revision.
+	 * @param bool $firstInList Whether this row corresponds to the first displayed on this history page.
+	 * @return string HTML output for the row
+	 */
+	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
+		
+	}
+	
+/*
 	function formatRow( $row ) {
 		return '<li>' . $row->hthread_revision;
 	}
-	
+*/	
 	function getStartBody() {
 		$this->mLastRow = false;
 		$this->mCounter = 1;
