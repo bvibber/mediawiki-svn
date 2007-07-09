@@ -59,16 +59,18 @@ class LqtDispatch {
 	static function tryPage( $output, $article, $title, $user, $request ) {
 		if ( $title->isTalkPage() ) {
 			self::talkpageMain ($output, $article, $title, $user, $request);
-			return true;
+			return false;
 		} else if ( $title->getNamespace() == NS_LQT_THREAD ) {
 			self::threadPermalinkMain($output, $article, $title, $user, $request);
-			return true;
+			return false;
 		}
-		return false;
+		return true;
 	}
 }
 
+
 $wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
+
 
 class LqtView {
 	protected $article;
@@ -641,7 +643,7 @@ HTML
 		
 		$this->showArchiveWidget();
 
-		var_dump(HistoricalThread::withIdAtRevision(3,11));
+//		var_dump(HistoricalThread::withIdAtRevision(3,11));
 		
 		if( $this->methodApplies('talkpage_new_thread') ) {
 			$this->showNewThreadForm();
