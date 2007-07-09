@@ -134,7 +134,7 @@ function queryRecordSet($recordSetStructureId, QueryTransactionInformation $tran
 			if (count($tableColumns) == 1)
 				$value = $row[$columnIndex];
 			else 
-				$value = getRecordFromRow($row, $columnIndex, $attribute->getStructure());
+				$value = getRecordFromRow($row, $columnIndex, $attribute->type);
 			
 			$record->setAttributeValue($attribute, $value);
 			$columnIndex += count($tableColumns);
