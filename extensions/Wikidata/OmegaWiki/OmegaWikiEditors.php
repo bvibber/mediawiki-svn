@@ -90,14 +90,11 @@ function getDefinitionEditor(ViewInformation $viewInformation) {
 	return $editor;	
 }
 
-function addPropertyToColumnFilterEditors(Editor $editor, ViewInformation $viewInformation, $levelsFromDefinedMeaning, $levelName) {
-	global
-		$definedMeaningIdAttribute;
-	
+function addPropertyToColumnFilterEditors(Editor $editor, ViewInformation $viewInformation, Attribute $idAttribute, $levelsFromDefinedMeaning, $levelName) {
 	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) {
 		$attribute = $propertyToColumnFilter->getAttribute();
 		$editor->addEditor(new PopUpEditor(
-			createObjectAttributesEditor($viewInformation, $attribute, $definedMeaningIdAttribute, $levelsFromDefinedMeaning, $levelName),	
+			createObjectAttributesEditor($viewInformation, $attribute, $idAttribute, $levelsFromDefinedMeaning, $levelName),	
 			$attribute->name
 		));
 	}
@@ -239,7 +236,7 @@ function getSynonymsAndTranslationsEditor(ViewInformation $viewInformation) {
 	$tableEditor->addEditor(getExpressionTableCellEditor($expressionAttribute, $viewInformation));
 	$tableEditor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(true), true, true));
 	
-	addPropertyToColumnFilterEditors($tableEditor, $viewInformation, 1, $synTransMeaningName);
+	addPropertyToColumnFilterEditors($tableEditor, $viewInformation, $syntransIdAttribute, 1, $synTransMeaningName);
 	
 	$tableEditor->addEditor(new PopUpEditor(
 		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $syntransIdAttribute, 1, $synTransMeaningName), 
@@ -260,7 +257,7 @@ function getDefinedMeaningRelationsEditor(ViewInformation $viewInformation) {
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 	
-	addPropertyToColumnFilterEditors($editor, $viewInformation, 1, $relationMeaningName);
+	addPropertyToColumnFilterEditors($editor, $viewInformation, $relationIdAttribute, 1, $relationMeaningName);
 	
 	$editor->addEditor(new PopUpEditor(
 		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $relationIdAttribute, 1, $relationMeaningName), 
@@ -281,7 +278,7 @@ function getDefinedMeaningReciprocalRelationsEditor(ViewInformation $viewInforma
 	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
 	$editor->addEditor(new RelationTypeReferenceEditor($relationTypeAttribute, new SimplePermissionController(false), true));
 	
-	addPropertyToColumnFilterEditors($editor, $viewInformation, 1, $relationMeaningName);
+	addPropertyToColumnFilterEditors($editor, $viewInformation, $relationIdAttribute, 1, $relationMeaningName);
 	
 	$editor->addEditor(new PopUpEditor(
 		createObjectAttributesEditor($viewInformation, $objectAttributesAttribute, $relationIdAttribute, 1, $relationMeaningName), 
