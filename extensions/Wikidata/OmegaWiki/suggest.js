@@ -598,7 +598,7 @@ function getAllColumnHeaders(tableNode) {
 		
 	var result = new Array();
 			
-	for (i = 0; i < headerRowCount; i++) {
+	for (var i = 0; i < headerRowCount; i++) {
 		var headerRow = tableNode.rows[i];
 		
 		for (j = 0; j < headerRow.cells.length; j++)
@@ -608,13 +608,13 @@ function getAllColumnHeaders(tableNode) {
 	return result;	
 }
 
-function nodeHasClass(node, class) {
-	var classes = node.className.split(' ');
+function nodeHasClass(node, className) {
+	var nodeClasses = node.className.split(' ');
 	var result = false;
 	var i = 0;
 	
-	while (!result && i < classes.length)
-		if (classes[i] == class)
+	while (!result && i < nodeClasses.length)
+		if (nodeClasses[i] == className)
 			result = true;
 		else
 			i++;
@@ -622,13 +622,13 @@ function nodeHasClass(node, class) {
 	return result;
 }
 
-function removeNodeClass(node, class) {
-	var classes = node.className.split(' ');
+function removeNodeClass(node, className) {
+	var nodeClasses = node.className.split(' ');
 	var newClasses = new Array();
 	
-	for (var i = 0; i < classes.length; i++)
-		if (classes[i] != class)
-			newClasses.push(classes[i]);
+	for (var i = 0; i < nodeClasses.length; i++)
+		if (nodeClasses[i] != className)
+			newClasses.push(nodeClasses[i]);
 			
 	node.className = newClasses.join(" ");
 }
