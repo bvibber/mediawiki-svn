@@ -437,15 +437,15 @@ class OAIRepo {
 	function listRecords( $verb ) {
 		$withData = ($verb == 'ListRecords');
 		
-		$token = $this->validateToken( 'resumptionToken' );
+		$startToken = $this->validateToken( 'resumptionToken' );
 		if( $this->errorCondition() ) {
 			return;
 		}
-		if( $token ) {
-			$metadataPrefix = $token['metadataPrefix'];
-			$resume         = $token['resume'];
+		if( $startToken ) {
+			$metadataPrefix = $startToken['metadataPrefix'];
+			$resume         = $startToken['resume'];
 			$from           = null;
-			$until          = $token['until'];
+			$until          = $startToken['until'];
 		} else {
 			$metadataPrefix = $this->validateMetadata( 'metadataPrefix' );
 			$resume         = null;
@@ -475,9 +475,9 @@ class OAIRepo {
 			if( $row = $resultSet->fetchObject() ) {
 				$limit = wfTimestamp( TS_MW, $until );
 				if( $until )
-					$token = "$metadataPrefix:$row->up_sequence:$limit";
+					$nextToken = "$metadataPrefix:$row->up_sequence:$limit";
 				else
-					$token = "$metadataPrefix:$row->up_sequence";
+					$nextToken = "$metadataPrefix:$row->up_sequence";
 			}
 			$resultSet->free();
 			// init writer
@@ -491,8 +491,8 @@ class OAIRepo {
 					echo $item->renderHeader( $this->timeGranularity() );
 				}
 			}
-			if( isset($token) ) {
-				echo oaiTag( 'resumptionToken', array(), $token ) . "\n";
+			if( isset( $nextToken ) ) {
+				echo oaiTag( 'resumptionToken', array(), $nextToken ) . "\n";
 			}
 			echo "</$verb>\n";
 		} else {
