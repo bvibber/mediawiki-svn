@@ -598,13 +598,13 @@ function filterAttributeValues(RecordSet $sourceRecordSet, Attribute $attributeA
 
 function filterObjectAttributesRecord(Record $sourceRecord, array &$attributeIds) {
 	global
-		$definedMeaningAttributesAttribute, $objectIdAttribute, 
+		$objectIdAttribute, 
 		$textAttributeValuesAttribute, $textAttributeAttribute,
 		$translatedTextAttributeAttribute, $translatedTextAttributeValuesAttribute,
 		$linkAttributeAttribute, $linkAttributeValuesAttribute, 
 		$optionAttributeAttribute, $optionAttributeValuesAttribute;
 	
-	$result = new ArrayRecord(new Structure($definedMeaningAttributesAttribute));
+	$result = new ArrayRecord($sourceRecord->getStructure());
 	$result->setAttributeValue($objectIdAttribute, $sourceRecord->getAttributeValue($objectIdAttribute));
 	
 	$result->setAttributeValue($textAttributeValuesAttribute, filterAttributeValues(

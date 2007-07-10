@@ -172,7 +172,11 @@ class DefinedMeaningModel {
 		$record->setAttributeValue($reciprocalRelationsAttribute, getDefinedMeaningReciprocalRelationsRecordSet($id, $view));
 		$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($id, $view));
 		$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($id, $view));
-		$record->setAttributeValue($definedMeaningAttributesAttribute, getObjectAttributesRecord($id, $view));
+		
+		$objectAttributesRecord = getObjectAttributesRecord($id, $view);
+		$record->setAttributeValue($definedMeaningAttributesAttribute, $objectAttributesRecord);
+		applyPropertyToColumnFiltersToRecord($record, $objectAttributesRecord, $view);
+		
 		$this->record=$record;
 		$this->recordIsLoaded=true;
 		return true;

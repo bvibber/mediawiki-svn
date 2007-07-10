@@ -330,25 +330,6 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 		foreach ($annotatedAttributes as $annotatedAttribute) 		
 			$annotatedAttribute->type->addAttribute($attribute);
 	}
-
-	global $wdDefinedMeaningAttributesOrder;
-
-	/** 
-	 * This global determines the order of the different
-	 * attributes in the user interface.
-	 */
-	$wdDefinedMeaningAttributesOrder=array(
-		$definitionAttribute->id,
-		$classAttributesAttribute->id,
-		$alternativeDefinitionsAttribute->id,
-		$synonymsAndTranslationsAttribute->id,
-		$possiblySynonymousAttribute->id,
-		$relationsAttribute->id,
-		$reciprocalRelationsAttribute->id,
-		$classMembershipAttribute->id,
-		$collectionMembershipAttribute->id,
-		$definedMeaningAttributesAttribute->id
-	);
 }
 
 

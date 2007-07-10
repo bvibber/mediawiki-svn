@@ -90,13 +90,21 @@ function getDefinitionEditor(ViewInformation $viewInformation) {
 	return $editor;	
 }
 
-function addPropertyToColumnFilterEditors(Editor $editor, ViewInformation $viewInformation, Attribute $idAttribute, $levelsFromDefinedMeaning, $levelName) {
+function createPropertyToColumnFilterEditors(ViewInformation $viewInformation, Attribute $idAttribute, $levelsFromDefinedMeaning, $levelName) {
+	$result = array();
+
 	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) {
 		$attribute = $propertyToColumnFilter->getAttribute();
-		$editor->addEditor(new PopUpEditor(
-			createObjectAttributesEditor($viewInformation, $attribute, $idAttribute, $levelsFromDefinedMeaning, $levelName),	
-			$attribute->name
-		));
+		$result[] = createObjectAttributesEditor($viewInformation, $attribute, $idAttribute, $levelsFromDefinedMeaning, $levelName);	
+	}
+	
+	return $result;
+}
+
+function addPropertyToColumnFilterEditors(Editor $editor, ViewInformation $viewInformation, Attribute $idAttribute, $levelsFromDefinedMeaning, $levelName) {
+	foreach (createPropertyToColumnFilterEditors($viewInformation, $idAttribute, $levelsFromDefinedMeaning, $levelName) as $propertyToColumnEditor) {
+		$attribute = $propertyToColumnEditor->getAttribute();
+		$editor->addEditor(new PopUpEditor($propertyToColumnEditor, $attribute->name));
 	}
 }	
 
@@ -541,6 +549,10 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	$availableEditors->addEditor($reciprocalRelationsEditor);
 	$availableEditors->addEditor($classMembershipEditor);
 	$availableEditors->addEditor($collectionMembershipEditor);
+
+	foreach (createPropertyToColumnFilterEditors($viewInformation, $definedMeaningIdAttribute, 0, $definedMeaningMeaningName) as $propertyToColumnEditor) 	
+		$availableEditors->addEditor($propertyToColumnEditor);
+	
 	$availableEditors->addEditor(createObjectAttributesEditor($viewInformation, $definedMeaningAttributesAttribute, $definedMeaningIdAttribute, 0, $definedMeaningMeaningName));
 
 	if ($viewInformation->possiblySynonymousRelationTypeId != 0)
@@ -550,7 +562,7 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	
 	foreach ($wdDefinedMeaningAttributesOrder as $attributeId) {
 		$editor = $availableEditors->getEditorForAttributeId($attributeId);
-
+		
 		if ($editor != null)
 			$definedMeaningEditor->addEditor($editor);
 	}

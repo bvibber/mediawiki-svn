@@ -128,9 +128,9 @@ $wgSynonymsAndTranslationsAttributeId = "synonyms-translations";
 // Defined meaning editor
 
 global
-	$wgDefinedMeaningAttributesOrder;
+	$wdDefinedMeaningAttributesOrder;
 	
-$wgDefinedMeaningAttributesOrder = array(
+$wdDefinedMeaningAttributesOrder = array(
 	$wgDefinitionAttributeId,
 	$wgClassAttributesAttributeId,
 	$wgAlternativeDefinitionsAttributeId,
