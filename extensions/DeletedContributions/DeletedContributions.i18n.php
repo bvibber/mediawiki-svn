@@ -9,6 +9,10 @@ $wgDeletedContribsMessages['de'] = array(
 	'deletedcontributions'		 => 'Gelöschte Benutzerbeiträge'
 );
 
+$wgDeletedContribsMessages['he'] = array(
+	'deletedcontributions' => 'תרומות משתמש מחוקות',
+);
+
 $wgDeletedContribsMessages['id'] = array(
 	'deletedcontributions'		 => 'Kontribusi yang dihapus'
 );
