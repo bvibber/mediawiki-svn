@@ -27,7 +27,22 @@
 
 .wiki-data-table th.sortable {
 	cursor: pointer;
-}	
+}
+
+.wiki-data-table th.sortedUp {
+	padding-right: 15px;
+	background-image: url('../../../skins/common/images/sort_up.gif');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+
+.wiki-data-table th.sortedDown {
+	padding-right: 15px;
+	
+	background-image: url('../../../skins/common/images/sort_down.gif');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
 
 .wiki-data-table td.column-odd {
 	background-color: #F6F6F6;

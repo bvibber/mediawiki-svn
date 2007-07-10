@@ -36,8 +36,6 @@ function leftTrim(sString) {
 	return sString;
 }
 
-
-
 function updateSuggestions(suggestPrefix) {
 	var http = getHTTPObject();
 	var table = document.getElementById(suggestPrefix + "table");
@@ -592,6 +590,73 @@ function compareTableRows(row1, row2) {
 	return result;
 }
 
+function getAllColumnHeaders(tableNode) {
+	var headerRowCount = 0;
+
+	while (headerRowCount < tableNode.rows.length && tableNode.rows[headerRowCount].cells[0].nodeName.toLowerCase() == "th") 
+		headerRowCount++;
+		
+	var result = new Array();
+			
+	for (i = 0; i < headerRowCount; i++) {
+		var headerRow = tableNode.rows[i];
+		
+		for (j = 0; j < headerRow.cells.length; j++)
+			result.push(headerRow.cells[j]);
+	}
+
+	return result;	
+}
+
+function nodeHasClass(node, class) {
+	var classes = node.className.split(' ');
+	var result = false;
+	var i = 0;
+	
+	while (!result && i < classes.length)
+		if (classes[i] == class)
+			result = true;
+		else
+			i++;
+			
+	return result;
+}
+
+function removeNodeClass(node, class) {
+	var classes = node.className.split(' ');
+	var newClasses = new Array();
+	
+	for (var i = 0; i < classes.length; i++)
+		if (classes[i] != class)
+			newClasses.push(classes[i]);
+			
+	node.className = newClasses.join(" ");
+}
+
+function columnIsSortable(sortedColumnNode) {
+	return nodeHasClass(sortedColumnNode, "sortable");
+}
+
+function changeSortIcons(tableNode, sortedColumnNode, sortDirection) {
+	var columnHeaders = getAllColumnHeaders(tableNode);
+	
+	for (var i = 0; i < columnHeaders.length; i++) {
+		var columnHeader = columnHeaders[i];
+		
+		if (columnIsSortable(columnHeader)) {
+			removeNodeClass(columnHeader, "sortedUp");
+			removeNodeClass(columnHeader, "sortedDown");
+			
+			if (columnHeader == sortedColumnNode) { 
+				if (sortDirection == -1)
+					columnHeader.className += " sortedUp";
+				else
+					columnHeader.className += " sortedDown";
+			}
+		}
+	}
+}
+
 function sortTable(columnNode, skipRows, columnIndex) {
 	var tableNode = getParentNode(columnNode, 'table');
 	var rowsToSort = new Array();
@@ -613,6 +678,7 @@ function sortTable(columnNode, skipRows, columnIndex) {
 		tableNode.tBodies[0].appendChild(rowsToSort[i]);	
 		
 	tableNode.setAttribute('sort-order', sortOrder.toText());
+	changeSortIcons(tableNode, columnNode, sortOrder.getColumn(0).direction);		
 }
 
 function changePopupLinkArrow(popupLink, newArrow) {

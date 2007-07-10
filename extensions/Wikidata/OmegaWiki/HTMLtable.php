@@ -4,12 +4,6 @@ require_once("Attribute.php");
 require_once("Record.php");
 require_once("RecordSet.php");
 
-global
-	$wgStylePath;
-	
-$URL = "$wgStylePath/common/images/sort_none.gif";
-define ('SORT_IMAGE', ' <img src="' . $URL . '"></img>');
-
 function parityClass($value) {
 	if ($value % 2 == 0)
 		return "even";
@@ -75,23 +69,22 @@ function addChildNodesToRows($headerNode, &$rows, $currentDepth, $columnOffset, 
 					$columnIndex . '); </script>' 
 					. EOL;
 				$leftmost = False; 	# There can be only one.
-			} else {
+			} 
+			else 
 				$leftsort="";
-			}
 
 			$class = ' class="' . $type . ' sortable"' . $onclick;	
-			$sort_image = SORT_IMAGE;
-		} else {
+		} 
+		else {
 			$class = '';
 			$sort = '';
-			$sort_image = '';			
 			$leftsort='';
 		}
 		
 		$rowSpan = $height - $childNode->height;
 		$rows[$currentDepth] .= '<th id="'.$idPath->getId().'-h" '. $class .
 			' colspan="'. $childNode->width .  '" rowspan="'. $rowSpan . 
-			'">'. $attribute->name . $sort_image . $leftsort .'</th>';
+			'">'. $attribute->name . $leftsort .'</th>';
 									
 		addChildNodesToRows($childNode, $rows, $currentDepth + $rowSpan, $columnOffset,$idPath, $leftmost);
 		$idPath->popAttribute();
