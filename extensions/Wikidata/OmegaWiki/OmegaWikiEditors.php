@@ -21,10 +21,10 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 	$translatedTextValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	$optionValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
 	
-	setObjectAttributesEditor($textValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($linkValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $linkAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($translatedTextValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	setObjectAttributesEditor($optionValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $optionAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+	addObjectAttributesEditors($textValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+	addObjectAttributesEditors($linkValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $linkAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+	addObjectAttributesEditors($translatedTextValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+	addObjectAttributesEditors($optionValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $optionAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 }
 
 function getTransactionEditor(Attribute $attribute) {
@@ -122,7 +122,7 @@ function getTranslatedTextEditor(Attribute $attribute, UpdateController $updateC
 	return $editor;
 }
 
-function setObjectAttributesEditor(Editor $objectAttributesEditor, ViewInformation $viewInformation, Fetcher $objectIdFetcher, $levelDefinedMeaningName, Fetcher $dmObjectIdFetcher) {
+function addObjectAttributesEditors(Editor $objectAttributesEditor, ViewInformation $viewInformation, Fetcher $objectIdFetcher, $levelDefinedMeaningName, Fetcher $dmObjectIdFetcher) {
 	$objectAttributesEditor->addEditor(getTextAttributeValuesEditor($viewInformation, new TextAttributeValuesController($objectIdFetcher), $levelDefinedMeaningName, $dmObjectIdFetcher));
 	$objectAttributesEditor->addEditor(getTranslatedTextAttributeValuesEditor($viewInformation, new TranslatedTextAttributeValuesController($objectIdFetcher, $viewInformation->filterLanguageId), $levelDefinedMeaningName, $dmObjectIdFetcher));
 	$objectAttributesEditor->addEditor(getLinkAttributeValuesEditor($viewInformation, new LinkAttributeValuesController($objectIdFetcher), $levelDefinedMeaningName, $dmObjectIdFetcher));
@@ -135,7 +135,7 @@ function createObjectAttributesEditor(ViewInformation $viewInformation, Attribut
 	
 	$result = new RecordUnorderedListEditor($attribute, 5); 
 	
-	setObjectAttributesEditor(
+	addObjectAttributesEditors(
 		$result, 
 		$viewInformation, 
 		new ObjectIdFetcher(0, $idAttribute), 
@@ -152,7 +152,7 @@ function createDefinitionObjectAttributesEditor(ViewInformation $viewInformation
 	
 	$result = new RecordUnorderedListEditor($attribute, 5); 
 	
-	setObjectAttributesEditor(
+	addObjectAttributesEditors(
 		$result, 
 		$viewInformation, 
 		new DefinitionObjectIdFetcher(0, $idAttribute), 
