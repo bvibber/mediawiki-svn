@@ -3,7 +3,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 ?>
 <p>This is the ExpandTemplates extension. To enable it, put </p>
 <pre>require_once("$IP/extensions/ExpandTemplates/ExpandTemplates.php");</pre>
-<p>at the bottom of your LocalSettings.php</p>
+<p>at the bottom of your LocalSettings.php.</p>
+<p>This extension also requires
+<tt><a href="http://svn.wikimedia.org/svnroot/mediawiki/trunk/extensions/ExtensionFunctions.php">
+ExtensionFunctions.php</a></tt>.</p>
 <?php
 	exit(1);
 }
