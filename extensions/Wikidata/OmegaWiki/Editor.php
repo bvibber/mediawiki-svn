@@ -508,20 +508,19 @@ class RecordSetTableEditor extends RecordSetEditor {
 		return $result;
 	}
 
-	public function view(IdStack $idPath, $value) {
+	public function viewHeader(IdStack $idPath, array $visibleColumnEditors) {
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
-		$structure = $value->getStructure();
-		$key = $value->getKey();
-		$rowAttributes = $this->getRowAttributesText();
-		
-		if ($this->hideEmptyColumns)
-			$visibleColumnEditors = $this->getColumnEditorsShowingData($this, $value);
-		else	
-			$visibleColumnEditors = $this->getAllColumnEditors($this, $value);		
 
 		foreach (getStructureAsTableHeaderRows($this->getTableStructure($this, $visibleColumnEditors), 0, $idPath) as $headerRow)
 			$result .= '<tr>' . $headerRow . '</tr>'.EOL;
-
+			
+		return $result;
+	}
+	
+	public function viewRows(IdStack $idPath, $value, array $visibleColumnEditors) {
+		$result = "";
+		$rowAttributes = $this->getRowAttributesText();
+		$key = $value->getKey();
 		$recordCount = $value->getRecordCount();
 
 		for ($i = 0; $i < $recordCount; $i++) {
@@ -534,8 +533,28 @@ class RecordSetTableEditor extends RecordSetEditor {
 				
 			$idPath->popKey();
 		}
+		
+		return $result;
+	}
+	
+	public function viewFooter(IdStack $idPath, array $visibleColumnEditors) {
+		return '</table>' . EOL;
+	}
+	
+	public function getVisibleColumnHeadersForView($value) {
+		if ($this->hideEmptyColumns)
+			return $this->getColumnEditorsShowingData($this, $value);
+		else	
+			return $this->getAllColumnEditors($this, $value);		
+	}
 
-		$result .= '</table>' . EOL;
+	public function view(IdStack $idPath, $value) {
+		$visibleColumnEditors = $this->getVisibleColumnHeadersForView($value);
+		
+		$result = 
+			$this->viewHeader($idPath, $visibleColumnEditors) .
+			$this->viewRows($idPath, $value, $visibleColumnEditors) .
+			$this->viewFooter($idPath, $visibleColumnEditors);
 
 		return $result;
 	}

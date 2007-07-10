@@ -753,12 +753,11 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 	$objectIds = getUniqueIdsInRecordSet($recordSet, array($objectIdAttribute));
 	
 	if (count($objectIds) > 0) {
-		for ($i = 0; $i < count($objectIds); $i++) {
+		for ($i = 0; $i < count($objectIds); $i++) 
 			if (isset($objectIds[$i])) {
 				$record = new ArrayRecord($objectAttributesRecordStructure);
 				$objectAttributesRecords[$objectIds[$i]] = $record;
 			}
-		}
 
 		// Text attributes		
 		$allTextAttributeValuesRecordSet = getTextAttributesValuesRecordSet($objectIds, $viewInformation); 
