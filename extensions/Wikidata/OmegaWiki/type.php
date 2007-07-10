@@ -48,8 +48,7 @@ function definedMeaningIdAsURL($definedMeaningId) {
 }
 
 function createLink($url, $text) {
-	
-	return '<a href="'. $url . '">' . htmlspecialchars($text) . '</a>';	
+	return '<a href="'. htmlspecialchars($url) . '">' . htmlspecialchars($text) . '</a>';	
 } 
 
 function spellingAsLink($spelling) {

@@ -129,6 +129,7 @@ class DefaultWikidataApplication {
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->queryTransactionInformation = $referenceQueryTransactionInformation; 
+		$viewInformation->setPropertyToColumnFilters($this->propertyToColumnFilters);
 		$viewInformation->viewOrEdit = "edit";
 		
 		$this->viewInformation = $viewInformation;
@@ -185,6 +186,7 @@ class DefaultWikidataApplication {
 		$viewInformation->showRecordLifeSpan = false;
 		$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
 		$viewInformation->viewOrEdit = "edit";
+		$viewInformation->setPropertyToColumnFilters($this->propertyToColumnFilters);
 		
 		$this->viewInformation = $viewInformation;
 		
@@ -241,6 +243,7 @@ class DefaultWikidataApplication {
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = $this->showRecordLifeSpan;
 		$viewInformation->queryTransactionInformation = $this->queryTransactionInformation;
+		$viewInformation->setPropertyToColumnFilters($this->propertyToColumnFilters);
 		
 		$this->viewInformation = $viewInformation;
 
