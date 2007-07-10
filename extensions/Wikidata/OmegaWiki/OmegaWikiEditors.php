@@ -133,7 +133,7 @@ function createObjectAttributesEditor(ViewInformation $viewInformation, Attribut
 	global
 		$objectAttributesAttribute, $definedMeaningIdAttribute;
 	
-	$result = new RecordUnorderedListEditor($attribute, 5); 
+	$result = new ObjectAttributeValuesEditor($attribute); 
 	
 	addObjectAttributesEditors(
 		$result, 
@@ -150,7 +150,7 @@ function createDefinitionObjectAttributesEditor(ViewInformation $viewInformation
 	global
 		$objectAttributesAttribute, $definedMeaningIdAttribute;
 	
-	$result = new RecordUnorderedListEditor($attribute, 5); 
+	$result = new ObjectAttributeValuesEditor($attribute); 
 	
 	addObjectAttributesEditors(
 		$result, 

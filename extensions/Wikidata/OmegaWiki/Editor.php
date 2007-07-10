@@ -210,6 +210,7 @@ abstract class Viewer extends DefaultEditor {
 	}
 
 	public function add(IdStack $idPath) {
+		return "";		
 	}
 
 	public function save(IdStack $idPath, $value) {
@@ -493,13 +494,13 @@ class RecordSetTableEditor extends RecordSetEditor {
 		return $result;
 	}
 	
-	protected function getAllColumnEditors(Editor $editor, $value) {
+	public function getAllColumnEditors(Editor $editor) {
 		$result = array();
 		
 		foreach ($editor->getEditors() as $childEditor) {
 			if ($childEditor instanceof RecordTableCellEditor) { 
 				$result[] = $childEditor;
-				$result = array_merge($result, $this->getAllColumnEditors($childEditor, $value));	
+				$result = array_merge($result, $this->getAllColumnEditors($childEditor));	
 			}
 			else 
 				$result[] = $childEditor;	
@@ -541,15 +542,15 @@ class RecordSetTableEditor extends RecordSetEditor {
 		return '</table>' . EOL;
 	}
 	
-	public function getVisibleColumnHeadersForView($value) {
+	public function getVisibleColumnEditorsForView($value) {
 		if ($this->hideEmptyColumns)
 			return $this->getColumnEditorsShowingData($this, $value);
 		else	
-			return $this->getAllColumnEditors($this, $value);		
+			return $this->getAllColumnEditors($this);		
 	}
 
 	public function view(IdStack $idPath, $value) {
-		$visibleColumnEditors = $this->getVisibleColumnHeadersForView($value);
+		$visibleColumnEditors = $this->getVisibleColumnEditorsForView($value);
 		
 		$result = 
 			$this->viewHeader($idPath, $visibleColumnEditors) .
@@ -566,7 +567,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$key = $value->getKey();
 		$rowAttributes = $this->getRowAttributesText();
-		$visibleColumnEditors = $this->getAllColumnEditors($this, $value);
+		$visibleColumnEditors = $this->getAllColumnEditors($this);
 		$columnOffset = $this->allowRemove ? 1 : 0;
 		$headerRows = getStructureAsTableHeaderRows($this->getTableStructure($this, $visibleColumnEditors), $columnOffset, $idPath);
 
@@ -2170,4 +2171,73 @@ class GotoSourceEditor extends Viewer {
 	}
 }
 
+class ObjectAttributeValuesEditor extends WrappingEditor {
+	protected $recordSetTableEditor;
+	protected $propertyEditor;
+	protected $vslueEditor;
+	
+	public function __construct(Attribute $attribute = null) {
+		parent::__construct(new RecordUnorderedListEditor($attribute, 5));
+		
+		$this->recordSetTableEditor = new RecordSetTableEditor(
+			$attribute, 
+			new SimplePermissionController(false), 
+			new ShowEditFieldChecker(true), 
+			new AllowAddController(false), 
+			false, 
+			false, 
+			null
+		);
+		
+		$propertyAttribute = new Attribute("property", "Property", "short-text");
+		$valueAttribute = new Attribute("value", "Value", "short-text");
+		
+		$this->propertyEditor = new ShortTextEditor($propertyAttribute, new SimplePermissionController(false), false);
+		$this->valueEditor = new ShortTextEditor($valueAttribute, new SimplePermissionController(false), false);
+		
+		$this->recordSetTableEditor->addEditor($this->propertyEditor);
+		$this->recordSetTableEditor->addEditor($this->valueEditor);
+	}
+	
+	public function addEditor(Editor $editor) {
+		$this->wrappedEditor->addEditor($editor);
+		$childEditors = $editor->getEditors();
+		
+		for ($i = count($this->recordSetTableEditor->getEditors()); $i < count($childEditors); $i++)
+			$this->recordSetTableEditor->addEditor($childEditors[$i]); 
+	}
+	
+	public function determineVisibleHeaders($value) {
+		$result = array($this->propertyEditor, $this->valueEditor);
+		
+		foreach ($this->wrappedEditor->getEditors() as $editor) {
+			$visibleEditors = $editor->getVisibleColumnEditorsForView($value->getAttributeValue($editor->getAttribute()));
+			
+			foreach ($visibleEditors as $visibleEditor)
+				if (!in_array($visibleEditor, $result, true))
+					$result[] = $visibleEditor;			
+		}		
+		
+		return $result;
+	}
 
+	public function view(IdStack $idPath, $value) {
+		$visibleColumnEditors = $this->determineVisibleHeaders($value); 
+		$result = $this->recordSetTableEditor->viewHeader($idPath, $visibleColumnEditors);
+			
+		foreach ($this->wrappedEditor->getEditors() as $editor) {
+			$attribute = $editor->getAttribute();
+			$idPath->pushAttribute($attribute);
+			$result .= $editor->viewRows(
+				$idPath, 
+				$value->getAttributeValue($attribute),
+				$visibleColumnEditors 
+			);
+			$idPath->popAttribute();
+		} 
+		
+		$result .= $this->recordSetTableEditor->viewFooter($idPath, $visibleColumnEditors);
+
+		return $result;
+	}
+}
