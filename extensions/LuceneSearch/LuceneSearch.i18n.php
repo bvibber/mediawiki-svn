@@ -30,6 +30,21 @@ or you can search the wiki through an external search service:\n",
 	'searchaliases'         => ""
 );
 
+$wgLuceneSearchMessages['af'] = array(
+	'searchnumber'          => "<strong>Resultate $1-$2 van $3</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Vorige</span>",
+	'searchnext'            => "<span style='font-size: small'>Volgende</span> &#x00BB;",
+	'searchscore'           => "Relevansie: $1",
+	'searchsize'            => "$1KG ($2 woorde)",
+	'searchdidyoumean'      => "Het u \"<a href=\"$1\">$2</a>\" bedoel?",
+	'searchnoresults'       => "Jammer, daar was niks wat u navraag presies pas nie.",
+	'searchnearmatches'     => "<b>Hierdie bladsye het titels soortgelyk aan u navraag:</b>\n",
+	'lucenepowersearchtext' => "
+Soek in naamruimtes:\n
+$1\n
+Soek vir $3 $9 $10",
+);
+
 $wgLuceneSearchMessages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",

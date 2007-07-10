@@ -12,6 +12,10 @@ $wgDismissableSiteNoticeMessages['en'] = array(
 	'sitenotice_close' => 'dismiss',
 );
 
+$wgDismissableSiteNoticeMessages['af'] = array(
+	'sitenotice_close' => 'versteek',
+);
+
 $wgDismissableSiteNoticeMessages['ar'] = array(
 	'sitenotice_close' => 'إغلاق',
 );
