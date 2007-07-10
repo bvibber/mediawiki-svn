@@ -783,7 +783,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			
 			// add the comment URL as URL attribute to the entry and link URL attribute with text attribute
 			if ($comment->url != ""){
-				addURLAttributeValue($definedMeaningId, $attributeMeaningId, $comment->url);
+				addLinkAttributeValue($definedMeaningId, $attributeMeaningId, $comment->url);
 				
 				// link comment with its URL
 				//addRelation($textId, $this->hasURLid, $urlId);
