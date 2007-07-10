@@ -116,29 +116,28 @@ class DeletedContribsPager extends IndexPager {
 				) );
 	
 		$page = Title::makeTitle( $row->ar_namespace, $row->ar_title );
-		$timestamp = $row->ar_timestamp;
 	
-		$undelete =& SpecialPage::getTitleFor( 'Undelete' );
+		$undelete = SpecialPage::getTitleFor( 'Undelete' );
 
 		$logs = SpecialPage::getTitleFor( 'Log' );
 		$dellog = $sk->makeKnownLinkObj( $logs, $this->messages['deletionlog'], 'type=delete&page=' . urlencode( $page->getPrefixedText() ) );
 		
 		$reviewlink = $sk->makeKnownLinkObj( $undelete, $this->messages['undeletebtn'], 'target=' . $page->getPrefixedUrl() );
 		
-		$link = $sk->makeKnownLinkObj( $undelete, htmlspecialchars( $page->getPrefixedText() ), 'target=' . $page->getPrefixedUrl() . '&timestamp=' . $timestamp);
+		$link = $sk->makeKnownLinkObj( $undelete, htmlspecialchars( $page->getPrefixedText() ), 'target=' . $page->getPrefixedUrl() . '&timestamp=' . $rev->getTimestamp());
 
 		$comment = $sk->revComment( $rev );
-		$d = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->ar_timestamp ), true );
+		$d = $wgLang->timeanddate( $rev->getTimestamp(), true );
 	
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$d = '<span class="history-deleted">' . $d . '</span>';
 		} else {
-			$link = $sk->makeKnownLinkObj( $undelete, $d, 'target=' . $page->getPrefixedUrl() . '&timestamp=' . $timestamp);
+			$link = $sk->makeKnownLinkObj( $undelete, $d, 'target=' . $page->getPrefixedUrl() . '&timestamp=' . $rev->getTimestamp());
 		}
 		
 		$pagelink = $sk->makeLinkObj( $page );
 
-		if( $row->ar_minor_edit ) {
+		if( $rev->isMinor() ) {
 			$mflag = '<span class="minor">' . $this->messages['minoreditletter'] . '</span> ';
 		} else {
 			$mflag = '';
