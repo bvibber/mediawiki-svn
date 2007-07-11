@@ -16,7 +16,7 @@ $wgExtensionCredits['specialpage'][] = array(
 $wgExtensionFunctions[] = 'efLoadDeletedContribsMessages';
 
 function efLoadDeletedContribsMessages() {
-	global $wgMessageCache, $wgDeletedContribsMessages, $wgOut, $wgJsMimeType;
+	global $wgMessageCache, $wgDeletedContribsMessages;
 	# Internationalization
 	require( dirname( __FILE__ ) . '/DeletedContributions.i18n.php' );
 	require( dirname( __FILE__ ) . '/DeletedContributions_body.php' );
