@@ -20,6 +20,12 @@ function efPicturePopupMessages() {
 	'picturepopup_invalid_icon' => 'License template has missing or invalid imageLicenseIcon element',
 ),
 
+'ar' => array(
+'picturepopup_invalid_title' => 'اسم صورة غير صحيح',
+'picturepopup_no_image' => 'الصورة غير موجودة',
+'picturepopup_license_list' => 'Project:معرفات حقوق التأليف و النشر للصور',
+),
+
 /* Indonesian */
 'id' => array(
 	'picturepopup_invalid_title' => 'Judul gambar tak sah',

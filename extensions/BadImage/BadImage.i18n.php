@@ -34,6 +34,29 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'removed [[$1]] from the bad image list',
 ),
 
+/* Arabic (Meno25) */
+'ar' => array(
+'badimages' => 'قائمة صور سيئة',
+'badimages-add-btn' => 'إضافة',
+'badimages-added' => '$1 تمت إضافتها للقائمة.',
+'badimages-count' => 'توجد \'\'\'$1\'\'\' صورة في قائمة الصور السيئة.',
+'badimages-name' => 'الاسم:',
+'badimages-not-added' => 'لا يمكن إضافة الصورة.',
+'badimages-not-removed' => 'لا يمكن إزالة الصورة.',
+'badimages-reason' => 'السبب:',
+'badimages-remove' => '(مسح)',
+'badimages-remove-btn' => 'مسح',
+'badimages-remove-confirm' => 'من فضلك أكد أنك تريد إزالة $1 من القائمة:',
+'badimages-removed' => '$1 تمت إزالتها من القائمة.',
+'badimages-subheading' => 'المدخلات الحالية',
+'badimages-unprivileged' => '(لا تمتلك الصلاحية اللازمة لتعديل القائمة)',
+'badimages-log-name' => 'قائمة الصور السيئة',
+'badimages-log-header' => 'هذا سجل بالتغييرات ل[[Help:Bad image list|قائمة الصور السيئة]].',
+'badimages-log-add' => 'تم إضافة [[$1]] لقائمة الصور السيئة',
+'badimages-log-remove' => 'تمت إزالة [[$1]] من قائمة الصور السيئة',
+),
+
+
 'br' => array(
 'badimages' => 'Roll ar skeudennoù fall',
 'badimages-add-btn' => 'Ouzhpennañ',

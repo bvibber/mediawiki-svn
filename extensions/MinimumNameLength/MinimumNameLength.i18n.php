@@ -16,7 +16,7 @@ function efMinimumNameLengthMessages() {
 
 /* Arabic */
 'ar' => array(
-'minnamelength-error' => 'اسم المستخدم قصير للغاية. أقل طول مسموخ به هو $1.',
+'minnamelength-error' => 'اسم المستخدم قصير للغاية. أقل طول مسموح به هو $1.',
 ),
 
 /* German */

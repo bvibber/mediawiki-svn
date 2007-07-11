@@ -33,6 +33,23 @@ riddler|Riddler",
 'vote-invalid-choice' => 'You must select one of the available options.',
 ),
 
+/* Arabic (Meno25) */
+'ar' => array(
+'vote' => 'تصويت',
+'vote-current' => 'تصويتك الحالي ل \'\'\'$1\'\'\'.',
+'vote-caption' => 'اختيارك:',
+'vote-submit' => 'تصويت',
+'vote-registered' => 'تصويتك تم تسجيله',
+'vote-view-results' => 'عرض النتائج',
+'vote-results' => 'نتائج التصويت',
+'vote-results-choice' => 'الاختيار',
+'vote-results-count' => 'العدد',
+'vote-results-none' => 'لا أصوات تم وضعها في هذا الوقت.',
+'vote-login' => 'يجب عليك $1 لكي تصوت.',
+'vote-login-link' => 'دخول',
+'vote-invalid-choice' => 'يجب عليك اختيار واحد من الخيارات المتاحة.',
+),
+
 /* French (Ashar Voultoiz) */
 'fr' => array(
 'vote' => 'Vote',

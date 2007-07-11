@@ -23,6 +23,19 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'There have been no contributions to this wiki.',
 ),
 
+/* Arabic (Meno25) */
+'ar' => array(
+'countedits' => 'عد المساهمات',
+'countedits-warning' => '\'\'\'تحذير:\'\'\' لا تحكم على كتاب من غلافه. لا تحكم على مساهم من خلال عدد مساهماته.',
+'countedits-username' => 'اسم المستخدم:',
+'countedits-ok' => 'موافق',
+'countedits-nosuchuser' => 'لا يوجد مستخدم بالاسم $1.',
+'countedits-resultheader' => 'النتائج ل $1',
+'countedits-resulttext' => '$1 لديه $2 مساهمة',
+'countedits-mostactive' => 'أكثر المساهمين نشاطا',
+'countedits-nocontribs' => 'لا يوجد مساهمون في هذه الويكي.',
+),
+
 'br' => array(
 'countedits' => 'Degasadennoù ar gont',
 'countedits-warning' => '\'\'\'Diwallit :\'\'\' Ne varner ket ul levr diouzh ar golo anezhañ. Arabat barnañ un implijer diouzh an niver a zegasadennoù graet gantañ.',

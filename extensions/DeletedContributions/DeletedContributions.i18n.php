@@ -5,6 +5,11 @@ $wgDeletedContribsMessages['en'] = array(
 	'deletedcontributions'		 => 'Deleted user contributions'
 );
 
+/* Arabic (Meno25) */
+$wgDeletedContribsMessages['ar'] = array(
+	'deletedcontributions' => 'مساهمات المستخدم المحذوفة',
+);
+
 $wgDeletedContribsMessages['de'] = array(
 	'deletedcontributions'		 => 'Gelöschte Benutzerbeiträge'
 );

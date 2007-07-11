@@ -38,6 +38,29 @@ copies of all histories. This is useful for article forking, etc.',
 'duplicator-toomanyrevisions' => '[[$1]] has too many ($2) revisions and cannot be copied. The current limit is $3.',
 ),
 
+/* Arabic (Meno25) */
+'ar' => array(
+'duplicator' => 'استنساخ مقالة',
+'duplicator-toolbox' => 'استنسخ هذه المقالة',
+'duplicator-header' => 'هذه الصفحة تسمح بالاستنساخ الكامل لمقالة، و إنشاء نسخ مستقلة لكل التاريخ. هذا مفيد في استساخ مقالة، إلى آخره.',
+'duplicator-options' => 'خيارات',
+'duplicator-source' => 'المصدر:',
+'duplicator-dest' => 'الوجهة:',
+'duplicator-dotalk' => 'استنسخ صفحة النقاش (إن أمكن)',
+'duplicator-submit' => 'استنساخ',
+'duplicator-summary' => 'منسوخ من [[$1]]',
+'duplicator-success' => '<big>\'\'\'[[$1]] تم نسخها إلى [[$2]].\'\'\'</big>',
+'duplicator-success-revisions' => '$1 {{PLURAL:$1|نسخة|نسخ}} تم نسخها.',
+'duplicator-success-talkcopied' => 'صفحة النقاش تم نقلها أيضا.',
+'duplicator-success-talknotcopied' => 'لم يمكن نسخ صفحة النقاش.',
+'duplicator-failed' => 'لم يمكن استساخ الصفحة. حدث خطأ غير معروف.',
+'duplicator-source-invalid' => 'من فضلك اكتب عنوان مصدر صحيح.',
+'duplicator-source-notexist' => '[[$1]] غير موجودة. من فضلك اكتب عنوان صفحة موجودة.',
+'duplicator-dest-invalid' => 'من فضلك اكتب عنوان وجهة صحيح.',
+'duplicator-dest-exists' => '[[$1]] موجودة بالفعل. من فضلك اكتب عنوان هدف غير موجود.',
+),
+
+
 'br' => array(
 'duplicator'=> 'Eilañ ur pennad',
 'duplicator-toolbox'=> 'Eilañ ar pennad-mañ',

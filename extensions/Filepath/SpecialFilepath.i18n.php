@@ -15,6 +15,15 @@ $wgFilepathMessages['en'] = array(
 	
 	Enter the file name without the "{{ns:image}}:" prefix.',
 );
+
+/* Arabic (Meno25) */
+$wgFilepathMessages['ar'] = array(
+	'filepath'        => 'مسار ملف',
+	'filepath_page'   => 'الملف:',
+	'filepath_submit' => 'المسار',
+	'filepath-summary' => 'هذه الصفحة الخاصة تعرض المسار الكامل لملف. ستعرض الصور بأقصى دقة، ستعمل أنواع الملفات الأخرى بالبرنامج المخصص لهم مباشرة؛ أدخل اسم الملف بدون البادئة "{{ns:image}}:"',
+);
+
 $wgFilepathMessages['cs'] = array(
 	'filepath'        => 'Cesta k souboru',
 	'filepath_page'   => 'Soubor:',

@@ -23,9 +23,9 @@ $wgNewuserlogMessages['af'] = array(
 );
 $wgNewuserlogMessages['ar'] = array(
 	'newuserlogpage'           => 'سجل إنشاء الحسابات الجديدة',
-	'newuserlogpagetext'       => 'هذه قائمة بأحدث المستخدمين المسجلين',
+	'newuserlogpagetext'       => 'هذا سجل بعمليات إنشاء الحسابات الجديدة',
 	'newuserlog-create-entry'  => 'مستخدم جديد',
-	'newuserlog-create2-entry' => 'تم إنشاء الحساب الخاص باسم $1',
+	'newuserlog-create2-entry' => 'أنشأ الحساب الخاص باسم $1',
 );
 $wgNewuserlogMessages['cs'] = array(
 	'newuserlogpage'           => 'Kniha nových uživatelů',

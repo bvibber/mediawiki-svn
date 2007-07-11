@@ -86,6 +86,79 @@ You will be redirected to this external server in 20 seconds. [$1 Click here] to
 
 A security warning about an unsigned certificate may be displayed.',
 );
+
+/* Arabic (Meno25) */
+$wgBoardVoteMessages['ar'] = array(
+	'boardvote'               => 'انتخابات مجلس أمناء ويكيميديا',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|صوّت]]
+* [[Special:Boardvote/list|التصويت لغاية اليوم]]
+* [[Special:Boardvote/dump|Dump encrypted election record]]',
+	'boardvote_intro'         => '<p>مرحبا في الانتخابات الثانية لمجلس إدارة ويكيميديا. يتم التصويت على تمثيل مجتمع المساهمين في مشاريع ويكيميديا المختلفة بشخص واحد.هولاء سيقومون بتحديد التوجه المستقبلي لمشاريع ويكيميديا، بشكل شخصي أو بشكل مجموعة، و تمثيل <em>اهتماماتك</em>  و توصيلها لمجلس الإدارة. و سيقومون أيضا بتحديد كيفية جلب المال و أوجه إنفاقه.</p>
+
+<p>من فضلك قم بقراءة كلمات المرشحين و ردودهم جيدا قبل التصويت.
+ كل مستخدم منهم هو مستخدم جدير بالاحترام، بذل وقتا و جهدا كبيرا
+لجعل هذه المشاريع مجتمع جيد يهدف إلى المشاركة و التوزيع الحر للمعرفة الإنسانية.</p>
+
+<p>يمكنك التصويت للعدد الذي تريده من المرشحين. المستخدم الذي يحصل على
+العدد الأكبر من الأصوات يفوز بالمنصب.
+ في حالة التعادل، ستقام جولة إعادة.</p>
+
+<p>من فضلك تذكر أنه لديك فقط صوت واحد.
+ حتى لو كان عندك أكثر من 400 مشاركة على كذا مشروع، فهذا لا يعطيك الحق في التصويت مرتين. إذا أردت تغيير ترشيحك، قم بهذا عن طريق المشروع الذي صوت من خلاله.</p>
+
+<p>لمعلومات أكثر، انظر:</p>
+<ul>
+<li><a href="http://meta.wikipedia.org/wiki/Election_FAQ_2006" class="external">أسئلة متكررة حول الانتخابات</a></li>
+<li><a href="http://meta.wikipedia.org/wiki/Election_Candidates_2006" class="external">المرشحين</a></li>
+</ul>',
+	'boardvote_intro_change'  => '<p>لقد قمت بالتصويت من قبل. إذا أردت تغيير صوتك، من الممكن عمل ذلك من النموذج التالي. 
+يرجى وضع إشارة في الصندوق بجانب المرشح الذي تود التصويت له.</p>',
+	'boardvote_entered'       => 'شكرًا لك، لقد تم اعتماد صوتك.
+
+إذا كنت ترغب بحفظ المعلومات التالية، هي لسجل تصويتك:
+
+<pre>$1</pre>
+تم تشفيرها باستعمال مفتاح خاص بالمشرفين على الانتخابات:
+
+<pre>$2</pre>
+
+نتيجة التشفير تأتي في التالي، وسيتم حفظها وإظهارها في الصفحة [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Back]]',
+	'boardvote_nosession'     => 'لا يمكنني تحديد رقم المستخدم الخاص بك. من فضلك، ادخل للويكي الذي أنت مؤهل به و اذهب إلى<nowiki>[[Special:Boardvote]]</nowiki>. يجب أن تستخدم حسابا لديه على الأقل $1 مساهمة قبل $2، و المساهمة الأولى قبل $3',
+	'boardvote_notloggedin'   => 'لم تقم بتسجيل الدخول إلى النظام. لكي تستطيع التصويت هنا في ويكيبيديا العربية، يجب أن يكون لديك حساب في الموسوعة و أجريت $1 تعديل قبل $2، و تكون مساهمتك الأولى قبل $3.',
+	'boardvote_notqualified'  => 'أنت غير مؤهل للتصويت في هذه الانتخابات. يجب أن يكون لديك $3 مساهمة قبل $2، و مساهمتك الأولى يجب أن تكون قبل $5.',
+	'boardvote_novotes'       => 'لم يقم أي شخص بالتصويت بعد.',
+	'boardvote_time'          => 'الزمن',
+	'boardvote_user'          => 'المستخدم',
+	'boardvote_edits'         => 'التعديلات',
+	'boardvote_days'          => 'الأيام',
+	'boardvote_ip'            => 'الأيبي',
+	'boardvote_ua'            => 'وسيط المستخدم',
+	'boardvote_listintro'     => '<p>فيما يلي قائمة بكافة عمليات التصويت إلى هذه اللحظة. للبيانات المشفرة $1.</p>',
+	'boardvote_dumplink'      => 'اضغط هنا',
+	'boardvote_submit'        => 'موافق',
+	'boardvote_strike'        => 'شطب',
+	'boardvote_unstrike'      => 'احتساب',
+	'boardvote_needadmin'     => 'فقط إداريو الانتخابات يمكنهم أن يقوموا بهذه العملية.',
+	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">انتخابات مجلس ويكيميديا</a>:  التصويت مفتوح حتى 12 يوليو',
+	'boardvote_notstarted'    => 'لم يبدأ التصويت بعد',
+	'boardvote_closed'        => 'تم غلق باب التصويت، انظر [http://meta.wikimedia.org/w/index.php?title=Election_results_2006/ar هذه الصفحة لمشاهدة النتائج]',
+	'boardvote_edits_many'    => 'كثير',
+	'group-boardvote'         => 'إداريو انتخابات مجلس الأمناء',
+	'group-boardvote-member'  => 'إداري انتحابات مجلس الأمناء',
+	'grouppage-boardvote'     => '{{ns:project}}:إداري انتخابات مجلس الأمناء',
+	'boardvote_blocked'       => 'عذرا، لقد تم منعك في الويكي الذي أنت مسجل به. المستخدمون الممنوعون غير مسموح لهم بالتصويت.',
+	'boardvote_welcome'       => 'مرحبا \'\'\'$1\'\'\'!',
+	'go_to_board_vote'        => 'انتخابات مجلس أمناء ويكيميديا 2007',
+	'boardvote_redirecting'   => 'من أجل مزيد من السرية و الشفافية، ندير الانتخابات من خلال خادم خارجي مستقل.
+
+سيتم تحويلك لهذا الخادم الخارجي خلال 20 ثانية. [$1 اضغط هنا] للذهاب هناك الآن.
+
+قد يتم عرض تحذير للسرية حول شهادة غير موقعة.',
+);
 $wgBoardVoteMessages['ca'] = array(
 	'boardvote_redirecting'   => "Per millorar la seguretat i la transparència de la votació, aquesta es farà en un servidor independent extern.
 

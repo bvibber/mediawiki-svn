@@ -28,13 +28,26 @@ $wgMakesysopMessages['en'] = array(
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
+
+/* Arabic (Meno25) */
 $wgMakesysopMessages['ar'] = array(
-	'setbureaucratflag' => 'ضع علامة بيروقراط',
+	'makesysoptitle' => 'ترقية مستخدم لمدير نظام',
+	'makesysoptext' => 'هذه الاستمارة يتم استخدامها بواسطة البيروقراطيين لتحويل المستخدمين العاديين إلى إداريين. اكتب اسم المستخدم في الصندوق و اضغط الزر لتجعل المستخدم إداريا.',
+	'makesysopname' => 'اسم المستخدم:',
+	'makesysopsubmit' => 'اجعل هذا المستخدم مدير نظام',
+	'makesysopok' => '<b>مستخدم "$1" الآن مدير نظام</b>',
+	'makebureaucratok' => '<b>مستخدم "$1" الآن بيروقراط</b>',
+	'makesysopfail' => '<b>المستخدم "$1" لم يمكن ترقيته لمدير نظام. (هل أدخلت الاسم بشكل صحيح؟)</b>',
+	'setbureaucratflag' => 'ضع علم بيروقراط',
 	'rights' => 'صلاحيات:',
 	'set_user_rights' => 'اضبط صلاحيات مستخدم',
+	'user_rights_set' => '<b>صلاحيات المستخدم ل "$1" تم تحديثها</b>',
 	'set_rights_fail' => '<b>لم يتم ضبط الصلاحيات للمستخدم "$1". (هل أدخلت الاسم بصورة صحيحة?)</b>',
+	'makesysop' => 'منح مستخدم صلاحيات إدارية',
 	'already_sysop' => 'هذا المستخدم بالفعل إداري',
 	'already_bureaucrat' => 'هذا المستخدم بالفعل بيروقراط',
+	'group-steward' => 'مضيفون',
+	'group-steward-member' => 'مضيف',
 );
 $wgMakesysopMessages['az'] = array(
 	'already_sysop'        => 'Bu istifadəçi hazirdə idarəçidir',

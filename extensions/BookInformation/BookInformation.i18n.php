@@ -25,6 +25,19 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Data provider: $1',
 ),
 
+/* Arabic (Meno25) */
+'ar' => array(
+'bookinfo-header' => 'معلومات كتاب',
+'bookinfo-result-title' => 'العنوان:',
+'bookinfo-result-author' => 'المؤلف:',
+'bookinfo-result-publisher' => 'الناشر:',
+'bookinfo-result-year' => 'السنة:',
+'bookinfo-error-nosuchitem' => 'المدخل غير موجود أو لم يمكن العثور عليه.',
+'bookinfo-error-noresponse' => 'لا رد أو الطلب انتهت فترته.',
+'bookinfo-purchase' => 'اشتر هذا الكتاب من $1',
+'bookinfo-provider' => 'مزود البيانات: $1',
+),
+
 'br' => array(
 'bookinfo-header' => 'Titouroù war al levr',
 'bookinfo-result-title' => 'Titl :',

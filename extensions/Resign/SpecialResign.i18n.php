@@ -22,6 +22,20 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 'resign-logentry'  => 'removed permissions $2 from himself',
 ),
 
+/* Arabic (Meno25) */
+'ar' => array(
+'resign' => 'استقالة',
+'resign-text' => 'يمكنك \'\'\'إزالة صلاحياتك\'\'\' (مثال الصلاحيات الإدارية) في هذه الصفحة. من فضلك علم على الصلاحيات التي تود إزالتها.
+
+تذكر: \'\'\'لا يمكنك استرجاع صلاحياتك بهذه الطريقة!\'\'\' سيتوجب عليك إقناع بيروقرط أوستيوارد لكي يعيد لك الصلاحيات. من فضلك استخدم هذه الصفحة بحرص شديد.',
+'resign-reason' => 'السبب:',
+'resign-confirm' => 'أؤكد أنني أريد إزالة كل الصلاحيات التي اخترتها.',
+'resign-noconfirm' => 'من فضلك علم على صندوق التأكيد إذا كنت تريد إزالة صلاحياتك.',
+'resign-nogroups' => 'من فضلك اختر الصلاحيات التي تريد إزالتها.',
+'resign-success' => '\'\'\'الصلاحيات تمت إزالتها بنجاح.\'\'\'',
+'resign-logentry' => 'أزال الصلاحيات $2 من نفسه',
+),
+
 'de' => array(
 'resign'           => 'Rücktritt',
 'resign-text'      => "Sie können auf dieser Seite '''Ihre Berechtigungen zurückgeben''' (z.B. die Administrator-Berechtigung). Bitte prüfen Sie die Berechtigungen, die Sie zurückgeben möchten.

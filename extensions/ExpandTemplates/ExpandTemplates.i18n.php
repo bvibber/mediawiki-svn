@@ -28,9 +28,11 @@ $wgExpandTemplatesMessages['ar'] = array(
 	'expand_templates_title'           => 'عنوان صفحة هذا النص، لأجل معالجة <nowiki>{{</nowiki>اسم_صفحة}} و..إلخ. :',
 	'expand_templates_input'           => 'النص المدخل (الأصلي)',
 	'expand_templates_output'          => 'النتيجة',
-	'expand_templates_ok'              => 'تنفيذ',
+	'expand_templates_ok'              => 'موافق',
 	'expand_templates_remove_comments' => 'إزالة التعليقات',
+	'expand_templates_preview'         => 'عرض',
 );
+
 $wgExpandTemplatesMessages['cs'] = array(
 	'expandtemplates'                  => 'Substituovat šablony',
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',

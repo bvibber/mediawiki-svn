@@ -18,9 +18,17 @@ $wgDesysopMessages['en'] = array(
 	'desysop'              => 'Desysop a user',
 	'not_sysop'            => 'This user is not an administrator',
 );
+/* Arabic (Meno25) */
 $wgDesysopMessages['ar'] = array(
+	'desysoptitle'         => 'اسحب الصلاحيات الإدارية من مستخدم',
+	'desysoptext'          => 'هذه الاستمارة يتم استخدامها بواسطة البيروقراطيين لسحب صلاحيات المستخدم الإدارية. اكتب اسم المستخدم في الصندوق و اضغط الزر لكي تسحب صلاحيات المستخدم الإدارية.',
+	'desysopname'          => 'اسم المستخدم:',
+	'desysopok'            => '<b>المستخدم "$1" تم عزله</b>',
 	'set_user_rights'      => 'اضبط صلاحيات مستخدم',
+	'user_rights_set'      => '<b>صلاحيات المستخدم ل "$1" تم تحديثها</b>',
 	'set_rights_fail'      => '<b>لم يتم ضبط الصلاحيات للمستخدم "$1". (هل أدخلت الاسم بصورة صحيحة?)</b>',
+	'desysop'              => 'عزل مستخدم',
+	'not_sysop'            => 'هذا المستخدم ليس إداريا',
 );
 $wgDesysopMessages['cs'] = array(
 	'desysoptitle'         => 'Odebrat uživateli práva správce',

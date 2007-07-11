@@ -12,6 +12,12 @@ $wgCrossNamespaceLinksMessages['en'] = array(
 	'crossnamespacelinks-summary' => 'This page provides a list of links from a page in the main namespace to a page in other namespaces (except for {{ns:special}}, {{ns:talk}}, {{ns:project}} and {{ns:template}} namespaces), which are not advisable to use.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|links}} to $3'
 );
+/* Arabic (Meno25) */
+$wgCrossNamespaceLinksMessages['ar'] = array(
+	'crossnamespacelinks'         => 'وصلات من نطاقات مختلفة',
+	'crossnamespacelinks-summary' => 'تعرض هذه الصفحة قائمة بالصفحات التي تقع في نطاق المقالات و تحتوي على روابط من نطاقات أخرى (ماعدا {{ns:special}} و {{ns:talk}}و {{ns:project}} و{{ns:template}})، والتي لا ينصح باستعمالها.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|وصلة|وصلات}} ل $3',
+);
 $wgCrossNamespaceLinksMessages['cs'] = array(
 	'crossnamespacelinks'     => 'Odkazy napříč jmennými prostory',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazů}} do $3'
