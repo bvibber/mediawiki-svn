@@ -25,7 +25,7 @@ function efLoadDeletedContribsMessages() {
 	}
 }
 
-$wgSpecialPages['DeletedContributions'] = array( 'SpecialPage', 'DeletedContributions', 'delete',
+$wgSpecialPages['DeletedContributions'] = array( 'SpecialPage', 'DeletedContributions', 'deletedhistory',
 		/*listed*/ true, /*function*/ false, /*file*/ false );
 
 
