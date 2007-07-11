@@ -45,6 +45,18 @@ $1\n
 Soek vir $3 $9 $10",
 );
 
+$wgLuceneSearchMessages['ar'] = array(
+	'searchsize'            => '$1 كيلوبايت ($2 كلمة)',
+	'searchdidyoumean'      => 'هل تقصد: "<a href="$1">$2</a>"?',
+	'lucenepowersearchtext' => 'ابحث في النطاقات:
+
+$1
+
+ابحث عن $3 $9',
+	'searchall'             => 'الكل',
+);
+
+
 $wgLuceneSearchMessages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
