@@ -355,7 +355,10 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("contents:\"うろ ろハ ハン\" title:\"うろ ろハ ハン\"^2.0 (alttitle1:\"うろ ろハ ハン\"^6.0 alttitle2:\"うろ ろハ ハン\"^6.0 alttitle3:\"うろ ろハ ハン\"^6.0)",q.toString());
 			
 			q = parser.parseFourPass("ナイロン100C other ャポン! ",NamespacePolicy.IGNORE,false);
-			assertEquals("(+contents:\"ナイ イロ ロン\" +(+contents:100 +contents:c) +contents:other +contents:\"ャホ ホン\") (+title:\"ナイ イロ ロン\"^2.0 +(+title:100^2.0 +title:c^2.0) +title:other^2.0 +title:\"ャホ ホン\"^2.0) ((+alttitle1:\"ナイ イロ ロン\"^6.0 +(+alttitle1:100^6.0 +alttitle1:c^6.0) +alttitle1:other^6.0 +alttitle1:\"ャホ ホン\"^6.0) (+alttitle2:\"ナイ イロ ロン\"^6.0 +(+alttitle2:100^6.0 +alttitle2:c^6.0) +alttitle2:other^6.0 +alttitle2:\"ャホ ホン\"^6.0) (+alttitle3:\"ナイ イロ ロン\"^6.0 +(+alttitle3:100^6.0 +alttitle3:c^6.0) +alttitle3:other^6.0 +alttitle3:\"ャホ ホン\"^6.0))",q.toString());			
+			assertEquals("(+contents:\"ナイ イロ ロン\" +(+contents:100 +contents:c) +contents:other +contents:\"ャホ ホン\") (+title:\"ナイ イロ ロン\"^2.0 +(+title:100^2.0 +title:c^2.0) +title:other^2.0 +title:\"ャホ ホン\"^2.0) ((+alttitle1:\"ナイ イロ ロン\"^6.0 +(+alttitle1:100^6.0 +alttitle1:c^6.0) +alttitle1:other^6.0 +alttitle1:\"ャホ ホン\"^6.0) (+alttitle2:\"ナイ イロ ロン\"^6.0 +(+alttitle2:100^6.0 +alttitle2:c^6.0) +alttitle2:other^6.0 +alttitle2:\"ャホ ホン\"^6.0) (+alttitle3:\"ナイ イロ ロン\"^6.0 +(+alttitle3:100^6.0 +alttitle3:c^6.0) +alttitle3:other^6.0 +alttitle3:\"ャホ ホン\"^6.0))",q.toString());
+			
+			q = parser.parseFourPass("\"うろパン\"",NamespacePolicy.IGNORE,false);
+			assertEquals("contents:\"うろ ろハ ハン\" title:\"うろ ろハ ハン\"^2.0 (alttitle1:\"うろ ろハ ハン\"^6.0 alttitle2:\"うろ ろハ ハン\"^6.0 alttitle3:\"うろ ろハ ハン\"^6.0)",q.toString());
 			
 			// Test field extraction
 			HashSet<NamespaceFilter> fs = parser.getFieldNamespaces("main:something [1]:else all:oh []:nja");

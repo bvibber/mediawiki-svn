@@ -1139,8 +1139,12 @@ public class WikiQueryParser {
 		boolean prevCJK = false;
 		int offset = 0;
 		boolean closeQuote = false;
+		boolean inQuotes = false;
 		for(int i=0;i<queryText.length();i++){
 			c = queryText.codePointAt(i);
+			if(c == '"') inQuotes = !inQuotes;
+			if(inQuotes)
+				continue;
 			if(CJKFilter.isCJKChar(c)){
 				if(!prevCJK){ // begin of CJK stream
 					if(i!=0)
