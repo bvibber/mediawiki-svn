@@ -14,18 +14,38 @@ require_once("ViewInformation.php");
  * The actual data is stored in Records, grouped together as RecordSets.
  * See Record.php and RecordSet.php for details.
  *
+ * OmegawikiAttributes2.php was running out of date already, so
+ * merging here.
+ *
  * TODO:
  * - The current model of a ton of hardcoded globals is highly inadequate
  * and should be replaced with a more abstract schema description. 
+ *	-replacing with a single associative array.
  * - Attribute names are in WikidataGlobals.php, but should really be 
  * localizable through MediaWiki's wfMsg() function.
+ * 	-this is step 2
  * - Records and RecordSets are currently capable of storing most (not all)
  * data, but can't actually commit them to the database again. To achieve
  * proper separation of architectural layers, the Records should learn
  * to talk directly with the DB layer.
- *
+ *	-this is what RecordHelpers are for.
  */
-function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
+
+function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
+	 global
+		$omegaWikiAttributes; // It would be even better if this was
+					// passed to objects explicitly
+					// but one step at a time...
+	$omegaWikiAttributes= new OmegaWikiAttributes($viewInformation); 
+	initializeOmegaWikiAttributesOld($viewInformation); //backward compatibility, will be removed.
+}
+
+
+/** 
+ * Original initializeOmegaWikiAttributes, Do not call.
+ * @deprecated use/update OmegaWikiAttributes->hardValues instead for now.
+ */
+function initializeOmegaWikiAttributesOld(ViewInformation $viewInformation) {
 	global
 		$languageAttribute, $spellingAttribute, $textAttribute, 
 		$wgLanguageAttributeName, $wgSpellingAttributeName, $wgTextAttributeName;
@@ -72,6 +92,8 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 		  $expressionIdAttribute,
 		  $languageAttribute
 	);
+
+	#	====== refactored up to this point, do not make changes above this line ==== 
 	$definedMeaningCompleteDefiningExpressionAttribute=new Attribute(null, "Defining expression", $definedMeaningCompleteDefiningExpressionStructure);
 
 
@@ -331,5 +353,88 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation) {
 			$annotatedAttribute->type->addAttribute($attribute);
 	}
 }
+
+
+class OmegaWikiAttributes {
+	protected $attributes = array();
+
+	function __construct(ViewInformation $viewInformation) {
+		$this->hardValues($viewInformation);
+	}
+
+	/** Hardcoded schema for now. Later refactor to load from file or DB 
+	 * 
+	 * Naming: keys are previous name minus -"Attribute"
+	 * 	(-"Structure" is retained, -"Attributes" is retained)
+	*/
+	private function hardValues($viewInformation) {
+	
+		$a=&$this->attributes; # <- wrist/RSI protection 
+		$t=$this; #<-idem
+	
+		global
+			$wgLanguageAttributeName, $wgSpellingAttributeName, $wgTextAttributeName;
+	
+		$t->language = new Attribute("language", $wgLanguageAttributeName, "language");
+		$t->spelling = new Attribute("spelling", $wgSpellingAttributeName, "spelling");
+		$t->text= new Attribute("text", $wgTextAttributeName, "text");
+
+		/*	
+		$a->definedMeaningAttributes = new Attribute("defined-meaning-attributes", $wgDefinedMeaningAttributesAttributeName, "will-be-specified-below");
+		$a["objectAttributes"] = new Attribute("object-attributes", $wgAnnotationAttributeName, "will-be-specified-below");
+
+		# TODO replace with i18n
+		global
+			$expressionIdAttribute, $identicalMeaningAttribute;
+			
+		$a["expressionId"] = new Attribute("expression-id", "Expression Id", "expression-id");
+		$a["identicalMeaning"] = new Attribute("indentical-meaning", $wgIdenticalMeaningAttributeName, "boolean");
+		
+		#TODO replace with i18n
+		global
+			 $wgExpressionAttributeName;
+		
+		if ($viewInformation->filterOnLanguage()) 
+			$a["expression"] = new Attribute("expression", $wgSpellingAttributeName, "spelling");
+		else {
+			$a["expressionStructure"] = new Structure("expression", $this->language, $this->spelling);
+			$a["expression"] = new Attribute(null, $wgExpressionAttributeName, $expressionStructure);
+		}
+		
+		global
+			$definedMeaningIdAttribute, $definedMeaningDefiningExpressionAttribute,
+			$definedMeaningCompleteDefiningExpressionStructure,
+			$definedMeaningCompleteDefiningExpressionAttribute;
+		
+		$a["definedMeaningId"] = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
+		$a["definedMeaningDefiningExpression"] = new Attribute("defined-meaning-defining-expression", "Defined meaning defining expression", "short-text");
+
+		$a["definedMeaningCompleteDefiningExpressionStructure"] = 
+		new Structure("defined-meaning-full-defining-expression",
+			  $definedMeaningDefiningExpressionAttribute,
+			  $expressionIdAttribute,
+			  $
+		);
+		$a["definedMeaningCompleteDefiningExpression"]=new Attribute(null, "Defining expression", $definedMeaningCompleteDefiningExpressionStructure);
+		);
+		*/
+	}
+
+
+	protected function __set($key,$value) {
+		$attributes=&$this->attributes;
+		$attributes[$key]=$value;
+		
+	}
+	
+	public function __get($key) {
+		$attributes=&$this->attributes;
+		if (!array_key_exists($key, $attributes)) {
+			throw new Exception("Key does not exist");
+		}
+		return $attributes[$key];
+	}	
+}
+
 
 

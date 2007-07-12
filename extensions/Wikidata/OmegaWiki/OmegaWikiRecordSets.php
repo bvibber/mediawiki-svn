@@ -229,7 +229,7 @@ function expandTranslatedContentsInRecordSet(RecordSet $recordSet, Attribute $id
 
 function getExpressionReferenceRecords($expressionIds) {
 	global
-		$expressionStructure, $languageAttribute, $spellingAttribute;
+		$expressionStructure;
 	
 	$dc=wdGetDataSetContext();
 
@@ -246,8 +246,8 @@ function getExpressionReferenceRecords($expressionIds) {
 	
 		while ($row = $dbr->fetchObject($queryResult)) {
 			$record = new ArrayRecord($expressionStructure);
-			$record->setAttributeValue($languageAttribute, $row->language_id);
-			$record->setAttributeValue($spellingAttribute, $row->spelling);
+			$record->language = $row->language_id;
+			$record->spelling = $row->spelling;
 			
 			$result[$row->expression_id] = $record;
 		}
@@ -396,7 +396,7 @@ function getExpressionMeaningsRecord($expressionId, ViewInformation $viewInforma
 
 function getExpressionsRecordSet($spelling, ViewInformation $viewInformation) {
 	global
-		$expressionIdAttribute, $expressionAttribute, $languageAttribute, $expressionMeaningsAttribute, $expressionsStructure;
+		$omegaWikiAttributes, $expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute, $expressionsStructure;
 
 	$dc=wdGetDataSetContext();
 
@@ -418,11 +418,11 @@ function getExpressionsRecordSet($spelling, ViewInformation $viewInformation) {
 	);
 	
 	$result = new ArrayRecordSet($expressionsStructure, new Structure("expression-id", $expressionIdAttribute));
-	$languageStructure = new Structure("language", $languageAttribute);
+	$languageStructure = new Structure("language", $omegaWikiAttributes->language);
 
 	while($expression = $dbr->fetchObject($queryResult)) {
 		$expressionRecord = new ArrayRecord($languageStructure);
-		$expressionRecord->setAttributeValue($languageAttribute, $expression->language_id);
+		$expressionRecord->language = $expression->language_id;
 
 		$result->addRecord(array(
 			$expression->expression_id, 
@@ -656,37 +656,41 @@ function getTranslatedContentValue($translatedContentId, ViewInformation $viewIn
 
 function getTranslatedContentRecordSet($translatedContentId, ViewInformation $viewInformation) {
 	global
-		$translatedContentTable, $languageAttribute, $textAttribute,
-		$translatedTextStructure;
+		$translatedContentTable,
+		$translatedTextStructure, $omegaWikiAttributes;
+
+	$o=$omegaWikiAttributes;
 
 	$recordSet = queryRecordSet(
 		$translatedTextStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
-		$languageAttribute,
+		$o->language,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('language_id'), $languageAttribute), 
-			new TableColumnsToAttribute(array('text_id'), $textAttribute)
+			new TableColumnsToAttribute(array('language_id'), $o->language), 
+			new TableColumnsToAttribute(array('text_id'), $o->text)
 		),
 		$translatedContentTable,
 		array("translated_content_id=$translatedContentId")
 	);
 	
-	expandTextReferencesInRecordSet($recordSet, array($textAttribute));
+	expandTextReferencesInRecordSet($recordSet, array($o->text));
 	
 	return $recordSet;
 } 
 
 function getFilteredTranslatedContentRecordSet($translatedContentId, ViewInformation $viewInformation) {
 	global
-		$translatedContentTable, $languageAttribute, $textAttribute;
+		$translatedContentTable, $omegaWikiAttributes ;
+	
+	$o=$omegaWikiAttributes;
 
 	$recordSet = queryRecordSet(
 		null,
 		$viewInformation->queryTransactionInformation,
-		$languageAttribute,
+		$o->language,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('language_id'), $languageAttribute), 
-			new TableColumnsToAttribute(array('text_id'), $textAttribute)
+			new TableColumnsToAttribute(array('language_id'), $o->language), 
+			new TableColumnsToAttribute(array('text_id'), $o->text)
 		),
 		$translatedContentTable,
 		array(
@@ -1061,8 +1065,9 @@ function getTranslatedTextAttributeValuesRecordSet(array $objectIds, ViewInforma
 
 function getOptionAttributeOptionsRecordSet($attributeId, ViewInformation $viewInformation) {
 	global
-		$optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $languageAttribute, $optionAttributeOptionsTable;
+		$optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $omegaWikiAttributes, $optionAttributeOptionsTable;
 
+	$o=$omegaWikiAttributes;
 	$recordSet = queryRecordSet(
 		null,
 		$viewInformation->queryTransactionInformation,
@@ -1071,7 +1076,7 @@ function getOptionAttributeOptionsRecordSet($attributeId, ViewInformation $viewI
 			new TableColumnsToAttribute(array('option_id'), $optionAttributeOptionIdAttribute),
 			new TableColumnsToAttribute(array('attribute_id'), $optionAttributeAttribute),
 			new TableColumnsToAttribute(array('option_mid'), $optionAttributeOptionAttribute),
-			new TableColumnsToAttribute(array('language_id'), $languageAttribute)
+			new TableColumnsToAttribute(array('language_id'), $o->language)
 		),
 		$optionAttributeOptionsTable,
 		array('attribute_id = ' . $attributeId)
@@ -1178,13 +1183,15 @@ function getDefiningExpressionRecord($definedMeaningId) {
 			$definedMeaningCompleteDefiningExpressionAttribute,
 			$definedMeaningDefiningExpressionAttribute,
 			$expressionIdAttribute,
-		  	$languageAttribute;	
+		  	$omegaWikiAttributes;
+
+		$o=$omegaWikiAttributes;	
 
 		$definingExpression=definingExpressionRow($definedMeaningId);
 		$definingExpressionRecord = new ArrayRecord($definedMeaningCompleteDefiningExpressionAttribute->type);
 		$definingExpressionRecord->setAttributeValue($expressionIdAttribute, $definingExpression[0]);
 		$definingExpressionRecord->setAttributeValue($definedMeaningDefiningExpressionAttribute, $definingExpression[1]);
-		$definingExpressionRecord->setAttributeValue($languageAttribute, $definingExpression[2]);
+		$definingExpressionRecord->setAttributeValue($o->language, $definingExpression[2]);
 		return $definingExpressionRecord;
 
 }

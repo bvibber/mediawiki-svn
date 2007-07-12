@@ -43,10 +43,10 @@ class SimplePermissionController implements PermissionController {
 class DefinedMeaningDefinitionController implements UpdateController {
 	public function add($keyPath, $record) {
 		global
-			$definedMeaningIdAttribute, $languageAttribute, $textAttribute;
+			$definedMeaningIdAttribute;
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$languageId = $record->getAttributeValue($languageAttribute);
-		$text = $record->getAttributeValue($textAttribute);
+		$languageId = $record->language;
+		$text = $record->text;
 
 		if ($languageId != 0 && $text != "")
 			addDefinedMeaningDefinition($definedMeaningId, $languageId, $text);
@@ -54,20 +54,20 @@ class DefinedMeaningDefinitionController implements UpdateController {
 
 	public function remove($keyPath) {
 		global
-			$definedMeaningIdAttribute, $languageAttribute;
+			$definedMeaningIdAttribute;
 
 		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
+		$languageId = $keyPath->peek(0)->language;
 		removeDefinedMeaningDefinition($definedMeaningId, $languageId);
 	}
 
 	public function update($keyPath, $record) {
 		global
-			$definedMeaningIdAttribute, $languageAttribute, $textAttribute;
+			$definedMeaningIdAttribute;
 
 		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
-		$text = $record->getAttributeValue($textAttribute);
+		$languageId = $keyPath->peek(0)->language;
+		$text = $record->text;
 
 		if ($text != "")
 			updateDefinedMeaningDefinition($definedMeaningId, $languageId, $text);
@@ -101,7 +101,7 @@ class DefinedMeaningAlternativeDefinitionsController implements UpdateController
 	
 	public function add($keyPath, $record)  {
 		global
-			$definedMeaningIdAttribute, $alternativeDefinitionAttribute, $languageAttribute, $textAttribute,
+			$definedMeaningIdAttribute, $alternativeDefinitionAttribute,
 			$sourceAttribute;
 
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
@@ -112,8 +112,8 @@ class DefinedMeaningAlternativeDefinitionsController implements UpdateController
 			if ($alternativeDefinition->getRecordCount() > 0) {
 				$definitionRecord = $alternativeDefinition->getRecord(0);
 	
-				$languageId = $definitionRecord->getAttributeValue($languageAttribute);
-				$text = $definitionRecord->getAttributeValue($textAttribute);
+				$languageId = $definitionRecord->language;
+				$text = $definitionRecord->text;
 	
 				if ($languageId != 0 && $text != '')
 					addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $text, $sourceId);
@@ -139,11 +139,11 @@ class DefinedMeaningAlternativeDefinitionsController implements UpdateController
 class DefinedMeaningAlternativeDefinitionController implements UpdateController {
 	public function add($keyPath, $record) {
 		global
-			$expressionIdAttribute, $definitionIdAttribute, $languageAttribute, $textAttribute;
+			$expressionIdAttribute, $definitionIdAttribute ;
 
 		$definitionId = $keyPath->peek(0)->getAttributeValue($definitionIdAttribute);
-		$languageId = $record->getAttributeValue($languageAttribute);
-		$text = $record->getAttributeValue($textAttribute);
+		$languageId = $record->language;
+		$text = $record->text;
 
 		if ($languageId != 0 && $text != "")
 			addTranslatedTextIfNotPresent($definitionId, $languageId, $text);
@@ -151,21 +151,21 @@ class DefinedMeaningAlternativeDefinitionController implements UpdateController 
 
 	public function remove($keyPath) {
 		global
-			$definitionIdAttribute, $languageAttribute;
+			$definitionIdAttribute;
 
 		$definitionId = $keyPath->peek(1)->getAttributeValue($definitionIdAttribute);
-		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
+		$languageId = $keyPath->peek(0)->$language;
 
 		removeTranslatedText($definitionId, $languageId);
 	}
 
 	public function update($keyPath, $record) {
 		global
-			$definitionIdAttribute, $languageAttribute, $textAttribute;
+			$definitionIdAttribute;
 
 		$definitionId = $keyPath->peek(1)->getAttributeValue($definitionIdAttribute);
-		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
-		$text = $record->getAttributeValue($textAttribute);
+		$languageId = $keyPath->peek(0)->language;
+		$text = $record->text;
 
 		if ($text != "")
 			updateTranslatedText($definitionId, $languageId, $text);
@@ -181,7 +181,7 @@ class DefinedMeaningFilteredAlternativeDefinitionController implements UpdateAtt
 	
 	public function update($keyPath, $value) {
 		global
-			$definitionIdAttribute, $languageAttribute, $textAttribute;
+			$definitionIdAttribute;
 
 		$definitionId = $keyPath->peek(0)->getAttributeValue($definitionIdAttribute);
 
@@ -199,13 +199,13 @@ class SynonymTranslationController implements UpdateController {
 	
 	public function add($keyPath, $record) {
 		global
-			$definedMeaningIdAttribute, $expressionAttribute, $languageAttribute, $spellingAttribute, $identicalMeaningAttribute;
+			$definedMeaningIdAttribute, $expressionAttribute, $spellingAttribute, $identicalMeaningAttribute;
 
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$expressionValue = $record->getAttributeValue($expressionAttribute);
 		
 		if ($this->filterLanguageId == 0) {
-			$languageId = $expressionValue->getAttributeValue($languageAttribute);
+			$languageId = $expressionValue->$language;
 			$spelling = $expressionValue->getAttributeValue($spellingAttribute);
 		}
 		else {
@@ -398,7 +398,7 @@ class ExpressionMeaningController implements UpdateController {
 
 	public function add($keyPath, $record) {
 		global
-			$expressionIdAttribute, $definedMeaningAttribute, $definitionAttribute, $translatedTextAttribute, $languageAttribute, $textAttribute;
+			$expressionIdAttribute, $definedMeaningAttribute, $definitionAttribute, $translatedTextAttribute;
 
 		$definition = $record->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
 		$translatedContent = $definition->getAttributeValue($translatedTextAttribute);
@@ -408,8 +408,8 @@ class ExpressionMeaningController implements UpdateController {
 			if ($translatedContent->getRecordCount() > 0) {
 				$definitionRecord = $translatedContent->getRecord(0);
 	
-				$text = $definitionRecord->getAttributeValue($textAttribute);
-				$languageId = $definitionRecord->getAttributeValue($languageAttribute);
+				$text = $definitionRecord->text;
+				$languageId = $definitionRecord->language;
 	
 				if ($languageId != 0 && $text != "")  
 					createNewDefinedMeaning($expressionId, $languageId, $text);
@@ -439,10 +439,10 @@ class ExpressionController implements UpdateController {
 		global
 			$expressionAttribute, $expressionMeaningsAttribute, $expressionExactMeaningsAttribute, 
 			$definedMeaningAttribute, $definitionAttribute, 
-			$languageAttribute, $textAttribute, $translatedTextAttribute;
+			$translatedTextAttribute;
 
 		if ($this->filterLanguageId == 0)
-			$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->getAttributeValue($languageAttribute);
+			$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->languageAttribute;
 		else
 			$expressionLanguageId = $this->filterLanguageId; 
 				
@@ -458,8 +458,8 @@ class ExpressionController implements UpdateController {
 				if ($translatedContent->getRecordCount() > 0) {
 					$definitionRecord = $translatedContent->getRecord(0);
 	
-					$text = $definitionRecord->getAttributeValue($textAttribute);
-					$languageId = $definitionRecord->getAttributeValue($languageAttribute);
+					$text = $definitionRecord->text;
+					$languageId = $definitionRecord->language;
 	
 					if ($languageId != 0 && $text != "") {
 						$expression = findOrCreateExpression($this->spelling, $expressionLanguageId);
@@ -492,10 +492,10 @@ abstract class ObjectAttributeValuesController implements UpdateController {
 class TextAttributeValuesController extends ObjectAttributeValuesController {
 	public function add($keyPath, $record)  {
 		global
-			$textAttribute, $textAttributeAttribute;
+			$textAttributeAttribute;
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
 		$textAttributeId = $record->getAttributeValue($textAttributeAttribute);
-		$text = $record->getAttributeValue($textAttribute);
+		$text = $record->text;
 		if ($textAttributeId != 0 && $text != '')		
 			addTextAttributeValue($objectId, $textAttributeId, $text);
 	}
@@ -512,7 +512,7 @@ class TextAttributeValuesController extends ObjectAttributeValuesController {
 			$textAttributeIdAttribute, $textAttribute;
 			
 		$textId = $keyPath->peek(0)->getAttributeValue($textAttributeIdAttribute);
-		$text = $record->getAttributeValue($textAttribute);		
+		$text = $record->text;
 		
 		updateTextAttributeValue($text, $textId);
 	}
@@ -566,8 +566,8 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 	
 	public function add($keyPath, $record)  {
 		global
-			$translatedTextValueAttribute, $languageAttribute,
-			$textAttribute, $translatedTextAttributeAttribute;
+			$translatedTextValueAttribute,
+			$translatedTextAttributeAttribute;
 
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
 		$textValue = $record->getAttributeValue($translatedTextValueAttribute);
@@ -578,8 +578,8 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 				if ($textValue->getRecordCount() > 0) {
 					$textValueRecord = $textValue->getRecord(0);
 		
-					$languageId = $textValueRecord->getAttributeValue($languageAttribute);
-					$text = $textValueRecord->getAttributeValue($textAttribute);
+					$languageId = $textValueRecord->languageAttribute;
+					$text = $textValueRecord->textAttribute;
 					
 					if ($languageId != 0 && $text != '')
 						addTranslatedTextAttributeValue($objectId, $textAttributeId, $languageId, $text);
@@ -605,11 +605,11 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 class TranslatedTextAttributeValueController implements UpdateController {
 	public function add($keyPath, $record) {
 		global
-			$translatedTextAttributeIdAttribute, $languageAttribute, $textAttribute;
+			$translatedTextAttributeIdAttribute;
 
 		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
-		$languageId = $record->getAttributeValue($languageAttribute);
-		$text = $record->getAttributeValue($textAttribute);
+		$languageId = $record->language;
+		$text = $record->text;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
 		if ($languageId != 0 && $text != "")
@@ -618,10 +618,10 @@ class TranslatedTextAttributeValueController implements UpdateController {
 
 	public function remove($keyPath) {
 		global
-			$translatedTextAttributeIdAttribute, $languageAttribute;
+			$translatedTextAttributeIdAttribute;
 
 		$valueId = $keyPath->peek(1)->getAttributeValue($translatedTextAttributeIdAttribute);
-		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
+		$languageId = $keyPath->peek(0)->language;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
 		removeTranslatedText($translatedTextAttribute->value_tcid, $languageId);
@@ -629,11 +629,11 @@ class TranslatedTextAttributeValueController implements UpdateController {
 
 	public function update($keyPath, $record) {
 		global
-			$translatedTextAttributeIdAttribute, $languageAttribute, $textAttribute;
+			$translatedTextAttributeIdAttribute;
 
 		$valueId = $keyPath->peek(1)->getAttributeValue($translatedTextAttributeIdAttribute);
-		$languageId = $keyPath->peek(0)->getAttributeValue($languageAttribute);
-		$text = $record->getAttributeValue($textAttribute);
+		$languageId = $keyPath->peek(0)->language;
+		$text = $record->text;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
 		if ($text != "")
@@ -650,7 +650,7 @@ class FilteredTranslatedTextAttributeValueController implements UpdateAttributeC
 	
 	public function update($keyPath, $value) {
 		global
-			$translatedTextAttributeIdAttribute, $languageAttribute, $textAttribute;
+			$translatedTextAttributeIdAttribute ;
 
 		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
@@ -686,11 +686,11 @@ class OptionAttributeValuesController extends ObjectAttributeValuesController {
 class OptionAttributeOptionsController implements UpdateController {
 	public function add($keyPath, $record) {
 		global
-			$classAttributeIdAttribute, $optionAttributeOptionAttribute, $languageAttribute;
+			$classAttributeIdAttribute, $optionAttributeOptionAttribute;
 
 		$attributeId = $keyPath->peek(0)->getAttributeValue($classAttributeIdAttribute);
 		$optionMeaningId = $record->getAttributeValue($optionAttributeOptionAttribute);
-		$languageId = $record->getAttributeValue($languageAttribute);
+		$languageId = $record->language;
 
 		if ($optionMeaningId)
 			addOptionAttributeOption($attributeId, $optionMeaningId, $languageId);

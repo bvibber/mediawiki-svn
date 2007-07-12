@@ -2,6 +2,7 @@
 
 require_once('Attribute.php');
 require_once('RecordHelper.php');
+require_once('OmegaWikiAttributes.php'); 
 
 interface Record {
 	public function getStructure();
@@ -13,7 +14,8 @@ class ArrayRecord implements Record {
 	protected $structure;
 	protected $values = array();
 	protected $helper=null;
-	
+	#possibly associate an OmegaWikiAttributes instance (singleton?) here	
+
 	public function __construct(Structure $structure) {
 		$this->structure = $structure;
 		$this->helper=RecordHelperFactory::getRecordHelper($this);		
@@ -28,11 +30,30 @@ class ArrayRecord implements Record {
 		return @$this->values[$attribute->id];
 	}
 	
+
+	/**
+	 * Look up the correct attribute using omegaWikiAttributes
+	 * and return its value
+ 	 */
+	public function __get($attribute_name){
+		global $omegaWikiAttributes;
+		return $this->getAttributeValue($omegaWikiAttributes->$attribute_name);
+	}
+		
+	/**
+	 * Look up the correct attribute using omegaWikiAttributes
+	 * and set its value
+ 	 */
+	public function __set($attribute_name, $value){
+		global $omegaWikiAttributes;
+		return $this->setAttributeValue ($omegaWikiAttributes->$attribute_name, $value);
+	}
 	/** 
 	 * Obtains a value based on the provided key.
 	 * In future, this should check against an attributes global with string
 	 * lookup, and might even be smart.
 	 * For now, this just does a direct lookup.
+	 * @deprecated use __get and __set instead
 	 */
 	public function getValue ($key) {
 		return @$this->values[$key];	
@@ -86,6 +107,7 @@ class ArrayRecord implements Record {
 			$rv=$comma;
 			$repr="$key:$value";
 			#Duck typing (should refactor this to a has_attr() function);
+			# ( might be replacable by    property_exists() in php 5.1+  )
 			$methods=get_class_methods(get_class($value));
 			if (!is_null($methods)) {
 				if (in_array("tostring_indent",$methods)) {
