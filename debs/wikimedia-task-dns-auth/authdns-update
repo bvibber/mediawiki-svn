@@ -15,6 +15,8 @@ POWERDNSDIR=/etc/powerdns
 SCRIPTDIR=/usr/lib/wikimedia-task-dns-auth/bin
 LANGLIST=$POWERDNSDIR/langlist
 LANGLISTSOURCE=""
+DBLIST=$POWERDNSDIR/all.dblist
+DBLISTSOURCE=""
 
 PATH=/bin:/usr/bin:/usr/local/bin
 
@@ -54,6 +56,22 @@ rsync -t $LANGLISTSOURCE $LANGLIST || true
 echo "Generating language subdomains CNAME file from $LANGLIST"
 [ $LANGLIST -nt $POWERDNSDIR/langlist-cnames ] && < $LANGLIST awk '{ print $1"\t\t\t1H\tIN CNAME\trr.wikimedia.org."; print"www."$1"\t\t\t1H\tIN CNAME\trr.wikimedia.org." }' > $POWERDNSDIR/langlist-cnames
 
+echo "Syncing all.dblist"
+rsync -t $DBLISTSOURCE $DBLIST || true
+echo "Generating wiki toolserver CNAMEs from $DBLIST"
+(
+while read line; do 
+	line=`echo $line | tr _ -`
+	if echo $line | egrep -q '^(bgwiki|bgwiktionary|commonswiki|cswiki|dewiki|enwikiquote|enwiktionary|eowiki|fiwiki|idwiki|itwiki|nlwiki|nowiki|plwiki|ptwiki|svwiki|thwiki|trwiki|zhwiki)$'; then
+		echo "$line-p 1H IN CNAME sql-s2.ts.wikimedia.org."
+	elif [ $line = enwiki ]; then 
+		echo "$line-p 1H IN CNAME sql-s1.ts.wikimedia.org." 
+	else 
+		echo "$line-p 1H IN CNAME sql-s3.ts.wikimedia.org."
+	fi; 
+done
+) < $DBLIST > $POWERDNSDIR/dblist-cnames
+
 # Generate the zonefiles from the templates
 echo "Generating zonefiles from zone templates"
 $SCRIPTDIR/gen-zones
@@ -81,7 +99,7 @@ for slave in $NAMESERVERS; do
     done
  
     echo "Updating $slave..."
-    rsync -e ssh --delete -av $POWERDNSDIR/langlist-cnames $POWERDNSDIR/templates $POWERDNSDIR/scenarios $POWERDNSDIR/geomaps $slave:$POWERDNSDIR/
+    rsync -e ssh --delete -av $POWERDNSDIR/dblist-cnames $POWERDNSDIR/langlist-cnames $POWERDNSDIR/templates $POWERDNSDIR/scenarios $POWERDNSDIR/geomaps $slave:$POWERDNSDIR/
     ssh $slave "$SCRIPTDIR/gen-zones && $SCRIPTDIR/gen-bind.conf && pdns_control reload && pdns_control rediscover"
 done
 
