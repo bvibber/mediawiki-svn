@@ -23,7 +23,7 @@ class TableHeaderNode {
 	public $childNodes = array();
 }
 
-function getTableHeaderNode($structure, &$currentColumn=0) {
+function getTableHeaderNode(Structure $structure, &$currentColumn=0) {
 	$tableHeaderNode = new TableHeaderNode();
 	
 	foreach($structure->getAttributes() as $attribute) {
@@ -50,7 +50,7 @@ function getTableHeaderNode($structure, &$currentColumn=0) {
 	return $tableHeaderNode;
 }
 
-function addChildNodesToRows($headerNode, &$rows, $currentDepth, $columnOffset, $idPath, $leftmost=True) {
+function addChildNodesToRows(TableHeaderNode $headerNode, &$rows, $currentDepth, $columnOffset, IdStack $idPath, $leftmost=True) {
 	$height = $headerNode->height;
 	foreach($headerNode->childNodes as $childNode) {
 		$attribute = $childNode->attribute;
@@ -91,7 +91,7 @@ function addChildNodesToRows($headerNode, &$rows, $currentDepth, $columnOffset, 
 	} 
 }
 
-function getStructureAsTableHeaderRows($structure, $columnOffset, $idPath) {
+function getStructureAsTableHeaderRows(Structure $structure, $columnOffset, IdStack $idPath) {
 	$rootNode = getTableHeaderNode($structure);
 	$result = array();
 	
@@ -103,18 +103,21 @@ function getStructureAsTableHeaderRows($structure, $columnOffset, $idPath) {
 	return $result;
 }
 
-function getHTMLClassForType($type,$attribute) {
+function getHTMLClassForType($type, Attribute $attribute) {
 	if ($type instanceof Structure) 
 		return $attribute->id;
 	else 
 		return $type;
 }
 
-function getRecordAsTableCells($idPath, $editor, $visibleColumnEditors, $record, &$startColumn = 0) {
+function getRecordAsTableCells(IdStack $idPath, Editor $editor, Structure $visibleStructure, Record $record, &$startColumn = 0) {
 	$result = '';
+	$childEditorMap = $editor->getAttributeEditorMap();
 	
-	foreach ($editor->getEditors() as $childEditor) {
-		if (in_array($childEditor, $visibleColumnEditors, true)) { 
+	foreach ($visibleStructure->getAttributes() as $visibleAttribute) {
+		$childEditor = $childEditorMap->getEditorForAttribute($visibleAttribute);
+		
+		if ($childEditor != null) {
 			$attribute = $childEditor->getAttribute();
 			$type = $attribute->type;
 			$value = $record->getAttributeValue($attribute);
@@ -122,7 +125,7 @@ function getRecordAsTableCells($idPath, $editor, $visibleColumnEditors, $record,
 			$attributeId = $idPath->getId();
 			
 			if ($childEditor instanceof RecordTableCellEditor) 
-				$result .= getRecordAsTableCells($idPath, $childEditor, $visibleColumnEditors, $value, $startColumn);	
+				$result .= getRecordAsTableCells($idPath, $childEditor, $visibleAttribute->type, $value, $startColumn);	
 			else {
 				$displayValue = $childEditor->showsData($value) ? $childEditor->view($idPath, $value) : "";
 				$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
@@ -131,12 +134,14 @@ function getRecordAsTableCells($idPath, $editor, $visibleColumnEditors, $record,
 			
 			$idPath->popAttribute();
 		}
+		else
+			$result .= '<td/>';
 	}
 	
 	return $result;
 }
 
-function getRecordAsEditTableCells($record, $idPath, $editor, &$startColumn = 0) {
+function getRecordAsEditTableCells(Record $record, IdStack $idPath, Editor $editor, &$startColumn = 0) {
 	$result = '';
 	
 	foreach($editor->getEditors() as $childEditor) {
@@ -164,7 +169,7 @@ function getRecordAsEditTableCells($record, $idPath, $editor, &$startColumn = 0)
 	return $result;
 }
 
-function getStructureAsAddCells($idPath, $editor, &$startColumn = 0) {
+function getStructureAsAddCells(IdStack $idPath, Editor $editor, &$startColumn = 0) {
 	$result = '';
 	
 	foreach($editor->getEditors() as $childEditor) {

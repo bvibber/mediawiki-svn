@@ -659,21 +659,19 @@ function getTranslatedContentRecordSet($translatedContentId, ViewInformation $vi
 		$translatedContentTable,
 		$translatedTextStructure, $omegaWikiAttributes;
 
-	$o=$omegaWikiAttributes;
-
 	$recordSet = queryRecordSet(
 		$translatedTextStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
-		$o->language,
+		$omegaWikiAttributes->language,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('language_id'), $o->language), 
-			new TableColumnsToAttribute(array('text_id'), $o->text)
+			new TableColumnsToAttribute(array('language_id'), $omegaWikiAttributes->language), 
+			new TableColumnsToAttribute(array('text_id'), $omegaWikiAttributes->text)
 		),
 		$translatedContentTable,
 		array("translated_content_id=$translatedContentId")
 	);
 	
-	expandTextReferencesInRecordSet($recordSet, array($o->text));
+	expandTextReferencesInRecordSet($recordSet, array($omegaWikiAttributes->text));
 	
 	return $recordSet;
 } 
@@ -682,15 +680,13 @@ function getFilteredTranslatedContentRecordSet($translatedContentId, ViewInforma
 	global
 		$translatedContentTable, $omegaWikiAttributes ;
 	
-	$o=$omegaWikiAttributes;
-
 	$recordSet = queryRecordSet(
 		null,
 		$viewInformation->queryTransactionInformation,
 		$o->language,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('language_id'), $o->language), 
-			new TableColumnsToAttribute(array('text_id'), $o->text)
+			new TableColumnsToAttribute(array('language_id'), $omegaWikiAttributes->language), 
+			new TableColumnsToAttribute(array('text_id'), $omegaWikiAttributes->text)
 		),
 		$translatedContentTable,
 		array(
@@ -699,7 +695,7 @@ function getFilteredTranslatedContentRecordSet($translatedContentId, ViewInforma
 		)
 	);
 	
-	expandTextReferencesInRecordSet($recordSet, array($textAttribute));
+	expandTextReferencesInRecordSet($recordSet, array($omegaWikiAttributes->textAttribute));
 	
 	return $recordSet;
 }

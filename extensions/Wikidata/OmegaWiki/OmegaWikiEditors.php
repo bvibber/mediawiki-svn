@@ -8,6 +8,165 @@ require_once('WikiDataGlobals.php');
 require_once('GotoSourceTemplate.php');
 require_once('ViewInformation.php');
 
+class ObjectAttributeValuesEditor extends WrappingEditor {
+	protected $recordSetTableEditor;
+	protected $propertyAttribute;
+	protected $valueAttribute;
+	protected $suffixAttributes;
+	
+	public function __construct(Attribute $attribute, ViewInformation $viewInformation) {
+		parent::__construct(new RecordUnorderedListEditor($attribute, 5));
+		
+		$this->recordSetTableEditor = new RecordSetTableEditor(
+			$attribute, 
+			new SimplePermissionController(false), 
+			new ShowEditFieldChecker(true), 
+			new AllowAddController(false), 
+			false, 
+			false, 
+			null
+		);
+		
+		$this->propertyAttribute = new Attribute("property", "Property", "short-text");
+		$this->valueAttribute = new Attribute("value", "Value", "short-text");
+		
+		$this->suffixAttributes = array();
+		
+//		foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter)
+//			$this->suffixAttributes[] = $propertyToColumnFilter->getAttribute();
+			
+		global	
+			$wgRequest, $objectAttributesAttribute, $recordLifeSpanAttribute;
+			
+//		$this->suffixAttributes[] = $objectAttributesAttribute;
+		
+		if ($wgRequest->getText('action') == 'history' && $viewInformation->showRecordLifeSpan) 
+			$this->suffixAttributes[] = $recordLifeSpanAttribute;
+	}
+	
+	protected function attributeInStructure(Attribute $attribute, Structure $structure) {
+		$result = false;
+		$attributes = $structure->getAttributes();
+		$i = 0;
+		
+		while (!$result && $i < count($attributes)) {
+			$result = $attribute->id == $attributes[$i]->id;
+			$i++; 
+		}
+			
+		
+		return $result;
+	}
+	
+	protected function attributeInStructures(Attribute $attribute, array &$structures) {
+		$result = false;
+		$i = 0;
+		
+		while (!$result && $i < count($structures)) {
+			$result = $this->attributeInStructure($attribute, $structures[$i]);
+			$i++;
+		}
+		
+		return $result;
+	}
+	
+	protected function getSubStructureForAttribute(Structure $structure, Attribute $attribute) {
+		$attributes = $structure->getAttributes();
+		$result = null;
+		$i = 0;
+		
+		while ($result == null && $i < count($attributes)) 
+			if ($attribute->id == $attributes[$i]->id)
+				$result = $attributes[$i]->type;
+			else
+				$i++;	
+		
+		return $result;
+	}
+	
+	protected function filterStructuresOnAttribute(array &$structures, Attribute $attribute) {
+		$result = array();
+		
+		foreach ($structures as $structure) {
+			$subStructure = $this->getSubStructureForAttribute($structure, $attribute);
+			
+			if ($subStructure != null)
+				$result[] = $subStructure;
+		}
+		
+		return $result;
+	}
+	
+	protected function filterAttributesByStructures(array &$attributes, array &$structures) {
+		$result = array();
+
+		foreach ($attributes as $attribute) { 
+			if ($attribute->type instanceof Structure) {
+				$filteredAttributes = $this->filterAttributesByStructures(
+					$attribute->type->getAttributes(),
+					$this->filterStructuresOnAttribute($structures, $attribute) 
+				);
+				
+				if (count($filteredAttributes) > 0)
+					$result[] = new Attribute($attribute->id, $attribute->name, new Structure($filteredAttributes));
+			}
+			else if ($this->attributeInStructures($attribute, $structures))
+				$result[] = $attribute;
+		}
+		
+		return $result;
+	}
+	
+	public function determineVisibleSuffixAttributes($value) {
+		$visibleStructures = array();
+		
+		foreach ($this->getEditors() as $editor) 
+			$visibleStructures[] = $editor->getTableStructureForView($value->getAttributeValue($editor->getAttribute()));
+
+		return $this->filterAttributesByStructures($this->suffixAttributes, $visibleStructures);
+	}
+	
+	public function addEditor(Editor $editor) {
+		$this->wrappedEditor->addEditor($editor);
+	}
+	
+	protected function getVisibleStructureForEditor(Editor $editor, array &$suffixAttributes) {
+		$leadingAttributes = array();
+		$childEditors = $editor->getEditors();
+		
+		for ($i = 0; $i < 2; $i++)
+			$leadingAttributes[] = $childEditors[$i]->getAttribute();
+			
+		return new Structure(array_merge($leadingAttributes, $suffixAttributes));
+	}
+
+	public function view(IdStack $idPath, $value) {
+		$visibleSuffixAttributes = $this->determineVisibleSuffixAttributes($value); 
+		
+		$visibleStructure = new Structure(array_merge(
+			array($this->propertyAttribute, $this->valueAttribute),
+			$visibleSuffixAttributes
+		));
+		
+		$result = $this->recordSetTableEditor->viewHeader($idPath, $visibleStructure);
+
+		foreach ($this->getEditors() as $editor) {
+			$attribute = $editor->getAttribute();
+			$idPath->pushAttribute($attribute);
+			$result .= $editor->viewRows(
+				$idPath, 
+				$value->getAttributeValue($attribute),
+				$this->getVisibleStructureForEditor($editor, $visibleSuffixAttributes)
+			);
+			$idPath->popAttribute();
+		} 
+		
+		$result .= $this->recordSetTableEditor->viewFooter($idPath, $visibleStructure);
+
+		return $result;
+	}
+}
+
 function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 	global
 		$objectAttributesAttribute, $definedMeaningIdAttribute,
@@ -49,16 +208,27 @@ function createTableLifeSpanEditor(Attribute $attribute) {
 	return $result;
 }
 
-function addTableLifeSpanEditor(Editor $editor, $showRecordLifeSpan) {
+function getTableLifeSpanEditor($showRecordLifeSpan) {
 	global
 		$recordLifeSpanAttribute, $addTransactionAttribute, $removeTransactionAttribute, $wgRequest;
 
+	$result = array();
+	
 	if ($wgRequest->getText('action') == 'history' && $showRecordLifeSpan) 
-		$editor->addEditor(createTableLifeSpanEditor($recordLifeSpanAttribute));
+		$result[] = createTableLifeSpanEditor($recordLifeSpanAttribute);
+		
+	return $result;
+}
+
+function getTableMetadataEditors(ViewInformation $viewInformation) {
+	return getTableLifeSpanEditor($viewInformation->showRecordLifeSpan);
 }
 
 function addTableMetadataEditors($editor, ViewInformation $viewInformation) {
-	addTableLifeSpanEditor($editor, $viewInformation->showRecordLifeSpan);
+	$metadataEditors = getTableMetadataEditors($viewInformation);
+	
+	foreach ($metadataEditors as $metadataEditor)
+		$editor->addEditor($metadataEditor);
 }
 
 function getDefinitionEditor(ViewInformation $viewInformation) {
@@ -137,7 +307,7 @@ function createObjectAttributesEditor(ViewInformation $viewInformation, Attribut
 	global
 		$objectAttributesAttribute, $definedMeaningIdAttribute;
 	
-	$result = new ObjectAttributeValuesEditor($attribute); 
+	$result = new ObjectAttributeValuesEditor($attribute, $viewInformation); 
 	
 	addObjectAttributesEditors(
 		$result, 
@@ -154,7 +324,7 @@ function createDefinitionObjectAttributesEditor(ViewInformation $viewInformation
 	global
 		$objectAttributesAttribute, $definedMeaningIdAttribute;
 	
-	$result = new ObjectAttributeValuesEditor($attribute); 
+	$result = new ObjectAttributeValuesEditor($attribute, $viewInformation); 
 	
 	addObjectAttributesEditors(
 		$result, 
@@ -500,20 +670,6 @@ function getExpressionsEditor($spelling, ViewInformation $viewInformation) {
 	}
 
 	return $expressionsEditor;
-}
-
-class AttributeEditorMap {
-	protected $attributeEditorMap = array();
-	
-	public function addEditor($editor) {
-		$attributeId = $editor->getAttribute()->id;
-		$this->attributeEditorMap[$attributeId] = $editor;
-	}
-	
-	public function getEditorForAttributeId($attributeId) {
-		# FIXME: check if this actually exists	
-		return @$this->attributeEditorMap[$attributeId];
-	}
 }
 
 function getDefinedMeaningEditor(ViewInformation $viewInformation) {
