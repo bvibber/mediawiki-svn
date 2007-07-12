@@ -8,11 +8,20 @@ require_once('WikiDataGlobals.php');
 require_once('GotoSourceTemplate.php');
 require_once('ViewInformation.php');
 
+class DummyViewer extends Viewer {
+	public function view(IdStack $idPath, $value) {
+		return "";	
+	}
+
+	public function showsData($value) {
+		return true;
+	}
+}
+
 class ObjectAttributeValuesEditor extends WrappingEditor {
 	protected $recordSetTableEditor;
 	protected $propertyAttribute;
 	protected $valueAttribute;
-	protected $suffixAttributes;
 	
 	public function __construct(Attribute $attribute, ViewInformation $viewInformation) {
 		parent::__construct(new RecordUnorderedListEditor($attribute, 5));
@@ -30,18 +39,14 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 		$this->propertyAttribute = new Attribute("property", "Property", "short-text");
 		$this->valueAttribute = new Attribute("value", "Value", "short-text");
 		
-		$this->suffixAttributes = array();
-		
-//		foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter)
-//			$this->suffixAttributes[] = $propertyToColumnFilter->getAttribute();
+		foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) 
+			$this->recordSetTableEditor->addEditor(new DummyViewer($propertyToColumnFilter->getAttribute()));
 			
 		global	
-			$wgRequest, $objectAttributesAttribute, $recordLifeSpanAttribute;
+			$objectAttributesAttribute;
 			
-//		$this->suffixAttributes[] = $objectAttributesAttribute;
-		
-		if ($wgRequest->getText('action') == 'history' && $viewInformation->showRecordLifeSpan) 
-			$this->suffixAttributes[] = $recordLifeSpanAttribute;
+		$this->recordSetTableEditor->addEditor(new DummyViewer($objectAttributesAttribute));
+		addTableMetadataEditors($this->recordSetTableEditor, $viewInformation);
 	}
 	
 	protected function attributeInStructure(Attribute $attribute, Structure $structure) {
@@ -53,7 +58,6 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 			$result = $attribute->id == $attributes[$i]->id;
 			$i++; 
 		}
-			
 		
 		return $result;
 	}
@@ -120,10 +124,17 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 	public function determineVisibleSuffixAttributes($value) {
 		$visibleStructures = array();
 		
-		foreach ($this->getEditors() as $editor) 
-			$visibleStructures[] = $editor->getTableStructureForView($value->getAttributeValue($editor->getAttribute()));
+		foreach ($this->getEditors() as $editor) {
+			$visibleStructure = $editor->getTableStructureForView($value->getAttributeValue($editor->getAttribute()));
+			
+			if (count($visibleStructure->getAttributes()) > 0)
+				$visibleStructures[] = $visibleStructure;
+		}
 
-		return $this->filterAttributesByStructures($this->suffixAttributes, $visibleStructures);
+		return $this->filterAttributesByStructures(
+			$this->recordSetTableEditor->getTableStructure($this->recordSetTableEditor)->getAttributes(), 
+			$visibleStructures
+		);
 	}
 	
 	public function addEditor(Editor $editor) {
@@ -170,20 +181,39 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 	global
 		$objectAttributesAttribute, $definedMeaningIdAttribute,
-		$textValueObjectAttributesEditor, $textAttributeIdAttribute,
-		$linkValueObjectAttributesEditor, $linkAttributeIdAttribute,
-		$translatedTextValueObjectAttributesEditor, $translatedTextAttributeIdAttribute,
-		$optionValueObjectAttributesEditor, $optionAttributeIdAttribute, $annotationMeaningName, $omegaWikiAttributes;
+		$textValueObjectAttributesEditors, $textAttributeIdAttribute,
+		$linkValueObjectAttributesEditors, $linkAttributeIdAttribute,
+		$translatedTextValueObjectAttributesEditors, $translatedTextAttributeIdAttribute,
+		$optionValueObjectAttributesEditors, $optionAttributeIdAttribute, $annotationMeaningName, $omegaWikiAttributes;
 		
-	$textValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
-	$linkValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
-	$translatedTextValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
-	$optionValueObjectAttributesEditor = new RecordUnorderedListEditor($objectAttributesAttribute, 5);
+	$linkValueObjectAttributesEditors = array();
+	$textValueObjectAttributesEditors = array();	
 	
-	addObjectAttributesEditors($textValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	addObjectAttributesEditors($linkValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $linkAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	addObjectAttributesEditors($translatedTextValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
-	addObjectAttributesEditors($optionValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $optionAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) { 
+		$attribute = $propertyToColumnFilter->getAttribute();
+		
+		$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $viewInformation);
+		$linkValueObjectAttributeEditors[] = new ObjectAttributeValuesEditor($attribute, $viewInformation);
+		$translatedTextValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $viewInformation);
+		$optionValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $viewInformation);
+	}
+	
+	$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($objectAttributesAttribute, $viewInformation);
+	$linkValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($objectAttributesAttribute, $viewInformation);
+	$translatedTextValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($objectAttributesAttribute, $viewInformation);
+	$optionValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($objectAttributesAttribute, $viewInformation);
+	
+	foreach ($textValueObjectAttributesEditors as $textValueObjectAttributesEditor)
+		addObjectAttributesEditors($textValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $textAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+
+	foreach ($linkValueObjectAttributesEditors as $linkValueObjectAttributesEditor)
+		addObjectAttributesEditors($linkValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $linkAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+
+	foreach ($translatedTextValueObjectAttributesEditors as $translatedTextValueObjectAttributesEditor)
+		addObjectAttributesEditors($translatedTextValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $translatedTextAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
+		
+	foreach ($optionValueObjectAttributesEditors as $optionValueObjectAttributesEditor)
+		addObjectAttributesEditors($optionValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $optionAttributeIdAttribute), $annotationMeaningName, new ObjectIdFetcher(1, $definedMeaningIdAttribute));
 }
 
 function getTransactionEditor(Attribute $attribute) {
@@ -279,8 +309,9 @@ function addPropertyToColumnFilterEditors(Editor $editor, ViewInformation $viewI
 }	
 
 function getTranslatedTextEditor(Attribute $attribute, UpdateController $updateController, UpdateAttributeController $updateAttributeController, ViewInformation $viewInformation) {
-
-	global $omegaWikiAttributes;
+	global 
+		$omegaWikiAttributes;
+		
 	if ($viewInformation->filterLanguageId == 0 || $viewInformation->showRecordLifeSpan) {
 		$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, true, $updateController);
 		
@@ -520,16 +551,20 @@ function getDefinedMeaningCollectionMembershipEditor(ViewInformation $viewInform
 	return $editor;
 }
 
+function addPopupEditors(Editor $editor, array &$columnEditors) {
+	foreach ($columnEditors as $columnEditor)
+		$editor->addEditor(new PopUpEditor($columnEditor, $columnEditor->getAttribute()->name));
+}
+
 function getTextAttributeValuesEditor(ViewInformation $viewInformation, $controller, $levelDefinedMeaningName, Fetcher $objectIdFetcher) {
 	global
-		$textAttributeAttribute, $textAttribute, $textAttributeValuesAttribute, $textValueObjectAttributesEditor,
-		$wgPopupAnnotationName;
+		$textAttributeAttribute, $textAttribute, $textAttributeValuesAttribute, $textValueObjectAttributesEditors;
 
 	$editor = new RecordSetTableEditor($textAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TextAttributeEditor($textAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
 	$editor->addEditor(new TextEditor($textAttribute, new SimplePermissionController(true), true));
-	$editor->addEditor(new PopUpEditor($textValueObjectAttributesEditor, $wgPopupAnnotationName));
-
+	
+	addPopupEditors($editor, $textValueObjectAttributesEditors);
 	addTableMetadataEditors($editor, $viewInformation);
 
 	return $editor;
@@ -537,8 +572,8 @@ function getTextAttributeValuesEditor(ViewInformation $viewInformation, $control
 
 function getLinkAttributeValuesEditor(ViewInformation $viewInformation, UpdateController $controller, $levelDefinedMeaningName, Fetcher $objectIdFetcher) {
 	global
-		$linkAttributeAttribute, $linkAttribute, $linkAttributeValuesAttribute, $linkValueObjectAttributesEditor, 
-		$wgPopupAnnotationName, $linkLabelAttribute, $linkURLAttribute;
+		$linkAttributeAttribute, $linkAttribute, $linkAttributeValuesAttribute, $linkValueObjectAttributesEditors, 
+		$linkLabelAttribute, $linkURLAttribute;
 
 	$editor = new RecordSetTableEditor($linkAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new LinkAttributeEditor($linkAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
@@ -552,8 +587,8 @@ function getLinkAttributeValuesEditor(ViewInformation $viewInformation, UpdateCo
 	}	
 		
 	$editor->addEditor($linkEditor);
-	$editor->addEditor(new PopUpEditor($linkValueObjectAttributesEditor, $wgPopupAnnotationName));
 
+	addPopupEditors($editor, $linkValueObjectAttributesEditors);
 	addTableMetadataEditors($editor, $viewInformation);
 
 	return $editor;
@@ -562,7 +597,7 @@ function getLinkAttributeValuesEditor(ViewInformation $viewInformation, UpdateCo
 function getTranslatedTextAttributeValuesEditor(ViewInformation $viewInformation, UpdateController $controller, $levelDefinedMeaningName, Fetcher $objectIdFetcher) {
 	global
 		$translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, 
-		$translatedTextValueObjectAttributesEditor, $wgPopupAnnotationName;
+		$translatedTextValueObjectAttributesEditors;
 
 	$editor = new RecordSetTableEditor($translatedTextAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TranslatedTextAttributeEditor($translatedTextAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
@@ -572,8 +607,8 @@ function getTranslatedTextAttributeValuesEditor(ViewInformation $viewInformation
 		new FilteredTranslatedTextAttributeValueController($viewInformation->filterLanguageId), 
 		$viewInformation
 	));
-	$editor->addEditor(new PopUpEditor($translatedTextValueObjectAttributesEditor, $wgPopupAnnotationName));
-
+	
+	addPopupEditors($editor, $translatedTextValueObjectAttributesEditors);
 	addTableMetadataEditors($editor, $viewInformation);
 
 	return $editor;
@@ -582,14 +617,14 @@ function getTranslatedTextAttributeValuesEditor(ViewInformation $viewInformation
 function getOptionAttributeValuesEditor(ViewInformation $viewInformation, UpdateController $controller, $levelDefinedMeaningName, Fetcher $objectIdFetcher) {
 	global
 		$optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesAttribute, 
-		$optionValueObjectAttributesEditor, $wgPopupAnnotationName;
+		$optionValueObjectAttributesEditors;
 
 	$editor = new RecordSetTableEditor($optionAttributeValuesAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
 
 	$editor->addEditor(new OptionAttributeEditor($optionAttributeAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName, $objectIdFetcher));
 	$editor->addEditor(new OptionSelectEditor($optionAttributeOptionAttribute, new SimplePermissionController(false), true));
-	$editor->addEditor(new PopUpEditor($optionValueObjectAttributesEditor, $wgPopupAnnotationName));
-
+	
+	addPopupEditors($editor, $optionValueObjectAttributesEditors);
 	addTableMetadataEditors($editor, $viewInformation);
 
 	return $editor;
