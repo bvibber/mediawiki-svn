@@ -45,7 +45,8 @@
 
 			protected function showExpressionsNeedingTranslation($sourceLanguageId, $destinationLanguageId,$collectionId) {
 				global
-					$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure, $spellingAttribute, $languageAttribute;
+					$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure, $omegaWikiAttributes;
+				$o=$omegaWikiAttributes;
 
 				$dc=wdGetDataSetContext();
 				require_once("Transaction.php");
@@ -87,15 +88,15 @@
 
 				while ($row = $dbr->fetchObject($queryResult)) {
 					$expressionRecord = new ArrayRecord($expressionStructure);
-					$expressionRecord->setAttributeValue($languageAttribute, $row->source_language_id);
-					$expressionRecord->setAttributeValue($spellingAttribute, $row->source_spelling);
+					$expressionRecord->language = $row->source_language_id;
+					$expressionRecord->spelling = $row->source_spelling;
 
 					$recordSet->addRecord(array($row->source_defined_meaning_id, $row->source_expression_id, $expressionRecord, getDefinedMeaningDefinition($row->source_defined_meaning_id)));
 				}
 
 				$expressionEditor = new RecordTableCellEditor($expressionAttribute);
-				$expressionEditor->addEditor(new LanguageEditor($languageAttribute, new SimplePermissionController(false), false));
-				$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), false));
+				$expressionEditor->addEditor(new LanguageEditor($o->language, new SimplePermissionController(false), false));
+				$expressionEditor->addEditor(new SpellingEditor($o->spelling, new SimplePermissionController(false), false));
 
 				$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 				$editor->addEditor($expressionEditor);

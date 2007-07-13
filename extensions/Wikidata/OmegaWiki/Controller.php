@@ -442,7 +442,7 @@ class ExpressionController implements UpdateController {
 			$translatedTextAttribute;
 
 		if ($this->filterLanguageId == 0)
-			$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->languageAttribute;
+			$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->language;
 		else
 			$expressionLanguageId = $this->filterLanguageId; 
 				
