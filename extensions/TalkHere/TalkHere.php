@@ -122,6 +122,7 @@ function wfTalkHereCustomEditor( &$article, &$user ) {
 	$editor->submit();
 
 	mangleEditForm( $wgOut, $returnto ); //HACK. This sucks.
+	return true;
 }
 
 function wfTalkHereShowEditFormFields( &$editor, &$out ) {
