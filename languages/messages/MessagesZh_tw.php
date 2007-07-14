@@ -170,9 +170,9 @@ $messages = array(
 
 == 入門 ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings MediaWiki 配置設定清單]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki 常見問題解答]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 發佈郵件清單]',
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings MediaWiki 配置設定清單]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 常見問題解答]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 發佈郵件清單]',
 
 'about'          => '關於',
 'article'        => '文章',
@@ -903,8 +903,6 @@ MySQL返回錯誤「$3: $4」。',
 'fileexists-forbidden'        => '已存在相同名稱的檔案；請返回並用一個新的名稱來上傳此檔案。[[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => '在共享檔案庫中已存在此名稱的檔案；請返回並用一個新的名稱來上傳此檔案。[[Image:$1|thumb|center|$1]]',
 'successfulupload'            => '上傳成功',
-'fileuploaded'                => '檔案"$1"上傳成功。
-請根據連結($2)到檔案描述頁添加有關檔案訊息，例如它的來源，在何時由誰創建，以及其他任何您知道的關於該檔案的訊息。如果這是一個圖像，您可以透過<tt><nowiki>[[Image:$1|thumb|描述]]</nowiki></tt>將其插入頁面',
 'uploadwarning'               => '上載警告',
 'savefile'                    => '保存文件',
 'uploadedimage'               => '已上載"[[$1]]"',
@@ -1170,9 +1168,7 @@ MySQL返回錯誤「$3: $4」。',
 'unwatchthispage'      => '停止監視',
 'notanarticle'         => '不是文章',
 'watchnochange'        => '在顯示的時間段內您所監視的頁面沒有更改。',
-'watchdetails'         => '* 不包含討論頁，您的監視列表共有 $1 頁。
-* [[Special:Watchlist/edit|顯示或修改您的監視列表]]
-* [[Special:Watchlist/clear|移除全部的頁面]]',
+'watchlist-details'    => '不包含討論頁，您的監視列表共有 $1 頁。',
 'wlheader-enotif'      => '* 已經啟動電子郵件通知功能。',
 'wlheader-showupdated' => "* 在你上次檢視後有被修改過的頁面會顯示為'''粗體'''",
 'watchmethod-recent'   => '檢查被監視頁面的最近編輯',
@@ -2037,7 +2033,6 @@ Variants for Chinese language
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => '全部',
 'imagelistall'     => '全部',
-'watchlistall1'    => '全部',
 'watchlistall2'    => '全部',
 'namespacesall'    => '全部',
 'monthsall'        => '全部',
@@ -2176,7 +2171,15 @@ $1
 'watchlistedit-raw-added'      => '已經加入了$1個標題:',
 'watchlistedit-raw-removed'    => '已經移除了$1個標題:',
 
+# Watchlist editing tools
+'watchlisttools-view'  => '檢視有關更改',
+'watchlisttools-edit'  => '檢視並編輯監視列表',
+'watchlisttools-raw'   => '編輯原始監視列表',
+'watchlisttools-clear' => '清空監視列表',
+
 );
+
+
 
 
 

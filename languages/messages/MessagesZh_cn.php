@@ -187,9 +187,9 @@ $messages = array(
 
 == 入门 ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings MediaWiki 配置设置列表]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki 常见问题解答]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布邮件列表]',
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings MediaWiki 配置设置列表]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 常见问题解答]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布邮件列表]',
 
 'about'          => '关于',
 'article'        => '文章',
@@ -929,8 +929,6 @@ MySQL返回错误“$3: $4”。',
 'fileexists-forbidden'        => '已存在相同名称的文件；请返回并用一个新的名称来上传此文件。[[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => '在共享文件库中已存在此名称的文件；请返回并用一个新的名称来上传此文件。[[Image:$1|thumb|center|$1]]',
 'successfulupload'            => '上传成功',
-'fileuploaded'                => '文件"$1"上传成功。
-请根据链接($2)到文件描述页添加有关文件信息，例如它的来源，在何时由谁创建，以及其他任何您知道的关于该文件的信息。如果这是一个图像，您可以通过<tt><nowiki>[[Image:$1|thumb|描述]]</nowiki></tt>将其插入页面',
 'uploadwarning'               => '上载警告',
 'savefile'                    => '保存文件',
 'uploadedimage'               => '已上载"[[$1]]"',
@@ -1196,9 +1194,7 @@ MySQL返回错误“$3: $4”。',
 'unwatchthispage'      => '停止监视',
 'notanarticle'         => '不是文章',
 'watchnochange'        => '在显示的时间段内您所监视的页面没有更改。',
-'watchdetails'         => '* $1个页面(不含讨论页)被监视
-* [[Special:Watchlist/edit|显示并编辑完整列表]]
-* [[Special:Watchlist/clear|移除所有页面]]',
+'watchlist-details'    => '$1个页面(不含讨论页)被监视',
 'wlheader-enotif'      => '* 已经启动电子邮件通知功能。',
 'wlheader-showupdated' => "* 在你上次查看后有被修改过的页面会显示为'''粗体'''",
 'watchmethod-recent'   => '检查被监视页面的最近编辑',
@@ -2063,7 +2059,6 @@ Variants for Chinese language
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => '全部',
 'imagelistall'     => '全部',
-'watchlistall1'    => '全部',
 'watchlistall2'    => '全部',
 'namespacesall'    => '全部',
 'monthsall'        => '全部',
@@ -2202,8 +2197,15 @@ $1
 'watchlistedit-raw-added'      => '已经加入了$1个标题:',
 'watchlistedit-raw-removed'    => '已经移除了$1个标题:',
 
+# Watchlist editing tools
+'watchlisttools-view'  => '查看有关更改',
+'watchlisttools-edit'  => '查看并编辑监视列表',
+'watchlisttools-raw'   => '编辑源监视列表',
+'watchlisttools-clear' => '清空监视列表',
 
 );
+
+
 
 
 

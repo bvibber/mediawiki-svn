@@ -1531,8 +1531,15 @@ class Database {
 				$list .= "($value)";
 			} elseif ( ($mode == LIST_SET) && is_numeric( $field ) ) {
 				$list .= "$value";
-			} elseif ( ($mode == LIST_AND || $mode == LIST_OR) && is_array ($value) ) {
+			} elseif ( ($mode == LIST_AND || $mode == LIST_OR) && is_array($value) ) {
 				$list .= $field." IN (".$this->makeList($value).") ";
+			} elseif( is_null($value) ) {
+				if ( $mode == LIST_AND || $mode == LIST_OR ) {
+					$list .= "$field IS ";
+				} elseif ( $mode == LIST_SET ) {
+					$list .= "$field = ";
+				}
+				$list .= 'NULL';
 			} else {
 				if ( $mode == LIST_AND || $mode == LIST_OR || $mode == LIST_SET ) {
 					$list .= "$field = ";
@@ -1603,7 +1610,7 @@ class Database {
 	 * This is handy when you need to construct SQL for joins
 	 *
 	 * Example:
-	 * list( $user, $watchlist ) = $dbr->tableNames('user','watchlist');
+	 * list( $user, $watchlist ) = $dbr->tableNamesN('user','watchlist');
 	 * $sql = "SELECT wl_namespace,wl_title FROM $watchlist,$user
 	 *         WHERE wl_user=user_id AND wl_user=$nameWithQuotes";
 	 */

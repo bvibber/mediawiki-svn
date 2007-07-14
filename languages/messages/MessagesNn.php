@@ -6,8 +6,8 @@
   *
   * @author Olve Utne
   * @author Guttorm Flatabø
-  * @link http://meta.wikimedia.org/w/index.php?title=LanguageNn.php&action=history
-  * @link http://nn.wikipedia.org/w/index.php?title=Brukar:Dittaeva/LanguageNn.php&action=history
+  * @see http://meta.wikimedia.org/w/index.php?title=LanguageNn.php&action=history
+  * @see http://nn.wikipedia.org/w/index.php?title=Brukar:Dittaeva/LanguageNn.php&action=history
   *
   * @addtogroup Language
   */
@@ -854,7 +854,7 @@ Om du seinere vil fjerne sida frå overvakingslista, klikk på «Fjern overvakin
 'unwatchthispage'      => 'Fjern overvaking',
 'notanarticle'         => 'Ikkje innhaldsside',
 'watchnochange'        => 'Ingen av sidene i overvakingslista er endra i den valde perioden.',
-'watchdetails'         => 'Du har $1 sider i overvakingslista di (diskusjonssider ikkje medrekna); du kan [[Special:Watchlist/edit|vise og endre den fullstendige lista]].',
+'watchlist-details'    => 'Du har $1 sider i overvakingslista di (diskusjonssider ikkje medrekna).',
 'wlheader-enotif'      => '* Funksjonen for endringsmeldingar per e-post er på.',
 'wlheader-showupdated' => "* Sider som har vorte endra sidan du sist såg på dei er '''utheva'''",
 'watchmethod-recent'   => 'sjekkar siste endringar for dei overvaka sidene',
@@ -1456,7 +1456,6 @@ For å eksportere bruker du [[{{ns:-1}}:Export|eksportsida]] på kjeldewikien; h
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'alle',
 'imagelistall'     => 'alle',
-'watchlistall1'    => 'alle',
 'watchlistall2'    => 'alle',
 'namespacesall'    => 'alle',
 

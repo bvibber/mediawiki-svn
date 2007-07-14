@@ -573,9 +573,9 @@ XHTML id names.
 
 == Getting started ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki FAQ]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => 'About',
 'article'        => 'Content page',
@@ -1392,10 +1392,6 @@ If you have this image in full resolution upload this one, otherwise change the 
 'fileexists-forbidden'        => 'A file with this name exists already; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'A file with this name exists already in the shared file repository; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Successful upload',
-'fileuploaded'                => 'File $1 uploaded successfully.
-Please follow this link: $2 to the description page and fill
-in information about the file, such as where it came from, when it was
-created and by whom, and anything else you may know about it. If this is an image, you can insert it like this: <tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:$1|thumb|Description]]</nowiki></tt>',
 'uploadwarning'               => 'Upload warning',
 'savefile'                    => 'Save file',
 'uploadedimage'               => 'uploaded "[[$1]]"',
@@ -1714,9 +1710,7 @@ If you want to remove the page from your watchlist later, click \"Unwatch\" in t
 'unwatchthispage'      => 'Stop watching',
 'notanarticle'         => 'Not a content page',
 'watchnochange'        => 'None of your watched items was edited in the time period displayed.',
-'watchdetails'         => '* {{PLURAL:$1|$1 page|$1 pages}} watched not counting talk pages
-* [[Special:Watchlist/edit|Show and edit complete watchlist]]
-* [[Special:Watchlist/clear|Remove all pages]]',
+'watchlist-details'    => '{{PLURAL:$1|$1 page|$1 pages}} watched not counting talk pages.',
 'wlheader-enotif'      => '* E-mail notification is enabled.',
 'wlheader-showupdated' => "* Pages which have been changed since you last visited them are shown in '''bold'''",
 'watchmethod-recent'   => 'checking recent edits for watched pages',
@@ -2725,7 +2719,6 @@ is collapsed. Others will be hidden by default.
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'all',
 'imagelistall'     => 'all',
-'watchlistall1'    => 'all',
 'watchlistall2'    => 'all',
 'namespacesall'    => 'all',
 'monthsall'        => 'all',
@@ -2915,13 +2908,13 @@ $1',
 'watchlistedit-raw-titles'     => 'Titles:',
 'watchlistedit-raw-submit'     => 'Update Watchlist',
 'watchlistedit-raw-done'       => 'Your watchlist has been updated.',
-'watchlistedit-raw-added' => '{{PLURAL:$1|1 title was|$1 titles were}} added:',
-'watchlistedit-raw-removed' => '{{PLURAL:$1|1 title was|$1 titles were}} removed:',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 title was|$1 titles were}} added:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 title was|$1 titles were}} removed:',
 
 # Watchlist editing tools
-'watchlisttools-view' => 'View relevant changes',
-'watchlisttools-edit' => 'View and edit watchlist',
-'watchlisttools-raw' => 'Edit raw watchlist',
+'watchlisttools-view'  => 'View relevant changes',
+'watchlisttools-edit'  => 'View and edit watchlist',
+'watchlisttools-raw'   => 'Edit raw watchlist',
 'watchlisttools-clear' => 'Clear watchlist',
 
 );

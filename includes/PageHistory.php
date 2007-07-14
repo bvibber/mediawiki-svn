@@ -247,13 +247,13 @@ class PageHistory {
 		
 		$tools = array();
 		
-		if( $wgUser->isAllowed( 'rollback' ) && $latest ) {
-			$tools[] = '<span class="mw-rollback-link">'
-				. $this->mSkin->buildRollbackLink( $rev )
-				. '</span>';
-		}
-			
 		if ( !is_null( $next ) ) {
+			if( $wgUser->isAllowed( 'rollback' ) && $latest ) {
+				$tools[] = '<span class="mw-rollback-link">'
+					. $this->mSkin->buildRollbackLink( $rev )
+					. '</span>';
+			}
+
 			$undolink = $this->mSkin->makeKnownLinkObj(
 				$this->mTitle,
 				wfMsgHtml( 'editundo' ),
@@ -262,7 +262,9 @@ class PageHistory {
 			$tools[] = "<span class=\"mw-history-undo\">{$undolink}</span>";
 		}
 		
-		$s .= ' (' . implode( ' | ', $tools ) . ')';
+		if( $tools ) {
+			$s .= ' (' . implode( ' | ', $tools ) . ')';
+		}
 		
 		wfRunHooks( 'PageHistoryLineEnding', array( &$row , &$s ) );
 		

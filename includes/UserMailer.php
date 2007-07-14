@@ -180,20 +180,32 @@ function userMailer( $to, $from, $subject, $body, $replyto=null ) {
 		set_error_handler( 'mailErrorHandler' );
 		wfDebug( "Sending mail via internal mail() function\n" );
 
-		if (is_array($to))
-			foreach ($to as $recip)
-				mail( $recip->toString(), wfQuotedPrintable( $subject ), $body, $headers );
+		if (function_exists('mail'))
+			if (is_array($to))
+				foreach ($to as $recip)
+					$sent = mail( $recip->toString(), wfQuotedPrintable( $subject ), $body, $headers );
+			else
+				$sent = mail( $to->toString(), wfQuotedPrintable( $subject ), $body, $headers );
 		else
-			mail( $to->toString(), wfQuotedPrintable( $subject ), $body, $headers );
+			$wgErrorString = 'PHP is not configured to send mail';
+
 
 		restore_error_handler();
 
 		if ( $wgErrorString ) {
 			wfDebug( "Error sending mail: $wgErrorString\n" );
+			return $wgErrorString;
+		} elseif (! $sent) {
+			//mail function only tells if there's an error
+			wfDebug( "Error sending mail\n" );
+			return 'mailer error';
+		} else {
+			return '';
 		}
-		return $wgErrorString;
 	}
 }
+
+
 
 /**
  * Get the mail error message in global $wgErrorString
@@ -239,7 +251,7 @@ class EmailNotification {
 	function notifyOnPageChange($editor, &$title, $timestamp, $summary, $minorEdit, $oldid = false) {
 		global $wgEnotifUseJobQ;
 		global $wgEnotifWatchlist, $wgShowUpdatedMarker;
-
+	
 		if( $title->getNamespace() < 0 )
 			return;
 
@@ -376,7 +388,7 @@ class EmailNotification {
 				), array( /* WHERE */
 					'wl_title' => $title->getDBkey(),
 					'wl_namespace' => $title->getNamespace(),
-					'wl_notificationtimestamp' => NULL
+					'wl_notificationtimestamp IS NULL'
 				), 'UserMailer::NotifyOnChange'
 			);
 			# FIXME what do we do on failure ?

@@ -25,6 +25,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * $wgAddGroups, $wgRemoveGroups - Finer control over who can assign which
   usergroups
 * $wgEnotifImpersonal, $wgEnotifUseJobQ - Bulk mail options for large sites
+* $wgShowHostnames - Expose server host names through the API and HTML comments
 
 == New features since 1.10 ==
 
@@ -127,6 +128,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Improved feedback on "rollback success" page
 * Show distinct 'namespaceprotected' message to users when namespace protection
   prevents page editing
+* (bug 9936) Per-edit suppression of preview-on-first edit with "preview=no"
+* Allow showing a one-off preview on first edit with "preview=yes"
+* (bug 9151) Remove timed redirects on "Return to X" pages for accessibility.
+* Link to user logs in toolbox when viewing a user page
+* (bug 10508) Allow HTML attributes on <gallery>
+* (bug 1962) Allow HTML attributes on <math>
+* (bug 10530) Introduce optional "sp-contributions-explain" message for
+  additional explanation in Special:Contributions
 
 == Bugfixes since 1.10 ==
 
@@ -266,6 +275,22 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Fix CSS media declaration for "screen, projection"; was causing some
   validation issues
 * (bug 10495) $wgMemcachedDebug set twice in includes/DefaultSettings.php
+* (bug 10316) Prevent inconsistent cached skin settings in gen=js by setting
+  the intended skin directly in the URL.
+* (bug 9903) Don't mark redirects in categories as stubs
+* (bug 6965) Cannot include "Template:R" with {{R}} (magic word conflict)
+* Padding parser functions now work with strings like '0' that evaluate to false
+* (bug 10332) Title->userCan( 'edit' ) may return false positive
+* Fix bug with <nowiki> in front of links for wikis where linkPrefixExtension is true
+* (bug 10552) Suppress rollback link in history for single-revision pages
+* (bug 10538) Gracefully handle invalid input on move success page
+* Fix for Esperanto double-x-encoding in move success page
+* (bug 10526) Fix toolbar/insertTags behavior for IE 6/7 and Opera (8+)
+  Now matches the selection behavior on Mozilla / Safari.
+  Patch by Alex Smotrov.
+* Don't show non-functional toolbar buttons on Opera 7 anymore
+* (bug 9151) Fix relative subpage links with section fragments
+* (bug 10560) Adding a space between category letter heading and "continues"
 
 == API changes since 1.10 ==
 
@@ -305,7 +330,6 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 10392) Include MediaWiki version details in version output
 * (bug 10411) Site language in meta=siteinfo
 * (bug 10391) action=help doesn't return help if format is fancy markup
-* (bug 10297) include previous revision ID in prop=revisions
 * backlinks, embeddedin and imageusage lists should use (bl|ei|iu)title parameter
   instead of titles. Titles for these lists is obsolete and might stop working soon.
 * Added prop=imageinfo - gets image properties and upload history
@@ -326,6 +350,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 
 == Languages updated since 1.10 ==
 
+* Afrikaans (af)
 * Arabic (ar)
 * Bulgarian (bg)
 * Catalan (ca)
@@ -366,6 +391,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Albanian (sq)
 * Sundanese (su)
 * Swedish (sv)
+* Thai (th)
 * Tigrinya (ti)
 * Volapük (vo)
 * Old Chinese / Late Middle Chinese (zh-classical)

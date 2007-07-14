@@ -292,9 +292,9 @@ $messages = array(
 'mainpagedocfooter' => 'היעזרו ב[http://meta.wikimedia.org/wiki/Help:Contents מדריך למשתמש] למידע על שימוש בתוכנת הוויקי.
 
 == קישורים שימושיים ==
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings רשימת ההגדרות]
-* [http://www.mediawiki.org/wiki/Help:FAQ שאלות נפוצות]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce רשימת התפוצה על השקת גרסאות]',
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings רשימת ההגדרות]
+* [http://www.mediawiki.org/wiki/Manual:FAQ שאלות נפוצות]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce רשימת התפוצה על השקת גרסאות]',
 
 'about'          => 'אודות',
 'article'        => 'דף תוכן',
@@ -1055,8 +1055,6 @@ $messages = array(
 'fileexists-shared-forbidden' => 'קובץ בשם זה כבר קיים כקובץ משותף; אנא חזרו לדף הקודם והעלו את הקובץ תחת שם חדש.
 [[{{ns:image}}:$1|thumb|center|$1]]',
 'successfulupload'            => 'העלאת הקובץ הושלמה בהצלחה',
-'fileuploaded'                => "הקובץ $1 הועלה לשרת בהצלחה.
-אנא השתמשו בקישור $2 כדי לעבור לדף תיאור הקובץ ולמלא את כל המידע אודות הקובץ, כגון מאין הגיע, מתי נוצר ועל־ידי מי, וכל פרט אחר שאתם יודעים עליו. אם זו תמונה, באפשרותכם להכלילה בדפים כך: '''<nowiki>[[{{ns:image}}:$1|thumb|Description]]</nowiki>'''",
 'uploadwarning'               => 'אזהרת העלאת קבצים',
 'savefile'                    => 'שמור קובץ',
 'uploadedimage'               => 'העלה את הקובץ "[[$1]]"',
@@ -1315,9 +1313,7 @@ $messages = array(
 'unwatchthispage'      => 'הפסק לעקוב אחר דף זה',
 'notanarticle'         => 'זהו אינו דף תוכן',
 'watchnochange'        => 'אף אחד מהדפים ברשימת המעקב לא עודכן בפרק הזמן המצוין למעלה.',
-'watchdetails'         => '* ברשימת המעקב יש {{plural:$1|דף אחד|$1 דפים}} (לא כולל דפי שיחה).
-* [[{{ns:special}}:Watchlist/edit|הצגה ועריכה של רשימת המעקב במלואה]].
-* [[{{ns:special}}:Watchlist/clear|הסרת כל הדפים]].',
+'watchlist-details'    => 'ברשימת המעקב יש {{plural:$1|דף אחד|$1 דפים}} (לא כולל דפי שיחה).',
 'wlheader-enotif'      => '* הודעות דוא"ל מאופשרות.',
 'wlheader-showupdated' => "* דפים שהשתנו מאז ביקורכם האחרון בהם מוצגים ב'''הדגשה'''.",
 'watchmethod-recent'   => 'בודק את הדפים שברשימת המעקב לשינויים אחרונים.',
@@ -1403,7 +1399,7 @@ $NEWPAGE
 העריכה האחרונה היתה של [[{{ns:user}}:$3|$3]] ([[{{ns:user_talk}}:$3|שיחה]]).',
 'editcomment'                 => "תקציר העריכה היה: \"'''\$1'''\".", # only shown if there is an edit comment
 'revertpage'                  => 'שוחזר מעריכה של [[{{ns:special}}:Contributions/$2|$2]] ([[{{ns:user_talk}}:$2|שיחה]]) לעריכה האחרונה של [[{{ns:user}}:$1|$1]]',
-'rollback-success'            => 'שוחזר מעריכה של $2 לעריכה האחרונה של $1',
+'rollback-success'            => 'שוחזר מעריכה של $1 לעריכה האחרונה של $2',
 'sessionfailure'              => 'נראה שיש בעיה בחיבורכם לאתר. פעולתכם בוטלה כאמצעי זהירות כנגד התחזות לתקשורת ממחשבכם. אנא חיזרו לדף הקודם ונסו שנית.',
 'protectlogpage'              => 'יומן הגנות',
 'protectlogtext'              => 'להלן רשימה של הגנות וביטולי הגנות על דפים. ראו גם את [[{{ns:special}}:Protectedpages|רשימת הדפים המוגנים]] הנוכחית.',
@@ -2165,7 +2161,6 @@ $NEWPAGE
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'הכול',
 'imagelistall'     => 'הכול',
-'watchlistall1'    => 'הכול',
 'watchlistall2'    => 'הכול',
 'namespacesall'    => 'הכול',
 'monthsall'        => 'הכול',
@@ -2276,8 +2271,8 @@ $1',
 'livepreview-error'   => 'ההתחברות נכשלה: $1 "$2". נסו להשתמש בתצוגה מקדימה רגילה.',
 
 # Friendlier slave lag warnings
-'lag-warn-normal' => 'שינויים שבוצעו לפני פחות מ־$1 שניות לא מוצגים ברשימה זו.',
-'lag-warn-high'   => 'בגלל עיכוב בעדכון מסד הנתונים, שינויים שבוצעו לפני פחות מ־$1 שניות לא מוצגים ברשימה זו.',
+'lag-warn-normal' => 'שינויים שבוצעו לפני פחות מ־$1 שניות אינם מוצגים ברשימה זו.',
+'lag-warn-high'   => 'בגלל עיכוב בעדכון מסד הנתונים, שינויים שבוצעו לפני פחות מ־$1 שניות אינם מוצגים ברשימה זו.',
 
 # Watchlist editor
 'watchlistedit-numitems'       => 'יש לכם {{plural:$1|פריט אחד|$1 פריטים}} ברשימת המעקב, לא כולל דפי שיחה.',
@@ -2300,5 +2295,11 @@ $1',
 'watchlistedit-raw-done'       => 'רשימת המעקב עודכנה.',
 'watchlistedit-raw-added'      => '{{plural:$1|כותרת אחת נוספה|$1 כותרות נוספו}}:',
 'watchlistedit-raw-removed'    => '{{plural:$1|כותרת אחת הוסרה|$1 כותרות הוסרו}}:',
+
+# Watchlist editing tools
+'watchlisttools-view'  => 'הצגת השינויים הרלוונטיים',
+'watchlisttools-edit'  => 'הצגה ועריכה של רשימת המעקב',
+'watchlisttools-raw'   => 'עריכת הרשימה הגולמית',
+'watchlisttools-clear' => 'ניקוי רשימת המעקב',
 
 );

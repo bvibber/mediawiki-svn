@@ -118,7 +118,7 @@ class WatchlistEditor {
 					$titles[] = $title->getPrefixedText();
 			}
 		}
-		return $titles;
+		return array_unique( $titles );
 	}
 	
 	/**
@@ -132,7 +132,7 @@ class WatchlistEditor {
 	 * @param Skin $skin
 	 */
 	private function showTitles( $titles, $output, $skin ) {
-		$talk = htmlspecialchars( $GLOBALS['wgContLang']->getFormattedNsText( NS_TALK ) );
+		$talk = wfMsgHtml( 'talkpagelinktext' );
 		// Do a batch existence check		
 		$batch = new LinkBatch();
 		foreach( $titles as $title ) {
@@ -410,8 +410,7 @@ class WatchlistEditor {
 		$link = $skin->makeLinkObj( $title );
 		if( $redirect )
 			$link = '<span class="watchlistredir">' . $link . '</span>';
-		$tools[] = $skin->makeLinkObj( $title->getTalkPage(),
-			htmlspecialchars( $GLOBALS['wgContLang']->getFormattedNsText( NS_TALK ) ) );
+		$tools[] = $skin->makeLinkObj( $title->getTalkPage(), wfMsgHtml( 'talkpagelinktext' ) );
 		if( $title->exists() )
 			$tools[] = $skin->makeKnownLinkObj( $title, wfMsgHtml( 'history_short' ), 'action=history' );
 		return '<li>'
@@ -435,6 +434,7 @@ class WatchlistEditor {
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'watchlistedit-raw-legend' ) . '</legend>';
 		$form .= wfMsgExt( 'watchlistedit-raw-explain', 'parse' );
 		$form .= Xml::label( wfMsg( 'watchlistedit-raw-titles' ), 'titles' );
+		$form .= "<br />\n";
 		$form .= Xml::openElement( 'textarea', array( 'id' => 'titles', 'name' => 'titles',
 			'rows' => $wgUser->getIntOption( 'rows' ), 'cols' => $wgUser->getIntOption( 'cols' ) ) );
 		$titles = $this->getWatchlist( $user );

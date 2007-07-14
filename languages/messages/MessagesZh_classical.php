@@ -177,9 +177,9 @@ $messages = array(
 
 == 始 ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki FAQ]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => '大典簡介',
 'article'        => '文',
@@ -883,9 +883,7 @@ to send e-mail to other users.',
 'unwatchthispage'      => '撤哨',
 'notanarticle'         => '此頁非文',
 'watchnochange'        => '皆無易也',
-'watchdetails'         => '*共有$1哨，不含議論。
-* [[Special:Watchlist/edit|治哨站]]
-* [[Special:Watchlist/clear|清哨]]',
+'watchlist-details'    => '共有$1哨，不含議論。',
 'wlheader-enotif'      => '*准報信。',
 'wlheader-showupdated' => "*有易者'''粗體'''。",
 'watchlistcontains'    => '哨有$1頁',
@@ -996,7 +994,12 @@ $NEWPAGE
 'sp-contributions-oldest'      => '首',
 'sp-contributions-newer'       => '後$1',
 'sp-contributions-older'       => '前$1',
+'sp-contributions-newbies'     => '只顯示新建立之用戶的貢獻',
 'sp-contributions-newbies-sub' => '予新進',
+'sp-contributions-blocklog'    => '誌禁',
+'sp-contributions-search'      => '尋往績',
+'sp-contributions-username'    => 'IP或簿名：',
+'sp-contributions-submit'      => '尋',
 
 'sp-newimages-showfrom' => '賞新圖，自$1',
 
@@ -1172,7 +1175,6 @@ $NEWPAGE
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => '全',
 'imagelistall'     => '全',
-'watchlistall1'    => '全',
 'watchlistall2'    => '全',
 'namespacesall'    => '全',
 'monthsall'        => '全',
@@ -1269,8 +1271,16 @@ $1',
 'watchlistedit-raw-added'      => '已添$1題:',
 'watchlistedit-raw-removed'    => '已撤$1題:',
 
+# Watchlist editing tools
+'watchlisttools-view'  => '察易',
+'watchlisttools-edit'  => '治哨站',
+'watchlisttools-raw'   => '治源哨',
+'watchlisttools-clear' => '清哨',
+
 
 );
+
+
 
 
 

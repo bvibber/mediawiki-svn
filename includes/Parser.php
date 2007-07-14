@@ -485,7 +485,7 @@ class Parser
 				$inside     = $p[4];
 			}
 
-			$marker = "$uniq_prefix-$element-" . sprintf('%08X', $n++) . '-QINU';
+			$marker = "$uniq_prefix-$element-" . sprintf('%08X', $n++) . "-QINU\x07";
 			$stripped .= $marker;
 
 			if ( $close === '/>' ) {
@@ -592,7 +592,8 @@ class Parser
 					$output = Xml::escapeTagsOnly( $content );
 					break;
 				case 'math':
-					$output = $wgContLang->armourMath( MathRenderer::renderMath( $content ) );
+					$output = $wgContLang->armourMath(
+						MathRenderer::renderMath( $content, $params ) );
 					break;
 				case 'gallery':
 					$output = $this->renderImageGallery( $content, $params );
@@ -1927,12 +1928,18 @@ class Parser
 		wfProfileIn( $fname );
 		$ret = $target; # default return value is no change
 
-		# bug 7425
-		$target = trim( $target );
-
 		# Some namespaces don't allow subpages,
 		# so only perform processing if subpages are allowed
 		if( $this->areSubpagesAllowed() ) {
+			$hash = strpos( $target, '#' );
+			if( $hash !== false ) {
+				$suffix = substr( $target, $hash );
+				$target = substr( $target, 0, $hash );
+			} else {
+				$suffix = '';
+			}
+			# bug 7425
+			$target = trim( $target );
 			# Look at the first character
 			if( $target != '' && $target{0} == '/' ) {
 				# / at end means we don't want the slash to be shown
@@ -1944,9 +1951,9 @@ class Parser
 					$noslash = substr( $target, 1 );
 				}
 
-				$ret = $this->mTitle->getPrefixedText(). '/' . trim($noslash);
+				$ret = $this->mTitle->getPrefixedText(). '/' . trim($noslash) . $suffix;
 				if( '' === $text ) {
-					$text = $target;
+					$text = $target . $suffix;
 				} # this might be changed for ugliness reasons
 			} else {
 				# check for .. subpage backlinks
@@ -1964,13 +1971,14 @@ class Parser
 						if( substr( $nodotdot, -1, 1 ) == '/' ) {
 							$nodotdot = substr( $nodotdot, 0, -1 );
 							if( '' === $text ) {
-								$text = $nodotdot;
+								$text = $nodotdot . $suffix;
 							}
 						}
 						$nodotdot = trim( $nodotdot );
 						if( $nodotdot != '' ) {
 							$ret .= '/' . $nodotdot;
 						}
+						$ret .= $suffix;
 					}
 				}
 			}
@@ -4374,6 +4382,7 @@ class Parser
 		$ig->setShowBytes( false );
 		$ig->setShowFilename( false );
 		$ig->setParsing();
+		$ig->setAttributes( Sanitizer::validateTagAttributes( $params, 'table' ) );
 		$ig->useSkin( $this->mOptions->getSkin() );
 		$ig->mRevisionId = $this->mRevisionId;
 
@@ -4633,7 +4642,7 @@ class Parser
 		# now that we can be sure that no pseudo-sections are in the source,
 		# split it up by section
 		$uniq = preg_quote( $this->uniqPrefix(), '/' );
-		$comment = "(?:$uniq-!--.*?QINU)";
+		$comment = "(?:$uniq-!--.*?QINU\x07)";
 		$secs = preg_split(
 			"/
 			(
