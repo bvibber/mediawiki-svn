@@ -144,16 +144,21 @@ class SpecialContributors extends IncludableSpecialPage {
 		$contributors = $wgMemc->get( $k );
 		if( !$contributors ) {
 			$contributors = array();
-			$dbr =& wfGetDB( DB_SLAVE );
-			$rev = $dbr->tableName( 'revision' );
-			$aid = $this->target->getArticleId();
-			$sql = "SELECT COUNT(*) AS count, rev_user, rev_user_text FROM {$rev} WHERE rev_page = {$aid}";
-			$groupby = "GROUP BY rev_user_text";
-			if( !$dbr->implicitGroupby() )
-				$groupby .= ",rev_user";
-			$orderby = "ORDER BY count DESC";
-			$sql .= " $groupby $orderby";
-			$res = $dbr->query( $sql, __METHOD__ );
+			$dbr = wfGetDB( DB_SLAVE );
+			$res = $dbr->select(
+				'revision',
+				array(
+					'COUNT(*) AS count',
+					'rev_user',
+					'rev_user_text',
+				),
+				$this->getConditions(),
+				__METHOD__,
+				array(
+					'GROUP BY' => 'rev_user_text',
+					'ORDER BY' => 'count DESC',
+				)
+			);
 			if( $res && $dbr->numRows( $res ) > 0 ) {
 				while( $row = $dbr->fetchObject( $res ) )
 					$contributors[ $row->rev_user_text ] = array( $row->rev_user, $row->count );
@@ -162,6 +167,19 @@ class SpecialContributors extends IncludableSpecialPage {
 		}
 		wfProfileOut( __METHOD__ );
 		return $contributors;
+	}
+	
+	/**
+	 * Get conditions for the main query
+	 *
+	 * @return array
+	 */
+	private function getConditions() {
+		global $wgVersion;
+		$conds['rev_page'] = $this->target->getArticleId();
+		if( version_compare( $wgVersion, '1.11alpha', '>=' ) )
+			$conds[] = 'rev_deleted & ' . Revision::DELETED_USER . ' = 0';
+		return $conds;
 	}
 	
 	/**
