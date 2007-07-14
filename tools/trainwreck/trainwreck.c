@@ -99,6 +99,7 @@ regex_t *ignore_regex;
 
 static int execute_query(MYSQL *, char const *);
 
+#define ET_SYNC -2
 #define ET_QUERY 2
 #define ET_INTVAR 5
 #define ET_ROTATE 4
@@ -170,6 +171,10 @@ static int master_thread_stop;
 
 static writer_t the_writer;
 static void executed_up_to(writer_t *, char const *, logpos_t);
+static void sync_ack(writer_t *);
+static int nsyncs;
+static pthread_mutex_t sync_mtx = PTHREAD_MUTEX_INITIALIZER;
+static pthread_cond_t sync_cond = PTHREAD_COND_INITIALIZER;
 
 static int ctl_port;
 
@@ -565,6 +570,36 @@ unsigned long	 len;
 			strlcpy(ent->le_database, lastdb, sizeof(ent->le_database));
 
 		if (ent->le_type == ET_ROTATE && ent->le_time != 0) {
+		int	i;
+			/*
+			 * Insert an ET_SYNC event into every writer, and wait 
+			 * for all writers to sync.  This is needed to simplify 
+			 * binlog management.
+			 */
+			nsyncs = nwriters;
+			for (i = 0; i < nwriters; ++i) {
+			logentry_t	*ent;
+				ent = calloc(1, sizeof(*ent));
+				ent->le_type = ET_SYNC;
+				lq_put(&writers[i].wr_log_queue, ent);
+			}
+
+			pthread_mutex_lock(&sync_mtx);
+			while (nsyncs)
+				pthread_cond_wait(&sync_cond, &sync_mtx);
+			pthread_mutex_unlock(&sync_mtx);
+
+			/*
+			 * Set the saved position for all writers to the new 
+			 * log position.
+			 */
+			for (i = 0; i < nwriters; ++i)
+				executed_up_to(&writers[i], ent->le_info, 4);
+
+			/*
+			 * Now do the actual rotation.
+			 */
+
 			strdup_free(&curfile, ent->le_info);
 			curpos = 4;
 			logmsg("rotating to %s,4", curfile);
@@ -775,7 +810,8 @@ lq_put(q, e)
 lq_entry_t	*entry;
 	pthread_mutex_lock(&q->lq_mtx);
 	while (q->lq_entries >= max_buffer) {
-		logmsg("queue is full, sleeping...");
+		if (debug)
+			logmsg("queue is full, sleeping...");
 		pthread_mutex_unlock(&q->lq_mtx);
 		sleep(5);
 		pthread_mutex_lock(&q->lq_mtx);
@@ -908,7 +944,12 @@ char		 namebuf[16];
 			exit(1);
 		}
 
-		if (e->le_type == ET_INTVAR) {
+		switch (e->le_type) {
+		case ET_SYNC:
+			sync_ack(self);
+			break;
+
+		case ET_INTVAR: {
 		char	query[128];
 			snprintf(query, sizeof(query), "SET INSERT_ID=%llu",
 					(unsigned long long) e->le_insert_id);
@@ -920,7 +961,11 @@ char		 namebuf[16];
 					query);
 				exit(1);
 			}
-		} else if (e->le_type == ET_QUERY) {
+
+			break;
+		}
+
+		case ET_QUERY: {
 		char	*query;
 			query = e->le_info;
 			if (execute_query(self->wr_conn, query) != 0) {
@@ -932,11 +977,23 @@ char		 namebuf[16];
 				exit(1);
 			}
 			executed_up_to(self, e->le_file, e->le_pos);
+
+			break;
+		}
 		}
 		free_log_entry(e);
 		self->wr_status = ST_WAIT_FOR_ENTRY;
 	}
 	return NULL;
+}
+
+static void
+sync_ack(wr)
+	writer_t *wr;
+{
+	pthread_mutex_lock(&sync_mtx);
+	--nsyncs;
+	pthread_mutex_unlock(&sync_mtx);
 }
 
 static int
