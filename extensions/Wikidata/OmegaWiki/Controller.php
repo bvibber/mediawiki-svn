@@ -154,7 +154,7 @@ class DefinedMeaningAlternativeDefinitionController implements UpdateController 
 			$definitionIdAttribute;
 
 		$definitionId = $keyPath->peek(1)->getAttributeValue($definitionIdAttribute);
-		$languageId = $keyPath->peek(0)->$language;
+		$languageId = $keyPath->peek(0)->language;
 
 		removeTranslatedText($definitionId, $languageId);
 	}
@@ -205,7 +205,7 @@ class SynonymTranslationController implements UpdateController {
 		$expressionValue = $record->getAttributeValue($expressionAttribute);
 		
 		if ($this->filterLanguageId == 0) {
-			$languageId = $expressionValue->$language;
+			$languageId = $expressionValue->language;
 			$spelling = $expressionValue->getAttributeValue($spellingAttribute);
 		}
 		else {
