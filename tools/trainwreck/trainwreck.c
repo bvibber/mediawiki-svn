@@ -178,6 +178,8 @@ static pthread_mutex_t wi_mtx = PTHREAD_MUTEX_INITIALIZER;
 static pthread_cond_t wi_cond = PTHREAD_COND_INITIALIZER;
 static logpos_t lowest_log_pos;
 
+static int unsynced;
+
 #define CTL_STOP	1
 #define CTL_START	2
 #define CTL_SHUTDOWN	3
@@ -195,7 +197,7 @@ port_event_t	pe;
 
 	setup_status_door();
 
-	while ((c = getopt(argc, argv, "f:F:p:Da")) != -1) {
+	while ((c = getopt(argc, argv, "f:F:p:Dau")) != -1) {
 		switch (c) {
 		case 'a':
 			autostart = 1;
@@ -215,6 +217,10 @@ port_event_t	pe;
 
 		case 'D':
 			debug = 1;
+			break;
+
+		case 'u':
+			unsynced = 1;
 			break;
 
 		default:
@@ -281,7 +287,7 @@ static void
 usage()
 {
 	(void) fprintf(stderr,
-		       "usage: trainwreck [-d] [-f <cfg>] [-F binlog] [-p binlogpos]\n");
+		       "usage: trainwreck [-adu] [-f <cfg>] [-F binlog] [-p binlogpos]\n");
 }
 
 static void
@@ -546,6 +552,9 @@ unsigned long	 len;
 			logmsg("failed parsing binlog");
 			exit(1);
 		}
+
+		if (debug)
+			logmsg("got binlog event");
 
 		ent->le_file = strdup(curfile);
 		curpos = ent->le_pos;
@@ -1023,7 +1032,8 @@ char	buf[BINLOG_NAMELEN + 4];
 	int4store(buf, pos);
 	(void) strlcpy(buf + 4, log, sizeof(buf) - 4);
 	(void) write(writer->wr_rstat, buf, 4 + strlen(log));
-	(void) fdatasync(writer->wr_rstat);
+	if (!unsynced)
+		(void) fdatasync(writer->wr_rstat);
 }
 
 static int
