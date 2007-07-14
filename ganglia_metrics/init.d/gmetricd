@@ -2,7 +2,7 @@
 # chkconfig: 2345 20 80
 # description: gmetricd startup script
 #
-GMETRICD=/usr/bin/gmetricd
+GMETRICD=/usr/sbin/gmetricd
 
 . /etc/rc.d/init.d/functions
 

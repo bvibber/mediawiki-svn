@@ -1,14 +1,17 @@
-all: SelectServer.pyo GangliaMetrics.pyo gmetricd.pyo
+SOURCES=__init__.py gmetricd.py GangliaMetrics.py MySQLStats.py SelectServer.py
+OBJECTS=gmetricd.pyo GangliaMetrics.pyo MySQLStats.pyo SelectServer.pyo
+
+all: $(OBJECTS)
 
 clean: 
-	rm -f SelectServer.pyo GangliaMetrics.pyo gmetricd.pyo
+	rm -f $(OBJECTS)
 
 %.pyo : %.py
 	python -O -m py_compile $<
 
 install:
 	install -d $(DESTDIR)/usr/lib/ganglia-metrics
-	install -m644 gmetricd.py gmetricd.pyo __init__.py SelectServer.py SelectServer.pyo GangliaMetrics.py GangliaMetrics.pyo $(DESTDIR)/usr/lib/ganglia-metrics
+	install -m644 $(OBJECTS) $(SOURCES) $(DESTDIR)/usr/lib/ganglia-metrics
 	install -d $(DESTDIR)/usr/sbin
 	install -m755 gmetricd $(DESTDIR)/usr/sbin/gmetricd
 

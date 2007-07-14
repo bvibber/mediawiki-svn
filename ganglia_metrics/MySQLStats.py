@@ -60,7 +60,7 @@ class MySQLStats(MetricCollection):
 		return dom
 
 	def markDown(self):
-		self.metrics['mysql_questions'].set(None)
+		self.metrics['mysql_questions'].set(None, None)
 		self.metrics['mysql_threads_connected'].set(None)
 		self.metrics['mysql_threads_running'].set(None)
 		self.metrics['mysql_slave_lag'].set(None)
