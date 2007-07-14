@@ -155,7 +155,7 @@ SQL;
 		return $this->request->getVal('lqt_method') == $method;
 	}
 
-	function permalinkUrl( $thread, $method = null, $operand = null ) {
+	static function permalinkUrl( $thread, $method = null, $operand = null ) {
 		$query = $method ? "lqt_method=$method" : "";
 		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
 		return $thread->root()->getTitle()->getFullUrl($query);
@@ -163,12 +163,12 @@ SQL;
 
 	/* This is used for action=history so that the history tab works, which is
 	   why we break the lqt_method paradigm. */
-	function permalinkUrlWithQuery( $thread, $query ) {
+	static function permalinkUrlWithQuery( $thread, $query ) {
 		if ( is_array($query) ) $query = self::queryStringFromArray($query);
 		return $thread->root()->getTitle()->getFullUrl($query);
 	}
 
-	function talkpageUrl( $title, $method = null, $operand = null ) {
+	static function talkpageUrl( $title, $method = null, $operand = null ) {
 		$query = $method ? "lqt_method=$method" : "";
 		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
 		return $title->getFullURL( $query );
@@ -909,9 +909,14 @@ class ThreadHistoryPager extends PageHistoryPager {
 	 * @return string HTML output for the row
 	 */
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
-		
+		/* TODO: best not to refer to LqtView class directly. */
+		/* We don't use oldid because that has side-effects. */
+		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $row->hthread_revision );
+		return "<tr><td><a href=\"$url\">" . $row->hthread_revision . '</a></td></tr>';
 	}
-	
+	function getNotificationTimestamp() {
+		return "foo";
+	}
 /*
 	function formatRow( $row ) {
 		return '<li>' . $row->hthread_revision;
@@ -920,11 +925,11 @@ class ThreadHistoryPager extends PageHistoryPager {
 	function getStartBody() {
 		$this->mLastRow = false;
 		$this->mCounter = 1;
-		return 'start';
+		return '<table>';
 	}
 
 	function getEndBody() {
-		return "";
+		return "</table>";
 	}
 }
 
@@ -951,7 +956,7 @@ class ThreadHistoryView extends ThreadPermalinkView {
 		// but we still want to know about $t->article.
 		$this->article = $t->article(); # for creating reply threads.
 		
-		$this->output->setSubtitle("viewing a historical thread...");
+		$this->output->setSubtitle("Viewing a history listing.");
 				
 		$this->showThreadHeading($t);
 		$this->showHistoryListing($t);
