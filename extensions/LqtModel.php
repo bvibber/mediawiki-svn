@@ -204,12 +204,23 @@ class Thread {
 		return $results;
 	}
 	
+	private function bumpRevisions() {
+		$this->revisionNumber += 1;
+		if( $this->hasSuperthread() )
+			$this->superthread()->bumpRevisions();
+		$dbr =& wfGetDB( DB_MASTER );
+		$res = $dbr->update( 'thread',
+		     /* SET */ array('thread_revision' => $this->revisionNumber),
+		     /* WHERE */ array( 'thread_id' => $this->id ),
+		     __METHOD__);
+	}
+	
 	function commitRevision() {
 		// TODO open a transaction.
 		HistoricalThread::create( $this->double );
 
-		$this->revisionNumber += 1;
-
+		$this->bumpRevisions();
+	
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
 		     /* SET */array( 'thread_root' => $this->rootId,
