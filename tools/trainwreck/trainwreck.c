@@ -937,15 +937,18 @@ char		 namebuf[16];
 
 		self->wr_status = ST_EXECUTING;
 		self->wr_last_executed_time = e->le_time;
-		if (mysql_select_db(self->wr_conn, e->le_database) != 0) {
-			logmsg("%s,%lu: cannot select \"%s\": %s",
-				e->le_file, (unsigned long) e->le_pos,
-				e->le_database, mysql_error(self->wr_conn));
-			exit(1);
-		}
+		
+		if (e->le_database && *e->le_database)
+			if (mysql_select_db(self->wr_conn, e->le_database) != 0) {
+				logmsg("%s,%lu: cannot select \"%s\": %s",
+					e->le_file, (unsigned long) e->le_pos,
+					e->le_database, mysql_error(self->wr_conn));
+				exit(1);
+			}
 
 		switch (e->le_type) {
 		case ET_SYNC:
+			logmsg("syncing for binlog rotation...");
 			sync_ack(self);
 			break;
 
@@ -993,6 +996,7 @@ sync_ack(wr)
 {
 	pthread_mutex_lock(&sync_mtx);
 	--nsyncs;
+	pthread_cond_signal(&sync_cond);
 	pthread_mutex_unlock(&sync_mtx);
 }
 
