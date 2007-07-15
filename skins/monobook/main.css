@@ -79,17 +79,22 @@ li {
 	display: table; /* Occupy only the width of the text, */
 	width: auto;    /* not the entire available width.    */
 	
-	border: 1px solid #ddd;
+	border: 1px solid #c0c090;
+	background-color: #faeaba;
 	margin: 1em 0;
 	padding: .5em 1em;
 }
 .lqt_summary_notice a { font-weight: bold; }
 
 .lqt_thread_permalink_summary {
+margin-right: 5em;
+}
+.lqt_thread_permalink_summary_body {
+	background-color: #eee;
+	border: 1px solid #ddd;
 	clear: both;
-/*	border: solid 1px #ddd;*/
 	padding-left: 1em; padding-right: 1em;
-	margin: 3em 2em 0.7em 1em;
+	margin: 2em 1em 1em 1em;
 }
 .lqt_thread_permalink_summary_title {
 	float: left;
@@ -98,7 +103,7 @@ li {
 }
 .lqt_thread_permalink_summary_edit {
 	float: right;
-	margin-right: 2em;
+	margin-right: 1em;
 	font-weight: bold;
 	font-size: smaller;
 }

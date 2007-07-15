@@ -510,6 +510,7 @@ HTML;
 	function showSummary($t) {
 		if ( !$t->summary() ) return;
 		$this->output->addHTML(<<<HTML
+			<div class='lqt_thread_permalink_summary'>
 			<span class="lqt_thread_permalink_summary_title">
 			This thread has been summarized as follows:
 			</span><span class="lqt_thread_permalink_summary_edit">
@@ -517,8 +518,9 @@ HTML;
 			</span>
 HTML
 		);
-		$this->openDiv('lqt_thread_permalink_summary');
+		$this->openDiv('lqt_thread_permalink_summary_body');
 		$this->showPostBody($t->summary());
+		$this->closeDiv();
 		$this->closeDiv();
 	}
 
