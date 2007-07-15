@@ -101,6 +101,7 @@ class Post extends Article {
 class HistoricalThread extends Thread {
 	function __construct($t) {
 		$this->rootId = $t->rootId;
+		$this->rootRevision = $t->rootRevision;
 		$this->articleId = $t->articleId;
 		$this->summaryId = $t->summaryId;
 		$this->articleNamespace = $t->articleNamespace;
@@ -143,6 +144,7 @@ class HistoricalThread extends Thread {
 		else
 			return null;
 	}
+	function isHistorical() { return true; }
 }
 
 class Thread {
@@ -178,8 +180,14 @@ class Thread {
 	
 	protected $replies;
 	
+	function isHistorical() {return false;}
+	
 	function revisionNumber() {
 		return $this->revisionNumber;
+	}
+	
+	function atRevision($r) {
+		return HistoricalThread::withIdAtRevision($this->id(), $r);
 	}
 	
 	function historicalRevisions() {
@@ -322,7 +330,8 @@ class Thread {
 
 	function root() {
 		if ( !$this->rootId ) return null;
-		if ( !$this->root ) $this->root = new Post( Title::newFromID( $this->rootId ) );
+		if ( !$this->root ) $this->root = new Post( Title::newFromID( $this->rootId ),
+		                                            $this->rootRevision() );
 		return $this->root;
 	}
 	
@@ -332,6 +341,10 @@ class Thread {
 		} else if (is_int($rr)) {
 			$this->rootRevision = $rr;
 		}
+	}
+	
+	function rootRevision() {
+		return $this->rootRevision;
 	}
 	
 	function summary() {

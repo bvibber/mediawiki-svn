@@ -71,7 +71,7 @@ class LqtDispatch {
 
 $wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
 
-
+ 
 class LqtView {
 	protected $article;
 	protected $output;
@@ -359,14 +359,15 @@ HTML;
 	* Output methods         *
 	*************************/
 
-	function showPostBody( $post ) {
+	function showPostBody( $post, $oldid = null ) {
+		/* Why isn't this all encapsulated in Article somewhere? TODO */
 		global $wgEnableParserCache;
 
 		// Should the parser cache be used?
 		$pcache = $wgEnableParserCache &&
 		          intval( $this->user->getOption( 'stubthreshold' ) ) == 0 &&
 		          $post->exists() &&
-		          empty( $oldid ); // FIXME oldid
+				  $oldid === null;
 		wfDebug( 'LqtView::showPostBody using parser cache: ' . ($pcache ? 'yes' : 'no' ) . "\n" );
 		if ( $this->user->getOption( 'stubthreshold' ) ) {
 			wfIncrStats( 'pcache_miss_stub' );
@@ -379,7 +380,7 @@ HTML;
 
 		if (!$outputDone) {
 			// Cache miss; parse and output it.
-			$rev = Revision::newFromTitle( $post->getTitle() );
+			$rev = Revision::newFromTitle( $post->getTitle(), $oldid );
 			$this->output->addWikiText( $rev->getText() );
 		}
 	}
@@ -432,6 +433,8 @@ HTML;
 	function showRootPost( $thread ) {
 		$post = $thread->root();
 
+		$oldid = $thread->isHistorical() ? $thread->rootRevision() : null;
+
 /*		$color_number = $this->selectNewUserColor( $thread->root()->originalAuthor() );
 		$this->openDiv( "lqt_post lqt_post_color_$color_number" );*/
 		$this->openDiv( 'lqt_post' );
@@ -439,7 +442,7 @@ HTML;
 		if( $this->methodAppliesToThread( 'edit', $thread ) ) {
 			$this->showPostEditingForm( $thread );
 		} else{
-			$this->showPostBody( $post );
+			$this->showPostBody( $post, $oldid );
 			$this->showThreadFooter( $thread );
 		}
 		
@@ -833,7 +836,6 @@ HTML
 </table>
 	<input type="submit">
         $older $newer
-</table>
 </form>
 HTML
 );
@@ -975,9 +977,18 @@ class ThreadPermalinkView extends LqtView {
 			parent::showThreadHeading($thread);
 		}
 	}
+	
+	function noSuchRevision() {
+		$this->output->addHTML("There is no such revision of this thread.");
+	}
 
 	function show() {
 		$t = Threads::withRoot( $this->article );
+		$r = $this->request->getVal('lqt_oldid', null); if( $r ) {
+			$t = $t->atRevision($r);
+			if( !$t ) { $this->noSuchRevision(); return; }
+			
+		}
 		$this->thread = $t;
 
 		// TODO this is a holdover from the special page; not sure what's correct here.
@@ -1003,7 +1014,7 @@ class ThreadPermalinkView extends LqtView {
 		
 		if( $this->methodApplies('summarize') )
 			$this->showSummarizeForm($t);
-		
+
 		$this->showThread($t);
 	}
 }
