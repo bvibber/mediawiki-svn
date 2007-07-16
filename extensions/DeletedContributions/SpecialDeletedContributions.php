@@ -2,7 +2,7 @@
 /**
  @ Extension based on SpecialContributions for arhived revisions
  @ Modifications made to SpecialContributions.php
- @ copyright  2007 Aaron Schulz
+ @ copyright © 2007 Aaron Schulz
  */
 
 $wgExtensionCredits['specialpage'][] = array(
