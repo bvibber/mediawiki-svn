@@ -955,6 +955,7 @@ $wgMakesysopMessages['sv'] = array(
 	'makesysopname'        => 'Användarens namn:',
 	'makesysopsubmit'      => 'Ge den här användaren administratörsrättigheter',
 	'makesysopok'          => "<b>Användaren \"$1\" är nu administratör</b>",
+	'makebureaucratok'     => "<b>Användaren \"$1\" är nu byråkrat</b>",
 	'makesysopfail'        => "<b>Det gick inte att ge användaren \"$1\" administratörsrättigheter. (Skrev du rätt namn?)</b>",
 	'setbureaucratflag'    => 'Gör till byråkrat',
 	'rights'               => 'Rättigheter:',
@@ -1177,6 +1178,7 @@ $wgMakesysopMessages['zh-cn'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-hk'] = $wgMakesysopMessages['zh-hant'];
 $wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-yue'] = $wgMakesysopMessages['yue'];
+
 
 
 

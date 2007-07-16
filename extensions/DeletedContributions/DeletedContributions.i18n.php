@@ -30,6 +30,10 @@ $wgDeletedContribsMessages['sk'] = array(
 	'deletedcontributions' => 'Zmazané príspevky používateľa',
 );
 
+$wgDeletedContribsMessages['sv'] = array(
+	'deletedcontributions'		 => 'Raderade användarbidrag'
+);
+
 $wgDeletedContribsMessages['yue'] = array(
 	'deletedcontributions'		 => '已經刪除咗嘅用戶貢獻'
 );
@@ -47,5 +51,6 @@ $wgDeletedContribsMessages['zh-hk'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-sg'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-tw'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-yue'] = $wgDeletedContribsMessages['yue'];
+
 
 

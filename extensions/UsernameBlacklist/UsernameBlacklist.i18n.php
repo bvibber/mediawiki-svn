@@ -126,6 +126,12 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 'blacklistedusernametext' => 'Ngaran pamaké nu dipilih cocog jeung [[MediaWiki:Usernameblacklist|ngaran pamaké nu dicorét]]. Mangga pilih ngaran séjén.',
 ),
 
+/* Swedish */
+'sv' => array(
+'blacklistedusername' => 'Svartlistat användarnamn',
+'blacklistedusernametext' => 'Det användarnamn du vill använda är [[MediaWiki:Usernameblacklist|svartlistat]]. Välj ett annat namn.',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 'blacklistedusername' => '列入黑名單嘅用戶名',
@@ -160,6 +166,7 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 
 	return $single ? $messages['en'] : $messages;
 }
+
 
 
 
