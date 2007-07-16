@@ -2,7 +2,7 @@
 /**
  @ Extension based on SpecialContributions for arhived revisions
  @ Modifications made to SpecialContributions.php
- @ copyright © 2007 Aaron Schulz
+ @ copyright  2007 Aaron Schulz
  */
 
 $wgExtensionCredits['specialpage'][] = array(
@@ -16,21 +16,20 @@ $wgExtensionCredits['specialpage'][] = array(
 $wgExtensionFunctions[] = 'efLoadDeletedContribsMessages';
 
 global $wgHooks;
-$wgHooks['SpecialContribsSubEnd'][] = 'wfLoadContribsLink';
+$wgHooks['ContributionsToolLinks'][] = 'wfLoadContribsLink';
 
 /**
  * Add a "Deleted contributions" link to Special:Contributions for sysops.
  */
-function wfLoadContribsLink( $nt, &$links ) {
+function wfLoadContribsLink( $id, $nt, &$links ) {
 	global $wgUser;
-
-	# Only sysops (or those who can see deleted contribs) need the link.
-	if ( !$wgUser->isAllowed( 'deletedhistory' ) ) return true;
-
-	$sk = $wgUser->getSkin();
-
-	$links[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'DeletedContributions'),
-			wfMsg('deletedcontributions'), 'target=' . $nt->getPartialURL() );
+	if( $wgUser->isAllowed( 'deletedhistory' ) ) {
+		$links[] = $wgUser->getSkin()->makeKnownLinkObj(
+			SpecialPage::getTitleFor( 'DeletedContributions' ),
+			wfMsgHtml( 'deletedcontributions' ),
+			'target=' . $nt->getPartialUrl()
+		);
+	}
 	return true;
 }
 
