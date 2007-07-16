@@ -115,8 +115,60 @@ Pamätajte: \'\'\'Týmto spôsobom už svoje privilégiá nedostanete naspäť!\
 'resign-logentry' => 'odstránil svoje privilégiá $2',
 ),
 
+/* Cantonese (Shinjiman) */
+'yue' => array(
+'resign'           => '劈炮',
+'resign-text'      => "你可以響呢一版度'''拎走你嘅權限''' (好似操作員噉) 。請檢查清楚你需要去拎走嘅權限。
+
+記住: '''你唔可以用呢個方法攞番你嘅權限返來！'''你需要去說服一位事務員或者執行員去畀返你相應嘅權限。請小心噉利用呢一版。",
+'resign-reason'    => '原因:',
+'resign-confirm'   => '我確認我要拎走我已經剔咗嘅全部權限。',
+'resign-noconfirm' => '如果你要拎走你嘅權限，請檢查個確認方塊已經剔咗。',
+'resign-nogroups'  => '請檢查你要去拎走嘅權限。',
+'resign-success'   => "'''呢啲權限已經成功噉拎走咗。'''",
+'resign-logentry'  => '自己拎走咗$2權限',
+),
+
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
+'resign'           => '辞职',
+'resign-text'      => "您可以在响这一页面中'''移除阁下的的权限''' (好像操作员) 。请检查清楚您需要去移除的权限。
+
+紧记: '''您不可以用这个方法重新取得权限！'''您需要去说服一位行政员或者监管员去取回您相应的权限。请小心利用这个页面。",
+'resign-reason'    => '原因:',
+'resign-confirm'   => '我确认我要移除我已经剔选的所有权限。',
+'resign-noconfirm' => '如果您要移除您的权限，请检查个确认方块已经剔选。',
+'resign-nogroups'  => '请检查您要去移除的权限。',
+'resign-success'   => "'''这些权限已经成功地移除。'''",
+'resign-logentry'  => '自行移除了$2权限',
+),
+
+/* Chinese (Traditional) (Shinjiman) */
+'zh-hant' => array(
+'resign'           => '辭職',
+'resign-text'      => "您可以在響這一頁面中'''移除閣下的的權限''' (好像操作員) 。請檢查清楚您需要去移除嘅權限。
+
+緊記: '''您不可以用這個方法重新取得權限！'''您需要去說服一位行政員或者監管員去取回您相應的權限。請小心利用這個頁面。",
+'resign-reason'    => '原因:',
+'resign-confirm'   => '我確認我要移除我已經剔選的所有權限。',
+'resign-noconfirm' => '如果您要移除您的權限，請檢查個確認方塊已經剔選。',
+'resign-nogroups'  => '請檢查您要去移除的權限。',
+'resign-success'   => "'''這些權限已經成功地移除。'''",
+'resign-logentry'  => '自行移除了$2權限',
+),
+
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-sg'] = $messages['zh-hans'];
+	$messages['zh-tw'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
 	return $messages;
 }
+
 
 

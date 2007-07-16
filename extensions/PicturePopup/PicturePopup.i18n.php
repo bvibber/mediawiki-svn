@@ -20,6 +20,7 @@ function efPicturePopupMessages() {
 	'picturepopup_invalid_icon' => 'License template has missing or invalid imageLicenseIcon element',
 ),
 
+/* Arabic */
 'ar' => array(
 'picturepopup_invalid_title' => 'اسم صورة غير صحيح',
 'picturepopup_no_image' => 'الصورة غير موجودة',
@@ -99,12 +100,53 @@ function efPicturePopupMessages() {
 'picturepopup_no_license_text' => 'Šablóna licencie nemá značku s atribútom id=imageLicenseText',
 'picturepopup_invalid_icon' => 'Šablóna licencie má neplatnú alebo chýbajúcu značku s atribútom id=imageLicenseText',
 ),
+
+/* Cantonese */
+'yue' => array(
+	'picturepopup_invalid_title' => '唔正確嘅圖像標題',
+	'picturepopup_no_license' => '圖像冇牌照標籤',
+	'picturepopup_no_image' => '圖像唔存在',
+	'picturepopup_no_license_list' => '牌照清單係唔正確或者唔見咗',
+	'picturepopup_license_list' => 'Project:圖像版權標籤',
+	'picturepopup_no_license_text' => '牌照模冇一個叫 id=imageLicenseText 嘅元素',
+	'picturepopup_invalid_icon' => '牌照模唔見咗或者有唔正確嘅 imageLicenseIcon 元素',
+),
+
+/* Chinese (Simplified) */
+'zh-hans' => array(
+	'picturepopup_invalid_title' => '不正确的图像标题',
+	'picturepopup_no_license' => '图像没有协议标签',
+	'picturepopup_no_image' => '图像不存在',
+	'picturepopup_no_license_list' => '协议列表是不正确或遗失',
+	'picturepopup_license_list' => 'Project:图像版权标签',
+	'picturepopup_no_license_text' => '协议模版没有个名叫 id=imageLicenseText 的元素',
+	'picturepopup_invalid_icon' => '协议模版遗失或含有不正确的 imageLicenseIcon 元素',
+),
+
+/* Chinese (Traditional) */
+'zh-hant' => array(
+	'picturepopup_invalid_title' => '不正確的圖像標題',
+	'picturepopup_no_license' => '圖像沒有協議標籤',
+	'picturepopup_no_image' => '圖像不存在',
+	'picturepopup_no_license_list' => '協議列表是不正確或遺失',
+	'picturepopup_license_list' => 'Project:圖像版權標籤',
+	'picturepopup_no_license_text' => '協議模版沒有個名叫 id=imageLicenseText 的元素',
+	'picturepopup_invalid_icon' => '協議模版遺失或含有不正確的 imageLicenseIcon 元素',
+),
 	);
 
 	/* Kazakh default, fallback to kk-kz */
 	$messages['kk'] = $messages['kk-kz'];
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-sg'] = $messages['zh-hans'];
+	$messages['zh-tw'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
 
 	return $messages;
 }
+
 
 

@@ -345,8 +345,57 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Can aya kontribusi ka ieu wiki.',
 ),
 
+/* Cantonese (Shinjiman) */
+'yue' => array(
+'countedits' => '編輯數',
+'countedits-warning' => "'''警告:''' 唔好只憑封面去判斷一本書。唔好以佢哋嘅編輯數去判斷一位貢獻者。",
+'countedits-username' => '用戶名:',
+'countedits-ok' => 'OK',
+'countedits-nosuchuser' => '無一位叫做$1嘅用戶。',
+'countedits-resultheader' => '$1嘅結果',
+'countedits-resulttext' => '$1有$2次編輯',
+'countedits-mostactive' => '最活躍嘅貢獻者',
+'countedits-nocontribs' => '響呢個wiki度無貢獻。',
+),
+
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
+'countedits' => '编辑计量',
+'countedits-warning' => "'''警告:''' 不要只凭封面判断书本。不要以他们的编辑计量判断一位贡献者。",
+'countedits-username' => '用户名称:',
+'countedits-ok' => '确定',
+'countedits-nosuchuser' => '没有一位名叫$1的用户。',
+'countedits-resultheader' => '$1的结果',
+'countedits-resulttext' => '$1有$2次编辑',
+'countedits-mostactive' => '最活跃的贡献者',
+'countedits-nocontribs' => '在这个wiki中没有贡献。',
+),
+
+/* Chinese (Traditional) (Shinjiman) */
+'zh-hant' => array(
+'countedits' => '編輯計量',
+'countedits-warning' => "'''警告:''' 不要只憑封面判斷書本。不要以幾他們的編輯計量判斷一位貢獻者。",
+'countedits-username' => '用戶名稱:',
+'countedits-ok' => '確定',
+'countedits-nosuchuser' => '沒有一位名叫$1的用戶。',
+'countedits-resultheader' => '$1的結果',
+'countedits-resulttext' => '$1有$2次編輯',
+'countedits-mostactive' => '最活躍的貢獻者',
+'countedits-nocontribs' => '在這個wiki中沒有貢獻。',
+),
+
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-sg'] = $messages['zh-hans'];
+	$messages['zh-tw'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
 	return $single ? $messages['en'] : $messages;
 }
+
 
 
