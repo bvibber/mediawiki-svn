@@ -6,6 +6,7 @@ Features
 	* complete
 	* robust
 	* debug
+* Conceptmapper will use specialsuggest
 
 
 General Tidying (refactoring)
@@ -20,3 +21,9 @@ Deferred Items (take into account)
   but currently cheats and allows one to access any stored item
   by key. This should be revisited when the attribute system
   is refurbished.
+
+Unit Testing
+=========================
+* Extend unit testing framework to also safely test on its own database.
+  Since wikidata is somewhat database based, this should allow testing
+  of a majority of the code.

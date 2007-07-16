@@ -1,6 +1,13 @@
 <?php
 
-// Attribute names
+require_once("Wikidata.php"); 
+// Attribute names (OLD)
+// deprecated/ legacy code
+// these definitions can now be found in App.php
+// would replace all now, but I'd also need to go through
+// OmegaWikiEditors.php with a fine-toothed comb, which I don't
+// feel like doing right now:-P
+//do not use for new items
 
 global
 	$wgAlternativeDefinitionAttributeName,

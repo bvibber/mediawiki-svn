@@ -137,44 +137,34 @@ class DefinedMeaningModel {
 			return false;
 		}
 
-		global
-			$definedMeaningAttribute, 
-			$definitionAttribute, 
-			$classAttributesAttribute, 
-			$alternativeDefinitionsAttribute, 
-			$synonymsAndTranslationsAttribute,
-			$relationsAttribute, 
-			$reciprocalRelationsAttribute,
-			$classMembershipAttribute, 
-			$collectionMembershipAttribute, 
-			$definedMeaningAttributesAttribute,
-			$possiblySynonymousAttribute,
-			$definedMeaningCompleteDefiningExpressionAttribute;
-
 		$id=$this->getId();
 		$view=$this->getViewInformation();
 		/** FIXME: Records should be loaded using helpers rather than
 		  global functions! */
-		$record = new ArrayRecord($definedMeaningAttribute->type);
-		$record->setAttributeValue($definedMeaningCompleteDefiningExpressionAttribute, getDefiningExpressionRecord($id));
-		$record->setAttributeValue($definitionAttribute, getDefinedMeaningDefinitionRecord($id, $view));
-		$record->setAttributeValue($classAttributesAttribute, getClassAttributesRecordSet($id, $view));
-		$record->setAttributeValue($alternativeDefinitionsAttribute, getAlternativeDefinitionsRecordSet($id, $view));
-		$record->setAttributeValue($synonymsAndTranslationsAttribute, getSynonymAndTranslationRecordSet($id, $view));
+		global 
+			$omegaWikiAttributes;
+		$o=$omegaWikiAttributes;
+
+		$record = new ArrayRecord($o->definedMeaning->type);
+		$record->definedMeaningCompleteDefiningExpression =  getDefiningExpressionRecord($id);
+		$record->definition = getDefinedMeaningDefinitionRecord($id, $view);
+		$record->classAttributes = getClassAttributesRecordSet($id, $view);
+		$record->alternativeDefinitions = getAlternativeDefinitionsRecordSet($id, $view);
+		$record->synonymsAndTranslations = getSynonymAndTranslationRecordSet($id, $view);
 		$filterRelationTypes = array();
 	
 		if ($view->possiblySynonymousRelationTypeId != 0) {
-			$record->setAttributeValue($possiblySynonymousAttribute, getPossiblySynonymousRecordSet($id, $view));
+			$record->possiblySynonymous = getPossiblySynonymousRecordSet($id, $view);
 			$filterRelationTypes[] = $view->possiblySynonymousRelationTypeId;
 		}
 		
-		$record->setAttributeValue($relationsAttribute, getDefinedMeaningRelationsRecordSet($id, $filterRelationTypes, $view));
-		$record->setAttributeValue($reciprocalRelationsAttribute, getDefinedMeaningReciprocalRelationsRecordSet($id, $view));
-		$record->setAttributeValue($classMembershipAttribute, getDefinedMeaningClassMembershipRecordSet($id, $view));
-		$record->setAttributeValue($collectionMembershipAttribute, getDefinedMeaningCollectionMembershipRecordSet($id, $view));
+		$record->relations = getDefinedMeaningRelationsRecordSet($id, $filterRelationTypes, $view);
+		$record->reciprocalRelations = getDefinedMeaningReciprocalRelationsRecordSet($id, $view);
+		$record->classMembership = getDefinedMeaningClassMembershipRecordSet($id, $view);
+		$record->collectionMembership= getDefinedMeaningCollectionMembershipRecordSet($id, $view);
 		
 		$objectAttributesRecord = getObjectAttributesRecord($id, $view);
-		$record->setAttributeValue($definedMeaningAttributesAttribute, $objectAttributesRecord);
+		$record->definedMeaningAttributes = $objectAttributesRecord;
 		applyPropertyToColumnFiltersToRecord($record, $objectAttributesRecord, $view);
 		
 		$this->record=$record;
