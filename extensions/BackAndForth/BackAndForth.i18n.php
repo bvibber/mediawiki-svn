@@ -14,38 +14,31 @@
 function efBackAndForthMessages() {
 	$messages = array(
 
-/**
- * English
- */
 'en' => array(
 	'backforth-next' => 'Next ($1)',
 	'backforth-prev' => 'Previous ($1)',
 ),
 
-/**
- * Cantonese
- */
+'de' => array(
+	'backforth-next' => 'Nächste ($1)',
+	'backforth-prev' => 'Vorherige ($1)',
+),
+
 'yue' => array(
-	'backforth-next' => '??? ($1)',
-	'backforth-prev' => '??? ($1)',
+	'backforth-next' => '下一篇 ($1)',
+	'backforth-prev' => '上一篇 ($1)',
 ),
 
-/**
- * Chinese (Simplified)
- */
 'zh-hans' => array(
-	'backforth-next' => '??? ($1)',
-	'backforth-prev' => '??? ($1)',
+	'backforth-next' => '下一条 ($1)',
+	'backforth-prev' => '上一条 ($1)',
 ),
 
-/**
- * Chinese (Traditional)
- */
 'zh-hant' => array(
-	'backforth-next' => '??? ($1)',
-	'backforth-prev' => '??? ($1)',
+	'backforth-next' => '下一條 ($1)',
+	'backforth-prev' => '上一條 ($1)',
 ),
-	
+
 	);
 
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
