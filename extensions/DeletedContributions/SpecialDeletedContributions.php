@@ -15,6 +15,25 @@ $wgExtensionCredits['specialpage'][] = array(
 # Internationalisation
 $wgExtensionFunctions[] = 'efLoadDeletedContribsMessages';
 
+global $wgHooks;
+$wgHooks['SpecialContribsSubEnd'][] = 'wfLoadContribsLink';
+
+/**
+ * Add a "Deleted contributions" link to Special:Contributions for sysops.
+ */
+function wfLoadContribsLink( $nt, &$links ) {
+	global $wgUser;
+
+	# Only sysops (or those who can see deleted contribs) need the link.
+	if ( !$wgUser->isAllowed( 'deletedhistory' ) ) return true;
+
+	$sk = $wgUser->getSkin();
+
+	$links[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'DeletedContributions'),
+			wfMsg('deletedcontributions'), 'target=' . $nt->getPartialURL() );
+	return true;
+}
+
 function efLoadDeletedContribsMessages() {
 	global $wgMessageCache, $wgDeletedContribsMessages;
 	# Internationalization
