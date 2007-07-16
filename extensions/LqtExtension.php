@@ -27,9 +27,7 @@ class LqtDispatch {
 	static function talkpageMain(&$output, &$talk_article, &$title, &$user, &$request) {
 		// We are given a talkpage article and title. Find the associated
 		// non-talk article and pass that to the view.
-		$article_title = Title::makeTitle($title->getNamespace() - 1,
-		                                  $title->getDBkey());
-		$article = new Article($article_title);
+		$article = new Article($title->getSubjectPage());
 
 		if ( $request->getVal('lqt_method') == 'talkpage_archive' ) {
 			$viewname = self::$views['TalkpageArchiveView'];
