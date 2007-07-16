@@ -17,7 +17,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionCredits['specialpage'][] = array(
 			'name' => 'ProfileMonitor',
 			'author' => 'Rob Church',
-			'description' => 'Special page to expose profiling data',
+			'description' => 'Special page to search and inspect profiling data',
 	);
 	
 	function efProfileMonitor() {
