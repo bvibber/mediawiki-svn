@@ -30,9 +30,8 @@ require_once("ViewInformation.php");
  * to talk directly with the DB layer.
  *	-this is what RecordHelpers are for.
  */
-
 function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
-	 global
+	 global 
 		$omegaWikiAttributes; // It would be even better if this was
 					// passed to objects explicitly
 					// but one step at a time...
@@ -374,57 +373,278 @@ class OmegaWikiAttributes {
 	
 		global
 			$wgLanguageAttributeName, $wgSpellingAttributeName, $wgTextAttributeName;
-	
+		
 		$t->language = new Attribute("language", $wgLanguageAttributeName, "language");
 		$t->spelling = new Attribute("spelling", $wgSpellingAttributeName, "spelling");
-		$t->text= new Attribute("text", $wgTextAttributeName, "text");
+		$t->text = new Attribute("text", $wgTextAttributeName, "text");
 
-		/*	
-		$a->definedMeaningAttributes = new Attribute("defined-meaning-attributes", $wgDefinedMeaningAttributesAttributeName, "will-be-specified-below");
-		$a["objectAttributes"] = new Attribute("object-attributes", $wgAnnotationAttributeName, "will-be-specified-below");
-
-		# TODO replace with i18n
 		global
-			$expressionIdAttribute, $identicalMeaningAttribute;
+			$wgDefinedMeaningAttributesAttributeName, 
+			$wgDefinedMeaningAttributesAttributeName, $wgDefinedMeaningAttributesAttributeId, $wgAnnotationAttributeName;
 			
-		$a["expressionId"] = new Attribute("expression-id", "Expression Id", "expression-id");
-		$a["identicalMeaning"] = new Attribute("indentical-meaning", $wgIdenticalMeaningAttributeName, "boolean");
+		$t->definedMeaningAttributes = new Attribute("defined-meaning-attributes", $wgDefinedMeaningAttributesAttributeName, "will-be-specified-below");
+		$t->objectAttributes = new Attribute("object-attributes", $wgAnnotationAttributeName, "will-be-specified-below");
 		
-		#TODO replace with i18n
 		global
-			 $wgExpressionAttributeName;
+			  $wgIdenticalMeaningAttributeName;
+			
+		$t->expressionId = new Attribute("expression-id", "Expression Id", "expression-id");
+		$t->identicalMeaning = new Attribute("indentical-meaning", $wgIdenticalMeaningAttributeName, "boolean");
+		
+		global
+			  $wgExpressionAttributeName;
 		
 		if ($viewInformation->filterOnLanguage()) 
-			$a["expression"] = new Attribute("expression", $wgSpellingAttributeName, "spelling");
+			$t->expression = new Attribute("expression", $wgSpellingAttributeName, "spelling");
 		else {
-			$a["expressionStructure"] = new Structure("expression", $this->language, $this->spelling);
-			$a["expression"] = new Attribute(null, $wgExpressionAttributeName, $expressionStructure);
+			$t->expressionStructure = new Structure("expression", $t->language, $t->spelling);
+			$t->expression = new Attribute(null, $wgExpressionAttributeName, $t->expressionStructure);
 		}
 		
-		global
-			$definedMeaningIdAttribute, $definedMeaningDefiningExpressionAttribute,
-			$definedMeaningCompleteDefiningExpressionStructure,
-			$definedMeaningCompleteDefiningExpressionAttribute;
-		
-		$a["definedMeaningId"] = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
-		$a["definedMeaningDefiningExpression"] = new Attribute("defined-meaning-defining-expression", "Defined meaning defining expression", "short-text");
+		$t->definedMeaningId = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
+		$t->definedMeaningDefiningExpression = new Attribute("defined-meaning-defining-expression", "Defined meaning defining expression", "short-text");
 
-		$a["definedMeaningCompleteDefiningExpressionStructure"] = 
+		$t->definedMeaningCompleteDefiningExpressionStructure = 
 		new Structure("defined-meaning-full-defining-expression",
-			  $definedMeaningDefiningExpressionAttribute,
-			  $expressionIdAttribute,
-			  $
+			  $t->definedMeaningDefiningExpression,
+			  $t->expressionId,
+			  $t->language
 		);
-		$a["definedMeaningCompleteDefiningExpression"]=new Attribute(null, "Defining expression", $definedMeaningCompleteDefiningExpressionStructure);
-		);
-		*/
-	}
 
+		$t->definedMeaningCompleteDefiningExpression=new Attribute(null, "Defining expression", $t->definedMeaningCompleteDefiningExpressionStructure);
+
+
+		
+		global
+			  $definedMeaningReferenceType, $wgDefinedMeaningReferenceAttributeName;
+			
+		$t->definedMeaningLabel = new Attribute("defined-meaning-label", "Defined meaning label", "short-text");
+		$t->definedMeaningReferenceStructure = new Structure("defined-meaning", $t->definedMeaningId, $t->definedMeaningLabel, $t->definedMeaningDefiningExpression);
+
+		$definedMeaningReferenceType = $t->definedMeaningReferenceStructure;
+		$t->definedMeaningReference = new Attribute(null, $wgDefinedMeaningReferenceAttributeName, $definedMeaningReferenceType);
+		
+		global
+			$wgCollectionAttributeName, $wgSourceIdentifierAttributeName, $wgGotoSourceAttributeName;
+		
+		$t->collectionId = new Attribute("collection", "Collection", "collection-id");
+		$t->collectionMeaning = new Attribute("collection-meaning", $wgCollectionAttributeName, $t->definedMeaningReferenceStructure);
+		$t->sourceIdentifier = new Attribute("source-identifier", $wgSourceIdentifierAttributeName, "short-text");
+		$t->gotoSourceStructure = new Structure("goto-source",$t->collectionId, $t->sourceIdentifier);
+		$t->gotoSource = new Attribute(null, $wgGotoSourceAttributeName, $t->gotoSourceStructure); 
+		
+		global
+			 $wgCollectionMembershipAttributeName, $wgCollectionMembershipAttributeId;
+		
+		$t->collectionMembershipStructure = new Structure("collection-membership",$t->collectionId, $t->collectionMeaning, $t->sourceIdentifier);
+		$t->collectionMembership = new Attribute(null, $wgCollectionMembershipAttributeName, $t->collectionMembershipStructure);
+		
+		$t->classMembershipId = new Attribute("class-membership-id", "Class membership id", "integer");	 
+		$t->class = new Attribute("class", "Class", $t->definedMeaningReferenceStructure);
+			
+		global
+			$wgClassMembershipAttributeName, $wgClassMembershipAttributeId;
+		
+		$t->classMembershipStructure = new Structure("class-membership", $t->classMembershipId, $t->class);
+		$t->classMembership = new Attribute(null, $wgClassMembershipAttributeName, $t->classMembershipStructure);
+		
+		global
+			 $wgPossibleSynonymAttributeName,   
+			 $wgPossiblySynonymousAttributeName, $wgPossiblySynonymousAttributeId;
+			 
+		$t->possiblySynonymousId = new Attribute("possibly-synonymous-id", "Possibly synonymous id", "integer");	 
+		$t->possibleSynonym = new Attribute("possible-synonym", $wgPossibleSynonymAttributeName, $t->definedMeaningReferenceStructure);
+		# Bug found ... This never worked before: (!)
+		#$t->possiblySynonymousStructure = new Structure("possibly-synonymous", $t->possiblySynonymousId, $t->possiblySynonymous);
+		$t->possiblySynonymousStructure = new Structure("possibly-synonymous", $t->possiblySynonymousId, $t->possibleSynonym);
+		$t->possiblySynonymous = new Attribute(null, $wgPossiblySynonymousAttributeName, $t->possiblySynonymousStructure);
+
+		global
+			  $relationTypeType, 
+			$wgRelationTypeAttributeName, $wgOtherDefinedMeaningAttributeName;
+		
+		$t->relationId = new Attribute("relation-id", "Relation identifier", "object-id");
+		$t->relationType = new Attribute("relation-type", $wgRelationTypeAttributeName, $t->definedMeaningReferenceStructure); 
+		$t->otherDefinedMeaning = new Attribute("other-defined-meaning", $wgOtherDefinedMeaningAttributeName, $definedMeaningReferenceType);
+		
+		global
+			    $wgRelationsAttributeName, $wgIncomingRelationsAttributeName, $wgRelationsAttributeId, $wgIncomingRelationsAttributeId ;
+			
+		$t->relationStructure = new Structure("relations", $t->relationId, $t->relationType, $t->otherDefinedMeaning, $t->objectAttributes);
+		$t->relations = new Attribute(null, $wgRelationsAttributeName, $t->relationStructure);
+		$t->reciprocalRelations = new Attribute("reciprocal-relations", $wgIncomingRelationsAttributeName, $t->relationStructure);
+		
+		$t->translatedTextId = new Attribute("translated-text-id", "Translated text ID", "integer");	
+		$t->translatedTextStructure = new Structure("translated-text", $t->language, $t->text);	
+		
+		global
+			$wgAlternativeDefinitionAttributeName, $wgSourceAttributeName;
+		
+		$t->definitionId = new Attribute("definition-id", "Definition identifier", "integer");
+
+		if ($viewInformation->filterOnLanguage() && !$viewInformation->hasMetaDataAttributes())
+			$t->alternativeDefinition = new Attribute("alternative-definition", $wgAlternativeDefinitionAttributeName, "text");
+		else
+			$t->alternativeDefinition = new Attribute("alternative-definition", $wgAlternativeDefinitionAttributeName, $t->translatedTextStructure);
+		
+		$t->source = new Attribute("source-id", $wgSourceAttributeName, $definedMeaningReferenceType);
+		
+		global
+			 $wgAlternativeDefinitionsAttributeName, $wgAlternativeDefinitionsAttributeId;
+			
+		$t->alternativeDefinitionsStructure =  new Structure("alternative-definitions", $t->definitionId, $t->alternativeDefinition, $t->source);
+			
+		$t->alternativeDefinitions = new Attribute(null, $wgAlternativeDefinitionsAttributeName, $t->alternativeDefinitionsStructure);
+		
+		global
+			$wgSynonymsAttributeName, $wgSynonymsAndTranslationsAttributeName, $wgSynonymsAndTranslationsAttributeId;
+		
+		if ($viewInformation->filterOnLanguage())
+			$synonymsAndTranslationsCaption = $wgSynonymsAttributeName;
+		else
+			$synonymsAndTranslationsCaption = $wgSynonymsAndTranslationsAttributeName;
+
+		$t->syntransId = new Attribute("syntrans-id", "$synonymsAndTranslationsCaption identifier", "integer");
+		$t->synonymsTranslationsStructure = new Structure("synonyms-translations", $t->syntransId, $t->expression, $t->identicalMeaning, $t->objectAttributes);
+		$t->synonymsAndTranslations = new Attribute(null, "$synonymsAndTranslationsCaption", $t->synonymsTranslationsStructure);
+		
+		global
+			 $wgTranslatedTextAttributeValuesAttributeName, $wgTranslatedTextAttributeAttributeName, $wgTranslatedTextAttributeValueAttributeName;
+		
+		$t->translatedTextAttributeId = new Attribute("translated-text-attribute-id", "Attribute identifier", "object-id");
+		$t->translatedTextAttributeObject = new Attribute("translated-text-attribute-object-id", "Attribute object", "object-id");
+		$t->translatedTextAttribute = new Attribute("translated-text-attribute", $wgTranslatedTextAttributeAttributeName, $definedMeaningReferenceType);
+		$t->translatedTextValueId = new Attribute("translated-text-value-id", "Translated text value identifier", "translated-text-value-id");
+		
+		if ($viewInformation->filterOnLanguage() && !$viewInformation->hasMetaDataAttributes())
+			$t->translatedTextValue = new Attribute("translated-text-value", $wgTranslatedTextAttributeValueAttributeName, "text");
+		else
+			$t->translatedTextValue = new Attribute("translated-text", $wgTranslatedTextAttributeValueAttributeName, $t->translatedTextStructure);
+		
+		$t->translatedTextAttributeValuesStructure = new Structure("translated-text-attribute-values",$t->translatedTextAttributeId, $t->translatedTextAttributeObject, $t->translatedTextAttribute, $t->translatedTextValueId, $t->translatedTextValue, $t->objectAttributes);
+		$t->translatedTextAttributeValues = new Attribute(null, $wgTranslatedTextAttributeValuesAttributeName, $t->translatedTextAttributeValuesStructure);
+		
+		global
+			$wgTextAttributeValuesAttributeName, $wgTextAttributeAttributeName;
+		
+		$t->textAttributeId = new Attribute("text-attribute-id", "Attribute identifier", "object-id");
+		$t->textAttributeObject = new Attribute("text-attribute-object-id", "Attribute object", "object-id");
+		$t->textAttribute = new Attribute("text-attribute", $wgTextAttributeAttributeName, $t->definedMeaningReferenceStructure);
+		$t->textAttributeValuesStructure = new Structure("text-attribute-values", $t->textAttributeId, $t->textAttributeObject, $t->textAttribute, $t->text, $t->objectAttributes);	
+		$t->textAttributeValues = new Attribute(null, $wgTextAttributeValuesAttributeName, $t->textAttributeValuesStructure);
+
+		global
+			$wgLinkAttributeValuesAttributeName, $wgLinkAttributeAttributeName;
+			
+		$t->linkLabel = new Attribute("label", "Label", "short-text"); 
+		$t->linkURL = new Attribute("url", "URL", "url");
+		$t->link = new Attribute("link", "Link", new Structure($t->linkLabel, $t->linkURL));
+		
+		$t->linkAttributeId = new Attribute("link-attribute-id", "Attribute identifier", "object-id");
+		$t->linkAttributeObject = new Attribute("link-attribute-object-id", "Attribute object", "object-id");
+		$t->linkAttribute = new Attribute("link-attribute", $wgLinkAttributeAttributeName, $t->definedMeaningReferenceStructure);
+		$t->linkAttributeValuesStructure = new Structure("link-attribute-values", $t->linkAttributeId, $t->linkAttributeObject, $t->linkAttribute, $t->link, $t->objectAttributes);	
+		$t->linkAttributeValues = new Attribute(null, $wgLinkAttributeValuesAttributeName, $t->linkAttributeValuesStructure);
+		
+		global
+			$wgOptionAttributeAttributeName, $wgOptionAttributeOptionAttributeName, $wgOptionAttributeValuesAttributeName;
+		
+		$t->optionAttributeId = new Attribute('option-attribute-id', 'Attribute identifier', 'object-id');
+		$t->optionAttributeObject = new Attribute('option-attribute-object-id', 'Attribute object', 'object-id');
+		$t->optionAttribute = new Attribute('option-attribute', $wgOptionAttributeAttributeName, $definedMeaningReferenceType);
+		$t->optionAttributeOption = new Attribute('option-attribute-option', $wgOptionAttributeOptionAttributeName, $definedMeaningReferenceType);
+		$t->optionAttributeValuesStructure = new Structure('option-attribute-values', $t->optionAttributeId, $t->optionAttribute, $t->optionAttributeObject, $t->optionAttributeOption, $t->objectAttributes);
+		$t->optionAttributeValues = new Attribute(null, $wgOptionAttributeValuesAttributeName, $t->optionAttributeValuesStructure);
+		
+		global
+			  $wgOptionAttributeOptionsAttributeName;
+			
+		$t->optionAttributeOptionId = new Attribute('option-attribute-option-id', 'Option identifier', 'object-id');
+		$t->optionAttributeOptionsStructure = new Structure('option-attribute-options', $t->optionAttributeOptionId, $t->optionAttribute, $t->optionAttributeOption, $t->language);
+		$t->optionAttributeOptions = new Attribute(null, $wgOptionAttributeOptionsAttributeName, $t->optionAttributeOptionsStructure);
+		
+		global
+			$wgDefinitionAttributeName, $wgTranslatedTextAttributeName;
+		
+		if ($viewInformation->filterOnLanguage() && !$viewInformation->hasMetaDataAttributes())
+			$t->translatedText = new Attribute("translated-text", $wgTextAttributeName, "text");	
+		else
+			$t->translatedText = new Attribute(null, $wgTranslatedTextAttributeName, $t->translatedTextStructure);
+			
+		$t->definition = new Attribute(null, $wgDefinitionAttributeName, new Structure("definition", $t->translatedText, $t->objectAttributes));
+
+		global
+			$wgClassAttributeAttributeAttributeName, $wgClassAttributeLevelAttributeName, 
+			$wgClassAttributeTypeAttributeName, $wgClassAttributesAttributeName, $wgClassAttributesAttributeId;
+		
+		$t->classAttributeId = new Attribute("class-attribute-id", "Class attribute identifier", "object-id");
+		$t->classAttributeAttribute = new Attribute("class-attribute-attribute", $wgClassAttributeAttributeAttributeName, $t->definedMeaningReferenceStructure);
+		$t->classAttributeLevel = new Attribute("class-attribute-level", $wgClassAttributeLevelAttributeName, $t->definedMeaningReferenceStructure);
+		$t->classAttributeType = new Attribute("class-attribute-type", $wgClassAttributeTypeAttributeName, "short-text");
+		$t->classAttributesStructure = new Structure("class-attributes", $t->classAttributeId, $t->classAttributeAttribute, $t->classAttributeLevel, $t->classAttributeType, $t->optionAttributeOptions);
+		$t->classAttributes = new Attribute(null, $wgClassAttributesAttributeName, $t->classAttributesStructure);
+		
+		global
+			 $wgDefinedMeaningAttributeName;
+
+		$t->definedMeaning = new Attribute(null, $wgDefinedMeaningAttributeName, 
+			new Structure(
+				"defined-meaning",
+				$t->definition, 
+				$t->classAttributes, 
+				$t->alternativeDefinitions, 
+				$t->synonymsAndTranslations, 
+				$t->relations, 
+				$t->reciprocalRelations, 
+				$t->classMembership, 
+				$t->collectionMembership, 
+				$t->definedMeaningAttributes)
+		);
+
+		global
+			$wgExactMeaningsAttributeName, $wgApproximateMeaningsAttributeName;
+			
+		$t->expressionMeaningStructure = new Structure("expression-exact-meanings", $t->definedMeaningId, $t->text, $t->definedMeaning); 	
+		$t->expressionExactMeanings = new Attribute(null, $wgExactMeaningsAttributeName, $t->expressionMeaningStructure);
+		$t->expressionApproximateMeanings = new Attribute("expression-approximate-meanings", $wgApproximateMeaningsAttributeName, $t->expressionMeaningStructure);
+		
+		global
+			$wgExpressionMeaningsAttributeName, $wgExpressionsAttributeName;
+		
+		# bug found here also: $t->expressionAoproximateMeaning_S_	
+		$t->expressionMeaningsStructure = new Structure("expression-meanings", $t->expressionExactMeanings, $t->expressionApproximateMeanings);
+		$t->expressionMeanings = new Attribute(null, $wgExpressionMeaningsAttributeName, $t->expressionMeaningsStructure);
+		
+		$t->expressionsStructure = new Structure("expressions", $t->expressionId, $t->expression, $t->expressionMeanings);
+		$t->expressions = new Attribute(null, $wgExpressionsAttributeName, $t->expressionsStructure);
+		
+		global
+			  $wgAnnotationAttributeName;
+		
+		$t->objectId = new Attribute("object-id", "Object identifier", "object-id");
+		$t->objectAttributesStructure = new Structure("object-attributes", $t->objectId, $t->textAttributeValues, $t->translatedTextAttributeValues, $t->optionAttributeValues);
+		$t->objectAttributes->setAttributeType($t->objectAttributesStructure);
+		$t->definedMeaningAttributes->setAttributeType($t->objectAttributesStructure);
+		
+		$t->annotatedAttributes = array(
+			$t->definition, 
+			$t->synonymsAndTranslations, 
+			$t->relations,
+			$t->reciprocalRelations
+		);
+		
+		foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) {
+			$attribute = $propertyToColumnFilter->getAttribute();
+			$attribute->setAttributeType($t->objectAttributesStructure);
+			
+			foreach ($t->annotatedAttributes as $annotatedAttribute) 		
+				$annotatedAttribute->type->addAttribute($attribute);
+		}
+	}
 
 	protected function __set($key,$value) {
 		$attributes=&$this->attributes;
 		$attributes[$key]=$value;
-		
 	}
 	
 	public function __get($key) {
