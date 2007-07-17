@@ -1,3 +1,0 @@
-* Test Test::More's STDOUT on equivalent php:Test.php tests and change
-  it to Test::More's where they differ, this'll make it less error
-  prone for harness utilities.

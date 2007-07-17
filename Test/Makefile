@@ -1,2 +1,0 @@
-test:
-	prove t/*.t
