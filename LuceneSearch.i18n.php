@@ -128,7 +128,7 @@ Hakulauseke $3 $9 $10',
 	'searchincategory'      => 'luokassa',
 );
 $wgLuceneSearchMessages['fr'] = array(
-	'searchnumber'          => "<strong>Résultats $1-$2 sur $3</strong>",
+	'searchnumber'          => "<strong>Résultats $1 – $2 sur $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Préc.</span>",
 	'searchnext'            => "<span style='font-size: small'>Suiv.</span> &#x00BB;",
 	'searchscore'           => "Pertinence : $1",
@@ -140,9 +140,8 @@ $wgLuceneSearchMessages['fr'] = array(
 	'lucenepowersearchtext' => "
 Rechercher dans les espaces : $1 <br/>
 Texte à rechercher : $3 $9 $10",
-	'lucenefallback'        => "
-Un problème est survenu avec la recherche wiki. 
-Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d’utiliser un service de recherche externe."
+	'lucenefallback'        => "Un problème est survenu avec la recherche wiki. Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d’utiliser un service de recherche externe.",
+	'searchexactcase'       => 'Rechercher (sensible à la casse)',
 );
 $wgLuceneSearchMessages['he'] = array(
 	'searchnumber'          => "<strong>תוצאות $1-$2 מתוך $3</strong>",
@@ -588,5 +587,6 @@ $wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-hant'];
 $wgLuceneSearchMessages['zh-sg'] = $wgLuceneSearchMessages['zh-hans'];
 $wgLuceneSearchMessages['zh-tw'] = $wgLuceneSearchMessages['zh-hant'];
 $wgLuceneSearchMessages['zh-yue'] = $wgLuceneSearchMessages['yue'];
+
 
 
