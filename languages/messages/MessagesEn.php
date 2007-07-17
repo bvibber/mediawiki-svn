@@ -566,6 +566,7 @@ XHTML id names.
 'category_header'       => 'Articles in category "$1"',
 'subcategories'         => 'Subcategories',
 'category-media-header' => 'Media in category "$1"',
+'category-empty'        => "''This category contains currently no articles or media.''",
 
 'linkprefix'        => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD', # only translate this message to other languages if you have to change it
 'mainpagetext'      => "<big>'''MediaWiki has been successfully installed.'''</big>",
@@ -1421,6 +1422,7 @@ If you have this image in full resolution upload this one, otherwise change the 
 'license'            => 'Licensing',
 'nolicense'          => 'None selected',
 'licenses'           => '-', # don't translate or duplicate this message to other languages
+'license-nopreview'  => '(Preview not available)',
 'upload_source_url'  => ' (a valid, publicly accessible URL)',
 'upload_source_file' => ' (a file on your computer)',
 
@@ -1875,9 +1877,9 @@ revision may have been restored or removed from the archive.',
 'undeletereset'            => 'Reset',
 'undeletecomment'          => 'Comment:',
 'undeletedarticle'         => 'restored "[[$1]]"',
-'undeletedrevisions'       => '$1 {{PLURAL:$1|revision|revisions}} restored',
-'undeletedrevisions-files' => '$1 {{PLURAL:$1|revision|revisions}} and $2 {{PLURAL:$2|file|files}} restored',
-'undeletedfiles'           => '$1 {{PLURAL:$1|file|files}} restored',
+'undeletedrevisions'       => '$1 revision(s) restored',
+'undeletedrevisions-files' => '$1 revision(s) and $2 file(s) restored',
+'undeletedfiles'           => '$1 file(s) restored',
 'cannotundelete'           => 'Undelete failed; someone else may have undeleted the page first.',
 'undeletedpage'            => "<big>'''$1 has been restored'''</big>
 
@@ -1913,6 +1915,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'sp-contributions-search'      => 'Search for contributions',
 'sp-contributions-username'    => 'IP Address or username:',
 'sp-contributions-submit'      => 'Search',
+'sp-contributions-explain'     => '', # only translate this message to other languages if you have to change it
 'sp-contributions-footer'      => '-', # don't translate or duplicate this message to other languages
 'sp-contributions-footer-anon' => '-', # don't translate or duplicate this message to other languages
 
@@ -1923,8 +1926,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'whatlinkshere-summary' => '', # only translate this message to other languages if you have to change it
 'whatlinkshere-barrow'  => '&lt;', # only translate this message to other languages if you have to change it
 'notargettitle'         => 'No target',
-'notargettext'          => 'You have not specified a target page or user
-to perform this function on.',
+'notargettext'          => 'You have not specified a target page or user to perform this function on.',
 'linklistsub'           => '(List of links)',
 'linkshere'             => "The following pages link to '''[[:$1]]''':",
 'nolinkshere'           => "No pages link to '''[[:$1]]'''.",
@@ -2016,7 +2018,7 @@ the list of currently operational bans and blocks.',
 'ipb_cant_unblock'            => 'Error: Block ID $1 not found. It may have been unblocked already.',
 'proxyblockreason'            => 'Your IP address has been blocked because it is an open proxy. Please contact your Internet service provider or tech support and inform them of this serious security problem.',
 'proxyblocksuccess'           => 'Done.',
-'sorbs'                       => 'DNSBL',
+'sorbs'                       => 'DNSBL', # only translate this message to other languages if you have to change it
 'sorbsreason'                 => 'Your IP address is listed as an open proxy in the DNSBL used by this site.',
 'sorbs_create_account_reason' => 'Your IP address is listed as an open proxy in the DNSBL used by this site. You cannot create an account',
 
@@ -2112,13 +2114,14 @@ To export pages, enter the titles in the text box below, one title per line, and
 select whether you want the current version as well as all old versions, with the page
 history lines, or just the current version with the info about the last edit.
 
-In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] for the page {{MediaWiki:mainpage}}.',
+In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] for the page "[[{{MediaWiki:mainpage}}]]".',
 'exportcuronly'     => 'Include only the current revision, not the full history',
 'exportnohistory'   => "----
 '''Note:''' Exporting the full history of pages through this form has been disabled due to performance reasons.",
 'export-submit'     => 'Export',
 'export-addcattext' => 'Add pages from category:',
 'export-addcat'     => 'Add',
+'export-download'   => 'Offer to save as a file',
 
 # Namespace 8 related
 'allmessages'               => 'System messages',
@@ -2321,7 +2324,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'subcategorycount'       => 'There {{PLURAL:$1|is one subcategory|are $1 subcategories}} to this category.',
 'categoryarticlecount'   => 'There {{PLURAL:$1|is one article|are $1 articles}} in this category.',
 'category-media-count'   => 'There {{PLURAL:$1|is one file|are $1 files}} in this category.',
-'listingcontinuesabbrev' => ' cont.',
+'listingcontinuesabbrev' => 'cont.',
 'spambot_username'       => 'MediaWiki spam cleanup',
 'spam_reverting'         => 'Reverting to last version not containing links to $1',
 'spam_blanking'          => 'All revisions contained links to $1, blanking',

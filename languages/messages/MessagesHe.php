@@ -287,6 +287,7 @@ $messages = array(
 'category_header'       => 'דפים בקטגוריה "$1"',
 'subcategories'         => 'קטגוריות משנה',
 'category-media-header' => 'קבצי מדיה בקטגוריה "$1"',
+'category-empty'        => "''קטגוריה זו אינה כוללת דפים או קבצי מדיה.''",
 
 'mainpagetext'      => "'''תוכנת מדיה־ויקי הותקנה בהצלחה.'''",
 'mainpagedocfooter' => 'היעזרו ב[http://meta.wikimedia.org/wiki/Help:Contents מדריך למשתמש] למידע על שימוש בתוכנת הוויקי.
@@ -1083,6 +1084,7 @@ $messages = array(
 
 'license'            => 'רישיון',
 'nolicense'          => 'אין',
+'license-nopreview'  => '(תצוגה מקדימה לא זמינה)',
 'upload_source_url'  => ' (כתובת URL תקפה ונגישה)',
 'upload_source_file' => ' (קובץ במחשב שלך)',
 
@@ -1459,9 +1461,9 @@ $NEWPAGE
 'undeletereset'            => 'איפוס',
 'undeletecomment'          => 'תקציר:',
 'undeletedarticle'         => 'שחזר את "[[$1]]"',
-'undeletedrevisions'       => 'שחזר {{plural:$1|גרסה אחת|$1 גרסאות}}',
-'undeletedrevisions-files' => 'שחזר {{plural:$1|גרסה אחת|$1 גרסאות}} ו{{plural:$2|קובץ אחד|־$2 קבצים}}',
-'undeletedfiles'           => 'שחזר {{plural:$1|קובץ אחד|$1 קבצים}}',
+'undeletedrevisions'       => 'שחזר $1 גרסאות',
+'undeletedrevisions-files' => 'שחזר $1 גרסאות ו־$2 קבצים',
+'undeletedfiles'           => 'שחזר $1 קבצים',
 'cannotundelete'           => 'השחזור נכשל; ייתכן שמישהו אחר כבר שחזר את הדף.',
 'undeletedpage'            => "'''הדף $1 שוחזר בהצלחה.'''
 
@@ -1593,7 +1595,6 @@ $NEWPAGE
 'ipb_cant_unblock'            => 'שגיאה: חסימה מספר $1 לא נמצאה. ייתכן שהיא כבר שוחררה.',
 'proxyblockreason'            => 'כתובת ה־IP שלכם נחסמה משום שהיא כתובת פרוקסי פתוחה. אנא צרו קשר עם ספק האינטרנט שלכם והודיעו לו על בעיית האבטחה החמורה הזו.',
 'proxyblocksuccess'           => 'בוצע.',
-'sorbs'                       => 'SORBS',
 'sorbsreason'                 => 'כתובת ה־IP שלכם רשומה ככתובת פרוקסי פתוחה ב־DNSBL שאתר זה משתמש בו.',
 'sorbs_create_account_reason' => 'כתובת ה־IP שלכם רשומה ככתובת פרוקסי פתוחה ב־DNSBL שאתר זה משתמש בו. אינכם יכולים ליצור חשבון.',
 
@@ -1672,13 +1673,14 @@ $NEWPAGE
 
 כדי לייצא דפים, הקישו את שמותיהם בתיבת הטקסט שלהלן, כל שם בשורה נפרדת, ובחרו האם לייצא גם את הגרסה הנוכחית וגם את היסטוריית השינויים של הדפים, או רק את הגרסה הנוכחית עם מידע על העריכה האחרונה.
 
-בנוסף, ניתן להשתמש בקישור, כגון [[{{ns:special}}:Export/{{int:mainpage}}]] לדף {{int:mainpage}} ללא היסטוריית השינויים שלו.',
+בנוסף, ניתן להשתמש בקישור, כגון [[{{ns:special}}:Export/{{int:mainpage}}]] לדף "[[{{int:mainpage}}]]" ללא היסטוריית השינויים שלו.',
 'exportcuronly'     => 'כלול רק את הגרסה הנוכחית, ללא כל ההיסטוריה',
 'exportnohistory'   => "----
 '''הערה:''' ייצוא ההיסטוריה המלאה של דפים דרך טופס זה הופסקה עקב בעיות ביצוע.",
 'export-submit'     => 'ייצוא',
 'export-addcattext' => 'הוספת דפים מהקטגוריה:',
 'export-addcat'     => 'הוספה',
+'export-download'   => 'שמור כקובץ',
 
 # Namespace 8 related
 'allmessages'               => 'הודעות המערכת',
@@ -1827,7 +1829,7 @@ $NEWPAGE
 'subcategorycount'       => '{{plural:$1|ישנה קטגוריית משנה אחת|ישנן $1 קטגוריות משנה}} בקטגוריה זו.',
 'categoryarticlecount'   => '{{plural:$1|ישנו דף אחד|ישנם $1 דפים}} בקטגוריה זו.',
 'category-media-count'   => '{{plural:$1|ישנו קובץ אחד|ישנם $1 קבצים}} בקטגוריה זו.',
-'listingcontinuesabbrev' => ' (המשך)',
+'listingcontinuesabbrev' => '(המשך)',
 'spambot_username'       => 'MediaWiki spam cleanup',
 'spam_reverting'         => 'שחזור לגרסה אחרונה שלא כוללת קישורים ל־$1',
 'spam_blanking'          => 'כל הגרסאות כוללות קישורים ל־$1, מרוקן את הדף',

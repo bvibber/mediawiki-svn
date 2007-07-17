@@ -136,6 +136,20 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 1962) Allow HTML attributes on <math>
 * (bug 10530) Introduce optional "sp-contributions-explain" message for
   additional explanation in Special:Contributions
+* (bug 10520) Preview licences during upload via AJAX (toggle with
+  $wgAjaxLicencePreview)
+* New Parser::setTransparentTagHook for parser extension and template
+  compatibility
+* Introduced 'ContributionsToolLinks' hook; see docs/hooks.txt for more
+  information
+* Add a message if category is empty
+* Add CSS compatibility for Opera 9.5
+* Remove largely untested handheld stylesheet, which was causing more trouble
+  than good.  Proper handheld support will be added at a future date.  For now,
+  display should be acceptable either with CSS turned off or when using a so-
+  phisticated handheld browser.
+* (bug 3173) Option to offer exported pages as a download, rather than displaying
+  inline, as in most browsers
 
 == Bugfixes since 1.10 ==
 
@@ -291,6 +305,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Don't show non-functional toolbar buttons on Opera 7 anymore
 * (bug 9151) Fix relative subpage links with section fragments
 * (bug 10560) Adding a space between category letter heading and "continues"
+* (bug 1629) Stop section edit links from being shoved down by other floats
+* (bug 4650) Keep impossibly large/small counts off Special:Statistics
+* (bug 10608) PHP notice when installing with PostgreSQL
+* (bug 10615) Fix for transwiki import when CURL not available
+* (bug 8054) Return search page for empty search requests with ugly URLs
+* (bug 10572) Force refresh after clearing visitation timestamps on watchlist
+
 
 == API changes since 1.10 ==
 

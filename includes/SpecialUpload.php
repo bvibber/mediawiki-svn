@@ -556,6 +556,43 @@ class UploadForm {
 		}
 		return $s;
 	}
+	
+	/**
+	 * Render a preview of a given licence for the AJAX preview on upload
+	 *
+	 * @param string $licence
+	 * @return string
+	 */
+	public static function ajaxGetLicencePreview( $licence ) {
+		global $wgParser;
+		$licence = self::getLicenceTitle( $licence );
+		if( $licence instanceof Title && $licence->exists() ) {
+			$title = SpecialPage::getTitleFor( 'Upload' );
+			$revision = Revision::newFromTitle( $licence );
+			$output = $wgParser->parse( $revision->getText(), $title, new ParserOptions() );
+			return $output->getText();					
+		}	
+		return wfMsgHtml( 'license-nopreview' );
+	}
+
+	/**
+	 * Get the title of the page associated with a given licence
+	 * string, i.e. do a quick resolution of {{$license}} without
+	 * invoking the full parser
+	 *
+	 * @param string $licence
+	 * @return Title
+	 */
+	private static function getLicenceTitle( $licence ) {
+		$template = substr( $licence, 0, 1 ) != ':';
+		$title = Title::newFromText( ltrim( $licence, ':' ) );
+		if( $title instanceof Title && $title->getNamespace() == NS_MAIN ) {
+			return $template
+				? Title::makeTitle( NS_TEMPLATE, $title->getText() )
+				: $title;
+		}
+		return $title;
+	}
 
 	/**
 	 * Stash a file in a temporary directory for later processing
@@ -712,17 +749,22 @@ class UploadForm {
 	 */
 	function mainUploadForm( $msg='' ) {
 		global $wgOut, $wgUser;
-		global $wgUseCopyrightUpload, $wgAjaxUploadDestCheck, $wgUseAjax;
+		global $wgUseCopyrightUpload, $wgUseAjax, $wgAjaxUploadDestCheck, $wgAjaxLicencePreview;
 		global $wgRequest, $wgAllowCopyUploads, $wgEnableAPI;
-		global $wgStylePath;
+		global $wgStylePath, $wgStyleVersion;
 
-		$useAjax = $wgAjaxUploadDestCheck && $wgUseAjax;
-
-		$wgOut->addScript( 
-			"<script type='text/javascript'>wgAjaxUploadDestCheck = " . 
-				($useAjax ? 'true' : 'false' ) . ";</script>\n" . 
-			"<script type='text/javascript' src=\"$wgStylePath/common/upload.js?1\"></script>\n" 
-	   	);
+		$useAjaxDestCheck = $wgUseAjax && $wgAjaxUploadDestCheck;
+		$useAjaxLicencePreview = $wgUseAjax && $wgAjaxLicencePreview;
+		
+		$adc = wfBoolToStr( $useAjaxDestCheck );
+		$alp = wfBoolToStr( $useAjaxLicencePreview );
+		
+		$wgOut->addScript( "<script type=\"text/javascript\">
+wgAjaxUploadDestCheck = {$adc};
+wgAjaxLicencePreview = {$alp};
+</script>
+<script type=\"text/javascript\" src=\"{$wgStylePath}/common/upload.js?{$wgStyleVersion}\"></script>
+		" );
 
 		if( !wfRunHooks( 'UploadForm:initial', array( &$this ) ) )
 		{
@@ -794,7 +836,7 @@ class UploadForm {
 				"size='40' />" .
 				"<input type='hidden' name='wpSourceType' value='file' />" ;
 		}
-		if ( $useAjax ) {
+		if ( $useAjaxDestCheck ) {
 			$warningRow = "<tr><td colspan='2' id='wpDestFile-warning'>&nbsp</td></tr>";
 			$destOnkeyup = 'onkeyup="wgUploadWarningObj.keypress();"';
 		} else {
@@ -845,8 +887,14 @@ EOT
 				</select>
 			</td>
 			</tr>
-			<tr>
-		");
+			<tr>" );
+			if( $useAjaxLicencePreview ) {
+				$wgOut->addHtml( "
+					<td></td>
+					<td id=\"mw-licence-preview\"></td>
+				</tr>
+				<tr>" );
+			}
 		}
 
 		if ( $wgUseCopyrightUpload ) {
@@ -958,6 +1006,7 @@ EOT
 		global $wgVerifyMimeType;
 		if ($wgVerifyMimeType) {
 
+		  wfDebug ( "\n\nmime: <$mime> extension: <$extension>\n\n");
 			#check mime type against file extension
 			if( !$this->verifyExtension( $mime, $extension ) ) {
 				return new WikiErrorMsg( 'uploadcorrupt' );

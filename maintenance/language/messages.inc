@@ -118,6 +118,7 @@ $wgMessageStructure = array(
 		'category_header',
 		'subcategories',
 		'category-media-header',
+		'category-empty',
 	),
 	'mainpage' => array(
 		'linkprefix',
@@ -827,6 +828,7 @@ $wgMessageStructure = array(
 		'license',
 		'nolicense',
 		'licenses',
+		'license-nopreview',
 		'upload_source_url',
 		'upload_source_file',
 	),
@@ -1395,6 +1397,7 @@ $wgMessageStructure = array(
 		'export-submit',
 		'export-addcattext',
 		'export-addcat',
+		'export-download',
 	),
 	'allmessages' => array(
 		'allmessages',

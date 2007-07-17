@@ -921,7 +921,7 @@ $wgColorErrors          = true;
 $wgShowExceptionDetails = false;
 
 /**
- * Expose server host names through the API and various HTML comments
+ * Expose backend server host names through the API and various HTML comments
  */
 $wgShowHostnames = false;
 
@@ -1201,7 +1201,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '82';
+$wgStyleVersion = '85';
 
 
 # Server-side caching:
@@ -1586,6 +1586,7 @@ $wgMediaHandlers = array(
 	'image/gif' => 'BitmapHandler',
 	'image/x-ms-bmp' => 'BmpHandler',
 	'image/svg+xml' => 'SvgHandler',
+	'image/svg' => 'SvgHandler',
 	'image/vnd.djvu' => 'DjVuHandler',
 );
 
@@ -2558,6 +2559,11 @@ $wgAjaxWatch = true;
  * Enable AJAX check for file overwrite, pre-upload
  */
 $wgAjaxUploadDestCheck = true;
+
+/**
+ * Enable previewing licences via AJAX
+ */
+$wgAjaxLicencePreview = true;
 
 /**
  * Allow DISPLAYTITLE to change title display

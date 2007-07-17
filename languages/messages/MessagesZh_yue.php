@@ -1048,8 +1048,9 @@ MySQL 嘅錯誤回應 "$3: $4"',
 
 'license' 		=> '協議',
 'nolicense' 		=> '未揀',
-'upload_source_url' => ' （啱嘅，公開嘅網址）',
-'upload_source_file' => ' （你部電腦裏面嘅一個檔案）',
+'license-nopreview' 	=> '（無預覽可以用得到）',
+'upload_source_url' 	=> ' （啱嘅，公開嘅網址）',
+'upload_source_file' 	=> ' （你部電腦裏面嘅一個檔案）',
 
 # Image list
 #
@@ -1593,7 +1594,6 @@ wiki: $PAGEEDITOR_WIKI
 'ipb_cant_unblock' 	=> '錯誤：搵唔到封鎖ID$1。可能已經解封咗。',
 'proxyblockreason'	=> '你嘅IP係一個公開（指任何人都可以用，無須身份認證？）嘅代理地址，因此被封鎖。請聯絡你嘅Internet服務提供商或技術支援，向佢哋報告呢個嚴重嘅安全問題。',
 'proxyblocksuccess'	=> '完成。',
-'sorbs'         	=> 'DNSBL',
 'sorbsreason'   	=> '你嘅IP地址已經畀響呢個網站度用嘅DNSBL列咗做公開代理。',
 'sorbs_create_account_reason' => '你嘅IP地址已經畀響呢個網站度用嘅DNSBL列咗做公開代理。你唔可以開新戶口。',
 
@@ -1842,7 +1842,7 @@ wiki: $PAGEEDITOR_WIKI
 'subcategorycount' => "呢個類別入邊有$1個細類別。",
 'categoryarticlecount' => "呢個類別入邊有$1篇文章。",
 'category-media-count' => "呢個類別入邊有$1份檔案。",
-'listingcontinuesabbrev' => " 續",
+'listingcontinuesabbrev' => "續",
 'spambot_username' => 'MediaWiki垃圾清除',
 'spam_reverting' => '恢復返去最後一個唔包含指去$1嘅連結嘅嗰個版本。',
 'spam_blanking' => '全部版本都含有指去$1嘅連結，留空',
@@ -2356,6 +2356,7 @@ $1
 'watchlisttools-clear' 	=> '清除監視清單',
 
 );
+
 
 
 

@@ -253,6 +253,7 @@ $messages = array(
 'category_header'       => 'Seiten in der Kategorie „$1“',
 'subcategories'         => 'Unterkategorien',
 'category-media-header' => 'Medien in der Kategorie „$1“',
+'category-empty'        => "''Diese Kategorie enthält zur Zeit keine Artikel oder Medien.''",
 
 'mainpagetext'      => 'MediaWiki wurde erfolgreich installiert.',
 'mainpagedocfooter' => 'Hilfe zur Benutzung und Konfiguration der Wiki Software finden Sie im [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbuch].
@@ -1065,6 +1066,7 @@ Bitte prüfen Sie, ob Sie das Bild in voller Auflösung vorliegen haben und lade
 
 'license'            => 'Lizenz',
 'nolicense'          => 'keine Vorauswahl',
+'license-nopreview'  => '(es ist keine Vorschau verfügbar)',
 'upload_source_url'  => ' (gültige, öffentlich zugängliche URL)',
 'upload_source_file' => ' (eine Datei auf Ihrem Computer)',
 
@@ -1483,13 +1485,13 @@ Der aktuelle Text der gelöschten Seite ist nur Administratoren zugänglich.',
 'undeletereset'            => 'Abbrechen',
 'undeletecomment'          => 'Begründung:',
 'undeletedarticle'         => 'hat „[[$1]]“ wiederhergestellt',
-'undeletedrevisions'       => '$1 {{plural:$1|Version|Versionen}} wurden wiederhergestellt',
-'undeletedrevisions-files' => '$1 {{plural:$1|Version|Versionen}} und $2 {{plural:$2|Datei|Dateien}} wurden wiederhergestellt',
-'undeletedfiles'           => '$1 {{plural:$1|Datei|Dateien}} wurden wiederhergestellt',
+'undeletedrevisions'       => '$1 Version(en) wurde(n) wiederhergestellt',
+'undeletedrevisions-files' => '$1 Version(en) und $2 Datei(en) wurden wiederhergestellt',
+'undeletedfiles'           => '$1 Datei(en) wurde(n) wiederhergestellt',
 'cannotundelete'           => 'Wiederherstellung fehlgeschlagen; jemand anderes hat die Seite bereits wiederhergestellt.',
 'undeletedpage'            => "'''$1''' wurde wiederhergestellt.
 
-Im [[Special:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht der kürzlich gelöschten und wiederhergestellten Seiten.",
+Im [[Special:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht der gelöschten und wiederhergestellten Seiten.",
 'undelete-header'          => 'Siehe das [[{{ns:special}}:Log/delete|Lösch-Logbuch]] für kürzlich gelöschte Seiten.',
 'undelete-search-box'      => 'Suche nach gelöschten Seiten',
 'undelete-search-prefix'   => 'Suchbegriff (Wortanfang ohne Wildcards):',
@@ -1618,7 +1620,6 @@ Zur Aufhebung der Sperre siehe die [[{{ns:special}}:Ipblocklist|Liste aller akti
 'ipb_cant_unblock'            => 'Fehler: Sperr-ID $1 nicht gefunden. Die Sperre wurde bereits aufgehoben.',
 'proxyblockreason'            => 'Ihre IP-Adresse wurde gesperrt, da sie ein offener Proxy ist. Bitte kontaktieren Sie Ihren Provider oder Ihre Systemtechnik und informieren Sie sie über dieses mögliche Sicherheitsproblem.',
 'proxyblocksuccess'           => 'Fertig.',
-'sorbs'                       => 'DNSBL',
 'sorbsreason'                 => 'Die IP-Adresse ist in der DNSBL von {{SITENAME}} als offener PROXY gelistet.',
 'sorbs_create_account_reason' => 'Die IP-Adresse ist in der DNSBL von {{SITENAME}} als offener PROXY gelistet. Das Anlegen neuer Benutzer ist nicht möglich.',
 
@@ -1692,6 +1693,7 @@ Alternativ ist der Export auch mit der Syntax <tt><nowiki>[[</nowiki>{{ns:specia
 'export-submit'     => 'Seiten exportieren',
 'export-addcattext' => 'Seiten aus Kategorie hinzufügen:',
 'export-addcat'     => 'Hinzufügen',
+'export-download'   => 'Als XML-Datei speichern',
 
 # Namespace 8 related
 'allmessages'               => 'MediaWiki-Systemtexte',
@@ -1744,7 +1746,7 @@ Alle Transwiki Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'import-logentry-upload'           => 'hat „[[$1]]“ importiert',
 'import-logentry-upload-detail'    => '{{PLURAL:$1|1 Version|$1 Versionen}}',
 'import-logentry-interwiki'        => 'hat „[[$1]]“ importiert (Transwiki)',
-'import-logentry-interwiki-detail' => '{{PLURAL:$1|1 Version|$1 Versionen}} von $2 importiert',
+'import-logentry-interwiki-detail' => '$1 Version(en) von $2',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Eigene Benutzerseite',

@@ -250,6 +250,7 @@ $messages = array(
 'category_header'       => 'Artikler i kategorien "$1"',
 'subcategories'         => 'Underkategorier',
 'category-media-header' => 'Medier i kategorien „$1“',
+'category-empty'        => "''Denne kategori indeholder for øjeblikket hverken sider eller medie-filer.''",
 
 'mainpagetext'      => 'MediaWiki er nu installeret.',
 'mainpagedocfooter' => 'Se vores engelsksprogede [http://meta.wikimedia.org/wiki/MediaWiki_i18n dokumentation om tilpasning af brugergrænsefladen] og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] for oplysninger om opsætning og anvendelse.',
@@ -1029,6 +1030,7 @@ Kontroller om du har billedet i fuld størrelse og upload det under det original
 
 'license'            => 'Licens',
 'nolicense'          => 'intet forvalg',
+'license-nopreview' => '(forhåndsvisning ikke mulig)',
 'upload_source_url'  => ' (gyldig, offentligt tillgængelig URL)',
 'upload_source_file' => ' (en fil på din computer)',
 
@@ -1568,7 +1570,6 @@ I [[Special:Log/delete|slette-loggen]] findes en oversigt over de nyligt sletted
 'ipb_cant_unblock'            => 'Fejl: Spærre-ID $1 ikke fundet. Spærringen er allerede ophævet.',
 'proxyblockreason'            => "Din IP-adresse er blevet blokeret fordi den er en såkaldt ''åben proxy''. Kontakt din Internet-udbyder eller tekniske hotline og oplyse dem om dette alvorlige sikkerhedsproblem.",
 'proxyblocksuccess'           => 'Færdig.',
-'sorbs'                       => 'DNSBL',
 'sorbsreason'                 => 'IP-adressen er opført i DNSBL på {{SITENAME}} som åben PROXY.',
 'sorbs_create_account_reason' => 'IP-adressen er opført i DNSBL på {{SITENAME}} som åben PROXY. Oprettelse af nye brugere er ikke mulig.',
 
@@ -1637,6 +1638,7 @@ Artiklen "[[$1]]" eksisterer allerede. Vil du slette den for at lave plads til f
 'export-submit'     => 'Eksportere sider',
 'export-addcattext' => 'Tilføje sider fra kategori:',
 'export-addcat'     => 'Tilføje',
+'export-download'   => 'Tilbyd at gemme som en fil',
 
 # Namespace 8 related
 'allmessages'               => 'Alle beskeder',

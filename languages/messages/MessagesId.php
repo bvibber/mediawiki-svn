@@ -393,7 +393,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Daftar pengaturan preferensi]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce Milis rilis MediaWiki]',
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Milis rilis MediaWiki]',
 
 'about'          => 'Perihal',
 'article'        => 'Artikel',
@@ -1083,7 +1083,6 @@ Jika Anda memiliki versi resolusi penuh dari gambar ini, harap muatkan berkas te
 'fileexists-forbidden'        => 'Ditemukan berkas dengan nama yang sama; harap kembali dan muatkan berkas dengan nama lain. [[{{ns:image}}:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Ditemukan berkas lain dengan nama yang sama di repositori bersama; harap kembali dan muatkan berkas dengan nama lain. [[{{ns:image}}:$1|thumb|center|$1]]',
 'successfulupload'            => 'Berhasil dimuat',
-'fileuploaded'                => 'Berkas "$1" berhasil dimuatkan. Silakan ikuti pranala berikut: $2 ke halaman deskripsi dan isikan informasi tentang berkas tersebut, seperti dari mana berkas tersebut berasal, kapan berkas itu dibuat dan oleh siapa, dan informasi lain yang Anda ketahui.',
 'uploadwarning'               => 'Peringatan pemuatan',
 'savefile'                    => 'Simpan berkas',
 'uploadedimage'               => 'memuat "[[$1]]"',
@@ -1598,9 +1597,8 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 'ipb_cant_unblock'            => 'Kesalahan: Blokir dengan ID $1 tidak ditemukan. Blokir tersebut kemungkinan telah dibuka.',
 'proxyblockreason'            => 'Alamat IP Anda telah diblokir karena alamat IP Anda adalah proxy terbuka. Silakan hubungi penyedia jasa internet Anda atau dukungan teknis dan beritahukan mereka masalah keamanan serius ini.',
 'proxyblocksuccess'           => 'Selesai.',
-'sorbs'                       => 'SORBS DNSBL',
-'sorbsreason'                 => 'Alamat IP anda terdaftar sebagai proxy terbuka di [http://www.sorbs.net SORBS] DNSBL.',
-'sorbs_create_account_reason' => 'Alamat IP anda terdaftar sebagai proxy terbuka di [http://www.sorbs.net SORBS] DNSBL. Anda tidak dapat membuat akun.',
+'sorbsreason'                 => 'Alamat IP anda terdaftar sebagai proxy terbuka di DNSBL.',
+'sorbs_create_account_reason' => 'Alamat IP anda terdaftar sebagai proxy terbuka di DNSBL. Anda tidak dapat membuat akun.',
 
 # Developer tools
 'lockdb'              => 'Kunci basis data',
@@ -1817,7 +1815,7 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 'subcategorycount'       => 'Ada $1 subkategori dalam kategori ini.',
 'categoryarticlecount'   => 'Ada $1 artikel dalam kategori ini.',
 'category-media-count'   => 'Ada $1 berkas dalam kategori ini.',
-'listingcontinuesabbrev' => ' samb.',
+'listingcontinuesabbrev' => 'samb.',
 'spambot_username'       => 'Pembersihan span MediaWiki',
 'spam_reverting'         => 'Mengembalikan ke versi terakhir yang tak memiliki pranala ke $1',
 'spam_blanking'          => 'Semua revisi yang memiliki pranala ke $1, pengosongan',

@@ -957,6 +957,7 @@ MySQL返回错误“$3: $4”。',
 
 'license'            => '授权',
 'nolicense'          => '未选定',
+'license-nopreview'  => '(无预览可用)',
 'upload_source_url'  => ' (一个有效的，可公开访问的 URL)',
 'upload_source_file' => ' (在您计算机上的一个文件)',
 
@@ -1476,9 +1477,8 @@ $NEWPAGE
 'ipb_cant_unblock'            => '错误: 没有发现 Block ID $1。该 IP 可能已经被解封。',
 'proxyblockreason'            => '您的IP地址是一个开放的代理，它已经被封锁。请联系您的因特网服务提供商或技术支持者并告知告知他们该严重的安全问题。',
 'proxyblocksuccess'           => '完成。\n',
-'sorbs'                       => 'DNSBL',
-'sorbsreason'                 => '您的IP地址被[http://www.sorbs.net SORBS] DNSBL 列为属于开放代理服务器。',
-'sorbs_create_account_reason' => '由于您的IP地址被[http://www.sorbs.net SORBS] DNSBL 列为属于开放代理服务器，所以您不能创建新账户。',
+'sorbsreason'                 => '您的IP地址被 DNSBL 列为属于开放代理服务器。',
+'sorbs_create_account_reason' => '由于您的IP地址被 DNSBL 列为属于开放代理服务器，所以您不能创建新账户。',
 
 # Developer tools
 'lockdb'              => '锁定数据库',
@@ -2204,6 +2204,7 @@ $1
 'watchlisttools-clear' => '清空监视列表',
 
 );
+
 
 
 

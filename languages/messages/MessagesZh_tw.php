@@ -931,6 +931,7 @@ MySQL返回錯誤「$3: $4」。',
 
 'license'            => '授權',
 'nolicense'          => '未選定',
+'license-nopreview'  => '(無預覽可用)',
 'upload_source_url'  => ' (一個有效的，可公開訪問的 URL)',
 'upload_source_file' => ' (在您電腦上的一個檔案)',
 
@@ -1449,9 +1450,8 @@ $NEWPAGE
 'ipb_cant_unblock'            => '錯誤: 沒有發現 Block ID $1。該 IP 可能已經被解封。',
 'proxyblockreason'            => '您的IP位址是一個開放的代理，它已經被封鎖。請聯繫您的網際網路服務提供商或技術支援者並告知告知他們該嚴重的安全問題。',
 'proxyblocksuccess'           => '完成。\n',
-'sorbs'                       => 'DNSBL',
-'sorbsreason'                 => '您的IP位址被[http://www.sorbs.net SORBS] DNSBL列為屬於開放代理服務器.',
-'sorbs_create_account_reason' => '由於您的IP位址被[http://www.sorbs.net SORBS] DNSBL列為屬於開放代理服務器，所以您無法建立帳號。',
+'sorbsreason'                 => '您的IP位址被 DNSBL列為屬於開放代理服務器.',
+'sorbs_create_account_reason' => '由於您的IP位址被 DNSBL列為屬於開放代理服務器，所以您無法建立帳號。',
 
 # Developer tools
 'lockdb'              => '禁止更改資料庫',
@@ -1685,7 +1685,7 @@ $NEWPAGE
 'subcategorycount'       => '這個分類下有$1個子分類。',
 'categoryarticlecount'   => '這個分類中共有$1篇文章',
 'category-media-count'   => '在這個分類中有$1個檔案。',
-'listingcontinuesabbrev' => ' 續',
+'listingcontinuesabbrev' => '續',
 'spambot_username'       => 'MediaWiki 廣告清除',
 'spam_reverting'         => '恢復到不包含連結至$1的最近版本',
 'spam_blanking'          => '所有包含連結至$1的修訂，清空',
@@ -2178,6 +2178,7 @@ $1
 'watchlisttools-clear' => '清空監視列表',
 
 );
+
 
 
 

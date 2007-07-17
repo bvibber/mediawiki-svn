@@ -12,6 +12,7 @@ if (clientPC.indexOf('opera') != -1) {
 	var is_opera = true;
 	var is_opera_preseven = (window.opera && !document.childNodes);
 	var is_opera_seven = (window.opera && document.childNodes);
+	var is_opera_95 = clientPC.search(/opera\/(9.[5-9]|[1-9][0-9])/);
 }
 
 // Global external objects used by this script.
@@ -41,8 +42,10 @@ function hookEvent(hookName, hookFunct) {
 if (typeof stylepath != 'undefined' && typeof skin != 'undefined') {
 	if (is_opera_preseven) {
 		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/Opera6Fixes.css">');
-	} else if (is_opera_seven) {
+	} else if (is_opera_seven && !is_opera_95) {
 		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/Opera7Fixes.css">');
+	} else if (is_opera_95) {
+		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/Opera95Fixes.css">');
 	} else if (is_khtml) {
 		document.write('<link rel="stylesheet" type="text/css" href="'+stylepath+'/'+skin+'/KHTMLFixes.css">');
 	}
@@ -1241,6 +1244,36 @@ function jsMsg( message, className ) {
 	}
 	messageDiv.innerHTML = message;
 	return true;
+}
+
+/**
+ * Inject a cute little progress spinner after the specified element
+ *
+ * @param element Element to inject after
+ * @param id Identifier string (for use with removeSpinner(), below)
+ */
+function injectSpinner( element, id ) {
+	var spinner = document.createElement( "img" );
+	spinner.id = "mw-spinner-" + id;
+	spinner.src = stylepath + "/common/images/spinner.gif";
+	spinner.alt = spinner.title = "...";
+	if( element.nextSibling ) {
+		element.parentNode.insertBefore( spinner, element.nextSibling );
+	} else {
+		element.parentNode.appendChild( spinner );
+	}
+}
+
+/**
+ * Remove a progress spinner added with injectSpinner()
+ *
+ * @param id Identifier string
+ */
+function removeSpinner( id ) {
+	var spinner = document.getElementById( "mw-spinner-" + id );
+	if( spinner ) {
+		spinner.parentNode.removeChild( spinner );
+	}
 }
 
 function runOnloadHook() {
