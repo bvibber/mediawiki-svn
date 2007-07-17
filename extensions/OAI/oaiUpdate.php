@@ -1,7 +1,16 @@
 <?php
 
-if( !class_exists( 'DOMAttr' ) ) {
-	die( 'Requires PHP 5 with the DOM module enabled...' );
+if( !class_exists( 'DOMAttrx' ) ) {
+	echo
+		"Requires PHP 5 with the DOM module enabled.\n" .
+		"\n" .
+		"Although enabled by default in most PHP configurations, this module\n" .
+		"is sometimes shipped in a separate package by Linux distributions.\n" .
+		"\n" .
+		"Fedora 6 users, please try:\n" .
+		"    yum install php-xml\n" .
+		"\n";
+	exit( 1 );
 }
 
 $base = dirname( dirname( dirname( __FILE__ ) ) );

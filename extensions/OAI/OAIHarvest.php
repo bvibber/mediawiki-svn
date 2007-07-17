@@ -39,7 +39,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 # Need shared code...
 require_once( 'OAIFunctions.php' );
-require_once( 'maintenance/refreshLinks.inc' );
+require_once( "$IP/maintenance/refreshLinks.inc" );
 
 global $oaiSourceRepository;
 global $oaiAgentExtra;
@@ -501,7 +501,14 @@ class OAIUpdateRecord {
 		}
 		
 		# We assume the filename has already been validated by code above us.
-		$filename = wfImageDir( $upload['filename'] ) . '/' . $upload['filename'];
+		if( function_exists( 'wfImageDir' ) ) {
+			// < 1.10
+			$filename = wfImageDir( $upload['filename'] ) . '/' . $upload['filename'];
+		} else {
+			// 1.11
+			echo "File updating temporarily broken on 1.11, sorry!\n";
+			return;
+		}
 		
 		$timestamp = wfTimestamp( TS_UNIX, $this->getTimestamp( $upload['timestamp'] ) );
 		if( file_exists( $filename )
