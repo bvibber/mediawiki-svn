@@ -340,6 +340,7 @@ La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvo
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Retour]]",
+	'boardvote_nosession'     => "Impossible de déterminer votre identifiant Wikimedia. Veuillez vous rendre sur votre wiki d’origine, vous enregistrer, et vous rendre sur la page <nowiki>[[Special:Boardvote]]</nowiki>. Vous devez posséder un compte avec au moins $1 contributions effectuées avant le $2, et avoir effectué votre première édition avant le $3.",
 	'boardvote_notloggedin'   => "Vous n’êtes actuellement pas authentifié. Pour voter, vous devez utiliser un compte comportant au moins $1 contributions avant le $2, et dont la première remonte au $3.",
 	'boardvote_notqualified'  => "Vous ne répondez pas à l’une des conditions requises pour voter lors de ce scrutin. Il est nécessaire d’avoir $3 contributions avant le $2,  et vous en avez effectuées $1. En outre, votre première modification date du $4, et elle doit avoir été faite avant le $5.",
 	'boardvote_novotes'       => "Personne n’a encore voté.",
@@ -362,6 +363,9 @@ La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvo
 	'group-boardvote'         => 'Membres votants du conseil d’administration',
 	'group-boardvote-member'  => 'Membre votant du conseil d’administration',
 	'grouppage-boardvote'     => '{{ns:project}}:membre votant du conseil d’administration',
+	'boardvote_blocked'       => 'Désolé, mais vous avez été bloqué sur votre wiki d’origine. Les utilisateurs bloqués ne peuvent pas voter.',
+	'boardvote_welcome'       => "Bienvenue '''$1'''!",
+	'go_to_board_vote'        => 'Wikimedia Board Elections 2007',
 	'boardvote_redirecting'   => 'Pour plus de transparence et sécurité le vote se déroule sur un serveur externe et indépendant.
 
 Vous serez redirigé à ce serveur externe en 20 secondes. [$1 Cliquez ici] pour y aller maintenant.
@@ -1527,5 +1531,6 @@ $wgBoardVoteMessages['zh-hk'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-sg'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-tw'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-yue'] = $wgBoardVoteMessages['yue'];
+
 
 

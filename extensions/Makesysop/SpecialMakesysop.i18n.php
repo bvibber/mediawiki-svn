@@ -297,27 +297,28 @@ $wgMakesysopMessages['fi'] = array(
 	'grouppage-steward'    => '{{ns:project}}:ylivalvojat',
 );
 $wgMakesysopMessages['fr'] = array(
-	'makesysoptitle'	=> 'Donner les droits d’administrateur à un utilisateur',
-	'makesysoptext'		=> 'Ce formulaire est utilisé par les bureaucrates ' .
-					'pour donner les droits d’administrateur à un utilisateur ordinaire. Inscrivez ' .
-					'le nom de l’utilisateur dans le cadre et appuyez sur le bouton pour donner les ' .
-					'droits en question.',
-	'makesysopname'		=> 'Nom de l’utilisateur :',
-	'makesysopsubmit'	=> 'Donner les droits d’administrateur à cet utilisateur',
-	'makesysopok'		=> "<b>L’utilisateur « $1 » est désormais administrateur.</b>",
-	'makesysopfail'		=> "<b>L’utilisateur « $1 » ne peut être nommé administrateur. (Avez vous entré correctement le nom ?)</b>",
-	'setbureaucratflag'	=> 'Ajouter le statut de bureaucrate',
-	'rights'		=> 'Droits :',
-	'set_user_rights'	=> 'Appliquer les droits à l’utilisateur',
-	'user_rights_set'	=> "<b>Les droits de l’utilisateur « $1 » ont été mis à jour.</b>",
-	'set_rights_fail'	=> "<b>Les droits de l’utilisateur « $1 » n’ont pas pu être mis à jour. (Avez-vous saisi le nom correctement ?)<b>",
-	'makesysop'		=> 'Donner les droits d’administrateur à un utilisateur',
-	'already_sysop'		=> 'Cet utilisateur est déjà administrateur',
-	'already_bureaucrat'	=> 'Cet utilisateur est déjà bureaucrate',
-	'makesysop-nodatabase' 	=> 'Mauvais nom d’utilisateur interwiki : $1',
-	'group-steward'		=> 'Stewards',
-	'group-steward-member' 	=> 'Steward',
-	'grouppage-steward'	=> '{{ns:project}}:Steward',
+	'makesysoptitle'       => 'Donner les droits d’administrateur à un utilisateur',
+	'makesysoptext'	       => 'Ce formulaire est utilisé par les bureaucrates ' .
+				'pour donner les droits d’administrateur à un utilisateur ordinaire. Inscrivez ' .
+				'le nom de l’utilisateur dans le cadre et appuyez sur le bouton pour donner les ' .
+				'droits en question.',
+	'makesysopname'	       => 'Nom de l’utilisateur :',
+	'makesysopsubmit'      => 'Donner les droits d’administrateur à cet utilisateur',
+	'makesysopok'	       => "<b>L’utilisateur « $1 » est désormais administrateur.</b>",
+	'makebureaucratok'     => "<b>L’utilisateur « $1 » est désormais bureaucrate.</b>",
+	'makesysopfail'	       => "<b>L’utilisateur « $1 » ne peut être nommé administrateur. (Avez vous entré correctement le nom ?)</b>",
+	'setbureaucratflag'    => 'Ajouter le statut de bureaucrate',
+	'rights'	       => 'Droits :',
+	'set_user_rights'      => 'Appliquer les droits à l’utilisateur',
+	'user_rights_set'      => "<b>Les droits de l’utilisateur « $1 » ont été mis à jour.</b>",
+	'set_rights_fail'      => "<b>Les droits de l’utilisateur « $1 » n’ont pas pu être mis à jour. (Avez-vous saisi le nom correctement ?)<b>",
+	'makesysop'	       => 'Donner les droits d’administrateur à un utilisateur',
+	'already_sysop'	       => 'Cet utilisateur est déjà administrateur',
+	'already_bureaucrat'   => 'Cet utilisateur est déjà bureaucrate',
+	'makesysop-nodatabase' => 'Mauvais nom d’utilisateur interwiki : $1',
+	'group-steward'	       => 'Stewards',
+	'group-steward-member' => 'Steward',
+	'grouppage-steward'    => '{{ns:project}}:Steward',
 );
 $wgMakesysopMessages['ga'] = array(
 	'makesysoptitle'	=> 'Déan oibreoir córais de húsáideoir',
@@ -1178,6 +1179,7 @@ $wgMakesysopMessages['zh-cn'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-hk'] = $wgMakesysopMessages['zh-hant'];
 $wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-yue'] = $wgMakesysopMessages['yue'];
+
 
 
 

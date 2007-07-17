@@ -14,6 +14,10 @@ $wgDeletedContribsMessages['de'] = array(
 	'deletedcontributions'		 => 'Gelöschte Benutzerbeiträge'
 );
 
+$wgDeletedContribsMessages['fr'] = array(
+	'deletedcontributions'		 => 'Contributions supprimées d’un utilisateur'
+);
+
 $wgDeletedContribsMessages['he'] = array(
 	'deletedcontributions' => 'תרומות משתמש מחוקות',
 );
@@ -51,6 +55,7 @@ $wgDeletedContribsMessages['zh-hk'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-sg'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-tw'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-yue'] = $wgDeletedContribsMessages['yue'];
+
 
 
 

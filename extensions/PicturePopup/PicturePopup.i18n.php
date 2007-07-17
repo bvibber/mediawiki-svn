@@ -27,6 +27,17 @@ function efPicturePopupMessages() {
 'picturepopup_license_list' => 'Project:معرفات حقوق التأليف و النشر للصور',
 ),
 
+/* French */
+'fr' => array(
+	'picturepopup_invalid_title'   => 'Titre de l’image invalide',
+	'picturepopup_no_license'      => 'L’image n’a pas de modèle de licence',
+	'picturepopup_no_image'        => 'L’image n’existe pas',
+	'picturepopup_no_license_list' => 'La liste des licences est absente ou invalide',
+	'picturepopup_license_list'    => 'Project:Liste des bandeaux de licence',
+	'picturepopup_no_license_text' => 'Le modèle de licence n’a pas d’élément avec id=imageLicenseText',
+	'picturepopup_invalid_icon'    => 'Le modèle de licence n’a pas d’élément imageLicenseIcon ou est invalide',
+),
+
 /* Indonesian */
 'id' => array(
 	'picturepopup_invalid_title' => 'Judul gambar tak sah',

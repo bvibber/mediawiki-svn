@@ -72,6 +72,7 @@ telles que <nowiki>{{</nowiki>#if:...}} et <nowiki>{{</nowiki>CURRENTDAY}} sont 
 	'expand_templates_output'          => 'Visualisez le résultat',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Supprimer les commentaires.',
+	'expand_templates_preview'         => 'Prévisualisation',
 );
 $wgExpandTemplatesMessages['he'] = array(
 	'expandtemplates'                  => 'פריסת תבניות',
@@ -333,5 +334,6 @@ $wgExpandTemplatesMessages['zh-hk'] = $wgExpandTemplatesMessages['zh-hant'];
 $wgExpandTemplatesMessages['zh-sg'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-tw'] = $wgExpandTemplatesMessages['zh-hant'];
 $wgExpandTemplatesMessages['zh-yue'] = $wgExpandTemplatesMessages['yue'];
+
 
 

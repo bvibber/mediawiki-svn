@@ -53,6 +53,9 @@ $wgFilepathMessages['fr'] = array(
 	'filepath'        => 'Chemin d’un fichier',
 	'filepath_page'   => 'Fichier :',
 	'filepath_submit' => 'Chemin',
+	'filepath-summary' => 'Cette page spéciale donne le chemin complet d’un fichier ; les images sont montrées en haute résolution, les fichiers audio et vidéo s’exécutent avec leur programme associé.
+
+Entrez le nom du fichier sans le préfixe « {{ns:image}}: »',
 );
 $wgFilepathMessages['he'] = array(
 	'filepath'         => 'נתיב לקובץ',
@@ -224,5 +227,6 @@ $wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-hant'];
 $wgFilepathMessages['zh-sg'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-tw'] = $wgFilepathMessages['zh-hant'];
 $wgFilepathMessages['zh-yue'] = $wgFilepathMessages['yue'];
+
 
 
