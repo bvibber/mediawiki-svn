@@ -78,7 +78,7 @@ class ProtectedPagesPager extends AlphabeticPager {
 		
 		# Size indicator
 		$size = $row->page_len
-			? '<small>' . wfMsgHtml( 'historysize', $wgLang->formatNum( $row->page_len ) ) . '</small> '
+			? $skin->formatSize( $row->page_len )
 			: '';
 		
 		# Protection level
@@ -92,7 +92,7 @@ class ProtectedPagesPager extends AlphabeticPager {
 		}
 	
 		wfProfileOut( __METHOD__ );
-		return "<li>{$timestamp} {$page} {$size}({$level}{$expire})</li>";
+		return "<li>{$timestamp} {$page} [{$size}] ({$level}{$expire})</li>";
 	}
 
 	/**
