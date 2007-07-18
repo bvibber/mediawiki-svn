@@ -39,13 +39,13 @@ class SpecialProtectedPages extends SpecialPage {
 			Title::purgeExpiredRestrictions();
 		}
 
-		$type = $wgRequest->getVal( 'type' );
+		$type = $wgRequest->getVal( 'type', 'edit' );
 		$level = $wgRequest->getVal( 'level' );
 		$sizetype = $wgRequest->getVal( 'sizetype' );
 		$size = $wgRequest->getIntOrNull( 'size' );
 		$NS = $wgRequest->getIntOrNull( 'namespace' );
 
-		$pager = new ProtectedPagesPager( $this, array(), $type, $level, $NS, $sizetype, $size );	
+		$pager = new ProtectedPagesPager( $type, $level, $NS, $sizetype, $size );	
 
 		$wgOut->addHTML( $this->showOptions( $NS, $type, $level, $sizetype, $size ) );
 
@@ -60,46 +60,6 @@ class SpecialProtectedPages extends SpecialPage {
 		}
 	}
 
-	/**
-	 * Formatting callback
-	 *
-	 * @param object $row Result row
-	 * @return string
-	 */
-	public function formatRow( $row ) {
-		global $wgUser, $wgLang;
-		wfProfileIn( __METHOD__ );
-		
-		$skin = $wgUser->getSkin();
-
-		# Date and time
-		$timestamp = $row->pr_timestamp
-			? '(' . $wgLang->timeAndDate( $row->pr_timestamp ) . ')'
-			: '';
-
-		# Page link and action text
-		$title = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
-		$page = $skin->makeLinkObj( $title );
-		
-		# Size indicator
-		$size = $row->page_len
-			? '<small>' . wfMsgHtml( 'historysize', $wgLang->formatNum( $row->page_len ) ) . '</small> '
-			: '';
-		
-		# Protection level
-		$level = wfMsgHtml( 'restriction-level-' . $row->pr_level );
-		
-		# Expiration
-		$expire = '';
-		if( $row->pr_expiry && $row->pr_expiry != 'infinity' ) {
-			$exptime = Block::decodeExpiry( $row->pr_expiry );
-			$expire = ', ' . wfMsgHtml( 'protect-expiring', $wgLang->timeAndDate( $exptime ) );
-		}
-	
-		wfProfileOut( __METHOD__ );
-		return "<li>{$timestamp} {$page} {$size}({$level}{$expire})</li>";
-	}
-	
 	/**
 	 * Build the filtering option panel
 	 *
@@ -217,70 +177,5 @@ class SpecialProtectedPages extends SpecialPage {
 	
 }
 
-/**
- * @todo document
- * @addtogroup Pager
- */
-class ProtectedPagesPager extends AlphabeticPager {
-	public $mForm, $mConds;
-
-	function __construct( $form, $conds = array(), $type, $level, $namespace, $sizetype='', $size=0 ) {
-		$this->mForm = $form;
-		$this->mConds = $conds;
-		$this->type = ( $type ) ? $type : 'edit';
-		$this->level = $level;
-		$this->namespace = $namespace;
-		$this->sizetype = $sizetype;
-		$this->size = intval($size);
-		parent::__construct();
-	}
-
-	function getStartBody() {
-		wfProfileIn( __METHOD__ );
-		# Do a link batch query
-		$this->mResult->seek( 0 );
-		$lb = new LinkBatch;
-
-		while ( $row = $this->mResult->fetchObject() ) {
-			$lb->add( $row->page_namespace, $row->page_title );
-		}
-
-		$lb->execute();
-		wfProfileOut( __METHOD__ );
-		return '';
-	}
-	
-	function formatRow( $row ) {
-		$block = new Block;
-		return $this->mForm->formatRow( $row );
-	}
-
-	function getQueryInfo() {
-		$conds = $this->mConds;
-		$conds[] = 'pr_expiry>' . $this->mDb->addQuotes( $this->mDb->timestamp() );
-		$conds[] = 'page_id=pr_page';
-		$conds[] = 'pr_type=' . $this->mDb->addQuotes( $this->type );
-		
-		if( $this->sizetype=='min' ) {
-			$conds[] = 'page_len>=' . $this->size;
-		} else if( $this->sizetype=='max' ) {
-			$conds[] = 'page_len<=' . $this->size;
-		}
-		
-		if( $this->level )
-			$conds[] = 'pr_level=' . $this->mDb->addQuotes( $this->level );
-		if( !is_null($this->namespace) )
-			$conds[] = 'page_namespace=' . $this->mDb->addQuotes( $this->namespace );
-		return array(
-			'tables' => array( 'page_restrictions', 'page' ),
-			'fields' => 'pr_id,page_namespace,page_title,page_len,pr_type,pr_level,pr_timestamp,pr_expiry',
-			'conds' => $conds
-		);
-	}
-
-	function getIndexField() {
-		return 'pr_id';
-	}
-}
 
 ?>

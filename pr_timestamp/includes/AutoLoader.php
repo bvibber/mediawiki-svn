@@ -201,7 +201,7 @@ function __autoload($className) {
 		'IncludableSpecialPage' => 'includes/SpecialPage.php',
 		'PopularPagesPage' => 'includes/SpecialPopularpages.php',
 		'SpecialProtectedPages' => 'includes/SpecialProtectedpages.php',
-		'ProtectedPagesPager' => 'includes/Specialprotectedpages.php',
+		'ProtectedPagesPager' => 'includes/ProtectedPagesPager.php',
 		'PreferencesForm' => 'includes/SpecialPreferences.php',
 		'SpecialPrefixindex' => 'includes/SpecialPrefixindex.php',
 		'PasswordResetForm' => 'includes/SpecialResetpass.php',
