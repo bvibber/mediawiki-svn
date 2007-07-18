@@ -20,16 +20,19 @@ class SpecialProtectedPages extends SpecialPage {
 	 * @param mixed $par Parameters passed to the page
 	 */
 	public function execute( $par = false ) {
+		$this->setHeaders();
 		$this->showList();
 	}
 
-	function showList( $msg = '' ) {
+	/**
+	 * Show the list of protected pages
+	 *
+	 * @param string $msg Optional subtitle
+	 */
+	private function showList( $msg = '' ) {
 		global $wgOut, $wgRequest;
-
-		$wgOut->setPagetitle( wfMsg( "protectedpages" ) );
-		if ( "" != $msg ) {
+		if( $msg != '' )
 			$wgOut->setSubtitle( $msg );
-		}
 
 		// Purge expired entries on one in every 10 queries
 		if ( !mt_rand( 0, 10 ) ) {
@@ -46,22 +49,24 @@ class SpecialProtectedPages extends SpecialPage {
 
 		$wgOut->addHTML( $this->showOptions( $NS, $type, $level, $sizetype, $size ) );
 
-		if ( $pager->getNumRows() ) {
-			$s = $pager->getNavigationBar();
-			$s .= "<ul>" . 
-				$pager->getBody() .
-				"</ul>";
-			$s .= $pager->getNavigationBar();
+		if( $pager->getNumRows() > 0 ) {
+			$wgOut->addHtml(
+				$pager->getNavigationBar()
+				. '<ul>' . $pager->getBody() . '</ul>'
+				. $pager->getNavigationBar()
+			);
 		} else {
-			$s = '<p>' . wfMsgHtml( 'protectedpagesempty' ) . '</p>';
+			$wgOut->addHtml( wfMsgExt( 'protectedpagesempty', 'parse' ) );
 		}
-		$wgOut->addHTML( $s );
 	}
 
 	/**
-	 * Callback function to output a restriction
+	 * Formatting callback
+	 *
+	 * @param object $row Result row
+	 * @return string
 	 */
-	function formatRow( $row ) {
+	public function formatRow( $row ) {
 		global $wgUser, $wgLang;
 		wfProfileIn( __METHOD__ );
 		
