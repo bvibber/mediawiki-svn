@@ -414,19 +414,12 @@ int	i;
 }
 
 static int
-start_master_read_thread()
+master_connect(void)
 {
-	pthread_mutex_lock(&rst_mtx);
-	if (reader_st != ST_STOPPED)
-		return -1;
-	
-	reader_st = ST_INITIALISING;
-	pthread_mutex_unlock(&rst_mtx);
-
 	if ((master_conn = mysql_init(NULL)) == NULL) {
 		logmsg("out of memory in mysql_init");
 		reader_st = ST_STOPPED;
-		return 0;
+		return -1;
 	}
 
 	mysql_options(master_conn, MYSQL_READ_DEFAULT_GROUP, "trainwreck-master");
@@ -436,8 +429,22 @@ start_master_read_thread()
 		logmsg("cannot connect to master %s:%d: %s",
 				master_host, master_port, mysql_error(master_conn));
 		reader_st = ST_STOPPED;
-		return 0;
+		return -1;
 	}
+}
+
+static int
+start_master_read_thread()
+{
+	pthread_mutex_lock(&rst_mtx);
+	if (reader_st != ST_STOPPED)
+		return -1;
+	
+	reader_st = ST_INITIALISING;
+	pthread_mutex_unlock(&rst_mtx);
+
+	if (master_connect() == -1)
+		return 0;
 
 	pthread_create(&master_thread, NULL, read_master_logs, NULL);
 }
@@ -463,7 +470,17 @@ read_master_logs(p)
 			binlog_file, (unsigned long) binlog_pos);
 	}
 
-	process_master_logs_once();
+	for (;;) {
+		if (process_master_logs_once() == 0)
+			break;
+
+	reconnect:
+		sleep(30);
+		logmsg("reconnecting to master...");
+		mysql_close(master_conn);
+		if (master_connect() == -1)
+			goto reconnect;
+	}
 
 	reader_st = ST_STOPPED;
 	return NULL;
@@ -513,7 +530,7 @@ unsigned long	 len;
 		logmsg("%s,%lu: error retrieving binlogs from server: (%d) %s",
 				curfile, (unsigned long) curpos,
 				mysql_errno(master_conn), mysql_error(master_conn));
-		exit(1);
+		return -1;
 	}
 
 	for (;;) {
@@ -540,7 +557,7 @@ unsigned long	 len;
 			binlog_file = NULL;
 			pthread_mutex_unlock(&rst_mtx);
 
-			return 1;
+			return 0;
 		}
 
 
@@ -548,14 +565,14 @@ unsigned long	 len;
 			logmsg("%s,%lu: error retrieving binlogs from server: (%d) %s",
 				curfile, (unsigned long) curpos,
 				mysql_errno(master_conn), mysql_error(master_conn));
-			exit(1);
+			return -1;
 		}
 
 		pthread_mutex_unlock(&rst_mtx);
 
 		if ((ent = parse_binlog(master_conn->net.read_pos + 1, len - 1)) == NULL) {
 			logmsg("failed parsing binlog");
-			exit(1);
+			return -1;
 		}
 
 		if (debug)
