@@ -2,7 +2,7 @@
 static $bla="hello";
 
 function a($foo) {
-	final $bla=$foo;
+	$bla=$foo;
 	echo $bla;
 }
 
