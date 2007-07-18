@@ -40,10 +40,20 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 */
 	function efNewUserNotifSetup() {
 		global $wgHooks, $wgMessageCache;
-		$wgHooks['AddNewAccount'][] = 'NewUserNotifier::hook';
+		$wgHooks['AddNewAccount'][] = 'efNewUserNotif';
 		require_once( dirname( __FILE__ ) . '/NewUserNotif.i18n.php' );
 		foreach( efNewUserNotifMessages() as $lang => $messages )
 			$wgMessageCache->addMessages( $messages, $lang );
+	}
+	
+	/**
+	 * Hook account creation
+	 *
+	 * @param User $user User account that was created
+	 * @return bool
+	 */
+	function efNewUserNotif( $user ) {
+		return NewUserNotifier::hook( $user );
 	}
 	
 } else {
