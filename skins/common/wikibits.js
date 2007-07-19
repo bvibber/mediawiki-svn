@@ -12,7 +12,7 @@ if (clientPC.indexOf('opera') != -1) {
 	var is_opera = true;
 	var is_opera_preseven = (window.opera && !document.childNodes);
 	var is_opera_seven = (window.opera && document.childNodes);
-	var is_opera_95 = clientPC.search(/opera\/(9.[5-9]|[1-9][0-9])/);
+	var is_opera_95 = (clientPC.search(/opera\/(9.[5-9]|[1-9][0-9])/)!=-1);
 }
 
 // Global external objects used by this script.
@@ -725,8 +725,10 @@ function addCheckboxClickHandlers(inputs, start) {
 		var cb = inputs[i];
 		if ( !cb.type || cb.type.toLowerCase() != 'checkbox' )
 			continue;
-		cb.index = checkboxes.push(cb) - 1;
-		cb.onmouseup = checkboxMouseupHandler;
+		var end = checkboxes.length;
+		checkboxes[end] = cb;
+		cb.index = end;
+		cb.onclick = checkboxClickHandler;
 	}
 
 	if ( finish < inputs.length ) {
@@ -736,7 +738,7 @@ function addCheckboxClickHandlers(inputs, start) {
 	}
 }
 
-function checkboxMouseupHandler(e) {
+function checkboxClickHandler(e) {
 	if (typeof e == 'undefined') {
 		e = window.event;
 	}
@@ -744,10 +746,7 @@ function checkboxMouseupHandler(e) {
 		lastCheckbox = this.index;
 		return true;
 	}
-	var endState = !this.checked;
-	if ( is_opera ) { // opera has already toggled the checkbox by this point
-		endState = !endState;
-	}
+	var endState = this.checked;
 	var start, finish;
 	if ( this.index < lastCheckbox ) {
 		start = this.index + 1;
@@ -890,11 +889,13 @@ function getElementsByClassName(oElm, strTagName, oClassNames){
 	var arrRegExpClassNames = new Array();
 	if(typeof oClassNames == "object"){
 		for(var i=0; i<oClassNames.length; i++){
-			arrRegExpClassNames.push(new RegExp("(^|\\s)" + oClassNames[i].replace(/\-/g, "\\-") + "(\\s|$)"));
+			arrRegExpClassNames[arrRegExpClassNames.length] =
+				new RegExp("(^|\\s)" + oClassNames[i].replace(/\-/g, "\\-") + "(\\s|$)");
 		}
 	}
 	else{
-		arrRegExpClassNames.push(new RegExp("(^|\\s)" + oClassNames.replace(/\-/g, "\\-") + "(\\s|$)"));
+		arrRegExpClassNames[arrRegExpClassNames.length] =
+			new RegExp("(^|\\s)" + oClassNames.replace(/\-/g, "\\-") + "(\\s|$)");
 	}
 	var oElement;
 	var bMatchesAll;
@@ -908,7 +909,7 @@ function getElementsByClassName(oElm, strTagName, oClassNames){
 			}
 		}
 		if(bMatchesAll){
-			arrReturnElements.push(oElement);
+			arrReturnElements[arrReturnElements.length] = oElement;
 		}
 	}
 	return (arrReturnElements)

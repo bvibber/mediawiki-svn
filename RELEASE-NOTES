@@ -112,7 +112,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   usergroup assignment.
 * Introduce 'UserEffectiveGroups' hook; see docs/hooks.txt for more information
 * (bug 10387) Detect and handle '.php5' extension environments at install time
-  Patch by Edward Z. Yang.
 * Introduce 'ShowRawCssJs' hook; see docs/hooks.txt for more information
 * (bug 10404) Show rights log for the selected user in Special:Userrights
 * New javascript for upload page that will show a warning if a file with the
@@ -137,7 +136,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 10530) Introduce optional "sp-contributions-explain" message for
   additional explanation in Special:Contributions
 * (bug 10520) Preview licences during upload via AJAX (toggle with
-  $wgAjaxLicencePreview)
+  $wgAjaxLicensePreview)
 * New Parser::setTransparentTagHook for parser extension and template
   compatibility
 * Introduced 'ContributionsToolLinks' hook; see docs/hooks.txt for more
@@ -150,6 +149,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   phisticated handheld browser.
 * (bug 3173) Option to offer exported pages as a download, rather than displaying
   inline, as in most browsers
+* Pass the user as an argument to 'isValidPassword' hook callbacks; see
+  docs/hooks.txt for more information
 
 == Bugfixes since 1.10 ==
 
@@ -305,12 +306,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Don't show non-functional toolbar buttons on Opera 7 anymore
 * (bug 9151) Fix relative subpage links with section fragments
 * (bug 10560) Adding a space between category letter heading and "continues"
-* (bug 1629) Stop section edit links from being shoved down by other floats
 * (bug 4650) Keep impossibly large/small counts off Special:Statistics
 * (bug 10608) PHP notice when installing with PostgreSQL
 * (bug 10615) Fix for transwiki import when CURL not available
 * (bug 8054) Return search page for empty search requests with ugly URLs
 * (bug 10572) Force refresh after clearing visitation timestamps on watchlist
+* (bug 10631) Warn when illegal characters are removed from filename at upload
+* Fix several JavaScript bugs under MSIE 5/Macintosh
+* (bug 10591) Use Arabic numerals (0,1,2...) for the Malayam language
+* (bug 10642) Fix shift-click checkbox behavior for Opera 9.0+ and 6.0
+* Work around Safari bug with pages ending in ".gz" or ".tgz"
 
 
 == API changes since 1.10 ==
