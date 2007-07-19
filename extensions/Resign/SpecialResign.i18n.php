@@ -88,6 +88,20 @@ Ingat: '''Anda tidak dapat memperoleh kembali hak Anda melalui ini!''' Anda haru
 'resign-logentry'  => 'melepaskan hak $2 dari dirinya sendiri',
 ),
 
+/* Norwegian (Jon Harald Søby) */
+'no' => array(
+'resign' => 'Trekke seg',
+'resign-text' => 'Du kan \'\'\'fjerne dine rettigheter\'\'\' (f.eks. administratorrettigheter) på denne siden. Vennligst kryss av rettighetene du vil fjerne.
+
+Husk: \'\'\'Du kan ikke få tilbake rettighetene på denne måten!\'\'\' Du må overbevise en byråkrat eller en steward om å gi deg rettighetene igjen. Vennligst bruk denne siden med omhu.',
+'resign-reason' => 'Grunn:',
+'resign-confirm' => 'Jeg bekrefter at jeg vil fjerne de avmerkede rettighetene.',
+'resign-noconfirm' => 'Vennligst merk av bekreftelsesboksen om du vil fjerne dine rettigheter.',
+'resign-nogroups' => 'Vennligst merk av rettighetene du ønsker å fjerne.',
+'resign-success' => '\'\'\'Rettighetene ble fjernet.\'\'\'',
+'resign-logentry' => 'fjernet følgende tillatelser fra seg selv: $2',
+),
+
 /* Piedmontese (Bèrto 'd Sèra) */
 'pms' => array(
 'resign' => 'Dimission',
