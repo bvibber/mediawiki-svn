@@ -98,10 +98,11 @@ $result = mysql_query("
 #                       * don't count deleted stuff (old query did)
 #                       * do 2 joins: between members of collection and target language, and then with english for default, but only for elements having target language expression as NULL (non-existing)
 #                       * this gives us the DM id, the spelling in target language (or NULL, if none), the spelling in English (or NULL, if none)
+#			(+Kim) Alternately, just try the actual defining expression, which should never be NULL in the first place.
 #                    Warning: some DMs came up in OLPC and Swadesh collections belonging to those collections but having no expressions associated... These are visible in this query
 
 $result = mysql_query("
-		SELECT member.id, translation_en.spelling_en
+		SELECT member.id, translation_dm.spelling_dm
 		FROM
 		(
 		 SELECT member_mid as id
@@ -128,37 +129,57 @@ $result = mysql_query("
 		translation.defined_meaning_id = member.id
 		LEFT JOIN
 		(
-		 SELECT spelling as spelling_en, defined_meaning_id
-		 FROM uw_syntrans, uw_expression_ns WHERE
-		 uw_expression_ns.expression_id = uw_syntrans.expression_id
-		 AND uw_syntrans.remove_transaction_id IS NULL
-		 AND language_id = 85
-		 AND defined_meaning_id IN
-	 	(
-			SELECT member_mid as id
-			FROM uw_collection_contents WHERE
-			collection_id = $collection_esc 
-			AND remove_transaction_id IS NULL
-		)
-		) as translation_en
+			 SELECT COALESCE(translation_en.spelling_en, translation_dm1.spelling_dm ) as spelling_dm, translation_dm1.defined_meaning_id as defined_meaning_id
+			 FROM 
+			 (
+				 SELECT spelling as spelling_dm, defined_meaning_id
+				 FROM uw_defined_meaning,  uw_expression_ns WHERE
+				 uw_expression_ns.expression_id = uw_defined_meaning.expression_id
+				 AND uw_defined_meaning.remove_transaction_id IS NULL
+				 AND uw_expression_ns.remove_transaction_id IS NULL
+				 AND defined_meaning_id IN
+				(
+					SELECT member_mid as id
+					FROM uw_collection_contents WHERE
+					collection_id = $collection_esc 
+					AND remove_transaction_id IS NULL
+				)
+			) as translation_dm1
+			LEFT JOIN
+			(
+				 SELECT spelling as spelling_en, defined_meaning_id
+				 FROM uw_syntrans, uw_expression_ns WHERE
+				 uw_expression_ns.expression_id = uw_syntrans.expression_id
+				 AND uw_syntrans.remove_transaction_id IS NULL
+				 AND language_id = 85
+				 AND defined_meaning_id IN
+				(
+					SELECT member_mid as id
+					FROM uw_collection_contents WHERE
+					collection_id = $collection_esc 
+					AND remove_transaction_id IS NULL
+				)
+			) as translation_en
+			ON translation_dm1.defined_meaning_id=translation_en.defined_meaning_id
+		) as translation_dm
 		ON
-		translation_en.defined_meaning_id = member.id
+		translation_dm.defined_meaning_id = member.id
 		WHERE translation.spelling IS NULL
-		ORDER BY spelling_en
+		ORDER BY spelling_dm
 ")or die ("error ".mysql_error());
 
 
 while ($row = mysql_fetch_array($result, MYSQL_NUM)) {
 	$id=$row[0];
-	$spelling_en=$row[1];
+	$spelling_dm=$row[1];
 	
 	# Malafaya: Not translated to target language
-	if ($spelling_en == null)
+	if ($spelling_dm == null)
 		# Malafaya: Not translated to English either; use a placeholder expression
 		print "<a href=\"../../../index.php?title=DefinedMeaning:(untranslated)_($id)\">(untranslated)</a>;\n";
 	else
 		# Malafaya: English translation exists; use it
-		print "<a href=\"../../../index.php?title=DefinedMeaning:".$spelling_en."_($id)\">$spelling_en</a>;\n";
+		print "<a href=\"../../../index.php?title=DefinedMeaning:".$spelling_dm."_($id)\">$spelling_dm</a>;\n";
 }
 print "<br>\n";
 
