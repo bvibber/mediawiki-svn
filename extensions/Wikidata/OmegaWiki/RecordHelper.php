@@ -63,6 +63,7 @@ class RecordHelperFactory {
 abstract class Helper {
 	protected $record;
 	protected $saved;
+	protected $UUID;
 	public function __construct($record) {
 		$this->record=$record;	
 	}
@@ -71,7 +72,7 @@ abstract class Helper {
 		return $this->saved;
 	}
 
-	public function setSaved($saved) {
+	public function setSaved($saved=True) {
 		$this->saved=$saved;
 	}
 	
@@ -91,6 +92,15 @@ abstract class Helper {
 		$sql=$this->getSaveSQL();
 		$dbr = &wfGetDB(DB_MASTER);
 		$dbr->query($sql);
+		$self->setSaved();
+	}
+
+	public function setUUID($UUID) {
+		$this->UUID=$UUID;
+	}
+
+	public function getUUID($UUID) {
+		return $this->UUID;	
 	}
 
 }
@@ -134,6 +144,14 @@ class ExpressionHelper extends Helper {
 
 	public function save() {
 		
+	}
+
+	public function getUUID() {
+		if (is_null($this->UUID)) {
+			/* and now magic happens ... except wait, this is a recordset...
+			 * where magical things, don't happen, very often. :-(*/	
+		}			
+		return $this->UUID;
 	}
 }
 

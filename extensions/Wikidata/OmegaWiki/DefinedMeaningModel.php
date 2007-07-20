@@ -213,11 +213,12 @@ class DefinedMeaningModel {
 	 */
 	protected function getIdStack($definedMeaningId) {
 		global
-			$definedMeaningIdAttribute;
+			$omegaWikiAttributes;
+		$o=$omegaWikiAttributes;
 
-		$definedMeaningIdStructure = new Structure($definedMeaningIdAttribute);
+		$definedMeaningIdStructure = new Structure($o->$definedMeaningId);
 		$definedMeaningIdRecord = new ArrayRecord($definedMeaningIdStructure, $definedMeaningIdStructure);
-		$definedMeaningIdRecord->setAttributeValue($definedMeaningIdAttribute, $definedMeaningId);	
+		$definedMeaningIdRecord->definedMeaningId= $definedMeaningId;	
 		
 		$idStack = new IdStack("defined-meaning");
 		$idStack->pushKey($definedMeaningIdRecord);

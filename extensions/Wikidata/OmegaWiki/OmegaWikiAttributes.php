@@ -394,6 +394,8 @@ class OmegaWikiAttributes {
 				  $t->expressionId,
 				  $t->language
 			);
+		#try this
+		$t->definedMeaningCompleteDefiningExpressionStructure->setStructureType("expression");
 		$t->definedMeaningCompleteDefiningExpression=new Attribute(null, "Defining expression", $t->definedMeaningCompleteDefiningExpressionStructure);
 		global
 			  $definedMeaningReferenceType;
