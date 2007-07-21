@@ -151,6 +151,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   inline, as in most browsers
 * Pass the user as an argument to 'isValidPassword' hook callbacks; see
   docs/hooks.txt for more information
+* Introduce 'UserGetRights' hook; see docs/hooks.txt for more information
 
 == Bugfixes since 1.10 ==
 
@@ -316,6 +317,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 10591) Use Arabic numerals (0,1,2...) for the Malayam language
 * (bug 10642) Fix shift-click checkbox behavior for Opera 9.0+ and 6.0
 * Work around Safari bug with pages ending in ".gz" or ".tgz"
+* Removed obsolete maintenance/changeuser.sql script; use RenameUser extension
 
 
 == API changes since 1.10 ==
