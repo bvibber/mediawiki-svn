@@ -684,7 +684,7 @@ HTML
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
 		
-		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
+		$this->output->setPageTitle( $this->title->getTalkpage()->getPrefixedText() );
 		$this->addJSandCSS();
 
 		$this->showHeader();
@@ -901,7 +901,7 @@ HTML
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
 		
-		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
+		$this->output->setPageTitle( $this->title->getTalkpage()->getPrefixedText() );
 		$this->addJSandCSS();
 		
 		$empty = $this->showSearchForm();
