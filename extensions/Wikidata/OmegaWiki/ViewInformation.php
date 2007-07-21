@@ -44,6 +44,20 @@ class ViewInformation {
 	public function getPropertyToColumnFilters() {
 		return $this->propertyToColumnFilters;
 	}
+
+	/* make an attempt at a hashCode function.
+	 * note that this function is imperfect..., I've left out
+	 * some attributes because I am lazy. 
+	 * please check and recheck when creating new viewinformation
+	 * when using such viewinformation together with OmegaWikiAttributes.
+	 */
+	public function hashCode() {
+		return
+			$this->filterLanguageId.",".
+			$this->possiblySynonymousRelationTypeId.",".
+			$this->showRecordLifeSpan.",".
+			$this->viewOrEdit;
+	}
 }
 
 ?>
