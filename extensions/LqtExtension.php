@@ -61,6 +61,12 @@ class LqtDispatch {
 		} else if ( $title->getNamespace() == NS_LQT_THREAD ) {
 			self::threadPermalinkMain($output, $article, $title, $user, $request);
 			return false;
+		} else if ($title->getNamespace() == NS_LQT_HEADER) {
+			$talkt = Title::newFromText( $title->getText() );
+			$url = $talkt->getFullURL();
+			$name = $talkt->getPrefixedText();
+			$output->setSubtitle("part of <a href=\"$url\">$name</a>.");
+			return true;
 		}
 		return true;
 	}
