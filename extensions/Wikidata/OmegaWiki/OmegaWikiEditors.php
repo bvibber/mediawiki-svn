@@ -184,7 +184,7 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 		$textValueObjectAttributesEditors, $textAttributeIdAttribute,
 		$linkValueObjectAttributesEditors, $linkAttributeIdAttribute,
 		$translatedTextValueObjectAttributesEditors, $translatedTextAttributeIdAttribute,
-		$optionValueObjectAttributesEditors, $optionAttributeIdAttribute, $annotationMeaningName, $omegaWikiAttributes;
+		$optionValueObjectAttributesEditors, $optionAttributeIdAttribute, $annotationMeaningName;
 		
 	$linkValueObjectAttributesEditors = array();
 	$textValueObjectAttributesEditors = array();	
@@ -309,16 +309,14 @@ function addPropertyToColumnFilterEditors(Editor $editor, ViewInformation $viewI
 }	
 
 function getTranslatedTextEditor(Attribute $attribute, UpdateController $updateController, UpdateAttributeController $updateAttributeController, ViewInformation $viewInformation) {
-	global 
-		$omegaWikiAttributes;
-		
+		$o=OmegaWikiAttributes::getInstance();	
 	if ($viewInformation->filterLanguageId == 0 || $viewInformation->showRecordLifeSpan) {
 		$editor = new RecordSetTableEditor($attribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, true, $updateController);
 		
 		if ($viewInformation->filterLanguageId == 0)
-			$editor->addEditor(new LanguageEditor($omegaWikiAttributes->language, new SimplePermissionController(false), true));
+			$editor->addEditor(new LanguageEditor($o->language, new SimplePermissionController(false), true));
 			
-		$editor->addEditor(new TextEditor($omegaWikiAttributes->text, new SimplePermissionController(true), true));
+		$editor->addEditor(new TextEditor($o->text, new SimplePermissionController(true), true));
 		addTableMetadataEditors($editor, $viewInformation);
 	}
 	else 
@@ -396,13 +394,13 @@ function getAlternativeDefinitionsEditor(ViewInformation $viewInformation) {
 }
 
 function getExpressionTableCellEditor(Attribute $attribute, ViewInformation $viewInformation) {
-	global
-		$omegaWikiAttributes;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	if ($viewInformation->filterLanguageId == 0) {
 		$editor = new RecordTableCellEditor($attribute);
-		$editor->addEditor(new LanguageEditor($omegaWikiAttributes->language, new SimplePermissionController(false), true));
-		$editor->addEditor(new SpellingEditor($omegaWikiAttributes->spelling, new SimplePermissionController(false), true));
+		$editor->addEditor(new LanguageEditor($o->language, new SimplePermissionController(false), true));
+		$editor->addEditor(new SpellingEditor($o->spelling, new SimplePermissionController(false), true));
 	}
 	else	
 		$editor = new SpellingEditor($attribute, new SimplePermissionController(false), true);
@@ -632,8 +630,8 @@ function getOptionAttributeValuesEditor(ViewInformation $viewInformation, Update
 
 function getOptionAttributeOptionsEditor() {
 	global
-		$optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeOptionsAttribute, $omegaWikiAttributes;
-	$o=$omegaWikiAttributes;
+		$optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeOptionsAttribute;
+	$o=OmegaWikiAttributes::getInstance();
 
 	$editor = new RecordSetTableEditor($optionAttributeOptionsAttribute, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new OptionAttributeOptionsController());
 	$editor->addEditor(new DefinedMeaningReferenceEditor($optionAttributeOptionAttribute, new SimplePermissionController(false), true)); 
@@ -660,7 +658,9 @@ function getExpressionMeaningsEditor(Attribute $attribute, $allowAdd, ViewInform
 
 function getExpressionsEditor($spelling, ViewInformation $viewInformation) {
 	global
-		$expressionMeaningsAttribute, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute, $expressionAttribute, $expressionsAttribute, $omegaWikiAttributes;
+		$expressionMeaningsAttribute, $expressionExactMeaningsAttribute, $expressionApproximateMeaningsAttribute, $expressionAttribute, $expressionsAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$expressionMeaningsRecordEditor = new RecordUnorderedListEditor($expressionMeaningsAttribute, 3);
 	
@@ -672,7 +672,7 @@ function getExpressionsEditor($spelling, ViewInformation $viewInformation) {
 	
 	if ($viewInformation->filterLanguageId == 0) {
 		$expressionEditor = new RecordSpanEditor($expressionAttribute, ': ', ' - ');
-		$expressionEditor->addEditor(new LanguageEditor($omegaWikiAttributes->language, new SimplePermissionController(false), true));
+		$expressionEditor->addEditor(new LanguageEditor($o->language, new SimplePermissionController(false), true));
 
 		$expressionsEditor = new RecordSetListEditor(
 			$expressionsAttribute, 
@@ -819,12 +819,12 @@ function createUserViewer($attribute) {
 }
 
 function createTranslatedTextViewer($attribute) {
-	global
-		$textAttribute,$omegaWikiAttributes;
 	
+	$o=OmegaWikiAttributes::getInstance();
+
 	$result = createTableViewer($attribute);
-	$result->addEditor(createLanguageViewer($omegaWikiAttributes->language));
-	$result->addEditor(createLongTextViewer($textAttribute));
+	$result->addEditor(createLanguageViewer($o->language));
+	$result->addEditor(createLongTextViewer($o->text));
 	
 	return $result;
 }

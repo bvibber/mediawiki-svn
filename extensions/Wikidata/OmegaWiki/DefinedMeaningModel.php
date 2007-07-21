@@ -141,9 +141,7 @@ class DefinedMeaningModel {
 		$view=$this->getViewInformation();
 		/** FIXME: Records should be loaded using helpers rather than
 		  global functions! */
-		global 
-			$omegaWikiAttributes;
-		$o=$omegaWikiAttributes;
+		$o=OmegaWikiAttributes::getInstance();
 
 		$record = new ArrayRecord($o->definedMeaning->type);
 		$record->definedMeaningCompleteDefiningExpression =  getDefiningExpressionRecord($id);
@@ -212,9 +210,7 @@ class DefinedMeaningModel {
 	 * FIXME - work in progress
 	 */
 	protected function getIdStack($definedMeaningId) {
-		global
-			$omegaWikiAttributes;
-		$o=$omegaWikiAttributes;
+		$o=OmegaWikiAttributes::getInstance();
 
 		$definedMeaningIdStructure = new Structure($o->$definedMeaningId);
 		$definedMeaningIdRecord = new ArrayRecord($definedMeaningIdStructure, $definedMeaningIdStructure);

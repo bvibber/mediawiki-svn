@@ -31,12 +31,9 @@ require_once("ViewInformation.php");
  *	-this is what RecordHelpers are for.
  */
 function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
-	 global 
-		$omegaWikiAttributes; // It would be even better if this was
-					// passed to objects explicitly
-					// but one step at a time...
-	$omegaWikiAttributes=  OmegaWikiAttributes::getInstance($viewInformation); 
-	initializeOmegaWikiAttributesOld($viewInformation); //backward compatibility, will be removed.
+	$init_and_discard_this= OmegaWikiAttributes::getInstance($viewInformation); 
+
+	initializeOmegaWikiAttributesOld($viewInformation); //backward compatibility, will be removed!
 }
 
 

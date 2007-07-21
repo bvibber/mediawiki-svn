@@ -48,9 +48,10 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 	
 	protected function showExpressionsNeedingTranslation($sourceLanguageId, $destinationLanguageId) {
 		global
-			$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure, $omegaWikiAttributes;
+			$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure;
 		
 		$dc=wdGetDataSetContext();
+		$o=OmegaWikiAttributes::getInstance()
 
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id" .
@@ -79,7 +80,7 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 		}
 		
 		$expressionEditor = new RecordTableCellEditor($expressionAttribute);
-		$expressionEditor->addEditor(new LanguageEditor($omegaWikiAttributes->language, new SimplePermissionController(false), false));
+		$expressionEditor->addEditor(new LanguageEditor($o->language, new SimplePermissionController(false), false));
 		$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), false));
 	
 		$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new AllowAddController(false), false, false, null);

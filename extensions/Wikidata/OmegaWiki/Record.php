@@ -36,8 +36,8 @@ class ArrayRecord implements Record {
 	 * and return its value
  	 */
 	public function __get($attribute_name){
-		global $omegaWikiAttributes;
-		return $this->getAttributeValue($omegaWikiAttributes->$attribute_name);
+		$o=OmegaWikiAttributes::getInstance();
+		return $this->getAttributeValue($o->$attribute_name);
 	}
 		
 	/**
@@ -45,8 +45,8 @@ class ArrayRecord implements Record {
 	 * and set its value
  	 */
 	public function __set($attribute_name, $value){
-		global $omegaWikiAttributes;
-		return $this->setAttributeValue ($omegaWikiAttributes->$attribute_name, $value);
+		$o=OmegaWikiAttributes::getInstance();
+		return $this->setAttributeValue ($o->$attribute_name, $value);
 	}
 	/** 
 	 * Obtains a value based on the provided key.

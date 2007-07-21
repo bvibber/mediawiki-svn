@@ -45,8 +45,8 @@
 
 			protected function showExpressionsNeedingTranslation($sourceLanguageId, $destinationLanguageId,$collectionId) {
 				global
-					$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure, $omegaWikiAttributes;
-				$o=$omegaWikiAttributes;
+					$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure;
+				$o=OmegaWikiAttributes::getInstance();
 
 				$dc=wdGetDataSetContext();
 				require_once("Transaction.php");

@@ -129,9 +129,9 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 function initializeAttributes() {
 	global
 		$operationAttribute, $isLatestAttribute, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
-		$omegaWikiAttributes, $definedMeaningReferenceStructure, $rollBackStructure, $rollBackAttribute;
+		 $definedMeaningReferenceStructure, $rollBackStructure, $rollBackAttribute;
 
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 
 	$operationAttribute = new Attribute('operation', 'Operation', 'text');
 	$isLatestAttribute = new Attribute('is-latest', 'Is latest', 'boolean');
@@ -266,9 +266,9 @@ function initializeAttributes() {
 	$updatedLinkAttribute = new Attribute('updated-link', 'Link properties', $updatedLinkStructure);
 	
 	global
-		$updatedTextAttribute, $updatedTextStructure, $omegaWikiAttributes;	
+		$updatedTextAttribute, $updatedTextStructure;	
 		
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 
 	$updatedTextStructure = new Structure(
 		$rollBackAttribute,
@@ -546,11 +546,11 @@ function getUpdatedTextRecord($text, $history) {
 function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 
 	global
-		$omegaWikiAttributes, $definedMeaningIdAttribute, 
+		 $definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, $updatedDefinitionStructure, $translatedContentIdAttribute,
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
 
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();		
 		
@@ -624,11 +624,11 @@ function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
 
 function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 	global
-		$omegaWikiAttributes, $definedMeaningIdAttribute, $sourceAttribute,
+		 $definedMeaningIdAttribute, $sourceAttribute,
 		$definedMeaningReferenceAttribute, $updatedAlternativeDefinitionTextStructure, $translatedContentIdAttribute,
 		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute, $operationAttribute, $isLatestAttribute;
 
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -665,11 +665,11 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 function getUpdatedSyntransesRecordSet($transactionId, $dc=null) {
 	global
 		$updatedSyntransesStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
-		$expressionAttribute, $expressionStructure, $omegaWikiAttributes, $syntransIdAttribute,
+		$expressionAttribute, $expressionStructure,  $syntransIdAttribute,
 		$expressionIdAttribute,	$identicalMeaningAttribute, 
 		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $rollBackStructure;		
 
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 	$dc=wdGetDataSetContext($dc);			
 	
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -987,7 +987,7 @@ function getUpdatedTranslatedTextRecordSet($transactionId) {
 		$updatedTranslatedTextStructure, $translatedContentIdAttribute,
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
 
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -1023,9 +1023,9 @@ function getUpdatedTranslatedTextRecordSet($transactionId) {
 
 function getTranslatedContentHistorySelector($attribute) {
 	global
-		$omegaWikiAttributes, $recordLifeSpanAttribute;
+		 $recordLifeSpanAttribute;
 
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 
 	$result = createSuggestionsTableViewer($attribute);
 	$result->addEditor(createLongTextViewer($o->text));
@@ -1038,10 +1038,10 @@ function getTranslatedContentHistorySelector($attribute) {
 
 function getUpdatedDefinedMeaningDefinitionEditor($attribute, $showRollBackOptions) {
 	global
-		$definedMeaningReferenceAttribute, $omegaWikiAttributes,
+		$definedMeaningReferenceAttribute, 
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
 	
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions) {
@@ -1081,10 +1081,10 @@ function getUpdatedAlternativeDefinitionsEditor($attribute, $showRollBackOptions
 
 function getUpdatedAlternativeDefinitionTextEditor($attribute, $showRollBackOptions) {
 	global
-		$definedMeaningReferenceAttribute, $omegaWikiAttributes, $sourceAttribute, 
+		$definedMeaningReferenceAttribute,  $sourceAttribute, 
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
 
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$editor = createTableViewer($attribute);
 	
@@ -1203,10 +1203,10 @@ function getUpdatedLinkEditor($attribute, $showRollBackOptions) {
 
 function getUpdatedTextEditor($attribute, $showRollBackOptions) {
 	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $omegaWikiAttributes, 
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute,  
 		$rollBackAttribute, $operationAttribute, $isLatestAttribute;
 		
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 
 	$editor = createTableViewer($attribute);
 
@@ -1243,10 +1243,10 @@ function getUpdatedTranslatedTextPropertyEditor($attribute, $showRollBackOptions
 
 function getUpdatedTranslatedTextEditor($attribute, $showRollBackOptions) {
 	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $omegaWikiAttributes, 
+		$objectIdAttribute, $valueIdAttribute, $attributeAttribute,  
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
 	
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions) {

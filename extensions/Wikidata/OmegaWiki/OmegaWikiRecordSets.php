@@ -394,11 +394,10 @@ function getExpressionMeaningsRecord($expressionId, ViewInformation $viewInforma
 	return $record;
 }
 
-function getExpressionsRecordSet($spelling, ViewInformation $viewInformation) {
-	global
-		$omegaWikiAttributes, $expressionIdAttribute, $expressionAttribute, $expressionMeaningsAttribute, $expressionsStructure;
+function getExpressionsRecordSet($spelling, ViewInformation $viewInformation, $dc=null) {
 
-	$dc=wdGetDataSetContext();
+	$dc=wdGetDataSetContext($dc);
+	$o=OmegaWikiAttributes::getInstance();
 
 	$languageRestriction = $viewInformation->filterLanguageId != 0 ? " AND language_id=". $viewInformation->filterLanguageId : "";
 
@@ -417,8 +416,8 @@ function getExpressionsRecordSet($spelling, ViewInformation $viewInformation) {
 		.")"
 	);
 	
-	$result = new ArrayRecordSet($expressionsStructure, new Structure("expression-id", $expressionIdAttribute));
-	$languageStructure = new Structure("language", $omegaWikiAttributes->language);
+	$result = new ArrayRecordSet($o->expressionsStructure, new Structure("expression-id", $o->expressionId));
+	$languageStructure = new Structure("language", $o->language);
 
 	while($expression = $dbr->fetchObject($queryResult)) {
 		$expressionRecord = new ArrayRecord($languageStructure);
@@ -657,36 +656,40 @@ function getTranslatedContentValue($translatedContentId, ViewInformation $viewIn
 function getTranslatedContentRecordSet($translatedContentId, ViewInformation $viewInformation) {
 	global
 		$translatedContentTable,
-		$translatedTextStructure, $omegaWikiAttributes;
+		$translatedTextStructure;
+	
+	$o=OmegaWikiAttributes::getInstance();
 
 	$recordSet = queryRecordSet(
 		$translatedTextStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
-		$omegaWikiAttributes->language,
+		$o->language,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('language_id'), $omegaWikiAttributes->language), 
-			new TableColumnsToAttribute(array('text_id'), $omegaWikiAttributes->text)
+			new TableColumnsToAttribute(array('language_id'), $o->language), 
+			new TableColumnsToAttribute(array('text_id'), $o->text)
 		),
 		$translatedContentTable,
 		array("translated_content_id=$translatedContentId")
 	);
 	
-	expandTextReferencesInRecordSet($recordSet, array($omegaWikiAttributes->text));
+	expandTextReferencesInRecordSet($recordSet, array($o->text));
 	
 	return $recordSet;
 } 
 
 function getFilteredTranslatedContentRecordSet($translatedContentId, ViewInformation $viewInformation) {
 	global
-		$translatedContentTable, $omegaWikiAttributes ;
+		$translatedContentTable;
 	
+	$o=OmegaWikiAttributes::getInstance();
+
 	$recordSet = queryRecordSet(
 		null,
 		$viewInformation->queryTransactionInformation,
 		$o->language,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('language_id'), $omegaWikiAttributes->language), 
-			new TableColumnsToAttribute(array('text_id'), $omegaWikiAttributes->text)
+			new TableColumnsToAttribute(array('language_id'), $o->language), 
+			new TableColumnsToAttribute(array('text_id'), $o->text)
 		),
 		$translatedContentTable,
 		array(
@@ -695,7 +698,7 @@ function getFilteredTranslatedContentRecordSet($translatedContentId, ViewInforma
 		)
 	);
 	
-	expandTextReferencesInRecordSet($recordSet, array($omegaWikiAttributes->textAttribute));
+	expandTextReferencesInRecordSet($recordSet, array($o->text));
 	
 	return $recordSet;
 }
@@ -1061,9 +1064,9 @@ function getTranslatedTextAttributeValuesRecordSet(array $objectIds, ViewInforma
 
 function getOptionAttributeOptionsRecordSet($attributeId, ViewInformation $viewInformation) {
 	global
-		$optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $omegaWikiAttributes, $optionAttributeOptionsTable;
+		$optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute,  $optionAttributeOptionsTable;
 
-	$o=$omegaWikiAttributes;
+	$o=OmegaWikiAttributes::getInstance();
 	$recordSet = queryRecordSet(
 		null,
 		$viewInformation->queryTransactionInformation,
@@ -1178,10 +1181,9 @@ function getDefiningExpressionRecord($definedMeaningId) {
 		global 		
 			$definedMeaningCompleteDefiningExpressionAttribute,
 			$definedMeaningDefiningExpressionAttribute,
-			$expressionIdAttribute,
-		  	$omegaWikiAttributes;
+			$expressionIdAttribute;
 
-		$o=$omegaWikiAttributes;	
+		$o=OmegaWikiAttributes::getInstance();	
 
 		$definingExpression=definingExpressionRow($definedMeaningId);
 		$definingExpressionRecord = new ArrayRecord($definedMeaningCompleteDefiningExpressionAttribute->type);
