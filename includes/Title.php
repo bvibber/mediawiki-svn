@@ -2466,11 +2466,11 @@ class Title {
 	}
 
 	/**
-	 * Check if page exists
+	 * Check if page exists LQT HACK
 	 * @return bool
 	 */
 	public function exists() {
-		return $this->getArticleId() != 0;
+		return $this->getArticleId() != 0 || $this->isTalkPage();
 	}
 
 	/**

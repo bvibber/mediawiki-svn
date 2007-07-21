@@ -216,6 +216,8 @@ class Thread {
 	}
 	
 	function commitRevision() {
+		global $wgUser; // TODO global.
+		
 		// TODO open a transaction.
 		HistoricalThread::create( $this->double );
 
@@ -233,6 +235,10 @@ class Thread {
 				    'thread_article_title' => $this->articleTitle),
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     __METHOD__);
+		
+	/*	RecentChange::notifyEdit( wfTimestampNow(), $this->root(), /*minor*/false, $wgUser, $summary,
+			$lastRevision, $this->getTimestamp(), $bot, '', $oldsize, $newsize,
+			$revisionId );*/
 	}
 
 	function __construct($line, $children) {

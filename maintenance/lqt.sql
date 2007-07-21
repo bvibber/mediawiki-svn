@@ -26,16 +26,9 @@ CREATE TABLE /*$wgDBprefix*/historical_thread (
   hthread_id int(8) unsigned NOT NULL,
   hthread_revision int(8) unsigned NOT NULL,
   hthread_contents BLOB NOT NULL,
+  hthread_affected_id int(8) unsigned NOT NULL,
+  hthread_action int(1) unsigned NOT NULL,
   PRIMARY KEY hthread_id_revision (hthread_id, hthread_revision)
-) TYPE=InnoDB;
-
--- Because hthreads are only stored one per root, this lists
--- the subthreads that can be found within each one.
-CREATE TABLE /*$wgDBprefix*/hthread_contents (
-  htcontents_child int(8) unsigned NOT NULL,
-  htcontents_hthread int(8) unsigned NOT NULL,
-  htcontents_rev_start int(8) unsigned NOT NULL,
-  htcontents_rev_end int(8) unsigned NULL
 ) TYPE=InnoDB;
 
 /*

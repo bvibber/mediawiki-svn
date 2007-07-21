@@ -28,7 +28,9 @@ $wgCanonicalNamespaceNames = array(
 	NS_LQT_THREAD		=> 'Thread',
 	NS_LQT_THREAD_TALK	=> 'Thread_talk',
 	NS_LQT_SUMMARY		=> 'Summary',
-	NS_LQT_SUMMARY_TALK	=> 'Summary_talk'
+	NS_LQT_SUMMARY_TALK	=> 'Summary_talk',
+	NS_LQT_HEADER       => 'Header',
+	NS_LQT_HEADER_TALK  => 'Header_talk'
 );
 
 if( is_array( $wgExtraNamespaces ) ) {

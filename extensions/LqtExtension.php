@@ -64,10 +64,45 @@ class LqtDispatch {
 		}
 		return true;
 	}
+	
+	static function onPageMove( $movepage, $ot, $nt ) {
+		/* If the user moved a subject page, we are responsible for moving the articles
+		 associated with the talkpage directly; we will not be invoked a second time when
+		 MW attempts to move the talk page, because it doesn't actually exist.  */
+		if( $movepage->moveTalk && !$ot->isTalkPage() && !$nt->isTalkPage() ) {
+			$ntt = $nt->getTalkPage();
+			$ott = $ot->getTalkPage();
+			return self::onPageMove($movepage, $ott, $ntt);
+		}
+
+		if( $ot->getNamespace() == NS_LQT_HEADER ||
+			$nt->getNamespace() == NS_LQT_HEADER ) return true;
+
+		# TODO look up namespace name
+		$oht = Title::newFromText( 'Header:' . $ot->getPrefixedText() );
+
+
+		if( $oht->exists() ) {
+			$nht = Title::newFromText( 'Header:' . $nt->getPrefixedText() );
+
+			$error = $oht->moveTo( $nht, true, $movepage->reason );
+			if ( $error === true ) {
+				wfRunHooks( 'SpecialMovepageAfterMove', array( &$movepage, &$oht, &$nht ) )	;
+			} else {
+				$talkmoved = $error;
+			}
+		} else {
+			$talkmoved = 'notalkpage';
+		}
+		# TODO we have no apparent way to report any error or success that goes on here.
+		
+		return true;
+	}
 }
 
 
 $wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
+$wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
 
  
 class LqtView {
@@ -170,6 +205,11 @@ SQL;
 		$query = $method ? "lqt_method=$method" : "";
 		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
 		return $title->getFullURL( $query );
+	}
+
+	function headerTitle() {
+		# TODO
+		return Title::newFromText( 'Header:' . $this->title->getPrefixedText() );
 	}
 
 	/*************************************************************
@@ -594,6 +634,10 @@ HTML
 		$action = $this->request->getVal('lqt_header_action');
 		
 		$article = new Article( $this->title );
+
+		$headert = $this->headerTitle();
+		$headera = new Article($headert);
+
 		if( $action == 'edit' || $action=='submit' ) {
 			// TODO this is scary and horrible.
 			$e = new EditPage($article);
@@ -605,18 +649,18 @@ HTML
 			$this->output->addHTML("Disclaimer: history doesn't really work yet.");
 			$history = new PageHistory( $article );
 			$history->history();
-		} else if ( $article->exists() ) {
-			$edit = $this->title->getFullURL( 'lqt_header_action=edit' );
-			$history = $this->title->getFullURL( 'lqt_header_action=history' );
+		} else if ( $headera->exists() ) {
+			$edit = $headert->getFullURL( 'action=edit' );
+			$history = $headert->getFullURL( 'action=history' );
 			$this->openDiv('lqt_header_content');
-			$this->showPostBody($article);
+			$this->showPostBody($headera);
 			$this->outputList('ul', 'lqt_header_commands', null, array(
 				"[<a href=\"$edit\">edit</a>]", 
 				"[<a href=\"$history\">history</a>]"
 				));
 			$this->closeDiv();
 		} else {
-			$this->output->addHTML("<p class=\"lqt_header_notice\">[<a href=\"{$this->title->getFullURL('lqt_header_action=edit')}\">add header</a>]</p>");
+			$this->output->addHTML("<p class=\"lqt_header_notice\">[<a href=\"{$headert->getFullURL('action=edit')}\">add header</a>]</p>");
 		}
 	}
 	

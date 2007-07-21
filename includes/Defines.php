@@ -65,6 +65,8 @@ define('NS_LQT_THREAD', 16);
 define('NS_LQT_THREAD_TALK', 17);
 define('NS_LQT_SUMMARY', 18);
 define('NS_LQT_SUMMARY_TALK', 19);
+define('NS_LQT_HEADER', 20);
+define('NS_LQT_HEADER_TALK', 21);
 /**#@-*/
 
 /**
