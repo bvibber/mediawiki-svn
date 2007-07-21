@@ -327,7 +327,7 @@ HTML;
 		if( $edit_type == 'editExisting' && $e->didSave ) {
 			$subject = $this->request->getVal('lqt_subject_field', '');
 			if ( $subject && $subject != $thread->subjectWithoutIncrement() ) {
-				//$this->renameThread($thread, $subject);
+				$this->renameThread($thread, $subject);
 			}
 			// this is unrelated to the subject change and is for all edits:
 			$thread->setRootRevision( Revision::newFromTitle($thread->root()->getTitle()) );
@@ -828,8 +828,13 @@ HTML
 		return $res;
 	}
 
+	/* @return True if there are no threads to show, false otherwise.
+	 TODO is is somewhat bizarre. */
 	function showSearchForm() {
 		$months = Threads::monthsWhereArticleHasThreads($this->article);
+		if (count($months) == 0) {
+			return true;
+		}
 		
 		$use_dates = $this->request->getVal('lqt_archive_filter_by_date', null);
 		if ( $use_dates === null ) {
@@ -889,6 +894,7 @@ HTML
 </form>
 HTML
 );
+		return false;
 	}
 	
 	function show() {
@@ -898,7 +904,11 @@ HTML
 		$this->output->setPageTitle( "Talk:" . $this->title->getText() ); // TODO non-main namespaces.
 		$this->addJSandCSS();
 		
-		$this->showSearchForm();
+		$empty = $this->showSearchForm();
+		if ($empty) {
+			$this->output->addHTML('<p>There are no threads in the archive.');
+			return;
+		}
 
 		$this->output->addHTML(<<<HTML
 <p class="lqt_search_annotations">{$this->annotations}</p>
