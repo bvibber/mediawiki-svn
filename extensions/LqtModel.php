@@ -236,9 +236,9 @@ class Thread {
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     __METHOD__);
 		
-	/*	RecentChange::notifyEdit( wfTimestampNow(), $this->root(), /*minor*/false, $wgUser, $summary,
-			$lastRevision, $this->getTimestamp(), $bot, '', $oldsize, $newsize,
-			$revisionId );*/
+	//	RecentChange::notifyEdit( wfTimestampNow(), $this->root(), /*minor*/false, $wgUser, $summary,
+	//		$lastRevision, $this->getTimestamp(), $bot, '', $oldsize, $newsize,
+	//		$revisionId );
 	}
 
 	function __construct($line, $children) {
