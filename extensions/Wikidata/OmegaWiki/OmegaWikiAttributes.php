@@ -35,7 +35,7 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
 		$omegaWikiAttributes; // It would be even better if this was
 					// passed to objects explicitly
 					// but one step at a time...
-	$omegaWikiAttributes= new OmegaWikiAttributes($viewInformation); 
+	$omegaWikiAttributes=  OmegaWikiAttributes::getInstance($viewInformation); 
 	initializeOmegaWikiAttributesOld($viewInformation); //backward compatibility, will be removed.
 }
 
@@ -356,6 +356,20 @@ function initializeOmegaWikiAttributesOld(ViewInformation $viewInformation) {
 
 
 class OmegaWikiAttributes {
+
+	/** pseudo-Singleton, if viewinformation changes, will construct new instance*/
+	static function getInstance(ViewInformation $viewInformation=null) {
+		static $instance=array();
+		if (!is_null($viewInformation)) {
+			if (!array_key_exists($viewInformation->hashCode(), $instance)) {
+				$instance["last"] = new OmegaWikiAttributes($viewInformation);
+				$instance[$viewInformation->hashCode()] = $instance["last"];
+			}
+		}		
+
+		return $instance["last"];
+	}
+
 	protected $attributes = array();
 
 	function __construct(ViewInformation $viewInformation) {
