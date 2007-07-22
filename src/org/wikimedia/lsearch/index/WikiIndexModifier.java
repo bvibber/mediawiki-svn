@@ -178,8 +178,8 @@ public class WikiIndexModifier {
 			writer.setMaxBufferedDocs(maxBufDocs);
 			writer.setUseCompoundFile(true);
 			writer.setMaxFieldLength(MAX_FIELD_LENGTH);
-			
-			FieldBuilder builder = new FieldBuilder(langCode,exactCase);
+			FieldBuilder.Case dCase = (exactCase)? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 
+			FieldBuilder builder = new FieldBuilder(langCode,dCase);
 
 			for(IndexUpdateRecord rec : records){								
 				if(rec.doAdd()){

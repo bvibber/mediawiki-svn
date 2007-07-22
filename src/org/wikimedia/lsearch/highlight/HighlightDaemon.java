@@ -125,9 +125,10 @@ public class HighlightDaemon extends Thread {
 		// highlight all articles and return results
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		boolean exactCase = global.exactCaseIndex(iid.getDBname());
+		FieldBuilder.Case dCase = exactCase? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE;
 		String lang = global.getLanguage(dbname);
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
-		FieldBuilder.BuilderSet bs = new FieldBuilder(lang,exactCase).getBuilder(exactCase);
+		FieldBuilder.BuilderSet bs = new FieldBuilder(lang,dCase).getBuilder(dCase);
 		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),
 				new NamespaceFilter("0"),analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE);
 		Query q = parser.parseFourPass(query,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());

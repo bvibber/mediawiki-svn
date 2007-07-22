@@ -88,6 +88,16 @@ public class IndexId {
 	protected String statusPath;
 	/** Path where transaction data is stored */
 	protected String transactionPath;
+	/** Path where spell check data is */
+	protected String spellcheckPath;
+	/** Path to clean (stem-free) version of the index, used for building other suggest indexes */
+	protected String suggestCleanPath;
+	/** Path to index with words for suggest */
+	protected String suggestWordsPath;
+	/** Path to index with page title for suggest */
+	protected String suggestTitlesPath;
+	/** Path to index with ngram phrases */
+	protected String suggestPhrasesPath;
 	
 	/** url of OAI repository */
 	protected String OAIRepository;
@@ -213,7 +223,17 @@ public class IndexId {
 		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + dbrole;
 		statusPath = localIndexPath + "status" + sep + dbrole;
 		transactionPath = localIndexPath + "transaction" + sep + dbrole;
-
+		spellcheckPath = localIndexPath + "spellcheck" + sep + dbrole;
+		if(isLogical()){			
+			suggestCleanPath = localIndexPath + "suggest" + sep + "clean" + sep + dbrole;
+			suggestWordsPath = localIndexPath + "suggest" + sep + "words" + sep + dbrole;
+			suggestTitlesPath = localIndexPath + "suggest" + sep + "titles" + sep + dbrole;
+			suggestPhrasesPath = localIndexPath + "suggest" + sep + "phrases" + sep + dbrole;
+		} else {
+			suggestCleanPath = null;
+			suggestWordsPath = null;
+			suggestTitlesPath = null;
+		}
 		if(mySearch){
 			searchPath = localIndexPath + "search" + sep + dbrole;
 			updatePath = localIndexPath + "update" + sep + dbrole;
@@ -348,6 +368,26 @@ public class IndexId {
 	/** Status file for incremental updater */ 
 	public String getStatusPath() {
 		return statusPath;
+	}
+	/** Where spell check index is */ 
+	public String getSpellcheckPath() {
+		return spellcheckPath;
+	}
+	/** Path to clean (stem-free) version of the index, used for building other suggest indexes */	
+	public String getSuggestCleanPath() {
+		return suggestCleanPath;
+	}
+	/** Path to index with words for suggest */
+	public String getSuggestTitlesPath() {
+		return suggestTitlesPath;
+	}
+	/** Path to index with page title for suggest */
+	public String getSuggestWordsPath() {
+		return suggestWordsPath;
+	}
+	/** Path to index with suggest phrases in ngrams, e.g. douglas_adams */
+	public String getSuggestPhrasesPath() {
+		return suggestPhrasesPath;
 	}
 
 	/** Get search path with resolved symlinks */

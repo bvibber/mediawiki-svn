@@ -128,7 +128,8 @@ public class SearchEngine {
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
-		FieldBuilder.BuilderSet bs = new FieldBuilder(global.getLanguage(iid.getDBname()),exactCase).getBuilder(exactCase);
+		FieldBuilder.Case dCase = exactCase? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE;
+		FieldBuilder.BuilderSet bs = new FieldBuilder(global.getLanguage(iid.getDBname()),dCase).getBuilder(dCase);
 		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE);
 		HashSet<NamespaceFilter> fields = parser.getFieldNamespaces(searchterm);
 		NamespaceFilterWrapper nsfw = null;

@@ -391,6 +391,13 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("help:ภาษาไทย",NamespacePolicy.REWRITE);
 			assertEquals("(+namespace:12 +(+contents:ภาษา +contents:ไทย)) (+namespace:12 +(+title:ภาษา^3.0 +title:ไทย^3.0))",q.toString());
 			
+			// vietnamese
+			analyzer = Analyzers.getSearcherAnalyzer("vi");
+			bs = new FieldBuilder("vi").getBuilder();
+			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.LEAVE);
+			
+			q = parser.parseTwoPass("Gánh nước đêm trăng",NamespacePolicy.IGNORE);
+			assertEquals("(+contents:ganh +contents:nuoc +(contents:đem contents:dem^0.5) +contents:trang) (+title:ganh^3.0 +title:nuoc^3.0 +(title:đem^3.0 title:dem^0.6) +title:trang^3.0)",q.toString());			
 			
 		} catch(Exception e){
 			e.printStackTrace();

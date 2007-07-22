@@ -5,7 +5,7 @@
 	<property name="src" value="src"/>
 	<property name="jars" value="jars"/>
 	<property name="dist" location="dist"/>
-	<property name="pack.name" value="lucene-search-2.0"/>
+	<property name="pack.name" value="lucene-search-2.1"/>
 	<property name="binary.name" value="ls2-bin"/>
 	<property name="jar.name" value="LuceneSearch.jar"/>
 	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/*"/>

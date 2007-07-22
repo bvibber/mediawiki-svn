@@ -42,7 +42,8 @@ public class SimpleIndexWriter {
 		this.newIndex = newIndex;
 		GlobalConfiguration global = GlobalConfiguration.getInstance(); 
 		langCode = global.getLanguage(iid.getDBname());
-		builder = new FieldBuilder(langCode,global.exactCaseIndex(iid.getDBname()));
+		FieldBuilder.Case dCase = (global.exactCaseIndex(iid.getDBname()))? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 		
+		builder = new FieldBuilder(langCode,dCase);
 		indexes = new HashMap<String,IndexWriter>();
 		// open all relevant indexes
 		if(iid.isSingle())
@@ -68,7 +69,7 @@ public class SimpleIndexWriter {
 		} catch (IOException e) {				
 			try {
 				// try to make brand new index
-				WikiIndexModifier.makeDBPath(iid.getIndexPath()); // ensure all directories are made
+				WikiIndexModifier.makeDBPath(path); // ensure all directories are made
 				log.info("Making new index at path "+path);
 				writer = new IndexWriter(path,null,true);
 			} catch (IOException e1) {

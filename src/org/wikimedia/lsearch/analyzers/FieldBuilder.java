@@ -39,24 +39,40 @@ public class FieldBuilder {
 	
 	protected BuilderSet[] builders = new BuilderSet[2];
 	
-	/** Construct case-insensitive field builder */
+	/** default is ignore case (upper/lower), use exact_case for wiktionaries, etc */
+	public static enum Case { IGNORE_CASE, EXACT_CASE };
+	/** use stemmer if available, of force no stemming */
+	public static enum Stemmer { USE_STEMMER, NO_STEMMER }; 
+	
+	/** Construct case-insensitive field builder with stemming */
 	public FieldBuilder(String lang){
-		this(lang,false);
+		this(lang,Case.IGNORE_CASE,Stemmer.USE_STEMMER);
 	}
 	
-	public FieldBuilder(String lang, boolean exactCase){
-		if(exactCase){
-			builders = new BuilderSet[2];
-			// additional exact case factory
+	public FieldBuilder(String lang, Case useCase){
+		this(lang,useCase,Stemmer.USE_STEMMER);
+	}
+	
+	public FieldBuilder(String lang, Case useCase, Stemmer useStemmer){
+		// additional exact case factory
+		if(useCase == Case.EXACT_CASE){
+			builders = new BuilderSet[2];		
 			builders[1] = new BuilderSet(
 					new FilterFactory(lang).getNoStemmerFilterFactory(),
 					new FieldNameFactory(FieldNameFactory.EXACT_CASE));
 		} else
 			builders = new BuilderSet[1];
+		
 		// default factory, lowercase all data
-		builders[0] = new BuilderSet(
-				new FilterFactory(lang),
-				new FieldNameFactory());
+		if(useStemmer == Stemmer.USE_STEMMER){
+			builders[0] = new BuilderSet(
+					new FilterFactory(lang),
+					new FieldNameFactory());
+		} else{
+			builders[0] = new BuilderSet(
+					new FilterFactory(lang).getNoStemmerFilterFactory(),
+					new FieldNameFactory());
+		}
 		
 	}
 
@@ -66,12 +82,12 @@ public class FieldBuilder {
 	
 	/** Get the case-insensitive builder */
 	public BuilderSet getBuilder(){
-		return getBuilder(false);
+		return getBuilder(Case.IGNORE_CASE);
 	}
 	
 	/** Get BuilderSet for exactCase value */
-	public BuilderSet getBuilder(boolean exactCase){
-		if(exactCase && builders.length > 1)
+	public BuilderSet getBuilder(Case dCase){
+		if(dCase == Case.EXACT_CASE && builders.length > 1)
 			return builders[1];
 		else
 			return builders[0];

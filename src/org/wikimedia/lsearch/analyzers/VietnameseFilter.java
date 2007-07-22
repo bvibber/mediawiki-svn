@@ -50,7 +50,7 @@ public class VietnameseFilter extends TokenFilter {
 				buffer[len++] = c;				
 		}
 		if(replace){
-			Token tt = new Token(new String(buffer,0,len),t.startOffset(),t.endOffset(),t.type());
+			Token tt = new Token(new String(buffer,0,len),t.startOffset(),t.endOffset(),"alias");
 			tt.setPositionIncrement(0);
 			next = input.next();
 			if(next!=null && next.type().equals("transliteration"))
