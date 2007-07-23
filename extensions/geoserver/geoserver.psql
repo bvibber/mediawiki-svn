@@ -1,0 +1,20 @@
+-- !!!!
+-- change the first parameter of AddGeometryColumn to the name of your
+-- database
+-- !!!!
+
+CREATE TABLE geodata (
+    title character varying(255) NOT NULL,
+    type_major character(1),
+    type_minor character varying(8),
+    displaytitle character varying(200),
+    fid integer NOT NULL,
+    population integer );
+
+ALTER TABLE ONLY geodata
+    ADD CONSTRAINT geodata_pkey PRIMARY KEY (fid);
+
+ALTER TABLE ONLY geodata
+    ADD CONSTRAINT geodata_title_key UNIQUE (title);
+
+select AddGeometryColumn ( 'geodata', 'geom', 4326, 'GEOMETRY', 2);
