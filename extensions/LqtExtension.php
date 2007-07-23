@@ -19,6 +19,7 @@ require_once('PageHistory.php');
 class LqtDispatch {
 	public static $views = array(
 		'TalkpageArchiveView' => 'TalkpageArchiveView',
+		'TalkpageHeaderView' => 'TalkpageHeaderView',
 		'TalkpageView' => 'TalkpageView',
 		'ThreadHistoryView' => 'ThreadHistoryView',
 		'ThreadPermalinkView' => 'ThreadPermalinkView'
@@ -29,13 +30,21 @@ class LqtDispatch {
 		// non-talk article and pass that to the view.
 		$article = new Article($title->getSubjectPage());
 
-		if ( $request->getVal('lqt_method') == 'talkpage_archive' ) {
+		/* Certain actions apply to the "header", which is stored in the actual talkpage
+		   in the database. Drop everything and behave like a normal page if those
+		   actions come up, to avoid hacking the various history, editing, etc. code. */
+		$header_actions = array('history', 'edit', 'submit');
+		if (in_array( $request->getVal('action'), $header_actions ) ||
+					$request->getVal('diff', null) !== null) {
+			$viewname = self::$views['TalkpageHeaderView'];
+		}
+		else if ( $request->getVal('lqt_method') == 'talkpage_archive' ) {
 			$viewname = self::$views['TalkpageArchiveView'];
 		} else {
 			$viewname = self::$views['TalkpageView'];
 		}
 		$view = new $viewname( $output, $article, $title, $user, $request );
-		$view->show();
+		return $view->show();
 	}
 
 	static function threadPermalinkMain(&$output, &$article, &$title, &$user, &$request) {
@@ -48,6 +57,7 @@ class LqtDispatch {
 		}
 		$view = new $viewname( $output, $article, $title, $user, $request );
 		$view->show();
+		return false;
 	}
 	
 	/**
@@ -56,11 +66,9 @@ class LqtDispatch {
 	*/
 	static function tryPage( $output, $article, $title, $user, $request ) {
 		if ( $title->isTalkPage() ) {
-			self::talkpageMain ($output, $article, $title, $user, $request);
-			return false;
+			return self::talkpageMain ($output, $article, $title, $user, $request);
 		} else if ( $title->getNamespace() == NS_LQT_THREAD ) {
-			self::threadPermalinkMain($output, $article, $title, $user, $request);
-			return false;
+			return self::threadPermalinkMain($output, $article, $title, $user, $request);
 		} else if ($title->getNamespace() == NS_LQT_HEADER) {
 			$talkt = Title::newFromText( $title->getText() );
 			$url = $talkt->getFullURL();
@@ -72,6 +80,8 @@ class LqtDispatch {
 	}
 	
 	static function onPageMove( $movepage, $ot, $nt ) {
+		// TODO part of this will apply for ordinary moves without headers.
+		
 		/* If the user moved a subject page, we are responsible for moving the articles
 		 associated with the talkpage directly; we will not be invoked a second time when
 		 MW attempts to move the talk page, because it doesn't actually exist.  */
@@ -80,10 +90,10 @@ class LqtDispatch {
 			$ott = $ot->getTalkPage();
 			return self::onPageMove($movepage, $ott, $ntt);
 		}
-
+/* commented for symbol removal.
 		if( $ot->getNamespace() == NS_LQT_HEADER ||
 			$nt->getNamespace() == NS_LQT_HEADER ) return true;
-
+*/
 		# TODO look up namespace name
 		$oht = Title::newFromText( 'Header:' . $ot->getPrefixedText() );
 
@@ -107,8 +117,31 @@ class LqtDispatch {
 }
 
 
+class TalkpageHeaderView /* doesn't derive from LqtView -- why bother? */ {
+	function customizeTabs( $skintemplate, $content_actions ) {
+		unset($content_actions['edit']);
+		unset($content_actions['addsection']);
+		unset($content_actions['history']);
+		unset($content_actions['watch']);
+		unset($content_actions['move']);
+		
+		$content_actions['talk']['class'] = false;
+		$content_actions['header'] = array( 'class'=>'selected',
+		                                    'text'=>'header',
+		                                    'href'=>'');
+
+		return true;
+	}
+	
+	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		return true;
+	}
+}
+
 $wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
-$wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
+//$wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
 
  
 class LqtView {
@@ -211,11 +244,6 @@ SQL;
 		$query = $method ? "lqt_method=$method" : "";
 		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
 		return $title->getFullURL( $query );
-	}
-
-	function headerTitle() {
-		# TODO
-		return Title::newFromText( 'Header:' . $this->title->getPrefixedText() );
 	}
 
 	/*************************************************************
@@ -403,6 +431,7 @@ HTML;
 	* Output methods         *
 	*************************/
 
+	/* @return False if the article and revision do not exist and we didn't show it, true if we did. */
 	function showPostBody( $post, $oldid = null ) {
 		/* Why isn't this all encapsulated in Article somewhere? TODO */
 		global $wgEnableParserCache;
@@ -425,7 +454,14 @@ HTML;
 		if (!$outputDone) {
 			// Cache miss; parse and output it.
 			$rev = Revision::newFromTitle( $post->getTitle(), $oldid );
-			$this->output->addWikiText( $rev->getText() );
+			if ($rev) {
+				$this->output->addWikiText( $rev->getText() );
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return true;
 		}
 	}
 
@@ -626,47 +662,22 @@ HTML
 	}
 	
 	function showHeader() {
-		/*
-		Right now the header wikitext is stored in the actual talkpage that we
-        are masking with the LQT stuff. I'm not sure I really like this. But
-        if we stored it in, say, Header:Namespace:Article, we would need to
-        move that whenever either the namespace or article name moved. We
-        might also store it as Header:namespace_id:article_id, but then that's
-        more crap to hide. Still, Header:Namespace:Article would look better
-        in RC than just Namespace_talk:Article. It's not really accurate to say
-		you're editing the talkpage itself here.
-		*/
-		
-		$action = $this->request->getVal('lqt_header_action');
-		
+		/* Show the contents of the actual talkpage article if it exists. */
 		$article = new Article( $this->title );
+		$oldid = $this->request->getVal('oldid', null);
 
-		$headert = $this->headerTitle();
-		$headera = new Article($headert);
-
-		if( $action == 'edit' || $action=='submit' ) {
-			// TODO this is scary and horrible.
-			$e = new EditPage($article);
-			$e->suppressIntro = true;
-			$e->editFormTextBeforeContent .=
-				$this->perpetuate('lqt_header_action', 'hidden');
-			$e->edit();
-		} else if ( $action == 'history' ) {
-			$this->output->addHTML("Disclaimer: history doesn't really work yet.");
-			$history = new PageHistory( $article );
-			$history->history();
-		} else if ( $headera->exists() ) {
-			$edit = $headert->getFullURL( 'action=edit' );
-			$history = $headert->getFullURL( 'action=history' );
+		if ( $article->exists() ) {
+			$edit = $this->title->getFullURL( 'action=edit' );
+			$history = $this->title->getFullURL( 'action=history' );
 			$this->openDiv('lqt_header_content');
-			$this->showPostBody($headera);
+			$this->showPostBody($article, $oldid);
 			$this->outputList('ul', 'lqt_header_commands', null, array(
 				"[<a href=\"$edit\">edit</a>]", 
 				"[<a href=\"$history\">history</a>]"
 				));
 			$this->closeDiv();
 		} else {
-			$this->output->addHTML("<p class=\"lqt_header_notice\">[<a href=\"{$headert->getFullURL('action=edit')}\">add header</a>]</p>");
+			$this->output->addHTML("<p class=\"lqt_header_notice\">[<a href=\"{$this->title->getFullURL('action=edit')}\">add header</a>]</p>");
 		}
 	}
 	
@@ -704,6 +715,7 @@ HTML
 		foreach($threads as $t) {
 			$this->showThread($t);
 		}
+		return false;
 	}
 }
 
@@ -922,6 +934,8 @@ HTML
 			$this->showThread($t);
 		}
 		$this->output->addHTML('</table>');
+		
+		return false;
 	}
 }
 /*
