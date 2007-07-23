@@ -26,6 +26,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   usergroups
 * $wgEnotifImpersonal, $wgEnotifUseJobQ - Bulk mail options for large sites
 * $wgShowHostnames - Expose server host names through the API and HTML comments
+* $wgSaveDeletedFiles has been removed, the feature is now enabled unconditionally
 
 == New features since 1.10 ==
 
@@ -152,6 +153,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Pass the user as an argument to 'isValidPassword' hook callbacks; see
   docs/hooks.txt for more information
 * Introduce 'UserGetRights' hook; see docs/hooks.txt for more information
+* (bug 9595) Pass new Revision to the 'ArticleInsertComplete' and
+  'ArticleSaveComplete' hooks; see docs/hooks.txt for more information
+* (bug 9575) Accept upload description from GET parameters
+* Skip the difference engine cache when 'action=purge' is used while requesting
+  a difference page, to allow refreshing the cache in case of errors
 
 == Bugfixes since 1.10 ==
 
@@ -318,7 +324,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 10642) Fix shift-click checkbox behavior for Opera 9.0+ and 6.0
 * Work around Safari bug with pages ending in ".gz" or ".tgz"
 * Removed obsolete maintenance/changeuser.sql script; use RenameUser extension
-
+* (bug 2735) "Preview" shown in title bar for action=submit on special pages
+* Removed "restore" links from the deletion log embedded in Special:Undelete
+* Improved error reporting and robustness for file delete/undelete.
+* Improved speed of file delete by storing the SHA-1 hash in image/oldimage
+* Fixed leading zero in base 36 SHA-1 hash
 
 == API changes since 1.10 ==
 

@@ -1457,19 +1457,16 @@ class Article {
 			# Clear caches
 			Article::onArticleCreate( $this->mTitle );
 
-			wfRunHooks( 'ArticleInsertComplete', array( &$this, &$wgUser, $text,
-				$summary, $flags & EDIT_MINOR,
-				null, null, &$flags ) );
+			wfRunHooks( 'ArticleInsertComplete', array( &$this, &$wgUser, $text, $summary,
+			 $flags & EDIT_MINOR, null, null, &$flags, $revision ) );
 		}
 
 		if ( $good && !( $flags & EDIT_DEFER_UPDATES ) ) {
 			wfDoUpdates();
 		}
 
-		wfRunHooks( 'ArticleSaveComplete',
-			array( &$this, &$wgUser, $text,
-			$summary, $flags & EDIT_MINOR,
-			null, null, &$flags ) );
+		wfRunHooks( 'ArticleSaveComplete', array( &$this, &$wgUser, $text, $summary,
+			$flags & EDIT_MINOR, null, null, &$flags, $revision ) );
 
 		wfProfileOut( __METHOD__ );
 		return $good;
@@ -2116,7 +2113,8 @@ class Article {
 				'ar_text_id'    => 'rev_text_id',
 				'ar_text'       => '\'\'', // Be explicit to appease
 				'ar_flags'      => '\'\'', // MySQL's "strict mode"...
-				'ar_len'		=> 'rev_len'
+				'ar_len'		=> 'rev_len',
+				'ar_page'       => $id
 			), array(
 				'page_id' => $id,
 				'page_id = rev_page'
@@ -2805,6 +2803,7 @@ class Article {
 		$page = $this->mTitle->getSubjectPage();
 
 		$wgOut->setPagetitle( $page->getPrefixedText() );
+		$wgOut->setPageTitleActionText( wfMsg( 'info_short' ) );
 		$wgOut->setSubtitle( wfMsg( 'infosubtitle' ));
 
 		# first, see if the page exists at all.
