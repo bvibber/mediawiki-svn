@@ -282,7 +282,7 @@ HTML;
 			$subject = $this->request->getVal('lqt_subject_field', $sbjtxt);
 			$e->editFormTextBeforeContent .= <<<HTML
 			<label for="lqt_subject_field">Subject: </label>
-			<input type="text" size="60" name="lqt_subject_field" id="lqt_subject_field" value="$subject"><br>
+			<input type="text" size="60" name="lqt_subject_field" id="lqt_subject_field" value="$subject" tabindex="1"><br>
 HTML;
 		}
 
