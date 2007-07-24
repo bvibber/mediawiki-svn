@@ -34,8 +34,9 @@ class LqtDispatch {
 		   in the database. Drop everything and behave like a normal page if those
 		   actions come up, to avoid hacking the various history, editing, etc. code. */
 		$header_actions = array('history', 'edit', 'submit');
-		if (in_array( $request->getVal('action'), $header_actions ) ||
-					$request->getVal('diff', null) !== null) {
+		if ($request->getVal('lqt_method', null) === null && (
+				in_array( $request->getVal('action'), $header_actions ) ||
+				$request->getVal('diff', null) !== null ) ) {
 			$viewname = self::$views['TalkpageHeaderView'];
 		}
 		else if ( $request->getVal('lqt_method') == 'talkpage_archive' ) {
@@ -69,50 +70,12 @@ class LqtDispatch {
 			return self::talkpageMain ($output, $article, $title, $user, $request);
 		} else if ( $title->getNamespace() == NS_LQT_THREAD ) {
 			return self::threadPermalinkMain($output, $article, $title, $user, $request);
-		} else if ($title->getNamespace() == NS_LQT_HEADER) {
-			$talkt = Title::newFromText( $title->getText() );
-			$url = $talkt->getFullURL();
-			$name = $talkt->getPrefixedText();
-			$output->setSubtitle("part of <a href=\"$url\">$name</a>.");
-			return true;
 		}
 		return true;
 	}
 	
 	static function onPageMove( $movepage, $ot, $nt ) {
-		// TODO part of this will apply for ordinary moves without headers.
 		
-		/* If the user moved a subject page, we are responsible for moving the articles
-		 associated with the talkpage directly; we will not be invoked a second time when
-		 MW attempts to move the talk page, because it doesn't actually exist.  */
-		if( $movepage->moveTalk && !$ot->isTalkPage() && !$nt->isTalkPage() ) {
-			$ntt = $nt->getTalkPage();
-			$ott = $ot->getTalkPage();
-			return self::onPageMove($movepage, $ott, $ntt);
-		}
-/* commented for symbol removal.
-		if( $ot->getNamespace() == NS_LQT_HEADER ||
-			$nt->getNamespace() == NS_LQT_HEADER ) return true;
-*/
-		# TODO look up namespace name
-		$oht = Title::newFromText( 'Header:' . $ot->getPrefixedText() );
-
-
-		if( $oht->exists() ) {
-			$nht = Title::newFromText( 'Header:' . $nt->getPrefixedText() );
-
-			$error = $oht->moveTo( $nht, true, $movepage->reason );
-			if ( $error === true ) {
-				wfRunHooks( 'SpecialMovepageAfterMove', array( &$movepage, &$oht, &$nht ) )	;
-			} else {
-				$talkmoved = $error;
-			}
-		} else {
-			$talkmoved = 'notalkpage';
-		}
-		# TODO we have no apparent way to report any error or success that goes on here.
-		
-		return true;
 	}
 }
 
