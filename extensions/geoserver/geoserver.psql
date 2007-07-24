@@ -18,3 +18,4 @@ ALTER TABLE ONLY geodata
     ADD CONSTRAINT geodata_title_key UNIQUE (title);
 
 select AddGeometryColumn ( 'geodata', 'geom', 4326, 'GEOMETRY', 2);
+CREATE INDEX "geodata_geom_idx" ON "geodata" using gist ("geom" gist_geometry_ops);
