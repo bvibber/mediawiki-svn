@@ -16,7 +16,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'name' => 'RandomImage',
 		'author' => 'Rob Church',
 		'url' => 'http://meta.wikimedia.org/wiki/RandomImage',
-		'description' => 'Provides a random media picker using <code><nowiki><randomimage /></nowiki></code>',
+		'description' => 'Provides a random media picker using <tt>&lt;randomimage /&gt;</tt>',
 	);
 	
 	/**
@@ -125,5 +125,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
 	exit( 1 );
 }
-
-
