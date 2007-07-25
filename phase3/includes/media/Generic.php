@@ -19,17 +19,13 @@ abstract class MediaHandler {
 
 	/**
 	 * Get a MediaHandler for a given MIME type from the instance cache
+	 * this is flawed by design as not all mime types necessitate a media type.
 	 */
 	static function getHandler( $type ) {
 		global $wgMediaHandlers;
 		if ( !isset( $wgMediaHandlers[$type] ) ) {
-			if( !isset( $wgMediaHandlers[$mediaType] ))
-			{
-				wfDebug( __METHOD__ . ": no handler found for $type.\n");
-				return false;
-			} else {
-				$type = $mediaType;
-			}
+			wfDebug( __METHOD__ . ": no handler found for $type.\n");
+			return false;
 		}
 		$class = $wgMediaHandlers[$type];
 		if ( !isset( self::$handlers[$class] ) ) {

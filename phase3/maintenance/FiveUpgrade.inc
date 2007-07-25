@@ -703,7 +703,7 @@ END;
 			'minor'  => '' );
 
 		$magic =& wfGetMimeMagic();
-		$mime = $magic->guessMimeType( $filename, true );
+		$mime = $magic->guessMimeType( $filename, true, true );
 		list( $info['major'], $info['minor'] ) = explode( '/', $mime );
 
 		$info['media'] = $magic->getMediaType( $filename, $mime );

@@ -416,21 +416,6 @@ class AudioUploadHandler extends AVUploadHandler
 }
 
 
-
-
-
-
-
-
-
-
-
-
-/**
-* This is just a stub class I was using to test my work making MimeMagic more 
-* modular. See my versions of MimeMagic.php and includes/media/MimePlugin.php.
-*/
-
 class AVMimePlugin extends MimePlugin
 {
 	public static function onMimeMagicRegisterPlugins($core)
@@ -446,29 +431,84 @@ class AVMimePlugin extends MimePlugin
 	{
 		parent::__construct($core);
 
-		//$this->registerContentType('video', true);
+		$this->registerContentType('video', true);
 	}
 
-	public function getContentType($file)
+	public function getContentType($file, $ext = false)
 	{
-		return 'unknown/unknown';
+		$inspector = new CompositeAVInspector($file);
+
+		/* strategy is to confirm the extension matches the detected media type,
+		* (as in extension and detection both come up audio or both as video)
+		*  and if so assume the extension trustworthy and map it to mime type.
+		*/
+
+		if($inspector->hasVideoStream())
+		{
+			$type = MEDIATYPE_VIDEO;
+			$mainMime = "video/unknown";
+		} else if($inspector->hasAudioStream())
+		{
+			$type = MEDIATYPE_AUDIO;
+			$mainMime = "audio/unknown";
+		} else {
+			return 'unknown/unknown';
+		}
+
+		if(!$ext)
+		{
+			return $mainMime;
+		} else {
+			$m = $this->MagicCore->getTypesForExtension($ext);
+			if ( !$m ) return $mainMime;
+
+			$m = explode( ' ', $m );
+
+			$typesFromExt = array();
+			foreach ( $m as $mime ) {
+				$mime = trim($mime); if(empty($mime)) continue;
+				foreach ( $this->MagicCore->mMediaTypes as $type => $codes ) {
+					if ( in_array($mime, $codes, true ) ) {
+						$typesFromExt[] = $type;
+						break;
+					}
+				}
+			}
+
+			if(in_array($type, $typesFromExt, true))
+			{
+				//use extension->mime mappings
+				return $this->MagicCore->guessTypesForExtension($ext);
+			} else {
+				return 'unknown/unknown';
+			}
+		}
 	}
 
 	protected function mimeTypes()
 	{
-		//return 'video/x-ms-asf asf asx';
+		return 'video/x-ms-asf asf asx';
 	}
 
 	protected function mimeInfo()
 	{
-		//return 'video/x-ms-asf [VIDEO]';
+		return 'video/x-ms-asf [VIDEO]';
 	}
 
 	public function getMediaType($file, $mime)
 	{
-		if($mime == 'application/ogg')
+		if($mime == 'application/ogg' && file_exists($file))
 		{
-			return MEDIATYPE_VIDEO;
+			$inspector = new CompositeAVInspector($file);
+			if($inspector->hasVideoStream())
+			{
+				return MEDIATYPE_VIDEO;
+			} else if($inspector->hasAudioStream())
+			{
+				return MEDIATYPE_AUDIO;
+			} else {
+				return MEDIATYPE_UNKNOWN;
+			}
 		} else {
 			return false;
 		}

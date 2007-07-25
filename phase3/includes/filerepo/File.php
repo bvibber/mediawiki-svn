@@ -1015,7 +1015,7 @@ class File {
 		if ( $info['fileExists'] ) {
 			$magic = MimeMagic::singleton();
 
-			$info['mime'] = $magic->guessMimeType( $path, $ext );
+			$info['mime'] = $magic->guessMimeType( $path, $ext, (bool)$ext );
 			list( $info['major_mime'], $info['minor_mime'] ) = self::splitMime( $info['mime'] );
 			$info['media_type'] = $magic->getMediaType( $path, $info['mime'] );
 

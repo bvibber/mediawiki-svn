@@ -83,7 +83,8 @@ class MimeMagic {
 
 	/**
 	* Mapping of media types to arrays of mime types.
-	* This is used by findMediaType and getMediaType, respectively
+	* This is used by findMediaType and getMediaType, respectively, and is 
+	* used by plugins as well (must remain public).
 	*/
 	var $mMediaTypes= NULL;
 
@@ -395,7 +396,7 @@ class MimeMagic {
 			$parts[1] = strtolower(func_get_arg(1));
 		}
 
-		if($parts[1] === '*')
+		if($parts[1] === '*' || $parts[1] == "unknown")
 		{
 			//lookup all main types matching parts[0]
 			$r = '';
@@ -531,14 +532,28 @@ class MimeMagic {
 	like XHTML or SVG).
 	*
 	* @param string $file The file to check
-	* @param mixed $ext The file extension, or true to extract it from the 
-	filename. 
-	*                   Set it to false to ignore the extension.
+	* @param mixed $ext The file extension, or true to extract it from the  
+	*                   filename. Set it to false to ignore the extension.
+	* @param bool doItUnprotected Whether it is ok to return a likely mime type
+	*	based *solely* on the extension. This is as distinct from performing an
+	*	analysis that confirms the file is of a media type that matches $ext,
+	*   and only then using $ext to map to the specific mime type.
 	*
 	* @return string the mime type of $file
 	*/
-	function guessMimeType( $file, $ext = true ) {
-		$mime = $this->detectMimeType( $file, $ext );
+	function guessMimeType( $file, $ext = true, $doItUnprotected = false ) {
+		//if we have plugins for this file's ext, use em
+		$plugins = $this->getPluginsForExt($ext);
+
+		if(count($plugins))
+		{
+			$mime = "unknown/unknown";
+			$this->runPluginSet($plugins, $file, $ext, $mime);
+			return $mime;
+		} else {
+			if($doItUnprotected) $mime = $this->detectMimeType( $file, $ext );
+			else $mime = $this->detectMimeType($file, false);
+		}
 
 		// Read a chunk of the file
 		$f = fopen( $file, "rt" );
@@ -663,30 +678,42 @@ class MimeMagic {
 					$mime = "application/x-php";
 				}
 			}
-
 		}
 
-		//run plugins
-		//if aliased, fetch plugins for both types
-		//remove plugins registered as both
+		/*
+		* run plugins based on mime type, if we haven't already run plugins 
+		* based on extension.
+		* if aliased, fetch plugins for both types
+		*/
+
+		if(! $pluginExt)
+		{
+			$plugins = $this->getPluginsForType($mime);
+			if(isset($this->mMimeTypeAliases[$mime] ))
+			{
+				$mime2 = $this->mMimeTypeAliases[$mime];
+				$plugins = array_merge((array) $plugins, (array) $this->getPluginsForType($mime2));
+			}
+
+			$this->runPluginSet($plugins, $file, $ext, $mime);
+		}
+
+		wfDebug(__METHOD__.": final mime type of $file: $mime\n");
+		return $mime;
+	}
+
+	private function runPluginSet($plugins, $file, $ext, &$mime)
+	{
+		//remove plugins included multiple times
 		//getContentType
 		//re-run final result through aliases
-
-		$plugins = $this->getPluginsForType($mime);
-
-		if(isset($this->mMimeTypeAliases[$mime] ))
-		{
-			$mime2 = $this->mMimeTypeAliases[$mime];
-			$plugins = array_merge((array) $plugins, (array) $this->getPluginsForType($mime2));
-			MimeMagic::killPluginDupes($plugins);
-		}
-
+		MimeMagic::killPluginDupes($plugins);
 		foreach($plugins AS $detector)
 		{
 			$plugin = $detector[0];
 			$authoritative = $detector[1];
 
-			$pMime = $plugin->getContentType($file);
+			$pMime = $plugin->getContentType($file, $ext);
 			if(strpos($pMime, 'unknown/unknown') === false || $authoritative)
 			{
 				$mime = $pMime;
@@ -697,9 +724,6 @@ class MimeMagic {
 		if ( isset( $this->mMimeTypeAliases[$mime] ) ) {
 			$mime = $this->mMimeTypeAliases[$mime];
 		}
-
-		wfDebug(__METHOD__.": final mime type of $file: $mime\n");
-		return $mime;
 	}
 
 	private static function killPluginDupes(&$plugins)
@@ -745,29 +769,32 @@ class MimeMagic {
 	{
 		$type = MimeMagic::splitMimeString($mime);
 
-		if($type[1] != '*')
+		if($type[1] != '*' && $type[1] != 'unknown')
 		{
 			$plugins = $this->pluginsByType[ $type[0] ][ $type[1] ];
 			$plugins = array_merge((array) $plugins, (array) $this->pluginsByType[ $type[0] ][ '*' ]);
 		} else {
-			/* no subtype specified...spit out all plugins from all subtypes.
-			*  this code is currently unused (and untested), but included for 
-			*  completeness.
+			/* no subtype specified...spit out plugins from all subtypes.
 			*/
 			$plugins = array();
 			foreach($this->pluginsByType[ $type[0] ] AS $subtype)
 			{
-				foreach($subtype AS $detectors)
+				foreach($subtype AS $detector)
 				{
-					foreach($detectors AS $detector)
-					{
-						$plugins[] = $detector;
-					}
+					$plugins[] = $detector;
 				}
 			}
 		}
 
 		return $plugins;
+	}
+
+	private function getPluginsForExt($ext)
+	{
+		if(is_array($this->pluginsByExt[$ext]))
+			return $this->pluginsByExt[$ext];
+		else
+			return array();
 	}
 
 
@@ -957,9 +984,24 @@ class MimeMagic {
 		if( !$mime ) $mime = $this->guessMimeType( $path, false );
 		if(strpos($mime, 'unknown/unknown') === 0) return MEDIATYPE_UNKNOWN;
 
-		/* obsoleted by plugins
+		if(file_exists($path))
+		{
+			/* check if there's a registered plugin that wants to make the 
+			*  determination by examination of contents
+			*/
+			$detectors = $this->getPluginsForType($mime);
+			foreach($detectors AS $detector)
+			{
+				if($detector[1]) //assume non-authoritative plugins won't know
+				{
+					$t = $detector[0]->getMediaType($path, $mime);
+					if($t) return $t;
+				}
+			}
+		}
+
 		# Special code for ogg - detect if it's video (theora),
-		# else label it as sound.
+		# else label it as sound. Should be moved to a plugin.
 		if( $mime == "application/ogg" && file_exists( $path ) ) {
 
 			// Read a chunk of the file
@@ -979,7 +1021,7 @@ class MimeMagic {
 			MEDIATYPE_AUDIO;
 			else return MEDIATYPE_MULTIMEDIA;
 		}
-		*/
+
 
 		$type = MEDIATYPE_UNKNOWN;
 		# check for entry for full mime type
@@ -1003,22 +1045,6 @@ class MimeMagic {
 			if( $i !== false ) {
 				$major = substr( $mime, 0, $i );
 				$type = $this->findMediaType( $major );
-			}
-		}
-
-		if( $type == MEDIATYPE_MULTIMEDIA && file_exists($path))
-		{
-			/* check if there's a registered plugin that wants to make the 
-			*  determination by examination of contents
-			*/
-			$detectors = $this->getPluginsForType($mime);
-			foreach($detectors AS $detector)
-			{
-				if($detector[1]) //assume non-authoritative plugins won't know
-				{
-					$t = $detector[0]->getMediaType($path, $mime);
-					if($t) return $t;
-				}
 			}
 		}
 

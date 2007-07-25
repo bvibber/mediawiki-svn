@@ -94,7 +94,7 @@ abstract class MimePlugin
 	* other than unknown/unknown, all further processing stops and that string 
 	* will be the final type reported by MimeMagic.
 	*/
-	public abstract function getContentType($file);
+	public abstract function getContentType($file, $ext = false);
 
 	/**
 	* @return string typesString The mime types and extensions supported by this 

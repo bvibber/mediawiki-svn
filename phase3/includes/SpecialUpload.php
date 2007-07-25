@@ -261,13 +261,18 @@ class UploadForm {
 	function processUpload() {
 		global $wgUser, $wgOut;
 
-		/*
+		/**
 		* Add audio and video checking. Probably there is a better place to put
 		* these.
 		*/
 		global $wgHooks;
 		$wgHooks['UploadVerification'][] = new AudioUploadHandler;
 		$wgHooks['UploadVerification'][] = new VideoUploadHandler;
+
+		/**
+		* Set hook for asynchronous recoding of a/v
+		*/
+		$wgHooks['UploadComplete'][] = "recodePut";
 
 		if( !wfRunHooks( 'UploadForm:BeforeProcessing', array( &$this ) ) )
 		{
@@ -538,7 +543,7 @@ class UploadForm {
 				$wgUser->addWatch( $this->mLocalFile->getTitle() );
 			}
 			$this->showSuccess();
-			wfRunHooks( 'UploadComplete', array( &$img ) );
+			wfRunHooks( 'UploadComplete', array( &$this->mLocalFile ) );
 		}
 	}
 
@@ -937,7 +942,7 @@ EOT
 	function verify( $tmpfile, $extension ) {
 		#magically determine mime type
 		$magic=& MimeMagic::singleton();
-		$mime= $magic->guessMimeType($tmpfile,false);
+		$mime= $magic->guessMimeType($tmpfile,$extension);
 		#check mime type, if desired
 		global $wgVerifyMimeType;
 		if ($wgVerifyMimeType) {
@@ -1342,4 +1347,8 @@ EOT
 		return $pageText;
 	}
 }
-?>
+
+function recodePut($img)
+{
+	var_dump($img);
+}

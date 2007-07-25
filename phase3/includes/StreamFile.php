@@ -68,7 +68,7 @@ function wfGetType( $filename ) {
 	}
 	else {
 		$magic=& MimeMagic::singleton();
-		return $magic->guessMimeType($filename); //full fancy mime detection
+		return $magic->guessMimeType($filename, true, true); //full fancy mime detection
 	}
 }
 

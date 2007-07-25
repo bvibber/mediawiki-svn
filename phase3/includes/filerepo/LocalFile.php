@@ -1154,7 +1154,7 @@ class LocalFile extends File
 						$tempFile = $store->filePath( $row->fa_storage_key );
 
 						$magic = MimeMagic::singleton();
-						$mime = $magic->guessMimeType( $tempFile, true );
+						$mime = $magic->guessMimeType( $tempFile, true, true );
 						$media_type = $magic->getMediaType( $tempFile, $mime );
 						list( $major_mime, $minor_mime ) = self::splitMime( $mime );
 						$handler = MediaHandler::getHandler( $mime );
