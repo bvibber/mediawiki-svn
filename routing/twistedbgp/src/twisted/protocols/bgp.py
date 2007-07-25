@@ -160,11 +160,11 @@ class IPPrefix(object):
                 self.prefix = struct.pack('!I', prefix)[0]
             else:
                 # Assume prefix is a sequence of octets
-                self.prefix = reduce(lambda x, y: x+y, map(chr, prefix))
+                self.prefix = "".join(map(chr, prefix))
         elif type(ipprefix) is str:
             # textual form
             prefix, prefixlen = ipprefix.split('/')
-            self.prefix = reduce(lambda x, y: x+y, map(ord, prefix.split('.')))
+            self.prefix = "".join([chr(int(o)) for o in prefix.split('.')])
             self.prefixlen = int(prefixlen)
             # TODO: IPv6
         else:
@@ -426,6 +426,7 @@ class AttributeSet(set):
             self.add(attr)
         
         # Check whether all mandatory wellknown attributes are present
+        # FIXME: None.typeCode will of course not work - rewrite
         for attr in (self.origin, self.asPath, self.nextHop):
             if attr is None:
                 raise AttributeError(ERR_MSG_UPDATE_MISSING_WELLKNOWN_ATTR, (0, attr.typeCode, None))
