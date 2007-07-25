@@ -75,7 +75,16 @@ class LqtDispatch {
 	}
 	
 	static function onPageMove( $movepage, $ot, $nt ) {
+		// We are being invoked on the subject page, not the talk page.
 		
+		$threads = Threads::where( array( Threads::articleClause(new Article($ot)),
+		                                  Threads::topLevelClause() ));
+		
+		foreach ($threads as $t) {
+			$t->moveToSubjectPage( $nt );
+		}
+		
+		return true;
 	}
 }
 
@@ -104,7 +113,7 @@ class TalkpageHeaderView /* doesn't derive from LqtView -- why bother? */ {
 }
 
 $wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
-//$wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
+$wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
 
  
 class LqtView {
@@ -139,12 +148,7 @@ class LqtView {
 		$g = new QueryGroup();
 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
 		$recentstartdate = $startdate->nDaysAgo($this->archive_recent_days);
-		$article_clause = <<<SQL
-		IF(thread.thread_article = 0,
-				thread.thread_article_title = "{$this->article->getTitle()->getDBkey()}"
-				AND thread.thread_article_namespace = {$this->article->getTitle()->getNamespace()}
-			, thread.thread_article = {$this->article->getID()})
-SQL;
+		$article_clause = Threads::articleClause($this->article);
 		$g->addQuery('fresh',
 		              array($article_clause,
 		                   'instr(thread.thread_path, ".")' => '0',

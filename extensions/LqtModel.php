@@ -235,10 +235,40 @@ class Thread {
 				    'thread_article_title' => $this->articleTitle),
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     __METHOD__);
-		
+	
 	//	RecentChange::notifyEdit( wfTimestampNow(), $this->root(), /*minor*/false, $wgUser, $summary,
 	//		$lastRevision, $this->getTimestamp(), $bot, '', $oldsize, $newsize,
 	//		$revisionId );
+	}
+	
+	function moveToSubjectPage($title) {
+		$dbr =& wfGetDB( DB_MASTER );
+		
+		if( $title->exists() ) {
+			$new_articleId = $title->getArticleId();
+			$new_articleNamespace = null;
+			$new_articleTitle = null;
+		} else {
+			$new_articleId = 0;
+			$new_articleNamespace = $title->getNamespace();
+			$new_articleTitle = $title->getDBKey();
+		}
+		
+		foreach($this->replies as $r) {
+			$res = $dbr->update( 'thread',
+			     /* SET */array(
+						'thread_revision' => $r->revisionNumber() + 1,
+						'thread_article' => $new_articleId,
+						'thread_article_namespace' => $new_articleNamespace,
+					    'thread_article_title' => $new_articleTitle),
+			     /* WHERE */ array( 'thread_id' => $r->id(), ),
+			     __METHOD__);
+		}
+		
+		$this->articleId = $new_articleId;
+		$this->articleNamespace = $new_articleNamespace;
+		$this->articleTitle = $new_articleTitle;
+		$this->commitRevision();
 	}
 
 	function __construct($line, $children) {
@@ -562,6 +592,19 @@ SQL;
 			}
 		}
 		return $months;
+	}
+	
+	static function articleClause($article) {
+		return <<<SQL
+		IF(thread.thread_article = 0,
+				thread.thread_article_title = "{$article->getTitle()->getDBkey()}"
+				AND thread.thread_article_namespace = {$article->getTitle()->getNamespace()}
+			, thread.thread_article = {$article->getID()})
+SQL;
+	}
+	
+	static function topLevelClause() {
+		return 'instr(thread.thread_path, ".") = 0';
 	}
 
 }
