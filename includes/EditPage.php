@@ -1714,7 +1714,7 @@ END
 			array(	'image'	=> 'button_image.png',
 				'id'	=> 'mw-editbutton-image',
 				'open'	=> '[['.$wgContLang->getNsText(NS_IMAGE).":",
-				'close'	=> ']]',
+				'close'	=> '|thumb]]',
 				'sample'=> wfMsg('image_sample'),
 				'tip'	=> wfMsg('image_tip'),
 				'key'	=> 'D'
