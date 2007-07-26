@@ -27,13 +27,34 @@ class DefinedMeaning extends DefaultWikidataApplication {
 			$definedMeaningModel->copyTo($copyTo);
 		}
 
-		if(!empty($dmInfo["expression"]))
-		  $definedMeaningModel->setDefiningExpression($dmInfo["expression"]);
+		if(!empty($dmInfo["expression"])) {
+		 	$definedMeaningModel->setDefiningExpression($dmInfo["expression"]);
+		}
 
 		// Search for this DM in all data-sets, beginning with the current one.
 		// Switch dataset context if found elsewhere.
 		$match=$definedMeaningModel->checkExistence(true, true);
 
+		// The defining expression is likely incorrect for some reason. Let's just
+		// try looking up the number.
+		if(is_null($match) && !empty($dmInfo["expression"])) {
+			$definedMeaningModel->setDefiningExpression(null);
+			$dmInfo["expression"]=null;
+			$match=$definedMeaningModel->checkExistence(true, true);
+		}
+
+		// The defining expression is either bad or missing. Let's redirect
+		// to the correct URL.
+		if(empty($dmInfo["expression"]) && !is_null($match)) {
+			$definedMeaningModel->loadRecord();
+			$title=Title::newFromText($definedMeaningModel->getWikiTitle());
+			$url=$title->getFullURL();
+			$wgOut->disable();
+			header("Location: $url");
+			return false;
+		}
+
+		// Bad defining expression AND bad ID! :-(
 		if(is_null($match)) {
 			$wgOut->showErrorPage('errorpagetitle','ow_dm_missing');
 			return false;

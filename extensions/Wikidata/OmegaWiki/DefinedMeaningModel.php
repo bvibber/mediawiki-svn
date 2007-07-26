@@ -379,12 +379,17 @@ class DefinedMeaningModel {
 	 */
 	public static function splitTitleText($titleText) {
 		$bracketPosition = strrpos($titleText, "(");
-		if ($bracketPosition==false) 
+		if ($bracketPosition===false) 
 			return null; # Defined Meaning ID is missing from title string
 		$rv=array();
-		$definingExpression = substr($titleText, 0, $bracketPosition -1);
-		$definingExpression = str_replace("_"," ",$definingExpression);
+		if($bracketPosition>0) {
+			$definingExpression = substr($titleText, 0, $bracketPosition -1);
+			$definingExpression = str_replace("_"," ",$definingExpression);
+		} else {
+			$definingExpression = null;
+		}
 		$definedMeaningId = substr($titleText, $bracketPosition + 1, strlen($titleText) - $bracketPosition - 2);
+
 		$rv["expression"]=$definingExpression;
 		$rv["id"]=(int)$definedMeaningId;
 		return $rv;
@@ -415,6 +420,15 @@ class DefinedMeaningModel {
 			return definingExpression($this->getId(),$this->getDataset());
 		}
 		return $this->definingExpression;
+	}
+
+	public function getWikiTitle() {
+		$dmEx=$this->getDefiningExpression();
+		$dmId=$this->getId();
+		$dmTitle="DefinedMeaning:$dmEx ($dmId)";
+		$dmTitle=str_replace(" ", "_", $dmTitle);
+		return $dmTitle;
+
 	}
 
 	public function setDefiningExpression($definingExpression) {
