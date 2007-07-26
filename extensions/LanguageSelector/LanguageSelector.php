@@ -212,7 +212,7 @@ function wfLanguageSelectorSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
 		}
 		
 		$tpl->data['sidebar']['languageselector'] = $lines;
-		return;
+		return true;
 	}
 
 	$key = NULL;
