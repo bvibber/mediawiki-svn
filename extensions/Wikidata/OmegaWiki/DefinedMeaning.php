@@ -184,7 +184,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	 * Potential refactor candidate!
 	*/
 	protected function getConceptPanel() {
-		global $wgTitle, $wgUser;
+		global $wgTitle, $wgUser, $wdShowCopyPanel;
 		$active=true; # wrong place, but hey
 		$dmId=$this->getDefinedMeaningId();
 		$dc=wdGetDataSetContext();
@@ -213,7 +213,9 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$titleText=$wgTitle->getPrefixedURL();
 		$cmlink=$sk->makeLinkObj($cmtitle,"<small>".wfMsg("add_concept_link")."</small>","set_$dc=$dmId&suppressWarnings=true");
 		$html.="<tr><td>$cmlink</td></tr>\n";
-		$html.="<tr><td>".$this->getCopyPanel()."<td><tr>";
+		if($wdShowCopyPanel) {
+			$html.="<tr><td>".$this->getCopyPanel()."<td><tr>";
+		}
 		$html.="</table>\n";
 		$html.="</div>\n";
 		return $html;

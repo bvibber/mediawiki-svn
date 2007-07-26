@@ -21,6 +21,7 @@ $wdTermDBDataSet='uw';
 # It _must_ exist for the Wikidata application to be executed 
 # successfully.
 $wdDefaultViewDataSet='uw';
+$wdShowCopyPanel=false;
 
 $wdGroupDefaultView=array();
 # Here you can set group defaults.
