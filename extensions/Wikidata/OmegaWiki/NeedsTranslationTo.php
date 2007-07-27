@@ -51,7 +51,7 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 			$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure;
 		
 		$dc=wdGetDataSetContext();
-		$o=OmegaWikiAttributes::getInstance()
+		$o=OmegaWikiAttributes::getInstance();
 
 		$dbr = &wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id" .
