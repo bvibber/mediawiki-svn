@@ -81,7 +81,7 @@ class LqtDispatch {
 		                                  Threads::topLevelClause() ));
 		
 		foreach ($threads as $t) {
-			$t->moveToSubjectPage( $nt );
+			$t->moveToSubjectPage( $nt, false );
 		}
 		
 		return true;
@@ -450,11 +450,11 @@ HTML;
 		$commands = array( 'Edit' => $this->talkpageUrl( $this->title, 'edit', $thread ),
 		 					'Reply' => $this->talkpageUrl( $this->title, 'reply', $thread ),
 		 					'Permalink' => $this->permalinkUrl( $thread ) );
-/*
+
 		if( !$thread->hasSuperthread() ) {
-			$commands['History'] = $this->permalinkUrl($thread, 'history_listing');
+			$commands['History'] = $this->permalinkUrlWithQuery($thread, 'action=history');
 		}
-*/
+
 		foreach( $commands as $label => $href ) {
 			$this->output->addHTML( wfOpenElement( 'li' ) );
 			$this->output->addHTML( wfElement('a', array('href'=>$href), $label) );
@@ -991,6 +991,9 @@ class ThreadHistoryView extends ThreadPermalinkView {
 	}
 	
 	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		
 		$t = Threads::withRoot( $this->article );
 		$this->thread = $t;
 
@@ -1011,6 +1014,19 @@ class ThreadHistoryView extends ThreadPermalinkView {
 class ThreadPermalinkView extends LqtView {
 	protected $thread;
 	
+	function customizeTabs( $skintemplate, $content_actions ) {
+		// The arguments are passed in by reference.
+		unset($content_actions['edit']);
+/*		unset($content_actions['history']);
+		unset($content_actions['watch']);
+		unset($content_actions['move']);*/
+		$content_actions['move']['href'] =
+			SpecialPage::getPage('Movethread')->getTitle()->getFullURL() . '/' .
+			$this->thread->title()->getPrefixedURL();
+		
+		return true;
+	}
+	
 	function showThreadHeading( $thread ) {
 		if ( $this->headerLevel == 1 ) {
 			$this->output->setPageTitle( $thread->wikilink() );
@@ -1024,6 +1040,9 @@ class ThreadPermalinkView extends LqtView {
 	}
 
 	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		
 		$t = Threads::withRoot( $this->article );
 		$r = $this->request->getVal('lqt_oldid', null); if( $r ) {
 			$t = $t->atRevision($r);
@@ -1058,4 +1077,128 @@ class ThreadPermalinkView extends LqtView {
 
 		$this->showThread($t);
 	}
+}
+
+
+/* We have to do this goofy wgExtensionFunctions run-around because
+   the files required by SpecialPage aren't required_onced() yet by
+  the time this file is. Don't ask me why. */
+
+$wgExtensionFunctions[] = 'wfLqtSpecialMoveThreadToAnotherPage';
+
+function wfLqtSpecialMoveThreadToAnotherPage() {
+    global $wgMessageCache;
+
+    require_once('SpecialPage.php');
+    
+    $wgMessageCache->addMessage( 'movethread', 'Move Thread to Another Page' );
+    
+    class SpecialThreadPage extends SpecialPage {
+		private $user, $output, $request, $title, $thread;
+
+
+        function __construct() {
+            SpecialPage::SpecialPage( 'Movethread' );
+            SpecialPage::$mStripSubpages = false;
+            $this->includable( false );
+        }
+
+		function handleGet() {
+			$thread_name = $this->thread->title()->getPrefixedText();
+			$article_name = $this->thread->article()->getTitle()->getTalkPage()->getPrefixedText();
+			$this->output->addHTML(<<<HTML
+			<p>Moving <b>$thread_name</b>.
+			This thread is part of <b>$article_name</b>.</p>
+			<form id="lqt_move_thread_form" action="{$this->title->getLocalURL()}" method="POST">
+			<table>
+			<tr>
+			<td><label for="lqt_move_thread_target_title">Title of destination talkpage:</label></td>
+			<td><input id="lqt_move_thread_target_title" name="lqt_move_thread_target_title" tabindex="100" /></td>
+			</tr><tr>
+			<td>&nbsp;</td>
+			<td><input type="submit" value="Move" style="float:right;" tabindex="200" /></td>
+			</tr>
+			</table>
+			</form>
+HTML
+			);
+			
+		}
+
+		function checkUserRights() {
+			if ( !$this->user->isAllowed( 'move' ) ) {
+				$this->output->showErrorPage( 'movenologin', 'movenologintext' );
+				return false;
+			}
+			if ( $this->user->isBlocked() ) {
+				$this->output->blockedPage();
+				return false;
+			}
+			if ( wfReadOnly() ) {
+				$this->output->readOnlyPage();
+				return false;
+			}
+			if ( $this->user->pingLimiter( 'move' ) ) {
+				$this->output->rateLimited();
+				return false;
+			}
+			/* Am I forgetting anything? */
+			return true;
+		}
+
+		function redisplayForm($problem_fields, $message) {
+			$this->output->addHTML($message);
+			$this->handleGet();
+		}
+
+		function handlePost() {
+			if( !$this->checkUserRights() )
+				return;
+			
+			$tmp = $this->request->getVal('lqt_move_thread_target_title');
+			if( $tmp === "" ) {
+				$this->redisplayForm(array('lqt_move_thread_target_title'), "You must specify a destination.");
+				return;
+			}
+			
+			$newtitle = Title::newFromText( $tmp )->getSubjectPage();
+			
+			// TODO no status code from this method.
+			$this->thread->moveToSubjectPage( $newtitle, true );
+			
+			
+		}
+
+        function execute( $par = null ) {
+            global $wgOut, $wgRequest, $wgTitle, $wgUser;
+			$this->user = $wgUser;
+			$this->output = $wgOut;
+			$this->request = $wgRequest;
+			$this->title = $wgTitle;
+	
+            $this->setHeaders();
+            
+			if( $par === null || $par === "") {
+				$this->output->addHTML("You must specify a thread in the URL.");
+				return;
+			}
+			// TODO should implement Threads::withTitle(...).
+			$thread = Threads::withRoot( new Article(Title::newFromURL($par)) );
+			if (!$thread) {
+				$this->output->addHTML("No such thread exists.");
+				return;
+			}
+			
+			$this->thread = $thread;
+
+			if ( $this->request->wasPosted() ) {
+				$this->handlePost();
+			} else {
+				$this->handleGet();
+			}
+
+        }
+    }
+    
+     SpecialPage::addPage( new SpecialThreadPage() );
 }

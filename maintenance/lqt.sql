@@ -12,6 +12,10 @@ CREATE TABLE /*$wgDBprefix*/thread (
   thread_article_namespace int NULL,
   thread_article_title varchar(255) binary NULL,
 
+  -- Special thread types such as schrodinger's thread:
+  thread_type int(4) unsigned NOT NULL default 0,
+  thread_log int unsigned NULL,
+
   PRIMARY KEY thread_id (thread_id),
   UNIQUE INDEX thread_id (thread_id),
   INDEX thread_article (thread_article),

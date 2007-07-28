@@ -241,7 +241,7 @@ class Thread {
 	//		$revisionId );
 	}
 	
-	function moveToSubjectPage($title) {
+	function moveToSubjectPage($title, $leave_trace) {
 		$dbr =& wfGetDB( DB_MASTER );
 		
 		if( $title->exists() ) {
@@ -269,7 +269,49 @@ class Thread {
 		$this->articleNamespace = $new_articleNamespace;
 		$this->articleTitle = $new_articleTitle;
 		$this->commitRevision();
+		
+		if($leave_trace) {
+		//	$this->leaveTrace();
+		}
 	}
+	
+	function leaveTrace() {
+		/* Adapted from Title::moveToNewTitle. But now the new title exists on the old talkpage. */
+		
+		$mwRedir = MagicWord::get( 'redirect' );
+		$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $this->title()->getPrefixedText() . "]]\n";
+		$redirectArticle = new Article( LqtView::incrementedTitle( $this->subjectWithoutIncrement(),
+		                                                           NS_LQT_THREAD) ); ## TODO move to model.
+		$newid = $redirectArticle->insertOn( $dbw );
+		$redirectRevision = new Revision( array(
+			'page'    => $newid,
+			'comment' => $comment,
+			'text'    => $redirectText ) );
+		$redirectRevision->insertOn( $dbw );
+		$redirectArticle->updateRevisionOn( $dbw, $redirectRevision, 0 );
+		$linkCache->clearLink( $this->getPrefixedDBkey() );
+
+		# Log the move
+		$log = new LogPage( 'move' );
+		$log->addEntry( 'move', $this, $reason, array( 1 => $nt->getPrefixedText()) );
+
+		# Purge caches as per article creation
+		Article::onArticleCreate( $nt );
+
+		# Record the just-created redirect's linking to the page
+		$dbw->insert( 'pagelinks',
+			array(
+				'pl_from'      => $newid,
+				'pl_namespace' => $nt->getNamespace(),
+				'pl_title'     => $nt->getDBkey() ),
+			$fname );
+
+		# Purge old title from squid
+		# The new title, and links to the new title, are purged in Article::onArticleCreate()
+		$this->purgeSquid();
+	}
+	
+	
 
 	function __construct($line, $children) {
 		$this->id = $line->thread_id;
@@ -403,6 +445,10 @@ class Thread {
 	function setSummary( $post ) {
 		$this->summary = null;
 		$this->summaryId = $post->getID();
+	}
+	
+	function title() {
+		return $this->root()->getTitle();
 	}
 	
 	function wikilink() {
