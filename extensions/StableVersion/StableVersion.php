@@ -136,7 +136,7 @@ function wfStableVersionArticlePageDataAfterHook( &$article, &$fields ) {
 	
 	# No stable versions of a non-existing article
 	if( !$article->exists() ) {
-		return;
+		return true;
 	}
 
 	wfProfileIn( $fname );
