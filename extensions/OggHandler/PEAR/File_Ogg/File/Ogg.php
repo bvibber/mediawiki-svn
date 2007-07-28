@@ -2,7 +2,9 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4: */
 // +----------------------------------------------------------------------------+
 // | File_Ogg PEAR Package for Accessing Ogg Bitstreams                         |
-// | Copyright (c) 2005 David Grant <david@grant.org.uk>                        |
+// | Copyright (c) 2005-2007                                                    |
+// | David Grant <david@grant.org.uk>                                           |
+// | Tim Starling <tstarling@wikimedia.org>                                     |
 // +----------------------------------------------------------------------------+
 // | This library is free software; you can redistribute it and/or              |
 // | modify it under the terms of the GNU Lesser General Public                 |
@@ -20,21 +22,14 @@
 // +----------------------------------------------------------------------------+
 
 /**
- * @author      David Grant <david@grant.org.uk>
+ * @author      David Grant <david@grant.org.uk>, Tim Starling <tstarling@wikimedia.org>
  * @category    File
- * @copyright   David Grant <david@grant.org.uk>
+ * @copyright   David Grant <david@grant.org.uk>, Tim Starling <tstarling@wikimedia.org>
  * @license     http://www.gnu.org/copyleft/lesser.html GNU LGPL
  * @link        http://pear.php.net/package/File_Ogg
  * @package     File_Ogg
  * @version     CVS: $Id: Ogg.php,v 1.14 2005/11/19 09:06:30 djg Exp $
  */
-
-require_once('PEAR.php');
-require_once('File/Ogg/Bitstream.php');
-require_once("File/Ogg/Flac.php");
-require_once("File/Ogg/Speex.php");
-require_once("File/Ogg/Theora.php");
-require_once("File/Ogg/Vorbis.php");
 
 /**
  * @access  public
@@ -83,7 +78,7 @@ define("OGG_STREAM_CAPTURE_SPEEX",  "Speex   ");
  * 
  * @access  private
  */
-define("OGG_STREAM_CAPTURE_FLAC",   "fLaC");
+define("OGG_STREAM_CAPTURE_FLAC",   "FLAC");
 /**
  * Capture pattern for an Ogg Theora logical stream.
  * 
@@ -109,6 +104,21 @@ define("OGG_ERROR_UNSUPPORTED",  2);
  * @access  private
  */
 define("OGG_ERROR_BAD_SERIAL",   3);
+/**
+ * Error thrown if the stream appears to be corrupted.
+ * 
+ * @access  private
+ */
+define("OGG_ERROR_UNDECODABLE",      4);
+
+require_once('PEAR.php');
+require_once('PEAR/Exception.php');
+require_once('File/Ogg/Bitstream.php');
+require_once("File/Ogg/Flac.php");
+require_once("File/Ogg/Speex.php");
+require_once("File/Ogg/Theora.php");
+require_once("File/Ogg/Vorbis.php");
+
 
 /**
  * Class for parsing a ogg bitstream.
@@ -159,18 +169,169 @@ class File_Ogg
     {
         clearstatcache();
         if (! file_exists($fileLocation)) {
-            PEAR::raiseError("Couldn't Open File.  Check File Path.", OGG_ERROR_INVALID_FILE);
-            return;
+            throw new PEAR_Exception("Couldn't Open File.  Check File Path.", OGG_ERROR_INVALID_FILE);
         }
 
         // Open this file as a binary, and split the file into streams.
         $this->_filePointer = fopen($fileLocation, "rb");
-        if (is_resource($this->_filePointer))
-            $this->_splitStreams();
-        else
-            PEAR::raiseError("Couldn't Open File.  Check File Permissions.", OGG_ERROR_INVALID_FILE);
+        if (!is_resource($this->_filePointer))
+            throw new PEAR_Exception("Couldn't Open File.  Check File Permissions.", OGG_ERROR_INVALID_FILE);
+
+        // Check for a stream at the start
+        $magic = fread($this->_filePointer, strlen(OGG_CAPTURE_PATTERN));
+        if ($magic !== OGG_CAPTURE_PATTERN) {
+            throw new PEAR_Exception("Couldn't read file: Incorrect magic number.", OGG_ERROR_UNDECODABLE);
+        }
+        fseek($this->_filePointer, 0, SEEK_SET);
+
+        $this->_splitStreams();
+        fclose($this->_filePointer);
     }
-    
+
+    /**
+     * Little-endian equivalent for bin2hex
+     * @static
+     */
+    static function _littleEndianBin2Hex( $bin ) {
+        $bigEndian = bin2hex( $bin );
+        // Reverse entire string
+        $reversed = strrev( $bigEndian );
+        // Swap nibbles back
+        for ( $i = 0; $i < strlen( $bigEndian ); $i += 2 ) {
+            $temp = $reversed[$i];
+            $reversed[$i] = $reversed[$i+1];
+            $reversed[$i+1] = $temp;
+        }
+        return $reversed;
+    }
+
+
+    /**
+     * Read a binary structure from a file. An array of unsigned integers are read.
+     * Large integers are upgraded to floating point on overflow.
+     *
+     * Format is big-endian as per Theora bit packing convention, this function 
+     * won't work for Vorbis.
+     *
+     * @param   resource    $file
+     * @param   array       $fields Associative array mapping name to length in bits
+     */
+    static function _readBigEndian($file, $fields) 
+    {
+        $bufferLength = ceil(array_sum($fields) / 8);
+        $buffer = fread($file, $bufferLength);
+        if (strlen($buffer) != $bufferLength) {
+            throw new PEAR_Exception('Unexpected end of file', OGG_ERROR_UNDECODABLE);
+        }
+        $bytePos = 0;
+        $bitPos = 0;
+        $byteValue = ord($buffer[0]);
+        $output = array();
+        foreach ($fields as $name => $width) {
+            if ($width % 8 == 0 && $bitPos == 0) {
+                // Byte aligned case
+                $bytes = $width / 8;
+                $endBytePos = $bytePos + $bytes;
+                $value = 0;
+                while ($bytePos < $endBytePos) {
+                    $value = ($value * 256) + ord($buffer[$bytePos]);
+                    $bytePos++;
+                }
+                if ($bytePos < strlen($buffer)) {
+                    $byteValue = ord($buffer[$bytePos]);
+                }
+            } else {
+                // General case
+                $bitsRemaining = $width;
+                $value = 0;
+                while ($bitsRemaining > 0) {
+                    $bitsToRead = min($bitsRemaining, 8 - $bitPos);
+                    $byteValue <<= $bitsToRead;
+                    $overflow = ($byteValue & 0xff00) >> 8;
+                    $byteValue &= $byteValue & 0xff;
+
+                    $bitPos += $bitsToRead;
+                    $bitsRemaining -= $bitsToRead;
+                    $value += $overflow * pow(2, $bitsRemaining);
+
+                    if ($bitPos >= 8) {
+                        $bitPos = 0;
+                        $bytePos++;
+                        if ($bitsRemaining <= 0) {
+                            break;
+                        }
+                        $byteValue = ord($buffer[$bytePos]);
+                    }
+                }
+            }
+            $output[$name] = $value;
+            assert($bytePos <= $bufferLength);
+        }
+        return $output;
+    }
+
+    /**
+     * Read a binary structure from a file. An array of unsigned integers are read.
+     * Large integers are upgraded to floating point on overflow.
+     *
+     * Format is little-endian as per Vorbis bit packing convention.
+     *
+     * @param   resource    $file
+     * @param   array       $fields Associative array mapping name to length in bits
+     */
+    static function _readLittleEndian( $file, $fields ) {
+        $bufferLength = ceil(array_sum($fields) / 8);
+        $buffer = fread($file, $bufferLength);
+        if (strlen($buffer) != $bufferLength) {
+            throw new PEAR_Exception('Unexpected end of file', OGG_ERROR_UNDECODABLE);
+        }
+
+        $bytePos = 0;
+        $bitPos = 0;
+        $byteValue = ord($buffer[0]) << 8;
+        $output = array();
+        foreach ($fields as $name => $width) {
+            if ($width % 8 == 0 && $bitPos == 0) {
+                // Byte aligned case
+                $bytes = $width / 8;
+                $value = 0;
+                for ($i = 0; $i < $bytes; $i++, $bytePos++) {
+                    $value += pow(256, $i) * ord($buffer[$bytePos]);
+                }
+                if ($bytePos < strlen($buffer)) {
+                    $byteValue = ord($buffer[$bytePos]) << 8;
+                }
+            } else {
+                // General case
+                $bitsRemaining = $width;
+                $value = 0;
+                while ($bitsRemaining > 0) {
+                    $bitsToRead = min($bitsRemaining, 8 - $bitPos);
+                    $byteValue >>= $bitsToRead;
+                    $overflow = ($byteValue & 0xff) >> (8 - $bitsToRead);
+                    $byteValue &= 0xff00;
+
+                    $value += $overflow * pow(2, $width - $bitsRemaining);
+                    $bitPos += $bitsToRead;
+                    $bitsRemaining -= $bitsToRead;
+
+                    if ($bitPos >= 8) {
+                        $bitPos = 0;
+                        $bytePos++;
+                        if ($bitsRemaining <= 0) {
+                            break;
+                        }
+                        $byteValue = ord($buffer[$bytePos]) << 8;
+                    }
+                }
+            }
+            $output[$name] = $value;
+            assert($bytePos <= $bufferLength);
+        }
+        return $output;
+    }
+
+
     /**
      * @access  private
      */
@@ -185,7 +346,13 @@ class File_Ogg
             return (falses);
 
         $header_flag     = unpack("cdata", substr($pageData, 5, 1));
-        $abs_granual_pos = unpack("Vdata", substr($pageData, 6, 8));
+
+        // Exact granule position
+        $abs_granule_pos = self::_littleEndianBin2Hex( substr($pageData, 6, 8));
+        // Approximate (floating point) granule position
+        $pos = unpack("Va/Vb", substr($pageData, 6, 8));
+        $approx_granule_pos = $pos['a'] + $pos['b'] * pow(2, 32);
+
         // Serial number for the current datastream.
         $stream_serial   = unpack("Vdata", substr($pageData, 14, 4));
         $page_sequence   = unpack("Vdata", substr($pageData, 18, 4));
@@ -198,7 +365,8 @@ class File_Ogg
         }
         $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['stream_version']     = $stream_version['data'];
         $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['header_flag']        = $header_flag['data'];
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['abs_granual_pos']    = $abs_granual_pos['data'];
+        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['abs_granule_pos']    = $abs_granule_pos;
+        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['approx_granule_pos'] = $approx_granule_pos;
         $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['checksum']           = sprintf("%u", $checksum['data']);
         $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['segments']           = $segments_total;
         $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['head_offset']        = $pageOffset;
@@ -237,6 +405,10 @@ class File_Ogg
             $number_pages = (strlen($stream_data) == OGG_MAXIMUM_PAGE_SIZE) ? count($stream_pages) - 2 : count($stream_pages) - 1;
             if (! count($stream_pages))
                 break;
+            if ($number_pages <= 0) {
+                // Don't go into an infinite loop
+                throw new PEAR_Exception('No pages found', OGG_ERROR_UNDECODABLE);
+            }
 
             for ($i = 1; $i <= $number_pages; ++$i) {
                 $stream_pages[$i] = OGG_CAPTURE_PATTERN . $stream_pages[$i];
@@ -305,7 +477,7 @@ class File_Ogg
     function &getStream($streamSerial)
     {
         if (! array_key_exists($streamSerial, $this->_streams))
-                PEAR::raiseError("The stream number is invalid.", OGG_ERROR_BAD_SERIAL);
+                throw new PEAR_Exception("The stream number is invalid.", OGG_ERROR_BAD_SERIAL);
 
         return $this->_streams[$streamSerial];
     }
@@ -376,14 +548,6 @@ class File_Ogg
             return ($streams[$filter]);
         else
             return array();
-    }
-    
-    function saveChanges()
-    {
-        $fp     = tmpfile();
-        $diff   = 0;
-        foreach ($this->_streams as $stream)
-            $stream->_saveChanges($fp, $diff);
     }
 }
 ?>
