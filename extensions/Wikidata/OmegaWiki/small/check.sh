@@ -1,6 +1,6 @@
 #!/bin/bash
 export myfile=$1; 
 
-small/raO.pl $myfile 		|
-	diff -d $myfile - 	| 
+small/ra3.pl $myfile 		|
+	diff -dy $myfile - 	| 
 	less
