@@ -11,7 +11,7 @@ sub joinpairs {
 	my @a=@_;
 	my @b;
 	for(my $pointer=0;$pointer<$#a;$pointer+=2) {
-		push (@b, $a[$pointer].$a[$pointer+1]);
+		push (@b, [$a[$pointer], $a[$pointer+1]]);
 	}
 	return \@b;
 }
@@ -68,6 +68,7 @@ while(<>) {
 			$global=0; # end of global statement
 		}
 		#$statement=~s/\$o\s*=\s*\$omegaWikiAttributes;/\$o=OmegaWikiAttributes::getInstance();/g;
+		#$tomatch=$globals{$block_stack[0]}
 		$statement=~s/\$(\w+)Attribute(\W)/\$o\-\>$1$2/g;
 		$statement=~s/\$(\w+)Attributes(\W)/\$o\-\>$1Attributes$2/g;
 		$statement=~s/\$(\w+)Structure(\W)/\$o\-\>$1Structure$2/g;
