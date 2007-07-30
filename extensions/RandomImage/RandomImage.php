@@ -15,7 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionCredits['parserhook'][] = array(
 		'name' => 'RandomImage',
 		'author' => 'Rob Church',
-		'url' => 'http://meta.wikimedia.org/wiki/RandomImage',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:RandomImage',
 		'description' => 'Provides a random media picker using <tt>&lt;randomimage /&gt;</tt>',
 	);
 	
