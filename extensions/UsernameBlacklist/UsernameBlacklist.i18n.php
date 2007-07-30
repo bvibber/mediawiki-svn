@@ -74,6 +74,11 @@ Basqa ataw talğañız.',
 'blacklistedusernametext' => 'Wê navî yê te hilbijart li ser [[MediaWiki:Usernameblacklist|lîstêya navên nebaş]] e. Xêra xwe navekî din hilbijêre.',
 ),
 
+/* Lao */
+'lo' => array(
+'blacklistedusername' => 'ຊື່ຜູ້ໃຊ້ ໃນ ບັນຊີດຳ',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'blacklistedusername' => 'Gebruikersnaam op zwarte lijst',

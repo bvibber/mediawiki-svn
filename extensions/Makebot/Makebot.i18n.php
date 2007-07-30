@@ -295,6 +295,13 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => '[[$1]] دەگەننەن بوت كٷيٸ الاستاتىلدى',
 ),
 
+/* Lao */
+'lo' => array(
+'makebot-username' => 'ຊື່ຜູ້ໃຊ້:',
+'makebot-search'   => 'ໄປ',
+'makebot-comment'  => 'ຄຳເຫັນ:',
+),
+
 /* nld . Dutch (Siebrand Mazeland) */
 'nl' => array(
 'makebot' => 'Botstatus beheren',

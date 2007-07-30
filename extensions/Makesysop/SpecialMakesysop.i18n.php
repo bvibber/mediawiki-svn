@@ -587,6 +587,10 @@ $wgMakesysopMessages['li'] = array(
 	'already_sysop'        => 'Deze gebroeker is al systeemwèrker',
 	'already_bureaucrat'   => 'Deze gebroeker is al amtenaer',
 );
+$wgMakesysopMessages['lo'] = array(
+	'already_sysop'        => 'ຜູ້ໃຊ້ນີ້ ເປັນ ຜູ້ບໍລິຫານ ແລ້ວ',
+	'already_bureaucrat'   => 'ຜູ້ໃຊ້ນີ້​ ແມ່ນ buraucrat ແລ້ວ',
+);
 $wgMakesysopMessages['lt'] = array(
 	'makesysoptitle'     => 'Padaryti naudotoją administratoriumi',
 	'makesysoptext'      => 'Ši forma yra naudojama biurokratų, kad paprastus naudotojus pavestų į administratorius. Įveskite naudotojo vardą ir paspauskite mygtuką, kad padarytumėte naudotoją administratoriumi',

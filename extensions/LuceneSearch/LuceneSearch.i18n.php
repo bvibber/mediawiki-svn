@@ -287,6 +287,10 @@ $1<br />
 نەمەسە وسى ۋيكيدەن ٸزدەۋ ٷشٸن سىرتقى قىزمەتتەرٸن قولدانىڭىز:<br />"
 );
 $wgLuceneSearchMessages['kk'] = $wgLuceneSearchMessages['kk-kz'];
+$wgLuceneSearchMessages['lo'] = array(
+	'searchdidyoumean'      => "ຫຼື ທ່ານໝາຍຄວາມວ່າ",
+	'searchnoresults'       => "ຂໍໂທດຫຼາຍໆ, ບໍ່ມີ ບົດຄວາມ ທີ່ມີຊື່ກົງກັບສິ່ງທີ່ ທ່ານ ຊອກຫາແບບສົມບູນ.",
+);
 $wgLuceneSearchMessages['lt'] = array(
 	'searchnumber'          => "<strong>Rezultatai $1-$2 iš $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Atgal</span>",

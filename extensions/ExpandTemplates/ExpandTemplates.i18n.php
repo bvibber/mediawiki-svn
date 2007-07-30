@@ -175,6 +175,9 @@ sinn kriss wat erus kütt.',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'De ennere Kommentare fottlooße',
 );
+$wgExpandTemplatesMessages['lo'] = array(
+	'expandtemplates'                  => 'ຂະຫຍາຍແມ່ແບບ',
+);
 $wgExpandTemplatesMessages['nl'] = array(
 	'expandtemplates'                  => 'Sjablonen substitueren',
 	'expand_templates_intro'           => 'Deze speciale pagina leest de ingegeven tekst in en

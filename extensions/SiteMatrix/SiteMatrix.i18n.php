@@ -53,6 +53,9 @@ $wgSiteMatrixMessages['kk-cn'] = array(
 	"sitematrix" => "بارلىق Wikimedia ۋيكي-جوبالار تٸزٸمٸ",
 );
 $wgSiteMatrixMessages['kk'] = $wgSiteMatrixMessages['kk-kz'];
+$wgSiteMatrixMessages['lo'] = array(
+	"sitematrix" => "ລາຍການ wiki ໃນ Wikimedia",
+);
 $wgSiteMatrixMessages['lt'] = array(
 	"sitematrix" => "Wikimedia projektų sąrašas",
 );

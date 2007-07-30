@@ -110,6 +110,9 @@ $wgFilepathMessages['kk-cn'] = array(
 	فايل اتاۋىن «{{ns:image}}:» دەگەن باستاۋىشسىز ەڭگٸزٸڭٸز.',
 );
 $wgFilepathMessages['kk'] = $wgFilepathMessages['kk-kz'];
+$wgFilepathMessages['lo'] = array(
+	'filepath'         => 'ທາງໄປຫາໄຟລ໌',
+);
 $wgFilepathMessages['nl'] = array(
 	'filepath'        => 'Bestandslocatie',
 	'filepath_page'   => 'Bestand:',

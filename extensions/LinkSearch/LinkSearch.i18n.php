@@ -114,6 +114,9 @@ $wgLinkSearchMessages['kk-cn'] = array(
 	'linksearch-error' => 'بٵدەل نىشاندار تەك سەرۆەر جايى اتاۋىنىڭ باستاۋىندا بولۋى مٷمكٸن.',
 );
 $wgLinkSearchMessages['kk'] = $wgLinkSearchMessages['kk-kz'];
+$wgLinkSearchMessages['lo'] = array(
+	'linksearch'       => 'ຄົ້ນຫາການເຊື່ອມຕໍ່ຫາເວັບ',
+);
 $wgLinkSearchMessages['nl'] = array(
 	'linksearch'       => 'Zoek externe links',
 	'linksearch-text'  => 'Wildcards zoals "*.wikipedia.org" of "*.org" zijn toegestaan.',
