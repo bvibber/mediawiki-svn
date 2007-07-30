@@ -64,8 +64,9 @@ class BackAndForth {
 				'LIMIT' => 1,
 			)
 		);
-		if( $res->numRows() > 0 ) {
-			$row = $res->fetchObject();
+		if( $dbr->numRows( $res ) > 0 ) {
+			$row = $dbr->fetchObject( $res );
+			$dbr->freeResult( $res );
 			$target = Title::makeTitleSafe( $row->page_namespace, $row->page_title );
 			if( $target instanceof Title ) {
 				$label = htmlspecialchars( wfMsg( "backforth-{$label}", $target->getPrefixedText() ) );
