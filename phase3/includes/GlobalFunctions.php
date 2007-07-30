@@ -701,14 +701,14 @@ function wfHostname() {
 	 * @return string
 	 */
 	function wfReportTime() {
-		global $wgRequestTime;
+		global $wgRequestTime, $wgShowHostnames;
 
 		$now = wfTime();
 		$elapsed = $now - $wgRequestTime;
 
-		$com = sprintf( "<!-- Served by %s in %01.3f secs. -->",
-		  wfHostname(), $elapsed );
-		return $com;
+		return $wgShowHostnames
+			? sprintf( "<!-- Served by %s in %01.3f secs. -->", wfHostname(), $elapsed )
+			: sprintf( "<!-- Served in %01.3f secs. -->", $elapsed );
 	}
 
 /**
@@ -1667,7 +1667,7 @@ function wfMkdirParents( $fullDir, $mode = 0777 ) {
 		return true;
 	if( file_exists( $fullDir ) )
 		return true;
-	return mkdir( str_replace('/',DIRECTORY_SEPARATOR,$fullDir) , $mode, true );
+	return mkdir( str_replace( '/', DIRECTORY_SEPARATOR, $fullDir ), $mode, true );
 }
 
 /**
@@ -1872,11 +1872,15 @@ function wfRegexReplacement( $string ) {
  * We'll consider it so always, as we don't want \s in our Unix paths either.
  * 
  * @param string $path
+ * @param string $suffix to remove if present
  * @return string
  */
-function wfBaseName( $path ) {
+function wfBaseName( $path, $suffix='' ) {
+	$encSuffix = ($suffix == '')
+		? ''
+		: ( '(?:' . preg_quote( $suffix, '#' ) . ')?' );
 	$matches = array();
-	if( preg_match( '#([^/\\\\]*)[/\\\\]*$#', $path, $matches ) ) {
+	if( preg_match( "#([^/\\\\]*?){$encSuffix}[/\\\\]*$#", $path, $matches ) ) {
 		return $matches[1];
 	} else {
 		return '';
@@ -2258,24 +2262,38 @@ function wfLocalFile( $title ) {
 	return RepoGroup::singleton()->getLocalRepo()->newFile( $title );
 }
 
+/**
+ * Should low-performance queries be disabled?
+ *
+ * @return bool
+ */
 function wfQueriesMustScale() {
 	global $wgMiserMode;
-	// If $wgMiserMode is true, all queries must be efficient
-	if( $wgMiserMode )
-		return true;
-	// Try to roughly guess how large this wiki is.
-	// Useful for figuring out if a query that doesn't scale should be avoided
-	// or if job queue should be used
-	$dbr = wfGetDB( DB_SLAVE );
-	$stats = $dbr->selectRow('site_stats', 
-		array('ss_total_pages AS pages','ss_total_edits as edits','ss_users AS users'),
-		array(),
-		__METHOD__);
-	if( $stats->pages > 100000 && $stats->edits > 1000000 && $stats->users > 10000 ) {
-		return true;
-	} else {
-		return false;
-	}
+	return $wgMiserMode
+		|| ( SiteStats::pages() > 100000
+		&& SiteStats::edits() > 1000000
+		&& SiteStats::users() > 10000 );
 }
 
+/**
+ * Get the path to a specified script file, respecting file
+ * extensions; this is a wrapper around $wgScriptExtension etc.
+ *
+ * @param string $script Script filename, sans extension
+ * @return string
+ */
+function wfScript( $script = 'index' ) {
+	global $wgScriptPath, $wgScriptExtension;
+	return "{$wgScriptPath}/{$script}{$wgScriptExtension}";
+}
 
+/**
+ * Convenience function converts boolean values into "true"
+ * or "false" (string) values
+ *
+ * @param bool $value
+ * @return string
+ */
+function wfBoolToStr( $value ) {
+	return $value ? 'true' : 'false';
+}

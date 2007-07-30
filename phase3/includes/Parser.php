@@ -97,7 +97,7 @@ class Parser
 	 * @private
 	 */
 	# Persistent:
-	var $mTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables;
+	var $mTagHooks, $mTransparentTagHooks, $mFunctionHooks, $mFunctionSynonyms, $mVariables;
 	
 	# Cleared with clearState():
 	var $mOutput, $mAutonumber, $mDTopen, $mStripState;
@@ -128,6 +128,7 @@ class Parser
 	 */
 	function Parser() {
 		$this->mTagHooks = array();
+		$this->mTransparentTagHooks = array();
 		$this->mFunctionHooks = array();
 		$this->mFunctionSynonyms = array( 0 => array(), 1 => array() );
 		$this->mFirstCall = true;
@@ -329,6 +330,33 @@ class Parser
 
 		wfRunHooks( 'ParserBeforeTidy', array( &$this, &$text ) );
 
+//!JF Move to its own function
+
+		$uniq_prefix = $this->mUniqPrefix;
+                $matches = array();
+		$elements = array_keys( $this->mTransparentTagHooks );
+                $text = Parser::extractTagsAndParams( $elements, $text, $matches, $uniq_prefix );
+
+                foreach( $matches as $marker => $data ) {
+                        list( $element, $content, $params, $tag ) = $data;
+                        $tagName = strtolower( $element );
+                        if( isset( $this->mTransparentTagHooks[$tagName] ) ) {
+                                $output = call_user_func_array( $this->mTransparentTagHooks[$tagName],
+                                        array( $content, $params, $this ) );
+                        } else {
+				$output = $tag;
+			}
+			$this->mStripState->general->setPair( $marker, $output );
+		}
+		$text = $this->mStripState->unstripGeneral( $text );
+
+
+
+
+
+
+
+
 		$text = Sanitizer::normalizeCharReferences( $text );
 
 		if (($wgUseTidy and $this->mOptions->mTidy) or $wgAlwaysUseTidy) {
@@ -485,7 +513,7 @@ class Parser
 				$inside     = $p[4];
 			}
 
-			$marker = "$uniq_prefix-$element-" . sprintf('%08X', $n++) . '-QINU';
+			$marker = "$uniq_prefix-$element-" . sprintf('%08X', $n++) . "-QINU\x07";
 			$stripped .= $marker;
 
 			if ( $close === '/>' ) {
@@ -592,7 +620,8 @@ class Parser
 					$output = Xml::escapeTagsOnly( $content );
 					break;
 				case 'math':
-					$output = $wgContLang->armourMath( MathRenderer::renderMath( $content ) );
+					$output = $wgContLang->armourMath(
+						MathRenderer::renderMath( $content, $params ) );
 					break;
 				case 'gallery':
 					$output = $this->renderImageGallery( $content, $params );
@@ -1005,7 +1034,7 @@ class Parser
 		$text = strtr( $text, array( '<noinclude>' => '', '</noinclude>' => '') );
 		$text = StringUtils::delimiterReplace( '<includeonly>', '</includeonly>', '', $text );
 
-		$text = Sanitizer::removeHTMLtags( $text, array( &$this, 'attributeStripCallback' ) );
+		$text = Sanitizer::removeHTMLtags( $text, array( &$this, 'attributeStripCallback' ), array(), array_keys( $this->mTransparentTagHooks ) );
 
 		$text = $this->replaceVariables( $text, $args );
 		wfRunHooks( 'InternalParseBeforeLinks', array( &$this, &$text, &$this->mStripState ) );
@@ -1927,12 +1956,18 @@ class Parser
 		wfProfileIn( $fname );
 		$ret = $target; # default return value is no change
 
-		# bug 7425
-		$target = trim( $target );
-
 		# Some namespaces don't allow subpages,
 		# so only perform processing if subpages are allowed
 		if( $this->areSubpagesAllowed() ) {
+			$hash = strpos( $target, '#' );
+			if( $hash !== false ) {
+				$suffix = substr( $target, $hash );
+				$target = substr( $target, 0, $hash );
+			} else {
+				$suffix = '';
+			}
+			# bug 7425
+			$target = trim( $target );
 			# Look at the first character
 			if( $target != '' && $target{0} == '/' ) {
 				# / at end means we don't want the slash to be shown
@@ -1944,9 +1979,9 @@ class Parser
 					$noslash = substr( $target, 1 );
 				}
 
-				$ret = $this->mTitle->getPrefixedText(). '/' . trim($noslash);
+				$ret = $this->mTitle->getPrefixedText(). '/' . trim($noslash) . $suffix;
 				if( '' === $text ) {
-					$text = $target;
+					$text = $target . $suffix;
 				} # this might be changed for ugliness reasons
 			} else {
 				# check for .. subpage backlinks
@@ -1964,13 +1999,14 @@ class Parser
 						if( substr( $nodotdot, -1, 1 ) == '/' ) {
 							$nodotdot = substr( $nodotdot, 0, -1 );
 							if( '' === $text ) {
-								$text = $nodotdot;
+								$text = $nodotdot . $suffix;
 							}
 						}
 						$nodotdot = trim( $nodotdot );
 						if( $nodotdot != '' ) {
 							$ret .= '/' . $nodotdot;
 						}
+						$ret .= $suffix;
 					}
 				}
 			}
@@ -3955,6 +3991,14 @@ class Parser
 		return $oldVal;
 	}
 
+	function setTransparentTagHook( $tag, $callback ) {
+		$tag = strtolower( $tag );
+		$oldVal = isset( $this->mTransparentTagHooks[$tag] ) ? $this->mTransparentTagHooks[$tag] : null;
+		$this->mTransparentTagHooks[$tag] = $callback;
+
+		return $oldVal;
+	}
+
 	/**
 	 * Create a function, e.g. {{sum:1|2|3}}
 	 * The callback function should have the form:
@@ -4374,6 +4418,7 @@ class Parser
 		$ig->setShowBytes( false );
 		$ig->setShowFilename( false );
 		$ig->setParsing();
+		$ig->setAttributes( Sanitizer::validateTagAttributes( $params, 'table' ) );
 		$ig->useSkin( $this->mOptions->getSkin() );
 		$ig->mRevisionId = $this->mRevisionId;
 
@@ -4592,7 +4637,7 @@ class Parser
 	/**#@+
 	 * Accessor
 	 */
-	function getTags() { return array_keys( $this->mTagHooks ); }
+	function getTags() { return array_merge( array_keys($this->mTransparentTagHooks), array_keys( $this->mTagHooks ) ); }
 	/**#@-*/
 
 
@@ -4633,7 +4678,7 @@ class Parser
 		# now that we can be sure that no pseudo-sections are in the source,
 		# split it up by section
 		$uniq = preg_quote( $this->uniqPrefix(), '/' );
-		$comment = "(?:$uniq-!--.*?QINU)";
+		$comment = "(?:$uniq-!--.*?QINU\x07)";
 		$secs = preg_split(
 			"/
 			(

@@ -423,9 +423,9 @@ $messages = array(
 
 == Որոշ ռեսուրսներ ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki FAQ]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => 'Նկարագրությունը',
 'article'        => 'Հոդված',
@@ -863,9 +863,7 @@ $messages = array(
 'watch'             => 'Հսկել',
 'watchthispage'     => 'Հսկել այս էջը',
 'unwatch'           => 'Հանել հսկումից',
-'watchdetails'      => '*  հսկվում {{PLURAL:$1|է $1 էջ|են $1 էջեր}}` չհաշված քննարկման էջերը
-* [[{{ns:special}}:Watchlist/edit|Ցուցադրել և խմբագրել հսկողության լրիվ ցանկը]]
-* [[{{ns:special}}:Watchlist/clear|Հանել բոլոր էջերը]]',
+'watchlist-details' => ' հսկվում {{PLURAL:$1|է $1 էջ|են $1 էջեր}}` չհաշված քննարկման էջերը.',
 'watchlistcontains' => 'Ձեր հսկողության ցանկում կա  $1 էջ։',
 'wlshowlast'        => 'Ցուցադրել վերջին $1 ժամերը $2 օրերը $3',
 
@@ -971,7 +969,7 @@ $messages = array(
 # Spam protection
 'categoryarticlecount'   => 'Այս կատեգորիայում կա  $1 հոդված։',
 'category-media-count'   => 'Այս կատեգորիայում {{PLURAL:$1|կա մեկ ֆայլ|կան $1 ֆայլեր}}:',
-'listingcontinuesabbrev' => ' շարունակ.',
+'listingcontinuesabbrev' => 'շարունակ.',
 
 # Image deletion
 'deletedrevision' => 'Ջնջված է հին տարբերակը $1։',
@@ -980,7 +978,6 @@ $messages = array(
 'noimages'  => 'Տեսնելու բան չկա։',
 
 # 'all' in various places, this might be different for inflected languages
-'watchlistall1' => 'բոլորը',
 'watchlistall2' => 'բոլորը',
 
 # Delete conflict

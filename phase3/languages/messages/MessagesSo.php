@@ -409,9 +409,6 @@ si aad ugu dirto E-boosto isticmaalayaasha kale.',
 'mywatchlist'          => 'Liiskeyga waardiyeynta',
 'nowatchlist'          => 'Waxba kuma jiraan liiskaaga waardiyeynta.',
 'watchlistanontext'    => 'Fadlan $1 si aad u fiirisid ama wax uga bedeshid qoraalada ku jira liiska waardiyeyska.',
-'clearwatchlist'       => 'Sameey liiska-waardiyaha',
-'watchlistcleartext'   => "Ma'hubtaa in aad rabtid in la'tirtiro?",
-'watchlistclearbutton' => 'Tirtir liiska-waardiyaha',
 'watchnologin'         => 'Gudaha kuma jirtid',
 'addedwatch'           => 'Kudar liiska-waardiyaha',
 'addedwatchtext'       => "Bogga \"[[:\$1]]\" waxaa lagudaray [[Special:Watchlist|liiska-waardiyahaaga]].
@@ -530,7 +527,6 @@ Hadii aad rabootid in aad boggan ka saartid wardiyeynta, dhagsii \"Ha' wardiyeyn
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'dhamaan',
 'imagelistall'     => 'dhamaan',
-'watchlistall1'    => 'dhamaan',
 'watchlistall2'    => 'dhamaan',
 
 # E-mail address confirmation

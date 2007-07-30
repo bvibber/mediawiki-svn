@@ -75,7 +75,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		while ( $row = $db->fetchObject( $res ) ) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter('start', $row->rev_timestamp);
+				$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->rev_timestamp));
 				break;
 			}
 
@@ -135,8 +135,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		$this->addWhereRange('rev_timestamp', 
 			$this->params['dir'], $this->params['start'], $this->params['end'] );
 
-		if(count($this->params['namespace']) > 0)
-			$this->addWhereFld('page_namespace', $this->params['namespace']);
+		$this->addWhereFld('page_namespace', $this->params['namespace']);
 
 		$show = $this->params['show'];
 		if (!is_null($show)) {
@@ -173,10 +172,6 @@ class ApiQueryContributions extends ApiQueryBase {
 	 */
 	private function extractRowInfo($row) {
 
-		$title = Title :: makeTitle($row->page_namespace, $row->page_title);
-		if (!$title->userCanRead())
-			return false;
-
 		$vals = array();
 
 		if ($this->fld_ids) {
@@ -186,7 +181,8 @@ class ApiQueryContributions extends ApiQueryBase {
 		}
 		
 		if ($this->fld_title)
-			ApiQueryBase :: addTitleInfo($vals, $title);
+			ApiQueryBase :: addTitleInfo($vals, 
+				Title :: makeTitle($row->page_namespace, $row->page_title));
 
 		if ($this->fld_timestamp)
 			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->rev_timestamp);

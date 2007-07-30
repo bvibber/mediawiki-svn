@@ -102,9 +102,8 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 					$lastId = $row->pl_from;
 				}
 
-				$title = Title :: makeTitle($row->pl_namespace, $row->pl_title);
 				$vals = array();
-				ApiQueryBase :: addTitleInfo($vals, $title, true);
+				ApiQueryBase :: addTitleInfo($vals, Title :: makeTitle($row->pl_namespace, $row->pl_title));
 				$data[] = $vals;
 			}
 
@@ -116,22 +115,12 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 
 			$titles = array();
 			while ($row = $db->fetchObject($res)) {
-				$title = Title :: makeTitle($row->pl_namespace, $row->pl_title);
-				if($title->userCanRead())
-					$titles[] = $title;
+				$titles[] = Title :: makeTitle($row->pl_namespace, $row->pl_title);
 			}
 			$resultPageSet->populateFromTitles($titles);
 		}
 
 		$db->freeResult($res);
-	}
-
-	private function addPageSubItems($pageId, $data) {
-		$result = $this->getResult();
-		$result->setIndexedTagName($data, $this->prefix);
-		$result->addValue(array ('query', 'pages', intval($pageId)),
-			$this->getModuleName(),
-			$data);
 	}
 
 	protected function getAllowedParams()

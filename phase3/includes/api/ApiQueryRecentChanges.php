@@ -86,6 +86,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 			$this->fld_ids = isset ($prop['ids']);
 			$this->fld_sizes = isset ($prop['sizes']);
 			 
+			$this->addFieldsIf('rc_id', $this->fld_ids);			
 			$this->addFieldsIf('rc_cur_id', $this->fld_ids);			
 			$this->addFieldsIf('rc_this_oldid', $this->fld_ids);			
 			$this->addFieldsIf('rc_last_oldid', $this->fld_ids);			
@@ -110,7 +111,7 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		while ($row = $db->fetchObject($res)) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter('start', $row->rc_timestamp);
+				$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->rc_timestamp));
 				break;
 			}
 
@@ -125,23 +126,12 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		$result->addValue('query', $this->getModuleName(), $data);
 	}
 
-	/**
-	 * Security overview: As implemented, any change to a restricted page (userCanRead() == false)
-	 * is hidden from the client, except when a page is being moved to a non-restricted name,
-	 * or when a non-restricted becomes restricted.  When shown, all other fields are shown as well.
-	 */
 	private function extractRowInfo($row) {
-		$title = Title :: makeTitle($row->rc_namespace, $row->rc_title);
 		$movedToTitle = false;
 		if (!empty($row->rc_moved_to_title))
 			$movedToTitle = Title :: makeTitle($row->rc_moved_to_ns, $row->rc_moved_to_title);
 
-		// If either this is an edit of a restricted page,
-		// or a move where both to and from names are restricted, skip 
-		if (!$title->userCanRead() && (!$movedToTitle || 
-		   ($movedToTitle && !$movedToTitle->userCanRead())))
-			return false;
-
+		$title = Title :: makeTitle($row->rc_namespace, $row->rc_title);
 		$vals = array ();
 
 		$vals['type'] = intval($row->rc_type);
@@ -149,10 +139,11 @@ class ApiQueryRecentChanges extends ApiQueryBase {
 		if ($this->fld_title) {
 			ApiQueryBase :: addTitleInfo($vals, $title);
 			if ($movedToTitle)
-				ApiQueryBase :: addTitleInfo($vals, $movedToTitle, false, "new_");
+				ApiQueryBase :: addTitleInfo($vals, $movedToTitle, "new_");
 		}
 
 		if ($this->fld_ids) {
+			$vals['rcid'] = intval($row->rc_id);
 			$vals['pageid'] = intval($row->rc_cur_id);
 			$vals['revid'] = intval($row->rc_this_oldid);
 			$vals['old_revid'] = intval( $row->rc_last_oldid );

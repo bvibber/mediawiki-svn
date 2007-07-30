@@ -46,9 +46,11 @@ class UploadForm {
 		global $wgAllowCopyUploads;
 		$this->mDesiredDestName   = $request->getText( 'wpDestFile' );
 		$this->mIgnoreWarning     = $request->getCheck( 'wpIgnoreWarning' );
+		$this->mComment           = $request->getText( 'wpUploadDescription' );
 
 		if( !$request->wasPosted() ) {
-			# GET requests just give the main form; no data except wpDestfile.
+			# GET requests just give the main form; no data except destination
+			# filename and description
 			return;
 		}
 
@@ -59,7 +61,6 @@ class UploadForm {
 		$this->mReUpload          = $request->getCheck( 'wpReUpload' );
 		$this->mUploadClicked     = $request->getCheck( 'wpUpload' );
 
-		$this->mComment           = $request->getText( 'wpUploadDescription' );
 		$this->mLicense           = $request->getText( 'wpLicense' );
 		$this->mCopyrightStatus   = $request->getText( 'wpUploadCopyStatus' );
 		$this->mCopyrightSource   = $request->getText( 'wpUploadSource' );
@@ -284,16 +285,17 @@ class UploadForm {
 
 		# Chop off any directories in the given filename
 		if( $this->mDesiredDestName ) {
-			$basename = wfBaseName( $this->mDesiredDestName );
+			$basename = $this->mDesiredDestName;
 		} else {
-			$basename = wfBaseName( $this->mSrcName );
+			$basename = $this->mSrcName;
 		}
+		$filtered = wfBaseName( $basename );
 
 		/**
 		 * We'll want to blacklist against *any* 'extension', and use
 		 * only the final one for the whitelist.
 		 */
-		list( $partname, $ext ) = $this->splitExtensions( $basename );
+		list( $partname, $ext ) = $this->splitExtensions( $filtered );
 
 		if( count( $ext ) ) {
 			$finalExt = $ext[count( $ext ) - 1];
@@ -317,7 +319,7 @@ class UploadForm {
 		 * Filter out illegal characters, and try to make a legible name
 		 * out of it. We'll strip some silently that Title would die on.
 		 */
-		$filtered = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $basename );
+		$filtered = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $filtered );
 		$nt = Title::makeTitleSafe( NS_IMAGE, $filtered );
 		if( is_null( $nt ) ) {
 			$this->uploadError( wfMsgWikiHtml( 'illegalfilename', htmlspecialchars( $filtered ) ) );
@@ -368,7 +370,7 @@ class UploadForm {
 			}
 
 			/**
-			 * Provide an opportunity for extensions to add futher checks
+			 * Provide an opportunity for extensions to add further checks
 			 */
 			$error = '';
 			if( !wfRunHooks( 'UploadVerification',
@@ -388,7 +390,7 @@ class UploadForm {
 			if( $wgCapitalLinks ) {
 				$filtered = ucfirst( $filtered );
 			}
-			if( $this->mDestName != $filtered ) {
+			if( $basename != $filtered ) {
 				$warning .=  '<li>'.wfMsgHtml( 'badfilename', htmlspecialchars( $this->mDestName ) ).'</li>';
 			}
 
@@ -432,8 +434,8 @@ class UploadForm {
 
 		$status = $this->mLocalFile->upload( $this->mTempPath, $this->mComment, $pageText, 
 			File::DELETE_SOURCE, $this->mFileProps );
-		if ( WikiError::isError( $status ) ) {
-			$this->showError( $status );
+		if ( !$status->isGood() ) {
+			$this->showError( $status->getWikiText() );
 		} else {
 			if ( $this->mWatchthis ) {
 				global $wgUser;
@@ -556,6 +558,25 @@ class UploadForm {
 		}
 		return $s;
 	}
+	
+	/**
+	 * Render a preview of a given license for the AJAX preview on upload
+	 *
+	 * @param string $license
+	 * @return string
+	 */
+	public static function ajaxGetLicensePreview( $license ) {
+		global $wgParser, $wgUser;
+		$text = '{{' . $license . '}}';
+		$title = Title::makeTitle( NS_IMAGE, 'Sample.jpg' );
+		$options = ParserOptions::newFromUser( $wgUser );
+		
+		// Expand subst: first, then live templates...
+		$text = $wgParser->preSaveTransform( $text, $title, $wgUser, $options );
+		$output = $wgParser->parse( $text, $title, $options );
+		
+		return $output->getText();
+	}
 
 	/**
 	 * Stash a file in a temporary directory for later processing
@@ -572,12 +593,12 @@ class UploadForm {
 	function saveTempUploadedFile( $saveName, $tempName ) {
 		global $wgOut;
 		$repo = RepoGroup::singleton()->getLocalRepo();
-		$result = $repo->storeTemp( $saveName, $tempName );
-		if ( WikiError::isError( $result ) ) {
-			$this->showError( $result );
+		$status = $repo->storeTemp( $saveName, $tempName );
+		if ( !$status->isGood() ) {
+			$this->showError( $status->getWikiText() );
 			return false;
 		} else {
-			return $result;
+			return $status->value;
 		}
 	}
 
@@ -712,17 +733,22 @@ class UploadForm {
 	 */
 	function mainUploadForm( $msg='' ) {
 		global $wgOut, $wgUser;
-		global $wgUseCopyrightUpload, $wgAjaxUploadDestCheck, $wgUseAjax;
+		global $wgUseCopyrightUpload, $wgUseAjax, $wgAjaxUploadDestCheck, $wgAjaxLicensePreview;
 		global $wgRequest, $wgAllowCopyUploads, $wgEnableAPI;
-		global $wgStylePath;
+		global $wgStylePath, $wgStyleVersion;
 
-		$useAjax = $wgAjaxUploadDestCheck && $wgUseAjax;
-
-		$wgOut->addScript( 
-			"<script type='text/javascript'>wgAjaxUploadDestCheck = " . 
-				($useAjax ? 'true' : 'false' ) . ";</script>\n" . 
-			"<script type='text/javascript' src=\"$wgStylePath/common/upload.js?1\"></script>\n" 
-	   	);
+		$useAjaxDestCheck = $wgUseAjax && $wgAjaxUploadDestCheck;
+		$useAjaxLicensePreview = $wgUseAjax && $wgAjaxLicensePreview;
+		
+		$adc = wfBoolToStr( $useAjaxDestCheck );
+		$alp = wfBoolToStr( $useAjaxLicensePreview );
+		
+		$wgOut->addScript( "<script type=\"text/javascript\">
+wgAjaxUploadDestCheck = {$adc};
+wgAjaxLicensePreview = {$alp};
+</script>
+<script type=\"text/javascript\" src=\"{$wgStylePath}/common/upload.js?{$wgStyleVersion}\"></script>
+		" );
 
 		if( !wfRunHooks( 'UploadForm:initial', array( &$this ) ) )
 		{
@@ -794,7 +820,7 @@ class UploadForm {
 				"size='40' />" .
 				"<input type='hidden' name='wpSourceType' value='file' />" ;
 		}
-		if ( $useAjax ) {
+		if ( $useAjaxDestCheck ) {
 			$warningRow = "<tr><td colspan='2' id='wpDestFile-warning'>&nbsp</td></tr>";
 			$destOnkeyup = 'onkeyup="wgUploadWarningObj.keypress();"';
 		} else {
@@ -845,8 +871,14 @@ EOT
 				</select>
 			</td>
 			</tr>
-			<tr>
-		");
+			<tr>" );
+			if( $useAjaxLicensePreview ) {
+				$wgOut->addHtml( "
+					<td></td>
+					<td id=\"mw-license-preview\"></td>
+				</tr>
+				<tr>" );
+			}
 		}
 
 		if ( $wgUseCopyrightUpload ) {
@@ -958,6 +990,7 @@ EOT
 		global $wgVerifyMimeType;
 		if ($wgVerifyMimeType) {
 
+		  wfDebug ( "\n\nmime: <$mime> extension: <$extension>\n\n");
 			#check mime type against file extension
 			if( !$this->verifyExtension( $mime, $extension ) ) {
 				return new WikiErrorMsg( 'uploadcorrupt' );
@@ -1322,15 +1355,15 @@ EOT
 	}
 
 	/**
-	 * Display an error from a wikitext-formatted WikiError object
+	 * Display an error with a wikitext description
 	 */
-	function showError( WikiError $error ) {
+	function showError( $description ) {
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( "internalerror" ) );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
-		$wgOut->addWikiText( $error->getMessage() );
+		$wgOut->addWikiText( $description );
 	}
 
 	/**

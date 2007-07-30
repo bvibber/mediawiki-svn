@@ -481,23 +481,27 @@ class User {
 	}
 
 	/**
-	 * Is the input a valid password?
+	 * Is the input a valid password for this user?
 	 *
-	 * @param string $password
+	 * @param string $password Desired password
 	 * @return bool
 	 */
 	function isValidPassword( $password ) {
 		global $wgMinimalPasswordLength, $wgContLang;
 
 		$result = null;
-		if( !wfRunHooks( 'isValidPassword', array( $password, &$result ) ) ) return $result;
-		if ($result === false) return false;
-		return (strlen( $password ) >= $wgMinimalPasswordLength) &&
-			($wgContLang->lc( $password ) !== $wgContLang->lc( $this->mName ));
+		if( !wfRunHooks( 'isValidPassword', array( $password, &$result, $this ) ) )
+			return $result;
+		if( $result === false )
+			return false;
+			
+		// Password needs to be long enough, and can't be the same as the username
+		return strlen( $password ) >= $wgMinimalPasswordLength
+			&& $wgContLang->lc( $password ) !== $wgContLang->lc( $this->mName );
 	}
 
 	/**
-	 * Does the string match roughly an email address ?
+	 * Does a string look like an email address?
 	 *
 	 * There used to be a regular expression here, it got removed because it
 	 * rejected valid addresses. Actually just check if there is '@' somewhere
@@ -506,12 +510,10 @@ class User {
 	 * @todo Check for RFC 2822 compilance (bug 959)
 	 *
 	 * @param string $addr email address
-	 * @static
 	 * @return bool
 	 */
-	static function isValidEmailAddr ( $addr ) {
-		return ( trim( $addr ) != '' ) &&
-			(false !== strpos( $addr, '@' ) );
+	public static function isValidEmailAddr( $addr ) {
+		return strpos( $addr, '@' ) !== false;
 	}
 
 	/**
@@ -1117,9 +1119,16 @@ class User {
 	/**
 	 * Get the user ID. Returns 0 if the user is anonymous or nonexistent.
 	 */
-	function getID() { 
-		$this->load();
-		return $this->mId; 
+	function getID() {
+		if( $this->mId === null and $this->mName !== null
+		and User::isIP( $this->mName ) ) {
+			// Special case, we know the user is anonymous
+			return 0;
+		} elseif( $this->mId === null ) {
+			// Don't load if this was initialized from an ID
+			$this->load();
+		}
+		return $this->mId;
 	}
 
 	/**
@@ -1367,7 +1376,8 @@ class User {
 
 	/**
 	 * Encrypt a password.
-	 * It can eventuall salt a password @see User::addSalt()
+	 * It can eventually salt a password.
+	 * @see User::addSalt()
 	 * @param string $p clear Password.
 	 * @return string Encrypted password.
 	 */
@@ -1592,6 +1602,7 @@ class User {
 	function getRights() {
 		if ( is_null( $this->mRights ) ) {
 			$this->mRights = self::getGroupPermissions( $this->getEffectiveGroups() );
+			wfRunHooks( 'UserGetRights', array( $this, &$this->mRights ) );
 		}
 		return $this->mRights;
 	}
@@ -1711,7 +1722,11 @@ class User {
 	 * @return bool
 	 */
 	function isLoggedIn() {
-		return( $this->getID() != 0 );
+		if( $this->mId === null and $this->mName !== null ) {
+			// Special-case optimization
+			return !self::isIP( $this->mName );
+		}
+		return $this->getID() != 0;
 	}
 
 	/**

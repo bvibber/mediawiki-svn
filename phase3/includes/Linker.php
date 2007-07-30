@@ -761,7 +761,7 @@ class Linker {
 		if( $userId ) {
 			// check if the user has an edit
 			if( $redContribsWhenNoEdits && User::edits( $userId ) == 0 ) {
-				$style = "class='new'";
+				$style = " class='new'";
 			} else {
 				$style = '';
 			}
@@ -1094,7 +1094,7 @@ class Linker {
 	 * @param $hook    String, name of hook to run
 	 * @return         String, HTML to use for edit link
 	 */
-	private function doEditSectionLink( Title $nt, $section, $hint, $hook ) {
+	protected function doEditSectionLink( Title $nt, $section, $hint, $hook ) {
 		global $wgContLang;
 		$editurl = '&section='.$section;
 		$url = $this->makeKnownLinkObj(
@@ -1175,15 +1175,28 @@ class Linker {
 	 * @param Revision $rev
 	 */
 	function generateRollback( $rev ) {
-		global $wgUser, $wgRequest;
+		return '<span class="mw-rollback-link">['
+			. $this->buildRollbackLink( $rev )
+			. ']</span>';
+	}
+	
+	/**
+	 * Build a raw rollback link, useful for collections of "tool" links
+	 *
+	 * @param Revision $rev
+	 * @return string
+	 */
+	public function buildRollbackLink( $rev ) {
+		global $wgRequest, $wgUser;
 		$title = $rev->getTitle();
-
-		$extraRollback = $wgRequest->getBool( 'bot' ) ? '&bot=1' : '';
-		$extraRollback .= '&token=' . urlencode(
-			$wgUser->editToken( array( $title->getPrefixedText(), $rev->getUserText() ) ) );
-		return '<span class="mw-rollback-link">['. $this->makeKnownLinkObj( $title,
-		  	wfMsg('rollbacklink'),
-		  	'action=rollback&from=' . urlencode( $rev->getUserText() ) . $extraRollback ) .']</span>';
+		$extra  = $wgRequest->getBool( 'bot' ) ? '&bot=1' : '';
+		$extra .= '&token=' . urlencode( $wgUser->editToken( array( $title->getPrefixedText(),
+			$rev->getUserText() ) ) );
+		return $this->makeKnownLinkObj(
+			$title,
+			wfMsgHtml( 'rollbacklink' ),
+			'action=rollback&from=' . urlencode( $rev->getUserText() ) . $extra
+		);		
 	}
 
 	/**
@@ -1321,5 +1334,6 @@ class Linker {
 		return $out;
 	}
 }
+
 
 

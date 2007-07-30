@@ -164,16 +164,6 @@ $wgUploadBaseUrl    = "";
 /**#@-*/
 
 /**
- * By default deleted files are simply discarded; to save them and
- * make it possible to undelete images, create a directory which
- * is writable to the web server but is not exposed to the internet.
- *
- * Set $wgSaveDeletedFiles to true and set up the save path in
- * $wgFileStore['deleted']['directory'].
- */
-$wgSaveDeletedFiles = false;
-
-/**
  * New file storage paths; currently used only for deleted files.
  * Set it like this:
  *
@@ -181,7 +171,7 @@ $wgSaveDeletedFiles = false;
  *
  */
 $wgFileStore = array();
-$wgFileStore['deleted']['directory'] = null; // Don't forget to set this.
+$wgFileStore['deleted']['directory'] = false;// Defaults to $wgUploadDirectory/deleted
 $wgFileStore['deleted']['url'] = null;       // Private
 $wgFileStore['deleted']['hash'] = 3;         // 3-level subdirectory split
 
@@ -208,6 +198,10 @@ $wgFileStore['deleted']['hash'] = 3;         // 3-level subdirectory split
  *                      start with a capital letter. The current implementation may give incorrect
  *                      description page links when the local $wgCapitalLinks and initialCapital 
  *                      are mismatched.
+ *    pathDisclosureProtection
+ *                      May be 'paranoid' to remove all parameters from error messages, 'none' to 
+ *                      leave the paths in unchanged, or 'simple' to replace paths with 
+ *                      placeholders. Default for LocalRepo is 'simple'.
  *
  * These settings describe a foreign MediaWiki installation. They are optional, and will be ignored
  * for local repositories:
@@ -671,7 +665,6 @@ $wgLinkCacheMemcached = false; # Not fully tested
 $wgUseMemCached     = false;
 $wgMemCachedDebug   = false; # Will be set to false in Setup.php, if the server isn't working
 $wgMemCachedServers = array( '127.0.0.1:11000' );
-$wgMemCachedDebug   = false;
 $wgMemCachedPersistent = false;
 
 /**
@@ -922,8 +915,12 @@ $wgColorErrors          = true;
 $wgShowExceptionDetails = false;
 
 /**
- * disable experimental dmoz-like category browsing. Output things like:
- * Encyclopedia > Music > Style of Music > Jazz
+ * Expose backend server host names through the API and various HTML comments
+ */
+$wgShowHostnames = false;
+
+/**
+ * Use experimental, DMOZ-like category browser
  */
 $wgUseCategoryBrowser   = false;
 
@@ -1198,7 +1195,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '80';
+$wgStyleVersion = '93';
 
 
 # Server-side caching:
@@ -1583,6 +1580,7 @@ $wgMediaHandlers = array(
 	'image/gif' => 'BitmapHandler',
 	'image/x-ms-bmp' => 'BmpHandler',
 	'image/svg+xml' => 'SvgHandler',
+	'image/svg' => 'SvgHandler',
 	'image/vnd.djvu' => 'DjVuHandler',
 );
 
@@ -2557,6 +2555,11 @@ $wgAjaxWatch = true;
 $wgAjaxUploadDestCheck = true;
 
 /**
+ * Enable previewing licences via AJAX
+ */
+$wgAjaxLicensePreview = true;
+
+/**
  * Allow DISPLAYTITLE to change title display
  */
 $wgAllowDisplayTitle = true;
@@ -2688,5 +2691,3 @@ $wgDisableOutputCompression = false;
  */
 $wgSlaveLagWarning = 10;
 $wgSlaveLagCritical = 30;
-
-

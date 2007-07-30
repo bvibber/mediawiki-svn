@@ -107,9 +107,9 @@ $messages = array(
 
 == Dastlabki qadamlar ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Moslamalar ro'yxati]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki haqida ko'p so'raladigan savollar]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki yangi versiyasi chiqqanda xabar berish ro'yxati]",
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Moslamalar ro'yxati]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki haqida ko'p so'raladigan savollar]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki yangi versiyasi chiqqanda xabar berish ro'yxati]",
 
 'about'          => 'Haqida',
 'newwindow'      => '(yangi oyanada ochiladi)',
@@ -409,7 +409,6 @@ Agar siz bu sahifani kuzatuv ro'yxatingizdan o'chirmoqchi bo'lsangiz \"Kuzatmasl
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'Barchasi',
 'imagelistall'     => 'Barchasi',
-'watchlistall1'    => 'Barcha',
 'watchlistall2'    => 'Barcha',
 'namespacesall'    => 'Barchasi',
 

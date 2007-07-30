@@ -95,6 +95,20 @@ class ApiMain extends ApiBase {
 		// Special handling for the main module: $parent === $this
 		parent :: __construct($this, $this->mInternalMode ? 'main_int' : 'main');
 
+		if (!$this->mInternalMode) {
+			
+			// Impose module restrictions.
+			// If the current user cannot read, 
+			// Remove all modules other than login
+			global $wgUser;
+			if (!$wgUser->isAllowed('read')) {
+				self::$Modules = array(
+					'login' => self::$Modules['login'],
+					'help' => self::$Modules['help']
+					); 
+			}
+		}
+
 		$this->mModules = self :: $Modules;
 		$this->mModuleNames = array_keys($this->mModules); // todo: optimize
 		$this->mFormats = self :: $Formats;
@@ -119,6 +133,13 @@ class ApiMain extends ApiBase {
 			$_SESSION['wsToken'] = $_REQUEST['lgtoken'];
 		}
 		$wgUser = User::newFromSession();
+	}
+
+	/**
+	 * Return true if the API was started by other PHP code using FauxRequest
+	 */
+	public function isInternalMode() {
+		return $this->mInternalMode;
 	}
 
 	/**
@@ -189,9 +210,43 @@ class ApiMain extends ApiBase {
 			// handler will process and log it.
 			//
 
+			$errCode = $this->substituteResultWithError($e);
+
 			// Error results should not be cached
 			$this->setCacheMaxAge(0);
 
+			$headerStr = 'MediaWiki-API-Error: ' . $errCode;
+			if ($e->getCode() === 0)
+				header($headerStr, true);
+			else
+				header($headerStr, true, $e->getCode());
+
+			// Reset and print just the error message
+			ob_clean();
+
+			// If the error occured during printing, do a printer->profileOut()
+			$this->mPrinter->safeProfileOut();
+			$this->printResult(true);
+		}
+
+		// Set the cache expiration at the last moment, as any errors may change the expiration.
+		// if $this->mSquidMaxage == 0, the expiry time is set to the first second of unix epoch
+		$expires = $this->mSquidMaxage == 0 ? 1 : time() + $this->mSquidMaxage;
+		header('Expires: ' . wfTimestamp(TS_RFC2822, $expires));
+		header('Cache-Control: s-maxage=' . $this->mSquidMaxage . ', must-revalidate, max-age=0');
+
+		if($this->mPrinter->getIsHtml())
+			echo wfReportTime();
+
+		ob_end_flush();
+	}
+
+	/**
+	 * Replace the result data with the information about an exception.
+	 * Returns the error code 
+	 */
+	protected function substituteResultWithError($e) {
+	
 			// Printer may not be initialized if the extractRequestParams() fails for the main module
 			if (!isset ($this->mPrinter)) {
 				// The printer has not been created yet. Try to manually get formatter value.
@@ -209,7 +264,8 @@ class ApiMain extends ApiBase {
 				// User entered incorrect parameters - print usage screen
 				//
 				$errMessage = array (
-				'code' => $e->getCodeString(), 'info' => $e->getMessage());
+				'code' => $e->getCodeString(),
+				'info' => $e->getMessage());
 				
 				// Only print the help message when this is for the developer, not runtime
 				if ($this->mPrinter->getIsHtml() || $this->mAction == 'help')
@@ -226,32 +282,10 @@ class ApiMain extends ApiBase {
 				ApiResult :: setContent($errMessage, "\n\n{$e->getTraceAsString()}\n\n");
 			}
 
-			$headerStr = 'MediaWiki-API-Error: ' . $errMessage['code'];
-			if ($e->getCode() === 0)
-				header($headerStr, true);
-			else
-				header($headerStr, true, $e->getCode());
-
-			// Reset and print just the error message
-			ob_clean();
 			$this->getResult()->reset();
 			$this->getResult()->addValue(null, 'error', $errMessage);
 
-			// If the error occured during printing, do a printer->profileOut()
-			$this->mPrinter->safeProfileOut();
-			$this->printResult(true);
-		}
-
-		// Set the cache expiration at the last moment, as any errors may change the expiration.
-		// if $this->mSquidMaxage == 0, the expiry time is set to the first second of unix epoch
-		$expires = $this->mSquidMaxage == 0 ? 1 : time() + $this->mSquidMaxage;
-		header('Expires: ' . wfTimestamp(TS_RFC2822, $expires));
-		header('Cache-Control: s-maxage=' . $this->mSquidMaxage . ', must-revalidate, max-age=0');
-
-		if($this->mPrinter->getIsHtml())
-			echo wfReportTime();
-
-		ob_end_flush();
+		return $errMessage['code'];
 	}
 
 	/**
@@ -337,14 +371,28 @@ class ApiMain extends ApiBase {
 	protected function getDescription() {
 		return array (
 			'',
-			'This API allows programs to access various functions of MediaWiki software.',
-			'For more details see API Home Page @ http://www.mediawiki.org/wiki/API',
 			'',
-			'Status: ALPHA -- all features shown on this page should be working,',
-			'                 but the API is still in active development, and  may change at any time.',
-			'                 Make sure you monitor changes to this page, wikitech-l mailing list,',
-			'                 or the source code in the includes/api directory for any changes.',
-			''
+			'******************************************************************',
+			'**                                                              **',
+			'**  This is an auto-generated MediaWiki API documentation page  **',
+			'**                                                              **',
+			'**                  Documentation and Examples:                 **',
+			'**               http://www.mediawiki.org/wiki/API              **',
+			'**                                                              **',
+			'******************************************************************',
+			'',
+			'Status:          All features shown on this page should be working, but the API',
+			'                 is still in active development, and  may change at any time.',
+			'                 Make sure to monitor our mailing list for any updates.',
+			'',
+			'Documentation:   http://www.mediawiki.org/wiki/API',
+			'Mailing list:    http://lists.wikimedia.org/mailman/listinfo/mediawiki-api',
+			'Bugs & Requests: http://bugzilla.wikimedia.org/buglist.cgi?component=API&bug_status=NEW&bug_status=ASSIGNED&bug_status=REOPENED&order=bugs.delta_ts',
+			'',
+			'',
+			'',
+			'',
+			'',
 		);
 	}
 	
@@ -394,11 +442,11 @@ class ApiMain extends ApiBase {
 	}
 
 	public static function makeHelpMsgHeader($module, $paramName) {
-		$paramPrefix = $module->getParamPrefix();
-		if (!empty($paramPrefix))
-			$paramPrefix = "($paramPrefix) "; 
+		$modulePrefix = $module->getModulePrefix();
+		if (!empty($modulePrefix))
+			$modulePrefix = "($modulePrefix) "; 
 		
-		return "* $paramName={$module->getModuleName()} $paramPrefix*";
+		return "* $paramName={$module->getModuleName()} $modulePrefix*";
 	} 
 
 	private $mIsBot = null;
@@ -447,6 +495,31 @@ class ApiMain extends ApiBase {
 		$vers[] = ApiQueryBase :: getBaseVersion();
 		$vers[] = ApiFormatFeedWrapper :: getVersion(); // not accessible with format=xxx
 		return $vers;
+	}
+
+	/**
+	 * Add or overwrite a module in this ApiMain instance. Intended for use by extending
+	 * classes who wish to add their own modules to their lexicon or override the 
+	 * behavior of inherent ones.
+	 *
+	 * @access protected
+	 * @param $mdlName String The identifier for this module.
+	 * @param $mdlClass String The class where this module is implemented.
+	 */
+	protected function addModule( $mdlName, $mdlClass ) {
+		$this->mModules[$mdlName] = $mdlClass;
+	}
+
+	/**
+	 * Add or overwrite an output format for this ApiMain. Intended for use by extending
+	 * classes who wish to add to or modify current formatters.
+	 *
+	 * @access protected
+	 * @param $fmtName The identifier for this format.
+	 * @param $fmtClass The class implementing this format.
+	 */
+	protected function addFormat( $fmtName, $fmtClass ) {
+		$this->mFormats[$fmtName] = $fmtClass;
 	}
 }
 

@@ -69,10 +69,10 @@ $bookstoreList = array(
 	'PriceSCAN' => 'http://www.pricescan.com/books/bookDetail.asp?isbn=$1',
 	'Barnes & Noble' => 'http://search.barnesandnoble.com/bookSearch/isbnInquiry.asp?isbn=$1',
 	'亚马逊' => 'http://www.amazon.com/exec/obidos/ISBN=$1',
-	'博客来书店' => 'http://www.books.com.tw/exep/openfind_book_keyword.php?cat1=4&key1=$1',
+	'博客来书店' => 'http://www.books.com.tw/exep/prod/booksfile.php?item=$1',
 	'三民书店' => 'http://www.sanmin.com.tw/page-qsearch.asp?ct=search_isbn&qu=$1',
-	'天下书店' => 'http://www.cwbook.com.tw/cw/TS.jsp?schType=product.isbn&schStr=$1',
-	'新丝书店' => 'http://www.silkbook.com/function/Search_List_Book.asp?item=5&text=$1'
+	'天下书店' => 'http://www.cwbook.com.tw/search/result1.jsp?field=2&keyWord=$1',
+	'新丝路书店' => 'http://www.silkbook.com/function/Search_list_book_data.asp?item=5&text=$1'
 );
 
 $messages = array(
@@ -181,15 +181,16 @@ $messages = array(
 'category_header'       => '"$1"分类中的文章',
 'subcategories'         => '亚类',
 'category-media-header' => '"$1"分类中的媒体',
+'category-empty'        => "''这个分类中尚未包含任何文章或媒体。''",
 
 'mainpagetext'      => "<big>'''已成功安装 MediaWiki!'''</big>",
 'mainpagedocfooter' => '请访问 [http://meta.wikimedia.org/wiki/Help:Contents 用户手册] 以获得使用此 wiki 软件的信息！
 
 == 入门 ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings MediaWiki 配置设置列表]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki 常见问题解答]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布邮件列表]',
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings MediaWiki 配置设置列表]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki 常见问题解答]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki 发布邮件列表]',
 
 'about'          => '关于',
 'article'        => '文章',
@@ -367,10 +368,13 @@ MySQL返回错误“$3: $4”。',
 请记录下 URL 地址，并向管理员报告。',
 'readonly_lag'         => '附属数据库服务器正在将缓存更新到主服务器，数据库已被自动锁定',
 'internalerror'        => '内部错误',
+'internalerror_info'   => '内部错误: $1',
 'filecopyerror'        => '无法复制文件"$1"到"$2"。',
 'filerenameerror'      => '无法重命名文件"$1" 到"$2"。',
 'filedeleteerror'      => '无法删除文件 "$1"。',
+'directorycreateerror' => '无法创建目录"$1"。',
 'filenotfound'         => '找不到文件 "$1"。',
+'fileexistserror'      => '无法写入文件"$1": 文件已存在',
 'unexpected'           => '非正常值: "$1"="$2"。',
 'formerror'            => '错误: 无法提交表单',
 'badarticleerror'      => '无法在此页进行此项操作。',
@@ -387,6 +391,7 @@ MySQL返回错误“$3: $4”。',
 'viewsource'           => '源码',
 'viewsourcefor'        => '对$1的源码',
 'protectedpagetext'    => '该页面已被锁定以防止编辑。',
+'namespaceprotected'   => "您并没有权限去编辑在'''$1'''名字空间内的页面。",
 'viewsourcetext'       => '您可以查看并复制此页面的源码:',
 'protectedinterface'   => '该页提供了软件的界面文本，它已被锁定以防止随意的修改。',
 'editinginterface'     => "'''警告:''' 您正在编辑的页面是用于提供软件的界面文本。改变此页将影响其他用户的界面外观。",
@@ -432,7 +437,7 @@ MySQL返回错误“$3: $4”。',
 'yourvariant'                => '字体变换:',
 'yournick'                   => '昵称:',
 'badsig'                     => '错误的原始签名；请检查HTML标签。',
-'badsiglength' 	             => '昵称过长；它的长度必须在$1个字符以下。',
+'badsiglength'               => '昵称过长；它的长度必须在$1个字符以下。',
 'email'                      => '电子邮箱',
 'prefs-help-realname'        => '真实姓名是可选的，如果您选择提供它，那它便用以对您的贡献署名。',
 'loginerror'                 => '登录错误',
@@ -527,10 +532,10 @@ MySQL返回错误“$3: $4”。',
 除非你已经在你的[[Special:Preferences|帐号参数设置]]中设置了一个有效的电子邮件地址，否则你是不能使用「电邮这位用户」的功能。当设置定了一个有效的电子邮件地址后，这个功能是不会封锁的。
 
 你的IP地址是$3，而该查封ID是 #$5。 请你在所有查询中注明这地址及／或查封ID。",
-'autoblockedtext'           => '你的IP地址已经被自动查封，由于先前的另一位用户被$1所查封。
+'autoblockedtext'           => "你的IP地址已经被自动查封，由于先前的另一位用户被$1所查封。
 而查封的原因是：
 
-:\'\'$2\'\'
+:''$2''
 
 这次查封的到期时间是：$6
 
@@ -538,7 +543,7 @@ MySQL返回错误“$3: $4”。',
 
 除非你已经在你的[[Special:Preferences|帐号参数设置]]中设置了一个有效的电子邮件地址，否则你是不能使用「电邮这位用户」的功能。当设置定了一个有效的电子邮件地址后，这个功能是不会封锁的。
 
-您的查封ID是 $5。 请你在所有查询中注明这个查封ID。',
+您的查封ID是 $5。 请你在所有查询中注明这个查封ID。",
 'blockedoriginalsource'     => "以下是'''$1'''的源码:",
 'blockededitsource'         => "你对'''$1'''进行'''编辑'''的文字如下:",
 'whitelistedittitle'        => '登录后才可编辑',
@@ -577,6 +582,8 @@ MySQL返回错误“$3: $4”。',
 ''由于此 wiki 允许使用原始的 HTML，为了防范 JavaScript 攻击，预览已被隐藏。''
 
 <strong>如果这是一次合法的编辑，请重新进行尝试。如果还不行，请退出并重新登录。</strong>",
+'token_suffix_mismatch'     => '<strong>由于您用户端中的编辑令牌毁损了一些标点符号字元，为防止编辑的文字损坏，您的编辑已经被拒绝。
+这种情况通常出现于使用含有很多臭虫、以网络为主的匿名代理服务的时候。</strong>',
 'importing'                 => '正在导入$1',
 'editing'                   => '正在编辑$1',
 'editinguser'               => '正在编辑用户<b>$1</b>',
@@ -618,7 +625,7 @@ MySQL返回错误“$3: $4”。',
 'edittools'                 => '<!-- 此处的文本将被显示在以下编辑和上传表单中。 -->',
 'nocreatetitle'             => '创建页面受限',
 'nocreatetext'              => '此网站限制了创建新页面的功能。你可以返回并编辑已有的页面，或者[[Special:Userlogin|登录或创建新账户]]。',
-'recreate-deleted-warn' => "'''警告: 你现在重新创建一个先前曾经删除过的页面。'''
+'recreate-deleted-warn'     => "'''警告: 你现在重新创建一个先前曾经删除过的页面。'''
 
 你应该要考虑一下继续编辑这一个页面是否合适。
 为方便起见，这一个页面的删除记录已经在下面提供:",
@@ -809,18 +816,18 @@ MySQL返回错误“$3: $4”。',
 'files'                    => '文件',
 
 # User rights
-'userrights-lookup-user'     => '管理用户群组',
-'userrights-user-editname'   => '输入用户名:',
-'editusergroup'              => '编辑用户群组',
-'userrights-editusergroup'   => '编辑用户群组',
-'saveusergroups'             => '存储用户群组',
-'userrights-groupsmember'    => '隶属于:',
-'userrights-groupsavailable' => '可加入群组:',
-'userrights-groupshelp'      => '选择您想使该用户退出或加入的组群。反选时组群将不改变。您可以通过按住 CTRL 键 + 单击鼠标左键来反选',
-'userrights-reason'          => '更改原因:',
-'userrights-available-none' 	=> '您不可以更改组别成员。',
-'userrights-available-add' 	=> '您可以加入用户到$1。',
-'userrights-available-remove' 	=> '您可以从$1中移除用户。',
+'userrights-lookup-user'      => '管理用户群组',
+'userrights-user-editname'    => '输入用户名:',
+'editusergroup'               => '编辑用户群组',
+'userrights-editusergroup'    => '编辑用户群组',
+'saveusergroups'              => '存储用户群组',
+'userrights-groupsmember'     => '隶属于:',
+'userrights-groupsavailable'  => '可加入群组:',
+'userrights-groupshelp'       => '选择您想使该用户退出或加入的组群。反选时组群将不改变。您可以通过按住 CTRL 键 + 单击鼠标左键来反选',
+'userrights-reason'           => '更改原因:',
+'userrights-available-none'   => '您不可以更改组别成员。',
+'userrights-available-add'    => '您可以加入用户到$1。',
+'userrights-available-remove' => '您可以从$1中移除用户。',
 
 # Groups
 'group'            => '群组:',
@@ -926,8 +933,6 @@ MySQL返回错误“$3: $4”。',
 'fileexists-forbidden'        => '已存在相同名称的文件；请返回并用一个新的名称来上传此文件。[[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => '在共享文件库中已存在此名称的文件；请返回并用一个新的名称来上传此文件。[[Image:$1|thumb|center|$1]]',
 'successfulupload'            => '上传成功',
-'fileuploaded'                => '文件"$1"上传成功。
-请根据链接($2)到文件描述页添加有关文件信息，例如它的来源，在何时由谁创建，以及其他任何您知道的关于该文件的信息。如果这是一个图像，您可以通过<tt><nowiki>[[Image:$1|thumb|描述]]</nowiki></tt>将其插入页面',
 'uploadwarning'               => '上载警告',
 'savefile'                    => '保存文件',
 'uploadedimage'               => '已上载"[[$1]]"',
@@ -956,6 +961,7 @@ MySQL返回错误“$3: $4”。',
 
 'license'            => '授权',
 'nolicense'          => '未选定',
+'license-nopreview'  => '(无预览可用)',
 'upload_source_url'  => ' (一个有效的，可公开访问的 URL)',
 'upload_source_file' => ' (在您计算机上的一个文件)',
 
@@ -972,14 +978,17 @@ MySQL返回错误“$3: $4”。',
 'imgdelete'                 => '删除',
 'imgdesc'                   => '描述',
 'imgfile'                   => '文件',
-'imglegend'                 => '说明: (描述) = 显示/编辑文件描述。',
-'imghistory'                => '文件历史',
-'revertimg'                 => '恢复',
-'deleteimg'                 => '删除',
-'deleteimgcompletely'       => '删除此文件的所有修订版本',
-'imghistlegend'             => '说明: (当前) = 这是当前文件，(删除) = 删除此旧版本，
-(恢复 = 恢复到此旧版本。
-<br /><i>点击日期查看当天上载的文件</i>。',
+'filehist'                  => '文件历史',
+'filehist-help'             => '点击日期／时间以查看当时出现过的文件。',
+'filehist-deleteall'        => '删除全部',
+'filehist-deleteone'        => '删除这个',
+'filehist-revert'           => '恢复',
+'filehist-current'          => '当前',
+'filehist-datetime'         => '日期／时间',
+'filehist-user'             => '用户',
+'filehist-dimensions'       => '维度',
+'filehist-filesize'         => '文件大小',
+'filehist-comment'          => '注解',
 'imagelinks'                => '鏈接',
 'linkstoimage'              => '以下页面鏈接到本文件:',
 'nolinkstoimage'            => '没有页面鏈接到本文件。',
@@ -995,6 +1004,16 @@ MySQL返回错误“$3: $4”。',
 'imagelist_size'            => '大小',
 'imagelist_description'     => '描述',
 'imagelist_search_for'      => '按图像名称搜索:',
+
+# File reversion
+'filerevert'                => '恢复$1',
+'filerevert-legend'         => '恢复文件',
+'filerevert-intro'          => "<span class=\"plainlinks\">您现正在恢复'''[[Media:$1|$1]]'''到[于$2的$3版本]。</span>",
+'filerevert-comment'        => '注解:',
+'filerevert-defaultcomment' => '已经恢复到于$1的版本',
+'filerevert-submit'         => '恢复',
+'filerevert-success'        => "<span class=\"plainlinks\">'''[[Media:$1|$1]]'''已经恢复到[于$2的$3版本]。</span>",
+'filerevert-badversion'     => '这个文件所提供的时间截记并无先前的本地版本。',
 
 # MIME search
 'mimesearch'         => 'MIME 搜索',
@@ -1031,7 +1050,7 @@ MySQL返回错误“$3: $4”。',
 即每页平均编辑'''\$5'''次，各次编辑后页面的每个版本平均浏览'''\$6'''次。
 
 [http://meta.wikimedia.org/wiki/Help:Job_queue 工作排队]的长度是'''\$7'''。",
-'userstatstext'          => "网站有'''$1'''位注册用户，其中
+'userstatstext'          => "网站有'''$1'''位注册[[Special:Listusers|用户]]，其中
 '''$2''' (或 '''$4%''') 有$5权限。",
 'statistics-mostpopular' => '浏览最多的页面',
 
@@ -1176,10 +1195,6 @@ MySQL返回错误“$3: $4”。',
 'nowatchlist'          => '您的监视列表为空。',
 'watchlistanontext'    => '请$1以查看或编辑您的监视列表。',
 'watchlistcount'       => "'''您的监视列表有$1项，其中包括讨论页。'''",
-'clearwatchlist'       => '清空监视列表',
-'watchlistcleartext'   => '您确定要将它们移除吗？',
-'watchlistclearbutton' => '清空监视列表',
-'watchlistcleardone'   => '您的监视列表已被清空。有$1项被移除。',
 'watchnologin'         => '未登录',
 'watchnologintext'     => '您必须先[[Special:Userlogin|登录]]才能更改您的监视列表。',
 'addedwatch'           => '已添加至监视列表',
@@ -1197,18 +1212,12 @@ MySQL返回错误“$3: $4”。',
 'unwatchthispage'      => '停止监视',
 'notanarticle'         => '不是文章',
 'watchnochange'        => '在显示的时间段内您所监视的页面没有更改。',
-'watchdetails'         => '* $1个页面(不含讨论页)被监视
-* [[Special:Watchlist/edit|显示并编辑完整列表]]
-* [[Special:Watchlist/clear|移除所有页面]]',
+'watchlist-details'    => '$1个页面(不含讨论页)被监视',
 'wlheader-enotif'      => '* 已经启动电子邮件通知功能。',
 'wlheader-showupdated' => "* 在你上次查看后有被修改过的页面会显示为'''粗体'''",
 'watchmethod-recent'   => '检查被监视页面的最近编辑',
 'watchmethod-list'     => '查看监视页中的最新修改',
-'removechecked'        => '将被选页面从监视列表中移除',
 'watchlistcontains'    => '您的监视列表包含$1个页面。',
-'watcheditlist'        => '这里是您所监视的页面的列表。要移除某一页面，只要选择该页面然后点击"移除页面"按钮(删除内容页面将同时删除与之相关的讨论页，反之亦然)。',
-'removingchecked'      => '从监视列表中移除选中项...',
-'couldntremove'        => '无法移除"$1"...',
 'iteminvalidname'      => "页面'$1'错误，无效命名...",
 'wlnote'               => "以下是最近'''$2'''小时内的最后'''$1'''次修改:",
 'wlshowlast'           => '显示最近$1小时 $2天 $3的修改',
@@ -1219,23 +1228,22 @@ MySQL返回错误“$3: $4”。',
 'watchlist-hide-own'   => '隐藏我的编辑',
 'watchlist-show-minor' => '显示小编辑',
 'watchlist-hide-minor' => '隐藏小编辑',
-'wldone'               => '已完成。',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => '监视...',
 'unwatching' => '解除监视...',
 
-'enotif_mailer'      => '{{SITENAME}}邮件通知器',
-'enotif_reset'       => '将所有页面标为已读',
-'enotif_newpagetext' => '这是新建页面。',
-'enotif_impersonal_salutation'	=> '{{SITENAME}}用户',
-'changed'            => '修改了',
-'created'            => '建立了',
-'enotif_subject'     => '{{SITENAME}}有页面 $PAGETITLE 被 $PAGEEDITOR $CHANGEDORCREATED',
-'enotif_lastvisited' => '查看您上次访问后的所有更改请访问$1。',
-'enotif_lastdiff'    => '检视更改请访问$1。',
-'enotif_anon_editor' => '匿名用户$1',
-'enotif_body'        => '亲爱的 $WATCHINGUSERNAME,
+'enotif_mailer'                => '{{SITENAME}}邮件通知器',
+'enotif_reset'                 => '将所有页面标为已读',
+'enotif_newpagetext'           => '这是新建页面。',
+'enotif_impersonal_salutation' => '{{SITENAME}}用户',
+'changed'                      => '修改了',
+'created'                      => '建立了',
+'enotif_subject'               => '{{SITENAME}}有页面 $PAGETITLE 被 $PAGEEDITOR $CHANGEDORCREATED',
+'enotif_lastvisited'           => '查看您上次访问后的所有更改请访问$1。',
+'enotif_lastdiff'              => '检视更改请访问$1。',
+'enotif_anon_editor'           => '匿名用户$1',
+'enotif_body'                  => '亲爱的 $WATCHINGUSERNAME,
 
 $PAGEEDITOR 已经在 $PAGEEDITDATE $CHANGEDORCREATED{{SITENAME}}的 $PAGETITLE 页面，请到 $PAGETITLE_URL 查看当前版本。
 
@@ -1281,7 +1289,6 @@ $NEWPAGE
 'deletionlog'                 => '删除日志',
 'reverted'                    => '恢复到早期版本',
 'deletecomment'               => '删除原因',
-'imagereverted'               => '恢复到早期版本操作完成。',
 'rollback'                    => '恢复编辑',
 'rollback_short'              => '恢复',
 'rollbacklink'                => '恢复',
@@ -1293,6 +1300,7 @@ $NEWPAGE
 最后编辑者: [[User:$3|$3]] ([[User talk:$3|讨论]])。',
 'editcomment'                 => '编辑说明: "<i>$1</i>"。', # only shown if there is an edit comment
 'revertpage'                  => '恢复由[[Special:Contributions/$2|$2]] ([[User talk:$2|对话]])的编辑；更改回[[User:$1|$1]]的最后一个版本',
+'rollback-success'            => '恢复由$1的编辑；更改回$2的最后一个版本。',
 'sessionfailure'              => '似乎在您登录时发生问题，作为一项防范性措施，该动作已经被取消。请单击"后退"再次尝试！',
 'protectlogpage'              => '保护日志',
 'protectlogtext'              => '下面是页面锁定和取消锁定的列表。请参考[[Special:Protectedpages|保护页面列表]]以查看当前进行的页面保护。',
@@ -1367,6 +1375,14 @@ $NEWPAGE
 'undelete-search-prefix'   => '显示页面自:',
 'undelete-search-submit'   => '搜索',
 'undelete-no-results'      => '删除记录里没有符合的结果。',
+'undelete-filename-mismatch' => '不能删除带有时间截记的文件修订 $1: 文件不匹配',
+'undelete-bad-store-key'   => '不能删除带有时间截记的文件修订 $1: 文件于删除前遗失。',
+'undelete-cleanup-error'   => '删除无用的存档文件 "$1" 时发生错误。',
+'undelete-missing-filearchive' => '由于文件存档 ID $1 不在数据库中，不能在文件存档中恢复。' .
+	'它可能已经反删除了。',
+'undelete-error-short'     => '反删除文件时发生错误: $1',
+'undelete-error-long'      => "当进行反删除文件时遇到错误:\n\n$1",
+
 
 # Namespace form on various pages
 'namespace' => '名字空间:',
@@ -1375,13 +1391,13 @@ $NEWPAGE
 # Contributions
 'contributions' => '用户贡献',
 'mycontris'     => '我的贡献',
-'contribsub2'    => '$1的贡献 ($2)',
+'contribsub2'   => '$1的贡献 ($2)',
 'nocontribs'    => '没有找到符合特征的更改。',
 'ucnote'        => '以下是该用户最近<b>$2</b>天内的最后<b>$1</b>次修改。',
 'uclinks'       => '参看最后$1次修改；参看最后$2天。',
 'uctop'         => ' (最新修改)',
-'month'         => '月份:',
-'year'          => '年份:',
+'month'         => '从该月份 (或更早):',
+'year'          => '从该年份 (或更早):',
 
 'sp-contributions-newest'      => '最新',
 'sp-contributions-oldest'      => '最早',
@@ -1397,17 +1413,17 @@ $NEWPAGE
 'sp-newimages-showfrom' => '从$1开始显示新图像',
 
 # What links here
-'whatlinkshere'      => '链入页面',
-'notargettitle'      => '无目标',
-'notargettext'       => '您还没有指定一个目标页面或用户以进行此项操作。',
-'linklistsub'        => '(链接列表)',
-'linkshere'          => '以下页面链接到[[:$1]]：',
-'nolinkshere'        => '没有页面链接到[[:$1]]。',
-'nolinkshere-ns'     => '在所选的名字空间内没有页面链接到[[:$1]]。',
-'isredirect'         => '重定向页',
-'istemplate'         => '包含',
-'whatlinkshere-prev' => '前$1个',
-'whatlinkshere-next' => '后$1个',
+'whatlinkshere'       => '链入页面',
+'notargettitle'       => '无目标',
+'notargettext'        => '您还没有指定一个目标页面或用户以进行此项操作。',
+'linklistsub'         => '(链接列表)',
+'linkshere'           => '以下页面链接到[[:$1]]：',
+'nolinkshere'         => '没有页面链接到[[:$1]]。',
+'nolinkshere-ns'      => '在所选的名字空间内没有页面链接到[[:$1]]。',
+'isredirect'          => '重定向页',
+'istemplate'          => '包含',
+'whatlinkshere-prev'  => '前$1个',
+'whatlinkshere-next'  => '后$1个',
 'whatlinkshere-links' => '←链入',
 
 # Block/unblock
@@ -1485,9 +1501,8 @@ $NEWPAGE
 'ipb_cant_unblock'            => '错误: 没有发现 Block ID $1。该 IP 可能已经被解封。',
 'proxyblockreason'            => '您的IP地址是一个开放的代理，它已经被封锁。请联系您的因特网服务提供商或技术支持者并告知告知他们该严重的安全问题。',
 'proxyblocksuccess'           => '完成。\n',
-'sorbs'                       => 'DNSBL',
-'sorbsreason'                 => '您的IP地址被[http://www.sorbs.net SORBS] DNSBL 列为属于开放代理服务器。',
-'sorbs_create_account_reason' => '由于您的IP地址被[http://www.sorbs.net SORBS] DNSBL 列为属于开放代理服务器，所以您不能创建新账户。',
+'sorbsreason'                 => '您的IP地址被 DNSBL 列为属于开放代理服务器。',
+'sorbs_create_account_reason' => '由于您的IP地址被 DNSBL 列为属于开放代理服务器，所以您不能创建新账户。',
 
 # Developer tools
 'lockdb'              => '锁定数据库',
@@ -1538,7 +1553,7 @@ $NEWPAGE
 'move-watch'              => '监视此页',
 'movepagebtn'             => '移动页面',
 'pagemovedsub'            => '移动成功',
-'movepage-moved'          => '<big>\'\'\'“$1”已经移动到“$2”\'\'\'</big>',
+'movepage-moved'          => "<big>'''“$1”已经移动到“$2”'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => '该名字的页面已经存在，或者您选择的名字无效。请再选一个名字。',
 'talkexists'              => '页面本身移动成功，
 但是由于新标题下已经有对话页存在，所以对话页无法移动。请手工合并两个页面。',
@@ -1569,13 +1584,14 @@ $NEWPAGE
 并选择你是否需要导出带有页面历史的以前的版本，
 或是只选择导出带有最后一次编辑信息的当前版本。
 
-此外你还可以利用链接导出文件，例如你可以使用[[{{ns:special}}:Export/{{int:mainpage}}]]导出{{int:mainpage}}页面。',
+此外你还可以利用链接导出文件，例如你可以使用[[{{ns:special}}:Export/{{int:mainpage}}]]导出"[[{{int:mainpage}}]]"页面。',
 'exportcuronly'     => '仅包含当前的修订，而不是全部的历史。',
 'exportnohistory'   => "----
 '''注意:''' 由于性能原因，从此表单导出页面的全部历史已被禁用。",
 'export-submit'     => '导出',
 'export-addcattext' => '由分类中添加页面:',
 'export-addcat'     => '添加',
+'export-download'   => '提供一个文件以供另存',
 
 # Namespace 8 related
 'allmessages'               => '系统界面',
@@ -1760,6 +1776,12 @@ $NEWPAGE
 
 # Image deletion
 'deletedrevision' => '已删除旧版本$1。',
+'filedeleteerror-short' => "删除文件发生错误: $1",
+'filedeleteerror-long' => "当删除文件时遇到错误:\n\n$1",
+'filedelete-missing' => '因为文件 "$1" 不存在，所以它不可以删除。',
+'filedelete-old-unregistered' => '所指定的文件修订 "$1" 在数据库中不存在。',
+'filedelete-current-unregistered' => '所指定的文件 "$1" 在数据库中不存在。',
+'filedelete-archive-read-only' => '存档目录 "$1" 在网页服务器中不可写。',
 
 # Browsing diffs
 'previousdiff' => '←上一个',
@@ -2068,7 +2090,6 @@ Variants for Chinese language
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => '全部',
 'imagelistall'     => '全部',
-'watchlistall1'    => '全部',
 'watchlistall2'    => '全部',
 'namespacesall'    => '全部',
 'monthsall'        => '全部',
@@ -2166,7 +2187,7 @@ $1
 # Auto-summaries
 'autosumm-blank'   => '移除所有页面内容',
 'autosumm-replace' => "正在将页面替换为 '$1'",
-'autoredircomment' => '正在重定向到 [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => '正在重定向到 [[$1]]',
 'autosumm-new'     => '新页面: $1',
 
 # Size units
@@ -2178,14 +2199,39 @@ $1
 # Live preview
 'livepreview-loading' => '正在加载…',
 'livepreview-ready'   => '正在加载… 完成!',
-'livepreview-failed'  => "实时预览失败!\n尝试标准预览。",
-'livepreview-error'   => "连接失败: $1 \"$2\"\n尝试标准预览。",
+'livepreview-failed'  => '实时预览失败! 尝试标准预览。',
+'livepreview-error'   => '连接失败: $1 "$2" 尝试标准预览。',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => '新于$1秒的更改可能不会在这个列表中显示。',
-'lag-warn-high' => '由于数据库的过度延迟，新于$1秒的更改可能不会在这个列表中显示。',
+'lag-warn-high'   => '由于数据库的过度延迟，新于$1秒的更改可能不会在这个列表中显示。',
+
+# Watchlist editor
+'watchlistedit-numitems'       => '您的监视列表中共有$1个标题，当中不包括对话页面。',
+'watchlistedit-noitems'        => '您的监视列表并无标题。',
+'watchlistedit-clear-title'    => '清除监视列表',
+'watchlistedit-clear-legend'   => '清除监视列表',
+'watchlistedit-clear-confirm'  => '这样做会在您的监视列表中移除所有的项目。您是否真的要这样做？您亦都可以[[Special:Watchlist/edit|移除个别的标题]]。',
+'watchlistedit-clear-submit'   => '清除',
+'watchlistedit-clear-done'     => '您的监视列表已经刚刚清除完毕。所有的项目已经被移除。',
+'watchlistedit-normal-title'   => '编辑监视列表',
+'watchlistedit-normal-legend'  => '从监视列表中移除标题',
+'watchlistedit-normal-explain' => '在您的监视列表中的标题在下面显示。要移除一个标题，在它前面剔一下，接着点击移除标题。您亦都可以[[Special:Watchlist/raw|编辑原始监视列表]]或者[[Special:Watchlist/clear|移除所有标题]]。',
+'watchlistedit-normal-submit'  => '移除标题',
+'watchlistedit-normal-done'    => '$1个标题已经从您的监视列表中移除:',
+'watchlistedit-raw-title'      => '编辑原始监视列表',
+'watchlistedit-raw-legend'     => '编辑原始监视列表',
+'watchlistedit-raw-explain'    => '您的监视列表中的标题在下面显示，同时亦都可以通过编辑这个表去加入以及移除标题；一行一个标题。当完成以后，点击更新监视列表。你亦都可以去用[[Special:Watchlist/edit|标准编辑器]]。',
+'watchlistedit-raw-titles'     => '标题:',
+'watchlistedit-raw-submit'     => '更新监视列表',
+'watchlistedit-raw-done'       => '您的监视列表已经更新。',
+'watchlistedit-raw-added'      => '已经加入了$1个标题:',
+'watchlistedit-raw-removed'    => '已经移除了$1个标题:',
+
+# Watchlist editing tools
+'watchlisttools-view'  => '查看有关更改',
+'watchlisttools-edit'  => '查看并编辑监视列表',
+'watchlisttools-raw'   => '编辑源监视列表',
+'watchlisttools-clear' => '清空监视列表',
 
 );
-
-
-

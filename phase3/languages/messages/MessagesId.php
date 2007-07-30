@@ -385,6 +385,7 @@ $messages = array(
 'category_header'       => 'Artikel dalam kategori "$1"',
 'subcategories'         => 'Subkategori',
 'category-media-header' => 'Media dalam kategori "$1"',
+'category-empty'        => "''Saat ini kategori ini tak memiliki artikel atau media.''",
 
 'mainpagetext'      => "<big>'''MediaWiki telah terinstall dengan sukses'''</big>.",
 'mainpagedocfooter' => 'Silakan baca [http://meta.wikimedia.org/wiki/Help:Contents Panduan Pengguna] untuk informasi penggunaan perangkat lunak wiki.
@@ -393,7 +394,7 @@ $messages = array(
 
 * [http://www.mediawiki.org/wiki/Manual:Configuration_settings Daftar pengaturan preferensi]
 * [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce Milis rilis MediaWiki]',
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Milis rilis MediaWiki]',
 
 'about'          => 'Perihal',
 'article'        => 'Artikel',
@@ -558,10 +559,13 @@ Ini biasanya disebabkan karena perubahan yang kadaluwarsa atau karena pranala la
 Jika ini bukan sebabnya, Anda mungkin menemukan bug dalam perangkat lunak. Silakan laporkan hal ini kepada pengurus, dengan mencantumkan URL halaman yang bermasalah tersebut',
 'readonly_lag'         => 'Basis data telah dikunci otomatis selagi basis data sekunder melakukan sinkronisasi dengan basis data utama',
 'internalerror'        => 'Kesalahan internal',
+'internalerror_info'   => 'Kesalahan internal: $1',
 'filecopyerror'        => 'Tidak dapat menyalin berkas "$1" ke "$2".',
 'filerenameerror'      => 'Tidak dapat mengubah nama berkas "$1" menjadi "$2".',
 'filedeleteerror'      => 'Tidak dapat menghapus berkas "$1".',
+'directorycreateerror' => 'Tidak dapat membuat direktori "$1".',
 'filenotfound'         => 'Tidak dapat menemukan berkas "$1".',
+'fileexists'           => 'Berkas dengan nama tersebut telah ada, harap periksa <strong><tt>$1</tt></strong> jika Anda tidak yakin untuk mengubahnya.',
 'unexpected'           => 'Nilai di luar jangkauan: "$1"="$2".',
 'formerror'            => 'Kesalahan: Tidak dapat mengirimkan formulir',
 'badarticleerror'      => 'Tindakan ini tidak dapat dilaksanakan di halaman ini.',
@@ -576,6 +580,7 @@ Jika ini bukan sebabnya, Anda mungkin menemukan bug dalam perangkat lunak. Silak
 'viewsource'           => 'Lihat sumber',
 'viewsourcefor'        => 'dari $1',
 'protectedpagetext'    => 'Halaman ini telah dikunci untuk menghindari penyuntingan.',
+'namespaceprotected'   => "Anda tak memiliki hak untuk menyunting halaman di ruang nama '''$1'''.",
 'viewsourcetext'       => 'Anda dapat melihat atau menyalin sumber halaman ini:',
 'protectedinterface'   => 'Halaman ini berisi teks antarmuka untuk digunakan oleh perangkat lunak dan telah dikunci untuk menghindari kesalahan.',
 'editinginterface'     => "'''Peringatan:''' Anda menyunting halaman yang digunakan untuk menyediakan teks antarmuka dengan perangkat lunak. Perubahan teks ini akan mempengaruhi tampilan pada pengguna lain.",
@@ -1069,7 +1074,6 @@ Untuk menampilkan atau menyertakan berkas atau gambar pada suatu halaman, gunaka
 'large-file'                  => 'Ukuran berkas disarankan untuk tidak melebihi $1 bita; berkas ini berukuran $2 bita.',
 'largefileserver'             => 'Berkas ini lebih besar dari pada yang diizinkan server.',
 'emptyfile'                   => 'Berkas yang Anda muatkan kelihatannya kosong. Hal ini mungkin disebabkan karena adanya kesalahan ketik pada nama berkas. Silakan pastikan apakah Anda benar-benar ingin memuatkan berkas ini.',
-'fileexists'                  => 'Berkas dengan nama tersebut telah ada, harap periksa <strong><tt>$1</tt></strong> jika Anda tidak yakin untuk mengubahnya.',
 'fileexists-extension'        => 'Berkas dengan nama serupa telah ada:<br />
 Nama berkas yang akan dimuat: <strong><tt>$1</tt></strong><br />
 Nama berkas yang telah ada: <strong><tt>$2</tt></strong><br />
@@ -1082,7 +1086,6 @@ Jika Anda memiliki versi resolusi penuh dari gambar ini, harap muatkan berkas te
 'fileexists-forbidden'        => 'Ditemukan berkas dengan nama yang sama; harap kembali dan muatkan berkas dengan nama lain. [[{{ns:image}}:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Ditemukan berkas lain dengan nama yang sama di repositori bersama; harap kembali dan muatkan berkas dengan nama lain. [[{{ns:image}}:$1|thumb|center|$1]]',
 'successfulupload'            => 'Berhasil dimuat',
-'fileuploaded'                => 'Berkas "$1" berhasil dimuatkan. Silakan ikuti pranala berikut: $2 ke halaman deskripsi dan isikan informasi tentang berkas tersebut, seperti dari mana berkas tersebut berasal, kapan berkas itu dibuat dan oleh siapa, dan informasi lain yang Anda ketahui.',
 'uploadwarning'               => 'Peringatan pemuatan',
 'savefile'                    => 'Simpan berkas',
 'uploadedimage'               => 'memuat "[[$1]]"',
@@ -1111,6 +1114,7 @@ Jika Anda memiliki versi resolusi penuh dari gambar ini, harap muatkan berkas te
 
 'license'            => 'Jenis lisensi',
 'nolicense'          => 'Belum dipilih',
+'license-nopreview'  => '(Pratayang tak tersedia)',
 'upload_source_url'  => ' (suatu URL valid yang dapat diakses publik)',
 'upload_source_file' => ' (suatu berkas di komputer Anda)',
 
@@ -1331,7 +1335,7 @@ Telah dimuat sejumlah '''$8''' berkas dan sedang terjadi '''$7''' [http://meta.w
 'unwatchthispage'      => 'Batal pantau halaman ini',
 'notanarticle'         => 'Bukan sebuah artikel',
 'watchnochange'        => 'Tak ada halaman pantauan Anda yang telah berubah dalam jangka waktu yang dipilih.',
-'watchdetails'         => "Daftar pantauan Anda berisi '''$1''' halaman (tidak termasuk halaman pembicaraan) dan berikut adalah daftar perubahan terbaru terhadap halaman-halaman tersebut.<br />Anda dapat [[{{ns:special}}:Watchlist/edit|melihat dan menyunting daftar tersebut]] atau [[{{ns:special}}:Watchlist/clear|mengosongkannya]].",
+'watchlist-details'    => '{{PLURAL:$1|$1 halaman|$1 halaman}} dipantau, tidak termasuk halaman pembicaraan.',
 'wlheader-enotif'      => '* Notifikasi surat-e diaktifkan.',
 'wlheader-showupdated' => "* Halaman-halaman yang telah berubah sejak kunjungan terakhir Anda ditampilkan dengan '''huruf tebal'''",
 'watchmethod-recent'   => 'periksa daftar perubahan terbaru terhadap halaman yang dipantau',
@@ -1413,6 +1417,7 @@ Umpan balik dan bantuan lanjutan:
 'alreadyrolled'               => 'Tidak dapat melakukan pengembalian ke suntingan terakhir [[:$1]] oleh [[{{ns:user}}:$2|$2]] ([[{{ns:user_talk}}:$2|Pembicaraan]]); orang lain telah menyunting atau melakukan pengembalian terhadap artikel tersebut. Suntingan terakhir oleh [[{{ns:user}}:$3|$3]] ([[{{ns:user_talk}}:$3|Pembicaraan]]).',
 'editcomment'                 => 'Komentar penyuntingan adalah: "<em>$1</em>".', # only shown if there is an edit comment
 'revertpage'                  => 'Suntingan [[{{ns:special}}:Contributions/$2|$2]] ([[{{ns:user_talk}}:$2|Pembicaraan]]) dikembalikan ke versi terakhir oleh [[{{ns:user}}:$1|$1]]',
+'rollback-success'            => 'Pengembalian suntingan oleh $1; dikembalikan ke versi terakhir oleh $2.',
 'sessionfailure'              => 'Sepertinya ada masalah dengan sesi log anda; log anda telah dibatalkan untuk mencegah pembajakan. Silahkan tekan tombol "back" dan muat kembali halaman sebelum anda masuk, lalu coba lagi.',
 'protectlogpage'              => 'Log perlindungan',
 'protectlogtext'              => 'Di bawah ini adalah log perlindungan dan penghilangan perlindungan halaman. Lihat [[Special:Protectedpages|daftar halaman yang dilindungi]] untuk daftar perlindungan halaman yang berlaku sekarang.',
@@ -1454,33 +1459,42 @@ Umpan balik dan bantuan lanjutan:
 'restriction-level-all'           => 'semua tingkatan',
 
 # Undelete
-'undelete'                 => 'Pembatalan penghapusan',
-'undeletepage'             => 'Pembatalan penghapusan',
-'viewdeletedpage'          => 'Lihat halaman yang telah dihapus',
-'undeletepagetext'         => 'Halaman-halaman berikut ini telah dihapus tapi masih ada di dalam arsip dan dapat dikembalikan. Arsip tersebut mungkin akan dibersihkan secara berkala.',
-'undeleteextrahelp'        => "Untuk mengembalikan keseruhan halaman, biarkan seluruh kotak cek tidak terpilih dan klik '''Kembalikan'''. Untuk melakukan pengembalian selektif, cek kotak revisi yang diinginkan dan klik '''Kembalikan'''. Menekan tombol '''Reset''' akan mengosongkan isian komentar dan semua kotak cek",
-'undeleterevisions'        => '$1 revisi diarsipkan',
-'undeletehistory'          => 'Jika Anda mengembalikan halaman tersebut, semua revisi akan dikembalikan ke dalam sejarah. Jika sebuah halaman baru dengan nama yang sama telah dibuat sejak penghapusan, revisi yang telah dikembalikan akan kelihatan dalam sejarah dahulu, dan revisi terkini halaman tersebut tidak akan ditimpa secara otomatis. Ingat pula bahwa pembatasan revisi berkas terhapus sewaktu pemulihan',
-'undeleterevdel'           => 'Pembatalan penghapusan tidak akan dilakukan jika hal tersebut akan mengakibatkan revisi terkini halaman terhapus sebagian. Pada kondisi tersebut, Anda harus menghilangkan cek atau menghilangkan penyembunyian revisi yang dihapus terakhir. Revisi berkas yang tidak dapat Anda lihat tidak akan dipulihkan.',
-'undeletehistorynoadmin'   => 'Artikel ini telah dihapus. Alasan penghapusan diberikan pada ringkasan di bawah ini, berikut detil pengguna yang telah melakukan penyuntingan pada halaman ini sebelum dihapus. Isi terakhir dari revisi yang telah dihapus ini hanya tersedia untuk pengurus.',
-'undelete-revision'        => 'Revisi yang telah dihapus dari $1 sejak $2:',
-'undeleterevision-missing' => 'Revisi salah atau tak ditemukan. Anda mungkin mengikuti pranala yang salah, atau revisi tersebut telah dipulihkan atau dibuang dari arsip.',
-'undeletebtn'              => 'Kembalikan!',
-'undeletereset'            => 'Reset',
-'undeletecomment'          => 'Komentar:',
-'undeletedarticle'         => '"$1" telah dikembalikan',
-'undeletedrevisions'       => '$1 revisi telah dikembalikan',
-'undeletedrevisions-files' => '$1 revisi and $2 berkas dikembalikan',
-'undeletedfiles'           => '$1 berkas dikembalikan',
-'cannotundelete'           => 'Pembatalan penghapusan gagal; mungkin ada orang lain yang telah terlebih dahulu melakukan pembatalan.',
-'undeletedpage'            => "<big>'''$1 berhasil dikembalikan'''</big>
+'undelete'                     => 'Pembatalan penghapusan',
+'undeletepage'                 => 'Pembatalan penghapusan',
+'viewdeletedpage'              => 'Lihat halaman yang telah dihapus',
+'undeletepagetext'             => 'Halaman-halaman berikut ini telah dihapus tapi masih ada di dalam arsip dan dapat dikembalikan. Arsip tersebut mungkin akan dibersihkan secara berkala.',
+'undeleteextrahelp'            => "Untuk mengembalikan keseruhan halaman, biarkan seluruh kotak cek tidak terpilih dan klik '''Kembalikan'''. Untuk melakukan pengembalian selektif, cek kotak revisi yang diinginkan dan klik '''Kembalikan'''. Menekan tombol '''Reset''' akan mengosongkan isian komentar dan semua kotak cek",
+'undeleterevisions'            => '$1 revisi diarsipkan',
+'undeletehistory'              => 'Jika Anda mengembalikan halaman tersebut, semua revisi akan dikembalikan ke dalam sejarah. Jika sebuah halaman baru dengan nama yang sama telah dibuat sejak penghapusan, revisi yang telah dikembalikan akan kelihatan dalam sejarah dahulu, dan revisi terkini halaman tersebut tidak akan ditimpa secara otomatis. Ingat pula bahwa pembatasan revisi berkas terhapus sewaktu pemulihan',
+'undeleterevdel'               => 'Pembatalan penghapusan tidak akan dilakukan jika hal tersebut akan mengakibatkan revisi terkini halaman terhapus sebagian. Pada kondisi tersebut, Anda harus menghilangkan cek atau menghilangkan penyembunyian revisi yang dihapus terakhir. Revisi berkas yang tidak dapat Anda lihat tidak akan dipulihkan.',
+'undeletehistorynoadmin'       => 'Artikel ini telah dihapus. Alasan penghapusan diberikan pada ringkasan di bawah ini, berikut detil pengguna yang telah melakukan penyuntingan pada halaman ini sebelum dihapus. Isi terakhir dari revisi yang telah dihapus ini hanya tersedia untuk pengurus.',
+'undelete-revision'            => 'Revisi yang telah dihapus dari $1 sejak $2:',
+'undeleterevision-missing'     => 'Revisi salah atau tak ditemukan. Anda mungkin mengikuti pranala yang salah, atau revisi tersebut telah dipulihkan atau dibuang dari arsip.',
+'undeletebtn'                  => 'Kembalikan!',
+'undeletereset'                => 'Reset',
+'undeletecomment'              => 'Komentar:',
+'undeletedarticle'             => '"$1" telah dikembalikan',
+'undeletedrevisions'           => '$1 revisi telah dikembalikan',
+'undeletedrevisions-files'     => '$1 revisi and $2 berkas dikembalikan',
+'undeletedfiles'               => '$1 berkas dikembalikan',
+'cannotundelete'               => 'Pembatalan penghapusan gagal; mungkin ada orang lain yang telah terlebih dahulu melakukan pembatalan.',
+'undeletedpage'                => "<big>'''$1 berhasil dikembalikan'''</big>
 
 Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan pengembalian.",
-'undelete-header'          => 'Lihat [[Special:Log/delete|log penghapusan]] untuk daftar halaman yang baru dihapus.',
-'undelete-search-box'      => 'Cari halaman yang dihapus',
-'undelete-search-prefix'   => 'Tampilkan halaman dimulai dari:',
-'undelete-search-submit'   => 'Cari',
-'undelete-no-results'      => 'Tidak ditemukan halaman yang sesuai di arsip penghapusan.',
+'undelete-header'              => 'Lihat [[Special:Log/delete|log penghapusan]] untuk daftar halaman yang baru dihapus.',
+'undelete-search-box'          => 'Cari halaman yang dihapus',
+'undelete-search-prefix'       => 'Tampilkan halaman dimulai dari:',
+'undelete-search-submit'       => 'Cari',
+'undelete-no-results'          => 'Tidak ditemukan halaman yang sesuai di arsip penghapusan.',
+'undelete-filename-mismatch'   => 'Tidak dapat membatalkan penghapusan revisi berkas dengan tanda waktu $1: nama berkas tak sesuai',
+'undelete-bad-store-key'       => 'Tidak dapat membatalkan penghapusan revisi berkas dengan tanda waktu $1: berkas hilang sebelum dihapus.',
+'undelete-cleanup-error'       => 'Kesalahan sewaktu menghapus arsip berkas "$1" yang tak digunakan.',
+'undelete-missing-filearchive' => 'Tidak dapat mengembalikan arsip berkas dengan ID $1 karena tak ada di basis data. Berkas tersebut mungkin telah dihapus..',
+'undelete-error-short'         => 'Kesalahan membatalkan penghapusan: $1',
+'undelete-error-long'          => 'Terjadi kesalahan sewaktu membatalkan penghapusan berkas:
+
+$1
+',
 
 # Namespace form on various pages
 'namespace' => 'Ruang nama:',
@@ -1494,8 +1508,8 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 'ucnote'        => 'Berikut adalah <strong>$1</strong> suntingan terakhir pengguna ini dalam <strong>$2</strong> hari terakhir.',
 'uclinks'       => 'Menampilkan $1 perubahan terakhir; menampilkan $2 hari terakhir.',
 'uctop'         => ' (atas)',
-'month'         => 'Bulan:',
-'year'          => 'Tahun:',
+'month'         => 'Sejak bulan (dan sebelumnya):',
+'year'          => 'Sejak tahun (dan sebelumnya):',
 
 'sp-contributions-newest'      => 'Terbaru',
 'sp-contributions-oldest'      => 'Terlama',
@@ -1596,9 +1610,8 @@ Lihat [[{{ns:special}}:Log/delete|log penghapusan]] untuk data penghapusan dan p
 'ipb_cant_unblock'            => 'Kesalahan: Blokir dengan ID $1 tidak ditemukan. Blokir tersebut kemungkinan telah dibuka.',
 'proxyblockreason'            => 'Alamat IP Anda telah diblokir karena alamat IP Anda adalah proxy terbuka. Silakan hubungi penyedia jasa internet Anda atau dukungan teknis dan beritahukan mereka masalah keamanan serius ini.',
 'proxyblocksuccess'           => 'Selesai.',
-'sorbs'                       => 'SORBS DNSBL',
-'sorbsreason'                 => 'Alamat IP anda terdaftar sebagai proxy terbuka di [http://www.sorbs.net SORBS] DNSBL.',
-'sorbs_create_account_reason' => 'Alamat IP anda terdaftar sebagai proxy terbuka di [http://www.sorbs.net SORBS] DNSBL. Anda tidak dapat membuat akun.',
+'sorbsreason'                 => 'Alamat IP anda terdaftar sebagai proxy terbuka di DNSBL.',
+'sorbs_create_account_reason' => 'Alamat IP anda terdaftar sebagai proxy terbuka di DNSBL. Anda tidak dapat membuat akun.',
 
 # Developer tools
 'lockdb'              => 'Kunci basis data',
@@ -1666,13 +1679,14 @@ Artikel yang dituju, "[[$1]]", telah mempunyai isi. Apakah Anda hendak menghapus
 
 Untuk mengekspor halaman-halaman artikel, masukkan judul-judul dalam kotak teks di bawah ini, satu judul per baris, dan pilih apakah anda ingin mengekspor lengkap dengan versi terdahulunya, atau hanya versi sekarang dengan catatan penyuntingan terakhir.
 
-Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal ini dengan lebih cepat dengan cara menggunakan pranala khusus, sebagai contoh: [[{{ns:special}}:Export/{{int:mainpage}}]] untuk mengekspor artikel {{int:mainpage}}.',
+Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal ini dengan lebih cepat dengan cara menggunakan pranala khusus, sebagai contoh: [[{{ns:special}}:Export/{{int:mainpage}}]] untuk mengekspor artikel "[[{{MediaWiki:mainpage}}]]".',
 'exportcuronly'     => 'Hanya ekspor revisi sekarang, bukan seluruh versi terdahulu',
 'exportnohistory'   => "----
 '''Catatan:''' Mengekspor keseluruhan riwayat suntingan halaman melalui isian ini telah dinon-aktifkan karena alasan kinerja.",
 'export-submit'     => 'Ekspor',
 'export-addcattext' => 'Tambahkan halaman dari kategori:',
 'export-addcat'     => 'Tambahkan',
+'export-download'   => 'Tawarkan untuk menyimpan sebagai suatu berkas',
 
 # Namespace 8 related
 'allmessages'               => 'Pesan sistem',
@@ -1815,7 +1829,7 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 'subcategorycount'       => 'Ada $1 subkategori dalam kategori ini.',
 'categoryarticlecount'   => 'Ada $1 artikel dalam kategori ini.',
 'category-media-count'   => 'Ada $1 berkas dalam kategori ini.',
-'listingcontinuesabbrev' => ' samb.',
+'listingcontinuesabbrev' => 'samb.',
 'spambot_username'       => 'Pembersihan span MediaWiki',
 'spam_reverting'         => 'Mengembalikan ke versi terakhir yang tak memiliki pranala ke $1',
 'spam_blanking'          => 'Semua revisi yang memiliki pranala ke $1, pengosongan',
@@ -1854,7 +1868,13 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 'patrol-log-diff' => 'r$1',
 
 # Image deletion
-'deletedrevision' => 'Revisi lama yang dihapus $1.',
+'deletedrevision'                 => 'Revisi lama yang dihapus $1.',
+'filedeleteerror-short'           => 'Kesalahan waktu menghapus berkas: $1',
+'filedeleteerror-long'            => 'Terjadi kesalahan sewaktu menghapus berkas:\n\n$1\n',
+'filedelete-missing'              => 'Berkas "$1" tak dapat dihapus karena tak ditemukan.',
+'filedelete-old-unregistered'     => 'Revisi berkas "$1" yang diberikan tidak ada dalam basis data.',
+'filedelete-current-unregistered' => 'Berkas yang diberikan "$1" tidak ada dalam basis data.',
+'filedelete-archive-read-only'    => 'Direktori arsip "$1" tak dapat ditulis oleh server web.',
 
 # Browsing diffs
 'previousdiff' => '←Perbedaan sebelumnya',
@@ -2147,7 +2167,6 @@ Jika Anda hanya ingin mengimpor versi sekarang, Anda juga dapat melakukan hal in
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'semua',
 'imagelistall'     => 'semua',
-'watchlistall1'    => 'semua',
 'watchlistall2'    => 'semua',
 'namespacesall'    => 'semua',
 'monthsall'        => 'semua',
@@ -2280,5 +2299,13 @@ Coba dengan pratayang normal.',
 'watchlistedit-raw-titles'     => 'Judul:',
 'watchlistedit-raw-submit'     => 'Perbarui daftar pantauan',
 'watchlistedit-raw-done'       => 'Daftar pantauan Anda telah diperbarui.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 judul telah|$1 judul telah}} ditambahkan:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 judul telah|$1 judul telah}} dikeluarkan:',
+
+# Watchlist editing tools
+'watchlisttools-view'  => 'Tampilkan perubahan terkait',
+'watchlisttools-edit'  => 'Tampilkan dan sunting daftar pantauan',
+'watchlisttools-raw'   => 'Sunting daftar pantauan mentah',
+'watchlisttools-clear' => 'Kosongkan daftar pantauan',
 
 );

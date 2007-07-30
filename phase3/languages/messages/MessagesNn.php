@@ -6,8 +6,8 @@
   *
   * @author Olve Utne
   * @author Guttorm Flatabø
-  * @link http://meta.wikimedia.org/w/index.php?title=LanguageNn.php&action=history
-  * @link http://nn.wikipedia.org/w/index.php?title=Brukar:Dittaeva/LanguageNn.php&action=history
+  * @see http://meta.wikimedia.org/w/index.php?title=LanguageNn.php&action=history
+  * @see http://nn.wikipedia.org/w/index.php?title=Brukar:Dittaeva/LanguageNn.php&action=history
   *
   * @addtogroup Language
   */
@@ -698,13 +698,11 @@ For å laste opp ei fil bruker du «Bla gjennom...» eller «Browse...»-knappen
 'filestatus'                 => 'Opphavsrettsstatus',
 'filesource'                 => 'Kjelde',
 'uploadedfiles'              => 'Filer som er opplasta',
-'minlength'                  => 'Namnet på fila må ha minst tre teikn.',
 'illegalfilename'            => 'Filnamnet «$1» inneheld teikn som ikkje er tillatne i sidetitlar. Skift namn på fila og prøv på nytt.',
 'badfilename'                => 'Namnet på fila har vorte endra til «$1».',
 'emptyfile'                  => 'Det ser ut til at fila du lasta opp er tom. Dette kan komma av ein skrivefeil i filnamnet. Sjekk og tenk etter om du verkeleg vil laste opp fila.',
 'fileexists'                 => 'Ei fil med dette namnet finst allereie, sjekk $1 om du ikkje er sikker på om du vil endre namnet.',
 'successfulupload'           => 'Opplastinga er ferdig',
-'fileuploaded'               => 'Fila «$1» er opplasta. Følg lenkja «$2» åt sida med skildring og fyll ut informasjon om fila &mdash; slik som kvar ho kom frå, kva tid ho vart laga og av kven, og andre ting du veit om fila.',
 'uploadwarning'              => 'Opplastingsåtvaring',
 'savefile'                   => 'Lagre fil',
 'uploadedimage'              => 'Lasta opp «[[$1]]»',
@@ -854,16 +852,12 @@ Om du seinere vil fjerne sida frå overvakingslista, klikk på «Fjern overvakin
 'unwatchthispage'      => 'Fjern overvaking',
 'notanarticle'         => 'Ikkje innhaldsside',
 'watchnochange'        => 'Ingen av sidene i overvakingslista er endra i den valde perioden.',
-'watchdetails'         => 'Du har $1 sider i overvakingslista di (diskusjonssider ikkje medrekna); du kan [[Special:Watchlist/edit|vise og endre den fullstendige lista]].',
+'watchlist-details'    => 'Du har $1 sider i overvakingslista di (diskusjonssider ikkje medrekna).',
 'wlheader-enotif'      => '* Funksjonen for endringsmeldingar per e-post er på.',
 'wlheader-showupdated' => "* Sider som har vorte endra sidan du sist såg på dei er '''utheva'''",
 'watchmethod-recent'   => 'sjekkar siste endringar for dei overvaka sidene',
 'watchmethod-list'     => 'sjekkar om dei overvaka sidene er vortne endra i det siste',
-'removechecked'        => 'Fjern dei valde sidene frå overvakingslista',
 'watchlistcontains'    => 'Overvakingslista inneheld $1 sider.',
-'watcheditlist'        => 'Dette er ei alfabetisk liste over sider du overvakar. For å fjerne sider frå lista må du velja dei sidene du vil fjerne og klikke på «Fjern overvaking»-knappen nedst på sida.',
-'removingchecked'      => 'Fjernar dei valde sidene frå overvakingslista ...',
-'couldntremove'        => 'Kunne ikkje fjerne «$1»...',
 'iteminvalidname'      => 'Problem med «$1», ugyldig namn...',
 'wlnote'               => 'Nedanfor er dei siste $1 endringane dei siste <b>$2</b> timane.',
 'wlshowlast'           => 'Vis siste $1 timar $2 dagar $3',
@@ -1010,11 +1004,10 @@ IP-adresser som blir automatisk blokkerte er ikkje lista her. Sjå [[{{ns:-1}}:I
 'proxyblocker'                => 'Proxy-blokkerar',
 'proxyblockreason'            => 'Du er blokkert frå å endre fordi IP-adressa di tilhøyrer ein open mellomtenar (proxy). Du bør kontakte internettleverandøren din eller kundesørvis og gje dei beskjed, ettersom dette er eit alvorleg sikkerheitsproblem.',
 'proxyblocksuccess'           => 'Utført.',
-'sorbs'                       => 'SORBS DNSBL',
-'sorbsreason'                 => 'IP-adressa di er lista som ein open mellomtenar i [http://www.sorbs.net SORBS DNSBL].
+'sorbsreason'                 => 'IP-adressa di er lista som ein open mellomtenar i DNSBL.
 
 Dersom du er feilaktig blokkert kan http://www.sorbs.net/faq/retest.shtml vera til hjelp for å få IP-adressa di fjerna frå svartelista.',
-'sorbs_create_account_reason' => 'IP-adressa di er lista som ein open mellomtenar i [http://www.sorbs.net SORBS] DNSBL, og difor får du ikkje registrert deg.',
+'sorbs_create_account_reason' => 'IP-adressa di er lista som ein open mellomtenar i DNSBL, og difor får du ikkje registrert deg.',
 
 # Developer tools
 'lockdb'              => 'Skrivevern (lock) database',
@@ -1050,7 +1043,6 @@ I desse falla lyt du flytte eller flette saman sida manuelt. Om det ikkje er mog
 'newtitle'               => 'Til ny tittel',
 'movepagebtn'            => 'Flytt side',
 'pagemovedsub'           => 'Flyttinga er gjennomført',
-'pagemovedtext'          => 'Sida «[[$1]]» er flytt til «[[$2]]».',
 'articleexists'          => 'Ei side med det namnet finst allereie, eller det namnet du har valt er ikkje gyldig. Vel eit anna namn.',
 'talkexists'             => "'''Innhaldssida vart flytt, men diskusjonssida som høyrer til kunne ikkje flyttast fordi det allereie finst ei side med den nye tittelen. Du lyt flette dei saman manuelt. Dersom det ikkje er mogleg for deg å gjera dette kan du kontakte ein <a href=\"{{localurl:Project:Administratorar}}\">administrator</a> &#8212; men <b>ikkje</b> bruk klipp-og-lim metoden sidan dette ikkje tek vare på endringshistorikken.'''",
 'movedto'                => 'er flytt til',
@@ -1187,7 +1179,7 @@ For å eksportere bruker du [[{{ns:-1}}:Export|eksportsida]] på kjeldewikien; h
 'spamprotectionmatch'    => 'Den følgjande teksten utløyste reklamefilteret: $1',
 'subcategorycount'       => 'Det er $1 underkategoriar av denne kategorien.',
 'categoryarticlecount'   => 'Det er $1 innhaldssider i denne kategorien.',
-'listingcontinuesabbrev' => ' vidare',
+'listingcontinuesabbrev' => 'vidare',
 
 # Info page
 'infosubtitle'   => 'Informasjon om side',
@@ -1456,7 +1448,6 @@ For å eksportere bruker du [[{{ns:-1}}:Export|eksportsida]] på kjeldewikien; h
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'alle',
 'imagelistall'     => 'alle',
-'watchlistall1'    => 'alle',
 'watchlistall2'    => 'alle',
 'namespacesall'    => 'alle',
 

@@ -253,9 +253,16 @@ $messages = array(
 'category_header'       => 'Seiten in der Kategorie „$1“',
 'subcategories'         => 'Unterkategorien',
 'category-media-header' => 'Medien in der Kategorie „$1“',
+'category-empty'        => "''Diese Kategorie enthält zur Zeit keine Artikel oder Medien.''",
 
 'mainpagetext'      => 'MediaWiki wurde erfolgreich installiert.',
-'mainpagedocfooter' => 'Hilfe zur Benutzung und Konfiguration der Wiki Software finden Sie im [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbuch].',
+'mainpagedocfooter' => 'Hilfe zur Benutzung und Konfiguration der Wiki Software finden Sie im [http://meta.wikimedia.org/wiki/Help:Contents Benutzerhandbuch].
+
+== Starthilfen ==
+
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Liste der Konfigurationsvariablen]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki-FAQ]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailingliste neuer MediaWiki-Versionen]',
 
 'about'          => 'Über',
 'article'        => 'Seite',
@@ -324,7 +331,7 @@ $messages = array(
 'redirectedfrom'    => '(Weitergeleitet von $1)',
 'redirectpagesub'   => 'Weiterleitung',
 'lastmodifiedat'    => 'Diese Seite wurde zuletzt am $1 um $2 Uhr geändert.', # $1 date, $2 time
-'viewcount'         => 'Diese Seite wurde bisher $1 mal abgerufen.',
+'viewcount'         => 'Diese Seite wurde bisher {{PLURAL:$1|einmal|$1-mal}} abgerufen.',
 'protectedpage'     => 'Geschützte Seite',
 'jumpto'            => 'Wechseln zu:',
 'jumptonavigation'  => 'Navigation',
@@ -426,10 +433,13 @@ Die Seite ist möglicherweise gelöscht oder verschoben worden.
 Falls dies nicht der Fall ist, haben Sie eventuell einen Fehler in der Software gefunden. Bitte melden Sie dies einem [[{{MediaWiki:grouppage-sysop}}|Administrator]] unter Nennung der URL.',
 'readonly_lag'         => 'Die Datenbank wurde kurzzeitig automatisch gesperrt, damit sich die Datenbanken abgleichen können.',
 'internalerror'        => 'Interner Fehler',
+'internalerror_info'   => 'Interner Fehler: $1',
 'filecopyerror'        => 'Die Datei „$1“ konnte nicht nach „$2“ kopiert werden.',
 'filerenameerror'      => 'Die Datei „$1“ konnte nicht nach „$2“ umbenannt werden.',
 'filedeleteerror'      => 'Die Datei „$1“ konnte nicht gelöscht werden.',
+'directorycreateerror' => 'Das Verzeichnis „$1“ konnte nicht angelegt werden.',
 'filenotfound'         => 'Die Datei „$1“ wurde nicht gefunden.',
+'fileexists'           => 'In die Datei „$1“ konnte nicht geschrieben werden, da die Datei bereits vorhanden ist.',
 'unexpected'           => 'Unerwarteter Wert: „$1“=„$2“.',
 'formerror'            => 'Fehler: Die Eingaben konnten nicht verarbeitet werden.',
 'badarticleerror'      => 'Diese Aktion kann auf diese Seite nicht angewendet werden.',
@@ -451,6 +461,7 @@ Abfrage: $2',
 'editinginterface'     => "'''Warnung:''' Diese Seite enthält von der MediaWiki-Software benutzten Text. Änderungen wirken sich auf die Benutzeroberfläche aus.",
 'sqlhidden'            => '(SQL-Abfrage versteckt)',
 'cascadeprotected'     => 'Diese Seite ist zur Bearbeitung gesperrt. Sie ist in die {{PLURAL:$1|folgende Seite|folgenden Seiten}} eingebunden, die mittels der Kaskadensperroption geschützt {{PLURAL:$1|ist|sind}}:',
+'namespaceprotected'   => "Sie haben keine Berechtigung, die Seite in dem '''$1'''-Namensraum zu bearbeiten.",
 
 # Login and logout pages
 'logouttitle'                => 'Benutzer-Abmeldung',
@@ -599,7 +610,7 @@ Sie können $1 oder einen der anderen [[{{MediaWiki:grouppage-sysop}}|Administra
 \'\'\'Bitte geben Sie folgende Daten in jeder Anfrage an:\'\'\'
 *Sperrender Administrator: $1
 *Sperrgrund: $2
-*Sperrende: $6
+*Sperr-Ende: $6
 *IP-Adresse: $3
 *Sperre betrifft: $7
 *Sperr-ID: #$5
@@ -1030,9 +1041,6 @@ Bitte prüfen Sie, ob Sie das Bild in voller Auflösung vorliegen haben und lade
 'fileexists-forbidden'        => 'Mit diesem Namen existiert bereits eine Datei. Bitte gehen Sie zurück und laden Ihre Datei unter einem anderen Namen hoch. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Mit diesem Namen existiert bereits eine Datei. Bitte gehen Sie zurück und laden Sie diese Datei unter einem anderen Namen hoch. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Erfolgreich hochgeladen',
-'fileuploaded'                => 'Die Datei „$1“ wurde erfolgreich hochgeladen. Bitte folgen Sie dem Link $2 zur Beschreibungsseite und geben Sie weitere Informationen zur Datei an.
-
-Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:$1|thumb|Beschreibung]]</nowiki></tt> ein Vorschaubild auf der Seite erzeugen lassen.',
 'uploadwarning'               => 'Warnung',
 'savefile'                    => 'Datei speichern',
 'uploadedimage'               => 'hat [[$1]] hochgeladen',
@@ -1061,6 +1069,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[</nowi
 
 'license'            => 'Lizenz',
 'nolicense'          => 'keine Vorauswahl',
+'license-nopreview'  => '(es ist keine Vorschau verfügbar)',
 'upload_source_url'  => ' (gültige, öffentlich zugängliche URL)',
 'upload_source_file' => ' (eine Datei auf Ihrem Computer)',
 
@@ -1084,7 +1093,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[</nowi
 'deleteimg'                 => 'Löschen',
 'deleteimgcompletely'       => 'Alle Versionen dieser Datei löschen',
 'imghistlegend'             => 'Legende: (Aktuell) = Dies ist die aktuelle Datei, (Löschen) = lösche diese alte Version, (Zurücksetzen) = verwende wieder diese alte Version.',
-'imagelinks'                => 'Dateilinks',
+'imagelinks'                => 'Verwendung',
 'linkstoimage'              => 'Die folgenden Seiten benutzen diese Datei:',
 'nolinkstoimage'            => 'Keine Seite benutzt diese Datei.',
 'sharedupload'              => 'Diese Datei ist ein gemeinsam genutzter Upload und kann von anderen Projekten verwendet werden.',
@@ -1129,7 +1138,7 @@ Falls es sich um ein Bild gehandelt hat, so können Sie mit <tt><nowiki>[[</nowi
 'sitestats'              => 'Seitenstatistik',
 'userstats'              => 'Benutzerstatistik',
 'sitestatstext'          => "Es gibt insgesamt '''$1''' {{PLURAL:$1|Seite|Seiten}} in der Datenbank.
-Das schliesst Diskussionsseiten, Seiten über {{SITENAME}}, kleine Seiten, Weiterleitungen und andere Seiten ein,
+Das schließt Diskussionsseiten, Seiten über {{SITENAME}}, kleine Seiten, Weiterleitungen und andere Seiten ein,
 die eventuell nicht als Seiten gewertet werden können.
 
 Diese ausgenommen gibt es '''$2''' {{PLURAL:$2|Seite|Seiten}}, die als Seite gewertet werden {{PLURAL:$2|kann|können}}.
@@ -1326,7 +1335,7 @@ Wenn Sie die Seite wieder von Ihrer Beobachtungsliste entfernen möchten, klicke
 'unwatchthispage'      => 'Nicht mehr beobachten',
 'notanarticle'         => 'Keine Seite',
 'watchnochange'        => 'Keine der von Ihnen beobachteten Seiten wurde während des angezeigten Zeitraums bearbeitet.',
-'watchdetails'         => 'Sie beobachten {{PLURAL:$1|eine Seite|$1 Seiten}} | [[Special:Watchlist/edit|Komplette Liste zeigen und bearbeiten]] | [[Special:Watchlist/clear|Komplette Liste leeren]]',
+'watchlist-details'    => 'Sie beobachten {{PLURAL:$1|1 Seite|$1 Seiten}}.',
 'wlheader-enotif'      => 'Der E-Mail-Benachrichtigungsdienst ist aktiviert.<br />',
 'wlheader-showupdated' => "Seiten mit noch nicht gesehenen Änderungen werden '''fett''' dargestellt.<br />",
 'watchmethod-recent'   => 'Überprüfen der letzten Bearbeitungen für die Beobachtungsliste',
@@ -1410,6 +1419,7 @@ und dass Sie in Übereinstimmung mit den [[{{MediaWiki:policy-url}}|Richtlinien]
 Änderungen an diesem Artikel vorgenommen hat.<br />Die letzte Änderung stammt von [[{{ns:user}}:$3|$3]] <span style='font-size: smaller'>([[{{ns:user_talk}}:$3|Diskussion]])</span>.",
 'editcomment'                 => 'Der Änderungskommentar lautet: „<i>$1</i>“.', # only shown if there is an edit comment
 'revertpage'                  => 'Änderungen von [[{{ns:user}}:$2|$2]] ([[{{ns:special}}:Contributions/$2|Beiträge]]) rückgängig gemacht und letzte Version von $1 wiederhergestellt',
+'rollback-success'            => 'Die Änderungen von $1 wurden rückgängig gemacht und die letzte Version von $2 wurde wiederhergestellt.',
 'sessionfailure'              => 'Es gab ein Problem mit Ihrer Benutzersitzung.
 Diese Aktion wurde aus Sicherheitsgründen abgebrochen, um eine falsche Zuordnung Ihrer Änderungen zu einem anderen Benutzer zu verhindern.
 Bitte gehen Sie zurück und versuchen den Vorgang erneut auszuführen.',
@@ -1478,18 +1488,24 @@ Der aktuelle Text der gelöschten Seite ist nur Administratoren zugänglich.',
 'undeletereset'            => 'Abbrechen',
 'undeletecomment'          => 'Begründung:',
 'undeletedarticle'         => 'hat „[[$1]]“ wiederhergestellt',
-'undeletedrevisions'       => '$1 {{plural:$1|Version|Versionen}} wurden wiederhergestellt',
-'undeletedrevisions-files' => '$1 {{plural:$1|Version|Versionen}} und $2 {{plural:$2|Datei|Dateien}} wurden wiederhergestellt',
-'undeletedfiles'           => '$1 {{plural:$1|Datei|Dateien}} wurden wiederhergestellt',
+'undeletedrevisions'       => '$1 Version(en) wurde(n) wiederhergestellt',
+'undeletedrevisions-files' => '$1 Version(en) und $2 Datei(en) wurden wiederhergestellt',
+'undeletedfiles'           => '$1 Datei(en) wurde(n) wiederhergestellt',
 'cannotundelete'           => 'Wiederherstellung fehlgeschlagen; jemand anderes hat die Seite bereits wiederhergestellt.',
 'undeletedpage'            => "'''$1''' wurde wiederhergestellt.
 
-Im [[Special:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht der kürzlich gelöschten und wiederhergestellten Seiten.",
+Im [[Special:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht der gelöschten und wiederhergestellten Seiten.",
 'undelete-header'          => 'Siehe das [[{{ns:special}}:Log/delete|Lösch-Logbuch]] für kürzlich gelöschte Seiten.',
 'undelete-search-box'      => 'Suche nach gelöschten Seiten',
 'undelete-search-prefix'   => 'Suchbegriff (Wortanfang ohne Wildcards):',
 'undelete-search-submit'   => 'Suche',
 'undelete-no-results'      => 'Es wurde im Archiv keine zum Suchbegriff passende Seite gefunden.',
+'undelete-filename-mismatch' => 'Die Dateiversion mit dem Zeitstempel $1 konnte nicht wiederhergestellt werden: Die Dateinamen passen nicht zueinander.',
+'undelete-bad-store-key'   => 'Die Dateiversion mit dem Zeitstempel $1 konnte nicht wiederhergestellt werden: Die Datei war bereits vor dem Löschen nicht mehr vorhanden.',
+'undelete-cleanup-error'   => 'Fehler beim Löschen der unbenutzten Archiv-Version $1.',
+'undelete-missing-filearchive' => 'Die Datei mit der Archiv-ID $1 kann nicht wiederhergestellt werden, da sie nicht in der Datenbank vorhanden ist. Möglicherweise wurde sie bereits wiederhergestellt.',
+'undelete-error-short'     => 'Fehler beim Wiederherstellen der Datei $1',
+'undelete-error-long'      => "Es wurden Fehler beim Wiederherstellen einer Datei festgestellt:\n\n$1\n",
 
 # Namespace form on various pages
 'namespace' => 'Namensraum:',
@@ -1504,8 +1520,8 @@ Im [[Special:Log/delete|Lösch-Logbuch]] finden Sie eine Übersicht der kürzlic
 'uclinks'       => 'Zeige die letzten $1 Beiträge; zeige die letzten $2 Tage.',
 'uctop'         => ' (aktuell)',
 
-'month'         => 'Monat:',
-'year'          => 'Jahr:',
+'month'         => 'ab Monat (und vorher):',
+'year'          => 'ab Jahr (und vorher):',
 
 'sp-contributions-newest'      => 'Jüngste',
 'sp-contributions-oldest'      => 'Älteste',
@@ -1613,7 +1629,6 @@ Zur Aufhebung der Sperre siehe die [[{{ns:special}}:Ipblocklist|Liste aller akti
 'ipb_cant_unblock'            => 'Fehler: Sperr-ID $1 nicht gefunden. Die Sperre wurde bereits aufgehoben.',
 'proxyblockreason'            => 'Ihre IP-Adresse wurde gesperrt, da sie ein offener Proxy ist. Bitte kontaktieren Sie Ihren Provider oder Ihre Systemtechnik und informieren Sie sie über dieses mögliche Sicherheitsproblem.',
 'proxyblocksuccess'           => 'Fertig.',
-'sorbs'                       => 'DNSBL',
 'sorbsreason'                 => 'Die IP-Adresse ist in der DNSBL von {{SITENAME}} als offener PROXY gelistet.',
 'sorbs_create_account_reason' => 'Die IP-Adresse ist in der DNSBL von {{SITENAME}} als offener PROXY gelistet. Das Anlegen neuer Benutzer ist nicht möglich.',
 
@@ -1687,6 +1702,7 @@ Alternativ ist der Export auch mit der Syntax <tt><nowiki>[[</nowiki>{{ns:specia
 'export-submit'     => 'Seiten exportieren',
 'export-addcattext' => 'Seiten aus Kategorie hinzufügen:',
 'export-addcat'     => 'Hinzufügen',
+'export-download'   => 'Als XML-Datei speichern',
 
 # Namespace 8 related
 'allmessages'               => 'MediaWiki-Systemtexte',
@@ -1739,7 +1755,7 @@ Alle Transwiki Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'import-logentry-upload'           => 'hat „[[$1]]“ importiert',
 'import-logentry-upload-detail'    => '{{PLURAL:$1|1 Version|$1 Versionen}}',
 'import-logentry-interwiki'        => 'hat „[[$1]]“ importiert (Transwiki)',
-'import-logentry-interwiki-detail' => '{{PLURAL:$1|1 Version|$1 Versionen}} von $2 importiert',
+'import-logentry-interwiki-detail' => '$1 Version(en) von $2',
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Eigene Benutzerseite',
@@ -1833,11 +1849,11 @@ Alle Transwiki Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 # Spam protection
 'spamprotectiontitle'    => 'Spamschutzfilter',
 'spamprotectiontext'     => 'Die Seite die Sie speichern wollten wurde vom Spamschutzfilter blockiert. Das liegt wahrscheinlich an einem Link zu einer externen Seite.',
-'spamprotectionmatch'    => 'Der folgende Text wurde von dem Spam-Filter gefunden: $1',
+'spamprotectionmatch'    => "'''Der folgende Text wurde von dem Spam-Filter gefunden: $1'''",
 'subcategorycount'       => '{{PLURAL:$1|Es wird $1 Unterkategorie|Es werden $1 Unterkategorien}} angezeigt.',
 'categoryarticlecount'   => 'Es {{PLURAL:$1|wird $1 Seite|werden $1 Seiten}} aus dieser Kategorie angezeigt.',
 'category-media-count'   => 'Es {{PLURAL:$1|wird $1 Datei|werden $1 Dateien}} aus dieser Kategorie angezeigt.',
-'listingcontinuesabbrev' => ' (Forts.)',
+'listingcontinuesabbrev' => '(Forts.)',
 'spambot_username'       => 'MediaWiki Spam-Säuberung',
 'spam_reverting'         => 'Letzte Version ohne Links zu $1 wiederhergestellt.',
 'spam_blanking'          => 'Alle Versionen enthielten Links zu $1, bereinigt.',
@@ -2165,7 +2181,6 @@ Alle Transwiki Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'alle',
 'imagelistall'     => 'alle',
-'watchlistall1'    => 'alle',
 'watchlistall2'    => 'alle',
 'namespacesall'    => 'alle',
 'monthsall'        => 'alle',
@@ -2308,5 +2323,13 @@ Bitte bestätigen Sie, dass Sie diese Seite wirklich neu erstellen möchten.",
 'watchlistedit-raw-titles'     => 'Einträge:',
 'watchlistedit-raw-submit'     => 'Beobachtungsliste speichern',
 'watchlistedit-raw-done'       => 'Ihre Beobachtungsliste wurde gespeichert.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 Eintrag wurde|$1 Einträge wurden}} hinzugefügt:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 Eintrag wurde|$1 Einträge wurden}} entfernt:',
+
+# Watchlist editing tools
+'watchlisttools-view'  => 'Beobachtungsliste: Änderungen',
+'watchlisttools-edit'  => 'normal bearbeiten',
+'watchlisttools-raw'   => 'Listenformat bearbeiten (Import/Export)',
+'watchlisttools-clear' => 'löschen',
 
 );

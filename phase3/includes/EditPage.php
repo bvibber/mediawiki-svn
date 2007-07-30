@@ -98,6 +98,11 @@ class EditPage {
 
 			$text = $this->mArticle->getContent();
 
+			if ($undo > 0 && $undoafter > 0 && $undo < $undoafter) {
+				# If they got undoafter and undo round the wrong way, switch them
+				list( $undo, $undoafter ) = array( $undoafter, $undo );
+			}
+
 			if ( $undo > 0 && $undo > $undoafter ) {
 				# Undoing a specific edit overrides section editing; section-editing
 				# doesn't work with undoing.
@@ -451,17 +456,30 @@ class EditPage {
 	}
 
 	/**
-	 * Return true if this page should be previewed when the edit form
-	 * is initially opened.
+	 * Should we show a preview when the edit form is first shown?
+	 *
 	 * @return bool
-	 * @private
 	 */
-	function previewOnOpen() {
-		global $wgUser;
-		return $this->section != 'new' &&
-			( ( $wgUser->getOption( 'previewonfirst' ) && $this->mTitle->exists() ) ||
-				( $this->mTitle->getNamespace() == NS_CATEGORY &&
-					!$this->mTitle->exists() ) );
+	private function previewOnOpen() {
+		global $wgRequest, $wgUser;
+		if( $wgRequest->getVal( 'preview' ) == 'yes' ) {
+			// Explicit override from request
+			return true;
+		} elseif( $wgRequest->getVal( 'preview' ) == 'no' ) {
+			// Explicit override from request
+			return false;
+		} elseif( $this->section == 'new' ) {
+			// Nothing *to* preview for new sections
+			return false;
+		} elseif( $this->mTitle->exists() && $wgUser->getOption( 'previewonfirst' ) ) {
+			// Standard preference behaviour
+			return true;
+		} elseif( !$this->mTitle->exists() && $this->mTitle->getNamespace() == NS_CATEGORY ) {
+			// Categories are special
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
@@ -774,7 +792,7 @@ class EditPage {
 
 		if ( $this->isConflict) {
 			wfDebug( "EditPage::editForm conflict! getting section '$this->section' for time '$this->edittime' (article time '" .
-				$this->mArticle->getTimestamp() . "'\n" );
+				$this->mArticle->getTimestamp() . "')\n" );
 			$text = $this->mArticle->replaceSection( $this->section, $this->textbox1, $this->summary, $this->edittime);
 		}
 		else {
@@ -789,7 +807,7 @@ class EditPage {
 
 		# Suppress edit conflict with self, except for section edits where merging is required.
 		if ( ( $this->section == '' ) && ( 0 != $userid ) && ( $this->mArticle->getUser() == $userid ) ) {
-			wfDebug( "Suppressing edit conflict, same user.\n" );
+			wfDebug( "EditPage::editForm Suppressing edit conflict, same user.\n" );
 			$this->isConflict = false;
 		} else {
 			# switch from section editing to normal editing in edit conflict
@@ -798,11 +816,11 @@ class EditPage {
 				if( $this->mergeChangesInto( $text ) ){
 					// Successful merge! Maybe we should tell the user the good news?
 					$this->isConflict = false;
-					wfDebug( "Suppressing edit conflict, successful merge.\n" );
+					wfDebug( "EditPage::editForm Suppressing edit conflict, successful merge.\n" );
 				} else {
 					$this->section = '';
 					$this->textbox1 = $text;
-					wfDebug( "Keeping edit conflict, failed merge.\n" );
+					wfDebug( "EditPage::editForm Keeping edit conflict, failed merge.\n" );
 				}
 			}
 		}
@@ -920,6 +938,10 @@ class EditPage {
 
 		# Enabled article-related sidebar, toplinks, etc.
 		$wgOut->setArticleRelated( true );
+
+		if ( $this->formtype == 'preview' ) {
+			$wgOut->setPageTitleActionText( wfMsg( 'preview' ) );
+		}
 
 		if ( $this->isConflict ) {
 			$s = wfMsg( 'editconflict', $this->mTitle->getPrefixedText() );

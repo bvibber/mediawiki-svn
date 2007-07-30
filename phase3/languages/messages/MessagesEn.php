@@ -562,6 +562,7 @@ XHTML id names.
 'category_header'       => 'Articles in category "$1"',
 'subcategories'         => 'Subcategories',
 'category-media-header' => 'Media in category "$1"',
+'category-empty'        => "''This category contains currently no articles or media.''",
 
 'linkprefix'        => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD', # only translate this message to other languages if you have to change it
 'mainpagetext'      => "<big>'''MediaWiki has been successfully installed.'''</big>",
@@ -569,9 +570,9 @@ XHTML id names.
 
 == Getting started ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Configuration settings list]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki FAQ]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]",
 
 'about'          => 'About',
 'article'        => 'Content page',
@@ -641,7 +642,7 @@ XHTML id names.
 'redirectedfrom'    => '(Redirected from $1)',
 'redirectpagesub'   => 'Redirect page',
 'lastmodifiedat'    => 'This page was last modified $2, $1.', # $1 date, $2 time
-'viewcount'         => 'This page has been accessed {{PLURAL:$1|one time|$1 times}}.',
+'viewcount'         => 'This page has been accessed {{PLURAL:$1|once|$1 times}}.',
 'protectedpage'     => 'Protected page',
 'jumpto'            => 'Jump to:',
 'jumptonavigation'  => 'navigation',
@@ -760,10 +761,13 @@ If this is not the case, you may have found a bug in the software.
 Please report this to an administrator, making note of the URL.',
 'readonly_lag'         => 'The database has been automatically locked while the slave database servers catch up to the master',
 'internalerror'        => 'Internal error',
+'internalerror_info'   => 'Internal error: $1', 
 'filecopyerror'        => 'Could not copy file "$1" to "$2".',
 'filerenameerror'      => 'Could not rename file "$1" to "$2".',
 'filedeleteerror'      => 'Could not delete file "$1".',
+'directorycreateerror' => 'Could not create directory "$1".',
 'filenotfound'         => 'Could not find file "$1".',
+'fileexistserror'      => 'Unable to write to file "$1": file exists',
 'unexpected'           => 'Unexpected value: "$1"="$2".',
 'formerror'            => 'Error: could not submit form',
 'badarticleerror'      => 'This action cannot be performed on this page.',
@@ -785,6 +789,7 @@ Query: $2',
 'editinginterface'     => "'''Warning:''' You are editing a page which is used to provide interface text for the software. Changes to this page will affect the appearance of the user interface for other users.",
 'sqlhidden'            => '(SQL query hidden)',
 'cascadeprotected'     => 'This page has been protected from editing, because it is included in the following {{PLURAL:$1|page|pages}}, which are protected with the "cascading" option turned on:',
+'namespaceprotected' => "You do not have permission to edit pages in the '''$1''' namespace.",
 
 # Login and logout pages
 'logouttitle'                => 'User logout',
@@ -1387,10 +1392,6 @@ If you have this image in full resolution upload this one, otherwise change the 
 'fileexists-forbidden'        => 'A file with this name exists already; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'A file with this name exists already in the shared file repository; please go back and upload this file under a new name. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Successful upload',
-'fileuploaded'                => 'File $1 uploaded successfully.
-Please follow this link: $2 to the description page and fill
-in information about the file, such as where it came from, when it was
-created and by whom, and anything else you may know about it. If this is an image, you can insert it like this: <tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:$1|thumb|Description]]</nowiki></tt>',
 'uploadwarning'               => 'Upload warning',
 'savefile'                    => 'Save file',
 'uploadedimage'               => 'uploaded "[[$1]]"',
@@ -1420,6 +1421,7 @@ created and by whom, and anything else you may know about it. If this is an imag
 'license'            => 'Licensing',
 'nolicense'          => 'None selected',
 'licenses'           => '-', # don't translate or duplicate this message to other languages
+'license-nopreview'  => '(Preview not available)',
 'upload_source_url'  => ' (a valid, publicly accessible URL)',
 'upload_source_file' => ' (a file on your computer)',
 
@@ -1437,14 +1439,17 @@ created and by whom, and anything else you may know about it. If this is an imag
 'imgdelete'                 => 'del',
 'imgdesc'                   => 'desc',
 'imgfile'                   => 'file',
-'imglegend'                 => 'Legend: (desc) = show/edit file description.',
-'imghistory'                => 'File history',
-'revertimg'                 => 'rev',
-'deleteimg'                 => 'del',
-'deleteimgcompletely'       => 'Delete all revisions of this file',
-'imghistlegend'             => 'Legend: (cur) = this is the current file, (del) = delete
-this old version, (rev) = revert to this old version.
-<br /><i>Click on date to see the file uploaded on that date</i>.',
+'filehist' => 'File history',
+'filehist-help' => 'Click on a date/time to view the file as it appeared at that time.',
+'filehist-deleteall' => 'delete all',
+'filehist-deleteone' => 'delete this',
+'filehist-revert' => 'revert',
+'filehist-current' => 'current',
+'filehist-datetime' => 'Date/Time',
+'filehist-user' => 'User',
+'filehist-dimensions' => 'Dimensions',
+'filehist-filesize' => 'File size',
+'filehist-comment' => 'Comment',
 'imagelinks'                => 'Links',
 'linkstoimage'              => 'The following pages link to this file:',
 'nolinkstoimage'            => 'There are no pages that link to this file.',
@@ -1461,6 +1466,16 @@ this old version, (rev) = revert to this old version.
 'imagelist_size'            => 'Size',
 'imagelist_description'     => 'Description',
 'imagelist_search_for'      => 'Search for image name:',
+
+# File reversion
+'filerevert' => 'Revert $1',
+'filerevert-legend' => 'Revert file',
+'filerevert-intro' => "<span class=\"plainlinks\">You are reverting '''[[Media:$1|$1]]''' to the [$3 version as of $2].</span>",
+'filerevert-comment' => 'Comment:',
+'filerevert-defaultcomment' => 'Reverted to version as of $1',
+'filerevert-submit' => 'Revert',
+'filerevert-success' => "<span class=\"plainlinks\">'''[[Media:$1|$1]]''' has been reverted to the [$3 version as of $2].</span>",
+'filerevert-badversion' => 'There is no previous local version of this file with the provided timestamp.',
 
 # MIME search
 'mimesearch'         => 'MIME search',
@@ -1503,7 +1518,7 @@ since {{SITENAME}} was setup.
 That comes to '''\$5''' average edits per page, and '''\$6''' views per edit.
 
 The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7'''.",
-'userstatstext'          => "There {{PLURAL:$1|is '''1''' registered user|are '''$1''' registered users}}, of which
+'userstatstext'          => "There {{PLURAL:$1|is '''1''' registered [[Special:Listusers|user]]|are '''$1''' registered [[Special:Listusers|users]]}}, of which
 '''$2''' (or '''$4%''') {{PLURAL:$2|has|have}} $5 rights.",
 'statistics-mostpopular' => 'Most viewed pages',
 'statistics-footer'      => '', # don't translate or duplicate this message to other languages
@@ -1709,9 +1724,7 @@ If you want to remove the page from your watchlist later, click \"Unwatch\" in t
 'unwatchthispage'      => 'Stop watching',
 'notanarticle'         => 'Not a content page',
 'watchnochange'        => 'None of your watched items was edited in the time period displayed.',
-'watchdetails'         => '* {{PLURAL:$1|$1 page|$1 pages}} watched not counting talk pages
-* [[Special:Watchlist/edit|Show and edit complete watchlist]]
-* [[Special:Watchlist/clear|Remove all pages]]',
+'watchlist-details'    => '{{PLURAL:$1|$1 page|$1 pages}} watched not counting talk pages.',
 'wlheader-enotif'      => '* E-mail notification is enabled.',
 'wlheader-showupdated' => "* Pages which have been changed since you last visited them are shown in '''bold'''",
 'watchmethod-recent'   => 'checking recent edits for watched pages',
@@ -1790,7 +1803,6 @@ See $2 for a record of recent deletions.',
 'deletionlog'                 => 'deletion log',
 'reverted'                    => 'Reverted to earlier revision',
 'deletecomment'               => 'Reason for deletion',
-'imagereverted'               => 'Revert to earlier version was successful.',
 'rollback'                    => 'Roll back edits',
 'rollback_short'              => 'Rollback',
 'rollbacklink'                => 'rollback',
@@ -1802,6 +1814,7 @@ by [[User:$2|$2]] ([[User talk:$2|Talk]]); someone else has edited or rolled bac
 Last edit was by [[User:$3|$3]] ([[User talk:$3|Talk]]).',
 'editcomment'                 => 'The edit comment was: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'                  => 'Reverted edits by [[Special:Contributions/$2|$2]] ([[User talk:$2|Talk]]); changed back to last version by [[User:$1|$1]]',
+'rollback-success' => 'Reverted edits by $1; changed back to last version by $2.',
 'sessionfailure'              => 'There seems to be a problem with your login session;
 this action has been canceled as a precaution against session hijacking.
 Please hit "back" and reload the page you came from, then try again.',
@@ -1875,9 +1888,9 @@ revision may have been restored or removed from the archive.',
 'undeletereset'            => 'Reset',
 'undeletecomment'          => 'Comment:',
 'undeletedarticle'         => 'restored "[[$1]]"',
-'undeletedrevisions'       => '$1 {{PLURAL:$1|revision|revisions}} restored',
-'undeletedrevisions-files' => '$1 {{PLURAL:$1|revision|revisions}} and $2 {{PLURAL:$2|file|files}} restored',
-'undeletedfiles'           => '$1 {{PLURAL:$1|file|files}} restored',
+'undeletedrevisions'       => '$1 revision(s) restored',
+'undeletedrevisions-files' => '$1 revision(s) and $2 file(s) restored',
+'undeletedfiles'           => '$1 file(s) restored',
 'cannotundelete'           => 'Undelete failed; someone else may have undeleted the page first.',
 'undeletedpage'            => "<big>'''$1 has been restored'''</big>
 
@@ -1887,6 +1900,13 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'undelete-search-prefix'   => 'Show pages starting with:',
 'undelete-search-submit'   => 'Search',
 'undelete-no-results'      => 'No matching pages found in the deletion archive.',
+'undelete-filename-mismatch' => 'Cannot undelete file revision with timestamp $1: filename mismatch',
+'undelete-bad-store-key'   => 'Cannot undelete file revision with timestamp $1: file was missing before deletion.',
+'undelete-cleanup-error'   => 'Error deleting unused archive file "$1".',
+'undelete-missing-filearchive' => 'Unable to restore file archive ID $1 because it isn\'t in the database. ' .
+	'It may have already been undeleted.',
+'undelete-error-short'     => 'Error undeleting file: $1',
+'undelete-error-long'      => "Errors were encountered while undeleting the file:\n\n$1\n",
 
 # Namespace form on various pages
 'namespace' => 'Namespace:',
@@ -1900,8 +1920,8 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'ucnote'        => "Below are this user's last <b>$1</b> changes in the last <b>$2</b> days.",
 'uclinks'       => 'View the last $1 changes; view the last $2 days.',
 'uctop'         => ' (top)',
-'month'         => 'Month:',
-'year'          => 'Year:',
+'month'         => 'From month (and earlier):',
+'year'          => 'From year (and earlier):',
 
 'sp-contributions-newest'      => 'Newest',
 'sp-contributions-oldest'      => 'Oldest',
@@ -1913,6 +1933,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'sp-contributions-search'      => 'Search for contributions',
 'sp-contributions-username'    => 'IP Address or username:',
 'sp-contributions-submit'      => 'Search',
+'sp-contributions-explain'     => '', # only translate this message to other languages if you have to change it
 'sp-contributions-footer'      => '-', # don't translate or duplicate this message to other languages
 'sp-contributions-footer-anon' => '-', # don't translate or duplicate this message to other languages
 
@@ -1923,8 +1944,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'whatlinkshere-summary' => '', # only translate this message to other languages if you have to change it
 'whatlinkshere-barrow'  => '&lt;', # only translate this message to other languages if you have to change it
 'notargettitle'         => 'No target',
-'notargettext'          => 'You have not specified a target page or user
-to perform this function on.',
+'notargettext'          => 'You have not specified a target page or user to perform this function on.',
 'linklistsub'           => '(List of links)',
 'linkshere'             => "The following pages link to '''[[:$1]]''':",
 'nolinkshere'           => "No pages link to '''[[:$1]]'''.",
@@ -2016,7 +2036,7 @@ the list of currently operational bans and blocks.',
 'ipb_cant_unblock'            => 'Error: Block ID $1 not found. It may have been unblocked already.',
 'proxyblockreason'            => 'Your IP address has been blocked because it is an open proxy. Please contact your Internet service provider or tech support and inform them of this serious security problem.',
 'proxyblocksuccess'           => 'Done.',
-'sorbs'                       => 'DNSBL',
+'sorbs'                       => 'DNSBL', # only translate this message to other languages if you have to change it
 'sorbsreason'                 => 'Your IP address is listed as an open proxy in the DNSBL used by this site.',
 'sorbs_create_account_reason' => 'Your IP address is listed as an open proxy in the DNSBL used by this site. You cannot create an account',
 
@@ -2112,13 +2132,14 @@ To export pages, enter the titles in the text box below, one title per line, and
 select whether you want the current version as well as all old versions, with the page
 history lines, or just the current version with the info about the last edit.
 
-In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] for the page {{MediaWiki:mainpage}}.',
+In the latter case you can also use a link, e.g. [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] for the page "[[{{MediaWiki:mainpage}}]]".',
 'exportcuronly'     => 'Include only the current revision, not the full history',
 'exportnohistory'   => "----
 '''Note:''' Exporting the full history of pages through this form has been disabled due to performance reasons.",
 'export-submit'     => 'Export',
 'export-addcattext' => 'Add pages from category:',
 'export-addcat'     => 'Add',
+'export-download'   => 'Offer to save as a file',
 
 # Namespace 8 related
 'allmessages'               => 'System messages',
@@ -2321,7 +2342,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'subcategorycount'       => 'There {{PLURAL:$1|is one subcategory|are $1 subcategories}} to this category.',
 'categoryarticlecount'   => 'There {{PLURAL:$1|is one article|are $1 articles}} in this category.',
 'category-media-count'   => 'There {{PLURAL:$1|is one file|are $1 files}} in this category.',
-'listingcontinuesabbrev' => ' cont.',
+'listingcontinuesabbrev' => 'cont.',
 'spambot_username'       => 'MediaWiki spam cleanup',
 'spam_reverting'         => 'Reverting to last version not containing links to $1',
 'spam_blanking'          => 'All revisions contained links to $1, blanking',
@@ -2363,6 +2384,12 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 
 # Image deletion
 'deletedrevision' => 'Deleted old revision $1.',
+'filedeleteerror-short' => "Error deleting file: $1",
+'filedeleteerror-long' => "Errors were encountered while deleting the file:\n\n$1\n",
+'filedelete-missing' => 'The file "$1" cannot be deleted, because it doesn\'t exist.',
+'filedelete-old-unregistered' => 'The specified file revision "$1" is not in the database.',
+'filedelete-current-unregistered' => 'The specified file "$1" is not in the database.',
+'filedelete-archive-read-only' => 'The archive directory "$1" is not writable by the webserver.',
 
 # Browsing diffs
 'previousdiff' => '← Previous diff',
@@ -2719,7 +2746,6 @@ is collapsed. Others will be hidden by default.
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'all',
 'imagelistall'     => 'all',
-'watchlistall1'    => 'all',
 'watchlistall2'    => 'all',
 'namespacesall'    => 'all',
 'monthsall'        => 'all',
@@ -2909,5 +2935,13 @@ $1',
 'watchlistedit-raw-titles'     => 'Titles:',
 'watchlistedit-raw-submit'     => 'Update Watchlist',
 'watchlistedit-raw-done'       => 'Your watchlist has been updated.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 title was|$1 titles were}} added:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 title was|$1 titles were}} removed:',
+
+# Watchlist editing tools
+'watchlisttools-view'  => 'View relevant changes',
+'watchlisttools-edit'  => 'View and edit watchlist',
+'watchlisttools-raw'   => 'Edit raw watchlist',
+'watchlisttools-clear' => 'Clear watchlist',
 
 );

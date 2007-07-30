@@ -107,7 +107,7 @@ class CoreParserFunctions {
 	 * @return string
 	 */
 	static function displaytitle( $parser, $text = '' ) {
-		$text = trim( $text );
+		$text = trim( Sanitizer::decodeCharReferences( $text ) );
 		$title = Title::newFromText( $text );
 		if( $title instanceof Title && $title->getFragment() == '' && $title->equals( $parser->mTitle ) )
 			$parser->mOutput->setDisplayTitle( $text );
@@ -161,7 +161,7 @@ class CoreParserFunctions {
 	static function pad( $string = '', $length = 0, $char = 0, $direction = STR_PAD_RIGHT ) {
 		$length = min( max( $length, 0 ), 500 );
 		$char = substr( $char, 0, 1 );
-		return ( $string && (int)$length > 0 && strlen( trim( (string)$char ) ) > 0 )
+		return ( $string !== '' && (int)$length > 0 && strlen( trim( (string)$char ) ) > 0 )
 				? str_pad( $string, $length, (string)$char, $direction )
 				: $string;
 	}

@@ -46,10 +46,9 @@ class ImagePage extends Article {
 			return Article::view();
 
 		if ($wgShowEXIF && $this->img->exists()) {
-			$exif = $this->img->getExifData();
-			$showmeta = count($exif) ? true : false;
+			$formattedMetadata = $this->img->formatMetadata();
+			$showmeta = $formattedMetadata !== false;
 		} else {
-			$exif = false;
 			$showmeta = false;
 		}
 
@@ -82,12 +81,12 @@ class ImagePage extends Article {
 		$this->imageHistory();
 		$this->imageLinks();
 
-		if ( $exif ) {
+		if ( $showmeta ) {
 			global $wgStylePath, $wgStyleVersion;
 			$expand = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-expand' ) ) );
 			$collapse = htmlspecialchars( wfEscapeJsString( wfMsg( 'metadata-collapse' ) ) );
 			$wgOut->addHTML( Xml::element( 'h2', array( 'id' => 'metadata' ), wfMsg( 'metadata' ) ). "\n" );
-			$wgOut->addWikiText( $this->makeMetadataTable( $exif ) );
+			$wgOut->addWikiText( $this->makeMetadataTable( $formattedMetadata ) );
 			$wgOut->addHTML(
 				"<script type=\"text/javascript\" src=\"$wgStylePath/common/metadata.js?$wgStyleVersion\"></script>\n" .
 				"<script type=\"text/javascript\">attachMetadataToggle('mw_metadata', '$expand', '$collapse');</script>\n" );
@@ -106,9 +105,9 @@ class ImagePage extends Article {
 		global $wgLang;
 		$r = '<ul id="filetoc">
 			<li><a href="#file">' . $wgLang->getNsText( NS_IMAGE ) . '</a></li>
-			<li><a href="#filehistory">' . wfMsgHtml( 'imghistory' ) . '</a></li>
+			<li><a href="#filehistory">' . wfMsgHtml( 'filehist' ) . '</a></li>
 			<li><a href="#filelinks">' . wfMsgHtml( 'imagelinks' ) . '</a></li>' .
-			($metadata ? '<li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>' : '') . '
+			($metadata ? ' <li><a href="#metadata">' . wfMsgHtml( 'metadata' ) . '</a></li>' : '') . '
 		</ul>';
 		return $r;
 	}
@@ -121,42 +120,22 @@ class ImagePage extends Article {
 	 * @param array $exif The array containing the EXIF data
 	 * @return string
 	 */
-	function makeMetadataTable( $exif ) {
+	function makeMetadataTable( $metadata ) {
 		$r = wfMsg( 'metadata-help' ) . "\n\n";
 		$r .= "{| id=mw_metadata class=mw_metadata\n";
-		$visibleFields = $this->visibleMetadataFields();
-		foreach( $exif as $k => $v ) {
-			$tag = strtolower( $k );
-			$msg = wfMsg( "exif-$tag" );
-			$class = "exif-$tag";
-			if( !in_array( $tag, $visibleFields ) ) {
-				$class .= ' collapsable';
+		foreach ( $metadata as $type => $stuff ) {
+			foreach ( $stuff as $k => $v ) {
+				$class = Sanitizer::escapeId( $v['id'] );
+				if( $type == 'collapsed' ) {
+					$class .= ' collapsable';
+				}
+				$r .= "|- class=\"$class\"\n";
+				$r .= "!| {$v['name']}\n";
+				$r .= "|| {$v['value']}\n";
 			}
-			$r .= "|- class=\"$class\"\n";
-			$r .= "!| $msg\n";
-			$r .= "|| $v\n";
 		}
 		$r .= '|}';
 		return $r;
-	}
-
-	/**
-	 * Get a list of EXIF metadata items which should be displayed when
-	 * the metadata table is collapsed.
-	 *
-	 * @return array of strings
-	 * @access private
-	 */
-	function visibleMetadataFields() {
-		$fields = array();
-		$lines = explode( "\n", wfMsgForContent( 'metadata-fields' ) );
-		foreach( $lines as $line ) {
-			$matches = array();
-			if( preg_match( '/^\\*\s*(.*?)\s*$/', $line, $matches ) ) {
-				$fields[] = $matches[1];
-			}
-		}
-		return $fields;
 	}
 
 	/**
@@ -460,6 +439,8 @@ EOT
 		} else { $s=''; }
 		$wgOut->addHTML( $s );
 
+		$this->img->resetHistory();	// free db resources
+
 		# Exist check because we don't want to show this on pages where an image
 		# doesn't exist along with the noimage message, that would suck. -ævar
 		if( $wgUseExternalEditor && $this->img->exists() ) {
@@ -573,111 +554,68 @@ EOT
 				$wgOut->showUnexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
 				return;
 			}
-			if ( strstr( $oldimage, "/" ) || strstr( $oldimage, "\\" ) ) {
+			if( strpos( $oldimage, '/' ) !== false || strpos( $oldimage, '\\' ) !== false ) {
 				$wgOut->showUnexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
 				return;
 			}
-			if ( !$this->doDeleteOldImage( $oldimage ) ) {
-				return;
-			}
+			$status = $this->doDeleteOldImage( $oldimage );
 			$deleted = $oldimage;
 		} else {
-			$ok = $this->img->delete( $reason );
-			if( !$ok ) {
-				# If the deletion operation actually failed, bug out:
-				$wgOut->showFileDeleteError( $this->img->getName() );
-				return;
+			$status = $this->img->delete( $reason );
+			if ( !$status->isGood() ) {
+				// Warning or error
+				$wgOut->addWikiText( $status->getWikiText( 'filedeleteerror-short', 'filedeleteerror-long' ) );
 			}
-			
-			# Image itself is now gone, and database is cleaned.
-			# Now we remove the image description page.
-	
-			$article = new Article( $this->mTitle );
-			$article->doDeleteArticle( $reason ); # ignore errors
-
-			$deleted = $this->img->getName();
+			if ( $status->ok ) {
+				# Image itself is now gone, and database is cleaned.
+				# Now we remove the image description page.
+				$article = new Article( $this->mTitle );
+				$article->doDeleteArticle( $reason ); # ignore errors
+				$deleted = $this->img->getName();
+			}
 		}
 
-		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 
-		$loglink = '[[Special:Log/delete|' . wfMsg( 'deletionlog' ) . ']]';
-		$text = wfMsg( 'deletedtext', $deleted, $loglink );
-
-		$wgOut->addWikiText( $text );
-
-		$wgOut->returnToMain( false, $this->mTitle->getPrefixedText() );
+		if ( !$status->ok ) {
+			// Fatal error flagged
+			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ) );
+			$wgOut->returnToMain( false, $this->mTitle->getPrefixedText() );
+		} else {
+			// Operation completed
+			$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
+			$loglink = '[[Special:Log/delete|' . wfMsg( 'deletionlog' ) . ']]';
+			$text = wfMsg( 'deletedtext', $deleted, $loglink );
+			$wgOut->addWikiText( $text );
+			$wgOut->returnToMain( false, $this->mTitle->getPrefixedText() );
+		}
 	}
 
 	/**
-	 * @return success
+	 * Delete an old revision of an image, 
+	 * @return FileRepoStatus
 	 */
-	function doDeleteOldImage( $oldimage )
-	{
+	function doDeleteOldImage( $oldimage ) {
 		global $wgOut;
 
-		$ok = $this->img->deleteOld( $oldimage, '' );
-		if( !$ok ) {
-			# If we actually have a file and can't delete it, throw an error.
-			# Something went awry...
-			$wgOut->showFileDeleteError( "$oldimage" );
-		} else {
+		$status = $this->img->deleteOld( $oldimage, '' );
+		if( !$status->isGood() ) {
+			$wgOut->addWikiText( $status->getWikiText( 'filedeleteerror-short', 'filedeleteerror-long' ) );
+		}
+		if ( $status->ok ) {
 			# Log the deletion
 			$log = new LogPage( 'delete' );
 			$log->addEntry( 'delete', $this->mTitle, wfMsg('deletedrevision',$oldimage) );
 		}
-		return $ok;
+		return $status;
 	}
 
+	/**
+	 * Revert the file to an earlier version
+	 */
 	function revert() {
-		global $wgOut, $wgRequest, $wgUser;
-
-		$oldimage = $wgRequest->getText( 'oldimage' );
-		if ( strlen( $oldimage ) < 16 ) {
-			$wgOut->showUnexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
-			return;
-		}
-		if ( strstr( $oldimage, "/" ) || strstr( $oldimage, "\\" ) ) {
-			$wgOut->showUnexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
-			return;
-		}
-
-		if ( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
-		}
-		if( $wgUser->isAnon() ) {
-			$wgOut->showErrorPage( 'uploadnologin', 'uploadnologintext' );
-			return;
-		}
-		if ( ! $this->mTitle->userCan( 'edit' ) ) {
-			$wgOut->readOnlyPage( $this->getContent(), true );
-			return;
-		}
-		if ( $wgUser->isBlocked() ) {
-			$wgOut->blockedPage();
-			return;
-		}
-		if( !$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ), $oldimage ) ) {
-			$wgOut->showErrorPage( 'internalerror', 'sessionfailure' );
-			return;
-		}
-
-		$sourcePath = $this->img->getArchiveVirtualUrl( $oldimage );
-		$comment = wfMsg( "reverted" );
-		$result = $this->img->upload( $sourcePath, $comment, $comment );
-
-		if ( WikiError::isError( $result ) ) {
-			$this->showError( $result );
-			return;
-		}
-
-		$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
-		$wgOut->addHTML( wfMsg( 'imagereverted' ) );
-
-		$descTitle = $this->img->getTitle();
-		$wgOut->returnToMain( false, $descTitle->getPrefixedText() );
+		$reverter = new FileRevertForm( $this->img );
+		$reverter->execute();
 	}
 	
 	/**
@@ -697,99 +635,123 @@ EOT
 	}
 
 	/**
-	 * Display an error from a wikitext-formatted WikiError object
+	 * Display an error with a wikitext description
 	 */
-	function showError( WikiError $error ) {
+	function showError( $description ) {
 		global $wgOut;
 		$wgOut->setPageTitle( wfMsg( "internalerror" ) );
 		$wgOut->setRobotpolicy( "noindex,nofollow" );
 		$wgOut->setArticleRelated( false );
 		$wgOut->enableClientCache( false );
-		$wgOut->addWikiText( $error->getMessage() );
+		$wgOut->addWikiText( $description );
 	}
 
 }
 
 /**
- * @todo document
+ * Builds the image revision log shown on image pages
+ *
  * @addtogroup Media
  */
 class ImageHistoryList {
-	var $img, $skin;
-	function ImageHistoryList( $skin, $img ) {
+
+	protected $img, $skin, $title;
+
+	public function __construct( $skin, $img ) {
 		$this->skin = $skin;
 		$this->img = $img;
+		$this->title = $img->getTitle();
 	}
 
-	function beginImageHistoryList() {
-		$s = "\n" .
-			Xml::element( 'h2', array( 'id' => 'filehistory' ), wfMsg( 'imghistory' ) ) .
-			"\n<p>" . wfMsg( 'imghistlegend' ) . "</p>\n".'<ul class="special">';
-		return $s;
+	public function beginImageHistoryList() {
+		global $wgOut, $wgUser;
+		return Xml::element( 'h2', array( 'id' => 'filehistory' ), wfMsg( 'filehist' ) )
+			. $wgOut->parse( wfMsgNoTrans( 'filehist-help' ) )
+			. Xml::openElement( 'table', array( 'class' => 'filehistory' ) ) . "\n"
+			. '<tr><td></td>'
+			. ( $this->img->isLocal() && $wgUser->isAllowed( 'delete' ) ? '<td></td>' : '' )
+			. '<th>' . wfMsgHtml( 'filehist-datetime' ) . '</th>'
+			. '<th>' . wfMsgHtml( 'filehist-user' ) . '</th>'
+			. '<th>' . wfMsgHtml( 'filehist-dimensions' ) . '</th>'
+			. '<th>' . wfMsgHtml( 'filehist-filesize' ) . '</th>'
+			. '<th>' . wfMsgHtml( 'filehist-comment' ) . '</th>'
+			. "</tr>\n";
 	}
 
-	function endImageHistoryList() {
-		$s = "</ul>\n";
-		return $s;
+	public function endImageHistoryList() {
+		return "</table>\n";
 	}
 
-	function imageHistoryLine( $iscur, $timestamp, $img, $user, $usertext, $size, $description, $width, $height ) {
+	public function imageHistoryLine( $iscur, $timestamp, $img, $user, $usertext, $size, $description, $width, $height ) {
 		global $wgUser, $wgLang, $wgTitle, $wgContLang;
-
-		$datetime = $wgLang->timeanddate( $timestamp, true );
-		$del = wfMsgHtml( 'deleteimg' );
-		$delall = wfMsgHtml( 'deleteimgcompletely' );
-		$cur = wfMsgHtml( 'cur' );
 		$local = $this->img->isLocal();
-
-		if ( $iscur ) {
-			$url = htmlspecialchars( $this->img->getURL() );
-			$rlink = $cur;
-			if ( $local && $wgUser->isAllowed('delete') ) {
-				$link = $wgTitle->escapeLocalURL( 'image=' . $wgTitle->getPartialURL() .
-				  '&action=delete' );
-				$style = $this->skin->getInternalLinkAttributes( $link, $delall );
-
-				$dlink = '<a href="'.$link.'"'.$style.'>'.$delall.'</a>';
-			} else {
-				$dlink = $del;
-			}
-		} else {
-			$url = htmlspecialchars( $this->img->getArchiveUrl( $img ) );
-			if( $local && $wgUser->getID() != 0 && $wgTitle->userCan( 'edit' ) ) {
-				$token = urlencode( $wgUser->editToken( $img ) );
-				$rlink = $this->skin->makeKnownLinkObj( $wgTitle,
-				           wfMsgHtml( 'revertimg' ), 'action=revert&oldimage=' .
-				           urlencode( $img ) . "&wpEditToken=$token" );
-				$dlink = $this->skin->makeKnownLinkObj( $wgTitle,
-				           $del, 'action=delete&oldimage=' . urlencode( $img ) .
-				           "&wpEditToken=$token" );
-			} else {
-				# Having live active links for non-logged in users
-				# means that bots and spiders crawling our site can
-				# inadvertently change content. Baaaad idea.
-				$rlink = wfMsgHtml( 'revertimg' );
-				$dlink = $del;
-			}
+		$row = '';
+		
+		// Deletion link
+		if( $local && $wgUser->isAllowed( 'delete' ) ) {
+			$row .= '<td>';
+			$q = array();
+			$q[] = 'action=delete';
+			$q[] = ( $iscur ? 'image=' . $this->title->getPartialUrl() : 'oldimage=' . urlencode( $img ) );
+			if( !$iscur )
+				$q[] = 'wpEditToken=' . urlencode( $wgUser->editToken( $img ) );
+			$row .= '(' . $this->skin->makeKnownLinkObj(
+				$this->title,
+				wfMsgHtml( $iscur ? 'filehist-deleteall' : 'filehist-deleteone' ),
+				implode( '&', $q )
+			) . ')';
+			$row .= '</td>';
 		}
-
-		if ( $local ) {
-			$userlink = $this->skin->userLink( $user, $usertext ) . $this->skin->userToolLinks( $user, $usertext );
-		} else {
-			$userlink = htmlspecialchars( $usertext );
+		
+		// Reversion link/current indicator
+		$row .= '<td>';
+		if( $iscur ) {
+			$row .= '(' . wfMsgHtml( 'filehist-current' ) . ')';
+		} elseif( $local && $wgUser->isLoggedIn() && $this->title->userCan( 'edit' ) ) {
+			$q = array();
+			$q[] = 'action=revert';
+			$q[] = 'oldimage=' . urlencode( $img );
+			$q[] = 'wpEditToken=' . urlencode( $wgUser->editToken( $img ) );
+			$row .= '(' . $this->skin->makeKnownLinkObj(
+				$this->title,
+				wfMsgHtml( 'filehist-revert' ),
+				implode( '&', $q )
+			) . ')';
 		}
-		$nbytes = wfMsgExt( 'nbytes', array( 'parsemag', 'escape' ),
-			$wgLang->formatNum( $size ) );
-		$widthheight = wfMsgHtml( 'widthheight', $width, $height );
-		$style = $this->skin->getInternalLinkAttributes( $url, $datetime );
-
-		$s = "<li> ({$dlink}) ({$rlink}) <a href=\"{$url}\"{$style}>{$datetime}</a> . . {$userlink} . . {$widthheight} ({$nbytes})";
-
-		$s .= $this->skin->commentBlock( $description, $wgTitle );
-		$s .= "</li>\n";
-		return $s;
+		$row .= '</td>';
+		
+		// Date/time and image link
+		$row .= '<td>';
+		$url = $iscur ? $this->img->getUrl() : $this->img->getArchiveUrl( $img );
+		$row .= Xml::element(
+			'a',
+			array( 'href' => $url ),
+			$wgLang->timeAndDate( $timestamp, true )
+		);
+		$row .= '</td>';
+		
+		// Uploading user
+		$row .= '<td>';
+		if( $local ) {
+			$row .= $this->skin->userLink( $user, $usertext ) . $this->skin->userToolLinks( $user, $usertext );
+		} else {
+			$row .= htmlspecialchars( $usertext );
+		}
+		$row .= '</td>';
+		
+		// Image dimensions
+		// FIXME: It would be nice to show the duration (sound files) or
+		// width/height/duration (video files) here, but this needs some
+		// additional media handler work
+		$row .= '<td>' . wfMsgHtml( 'widthheight', $width, $height ) . '</td>';
+		
+		// File size
+		$row .= '<td>' . $this->skin->formatSize( $size ) . '</td>';
+		
+		// Comment
+		$row .= '<td>' . $this->skin->formatComment( $description, $this->title ) . '</td>';
+		
+		return "<tr>{$row}</tr>\n";
 	}
+
 }
-
-
-

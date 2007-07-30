@@ -28,6 +28,7 @@ class OutputPage {
 	
 	var $mNewSectionLink = false;
 	var $mNoGallery = false;
+	var $mPageTitleActionText = '';
 
 	/**
 	 * Constructor
@@ -189,26 +190,13 @@ class OutputPage {
 		}
 	}
 
+	function setPageTitleActionText( $text ) {
+		$this->mPageTitleActionText = $text;
+	}
+
 	function getPageTitleActionText () {
-		global $action;
-		switch($action) {
-			case 'edit':
-			case 'delete':
-			case 'protect':
-			case 'unprotect':
-			case 'watch':
-			case 'unwatch':
-				// Display title is already customized
-				return '';
-			case 'history':
-				return wfMsg('history_short');
-			case 'submit':
-				// FIXME: bug 2735; not correct for special pages etc
-				return wfMsg('preview');
-			case 'info':
-				return wfMsg('info_short');
-			default:
-				return '';
+		if ( isset( $this->mPageTitleActionText ) ) {
+			return $this->mPageTitleActionText;
 		}
 	}
 
@@ -962,24 +950,29 @@ class OutputPage {
 		if( $protected ) {
 			$this->setPageTitle( wfMsg( 'viewsource' ) );
 			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
-
 			list( $cascadeSources, /* $restrictions */ ) = $wgTitle->getCascadeProtectionSources();
 
-			# Determine if protection is due to the page being a system message
-			# and show an appropriate explanation
+			// Show an appropriate explanation depending upon the reason
+			// for the protection...all of these should be moved to the
+			// callers
 			if( $wgTitle->getNamespace() == NS_MEDIAWIKI ) {
+				// User isn't allowed to edit the interface
 				$this->addWikiText( wfMsg( 'protectedinterface' ) );
-			} if ( $cascadeSources && count($cascadeSources) > 0 ) {
-				$titles = '';
-	
-				foreach ( $cascadeSources as $title ) {
-					$titles .= '* [[:' . $title->getPrefixedText() . "]]\n";
-				}
-
-				$notice = wfMsgExt( 'cascadeprotected', array('parsemag'), count($cascadeSources) ) . "\n$titles";
-
-				$this->addWikiText( $notice );
+			} elseif( $cascadeSources && ( $count = count( $cascadeSources ) ) > 0 ) {
+				// Cascading protection
+					$titles = '';
+					foreach( $cascadeSources as $title )
+						$titles .= "* [[:" . $title->getPrefixedText()  . "]]\n";
+					$this->addWikiText( wfMsgExt( 'cascadeprotected', 'parsemag', $count ) . "\n{$titles}" );
+			} elseif( !$wgTitle->isProtected( 'edit' ) && $wgTitle->isNamespaceProtected() ) {
+				// Namespace protection
+				global $wgNamespaceProtection;
+				$ns = $wgTitle->getNamespace() == NS_MAIN
+					? wfMsg( 'nstab-main' )
+					: $wgTitle->getNsText();
+				$this->addWikiText( wfMsg( 'namespaceprotected', $ns ) );
 			} else {
+				// Standard protection
 				$this->addWikiText( wfMsg( 'protectedpagetext' ) );
 			}
 		} else {
@@ -1000,8 +993,8 @@ class OutputPage {
 				htmlspecialchars( $source ) . "\n</textarea>";
 			$this->addHTML( $text );
 		}
-		$article = new Article($wgTitle);
-		$this->addHTML( $skin->formatTemplates($article->getUsedTemplates()) );
+		$article = new Article( $wgTitle );
+		$this->addHTML( $skin->formatTemplates( $article->getUsedTemplates() ) );
 
 		$this->returnToMain( false );
 	}
@@ -1066,12 +1059,25 @@ class OutputPage {
 	}
 
 	/**
-	 * return from error messages or notes
-	 * @param $auto automatically redirect the user after 10 seconds
-	 * @param $returnto page title to return to. Default is Main Page.
+	 * Add a "return to" link pointing to a specified title
+	 *
+	 * @param Title $title Title to link
 	 */
-	public function returnToMain( $auto = true, $returnto = NULL ) {
-		global $wgUser, $wgOut, $wgRequest;
+	public function addReturnTo( $title ) {
+		global $wgUser;
+		$link = wfMsg( 'returnto', $wgUser->getSkin()->makeLinkObj( $title ) );
+		$this->addHtml( "<p>{$link}</p>\n" );
+	}
+
+	/**
+	 * Add a "return to" link pointing to a specified title,
+	 * or the title indicated in the request, or else the main page
+	 *
+	 * @param null $unused No longer used
+	 * @param Title $returnto Title to return to
+	 */
+	public function returnToMain( $unused = null, $returnto = NULL ) {
+		global $wgRequest;
 		
 		if ( $returnto == NULL ) {
 			$returnto = $wgRequest->getText( 'returnto' );
@@ -1090,14 +1096,7 @@ class OutputPage {
 			$titleObj = Title::newMainPage();
 		}
 
-		$sk = $wgUser->getSkin();
-		$link = $sk->makeLinkObj( $titleObj, '' );
-
-		$r = wfMsg( 'returnto', $link );
-		if ( $auto ) {
-			$wgOut->addMeta( 'http:Refresh', '10;url=' . $titleObj->escapeFullURL() );
-		}
-		$wgOut->addHTML( "\n<p>$r</p>\n" );
+		$this->addReturnTo( $titleObj );
 	}
 
 	/**

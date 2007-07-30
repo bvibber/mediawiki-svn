@@ -219,6 +219,7 @@ $messages = array(
 'category_header'       => 'Pagine nella categoria "$1"',
 'subcategories'         => 'Sottocategorie',
 'category-media-header' => 'File nella categoria "$1"',
+'category-empty'        => "''Al momento la categoria non contiene alcuna pagina né file multimediale.''",
 
 'mainpagetext'      => "<big>'''Installazione di MediaWiki completata correttamente.'''</big>",
 'mainpagedocfooter' => "Consultare la [http://meta.wikimedia.org/wiki/Aiuto:Sommario Guida utente] per maggiori informazioni sull'uso di questo software wiki.
@@ -226,9 +227,9 @@ $messages = array(
 == Per iniziare ==
 I seguenti collegamenti sono in lingua inglese:
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Impostazioni di configurazione]
-* [http://www.mediawiki.org/wiki/Help:FAQ Domande frequenti su MediaWiki]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce Mailing list annunci MediaWiki]",
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Impostazioni di configurazione]
+* [http://www.mediawiki.org/wiki/Manual:FAQ Domande frequenti su MediaWiki]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Mailing list annunci MediaWiki]",
 
 'about'          => 'Informazioni',
 'article'        => 'Voce',
@@ -425,6 +426,7 @@ Query: $2',
 'viewsource'           => 'Vedi sorgente',
 'viewsourcefor'        => 'di $1',
 'protectedpagetext'    => 'Questa pagina è stata protetta per impedirne la modifica.',
+'namespaceprotected'   => "Non si dispone dei permessi necessari per modificare le pagine del namespace '''$1'''.",
 'viewsourcetext'       => 'È possibile visualizzare e copiare il codice sorgente di questa pagina:',
 'protectedinterface'   => "Questa pagina contiene un elemento che fa parte dell'interfaccia utente del software; è quindi protetta per evitare possibili abusi.",
 'editinginterface'     => "'''Attenzione:''' Il testo di questa pagina fa parte dell'interfaccia utente del sito. Tutte le modifiche apportate a questa pagina si riflettono sui messaggi visualizzati per tutti gli utenti.",
@@ -471,6 +473,7 @@ L'account è stato creato correttamente. Non dimenticare di personalizzare le pr
 'yourvariant'                => 'Variante:',
 'yournick'                   => 'Soprannome (nickname):',
 'badsig'                     => 'Errore nella firma non standard, verificare i tag HTML.',
+'badsiglength'               => 'Il soprannome scelto è troppo lungo, non deve superare $1 caratteri.',
 'email'                      => 'Indirizzo e-mail',
 'prefs-help-realname'        => '* Nome vero (opzionale): se si sceglie di inserirlo, verrà utilizzato per attribuire la paternità dei contenuti inviati.',
 'loginerror'                 => "Errore nell'accesso",
@@ -622,6 +625,7 @@ Se il collegamento è stato seguito per errore, è sufficiente fare clic sul pul
 ''Poiché in questo sito è abilitato l'uso di HTML senza limitazioni, l'anteprima non viene visualizzata; si tratta di una misura di sicurezza contro gli attacchi JavaScript.''
 
 <strong>Se il problema persiste, si può provare a scollegarsi ed effettuare un nuovo accesso.</strong>",
+'token_suffix_mismatch'     => "<strong>La modifica non è stata salvata perché il client ha mostrato di gestire in modo errato i caratteri di punteggiatura nel token associato alla stessa. Per evitare una possibile corruzione del testo della pagina, è stata rifiutata l'intera modifica. Questa situazione può verificarsi, talvolta, quando vengono usati alcuni servizi di proxy anonimi via web che presentano dei bug.</strong>",
 'importing'                 => 'Importazione di $1',
 'editing'                   => 'Modifica di $1',
 'editinguser'               => 'Modifica di $1',
@@ -846,15 +850,18 @@ Gli altri amministratori del sito potranno accedere comunque ai contenuti nascos
 'files'                    => 'File',
 
 # User rights
-'userrights-lookup-user'     => 'Gestione dei gruppi utente',
-'userrights-user-editname'   => 'Inserire il nome utente:',
-'editusergroup'              => 'Modifica gruppi utente',
-'userrights-editusergroup'   => 'Modifica gruppi utente',
-'saveusergroups'             => 'Salva gruppi utente',
-'userrights-groupsmember'    => 'Appartiene ai gruppi:',
-'userrights-groupsavailable' => 'Gruppi disponibili:',
-'userrights-groupshelp'      => "Selezionare i gruppi ai quali si vuole associare o rimuovere l'utente. L'appartenenza ai gruppi non selezionati non verrà modificata. Per deselezionare un gruppo, premere Ctrl + il tasto sinistro del mouse.",
-'userrights-reason'          => 'Motivo della modifica:',
+'userrights-lookup-user'      => 'Gestione dei gruppi utente',
+'userrights-user-editname'    => 'Inserire il nome utente:',
+'editusergroup'               => 'Modifica gruppi utente',
+'userrights-editusergroup'    => 'Modifica gruppi utente',
+'saveusergroups'              => 'Salva gruppi utente',
+'userrights-groupsmember'     => 'Appartiene ai gruppi:',
+'userrights-groupsavailable'  => 'Gruppi disponibili:',
+'userrights-groupshelp'       => "Selezionare i gruppi ai quali si vuole associare o rimuovere l'utente. L'appartenenza ai gruppi non selezionati non verrà modificata. Per deselezionare un gruppo, premere Ctrl + il tasto sinistro del mouse.",
+'userrights-reason'           => 'Motivo della modifica:',
+'userrights-available-none'   => "Non è consentito modificare l'appartenenza ai gruppi.",
+'userrights-available-add'    => 'È possibile associare utenti al gruppo $1.',
+'userrights-available-remove' => 'È possibile rimuovere utenti dal gruppo $1.',
 
 # Groups
 'group'            => 'Gruppo:',
@@ -936,7 +943,7 @@ per collegare direttamente gli altri tipi di file.",
 'uploadedfiles'               => 'Elenco dei file caricati',
 'ignorewarning'               => "Ignora l'avvertimento e salva comunque il file.",
 'ignorewarnings'              => 'Ignora i messaggi di avvertimento del sistema',
-'minlength'                   => 'I nomi dei file devono essere lunghi almeno tre caratteri.',
+'minlength1'                  => "Il nome del file dev'essere composto da almeno un carattere.",
 'illegalfilename'             => 'Il nome "$1" contiene dei caratteri non ammessi nei titoli delle pagine. Dare al file un nome diverso e provare a caricarlo di nuovo.',
 'badfilename'                 => 'Il nome del file è stato convertito in "$1".',
 'filetype-badmime'            => 'Non è consentito caricare file di tipo MIME "$1".',
@@ -959,8 +966,6 @@ Se si dispone dell'immagine nella risoluzione originale, si prega di caricarla. 
 'fileexists-forbidden'        => 'Un file con questo nome esiste già. Tornare indietro e modificare il nome con il quale caricare il file. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => "Un file con questo nome esiste già nell'archivio di risorse multimediali condivise. Tornare indietro e modificare il nome con il quale caricare il file. [[Image:$1|thumb|center|$1]]",
 'successfulupload'            => 'Caricamento completato',
-'fileuploaded'                => "Il file $1 è stato caricato correttamente sul server.
-Seguire il collegamento: $2 per modificare la pagina di descrizione del file appena caricato, indicandone la fonte, l'autore, la data di creazione e ogni altra informazione di cui si sia in possesso. Se si tratta di un'immagine, la si può inserire nelle pagine con il comando: <tt><nowiki>[[</nowiki>{{ns:Image}}<nowiki>:$1|thumb|Descrizione]]</nowiki></tt>.",
 'uploadwarning'               => 'Avviso di Upload',
 'savefile'                    => 'Salva file',
 'uploadedimage'               => 'ha caricato "[[$1]]"',
@@ -989,6 +994,7 @@ Seguire il collegamento: $2 per modificare la pagina di descrizione del file app
 
 'license'            => "Licenza d'uso",
 'nolicense'          => 'Nessuna licenza indicata',
+'license-nopreview'  => '(Anteprima non disponibile)',
 'upload_source_url'  => ' (una URL corretta e accessibile)',
 'upload_source_file' => ' (un file sul proprio computer)',
 
@@ -1095,6 +1101,7 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 'uncategorizedpages'      => 'Pagine prive di categorie',
 'uncategorizedcategories' => 'Categorie prive di categorie',
 'uncategorizedimages'     => 'Immagini prive di categorie',
+'uncategorizedtemplates'  => 'Template privi di categorie',
 'unusedcategories'        => 'Categorie non utilizzate',
 'unusedimages'            => 'File non utilizzati',
 'popularpages'            => 'Pagine più visitate',
@@ -1149,6 +1156,7 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 'specialloguserlabel'  => 'Utente:',
 'speciallogtitlelabel' => 'Titolo:',
 'log'                  => 'Log',
+'all-logs-page'        => 'Tutti i registri',
 'log-search-legend'    => 'Ricerca nei registri',
 'log-search-submit'    => 'Vai',
 'alllogstext'          => 'Presentazione unificata dei log relativi alle operazioni di caricamento, cancellazione, protezione, blocco e amministrazione del sito. Riempiendo gli appositi campi si può limitare la visualizzazione a uno specifico log, nome utente o pagina.',
@@ -1167,6 +1175,7 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 'allpagessubmit'    => 'Vai',
 'allpagesprefix'    => 'Mostra le pagine che iniziano con:',
 'allpagesbadtitle'  => 'Il titolo indicato per la pagina non è valido o contiene prefissi interlingua o interwiki. Potrebbe inoltre contenere uno o più caratteri il cui uso non è ammesso nei titoli.',
+'allpages-bad-ns'   => 'Il namespace "$1" non esiste su {{SITENAME}}.',
 
 # Special:Listusers
 'listusersfrom'      => 'Mostra gli utenti a partire da:',
@@ -1200,10 +1209,6 @@ Ciascuna riga contiene i collegamenti al primo ed al secondo redirect, oltre all
 'nowatchlist'          => 'La lista degli osservati speciali è vuota.',
 'watchlistanontext'    => "Per visualizzare e modificare l'elenco degli osservati speciali è necessario $1.",
 'watchlistcount'       => "'''La lista degli osservati speciali contiene {{PLURAL:$1|una pagina|$1 pagine}} (e le rispettive pagine di discussione).'''",
-'clearwatchlist'       => 'Svuota la lista degli osservati speciali',
-'watchlistcleartext'   => 'Conferma la rimozione di tutti gli elementi.',
-'watchlistclearbutton' => 'Svuota la lista',
-'watchlistcleardone'   => 'La lista degli osservati speciali è stata svuotata. {{PLURAL:$1|È stato eliminato 1 elemento|Sono stati eliminati $1 elementi}}.',
 'watchnologin'         => 'Accesso non effettuato',
 'watchnologintext'     => "Per modificare la lista degli osservati speciali è necessario prima eseguire l'[[Special:Userlogin|accesso al sito]].",
 'addedwatch'           => 'Pagina aggiunta alla lista degli osservati speciali',
@@ -1218,18 +1223,12 @@ Se in un secondo tempo si desidera eliminare la pagina dalla lista degli osserva
 'unwatchthispage'      => 'Smetti di seguire',
 'notanarticle'         => 'Questa pagina non è una voce',
 'watchnochange'        => 'Nessuna delle pagine osservate è stata modificata nel periodo considerato.',
-'watchdetails'         => '* La lista degli osservati speciali contiene {{PLURAL:$1|una pagina (e la rispettiva pagina di discussione)|$1 pagine (e le rispettive pagine di discussione)}}.
-* [[Special:Watchlist/edit|Mostra e modifica la lista completa]] delle pagine osservate.
-* [[Special:Watchlist/clear|Svuota la lista]] delle pagine osservate.',
+'watchlist-details'    => 'La lista degli osservati speciali contiene {{PLURAL:$1|una pagina (e la rispettiva pagina di discussione)|$1 pagine (e le rispettive pagine di discussione)}}.',
 'wlheader-enotif'      => '* La notifica via e-mail è attiva.',
 'wlheader-showupdated' => "* Le pagine che sono state modificate dopo l'ultima visita sono evidenziate in '''grassetto'''",
 'watchmethod-recent'   => 'controllo delle modifiche recenti per gli osservati speciali',
 'watchmethod-list'     => 'controllo degli osservati speciali per modifiche recenti',
-'removechecked'        => 'Elimina elementi selezionati dalla lista',
 'watchlistcontains'    => 'La lista degli osservati speciali contiene {{PLURAL:$1|una pagina|$1 pagine}}.',
-'watcheditlist'        => "Di seguito sono elencate tutte le pagine osservate, in ordine alfabetico. Selezionare le caselle relative alle pagine che si desidera eliminare dalla lista e fare clic sul pulsante 'Elimina elementi selezionati dalla lista' in fondo all'elenco per rimuoverle. Quando viene eliminata una pagina dalla lista, anche la corrispondente pagina di discussione cessa di essere osservata (e viceversa).",
-'removingchecked'      => 'Eliminazione degli elementi richiesti dalla lista degli osservati speciali...',
-'couldntremove'        => "Non è possibile rimuovere la pagina '$1'...",
 'iteminvalidname'      => "Problemi con la pagina '$1', nome non valido...",
 'wlnote'               => "Di seguito {{PLURAL:$1|è elencata la modifica più recente apportata|sono elencate le '''$1''' modifiche più recenti apportate}} {{PLURAL:$2|nella scorsa ora|nelle scorse '''$2''' ore}}.",
 'wlshowlast'           => 'Mostra le ultime $1 ore $2 giorni $3',
@@ -1240,7 +1239,6 @@ Se in un secondo tempo si desidera eliminare la pagina dalla lista degli osserva
 'watchlist-hide-own'   => 'Nascondi le mie modifiche',
 'watchlist-show-minor' => 'Mostra le modifiche minori',
 'watchlist-hide-minor' => 'Nascondi le modifiche minori',
-'wldone'               => 'Fatto.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'Aggiunta agli osservati speciali...',
@@ -1309,10 +1307,12 @@ Per dare il tuo feedback e ricevere ulteriore assistenza:
 La modifica più recente alla pagina è stata apportata da [[User:$3|$3]] ([[User talk:$3|discussione]]).',
 'editcomment'                 => 'Il commento alla modifica era: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'                  => 'Annullate le modifiche di [[Special:Contributions/$2|$2]] ([[User talk:$2|discussione]]), riportata alla versione precedente di [[User:$1|$1]]',
+'rollback-success'            => 'Annullate le modifiche di $1; riportata alla versione precedente di $2.',
 'sessionfailure'              => "Si è verificato un problema nella sessione che identifica l'accesso; il sistema non ha eseguito il comando impartito per precauzione. Tornare alla pagina precedente con il tasto 'Indietro' del proprio browser, ricaricare la pagina e riprovare.",
 'protectlogpage'              => 'Protezioni',
 'protectlogtext'              => 'Di seguito sono elencate le azioni di protezione e sblocco delle pagine.',
 'protectedarticle'            => 'ha protetto "[[$1]]"',
+'modifiedarticleprotection'   => 'ha modificato il livello di protezione di "[[$1]]"',
 'unprotectedarticle'          => 'ha sbloccato "[[$1]]"',
 'protectsub'                  => '(Protezione di "$1")',
 'confirmprotect'              => 'Conferma la protezione',
@@ -1391,6 +1391,8 @@ Consultare il [[Special:Log/delete|log delle cancellazioni]] per vedere le cance
 'ucnote'        => "Di seguito sono elencate le <b>$1</b> modifiche più recenti effettuate dall'utente negli ultimi <b>$2</b> giorni.",
 'uclinks'       => 'Mostra le ultime $1 modifiche; mostra gli ultimi $2 giorni.',
 'uctop'         => ' (ultima per la pagina)',
+'month'         => 'A partire dal mese (e precedenti):',
+'year'          => "A partire dall'anno (e precedenti):",
 
 'sp-contributions-newest'      => 'Ultimi',
 'sp-contributions-oldest'      => 'Primi',
@@ -1437,6 +1439,7 @@ Consultare il [[Special:Log/delete|log delle cancellazioni]] per vedere le cance
 ** Nome utente non consono',
 'ipbanononly'                 => 'Blocca solo utenti anonimi',
 'ipbcreateaccount'            => 'Impedisci la creazione di altri account',
+'ipbemailban'                 => "Impedisci all'utente l'invio di e-mail",
 'ipbenableautoblock'          => "Blocca automaticamente l'ultimo indirizzo IP usato dall'utente e i successivi con cui vengono  tentate modifiche",
 'ipbsubmit'                   => "Blocca l'utente",
 'ipbother'                    => 'Durata non in elenco:',
@@ -1466,6 +1469,7 @@ Consultare il [[Special:Log/delete|log delle cancellazioni]] per vedere le cance
 'anononlyblock'               => 'solo anonimi',
 'noautoblockblock'            => 'senza blocco automatico',
 'createaccountblock'          => 'creazione account bloccata',
+'emailblock'                  => 'e-mail bloccate',
 'ipblocklist-empty'           => "L'elenco dei blocchi è vuoto.",
 'ipblocklist-no-results'      => "L'indirizzo IP o nome utente richiesto non è bloccato.",
 'blocklink'                   => 'blocca',
@@ -1479,17 +1483,17 @@ Consultare il [[Special:Log/delete|log delle cancellazioni]] per vedere le cance
 'block-log-flags-anononly'    => 'solo utenti anonimi',
 'block-log-flags-nocreate'    => 'creazione account bloccata',
 'block-log-flags-noautoblock' => 'blocco automatico disattivato',
+'block-log-flags-noemail'     => 'e-mail bloccate',
 'range_block_disabled'        => 'La possibilità di bloccare intervalli di indirizzi IP non è attiva al momento.',
 'ipb_expiry_invalid'          => 'Durata o scadenza del blocco non valida.',
 'ipb_already_blocked'         => 'L\'utente "$1" è già bloccato',
 'ip_range_invalid'            => 'Intervallo di indirizzi IP non valido.',
 'proxyblocker'                => 'Blocco dei proxy aperti',
 'ipb_cant_unblock'            => 'Errore: Impossibile trovare il blocco con ID $1. Il blocco potrebbe essere già stato rimosso.',
-'proxyblockreason'            => 'Questo indirizzo IP è stato bloccato perché è risulta essere un proxy aperto. Si prega di contattare il proprio fornitore di accesso a Internet o il supporto tecnico e informarli di questo grave problema di sicurezza.',
+'proxyblockreason'            => 'Questo indirizzo IP è stato bloccato perché risulta essere un proxy aperto. Si prega di contattare il proprio fornitore di accesso a Internet o il supporto tecnico e informarli di questo grave problema di sicurezza.',
 'proxyblocksuccess'           => 'Blocco eseguito.',
-'sorbs'                       => 'SORBS DNSBL',
-'sorbsreason'                 => 'Questo indirizzo IP è elencato come proxy aperto nella blacklist DNSBL di [http://www.sorbs.net SORBS].',
-'sorbs_create_account_reason' => 'Non è possibile creare nuovi accessi da questo indirizzo IP perché è elencato come proxy aperto nella blacklist DNSBL di [http://www.sorbs.net SORBS].',
+'sorbsreason'                 => 'Questo indirizzo IP è elencato come proxy aperto nella blacklist DNSBL.',
+'sorbs_create_account_reason' => 'Non è possibile creare nuovi accessi da questo indirizzo IP perché è elencato come proxy aperto nella blacklist DNSBL.',
 
 # Developer tools
 'lockdb'              => 'Blocca il database',
@@ -1530,7 +1534,7 @@ In questi casi, se lo si ritiene opportuno, occorre spostare o aggiungere manual
 'move-watch'              => 'Aggiungi agli osservati speciali',
 'movepagebtn'             => 'Sposta la pagina',
 'pagemovedsub'            => 'Spostamento effettuato con successo',
-'pagemovedtext'           => 'La pagina "[[$1]]" è stata spostata al titolo "[[$2]]".',
+'movepage-moved'          => '<big>\'\'\'"$1" è stata spostata al titolo "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Una pagina con questo nome esiste già, oppure il nome scelto non è valido. Scegliere un altro titolo.',
 'talkexists'              => "'''La pagina è stata spostata correttamente, ma non è stato possibile spostare la pagina di discussione perché ne esiste già un'altra con il nuovo titolo. Integrare manualmente i contenuti delle due pagine.'''",
 'movedto'                 => 'spostata a',
@@ -1565,6 +1569,7 @@ In quest'ultimo caso si può anche utilizzare un collegamento, ad esempio [[Spec
 'export-submit'     => 'Esporta',
 'export-addcattext' => 'Aggungi pagine dalla categoria:',
 'export-addcat'     => 'Aggiungi',
+'export-download'   => 'Richiedi il salvataggio come file',
 
 # Namespace 8 related
 'allmessages'               => 'Messaggi di sistema',
@@ -1709,7 +1714,7 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 'subcategorycount'       => 'Questa categoria contiene {{PLURAL:$1|una sottocategoria|$1 sottocategorie}}.',
 'categoryarticlecount'   => 'Questa categoria contiene {{PLURAL:$1|una pagina|$1 pagine}}.',
 'category-media-count'   => 'Questa categoria contiene {{PLURAL:$1|un file|$1 file}}.',
-'listingcontinuesabbrev' => ' cont.',
+'listingcontinuesabbrev' => 'cont.',
 'spambot_username'       => 'MediaWiki - sistema di rimozione spam',
 'spam_reverting'         => "Ripristinata l'ultima versione priva di collegamenti a $1",
 'spam_blanking'          => 'Pagina svuotata, tutte le versioni contenevano collegamenti a $1',
@@ -2051,9 +2056,9 @@ Tutte le operazioni di importazione trans-wiki sono registrate nel [[Special:Log
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'tutte',
 'imagelistall'     => 'tutte',
-'watchlistall1'    => 'tutte',
 'watchlistall2'    => 'tutte',
 'namespacesall'    => 'Tutti',
+'monthsall'        => 'tutti',
 
 # E-mail address confirmation
 'confirmemail'            => 'Conferma indirizzo e-mail',
@@ -2128,9 +2133,6 @@ $1',
 'articletitles'    => "Ricerca delle voci che iniziano con ''$1''",
 'hideresults'      => 'Nascondi i risultati',
 
-# DISPLAYTITLE
-'displaytitle' => '(Per i collegamenti a questa pagina, usare [[$1]])',
-
 'loginlanguagelabel' => 'Lingua: $1',
 
 # Multipage image navigation
@@ -2154,7 +2156,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Pagina svuotata completamente',
 'autosumm-replace' => "Pagina sostituita con '$1'",
-'autoredircomment' => 'Redirect alla pagina [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => 'Redirect alla pagina [[$1]]',
 'autosumm-new'     => 'Nuova pagina: $1',
 
 # Size units
@@ -2175,6 +2177,32 @@ Usare l\'anteprima standard.',
 'lag-warn-normal' => 'Le modifiche apportate negli ultimi $1 secondi potrebbero non apparire in questa lista.',
 'lag-warn-high'   => "A causa di un eccessivo ritardo nell'aggiornamento del server di database, le modifiche apportate negli ultimi $1 secondi potrebbero non apparire in questa lista.",
 
+# Watchlist editor
+'watchlistedit-numitems'       => 'La lista degli osservati speciali contiene {{PLURAL:$1|una pagina (e la rispettiva pagina di discussione)|$1 pagine (e le rispettive pagine di discussione)}}.',
+'watchlistedit-noitems'        => 'La lista degli osservati speciali è vuota.',
+'watchlistedit-clear-title'    => 'Svuotamento pagine osservate',
+'watchlistedit-clear-legend'   => 'Svuota la lista delle pagine osservate',
+'watchlistedit-clear-confirm'  => 'Questa operazione eliminerà tutte le pagine dalla lista degli osservati speciali. Proseguire? Si noti che è anche possibile [[Special:Watchlist/edit|eliminare le pagine singolarmente]].',
+'watchlistedit-clear-submit'   => 'Svuota',
+'watchlistedit-clear-done'     => 'La lista degli osservati speciali è stata svuotata. Tutte le pagine sono state eliminate.',
+'watchlistedit-normal-title'   => 'Modifica osservati speciali',
+'watchlistedit-normal-legend'  => 'Eliminazione di pagine dagli osservati speciali',
+'watchlistedit-normal-explain' => "Di seguito sono elencate tutte le pagine osservate. Per rimuovere una o più pagine dalla lista, selezionare le caselle relative e fare clic sul pulsante 'Elimina pagine' in fondo all'elenco. Si noti che è anche possibile [[Special:Watchlist/raw|modificare la lista in formato testuale]] oppure [[Special:Watchlist/clear|svuotarla completamente]].",
+'watchlistedit-normal-submit'  => 'Elimina pagine',
+'watchlistedit-normal-done'    => 'Dalla lista degli osservati speciali {{PLURAL:$1|è stata eliminata una pagina|sono state eliminate $1 pagine}}:',
+'watchlistedit-raw-title'      => 'Modifica degli osservati speciali in forma testuale',
+'watchlistedit-raw-legend'     => 'Modifica testuale osservati speciali',
+'watchlistedit-raw-explain'    => "Di seguito sono elencate tutte le pagine osservate. Per modificare la lista aggiungere o rimuovere i rispettivi titoli, uno per riga. Una volta terminato, fare clic su 'Aggiorna la lista' in fondo all'elenco. Si noti che è anche possibile [[Special:Watchlist/edit|modificare la lista con l'interfaccia standard]].",
+'watchlistedit-raw-titles'     => 'Pagine:',
+'watchlistedit-raw-submit'     => 'Aggiorna la lista',
+'watchlistedit-raw-done'       => 'La lista degli osservati speciali è stata aggiornata.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|È stata aggiunta una pagina|Sono state aggiunte $1 pagine}}:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|È stata eliminata una pagina|Sono state eliminate $1 pagine}}:',
+
+# Watchlist editing tools
+'watchlisttools-view'  => 'Visualizza le modifiche pertinenti',
+'watchlisttools-edit'  => 'Visualizza e modifica la lista',
+'watchlisttools-raw'   => 'Modifica la lista in formato testo',
+'watchlisttools-clear' => 'Svuota la lista',
+
 );
-
-

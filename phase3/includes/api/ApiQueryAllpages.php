@@ -54,17 +54,16 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 
 		$db = $this->getDB();
 
-		$limit = $from = $namespace = $filterredir = $prefix = null;
-		extract($this->extractRequestParams());
+		$params = $this->extractRequestParams();
 
 		$this->addTables('page');
-		if (!$this->addWhereIf('page_is_redirect = 1', $filterredir === 'redirects'))
-			$this->addWhereIf('page_is_redirect = 0', $filterredir === 'nonredirects');
-		$this->addWhereFld('page_namespace', $namespace);
-		if (isset ($from))
-			$this->addWhere('page_title>=' . $db->addQuotes(ApiQueryBase :: titleToKey($from)));
-		if (isset ($prefix))
-			$this->addWhere("page_title LIKE '{$db->strencode(ApiQueryBase :: titleToKey($prefix))}%'");
+		if (!$this->addWhereIf('page_is_redirect = 1', $params['filterredir'] === 'redirects'))
+			$this->addWhereIf('page_is_redirect = 0', $params['filterredir'] === 'nonredirects');
+		$this->addWhereFld('page_namespace', $params['namespace']);
+		if (!is_null($params['from']))
+			$this->addWhere('page_title>=' . $db->addQuotes(ApiQueryBase :: titleToKey($params['from'])));
+		if (isset ($params['prefix']))
+			$this->addWhere("page_title LIKE '" . $db->escapeLike(ApiQueryBase :: titleToKey($params['prefix'])) . "%'");
 
 		if (is_null($resultPageSet)) {
 			$this->addFields(array (
@@ -77,7 +76,8 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		}
 
 		$this->addOption('USE INDEX', 'name_title');
-		$this->addOption('LIMIT', $limit +1);
+		$limit = $params['limit'];
+		$this->addOption('LIMIT', $limit+1);
 		$this->addOption('ORDER BY', 'page_namespace, page_title');
 
 		$res = $this->select(__METHOD__);
@@ -87,18 +87,17 @@ class ApiQueryAllpages extends ApiQueryGeneratorBase {
 		while ($row = $db->fetchObject($res)) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
+				// TODO: Security issue - if the user has no right to view next title, it will still be shown
 				$this->setContinueEnumParameter('from', ApiQueryBase :: keyToTitle($row->page_title));
 				break;
 			}
 
 			if (is_null($resultPageSet)) {
 				$title = Title :: makeTitle($row->page_namespace, $row->page_title);
-				if ($title->userCanRead()) {
-					$data[] = array(
-						'pageid' => intval($row->page_id),
-						'ns' => intval($title->getNamespace()),
-						'title' => $title->getPrefixedText());
-				}
+				$data[] = array(
+					'pageid' => intval($row->page_id),
+					'ns' => intval($title->getNamespace()),
+					'title' => $title->getPrefixedText());
 			} else {
 				$resultPageSet->processDbRow($row);
 			}

@@ -250,6 +250,7 @@ $messages = array(
 'category_header'       => 'Artikler i kategorien "$1"',
 'subcategories'         => 'Underkategorier',
 'category-media-header' => 'Medier i kategorien „$1“',
+'category-empty'        => "''Denne kategori indeholder for øjeblikket hverken sider eller medie-filer.''",
 
 'mainpagetext'      => 'MediaWiki er nu installeret.',
 'mainpagedocfooter' => 'Se vores engelsksprogede [http://meta.wikimedia.org/wiki/MediaWiki_i18n dokumentation om tilpasning af brugergrænsefladen] og [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide brugervejledningen] for oplysninger om opsætning og anvendelse.',
@@ -423,9 +424,11 @@ Siden er måske slettet eller flyttet.
 Hvis det ikke er tilfældet, har du måske fundet en fejl i programmet. Meld det til en [[{{MediaWiki:grouppage-sysop}}|Administrator]] med angivelse af adressen.',
 'readonly_lag'         => 'Databasen er automatisk blevet låst mens slave database serverne synkronisere med master databasen',
 'internalerror'        => 'Intern fejl',
+'internalerror_info'   => 'Internal fejl: $1', 
 'filecopyerror'        => 'Kunne ikke kopiere filen "$1" til "$2".',
 'filerenameerror'      => 'Kunne ikke omdøbe filen "$1" til "$2".',
 'filedeleteerror'      => 'Kunne ikke slette filen "$1".',
+'directorycreateerror' => 'Kunne ikke oprette kataloget "$1".',
 'filenotfound'         => 'Kunne ikke finde filen "$1".',
 'unexpected'           => 'Uventet værdi: "$1"="$2".',
 'formerror'            => 'Fejl: Kunne ikke afsende formular',
@@ -448,6 +451,7 @@ Forespørgsel: $2',
 'editinginterface'     => "'''Advarsel:''' Denne side indeholder tekst, som bruges af MediaWiki-softwaren. Ændringer har virkning på brugergrænsefladen.",
 'sqlhidden'            => '(SQL forespørgsel gemt)',
 'cascadeprotected'     => 'Denne side er skrivebeskyttet, da den er indeholdt i nedenstående {{PLURAL:$1|side|sider}}, som er skrivebeskyttet med tilvalg af "nedarvende sidebeskyttelse":',
+'namespaceprotected'   => "Du har ikke rettigheder til t redigere sider i $1-navnerummet.",
 
 # Login and logout pages
 'logouttitle'                => 'Bruger-log-af',
@@ -641,7 +645,7 @@ Prøv venligst igen. Hvis problemet fortsætter, log af og log på igen.</strong
 ''Da ren HTM er aktiveret i denne Wiki, er forhåndsvisningen blændet ud for at forebygge JavaScript-angreb.''
 
 <strong>Forsøg venligst igen. Hvis problemet fortsætter, log af og log på igen.</strong>",
-'token_suffix_mismatch'     => '<strong>Din redigering er afvist, da din browser har forvansket tegnsætningen i redigeringskontrolfilen. Afvisningen sker for at forhindre utilsigtede ændringer i artiklen. Denne fejl opstår nogle gange, når du regigerer gennem en fejlprogrammeret webbaseret anonymiseringstjeneste.</strong>',
+'token_suffix_mismatch'     => '<strong>Din redigering er afvist, da din browser har forvansket tegnsætningen i redigeringskontrolfilen. Afvisningen sker for at forhindre utilsigtede ændringer i artiklen. Denne fejl opstår nogle gange, når du redigerer gennem en fejlprogrammeret webbaseret anonymiseringstjeneste.</strong>',
 'importing'                 => 'importerer $1',
 'editing'                   => 'Redigerer $1',
 'editinguser'               => 'Redigerer $1',
@@ -1000,9 +1004,6 @@ Kontroller om du har billedet i fuld størrelse og upload det under det original
 'fileexists-forbidden'        => 'Der findes allerede en fil med dette navn. Gå tilbage og upload filen under et andet navn. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Der findes allerede en fil med dette navn. Gå tilbage og upload filen under et andet navn. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Oplægningen er gennemført',
-'fileuploaded'                => 'Filen "$1" er nu lagt op. Følg henvisningen ($2) til siden med beskrivelse, og udfyld
-information omkring filen, såsom hvor den kom fra, hvornår den er lavet
-og af hvem, og andre ting du ved om filen.',
 'uploadwarning'               => 'Advarsel',
 'savefile'                    => 'Gem fil',
 'uploadedimage'               => 'Lagde "[[$1]]" op',
@@ -1031,6 +1032,7 @@ og af hvem, og andre ting du ved om filen.',
 
 'license'            => 'Licens',
 'nolicense'          => 'intet forvalg',
+'license-nopreview' => '(forhåndsvisning ikke mulig)',
 'upload_source_url'  => ' (gyldig, offentligt tillgængelig URL)',
 'upload_source_file' => ' (en fil på din computer)',
 
@@ -1277,10 +1279,6 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'nowatchlist'          => 'Du har ingenting i din overvågningsliste.',
 'watchlistanontext'    => 'Du skal $1, for at se din overvågningsliste eller ændre indholdet af den.',
 'watchlistcount'       => "'''Du har $1 {{PLURAL:$1|artikel|artikler}} på din overvågningsliste (inkl. diskussionssider).'''",
-'clearwatchlist'       => 'Slet overvågningsliste',
-'watchlistcleartext'   => 'Er du sikker på, at du vil slette den helt?',
-'watchlistclearbutton' => 'Slette overvågningsliste',
-'watchlistcleardone'   => 'Overvågningslisten er slettet. {{PLURAL:$1|En artikel blev|$1 artikler blev}} fjernet.',
 'watchnologin'         => 'Ikke logget på',
 'watchnologintext'     => 'Du skal være [[Special:Userlogin|logget på]] for at kunne ændre din overvågningsliste.',
 'addedwatch'           => 'Tilføjet til din overvågningsliste',
@@ -1293,16 +1291,12 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'unwatchthispage'      => 'Fjern overvågning',
 'notanarticle'         => 'Ikke en artikel',
 'watchnochange'        => 'Ingen af siderne i din overvågningsliste er ændret i den valgte periode.',
-'watchdetails'         => '* Du har $1 sider på din overvågningsliste (fratrukket alle diskussionssider). * I tidsintervallet valgt herunder, har brugerne foretaget $2 redigeringer i {{SITENAME}}. * $3 * Du kan [[Special:Watchlist/edit|vise og redigere den komplette liste]].',
+'watchlist-details'    => 'Du har $1 sider på din overvågningsliste (fratrukket alle diskussionssider).',
 'wlheader-enotif'      => '* E-mail underretning er slået til.',
 'wlheader-showupdated' => "* Sider der er ændret siden dit sidste besøg er '''fremhævet'''",
 'watchmethod-recent'   => 'Tjekker seneste ændringer for sider i din overvågningsliste',
 'watchmethod-list'     => 'Tjekker seneste ændringer for sider i din overvågningsliste',
-'removechecked'        => 'Fjern valgte sider fra min overvågningsliste',
 'watchlistcontains'    => 'Din overvågningsliste indeholder $1 sider.',
-'watcheditlist'        => "Her er din overvågningsliste i alfabetisk rækkefølge. Vælg de sider du vil fjerne fra din overvågningsliste og klik på 'fjern valgte sider fra min overvågningsliste' knappen i bunden af skærmen.",
-'removingchecked'      => 'Fjerner de valgte sider fra din overvågningsliste...',
-'couldntremove'        => "Kunne ikke fjerne '$1'...",
 'iteminvalidname'      => "Problem med '$1', ugyldigt navn...",
 'wlnote'               => 'Nedenfor ses de seneste $1 ændringer i de sidste <b>$2</b> timer.',
 'wlshowlast'           => 'Vis de seneste $1 timer $2 dage $3',
@@ -1313,7 +1307,6 @@ deraf har '''$2''' (=$4%) $5-rettigheder.",
 'watchlist-hide-own'   => 'skjule egne ændringer',
 'watchlist-show-minor' => 'vise små ændringer',
 'watchlist-hide-minor' => 'skjule små ændringer',
-'wldone'               => 'Gennemført.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'Overvåge …',
@@ -1380,6 +1373,7 @@ eller et billede sammen med hele den tilhørende historie fra databasen. Bekræf
 'alreadyrolled'               => 'Kan ikke fjerne den seneste redigering af [[:$1]] foretaget af [[User:$2|$2]] ([[User talk:$2|diskussion]]); en anden har allerede redigeret siden eller fjernet redigeringen. Den seneste redigering er foretaget af [[User:$3|$3]] ([[User talk:$3|diskussion]]).',
 'editcomment'                 => 'Kommentaren til redigeringen var: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'                  => 'Gendannelse til seneste version ved $1, fjerner ændringer fra $2',
+'rollback-success'            => "$1's ændringer er fjernet, gendannet til den seneste version af $2.",
 'sessionfailure'              => 'Der lader til at være et problem med din loginsession; denne handling blev annulleret som en sikkerhedsforanstaltning mod kapring af sessionen. Tryk på "tilbage"-knappen og genindlæs den side du kom fra, og prøv dernæst igen.',
 'protectlogpage'              => 'Liste_over_beskyttede_sider',
 'protectlogtext'              => 'Herunder er en liste med sider der er blevet beskyttet/har fået fjernet beskyttelsen.',
@@ -1458,6 +1452,12 @@ I [[Special:Log/delete|slette-loggen]] findes en oversigt over de nyligt sletted
 'undelete-search-prefix'   => 'Søgebegreb (odets start uden wildcards):',
 'undelete-search-submit'   => 'Søg',
 'undelete-no-results'      => 'Der blev ikke fundet en passende side i arkivet.',
+'undelete-filename-mismatch' => 'Kan ikke gendanne filen med tidsstempel $1: forkert filnavn',
+'undelete-bad-store-key'   => 'Kan ikke gendanne filen med tidsstempel $1: file fandtes ikke da den blev slettet',
+'undelete-cleanup-error'   => 'Fejl under sletning af ubrugt arkiveret version "$1".',
+'undelete-missing-filearchive' => 'Kunne ikke genskabe arkiveret fil med ID $1 fordi den ikke findes i databasen. Måske er den allerede gendannet.',
+'undelete-error-short'     => 'Fejl under gendannelsen af fil: $1',
+'undelete-error-long'      => "Der opstod en fejl under gendannelsen af filen:\n\n$1\n",
 
 # Namespace form on various pages
 'namespace' => 'Navnerum:',
@@ -1578,7 +1578,6 @@ I [[Special:Log/delete|slette-loggen]] findes en oversigt over de nyligt sletted
 'ipb_cant_unblock'            => 'Fejl: Spærre-ID $1 ikke fundet. Spærringen er allerede ophævet.',
 'proxyblockreason'            => "Din IP-adresse er blevet blokeret fordi den er en såkaldt ''åben proxy''. Kontakt din Internet-udbyder eller tekniske hotline og oplyse dem om dette alvorlige sikkerhedsproblem.",
 'proxyblocksuccess'           => 'Færdig.',
-'sorbs'                       => 'DNSBL',
 'sorbsreason'                 => 'IP-adressen er opført i DNSBL på {{SITENAME}} som åben PROXY.',
 'sorbs_create_account_reason' => 'IP-adressen er opført i DNSBL på {{SITENAME}} som åben PROXY. Oprettelse af nye brugere er ikke mulig.',
 
@@ -1647,6 +1646,7 @@ Artiklen "[[$1]]" eksisterer allerede. Vil du slette den for at lave plads til f
 'export-submit'     => 'Eksportere sider',
 'export-addcattext' => 'Tilføje sider fra kategori:',
 'export-addcat'     => 'Tilføje',
+'export-download'   => 'Tilbyd at gemme som en fil',
 
 # Namespace 8 related
 'allmessages'               => 'Alle beskeder',
@@ -1831,6 +1831,12 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 
 # Image deletion
 'deletedrevision' => 'Slettede gammel version $1.',
+'filedeleteerror-short' => "Fejl under sletning af fil: $1",
+'filedeleteerror-long' => "Der opstod en fejl under sletningen af filen:\n\n$1\n",
+'filedelete-missing' => 'Filen "$1" kan ikke slettes fordi den ikke findes.',
+'filedelete-old-unregistered' => 'Den angivne version "$1" findes ikke i databasen.',
+'filedelete-current-unregistered' => 'Den angiovne fil "$1" findes ikke i databasen.',
+'filedelete-archive-read-only' => 'Webserveren har ikke skriveadgang til arkiv-kataloget "$1".',
 
 # Browsing diffs
 'previousdiff' => '← Gå til forrige forskel',
@@ -2125,7 +2131,6 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'alle',
 'imagelistall'     => 'alle',
-'watchlistall1'    => 'alle',
 'watchlistall2'    => 'alle',
 'namespacesall'    => 'alle',
 'monthsall'        => 'alle',
@@ -2244,6 +2249,33 @@ Bekræft venligst, at du virkelig vil oprette denne side igen.",
 'lag-warn-normal' => 'Ændringer, som er nyere end $1 sekunder, vises muligvis ikke i denne liste.',
 'lag-warn-high'   => 'Grundet stor belastning af databaseserveren, vil ændringer, der er nyere end $1 sekunder måske ikke blive vist i denne liste.',
 
+# Watchlist editor
+'watchlistedit-numitems'       => 'Din overvågningsliste indeholder {{PLURAL:$1|1 side|$1 sider}}, diskussionssider fraregnet.',
+'watchlistedit-noitems'        => 'Din overvågningsliste er tom.',
+'watchlistedit-clear-title'    => 'Ryd overvågningsliste',
+'watchlistedit-clear-legend'   => 'Ryd overvågningsliste',
+'watchlistedit-clear-confirm'  => 'Er du sikker på at du vil fjerne alle sider i din overvågningsliste? Du kan også [[Special:Watchlist/edit|fjerne enkelte sider]].',
+'watchlistedit-clear-submit'   => 'Ryd',
+'watchlistedit-clear-done'     => 'Din overvågningsliste er nu ryddet. Alle sider er fjernet fra den.',
+'watchlistedit-normal-title'   => 'Rediger overvågningsliste',
+'watchlistedit-normal-legend'  => 'Slet sider fra overvågningslisten',
+'watchlistedit-normal-explain' => 'Din overvågningsliste er vist nedenfor. Du kan fjerne sider fra den ved at markere den og trykke på Fjern valgte. Du har også mulighed for at [[Special:Watchlist/raw|redigere listen direkte]], eller [[Special:Watchlist/clear|rydde listen]].',
+'watchlistedit-normal-submit'  => 'Fjern valgte',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|1 side|$1 sider}} er fjernet fra din overvågningsliste:',
+'watchlistedit-raw-title'      => 'Direkte redigering af overvågningsliste',
+'watchlistedit-raw-legend'     => 'Direkte redigering af overvågningsliste',
+'watchlistedit-raw-explain'    => 'Siderne i din overvågningsliste er vist nedenfor. Du kan ændre din overvågningsliste ved at tilføje og fjerne sidenavne. Du kan gemme din nye overvågningsliste ved at trykke på Opdater overvågningsliste nedenfor. Du kan også redigere overvågningslisten i [[Special:Watchlist/edit|sorteret form]].',
+'watchlistedit-raw-titles'     => 'Sider:',
+'watchlistedit-raw-submit'     => 'Opdater overvågningsliste',
+'watchlistedit-raw-done'       => 'Din overvågningsliste blev opdateret.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|1 side|$1 sider}} er tilføjet:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|1 side|$1 sider}} er fjernet:',
+
+# Watchlist editing tools
+'watchlisttools-view'          => 'Se ændrede sider i overvågningslisten',
+'watchlisttools-edit'          => 'Rediger overvågningsliste',
+'watchlisttools-raw'           => 'Rediger rå overvågningsliste',
+'watchlisttools-clear'         => 'Tøm overvågningslisten',
 );
 
 

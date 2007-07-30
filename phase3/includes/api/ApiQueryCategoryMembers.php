@@ -64,11 +64,11 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		$fld_sortkey = isset($prop['sortkey']);
 
 		if (is_null($resultPageSet)) {
-			$this->addFields(array('cl_sortkey', 'page_namespace', 'page_title'));
+			$this->addFields(array('cl_from', 'cl_sortkey', 'page_namespace', 'page_title'));
 			$this->addFieldsIf('page_id', $fld_ids);
 		} else {
 			$this->addFields($resultPageSet->getPageTableFields()); // will include page_ id, ns, title
-			$this->addFields('cl_sortkey');
+			$this->addFields(array('cl_from', 'cl_sortkey'));
 		}
 		
 		$this->addTables(array('page','categorylinks'));	// must be in this order for 'USE INDEX' 
@@ -92,6 +92,7 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		while ($row = $db->fetchObject($res)) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
+				// TODO: Security issue - if the user has no right to view next title, it will still be shown
 				$this->setContinueEnumParameter('continue', $this->getContinueStr($row, $lastSortKey));
 				break;
 			}
@@ -99,19 +100,17 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 			$lastSortKey = $row->cl_sortkey;	// detect duplicate sortkeys 
 			
 			if (is_null($resultPageSet)) {
-				$title = Title :: makeTitle($row->page_namespace, $row->page_title);
-				if ($title->userCanRead()) {
-					$vals = array();
-					if ($fld_ids)
-						$vals['pageid'] = intval($row->page_id); 
-					if ($fld_title) {
-						$vals['ns'] = intval($title->getNamespace());
-						$vals['title'] = $title->getPrefixedText();
-					}
-					if ($fld_sortkey)
-						$vals['sortkey'] = $row->cl_sortkey;
-					$data[] = $vals;
+				$vals = array();
+				if ($fld_ids)
+					$vals['pageid'] = intval($row->page_id); 
+				if ($fld_title) {
+					$title = Title :: makeTitle($row->page_namespace, $row->page_title);
+					$vals['ns'] = intval($title->getNamespace());
+					$vals['title'] = $title->getPrefixedText();
 				}
+				if ($fld_sortkey)
+					$vals['sortkey'] = $row->cl_sortkey;
+				$data[] = $vals;
 			} else {
 				$resultPageSet->processDbRow($row);
 			}
@@ -139,18 +138,24 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 			return;	// This is not a continuation request
 			
 		$continueList = explode('|', $continue);
-		if (count($continueList) != 2)
+		$hasError = count($continueList) != 2;
+		$from = 0;
+		if (!$hasError && strlen($continueList[1]) > 0) {
+			$from = intval($continueList[1]);
+			$hasError = ($from == 0); 
+		}
+		
+		if ($hasError)
 			$this->dieUsage("Invalid continue param. You should pass the original value returned by the previous query", "badcontinue");
 
 		$sortKey = $this->getDB()->addQuotes($continueList[0]);
-		$from = intval($continueList[1]);
 
 		if ($from != 0) {
 			// Duplicate sort key continue
 			$this->addWhere( "cl_sortkey>$sortKey OR (cl_sortkey=$sortKey AND cl_from>=$from)" );						
 		} else {
 			$this->addWhere( "cl_sortkey>=$sortKey" );						
-		}		
+		}
 	}
 
 	protected function getAllowedParams() {
@@ -183,7 +188,7 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 	protected function getParamDescription() {
 		return array (
 			'category' => 'Which category to enumerate (required)',
-			'prop' => 'What pieces of infromation to include',
+			'prop' => 'What pieces of information to include',
 			'namespace' => 'Only include pages in these namespaces',
 			'continue' => 'For large categories, give the value retured from previous query',
 			'limit' => 'The maximum number of pages to return.',

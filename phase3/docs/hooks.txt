@@ -267,6 +267,17 @@ $article: the article that was deleted
 $user: the user that deleted the article
 $reason: the reason the article was deleted
 
+'ArticleInsertComplete': After an article is created
+$article: Article created
+$user: User creating the article
+$text: New content
+$summary: Edit summary/comment
+$isMinor: Whether or not the edit was marked as minor
+$isWatch: (No longer used)
+$section: (No longer used)
+$flags: Flags passed to Article::doEdit()
+$revision: New Revision of the article
+
 'ArticleProtect': before an article is protected
 $article: the article being protected
 $user: the user doing the protection
@@ -290,6 +301,17 @@ $isminor: minor flag
 $iswatch: watch flag
 $section: section #
 
+'ArticleSaveComplete': After an article has been updated
+$article: Article modified
+$user: User performing the modification
+$text: New content
+$summary: Edit summary/comment
+$isMinor: Whether or not the edit was marked as minor
+$isWatch: (No longer used)
+$section: (No longer used)
+$flags: Flags passed to Article::doEdit()
+$revision: New Revision of the article
+
 'ArticleSaveComplete': after an article is saved
 $article: the article (object) saved
 $user: the user (object) who saved the article
@@ -298,6 +320,8 @@ $summary: the article summary (comment)
 $isminor: minor flag
 $iswatch: watch flag
 $section: section #
+
+wfRunHooks( 'ArticleSaveComplete', array( &$this, &$wgUser, $text, $summary, $flags & EDIT_MINOR, null, null, &$flags, $revision ) );
 
 'ArticleUndeleted': When one or more revisions of an article are restored
 $title: Title corresponding to the article restored
@@ -354,6 +378,11 @@ $user: the user who did the block (not the one being blocked)
 'BookInformation': Before information output on Special:Booksources
 $isbn: ISBN to show information for
 $output: OutputPage object in use
+
+'ContributionsToolLinks': Change tool links above Special:Contributions
+$id: User identifier
+$title: User page title
+&$tools: Array of tool links
 
 'CustomEditor': When invoking the page editor
 $article: Article being edited
@@ -459,6 +488,14 @@ after noinclude/includeonly/onlyinclude and other processing.
 &$text: string containing partially parsed text
 &$this->mStripState: Parser's internal StripState object
 
+'isValidPassword': Override the result of User::isValidPassword()
+$password: Desired password
+&$result: Set this and return false to override the internal checks
+$user: User the password is being validated for
+
+'LinksUpdateConstructed': At the end of LinksUpdate() is contruction.
+&$linksUpdate: the LinkUpdate object
+
 'LoginAuthenticateAudit': a login attempt for a valid user account either succeeded or failed.
                           No return data is accepted; this hook is for auditing only.
 $user: the User object being authenticated against
@@ -556,8 +593,8 @@ Alter the contents of $siteNotice to add to/alter the sitenotice/anonnotice.
 &$sktemplate: SkinTemplate object
 &$tpl: Template engine object
 
-'TitleLinkUpdatesAfterCompletion': after Linker->doUpdate() is called
-&$title: title of the updated page
+'SpecialContributionsBeforeMainOutput': Before the form on Special:Contributions
+$id: User identifier
 
 'TitleMoveComplete': after moving an article (title)
 $old: old title
@@ -636,6 +673,10 @@ $article: article object watched
 'UnwatchArticleComplete': after a watch is removed from an article
 $user: user that watched
 $article: article object that was watched
+
+'UserGetRights': Called in User::getRights()
+$user: User to get rights for
+&$rights: Current rights
 
 'UserEffectiveGroups': Called in User::getEffectiveGroups()
 $user: User to get groups for

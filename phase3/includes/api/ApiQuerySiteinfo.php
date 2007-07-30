@@ -57,6 +57,9 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 					$filteriw = isset($params['filteriw']) ? $params['filteriw'] : false; 
 					$this->appendInterwikiMap($p, $filteriw);
 					break;
+				case 'dbrepllag' :
+					$this->appendDbReplLagInfo($p, $params['showalldb']);
+					break;
 			}
 		}
 	}
@@ -127,6 +130,34 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$this->getResult()->setIndexedTagName($data, 'iw');
 		$this->getResult()->addValue('query', $property, $data);
 	}
+	
+	protected function appendDbReplLagInfo($property, $includeAll) {
+		global $wgLoadBalancer, $wgShowHostnames;
+
+		$data = array();
+		
+		if ($includeAll) {
+			if (!$wgShowHostnames)
+				$this->dieUsage('Cannot view all servers info unless $wgShowHostnames is true', 'includeAllDenied');
+			
+			global $wgDBservers;
+			$lags = $wgLoadBalancer->getLagTimes();
+			foreach( $lags as $i => $lag ) {
+				$data[] = array (
+					'host' => $wgDBservers[$i]['host'],
+					'lag' => $lag);
+			}
+		} else {
+			list( $host, $lag ) = $wgLoadBalancer->getMaxLag();
+			$data[] = array (
+				'host' => $wgShowHostnames ? $host : '',
+				'lag' => $lag);
+		}					
+
+		$result = $this->getResult();
+		$result->setIndexedTagName($data, 'db');
+		$result->addValue('query', $property, $data);
+	}	
 
 	protected function getAllowedParams() {
 		return array (
@@ -137,7 +168,8 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				ApiBase :: PARAM_TYPE => array (
 					'general',
 					'namespaces',
-					'interwikimap'
+					'interwikimap',
+					'dbrepllag',
 				)),
 
 			'filteriw' => array (
@@ -145,6 +177,8 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 					'local',
 					'!local',
 				)),
+				
+			'showalldb' => false,
 		);
 	}
 
@@ -154,9 +188,11 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				'Which sysinfo properties to get:',
 				' "general"      - Overall system information',
 				' "namespaces"   - List of registered namespaces (localized)',
-				' "interwikimap" - Return interwiki map (optionally filtered)'
+				' "interwikimap" - Return interwiki map (optionally filtered)',
+				' "dbrepllag"    - Returns DB server with the highest replication lag',
 			),
 			'filteriw' =>  'Return only local or only nonlocal entries of the interwiki map',
+			'showalldb' => 'List all DB servers, not just the one lagging the most',
 		);
 	}
 
@@ -168,6 +204,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		return array(
 			'api.php?action=query&meta=siteinfo&siprop=general|namespaces',
 			'api.php?action=query&meta=siteinfo&siprop=interwikimap&sifilteriw=local',
+			'api.php?action=query&meta=siteinfo&siprop=dbrepllag&sishowalldb',
 			);
 	}
 

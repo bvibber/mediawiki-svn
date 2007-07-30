@@ -995,6 +995,23 @@ class Title {
 		return $this->userCan( $action, false );
 	}
 
+	/**
+	 * Determines if $wgUser is unable to edit this page because it has been protected
+	 * by $wgNamespaceProtection.
+	 * 
+	 * @return boolean
+	 */
+	public function isNamespaceProtected() {
+		global $wgNamespaceProtection, $wgUser;
+		if( isset( $wgNamespaceProtection[ $this->mNamespace ] ) ) {
+			foreach( (array)$wgNamespaceProtection[ $this->mNamespace ] as $right ) {
+				if( $right != '' && !$wgUser->isAllowed( $right ) )
+					return true;
+			}
+		}
+		return false;
+	}
+	
  	/**
 	 * Can $wgUser perform $action on this page?
 	 * @param string $action action that permission needs to be checked for
@@ -1005,7 +1022,7 @@ class Title {
 		$fname = 'Title::userCan';
 		wfProfileIn( $fname );
 
-		global $wgUser, $wgNamespaceProtection;
+		global $wgUser;
 
 		$result = null;
 		wfRunHooks( 'userCan', array( &$this, &$wgUser, $action, &$result ) );
@@ -1019,15 +1036,9 @@ class Title {
 			return false;
 		}
 		
-		if ( array_key_exists( $this->mNamespace, $wgNamespaceProtection ) ) {
-			$nsProt = $wgNamespaceProtection[ $this->mNamespace ];
-			if ( !is_array($nsProt) ) $nsProt = array($nsProt);
-			foreach( $nsProt as $right ) {
-				if( '' != $right && !$wgUser->isAllowed( $right ) ) {
-					wfProfileOut( $fname );
-					return false;
-				}
-			}
+		if ( $this->isNamespaceProtected() ) {
+			wfProfileOut( $fname );
+			return false;
 		}
 
 		if( $this->mDbkeyform == '_' ) {
@@ -1090,6 +1101,11 @@ class Title {
 				wfProfileOut( $fname );
 				return false;
 			}
+		}
+
+		if( $action == 'edit' && !$wgUser->isAllowed( 'edit' ) ) {
+			wfProfileOut( $fname );
+			return false;
 		}
 
 		wfProfileOut( $fname );
@@ -2110,7 +2126,7 @@ class Title {
 	 * 	be a redirect
 	 */
 	private function moveOverExistingRedirect( &$nt, $reason = '' ) {
-		global $wgUseSquid;
+		global $wgUseSquid, $wgContLang;
 		$fname = 'Title::moveOverExistingRedirect';
 		$comment = wfMsgForContent( '1movedto2_redir', $this->getPrefixedText(), $nt->getPrefixedText() );
 
@@ -2140,6 +2156,7 @@ class Title {
 				'page_touched'   => $dbw->timestamp($now),
 				'page_namespace' => $nt->getNamespace(),
 				'page_title'     => $nt->getDBkey(),
+				'page_key'       => $wgContLang->caseFold($nt->getDBkey()),
 				'page_latest'    => $nullRevId,
 			),
 			/* WHERE */ array( 'page_id' => $oldid ),
@@ -2187,7 +2204,7 @@ class Title {
 	 * @param Title &$nt the new Title
 	 */
 	private function moveToNewTitle( &$nt, $reason = '' ) {
-		global $wgUseSquid;
+		global $wgUseSquid, $wgContLang;
 		$fname = 'MovePageForm::moveToNewTitle';
 		$comment = wfMsgForContent( '1movedto2', $this->getPrefixedText(), $nt->getPrefixedText() );
 		if ( $reason ) {
@@ -2210,6 +2227,7 @@ class Title {
 				'page_touched'   => $now,
 				'page_namespace' => $nt->getNamespace(),
 				'page_title'     => $nt->getDBkey(),
+				'page_key'       => $wgContLang->caseFold($nt->getDBkey()),
 				'page_latest'    => $nullRevId,
 			),
 			/* WHERE */ array( 'page_id' => $oldid ),
@@ -2304,6 +2322,16 @@ class Title {
 
 		# Return true if there was no history
 		return $row === false;
+	}
+	
+	/**
+	 * Can this title be added to a user's watchlist?
+	 *
+	 * @return bool
+	 */
+	public function isWatchable() {
+		return !$this->isExternal()
+			&& Namespace::isWatchable( $this->getNamespace() );
 	}
 
 	/**
@@ -2429,6 +2457,15 @@ class Title {
 			&& $this->getNamespace() == $title->getNamespace()
 			&& $this->getDbkey() === $title->getDbkey();
 	}
+	
+	/**
+	 * Return a string representation of this title
+	 *
+	 * @return string
+	 */
+	public function __toString() {
+		return $this->getPrefixedText();
+	}
 
 	/**
 	 * Check if page exists
@@ -2439,16 +2476,15 @@ class Title {
 	}
 
 	/**
-	 * Should a link should be displayed as a known link, just based on its title?
+	 * Do we know that this title definitely exists, or should we otherwise
+	 * consider that it exists?
 	 *
-	 * Currently, a self-link with a fragment and special pages are in
-	 * this category. System messages that have defined default values are also
-	 * always known.
+	 * @return bool
 	 */
 	public function isAlwaysKnown() {
-		return ( $this->isExternal() ||
-			 ( 0 == $this->mNamespace && "" == $this->mDbkeyform ) ||
-			 ( NS_MEDIAWIKI == $this->mNamespace && wfMsgWeirdKey( $this->mDbkeyform ) ) );
+		return $this->isExternal()
+			|| ( $this->mNamespace == NS_MAIN && $this->mDbkeyform == '' )
+			|| ( $this->mNamespace == NS_MEDIAWIKI && wfMsgWeirdKey( $this->mDbkeyform ) );
 	}
 
 	/**

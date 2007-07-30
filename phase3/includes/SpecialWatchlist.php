@@ -30,20 +30,25 @@ function wfSpecialWatchlist( $par ) {
 		$llink = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Userlogin' ), wfMsgHtml( 'loginreqlink' ), 'returnto=' . $specialTitle->getPrefixedUrl() );
 		$wgOut->addHtml( wfMsgWikiHtml( 'watchlistanontext', $llink ) );
 		return;
-	} else {
-		$wgOut->setPageTitle( wfMsg( 'watchlist' ) );
-		$wgOut->setSubtitle( wfMsgWikiHtml( 'watchlistfor', htmlspecialchars( $wgUser->getName() ) ) );
 	}
+	
+	$wgOut->setPageTitle( wfMsg( 'watchlist' ) );
+	
+	$sub  = wfMsgExt( 'watchlistfor', 'parseinline', $wgUser->getName() );
+	$sub .= '<br />' . WatchlistEditor::buildTools( $wgUser->getSkin() );
+	$wgOut->setSubtitle( $sub );
 
 	if( ( $mode = WatchlistEditor::getMode( $wgRequest, $par ) ) !== false ) {
 		$editor = new WatchlistEditor();
 		$editor->execute( $wgUser, $wgOut, $wgRequest, $mode );
 		return;
 	}
-
+	
 	$uid = $wgUser->getId();
 	if( $wgEnotifWatchlist && $wgRequest->getVal( 'reset' ) && $wgRequest->wasPosted() ) {
 		$wgUser->clearAllNotifications( $uid );
+		$wgOut->redirect( $specialTitle->getFullUrl() );
+		return;
 	}
 
 	$defaults = array(
@@ -119,7 +124,6 @@ function wfSpecialWatchlist( $par ) {
 
 	if ( $days <= 0 ) {
 		$andcutoff = '';
-		$npages = wfMsg( 'watchlistall1' );
 	} else {
 		$andcutoff = "AND rc_timestamp > '".$dbr->timestamp( time() - intval( $days * 86400 ) )."'";
 		/*
@@ -128,7 +132,6 @@ function wfSpecialWatchlist( $par ) {
 		$s = $dbr->fetchObject( $res );
 		$npages = $s->n;
 		*/
-		$npages = 40000 * $days;
 	}
 
 	# If the watchlist is relatively short, it's simplest to zip
@@ -162,12 +165,9 @@ function wfSpecialWatchlist( $par ) {
 		$limitWatchlist = '';
 	}
 
-	# TODO: Consider removing the third parameter
-	$header .= wfMsgExt( 'watchdetails', array( 'parsemag' ), $wgLang->formatNum( $nitems ),
-		$wgLang->formatNum( $npages ), '',
-		$specialTitle->getFullUrl( 'edit=yes' ) );
+	$header .= wfMsgExt( 'watchlist-details', array( 'parsemag' ), $wgLang->formatNum( $nitems ) );
 	$wgOut->addWikiText( $header );
-	
+
 	# Show a message about slave lag, if applicable
 	if( ( $lag = $dbr->getLag() ) > 0 )
 		$wgOut->showLagWarning( $lag );

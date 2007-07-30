@@ -265,13 +265,14 @@ $messages = array(
 'category_header'       => 'Sivut, jotka ovat luokassa $1',
 'subcategories'         => 'Alaluokat',
 'category-media-header' => 'Luokan ”$1” sisältämät tiedostot',
+'category-empty'        => "''Tässä luokassa ei ole sivuja eikä tiedostoja.''",
 
 'mainpagetext'      => "'''Mediawiki on onnistuneesti asennettu.'''",
 'mainpagedocfooter' => "Lisätietoja käytöstä on sivulla [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide User's Guide].
 === Lisäohjeita===
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Asetusten teko-ohjeita]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWikin FAQ]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce Sähköpostilista, jolla tiedotetaan MediaWikin uusista versioista]\",
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Asetusten teko-ohjeita]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWikin FAQ]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Sähköpostilista, jolla tiedotetaan MediaWikin uusista versioista]\",
 === Asetukset ===
 Tarkista, että alla olevat taivutusmuodot ovat oikein. Jos eivät, tee tarvittavat muutokset LocalSettings.php:hen seuraavasti:
  \$wgGrammarForms['fi']['genitive']['{{SITENAME}}'] = '...';
@@ -458,6 +459,7 @@ Taivutusmuodot: {{GRAMMAR:genitive|{{SITENAME}}}} (yön) — {{GRAMMAR:partitive
 'viewsource'           => 'Lähdekoodi',
 'viewsourcefor'        => 'sivulle $1',
 'protectedpagetext'    => 'Tämä sivu on suojattu muutoksilta.',
+'namespaceprotected'   => "Et voi muokata sivuja nimiavaruussa '''$1'''.",
 'viewsourcetext'       => 'Voit tarkastella ja kopioida tämän sivun lähdekoodia:',
 'protectedinterface'   => 'Tämä sivu sisältää ohjelmiston käyttöliittymätekstiä ja on suojattu häiriköinnin estämiseksi.',
 'editinginterface'     => '<center>Muokkaat sivua, joka sisältää ohjelmiston käyttöliittymätekstiä.</center>',
@@ -639,6 +641,7 @@ Jos olet sitä mieltä, että sinut on estetty syyttä, voit keskustella asiasta
 Esikatselu on piilotettu varokeinona JavaScript-hyökkäyksiä vastaan – tässä wikissä on HTML-tila päällä.
 
 Yritä uudelleen. Jos ongelma ei katoa, yritä kirjautua ulos ja takaisin sisään.',
+'token_suffix_mismatch'     => '<strong>Muokkauksesi on hylätty, koska asiakasohjelmasi ei osaa käsitellä välimerkkejä muokkaustarkisteessa. Syynä voi olla viallinen välityspalvelin.</strong>',
 'importing'                 => 'Tuodaan sivua $1',
 'editing'                   => 'Muokataan sivua $1',
 'editinguser'               => 'Muokataan sivua $1',
@@ -964,7 +967,6 @@ Jos sinulla on tämän kuvan alkuperäinen versio, tallenna se. Muussa tapaukses
 'fileexists-forbidden'        => 'Samanniminen tiedosto on jo olemassa. Tallenna tiedosto jollakin toisella nimellä. Nykyinen tiedosto: [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Samanniminen tiedosto on jo olemassa jaetussa mediavarastossa. Tallenna tiedosto jollakin toisella nimellä. Nykyinen tiedosto: [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Tallennus onnistui',
-'fileuploaded'                => "Tiedosto '''$1''' on tallennettu onnistuneesti. Seuraa linkkiä ($2) kuvaussivulle, ja täytä tiedostoon liityvät tiedot, kuten mistä se on peräisin, milloin se on luotu, kuka sen loi ja mahdollisesti muita tietämiäsi tietoja. Jos tiedosto on kuva, voit lisätä sen sivulle näin: '''<nowiki>[[</nowiki>{{ns:image}}:$1|thumb|Kuvaus]]'''",
 'uploadwarning'               => 'Tallennusvaroitus',
 'savefile'                    => 'Tallenna',
 'uploadedimage'               => 'tallensi tiedoston [[$1]]',
@@ -993,6 +995,7 @@ Jos sinulla on tämän kuvan alkuperäinen versio, tallenna se. Muussa tapaukses
 
 'license'            => 'Lisenssi',
 'nolicense'          => 'Ei lisenssiä',
+'license-nopreview'  => '(esikatselua ei saatavilla)',
 'upload_source_url'  => ' (julkinen verkko-osoite)',
 'upload_source_file' => ' (tiedosto tietokoneella)',
 
@@ -1203,10 +1206,6 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'nowatchlist'          => 'Tarkkailulistallasi ei ole sivuja.',
 'watchlistanontext'    => 'Sinun täytyy $1, jos haluat käyttää tarkkailulistaa.',
 'watchlistcount'       => 'Tarkkailulistallasi on <b>$1</b> sivua keskustelusivut mukaan lukien.',
-'clearwatchlist'       => 'Tarkkailulistan tyhjentäminen',
-'watchlistcleartext'   => 'Haluatko tyhjentää tarkkailulistan?',
-'watchlistclearbutton' => 'Tyhjennä tarkkailusta',
-'watchlistcleardone'   => 'Tarkkailulista on tyhjennetty. $1 sivua poistettiin listalta.',
 'watchnologin'         => 'Et ole kirjautunut sisään',
 'watchnologintext'     => 'Sinun pitää [[Special:Userlogin|kirjautua sisään]], jotta voisit käyttää tarkkailulistaasi.',
 'addedwatch'           => 'Lisätty tarkkailulistalle',
@@ -1219,18 +1218,12 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'unwatchthispage'      => 'Lopeta tarkkailu',
 'notanarticle'         => 'Ei ole sivu',
 'watchnochange'        => 'Valittuna ajanjaksona yhtäkään tarkkailemistasi sivuista ei muokattu.',
-'watchdetails'         => 'Tarkkailulistalla on {{PLURAL:$1|$1 sivu|$1 sivua}} keskustelusivuja mukaan laskematta
-* [[Special:Watchlist/edit|Näytä tai muokkaa listaa]]
-* [[Special:Watchlist/clear|Poista kaikki sivut]]',
+'watchlist-details'    => 'Tarkkailulistalla on {{PLURAL:$1|$1 sivu|$1 sivua}} keskustelusivuja mukaan laskematta.',
 'wlheader-enotif'      => '* Sähköposti-ilmoitukset ovat käytössä.',
 'wlheader-showupdated' => "* Sivut, joita on muokattu viimeisen käyntisi jälkeen on merkitty '''paksummalla'''",
 'watchmethod-recent'   => 'tarkistetaan tuoreimpia muutoksia tarkkailluille sivuille',
 'watchmethod-list'     => 'tarkistetaan tarkkailtujen sivujen tuoreimmat muutokset',
-'removechecked'        => 'Poista valitut sivut tarkkailulistalta',
 'watchlistcontains'    => 'Tarkkailulistallasi on {{PLURAL:$1|yksi sivu|$1 sivua}}.',
-'watcheditlist'        => 'Tässä on aakkostettu lista tarkkailemistasi sivuista. Merkitse niiden sivujen ruudut, jotka haluat poistaa tarkkailulistaltasi.',
-'removingchecked'      => 'Merkityt sivut poistettiin tarkkailulistalta.',
-'couldntremove'        => 'Sivua $1 ei voitu poistaa tarkkailulistalta',
 'iteminvalidname'      => 'Sivun $1 kanssa oli ongelmia! Sivun nimessä on vikaa.',
 'wlnote'               => "Alla on '''$1''' {{PLURAL:$1|muutos|muutosta}} viimeisen {{PLURAL:$2||'''$2'''}} tunnin ajalta.",
 'wlshowlast'           => 'Näytä viimeiset $1 tuntia tai $2 päivää$3',
@@ -1241,7 +1234,6 @@ Ohjelmiston suorittamia ylläpitotöitä on jonossa '''$7''' {{PLURAL:$7|kappale
 'watchlist-hide-own'   => 'Piilota omat muokkaukset',
 'watchlist-show-minor' => 'Näytä pienet muokkaukset',
 'watchlist-hide-minor' => 'Piilota pienet muokkaukset',
-'wldone'               => 'Muutokset tehty.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'Lisätään tarkkailulistalle...',
@@ -1308,6 +1300,7 @@ Palaute ja lisäapu osoitteessa:
 'alreadyrolled'               => 'Käyttäjän [[User:$2|$2]] ([[User_talk:$2|keskustelu]]) tekemiä muutoksia sivuun $1 ei voi kumota, koska käyttäjä [[User:$3|$3]] ([[User_talk:$3|keskustelu]]) on tehnyt uudempia muutoksia.',
 'editcomment'                 => 'Muokkauksen yhteenveto oli: <i>$1</i>.', # only shown if there is an edit comment
 'revertpage'                  => 'Käyttäjän [[Special:Contributions/$2|$2]] ([[User_talk:$2|keskustelu]]) muokkaukset kumottiin ja sivu palautettiin viimeisimpään käyttäjän [[User:$1|$1]] tekemään versioon.',
+'rollback-success'            => 'Käyttäjän ”$1” tekemät muokkaukset kumottiin ja artikkeli palautettiin käyttäjän $2 versioon.',
 'sessionfailure'              => 'Istuntosi kanssa on ongelma. Muutosta ei toteutettu varotoimena sessionkaappauksien takia. Käytä selaimen paluutoimintoa ja päivitä sivu, jolta tulit, ja yritä uudelleen.',
 'protectlogpage'              => 'Suojausloki',
 'protectlogtext'              => 'Alla on loki sivujen suojauksista ja suojauksien poistoista. Luettelo tällä hetkellä suojatuista sivuista löytyy [[Special:Protectedpages|suojattuen sivujen luettelosta]].',
@@ -1490,9 +1483,8 @@ Palaute ja lisäapu osoitteessa:
 'ipb_cant_unblock'            => 'Estoa ”$1” ei löytynyt. Se on saatettu poistaa.',
 'proxyblockreason'            => 'IP-osoitteestasi on estetty muokkaukset, koska se on avoin välityspalvelin. Ota yhteyttä Internet-palveluntarjoajaasi tai tekniseen tukeen ja kerro heillä tästä tietoturvaongelmasta.',
 'proxyblocksuccess'           => 'Valmis.',
-'sorbs'                       => 'SORBS-DNSBL',
-'sorbsreason'                 => 'IP-osoitteesti on listattu avoimena välityspalvelimena [http://www.sorbs.net SORBSin] mustalla listalla.',
-'sorbs_create_account_reason' => 'IP-osoitteesi on listattu avoimena välityspalvelimena [http://www.sorbs.net SORBSin] mustalla listalla. Et voi luoda käyttäjätunnusta.',
+'sorbsreason'                 => 'IP-osoitteesti on listattu avoimena välityspalvelimena DNSBLin mustalla listalla.',
+'sorbs_create_account_reason' => 'IP-osoitteesi on listattu avoimena välityspalvelimena DNSBLin mustalla listalla. Et voi luoda käyttäjätunnusta.',
 
 # Developer tools
 'lockdb'              => 'Lukitse tietokanta',
@@ -1556,6 +1548,7 @@ Sivujen koko historian vienti on estetty suorituskykysyistä.',
 'export-submit'     => 'Vie',
 'export-addcattext' => 'Lisää sivut luokasta',
 'export-addcat'     => 'Lisää',
+'export-download'   => 'Tallenna tiedostona',
 
 # Namespace 8 related
 'allmessages'               => 'Järjestelmäviestit',
@@ -1698,7 +1691,7 @@ Sivujen koko historian vienti on estetty suorituskykysyistä.',
 'subcategorycount'       => 'Tällä luokalla on {{PLURAL:$1|yksi alaluokka|$1 alaluokkaa}}.',
 'categoryarticlecount'   => 'Tässä luokassa on {{PLURAL:$1|yksi sivu|$1 sivua}}.',
 'category-media-count'   => 'Tässä luokassa on {{PLURAL:$1|yksi tiedosto|$1 tiedostoa}}.',
-'listingcontinuesabbrev' => ' jatkuu',
+'listingcontinuesabbrev' => 'jatkuu',
 'spambot_username'       => 'MediaWikin mainospoistaja',
 'spam_reverting'         => 'Palautettu viimeisimpään versioon, joka ei sisällä linkkejä kohteeseen $1.',
 'spam_blanking'          => 'Kaikki versiot sisälsivät linkkejä kohteeseen $1. Sivu tyhjennety.',
@@ -2031,7 +2024,6 @@ Sivujen koko historian vienti on estetty suorituskykysyistä.',
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'kaikki',
 'imagelistall'     => 'kaikki',
-'watchlistall1'    => 'kaikkia',
 'watchlistall2'    => ', koko historia',
 'namespacesall'    => 'kaikki',
 'monthsall'        => 'kaikki',
@@ -2055,7 +2047,7 @@ Postitusohjelma palautti: $1',
 'confirmemail_subject'    => '{{GRAMMAR:genitive|{{SITENAME}}}} sähköpostiosoitteen varmennus',
 'confirmemail_body'       => 'Joku IP-osoitteesta $1 on rekisteröinyt {{GRAMMAR:inessive|{{SITENAME}}}} tunnuksen $2 tällä sähköpostiosoitteella.
 
-Varmenna, että tämä tunnus kuuluu sinulle avamaalla seuraava linkki selaimellasi:
+Varmenna, että tämä tunnus kuuluu sinulle avaamalla seuraava linkki selaimellasi:
 
 $3
 
@@ -2125,7 +2117,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Ak: Sivu tyhjennettiin',
 'autosumm-replace' => 'Ak: Sivun sisältö korvattiin sisällöllä ”$1”',
-'autoredircomment' => 'Ak: Uudelleenohjaus sivulle [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => 'Ak: Uudelleenohjaus sivulle [[$1]]',
 'autosumm-new'     => 'Ak: Uusi sivu: $1',
 
 # Size units
@@ -2146,6 +2138,32 @@ Yritä normaalia esikatselua.',
 'lag-warn-normal' => 'Muutokset, jotka ovat uudempia kuin $1 sekuntia, eivät välttämättä näy tällä sivulla.',
 'lag-warn-high'   => 'Tietokannoilla on työjonoa. Muutokset, jotka ovat uudempia kuin $1 sekuntia, eivät välttämättä näy tällä sivulla.',
 
-);
+# Watchlist editor
+'watchlistedit-numitems'       => 'Tarkkailulistallasi on {{PLURAL:$1|yksi sivu|$1 sivua}} keskustelusivuja lukuun ottamatta.',
+'watchlistedit-noitems'        => 'Tarkkailulistasi on tyhjä.',
+'watchlistedit-clear-title'    => 'Tarkkailulistan tyhjennys',
+'watchlistedit-clear-legend'   => 'Tyhjennä tarkkailulista',
+'watchlistedit-clear-confirm'  => 'Haluatko poistaa kaikki sivut tarkkailulistaltasi? Voit poistaa sivuja myös [[Special:Watchlist/edit|yksitellen]].',
+'watchlistedit-clear-submit'   => 'Tyhjennä',
+'watchlistedit-clear-done'     => 'Tarkkailulistasi on tyhjennetty.',
+'watchlistedit-normal-title'   => 'Tarkkailulistan muokkaus',
+'watchlistedit-normal-legend'  => 'Sivut',
+'watchlistedit-normal-explain' => 'Tarkkailulistasi sivut on lueteltu alla. Voit valita poistettavat sivut valitsemalla valintaruudun. Voit myös muokata listaa [[Special:Watchlist/raw|tekstimuodossa]] tai [[Special:Watchlist/clear|poistaa kaikki sivut]] tarkkailulistalta.',
+'watchlistedit-normal-submit'  => 'Poista',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|Yksi sivu|$1 sivua}} poistettiin tarkkailulistaltasi:',
+'watchlistedit-raw-title'      => 'Tarkkailulistan muokkaus',
+'watchlistedit-raw-legend'     => 'Tarkkailulistan muokkaus',
+'watchlistedit-raw-explain'    => 'Tarkkailulistalla olevat sivut on lueteltu alla jokainen omalla rivillään.',
+'watchlistedit-raw-titles'     => 'Sivut',
+'watchlistedit-raw-submit'     => 'Päivitä tarkkailulista',
+'watchlistedit-raw-done'       => 'Tarkkailulistasi on päivitetty.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|Yksi sivu|$1 sivua}} lisättiin:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|Yksi sivu|$1 sivua}} poistettiin:',
 
-?>
+# Watchlist editing tools
+'watchlisttools-view'  => 'Näytä muutokset',
+'watchlisttools-edit'  => 'Muokkaa listaa',
+'watchlisttools-raw'   => 'Lista raakamuodossa',
+'watchlisttools-clear' => 'Tyhjennä tarkkailulista',
+
+);

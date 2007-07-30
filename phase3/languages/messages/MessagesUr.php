@@ -464,12 +464,8 @@ $messages = array(
 'watch'             => 'زیرنظر',
 'watchthispage'     => 'یہ صفحہ زیر نظر کیجیۓ',
 'unwatch'           => 'زیرنظرمنسوخ',
-'watchdetails'      => '* $1 زیرنظر صفحات (صفحات تبادلۃ خیال کا شمار نہیں)
-* [[Special:Watchlist/edit|دیکھیں اور ترمیم کریں تمام زیرنظرفہرست]]
-* [[Special:Watchlist/clear|خارج تمام صغحات]]',
-'removechecked'     => 'نشان زدہ اشیاء زیر نظرفہرست سے خارج کر دی گئیں',
+'watchlist-details' => '$1 زیرنظر صفحات (صفحات تبادلۃ خیال کا شمار نہیں).',
 'watchlistcontains' => 'آپ کی زیرنظرفہرست میں $1 صفحات ہیں۔',
-'removingchecked'   => 'درخواست شدہ اشیاء زیرنظر فہرست سے خارج ہو رہی ہیں۔۔۔',
 'wlnote'            => 'نیچےآخری $1 تبدیلیاں ہیں جو کے پیچھلے <b>$2</b> گھنٹوں میں کی گئیں۔',
 'wlshowlast'        => 'دکھائیں آخری $1 گھنٹے $2 دن $3',
 
@@ -593,7 +589,7 @@ $messages = array(
 # Spam protection
 'subcategorycount'       => 'اس زمرے  {{PLURAL:$1|کا ایک ذیلی زمرہ ہے|کے $1 ذیلی زمرہ جات ہیں}}۔',
 'categoryarticlecount'   => 'اس زمرے میں {{PLURAL:$1|ایک مضمون ہے|$1 مضامین ہیں}}۔',
-'listingcontinuesabbrev' => ' ۔جاری',
+'listingcontinuesabbrev' => '۔جاری',
 
 # Image deletion
 'deletedrevision' => 'حذف شدہ پرانی ترمیم $1۔',
@@ -614,7 +610,6 @@ $messages = array(
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'تمام',
-'watchlistall1'    => 'تمام',
 'watchlistall2'    => 'تمام',
 'namespacesall'    => 'تمام',
 
