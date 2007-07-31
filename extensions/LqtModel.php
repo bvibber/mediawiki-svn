@@ -268,15 +268,17 @@ class Thread {
 		$this->articleId = $new_articleId;
 		$this->articleNamespace = $new_articleNamespace;
 		$this->articleTitle = $new_articleTitle;
+		$this->revisionNumber += 1;
 		$this->commitRevision();
 		
 		if($leave_trace) {
-		//	$this->leaveTrace();
+			$this->leaveTrace();
 		}
 	}
 	
 	function leaveTrace() {
 		/* Adapted from Title::moveToNewTitle. But now the new title exists on the old talkpage. */
+		$dbw =& wfGetDB( DB_MASTER );
 		
 		$mwRedir = MagicWord::get( 'redirect' );
 		$redirectText = $mwRedir->getSynonym( 0 ) . ' [[' . $this->title()->getPrefixedText() . "]]\n";
@@ -285,30 +287,32 @@ class Thread {
 		$newid = $redirectArticle->insertOn( $dbw );
 		$redirectRevision = new Revision( array(
 			'page'    => $newid,
-			'comment' => $comment,
+			'comment' => "page moved from here",
 			'text'    => $redirectText ) );
 		$redirectRevision->insertOn( $dbw );
 		$redirectArticle->updateRevisionOn( $dbw, $redirectRevision, 0 );
-		$linkCache->clearLink( $this->getPrefixedDBkey() );
 
 		# Log the move
 		$log = new LogPage( 'move' );
-		$log->addEntry( 'move', $this, $reason, array( 1 => $nt->getPrefixedText()) );
+		$log->addEntry( 'move', $this->double->title(), "page moved from here", array( 1 => $this->title()->getPrefixedText()) );
 
 		# Purge caches as per article creation
-		Article::onArticleCreate( $nt );
+		Article::onArticleCreate( $redirectArticle->getTitle() );
 
 		# Record the just-created redirect's linking to the page
 		$dbw->insert( 'pagelinks',
 			array(
 				'pl_from'      => $newid,
-				'pl_namespace' => $nt->getNamespace(),
-				'pl_title'     => $nt->getDBkey() ),
-			$fname );
+				'pl_namespace' => $redirectArticle->getTitle()->getNamespace(),
+				'pl_title'     => $redirectArticle->getTitle()->getDBkey() ),
+			__METHOD__ );
+
+		$thread = Threads::newThread( $redirectArticle, $this->double->article(), null,
+		 	Threads::TYPE_MOVED, $log);
 
 		# Purge old title from squid
 		# The new title, and links to the new title, are purged in Article::onArticleCreate()
-		$this->purgeSquid();
+#		$this-->purgeSquid();
 	}
 	
 	
@@ -501,9 +505,14 @@ class Thread {
 /** Module of factory methods. */
 class Threads {
 
+	const TYPE_NORMAL = 0;
+	const TYPE_MOVED = 1;
+
 	static $loadedThreads = array();
 	
-    static function newThread( $root, $article, $superthread = null ) {
+    static function newThread( $root, $article, $superthread = null,
+				$type = self::TYPE_NORMAL, $log = null ) {
+	/* TODO log is ignored. */
         $dbr =& wfGetDB( DB_MASTER );
 			
 		if( $article->exists() ) {
@@ -515,7 +524,8 @@ class Threads {
 
         $res = $dbr->insert('thread',
             array('thread_root' => $root->getID(),
-                  'thread_timestamp' => wfTimestampNow()) + $aclause,
+                  'thread_timestamp' => wfTimestampNow(),
+				  'thread_type' => $type) + $aclause,
             __METHOD__);
 		
 		$newid = $dbr->insertId();
