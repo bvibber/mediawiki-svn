@@ -937,8 +937,9 @@ format. Please enter a well-formatted address or empty that field.',
 
 The block was made by $1. The reason given is ''$2''.
 
-Expiry of block: $6<br />
-Intended blockee: $7
+* Begin of block: $8
+* Expiry of block: $6
+* Intended blockee: $7
 
 You can contact $1 or another [[{{MediaWiki:grouppage-sysop}}|administrator]] to discuss the block.
 You cannot use the 'email this user' feature unless a valid email address is specified in your
@@ -949,7 +950,8 @@ The reason given is this:
 
 :\'\'$2\'\'
 
-Expiry of block: $6
+* Begin of block: $8
+* Expiry of block: $6
 
 You may contact $1 or one of the other
 [[{{MediaWiki:grouppage-sysop}}|administrators]] to discuss the block.
@@ -1241,8 +1243,8 @@ containing all of the search terms will appear in the result).",
 'prefs-personal'           => 'User profile',
 'prefs-rc'                 => 'Recent changes',
 'prefs-watchlist'          => 'Watchlist',
-'prefs-watchlist-days'     => 'Number of days to show in watchlist:',
-'prefs-watchlist-edits'    => 'Number of edits to show in expanded watchlist:',
+'prefs-watchlist-days'     => 'Maximum number of days to show in watchlist:',
+'prefs-watchlist-edits'    => 'Maximum number of changes to show in expanded watchlist:',
 'prefs-misc'               => 'Misc',
 'saveprefs'                => 'Save',
 'resetprefs'               => 'Reset',
@@ -1439,17 +1441,17 @@ If you have this image in full resolution upload this one, otherwise change the 
 'imgdelete'                 => 'del',
 'imgdesc'                   => 'desc',
 'imgfile'                   => 'file',
-'filehist' => 'File history',
-'filehist-help' => 'Click on a date/time to view the file as it appeared at that time.',
-'filehist-deleteall' => 'delete all',
-'filehist-deleteone' => 'delete this',
-'filehist-revert' => 'revert',
-'filehist-current' => 'current',
-'filehist-datetime' => 'Date/Time',
-'filehist-user' => 'User',
-'filehist-dimensions' => 'Dimensions',
-'filehist-filesize' => 'File size',
-'filehist-comment' => 'Comment',
+'filehist'                  => 'File history',
+'filehist-help'             => 'Click on a date/time to view the file as it appeared at that time.',
+'filehist-deleteall'        => 'delete all',
+'filehist-deleteone'        => 'delete this',
+'filehist-revert'           => 'revert',
+'filehist-current'          => 'current',
+'filehist-datetime'         => 'Date/Time',
+'filehist-user'             => 'User',
+'filehist-dimensions'       => 'Dimensions',
+'filehist-filesize'         => 'File size',
+'filehist-comment'          => 'Comment',
 'imagelinks'                => 'Links',
 'linkstoimage'              => 'The following pages link to this file:',
 'nolinkstoimage'            => 'There are no pages that link to this file.',
@@ -1468,14 +1470,14 @@ If you have this image in full resolution upload this one, otherwise change the 
 'imagelist_search_for'      => 'Search for image name:',
 
 # File reversion
-'filerevert' => 'Revert $1',
-'filerevert-legend' => 'Revert file',
-'filerevert-intro' => "<span class=\"plainlinks\">You are reverting '''[[Media:$1|$1]]''' to the [$3 version as of $2].</span>",
-'filerevert-comment' => 'Comment:',
-'filerevert-defaultcomment' => 'Reverted to version as of $1',
-'filerevert-submit' => 'Revert',
-'filerevert-success' => "<span class=\"plainlinks\">'''[[Media:$1|$1]]''' has been reverted to the [$3 version as of $2].</span>",
-'filerevert-badversion' => 'There is no previous local version of this file with the provided timestamp.',
+'filerevert'                => 'Revert $1',
+'filerevert-legend'         => 'Revert file',
+'filerevert-intro'          => "<span class=\"plainlinks\">You are reverting '''[[Media:$1|$1]]''' to the [$4 version as of $2, $3].</span>",
+'filerevert-comment'        => 'Comment:',
+'filerevert-defaultcomment' => 'Reverted to version as of $1, $2',
+'filerevert-submit'         => 'Revert',
+'filerevert-success'        => "<span class=\"plainlinks\">'''[[Media:$1|$1]]''' has been reverted to the [$4 version as of $2, $3].</span>",
+'filerevert-badversion'     => 'There is no previous local version of this file with the provided timestamp.',
 
 # MIME search
 'mimesearch'         => 'MIME search',
