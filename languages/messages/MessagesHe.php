@@ -505,7 +505,7 @@ $messages = array(
 'filedeleteerror'      => 'מחיקת "$1" נכשלה.',
 'directorycreateerror' => 'יצירת התיקייה "$1" נכשלה.',
 'filenotfound'         => 'הקובץ "$1" לא נמצא.',
-'fileexists'           => 'הכתיבה לקובץ "$1" נכשלה: הקובץ קיים',
+'fileexistserror'      => 'הכתיבה לקובץ "$1" נכשלה: הקובץ קיים',
 'unexpected'           => 'ערך לא צפוי: "$1"="$2"',
 'formerror'            => 'שגיאה: לא יכול לשלוח טופס.',
 'badarticleerror'      => 'לא ניתן לבצע פעולה זו בדף זה.',
@@ -593,7 +593,7 @@ $messages = array(
 'throttled-mailpassword'     => 'כבר נעשה שימוש באפשרות שחזור הסיסמה ב־$1 השעות האחרונות. כדי למנוע ניצול לרעה, רק דואר אחד כזה יכול להישלח כל $1 שעות.',
 'mailerror'                  => 'שגיאה בשליחת דואר: $1',
 'acct_creation_throttle_hit' => 'מצטערים, יצרת כבר $1 חשבונות. אינך יכול ליצור חשבונות נוספים.',
-'emailauthenticated'         => 'כתובת הדוא"ל שלך אושרה על־ידי $1.',
+'emailauthenticated'         => 'כתובת הדוא"ל שלך אושרה ב־$1.',
 'emailnotauthenticated'      => 'כתובת הדוא"ל שלך עדיין לא אושרה. אף דוא"ל לא יישלח מאף אחת מהתכונות הבאות.',
 'noemailprefs'               => 'אנא ציינו כתובת דוא"ל כדי שתכונות אלה יעבדו.',
 'emailconfirmlink'           => 'אשר את כתובת הדוא"ל שלך',
@@ -1104,13 +1104,17 @@ $messages = array(
 'imgdelete'                 => 'מחק',
 'imgdesc'                   => 'תיאור',
 'imgfile'                   => 'קובץ',
-'imglegend'                 => 'מקרא: (תיאור) הצג/ערוך תיאור התמונה.',
-'imghistory'                => 'היסטורית קובץ תמונה',
-'revertimg'                 => 'חזור',
-'deleteimg'                 => 'מחק',
-'deleteimgcompletely'       => 'מחק את כל גרסאות התמונה',
-'imghistlegend'             => 'מקרא (נוכ) = זו התמונה הנוכחית, (מחק) = מחק גרסה ישנה זו, (חזור) חזור לגרסה ישנה זו.<br />
-<b>לחצו על תאריך לראות את התמונה שהועלתה בתאריך זה.</b>',
+'filehist'                  => 'היסטוריית קובץ התמונה',
+'filehist-help'             => 'לחצו על תאריך/שעה כדי לראות את התמונה כפי שהופיעה בעת זו.',
+'filehist-deleteall'        => 'מחיקת כל הגרסאות',
+'filehist-deleteone'        => 'מחיקת הגרסה הנוכחית',
+'filehist-revert'           => 'שחזור',
+'filehist-current'          => 'נוכחית',
+'filehist-datetime'         => 'תאריך/שעה',
+'filehist-user'             => 'משתמש',
+'filehist-dimensions'       => 'ממדים',
+'filehist-filesize'         => 'גודל הקובץ',
+'filehist-comment'          => 'הערה',
 'imagelinks'                => 'קישורי תמונות',
 'linkstoimage'              => 'הדפים הבאים משתמשים בתמונה זו:',
 'nolinkstoimage'            => 'אין דפים המשתמשים בתמונה זו.',
@@ -1126,6 +1130,16 @@ $messages = array(
 'imagelist_size'            => 'גודל',
 'imagelist_description'     => 'תיאור',
 'imagelist_search_for'      => 'חיפוש תמונה בשם:',
+
+# File reversion
+'filerevert'                => 'שחזור $1',
+'filerevert-legend'         => 'שחזור קובץ',
+'filerevert-intro'          => '<span class="plainlinks">משחזר את \'\'\'[[Media:$1|$1]]\'\'\' ל[גרסה $4 מ־$2, $3].</span>',
+'filerevert-comment'        => 'הערה:',
+'filerevert-defaultcomment' => 'שוחזר לגרסה מ־$1, $2',
+'filerevert-submit'         => 'שחזור',
+'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' שוחזרה ל[גרסה $4 מ־$2, $3].</span>',
+'filerevert-badversion'     => 'אין גרסה מקומית קודמת של הקובץ שהועלתה בתאריך המצוין.',
 
 # MIME search
 'mimesearch'         => 'חיפוש MIME',
@@ -1393,7 +1407,6 @@ $NEWPAGE
 'deletionlog'                 => 'יומן מחיקות',
 'reverted'                    => 'שוחזר לגרסה קודמת',
 'deletecomment'               => 'סיבת המחיקה',
-'imagereverted'               => 'השחזור לגרסה הקודמת הושלם בהצלחה.',
 'rollback'                    => 'שחזור עריכות',
 'rollback_short'              => 'שחזור',
 'rollbacklink'                => 'שחזור',
@@ -1485,7 +1498,6 @@ $NEWPAGE
 
 $1
 ',
- 
 
 # Namespace form on various pages
 'namespace' => 'מרחב שם:',
@@ -1658,7 +1670,7 @@ $1
 'move-watch'              => 'מעקב אחרי דף זה',
 'movepagebtn'             => 'העבר דף',
 'pagemovedsub'            => 'ההעברה הושלמה בהצלחה',
-'movepage-moved'          => '<big>הדף "$1" הועבר לשם "$2".</big>',
+'movepage-moved'          => '<big>הדף "$1" הועבר לשם "$2".</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'קיים כבר דף עם אותו שם, או שהשם שבחרתם אינו חוקי.
 אנא בחרו שם אחר.',
 'talkexists'              => 'הדף עצמו הועבר בהצלחה, אבל דף השיחה לא הועבר כיוון שקיים כבר דף שיחה במיקום החדש. אנא מזגו אותם ידנית.',
@@ -2279,7 +2291,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'מסיר את כל התוכן מדף זה',
 'autosumm-replace' => "מחליף את הדף עם '$1'",
-'autoredircomment' => 'הפניה לדף [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => 'הפניה לדף [[$1]]',
 'autosumm-new'     => 'דף חדש: $1',
 
 # Size units

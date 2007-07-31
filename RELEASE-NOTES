@@ -159,6 +159,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Skip the difference engine cache when 'action=purge' is used while requesting
   a difference page, to allow refreshing the cache in case of errors
 * (bug 10701) Link to Special:Listusers in default Special:Statistics messages
+* Improved file history presentation
+* (bug 10739) Users can now enter comments when reverting files
 
 == Bugfixes since 1.10 ==
 
@@ -330,6 +332,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Improved error reporting and robustness for file delete/undelete.
 * Improved speed of file delete by storing the SHA-1 hash in image/oldimage
 * Fixed leading zero in base 36 SHA-1 hash
+* Protection form no longer produces JavaScript errors
+* (bug 10741) File histories show "delete" links for non-sysops
 
 == API changes since 1.10 ==
 
@@ -376,6 +380,9 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Added external url search within wiki pages (list=exturlusage)
 * Added link enumeration (list=alllinks)
 * Added registered users enumeration (list=allusers)
+* Added full text search in titles and content (list=search)
+* (bug 10684) Expanded list=allusers functionality
+* Possible breaking change: prop=revisions no longer includes pageid for rvprop=ids
 
 == Maintenance script changes since 1.10 ==
 
@@ -386,6 +393,9 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
   to $wgFileExtensions)
 * Add option to maintenance/createAndPromote.php to give the user bureaucrat
   permissions (--bureaucrat)
+* Allow overwriting existing files with a conflicting name using
+  maintenance/importImages.php
+* (bug 10266) Use native newlines when rebuilding a messages file.
 
 == Languages updated since 1.10 ==
 
@@ -412,6 +422,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Kazakh (kk)
 * Kurdish (ku)
 * Latin (la)
+* Lao (lo)
 * Lithuanian (lt)
 * Malayalam (ml)
 * Burmese (my)

@@ -274,11 +274,11 @@ class BitmapHandler extends ImageHandler {
 		// Sort fields into visible and collapsed
 		$visibleFields = $this->visibleMetadataFields();
 		foreach ( $formatted as $name => $value ) {
-			$tag = strtolower( $k );
+			$tag = strtolower( $name );
 			self::addMeta( $result,
 				in_array( $tag, $visibleFields ) ? 'visible' : 'collapsed',
 				'exif',
-				"exif-$tag",
+				$tag,
 				$value
 			);
 		}
