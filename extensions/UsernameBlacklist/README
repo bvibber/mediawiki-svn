@@ -55,8 +55,8 @@ list item. For example:
 * Foo
 * [Bb]ar
 
-The example above would prevent creation of the user account "Foo", and any
-account where the username contains "Bar" or "bar".
+The example above would prevent creation of usernames containing "Foo",
+"Bar" or "bar".
 
 Lines without the list token (*) will be ignored when constructing the
 regular expression, which allows for adding comments or other explanations
