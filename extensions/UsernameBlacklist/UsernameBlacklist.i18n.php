@@ -12,9 +12,23 @@ function efUsernameBlacklistMessages( $single = false ) {
 
 /* English (Rob Church) */
 'en' => array(
-'blacklistedusername' => 'Blacklisted username',
-'blacklistedusernametext' => 'The user name you have chosen matches the [[MediaWiki:Usernameblacklist|
-list of blacklisted usernames]]. Please choose another name.',
+'blacklistedusername'     => 'Blacklisted username',
+'blacklistedusernametext' => 'The user name you have chosen matches the [[MediaWiki:Usernameblacklist|list of blacklisted usernames]]. Please choose another name.',
+'usernameblacklist'       => ' <pre>
+# Format
+# As a bulleted list with each blocked username or regular expression as a new
+# list item. For example:
+#
+# * Foo
+# * ((B|b)ar)
+#
+# The example above would prevent creation of the user account "Foo", and any
+# account where the username contains "Bar" or "bar".
+#
+# You can comment out lines with #; this is useful for adding explanation as to
+# what a complicated regular expression will block, or for providing reasons.
+ </pre>',
+
 ),
 
 /* Arabic (Meno25) */
