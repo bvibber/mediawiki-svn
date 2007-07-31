@@ -5,6 +5,7 @@
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
+ *
  * Please see the LICENCE file for terms of use and redistribution
  */
  
@@ -19,13 +20,13 @@ class SpecialVote extends SpecialPage {
 	public function execute( $mode = false ) {
 		global $wgOut, $wgUser;
 		$this->setHeaders();
-		$this->user =& $wgUser;
+		$this->user = $wgUser;
 		if( strtolower( $mode ) == 'results' ) {
 			if( $wgUser->isAllowed( 'voteadmin' ) )
 				$this->showResults();
 		} else {
 			if( $wgUser->isAnon() ) {
-				$skin =& $wgUser->getSkin();
+				$skin = $wgUser->getSkin();
 				$self = SpecialPage::getTitleFor( 'Vote' );
 				$login = SpecialPage::getTitleFor( 'Userlogin' );
 				$link = $skin->makeKnownLinkObj( $login, wfMsgHtml( 'vote-login-link' ), 'returnto=' . $self->getPrefixedUrl() );
@@ -45,7 +46,7 @@ class SpecialVote extends SpecialPage {
 		$self = SpecialPage::getTitleFor( 'Vote' );
 		$token = $wgRequest->getText( 'token' );
 		if( $wgUser->isAllowed( 'voteadmin' ) ) {
-			$skin =& $wgUser->getSkin();
+			$skin = $wgUser->getSkin();
 			$rtitle = Title::makeTitle( NS_SPECIAL, $self->getText() . '/results' );
 			$rlink = $skin->makeKnownLinkObj( $rtitle, wfMsgHtml( 'vote-view-results' ) );
 			$wgOut->addHtml( '<p class="mw-voteresultslink">' . $rlink . '</p>' );
@@ -69,14 +70,14 @@ class SpecialVote extends SpecialPage {
 		}
 	}
 	
-	private static function getExistingVote( &$user ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+	private static function getExistingVote( $user ) {
+		$dbr = wfGetDB( DB_SLAVE );
 		$choice = $dbr->selectField( 'vote', 'vote_choice', array( 'vote_user' => $user->getId() ), __METHOD__ );
 		return $choice;
 	}
 	
-	private static function updateVote( &$user, $choice ) {
-		$dbw =& wfGetDB( DB_MASTER );
+	private static function updateVote( $user, $choice ) {
+		$dbw = wfGetDB( DB_MASTER );
 		$dbw->begin();
 		$dbw->delete( 'vote', array( 'vote_user' => $user->getId() ), __METHOD__ );
 		$dbw->insert( 'vote', array( 'vote_user' => $user->getId(), 'vote_choice' => $choice ), __METHOD__ );
@@ -86,7 +87,7 @@ class SpecialVote extends SpecialPage {
 	private function showResults() {
 		global $wgOut, $wgLang;
 		$wgOut->setPageTitle( wfMsg( 'vote-results' ) );
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		$vote = $dbr->tableName( 'vote' );
 		$res = $dbr->query( "SELECT vote_choice, COUNT(*) as count FROM {$vote} GROUP BY vote_choice ORDER BY count DESC", __METHOD__ );
 		if( $res && $dbr->numRows( $res ) > 0 ) {
@@ -148,4 +149,3 @@ class SpecialVote extends SpecialPage {
 	}
 
 }
-
