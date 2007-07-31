@@ -275,8 +275,8 @@ class PageArchive {
 		
 		if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
 			$img = wfLocalFile( $this->title );
-			$filesRestored = $img->restore( $fileVersions );
-			// TODO: includes/filerepo/LocalFile.php
+			$this->fileStatus = $img->restore( $fileVersions );
+			$filesRestored = $this->fileStatus->successCount;
 		} else {
 			$filesRestored = 0;
 		}
