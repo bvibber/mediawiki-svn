@@ -30,7 +30,7 @@ define (it should be done *before* the 'include' statement):
 if( !defined( 'MEDIAWIKI' ) ) die();
 if( !defined( 'REVIEW_CSS' ) ) define('REVIEW_CSS', $wgScriptPath.'/extensions/Review/review.css' );
 
-$wgExtensionCredits['Review'][] = array(
+$wgExtensionCredits['other'][] = array(
 	'name' => 'Review',
 	'description' => 'The resurrected validation feature.',
 	'author' => 'Magnus Manske'
