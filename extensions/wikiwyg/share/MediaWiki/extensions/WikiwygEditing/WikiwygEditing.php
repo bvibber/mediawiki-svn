@@ -134,7 +134,7 @@ function WikiwygEditTagCloud ($epage) {
 	if ( !wfIsCategoryCloudAllowed ($epage) ) {
 		return true ;
 	}
-	require_once($IP. 'extensions/TagCloud/TagCloudClass.php') ;
+	require_once($IP. 'extensions/wikiwyg/share/MediaWiki/extensions/TagCloud/TagCloudClass.php') ;
 
 	    $MyCloud = new TagCloud ;
 	    $num = 0 ;
