@@ -513,7 +513,24 @@ HTML;
 	}
 
 	function showThread( $thread ) {
+		global $wgLang; # TODO global.
+		
 		$this->showThreadHeading( $thread );
+
+		if ($thread->type() == Threads::TYPE_MOVED) {
+			$revision = Revision::newFromTitle( $thread->title() );
+			$target = Title::newFromRedirect( $revision->getText() );
+			$t_thread = Threads::withRoot( new Article( $target ) );
+			$p = new Parser(); $sig = $p->getUserSig( $thread->root()->originalAuthor() );
+
+			$this->output->addHTML( "This thread is a placeholder indicating that a thread, <a href=\"{$target->getFullURL()}\">{$target->getText()}</a>, was removed from this page to another talk page. This move was made by " );
+			$this->output->addWikitext( $sig, false );
+			$this->output->addHTML( " at " );
+			$this->output->addHTML( $wgLang->timeanddate($thread->timestamp()) );
+			$this->output->addHTML( "." );
+			
+			return;
+		}
 
 		$timestamp = new Date($thread->timestamp());
 		if( $thread->summary() ) {

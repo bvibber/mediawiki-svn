@@ -170,6 +170,7 @@ class Thread {
 	
 	protected $id;
 	protected $revisionNumber;
+	protected $type;
 	
 	/* Only used by $double to be saved into a historical thread. */
 	protected $rootRevision;
@@ -327,7 +328,9 @@ class Thread {
 		$this->path = $line->thread_path;
 		$this->timestamp = $line->thread_timestamp;
 		$this->revisionNumber = $line->thread_revision;
+		$this->type = $line->thread_type;
 		$this->replies = $children;
+
 		
 		$this->double = clone $this;
 		
@@ -499,6 +502,10 @@ class Thread {
 
 	function timestamp() {
 		return $this->timestamp;
+	}
+	
+	function type() {
+		return $this->type;
 	}
 }
 
