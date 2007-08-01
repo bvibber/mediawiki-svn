@@ -62,8 +62,8 @@ class ApiRollback extends ApiBase {
 
 		$articleObj = new Article($titleObj);
 		$summary = (isset($params['summary']) ? $params['summary'] : "");
-		$info = array();
-		$retval = $articleObj->doRollback($params['user'], $params['token'], isset($params['markbot']), $summary, &$info);
+		$details = NULL;
+		$retval = $articleObj->doRollback($params['user'], $summary, $params['token'], isset($params['markbot']), &$details);
 
 		switch($retval)
 		{
@@ -80,7 +80,10 @@ class ApiRollback extends ApiBase {
 			case Article::BAD_TITLE:
 				$this->dieUsage("The article ``{$params['title']}'' doesn't exist", 'missingtitle');
 			case Article::ALREADYROLLED:
-				$this->dieUsage('The edit(s) you tried to rollback is/are already rolled back', 'alreadyrolled');
+				$current = $details['current'];
+				$currentID = $current->getId();
+				$this->dieUsage("The edit(s) you tried to rollback is/are already rolled back." .
+						"The current revision ID is $currentID", 'alreadyrolled');
 			case Article::ONLY_AUTHOR:
 				$this->dieUsage("{$params['user']} is the only author of the page", 'onlyauthor');
 			case Article::EDIT_FAILED:
@@ -90,6 +93,18 @@ class ApiRollback extends ApiBase {
 				$this->dieDebug(__METHOD__, "rollback() returned an unknown error ($retval)");
 		}
 		// $retval has to be Article::SUCCESS if we get here
+		$current = $target = $summary = NULL;
+		extract($details);
+
+		$info = array(
+			'title' => $titleObj->getPrefixedText(),
+			'pageid' => $current->getPage(),
+			'summary' => $summary,
+			'revid' => $titleObj->getLatestRevID(),
+			'old_revid' => $current->getID(),
+			'last_revid' => $target->getID()
+		);
+
 		$this->getResult()->addValue(null, $this->getModuleName(), $info);
 	}
 
