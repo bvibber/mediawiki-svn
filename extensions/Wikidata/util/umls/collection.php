@@ -1,6 +1,6 @@
 <?php
 header("Content-type: text/html; charset=UTF-8");
-$dc="uw";
+$dc="umls";
 
 define('MEDIAWIKI', true );
 include_once("../../../../LocalSettings.php");
