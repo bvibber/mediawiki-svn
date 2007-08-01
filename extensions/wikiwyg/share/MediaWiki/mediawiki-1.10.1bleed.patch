@@ -42,13 +42,13 @@ Index: skins/MonoBook.php
  		<?php print Skin::makeGlobalVariablesScript( $this->data ); ?>
 +
 +	        <!-- YUI -->
-+                <script type="text/javascript" src="http://images.wikia.com/common/yui/utilities/utilities.js"></script>
-+                <script type="text/javascript" src="http://images.wikia.com/common/yui/container/container-min.js"></script>
-+                <script type="text/javascript" src="http://images.wikia.com/common/yui/autocomplete/autocomplete-min.js"></script>
-+                <script type="text/javascript" src="http://images.wikia.com/common/yui/logger/logger-min.js"></script>
-+                <script type="text/javascript" src="http://images.wikia.com/common/yui/3rdpart/yui-cookie.js"></script>
-+                <script type="text/javascript" src="http://images.wikia.com/common/yui/3rdpart/tools-min.js"></script>
-+                <script type="text/javascript" src="<?php $this->text('stylepath') ?>/common/tracker.js?<?= $GLOBALS['wgStyleVersion'] ?>"></script>
++               <script type="text/javascript" src="<?php echo $GLOBALS['wgYuiPath'] ?>/utilities/utilities.js"></script>
++              <script type="text/javascript" src="<?php echo $GLOBALS['wgYuiPath'] ?>/container/container-min.js"></script>
++              <script type="text/javascript" src="<?php echo $GLOBALS['wgYuiPath'] ?>/autocomplete/autocomplete-min.js"></script>
++              <script type="text/javascript" src="<?php echo $GLOBALS['wgYuiPath'] ?>/logger/logger-min.js"></script>
++              <script type="text/javascript" src="<?php echo $GLOBALS['wgYuiPath'] ?>/3rdpart/yui-cookie.js"></script>
++              <script type="text/javascript" src="<?php echo $GLOBALS['wgYuiPath'] ?>/3rdpart/tools-min.js"></script>
++              <script type="text/javascript" src="<?php $this->text('stylepath') ?>/common/tracker.js?<?= $GLOBALS['wgStyleVersion'] ?>"></script>
                  
  		<script type="<?php $this->text('jsmimetype') ?>" src="<?php $this->text('stylepath' ) ?>/common/wikibits.js?<?php echo $GLOBALS['wgStyleVersion'] ?>"><!-- wikibits js --></script>
  <?php	if($this->data['jsvarurl'  ]) { ?>
