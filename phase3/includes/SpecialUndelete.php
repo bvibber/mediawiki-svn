@@ -23,6 +23,7 @@ function wfSpecialUndelete( $par ) {
  */
 class PageArchive {
 	protected $title;
+	var $fileStatus;
 
 	function __construct( $title ) {
 		if( is_null( $title ) ) {
@@ -269,10 +270,10 @@ class PageArchive {
 		$dbw = wfGetDB(DB_MASTER);
 		$dbw->begin();
 		$restoreAll = empty( $timestamps ) && empty( $fileVersions );
-		
+
 		$restoreText = $restoreAll || !empty( $timestamps );
 		$restoreFiles = $restoreAll || !empty( $fileVersions );
-		
+
 		if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
 			$img = wfLocalFile( $this->title );
 			$this->fileStatus = $img->restore( $fileVersions );
@@ -280,7 +281,7 @@ class PageArchive {
 		} else {
 			$filesRestored = 0;
 		}
-		
+
 		if( $restoreText ) {
 			$textRestored = $this->undeleteRevisions( $timestamps );
 			if($textRestored < 0) // It must be one of UNDELETE_*
@@ -291,7 +292,7 @@ class PageArchive {
 		} else {
 			$textRestored = 0;
 		}
-		
+
 		// Touch the log!
 		global $wgContLang;
 		$log = new LogPage( 'delete' );
@@ -461,6 +462,7 @@ class PageArchive {
 		return $restored;
 	}
 
+	function getFileStatus() { return $this->fileStatus; }
 }
 
 /**
@@ -744,8 +746,13 @@ class UndeleteForm {
 		$logViewer = new LogViewer(
 			new LogReader(
 				new FauxRequest(
-					array( 'page' => $this->mTargetObj->getPrefixedText(),
-						   'type' => 'delete' ) ) ) );
+					array(
+						'page' => $this->mTargetObj->getPrefixedText(),
+						'type' => 'delete'
+					)
+				)
+			), LogViewer::NO_ACTION_LINK
+		);
 		$logViewer->showList( $wgOut );
 
 		if( $this->mAllowed && ( $haveRevisions || $haveFiles ) ) {
@@ -818,7 +825,7 @@ class UndeleteForm {
 		}
 
 		if( $haveFiles ) {
-			$wgOut->addHtml( "<h2>" . wfMsgHtml( 'imghistory' ) . "</h2>\n" );
+			$wgOut->addHtml( "<h2>" . wfMsgHtml( 'filehist' ) . "</h2>\n" );
 			$wgOut->addHtml( "<ul>" );
 			while( $row = $files->fetchObject() ) {
 				$ts = wfTimestamp( TS_MW, $row->fa_timestamp );
@@ -868,15 +875,24 @@ class UndeleteForm {
 				$this->mTargetTimestamp,
 				$this->mComment,
 				$this->mFileVersions );
-			
+
 			if( is_array($ok) ) {
 				$skin = $wgUser->getSkin();
 				$link = $skin->makeKnownLinkObj( $this->mTargetObj );
 				$wgOut->addHtml( wfMsgWikiHtml( 'undeletedpage', $link ) );
-				return true;
+			} else {
+				$wgOut->showFatalError( wfMsg( "cannotundelete" ) );
 			}
+
+			// Show file deletion warnings and errors
+			$status = $archive->getFileStatus();
+			if ( $status && !$status->isGood() ) {
+				$wgOut->addWikiText( $status->getWikiText( 'undelete-error-short', 'undelete-error-long' ) );
+			}
+		} else {
+			$wgOut->showFatalError( wfMsg( "cannotundelete" ) );
 		}
-		$wgOut->showFatalError( wfMsg( "cannotundelete" ) );
+
 		return false;
 	}
 }

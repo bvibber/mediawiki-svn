@@ -39,15 +39,14 @@ class Article {
 	/**
 	 * Constants used by internal components to get rollback results
 	 */
-	const SUCCESS = 0;
+	const SUCCESS = 0;	// Operation successful
 	const PERM_DENIED = 1;	// Permission denied
-	const BLOCKED = 2;		// User has been blocked
-	const READONLY = 3;		// Wiki is in read-only mode
+	const BLOCKED = 2;	// User has been blocked
+	const READONLY = 3;	// Wiki is in read-only mode
 	const BAD_TOKEN = 4;	// Invalid token specified
 	const BAD_TITLE = 5;	// $this is not a valid Article
-	const ALREADYROLLED = 6;// Someone else already rolled this back. $info['usertext'] and $info['comment'] will be set
+	const ALREADY_ROLLED = 6;// Someone else already rolled this back. $from and $summary will be set
 	const ONLY_AUTHOR = 7;	// User is the only author of the page
-	const EDIT_FAILED = 8;	// Article::doEdit() failed. This is a very weird error
  
 	/**
 	 * Constructor and clear the article
@@ -1458,19 +1457,16 @@ class Article {
 			# Clear caches
 			Article::onArticleCreate( $this->mTitle );
 
-			wfRunHooks( 'ArticleInsertComplete', array( &$this, &$wgUser, $text,
-				$summary, $flags & EDIT_MINOR,
-				null, null, &$flags ) );
+			wfRunHooks( 'ArticleInsertComplete', array( &$this, &$wgUser, $text, $summary,
+					$flags & EDIT_MINOR, null, null, &$flags, $revision ) );
 		}
 
 		if ( $good && !( $flags & EDIT_DEFER_UPDATES ) ) {
 			wfDoUpdates();
 		}
 
-		wfRunHooks( 'ArticleSaveComplete',
-			array( &$this, &$wgUser, $text,
-			$summary, $flags & EDIT_MINOR,
-			null, null, &$flags ) );
+		wfRunHooks( 'ArticleSaveComplete', array( &$this, &$wgUser, $text, $summary,
+			$flags & EDIT_MINOR, null, null, &$flags, $revision ) );
 
 		wfProfileOut( __METHOD__ );
 		return $good;
@@ -2119,7 +2115,8 @@ class Article {
 				'ar_text_id'    => 'rev_text_id',
 				'ar_text'       => '\'\'', // Be explicit to appease
 				'ar_flags'      => '\'\'', // MySQL's "strict mode"...
-				'ar_len'		=> 'rev_len'
+				'ar_len'	=> 'rev_len',
+				'ar_page'	=> $id
 			), array(
 				'page_id' => $id,
 				'page_id = rev_page'
@@ -2171,17 +2168,26 @@ class Article {
 		return true;
 	}
 
-	/** Backend rollback implementation. UI logic is in rollback()
+	/**
+	 * Roll back the most recent consecutive set of edits to a page
+	 * from the same user; fails if there are no eligible edits to
+	 * roll back to, e.g. user is the sole contributor
+	 *
 	 * @param string $fromP - Name of the user whose edits to rollback.
+	 * @param string $summary - Custom summary. Set to default summary if empty.
 	 * @param string $token - Rollback token.
 	 * @param bool $bot - If true, mark all reverted edits as bot.
-	 * @param string $newComment - Custom summary. Set to default summary if empty.
-	 * @param array $info - Reference to associative array that will be set to contain the revision ID, edit summary, etc.
+	 *
+	 * @param array $resultDetails contains result-specific dict of additional values
+	 *    ALREADY_ROLLED : 'current' (rev)
+	 *    SUCCESS        : 'summary' (str), 'current' (rev), 'target' (rev)
+	 *
 	 * @return self::SUCCESS on succes, self::* on failure
 	 */
-	public function doRollback($fromP, $token, $bot = false, $newComment = "", &$info = NULL) {
+	public function doRollback( $fromP, $summary, $token, $bot, &$resultDetails ) {
 		global $wgUser, $wgUseRCPatrol;
-		
+		$resultDetails = null;
+
 		if( $wgUser->isAllowed( 'rollback' ) ) {
 			if( $wgUser->isBlocked() ) {
 				return self::BLOCKED;
@@ -2189,18 +2195,14 @@ class Article {
 		} else {
 			return self::PERM_DENIED;
 		}
-			
+
 		if ( wfReadOnly() ) {
 			return self::READONLY;
 		}
-		if( !$wgUser->matchEditToken( $token,
-			array( $this->mTitle->getPrefixedText(),
-				$fromP )  ) ) {
+		if( !$wgUser->matchEditToken( $token, array( $this->mTitle->getPrefixedText(), $fromP ) ) )
 			return self::BAD_TOKEN;
-		}
-		$dbw = wfGetDB( DB_MASTER );
 
-		# Replace all this user's current edits with the next one down
+		$dbw = wfGetDB( DB_MASTER );
 
 		# Get the last editor
 		$current = Revision::newFromTitle( $this->mTitle );
@@ -2211,9 +2213,8 @@ class Article {
 
 		$from = str_replace( '_', ' ', $fromP );
 		if( $from != $current->getUserText() ) {
-			$info['usertext'] = $current->getUserText();
-			$info['comment'] = $current->getComment();
-			return self::ALREADYROLLED;
+			$resultDetails = array( 'current' => $current );
+			return self::ALREADY_ROLLED;
 		}
 
 		# Get the last edit not by this guy
@@ -2234,7 +2235,6 @@ class Article {
 			return self::ONLY_AUTHOR;
 		}
 	
-		// If the reverted edits should be marked bot or patrolled, do so
 		$set = array();
 		if ( $bot ) {
 			# Mark all reverted edits as bot
@@ -2257,86 +2257,88 @@ class Article {
 
 		# Get the edit summary
 		$target = Revision::newFromId( $s->rev_id );
-		if(empty($newComment))
-			$newComment = wfMsgForContent( 'revertpage', $target->getUserText(), $from );
+		if( empty( $summary ) )
+			$summary = wfMsgForContent( 'revertpage', $target->getUserText(), $from );
 
-		# Save it!
+		# Save
 		$flags = EDIT_UPDATE | EDIT_MINOR;
-		if($bot)
+		if( $bot )
 			$flags |= EDIT_FORCE_BOT;
-		if(!$this->doEdit( $target->getText(), $newComment, $flags))
-			return self::EDIT_FAILED;
+		$this->doEdit( $target->getText(), $summary, $flags );
 
-		if(is_null($info))
-			// Save time
-			return self::SUCCESS;
-
-		$info['title'] = $this->mTitle->getPrefixedText();
-		$info['pageid'] = $current->getPage();
-		$info['summary'] = $newComment;
-		// NOTE: If the rollback turned out to be a null edit, revid and old_revid will be equal
-		$info['revid'] = $this->mTitle->getLatestRevID(); // The revid of your rollback
-		$info['old_revid'] = $current->getId(); // The revid of the last edit before your rollback
-		$info['last_revid'] = $s->rev_id; // The revid of the last edit that was not rolled back
-		$info['user'] = $fromP; // The name of the victim
-		$info['userid'] = $user; // And their userid
-		$info['to'] = $target->getUserText(); // The user whose last version was reverted to
-		if($bot)
-			$info['bot'] = "";
+		$resultDetails = array(
+			'summary' => $summary,
+			'current' => $current,
+			'target' => $target
+		);
 		return self::SUCCESS;
 	}
 
-	/** UI entry point for rollbacks. Relies on doRollback() to do the hard work */
+	/** 
+	 * User interface for rollback operations
+	 */
 	function rollback() {
 		global $wgUser, $wgOut, $wgRequest, $wgUseRCPatrol;
 
-		// Basically, we just call doRollback() and interpret its return value
-		$info = array();
-		$retval = $this->doRollback($wgRequest->getVal('from'), $wgRequest->getVal('token'), $wgRequest->getBool('bot'),
-						$wgRequest->getText('summary'), &$info);
-		switch($retval)
-		{
-			default:
-				throw new MWException( "Unknown retval $retval" );
-				break;
-			case self::SUCCESS:
-			case self::EDIT_FAILED: // Is ignored
-				$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
-				$wgOut->setRobotpolicy( 'noindex,nofollow' );
-				$wgOut->addHTML( '<h2>' . htmlspecialchars( $info['summary'] ) . "</h2>\n<hr />\n" );
-				$this->doRedirect(true);
-				$wgOut->returnToMain(false);
-				break;
-			case self::PERM_DENIED:
-				$wgOut->permissionRequired('rollback');
-				break;
+		$details = null;
+		$result = $this->doRollback(
+			$wgRequest->getVal( 'from' ),
+			$wgRequest->getText( 'summary' ),
+			$wgRequest->getVal( 'token' ),
+			$wgRequest->getBool( 'bot' ),
+			$details
+		);
+
+		switch( $result ) {
 			case self::BLOCKED:
 				$wgOut->blockedPage();
 				break;
+			case self::PERM_DENIED:
+				$wgOut->permissionRequired( 'rollback' );
+				break;
 			case self::READONLY:
-				$wgOut->readOnlyPage($this->getContent());
+				$wgOut->readOnlyPage( $this->getContent() );
 				break;
 			case self::BAD_TOKEN:
-				$wgOut->setPageTitle(wfMsg('rollbackfailed'));
-				$wgOut->addWikiText(wfMsg('sessionfailure'));
+				$wgOut->setPageTitle( wfMsg( 'rollbackfailed' ) );
+				$wgOut->addWikiText( wfMsg( 'sessionfailure' ) );
 				break;
 			case self::BAD_TITLE:
-				$wgOut->addHTML(wfMsg('notanarticle'));
+				$wgOut->addHtml( wfMsg( 'notanarticle' ) );
 				break;
-			case self::ALREADYROLLED:
-				$wgOut->setPageTitle(wfMsg('rollbackfailed'));
-				$wgOut->addWikiText(wfMsg('alreadyrolled',
-					htmlspecialchars($this->mTitle->getPrefixedText()),
-					htmlspecialchars($wgRequest->getVal('from')),
-					htmlspecialchars($info['usertext'])));
-				if($info['comment'] != '')
-					$wgOut->addHTML(wfMsg('editcomment',
-						$wgUser->getSkin()->formatComment($info['comment'])));
+			case self::ALREADY_ROLLED:
+				$current = $details['current'];
+				$wgOut->setPageTitle( wfMsg( 'rollbackfailed' ) );
+				$wgOut->addWikiText(
+					wfMsg( 'alreadyrolled',
+						htmlspecialchars( $this->mTitle->getPrefixedText() ),
+						htmlspecialchars( $wgRequest->getVal( 'from' ) ),
+						htmlspecialchars( $current->getUserText() )
+					)
+				);
+				if( $current->getComment() != '' ) {
+					$wgOut->addHtml( wfMsg( 'editcomment',
+						$wgUser->getSkin()->formatComment( $current->getComment() ) ) );
+				}
 				break;
 			case self::ONLY_AUTHOR:
-				$wgOut->setPageTitle(wfMsg('rollbackfailed'));
-				$wgOut->addHTML(wfMsg('cantrollback'));
+				$wgOut->setPageTitle( wfMsg( 'rollbackfailed' ) );
+				$wgOut->addHtml( wfMsg( 'cantrollback' ) );
 				break;
+			case self::SUCCESS:
+				$current = $details['current'];
+				$target = $details['target'];
+				$wgOut->setPageTitle( wfMsg( 'actioncomplete' ) );
+				$wgOut->setRobotPolicy( 'noindex,nofollow' );
+				$old = $wgUser->getSkin()->userLink( $current->getUser(), $current->getUserText() )
+					. $wgUser->getSkin()->userToolLinks( $current->getUser(), $current->getUserText() );
+				$new = $wgUser->getSkin()->userLink( $target->getUser(), $target->getUserText() )
+					. $wgUser->getSkin()->userToolLinks( $target->getUser(), $target->getUserText() );
+				$wgOut->addHtml( wfMsgExt( 'rollback-success', array( 'parse', 'replaceafter' ), $old, $new ) );
+				$wgOut->returnToMain( false, $this->mTitle );
+				break;
+			default:
+				throw new MWException( __METHOD__ . ": Unknown return value `{$retval}`" );
 		}
 	}
 
@@ -2803,16 +2805,22 @@ class Article {
 		$page = $this->mTitle->getSubjectPage();
 
 		$wgOut->setPagetitle( $page->getPrefixedText() );
-		$wgOut->setSubtitle( wfMsg( 'infosubtitle' ));
+		$wgOut->setPageTitleActionText( wfMsg( 'info_short' ) );
+		$wgOut->setSubtitle( wfMsg( 'infosubtitle' ) );
 
-		# first, see if the page exists at all.
-		$exists = $page->getArticleId() != 0;
-		if( !$exists ) {
-			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
-				$wgOut->addHTML(wfMsgWeirdKey ( $this->mTitle->getText() ) );
+		if( !$this->mTitle->exists() ) {
+			$wgOut->addHtml( '<div class="noarticletext">' );
+			if( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
+				// This doesn't quite make sense; the user is asking for
+				// information about the _page_, not the message... -- RC
+				$wgOut->addHtml( htmlspecialchars( wfMsgWeirdKey( $this->mTitle->getText() ) ) );
 			} else {
-				$wgOut->addHTML(wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' ) );
+				$msg = $wgUser->isLoggedIn()
+					? 'noarticletext'
+					: 'noarticletextanon';
+				$wgOut->addHtml( wfMsgExt( $msg, 'parse' ) );
 			}
+			$wgOut->addHtml( '</div>' );
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
 			$wl_clause = array(
