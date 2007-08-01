@@ -376,6 +376,7 @@ $wgMessageStructure = array(
 		'nouserspecified',
 		'wrongpassword',
 		'wrongpasswordempty',
+		'passwordtooshort',
 		'mailmypassword',
 		'passwordremindertitle',
 		'passwordremindertext',
@@ -1692,6 +1693,9 @@ $wgMessageStructure = array(
 		'showhidebots',
 		'noimages',
 	),
+	'badimagelist' => array(
+		'bad_image_list',
+	),
 	'variantname-zh' => array(
 		'variantname-zh-cn',
 		'variantname-zh-tw',
@@ -1716,9 +1720,6 @@ $wgMessageStructure = array(
 		'variantname-ku-arab',
 		'variantname-ku-latn',
 		'variantname-ku',
-	),
-	'passwordtooshort' => array(
-		'passwordtooshort',
 	),
 	'metadata' => array(
 		'metadata',
@@ -2286,6 +2287,7 @@ XHTML id names.",
 	'imagedeletion'       => 'Image deletion',
 	'browsediffs'         => 'Browsing diffs',
 	'newimages'           => '',
+	'badimagelist'        => 'Bad image list',
 	'variantname-zh'      => "Short names for language variants used for language conversion links.
 To disable showing a particular link, set it to 'disable', e.g.
 'variantname-zh-sg' => 'disable',
@@ -2293,7 +2295,6 @@ Variants for Chinese language",
 	'variantname-sr'      => 'Variants for Serbian language',
 	'variantname-kk'      => 'Variants for Kazakh language',
 	'variantname-ku'      => 'Variants for Kurdish language',
-	'passwordtooshort'    => '',
 	'media-info'          => 'Media information',
 	'metadata'            => 'Metadata',
 	'exif'                           => 'EXIF tags',
