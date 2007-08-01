@@ -81,6 +81,28 @@ proto.enableThis = function() {
     this.apply_stylesheets();
     this.enable_keybindings();
     this.clear_inner_html();
+    if ( Wikiwyg.is_ie ) {
+        var self = this;
+        var win = this.get_edit_window();
+        var doc = this.get_edit_document();
+        self.ieSelectionBookmark = null;
+        var bookmark = function() {
+            var range = doc.selection.createRange();
+            if ( range.getBookmark ) {
+                self.ieSelectionBookmark = range.getBookmark();
+            }
+        }
+        doc.attachEvent("onbeforedeactivate", bookmark);
+        var restoreBookmark = function() {
+             if (self.ieSelectionBookmark) {
+                 var range = doc.body.createTextRange();
+                 range.moveToBookmark(self.ieSelectionBookmark);
+                 range.collapse();
+                 range.select();
+             }
+        }
+        doc.attachEvent("onactivate", restoreBookmark);
+    }
 }
 
 proto.clear_inner_html = function() {
@@ -156,8 +178,7 @@ proto.apply_inline_stylesheet = function(style, head) {
                 type: 'text/css'
             }, head);
             */
-            
-            style_string += Ajax.get(style.cssRules[i].href);
+            style_string += WKWAjax.get(style.cssRules[i].href);
         } else {
             style_string += style.cssRules[i].cssText + "\n";
         }
@@ -201,7 +222,7 @@ proto.should_link_stylesheet = function(style, head) {
 proto.apply_linked_stylesheet = function(style, head) {
     var link = Wikiwyg.createElementWithAttrs(
         'link', {
-            href:  style.href,
+           href:  style.href,
             type:  style.type,
             media: 'screen',
             rel:   'STYLESHEET'
@@ -225,8 +246,65 @@ proto.format_command = function(command) {
     this.exec_command('formatblock', '<' + command + '>');
 }
 
-proto.do_bold = proto.exec_command;
-proto.do_italic = proto.exec_command;
+proto.checkTags = function () {
+
+}
+
+proto.getSelectedStyle = function (strCssRule) {
+	var strValue = "";
+	oElm = this.getSelectedElement().parentNode ;
+	if(document.defaultView && document.defaultView.getComputedStyle){
+		strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
+	}
+	else if (oElm.currentStyle){
+		strCssRule = strCssRule.replace(/\-(\w)/g, function (strMatch, p1){
+				return p1.toUpperCase();
+				});
+		strValue = oElm.currentStyle[strCssRule];
+	}
+	return strValue;
+}
+
+/* this essentially should get the element we're in  */
+proto.getSelectedElement = function () {
+	/* IE */
+	if (Wikiwyg.is_ie) {
+		var selection = this.get_edit_document().selection ;
+		rng = this.getRng (selection) ;
+		var element = rng.item ? rng.item (0) : rng.parentElement () ;		
+	} else {
+	/* FF and stuff */
+		var selection = this.edit_iframe.contentWindow.getSelection () ;
+		rng = this.getRng (selection) ;	
+		var element = rng.commonAncestorContainer ;
+	}
+	return element ;
+}
+
+proto.getRng = function (selection) {
+	if (selection == null) {
+		return false ;
+	}
+	if (Wikiwyg.is_ie) {
+		return selection.createRange () ;
+	} else {
+		if (selection.rangeCount > 0) {
+			return selection.getRangeAt (0)  ;
+		}
+	}
+}
+
+proto.do_bold = function () {
+	/* set the switch and select mode if necessary */
+	this.getSelectedStyle ('font-weight') ;
+	this.exec_command ('bold') ;
+}
+
+proto.do_italic = function () {
+	/* set the switch and select mode if necessary */
+	this.exec_command ('italic') ;
+}
+
 proto.do_underline = proto.exec_command;
 proto.do_strike = function() {
     this.exec_command('strikethrough');
@@ -275,13 +353,19 @@ proto.do_link = function() {
     var selection = this.get_link_selection_text();
     if (! selection) return;
     var url;
-    var match = selection.match(/(.*?)\b((?:http|https|ftp|irc|file):\/\/\S+)(.*)/);
+    url = prompt("Enter the link or leave blank to link to selected page", "Type in your link here");
+    /* if blank, get selection */
+    if (!url) {
+	url = selection ;
+    }
+
+    var match = url.match(/(.*?)\b((?:http|https|ftp|irc|file):\/\/\S+)(.*)/);
     if (match) {
         if (match[1] || match[3]) return null;
         url = match[2];
     }
     else {
-        url = '?' + escape(selection); 
+        url = '?' + escape(url); 
     }
     this.exec_command('createlink', url);
 }
@@ -340,6 +424,40 @@ proto.insert_html = function(html) {
     range.pasteHTML(html);
     range.collapse(false);
     range.select();
+}
+
+proto.get_inner_html = function( cb ) {
+    if ( cb ) {
+        this.get_inner_html_async( cb );
+        return;
+    }
+    return this.get_edit_document().body.innerHTML;
+}
+
+proto.get_inner_html_async = function( cb ) {
+    var self = this;
+    var doc = this.get_edit_document();
+    if ( doc.readyState == 'loading' ) {
+        setTimeout( function() {
+            self.get_inner_html(cb);
+        }, 50);
+    } else {
+        var html = this.get_edit_document().body.innerHTML;
+        cb(html);
+        return html;
+    }
+}
+
+proto.set_inner_html = function(html) {
+    var self = this;
+    var doc = this.get_edit_document();
+    if ( doc.readyState == 'loading' ) {
+        setTimeout( function() {
+            self.set_inner_html(html);
+        }, 50);
+    } else {
+        this.get_edit_document().body.innerHTML = html;
+    }
 }
 
 // Use IE's design mode default key bindings for now.

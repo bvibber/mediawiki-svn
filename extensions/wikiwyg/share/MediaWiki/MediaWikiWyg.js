@@ -1,3 +1,92 @@
+
+// BEGIN ../../lib/Wikiwyg/Init.js
+
+/*==============================================================================
+Initial stuff by Bartek Lapinski
+
+COPYRIGHT:
+
+    Copyright (c) 2005 Socialtext Corporation
+    655 High Street
+    Palo Alto, CA 94301 U.S.A.
+    All rights reserved.
+
+    Copyright (c) 2007, Wikia Inc.
+
+CHANGES AUTHOR:
+
+    Bartek Lapinski <bartek@wikia.com>
+
+    Copyright (c) 2007, Wikia Inc.
+
+Wikiwyg is free software.
+
+This library is free software; you can redistribute it and/or modify it
+under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or (at
+your option) any later version.
+
+This library is distributed in the hope that it will be useful, but
+WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser
+General Public License for more details.
+
+    http://www.gnu.org/copyleft/lesser.txt
+
+ =============================================================================*/
+
+var currentWikiwyg ;
+var needToConfirm = false ;
+
+/* comfirming exit from page */
+function confirmExit(){
+	if (needToConfirm){
+	return "You have attempted to leave this page. If you have made any changes to the fields without clicking the Save button, your changes will be lost. Are you sure you want to exit this page?";
+}
+}
+
+/* Yahoo stuff - Bartek Lapinski */
+YAHOO.namespace('Wikia');
+var Event = YAHOO.util.Event ;
+
+YAHOO.Wikia.Wikiwyg = {
+	buildLicensePanel: function () {		
+		var copywarn = document.getElementById ('editpage-copywarn') ;
+		var copywarn_copy = document.createElement ('div') ;
+		copywarn_copy.id = 'copywarn-license' ;
+		copywarn_copy.innerHTML  = copywarn.innerHTML ;
+                YAHOO.Wikia.Wikiwyg.applyTargetToLinks (copywarn_copy, "_new") ;
+		document.body.appendChild (copywarn_copy) ;
+		YAHOO.Wikia.Wikiwyg.licensePanel = new YAHOO.widget.Panel('copywarn-license', {
+			width: "600px" ,
+			modal: true ,
+			constraintoviewport: true ,
+			draggable: false ,
+			fixedcenter: true ,
+			underlay: "none"
+		} );
+		YAHOO.Wikia.Wikiwyg.licensePanel.render () ;		
+	} ,
+
+       	// apply target to all links included in the selected element
+	applyTargetToLinks: function (element, target) {
+		var links = element.getElementsByTagName ('a') ;
+		if (links && (links.length > 0)) {
+			for (var i=0 ; i < links.length; i++) {
+				links[i].target = target ;
+			}
+		}
+	} ,
+
+	showLicensePanel: function (e) {
+		YAHOO.util.Event.preventDefault (e) ;
+		if (!YAHOO.Wikia.Wikiwyg.licensePanel) {
+                	YAHOO.Wikia.Wikiwyg.buildLicensePanel () ;
+		}
+		YAHOO.Wikia.Wikiwyg.licensePanel.show () ;
+	}
+}
+
 // BEGIN ../../lib/Wikiwyg.js
 /*==============================================================================
 Wikiwyg - Turn any HTML div into a wikitext /and/ wysiwyg edit area.
@@ -25,12 +114,19 @@ AUTHORS:
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+
+CHANGES AUTHOR:
+
+    Bartek Lapinski <bartek@wikia.com>
+
+    Copyright (c) 2007, Wikia Inc.
+
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -83,7 +179,7 @@ Wikiwyg.VERSION = '0.13';
 Wikiwyg.ua = navigator.userAgent.toLowerCase();
 Wikiwyg.is_ie = (
     Wikiwyg.ua.indexOf("msie") != -1 &&
-    Wikiwyg.ua.indexOf("opera") == -1 && 
+    Wikiwyg.ua.indexOf("opera") == -1 &&
     Wikiwyg.ua.indexOf("webtv") == -1
 );
 Wikiwyg.is_gecko = (
@@ -112,18 +208,21 @@ proto.createWikiwygArea = function(div, config) {
 };
 
 proto.default_config = {
-    javascriptLocation: 'lib/',
+    javascriptLocation: '/wikiwyg/lib/',
     doubleClickToEdit: false,
     toolbarClass: 'Wikiwyg.Toolbar',
     firstMode: null,
     modeClasses: [
-        'Wikiwyg.Wysiwyg',
-        'Wikiwyg.Wikitext',
+	'Wikiwyg.Wysiwyg' ,
+	'Wikiwyg.Wikitext' ,
         'Wikiwyg.Preview'
     ]
 };
 
 proto.initializeObject = function(div, config) {
+    /* enable people to use Special:Createpage regardless of this preference */
+    if ((wgUseInPage == 0) && (wgCanonicalSpecialPageName != "Createpage") ) return ;
+
     if (! Wikiwyg.browserIsSupported) return;
     if (this.enabled) return;
     this.enabled = true;
@@ -146,16 +245,25 @@ proto.initializeObject = function(div, config) {
         ? this.config.firstMode
         : this.config.modeClasses[0];
     this.setFirstModeByName(firstMode);
+    var section_number = this.div.id.replace(/.*?(\d+)$/, '$1') ;
 
     if (this.config.toolbarClass) {
-        var class_name = this.config.toolbarClass;
-        this.toolbarObject = eval('new ' + class_name + '()');
-        this.toolbarObject.wikiwyg = this;
-        this.toolbarObject.set_config(config.toolbar);
-        this.toolbarObject.initializeObject();
-        this.placeToolbar(this.toolbarObject.div);
-    }
+        var class_name = this.config.toolbarClass ;
+        this.toolbarObject = eval('new ' + class_name + '()') ;
+        this.toolbarObject.wikiwyg = this ;
+        this.toolbarObject.set_config(config.toolbar) ;
+        this.toolbarObject.initializeObject(section_number) ;
+        this.placeToolbar(this.toolbarObject.div) ;
 
+	if (!wgFullPageEditing) {
+		this.toolbarObject.placeLowerToolbar () ;
+		this.placeLowerToolbar (this.toolbarObject.linksDiv) ;
+		this.placeLowerToolbar (this.toolbarObject.summaryDiv) ;
+        	/* attach the event for the license */
+		Event.addListener ('wikiwyg_ctrl_lnk_showLicense_' + section_number, 'click', YAHOO.Wikia.Wikiwyg.showLicensePanel) ;
+	}
+    }
+      
     // These objects must be _created_ before the toolbar is created
     // but _inserted_ after.
     for (var i = 0; i < this.config.modeClasses.length; i++) {
@@ -166,7 +274,7 @@ proto.initializeObject = function(div, config) {
 
     if (this.config.doubleClickToEdit) {
         var self = this;
-        this.div.ondblclick = function() { self.editMode() }; 
+        this.div.ondblclick = function() { self.editMode() };
     }
 }
 
@@ -195,11 +303,70 @@ proto.set_config = function(user_config) {
     this.config = new_config;
 }
 
-proto.insert_div_before = function(div) {
+proto.insert_div_before = function (div) {
     div.style.display = 'none';
     if (! div.iframe_hack) {
         this.div.parentNode.insertBefore(div, this.div);
     }
+}
+
+proto.toggleCategory = function () {
+	var category_tab = document.getElementById ('editpage_cloud_section') ;
+	var category_link = document.getElementById ('wikiwyg_ctrl_lnk_toggleCategory_wikiwyg') ;
+	if (category_tab.style.display == 'none') {
+		category_tab.style.display = '' ;
+		category_link.innerHTML = 'Hide category' ;		
+	} else {
+		category_tab.style.display = 'none' ;
+		category_link.innerHTML = 'Add category' ;
+	}
+}
+
+proto.showLicense = function () {
+
+}
+
+/* this 'prototype' is here for purpose */
+proto.imageUpload = function (tagOpen, tagClose, sampleText) {
+	var re = /http:\/\/([^\/]*)\//g;
+	var matches = re.exec(window.location.href);
+	if ( !matches ) {
+		// TAH: firefox bug: have to do it twice for it to work
+		matches = re.exec(window.location.href);
+	}
+	var domain = matches[1];
+	if (imageUploadDialog && imageUploadDialog.open && !imageUploadDialog.closed)
+		imageUploadDialog.close();
+
+	/*      check if the user is logged-in
+		if not, avoid the road of pain and use AjaxLogin if enabled
+	 */
+	if ((wgEnableAjaxLogin == 1) && (typeof wgUserName != 'string')) {
+		wgAjaxLoginSkipSuccess = true ;
+		 if ( ! YAHOO.Wikia.AjaxLoginApp.loginPanel ) { 
+		 	YAHOO.Wikia.AjaxLoginApp.buildLoginPanel(); 
+		 } 
+			YAHOO.Wikia.AjaxLoginApp.loginPanel.show();
+		return ;
+	}
+	/* add a guard for Ajax login disabled and reload in this window, as done before */
+	if (typeof wgUserName == 'string') {
+		imageUploadDialog = window.open("http://" + domain + "/wiki/Special:MiniUpload?type=image", "upload_file", "height=520,width=500,toolbar=no,location=no,resizable=no,top=0,left=0,menubar=0");
+
+	} else {
+		window.location.replace ("http://" + domain + "/wiki/Special:Userlogin?returnto=" + wgPageName) ;
+	}
+}
+
+proto.insert_div_after = function (div) {
+	div.style.display = 'none';
+	if (! div.iframe_hack) {
+		if (this.div.parentNode.lastchild == this.div) {
+			this.div.parentNode.appendChild (div) ;
+		} else {
+			this.div.parentNode.insertBefore (div, this.div.nextSibling);
+		}
+	}
 }
 
 // Wikiwyg actions - public methods
@@ -207,11 +374,24 @@ proto.saveChanges = function() {
     alert('Wikiwyg.prototype.saveChanges not subclassed');
 }
 
+/* indicate action */
+proto.toggleThrobber = function (section) {
+	return ;
+	var Throbber = document.getElementById ('ajaxProgressIcon_' + section) ;
+	if (Throbber.style.visibility == 'hidden') {
+		Throbber.style.visibility = 'visible' ;
+	} else {
+		Throbber.style.visibility = 'hidden' ;
+	}
+	return true ;
+}
+
 proto.editMode = function() { // See IE, below
+    currentWikiwyg = this ;
     this.current_mode = this.first_mode;
-    this.current_mode.fromHtml(this.div.innerHTML);
-    this.toolbarObject.resetModeSelector();
-    this.current_mode.enableThis();
+    this.current_mode.initHtml(this.div.innerHTML);
+    this.toolbarObject.resetModeSelector() ;
+    this.current_mode.enableThis() ;
 }
 
 proto.displayMode = function() {
@@ -252,6 +432,10 @@ proto.cancelEdit = function() {
     this.displayMode();
 }
 
+proto.initHtml = function (html) {
+	this.fromHtml (html) ;
+}
+
 proto.fromHtml = function(html) {
     this.div.innerHTML = html;
 }
@@ -260,9 +444,14 @@ proto.placeToolbar = function(div) {
     this.insert_div_before(div);
 }
 
+proto.placeLowerToolbar = function (div) {
+    this.insert_div_after(div) ;
+}
+
 proto.setFirstModeByName = function(mode_name) {
-    if (!this.modeByName(mode_name))
+    if (!this.modeByName(mode_name)) {
         die('No mode named ' + mode_name);
+}
     this.first_mode = this.modeByName(mode_name);
 }
 
@@ -272,16 +461,16 @@ Wikiwyg.createUniqueId = function() {
     return 'wikiwyg_' + Wikiwyg.unique_id_base++;
 }
 
-// This method is deprecated. Use Ajax.get and Ajax.post.
+// This method is deprecated. Use WKWAjax.get and WKWAjax.post.
 Wikiwyg.liveUpdate = function(method, url, query, callback) {
     if (method == 'GET') {
-        return Ajax.get(
+        return WKWAjax.get(
             url + '?' + query,
             callback
         );
     }
     if (method == 'POST') {
-        return Ajax.post(
+        return WKWAjax.post(
             url,
             query,
             callback
@@ -317,6 +506,28 @@ Wikiwyg.hideById = function(id) {
     document.getElementById(id).style.visibility = 'hidden';
 }
 
+proto.showChanges = function () {
+	wikitext = this.current_mode.toWikitext () ;
+	var self = this ;
+    	WKWAjax.post(
+	        fixupRelativeUrl('index.php/' + wgSpecialPrefix + ':PocketDiff') + "&rtitle=" + wgPageName + "&rsection=" + this.section_number ,
+	        "text=" + encodeURIComponent(wikitext),
+		function (html) {		
+			/*	hide the textbox, make return to editing links, allow save and all that stuff 
+				remove all pre-existing wrappers
+			*/
+			self.toolbarObject.rebuildDiffs () ;
+			var diff_div_wrapper = document.getElementById ('wikiwyg_diff_wrapper') ;
+			if (!diff_div_wrapper) {
+				diff_div_wrapper = Wikiwyg.createElementWithAttrs ('div', {id: 'wikiwyg_diff_wrapper'}) ;
+			}
+			diff_div_wrapper.innerHTML = html ;
+      			self.insert_div_before (diff_div_wrapper) ;  								
+			self.current_mode.textarea.style.display = 'none' ;
+			diff_div_wrapper.style.display = '' ;
+		}	       	
+	    );	
+}
 
 Wikiwyg.changeLinksMatching = function(attribute, pattern, func) {
     var links = document.getElementsByTagName('a');
@@ -402,6 +613,10 @@ proto.enableThis = function() {
     this.display_unsupported_toolbar_buttons('none');
     this.wikiwyg.toolbarObject.enableThis();
     this.wikiwyg.div.style.display = 'none';
+    if (!wgFullPageEditing && (wgCanonicalSpecialPageName != 'Createpage')) {
+    	this.wikiwyg.toolbarObject.summaryDiv.style.display = 'block' ;
+    	this.wikiwyg.toolbarObject.linksDiv.style.display = 'block' ;
+    }
 }
 
 proto.display_unsupported_toolbar_buttons = function(display) {
@@ -435,6 +650,10 @@ proto.disableFinished = function() {}
 proto.disableThis = function() {
     this.display_unsupported_toolbar_buttons('inline');
     this.div.style.display = 'none';
+    if (!wgFullPageEditing) {
+	    this.wikiwyg.toolbarObject.summaryDiv.style.display = 'none' ;
+	    this.wikiwyg.toolbarObject.linksDiv.style.display = 'none' ;
+    }
 }
 
 proto.process_command = function(command) {
@@ -479,6 +698,9 @@ proto.get_edit_height = function() {
         this.config.editHeightAdjustment
     );
     var min = this.config.editHeightMinimum;
+    if (this.config.overrideHeightMinimum) {
+	return min ;
+    }
     return height < min
         ? min
         : height;
@@ -567,12 +789,18 @@ This Wikiwyg mode supports a textarea editor with toolbar buttons.
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+CHANGES AUTHOR:
+
+    Bartek Lapinski <bartek@wikia.com>
+
+    Copyright (c) 2007, Wikia Inc.
+
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -610,9 +838,9 @@ function grepElementsByTag(tag, func) {
     return list;
 }
 
-// getStyle()
+// WKWgetStyle()
 // http://www.robertnyman.com/2006/04/24/get-the-rendered-style-of-an-element/
-function getStyle(oElm, strCssRule) {
+function WKWgetStyle(oElm, strCssRule) {
     var strValue = "";
     if(document.defaultView && document.defaultView.getComputedStyle){
         strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
@@ -666,7 +894,7 @@ Wait.VERSION = 0.01;
 Wait.EXPORT  = [ 'wait' ];
 Wait.EXPORT_TAGS = { ':all': Wait.EXPORT };
 
-Wait.interval = 100;
+Wait.interval = 300;
 
 Wait.wait = function(arg1, arg2, arg3, arg4) {
     if (   typeof arg1 == 'function'
@@ -718,25 +946,25 @@ window.wait = Wait.wait;
 //------------------------------------------------------------------------------
 // Ajax support
 //------------------------------------------------------------------------------
-if (! this.Ajax) Ajax = {};
+if (! this.WKWAjax) WKWAjax = {};
 
-Ajax.get = function(url, callback) {
+WKWAjax.get = function(url, callback) {
     var req = new XMLHttpRequest();
     req.open('GET', url, Boolean(callback));
-    return Ajax._send(req, null, callback);
+    return WKWAjax._send(req, null, callback);
 }
 
-Ajax.post = function(url, data, callback) {
+WKWAjax.post = function(url, data, callback) {
     var req = new XMLHttpRequest();
     req.open('POST', url, Boolean(callback));
     req.setRequestHeader(
-        'Content-Type', 
+        'Content-Type',
         'application/x-www-form-urlencoded'
     );
-    return Ajax._send(req, data, callback);
+    return WKWAjax._send(req, data, callback);
 }
 
-Ajax._send = function(req, data, callback) {
+WKWAjax._send = function(req, data, callback) {
     if (callback) {
         req.onreadystatechange = function() {
             if (req.readyState == 4) {
@@ -1070,12 +1298,19 @@ This Wikiwyg mode supports a textarea editor with toolbar buttons.
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+CHANGES AUTHOR:
+
+    Bartek Lapinski <bartek@wikia.com>
+
+    Copyright (c) 2007, Wikia Inc.
+
+
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -1144,12 +1379,18 @@ This Wikiwyg class provides toolbar support
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+CHANGES AUTHOR:
+
+    Bartek Lapinski <bartek@wikia.com>
+
+    Copyright (c) 2007, Wikia Inc.
+
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -1174,31 +1415,35 @@ proto.config = {
     imagesExtension: '.gif',
     controlLayout: [
         'save', 'cancel', 'mode_selector', '/',
-        // 'selector',
         'h1', 'h2', 'h3', 'h4', 'p', 'pre', '|',
         'bold', 'italic', 'underline', 'strike', '|',
         'link', 'hr', '|',
         'ordered', 'unordered', '|',
         'indent', 'outdent', '|',
-        'table', '|',
+        'table', '|', 'timestamp' ,
         'help'
     ],
     styleSelector: [
         'label', 'p', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'pre'
     ],
+
     controlLabels: {
-        save: 'Save',
-        cancel: 'Cancel',
+        save: wgSaveCaption ,
+        cancel: wgCancelCaption ,
         bold: 'Bold (Ctrl+b)',
         italic: 'Italic (Ctrl+i)',
         underline: 'Underline (Ctrl+u)',
+	insertimage: wgInsertImageCaption ,
+	youtube: 'Add YouTube Video' ,
+	wikify: 'Wikify' ,
         strike: 'Strike Through (Ctrl+d)',
-        hr: 'Horizontal Rule',
+        hr: wgHrTip ,
         ordered: 'Numbered List',
         unordered: 'Bulleted List',
         indent: 'More Indented',
         outdent: 'Less Indented',
         help: 'About Wikiwyg',
+	timestamp: wgTimestampTip ,
         label: '[Style]',
         p: 'Normal Text',
         pre: 'Preformatted',
@@ -1208,13 +1453,14 @@ proto.config = {
         h4: 'Heading 4',
         h5: 'Heading 5',
         h6: 'Heading 6',
-        link: 'Create Link',
+        link: wgIntlinkTip ,
+	www: wgExtlinkTip ,
         unlink: 'Remove Linkedness',
         table: 'Create Table'
     }
 };
 
-proto.initializeObject = function() {
+proto.initializeObject = function(section_number) {
     if (this.config.divId) {
         this.div = document.getElementById(this.config.divId);
     }
@@ -1222,32 +1468,231 @@ proto.initializeObject = function() {
         this.div = Wikiwyg.createElementWithAttrs(
             'div', {
                 'class': 'wikiwyg_toolbar',
-                id: 'wikiwyg_toolbar'
+                id: 'wikiwyg_toolbar_' + section_number
             }
-        );
+        ) ;
     }
-
+    this.section_number = section_number ;
     var config = this.config;
+
+    /* add two containers for two sets of controls */
+    var left_div = Wikiwyg.createElementWithAttrs(
+	'div', {
+		id: 'wikiwyg_toolbar_left' + section_number
+        }
+    ) ;
+
+    var right_div = Wikiwyg.createElementWithAttrs(
+	'div', {
+		id: 'wikiwyg_toolbar_right' + section_number ,
+		'style': 'float: right'
+        }
+    ) ;
+
+    this.div.appendChild (right_div) ;   
+    this.div.appendChild (left_div) ;
+    this.addControls (config, left_div, right_div) ;
+}
+
+proto.addControls = function (config, left_div, right_div) {
     for (var i = 0; i < config.controlLayout.length; i++) {
         var action = config.controlLayout[i];
         var label = config.controlLabels[action];
-        if (action == 'save')
-            this.addControlItem(label, 'saveChanges');
-        else if (action == 'cancel')
-            this.addControlItem(label, 'cancelEdit');
-        else if (action == 'mode_selector')
-            this.addModeSelector();
+        if (action == 'save') {
+            if (right_div != '') {
+	            this.addControlItem(label, 'saveChanges', right_div, '');
+	    }
+	}
+        else if (action == 'cancel') {
+	    if (right_div != '') {
+            	    this.addControlItem(label, 'cancelEdit', right_div, '');
+ 	    }
+	}
+        else if (action == 'mode_selector') {
+	    if (right_div != '') {	    
+            	    this.addFixedModeSelector ('', right_div, 'Wikitext', '') ;
+	    }
+	}
+	else if (action == 'insertimage')
+		this.addControlItem(label, "imageUpload('[[Image:',']]')", left_div, '') ;
         else if (action == 'selector')
             this.add_styles();
         else if (action == 'help')
-            this.add_help_button(action, label);
-        else if (action == '|')
-            this.add_separator();
+            this.addHelpItem (left_div);
+        else if (action == '|l')
+            this.add_separator (left_div) ;
+	else if (action == '|r') {
+             if (right_div != '') {
+	    	this.add_separator (right_div) ;
+	     }
+	}
         else if (action == '/')
-            this.add_break();
+            this.add_break (left_div) ;
+	else if (action == '[') {
+	     if (right_div != '') {
+	    	this.add_text ('[', right_div)  ;
+	     }
+	}
+	else if (action == ']') {
+	     if (right_div != '') {
+	    	this.add_text (']', right_div) ;
+	     }
+	}
         else
-            this.add_button(action, label);
+            this.add_button (action, label, left_div) ;
     }
+}
+
+/* rebuild the toolbar for preview mode mostly */
+proto.changeMode = function () {
+        this.rebuild () ;
+}
+
+/* divided for more convenience */
+proto.placeSummarySection = function () {
+      this.summaryDiv = Wikiwyg.createElementWithAttrs (
+            'div', {
+                'class': '',
+                id: 'wikiwyg_summary_' + this.section_number ,
+		'style': 'clear'
+
+            }
+        ) ;
+
+      /* place bowels of the summary here */
+      var summaryInput = Wikiwyg.createElementWithAttrs(
+	     'input', { 
+	     	'type': 'text' ,
+		'value': '',
+		'name': 'wpSummary_' + this.section_number ,
+		id: 'wpSummary_' + this.section_number ,
+		'style': 'min-width:300px; max-width:600px'
+	      }
+      ) ;
+
+      var edit_table = document.createElement ('table') ;
+      var first_row = document.createElement ('tr') ;
+      var edit_td1 = Wikiwyg.createElementWithAttrs ('td', {'class': 'editpage-header'} ) ;
+      var edit_td2 = document.createElement ('td') ;
+
+      edit_td1.appendChild (document.createTextNode (wgSummaryCaption + ':') ) ;
+      edit_td2.appendChild (summaryInput) ;
+
+      /* for logged in, create two additional checkboxes */
+      if ((typeof wgUserName == 'string') && (wgCanonicalSpecialPageName != "Createpage") ) {
+	      var newMinorInput = Wikiwyg.createElementWithAttrs ('input',
+			      {'id': 'wpMinoredit_' + this.section_number ,
+			      'name': 'wpMinoredit' + this.section_number ,
+			      'type': 'checkbox' ,
+			      'value': '1' ,
+			      'accesskey': 'i'
+			      }) ;
+
+	      var newMinorInputLabel = Wikiwyg.createElementWithAttrs ('label',
+			      {'for': 'wpMinoredit_' + this.section_number ,
+			      'accesskey': 'i' ,
+			      'title': '' ,
+			      'class': 'no-float'
+			      }) ;
+
+	      newMinorInputLabel.innerHTML = wgMinoreditCaption ;
+
+	      var newWatchthisInput = Wikiwyg.createElementWithAttrs ('input',
+			      {'id': 'wpWatchthis_' + this.section_number ,
+			      'name': 'wpWatchthis_' + this.section_number ,
+			      'type': 'checkbox' ,
+			      'value': '1' ,
+			      'accesskey': 'w',
+			      'checked': 'checked'
+			      }) ;
+
+	      var newWatchthisInputLabel = Wikiwyg.createElementWithAttrs ('label',
+			      {'for': 'wpWatchthis_' + this.section_number ,
+			      'accesskey': 'w' ,
+			      'title': '' ,
+			      'class': 'no-float'
+			      }) ;
+
+	      newWatchthisInputLabel.innerHTML = wgWatchthisCaption ;
+    	      edit_td2.appendChild (newMinorInput) ;
+	      edit_td2.appendChild (newMinorInputLabel) ;
+
+	      edit_td2.appendChild (newWatchthisInput) ;
+	      edit_td2.appendChild (newWatchthisInputLabel) ;
+      }
+
+
+      first_row.appendChild (edit_td1) ;
+      first_row.appendChild (edit_td2) ;
+      edit_table.appendChild (first_row) ;
+      this.summaryDiv.appendChild (edit_table) ;
+}
+
+proto.placeLowerLinksSection = function () {
+      /* two more divs, one will include real edit summary, the second will hold checkboxes  */
+      this.linksDiv = Wikiwyg.createElementWithAttrs (
+            'div', {
+                'class': 'wikiwyg_toolbar' ,
+                id: 'wikiwyg_links_' + this.section_number
+            }
+        ) ;
+
+      /* left and right, one floats, one not  */ 
+      var linksLeft = Wikiwyg.createElementWithAttrs (
+            'div', {
+                'class': '' ,
+                id: 'wikiwyg_links_l_' + this.section_number
+            }
+        ) ;
+
+      var linksRight = Wikiwyg.createElementWithAttrs (
+            'div', {
+                'class': '' ,
+                id: 'wikiwyg_links_r_' + this.section_number ,
+		'style': 'float: right'
+            }
+        ) ;
+
+      this.linksDiv.appendChild (linksRight) ;
+      this.linksDiv.appendChild (linksLeft) ;      
+      if (wgFullPageEditing == true) {
+	      this.addCategoryItem (linksLeft) ;
+	      this.add_separator (linksLeft) ;
+      }
+      this.addControlItem ('Show changes', 'showChanges', linksLeft, '') ;
+      this.add_separator (linksLeft) ;
+      this.addControlItem ('License', 'showLicense',  linksLeft, '') ;
+      
+      this.add_text ('[', linksRight) ;
+      this.addFixedModeSelector ('', linksRight, 'Wikitext', 'lower') ;
+      this.add_separator (linksRight) ;
+      this.addControlItem (wgSaveCaption,'saveChanges', linksRight, 'lower') ;
+      this.add_separator (linksRight) ;
+      this.addControlItem(wgCancelCaption, 'cancelEdit', linksRight, 'lower') ;
+      this.add_text (']', linksRight) ;
+}
+
+/* let's do it here, then apply this within the initialization process */
+proto.placeLowerToolbar = function () {
+	this.placeSummarySection () ;
+	this.placeLowerLinksSection () ;
+}
+
+proto.addCategoryItem = function (div) {
+	/*	if categories are shown, procure a link to hide them, if not,
+		procure a link to show them
+	*/
+	var cloud_section = document.getElementById ('editpage_cloud_section') ;
+	if (!cloud_section) {
+		/* temporary placeholder to avoid error */
+		this.addControlItem ('Add category', 'toggleCategory', div, '') ;
+		return ;
+	}
+	if (cloud_section.style.display == 'none' ) {
+		this.addControlItem ('Add category', 'toggleCategory', div, '') ;
+	} else {
+		this.addControlItem ('Hide category', 'toggleCategory', div, '') ;		
+	}
 }
 
 proto.enableThis = function() {
@@ -1256,6 +1701,70 @@ proto.enableThis = function() {
 
 proto.disableThis = function() {
     this.div.style.display = 'none';
+}
+
+proto.rebuild = function () {   
+    /* depending on current mode, mangle the toolbar or rebuild it */
+    var left_links = document.getElementById ('wikiwyg_toolbar_left' + this.section_number) ;
+    var lower_left_links = document.getElementById ('wikiwyg_links_l_' + this.section_number) ;
+    var right_mode = document.getElementById ('wikiwyg_ctrl_lnk_preview' + this.section_number ) ;
+    var right_lower_mode = document.getElementById ('wikiwyg_ctrl_lnk_lower_preview' + this.section_number ) ;
+
+    left_links.innerHTML = '' ;
+    lower_left_links.innerHTML = '' ;
+
+    if (this.wikiwyg.current_mode.classname.match(/(Wikitext)/)) {
+	    this.addFixedModeSelector ('Return to editing', left_links, 'Preview', '') ;
+	    this.addFixedModeSelector ('Return to editing', lower_left_links, 'Preview', 'lower') ;
+	    right_mode.innerHTML = wgEditCaption.toLowerCase () ;
+	    right_lower_mode.innerHTML = wgEditCaption.toLowerCase () ;
+	    this.updateModeSelector (right_mode, 'Preview') ;
+	    this.updateModeSelector (right_lower_mode, 'Preview') ;
+    } else {
+    	    /* rebuild the toolbar */	
+	    this.addControls (this.config, left_links, '') ;      	  	
+      	    this.addControlItem ('Show changes', 'showChanges', lower_left_links, '') ;
+            this.add_separator (lower_left_links) ;
+            this.addControlItem ('License', 'showLicense',  lower_left_links, '') ;
+	    Event.addListener ('wikiwyg_ctrl_lnk_showLicense_' + this.section_number, 'click', YAHOO.Wikia.Wikiwyg.showLicensePanel) ;
+	    right_mode.innerHTML = wgPreviewCaption.toLowerCase () ;
+	    right_lower_mode.innerHTML = wgPreviewCaption.toLowerCase () ;
+	    this.updateModeSelector (right_mode, 'Wikitext') ;
+	    this.updateModeSelector (right_lower_mode, 'Wikitext') ;
+    }
+}
+
+proto.rebuildDiffs = function () {   
+    /* depending on showing/not showing Diffs, mangle the toolbar or rebuild it */
+    var left_links = document.getElementById ('wikiwyg_toolbar_left' + this.section_number) ;
+    var lower_left_links = document.getElementById ('wikiwyg_links_l_' + this.section_number) ;
+    var right_mode = document.getElementById ('wikiwyg_ctrl_lnk_preview' + this.section_number ) ;
+    var right_lower_mode = document.getElementById ('wikiwyg_ctrl_lnk_lower_preview' + this.section_number ) ;
+    var diff_div = document.getElementById ('wikiwyg_diff_wrapper') ;
+    left_links.innerHTML = '' ;
+    lower_left_links.innerHTML = '' ;    
+    if (!diff_div) {
+	    this.addFakeModeSelector ('Return to editing', left_links) ;
+	    this.addFakeModeSelector ('Return to editing', lower_left_links) ;
+	    /* todo change caption for Preview button to Edit plus switch functionality */
+	    right_mode.innerHTML = wgEditCaption.toLowerCase () ;
+	    right_lower_mode.innerHTML = wgEditCaption.toLowerCase () ;
+	    this.updateFakeModeSelector (right_mode) ;
+	    this.updateFakeModeSelector (right_lower_mode) ;
+    } else {
+    	    /* rebuild the toolbar */	
+	    this.addControls (this.config, left_links, '') ;      	  	
+      	    this.addControlItem ('Show changes', 'showChanges', lower_left_links, '') ;
+            this.add_separator (lower_left_links) ;
+            this.addControlItem ('License', 'showLicense',  lower_left_links, '') ;
+	    Event.addListener ('wikiwyg_ctrl_lnk_showLicense_' + this.section_number, 'click', YAHOO.Wikia.Wikiwyg.showLicensePanel) ;
+	    right_mode.innerHTML = wgPreviewCaption.toLowerCase () ;
+	    right_lower_mode.innerHTML = wgPreviewCaption.toLowerCase () ;
+	    this.updateModeSelector (right_mode, 'Wikitext') ;
+	    this.updateModeSelector (right_lower_mode, 'Wikitext') ;
+      	    this.wikiwyg.current_mode.textarea.style.display = '' ;
+	    diff_div.parentNode.removeChild (diff_div) ;
+    }
 }
 
 proto.make_button = function(type, label) {
@@ -1277,31 +1786,41 @@ proto.make_button = function(type, label) {
     );
 }
 
-proto.add_button = function(type, label) {
+proto.add_button = function(type, label, div) {
     var img = this.make_button(type, label);
     var self = this;
     img.onclick = function() {
         self.wikiwyg.current_mode.process_command(type);
     };
-    this.div.appendChild(img);
+    div.appendChild(img);
 }
 
-proto.add_help_button = function(type, label) {
-    var img = this.make_button(type, label);
-    var a = Wikiwyg.createElementWithAttrs(
-        'a', {
-            target: 'wikiwyg_button',
-            href: 'http://www.wikiwyg.net/about/'
-        }
+proto.addHelpItem = function(div) {
+    	var span = Wikiwyg.createElementWithAttrs(
+        'span', { 'class': 'wikiwyg_control_link' }
     );
-    a.appendChild(img);
-    this.div.appendChild(a);
+
+    var link = Wikiwyg.createElementWithAttrs(
+    	'a', {
+            target: 'wikiwyg_button',
+            href: 'http://www.wikia.com/wiki/Help:Tutorial_2'	
+	}
+    );
+    link.appendChild(document.createTextNode(wgHelpCaption));
+    span.appendChild(link);
+    div.appendChild(span);
 }
 
-proto.add_separator = function() {
+proto.add_text = function (text, div) {
+	div.appendChild(
+		document.createTextNode(text)
+	) ;
+}
+
+proto.add_separator = function (div) {
     var base = this.config.imagesLocation;
     var ext = this.config.imagesExtension;
-    this.div.appendChild(
+    div.appendChild(
         Wikiwyg.createElementWithAttrs(
             'img', {
                 'class': 'wikiwyg_separator',
@@ -1313,21 +1832,94 @@ proto.add_separator = function() {
     );
 }
 
-proto.addControlItem = function(text, method) {
+proto.addControlItem = function (text, method, div, place) {
+    var span = Wikiwyg.createElementWithAttrs(
+        'span', { 'class': 'wikiwyg_control_link' }
+    ) ;
+
+    if (place != '') {
+	place = place + '_' ;		
+    }
+
+    var link = Wikiwyg.createElementWithAttrs(
+	    	'a', { href: '#', id: 'wikiwyg_ctrl_lnk_' + method + '_' + place + this.section_number }
+    );
+
+    link.appendChild(document.createTextNode(text));
+    span.appendChild(link);
+
+    var self = this;
+
+    if ( method.match (/\(/) ) {
+	var add = '' ;
+    } else {
+	var add = '()' ;
+    }
+    link.onclick = function() { eval('self.wikiwyg.' + method + add); return false };
+
+    div.appendChild(span);
+}
+
+proto.addFixedModeSelector = function (text, div, mode, place) {
     var span = Wikiwyg.createElementWithAttrs(
         'span', { 'class': 'wikiwyg_control_link' }
     );
+    var class_name = this.wikiwyg.first_mode.classname ; 
+    var second_mode_short = '' ;
+    var second_mode_full = '' ;
+    /*	for now, extract the _other_ mode classname
+    	in our case, it's preview
+	but let's not be _too_ sure about it...
+    */
+    var mode_regex = new RegExp (mode) ;
+
+    for (var i = 0; i < this.wikiwyg.config.modeClasses.length; i++) {        
+        var class_name = this.wikiwyg.config.modeClasses[i] ;
+	if (!class_name.match (mode_regex)) {
+	       second_mode_short = this.wikiwyg.mode_objects[class_name].modeDescription.toLowerCase () ;
+	       second_mode_full = class_name ;
+	}
+    }
+    if (place != '') {
+	place = place + '_' ;		
+    }
 
     var link = Wikiwyg.createElementWithAttrs(
-        'a', { href: '#' }
+    	'a', { href: '#', id: 'wikiwyg_ctrl_lnk_' + place + second_mode_short + this.section_number }
     );
-    link.appendChild(document.createTextNode(text));
-    span.appendChild(link);
-    
-    var self = this;
-    link.onclick = function() { eval('self.wikiwyg.' + method + '()'); return false };
+    if (text == '') {
+	    link.appendChild (document.createTextNode (second_mode_short)) ;
+    } else {
+    	    link.appendChild (document.createTextNode (text)) ;
+    }
+    span.appendChild (link) ;
 
-    this.div.appendChild(span);
+    var self = this;
+    link.onclick = function() { self.wikiwyg.switchMode (second_mode_full) ; return false };
+    div.appendChild(span);
+}
+
+proto.updateFakeModeSelector = function (link) {
+    	var self = this;
+	/* todo track this properly */
+	link.onclick = function() { self.rebuildDiffs () ; return false };
+}
+
+proto.updateModeSelector = function (link, mode) {
+    var second_mode_short = '' ;
+    var second_mode_full = '' ;
+    var mode_regex = new RegExp (mode) ;
+
+    for (var i = 0; i < this.wikiwyg.config.modeClasses.length; i++) {        
+        var class_name = this.wikiwyg.config.modeClasses[i] ;
+	if (!class_name.match (mode_regex)) {
+	       second_mode_short = this.wikiwyg.mode_objects[class_name].modeDescription.toLowerCase () ;
+	       second_mode_full = class_name ;
+	}
+    }
+
+    var self = this;
+    link.onclick = function() { self.wikiwyg.switchMode (second_mode_full) ; return false };
 }
 
 proto.resetModeSelector = function() {
@@ -1339,6 +1931,40 @@ proto.resetModeSelector = function() {
     }
 }
 
+proto.addFakeModeSelector = function (text, div, mode) {
+    var span = Wikiwyg.createElementWithAttrs(
+        'span', { 'class': 'wikiwyg_control_link' }
+    );
+    var class_name = this.wikiwyg.first_mode.classname ; 
+    var second_mode_short = '' ;
+    var second_mode_full = '' ;
+
+    /* todo there are *two* buttons - make each have unique div */
+    var link = Wikiwyg.createElementWithAttrs(
+    	'a', { href: '#', id: 'wikiwyg_ctrl_lnk_ReturnFromDiff'}
+    );
+    if (text == '') {
+	    link.appendChild (document.createTextNode (second_mode_short)) ;
+    } else {
+    	    link.appendChild (document.createTextNode (text)) ;
+    }
+    span.appendChild (link) ;
+
+    var self = this;
+    link.onclick = function() { self.rebuildDiffs () ; return false };
+    div.appendChild(span);
+}
+
+proto.resetModeSelector = function() {
+    if (this.firstModeRadio) {
+        var temp = this.firstModeRadio.onclick;
+        this.firstModeRadio.onclick = null;
+        this.firstModeRadio.click();
+        this.firstModeRadio.onclick = temp;
+    }
+}
+
+
 proto.addModeSelector = function() {
     var span = document.createElement('span');
 
@@ -1346,27 +1972,25 @@ proto.addModeSelector = function() {
     for (var i = 0; i < this.wikiwyg.config.modeClasses.length; i++) {
         var class_name = this.wikiwyg.config.modeClasses[i];
         var mode_object = this.wikiwyg.mode_objects[class_name];
- 
+
         var radio_id = Wikiwyg.createUniqueId();
- 
-        var checked = i == 0 ? 'checked' : '';
         var radio = Wikiwyg.createElementWithAttrs(
             'input', {
-                type: 'radio',
-                name: radio_name,
-                id: radio_id,
-                value: mode_object.classname,
-                'checked': checked
+                type: 'radio' ,
+                name: radio_name ,
+                id: radio_id ,
+                value: mode_object.classname
             }
         );
         if (!this.firstModeRadio)
             this.firstModeRadio = radio;
- 
+
         var self = this;
-        radio.onclick = function() { 
+
+        radio.onclick = function() {
             self.wikiwyg.switchMode(this.value);
         };
- 
+
         var label = Wikiwyg.createElementWithAttrs(
             'label', { 'for': radio_id }
         );
@@ -1378,11 +2002,11 @@ proto.addModeSelector = function() {
     this.div.appendChild(span);
 }
 
-proto.add_break = function() {
-    this.div.appendChild(document.createElement('br'));
+proto.add_break = function (div) {
+    div.appendChild(document.createElement('br'));
 }
 
-proto.add_styles = function() {
+proto.add_styles = function (div) {
     var options = this.config.styleSelector;
     var labels = this.config.controlLabels;
 
@@ -1401,10 +2025,10 @@ proto.add_styles = function() {
         this.styleSelect.appendChild(option);
     }
     var self = this;
-    this.styleSelect.onchange = function() { 
-        self.set_style(this.value) 
+    this.styleSelect.onchange = function() {
+        self.set_style(this.value)
     };
-    this.div.appendChild(this.styleSelect);
+    div.appendChild(this.styleSelect);
 }
 
 proto.set_style = function(style_name) {
@@ -1420,12 +2044,18 @@ This Wikiwyg mode supports a preview of current changes
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+CHANGES AUTHOR:
+
+    Bartek Lapinski <bartek@wikia.com>
+
+    Copyright (c) 2007, Wikia Inc.
+
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -1444,7 +2074,7 @@ General Public License for more details.
 proto = new Subclass('Wikiwyg.Preview', 'Wikiwyg.Mode');
 
 proto.classtype = 'preview';
-proto.modeDescription = 'Preview';
+proto.modeDescription = wgPreviewCaption ;
 
 proto.config = {
     divId: null
@@ -1456,7 +2086,14 @@ proto.initializeObject = function() {
     else
         this.div = document.createElement('div');
     // XXX Make this a config option.
-    this.div.style.backgroundColor = 'lightyellow';
+    this.div.id = 'wikiwyg_preview_area' ;
+    this.div.style.backgroundColor = 'lightyellow' ;
+    this.div.style.padding = '4px 4px 4px 4px' ;
+    this.div.style.border = '1px solid #cccccc' ;
+}
+
+proto.initHtml = function (html) {
+    this.fromHtml (html) ;
 }
 
 proto.fromHtml = function(html) {
@@ -1476,12 +2113,18 @@ This Wikiwyg mode supports a textarea editor with toolbar buttons.
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+CHANGES AUTHOR:
+
+    Bartek Lapinski <bartek@wikia.com>
+
+    Copyright (c) 2007, Wikia Inc.
+
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -1601,13 +2244,61 @@ proto.canonicalText = function() {
     return wikitext;
 }
 
+proto.initHtml = function (html) {
+    this.fromHtml (html) ;
+}
+
 proto.fromHtml = function(html) {
     this.setTextArea('Loading...');
     var self = this;
     this.convertHtmlToWikitext(
-        html, 
-        function(value) { self.setTextArea(value) }
+        html,
+        function(value) {
+        	value = self.fixDoubleWeightBug (value) ;
+		self.setTextArea(value) ;
+	}
     );
+}
+
+/* seven apostrophes' solution */
+proto.fixDoubleWeightBug = function (text) {
+	text = this.fixBoldItalic (text) ;
+	text = this.fixItalicBold (text) ;
+	return text ;
+}
+
+proto.fixBoldItalic = function (text) {
+	var found = text.match (/'''''[^']+'''''''[^']+''/gi) ;
+        var split = "" ;
+	var modtext = "" ;
+	if (!found) { /* do not touch otherwise */
+		return text ;
+	}
+	var vtext = text ;
+	var tofix = "" ;
+	split = vtext.split (/'''''[^']+'''''''[^']+''/gi) ;
+	for (i=0; i < found.length; i++) {
+		tofix = found[i].replace ("'''''''","'''") ;
+		modtext = modtext + split[i] + tofix ;
+	}
+	return modtext + split[found.length] ;
+}
+
+proto.fixItalicBold = function (text) {
+	var found = text.match (/'''''[^']+''''''''[^']+'''/gi) ;
+        var split = "" ;
+	var modtext = "" ;
+	if (!found) { /* do not touch otherwise */
+		return text ;
+	}
+	var vtext = text ;
+	var tofix = "" ;
+	split = vtext.split (/'''''[^']+''''''''[^']+'''/gi) ;
+	for (i=0; i < found.length; i++) {
+		tofix = found[i].replace ("''''''''","''") ;
+		modtext = modtext + split[i] + tofix ;
+	}
+	return modtext + split[found.length] ;
 }
 
 proto.getTextArea = function() {
@@ -1639,15 +2330,15 @@ Wikiwyg.Wikitext.phrase_end_re = /[\s\.\:\;\,\!\?\(\)]/;
 proto.find_left = function(t, selection_start, matcher) {
     var substring = t.substr(selection_start - 1, 1);
     var nextstring = t.substr(selection_start - 2, 1);
-    if (selection_start == 0) 
+    if (selection_start == 0)
         return selection_start;
     if (substring.match(matcher)) {
         // special case for word.word
-        if ((substring != '.') || (nextstring.match(/\s/))) 
+        if ((substring != '.') || (nextstring.match(/\s/)))
             return selection_start;
     }
     return this.find_left(t, selection_start - 1, matcher);
-}  
+}
 
 proto.find_right = function(t, selection_end, matcher) {
     var substring = t.substr(selection_end, 1);
@@ -1712,12 +2403,11 @@ proto.alarm_on = function() {
 proto.get_words = function() {
     function is_insane(selection) {
         return selection.match(/\r?\n(\r?\n|\*+ |\#+ |\=+ )/);
-    }   
+    }
 
     t = this.area; // XXX needs "var"?
     var selection_start = t.selectionStart;
     var selection_end = t.selectionEnd;
-
     if (selection_start == null) {
         selection_start = selection_end;
         if (selection_start == null) {
@@ -1894,7 +2584,7 @@ proto.bound_markup_lines = function(markup_array) {
     var already_start = new RegExp('^' + this.clean_regexp(markup_start), 'gm');
     var already_finish = new RegExp(this.clean_regexp(markup_finish) + '$', 'gm');
     var other_start = /^(\^+|\=+|\*+|#+|>+) */gm;
-    var other_finish = /( +(\^+|\=+))?$/gm;
+    var other_finish = /( +(\^+|\=+))?$/m;
 
     var match;
     if (this.sel.match(already_start)) {
@@ -1953,8 +2643,9 @@ proto.markup_bound_phrase = function(markup_array) {
     var scroll_top = this.area.scrollTop;
     if (markup_finish == 'undefined')
         markup_finish = markup_start;
-    if (this.get_words())
+    if (this.get_words()) {
         this.add_markup_words(markup_start, markup_finish, null);
+	}
     this.area.scrollTop = scroll_top;
 }
 
@@ -1985,14 +2676,96 @@ proto.do_h6 = klass.make_do('h6');
 proto.do_ordered = klass.make_do('ordered');
 proto.do_unordered = klass.make_do('unordered');
 proto.do_hr = klass.make_do('hr');
+proto.do_timestamp = klass.make_do('timestamp') ;
 proto.do_table = klass.make_do('table');
 
+do_wikify = function() {
+	var selection = this.get_link_selection_text();
+	if (!selection) return ;
+	var self = this ;
+	WKWAjax.post (
+			fixupRelativeUrl('Special:Createpage') ,
+			'action=check&to_check=' + selection ,
+			function (response) {
+			if (response.indexOf("pagetitleexists") != -1) {
+			link_color = "26579A";
+			} else {
+			link_color = "FF0000";
+			}
+			var url;
+			var match = selection.match(/(.*?)\b((?:http|https|ftp|irc):\/\/\S+)(.*)/);
+			if (match) {
+			if (match[1] || match[3]) return null;
+			url = match[2];
+			}
+			else {
+			url = '?' + escape(selection);
+			}
+
+			self.exec_command('createlink', url);
+			self.exec_command('underline', selection);
+			self.exec_command('ForeColor', "#" + link_color);
+			}
+	) ;
+}
+
+proto.do_youtube = function() {
+
+	if (Wikiwyg.is_ie) {
+		//hack to remember Caret Position in IE
+		this.ieRange = this.get_edit_document().selection.createRange();
+		this.ieRange.moveStart ('character', -this.get_inner_html().length) ;
+		this.ieCaretPos = this.ieRange.text.length;
+	}
+
+	var  url =  prompt("Add YouTube Video. Copy and paste the video's URL or Embed code.", "");
+	if (url == null) return ;
+
+	if(Wikiwyg.is_ie){
+		// Move selection start and end to 0 position
+		self.ieRange.moveStart ('character', -self.get_inner_html().length);
+
+		// Move selection start and end to desired position
+		self.ieRange.moveStart ('character', self.ieCaretPos);
+		self.ieRange.moveEnd ('character', 0);
+		self.ieRange.select ();
+	}
+	this.insert_youtube(url) ;
+}
+
+proto.extract_youtube_id = function(youTubeCode) {
+	id = 0;
+	inURL = youTubeCode.indexOf("watch?v=")
+		if(inURL > -1){
+			id = youTubeCode.substring(inURL+8)
+		}else{
+			r = /http:\/\/www.youtube.com\/v\/\w+/
+				test =   r.exec(youTubeCode);
+			if(test){
+				id = test.toString().replace("http://www.youtube.com/v/","")
+			}
+		}
+	return id;
+}
+
+proto.insert_youtube = function(url) {
+	youTubeID = this.extract_youtube_id(url);
+	if(!id){
+		alert("Invalid Youtube url");
+		return;
+	}
+	TheURL = window.location.href
+		TheURL = TheURL.substring(0,TheURL.lastIndexOf("/"))
+		this.exec_command('InsertImage', TheURL + "/images/YouTube_placeholder.gif?id=" + youTubeID);
+}
+
 proto.do_www = function() {
-    var  url =  prompt("Please enter a link", "Type in your link here");
+    var  url =  prompt("Enter the link or leave blank to link to selected page", "http://");
+    	if (url == null) return ;
 	var old = this.config.markupRules.www[1];
 	this.config.markupRules.www[1] += url + " ";
-  
-	// do the transformation 
+
+	// do the transformation
 	var markup = this.config.markupRules['www'];
     var handler = markup[0];
      if (! this['markup_' + handler])
@@ -2000,7 +2773,7 @@ proto.do_www = function() {
     this['markup_' + handler](markup);
 
 	// reset
-	this.config.markupRules.www[1] = old;	
+	this.config.markupRules.www[1] = old;
 }
 
 proto.selection_mangle = function(method) {
@@ -2077,7 +2850,7 @@ proto.markup_line_alone = function(markup_array) {
     if (selection_start == null) {
         selection_start = selection_end;
     }
-    
+
     var text = t.value;
     this.selection_start = this.find_right(text, selection_start, /\r?\n/);
     this.selection_end = this.selection_start;
@@ -2106,16 +2879,34 @@ proto.convert_html_to_wikitext = function(html) {
     this.list_type = [];
     this.indent_level = 0;
     this.no_collapse_text = false;
-
+    dom = this.fixChangedStructure (dom) ;
     this.normalizeDomWhitespace(dom);
     this.normalizeDomStructure(dom);
-
     this.walk(dom);
 
     // add final whitespace
     this.assert_new_line();
-
     return this.join_output(this.output);
+}
+
+proto.fixChangedStructure = function (dom) {
+	var divs = this.array_elements_by_tag_name (dom, 'div', false) ;
+        for (var i = 0; i < divs.length; i++) {
+		if (divs[i].id == "wikiwyg_toolbar") {
+			divs[i].parentNode.removeChild (divs[i]) ;
+		}
+	}
+	var textareas = this.array_elements_by_tag_name (dom, 'textarea', false) ;
+	for (var i = 0; i < textareas.length; i++) {
+		textareas[i].parentNode.removeChild (textareas[i]) ;
+	}
+	var spans = this.array_elements_by_tag_name (dom, 'span', false) ;
+	for (var i = 0; i <  spans.length; i++) {
+		if (spans[i].className == "editsection") {
+			spans[i].parentNode.removeChild (spans[i]) ;
+		}
+	}
+	return dom ;
 }
 
 proto.normalizeDomStructure = function(dom) {
@@ -2130,7 +2921,7 @@ proto.normalize_span_whitespace = function(dom,tag ) {
     var grep = function(element) {
        return Boolean(element.getAttribute('style'));
     }
-        
+
     var elements = this.array_elements_by_tag_name(dom, tag, grep);
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
@@ -2175,7 +2966,7 @@ proto.normalize_styled_lists = function(dom, tag) {
 
         var items = element.getElementsByTagName('li');
         for (var j = 0; j < items.length; j++) {
-            items[j].innerHTML = 
+            items[j].innerHTML =
                 '<span style="' + style + '">' + items[j].innerHTML + '</span>';
         }
     }
@@ -2228,13 +3019,13 @@ proto.normalizePhraseWhitespace = function(element) {
 
     if (first_node && first_node.nodeValue.match(/^ /)) {
         first_node.nodeValue = first_node.nodeValue.replace(/^ +/, '');
-        if (prev_node && ! prev_node.nodeValue.match(/ $/)) 
+        if (prev_node && ! prev_node.nodeValue.match(/ $/))
             prev_node.nodeValue = prev_node.nodeValue + ' ';
     }
 
     if (last_node && last_node.nodeValue.match(/ $/)) {
         last_node.nodeValue = last_node.nodeValue.replace(/ $/, '');
-        if (next_node && ! next_node.nodeValue.match(/^ /)) 
+        if (next_node && ! next_node.nodeValue.match(/^ /))
             next_node.nodeValue = ' ' + next_node.nodeValue;
     }
 }
@@ -2341,7 +3132,7 @@ proto.walk = function(element) {
             if (part.nodeValue.match(/[^\n]/) &&
                 ! part.nodeValue.match(/^\n[\ \t]*$/)
                ) {
-                if (this.no_collapse_text) { 
+                if (this.no_collapse_text) {
                     this.appendOutput(part.nodeValue);
                 }
                 else {
@@ -2382,7 +3173,7 @@ proto.format_bgsound = proto.skip;
 proto.format_big = proto.pass;
 proto.format_blink = proto.pass;
 proto.format_body = proto.pass;
-proto.format_br = proto.skip;
+//proto.format_br = proto.skip;
 proto.format_button = proto.skip;
 proto.format_caption = proto.pass;
 proto.format_center = proto.pass;
@@ -2459,7 +3250,7 @@ proto.format_blockquote = function(element) {
         this.first_indent_line = true;
     this.indent_level += indents;
 
-    this.output = defang_last_string(this.output);
+    this.output = defang_last_string (this.output) ;
     this.assert_new_line();
     this.walk(element);
     this.indent_level -= indents;
@@ -2505,6 +3296,7 @@ proto.format_div = function(element) {
 }
 
 proto.format_span = function(element) {
+
     if (this.is_opaque(element)) {
         this.handle_opaque_phrase(element);
         return;
@@ -2515,7 +3307,6 @@ proto.format_span = function(element) {
         this.pass(element);
         return;
     }
-
     if (   ! this.element_has_text_content(element)
         && ! this.element_has_only_image_content(element)) return;
     var attributes = [ 'line-through', 'bold', 'italic', 'underline' ];
@@ -2610,14 +3401,20 @@ proto.format_h5 = klass.make_formatter('h5');
 proto.format_h6 = klass.make_formatter('h6');
 proto.format_pre = klass.make_formatter('pre');
 
+proto.format_br = function (element) {
+	this.insert_new_line () ;
+	this.insert_new_line () ;
+}
+
 proto.format_p = function(element) {
     if (this.is_indented(element)) {
         this.format_blockquote(element);
         return;
     }
     this.assert_blank_line();
-    this.walk(element);
     this.assert_blank_line();
+    this.walk(element);
+//    this.assert_blank_line();
 }
 
 proto.format_a = function(element) {
@@ -2626,7 +3423,13 @@ proto.format_a = function(element) {
     label = label.replace(/\s+/g, ' ');
     label = label.replace(/^\s+/, '');
     label = label.replace(/\s+$/, '');
-    var href = element.getAttribute('href');
+    var href = element.getAttribute('href') ;
+    /* fix for IE's absolute url */
+    if (Wikiwyg.is_ie) {
+	if (href.indexOf(wgServer) != -1) {
+		href = href.replace (wgServer, "") ;
+	}
+    }
     if (! href) href = ''; // Necessary for <a name="xyz"></a>'s
     this.make_wikitext_link(label, href, element);
 }
@@ -2685,7 +3488,7 @@ proto.previous_line = function() {
     );
 }
 
-proto.make_list = function(element, list_type) { 
+proto.make_list = function(element, list_type) {
     if (! this.previous_was_newline_or_start())
         this.insert_new_line();
 
@@ -2910,7 +3713,7 @@ proto.handle_opaque_phrase = function(element) {
         var text = comment.data;
         text = text.replace(/^ wiki:\s+/, '')
                    .replace(/-=/g, '-')
-                   .replace(/==/g, '=') 
+                   .replace(/==/g, '=')
                    .replace(/\s$/, '')
                    .replace(/\{(\w+):\s*\}/, '{$1}');
         this.appendOutput(Wikiwyg.htmlUnescape(text))
@@ -2951,13 +3754,12 @@ proto.handle_opaque_block = function(element) {
 proto.make_wikitext_link = function(label, href, element) {
     var before = this.config.markupRules.link[1];
     var after  = this.config.markupRules.link[2];
-
 	// handle external links
 	if (this.looks_like_a_url(href)) {
 		before = this.config.markupRules.www[1];
 		after = this.config.markupRules.www[2];
 	}
-	
+
     this.assert_space_or_newline();
     if (! href) {
         this.appendOutput(label);
@@ -2968,8 +3770,16 @@ proto.make_wikitext_link = function(label, href, element) {
     else if (this.href_is_wiki_link(href)) {
         if (this.camel_case_link(label))
             this.appendOutput(label);
-        else
-            this.appendOutput(before + label + after);
+        else {
+	    if (label != href) {
+	    	href = href.replace (/^\/index.php\?title=/i,"?") ;
+		href = href.replace (/wiki\//i, "") ;
+		href = href.replace (/&action=.*$/i, "") ;
+	            	this.appendOutput(before + href.substring(1) + '|' + label + after);
+	    } else {
+            	this.appendOutput(before + label + after);
+	    }
+	}
     }
     else {
         this.appendOutput(before + href + ' ' + label + after);
@@ -3025,12 +3835,18 @@ This Wikiwyg mode supports a DesignMode wysiwyg editor with toolbar buttons
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+CHANGES AUTHOR:
+
+    Bartek Lapinski <bartek@wikia.com>
+
+    Copyright (c) 2007, Wikia Inc.
+
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -3049,7 +3865,7 @@ General Public License for more details.
 proto = new Subclass('Wikiwyg.Wysiwyg', 'Wikiwyg.Mode');
 
 proto.classtype = 'wysiwyg';
-proto.modeDescription = 'Wysiwyg';
+proto.modeDescription = wgWysiwygCaption ;
 
 proto.config = {
     useParentStyles: true,
@@ -3057,11 +3873,12 @@ proto.config = {
     iframeId: null,
     iframeObject: null,
     disabledToolbarButtons: [],
-    editHeightMinimum: 150,
+    editHeightMinimum: 250,
+    overrideHeightMinimum: true ,
     editHeightAdjustment: 1.3,
     clearRegex: null
 };
-    
+
 proto.initializeObject = function() {
     this.edit_iframe = this.get_edit_iframe();
     this.div = this.edit_iframe;
@@ -3070,6 +3887,10 @@ proto.initializeObject = function() {
 
 proto.set_design_mode_early = function() { // See IE, below
     // Unneeded for Gecko
+}
+
+proto.initHtml = function (html) {
+    this.fromHtml (html) ;
 }
 
 proto.fromHtml = function(html) {
@@ -3093,6 +3914,11 @@ proto.fix_up_relative_imgs = function() {
 proto.enableThis = function() {
     Wikiwyg.Mode.prototype.enableThis.call(this);
     this.edit_iframe.style.border = '1px black solid';
+    if (this.edit_iframe.contentDocument) {
+	    this.edit_iframe.contentDocument.body.style.background = '#fff' ;
+    } else {
+	    this.edit_iframe.document.body.style.background = '#fff' ;
+    }
     this.edit_iframe.width = '100%';
     this.setHeightOf(this.edit_iframe);
     this.fix_up_relative_imgs();
@@ -3100,6 +3926,28 @@ proto.enableThis = function() {
     this.apply_stylesheets();
     this.enable_keybindings();
     this.clear_inner_html();
+    if ( Wikiwyg.is_ie ) {
+	    var self = this;
+	    var win = this.get_edit_window();
+	    var doc = this.get_edit_document();
+	    self.ieSelectionBookmark = null;
+	    var bookmark = function() {
+		    var range = doc.selection.createRange();
+		    if ( range.getBookmark ) {
+			    self.ieSelectionBookmark = range.getBookmark();
+		    }
+	    }
+	    doc.attachEvent("onbeforedeactivate", bookmark);
+	    var restoreBookmark = function() {
+		    if (self.ieSelectionBookmark) {
+			    var range = doc.body.createTextRange();
+			    range.moveToBookmark(self.ieSelectionBookmark);
+			    range.collapse();
+			    range.select();
+		    }
+	    }
+	    doc.attachEvent("onactivate", restoreBookmark);
+    }
 }
 
 proto.clear_inner_html = function() {
@@ -3167,15 +4015,15 @@ proto.apply_inline_stylesheet = function(style, head) {
             // IMPORT_RULE
 
             /* It's pretty strange that this doesnt work.
-               That's why Ajax.get() is used to retrive the css text.
-               
+               That's why WKWAjax.get() is used to retrive the css text.
+
             this.apply_linked_stylesheet({
                 href: style.cssRules[i].href,
                 type: 'text/css'
             }, head);
             */
-            
-            style_string += Ajax.get(style.cssRules[i].href);
+
+            style_string += WKWAjax.get(style.cssRules[i].href);
         } else {
             style_string += style.cssRules[i].cssText + "\n";
         }
@@ -3243,8 +4091,14 @@ proto.format_command = function(command) {
     this.exec_command('formatblock', '<' + command + '>');
 }
 
-proto.do_bold = proto.exec_command;
-proto.do_italic = proto.exec_command;
+proto.do_bold = function () {
+	this.exec_command ('bold') ;
+}
+
+proto.do_italic = function () {
+	this.exec_command ('italic') ;
+}
+
 proto.do_underline = proto.exec_command;
 proto.do_strike = function() {
     this.exec_command('strikethrough');
@@ -3255,6 +4109,11 @@ proto.do_hr = function() {
 proto.do_ordered = function() {
     this.exec_command('insertorderedlist');
 }
+
+proto.do_timestamp = function () {
+	this.exec_command ('inserthtml', '~~~~') ;
+}
+
 proto.do_unordered = function() {
     this.exec_command('insertunorderedlist');
 }
@@ -3293,13 +4152,18 @@ proto.do_link = function() {
     var selection = this.get_link_selection_text();
     if (! selection) return;
     var url;
-    var match = selection.match(/(.*?)\b((?:http|https|ftp|irc|file):\/\/\S+)(.*)/);
+    url = prompt("Enter the link or leave blank to link to selected page", "");
+    /* if blank, get selection */
+    if (!url) {
+    	url = selection ;
+    }
+    var match = url.match(/(.*?)\b((?:http|https|ftp|irc|file):\/\/\S+)(.*)/);
     if (match) {
         if (match[1] || match[3]) return null;
         url = match[2];
     }
     else {
-        url = '?' + escape(selection); 
+        url = '?' + escape(url);
     }
     this.exec_command('createlink', url);
 }
@@ -3307,7 +4171,7 @@ proto.do_link = function() {
 proto.do_www = function() {
     var selection = this.get_link_selection_text();
 	if (selection != null) {
-		var  url =  prompt("Please enter a link", "Type in your link here");
+		var  url =  prompt("Enter the link or leave blank to link to selected page", "http://");
 		this.exec_command('createlink', url);
 	}
 }
@@ -3371,12 +4235,18 @@ This Wikiwyg mode supports a simple HTML editor
 
 COPYRIGHT:
 
-    Copyright (c) 2005 Socialtext Corporation 
+    Copyright (c) 2005 Socialtext Corporation
     655 High Street
     Palo Alto, CA 94301 U.S.A.
     All rights reserved.
 
-Wikiwyg is free software. 
+CHANGES AUTHOR:
+
+    Bartek Lapinski <bartek@wikia.com>
+
+    Copyright (c) 2007, Wikia Inc.
+
+Wikiwyg is free software.
 
 This library is free software; you can redistribute it and/or modify it
 under the terms of the GNU Lesser General Public License as published by
@@ -3413,7 +4283,11 @@ proto.initializeObject = function() {
 proto.enableThis = function() {
     Wikiwyg.Mode.prototype.enableThis.call(this);
     this.textarea.style.width = '100%';
-    this.textarea.style.height = '200px';
+    this.textarea.style.height = '300px';
+}
+
+proto.initHtml = function (html) {
+    this.fromHtml (html) ;
 }
 
 proto.fromHtml = function(html) {
@@ -3440,12 +4314,20 @@ if (typeof(LivePreviewInstall) == 'undefined')
     LivePreviewInstall = function() {};
 
 function fixupRelativeUrl(url) {
+	return  FixupRelativeUrl(url);
+}
+
+function FixupRelativeUrl(url) {
     var loc = String(location);
+
+    if (wgArticlePath.match (/index\.php\?title=/) != '' ) {
+	url = url.replace (/index\.php\//, '?title=') ;
+    }
     var base = loc.replace(/index\.php.*/, '');
     if (base == loc)
         base = loc.replace(/(.*\/wiki\/).*/, '$1');
     if (base == loc)
-        throw("fixupRelativeUrl error: " + loc);
+        throw ("fixupRelativeUrl error: " + loc);
     return base + url;
 }
 
@@ -3460,6 +4342,7 @@ function findEditLink() {
 // Wikiwyg initialization/startup code
 (function() {
     addEvent("onload", function() {Wikiwyg.MediaWiki.initialize()});
+    window.onbeforeunload = confirmExit ;
 })();
 
 //------------------------------------------------------------------------------
@@ -3471,40 +4354,21 @@ klass.edit_buttons = [];
 klass.initialize = function() {
     if (! Wikiwyg.browserIsSupported) return;
 
-    var wikiwyg_divs = grepElementsByTag('div',
+    var wikiwyg_divs = grepElementsByTag('span',
         function(e) { return e.id.match(/^wikiwyg_section_\d+$/) }
     );
     Wikiwyg.MediaWiki.wikiwyg_divs = wikiwyg_divs;
     if (! Wikiwyg.MediaWiki.wikiwyg_enabled()) return;
-    Wikiwyg.MediaWiki.enable();
 }
 
 klass.wikiwyg_enabled = function() {
     Wikiwyg.MediaWiki.main_edit_button = findEditLink();
-    if (! Wikiwyg.MediaWiki.main_edit_button) return false;
-    try {
-        var div = document.getElementById('p-tb');
-        var ul = div.getElementsByTagName('ul')[0];
-    } catch(e) {return false}
-    var li = document.createElement('li');
-    ul.appendChild(li);
-    var a = Wikiwyg.createElementWithAttrs('a', {
-        id: 'wikiwyg-enabler',
-        href: '#'
-    });
-    li.appendChild(a);
-
+    if (!wgIsArticle) return false ;
     var enabled = Cookie.get('wikiwyg_enabled');
     if (! enabled) enabled = "false";
     enabled = eval(enabled);
     Cookie.set('wikiwyg_enabled', String(enabled));
-
-    a.innerHTML = enabled
-        ? 'Wikiwyg Enabled'
-        : 'Wikiwyg Disabled';
-    a.onclick = enabled
-        ? Wikiwyg.MediaWiki.disable
-        : Wikiwyg.MediaWiki.enable;
+    Wikiwyg.MediaWiki.enable ();
 
     return enabled;
 }
@@ -3513,15 +4377,12 @@ klass.enable = function() {
     if (Wikiwyg.MediaWiki.busy) return false;
     if (Wikiwyg.MediaWiki.checkEditInProgress()) return false;
     Wikiwyg.MediaWiki.busy = true;
-    a = document.getElementById('wikiwyg-enabler');
-    a.innerHTML = 'Wikiwyg Enabled';
-    a.onclick = Wikiwyg.MediaWiki.disable;
     Cookie.set('wikiwyg_enabled', true);
     // Code to actually enable Wikiwyg
     var wikiwyg_divs = Wikiwyg.MediaWiki.wikiwyg_divs;
     for (var i = 0; i < wikiwyg_divs.length; i++) {
         var div = wikiwyg_divs[i];
-        var section_number = div.id.replace(/.*?(\d+)$/, '$1');
+        var section_number = div.id.replace(/.*?(\d+)$/, '$1') ;
         var success = Wikiwyg.MediaWiki.enable_wikiwyg_section(
             div, section_number
         );
@@ -3536,9 +4397,6 @@ klass.disable = function() {
     if (Wikiwyg.MediaWiki.busy) return false;
     if (Wikiwyg.MediaWiki.checkEditInProgress()) return false;
     Wikiwyg.MediaWiki.busy = true;
-    a = document.getElementById('wikiwyg-enabler');
-    a.innerHTML = 'Wikiwyg Disabled';
-    a.onclick = Wikiwyg.MediaWiki.enable;
     Cookie.set('wikiwyg_enabled', false);
     // XXX Code to actually disable Wikiwyg
     var wikiwyg_divs = Wikiwyg.MediaWiki.wikiwyg_divs;
@@ -3567,21 +4425,21 @@ klass.enable_wikiwyg_section = function(section_div, section_number) {
         doubleClickToEdit: true,
         toolbarClass: 'Wikiwyg.Toolbar.MediaWiki',
         toolbar: {
-            imagesLocation: '/wikiwyg/share/MediaWiki/images/',
+	    imagesLocation: wgScriptPath + '/extensions/wikiwyg/share/MediaWiki/images/',
             imagesExtension: '.gif'
         },
         wysiwyg: {
             iframeId: 'wikiwyg_iframe_' + section_number
         },
         modeClasses: [
-            'Wikiwyg.Wysiwyg.MediaWiki',
-            'Wikiwyg.Wikitext.MediaWiki',
+            'Wikiwyg.Wysiwyg.MediaWiki' ,
+	    'Wikiwyg.Wikitext.MediaWiki' ,
             'Wikiwyg.Preview.MediaWiki'
         ]
     }
 
     var hasWysiwyg = true;
-    if (! klass.canSupportWysiwyg(section_div)) {
+    if (! klass.canSupportWysiwyg(section_div) || (wgUseWysiwyg == 0)) {
         hasWysiwyg = false;
         myConfig.modeClasses.shift();
     }
@@ -3593,13 +4451,16 @@ klass.enable_wikiwyg_section = function(section_div, section_number) {
         document.getElementById('wikiwyg_edit_' + section_number);
     var edit_button = edit_button_span.getElementsByTagName('a')[0];
 
-    edit_button.edit_button_text = hasWysiwyg
-        ? 'Wikiwyg Edit'
-        : 'Quick Edit';
+    edit_button.edit_button_text = wgEditCaption ;
     edit_button.innerHTML = edit_button.edit_button_text;
     edit_button.onclick = function() {
-        myWikiwyg.editMode();
-        return false;
+    	if ((Wikiwyg.MediaWiki.sectionEdited == myWikiwyg.section_number) && Wikiwyg.MediaWiki.editInProgress) {
+		myWikiwyg.cancelEdit () ;
+		return false ;
+	} else {
+        	myWikiwyg.editMode() ;
+        	return false ;
+	}
     }
     Wikiwyg.MediaWiki.edit_buttons.push(edit_button);
 
@@ -3611,23 +4472,23 @@ klass.disable_wikiwyg_section = function(section_div, section_number) {
     var edit_button_span =
         document.getElementById('wikiwyg_edit_' + section_number);
     var edit_button = edit_button_span.getElementsByTagName('a')[0];
-
-    edit_button.innerHTML = 'edit';
+    edit_button.innerHTML = wgEditCaption ;
     edit_button.onclick = null;
 }
 
 klass.canSupportWysiwyg = function(div) {
+    /* now here the real fun begins */
     check_walk = function(elem) {
         for (var part = elem.firstChild; part; part = part.nextSibling) {
             if (part.nodeType == 1) {      // element
                 var tag = part.nodeName;
-                if (tag.match(/^(H2|P|BR|HR|UL|LI|A|S)$/)) {
+                if (tag.match(/^(H2|P|BR|HR|UL|LI|A|S|I|B|PRE)$/)) {
                     check_walk(part);
                     continue;
                 }
                 if (tag == 'SPAN') {
                     var class_name = part.className;
-                    if (class_name && (class_name == 'wikiwyg-nowiki')) {
+                    if (class_name && ((class_name == 'wikiwyg-nowiki')  || (class_name == 'mw-headline'))) {
                         check_walk(part);
                         continue;
                     }
@@ -3640,22 +4501,55 @@ klass.canSupportWysiwyg = function(div) {
             }
         }
     }
-    try {check_walk(div)} catch(e) {return false}
+//    return true ;
+    try {check_walk(div)} catch(e) { return false ; }
     return true;
 }
 
 proto.editMode = function() {
+    if (Wikiwyg.MediaWiki.editInProgress) {
+    	/* an open section exists, ask whether to abandon it or not */
+	/* todo check if we have any changes */
+	var c = confirm ("Another section is already opened. Do you wish to discard changes and open a new one?") ;
+	if (c) {
+		Wikiwyg.MediaWiki.instance.cancelEdit () ;
+	} else {
+		return ;
+	}
+    }
+    needToConfirm = true ;
     Wikiwyg.MediaWiki.editInProgress = true;
-    this.disableEditButtons();
-    this.getRawPage();
+    Wikiwyg.MediaWiki.sectionEdited = this.section_number ;
+    Wikiwyg.MediaWiki.instance = this ;
+    this.disableEditButtons (this.section_number) ;
+    if ( !this.getRawPage() ) {
+    	Wikiwyg.MediaWiki.editInProgress = false ;
+	this.enableEditButtons () ;
+	return ;
+    }
     this.disableDoubleClicks();
 
     if ( Wikiwyg.MediaWiki.canSupportWysiwyg(this.div) ) {
-        var modeName = Cookie.get("WikiwygEditMode");
+    	if (wgFullPageEditing == true) {
+		var cookieName = "WikiwygFPEditMode" ;
+	} else {
+		var cookieName = "WikiwygEditMode" ;
+	}
+        if (wgUseWysiwyg == 0) {
+		var modeName = "Wikiwyg.Wikitext.MediaWiki"  ;
+	} else {
+    		/* change that to correspond */
+		    if (wgDefaultMode == 'wysiwyg') {
+			var modeName = 'Wikiwyg.Wysiwyg.MediaWiki' ;
+		    } else {
+			var modeName = 'Wikiwyg.Wikitext.MediaWiki' ;
+		    }
+	        //var modeName = Cookie.get (cookieName) ;
+	}
         if ( modeName ) {
-            this.first_mode = this.modeByName(modeName);
+            this.first_mode = this.modeByName(modeName) ;
         } else {
-            Cookie.set("WikiwygEditMode", this.first_mode.classname);
+            Cookie.set (cookieName, this.first_mode.classname) ;
         }
         // Fake click on mode radio.
         var modeRadios = this.toolbarObject.div.getElementsByTagName("input");
@@ -3667,8 +4561,8 @@ proto.editMode = function() {
         }
     }
     Wikiwyg.prototype.editMode.call(this);
+    needToConfirm = true ;
 }
-
 
 proto.switchMode = function(new_mode_key) {
     if ( Wikiwyg.MediaWiki.canSupportWysiwyg(this.div) ) {
@@ -3677,53 +4571,134 @@ proto.switchMode = function(new_mode_key) {
         }
     }
     var new_mode = this.modeByName(new_mode_key);
+    this.toolbarObject.changeMode () ;
     Wikiwyg.prototype.switchMode.call(this, new_mode_key);
 }
 
-
-proto.disableEditButtons = function() {
+proto.disableEditButtons = function(section_number) {
     // Disable the main page button but save the old values
     // in case the user does cancels the edit.
-    Wikiwyg.MediaWiki.main_edit_button.old_href =
-        Wikiwyg.MediaWiki.main_edit_button.getAttribute('href');
-    Wikiwyg.MediaWiki.main_edit_button.old_color =
-        Wikiwyg.MediaWiki.main_edit_button.style.color;
-    Wikiwyg.MediaWiki.main_edit_button.style.color = 'black';
-    Wikiwyg.MediaWiki.main_edit_button.removeAttribute('href');
+    if (Wikiwyg.MediaWiki.main_edit_button){
+	    Wikiwyg.MediaWiki.main_edit_button.old_href =
+	        Wikiwyg.MediaWiki.main_edit_button.getAttribute('href');
+	    Wikiwyg.MediaWiki.main_edit_button.old_color =
+	        Wikiwyg.MediaWiki.main_edit_button.style.color;
+	    Wikiwyg.MediaWiki.main_edit_button.style.color = 'black';
+	    Wikiwyg.MediaWiki.main_edit_button.removeAttribute('href');
+    }
 
     var buttons = Wikiwyg.MediaWiki.edit_buttons;
     for (var i = 0; i < buttons.length; i++) {
         var button = buttons[i];
-        button.innerHTML = '';
+	if ((i+1) == section_number) {
+      		button.innerHTML = wgCancelCaption ;
+		button.parentNode.style.display = 'none' ;
+	}
     }
 }
 
+proto.enableEditButtons = function () {
+    if (Wikiwyg.MediaWiki.main_edit_button){
+	Wikiwyg.MediaWiki.main_edit_button.setAttribute(
+			'href', Wikiwyg.MediaWiki.main_edit_button.old_href
+			);
+	Wikiwyg.MediaWiki.main_edit_button.style.color =
+		Wikiwyg.MediaWiki.main_edit_button.old_color;
+    }
+	var buttons = Wikiwyg.MediaWiki.edit_buttons;
+	for (var i = 0; i < buttons.length; i++) {
+		var button = buttons[i];
+		button.innerHTML = button.edit_button_text;
+		button.parentNode.style.display = 'inline' ;
+	}
+}
+
 proto.getRawPage = function() {
-    if (this.config.modeClasses[0].match(/Wysiwyg/)) return;    
-    if (! this.raw_section_orig)
-        this.raw_section_orig = this.get_raw_section();
-    this.raw_section = this.raw_section_orig;
+//	if (this.config.modeClasses[0].match(/Wysiwyg/)) return true ;
+    	if (! this.raw_section_orig) {
+        	this.raw_section_orig = this.get_raw_section();
+	}
+    	this.raw_section = this.raw_section_orig;
+	if (!this.raw_section) {
+		return false ;
+	}
+	return true ;
 }
 
 proto.get_raw_section = function() {
     var url = location.toString().replace(/#.*/, '');
-    var page_title = url.replace(/.*index\.php\/(\w+).*/, '$1');
-    url = url.replace(/(.*index\.php).*/, '$1');
-    url = url +
-        "?title=" + page_title + 
-        "&action=edit" +
-        "&section=" + this.section_number;
-    var html = Ajax.get(url);
+	/* look out for titles already containing title... */
+	if (url.match ('/title/') != '') {
+		var correctPath = '' ;
+		if (wgArticlePath.match (/\/\$1/) != '') {
+			correctPath = wgArticlePath.replace (/\$1/, '') ;
+			if(wgArticlePath.indexOf('?') > 0) {
+	   			url = wgServer + correctPath + encodeURI(wgPageName) + "&action=edit" + "&section=" + this.section_number ;
+	   		} else {
+	   			url = wgServer + correctPath + encodeURI(wgPageName) + "?action=edit" + "&section=" + this.section_number ;
+	   		}
+		} else {
+			correctPath = wgArticlePath.replace (/\?title=\$1/, '') ;
+       			url = wgServer + correctPath + "?title=" + encodeURI(wgPageName) + "&action=edit" + "&section=" + this.section_number ;
+		}
+	} else {
+	    	var page_title = url.replace(/.*index\.php\/(\w+).*/, '$1');
+		url = url.replace(/(.*index\.php).*/, '$1');
+	    	url = url +
+        	"?title=" + encodeURI(wgPageName) +
+        	"&action=edit" +
+        	"&section=" + this.section_number;
+    	}
+
+    var html = WKWAjax.get(url);
+
+    /* 	do not allow blocked users to edit...
+    	it won't actually save, but will it look nice?
+    */
+    if (html.match (/<textarea[^>]*?readonly=\"readonly\"[^>]*?>/) ) {
+    	return false ;
+    }
+
+    /*	fetch things like wpStarttime and wpEdittime _here_
+    */
+
+    var matched_sttime = html.match(
+	/<input[^>]*? name=\"wpStarttime\" \/>/
+    ) ;
+
+    var matched_edtime = html.match(
+	/<input[^>]*? name=\"wpEdittime\" \/>/
+    ) ;
+
+    if (matched_sttime && matched_edtime) {
+	    var starttime = matched_sttime[0] ;
+	    var edittime = matched_edtime[0] ;
+
+	    starttime = starttime.match (
+		/[0-9]+/
+	    ) ;
+	    edittime = edittime.match (
+		/[0-9]+/
+	    ) ;
+	    var starttime = starttime[0] ;
+	    var edittime = edittime[0] ;
+	    Wikiwyg.MediaWiki.starttime = starttime ;
+	    Wikiwyg.MediaWiki.edittime = edittime ;
+    }
+
     var raw_text = html.replace(
         /[\s\S]*<textarea[^>]*?>([\s\S]*)<\/textarea>[\s\S]*/,
         '$1'
     );
+
     raw_text = raw_text
         .replace(/\&lt;/g, '<')
         .replace(/\&gt;/g, '>')
-        .replace(/\&amp;/g, '&');
+        .replace(/\&amp;/g, '&')
+	.replace(/\&quot;/g,'"') ;
+
     return raw_text;
-    // XXX Use code like this when action=raw is fixed in 1.7a 
+    // XXX Use code like this when action=raw is fixed in 1.7a
     // var sections = raw_text.match(/\n== [\s\S]*?(?=(\n== |$))/g);
     // if (!sections) return;
     // this.raw_section = sections[this.section_number - 1].
@@ -3731,7 +4706,7 @@ proto.get_raw_section = function() {
 }
 
 proto.disableDoubleClicks = function () {
-    var wikiwyg_divs = grepElementsByTag('div',
+    var wikiwyg_divs = grepElementsByTag('span',
         function(e) { return e.id.match(/^wikiwyg_section_\d+$/) }
     );
     this.wikiwyg_divs_ondblclick = new Array();
@@ -3745,23 +4720,34 @@ proto.cancelEdit = function() {
     Wikiwyg.MediaWiki.editInProgress = false;
     this.displayMode();
     this.toolbarObject.disableMessage();
-
-    Wikiwyg.MediaWiki.main_edit_button.setAttribute(
-        'href', Wikiwyg.MediaWiki.main_edit_button.old_href
-    );
-    Wikiwyg.MediaWiki.main_edit_button.style.color =
-        Wikiwyg.MediaWiki.main_edit_button.old_color;
+    if (Wikiwyg.MediaWiki.main_edit_button){
+	    Wikiwyg.MediaWiki.main_edit_button.setAttribute(
+	        'href', Wikiwyg.MediaWiki.main_edit_button.old_href
+	    );
+	    Wikiwyg.MediaWiki.main_edit_button.style.color =
+	        Wikiwyg.MediaWiki.main_edit_button.old_color;
+    }
     var buttons = Wikiwyg.MediaWiki.edit_buttons;
     for (var i = 0; i < buttons.length; i++) {
         var button = buttons[i];
         button.innerHTML = button.edit_button_text;
+	button.parentNode.style.display = 'inline' ;
     }
-    var wikiwyg_divs = grepElementsByTag('div',
+    var wikiwyg_divs = grepElementsByTag('span',
         function(e) { return e.id.match(/^wikiwyg_section_\d+$/) }
     );
     for ( var i = 0 ; i < wikiwyg_divs.length ; i++ ) {
         wikiwyg_divs[i].ondblclick = this.wikiwyg_divs_ondblclick[i];
     }
+    /* if show diff, disable it */
+    var diff_div = document.getElementById ('wikiwyg_diff_wrapper') ;
+    if (diff_div) {
+	this.toolbarObject.rebuildDiffs () ;
+    }
+    if (this.current_mode.classname.match(/Preview/)) {
+	this.toolbarObject.rebuild () ;
+    }
+    needToConfirm = false ;
 }
 
 proto.get_page_title = function() {
@@ -3771,11 +4757,10 @@ proto.get_page_title = function() {
 // XXX This all seems so fragile and crufty...
 proto.submit_action_form = function(action, value) {
     var self = this;
-    var page_title = this.get_page_title();
+    var page_title = wgPageName ;
     var url = fixupRelativeUrl(
         'index.php?title=' + page_title + '&action=edit&section=' + this.section_number
     );
-
     var tempIFrame=document.createElement('iframe');
     tempIFrame.setAttribute('id','RSIFrame');
     tempIFrame.style.height = "1px";
@@ -3809,46 +4794,87 @@ proto.submit_action_form = function(action, value) {
             ? IFrameObj.contentWindow.document
             : IFrameObj.contentDocument;
         form.wpTextbox1.value = value.wpTextbox1;
+	form.wpSummary.value = value.wpSummary ;
+        if (typeof wgUserName == 'string') {
+		form.wpMinoredit.value = 1 ;
+		form.wpWatchthis.value = 1 ;
+		/* checkboxes, ah */
+		form.wpMinoredit.checked = value.wpMinoredit ;
+		form.wpWatchthis.checked = value.wpWatchthis ;
+	}
+	/* also give variables needed for edit conflicts... */
+	form.wpEdittime.value = Wikiwyg.MediaWiki.edittime ;
+  	form.wpStarttime.value = Wikiwyg.MediaWiki.starttime ;
         form.submit();
         wait(function() {
-            return (check_doc(IFrameDoc)) ? true : false;
+	    // fix this up to *always* write
+		return (check_doc(IFrameDoc)) ? true : false;
         },function() {
             // Without remove tempIFrame here, the page scrolls down
             // to the bottom, where the tempIFrame is located.
-            document.body.removeChild(tempIFrame);            
+      //      document.body.removeChild(tempIFrame);
+          self.cancelEdit () ;
             // XXX CrappyHack for save until we figure out how
             // to submit without iframe.
             setTimeout(function() {
                 // With this setTimeout it avoids page for being cached.
                 // Without this setTimeout the reloaded page is usually
                 // a cached one, weird.
-                location.reload();
-            }, 1000);
+		document.body.removeChild(tempIFrame) ;
+		form.reset() ;
+                location.reload() ;
+            }, 400);
         });
     }
     wait(condition, callback);
 }
 
+proto.imageUpload = function (tagOpen, tagClose, sampleText) {
+	Wikiwyg.prototype.imageUpload.call (this, tagOpen, tagClose, sampleText) ;
+}
+
 proto.saveChanges = function() {
-    var page_title = this.get_page_title();
+    var page_title = encodeURI(wgPageName) ;
+    var summary = document.getElementById ('wpSummary_'+ this.section_number).value ;    
     var self = this;
-    var submit_changes = function(wikitext) {
-        self.submit_action_form(
-            fixupRelativeUrl('index.php'),
-            {
-            'title': page_title,
-            'action': "submit",
-            'wpSection': self.section_number,
-            'wpTextbox1': wikitext,
-            'wpSave': "Save page"
-            }
-        );
+    if (typeof wgUserName == 'string') {
+    	    var minoredit = document.getElementById ('wpMinoredit_'+ this.section_number).checked ;
+	    var watchthis = document.getElementById ('wpWatchthis_'+ this.section_number).checked ;
+	    var submit_changes = function(wikitext) {
+        	self.submit_action_form(
+	            fixupRelativeUrl('index.php'),
+	            {
+	            'title': page_title,
+	            'action': "submit",
+	            'wpSection': self.section_number,
+	            'wpTextbox1': wikitext,
+		    'wpSummary' : summary,
+		    'wpMinoredit' : minoredit,
+		    'wpWatchthis' : watchthis,
+	            'wpSave': "Save page"
+	            }
+	        );
+	    }
+    } else {	
+	    var submit_changes = function(wikitext) {
+        	self.submit_action_form(
+	            fixupRelativeUrl('index.php'),
+	            {
+	            'title': page_title,
+	            'action': "submit",
+	            'wpSection': self.section_number,
+	            'wpTextbox1': wikitext,
+		    'wpSummary' : summary,
+	            'wpSave': "Save page"
+	            }
+	        );
+	    }
     }
     var self = this;
     if (this.raw_section) {
-        submit_changes(this.raw_section);
+//    	submit_changes(this.raw_section);
     }
-    else if (this.current_mode.classname.match(/(Wysiwyg|Preview)/)) {
+    if (this.current_mode.classname.match(/(Wysiwyg|Preview)/)) {
         this.current_mode.toHtml(
             function(html) {
                 var wikitext_mode = self.mode_objects['Wikiwyg.Wikitext.MediaWiki'];
@@ -3873,34 +4899,50 @@ proto = new Subclass('Wikiwyg.Toolbar.MediaWiki', 'Wikiwyg.Toolbar');
 
 proto.config = {
     divId: null,
-    imagesLocation: 'images/',
-    imagesExtension: '.png',
+    imagesLocation: 'images/' ,
+    imagesExtension: '.png' ,
     controlLayout: [
-        'bold', 'italic', 'strike',
-        'link', 'www',
-        'h2', 'p',
-        'hr',
-        'unordered', 'ordered', 'outdent', 'indent',
-        'mode_selector', '|', 'save', '|', 'cancel'
+        'bold', 'italic', 'strike' ,
+        'www' , 'link' ,
+	'h1', 'h2', 'h3',
+         'p' ,
+        'hr' ,
+        'unordered', 'ordered' ,
+	'|l' ,
+	'insertimage' ,
+        '[' ,
+        'mode_selector' ,
+	'|r' ,
+	'save' ,
+        '|r' ,
+	'cancel' ,
+	']' ,
+	'|l' ,
+	'help'
     ],
     controlLabels: {
-        save: 'Save',
-        cancel: 'Cancel',
-        bold: 'Bold (Ctrl+b)',
-        italic: 'Italic (Ctrl+i)',
-        hr: 'Horizontal Rule',
+        save: wgSaveCaption ,
+        cancel: wgCancelCaption ,
+	insertimage: wgInsertImageCaption ,
+	help: wgHelpCaption ,
+        bold: wgBoldTip +' (Ctrl+b)',
+        italic: wgItalicTip + ' (Ctrl+i)',
+        hr: wgHrTip ,
         ordered: 'Numbered List',
         unordered: 'Bulleted List',
         indent: 'More Indented',
         outdent: 'Less Indented',
         label: '[Style]',
-        p: 'Normal Text',
+        p: wgNowikiTip ,
         pre: 'Preformatted',
         h1: 'Heading 1',
         h2: 'Heading 2',
         h3: 'Heading 3',
         h4: 'Heading 4',
-        link: 'Create Link',
+	timestamp : wgTimestampTip ,
+        link: wgIntlinkTip ,
+	www: wgExtlinkTip ,
+	template: 'insert Template' ,
         table: 'Create Table'
     }
 };
@@ -3913,6 +4955,7 @@ proto.make_button = function(type, label) {
             'class': 'wikiwyg_button',
             alt: label,
             title: label,
+	    id: 'wikiwyg_button_' + type + '_' + this.section_number ,
             src: base + type + ext
         }
     );
@@ -3930,14 +4973,15 @@ proto.enableMessage = function () {
         with (this.toolbar_message) {
             innerHTML            = "Loading";
             style.textDecoration = "blink";
-            style.color          = "red";
+            style.color          = "green";
             style.background     = "#fff";
-            style.width          = getStyle(this.div, "width");
-            style.height         = getStyle(this.div, "height");
-            style.marginTop      = getStyle(this.div, "margin-top")
-            style.marginBottom   = getStyle(this.div, "margin-bottom")
-            style.lineHight      = getStyle(this.div, "line-height")
-            style.fontSize       = getStyle(this.div, "font-size")
+            style.fontWeight     = "bold" ;
+            style.width          = WKWgetStyle(this.div, "width");
+            style.height         = WKWgetStyle(this.div, "height");
+            style.marginTop      = WKWgetStyle(this.div, "margin-top")
+            style.marginBottom   = WKWgetStyle(this.div, "margin-bottom")
+            style.lineHight      = WKWgetStyle(this.div, "line-height")
+            style.fontSize       = WKWgetStyle(this.div, "font-size")
         }
     }
     this.toolbar_message.style.display = "block";
@@ -3961,7 +5005,7 @@ proto.getButtons = function() {
     return buttons;
 }
 
-proto.disableButtons = function() {
+proto.disableButtons = function (section_number) {
     var buttons = this.getButtons();
     this.button_handlers = new Array();
     for ( var i = 0 ; i < buttons.length ; i++ ) {
@@ -4001,16 +5045,64 @@ proto.enableFinished = function (){
     this.wikiwyg.toolbarObject.disableMessage();
 }
 
+// a first strike tactic on templates and other stuff
+// fetch the wikitext and then convert to html
+// don't operate on plain html in any case
+proto.initHtml = function(html) {
+    var dom = document.createElement('div');
+    dom.innerHTML = html;
+    var myInstance = Wikiwyg.MediaWiki.instance ;
+    var wikitext_mode = myInstance.mode_objects['Wikiwyg.Wikitext.MediaWiki'] ;
+    wikitext_mode.fixChangedStructure (dom) ;
+    var fixed_content = myInstance.raw_section ;
+    // do things with stuff here
+    fixed_content = this.disableTemplates (fixed_content) ;
+    var self = this ;
+    wikitext_mode.convertWikitextToHtml (
+    	fixed_content,
+	function (html) {
+		self.set_inner_html (self.sanitize_html (html) ) ;
+	}
+    ) ;
+}
+
+// for future use
+proto.disableTemplates = function (wikitext) {    	    
+	wikitext = wikitext.replace (/\{\{.+\}\}/gi, '') ;
+	return wikitext ;
+}
+
+proto.fromHtml = function(html) {
+    var dom = document.createElement('div');
+    dom.innerHTML = html;
+    var myInstance = Wikiwyg.MediaWiki.instance ;
+    var wikitext_mode = myInstance.mode_objects['Wikiwyg.Wikitext.MediaWiki'] ;
+    wikitext_mode.fixChangedStructure (dom) ;
+    html = dom.innerHTML ;
+    this.set_inner_html(this.sanitize_html(html));
+}
+
+
 //------------------------------------------------------------------------------
 proto = new Subclass('Wikiwyg.Wikitext.MediaWiki', 'Wikiwyg.Wikitext');
 
+proto.initHtml = function (html) {
+    this.fromHtml (html) ;
+}
+
 proto.fromHtml = function(html) {
-    if (this.wikiwyg.raw_section) {
-        this.setTextArea(this.wikiwyg.raw_section);
-        delete this.wikiwyg.raw_section;
-        return;
-    }
-    Wikiwyg.Wikitext.prototype.fromHtml.call(this, html);
+//	this.wikiwyg.previous_mode.classname ;
+	if (!this.wikiwyg.previous_mode) {
+		this.setTextArea(this.wikiwyg.raw_section);
+		delete this.wikiwyg.raw_section;
+		return;
+	}
+	if (this.wikiwyg.raw_section && (!this.wikiwyg.previous_mode.classname.match(/Wysiwyg/))) {
+		this.setTextArea(this.wikiwyg.raw_section);
+		delete this.wikiwyg.raw_section;
+		return;
+	}
+        Wikiwyg.Wikitext.prototype.fromHtml.call(this, html);
 }
 
 proto.toHtml = function(func) {
@@ -4021,8 +5113,8 @@ proto.toHtml = function(func) {
 }
 
 proto.convertWikitextToHtml = function(wikitext, func) {
-    Ajax.post(
-        fixupRelativeUrl('index.php/Special:EZParser'),
+    WKWAjax.post(
+        fixupRelativeUrl('index.php/' + wgSpecialPrefix + ':EZParser') + "&rtitle=" + wgPageName,
         "text=" + encodeURIComponent(wikitext),
         func
     );
@@ -4069,6 +5161,7 @@ proto.config = {
         unordered: ['start_lines', '*'],
         indent: ['start_lines', ''],
         hr: ['line_alone', '----'],
+	timestamp: ['line_alone', '~~~~'] ,
         table: ['line_alone', '| A | B | C |\n|   |   |   |\n|   |   |   |']
     }
 }
@@ -4081,18 +5174,7 @@ proto.enableStarted = function () {
 proto.enableFinished = function (){
     this.wikiwyg.toolbarObject.enableThis();
     this.wikiwyg.toolbarObject.disableMessage();
-}
-
-proto.format_span = function(element) {
-    var class_name = element.className;
-    if (!(class_name && class_name == 'wikiwyg-nowiki')) {
-        this.pass(element);
-        return;
-    }
-    this.appendOutput('<nowiki>');
-    this.no_collapse_text = true;
-    this.walk(element);
-    this.appendOutput('</nowiki>');
+    this.textarea.style.height = '250px';
 }
 
 proto.normalizeDomWhitespace = function(dom) {
@@ -4175,8 +5257,8 @@ proto.fromHtml = function(html) {
                             function(html) {
                                 // Strip wrapper tags from ezparser.
                                 html = html
-                                    .replace(/<\/div><iframe.*/i,"")
-                                    .replace(/^.*<div.*?class="wikiwyg_section".*?>/i,"");
+                                    .replace(/<\/span><iframe.*/i,"")
+                                    .replace(/^.*<span.*?class="wikiwyg_section".*?>/i,"");
                                 Wikiwyg.Preview.prototype.fromHtml.call(self, html);
                             }
                         )

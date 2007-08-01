@@ -118,6 +118,26 @@ proto.disableThis = function() {
     this.div.style.display = 'none';
 }
 
+proto.setup_widgets_pulldown = function(title) {
+    var widgets_list = Wikiwyg.Widgets.widgets;
+    var widget_data = Wikiwyg.Widgets.widget;
+
+    var tb = eval(this.classname).prototype;
+
+    tb.styleSelector = [ 'label' ];
+    for (var i = 0; i < widgets_list.length; i++) {
+        var widget = widgets_list[i];
+        tb.styleSelector.push('widget_' + widget);
+    }
+    tb.controlLayout.push('selector');
+
+    tb.controlLabels.label = title;
+    for (var i = 0; i < widgets_list.length; i++) {
+        var widget = widgets_list[i];
+        tb.controlLabels['widget_' + widget] = widget_data[widget].label;
+    }
+}
+
 proto.make_button = function(type, label) {
     var base = this.config.imagesLocation;
     var ext = this.config.imagesExtension;
@@ -179,7 +199,7 @@ proto.addControlItem = function(text, method) {
     );
 
     var link = Wikiwyg.createElementWithAttrs(
-        'a', { href: '#' }
+        'a', { href: '#', id: 'wikiwyg_ctrl_lnk_' + text }
     );
     link.appendChild(document.createTextNode(text));
     span.appendChild(link);

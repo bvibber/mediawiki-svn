@@ -274,13 +274,13 @@ Wikiwyg.createUniqueId = function() {
 // This method is deprecated. Use Ajax.get and Ajax.post.
 Wikiwyg.liveUpdate = function(method, url, query, callback) {
     if (method == 'GET') {
-        return Ajax.get(
+        return WKWAjax.get(
             url + '?' + query,
             callback
         );
     }
     if (method == 'POST') {
-        return Ajax.post(
+        return WKWAjax.post(
             url,
             query,
             callback

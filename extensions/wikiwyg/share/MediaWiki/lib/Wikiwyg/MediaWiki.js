@@ -285,7 +285,7 @@ proto.get_raw_section = function() {
         "?title=" + page_title + 
         "&action=edit" +
         "&section=" + this.section_number;
-    var html = Ajax.get(url);
+    var html = WKWAjax.get(url);
     var raw_text = html.replace(
         /[\s\S]*<textarea[^>]*?>([\s\S]*)<\/textarea>[\s\S]*/,
         '$1'
@@ -504,12 +504,12 @@ proto.enableMessage = function () {
             style.textDecoration = "blink";
             style.color          = "red";
             style.background     = "#fff";
-            style.width          = getStyle(this.div, "width");
-            style.height         = getStyle(this.div, "height");
-            style.marginTop      = getStyle(this.div, "margin-top")
-            style.marginBottom   = getStyle(this.div, "margin-bottom")
-            style.lineHight      = getStyle(this.div, "line-height")
-            style.fontSize       = getStyle(this.div, "font-size")
+            style.width          = WKWgetStyle(this.div, "width");
+            style.height         = WKWgetStyle(this.div, "height");
+            style.marginTop      = WKWgetStyle(this.div, "margin-top")
+            style.marginBottom   = WKWgetStyle(this.div, "margin-bottom")
+            style.lineHight      = WKWgetStyle(this.div, "line-height")
+            style.fontSize       = WKWgetStyle(this.div, "font-size")
         }
     }
     this.toolbar_message.style.display = "block";
@@ -593,7 +593,7 @@ proto.toHtml = function(func) {
 }
 
 proto.convertWikitextToHtml = function(wikitext, func) {
-    Ajax.post(
+    WKWAjax.post(
         fixupRelativeUrl('index.php/Special:EZParser'),
         "text=" + encodeURIComponent(wikitext),
         func

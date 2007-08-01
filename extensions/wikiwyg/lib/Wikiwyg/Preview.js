@@ -37,7 +37,7 @@ proto.initializeObject = function() {
     if (this.config.divId)
         this.div = document.getElementById(this.config.divId);
     else
-        this.div = document.createElement('div');
+        this.div = document.createElement('span');
     // XXX Make this a config option.
     this.div.style.backgroundColor = 'lightyellow';
 }

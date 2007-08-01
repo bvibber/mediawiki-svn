@@ -646,9 +646,9 @@ proto.normalizeDomStructure = function(dom) {
 
 proto.normalize_span_whitespace = function(dom,tag ) {
     var grep = function(element) {
-       return Boolean(element.getAttribute('style'));
+        return Boolean(element.getAttribute('style'));
     }
-        
+
     var elements = this.array_elements_by_tag_name(dom, tag, grep);
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
@@ -676,11 +676,20 @@ proto.normalize_styled_blocks = function(dom, tag) {
     for (var i = 0; i < elements.length; i++) {
         var element = elements[i];
         var style = element.getAttribute('style');
-        if (!style) continue;
+        if (!style || this.style_is_bogus(style)) continue;
         element.removeAttribute('style');
         element.innerHTML =
             '<span style="' + style + '">' + element.innerHTML + '</span>';
     }
+}
+
+proto.style_is_bogus = function(style) {
+    var attributes = [ 'line-through', 'bold', 'italic', 'underline' ];
+    for (var i = 0; i < attributes.length; i++) {
+        if (this.check_style_for_attribute(style, attributes[i]))
+            return false;
+    }
+    return true;
 }
 
 proto.normalize_styled_lists = function(dom, tag) {
@@ -742,6 +751,16 @@ proto.normalizePhraseWhitespace = function(element) {
     var last_node = this.getLastTextNode(element);
     var next_node = this.getNextTextNode(element);
 
+    // This if() here is for a special condition on firefox.
+    // When a bold span is the last visible thing in the dom,
+    // Firefox puts an extra <br> in right before </span> when user
+    // press space, while normally it put &nbsp;.
+
+    if(Wikiwyg.is_gecko && element.tagName == 'SPAN') {
+        var tmp = element.innerHTML;
+        element.innerHTML = tmp.replace(/<br>$/i, '');
+    }
+
     if (this.destroyPhraseMarkup(element)) return;
 
     if (first_node && first_node.nodeValue.match(/^ /)) {
@@ -789,12 +808,12 @@ proto.end_is_no_good = function(element) {
     if (! last_node) return true;
     if (last_node.nodeValue.match(/ $/)) return false;
     if (! next_node || next_node.nodeValue == '\n') return false;
-    return ! next_node.nodeValue.match(/^[ ."\n]/);
+    return ! next_node.nodeValue.match(Wikiwyg.Wikitext.phrase_end_re);
 }
 
 proto.destroyElement = function(element) {
-    var span = document.createElement('font');
-    span.innerHTML = element.innerHTML;
+    var value = element.innerHTML;
+    var span = document.createTextNode(value);
     element.parentNode.replaceChild(span, element);
     return true;
 }
@@ -852,18 +871,23 @@ proto.remove_stops = function(list) {
 proto.walk = function(element) {
     if (!element) return;
     for (var part = element.firstChild; part; part = part.nextSibling) {
-        if (part.nodeType == 1) {
+        /* Saving the part's properties in local vars seems to give us
+         * a minor speed boost in this method, which can be called
+         * thousands of times for large documents. */
+        var nodeType = part.nodeType;
+        if (nodeType == 1) {
             this.dispatch_formatter(part);
         }
-        else if (part.nodeType == 3) {
-            if (part.nodeValue.match(/[^\n]/) &&
-                ! part.nodeValue.match(/^\n[\ \t]*$/)
+        else if (nodeType == 3) {
+            var nodeValue = part.nodeValue;
+            if (nodeValue.match(/[^\n]/) &&
+                ! nodeValue.match(/^\n[\n\ \t]*$/)
                ) {
                 if (this.no_collapse_text) { 
-                    this.appendOutput(part.nodeValue);
+                    this.appendOutput(nodeValue);
                 }
                 else {
-                    this.appendOutput(this.collapse(part.nodeValue));
+                    this.appendOutput(this.collapse(nodeValue));
                 }
             }
         }
@@ -1023,6 +1047,15 @@ proto.format_div = function(element) {
 }
 
 proto.format_span = function(element) {
+    // This fixes a mysterious wrapper SPAN in IE for the "asap" link.
+    if (element.firstChild &&
+        element.firstChild.nodeName == 'SPAN' &&
+        (! (element.style && element.style.fontWeight != '')) &&
+        element.firstChild == element.lastChild
+       ) {
+        this.walk(element);
+        return;
+    }
     if (this.is_opaque(element)) {
         this.handle_opaque_phrase(element);
         return;
@@ -1034,8 +1067,8 @@ proto.format_span = function(element) {
         return;
     }
 
-    if (   ! this.element_has_text_content(element)
-        && ! this.element_has_only_image_content(element)) return;
+    if (! this.element_has_text_content(element) &&
+        ! this.element_has_only_image_content(element)) return;
     var attributes = [ 'line-through', 'bold', 'italic', 'underline' ];
     for (var i = 0; i < attributes.length; i++)
         this.check_style_and_maybe_mark_up(style, attributes[i], 1);
@@ -1402,8 +1435,10 @@ proto.COMMENT_NODE_TYPE = 8;
 proto.get_wiki_comment = function(element) {
     for (var node = element.firstChild; node; node = node.nextSibling) {
         if (node.nodeType == this.COMMENT_NODE_TYPE
-            && node.data.match(/^\s*wiki/))
+            && node.data.match(/^\s*wiki/)
+        ) {
             return node;
+        }
     }
     return null;
 }
@@ -1438,16 +1473,9 @@ proto.handle_opaque_phrase = function(element) {
 
 proto.smart_trailing_space = function(element) {
     var next = element.nextSibling;
-    if (! next) {
-        // do nothing
-    }
-    else if (next.nodeType == 1) {
-        if (next.nodeName == 'BR') {
-            var nn = next.nextSibling;
-            if (! (nn && nn.nodeType == 1 && nn.nodeName == 'SPAN'))
-                this.appendOutput('\n');
-        }
-        else {
+    if (! next) return;
+    if (next.nodeType == 1) {
+        if (next.nodeName != 'BR') {
             this.appendOutput(' ');
         }
     }
@@ -1475,7 +1503,7 @@ proto.make_wikitext_link = function(label, href, element) {
 		before = this.config.markupRules.www[1];
 		after = this.config.markupRules.www[2];
 	}
-	
+		
     this.assert_space_or_newline();
     if (! href) {
         this.appendOutput(label);
@@ -1486,8 +1514,13 @@ proto.make_wikitext_link = function(label, href, element) {
     else if (this.href_is_wiki_link(href)) {
         if (this.camel_case_link(label))
             this.appendOutput(label);
-        else
-            this.appendOutput(before + label + after);
+        else {
+	    if (label != href) {
+	            this.appendOutput(before + href.substring(1) + '|' + label + after);
+	    } else {
+            	    this.appendOutput (before + label + after) ;
+	    }
+	}
     }
     else {
         this.appendOutput(before + href + ' ' + label + after);
@@ -1505,7 +1538,7 @@ proto.href_is_wiki_link = function(href) {
         return true;
     if (! href.match(/\?/))
         return false;
-    if (href.match(/\/static\/\d+\.\d+\.\d+\.\d+\//))
+    if (href.match(/\/static\//) && href.match(/\/js-test\//))
         href = location.href;
     var no_arg_input   = href.split('?')[0];
     var no_arg_current = location.href.split('?')[0];

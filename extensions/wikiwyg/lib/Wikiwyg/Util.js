@@ -48,7 +48,7 @@ function grepElementsByTag(tag, func) {
 
 // getStyle()
 // http://www.robertnyman.com/2006/04/24/get-the-rendered-style-of-an-element/
-function getStyle(oElm, strCssRule) {
+function WKWgetStyle(oElm, strCssRule) {
     var strValue = "";
     if(document.defaultView && document.defaultView.getComputedStyle){
         strValue = document.defaultView.getComputedStyle(oElm, "").getPropertyValue(strCssRule);
@@ -154,25 +154,25 @@ window.wait = Wait.wait;
 //------------------------------------------------------------------------------
 // Ajax support
 //------------------------------------------------------------------------------
-if (! this.Ajax) Ajax = {};
+if (! this.WKWAjax) WKWAjax = {};
 
-Ajax.get = function(url, callback) {
+WKWAjax.get = function(url, callback) {
     var req = new XMLHttpRequest();
     req.open('GET', url, Boolean(callback));
-    return Ajax._send(req, null, callback);
+    return WKWAjax._send(req, null, callback);
 }
 
-Ajax.post = function(url, data, callback) {
+WKWAjax.post = function(url, data, callback) {
     var req = new XMLHttpRequest();
     req.open('POST', url, Boolean(callback));
     req.setRequestHeader(
         'Content-Type', 
         'application/x-www-form-urlencoded'
     );
-    return Ajax._send(req, data, callback);
+    return WKWAjax._send(req, data, callback);
 }
 
-Ajax._send = function(req, data, callback) {
+WKWAjax._send = function(req, data, callback) {
     if (callback) {
         req.onreadystatechange = function() {
             if (req.readyState == 4) {
