@@ -10,10 +10,6 @@ if (!defined("PHPUnit_MAIN_METHOD")) {
 # do we seriously need ALL of these?
 require_once("../../../StartProfiler.php");
 require_once("../../../LocalSettings.php");
-global $kimwgBLA, $IP;
-echo "SHOULD GET\n";
-echo $kimwgBLA."    ".$IP;
-echo "\n";
 require_once("../php-tools/ProgressBar.php");
 require_once("Setup.php");
 require_once("DefinedMeaningModel.php");
@@ -50,6 +46,13 @@ class RecordHelperTest extends PHPUnit_Framework_TestCase {
 	
 	function tearDown() {
 		$testRecord=NULL;
+	}
+
+	function randomTest(){
+		global $wgOut;
+		$wgOut->addWikiText("Hello [[world]]\n");
+		echo $wgOut->mBodytext;
+
 	}
 
 }
