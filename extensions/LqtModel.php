@@ -242,7 +242,7 @@ class Thread {
 	//		$revisionId );
 	}
 	
-	function moveToSubjectPage($title, $leave_trace) {
+	function moveToSubjectPage($title, $reason, $leave_trace) {
 		$dbr =& wfGetDB( DB_MASTER );
 		
 		if( $title->exists() ) {
@@ -273,11 +273,11 @@ class Thread {
 		$this->commitRevision();
 		
 		if($leave_trace) {
-			$this->leaveTrace();
+			$this->leaveTrace($reason);
 		}
 	}
 	
-	function leaveTrace() {
+	function leaveTrace($reason) {
 		/* Adapted from Title::moveToNewTitle. But now the new title exists on the old talkpage. */
 		$dbw =& wfGetDB( DB_MASTER );
 		
@@ -288,14 +288,14 @@ class Thread {
 		$newid = $redirectArticle->insertOn( $dbw );
 		$redirectRevision = new Revision( array(
 			'page'    => $newid,
-			'comment' => "page moved from here",
+			'comment' => $reason,
 			'text'    => $redirectText ) );
 		$redirectRevision->insertOn( $dbw );
 		$redirectArticle->updateRevisionOn( $dbw, $redirectRevision, 0 );
 
 		# Log the move
 		$log = new LogPage( 'move' );
-		$log->addEntry( 'move', $this->double->title(), "page moved from here", array( 1 => $this->title()->getPrefixedText()) );
+		$log->addEntry( 'move', $this->double->title(), $reason, array( 1 => $this->title()->getPrefixedText()) );
 
 		# Purge caches as per article creation
 		Article::onArticleCreate( $redirectArticle->getTitle() );

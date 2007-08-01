@@ -322,7 +322,8 @@ HTML;
 		if( $edit_type == 'editExisting' && $e->didSave ) {
 			$subject = $this->request->getVal('lqt_subject_field', '');
 			if ( $subject && $subject != $thread->subjectWithoutIncrement() ) {
-				$this->renameThread($thread, $subject);
+				$reason = $this->request->getVal("wpSummary", "");
+				$this->renameThread($thread, $subject, $reason);
 			}
 			// this is unrelated to the subject change and is for all edits:
 			$thread->setRootRevision( Revision::newFromTitle($thread->root()->getTitle()) );
@@ -330,11 +331,11 @@ HTML;
 		}
 	}
 	
-	function renameThread($t,$s) {
-		$this->simplePageMove($t->root()->getTitle(),$s);
+	function renameThread($t,$s,$reason) {
+		$this->simplePageMove($t->root()->getTitle(),$s, $reason);
 		// TODO here create a redirect from old page to new.
 		foreach( $t->subthreads() as $st ) {
-			$this->renameThread($st, $s);
+			$this->renameThread($st, $s, $reason);
 		}
 	}
 	
@@ -361,7 +362,7 @@ HTML;
 	}
 
 	/* Adapted from MovePageForm::doSubmit in SpecialMovepage.php. */
-	function simplePageMove( $old_title, $new_subject ) {
+	function simplePageMove( $old_title, $new_subject, $reason ) {
 		if ( $this->user->pingLimiter( 'move' ) ) {
 			$this->out->rateLimited();
 			return false;
@@ -380,7 +381,7 @@ HTML;
 			return false;
 		}
 
-		$error = $ot->moveTo( $nt, true, "changed thread subject" );
+		$error = $ot->moveTo( $nt, true, "Changed thread subject: $reason" );
 		if ( $error !== true ) {
 			var_dump($error);
 			echo "something bad happened trying to rename the thread."; // TODO
@@ -1123,17 +1124,22 @@ function wfLqtSpecialMoveThreadToAnotherPage() {
 		function handleGet() {
 			$thread_name = $this->thread->title()->getPrefixedText();
 			$article_name = $this->thread->article()->getTitle()->getTalkPage()->getPrefixedText();
+			$edit_url = LqtView::permalinkUrl($this->thread, 'edit', $this->thread);
 			$this->output->addHTML(<<<HTML
 			<p>Moving <b>$thread_name</b>.
 			This thread is part of <b>$article_name</b>.</p>
+			<p>To rename this thread, <a href="$edit_url">edit it</a> and change the 'Subject' field.</p>
 			<form id="lqt_move_thread_form" action="{$this->title->getLocalURL()}" method="POST">
 			<table>
 			<tr>
 			<td><label for="lqt_move_thread_target_title">Title of destination talkpage:</label></td>
-			<td><input id="lqt_move_thread_target_title" name="lqt_move_thread_target_title" tabindex="100" /></td>
+			<td><input id="lqt_move_thread_target_title" name="lqt_move_thread_target_title" tabindex="100" size="40" /></td>
+			</tr><tr>
+			<td><label for="lqt_move_thread_reason">Reason:</label></td>
+			<td><input id="lqt_move_thread_reason" name="lqt_move_thread_reason" tabindex="200" size="40" /></td>
 			</tr><tr>
 			<td>&nbsp;</td>
-			<td><input type="submit" value="Move" style="float:right;" tabindex="200" /></td>
+			<td><input type="submit" value="Move" style="float:right;" tabindex="300" /></td>
 			</tr>
 			</table>
 			</form>
@@ -1177,13 +1183,21 @@ HTML
 				$this->redisplayForm(array('lqt_move_thread_target_title'), "You must specify a destination.");
 				return;
 			}
-			
 			$newtitle = Title::newFromText( $tmp )->getSubjectPage();
 			
+			$reason = $this->request->getVal('lqt_move_thread_reason', "No reason given.");
+			
 			// TODO no status code from this method.
-			$this->thread->moveToSubjectPage( $newtitle, true );
+			$this->thread->moveToSubjectPage( $newtitle, $reason, true );
 			
-			
+			$this->showSuccessMessage( $newtitle->getTalkPage() );
+		}
+		
+		function showSuccessMessage( $target_title ) {
+			$this->output->addHTML(<<<HTML
+		The thread was moved to <a href="{$target_title->getFullURL()}">{$target_title->getPrefixedText()}</a>.
+HTML
+			);
 		}
 
         function execute( $par = null ) {
