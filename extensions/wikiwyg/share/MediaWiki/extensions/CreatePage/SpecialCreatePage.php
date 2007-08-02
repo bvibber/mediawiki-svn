@@ -106,7 +106,7 @@ function wfCreatePageSpecial( $par ) {
 		$wgOut->addScript("<script type=\"text/javascript\" src=\"$wgWikiwygJsPath/MediaWikiWyg.js?".$GLOBALS['wgStyleVersion']."\"></script>\n");
 	}
 
-	$wgOut->addScript("<script type=\"text/javascript\" src=\"$wgScriptPath/extensions/wikia/CreatePage/js/createpage.js\"></script>\n");
+	$wgOut->addScript("<script type=\"text/javascript\" src=\"$wgWikiwygJsPath/extensions/CreatePage/js/createpage.js\"></script>\n");
 
 	if (! isset($wgEnableAjaxLogin) || ($wgEnableAjaxLogin == false)) {
 		$wgEnableAjaxLogin = 0 ;
