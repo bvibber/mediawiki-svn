@@ -9,7 +9,7 @@
 #   aspell <language>
 [Database]
 entest : (mainsplit), (mainpart,false,2,10), (restpart,true,2)
-entest : (ngram), (aspell,en) 
+entest : (ngram), (suggest,1,2,3) 
 detest,rutest : (single,true,2,10)
 frtest : (split,3) (part1) (part2) (part3)
 srwiki : (single)

@@ -64,7 +64,7 @@ public class SearchEngine {
 			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
 				exactCase = true;
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
-			SearchResults res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"), exactCase);
+			SearchResults res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"), exactCase, false);
 			if(res!=null && res.isRetry()){
 				int retries = 0;
 				if(iid.isSplit() || iid.isNssplit()){
@@ -73,19 +73,27 @@ public class SearchEngine {
 					retries = 1;
 				
 				while(retries > 0 && res.isRetry()){
-					res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"), exactCase);
+					res = search(iid, searchterm, offset, limit, namespaces, what.equals("explain"), exactCase, false);
 					retries--;
 				}
 				if(res.isRetry())
 					res.setErrorMsg("Internal error, too many internal retries.");
 			}			
 			return res;
-		} else if (what.equals("raw")) {
-			//TODO: return searchRaw(searchterm);
+		} else if (what.equals("raw") || what.equals("rawexplain")) {
+			int offset = 0, limit = 100; boolean exactCase = false;
+			if (query.containsKey("offset"))
+				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
+			if (query.containsKey("limit"))
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
+			if (query.containsKey("case") && global.exactCaseIndex(iid.getDBname()) && ((String)query.get("case")).equalsIgnoreCase("exact"))
+				exactCase = true;
+			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
+			return search(iid, searchterm, offset, limit, namespaces, what.equals("rawexplain"), exactCase, true);
 		} else {
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Unrecognized search type. Try one of: " +
-			              "titlematch, titleprefix, search, explain, quit, raw.");
+			              "search, explain, raw, rawexplain.");
 			log.warn("Unknown request type [" + what + "].");
 			return res;
 		}
@@ -124,7 +132,7 @@ public class SearchEngine {
 	 * Search on iid, with query searchterm. View results from offset to offset+limit, using
 	 * the default namespaces filter
 	 */
-	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, NamespaceFilter nsDefault, boolean explain, boolean exactCase){
+	public SearchResults search(IndexId iid, String searchterm, int offset, int limit, NamespaceFilter nsDefault, boolean explain, boolean exactCase, boolean raw){
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
@@ -155,13 +163,16 @@ public class SearchEngine {
 		}
 		
 		try {
-			if(nsfw == null){
+			if(raw){
+				// do minimal parsing, make a raw query
+				parser.setNamespacePolicy(WikiQueryParser.NamespacePolicy.LEAVE);
+				q = parser.parseRaw(searchterm);
+			} else if(nsfw == null){
 				if(searchAll)
 					q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 				else
 					q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.REWRITE,iid.getDBname());				
-			}
-			else{
+			} else{
 				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 				log.info("Using NamespaceFilterWrapper "+nsfw);
 			}

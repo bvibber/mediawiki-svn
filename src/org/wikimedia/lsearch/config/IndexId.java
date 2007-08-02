@@ -530,6 +530,11 @@ public class IndexId {
 		return namespaceSet;
 	}
 	
+	/** Get logical iid for this index, i.e. enwiki.mainpart -> enwiki */
+	public IndexId getLogical(){
+		return get(dbname);
+	}
+	
 	
 		
 }

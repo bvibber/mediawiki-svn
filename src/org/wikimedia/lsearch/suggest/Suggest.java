@@ -24,6 +24,8 @@ import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
 import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.suggest.api.NgramIndexer;
+import org.wikimedia.lsearch.suggest.api.NamespaceFreq;
 import org.wikimedia.lsearch.suggest.api.WordsIndexer;
 import org.wikimedia.lsearch.suggest.dist.DoubleMetaphone;
 import org.wikimedia.lsearch.suggest.dist.EditDistance;
@@ -44,7 +46,7 @@ public class Suggest {
 	public Suggest(IndexId iid) throws IOException{
 		this.iid = iid;
 		this.searcher = new IndexSearcher(iid.getSuggestWordsPath());
-		this.phrases = new IndexSearcher(iid.getSuggestPhrasesPath());
+		this.phrases = new IndexSearcher(iid.getSuggestTitlesPath());
 		this.dmeta = new DoubleMetaphone();
 	}
 	
@@ -54,7 +56,7 @@ public class Suggest {
 		BooleanQuery bq = new BooleanQuery();		
 		addQuery(bq,"metaphone1",meta1,2);
 		addQuery(bq,"metaphone2",meta2,2);
-		bq.add(makeWordQuery(word),BooleanClause.Occur.SHOULD);
+		bq.add(makeWordQuery(word,""),BooleanClause.Occur.SHOULD);
 		
 		try {
 			TopDocs docs = searcher.search(bq,null,POOL);			
@@ -126,13 +128,14 @@ public class Suggest {
 		return Math.log10(1+score*99)/2;		
 	}
 	
-	public Query makeWordQuery(String word){
+	public Query makeWordQuery(String word, String prefix){
 		BooleanQuery bq = new BooleanQuery(true);
-		int min = WordsIndexer.getMinNgram(word);
-		int max = WordsIndexer.getMaxNgram(word);
+		int min = NgramIndexer.getMinNgram(word);
+		int max = NgramIndexer.getMaxNgram(word);
+		String fieldBase = NgramIndexer.getNgramField(prefix);
 		for(int i=min; i <= max; i++ ){
-			String[] ngrams = WordsIndexer.nGrams(word,i);
-			String field = "ngram"+i;
+			String[] ngrams = NgramIndexer.nGrams(word,i);
+			String field = fieldBase+i;
 			for(int j=0 ; j<ngrams.length ; j++){
 				String ngram = ngrams[j];
 				/*if(j == 0)
@@ -244,7 +247,7 @@ public class Suggest {
 		try {
 			Hits hits = phrases.search(new TermQuery(new Term("word",word1+word2)));
 			if(hits.length() > 0){
-				int freq = Integer.parseInt(hits.doc(0).get("freq"));
+				int freq = new NamespaceFreq(hits.doc(0).get("freq")).getFrequency(0);
 				if(freq >= JOIN_FREQ)
 					return new SuggestResult(word1+word2,freq);
 			}
@@ -257,10 +260,10 @@ public class Suggest {
 	
 	public ArrayList<SuggestResult> suggestPhrase(String word1, String word2, int num){
 		String phrase = word1+"_"+word2;		
-		Query q = makeWordQuery(phrase);
+		Query q = makeWordQuery(phrase,"phrase");
 		
 		try {
-			TopDocs docs = phrases.search(q,null,50);			
+			TopDocs docs = phrases.search(q,null,200);			
 			EditDistance sd = new EditDistance(phrase);
 			ArrayList<SuggestResult> res = new ArrayList<SuggestResult>();
 			int minfreq = -1;
@@ -268,7 +271,7 @@ public class Suggest {
 			for(ScoreDoc sc : docs.scoreDocs){		
 				Document d = phrases.doc(sc.doc);
 				SuggestResult r = new SuggestResult(d.get("phrase"),
-						Integer.parseInt(d.get("freq")));
+						new NamespaceFreq(d.get("freq")).getFrequency(0));
 				if(phrase.equals(r.word)){
 					minfreq = r.frequency;
 				}

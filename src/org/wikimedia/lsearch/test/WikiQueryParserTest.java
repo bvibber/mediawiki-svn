@@ -36,7 +36,8 @@ public class WikiQueryParserTest extends TestCase {
 		WikiQueryParser.TITLE_BOOST = 2;
 		WikiQueryParser.ALT_TITLE_BOOST = 6;
 		WikiQueryParser.KEYWORD_BOOST = 0.05f;
-		WikiIndexModifier.ALT_TITLES = 3;
+		WikiQueryParser.ADD_TITLE_PHRASES = false;
+		WikiIndexModifier.ALT_TITLES = 3;		
 		FieldBuilder.BuilderSet bs = new FieldBuilder("").getBuilder();
 		FieldNameFactory ff = new FieldNameFactory();
 		try{
@@ -315,6 +316,12 @@ public class WikiQueryParserTest extends TestCase {
 			
 			q = parser.parseFourPass("Israeli-Palestinian conflict",NamespacePolicy.IGNORE,true);
 			assertEquals("(+(+(contents:israeli contents:isra^0.5) +contents:palestinian) +contents:conflict) (+(+title:israeli^2.0 +title:palestinian^2.0) +title:conflict^2.0) ((+(+alttitle1:israeli^6.0 +alttitle1:palestinian^6.0) +alttitle1:conflict^6.0) (+(+alttitle2:israeli^6.0 +alttitle2:palestinian^6.0) +alttitle2:conflict^6.0) (+(+alttitle3:israeli^6.0 +alttitle3:palestinian^6.0) +alttitle3:conflict^6.0))",q.toString());
+			
+			// title phrases
+			WikiQueryParser.ADD_TITLE_PHRASES = true;
+			q = parser.parseFourPass("Israeli Palestinian conflict",NamespacePolicy.IGNORE,true);
+			assertEquals("(+(contents:israeli contents:isra^0.5) +contents:palestinian +contents:conflict (title:\"israeli palestinian\"~2^2.0 title:\"palestinian conflict\"~2^2.0)) (+title:israeli^2.0 +title:palestinian^2.0 +title:conflict^2.0) ((+alttitle1:israeli^6.0 +alttitle1:palestinian^6.0 +alttitle1:conflict^6.0) (+alttitle2:israeli^6.0 +alttitle2:palestinian^6.0 +alttitle2:conflict^6.0) (+alttitle3:israeli^6.0 +alttitle3:palestinian^6.0 +alttitle3:conflict^6.0)) (spanNear([keyword1:israeli, keyword1:palestinian, keyword1:conflict], 100, false)^0.05 spanNear([keyword2:israeli, keyword2:palestinian, keyword2:conflict], 100, false)^0.025 spanNear([keyword3:israeli, keyword3:palestinian, keyword3:conflict], 100, false)^0.016666668 spanNear([keyword4:israeli, keyword4:palestinian, keyword4:conflict], 100, false)^0.0125 spanNear([keyword5:israeli, keyword5:palestinian, keyword5:conflict], 100, false)^0.01)",q.toString());
+			WikiQueryParser.ADD_TITLE_PHRASES = false;
 			
 			// alternative transliterations
 			q = parser.parseFourPass("Something for Gödels",NamespacePolicy.IGNORE,true);

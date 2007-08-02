@@ -190,6 +190,12 @@ public class GlobalConfigurationTest extends TestCase {
 			assertEquals("http://rs.wikimedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("rswikimedia"));
 			assertEquals("http://commons.wikimedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("commonswiki"));
 			
+			// test suggest tag
+			Hashtable<String,String> sug = testgc.getDBParams("entest","suggest");
+			assertEquals("1",sug.get("wordsMinFreq"));
+			assertEquals("2",sug.get("titlesWordsMinFreq"));
+			assertEquals("3",sug.get("titlesPhrasesMinFreq"));
+			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

@@ -25,8 +25,6 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.ranks.CompactArticleLinks;
 import org.wikimedia.lsearch.ranks.Links;
-import org.wikimedia.lsearch.suggest.api.PhraseIndexer;
-import org.wikimedia.lsearch.suggest.api.TitlesIndexer;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
@@ -59,8 +57,10 @@ public class CleanIndexImporter implements DumpWriter {
 		boolean isRedirect = Localization.getRedirectTarget(revision.Text,langCode) != null;
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,0,redirects);
-		if(page.Title.Namespace == 0)
-			writer.addArticle(article);
+		if(page.Title.Namespace != 0)
+			article.setContents("");
+		
+		writer.addArticle(article);
 		// generate phrases
 		/* FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(page.Title.Text,langCode,false); 
 		ArrayList<Token> tokens = parser.parse();

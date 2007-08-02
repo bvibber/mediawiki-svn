@@ -196,7 +196,12 @@ public class Article implements Serializable  {
 	/** Get title object corresponding to this article */
 	public Title makeTitle(){
 		return new Title(Integer.parseInt(namespace),title);
+	}
+
+	public void setContents(String contents) {
+		this.contents = contents;
 	}	
+	
 	
 	
 	

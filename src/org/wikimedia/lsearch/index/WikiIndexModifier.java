@@ -404,6 +404,10 @@ public class WikiIndexModifier {
 		doc.add(new Field("category", "", 
 				Field.Store.NO, Field.Index.TOKENIZED));
 		
+		// interwiki associated with this page
+		doc.add(new Field("interwiki", "", 
+				Field.Store.NO, Field.Index.TOKENIZED));
+		
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			FieldNameFactory fields = bs.getFields();
 			// boost document title with it's article rank

@@ -6,9 +6,11 @@
 	<property name="jars" value="jars"/>
 	<property name="dist" location="dist"/>
 	<property name="pack.name" value="lucene-search-2.1"/>
+	<property name="src.name" value="lucene-search-src-2.1"/>
 	<property name="binary.name" value="ls2-bin"/>
 	<property name="jar.name" value="LuceneSearch.jar"/>
 	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/*"/>
+	<property name="include.src" value="src/** sql/** build.xml scripts/*"/>
 	
 	<property file="${basedir}/hostname"/>
 	
@@ -81,6 +83,19 @@
 		<gzip zipfile="${dist}/${pack.name}.tar.gz" src="${dist}/${pack.name}.tar"/>
 		<delete file="${dist}/${pack.name}.tar"/>
 	</target>
+	
+	<target name="pack-src" description="Make tar.gz distribution of only core source files">
+		<mkdir dir="${dist}"/>
+		<delete file="${dist}/${src.name}.tar"/>
+		<delete file="${dist}/${src.name}.tar.gz"/>
+		<tar tarfile="${dist}/${src.name}.tar">
+			<tarfileset prefix="${pack.name}" dir="." includes="${include.src}"/>
+		</tar>
+
+		<gzip zipfile="${dist}/${src.name}.tar.gz" src="${dist}/${src.name}.tar"/>
+		<delete file="${dist}/${src.name}.tar"/>
+	</target>
+
 	
 	<target name="binary" depends="alljar" description="Make binary tar.gz distribution">
 		<mkdir dir="${bin}"/>

@@ -77,13 +77,15 @@ public class WikiQueryParser {
 	/** boost for title field */
 	public static float TITLE_BOOST = 6;	
 	public static float TITLE_ALIAS_BOOST = 0.2f;
+	public static float TITLE_PHRASE_BOOST = 2;
 	public static float STEM_TITLE_BOOST = 2;	
 	public static float STEM_TITLE_ALIAS_BOOST = 0.4f;
-	public static float ALT_TITLE_BOOST = 4;
+	public static float ALT_TITLE_BOOST = 8;
 	public static float ALT_TITLE_ALIAS_BOOST = 0.4f;
 	public static float KEYWORD_BOOST = 0.02f;
 	
 	public static boolean ADD_STEM_TITLE = true;
+	public static boolean ADD_TITLE_PHRASES = true;
 	
 	/** Policies in treating field names:
 	 * 
@@ -295,7 +297,7 @@ public class WikiQueryParser {
 			if(length == 0 && ch == ' ')
 				continue; // ignore whitespaces
 			
-			// pluses and minuses, underscores can be within words, *,? are for wildcard queries
+			// pluses and minuses, underscores can be within words (to prevent to be missinterpeted), *,? are for wildcard queries
 			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_' || ch=='*'){
 				if(length<buffer.length)
 					buffer[length++] = ch;
@@ -322,7 +324,7 @@ public class WikiQueryParser {
 			else if(ch == ':'){				
 				// check if it's a valid field
 				String f = new String(buffer,0,length);
-				if(f.equals(namespaceAllKeyword) || f.equals("incategory") || namespaceFilters.containsKey(f)){
+				if(f.equals(namespaceAllKeyword) || f.equals("incategory") || namespaceFilters.containsKey(f) || namespacePolicy == NamespacePolicy.LEAVE){
 					cur = lookup;
 					return TokenType.FIELD;
 				} else
@@ -1094,7 +1096,7 @@ public class WikiQueryParser {
 	}
 	
 	/** Make title query in format: title:query stemtitle:stemmedquery */
-	protected Query makeTitleQuery(String queryText) {
+	protected Query[] makeTitleQuery(String queryText) {
 		String contentField = defaultField;
 		float olfDefaultBoost = defaultBoost;
 		defaultField = fields.title(); // now parse the title part
@@ -1117,16 +1119,19 @@ public class WikiQueryParser {
 		defaultBoost = olfDefaultBoost;
 		defaultAliasBoost = ALIAS_BOOST;
 
+		// make title phrases
+		Query qp = ADD_TITLE_PHRASES? makeTitlePhrases(qt) : null;
+
 		if(qt == qs) // either null, or category query
-			return qt;
+			return new Query[] {qt,qp};
 		if(qt == null)
-			return qs;
+			return new Query[] {qs,qp};
 		if(qs == null)
-			return qt;
+			return new Query[] {qt,qp};
 		BooleanQuery bq = new BooleanQuery(true);
 		bq.add(qt,BooleanClause.Occur.SHOULD);
 		bq.add(qs,BooleanClause.Occur.SHOULD);
-		return bq;
+		return new Query[] {bq,qp};
 	}
 	
 	/** Quote CJK chars to avoid frequency-based analysis */
@@ -1173,6 +1178,44 @@ public class WikiQueryParser {
 		}
 	}
 	
+	/** make two-word queries for some simple queries */
+	protected Query makeTitlePhrases(Query q){
+		if(q instanceof BooleanQuery){
+			boolean allReq = true;
+			BooleanQuery bq = (BooleanQuery) q;
+			for(BooleanClause bc : bq.getClauses()){
+				if(!bc.getOccur().equals(BooleanClause.Occur.MUST) || !(bc.getQuery() instanceof TermQuery) ||
+						!(((TermQuery)bc.getQuery()).getTerm().field().equals("title"))){
+					allReq = false;
+					break;
+				}
+			}
+			if(allReq){
+				BooleanQuery ret = new BooleanQuery(true);
+				Term last = null;
+				// make phrases '+very +long +query' => "very long" "long query"
+				for(BooleanClause bc : bq.getClauses()){
+					Term t = ((TermQuery)bc.getQuery()).getTerm();
+					if(last != null){
+						PhraseQuery pq = new PhraseQuery();
+						pq.add(new Term("stemtitle",last.text()));
+						pq.add(new Term("stemtitle",t.text()));
+						pq.setBoost(TITLE_PHRASE_BOOST);
+						pq.setSlop(2);
+						ret.add(pq,BooleanClause.Occur.SHOULD);
+					}
+					last = t;
+					
+				}
+				if(ret.getClauses() != null && ret.getClauses().length != 0)
+					return ret;
+			}
+		} 
+		
+		return null;
+		
+	}
+	
 	/**
 	 * Main function for multi-pass parsing.
 	 * 
@@ -1188,12 +1231,23 @@ public class WikiQueryParser {
 		defaultBoost = 1;
 		defaultAliasBoost = ALIAS_BOOST;
 		Query qc = parseRaw(queryText);		
-		
-		Query qt = makeTitleQuery(queryText);
+		Query[] qtqp = makeTitleQuery(queryText);
+		// qt = title query, qp = title phrase query
+		Query qt = qtqp[0];
+		Query qp = null;
+		qp = qtqp[1];		               
 		if(qc == null || qt == null)
 			return new BooleanQuery();		
 		if(qc.equals(qt))
 			return qc; // don't duplicate (probably a query for categories only)
+		
+		// embedd phrase queries into main contents query
+		if(qp!=null && qc instanceof BooleanQuery){
+			((BooleanQuery)qc).add(qp,BooleanClause.Occur.SHOULD);
+		} else if(qp !=null && !(qc instanceof BooleanQuery)){
+			// TODO: delete in release
+			System.out.println("SHOULD NEVER HAPPEN");
+		}
 		BooleanQuery bq = new BooleanQuery();
 		bq.add(qc,BooleanClause.Occur.SHOULD);
 		bq.add(qt,BooleanClause.Occur.SHOULD);
@@ -1263,6 +1317,14 @@ public class WikiQueryParser {
 	public Query parseTwoPass(String queryText, NamespacePolicy policy) throws ParseException{
 		return parseMultiPass(queryText,policy,false,false);
 	}
+	
+	public NamespacePolicy getNamespacePolicy() {
+		return namespacePolicy;
+	}
+	public void setNamespacePolicy(NamespacePolicy namespacePolicy) {
+		this.namespacePolicy = namespacePolicy;
+	}
 
+	
 	
 }

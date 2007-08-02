@@ -769,6 +769,20 @@ public class GlobalConfiguration {
 			
 			dbroles.put(type,params);
 						
+		} else if(type.equals("suggest")){			
+			// all params are optional, if absent default will be used
+			if(tokens.length>1)
+				params.put("wordsMinFreq",tokens[1]);
+			if(tokens.length>2)
+				params.put("titlesWordsMinFreq",tokens[2]);
+			if(tokens.length>3)
+				params.put("titlesPhrasesMinFreq", tokens[3]);
+			
+			if(tokens.length>4)
+				System.out.println("Unrecognized suggest parameters in ("+role+")");
+			
+			dbroles.put(type,params);
+			
 		} else{
 			System.out.println("Warning: Unrecognized role \""+role+"\".Ignoring.");
 		}

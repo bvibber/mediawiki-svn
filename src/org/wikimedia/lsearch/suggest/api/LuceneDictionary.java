@@ -20,10 +20,7 @@ package org.wikimedia.lsearch.suggest.api;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 
-import java.util.Iterator;
-
 import org.apache.lucene.index.TermEnum;
-import org.wikimedia.lsearch.suggest.api.WordsIndexer.Word;
 
 import java.io.*;
 

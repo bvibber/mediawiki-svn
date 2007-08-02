@@ -1,6 +1,7 @@
 package org.wikimedia.lsearch.analyzers;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
@@ -69,6 +70,7 @@ public class Analyzers {
 		WikiTokenizer tokenizer = new WikiTokenizer(text,filters.getLanguage(),exactCase);
 		tokenizer.tokenize();
 		ArrayList<String> categories = tokenizer.getCategories();
+		HashMap<String,String> interwiki = tokenizer.getInterwikis();
 		
 		ArrayList<String> allKeywords = new ArrayList<String>();
 		if(addKeywords && tokenizer.getKeywords()!=null) 
@@ -80,6 +82,8 @@ public class Analyzers {
 				new LanguageAnalyzer(filters,tokenizer));
 		perFieldAnalyzer.addAnalyzer("category", 
 				new CategoryAnalyzer(categories,exactCase));
+		perFieldAnalyzer.addAnalyzer("interwiki", 
+				new InterwikiAnalyzer(interwiki));
 		perFieldAnalyzer.addAnalyzer(fields.title(),
 				getTitleAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		perFieldAnalyzer.addAnalyzer(fields.stemtitle(),
