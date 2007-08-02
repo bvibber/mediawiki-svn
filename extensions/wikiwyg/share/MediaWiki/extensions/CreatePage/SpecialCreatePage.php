@@ -48,7 +48,7 @@ function wfCreatePageSetup() {
 /* the core */
 function wfCreatePageSpecial( $par ) {
 	global $wgOut, $wgUser, $wgRequest, $wgServer, $wgScriptPath, $wgEnableAjaxLogin, $wgContLang ;
-	require_once($IP. 'extensions/TagCloud/TagCloudClass.php') ;
+	require_once($IP. 'extensions/wikiwyg/share/MediaWiki/extensions/TagCloud/TagCloudClass.php') ;
 
 	if (! isset($wgWikiwygPath)) {
 		$wgWikiwygPath = "{$wgServer}/{$wgScriptPath}/extensions/wikiwyg";
