@@ -296,7 +296,7 @@ proto.disableCreateButtons = function () {
 
 proto.saveChanges = function (mode) {
 	var title = document.getElementById ('title') ;
-	document.editform.action="index.php?title=" + title.value + "&action=submit" ;
+	document.editform.action= wgScriptPath + "/index.php?title=" + title.value + "&action=submit" ;
 	this.disableCreateButtons () ;
 	var input1 = document.createElement ('input') ;
 	input1.setAttribute ('name','wpTextbox1') ;
