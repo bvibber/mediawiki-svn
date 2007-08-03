@@ -100,12 +100,6 @@ class LuceneResult {
 		$namespace = IntVal( $namespace );
 		$title     = urldecode( $title );
 		
-		global $wgUseLatin1;
-		if( $wgUseLatin1 ) {
-			global $wgContLang, $wgInputEncoding;
-			$title = $wgContLang->iconv( 'utf-8', $wgInputEncoding, $title );
-		}
-		
 		$this->mTitle = Title::makeTitle( $namespace, $title );
 		$this->mScore = $score;
 	}
@@ -144,10 +138,7 @@ class LuceneSearchSet extends SearchResultSet {
 			$host = $wgLuceneHost;
 		}
 		
-		global $wgUseLatin1, $wgContLang, $wgInputEncoding;
-		$enctext = rawurlencode( trim( $wgUseLatin1
-			? $wgContLang->iconv( $wgInputEncoding, 'utf-8', $query )
-			: $query ) );
+		$enctext = rawurlencode( trim( $query ) );
 		$searchUrl = "http://$host:$wgLucenePort/$method/$wgDBname/$enctext?" .
 			wfArrayToCGI( array(
 				'namespaces' => implode( ',', $namespaces ),

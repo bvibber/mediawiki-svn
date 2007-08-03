@@ -310,12 +310,6 @@ class OAIRepo {
 			return;
 		}
 		
-		global $wgUseLatin1;
-		if( $wgUseLatin1 ) {
-			# OAI requires UTF-8 output
-			ob_start( create_function( '$s', 'return utf8_encode($s);' ) );
-		}
-		
 		// We want to record the size of requests for auditing's sake.
 		// We'd like compressed size, but that doesn't seem happy. :(
 		ob_start();

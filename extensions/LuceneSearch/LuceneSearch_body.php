@@ -83,7 +83,7 @@ class LuceneSearch extends SpecialPage
 
 	function execute($par) {
 		global $wgRequest, $wgOut, $wgTitle, $wgContLang, $wgUser,
-			$wgScriptPath, $wgLSuseold, $wgInputEncoding,
+			$wgScriptPath,
 			$wgLuceneDisableTitleMatches, $wgLuceneDisableSuggestions,
 			$wgUser;
 		global $wgGoToEdit;
@@ -180,7 +180,6 @@ class LuceneSearch extends SpecialPage
 			}
 
 			if( $wgDisableTextSearch || $results === false ) {
-				global $wgInputEncoding;
 				if ( $wgDisableTextSearch ) {
 					$wgOut->addHTML(wfMsg('searchdisabled'));
 				} else {
@@ -188,7 +187,7 @@ class LuceneSearch extends SpecialPage
 				}
 				$wgOut->addHTML(wfMsg('googlesearch',
 					htmlspecialchars($q),
-					htmlspecialchars($wgInputEncoding),
+					'utf-8',
                                         htmlspecialchars( wfMsg( 'search' ) ) ) );
 				wfProfileOut( $fname );
 				return;
@@ -419,12 +418,12 @@ class LuceneSearch extends SpecialPage
 	 * @access private
 	 */
 	function sendTitlePrefixes( $query, $limit ) {
-		global $wgOut, $wgInputEncoding;
+		global $wgOut;
 		$wgOut->disable();
 
 		if( $limit < 1 || $limit > 50 )
 			$limit = 20;
-		header('Content-Type: text/plain; charset='.$wgInputEncoding);
+		header('Content-Type: text/plain; charset=utf-8');
 		if( strlen( $query ) < 1 ) {
 			return;
 		}
@@ -440,7 +439,7 @@ class LuceneSearch extends SpecialPage
 	function showHit($result, $terms) {
 		$fname = 'LuceneSearch::showHit';
 		wfProfileIn($fname);
-		global $wgUser, $wgContLang, $wgLSuseold, $wgTitle, $wgOut, $wgDisableSearchContext;
+		global $wgUser, $wgContLang, $wgTitle, $wgOut, $wgDisableSearchContext;
 
 		$t = $result->getTitle();
 		if(is_null($t)) {
@@ -459,13 +458,13 @@ class LuceneSearch extends SpecialPage
 		$link = $this->mSkin->makeKnownLinkObj($t, '');
 
 		if ( !$wgDisableSearchContext ) {
-			$rev = $wgLSuseold ? new Article($t) : Revision::newFromTitle($t);
+			$rev = Revision::newFromTitle($t);
 			if ($rev === null) {
 				wfProfileOut( $fname );
 				return "<!--Broken link in search results: ".$t->getDBKey()."-->\n";
 			}
 
-			$text = $wgLSuseold ? $rev->getContent(false) : $rev->getText();
+			$text = $rev->getContent(false);
 					$size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
 			$text = $this->removeWiki($text);
 			$date = $wgContLang->timeanddate($rev->getTimestamp());
@@ -712,12 +711,6 @@ class LuceneResult {
 		$namespace = intval( $namespace );
 		$title     = urldecode( $title );
 
-		global $wgUseLatin1;
-		if( $wgUseLatin1 ) {
-			global $wgContLang, $wgInputEncoding;
-			$title = $wgContLang->iconv( 'utf-8', $wgInputEncoding, $title );
-		}
-
 		$this->mTitle = Title::makeTitle( $namespace, $title );
 		$this->mScore = $score;
 	}
@@ -749,10 +742,8 @@ class LuceneSearchSet {
 
 		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
 
-		global $wgUseLatin1, $wgContLang, $wgInputEncoding;
-		$enctext = rawurlencode( trim( $wgUseLatin1
-			? $wgContLang->iconv( $wgInputEncoding, 'utf-8', $query )
-			: $query ) );
+		global $wgContLang;
+		$enctext = rawurlencode( trim( $query ) );
 		$searchPath = "/$method/$wgDBname/$enctext?" .
 			wfArrayToCGI( array(
 				'namespaces' => implode( ',', $namespaces ),
