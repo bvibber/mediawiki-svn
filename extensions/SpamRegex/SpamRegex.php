@@ -8,6 +8,10 @@ define ('SPAMREGEX_PATH', '/') ;
 /* for memcached - expiration time */
 define ('SPAMREGEX_EXPIRE', 0) ;
 
+/* two modes for two kinds of blocks */
+define ('SPAMREGEX_TEXTBOX', 0) ;
+define ('SPAMREGEX_SUMMARY', 1) ;
+
 /* return the name of the table  */
 function wfSpamRegexGetTable() {
         global $wgSharedDB ;
@@ -20,5 +24,5 @@ function wfSpamRegexGetTable() {
 	require_once ($IP.SPAMREGEX_PATH."extensions/SpamRegex/SpecialSpamRegex.php") ;
 	//will need more, maybe Core?
 	require_once ($IP.SPAMREGEX_PATH."extensions/SpamRegex/SpamRegexCore.php") ;
-	require_once ($IP.SPAMREGEX_PATH."extensions/SimplifiedRegex.php") ;
-
+	require_once ($IP.SPAMREGEX_PATH."extensions/SimplifiedRegex/SimplifiedRegex.php") ;
+?>

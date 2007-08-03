@@ -26,6 +26,7 @@ function wfSpamRegexSetup() {
    require_once($IP. '/includes/SpecialPage.php');
    SpecialPage::addPage(new SpecialPage('Spamregex', 'spamregex', true, 'wfSpamRegexSpecial', false));
    $wgMessageCache->addMessage('spamregex', 'spamRegex');
+   $wgMessageCache->addMessage('spamregex_summary', 'The text was found in the article\'s summary.');
 }
 
 /* wrapper for GET values */
@@ -70,7 +71,8 @@ function wfSpamRegexSpecial( $par ) {
 /* useful for cleaning the memcached keys */
 function wfSpamRegexUnsetKeys () {
 	global $wgMemc, $wgSharedDB ;
-	$wgMemc->delete ("$wgSharedDB:spamRegexCore:spamRegex") ;
+	$wgMemc->delete ("$wgSharedDB:spamRegexCore:spamRegex:Textbox") ;
+	$wgMemc->delete ("$wgSharedDB:spamRegexCore:spamRegex:Summary") ;
 	$wgMemc->delete ("$wgSharedDB:spamRegexCore:numResults") ;
 }
 
@@ -115,8 +117,18 @@ class spamRegexList {
 		while ( $row = $dbr->fetchObject( $res ) ) {
 			$time = $wgLang->timeanddate( wfTimestamp( TS_MW, $row->spam_timestamp ), true ) ;
 			$ublock_ip = urlencode ($row->spam_text) ;
+			$desc = "" ;
+			if ($row->spam_textbox == 1) {
+				$desc .= "(Text)" ;
+			}
+			if ($row->spam_summary == 1) {
+				if ($row->spam_textbox == 1) {
+					$desc .= " " ;
+				}
+				$desc .= "(Summary)" ;
+			}
 			$wgOut->addHTML ("
-				<li><b>".htmlspecialchars($row->spam_text)."</b> (<a href=\"{$action_unblock}&text={$ublock_ip}\">remove</a>) added by {$row->spam_user} on {$time}</li>
+				<li><b>".htmlspecialchars($row->spam_text)."</b> $desc (<a href=\"{$action_unblock}&text={$ublock_ip}\">remove</a>) added by {$row->spam_user} on {$time}</li>
 				") ;	
 	       	}
 	        $dbr->freeResult ($res) ;
@@ -201,11 +213,15 @@ class spamRegexList {
 /* the form for blocking names and addresses */
 class spamRegexForm {
 	var $mBlockedPhrase ;
+	var $mBlockedText ;
+	var $mBlockedSummary ;
 
 	/* constructor */
 	function spamRegexForm ( $par ) {
 		global $wgRequest ;
 		$this->mBlockedPhrase = $wgRequest->getVal( 'wpBlockedPhrase',  $wgRequest->getVal( 'text', $par ) );
+		($wgRequest->getVal ('wpBlockedTextbox') ) ? $this->mBlockedTextbox = 1 : $this->mBlockedTextbox = 0 ;
+		($wgRequest->getVal ('wpBlockedSummary') ) ? $this->mBlockedSummary = 1 : $this->mBlockedSummary = 0 ;
 	}
 
 	/* output */
@@ -225,6 +241,33 @@ class spamRegexForm {
 
 		( 'submit' == $wgRequest->getVal( 'action' )) ? $scBlockedPhrase = htmlspecialchars ($this->mBlockedPhrase) : $scBlockedPhrase = '' ;
 
+		$wgOut->addScript("
+			<script type=\"text/javascript\">
+				function SpamRegexEnhanceControls () {
+					var SRTextboxControl = document.getElementById ('wpBlockedTextbox') ;
+					var SRSummaryControl = document.getElementById ('wpBlockedSummary') ;
+
+					SRTextboxControl.onclick = function () {
+                                		if (!SRTextboxControl.checked) {
+                                        		if (!SRSummaryControl.checked) {
+								SRSummaryControl.checked = true ;							
+							}
+						}
+					}
+					
+					SRSummaryControl.onclick = function () {
+                                		if (!SRSummaryControl.checked) {
+                                        		if (!SRTextboxControl.checked) {
+								SRTextboxControl.checked = true ;							
+							}
+						}
+					}					
+				}
+
+				addOnloadHook (SpamRegexEnhanceControls) ;
+			</script>"
+		) ;
+
    		$wgOut->addHtml("
 <form name=\"spamregex\" method=\"post\" action=\"{$action}\">
 	<table border=\"0\">
@@ -234,10 +277,24 @@ class spamRegexForm {
 				<input tabindex=\"1\" name=\"wpBlockedPhrase\" value=\"{$scBlockedPhrase}\" />
 			</td>
 		</tr>
+                <tr>
+			<td align=\"right\">&#160;</td>
+			<td align=\"left\">
+			<input type=\"checkbox\" tabindex=\"2\" name=\"wpBlockedTextbox\" id=\"wpBlockedTextbox\" value=\"1\" checked=\"checked\" />
+			<label for=\"wpBlockedTextbox\">block phrase in article text</label>
+			</td>
+		</tr>
+                <tr>
+			<td align=\"right\">&#160;</td>
+			<td align=\"left\">
+			<input type=\"checkbox\" tabindex=\"3\" name=\"wpBlockedSummary\" id=\"wpBlockedSummary\" value=\"1\" />
+			<label for=\"wpBlockedSummary\">block phrase in summary</label>
+			</td>
+		</tr>
 		<tr>
 			<td align=\"right\">&#160;</td>
 			<td align=\"left\">
-				<input tabindex=\"2\" name=\"wpSpamRegexBlockedSubmit\" type=\"submit\" value=\"Block this phrase\" />
+				<input tabindex=\"4\" name=\"wpSpamRegexBlockedSubmit\" type=\"submit\" value=\"Block this phrase\" />
 			</td>
 		</tr>
 	</table>
@@ -273,12 +330,21 @@ class spamRegexForm {
 		$dbw =& wfGetDB( DB_MASTER );
 		$name = $wgUser->getName () ;
 		$timestamp =  wfTimestampNow() ;
+
+                /* we need at least one block mode specified... we can have them both, of course */
+		if ( ($this->mBlockedTextbox == 0) && ($this->mBlockedSummary == 0) ) {
+			$this->showForm ("Please check at least one blocking mode.") ;
+			return ;
+		}
+		
 		$query = "INSERT IGNORE INTO ".wfSpamRegexGetTable()
-			  ." (spam_id, spam_text, spam_timestamp, spam_user) 
+			  ." (spam_id, spam_text, spam_timestamp, spam_user, spam_textbox, spam_summary) 
 			  VALUES (null,
 			  	  {$dbw->addQuotes($this->mBlockedPhrase)},
 				  {$timestamp},
-				  {$dbw->addQuotes($name)}
+				  {$dbw->addQuotes($name)},
+				  {$this->mBlockedTextbox},
+				  {$this->mBlockedSummary}
 				 )" ;
 		$dbw->query ($query) ;
 
@@ -294,4 +360,4 @@ class spamRegexForm {
 	}
 }
 
-
+?>
