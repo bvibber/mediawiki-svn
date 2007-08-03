@@ -1006,7 +1006,7 @@ class Title {
 		}
 		return false;
 	}
-	
+
  	/**
 	 * Can $wgUser perform $action on this page?
 	 * @param string $action action that permission needs to be checked for
@@ -1032,6 +1032,13 @@ class Title {
 
 		if ( wfReadOnly() && $action != 'read' ) {
 			$errors[] = array( 'readonlytext' );
+		}
+
+		global $wgEmailConfirmToEdit;
+
+		if ( $wgEmailConfirmToEdit && !$wgUser->isEmailConfirmed() )
+		{
+			$errors[] = array( 'confirmedittext' );
 		}
 
 		if ( $user->isBlockedFrom( $this ) ) {
@@ -1158,9 +1165,7 @@ class Title {
 				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) {
 				$errors[] = $user->isAnon() ? array ('nocreatetext') : array ('nocreate-loggedin');
 			}
-		}
-
-		if( $action == 'move' &&
+		} elseif( $action == 'move' &&
 			!( $this->isMovable() && $user->isAllowed( 'move' ) ) ) {
 			$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
                 } else if ( !$user->isAllowed( $action ) ) {
@@ -1168,7 +1173,7 @@ class Title {
 		        $groups = array();
 			global $wgGroupPermissions;
 		        foreach( $wgGroupPermissions as $key => $value ) {
-		            if( isset( $value[$permission] ) && $value[$permission] == true ) {
+		            if( isset( $value[$action] ) && $value[$action] == true ) {
 		                $groupName = User::getGroupName( $key );
 		                $groupPage = User::getGroupPage( $key );
 		                if( $groupPage ) {

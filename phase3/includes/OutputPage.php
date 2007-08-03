@@ -743,16 +743,11 @@ class OutputPage {
 		$this->setRobotpolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 
-		$id = $wgUser->blockedBy();
+		$name = User::whoIs( $wgUser->blockedBy() );
 		$reason = $wgUser->blockedFor();
 		$blockTimestamp = $wgLang->timeanddate( wfTimestamp( TS_MW, $wgUser->mBlock->mTimestamp ), true );
 		$ip = wfGetIP();
 
-		if ( is_numeric( $id ) ) {
-			$name = User::whoIs( $id );
-		} else {
-			$name = $id;
-		}
 		$link = '[[' . $wgContLang->getNsText( NS_USER ) . ":{$name}|{$name}]]";
 
 		$blockid = $wgUser->mBlock->mId;
@@ -836,16 +831,7 @@ class OutputPage {
 		$this->mBodytext = '';
 
 		$this->addWikiText( wfMsg('permissionserrorstext') );
-		$this->addHtml( '<ul class="permissions-errors">' . "\n" );
-
-		foreach( $errors as $error )
-		{
-			$this->addHtml( '<li>' );
-			$this->addWikiText( call_user_func_array( 'wfMsg', $error ) );
-			$this->addHtml( '</li>');
-		}
-		$this->addHtml( '</ul>' );
-
+		$this->addWikitext( $this->formatPermissionsErrorMessage( $errors ) );
 	}
 
 	/** @deprecated */
@@ -964,18 +950,44 @@ class OutputPage {
 	}
 
 	/**
+	 * @param array $errors An array returned by Title::getUserPermissionsErrors
+	 * @return string The error-messages, formatted into a list.
+	 */
+	public function formatPermissionsErrorMessage( $errors ) {
+		$text = '';
+
+		$text .= wfMsg('permissionserrorstext')."\n";
+		$text .= '<ul class="permissions-errors">' . "\n";
+
+		foreach( $errors as $error )
+		{
+			$text .= '<li>';
+			$text .= call_user_func_array( 'wfMsg', $error );
+			$text .= "</li>\n";
+		}
+		$text .= '</ul>';
+
+		return $text;
+	}
+
+	/**
 	 * @todo document
 	 * @param bool  $protected Is the reason the page can't be reached because it's protected?
 	 * @param mixed $source
 	 */
-	public function readOnlyPage( $source = null, $protected = false ) {
+	public function readOnlyPage( $source = null, $protected = false, $reasons = array() ) {
 		global $wgUser, $wgReadOnlyFile, $wgReadOnly, $wgTitle;
 		$skin = $wgUser->getSkin();
 
 		$this->setRobotpolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 
-		if( $protected ) {
+		if ($reasons != array()) {
+			$this->setPageTitle( wfMsg( 'viewsource' ) );
+			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
+
+			$this->addWikiText( $this->formatPermissionsErrorMessage( $reasons ) );
+		} else if( $protected ) {
 			$this->setPageTitle( wfMsg( 'viewsource' ) );
 			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
 			list( $cascadeSources, /* $restrictions */ ) = $wgTitle->getCascadeProtectionSources();
