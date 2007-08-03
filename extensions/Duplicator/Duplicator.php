@@ -10,6 +10,10 @@
 
 if( defined( 'MEDIAWIKI' ) ) {
 
+	$wgAutoloadClasses['SpecialDuplicator'] = dirname( __FILE__ ) . '/Duplicator.page.php';
+	$wgSpecialPages['Duplicator'] = 'SpecialDuplicator';
+	$wgHooks['LangugeGetSpecialPageAliases'][] = 'efDuplicatorSetupAliases';
+
 	$wgExtensionCredits['specialpage'][] = array(
 		'name' => 'Duplicator',
 		'author' => 'Rob Church',
@@ -17,9 +21,6 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'description' => 'Create independent copies of articles with full edit histories',
 	);
 	$wgExtensionFunctions[] = 'efDuplicator';
-
-	$wgAutoloadClasses['SpecialDuplicator'] = dirname( __FILE__ ) . '/Duplicator.page.php';
-	$wgSpecialPages['Duplicator'] = 'SpecialDuplicator';
 
 	/**
 	 * User permissions
@@ -41,6 +42,22 @@ if( defined( 'MEDIAWIKI' ) ) {
 			$wgMessageCache->addMessages( $messages, $lang );
 		$wgHooks['SkinTemplateBuildNavUrlsNav_urlsAfterPermalink'][] = 'efDuplicatorNavigation';
 		$wgHooks['MonoBookTemplateToolboxEnd'][] = 'efDuplicatorToolbox';
+	}
+	
+	/**
+	 * Set up special page aliases
+	 *
+	 * @param array $aliases Special page aliases
+	 * @param string $lang Language code
+	 * @return bool
+	 */
+	function efDuplicatorSetupAliases( &$aliases, $lang ) {
+		$ours = efDuplicatorAliases( $lang );
+		if( count( $ours ) > 0 ) {
+			print_r( $ours );
+			$aliases['Duplicator'] = $ours;
+		}
+		return true;
 	}
 
 	/**

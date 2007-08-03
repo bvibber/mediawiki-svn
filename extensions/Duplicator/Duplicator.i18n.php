@@ -7,6 +7,12 @@
  * @author Rob Church <robchur@gmail.com>
  */
 
+/**
+ * Get a two-dimensional array of extension messages, indexed
+ * by language code, then message key
+ *
+ * @return array
+ */
 function efDuplicatorMessages() {
 	$messages = array(
 
@@ -510,5 +516,25 @@ kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzov
 
 }
 
+/**
+ * Get an array of special page aliases
+ *
+ * @param string $lang Language code
+ * @return array
+ */
+function efDuplicatorAliases( $lang ) {
+	$aliases = array(
+	
+/**
+ * English
+ */
+'en' => array(
+	'Duplicator',
+	'Duplicate',
+),
 
-
+	);
+	return isset( $aliases[$lang] ) && $lang != 'en'
+		? array_merge( $aliases[$lang], $aliases['en'] )
+		: $aliases['en'];
+}
