@@ -53,10 +53,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 */
 	function efDuplicatorSetupAliases( &$aliases, $lang ) {
 		$ours = efDuplicatorAliases( $lang );
-		if( count( $ours ) > 0 ) {
-			print_r( $ours );
+		if( count( $ours ) > 0 )
 			$aliases['Duplicator'] = $ours;
-		}
 		return true;
 	}
 
