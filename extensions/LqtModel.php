@@ -110,6 +110,8 @@ class HistoricalThread extends Thread {
 		$this->path = $t->path;
 		$this->id = $t->id;
 		$this->revisionNumber = $t->revisionNumber;
+		$this->changeType = $t->changeType;
+		$this->changeObject = $t->changeObject;
 		
 		$this->replies = array();
 		foreach ($t->replies as $r) {
@@ -130,7 +132,9 @@ class HistoricalThread extends Thread {
 		$res = $dbr->insert( 'historical_thread', array(
 			'hthread_id'=>$tmt->id(),
 			'hthread_revision'=>$tmt->revisionNumber(),
-			'hthread_contents'=>$contents), __METHOD__ );
+			'hthread_contents'=>$contents,
+			'hthread_change_type'=>$tmt->changeType(),
+			'hthread_change_object'=>$tmt->changeObject()), __METHOD__ );
 	}
 	static function withIdAtRevision( $id, $rev ) {
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -144,7 +148,9 @@ class HistoricalThread extends Thread {
 		else
 			return null;
 	}
-	function isHistorical() { return true; }
+	function isHistorical() {
+		return true;
+	}
 }
 
 class Thread {
@@ -172,6 +178,9 @@ class Thread {
 	protected $revisionNumber;
 	protected $type;
 	
+	protected $changeType;
+	protected $changeObject;
+	
 	/* Only used by $double to be saved into a historical thread. */
 	protected $rootRevision;
 	
@@ -181,7 +190,9 @@ class Thread {
 	
 	protected $replies;
 	
-	function isHistorical() {return false;}
+	function isHistorical() {
+		return false;
+	}
 	
 	function revisionNumber() {
 		return $this->revisionNumber;
@@ -205,25 +216,30 @@ class Thread {
 		return $results;
 	}
 	
-	private function bumpRevisions() {
-		$this->revisionNumber += 1;
+	private function bumpRevisionsOnAncestors($change_type, $change_object) {
+		$this->revisionNumber += 1;	
+		$this->setChangeType($change_type);
+		$this->setChangeObject($change_object);
+		
 		if( $this->hasSuperthread() )
-			$this->superthread()->bumpRevisions();
+			$this->superthread()->bumpRevisionsOnAncestors($change_type, $change_object);
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
-		     /* SET */ array('thread_revision' => $this->revisionNumber),
+		     /* SET */ array('thread_revision' => $this->revisionNumber,
+		                     'thread_change_type'=>$this->changeType,
+		                     'thread_change_object'=>$this->changeObject),
 		     /* WHERE */ array( 'thread_id' => $this->id ),
 		     __METHOD__);
 	}
 	
-	function commitRevision() {
+	function commitRevision($change_type, $change_object = null) {
 		global $wgUser; // TODO global.
 		
 		// TODO open a transaction.
 		HistoricalThread::create( $this->double );
 
-		$this->bumpRevisions();
-	
+		$this->bumpRevisionsOnAncestors($change_type, $change_object);
+		
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
 		     /* SET */array( 'thread_root' => $this->rootId,
@@ -233,7 +249,9 @@ class Thread {
 					'thread_timestamp' => wfTimestampNow(),
 					'thread_revision' => $this->revisionNumber,
 					'thread_article_namespace' => $this->articleNamespace,
-				    'thread_article_title' => $this->articleTitle),
+				    'thread_article_title' => $this->articleTitle,
+					'thread_change_type' => $this->changeType,
+					'thread_change_object' => $this->changeObject),
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     __METHOD__);
 	
@@ -329,8 +347,10 @@ class Thread {
 		$this->timestamp = $line->thread_timestamp;
 		$this->revisionNumber = $line->thread_revision;
 		$this->type = $line->thread_type;
+		$this->changeType = $line->thread_change_type;
+		$this->changeObject = $line->thread_change_object;
+		
 		$this->replies = $children;
-
 		
 		$this->double = clone $this;
 		
@@ -511,31 +531,75 @@ class Thread {
 	function type() {
 		return $this->type;
 	}
+	
+	function changeType() {
+		return $this->changeType;
+	}
+	
+	function changeObject() {
+		return $this->changeObject;
+	}
+	
+	function setChangeType($t) {
+		if (in_array($t, Threads::$VALID_CHANGE_TYPES)) {
+			$this->changeType = $t;
+		} else {
+			throw new MWException( __METHOD__ . ": invalid changeType $t." );
+		}
+	}
+	
+	function setChangeObject($o) {
+		# we assume $o to be a Thread.
+		if($o === null) {
+			$this->changeObject = null;
+		} else {
+			$this->changeObject = $o->id();
+		}
+	}
 }
+
 
 /** Module of factory methods. */
 class Threads {
 
 	const TYPE_NORMAL = 0;
 	const TYPE_MOVED = 1;
+	static $VALID_TYPES = array(self::TYPE_NORMAL, self::TYPE_MOVED);
+	
+	const CHANGE_NEW_THREAD = 0;
+	const CHANGE_REPLY_CREATED = 1;
+	const CHANGE_EDITED_ROOT = 2;
+	const CHANGE_EDITED_SUMMARY = 3;
+	static $VALID_CHANGE_TYPES = array(self::CHANGE_EDITED_SUMMARY, self::CHANGE_EDITED_ROOT,
+		self::CHANGE_REPLY_CREATED, self::CHANGE_NEW_THREAD);
 
 	static $loadedThreads = array();
 	
-    static function newThread( $root, $article, $superthread = null,
-				$type = self::TYPE_NORMAL, $log = null ) {
-	/* TODO log is ignored. */
+    static function newThread( $root, $article, $superthread = null, $type = self::TYPE_NORMAL ) {
+
         $dbr =& wfGetDB( DB_MASTER );
-			
+		
+		if ( !in_array($type, self::$VALID_TYPES) ) {
+			throw new MWException(__METHOD__ . ": invalid type $type.");
+		}
+		
 		if( $article->exists() ) {
 			$aclause = array("thread_article" => $article->getID());
 		} else {
 			$aclause = array("thread_article_namespace" => $article->getTitle()->getNamespace(),
 						     "thread_article_title" => $article->getTitle()->getDBkey());
 		}
+		
+		if ($superthread) {
+			$change_type = self::CHANGE_REPLY_CREATED;
+		} else {
+			$change_type = self::CHANGE_NEW_THREAD;
+		}
 
         $res = $dbr->insert('thread',
             array('thread_root' => $root->getID(),
                   'thread_timestamp' => wfTimestampNow(),
+				  'thread_change_type' => $change_type,
 				  'thread_type' => $type) + $aclause,
             __METHOD__);
 		
@@ -543,11 +607,14 @@ class Threads {
 		
 		if( $superthread ) {
 			$newpath = $superthread->path() . '.' . $newid;
+			$change_object_clause = 'thread_change_object = ' . $newid;
 		} else {
 			$newpath = $newid;
+			$change_object_clause = 'thread_change_object = null';
 		}
 		$res = $dbr->update( 'thread',
-			     /* SET */   array( 'thread_path' => $newpath ),
+			     /* SET */   array( 'thread_path' => $newpath,
+			                         $change_object_clause ),
 			     /* WHERE */ array( 'thread_id' => $newid, ),
 			     __METHOD__);
 		

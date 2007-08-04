@@ -309,7 +309,7 @@ HTML;
 		if ($edit_type != 'editExisting' && $edit_type != 'summarize' && $e->didSave) {
 			if ( $edit_type == 'reply' ) {
 				$thread = Threads::newThread( $article, $this->article, $edit_applies_to );
-				$edit_applies_to->commitRevision();
+				$edit_applies_to->commitRevision(Threads::CHANGE_REPLY_CREATED, $thread);
 			} else {
 				$thread = Threads::newThread( $article, $this->article );
 			}
@@ -317,7 +317,7 @@ HTML;
 		
 		if ($edit_type == 'summarize' && $e->didSave) {
 			$edit_applies_to->setSummary( $article );
-			$edit_applies_to->commitRevision();
+			$edit_applies_to->commitRevision(Threads::CHANGE_EDITED_SUMMARY, $edit_applies_to);
 		}
 		
 		// Move the thread and replies if subject changed.
@@ -329,7 +329,7 @@ HTML;
 			}
 			// this is unrelated to the subject change and is for all edits:
 			$thread->setRootRevision( Revision::newFromTitle($thread->root()->getTitle()) );
-			$thread->commitRevision();
+			$thread->commitRevision( Threads::CHANGE_EDITED_ROOT, $thread );
 		}
 	}
 	
@@ -955,7 +955,7 @@ class ThreadHistoryPager extends PageHistoryPager {
 	function getQueryInfo() {
 		return array(
 			'tables' => 'historical_thread',
-			'fields' => 'hthread_id, hthread_revision, hthread_contents',
+			'fields' => 'hthread_id, hthread_revision, hthread_contents, hthread_change_type, hthread_change_object',
 			'conds' => array('hthread_id' => $this->thread->id() ),
 			'options' => array()
 		);
@@ -979,8 +979,15 @@ class ThreadHistoryPager extends PageHistoryPager {
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
 		/* TODO: best not to refer to LqtView class directly. */
 		/* We don't use oldid because that has side-effects. */
+		$result = array();
+		$change_names = array(Threads::CHANGE_EDITED_ROOT => "Comment text edited",
+		                      Threads::CHANGE_EDITED_SUMMARY => "Summary changed",
+		                      Threads::CHANGE_REPLY_CREATED => "New reply created",
+		                      Threads::CHANGE_NEW_THREAD => "New thread created");
 		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $row->hthread_revision );
-		return "<tr><td><a href=\"$url\">" . $row->hthread_revision . '</a></td></tr>';
+		$result[] = "<tr><td><a href=\"$url\">" . $row->hthread_revision . '</a></td></tr>';
+		$result[] = "<tr><td>Revision type: {$change_names[$row->hthread_change_type]}.";
+		return implode('', $result);
 	}
 	function getNotificationTimestamp() {
 		return "foo";

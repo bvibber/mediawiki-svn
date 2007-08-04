@@ -15,7 +15,7 @@ CREATE TABLE /*$wgDBprefix*/thread (
   -- Special thread types such as schrodinger's thread:
   thread_type int(4) unsigned NOT NULL default 0,
 
-  thread_change_type int(4) unsigned NOT NULL default 0,
+  thread_change_type int(4) unsigned NOT NULL,
   thread_change_object int(8) unsigned NULL,
 
   PRIMARY KEY thread_id (thread_id),
@@ -32,7 +32,7 @@ CREATE TABLE /*$wgDBprefix*/historical_thread (
   hthread_id int(8) unsigned NOT NULL,
   hthread_revision int(8) unsigned NOT NULL,
   hthread_contents BLOB NOT NULL,
-  hthread_change_type int(4) unsigned NOT NULL default 0,
+  hthread_change_type int(4) unsigned NOT NULL,
   hthread_change_object int(8) unsigned NULL,
   PRIMARY KEY hthread_id_revision (hthread_id, hthread_revision)
 ) TYPE=InnoDB;
