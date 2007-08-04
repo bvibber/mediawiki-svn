@@ -449,6 +449,10 @@ class Thread {
 		return $this->summary;
 	}
 	
+	function hasSummary() {
+		return $this->summaryId != null;
+	}
+	
 	function setSummary( $post ) {
 		$this->summary = null;
 		$this->summaryId = $post->getID();

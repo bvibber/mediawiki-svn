@@ -153,12 +153,14 @@ class LqtView {
 		              array($article_clause,
 		                   'instr(thread.thread_path, ".")' => '0',
 		                    '(thread.thread_timestamp >= ' . $startdate->text() .
-		 					'  OR thread.thread_summary_page is NULL)'),
+		 					'  OR (thread.thread_summary_page is NULL' . 
+								 ' AND thread.thread_type='.Threads::TYPE_NORMAL.'))'),
 		              array('ORDER BY thread.thread_timestamp DESC'));
 		$g->addQuery('archived',
 		             array($article_clause,
 		                   'instr(thread.thread_path, ".")' => '0',
-		                   'thread.thread_summary_page is not null',
+		                   '(thread.thread_summary_page is not null' .
+			                  ' OR thread.thread_type='.Threads::TYPE_NORMAL.')',
 		                   'thread.thread_timestamp < ' . $startdate->text()),
 		             array('ORDER BY thread.thread_timestamp DESC'));
 		$g->extendQuery('archived', 'recently-archived',
@@ -716,8 +718,12 @@ class TalkpageArchiveView extends TalkpageView {
 	<td><a href="{$this->permalinkUrl($t)}">{$t->subjectWithoutIncrement()}</a></td>
 	<td>
 HTML
-);		$this->showPostBody($t->summary());
-		$this->output->addHTML(<<<HTML
+);		if( $t->hasSummary() ) {
+			$this->showPostBody($t->summary());
+		} else if ( $t->type() == Threads::TYPE_MOVED ) {
+			$this->output->addHTML("<i>Placeholder left when the thread was moved to another page.</i>");
+		}
+			$this->output->addHTML(<<<HTML
 	</td>
 </tr>
 HTML
@@ -729,7 +735,8 @@ HTML
 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
 		$where = array('thread.thread_article' => $this->article->getID(),
 		                     'instr(thread.thread_path, ".")' => '0',
-		                     'thread.thread_summary_page is not null',
+		                   '(thread.thread_summary_page is not null' .
+			                  ' OR thread.thread_type = '.Threads::TYPE_MOVED.')',
 		                     'thread.thread_timestamp < ' . $startdate->text());
 		$options = array('ORDER BY thread.thread_timestamp DESC');
 		
@@ -749,13 +756,13 @@ HTML
 		if ($s && ctype_digit($s) && strlen($s) == 6 && !$ignore_dates) {
 			$this->selstart = new Date( "{$s}01000000" );
 			$this->starti = array_search($s, $months);
-			$where[] = 'thread_timestamp >= ' . $this->selstart->text();
+			$where[] = 'thread.thread_timestamp >= ' . $this->selstart->text();
 		}
 		$e = $r->getVal('lqt_archive_end');
 		if ($e && ctype_digit($e) && strlen($e) == 6 && !$ignore_dates) {
 			$this->selend = new Date("{$e}01000000");
 			$this->endi = array_search($e, $months);
-			$where[] = 'thread_timestamp < ' . $this->selend->nextMonth()->text();
+			$where[] = 'thread.thread_timestamp < ' . $this->selend->nextMonth()->text();
 		}
 		if ( isset($this->selstart) && isset($this->selend) ) {
 
