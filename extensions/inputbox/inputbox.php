@@ -210,10 +210,11 @@ ENDFORM;
 	}
 
 	/**
-	 * If the width is not supplied, set it to 50
+	 * Validate the width; make sure it's a valid, positive integer
 	 */
 	function checkWidth() {
-		if( !$this->width || trim( $this->width ) == '' )
+		$this->width = intval( $this->width );
+		if( $this->width <= 0 )
 			$this->width = 50;
 	}
 	
