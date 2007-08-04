@@ -37,58 +37,14 @@ function registerInputboxExtension()
     $wgParser->setHook('inputbox', 'renderInputbox');
 }
 
-
-
-
-/**
- * Renders an inputbox based on information provided by $input.
- */
-function renderInputbox($input, $params, &$parser)
-{
-	$inputbox=new Inputbox( $parser );
-	getBoxOption($inputbox->type,$input,'type');
-	getBoxOption($inputbox->width,$input,'width',true);	
-	getBoxOption($inputbox->preload,$input,'preload');
-	getBoxOption($inputbox->editintro,$input,'editintro');
-	getBoxOption($inputbox->defaulttext,$input,'default');	
-	getBoxOption($inputbox->bgcolor,$input,'bgcolor');
-	getBoxOption($inputbox->buttonlabel,$input,'buttonlabel');	
-	getBoxOption($inputbox->searchbuttonlabel,$input,'searchbuttonlabel');		
-	getBoxOption($inputbox->namespaces,$input,'namespaces');		
-	getBoxOption($inputbox->id,$input,'id');	
-	getBoxOption($inputbox->labeltext,$input,'labeltext');
-	getBoxOption($inputbox->br, $input, 'break');
-	getBoxOption($inputbox->hidden, $input, 'hidden');
-	$inputbox->lineBreak();
-	$inputbox->checkWidth();
-	
-	$boxhtml=$inputbox->render();
-	# Maybe support other useful magic words here
-	$boxhtml=str_replace("{{PAGENAME}}",$parser->getTitle()->getText(),$boxhtml);
-	if($boxhtml) {
-		return $boxhtml;
-	} else {
-		return '<div><strong class="error">Input box: type not defined.</strong></div>';
-	}
-}
-
-
-function getBoxOption( &$value, $input, $name, $isNumber = false ) {
-	static $values = false;
-	wfProfileIn( __METHOD__ );
-	if( $values === false ) {
-		$values = array();
-		$lines = explode( "\n", $input );
-		foreach( $lines as $line ) {
-			if( strpos( $line, '=' ) === false )
-				continue;
-			list( $lname, $lval ) = explode( '=', $line, 2 );
-			$values[ strtolower( trim( $lname ) ) ] = trim( $lval );
-		}	
-	}
-	if( isset( $values[$name] ) )
-		$value = $isNumber ? intval( $values[$name] ) : htmlspecialchars( $values[$name] );
-	wfProfileOut( __METHOD__ );
+function renderInputbox( $input, $params, $parser ) {
+	$inputbox = new Inputbox( $parser );
+	$inputbox->extractOptions( $parser->replaceVariables( $input ) );
+	$html = $inputbox->render();
+	// FIXME: Won't somebody please think of the i18n people!?
+	return $html
+		? $html
+		: '<div><strong class="error">Input box: Type not defined.</strong></div>';
 }
 
 class Inputbox {
@@ -259,6 +215,51 @@ ENDFORM;
 	function checkWidth() {
 		if( !$this->width || trim( $this->width ) == '' )
 			$this->width = 50;
-	}	
+	}
+	
+	/**
+	 * Extract options from a blob of text
+	 *
+	 * @param string $text Tag contents
+	 */
+	public function extractOptions( $text ) {
+		wfProfileIn( __METHOD__ );
+	
+		// Parse all possible options
+		$values = array();
+		foreach( explode( "\n", $text ) as $line ) {
+			if( strpos( $line, '=' ) === false )
+				continue;
+			list( $name, $value ) = explode( '=', $line, 2 );
+			$values[ strtolower( trim( $name ) ) ] = trim( $value );
+		}
+
+		// Go through and set all the options we found
+		$options = array(
+			'type' => 'type',
+			'width' => 'width',
+			'preload' => 'preload',
+			'editintro' => 'editintro',
+			'default' => 'defaulttext',
+			'bgcolor' => 'bgcolor',
+			'buttonlabel' => 'buttonlabel',
+			'searchbuttonlabel' => 'searchbuttonlabel',
+			'namespaces' => 'namespaces',
+			'id' => 'id',
+			'labeltext' => 'labeltext',
+			'break' => 'br',
+			'hidden' => 'hidden',
+		);
+		foreach( $options as $name => $var ) {
+			if( isset( $values[$name] ) )
+				$this->$var = $values[$name];
+		}
+		
+		// Some special-case fix-ups
+		$this->lineBreak();
+		$this->checkWidth();
+		
+		wfProfileOut( __METHOD__ );	
+	}
+	
 }
-?>
