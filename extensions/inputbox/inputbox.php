@@ -71,10 +71,9 @@ class Inputbox {
 	}
 	
 	function getSearchForm() {
-		global $wgUser, $wgContLang;
+		global $wgContLang;
+		$search = SpecialPage::getTitleFor( 'Search' )->escapeLocalUrl();
 		
-		$sk=$wgUser->getSkin();
-		$searchpath = $sk->escapeSearchLink();		
 		if(!$this->buttonlabel) {
 			$this->buttonlabel = wfMsgHtml( 'tryexact' );
 		}
@@ -88,7 +87,7 @@ class Inputbox {
 		<table border="0" width="100%" cellspacing="0" cellpadding="0">
 		<tr>
 		<td align="center" bgcolor="{$this->bgcolor}">
-		<form name="searchbox" action="$searchpath" class="searchbox">
+		<form name="searchbox" action="{$search}" class="searchbox">
 		<input class="searchboxInput" name="search" type="{$type}"
 		value="{$this->defaulttext}" size="{$this->width}" />{$this->br}
 ENDFORM;
@@ -141,10 +140,8 @@ ENDFORM2;
 	}
 
 	function getSearchForm2() {
-		global $wgUser;
-		
-		$sk=$wgUser->getSkin();
-		$searchpath = $sk->escapeSearchLink();		
+		$search = SpecialPage::getTitleFor( 'Search' )->escapeLocalUrl();
+
 		if(!$this->buttonlabel) {
 			$this->buttonlabel = wfMsgHtml( 'tryexact' );
 		}
@@ -157,7 +154,7 @@ ENDFORM2;
 		
 		$type = $this->hidden ? 'hidden' : 'text';
 		$searchform=<<<ENDFORM
-<form action="$searchpath" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$this->buttonlabel}" class="bodySearchBtnGo" />
+<form action="$search" class="bodySearch" id="bodySearch{$this->id}"><div class="bodySearchWrap"><label for="bodySearchIput{$this->id}">{$this->labeltext}</label><input type="{$type}" name="search" size="{$this->width}" class="bodySearchIput" id="bodySearchIput{$this->id}" /><input type="submit" name="go" value="{$this->buttonlabel}" class="bodySearchBtnGo" />
 ENDFORM;
 
 		if ( !empty( $this->fulltextbtn ) ) // this is wrong...
