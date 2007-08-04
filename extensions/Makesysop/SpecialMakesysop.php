@@ -32,18 +32,6 @@ $wgGroupPermissions['bureaucrat']['userrights'] = false;
 
 $wgAvailableRights[] = 'makesysop';
 
-/**
- * Quick hack for clusters with multiple master servers; if an alternate
- * is listed for the requested database, a connection to it will be opened
- * instead of to the current wiki's regular master server.
- *
- * Requires that the other server be accessible by network, with the same
- * username/password as the primary.
- *
- * eg $wgAlternateMaster['enwiki'] = 'ariel';
- */
-$wgAlternateMaster = array();
-
 # Register special page
 if ( !function_exists( 'extAddSpecialPage' ) ) {
 	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
