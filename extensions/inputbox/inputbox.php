@@ -15,36 +15,33 @@
  * @license Public domain
  * @version 0.1.1
  */
- 
+
 /**
  * Register the Inputbox extension with MediaWiki
  */ 
-$wgExtensionFunctions[] = 'registerInputboxExtension';
+$wgExtensionFunctions[] = 'efInputBoxSetup';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Inputbox',
-	'author' => 'Erik Moeller',
+	'author' => array( 'Erik Moeller', 'Leonardo Pimenta', 'Rob Church' ),
 	'url' => 'http://meta.wikimedia.org/wiki/Help:Inputbox',
 	'description' => 'Allow inclusion of predefined HTML forms.',
 );
 
 /**
- * Sets the tag that this extension looks for and the function by which it
- * operates
+ * Extension setup function
  */
-function registerInputboxExtension()
-{
-    global $wgParser;
-    $wgParser->setHook('inputbox', 'renderInputbox');
+function efInputBoxSetup() {
+	global $wgMessageCache, $wgParser;
+	require_once( dirname( __FILE__ ) . '/InputBox.i18n.php' );
+	foreach( efInputBoxMessages() as $lang => $messages )
+		$wgMessageCache->addMessages( $messages, $lang );
+	$wgParser->setHook( 'inputbox', 'efInputBoxRender' );
 }
 
-function renderInputbox( $input, $params, $parser ) {
+function efInputBoxRender( $input, $params, $parser ) {
 	$inputbox = new Inputbox( $parser );
 	$inputbox->extractOptions( $parser->replaceVariables( $input ) );
-	$html = $inputbox->render();
-	// FIXME: Won't somebody please think of the i18n people!?
-	return $html
-		? $html
-		: '<div><strong class="error">Input box: Type not defined.</strong></div>';
+	return $inputbox->render();
 }
 
 class Inputbox {
@@ -57,16 +54,22 @@ class Inputbox {
 	}
 	
 	function render() {
-		if($this->type=='create' || $this->type=='comment') {
-			return $this->getCreateForm();		
-		} elseif($this->type=='search') {
-			return $this->getSearchForm();
-		} elseif($this->type=='search2') {
-			return $this->getSearchForm2();
-		} else {
-			return false;
-		}	
+		switch( $this->type ) {
+			case 'create':
+			case 'comment':
+				return $this->getCreateForm();
+			case 'search':
+				return $this->getSearchForm();
+			case 'search2':
+				return $this->getSearchForm2();
+			default:
+				$message = strlen( $this->type ) > 0
+					? htmlspecialchars( wfMsgForContent( 'inputbox-error-bad-type', $this->type ) )
+					: htmlspecialchars( wfMsgForContent( 'inputbox-error-no-type' ) );
+				return "<div><strong class=\"error\">{$message}</strong></div>";
+		}
 	}
+	
 	function getSearchForm() {
 		global $wgUser, $wgContLang;
 		
