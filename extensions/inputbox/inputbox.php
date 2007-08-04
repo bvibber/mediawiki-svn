@@ -73,15 +73,22 @@ function renderInputbox($input, $params, &$parser)
 }
 
 
-function getBoxOption(&$value,&$input,$name,$isNumber=false) {
-
-      if(preg_match("/^\s*$name\s*=\s*(.*)/mi",$input,$matches)) {
-		if($isNumber) {
-			$value=intval($matches[1]);
-		} else {
-			$value=htmlspecialchars($matches[1]);
-		}
+function getBoxOption( &$value, $input, $name, $isNumber = false ) {
+	static $values = false;
+	wfProfileIn( __METHOD__ );
+	if( $values === false ) {
+		$values = array();
+		$lines = explode( "\n", $input );
+		foreach( $lines as $line ) {
+			if( strpos( $line, '=' ) === false )
+				continue;
+			list( $lname, $lval ) = explode( '=', $line, 2 );
+			$values[ strtolower( trim( $lname ) ) ] = trim( $lval );
+		}	
 	}
+	if( isset( $values[$name] ) )
+		$value = $isNumber ? intval( $values[$name] ) : htmlspecialchars( $values[$name] );
+	wfProfileOut( __METHOD__ );
 }
 
 class Inputbox {
