@@ -18,6 +18,8 @@ Necessary to do:
 * /config.php
   - should likely be taylored.
 
+* merge with HawPedia V1.1
+
 Changes:
 --------
 + Name changed from Hawpedia to Wikipedia
@@ -57,7 +59,7 @@ Changes:
   can be switched off in config.php
 + Language es (spanish) added. (Few translations are incomplete)
 + Language nds (lower saxon) added. (Some incomplete translations)
-+ Lanugage ksh (Kölsch/Ripuarian languages) added.
++ Lanugage ksh (Kï¿½lsch/Ripuarian languages) added.
 + whatever I forgot to mention :-)
 
 
