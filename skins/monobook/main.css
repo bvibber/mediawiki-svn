@@ -186,6 +186,21 @@ h1.lqt_header {
 //        display: none;
 }
 
+.lqt_thread_changed_by_history .lqt_post {
+	padding: .5em 1.5em .5em 1.5em;
+	background-color: #eeeeee;
+	border: solid 1pt #ffaa66;
+	display: table; width: auto;
+}
+
+.lqt_history_info {
+	padding: .75em 1.5em .75em 1.5em;
+	margin-bottom: 1em;
+	background-color: #eeeeee;
+	border: solid 1pt #ffaa66;
+	display: table; width: auto;
+}
+
 .lqt_thread_disclosure_triangle {
         margin-right: 4pt;
 }

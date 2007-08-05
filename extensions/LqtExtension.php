@@ -518,6 +518,8 @@ HTML;
 	function showThread( $thread ) {
 		global $wgLang; # TODO global.
 		
+		$is_changed_thread = $thread->isHistorical() && $thread->changeObject() == $thread->id();
+		
 		$this->showThreadHeading( $thread );
 
 		if ($thread->type() == Threads::TYPE_MOVED) {
@@ -539,11 +541,15 @@ HTML;
 		if( $thread->summary() ) {
 			$this->showSummary($thread);
 		} else if ( $timestamp->isBefore(Date::now()->nDaysAgo($this->archive_start_days))
-		            && !$thread->summary() && !$thread->hasSuperthread() ) {
+		            && !$thread->summary() && !$thread->hasSuperthread() && !$thread->isHistorical() ) {
 			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'summarize')}\">write a summary</a>. There have been no changes here for at least $this->archive_start_days days.</p>");
 		}
 		
-		$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");			
+		if( $is_changed_thread ) {
+			$this->openDiv('lqt_thread lqt_thread_changed_by_history', "lqt_thread_id_{$thread->id()}");
+		} else {
+			$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");
+		}
 		
 		$this->showRootPost( $thread );
 		$this->indent();
@@ -985,8 +991,8 @@ class ThreadHistoryPager extends PageHistoryPager {
 		                      Threads::CHANGE_REPLY_CREATED => "New reply created",
 		                      Threads::CHANGE_NEW_THREAD => "New thread created");
 		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $row->hthread_revision );
-		$result[] = "<tr><td><a href=\"$url\">" . $row->hthread_revision . '</a></td></tr>';
-		$result[] = "<tr><td>Revision type: {$change_names[$row->hthread_change_type]}.";
+		$result[] = "<tr><td><a href=\"$url\">" . $row->hthread_revision . '</a></td>';
+		$result[] = "<td>Revision type: {$change_names[$row->hthread_change_type]}.</td></tr>";
 		return implode('', $result);
 	}
 	function getNotificationTimestamp() {
@@ -1067,6 +1073,22 @@ class ThreadPermalinkView extends LqtView {
 		}
 	}
 	
+	function showHistoryInfo() {
+		global $wgLang; // TODO global.
+		$this->openDiv('lqt_history_info');
+		$this->output->addHTML('Revision as of ' . $wgLang->timeanddate($this->thread->timestamp()) . '.<br>' );
+		if( $this->thread->changeType() == Threads::CHANGE_NEW_THREAD ) {
+			$this->output->addHTML('This is the thread\'s initial revision.');
+		}
+		else if( $this->thread->changeType() == Threads::CHANGE_REPLY_CREATED ) {
+			$this->output->addHTML('The highlighted comment was created in this revision.');
+		} else if( $this->thread->changeType() == Threads::CHANGE_EDITED_ROOT ) {
+			$this->output->addHTML('The highlighted comment was edited in this revision. ');
+			$this->output->addHTML( '[<a>show diffs</a>]' );
+		}
+		$this->closeDiv();
+	}
+	
 	function noSuchRevision() {
 		$this->output->addHTML("There is no such revision of this thread.");
 	}
@@ -1089,7 +1111,7 @@ class ThreadPermalinkView extends LqtView {
 		$this->article = $t->article(); # for creating reply threads.
 		
 		// Make a link back to the talk page, including the correct archive month.
-		// TODO this is obsolete.
+ 		// TODO this is obsolete.
 		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($t->timestamp()) ))
 			$query = '';
 		else
@@ -1106,6 +1128,10 @@ class ThreadPermalinkView extends LqtView {
 		
 		if( $this->methodApplies('summarize') )
 			$this->showSummarizeForm($t);
+
+		if($t->isHistorical()) {
+			$this->showHistoryInfo();
+		}
 
 		$this->showThread($t);
 	}
