@@ -87,6 +87,8 @@ if (defined('MEDIAWIKI')) {
 										   'openidconvertsuccesstext' => 'You have successfully converted your OpenID to $1.',
 										   'openidconvertyourstext' => 'That is already your OpenID.',
 										   'openidconvertothertext' => 'That is someone else\'s OpenID.',
+										   'openidalreadyloggedin' => '<strong>User $1, you are already logged in!</strong>',
+
 										   ));
 
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDLogin'));

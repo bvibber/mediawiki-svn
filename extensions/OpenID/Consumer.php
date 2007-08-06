@@ -631,7 +631,7 @@ if (defined('MEDIAWIKI')) {
 		$wgOut->setPageTitle( wfMsg( 'openiderror' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
-		$wgOut->addWikiText( wfMsg( 'alreadyloggedin', $wgUser->getName() ) );
+		$wgOut->addWikiText( wfMsg( 'openidalreadyloggedin', $wgUser->getName() ) );
 		$wgOut->returnToMain( $auto );
 	}
 
