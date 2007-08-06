@@ -60,6 +60,8 @@ function wfHTMLetsExtension() {
 function wfRenderHTMLet( $name, $argv, &$parser ) {
     global $wgHTMLetsDirectory, $wgHTMLetsHack, $IP;
 
+    if (@$argv['nocache']) $parser->disableCache();
+
     #HACKs for bug 8997
     $hack = @$argv['hack'];
     if ( $hack == 'strip' ) $hack = HTMLETS_STRIP_HACK;
