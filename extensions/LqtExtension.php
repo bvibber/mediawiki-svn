@@ -635,14 +635,14 @@ class TalkpageView extends LqtView {
 		
 		if ( count($threadlinks) > 0 ) {
 			$this->openDiv('lqt_archive_teaser');
-			$this->output->addHTML('The following threads were archived recently:');
+			$this->output->addHTML('Recently archived:');
 			$this->outputList('ul', '', '', $threadlinks);
 		} else {
 			$this->openDiv();
 		}
 		$url = $this->talkpageUrl($this->title, 'talkpage_archive');
 		$this->output->addHTML(<<<HTML
-			<a href="$url" class="lqt_browse_archive">Browse the Archive</a>
+			<p><a href="$url" class="lqt_browse_archive">Browse the Archive</a></p>
 HTML
 		);
 		$this->closeDiv();

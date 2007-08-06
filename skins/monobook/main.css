@@ -117,13 +117,12 @@ margin-right: 5em;
 .lqt_archive_teaser {
 	float: right;
 	border: 1px solid #ddd;
-	margin: 0.5em 0;
+	margin: 1em 0 0.5em 0;
 	background-color: #eee;
 	padding: 0.4em;
 	display: table; width: auto;
 }
 .lqt_browse_archive {
-	display: block;
 	margin-bottom: 0.5em;
 	font-weight: bold;
 }
