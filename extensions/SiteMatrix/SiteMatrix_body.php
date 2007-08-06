@@ -58,14 +58,14 @@ class SiteMatrixPage extends SpecialPage {
 
 		# Special wikis that should point to wikiPedia, not wikiMedia
 		$wikipediaSpecial = array(
-			'dk', 'sep11', 'sources', 'species', 'test',
+			'dk', 'sources', 'species', 'test',
 		);
 
 		# Some internal databases for other domains.
 		$hidden = array(
 			'foundation', 'mediawiki',
 		);
-		
+
 		# Tabulate the matrix
 		$specials = array();
 		$matrix = array();
@@ -88,11 +88,15 @@ class SiteMatrixPage extends SpecialPage {
 		# Construct the HTML
 
 		# Header row
-		$s = '<table><tr>';
-		$s .= '<th>Language</th>';
-		foreach ( $names as $name ) {
-			$s .= '<th>' . $name . '</th>';
-		}
+		$s = '<table>
+			<tr>
+				<th>' . wfMsg( 'sitematrix-language' ) . '</th>
+				<th colspan="' . count( $sites ) . '>' . wfMsg( 'sitematrix-project' ) . '"</th>
+			</tr><tr>
+				<th>&nbsp;</th>';
+				foreach ( $names as $name ) {
+					$s .= '<th>' . $name . '</th>';
+				}
 		$s .= "</tr>\n";
 
 		global $wgLanguageNames;
@@ -117,6 +121,7 @@ class SiteMatrixPage extends SpecialPage {
 		$s .= "</table>\n";
 
 		# Specials
+		$s .= '<h2>' . wfMsg( 'sitematrix-others' ) . '</h2>';
 		$s .= '<ul>';
 		foreach ( $specials as $lang ) {
 
@@ -139,5 +144,3 @@ class SiteMatrixPage extends SpecialPage {
 		$wgOut->addHTML( $s );
 	}
 }
-
-

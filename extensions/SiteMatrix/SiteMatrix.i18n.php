@@ -8,7 +8,10 @@
 $wgSiteMatrixMessages = array();
 
 $wgSiteMatrixMessages['en'] = array(
-	"sitematrix" => "List of Wikimedia wikis",
+	"sitematrix"          => "List of Wikimedia wikis",
+	'sitematrix-language' => 'Language',
+	'sitematrix-project'  => 'Name of project, interproject link and interwiki link',
+	'sitematrix-others'   => 'Other projects of Wikimedia',
 );
 $wgSiteMatrixMessages['af'] = array(
 	"sitematrix" => "Lys van Wikimedia-wiki's",
@@ -20,7 +23,10 @@ $wgSiteMatrixMessages['cs'] = array(
 	"sitematrix" => "Seznam wiki projektů nadace Wikimedia",
 );
 $wgSiteMatrixMessages['de'] = array(
-	"sitematrix" => "Liste der Wikimedia-Wikis",
+	"sitematrix"          => "Liste der Wikimedia-Wikis",
+	'sitematrix-language' => 'Sprache',
+	'sitematrix-project'  => 'Projektname, Interprojekt-Link und Interwiki-Link',
+	'sitematrix-others'   => 'Weitere Wikimedia-Projekte',
 );
 $wgSiteMatrixMessages['fi'] = array(
 	"sitematrix" => "Luettelo Wikimedian wikeistä",
