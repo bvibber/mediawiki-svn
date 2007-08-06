@@ -35,7 +35,10 @@ $wgSiteMatrixMessages['fr'] = array(
 	"sitematrix" => "Liste des wikis Wikimedia",
 );
 $wgSiteMatrixMessages['he'] = array(
-	"sitematrix" => "רשימת אתרי ויקי של ויקימדיה",
+	'sitematrix'          => 'רשימת אתרי ויקי של ויקימדיה',
+	'sitematrix-language' => 'שפה',
+	'sitematrix-project'  => 'שם הפרויקט, קישורי אינטרוויקי ובין המיזמים',
+	'sitematrix-others'   => 'מיזמים אחרים של ויקימדיה',
 );
 $wgSiteMatrixMessages['hu'] = array(
 	"sitematrix" => "Az összes Wikimedia wiki listája",
