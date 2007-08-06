@@ -117,30 +117,29 @@ copies of all histories. This is useful for article forking, etc.',
 
 /* German (Leon Weber) */
 'de' => array(
-	'duplicator' => 'Einen Artikel duplizieren',
-	'duplicator-header' => 'Mit dieser Spezialseite können Artikel komplett dupliziert werden. Dabei wird die gesamte ' .
+	'duplicator'         => 'Seite duplizieren',
+	'duplicator-header'  => 'Mit dieser Spezialseite können Seiten komplett dupliziert werden. Dabei wird die gesamte ' .
 				'Versionsgeschichte übernommen. Dies kann beispielsweise nützlich sein, um eine Seite in ' .
 				'Unterartikel aufzuteilen.',
 	'duplicator-options' => 'Optionen',
-	'duplicator-source' => 'Quelle:',
-	'duplicator-dest' => 'Ziel:',
-	'duplicator-dotalk' => 'Diskussionsseite mitkopieren (wenn möglich)',
-	'duplicator-submit' => 'Artikel duplizieren',
+	'duplicator-source'  => 'Quelle:',
+	'duplicator-dest'    => 'Ziel:',
+	'duplicator-dotalk'  => 'Diskussionsseite mitkopieren (wenn möglich)',
+	'duplicator-submit'  => 'Seite duplizieren',
 
 	'duplicator-summary' => '[[$1]] wurde dupliziert',
 
-	'duplicator-success' => "<big>'''[[$1]] wurde nach [[$2]] kopiert.'''</big>",
-	'duplicator-success-revisions' => '{{PLURAL:$1|Eine Version wurde|$1 Versionen wurden}} dupliziert.',
-	'duplicator-success-talkcopied' => 'Die Diskussionsseite wurde auch dupliziert.',
+	'duplicator-success'               => "<big>'''[[$1]] wurde nach [[$2]] kopiert.'''</big>",
+	'duplicator-success-revisions'     => '{{PLURAL:$1|1 Version wurde|$1 Versionen wurden}} dupliziert.',
+	'duplicator-success-talkcopied'    => 'Die Diskussionsseite wurde auch dupliziert.',
 	'duplicator-success-talknotcopied' => 'Die Diskussionsseite konnte nicht dupliziert werden.',
-	'duplicator-failed' => 'Der Artikel konnte nicht dupliziert werden, da ein unbekannter Fehler auftrat.',
+	'duplicator-failed'                => 'Die Seite konnte nicht dupliziert werden, da ein unbekannter Fehler auftrat.',
 
-	'duplicator-source-invalid' => 'Bitte geben Sie einen gültigen Quell-Artikel an.',
-	'duplicator-source-notexist' => 'Der Artikel [[$1]] existiert nicht. Bitte geben Sie einen existierenden Artikel an.',
-	'duplicator-dest-invalid' => 'Bitte geben Sie einen gültigen Ziel-Artikel an.',
-	'duplicator-dest-exists' => 'Der Artikel [[$1]] existiert bereits. Bitte geben Sie einen nicht existierenden Artikel an.',
-	'duplicator-toomanyrevisions' => 'Der Artikel [[$1]] hat zu viele ($2) Versionen, um dupliziert zu werden, da nur Artikel mit ' .
-					'maximal $3 Versionen dupliziert werden können.',
+	'duplicator-source-invalid'   => 'Bitte gebe eine gültigen Quell-Seite an.',
+	'duplicator-source-notexist'  => 'Die Seite [[$1]] existiert nicht. Bitte gebe eine existierende Seite an.',
+	'duplicator-dest-invalid'     => 'Bitte gebe eine gültige Ziel-Seite an.',
+	'duplicator-dest-exists'      => 'Die Seite [[$1]] existiert bereits. Bitte gebe eine nicht existierende Seite an.',
+	'duplicator-toomanyrevisions' => 'Die Seite [[$1]] hat $2 Versionen, um kann daher nicht dupliziert. Es können nur Seiten mit maximal $3 Versionen dupliziert werden.',
 ),
 
 /* Finnish (Niklas Laxström) */
@@ -533,6 +532,10 @@ function efDuplicatorAliases( $lang ) {
 	'Duplicate',
 ),
 
+'de' => array(
+	'Seiten_duplizieren',
+	'Duplizieren',
+),
 	);
 	return isset( $aliases[$lang] ) && $lang != 'en'
 		? array_merge( $aliases[$lang], $aliases['en'] )
