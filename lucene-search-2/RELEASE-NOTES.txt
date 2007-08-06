@@ -1,0 +1,22 @@
+Lucene Search 2.0.2
+====================
+
+* Fix bug 10822. Convert underscores to spaces in category names.
+
+Lucene Search 2.0.1
+====================
+
+* Fix CJK tokenization - tokenize C1C2C2 -> C1C2 C2C3 and wrap
+  searches into phrase queries
+* Fix đ in Thai, didn't properly resolve into d
+
+Lucene Search 2.0.0
+====================
+
+* Initial release, almost complete rewrite of the C# version
+  New features very briefly:
+   - distribute search/indexing
+   - accentless search, stemmers for 12 languages
+   - link analysis for ranking
+   - namespace-prefixed queries
+

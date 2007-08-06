@@ -1,4 +1,4 @@
-  Lucene Search 2.0: extension for MediaWiki
+  Lucene Search 2: extension for MediaWiki
   ==========================================
 
 Requirements:
@@ -12,20 +12,11 @@ Requirements:
  - Apache XMLRPC 3.0 (for XMLRPC interface)
  - Apache Ant 1.6 (for building from source, etc)
 
-Setup:
+Installing:
 
- - Edit mwsearch-global.conf and make it available at some URL
- - At each host: 
- 	* properly setup hostname (otherwise JavaVM gets confused)
- 	* make and set permissions of local directory for indexes
- 	* edit mwsearch.conf:
- 	 	+ MWConfig.global to point to URL of mwsearch-global.conf
- 	 	+ MWConfig.lib to point to local library path (ie with unicode-data etc)
- 		+ Localization.url to point to URL of latest message files from MediaWiki
- 		+ Indexes.path - base path where you want the deamon to store the indexes, 
-		+ Logging.logconfig - local path to log4j configuration file, e.g. /etc/lsearch.log4j (the lsearch package has a sample log4j file you can use)
-   	* setup rsync daemon (see rsyncd.conf-example)
-  	* setup log4j logging subsystem (see mwsearch.log4j-example)
+ - Up-to-date instructions and troubleshooting can be found at: 
+
+   http://www.mediawiki.org/wiki/Extension:LuceneSearch
  	
 Running:
 
@@ -50,9 +41,8 @@ Features:
    table parameters, image parameters (except caption) are not indexed.
    
  - query parser, faster search query parsing, enables prefixes for namespaces,
-   e.g. 'help:editing pages'. Prefixes are localized within MediaWiki. Can
-   do category searches e.g. 'smoked category:cheeses'. Rewrites all of these
-   so that stemmed present are present but add less to document score. 
+   e.g. 'help:editing pages'. Prefixes are localized within MediaWiki. Rewrites 
+   all of these so that stemmed present are present but add less to document score. 
    
  - (hopefully) robust architecture, with threads pinging hosts that are down,
    and search daemons trying alternatives if host holding part of the 
