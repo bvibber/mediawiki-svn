@@ -795,7 +795,7 @@ Query: $2',
 $2",
 'namespaceprotected'   => "You do not have permission to edit pages in the '''$1''' namespace.",
 'customcssjsprotected' => "You do not have permission to edit this page, because it contains another user's personal settings.",
-'ns-specialprotected'  => "Pages in the special namespace cannot be edited.",
+'ns-specialprotected'  => "Pages in the {{ns:special}} namespace cannot be edited.",
 
 # Login and logout pages
 'logouttitle'                => 'User logout',
@@ -970,7 +970,7 @@ Your block ID is $5. Please include this ID in any queries you make.',
 'blockedtext-concise'       => "$7, which matches your username or IP address, has been blocked by $1. The reason given was $2. The expiry time of this block is $6. To discuss the block, you can 
 contact $1, or another administrator. You cannot use the 'email this user' feature unless a valid email address is specified in your account preferences and you have not been blocked from using it. 
 Your current IP address is $3, and the block ID is #$5. Please include either or both of these in any queries.",
-'autoblockedtext-concise'       => "Your IP address has recently been used by a user who was blocked. The block was made by $1. The reason given was $2. The expiry time of this block is $6. To 
+'autoblockedtext-concise'   => "Your IP address has recently been used by a user who was blocked. The block was made by $1. The reason given was $2. The expiry time of this block is $6. To 
 discuss the block, you can contact $1, or another administrator. You cannot use the 'email this user' feature unless a valid email address is specified in your account preferences and you have not 
 been blocked from using it. Your current IP address is $3, and the block ID is #$5. Please include either or both of these in any queries.",
 'blockedoriginalsource'     => "The source of '''$1''' is 
@@ -2016,12 +2016,13 @@ pages that were vandalized).',
 'ipb-blocklist-addr'          => 'View existing blocks for $1',
 'ipb-blocklist'               => 'View existing blocks',
 'unblockip'                   => 'Unblock user',
-'unblockiptext'               => 'Use the form below to restore write access
-to a previously blocked IP address or username.',
+'unblockiptext'               => 'Use the form below to restore write access to a previously blocked IP address or username.',
 'ipusubmit'                   => 'Unblock this address',
 'unblocked'                   => '[[User:$1|$1]] has been unblocked',
 'unblocked-id'                => 'Block $1 has been removed',
 'ipblocklist'                 => 'List of blocked IP addresses and usernames',
+'ipblocklist-legend'          => 'Find a blocked user',
+'ipblocklist-username'        => 'Username or IP address:',
 'ipblocklist-summary'         => '', # only translate this message to other languages if you have to change it
 'ipblocklist-submit'          => 'Search',
 'blocklistline'               => '$1, $2 blocked $3 ($4)',
@@ -2038,7 +2039,7 @@ to a previously blocked IP address or username.',
 'contribslink'                => 'contribs',
 'autoblocker'                 => 'Autoblocked because your IP address has been recently used by "[[User:$1|$1]]". The reason given for $1\'s block is: "$2"',
 'blocklogpage'                => 'Block log',
-'blocklogentry'               => 'blocked "[[$1]]" with an expiry time of $2 $3',
+'blocklogentry'               => 'blocked [[$1]] with an expiry time of $2 $3',
 'blocklogtext'                => 'This is a log of user blocking and unblocking actions. Automatically
 blocked IP addresses are not listed. See the [[Special:Ipblocklist|IP block list]] for
 the list of currently operational bans and blocks.',
@@ -2111,9 +2112,8 @@ proceeding.",
 In those cases, you will have to move or merge the page manually if desired.",
 'movearticle'             => 'Move page:',
 'movenologin'             => 'Not logged in',
-'movenologintext'         => 'You must be a registered user and [[Special:Userlogin|logged in]]
-to move a page.',
-'movenotallowed'	  => 'You do not have permission to move pages on this wiki.',
+'movenologintext'         => 'You must be a registered user and [[Special:Userlogin|logged in]] to move a page.',
+'movenotallowed'          => 'You do not have permission to move pages on this wiki.',
 'newtitle'                => 'To new title:',
 'move-watch'              => 'Watch this page',
 'movepagebtn'             => 'Move page',
