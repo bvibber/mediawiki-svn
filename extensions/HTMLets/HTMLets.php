@@ -72,12 +72,12 @@ function wfRenderHTMLet( $name, $argv, &$parser ) {
     $dir = $wgHTMLetsDirectory;
     if (!$dir) $dir = "$IP/htmlets";
 
-    $name = preg_replace('@[\\\\/!]|^\.+@', '', $name); #strip path separators and leading dots.
+    $name = preg_replace('@[\\\\/!]|^\.+?&#@', '', $name); #strip path separators and leading dots.
     $name .= '.html'; #append html ending, for added security and conveniance
 
     $f = "$dir/$name";
 
-    if (!file_exists($f)) {
+    if (!preg_match('!^\w+://!', $dir) && !file_exists($f)) {
         $output = '<div class="error">Can\'t find html file '.htmlspecialchars($name).'</div>';
     }
     else {
