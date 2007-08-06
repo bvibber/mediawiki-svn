@@ -402,9 +402,10 @@ public class WikiQueryParser {
 				(namespacePolicy == NamespacePolicy.IGNORE || 
 						namespacePolicy == NamespacePolicy.REWRITE))
 			return new Term(defaultField,t);
-		else if(field.equals("incategory"))
-			return new Term("category",builder.isExactCase()? t : t.toLowerCase());
-		else
+		else if(field.equals("incategory")){
+			String norm = t.replace("_"," "); // per bug 10822
+			return new Term("category",builder.isExactCase()? norm : norm.toLowerCase());
+		} else
 			return new Term(field,t);
 	}
 	

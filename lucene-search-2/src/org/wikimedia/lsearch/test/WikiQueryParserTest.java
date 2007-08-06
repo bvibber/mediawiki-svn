@@ -64,6 +64,12 @@ public class WikiQueryParserTest extends TestCase {
 
 			q = parser.parseRaw("+eggs incategory:breakfast");
 			assertEquals("+contents:eggs +category:breakfast",q.toString());
+			
+			q = parser.parseRaw("+eggs incategory:\"two_words\"");
+			assertEquals("+contents:eggs +category:\"two words\"",q.toString());
+			
+			q = parser.parseRaw("+eggs incategory:\"two words\"");
+			assertEquals("+contents:eggs +category:\"two words\"",q.toString());
 
 			q = parser.parseRaw("help:making breakfast");
 			assertEquals("+help:making +help:breakfast",q.toString());

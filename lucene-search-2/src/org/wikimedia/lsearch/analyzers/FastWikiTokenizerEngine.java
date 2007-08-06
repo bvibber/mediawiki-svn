@@ -637,7 +637,7 @@ public class FastWikiTokenizerEngine {
 						// don't add token to get syntax like [[bean]]s
 						continue;
 					case CATEGORY:
-						categories.add(new String(buffer,0,length));
+						categories.add(new String(buffer,0,length).replace("_"," "));
 						length = 0;
 						fetch = FetchState.WORD;
 						// index category words
