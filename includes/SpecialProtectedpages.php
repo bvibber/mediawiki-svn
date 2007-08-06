@@ -110,19 +110,28 @@ class ProtectedPagesForm {
 		return "<form action=\"$action\" method=\"get\">\n" .
 			'<fieldset>' .
 			Xml::element( 'legend', array(), wfMsg( 'protectedpages' ) ) .
-			Xml::hidden( 'title', $special ) . "&nbsp\n" .
-			$this->getNamespaceMenu( $namespace ) . "&nbsp\n" .
-			$this->getTypeMenu( $type ) . "&nbsp\n" .
+			Xml::hidden( 'title', $special ) . "&nbsp;\n" .
+			$this->getNamespaceMenu( $namespace ) . "&nbsp;\n" .
+			$this->getTypeMenu( $type ) . "&nbsp;\n" .
 			$this->getLevelMenu( $level ) . "<br/>\n" .
 			$this->getSizeLimit( $sizetype, $size ) . "\n" .
-			"&nbsp" . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
+			"&nbsp;" . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			"</fieldset></form>";
 	}
 	
-	function getNamespaceMenu( $namespace=NULL ) {
-		return "<label for='namespace'>" . wfMsgHtml('namespace') . "</label>" . HTMLnamespaceselector($namespace, '');
+	/**
+	 * Prepare the namespace filter drop-down; standard namespace
+	 * selector, sans the MediaWiki namespace
+	 *
+	 * @param mixed $namespace Pre-select namespace
+	 * @return string
+	 */
+	function getNamespaceMenu( $namespace = null ) {
+		return Xml::label( wfMsg( 'namespace' ), 'namespace' )
+			. '&nbsp;'
+			. Xml::namespaceSelector( $namespace, '', false, array( NS_MEDIAWIKI, NS_MEDIAWIKI_TALK ) );
 	}
-
+	
 	/**
 	 * @return string Formatted HTML
 	 * @private
@@ -130,9 +139,9 @@ class ProtectedPagesForm {
 	function getSizeLimit( $sizetype, $size ) {	
 		$out = Xml::radio( 'sizetype', 'min', ($sizetype=='min'), array('id' => 'wpmin') );
 		$out .= Xml::label( wfMsg("minimum-size"), 'wpmin' );
-		$out .= "&nbsp".Xml::radio( 'sizetype', 'max', ($sizetype=='max'), array('id' => 'wpmax') );
+		$out .= "&nbsp;".Xml::radio( 'sizetype', 'max', ($sizetype=='max'), array('id' => 'wpmax') );
 		$out .= Xml::label( wfMsg("maximum-size"), 'wpmax' );
-		$out .= "&nbsp".Xml::input('size', 9, $size, array( 'id' => 'wpsize' ) );
+		$out .= "&nbsp;".Xml::input('size', 9, $size, array( 'id' => 'wpsize' ) );
 		$out .= ' '.wfMsgHtml('pagesize');
 		return $out;
 	}

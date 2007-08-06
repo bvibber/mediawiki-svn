@@ -161,6 +161,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 10701) Link to Special:Listusers in default Special:Statistics messages
 * Improved file history presentation
 * (bug 10739) Users can now enter comments when reverting files
+* Improved handling of permissions errors
+* (bug 10798) Exclude MediaWiki namespace from filtering options on
+  Special:Protectedpages (implicit protection, doesn't make sense to have it)
 
 == Bugfixes since 1.10 ==
 
@@ -334,6 +337,23 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Fixed leading zero in base 36 SHA-1 hash
 * Protection form no longer produces JavaScript errors
 * (bug 10741) File histories show "delete" links for non-sysops
+* (bug 10744) Treat "noarticletext" and "noarticletextanon" as wiki text when
+  used on a non-existent page with "action=info"
+* Fix escaping of raw message text when used on a non-existent page with
+  "action=info"
+* (bug 10683) Fix inconsistent handling of URL-encoded titles in links
+  used in redirects (i.e. they now work)
+* (bug 8878) Changes to $dateFormats in German localization (removing unused,
+  nonexistent formats, putting time after date)
+* (bug 10769) Database::update() should return boolean result
+* Fix RTL display of the preferences: checkboxes were indented to the right,
+  hidden in IE in some cases.
+* Fix RTL display of the upload form.
+* Fixed regression in blocking of username '0'
+* (bug 9437) Don't overwrite edit form submission handler when setting up
+  edit box scroll position preserve/restore behaviour
+* (bug 10805) Fix "undo" link when viewing the diff of the most recent
+  change to a page using "diff=0"
 
 == API changes since 1.10 ==
 

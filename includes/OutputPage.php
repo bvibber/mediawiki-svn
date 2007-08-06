@@ -746,15 +746,11 @@ class OutputPage {
 		$this->setRobotpolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 
-		$id = $wgUser->blockedBy();
+		$name = User::whoIs( $wgUser->blockedBy() );
 		$reason = $wgUser->blockedFor();
+		$blockTimestamp = $wgLang->timeanddate( wfTimestamp( TS_MW, $wgUser->mBlock->mTimestamp ), true );
 		$ip = wfGetIP();
 
-		if ( is_numeric( $id ) ) {
-			$name = User::whoIs( $id );
-		} else {
-			$name = $id;
-		}
 		$link = '[[' . $wgContLang->getNsText( NS_USER ) . ":{$name}|{$name}]]";
 
 		$blockid = $wgUser->mBlock->mId;
@@ -787,8 +783,8 @@ class OutputPage {
 		 * This could be a username, an ip range, or a single ip. */
 		$intended = $wgUser->mBlock->mAddress;
 
-		$this->addWikiText( wfMsg( $msg, $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended ) );
-		
+		$this->addWikiText( wfMsg( $msg, $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended, $blockTimestamp ) );
+
 		# Don't auto-return to special pages
 		if( $return ) {
 			$return = $wgTitle->getNamespace() > -1 ? $wgTitle->getPrefixedText() : NULL;
@@ -821,6 +817,24 @@ class OutputPage {
 		$this->addWikiText( $message );
 		
 		$this->returnToMain( false );
+	}
+
+	public function showPermissionsErrorPage( $title, $errors )
+	{
+		global $wgTitle;
+
+		$this->mDebugtext .= 'Original title: ' .
+			 $wgTitle->getPrefixedText() . "\n";
+		$this->setPageTitle( wfMsg( 'permissionserrors' ) );
+		$this->setHTMLTitle( wfMsg( 'permissionserrors' ) );
+		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setArticleRelated( false );
+		$this->enableClientCache( false );
+		$this->mRedirect = '';
+		$this->mBodytext = '';
+
+		$this->addWikiText( wfMsg('permissionserrorstext') );
+		$this->addWikitext( $this->formatPermissionsErrorMessage( $errors ) );
 	}
 
 	/** @deprecated */
@@ -939,18 +953,44 @@ class OutputPage {
 	}
 
 	/**
+	 * @param array $errors An array returned by Title::getUserPermissionsErrors
+	 * @return string The error-messages, formatted into a list.
+	 */
+	public function formatPermissionsErrorMessage( $errors ) {
+		$text = '';
+
+		$text .= wfMsg('permissionserrorstext')."\n";
+		$text .= '<ul class="permissions-errors">' . "\n";
+
+		foreach( $errors as $error )
+		{
+			$text .= '<li>';
+			$text .= call_user_func_array( 'wfMsg', $error );
+			$text .= "</li>\n";
+		}
+		$text .= '</ul>';
+
+		return $text;
+	}
+
+	/**
 	 * @todo document
 	 * @param bool  $protected Is the reason the page can't be reached because it's protected?
 	 * @param mixed $source
 	 */
-	public function readOnlyPage( $source = null, $protected = false ) {
+	public function readOnlyPage( $source = null, $protected = false, $reasons = array() ) {
 		global $wgUser, $wgReadOnlyFile, $wgReadOnly, $wgTitle;
 		$skin = $wgUser->getSkin();
 
 		$this->setRobotpolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 
-		if( $protected ) {
+		if ($reasons != array()) {
+			$this->setPageTitle( wfMsg( 'viewsource' ) );
+			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
+
+			$this->addWikiText( $this->formatPermissionsErrorMessage( $reasons ) );
+		} else if( $protected ) {
 			$this->setPageTitle( wfMsg( 'viewsource' ) );
 			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
 			list( $cascadeSources, /* $restrictions */ ) = $wgTitle->getCascadeProtectionSources();

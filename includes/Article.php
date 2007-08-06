@@ -262,7 +262,6 @@ class Article {
 				'page_id',
 				'page_namespace',
 				'page_title',
-				'page_key',
 				'page_restrictions',
 				'page_counter',
 				'page_is_redirect',
@@ -1002,7 +1001,6 @@ class Article {
 	 * @private
 	 */
 	function insertOn( $dbw ) {
-		global $wgContLang;
 		wfProfileIn( __METHOD__ );
 
 		$page_id = $dbw->nextSequenceValue( 'page_page_id_seq' );
@@ -1010,7 +1008,6 @@ class Article {
 			'page_id'           => $page_id,
 			'page_namespace'    => $this->mTitle->getNamespace(),
 			'page_title'        => $this->mTitle->getDBkey(),
-			'page_key'          => $wgContLang->caseFold($this->mTitle->getDBkey()),
 			'page_counter'      => 0,
 			'page_restrictions' => '',
 			'page_is_redirect'  => 0, # Will set this shortly...
@@ -2807,16 +2804,21 @@ class Article {
 
 		$wgOut->setPagetitle( $page->getPrefixedText() );
 		$wgOut->setPageTitleActionText( wfMsg( 'info_short' ) );
-		$wgOut->setSubtitle( wfMsg( 'infosubtitle' ));
+		$wgOut->setSubtitle( wfMsg( 'infosubtitle' ) );
 
-		# first, see if the page exists at all.
-		$exists = $page->getArticleId() != 0;
-		if( !$exists ) {
-			if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
-				$wgOut->addHTML(wfMsgWeirdKey ( $this->mTitle->getText() ) );
+		if( !$this->mTitle->exists() ) {
+			$wgOut->addHtml( '<div class="noarticletext">' );
+			if( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
+				// This doesn't quite make sense; the user is asking for
+				// information about the _page_, not the message... -- RC
+				$wgOut->addHtml( htmlspecialchars( wfMsgWeirdKey( $this->mTitle->getText() ) ) );
 			} else {
-				$wgOut->addHTML(wfMsg( $wgUser->isLoggedIn() ? 'noarticletext' : 'noarticletextanon' ) );
+				$msg = $wgUser->isLoggedIn()
+					? 'noarticletext'
+					: 'noarticletextanon';
+				$wgOut->addHtml( wfMsgExt( $msg, 'parse' ) );
 			}
+			$wgOut->addHtml( '</div>' );
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
 			$wl_clause = array(
