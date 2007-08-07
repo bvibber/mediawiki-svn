@@ -123,7 +123,7 @@ $wgLuceneSearchMessages['es'] = array(
     'lucenepowersearchtext' => "
 Búsqueda en espacios de nombres:\n
 $1\n
-Search for $3 $9 $10",
+Buscar $3 $9 $10",
     'lucenefallback'        => "Hubo un problema con la búsqueda en el wiki.
 Es probablemente un problema temporal; intenta de nuevo dentro de un tiempo,
 o puedes buscar en el wiki a través de un servicio externo de búsqueda:\n",
