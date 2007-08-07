@@ -109,6 +109,29 @@ Serĉo de $3 $9 $10",
 Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
 aŭ vi povas esplori la vikion per eksteraj serĉservoj.\n"
 );
+
+$wgLuceneSearchMessages['es'] = array(
+    'searchnumber'          => "<strong>Resultados $1-$2 de $3</strong>",
+    'searchprev'            => "&#x00AB; <span style='font-size: small'>Previos</span>",
+    'searchnext'            => "<span style='font-size: small'>Siguientes</span> &#x00BB;",
+    'searchscore'           => "Relevancia: $1",
+    'searchsize'            => "$1 KB ($2 palabras)",
+    'searchdidyoumean'      => "¿Quisiste decir: \"<a href=\"$1\">$2</a>\"?",
+    'searchnoresults'       => "Lo sentimos, no se encontraron resultados para tu consulta.",
+    'searchnearmatches'     => "<b>Estas páginas tienen títulos similares a tu consulta:</b>\n",
+    'searchnearmatch'       => "<li>$1</li>\n",
+    'lucenepowersearchtext' => "
+Búsqueda en espacios de nombres:\n
+$1\n
+Search for $3 $9 $10",
+    'lucenefallback'        => "Hubo un problema con la búsqueda en el wiki.
+Es probablemente un problema temporal; intenta de nuevo dentro de un tiempo,
+o puedes buscar en el wiki a través de un servicio externo de búsqueda:\n",
+    'searchexactcase'       => 'Búsqueda sensible a mayúsculas',
+    'searchall'             => 'todos',
+    'searchincategory'      => 'en categoría'
+);
+
 $wgLuceneSearchMessages['fi'] = array(
 	'searchnumber'          => '<strong>Tulokset $1–$2 (yhteensä $3)</strong>',
 	'searchprev'            => '← <span style=\'font-size: small\'>edelliset</span>',
