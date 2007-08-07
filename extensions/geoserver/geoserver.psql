@@ -1,8 +1,3 @@
--- !!!!
--- change the first parameter of AddGeometryColumn to the name of your
--- database
--- !!!!
-
 CREATE TABLE geodata (
     title character varying(255) NOT NULL,
     type_major character(1),
@@ -19,3 +14,7 @@ ALTER TABLE ONLY geodata
 
 select AddGeometryColumn ( 'geodata', 'geom', 4326, 'GEOMETRY', 2);
 CREATE INDEX "geodata_geom_idx" ON "geodata" using gist ("geom" gist_geometry_ops);
+
+CREATE SEQUENCE geodata_fid_seq ;
+ALTER TABLE geodata ALTER COLUMN fid SET DEFAULT nextval('geodata_fid_seq'::regclass);
+
