@@ -324,7 +324,7 @@ class ImageMap {
 	}
 
 	static function error( $name, $line = false ) {
-		return wfMsgForContent( $name, $line );
+		return '<p class="error">' . wfMsgForContent( $name, $line ) . '</p>';
 	}
 }
 
