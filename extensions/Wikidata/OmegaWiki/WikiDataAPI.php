@@ -990,16 +990,26 @@ function getSpellingForLanguage($definedMeaningId, $languageCode, $fallbackLangu
 }
 
 function isClass($objectId) {
-	$dc=wdGetDataSetContext();
-	$dbr = & wfGetDB(DB_SLAVE);	
-	$query = "SELECT {$dc}_collection_ns.collection_id " .
-			 "FROM ({$dc}_collection_contents INNER JOIN {$dc}_collection_ns ON {$dc}_collection_ns.collection_id = {$dc}_collection_contents.collection_id) " .
-			 "WHERE {$dc}_collection_contents.member_mid = $objectId AND {$dc}_collection_ns.collection_type = 'CLAS' " .
-			 	"AND " . getLatestTransactionRestriction("{$dc}_collection_contents") . " ".
-			 	"AND " .getLatestTransactionRestriction("{$dc}_collection_ns");
-	$queryResult = $dbr->query($query);
-
-	return $dbr->numRows($queryResult) > 0;	 
+	global
+		$wgDefaultClassMids;
+	
+	$result = in_array($objectId, $wgDefaultClassMids);
+	
+	if (!$result) {
+		$dc=wdGetDataSetContext();
+		$dbr = & wfGetDB(DB_SLAVE);	
+		$query = 
+			"SELECT {$dc}_collection_ns.collection_id " .
+			" FROM ({$dc}_collection_contents INNER JOIN {$dc}_collection_ns ON {$dc}_collection_ns.collection_id = {$dc}_collection_contents.collection_id) " .
+			" WHERE {$dc}_collection_contents.member_mid = $objectId AND {$dc}_collection_ns.collection_type = 'CLAS' " .
+			" AND " . getLatestTransactionRestriction("{$dc}_collection_contents") . " ".
+			" AND " .getLatestTransactionRestriction("{$dc}_collection_ns");
+		$queryResult = $dbr->query($query);
+	
+		$result = $dbr->numRows($queryResult) > 0;
+	}
+	
+	return $result;	 
 }
 
 function findCollection($name) {
