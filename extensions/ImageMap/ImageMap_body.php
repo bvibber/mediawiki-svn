@@ -195,6 +195,10 @@ class ImageMap {
 				if ( $wgNoFollowLinks ) {
 					$attribs['rel'] = 'nofollow';
 				}
+			} else if ( $title->getFragment() != '' && $title->getPrefixedDBkey() == '' ) {
+				# XXX: kluge to handle [[#Fragment]] links, should really fix getLocalURL()
+				# in Title.php to return an empty string in this case
+				$attribs['href'] = $title->getFragmentForURL();
 			} else {
 				$attribs['href'] = $title->escapeLocalURL() . $title->getFragmentForURL();
 			}
