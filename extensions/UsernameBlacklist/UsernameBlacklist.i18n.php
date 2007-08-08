@@ -22,7 +22,7 @@ function efUsernameBlacklistMessages( $single = false ) {
 # * Foo
 # * [Bb]ar
 </pre>',
-'usernameblacklist-invalid-lines' => 'The following lines in the username blacklist are invalid; please correct them before saving:',
+'usernameblacklist-invalid-lines' => 'The following {{PLURAL:$1|line|lines}} in the username blacklist {{PLURAL:$1|is|are}} invalid; please correct {{PLURAL:$1|it|them}} before saving:',
 
 ),
 
@@ -35,8 +35,17 @@ function efUsernameBlacklistMessages( $single = false ) {
 
 /* German (Raymond) */
 'de' => array(
-'blacklistedusername' => 'Benutzername auf der Sperrliste',
-'blacklistedusernametext' => 'Der gewählte Benutzername steht auf der [[MediaWiki:Usernameblacklist|Liste der gesperrten Benutzernamen]]. Bitte einen anderen wählen.',
+'blacklistedusername'             => 'Benutzername auf der Sperrliste',
+'blacklistedusernametext'         => 'Der gewählte Benutzername steht auf der [[MediaWiki:Usernameblacklist|Liste der gesperrten Benutzernamen]]. Bitte einen anderen wählen.',
+'usernameblacklist'               => '<pre>
+# Einträge in dieser Liste sind Teil eines regulären Ausdrucks,
+# der bei der Prüfung von Neuanmeldungen auf unerwünschte Benutzernamen angewendet wird.
+# Jede Zeile muss mit einem * beginnen, z.B.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => 'Die {{PLURAL:$1|folgende Zeile|folgenden Zeilen}} in der Liste unerwünschter Benutzernamen {{PLURAL:$1|ist|sind}} ungültig; bitte korrigiere sie vor dem Speichern:',
 ),
 
 /* French */
