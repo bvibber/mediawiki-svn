@@ -22,6 +22,7 @@ function efUsernameBlacklistMessages( $single = false ) {
 # * Foo
 # * [Bb]ar
 </pre>',
+'usernameblacklist-invalid-lines' => 'The following lines in the username blacklist are invalid; please correct them before saving:',
 
 ),
 

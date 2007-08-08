@@ -29,7 +29,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 		global $wgHooks, $wgVersion, $wgMessageCache;
 		require_once( dirname( __FILE__ ) . '/UsernameBlacklist.i18n.php' );
 		$wgHooks['AbortNewAccount'][] = 'efUsernameBlacklist';
-		$wgHooks['ArticleSave'][] = 'efUsernameBlacklistInvalidate';
+		$wgHooks['ArticleSaveComplete'][] = 'efUsernameBlacklistInvalidate';
+		$wgHooks['EditFilter'][] = 'efUsernameBlacklistValidate';
+
 		if( version_compare( $wgVersion, '1.9alpha', '>=' ) ) {
 			foreach( efUsernameBlacklistMessages() as $lang => $messages )
 				$wgMessageCache->addMessages( $messages, $lang );
@@ -72,6 +74,36 @@ if( defined( 'MEDIAWIKI' ) ) {
 		return true;
 	}	
 	
+	/**
+	 * If editing the username blacklist page, check for validity and whine at the user.
+	 */
+	function efUsernameBlacklistValidate( $editPage, $text, $section, &$hookError ) {
+		if( $editPage->mTitle->getNamespace() == NS_MEDIAWIKI &&
+		 	$editPage->mTitle->getDbKey() == 'Usernameblacklist' ) {
+			
+			$blacklist = UsernameBlacklist::fetch();
+			$badLines = $blacklist->validate( $text );
+			
+			if( $badLines ) {
+				$badList = "*<tt>" .
+					implode( "</tt>\n*<tt>",
+						array_map( 'wfEscapeWikiText', $badLines ) ) .
+					"</tt>\n";
+				$hookError =
+					"<div class='errorbox'>" .
+					wfMsgExt( 'usernameblacklist-invalid-lines', array( 'parsemag' ), count( $badLines ) ) .
+					"\n" .
+					$badList .
+					"</div>\n" .
+					"<br clear='all' />\n";
+				
+				// This is kind of odd, but... :D
+				return true;
+			}
+		}
+		return true;
+	}
+	
 	class UsernameBlacklist {
 		
 		var $regex;		
@@ -98,12 +130,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 		/**
 		 * Attempt to fetch the blacklist from cache; build it if needs be
 		 *
-		 * @return string
+		 * @return array
 		 */
 		function fetchBlacklist() {
 			global $wgMemc, $wgDBname;
 			$list = $wgMemc->get( $this->key );
-			if( $list ) {
+			if( is_array( $list ) ) {
 				return $list;
 			} else {
 				$list = $this->buildBlacklist();
@@ -115,22 +147,84 @@ if( defined( 'MEDIAWIKI' ) ) {
 		/**
 		 * Build the blacklist from scratch, using the message page
 		 *
-		 * @return string
+		 * @return array of regexes, potentially empty
 		 */
 		function buildBlacklist() {
 			$blacklist = wfMsgForContent( 'usernameblacklist' );
-			$groups = array();
 			if( $blacklist != '&lt;usernameblacklist&gt;' ) {
-				$lines = explode( "\n", $blacklist );
-				foreach( $lines as $line ) {
-					$line = trim( $line );
-					if( $this->isUsable( $line ) )
-						$groups[] = $this->transform( $line );
-				}
-				return count( $groups ) ? '/(' . implode( '|', $groups ) . ')/u' : false;
+				return $this->safeBlacklist( $blacklist );
 			} else {
-				return false;
+				return array();
 			}
+		}
+		
+		/**
+		 * Build one or more blacklist regular expressions from the input.
+		 * If a fragment causes an error, we'll return multiple items
+		 * so they can be run separately.
+		 *
+		 * @param string $input
+		 * @return array of regexes, potentially empty
+		 */
+		function safeBlacklist( $input ) {
+			$groups = $this->fragmentsFromInput( $input );
+			if( count( $groups ) ) {
+				$combinedRegex = '/(' . implode( '|', $groups ) . ')/u';
+			
+				wfSuppressWarnings();
+				$ok = ( preg_match( $combinedRegex, '' ) !== false );
+				wfRestoreWarnings();
+			
+				if( $ok ) {
+					return array( $combinedRegex );
+				} else {
+					$regexes = array();
+					foreach( $groups as $fragment ) {
+						$regexes[] = '/' . $fragment . '/u';
+					}
+					return $regexes;
+				}
+			} else {
+				return array();
+			}
+		}
+		
+		/**
+		 * Break input down by line, remove comments, and strip to regex fragments.
+		 * @input string
+		 * @return array
+		 */
+		function fragmentsFromInput( $input ) {
+			$lines = explode( "\n", $input );
+			$groups = array();
+			foreach( $lines as $line ) {
+				$line = trim( $line );
+				if( $this->isUsable( $line ) )
+					$groups[] = $this->transform( $line );
+			}
+			return $groups;
+		}
+		
+		/**
+		 * Go through a set of input and return a list of lines which
+		 * produce invalid regexes.
+		 * Empty set means good. :)
+		 *
+		 * @param string $input
+		 * @return array
+		 */
+		function validate( $input ) {
+			$bad = array();
+			$fragments = $this->fragmentsFromInput( $input );
+			foreach( $fragments as $fragment ) {
+				wfSuppressWarnings();
+				$ok = ( preg_match( "/$fragment/u", '' ) !== false );
+				wfRestoreWarnings();
+				if( !$ok ) {
+					$bad[] = $fragment;
+				}
+			}
+			return $bad;
 		}
 		
 		/**
@@ -147,7 +241,18 @@ if( defined( 'MEDIAWIKI' ) ) {
 		 * @return bool
 		 */
 		function match( $username ) {
-			return $this->regex ? preg_match( $this->regex, $username ) : false;
+			foreach( $this->regexes as $regex ) {
+				wfSuppressWarnings();
+				$match = preg_match( $regex, $username );
+				wfRestoreWarnings();
+				
+				if( $match ) {
+					return true;
+				} elseif( $match === false ) {
+					wfDebugLog( 'UsernameBlacklist', "Invalid username regex $regex" );
+				}
+			}
+			return false;
 		}
 		
 		/**
@@ -157,7 +262,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		function UsernameBlacklist() {
 			global $wgDBname;
 			$this->key = "{$wgDBname}:username-blacklist";
-			$this->regex = $this->fetchBlacklist();
+			$this->regexes = $this->fetchBlacklist();
 		}
 
 		/**
