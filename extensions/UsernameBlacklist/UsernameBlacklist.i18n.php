@@ -131,6 +131,14 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 'blacklistedusername' => 'Používateľské meno na čiernej listine',
 'blacklistedusernametext' => 'Používateľské meno, ktoré ste si zvolili sa nachádza na [[MediaWiki:Usernameblacklist|
 čiernej listine používateľských mien]]. Prosím, zvoľte si iné.',
+'usernameblacklist' => '<pre>
+# Položky z tohto zoznamu sa použijú ako časť regulárneho výrazu pre
+# zamedzenie vytvorenia účtu s daným používateľským menom. Každá položka 
+# musí byť ako odrážka v zozname, napr.:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
 ),
 
 /* Sundanese (Irwangatot via BetaWiki) */
