@@ -73,18 +73,47 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 'blacklistedusername' => 'Қара тізімдегі қатысушы аты',
 'blacklistedusernametext' => 'Тандаған қатысушы атыңыз [[{{ns:mediawiki}}:Usernameblacklist| қатысушы аты қара тізіміне]] кіреді.
 Басқа атау талғаңыз.',
+'usernameblacklist' => '<pre>
+# Қара тізімдегі қатысушы атын тіркелгі жасаудан сақтап қалу үшін бұл тізімдегі даналар
+# қайталаулы кәлам (regular expression) бөлігі боп пайдаланылады. Әрқайсы дана байрақшамен
+# пішімделген тізімдің бөлігі болуы қажет, мысалы:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => 'Қатысушы аты қара тізіміндегі келесі {{PLURAL:$1|жол|жолдар}} жарамсыз {{PLURAL:$1|болды|болды}}; сақтаудың алдында {{PLURAL:$1|бұны|бұларды}} дұрыстап шығыңыз:',
 ),
+
 /* Kazakh Latin (kk:AlefZet) */
 'kk-tr' => array(
 'blacklistedusername' => 'Qara tizimdegi qatıswşı atı',
 'blacklistedusernametext' => 'Tandağan qatıswşı atıñız [[{{ns:mediawiki}}:Usernameblacklist| qatıswşı atı qara tizimine]] kiredi.
 Basqa ataw talğañız.',
+'usernameblacklist' => '<pre>
+# Qara tizimdegi qatıswşı atın tirkelgi jasawdan saqtap qalw üşin bul tizimdegi danalar
+# qaýtalawlı kälam (regular expression) böligi bop paýdalanıladı. Ärqaýsı dana baýraqşamen
+# pişimdelgen tizimdiñ böligi bolwı qajet, mısalı:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => 'Qatıswşı atı qara tizimindegi kelesi {{PLURAL:$1|jol|joldar}} jaramsız {{PLURAL:$1|boldı|boldı}}; saqtawdıñ aldında {{PLURAL:$1|bunı|bulardı}} durıstap şığıñız:',
 ),
+
 /* Kazakh Arabic (kk:AlefZet) */
 'kk-cn' => array(
 'blacklistedusername' => 'قارا تٸزٸمدەگٸ قاتىسۋشى اتى',
 'blacklistedusernametext' => 'تانداعان قاتىسۋشى اتىڭىز [[{{ns:mediawiki}}:Usernameblacklist| قاتىسۋشى اتى قارا تٸزٸمٸنە]] كٸرەدٸ.
 باسقا اتاۋ تالعاڭىز.',
+'usernameblacklist' => '<pre>
+# قارا تٸزٸمدەگٸ قاتىسۋشى اتىن تٸركەلگٸ جاساۋدان ساقتاپ قالۋ ٷشٸن بۇل تٸزٸمدەگٸ دانالار
+# قايتالاۋلى كٵلام (regular expression) بٶلٸگٸ بوپ پايدالانىلادى. ٵرقايسى دانا بايراقشامەن
+# پٸشٸمدەلگەن تٸزٸمدٸڭ بٶلٸگٸ بولۋى قاجەت, مىسالى:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => 'قاتىسۋشى اتى قارا تٸزٸمٸندەگٸ كەلەسٸ {{PLURAL:$1|جول|جولدار}} جارامسىز {{PLURAL:$1|بولدى|بولدى}}; ساقتاۋدىڭ الدىندا {{PLURAL:$1|بۇنى|بۇلاردى}} دۇرىستاپ شىعىڭىز:',
 ),
 
 /* Kurdi */
@@ -197,7 +226,3 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 
 	return $single ? $messages['en'] : $messages;
 }
-
-
-
-

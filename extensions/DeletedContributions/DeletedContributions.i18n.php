@@ -26,6 +26,17 @@ $wgDeletedContribsMessages['id'] = array(
 	'deletedcontributions'		 => 'Kontribusi yang dihapus'
 );
 
+$wgDeletedContribsMessages['kk-kz'] = array(
+	'deletedcontributions'		 => 'Пайдаланушының жойлған үлестері'
+);
+$wgDeletedContribsMessages['kk-tr'] = array(
+	'deletedcontributions'		 => 'Paýdalanwşınıñ joýlğan ülesteri'
+);
+$wgDeletedContribsMessages['kk-cn'] = array(
+	'deletedcontributions'		 => 'پايدالانۋشىنىڭ جويلعان ٷلەستەرٸ'
+);
+$wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-kz'];
+
 $wgDeletedContribsMessages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
 );
@@ -55,7 +66,4 @@ $wgDeletedContribsMessages['zh-hk'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-sg'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-tw'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-yue'] = $wgDeletedContribsMessages['yue'];
-
-
-
 

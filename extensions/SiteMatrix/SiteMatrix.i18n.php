@@ -53,13 +53,22 @@ $wgSiteMatrixMessages['ja'] = array(
 	"sitematrix" => "Wikimediaウィキの一覧",
 );
 $wgSiteMatrixMessages['kk-kz'] = array(
-	"sitematrix" => "Барлық Wikimedia уики-жобалар тізімі",
+	"sitematrix"          => "Барлық Wikimedia уики тізімі",
+	'sitematrix-language' => 'Тілі',
+	'sitematrix-project'  => 'Жоба атауы, жоба аралық сілтемесі және уики аралық сілтемесі',
+	'sitematrix-others'   => 'Басқа Wikimedia жобалары',
 );
 $wgSiteMatrixMessages['kk-tr'] = array(
-	"sitematrix" => "Barlıq Wikimedia wïkï-jobalar tizimi",
+	"sitematrix"          => "Barlıq Wikimedia wïkï tizimi",
+	'sitematrix-language' => 'Tili',
+	'sitematrix-project'  => 'Joba atawı, joba aralıq siltemesi jäne wïkï aralıq siltemesi',
+	'sitematrix-others'   => 'Basqa Wikimedia jobaları',
 );
 $wgSiteMatrixMessages['kk-cn'] = array(
-	"sitematrix" => "بارلىق Wikimedia ۋيكي-جوبالار تٸزٸمٸ",
+	"sitematrix"          => "بارلىق Wikimedia ۋيكي تٸزٸمٸ",
+	'sitematrix-language' => 'تٸلٸ',
+	'sitematrix-project'  => 'جوبا اتاۋى, جوبا ارالىق سٸلتەمەسٸ جٵنە ۋيكي ارالىق سٸلتەمەسٸ',
+	'sitematrix-others'   => 'باسقا Wikimedia جوبالارى',
 );
 $wgSiteMatrixMessages['kk'] = $wgSiteMatrixMessages['kk-kz'];
 $wgSiteMatrixMessages['lo'] = array(
@@ -130,5 +139,3 @@ $wgSiteMatrixMessages['zh-hk'] = $wgSiteMatrixMessages['zh-hant'];
 $wgSiteMatrixMessages['zh-sg'] = $wgSiteMatrixMessages['zh-hans'];
 $wgSiteMatrixMessages['zh-tw'] = $wgSiteMatrixMessages['zh-hant'];
 $wgSiteMatrixMessages['zh-yue'] = $wgSiteMatrixMessages['yue'];
-
-

@@ -202,22 +202,28 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Xleq amagrad',
 ),
 
-'kk-cn' => array(
-	'tryexact'       => 'دٵل سٵيكەسٸن سىناپ كٶرٸڭٸز',
-	'searchfulltext' => 'تولىق مٵتٸنٸمەن ٸزدەۋ',
-	'createarticle'  => 'بەتتٸ باستاۋ',
-),
-
 'kk-kz' => array(
-	'tryexact'       => 'Дәл сәйкесін сынап көріңіз',
-	'searchfulltext' => 'Толық мәтінімен іздеу',
-	'createarticle'  => 'Бетті бастау',
+	'inputbox-error-no-type'  => 'Жасалатын енгізу жолағының түрін келтірмепсіз.',
+	'inputbox-error-bad-type' => 'Енгізу жолақтың «$1» түрі танылмады. Тек «create», «comment», «search» не «search2» деген түрлерді келтіріңіз.',
+	'tryexact'                => 'Дәл сәйкесін сынап көріңіз',
+	'searchfulltext'          => 'Толық мәтінімен іздеу',
+	'createarticle'           => 'Бетті бастау',
 ),
 
 'kk-tr' => array(
-	'tryexact'       => 'Däl säýkesin sınap köriñiz',
-	'searchfulltext' => 'Tolıq mätinimen izdew',
-	'createarticle'  => 'Betti bastaw',
+	'inputbox-error-no-type'  => 'Jasalatın engizw jolağınıñ türin keltirmepsiz.',
+	'inputbox-error-bad-type' => 'Engizw jolaqtıñ «$1» türi tanılmadı. Tek «create», «comment», «search» ne «search2» degen türlerdi keltiriñiz.',
+	'tryexact'                => 'Däl säýkesin sınap köriñiz',
+	'searchfulltext'          => 'Tolıq mätinimen izdew',
+	'createarticle'           => 'Betti bastaw',
+),
+
+'kk-cn' => array(
+	'inputbox-error-no-type'  => 'جاسالاتىن ەنگٸزۋ جولاعىنىڭ تٷرٸن كەلتٸرمەپسٸز.',
+	'inputbox-error-bad-type' => 'ەنگٸزۋ جولاقتىڭ «$1» تٷرٸ تانىلمادى. تەك «create», «comment», «search» نە «search2» دەگەن تٷرلەردٸ كەلتٸرٸڭٸز.',
+	'tryexact'                => 'دٵل سٵيكەسٸن سىناپ كٶرٸڭٸز',
+	'searchfulltext'          => 'تولىق مٵتٸنٸمەن ٸزدەۋ',
+	'createarticle'           => 'بەتتٸ باستاۋ',
 ),
 
 'ko' => array(
@@ -444,5 +450,9 @@ function efInputBoxMessages() {
 ),
 
 );
+
+	/* Kazakh default, fallback to kk-kz */
+	$messages['kk'] = $messages['kk-kz'];
+
 	return $messages;
 }
