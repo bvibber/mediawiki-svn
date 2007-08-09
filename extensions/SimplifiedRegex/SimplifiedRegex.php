@@ -1,5 +1,11 @@
 <?php
 
+/*
+* @author Bartek Lapinski
+* @copyright Copyright © 2007, Wikia Inc.
+* @license http://www.gnu.org/copyleft/gpl.html GNU General Public License 2.0 or later
+*/
+
 if(!defined('MEDIAWIKI'))
    die();
 
@@ -30,4 +36,4 @@ function wfSimplifiedRegexCheckSharedDB() {
 	return false ;
 }
 
-
+?>
