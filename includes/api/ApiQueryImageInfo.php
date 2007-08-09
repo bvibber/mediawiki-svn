@@ -60,11 +60,11 @@ class ApiQueryImageInfo extends ApiQueryBase {
 
 				$data = array();
 				if ( !$img ) {
-					$data['missing'] = '';			
+					$repository = '';
 				} else {
-					
-					$data['repository'] = $img->getRepoName();
-					
+
+					$repository = $img->getRepoName();
+
 					$isCur = true;
 					while($line = $img->nextHistoryLine()) { // assignment
 						$vals = array();
@@ -77,9 +77,9 @@ class ApiQueryImageInfo extends ApiQueryBase {
 								$vals['anon'] = '';
 						}
 						if ($fld_size) {
-							$vals['size'] = $line->img_size;
-							$vals['width'] = $line->img_width;
-							$vals['height'] = $line->img_height;
+							$vals['size'] = intval($line->img_size);
+							$vals['width'] = intval($line->img_width);
+							$vals['height'] = intval($line->img_height);
 						}
 						if ($fld_url)
 							$vals['url'] = $isCur ? $img->getURL() : $img->getArchiveUrl($line->oi_archive_name);
@@ -97,7 +97,11 @@ class ApiQueryImageInfo extends ApiQueryBase {
 					$img->resetHistory();
 				}
 
-				$this->addPageSubItems($pageId, $data);
+                $this->getResult()->addValue(array ('query', 'pages', intval($pageId)),
+                    'imagerepository',
+                    $repository);
+                if (!empty($data))
+                    $this->addPageSubItems($pageId, $data);
 			}
 		}
 	}

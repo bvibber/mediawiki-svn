@@ -388,7 +388,6 @@ Votre compte a été créé. N’oubliez pas de personnaliser vos Préférences 
 'yourdomainname'             => 'Votre domaine',
 'externaldberror'            => 'Soit une erreur s’est produite avec la base de données d’authentification externe, soit vous n’êtes pas autorisé à mettre à jour votre compte externe.',
 'loginproblem'               => '<b>Problème d’identification.</b><br />Essayez à nouveau !',
-'alreadyloggedin'            => '<strong>Utilisateur $1, vous êtes déjà identifié !</strong><br />',
 'login'                      => 'Identification',
 'loginprompt'                => 'Vous devez activer les cookies pour vous connecter à {{SITENAME}}.',
 'userlogin'                  => 'Créer un compte ou se connecter',
@@ -595,7 +594,7 @@ Peut-être devriez-vous diviser la page en sections plus petites.'''",
 vous ne pourrez donc pas sauvegarder vos modifications maintenant. Vous pouvez copier le texte dans un fichier texte et le sauver pour plus tard.'''",
 'protectedpagewarning'      => "'''AVERTISSEMENT : cette page est protégée.
 Seuls les utilisateurs ayant le statut d’administrateur peuvent la modifier..'''",
-'semiprotectedpagewarning'  => "'''Notee:''' Cette page a été protégée de telle façon que seuls les contributeurs enregistrés puissent la modifier.",
+'semiprotectedpagewarning'  => "'''Note:''' Cette page a été protégée de telle façon que seuls les contributeurs enregistrés puissent la modifier.",
 'cascadeprotectedwarning'   => '<strong>ATTENTION : Cette page a été protégée de manière à ce que seuls les [[{{MediaWiki:grouppage-sysop}}|administrateurs]] puissent l’éditer. Cette protection a été faite car cette page est incluse dans {{PLURAL:$1|une page protégée|des pages protégées}} avec la « protection en cascade » activée.</strong>',
 'templatesused'             => 'Modèles utilisés sur cette page :',
 'templatesusedpreview'      => 'Modèles utilisés dans cette prévisualisation :',
@@ -2063,11 +2062,6 @@ Pour confirmer que ce compte vous appartient vraiment et activer les fonctions d
 $3
 
 Si il ne s’agit pas de vous, n’ouvrez pas le lien. Ce code de confirmation expirera le $4.',
-
-# Inputbox extension, may be useful in other contexts as well
-'tryexact'       => 'Essayez la correspondance exacte',
-'searchfulltext' => 'Recherche en texte intégral',
-'createarticle'  => 'Créer l’article',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[La transclusion interwiki est désactivée]',
