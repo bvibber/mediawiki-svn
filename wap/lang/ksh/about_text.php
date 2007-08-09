@@ -5,7 +5,7 @@
  */
 
 $about = Array(
-"title" => "Über de",
+"title" => "Über de Wikipedia",
 "text" => 'De Wikipedia is e Nohkixel un ier Ennhald sen freij. Se woote fun Freiwellijje op de janze Welt beijjedraare. Et kumme och ens fokiehrte Saache aan. Dröm doot Üsch nit onbedingk drop foloohsse un dooht och anndere Quelle beijtrekke.',
 "imp1" => 'De Wikipedia weed bedrevve fun:',
 "imp2" => "Wikimedia Foundation Inc.",

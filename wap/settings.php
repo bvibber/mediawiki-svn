@@ -31,7 +31,6 @@ set_deck_properties($deck);
 $emptyLine = new HAW_text("");
 $wp_image = new HAW_image(HAWIKI_WIKIPEDIA_ICON . ".wbmp",
 		HAWIKI_WIKIPEDIA_ICON . ".gif", "");
-#$wp_image->set_voice_text("");
 $deck->add_image($wp_image);
 
 $deck->add_text($emptyLine);
@@ -56,13 +55,17 @@ else if ($_GET['mode'] == 'lang') {
 	global $supportedLanguages;
 	
   $lang_code = Array(
-    "bar" => "bavarian",
-    "de" => "german",
-    "en" => "english",
-    "es" => "spanish",
-    "fr" => "french",
-    'nds' => 'low german',
-    'ksh' => 'ripuarian'
+    "bar" => "Boarisch",
+    "cs" => "Česky",
+    "de" => "Deutsch",
+    "en" => "English",
+    "es" => "Español",
+    "fr" => "Français",
+    "hu" => "Magyar",
+    "ksh" => "Ripoarisch",
+    "nds" => "Plattdüütsch",
+    "pt" => "Português",
+    "sr" => "Српски / Srpski",
   );
   
   $subtitle = new HAW_text(hawtra("Language"), HAW_TEXTFORMAT_BOLD);
@@ -80,7 +83,7 @@ else if ($_GET['mode'] == 'lang') {
       else
         $selected = HAW_NOTSELECTED;
         
-      $selection->add_option(hawtra($lang_code[$key]), $key, $selected);
+      $selection->add_option($lang_code[$key], $key, $selected);
     }
   }
 

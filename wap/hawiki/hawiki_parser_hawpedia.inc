@@ -89,8 +89,10 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 		return($po);
 	}
 
-	if (preg_match("/^\[\[([^\[\]]+)\]\]/", $input, $matches))
-	#if (preg_match("/^\[\[(([^\[\]]+)|(\[[^\[\]]*\])*|(\[\[[^\[\]]*\]\])*)+\]\]/", $input, $matches))
+	#if (preg_match("/^\[\[([^\[\]]+)\]\]/", $input, $matches))
+	// this breaks the parser and creates "invalid wiki syntax" errors!
+	// reactivated old HawPedia regex:	
+	if (preg_match("/^\[\[(([^\[\]]+)|(\[[^\[\]]*\])*|(\[\[[^\[\]]*\]\])*)+\]\]/", $input, $matches))
 	{
 		// Forced WikiName ((a_page_with_any_name))
 

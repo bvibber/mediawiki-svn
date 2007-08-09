@@ -5,7 +5,7 @@
  */
 
 $about = Array(
-"title" => "Über die",
+"title" => "Über die Wikipedia",
 "text" => 'Die Wikipedia ist eine Enzyklopädie mit freien Inhalten, die von Freiwilligen auf der ganzen Welt beigesteuerte wurden. Gelegentlich wird auch Unrichtiges zugefügt. Darum sollte man sich auf die Angaben nicht verlassen und immer weitere Quellen hinzuziehen.',
 "imp1" => 'Wikipedia wird betrieben von:',
 "imp2" => "Wikimedia Foundation Inc.",

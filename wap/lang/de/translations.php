@@ -25,15 +25,6 @@ $translation = Array(
 "Spoken Wikipedia" => "Gesprochene Wikipedia",
 "Wikipedia currently not available" => "Wikipedia momentan nicht verfügbar",
 "wikipedia export error" => "Wikipedia Export Fehler",
-"you hear an article from the wikipedia" => "Sie hören einen Artikel aus der Wikipedia",
-# languages:
-"bavarian" => "bayrisch",
-"english" => "englisch",
-"french" => "französisch",
-"german" => "deutsch",
-"low german"	=> "plattdüütsch",
-"ripuarian"	=> "ripuarisch",
-'spanish'	=> 'spanisch',
 "###end###"=>"###end###");
 
 ?>

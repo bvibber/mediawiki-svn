@@ -4,7 +4,7 @@
  * $Date: 2007/04/14 20:38:30 $
  */
 
-define("HAWPEDIA_VERSION",	"1.0");
+define("HAWPEDIA_VERSION",	"1.2B");
 
 define("HAWIKI_TITLE",		"Wikipedia");    // browser window title
 define("DEFAULT_LANGUAGE",	"es");
@@ -27,12 +27,16 @@ define("HAWPEDIA_VXML_TMP_FILE", "/tmp/hawpedia_vxml_dispatcher.tmp");
 
 $supportedLanguages = Array(
 "bar" => 1,
+"cs" => 1,
 "de" => 1,
 "en" => 1,
 "es" => 1,
 "fr" => 0,
-"nds" => 1,
+"hu" => 1,
 "ksh" => 1,
+"nds" => 1,
+"pt" => 1,
+"sr" => 1,
 "zxx" => 0);
 
 ?>

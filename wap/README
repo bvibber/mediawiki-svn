@@ -94,3 +94,14 @@ Images:
 
 =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 
+Merge with HawPedia V1.1
+(by Norbert Huffschmid - http://en.wikipedia.org/wiki/User:H2fen)
+
+- added language support for
+  o czech
+  o hungarian
+  o portuguese
+  o serbian
+- completed spanish translation file
+- settings: display available languages in localized style
+- fixed wiki parser (hawiki_parser_hawpedia.inc) for image handling

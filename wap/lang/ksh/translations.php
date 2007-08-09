@@ -25,15 +25,6 @@ $translation = Array(
 "Spoken Wikipedia" => "Wikipedija jewschwaadt",
 "Wikipedia currently not available" => "de Wikipedia es jrad nit ze hann",
 "wikipedia export error" => "Fäähler beijem Wikipedia Expocht",
-"you hear an article from the wikipedia" => "Ehr hüürd ene Attikel us de Wikipedija",
-# languages:
-"bavarian" => "bayerisch",
-"english" => "änglesch",
-"french" => "franzüüsisch",
-"german" => "döütsch",
-"low german"	=> "nederdöütsch",
-"ripuarian"	=> "ripoarisch",
-'spanish'	=> 'shpanisch',
 "###end###"=>"###end###");
 
 ?>
