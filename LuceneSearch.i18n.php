@@ -261,55 +261,75 @@ $1
 	'lucenefallback'        => '検索中に一時的な問題が発生しました。しばらく経ってから再度検索するか、外部の検索サービスを使用してください:
 ',
 );
+
 $wgLuceneSearchMessages['kk-kz'] = array(
-	'searchnumber'          => "<strong>$3 дегеннен табылған $1—$2 нәтиже</strong>",
+	'searchnumber'          => "<strong>$3 ішіндегі $1—$2 нәтиже</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Алдыңғыға</span>",
 	'searchnext'            => "<span style='font-size: small'>Келесіге</span> &#x00BB;",
 	'searchscore'           => "Сәйкестігі: $1",
 	'searchsize'            => "$1 KB ($2 сөз)",
-	'searchdidyoumean'      => "«<a href=\"$1\">$2</a>» деп қалайсыз ба?",
-	'searchnoresults'       => "Ғафу етіңіз, сұранысынызға қарай нақты сәйкесі бар еш нәтиже табылмады.",
+	'searchdidyoumean'      => "Мынау деп есепке алдыңыз ба: «<a href=\"$1\">$2</a>»?",
+	'searchnoresults'       => "Ғафу етіңіз, сұранысынызға нақты сәйкесі бар еш нәтиже табылмады.",
 	'searchnearmatches'     => "<b>Мына бет атауларында сұранысыңызға ұқсастығы бар:</b>\n",
-	'lucenepowersearchtext' => "Мына есім аяларда іздеу:<br />
+	'searchnearmatch'       => "<li>$1</li><br />",
+	'lucenepowersearchtext' => "
+Мына есім аяларда іздеу:<br />
 $1<br />
 Іздестіру сұранысы: $3 $9 $10",
-	'lucenefallback'        => "Іздеу кезінде мына уикиде шатақ шықты.
-Бәлкім, бұл уақытша кедергі; біршама сәттен соң қайталаңыз,
-немесе осы уикиден іздеу үшін сыртқы қызметтерін қолданыңыз:<br />"
+	'lucenefallback'        => "Мында «уики іздеу» дегенді пайдаланғанда шатақ шықты.
+Бәлкім, бұл уақытша кедергі болды; біршама сәттен соң қайталаңыз,
+немесе осы уикиден іздеу үшін сыртқы қызметтерін қолданыңыз:<br />",
+	'searchexactcase'       => 'Бас-кіші әріпін ескеру',
+	'searchall'             => 'барлығында',
+	'searchincategory'      => 'санатта',
 );
+
 $wgLuceneSearchMessages['kk-tr'] = array(
-	'searchnumber'          => "<strong>$3 degennen tabılğan $1—$2 nätïje</strong>",
+	'searchnumber'          => "<strong>$3 işindegi $1—$2 nätïje</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Aldıñğığa</span>",
 	'searchnext'            => "<span style='font-size: small'>Kelesige</span> &#x00BB;",
 	'searchscore'           => "Säýkestigi: $1",
 	'searchsize'            => "$1 KB ($2 söz)",
-	'searchdidyoumean'      => "«<a href=\"$1\">$2</a>» dep qalaýsız ba?",
-	'searchnoresults'       => "Ğafw etiñiz, suranısınızğa qaraý naqtı säýkesi bar eş nätïje tabılmadı.",
+	'searchdidyoumean'      => "Mınaw dep esepke aldıñız ba: «<a href=\"$1\">$2</a>»?",
+	'searchnoresults'       => "Ğafw etiñiz, suranısınızğa naqtı säýkesi bar eş nätïje tabılmadı.",
 	'searchnearmatches'     => "<b>Mına bet atawlarında suranısıñızğa uqsastığı bar:</b>\n",
-	'lucenepowersearchtext' => "Mına esim ayalarda izdew:<br />
+	'searchnearmatch'       => "<li>$1</li><br />",
+	'lucenepowersearchtext' => "
+Mına esim ayalarda izdew:<br />
 $1<br />
 İzdestirw suranısı: $3 $9 $10",
-	'lucenefallback'        => "İzdew kezinde mına wïkïde şataq şıqtı.
-Bälkim, bul waqıtşa kedergi; birşama sätten soñ qaýtalañız,
-nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />"
+	'lucenefallback'        => "Mında «wïkï izdew» degendi paýdalanğanda şataq şıqtı.
+Bälkim, bul waqıtşa kedergi boldı; birşama sätten soñ qaýtalañız,
+nemese osı wïkïden izdew üşin sırtqı qızmetterin qoldanıñız:<br />",
+	'searchexactcase'       => 'Bas-kişi äripin eskerw',
+	'searchall'             => 'barlığında',
+	'searchincategory'      => 'sanatta',
 );
+
 $wgLuceneSearchMessages['kk-cn'] = array(
-	'searchnumber'          => "<strong>$3 دەگەننەن تابىلعان $1—$2 نٵتيجە</strong>",
+	'searchnumber'          => "<strong>$3 ٸشٸندەگٸ $1—$2 نٵتيجە</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>الدىڭعىعا</span>",
 	'searchnext'            => "<span style='font-size: small'>كەلەسٸگە</span> &#x00BB;",
 	'searchscore'           => "سٵيكەستٸگٸ: $1",
 	'searchsize'            => "$1 KB ($2 سٶز)",
-	'searchdidyoumean'      => "«<a href=\"$1\">$2</a>» دەپ قالايسىز با؟",
-	'searchnoresults'       => "عافۋ ەتٸڭٸز, سۇرانىسىنىزعا قاراي ناقتى سٵيكەسٸ بار ەش نٵتيجە تابىلمادى.",
+	'searchdidyoumean'      => "مىناۋ دەپ ەسەپكە الدىڭىز با: «<a href=\"$1\">$2</a>»؟",
+	'searchnoresults'       => "عافۋ ەتٸڭٸز, سۇرانىسىنىزعا ناقتى سٵيكەسٸ بار ەش نٵتيجە تابىلمادى.",
 	'searchnearmatches'     => "<b>مىنا بەت اتاۋلارىندا سۇرانىسىڭىزعا ۇقساستىعى بار:</b>\n",
-	'lucenepowersearchtext' => "مىنا ەسٸم ايالاردا ٸزدەۋ:<br />
+	'searchnearmatch'       => "<li>$1</li><br />",
+	'lucenepowersearchtext' => "
+مىنا ەسٸم ايالاردا ٸزدەۋ:<br />
 $1<br />
 ٸزدەستٸرۋ سۇرانىسى: $3 $9 $10",
-	'lucenefallback'        => "ٸزدەۋ كەزٸندە مىنا ۋيكيدە شاتاق شىقتى.
-بٵلكٸم, بۇل ۋاقىتشا كەدەرگٸ; بٸرشاما سٵتتەن سوڭ قايتالاڭىز,
-نەمەسە وسى ۋيكيدەن ٸزدەۋ ٷشٸن سىرتقى قىزمەتتەرٸن قولدانىڭىز:<br />"
+	'lucenefallback'        => "مىندا «ۋيكي ٸزدەۋ» دەگەندٸ پايدالانعاندا شاتاق شىقتى.
+بٵلكٸم, بۇل ۋاقىتشا كەدەرگٸ بولدى; بٸرشاما سٵتتەن سوڭ قايتالاڭىز,
+نەمەسە وسى ۋيكيدەن ٸزدەۋ ٷشٸن سىرتقى قىزمەتتەرٸن قولدانىڭىز:<br />",
+	'searchexactcase'       => 'باس-كٸشٸ ٵرٸپٸن ەسكەرۋ',
+	'searchall'             => 'بارلىعىندا',
+	'searchincategory'      => 'ساناتتا',
 );
+
 $wgLuceneSearchMessages['kk'] = $wgLuceneSearchMessages['kk-kz'];
+
 $wgLuceneSearchMessages['lo'] = array(
 	'searchdidyoumean'      => "ຫຼື ທ່ານໝາຍຄວາມວ່າ",
 	'searchnoresults'       => "ຂໍໂທດຫຼາຍໆ, ບໍ່ມີ ບົດຄວາມ ທີ່ມີຊື່ກົງກັບສິ່ງທີ່ ທ່ານ ຊອກຫາແບບສົມບູນ.",
@@ -614,6 +634,3 @@ $wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-hant'];
 $wgLuceneSearchMessages['zh-sg'] = $wgLuceneSearchMessages['zh-hans'];
 $wgLuceneSearchMessages['zh-tw'] = $wgLuceneSearchMessages['zh-hant'];
 $wgLuceneSearchMessages['zh-yue'] = $wgLuceneSearchMessages['yue'];
-
-
-
