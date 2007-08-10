@@ -40,7 +40,7 @@ function wfStaticEditHook ( $a ) {
 		
 	$url_title = $wgTitle->getPrefixedDBkey() ;
 	$title = $wgTitle->getText () ;	
-	$wgOut->setPageTitle ( wfMsg( 'importing', $wgTitle->getPrefixedText() ) ) ;
+	$wgOut->setPageTitle ( 'Importing ' . $wgTitle->getPrefixedText() ) ;
 	
 	if ( $wgRequest->getVal( 'wpSection', $wgRequest->getVal( 'section' ) ) != '' ) {
 		$wgOut->addHTML ( "<h2>No section importing, sorry!</h2>" ) ;
