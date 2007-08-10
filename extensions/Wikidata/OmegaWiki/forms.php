@@ -8,7 +8,7 @@ function getTextBox($name, $value = "", $onChangeHandler = "", $maximumLength = 
 	else
 		$onChangeAttribute = '';
 
-	return '<input type="text" id="'. $name .'" name="'. $name .'" value="'. $value .'" maxlength="'. $maximumLength .'"' . $onChangeAttribute . ' style="width: 100%; padding: 0px; margin: 0px;"/>';
+	return '<input type="text" id="'. $name .'" name="'. $name .'" value="'. htmlspecialchars($value) .'" maxlength="'. $maximumLength .'"' . $onChangeAttribute . ' style="width: 100%; padding: 0px; margin: 0px;"/>';
 }
  
 function getTextArea($name, $text = "", $rows = 5, $columns = 80) {

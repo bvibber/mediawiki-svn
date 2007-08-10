@@ -519,6 +519,13 @@ class TextAttributeValuesController extends ObjectAttributeValuesController {
 }
 
 class LinkAttributeValuesController extends ObjectAttributeValuesController {
+	protected function validateURL($url) {
+		if (!strpos($url,"://"))
+			$url = "http://" . $url;
+			
+		return $url;
+	}
+	
 	public function add($keyPath, $record)  {
 		global
 			$linkAttribute, $linkAttributeAttribute, $linkLabelAttribute, $linkURLAttribute;
@@ -529,8 +536,8 @@ class LinkAttributeValuesController extends ObjectAttributeValuesController {
 		$label = $linkValue->getAttributeValue($linkLabelAttribute);
 		$url = $linkValue->getAttributeValue($linkURLAttribute);		
 		
-		if ($linkAttributeId != 0 && $url != "")		
-			addLinkAttributeValue($objectId, $linkAttributeId, $url, $label);
+		if ($linkAttributeId != 0 && $url != "") 		
+			addLinkAttributeValue($objectId, $linkAttributeId, $this->validateURL($url), $label);
 	}
 
 	public function remove($keyPath) {
@@ -550,8 +557,9 @@ class LinkAttributeValuesController extends ObjectAttributeValuesController {
 		$label = $linkValue->getAttributeValue($linkLabelAttribute);
 		$url = $linkValue->getAttributeValue($linkURLAttribute);		
 				
-		if ($url != "")
-			updateLinkAttributeValue($linkId, $url, $label);
+		if ($url != "") {
+			updateLinkAttributeValue($linkId, $this->validateURL($url), $label);
+		}	
 	}
 }
 

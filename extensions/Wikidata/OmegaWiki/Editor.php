@@ -1062,8 +1062,8 @@ class LinkEditor extends ShortTextEditor {
 			$linkLabelAttribute, $linkURLAttribute;
 		
 		$label = htmlspecialchars($value->getAttributeValue($linkLabelAttribute));
-		$url = htmlspecialchars($value->getAttributeValue($linkURLAttribute));
-		
+		$url = htmlspecialchars($value->getAttributeValue($linkURLAttribute)); 
+
 		if ($label == "")
 			$label = $url;
 		
