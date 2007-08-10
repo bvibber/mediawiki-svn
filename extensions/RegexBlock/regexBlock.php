@@ -65,6 +65,6 @@ require_once ($IP.REGEXBLOCK_PATH."extensions/regexBlock/SpecialRegexBlock.php")
 require_once ($IP.REGEXBLOCK_PATH."extensions/regexBlock/SpecialRegexBlockStats.php") ;
 
 /* simplified regexes, this is shared with SpamRegex */
-require_once ($IP.REGEXBLOCK_PATH."extensions/SimplifiedRegex.php") ;
+require_once ($IP.REGEXBLOCK_PATH."extensions/SimplifiedRegex/SimplifiedRegex.php") ;
 
 
