@@ -147,7 +147,7 @@ public class FastWikiTokenizerEngine {
 	 */
 	private final void addToken(){
 		if(length!=0){
-			if(numberToken && (buffer[length-1]=='.' ||buffer[length-1]==','))
+			if(numberToken && (buffer[length-1]=='.' || buffer[length-1]==','))
 				length--; // strip trailing . and , in numbers
 			// decompose token, maintain alias if needed
 			decompLength = 0;
@@ -462,6 +462,8 @@ public class FastWikiTokenizerEngine {
 			switch(state){			
 			case WORD:
 				switch(c){
+				case '\'':
+					continue; // ignore single quotes
 				case '=':
 					checkHeadings();
 					break;
@@ -636,8 +638,8 @@ public class FastWikiTokenizerEngine {
 					case WORD:
 						// don't add token to get syntax like [[bean]]s
 						continue;
-					case CATEGORY:
-						categories.add(new String(buffer,0,length));
+					case CATEGORY:						
+						categories.add(new String(buffer,0,length).replace("_"," "));
 						length = 0;
 						fetch = FetchState.WORD;
 						// index category words

@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
-import org.wikimedia.lsearch.index.IndexThread;
 
 /**
  * Encapsulated an index ID in form db.part, e.g. entest.mainpart.
@@ -58,7 +57,7 @@ public class IndexId {
 	/** If true, this machine is an indexer for this index */
 	protected boolean myIndex;
 	
-	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT };
+	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL_WORDS, SPELL_TITLES };
 	
 	/** Type of index, enumeration */
 	protected IndexType type;
@@ -88,16 +87,8 @@ public class IndexId {
 	protected String statusPath;
 	/** Path where transaction data is stored */
 	protected String transactionPath;
-	/** Path where spell check data is */
-	protected String spellcheckPath;
-	/** Path to clean (stem-free) version of the index, used for building other suggest indexes */
-	protected String suggestCleanPath;
-	/** Path to index with words for suggest */
-	protected String suggestWordsPath;
-	/** Path to index with page title for suggest */
-	protected String suggestTitlesPath;
-	/** Path to index with ngram phrases */
-	protected String suggestPhrasesPath;
+	/** Path to temporary index (e.g. for rebuilding spell-check words) */
+	protected String tempPath;
 	
 	/** url of OAI repository */
 	protected String OAIRepository;
@@ -164,6 +155,10 @@ public class IndexId {
 			this.type = IndexType.SPLIT;
 		else if(type.equals("nssplit"))
 			this.type = IndexType.NSSPLIT;
+		else if(type.equals("spell_words"))
+			this.type = IndexType.SPELL_WORDS;
+		else if(type.equals("spell_titles"))
+			this.type = IndexType.SPELL_TITLES;
 		
 		// parts
 		String[] parts = dbrole.split("\\.");
@@ -223,17 +218,8 @@ public class IndexId {
 		rsyncSnapshotPath = indexRsyncPath+"snapshot/" + dbrole;
 		statusPath = localIndexPath + "status" + sep + dbrole;
 		transactionPath = localIndexPath + "transaction" + sep + dbrole;
-		spellcheckPath = localIndexPath + "spellcheck" + sep + dbrole;
-		if(isLogical()){			
-			suggestCleanPath = localIndexPath + "suggest" + sep + "clean" + sep + dbrole;
-			suggestWordsPath = localIndexPath + "suggest" + sep + "words" + sep + dbrole;
-			suggestTitlesPath = localIndexPath + "suggest" + sep + "titles" + sep + dbrole;
-			suggestPhrasesPath = localIndexPath + "suggest" + sep + "phrases" + sep + dbrole;
-		} else {
-			suggestCleanPath = null;
-			suggestWordsPath = null;
-			suggestTitlesPath = null;
-		}
+		tempPath = localIndexPath + "temp" + sep + dbrole;
+
 		if(mySearch){
 			searchPath = localIndexPath + "search" + sep + dbrole;
 			updatePath = localIndexPath + "update" + sep + dbrole;
@@ -264,6 +250,19 @@ public class IndexId {
 	public boolean isNssplit(){
 		return type == IndexType.NSSPLIT;
 	}
+	/** If this is the spell-check index for words */
+	public boolean isSpellWords(){
+		return type == IndexType.SPELL_WORDS;
+	}
+	/** It this is the spell-check index for phrases and words from titles */
+	public boolean isSpellTitles(){
+		return type == IndexType.SPELL_TITLES;
+	}
+	/** If this is one of the spell-check indexes */
+	public boolean isSpellCheck(){
+		return isSpellWords() || isSpellTitles();
+	}
+	
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
 	public int getPartNum() {
 		if(type == IndexType.SPLIT || type == IndexType.NSSPLIT || type == IndexType.MAINSPLIT)
@@ -369,26 +368,11 @@ public class IndexId {
 	public String getStatusPath() {
 		return statusPath;
 	}
-	/** Where spell check index is */ 
-	public String getSpellcheckPath() {
-		return spellcheckPath;
+	/** Path for temporary indexes */ 
+	public String getTempPath() {
+		return tempPath;
 	}
-	/** Path to clean (stem-free) version of the index, used for building other suggest indexes */	
-	public String getSuggestCleanPath() {
-		return suggestCleanPath;
-	}
-	/** Path to index with words for suggest */
-	public String getSuggestTitlesPath() {
-		return suggestTitlesPath;
-	}
-	/** Path to index with page title for suggest */
-	public String getSuggestWordsPath() {
-		return suggestWordsPath;
-	}
-	/** Path to index with suggest phrases in ngrams, e.g. douglas_adams */
-	public String getSuggestPhrasesPath() {
-		return suggestPhrasesPath;
-	}
+
 
 	/** Get search path with resolved symlinks */
 	public String getCanonicalSearchPath(){
@@ -426,7 +410,7 @@ public class IndexId {
 	
 	/** get all hosts that search db this iid belongs to */
 	public HashSet<String> getDBSearchHosts(){
-		if(isSingle())
+		if(isSingle() || isSpellWords() || isSpellTitles())
 			return searchHosts;
 		else{
 			// add all hosts that search: dbname and all parts
@@ -477,7 +461,7 @@ public class IndexId {
 	 */
 	public HashSet<String> getPhysicalIndexes() {
 		HashSet<String> ret = new HashSet<String>();
-		if(isSingle())
+		if(isSingle() || isSpellWords() || isSpellTitles())
 			ret.add(dbrole);
 		else if(isMainsplit() || isSplit() || isNssplit()){
 			for(String p : splitParts)
@@ -530,9 +514,19 @@ public class IndexId {
 		return namespaceSet;
 	}
 	
-	/** Get logical iid for this index, i.e. enwiki.mainpart -> enwiki */
-	public IndexId getLogical(){
+	/** Get iid for dbname of this index, i.e. enwiki.mainpart -> enwiki */
+	public IndexId getDB(){
 		return get(dbname);
+	}
+
+	/** Get the coresponding spell words iid */
+	public IndexId getSpellWords() {
+		return get(dbname+".spell_words");
+	}
+	
+	/** Get the coresponding spell titles iid */
+	public IndexId getSpellTitles() {
+		return get(dbname+".spell_titles");
 	}
 	
 	

@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.suggest.dist;
+package org.wikimedia.lsearch.spell.dist;
 
 
 /**
@@ -89,8 +89,9 @@ public class EditDistance {
                   }
                   // Step 6
                   // penalize insert/deletions at the beginning
-                  int insdel = (i==1 || j==1)? 2 : 1;
-                  d[i][j]=min3(d[i-1][j]+insdel, d[i][j-1]+insdel, d[i-1][j-1]+cost);
+                  int ins = (i==1)? 2 : 1;
+                  int del = (j==1)? 2 : 1;
+                  d[i][j]=min3(d[i-1][j]+ins, d[i][j-1]+del, d[i-1][j-1]+cost);
                   // transposition
                   if(i>1 && j>1 && sa[i-1] == ta[j-2] && sa[i-2] == ta[j-1]){
                   	d[i][j] = min2(d[i][j],d[i-2][j-2] + 1);

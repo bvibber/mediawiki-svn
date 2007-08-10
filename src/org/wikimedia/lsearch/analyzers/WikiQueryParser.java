@@ -270,6 +270,73 @@ public class WikiQueryParser {
 		return fields;
 	}
 	
+	/** Find and delete all valid prefixes, return search terms in tokens */
+	public ArrayList<Token> tokenizeBareText(String queryText){
+		int level = 0; // parenthesis count
+		int fieldLevel = -1;
+		TokenType tokenType;
+		boolean inPhrase = false;
+		
+		ArrayList<Token> ret = new ArrayList<Token>();
+		
+		reset();
+		
+		queryLength = queryText.length(); 
+		text = queryText.toCharArray();
+		String oldDefault = defaultField;
+		defaultField = "title"; // no stemming
+						
+		for(cur = 0; cur < text.length; cur++ ){
+			c = text[cur];
+			if(c == '"'){
+				inPhrase = !inPhrase;
+				if(inPhrase)
+					length = 0;
+				else{ // end of phrase
+					int start = cur - length;
+					analyzeBuffer();					
+					for(Token t : tokens){
+						ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),"phrase"));
+					}
+				}
+			}
+			
+			if(inPhrase){
+				buffer[length++] = c;
+				continue;
+			}
+			
+			if(c == ')'){
+				level--;
+				if(level < fieldLevel)
+					fieldLevel = -1;
+				continue;
+			} else if(c == '('){
+				level++;	
+				continue;
+			} else if(fieldLevel != -1 && level>fieldLevel)
+				continue;
+			
+			if(Character.isLetterOrDigit(c)){
+				int start = cur;
+				tokenType = fetchToken();
+				if(tokenType == TokenType.WORD){
+					analyzeBuffer();
+					for(Token t : tokens){
+						ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),"word"));
+					}					
+				}
+			} else if(c == '['){
+				fetchGenericPrefix();
+			}
+		}
+		
+		defaultField = oldDefault;
+		
+		return ret;
+		
+	}
+	
 	/** rewrite field name (e.g. help) into a term query like namespace:12 */
 	private Query getNamespaceQuery(String fieldName){
 		if(fieldName == null || namespacePolicy != NamespacePolicy.REWRITE)
@@ -296,6 +363,9 @@ public class WikiQueryParser {
 			ch = text[cur];
 			if(length == 0 && ch == ' ')
 				continue; // ignore whitespaces
+			
+			if(ch == '\'')
+				continue; // ignore single quotes (it's -> its)
 			
 			// pluses and minuses, underscores can be within words (to prevent to be missinterpeted), *,? are for wildcard queries
 			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_' || ch=='*'){
@@ -404,9 +474,10 @@ public class WikiQueryParser {
 				(namespacePolicy == NamespacePolicy.IGNORE || 
 						namespacePolicy == NamespacePolicy.REWRITE))
 			return new Term(defaultField,t);
-		else if(field.equals("incategory"))
-			return new Term("category",builder.isExactCase()? t : t.toLowerCase());
-		else
+		else if(field.equals("incategory")){
+			String norm = t.replace("_"," "); // bug 10822
+			return new Term("category",builder.isExactCase()? norm : norm.toLowerCase());
+		} else
 			return new Term(field,t);
 	}
 	
@@ -1244,10 +1315,7 @@ public class WikiQueryParser {
 		// embedd phrase queries into main contents query
 		if(qp!=null && qc instanceof BooleanQuery){
 			((BooleanQuery)qc).add(qp,BooleanClause.Occur.SHOULD);
-		} else if(qp !=null && !(qc instanceof BooleanQuery)){
-			// TODO: delete in release
-			System.out.println("SHOULD NEVER HAPPEN");
-		}
+		} 
 		BooleanQuery bq = new BooleanQuery();
 		bq.add(qc,BooleanClause.Occur.SHOULD);
 		bq.add(qt,BooleanClause.Occur.SHOULD);

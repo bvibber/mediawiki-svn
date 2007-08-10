@@ -133,6 +133,17 @@ public class GlobalConfiguration {
 		return host.equalsIgnoreCase(hostAddr) || host.equalsIgnoreCase(hostName);
 	}
 	
+	/** Secure add-to-list, check if the index definition exists, and avoid duplicates in list */
+	protected void addToList(ArrayList<String> list, String str){
+		if(!list.contains(str)){
+			String[] parts = str.split("\\.");
+			if(database.containsKey(parts[0]) && 
+				(parts.length==1 || (parts.length==2 && database.get(parts[0]).containsKey(parts[1])))){
+				list.add(str);
+			}
+		}
+	}
+	
 	/** 
 	 * Check if the setup is correct,i.e. there is indexer and searcher
 	 * for each db  ...
@@ -144,27 +155,6 @@ public class GlobalConfiguration {
 		if(indexRsyncPath.get("<default>") == null){
 			System.out.println("ERROR in GlobalConfiguration: Default path for index absent. Check section [Index-Path].");
 			return false;
-		}
-		// expand logical index names on searchers
-		for(String host : search.keySet()){
-			ArrayList<String> hostsearch = search.get(host);
-			for(String dbname : hostsearch.toArray(new String[]{})){				
-				Hashtable<String, Hashtable<String,String>> types = database.get(dbname);
-				if(types != null){ // if not null, dbrole is dbname
-					if(types.containsKey("mainsplit")){
-						hostsearch.add(dbname+".mainpart");
-						hostsearch.add(dbname+".restpart");
-					} else if(types.containsKey("split")){
-						int factor = Integer.parseInt(database.get(dbname).get("split").get("number"));
-						for(int i=1;i<=factor;i++)
-							hostsearch.add(dbname+".part"+i);
-					} else if(types.containsKey("nssplit")){
-						int factor = Integer.parseInt(database.get(dbname).get("nssplit").get("number"));
-						for(int i=1;i<=factor;i++)
-							hostsearch.add(dbname+".nspart"+i);
-					}
-				}
-			}
 		}
 		// for each DB check if the corresponding parts are defined
 		// if not, put them in with default values
@@ -190,7 +180,37 @@ public class GlobalConfiguration {
 						database.get(dbname).put(dbpart,new Hashtable<String,String>());
 				}
 			}
+			// add spellcheck indexes
+			/* if(!types.contains("spell_words"))
+				database.get(dbname).put("spell_words",new Hashtable<String,String>());
+			if(!types.contains("spell_titles"))
+				database.get(dbname).put("spell_titles",new Hashtable<String,String>()); */
 		}
+		// expand logical index names on searchers
+		for(String host : search.keySet()){
+			ArrayList<String> hostsearch = search.get(host);
+			for(String dbname : hostsearch.toArray(new String[]{})){				
+				Hashtable<String, Hashtable<String,String>> types = database.get(dbname);
+				if(types != null){ // if not null, dbrole is dbname
+					if(types.containsKey("mainsplit")){
+						addToList(hostsearch,dbname+".mainpart");
+						addToList(hostsearch,dbname+".restpart");
+					} else if(types.containsKey("split")){
+						int factor = Integer.parseInt(database.get(dbname).get("split").get("number"));
+						for(int i=1;i<=factor;i++)
+							addToList(hostsearch,dbname+".part"+i);
+					} else if(types.containsKey("nssplit")){
+						int factor = Integer.parseInt(database.get(dbname).get("nssplit").get("number"));
+						for(int i=1;i<=factor;i++)
+							addToList(hostsearch,dbname+".nspart"+i);
+					}
+				}
+				// spell check indexes are searched by default if they exist
+				addToList(hostsearch,dbname+".spell_words");
+				addToList(hostsearch,dbname+".spell_titles");
+			}
+		}
+
 		// check if every db.type has an indexer and searcher
 		for(String dbname : database.keySet()){
 			for(String typeid : database.get(dbname).keySet()){
@@ -207,6 +227,9 @@ public class GlobalConfiguration {
 					dbrole = dbname + "." + typeid;
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
+					dbrole = dbname + "." + typeid;
+				} else if(typeid.equals("spell_words") || typeid.equals("spell_titles")){
+					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else
 					continue; // uknown type, skip
@@ -487,6 +510,9 @@ public class GlobalConfiguration {
 					dbrole = dbname + "." + typeid;
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
+					dbrole = dbname + "." + typeid;
+				} else if(typeid.equals("spell_words") || typeid.equals("spell_titles")){
+					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else
 					continue; // uknown type, skip
@@ -769,20 +795,30 @@ public class GlobalConfiguration {
 			
 			dbroles.put(type,params);
 						
-		} else if(type.equals("suggest")){			
+		} else if(type.equals("spell_words")){			
+			// all params are optional, if absent default will be used
+			if(tokens.length>1)
+				params.put("minFreq",tokens[1]);
+			if(tokens.length>2)
+				params.put("minHits",tokens[2]);			
+			
+			if(tokens.length>3)
+				System.out.println("Unrecognized suggest parameters in ("+role+")");
+			
+			dbroles.put(type,params);
+		} else if(type.equals("spell_titles")){			
 			// all params are optional, if absent default will be used
 			if(tokens.length>1)
 				params.put("wordsMinFreq",tokens[1]);
 			if(tokens.length>2)
-				params.put("titlesWordsMinFreq",tokens[2]);
+				params.put("phrasesMinFreq",tokens[2]);
 			if(tokens.length>3)
-				params.put("titlesPhrasesMinFreq", tokens[3]);
+				params.put("minHits",tokens[3]);			
 			
 			if(tokens.length>4)
 				System.out.println("Unrecognized suggest parameters in ("+role+")");
 			
-			dbroles.put(type,params);
-			
+			dbroles.put(type,params);			
 		} else{
 			System.out.println("Warning: Unrecognized role \""+role+"\".Ignoring.");
 		}
@@ -833,6 +869,32 @@ public class GlobalConfiguration {
 	 */
 	public Hashtable<String,String> getDBParams(String dbname, String type){
 		return database.get(dbname).get(type);
+	}
+	
+	/** 
+	 * Get integer parameter for dbname.type 
+	 * Returns defaultValue if the param is not defined 
+	 */
+	public int getIntDBParam(String dbname, String type, String param, int defaultValue){
+		Hashtable<String,String> p = database.get(dbname).get(type);
+		String val = p.get(param);
+		if(val == null)
+			return defaultValue;
+		else
+			return Integer.parseInt(val);
+	}
+	
+	/** 
+	 * Get string parameter for dbname.type 
+	 * Returns defaultValue if the param is not defined 
+	 */
+	public String getStringDBParam(String dbname, String type, String param, String defaultValue){
+		Hashtable<String,String> p = database.get(dbname).get(type);
+		String val = p.get(param);
+		if(val == null)
+			return defaultValue;
+		else
+			return val;
 	}
 	
 	/**

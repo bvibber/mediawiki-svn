@@ -40,7 +40,10 @@ public class Warmup {
 			global = GlobalConfiguration.getInstance();		
 		
 		Hashtable<String,String> warmup = global.getDBParams(iid.getDBname(),"warmup");
-		if(warmup == null){
+		if(iid.isSpellCheck()){
+			makeNamespaceFilters(is,iid);
+			log.info("Warmed up spell-check index "+iid);
+		} else if(warmup == null){
 			makeNamespaceFilters(is,iid);
 			simpleWarmup(is,iid);
 			log.info("Warmed up "+iid);

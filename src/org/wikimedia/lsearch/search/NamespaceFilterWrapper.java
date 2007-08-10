@@ -17,7 +17,7 @@ import org.apache.lucene.search.Filter;
 public class NamespaceFilterWrapper extends Filter {
 	protected NamespaceFilter filter;	
 	
-	NamespaceFilterWrapper(NamespaceFilter filter){
+	public NamespaceFilterWrapper(NamespaceFilter filter){
 		this.filter = filter;
 	}
 	

@@ -1,26 +1,20 @@
 package org.wikimedia.lsearch.test;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-import org.apache.lucene.index.IndexReader;
-import org.apache.lucene.search.spell.SpellChecker;
-import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
-import org.wikimedia.lsearch.config.IndexRegistry;
-import org.wikimedia.lsearch.suggest.Suggest;
-import org.wikimedia.lsearch.suggest.SuggestResult;
-import org.wikimedia.lsearch.suggest.Suggest.SuggestSplit;
+import org.wikimedia.lsearch.search.NamespaceFilter;
+import org.wikimedia.lsearch.spell.Suggest;
+import org.wikimedia.lsearch.spell.SuggestResult;
 
 public class SuggestTest {
 	
-	public static void testSpellCheck(String dbname) throws IOException{
+	/* public static void testSpellCheck(String dbname) throws IOException{
 		IndexId iid = IndexId.get(dbname);
 		SpellChecker sc = new SpellChecker(FSDirectory.getDirectory(iid.getSpellcheckPath(),false));
-		IndexReader ir = IndexReader.open(iid.getSuggestCleanPath());
+		IndexReader ir = IndexReader.open(iid.getTempPath());
 		int good=0;
 		int bad=0;
 		long start = System.currentTimeMillis();
@@ -36,7 +30,7 @@ public class SuggestTest {
 		int total = good + bad;
 		long delta = System.currentTimeMillis() - start;
 		System.out.println("SpellCheck test ("+delta+"ms): good: "+good+" ("+((double)good/total*100)+"%), bad: "+bad+", total="+total);
-	}
+	} */
 	
 	public static void testSuggest(String dbname) throws IOException{
 		IndexId iid = IndexId.get(dbname);
@@ -54,8 +48,8 @@ public class SuggestTest {
 						&& res.get(1).getWord().equals(m[1]))
 					good++;
 				else if(r.getDist() > 1){
-					ArrayList<SuggestSplit> split = sc.suggestSplitFromTitle(m[0]);
-					if(split.size()>0 && m[1].equals(split.get(0).getWord()))
+					SuggestResult split = sc.suggestSplitFromTitle(m[0],new NamespaceFilter(0),0);
+					if(split!=null && m[1].equals(split.getWord()))
 						good++;
 					else{
 						reportBad(m[0],m[1],r.getWord());
@@ -87,7 +81,7 @@ public class SuggestTest {
 		if(args.length==1)
 			dbname = args[0];
 		
-		testSpellCheck(dbname);
+		//testSpellCheck(dbname);
 		testSuggest(dbname);
 	}
 	

@@ -83,7 +83,7 @@ public class NamespaceCache {
 			// cache only if defined as a textual prefix in global conf, or filters one namespace
 			if(GlobalConfiguration.getInstance().getNamespacePrefixes().containsValue(key) || key.cardinality()==1)
 				cache.put(key,cwf);
-			log.debug("Making new bitset for nsfilter "+key);
+			log.info("Making new bitset for nsfilter "+key);
 			return cwf.bits(reader);
 		}
 	}

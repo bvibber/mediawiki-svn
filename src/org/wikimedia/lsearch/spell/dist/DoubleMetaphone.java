@@ -14,7 +14,7 @@
  * limitations under the License.
  */ 
 
-package org.wikimedia.lsearch.suggest.dist;
+package org.wikimedia.lsearch.spell.dist;
 
 import java.io.IOException;
 import java.io.InvalidObjectException;

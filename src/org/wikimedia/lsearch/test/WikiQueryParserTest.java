@@ -1,12 +1,14 @@
 package org.wikimedia.lsearch.test;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 import junit.framework.TestCase;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.SimpleAnalyzer;
+import org.apache.lucene.analysis.Token;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.analyzers.Analyzers;
@@ -65,6 +67,12 @@ public class WikiQueryParserTest extends TestCase {
 
 			q = parser.parseRaw("+eggs incategory:breakfast");
 			assertEquals("+contents:eggs +category:breakfast",q.toString());
+			
+			q = parser.parseRaw("+eggs incategory:\"two_words\"");
+			assertEquals("+contents:eggs +category:\"two words\"",q.toString());
+			
+			q = parser.parseRaw("+eggs incategory:\"two words\"");
+			assertEquals("+contents:eggs +category:\"two words\"",q.toString());
 
 			q = parser.parseRaw("help:making breakfast");
 			assertEquals("+help:making +help:breakfast",q.toString());
@@ -320,7 +328,7 @@ public class WikiQueryParserTest extends TestCase {
 			// title phrases
 			WikiQueryParser.ADD_TITLE_PHRASES = true;
 			q = parser.parseFourPass("Israeli Palestinian conflict",NamespacePolicy.IGNORE,true);
-			assertEquals("(+(contents:israeli contents:isra^0.5) +contents:palestinian +contents:conflict (title:\"israeli palestinian\"~2^2.0 title:\"palestinian conflict\"~2^2.0)) (+title:israeli^2.0 +title:palestinian^2.0 +title:conflict^2.0) ((+alttitle1:israeli^6.0 +alttitle1:palestinian^6.0 +alttitle1:conflict^6.0) (+alttitle2:israeli^6.0 +alttitle2:palestinian^6.0 +alttitle2:conflict^6.0) (+alttitle3:israeli^6.0 +alttitle3:palestinian^6.0 +alttitle3:conflict^6.0)) (spanNear([keyword1:israeli, keyword1:palestinian, keyword1:conflict], 100, false)^0.05 spanNear([keyword2:israeli, keyword2:palestinian, keyword2:conflict], 100, false)^0.025 spanNear([keyword3:israeli, keyword3:palestinian, keyword3:conflict], 100, false)^0.016666668 spanNear([keyword4:israeli, keyword4:palestinian, keyword4:conflict], 100, false)^0.0125 spanNear([keyword5:israeli, keyword5:palestinian, keyword5:conflict], 100, false)^0.01)",q.toString());
+			assertEquals("(+(contents:israeli contents:isra^0.5) +contents:palestinian +contents:conflict (stemtitle:\"israeli palestinian\"~2^2.0 stemtitle:\"palestinian conflict\"~2^2.0)) (+title:israeli^2.0 +title:palestinian^2.0 +title:conflict^2.0) ((+alttitle1:israeli^6.0 +alttitle1:palestinian^6.0 +alttitle1:conflict^6.0) (+alttitle2:israeli^6.0 +alttitle2:palestinian^6.0 +alttitle2:conflict^6.0) (+alttitle3:israeli^6.0 +alttitle3:palestinian^6.0 +alttitle3:conflict^6.0)) (spanNear([keyword1:israeli, keyword1:palestinian, keyword1:conflict], 100, false)^0.05 spanNear([keyword2:israeli, keyword2:palestinian, keyword2:conflict], 100, false)^0.025 spanNear([keyword3:israeli, keyword3:palestinian, keyword3:conflict], 100, false)^0.016666668 spanNear([keyword4:israeli, keyword4:palestinian, keyword4:conflict], 100, false)^0.0125 spanNear([keyword5:israeli, keyword5:palestinian, keyword5:conflict], 100, false)^0.01)",q.toString());
 			WikiQueryParser.ADD_TITLE_PHRASES = false;
 			
 			// alternative transliterations
@@ -346,6 +354,16 @@ public class WikiQueryParserTest extends TestCase {
 			
 			q = parser.parseTwoPass("all_talk: beans everyone",NamespacePolicy.REWRITE);
 			assertEquals("(+(namespace:1 namespace:3 namespace:5 namespace:7 namespace:9 namespace:11 namespace:13 namespace:15) +(+(contents:beans contents:bean^0.5) +(contents:everyone contents:everyon^0.5))) (+(namespace:1 namespace:3 namespace:5 namespace:7 namespace:9 namespace:11 namespace:13 namespace:15) +(+title:beans^2.0 +title:everyone^2.0))",q.toString());
+			
+			// tokenization test
+			ArrayList<Token> t = parser.tokenizeBareText("beans everyone");
+			assertEquals("[(beans,0,5), (everyone,6,14)]",t.toString());
+			
+			t = parser.tokenizeBareText("hey \"are you\" [0]:gl ho");
+			assertEquals("[(hey,0,3), (are,5,8,type=phrase), (you,9,12,type=phrase), (gl,18,20), (ho,21,23)]",t.toString());
+			
+			t = parser.tokenizeBareText("+many -more AND has OR some -g");
+			assertEquals("[(many,1,5), (more,7,11), (has,16,19), (some,23,27), (g,29,30)]",t.toString());
 			
 			// German
 			analyzer = Analyzers.getSearcherAnalyzer("de");

@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.suggest;
+package org.wikimedia.lsearch.spell;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -31,12 +31,13 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.importer.DumpImporter;
+import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.search.NamespaceFilter;
-import org.wikimedia.lsearch.suggest.api.LuceneDictionary;
-import org.wikimedia.lsearch.suggest.api.NamespaceFreq;
-import org.wikimedia.lsearch.suggest.api.TitleIndexer;
-import org.wikimedia.lsearch.suggest.api.WordsIndexer;
-import org.wikimedia.lsearch.suggest.api.Dictionary.Word;
+import org.wikimedia.lsearch.spell.api.LuceneDictionary;
+import org.wikimedia.lsearch.spell.api.NamespaceFreq;
+import org.wikimedia.lsearch.spell.api.TitleIndexer;
+import org.wikimedia.lsearch.spell.api.WordsIndexer;
+import org.wikimedia.lsearch.spell.api.Dictionary.Word;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.StringCounter;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
@@ -74,8 +75,15 @@ public class SuggestBuilder {
 
 		long start = System.currentTimeMillis();
 		IndexId iid = IndexId.get(dbname);
+		IndexId words = iid.getSpellWords();
+		IndexId titles = iid.getSpellTitles();
+		if(words == null || titles == null){
+			log.fatal("Index "+iid+" doesn't have both spell-check indexes assigned. Enable them in global configuration.");
+			return;
+		}
 		
 		if(inputfile != null){
+			log.info("Rebuilding the temporary index for words");
 			// open			
 			InputStream input = null;
 			try {
@@ -87,7 +95,7 @@ public class SuggestBuilder {
 			
 			// make fresh clean index		
 			try {
-				CleanIndexImporter importer = new CleanIndexImporter(dbname,langCode);
+				CleanIndexImporter importer = new CleanIndexImporter(words,langCode);
 				XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(importer, 1000));
 				reader.readDump();
 				importer.closeIndex();
@@ -101,8 +109,8 @@ public class SuggestBuilder {
 		// make words index
 		log.info("Making words index");
 		try {
-			LuceneDictionary dict = new LuceneDictionary(IndexReader.open(iid.getSuggestCleanPath()),"contents");
-			WordsIndexer writer = new WordsIndexer(iid.getSuggestWordsPath(),(dbname.equals("wikilucene")? 3 : 50));
+			LuceneDictionary dict = new LuceneDictionary(IndexReader.open(words.getTempPath()),"contents");
+			WordsIndexer writer = new WordsIndexer(words.getImportPath(),(dbname.equals("wikilucene")? 3 : 50));
 			writer.createIndex();
 			Word word;
 			while((word = dict.next()) != null){
@@ -110,24 +118,22 @@ public class SuggestBuilder {
 			}
 			writer.closeAndOptimze();
 		} catch (IOException e) {
-			log.fatal("Cannot open clean dictionary for "+iid+" : "+e.getMessage());
+			log.fatal("Cannot open clean dictionary for "+words+" : "+e.getMessage());
 			e.printStackTrace();
 			return;
 		}
 		
 		log.info("Making suggest title index");
 		// make phrase index
-		Hashtable<String,String> suggest = global.getDBParams(iid.getDBname(),"suggest");
-		int titlesWordsMinFreq = 3;
-		int titlesPhrasesMinFreq = 1;
-		if(suggest!=null && suggest.containsKey("titlesWordsMinFreq"))
-			titlesWordsMinFreq = Integer.parseInt(suggest.get("titlesWordsMinFreq"));
-		if(suggest!=null && suggest.containsKey("titlesPhrasesMinFreq"))
-			titlesWordsMinFreq = Integer.parseInt(suggest.get("titlesPhrasesMinFreq"));
-		TitleIndexer tInx = new TitleIndexer(iid,titlesWordsMinFreq,titlesPhrasesMinFreq);
-		tInx.createFromExistingIndex(iid);		
+
+		TitleIndexer tInx = new TitleIndexer(titles);
+		tInx.createFromSnapshot();		
 		
 		long end = System.currentTimeMillis();
+
+		// make snapshots
+		IndexThread.makeIndexSnapshot(words,words.getImportPath());
+		IndexThread.makeIndexSnapshot(titles,titles.getImportPath());
 
 		System.out.println("Finished making suggest index in "+formatTime(end-start));
 	}

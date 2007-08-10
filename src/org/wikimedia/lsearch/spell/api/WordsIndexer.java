@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.suggest.api;
+package org.wikimedia.lsearch.spell.api;
 
 import java.io.IOException;
 
@@ -6,8 +6,8 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.SimpleAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
-import org.wikimedia.lsearch.suggest.api.Dictionary.Word;
-import org.wikimedia.lsearch.suggest.dist.DoubleMetaphone;
+import org.wikimedia.lsearch.spell.api.Dictionary.Word;
+import org.wikimedia.lsearch.spell.dist.DoubleMetaphone;
 
 /**
  * Create the index with words. Overview:

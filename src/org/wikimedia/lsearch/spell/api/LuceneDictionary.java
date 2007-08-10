@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.suggest.api;
+package org.wikimedia.lsearch.spell.api;
 
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more

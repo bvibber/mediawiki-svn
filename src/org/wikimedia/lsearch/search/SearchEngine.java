@@ -29,6 +29,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.frontend.SearchDaemon;
 import org.wikimedia.lsearch.frontend.SearchServer;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.util.QueryStringMap;
 
 /**
@@ -146,6 +147,12 @@ public class SearchEngine {
 		long searchStart = System.currentTimeMillis();
 		Hashtable<String,NamespaceFilter> cachedFilters = GlobalConfiguration.getInstance().getNamespacePrefixes();
 		boolean searchAll = false;
+		Suggest sug = null;
+		try {
+			sug = new Suggest(iid);
+		} catch (IOException e1) {
+			log.warn("Cannot open spell-suggestion indexes for "+iid+" : "+e1);
+		}
 		
 		// if search is over one field, try to use filters
 		if(fields.size()==1){
@@ -208,7 +215,10 @@ public class SearchEngine {
 						return res;
 					}
 					RMIMessengerClient messenger = new RMIMessengerClient();
-					return messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
+					res = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
+					if(sug != null)
+						res.setSuggest(sug.suggest(searchterm,parser,nsfw.getFilter(),res.getNumHits()));
+					return res;
 				}
 			}
 			WikiSearcher searcher = new WikiSearcher(iid);
@@ -216,6 +226,8 @@ public class SearchEngine {
 			try{
 				hits = searcher.search(q,nsfw,offset+limit);
 				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
+				if(sug != null)
+					res.setSuggest(sug.suggest(searchterm,parser,(nsfw==null)? null : nsfw.getFilter(),res.getNumHits()));
 				return res;
 			} catch(Exception e){
 				e.printStackTrace();

@@ -40,6 +40,7 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.spell.api.TitleIndexer;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
@@ -358,6 +359,15 @@ public class WikiIndexModifier {
 		boolean succ = succAdd; // it's OK if articles cannot be deleted
 		trans.commit();
 		
+		// if there is a titles spell-check index, update it
+		if(iid.getSpellTitles() != null){
+			TitleIndexer spell = new TitleIndexer(iid);
+			trans = new Transaction(iid.getSpellTitles());
+			trans.begin();
+			spell.update(updateRecords);
+			trans.commit();
+		}
+		
 		// send reports back to the main indexer host
 		RMIMessengerClient messenger = new RMIMessengerClient();
 		if(modifier.reportQueue.size() != 0)
@@ -405,8 +415,11 @@ public class WikiIndexModifier {
 				Field.Store.NO, Field.Index.TOKENIZED));
 		
 		// interwiki associated with this page
-		doc.add(new Field("interwiki", "", 
-				Field.Store.NO, Field.Index.TOKENIZED));
+		//doc.add(new Field("interwiki", "", 
+		//    Field.Store.NO, Field.Index.TOKENIZED));
+		
+		doc.add(new Field("rank",Integer.toString(article.getRank()),
+				Field.Store.YES, Field.Index.NO));
 		
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			FieldNameFactory fields = bs.getFields();

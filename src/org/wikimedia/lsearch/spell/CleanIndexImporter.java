@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.suggest;
+package org.wikimedia.lsearch.spell;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -40,9 +40,8 @@ public class CleanIndexImporter implements DumpWriter {
 	CleanIndexWriter writer;
 	String langCode;
 
-	public CleanIndexImporter(String dbname, String langCode) throws IOException{
+	public CleanIndexImporter(IndexId iid, String langCode) throws IOException{
 		Configuration.open(); // make sure configuration is loaded
-		IndexId iid = IndexId.get(dbname);
 		this.writer = new CleanIndexWriter(iid);
 		this.langCode = langCode;
 	}
@@ -57,10 +56,11 @@ public class CleanIndexImporter implements DumpWriter {
 		boolean isRedirect = Localization.getRedirectTarget(revision.Text,langCode) != null;
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,0,redirects);
-		if(page.Title.Namespace != 0)
-			article.setContents("");
+		//if(page.Title.Namespace != 0)
+		//	article.setContents("");
 		
-		writer.addArticle(article);
+		writer.addMainArticle(article);
+		writer.addAllArticle(article);
 		// generate phrases
 		/* FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(page.Title.Text,langCode,false); 
 		ArrayList<Token> tokens = parser.parse();

@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.suggest.api;
+package org.wikimedia.lsearch.spell.api;
 
 public interface Dictionary {
 	public static class Word {

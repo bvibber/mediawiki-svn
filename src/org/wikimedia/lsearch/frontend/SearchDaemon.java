@@ -68,6 +68,10 @@ public class SearchDaemon extends HttpHandler {
 			if(res!=null && res.isSuccess()){
 				sendHeaders(200, "OK");
 				sendOutputLine(Integer.toString(res.getNumHits()));
+				if(res.getSuggest() != null)
+					sendOutputLine("#suggest "+res.getSuggest());
+				else 
+					sendOutputLine("#no suggestion");
 				for(ResultSet rs : res.getResults()){
 					sendResultLine(rs.score, rs.namespace, rs.title);
 					if(rs.getExplanation() != null)

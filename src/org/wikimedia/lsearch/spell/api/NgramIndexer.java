@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.suggest.api;
+package org.wikimedia.lsearch.spell.api;
 
 import java.io.IOException;
 
@@ -100,9 +100,9 @@ public class NgramIndexer {
 	
 	/** Get minimal ngram size for word. the minimal size should be at least 1/2 of word length */
 	public static int getMinNgram(String word){
-		if(word.length() <= 3)
+		if(word.length() <= 7)
 			return 1;
-		else if(word.length() == 4 || word.length() == 5)
+		else if(word.length() <= 14)
 			return 2;
 		else
 			return 3;
@@ -110,7 +110,7 @@ public class NgramIndexer {
 	
 	/** Maximal size of ngram block, at most the length of word */
 	public static int getMaxNgram(String word){
-		if(word.length() == 2)
+		if(word.length() <= 10)
 			return 2;
 		else
 			return 3;

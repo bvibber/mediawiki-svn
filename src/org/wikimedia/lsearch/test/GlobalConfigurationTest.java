@@ -145,7 +145,7 @@ public class GlobalConfigurationTest extends TestCase {
 			assertEquals("detest",sir[3]);
 			assertEquals("rutest",sir[4]);
 			assertEquals("frtest",sir[5]);
-			assertEquals(6,sir.length);
+			assertEquals(8,sir.length);
 			
 			// indexLocation
 			Hashtable indexLocation = testgc.getIndexLocation();
@@ -191,10 +191,14 @@ public class GlobalConfigurationTest extends TestCase {
 			assertEquals("http://commons.wikimedia.org/w/index.php?title=Special:OAIRepository",testgc.getOAIRepo("commonswiki"));
 			
 			// test suggest tag
-			Hashtable<String,String> sug = testgc.getDBParams("entest","suggest");
+			Hashtable<String,String> sug = testgc.getDBParams("entest","spell_words");
+			assertEquals("3",sug.get("minFreq"));
+			assertEquals("20",sug.get("minHits"));
+			
+			sug = testgc.getDBParams("entest","spell_titles");
 			assertEquals("1",sug.get("wordsMinFreq"));
-			assertEquals("2",sug.get("titlesWordsMinFreq"));
-			assertEquals("3",sug.get("titlesPhrasesMinFreq"));
+			assertEquals("2",sug.get("phrasesMinFreq"));
+			assertEquals("20",sug.get("minHits"));			
 			
 		} catch (MalformedURLException e) {
 			e.printStackTrace();
@@ -267,6 +271,11 @@ public class GlobalConfigurationTest extends TestCase {
 		assertEquals(3,njawiki2.getSplitFactor());
 		assertEquals(2,njawiki2.getPartNum());
 		assertEquals("[192.168.0.1]",njawiki2.getSearchHosts().toString());
+		
+		IndexId sug = IndexId.get("entest.spell_words");
+		assertTrue(sug.isSpellWords());
+		assertFalse(sug.isLogical());
+		assertEquals(sug,sug.getSpellWords());
 		
 	}
 }

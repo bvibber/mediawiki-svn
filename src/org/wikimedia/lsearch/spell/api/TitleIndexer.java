@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.suggest.api;
+package org.wikimedia.lsearch.spell.api;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -29,7 +29,7 @@ import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.IndexSearcherMul;
 import org.wikimedia.lsearch.search.WikiSearcher;
-import org.wikimedia.lsearch.suggest.api.Dictionary.Word;
+import org.wikimedia.lsearch.spell.api.Dictionary.Word;
 
 /** 
  * Index words and phrases from article titles. 
@@ -49,41 +49,73 @@ public class TitleIndexer {
 	public static final boolean NEW_INDEX = true;
 	protected boolean createNew;
 	protected int minWordFreq, minPhraseFreq;
-	protected IndexId iid;
+	protected IndexId iid,titles;
 	protected String langCode;
 	protected IndexRegistry registry;
-	protected String path;
 	
-	public TitleIndexer(IndexId iid, int minWordFreq, int minPhraseFreq){
-		this(iid,minWordFreq,minPhraseFreq,false);
+	public TitleIndexer(IndexId iid){
+		this(iid,false);
 	}
 	
-	public TitleIndexer(IndexId iid, int minWordFreq, int minPhraseFreq, boolean createNew){
-		this.iid = iid;
-		this.minWordFreq = minWordFreq;
-		this.minPhraseFreq = minPhraseFreq;
+	public TitleIndexer(IndexId titles, boolean createNew){
+		this.titles = titles;
+		this.iid = titles.getDB();
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
+		this.minWordFreq = global.getIntDBParam(iid.getDBname(),"spell_titles","wordsMinFreq",3);
+		this.minPhraseFreq = global.getIntDBParam(iid.getDBname(),"spell_titles","phrasesMinFreq",1);
 		this.createNew = createNew;
 		this.langCode=GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
 		this.ngramWriter = new NgramIndexer();
 		this.registry = IndexRegistry.getInstance();
-		this.path = iid.getSuggestTitlesPath();
 	}
 	
-	protected Searcher makeSearcher(IndexId logical) throws IOException{		
-		if(logical.isSingle())
-			return new IndexSearcherMul(registry.getLatestSnapshot(logical).path);
+	protected Searcher makeSearcher(IndexId main) throws IOException{
+		if(main.isSingle())
+			return new IndexSearcherMul(registry.getLatestSnapshot(main).path);
 		else{
 			ArrayList<IndexSearcherMul> searchers = new ArrayList<IndexSearcherMul>();
-			for(String part : iid.getPhysicalIndexes()){
+			for(String part : main.getPhysicalIndexes()){
 				searchers.add(new IndexSearcherMul(registry.getLatestSnapshot(IndexId.get(part)).path));
 			}
 			return new MultiSearcher(searchers.toArray(new SearchableMul[]{}));
 		}
 	}
 	
+	/** Returns {NamespaceFreq, HashSet<Integer>} */
+	protected Object[] getFreqAndNamespaces(Searcher searcher, int[] namespaces, int[] ranks, Query q) throws IOException {
+		Hits hits = searcher.search(q);
+		NamespaceFreq wnf = new NamespaceFreq();
+		HashSet<Integer> ns = new HashSet<Integer>();
+		for(int i=0;i<hits.length();i++){
+			/*Document d = hits.doc(i);
+			int n = Integer.parseInt(d.get("namespace"));
+			String rr = d.get("rank");
+			int r = rr==null? 0 : Integer.parseInt(d.get("rank")); */
+			int id = hits.id(i);
+			int n = namespaces[id];
+			int r = ranks[id];
+			wnf.incFrequency(n,r);
+			ns.add(n);
+		}
+		return new Object[] {wnf,ns};
+	}
+	
+	protected Object[] getFreqAndNamespaces(Searcher searcher, int[] ns, int[] ranks, String word) throws IOException {
+		return getFreqAndNamespaces(searcher,ns,ranks,new TermQuery(new Term("title",word)));
+	}
+	
+	protected Object[] getFreqAndNamespaces(Searcher searcher, int[] ns, int[] ranks, String[] phrase) throws IOException{
+		PhraseQuery pq = new PhraseQuery();
+		for(String p : phrase){
+			pq.add(new Term("title",p));
+		}
+		return getFreqAndNamespaces(searcher,ns,ranks,pq);
+	}
+	
 	protected NamespaceFreq getFrequency(Searcher searcher, int[] namespaces, Query q) throws IOException{
 		Hits hits = searcher.search(q);
 		NamespaceFreq wnf = new NamespaceFreq();
+		//wnf.setFrequency(-10,hits.length());
 		for(int j=0;j<hits.length();j++){
 			wnf.incFrequency(namespaces[hits.id(j)]);
 		}
@@ -131,34 +163,49 @@ public class TitleIndexer {
 	 * @throws IOException 
 	 * @FIXME: assumes optimized index
 	 */
-	protected int[] makeNamespaceMap(Searcher searcher) throws IOException{
+	protected Object[] makeNamespaceMap(Searcher searcher) throws IOException{
 		log.debug("Making namespace map...");
 		int[] namespaces = new int[searcher.maxDoc()];
+		int[] ranks = new int[searcher.maxDoc()];
 		for(int i=0;i<namespaces.length;i++){
 			namespaces[i] = -100;
 			Document doc = searcher.doc(i);
-			if(doc != null)
+			if(doc != null){
 				namespaces[i] = Integer.parseInt(doc.get("namespace"));
+				String rr = doc.get("rank");
+				ranks[i] = rr==null? 0 : Integer.parseInt(rr);
+			}
 		}
 		log.debug("Done making namespace map");
-		return namespaces;
+		return new Object[] {namespaces,ranks};
 	}
 	
-	/** Create new title word/phrases index from an existing index *snapshot* by reading all terms in the index */
-	public void createFromExistingIndex(IndexId src){		 
+	/** 
+	 * Create new index from an index *snapshot* by reading all terms in the index. 
+	 * Index will be created in the import directory.
+	 */
+	@SuppressWarnings("unchecked")
+	public void createFromSnapshot(){
+		String path = titles.getImportPath(); // dest where to put index
 		try{
 			log.debug("Creating new suggest index");
 			ngramWriter.createIndex(path,new SimpleAnalyzer());
-			Searcher searcher = makeSearcher(iid.getLogical());
+			Searcher searcher = makeSearcher(iid);
+			//IndexSearcher searcher = new IndexSearcherMul(iid.getSpellTitles().getTempPath());
 			// map doc_id -> namespace
-			int[] namespaces = makeNamespaceMap(searcher);
+			//int[] namespaces = makeNamespaceMap(searcher);
+			Object[] nsr = makeNamespaceMap(searcher);
+			int[] namespaces = (int[]) nsr[0];
+			int[] ranks = (int[]) nsr[1];
+			int totalAdded = 0, lastReport=0;
 			
-			for(String dbrole : src.getPhysicalIndexes()){
+			for(String dbrole : iid.getPhysicalIndexes()){
 				log.info("Processing index "+dbrole);
 				if(!ngramWriter.isOpen()) // if we closed the index previously
 					ngramWriter.reopenIndex(path,new SimpleAnalyzer());
 				
 				IndexId part = IndexId.get(dbrole);
+				//IndexReader ir = searcher.getIndexReader(); 
 				IndexReader ir = IndexReader.open(registry.getLatestSnapshot(part).path);
 				LuceneDictionary dict = new LuceneDictionary(ir,"title");
 				IndexSearcher ngramSearcher = new IndexSearcher(path);
@@ -172,40 +219,59 @@ public class TitleIndexer {
 					if(ngramSearcher.docFreq(new Term("word",w)) != 0)
 						continue; 
 					
-					// index word					
-					NamespaceFreq wnf = getFrequency(searcher,namespaces,w);
-					Collection<Integer> wns = getNamespaces(searcher,namespaces,w);
-					addWord(w,wnf,wns);
-
-					// index phrases
-					HashSet<String> phrases = new HashSet<String>();
-					Hits hits = searcher.search(new TermQuery(new Term("title",w)));
-					// find all phrases beginning with word
-					for(int i=0;i<hits.length();i++){
-						Document doc = hits.doc(i);
-						// tokenize to make phrases
-						FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(doc.get("title"),langCode,false); 
-						ArrayList<Token> tokens = parser.parse();
-						for(int j=0;j<tokens.size()-1;j++){
-							Token t = tokens.get(j);
-							// ignore aliases
-							if(t.getPositionIncrement() == 0)
-								continue;
-							// find phrases beginning with the target word
-							if(w.equals(t.termText())){
-								phrases.add(t.termText()+"_"+tokens.get(j+1).termText());
-							}
+					int freq = searcher.docFreq(new Term("contents",w));
+					if(freq > minWordFreq){
+						// index word
+						Object[] ret = getFreqAndNamespaces(searcher,namespaces,ranks,w);
+						NamespaceFreq wnf = (NamespaceFreq) ret[0];
+						Collection<Integer> wns = (Collection<Integer>) ret[1];
+						//NamespaceFreq wnf = getFrequency(searcher,namespaces,w);
+						if(wnf.getFrequency() > minWordFreq){
+							//Collection<Integer> wns = getNamespaces(searcher,namespaces,w);
+							addWord(w,wnf,wns);
 						}
 					}
-					log.debug("Adding "+phrases.size()+" phrases "+phrases);
-					// index phrases
-					for(String phrase : phrases){
-						NamespaceFreq nf = getFrequency(searcher,namespaces,phrase.split("_"));			
-						Collection<Integer> pns = getNamespaces(searcher,namespaces,phrase.split("_"));
-						addPhrase(phrase,nf,pns);
+					if(freq > minPhraseFreq){
+						// index phrases
+						HashSet<String> phrases = new HashSet<String>();
+						Hits hits = searcher.search(new TermQuery(new Term("title",w)));
+						// from titles find phrases beginning with word
+						for(int i=0;i<hits.length();i++){
+							Document doc = hits.doc(i);
+							// tokenize to make phrases
+							FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(doc.get("title"),langCode,false); 
+							ArrayList<Token> tokens = parser.parse();
+							for(int j=0;j<tokens.size()-1;j++){
+								Token t = tokens.get(j);
+								// ignore aliases
+								if(t.getPositionIncrement() == 0)
+									continue;
+								// find phrases beginning with the target word
+								if(w.equals(t.termText())){
+									phrases.add(t.termText()+"_"+tokens.get(j+1).termText());
+								}
+							}
+						}
+						log.debug("Adding "+phrases.size()+" phrases "+phrases);
+						// index phrases
+						for(String phrase : phrases){
+							Object[] ret = getFreqAndNamespaces(searcher,namespaces,ranks,phrase.split("_"));
+							NamespaceFreq nf = (NamespaceFreq) ret[0];
+							Collection<Integer> pns = (Collection<Integer>) ret[1];
+							//NamespaceFreq nf = getFrequency(searcher,namespaces,phrase.split("_"));
+							if(nf.getFrequency() > minPhraseFreq){
+								//Collection<Integer> pns = getNamespaces(searcher,namespaces,phrase.split("_"));
+								addPhrase(phrase,nf,pns);
+							}
+						}
+						totalAdded += phrases.size();
+						if(totalAdded - lastReport > 1000){
+							log.info("Processed "+totalAdded+" phrases");
+							lastReport = totalAdded;
+						}
 					}
 				}
-				log.debug("Finished index "+dbrole+", closing/optimizing.");
+				log.debug("Finished index "+iid+", closing/optimizing.");
 				ir.close();
 				ngramSearcher.close();
 				ngramWriter.closeAndOptimize();
@@ -269,10 +335,12 @@ public class TitleIndexer {
 	
 	/** Update the index */
 	public void update(Collection<IndexUpdateRecord> records){
+		/*String path = iid.getIndexPath();
 		try{			
 			log.info("Updating suggest index for "+iid+" with "+records.size());
 			IndexReader ir = IndexReader.open(path);
-			Searcher searcher = makeSearcher(iid.getLogical());
+			Searcher searcher = makeSearcher(iid.getDB());
+			// TODO: don't use namespaces, but fetch fields, it's likely to be more efficient for small updates
 			int[] namespaces = makeNamespaceMap(searcher);
 			// get all words and phrases
 			HashSet<String> words = new HashSet<String>();
@@ -314,10 +382,10 @@ public class TitleIndexer {
 			
 			ngramWriter.close();
 		} catch(IOException e){
-			log.error("Cannot update suggest index for "+iid+" : "+e.getMessage());
+			log.error("Cannot update index for "+iid+" : "+e.getMessage());
 			e.printStackTrace();
 			return;
-		}
+		}*/
 	}
 	
 }

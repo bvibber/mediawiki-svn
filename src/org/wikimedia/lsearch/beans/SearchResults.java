@@ -17,6 +17,7 @@ public class SearchResults implements Serializable {
 	protected ArrayList<ResultSet> results;
 	protected String errorMsg;
 	protected boolean retry;
+	protected String suggest;
 	
 	public SearchResults(){
 		success = false;
@@ -24,6 +25,7 @@ public class SearchResults implements Serializable {
 		results = new ArrayList<ResultSet>();
 		errorMsg = "";
 		retry = false;
+		suggest = null;
 	}
 
 	/** Temporal error, retry the search query */
@@ -61,6 +63,12 @@ public class SearchResults implements Serializable {
 	}
 	public void addResult(ResultSet rs){
 		results.add(rs);
+	}
+	public String getSuggest() {
+		return suggest;
+	}
+	public void setSuggest(String suggest) {
+		this.suggest = suggest;
 	}
 
 	@Override

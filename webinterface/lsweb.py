@@ -6,6 +6,7 @@ from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
 from urllib2 import URLError, HTTPError
 
 search_host = { 'enwiki' : "srv79:8123", '<default>': 'srv79:8123' }
+#search_host = {'<default>' : 'localhost:8123' }
 
 canon_namespaces = { 0 : '', 1: 'Talk', 2: 'User', 3: 'User_talk',
                     4 : 'Project', 5 : 'Project_talk', 6 : 'Image', 7 : 'Image_talk',
@@ -101,6 +102,11 @@ class MyHandler(BaseHTTPRequestHandler):
                     results = urllib2.urlopen(search_url+"?"+search_params)
                     numhits = int(results.readline())
                     lasthit = min(offset+limit,numhits) 
+                    suggest = results.readline();
+                    if suggest.startswith("#suggest "):                        
+                        suggest = suggest[9:]
+                    else:
+                        suggest = ""
                     # html headers
                     self.send_response(200)
                     self.send_header('Cache-Control','no-cache')
@@ -108,6 +114,11 @@ class MyHandler(BaseHTTPRequestHandler):
                     self.end_headers()
                     self.wfile.write('<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>')
                     self.wfile.write('<body>Query: %s <br>' % query)
+                    if suggest != "":
+                        sparams = params.copy()
+                        sparams['query'] = suggest.strip().replace("<i>","").replace("</i>","")
+                        slink = make_link(sparams,0)
+                        self.wfile.write('Did you mean: <a href="%s">%s</a><br>' % (slink,suggest))
                     
                     # generate next/prev searchbar
                     if offset != 0:
