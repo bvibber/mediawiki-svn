@@ -3,17 +3,23 @@
 require_once('Attribute.php');
 
 class PropertyToColumnFilter {
-	public $attributeIDs;   // Array containing the defined meaning ids of the attributes that should be filtered
-	protected $attribute;   // Attribute
+	public $attributeIDs;   	// Array containing the defined meaning ids of the attributes that should be filtered
+	protected $attribute;   	// Attribute
+	protected $propertyCaption; // Caption of the first column
 	
-	public function __construct($identifier, $caption, array $attributeIDs) {
+	public function __construct($identifier, $caption, $propertyCaption, array $attributeIDs) {
 		$this->attributeIDs = $attributeIDs;
-		$this->attribute = new Attribute($identifier, $caption, "will-be-specified-later");		
+		$this->attribute = new Attribute($identifier, $caption, "will-be-specified-later");
+		$this->propertyCaption = $propertyCaption;		
 	}
 	
 	public function getAttribute() {
 		return $this->attribute;
 	} 
+	
+	public function getPropertyCaption() {
+		return $this->propertyCaption;
+	}
 }
 
 ?>

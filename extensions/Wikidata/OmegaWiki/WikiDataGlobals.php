@@ -43,6 +43,7 @@ global
 	$wgPopupAnnotationName, 
 	$wgPossibleSynonymAttributeName,
 	$wgPossiblySynonymousAttributeName,
+	$wgPropertyAttributeName,
 	$wgRelationsAttributeName, 
 	$wgRelationTypeAttributeName, 
 	$wgSourceAttributeName,
@@ -90,6 +91,7 @@ $wgOtherDefinedMeaningAttributeName = "Other defined meaning";
 $wgPopupAnnotationName = "Annotation";
 $wgPossibleSynonymAttributeName = "Possible synonym";
 $wgPossiblySynonymousAttributeName = "Possibly synonymous";
+$wgPropertyAttributeName = "Property";
 $wgRelationsAttributeName = "Relations";
 $wgRelationTypeAttributeName = "Relation type";
 $wgSpellingAttributeName = "Spelling";
