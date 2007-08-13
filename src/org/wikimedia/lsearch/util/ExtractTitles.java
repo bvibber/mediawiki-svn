@@ -50,7 +50,7 @@ public class ExtractTitles {
 				String ns = d.get("namespace");
 				String title = d.get("title");
 				String rank = d.get("rank");
-				System.out.println(rank+" "+ns+" "+title);
+				System.out.println(rank+" "+ns+" "+title.replace(" ","_"));
 			}
 		}
 
