@@ -1341,68 +1341,89 @@ class RecordListEditor extends RecordEditor {
 		return $result;
 	}
 	
-	public function view(IdStack $idPath, $value) {
+	protected function viewEditors(IdStack $idPath, $value, $editors, $htmlTag) {
 		$result = '';
 		
-		foreach ($this->getEditors() as $editor) {
+		foreach ($editors as $editor) {
 			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
 			$class = $idPath->getClass();
 			$attributeId = $idPath->getId();
-			$attributeValue = $value->getAttributeValue($attribute);			
+			$attributeValue = $value->getAttributeValue($attribute);
+						
 			if ($editor->showsData($attributeValue)) 	
-				$result .=	'<' . $this->htmlTag . '>' . 
-				           		$this->childHeader($editor, $attribute, $class, $attributeId) .
-				           		$this->viewChild($editor, $idPath, $value, $attribute, $class, $attributeId) .
-				           	'</' . $this->htmlTag . '>';
+				$result .=	
+					'<' . $htmlTag . '>' . 
+				    	$this->childHeader($editor, $attribute, $class, $attributeId) .
+				    	$this->viewChild($editor, $idPath, $value, $attribute, $class, $attributeId) .
+				    '</' . $htmlTag . '>';
 			           
 			$idPath->popAttribute();			           
 		}
+		
 		return $result;
+	}
+
+	public function view(IdStack $idPath, $value) {
+		return $this->viewEditors($idPath, $value, $this->getEditors(), $this->htmlTag);
 	}
 
 	public function showEditField(IdStack $idPath) {
 		return true;
 	}
 
-	public function edit(IdStack $idPath, $value) {
+	protected function editEditors(IdStack $idPath, $value, $editors, $htmlTag) {
 		$result = '';
-		foreach ($this->getEditors() as $editor) {
+		
+		foreach ($editors as $editor) {
 			$attribute = $editor->getAttribute();
 			$idPath->pushAttribute($attribute);
 			
-			if($editor->showEditField($idPath)) {
+			if ($editor->showEditField($idPath)) {
 				$class = $idPath->getClass();
 				$attributeId = $idPath->getId();
 	
-				$result .= 	'<' . $this->htmlTag . '>'.
-					        	$this->childHeader($editor, $attribute, $class, $attributeId) .
-							    $this->editChild($editor, $idPath, $value,  $attribute, $class, $attributeId) .
-						 	'</' . $this->htmlTag . '>';
+				$result .= 	
+					'<' . $htmlTag . '>'.
+					   	$this->childHeader($editor, $attribute, $class, $attributeId) .
+					    $this->editChild($editor, $idPath, $value,  $attribute, $class, $attributeId) .
+					'</' . $htmlTag . '>';
 			}
 			$idPath->popAttribute();
 		}
+
 		return $result;
 	}
+
+	public function edit(IdStack $idPath, $value) {
+		return $this->editEditors($idPath, $value, $this->getEditors(), $this->htmlTag);
+	}
 	
-	public function add(IdStack $idPath) {
+	protected function addEditors(IdStack $idPath, $editors, $htmlTag) {
 		$result = '';
-		foreach($this->getEditors() as $editor) {
+		
+		foreach($editors as $editor) {
 			if ($attribute = $editor->getAddAttribute()) {
 				$idPath->pushAttribute($attribute);
 				$class = $idPath->getClass();
 				$attributeId = $idPath->getId();
 
-				$result .=	'<' . $this->htmlTag . '>'.
-								$this->childHeader($editor, $attribute, $class, $attributeId) .
-								$this->addChild($editor, $idPath, $attribute, $class, $attributeId) .
-							'</' . $this->htmlTag . '>';
+				$result .=	
+					'<' . $htmlTag . '>'.
+						$this->childHeader($editor, $attribute, $class, $attributeId) .
+						$this->addChild($editor, $idPath, $attribute, $class, $attributeId) .
+					'</' . $htmlTag . '>';
 
 				$editor->add($idPath);
 				$idPath->popAttribute();
 			}
 		}
+
 		return $result;
+	}
+	
+	public function add(IdStack $idPath) {
+		return $this->addEditors($idPath, $this->getEditors(), $this->htmlTag);
 	}
 	
 	protected function childHeader(Editor $editor, Attribute $attribute, $class, $attributeId){
