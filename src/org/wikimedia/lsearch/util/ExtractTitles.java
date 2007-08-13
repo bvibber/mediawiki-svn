@@ -32,6 +32,7 @@ public class ExtractTitles {
 		if(args.length != 1){
 			System.out.println("Tool to extract a list of titles and article ranks from latest snapshot");
 			System.out.println("Syntax: ExtractTitles <dbname>");
+			return;
 		}
 		String dbname = args[0];
 		IndexId iid = IndexId.get(dbname);
