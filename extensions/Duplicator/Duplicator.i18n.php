@@ -274,27 +274,24 @@ utile per scindere due pagine (''forking''), ecc.",
 'duplicator-dest-exists' => '[[$1]] は既に存在しています。複製先には存在しないページを指定してください。',
 'duplicator-toomanyrevisions' => '[[$1]] は版が多すぎるため（$2 版）複製できません。現在の上限は $3 版までです。',
 ),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'duplicator' => 'Kopieer een pagina',
 'duplicator-toolbox' => 'Kopieer deze pagina',
 'duplicator-header' => 'Deze pagina maakt het mogelijk een pagina volledig te kopiëren, waardoor er onafhankelijke
-kopiën ontstaan met een volledige geschiedenis. DIt is handig voor forks, enzovoort.',
-
+kopiën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzovoort.',
 'duplicator-options' => 'Opties',
 'duplicator-source' => 'Bron:',
 'duplicator-dest' => 'Doel:',
 'duplicator-dotalk' => 'Kopieer overlegpagina (als van toepassing)',
 'duplicator-submit' => 'Kopiëren',
-
 'duplicator-summary' => 'Gekopieerd van [[$1]]',
-
-'duplicator-success' => "<big>'''[[$1]] is gekopieerd naar [[$2]].'''</big>",
+'duplicator-success' => '<big>\'\'\'[[$1]] is gekopieerd naar [[$2]].\'\'\'</big>',
 'duplicator-success-revisions' => '$1 versies gekopieerd.',
 'duplicator-success-talkcopied' => 'De overlegpagina is ook gekopieerd.',
 'duplicator-success-talknotcopied' => 'De overlegpagina kon niet gekopieerd worden.',
 'duplicator-failed' => 'De pagina kon niet gekopieerd worden. Er is een onbekende fout opgetreden.',
-
 'duplicator-source-invalid' => 'Geef alstublieft een geldige bronpagina op.',
 'duplicator-source-notexist' => '[[$1]] bestaat niet. Geef alstublieft een pagina op die bestaat.',
 'duplicator-dest-invalid' => 'Geef alstublieft een geldige doelpagina op.',

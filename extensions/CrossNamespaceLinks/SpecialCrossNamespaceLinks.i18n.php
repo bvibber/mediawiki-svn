@@ -83,8 +83,9 @@ $wgCrossNamespaceLinksMessages['ku'] = array(
 	'crossnamespacelinks'         => 'Linkên ji boşahiya navekê bo boşahiya navekê din',
 );
 $wgCrossNamespaceLinksMessages['nl'] = array(
-	'crossnamespacelinks'     => 'Pagina\'s met verwijzingen naar andere naamruimten',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3'
+	'crossnamespacelinks'         => 'Kruisverwijzingen tussen naamruimtes',
+	'crossnamespacelinks-summary' => 'Deze pagina voorziet in een overzicht van links vanuit een pagina in de hoofdnaamruimte naar andere naamruimtes (met uitzondering van de naamruimtes {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}), waarvan het gebruik wordt afgeraden.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|verwijzing|verwijzingen}} naar $3',
 );
 $wgCrossNamespaceLinksMessages['no'] = array(
 	'crossnamespacelinks'         => 'Lenker mellom navnerom',

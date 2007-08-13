@@ -88,6 +88,19 @@ Ingat: '''Anda tidak dapat memperoleh kembali hak Anda melalui ini!''' Anda haru
 'resign-logentry'  => 'melepaskan hak $2 dari dirinya sendiri',
 ),
 
+'nl' => array(
+'resign' => 'Opzeggen',
+'resign-text' => 'Op deze pagina kunt u uw \'\'\'gebruikersrechten intrekken\'\'\' (bijvoorbeeld uw rol als beheerder). Markeer de rechten die u wilt verwijderen.
+
+Let op: \'\'\'U kunt op deze wijze uw gebruikersrechten niet terugkrijgen!\'\'\' Om uw gebruikersrechten terug te krijgen, dient u een bureaucraat of steward te overtuigen uw gebruikersrechten opnieuw in te stellen. Gebruik deze pagina met de nodige voorzichtigheid.',
+'resign-reason' => 'Reden:',
+'resign-confirm' => 'Hierbij bevestig ik dat ik alle gebruikersrechten die ik heb gemarkeerd wil intrekken.',
+'resign-noconfirm' => 'Vink alstublieft het vinkvakje aan als u uw gebruikersrechten wilt intrekken.',
+'resign-nogroups' => 'Selecteer alstublieft de gebruikersrechten die u wilt intrekken.',
+'resign-success' => '\'\'\'De gebruikersrechten zijn succesvol verwijderd.\'\'\'',
+'resign-logentry' => 'verwijderde gebruikersrechten $2 voor zichzelf',
+),
+
 /* Norwegian (Jon Harald Søby) */
 'no' => array(
 'resign' => 'Trekke seg',

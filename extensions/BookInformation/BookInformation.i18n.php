@@ -162,12 +162,14 @@ function efBookInformationMessages() {
 'bookinfo-result-author' => 'Auteur:',
 'bookinfo-result-publisher' => 'Uitgever:',
 'bookinfo-result-year' => 'Jaar:',
-'bookinfo-error-invalidisbn' => 'Onjuist ISBN-nummer ingegeven.',
+'bookinfo-error-invalidisbn' => 'Onjuist ISBN ingegeven.',
+'bookinfo-error-nosuchitem' => 'Bestaat niet of kon niet gevonden worden.',
 'bookinfo-error-nodriver' => 'Kon de juiste Boekinformatie Driver niet initialiseren.',
 'bookinfo-error-noresponse' => 'Geen antwoord of een time-out.',
 'bookinfo-purchase' => 'Koop dit boek bij $1',
 'bookinfo-provider' => 'Gegevens geleverd door: $1',
 ),
+
 
 /* Norwegian (Jon Harald Søby) */
 'no' => array(

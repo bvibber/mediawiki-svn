@@ -78,7 +78,7 @@ $wgSiteMatrixMessages['lt'] = array(
 	"sitematrix" => "Wikimedia projektų sąrašas",
 );
 $wgSiteMatrixMessages['nl'] = array(
-	"sitematrix" => "Lijst met Wikimedia wiki's",
+	'sitematrix' => 'Lijst met Wikimedia-wiki\'s',
 );
 $wgSiteMatrixMessages['no'] = array(
 	'sitematrix' => 'Liste over Wikimedia-prosjekter',

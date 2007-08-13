@@ -55,6 +55,11 @@ function efMinimumNameLengthMessages() {
 'kk-cn' => array(
 'minnamelength-error' => 'قاتىسۋشى اتىڭىز تىم قىسقا.ەڭ كەمٴىندە ۇزىندىعى $1 بولۋى قاجەت.',
 ),
+
+'nl' => array(
+'minnamelength-error' => 'Uw gebruikersnaam is te kort. De minimale lengte is $1.',
+),
+
 /* Norwegian (Jon Harald Søby) */
 'no' => array(
 'minnamelength-error' => 'Brukernavnet ditt er for kort. Minimumslengden er $1.',

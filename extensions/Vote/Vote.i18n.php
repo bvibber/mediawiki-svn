@@ -94,6 +94,24 @@ riddler|Riddler",
 'vote-invalid-choice' => 'Anda harus memilih salah satu pilihan yang tersedia.',
 ),
 
+'nl' => array(
+'vote' => 'Stemmen',
+'vote-header' => 'U kunt hier stemmen voor \'\'\'Alleenheerser over de Wereld\'\'\'!',
+'vote-current' => 'Uw huidige stem is voor \'\'\'$1\'\'\'.',
+'vote-legend' => 'Stem of wijzig stem',
+'vote-caption' => 'Uw keuze:',
+'vote-submit' => 'Stem',
+'vote-registered' => 'Uw stem is opgeslagen.',
+'vote-view-results' => 'Bekijk resultaten',
+'vote-results' => 'Resultaten stemming',
+'vote-results-choice' => 'Keuze',
+'vote-results-count' => 'Aantal',
+'vote-results-none' => 'Er zijn nog geen stemmen uitgebracht.',
+'vote-login' => 'U moet $1 om te kunnen stemmen.',
+'vote-login-link' => 'aanmelden',
+'vote-invalid-choice' => 'U moet een van de beschikbare opties kiezen.',
+),
+
 /* Norwegian (Jon Harald Søby) */
 'no' => array(
 'vote' => 'Avstemning',

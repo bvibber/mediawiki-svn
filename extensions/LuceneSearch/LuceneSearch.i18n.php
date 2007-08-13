@@ -353,21 +353,26 @@ Tai turbūt laikina; pamėginkite šiek tiek vėliau,
 arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:\n"
 );
 $wgLuceneSearchMessages['nl'] = array(
-	'searchnumber'          => "<strong>Resultaten $1-$2 van de $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Vorige</span>",
-	'searchnext'            => "<span style='font-size: small'>Volgende</span> &#x00BB;",
-	'searchscore'           => "Relevantie: $1",
-	'searchsize'            => "$1 KB ($2 woorden)",
-	'searchdidyoumean'      => "Bedoelde u: \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "Sorry, uw zoekopdracht heeft geen resultaten opgeleverd.",
-	'searchnearmatches'     => "<b>Deze paginanamen komen overeen met uw zoekopdracht:</b>\n",
-	'lucenepowersearchtext' => "
-Zoek in de volgende naamruimten:\n
-$1\n
-Zoek naar $3 $9 $10",
-	'lucenefallback'        => "Er is een storing in de wikizoekmachine.
+	'searchnumber'          => '<strong>Resultaten $1-$2 van de $3</strong>',
+	'searchprev'            => '« <span style=\'font-size: small\'>Vorige</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Volgende</span> »',
+	'searchscore'           => 'Relevantie: $1',
+	'searchsize'            => '$1 KB ($2 woorden)',
+	'searchdidyoumean'      => 'Bedoelde u: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Sorry, uw zoekopdracht heeft geen resultaten opgeleverd.',
+	'searchnearmatches'     => '<b>Deze paginanamen komen overeen met uw zoekopdracht:</b>',
+	'lucenepowersearchtext' => '
+Zoek in de volgende naamruimten:
+
+$1
+
+Zoek naar $3 $9 $10',
+	'lucenefallback'        => 'Er is een storing in de wikizoekmachine.
 Deze is waarschijnlijk tijdelijk van aard; probeer het over enige tijd opnieuw
-of doorzoek de wiki via een externe zoekmachine:\n"
+of doorzoek de wiki via een externe zoekmachine:',
+	'searchexactcase'       => 'Hoofdlettergevoelig zoeken',
+	'searchall'             => 'alle',
+	'searchincategory'      => 'binnen categorie',
 );
 $wgLuceneSearchMessages['no'] = array(
 	'searchnumber'          => '<strong>Resultat $1–$2 av $3</strong>',

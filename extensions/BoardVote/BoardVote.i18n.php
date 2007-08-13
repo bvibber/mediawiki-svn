@@ -710,11 +710,11 @@ $wgBoardVoteMessages['kk-cn'] = array(
 );
 $wgBoardVoteMessages['kk'] = $wgBoardVoteMessages['kk-kz'];
 $wgBoardVoteMessages['nl'] = array(
-	"boardvote"               => "Wikimedia Board of Trustees-verkiezing",
-	"boardvote_entry"         => "* [[Special:Boardvote/vote|Vote]]
+	'boardvote'               => 'Wikimedia Board of Trustees-verkiezing',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vote]]
 * [[Special:Boardvote/list|Toon uitgebrachte stemmen]]
-* [[Special:Boardvote/dump|Dump encrypted election record]]",
-	"boardvote_intro"         => "
+* [[Special:Boardvote/dump|Dump encrypted election record]]',
+	'boardvote_intro'         => '
 <p>Welkom bij de tweede verkiezingen voor de Wikimedia Board of Trustees. We
 kiezen twee personen die de gebruikersgemeenschap vertegenwoordigen in de
 verschillden Wikimedia-projecten. Ze bepalen mede de toekomstige richting
@@ -734,13 +734,13 @@ stemmen voor iedere positie wordt tot winnaar uitgeroepen voor de betreffende
 positie. In geval de stemmen staken wordt er een tweede ronde gehouden.</p>
 
 <p>Meer informatie:</p>
-<ul><li><a href=\"http://meta.wikimedia.org/wiki/Election_FAQ_2006\" class=\"external\">Bestuursverkiezing FAQ</a></li>
-<li><a href=\"http://meta.wikimedia.org/wiki/Election_Candidates_2006\" class=\"external\">Kandidaten</a></li></ul>
-",
-	"boardvote_intro_change"  => "<p>U heeft al gestemd. U kunt uw stem wijzigen via
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="external">Bestuursverkiezing FAQ</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_Candidates_2006" class="external">Kandidaten</a></li></ul>
+',
+	'boardvote_intro_change'  => '<p>U heeft al gestemd. U kunt uw stem wijzigen via
 het onderstaande formulier. Vink alstublieft de vakjes naar iedere kandidaat die
-u steunt aan.</p>",
-	"boardvote_entered"       => "Dank u. Uw stem is verwerkt.
+u steunt aan.</p>',
+	'boardvote_entered'       => 'Dank u. Uw stem is verwerkt.
 
 Als u wilt kunt u de volgende gegevens bewaren. Uw stem:
 
@@ -754,28 +754,36 @@ Nu volgt de versleutelde versie. Deze is openbaar en na te zien op [[Special:Boa
 
 <pre>$3</pre>
 
-[[Special:Boardvote/entry|Terug]]",
-	"boardvote_notloggedin"   => "U bent niet aangemeld. U kunt stemmen als u voor $2 ten minste
-$1 bewerkingen heeft gemaakt.",
-	"boardvote_notqualified"  => "Sorry, u heeft voor $2 $1 bewerkingen gemaakt. Om te kunnen
-stemmen heeft u er $3 nodig.",
-	"boardvote_novotes"       => "Er is nog niet gestemd.",
-	"boardvote_time"          => "Tijd",
-	"boardvote_user"          => "Gebruiker",
-	"boardvote_edits"         => "Bewerkingen",
-	"boardvote_days"          => "Dagen",
-	"boardvote_ua"            => "User-agent",
-	"boardvote_listintro"     => "<p>Hieronder staan alle stemmen die tot nu toe zijn
-uitgebracht. $1 voor de versleutelde gegevens.</p>",
-	"boardvote_dumplink"      => "Klik hier",
-	"boardvote_strike"        => "Ongeldig",
-	"boardvote_unstrike"      => "Geldig",
-	"boardvote_needadmin"     => "Alleen leden van de Verkiezingscommissie kunnen deze handeling uitvoeren.",
-	'boardvote_edits_many' => 'veel',
+[[Special:Boardvote/entry|Terug]]',
+	'boardvote_nosession'     => 'Ik kan uw Wikimedia-gebruikersnummer niet bepalen. Gelieve in te loggen in de wiki waar je voldoet aan de eisen, en ga naar <nowiki>[[Special:Boardvote]]</nowiki>. Je moet een account gebruiken met tenminste $1 bijdragen voor $2, en met uw eerst bewerking voor $3.',
+	'boardvote_notloggedin'   => 'U bent niet aangemeld. U kunt stemmen als u voor $2 ten minste
+$1 bewerkingen heeft gemaakt.',
+	'boardvote_notqualified'  => 'Sorry, u heeft voor $2 $1 bewerkingen gemaakt. Om te kunnen
+stemmen heeft u er $3 nodig.',
+	'boardvote_novotes'       => 'Er is nog niet gestemd.',
+	'boardvote_time'          => 'Tijd',
+	'boardvote_user'          => 'Gebruiker',
+	'boardvote_edits'         => 'Bewerkingen',
+	'boardvote_days'          => 'Dagen',
+	'boardvote_ip'            => 'IP',#identical but defined
+	'boardvote_ua'            => 'User-agent',
+	'boardvote_listintro'     => '<p>Hieronder staan alle stemmen die tot nu toe zijn
+uitgebracht. $1 voor de versleutelde gegevens.</p>',
+	'boardvote_dumplink'      => 'Klik hier',
+	'boardvote_submit'        => 'OK',#identical but defined
+	'boardvote_strike'        => 'Ongeldig',
+	'boardvote_unstrike'      => 'Geldig',
+	'boardvote_needadmin'     => 'Alleen leden van de Verkiezingscommissie kunnen deze handeling uitvoeren.',
+	'boardvote_notstarted'    => 'Het stemmen is nog niet gestart',
+	'boardvote_edits_many'    => 'veel',
 	'group-boardvote'         => 'Board vote beheerders',
 	'group-boardvote-member'  => 'Board vote beheerder',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote beheerder',
+	'boardvote_blocked'       => 'Sorry, je bent geblokkeerd op je geregistreerde wiki. Geblokkeerde gebruikers mogen niet stemmen.',
+	'boardvote_welcome'       => 'Welkom, \'\'\'$1\'\'\'!',
+	'go_to_board_vote'        => 'Wikimedia Bestuursverkiezing 2007',
 );
+
 $wgBoardVoteMessages['no'] = array(
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Stem]]
 * [[Special:Boardvote/list|Liste over stemmer]]

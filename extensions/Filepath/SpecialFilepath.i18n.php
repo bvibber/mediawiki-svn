@@ -117,6 +117,9 @@ $wgFilepathMessages['nl'] = array(
 	'filepath'        => 'Bestandslocatie',
 	'filepath_page'   => 'Bestand:',
 	'filepath_submit' => 'Zoeken',
+	'filepath-summary' => 'Deze speciale pagina geeft het volledige pad voor een bestand. Afbeeldingen worden in hun volledige resolutie getoond. Andere bestandstypen worden direct in het met het MIME-type verbonden programma geopend.
+
+	Voer de bestandsnaam in zonder het voorvoegsel "{{ns:image}}:".',
 );
 $wgFilepathMessages['no'] = array(
 	'filepath'        => 'Filsti',

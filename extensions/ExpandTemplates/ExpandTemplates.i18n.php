@@ -183,12 +183,13 @@ $wgExpandTemplatesMessages['nl'] = array(
 	'expand_templates_intro'           => 'Deze speciale pagina leest de ingegeven tekst in en
 substitueert recursief alle sjablonen in de tekst.
 Het substitueert ook alle parserfuncties zoals <nowiki>{{</nowiki>#if:...}} en
-variabelen als <nowiki>{{</nowiki>CURRENTDAY}} &mdash; vrijwel alles tussen dubbele accolades.
+variabelen als <nowiki>{{</nowiki>CURRENTDAY}} — vrijwel alles tussen dubbele accolades.
 Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_title'           => 'Contexttitel, voor {{PAGENAME}}, enzovoort:',
 	'expand_templates_input'           => 'Inputtekst:',
 	'expand_templates_output'          => 'Resultaat',
 	'expand_templates_remove_comments' => 'Verwijder opmerkingen',
+	'expand_templates_preview'         => 'Voorvertoning',
 );
 $wgExpandTemplatesMessages['no'] = array(
 	'expandtemplates'                  => 'Utvid maler',

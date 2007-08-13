@@ -37,6 +37,11 @@ $wgDeletedContribsMessages['kk-cn'] = array(
 );
 $wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-kz'];
 
+
+$wgDeletedContribsMessages['nl'] = array(
+	'deletedcontributions' => 'Verwijderde gebruikersbijdragen',
+);
+
 $wgDeletedContribsMessages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
 );
