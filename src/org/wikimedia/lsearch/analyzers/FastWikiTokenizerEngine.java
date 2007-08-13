@@ -39,6 +39,8 @@ public class FastWikiTokenizerEngine {
 	protected ArrayList<String> categories;
 	protected HashMap<String,String> interwikis;
 	protected HashSet<String> keywords;
+	protected ArrayList<ArrayList<Token>> sections;
+	protected ArrayList<Token> textAbstract;
 	private int decompLength=0, aliasLength=0;
 	private int length = 0; // length of token
 	private int start = 0; // start position of token

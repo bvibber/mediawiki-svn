@@ -53,6 +53,7 @@ import org.apache.log4j.helpers.LogLog;
 public class Configuration {
 	private static Configuration instance;
 	private static String configfile = null; 
+	private static boolean verbose = true; // print info and error messages
 	
 	protected final String CONF_FILE_NAME = "lsearch.conf";
 	
@@ -95,7 +96,8 @@ public class Configuration {
 		String logconfig = getString("Logging","logconfig");
 		if (logconfig == null) {
 			// debug!
-			System.out.println("Errors will be logged to console...");
+			if(verbose)
+				System.out.println("Errors will be logged to console...");
 			BasicConfigurator.configure();			
 		} else {
 			PropertyConfigurator.configure(logconfig);
@@ -129,7 +131,8 @@ public class Configuration {
 		for(int i=0;i<paths.length;i++){
 			try {
 				String path = paths[i];
-				System.out.println("Trying config file at path "+path);
+				if(verbose)
+					System.out.println("Trying config file at path "+path);
 				props.load(new FileInputStream(new File(path)));
 				configfile = path;
 				return;
@@ -140,7 +143,7 @@ public class Configuration {
 				return;
 			}
 		} 
-		System.out.println("Couldn't find a config file");
+		System.out.println("FATAL: Couldn't find a config file");
 		System.exit(1);
 	}
 
@@ -200,5 +203,9 @@ public class Configuration {
 		} catch(Exception e){
 			return defaultValue;
 		}
+	}
+
+	public static void setVerbose(boolean v) {
+		verbose = v;		
 	}
 }

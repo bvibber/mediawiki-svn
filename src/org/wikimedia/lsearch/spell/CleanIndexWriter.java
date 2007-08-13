@@ -38,9 +38,9 @@ public class CleanIndexWriter {
 		this.builder = new FieldBuilder("",FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER);
 		this.langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
 		String pathMain = iid.getSpellWords().getTempPath();
-		String pathAll = iid.getSpellTitles().getTempPath();
+		//String pathAll = iid.getSpellTitles().getTempPath();
 		writerMain = open(pathMain);
-		writerAll = open(pathAll);			
+		//writerAll = open(pathAll);			
 	}
 	
 	protected IndexWriter open(String path) throws IOException {
@@ -73,7 +73,7 @@ public class CleanIndexWriter {
 	}
 	/** Add to inde used for spell_titles */
 	public void addAllArticle(Article a){
-		addArticle(a,writerAll);
+		//addArticle(a,writerAll);
 	}
 	
 	/** Add single article */
@@ -101,8 +101,8 @@ public class CleanIndexWriter {
 		try{
 			writerMain.optimize();
 			writerMain.close();
-			writerAll.optimize();
-			writerAll.close();
+			//writerAll.optimize();
+			//writerAll.close();
 		} catch(IOException e){
 			log.warn("I/O error optimizing/closing index at "+iid.getTempPath());
 			throw e;

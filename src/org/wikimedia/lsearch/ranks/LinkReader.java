@@ -59,6 +59,7 @@ public class LinkReader implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
+		CompactArticleLinks p = links.get(page.Title.Namespace+":"+page.Title.Text);
 		if(readRedirects){
 			// register redirect
 			Title redirect = Localization.getRedirectTitle(revision.Text,langCode);
@@ -69,7 +70,7 @@ public class LinkReader implements DumpWriter {
 				return;
 			}
 		}
-		processLinks(revision.Text,page.Title.Namespace);
+		processLinks(p,revision.Text,page.Title.Namespace);
 	}
 	
 	/** Find the links object for the ns:title key */
@@ -116,7 +117,7 @@ public class LinkReader implements DumpWriter {
 	}
 	
 	/** Extract all links from this page, and increment ref count for linked pages */
-	protected void processLinks(String text, int namespace) {
+	protected void processLinks(CompactArticleLinks p, String text, int namespace) {
 		Pattern linkPat = Pattern.compile("\\[\\[(.*?)(\\|(.*?))?\\]\\]");
 		Matcher matcher = linkPat.matcher(text);
 		int ns; String title;
@@ -162,6 +163,8 @@ public class LinkReader implements DumpWriter {
 		// increment page ranks 
 		for(CompactArticleLinks rank : pagelinks){			
 			rank.links++;
+			rank.addInLink(p);
+			p.addOutLink(rank);
 		}
 	}
 	public void writeSiteinfo(Siteinfo info) throws IOException {

@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.config;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Hashtable;
 
@@ -469,6 +470,19 @@ public class IndexId {
 		}
 		
 		return ret;
+	}
+	
+	/**
+	 * Wrapper for getPhysicalIndexes to get iid objects
+	 * 
+	 * @return
+	 */
+	public ArrayList<IndexId> getAllParts(){
+		HashSet<String> physical = getPhysicalIndexes();
+		ArrayList<IndexId> parts = new ArrayList<IndexId>();
+		for(String p : physical)
+			parts.add(get(p));
+		return parts;		
 	}
 
 	/** Rebuild namespace map from information, call only when sure that iid's for all parts are constructed.

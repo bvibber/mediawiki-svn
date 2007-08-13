@@ -3,8 +3,13 @@ package org.wikimedia.lsearch.ranks;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.PriorityQueue;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -16,6 +21,7 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexThread;
+import org.wikimedia.lsearch.spell.SuggestResult;
 import org.wikimedia.lsearch.storage.Storage;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
@@ -63,9 +69,10 @@ public class RankBuilder {
 
 		// regenerate link info
 		Links links = processLinks(inputfile,getTitles(inputfile,langCode),langCode,LinkReader.NO_REDIRECTS);
-
+		links.compactAll();
 		Storage store = Storage.getInstance();
-		store.storePageReferences(links.getAll(),dbname);
+		//store.storePageReferences(links.getAll(),dbname);
+		printRelated(links);
 		
 		/*for(CompactArticleLinks cs : links.values()){
 				System.out.println(cs);
@@ -118,6 +125,135 @@ public class RankBuilder {
 			return null;
 		}
 		return tr.getTitles();
+	}
+	
+	static class Related {
+		CompactArticleLinks title;
+		CompactArticleLinks relates;
+		double score;
+		HashMap<CompactArticleLinks,Double> scores;
+		public Related(CompactArticleLinks title, CompactArticleLinks relates, double score, HashMap<CompactArticleLinks,Double> scores) {
+			this.title = title;
+			this.relates = relates;
+			this.score = score;
+			this.scores = scores;
+		}
+		@Override
+		public String toString() {
+			return title+"->"+relates+" : "+score;
+		}
+	}
+	
+	public static void printRelated(Links links){
+		int num = 0;
+		int total = links.getAll().size();
+		for(CompactArticleLinks cs : links.getAll()){
+			num++;
+
+			ArrayList<Related> pq = new ArrayList<Related>();
+			HashSet<CompactArticleLinks> ll = new HashSet<CompactArticleLinks>();
+			//HashSet<CompactArticleLinks> lin = new HashSet<CompactArticleLinks>();
+			//HashSet<CompactArticleLinks> lout = new HashSet<CompactArticleLinks>();
+			System.out.println("["+num+"/"+total+" - "+cs.linksInIndex+"] "+cs.toString());
+			if(cs.linksIn != null){
+				for(CompactArticleLinks csl : cs.linksIn)
+					ll.add(csl);
+			}
+			/* if(cs.linksOut != null){
+				for(CompactArticleLinks csl : cs.linksOut)
+					ll.add(csl);
+			} */
+			if(cs.toString().equals("0:Douglas Adams")){
+				int b = 01;
+				b++;
+			}
+			for(CompactArticleLinks from : ll){
+				//double score = relatedScore(cs,ll,from);
+				Object[] ret = relatedScore(cs,ll,from);
+				double score = (Double) ret[0];
+				HashMap<CompactArticleLinks,Double> scores = (HashMap<CompactArticleLinks, Double>) ret[1];				
+				if(score != 0)
+					pq.add(new Related(cs,from,score,scores));
+
+			}
+			/*for(CompactArticleLinks to : lout){
+				if(!lin.contains(to)){
+					double score = relatedScore(cs,lin,lout,to);
+					if(score != 0)
+						pq.add(new Related(cs,to,score));
+				}
+			}*/
+			if(pq.size() > 0){
+				Collections.sort(pq,new Comparator<Related>() {
+					public int compare(Related o1, Related o2){
+						double d = o2.score-o1.score;
+						if(d == 0) return 0;
+						else if(d > 0) return 1;
+						else return -1;
+					}
+				});
+				System.out.println(cs.getKey()+" -> ");
+				for(Related r : pq){
+					System.out.println("     -> "+r.relates+" ("+r.score+")");					
+					if(r.scores != null){
+						ArrayList<Entry<CompactArticleLinks, Double>> ss = new ArrayList<Entry<CompactArticleLinks, Double>>();
+						ss.addAll(r.scores.entrySet());
+						Collections.sort(ss,new Comparator<Entry<CompactArticleLinks, Double>>() {
+							public int compare(Entry<CompactArticleLinks, Double> o1, Entry<CompactArticleLinks, Double> o2){
+								double d = o2.getValue()-o1.getValue();
+								if(d == 0) return 0;
+								else if(d > 0) return 1;
+								else return -1;
+							}
+						});
+						for(Entry<CompactArticleLinks, Double> e : ss){
+							System.out.println("          + "+e.getKey().toString()+" = "+e.getValue());
+						}
+					}
+				}
+				System.out.println();
+			}
+		}
+	}
+	
+	public static double norm(double d){
+		if(d == 0)
+			return 1;
+		else
+			return d;
+	}
+	
+	public static Object[] relatedScore(CompactArticleLinks p, HashSet<CompactArticleLinks> ll, CompactArticleLinks q){
+		double score = 0;
+		//HashMap<CompactArticleLinks,Double> scores = new HashMap<CompactArticleLinks,Double>(); 
+		//int links = q.links;
+		// iterate the neighbourhood of q and see it they link to p
+		for(int i=0;i<q.linksInIndex;i++){
+			CompactArticleLinks r = q.linksIn[i];
+			if(r != q && r.links != 0 && ll.contains(r)){
+				//score += 1.0/(norm(q.links)*norm(r.links));
+				score += 1.0/norm(r.links);
+				//scores.put(r,1.0/norm(r.links));
+			}
+			
+		}
+		for(int i=0;i<q.linksOutIndex;i++){
+			CompactArticleLinks r = q.linksOut[i];
+			if(r != q && r.links!=0 && ll.contains(r)){
+				//score += 1.0/(norm(q.links)*norm(r.links));
+				score += 1.0/norm(r.links);
+				//scores.put(r,1.0/norm(r.links));
+			}
+		}
+		// iterate neighbourhood of p and see if it links to q
+		/*for(int i=0;i<p.linksInIndex;i++){
+			CompactArticleLinks r = p.linksIn[i];
+			if(q.hasLinkFrom(r))
+				score += 1.0/(norm(q.links)*norm(r.links));
+		} */
+		//return score * (count / (double)(q.linksInIndex+q.linksOutIndex)) * q.links;
+		//return score * q.links;
+		return new Object[]{ score, null };
 	}
 
 	private static String formatTime(long l) {

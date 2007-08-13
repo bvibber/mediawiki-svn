@@ -84,6 +84,9 @@ public class GlobalConfiguration {
 	protected static Hashtable<String,IndexId> indexIdPool = new Hashtable<String,IndexId>();
 	
 	protected static GlobalConfiguration instance = null;
+	
+	/** Wether to report warnings and info */
+	protected static boolean verbose = true;
 
 	/**
 	 * Use this function to override the hosts IP address which 
@@ -248,7 +251,8 @@ public class GlobalConfiguration {
 				}
 				boolean searched = (getSearchHosts(dbrole).size() != 0); 
 				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split") || typeid.equals("nssplit"))){
-					System.out.println("WARNING: in Global Configuration: index "+dbrole+" is not searched by any host.");
+					if(verbose)
+						System.out.println("WARNING: in Global Configuration: index "+dbrole+" is not searched by any host.");
 				}
 			}
 		}
@@ -376,7 +380,8 @@ public class GlobalConfiguration {
 				else if(s.equalsIgnoreCase("oai"))
 					section = OAI;
 			} else if(section==-1 && !line.trim().equals("")){
-				System.out.println("Ignoring a line up to first section heading...");
+				if(verbose)
+					System.out.println("Ignoring a line up to first section heading...");
 			} else if(section == DATABASE){
 				String[] parts = splitBySemicolon(line,lineNum);
 				if(parts == null) continue;				
@@ -406,7 +411,7 @@ public class GlobalConfiguration {
 				String host = parts[0].trim();
 				String path = parts[1].trim();
 				
-				if(indexRsyncPath.get(host)!=null)
+				if(indexRsyncPath.get(host)!=null && verbose)
 					System.out.println("Warning: repeated path definition for host "+host+" on line "+lineNum+", overwriting old.");
 				indexRsyncPath.put(host,path);
 			} else if(section == NAMESPACE_PREFIX){
@@ -642,7 +647,8 @@ public class GlobalConfiguration {
 			if(dbrole.length()==0)
 				continue;
 			if(indexLocation.get(dbrole) != null){
-				System.out.println("Warning: index "+dbrole+" located at multiple host, skipping host "+host);
+				if(verbose)
+					System.out.println("Warning: index "+dbrole+" located at multiple host, skipping host "+host);
 				continue;
 			}
 			hostroles.add(dbrole);
@@ -689,7 +695,7 @@ public class GlobalConfiguration {
 			String name = dbrole.split("\\.")[0]+"@"+host;
 			Integer group;
 			if((group = databaseGroup.get(name)) != null){
-				if(!group.equals(grp)){
+				if(!group.equals(grp) && verbose){
 					System.out.println("Warning: Database "+name+" was previously defined in search group "+group+". Overriding with group "+grp);
 				}
 			}
@@ -743,7 +749,8 @@ public class GlobalConfiguration {
 			if(tokens.length>1) // number of segments
 				params.put("number",tokens[1]);
 			else{
-				System.out.println("Warning: for dbs "+dbs+" splitFactor is not specified, using default of 2.");
+				if(verbose)
+					System.out.println("Warning: for dbs "+dbs+" splitFactor is not specified, using default of 2.");
 				params.put("number","2");
 			}
 			dbroles.put(type,params);
@@ -752,7 +759,7 @@ public class GlobalConfiguration {
 			if(tokens.length>1)
 				params.put("code",tokens[1]);
 			
-			if(tokens.length>2)
+			if(tokens.length>2 && verbose)
 				System.out.println("Unrecognized language parameters in ("+role+")");
 			
 			dbroles.put(type,params);
@@ -762,7 +769,7 @@ public class GlobalConfiguration {
 			if(tokens.length>1)
 				params.put("count",tokens[1]);
 			
-			if(tokens.length>2)
+			if(tokens.length>2 && verbose)
 				System.out.println("Unrecognized warmup parameters in ("+role+")");
 			
 			dbroles.put(type,params);
@@ -802,7 +809,7 @@ public class GlobalConfiguration {
 			if(tokens.length>2)
 				params.put("minHits",tokens[2]);			
 			
-			if(tokens.length>3)
+			if(tokens.length>3 && verbose)
 				System.out.println("Unrecognized suggest parameters in ("+role+")");
 			
 			dbroles.put(type,params);
@@ -815,7 +822,7 @@ public class GlobalConfiguration {
 			if(tokens.length>3)
 				params.put("minHits",tokens[3]);			
 			
-			if(tokens.length>4)
+			if(tokens.length>4 && verbose)
 				System.out.println("Unrecognized suggest parameters in ("+role+")");
 			
 			dbroles.put(type,params);			
@@ -835,11 +842,12 @@ public class GlobalConfiguration {
 			}
 			if(type.equals("split") || type.equals("mainsplit") || type.equals("single") || type.equals("nssplit")){
 				if(dbr.get("split")!=null || dbr.get("mainsplit")!=null || dbr.get("single")!=null || dbr.get("nssplit")!=null){
-					System.out.println("WARNING: in Global Configuration: defined new architecture "+type+" for "+db);
+					if(verbose)
+						System.out.println("WARNING: in Global Configuration: defined new architecture "+type+" for "+db);
 					dbr.remove("split"); dbr.remove("mainsplit"); dbr.remove("single"); dbr.remove("nssplit");
 				}
 			}
-			if(dbr.get(type)!=null)
+			if(dbr.get(type)!=null && verbose)
 				System.out.println("WARNING: in Global Configuration: role \""+type+"\" already defined for database \""+db+"\". Overwriting.");
 			dbr.putAll(dbroles);
 		}
@@ -911,7 +919,7 @@ public class GlobalConfiguration {
 			if(type.equals("single") || type.equals("mainsplit") || type.equals("split"))
 				return type;
 		}		
-		// global configuration consistensy error
+		// global configuration consistency error
 		System.out.println("Database "+dbname+" does not have a specified type (eg single, mainsplit, split).");
 		return "unknown"; 
 	}
@@ -1081,6 +1089,15 @@ public class GlobalConfiguration {
 		
 		return repo;
 	}
+
+	public static boolean isVerbose() {
+		return verbose;
+	}
+
+	public static void setVerbose(boolean verbose) {
+		GlobalConfiguration.verbose = verbose;
+	}
+	
 	
 
 }

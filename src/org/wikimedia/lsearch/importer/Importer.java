@@ -112,6 +112,7 @@ public class Importer {
 				}
 			}
 			links.generateRedirectLists();
+			links.compactAll();
 			
 			log.info("Third pass, indexing articles...");
 			
