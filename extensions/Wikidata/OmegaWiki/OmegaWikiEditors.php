@@ -188,14 +188,16 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 		$wgPropertyAttributeName;
 		
 	$linkValueObjectAttributesEditors = array();
-	$textValueObjectAttributesEditors = array();	
+	$textValueObjectAttributesEditors = array();
+	$translatedTextValueObjectAttributesEditors = array();
+	$optionValueObjectAttributesEditors = array();	
 	
 	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) { 
 		$attribute = $propertyToColumnFilter->getAttribute();
 		$propertyCaption = $propertyToColumnFilter->getPropertyCaption();
 		
 		$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation);
-		$linkValueObjectAttributeEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation);
+		$linkValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation);
 		$translatedTextValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation);
 		$optionValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation);
 	}
