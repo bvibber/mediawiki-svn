@@ -204,12 +204,16 @@ function initializeOmegaWikiAttributesOld(ViewInformation $viewInformation) {
 	$synonymsAndTranslationsAttribute = new Attribute(null, "$synonymsAndTranslationsCaption", $synonymsTranslationsStructure);
 	
 	global
+		$attributeObjectAttribute;
+		
+	$attributeObjectAttribute = new Attribute("attribute-object-id", "Attribute object", "object-id");
+	
+	global
 		$translatedTextAttributeIdAttribute, $translatedTextValueIdAttribute, 
-		$translatedTextAttributeObjectAttribute, $translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, 
+		$translatedTextAttributeAttribute, $translatedTextValueAttribute, $translatedTextAttributeValuesAttribute, 
 		$translatedTextAttributeValuesStructure, $wgTranslatedTextAttributeValuesAttributeName, $wgTranslatedTextAttributeAttributeName, $wgTranslatedTextAttributeValueAttributeName;
 	
 	$translatedTextAttributeIdAttribute = new Attribute("translated-text-attribute-id", "Attribute identifier", "object-id");
-	$translatedTextAttributeObjectAttribute = new Attribute("translated-text-attribute-object-id", "Attribute object", "object-id");
 	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", $wgTranslatedTextAttributeAttributeName, $definedMeaningReferenceType);
 	$translatedTextValueIdAttribute = new Attribute("translated-text-value-id", "Translated text value identifier", "translated-text-value-id");
 	
@@ -218,7 +222,7 @@ function initializeOmegaWikiAttributesOld(ViewInformation $viewInformation) {
 	else
 		$translatedTextValueAttribute = new Attribute("translated-text", $wgTranslatedTextAttributeValueAttributeName, $translatedTextStructure);
 	
-	$translatedTextAttributeValuesStructure = new Structure("translated-text-attribute-values",$translatedTextAttributeIdAttribute, $translatedTextAttributeObjectAttribute, $translatedTextAttributeAttribute, $translatedTextValueIdAttribute, $translatedTextValueAttribute, $objectAttributesAttribute);
+	$translatedTextAttributeValuesStructure = new Structure("translated-text-attribute-values",$translatedTextAttributeIdAttribute, $attributeObjectAttribute, $translatedTextAttributeAttribute, $translatedTextValueIdAttribute, $translatedTextValueAttribute, $objectAttributesAttribute);
 	$translatedTextAttributeValuesAttribute = new Attribute(null, $wgTranslatedTextAttributeValuesAttributeName, $translatedTextAttributeValuesStructure);
 	
 	global
@@ -426,6 +430,7 @@ class OmegaWikiAttributes {
 		$t->class = new Attribute("class", "Class", $t->definedMeaningReferenceStructure);
 		$t->classMembershipStructure = new Structure("class-membership", $t->classMembershipId, $t->class);
 		$t->classMembership = new Attribute(null, wfMsg("ClassMembership"), $t->classMembershipStructure);
+		
 		global
 			 $wgPossiblySynonymousAttributeId;
 			 
@@ -437,14 +442,14 @@ class OmegaWikiAttributes {
 		$t->possiblySynonymous = new Attribute(null, wfMsg("PossiblySynonymous"), $t->possiblySynonymousStructure);
 
 		global
-			  $relationTypeType;
+			$relationTypeType;
 		
 		$t->relationId = new Attribute("relation-id", "Relation identifier", "object-id");
 		$t->relationType = new Attribute("relation-type", wfMsg("RelationType"), $t->definedMeaningReferenceStructure); 
 		$t->otherDefinedMeaning = new Attribute("other-defined-meaning", wfMsg("OtherDefinedMeaning"), $definedMeaningReferenceType);
 		
 		global
-		    	$wgRelationsAttributeId, $wgIncomingRelationsAttributeId ;
+		    $wgRelationsAttributeId, $wgIncomingRelationsAttributeId ;
 			
 		$t->relationStructure = new Structure("relations", $t->relationId, $t->relationType, $t->otherDefinedMeaning, $t->objectAttributes);
 		$t->relations = new Attribute(null, wfMsg("Relations"), $t->relationStructure);
@@ -476,11 +481,12 @@ class OmegaWikiAttributes {
 		else
 			$synonymsAndTranslationsCaption = wfMsg("SynonymsAndTranslations");
 
+		$t->attributeObjectId = new Attribute("attributeObjectId", "Attribute object", "object-id");
+
 		$t->syntransId = new Attribute("syntrans-id", "$synonymsAndTranslationsCaption identifier", "integer");
 		$t->synonymsTranslationsStructure = new Structure("synonyms-translations", $t->syntransId, $t->expression, $t->identicalMeaning, $t->objectAttributes);
 		$t->synonymsAndTranslations = new Attribute(null, "$synonymsAndTranslationsCaption", $t->synonymsTranslationsStructure);
 		$t->translatedTextAttributeId = new Attribute("translated-text-attribute-id", "Attribute identifier", "object-id");
-		$t->translatedTextAttributeObject = new Attribute("translated-text-attribute-object-id", "Attribute object", "object-id");
 		$t->translatedTextAttribute = new Attribute("translated-text-attribute", wfMsg("TranslatedTextAttribute"), $definedMeaningReferenceType);
 		$t->translatedTextValueId = new Attribute("translated-text-value-id", "Translated text value identifier", "translated-text-value-id");
 		
@@ -489,7 +495,7 @@ class OmegaWikiAttributes {
 		else
 			$t->translatedTextValue = new Attribute("translated-text", wfMsg("TranslatedTextAttributeValue"), $t->translatedTextStructure);
 		
-		$t->translatedTextAttributeValuesStructure = new Structure("translated-text-attribute-values",$t->translatedTextAttributeId, $t->translatedTextAttributeObject, $t->translatedTextAttribute, $t->translatedTextValueId, $t->translatedTextValue, $t->objectAttributes);
+		$t->translatedTextAttributeValuesStructure = new Structure("translated-text-attribute-values",$t->translatedTextAttributeId, $t->attributeObjectId, $t->translatedTextAttribute, $t->translatedTextValueId, $t->translatedTextValue, $t->objectAttributes);
 		$t->translatedTextAttributeValues = new Attribute(null, wfMsg("TranslatedTextAttributeValues"), $t->translatedTextAttributeValuesStructure);
 		$t->textAttributeId = new Attribute("text-attribute-id", "Attribute identifier", "object-id");
 		$t->textAttributeObject = new Attribute("text-attribute-object-id", "Attribute object", "object-id");
@@ -514,6 +520,7 @@ class OmegaWikiAttributes {
 		$t->optionAttributeOptionId = new Attribute('option-attribute-option-id', 'Option identifier', 'object-id');
 		$t->optionAttributeOptionsStructure = new Structure('option-attribute-options', $t->optionAttributeOptionId, $t->optionAttribute, $t->optionAttributeOption, $t->language);
 		$t->optionAttributeOptions = new Attribute(null, wfMsg("OptionAttributeOptions"), $t->optionAttributeOptionsStructure);
+		
 		if ($viewInformation->filterOnLanguage() && !$viewInformation->hasMetaDataAttributes())
 			$t->translatedText = new Attribute("translated-text", wfMsg("Text"), "text");	
 		else
@@ -582,7 +589,7 @@ class OmegaWikiAttributes {
 	public function __get($key) {
 		$attributes=&$this->attributes;
 		if (!array_key_exists($key, $attributes)) {
-			throw new Exception("Key does not exist");
+			throw new Exception("Key does not exist: " . $key);
 		}
 		return $attributes[$key];
 	}	

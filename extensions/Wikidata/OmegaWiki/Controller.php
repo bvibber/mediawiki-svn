@@ -586,8 +586,8 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 				if ($textValue->getRecordCount() > 0) {
 					$textValueRecord = $textValue->getRecord(0);
 		
-					$languageId = $textValueRecord->languageAttribute;
-					$text = $textValueRecord->textAttribute;
+					$languageId = $textValueRecord->language;
+					$text = $textValueRecord->text;
 					
 					if ($languageId != 0 && $text != '')
 						addTranslatedTextAttributeValue($objectId, $textAttributeId, $languageId, $text);

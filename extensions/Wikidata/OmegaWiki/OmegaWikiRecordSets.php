@@ -745,7 +745,7 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, ViewInformation $v
 function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attributeToExpand, Attribute $objectIdAttribute, ViewInformation $viewInformation) {
 	global
 		$textAttributeObjectAttribute, $textAttributeValuesAttribute, 
-		$translatedTextAttributeObjectAttribute, $translatedTextAttributeValuesAttribute,
+		$attributeObjectAttribute, $translatedTextAttributeValuesAttribute,
 		$linkAttributeObjectAttribute, $linkAttributeValuesAttribute,
 		$optionAttributeObjectAttribute, $optionAttributeValuesAttribute;
 		
@@ -777,7 +777,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 		$translatedTextAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allTranslatedTextAttributeValuesRecordSet,
-				$translatedTextAttributeObjectAttribute
+				$attributeObjectAttribute
 			);	
 			
 		$emptyTranslatedTextAttributesRecordSet = new ArrayRecordSet($allTranslatedTextAttributeValuesRecordSet->getStructure(), $allTranslatedTextAttributeValuesRecordSet->getKey());
@@ -1037,7 +1037,7 @@ function getLinkAttributeValuesRecordSet(array $objectIds, ViewInformation $view
 function getTranslatedTextAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
 		$translatedTextAttributeIdAttribute, $translatedContentAttributeValuesTable, $translatedTextAttributeAttribute,
-		$objectAttributesAttribute, $translatedTextAttributeObjectAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute,
+		$objectAttributesAttribute, $attributeObjectAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute,
 		$translatedTextAttributeValuesStructure;
 
 	$recordSet = queryRecordSet(
@@ -1046,7 +1046,7 @@ function getTranslatedTextAttributeValuesRecordSet(array $objectIds, ViewInforma
 		$translatedTextAttributeIdAttribute,
 		new TableColumnsToAttributesMapping(
 			new TableColumnsToAttribute(array('value_id'), $translatedTextAttributeIdAttribute),
-			new TableColumnsToAttribute(array('object_id'), $translatedTextAttributeObjectAttribute),
+			new TableColumnsToAttribute(array('object_id'), $attributeObjectAttribute),
 			new TableColumnsToAttribute(array('attribute_mid'), $translatedTextAttributeAttribute),
 			new TableColumnsToAttribute(array('value_tcid'), $translatedTextValueIdAttribute)
 		),

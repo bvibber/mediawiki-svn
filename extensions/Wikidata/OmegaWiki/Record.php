@@ -30,23 +30,22 @@ class ArrayRecord implements Record {
 		return @$this->values[$attribute->id];
 	}
 	
-
 	/**
 	 * Look up the correct attribute using omegaWikiAttributes
 	 * and return its value
  	 */
-	public function __get($attribute_name){
-		$o=OmegaWikiAttributes::getInstance();
-		return $this->getAttributeValue($o->$attribute_name);
+	public function __get($attributeName) {
+		$o = OmegaWikiAttributes::getInstance();
+		return $this->getAttributeValue($o->$attributeName);
 	}
 		
 	/**
 	 * Look up the correct attribute using omegaWikiAttributes
 	 * and set its value
  	 */
-	public function __set($attribute_name, $value){
-		$o=OmegaWikiAttributes::getInstance();
-		return $this->setAttributeValue ($o->$attribute_name, $value);
+	public function __set($attributeName, $value) {
+		$o = OmegaWikiAttributes::getInstance();
+		return $this->setAttributeValue($o->$attributeName, $value);
 	}
 	/** 
 	 * Obtains a value based on the provided key.
@@ -55,7 +54,7 @@ class ArrayRecord implements Record {
 	 * For now, this just does a direct lookup.
 	 * @deprecated use __get and __set instead
 	 */
-	public function getValue ($key) {
+	public function getValue($key) {
 		return @$this->values[$key];	
 	}
 
