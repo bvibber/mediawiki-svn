@@ -686,30 +686,32 @@ XHTML id names.
 'versionrequired'     => 'Version $1 of MediaWiki required',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page. See [[Special:Version|version page]].',
 
-'ok'                   => 'OK',
-'sitetitle'            => '{{SITENAME}}', # don't translate or duplicate this message to other languages
-'pagetitle'            => '$1 - {{SITENAME}}',
-'sitesubtitle'         => '', # don't translate or duplicate this message to other languages
-'retrievedfrom'        => 'Retrieved from "$1"',
-'youhavenewmessages'   => 'You have $1 ($2).',
-'newmessageslink'      => 'new messages',
-'newmessagesdifflink'  => 'last change',
-'editsection'          => 'edit',
-'editsection-brackets' => '[$1]', # only translate this message to other languages if you have to change it
-'editold'              => 'edit',
-'editsectionhint'      => 'Edit section: $1',
-'toc'                  => 'Contents',
-'showtoc'              => 'show',
-'hidetoc'              => 'hide',
-'thisisdeleted'        => 'View or restore $1?',
-'viewdeleted'          => 'View $1?',
-'restorelink'          => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
-'feedlinks'            => 'Feed:',
-'feed-invalid'         => 'Invalid subscription feed type.',
-'feed-atom'            => 'Atom', # only translate this message to other languages if you have to change it
-'feed-rss'             => 'RSS', # only translate this message to other languages if you have to change it
-'sitenotice'           => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
-'anonnotice'           => '-', # don't translate or duplicate this message to other languages
+'ok'                      => 'OK',
+'sitetitle'               => '{{SITENAME}}', # don't translate or duplicate this message to other languages
+'pagetitle'               => '$1 - {{SITENAME}}',
+'sitesubtitle'            => '', # don't translate or duplicate this message to other languages
+'retrievedfrom'           => 'Retrieved from "$1"',
+'youhavenewmessages'      => 'You have $1 ($2).',
+'newmessageslink'         => 'new messages',
+'newmessagesdifflink'     => 'last change',
+'youhavenewmessagesmulti' => 'You have new messages on $1',
+'newtalkseperator'        => ',_', # don't translate or duplicate this message to other languages
+'editsection'             => 'edit',
+'editsection-brackets'    => '[$1]', # only translate this message to other languages if you have to change it
+'editold'                 => 'edit',
+'editsectionhint'         => 'Edit section: $1',
+'toc'                     => 'Contents',
+'showtoc'                 => 'show',
+'hidetoc'                 => 'hide',
+'thisisdeleted'           => 'View or restore $1?',
+'viewdeleted'             => 'View $1?',
+'restorelink'             => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
+'feedlinks'               => 'Feed:',
+'feed-invalid'            => 'Invalid subscription feed type.',
+'feed-atom'               => 'Atom', # only translate this message to other languages if you have to change it
+'feed-rss'                => 'RSS', # only translate this message to other languages if you have to change it
+'sitenotice'              => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
+'anonnotice'              => '-', # don't translate or duplicate this message to other languages
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Article',
@@ -888,6 +890,14 @@ will be sent for any of the following features.',
 format. Please enter a well-formatted address or empty that field.',
 'accountcreated'             => 'Account created',
 'accountcreatedtext'         => 'The user account for $1 has been created.',
+'loginlanguagelabel'         => 'Language: $1',
+'loginlanguagelinks'         => '* Deutsch|de
+* English|en
+* Esperanto|eo
+* Français|fr
+* Español|es
+* Italiano|it
+* Nederlands|nl', # don't translate or duplicate this message to other languages
 
 # Password reset dialog
 'resetpass'               => 'Reset account password',
@@ -1019,7 +1029,6 @@ Please try again. If it still doesn't work, try logging out and logging back in.
 'token_suffix_mismatch'     => '<strong>Your edit has been rejected because your client mangled the punctuation characters 
 in the edit token. The edit has been rejected to prevent corruption of the article text. 
 This sometimes happens when you are using a buggy web-based anonymous proxy service.</strong>',
-'importing'                 => 'Importing $1',
 'editing'                   => 'Editing $1',
 'editinguser'               => 'Editing user <b>$1</b>',
 'editingsection'            => 'Editing $1 (section)',
@@ -1447,7 +1456,6 @@ If you have this image in full resolution upload this one, otherwise change the 
 'imagelist'                 => 'File list',
 'imagelist-summary'         => '', # only translate this message to other languages if you have to change it
 'imagelisttext'             => "Below is a list of '''$1''' {{PLURAL:$1|file|files}} sorted $2.",
-'imagelistforuser'          => 'This shows only images uploaded by $1.',
 'getimagelist'              => 'fetching file list',
 'ilsubmit'                  => 'Search',
 'showlast'                  => 'Show last $1 files sorted $2.',
@@ -1724,7 +1732,6 @@ or has chosen not to receive e-mail from other users.',
 'watchlistfor'         => "(for '''$1''')",
 'nowatchlist'          => 'You have no items on your watchlist.',
 'watchlistanontext'    => 'Please $1 to view or edit items on your watchlist.',
-'watchlistcount'       => "'''You have {{PLURAL:$1|$1 item|$1 items}} on your watchlist, including talk pages.'''",
 'watchnologin'         => 'Not logged in',
 'watchnologintext'     => 'You must be [[Special:Userlogin|logged in]] to modify your watchlist.',
 'addedwatch'           => 'Added to watchlist',
@@ -1841,7 +1848,7 @@ Please hit "back" and reload the page you came from, then try again.',
 'protectedarticle'            => 'protected "[[$1]]"',
 'modifiedarticleprotection'   => 'changed protection level for "[[$1]]"',
 'unprotectedarticle'          => 'unprotected "[[$1]]"',
-'protectsub'                  => '(Protecting "$1")',
+'protectsub'                  => '(Setting protection level for "$1")',
 'confirmprotect'              => 'Confirm protection',
 'protectcomment'              => 'Comment:',
 'protectexpiry'               => 'Expires:',
@@ -1858,6 +1865,7 @@ Here are the current settings for the page <strong>$1</strong>:',
 Here are the current settings for the page <strong>$1</strong>:',
 'protect-cascadeon'           => "This page is currently protected because it is included in the following {{PLURAL:$1|page, which has|pages, which have}} cascading protection turned on. You can change this page's protection level, but it will not affect the cascading protection.",
 'protect-default'             => '(default)',
+'protect-fallback' => 'Require "$1" permission',
 'protect-level-autoconfirmed' => 'Block unregistered users',
 'protect-level-sysop'         => 'Sysops only',
 'protect-summary-cascade'     => 'cascading',
@@ -1899,7 +1907,7 @@ that you don't have permission to view will not be restored.",
 'undeletehistorynoadmin'   => 'This article has been deleted. The reason for deletion is
 shown in the summary below, along with details of the users who had edited this page
 before deletion. The actual text of these deleted revisions is only available to administrators.',
-'undelete-revision'        => 'Deleted revision of $1 from $2:',
+'undelete-revision' => 'Deleted revision of $1 (as of $2) by $3:',
 'undeleterevision-missing' => 'Invalid or missing revision. You may have a bad link, or the
 revision may have been restored or removed from the archive.',
 'undeletebtn'              => 'Restore',
@@ -2843,9 +2851,7 @@ Please confirm that really want to recreate this page.",
 $1',
 'confirm_purge_button' => 'OK',
 
-'youhavenewmessagesmulti' => 'You have new messages on $1',
-'newtalkseperator'        => ',_', # don't translate or duplicate this message to other languages
-
+# AJAX search
 'searchcontaining' => "Search for articles containing ''$1''.",
 'searchnamed'      => "Search for articles named ''$1''.",
 'articletitles'    => "Articles starting with ''$1''",
@@ -2853,15 +2859,6 @@ $1',
 
 # Separator for categories in page lists
 'catseparator' => '|', # don't translate or duplicate this message to other languages
-
-'loginlanguagelabel' => 'Language: $1',
-'loginlanguagelinks' => '* Deutsch|de
-* English|en
-* Esperanto|eo
-* Français|fr
-* Español|es
-* Italiano|it
-* Nederlands|nl', # don't translate or duplicate this message to other languages
 
 # Multipage image navigation
 'imgmultipageprev'   => '← previous page',

@@ -167,6 +167,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Show standard tool links for blocked users in Special:Ipblocklist
 * Miscellaneous aesthetic improvements to Special:Ipblocklist
 * (bug 10826) Added link trail with Cyrillic characters for Mongolian language
+* (bug 10859) Introduce 'UserGetImplicitGroups' hook; see docs/hooks.txt for
+  more information
+* (bug 10832) Include user information when viewing a deleted revision
+* (bug 10872) Fall back to sane defaults when generating protection selector
+  labels for custom restriction levels
 
 == Bugfixes since 1.10 ==
 
@@ -364,13 +369,15 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Table sorting JavaScript prefers textContent over innerText to allow hidden
   sort keys to work on Safari
 * (bug 4530) Fix local name of Kurdish language
-* (bug 10830) Fix local name Haitian Creole language
-* Fix comments in contributions and log pages for RTL languages
+* (bug 10830) Fix local name of Haitian Creole language
+* Fix invalid XHTML in Special:Protectedpages
+* Fix comments in contributions and log pages for right-to-left languages
 * Make installer include_path-independent, so it should work on hosts which
   disable user setting of PHP include_path setting
 * glob() is horribly unreliable and doesn't work on some systems, including
   free.fr shared hosting. No longer using it in Language::getLanguageNames()
-
+* (bug 10763) Fix multi-insert logic for PostgreSQL
+* Fix invalid XHTML when viewing a deleted revision
 
 == API changes since 1.10 ==
 
@@ -420,6 +427,11 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Added full text search in titles and content (list=search)
 * (bug 10684) Expanded list=allusers functionality
 * Possible breaking change: prop=revisions no longer includes pageid for rvprop=ids
+* Added rvprop=size to prop=revisions (The size will not be shown if it is NULL in the database)
+* list=allpages now allows to filter by article min/max size and protection status
+* Added site statistics (siprop=statistics for meta=siteinfo)
+* (bug 10902) Unable to fetch user contributions from IP addresses
+* `list=usercontribs` no longer requires that the user exist
 
 == Maintenance script changes since 1.10 ==
 
@@ -451,6 +463,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Galician (gl)
 * Hakka (hak)
 * Hebrew (he)
+* Upper Sorbian (hsb)
+* Haitian (ht)
 * Indonesian (id)
 * Italian (it)
 * Japanese (ja)

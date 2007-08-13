@@ -452,7 +452,7 @@ class User {
 	static function isUsableName( $name ) {
 		global $wgReservedUsernames;
 		return
-			// Must be a usable username, obviously ;)
+			// Must be a valid username, obviously ;)
 			self::isValidUserName( $name ) &&
 			
 			// Certain names may be reserved for batch processes.
@@ -2561,7 +2561,22 @@ class User {
 		global $wgGroupPermissions;
 		return array_diff(
 			array_keys( $wgGroupPermissions ),
-			array( '*', 'user', 'autoconfirmed', 'emailconfirmed' ) );
+			self::getImplicitGroups()
+		);
+	}
+
+	/**
+	 * Get a list of implicit groups
+	 *
+	 * @return array
+	 */
+	public static function getImplicitGroups() {
+		static $groups = null;
+		if( !is_array( $groups ) ) {
+			$groups = array( '*', 'user', 'autoconfirmed', 'emailconfirmed' );
+			wfRunHooks( 'UserGetImplicitGroups', array( &$groups ) );
+		}
+		return $groups;
 	}
 
 	/**
