@@ -83,11 +83,11 @@ while(<>) {
 			}
 
 			foreach my $item (@tomatch) {
-				#print ">".@$item[0].",".@$item[1]."\n";
 				my $name=@$item[0];
 				my $type=@$item[1];
-				my $ending=$type unless $type=="Attribute";
-				$statement=~s/\$($name)$type(\W)/\$o\-\>${name}${ending}$2/gm;
+				my $ending=$type unless $type eq "Attribute";
+				#print ">>>> n: $name t: $type e: $ending\n";
+				$statement=~s/\$${name}${type}/\$o\-\>${name}${ending}/gm;
 			}
 			$statement=~s/->getAttributeValue\(\s*\$o->(\w+)\s*\)/->$1/g;
 			$statement=~s/\-\>setAttributeValue\(\s*\$o->(\w+)\s*,\s*(.*)\s*\)/->$1 = $2/g;
