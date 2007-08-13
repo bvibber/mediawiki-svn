@@ -40,47 +40,67 @@ while(<>) {
 	# trying to _cut down_ on the number of errors, we don't
 	# eliminate them entirely, since we're just running this 
 	# script once, after all
-	if (/\{/) {
+	if (/\{/) { # Block start
 		$block_num++;	
 		unshift(@block_stack, $block_num);
 	}
 	
-	if (/\}/) {
+	if (/\}/) { #Block end
 		my $end=shift(@block_stack);
 	}
 	
-	if (/\;/) {
-		my @matches=[];
-			$statement=~/^(\s*).*/;	
-			my $indent=$1;
-		if ($global) {
-			@matches=($statement=~/\$(\w+)(Attributes?|Structure)/g);
-			if (@matches) {
-				$globals{$block_stack[0]}=joinpairs(@matches);
-				$statement=~s/\$(\w+)(Attributes?|Structure)\;/;/g;
-				$statement=~s/\$(\w+)(Attributes?|Structure)\W//gm;
-				#$statement=~s/;/ ,;/ if $statement=~/global.*\$\w*(.*);/gs; # if there are still params left, we need a comma
-				$statement=~s/;/;\n$indent\$o=OmegaWikiAttributes::getInstance();/g;
+	if (/\;/) { #found a statement terminator. 
+		if (not $statement=~/^\s*\/\// or $statement=~/^\s*\#/) {
+			my @matches=[];
+				$statement=~/^(\s*).*/;	
+				my $indent=$1;
+			if ($global) {
+				@matches=($statement=~/\$(\w+)(Attributes?|Structure)/g);
+				if (@matches) {
+					$globals{$block_stack[0]}=joinpairs(@matches);
+					$statement=~s/\$(\w+)(Attributes?|Structure)\;/;/g;
+					$statement=~s/\$(\w+)(Attributes?|Structure)\W//gm;
+					#$statement=~s/;/ ,;/ if $statement=~/global.*\$\w*(.*);/gs; # if there are still params left, we need a comma
+					print "\n${indent}\$o=OmegaWikiAttributes::getInstance();\n";
+					#my $target=";\n${indent}\$o=OmegaWikiAttributes::getInstance();";
+					#$statement=~s/;/$target/g;
+					
+				}
+				$statement=~s/,\s*;/;/gm; # remove redundant trailing commas 
+				$statement=~s/.*global\s*;\s*//gs; # perhaps the global statement is entirely redundant?
+				$statement=~s/^\s*$//gm; # remove empty lines (redundant now?)
+				$global=0; # end of global statement
 			}
-			$statement=~s/,\s*;/;/gm; # remove redundant trailing commas 
-			$statement=~s/.*global\s*;\s*//gs; # perhaps the global statement is entirely redundant?
-			$statement=~s/^\s*$//gm; # remove empty lines (redundant now?)
-			$global=0; # end of global statement
+			#$statement=~s/\$o\s*=\s*\$omegaWikiAttributes;/\$o=OmegaWikiAttributes::getInstance();/g;
+
+			my @tomatch; #matching only those vars found in the global statement
+			foreach my $block (@block_stack){
+				#print "$block\n";
+				if ($globals{$block}) {
+					my $items=$globals{$block};
+					push(@tomatch, @$items);
+				}
+			}
+
+			foreach my $item (@tomatch) {
+				#print ">".@$item[0].",".@$item[1]."\n";
+				my $name=@$item[0];
+				my $type=@$item[1];
+				my $ending=$type unless $type=="Attribute";
+				$statement=~s/\$($name)$type(\W)/\$o\-\>${name}${ending}$2/gm;
+			}
+			$statement=~s/->getAttributeValue\(\s*\$o->(\w+)\s*\)/->$1/g;
+			$statement=~s/\-\>setAttributeValue\(\s*\$o->(\w+)\s*,\s*(.*)\s*\)/->$1 = $2/g;
+			#print $block_stack[0].": ".$statement; # and peek too
+			#print "[".join(", ",@block_stack)."]\n";
 		}
-		#$statement=~s/\$o\s*=\s*\$omegaWikiAttributes;/\$o=OmegaWikiAttributes::getInstance();/g;
-		#$tomatch=$globals{$block_stack[0]}
-		$statement=~s/\$(\w+)Attribute(\W)/\$o\-\>$1$2/g;
-		$statement=~s/\$(\w+)Attributes(\W)/\$o\-\>$1Attributes$2/g;
-		$statement=~s/\$(\w+)Structure(\W)/\$o\-\>$1Structure$2/g;
-		$statement=~s/->getAttributeValue\(\s*\$o->(\$\w+)\s*\);/->$1;/g;
-		$statement=~s/->setAttributeValue\(\s*\$o->(\$\w+)\s*,\s*(.*)\s*\);/->$1 = $2;/g;
-		#print $block_stack[0].": ".$statement; # and peek too
-		#print "[".join(", ",@block_stack)."]\n";
-		$statement="";
+		print $statement; # Write out this statement
+	
+		$statement="";	# and start on a new one.
 		
 	} 
-	print $block_stack[0].": ".$_;
+	#print $block_stack[0].": ".$_;
 }
 print $statement;	# flush out any remaining lines
 
-print Dumper(%globals);
+#print Dumper(%globals);

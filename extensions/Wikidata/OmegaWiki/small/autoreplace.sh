@@ -1,5 +1,5 @@
 #!/bin/bash
 export myfile=$1; 
 
-small/raO.pl $myfile > $myfile.new && 
+small/ra3.pl $myfile > $myfile.new && 
 	mv $myfile.new $myfile
