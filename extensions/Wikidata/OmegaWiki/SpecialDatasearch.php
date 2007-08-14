@@ -233,11 +233,11 @@ function wfSpecialDatasearch() {
 		}	
 		
 		function getWordsSearchResultAsRecordSet($queryResult) {
-			global
-				$definedMeaningIdAttribute;
+
+			$o=OmegaWikiAttributes::getInstance();
 		
 			$dbr =& wfGetDB(DB_SLAVE);
-			$recordSet = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $this->expressionAttribute, $this->meaningAttribute), new Structure($definedMeaningIdAttribute));
+			$recordSet = new ArrayRecordSet(new Structure($o->definedMeaningId, $this->expressionAttribute, $this->meaningAttribute), new Structure($o->definedMeaningId));
 			
 			while ($row = $dbr->fetchObject($queryResult)) {
 				$expressionRecord = new ArrayRecord($this->expressionStructure);

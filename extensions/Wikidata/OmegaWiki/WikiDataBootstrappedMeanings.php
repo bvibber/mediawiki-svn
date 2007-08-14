@@ -6,7 +6,7 @@ global
 	$definitionMeaningName,
 	$relationMeaningName, 
 	$synTransMeaningName,
-	
+
 	$classAttributeLevels;
 
 $definedMeaningMeaningName = "DefinedMeaning";

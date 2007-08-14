@@ -47,8 +47,8 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 	}
 	
 	protected function showExpressionsNeedingTranslation($sourceLanguageId, $destinationLanguageId) {
-		global
-			$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure;
+
+		$o=OmegaWikiAttributes::getInstance();
 		
 		$dc=wdGetDataSetContext();
 		$o=OmegaWikiAttributes::getInstance();
@@ -69,17 +69,17 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 					" LIMIT 100");
 					
 		$definitionAttribute = new Attribute("definition", "Definition", "definition");
-		$recordSet = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $definitionAttribute), new Structure($definedMeaningIdAttribute, $expressionIdAttribute));
+		$recordSet = new ArrayRecordSet(new Structure($o->definedMeaningId, $o->expressionId, $o->expression, $definitionAttribute), new Structure($o->definedMeaningId, $o->expressionId));
 		
 		while ($row = $dbr->fetchObject($queryResult)) {
-			$expressionRecord = new ArrayRecord($expressionStructure);
+			$expressionRecord = new ArrayRecord($o->expressionStructure);
 			$expressionRecord->language = $row->source_language_id;
 			$expressionRecord->spelling = $row->source_spelling;
 
 			$recordSet->addRecord(array($row->source_defined_meaning_id, $row->source_expression_id, $expressionRecord, getDefinedMeaningDefinition($row->source_defined_meaning_id)));
 		}
 		
-		$expressionEditor = new RecordTableCellEditor($expressionAttribute);
+		$expressionEditor = new RecordTableCellEditor($o->expression);
 		$expressionEditor->addEditor(new LanguageEditor($o->language, new SimplePermissionController(false), false));
 		$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), false));
 	

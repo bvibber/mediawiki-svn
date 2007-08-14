@@ -43,8 +43,10 @@ class Search extends DefaultWikidataApplication {
 }
 
 function getSearchResultAsRecordSet($queryResult) {
+
+	$o=OmegaWikiAttributes::getInstance();
 	global
-		$definedMeaningIdAttribute, $definedMeaningReferenceType;
+		 $definedMeaningReferenceType;
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$spellingAttribute = new Attribute("found-word", "Found word", "short-text");
@@ -59,7 +61,7 @@ function getSearchResultAsRecordSet($queryResult) {
 	$meaningStructure = new Structure($definedMeaningAttribute, $definitionAttribute);
 	$meaningAttribute = new Attribute("meaning", "Meaning", $meaningStructure);
 
-	$recordSet = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $expressionAttribute, $meaningAttribute), new Structure($definedMeaningIdAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->definedMeaningId, $expressionAttribute, $meaningAttribute), new Structure($o->definedMeaningId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
 		$expressionRecord = new ArrayRecord($expressionStructure);

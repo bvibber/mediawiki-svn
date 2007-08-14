@@ -42,9 +42,9 @@ class SimplePermissionController implements PermissionController {
 
 class DefinedMeaningDefinitionController implements UpdateController {
 	public function add($keyPath, $record) {
-		global
-			$definedMeaningIdAttribute;
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
+
+		$o=OmegaWikiAttributes::getInstance();
+		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
 		$languageId = $record->language;
 		$text = $record->text;
 
@@ -53,19 +53,19 @@ class DefinedMeaningDefinitionController implements UpdateController {
 	}
 
 	public function remove($keyPath) {
-		global
-			$definedMeaningIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(1)->definedMeaningId;
 		$languageId = $keyPath->peek(0)->language;
 		removeDefinedMeaningDefinition($definedMeaningId, $languageId);
 	}
 
 	public function update($keyPath, $record) {
-		global
-			$definedMeaningIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(1)->definedMeaningId;
 		$languageId = $keyPath->peek(0)->language;
 		$text = $record->text;
 
@@ -82,10 +82,10 @@ class DefinedMeaningFilteredDefinitionController implements UpdateAttributeContr
 	}
 
 	public function update($keyPath, $value) {
-		global
-			$definedMeaningIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
 		
 		if ($value != "")
 			updateOrAddDefinedMeaningDefinition($definedMeaningId, $this->filterLanguageId, $value);
@@ -100,13 +100,12 @@ class DefinedMeaningAlternativeDefinitionsController implements UpdateController
 	}
 	
 	public function add($keyPath, $record)  {
-		global
-			$definedMeaningIdAttribute, $alternativeDefinitionAttribute,
-			$sourceAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$alternativeDefinition = $record->getAttributeValue($alternativeDefinitionAttribute);
-		$sourceId = $record->getAttributeValue($sourceAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+		$alternativeDefinition = $record->alternativeDefinition;
+		$sourceId = $record->source;
 
 		if ($this->filterLanguageId == 0) {
 			if ($alternativeDefinition->getRecordCount() > 0) {
@@ -124,11 +123,11 @@ class DefinedMeaningAlternativeDefinitionsController implements UpdateController
 	}
 
 	public function remove($keyPath) {
-		global
-			$definedMeaningIdAttribute, $definitionIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$definitionId = $keyPath->peek(0)->getAttributeValue($definitionIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(1)->definedMeaningId;
+		$definitionId = $keyPath->peek(0)->definitionId;
 		removeDefinedMeaningAlternativeDefinition($definedMeaningId, $definitionId);
 	}
 
@@ -138,10 +137,10 @@ class DefinedMeaningAlternativeDefinitionsController implements UpdateController
 
 class DefinedMeaningAlternativeDefinitionController implements UpdateController {
 	public function add($keyPath, $record) {
-		global
-			$expressionIdAttribute, $definitionIdAttribute ;
 
-		$definitionId = $keyPath->peek(0)->getAttributeValue($definitionIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definitionId = $keyPath->peek(0)->definitionId;
 		$languageId = $record->language;
 		$text = $record->text;
 
@@ -150,20 +149,20 @@ class DefinedMeaningAlternativeDefinitionController implements UpdateController 
 	}
 
 	public function remove($keyPath) {
-		global
-			$definitionIdAttribute;
 
-		$definitionId = $keyPath->peek(1)->getAttributeValue($definitionIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definitionId = $keyPath->peek(1)->definitionId;
 		$languageId = $keyPath->peek(0)->language;
 
 		removeTranslatedText($definitionId, $languageId);
 	}
 
 	public function update($keyPath, $record) {
-		global
-			$definitionIdAttribute;
 
-		$definitionId = $keyPath->peek(1)->getAttributeValue($definitionIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definitionId = $keyPath->peek(1)->definitionId;
 		$languageId = $keyPath->peek(0)->language;
 		$text = $record->text;
 
@@ -180,10 +179,10 @@ class DefinedMeaningFilteredAlternativeDefinitionController implements UpdateAtt
 	}
 	
 	public function update($keyPath, $value) {
-		global
-			$definitionIdAttribute;
 
-		$definitionId = $keyPath->peek(0)->getAttributeValue($definitionIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definitionId = $keyPath->peek(0)->definitionId;
 
 		if ($value != "")
 			updateTranslatedText($definitionId, $this->filterLanguageId, $value);
@@ -198,22 +197,22 @@ class SynonymTranslationController implements UpdateController {
 	}
 	
 	public function add($keyPath, $record) {
-		global
-			$definedMeaningIdAttribute, $expressionAttribute, $spellingAttribute, $identicalMeaningAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$expressionValue = $record->getAttributeValue($expressionAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+		$expressionValue = $record->expression;
 		
 		if ($this->filterLanguageId == 0) {
 			$languageId = $expressionValue->language;
-			$spelling = $expressionValue->getAttributeValue($spellingAttribute);
+			$spelling = $expressionValue->spelling;
 		}
 		else {
 			$languageId	= $this->filterLanguageId;
 			$spelling = $expressionValue;
 		}
 		
-		$identicalMeaning = $record->getAttributeValue($identicalMeaningAttribute);
+		$identicalMeaning = $record->identicalMeaning;
 
 		if ($languageId != 0 && $spelling != '') {
 			$expression = findOrCreateExpression($spelling, $languageId);
@@ -222,44 +221,44 @@ class SynonymTranslationController implements UpdateController {
 	}
 
 	public function remove($keyPath) {
-		global
-			$definedMeaningIdAttribute, $syntransIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$syntransId = $keyPath->peek(0)->getAttributeValue($syntransIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(1)->definedMeaningId;
+		$syntransId = $keyPath->peek(0)->syntransId;
 		removeSynonymOrTranslationWithId($syntransId);
 	}
 
 	public function update($keyPath, $record) {
-		global
-			$definedMeaningIdAttribute, $syntransIdAttribute, $identicalMeaningAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$syntransId = $keyPath->peek(0)->getAttributeValue($syntransIdAttribute);
-		$identicalMeaning = $record->getAttributeValue($identicalMeaningAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(1)->definedMeaningId;
+		$syntransId = $keyPath->peek(0)->syntransId;
+		$identicalMeaning = $record->identicalMeaning;
 		updateSynonymOrTranslationWithId($syntransId, $identicalMeaning);
 	}
 }
 
 class ClassAttributesController implements UpdateController {
 	public function add($keyPath, $record) {
-		global
-			$definedMeaningIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$attributeLevelId = $record->getAttributeValue($classAttributeLevelAttribute);
-		$attributeMeaningId = $record->getAttributeValue($classAttributeAttributeAttribute);
-		$attributeType = $record->getAttributeValue($classAttributeTypeAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+		$attributeLevelId = $record->classAttributeLevel;
+		$attributeMeaningId = $record->classAttributeAttribute;
+		$attributeType = $record->classAttributeType;
 
 		if (($attributeLevelId != 0) && ($attributeMeaningId != 0))
 			addClassAttribute($definedMeaningId, $attributeLevelId, $attributeMeaningId, $attributeType);
 	}
 
 	public function remove($keyPath) {
-		global
-			$classAttributeIdAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		$classAttributeId = $keyPath->peek(0)->getAttributeValue($classAttributeIdAttribute);
+		$classAttributeId = $keyPath->peek(0)->classAttributeId;
 		removeClassAttributeWithId($classAttributeId);
 	}
 
@@ -269,22 +268,22 @@ class ClassAttributesController implements UpdateController {
 
 class DefinedMeaningRelationController implements UpdateController {
 	public function add($keyPath, $record) {
-		global
-			$definedMeaningIdAttribute, $relationTypeAttribute, $otherDefinedMeaningAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$relationTypeId = $record->getAttributeValue($relationTypeAttribute);
-		$otherDefinedMeaningId = $record->getAttributeValue($otherDefinedMeaningAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+		$relationTypeId = $record->relationType;
+		$otherDefinedMeaningId = $record->otherDefinedMeaning;
 
 		if ($relationTypeId != 0 && $otherDefinedMeaningId != 0)
 			addRelation($definedMeaningId, $relationTypeId, $otherDefinedMeaningId);
 	}
 
 	public function remove($keyPath) {
-		global
-			$relationIdAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		$relationId = $keyPath->peek(0)->getAttributeValue($relationIdAttribute);
+		$relationId = $keyPath->peek(0)->relationId;
 		removeRelationWithId($relationId);
 	}
 
@@ -304,10 +303,10 @@ class GroupedRelationTypeController implements UpdateController {
 	}
 	
 	public function add($keyPath, $record) {
-		global
-			$definedMeaningIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
 		$otherDefinedMeaningId = $record->getAttributeValue($this->otherDefinedMeaningAttribute);
 
 		if ($otherDefinedMeaningId != 0)
@@ -325,11 +324,11 @@ class GroupedRelationTypeController implements UpdateController {
 
 class DefinedMeaningClassMembershipController implements UpdateController {
 	public function add($keyPath, $record) {
-		global
-			$definedMeaningIdAttribute, $classAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$classId = $record->getAttributeValue($classAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+		$classId = $record->class;
 
 		if ($classId != 0)
 			addClassMembership($definedMeaningId, $classId);
@@ -343,10 +342,10 @@ class DefinedMeaningClassMembershipController implements UpdateController {
 //		$classId = $keyPath->peek(0)->getAttributeValue($classAttribute);	
 //
 //		removeClassMembership($definedMeaningId, $classId);
-		global
-			$classMembershipIdAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		removeClassMembershipWithId($keyPath->peek(0)->getAttributeValue($classMembershipIdAttribute));
+		removeClassMembershipWithId($keyPath->peek(0)->classMembershipId);
 	}
 
 	public function update($keyPath, $record) {
@@ -355,34 +354,34 @@ class DefinedMeaningClassMembershipController implements UpdateController {
 
 class DefinedMeaningCollectionController implements UpdateController {
 	public function add($keyPath, $record) {
-		global
-			$expressionIdAttribute, $definedMeaningIdAttribute, $collectionMeaningAttribute, $sourceIdentifierAttribute;
 
-		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
-		$collectionMeaningId = $record->getAttributeValue($collectionMeaningAttribute);
-		$internalId = $record->getAttributeValue($sourceIdentifierAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+		$collectionMeaningId = $record->collectionMeaning;
+		$internalId = $record->sourceIdentifier;
 		
 		if ($collectionMeaningId != 0)
 			addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $collectionMeaningId, $internalId);
 	}
 
 	public function remove($keyPath) {
-		global
-			$definedMeaningIdAttribute, $collectionIdAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$collectionId = $keyPath->peek(0)->getAttributeValue($collectionIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(1)->definedMeaningId;
+		$collectionId = $keyPath->peek(0)->collectionId;
 
 		removeDefinedMeaningFromCollection($definedMeaningId, $collectionId);
 	}
 
 	public function update($keyPath, $record) {
-		global
-			$definedMeaningIdAttribute, $collectionIdAttribute, $sourceIdentifierAttribute;
 
-		$definedMeaningId = $keyPath->peek(1)->getAttributeValue($definedMeaningIdAttribute);
-		$collectionId = $keyPath->peek(0)->getAttributeValue($collectionIdAttribute);
-		$sourceId = $record->getAttributeValue($sourceIdentifierAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $keyPath->peek(1)->definedMeaningId;
+		$collectionId = $keyPath->peek(0)->collectionId;
+		$sourceId = $record->sourceIdentifier;
 
 //		if ($sourceId != "")
 			updateDefinedMeaningInCollection($definedMeaningId, $collectionId, $sourceId);
@@ -397,12 +396,12 @@ class ExpressionMeaningController implements UpdateController {
 	}
 
 	public function add($keyPath, $record) {
-		global
-			$expressionIdAttribute, $definedMeaningAttribute, $definitionAttribute, $translatedTextAttribute;
 
-		$definition = $record->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
-		$translatedContent = $definition->getAttributeValue($translatedTextAttribute);
-		$expressionId = $keyPath->peek(0)->getAttributeValue($expressionIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definition = $record->definedMeaning->definition;
+		$translatedContent = $definition->translatedText;
+		$expressionId = $keyPath->peek(0)->expressionId;
 
 		if ($this->filterLanguageId == 0) {
 			if ($translatedContent->getRecordCount() > 0) {
@@ -436,23 +435,21 @@ class ExpressionController implements UpdateController {
 	}
 
 	public function add($keyPath, $record) {
-		global
-			$expressionAttribute, $expressionMeaningsAttribute, $expressionExactMeaningsAttribute, 
-			$definedMeaningAttribute, $definitionAttribute, 
-			$translatedTextAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 
 		if ($this->filterLanguageId == 0)
-			$expressionLanguageId = $record->getAttributeValue($expressionAttribute)->language;
+			$expressionLanguageId = $record->expression->language;
 		else
 			$expressionLanguageId = $this->filterLanguageId; 
 				
-		$expressionMeanings = $record->getAttributeValue($expressionMeaningsAttribute)->getAttributeValue($expressionExactMeaningsAttribute);
+		$expressionMeanings = $record->expressionMeanings->expressionExactMeanings;
 
 		if ($expressionLanguageId != 0 && $expressionMeanings->getRecordCount() > 0) {
 			$expressionMeaning = $expressionMeanings->getRecord(0);
 
-			$definition = $expressionMeaning->getAttributeValue($definedMeaningAttribute)->getAttributeValue($definitionAttribute);
-			$translatedContent = $definition->getAttributeValue($translatedTextAttribute);
+			$definition = $expressionMeaning->definedMeaning->definition;
+			$translatedContent = $definition->translatedText;
 			
  			if ($this->filterLanguageId == 0) {					
 				if ($translatedContent->getRecordCount() > 0) {
@@ -491,27 +488,27 @@ abstract class ObjectAttributeValuesController implements UpdateController {
 
 class TextAttributeValuesController extends ObjectAttributeValuesController {
 	public function add($keyPath, $record)  {
-		global
-			$textAttributeAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
-		$textAttributeId = $record->getAttributeValue($textAttributeAttribute);
+		$textAttributeId = $record->textAttribute;
 		$text = $record->text;
 		if ($textAttributeId != 0 && $text != '')		
 			addTextAttributeValue($objectId, $textAttributeId, $text);
 	}
 
 	public function remove($keyPath) {
-		global
-			$textAttributeIdAttribute;
-		$textId = $keyPath->peek(0)->getAttributeValue($textAttributeIdAttribute);
+
+		$o=OmegaWikiAttributes::getInstance();
+		$textId = $keyPath->peek(0)->textAttributeId;
 		removeTextAttributeValue($textId);
 	}
 
 	public function update($keyPath, $record) {
-		global
-			$textAttributeIdAttribute, $textAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		$textId = $keyPath->peek(0)->getAttributeValue($textAttributeIdAttribute);
+		$textId = $keyPath->peek(0)->textAttributeId;
 		$text = $record->text;
 		
 		updateTextAttributeValue($text, $textId);
@@ -527,35 +524,35 @@ class LinkAttributeValuesController extends ObjectAttributeValuesController {
 	}
 	
 	public function add($keyPath, $record)  {
-		global
-			$linkAttribute, $linkAttributeAttribute, $linkLabelAttribute, $linkURLAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
-		$linkAttributeId = $record->getAttributeValue($linkAttributeAttribute);
-		$linkValue = $record->getAttributeValue($linkAttribute);
-		$label = $linkValue->getAttributeValue($linkLabelAttribute);
-		$url = $linkValue->getAttributeValue($linkURLAttribute);		
+		$linkAttributeId = $record->linkAttribute;
+		$linkValue = $record->link;
+		$label = $linkValue->linkLabel;
+		$url = $linkValue->linkURL;		
 		
 		if ($linkAttributeId != 0 && $url != "") 		
 			addLinkAttributeValue($objectId, $linkAttributeId, $this->validateURL($url), $label);
 	}
 
 	public function remove($keyPath) {
-		global
-			$linkAttributeIdAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		$linkId = $keyPath->peek(0)->getAttributeValue($linkAttributeIdAttribute);
+		$linkId = $keyPath->peek(0)->linkAttributeId;
 		removeLinkAttributeValue($linkId);
 	}
 
 	public function update($keyPath, $record) {
-		global
-			$linkAttributeIdAttribute, $linkAttribute, $linkLabelAttribute, $linkURLAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		$linkId = $keyPath->peek(0)->getAttributeValue($linkAttributeIdAttribute);
-		$linkValue = $record->getAttributeValue($linkAttribute);
-		$label = $linkValue->getAttributeValue($linkLabelAttribute);
-		$url = $linkValue->getAttributeValue($linkURLAttribute);		
+		$linkId = $keyPath->peek(0)->linkAttributeId;
+		$linkValue = $record->link;
+		$label = $linkValue->linkLabel;
+		$url = $linkValue->linkURL;		
 				
 		if ($url != "") {
 			updateLinkAttributeValue($linkId, $this->validateURL($url), $label);
@@ -573,13 +570,12 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 	}
 	
 	public function add($keyPath, $record)  {
-		global
-			$translatedTextValueAttribute,
-			$translatedTextAttributeAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
-		$textValue = $record->getAttributeValue($translatedTextValueAttribute);
-		$textAttributeId = $record->getAttributeValue($translatedTextAttributeAttribute);
+		$textValue = $record->translatedTextValue;
+		$textAttributeId = $record->translatedTextAttribute;
 
 		if ($textAttributeId != 0) {
 			if ($this->filterLanguageId == 0) {
@@ -599,10 +595,10 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 	}
 
 	public function remove($keyPath) {
-		global
-			$translatedTextAttributeIdAttribute;
 
-		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$valueId = $keyPath->peek(0)->translatedTextAttributeId;
 		removeTranslatedTextAttributeValue($valueId);
 	}
 
@@ -612,10 +608,10 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 
 class TranslatedTextAttributeValueController implements UpdateController {
 	public function add($keyPath, $record) {
-		global
-			$translatedTextAttributeIdAttribute;
 
-		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$valueId = $keyPath->peek(0)->translatedTextAttributeId;
 		$languageId = $record->language;
 		$text = $record->text;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
@@ -625,10 +621,10 @@ class TranslatedTextAttributeValueController implements UpdateController {
 	}
 
 	public function remove($keyPath) {
-		global
-			$translatedTextAttributeIdAttribute;
 
-		$valueId = $keyPath->peek(1)->getAttributeValue($translatedTextAttributeIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$valueId = $keyPath->peek(1)->translatedTextAttributeId;
 		$languageId = $keyPath->peek(0)->language;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
@@ -636,10 +632,10 @@ class TranslatedTextAttributeValueController implements UpdateController {
 	}
 
 	public function update($keyPath, $record) {
-		global
-			$translatedTextAttributeIdAttribute;
 
-		$valueId = $keyPath->peek(1)->getAttributeValue($translatedTextAttributeIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$valueId = $keyPath->peek(1)->translatedTextAttributeId;
 		$languageId = $keyPath->peek(0)->language;
 		$text = $record->text;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
@@ -657,10 +653,10 @@ class FilteredTranslatedTextAttributeValueController implements UpdateAttributeC
 	}
 	
 	public function update($keyPath, $value) {
-		global
-			$translatedTextAttributeIdAttribute ;
 
-		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$valueId = $keyPath->peek(0)->translatedTextAttributeId;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
 		if ($value != "")
@@ -670,21 +666,21 @@ class FilteredTranslatedTextAttributeValueController implements UpdateAttributeC
 
 class OptionAttributeValuesController extends ObjectAttributeValuesController {
 	public function add($keyPath, $record) {
-		global
-			$optionAttributeOptionAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
-		$optionId = $record->getAttributeValue($optionAttributeOptionAttribute);
+		$optionId = $record->optionAttributeOption;
 
 		if ($optionId)
 			addOptionAttributeValue($objectId,$optionId);
 	}
 
 	public function remove($keyPath) {
-		global
-			$optionAttributeIdAttribute;
 
-		$valueId = $keyPath->peek(0)->getAttributeValue($optionAttributeIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$valueId = $keyPath->peek(0)->optionAttributeId;
 		removeOptionAttributeValue($valueId);
 	}
 
@@ -693,11 +689,11 @@ class OptionAttributeValuesController extends ObjectAttributeValuesController {
 
 class OptionAttributeOptionsController implements UpdateController {
 	public function add($keyPath, $record) {
-		global
-			$classAttributeIdAttribute, $optionAttributeOptionAttribute;
 
-		$attributeId = $keyPath->peek(0)->getAttributeValue($classAttributeIdAttribute);
-		$optionMeaningId = $record->getAttributeValue($optionAttributeOptionAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$attributeId = $keyPath->peek(0)->classAttributeId;
+		$optionMeaningId = $record->optionAttributeOption;
 		$languageId = $record->language;
 
 		if ($optionMeaningId)
@@ -705,10 +701,10 @@ class OptionAttributeOptionsController implements UpdateController {
 	}
 
 	public function remove($keyPath) {
-		global
-			$optionAttributeOptionIdAttribute;
 
-		$optionId = $keyPath->peek(0)->getAttributeValue($optionAttributeOptionIdAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$optionId = $keyPath->peek(0)->optionAttributeOptionId;
 		removeOptionAttributeOption($optionId);
 	}
 
@@ -730,10 +726,10 @@ class AlternativeDefinitionsPermissionController implements PermissionController
 	}
 
 	protected function allowAnyChangeOfValue($value) {
-		global
-			$sourceAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		$source = $value->getAttributeValue($sourceAttribute);	
+		$source = $value->source;	
 			
 		return $source == null || $source == 0;
 	}

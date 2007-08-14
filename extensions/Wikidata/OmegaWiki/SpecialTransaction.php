@@ -127,39 +127,37 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 }
 
 function initializeAttributes() {
-	global
-		$operationAttribute, $isLatestAttribute, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
-		 $definedMeaningReferenceStructure, $rollBackStructure, $rollBackAttribute;
 
 	$o=OmegaWikiAttributes::getInstance();
 
-	$operationAttribute = new Attribute('operation', 'Operation', 'text');
-	$isLatestAttribute = new Attribute('is-latest', 'Is latest', 'boolean');
+	$o=OmegaWikiAttributes::getInstance();
 
-	$rollBackStructure = new Structure($isLatestAttribute, $operationAttribute);
-	$rollBackAttribute = new Attribute('roll-back', 'Roll back', $rollBackStructure);
+	$o->operation = new Attribute('operation', 'Operation', 'text');
+	$o->isLatest = new Attribute('is-latest', 'Is latest', 'boolean');
+
+	$o->rollBackStructure = new Structure($o->isLatest, $o->operation);
+	$o->rollBack = new Attribute('roll-back', 'Roll back', $o->rollBackStructure);
 	
-	global
-		$translatedContentHistoryStructure, $translatedContentHistoryKeyStructure, $translatedContentHistoryAttribute, 
-		$recordLifeSpanAttribute, $addTransactionIdAttribute, $translatedContentIdAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
-	$addTransactionIdAttribute = new Attribute('add-transaction-id', 'Add transaction ID', 'identifier');
+	$o->addTransactionId = new Attribute('add-transaction-id', 'Add transaction ID', 'identifier');
 		
-	$translatedContentHistoryStructure = new Structure($addTransactionIdAttribute, $o->text, $recordLifeSpanAttribute);
-	$translatedContentHistoryKeyStructure = new Structure($addTransactionIdAttribute);
-	$translatedContentHistoryAttribute = new Attribute('translated-content-history', 'History', $translatedContentHistoryStructure);
-	$translatedContentIdAttribute = new Attribute('translated-content-id', 'Translated content ID', 'object-id');
+	$o->translatedContentHistoryStructure = new Structure($o->addTransactionId, $o->text, $o->recordLifeSpan);
+	$o->translatedContentHistoryKeyStructure = new Structure($o->addTransactionId);
+	$o->translatedContentHistory = new Attribute('translated-content-history', 'History', $o->translatedContentHistoryStructure);
+	$o->translatedContentId = new Attribute('translated-content-id', 'Translated content ID', 'object-id');
 
-	global
-		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute;
 
-	$rollBackTranslatedContentStructure = new Structure($isLatestAttribute, $operationAttribute, $translatedContentHistoryAttribute);
-	$rollBackTranslatedContentAttribute = new Attribute('roll-back', 'Roll back', $rollBackTranslatedContentStructure);
+	$o=OmegaWikiAttributes::getInstance();
 
-	global
-		$updatedDefinitionStructure, $updatedDefinitionAttribute;
+	$o->rollBackTranslatedContentStructure = new Structure($isLatestAttribute, $operationAttribute, $translatedContentHistoryAttribute);
+	$o->rollBackTranslatedContent = new Attribute('roll-back', 'Roll back', $o->rollBackTranslatedContentStructure);
+
+
+	$o=OmegaWikiAttributes::getInstance();
 	
-	$updatedDefinitionStructure = new Structure(
+	$o->updatedDefinitionStructure = new Structure(
 		$rollBackTranslatedContentAttribute,
 		$definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, 
@@ -170,107 +168,103 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);		
 	
-	$updatedDefinitionAttribute = new Attribute('updated-definition', 'Definition', $updatedDefinitionStructure);
+	$o->updatedDefinition = new Attribute('updated-definition', 'Definition', $o->updatedDefinitionStructure);
 
-	global
-		$expressionAttribute, $expressionIdAttribute, $identicalMeaningAttribute, $syntransIdAttribute, $updatedSyntransesAttribute,
-		$updatedSyntransesStructure;
 
-	$updatedSyntransesStructure = new Structure(
-		$syntransIdAttribute,
+	$o=OmegaWikiAttributes::getInstance();
+
+	$o->updatedSyntransesStructure = new Structure(
+		$o->syntransId,
 		$definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute,
-		$expressionIdAttribute, 
-		$expressionAttribute, 
-		$identicalMeaningAttribute,
+		$o->expressionId, 
+		$o->expression, 
+		$o->identicalMeaning,
 		$operationAttribute
 	); 
 	
-	$updatedSyntransesAttribute = new Attribute('updated-syntranses', 'Synonyms and translations', $updatedSyntransesStructure);
+	$o->updatedSyntranses = new Attribute('updated-syntranses', 'Synonyms and translations', $o->updatedSyntransesStructure);
 	
-	global
-		$relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, $relationTypeAttribute, 
-		$updatedRelationsStructure, $updatedRelationsAttribute;
-	
-	$firstMeaningAttribute = new Attribute('first-meaning', "First defined meaning", $definedMeaningReferenceStructure);
-	$secondMeaningAttribute = new Attribute('second-meaning', "Second defined meaning", $definedMeaningReferenceStructure);
 
-	$updatedRelationsStructure = new Structure(
+	$o=OmegaWikiAttributes::getInstance();
+	
+	$o->firstMeaning = new Attribute('first-meaning', "First defined meaning", $definedMeaningReferenceStructure);
+	$o->secondMeaning = new Attribute('second-meaning', "Second defined meaning", $definedMeaningReferenceStructure);
+
+	$o->updatedRelationsStructure = new Structure(
 		$rollBackAttribute,
-		$relationIdAttribute,
-		$firstMeaningAttribute, 
-		$relationTypeAttribute, 
-		$secondMeaningAttribute,
+		$o->relationId,
+		$o->firstMeaning, 
+		$o->relationType, 
+		$o->secondMeaning,
 		$operationAttribute,
 		$isLatestAttribute
 	);
 	
-	$updatedRelationsAttribute = new Attribute('updated-relations', 'Relations', $updatedRelationsStructure);
+	$o->updatedRelations = new Attribute('updated-relations', 'Relations', $o->updatedRelationsStructure);
 	
-	global
-		$classMembershipIdAttribute, $classAttribute, $classMemberAttribute,
-		$updatedClassMembershipStructure, $updatedClassMembershipAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
-	$classMemberAttribute = new Attribute('class-member', 'Class member', $definedMeaningReferenceStructure);
+	$o->classMember = new Attribute('class-member', 'Class member', $definedMeaningReferenceStructure);
 	
-	$updatedClassMembershipStructure = new Structure(
+	$o->updatedClassMembershipStructure = new Structure(
 		$rollBackAttribute,
-		$classMembershipIdAttribute,
-		$classAttribute,
-		$classMemberAttribute,
+		$o->classMembershipId,
+		$o->class,
+		$o->classMember,
 		$operationAttribute,
 		$isLatestAttribute
 	);
 	
-	$updatedClassMembershipAttribute = new Attribute('updated-class-membership', 'Class membership', $updatedClassMembershipStructure);
+	$o->updatedClassMembership = new Attribute('updated-class-membership', 'Class membership', $o->updatedClassMembershipStructure);
 	
-	global
-		$collectionIdAttribute, $collectionMeaningAttribute, $collectionMemberAttribute, $sourceIdentifierAttribute,
-		$updatedCollectionMembershipStructure, $updatedCollectionMembershipAttribute, $collectionMemberIdAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
-	$collectionMemberAttribute = new Attribute('collection-member', 'Collection member', $definedMeaningReferenceStructure);
-	$collectionMemberIdAttribute = new Attribute('collection-member-id', 'Collection member identifier', 'defined-meaning-id');
+	$o->collectionMember = new Attribute('collection-member', 'Collection member', $definedMeaningReferenceStructure);
+	$o->collectionMemberId = new Attribute('collection-member-id', 'Collection member identifier', 'defined-meaning-id');
 	
-	$updatedCollectionMembershipStructure = new Structure(
+	$o->updatedCollectionMembershipStructure = new Structure(
 		$rollBackAttribute,
-		$collectionIdAttribute,
-		$collectionMeaningAttribute,
-		$collectionMemberIdAttribute,
-		$collectionMemberAttribute,
-		$sourceIdentifierAttribute,
+		$o->collectionId,
+		$o->collectionMeaning,
+		$o->collectionMemberId,
+		$o->collectionMember,
+		$o->sourceIdentifier,
 		$operationAttribute
 	);
 	
-	$updatedCollectionMembershipAttribute = new Attribute('updated-collection-membership', 'Collection membership', $updatedCollectionMembershipStructure);
+	$o->updatedCollectionMembership = new Attribute('updated-collection-membership', 'Collection membership', $o->updatedCollectionMembershipStructure);
 	
-	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
-	$objectIdAttribute = new Attribute('object-id', 'Object', 'object-id');
-	$valueIdAttribute = new Attribute('value-id', 'Value identifier', 'object-id');
-	$attributeAttribute = new Attribute('attribute', 'Attribute', $definedMeaningReferenceStructure);
+	$o->objectId = new Attribute('object-id', 'Object', 'object-id');
+	$o->valueId = new Attribute('value-id', 'Value identifier', 'object-id');
+	$o->attribute = new Attribute('attribute', 'Attribute', $definedMeaningReferenceStructure);
 		
-	global
-		$updatedLinkAttribute, $updatedLinkStructure, $linkAttribute;	
+
+	$o=OmegaWikiAttributes::getInstance();
 		
-	$updatedLinkStructure = new Structure(
+	$o->updatedLinkStructure = new Structure(
 		$rollBackAttribute,
 		$valueIdAttribute,
 		$objectIdAttribute,
 		$attributeAttribute,
-		$linkAttribute,
+		$o->link,
 		$operationAttribute,
 		$isLatestAttribute
 	);
 
-	$updatedLinkAttribute = new Attribute('updated-link', 'Link properties', $updatedLinkStructure);
+	$o->updatedLink = new Attribute('updated-link', 'Link properties', $o->updatedLinkStructure);
 	
-	global
-		$updatedTextAttribute, $updatedTextStructure;	
+
+	$o=OmegaWikiAttributes::getInstance();
 		
 	$o=OmegaWikiAttributes::getInstance();
 
-	$updatedTextStructure = new Structure(
+	$o->updatedTextStructure = new Structure(
 		$rollBackAttribute,
 		$valueIdAttribute,
 		$objectIdAttribute,
@@ -280,31 +274,30 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);
 
-	$updatedTextAttribute = new Attribute('updated-text', 'Unstructured text properties', $updatedTextStructure);
+	$o->updatedText = new Attribute('updated-text', 'Unstructured text properties', $o->updatedTextStructure);
 	
-	global
-		$translatedTextStructure, 
-		$updatedTranslatedTextPropertyAttribute, $updatedTranslatedTextPropertyStructure, $translatedTextTextAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
-	$translatedTextTextAttribute = new Attribute('translated-text-property-text', 'Text', $translatedTextStructure); 
+	$o->translatedTextText = new Attribute('translated-text-property-text', 'Text', $o->translatedTextStructure); 
 	
-	$updatedTranslatedTextPropertyStructure = new Structure(
+	$o->updatedTranslatedTextPropertyStructure = new Structure(
 		$rollBackAttribute,
 		$valueIdAttribute,
 		$objectIdAttribute,
 		$attributeAttribute,
 		$translatedContentIdAttribute,
-		$translatedTextTextAttribute, 
+		$o->translatedTextText, 
 		$operationAttribute,
 		$isLatestAttribute
 	);
 	
-	$updatedTranslatedTextPropertyAttribute = new Attribute('updated-translated-text-property', 'Text properties', $updatedTranslatedTextPropertyStructure);
+	$o->updatedTranslatedTextProperty = new Attribute('updated-translated-text-property', 'Text properties', $o->updatedTranslatedTextPropertyStructure);
 
-	global
-		$updatedTranslatedTextStructure, $updatedTranslatedTextAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
-	$updatedTranslatedTextStructure = new Structure(
+	$o->updatedTranslatedTextStructure = new Structure(
 		$rollBackTranslatedContentAttribute,
 		$valueIdAttribute,
 		$objectIdAttribute,
@@ -316,53 +309,51 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);		
 	
-	$updatedTranslatedTextAttribute = new Attribute('updated-translated-text', 'Texts', $updatedTranslatedTextStructure);
+	$o->updatedTranslatedText = new Attribute('updated-translated-text', 'Texts', $o->updatedTranslatedTextStructure);
 
-	global
-		$updatedClassAttributesAttribute, $updatedClassAttributesStructure, $classAttributeId, $levelAttribute, 
-		$typeAttribute;
 
-	$classAttributeId = new Attribute('class-attribute-id', 'Class attribute id', 'object-id');
-	$levelAttribute = new Attribute('level', 'Level', $definedMeaningReferenceStructure);
-	$typeAttribute = new Attribute('type', 'Type', 'text');
+	$o=OmegaWikiAttributes::getInstance();
 
-	$updatedClassAttributesStructure = new Structure(
+	$o->classId = new Attribute('class-attribute-id', 'Class attribute id', 'object-id');
+	$o->level = new Attribute('level', 'Level', $definedMeaningReferenceStructure);
+	$o->type = new Attribute('type', 'Type', 'text');
+
+	$o->updatedClassAttributesStructure = new Structure(
 		$rollBackAttribute,
-		$classAttributeId,
-		$classAttribute,
-		$levelAttribute,
-		$typeAttribute,
+		$o->classId,
+		$o->class,
+		$o->level,
+		$o->type,
 		$attributeAttribute,
 		$operationAttribute,
 		$isLatestAttribute
 	);
 	
-	$updatedClassAttributesAttribute = new Attribute('updated-class-attributes', 'Class attributes', $updatedClassAttributesStructure);
+	$o->updatedClassAttributes = new Attribute('updated-class-attributes', 'Class attributes', $o->updatedClassAttributesStructure);
 
-	global
-		$updatedAlternativeDefinitionsStructure, $updatedAlternativeDefinitionsAttribute, $sourceAttribute, 
-		$alternativeDefinitionTextAttribute;
 
-	$alternativeDefinitionTextAttribute = new Attribute('alternative-definition-text', 'Definition', $translatedTextStructure);
-	$sourceAttribute = new Attribute('source', 'Source', $definedMeaningReferenceStructure);
+	$o=OmegaWikiAttributes::getInstance();
 
-	$updatedAlternativeDefinitionsStructure = new Structure(
+	$o->alternativeDefinitionText = new Attribute('alternative-definition-text', 'Definition', $translatedTextStructure);
+	$o->source = new Attribute('source', 'Source', $definedMeaningReferenceStructure);
+
+	$o->updatedAlternativeDefinitionsStructure = new Structure(
 		$rollBackAttribute,
 		$definedMeaningIdAttribute,
 		$translatedContentIdAttribute,
-		$alternativeDefinitionTextAttribute,
+		$o->alternativeDefinitionText,
 		$definedMeaningReferenceAttribute,
-		$sourceAttribute,
+		$o->source,
 		$operationAttribute,
 		$isLatestAttribute
 	);	
 
-	$updatedAlternativeDefinitionsAttribute = new Attribute('updated-alternative-definitions', 'Alternative definitions', $updatedAlternativeDefinitionsStructure);
+	$o->updatedAlternativeDefinitions = new Attribute('updated-alternative-definitions', 'Alternative definitions', $o->updatedAlternativeDefinitionsStructure);
 
-	global
-		$updatedAlternativeDefinitionTextAttribute, $updatedAlternativeDefinitionTextStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
-	$updatedAlternativeDefinitionTextStructure = new Structure(
+	$o->updatedAlternativeDefinitionTextStructure = new Structure(
 		$rollBackTranslatedContentAttribute,
 		$definedMeaningIdAttribute,
 		$definedMeaningReferenceAttribute,
@@ -374,10 +365,10 @@ function initializeAttributes() {
 		$isLatestAttribute
 	);
 
-	$updatedAlternativeDefinitionTextAttribute = new Attribute('updated-alternative-definition-text', 'Alternative definition text', $updatedAlternativeDefinitionTextStructure);	
+	$o->updatedAlternativeDefinitionText = new Attribute('updated-alternative-definition-text', 'Alternative definition text', $o->updatedAlternativeDefinitionTextStructure);	
 
-	global
-		$updatesInTransactionAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$updatesInTransactionStructure = new Structure(
 		$updatedDefinitionAttribute,
@@ -390,12 +381,14 @@ function initializeAttributes() {
 		$updatedAlternativeDefinitionsAttribute
 	);
 
-	$updatesInTransactionAttribute = new Attribute('updates-in-transaction', 'Updates in transaction', $updatesInTransactionStructure);
+	$o->updatesInTransaction = new Attribute('updates-in-transaction', 'Updates in transaction', $updatesInTransactionStructure);
 }
 
 function getTransactionRecordSet($fromTransactionId, $transactionCount, $userName) {
+
+	$o=OmegaWikiAttributes::getInstance();
 	global
-		$transactionAttribute, $transactionIdAttribute, $transactionsTable, $updatesInTransactionAttribute;
+		  $transactionsTable;
 		
 	$dc=wdGetDataSetContext();	
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
@@ -408,9 +401,9 @@ function getTransactionRecordSet($fromTransactionId, $transactionCount, $userNam
 	$recordSet = queryRecordSet(
 		'transaction-id',
 		$queryTransactionInformation,
-		$transactionIdAttribute,
+		$o->transactionId,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('transaction_id'), $transactionIdAttribute)
+			new TableColumnsToAttribute(array('transaction_id'), $o->transactionId)
 		),
 		$transactionsTable,
 		$restrictions,
@@ -418,42 +411,37 @@ function getTransactionRecordSet($fromTransactionId, $transactionCount, $userNam
 		$transactionCount
 	);
 	
-	$recordSet->getStructure()->addAttribute($transactionIdAttribute);
-	expandTransactionIDsInRecordSet($recordSet, $transactionIdAttribute, $transactionAttribute);
+	$recordSet->getStructure()->addAttribute($o->transactionId);
+	expandTransactionIDsInRecordSet($recordSet, $o->transactionId, $o->transaction);
 	
-	$recordSet->getStructure()->addAttribute($updatesInTransactionAttribute);
+	$recordSet->getStructure()->addAttribute($o->updatesInTransaction);
 	expandUpdatesInTransactionInRecordSet($recordSet);
 
 	return $recordSet;	
 }
 
 function getTransactionOverview($recordSet, $showRollBackOptions) {
-	global
-		$transactionAttribute, $userAttribute,  $timestampAttribute, $summaryAttribute, 
-		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
-		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute,
-		$updatedLinkAttribute, $updatedTextAttribute, $updatedTranslatedTextAttribute, $updatedClassAttributesAttribute,
-		$updatedAlternativeDefinitionsAttribute, $updatedAlternativeDefinitionTextAttribute,
-		$updatedTranslatedTextPropertyAttribute;
 
-	$captionEditor = new RecordSpanEditor($transactionAttribute, ': ', ', ', false);
-	$captionEditor->addEditor(new TimestampEditor($timestampAttribute, new SimplePermissionController(false), false));
-	$captionEditor->addEditor(new UserEditor($userAttribute, new SimplePermissionController(false), false));
-	$captionEditor->addEditor(new TextEditor($summaryAttribute, new SimplePermissionController(false), false));
+	$o=OmegaWikiAttributes::getInstance();
+
+	$captionEditor = new RecordSpanEditor($o->transaction, ': ', ', ', false);
+	$captionEditor->addEditor(new TimestampEditor($o->timestamp, new SimplePermissionController(false), false));
+	$captionEditor->addEditor(new UserEditor($o->user, new SimplePermissionController(false), false));
+	$captionEditor->addEditor(new TextEditor($o->summary, new SimplePermissionController(false), false));
 	
-	$valueEditor = new RecordUnorderedListEditor($updatesInTransactionAttribute, 5);
-	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedAlternativeDefinitionsEditor($updatedAlternativeDefinitionsAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedAlternativeDefinitionTextEditor($updatedAlternativeDefinitionTextAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedClassAttributesEditor($updatedClassAttributesAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedLinkEditor($updatedLinkAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedTextEditor($updatedTextAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedTranslatedTextPropertyEditor($updatedTranslatedTextPropertyAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedTranslatedTextEditor($updatedTranslatedTextAttribute, $showRollBackOptions));
+	$valueEditor = new RecordUnorderedListEditor($o->updatesInTransaction, 5);
+	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($o->updatedDefinition, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedAlternativeDefinitionsEditor($o->updatedAlternativeDefinitions, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedAlternativeDefinitionTextEditor($o->updatedAlternativeDefinitionText, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedSyntransesEditor($o->updatedSyntranses, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedRelationsEditor($o->updatedRelations, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedClassAttributesEditor($o->updatedClassAttributes, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedClassMembershipEditor($o->updatedClassMembership, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($o->updatedCollectionMembership, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedLinkEditor($o->updatedLink, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedTextEditor($o->updatedText, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedTranslatedTextPropertyEditor($o->updatedTranslatedTextProperty, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedTranslatedTextEditor($o->updatedTranslatedText, $showRollBackOptions));
 	
 	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null, 4, false);
 	$editor->setCaptionEditor($captionEditor);
@@ -463,50 +451,42 @@ function getTransactionOverview($recordSet, $showRollBackOptions) {
 }
 
 function expandUpdatesInTransactionInRecordSet($recordSet) {
-	global
-		$transactionIdAttribute, $updatesInTransactionAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
-		$record->setAttributeValue(
-			$updatesInTransactionAttribute, 
-			getUpdatesInTransactionRecord($record->getAttributeValue($transactionIdAttribute))
-		);
+		$record->updatesInTransaction = getUpdatesInTransactionRecord($record->transactionId);
 	}
 }
 
 function getUpdatesInTransactionRecord($transactionId) {
-	global	
-		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
-		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute,
-		$updatedLinkAttribute, $updatedTextAttribute, $updatedTranslatedTextAttribute, $updatedClassAttributesAttribute,
-		$updatedAlternativeDefinitionsAttribute, $updatedAlternativeDefinitionTextAttribute,
-		$updatedTranslatedTextPropertyAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
-	$record = new ArrayRecord($updatesInTransactionAttribute->type);
-	$record->setAttributeValue($updatedDefinitionAttribute, getUpdatedDefinedMeaningDefinitionRecordSet($transactionId));
-	$record->setAttributeValue($updatedAlternativeDefinitionsAttribute, getUpdatedAlternativeDefinitionsRecordSet($transactionId));
-	$record->setAttributeValue($updatedAlternativeDefinitionTextAttribute, getUpdatedAlternativeDefinitionTextRecordSet($transactionId));
-	$record->setAttributeValue($updatedSyntransesAttribute, getUpdatedSyntransesRecordSet($transactionId));
-	$record->setAttributeValue($updatedRelationsAttribute, getUpdatedRelationsRecordSet($transactionId));
-	$record->setAttributeValue($updatedClassMembershipAttribute, getUpdatedClassMembershipRecordSet($transactionId));
-	$record->setAttributeValue($updatedCollectionMembershipAttribute, getUpdatedCollectionMembershipRecordSet($transactionId));
-	$record->setAttributeValue($updatedLinkAttribute, getUpdatedLinkRecordSet($transactionId));
-	$record->setAttributeValue($updatedTextAttribute, getUpdatedTextRecordSet($transactionId));
-	$record->setAttributeValue($updatedTranslatedTextPropertyAttribute, getUpdatedTranslatedTextPropertyRecordSet($transactionId));
-	$record->setAttributeValue($updatedTranslatedTextAttribute, getUpdatedTranslatedTextRecordSet($transactionId));
-	$record->setAttributeValue($updatedClassAttributesAttribute, getUpdatedClassAttributesRecordSet($transactionId));
+	$record = new ArrayRecord($o->updatesInTransaction->type);
+	$record->updatedDefinition = getUpdatedDefinedMeaningDefinitionRecordSet($transactionId);
+	$record->updatedAlternativeDefinitions = getUpdatedAlternativeDefinitionsRecordSet($transactionId);
+	$record->updatedAlternativeDefinitionText = getUpdatedAlternativeDefinitionTextRecordSet($transactionId);
+	$record->updatedSyntranses = getUpdatedSyntransesRecordSet($transactionId);
+	$record->updatedRelations = getUpdatedRelationsRecordSet($transactionId);
+	$record->updatedClassMembership = getUpdatedClassMembershipRecordSet($transactionId);
+	$record->updatedCollectionMembership = getUpdatedCollectionMembershipRecordSet($transactionId);
+	$record->updatedLink = getUpdatedLinkRecordSet($transactionId);
+	$record->updatedText = getUpdatedTextRecordSet($transactionId);
+	$record->updatedTranslatedTextProperty = getUpdatedTranslatedTextPropertyRecordSet($transactionId);
+	$record->updatedTranslatedText = getUpdatedTranslatedTextRecordSet($transactionId);
+	$record->updatedClassAttributes = getUpdatedClassAttributesRecordSet($transactionId);
 	
 	return $record;
 }
 
 function getTranslatedContentHistory($translatedContentId, $languageId, $isLatest) {
-	global
-		$translatedContentHistoryStructure, $translatedContentHistoryKeyStructure,
-		$addTransactionIdAttribute, $recordLifeSpanAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();		
-	$recordSet = new ArrayRecordSet($translatedContentHistoryStructure, $translatedContentHistoryKeyStructure);
+	$recordSet = new ArrayRecordSet($o->translatedContentHistoryStructure, $o->translatedContentHistoryKeyStructure);
 	
 	if ($isLatest) {
 		$dbr = &wfGetDB(DB_SLAVE);
@@ -520,10 +500,10 @@ function getTranslatedContentHistory($translatedContentId, $languageId, $isLates
 		);
 		
 		while ($row = $dbr->fetchObject($queryResult)) {
-			$record = new ArrayRecord($translatedContentHistoryStructure);
+			$record = new ArrayRecord($o->translatedContentHistoryStructure);
 			$record->text = $row->text_text;
-			$record->setAttributeValue($addTransactionIdAttribute, (int) $row->add_transaction_id);
-			$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple((int) $row->add_transaction_id, (int) $row->remove_transaction_id));
+			$record->addTransactionId = (int) $row->add_transaction_id;
+			$record->recordLifeSpan = getRecordLifeSpanTuple((int) $row->add_transaction_id, (int) $row->remove_transaction_id);
 			
 			$recordSet->add($record);	
 		}
@@ -533,22 +513,20 @@ function getTranslatedContentHistory($translatedContentId, $languageId, $isLates
 }
 
 function getUpdatedTextRecord($text, $history) {
-	global
-		$updatedTextStructure, $translatedContentHistoryAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
-	$result = new ArrayRecord($updatedTextStructure);
+	$result = new ArrayRecord($o->updatedTextStructure);
 	$result->text = $text;	
-	$result->setAttributeValue($translatedContentHistoryAttribute, $history);
+	$result->translatedContentHistory = $history;
 	
 	return $result;
 }
 
 function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 
-	global
-		 $definedMeaningIdAttribute, 
-		$definedMeaningReferenceAttribute, $updatedDefinitionStructure, $translatedContentIdAttribute,
-		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$o=OmegaWikiAttributes::getInstance();
 
@@ -566,18 +544,18 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 		" AND " . getAtTransactionRestriction("{$dc}_defined_meaning", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedDefinitionStructure, new Structure($definedMeaningIdAttribute, $o->language));
+	$recordSet = new ArrayRecordSet($o->updatedDefinitionStructure, new Structure($o->definedMeaningId, $o->language));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedDefinitionStructure);
-		$record->setAttributeValue($definedMeaningIdAttribute, $row->defined_meaning_id);
-		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->defined_meaning_id));
-		$record->setAttributeValue($translatedContentIdAttribute, $row->translated_content_id);
+		$record = new ArrayRecord($o->updatedDefinitionStructure);
+		$record->definedMeaningId = $row->defined_meaning_id;
+		$record->definedMeaningReference = getDefinedMeaningReferenceRecord($row->defined_meaning_id);
+		$record->translatedContentId = $row->translated_content_id;
 		$record->language = $row->language_id;
 		$record->text = $row->text_text;
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackTranslatedContentAttribute, simpleRecord($rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest))));
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBackTranslatedContent = simpleRecord($o->rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest)));
 		$recordSet->add($record);	
 	}
 	
@@ -585,10 +563,8 @@ function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
 }
 
 function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
-	global
-		$updatedAlternativeDefinitionsStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
-		$translatedContentIdAttribute, $sourceAttribute, $alternativeDefinitionTextAttribute,
-		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -600,33 +576,31 @@ function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
 		" WHERE " . getInTransactionRestriction("{$dc}_alt_meaningtexts", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedAlternativeDefinitionsStructure, new Structure($definedMeaningIdAttribute, $translatedContentIdAttribute));
+	$recordSet = new ArrayRecordSet($o->updatedAlternativeDefinitionsStructure, new Structure($o->definedMeaningId, $o->translatedContentId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedAlternativeDefinitionsStructure);
-		$record->setAttributeValue($definedMeaningIdAttribute, $row->meaning_mid);
-		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->meaning_mid));
-		$record->setAttributeValue($translatedContentIdAttribute, $row->meaning_text_tcid);
-		$record->setAttributeValue($sourceAttribute, getDefinedMeaningReferenceRecord($row->source_id));
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		$record = new ArrayRecord($o->updatedAlternativeDefinitionsStructure);
+		$record->definedMeaningId = $row->meaning_mid;
+		$record->definedMeaningReference = getDefinedMeaningReferenceRecord($row->meaning_mid);
+		$record->translatedContentId = $row->meaning_text_tcid;
+		$record->source = getDefinedMeaningReferenceRecord($row->source_id);
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBack = simpleRecord($o->rollBackStructure, array($row->is_latest, $row->operation));
 		
 		$recordSet->add($record);	
 	}
 	
 	$viewInformation = new ViewInformation();
 	$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
-	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $alternativeDefinitionTextAttribute, $viewInformation);
+	expandTranslatedContentsInRecordSet($recordSet, $o->translatedContentId, $o->alternativeDefinitionText, $viewInformation);
 	
 	return $recordSet;
 }
 
 function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
-	global
-		 $definedMeaningIdAttribute, $sourceAttribute,
-		$definedMeaningReferenceAttribute, $updatedAlternativeDefinitionTextStructure, $translatedContentIdAttribute,
-		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute, $operationAttribute, $isLatestAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$o=OmegaWikiAttributes::getInstance();
 
@@ -643,19 +617,19 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 		" AND " . getAtTransactionRestriction("{$dc}_alt_meaningtexts", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedAlternativeDefinitionTextStructure, new Structure($translatedContentIdAttribute, $o->language));
+	$recordSet = new ArrayRecordSet($o->updatedAlternativeDefinitionTextStructure, new Structure($o->translatedContentId, $o->language));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedAlternativeDefinitionTextStructure);
-		$record->setAttributeValue($definedMeaningIdAttribute, $row->meaning_mid);
-		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->meaning_mid));
-		$record->setAttributeValue($translatedContentIdAttribute, $row->translated_content_id);
-		$record->setAttributeValue($sourceAttribute, getDefinedMeaningReferenceRecord($row->source_id));
+		$record = new ArrayRecord($o->updatedAlternativeDefinitionTextStructure);
+		$record->definedMeaningId = $row->meaning_mid;
+		$record->definedMeaningReference = getDefinedMeaningReferenceRecord($row->meaning_mid);
+		$record->translatedContentId = $row->translated_content_id;
+		$record->source = getDefinedMeaningReferenceRecord($row->source_id);
 		$record->language = $row->language_id;
 		$record->text = $row->text_text;
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackTranslatedContentAttribute, simpleRecord($rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest))));
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBackTranslatedContent = simpleRecord($o->rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest)));
 		$recordSet->add($record);	
 	}
 	
@@ -663,11 +637,8 @@ function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 }
 
 function getUpdatedSyntransesRecordSet($transactionId, $dc=null) {
-	global
-		$updatedSyntransesStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
-		$expressionAttribute, $expressionStructure,  $syntransIdAttribute,
-		$expressionIdAttribute,	$identicalMeaningAttribute, 
-		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $rollBackStructure;		
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$o=OmegaWikiAttributes::getInstance();
 	$dc=wdGetDataSetContext($dc);			
@@ -683,23 +654,23 @@ function getUpdatedSyntransesRecordSet($transactionId, $dc=null) {
 		" AND " . getAtTransactionRestriction("{$dc}_expression_ns", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedSyntransesStructure, new Structure($syntransIdAttribute));
+	$recordSet = new ArrayRecordSet($o->updatedSyntransesStructure, new Structure($o->syntransId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$expressionRecord = new ArrayRecord($expressionStructure);
+		$expressionRecord = new ArrayRecord($o->expressionStructure);
 		$expressionRecord->language =  $row->language_id;
 		$expressionRecord->spelling = $row->spelling;
 
-		$record = new ArrayRecord($updatedSyntransesStructure);
-		$record->setAttributeValue($syntransIdAttribute, $row->syntrans_sid);
-		$record->setAttributeValue($definedMeaningIdAttribute, $row->defined_meaning_id);
-		$record->setAttributeValue($expressionIdAttribute, $row->expression_id);
-		$record->setAttributeValue($definedMeaningReferenceAttribute, getDefinedMeaningReferenceRecord($row->defined_meaning_id));
-		$record->setAttributeValue($expressionAttribute, $expressionRecord);
-		$record->setAttributeValue($identicalMeaningAttribute, $row->identical_meaning);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		$record = new ArrayRecord($o->updatedSyntransesStructure);
+		$record->syntransId = $row->syntrans_sid;
+		$record->definedMeaningId = $row->defined_meaning_id;
+		$record->expressionId = $row->expression_id;
+		$record->definedMeaningReference = getDefinedMeaningReferenceRecord($row->defined_meaning_id);
+		$record->expression = $expressionRecord;
+		$record->identicalMeaning = $row->identical_meaning;
+		$record->isLatest = $row->is_latest;
+		$record->operation = $row->operation;
+		$record->rollBack = simpleRecord($o->rollBackStructure, array($row->is_latest, $row->operation));
 		
 		$recordSet->add($record);	
 	}
@@ -726,9 +697,8 @@ function getIsLatestSelectColumn($table, $idFields, $transactionId) {
 }
 
 function getUpdatedRelationsRecordSet($transactionId) {
-	global
-		$updatedRelationsStructure, $relationIdAttribute, $firstMeaningAttribute, $secondMeaningAttribute, 
-		$relationTypeAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 
 	$dc=wdGetDataSetContext();	
@@ -742,17 +712,17 @@ function getUpdatedRelationsRecordSet($transactionId) {
 		" WHERE " . getInTransactionRestriction("{$dc}_meaning_relations", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedRelationsStructure, new Structure($relationIdAttribute));
+	$recordSet = new ArrayRecordSet($o->updatedRelationsStructure, new Structure($o->relationId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedRelationsStructure);
-		$record->setAttributeValue($relationIdAttribute, $row->relation_id);
-		$record->setAttributeValue($firstMeaningAttribute, getDefinedMeaningReferenceRecord($row->meaning1_mid));
-		$record->setAttributeValue($secondMeaningAttribute, getDefinedMeaningReferenceRecord($row->meaning2_mid));
-		$record->setAttributeValue($relationTypeAttribute, getDefinedMeaningReferenceRecord($row->relationtype_mid));
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		$record = new ArrayRecord($o->updatedRelationsStructure);
+		$record->relationId = $row->relation_id;
+		$record->firstMeaning = getDefinedMeaningReferenceRecord($row->meaning1_mid);
+		$record->secondMeaning = getDefinedMeaningReferenceRecord($row->meaning2_mid);
+		$record->relationType = getDefinedMeaningReferenceRecord($row->relationtype_mid);
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBack = simpleRecord($o->rollBackStructure, array($row->is_latest, $row->operation));
 		
 		$recordSet->add($record);	
 	}
@@ -761,9 +731,8 @@ function getUpdatedRelationsRecordSet($transactionId) {
 }
 
 function getUpdatedClassMembershipRecordSet($transactionId) {
-	global
-		$updatedClassMembershipStructure, $classMembershipIdAttribute, $classAttribute, $classMemberAttribute, 
-		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();	
 	
@@ -776,16 +745,16 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 		" WHERE " . getInTransactionRestriction("{$dc}_class_membership", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedClassMembershipStructure, new Structure($classMembershipIdAttribute));
+	$recordSet = new ArrayRecordSet($o->updatedClassMembershipStructure, new Structure($o->classMembershipId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedClassMembershipStructure);
-		$record->setAttributeValue($classMembershipIdAttribute, $row->class_membership_id);
-		$record->setAttributeValue($classAttribute, getDefinedMeaningReferenceRecord($row->class_mid));
-		$record->setAttributeValue($classMemberAttribute, getDefinedMeaningReferenceRecord($row->class_member_mid));
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		$record = new ArrayRecord($o->updatedClassMembershipStructure);
+		$record->classMembershipId = $row->class_membership_id;
+		$record->class = getDefinedMeaningReferenceRecord($row->class_mid);
+		$record->classMember = getDefinedMeaningReferenceRecord($row->class_member_mid);
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBack = simpleRecord($o->rollBackStructure, array($row->is_latest, $row->operation));
 		
 		$recordSet->add($record);	
 	}
@@ -794,10 +763,8 @@ function getUpdatedClassMembershipRecordSet($transactionId) {
 }
 
 function getUpdatedCollectionMembershipRecordSet($transactionId) {
-	global
-		$updatedCollectionMembershipStructure, $collectionIdAttribute, $collectionMeaningAttribute, 
-		$collectionMemberAttribute, $sourceIdentifierAttribute, $collectionMemberIdAttribute, 
-		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();		
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -811,18 +778,18 @@ function getUpdatedCollectionMembershipRecordSet($transactionId) {
 		" AND " . getAtTransactionRestriction("{$dc}_collection_ns", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedCollectionMembershipStructure, new Structure($collectionIdAttribute, $collectionMemberIdAttribute));
+	$recordSet = new ArrayRecordSet($o->updatedCollectionMembershipStructure, new Structure($o->collectionId, $o->collectionMemberId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedCollectionMembershipStructure);
-		$record->setAttributeValue($collectionIdAttribute, $row->collection_id);
-		$record->setAttributeValue($collectionMeaningAttribute, getDefinedMeaningReferenceRecord($row->collection_mid));
-		$record->setAttributeValue($collectionMemberIdAttribute, $row->member_mid);
-		$record->setAttributeValue($collectionMemberAttribute, getDefinedMeaningReferenceRecord($row->member_mid));
-		$record->setAttributeValue($sourceIdentifierAttribute, $row->internal_member_id);
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		$record = new ArrayRecord($o->updatedCollectionMembershipStructure);
+		$record->collectionId = $row->collection_id;
+		$record->collectionMeaning = getDefinedMeaningReferenceRecord($row->collection_mid);
+		$record->collectionMemberId = $row->member_mid;
+		$record->collectionMember = getDefinedMeaningReferenceRecord($row->member_mid);
+		$record->sourceIdentifier = $row->internal_member_id;
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBack = simpleRecord($o->rollBackStructure, array($row->is_latest, $row->operation));
 		
 		$recordSet->add($record);	
 	}
@@ -831,9 +798,8 @@ function getUpdatedCollectionMembershipRecordSet($transactionId) {
 }
 
 function getUpdatedClassAttributesRecordSet($transactionId) {
-	global
-		$updatedClassAttributesStructure, $classAttributeIdAttribute, $classAttribute, $levelAttribute, 
-		$attributeAttribute, $typeAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -845,18 +811,18 @@ function getUpdatedClassAttributesRecordSet($transactionId) {
 		" WHERE " . getInTransactionRestriction("{$dc}_class_attributes", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedClassAttributesStructure, new Structure($classAttributeIdAttribute));
+	$recordSet = new ArrayRecordSet($o->updatedClassAttributesStructure, new Structure($o->classAttributeId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedClassAttributesStructure);
-		$record->setAttributeValue($classAttributeIdAttribute, $row->object_id);
-		$record->setAttributeValue($classAttribute, getDefinedMeaningReferenceRecord($row->class_mid));
-		$record->setAttributeValue($levelAttribute, getDefinedMeaningReferenceRecord($row->level_mid));
-		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
-		$record->setAttributeValue($typeAttribute, $row->attribute_type);
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		$record = new ArrayRecord($o->updatedClassAttributesStructure);
+		$record->classAttributeId = $row->object_id;
+		$record->class = getDefinedMeaningReferenceRecord($row->class_mid);
+		$record->level = getDefinedMeaningReferenceRecord($row->level_mid);
+		$record->attribute = getDefinedMeaningReferenceRecord($row->attribute_mid);
+		$record->type = $row->attribute_type;
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBack = simpleRecord($o->rollBackStructure, array($row->is_latest, $row->operation));
 		
 		$recordSet->add($record);	
 	}
@@ -865,21 +831,19 @@ function getUpdatedClassAttributesRecordSet($transactionId) {
 }
 
 function createLinkRecord($url, $label) {
-	global
-		$linkAttribute, $linkLabelAttribute, $linkURLAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
-	$result = new ArrayRecord($linkAttribute->type);
-	$result->setAttributeValue($linkLabelAttribute, $label);
-	$result->setAttributeValue($linkURLAttribute, $url);
+	$result = new ArrayRecord($o->link->type);
+	$result->linkLabel = $label;
+	$result->linkURL = $url;
 	
 	return $result;
 }
 
 function getUpdatedLinkRecordSet($transactionId) {
-	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $linkAttribute, 
-		$updatedLinkStructure, $operationAttribute, $isLatestAttribute, 
-		$rollBackAttribute, $rollBackStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();		
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -891,17 +855,17 @@ function getUpdatedLinkRecordSet($transactionId) {
 		" WHERE " . getInTransactionRestriction("{$dc}_url_attribute_values", $transactionId) 
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedLinkStructure, new Structure($valueIdAttribute));
+	$recordSet = new ArrayRecordSet($o->updatedLinkStructure, new Structure($o->valueId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedLinkStructure);
-		$record->setAttributeValue($valueIdAttribute, $row->value_id);
-		$record->setAttributeValue($objectIdAttribute, $row->object_id);
-		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
-		$record->setAttributeValue($linkAttribute, createLinkRecord($row->url, $row->label));
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		$record = new ArrayRecord($o->updatedLinkStructure);
+		$record->valueId = $row->value_id;
+		$record->objectId = $row->object_id;
+		$record->attribute = getDefinedMeaningReferenceRecord($row->attribute_mid);
+		$record->link = createLinkRecord($row->url, $row->label);
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBack = simpleRecord($o->rollBackStructure, array($row->is_latest, $row->operation));
 		
 		$recordSet->add($record);	
 	}
@@ -910,10 +874,8 @@ function getUpdatedLinkRecordSet($transactionId) {
 }
 
 function getUpdatedTextRecordSet($transactionId) {
-	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute,
-		$updatedTextStructure, 
-		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();		
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -925,17 +887,17 @@ function getUpdatedTextRecordSet($transactionId) {
 		" WHERE " . getInTransactionRestriction("{$dc}_text_attribute_values", $transactionId) 
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedTextStructure, new Structure($valueIdAttribute));
+	$recordSet = new ArrayRecordSet($o->updatedTextStructure, new Structure($o->valueId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedTextStructure);
-		$record->setAttributeValue($valueIdAttribute, $row->value_id);
-		$record->setAttributeValue($objectIdAttribute, $row->object_id);
-		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
+		$record = new ArrayRecord($o->updatedTextStructure);
+		$record->valueId = $row->value_id;
+		$record->objectId = $row->object_id;
+		$record->attribute = getDefinedMeaningReferenceRecord($row->attribute_mid);
 		$record->text= $row->text;
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBack = simpleRecord($o->rollBackStructure, array($row->is_latest, $row->operation));
 		
 		$recordSet->add($record);	
 	}
@@ -944,10 +906,8 @@ function getUpdatedTextRecordSet($transactionId) {
 }
 
 function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
-	global
-		$updatedTranslatedTextPropertyStructure, $objectIdAttribute, $valueIdAttribute, 
-		$translatedContentIdAttribute, $attributeAttribute, $translatedTextTextAttribute,
-		$operationAttribute, $isLatestAttribute, $rollBackAttribute, $rollBackStructure;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -959,33 +919,29 @@ function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
 		" WHERE " . getInTransactionRestriction("{$dc}_translated_content_attribute_values", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedTranslatedTextPropertyStructure, new Structure($valueIdAttribute));
+	$recordSet = new ArrayRecordSet($o->updatedTranslatedTextPropertyStructure, new Structure($o->valueId));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedTranslatedTextPropertyStructure);
-		$record->setAttributeValue($valueIdAttribute, $row->value_id);
-		$record->setAttributeValue($objectIdAttribute, $row->object_id);
-		$record->setAttributeValue($translatedContentIdAttribute, $row->value_tcid);
-		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackAttribute, simpleRecord($rollBackStructure, array($row->is_latest, $row->operation)));
+		$record = new ArrayRecord($o->updatedTranslatedTextPropertyStructure);
+		$record->valueId = $row->value_id;
+		$record->objectId = $row->object_id;
+		$record->translatedContentId = $row->value_tcid;
+		$record->attribute = getDefinedMeaningReferenceRecord($row->attribute_mid);
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBack = simpleRecord($o->rollBackStructure, array($row->is_latest, $row->operation));
 		
 		$recordSet->add($record);	
 	}
 	
 	$viewInformation = new ViewInformation();
 	$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
-	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $translatedTextTextAttribute, $viewInformation);
+	expandTranslatedContentsInRecordSet($recordSet, $o->translatedContentId, $o->translatedTextText, $viewInformation);
 	
 	return $recordSet;
 }
 
 function getUpdatedTranslatedTextRecordSet($transactionId) {
-	global
-		$objectAttributeValues, $objectIdAttribute, $valueIdAttribute, $attributeAttribute,
-		$updatedTranslatedTextStructure, $translatedContentIdAttribute,
-		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
 
 	$o=OmegaWikiAttributes::getInstance();
 
@@ -1002,19 +958,19 @@ function getUpdatedTranslatedTextRecordSet($transactionId) {
 		" AND " . getAtTransactionRestriction("{$dc}_translated_content_attribute_values", $transactionId)
 	);
 		
-	$recordSet = new ArrayRecordSet($updatedTranslatedTextStructure, new Structure($valueIdAttribute, $o->language));
+	$recordSet = new ArrayRecordSet($o->updatedTranslatedTextStructure, new Structure($o->valueId, $o->language));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$record = new ArrayRecord($updatedTranslatedTextStructure);
-		$record->setAttributeValue($valueIdAttribute, $row->value_id);
-		$record->setAttributeValue($objectIdAttribute, $row->object_id);
-		$record->setAttributeValue($attributeAttribute, getDefinedMeaningReferenceRecord($row->attribute_mid));
-		$record->setAttributeValue($translatedContentIdAttribute, $row->translated_content_id);
+		$record = new ArrayRecord($o->updatedTranslatedTextStructure);
+		$record->valueId = $row->value_id;
+		$record->objectId = $row->object_id;
+		$record->attribute = getDefinedMeaningReferenceRecord($row->attribute_mid);
+		$record->translatedContentId = $row->translated_content_id;
 		$record->language = $row->language_id;
 		$record->text = $row->text_text;
-		$record->setAttributeValue($operationAttribute, $row->operation);
-		$record->setAttributeValue($isLatestAttribute, $row->is_latest);
-		$record->setAttributeValue($rollBackTranslatedContentAttribute, simpleRecord($rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest))));
+		$record->operation = $row->operation;
+		$record->isLatest = $row->is_latest;
+		$record->rollBackTranslatedContent = simpleRecord($o->rollBackTranslatedContentStructure, array($row->is_latest, $row->operation, getTranslatedContentHistory($row->translated_content_id, $row->language_id, $row->is_latest)));
 		$recordSet->add($record);	
 	}
 	
@@ -1022,14 +978,14 @@ function getUpdatedTranslatedTextRecordSet($transactionId) {
 }
 
 function getTranslatedContentHistorySelector($attribute) {
-	global
-		 $recordLifeSpanAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$o=OmegaWikiAttributes::getInstance();
 
 	$result = createSuggestionsTableViewer($attribute);
 	$result->addEditor(createLongTextViewer($o->text));
-	$result->addEditor(createTableLifeSpanEditor($recordLifeSpanAttribute));
+	$result->addEditor(createTableLifeSpanEditor($o->recordLifeSpan));
 
 	$result = new RecordSetRecordSelector($result);
 	
@@ -1037,251 +993,240 @@ function getTranslatedContentHistorySelector($attribute) {
 }
 
 function getUpdatedDefinedMeaningDefinitionEditor($attribute, $showRollBackOptions) {
-	global
-		$definedMeaningReferenceAttribute, 
-		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$o=OmegaWikiAttributes::getInstance();
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions) {
-		$rollBackEditor = new RollbackEditor($rollBackTranslatedContentAttribute, true);
-		$rollBackEditor->setSuggestionsEditor(getTranslatedContentHistorySelector($translatedContentHistoryAttribute));
+		$rollBackEditor = new RollbackEditor($o->rollBackTranslatedContent, true);
+		$rollBackEditor->setSuggestionsEditor(getTranslatedContentHistorySelector($o->translatedContentHistory));
 		
 		$editor->addEditor($rollBackEditor);
 	}
 		
-	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->definedMeaningReference));
 	$editor->addEditor(createLanguageViewer($o->language));
 	$editor->addEditor(createLongTextViewer($o->text));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedAlternativeDefinitionsEditor($attribute, $showRollBackOptions) {
-	global
-		$definedMeaningReferenceAttribute, $sourceAttribute,
-		$alternativeDefinitionTextAttribute,  $rollBackAttribute, $operationAttribute,$isLatestAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		$editor->addEditor(new RollbackEditor($o->rollBack, false));
 		
-	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
-	$editor->addEditor(createTranslatedTextViewer($alternativeDefinitionTextAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($sourceAttribute));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->definedMeaningReference));
+	$editor->addEditor(createTranslatedTextViewer($o->alternativeDefinitionText));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->source));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedAlternativeDefinitionTextEditor($attribute, $showRollBackOptions) {
-	global
-		$definedMeaningReferenceAttribute,  $sourceAttribute, 
-		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$o=OmegaWikiAttributes::getInstance();
 	
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions) {
-		$rollBackEditor = new RollbackEditor($rollBackTranslatedContentAttribute, true);
-		$rollBackEditor->setSuggestionsEditor(getTranslatedContentHistorySelector($translatedContentHistoryAttribute));
+		$rollBackEditor = new RollbackEditor($o->rollBackTranslatedContent, true);
+		$rollBackEditor->setSuggestionsEditor(getTranslatedContentHistorySelector($o->translatedContentHistory));
 		
 		$editor->addEditor($rollBackEditor);
 	}
 
-	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->definedMeaningReference));
 	$editor->addEditor(createLanguageViewer($o->language));
 	$editor->addEditor(createLongTextViewer($o->text));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($sourceAttribute));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->source));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedSyntransesEditor($attribute, $showRollBackOptions) {
-	global
-		$definedMeaningReferenceAttribute, $expressionAttribute, $identicalMeaningAttribute, 
-		$isLatestAttribute, $operationAttribute, $rollBackAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		$editor->addEditor(new RollbackEditor($o->rollBack, false));
 	
 	$viewInformation = new ViewInformation();
 	$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
 		
-	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
-	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute, $viewInformation));
-	$editor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(false), false, false));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->definedMeaningReference));
+	$editor->addEditor(getExpressionTableCellEditor($o->expression, $viewInformation));
+	$editor->addEditor(new BooleanEditor($o->identicalMeaning, new SimplePermissionController(false), false, false));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedRelationsEditor($attribute, $showRollBackOptions) {
-	global
-		$firstMeaningAttribute, $relationTypeAttribute, $secondMeaningAttribute, $operationAttribute, 
-		$isLatestAttribute, $rollBackAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		$editor->addEditor(new RollbackEditor($o->rollBack, false));
 		
-	$editor->addEditor(createDefinedMeaningReferenceViewer($firstMeaningAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($relationTypeAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($secondMeaningAttribute));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->firstMeaning));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->relationType));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->secondMeaning));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedClassMembershipEditor($attribute, $showRollBackOptions) {
-	global
-		$classAttribute, $classMemberAttribute, $operationAttribute, $isLatestAttribute, $rollBackAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		$editor->addEditor(new RollbackEditor($o->rollBack, false));
 		
-	$editor->addEditor(createDefinedMeaningReferenceViewer($classAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($classMemberAttribute));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->class));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->classMember));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedCollectionMembershipEditor($attribute, $showRollBackOptions) {
-	global
-		$collectionMeaningAttribute, $collectionMemberAttribute, $sourceIdentifierAttribute, 
-		$operationAttribute, $rollBackAttribute, $isLatestAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
 	$editor = createTableViewer($attribute);
 
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		$editor->addEditor(new RollbackEditor($o->rollBack, false));
 		
-	$editor->addEditor(createDefinedMeaningReferenceViewer($collectionMeaningAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($collectionMemberAttribute));
-	$editor->addEditor(createShortTextViewer($sourceIdentifierAttribute));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->collectionMeaning));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->collectionMember));
+	$editor->addEditor(createShortTextViewer($o->sourceIdentifier));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedLinkEditor($attribute, $showRollBackOptions) {
-	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $linkAttribute, 
-		$rollBackAttribute, $operationAttribute, $isLatestAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
 	$editor = createTableViewer($attribute);
 
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		$editor->addEditor(new RollbackEditor($o->rollBack, false));
 		
-	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
-	$editor->addEditor(createLinkViewer($linkAttribute));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(new ObjectPathEditor($o->objectId));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->attribute));
+	$editor->addEditor(createLinkViewer($o->link));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedTextEditor($attribute, $showRollBackOptions) {
-	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute,  
-		$rollBackAttribute, $operationAttribute, $isLatestAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
 	$o=OmegaWikiAttributes::getInstance();
 
 	$editor = createTableViewer($attribute);
 
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		$editor->addEditor(new RollbackEditor($o->rollBack, false));
 		
-	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
+	$editor->addEditor(new ObjectPathEditor($o->objectId));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->attribute));
 	$editor->addEditor(createLongTextViewer($o->text));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedTranslatedTextPropertyEditor($attribute, $showRollBackOptions) {
-	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute, $translatedTextTextAttribute, 
-		$operationAttribute, $isLatestAttribute, $rollBackAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		$editor->addEditor(new RollbackEditor($o->rollBack, false));
 
-	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
-	$editor->addEditor(createTranslatedTextViewer($translatedTextTextAttribute));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(new ObjectPathEditor($o->objectId));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->attribute));
+	$editor->addEditor(createTranslatedTextViewer($o->translatedTextText));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedTranslatedTextEditor($attribute, $showRollBackOptions) {
-	global
-		$objectIdAttribute, $valueIdAttribute, $attributeAttribute,  
-		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$o=OmegaWikiAttributes::getInstance();
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions) {
-		$rollBackEditor = new RollbackEditor($rollBackTranslatedContentAttribute, true);
-		$rollBackEditor->setSuggestionsEditor(getTranslatedContentHistorySelector($translatedContentHistoryAttribute));
+		$rollBackEditor = new RollbackEditor($o->rollBackTranslatedContent, true);
+		$rollBackEditor->setSuggestionsEditor(getTranslatedContentHistorySelector($o->translatedContentHistory));
 		
 		$editor->addEditor($rollBackEditor);
 	}
 		
-	$editor->addEditor(new ObjectPathEditor($objectIdAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
+	$editor->addEditor(new ObjectPathEditor($o->objectId));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->attribute));
 	$editor->addEditor(createLanguageViewer($o->language));
 	$editor->addEditor(createLongTextViewer($o->text));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
 
 function getUpdatedClassAttributesEditor($attribute, $showRollBackOptions) {
-	global
-		$classAttribute, $levelAttribute, $attributeAttribute, $typeAttribute, $operationAttribute, 
-		$isLatestAttribute, $rollBackAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 		
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions)
-		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
+		$editor->addEditor(new RollbackEditor($o->rollBack, false));
 		
-	$editor->addEditor(createDefinedMeaningReferenceViewer($classAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($levelAttribute));
-	$editor->addEditor(createDefinedMeaningReferenceViewer($attributeAttribute));
-	$editor->addEditor(createShortTextViewer($typeAttribute));
-	$editor->addEditor(createShortTextViewer($operationAttribute));
-	$editor->addEditor(createBooleanViewer($isLatestAttribute));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->class));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->level));
+	$editor->addEditor(createDefinedMeaningReferenceViewer($o->attribute));
+	$editor->addEditor(createShortTextViewer($o->type));
+	$editor->addEditor(createShortTextViewer($o->operation));
+	$editor->addEditor(createBooleanViewer($o->isLatest));
 	
 	return $editor;
 }
@@ -1297,14 +1242,10 @@ function simpleRecord($structure, $values) {
 }
 
 function rollBackTransactions($recordSet) {
+
+	$o=OmegaWikiAttributes::getInstance();
 	global
-		$wgRequest, $wgUser,
-		$transactionIdAttribute, $updatesInTransactionAttribute, 
-		$updatedDefinitionAttribute, $updatedRelationsAttribute, $updatedClassMembershipAttribute,
-		$updatedTranslatedTextAttribute, $updatedClassAttributesAttribute, $updatedTranslatedTextPropertyAttribute,
-		$updatedLinkAttribute, $updatedTextAttribute, $updatedSyntransesAttribute,
-		$updatedAlternativeDefinitionTextAttribute, $updatedAlternativeDefinitionsAttribute,
-		$updatedCollectionMembershipAttribute;
+		$wgRequest, $wgUser;
 		
 	$summary = $wgRequest->getText('summary');
 	startNewTransaction($wgUser->getID(), wfGetIP(), $summary);
@@ -1315,69 +1256,69 @@ function rollBackTransactions($recordSet) {
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$transactionRecord = $recordSet->getRecord($i);
 
-		$transactionId = $transactionRecord->getAttributeValue($transactionIdAttribute);
+		$transactionId = $transactionRecord->transactionId;
 		$idStack->pushKey(simpleRecord($transactionKeyStructure, array($transactionId)));
 
-		$updatesInTransaction = $transactionRecord->getAttributeValue($updatesInTransactionAttribute);
-		$idStack->pushAttribute($updatesInTransactionAttribute);
+		$updatesInTransaction = $transactionRecord->updatesInTransaction;
+		$idStack->pushAttribute($o->updatesInTransaction);
 
-		$updatedDefinitions = $updatesInTransaction->getAttributeValue($updatedDefinitionAttribute);
-		$idStack->pushAttribute($updatedDefinitionAttribute);
+		$updatedDefinitions = $updatesInTransaction->updatedDefinition;
+		$idStack->pushAttribute($o->updatedDefinition);
 		rollBackDefinitions($idStack, $updatedDefinitions);
 		$idStack->popAttribute();
 
-		$updatedRelations = $updatesInTransaction->getAttributeValue($updatedRelationsAttribute);
-		$idStack->pushAttribute($updatedRelationsAttribute);
+		$updatedRelations = $updatesInTransaction->updatedRelations;
+		$idStack->pushAttribute($o->updatedRelations);
 		rollBackRelations($idStack, $updatedRelations);
 		$idStack->popAttribute();
 		
-		$updatedClassMemberships = $updatesInTransaction->getAttributeValue($updatedClassMembershipAttribute);
-		$idStack->pushAttribute($updatedClassMembershipAttribute);
+		$updatedClassMemberships = $updatesInTransaction->updatedClassMembership;
+		$idStack->pushAttribute($o->updatedClassMembership);
 		rollBackClassMemberships($idStack, $updatedClassMemberships);
 		$idStack->popAttribute();
 		
-		$updatedClassAttributes = $updatesInTransaction->getAttributeValue($updatedClassAttributesAttribute);
-		$idStack->pushAttribute($updatedClassAttributesAttribute);
+		$updatedClassAttributes = $updatesInTransaction->updatedClassAttributes;
+		$idStack->pushAttribute($o->updatedClassAttributes);
 		rollBackClassAttributes($idStack, $updatedClassAttributes);
 		$idStack->popAttribute();
 		
-		$updatedTranslatedTexts = $updatesInTransaction->getAttributeValue($updatedTranslatedTextAttribute);
-		$idStack->pushAttribute($updatedTranslatedTextAttribute);
+		$updatedTranslatedTexts = $updatesInTransaction->updatedTranslatedText;
+		$idStack->pushAttribute($o->updatedTranslatedText);
 		rollBackTranslatedTexts($idStack, $updatedTranslatedTexts);
 		$idStack->popAttribute();
 
-		$updatedTranslatedTextProperties = $updatesInTransaction->getAttributeValue($updatedTranslatedTextPropertyAttribute);
-		$idStack->pushAttribute($updatedTranslatedTextPropertyAttribute);
+		$updatedTranslatedTextProperties = $updatesInTransaction->updatedTranslatedTextProperty;
+		$idStack->pushAttribute($o->updatedTranslatedTextProperty);
 		rollBackTranslatedTextProperties($idStack, $updatedTranslatedTextProperties);
 		$idStack->popAttribute();
 
-		$updatedLinkAttributes = $updatesInTransaction->getAttributeValue($updatedLinkAttribute);
-		$idStack->pushAttribute($updatedLinkAttribute);
-		rollBackLinkAttributes($idStack, $updatedLinkAttributes);
+		$o->updatedLinks = $updatesInTransaction->updatedLink;
+		$idStack->pushAttribute($o->updatedLink);
+		rollBackLinkAttributes($idStack, $o->updatedLinks);
 		$idStack->popAttribute();
 
-		$updatedTextAttributes = $updatesInTransaction->getAttributeValue($updatedTextAttribute);
-		$idStack->pushAttribute($updatedTextAttribute);
-		rollBackTextAttributes($idStack, $updatedTextAttributes);
+		$o->updatedTexts = $updatesInTransaction->updatedText;
+		$idStack->pushAttribute($o->updatedText);
+		rollBackTextAttributes($idStack, $o->updatedTexts);
 		$idStack->popAttribute();
 
-		$updatedSyntranses = $updatesInTransaction->getAttributeValue($updatedSyntransesAttribute);
-		$idStack->pushAttribute($updatedSyntransesAttribute);
+		$updatedSyntranses = $updatesInTransaction->updatedSyntranses;
+		$idStack->pushAttribute($o->updatedSyntranses);
 		rollBackSyntranses($idStack, $updatedSyntranses);
 		$idStack->popAttribute();
 
-		$updatedAlternativeDefinitionTexts = $updatesInTransaction->getAttributeValue($updatedAlternativeDefinitionTextAttribute);
-		$idStack->pushAttribute($updatedAlternativeDefinitionTextAttribute);
+		$updatedAlternativeDefinitionTexts = $updatesInTransaction->updatedAlternativeDefinitionText;
+		$idStack->pushAttribute($o->updatedAlternativeDefinitionText);
 		rollBackAlternativeDefinitionTexts($idStack, $updatedAlternativeDefinitionTexts);
 		$idStack->popAttribute();
 
-		$updatedAlternativeDefinitions = $updatesInTransaction->getAttributeValue($updatedAlternativeDefinitionsAttribute);
-		$idStack->pushAttribute($updatedAlternativeDefinitionsAttribute);
+		$updatedAlternativeDefinitions = $updatesInTransaction->updatedAlternativeDefinitions;
+		$idStack->pushAttribute($o->updatedAlternativeDefinitions);
 		rollBackAlternativeDefinitions($idStack, $updatedAlternativeDefinitions);
 		$idStack->popAttribute();
 
-		$updatedCollectionMemberships = $updatesInTransaction->getAttributeValue($updatedCollectionMembershipAttribute);
-		$idStack->pushAttribute($updatedCollectionMembershipAttribute);
+		$updatedCollectionMemberships = $updatesInTransaction->updatedCollectionMembership;
+		$idStack->pushAttribute($o->updatedCollectionMembership);
 		rollBackCollectionMemberships($idStack, $updatedCollectionMemberships);
 		$idStack->popAttribute();
 
@@ -1395,35 +1336,34 @@ function getRollBackAction($idStack, $rollBackAttribute) {
 }
 
 function getMeaningId($record, $referenceAttribute) {
-	global
-		$definedMeaningIdAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
-	return $record->getAttributeValue($referenceAttribute)->getAttributeValue($definedMeaningIdAttribute);
+	return $record->getAttributeValue($referenceAttribute)->definedMeaningId;
 }
 
 function rollBackDefinitions($idStack, $definitions) {
-	global
-		$definedMeaningIdAttribute, $translatedContentIdAttribute, 
-		$isLatestAttribute, $operationAttribute, $rollBackTranslatedContentAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$definitionsKeyStructure = $definitions->getKey();
 	
 	for ($i = 0; $i < $definitions->getRecordCount(); $i++) {
 		$definitionRecord = $definitions->getRecord($i);
 
-		$definedMeaningId = $definitionRecord->getAttributeValue($definedMeaningIdAttribute);
+		$definedMeaningId = $definitionRecord->definedMeaningId;
 		$languageId = $definitionRecord->language;
-		$isLatest = $definitionRecord->getAttributeValue($isLatestAttribute);
+		$isLatest = $definitionRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($definitionsKeyStructure, array($definedMeaningId, $languageId)));
 
 			rollBackTranslatedContent(
 				$idStack, 
-				getRollBackAction($idStack, $rollBackTranslatedContentAttribute), 
-				$definitionRecord->getAttributeValue($translatedContentIdAttribute),
+				getRollBackAction($idStack, $o->rollBackTranslatedContent), 
+				$definitionRecord->translatedContentId,
 				$languageId,
-				$definitionRecord->getAttributeValue($operationAttribute)
+				$definitionRecord->operation
 			);
 
 			$idStack->popKey();
@@ -1432,28 +1372,27 @@ function rollBackDefinitions($idStack, $definitions) {
 }
 
 function rollBackTranslatedTexts($idStack, $translatedTexts) {
-	global
-		$valueIdAttribute, $translatedContentIdAttribute, 
-		$isLatestAttribute, $operationAttribute, $rollBackTranslatedContentAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$translatedTextsKeyStructure = $translatedTexts->getKey();
 	
 	for ($i = 0; $i < $translatedTexts->getRecordCount(); $i++) {
 		$translatedTextRecord = $translatedTexts->getRecord($i);
 
-		$valueId = $translatedTextRecord->getAttributeValue($valueIdAttribute);
+		$valueId = $translatedTextRecord->valueId;
 		$languageId = $translatedTextRecord->language;
-		$isLatest = $translatedTextRecord->getAttributeValue($isLatestAttribute);
+		$isLatest = $translatedTextRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($translatedTextsKeyStructure, array($valueId, $languageId)));
 
 			rollBackTranslatedContent(
 				$idStack, 
-				getRollBackAction($idStack, $rollBackTranslatedContentAttribute), 
-				$translatedTextRecord->getAttributeValue($translatedContentIdAttribute),
+				getRollBackAction($idStack, $o->rollBackTranslatedContent), 
+				$translatedTextRecord->translatedContentId,
 				$languageId,
-				$translatedTextRecord->getAttributeValue($operationAttribute)
+				$translatedTextRecord->operation
 			);
 
 			$idStack->popKey();
@@ -1462,12 +1401,12 @@ function rollBackTranslatedTexts($idStack, $translatedTexts) {
 }
 
 function rollBackTranslatedContent($idStack, $rollBackAction, $translatedContentId, $languageId, $operation) {
-	global	
-		$rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	if ($rollBackAction == 'previous-version') {
-		$idStack->pushAttribute($rollBackTranslatedContentAttribute);
-		$idStack->pushAttribute($translatedContentHistoryAttribute);
+		$idStack->pushAttribute($o->rollBackTranslatedContent);
+		$idStack->pushAttribute($o->translatedContentHistory);
 
 		$version = (int) $_POST[$idStack->getId()];
 		
@@ -1507,28 +1446,27 @@ function rollBackTranslatedContentToVersion($translatedContentId, $languageId, $
 }
 
 function rollBackRelations($idStack, $relations) {
-	global
-		$relationIdAttribute, $isLatestAttribute, $firstMeaningAttribute, $secondMeaningAttribute, $relationTypeAttribute,
-		$operationAttribute, $rollBackAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$relationsKeyStructure = $relations->getKey();
 	
 	for ($i = 0; $i < $relations->getRecordCount(); $i++) {
 		$relationRecord = $relations->getRecord($i);
 
-		$relationId = $relationRecord->getAttributeValue($relationIdAttribute);
-		$isLatest = $relationRecord->getAttributeValue($isLatestAttribute);
+		$relationId = $relationRecord->relationId;
+		$isLatest = $relationRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($relationsKeyStructure, array($relationId)));
 			
 			rollBackRelation(
-				getRollBackAction($idStack, $rollBackAttribute),
+				getRollBackAction($idStack, $o->rollBack),
 				$relationId,
-				getMeaningId($relationRecord, $firstMeaningAttribute),
-				getMeaningId($relationRecord, $relationTypeAttribute),
-				getMeaningId($relationRecord, $secondMeaningAttribute),
-				$relationRecord->getAttributeValue($operationAttribute)
+				getMeaningId($relationRecord, $o->firstMeaning),
+				getMeaningId($relationRecord, $o->relationType),
+				getMeaningId($relationRecord, $o->secondMeaning),
+				$relationRecord->operation
 			);
 				
 			$idStack->popKey();
@@ -1552,27 +1490,26 @@ function rollBackRelation($rollBackAction, $relationId, $firstMeaningId, $relati
 }
 
 function rollBackClassMemberships($idStack, $classMemberships) {
-	global
-		$classMembershipIdAttribute, $isLatestAttribute, $classAttribute, $classMemberAttribute,
-		$operationAttribute, $rollBackAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$classMembershipsKeyStructure = $classMemberships->getKey();
 	
 	for ($i = 0; $i < $classMemberships->getRecordCount(); $i++) {
 		$classMembershipRecord = $classMemberships->getRecord($i);
 
-		$classMembershipId = $classMembershipRecord->getAttributeValue($classMembershipIdAttribute);
-		$isLatest = $classMembershipRecord->getAttributeValue($isLatestAttribute);
+		$classMembershipId = $classMembershipRecord->classMembershipId;
+		$isLatest = $classMembershipRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($classMembershipsKeyStructure, array($classMembershipId)));
 			
 			rollBackClassMembership(
-				getRollBackAction($idStack, $rollBackAttribute),
+				getRollBackAction($idStack, $o->rollBack),
 				$classMembershipId,
-				getMeaningId($classMembershipRecord, $classAttribute),
-				getMeaningId($classMembershipRecord, $classMemberAttribute),
-				$classMembershipRecord->getAttributeValue($operationAttribute)
+				getMeaningId($classMembershipRecord, $o->class),
+				getMeaningId($classMembershipRecord, $o->classMember),
+				$classMembershipRecord->operation
 			);
 				
 			$idStack->popKey();
@@ -1588,29 +1525,28 @@ function rollBackClassMembership($rollBackAction, $classMembershipId, $classId, 
 }
 
 function rollBackClassAttributes($idStack, $classAttributes) {
-	global
-		$isLatestAttribute, $classAttribute, $levelAttribute, $attributeAttribute, $typeAttribute,
-		$operationAttribute, $classAttributeIdAttribute, $rollBackAttribute;
-	
-	$classAttributesKeyStructure = $classAttributes->getKey();
-	
-	for ($i = 0; $i < $classAttributes->getRecordCount(); $i++) {
-		$classAttributeRecord = $classAttributes->getRecord($i);
 
-		$classAttributeId = $classAttributeRecord->getAttributeValue($classAttributeIdAttribute);
-		$isLatest = $classAttributeRecord->getAttributeValue($isLatestAttribute);
+	$o=OmegaWikiAttributes::getInstance();
+	
+	$o->classsKeyStructure = $o->classs->getKey();
+	
+	for ($i = 0; $i < $o->classs->getRecordCount(); $i++) {
+		$o->classRecord = $o->classs->getRecord($i);
+
+		$o->classId = $o->classRecord->classIdAttribute;
+		$isLatest = $o->classRecord->isLatest;
 
 		if ($isLatest) {
-			$idStack->pushKey(simpleRecord($classAttributesKeyStructure, array($classAttributeId)));
+			$idStack->pushKey(simpleRecord($o->classsKeyStructure, array($o->classId)));
 			
 			rollBackClassAttribute(
-				getRollBackAction($idStack, $rollBackAttribute),
-				$classAttributeId,
-				getMeaningId($classAttributeRecord, $classAttribute),
-				getMeaningId($classAttributeRecord, $levelAttribute),
-				getMeaningId($classAttributeRecord, $attributeAttribute),
-				$classAttributeRecord->getAttributeValue($typeAttribute),
-				$classAttributeRecord->getAttributeValue($operationAttribute)
+				getRollBackAction($idStack, $o->rollBack),
+				$o->classId,
+				getMeaningId($o->classRecord, $o->class),
+				getMeaningId($o->classRecord, $o->level),
+				getMeaningId($o->classRecord, $o->attribute),
+				$o->classRecord->type,
+				$o->classRecord->operation
 			);
 				
 			$idStack->popKey();
@@ -1626,28 +1562,27 @@ function rollBackClassAttribute($rollBackAction, $classAttributeId, $classId, $l
 }
 
 function rollBackTranslatedTextProperties($idStack, $translatedTextProperties) {
-	global
-		$isLatestAttribute, $operationAttribute, $rollBackAttribute,
-		$valueIdAttribute, $objectIdAttribute, $attributeAttribute, $translatedContentIdAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$translatedTextPropertiesKeyStructure = $translatedTextProperties->getKey();
 	
 	for ($i = 0; $i < $translatedTextProperties->getRecordCount(); $i++) {
 		$translatedTextPropertyRecord = $translatedTextProperties->getRecord($i);
 
-		$valueId = $translatedTextPropertyRecord->getAttributeValue($valueIdAttribute);
-		$isLatest = $translatedTextPropertyRecord->getAttributeValue($isLatestAttribute);
+		$valueId = $translatedTextPropertyRecord->valueId;
+		$isLatest = $translatedTextPropertyRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($translatedTextPropertiesKeyStructure, array($valueId)));
 			
 			rollBackTranslatedTextProperty(
-				getRollBackAction($idStack, $rollBackAttribute),
+				getRollBackAction($idStack, $o->rollBack),
 				$valueId,
-				$translatedTextPropertyRecord->getAttributeValue($objectIdAttribute),
-				getMeaningId($translatedTextPropertyRecord, $attributeAttribute),
-				$translatedTextPropertyRecord->getAttributeValue($translatedContentIdAttribute),
-				$translatedTextPropertyRecord->getAttributeValue($operationAttribute)
+				$translatedTextPropertyRecord->objectId,
+				getMeaningId($translatedTextPropertyRecord, $o->attribute),
+				$translatedTextPropertyRecord->translatedContentId,
+				$translatedTextPropertyRecord->operation
 			);
 				
 			$idStack->popKey();
@@ -1663,31 +1598,29 @@ function rollBackTranslatedTextProperty($rollBackAction, $valueId, $objectId, $a
 }
 
 function rollBackLinkAttributes($idStack, $linkAttributes) {
-	global
-		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $linkAttribute,
-		$valueIdAttribute, $objectIdAttribute, $attributeAttribute, $translatedContentIdAttribute,
-		$linkURLAttribute, $linkLabelAttribute;
-	
-	$linkAttributesKeyStructure = $linkAttributes->getKey();
-	
-	for ($i = 0; $i < $linkAttributes->getRecordCount(); $i++) {
-		$linkAttributeRecord = $linkAttributes->getRecord($i);
 
-		$valueId = $linkAttributeRecord->getAttributeValue($valueIdAttribute);
-		$isLatest = $linkAttributeRecord->getAttributeValue($isLatestAttribute);
+	$o=OmegaWikiAttributes::getInstance();
+	
+	$o->linksKeyStructure = $o->links->getKey();
+	
+	for ($i = 0; $i < $o->links->getRecordCount(); $i++) {
+		$o->linkRecord = $o->links->getRecord($i);
+
+		$valueId = $o->linkRecord->valueId;
+		$isLatest = $o->linkRecord->isLatest;
 
 		if ($isLatest) {
-			$idStack->pushKey(simpleRecord($linkAttributesKeyStructure, array($valueId)));
-			$link = $linkAttributeRecord->getAttributeValue($linkAttribute);
+			$idStack->pushKey(simpleRecord($o->linksKeyStructure, array($valueId)));
+			$link = $o->linkRecord->link;
 			
 			rollBackLinkAttribute(
-				getRollBackAction($idStack, $rollBackAttribute),
+				getRollBackAction($idStack, $o->rollBack),
 				$valueId,
-				$linkAttributeRecord->getAttributeValue($objectIdAttribute),
-				getMeaningId($linkAttributeRecord, $attributeAttribute),
-				$link->getAttributeValue($linkURLAttribute),
-				$link->getAttributeValue($linkLabelAttribute),
-				$linkAttributeRecord->getAttributeValue($operationAttribute)
+				$o->linkRecord->objectId,
+				getMeaningId($o->linkRecord, $o->attribute),
+				$link->linkURL,
+				$link->linkLabel,
+				$o->linkRecord->operation
 			);
 				
 			$idStack->popKey();
@@ -1703,28 +1636,27 @@ function rollBackLinkAttribute($rollBackAction, $valueId, $objectId, $attributeI
 }
 
 function rollBackTextAttributes($idStack, $textAttributes) {
-	global
-		$isLatestAttribute, $operationAttribute, $rollBackAttribute,
-		$valueIdAttribute, $objectIdAttribute, $attributeAttribute, $translatedContentIdAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$textAttributesKeyStructure = $textAttributes->getKey();
 	
 	for ($i = 0; $i < $textAttributes->getRecordCount(); $i++) {
 		$textAttributeRecord = $textAttributes->getRecord($i);
 
-		$valueId = $textAttributeRecord->getAttributeValue($valueIdAttribute);
-		$isLatest = $textAttributeRecord->getAttributeValue($isLatestAttribute);
+		$valueId = $textAttributeRecord->valueId;
+		$isLatest = $textAttributeRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($textAttributesKeyStructure, array($valueId)));
 			
 			rollBackTextAttribute(
-				getRollBackAction($idStack, $rollBackAttribute),
+				getRollBackAction($idStack, $o->rollBack),
 				$valueId,
-				$textAttributeRecord->getAttributeValue($objectIdAttribute),
-				getMeaningId($textAttributeRecord, $attributeAttribute),
+				$textAttributeRecord->objectId,
+				getMeaningId($textAttributeRecord, $o->attribute),
 				$textAttributeRecord->text,
-				$textAttributeRecord->getAttributeValue($operationAttribute)
+				$textAttributeRecord->operation
 			);
 				
 			$idStack->popKey();
@@ -1740,28 +1672,27 @@ function rollBackTextAttribute($rollBackAction, $valueId, $objectId, $attributeI
 }
 
 function rollBackSyntranses($idStack, $syntranses) {
-	global
-		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $syntransIdAttribute, $identicalMeaningAttribute,
-		$expressionAttribute, $definedMeaningIdAttribute, $expressionIdAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$syntransesKeyStructure = $syntranses->getKey();
 	
 	for ($i = 0; $i < $syntranses->getRecordCount(); $i++) {
 		$syntransRecord = $syntranses->getRecord($i);
 
-		$syntransId = $syntransRecord->getAttributeValue($syntransIdAttribute);
-		$isLatest = $syntransRecord->getAttributeValue($isLatestAttribute);
+		$syntransId = $syntransRecord->syntransId;
+		$isLatest = $syntransRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($syntransesKeyStructure, array($syntransId)));
 			
 			rollBackSyntrans(
-				getRollBackAction($idStack, $rollBackAttribute),
+				getRollBackAction($idStack, $o->rollBack),
 				$syntransId,
-				$syntransRecord->getAttributeValue($definedMeaningIdAttribute),
-				$syntransRecord->getAttributeValue($expressionIdAttribute),
-				$syntransRecord->getAttributeValue($identicalMeaningAttribute),
-				$syntransRecord->getAttributeValue($operationAttribute)
+				$syntransRecord->definedMeaningId,
+				$syntransRecord->expressionId,
+				$syntransRecord->identicalMeaning,
+				$syntransRecord->operation
 			);
 				
 			$idStack->popKey();
@@ -1777,28 +1708,27 @@ function rollBackSyntrans($rollBackAction, $syntransId, $definedMeaningId, $expr
 }
 
 function rollBackAlternativeDefinitionTexts($idStack, $alternativeDefinitionTexts) {
-	global
-		$definedMeaningIdAttribute, $translatedContentIdAttribute, 
-		$isLatestAttribute, $operationAttribute, $rollBackTranslatedContentAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$alternativeDefinitionTextsKeyStructure = $alternativeDefinitionTexts->getKey();
 	
 	for ($i = 0; $i < $alternativeDefinitionTexts->getRecordCount(); $i++) {
 		$alternativeDefinitionTextRecord = $alternativeDefinitionTexts->getRecord($i);
 
-		$translatedContentId = $alternativeDefinitionTextRecord->getAttributeValue($translatedContentIdAttribute);
+		$translatedContentId = $alternativeDefinitionTextRecord->translatedContentId;
 		$languageId = $alternativeDefinitionTextRecord->language;
-		$isLatest = $alternativeDefinitionTextRecord->getAttributeValue($isLatestAttribute);
+		$isLatest = $alternativeDefinitionTextRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($alternativeDefinitionTextsKeyStructure, array($translatedContentId, $languageId)));
 
 			rollBackTranslatedContent(
 				$idStack, 
-				getRollBackAction($idStack, $rollBackTranslatedContentAttribute), 
+				getRollBackAction($idStack, $o->rollBackTranslatedContent), 
 				$translatedContentId,
 				$languageId,
-				$alternativeDefinitionTextRecord->getAttributeValue($operationAttribute)
+				$alternativeDefinitionTextRecord->operation
 			);
 
 			$idStack->popKey();
@@ -1807,28 +1737,27 @@ function rollBackAlternativeDefinitionTexts($idStack, $alternativeDefinitionText
 }
 
 function rollBackAlternativeDefinitions($idStack, $alternativeDefinitions) {
-	global
-		$isLatestAttribute, $operationAttribute, $rollBackAttribute,
-		$definedMeaningIdAttribute, $translatedContentIdAttribute, $sourceAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$alternativeDefinitionsKeyStructure = $alternativeDefinitions->getKey();
 	
 	for ($i = 0; $i < $alternativeDefinitions->getRecordCount(); $i++) {
 		$alternativeDefinitionRecord = $alternativeDefinitions->getRecord($i);
 
-		$definedMeaningId = $alternativeDefinitionRecord->getAttributeValue($definedMeaningIdAttribute);
-		$translatedContentId = $alternativeDefinitionRecord->getAttributeValue($translatedContentIdAttribute);
-		$isLatest = $alternativeDefinitionRecord->getAttributeValue($isLatestAttribute);
+		$definedMeaningId = $alternativeDefinitionRecord->definedMeaningId;
+		$translatedContentId = $alternativeDefinitionRecord->translatedContentId;
+		$isLatest = $alternativeDefinitionRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($alternativeDefinitionsKeyStructure, array($definedMeaningId, $translatedContentId)));
 			
 			rollBackAlternativeDefinition(
-				getRollBackAction($idStack, $rollBackAttribute),
+				getRollBackAction($idStack, $o->rollBack),
 				$definedMeaningId,
 				$translatedContentId, 
-				getMeaningId($alternativeDefinitionRecord, $sourceAttribute),
-				$alternativeDefinitionRecord->getAttributeValue($operationAttribute)
+				getMeaningId($alternativeDefinitionRecord, $o->source),
+				$alternativeDefinitionRecord->operation
 			);
 				
 			$idStack->popKey();
@@ -1844,29 +1773,27 @@ function rollBackAlternativeDefinition($rollBackAction, $definedMeaningId, $tran
 }
 
 function rollBackCollectionMemberships($idStack, $collectionMemberships) {
-	global
-		$classMembershipIdAttribute, $isLatestAttribute, $collectionIdAttribute, 
-		$collectionMemberIdAttribute, $sourceIdentifierAttribute, 
-		$operationAttribute, $rollBackAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$collectionMembershipsKeyStructure = $collectionMemberships->getKey();
 	
 	for ($i = 0; $i < $collectionMemberships->getRecordCount(); $i++) {
 		$collectionMembershipRecord = $collectionMemberships->getRecord($i);
 
-		$collectionId = $collectionMembershipRecord->getAttributeValue($collectionIdAttribute);
-		$collectionMemberId = $collectionMembershipRecord->getAttributeValue($collectionMemberIdAttribute);
-		$isLatest = $collectionMembershipRecord->getAttributeValue($isLatestAttribute);
+		$collectionId = $collectionMembershipRecord->collectionId;
+		$collectionMemberId = $collectionMembershipRecord->collectionMemberId;
+		$isLatest = $collectionMembershipRecord->isLatest;
 
 		if ($isLatest) {
 			$idStack->pushKey(simpleRecord($collectionMembershipsKeyStructure, array($collectionId, $collectionMemberId)));
 			
 			rollBackCollectionMembership(
-				getRollBackAction($idStack, $rollBackAttribute),
+				getRollBackAction($idStack, $o->rollBack),
 				$collectionId,
 				$collectionMemberId, 
-				$collectionMembershipRecord->getAttributeValue($sourceIdentifierAttribute),
-				$collectionMembershipRecord->getAttributeValue($operationAttribute)
+				$collectionMembershipRecord->sourceIdentifier,
+				$collectionMembershipRecord->operation
 			);
 				
 			$idStack->popKey();

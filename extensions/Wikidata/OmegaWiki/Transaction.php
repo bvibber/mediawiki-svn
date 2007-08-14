@@ -59,10 +59,10 @@ class QueryLatestTransactionInformation extends DefaultQueryTransactionInformati
 
 class QueryHistoryTransactionInformation extends DefaultQueryTransactionInformation {
 	public function versioningAttributes() {
-		global
-			$recordLifeSpanAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		return array($recordLifeSpanAttribute);
+		return array($o->recordLifeSpan);
 	}
 
 	public function versioningFields($tableName) {
@@ -74,10 +74,10 @@ class QueryHistoryTransactionInformation extends DefaultQueryTransactionInformat
 	}
 	
 	public function setVersioningAttributes(Record $record, $row) {
-		global
-			$recordLifeSpanAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
+		$record->recordLifeSpan = getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']);
 	}
 }
 
@@ -95,11 +95,11 @@ class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 	}
 	
 	public function versioningAttributes() {
-		global
-			$recordLifeSpanAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 		
 		if ($this->addAttributes)	
-			return array($recordLifeSpanAttribute);
+			return array($o->recordLifeSpan);
 		else
 			return array();
 	}
@@ -109,11 +109,11 @@ class QueryAtTransactionInformation extends DefaultQueryTransactionInformation {
 	}
 	
 	public function setVersioningAttributes(Record $record, $row) {
-		global
-			$recordLifeSpanAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
 		if ($this->addAttributes)	
-			$record->setAttributeValue($recordLifeSpanAttribute, getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']));
+			$record->recordLifeSpan = getRecordLifeSpanTuple($row['add_transaction_id'], $row['remove_transaction_id']);
 	}
 }
 
@@ -218,25 +218,22 @@ function getInTransactionRestriction($table, $transactionId) {
 	return " ($table.add_transaction_id=$transactionId OR $table.remove_transaction_id=$transactionId) ";
 }
 
-global
-	$transactionIdAttribute, $userAttribute, $userIPAttribute, $timestampAttribute,
-	$transactionStructure, $transactionAttribute, $summaryAttribute, 
-	$addTransactionAttribute, $removeTransactionAttribute, 
-	$recordLifeSpanAttribute, $recordLifeSpanStructure;
+
+$o=OmegaWikiAttributes::getInstance();
 	
-$transactionIdAttribute = new Attribute('transaction-id', 'Transaction ID', 'integer');
-$userAttribute = new Attribute('user', 'User', 'user');
-$userIPAttribute = new Attribute('user-ip', 'User IP', 'IP');
-$timestampAttribute = new Attribute('timestamp', 'Time', 'timestamp');
-$summaryAttribute = new Attribute('summary', 'Summary', 'text');
-$transactionStructure = new Structure($transactionIdAttribute, $userAttribute, $userIPAttribute, $timestampAttribute, $summaryAttribute);
-$transactionAttribute = new Attribute('transaction', 'Transaction', $transactionStructure);
+$o->transactionId = new Attribute('transaction-id', 'Transaction ID', 'integer');
+$o->user = new Attribute('user', 'User', 'user');
+$o->userIP = new Attribute('user-ip', 'User IP', 'IP');
+$o->timestamp = new Attribute('timestamp', 'Time', 'timestamp');
+$o->summary = new Attribute('summary', 'Summary', 'text');
+$transactionStructure = new Structure($o->transactionId, $o->user, $o->userIP, $o->timestamp, $o->summary);
+$o->transaction = new Attribute('transaction', 'Transaction', $transactionStructure);
 
-$addTransactionAttribute = new Attribute('add-transaction', 'Added', $transactionStructure);
-$removeTransactionAttribute = new Attribute('remove-transaction', 'Removed', $transactionStructure);
+$o->addTransaction = new Attribute('add-transaction', 'Added', $transactionStructure);
+$o->removeTransaction = new Attribute('remove-transaction', 'Removed', $transactionStructure);
 
-$recordLifeSpanStructure = new Structure($addTransactionAttribute, $removeTransactionAttribute);
-$recordLifeSpanAttribute = new Attribute('record-life-span', 'Record life span', $recordLifeSpanStructure);
+$recordLifeSpanStructure = new Structure($o->addTransaction, $o->removeTransaction);
+$o->recordLifeSpan = new Attribute('record-life-span', 'Record life span', $recordLifeSpanStructure);
 
 function getUserName($userId) {
 	$dbr =& wfGetDB(DB_SLAVE);
@@ -257,83 +254,80 @@ function getUserLabel($userId, $userIP) {
 		return "Unknown"; 
 }
 
-function expandUserIDsInRecordSet(RecordSet $recordSet, Attribute $userIDAttribute, Attribute $userIPAttribute) {
+function expandUserIDsInRecordSet(RecordSet $recordSet, Attribute $userID, Attribute $userIP) {
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) { 
 		$record = $recordSet->getRecord($i);
 		$record->setAttributeValue(
 			$userIDAttribute, 
 			getUserLabel(
-				$record->getAttributeValue($userIDAttribute),
-				$record->getAttributeValue($userIPAttribute)
+				$record->$userIDAttribute,
+				$record->$userIP
 			)
 		);
 	}
 }								
 
-function expandTransactionIdsInRecordSet(RecordSet $recordSet, Attribute $transactionIdAttribute, Attribute $transactionAttribute) {
+function expandTransactionIdsInRecordSet(RecordSet $recordSet, Attribute $transactionId, Attribute $transaction) {
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) { 
 		$record = $recordSet->getRecord($i);
-		$record->setAttributeValue(
-			$transactionAttribute, 
-			getTransactionRecord($record->getAttributeValue($transactionIdAttribute))
-		);
+		$record->$transaction = getTransactionRecord($record->$transactionId);
 	}
 }	
 
 function getTransactionRecord($transactionId) {
-	global
-		$transactionStructure, $transactionIdAttribute, $userAttribute, $timestampAttribute, $summaryAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$dc=wdGetDataSetContext();
 	$result = new ArrayRecord($transactionStructure);
-	$result->setAttributeValue($transactionIdAttribute, $transactionId);
+	$result->transactionId = $transactionId;
 	
 	if ($transactionId > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
 		$queryResult = $dbr->query("SELECT user_id, user_ip, timestamp, comment FROM {$dc}_transactions WHERE transaction_id=$transactionId");
 		
 		if ($transaction = $dbr->fetchObject($queryResult)) {
-			$result->setAttributeValue($userAttribute, getUserLabel($transaction->user_id, $transaction->user_ip));	
-			$result->setAttributeValue($timestampAttribute, $transaction->timestamp);
-			$result->setAttributeValue($summaryAttribute, $transaction->comment);
+			$result->user = getUserLabel($transaction->user_id, $transaction->user_ip);	
+			$result->timestamp = $transaction->timestamp;
+			$result->summary = $transaction->comment;
 		}
 	}
 	else {
 		if ($transactionId != null)
-			$result->setAttributeValue($userAttribute, "Unknown");
+			$result->user = "Unknown";
 		else
-			$result->setAttributeValue($userAttribute, "");	
+			$result->user = "";	
 				
-		$result->setAttributeValue($timestampAttribute, "");
-		$result->setAttributeValue($summaryAttribute, "");
+		$result->timestamp = "";
+		$result->summary = "";
 	}
 
 	return $result;
 }
 
 function getRecordLifeSpanTuple($addTransactionId, $removeTransactionId) {
-	global
-		$recordLifeSpanStructure, $addTransactionAttribute, $removeTransactionAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$result = new ArrayRecord($recordLifeSpanStructure);
-	$result->setAttributeValue($addTransactionAttribute, getTransactionRecord($addTransactionId));
-	$result->setAttributeValue($removeTransactionAttribute, getTransactionRecord($removeTransactionId));
+	$result->addTransaction = getTransactionRecord($addTransactionId);
+	$result->removeTransaction = getTransactionRecord($removeTransactionId);
 	
 	return $result;
 }
 
 function getTransactionLabel($transactionId) {
-	global
-		$timestampAttribute, $userAttribute, $summaryAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	if ($transactionId > 0) {
 		$record = getTransactionRecord($transactionId);
 		
 		$label = 
-			timestampAsText($record->getAttributeValue($timestampAttribute)) . ', ' .
-			$record->getAttributeValue($userAttribute);
+			timestampAsText($record->timestamp) . ', ' .
+			$record->user;
 			
-		$summary = $record->getAttributeValue($summaryAttribute);
+		$summary = $record->summary;
 		
 		if ($summary != "")
 			$label .= ', ' . $summary;

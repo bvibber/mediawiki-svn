@@ -38,7 +38,8 @@ function wfSpecialSuggest() {
 
 function getSuggestions() {
 
-	global $idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	global $wgUser;
 	$dc=wdGetDataSetContext();	
 	@$search = ltrim($_GET['search-text']);
@@ -143,7 +144,7 @@ function getSuggestions() {
 	//wfdebug("]]]".$sql."\n");
 	$queryResult = $dbr->query($sql);
 	
-	$idAttribute = new Attribute("id", "ID", "id");
+	$o->id = new Attribute("id", "ID", "id");
 	
 	# == Process query
 	switch($query) {
@@ -339,9 +340,11 @@ function getSQLForCollection($language="<ANY>") {
 }
 
 function getSQLForLevels($language="<ANY>") {
+
 	global
-		$definedMeaningTable, $expressionTable, $bootstrappedDefinedMeaningsTable, $classAttributeLevels;
+		$definedMeaningTable, $expressionTable, $bootstrappedDefinedMeaningsTable;
 	
+	$o=OmegaWikiAttributes::getInstance();
 	// TO DO: Add support for multiple languages here
 	return
 		selectLatest(
@@ -356,15 +359,15 @@ function getSQLForLevels($language="<ANY>") {
 }
 
 function getRelationTypeAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$relationTypeAttribute = new Attribute("relation-type", "Relation type", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $relationTypeAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $relationTypeAttribute, $collectionAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));			
@@ -377,14 +380,14 @@ function getRelationTypeAsRecordSet($queryResult) {
 }
 
 function getClassAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	$classAttribute = new Attribute("class", "Class", "short-text");
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $classAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $classAttribute, $collectionAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->member_mid, $row->spelling, definedMeaningExpression($row->collection_mid)));
@@ -397,13 +400,13 @@ function getClassAsRecordSet($queryResult) {
 }
 
 function getTextAttributeAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$textAttributeAttribute = new Attribute("text-attribute", "Text attribute", "short-text");
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $textAttributeAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $textAttributeAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
@@ -415,13 +418,13 @@ function getTextAttributeAsRecordSet($queryResult) {
 }
 
 function getLinkAttributeAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$linkAttributeAttribute = new Attribute("link-attribute", "Link attribute", "short-text");
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $linkAttributeAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $linkAttributeAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
@@ -433,13 +436,13 @@ function getLinkAttributeAsRecordSet($queryResult) {
 }
 
 function getTranslatedTextAttributeAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	$translatedTextAttributeAttribute = new Attribute("translated-text-attribute", "Translated text attribute", "short-text");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $translatedTextAttributeAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $translatedTextAttributeAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
@@ -451,13 +454,13 @@ function getTranslatedTextAttributeAsRecordSet($queryResult) {
 }
 
 function getOptionAttributeAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$optionAttributeAttribute = new Attribute("option-attribute", "Option attribute", "short-text");
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $optionAttributeAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $optionAttributeAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
@@ -469,8 +472,8 @@ function getOptionAttributeAsRecordSet($queryResult) {
 }
 
 function getDefinedMeaningAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$spellingAttribute = new Attribute("spelling", "Spelling", "short-text");
@@ -480,7 +483,7 @@ function getDefinedMeaningAsRecordSet($queryResult) {
 	$definedMeaningAttribute = new Attribute(null, "Defined meaning", $expressionStructure);
 	$definitionAttribute = new Attribute("definition", "Definition", "definition");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $definedMeaningAttribute, $definitionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $definedMeaningAttribute, $definitionAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) {
 		$definedMeaningRecord = new ArrayRecord($expressionStructure);
@@ -502,13 +505,13 @@ function getDefinedMeaningAsRecordSet($queryResult) {
 }
 
 function getClassAttributeLevelAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
 	$classAttributeLevelAttribute = new Attribute("class-attribute-level", "Level", "short-text");
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $classAttributeLevelAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $classAttributeLevelAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->defined_meaning_id, $row->spelling));			
@@ -520,13 +523,13 @@ function getClassAttributeLevelAsRecordSet($queryResult) {
 }
 
 function getCollectionAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$collectionAttribute = new Attribute("collection", "Collection", "short-text");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $collectionAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $collectionAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->collection_id, $row->spelling));			
@@ -538,13 +541,13 @@ function getCollectionAsRecordSet($queryResult) {
 }
 
 function getLanguageAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$languageAttribute = new Attribute("language", "Language", "short-text");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $languageAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $languageAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult))  {
 		$recordSet->addRecord(array($row->row_id, $row->language_name));			
@@ -556,8 +559,8 @@ function getLanguageAsRecordSet($queryResult) {
 }
 
 function getTransactionAsRecordSet($queryResult) {
-	global
-		$idAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
 	
@@ -565,14 +568,14 @@ function getTransactionAsRecordSet($queryResult) {
 	$timestampAttribute = new Attribute("timestamp", "Time", "timestamp");
 	$summaryAttribute = new Attribute("summary", "Summary", "short-text");
 	
-	$recordSet = new ArrayRecordSet(new Structure($idAttribute, $userAttribute, $timestampAttribute, $summaryAttribute), new Structure($idAttribute));
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $userAttribute, $timestampAttribute, $summaryAttribute), new Structure($o->id));
 	
 	while ($row = $dbr->fetchObject($queryResult)) 
 		$recordSet->addRecord(array($row->transaction_id, getUserLabel($row->user_id, $row->user_ip), $row->time, $row->comment));			
 	
 	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor(createShortTextViewer($timestampAttribute));
-	$editor->addEditor(createShortTextViewer($idAttribute));
+	$editor->addEditor(createShortTextViewer($o->id));
 	$editor->addEditor(createShortTextViewer($userAttribute));
 	$editor->addEditor(createShortTextViewer($summaryAttribute));
 

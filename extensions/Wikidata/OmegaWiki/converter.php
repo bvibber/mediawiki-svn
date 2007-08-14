@@ -56,11 +56,11 @@ class ExpressionIdConverter extends DefaultConverter {
 	protected $attributes = array();
 	
 	public function __construct($attribute) {
-		global 
-			$expressionAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
 		parent::__construct($attribute);
-		$this->structure = new Structure($expressionAttribute);
+		$this->structure = new Structure($o->expression);
 	}
 	
 	public function getStructure() {
@@ -70,8 +70,8 @@ class ExpressionIdConverter extends DefaultConverter {
 	public function convert($record) {
 		$dc=wdGetDataSetContext();
 
-		global
-			$expressionAttribute, $expressionIdAttribute, $languageAttribute, $spellingAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 		
 		$dbr =& wfGetDB(DB_SLAVE);
 		$expressionId = $record->getAttributeValue($this->attribute);
@@ -79,12 +79,12 @@ class ExpressionIdConverter extends DefaultConverter {
 									" AND ". getLatestTransactionRestriction("{$dc}_expression_ns"));
 		$expression = $dbr->fetchObject($queryResult); 
 
-		$expressionRecord = new ArrayRecord(new Structure($languageAttribute, $spellingAttribute));
-		$expressionRecord->setAttributeValue($languageAttribute, $expression->language_id);
-		$expressionRecord->setAttributeValue($spellingAttribute, $expression->spelling);
+		$expressionRecord = new ArrayRecord(new Structure($o->language, $o->spelling));
+		$expressionRecord->language = $expression->language_id;
+		$expressionRecord->spelling = $expression->spelling;
 
 		$result = new ArrayRecord($this->structure);
-		$result->setAttributeValue($expressionAttribute, $expressionRecord);
+		$result->expression = $expressionRecord;
 	
 		return $result;
 	}
