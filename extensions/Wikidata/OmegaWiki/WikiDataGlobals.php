@@ -34,7 +34,6 @@ global
 	$wgIdenticalMeaningAttributeName,
 	$wgIncomingRelationsAttributeName, 
 	$wgLevelAnnotationAttributeName,
-	$wgLinkAttributeAttributeName,
 	$wgLinkAttributeValuesAttributeName,
 	$wgOptionAttributeOptionAttributeName,
 	$wgOptionAttributeOptionsAttributeName,
@@ -51,10 +50,8 @@ global
 	$wgSpellingAttributeName,
 	$wgSynonymsAttributeName,
 	$wgSynonymsAndTranslationsAttributeName,
-	$wgTextAttributeAttributeName,
 	$wgTextAttributeName,
 	$wgTextAttributeValuesAttributeName,
-	$wgTranslatedTextAttributeAttributeName,
 	$wgTranslatedTextAttributeName,
 	$wgTranslatedTextAttributeValueAttributeName,
 	$wgTranslatedTextAttributeValuesAttributeName;
@@ -83,7 +80,6 @@ $wgIncomingRelationsAttributeName = "Incoming relations";
 $wgGotoSourceAttributeName = "Go to source";
 $wgLanguageAttributeName = "Language";
 $wgLevelAnnotationAttributeName = "Annotation";
-$wgOptionAttributeAttributeName = "Property";
 $wgOptionAttributeOptionAttributeName = "Option";
 $wgOptionAttributeOptionsAttributeName = "Options";
 $wgOptionAttributeValuesAttributeName = "Options";
@@ -99,14 +95,11 @@ $wgSynonymsAttributeName = "Synonyms";
 $wgSynonymsAndTranslationsAttributeName = "Synonyms and translations";
 $wgSourceAttributeName = "Source";
 $wgSourceIdentifierAttributeName = "Source identifier";
-$wgTextAttributeAttributeName = "Property";
 $wgTextAttributeName = "Text";
 $wgTextAttributeValuesAttributeName = "Plain texts";
-$wgTranslatedTextAttributeAttributeName = "Property";
 $wgTranslatedTextAttributeName = "Translated text";
 $wgTranslatedTextAttributeValueAttributeName = "Text";
 $wgTranslatedTextAttributeValuesAttributeName = "Translatable texts";
-$wgLinkAttributeAttributeName = "Property";
 $wgLinkAttributeValuesAttributeName = "Links";
 
 // Attribute Ids

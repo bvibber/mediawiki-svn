@@ -535,10 +535,12 @@ function getDefinedMeaningDefinitionRecord($definedMeaningId, ViewInformation $v
 }
 
 function applyPropertyToColumnFiltersToRecord(Record $destinationRecord, Record $sourceRecord, ViewInformation $viewInformation) {
+	$attributeSet = $viewInformation->getAttributeSet();
+	
 	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) { 
 		$destinationRecord->setAttributeValue(
 			$propertyToColumnFilter->getAttribute(), 
-			filterObjectAttributesRecord($sourceRecord, $propertyToColumnFilter->attributeIDs)
+			filterObjectAttributesRecord($sourceRecord, $propertyToColumnFilter->attributeIDs, $attributeSet)
 		);		
 	}
 }
@@ -590,38 +592,38 @@ function filterAttributeValues(RecordSet $sourceRecordSet, Attribute $attributeA
 	return $result;
 }
 
-function filterObjectAttributesRecord(Record $sourceRecord, array &$attributeIds) {
+function filterObjectAttributesRecord(Record $sourceRecord, array &$attributeIds, AttributeSet $attributeSet) {
 	global
 		$objectIdAttribute, 
-		$textAttributeValuesAttribute, $textAttributeAttribute,
-		$translatedTextAttributeAttribute, $translatedTextAttributeValuesAttribute,
-		$linkAttributeAttribute, $linkAttributeValuesAttribute, 
-		$optionAttributeAttribute, $optionAttributeValuesAttribute;
+		$textAttributeValuesAttribute, 
+		$translatedTextAttributeValuesAttribute,
+		$linkAttributeValuesAttribute, 
+		$optionAttributeValuesAttribute;
 	
 	$result = new ArrayRecord($sourceRecord->getStructure());
 	$result->setAttributeValue($objectIdAttribute, $sourceRecord->getAttributeValue($objectIdAttribute));
 	
 	$result->setAttributeValue($textAttributeValuesAttribute, filterAttributeValues(
 		$sourceRecord->getAttributeValue($textAttributeValuesAttribute), 
-		$textAttributeAttribute,
+		$attributeSet->attribute,
 		$attributeIds
 	));
 	
 	$result->setAttributeValue($translatedTextAttributeValuesAttribute, filterAttributeValues( 
 		$sourceRecord->getAttributeValue($translatedTextAttributeValuesAttribute),
-		$translatedTextAttributeAttribute,
+		$attributeSet->attribute,
 		$attributeIds
 	));
 	
 	$result->setAttributeValue($linkAttributeValuesAttribute, filterAttributeValues(
 		$sourceRecord->getAttributeValue($linkAttributeValuesAttribute), 
-		$linkAttributeAttribute,
+		$attributeSet->attribute,
 		$attributeIds
 	));	
 	
 	$result->setAttributeValue($optionAttributeValuesAttribute, filterAttributeValues(
 		$sourceRecord->getAttributeValue($optionAttributeValuesAttribute),
-		$optionAttributeAttribute,
+		$attributeSet->attribute,
 		$attributeIds
 	));	
 	
@@ -740,11 +742,13 @@ function getSynonymAndTranslationRecordSet($definedMeaningId, ViewInformation $v
 
 function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attributeToExpand, Attribute $objectIdAttributeInRecordSet, ViewInformation $viewInformation) {
 	global
-		$textAttributeObjectAttribute, $textAttributeValuesAttribute, 
-		$attributeObjectAttribute, $translatedTextAttributeValuesAttribute,
-		$linkAttributeObjectAttribute, $linkAttributeValuesAttribute,
-		$optionAttributeObjectAttribute, $optionAttributeValuesAttribute,
+		$textAttributeValuesAttribute, 
+		$translatedTextAttributeValuesAttribute,
+		$linkAttributeValuesAttribute,
+		$optionAttributeValuesAttribute,
 		$objectIdAttribute;
+	
+	$attributeSet = $viewInformation->getAttributeSet();
 		
 	$recordSetStructure = $recordSet->getStructure();
 	$recordSetStructure->addAttribute($attributeToExpand);
@@ -767,7 +771,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 		$textAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allTextAttributeValuesRecordSet,
-				$textAttributeObjectAttribute
+				$attributeSet->attributeObject
 			);	
 			
 		$emptyTextAttributesRecordSet = new ArrayRecordSet($allTextAttributeValuesRecordSet->getStructure(), $allTextAttributeValuesRecordSet->getKey());
@@ -777,7 +781,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 		$translatedTextAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allTranslatedTextAttributeValuesRecordSet,
-				$attributeObjectAttribute
+				$attributeSet->attributeObject
 			);	
 			
 		$emptyTranslatedTextAttributesRecordSet = new ArrayRecordSet($allTranslatedTextAttributeValuesRecordSet->getStructure(), $allTranslatedTextAttributeValuesRecordSet->getKey());
@@ -787,7 +791,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 		$linkAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allLinkAttributeValuesRecordSet,
-				$linkAttributeObjectAttribute
+				$attributeSet->attributeObject
 			);	
 			
 		$emptyLinkAttributesRecordSet = new ArrayRecordSet($allLinkAttributeValuesRecordSet->getStructure(), $allLinkAttributeValuesRecordSet->getKey());
@@ -797,7 +801,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 		$optionAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allOptionAttributeValuesRecordSet,
-				$optionAttributeObjectAttribute
+				$attributeSet->attributeObject
 			);	
 			
 		
@@ -985,70 +989,76 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, ViewI
 
 function getTextAttributesValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
-		$textAttributeValuesTable, $textAttributeIdAttribute, $textAttributeObjectAttribute,
-		$textAttributeAttribute, $textAttribute, $objectAttributesAttribute,
+		$textAttributeValuesTable,  
+		$objectAttributesAttribute,
 		$textAttributeValuesStructure;
+
+	$attributeSet = $viewInformation->getAttributeSet();
 
 	$recordSet = queryRecordSet(
 		$textAttributeValuesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
-		$textAttributeIdAttribute,
+		$attributeSet->valueId,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('value_id'), $textAttributeIdAttribute),
-			new TableColumnsToAttribute(array('object_id'), $textAttributeObjectAttribute),
-			new TableColumnsToAttribute(array('attribute_mid'), $textAttributeAttribute),
-			new TableColumnsToAttribute(array('text'), $textAttribute)
+			new TableColumnsToAttribute(array('value_id'), $attributeSet->valueId),
+			new TableColumnsToAttribute(array('object_id'), $attributeSet->attributeObject),
+			new TableColumnsToAttribute(array('attribute_mid'), $attributeSet->attribute),
+			new TableColumnsToAttribute(array('text'), $attributeSet->text)
 		),
 		$textAttributeValuesTable,
 		array("object_id IN (" . implode(", ", $objectIds) . ")")
 	);
 	
-	expandDefinedMeaningReferencesInRecordSet($recordSet, array($textAttributeAttribute));
-	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $textAttributeIdAttribute, $viewInformation);	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($attributeSet->attribute));
+	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $attributeSet->valueId, $viewInformation);	
 	
 	return $recordSet;
 }
 
 function getLinkAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
-		$linkAttributeValuesTable, $linkAttributeIdAttribute, $linkAttributeObjectAttribute,
-		$linkAttributeAttribute, $linkAttribute, $objectAttributesAttribute,
+		$linkAttributeValuesTable,  
+		$linkAttribute, $objectAttributesAttribute,
 		$linkAttributeValuesStructure;
+
+	$attributeSet = $viewInformation->getAttributeSet();
 
 	$recordSet = queryRecordSet(
 		$linkAttributeValuesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
-		$linkAttributeIdAttribute,
+		$attributeSet->valueId,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('value_id'), $linkAttributeIdAttribute),
-			new TableColumnsToAttribute(array('object_id'), $linkAttributeObjectAttribute),
-			new TableColumnsToAttribute(array('attribute_mid'), $linkAttributeAttribute),
+			new TableColumnsToAttribute(array('value_id'), $attributeSet->valueId),
+			new TableColumnsToAttribute(array('object_id'), $attributeSet->attributeObject),
+			new TableColumnsToAttribute(array('attribute_mid'), $attributeSet->attribute),
 			new TableColumnsToAttribute(array('label', 'url'), $linkAttribute)
 		),
 		$linkAttributeValuesTable,
 		array("object_id IN (" . implode(", ", $objectIds) . ")")
 	);
 	
-	expandDefinedMeaningReferencesInRecordSet($recordSet, array($linkAttributeAttribute));
-	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $linkAttributeIdAttribute, $viewInformation);	
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($attributeSet->attribute));
+	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $attributeSet->valueId, $viewInformation);	
 	
 	return $recordSet;
 }
 
 function getTranslatedTextAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
-		$translatedTextAttributeIdAttribute, $translatedContentAttributeValuesTable, $translatedTextAttributeAttribute,
-		$objectAttributesAttribute, $attributeObjectAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute,
+		$translatedContentAttributeValuesTable, 
+		$objectAttributesAttribute, $translatedTextValueAttribute, $translatedTextValueIdAttribute,
 		$translatedTextAttributeValuesStructure;
+
+	$attributeSet = $viewInformation->getAttributeSet();
 
 	$recordSet = queryRecordSet(
 		$translatedTextAttributeValuesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
-		$translatedTextAttributeIdAttribute,
+		$attributeSet->valueId,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('value_id'), $translatedTextAttributeIdAttribute),
-			new TableColumnsToAttribute(array('object_id'), $attributeObjectAttribute),
-			new TableColumnsToAttribute(array('attribute_mid'), $translatedTextAttributeAttribute),
+			new TableColumnsToAttribute(array('value_id'), $attributeSet->valueId),
+			new TableColumnsToAttribute(array('object_id'), $attributeSet->attributeObject),
+			new TableColumnsToAttribute(array('attribute_mid'), $attributeSet->attribute),
 			new TableColumnsToAttribute(array('value_tcid'), $translatedTextValueIdAttribute)
 		),
 		$translatedContentAttributeValuesTable,
@@ -1058,14 +1068,14 @@ function getTranslatedTextAttributeValuesRecordSet(array $objectIds, ViewInforma
 	$recordSet->getStructure()->addAttribute($translatedTextValueAttribute);
 	
 	expandTranslatedContentsInRecordSet($recordSet, $translatedTextValueIdAttribute, $translatedTextValueAttribute, $viewInformation);
-	expandDefinedMeaningReferencesInRecordSet($recordSet, array($translatedTextAttributeAttribute));
-	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $translatedTextAttributeIdAttribute, $viewInformation);
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($attributeSet->attribute));
+	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $attributeSet->valueId, $viewInformation);
 	return $recordSet;
 }
 
 function getOptionAttributeOptionsRecordSet($attributeId, ViewInformation $viewInformation) {
 	global
-		$optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute,  $optionAttributeOptionsTable;
+		$optionAttributeOptionIdAttribute, $optionAttributeOptionAttribute,  $optionAttributeOptionsTable;
 
 	$attributeSet = $viewInformation->getAttributeSet();
 	
@@ -1075,7 +1085,7 @@ function getOptionAttributeOptionsRecordSet($attributeId, ViewInformation $viewI
 		$optionAttributeOptionIdAttribute,
 		new TableColumnsToAttributesMapping(
 			new TableColumnsToAttribute(array('option_id'), $optionAttributeOptionIdAttribute),
-			new TableColumnsToAttribute(array('attribute_id'), $optionAttributeAttribute),
+			new TableColumnsToAttribute(array('attribute_id'), $attributeSet->attribute),
 			new TableColumnsToAttribute(array('option_mid'), $optionAttributeOptionAttribute),
 			new TableColumnsToAttribute(array('language_id'), $attributeSet->language)
 		),
@@ -1090,28 +1100,31 @@ function getOptionAttributeOptionsRecordSet($attributeId, ViewInformation $viewI
 
 function getOptionAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
-		$optionAttributeIdAttribute, $optionAttributeObjectAttribute, $optionAttributeOptionIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeValuesTable, $objectAttributesAttribute,
+		$optionAttributeOptionIdAttribute,  
+		$optionAttributeOptionAttribute, $optionAttributeValuesTable, $objectAttributesAttribute,
 		$optionAttributeValuesStructure;
+
+	$attributeSet = $viewInformation->getAttributeSet();
 
 	$recordSet = queryRecordSet(
 		$optionAttributeValuesStructure->getStructureType(),
 		$viewInformation->queryTransactionInformation,
-		$optionAttributeIdAttribute,
+		$attributeSet->valueId,
 		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('value_id'), $optionAttributeIdAttribute),
-			new TableColumnsToAttribute(array('object_id'), $optionAttributeObjectAttribute),
+			new TableColumnsToAttribute(array('value_id'), $attributeSet->valueId),
+			new TableColumnsToAttribute(array('object_id'), $attributeSet->attributeObject),
 			new TableColumnsToAttribute(array('option_id'), $optionAttributeOptionIdAttribute)
 		),
 		$optionAttributeValuesTable,
 		array("object_id IN (" . implode(", ", $objectIds) . ")")
 	);
 
-	$recordSet->getStructure()->addAttribute($optionAttributeAttribute);
+	$recordSet->getStructure()->addAttribute($attributeSet->attribute);
 	$recordSet->getStructure()->addAttribute($optionAttributeOptionAttribute);
 
 	expandOptionsInRecordSet($recordSet, $viewInformation);
-	expandDefinedMeaningReferencesInRecordSet($recordSet, array($optionAttributeAttribute, $optionAttributeOptionAttribute));
-	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $optionAttributeIdAttribute, $viewInformation);
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($attributeSet->attribute, $optionAttributeOptionAttribute));
+	expandObjectAttributesAttribute($recordSet, $objectAttributesAttribute, $attributeSet->valueId, $viewInformation);
 
 	return $recordSet;
 }
@@ -1119,7 +1132,10 @@ function getOptionAttributeValuesRecordSet(array $objectIds, ViewInformation $vi
 /* XXX: This can probably be combined with other functions. In fact, it probably should be. Do it. */
 function expandOptionsInRecordSet(RecordSet $recordSet, ViewInformation $viewInformation) {
 	global
-		$optionAttributeOptionIdAttribute, $optionAttributeIdAttribute, $optionAttributeAttribute, $optionAttributeOptionAttribute, $optionAttributeOptionsTable, $classAttributesTable;
+		$optionAttributeOptionIdAttribute,   
+		$optionAttributeOptionAttribute, $optionAttributeOptionsTable, $classAttributesTable;
+
+	$attributeSet = $viewInformation->getAttributeSet();
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
@@ -1129,7 +1145,7 @@ function expandOptionsInRecordSet(RecordSet $recordSet, ViewInformation $viewInf
 			$viewInformation->queryTransactionInformation,
 			$optionAttributeOptionIdAttribute,
 			new TableColumnsToAttributesMapping(
-				new TableColumnsToAttribute(array('attribute_id'), $optionAttributeIdAttribute),
+				new TableColumnsToAttribute(array('attribute_id'), $attributeSet->valueId),
 				new TableColumnsToAttribute(array('option_mid'), $optionAttributeOptionAttribute)
 			),
 			$optionAttributeOptionsTable,
@@ -1145,16 +1161,16 @@ function expandOptionsInRecordSet(RecordSet $recordSet, ViewInformation $viewInf
 		$optionRecordSet = queryRecordSet(
 			null,
 			$viewInformation->queryTransactionInformation,
-			$optionAttributeIdAttribute,
-			new TableColumnsToAttributesMapping(new TableColumnsToAttribute(array('attribute_mid'), $optionAttributeAttribute)),
+			$attributeSet->valueId,
+			new TableColumnsToAttributesMapping(new TableColumnsToAttribute(array('attribute_mid'), $attributeSet->attribute)),
 			$classAttributesTable,
-			array('object_id = ' . $optionRecord->getAttributeValue($optionAttributeIdAttribute))
+			array('object_id = ' . $optionRecord->getAttributeValue($attributeSet->valueId))
 		);
 	
 		$optionRecord = $optionRecordSet->getRecord(0);
 		$record->setAttributeValue(
-			$optionAttributeAttribute,
-			$optionRecord->getAttributeValue($optionAttributeAttribute)
+			$attributeSet->attribute,
+			$optionRecord->getAttributeValue($attributeSet->attribute)
 		);
 	} 
 }
