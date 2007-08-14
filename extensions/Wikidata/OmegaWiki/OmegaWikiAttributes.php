@@ -31,7 +31,7 @@ require_once("ViewInformation.php");
  *	-this is what RecordHelpers are for.
  */
 function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
-	initializeOmegaWikiAttributesOld($viewInformation); //backward compatibility, will be removed!
+//	initializeOmegaWikiAttributesOld($viewInformation); //backward compatibility, will be removed!
 	$init_and_discard_this = OmegaWikiAttributes::getInstance($viewInformation); 
 }
 
@@ -39,7 +39,7 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
  * Original initializeOmegaWikiAttributes, Do not call.
  * @deprecated use/update OmegaWikiAttributes->hardValues instead for now.
  */
-function initializeOmegaWikiAttributesOld(ViewInformation $viewInformation) {
+/*function initializeOmegaWikiAttributesOld(ViewInformation $viewInformation) {
 		global
 		$languageAttribute, $spellingAttribute, $textAttribute, 
 		$wgLanguageAttributeName, $wgSpellingAttributeName, $wgTextAttributeName;
@@ -357,6 +357,7 @@ function initializeOmegaWikiAttributesOld(ViewInformation $viewInformation) {
 	}
 
 }
+*/
 
 
 class OmegaWikiAttributes {
@@ -594,8 +595,10 @@ class OmegaWikiAttributes {
 		$attributes=&$this->attributes;
 		$attributes[$key] = $value;
 	
-		if ($value instanceof Attribute && !isset($GLOBALS[$key . "Attribute"]))
-			throw new Exception("Could not find attribute global with key: " . $key);
+		if ($value instanceof Attribute) 
+			$GLOBALS[$key . "Attribute"] = $value;
+		else
+			$GLOBALS[$key] = $value;
 	}
 	
 	public function __get($key) {
