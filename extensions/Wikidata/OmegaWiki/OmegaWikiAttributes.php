@@ -563,7 +563,7 @@ class OmegaWikiAttributes extends AttributeSet {
 		$t->expressionsStructure = new Structure("expressions", $t->expressionId, $t->expression, $t->expressionMeanings);
 		$t->expressions = new Attribute("expressions", wfMsg("Expressions"), $t->expressionsStructure);
 		$t->objectId = new Attribute("objectId", "Object identifier", "object-id");
-		$t->objectAttributesStructure = new Structure("object-attributes", $t->objectId, $t->textAttributeValues, $t->translatedTextAttributeValues, $t->optionAttributeValues);
+		$t->objectAttributesStructure = new Structure("object-attributes", $t->objectId, $t->textAttributeValues, $t->translatedTextAttributeValues, $t->optionAttributeValues, $t->linkAttributeValues);
 		$t->objectAttributes->setAttributeType($t->objectAttributesStructure);
 		$t->definedMeaningAttributes->setAttributeType($t->objectAttributesStructure);
 		
