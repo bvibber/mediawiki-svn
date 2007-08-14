@@ -1288,15 +1288,13 @@ class OptionAttributeEditor extends AttributeEditor {
 
 	public function add(IdStack $idPath) {
 		if ($this->isAddField) {
-			global
-				$syntransIdAttribute;
-
-			$syntransId = $idPath->getKeyStack()->peek(0)->getAttributeValue($syntransIdAttribute);
+			$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
 			$parameters = array(
 				'attributesLevel' => $this->attributesLevelName, 
-				'attributesObjectId' => $this->objectIdFetcher->fetch($idPath->getKeyStack()),
-				'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId
+				'attributesObjectId' => $objectId,
+				'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $objectId
 			);
+			
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);
 		}
 		else

@@ -123,16 +123,16 @@ global
 	$wgRelationsAttributeId, 
 	$wgSynonymsAndTranslationsAttributeId;
 	
-$wgAlternativeDefinitionsAttributeId = "alternative-definitions";
-$wgClassAttributesAttributeId = "class-attributes";
-$wgClassMembershipAttributeId = "class-membership";
-$wgCollectionMembershipAttributeId = "collection-membership";
-$wgDefinedMeaningAttributesAttributeId = "defined-meaning-attributes";
+$wgAlternativeDefinitionsAttributeId = "alternativeDefinitions";
+$wgClassAttributesAttributeId = "classAttributes";
+$wgClassMembershipAttributeId = "classMembership";
+$wgCollectionMembershipAttributeId = "collectionMembership";
+$wgDefinedMeaningAttributesAttributeId = "definedMeaningAttributes";
 $wgDefinitionAttributeId = "definition";
-$wgIncomingRelationsAttributeId = "reciprocal-relations";
-$wgPossiblySynonymousAttributeId = "possibly-synonymous";
+$wgIncomingRelationsAttributeId = "reciprocalRelations";
+$wgPossiblySynonymousAttributeId = "possiblySynonymous";
 $wgRelationsAttributeId = "relations"; 
-$wgSynonymsAndTranslationsAttributeId = "synonyms-translations";
+$wgSynonymsAndTranslationsAttributeId = "synonymsTranslations";
 
 // Defined meaning editor
 

@@ -42,9 +42,9 @@ class Attribute {
 }
 
 class Structure {
-	
 	private $structure; 
 	private $type; 
+	private $attributeIds;
 	
 	public function getAttributes() {
 		return $this->structure;
@@ -52,6 +52,7 @@ class Structure {
 
 	public function addAttribute($attribute) {
 		$this->structure[]=$attribute;
+		$this->attributeIds[] = $attribute->id;
 	}
 
 	public function getStructureType() {
@@ -75,7 +76,6 @@ class Structure {
 	 *
 	 */
 	public function __construct($argumentList) {
-
 		# We're trying to be clever.
 		$args=func_get_args();
 		$this->structure=null;
@@ -111,6 +111,20 @@ class Structure {
 			# WTF?
 			throw new Exception("Invalid structure constructor: ".print_r($args,true));
 		}
+		
+		$this->attributeIds = array();
+		
+		foreach ($this->structure as $attribute)
+			$this->attributeIds[] = $attribute->id;
+	}
+	
+	public function __toString() {
+		return "Structure(" . implode(", ", $this->attributeIds) . ")";
+	}
+	
+	public function supportsAttributeId($attributeId) {
+		return true;	
+//	return in_array($attributeId, $this->attributeIds);
 	}
 }
 

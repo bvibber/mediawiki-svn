@@ -25,9 +25,23 @@ class ArrayRecord implements Record {
 		return $this->structure;
 	}
 	
+	protected function getValueForAttributeId($attributeId) {
+		if ($this->structure->supportsAttributeId($attributeId)) {
+			if (isset($this->values[$attributeId]))
+				return $this->values[$attributeId];
+			else
+				return null;
+		}
+		else
+			throw new Exception(
+				"Record does not support attribute!\n" .
+				"  Attribute id: " . $attributeId . "\n" . 
+				"  Structure:    " . $this->structure 
+			);
+	}
+	
 	public function getAttributeValue(Attribute $attribute) {
-		#FIXME: check if valid
-		return @$this->values[$attribute->id];
+		return $this->getValueForAttributeId($attribute->id);
 	}
 	
 	/**
@@ -63,9 +77,19 @@ class ArrayRecord implements Record {
 		return $result;
 	}
 
+	protected function setValueForAttributeId($attributeId, $value) {
+		if ($this->structure->supportsAttributeId($attributeId)) 
+			$this->values[$attributeId] = $value; 
+		else
+			throw new Exception(
+				"Record does not support attribute!\n" .
+				"  Attribute id: " . $attributeId . "\n" . 
+				"  Structure:    " .$this->structure  
+			);
+	}
+
 	public function setAttributeValue(Attribute $attribute, $value) {
-		#FIXME: check if valid
-		@$this->values[$attribute->id] = $value;
+		$this->setValueForAttributeId($attribute->id, $value);
 	}
 	
 	/**
@@ -75,8 +99,9 @@ class ArrayRecord implements Record {
 	 */
 	public function setAttributeValuesByOrder($values) {
 		$atts=$this->structure->getAttributes();
+		
 		for ($i = 0; $i < count($atts); $i++)
-			$this->values[$atts[$i]->id] = $values[$i];
+			$this->setValueForAttributeId($atts[$i]->id, $values[$i]);
 	}
 	
 	/*
@@ -86,7 +111,7 @@ class ArrayRecord implements Record {
 	 */
 	public function setSubRecord(Record $record) {
 		foreach($record->getStructure()->getAttributes() as $attribute)
-			$this->values[$attribute->id] = $record->getAttributeValue($attribute);
+			$this->setValueForAttributeId($attribute->id, $record->getAttributeValue($attribute));
 	}
 
 	/** 
