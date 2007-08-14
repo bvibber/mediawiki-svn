@@ -51,22 +51,25 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 			$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure;
 		
 		$dc=wdGetDataSetContext();
-		$o=OmegaWikiAttributes::getInstance();
+		$attributeSet = new OmegaWikiAttributes(new ViewInformation());
 
 		$dbr = &wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query("SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id" .
-					" FROM {$dc}_syntrans source_syntrans, {$dc}_expression_ns source_expression" .
-					" WHERE source_syntrans.expression_id=source_expression.expression_id AND source_expression.language_id=$sourceLanguageId" .
-					" AND ". getLatestTransactionRestriction('source_syntrans').
-					" AND ". getLatestTransactionRestriction('source_expression').
-					" AND NOT EXISTS (" .
-					"   SELECT * FROM {$dc}_syntrans destination_syntrans, {$dc}_expression_ns destination_expression" .
-					"   WHERE  destination_syntrans.expression_id=destination_expression.expression_id AND destination_expression.language_id=$destinationLanguageId" .
-					" AND source_syntrans.defined_meaning_id=destination_syntrans.defined_meaning_id".
-					" AND ". getLatestTransactionRestriction('destination_syntrans').
-					" AND ". getLatestTransactionRestriction('destination_expression').
-					" )" .
-					" LIMIT 100");
+		$queryResult = $dbr->query(
+			"SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id" .
+			" FROM {$dc}_syntrans source_syntrans, {$dc}_expression_ns source_expression" .
+			" WHERE source_syntrans.expression_id=source_expression.expression_id AND source_expression.language_id=$sourceLanguageId" .
+			" AND ". getLatestTransactionRestriction('source_syntrans').
+			" AND ". getLatestTransactionRestriction('source_expression').
+			" AND NOT EXISTS (" .
+			"   SELECT * FROM {$dc}_syntrans destination_syntrans, {$dc}_expression_ns destination_expression" .
+			"   WHERE  destination_syntrans.expression_id=destination_expression.expression_id " .
+			"   AND destination_expression.language_id=$destinationLanguageId " .
+			"   AND source_syntrans.defined_meaning_id=destination_syntrans.defined_meaning_id".
+			"   AND ". getLatestTransactionRestriction('destination_syntrans').
+			"   AND ". getLatestTransactionRestriction('destination_expression').
+			" )" .
+			" LIMIT 100"
+		);
 					
 		$definitionAttribute = new Attribute("definition", "Definition", "definition");
 		$recordSet = new ArrayRecordSet(new Structure($definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $definitionAttribute), new Structure($definedMeaningIdAttribute, $expressionIdAttribute));
@@ -80,8 +83,8 @@ class NeedsTranslationTo extends DefaultWikidataApplication {
 		}
 		
 		$expressionEditor = new RecordTableCellEditor($expressionAttribute);
-		$expressionEditor->addEditor(new LanguageEditor($o->language, new SimplePermissionController(false), false));
-		$expressionEditor->addEditor(new SpellingEditor($spellingAttribute, new SimplePermissionController(false), false));
+		$expressionEditor->addEditor(new LanguageEditor($attributeSet->language, new SimplePermissionController(false), false));
+		$expressionEditor->addEditor(new SpellingEditor($attributeSet->spelling, new SimplePermissionController(false), false));
 	
 		$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new AllowAddController(false), false, false, null);
 		$editor->addEditor($expressionEditor);
