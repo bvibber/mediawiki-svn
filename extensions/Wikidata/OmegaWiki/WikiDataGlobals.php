@@ -132,7 +132,7 @@ $wgDefinitionAttributeId = "definition";
 $wgIncomingRelationsAttributeId = "reciprocalRelations";
 $wgPossiblySynonymousAttributeId = "possiblySynonymous";
 $wgRelationsAttributeId = "relations"; 
-$wgSynonymsAndTranslationsAttributeId = "synonymsTranslations";
+$wgSynonymsAndTranslationsAttributeId = "synonymsAndTranslations";
 
 // Defined meaning editor
 
