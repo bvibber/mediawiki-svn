@@ -29,6 +29,20 @@ require_once("ViewInformation.php");
  * proper separation of architectural layers, the Records should learn
  * to talk directly with the DB layer.
  *	-this is what RecordHelpers are for.
+ * 
+ * --- Comment by Peter-Jan Roes: 
+ * I don't agree that proper separation of architectural layers means that
+ * Records and RecordSets should know how to save themselves to the database.
+ * Actually, altering Records and RecordSets this way increases the entanglement
+ * of architectural layers: Record(Set)s will need to know about a database,
+ * which is not to be preferred.
+ *  
+ * Instead I think it is better to introduce another entity that carries this
+ * responsibility, for instance HierarchicalQueryEngine. This entity will know
+ * how to query an ordinary relational database (like MySQL) into the hierarchical
+ * data structure formed by Records and RecordSets. The same entity will be able
+ * to save back data to the database.   
+ * 
  */
 function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
 //	initializeOmegaWikiAttributesOld($viewInformation); //backward compatibility, will be removed!
