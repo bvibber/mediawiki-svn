@@ -198,10 +198,12 @@ class DefinedMeaningModel {
 		#here we assume the DM is not there yet.. not entirely wise
 		#in the long run.
 		echo "id: $expressionId lang: $languageId";
+		
 		$definedMeaningId=createNewDefinedMeaning($expressionId, $languageId, $text);
+		$o = $this->viewInformation->getAttributeSet();
 		
 		getDefinedMeaningEditor($this->viewInformation)->save(
-			$this->getIdStack($definedMeaningId), 
+			$this->getIdStack($definedMeaningId, $o->definedMeaningId), 
 			$this->getRecord()
 		);
 	}
@@ -209,10 +211,8 @@ class DefinedMeaningModel {
 	/**
 	 * FIXME - work in progress
 	 */
-	protected function getIdStack($definedMeaningId) {
-		$o=OmegaWikiAttributes::getInstance();
-
-		$definedMeaningIdStructure = new Structure($o->$definedMeaningId);
+	protected function getIdStack($definedMeaningId, Attribute $definedMeaningIdAttribute) {
+		$definedMeaningIdStructure = new Structure($definedMeaningIdAttribute);
 		$definedMeaningIdRecord = new ArrayRecord($definedMeaningIdStructure, $definedMeaningIdStructure);
 		$definedMeaningIdRecord->definedMeaningId= $definedMeaningId;	
 		
