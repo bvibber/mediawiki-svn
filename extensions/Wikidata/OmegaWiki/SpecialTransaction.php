@@ -30,9 +30,8 @@ function wfSpecialTransaction() {
 			require_once("type.php");
 			require_once("ViewInformation.php");
 			
-			$viewInformation = new ViewInformation();
-			initializeOmegaWikiAttributes($viewInformation);
-			initializeAttributes($viewInformation);
+			initializeOmegaWikiAttributes(new ViewInformation());
+			initializeAttributes();
 			
 			@$fromTransactionId = (int) $_GET['from-transaction']; # FIXME - check parameter
 			@$transactionCount = (int) $_GET['transaction-count']; # FIXME - check parameter
@@ -71,9 +70,9 @@ function wfSpecialTransaction() {
 					'<input type="hidden" name="user-name" value="'. $userName .'"/>' 
 				);
 
-			$recordSet = getTransactionRecordSet($viewInformation, $fromTransactionId, $transactionCount, $userName);	
+			$recordSet = getTransactionRecordSet($fromTransactionId, $transactionCount, $userName);	
 			
-			$wgOut->addHTML(getTransactionOverview($viewInformation, $recordSet, $showRollBackOptions));
+			$wgOut->addHTML(getTransactionOverview($recordSet, $showRollBackOptions));
 			
 			if ($showRollBackOptions)
 				$wgOut->addHTML(
@@ -127,12 +126,12 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 	); 
 }
 
-function initializeAttributes(ViewInformation $viewInformation) {
+function initializeAttributes() {
 	global
 		$operationAttribute, $isLatestAttribute, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
 		 $definedMeaningReferenceStructure, $rollBackStructure, $rollBackAttribute;
 
-	$o = $viewInformation->getAttributeSet();
+	$o=OmegaWikiAttributes::getInstance();
 
 	$operationAttribute = new Attribute('operation', 'Operation', 'text');
 	$isLatestAttribute = new Attribute('is-latest', 'Is latest', 'boolean');
@@ -269,6 +268,8 @@ function initializeAttributes(ViewInformation $viewInformation) {
 	global
 		$updatedTextAttribute, $updatedTextStructure;	
 		
+	$o=OmegaWikiAttributes::getInstance();
+
 	$updatedTextStructure = new Structure(
 		$rollBackAttribute,
 		$valueIdAttribute,
@@ -318,16 +319,16 @@ function initializeAttributes(ViewInformation $viewInformation) {
 	$updatedTranslatedTextAttribute = new Attribute('updated-translated-text', 'Texts', $updatedTranslatedTextStructure);
 
 	global
-		$updatedClassAttributesAttribute, $updatedClassAttributesStructure, $classAttributeIdAttribute, $levelAttribute, 
+		$updatedClassAttributesAttribute, $updatedClassAttributesStructure, $classAttributeId, $levelAttribute, 
 		$typeAttribute;
 
-	$classAttributeIdAttribute = new Attribute('class-attribute-id', 'Class attribute id', 'object-id');
+	$classAttributeId = new Attribute('class-attribute-id', 'Class attribute id', 'object-id');
 	$levelAttribute = new Attribute('level', 'Level', $definedMeaningReferenceStructure);
 	$typeAttribute = new Attribute('type', 'Type', 'text');
 
 	$updatedClassAttributesStructure = new Structure(
 		$rollBackAttribute,
-		$classAttributeIdAttribute,
+		$classAttributeId,
 		$classAttribute,
 		$levelAttribute,
 		$typeAttribute,
@@ -386,17 +387,13 @@ function initializeAttributes(ViewInformation $viewInformation) {
 		$updatedLinkAttribute,
 		$updatedTextAttribute,
 		$updatedTranslatedTextAttribute,
-		$updatedAlternativeDefinitionsAttribute,
-		$updatedAlternativeDefinitionTextAttribute,
-		$updatedCollectionMembershipAttribute,
-		$updatedTranslatedTextPropertyAttribute,
-		$updatedClassAttributesAttribute
+		$updatedAlternativeDefinitionsAttribute
 	);
 
 	$updatesInTransactionAttribute = new Attribute('updates-in-transaction', 'Updates in transaction', $updatesInTransactionStructure);
 }
 
-function getTransactionRecordSet(ViewInformation $viewInformation, $fromTransactionId, $transactionCount, $userName) {
+function getTransactionRecordSet($fromTransactionId, $transactionCount, $userName) {
 	global
 		$transactionAttribute, $transactionIdAttribute, $transactionsTable, $updatesInTransactionAttribute;
 		
@@ -421,16 +418,16 @@ function getTransactionRecordSet(ViewInformation $viewInformation, $fromTransact
 		$transactionCount
 	);
 	
-	$recordSet->getStructure()->addAttribute($transactionAttribute);
+	$recordSet->getStructure()->addAttribute($transactionIdAttribute);
 	expandTransactionIDsInRecordSet($recordSet, $transactionIdAttribute, $transactionAttribute);
 	
 	$recordSet->getStructure()->addAttribute($updatesInTransactionAttribute);
-	expandUpdatesInTransactionInRecordSet($viewInformation, $recordSet);
+	expandUpdatesInTransactionInRecordSet($recordSet);
 
 	return $recordSet;	
 }
 
-function getTransactionOverview(ViewInformation $viewInformation, RecordSet $recordSet, $showRollBackOptions) {
+function getTransactionOverview($recordSet, $showRollBackOptions) {
 	global
 		$transactionAttribute, $userAttribute,  $timestampAttribute, $summaryAttribute, 
 		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
@@ -445,18 +442,18 @@ function getTransactionOverview(ViewInformation $viewInformation, RecordSet $rec
 	$captionEditor->addEditor(new TextEditor($summaryAttribute, new SimplePermissionController(false), false));
 	
 	$valueEditor = new RecordUnorderedListEditor($updatesInTransactionAttribute, 5);
-	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($viewInformation, $updatedDefinitionAttribute, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedDefinedMeaningDefinitionEditor($updatedDefinitionAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedAlternativeDefinitionsEditor($updatedAlternativeDefinitionsAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedAlternativeDefinitionTextEditor($viewInformation, $updatedAlternativeDefinitionTextAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedSyntransesEditor($viewInformation, $updatedSyntransesAttribute, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedAlternativeDefinitionTextEditor($updatedAlternativeDefinitionTextAttribute, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedSyntransesEditor($updatedSyntransesAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedRelationsEditor($updatedRelationsAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassAttributesEditor($updatedClassAttributesAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedClassMembershipEditor($updatedClassMembershipAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedCollectionMembershipEditor($updatedCollectionMembershipAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedLinkEditor($updatedLinkAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedTextEditor($viewInformation, $updatedTextAttribute, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedTextEditor($updatedTextAttribute, $showRollBackOptions));
 	$valueEditor->addEditor(getUpdatedTranslatedTextPropertyEditor($updatedTranslatedTextPropertyAttribute, $showRollBackOptions));
-	$valueEditor->addEditor(getUpdatedTranslatedTextEditor($viewInformation, $updatedTranslatedTextAttribute, $showRollBackOptions));
+	$valueEditor->addEditor(getUpdatedTranslatedTextEditor($updatedTranslatedTextAttribute, $showRollBackOptions));
 	
 	$editor = new RecordSetListEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null, 4, false);
 	$editor->setCaptionEditor($captionEditor);
@@ -465,7 +462,7 @@ function getTransactionOverview(ViewInformation $viewInformation, RecordSet $rec
 	return $editor->view(new IdStack("transaction"), $recordSet);
 }
 
-function expandUpdatesInTransactionInRecordSet(ViewInformation $viewInformation, $recordSet) {
+function expandUpdatesInTransactionInRecordSet($recordSet) {
 	global
 		$transactionIdAttribute, $updatesInTransactionAttribute;
 	
@@ -473,12 +470,12 @@ function expandUpdatesInTransactionInRecordSet(ViewInformation $viewInformation,
 		$record = $recordSet->getRecord($i);
 		$record->setAttributeValue(
 			$updatesInTransactionAttribute, 
-			getUpdatesInTransactionRecord($viewInformation, $record->getAttributeValue($transactionIdAttribute))
+			getUpdatesInTransactionRecord($record->getAttributeValue($transactionIdAttribute))
 		);
 	}
 }
 
-function getUpdatesInTransactionRecord(ViewInformation $viewInformation, $transactionId) {
+function getUpdatesInTransactionRecord($transactionId) {
 	global	
 		$updatesInTransactionAttribute, $updatedDefinitionAttribute, $updatedSyntransesAttribute, 
 		$updatedRelationsAttribute, $updatedClassMembershipAttribute, $updatedCollectionMembershipAttribute,
@@ -487,17 +484,17 @@ function getUpdatesInTransactionRecord(ViewInformation $viewInformation, $transa
 		$updatedTranslatedTextPropertyAttribute;
 		
 	$record = new ArrayRecord($updatesInTransactionAttribute->type);
-	$record->setAttributeValue($updatedDefinitionAttribute, getUpdatedDefinedMeaningDefinitionRecordSet($viewInformation, $transactionId));
-	$record->setAttributeValue($updatedAlternativeDefinitionsAttribute, getUpdatedAlternativeDefinitionsRecordSet($viewInformation, $transactionId));
-	$record->setAttributeValue($updatedAlternativeDefinitionTextAttribute, getUpdatedAlternativeDefinitionTextRecordSet($viewInformation, $transactionId));
-	$record->setAttributeValue($updatedSyntransesAttribute, getUpdatedSyntransesRecordSet($viewInformation, $transactionId));
+	$record->setAttributeValue($updatedDefinitionAttribute, getUpdatedDefinedMeaningDefinitionRecordSet($transactionId));
+	$record->setAttributeValue($updatedAlternativeDefinitionsAttribute, getUpdatedAlternativeDefinitionsRecordSet($transactionId));
+	$record->setAttributeValue($updatedAlternativeDefinitionTextAttribute, getUpdatedAlternativeDefinitionTextRecordSet($transactionId));
+	$record->setAttributeValue($updatedSyntransesAttribute, getUpdatedSyntransesRecordSet($transactionId));
 	$record->setAttributeValue($updatedRelationsAttribute, getUpdatedRelationsRecordSet($transactionId));
 	$record->setAttributeValue($updatedClassMembershipAttribute, getUpdatedClassMembershipRecordSet($transactionId));
 	$record->setAttributeValue($updatedCollectionMembershipAttribute, getUpdatedCollectionMembershipRecordSet($transactionId));
 	$record->setAttributeValue($updatedLinkAttribute, getUpdatedLinkRecordSet($transactionId));
 	$record->setAttributeValue($updatedTextAttribute, getUpdatedTextRecordSet($transactionId));
-	$record->setAttributeValue($updatedTranslatedTextPropertyAttribute, getUpdatedTranslatedTextPropertyRecordSet($viewInformation, $transactionId));
-	$record->setAttributeValue($updatedTranslatedTextAttribute, getUpdatedTranslatedTextRecordSet($viewInformation, $transactionId));
+	$record->setAttributeValue($updatedTranslatedTextPropertyAttribute, getUpdatedTranslatedTextPropertyRecordSet($transactionId));
+	$record->setAttributeValue($updatedTranslatedTextAttribute, getUpdatedTranslatedTextRecordSet($transactionId));
 	$record->setAttributeValue($updatedClassAttributesAttribute, getUpdatedClassAttributesRecordSet($transactionId));
 	
 	return $record;
@@ -546,13 +543,15 @@ function getUpdatedTextRecord($text, $history) {
 	return $result;
 }
 
-function getUpdatedDefinedMeaningDefinitionRecordSet(ViewInformation $viewInformation, $transactionId) {
+function getUpdatedDefinedMeaningDefinitionRecordSet($transactionId) {
+
 	global
 		 $definedMeaningIdAttribute, 
 		$definedMeaningReferenceAttribute, $updatedDefinitionStructure, $translatedContentIdAttribute,
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
 
-	$o = $viewInformation->getAttributeSet();
+	$o=OmegaWikiAttributes::getInstance();
+
 	$dc=wdGetDataSetContext();		
 		
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -585,7 +584,7 @@ function getUpdatedDefinedMeaningDefinitionRecordSet(ViewInformation $viewInform
 	return $recordSet;
 }
 
-function getUpdatedAlternativeDefinitionsRecordSet(ViewInformation $viewInformation, $transactionId) {
+function getUpdatedAlternativeDefinitionsRecordSet($transactionId) {
 	global
 		$updatedAlternativeDefinitionsStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
 		$translatedContentIdAttribute, $sourceAttribute, $alternativeDefinitionTextAttribute,
@@ -616,21 +615,20 @@ function getUpdatedAlternativeDefinitionsRecordSet(ViewInformation $viewInformat
 		$recordSet->add($record);	
 	}
 	
-	$newViewInformation = new ViewInformation();
-	$newViewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
-	$newViewInformation->setAttributeSet($viewInformation->getAttributeSet());
-	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $alternativeDefinitionTextAttribute, $newViewInformation);
+	$viewInformation = new ViewInformation();
+	$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
+	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $alternativeDefinitionTextAttribute, $viewInformation);
 	
 	return $recordSet;
 }
 
-function getUpdatedAlternativeDefinitionTextRecordSet(ViewInformation $viewInformation, $transactionId) {
+function getUpdatedAlternativeDefinitionTextRecordSet($transactionId) {
 	global
-		$definedMeaningIdAttribute, $sourceAttribute,
+		 $definedMeaningIdAttribute, $sourceAttribute,
 		$definedMeaningReferenceAttribute, $updatedAlternativeDefinitionTextStructure, $translatedContentIdAttribute,
 		$rollBackTranslatedContentStructure, $rollBackTranslatedContentAttribute, $operationAttribute, $isLatestAttribute;
 
-	$o = $viewInformation->getAttributeSet();
+	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -664,14 +662,14 @@ function getUpdatedAlternativeDefinitionTextRecordSet(ViewInformation $viewInfor
 	return $recordSet;
 }
 
-function getUpdatedSyntransesRecordSet(ViewInformation $viewInformation, $transactionId, $dc=null) {
+function getUpdatedSyntransesRecordSet($transactionId, $dc=null) {
 	global
 		$updatedSyntransesStructure, $definedMeaningIdAttribute, $definedMeaningReferenceAttribute, 
 		$expressionAttribute, $expressionStructure,  $syntransIdAttribute,
 		$expressionIdAttribute,	$identicalMeaningAttribute, 
 		$isLatestAttribute, $operationAttribute, $rollBackAttribute, $rollBackStructure;		
 
-	$o = $viewInformation->getAttributeSet();
+	$o=OmegaWikiAttributes::getInstance();
 	$dc=wdGetDataSetContext($dc);			
 	
 	$dbr = &wfGetDB(DB_SLAVE);
@@ -945,7 +943,7 @@ function getUpdatedTextRecordSet($transactionId) {
 	return $recordSet;
 }
 
-function getUpdatedTranslatedTextPropertyRecordSet(ViewInformation $viewInformation, $transactionId) {
+function getUpdatedTranslatedTextPropertyRecordSet($transactionId) {
 	global
 		$updatedTranslatedTextPropertyStructure, $objectIdAttribute, $valueIdAttribute, 
 		$translatedContentIdAttribute, $attributeAttribute, $translatedTextTextAttribute,
@@ -976,21 +974,21 @@ function getUpdatedTranslatedTextPropertyRecordSet(ViewInformation $viewInformat
 		$recordSet->add($record);	
 	}
 	
-	$newViewInformation = new ViewInformation();
-	$newViewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
-	$newViewInformation->setAttributeSet($viewInformation->getAttributeSet());
-	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $translatedTextTextAttribute, $newViewInformation);
+	$viewInformation = new ViewInformation();
+	$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
+	expandTranslatedContentsInRecordSet($recordSet, $translatedContentIdAttribute, $translatedTextTextAttribute, $viewInformation);
 	
 	return $recordSet;
 }
 
-function getUpdatedTranslatedTextRecordSet(ViewInformation $viewInformation, $transactionId) {
+function getUpdatedTranslatedTextRecordSet($transactionId) {
 	global
 		$objectAttributeValues, $objectIdAttribute, $valueIdAttribute, $attributeAttribute,
 		$updatedTranslatedTextStructure, $translatedContentIdAttribute,
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $rollBackTranslatedContentStructure;
 
-	$o = $viewInformation->getAttributeSet();
+	$o=OmegaWikiAttributes::getInstance();
+
 	$dc=wdGetDataSetContext();	
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
@@ -1023,11 +1021,12 @@ function getUpdatedTranslatedTextRecordSet(ViewInformation $viewInformation, $tr
 	return $recordSet;
 }
 
-function getTranslatedContentHistorySelector(ViewInformation $viewInformation, $attribute) {
+function getTranslatedContentHistorySelector($attribute) {
 	global
 		 $recordLifeSpanAttribute;
 
-	$o = $viewInformation->getAttributeSet();
+	$o=OmegaWikiAttributes::getInstance();
+
 	$result = createSuggestionsTableViewer($attribute);
 	$result->addEditor(createLongTextViewer($o->text));
 	$result->addEditor(createTableLifeSpanEditor($recordLifeSpanAttribute));
@@ -1037,12 +1036,12 @@ function getTranslatedContentHistorySelector(ViewInformation $viewInformation, $
 	return $result;
 }
 
-function getUpdatedDefinedMeaningDefinitionEditor(ViewInformation $viewInformation, $attribute, $showRollBackOptions) {
+function getUpdatedDefinedMeaningDefinitionEditor($attribute, $showRollBackOptions) {
 	global
 		$definedMeaningReferenceAttribute, 
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
 	
-	$o = $viewInformation->getAttributeSet();
+	$o=OmegaWikiAttributes::getInstance();
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions) {
@@ -1080,12 +1079,13 @@ function getUpdatedAlternativeDefinitionsEditor($attribute, $showRollBackOptions
 	return $editor;
 }
 
-function getUpdatedAlternativeDefinitionTextEditor(ViewInformation $viewInformation, $attribute, $showRollBackOptions) {
+function getUpdatedAlternativeDefinitionTextEditor($attribute, $showRollBackOptions) {
 	global
 		$definedMeaningReferenceAttribute,  $sourceAttribute, 
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
+
+	$o=OmegaWikiAttributes::getInstance();
 	
-	$o = $viewInformation->getAttributeSet();
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions) {
@@ -1105,7 +1105,7 @@ function getUpdatedAlternativeDefinitionTextEditor(ViewInformation $viewInformat
 	return $editor;
 }
 
-function getUpdatedSyntransesEditor(ViewInformation $viewInformation, $attribute, $showRollBackOptions) {
+function getUpdatedSyntransesEditor($attribute, $showRollBackOptions) {
 	global
 		$definedMeaningReferenceAttribute, $expressionAttribute, $identicalMeaningAttribute, 
 		$isLatestAttribute, $operationAttribute, $rollBackAttribute;
@@ -1115,12 +1115,11 @@ function getUpdatedSyntransesEditor(ViewInformation $viewInformation, $attribute
 	if ($showRollBackOptions)
 		$editor->addEditor(new RollbackEditor($rollBackAttribute, false));
 	
-	$newViewInformation = new ViewInformation();
-	$newViewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
-	$newViewInformation->setAttributeSet($viewInformation->getAttributeSet());
+	$viewInformation = new ViewInformation();
+	$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
 		
 	$editor->addEditor(createDefinedMeaningReferenceViewer($definedMeaningReferenceAttribute));
-	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute, $newViewInformation));
+	$editor->addEditor(getExpressionTableCellEditor($expressionAttribute, $viewInformation));
 	$editor->addEditor(new BooleanEditor($identicalMeaningAttribute, new SimplePermissionController(false), false, false));
 	$editor->addEditor(createShortTextViewer($operationAttribute));
 	$editor->addEditor(createBooleanViewer($isLatestAttribute));
@@ -1202,12 +1201,13 @@ function getUpdatedLinkEditor($attribute, $showRollBackOptions) {
 	return $editor;
 }
 
-function getUpdatedTextEditor(ViewInformation $viewInformation, $attribute, $showRollBackOptions) {
+function getUpdatedTextEditor($attribute, $showRollBackOptions) {
 	global
 		$objectIdAttribute, $valueIdAttribute, $attributeAttribute,  
 		$rollBackAttribute, $operationAttribute, $isLatestAttribute;
 		
-	$o = $viewInformation->getAttributeSet();
+	$o=OmegaWikiAttributes::getInstance();
+
 	$editor = createTableViewer($attribute);
 
 	if ($showRollBackOptions)
@@ -1241,12 +1241,12 @@ function getUpdatedTranslatedTextPropertyEditor($attribute, $showRollBackOptions
 	return $editor;
 }
 
-function getUpdatedTranslatedTextEditor(ViewInformation $viewInformation, $attribute, $showRollBackOptions) {
+function getUpdatedTranslatedTextEditor($attribute, $showRollBackOptions) {
 	global
 		$objectIdAttribute, $valueIdAttribute, $attributeAttribute,  
 		$operationAttribute, $isLatestAttribute, $rollBackTranslatedContentAttribute, $translatedContentHistoryAttribute;
 	
-	$o = $viewInformation->getAttributeSet();
+	$o=OmegaWikiAttributes::getInstance();
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions) {

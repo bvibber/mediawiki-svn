@@ -55,7 +55,7 @@ while(<>) {
 				$statement=~/^(\s*).*/;	
 				my $indent=$1;
 			if ($global) {
-				@matches=($statement=~/\$(\w+)(Attributes?|Structure)\W/g);
+				@matches=($statement=~/\$(\w+)(Attributes?|Structure)/g);
 				if (@matches) {
 					$globals{$block_stack[0]}=joinpairs(@matches);
 					$statement=~s/\$(\w+)(Attributes?|Structure)\;/;/g;
@@ -87,7 +87,7 @@ while(<>) {
 				my $type=@$item[1];
 				my $ending=$type unless $type eq "Attribute";
 				#print ">>>> n: $name t: $type e: $ending\n";
-				$statement=~s/\$${name}${type}(\W)/\$o\-\>${name}${ending}$1/gm;
+				$statement=~s/\$${name}${type}/\$o\-\>${name}${ending}/gm;
 			}
 			$statement=~s/->getAttributeValue\(\s*\$o->(\w+)\s*\)/->$1/g;
 			$statement=~s/\-\>setAttributeValue\(\s*\$o->(\w+)\s*,\s*(.*)\s*\)/->$1 = $2/g;
@@ -102,4 +102,5 @@ while(<>) {
 	#print $block_stack[0].": ".$_;
 }
 print $statement;	# flush out any remaining lines
-print Dumper(%globals);
+#print Dumper(%globals);
+
