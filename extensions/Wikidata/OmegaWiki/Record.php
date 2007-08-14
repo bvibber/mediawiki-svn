@@ -2,7 +2,6 @@
 
 require_once('Attribute.php');
 require_once('RecordHelper.php');
-require_once('OmegaWikiAttributes.php'); 
 
 interface Record {
 	public function getStructure();
@@ -14,7 +13,6 @@ class ArrayRecord implements Record {
 	protected $structure;
 	protected $values = array();
 	protected $helper=null;
-	#possibly associate an OmegaWikiAttributes instance (singleton?) here	
 
 	public function __construct(Structure $structure) {
 		$this->structure = $structure;
@@ -44,22 +42,12 @@ class ArrayRecord implements Record {
 		return $this->getValueForAttributeId($attribute->id);
 	}
 	
-	/**
-	 * Look up the correct attribute using omegaWikiAttributes
-	 * and return its value
- 	 */
-	public function __get($attributeName) {
-		$o = OmegaWikiAttributes::getInstance();
-		return $this->getAttributeValue($o->$attributeName);
+	public function __get($attributeId) {
+		return $this->getValueForAttributeId($attributeId);
 	}
 		
-	/**
-	 * Look up the correct attribute using omegaWikiAttributes
-	 * and set its value
- 	 */
-	public function __set($attributeName, $value) {
-		$o = OmegaWikiAttributes::getInstance();
-		return $this->setAttributeValue($o->$attributeName, $value);
+	public function __set($attributeId, $value) {
+		return $this->setValueForAttributeId($attributeId, $value);
 	}
 	/** 
 	 * Obtains a value based on the provided key.
@@ -69,7 +57,7 @@ class ArrayRecord implements Record {
 	 * @deprecated use __get and __set instead
 	 */
 	public function getValue($key) {
-		return @$this->values[$key];	
+		return getValueForAttributeId($key);	
 	}
 
 	public function project(Structure $structure) {
@@ -104,8 +92,7 @@ class ArrayRecord implements Record {
 			$this->setValueForAttributeId($atts[$i]->id, $values[$i]);
 	}
 	
-	/*
-	 *
+	/**
 	 * @param $record Another record object whose values get written into this one
 	 *
 	 */
