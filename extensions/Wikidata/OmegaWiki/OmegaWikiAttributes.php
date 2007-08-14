@@ -497,6 +497,7 @@ class OmegaWikiAttributes {
 		
 		$t->translatedTextAttributeValuesStructure = new Structure("translated-text-attribute-values",$t->translatedTextAttributeId, $t->attributeObjectId, $t->translatedTextAttribute, $t->translatedTextValueId, $t->translatedTextValue, $t->objectAttributes);
 		$t->translatedTextAttributeValues = new Attribute(null, wfMsg("TranslatedTextAttributeValues"), $t->translatedTextAttributeValuesStructure);
+		$t->attributeObject = new Attribute("attribute-object-id", "Attribute object", "object-id");
 		$t->textAttributeId = new Attribute("text-attribute-id", "Attribute identifier", "object-id");
 		$t->textAttributeObject = new Attribute("text-attribute-object-id", "Attribute object", "object-id");
 		$t->textAttribute = new Attribute("text-attribute", wfMsg("TextAttribute"), $t->definedMeaningReferenceStructure);
