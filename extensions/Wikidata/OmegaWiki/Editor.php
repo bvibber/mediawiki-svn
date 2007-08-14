@@ -1058,11 +1058,11 @@ class ShortTextEditor extends ScalarEditor {
 
 class LinkEditor extends ShortTextEditor {
 	public function getViewHTML(IdStack $idPath, $value) {
-		global
-			$linkLabelAttribute, $linkURLAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 		
-		$label = htmlspecialchars($value->getAttributeValue($linkLabelAttribute));
-		$url = htmlspecialchars($value->getAttributeValue($linkURLAttribute)); 
+		$label = htmlspecialchars($value->linkLabel);
+		$url = htmlspecialchars($value->linkURL); 
 
 		if ($label == "")
 			$label = $url;
@@ -1132,11 +1132,11 @@ class DefinedMeaningReferenceEditor extends SuggestEditor {
 	}
 
 	public function getViewHTML(IdStack $idPath, $value) {
-		global
-			$definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute;
-		$definedMeaningId = $value->getAttributeValue($definedMeaningIdAttribute);
-		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
-		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);
+
+		$o=OmegaWikiAttributes::getInstance();
+		$definedMeaningId = $value->definedMeaningId;
+		$definedMeaningLabel = $value->definedMeaningLabel;
+		$definedMeaningDefiningExpression = $value->definedMeaningDefiningExpression;
 		
 		return definedMeaningReferenceAsLink($definedMeaningId, $definedMeaningDefiningExpression, $definedMeaningLabel);
 	}
@@ -1148,12 +1148,12 @@ class ClassAttributesLevelDefinedMeaningEditor extends SuggestEditor {
 	}
 
 	public function getViewHTML(IdStack $idPath, $value) {
-		global
-			$definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute;
 
-		$definedMeaningId = $value->getAttributeValue($definedMeaningIdAttribute);
-		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
-		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $value->definedMeaningId;
+		$definedMeaningLabel = $value->definedMeaningLabel;
+		$definedMeaningDefiningExpression = $value->definedMeaningDefiningExpression;
 		
 		return definedMeaningReferenceAsLink($definedMeaningId, $definedMeaningDefiningExpression, $definedMeaningLabel);
 	}
@@ -1204,12 +1204,12 @@ class OptionSelectEditor extends SelectEditor {
 	}
 
 	public function getViewHTML(IdStack $idPath, $value) {
-		global
-			$definedMeaningIdAttribute, $definedMeaningLabelAttribute, $definedMeaningDefiningExpressionAttribute;
 
-		$definedMeaningId = $value->getAttributeValue($definedMeaningIdAttribute);
-		$definedMeaningLabel = $value->getAttributeValue($definedMeaningLabelAttribute);
-		$definedMeaningDefiningExpression = $value->getAttributeValue($definedMeaningDefiningExpressionAttribute);
+		$o=OmegaWikiAttributes::getInstance();
+
+		$definedMeaningId = $value->definedMeaningId;
+		$definedMeaningLabel = $value->definedMeaningLabel;
+		$definedMeaningDefiningExpression = $value->definedMeaningDefiningExpression;
 		
 		return definedMeaningReferenceAsLink($definedMeaningId, $definedMeaningDefiningExpression, $definedMeaningLabel);
 	}
@@ -1288,10 +1288,10 @@ class OptionAttributeEditor extends AttributeEditor {
 
 	public function add(IdStack $idPath) {
 		if ($this->isAddField) {
-			global
-				$syntransIdAttribute;
 
-			$syntransId = $idPath->getKeyStack()->peek(0)->getAttributeValue($syntransIdAttribute);
+			$o=OmegaWikiAttributes::getInstance();
+
+			$syntransId = $idPath->getKeyStack()->peek(0)->syntransId;
 			$parameters = array(
 				'attributesLevel' => $this->attributesLevelName, 
 				'attributesObjectId' => $this->objectIdFetcher->fetch($idPath->getKeyStack()),
@@ -1910,11 +1910,11 @@ class RollBackEditor extends ScalarEditor {
 	}
 	
 	public function getViewHTML(IdStack $idPath, $value) {
-		global
-			$isLatestAttribute, $operationAttribute;
+
+		$o=OmegaWikiAttributes::getInstance();
 			
-		$isLatest = $value->getAttributeValue($isLatestAttribute);
-		$operation = $value->getAttributeValue($operationAttribute);
+		$isLatest = $value->isLatest;
+		$operation = $value->operation;
 		
 		if ($isLatest) {
 			$options = array('do-nothing' => 'Do nothing');
@@ -2188,11 +2188,13 @@ class ObjectPathEditor extends Viewer {
 
 class GotoSourceEditor extends Viewer {	
 	public function view(IdStack $idPath, $value) {
+
+		$o=OmegaWikiAttributes::getInstance();
 		global
-			$sourceIdentifierAttribute, $collectionIdAttribute, $wgGotoSourceTemplates;
+			  $wgGotoSourceTemplates;
 		
-		$collectionId = $value->getAttributeValue($collectionIdAttribute);			
-		$sourceIdentifier = $value->getAttributeValue($sourceIdentifierAttribute);
+		$collectionId = $value->collectionId;			
+		$sourceIdentifier = $value->sourceIdentifier;
 
 		$gotoSourceTemplate = $wgGotoSourceTemplates[$collectionId];
 		
