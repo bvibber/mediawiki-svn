@@ -141,10 +141,10 @@ class DefinedMeaningModel {
 		$view=$this->getViewInformation();
 		/** FIXME: Records should be loaded using helpers rather than
 		  global functions! */
-		$o=OmegaWikiAttributes::getInstance();
+		$o = $view->getAttributeSet();
 
 		$record = new ArrayRecord($o->definedMeaning->type);
-		$record->definedMeaningCompleteDefiningExpression = getDefiningExpressionRecord($id);
+		$record->definedMeaningCompleteDefiningExpression = getDefiningExpressionRecord($id, $view);
 		$record->definition = getDefinedMeaningDefinitionRecord($id, $view);
 		$record->classAttributes = getClassAttributesRecordSet($id, $view);
 		$record->alternativeDefinitions = getAlternativeDefinitionsRecordSet($id, $view);

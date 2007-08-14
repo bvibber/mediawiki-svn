@@ -46,7 +46,7 @@ require_once("ViewInformation.php");
  */
 function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
 //	initializeOmegaWikiAttributesOld($viewInformation); //backward compatibility, will be removed!
-	$init_and_discard_this = OmegaWikiAttributes::getInstance($viewInformation); 
+	$viewInformation->setAttributeSet(new OmegaWikiAttributes($viewInformation)); 
 }
 
 /** 
@@ -373,22 +373,7 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
 }
 */
 
-
-class OmegaWikiAttributes {
-
-	/** pseudo-Singleton, if viewinformation changes, will construct new instance*/
-	static function getInstance(ViewInformation $viewInformation=null) {
-		static $instance=array();
-		if (!is_null($viewInformation)) {
-			if (!array_key_exists($viewInformation->hashCode(), $instance)) {
-				$instance["last"] = new OmegaWikiAttributes($viewInformation);
-				$instance[$viewInformation->hashCode()] = $instance["last"];
-			}
-		}		
-
-		return $instance["last"];
-	}
-
+class OmegaWikiAttributes extends AttributeSet {
 	protected $attributes = array();
 
 	function __construct(ViewInformation $viewInformation) {
