@@ -129,4 +129,24 @@ class Structure {
 }
 
 class AttributeSet {
+	protected $attributes = array();
+
+	protected function __set($key, $value) {
+		$attributes=&$this->attributes;
+		$attributes[$key] = $value;
+	
+		if ($value instanceof Attribute) 
+			$GLOBALS[$key . "Attribute"] = $value;
+		else
+			$GLOBALS[$key] = $value;
+	}
+	
+	public function __get($key) {
+		$attributes=&$this->attributes;
+		
+		if (!array_key_exists($key, $attributes)) 
+			throw new Exception("Key does not exist: " . $key);
+		
+		return $attributes[$key];
+	}	
 }

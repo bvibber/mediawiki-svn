@@ -374,8 +374,6 @@ function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
 */
 
 class OmegaWikiAttributes extends AttributeSet {
-	protected $attributes = array();
-
 	function __construct(ViewInformation $viewInformation) {
 		$this->hardValues($viewInformation);
 	}
@@ -589,22 +587,4 @@ class OmegaWikiAttributes extends AttributeSet {
 				$annotatedAttribute->type->addAttribute($attribute);
 		}
 	}
-
-	protected function __set($key, $value) {
-		$attributes=&$this->attributes;
-		$attributes[$key] = $value;
-	
-		if ($value instanceof Attribute) 
-			$GLOBALS[$key . "Attribute"] = $value;
-		else
-			$GLOBALS[$key] = $value;
-	}
-	
-	public function __get($key) {
-		$attributes=&$this->attributes;
-		if (!array_key_exists($key, $attributes)) {
-			throw new Exception("Key does not exist: " . $key);
-		}
-		return $attributes[$key];
-	}	
 }
