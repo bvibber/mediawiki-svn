@@ -208,6 +208,17 @@ class LqtView {
 		if ( is_array($query) ) $query = self::queryStringFromArray($query);
 		return $thread->root()->getTitle()->getFullUrl($query);
 	}
+	
+	static function permalinkUrlWithDiff( $thread ) {
+		// TODO, changeObjects should return the thread itself.
+		$changed_thread = $thread->changeObject();
+//		$changed_thread = Threads::withId($thread->changeObject());
+		var_dump($changed_thread);
+		$curr_rev_id = $changed_thread->rootRevision();
+		$curr_rev = Revision::newFromTitle( $changed_thread->root()->getTitle(), $curr_rev_id );
+		$prev_rev = $curr_rev->getPrevious();
+		return self::permalinkUrlWithQuery( $changed_thread, array('diff'=>$curr_rev_id, 'oldid'=>$prev_rev->getId()) );
+	}
 
 	static function talkpageUrl( $title, $method = null, $operand = null ) {
 		$query = $method ? "lqt_method=$method" : "";
@@ -1085,8 +1096,9 @@ class ThreadPermalinkView extends LqtView {
 		else if( $this->thread->changeType() == Threads::CHANGE_REPLY_CREATED ) {
 			$this->output->addHTML('The highlighted comment was created in this revision.');
 		} else if( $this->thread->changeType() == Threads::CHANGE_EDITED_ROOT ) {
+			$diff_url = $this->permalinkUrlWithDiff($this->thread);
 			$this->output->addHTML('The highlighted comment was edited in this revision. ');
-			$this->output->addHTML( '[<a>show diffs</a>]' );
+			$this->output->addHTML( "[<a href=\"$diff_url\">show diffs</a>]" );
 		}
 		$this->closeDiv();
 	}

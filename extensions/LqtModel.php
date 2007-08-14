@@ -352,8 +352,6 @@ class Thread {
 		
 		$this->replies = $children;
 		
-		$this->double = clone $this;
-		
 		/*
 		Root revision is ignored on live threads but will be important when
 		when we save a historical thread, since by that time an edit will
@@ -365,6 +363,9 @@ class Thread {
 		*/
 		$rev = Revision::newFromTitle( $this->root()->getTitle() );
 		$this->double->rootRevision = $rev->getId();
+		
+		
+		$this->double = clone $this;
 	}
 
 	/*
@@ -536,8 +537,19 @@ class Thread {
 		return $this->changeType;
 	}
 	
+	private function replyWithId($id) {
+		if( $this->id == $id ) return $this;
+		foreach ( $this->replies as $r ) {
+			if( $r->id() == $id ) return $r;
+			else {
+				$s = $r->replyWithId($id);
+				if( $s ) return $s;
+			}
+		}
+		return null;
+	}
 	function changeObject() {
-		return $this->changeObject;
+		return $this->replyWithId( $this->changeObject );
 	}
 	
 	function setChangeType($t) {
