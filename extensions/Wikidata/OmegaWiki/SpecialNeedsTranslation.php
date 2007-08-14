@@ -6,23 +6,14 @@
 	require_once("Wikidata.php");
 
 	function wfSpecialNeedsTranslation() {
-	    global 
-	    	$wgMessageCache;
-        
-        $wgMessageCache->addMessages(array('needstranslation'=>'Wikidata: Expressions needing translation'),'en');
+	        global $wgMessageCache;
+                $wgMessageCache->addMessages(array('needstranslation'=>'Wikidata: Expressions needing translation'),'en');
                 
 		class SpecialNeedsTranslation extends SpecialPage {
 			function SpecialNeedsTranslation() {
 				SpecialPage::SpecialPage('NeedsTranslation');
 			}
-			
-			function getParameterWithDefault($parameterName, $default = 0) {
-				if (isset($_GET[$parameterName]))
-					return $_GET[$parameterName];
-				else
-					return $default;
-			}
-			
+
 			function execute($par) {
 				global $wgOut, $wgRequest;
 
@@ -34,9 +25,9 @@
 				initializeOmegaWikiAttributes(new ViewInformation());
 				$wgOut->setPageTitle('Expressions needing translation');
 
-				$sourceLanguageId = $this->getParameterWithDefault('from-lang');
-				$destinationLanguageId = $this->getParameterWithDefault('to-lang');
-				$collectionId = $this->getParameterWithDefault('collection');
+				$sourceLanguageId = $_GET['from-lang'];
+				$destinationLanguageId = $_GET['to-lang'];
+				$collectionId = $_GET['collection'];
 
 				$wgOut->addHTML(getOptionPanel(
 					array(
@@ -55,10 +46,9 @@
 			protected function showExpressionsNeedingTranslation($sourceLanguageId, $destinationLanguageId,$collectionId) {
 				global
 					$definedMeaningIdAttribute, $expressionIdAttribute, $expressionAttribute, $expressionStructure;
-					
-				$attributeSet = new OmegaWikiAttributes(new ViewInformation());
-				$dc = wdGetDataSetContext();
+				$o=OmegaWikiAttributes::getInstance();
 
+				$dc=wdGetDataSetContext();
 				require_once("Transaction.php");
 				require_once("OmegaWikiAttributes.php");
 				require_once("RecordSet.php");
@@ -70,14 +60,14 @@
 				$sql = 'SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id' .
 					" FROM ({$dc}_syntrans source_syntrans, {$dc}_expression_ns source_expression)";
 
-				if ($collectionId != 0)
+				if ($collectionId != '')
 					$sql .= " JOIN {$dc}_collection_contents ON source_syntrans.defined_meaning_id = member_mid";
 
 				$sql .= ' WHERE source_syntrans.expression_id = source_expression.expression_id';
 
 				if ($sourceLanguageId != '')
 					$sql .= ' AND source_expression.language_id = ' . $sourceLanguageId;
-				if ($collectionId != 0)
+				if ($collectionId != '')
 					$sql .= " AND {$dc}_collection_contents.collection_id = " . $collectionId .
 						' AND ' . getLatestTransactionRestriction("{$dc}_collection_contents");
 
@@ -105,8 +95,8 @@
 				}
 
 				$expressionEditor = new RecordTableCellEditor($expressionAttribute);
-				$expressionEditor->addEditor(new LanguageEditor($attributeSet->language, new SimplePermissionController(false), false));
-				$expressionEditor->addEditor(new SpellingEditor($attributeSet->spelling, new SimplePermissionController(false), false));
+				$expressionEditor->addEditor(new LanguageEditor($o->language, new SimplePermissionController(false), false));
+				$expressionEditor->addEditor(new SpellingEditor($o->spelling, new SimplePermissionController(false), false));
 
 				$editor = new RecordSetTableEditor(null, new SimplePermissionController(false), new ShowEditFieldChecker(true), new AllowAddController(false), false, false, null);
 				$editor->addEditor($expressionEditor);

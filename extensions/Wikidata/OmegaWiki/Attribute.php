@@ -34,17 +34,17 @@ class Attribute {
 		if(is_null($this->id) && ($this->type instanceof Structure)) {
 			$this->id = $this->type->getStructureType();
 		// Override structure label with a more specific one
-		} 
-		elseif(!is_null($this->id) && ($this->type instanceof Structure)) {
+		} elseif(!is_null($this->id) && ($this->type instanceof Structure)) {
 			$this->type->setStructureType($this->id);
 		}
 	}
+
 }
 
 class Structure {
+	
 	private $structure; 
 	private $type; 
-	private $attributeIds;
 	
 	public function getAttributes() {
 		return $this->structure;
@@ -52,7 +52,6 @@ class Structure {
 
 	public function addAttribute($attribute) {
 		$this->structure[]=$attribute;
-		$this->attributeIds[] = $attribute->id;
 	}
 
 	public function getStructureType() {
@@ -76,6 +75,7 @@ class Structure {
 	 *
 	 */
 	public function __construct($argumentList) {
+
 		# We're trying to be clever.
 		$args=func_get_args();
 		$this->structure=null;
@@ -111,45 +111,7 @@ class Structure {
 			# WTF?
 			throw new Exception("Invalid structure constructor: ".print_r($args,true));
 		}
-		
-		$this->attributeIds = array();
-		
-		foreach ($this->structure as $attribute)
-			$this->attributeIds[] = $attribute->id;
-	}
-	
-	public function __toString() {
-		return "Structure(" . implode(", ", $this->attributeIds) . ")";
-	}
-	
-	public function supportsAttribute(Attribute $attribute) {
-		return $this->supportsAttributeId($attribute->id);
-	}
-	
-	public function supportsAttributeId($attributeId) {
-		return in_array($attributeId, $this->attributeIds);
 	}
 }
 
-class AttributeSet {
-	protected $attributes = array();
 
-	protected function __set($key, $value) {
-		$attributes=&$this->attributes;
-		$attributes[$key] = $value;
-	
-		if ($value instanceof Attribute) 
-			$GLOBALS[$key . "Attribute"] = $value;
-		else
-			$GLOBALS[$key] = $value;
-	}
-	
-	public function __get($key) {
-		$attributes=&$this->attributes;
-		
-		if (!array_key_exists($key, $attributes)) 
-			throw new Exception("Key does not exist: " . $key);
-		
-		return $attributes[$key];
-	}	
-}

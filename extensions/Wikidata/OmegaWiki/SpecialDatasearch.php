@@ -35,9 +35,7 @@ function wfSpecialDatasearch() {
 		
 		function SpecialDatasearch() {
 			SpecialPage::SpecialPage('Datasearch');
-		}
-		
-		function execute($parameter) {
+
 			require_once("WikiDataGlobals.php");
 			require_once("forms.php");
 			require_once("type.php");
@@ -73,7 +71,9 @@ function wfSpecialDatasearch() {
 				$this->collectionAttribute,
 				$this->collectionMemberAttribute
 			);
-
+		}
+		
+		function execute($parameter) {
 			global
 				$wgOut, $wgTitle;
 			

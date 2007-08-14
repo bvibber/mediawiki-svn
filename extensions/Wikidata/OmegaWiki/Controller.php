@@ -244,11 +244,11 @@ class SynonymTranslationController implements UpdateController {
 class ClassAttributesController implements UpdateController {
 	public function add($keyPath, $record) {
 		global
-			$definedMeaningIdAttribute, $classAttributeLevelAttribute, $classAttributeTypeAttribute;
+			$definedMeaningIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute;
 
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$attributeLevelId = $record->getAttributeValue($classAttributeLevelAttribute);
-		$attributeMeaningId = $record->attribute;
+		$attributeMeaningId = $record->getAttributeValue($classAttributeAttributeAttribute);
 		$attributeType = $record->getAttributeValue($classAttributeTypeAttribute);
 
 		if (($attributeLevelId != 0) && ($attributeMeaningId != 0))
@@ -491,21 +491,27 @@ abstract class ObjectAttributeValuesController implements UpdateController {
 
 class TextAttributeValuesController extends ObjectAttributeValuesController {
 	public function add($keyPath, $record)  {
+		global
+			$textAttributeAttribute;
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
-		$textAttributeId = $record->attribute;
+		$textAttributeId = $record->getAttributeValue($textAttributeAttribute);
 		$text = $record->text;
-		
 		if ($textAttributeId != 0 && $text != '')		
 			addTextAttributeValue($objectId, $textAttributeId, $text);
 	}
 
 	public function remove($keyPath) {
-		$textId = $keyPath->peek(0)->valueId;
+		global
+			$textAttributeIdAttribute;
+		$textId = $keyPath->peek(0)->getAttributeValue($textAttributeIdAttribute);
 		removeTextAttributeValue($textId);
 	}
 
 	public function update($keyPath, $record) {
-		$textId = $keyPath->peek(0)->valueId;
+		global
+			$textAttributeIdAttribute, $textAttribute;
+			
+		$textId = $keyPath->peek(0)->getAttributeValue($textAttributeIdAttribute);
 		$text = $record->text;
 		
 		updateTextAttributeValue($text, $textId);
@@ -522,10 +528,10 @@ class LinkAttributeValuesController extends ObjectAttributeValuesController {
 	
 	public function add($keyPath, $record)  {
 		global
-			$linkAttribute, $linkLabelAttribute, $linkURLAttribute;
+			$linkAttribute, $linkAttributeAttribute, $linkLabelAttribute, $linkURLAttribute;
 			
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
-		$linkAttributeId = $record->attribute;
+		$linkAttributeId = $record->getAttributeValue($linkAttributeAttribute);
 		$linkValue = $record->getAttributeValue($linkAttribute);
 		$label = $linkValue->getAttributeValue($linkLabelAttribute);
 		$url = $linkValue->getAttributeValue($linkURLAttribute);		
@@ -535,15 +541,18 @@ class LinkAttributeValuesController extends ObjectAttributeValuesController {
 	}
 
 	public function remove($keyPath) {
-		$linkId = $keyPath->peek(0)->valueId;
+		global
+			$linkAttributeIdAttribute;
+			
+		$linkId = $keyPath->peek(0)->getAttributeValue($linkAttributeIdAttribute);
 		removeLinkAttributeValue($linkId);
 	}
 
 	public function update($keyPath, $record) {
 		global
-			$linkAttribute, $linkLabelAttribute, $linkURLAttribute;
+			$linkAttributeIdAttribute, $linkAttribute, $linkLabelAttribute, $linkURLAttribute;
 			
-		$linkId = $keyPath->peek(0)->valueId;
+		$linkId = $keyPath->peek(0)->getAttributeValue($linkAttributeIdAttribute);
 		$linkValue = $record->getAttributeValue($linkAttribute);
 		$label = $linkValue->getAttributeValue($linkLabelAttribute);
 		$url = $linkValue->getAttributeValue($linkURLAttribute);		
@@ -565,11 +574,12 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 	
 	public function add($keyPath, $record)  {
 		global
-			$translatedTextValueAttribute;
+			$translatedTextValueAttribute,
+			$translatedTextAttributeAttribute;
 
 		$objectId = $this->objectIdFetcher->fetch($keyPath);
 		$textValue = $record->getAttributeValue($translatedTextValueAttribute);
-		$textAttributeId = $record->attribute;
+		$textAttributeId = $record->getAttributeValue($translatedTextAttributeAttribute);
 
 		if ($textAttributeId != 0) {
 			if ($this->filterLanguageId == 0) {
@@ -589,7 +599,10 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 	}
 
 	public function remove($keyPath) {
-		$valueId = $keyPath->peek(0)->valueId;
+		global
+			$translatedTextAttributeIdAttribute;
+
+		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
 		removeTranslatedTextAttributeValue($valueId);
 	}
 
@@ -599,7 +612,10 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 
 class TranslatedTextAttributeValueController implements UpdateController {
 	public function add($keyPath, $record) {
-		$valueId = $keyPath->peek(0)->valueId;
+		global
+			$translatedTextAttributeIdAttribute;
+
+		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
 		$languageId = $record->language;
 		$text = $record->text;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
@@ -609,7 +625,10 @@ class TranslatedTextAttributeValueController implements UpdateController {
 	}
 
 	public function remove($keyPath) {
-		$valueId = $keyPath->peek(1)->valueId;
+		global
+			$translatedTextAttributeIdAttribute;
+
+		$valueId = $keyPath->peek(1)->getAttributeValue($translatedTextAttributeIdAttribute);
 		$languageId = $keyPath->peek(0)->language;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
@@ -617,7 +636,10 @@ class TranslatedTextAttributeValueController implements UpdateController {
 	}
 
 	public function update($keyPath, $record) {
-		$valueId = $keyPath->peek(1)->valueId;
+		global
+			$translatedTextAttributeIdAttribute;
+
+		$valueId = $keyPath->peek(1)->getAttributeValue($translatedTextAttributeIdAttribute);
 		$languageId = $keyPath->peek(0)->language;
 		$text = $record->text;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
@@ -635,7 +657,10 @@ class FilteredTranslatedTextAttributeValueController implements UpdateAttributeC
 	}
 	
 	public function update($keyPath, $value) {
-		$valueId = $keyPath->peek(0)->valueId;
+		global
+			$translatedTextAttributeIdAttribute ;
+
+		$valueId = $keyPath->peek(0)->getAttributeValue($translatedTextAttributeIdAttribute);
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
 
 		if ($value != "")
@@ -656,7 +681,10 @@ class OptionAttributeValuesController extends ObjectAttributeValuesController {
 	}
 
 	public function remove($keyPath) {
-		$valueId = $keyPath->peek(0)->valueId;
+		global
+			$optionAttributeIdAttribute;
+
+		$valueId = $keyPath->peek(0)->getAttributeValue($optionAttributeIdAttribute);
 		removeOptionAttributeValue($valueId);
 	}
 

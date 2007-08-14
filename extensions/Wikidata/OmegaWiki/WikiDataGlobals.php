@@ -14,6 +14,7 @@ global
 	$wgAlternativeDefinitionsAttributeName,
 	$wgAnnotationAttributeName,
 	$wgApproximateMeaningsAttributeName,
+	$wgClassAttributeAttributeAttributeName,
 	$wgClassAttributesAttributeName,
 	$wgClassAttributeLevelAttributeName,
 	$wgClassAttributeTypeAttributeName,
@@ -33,6 +34,7 @@ global
 	$wgIdenticalMeaningAttributeName,
 	$wgIncomingRelationsAttributeName, 
 	$wgLevelAnnotationAttributeName,
+	$wgLinkAttributeAttributeName,
 	$wgLinkAttributeValuesAttributeName,
 	$wgOptionAttributeOptionAttributeName,
 	$wgOptionAttributeOptionsAttributeName,
@@ -49,8 +51,10 @@ global
 	$wgSpellingAttributeName,
 	$wgSynonymsAttributeName,
 	$wgSynonymsAndTranslationsAttributeName,
+	$wgTextAttributeAttributeName,
 	$wgTextAttributeName,
 	$wgTextAttributeValuesAttributeName,
+	$wgTranslatedTextAttributeAttributeName,
 	$wgTranslatedTextAttributeName,
 	$wgTranslatedTextAttributeValueAttributeName,
 	$wgTranslatedTextAttributeValuesAttributeName;
@@ -59,6 +63,7 @@ $wgAlternativeDefinitionAttributeName = "Alternative definition";
 $wgAlternativeDefinitionsAttributeName = "Alternative definitions";	
 $wgAnnotationAttributeName = "Annotation";
 $wgApproximateMeaningsAttributeName = "Approximate meanings";	
+$wgClassAttributeAttributeAttributeName = "Attribute";
 $wgClassAttributesAttributeName = "Class attributes";
 $wgClassAttributeLevelAttributeName = "Level";
 $wgClassAttributeTypeAttributeName = "Type";
@@ -78,6 +83,7 @@ $wgIncomingRelationsAttributeName = "Incoming relations";
 $wgGotoSourceAttributeName = "Go to source";
 $wgLanguageAttributeName = "Language";
 $wgLevelAnnotationAttributeName = "Annotation";
+$wgOptionAttributeAttributeName = "Property";
 $wgOptionAttributeOptionAttributeName = "Option";
 $wgOptionAttributeOptionsAttributeName = "Options";
 $wgOptionAttributeValuesAttributeName = "Options";
@@ -93,11 +99,14 @@ $wgSynonymsAttributeName = "Synonyms";
 $wgSynonymsAndTranslationsAttributeName = "Synonyms and translations";
 $wgSourceAttributeName = "Source";
 $wgSourceIdentifierAttributeName = "Source identifier";
+$wgTextAttributeAttributeName = "Property";
 $wgTextAttributeName = "Text";
 $wgTextAttributeValuesAttributeName = "Plain texts";
+$wgTranslatedTextAttributeAttributeName = "Property";
 $wgTranslatedTextAttributeName = "Translated text";
 $wgTranslatedTextAttributeValueAttributeName = "Text";
 $wgTranslatedTextAttributeValuesAttributeName = "Translatable texts";
+$wgLinkAttributeAttributeName = "Property";
 $wgLinkAttributeValuesAttributeName = "Links";
 
 // Attribute Ids
@@ -114,16 +123,16 @@ global
 	$wgRelationsAttributeId, 
 	$wgSynonymsAndTranslationsAttributeId;
 	
-$wgAlternativeDefinitionsAttributeId = "alternativeDefinitions";
-$wgClassAttributesAttributeId = "classAttributes";
-$wgClassMembershipAttributeId = "classMembership";
-$wgCollectionMembershipAttributeId = "collectionMembership";
-$wgDefinedMeaningAttributesAttributeId = "definedMeaningAttributes";
+$wgAlternativeDefinitionsAttributeId = "alternative-definitions";
+$wgClassAttributesAttributeId = "class-attributes";
+$wgClassMembershipAttributeId = "class-membership";
+$wgCollectionMembershipAttributeId = "collection-membership";
+$wgDefinedMeaningAttributesAttributeId = "defined-meaning-attributes";
 $wgDefinitionAttributeId = "definition";
-$wgIncomingRelationsAttributeId = "reciprocalRelations";
-$wgPossiblySynonymousAttributeId = "possiblySynonymous";
+$wgIncomingRelationsAttributeId = "reciprocal-relations";
+$wgPossiblySynonymousAttributeId = "possibly-synonymous";
 $wgRelationsAttributeId = "relations"; 
-$wgSynonymsAndTranslationsAttributeId = "synonymsAndTranslations";
+$wgSynonymsAndTranslationsAttributeId = "synonyms-translations";
 
 // Defined meaning editor
 

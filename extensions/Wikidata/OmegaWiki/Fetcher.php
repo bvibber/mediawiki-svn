@@ -13,14 +13,8 @@ class DefaultFetcher implements Fetcher {
 		$this->attributeLevel = $attributeLevel;
 		$this->attribute = $attribute;
 	}
-	
 	public function fetch($keyPath) {
-		$key = $keyPath->peek($this->attributeLevel);
-		
-		if ($key->getStructure()->supportsAttribute($this->attribute))
-			return $key->getAttributeValue($this->attribute);
-		else
-			return null;			
+		return $keyPath->peek($this->attributeLevel)->getAttributeValue($this->attribute);			
 	}	
 }
 

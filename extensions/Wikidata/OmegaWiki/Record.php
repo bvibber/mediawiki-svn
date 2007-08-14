@@ -2,6 +2,7 @@
 
 require_once('Attribute.php');
 require_once('RecordHelper.php');
+require_once('OmegaWikiAttributes.php'); 
 
 interface Record {
 	public function getStructure();
@@ -13,6 +14,7 @@ class ArrayRecord implements Record {
 	protected $structure;
 	protected $values = array();
 	protected $helper=null;
+	#possibly associate an OmegaWikiAttributes instance (singleton?) here	
 
 	public function __construct(Structure $structure) {
 		$this->structure = $structure;
@@ -23,31 +25,27 @@ class ArrayRecord implements Record {
 		return $this->structure;
 	}
 	
-	protected function getValueForAttributeId($attributeId) {
-		if ($this->structure->supportsAttributeId($attributeId)) {
-			if (isset($this->values[$attributeId]))
-				return $this->values[$attributeId];
-			else
-				return null;
-		}
-		else
-			throw new Exception(
-				"Record does not support attribute!\n" .
-				"  Attribute id: " . $attributeId . "\n" . 
-				"  Structure:    " . $this->structure 
-			);
-	}
-	
 	public function getAttributeValue(Attribute $attribute) {
-		return $this->getValueForAttributeId($attribute->id);
+		#FIXME: check if valid
+		return @$this->values[$attribute->id];
 	}
 	
-	public function __get($attributeId) {
-		return $this->getValueForAttributeId($attributeId);
+	/**
+	 * Look up the correct attribute using omegaWikiAttributes
+	 * and return its value
+ 	 */
+	public function __get($attributeName) {
+		$o = OmegaWikiAttributes::getInstance();
+		return $this->getAttributeValue($o->$attributeName);
 	}
 		
-	public function __set($attributeId, $value) {
-		return $this->setValueForAttributeId($attributeId, $value);
+	/**
+	 * Look up the correct attribute using omegaWikiAttributes
+	 * and set its value
+ 	 */
+	public function __set($attributeName, $value) {
+		$o = OmegaWikiAttributes::getInstance();
+		return $this->setAttributeValue($o->$attributeName, $value);
 	}
 	/** 
 	 * Obtains a value based on the provided key.
@@ -57,7 +55,7 @@ class ArrayRecord implements Record {
 	 * @deprecated use __get and __set instead
 	 */
 	public function getValue($key) {
-		return getValueForAttributeId($key);	
+		return @$this->values[$key];	
 	}
 
 	public function project(Structure $structure) {
@@ -65,19 +63,9 @@ class ArrayRecord implements Record {
 		return $result;
 	}
 
-	protected function setValueForAttributeId($attributeId, $value) {
-		if ($this->structure->supportsAttributeId($attributeId)) 
-			$this->values[$attributeId] = $value; 
-		else
-			throw new Exception(
-				"Record does not support attribute!\n" .
-				"  Attribute id: " . $attributeId . "\n" . 
-				"  Structure:    " .$this->structure  
-			);
-	}
-
 	public function setAttributeValue(Attribute $attribute, $value) {
-		$this->setValueForAttributeId($attribute->id, $value);
+		#FIXME: check if valid
+		@$this->values[$attribute->id] = $value;
 	}
 	
 	/**
@@ -87,18 +75,18 @@ class ArrayRecord implements Record {
 	 */
 	public function setAttributeValuesByOrder($values) {
 		$atts=$this->structure->getAttributes();
-		
 		for ($i = 0; $i < count($atts); $i++)
-			$this->setValueForAttributeId($atts[$i]->id, $values[$i]);
+			$this->values[$atts[$i]->id] = $values[$i];
 	}
 	
-	/**
+	/*
+	 *
 	 * @param $record Another record object whose values get written into this one
 	 *
 	 */
 	public function setSubRecord(Record $record) {
 		foreach($record->getStructure()->getAttributes() as $attribute)
-			$this->setValueForAttributeId($attribute->id, $record->getAttributeValue($attribute));
+			$this->values[$attribute->id] = $record->getAttributeValue($attribute);
 	}
 
 	/** 
