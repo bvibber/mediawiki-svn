@@ -34,11 +34,11 @@ class Attribute {
 		if(is_null($this->id) && ($this->type instanceof Structure)) {
 			$this->id = $this->type->getStructureType();
 		// Override structure label with a more specific one
-		} elseif(!is_null($this->id) && ($this->type instanceof Structure)) {
+		} 
+		elseif(!is_null($this->id) && ($this->type instanceof Structure)) {
 			$this->type->setStructureType($this->id);
 		}
 	}
-
 }
 
 class Structure {
@@ -122,9 +122,12 @@ class Structure {
 		return "Structure(" . implode(", ", $this->attributeIds) . ")";
 	}
 	
+	public function supportsAttribute(Attribute $attribute) {
+		return $this->supportsAttributeId($attribute->id);
+	}
+	
 	public function supportsAttributeId($attributeId) {
-		return true;	
-//	return in_array($attributeId, $this->attributeIds);
+		return in_array($attributeId, $this->attributeIds);
 	}
 }
 
