@@ -419,11 +419,14 @@ function getExpressionTableCellEditor(Attribute $attribute, ViewInformation $vie
 
 function getClassAttributesEditor(ViewInformation $viewInformation) {
 	global
-		$definedMeaningIdAttribute, $classAttributesAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute;
+		$definedMeaningIdAttribute, $classAttributesAttribute, 
+		$classAttributeLevelAttribute, $classAttributeTypeAttribute;
+
+	$attributeSet = $viewInformation->getAttributeSet();
 
 	$tableEditor = new RecordSetTableEditor($classAttributesAttribute, new SimplePermissionController(true), new ShowEditFieldForClassesChecker(0, $definedMeaningIdAttribute), new AllowAddController(true), true, false, new ClassAttributesController());
 	$tableEditor->addEditor(new ClassAttributesLevelDefinedMeaningEditor($classAttributeLevelAttribute, new SimplePermissionController(false), true));
-	$tableEditor->addEditor(new DefinedMeaningReferenceEditor($classAttributeAttributeAttribute, new SimplePermissionController(false), true));
+	$tableEditor->addEditor(new DefinedMeaningReferenceEditor($attributeSet->attribute, new SimplePermissionController(false), true));
 	$tableEditor->addEditor(new ClassAttributesTypeEditor($classAttributeTypeAttribute, new SimplePermissionController(false), true));
 	$tableEditor->addEditor(new PopupEditor(getOptionAttributeOptionsEditor($viewInformation), 'Options'));
 

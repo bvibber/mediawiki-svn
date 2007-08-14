@@ -14,7 +14,6 @@ global
 	$wgAlternativeDefinitionsAttributeName,
 	$wgAnnotationAttributeName,
 	$wgApproximateMeaningsAttributeName,
-	$wgClassAttributeAttributeAttributeName,
 	$wgClassAttributesAttributeName,
 	$wgClassAttributeLevelAttributeName,
 	$wgClassAttributeTypeAttributeName,
@@ -60,7 +59,6 @@ $wgAlternativeDefinitionAttributeName = "Alternative definition";
 $wgAlternativeDefinitionsAttributeName = "Alternative definitions";	
 $wgAnnotationAttributeName = "Annotation";
 $wgApproximateMeaningsAttributeName = "Approximate meanings";	
-$wgClassAttributeAttributeAttributeName = "Attribute";
 $wgClassAttributesAttributeName = "Class attributes";
 $wgClassAttributeLevelAttributeName = "Level";
 $wgClassAttributeTypeAttributeName = "Type";

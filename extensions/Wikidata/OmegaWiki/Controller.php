@@ -244,11 +244,11 @@ class SynonymTranslationController implements UpdateController {
 class ClassAttributesController implements UpdateController {
 	public function add($keyPath, $record) {
 		global
-			$definedMeaningIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute;
+			$definedMeaningIdAttribute, $classAttributeLevelAttribute, $classAttributeTypeAttribute;
 
 		$definedMeaningId = $keyPath->peek(0)->getAttributeValue($definedMeaningIdAttribute);
 		$attributeLevelId = $record->getAttributeValue($classAttributeLevelAttribute);
-		$attributeMeaningId = $record->getAttributeValue($classAttributeAttributeAttribute);
+		$attributeMeaningId = $record->attribute;
 		$attributeType = $record->getAttributeValue($classAttributeTypeAttribute);
 
 		if (($attributeLevelId != 0) && ($attributeMeaningId != 0))

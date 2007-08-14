@@ -200,10 +200,9 @@ class OmegaWikiAttributes extends AttributeSet {
 			$wgClassAttributesAttributeId;
 		
 		$t->classAttributeId = new Attribute("classAttributeId", "Class attribute identifier", "object-id");
-		$t->classAttributeAttribute = new Attribute("classAttributeAttribute", wfMsg("ClassAttributeAttribute"), $t->definedMeaningReferenceStructure);
 		$t->classAttributeLevel = new Attribute("classAttributeLevel", wfMsg("ClassAttributeLevel"), $t->definedMeaningReferenceStructure);
 		$t->classAttributeType = new Attribute("classAttributeType", wfMsg("ClassAttributeType"), "short-text");
-		$t->classAttributesStructure = new Structure("classAttributes", $t->classAttributeId, $t->classAttributeAttribute, $t->classAttributeLevel, $t->classAttributeType, $t->optionAttributeOptions);
+		$t->classAttributesStructure = new Structure("classAttributes", $t->classAttributeId, $t->attribute, $t->classAttributeLevel, $t->classAttributeType, $t->optionAttributeOptions);
 		$t->classAttributes = new Attribute("classAttributes", wfMsg("ClassAttributes"), $t->classAttributesStructure);
 
 		$t->definedMeaning = new Attribute("definedMeaning", wfMsg("DefinedMeaning"), 

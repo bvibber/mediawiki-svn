@@ -459,8 +459,10 @@ function getExpressionIdThatHasSynonyms($spelling, $languageId) {
 
 function getClassAttributesRecordSet($definedMeaningId, ViewInformation $viewInformation) {
 	global
-		$classAttributesTable, $classAttributeIdAttribute, $classAttributeLevelAttribute, $classAttributeAttributeAttribute, $classAttributeTypeAttribute, $optionAttributeOptionsAttribute,
+		$classAttributesTable, $classAttributeIdAttribute, $classAttributeLevelAttribute, $classAttributeTypeAttribute, $optionAttributeOptionsAttribute,
 		$classAttributesStructure;
+
+	$attributeSet = $viewInformation->getAttributeSet();
 
 	$recordSet = queryRecordSet(
 		$classAttributesStructure->getStructureType(),
@@ -469,14 +471,16 @@ function getClassAttributesRecordSet($definedMeaningId, ViewInformation $viewInf
 		new TableColumnsToAttributesMapping(
 			new TableColumnsToAttribute(array('object_id'), $classAttributeIdAttribute),
 			new TableColumnsToAttribute(array('level_mid'), $classAttributeLevelAttribute),
-			new TableColumnsToAttribute(array('attribute_mid'), $classAttributeAttributeAttribute),
+			new TableColumnsToAttribute(array('attribute_mid'), $attributeSet->attribute),
 			new TableColumnsToAttribute(array('attribute_type'),$classAttributeTypeAttribute)
 		),
 		$classAttributesTable,
 		array("class_mid=$definedMeaningId")
 	);
 	
-	expandDefinedMeaningReferencesInRecordSet($recordSet, array($classAttributeLevelAttribute ,$classAttributeAttributeAttribute));
+	expandDefinedMeaningReferencesInRecordSet($recordSet, array($classAttributeLevelAttribute, $attributeSet->attribute));
+	
+	$recordSet->getStructure()->addAttribute($attributeSet->optionAttributeOptions);
 	expandOptionAttributeOptionsInRecordSet($recordSet, $classAttributeIdAttribute, $viewInformation);
 
 	return $recordSet;
