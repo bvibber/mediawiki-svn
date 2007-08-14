@@ -15,7 +15,7 @@ class SpecialContributors extends IncludableSpecialPage {
 		parent::__construct( 'Contributors' );
 	}
 	
-	public function execute( $target = false ) {
+	public function execute( $target ) {
 		wfProfileIn( __METHOD__ );
 		global $wgOut, $wgRequest;
 		$this->setHeaders();

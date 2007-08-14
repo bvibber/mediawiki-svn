@@ -13,7 +13,7 @@ class ProfileMonitor extends SpecialPage {
 		parent::__construct( 'Profiling' );
 	}
 	
-	public function execute() {
+	public function execute( $par ) {
 		global $wgOut, $wgRequest;
 		$this->setHeaders();
 		

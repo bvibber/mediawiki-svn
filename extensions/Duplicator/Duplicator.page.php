@@ -38,7 +38,7 @@ class SpecialDuplicator extends SpecialPage {
 	 *
 	 * @param $title Title passed to the page
 	 */
-	public function execute( $title = false ) {
+	public function execute( $title ) {
 		global $wgUser, $wgOut, $wgRequest, $wgLang, $wgDuplicatorRevisionLimit;
 		$this->setHeaders();
 		

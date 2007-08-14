@@ -17,7 +17,7 @@ class SpecialVote extends SpecialPage {
 		parent::__construct( 'Vote', 'vote' );
 	}
 	
-	public function execute( $mode = false ) {
+	public function execute( $mode ) {
 		global $wgOut, $wgUser;
 		$this->setHeaders();
 		$this->user = $wgUser;
