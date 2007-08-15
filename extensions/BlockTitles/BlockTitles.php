@@ -14,7 +14,6 @@ if ( ! defined( 'MEDIAWIKI' ) )
  */
 
 $wgExtensionFunctions[] = 'wfBlockTitles';
-
 $wgExtensionCredits['other'][] = array(
 	'name' => 'BlockTitles',
 	'author' => 'Travis Derouin',
@@ -31,12 +30,9 @@ $wgHooks['ArticleSave'][] = 'wfCheckBlockTitles';
 
 function wfBlockTitles() {
 	global $wgMessageCache;
-	 $wgMessageCache->addMessages(
- 	array(
-			'block_title_error_page_title' => 'Invalid Title',
-			'block_title_error' => 'Sorry, the title of this article is not allowed to be saved.',
-		)
-	);
+	require_once( dirname( __FILE__ ) . '/BlockTitles.i18n.php' );
+	foreach( efBlockTitlesMessages() as $lang => $messages )
+		$wgMessageCache->addMessages( $messages, $lang );
 }
 
 function wfCheckBlockTitles (&$article ) {
