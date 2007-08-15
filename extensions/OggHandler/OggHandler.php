@@ -1,5 +1,10 @@
 <?php
 
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo "This is the OggHandler extension. Please see the README file for installation instructions.\n";
+	exit( 1 );
+}
+
 $oggDir = dirname(__FILE__);
 $wgAutoloadClasses['OggHandler'] = "$oggDir/OggHandler_body.php";
 $wgMediaHandlers['application/ogg'] = 'OggHandler';

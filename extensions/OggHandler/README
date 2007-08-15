@@ -1,0 +1,28 @@
+This extension provides a media handler for the Ogg container format. When
+enabled, a player will be automatically embedded in the image description page, 
+or any wiki page using the same syntax as for images. 
+
+To install this extension, add the following to the end of your LocalSettings.php:
+
+    require( "$IP/extensions/OggHandler/OggHandler.php" );
+
+You will also need a copy of ffmpeg on the server. You can get it from:
+
+    http://ffmpeg.mplayerhq.hu/
+
+Set the binary location with:
+
+    $wgFFmpegLocation = '/path/to/ffmpeg';
+
+after the require line above. 
+
+The bundled Cortado player is licensed under the GPL, the source is available from:
+
+    http://www.flumotion.net/cortado/
+
+The PEAR directory contains a fork of the File_Ogg package, licensed under the
+LGPL. The stock File_Ogg will not work -- I have made many aggressive changes
+including support for stream formats other than Vorbis. I'll try to get my
+changes committed to the official PEAR tree at some point in the future.
+
+-- Tim Starling

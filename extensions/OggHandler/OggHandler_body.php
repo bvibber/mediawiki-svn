@@ -123,6 +123,11 @@ class OggHandler extends MediaHandler {
 	
 	function doTransform( $file, $dstPath, $dstUrl, $params, $flags = 0 ) {
 		global $wgFFmpegLocation;
+
+		// Hack for miscellaneous callers
+		global $wgOut;
+		$this->setHeaders( $wgOut );
+
 		$width = $params['width'];
 		$srcWidth = $file->getWidth();
 		$srcHeight = $file->getHeight();
