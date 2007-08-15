@@ -104,8 +104,12 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
     {
         // Decode the vendor string length as a 32-bit unsigned integer.
         $vendor_len = unpack("Vdata", fread($this->_filePointer, 4));
-        // Retrieve the vendor string from the stream.
-        $this->_vendor  = fread($this->_filePointer, $vendor_len['data']);
+        if ( $vendor_len['data'] > 0 ) {
+            // Retrieve the vendor string from the stream.
+            $this->_vendor  = fread($this->_filePointer, $vendor_len['data']);
+        } else {
+            $this->_vendor = '';
+        }
         // Decode the size of the comments list as a 32-bit unsigned integer.
         $comment_list_length = unpack("Vdata", fread($this->_filePointer, 4));
         // Iterate through the comments list.
@@ -176,31 +180,6 @@ abstract class File_Ogg_Media extends File_Ogg_Bitstream
         return ("");
     }
     
-    /**
-     * Set a field for this stream's meta description.
-     *
-     * @access  public
-     * @param   string  $field
-     * @param   mixed   $value
-     * @param   boolean $replace
-     */
-    function setField($field, $value, $replace = true)
-    {
-        if (strpos($field, "=") !== false)
-            return PEAR::raiseError("Comments must not contain equals signs.", OGG_VORBIS_ERROR_ILLEGAL_COMMENT);
-        if (strpos($value, "=") !== false)
-            return PEAR::raiseError("Comments must not contain equals signs.", OGG_VORBIS_ERROR_ILLEGAL_COMMENT);
-
-        if ($replace || ! isset($this->_comments[$field])) {
-            $this->_comments[$field] = $value;
-        } else {
-            if (is_array($this->_comments[$field])) 
-                $this->_comments[$field][] = $value;
-            else
-                $this->_comments[$field] = array($this->_comments[$field], $value);
-        }
-    }
-
     /**
      * Get the entire comments array.
      * May return an empty array if the bitstream does not support comments.

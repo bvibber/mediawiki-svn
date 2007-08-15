@@ -156,6 +156,16 @@ class File_Ogg
     var $_streams = array();
 
     /**
+     * Length in seconds of each stream group
+     */
+    var $_groupLengths = array();
+
+    /**
+     * Total length in seconds of the entire file
+     */
+    var $_totalLength;
+
+    /**
      * Returns an interface to an Ogg physical stream.
      *
      * This method takes the path to a local file and examines it for a physical
@@ -335,17 +345,17 @@ class File_Ogg
     /**
      * @access  private
      */
-    function _decodePageHeader($pageData, $pageOffset, $pageFinish)
+    function _decodePageHeader($pageData, $pageOffset, $groupId)
     {
         // Extract the various bits and pieces found in each packet header.
         if (substr($pageData, 0, 4) != OGG_CAPTURE_PATTERN)
             return (false);
 
-        $stream_version = unpack("c1data", substr($pageData, 4, 1));
+        $stream_version = unpack("C1data", substr($pageData, 4, 1));
         if ($stream_version['data'] != 0x00)
-            return (falses);
+            return (false);
 
-        $header_flag     = unpack("cdata", substr($pageData, 5, 1));
+        $header_flag     = unpack("Cdata", substr($pageData, 5, 1));
 
         // Exact granule position
         $abs_granule_pos = self::_littleEndianBin2Hex( substr($pageData, 6, 8));
@@ -357,24 +367,29 @@ class File_Ogg
         $stream_serial   = unpack("Vdata", substr($pageData, 14, 4));
         $page_sequence   = unpack("Vdata", substr($pageData, 18, 4));
         $checksum        = unpack("Vdata", substr($pageData, 22, 4));
-        $page_segments   = unpack("cdata", substr($pageData, 26, 1));
+        $page_segments   = unpack("Cdata", substr($pageData, 26, 1));
         $segments_total  = 0;
         for ($i = 0; $i < $page_segments['data']; ++$i) {
-            $segments = unpack("Cdata", substr($pageData, 26 + ($i + 1), 1));
-            $segments_total += $segments['data'];
+            $segment_length = unpack("Cdata", substr($pageData, 26 + ($i + 1), 1));
+            $segments_total += $segment_length['data'];
         }
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['stream_version']     = $stream_version['data'];
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['header_flag']        = $header_flag['data'];
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['abs_granule_pos']    = $abs_granule_pos;
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['approx_granule_pos'] = $approx_granule_pos;
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['checksum']           = sprintf("%u", $checksum['data']);
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['segments']           = $segments_total;
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['head_offset']        = $pageOffset;
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['body_offset']        = $pageOffset + 26 + $page_segments['data'] + 1;
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['body_finish']        = $pageFinish;
-        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']]['data_length']        = $pageFinish - $pageOffset;
-        
-        return (true);
+        $pageFinish = $pageOffset + 27 + $page_segments['data'] + $segments_total;
+        $page = array(
+            'stream_version'        => $stream_version['data'],
+            'header_flag'           => $header_flag['data'],
+            'abs_granule_pos'       => $abs_granule_pos,
+            'approx_granule_pos'    => $approx_granule_pos,
+            'checksum'              => sprintf("%u", $checksum['data']),
+            'segments'              => $page_segments['data'],
+            'head_offset'           => $pageOffset,
+            'body_offset'           => $pageOffset + 27 + $page_segments['data'],
+            'body_finish'           => $pageFinish,
+            'data_length'           => $pageFinish - $pageOffset,
+            'group'                 => $groupId,
+        );
+
+        $this->_streamList[$stream_serial['data']]['stream_page'][$page_sequence['data']] = $page;
+        return $page;
     }
     
     /**
@@ -383,64 +398,70 @@ class File_Ogg
     function _splitStreams()
     {
         // Loop through the physical stream until there are no more pages to read.
-        while (true) {
-            $this_page_offset = ftell($this->_filePointer);
-            $next_page_offset = $this_page_offset;
-
-            // Read in 65311 bytes from the physical stream.  Ogg documentation
-            // states that a page has a maximum size of 65307 bytes.  An extra
-            // 4 bytes are added to ensure that the capture pattern of the next
-            // pages comes through.
-            if (! ($stream_data = fread($this->_filePointer, OGG_MAXIMUM_PAGE_SIZE)))
+        $groupId = 0;
+        $openStreams = 0;
+        $this_page_offset = 0;
+        while (!feof($this->_filePointer)) {
+            $pageData = fread($this->_filePointer, 282);
+            if (strval($pageData) === '') {
                 break;
-
-            // Split the data into various pages.
-            $stream_pages = explode(OGG_CAPTURE_PATTERN, $stream_data);
-            // If the maximum data has been read, it is likely that this is an
-            // intermediate page.  Since the split adds an empty element at the
-            // start of the array, we must account for that by substracting one
-            // iteration from the loop.  This argument also follows if the data
-            // includes an incomplete page at the end, in which case we substract
-            // two iterations from the loop.
-            $number_pages = (strlen($stream_data) == OGG_MAXIMUM_PAGE_SIZE) ? count($stream_pages) - 2 : count($stream_pages) - 1;
-            if (! count($stream_pages))
-                break;
-            if ($number_pages <= 0) {
-                // Don't go into an infinite loop
-                throw new PEAR_Exception('No pages found', OGG_ERROR_UNDECODABLE);
+            }
+            $page = $this->_decodePageHeader($pageData, $this_page_offset, $groupId);
+            if ($page === false) {
+                throw new PEAR_Exception("Cannot decode Ogg file: Invalid page at offset $this_page_offset", OGG_ERROR_UNDECODABLE);
             }
 
-            for ($i = 1; $i <= $number_pages; ++$i) {
-                $stream_pages[$i] = OGG_CAPTURE_PATTERN . $stream_pages[$i];
-                // Set the current page offset to the next page offset of the
-                // previous loop iteration.
-                $this_page_offset = $next_page_offset;
-                // Set the next page offset to the current page offset plus the
-                // length of the current page.
-                $next_page_offset += strlen($stream_pages[$i]);
-                $this->_decodePageHeader($stream_pages[$i], $this_page_offset, $next_page_offset - 1);
+            // Keep track of multiplexed groups
+            if ($page['header_flag'] & 2/*bos*/) {
+                $openStreams++;
+            } elseif ($page['header_flag'] & 4/*eos*/) {
+                $openStreams--;
+                if (!$openStreams) {
+                    // End of group
+                    $groupId++;
+                }
             }
-            fseek($this->_filePointer, $next_page_offset, SEEK_SET);
+            if ($openStreams < 0) {
+                throw new PEAR_Exception("Unexpected end of stream", OGG_ERROR_UNDECODABLE);
+            }
+
+            $this_page_offset = $page['body_finish'];
+            fseek($this->_filePointer, $this_page_offset, SEEK_SET);
         }
         // Loop through the streams, and find out what type of stream is available.
+        $groupLengths = array();
         foreach ($this->_streamList as $stream_serial => $pages) {
             fseek($this->_filePointer, $pages['stream_page'][0]['body_offset'], SEEK_SET);
             $pattern = fread($this->_filePointer, 8);
             if (preg_match("/" . OGG_STREAM_CAPTURE_VORBIS . "/", $pattern)) {
                 $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_VORBIS;
-                $this->_streams[$stream_serial] =& new File_Ogg_Vorbis($stream_serial, $this->_streamList[$stream_serial]['stream_page'], $this->_filePointer);
+                $stream = new File_Ogg_Vorbis($stream_serial, $pages['stream_page'], $this->_filePointer);
             } elseif (preg_match("/" . OGG_STREAM_CAPTURE_SPEEX . "/", $pattern)) {
                 $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_SPEEX;
-                $this->_streams[$stream_serial] =& new File_Ogg_Speex($stream_serial, $this->_streamList[$stream_serial]['stream_page'], $this->_filePointer);
+                $stream = new File_Ogg_Speex($stream_serial, $pages['stream_page'], $this->_filePointer);
             } elseif (preg_match("/" . OGG_STREAM_CAPTURE_FLAC . "/", $pattern)) {
                 $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_FLAC;
-                $this->_streams[$stream_serial] =& new File_Ogg_Flac($stream_serial, $this->_streamList[$stream_serial]['stream_page'], $this->_filePointer);
+                $stream = new File_Ogg_Flac($stream_serial, $pages['stream_page'], $this->_filePointer);
             } elseif (preg_match("/" . OGG_STREAM_CAPTURE_THEORA . "/", $pattern)) {
                 $this->_streamList[$stream_serial]['stream_type'] = OGG_STREAM_THEORA;
-                $this->_streams[$stream_serial] =& new File_Ogg_Theora($stream_serial, $this->_streamList[$stream_serial]['stream_page'], $this->_filePointer);
-            } else
-                $this->_streamList[$stream_serial]['stream_type'] = "unknown";
+                $stream = new File_Ogg_Theora($stream_serial, $pages['stream_page'], $this->_filePointer);
+            } else {
+                $pages['stream_type'] = "unknown";
+                $stream = false;
+            }
+
+            if ($stream) {
+                $this->_streams[$stream_serial] = $stream;
+                $group = $pages['stream_page'][0]['group'];
+                if (isset($groupLengths[$group])) {
+                    $groupLengths[$group] = max($groupLengths[$group], $stream->getLength());
+                } else {
+                    $groupLengths[$group] = $stream->getLength();
+                }
+            }
         }
+        $this->_groupLengths = $groupLengths;
+        $this->_totalLength = array_sum( $groupLengths );
         unset($this->_streamList);
     }
     
@@ -548,6 +569,13 @@ class File_Ogg
             return ($streams[$filter]);
         else
             return array();
+    }
+
+    /**
+     * Get the total length of the group of streams
+     */
+    function getLength() {
+        return $this->_totalLength;
     }
 }
 ?>

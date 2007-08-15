@@ -81,8 +81,12 @@ class File_Ogg_Bitstream
         // This gives an accuracy of approximately 99.7% to the streamsize of ogginfo.
         foreach ( $streamData as $packet ) {
             $this->_streamSize += $packet['data_length'];
-            $this->_lastGranulePos = max($this->_lastGranulePos, $packet['abs_granule_pos']);
+            # Reject -1 as a granule pos, that means no segment finished in the packet
+            if ( $packet['abs_granule_pos'] != 'ffffffffffffffff' ) {
+                $this->_lastGranulePos = max($this->_lastGranulePos, $packet['abs_granule_pos']);
+            }
         }
+        $this->_group = $streamData[0]['group'];
     }
 
     /**
@@ -112,6 +116,14 @@ class File_Ogg_Bitstream
     function getSize()
     {
         return ($this->_streamSize);
+    }
+
+    /**
+     * Get the multiplexed group ID
+     */
+    function getGroup()
+    {
+        return $this->_group;
     }
 
 }
