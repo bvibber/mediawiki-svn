@@ -1,23 +1,13 @@
 RANDOM IMAGE EXTENSION
 
-	Version 1.2
-	© 2006 Rob Church
+	Version 1.3
+	© 2006-2007 Rob Church
 
 This is free software licenced under the GNU General Public Licence. Please
 see http://www.gnu.org/copyleft/gpl.html for further details, including the
 full text and terms of the licence.
 
 == Overview ==
-
-	1. Introduction
-	2. Requirements
-	3. Installing the extension
-	4. Inserting a random image
-	5. Caching
-	6. Change log
-	7. Feedback
-
-== 1. Introduction ==
 
 The Random Image extension adds a <randomimage> tag to the MediaWiki parser
 which allows for randomisation of multimedia content on a page.
@@ -26,38 +16,43 @@ When the tag is rendered, a random image is selected from those uploaded and
 inserted at the location of the tag. Users can select a custom size, float
 and provide a caption for the resulting image.
 
-== 2. Requirements ==
+== Requirements ==
 
-The RandomImage extension requires MediaWiki 1.7.0 or above.
+This version of the RandomImage extension requires MediaWiki 1.10.0 or above.
 
-== 3. Installing the extension ==
+== Installation ==
 
-To install the extension, place all extension files into a RandomImage
-directory within your MediaWiki extensions/ directory, then edit
-LocalSettings.php and add the following line
+To install the extension, place all extension files into a `RandomImage`
+directory within your MediaWiki `extensions` directory, then edit
+`LocalSettings.php` and add the following line
 
 	require_once( "{$IP}/extensions/RandomImage/RandomImage.php" );
 
 Installation can be verified through the Special:Version page on the wiki.
 
-== 4. Inserting a random image ==
+== Use ==
 
-The tag supports two basic forms:
-	
-* Single, i.e. <randomimage />, which produces an image without a caption
-* Container, i.e. <randomimage></randomimage>, where text inside the tags
-  is used as a caption
-  
-In addition, both tags support two additional attributes; size and float.
-The default size is the user's thumbnail size. Provide a numerical value
-to override the size, e.g.
+The tag can be used in two forms:
 
-	<randomimage size="300" />
-	
-Float allows overriding the float direction. You can combine attributes as
-with most normal HTML-style tags.
+	<randomimage />
+		Produces an image without a caption
+	<randomimage></randomimage>
+		Produces an image with a caption (text inside the tags)
+		
+The tag also supports the following attributes:
 
-== 5. Caching ==
+	size
+		Set the image width (default is the user's thumbnail width)
+	float
+		Float the image; valid values are 'left', 'center' and 'right'
+	choices
+		Confines image selection to a pipe-delimited list of images
+		
+For example:
+
+	<randomimage size="100" float="left" choices="Apple.jpg|Pear.jpg" />
+
+== Caching ==
 
 By default, the output is cached in the regular parser cache. This can be
 advantageous on larger sites which need to use caching to reduce the effects
@@ -68,22 +63,27 @@ $wgRandomImageNoCache = true; in LocalSettings.php (after the call to include
 the extension file). This will affect all users, and might incur additional
 overhead on pageviews.
 
-== 6. Change log ==
+== Change log ==
 
-09/06/2006
-Version 1.0
-	Initial release
-	
-17/12/2006
-Version 1.1
-	Introduced $wgRandomImageNoCache to disable parser cache on pages using
-	the tag; defaults to off
-	
-04/06/2007
+August 15, 2007
+Version 1.3
+	Major refactor; class split into own file
+	Add option to confine image selection to user-defined choices
+
+June 6, 2007
 Version 1.2
 	Bug fix and minor code tweaks
 	If no image is selected in the first pass, a further attempt is made
-	
-== 7. Feedback ==
 
-All feedback, bug reports, etc. welcome via <robchur@gmail.com>.
+December 17, 2006
+Version 1.1
+	Introduced $wgRandomImageNoCache to disable parser cache on pages using
+	the tag; defaults to off
+
+June 9, 2006
+Version 1.0
+	Initial release
+	
+== Feedback ==
+
+All feedback, bug reports, etc. welcome via robchur {at} gmail {dot} com.
