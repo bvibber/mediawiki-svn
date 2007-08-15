@@ -1,7 +1,7 @@
 <?php
 /*
  * hawiki parser for hawpedia
- * $Date: 2007/04/01 23:20:25 $
+ * $Date$
  */
 
 function namespace_regex1($namespace_name /* english string */ , $separator='/')
@@ -90,19 +90,29 @@ function HAWIKI_parser(&$input, $isFirstColumn)
 	}
 
 	#if (preg_match("/^\[\[([^\[\]]+)\]\]/", $input, $matches))
-	// this breaks the parser and creates "invalid wiki syntax" errors!
-	// reactivated old HawPedia regex:	
-	if (preg_match("/^\[\[(([^\[\]]+)|(\[[^\[\]]*\])*|(\[\[[^\[\]]*\]\])*)+\]\]/", $input, $matches))
+	// this MediaWiki regex breaks the parser and creates "invalid wiki syntax" errors!
+	#if (preg_match("/^\[\[(([^\[\]]+)|(\[[^\[\]]*\])*|(\[\[[^\[\]]*\]\])*)+\]\]/", $input, $matches))
+	// this old HawPedia regex does not work from php 5.2 onward!
+	if (preg_match("/^\[\[/", $input))
 	{
 		// Forced WikiName ((a_page_with_any_name))
 
 		// images can be nested like this: [[Image:...|[[link]]...]]
 		//                        or this: [[Image:...|[link]...]]
-		# echo('<blockquote>'); print_r($matches); echo('</blockquote>');
-		$input = substr($input, strlen($matches[0]));
+		
+		// find closing brackets ...
+		$bracket_level = 2;
+		for ($pos = 2; $bracket_level > 0; $pos++) {
+      if (substr($input, $pos, 1) == '[')
+        $bracket_level++;			
 
-		$wikipage = substr($matches[0], 2, -2);
-
+      if (substr($input, $pos, 1) == ']')
+        $bracket_level--;			
+    }
+		
+		$wikipage = substr($input, 2, $pos-4);
+		$input = substr($input, $pos);
+		
 		$po["extwiki"] = ""; // hawpedia supports no external wikis
 
 		$link = explode("|", $wikipage); // test for alternative link label
