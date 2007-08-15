@@ -20,6 +20,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Sorry, the title of this article is not allowed to be saved.',
 ),
  
+'de' => array(
+	'block_title_error_page_title' => 'Sperre Artikelname',
+	'block_title_error'            => 'Entschuldigung, aber ein Artikel mit diesem Namen darf nicht gespeichert werden.',
+),
+
 /**
  * French (Bertrand Grondin)
  */
