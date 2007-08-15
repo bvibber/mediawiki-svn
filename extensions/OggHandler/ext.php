@@ -1,7 +1,7 @@
 <?php
 
 $oggDir = dirname(__FILE__);
-$wgAutoloadClasses['OggHandler'] = "$oggDir/Handler.php";
+$wgAutoloadClasses['OggHandler'] = "$oggDir/OggHandler_body.php";
 $wgMediaHandlers['application/ogg'] = 'OggHandler';
 if ( !in_array( 'ogg', $wgFileExtensions ) ) {
 	$wgFileExtensions[] = 'ogg';
