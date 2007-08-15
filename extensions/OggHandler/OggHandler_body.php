@@ -67,7 +67,7 @@ class OggHandler extends MediaHandler {
 		$metadata = array( 'version' => self::OGG_METADATA_VERSION );
 
 		if ( !class_exists( 'File_Ogg' ) ) {
-			return require( 'File/Ogg.php' );
+			require( 'File/Ogg.php' );
 		}	
 
 		try {
