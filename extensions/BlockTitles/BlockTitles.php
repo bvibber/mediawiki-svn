@@ -50,6 +50,3 @@ function wfCheckBlockTitles (&$article ) {
 
 	return true;
 }
-
-
-
