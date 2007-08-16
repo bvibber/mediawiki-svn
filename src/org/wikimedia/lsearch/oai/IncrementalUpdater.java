@@ -10,8 +10,12 @@ import java.io.IOException;
 import java.net.Authenticator;
 import java.net.PasswordAuthentication;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
@@ -23,7 +27,10 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.ranks.CompactArticleLinks;
 import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.ranks.Related;
+import org.wikimedia.lsearch.ranks.RelatedTitle;
 import org.wikimedia.lsearch.storage.Storage;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
@@ -185,7 +192,7 @@ public class IncrementalUpdater {
 						if(fetchReferences){
 							try{
 								// fetch references for records
-								fetchReferences(records,dbname);
+								fetchReferencesAndRelated(records,dbname);
 							} catch(IOException e){
 								// FIXME: quick hack, if the table cannot be found (e.g. for new wikis) don't abort 
 								if(e.getMessage().contains("Base table or view not found")){
@@ -276,7 +283,7 @@ public class IncrementalUpdater {
 		} while(daemon);
 	}
 
-	protected static void fetchReferences(ArrayList<IndexUpdateRecord> records, String dbname) throws IOException {
+	protected static void fetchReferencesAndRelated(ArrayList<IndexUpdateRecord> records, String dbname) throws IOException {
 		Storage store = Storage.getInstance();
 		ArrayList<Title> titles = new ArrayList<Title>();
 		for(IndexUpdateRecord rec : records){
@@ -292,17 +299,33 @@ public class IncrementalUpdater {
 		}
 		// fetch
 		Links links = new Links(store.getPageReferences(titles,dbname));
+		HashMap<Title,ArrayList<RelatedTitle>> rel = store.getRelatedPages(titles,dbname);
 		// update
 		for(IndexUpdateRecord rec : records){
 			if(rec.isDelete())
 				continue;
 			Article ar = rec.getArticle();
-			ar.setReferences(links.getLinks(ar.makeTitle().getKey()));
+			Title t = ar.makeTitle();
+			// set references
+			ar.setReferences(links.getLinks(t.getKey()));
 			if(ar.getRedirects() != null){
 				for(Redirect r : ar.getRedirects()){
 					r.setReferences(links.getLinks(r.makeTitle().getKey()));
 				}
-			}			
+			}
+			// set related
+			ArrayList<RelatedTitle> rt = rel.get(t.getKey());
+			if(rt != null){
+				Collections.sort(rt,new Comparator<RelatedTitle>() {
+					public int compare(RelatedTitle o1, RelatedTitle o2){
+						double d = o2.getScore()-o1.getScore();
+						if(d == 0) return 0;
+						else if(d > 0) return 1;
+						else return -1;
+					}
+				});
+				ar.setRelated(rt);
+			}
 		}		
 	}
 }

@@ -60,8 +60,10 @@ public class WikiIndexModifier {
 	}
 
 	static public final int MAX_FIELD_LENGTH = 100000;
-	/** number of aditional title1, title2, .. etc fields to be filled in with redirects */
-	static public int ALT_TITLES = 3;
+	/** number of aditional alttitle1, alttitle2, .. etc fields to be filled in with redirects */
+	static public int ALT_TITLES = 3;	
+	/** number of related fields in the index, first has the top-scored, etc, last everything else */
+	static public int RELATED_GROUPS = 4;
 	/** Simple implementation of batch addition and deletion */
 	class SimpleIndexModifier {
 		protected IndexId iid;

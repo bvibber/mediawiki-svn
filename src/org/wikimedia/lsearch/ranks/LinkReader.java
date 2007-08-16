@@ -60,17 +60,16 @@ public class LinkReader implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		CompactArticleLinks p = links.get(page.Title.Namespace+":"+page.Title.Text);
-		if(readRedirects){
-			// register redirect
-			Title redirect = Localization.getRedirectTitle(revision.Text,langCode);
-			if( redirect !=null ){
-				CompactArticleLinks cs = findArticleLinks(redirect.getNamespace(),redirect.getTitle());
-				if(cs != null)
-					links.setRedirect(page.Title.Namespace+":"+page.Title.Text,cs);
-				return;
+		// register redirect
+		Title redirect = Localization.getRedirectTitle(revision.Text,langCode);
+		if(redirect != null && readRedirects){
+			CompactArticleLinks cs = findArticleLinks(redirect.getNamespace(),redirect.getTitle());
+			if(cs != null){
+				links.setRedirect(page.Title.Namespace+":"+page.Title.Text,cs);
 			}
+		} else if(redirect == null){ // process only non-redirects
+			processLinks(p,revision.Text,page.Title.Namespace);
 		}
-		processLinks(p,revision.Text,page.Title.Namespace);
 	}
 	
 	/** Find the links object for the ns:title key */

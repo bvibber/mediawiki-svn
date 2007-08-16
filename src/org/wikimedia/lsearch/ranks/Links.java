@@ -72,12 +72,7 @@ public class Links {
 			}
 		}
 	}
-	/** Sort "what links here" list for each article */
-	public void sortLinked(){
-		for(CompactArticleLinks r : links.values()){
-			r.sortLinked();
-		}
-	}
+
 	/** Delete any unnecessary allocated space */
 	public void compactAll() {
 		for(CompactArticleLinks r : links.values()){

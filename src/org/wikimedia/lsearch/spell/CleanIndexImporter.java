@@ -25,6 +25,7 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.ranks.CompactArticleLinks;
 import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.ranks.RelatedTitle;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
@@ -54,8 +55,9 @@ public class CleanIndexImporter implements DumpWriter {
 	public void writeEndPage() throws IOException {
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
 		boolean isRedirect = Localization.getRedirectTarget(revision.Text,langCode) != null;
+		ArrayList<RelatedTitle> related = new ArrayList<RelatedTitle>();
 		// make article
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,0,redirects);
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,0,redirects,related);
 		//if(page.Title.Namespace != 0)
 		//	article.setContents("");
 		

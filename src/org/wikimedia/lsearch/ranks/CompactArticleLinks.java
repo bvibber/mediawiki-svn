@@ -133,22 +133,6 @@ public class CompactArticleLinks{
 		return h;			
 	}
 	
-	/** Sort by hash value to be able to more quickly find an object */
-	public void sortLinked(){
-		if(linksIn == null)
-			return;
-		ArrayList<CompactArticleLinks> l = new ArrayList<CompactArticleLinks>();
-		for(int i=0;i<linksInIndex;i++)
-			l.add(linksIn[i]);
-		Collections.sort(l,new Comparator<CompactArticleLinks>() {
-			public int compare(CompactArticleLinks o1, CompactArticleLinks o2){
-				return o1.hashCode() - o2.hashCode();
-			}
-		});
-		linksIn = l.toArray(new CompactArticleLinks[] {});
-		linksInIndex = linksIn.length;
-	}
-	
 	/** Delete any excessive space in linksIn, linksOut */
 	public void compact(){
 		CompactArticleLinks[] n;

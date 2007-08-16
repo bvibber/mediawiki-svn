@@ -16,6 +16,9 @@ import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.ranks.RankBuilder;
+import org.wikimedia.lsearch.ranks.Related;
+import org.wikimedia.lsearch.ranks.RelatedTitle;
 import org.wikimedia.lsearch.util.Localization;
 
 public class IndexUpdatesCollector implements DumpWriter {
@@ -65,7 +68,8 @@ public class IndexUpdatesCollector implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),references,redirects);
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),
+				references,redirects,new ArrayList<RelatedTitle>()); // references and related titles are set correctly later (in incremental updater)
 		log.debug("Collected "+article+" with rank "+references+" and "+redirects.size()+" redirects: "+redirects);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.UPDATE));
 		log.debug(iid+": Update for "+article);

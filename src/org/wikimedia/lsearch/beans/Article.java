@@ -28,6 +28,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+import org.wikimedia.lsearch.ranks.RelatedTitle;
+
 /**
  * Wiki article. 
  * 
@@ -47,6 +49,8 @@ public class Article implements Serializable  {
 	private transient ArrayList<Integer> redirectKeywordRanks;
 	/** generated before indexing from the reference sto this article, and references from redirects */
 	private transient int rank;
+	/** names of articles that relate to this article  */
+	private ArrayList<RelatedTitle> related;
 	
 	public Article(){
 		namespace="";
@@ -56,6 +60,7 @@ public class Article implements Serializable  {
 		redirect=false;
 		references = 0;
 		redirects=new ArrayList<Redirect>();
+		related = new ArrayList<RelatedTitle>();
 	}
 	
 	public Article(long pageId, Title title, String text, boolean redirect, int references) {
@@ -66,6 +71,7 @@ public class Article implements Serializable  {
 		this.redirect = redirect;
 		this.references = references;
 		this.redirects = new ArrayList<Redirect>();
+		this.related = new ArrayList<RelatedTitle>();
 	}
 	
 	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references) {
@@ -76,9 +82,10 @@ public class Article implements Serializable  {
 		this.pageId = pageId;
 		this.references = references;
 		this.redirects = new ArrayList<Redirect>();
+		this.related = new ArrayList<RelatedTitle>();
 	}
 	
-	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, ArrayList<Redirect> redirects) {
+	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		contents = text;
@@ -86,6 +93,7 @@ public class Article implements Serializable  {
 		this.pageId = pageId;
 		this.references = references;
 		this.redirects = redirects;
+		this.related = related;
 	}
 	
 	public boolean isRedirect() {
@@ -200,7 +208,17 @@ public class Article implements Serializable  {
 
 	public void setContents(String contents) {
 		this.contents = contents;
+	}
+
+	public ArrayList<RelatedTitle> getRelated() {
+		return related;
+	}
+
+	public void setRelated(ArrayList<RelatedTitle> related) {
+		this.related = related;
 	}	
+	
+	
 	
 	
 	

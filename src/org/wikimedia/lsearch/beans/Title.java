@@ -16,6 +16,14 @@ public class Title implements java.io.Serializable {
    	 this.title = title;
     }
     
+    public Title(String key){
+   	 String[] parts = key.split(":",2);
+   	 if(parts.length != 2)
+   		 throw new RuntimeException("Wrong key format in Title constructor");
+   	 this.namespace = Integer.parseInt(parts[0]);
+   	 this.title = parts[1];
+    }
+    
     public String getKey(){
    	 return namespace+":"+title;
     }

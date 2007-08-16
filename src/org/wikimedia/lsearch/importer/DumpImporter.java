@@ -22,6 +22,8 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.ranks.CompactArticleLinks;
 import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.ranks.RankBuilder;
+import org.wikimedia.lsearch.ranks.RelatedTitle;
 import org.wikimedia.lsearch.util.Localization;
 
 public class DumpImporter implements DumpWriter {
@@ -30,7 +32,7 @@ public class DumpImporter implements DumpWriter {
 	Revision revision;
 	SimpleIndexWriter writer;
 	int count = 0, limit;
-	Links ranks;
+	Links links;
 	String langCode;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
@@ -38,7 +40,7 @@ public class DumpImporter implements DumpWriter {
 		Configuration.open(); // make sure configuration is loaded
 		writer = new SimpleIndexWriter(IndexId.get(dbname), optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;
-		this.ranks = ranks;
+		this.links = ranks;
 		this.langCode = langCode;
 	}
 	public void writeRevision(Revision revision) throws IOException {
@@ -50,7 +52,7 @@ public class DumpImporter implements DumpWriter {
 	public void writeEndPage() throws IOException {
 		// get reference count
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		CompactArticleLinks r = ranks.get(key);
+		CompactArticleLinks r = links.get(key);
 		int references;
 		boolean isRedirect = r.redirectsTo != null; 
 		if(r == null){
@@ -65,9 +67,11 @@ public class DumpImporter implements DumpWriter {
 				String[] parts = rk.toString().split(":",2);
 				redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],rk.links));
 			}
-		}		
+		}
+		ArrayList<RelatedTitle> related = RankBuilder.getRelatedTitles(r,links);  
 		// make article
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,references,redirects);
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
+				references,redirects,related);
 		writer.addArticle(article);
 		count++;
 		if(limit >= 0 && count > limit)
