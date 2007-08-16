@@ -362,8 +362,7 @@ class Thread {
 		there was a new revision saved at save time. make it run then make it right.)
 		*/
 		$rev = Revision::newFromTitle( $this->root()->getTitle() );
-		$this->double->rootRevision = $rev->getId();
-		
+		$this->rootRevision = $rev->getId();
 		
 		$this->double = clone $this;
 	}

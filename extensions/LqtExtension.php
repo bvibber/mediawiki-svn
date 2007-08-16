@@ -210,10 +210,7 @@ class LqtView {
 	}
 	
 	static function permalinkUrlWithDiff( $thread ) {
-		// TODO, changeObjects should return the thread itself.
 		$changed_thread = $thread->changeObject();
-//		$changed_thread = Threads::withId($thread->changeObject());
-		var_dump($changed_thread);
 		$curr_rev_id = $changed_thread->rootRevision();
 		$curr_rev = Revision::newFromTitle( $changed_thread->root()->getTitle(), $curr_rev_id );
 		$prev_rev = $curr_rev->getPrevious();
