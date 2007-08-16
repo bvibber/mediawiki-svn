@@ -1103,12 +1103,14 @@ $wgGroupPermissions['bureaucrat']['userrights'] = true;
 $wgRestrictionTypes = array( 'edit', 'move' );
 
 /**
- * Set of permission keys that can be selected via action=protect.
- * 'autoconfirm' allows all registerd users if $wgAutoConfirmAge is 0.
+ * Rights which can be required for each protection level (via action=protect)
  *
  * You can add a new protection level that requires a specific
  * permission by manipulating this array. The ordering of elements
  * dictates the order on the protection form's lists.
+ *
+ * '' will be ignored (i.e. unprotected)
+ * 'sysop' is quietly rewritten to 'protect' for backwards compatibility
  */
 $wgRestrictionLevels = array( '', 'autoconfirmed', 'sysop' );
 
@@ -1915,6 +1917,28 @@ $wgExtensionFunctions = array();
 $wgSkinExtensionFunctions = array();
 
 /**
+ * Extension messages files
+ * Associative array mapping extension name to the filename where messages can be found.
+ * The file must create a variable called $messages.
+ * When the messages are needed, the extension should call wfLoadMessagesFile()
+ */
+$wgExtensionMessagesFiles = array();
+
+/**
+ * Parser output hooks.
+ * This is an associative array where the key is an extension-defined tag
+ * (typically the extension name), and the value is a PHP callback.
+ * These will be called as an OutputPageParserOutput hook, if the relevant
+ * tag has been registered with the parser output object.
+ *
+ * Registration is done with $pout->addOutputHook( $tag, $data ). 
+ *
+ * The callback has the form:
+ *    function outputHook( $outputPage, $parserOutput, $data ) { ... }
+ */
+$wgParserOutputHooks = array();
+
+/**
  * List of valid skin names.
  * The key should be the name in all lower case, the value should be a display name.
  * The default skins will be added later, by Skin::getSkinNames(). Use 
@@ -2269,6 +2293,7 @@ $wgLogActions = array(
 	'delete/restore'    => 'undeletedarticle',
 	'delete/revision'   => 'revdelete-logentry',
 	'upload/upload'     => 'uploadedimage',
+	'upload/overwrite'	=> 'overwroteimage',
 	'upload/revert'     => 'uploadedimage',
 	'move/move'         => '1movedto2',
 	'move/move_redir'   => '1movedto2_redir',

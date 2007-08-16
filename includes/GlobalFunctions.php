@@ -2297,3 +2297,27 @@ function wfScript( $script = 'index' ) {
 function wfBoolToStr( $value ) {
 	return $value ? 'true' : 'false';
 }
+
+/**
+ * Load an extension messages file
+ */
+function wfLoadExtensionMessages( $extensionName ) {
+	global $wgExtensionMessagesFiles, $wgMessageCache;
+	if ( !empty( $wgExtensionMessagesFiles[$extensionName] ) ) {
+		$wgMessageCache->loadMessagesFile( $wgExtensionMessagesFiles[$extensionName] );
+		// Prevent double-loading
+		$wgExtensionMessagesFiles[$extensionName] = false;
+	}
+}
+
+/**
+ * Get a platform-independent path to the null file, e.g.
+ * /dev/null
+ *
+ * @return string
+ */
+function wfGetNull() {
+	return wfIsWindows()
+		? 'NUL'
+		: '/dev/null';
+}

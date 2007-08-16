@@ -269,13 +269,16 @@ class Article {
 				'page_random',
 				'page_touched',
 				'page_latest',
-				'page_len' ) ;
-		wfRunHooks( 'ArticlePageDataBefore', array( &$this , &$fields ) )	;
-		$row = $dbr->selectRow( 'page',
+				'page_len',
+		);
+		wfRunHooks( 'ArticlePageDataBefore', array( &$this, &$fields ) );
+		$row = $dbr->selectRow(
+			'page',
 			$fields,
 			$conditions,
-			'Article::pageData' );
-		wfRunHooks( 'ArticlePageDataAfter', array( &$this , &$row ) )	;
+			__METHOD__
+		);
+		wfRunHooks( 'ArticlePageDataAfter', array( &$this, &$row ) );
 		return $row ;
 	}
 
@@ -1250,7 +1253,10 @@ class Article {
 				}
 			}
 
-			$this->doRedirect( $this->isRedirect( $text ), $sectionanchor );
+			$extraq = ''; // Give extensions a chance to modify URL query on update
+			wfRunHooks( 'ArticleUpdateBeforeRedirect', array( $this, &$sectionanchor, &$extraq ) );
+
+			$this->doRedirect( $this->isRedirect( $text ), $sectionanchor, $extraq );
 		}
 		return $good;
 	}
@@ -1486,12 +1492,14 @@ class Article {
 	 * @param boolean $noRedir Add redirect=no
 	 * @param string $sectionAnchor section to redirect to, including "#"
 	 */
-	function doRedirect( $noRedir = false, $sectionAnchor = '' ) {
+	function doRedirect( $noRedir = false, $sectionAnchor = '', $extraq = '' ) {
 		global $wgOut;
 		if ( $noRedir ) {
 			$query = 'redirect=no';
+			if( $extraq )
+				$query .= "&$query";
 		} else {
-			$query = '';
+			$query = $extraq;
 		}
 		$wgOut->redirect( $this->mTitle->getFullURL( $query ) . $sectionAnchor );
 	}

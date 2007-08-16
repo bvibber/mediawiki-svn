@@ -213,7 +213,9 @@ $bookstoreList = array(
 
 /**
  * Magic words
- * Customisable syntax for wikitext and elsewhere
+ * Customisable syntax for wikitext and elsewhere.
+ *
+ * IDs must be valid identifiers, they can't contain hyphens. 
  *
  * Note to translators:
  *   Please include the English words as synonyms.  This allows people
@@ -229,7 +231,6 @@ $magicWords = array(
 	'forcetoc'               => array( 0,    '__FORCETOC__'           ),
 	'toc'                    => array( 0,    '__TOC__'                ),
 	'noeditsection'          => array( 0,    '__NOEDITSECTION__'      ),
-	'start'                  => array( 0,    '__START__'              ),
 	'currentmonth'           => array( 1,    'CURRENTMONTH'           ),
 	'currentmonthname'       => array( 1,    'CURRENTMONTHNAME'       ),
 	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN'    ),
@@ -292,10 +293,10 @@ $magicWords = array(
 	'img_sub'                => array( 1,    'sub'                    ),
 	'img_super'              => array( 1,    'super', 'sup'           ),
 	'img_top'                => array( 1,    'top'                    ),
-	'img_text-top'           => array( 1,    'text-top'               ),
+	'img_text_top'           => array( 1,    'text-top'               ),
 	'img_middle'             => array( 1,    'middle'                 ),
 	'img_bottom'             => array( 1,    'bottom'                 ),
-	'img_text-bottom'        => array( 1,    'text-bottom'            ),
+	'img_text_bottom'        => array( 1,    'text-bottom'            ),
 	'int'                    => array( 0,    'INT:'                   ),
 	'sitename'               => array( 1,    'SITENAME'               ),
 	'ns'                     => array( 0,    'NS:'                    ),
@@ -1211,7 +1212,7 @@ and the text of $3 pages.',
 'notextmatches'         => 'No page text matches',
 'prevn'                 => 'previous $1',
 'nextn'                 => 'next $1',
-'viewprevnext'          => 'View ($1) ($2) ($3).',
+'viewprevnext'          => 'View ($1) ($2) ($3)',
 'showingresults'        => "Showing below up to {{PLURAL:$1|'''1''' result|'''$1''' results}} starting with #'''$2'''.",
 'showingresultsnum'     => "Showing below {{PLURAL:$3|'''1''' result|'''$3''' results}} starting with #'''$2'''.",
 'nonefound'             => "'''Note''': Unsuccessful searches are
@@ -1241,6 +1242,7 @@ containing all of the search terms will appear in the result).",
 'preferences'              => 'Preferences',
 'preferences-summary'      => '', # only translate this message to other languages if you have to change it
 'mypreferences'            => 'My preferences',
+'prefs-edits' => 'Number of edits:',
 'prefsnologin'             => 'Not logged in',
 'prefsnologintext'         => 'You must be [[Special:Userlogin|logged in]] to set user preferences.',
 'prefsreset'               => 'Preferences have been reset from storage.',
@@ -1422,6 +1424,7 @@ If you have this image in full resolution upload this one, otherwise change the 
 'uploadwarning'               => 'Upload warning',
 'savefile'                    => 'Save file',
 'uploadedimage'               => 'uploaded "[[$1]]"',
+'overwroteimage' => 'uploaded a new version of "[[$1]]"',
 'uploaddisabled'              => 'Uploads disabled',
 'uploaddisabledtext'          => 'File uploads are disabled on this wiki.',
 'uploadscripted'              => 'This file contains HTML or script code that may be erroneously be interpreted by a web browser.',
@@ -2426,17 +2429,25 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'imagemaxsize'         => 'Limit images on image description pages to:',
 'thumbsize'            => 'Thumbnail size:',
 'widthheight'          => '$1×$2', # only translate this message to other languages if you have to change it
+'widthheightpage'      => '$1×$2, $3 pages',
 'file-info'            => '(file size: $1, MIME type: $2)',
 'file-info-size'       => '($1 × $2 pixel, file size: $3, MIME type: $4)',
 'file-nohires'         => '<small>No higher resolution available.</small>',
-'file-svg'             => '<small>This is a lossless scalable vector image. Base size: $1 × $2 pixels.</small>',
+'svg-long-desc'        => '(SVG file, nominally $1 × $2 pixels, file size: $3)',
 'show-big-image'       => 'Full resolution',
 'show-big-image-thumb' => '<small>Size of this preview: $1 × $2 pixels</small>',
 
+# Special:Newimages
 'newimages'         => 'Gallery of new files',
 'newimages-summary' => '', # only translate this message to other languages if you have to change it
 'showhidebots'      => '($1 bots)',
 'noimages'          => 'Nothing to see.',
+
+# Video information, used by Language::formatTimePeriod() to format lengths in the above messages
+'video-dims'     => '$1, $2×$3', # only translate this message to other languages if you have to change it
+'seconds-abbrev' => 's', # only translate this message to other languages if you have to change it
+'minutes-abbrev' => 'm', # only translate this message to other languages if you have to change it
+'hours-abbrev'   => 'h', # only translate this message to other languages if you have to change it
 
 # Bad image list
 'bad_image_list' => 'The format is as follows:

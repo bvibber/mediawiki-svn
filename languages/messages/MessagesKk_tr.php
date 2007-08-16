@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Kazakh (Qazaqşa)
  *
@@ -136,7 +136,9 @@ $dateFormats = array(
 
 /**
  * Magic words
- * Customisable syntax for wikitext and elsewhere
+ * Customisable syntax for wikitext and elsewhere.
+ *
+ * IDs must be valid identifiers, they can't contain hyphens. 
  *
  * Note to translators:
  *   Please include the English words as synonyms.  This allows people
@@ -153,7 +155,6 @@ $magicWords = array(
 	'forcetoc'               => array( 0,    '__MAZMUNDATQIZW__', '__MQIZW__', '__FORCETOC__' ),
 	'toc'                    => array( 0,    '__MAZMUNI__', '__MZMN__', '__TOC__' ),
 	'noeditsection'          => array( 0,    '__BÖLİMÖNDETKİZBEW__', '__NOEDITSECTION__' ),
-	'start'                  => array( 0,    '__BASTAW__', '__START__' ),
 	'currentmonth'           => array( 1,    'AĞIMDAĞIAÝ', 'CURRENTMONTH' ),
 	'currentmonthname'       => array( 1,    'AĞIMDAĞIAÝATAWI', 'CURRENTMONTHNAME' ),
 	'currentmonthnamegen'    => array( 1,    'AĞIMDAĞIAÝİLİKATAWI', 'CURRENTMONTHNAMEGEN' ),
@@ -216,10 +217,10 @@ $magicWords = array(
 	'img_sub'                => array( 1,    'astılığı', 'ast', 'sub'),
 	'img_super'              => array( 1,    'üstiligi', 'üst', 'sup', 'super', 'sup' ),
 	'img_top'                => array( 1,    'üstine', 'top' ),
-	'img_text-top'           => array( 1,    'mätin-üstinde', 'text-top' ),
+	'img_text_top'           => array( 1,    'mätin-üstinde', 'text-top' ),
 	'img_middle'             => array( 1,    'aralığına', 'middle' ),
 	'img_bottom'             => array( 1,    'astına', 'bottom' ),
-	'img_text-bottom'        => array( 1,    'mätin-astında', 'text-bottom' ),
+	'img_text_bottom'        => array( 1,    'mätin-astında', 'text-bottom' ),
 	'int'                    => array( 0,    'İŞKİ:', 'INT:' ),
 	'sitename'               => array( 1,    'TORAPATAWI', 'SITENAME' ),
 	'ns'                     => array( 0,    'EA:', 'ESİMAYA:', 'NS:' ),
@@ -872,10 +873,10 @@ tömende körsetiledi:",
 'accmailtext'               => '$2 jaýına «$1» qupïya sözi jiberildi.',
 'newarticle'                => '(Jaña)',
 'newarticletext'            => 'Siltemege erip äli bastalmağan betke
-kelipsiz. Betti bastaw üşin, tömendegi awmaqta mätiniñizdi
-teriñiz (köbirek aqparat üşin [[{{{{ns:mediawiki}}:helppage}}|anıqtama betin]]
-qarañız).Eger jañılğannan osında kelgen bolsañız, şolğışıñız
-«Artqa» degen tüýmesin nuqıñız.',
+kelipsiz. Betti bastaw üşin, tömendegi awmaqta mätiniñizdi teriñiz
+(köbirek aqparat üşin [[{{{{ns:mediawiki}}:helppage}}|anıqtama betin]] qarañız).
+Eger jañılğannan osında kelgen bolsañız, şolğışıñız «Artqa» degen tüýmesin nuqıñız.',
+
 'anontalkpagetext'          => "----''Bul tirkelgisiz (nemese tirkelgisin qoldanbağan) paýdalanwşınıñ talqılaw beti. Osı paýdalanwşını biz tek sandıq IP jaýımen teñdestiremiz. Osındaý IP jaýlar birneşe paýdalanwşığa ortaq bolwı mümkin. Eger siz tirkelgisiz paýdalanwşı bolsañız jäne sizge qatıssız mändemeler jiberilgenin sezseñiz, basqa tirkelgisiz paýdalanwşılarmen aralastırmawı üşin [[{{ns:special}}:Userlogin|tirkelgi jasañız ne kiriñiz]].''",
 'noarticletext'             => 'Bul bette ağımda eş mätin joq, basqa betterden osı bet atawın [[{{ns:special}}:Search/{{PAGENAME}}|izdep körwiñizge]] nemese osı betti [{{fullurl:{{FULLPAGENAME}}|action=edit}} tüzetwiñizge] boladı.',
 'clearyourcache'            => "'''Añğartpa:''' Saqtağannan keýin özgeristerdi körw üşin şolğış qosalqı qaltasın bosatw keregi mümkin. '''Mozilla  / Safari:''' ''Shift'' pernesin basıp turıp ''Reload'' (''Qaýta jüktew'') tüýmesin nuqıñız (ne ''Ctrl-Shift-R'' basıñız); ''IE:'' ''Ctrl-F5'' basıñız; '''Opera / Konqueror''' ''F5'' pernesin basıñız.",
@@ -1077,7 +1078,7 @@ jäne $3 bettiñ mätinine säýkes.',
 'notextmatches'         => 'Eş bet mätini säýkes emes',
 'prevn'                 => 'aldıñğı $1',
 'nextn'                 => 'kelesi $1',
-'viewprevnext'          => 'Körsetilwi: ($1) ($2) ($3) jazba.',
+'viewprevnext'          => 'Körsetilwi: ($1) ($2) ($3) jazba',
 'showingresults'        => "Tömende nömir '''$2''' ornınan bastap, jetkenşe {{PLURAL:$1|'''1''' nätïje|'''$1''' nätïje}} körsetilgen.",
 'showingresultsnum'     => "Tömende nömir '''$2''' ornınan bastap {{PLURAL:$3|'''1''' nätïje|'''$3''' nätïje}} körsetilgen.",
 'nonefound'             => "'''Añğartpa''': Tabw sätsiz bitwi jïi «bolğan» jäne «degen» sïyaqtı
@@ -1092,6 +1093,7 @@ barlıq şart sözder kedesse körsetiledi) bolwı mümkin.",
 # Preferences page
 'preferences'              => 'Baptawlar',
 'mypreferences'            => 'Baptawım',
+'prefs-edits'              => 'Tüzetw sanı:',
 'prefsnologin'             => 'Kirmegensiz',
 'prefsnologintext'         => 'Baptawlardı qalaw üşin aldın ala [[{{ns:special}}:Userlogin|kirwiñiz]] qajet.',
 'prefsreset'               => 'Baptawlar arqawdan qaýta ornatıldı.',
@@ -1668,6 +1670,7 @@ Mına <strong>$1</strong> bettiñ ağımdıq baptawları:',
 Mına <strong>$1</strong> bettiñ ağımdıq baptawları:',
 'protect-cascadeon'           => 'Bul bet ağımda qorğalğan, sebebi: osı bet bawlı qorğawı bar kelesi {{PLURAL:$1|betke|betterge}} kiristirilgen. Bul bettiñ qorğaw deñgeýin özgerte alasız, biraq bul bawlı qorğawğa ıqpal etpeýdi.',
 'protect-default'             => '(ädepki)',
+'protect-fallback'            => '«$1» ruqsatı qajet boldı',
 'protect-level-autoconfirmed' => 'Tirkelgisiz paýdalanwşılarğa tïım',
 'protect-level-sysop'         => 'Tek äkimşilerge ruqsat',
 'protect-summary-cascade'     => 'bawlı',
@@ -1822,8 +1825,8 @@ Tömende tïisti sebebin toltırıp körsetiñiz (mısalı, däýekke buzaqılı
 'ipb-blocklist-addr'          => '$1 üşin bar buğattawlardı qaraw',
 'ipb-blocklist'               => 'Bar buğattawlardı qaraw',
 'unblockip'                   => 'Paýdalanwşını buğattamaw',
-'unblockiptext'               => 'Tömendegi ülgit belgili IP jaýımen ne atawımen
-burın buğattalğan paýdalanwşınıñ jazw ruqsatın qaýtarw üşin qoldanıladı.',
+'unblockiptext'               => 'Tömendegi ülgit belgili IP jaýımen ne atawımen burın buğattalğan paýdalanwşınıñ jazw ruqsatın qaýtarw üşin qoldanıladı.',
+
 'ipusubmit'                   => 'Osı jaýdı buğattamaw',
 'unblocked'                   => '[[{{ns:user}}:$1|$1]] buğattawı öşirildi',
 'unblocked-id'                => '$1 degen buğattaw alastatıldı',
@@ -2225,16 +2228,24 @@ $1',
 'imagemaxsize'         => 'Sïpattaması betindegi swrettiñ mölşerin şektewi:',
 'thumbsize'            => 'Nobaý mölşeri:',
 'widthheight'          => '$1 × $2',
+'widthheightpage'      => '$1 × $2, $3 bet',
 'file-info'            => 'Faýl mölşeri: $1, MIME türi: $2',
 'file-info-size'       => '($1 × $2 pïksel, faýl mölşeri: $3, MIME türi: $4)',
 'file-nohires'         => '<small>Joğarı ajıratılımdığı jetimsiz.</small>',
-'file-svg'             => '<small>Bul şığınsız sozılğış vektorlıq swreti. Negizgi mölşeri: $1 × $2 pïksel.</small>',
+'svg-long-desc'        => '(SVG faýlı, kesimdi $1 × $2 pïksel, faýl mölşeri: $3)',
 'show-big-image'       => 'Joğarı ajıratılımdı',
 'show-big-image-thumb' => '<small>Qarap şığw mölşeri: $1 × $2 pïksel</small>',
 
+# Special:Newimages
 'newimages'    => 'Eñ jaña faýldar qoýması',
 'showhidebots' => '(bottardı $1)',
 'noimages'     => 'Köretin eşteñe joq.',
+
+# Video information, used by Language::formatTimePeriod() to format lengths in the above messages
+'video-dims'     => '$1, $2 × $3',
+'seconds-abbrev' => 's',
+'minutes-abbrev' => 'mïn',
+'hours-abbrev'   => 'sağ',
 
 # Bad image list
 'bad_image_list' => 'Pişimi tömendegideý:

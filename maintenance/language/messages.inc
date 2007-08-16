@@ -643,6 +643,7 @@ $wgMessageStructure = array(
 		'preferences',
 		'preferences-summary',
 		'mypreferences',
+		'prefs-edits',
 		'prefsnologin',
 		'prefsnologintext',
 		'prefsreset',
@@ -813,6 +814,7 @@ $wgMessageStructure = array(
 		'uploadwarning',
 		'savefile',
 		'uploadedimage',
+		'overwroteimage',
 		'uploaddisabled',
 		'uploaddisabledtext',
 		'uploadscripted',
@@ -1690,10 +1692,11 @@ $wgMessageStructure = array(
 		'imagemaxsize',
 		'thumbsize',
 		'widthheight',
+		'widthheightpage',
 		'file-info',
 		'file-info-size',
 		'file-nohires',
-		'file-svg',
+		'svg-long-desc',
 		'show-big-image',
 		'show-big-image-thumb',
 	),
@@ -1702,6 +1705,12 @@ $wgMessageStructure = array(
 		'newimages-summary',
 		'showhidebots',
 		'noimages',
+	),
+	'video-info' => array(
+		'video-dims',
+		'seconds-abbrev',
+		'minutes-abbrev',
+		'hours-abbrev',
 	),
 	'badimagelist' => array(
 		'bad_image_list',
@@ -2283,7 +2292,8 @@ XHTML id names.",
 	'patrol-log'          => 'Patrol log',
 	'imagedeletion'       => 'Image deletion',
 	'browsediffs'         => 'Browsing diffs',
-	'newimages'           => '',
+	'newimages'           => 'Special:Newimages',
+	'video-info'          => 'Video information, used by Language::formatTimePeriod() to format lengths in the above messages',
 	'badimagelist'        => 'Bad image list',
 	'variantname-zh'      => "Short names for language variants used for language conversion links.
 To disable showing a particular link, set it to 'disable', e.g.
@@ -2374,5 +2384,3 @@ $wgMessagseWithDollarSigns = array(
 	'enotif_body',
 	'allmessagesnotsupportedDB',
 );
-
-?>
