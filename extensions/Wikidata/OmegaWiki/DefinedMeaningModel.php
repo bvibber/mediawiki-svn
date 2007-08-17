@@ -179,11 +179,12 @@ class DefinedMeaningModel {
 		initializeObjectAttributeEditors($this->viewInformation);
 
 		# Nice try sherlock, but we really need to get our DMID from elsewhere
-		#$definedMeaningId = $this->getId();
+		#$definedMeaningId = $this->getId(); 
 		
 		#Need 3 steps: copy defining expression, create new dm, then update
 		
 		$expression=$this->dupDefiningExpression();
+		var_dump($expression);
 		# to make the expression really work, we may need to call
 		# more here?
 		$expression->createNewInDatabase();
@@ -191,9 +192,11 @@ class DefinedMeaningModel {
 		# shouldn't this stuff be protected?
 		$expressionId=$expression->id;
 		$languageId=$expression->languageId;
-		$text="Copied Defined Meaning"; // this might work for now
-						// but where to get useful
-						// text?
+		#$text="Copied Defined Meaning"; // this might work for now
+		#				// but where to get useful
+		#				// text?
+
+		$text=$this->getTitleText();
 
 		#here we assume the DM is not there yet.. not entirely wise
 		#in the long run.
@@ -212,7 +215,7 @@ class DefinedMeaningModel {
 	protected function getIdStack($definedMeaningId) {
 		$o=OmegaWikiAttributes::getInstance();
 
-		$definedMeaningIdStructure = new Structure($o->$definedMeaningId);
+		$definedMeaningIdStructure = new Structure($o->definedMeaningId);
 		$definedMeaningIdRecord = new ArrayRecord($definedMeaningIdStructure, $definedMeaningIdStructure);
 		$definedMeaningIdRecord->definedMeaningId= $definedMeaningId;	
 		
@@ -275,9 +278,10 @@ class DefinedMeaningModel {
 	protected function dupDefiningExpression() {
 
 		$record=$this->getRecord();
-		$expression=$record->getValue("defined-meaning-full-defining-expression");
-		$spelling=$expression->getValue("defined-meaning-defining-expression");
-		$language=$expression->getValue("language");
+		$expression=$record->expression;
+		echo var_dump($expression);
+		$spelling=$expression->definedMeaningDefiningExpression;
+		$language=$expression->language;
 		return findOrCreateExpression($spelling, $language);
 	}
 	

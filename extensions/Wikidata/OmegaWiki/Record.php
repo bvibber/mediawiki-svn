@@ -6,7 +6,7 @@ require_once('OmegaWikiAttributes.php');
 
 interface Record {
 	public function getStructure();
-	public function getAttributeValue(Attribute $attribute);
+	public function getAttributeValue($attribute);
 	public function project(Structure $structure);
 }
 
@@ -25,7 +25,7 @@ class ArrayRecord implements Record {
 		return $this->structure;
 	}
 	
-	public function getAttributeValue(Attribute $attribute) {
+	public function getAttributeValue($attribute) {
 		#FIXME: check if valid
 		return @$this->values[$attribute->id];
 	}
@@ -52,7 +52,8 @@ class ArrayRecord implements Record {
 	 * In future, this should check against an attributes global with string
 	 * lookup, and might even be smart.
 	 * For now, this just does a direct lookup.
-	 * @deprecated use __get and __set instead
+	 *
+	 * @deprecated use __get and __set instead now
 	 */
 	public function getValue($key) {
 		return @$this->values[$key];	
