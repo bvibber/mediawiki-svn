@@ -738,14 +738,41 @@ function startsWith(value, prefix) {
 	return value.toLowerCase().substr(0, prefix.length) == prefix.toLowerCase();
 }
 
+function IsNumeric(sText){
+   var ValidChars = "0123456789. ";
+   var IsNumber=true;
+   var Char;
+
+ 
+   for (i = 0; i < sText.length && IsNumber == true; i++){ 
+      Char = sText.charAt(i); 
+      if (ValidChars.indexOf(Char) == -1){
+         IsNumber = false;
+      }
+   }
+   return IsNumber;   
+}
+
+function trim(value){
+  value = value.replace(/^\s+/,'');
+  value = value.replace(/\s+$/,'');
+  return value;
+}
+
 function urlFieldChanged(urlField) {
 	var labelField = document.getElementById(stripSuffix(urlField.id, "url") + "label");
 	var url = urlField.value;
-	
-//	if (startsWith(url, "http://www.ncbi.nlm.nih.gov")) {
-//		var pubMedId = 1000;	
-//		labelField.value = getPubMedTitle(pubMedId);
-//	}
+
+	if (startsWith(url, "http://www.ncbi.nlm.nih.gov")  ) {
+		pubMedIdRec = ExtractText( url, "TermToSearch=", 0, "&ordinalpos", 0 );
+		if ( pubMedIdRec != null ){
+			labelField.value = getPubMedTitle(pubMedIdRec[1]);
+		}
+	}
+	else if ( IsNumeric( url ) ){
+		labelField.value = getPubMedTitle(trim(url));
+		urlField.value = "http://www.ncbi.nlm.nih.gov/sites/entrez?Db=pubmed&Cmd=ShowDetailView&TermToSearch=" + trim(url) + "&ordinalpos=1&itool=EntrezSystem2.PEntrez.Pubmed.Pubmed_ResultsPanel.Pubmed_RVDocSum";
+	}
 }
 
 // Knewco specific Javascript
@@ -815,10 +842,10 @@ function getPubMedTitle( pmid ){
         }
 
         xmlhttp.open( "GET", "http://"+ HOST + "/knewco/get.py?http://www.ncbi.nlm.nih.gov/entrez/utils/pmfetch.fcgi?db=PubMed&id="+pmid+"&report=xml&mode=text", false );
-         xmlhttp.send(null);
+        xmlhttp.send(null);
 
         if ( xmlhttp.status == 200){
-            AuthorsRec = ExtractText( xmlhttp.responseText, "<AuthorList>", 0, "</AuthorList>", 0 );
+            AuthorsRec = ExtractText( xmlhttp.responseText, "<AuthorList", 0, "</AuthorList>", 0 );
             if ( AuthorsRec != null ) {
                 Authors = AuthorsRec[1];
             }
@@ -829,7 +856,7 @@ function getPubMedTitle( pmid ){
             var Offset = 0;
             var AuthorText = "";
             while (true) {
-                AuthorRec = ExtractText( Authors.slice( Offset ), "<Author>", 0, "</Author>", 0 );
+                AuthorRec = ExtractText( Authors.slice( Offset ), "<Author", 0, "</Author>", 0 );
                 if ( AuthorRec == null ){
                     break;
                 }
@@ -867,10 +894,15 @@ function getPubMedTitle( pmid ){
             }
             TitleRec = ExtractText( xmlhttp.responseText, "<ArticleTitle>", 0, "</ArticleTitle>", 0 );
             if ( TitleRec != null ){
-                return [AuthorText, TitleRec[1]];
+            	if ( AuthorText != "" ){
+                	return AuthorText + ". " + TitleRec[1];
+            	}
+            	else {
+                	return TitleRec[1];            		
+            	}
             }
             else {
-                return [AuthorText, "unknown title"];
+                return AuthorText;
             }
         }
     } catch(e){
