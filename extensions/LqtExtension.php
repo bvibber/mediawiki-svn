@@ -284,8 +284,8 @@ HTML;
 		}
 		
 		$e = new EditPage($article);
-		$e->suppressIntro = true;
 		
+		$e->suppressIntro = true;
 		$e->editFormTextBeforeContent .=
 			$this->perpetuate('lqt_method', 'hidden') .
 			$this->perpetuate('lqt_operand', 'hidden');
@@ -316,28 +316,28 @@ HTML;
 		// For replies and new posts, insert the associated thread object into the DB.
 		if ($edit_type != 'editExisting' && $edit_type != 'summarize' && $e->didSave) {
 			if ( $edit_type == 'reply' ) {
-				$thread = Threads::newThread( $article, $this->article, $edit_applies_to );
-				$edit_applies_to->commitRevision(Threads::CHANGE_REPLY_CREATED, $thread);
+				$thread = Threads::newThread( $article, $this->article, $edit_applies_to, $e->summary );
+				$edit_applies_to->commitRevision(Threads::CHANGE_REPLY_CREATED, $thread, $e->summary);
 			} else {
-				$thread = Threads::newThread( $article, $this->article );
+				$thread = Threads::newThread( $article, $this->article, $e->summary );
 			}
 		}
 		
 		if ($edit_type == 'summarize' && $e->didSave) {
 			$edit_applies_to->setSummary( $article );
-			$edit_applies_to->commitRevision(Threads::CHANGE_EDITED_SUMMARY, $edit_applies_to);
+			$edit_applies_to->commitRevision(Threads::CHANGE_EDITED_SUMMARY, $edit_applies_to, $e->summary);
 		}
 		
 		// Move the thread and replies if subject changed.
 		if( $edit_type == 'editExisting' && $e->didSave ) {
 			$subject = $this->request->getVal('lqt_subject_field', '');
 			if ( $subject && $subject != $thread->subjectWithoutIncrement() ) {
-				$reason = $this->request->getVal("wpSummary", "");
-				$this->renameThread($thread, $subject, $reason);
+//				$reason = $this->request->getVal("wpSummary", "");
+				$this->renameThread($thread, $subject, $e->summary);
 			}
 			// this is unrelated to the subject change and is for all edits:
 			$thread->setRootRevision( Revision::newFromTitle($thread->root()->getTitle()) );
-			$thread->commitRevision( Threads::CHANGE_EDITED_ROOT, $thread );
+			$thread->commitRevision( Threads::CHANGE_EDITED_ROOT, $thread, $e->summary );
 		}
 	}
 	
@@ -991,16 +991,27 @@ class ThreadHistoryPager extends PageHistoryPager {
 	 * @return string HTML output for the row
 	 */
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
+		global $wgLang, $wgOut; // TODO global.
+		
+		$hthread = HistoricalThread::fromTextRepresentation($row->hthread_contents);
+		
 		/* TODO: best not to refer to LqtView class directly. */
 		/* We don't use oldid because that has side-effects. */
 		$result = array();
-		$change_names = array(Threads::CHANGE_EDITED_ROOT => "Comment text edited",
-		                      Threads::CHANGE_EDITED_SUMMARY => "Summary changed",
-		                      Threads::CHANGE_REPLY_CREATED => "New reply created",
-		                      Threads::CHANGE_NEW_THREAD => "New thread created");
+		$change_names = array(Threads::CHANGE_EDITED_ROOT => "Comment text edited:",
+		                      Threads::CHANGE_EDITED_SUMMARY => "Summary changed:",
+		                      Threads::CHANGE_REPLY_CREATED => "New reply created:",
+		                      Threads::CHANGE_NEW_THREAD => "New thread created:");
 		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $row->hthread_revision );
-		$result[] = "<tr><td><a href=\"$url\">" . $row->hthread_revision . '</a></td>';
-		$result[] = "<td>Revision type: {$change_names[$row->hthread_change_type]}.</td></tr>";
+		
+		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $hthread->changeUser() ), false );
+		
+		$result[] = "<tr>";
+		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($this->thread->timestamp()) . "</a></td>";
+		$result[] = "<td>" . $sig . "</td>";
+		$result[] = "<td>{$change_names[$row->hthread_change_type]}</td>";
+		$result[] = "<td>" . $hthread->changeComment() . "</td>";
+		$result[] = "</tr>";
 		return implode('', $result);
 	}
 	function getNotificationTimestamp() {

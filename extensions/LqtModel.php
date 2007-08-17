@@ -100,6 +100,7 @@ class Post extends Article {
 
 class HistoricalThread extends Thread {
 	function __construct($t) {
+		/* SCHEMA changes must be reflected here. */
 		$this->rootId = $t->rootId;
 		$this->rootRevision = $t->rootRevision;
 		$this->articleId = $t->articleId;
@@ -112,6 +113,9 @@ class HistoricalThread extends Thread {
 		$this->revisionNumber = $t->revisionNumber;
 		$this->changeType = $t->changeType;
 		$this->changeObject = $t->changeObject;
+		$this->changeComment = $t->changeComment;
+		$this->changeUser = $t->changeUser;
+		$this->changeUserText = $t->changeUserText;
 		
 		$this->replies = array();
 		foreach ($t->replies as $r) {
@@ -154,6 +158,8 @@ class HistoricalThread extends Thread {
 }
 
 class Thread {
+	/* SCHEMA changes must be reflected here. */
+	
 	/* ID references to other objects that are loaded on demand: */
 	protected $rootId;
 	protected $articleId;
@@ -180,6 +186,9 @@ class Thread {
 	
 	protected $changeType;
 	protected $changeObject;
+	protected $changeComment;
+	protected $changeUser;
+	protected $changeUserText;
 	
 	/* Only used by $double to be saved into a historical thread. */
 	protected $rootRevision;
@@ -232,13 +241,19 @@ class Thread {
 		     __METHOD__);
 	}
 	
-	function commitRevision($change_type, $change_object = null) {
+	function commitRevision($change_type, $change_object = null, $reason = "") {
 		global $wgUser; // TODO global.
+		
+		$this->changeComment = $reason;
+		$this->changeUser = $wgUser->getID();
+		$this->changeUserText = $wgUser->getName();
 		
 		// TODO open a transaction.
 		HistoricalThread::create( $this->double );
 
 		$this->bumpRevisionsOnAncestors($change_type, $change_object);
+		
+		/* SCHEMA changes must be reflected here. */
 		
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
@@ -251,7 +266,11 @@ class Thread {
 					'thread_article_namespace' => $this->articleNamespace,
 				    'thread_article_title' => $this->articleTitle,
 					'thread_change_type' => $this->changeType,
-					'thread_change_object' => $this->changeObject),
+					'thread_change_object' => $this->changeObject,
+					'thread_change_comment' => $this->changeComment,
+					'thread_change_user' => $this->changeUser,
+					'thread_change_user_text' => $this->changeUserText,
+					),
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     __METHOD__);
 	
@@ -337,6 +356,8 @@ class Thread {
 	
 
 	function __construct($line, $children) {
+		/* SCHEMA changes must be reflected here. */
+		
 		$this->id = $line->thread_id;
 		$this->rootId = $line->thread_root;
 		$this->articleId = $line->thread_article;
@@ -349,6 +370,9 @@ class Thread {
 		$this->type = $line->thread_type;
 		$this->changeType = $line->thread_change_type;
 		$this->changeObject = $line->thread_change_object;
+		$this->changeComment = $line->thread_change_comment;
+		$this->changeUser = $line->thread_change_user;
+		$this->changeUserText = $line->thread_change_user_text;
 		
 		$this->replies = $children;
 		
@@ -566,6 +590,18 @@ class Thread {
 		} else {
 			$this->changeObject = $o->id();
 		}
+	}
+	
+	function changeUser() {
+		if( $this->changeUser == 0 ) {
+			return User::newFromName($this->changeUserText);
+		} else {
+			return User::newFromId($this->changeUser);
+		}
+	}
+	
+	function changeComment() {
+		return $this->changeComment;
 	}
 }
 

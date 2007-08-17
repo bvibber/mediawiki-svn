@@ -17,6 +17,9 @@ CREATE TABLE /*$wgDBprefix*/thread (
 
   thread_change_type int(4) unsigned NOT NULL,
   thread_change_object int(8) unsigned NULL,
+  thread_change_comment tinyblob NOT NULL,
+  thread_change_user int unsigned NOT NULL default '0',
+  thread_change_user_text varchar(255) binary NOT NULL default '',
 
   PRIMARY KEY thread_id (thread_id),
   UNIQUE INDEX thread_id (thread_id),
