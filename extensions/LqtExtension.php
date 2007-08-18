@@ -991,9 +991,13 @@ class ThreadHistoryPager extends PageHistoryPager {
 	 * @return string HTML output for the row
 	 */
 	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
-		global $wgLang, $wgOut; // TODO global.
-		
+
 		$hthread = HistoricalThread::fromTextRepresentation($row->hthread_contents);
+		return $this->rowForThread($hthread);
+	}
+	
+	private function rowForThread($t) {
+		global $wgLang, $wgOut; // TODO global.
 		
 		/* TODO: best not to refer to LqtView class directly. */
 		/* We don't use oldid because that has side-effects. */
@@ -1002,18 +1006,19 @@ class ThreadHistoryPager extends PageHistoryPager {
 		                      Threads::CHANGE_EDITED_SUMMARY => "Summary changed:",
 		                      Threads::CHANGE_REPLY_CREATED => "New reply created:",
 		                      Threads::CHANGE_NEW_THREAD => "New thread created:");
-		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $row->hthread_revision );
+		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $t->revisionNumber() );
 		
-		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $hthread->changeUser() ), false );
+		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $t->changeUser() ), false );
 		
 		$result[] = "<tr>";
-		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($this->thread->timestamp()) . "</a></td>";
+		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->timestamp()) . "</a></td>";
 		$result[] = "<td>" . $sig . "</td>";
-		$result[] = "<td>{$change_names[$row->hthread_change_type]}</td>";
-		$result[] = "<td>" . $hthread->changeComment() . "</td>";
+		$result[] = "<td>{$change_names[$t->changeType()]}</td>";
+		$result[] = "<td>" . $t->changeComment() . "</td>";
 		$result[] = "</tr>";
 		return implode('', $result);
 	}
+	
 	function getNotificationTimestamp() {
 		return "foo";
 	}
@@ -1025,11 +1030,16 @@ class ThreadHistoryPager extends PageHistoryPager {
 	function getStartBody() {
 		$this->mLastRow = false;
 		$this->mCounter = 1;
-		return '<table>';
+
+		// Due to the screwy way we're doing history, the last revision we show,
+		// that is, the current revision, is in the thread table, not the
+		// historical_thread table. aurggghhh!
+		// TODO paging.
+		return '<table>' . $this->rowForThread($this->thread);
 	}
 
 	function getEndBody() {
-		return "</table>";
+		return '</table>';
 	}
 }
 
