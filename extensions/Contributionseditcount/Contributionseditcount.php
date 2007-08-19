@@ -20,29 +20,28 @@ $wgExtensionCredits['other'][] = array(
 );
 
 function wfContributionseditcount() {
+
 	wfUsePHP( 5.0 );
 	wfUseMW( '1.6alpha' );
 
 	class Contributionseditcount {
+
 		public function __construct() {
 			global $wgMessageCache, $wgHooks;
-
-			$wgMessageCache->addMessage( 'contributionseditcount', 'This user has $1 edits.' );
-
+			require_once( dirname( __FILE__ ) . '/Contributionseditcount.i18n.php' );
+			foreach( efContributionseditcountMessages() as $lang => $messages )
+				$wgMessageCache->addMessages( $messages, $lang );
 			$wgHooks['SpecialContributionsBeforeMainOutput'][] = array( &$this, 'hook' );
 		}
 		
 		public function hook( $uid ) {
 			global $wgOut, $wgLang;
-
 			if ( $uid != 0 )
 				$wgOut->addWikiText( wfMsg( 'contributionseditcount', $wgLang->formatNum( User::edits( $uid ) ) ) );
-
 			return true;
 		}
 	}
 
-	// Establish a singleton.
-	new Contributionseditcount;
-}
+	new Contributionseditcount();
 
+}
