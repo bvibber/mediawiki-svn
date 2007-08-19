@@ -14,7 +14,7 @@ function efContributionseditcountMessages()  {
 
 /* French */
 'fr' => array(
-	'contributionseditcount'  =>  'Cet utilisateur a $1 ditions.',
+	'contributionseditcount'  =>  'Cet utilisateur a $1 éditions.',
 ),
 
 );
