@@ -150,17 +150,17 @@ $wgDPL2Messages['fr'] = array(
 	 * $2: default param value used instead by program
 	*/
 	'dpl2_debug_' . DPL2_WARN_WRONGPARAM_INT => "AVERTISSEMENT : Mauvais paramètre '$0' : '$1'! Utilisattion de la valeur par défaut : '$2' (aucune limite). Aide : <code>$0= <i>chaîne vide</i> (aucune limite) | n</code>, avec <code>n</code> un entier positif.",
-	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'AVERTISSEMENT : No results!',
+	'dpl2_debug_' . DPL2_WARN_NORESULTS => 'AVERTISSEMENT : Aucun résultat !',
 	'dpl2_debug_' . DPL2_WARN_CATOUTPUTBUTWRONGPARAMS => "AVERTISSEMENT : Les paramètres Add* ('adduser', 'addeditdate', etc.)' et 'includepage' n’ont aucun effet avec 'mode=category'. Seuls l’espace de nom et le titre de la page peuvent être vus dans ce mode..",
 	/**
 	 * $0: 'headingmode' value given by user
 	 * $1: value used instead by program (which means no heading)
 	*/
-	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "AVERTISSEMENT : 'headingmode=$0' has no effect with 'ordermethod' on a single component. Using: '$1'. Help: you can use not-$1 'headingmode' values with 'ordermethod' on multiple components. The first component is used for headings. E.g. 'ordermethod=category,<i>comp</i>' (<i>comp</i> is another component) for category headings.",
+	'dpl2_debug_' . DPL2_WARN_HEADINGBUTSIMPLEORDERMETHOD => "AVERTISSEMENT : 'headingmode=$0' n'a aucun effet avec 'ordermethod' sur une simple composante. Utiliser : '$1'. Aide : vous pouvez utiliser not-$1  sur les valeurs de 'headingmode' avec 'ordermethod' sur plusieurs composantes.  La première composante est utilisée pour les en-têtes. Exemple : 'ordermethod=category,<i>comp</i>' (<i>comp</i> est une autre composante) pour les en-têtes de catégorie.",
 	/**
 	 * $0: 'debug' value
 	*/
-	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "AVERTISSEMENT : 'debug=$0' n’est pas en première position dans l’élément DPL. Les nouveaux réglages de débuggage ne seront appliqués qu’après que les paramètres précédents aient été vérifiés.",
+	'dpl2_debug_' . DPL2_WARN_DEBUGPARAMNOTFIRST => "AVERTISSEMENT : 'debug=$0' n’est pas en première position dans l’élément DPL. Les nouveaux réglages de débogage ne seront appliqués qu’après que les paramètres précédents aient été vérifiés.",
 	/**
 	 * $0: title of page that creates an infinite transclusion loop
 	*/
@@ -1003,5 +1003,6 @@ $wgDPL2Messages['zh-hk'] = $wgDPL2Messages['zh-hant'];
 $wgDPL2Messages['zh-sg'] = $wgDPL2Messages['zh-hans'];
 $wgDPL2Messages['zh-tw'] = $wgDPL2Messages['zh-hant'];
 $wgDPL2Messages['zh-yue'] = $wgDPL2Messages['yue'];
+
 
 
