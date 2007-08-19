@@ -20,6 +20,11 @@ function efNewUserNotifMessages() {
 	'newusernotifbody' => "Hallo $1,\n\nEin neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.",
 ),
 
+'fr' => array(
+	'newusernotifsubj' => 'Notification d’un nouvel utilisateur pour $1',
+	'newusernotifbody' => "Bonjour $1,\n\nUn nouveau compte utilisateur, $2, a été créé sur $3 le $4.",
+),
+
 'yue' => array(
 	'newusernotifsubj' => '$1嘅新用戶通知',
 	'newusernotifbody' => "你好 $1，\n\n一個新嘅用戶戶口$2，已經響$4喺$3度開咗。",
