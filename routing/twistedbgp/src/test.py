@@ -36,20 +36,21 @@ class BGPDebug(object):
         # Add internal attribute 'last update'
         attrSet.add(bgp.LastUpdateIntAttribute((0, bgp.ATTR_TYPE_INT_LAST_UPDATE, datetime.datetime.now())))
         
-        #for prefix in withdrawnPrefixes:
-        #    try:
-        #        del self.prefixes[prefix]
-        #    except KeyError:
-        #        print "withdrawn prefix", prefix, "not found."
+        for prefix in withdrawnPrefixes:
+            try:
+                self.prefixes.delete(str(prefix))
+                #del self.prefixes[prefix]
+            except KeyError:
+                print "withdrawn prefix", prefix, "not found."
 
         for prefix in nlri:
             #self.prefixes[prefix] = attrSet
             p = self.prefixes.add(str(prefix))
             p.data["attributes"] = attrSet
-            #print p.prefix
+            #print prefix, p.prefix
 
     def printStats(self):
-        print "Now %d prefixes in table, %d total nlri, %d withdrawals" % (len(self.prefixes.nodes()), self.nlriCount, self.withdrawnCount)
+        print "Now %d prefixes in table, %d total nlri, %d withdrawals" % (len(self.prefixes.prefixes()), self.nlriCount, self.withdrawnCount)
         
         #p = bgp.IPPrefix('145.97.32/20')
         try:
@@ -59,6 +60,7 @@ class BGPDebug(object):
             for a in attrSet:
                 print "\t", a.name, a                
         except: pass
+
 
 #bgpprot = bgp.BGP(myASN=14907, bgpId=1)
 

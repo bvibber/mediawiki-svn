@@ -177,7 +177,8 @@ class IPPrefix(object):
         # TODO: IPv6
     
     def __str__(self):
-        return ".".join([str(ord(o)) for o in self.prefix]) + '/%d' % self.prefixlen
+        prefix = self.prefix +  ('\0\0\0\0'[:4-len(self.prefix)])
+        return ".".join([str(ord(o)) for o in prefix]) + '/%d' % self.prefixlen
     
     def __eq__(self, other):
         # FIXME: masked ips
