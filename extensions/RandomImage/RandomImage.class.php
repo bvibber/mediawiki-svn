@@ -78,7 +78,7 @@ class RandomImage {
 	/**
 	 * Prepare image markup for the given image
 	 *
-	 * @param File $image Image
+	 * @param File $image Image to render
 	 * @return string
 	 */
 	protected function buildMarkup( $image ) {
@@ -86,9 +86,32 @@ class RandomImage {
 		$parts[] = $this->width;
 		if( $this->float )
 			$parts[] = $this->float;
-		if( $this->caption )
-			$parts[] = $this->caption;
+		$parts[] = $this->getCaption( $image->getTitle() );
 		return '[[' . implode( '|', $parts ) . ']]';
+	}
+
+	/**
+	 * Obtain caption text for a given image
+	 *
+	 * @param Title $title Image page to take caption from
+	 * @return string
+	 */
+	protected function getCaption( $title ) {
+		if( !$this->caption ) {
+			if( $title->exists() ) {
+				$text = Revision::newFromTitle( $title )->getText();
+				if( preg_match( '!<randomcaption>(.*?)</randomcaption>!i', $text, $matches ) ) {
+					$this->caption = $matches[1];
+				} elseif( preg_match( "!^(.*?)\n!i", $text, $matches ) ) {
+					$this->caption = $matches[1];
+				} else {
+					$this->caption = $text;
+				}
+			} else {
+				$this->caption = '';
+			}
+		}
+		return $this->caption;
 	}
 	
 	/**
@@ -127,8 +150,10 @@ class RandomImage {
 	protected function pickFromDatabase() {
 		wfProfileIn( __METHOD__ );
 		$dbr = wfGetDB( DB_SLAVE );
+		list( $image, $page ) = $dbr->tableNamesN( 'image', 'page' );
+		$ind = $dbr->useIndexClause( 'page_random' );
 		$res = $dbr->select(
-			'page',
+			"{$page} {$ind} LEFT JOIN {$image} ON img_name = page_title",
 			array(
 				'page_namespace',
 				'page_title',
@@ -137,10 +162,10 @@ class RandomImage {
 				'page_namespace' => NS_IMAGE,
 				'page_is_redirect' => 0,
 				'page_random > ' . $dbr->addQuotes( wfRandom() ),
+				'img_major_mime' => 'image',
 			),
 			__METHOD__,
 			array(
-				'USE INDEX' => 'page_random',
 				'ORDER BY' => 'page_random',
 				'LIMIT' => 1,
 			)
@@ -162,12 +187,25 @@ class RandomImage {
 	 * @param Parser $parser Parent parser
 	 * @return string
 	 */
-	public static function hook( $input, $args, $parser ) {
+	public static function renderHook( $input, $args, $parser ) {
 		global $wgRandomImageNoCache;
 		if( $wgRandomImageNoCache )
 			$parser->disableCache();
 		$random = new RandomImage( $parser, $args, $input );
 		return $random->render();
+	}
+	
+	/**
+	 * Strip <randomcaption> tags out of page text
+	 *
+	 * @param Parser $parser Calling parser
+	 * @param string $text Page text
+	 * @return bool
+	 */
+	public static function stripHook( $parser, &$text ) {
+		wfDebugLog( 'rimage', __METHOD__ . ": Text is `{$text}`" );
+		$text = preg_replace( '!</?randomcaption>!i', '', $text );
+		return true;
 	}
 	
 }

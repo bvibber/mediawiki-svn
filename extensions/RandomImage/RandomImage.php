@@ -31,8 +31,9 @@ if( defined( 'MEDIAWIKI' ) ) {
 	 * Extension initialisation function
 	 */
 	function efRandomImage() {
-		global $wgParser;
-		$wgParser->setHook( 'randomimage', 'RandomImage::hook' );
+		global $wgParser, $wgHooks;
+		$wgParser->setHook( 'randomimage', 'RandomImage::renderHook' );
+		$wgHooks['ParserAfterStrip'][] = 'RandomImage::stripHook';
 	}
 	
 } else {
