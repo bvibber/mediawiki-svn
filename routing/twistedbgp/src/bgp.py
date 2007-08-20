@@ -86,6 +86,8 @@ ATTR_TYPE_ATOMIC_AGGREGATE = 6
 ATTR_TYPE_AGGREGATOR = 7
 ATTR_TYPE_COMMUNITY = 8
 
+ATTR_TYPE_INT_LAST_UPDATE = 256 + 1
+
 # Exception classes
 
 class BGPException(Exception):
@@ -171,31 +173,41 @@ class IPPrefix(object):
             raise ValueError
     
     def __repr__(self):
-        return repr(".".join([str(ord(o)) for o in self.prefix]) + '/%d' % self.prefixlen)
+        return repr(str(self))
         # TODO: IPv6
     
+    def __str__(self):
+        return ".".join([str(ord(o)) for o in self.prefix]) + '/%d' % self.prefixlen
+    
     def __eq__(self, other):
+        # FIXME: masked ips
         return self.prefixlen == other.prefixlen and self.prefix == other.prefix
     
     def __ne__(self, other):
         return not self.__eq__(other)
     
     def __lt__(self, other):
-        return self.prefixlen < other.prefixlen or \
-            (self.prefixlen == other.prefixlen and self.prefix < other.prefix)
+        return self.prefix < other.prefix or \
+            (self.prefix == other.prefix and self.prefixlen < other.prefixlen)
     
     def __le__(self, other):
         return self.__lt__(other) or self.__eq__(other)
     
     def __gt__(self, other):
-        return self.prefixlen > other.prefixlen or \
-            (self.prefixlen == other.prefixlen and self.prefix > other.prefix)
+        return self.prefix > other.prefix or \
+            (self.prefix == other.prefix and self.prefixlen > other.prefixlen)
     
     def __ge__(self, other):
         return self.__gt__(other) or self.__eq__(other)
     
     def __hash__(self):
-        return self.prefix.__hash__() ^ self.prefixlen.__hash__()
+        return hash(self.prefix) ^ hash(self.prefixlen)
+    
+    def __len__(self):
+        return self.prefixlen
+
+    def ipToInt(self):
+        return reduce(lambda x, y: x * 256 + y, map(ord, self.prefix))
 
 class IPv4IP(IPPrefix):
     """Class that represents a single non-prefix IPv4 IP."""
@@ -206,8 +218,8 @@ class IPv4IP(IPPrefix):
         else:
             super(IPv4IP, self).__init__((ip, 32))
 
-    def __repr__(self):
-        return repr(".".join([str(ord(o)) for o in self.prefix]))
+    def __str__(self):
+        return ".".join([str(ord(o)) for o in self.prefix])
 
 class Attribute(object):
     """Base class for all BGP attribute classes"""
@@ -418,6 +430,14 @@ class CommunityAttribute(Attribute):
     
     def __str__(self):
         return str(["%d:%d" % (c / 2**16, c % 2**16) for c in self.value])
+
+class LastUpdateIntAttribute(Attribute):
+    name = 'Last Update'
+    
+    def __init__(self, attrTuple):
+        super(LastUpdateIntAttribute, self).__init__(attrTuple)
+        
+        self.value = attrTuple[2]
     
 Attribute.typeToClass = {
     ATTR_TYPE_ORIGIN:            OriginAttribute,
@@ -427,7 +447,9 @@ Attribute.typeToClass = {
     ATTR_TYPE_LOCAL_PREF:        LocalPrefAttribute,
     ATTR_TYPE_ATOMIC_AGGREGATE:  AtomicAggregateAttribute,
     ATTR_TYPE_AGGREGATOR:        AggregatorAttribute,
-    ATTR_TYPE_COMMUNITY:         CommunityAttribute
+    ATTR_TYPE_COMMUNITY:         CommunityAttribute,
+    
+    ATTR_TYPE_INT_LAST_UPDATE:   LastUpdateIntAttribute
 }
 
 class AttributeSet(set):
