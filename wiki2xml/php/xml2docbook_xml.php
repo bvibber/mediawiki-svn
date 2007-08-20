@@ -44,12 +44,12 @@ class element {
 	}
 	
 	function fix_text ( $s ) {
-		$s = html_entity_decode ( $s ) ;
-		filter_named_entities ( $s ) ;
-		$s = str_replace ( "&" , "&amp;" , $s ) ;
-		$s = str_replace ( "<" , "&lt;" , $s ) ;
-		$s = str_replace ( ">" , "&gt;" , $s ) ;
-		return utf8_decode ( $s ) ;
+    $s = html_entity_decode ( $s , ENT_COMPAT, 'UTF-8') ; // dbu 2007-08-20
+    filter_named_entities ( $s ) ;
+    $s = str_replace ( "&" , "&amp;" , $s ) ;
+    $s = str_replace ( "<" , "&lt;" , $s ) ;
+    $s = str_replace ( ">" , "&gt;" , $s ) ;
+    return $s; // utf8_decode ( $s ) ; // dbu 2007-08-20 
 	}
 	
 	function add_temp_text ( &$temp ) {
