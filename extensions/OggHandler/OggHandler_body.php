@@ -362,7 +362,7 @@ class OggTransformOutput extends MediaTransformOutput {
 		$this->isVideo = $isVideo;
 	}
 
-	function toHtml( $attribs = array() , $linkAttribs = false ) {
+	function toHtml( $attribs = array() , $linkAttribs = array() ) {
 		wfLoadExtensionMessages( 'OggHandler' );
 
 		OggTransformOutput::$serial++;
