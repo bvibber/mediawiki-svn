@@ -15,7 +15,7 @@ foreach( efAsksqlMessages() as $lang => $messages ) {
 class SpecialAsksql extends SpecialPage {
 
 	function SpecialAsksql() {
-		SpecialPage::SpecialPage("Asksql");
+		SpecialPage::SpecialPage( 'Asksql', 'asksql' );
 	}
 
 	function execute( $par ) {
