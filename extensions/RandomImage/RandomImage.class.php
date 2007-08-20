@@ -10,7 +10,7 @@ class RandomImage {
 
 	private $parser = null;
 	
-	private $width = 'thumb';
+	private $width = false;
 	private $float = false;
 	private $caption = '';
 	
@@ -38,7 +38,7 @@ class RandomImage {
 		if( isset( $options['size'] ) ) {
 			$size = intval( $options['size'] );
 			if( $size > 0 )
-				$this->width = "{$size}px";			
+				$this->width = $size;			
 		}
 		if( isset( $options['float'] ) ) {
 			$float = strtolower( $options['float'] );
@@ -83,6 +83,12 @@ class RandomImage {
 	 */
 	protected function buildMarkup( $image ) {
 		$parts[] = $image->getTitle()->getPrefixedText();
+		if( $this->width !== false ) {
+			$parts[] = "{$this->width}px";
+			$parts[] = 'frame';
+		} else {
+			$parts[] = 'thumb';
+		}
 		$parts[] = $this->width;
 		if( $this->float )
 			$parts[] = $this->float;
