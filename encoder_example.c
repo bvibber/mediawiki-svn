@@ -69,7 +69,7 @@ static double rint(double x)
 }
 #endif
 
-const char *optstring = "o:a:A:v:V:s:S:f:F:";
+const char *optstring = "o:a:A:v:V:s:S:f:F:c";
 struct option options [] = {
   {"output",required_argument,NULL,'o'},
   {"audio-rate-target",required_argument,NULL,'A'},
@@ -103,9 +103,14 @@ typedef struct bufferFifoType bufferFifo;
 
 int *audio=NULL;
 int audio_fd;
+FILE *audio_cache_fd = NULL;
 
 int *video=NULL;
 int video_fd;
+FILE *video_cache_fd = NULL;
+
+int cache_input = 0;
+FILE *cache_current;
 
 bufferFifo *audio_buffer=NULL;
 bufferFifo *video_buffer=NULL;
@@ -231,10 +236,6 @@ int bufferFifoPut(bufferFifo *buffer, void *dataToAdd, int dataSize, char func)
 
 void waitFor(int *stream)
 {
-	//set blocking on streams
-	//fcntl(*video, F_SETFL, fcntl(*video, F_GETFL) & ~O_NONBLOCK);
-	//fcntl(*audio, F_SETFL, fcntl(*audio, F_GETFL) & ~O_NONBLOCK);
-
 	fd_set readStreams;
 	struct timeval tv;
 	int retval;
@@ -285,7 +286,7 @@ void waitFor(int *stream)
 				bufferFifoPut(otherBuffer, readSpace, status, 'w');
 			}
 		} else {
-			fprintf(stderr, "Timeout waiting for decoder to write new data!");
+			fprintf(stderr, "ERROR:1:Timeout waiting for decoder to write new data!");
 			exit(1);
 		}
 	}
@@ -332,8 +333,6 @@ int bufferFifoGet(bufferFifo *buffer, void *ptr, int dataSize)
 
 	return bytesPopped;
 }
-
-int fiforead(void *ptr, int size, int nItems, int *stream);
 
 int fiforead_hlpr(void *ptr, int totalNeeded, int *stream)
 {
@@ -435,6 +434,9 @@ int fiforead_hlpr(void *ptr, int totalNeeded, int *stream)
 int fiforead(void *ptr, int size, int nItems, int *stream)
 {
 	int bufferedRead = 0;
+	int retval;
+	int cache_status;
+
 	if(video != NULL && *stream == *video)
 	{
 		//check for buffered data
@@ -443,20 +445,44 @@ int fiforead(void *ptr, int size, int nItems, int *stream)
 		{
 			//fprintf(stderr, "Reading from video stream...\n");
 			//fiforead_hlpr readBytes = [size * nItems - sizeof(buffer)] from fifo:
-			return bufferedRead + fiforead_hlpr(ptr + bufferedRead, size * nItems - bufferedRead, video);
+			retval = bufferedRead + fiforead_hlpr(ptr + bufferedRead, size * nItems - bufferedRead, video);
 		} else {
-			return bufferedRead;
+			retval = bufferedRead;
 		}
+
+		if(cache_input)
+		{
+			cache_status = fwrite(ptr, 1, retval, video_cache_fd);
+			if( cache_status != retval)
+			{
+				fprintf(stderr, "ERROR:2:Failed writing video to decompressed cache. ");
+				cache_input = 0;
+			}
+		}
+
+		return retval;
 	} else if(audio != NULL && *stream == *audio)
 	{
 		//fprintf(stderr, "Reading from audio stream...\n");
 		bufferedRead = bufferFifoGet(audio_buffer, ptr, size * nItems);
 		if(bufferedRead < size * nItems)
 		{
-			return bufferedRead + fiforead_hlpr(ptr + bufferedRead, size * nItems - bufferedRead, audio);
+			retval =  bufferedRead + fiforead_hlpr(ptr + bufferedRead, size * nItems - bufferedRead, audio);
 		} else {
-			return bufferedRead;
+			retval = bufferedRead;
 		}
+
+		if(cache_input)
+		{
+			cache_status = fwrite(ptr, 1, retval, audio_cache_fd);
+			if( cache_status != retval)
+			{
+				fprintf(stderr, "ERROR:2:Failed writing audio to decompressed cache. ");
+				cache_input = 0;
+			}
+		}
+
+		return retval;
 	} else {
 		//the stream hasn't yet been identified. Duplicate fread functionality to get all bits
 		int unbufferedRead = 0;
@@ -471,17 +497,43 @@ int fiforead(void *ptr, int size, int nItems, int *stream)
 			} else if(rstatus == 0)
 			{
 				fprintf(stderr, "End of file while reading stream of unknown type\n");
+				if(cache_input) close(cache_input);
 				break;
 			} else {
 				unbufferedRead += rstatus;
-				/*
-				//wait 1/50th sec for more data on the target stream
-				struct timespec remaining;
-				struct timespec wait = {0, 20000000};
-				nanosleep(&wait, &remaining );
-				*/
+
+				fd_set readStreams;
+				struct timeval tv;
+				int retval;
+
+				FD_ZERO(&readStreams);
+				FD_SET(*stream, &readStreams);
+				tv.tv_sec = 15;
+				tv.tv_usec = 0;
+
+				retval = select(*stream + 1, &readStreams, NULL, NULL, &tv);
+				if(retval == -1)
+				{
+					fprintf(stderr, "Error while looking for new data to read.\n");
+					exit(1);
+				} else if(retval == 0)
+				{
+					fprintf(stderr, "ERROR:1:Timeout waiting for decompressed data stream (id_file stage).\n");
+					exit(1);
+				}
 			}
 		}
+
+		if(cache_input)
+		{
+			cache_status = fwrite(ptr, 1, unbufferedRead, cache_current);
+			if(cache_status != unbufferedRead)
+			{
+				fprintf(stderr, "ERROR:2:Could not write to decompressed cache.\n");
+				cache_input = 0;
+			}
+		}
+
 		//fprintf(stderr, "Read %d bytes on unidentified stream\n", unbufferedRead);
 		return unbufferedRead;
 	}
@@ -498,16 +550,30 @@ static void id_file(char *f){
 
   if(!strcmp(f,"-")){
     /* stdin */
-    testFileDescriptor=3;
+    testFileDescriptor=0;
   }else{
     testFileDescriptor=open(f,O_RDONLY);
     if(testFileDescriptor == -1){
       fprintf(stderr,"Unable to open file %s.\n",f);
       exit(1);
     } else {
+		// below may be redundant since slow devices are nonblocking
       fcntl(testFileDescriptor, F_SETFL, fcntl(testFileDescriptor, F_GETFL) & ~O_NONBLOCK);
     }
   }
+
+  if(cache_input)
+	{
+	  char *cacheName = malloc(strlen(f) + 6 + 1);
+	  strcat(cacheName, "cache_");
+	  strcat(cacheName, f);
+	  cache_current = fopen(cacheName, "w+b");
+	  if(cache_input == -1)
+		{
+		  fprintf(stderr, "ERROR:2:Unable to open decompression cache file %s\n", cacheName);
+		  cache_input = 0;
+		}
+	}
 
   ret=fiforead(buffer, 1, 4, test);
   if(ret<4){
@@ -528,19 +594,16 @@ static void id_file(char *f){
 
     ret=fiforead(buffer, 1, 4, test);
     ret=fiforead(buffer, 1, 4, test);
-    fprintf(stderr, "Read %d bytes\n", ret);
     if(ret<4)goto riff_err;
     if(!memcmp(buffer,"WAVE",4)){
 
       while( (ret=fiforead(buffer, 1, 4, test)) && ret != 0){
-        fprintf(stderr, "Read %d bytes\n", ret);
         if(ret<4)goto riff_err;
         if(!memcmp("fmt",buffer,3)){
 
           /* OK, this is our audio specs chunk.  Slurp it up. */
 
           ret=fiforead(buffer, 1, 20, test);
-          fprintf(stderr, "Read %d bytes\n", ret);
           if(ret<20)goto riff_err;
 
           extra_hdr_bytes = (buffer[0]  + (buffer[1] << 8) +
@@ -554,6 +617,7 @@ static void id_file(char *f){
 
           audio_fd = testFileDescriptor;
           audio=&audio_fd;
+		  audio_cache_fd = cache_current;
           audio_ch=buffer[6]+(buffer[7]<<8);
           audio_hz=buffer[8]+(buffer[9]<<8)+
             (buffer[10]<<16)+(buffer[11]<<24);
@@ -649,6 +713,7 @@ static void id_file(char *f){
 
       video_fd = testFileDescriptor;
       video=&video_fd;
+	  video_cache_fd = cache_current;
 
       fprintf(stderr,"File %s is %dx%d %.02f fps YUV12 video.\n",
               f,frame_x,frame_y,(double)video_hzn/video_hzd);
@@ -959,6 +1024,11 @@ int main(int argc,char *argv[]){
       audio_r=-1;
       break;
 
+    case 'c':
+		//copy input PCM/YUV to another file as it is read in
+		cache_input = 1;
+		break;
+
     case 'v':
       video_q=rint(atof(optarg)*6.3);
       if(video_q<0 || video_q>63){
@@ -1250,6 +1320,17 @@ int main(int argc,char *argv[]){
 
   if(outfile && outfile!=stdout)fclose(outfile);
 
+/*
+  if(audio_cache_fd)
+	{
+	  fclose(audio_cache_fd);
+	}
+
+  if(video_cache_fd)
+	{
+	  fclose(video_cache_fd);
+	}
+*/
   fprintf(stderr,"\r   \ndone.\n\n");
 
 #ifdef THEORA_PERF_DATA

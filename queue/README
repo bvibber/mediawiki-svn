@@ -1,0 +1,80 @@
+Installation steps:
+1. Install MPlayer. Tested on Mplayer 1.0rc1-4.1.1
+2. Obtain libtheora source.
+3. In your libtheora source directory, apply the supplied patch to 
+   examples/encoder_example. This will allow the encoder to work on data not 
+   saved to disk (sent from mplayer over named pipes instead), and makes a few
+   additional customizations like an option to write a copy of the incoming pcm
+   and yuv data to disk so it can be used to process subsequent recodes of the
+   same file.
+4. Make libtheora (and its dependents, libogg, ...)
+5. If the machine to be used does not already have a functional MediaWiki
+   installation, install it.
+6. Review and edit recode-config.php as necessary.
+8. If this is the first recode node you are setting up, you will need to add
+   the tables described in db_schema.txt to your database.
+7. Add a row for this node to your avrecode_farm table. Setting
+   notify_address equal to the NOTIFY_SCRIPT_URL is sufficient.
+8. Ensure that the user you run Apache as has read/write permissions to the
+   directory you have located recoded.php in.
+9. Start recoded.php. To permit signaling between the notify script and the
+   daemon, it should be run by the same user that runs apache.
+
+If you have done everything correctly, the daemon will check the queue
+immediately upon startup and start working if it finds a job. When there are
+no jobs to do, the daemon will sit idly waiting for the notify script to tell
+it to check the queue again.
+
+For the recoding queue and daemon to integrate with MediaWiki, MediaWiki must
+be able to answer such simple questions as "is this upload a video file?" and
+if so, "do we know how to convert it to theora?" My proposed solution to this
+is my work adding "Mime Plugins" to MimeMagic.php, and, in the case of A/V
+files specifically, includes/media/AV.php. This provides an uploadverification
+hook, a mime plugin, and an elementary media handler for video files which
+collectively add a good measure of support for A/V files to MediaWiki. (The
+daemon will in fact break if this mechanism is not in place, as it will not
+be able to determine the video's width, and so will not know what maximum sizes
+of recoded video to produce.) The hook, plugin, and handler are all powered by
+my AVInspector classes, which I have written for both the Ffmpeg php api and
+Mplayer's companion script, 'midentify.' You must have at least one installed.
+Ffmpeg is faster, midentify is more accurate with a small subset of files -
+for the best of both worlds install both, they will automatically be used as
+necessary in an optimized fashion.
+Even with these A/V support features, as of this writing there is still a
+missing component: Binding of files to media handlers is currently done by
+the file's guessed mime type. This is...inconvenient, because there are so many
+possible mime types that the video media handler (and future audio media
+handler) should be assigned to, and you can also make an argument that it is
+incorrect by design due to the ambiguous application/ogg which could go to
+either. I will leave making changes to the media handler framework up to its
+author, but I would suggest that it be modified so that handlers may be
+selected based on a file's MEDIATYPE if no direct mime-type match is found.
+
+My goal was only to recode uploaded video, but of course handling audio is a
+conceptually very similar task. While audio recoding is not supported, you can
+find references to audio files throughout my code in anticipation of future
+audio support. The main missing element is teaching the daemon how to
+interface with a vorbis encoder - encoder_example makes theora files only.
+This shouldn't be much more than translating JobStrategy objects into whatever
+parameter string your encoder wants, and writing an onAudioEncoderOutput and/or
+onAudioEncoderError function to handle the status and error information the
+encoder produces.
+
+I put considerable effort into allowing the notify script to automatically
+start the daemon if it has not been started manually. There is code in both 
+notify.php and recoded.php written with this intent, however it is still buggy
+at this time. Since this is a small convenience feature only, I am comfortable
+leaving its smoothing out to future improvements.
+
+By daemonizing the script that oversees the actions of MPlayer and the encoder,
+it is "theoretically" possible to employ a single persistent instance of
+MPlayer for all the decoding the daemon will do in its lifetime, a cleaner and
+more efficient approach than starting and killing instance after instance for
+every file processed. Unfortunately, the sole missing link to implementing the
+daemon in this way is that it is not currently possible to communicate new
+frame scaling dimensions to a persistent slave instance of MPlayer. Adding this
+capability to the MPlayer slave mode and updating recoded to take advantage of
+it is another obvious possible future improvement.
+
+Any further work by me on this project will be posted @
+svn.wikimedia.org/svnroot/mediawiki/branches/mikeb

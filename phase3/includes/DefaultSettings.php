@@ -1557,8 +1557,6 @@ $wgMediaHandlers = array(
 	'image/x-ms-bmp' => 'BmpHandler',
 	'image/svg+xml' => 'SvgHandler',
 	'image/vnd.djvu' => 'DjVuHandler',
-	MEDIATYPE_VIDEO => 'VideoHandler',
-	MEDIATYPE_AUDIO => 'AudioHandler'
 );
 
 

@@ -1350,5 +1350,116 @@ EOT
 
 function recodePut($img)
 {
-	var_dump($img);
+	if(! is_object($img))
+	{
+		return; //probably should throw some error
+	}
+
+	//if this is a re-upload of a file already running or enqueued, cancel it
+	$key = $img->getTitle()->getDBkey();
+
+	$db = wfGetDB(DB_SLAVE);
+	$deleted = false;
+
+	$enq = $db->selectRow('avrecode_queue', "q_img_name", "q_img_name = '$key'", __FUNCTION__);
+	if($enq !== false)
+	{
+		//drop old job from queue.
+		$dbw = wfGetDB(DB_MASTER);
+		$dbw->delete( 'avrecode_queue', array( 'q_img_name' => $key ), __FUNCTION__ );
+		$affected = $dbw->affectedRows();
+		$dbw->commit(); //because job queue does.
+		if($affected) $deleted = true;
+	}
+
+	if(!$deleted) //if we didn't delete it, it might be a running job right now
+	{
+		//look for it as a currently running job
+		$enq = $db->selectRow('avrecode_farm', 'notify_address', "img_name = '$key'", __FUNCTION__);
+		if($enq !== false)
+		{
+			/* 
+			* stop running recode.
+			* to ensure this node is back in the usable pool when we look for idle
+			* nodes to do the new upload, this MUST block until the node has
+			* finished updating the db.
+			*/
+
+			Http::addNameValuePair('cancel', $key);
+			$result = explode("\n", Http::post($enq->notify_address, 5), 2);
+			if($result[0] == 'success')
+			{
+				//be happy
+			} else if($result[0] == 'error')
+			{
+				//a log entry should probably be silently written with $result[1].
+				//this can theoretically occur if the job finished after the
+				//above query ran, which isn't anything to worry about.
+			} else {
+				//we didn't even communicate with the recoding daemon properly.
+				//this shouldn't happen...network problem? Crashed daemon?
+			}
+		}
+	}
+
+	// the audio/video specific code
+	if(
+		is_object($img)
+		&& $img->getMediaType() == MEDIATYPE_VIDEO
+		//|| $img->getMediaType() == MEDIATYPE_AUDIO
+	)
+	{
+		//add to queue
+		$dbw = wfGetDB(DB_MASTER);
+
+		$retryCount = 0;
+		do
+		{
+			//get next number in line
+			$max = $dbw->selectRow('avrecode_queue', 'MAX(q_order) + 1 AS m', array(), __FUNCTION__);
+			$max = $max->m;
+
+			$ins = $dbw->insert('avrecode_queue', array('q_order' => $max, 'q_img_name' => $key));
+			$insCount = $dbw->affectedRows();
+			$retryCount++;
+		} while((!$ins || $insCount == 0) && $retryCount < 4 );
+
+		if(!$ins || $insCount == 0)
+		{
+			//error, could not add to queue. Key exists from nearly concurrent upload?
+		} else {
+			//try to assign to an idle node
+			raiseIdleNode();
+		}
+	}
+}
+
+function raiseIdleNode($except = array())
+{
+	//echo "in raiseIdleNode ";
+	$conds = array("img_name = ''");
+	foreach($except AS $tmp)
+	{
+		$conds[] = "notify_address <> '$tmp'";
+	}
+
+	$dbw = wfGetDB(DB_MASTER);
+	// using a slave here would be a good way to get a populated queue and
+	// recode nodes sitting idly by
+	$node = $dbw->selectRow('avrecode_farm', 'notify_address', $conds);
+
+	if(is_object($node))
+	{
+		//echo ("contacting " . $node->notify_address);
+		//there is a free node to process the recode immediately
+		Http::addNameValuePair('recode', NULL);
+		$result = explode("\n", Http::post($node->notify_address, 4), 2);
+		if($result[0] == 'success')
+		{
+			//the node acknowledges and will check the queue for jobs.
+		} else {
+			$except[] = $node->notify_address;
+			raiseIdleNode($except);
+		}
+	}
 }

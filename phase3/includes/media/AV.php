@@ -492,7 +492,7 @@ class AVMimePlugin extends MimePlugin
 
 	protected function mimeInfo()
 	{
-		return 'video/x-ms-asf [VIDEO]';
+		return "video/x-ms-asf [VIDEO]\nvideo/quicktime [VIDEO]";
 	}
 
 	public function getMediaType($file, $mime)
@@ -512,6 +512,37 @@ class AVMimePlugin extends MimePlugin
 		} else {
 			return false;
 		}
+	}
+}
+
+class VideoHandler extends ImageHandler
+{
+	function canRender()
+	{
+		return false;
+	}
+
+	function doTransform( $image, $dstPath, $dstUrl, $params, $flags = 0 )
+	{
+		return false;
+	}
+
+	function getThumbType($ext, $mime)
+	{
+		return array('ogg', 'video/ogg');
+	}
+
+	function getImageSize( $image, $path )
+	{
+		$out = array();
+		$inspector = new CompositeAVInspector($path);
+		$out[0] = $inspector->getFrameWidth();
+		$out[1] = $inspector->getFrameHeight();
+		$out[2] = NULL;
+		$out[3] = 'height="' . $out[1] . '" width="' . $out[0] . '"';
+		$out[4] = MimeMagic::singleton()->guessMimeType($path);
+
+		return $out;
 	}
 }
 ?>

@@ -1,0 +1,721 @@
+--- encoder_example.c	2007-07-17 19:00:15.609958500 -0500
++++ /data/build/libtheora-dist/libtheora-1.0alpha7/examples/encoder_example.c	2006-06-12 17:57:36.000000000 -0500
+@@ -12,6 +12,7 @@
+ 
+   function: example encoder application; makes an Ogg Theora/Vorbis
+             file from YUV4MPEG2 and WAV input
++  last mod: $Id: encoder_example.c 11451 2006-05-28 18:18:26Z illiminable $
+ 
+  ********************************************************************/
+ 
+@@ -38,9 +39,6 @@
+ #include <stdio.h>
+ #ifndef WIN32
+ #include <unistd.h>
+-#include <sys/types.h>
+-#include <fcntl.h>
+-#include <errno.h>
+ #endif
+ #include <stdlib.h>
+ #include <string.h>
+@@ -69,7 +67,7 @@
+ }
+ #endif
+ 
+-const char *optstring = "o:a:A:v:V:s:S:f:F:c";
++const char *optstring = "o:a:A:v:V:s:S:f:F:";
+ struct option options [] = {
+   {"output",required_argument,NULL,'o'},
+   {"audio-rate-target",required_argument,NULL,'A'},
+@@ -83,37 +81,10 @@
+   {NULL,0,NULL,0}
+ };
+ 
+-struct bufferFifoNodeType
+-{
+-	struct bufferFifoNodeType *next;
+-	int size;
+-	char *data; //a de-facto 64k block
+-};
+-
+-struct bufferFifoType
+-{
+-	int totalBytes;
+-	struct bufferFifoNodeType *head;
+-	struct bufferFifoNodeType *tail;
+-};
+-
+-typedef struct bufferFifoType bufferFifo;
+-
+ /* You'll go to Hell for using globals. */
+ 
+-int *audio=NULL;
+-int audio_fd;
+-FILE *audio_cache_fd = NULL;
+-
+-int *video=NULL;
+-int video_fd;
+-FILE *video_cache_fd = NULL;
+-
+-int cache_input = 0;
+-FILE *cache_current;
+-
+-bufferFifo *audio_buffer=NULL;
+-bufferFifo *video_buffer=NULL;
++FILE *audio=NULL;
++FILE *video=NULL;
+ 
+ int audio_ch=0;
+ int audio_hz=0;
+@@ -171,376 +142,8 @@
+   exit(1);
+ }
+ 
+-int bufferFifoPut(bufferFifo *buffer, void *dataToAdd, int dataSize, char func)
+-{
+-	//fprintf(stderr, "In bufferFifoPut\n");
+-	if(dataSize <= 0) return 0;
+-
+-	//if it will fit in the last node, decide whether to spend time copying
+-	//or waste the rest of the last node's space and just point to another 64k block.
+-
+-	/*fprintf(stderr, "Buffering ");
+-	if(buffer == video_buffer)
+-	{
+-		fprintf(stderr, "video data...");
+-	} else if (buffer==audio_buffer)
+-	{
+-		fprintf(stderr, "audio data...");
+-	} else {
+-		fprintf(stderr, "called by %c\n", func);
+-	}
+-	*/
+-
+-	int tailSpace;
+-	if(buffer->tail != NULL)
+-	{
+-		//fprintf(stderr, "Accessing tail @ %p\n", buffer->tail);
+-		tailSpace = 65536 - buffer->tail->size;
+-	}
+-	else tailSpace = 65536;
+-
+-	//fprintf(stderr, "new data is %d, tailSpace is %d\n", dataSize, tailSpace);
+-
+-	if(dataSize < 65536 / 2 && tailSpace - dataSize >= 0 && buffer->tail != NULL)
+-	{
+-		//fprintf(stderr, "Copying to end of last block...\n");
+-		char *offset = buffer->tail->data + buffer->tail->size;
+-		memcpy(offset, dataToAdd, dataSize);
+-		free(dataToAdd);
+-		buffer->tail->size += dataSize;
+-	} else {
+-		//fprintf(stderr, "Making new tail...\n");
+-		//we'll create a new node.
+-		struct bufferFifoNodeType *node = malloc( sizeof( struct bufferFifoNodeType ) );
+-		//fprintf(stderr, "Building new node @ %p\n", node);
+-
+-		//if we have a tail, link it to the new one
+-		if(buffer->tail != NULL)
+-		{
+-			buffer->tail->next = node;
+-			//fprintf(stderr, "Linked old tail @ %p to new tail @ %p\n", buffer->tail, node);
+-		} else {
+-			buffer->head = node;
+-		}
+-
+-		buffer->tail = node;
+-
+-		buffer->tail->size = dataSize;
+-		buffer->tail->data = dataToAdd;
+-		buffer->tail->next = NULL;
+-	}
+-	buffer->totalBytes += dataSize;
+-	//fprintf(stderr, "leaving bufferFifoPut, %d/%d\n", dataSize, buffer->totalBytes);
+-	return dataSize;
+-}
+-
+-void waitFor(int *stream)
+-{
+-	fd_set readStreams;
+-	struct timeval tv;
+-	int retval;
+-	int nfds; //highest numbered file descriptor
+-	if(*video > *audio) nfds = *video; else nfds = *audio;
+-
+-	FD_ZERO(&readStreams);
+-	FD_SET(*video, &readStreams);
+-	FD_SET(*audio, &readStreams);
+-
+-	{
+-		tv.tv_sec = 7;
+-		tv.tv_usec = 0;
+-
+-		fd_set readyStreams = readStreams;
+-		retval = select(nfds + 1, &readyStreams, NULL, NULL, &tv);
+-		if(retval == -1)
+-		{
+-			fprintf(stderr, "Error while looking for new data to read.\n");
+-			exit(1);
+-		} else if(retval)
+-		{
+-			if(FD_ISSET(*stream, &readyStreams))
+-			{
+-				fcntl(*audio, F_SETFL, fcntl(*audio, F_GETFL) | O_NONBLOCK);
+-				fcntl(*video, F_SETFL, fcntl(*video, F_GETFL) | O_NONBLOCK);
+-				return;
+-			} else {
+-				//read the new data off the other stream until we get data on *stream
+-				int otherfd;
+-				bufferFifo *otherBuffer;
+-				if(*video==*stream)
+-				{
+-					otherfd = *audio;
+-					otherBuffer = audio_buffer;
+-				} else {
+-					otherfd = *video;
+-					otherBuffer = video_buffer;
+-				}
+-
+-				void *readSpace = malloc ( 65536 );
+-				int status = read(otherfd, readSpace, 65536);
+-				if(status == -1)
+-				{
+-					fprintf(stderr, "Unknown error while trying to buffer more data\n");
+-					exit(1);
+-				}
+-				bufferFifoPut(otherBuffer, readSpace, status, 'w');
+-			}
+-		} else {
+-			fprintf(stderr, "ERROR:1:Timeout waiting for decoder to write new data!");
+-			exit(1);
+-		}
+-	}
+-}
+-
+-int bufferFifoGet(bufferFifo *buffer, void *ptr, int dataSize)
+-{
+-	//fprintf(stderr, "In bufferFifoGet\n");
+-	int bytesPopped = 0;
+-
+-	while(buffer->head != NULL && buffer->head->size <= dataSize - bytesPopped)
+-	{
+-		struct bufferFifoNodeType *currNode = buffer->head;
+-		memcpy(ptr + bytesPopped, currNode->data, currNode->size);
+-		bytesPopped += currNode->size;
+-		free(currNode->data);
+-
+-		buffer->head = currNode->next;
+-
+-		//fprintf(stderr, "Freeing empty node at %p\n", currNode);
+-		free(currNode);
+-	}
+-
+-	//at this point, either we've run out of buffered data or we need to add endy bits
+-	if(buffer->head != NULL)
+-	{
+-		int endyBits = dataSize - bytesPopped;
+-
+-		memcpy(ptr + bytesPopped, buffer->head->data, endyBits);
+-		bytesPopped += endyBits;
+-		buffer->head->size -= endyBits;
+-		memmove(buffer->head->data, buffer->head->data + endyBits, buffer->head->size);
+-	} else {
+-		//we've consumed the tail node.
+-		buffer->tail = NULL;
+-	}
+-
+-	buffer->totalBytes -= bytesPopped;
+-	//fprintf(stderr, "Out bufferFifoGet\n");
+-	if(buffer->tail != NULL)
+-	{
+-		//fprintf(stderr, "Tail @ %p\n", buffer->tail);
+-	}
+-
+-	return bytesPopped;
+-}
+-
+-int fiforead_hlpr(void *ptr, int totalNeeded, int *stream)
+-{
+-	int bytesRead = 0;
+-	int readStatus = 0;
+-	int againCount = 0;
+-	while(bytesRead < totalNeeded)
+-	{
+-		readStatus = read(*stream, ptr + bytesRead, totalNeeded - bytesRead);
+-		//fprintf(stderr, "Read %d/%d bytes in fiforead_hlpr\n", readStatus, totalNeeded - bytesRead);
+-		if(readStatus == -1)
+-		{
+-			if(errno == EAGAIN)
+-			{
+-				readStatus = 0; // for the benefit of the subtraction
+-				if(againCount > 0 && againCount < 160)
+-				{
+-					//fprintf(stderr, "Multiple EAGAIN condition %d :(\n", againCount);
+-					//don't try to read another page, there won't ever be any
+-				} else if(againCount == 160)
+-				{
+-					/*we're not getting anywhere -- nothing's actively writing to the fifo.
+-					* Only hope now is to put it back in blocking mode and hope the kernel
+-					* wakes us back up someday...
+-					*/
+-					waitFor(stream);
+-
+-					//how about that...we're back!  
+-					againCount = 0;
+-					continue;
+-				}
+-
+-				//could the problem be that the other fifo is full?
+-				//get other stream
+-				int other;
+-				//fprintf(stderr, "Polling for data to buffer from other stream ");
+-				if(stream == video)
+-				{
+-					other = *audio;
+-					//fprintf(stderr, "(audio)\n");
+-				} else {
+-					other = *video;
+-					//fprintf(stderr, "(video)\n");
+-				}
+-				char test;
+-				int readOther = read(other, &test, 1);
+-				if(readOther == -1)
+-				{
+-					if(errno == EAGAIN)
+-					{
+-						//fprintf(stderr, "Both input streams empty, waiting for more data...\n");
+-						//nope, both fifo's empty. block target stream and wait.
+-						waitFor(stream);
+-						continue;
+-					} else {
+-						fprintf(stderr, "Error while buffering non-target stream. Code %d\n", errno);
+-						exit(1);
+-					}
+-				} else {
+-					//flush a bunch more out of the other named pipe.
+-					char *readSpace = malloc( 65536 );
+-					*readSpace = test;
+-					//define other
+-					readOther = read(other, readSpace + 1, 65535);
+-					if(readOther == -1)
+-					{
+-						if(errno != EAGAIN)
+-						{
+-							fprintf(stderr, "Error while buffering non-target stream. Code %d\n", errno);
+-						} else {
+-							readOther = 0;
+-						}
+-					}
+-					bufferFifo *otherBuff;
+-					if(stream == video) otherBuff = audio_buffer; else otherBuff = video_buffer;
+-					bufferFifoPut(otherBuff, readSpace, readOther + 1, 'h');
+-
+-					//wait 1/50th sec for more data on the target stream
+-					struct timespec remaining;
+-					struct timespec wait = {0, 20000000};
+-					nanosleep(&wait, &remaining );
+-				}
+-				againCount++;
+-			} else {
+-				fprintf(stderr, "Error reading from stream. Error code %d\n", errno);
+-				exit(1);
+-			}
+-		} else if(readStatus == 0){
+-			break; //actual eof.
+-		} else {
+-			bytesRead += readStatus;
+-			againCount = 0;
+-		}
+-	} // end while
+-	//fprintf(stderr, "Leaving fiforead_hlpr with %d bytes\n", bytesRead);
+-	return bytesRead;
+-}
+-
+-int fiforead(void *ptr, int size, int nItems, int *stream)
+-{
+-	int bufferedRead = 0;
+-	int retval;
+-	int cache_status;
+-
+-	if(video != NULL && *stream == *video)
+-	{
+-		//check for buffered data
+-		bufferedRead = bufferFifoGet(video_buffer, ptr, size * nItems);
+-		if(bufferedRead < size * nItems)
+-		{
+-			//fprintf(stderr, "Reading from video stream...\n");
+-			//fiforead_hlpr readBytes = [size * nItems - sizeof(buffer)] from fifo:
+-			retval = bufferedRead + fiforead_hlpr(ptr + bufferedRead, size * nItems - bufferedRead, video);
+-		} else {
+-			retval = bufferedRead;
+-		}
+-
+-		if(cache_input)
+-		{
+-			cache_status = fwrite(ptr, 1, retval, video_cache_fd);
+-			if( cache_status != retval)
+-			{
+-				fprintf(stderr, "ERROR:2:Failed writing video to decompressed cache. ");
+-				cache_input = 0;
+-			}
+-		}
+-
+-		return retval;
+-	} else if(audio != NULL && *stream == *audio)
+-	{
+-		//fprintf(stderr, "Reading from audio stream...\n");
+-		bufferedRead = bufferFifoGet(audio_buffer, ptr, size * nItems);
+-		if(bufferedRead < size * nItems)
+-		{
+-			retval =  bufferedRead + fiforead_hlpr(ptr + bufferedRead, size * nItems - bufferedRead, audio);
+-		} else {
+-			retval = bufferedRead;
+-		}
+-
+-		if(cache_input)
+-		{
+-			cache_status = fwrite(ptr, 1, retval, audio_cache_fd);
+-			if( cache_status != retval)
+-			{
+-				fprintf(stderr, "ERROR:2:Failed writing audio to decompressed cache. ");
+-				cache_input = 0;
+-			}
+-		}
+-
+-		return retval;
+-	} else {
+-		//the stream hasn't yet been identified. Duplicate fread functionality to get all bits
+-		int unbufferedRead = 0;
+-		int rstatus;
+-		while(unbufferedRead < size * nItems)
+-		{
+-			rstatus = read(*stream, ptr, size * nItems - unbufferedRead);
+-			if(rstatus < 0)
+-			{
+-				fprintf(stderr, "Error while reading stream of unknown type. Error code %d\n", errno);
+-				break;
+-			} else if(rstatus == 0)
+-			{
+-				fprintf(stderr, "End of file while reading stream of unknown type\n");
+-				if(cache_input) close(cache_input);
+-				break;
+-			} else {
+-				unbufferedRead += rstatus;
+-
+-				fd_set readStreams;
+-				struct timeval tv;
+-				int retval;
+-
+-				FD_ZERO(&readStreams);
+-				FD_SET(*stream, &readStreams);
+-				tv.tv_sec = 15;
+-				tv.tv_usec = 0;
+-
+-				retval = select(*stream + 1, &readStreams, NULL, NULL, &tv);
+-				if(retval == -1)
+-				{
+-					fprintf(stderr, "Error while looking for new data to read.\n");
+-					exit(1);
+-				} else if(retval == 0)
+-				{
+-					fprintf(stderr, "ERROR:1:Timeout waiting for decompressed data stream (id_file stage).\n");
+-					exit(1);
+-				}
+-			}
+-		}
+-
+-		if(cache_input)
+-		{
+-			cache_status = fwrite(ptr, 1, unbufferedRead, cache_current);
+-			if(cache_status != unbufferedRead)
+-			{
+-				fprintf(stderr, "ERROR:2:Could not write to decompressed cache.\n");
+-				cache_input = 0;
+-			}
+-		}
+-
+-		//fprintf(stderr, "Read %d bytes on unidentified stream\n", unbufferedRead);
+-		return unbufferedRead;
+-	}
+-}
+-
+ static void id_file(char *f){
+-  int testFileDescriptor = -1, *test = &testFileDescriptor;
++  FILE *test;
+   unsigned char buffer[80];
+   int ret;
+   int tmp_video_hzn, tmp_video_hzd, tmp_video_an, tmp_video_ad;
+@@ -550,32 +153,16 @@
+ 
+   if(!strcmp(f,"-")){
+     /* stdin */
+-    testFileDescriptor=0;
++    test=stdin;
+   }else{
+-    testFileDescriptor=open(f,O_RDONLY);
+-    if(testFileDescriptor == -1){
++    test=fopen(f,"rb");
++    if(!test){
+       fprintf(stderr,"Unable to open file %s.\n",f);
+       exit(1);
+-    } else {
+-		// below may be redundant since slow devices are nonblocking
+-      fcntl(testFileDescriptor, F_SETFL, fcntl(testFileDescriptor, F_GETFL) & ~O_NONBLOCK);
+     }
+   }
+ 
+-  if(cache_input)
+-	{
+-	  char *cacheName = malloc(strlen(f) + 6 + 1);
+-	  strcat(cacheName, "cache_");
+-	  strcat(cacheName, f);
+-	  cache_current = fopen(cacheName, "w+b");
+-	  if(cache_input == -1)
+-		{
+-		  fprintf(stderr, "ERROR:2:Unable to open decompression cache file %s\n", cacheName);
+-		  cache_input = 0;
+-		}
+-	}
+-
+-  ret=fiforead(buffer, 1, 4, test);
++  ret=fread(buffer,1,4,test);
+   if(ret<4){
+     fprintf(stderr,"EOF determining file type of file %s.\n",f);
+     exit(1);
+@@ -592,18 +179,19 @@
+ 
+     /* Parse the rest of the header */
+ 
+-    ret=fiforead(buffer, 1, 4, test);
+-    ret=fiforead(buffer, 1, 4, test);
++    ret=fread(buffer,1,4,test);
++    ret=fread(buffer,1,4,test);
+     if(ret<4)goto riff_err;
+     if(!memcmp(buffer,"WAVE",4)){
+ 
+-      while( (ret=fiforead(buffer, 1, 4, test)) && ret != 0){
++      while(!feof(test)){
++        ret=fread(buffer,1,4,test);
+         if(ret<4)goto riff_err;
+         if(!memcmp("fmt",buffer,3)){
+ 
+           /* OK, this is our audio specs chunk.  Slurp it up. */
+ 
+-          ret=fiforead(buffer, 1, 20, test);
++          ret=fread(buffer,1,20,test);
+           if(ret<20)goto riff_err;
+ 
+           extra_hdr_bytes = (buffer[0]  + (buffer[1] << 8) +
+@@ -615,9 +203,7 @@
+             exit(1);
+           }
+ 
+-          audio_fd = testFileDescriptor;
+-          audio=&audio_fd;
+-		  audio_cache_fd = cache_current;
++          audio=test;
+           audio_ch=buffer[6]+(buffer[7]<<8);
+           audio_hz=buffer[8]+(buffer[9]<<8)+
+             (buffer[10]<<16)+(buffer[11]<<24);
+@@ -631,29 +217,27 @@
+           while(extra_hdr_bytes){
+             int read_size = (extra_hdr_bytes > sizeof(buffer)) ?
+              sizeof(buffer) : extra_hdr_bytes;
+-            ret = fiforead(buffer, 1, read_size, test);
++            ret = fread(buffer, 1, read_size, test);
+ 
+             if (ret < read_size)
+               goto riff_err;
+             else
+               extra_hdr_bytes -= read_size;
+           }
+-          fprintf(stderr, "Aligning to data...\n");
++
+           /* Now, align things to the beginning of the data */
+           /* Look for 'dataxxxx' */
+-          while( (ret=fiforead(buffer, 1, 4, test)) && ret != 0){
+-            if(ret<4)
+-			  { fprintf(stderr, "ret is %d\n", ret);
+-				goto riff_err;}
++          while(!feof(test)){
++            ret=fread(buffer,1,4,test);
++            if(ret<4)goto riff_err;
+             if(!memcmp("data",buffer,4)){
+               /* We're there.  Ignore the declared size for now. */
+-              ret=fiforead(buffer, 1, 4, test);
++              ret=fread(buffer,1,4,test);
+               if(ret<4)goto riff_err;
+ 
+               fprintf(stderr,"File %s is 16 bit %d channel %d Hz RIFF WAV audio.\n",
+                       f,audio_ch,audio_hz);
+ 
+-              fcntl(testFileDescriptor, F_SETFL, fcntl(testFileDescriptor, F_GETFL) | O_NONBLOCK);
+               return;
+             }
+           }
+@@ -670,7 +254,7 @@
+     /* read until newline, or 80 cols, whichever happens first */
+     int i;
+     for(i=0;i<79;i++){
+-      ret=fiforead(buffer+i, 1, 1, test);
++      ret=fread(buffer+i,1,1,test);
+       if(ret<1)goto yuv_err;
+       if(buffer[i]=='\n')break;
+     }
+@@ -711,14 +295,11 @@
+         exit(1);
+       }
+ 
+-      video_fd = testFileDescriptor;
+-      video=&video_fd;
+-	  video_cache_fd = cache_current;
++      video=test;
+ 
+       fprintf(stderr,"File %s is %dx%d %.02f fps YUV12 video.\n",
+               f,frame_x,frame_y,(double)video_hzn/video_hzd);
+ 
+-      fcntl(testFileDescriptor, F_SETFL, fcntl(testFileDescriptor, F_GETFL) | O_NONBLOCK);
+       return;
+     }
+   }
+@@ -742,7 +323,7 @@
+   fprintf(stderr,"\r%c",spinascii[spinner]);
+ }
+ 
+-int fetch_and_process_audio(int *audio,ogg_page *audiopage,
++int fetch_and_process_audio(FILE *audio,ogg_page *audiopage,
+                             ogg_stream_state *vo,
+                             vorbis_dsp_state *vd,
+                             vorbis_block *vb,
+@@ -760,7 +341,7 @@
+       /* read and process more audio */
+       signed char readbuffer[4096];
+       int toread=4096/2/audio_ch;
+-      int bytesread=fiforead(readbuffer,1,toread*2*audio_ch,audio);
++      int bytesread=fread(readbuffer,1,toread*2*audio_ch,audio);
+       int sampread=bytesread/2/audio_ch;
+       float **vorbis_buffer;
+       int count=0;
+@@ -803,7 +384,7 @@
+   return audioflag;
+ }
+ 
+-int fetch_and_process_video(int *video,ogg_page *videopage,
++int fetch_and_process_video(FILE *video,ogg_page *videopage,
+                             ogg_stream_state *to,
+                             theora_state *td,
+                             int videoflag){
+@@ -850,18 +431,18 @@
+ 
+       for(i=state;i<2;i++){
+         char c,frame[6];
+-        int ret=fiforead(frame,1,6,video);
++        int ret=fread(frame,1,6,video);
+         
+ 	/* match and skip the frame header */
+         if(ret<6)break;
+         if(memcmp(frame,"FRAME",5)){
+-          fprintf(stderr,"Loss of framing in YUV input data..%s\n", frame);
++          fprintf(stderr,"Loss of framing in YUV input data\n");
+           exit(1);
+         }
+         if(frame[5]!='\n'){
+           int j;
+           for(j=0;j<79;j++)
+-            if(fiforead(&c,1,1,video)&&c=='\n')break;
++            if(fread(&c,1,1,video)&&c=='\n')break;
+           if(j==79){
+             fprintf(stderr,"Error parsing YUV frame header\n");
+             exit(1);
+@@ -871,7 +452,7 @@
+         /* read the Y plane into our frame buffer with centering */
+         line=yuvframe[i]+video_x*frame_y_offset+frame_x_offset;
+         for(e=0;e<frame_y;e++){
+-          ret=fiforead(line,1,frame_x,video);
++          ret=fread(line,1,frame_x,video);
+             if(ret!=frame_x) break;
+           line+=video_x;
+         }
+@@ -879,7 +460,7 @@
+         line=yuvframe[i]+(video_x*video_y)
+           +(video_x/2)*(frame_y_offset/2)+frame_x_offset/2;
+         for(e=0;e<frame_y/2;e++){
+-          ret=fiforead(line,1,frame_x/2,video);
++          ret=fread(line,1,frame_x/2,video);
+             if(ret!=frame_x/2) break;
+           line+=video_x/2;
+         }
+@@ -887,7 +468,7 @@
+         line=yuvframe[i]+(video_x*video_y*5/4)
+                   +(video_x/2)*(frame_y_offset/2)+frame_x_offset/2;
+         for(e=0;e<frame_y/2;e++){
+-          ret=fiforead(line,1,frame_x/2,video);
++          ret=fread(line,1,frame_x/2,video);
+             if(ret!=frame_x/2) break;
+           line+=video_x/2;
+         }
+@@ -995,16 +576,6 @@
+ 
+ #endif
+ 
+-  audio_buffer = malloc( sizeof(bufferFifo) );
+-  audio_buffer->totalBytes = 0;
+-  audio_buffer->head = NULL;
+-  audio_buffer->tail = NULL;
+-
+-  video_buffer = malloc( sizeof(bufferFifo) );
+-  video_buffer->totalBytes = 0;
+-  video_buffer->head = NULL;
+-  video_buffer->tail = NULL;
+-
+   while((c=getopt_long(argc,argv,optstring,options,&long_option_index))!=EOF){
+     switch(c){
+     case 'o':
+@@ -1024,11 +595,6 @@
+       audio_r=-1;
+       break;
+ 
+-    case 'c':
+-		//copy input PCM/YUV to another file as it is read in
+-		cache_input = 1;
+-		break;
+-
+     case 'v':
+       video_q=rint(atof(optarg)*6.3);
+       if(video_q<0 || video_q>63){
+@@ -1151,16 +717,13 @@
+   /* initialize Vorbis too, assuming we have audio to compress. */
+   if(audio){
+     vorbis_info_init(&vi);
+-	if(audio_hz > 192000){
+-		audio_hz = audio_hz / 100;
+-	}
+     if(audio_q>-99)
+       ret = vorbis_encode_init_vbr(&vi,audio_ch,audio_hz,audio_q);
+     else
+       ret = vorbis_encode_init(&vi,audio_ch,audio_hz,-1,audio_r,-1);
+     if(ret){
+       fprintf(stderr,"The Vorbis encoder could not set up a mode according to\n"
+-              "the requested quality or bitrate.\nDetected audio at %d hz,\n%d\n", audio_hz, audio_r);
++              "the requested quality or bitrate.\n\n");
+       exit(1);
+     }
+ 
+@@ -1320,17 +883,6 @@
+ 
+   if(outfile && outfile!=stdout)fclose(outfile);
+ 
+-/*
+-  if(audio_cache_fd)
+-	{
+-	  fclose(audio_cache_fd);
+-	}
+-
+-  if(video_cache_fd)
+-	{
+-	  fclose(video_cache_fd);
+-	}
+-*/
+   fprintf(stderr,"\r   \ndone.\n\n");
+ 
+ #ifdef THEORA_PERF_DATA

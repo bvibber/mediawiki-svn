@@ -1,0 +1,22 @@
+CREATE TABLE avrecode_queue (
+	q_order smallint unsigned auto_increment,
+	q_img_name varchar(255),
+	PRIMARY KEY(q_img_name),
+	UNIQUE KEY(q_order)
+);
+
+CREATE TABLE avrecode_farm (
+	notify_address varchar(255),
+	last_claimed timestamp,
+	img_name varchar(255) NOT NULL DEFAULT '',
+	PRIMARY KEY(notify_address)
+);
+
+CREATE TABLE avrecode (
+	img_name varchar(255),
+	KEY(img_name),
+	container_format char(3),
+	bitrate smallint unsigned,
+	status ENUM('PENDING', 'AVAILABLE', 'FAILED') NOT NULL DEFAULT 'PENDING',
+	UNIQUE KEY(img_name, bitrate, container_format)
+);

@@ -4,12 +4,48 @@
  * Various HTTP related functions
  */
 class Http {
+	private static $data = array();
+
 	static function get( $url, $timeout = 'default' ) {
 		return Http::request( "GET", $url, $timeout );
 	}
 
 	static function post( $url, $timeout = 'default' ) {
 		return Http::request( "POST", $url, $timeout );
+	}
+
+	/**
+	* Add to data sent with the next request. Applies to GET and POST.
+	* @param string $name Must be valid for inclusion in a url query.
+	* @param string $value Should not be pre-urlencoded.
+	*/
+	static function addNameValuePair($name, $value)
+	{
+		Http::$data[$name] = urlencode($value);
+	}
+
+	/**
+	* Forget previous calls to addNameValuePair.
+	*/
+	static function resetNameValuePairs()
+	{
+		Http::$data = array();
+	}
+
+	private static function makeQueryString()
+	{
+		if(count(Http::$data))
+		{
+			list($name, $val) = each(Http::$data);
+			$out = $name . '=' . $val;
+			while(list($name, $val) = each(Http::$data))
+			{
+				$out .= '&' . $name . '=' . $val;
+			}
+			return $out;
+		} else {
+			return '';
+		}
 	}
 
 	/**
@@ -35,9 +71,18 @@ class Http {
 			curl_setopt( $c, CURLOPT_TIMEOUT, $timeout );
 			curl_setopt( $c, CURLOPT_USERAGENT, "MediaWiki/$wgVersion" );
 			if ( $method == 'POST' )
+			{
 				curl_setopt( $c, CURLOPT_POST, true );
-			else
+				if(count(Http::$data))
+				{
+					curl_setopt( $c, CURLOPT_POSTFIELDS, Http::makeQueryString() );
+				}
+			} else if ( $method == 'GET' && count(Http::$data))
+			{
+				curl_setopt( $c, CURLOPT_URL, $url . '?' . Http::makeQueryString() );
+			} else {
 				curl_setopt( $c, CURLOPT_CUSTOMREQUEST, $method );
+			}
 
 			# Set the referer to $wgTitle, even in command-line mode
 			# This is useful for interwiki transclusion, where the foreign
@@ -61,14 +106,29 @@ class Http {
 		} else {
 			# Otherwise use file_get_contents, or its compatibility function from GlobalFunctions.php
 			# This may take 3 minutes to time out, and doesn't have local fetch capabilities
+			$httpOpts = array( 'method' => $method );
+			if(count(Http::$data))
+			{
+				if($method == 'POST')
+				{
+					$httpOpts['header'] = 'Content-type: application/x-www-form-urlencoded';
+					$httpOpts['content'] = Http::makeQueryString();
+				} else if($method == 'GET')
+				{
+					$url .= '?' . Http::makeQueryString();
+				}
+			}
 
-			$opts = array('http' => array( 'method' => $method ) );
+			$opts = array('http' => $httpOpts);
 			$ctx = stream_context_create($opts);
 
 			$url_fopen = ini_set( 'allow_url_fopen', 1 );
 			$text = file_get_contents( $url, false, $ctx );
 			ini_set( 'allow_url_fopen', $url_fopen );
 		}
+
+		Http::resetNameValuePairs();
+
 		return $text;
 	}
 
@@ -104,4 +164,3 @@ class Http {
 		return false;
 	}
 }
-?>
