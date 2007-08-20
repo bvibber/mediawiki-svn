@@ -60,38 +60,49 @@ class RandomImage {
 	 */
 	public function render() {
 		$title = $this->pickImage();
-		if( $title instanceof Title ) {
-			$file = wfFindFile( $title );
-			if( $file->exists() ) {
-				return $this->parser->parse(
-					$this->buildMarkup( $file ),
-					$this->parser->getTitle(),
-					$this->parser->getOptions(),
-					false,
-					false
-				)->getText();
-			}
+		if( $title instanceof Title && $this->imageExists( $title ) ) {
+			return $this->parser->parse(
+				$this->buildMarkup( $title ),
+				$this->parser->getTitle(),
+				$this->parser->getOptions(),
+				false,
+				false
+			)->getText();
 		}
 		return '';
 	}
 	
 	/**
+	 * Does the specified image exist?
+	 *
+	 * This is a wrapper around the new File/FileRepo mechanism from
+	 * 1.10, to avoid breaking compatibility with older versions for
+	 * no good reason
+	 *
+	 * @param Title $title Title of the image
+	 * @return bool
+	 */
+	protected function imageExists( $title ) {
+		$file = function_exists( 'wfFindFile' )
+			? wfFindFile( $title )
+			: new Image( $title );
+		return is_object( $file ) && $file->exists();
+	}
+	
+	/**
 	 * Prepare image markup for the given image
 	 *
-	 * @param File $image Image to render
+	 * @param Title $title Title of the image to render
 	 * @return string
 	 */
-	protected function buildMarkup( $image ) {
-		$parts[] = $image->getTitle()->getPrefixedText();
-		if( $this->width !== false ) {
+	protected function buildMarkup( $title ) {
+		$parts[] = $title->getPrefixedText();
+		$parts[] = 'thumb';
+		if( $this->width !== false )
 			$parts[] = "{$this->width}px";
-			$parts[] = 'frame';
-		} else {
-			$parts[] = 'thumb';
-		}
 		if( $this->float )
 			$parts[] = $this->float;
-		$parts[] = $this->getCaption( $image->getTitle() );
+		$parts[] = $this->getCaption( $title );
 		return '[[' . implode( '|', $parts ) . ']]';
 	}
 
