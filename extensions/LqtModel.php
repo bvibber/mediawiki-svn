@@ -225,6 +225,15 @@ class Thread {
 		return $results;
 	}
 	
+	function ancestors() {
+ 		$id_clauses = array();
+		foreach( explode('.', $this->path) as $id ) {
+			$id_clauses[] = "thread_id = $id";
+		}
+		$where = implode(' OR ', $id_clauses);
+		return Threads::where($where);
+	}
+	
 	private function bumpRevisionsOnAncestors($change_type, $change_object) {
 		$this->revisionNumber += 1;	
 		$this->setChangeType($change_type);

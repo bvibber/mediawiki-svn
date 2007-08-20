@@ -33,7 +33,7 @@ class LqtDispatch {
 		/* Certain actions apply to the "header", which is stored in the actual talkpage
 		   in the database. Drop everything and behave like a normal page if those
 		   actions come up, to avoid hacking the various history, editing, etc. code. */
-		$header_actions = array('history', 'edit', 'submit');
+		$header_actions = array('history', 'edit', 'submit', 'protect');
 		if ($request->getVal('lqt_method', null) === null && (
 				in_array( $request->getVal('action'), $header_actions ) ||
 				$request->getVal('diff', null) !== null ) ) {
@@ -319,7 +319,7 @@ HTML;
 				$thread = Threads::newThread( $article, $this->article, $edit_applies_to, $e->summary );
 				$edit_applies_to->commitRevision(Threads::CHANGE_REPLY_CREATED, $thread, $e->summary);
 			} else {
-				$thread = Threads::newThread( $article, $this->article, $e->summary );
+				$thread = Threads::newThread( $article, $this->article, null, $e->summary );
 			}
 		}
 		
