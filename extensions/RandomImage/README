@@ -63,6 +63,19 @@ If the description page contains text wrapped in <randomcaption>
 are ignored during normal page views. Otherwise, the first paragraph of
 the page text will be used as the caption.
 
+== Selection ==
+
+On wikis where non-images are uploaded (e.g. sound and video files, or
+documents, etc.), the extension might select a non-image file. There are
+few performance-efficient means of limiting those files selected.
+
+If $wgRandomImageStrict is switched on, a more complex database query will
+be performed, with a greater performance cost, which will ensure only images
+with an "image" major MIME type are selected.
+
+By default, this option has the same value as $wgMiserMode. You may wish to
+switch it off if all of the content on your wiki has an appropriate renderer.
+
 == Caching ==
 
 By default, the output is cached in the regular parser cache. This can be

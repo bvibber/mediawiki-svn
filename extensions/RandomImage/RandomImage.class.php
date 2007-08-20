@@ -150,10 +150,9 @@ class RandomImage {
 	protected function pickFromDatabase() {
 		wfProfileIn( __METHOD__ );
 		$dbr = wfGetDB( DB_SLAVE );
-		list( $image, $page ) = $dbr->tableNamesN( 'image', 'page' );
-		$ind = $dbr->useIndexClause( 'page_random' );
+		list( $table, $conds, $opts ) = $this->getExtraSelectOptions( $dbr );
 		$res = $dbr->select(
-			"{$page} {$ind} LEFT JOIN {$image} ON img_name = page_title",
+			$table,
 			array(
 				'page_namespace',
 				'page_title',
@@ -162,13 +161,12 @@ class RandomImage {
 				'page_namespace' => NS_IMAGE,
 				'page_is_redirect' => 0,
 				'page_random > ' . $dbr->addQuotes( wfRandom() ),
-				'img_major_mime' => 'image',
-			),
+			) + $conds,
 			__METHOD__,
 			array(
 				'ORDER BY' => 'page_random',
 				'LIMIT' => 1,
-			)
+			) + $opts
 		);
 		wfProfileOut( __METHOD__ );
 		if( $dbr->numRows( $res ) > 0 ) {
@@ -177,6 +175,35 @@ class RandomImage {
 			return Title::makeTitleSafe( $row->page_namespace, $row->page_title );
 		}
 		return null;
+	}
+	
+	/**
+	 * Get various options for database selection
+	 *
+	 * @param Database $dbr Database being queried
+	 * @return array
+	 */
+	protected function getExtraSelectOptions( $dbr ) {
+		global $wgRandomImageStrict;
+		if( $wgRandomImageStrict ) {
+			list( $image, $page ) = $dbr->tableNamesN( 'image', 'page' );
+			$ind = $dbr->useIndexClause( 'page_random' );
+			return array(
+				"{$page} {$ind} LEFT JOIN {$image} ON img_name = page_title",
+				array(
+					'img_major_mime' => 'image',
+				),
+				array(),
+			);
+		} else {
+			return array(
+				'page',
+				array(),
+				array(
+					'USE INDEX' => 'page_random',
+				),
+			);
+		}
 	}
 	
 	/**
@@ -203,7 +230,6 @@ class RandomImage {
 	 * @return bool
 	 */
 	public static function stripHook( $parser, &$text ) {
-		wfDebugLog( 'rimage', __METHOD__ . ": Text is `{$text}`" );
 		$text = preg_replace( '!</?randomcaption>!i', '', $text );
 		return true;
 	}

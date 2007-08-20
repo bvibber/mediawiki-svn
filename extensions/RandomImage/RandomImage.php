@@ -28,6 +28,12 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgRandomImageNoCache = false;
 	
 	/**
+	 * Set this to true to ensure that images selected from the database
+	 * have an "IMAGE" MIME type
+	 */
+	$wgRandomImageStrict = !$wgMiserMode;
+	
+	/**
 	 * Extension initialisation function
 	 */
 	function efRandomImage() {
