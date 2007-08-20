@@ -89,7 +89,6 @@ class RandomImage {
 		} else {
 			$parts[] = 'thumb';
 		}
-		$parts[] = $this->width;
 		if( $this->float )
 			$parts[] = $this->float;
 		$parts[] = $this->getCaption( $image->getTitle() );
