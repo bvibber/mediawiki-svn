@@ -46,6 +46,10 @@ $wgDeletedContribsMessages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
 );
 
+$wgDeletedContribsMessages['pt'] = array(
+	'deletedcontributions' => 'Edições eliminadas',
+);
+
 $wgDeletedContribsMessages['sk'] = array(
 	'deletedcontributions' => 'Zmazané príspevky používateľa',
 );
@@ -71,4 +75,3 @@ $wgDeletedContribsMessages['zh-hk'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-sg'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-tw'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-yue'] = $wgDeletedContribsMessages['yue'];
-

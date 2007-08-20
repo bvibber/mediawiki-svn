@@ -318,9 +318,11 @@ function efInputBoxMessages() {
 ),
 
 'pt' => array(
+	'inputbox-error-no-type'  => 'Você não especificou o tipo de box de inserção a ser criado.',
+	'inputbox-error-bad-type' => 'O box de inserção de tipo "$1" não foi reconhecido. Por gentileza, especifique "create", "comment", "search" ou "search2".',
 	'tryexact'       => 'Tentar a exata expressão',
 	'searchfulltext' => 'Pesquisar no texto completo',
-	'createarticle'  => 'Criar artigo',
+	'createarticle'  => 'Criar página',
 ),
 
 'ro' => array(

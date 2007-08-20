@@ -129,6 +129,19 @@ Ch\'a ten-a da ment: \'\'\'a podrà pì nen pijeje andré ën dovrand l\'istess 
 'resign-logentry' => 'a l\'ha gavasse ij drit dë $2',
 ),
 
+'pt' => array(
+'resign' => 'Renunciar',
+'resign-text' => 'Você pode \'\'\'remover suas próprias permissões\'\'\' (tais como a de administrador) a partir desta página. Por gentileza, verifique as permissões que você deseja remover.
+
+Lembre-se: \'\'\'Você não poderá obter suas permissões de volta a partir deste modo!\'\'\' Será necessário convencer um burocrata ou um steward para conceder de volta à você as suas permissões. Por gentileza, utilize está página de forma bastante cautelosa.',
+'resign-reason' => 'Motivo:',
+'resign-confirm' => 'Eu confirmo que desejo ter removidas de mim todas as permissões que eu selecionei.',
+'resign-noconfirm' => 'Por gentileza, clique na caixa de seleção a fim de confirmar a sua intenção de remover tais permissões de si mesmo.',
+'resign-nogroups' => 'Por gentileza, selecione as permissões que deseja remover de si mesmo.',
+'resign-success' => '\'\'\'As permissões foram removidas com sucesso.\'\'\'',
+'resign-logentry' => 'removeu as permissões de $2 de si mesmo',
+),
+
 'sk' => array(
 'resign' => 'Rezignovať',
 'resign-text' => 'Na tejto stránke sa môžete \'\'\'vzdať svojich privilégií\'\'\' (napr. správca). Prosím, zaškrtnite, ktoré privilégiá chcete odstrániť.
@@ -196,6 +209,7 @@ Pamätajte: \'\'\'Týmto spôsobom už svoje privilégiá nedostanete naspäť!\
 
 	return $messages;
 }
+
 
 
 

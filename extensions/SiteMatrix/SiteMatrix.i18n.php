@@ -93,7 +93,10 @@ $wgSiteMatrixMessages['pms'] = array(
 	'sitematrix' => 'Lista ëd le wiki gestìe da Wikimedia',
 );
 $wgSiteMatrixMessages['pt'] = array(
-	"sitematrix" => "Lista de wikis da Wikimedia",
+	'sitematrix' => 'Lista de wikis da Wikimedia',
+	'sitematrix-language' => 'Idioma',
+	'sitematrix-project' => 'Nome do projeto, link interprojeto e link interwiki',
+	'sitematrix-others' => 'Outros projetos da Wikimedia',
 );
 $wgSiteMatrixMessages['pt-br'] = array(
 	"sitematrix" => "Lista de wikis da Wikimedia",

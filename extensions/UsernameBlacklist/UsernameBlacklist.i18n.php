@@ -156,6 +156,15 @@ zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
 'blacklistedusername' => 'Nome de utilizador na lista negra',
 'blacklistedusernametext' => 'O nome de utilizador selecionado é similar a um presente na [[MediaWiki:Usernameblacklist|
 lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
+'usernameblacklist' => '<pre>
+# As entradas nesta lista são usadas como parte de uma expressão regular
+# ao impedir utilizadores de se registarem. Cada item deverá ser parte
+# de uma lista com marcadores. Exemplo:
+#
+# * Algo
+# * [Ff]ulano
+</pre>',
+'usernameblacklist-invalid-lines' => '{{PLURAL:$1|A seguinte linha|As seguintes linhas}} da lista negra de nomes de utilizadores {{PLURAL:$1|é inválida|são inválidas}}; por gentileza, {{PLURAL:$1|a|as}} corrija antes de salvar as alterações:',
 ),
 
 /* Russian */

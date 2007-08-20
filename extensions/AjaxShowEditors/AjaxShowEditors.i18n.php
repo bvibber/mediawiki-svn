@@ -68,6 +68,11 @@ $wgAjaxShowEditorsMessages['pms'] = array(
 	'ajax-se-pending' => 'a l\'ha dë esse agiornà ... (Ch\'a-i bata ansima a sta casela ò pura ch\'a fasa che fé soa modìfica)',
 	'ajax-se-idling' => '(da $1 second)',
 );
+$wgAjaxShowEditorsMessages['pt'] = array(
+	'ajax-se-title' => 'Editando no momento:',
+	'ajax-se-pending' => 'atualização pendente... (clique neste box ou inicie a edição)',
+	'ajax-se-idling' => '($1 segundos atrás)',
+);
 $wgAjaxShowEditorsMessages['ru'] = array(
 	'ajax-se-title' => 'В настоящий момент редактируют:',
 	'ajax-se-pending' => 'ожидание обновления... (нажмите здесь или начните редактирование)',
@@ -103,5 +108,3 @@ $wgAjaxShowEditorsMessages['zh-hk'] = $wgAjaxShowEditorsMessages['zh-hant'];
 $wgAjaxShowEditorsMessages['zh-sg'] = $wgAjaxShowEditorsMessages['zh-hans'];
 $wgAjaxShowEditorsMessages['zh-tw'] = $wgAjaxShowEditorsMessages['zh-hant'];
 $wgAjaxShowEditorsMessages['zh-yue'] = $wgAjaxShowEditorsMessages['yue'];
-
-
