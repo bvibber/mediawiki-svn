@@ -633,6 +633,9 @@ class Threads {
 	
     static function newThread( $root, $article, $superthread = null, $type = self::TYPE_NORMAL ) {
 
+		// SCHEMA changes must be reflected here.
+		// TODO: It's dumb that the commitRevision code isn't used here.
+
         $dbr =& wfGetDB( DB_MASTER );
 		
 		if ( !in_array($type, self::$VALID_TYPES) ) {
@@ -651,11 +654,16 @@ class Threads {
 		} else {
 			$change_type = self::CHANGE_NEW_THREAD;
 		}
+		
+		global $wgUser; // TODO global.
 
         $res = $dbr->insert('thread',
             array('thread_root' => $root->getID(),
                   'thread_timestamp' => wfTimestampNow(),
 				  'thread_change_type' => $change_type,
+				  'thread_change_comment' => "", // TODO
+				  'thread_change_user' => $wgUser->getID(),
+				  'thread_change_user_text' => $wgUser->getName(),
 				  'thread_type' => $type) + $aclause,
             __METHOD__);
 		
