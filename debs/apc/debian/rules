@@ -61,6 +61,7 @@ install: build
 
 	# Add here commands to install the package into debian/apc-3.0.13.
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/apc-3.0.13 install
+	install -D debian/apc.ini $(CURDIR)/debian/apc-3.0.13/etc/php5/conf.d/apc.ini
 
 
 # Build architecture-independent files here.
