@@ -1008,7 +1008,6 @@ class ThreadHistoryPager extends PageHistoryPager {
 		                      Threads::CHANGE_NEW_THREAD => "New thread created:");
 		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $t->revisionNumber() );
 		
-		var_dump($t);
 		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $t->changeUser() ), false );
 		
 		$result[] = "<tr>";
