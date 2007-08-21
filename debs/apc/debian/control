@@ -1,0 +1,12 @@
+Source: apc
+Section: unknown
+Priority: extra
+Maintainer: Brion Vibber <brion@wikimedia.org>
+Build-Depends: debhelper (>= 5), php5-dev (>= 5.2.1-0ubuntu1.2wm1)
+Standards-Version: 3.7.2
+
+Package: apc
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, php5 (>= 5.2.1-0ubuntu1.2wm1)
+Description: Alternative PHP Cache
+ PHP opcode cache.

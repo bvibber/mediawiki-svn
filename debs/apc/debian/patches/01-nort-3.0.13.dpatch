@@ -1,0 +1,54 @@
+#! /bin/sh /usr/share/dpatch/dpatch-run
+## 01-nort-3.0.13.dpatch by  <brion@mint.knams.wikimedia.org>
+##
+## All lines beginning with `## DP:' are a description of the patch.
+## DP: No description.
+
+@DPATCH@
+diff -ru APC-3.0.13/apc_mmap.c APC-3.0.13-nort/apc_mmap.c
+--- APC-3.0.13/apc_mmap.c	2007-02-24 22:58:42.000000000 +0000
++++ APC-3.0.13-nort/apc_mmap.c	2007-03-07 00:40:01.000000000 +0000
+@@ -66,6 +66,7 @@
+          * On FreeBSD these are mapped onto the regular filesystem so you can put whatever
+          * path you want here.
+          */
++#ifdef WM_ENABLE_SHM
+         if(strstr(file_mask,".shm")) {
+             mktemp(file_mask);
+             fd = shm_open(file_mask, O_CREAT|O_RDWR, S_IRUSR|S_IWUSR);
+@@ -82,11 +83,12 @@
+             shmaddr = (void *)mmap(NULL, size, PROT_READ | PROT_WRITE, MAP_SHARED, fd, 0);
+             shm_unlink(file_mask);
+             close(fd);
+-        }
++        } else
++#endif
+         /*
+          * Support anonymous mmap through the /dev/zero interface as well
+          */
+-        else if(!strcmp(file_mask,"/dev/zero")) {
++        if(!strcmp(file_mask,"/dev/zero")) {
+             fd = open("/dev/zero", O_RDWR, S_IRUSR | S_IWUSR);
+             if(fd == -1) {
+                 apc_eprint("apc_mmap: open on /dev/zero failed:");
+diff -ru APC-3.0.13/config.m4 APC-3.0.13-nort/config.m4
+--- APC-3.0.13/config.m4	2007-02-24 22:58:42.000000000 +0000
++++ APC-3.0.13-nort/config.m4	2007-03-07 00:40:25.000000000 +0000
+@@ -195,7 +195,7 @@
+                apc_main.c \
+                apc_mmap.c \
+                apc_sem.c \
+-               apc_shm.c \
++dnl               apc_shm.c \
+                apc_futex.c \
+                apc_pthreadmutex.c \
+ 			   apc_spin.c \
+@@ -205,7 +205,7 @@
+                apc_zend.c \
+                apc_rfc1867.c "
+ 
+-  PHP_CHECK_LIBRARY(rt, shm_open, [PHP_ADD_LIBRARY(rt,,APC_SHARED_LIBADD)])
++dnl  PHP_CHECK_LIBRARY(rt, shm_open, [PHP_ADD_LIBRARY(rt,,APC_SHARED_LIBADD)])
+   PHP_NEW_EXTENSION(apc, $apc_sources, $ext_shared,, \\$(APC_CFLAGS))
+   PHP_SUBST(APC_SHARED_LIBADD)
+   PHP_SUBST(APC_CFLAGS)
