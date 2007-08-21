@@ -603,7 +603,7 @@ class Thread {
 	
 	function changeUser() {
 		if( $this->changeUser == 0 ) {
-			return User::newFromName($this->changeUserText);
+			return User::newFromName($this->changeUserText, false);
 		} else {
 			return User::newFromId($this->changeUser);
 		}

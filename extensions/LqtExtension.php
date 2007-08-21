@@ -1010,7 +1010,6 @@ class ThreadHistoryPager extends PageHistoryPager {
 		
 		var_dump($t);
 		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $t->changeUser() ), false );
-//		$sig = "foo";
 		
 		$result[] = "<tr>";
 		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->timestamp()) . "</a></td>";
