@@ -5,8 +5,8 @@ Maintainer: River Tarnell <river@wikimedia.org>
 Standards-Version: 3.6.2
 
 Package: wikimedia-task-appserver
-Architecture: any
-Depends: wikimedia-nis-client, wikimedia-apache-config-appserver, apache2-mpm-prefork, librsvg2-bin, dvipng, tetex-bin, ocaml, php5-mysql, php5-curl, php5-xmlrpc, php5-cli, libapache2-mod-php5, file, djvulibre-bin, imagemagick, ttf-bitstream-vera, ttf-arphic-gkai00mp, ttf-arphic-bkai00mp, ttf-baekmuk, ttf-kochi-gothic, ttf-kochi-mincho, ttf-arphic-bsmi00lp, ttf-arphic-gbsn00lp, gsfonts, xfonts-scalable, ttf-gujarati-fonts, ttf-bengali-fonts, ttf-devanagari-fonts, ttf-punjabi-fonts, ttf-tamil-fonts, wikimedia-fonts, xfonts-100dpi, xfonts-75dpi, xfonts-base
+Architecture: all
+Depends: wikimedia-nis-client, wikimedia-apache-config-appserver, wikimedia-lvs-realserver, apache2-mpm-prefork, librsvg2-bin, dvipng, tetex-bin, ocaml, ploticus, php5-mysql, php5-curl, php5-xmlrpc, php5-cli, libapache2-mod-php5, file, djvulibre-bin, imagemagick, ttf-bitstream-vera, ttf-arphic-gkai00mp, ttf-arphic-bkai00mp, ttf-baekmuk, ttf-kochi-gothic, ttf-kochi-mincho, ttf-arphic-bsmi00lp, ttf-arphic-gbsn00lp, gsfonts, xfonts-scalable, ttf-gujarati-fonts, ttf-bengali-fonts, ttf-devanagari-fonts, ttf-punjabi-fonts, ttf-tamil-fonts, wikimedia-fonts, xfonts-100dpi, xfonts-75dpi, xfonts-base, xfonts-mplus
 Description: Wikimedia application server
  This package depends on all packages needed to setup a standard
  application server.

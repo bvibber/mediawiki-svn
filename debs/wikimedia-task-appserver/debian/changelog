@@ -1,3 +1,12 @@
+wikimedia-task-appserver (1.5) feisty; urgency=low
+
+  * Depend on wikimedia-lvs-realserver
+  * Depend on xftons-mplus
+  * Make architecture independent
+  * Depend on ploticus
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 21 Aug 2007 14:35:32 +0000
+
 wikimedia-task-appserver (1.4) feisty; urgency=low
 
   * Depend on additional X fonts. 
