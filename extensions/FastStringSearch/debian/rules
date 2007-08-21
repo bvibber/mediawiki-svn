@@ -59,6 +59,7 @@ install: build
 
 	# Add here commands to install the package into debian/php5-fss.
 	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/php5-fss install
+	install -m 0644 -D debian/fss.ini $(CURDIR)/debian/php5-fss/etc/php5/conf.d/fss.ini
 
 
 # Build architecture-independent files here.
