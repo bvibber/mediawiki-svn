@@ -1,3 +1,13 @@
+wikimedia-task-appserver (1.7) feisty; urgency=low
+
+  * Added apache2.conf and symlink to the apache conf files in the legacy
+    location.
+  * Removed /usr/local/apache/logs directory, no longer needed
+  * Switched to dh_link instead of ln -s, and dh_installdirs instead of
+    install -d.
+
+ -- Tim Starling <tstarling@wikimedia.org>  Tue, 21 Aug 2007 21:14:35 +0000
+
 wikimedia-task-appserver (1.6) feisty; urgency=low
 
   * Brion added depends php5-apc, php5-wikidiff2, php5-fss

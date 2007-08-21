@@ -1,0 +1,5 @@
+usr/local/apache apache
+usr/local/apache/common-local usr/local/apache/common
+home/wikipedia/common usr/local/apache/common-shared
+home/wikipedia/htdocs usr/local/apache/htdocs
+usr/local/apache/conf etc/apache2/wmf

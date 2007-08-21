@@ -46,15 +46,10 @@ install: build
 	dh_testroot
 	dh_clean -k 
 	dh_installdirs
-
-	install -d $(DESTDIR)/usr/local/apache
-	install -d $(DESTDIR)/usr/local/apache/logs
-	ln -s /usr/local/apache $(DESTDIR)/
-	ln -s common-local $(DESTDIR)/usr/local/apache/common
-	ln -s /home/wikipedia/common $(DESTDIR)/usr/local/apache/common-shared
-	ln -s /home/wikipedia/htdocs $(DESTDIR)/usr/local/apache
-	install -d $(DESTDIR)/etc
-	install sudoers $(DESTDIR)/etc/
+	dh_link
+	
+	install -m 0644 apache2.conf $(DESTDIR)/etc/apache2
+	install -m 0644 sudoers $(DESTDIR)/etc/
 
 # Build architecture-independent files here.
 binary-indep: build install
