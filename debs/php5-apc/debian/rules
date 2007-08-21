@@ -59,9 +59,9 @@ install: build
 	dh_clean -k 
 	dh_installdirs
 
-	# Add here commands to install the package into debian/apc.
-	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/apc install
-	install -D debian/apc.ini $(CURDIR)/debian/apc/etc/php5/conf.d/apc.ini
+	# Add here commands to install the package into debian/php5-apc.
+	$(MAKE) INSTALL_ROOT=$(CURDIR)/debian/php5-apc install
+	install -m 0644 -D debian/apc.ini $(CURDIR)/debian/php5-apc/etc/php5/conf.d/apc.ini
 
 
 # Build architecture-independent files here.

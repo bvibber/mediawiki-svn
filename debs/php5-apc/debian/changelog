@@ -1,3 +1,9 @@
+php5-apc (3.0.13-1wm5) unstable; urgency=low
+
+  * Normalize package name and fix permissions for apc.ini
+
+ -- Brion Vibber <brion@wikimedia.org>  Tue, 21 Aug 2007 16:24:30 +0000
+
 apc (3.0.13-1wm4) unstable; urgency=low
 
   * Hopefully work
