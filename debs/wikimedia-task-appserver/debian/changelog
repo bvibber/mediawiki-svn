@@ -1,3 +1,11 @@
+wikimedia-task-appserver (1.6) feisty; urgency=low
+
+  * Brion added depends php5-apc, php5-wikidiff2, php5-fss
+  * Added depends tidy, libtidy-0.99 (both >= 20070821)
+  * Include sudoers file
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 21 Aug 2007 19:36:50 +0000
+
 wikimedia-task-appserver (1.5) feisty; urgency=low
 
   * Depend on wikimedia-lvs-realserver

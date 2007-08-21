@@ -53,6 +53,8 @@ install: build
 	ln -s common-local $(DESTDIR)/usr/local/apache/common
 	ln -s /home/wikipedia/common $(DESTDIR)/usr/local/apache/common-shared
 	ln -s /home/wikipedia/htdocs $(DESTDIR)/usr/local/apache
+	install -d $(DESTDIR)/etc
+	install sudoers $(DESTDIR)/etc/
 
 # Build architecture-independent files here.
 binary-indep: build install
