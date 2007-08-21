@@ -1,0 +1,6 @@
+php5-fss (0.0.1-1) unstable; urgency=low
+
+  * Initial release as deb package
+
+ -- Brion Vibber <brion@wikimedia.org>  Tue, 21 Aug 2007 18:46:56 +0000
+
