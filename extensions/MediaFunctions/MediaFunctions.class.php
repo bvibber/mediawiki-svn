@@ -5,7 +5,7 @@
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
- * @version 1.0
+ * @version 1.1
  */
 class MediaFunctions {
 
@@ -23,16 +23,11 @@ class MediaFunctions {
 	 * @return string
 	 */
 	public static function mediamime( $parser, $name = '' ) {
-		$title = self::resolve( $name );
-		if( $title instanceof Title ) {
-			$parser->mOutput->addImage( $title->getDBkey() );
-			$file = wfFindFile( $title );
-			return $file instanceof File
-				? $file->getMimeType()
-				: self::error( self::ERR_NOT_EXIST, $name );
-		} else {
-			return self::error( self::ERR_INVALID_TITLE, $name );
+		if( ( $file = self::resolve( $name ) ) instanceof File ) {
+			$parser->mOutput->addImage( $file->getTitle()->getDBkey() );
+			return $file->getMimeType();
 		}
+		return self::error( $file, $name );
 	}
 
 	/**
@@ -43,16 +38,11 @@ class MediaFunctions {
 	 * @return string
 	 */
 	public static function mediasize( $parser, $name = '' ) {
-		$title = self::resolve( $name );
-		if( $title instanceof Title ) {
-			$parser->mOutput->addImage( $title->getDBkey() );
-			$file = wfFindFile( $title );
-			return $file instanceof File
-				? $parser->mOptions->getSkin()->formatSize( $file->getSize() )
-				: self::error( self::ERR_NOT_EXIST, $name );
-		} else {
-			return self::error( self::ERR_INVALID_TITLE, $name );
+		if( ( $file = self::resolve( $name ) ) instanceof File ) {
+			$parser->mOutput->addImage( $file->getTitle()->getDBkey() );
+			return $parser->mOptions->getSkin()->formatSize( $file->getSize() );
 		}
+		return self::error( $file, $name );
 	}
 
 	/**
@@ -63,16 +53,11 @@ class MediaFunctions {
 	 * @return string
 	 */
 	public static function mediaheight( $parser, $name = '' ) {
-		$title = self::resolve( $name );
-		if( $title instanceof Title ) {
-			$parser->mOutput->addImage( $title->getDBkey() );
-			$file = wfFindFile( $title );
-			return $file instanceof File
-				? $file->getHeight()
-				: self::error( self::ERR_NOT_EXIST, $name );
-		} else {
-			return self::error( self::ERR_INVALID_TITLE, $name );
+		if( ( $file = self::resolve( $name ) ) instanceof File ) {
+			$parser->mOutput->addImage( $file->getTitle()->getDBkey() );
+			return $file->getHeight();
 		}
+		return self::error( $file, $name );
 	}
 
 	/**
@@ -83,42 +68,73 @@ class MediaFunctions {
 	 * @return string
 	 */
 	public static function mediawidth( $parser, $name = '' ) {
-		$title = self::resolve( $name );
-		if( $title instanceof Title ) {
-			$parser->mOutput->addImage( $title->getDBkey() );
-			$file = wfFindFile( $title );
-			return $file instanceof File
-				? $file->getWidth()
-				: self::error( self::ERR_NOT_EXIST, $name );
-		} else {
-			return self::error( self::ERR_INVALID_TITLE, $name );
+		if( ( $file = self::resolve( $name ) ) instanceof File ) {
+			$parser->mOutput->addImage( $file->getTitle()->getDBkey() );
+			return $file->getWidth();
 		}
+		return self::error( $file, $name );
+	}
+	
+	/**
+	 * Get the dimensions of a file
+	 *
+	 *
+	 * @param Parser $parser Calling parser
+	 * @param string $name File name
+	 * @return string
+	 */
+	public static function mediadimensions( $parser, $name = '' ) {
+		if( ( $file = self::resolve( $name ) ) instanceof File ) {
+			$parser->mOutput->addImage( $file->getTitle()->getDBkey() );
+			return $file->getDimensionsString();
+		}
+		return self::error( $file, $name );
+	}
+	
+	/**
+	 * Get EXIF metadata associated with a file
+	 *
+	 * @param Parser $parser Calling parser
+	 * @param string $name File name
+	 * @param string $meta Metadata name
+	 * @return string
+	 */
+	public static function mediaexif( $parser, $name = '', $meta = '' ) {
+		if( ( $file = self::resolve( $name ) ) instanceof File ) {
+			$parser->mOutput->addImage( $file->getTitle()->getDBkey() );
+			if( $meta && $file->getHandler()->getMetadataType( $file ) == 'exif' ) {
+				$data = unserialize( $file->getMetadata() );
+				if( $data && isset( $data[$meta] ) )
+					return htmlspecialchars( $data[$meta] );
+			}
+			return '';
+		}
+		return self::error( $file, $name );
 	}
 
 	/**
-	 * Convert a string title into a Title
+	 * Convert a string title into a File, returning an appropriate
+	 * error message string if this is not possible
 	 *
 	 * The string can be with or without namespace, and might
 	 * include an interwiki prefix, etc.
 	 *
 	 * @param string $text Title string
-	 * @return mixed Title or null
+	 * @return mixed File or string
 	 */
 	private static function resolve( $text ) {
 		if( $text ) {
 			$title = Title::newFromText( $text );
 			if( $title instanceof Title ) {
-				if( $title->getNamespace() == NS_IMAGE ) {
-					return $title;
-				} else {
-					return Title::makeTitleSafe( NS_IMAGE, $title->getText() );
-				}
-			} else {
-				return null;
+				if( $title->getNamespace() != NS_IMAGE )
+					$title = Title::makeTitle( NS_IMAGE, $title->getText() );
+				$file = wfFindFile( $title );
+				return $file instanceof File
+					? $file
+					: self::ERR_NOT_EXIST;
 			}
-		} else {
-			return null;
 		}
+		return self::ERR_INVALID_TITLE;
 	}
 	
 	/**
@@ -133,4 +149,3 @@ class MediaFunctions {
 	}
 
 }
-

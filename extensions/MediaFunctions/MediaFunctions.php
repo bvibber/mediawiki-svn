@@ -6,7 +6,7 @@
  *
  * @addtogroup Extensions
  * @author Rob Church <robchur@gmail.com>
- * @version 1.0
+ * @version 1.1
  */
  
 if( defined( 'MEDIAWIKI' ) ) {
@@ -31,6 +31,8 @@ if( defined( 'MEDIAWIKI' ) ) {
 		$wgParser->setFunctionHook( 'mediasize', array( 'MediaFunctions', 'mediasize' ) );
 		$wgParser->setFunctionHook( 'mediaheight', array( 'MediaFunctions', 'mediaheight' ) );
 		$wgParser->setFunctionHook( 'mediawidth', array( 'MediaFunctions', 'mediawidth' ) );
+		$wgParser->setFunctionHook( 'mediadimensions', array( 'MediaFunctions', 'mediadimensions' ) );
+		$wgParser->setFunctionHook( 'mediaexif', array( 'MediaFunctions', 'mediaexif' ) );
 		require_once( dirname( __FILE__ ) . '/MediaFunctions.i18n.php' );
 		foreach( efMediaFunctionsMessages() as $lang => $messages )
 			$wgMessageCache->addMessages( $messages, $lang );
@@ -54,4 +56,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software, and cannot be used standalone.\n" );
 	exit( 1 );
 }
-
