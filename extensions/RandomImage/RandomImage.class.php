@@ -61,14 +61,15 @@ class RandomImage {
 	public function render() {
 		$title = $this->pickImage();
 		if( $title instanceof Title && $this->imageExists( $title ) ) {
-			$html = $this->parser->parse(
-				$this->buildMarkup( $title ),
-				$this->parser->getTitle(),
-				$this->parser->getOptions(),
-				false,
-				false
-			)->getText();
-			return $this->removeMagnifier( $html );
+			return $this->removeMagnifier( 
+				$this->parser->parse(
+					$this->buildMarkup( $title ),
+					$this->parser->getTitle(),
+					$this->parser->getOptions(),
+					false,
+					false
+				)->getText()
+			);
 		}
 		return '';
 	}
