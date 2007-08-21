@@ -1,3 +1,9 @@
+apc (3.0.13-1wm2) unstable; urgency=low
+
+  * Adjust deps
+
+ -- Brion Vibber <brion@wikimedia.org>  Tue, 21 Aug 2007 15:47:05 +0000
+
 apc (3.0.13-1wm1) unstable; urgency=low
 
   * Initial release
