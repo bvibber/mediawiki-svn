@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.8) feisty; urgency=low
+
+  * Add diversion of /etc/apache2/apache2.conf
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 21 Aug 2007 22:33:31 +0000
+
 wikimedia-task-appserver (1.7) feisty; urgency=low
 
   * Added apache2.conf and symlink to the apache conf files in the legacy
