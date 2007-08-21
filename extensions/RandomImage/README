@@ -95,6 +95,7 @@ Version 1.4
 	Limit database selections to files with "IMAGE" major MIME types
 	Fix regression; "size" was ignored under most circumstances
 	Force thumbnailing of images
+	Fix issues with inconsistent thumbnail	behaviour
 
 August 15, 2007
 Version 1.3
