@@ -41,14 +41,15 @@ class Xml {
 	 * @param $attribs Array of attributes for an XML element
 	 */
 	private static function expandAttributes( $attribs ) {
+		$out = '';
 		if( is_null( $attribs ) ) {
 			return null;
-		} else {
-			$out = '';
-			foreach( $attribs as $name => $val ) {
-				$out .= ' ' . $name . '="' . Sanitizer::encodeAttribute( $val ) . '"';
-			}
+		} elseif( is_array( $attribs ) ) {
+			foreach( $attribs as $name => $val )
+				$out .= " {$name}=\"" . Sanitizer::encodeAttribute( $val ) . '"';
 			return $out;
+		} else {
+			throw new MWException( 'Expected attribute array, got something else in ' . __METHOD__ );
 		}
 	}
 

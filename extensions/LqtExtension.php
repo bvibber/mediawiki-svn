@@ -1009,8 +1009,8 @@ class ThreadHistoryPager extends PageHistoryPager {
 		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $t->revisionNumber() );
 		
 		var_dump($t);
-		//$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $t->changeUser() ), false );
-		$sig = "foo";
+		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $t->changeUser() ), false );
+//		$sig = "foo";
 		
 		$result[] = "<tr>";
 		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->timestamp()) . "</a></td>";

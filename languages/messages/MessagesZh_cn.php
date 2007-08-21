@@ -306,7 +306,7 @@ $messages = array(
 'youhavenewmessages'      => '您有$1（$2）。',
 'newmessageslink'         => '新信息',
 'newmessagesdifflink'     => '上次更改',
-'youhavenewmessagesmulti' => '您在$1上有新消息',
+'youhavenewmessagesmulti' => '您在 $1 有一条新信息',
 'editsection'             => '编辑',
 'editold'                 => '编辑',
 'editsectionhint'         => '编辑段落: $1',
@@ -332,10 +332,10 @@ $messages = array(
 'nstab-category'  => '分类',
 
 # Main script and global functions
-'nosuchaction'      => '没有这个命令',
-'nosuchactiontext'  => 'URL 请求的命令无法被这个wiki识别',
-'nosuchspecialpage' => '没有此特殊页面',
-'nospecialpagetext' => '您请求的特殊页面是无效的, 在[[Special:Specialpages]]可得到所有有效的特殊页面的列表。',
+'nosuchaction'      => '这个命令不存在',
+'nosuchactiontext'  => '这个wiki无法识别URL请求的命令',
+'nosuchspecialpage' => '此特殊页面不存在',
+'nospecialpagetext' => '您请求的特殊页面无效。[[Special:Specialpages]]载有所有有效特殊页面的列表。',
 
 # General errors
 'error'                => '错误',
@@ -353,7 +353,7 @@ MySQL返回错误 "<tt>$3: $4</tt>"。',
 MySQL返回错误“$3: $4”。',
 'noconnect'            => '抱歉！网站遇到一些技术问题，无法连接数据库服务器。<br />$1',
 'nodb'                 => '无法选择数据库$1',
-'cachederror'          => '下面的页面是被请求页面在缓存中的一个副本，可能不是最新版本的。',
+'cachederror'          => '以下页面是缓存中的副本，未必是最新版本。',
 'laggedslavemode'      => '警告: 页面可能不包含最近的更新。',
 'readonly'             => '数据库被锁定',
 'enterlockreason'      => '请输入锁定的原因，包括预计重新开放的时间',
@@ -361,7 +361,7 @@ MySQL返回错误“$3: $4”。',
 这很可能是由于数据库正在维修，完成后即可恢复。
 
 管理员有如下解释: $1',
-'missingarticle'       => '数据库找不到页面文子"$1"。
+'missingarticle'       => '数据库找不到页面文字"$1"。
 
 通常这是由于修订历史页上过时的链接到已经被删除的页面所导致的。
 
@@ -398,7 +398,7 @@ MySQL返回错误“$3: $4”。',
 'sqlhidden'            => '(SQL查询已隐藏)',
 'cascadeprotected'     => '这个页面已经被保护，因为这个页面被以下已标注"联锁保护"的{{PLURAL:$1|一个|多个}}被保护页面包含:
 $2',
-'namespaceprotected'   => "您并没有权限去编辑在'''$1'''名字空间内的页面。",
+'namespaceprotected'   => "您并没有权限编辑'''$1'''名字空间内的页面。",
 'customcssjsprotected' => '您並無權限去編輯這個頁面，因為它包含了另一位用戶的個人設定。',
 'ns-specialprotected'  => '在特殊名字空間中的頁面是不可以編輯的。',
 
@@ -447,7 +447,7 @@ $2',
 'prefs-help-email'           => '电子邮件是可选的，但当启用它后可以在您没有公开自己的用户身份时通过您的用户页或用户讨论页与您联系。',
 'nocookiesnew'               => '已成功创建新账户！侦测到您已关闭 Cookies，请开启它并登录。',
 'nocookieslogin'             => '本站利用 Cookies 进行用户登录，侦测到您已关闭 Cookies，请开启它并重新登录。',
-'noname'                     => '你没有输入一个有效的用户名。',
+'noname'                     => '你没有输入有效的用户名。',
 'loginsuccesstitle'          => '登录成功',
 'loginsuccess'               => '你现在以"$1"的身份登录{{SITENAME}}。',
 'nosuchuser'                 => '找不到用户"$1"。检查您的拼写，或者建立一个新账户。',
@@ -530,8 +530,8 @@ $2',
 
 这次查封是由$1所封的。当中的原因是''$2''。
 
-* 这次查封的开始时间是：$8
-* 这次查封的到期时间是：$6
+* 这次查封开始的时间是：$8
+* 这次查封到期的时间是：$6
 * 对于被查封者：$7
 
 你可以联络$1或者其他的[[{{MediaWiki:grouppage-sysop}}|管理员]]，讨论这次查封。
@@ -948,6 +948,7 @@ $2',
 'uploadwarning'               => '上载警告',
 'savefile'                    => '保存文件',
 'uploadedimage'               => '已上载"[[$1]]"',
+'overwroteimage'              => '已经上载"[[$1]]"的新版本',
 'uploaddisabled'              => '无法上传',
 'uploaddisabledtext'          => '文件上传在此网站不可用。',
 'uploadscripted'              => '该文件包含可能被网络浏览器错误解释的 HTML 或脚本代码。',
@@ -1023,8 +1024,21 @@ $2',
 'filerevert-comment'        => '注解:',
 'filerevert-defaultcomment' => '已经恢复到于$1 $2的版本',
 'filerevert-submit'         => '恢复',
-'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\'已经恢复到[于$2 $3的$4版本]。</span>',
+'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\'已经恢复到[$4 于$2 $3的版本]。</span>',
 'filerevert-badversion'     => '这个文件所提供的时间截记并无先前的本地版本。',
+
+# File deletion
+'filedelete'             => '删除$1',
+'filedelete-legend'      => '删除文件',
+'filedelete-intro'       => "您现正删除'''[[Media:$1|$1]]'''。",
+'filedelete-intro-old'   => "<span class=\"plainlinks\">你现正删除'''[[Media:$1|$1]]'''于[$4 $2 $3]的版本。</span>",
+'filedelete-comment'     => '注解:',
+'filedelete-submit'      => '删除',
+'filedelete-success'     => "'''$1'''已经删除。",
+'filedelete-success-old' => "<span class=\"plainlinks\">'''[[Media:$1|$1]]'''于 $2 $3 的版本已经删除。</span>",
+'filedelete-nofile'      => "'''$1'''在这个网站中不存在。",
+'filedelete-nofile-old'  => "这里没有'''$1'''于 $2 $3 的版本。",
+'filedelete-iscurrent'   => '您现正尝试删除这个文件的最近版本。请先将个该文件回退成较旧的版本。',
 
 # MIME search
 'mimesearch'         => 'MIME 搜索',
@@ -1806,13 +1820,15 @@ $1',
 'mediawarning'         => "'''警告''': 该文件可能包含恶意代码，运行它可能对您的系统带来危险。<hr>",
 'imagemaxsize'         => '在图像描述页对图像大小限制为:',
 'thumbsize'            => '缩略图大小:',
+'widthheightpage'      => '$1×$2, $3页',
 'file-info'            => '(文件大小: $1, MIME 类型: $2)',
 'file-info-size'       => '($1 × $2 像素，文件大小：$3 ，MIME类型：$4)',
 'file-nohires'         => '<small>无更高解像度可提供。</small>',
-'file-svg'             => '<small>这是一幅无损可缩放的矢量图像。基本大小: $1 × $2 像素。</small>',
+'svg-long-desc'        => '(SVG文件，表面大小： $1 × $2 像素，文件大小：$3)',
 'show-big-image'       => '完整分辨率',
 'show-big-image-thumb' => '<small>这幅略缩图的分辨率: $1 × $2 像素</small>',
 
+# Special:Newimages
 'newimages'    => '新建图像画廊',
 'showhidebots' => '($1机器人)',
 'noimages'     => '无可查看图像。',
@@ -2214,8 +2230,8 @@ $1
 'livepreview-error'   => '连接失败: $1 "$2" 尝试标准预览。',
 
 # Friendlier slave lag warnings
-'lag-warn-normal' => '新于$1秒的更改可能不会在这个列表中显示。',
-'lag-warn-high'   => '由于数据库的过度延迟，新于$1秒的更改可能不会在这个列表中显示。',
+'lag-warn-normal' => '过去$1秒内的更改未必会在这个列表中显示。',
+'lag-warn-high'   => '由于数据库的过度延迟，过去$1秒的更改未必会在这个列表中显示。',
 
 # Watchlist editor
 'watchlistedit-numitems'       => '您的监视列表中共有$1个标题，当中不包括对话页面。',

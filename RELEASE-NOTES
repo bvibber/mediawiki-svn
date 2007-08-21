@@ -177,6 +177,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 10937) Distinguish overwritten files in upload log
 * Introduce 'ArticleUpdateBeforeRedirect' hook; see docs/hooks.txt for more
   information
+* Confirmation is now required when deleting old versions of files
+* (bug 7535) Users can now enter comments when deleting old versions of files
+* (bug 11001) Submit Special:Newpages as a GET, rather than a POST request
 
 == Bugfixes since 1.10 ==
 
@@ -441,6 +444,9 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Added site statistics (siprop=statistics for meta=siteinfo)
 * (bug 10902) Unable to fetch user contributions from IP addresses
 * `list=usercontribs` no longer requires that the user exist
+* (bug 10971) `aufrom` parameter doesn't work with spaces
+* Fix username handling issue with `auprefix` parameter
+* Treat underscores as spaces for `aufrom` and `auprefix` parameters
 
 == Maintenance script changes since 1.10 ==
 

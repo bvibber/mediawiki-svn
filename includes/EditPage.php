@@ -304,7 +304,6 @@ class EditPage {
 	 */
 	function edit() {
 		global $wgOut, $wgUser, $wgRequest, $wgTitle;
-		global $wgEmailConfirmToEdit;
 
 		if ( ! wfRunHooks( 'AlternateEdit', array( &$this ) ) )
 			return;
@@ -339,10 +338,11 @@ class EditPage {
 
 			if ($error[0] == 'readonlytext')
 			{
-				if ($this->edit)
+				if ($this->edit) {
 					$this->formtype = 'preview';
-				else if ($this->save || $this->preview || $this->diff)
+				} elseif ($this->save || $this->preview || $this->diff) {
 					$remove[] = $error;
+				}
 			}
 		}
 
@@ -1029,9 +1029,10 @@ class EditPage {
 			if ( count($cascadeSources) > 0 ) {
 				# Explain, and list the titles responsible
 				$notice = wfMsgExt( 'cascadeprotectedwarning', array('parsemag'), count($cascadeSources) ) . "\n";
-				foreach( $cascadeSources as $id => $page )
+				foreach( $cascadeSources as $page ) {
 					$notice .= '* [[:' . $page->getPrefixedText() . "]]\n";
 				}
+			}
 			$wgOut->addWikiText( $notice );
 		}
 
