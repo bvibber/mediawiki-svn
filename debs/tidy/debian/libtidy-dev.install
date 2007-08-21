@@ -1,0 +1,3 @@
+debian/tmp/usr/include/* usr/include/tidy
+debian/tmp/usr/lib/libtidy.a
+debian/tmp/usr/lib/libtidy.la
