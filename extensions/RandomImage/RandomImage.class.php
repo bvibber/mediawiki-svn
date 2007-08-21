@@ -61,13 +61,14 @@ class RandomImage {
 	public function render() {
 		$title = $this->pickImage();
 		if( $title instanceof Title && $this->imageExists( $title ) ) {
-			return $this->parser->parse(
+			$html = $this->parser->parse(
 				$this->buildMarkup( $title ),
 				$this->parser->getTitle(),
 				$this->parser->getOptions(),
 				false,
 				false
 			)->getText();
+			return $this->removeMagnifier( $html );
 		}
 		return '';
 	}
@@ -104,6 +105,20 @@ class RandomImage {
 			$parts[] = $this->float;
 		$parts[] = $this->getCaption( $title );
 		return '[[' . implode( '|', $parts ) . ']]';
+	}
+
+	/**
+	 * Locate and remove the "magnify" icon in the image HTML
+	 *
+	 * @param string $html Image HTML
+	 * @return string
+	 */
+	protected function removeMagnifier( $html ) {
+		$doc = DOMDocument::loadXml( $html );
+		$xpath = new DOMXPath( $doc );
+		foreach( $xpath->query( '//div[@class="magnify"]' ) as $mag )
+			$mag->parentNode->removeChild( $mag );
+		return preg_replace( '!<\?xml[^?]*\?>!', '', $doc->saveXml() );
 	}
 
 	/**
