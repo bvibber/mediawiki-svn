@@ -14,6 +14,7 @@ var wgOggPlayer = {
 	'msg': {},
 	'cortadoUrl' : '',
 	'showPlayerSelect': true,
+	'controlsHeightGuess': 20, 
 
 	// Main entry point: initialise a video player
 	// Player will be created as a child of the given ID
@@ -84,11 +85,19 @@ var wgOggPlayer = {
 		}
 		this.detectionDone = true;
 
+		// navigator.javaEnabled() only tells us about preferences, we need to
+		// search navigator.mimeTypes to see if it's installed
+		var javaEnabled = navigator.javaEnabled();
+
 		// MSIE VLC
-		try {
-			var vlcObj = new ActiveXObject( "VideoLAN.VLCPlugin.2" );
+		if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
 			this.clientSupports['vlcActiveX'] = true;
-		} catch ( e ) {}
+		}
+
+		// MSIE Java
+		if ( javaEnabled && this.testActiveX( 'JavaPlugin' ) ) {
+			this.clientSupports['cortado'] = true;
+		}
 
 		// <video> element
 		elt.innerHTML = '<video id="testvideo"></video>\n';
@@ -98,6 +107,8 @@ var wgOggPlayer = {
 		}
 
 		// Mozilla plugins
+
+		
 		if(navigator.mimeTypes && navigator.mimeTypes.length > 0) {
 			for ( var i = 0; i < navigator.mimeTypes.length; i++) {
 				var type = navigator.mimeTypes[i].type;
@@ -110,11 +121,24 @@ var wgOggPlayer = {
 				if(navigator.mimeTypes[i].type.indexOf("application/x-vlc-plugin") > -1) {
 					this.clientSupports['vlcPlugin'] = true;
 				}
+				if (javaEnabled && 
+					navigator.mimeTypes[i].type.indexOf("application/x-java-applet") > -1) 
+				{
+					this.clientSupports['cortado'] = true;
+				}
 			}
 		}
+	},
 
-		// Java
-		this.clientSupports['cortado'] = navigator.javaEnabled();
+	'testActiveX' : function ( name ) {
+		var hasObj = true;
+		try {
+			// No IE, not a class called "name", it's a variable
+			var obj = new ActiveXObject( '' + name );
+		} catch ( e ) {
+			hasObj = false;
+		}
+		return hasObj;
 	},
 
 	'addOption' : function ( select, value, text, selected ) {
@@ -182,7 +206,7 @@ var wgOggPlayer = {
 	'embedVideoElement': function ( elt, videoUrl, width, height, length ) {
 		var videoElt = document.createElement('video');
 		videoElt.setAttribute( 'width', width );
-		videoElt.setAttribute( 'height', height + 20 );
+		videoElt.setAttribute( 'height', height + this.controlsHeightGuess );
 		videoElt.setAttribute( 'src', videoUrl );
 		videoElt.setAttribute( 'autoplay', '1' );
 		videoElt.setAttribute( 'controls', '1' );
@@ -205,13 +229,13 @@ var wgOggPlayer = {
 			"<object id=" + this.hq( id ) + 
 			" type='application/ogg'" +
 			" width=" + this.hq( width ) + 
-			" height=" + this.hq( height + 20 ) + 
+			" height=" + this.hq( height + this.controlsHeightGuess ) + 
 			" data=" + this.hq( videoUrl ) + "></object>";
 	},
 
 	'embedVlcPlugin' : function ( elt, videoUrl, width, height, length ) {
 		var id = elt.id + "_obj";
-		elt.innerHTML += 
+		elt.innerHTML += 	
 			"<object id=" + this.hq( id ) + 
 			" type='application/x-vlc-plugin'" +
 			" width=" + this.hq( width ) + 
@@ -229,27 +253,41 @@ var wgOggPlayer = {
 	'embedVlcActiveX' : function ( elt, videoUrl, width, height, length ) {
 		var id = elt.id + "_obj";
 
-		// I ran into some hairy object initialisation issues when trying to 
-		// create this object with DOM functions. If anyone knows a better way 
-		// than innerHTML, please let me know. -- TS
-		elt.innerHTML += 
+		var html = 
 			'<object id=' + this.hq( id ) + 
 			' classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"' + 
 			' codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab#Version=0,8,6,0"' + 
 			' width=' + this.hq( width ) + 
-			' height=' + this.hq( height ) + ">" + 
+			' height=' + this.hq( height ) + 
+			' style="width: ' + this.hx( width ) + 'px; height: ' + this.hx( height ) + 'px;"' +
+			">" + 
 			'<param name="mrl" value=' + this.hq( videoUrl ) + '/>' + 
-			'</object>' ;
+			'</object>';
+		elt.innerHTML += html;
 
 		var videoElt = document.getElementById( id );
+
+		// IE says "sorry, I wasn't listening, what were the dimensions again?"
+		if ( width && height ) {
+			videoElt.width = width;
+			videoElt.height = height;
+			videoElt.style.width = width + 'px';
+			videoElt.style.height = height + 'px';
+		}
+
 		elt.appendChild( document.createElement( 'br' ) );
 		// TODO: seek bar
-		elt.appendChild( this.newPlayButton( videoElt.playlist ) );
+		elt.appendChild( this.newButton( 'ogg-play', function() { videoElt.playlist.play(); } ) );
 		// FIXME: playlist.pause() doesn't work
-		elt.appendChild( this.newStopButton( videoElt.playlist ) );
+		elt.appendChild( this.newButton( 'ogg-stop', function() { videoElt.playlist.stop(); } ) );
 	},
 
 	'embedCortado' : function ( elt, videoUrl, width, height, length ) {
+		var statusHeight = 18;
+		// Given extra vertical space, cortado centres the video and then overlays the status 
+		// line, leaving an ugly black bar at the top. So we don't give it any.
+		var playerHeight = height < statusHeight ? statusHeight : height;
+
 		// Create the applet all at once
 		// In Opera, document.createElement('applet') immediately creates
 		// a non-working applet with unchangeable parameters, similar to the 
@@ -257,14 +295,14 @@ var wgOggPlayer = {
 		elt.innerHTML = 
 		    '<applet code="com.fluendo.player.Cortado.class" ' +
 		    '      width=' + this.hq( width ) +
-		    '      height=' + this.hq( height + 18 ) + 
+		    '      height=' + this.hq( playerHeight ) + 
 		    '      archive=' + this.hq( this.cortadoUrl ) + '>' +
 		    '  <param name="url"  value=' + this.hq( videoUrl ) + '/>' +
 		    '  <param name="duration"  value=' + this.hq( length ) + '/>' +
 		    '  <param name="seekable"  value="true"/>' +
 		    '  <param name="autoPlay" value="true"/>' +
 		    '  <param name="showStatus"  value="show"/>' +
-		    '  <param name="statusHeight"  value="18"/>' +
+		    '  <param name="statusHeight"  value="' + statusHeight + '"/>' +
 		    '</applet>';
 
 		// Disable autoPlay in the DOM right now, to prevent Mozilla from 
