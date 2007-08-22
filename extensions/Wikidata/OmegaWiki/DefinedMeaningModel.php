@@ -345,7 +345,7 @@ class DefinedMeaningModel {
 			$to_dataset=$this->dataset;
 
 		$this->_saved_dc=$wdCurrentContext;
-		$wdCurrentContext=$to_dc;
+		$wdCurrentContext=$to_dataset;
 		return $wdCurrentContext;
 	}
 
