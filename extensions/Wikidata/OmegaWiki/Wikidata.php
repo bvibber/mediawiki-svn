@@ -14,7 +14,6 @@ class DefaultWikidataApplication {
 	// The following member variables control some application specific preferences
 	protected $filterLanguageId = 0;						// Filter pages on this languageId, set to 0 to show all languages
 	protected $possiblySynonymousRelationTypeId = 0;		// Put this relation type in a special section "Possibly synonymous"
-	protected $showLanguageSelector = true;					// Show language selector at the top of each wiki data page
 	protected $showClassicPageTitles = true;				// Show classic page titles instead of prettier page titles
 	
 	protected $propertyToColumnFilters = array();	
@@ -25,15 +24,12 @@ class DefaultWikidataApplication {
 
 	public function __construct() {
 		global
-			$wgFilterLanguageId, $wgShowLanguageSelector, 
+			$wgFilterLanguageId, 
 			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId,
 			$wgPropertyToColumnFilters;
 			
 		if (isset($wgFilterLanguageId))
 			$this->filterLanguageId = $wgFilterLanguageId;
-			
-		if (isset($wgShowLanguageSelector))
-			$this->showLanguageSelector = $wgShowLanguageSelector;
 			
 		if (isset($wgShowClassicPageTitles))
 			$this->showClassicPageTitles = $wgShowClassicPageTitles;
@@ -45,22 +41,10 @@ class DefaultWikidataApplication {
 			$this->propertyToColumnFilters = $wgPropertyToColumnFilters;  
 	}
 
-	function getLanguageSelector() {
-		global 
-			$wgUser;
-		
-		$userlang=$wgUser->getOption('language');
-		$skin = $wgUser->getSkin();
-			
-		return wfMsg('ow_uilang',"<b>$userlang</b>").  " &mdash; " . $skin->makeLink("Special:Preferences", wfMsg('ow_uilang_set'));
-	}
 
 	protected function outputViewHeader() {
 		global
 			$wgOut;
-		
-		if ($this->showLanguageSelector)
-			$wgOut->addHTML($this->getLanguageSelector());
 		
 		if($this->showDataSetPanel) 
 			$wgOut->addHTML($this->getDataSetPanel());
@@ -177,9 +161,6 @@ class DefaultWikidataApplication {
 		if ($wgRequest->getText('save') != '') 
 			$this->saveWithinTransaction();
 
-		if ($this->showLanguageSelector)
-			$wgOut->addHTML($this->getLanguageSelector());
-			
 		$viewInformation = new ViewInformation();
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
 		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
@@ -227,9 +208,6 @@ class DefaultWikidataApplication {
 			
 		$transactionId = $wgRequest->getInt('transaction');
 
-		if ($this->showLanguageSelector)
-			$wgOut->addHTML($this->getLanguageSelector());
-			
 		$wgOut->addHTML(getOptionPanel(
 			array(
 				'Transaction' => getSuggest('transaction','transaction', array(), $transactionId, getTransactionLabel($transactionId), array(0, 2, 3)),

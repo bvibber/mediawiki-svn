@@ -367,7 +367,6 @@ class OmegaWikiAttributes {
 				$instance[$viewInformation->hashCode()] = $instance["last"];
 			}
 		}		
-
 		return $instance["last"];
 	}
 
