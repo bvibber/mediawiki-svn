@@ -740,7 +740,7 @@ class LuceneSearchSet {
 		$fname = 'LuceneSearchSet::newFromQuery';
 		wfProfileIn( $fname );
 
-		global $wgLuceneHost, $wgLucenePort, $wgLuceneSearchVersion
+		global $wgLuceneHost, $wgLucenePort, $wgLuceneSearchVersion;
 		global $wgDBname, $wgMemc;
 
 		$enctext = rawurlencode( trim( $query ) );
