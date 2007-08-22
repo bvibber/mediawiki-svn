@@ -629,17 +629,18 @@ function getTranslatedContentValue($translatedContentId, ViewInformation $viewIn
 
 	$o=OmegaWikiAttributes::getInstance();
 	
-	if ($viewInformation->filterLanguageId == 0)
+	if ($viewInformation->filterLanguageId == 0) {
 		return getTranslatedContentRecordSet($translatedContentId, $viewInformation);
-	else {
+	
+	} else {
 		$recordSet = getFilteredTranslatedContentRecordSet($translatedContentId, $viewInformation);
 		
 		if (count($viewInformation->queryTransactionInformation->versioningAttributes()) > 0) 
 			return $recordSet;
 		else {
-			if ($recordSet->getRecordCount() > 0) 
+			if ($recordSet->getRecordCount() > 0) {
 				return $recordSet->getRecord(0)->text;
-			else	
+			} else	
 				return "";
 		}
 	}
@@ -651,6 +652,7 @@ function getTranslatedContentRecordSet($translatedContentId, ViewInformation $vi
 	global
 		$translatedContentTable;
 	
+
 	$o=OmegaWikiAttributes::getInstance();
 
 	$recordSet = queryRecordSet(

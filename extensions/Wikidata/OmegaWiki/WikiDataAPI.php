@@ -471,6 +471,12 @@ function createTranslatedContent($translatedContentId, $languageId, $textId) {
 
 function translatedTextExists($textId, $languageId) {
 	$dc=wdGetDataSetContext();
+
+	if (is_null($textId))
+		throw new Exception("textId is null");
+	if (is_null($languageId))
+		throw new Exception("languageId is null");
+
 	$dbr = &wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT translated_content_id" .

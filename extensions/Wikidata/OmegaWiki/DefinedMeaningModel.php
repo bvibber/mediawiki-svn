@@ -155,12 +155,10 @@ class DefinedMeaningModel {
 			$record->possiblySynonymous = getPossiblySynonymousRecordSet($id, $view);
 			$filterRelationTypes[] = $view->possiblySynonymousRelationTypeId;
 		}
-		
 		$record->relations = getDefinedMeaningRelationsRecordSet($id, $filterRelationTypes, $view);
 		$record->reciprocalRelations = getDefinedMeaningReciprocalRelationsRecordSet($id, $view);
 		$record->classMembership = getDefinedMeaningClassMembershipRecordSet($id, $view);
 		$record->collectionMembership= getDefinedMeaningCollectionMembershipRecordSet($id, $view);
-		
 		$objectAttributesRecord = getObjectAttributesRecord($id, $view);
 		$record->definedMeaningAttributes = $objectAttributesRecord;
 		applyPropertyToColumnFiltersToRecord($record, $objectAttributesRecord, $view);
@@ -189,6 +187,7 @@ class DefinedMeaningModel {
 		# more here?
 		$expression->createNewInDatabase();
 		
+
 		# shouldn't this stuff be protected?
 		$expressionId=$expression->id;
 		$languageId=$expression->languageId;
@@ -203,6 +202,7 @@ class DefinedMeaningModel {
 		echo "id: $expressionId lang: $languageId";
 		$definedMeaningId=createNewDefinedMeaning($expressionId, $languageId, $text);
 		
+
 		getDefinedMeaningEditor($this->viewInformation)->save(
 			$this->getIdStack($definedMeaningId), 
 			$this->getRecord()
@@ -256,7 +256,10 @@ class DefinedMeaningModel {
 	 */
 	public function getRecord() {
 		if(!$this->recordIsLoaded) {
+			
+			$this->hackDC($this->dataset); // XXX don't do this at home
 			$this->loadRecord();
+			$this->unhackDC(); // XXX very evil
 		}
 		if(!$this->recordIsLoaded) {
 			return null;
@@ -279,7 +282,6 @@ class DefinedMeaningModel {
 
 		$record=$this->getRecord();
 		$expression=$record->expression;
-		echo var_dump($expression);
 		$spelling=$expression->definedMeaningDefiningExpression;
 		$language=$expression->language;
 		return findOrCreateExpression($spelling, $language);
@@ -306,6 +308,31 @@ class DefinedMeaningModel {
 		$this->saveWithinTransaction();
 		$wdCurrentContext=null;		# unset override, we probably should
 						# use proper OO for this.
+	}
+
+	/* XXX 
+	 * 2 very dirty functions, as a placeholder to make things work
+	 * this very instant. 
+	 * Take the already evil global context, and twist it to our 
+	 * own nefarious ends, then we put it back ASAP and hope nobody 
+	 * notices.
+	 * Of course, one day they will.
+	 * Before then, this should be refactored out.
+	 * Probably by next week friday
+	 * XXX */
+	protected $_saved_dc=null;
+	public function hackDC($to_dataset) {
+		global
+			$wdCurrentContext;
+
+		$this->_saved_dc=$wdCurrentContext;
+		$wdCurrentContext=$to_dc;
+	}
+
+	public function unhackDC() {
+		global
+			$wdCurrentContext;
+		$wdCurrentContext=$this->_saved_dc;
 	}
 
 	/** 
