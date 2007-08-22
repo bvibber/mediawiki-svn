@@ -35,6 +35,16 @@ function wfSpecialDatasearch() {
 		
 		function SpecialDatasearch() {
 			SpecialPage::SpecialPage('Datasearch');
+		}
+		
+		function execute($parameter) {
+			global
+				$wgOut, $wgTitle;
+
+			initializeOmegaWikiAttributes(new ViewInformation());
+
+			global
+				$definedMeaningReferenceType;
 
 			require_once("WikiDataGlobals.php");
 			require_once("forms.php");
@@ -44,11 +54,6 @@ function wfSpecialDatasearch() {
 			require_once("OmegaWikiAttributes.php");
 			require_once("OmegaWikiRecordSets.php");
 			require_once("OmegaWikiEditors.php");
-
-			initializeOmegaWikiAttributes(new ViewInformation());
-
-			global
-				$definedMeaningReferenceType;
 			
 			$this->spellingAttribute = new Attribute("found-word", "Found word", "short-text");
 			$this->languageAttribute = new Attribute("language", "Language", "language");
@@ -71,11 +76,6 @@ function wfSpecialDatasearch() {
 				$this->collectionAttribute,
 				$this->collectionMemberAttribute
 			);
-		}
-		
-		function execute($parameter) {
-			global
-				$wgOut, $wgTitle;
 			
 			if(array_key_exists('search-text', $_GET)) {
 				$searchText = ltrim($_GET['search-text']);

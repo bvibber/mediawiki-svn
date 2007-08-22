@@ -235,6 +235,7 @@ $o->removeTransaction = new Attribute('remove-transaction', 'Removed', $transact
 $recordLifeSpanStructure = new Structure($o->addTransaction, $o->removeTransaction);
 $o->recordLifeSpan = new Attribute('record-life-span', 'Record life span', $recordLifeSpanStructure);
 
+
 function getUserName($userId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT user_name FROM user WHERE user_id=$userId");
