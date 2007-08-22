@@ -296,7 +296,7 @@ public class WikiQueryParser {
 				continue; // ignore whitespaces
 			
 			// pluses and minuses, underscores can be within words, *,? are for wildcard queries
-			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_' || ch=='*'){
+			if(!Character.isWhitespace(ch) && ch != ':' && ch != '(' && ch != ')' && ch !='[' && ch != ']' && ch != '.' && ch != ',' && ch != ';' && ch != '"'){
 				if(length<buffer.length)
 					buffer[length++] = ch;
 			} else{

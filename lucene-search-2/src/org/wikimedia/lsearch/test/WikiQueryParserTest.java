@@ -366,6 +366,14 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseFourPass("\"うろパン\"",NamespacePolicy.IGNORE,false);
 			assertEquals("contents:\"うろ ろハ ハン\" title:\"うろ ろハ ハン\"^2.0 (alttitle1:\"うろ ろハ ハン\"^6.0 alttitle2:\"うろ ろハ ハン\"^6.0 alttitle3:\"うろ ろハ ハン\"^6.0)",q.toString());
 			
+			// Malayalam
+			analyzer = Analyzers.getSearcherAnalyzer("ml");
+			bs = new FieldBuilder("ml").getBuilder();
+			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.IGNORE);
+			q = parser.parseFourPass("കൊറിയ ",NamespacePolicy.IGNORE,false);
+			assertEquals("contents:കറയ title:കറയ^2.0 (alttitle1:കറയ^6.0 alttitle2:കറയ^6.0 alttitle3:കറയ^6.0)",q.toString());
+			
+			
 			// Test field extraction
 			HashSet<NamespaceFilter> fs = parser.getFieldNamespaces("main:something [1]:else all:oh []:nja");
 			assertEquals(3,fs.size());
