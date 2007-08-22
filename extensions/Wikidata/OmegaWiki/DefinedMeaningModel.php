@@ -191,10 +191,6 @@ class DefinedMeaningModel {
 		# shouldn't this stuff be protected?
 		$expressionId=$expression->id;
 		$languageId=$expression->languageId;
-		#$text="Copied Defined Meaning"; // this might work for now
-		#				// but where to get useful
-		#				// text?
-
 		
 		$this->hackDC(); // XXX
 		$text=$this->getDefiningExpression();
@@ -212,19 +208,7 @@ class DefinedMeaningModel {
 			$this->getRecord()
 		);
 
-		/* And do some conceptmapping.
-		 * Not as painful as you might think:
-		 * createConceptMapping is already dataset agnostic
-		 * XXX Still, I'm pulling datasets back out of (un)hackDC...
-		 */
-		$map=array(); 
-		$this->hackDC(); # XXX
-		$dataset1=$this->getDataSet();
-		$oldId=$this->getId();
-		$map["$dataset1"]=$oldId;
-		$dataset2=$this->unhackDC(); # XXX
-		$map["$dataset2"]=$newDefinedMeaningId;
-		createConceptMapping($map); 
+		return $newDefinedMeaningId;
 	}
 
 	/**
@@ -259,7 +243,7 @@ class DefinedMeaningModel {
 
 		// Perform regular save
 		#$this->save(new QueryAtTransactionInformation($wgRequest->getInt('transaction'), false));
-		$this->save();
+		$newDefinedMeaningId=$this->save();
 
 		// Update page caches
 		#Title::touchArray(array($wgTitle));
@@ -267,6 +251,7 @@ class DefinedMeaningModel {
 		// Add change to RC log
 		#$now = wfTimestampNow();
 		#RecentChange::notifyEdit($now, $wgTitle, false, $wgUser, $summary, 0, $now, false, '', 0, 0, 0);
+		return $newDefinedMeaningId;
 	}
 
 	/**
@@ -322,10 +307,20 @@ class DefinedMeaningModel {
 		
 		global 
 			$wdCurrentContext;
+
+		$concept_map=array(); # while we're here, let's map the concepts.
+
+		$from_dc=$this->getDataSet();
+		$oldId=$this->getId();	 
+		$concept_map["$from_dc"]=$oldId; 
+
 		$wdCurrentContext=$to_dc;	# set global override (DIRTY!)
-		$this->saveWithinTransaction();
+		$newDefinedMeaningId=$this->saveWithinTransaction();
+		$concept_map["$to_dc"]=$newDefinedMeaningId;
 		$wdCurrentContext=null;		# unset override, we probably should
 						# use proper OO for this.
+
+		createConceptMapping($concept_map); 
 	}
 
 	/* XXX 
