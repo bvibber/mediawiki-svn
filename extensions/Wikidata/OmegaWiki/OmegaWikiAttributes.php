@@ -46,6 +46,9 @@ class OmegaWikiAttributes {
 				$instance[$viewInformation->hashCode()] = $instance["last"];
 			}
 		}		
+		if (is_null($instance["last"]) {
+			$instance["last"]=new ViewInformation();
+		}
 		return $instance["last"];
 	}
 
