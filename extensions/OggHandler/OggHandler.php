@@ -22,7 +22,7 @@ $wgOggScriptVersion = '1';
 $wgFFmpegLocation = 'ffmpeg';
 $wgExtensionMessagesFiles['OggHandler'] = "$oggDir/OggHandler.i18n.php";
 $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
-$wgCortadoJarFile = "cortado-ovt-debug-0.2.2.1-patched.jar";
+$wgCortadoJarFile = "cortado-ovt-stripped-0.2.2.1-patched.jar";
 #$wgCortadoJarFile = "cortado-ovt-stripped-0.2.2.jar";
 
 ?>
