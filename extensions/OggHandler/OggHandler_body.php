@@ -321,7 +321,12 @@ class OggHandler extends MediaHandler {
 	   		'ogg-player-vlcActiveX', 'ogg-player-none', 'ogg-using-player' );
 		$msgValues = array_map( 'wfMsg', $msgNames );
 		$jsMsgs = Xml::encodeJsVar( (object)array_combine( $msgNames, $msgValues ) );
-		$encCortadoUrl = Xml::encodeJsVar( "$wgScriptPath/extensions/OggHandler/$wgCortadoJarFile" );
+		$cortadoUrl = $wgCortadoJarFile;
+		if( substr( $cortadoUrl, 0, 1 ) != '/'
+			&& substr( $cortadoUrl, 0, 4 ) != 'http' ) {
+			$cortadoUrl = "$wgScriptPath/extensions/OggHandler/$cortadoUrl";
+		}
+		$encCortadoUrl = Xml::encodeJsVar( $cortadoUrl );
 
 		$out->addHeadItem( 'OggHandler', <<<EOT
 <script type="text/javascript" src="$wgScriptPath/extensions/OggHandler/OggPlayer.js?$wgOggScriptVersion"></script>

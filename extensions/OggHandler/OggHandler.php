@@ -22,6 +22,19 @@ $wgOggScriptVersion = '1';
 $wgFFmpegLocation = 'ffmpeg';
 $wgExtensionMessagesFiles['OggHandler'] = "$oggDir/OggHandler.i18n.php";
 $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
+
+// Filename or URL path to the Cortado Java player applet.
+//
+// If no path is included, the path to this extension's
+// directory will be used by default -- this should work
+// on most local installations.
+//
+// You may need to include a full URL here if $wgUploadPath
+// specifies a host different from where the wiki pages are
+// served -- the applet .jar file must come from the same host
+// as the uploaded media files or Java security rules will
+// prevent the applet from loading them.
+//
 $wgCortadoJarFile = "cortado-ovt-stripped-0.2.2.1-patched.jar";
 #$wgCortadoJarFile = "cortado-ovt-stripped-0.2.2.jar";
 
