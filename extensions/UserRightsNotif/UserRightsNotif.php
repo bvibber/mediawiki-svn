@@ -17,6 +17,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 		'name' => 'User Rights Email Notification',
 		'url' => 'http://meta.wikimedia.org/wiki/User_Rights_Email_Notification',
 		'author' => 'Rob Church',
+		'desc' => 'Sends email notification to users upon rights changes',
 	);
 
 	# Change this to alter the email sender
@@ -46,5 +47,3 @@ if( defined( 'MEDIAWIKI' ) ) {
 	echo( "This file is an extension to the MediaWiki software and cannot be executed standalone.\n" );
 	die( 1 );
 }
-
-
