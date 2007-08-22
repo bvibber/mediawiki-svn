@@ -136,13 +136,14 @@ class OggHandler extends MediaHandler {
 
 		if ( $srcHeight == 0 || $srcWidth == 0 ) {
 			// Make audio player
+			$icon = $file->iconThumb();
 			if ( empty( $params['width'] ) ) {
 				$width = 200;
 			} else {
 				$width = $params['width'];
 			}
-			$height = 20;
-			return new OggAudioDisplay( $file->getURL(), $width, $height, $length );
+			$height = $icon->getHeight();
+			return new OggAudioDisplay( $file->getURL(), $icon->getUrl(), $width, $height, $length );
 		}
 
 		if ( $flags & self::TRANSFORM_LATER ) {
@@ -308,7 +309,7 @@ class OggHandler extends MediaHandler {
 	}
 
 	function setHeaders( $out ) {
-		global $wgScriptPath;
+		global $wgScriptPath, $wgCortadoJarFile;
 		if ( $out->hasHeadItem( 'OggHandler' ) ) {
 			return;
 		}
@@ -317,10 +318,10 @@ class OggHandler extends MediaHandler {
 
 		$msgNames = array( 'ogg-play', 'ogg-pause', 'ogg-stop', 'ogg-no-player',
 			'ogg-player-videoElement', 'ogg-player-oggPlugin', 'ogg-player-cortado', 'ogg-player-vlcPlugin', 
-	   		'ogg-player-vlcActiveX', 'ogg-using-player' );
+	   		'ogg-player-vlcActiveX', 'ogg-player-none', 'ogg-using-player' );
 		$msgValues = array_map( 'wfMsg', $msgNames );
 		$jsMsgs = Xml::encodeJsVar( (object)array_combine( $msgNames, $msgValues ) );
-		$encCortadoUrl = Xml::encodeJsVar( "$wgScriptPath/extensions/OggHandler/cortado-ovt-stripped-0.2.2.jar" );
+		$encCortadoUrl = Xml::encodeJsVar( "$wgScriptPath/extensions/OggHandler/$wgCortadoJarFile" );
 
 		$out->addHeadItem( 'OggHandler', <<<EOT
 <script type="text/javascript" src="$wgScriptPath/extensions/OggHandler/OggPlayer.js"></script>
@@ -355,19 +356,19 @@ class OggTransformOutput extends MediaTransformOutput {
 
 	function __construct( $videoUrl, $thumbUrl, $width, $height, $length, $isVideo ) {
 		$this->videoUrl = $videoUrl;
-		$this->thumbUrl = $thumbUrl;
+		$this->url = $thumbUrl;
 		$this->width = round( $width );
 		$this->height = round( $height );
 		$this->length = round( $length );
 		$this->isVideo = $isVideo;
 	}
 
-	function toHtml( $attribs = array() , $linkAttribs = array() ) {
+	function toHtml( $attribs = array() , $linkAttribs = false ) {
 		wfLoadExtensionMessages( 'OggHandler' );
 
 		OggTransformOutput::$serial++;
 
-		$encThumbUrl = htmlspecialchars( $this->thumbUrl );
+		$encThumbUrl = htmlspecialchars( $this->url );
 
 		if ( substr( $this->videoUrl, 0, 4 ) != 'http' ) {
 			global $wgServer;
@@ -379,30 +380,31 @@ class OggTransformOutput extends MediaTransformOutput {
 		$length = intval( $this->length );
 		$width = intval( $this->width );
 		$height = intval( $this->height );
+		$attribs['src'] = $this->url;
 		if ( $this->isVideo ) {
 			$msgStartPlayer = wfMsg( 'ogg-play-video' );
-			$thumb = 
-				Xml::tags( 'a', $linkAttribs, 
-					Xml::element( 'img', 
-						array( 
-							'src' => $this->thumbUrl,
-							'width' => $width,
-							'height' => $height,
-						) + $attribs, 
-						null )
-				) . 
-				"<br/>\n";
+			$attribs['width'] = $width;
+			$attribs['height'] = $height;
+			$playerHeight = $height;
 		} else {
 			$msgStartPlayer = wfMsg( 'ogg-play-sound' );
-			$thumb = '';
+			$playerHeight = 0;
+			// Don't add width and height to the icon image, it won't match its true size
 		}
+
+		$thumb = Xml::element( 'img', $attribs, null );
+		if ( $linkAttribs ) {
+			$thumb = Xml::tags( 'a', $linkAttribs, $thumb );
+		}
+		$thumb .= "<br/>\n";
+
 		$id = "ogg_player_" . OggTransformOutput::$serial;
 
 		$s = Xml::tags( 'div', array( 'id' => $id ), 
 			$thumb .
 			Xml::element( 'button', 
 				array(
-					'onclick' => "wgOggPlayer.init(false, '$id', $encUrl, $width, $height, $length);",
+					'onclick' => "wgOggPlayer.init(false, '$id', $encUrl, $width, $playerHeight, $length);",
 				), 
 				$msgStartPlayer
 			)
@@ -418,8 +420,8 @@ class OggVideoDisplay extends OggTransformOutput {
 }
 
 class OggAudioDisplay extends OggTransformOutput {
-	function __construct( $videoUrl, $width, $height, $length ) {
-		parent::__construct( $videoUrl, false, $width, $height, $length, false );
+	function __construct( $videoUrl, $iconUrl, $width, $height, $length ) {
+		parent::__construct( $videoUrl, $iconUrl, $width, $height, $length, false );
 	}
 }
 

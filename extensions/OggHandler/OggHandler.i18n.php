@@ -15,12 +15,14 @@ $messages = array(
 		'ogg-stop'             => 'Stop',
 		'ogg-play-video'       => 'Play video',
 		'ogg-play-sound'       => 'Play sound',
-		'ogg-no-player'        => 'Sorry, no video player is available',
+		'ogg-no-player'        => 'Sorry, your system does not appear to have any supported player software. ' . 
+			'Please install <a href="http://www.java.com/en/download/manual.jsp">Java</a>.',
 		'ogg-player-videoElement' => '<video> element',
 		'ogg-player-oggPlugin' => 'Ogg plugin',
 		'ogg-player-cortado'   => 'Cortado (Java)',
 		'ogg-player-vlcPlugin' => 'VLC (Mozilla)',
 		'ogg-player-vlcActiveX' => 'VLC (ActiveX)',
+		'ogg-player-none'      => '(none)',
 		'ogg-using-player'     => 'Using player: ',
 	),
 
