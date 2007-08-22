@@ -317,8 +317,9 @@ class OggHandler extends MediaHandler {
 		wfLoadExtensionMessages( 'OggHandler' );
 
 		$msgNames = array( 'ogg-play', 'ogg-pause', 'ogg-stop', 'ogg-no-player',
-			'ogg-player-videoElement', 'ogg-player-oggPlugin', 'ogg-player-cortado', 'ogg-player-vlcPlugin', 
-	   		'ogg-player-vlcActiveX', 'ogg-player-none', 'ogg-using-player' );
+			'ogg-player-videoElement', 'ogg-player-oggPlugin', 'ogg-player-cortado', 'ogg-player-vlc-mozilla', 
+			'ogg-player-vlc-activex', 'ogg-player-quicktime-mozilla', 'ogg-player-quicktime-activex',
+			'ogg-player-none', 'ogg-using-player' );
 		$msgValues = array_map( 'wfMsg', $msgNames );
 		$jsMsgs = Xml::encodeJsVar( (object)array_combine( $msgNames, $msgValues ) );
 		$cortadoUrl = $wgCortadoJarFile;
@@ -327,13 +328,14 @@ class OggHandler extends MediaHandler {
 			$cortadoUrl = "$wgScriptPath/extensions/OggHandler/$cortadoUrl";
 		}
 		$encCortadoUrl = Xml::encodeJsVar( $cortadoUrl );
+		$encSmallFileUrl = Xml::encodeJsVar( "$wgScriptPath/extensions/OggHandler/null_file" );
 
 		$out->addHeadItem( 'OggHandler', <<<EOT
 <script type="text/javascript" src="$wgScriptPath/extensions/OggHandler/OggPlayer.js?$wgOggScriptVersion"></script>
 <script type="text/javascript">
 wgOggPlayer.msg = $jsMsgs;
 wgOggPlayer.cortadoUrl = $encCortadoUrl;
-//wgOggPlayer.forcePlayer = 'cortado';
+wgOggPlayer.smallFileUrl = $encSmallFileUrl;
 </script>
 EOT
 		);

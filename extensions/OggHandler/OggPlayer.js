@@ -2,17 +2,18 @@
 // This is a global configuration object which can embed multiple video instances
 var wgOggPlayer = {
 	'detectionDone': false,
-	'vlcActiveX': false,
+	'vlc-activex': false,
 
 	// List of players in order of preference
 	// Downpreffed VLC because it crashes my browser all the damn time -- TS
-	'players': ['videoElement', 'oggPlugin', 'cortado', 'vlcPlugin', 'vlcActiveX'],
+	'players': ['videoElement', 'oggPlugin', 'cortado', 'quicktime-mozilla', 'quicktime-activex', 'vlc-mozilla', 'vlc-activex'],
 
 	'clientSupports': {},
 
 	// Configuration from MW
 	'msg': {},
 	'cortadoUrl' : '',
+	'smallFileUrl' : '',
 	'showPlayerSelect': true,
 	'controlsHeightGuess': 20, 
 
@@ -55,14 +56,17 @@ var wgOggPlayer = {
 			case 'oggPlugin':
 				this.embedOggPlugin( elt, videoUrl, width, height, length );
 				break;
-			case 'vlcPlugin':
+			case 'vlc-mozilla':
 				this.embedVlcPlugin( elt, videoUrl, width, height, length );
 				break;
-			case 'vlcActiveX':
+			case 'vlc-activex':
 				this.embedVlcActiveX( elt, videoUrl, width, height, length );
 				break;
 			case 'cortado':
 				this.embedCortado( elt, videoUrl, width, height, length );
+				break;
+			case 'quicktime-mozilla':
+				this.embedQuicktimePlugin( elt, videoUrl, width, height, length );
 				break;
 			default:
 				elt.innerHTML = this.msg['ogg-no-player'] + '<br/>';
@@ -89,15 +93,20 @@ var wgOggPlayer = {
 		// search navigator.mimeTypes to see if it's installed
 		var javaEnabled = navigator.javaEnabled();
 
-		// MSIE VLC
+		// ActiveX plugins
+		// VLC
 		if ( this.testActiveX( 'VideoLAN.VLCPlugin.2' ) ) {
-			this.clientSupports['vlcActiveX'] = true;
+			this.clientSupports['vlc-activex'] = true;
 		}
-
-		// MSIE Java
+		// Java
 		if ( javaEnabled && this.testActiveX( 'JavaPlugin' ) ) {
 			this.clientSupports['cortado'] = true;
 		}
+		// QuickTime
+		/*
+		if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) ) {
+			// TODO: Determine if it has XiphQT somehow...
+		*/
 
 		// <video> element
 		elt.innerHTML = '<video id="testvideo"></video>\n';
@@ -113,18 +122,17 @@ var wgOggPlayer = {
 			for ( var i = 0; i < navigator.mimeTypes.length; i++) {
 				var type = navigator.mimeTypes[i].type;
 				var pluginName = navigator.mimeTypes[i].enabledPlugin ? navigator.mimeTypes[i].enabledPlugin.name : '';
-				if(type.indexOf("application/ogg") > -1 && 
-					pluginName != "VLC multimedia plugin" && pluginName != "VLC Multimedia Plugin") 
-				{
-					this.clientSupports['oggPlugin'] = true;
+				if ( type == 'application/ogg' && pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
+					this.clientSupports['vlc-mozilla'] = true;
+					continue;
 				}
-				if(navigator.mimeTypes[i].type.indexOf("application/x-vlc-plugin") > -1) {
-					this.clientSupports['vlcPlugin'] = true;
+				if ( type == 'application/ogg' && pluginName.indexOf( 'QuickTime' ) > -1 ) {
+					this.clientSupports['quicktime-mozilla'] = true;
+					continue;
 				}
-				if (javaEnabled && 
-					navigator.mimeTypes[i].type.indexOf("application/x-java-applet") > -1) 
-				{
+				if ( javaEnabled && type == 'application/x-java-applet' ) {
 					this.clientSupports['cortado'] = true;
+					continue;
 				}
 			}
 		}
@@ -164,13 +172,21 @@ var wgOggPlayer = {
 		return '"' + this.hx( s ) + '"';
 	},
 
+	'getMsg': function ( key ) {
+		if ( ! (key in this.msg) ) {
+			return '<' + key + '>';
+		} else {
+			return this.msg[key];
+		}
+	},
+
 	'makePlayerSelect' : function ( selectedPlayer, id, videoUrl, width, height, length ) {
 		var select = document.createElement( 'select' );
 		if ( selectedPlayer == 'none' ) {
 			this.addOption( select, 'none', this.msg['ogg-player-none'], true );
 		}
 		for ( var player in this.clientSupports ) {
-			this.addOption( select, player, this.msg['ogg-player-' + player], selectedPlayer == player );
+			this.addOption( select, player, this.getMsg( 'ogg-player-' + player ), selectedPlayer == player );
 		}
 		select.value = selectedPlayer;
 
@@ -309,13 +325,37 @@ var wgOggPlayer = {
 		// restarting an arbitrary number of applet instances on a back button click.
 		// Unfortunately this means that some clients (e.g. Opera) won't autoplay at all
 		var videoElt = elt.getElementsByTagName( 'applet' )[0];
-		var params = videoElt.getElementsByTagName( 'param' );
-		for ( var i = 0; i < params.length; i++ ) {
-			if ( params[i].name == 'autoPlay' ) {
-				params[i].value = '';
-				break;
-			}
-		}
+		this.setParam( videoElt, 'autoPlay', '' );
+	},
+
+	'embedQuicktimePlugin': function ( elt, videoUrl, width, height, length ) {
+		var id = elt.id + "_obj";
+		var controllerHeight = 16; // by observation
+		elt.innerHTML += 
+			"<object id=" + this.hq( id ) + 
+			" type='video/quicktime'" +
+			" width=" + this.hq( width ) + 
+			" height=" + this.hq( height + controllerHeight ) + 
+			
+			// Use QTSRC parameter instead of data attribute to allow progressive download
+			// The data attribute and src parameter point to a small file, as recommended in
+			// http://developer.apple.com/documentation/QuickTime/Conceptual/QTScripting_HTML/QTScripting_HTML_Document/chapter_1000_section_6.html
+			" data=" + this.hq( this.smallFileUrl ) +
+			">" + 
+			// Scale, don't clip
+			"<param name='SCALE' value='Aspect'/>" + 
+			"<param name='AUTOPLAY' value='True'/>" +
+			"<param name='src' value=" + this.hq( this.smallFileUrl ) +  "/>" +
+			"<param name='QTSRC' value=" + this.hq( videoUrl ) + "/>" +
+			"</object>";
+
+		// Disable autoplay on back button
+		var me = this;
+		window.setTimeout( 
+			function () {
+				var videoElt = document.getElementById( id );
+				me.setParam( videoElt, 'AUTOPLAY', 'False' );
+			}, 3000 );
 	},
 
 	'addParam': function ( elt, name, value ) {
@@ -323,6 +363,17 @@ var wgOggPlayer = {
 		param.setAttribute( 'name', name );
 		param.setAttribute( 'value', value );
 		elt.appendChild( param );
+	},
+
+	'setParam' : function ( elt, name, value ) {
+		var params = elt.getElementsByTagName( 'param' );
+		for ( var i = 0; i < params.length; i++ ) {
+			if ( params[i].name.toLowerCase() == name.toLowerCase() ) {
+				params[i].value = value;
+				return;
+			}
+		}
+		this.addParam( elt, name, value );
 	}
 };
 
