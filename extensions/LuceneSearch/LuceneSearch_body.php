@@ -740,9 +740,9 @@ class LuceneSearchSet {
 		$fname = 'LuceneSearchSet::newFromQuery';
 		wfProfileIn( $fname );
 
-		global $wgLuceneHost, $wgLucenePort, $wgDBname, $wgMemc;
+		global $wgLuceneHost, $wgLucenePort, $wgLuceneSearchVersion
+		global $wgDBname, $wgMemc;
 
-		global $wgContLang;
 		$enctext = rawurlencode( trim( $query ) );
 		$searchPath = "/$method/$wgDBname/$enctext?" .
 			wfArrayToCGI( array(
@@ -757,7 +757,7 @@ class LuceneSearchSet {
 
 		// Cache results for fifteen minutes; they'll be read again
 		// on reloads and paging.
-		$key = $wgDBname.':lucene:' . md5( $searchPath );
+		$key = wfMemcKey( 'lucene', $wgLuceneSearchVersion, md5( $searchPath ) );
 		
 		$resultSet = $wgMemc->get( $key );
 		if( is_object( $resultSet ) ) {
