@@ -309,7 +309,7 @@ class OggHandler extends MediaHandler {
 	}
 
 	function setHeaders( $out ) {
-		global $wgScriptPath, $wgCortadoJarFile;
+		global $wgScriptPath, $wgOggScriptVersion, $wgCortadoJarFile;
 		if ( $out->hasHeadItem( 'OggHandler' ) ) {
 			return;
 		}
@@ -324,7 +324,7 @@ class OggHandler extends MediaHandler {
 		$encCortadoUrl = Xml::encodeJsVar( "$wgScriptPath/extensions/OggHandler/$wgCortadoJarFile" );
 
 		$out->addHeadItem( 'OggHandler', <<<EOT
-<script type="text/javascript" src="$wgScriptPath/extensions/OggHandler/OggPlayer.js"></script>
+<script type="text/javascript" src="$wgScriptPath/extensions/OggHandler/OggPlayer.js?$wgOggScriptVersion"></script>
 <script type="text/javascript">
 wgOggPlayer.msg = $jsMsgs;
 wgOggPlayer.cortadoUrl = $encCortadoUrl;
