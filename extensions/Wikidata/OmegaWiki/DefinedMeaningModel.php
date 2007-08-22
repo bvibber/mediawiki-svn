@@ -195,18 +195,36 @@ class DefinedMeaningModel {
 		#				// but where to get useful
 		#				// text?
 
-		$text=$this->getTitleText();
+		
+		$this->hackDC(); // XXX
+		$text=$this->getDefiningExpression();
+		$this->unhackDC(); // XXX
+
 
 		#here we assume the DM is not there yet.. not entirely wise
 		#in the long run.
 		echo "id: $expressionId lang: $languageId";
-		$definedMeaningId=createNewDefinedMeaning($expressionId, $languageId, $text);
+		$newDefinedMeaningId=createNewDefinedMeaning($expressionId, $languageId, $text);
 		
 
 		getDefinedMeaningEditor($this->viewInformation)->save(
-			$this->getIdStack($definedMeaningId), 
+			$this->getIdStack($newDefinedMeaningId), 
 			$this->getRecord()
 		);
+
+		/* And do some conceptmapping.
+		 * Not as painful as you might think:
+		 * createConceptMapping is already dataset agnostic
+		 * XXX Still, I'm pulling datasets back out of (un)hackDC...
+		 */
+		$map=array(); 
+		$this->hackDC(); # XXX
+		$dataset1=$this->getDataSet();
+		$oldId=$this->getId();
+		$map["$dataset1"]=$oldId;
+		$dataset2=$this->unhackDC(); # XXX
+		$map["$dataset2"]=$newDefinedMeaningId;
+		createConceptMapping($map); 
 	}
 
 	/**
@@ -257,9 +275,9 @@ class DefinedMeaningModel {
 	public function getRecord() {
 		if(!$this->recordIsLoaded) {
 			
-			$this->hackDC($this->dataset); // XXX don't do this at home
+			$this->hackDC(); // XXX don't do this at home
 			$this->loadRecord();
-			$this->unhackDC(); // XXX very evil
+			$this->unhackDC(); // XXX 
 		}
 		if(!$this->recordIsLoaded) {
 			return null;
@@ -319,20 +337,28 @@ class DefinedMeaningModel {
 	 * Of course, one day they will.
 	 * Before then, this should be refactored out.
 	 * Probably by next week friday
+	 * Note that there is no stack, so you can't nest these!
+	 * Nor will we implement one, global dc must die.
 	 * XXX */
-	protected $_saved_dc=null;
-	public function hackDC($to_dataset) {
+	private $_saved_dc=null; # the dirty secret
+
+	public function hackDC($to_dataset=null) {
 		global
 			$wdCurrentContext;
 
+		if ($to_dataset==null) 
+			$to_dataset=$this->dataset;
+
 		$this->_saved_dc=$wdCurrentContext;
 		$wdCurrentContext=$to_dc;
+		return $wdCurrentContext;
 	}
 
 	public function unhackDC() {
 		global
 			$wdCurrentContext;
 		$wdCurrentContext=$this->_saved_dc;
+		return $wdCurrentContext;
 	}
 
 	/** 
