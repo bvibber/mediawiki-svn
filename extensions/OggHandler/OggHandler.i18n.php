@@ -19,13 +19,13 @@ $messages = array(
 			'Please install <a href="http://www.java.com/en/download/manual.jsp">Java</a>.',
 		'ogg-player-videoElement' => '<video> element',
 		'ogg-player-oggPlugin' => 'Ogg plugin',
-		'ogg-player-cortado'   => 'Cortado (Java)',
-		'ogg-player-vlc-mozilla' => 'VLC',
-		'ogg-player-vlc-activex' => 'VLC (ActiveX)',
-		'ogg-player-quicktime-mozilla' => 'QuickTime',
-		'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',
+		'ogg-player-cortado'   => 'Cortado (Java)', # only translate this message to other languages if you have to change it
+		'ogg-player-vlc-mozilla' => 'VLC', # only translate this message to other languages if you have to change it
+		'ogg-player-vlc-activex' => 'VLC (ActiveX)', # only translate this message to other languages if you have to change it
+		'ogg-player-quicktime-mozilla' => 'QuickTime', # only translate this message to other languages if you have to change it
+		'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)', # only translate this message to other languages if you have to change it
 		'ogg-player-none'      => '(none)',
-		'ogg-using-player'     => 'Using player: ',
+		'ogg-using-player'     => 'Using player:',
 	),
 
 	'de' => array(
@@ -42,12 +42,10 @@ $messages = array(
 		'ogg-stop'                => 'Stop',
 		'ogg-play-video'          => 'Video abspielen',
 		'ogg-play-sound'          => 'Audio abspielen',
-		'ogg-no-player'           => 'Es ist kein Videoplayer verfügbar',
+		'ogg-no-player'           => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.java.com/de/download/manual.jsp">Java</a>',
 		'ogg-player-videoElement' => '<video>-Element',
 		'ogg-player-oggPlugin'    => 'Ogg-Plugin',
-		'ogg-player-cortado'      => 'Cortado (Java)',
-		'ogg-player-vlc-mozilla'    => 'VLC (Mozilla)',
-		'ogg-player-vlc-activex'   => 'VLC (ActiveX)',
+		'ogg-player-none'         => '(keiner)',
 		'ogg-using-player'        => 'Verwende Player:',
 	),
 );
