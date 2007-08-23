@@ -29,6 +29,11 @@ class LqtDispatch {
 		// We are given a talkpage article and title. Find the associated
 		// non-talk article and pass that to the view.
 		$article = new Article($title->getSubjectPage());
+		
+		if( $title->getSubjectPage()->getNamespace() == NS_LQT_THREAD ) {
+			// Threads don't have talk pages; redirect to the thread page.
+			$output->redirect($title->getSubjectPage()->getFullUrl());
+		}
 
 		/* Certain actions apply to the "header", which is stored in the actual talkpage
 		   in the database. Drop everything and behave like a normal page if those
@@ -1084,6 +1089,7 @@ class ThreadPermalinkView extends LqtView {
 	function customizeTabs( $skintemplate, $content_actions ) {
 		// The arguments are passed in by reference.
 		unset($content_actions['edit']);
+		unset($content_actions['talk']);
 /*		unset($content_actions['history']);
 		unset($content_actions['watch']);
 		unset($content_actions['move']);*/
