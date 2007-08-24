@@ -35,7 +35,7 @@ public class CleanIndexWriter {
 	
 	public CleanIndexWriter(IndexId iid) throws IOException{
 		this.iid = iid;		
-		this.builder = new FieldBuilder("",FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER);
+		this.builder = new FieldBuilder("",FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
 		this.langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
 		String pathMain = iid.getSpellWords().getTempPath();
 		//String pathAll = iid.getSpellTitles().getTempPath();

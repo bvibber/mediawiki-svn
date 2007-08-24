@@ -62,7 +62,7 @@ public class CleanIndexImporter implements DumpWriter {
 		//	article.setContents("");
 		
 		writer.addMainArticle(article);
-		writer.addAllArticle(article);
+		//writer.addAllArticle(article);
 		// generate phrases
 		/* FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(page.Title.Text,langCode,false); 
 		ArrayList<Token> tokens = parser.parse();

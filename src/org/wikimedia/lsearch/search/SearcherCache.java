@@ -94,7 +94,7 @@ public class SearcherCache {
 			return searcher;
 		}
 		
-		IndexSearcherMul get(){
+		synchronized IndexSearcherMul get(){
 			if(index >= searchers.length)
 				index = 0;
 			log.debug("Using "+iid+" searcher "+index);

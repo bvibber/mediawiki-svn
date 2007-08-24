@@ -12,6 +12,7 @@ import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
+import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
@@ -25,7 +26,7 @@ public class SuggestTest {
 		Configuration.open();
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		boolean suggestOnly = false;
-		String dbname = "wikilucene";
+		String dbname = "enwiki";
 		for(int i=0;i<args.length;i++){
 			if(args[i].equals("-s"))
 				suggestOnly = true;
@@ -78,7 +79,7 @@ public class SuggestTest {
 					last = text;
 				}
 			}
-			System.out.println("#suggest: "+sc.suggest(inputtext,parser,new NamespaceFilter(ns),0));
+			System.out.println("#suggest: "+sc.suggest(inputtext,parser,new NamespaceFilter(ns),new SearchResults()));
 			System.out.println("(finished in "+(System.currentTimeMillis()-start)+" ms)");
 		}
 		

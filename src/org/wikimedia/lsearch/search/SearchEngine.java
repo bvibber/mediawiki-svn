@@ -30,6 +30,7 @@ import org.wikimedia.lsearch.frontend.SearchDaemon;
 import org.wikimedia.lsearch.frontend.SearchServer;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.spell.Suggest;
+import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.util.QueryStringMap;
 
 /**
@@ -148,10 +149,12 @@ public class SearchEngine {
 		Hashtable<String,NamespaceFilter> cachedFilters = GlobalConfiguration.getInstance().getNamespacePrefixes();
 		boolean searchAll = false;
 		Suggest sug = null;
-		try {
-			sug = new Suggest(iid);
-		} catch (IOException e1) {
-			log.warn("Cannot open spell-suggestion indexes for "+iid+" : "+e1);
+		if(offset == 0){
+			try {
+				sug = new Suggest(iid);
+			} catch (IOException e1) {
+				log.warn("Cannot open spell-suggestion indexes for "+iid+" : "+e1);
+			}
 		}
 		
 		// if search is over one field, try to use filters
@@ -170,20 +173,8 @@ public class SearchEngine {
 		}
 		
 		try {
-			if(raw){
-				// do minimal parsing, make a raw query
-				parser.setNamespacePolicy(WikiQueryParser.NamespacePolicy.LEAVE);
-				q = parser.parseRaw(searchterm);
-			} else if(nsfw == null){
-				if(searchAll)
-					q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
-				else
-					q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.REWRITE,iid.getDBname());				
-			} else{
-				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
-				log.info("Using NamespaceFilterWrapper "+nsfw);
-			}
-						
+			q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll);
+			
 			TopDocs hits=null;
 			// see if we can search only part of the index
 			if(nsfw!=null && (iid.isMainsplit() || iid.isNssplit())){
@@ -216,8 +207,27 @@ public class SearchEngine {
 					}
 					RMIMessengerClient messenger = new RMIMessengerClient();
 					res = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
-					if(sug != null)
-						res.setSuggest(sug.suggest(searchterm,parser,nsfw.getFilter(),res.getNumHits()));
+					if(sug != null){
+						SuggestQuery sq = sug.suggest(searchterm,parser,(nsfw==null)? null : nsfw.getFilter(),res);
+						if(sq == null)
+							res.setSuggest(null);
+						else{
+							if(res.getNumHits() == 0){
+								// no hits: show the spell-checked results
+								SearchResults sugres = messenger.searchPart(piid,sq.getSearchterm(),q,nsfw,offset,limit,explain,host);
+								if(sugres.getNumHits() > 0){
+									res = sugres;
+									res.setSuggest(sq.getSearchterm());
+								}
+							} else if(sq.needsCheck()){
+								q = parseQuery(sq.getSearchterm(),parser,iid,raw,nsfw,searchAll);
+								SearchResults sugres = messenger.searchPart(piid,sq.getSearchterm(),q,nsfw,0,1,explain,host);
+								if(sugres.getNumHits() > 0){
+									res.setSuggest(sq.getSearchterm());
+								}
+							}
+						}
+					}
 					return res;
 				}
 			}
@@ -226,8 +236,27 @@ public class SearchEngine {
 			try{
 				hits = searcher.search(q,nsfw,offset+limit);
 				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
-				if(sug != null)
-					res.setSuggest(sug.suggest(searchterm,parser,(nsfw==null)? null : nsfw.getFilter(),res.getNumHits()));
+				if(sug != null){
+					SuggestQuery sq = sug.suggest(searchterm,parser,(nsfw==null)? null : nsfw.getFilter(),res);
+					if(sq == null)
+						res.setSuggest(null);
+					else{
+						if(res.getNumHits() == 0){
+							// no hits: show the spell-checked results
+							hits = searcher.search(q,nsfw,offset+limit);
+							if(hits.totalHits != 0){
+								res = makeSearchResults(searcher,hits,offset,limit,iid,sq.getSearchterm(),q,searchStart,explain);
+								res.setSuggest(sq.getSearchterm());
+							}
+						} else if(sq.needsCheck()){
+							q = parseQuery(sq.getSearchterm(),parser,iid,raw,nsfw,searchAll);
+							hits = searcher.search(q,nsfw,1); // fetch only one result
+							if(hits.totalHits != 0){
+								res.setSuggest(sq.getSearchterm());
+							}
+						}
+					}
+				}
 				return res;
 			} catch(Exception e){
 				e.printStackTrace();
@@ -248,6 +277,24 @@ public class SearchEngine {
 			log.error("Internal error in SearchEngine trying to make WikiSearcher: "+e.getMessage());
 			return res;
 		}
+	}
+
+	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, NamespaceFilterWrapper nsfw, boolean searchAll) throws ParseException {
+		Query q = null;
+		if(raw){
+			// do minimal parsing, make a raw query
+			parser.setNamespacePolicy(WikiQueryParser.NamespacePolicy.LEAVE);
+			q = parser.parseRaw(searchterm);
+		} else if(nsfw == null){
+			if(searchAll)
+				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
+			else
+				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.REWRITE,iid.getDBname());				
+		} else{
+			q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
+			log.info("Using NamespaceFilterWrapper "+nsfw);
+		}
+		return q;
 	}
 
 	/** Our scores can span several orders of magnitude, transform them to be more relevant to the user */

@@ -1,6 +1,7 @@
 package org.wikimedia.lsearch.spell.api;
 
 import java.io.IOException;
+import java.util.Collection;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
@@ -89,7 +90,7 @@ public class NgramIndexer {
 	}
 	
 	/** Return ngrams of specific size for text */
-	public static String[] nGrams(String text, int size) {
+	public static String[] nGramsRegular(String text, int size) {
 		int len = text.length();
 		String[] res = new String[len - size + 1];
 		for (int i = 0; i < len - size + 1; i++) {
@@ -98,11 +99,40 @@ public class NgramIndexer {
 		return res;
 	}
 	
+	/** Reverse a string */
+	protected static String reverse(String source){
+	    int len = source.length();
+	    StringBuilder dest = new StringBuilder(len);
+
+	    for (int i = (len - 1); i >= 0; i--)
+	      dest.append(source.charAt(i));
+	    return dest.toString();
+	}
+	
+	/** Return ngrams of specific size for text, assuming circular string */
+	public static String[] nGrams(String text, int size) {
+		int len = text.length();
+		String[] res = null;
+		if(len <= 6 && size == 2){ // produce reversed 2-grams
+			String[] rev = nGramsRegular(reverse(text),size);
+			res = new String[len + rev.length];
+			System.arraycopy(rev,0,res,len,rev.length);
+		} else
+			res = new String[len];
+		for (int i = 0; i < len; i++) {
+			if(i + size <= len)
+				res[i] = text.substring(i, i + size);
+			else // string is assumed to be circular
+				res[i] = text.substring(i)+text.substring(0,(i+size)%len);
+		}
+		return res;
+	}
+	
 	/** Get minimal ngram size for word. the minimal size should be at least 1/2 of word length */
 	public static int getMinNgram(String word){
-		if(word.length() <= 7)
+		if(word.length() <= 5)
 			return 1;
-		else if(word.length() <= 14)
+		else if(word.length() <= 7)
 			return 2;
 		else
 			return 3;
@@ -110,10 +140,12 @@ public class NgramIndexer {
 	
 	/** Maximal size of ngram block, at most the length of word */
 	public static int getMaxNgram(String word){
-		if(word.length() <= 10)
+		if(word.length() == 4)
 			return 2;
-		else
+		else if(word.length() <= 6)
 			return 3;
+		else 
+			return 4;
 	}
 	
 	/** Get ngram field name with no prefix */

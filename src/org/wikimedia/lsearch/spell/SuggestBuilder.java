@@ -107,7 +107,7 @@ public class SuggestBuilder {
 			}		
 		}
 		// make words index
-		log.info("Making words index");
+		/*log.info("Making words index");
 		try {
 			LuceneDictionary dict = new LuceneDictionary(IndexReader.open(words.getTempPath()),"contents");
 			WordsIndexer writer = new WordsIndexer(words.getImportPath(),(dbname.equals("wikilucene")? 3 : 50));
@@ -121,18 +121,18 @@ public class SuggestBuilder {
 			log.fatal("Cannot open clean dictionary for "+words+" : "+e.getMessage());
 			e.printStackTrace();
 			return;
-		}
+		}*/
 		
 		log.info("Making suggest title index");
 		// make phrase index
 
 		TitleIndexer tInx = new TitleIndexer(titles);
-		tInx.createFromSnapshot();		
+		tInx.createFromTempIndex();		
 		
 		long end = System.currentTimeMillis();
 
 		// make snapshots
-		IndexThread.makeIndexSnapshot(words,words.getImportPath());
+		//IndexThread.makeIndexSnapshot(words,words.getImportPath());
 		IndexThread.makeIndexSnapshot(titles,titles.getImportPath());
 
 		System.out.println("Finished making suggest index in "+formatTime(end-start));

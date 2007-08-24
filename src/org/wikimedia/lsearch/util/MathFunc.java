@@ -1,5 +1,7 @@
 package org.wikimedia.lsearch.util;
 
+import org.wikimedia.lsearch.test.MathFuncTest;
+
 public class MathFunc {
 	
 	/** Calculate average value starting from start to end (end excluded) */
@@ -26,27 +28,34 @@ public class MathFunc {
 //			av[i] = avg(val,part[i],part[i+1]);
 		// error
 		double err = calcErr(part,val,num);
+		double err2 = calcErr2(part,val,num);
 		// values at next iteration 
 		int[] newpart = new int[num+1];
 		//double[] newav = new double[num];
-		double newerr = 0;
+		double newerr = 0, newerr2 = 0;
 		
 		while(true){
 			for(int i=0;i<num-1;i++){
 				merge(i,part,newpart,val,num);
 				newerr = calcErr(newpart,val,num);
-				if(newerr < err){
+				newerr2 = calcErr2(newpart,val,num);
+				if(newerr < err || (newerr == err && newerr2 < err2)){
 					copy(newpart,part);
 					err = newerr;
+					err2 = newerr2;
+					//MathFuncTest.print(newpart,val);
 					continue;
 				}
 			}
 			// try extending last
 			extend(part,newpart,val,num);
 			newerr = calcErr(newpart,val,num);
-			if(newerr < err){
+			newerr2 = calcErr2(newpart,val,num);
+			if(newerr < err || (newerr == err && newerr2 < err2)){
 				copy(newpart,part);
 				err = newerr;
+				err2 = newerr2;
+				//MathFuncTest.print(newpart,val);
 				continue;
 			}
 			break;
@@ -94,9 +103,23 @@ public class MathFunc {
 		double err = 0;
 		for(int i=0;i<num;i++){
 			// max - min value 
-			double e = val[part[i]]-val[part[i+1]-1];
+			double v2 = val[part[i]];
+			double v1 = val[part[i+1]-1];
+			double e = v2 - v1;
 			if( e > err )
 				err = e;
+		}
+		return err;
+	}	
+	
+	private static double calcErr2(int[] part, double[] val, int num) {
+		double err = 0;
+		for(int i=0;i<num;i++){
+			// max - min value 
+			double v2 = val[part[i]];
+			double v1 = val[part[i+1]-1];
+			double e = v2 - v1;
+			err += e*(part[i+1]-1-part[i]);
 		}
 		return err;
 	}	

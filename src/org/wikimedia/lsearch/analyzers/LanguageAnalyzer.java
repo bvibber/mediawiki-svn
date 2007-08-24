@@ -61,8 +61,12 @@ public class LanguageAnalyzer extends Analyzer {
 		if(filters.hasCustomFilter())
 			tokens = applyCustomFilter(tokens);
 		
-		return new AliasFilter(filters,
-				new ArrayTokens(tokens), new ArrayTokens(tokens)); 
+		TokenStream out = new AliasFilter(filters,
+				new ArrayTokens(tokens), new ArrayTokens(tokens));
+		if(filters.hasAdditionalFilters())
+			return filters.makeAdditionalFilterChain(out);
+		else
+			return out;
 	}
 
 	/** Filter the tokens via the custom filter. For instance, to delete

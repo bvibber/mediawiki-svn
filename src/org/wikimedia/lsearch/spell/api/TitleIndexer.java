@@ -30,6 +30,7 @@ import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.IndexSearcherMul;
 import org.wikimedia.lsearch.search.WikiSearcher;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
+import org.wikimedia.lsearch.util.HighFreqTerms;
 
 /** 
  * Index words and phrases from article titles. 
@@ -284,6 +285,65 @@ public class TitleIndexer {
 		}
 	}
 	
+	public void createFromTempIndex(){
+		String path = titles.getImportPath(); // dest where to put index
+		try {
+			ngramWriter.createIndex(path,new SimpleAnalyzer());
+			IndexReader ir = IndexReader.open(iid.getSpellWords().getTempPath());
+			Collection<String> mostfreq = HighFreqTerms.getHighFreqTerms(ir,"contents",50);
+			// get at most 25 stopwords
+			HashSet<String> stopWords = new HashSet<String>();
+			for(String w : mostfreq){
+				if(!w.contains("_"))
+					stopWords.add(w);
+				if(stopWords.size() >= 25)
+					break;
+			}
+			addMetadata("stopWords",stopWords);
+			
+			LuceneDictionary dict = new LuceneDictionary(ir,"contents");
+			Word word;
+			while((word = dict.next()) != null){
+				String w = word.getWord();
+				int freq = word.getFrequency();
+				if(w.contains("_")){ // phrase
+					String[] words = w.split("_");
+					boolean allowed = true;
+					for(String ww : words){
+						// allow only those phrases consisting of title words
+						if(stopWords.contains(ww) || ir.docFreq(new Term("title",ww)) == 0){
+							allowed = false; 
+							break; 
+						}
+					}
+					if(allowed && freq > minPhraseFreq){
+						NamespaceFreq nsf = new NamespaceFreq();
+						nsf.setFrequency(0,freq);
+						ArrayList<Integer> nss = new ArrayList<Integer>();
+						nss.add(0);
+						addPhrase(w,nsf,nss);
+					}
+				} else{
+					if(freq > minWordFreq){
+						NamespaceFreq nsf = new NamespaceFreq();
+						nsf.setFrequency(0,freq);
+						ArrayList<Integer> nss = new ArrayList<Integer>();
+						nss.add(0);
+						addWord(w,nsf,nss);
+					}
+				}
+			}
+			ngramWriter.closeAndOptimize();
+			ir.close();
+			
+		} catch (IOException e) {
+			log.fatal("Cannot build titles suggest index for "+iid+" : "+e.getMessage());
+			e.printStackTrace();
+			return;
+		}
+		
+	}
+	
 	/** 
 	 * Add phrase to index
 	 * 
@@ -310,7 +370,26 @@ public class TitleIndexer {
 		ngramWriter.addDocument(doc);
 	}
 	
-	/** Add ordinary word to the index, convenient for suggesting joins 
+	/** 
+	 * Add into metadata_key and metadata_value. 
+	 * Collection is assumed to contain words (without spaces) 
+	 */
+	public void addMetadata(String key, Collection<String> values){
+		StringBuilder sb = new StringBuilder();
+		// serialize by joining with spaces
+		for(String val : values){
+			if(sb.length() != 0)
+				sb.append(" ");
+			sb.append(val);
+		}
+		Document doc = new Document();
+		doc.add(new Field("metadata_key",key, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		doc.add(new Field("metadata_value",sb.toString(), Field.Store.YES, Field.Index.NO));
+		
+		ngramWriter.addDocument(doc);
+	}
+	
+	/** Add ordinary word to the index 
 	 * 
 	 * @param word - word to add
 	 * @param nf - frequencies in namespaces

@@ -122,6 +122,10 @@ public class Analyzers {
 		return getSearcherAnalyzer(new FilterFactory(langCode),new FieldNameFactory(exactCase));
 	}
 	
+	public static PerFieldAnalyzerWrapper getSpellCheckAnalyzer(String langCode){
+		return getSearcherAnalyzer(new FilterFactory(langCode,FilterFactory.Type.SPELL_CHECK),new FieldNameFactory());
+	}
+	
 	/**
 	 * Analyzer for search queries. Can be reused to parse many queries. 
 	 * 

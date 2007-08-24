@@ -10,7 +10,7 @@
 	<property name="binary.name" value="ls2-bin"/>
 	<property name="jar.name" value="LuceneSearch.jar"/>
 	<property name="include" value="src/** lib/** sql/** test-data/** webinterface/** *-example *.txt lsearch* build.xml scripts/*"/>
-	<property name="include.src" value="src/** sql/** build.xml scripts/*"/>
+	<property name="include.src" value="src/** sql/** build.xml scripts/* webinterface/*"/>
 	
 	<property file="${basedir}/hostname"/>
 	

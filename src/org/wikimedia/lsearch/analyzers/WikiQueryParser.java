@@ -368,7 +368,7 @@ public class WikiQueryParser {
 				continue; // ignore single quotes (it's -> its)
 			
 			// pluses and minuses, underscores can be within words (to prevent to be missinterpeted), *,? are for wildcard queries
-			if(Character.isLetterOrDigit(ch) || ch=='-' || ch=='+' || ch=='_' || ch=='*'){
+			if(!Character.isWhitespace(ch) && ch != ':' && ch != '(' && ch != ')' && ch !='[' && ch != ']' && ch != '.' && ch != ',' && ch != ';' && ch != '"'){
 				if(length<buffer.length)
 					buffer[length++] = ch;
 			} else{

@@ -1,5 +1,10 @@
 package org.wikimedia.lsearch.analyzers;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Set;
+
 import org.apache.lucene.analysis.PorterStemFilter;
 import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
@@ -16,26 +21,36 @@ import org.apache.lucene.analysis.th.ThaiWordFilter;
 public class FilterFactory {
 	protected String lang;
 	protected String snowballName = null;
-	protected boolean useStemmer,useCustomFilter;
+	protected boolean useStemmer,useLangFilter;
 	protected Class stemmer = null;
-	protected Class customFilter = null;
+	protected Class langFilter = null;
 	protected boolean usingCJK = false;
+	protected ArrayList<Class> additionalFilters = null;
 	
 	protected FilterFactory noStemmerFilterFactory=null;
 	
+	public enum Type { FULL, NO_STEM, SPELL_CHECK };
+	protected Type type = null;
+	
 	public FilterFactory(String lang){
-		this.lang = lang;
-		init();
-		noStemmerFilterFactory = new FilterFactory(lang,snowballName,false,useCustomFilter,null,customFilter); 
+		this(lang,Type.FULL);
 	}
 		
-	public FilterFactory(String lang, String snowballName, boolean useStemmer, boolean useCustomFilter, Class stemmer, Class customFilter) {
+	public FilterFactory(String lang, Type type){
+		this.lang = lang;
+		this.type = type;
+		init();
+		noStemmerFilterFactory = new FilterFactory(lang,snowballName,false,useLangFilter,null,langFilter,additionalFilters); 
+	}
+		
+	public FilterFactory(String lang, String snowballName, boolean useStemmer, boolean useLangFilter, Class stemmer, Class langFilter, ArrayList<Class> additionalFilters) {
 		this.lang = lang;
 		this.snowballName = snowballName;
 		this.useStemmer = useStemmer;
-		this.useCustomFilter = useCustomFilter;
+		this.useLangFilter = useLangFilter;
 		this.stemmer = stemmer;
-		this.customFilter = customFilter;
+		this.langFilter = langFilter;
+		this.additionalFilters = additionalFilters;
 	}
 	
 	public FilterFactory getNoStemmerFilterFactory() {
@@ -49,50 +64,59 @@ public class FilterFactory {
 		if(lang == null)
 			lang = "en";
 		
-		// figure out stemmer
-		useStemmer = true;		
-		if(lang.equals("en"))
-			snowballName = "English";
+		if(type == Type.FULL){
+			useStemmer = true;
+			// figure out stemmer
+			if(lang.equals("en"))
+				snowballName = "English";
 			//stemmer = PorterStemFilter.class; // 2x faster but less accurate
-		else if(lang.equals("da"))
-			snowballName = "Danish";
-		else if(lang.equals("nl"))
-			snowballName = "Dutch";
-		else if(lang.equals("fi"))
-			snowballName = "Finnish";
-		else if(lang.equals("de"))
-			snowballName = "German";
-		else if(lang.equals("it"))
-			snowballName = "Italian";
-		else if(lang.equals("no"))
-			snowballName = "Norwegian";
-		else if(lang.equals("pt"))
-			snowballName = "Portuguese";
-		else if(lang.equals("ru"))
-			snowballName = "Russian";
-		else if(lang.equals("es"))
-			snowballName = "Spanish";
-		else if(lang.equals("sv"))
-			snowballName = "Swedish";
-		else if(lang.equals("eo"))
-			stemmer = EsperantoStemFilter.class;
-		else 
+			else if(lang.equals("da"))
+				snowballName = "Danish";
+			else if(lang.equals("nl"))
+				snowballName = "Dutch";
+			else if(lang.equals("fi"))
+				snowballName = "Finnish";
+			else if(lang.equals("de"))
+				snowballName = "German";
+			else if(lang.equals("it"))
+				snowballName = "Italian";
+			else if(lang.equals("no"))
+				snowballName = "Norwegian";
+			else if(lang.equals("pt"))
+				snowballName = "Portuguese";
+			else if(lang.equals("ru"))
+				snowballName = "Russian";
+			else if(lang.equals("es"))
+				snowballName = "Spanish";
+			else if(lang.equals("sv"))
+				snowballName = "Swedish";
+			else if(lang.equals("eo"))
+				stemmer = EsperantoStemFilter.class;
+			else 
+				useStemmer = false;
+		} else
 			useStemmer = false;
 		
-		// figure out custom filter
-		useCustomFilter = true;
+		// figure out language-dependent filters
+		useLangFilter = true;
 		if(lang.equals("th"))
-			customFilter = ThaiWordFilter.class;
+			langFilter = ThaiWordFilter.class;
 		else if(lang.equals("sr"))
-			customFilter = SerbianFilter.class;
+			langFilter = SerbianFilter.class;
 		else if(lang.equals("vi"))
-			customFilter = VietnameseFilter.class;
+			langFilter = VietnameseFilter.class;
 		else if(lang.equals("zh") || lang.equals("cjk") || lang.equals("ja") ||
 				lang.equals("zh-classical") || lang.equals("zh-yue")){
-			customFilter = CJKFilter.class;
+			langFilter = CJKFilter.class;
 			usingCJK = true;
 		} else 
-			useCustomFilter = false;
+			useLangFilter = false;
+		
+		// additional filters
+		if(type == Type.SPELL_CHECK){
+			additionalFilters = new ArrayList<Class>();
+			additionalFilters.add(PhraseFilter.class);
+		}
 		
 	}
 	
@@ -113,17 +137,37 @@ public class FilterFactory {
 	}
 	
 	public TokenFilter makeCustomFilter(TokenStream in){
-		if(!useCustomFilter)
+		if(!useLangFilter)
 			return null;
-		else if(customFilter != null){
+		else if(langFilter != null){
 			try {
-				return (TokenFilter) customFilter.getConstructor(TokenStream.class).newInstance(in);
+				return (TokenFilter) langFilter.getConstructor(TokenStream.class).newInstance(in);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		
 		return null;
+	}
+	
+	public TokenStream makeAdditionalFilterChain(TokenStream in){
+		if(additionalFilters == null)
+			return in;
+		try {
+			TokenStream chain = in;
+			// nest additional filters, apply them as added to the list
+			for(Class filter : additionalFilters){				
+				chain = (TokenStream) filter.getConstructor(TokenStream.class).newInstance(chain);				
+			}
+			return chain;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+	}
+	
+	public boolean hasAdditionalFilters(){
+		return additionalFilters != null;
 	}
 	
 	public boolean hasStemmer(){
@@ -135,11 +179,30 @@ public class FilterFactory {
 	}
 
 	public boolean hasCustomFilter(){
-		return useCustomFilter;
+		return useLangFilter;
 	}
 	
 	public String getLanguage(){
 		return lang;
+	}
+	
+	public void setStopWords(Set<String> stopWords){
+		for(Class filter : additionalFilters){
+			for(Method m : filter.getMethods()){
+				if(m.getName().equals("setStopWords")){
+					try {
+						m.invoke(filter,new Object[] {stopWords});
+					} catch (IllegalArgumentException e) {
+						e.printStackTrace();
+					} catch (IllegalAccessException e) {
+						e.printStackTrace();
+					} catch (InvocationTargetException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+		}
 	}
 	
 	

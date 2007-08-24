@@ -5,13 +5,19 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
+import java.util.Set;
+import java.util.WeakHashMap;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
+import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.Hits;
@@ -20,7 +26,10 @@ import org.apache.lucene.search.Query;
 import org.apache.lucene.search.ScoreDoc;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.TopDocs;
+import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
+import org.wikimedia.lsearch.beans.ResultSet;
+import org.wikimedia.lsearch.beans.SearchResults;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.search.NamespaceFilter;
@@ -38,6 +47,8 @@ public class Suggest {
 	protected IndexSearcher titles;	
 	protected int minHitsWords;
 	protected int minHitsTitles;
+	protected static WeakHashMap<IndexSearcher,Set<String>> stopWordsIndexes = new WeakHashMap<IndexSearcher,Set<String>>();
+	protected Set<String> stopWords;
 	
 	/** Distance an metaphone metrics */
 	static class Metric {
@@ -70,7 +81,7 @@ public class Suggest {
 	}
 	
 	/** Number of results to fetch */
-	public static final int POOL = 300;
+	public static final int POOL = 150;
 	
 	/** Lower limit to hit rate for joining */
 	public static final int JOIN_FREQ = 1;
@@ -83,6 +94,21 @@ public class Suggest {
 		this.titles = cache.getLocalSearcher(iid.getSpellTitles());
 		this.minHitsWords = global.getIntDBParam(iid.getDBname(),"spell_words","minHits",20);
 		this.minHitsTitles = global.getIntDBParam(iid.getDBname(),"spell_titles","minHits",20);
+		
+		synchronized(stopWordsIndexes){
+			if(!stopWordsIndexes.containsKey(titles)){
+				Set<String> s = Collections.synchronizedSet(new HashSet<String>());
+				stopWordsIndexes.put(titles,s);
+				TermDocs d = titles.getIndexReader().termDocs(new Term("metadata_key","stopWords"));
+				if(d.next()){
+					String val = titles.doc(d.doc()).get("metadata_value");
+					for(String sw : val.split(" ")){
+						s.add(sw);
+					}
+				}				
+			}
+			this.stopWords = stopWordsIndexes.get(titles); 			
+		}
 	}
 	
 	static class Change {		
@@ -111,13 +137,44 @@ public class Suggest {
 	 *    
 	 * @return suggested query, or null if no suggestions 
 	 */
-	public String suggest(String searchterm, WikiQueryParser parser, NamespaceFilter nsf, int numHits){
+	@SuppressWarnings("unchecked")
+	public SuggestQuery suggest(String searchterm, WikiQueryParser parser, NamespaceFilter nsf, SearchResults res){
 		ArrayList<Token> tokens = parser.tokenizeBareText(searchterm);
+		int numHits = res.getNumHits();
+		
+		if(numHits >= minHitsTitles)
+			return null;
+		
+		// collect words in titles, these shouldn't be spell-checked
+		HashSet<String> correctWords = new HashSet<String>();
+		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,false);
+		try {
+			for(ResultSet r : res.getResults()){
+				Token t = null;
+				TokenStream ts = analyzer.tokenStream("title",r.title);				
+				while( (t = ts.next()) != null ){
+					correctWords.add(t.termText());
+				}				
+			}
+		} catch (IOException e) {
+			log.error("I/O error trying to get list of correct words : "+e.getMessage());
+			e.printStackTrace();
+		}
 
 		// always spell-check phrases
 		int minFreq = (numHits <  minHitsTitles)? 0 : numHits;
 		ArrayList<Change> suggestions = new ArrayList<Change>(); 
-		Token last = null;
+		
+		// add correct words
+		for(int i=0;i<tokens.size();i++){
+			Token t = tokens.get(i);
+			if(correctWords.contains(t.termText())){
+				Change c = new Change(0,1,Change.Type.TITLE_WORD);
+				c.preserves.put(i,t.termText());
+				suggestions.add(c);
+			}
+		}
+		
 		for(int i=0;i<tokens.size();i++){
 			Token t = tokens.get(i);
 			String w = t.termText();
@@ -143,64 +200,46 @@ public class Suggest {
 				sc.substitutes.put(i,split.word.replace("_"," "));
 				suggestions.add(sc);
 			}
-			
 			// get suggestions for pairs of words
-			if(last != null && t.type().equals(last.type())){
-				String word1 = last.termText();
-				String word2 = t.termText();
-				// phrase
-				ArrayList<SuggestResult> r = suggestPhraseFromTitle(word1,word2,1,nsf,minFreq);
-				if(r.size() > 0){
-					SuggestResult res = r.get(0);
-					String[] ph = res.word.split("_");						
-					if(ph.length == 2){
-						// figure out which words need to be changed
-						Change sc = new Change(res.dist,res.frequency,Change.Type.PHRASE);
-						if(!ph[0].equals(word1))
-							sc.substitutes.put(i-1,ph[0]);
-						else
-							sc.preserves.put(i-1,ph[0]);
-						if(!ph[1].equals(word2))
-							sc.substitutes.put(i,ph[1]);
-						else
-							sc.preserves.put(i,ph[1]);
-						suggestions.add(sc);
-					} else
-						log.error("Unexpected phrase in suggest result "+res);
-				}
-				// join
-				SuggestResult join = suggestJoinFromTitle(word1,word2,nsf,minFreq);
-				if(join != null){
-					Change sc = new Change(join.dist,join.frequency,Change.Type.JOIN);
-					sc.substitutes.put(i-1,""); 
-					sc.substitutes.put(i,join.word);
-					suggestions.add(sc);
+			for(int j=i+1;j<tokens.size();j++){
+				if(!correctWords.contains(tokens.get(i)) && !correctWords.contains(tokens.get(j))){
+					boolean succ = addPhraseSuggestion(tokens,i,j,suggestions,nsf,minFreq);
+					if(succ)
+						break;
 				}
 			}
-			last = t;
+			
 		}
+		// indexes of tokens to be preserved in individual word check
+		HashSet<Integer> preserveTokens = new HashSet<Integer>();
 		if(suggestions.size() > 0){
 			// found some suggestions
-			ArrayList<Entry<Integer,String>> proposedChanges = calculateChanges(suggestions,searchterm.length()/2);
+			Object[] ret = calculateChanges(suggestions,searchterm.length()/2);
+			ArrayList<Entry<Integer,String>> proposedChanges = (ArrayList<Entry<Integer, String>>) ret[0];
+			ArrayList<Entry<Integer,String>> preservedWords = (ArrayList<Entry<Integer, String>>) ret[1];
+			for(Entry<Integer,String> e : preservedWords)
+				preserveTokens.add(e.getKey());
 			// substitute
 			if(proposedChanges.size() > 0){
 				for(Entry<Integer,String> e : proposedChanges){
 					Token t = tokens.get(e.getKey());
 					searchterm = markSuggestion(searchterm,t,e.getValue());
 				}
-				return tidy(searchterm);
+				return new SuggestQuery(tidy(searchterm));
 			}
 		}
 		
 		// spell-check individual words
-		if(numHits < minHitsWords){
+		if(numHits < minHitsWords && tokens.size() != 1){
 			LinkedList<Change> changes = new LinkedList<Change>();
 			for(int i=0;i<tokens.size();i++){
 				Token t = tokens.get(i);
 				String w = t.termText();
 				if(w.length() < 2)
 					continue;
-				ArrayList<SuggestResult> sug = suggestWords(w,1);
+				if(correctWords.contains(w) || preserveTokens.contains(i))
+					continue;
+				ArrayList<SuggestResult> sug = suggestWordsFromTitle(w,nsf,1);
 				if(sug.size() > 0){
 					SuggestResult r = sug.get(0);
 					if(r.word.equals(w))
@@ -218,13 +257,55 @@ public class Suggest {
 						searchterm = markSuggestion(searchterm,t,e.getValue());
 					}
 				}
-				return searchterm;
+				return new SuggestQuery(tidy(searchterm),true);
 			}
 		}
 
 		return null;
 	}
 	
+	protected boolean addPhraseSuggestion(ArrayList<Token> tokens, int i1, int i2, ArrayList<Change> suggestions, NamespaceFilter nsf, int minFreq) {
+		Token t1 = tokens.get(i1);
+		Token t2 = tokens.get(i2);
+		if(t2.type().equals(t1.type())){
+			String word1 = t1.termText();
+			String word2 = t2.termText();
+			if(stopWords.contains(word1) || stopWords.contains(word2))
+				return false;
+			log.info("spell-check phrase \""+word1+" "+word2+"\"");
+			// phrase
+			ArrayList<SuggestResult> r = suggestPhraseFromTitle(word1,word2,1,nsf,minFreq);
+			if(r.size() > 0){
+				SuggestResult res = r.get(0);
+				String[] ph = res.word.split("_");						
+				if(ph.length == 2){
+					// figure out which words need to be changed
+					Change sc = new Change(res.dist,res.frequency,Change.Type.PHRASE);
+					if(!ph[0].equals(word1))
+						sc.substitutes.put(i1,ph[0]);
+					else
+						sc.preserves.put(i1,ph[0]);
+					if(!ph[1].equals(word2))
+						sc.substitutes.put(i2,ph[1]);
+					else
+						sc.preserves.put(i2,ph[1]);
+					suggestions.add(sc);
+				} else
+					log.error("Unexpected phrase in suggest result "+res);
+			}
+			// join
+			SuggestResult join = suggestJoinFromTitle(word1,word2,nsf,minFreq);
+			if(join != null){
+				Change sc = new Change(join.dist,join.frequency,Change.Type.JOIN);
+				sc.substitutes.put(i1,""); 
+				sc.substitutes.put(i2,join.word);
+				suggestions.add(sc);
+			}
+			return true;
+		}
+		return false;		
+	}
+
 	protected String markSuggestion(String searchterm, Token t, String newWord){
 		return searchterm.substring(0,t.startOffset()) 
 		+ "<i>" + newWord	+ "</i>"
@@ -233,7 +314,7 @@ public class Suggest {
 	
 	/** tidy the query, convert double spaces into single spaces, and such... */
 	protected String tidy(String searchterm){
-		return searchterm.replaceAll(" +"," ");
+		return searchterm.replaceAll("<i></i>","").replaceAll(" +"," ").replaceAll(";","");
 	}
 	
 	/** 
@@ -242,7 +323,7 @@ public class Suggest {
 	 * 
 	 * @return set of token_number -> new string.
 	 */ 
-	protected ArrayList<Entry<Integer,String>> calculateChanges(ArrayList<Change> changes, int maxDist){
+	protected Object[] calculateChanges(ArrayList<Change> changes, int maxDist){
 		// sort suggested changes by relevance
 		Collections.sort(changes,new Comparator<Change>() {
 			public int compare(Change o1, Change o2){					
@@ -288,7 +369,9 @@ public class Suggest {
 				return o2.getKey() - o1.getKey();
 			}
 		});
-		return proposedChanges;
+		ArrayList<Entry<Integer,String>> preservedWords = new ArrayList<Entry<Integer,String>>();
+		preservedWords.addAll(preserve.entrySet());
+		return new Object[] {proposedChanges, preservedWords};
 	}
 	
 	/** Suggest some words from the words index */
@@ -387,7 +470,7 @@ public class Suggest {
 	protected boolean acceptWord(SuggestResult r, Metric m){
 		// check metaphones: don't add if the pronunciation is something completely unrelated
 		if((r.distMetaphone < m.meta1.length() || r.distMetaphone2 < m.meta2.length()) && (r.distMetaphone<=3 || r.distMetaphone2<=3)
-				&& (r.dist <= m.word.length()/2 || r.dist <= r.word.length()/2))
+				&& (r.dist <= m.word.length()/2 || r.dist <= r.word.length()/2) && Math.abs(m.word.length()-r.word.length()) <= 3)
 			return true;
 		else
 			return false;
@@ -435,7 +518,7 @@ public class Suggest {
 				if(hits.length() > 0){
 					int pfreq = new NamespaceFreq(hits.doc(0).get("freq")).getFrequency(nsf);
 					if(pfreq >= freq && pfreq > minFreq)
-						res.add(new SuggestResult(phrase,pfreq,1));
+						res.add(new SuggestResult(phrase,pfreq,2));
 				}
 			}
 			if(res.size() > 0){
@@ -473,7 +556,7 @@ public class Suggest {
 		Metric m2 = new Metric(word2);
 		Metric metric = new Metric(phrase);
 		try {
-			TopDocs docs = titles.search(q,new NamespaceFilterWrapper(nsf),200);			
+			TopDocs docs = titles.search(q,new NamespaceFilterWrapper(nsf),POOL/2);			
 			ArrayList<SuggestResult> res = new ArrayList<SuggestResult>();
 			int minfreq = (minFreq == 0)? -1 : minFreq;
 			// fetch results

@@ -8,8 +8,12 @@ public class SuggestResult {
 	int distMetaphone2=0;
 	
 	static class Comparator implements java.util.Comparator<SuggestResult> {
-		public int compare(SuggestResult o1, SuggestResult o2){					
-			if(o1.dist == o2.dist)
+		public int compare(SuggestResult o1, SuggestResult o2){	
+			if(o1.dist - o2.dist == -1 && o1.frequency * 100 < o2.frequency)
+				return 1;
+			else if(o1.dist - o2.dist == 1 && o2.frequency * 100 < o1.frequency)
+				return -1;
+			else if(o1.dist == o2.dist)
 				return o2.getFrequency() - o1.getFrequency();
 			else 
 				return o1.dist - o2.dist;					

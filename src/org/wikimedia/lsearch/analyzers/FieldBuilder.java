@@ -42,23 +42,28 @@ public class FieldBuilder {
 	/** default is ignore case (upper/lower), use exact_case for wiktionaries, etc */
 	public static enum Case { IGNORE_CASE, EXACT_CASE };
 	/** use stemmer if available, of force no stemming */
-	public static enum Stemmer { USE_STEMMER, NO_STEMMER }; 
+	public static enum Stemmer { USE_STEMMER, NO_STEMMER };
+	/** additional options */ 
+	public static enum Options { NONE, SPELL_CHECK };
 	
 	/** Construct case-insensitive field builder with stemming */
 	public FieldBuilder(String lang){
-		this(lang,Case.IGNORE_CASE,Stemmer.USE_STEMMER);
+		this(lang,Case.IGNORE_CASE,Stemmer.USE_STEMMER,Options.NONE);
 	}
 	
 	public FieldBuilder(String lang, Case useCase){
-		this(lang,useCase,Stemmer.USE_STEMMER);
+		this(lang,useCase,Stemmer.USE_STEMMER,Options.NONE);
 	}
 	
-	public FieldBuilder(String lang, Case useCase, Stemmer useStemmer){
+	public FieldBuilder(String lang, Case useCase, Stemmer useStemmer, Options options){
+		FilterFactory.Type type = FilterFactory.Type.FULL;
+		if(options == Options.SPELL_CHECK)
+			type = FilterFactory.Type.SPELL_CHECK;
 		// additional exact case factory
 		if(useCase == Case.EXACT_CASE){
-			builders = new BuilderSet[2];		
+			builders = new BuilderSet[2];	
 			builders[1] = new BuilderSet(
-					new FilterFactory(lang).getNoStemmerFilterFactory(),
+					new FilterFactory(lang,type).getNoStemmerFilterFactory(),
 					new FieldNameFactory(FieldNameFactory.EXACT_CASE));
 		} else
 			builders = new BuilderSet[1];
@@ -66,11 +71,11 @@ public class FieldBuilder {
 		// default factory, lowercase all data
 		if(useStemmer == Stemmer.USE_STEMMER){
 			builders[0] = new BuilderSet(
-					new FilterFactory(lang),
+					new FilterFactory(lang,type),
 					new FieldNameFactory());
 		} else{
 			builders[0] = new BuilderSet(
-					new FilterFactory(lang).getNoStemmerFilterFactory(),
+					new FilterFactory(lang,type).getNoStemmerFilterFactory(),
 					new FieldNameFactory());
 		}
 		
