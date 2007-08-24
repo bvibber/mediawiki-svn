@@ -138,7 +138,7 @@ class HistoricalThread extends Thread {
 			'hthread_revision'=>$tmt->revisionNumber(),
 			'hthread_contents'=>$contents,
 			'hthread_change_type'=>$tmt->changeType(),
-			'hthread_change_object'=>$tmt->changeObject()), __METHOD__ );
+			'hthread_change_object'=>$tmt->changeObject()->id()), __METHOD__ );
 	}
 	static function withIdAtRevision( $id, $rev ) {
 		$dbr =& wfGetDB( DB_SLAVE );
@@ -269,6 +269,7 @@ class Thread {
 		     /* SET */array( 'thread_root' => $this->rootId,
 					'thread_article' => $this->articleId,
 					'thread_path' => $this->path,
+					'thread_type' => $this->type,
 					'thread_summary_page' => $this->summaryId,
 					'thread_timestamp' => wfTimestampNow(),
 					'thread_revision' => $this->revisionNumber,
@@ -286,6 +287,17 @@ class Thread {
 	//	RecentChange::notifyEdit( wfTimestampNow(), $this->root(), /*minor*/false, $wgUser, $summary,
 	//		$lastRevision, $this->getTimestamp(), $bot, '', $oldsize, $newsize,
 	//		$revisionId );
+	}
+	
+	function delete($reason) {
+		$this->type = Threads::TYPE_DELETED;
+		$this->revisionNumber += 1;
+		$this->commitRevision(Threads::CHANGE_DELETED, $this, $reason);
+	}
+	function undelete($reason) {
+		$this->type = Threads::TYPE_NORMAL;
+		$this->revisionNumber += 1;
+		$this->commitRevision(Threads::CHANGE_UNDELETED, $this, $reason);
 	}
 	
 	function moveToSubjectPage($title, $reason, $leave_trace) {
@@ -620,14 +632,17 @@ class Threads {
 
 	const TYPE_NORMAL = 0;
 	const TYPE_MOVED = 1;
-	static $VALID_TYPES = array(self::TYPE_NORMAL, self::TYPE_MOVED);
+	const TYPE_DELETED = 2;
+	static $VALID_TYPES = array(self::TYPE_NORMAL, self::TYPE_MOVED, self::TYPE_DELETED);
 	
 	const CHANGE_NEW_THREAD = 0;
 	const CHANGE_REPLY_CREATED = 1;
 	const CHANGE_EDITED_ROOT = 2;
 	const CHANGE_EDITED_SUMMARY = 3;
+	const CHANGE_DELETED = 4;
+	const CHANGE_UNDELETED = 5;
 	static $VALID_CHANGE_TYPES = array(self::CHANGE_EDITED_SUMMARY, self::CHANGE_EDITED_ROOT,
-		self::CHANGE_REPLY_CREATED, self::CHANGE_NEW_THREAD);
+		self::CHANGE_REPLY_CREATED, self::CHANGE_NEW_THREAD, self::CHANGE_DELETED, self::CHANGE_UNDELETED);
 
 	static $loadedThreads = array();
 	
@@ -691,7 +706,7 @@ class Threads {
      }
 	
 	static function where( $where, $options = array(), $extra_tables = array() ) {
-		$dbr =& wfGetDB( DB_SLAVE );
+		$dbr = wfGetDB( DB_SLAVE );
 		if ( is_array($where) ) $where = $dbr->makeList( $where, LIST_AND );
 		if ( is_array($options) ) $options = implode(',', $options);
 		if( is_array($extra_tables) && count($extra_tables) != 0 ) {
@@ -729,7 +744,7 @@ SQL;
 		foreach( $lines as $key => $l ) {
 			if( $l->is_root ) {
 //				unset($lines[$key]);
-				$threads[] = Threads::buildThread( &$lines, $l );
+				$threads[] = Threads::buildThread( $lines, $l );
 			}
 		}
 		return $threads;

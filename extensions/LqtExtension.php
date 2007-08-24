@@ -470,6 +470,16 @@ HTML;
 		if( !$thread->hasSuperthread() ) {
 			$commands['History'] = $this->permalinkUrlWithQuery($thread, 'action=history');
 		}
+		
+		if ( in_array('delete',  $this->user->getRights()) ) {
+			if( $thread->type() == Threads::TYPE_DELETED )
+				$delete_command_label = 'Undelete';
+			else
+				$delete_command_label = 'Delete';
+			
+			$commands[$delete_command_label] = SpecialPage::getPage('Deletethread')->getTitle()->getFullURL()
+				. '/' . $thread->title()->getPrefixedURL();
+		}
 
 		foreach( $commands as $label => $href ) {
 			$this->output->addHTML( wfOpenElement( 'li' ) );
@@ -548,6 +558,17 @@ HTML;
 			$this->output->addHTML( "." );
 			
 			return;
+		}
+
+		
+		if ( $thread->type() == Threads::TYPE_DELETED ) {
+			if ( in_array('deletedhistory',  $this->user->getRights()) ) {
+				$this->output->addHTML("<p>The following thread has been <b>deleted</b> and is not visible to non-sysops.</p>");
+			}
+			else {
+				$this->output->addHTML("<p><em>This thread was deleted.</em></p>");
+				return;
+			}
 		}
 
 		$timestamp = new Date($thread->timestamp());
@@ -1010,7 +1031,11 @@ class ThreadHistoryPager extends PageHistoryPager {
 		$change_names = array(Threads::CHANGE_EDITED_ROOT => "Comment text edited:",
 		                      Threads::CHANGE_EDITED_SUMMARY => "Summary changed:",
 		                      Threads::CHANGE_REPLY_CREATED => "New reply created:",
-		                      Threads::CHANGE_NEW_THREAD => "New thread created:");
+		                      Threads::CHANGE_NEW_THREAD => "New thread created:",
+							  Threads::CHANGE_DELETED => "Deleted:",
+							  Threads::CHANGE_UNDELETED => "Undeleted:");
+		$change_label = array_key_exists($t->changeType(), $change_names) ? $change_names[$t->changeType()] : "";
+
 		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $t->revisionNumber() );
 		
 		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $t->changeUser() ), false );
@@ -1018,7 +1043,7 @@ class ThreadHistoryPager extends PageHistoryPager {
 		$result[] = "<tr>";
 		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->timestamp()) . "</a></td>";
 		$result[] = "<td>" . $sig . "</td>";
-		$result[] = "<td>{$change_names[$t->changeType()]}</td>";
+		$result[] = "<td>$change_label</td>";
 		$result[] = "<td>" . $t->changeComment() . "</td>";
 		$result[] = "</tr>";
 		return implode('', $result);
@@ -1189,7 +1214,7 @@ function wfLqtSpecialMoveThreadToAnotherPage() {
     
     $wgMessageCache->addMessage( 'movethread', 'Move Thread to Another Page' );
     
-    class SpecialThreadPage extends SpecialPage {
+    class SpecialMoveThreadToAnotherPage extends SpecialPage {
 		private $user, $output, $request, $title, $thread;
 
 
@@ -1309,5 +1334,138 @@ HTML
         }
     }
     
-     SpecialPage::addPage( new SpecialThreadPage() );
+     SpecialPage::addPage( new SpecialMoveThreadToAnotherPage() );
+}
+
+
+
+$wgExtensionFunctions[] = 'wfLqtSpecialDeleteThread';
+
+function wfLqtSpecialDeleteThread() {
+    global $wgMessageCache;
+
+    require_once('SpecialPage.php');
+    
+    $wgMessageCache->addMessage( 'deletethread', 'Delete or Undelete Thread' );
+    
+    class SpecialDeleteThread extends SpecialPage {
+		private $user, $output, $request, $title, $thread;
+
+
+        function __construct() {
+            SpecialPage::SpecialPage( 'Deletethread' );
+            SpecialPage::$mStripSubpages = false;
+            $this->includable( false );
+        }
+
+		function handleGet() {
+			if( !$this->checkUserRights() )
+				return;
+			
+			$thread_name = $this->thread->title()->getPrefixedText();
+			$article_name = $this->thread->article()->getTitle()->getTalkPage()->getPrefixedText();
+			$edit_url = LqtView::permalinkUrl($this->thread, 'edit', $this->thread);
+			
+			$deleting = $this->thread->type() != Threads::TYPE_DELETED;
+			
+			$operation_message = $deleting ?
+				"Deleting <b>$thread_name</b> and <b>all replies</b> to it."
+				: "Undeleting <b>$thread_name</b>.";
+			$button_label = $deleting ?
+				"Delete Thread and Replies"
+				: "Undelete Thread";
+			
+			$this->output->addHTML(<<<HTML
+			<p>$operation_message
+			This thread is part of <b>$article_name</b>.</p>
+			<form id="lqt_delete_thread_form" action="{$this->title->getLocalURL()}" method="POST">
+			<table>
+			<tr>
+			<td><label for="lqt_delete_thread_reason">Reason:</label></td>
+			<td><input id="lqt_delete_thread_reason" name="lqt_delete_thread_reason" tabindex="200" size="40" /></td>
+			</tr><tr>
+			<td>&nbsp;</td>
+			<td><input type="submit" value="$button_label" style="float:right;" tabindex="300" /></td>
+			</tr>
+			</table>
+			</form>
+HTML
+			);
+			
+		}
+
+		function checkUserRights() {
+			if( in_array('delete', $this->user->getRights()) ) {
+				return true;
+			} else {
+				$this->output->addHTML("You are not allowed to delete threads.");
+				return false;
+			}
+		}
+
+		function redisplayForm($problem_fields, $message) {
+			$this->output->addHTML($message);
+			$this->handleGet();
+		}
+
+		function handlePost() {
+			// in theory the model should check rights...
+			if( !$this->checkUserRights() )
+				return;
+
+			$reason = $this->request->getVal('lqt_delete_thread_reason', "No reason given.");
+			
+			// TODO: in theory, two fast-acting sysops could undo each others' work.
+			$is_deleted_already = $this->thread->type() == Threads::TYPE_DELETED;
+			if ( $is_deleted_already ) {
+				$this->thread->undelete($reason);
+			} else {
+				$this->thread->delete($reason);
+			}
+			$this->showSuccessMessage( $is_deleted_already );
+		}
+		
+		function showSuccessMessage( $is_deleted_already ) {
+			$message = $is_deleted_already ? "The thread was undeleted." : "The thread was deleted.";
+			
+			// TODO talkpageUrl should accept threads, and look up their talk pages.
+			$talkpage_url = LqtView::talkpageUrl($this->thread->article()->getTitle()->getTalkpage());
+			$this->output->addHTML(<<<HTML
+		$message Return to <a href="$talkpage_url">the talkpage</a>.
+HTML
+			);
+		}
+
+        function execute( $par = null ) {
+            global $wgOut, $wgRequest, $wgTitle, $wgUser;
+			$this->user = $wgUser;
+			$this->output = $wgOut;
+			$this->request = $wgRequest;
+			$this->title = $wgTitle;
+	
+            $this->setHeaders();
+            
+			if( $par === null || $par === "") {
+				$this->output->addHTML("You must specify a thread in the URL.");
+				return;
+			}
+			// TODO should implement Threads::withTitle(...).
+			$thread = Threads::withRoot( new Article(Title::newFromURL($par)) );
+			if (!$thread) {
+				$this->output->addHTML("No such thread exists.");
+				return;
+			}
+			
+			$this->thread = $thread;
+
+			if ( $this->request->wasPosted() ) {
+				$this->handlePost();
+			} else {
+				$this->handleGet();
+			}
+
+        }
+    }
+    
+     SpecialPage::addPage( new SpecialDeleteThread() );
 }
