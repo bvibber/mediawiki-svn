@@ -39,24 +39,3 @@ CREATE TABLE /*$wgDBprefix*/historical_thread (
   hthread_change_object int(8) unsigned NULL,
   PRIMARY KEY hthread_id_revision (hthread_id, hthread_revision)
 ) TYPE=InnoDB;
-
-/*
-	old_superthread and old_article are mutually exclusive.
-	New position is recorded either in the text movement or in the
-	thread's current information.
-*/
-CREATE TABLE /*$wgDBprefix*/lqt_movement (
-  movement_id int(8) unsigned NOT NULL auto_increment,
-  
-  movement_thread int(8) unsigned NOT NULL,
-
-  movement_old_superthread int(8) unsigned NULL,
-  movement_old_article int(8) unsigned NULL,
-
-  movement_timestamp char(14) binary NOT NULL default '',
-
-  PRIMARY KEY movement_id (movement_id)
-  /* TODO we will need an index to look up my article and timestamp. */
-
-) TYPE=InnoDB;
-
