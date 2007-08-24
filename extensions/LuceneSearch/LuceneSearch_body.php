@@ -464,8 +464,8 @@ class LuceneSearch extends SpecialPage
 				return "<!--Broken link in search results: ".$t->getDBKey()."-->\n";
 			}
 
-			$text = $rev->getContent(false);
-					$size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
+			$text = $rev->getText();
+			$size = wfMsg('searchsize', sprintf("%.1f", strlen($text) / 1024), str_word_count($text));
 			$text = $this->removeWiki($text);
 			$date = $wgContLang->timeanddate($rev->getTimestamp());
 		} else {
