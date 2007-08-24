@@ -759,7 +759,7 @@ SQL;
 		foreach( $lines as $key => $m ) {
 			if ( preg_match( "/^{$l_path}\.\d+$/", $m->thread_path ) ) {
 //				unset($lines[$key]);
-				$children[] = Threads::buildThread( &$lines, $m );
+				$children[] = Threads::buildThread( $lines, $m );
 			}
 		}
 		$t = new Thread($l, $children);
