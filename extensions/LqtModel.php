@@ -138,7 +138,8 @@ class HistoricalThread extends Thread {
 			'hthread_revision'=>$tmt->revisionNumber(),
 			'hthread_contents'=>$contents,
 			'hthread_change_type'=>$tmt->changeType(),
-			'hthread_change_object'=>$tmt->changeObject()->id()), __METHOD__ );
+			'hthread_change_object'=>$tmt->changeObject() ? $tmt->changeObject()->id() : null),
+			__METHOD__ );
 	}
 	static function withIdAtRevision( $id, $rev ) {
 		$dbr =& wfGetDB( DB_SLAVE );
