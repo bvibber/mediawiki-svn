@@ -6,7 +6,7 @@ Liquid Threads is going to change a lot before release. Some of the coolest feat
 
 To try Liquid Threads, first, install MediaWiki as usual. Then, source maintenance/lqt.sql from your mysql console. Finally, add the following to the end of your LocalSettings.php:
 
- require_once('extensions/LqtExtension.php');
+ require_once('extensions/LqtPages.php');
 
 How to contact me:
 davemccabe@gmail.com (email or jabber)
