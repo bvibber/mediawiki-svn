@@ -439,7 +439,9 @@ $messages = array(
 'nosuchaction'      => 'אין פעולה כזו',
 'nosuchactiontext'  => 'מערכת מדיה־ויקי אינה מכירה את הפעולה המצויינת בכתובת ה־URL של הדף.',
 'nosuchspecialpage' => 'אין דף מיוחד בשם זה',
-'nospecialpagetext' => 'ביקשתם דף מיוחד שאינו קיים. ראו את [[{{ns:special}}:Specialpages|רשימת הדפים המיוחדים]].',
+'nospecialpagetext' => '<big>ביקשתם דף מיוחד שאינו קיים.</big>
+
+ראו גם את [[{{ns:special}}:Specialpages|רשימת הדפים המיוחדים התקינים]].',
 
 # General errors
 'error'                => 'שגיאה',
@@ -1146,6 +1148,7 @@ $2',
 
 # File reversion
 'filerevert'                => 'שחזור $1',
+'filerevert-backlink'       => '→ $1',
 'filerevert-legend'         => 'שחזור קובץ',
 'filerevert-intro'          => '<span class="plainlinks">משחזר את \'\'\'[[Media:$1|$1]]\'\'\' ל[גרסה $4 מ־$3, $2].</span>',
 'filerevert-comment'        => 'הערה:',
@@ -1156,6 +1159,7 @@ $2',
 
 # File deletion
 'filedelete'             => 'מוחק את $1',
+'filedelete-backlink'    => '→ $1',
 'filedelete-legend'      => 'מחיקת קובץ',
 'filedelete-intro'       => "מוחק את '''[[Media:$1|$1]]'''.",
 'filedelete-intro-old'   => '<span class="plainlinks">אתם מוחקים את הגרסה של \'\'\'[[Media:$1|$1]]\'\'\' מ־[$4 $3, $2].</span>',
@@ -1850,6 +1854,7 @@ $1
 'tooltip-compareselectedversions' => 'צפיה בהשוואת שתי גרסאות של דף זה',
 'tooltip-watch'                   => 'הוספת דף זה לרשימת המעקב',
 'tooltip-recreate'                => 'יצירת הדף מחדש למרות שהוא נמחק',
+'tooltip-upload'                  => 'תחילת ההעלאה',
 
 # Stylesheets
 'common.css'   => '/* הסגנונות הנכתבים כאן ישפיעו על כל הרקעים */',

@@ -64,6 +64,7 @@ $wgIgnoredMessages = array(
 	'accesskey-diff',
 	'accesskey-compareselectedversions',
 	'accesskey-watch',
+	'accesskey-upload',
 	'addsection',
 	'anonnotice',
 	'autoblock_whitelist',
@@ -199,6 +200,8 @@ $wgOptionalMessages = array(
 	'seconds-abbrev',
 	'minutes-abbrev',
 	'hours-abbrev',
+	'filerevert-backlink',
+	'filedelete-backlink',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */

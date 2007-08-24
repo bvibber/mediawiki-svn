@@ -731,7 +731,9 @@ XHTML id names.
 'nosuchactiontext'  => 'The action specified by the URL is not
 recognized by the wiki',
 'nosuchspecialpage' => 'No such special page',
-'nospecialpagetext' => 'You have requested an invalid special page, a list of valid special pages may be found at [[Special:Specialpages|special pages list]].',
+'nospecialpagetext' => "'''<big>You have requested an invalid special page.</big>'''
+
+A list of valid special pages can be found at [[Special:Specialpages]].",
 
 # General errors
 'error'                => 'Error',
@@ -1424,7 +1426,7 @@ If you have this image in full resolution upload this one, otherwise change the 
 'uploadwarning'               => 'Upload warning',
 'savefile'                    => 'Save file',
 'uploadedimage'               => 'uploaded "[[$1]]"',
-'overwroteimage' => 'uploaded a new version of "[[$1]]"',
+'overwroteimage'              => 'uploaded a new version of "[[$1]]"',
 'uploaddisabled'              => 'Uploads disabled',
 'uploaddisabledtext'          => 'File uploads are disabled on this wiki.',
 'uploadscripted'              => 'This file contains HTML or script code that may be erroneously be interpreted by a web browser.',
@@ -1498,6 +1500,7 @@ If you have this image in full resolution upload this one, otherwise change the 
 
 # File reversion
 'filerevert'                => 'Revert $1',
+'filerevert-backlink'       => '← $1', # only translate this message to other languages if you have to change it
 'filerevert-legend'         => 'Revert file',
 'filerevert-intro'          => "<span class=\"plainlinks\">You are reverting '''[[Media:$1|$1]]''' to the [$4 version as of $3, $2].</span>",
 'filerevert-comment'        => 'Comment:',
@@ -1507,17 +1510,18 @@ If you have this image in full resolution upload this one, otherwise change the 
 'filerevert-badversion'     => 'There is no previous local version of this file with the provided timestamp.',
 
 # File deletion
-'filedelete' => 'Delete $1',
-'filedelete-legend' => 'Delete file',
-'filedelete-intro' => "You are deleting '''[[Media:$1|$1]]'''.",
-'filedelete-intro-old' => "<span class=\"plainlinks\">You are deleting the version of '''[[Media:$1|$1]]''' as of [$4 $3, $2].</span>",
-'filedelete-comment' => 'Comment:',
-'filedelete-submit' => 'Delete',
-'filedelete-success' => "'''$1''' has been deleted.",
+'filedelete'             => 'Delete $1',
+'filedelete-backlink'    => '← $1', # only translate this message to other languages if you have to change it
+'filedelete-legend'      => 'Delete file',
+'filedelete-intro'       => "You are deleting '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'   => "<span class=\"plainlinks\">You are deleting the version of '''[[Media:$1|$1]]''' as of [$4 $3, $2].</span>",
+'filedelete-comment'     => 'Comment:',
+'filedelete-submit'      => 'Delete',
+'filedelete-success'     => "'''$1''' has been deleted.",
 'filedelete-success-old' => "<span class=\"plainlinks\">The version of '''[[Media:$1|$1]]''' as of $3, $2 has been deleted.</span>",
-'filedelete-nofile' => "'''$1''' does not exist on this site.",
-'filedelete-nofile-old' => "There is no archived version of '''$1''' with the specified attributes.",
-'filedelete-iscurrent' => 'You are attempting to delete the most recent version of this file. Please revert to an older version first.',
+'filedelete-nofile'      => "'''$1''' does not exist on this site.",
+'filedelete-nofile-old'  => "There is no archived version of '''$1''' with the specified attributes.",
+'filedelete-iscurrent'   => 'You are attempting to delete the most recent version of this file. Please revert to an older version first.',
 
 # MIME search
 'mimesearch'         => 'MIME search',
@@ -2241,7 +2245,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'accesskey-pt-anonuserpage'         => '.', # don't translate or duplicate this message to other languages
 'accesskey-pt-mytalk'               => 'n', # don't translate or duplicate this message to other languages
 'accesskey-pt-anontalk'             => 'n', # don't translate or duplicate this message to other languages
-'accesskey-pt-preferences'          => '', # don't translate or duplicate this message to other languages
+'accesskey-pt-preferences'          => '9', # don't translate or duplicate this message to other languages
 'accesskey-pt-watchlist'            => 'l', # don't translate or duplicate this message to other languages
 'accesskey-pt-mycontris'            => 'y', # don't translate or duplicate this message to other languages
 'accesskey-pt-login'                => 'o', # don't translate or duplicate this message to other languages
@@ -2293,6 +2297,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'accesskey-diff'                    => 'v', # don't translate or duplicate this message to other languages
 'accesskey-compareselectedversions' => 'v', # don't translate or duplicate this message to other languages
 'accesskey-watch'                   => 'w', # don't translate or duplicate this message to other languages
+'accesskey-upload'                  => 's', # don't translate or duplicate this message to other languages
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'My user page',
@@ -2352,6 +2357,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'tooltip-compareselectedversions' => 'See the differences between the two selected versions of this page.',
 'tooltip-watch'                   => 'Add this page to your watchlist',
 'tooltip-recreate'                => 'Recreate the page despite it has been deleted',
+'tooltip-upload'                  => 'Start upload',
 
 # Stylesheets
 'common.css'   => '/** CSS placed here will be applied to all skins */',

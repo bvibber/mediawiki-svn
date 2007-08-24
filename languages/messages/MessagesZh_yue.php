@@ -394,7 +394,9 @@ $messages = array(
 'nosuchaction'      => '冇呢個動作',
 'nosuchactiontext'  => '呢個 URL 嘅指定動作 wiki 識別唔到',
 'nosuchspecialpage' => '冇呢頁特別頁',
-'nospecialpagetext' => '你所要求嘅特別頁唔啱，喺[[Special:Specialpages|特別頁一覽]]可以搵到所有用得嘅特別頁。',
+'nospecialpagetext' => "'''<big>你所要求嘅特別頁唔啱。</big>'''
+
+喺[[Special:Specialpages|特別頁一覽]]可以搵到所有用得嘅特別頁。",
 
 # General errors
 'error'                => '錯誤',
@@ -1095,7 +1097,7 @@ $2',
 # File reversion
 'filerevert'                => '回復$1',
 'filerevert-legend'         => '回復檔案',
-'filerevert-intro'          => '<span class="plainlinks">你而家回復緊\'\'\'[[Media:$1|$1]]\'\'\'到[響$2 $3嘅$4版本]。</span>',
+'filerevert-intro'          => '<span class="plainlinks">你而家回復緊\'\'\'[[Media:$1|$1]]\'\'\'到[$4 響$2 $3嘅版本]。</span>',
 'filerevert-comment'        => '註解:',
 'filerevert-defaultcomment' => '已經回復到響$1 $2嘅版本',
 'filerevert-submit'         => '回復',
@@ -1112,7 +1114,7 @@ $2',
 'filedelete-success'     => "'''$1'''已經刪除咗。",
 'filedelete-success-old' => "<span class=\"plainlinks\">'''[[Media:$1|$1]]'''響 $2 $3 嘅版本已經刪除咗。</span>",
 'filedelete-nofile'      => "'''$1'''響呢個網站度唔存在。",
-'filedelete-nofile-old'  => "呢度係無'''$1'''響 $2 $3 嘅版本。",
+'filedelete-nofile-old'  => "用指定嘅屬性，呢度係無'''$1'''響 $2 $3 嘅歸檔版本。",
 'filedelete-iscurrent'   => '你而家嘗試刪除呢個檔案嘅最近版本。請先將個檔打回頭做舊啲嘅版本先。',
 
 # MIME search
@@ -1159,7 +1161,7 @@ $2',
 'disambiguations-text' => "以下呢啲頁面連結去一個'''搞清楚頁'''。佢哋先至應該指去正確嘅主題。<br />如果一個頁面連結自[[MediaWiki:disambiguationspage]]，噉就會當佢係搞清楚頁。",
 
 'doubleredirects'     => '雙重跳轉',
-'doubleredirectstext' => '每一行包括指去第一個同第二個跳轉嘅連結，以及第二個跳轉嘅目標。呢行文字通常畀出咗第一個跳轉應該指去嘅嗰個「真正」嘅目標頁面',
+'doubleredirectstext' => '下面嘅跳轉連結到另一版跳轉:',
 
 'brokenredirects'        => '破碎嘅跳轉',
 'brokenredirectstext'    => '以下嘅跳轉係指向唔存在嘅頁面：',
@@ -1802,12 +1804,12 @@ $1',
 'tooltip-ca-nstab-template'       => '睇吓個模',
 'tooltip-ca-nstab-help'           => '睇吓幫助頁',
 'tooltip-ca-nstab-category'       => '睇吓分類頁',
-'tooltip-minoredit'               => '標為細嘅修訂[alt-i]',
-'tooltip-save'                    => '保存你嘅更改[alt-s]',
-'tooltip-preview'                 => '預覽你嘅修改，請喺保存之前先預覽一次先！[alt-p]',
-'tooltip-diff'                    => '顯示你對文章所作嘅修改[alt-v]',
-'tooltip-compareselectedversions' => '顯示該頁面兩個所選版本嘅唔同之處。[alt-v]',
-'tooltip-watch'                   => '將呢頁加到去你嘅監視清單度[alt-w]',
+'tooltip-minoredit'               => '標為細嘅修訂',
+'tooltip-save'                    => '保存你嘅更改',
+'tooltip-preview'                 => '預覽你嘅修改，請喺保存之前先預覽一次先！',
+'tooltip-diff'                    => '顯示你對文章所作嘅修改',
+'tooltip-compareselectedversions' => '顯示該頁面兩個所選版本嘅唔同之處。',
+'tooltip-watch'                   => '將呢頁加到去你嘅監視清單度',
 'tooltip-recreate'                => '即使已經刪除過都要重新整過呢頁',
 
 # Stylesheets

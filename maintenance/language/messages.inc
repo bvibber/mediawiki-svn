@@ -890,6 +890,7 @@ $wgMessageStructure = array(
 	),
 	'filerevert' => array(
 		'filerevert',
+		'filerevert-backlink',
 		'filerevert-legend',
 		'filerevert-intro',
 		'filerevert-comment',
@@ -900,6 +901,7 @@ $wgMessageStructure = array(
 	),
 	'filedelete' => array(
 		'filedelete',
+		'filedelete-backlink',
 		'filedelete-legend',
 		'filedelete-intro',
 		'filedelete-intro-old',
@@ -1556,6 +1558,7 @@ $wgMessageStructure = array(
 		'accesskey-diff',
 		'accesskey-compareselectedversions',
 		'accesskey-watch',
+		'accesskey-upload',
 	),
 	'tooltips' => array(
 		'tooltip-pt-userpage',
@@ -1615,6 +1618,7 @@ $wgMessageStructure = array(
 		'tooltip-compareselectedversions',
 		'tooltip-watch',
 		'tooltip-recreate',
+		'tooltip-upload',
 	),
 	'stylesheets' => array(
 		'common.css',

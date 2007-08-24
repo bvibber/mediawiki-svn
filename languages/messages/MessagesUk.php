@@ -86,7 +86,7 @@ $magicWords = array(
 #   ID                                 CASE  SYNONYMS
 	'redirect'               => array( 0,    '#REDIRECT', '#ПЕРЕНАПРАВЛЕННЯ', '#ПЕРЕНАПР'),
 	'notoc'                  => array( 0,    '__NOTOC__', '__БЕЗ_ЗМІСТУ__'),
-	'nogallery'  			 => array( 0,    '__NOGALLERY__', '__БЕЗ_ГАЛЕРЕЇ__'),
+	'nogallery'              => array( 0,    '__NOGALLERY__', '__БЕЗ_ГАЛЕРЕЇ__'),
 	'forcetoc'               => array( 0,    '__FORCETOC__',  '__ОБОВ_ЗМІСТ__'),
 	'toc'                    => array( 0,    '__TOC__', '__ЗМІСТ__'),
 	'noeditsection'          => array( 0,    '__NOEDITSECTION__', '__БЕЗ_РЕДАГУВ_РОЗДІЛУ__'),
@@ -117,7 +117,7 @@ $magicWords = array(
 	'pagename'               => array( 1,    'PAGENAME','НАЗВА_СТОРІНКИ'),
 	'pagenamee'              => array( 1,    'PAGENAMEE','НАЗВА_СТОРІНКИ_2'),
 	'namespace'              => array( 1,    'NAMESPACE','ПРОСТІР_ІМЕН'),
-	'namespacee'              => array( 1,    'NAMESPACEE','ПРОСТІР_ІМЕН_2'),
+	'namespacee'             => array( 1,    'NAMESPACEE','ПРОСТІР_ІМЕН_2'),
 	'talkspace'              => array( 1,    'TALKSPACE', 'ПРОСТІР_ОБГОВОРЕННЯ'),
 	'talkspacee'             => array( 1,    'TALKSPACEE', 'ПРОСТІР_ОБГОВОРЕННЯ_2'),
 	'subjectspace'           => array( 1,    'SUBJECTSPACE', 'ARTICLESPACE', 'ПРОСТІР_СТАТЕЙ' ),
@@ -164,7 +164,6 @@ $magicWords = array(
 	'revisionday2'           => array( 1,    'REVISIONDAY2' , 'ДЕНЬ_ВЕРСІЇ_2'),
 	'revisionmonth'          => array( 1,    'REVISIONMONTH' , 'МІСЯЦЬ_ВЕРСІЇ'),
 	'revisionyear'           => array( 1,    'REVISIONYEAR' , 'РІК_ВЕРСІЇ'),
-	'revisiontimestamp'      => array( 1,    'REVISIONTIMESTAMP'      ),
 	'plural'                 => array( 0,    'PLURAL:', 'МНОЖИНА:' ),
 	'fullurl'                => array( 0,    'FULLURL:', 'ПОВНА_АДРЕСА:' ),
 	'fullurle'               => array( 0,    'FULLURLE:', 'ПОВНА_АДРЕСА_2:' ),
@@ -178,7 +177,7 @@ $magicWords = array(
 	'newsectionlink'         => array( 1,    '__NEWSECTIONLINK__', '__ПОСИЛАННЯ_НА_НОВИЙ_РОЗДІЛ__' ),
 	'currentversion'         => array( 1,    'CURRENTVERSION' , 'ПОТОЧНА_ВЕРСІЯ' ),
 	'urlencode'              => array( 0,    'URLENCODE:' , 'ЗАКОДОВАНА_АДРЕСА:' ),
-	'anchorencode'                   => array( 0,    'ANCHORENCODE', 'КОДУВАТИ_МІТКУ'),
+	'anchorencode'           => array( 0,    'ANCHORENCODE', 'КОДУВАТИ_МІТКУ'),
 	'currenttimestamp'       => array( 1,    'CURRENTTIMESTAMP' , 'ШТАМП_ПОТОЧНОГО_ЧАСУ' ),
 	'localtimestamp'         => array( 1,    'LOCALTIMESTAMP' , 'ШТАМП_ЛОКОЛЬН_ЧАСУ'),
 	'directionmark'          => array( 1,    'DIRECTIONMARK', 'DIRMARK' , 'НАПРЯМОК_ПИСЬМА' ),
@@ -190,7 +189,7 @@ $magicWords = array(
 	'padleft'                => array( 0,    'PADLEFT', 'ЗАПОВНИТИ_ЛІВОРУЧ'),
 	'padright'               => array( 0,    'PADRIGHT', 'ЗАПОВНИТИ_ПРАВОРУЧ'),
 	'special'                => array( 0,    'special', 'спеціальна' ),
-	'defaultsort'           => array( 1,    'DEFAULTSORT:', 'СТАНДАРТНЕ_СОРТУВАННЯ'),
+	'defaultsort'            => array( 1,    'DEFAULTSORT:', 'СТАНДАРТНЕ_СОРТУВАННЯ'),
 );
 
 $linkTrail = '/^([a-zабвгґдеєжзиіїйклмнопрстуфхцчшщьєюяёъы“»]+)(.*)$/sDu';
@@ -1609,13 +1608,13 @@ $NEWPAGE
 'import-logentry-interwiki-detail' => '$1 версій з $2',
 
 # Tooltip help for the actions
-'tooltip-search'                  => 'Шукати [alt-f]',
-'tooltip-minoredit'               => 'Відмінити це редагування як незначне [alt-i]',
-'tooltip-save'                    => 'зберегти ваші редагування [alt-s]',
-'tooltip-preview'                 => 'Попередній перегляд сторінок, будь-ласка, використовуйте перед збереженням! [alt-p]',
-'tooltip-diff'                    => 'Показати зміни, що зроблені відносно початкового тексту. [alt-v]',
-'tooltip-compareselectedversions' => 'Переглянути різницю між двома вказаними версіями цієї сторінки. [alt-v]',
-'tooltip-watch'                   => 'Додати поточну сторінку в список спостереження [alt-w]',
+'tooltip-search'                  => 'Шукати',
+'tooltip-minoredit'               => 'Відмінити це редагування як незначне',
+'tooltip-save'                    => 'зберегти ваші редагування',
+'tooltip-preview'                 => 'Попередній перегляд сторінок, будь-ласка, використовуйте перед збереженням!',
+'tooltip-diff'                    => 'Показати зміни, що зроблені відносно початкового тексту.',
+'tooltip-compareselectedversions' => 'Переглянути різницю між двома вказаними версіями цієї сторінки.',
+'tooltip-watch'                   => 'Додати поточну сторінку в список спостереження',
 'tooltip-recreate'                => 'Відновити сторінку недивлячись на те, що її вилучено',
 
 # Stylesheets

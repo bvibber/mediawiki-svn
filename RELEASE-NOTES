@@ -180,6 +180,16 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Confirmation is now required when deleting old versions of files
 * (bug 7535) Users can now enter comments when deleting old versions of files
 * (bug 11001) Submit Special:Newpages as a GET, rather than a POST request
+* The <strong></strong> around links to watched pages in change lists now
+  has a class - "mw-watched"
+* (bug 9002) Provide a "view/restore deleted edits" link on Special:Upload
+  when a destination filename is provided that corresponds with previous
+  deleted files
+* Make the "invalid special page" message clearer
+* (bug 5206) Add accesskey ',' to 'preferences' navigationlink
+* Add accesskey 's' and tooltip to 'upload file' button at Special:Upload
+* Introduced 'SkinAfterBottomScripts' hook; see docs/hooks.txt for
+  more information
 
 == Bugfixes since 1.10 ==
 
@@ -390,6 +400,18 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 8737) Fix warnings caused by incorrect use of `/dev/null` when piping
   process error output under Windows
 * (bug 7890) Don't list redirects to special pages in Special:BrokenRedirects
+* (bug 10783) Resizing PNG-24 images with GD no longer causes all alpha
+  channel transparency to be lost and transparent pixels to be turned black
+* (bug 9339) General error pages were transforming messages and their parameters
+  in the wrong order
+* (bug 9026) Incorrect heading numbering when viewing Special:Statistics with
+  "auto-numbered headings" enabled
+* Fixed invalid XHTML in Special:Upload
+* (bug 11013) Make sure dl() is available before attempting to use it to check
+  available databases in installer
+* Resizing transparent GIF images with GD now retains transparency by skipping
+  resampling
+
 
 == API changes since 1.10 ==
 
@@ -486,6 +508,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Georgian (ka)
 * Kabyle (kab)
 * Kazakh (kk)
+* Korean (ko)
 * Kurdish (ku)
 * Latin (la)
 * Lao (lo)
