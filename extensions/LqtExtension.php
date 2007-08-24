@@ -128,7 +128,7 @@ class LqtView {
 	protected $title;
 	protected $request;
 	
-	protected $headerLevel = 1; 	/* h1, h2, h3, etc. */
+	protected $headerLevel = 2; 	/* h1, h2, h3, etc. */
 	protected $user_colors;
 	protected $user_color_index;
 	const number_of_user_colors = 6;
@@ -222,10 +222,10 @@ class LqtView {
 		return self::permalinkUrlWithQuery( $changed_thread, array('diff'=>$curr_rev_id, 'oldid'=>$prev_rev->getId()) );
 	}
 
-	static function talkpageUrl( $title, $method = null, $operand = null ) {
+	static function talkpageUrl( $title, $method = null, $operand = null, $includeFragment = true ) {
 		$query = $method ? "lqt_method=$method" : "";
 		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
-		return $title->getFullURL( $query );
+		return $title->getFullURL( $query ) . ($operand && $includeFragment ? "#lqt_thread_{$operand->id()}" : "");
 	}
 
 	/*************************************************************
@@ -311,13 +311,6 @@ HTML;
 //		$wgOut->setArticleRelated( false ); 
 		$this->output->setArticleFlag( false );
 
-		// I have lost track of where the redirect happens, so I can't set a flag there until I find it.
-		// In the meantime, just check if somewhere somebody redirected. I'm afraid this might have
-		// unwanted side-effects.
-		if ( $this->output->getRedirect() != '' ) {
-			$this->output->redirect( $this->title->getFullURL() );
-		}
-		
 		// For replies and new posts, insert the associated thread object into the DB.
 		if ($edit_type != 'editExisting' && $edit_type != 'summarize' && $e->didSave) {
 			if ( $edit_type == 'reply' ) {
@@ -343,6 +336,13 @@ HTML;
 			// this is unrelated to the subject change and is for all edits:
 			$thread->setRootRevision( Revision::newFromTitle($thread->root()->getTitle()) );
 			$thread->commitRevision( Threads::CHANGE_EDITED_ROOT, $thread, $e->summary );
+		}
+				
+		// I have lost track of where the redirect happens, so I can't set a flag there until I find it.
+		// In the meantime, just check if somewhere somebody redirected. I'm afraid this might have
+		// unwanted side-effects.
+		if ( $this->output->getRedirect() != '' ) {
+			$this->output->redirect( $this->title->getFullURL() . '#' . 'lqt_thread_' . $thread->id() );
 		}
 	}
 	
@@ -544,6 +544,8 @@ HTML;
 		$is_changed_thread = $thread->isHistorical() && $thread->changeObject() == $thread->id();
 		
 		$this->showThreadHeading( $thread );
+		
+		$this->output->addHTML( "<a name=\"lqt_thread_{$thread->id()}\" ></a>" );
 
 		if ($thread->type() == Threads::TYPE_MOVED) {
 			$revision = Revision::newFromTitle( $thread->title() );
