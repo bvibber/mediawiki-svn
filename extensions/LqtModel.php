@@ -208,7 +208,10 @@ class Thread {
 	}
 	
 	function atRevision($r) {
-		return HistoricalThread::withIdAtRevision($this->id(), $r);
+		if ( $r == $this->revisionNumber() )
+			return $this;
+		else
+			return HistoricalThread::withIdAtRevision($this->id(), $r);
 	}
 	
 	function historicalRevisions() {

@@ -1118,12 +1118,12 @@ class ThreadPermalinkView extends LqtView {
 /*		unset($content_actions['history']);
 		unset($content_actions['watch']);
 		unset($content_actions['move']);*/
-		if( array_key_exists( 'move', $content_actions ) ) {
+		if( array_key_exists( 'move', $content_actions ) && $this->thread ) {
 			$content_actions['move']['href'] =
 				SpecialPage::getPage('Movethread')->getTitle()->getFullURL() . '/' .
 				$this->thread->title()->getPrefixedURL();
 		}
-		if( array_key_exists( 'delete', $content_actions ) ) {
+		if( array_key_exists( 'delete', $content_actions ) && $this->thread ) {
 			$content_actions['delete']['href'] =
 				SpecialPage::getPage('Deletethread')->getTitle()->getFullURL() . '/' .
 				$this->thread->title()->getPrefixedURL();
