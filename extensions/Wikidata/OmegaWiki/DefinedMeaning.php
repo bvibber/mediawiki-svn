@@ -221,14 +221,21 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		return $html;
 	}
 	
-	/** 
-	 * @returns user interface html for copying Defined Meanings between
-		datasets
+	/** @returns user interface html for copying Defined Meanings
+	 * between datasets. returns an empty string if the user
+	 * actually doesn't have permission to edit.
 	 */
 	protected function getCopyPanel() {
 
 		# mostly same code as in SpecialAddCollection... possibly might 
 		# make a nice separate function 
+
+		global 
+			$wgUser;
+		if(!$wgUser->isAllowed('wikidata-copy')) {
+			return "";
+		}
+
 		$datasets=wdGetDatasets();
 		$datasetarray['']=wfMsgSc('ow_none_selected');
 		foreach($datasets as $datasetid=>$dataset) {

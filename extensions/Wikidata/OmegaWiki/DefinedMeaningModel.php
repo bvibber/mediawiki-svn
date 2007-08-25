@@ -231,9 +231,17 @@ class DefinedMeaningModel {
 	 * FIXME - work in progress
 	 */
 	public function saveWithinTransaction() {
-		#global
-		#	$wgTitle, $wgUser, $wgRequest;
+#		global
+# 			$wgTitle, $wgUser, $wgRequest;
 
+		global
+			$wgUser;
+
+		if(!$wgUser->isAllowed('wikidata-copy')) {
+ 			$wgOut->addWikiText(wfMsgSc("noedit",$dc->fetchName()));
+			$wgOut->setPageTitle(wfMsgSc("noedit_title"));
+ 			return false;
+ 		}
 		#$summary = $wgRequest->getText('summary');
 
 		
