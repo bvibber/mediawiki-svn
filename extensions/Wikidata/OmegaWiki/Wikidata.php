@@ -90,7 +90,7 @@ class DefaultWikidataApplication {
 	protected function getDataSetPanel() {
 		global $wgTitle, $wgUser;
 		$dc=wdGetDataSetContext();
-		$ow_datasets=wfMsg('ow_datasets');
+		$ow_datasets=wfMsgSc("datasets");
 		$html="<div class=\"dataset-panel\">";;
 		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_datasets</th></tr>";
 		$dataSets=wdGetDataSets();
@@ -154,8 +154,8 @@ class DefaultWikidataApplication {
 
 		$dc=wdGetDataSetContext();
  		if(!$wgUser->isAllowed('editwikidata-'.$dc)) {
- 			$wgOut->addWikiText(wfMsg('ow_noedit',$dc->fetchName()));
-			$wgOut->setPageTitle(wfMsg('ow_noedit_title'));
+ 			$wgOut->addWikiText(wfMsgSc("noedit",$dc->fetchName()));
+			$wgOut->setPageTitle(wfMsgSc("noedit_title"));
  			return false;
  		}
 
@@ -189,7 +189,7 @@ class DefaultWikidataApplication {
 		if (!$this->showClassicPageTitles) 
 			$title = $this->getTitle();
 
-		$wgOut->setPageTitle(wfMsg('ow_history',$title));
+		$wgOut->setPageTitle(wfMsgSc("history",$title));
 
 		# Plain filter for the lifespan info about each record
 		if (isset($_GET['show'])) {
@@ -240,7 +240,7 @@ class DefaultWikidataApplication {
 			$title = $this->getTitle();
 
 		$wgOut->setPageTitle($title);
-		$wgOut->setPageTitle(wfMsg('editing',$title));
+		$wgOut->setPageTitle(wfMsgSc("editing",$title));
 
 		$wgOut->addHTML(
 			'<form method="post" action="">' .
@@ -255,10 +255,10 @@ class DefaultWikidataApplication {
 		$wgOut->addHTML(
 			'<div class="option-panel">'.
 				'<table cellpadding="0" cellspacing="0"><tr>' .
-					'<th>' . wfMsg('summary') . ': </th>' .
+					'<th>' . wfMsgSc("summary") . ': </th>' .
 					'<td class="option-field">' . getTextBox("summary") .'</td>' .
 				'</tr></table>' .
-				getSubmitButton("save", wfMsg('ow_save')).
+				getSubmitButton("save", wfMsgSc("save")).
 			'</div>'
 		);
 		

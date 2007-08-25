@@ -80,7 +80,7 @@ function wfSpecialTransaction() {
 					'<div class="option-panel">'.
 						'<table cellpadding="0" cellspacing="0">' .
 							'<tr>' .
-								'<th>' . wfMsg('summary') . ': </th>' .
+								'<th>' . wfMsgSc("summary") . ': </th>' .
 								'<td class="option-field">' . getTextBox("summary") .'</td>' .
 							'</tr>' .
 							'<tr><th/><td>'. getSubmitButton("roll-back", "Roll back") .'</td></tr>'.

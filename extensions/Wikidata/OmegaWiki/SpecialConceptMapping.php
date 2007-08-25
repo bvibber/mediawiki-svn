@@ -55,8 +55,8 @@ function wfSpecialConceptMapping() {
 			} elseif ($action=="get_associated"){
 				$this->get_associated();
 			} else {
-				$wgOut->addWikiText(wfMsg('ow_conceptmapping_no_action_specified',$action));	
-				$wgOut->addWikiText(wfMsg('ow_conceptmapping_help'));
+				$wgOut->addWikiText(wfMsgSc("conceptmapping_no_action_specified",$action));	
+				$wgOut->addWikiText(wfMsgSc("conceptmapping_help"));
 			}
 		}
 
@@ -65,7 +65,7 @@ function wfSpecialConceptMapping() {
 			global $wgOut, $wgRequest, $wgUser;
 			$lang=$wgUser->getOption("language");
 			require_once("forms.php");			
-			$wgOut->addHTML(wfMsg('ow_conceptmapping_uitext'));
+			$wgOut->addHTML(wfMsgSc("conceptmapping_uitext"));
 			$sets=wdGetDataSets();
 			$options = array();
 			$html="";
@@ -92,7 +92,7 @@ function wfSpecialConceptMapping() {
 			foreach ($sets as $key=>$setObject) {
 				$set=$setObject->getPrefix();
 				if(!$rq[$set]) {
-					$wgOut->addHTML(' <span style="color:yellow">['.wfMsg('ow_dm_not_present').']</span>');
+					$wgOut->addHTML(' <span style="color:yellow">['.wfMsgSc("dm_not_present").']</span>');
 				} else  {
 					$dmModel=new DefinedMeaningModel($rq[$set],null,$setObject);
 					$dmModel->checkExistence();
@@ -109,11 +109,11 @@ function wfSpecialConceptMapping() {
 					if ($id!=null) {
 						$mappings[$key]=$id;
 						if(!$noerror) {
-							$wgOut->addHTML(' <span style="color:green">['.wfMsg('ow_dm_OK').']</span>');
+							$wgOut->addHTML(' <span style="color:green">['.wfMsgSc("dm_OK").']</span>');
 						}
 					} else {
 						if(!$noerror) {
-							$wgOut->addHTML(' <span style="color:red">['.wfMsg('ow_dm_not_found').']</span>');
+							$wgOut->addHTML(' <span style="color:red">['.wfMsgSc("dm_not_found").']</span>');
 						}
 					}
 				}
@@ -121,9 +121,9 @@ function wfSpecialConceptMapping() {
 			}
 			if (sizeOf($mappings)>1) { 
 				createConceptMapping($mappings);
-				$wgOut->addHTML(wfMsg('ow_mapping_successful'));
+				$wgOut->addHTML(wfMsgSc("mapping_successful"));
 			} else {
-				$wgOut->addHTML(wfMsg('ow_mapping_unsuccessful'));
+				$wgOut->addHTML(wfMsgSc("mapping_unsuccessful"));
 			}
 
 		}
@@ -140,7 +140,7 @@ function wfSpecialConceptMapping() {
 		protected function help() {
 			global $wgOut;
 			$wgOut->addWikiText("<h2>Help</h2>");
-			$wgOut->addWikiText(wfMsg('ow_conceptmapping_help'));
+			$wgOut->addWikiText(wfMsgSc("conceptmapping_help"));
 		}
 		
 		protected function insert() {
@@ -150,7 +150,7 @@ function wfSpecialConceptMapping() {
 			# $wgRequest->getText( 'page' );
 			$sets=wdGetDataSets();
 			#$requests=$wgRequest->getValues();
-			$wgOut->addWikiText("<h2>".wfMsg('ow_will_insert')."</h2>");
+			$wgOut->addWikiText("<h2>".wfMsgSc("will_insert")."</h2>");
 			$map=array();
 			foreach ($sets as $key => $set) {
 				$dc=$set->getPrefix();
@@ -171,7 +171,7 @@ function wfSpecialConceptMapping() {
 			global 
 				$wgOut, $wgRequest;
 			$concept_id=$wgRequest->getText("concept");
-			$wgOut->addWikiText("<h2>".wfMsg('ow_contents_of_mapping')."</h2>");
+			$wgOut->addWikiText("<h2>".wfMsgSc("contents_of_mapping")."</h2>");
 			$map=readConceptMapping($concept_id);
 			#$sets=wdGetDataSets();
 
@@ -182,7 +182,7 @@ function wfSpecialConceptMapping() {
 
 		protected function list_sets() {
 			global $wgOut;
-			$wgOut->addWikiText("<h2>".wfMsg('available contexts')."</h2>");
+			$wgOut->addWikiText("<h2>".wfMsgSc("available contexts")."</h2>");
 			$sets=wdGetDataSets();
 			foreach ($sets as $key => $set) {
 				$name=$set->fetchName();

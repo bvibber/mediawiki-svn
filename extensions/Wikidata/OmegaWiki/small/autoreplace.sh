@@ -1,5 +1,5 @@
 #!/bin/bash
 export myfile=$1; 
 
-small/wfMsg.pl $myfile > $myfile.new && 
+perl -pe "s/wfMsg_sc/wfMsgSc/g"  $myfile > $myfile.new && 
 	mv $myfile.new $myfile

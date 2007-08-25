@@ -188,7 +188,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$active=true; # wrong place, but hey
 		$dmId=$this->getDefinedMeaningId();
 		$dc=wdGetDataSetContext();
-		$ow_conceptpanel=wfMsg_sc("concept_panel");
+		$ow_conceptpanel=wfMsgSc("concept_panel");
 
 		$html="<div class=\"dataset-panel\">";;
 		$html.="<table border=\"0\"><tr><th class=\"dataset-panel-heading\">$ow_conceptpanel</th></tr>";
@@ -211,7 +211,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		}
 		$cmtitle=Title::newFromText("Special:ConceptMapping");
 		$titleText=$wgTitle->getPrefixedURL();
-		$cmlink=$sk->makeLinkObj($cmtitle,"<small>".wfMsg_sc("add_concept_link")."</small>","set_$dc=$dmId&suppressWarnings=true");
+		$cmlink=$sk->makeLinkObj($cmtitle,"<small>".wfMsgSc("add_concept_link")."</small>","set_$dc=$dmId&suppressWarnings=true");
 		$html.="<tr><td>$cmlink</td></tr>\n";
 		if($wdShowCopyPanel) {
 			$html.="<tr><td>".$this->getCopyPanel()."<td><tr>";
@@ -230,7 +230,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		# mostly same code as in SpecialAddCollection... possibly might 
 		# make a nice separate function 
 		$datasets=wdGetDatasets();
-		$datasetarray['']=wfMsg('ow_none_selected');
+		$datasetarray['']=wfMsgSc('ow_none_selected');
 		foreach($datasets as $datasetid=>$dataset) {
 			$datasetarray[$datasetid]=$dataset->fetchName();
 		}

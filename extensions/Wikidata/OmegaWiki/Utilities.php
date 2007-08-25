@@ -11,7 +11,7 @@ function implodeFixed($values, $separator = ", ", $prefix = '"', $suffix = '"') 
 }
 
 
-function wfMsg_sc($message) {
+function wfMsgSc($message) {
 	$args=func_get_args();
 	array_shift($args);
 	global 
