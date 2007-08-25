@@ -9,7 +9,7 @@
  
 class SpecialContributors extends IncludableSpecialPage {
 
-	private $target;
+	protected $target;
 
 	public function __construct() {
 		parent::__construct( 'Contributors' );
@@ -114,7 +114,7 @@ class SpecialContributors extends IncludableSpecialPage {
 	 *
 	 * @return array
 	 */
-	private function getMainContributors() {
+	protected function getMainContributors() {
 		wfProfileIn( __METHOD__ );
 		global $wgContributorsLimit, $wgContributorsThreshold;
 		$total = 0;
@@ -137,7 +137,7 @@ class SpecialContributors extends IncludableSpecialPage {
 	 *
 	 * @return array
 	 */
-	private function getContributors() {
+	protected function getContributors() {
 		wfProfileIn( __METHOD__ );
 		global $wgMemc;
 		$k = wfMemcKey( 'contributors', $this->target->getArticleId() );
@@ -174,7 +174,7 @@ class SpecialContributors extends IncludableSpecialPage {
 	 *
 	 * @return array
 	 */
-	private function getConditions() {
+	protected function getConditions() {
 		global $wgVersion;
 		$conds['rev_page'] = $this->target->getArticleId();
 		if( version_compare( $wgVersion, '1.11alpha', '>=' ) )
