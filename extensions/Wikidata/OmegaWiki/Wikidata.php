@@ -4,6 +4,7 @@ require_once("forms.php");
 require_once("Transaction.php");
 require_once("OmegaWikiAttributes.php");
 require_once("WikiDataAPI.php");
+require_once("Utilities.php");
 
 class DefaultWikidataApplication {
 	protected $showRecordLifeSpan;

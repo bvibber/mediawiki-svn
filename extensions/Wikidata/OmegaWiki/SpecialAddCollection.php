@@ -2,6 +2,7 @@
 	if (!defined('MEDIAWIKI')) die();
 
 	require_once("WikiDataAPI.php"); // for bootstrapCollection
+	require_once("Utilities.php"); 
 	
 	$wgAvailableRights[] = 'addcollection';
 	$wgGroupPermissions['bureaucrat']['addcollection'] = true;

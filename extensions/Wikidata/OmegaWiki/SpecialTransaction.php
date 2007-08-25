@@ -4,6 +4,7 @@ if (!defined('MEDIAWIKI')) die();
 
 $wgExtensionFunctions[] = 'wfSpecialTransaction';
 require_once("Wikidata.php");
+require_once("Utilities.php");
 
 
 function wfSpecialTransaction() {

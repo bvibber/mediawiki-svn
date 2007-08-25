@@ -1,5 +1,9 @@
 <?php
 
+global 
+	$wdSiteContext;
+$wdSiteContext="ow";
+
 $wgDefaultGoPrefix='Expression:';
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
 $wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail';
@@ -21,7 +25,7 @@ $wdTermDBDataSet='uw';
 # It _must_ exist for the Wikidata application to be executed 
 # successfully.
 $wdDefaultViewDataSet='uw';
-$wdShowCopyPanel=false;
+$wdShowCopyPanel=true;
 
 $wdGroupDefaultView=array();
 # Here you can set group defaults.
@@ -117,55 +121,58 @@ function initializeWikidata() {
 			'ow_concept_panel'=>'Concept Panel',
 			'ow_dm_badtitle'=>'This page does not point to any DefinedMeaning (concept). Please check the web address.',
 			'ow_dm_missing'=>'This page seems to point to a non-existent DefinedMeaning (concept). Please check the web address.',
-			
-			"Attribute" => "Property",
-			"AlternativeDefinition" => "Alternative definition",
-			"AlternativeDefinitions" => "Alternative definitions",	
-			"Annotation" => "Annotation",
-			"ApproximateMeanings" => "Approximate meanings",	
-			"ClassAttributeAttribute" => "Attribute",
-			"ClassAttributes" => "Class attributes",
-			"ClassAttributeLevel" => "Level",
-			"ClassAttributeType" => "Type",
-			"ClassMembership" => "Class membership",
-			"Collection" => "Collection",
-			"CollectionMembership" => "Collection membership",
-			"Definition" => "Definition",
-			"DefinedMeaningAttributes" => "Annotation",
-			"DefinedMeaning" => "Defined meaning",
-			"DefinedMeaningReference" => "Defined meaning",
-			"ExactMeanings" => "Exact meanings",
-			"Expression" => "Expression",
-	        "ExpressionMeanings" => "Expression meanings",
-			"Expressions" => "Expressions",
-			"IdenticalMeaning" => "Identical meaning?",
-			"IncomingRelations" => "Incoming relations",
-			"GotoSource" => "Go to source",
-			"language" => "Language",
-			"LevelAnnotation" => "Annotation",
-			"OptionAttributeOption" => "Option",
-			"OptionAttributeOptions" => "Options",
-			"OptionAttributeValues" => "Option properties",
-			"OtherDefinedMeaning" => "Other defined meaning",
-			"PopupAnnotation" => "Annotation",
-			"PossibleSynonym" => "Possible synonym",
-			"PossiblySynonymous" => "Possibly synonymous",
-			"Relations" => "Relations",
-			"RelationType" => "Relation type",
-			"spelling" => "Spelling",
-			"Synonyms" => "Synonyms", 
-			"SynonymsAndTranslations" => "Synonyms and translations",
-			"Source" => "Source",
-			"SourceIdentifier" => "Source identifier",
-			"text" => "Text",
-			"TextAttributeValues" => "String properties",
-			"TranslatedTextAttribute" => "Property",
-			"TranslatedText" => "Translated text",
-			"TranslatedTextAttributeValue" => "Text",
-			"TranslatedTextAttributeValues" => "Text properties",
-			"LinkAttributeValues" => "Links"
+		"ow_AlternativeDefinition" => "Alternative definition",
+		"ow_AlternativeDefinitions" => "Alternative definitions",	
+		"ow_Annotation" => "Annotation",
+		"ow_ApproximateMeanings" => "Approximate meanings",	
+		"ow_ClassAttributeAttribute" => "Attribute",
+		"ow_ClassAttributes" => "Class attributes",
+		"ow_ClassAttributeLevel" => "Level",
+		"ow_ClassAttributeType" => "Type",
+		"ow_ClassMembership" => "Class membership",
+		"ow_Collection" => "Collection",
+		"ow_CollectionMembership" => "Collection membership",
+		"ow_Definition" => "Definition",
+		"ow_DefinedMeaningAttributes" => "Annotation",
+		"ow_DefinedMeaning" => "Defined meaning",
+		"ow_DefinedMeaningReference" => "Defined meaning",
+		"ow_ExactMeanings" => "Exact meanings",
+		"ow_Expression" => "Expression",
+                "ow_ExpressionMeanings" => "Expression meanings",
+		"ow_Expressions" => "Expressions",
+		"ow_IdenticalMeaning" => "Identical meaning?",
+		"ow_IncomingRelations" => "Incoming relations",
+		"ow_GotoSource" => "Go to source",
+		"ow_Language" => "Language",
+		"ow_LevelAnnotation" => "Annotation",
+		"ow_OptionAttribute" => "Property",
+		"ow_OptionAttributeOption" => "Option",
+		"ow_OptionAttributeOptions" => "Options",
+		"ow_OptionAttributeValues" => "Option properties",
+		"ow_OtherDefinedMeaning" => "Other defined meaning",
+		"ow_PopupAnnotation" => "Annotation",
+		"ow_PossibleSynonym" => "Possible synonym",
+		"ow_PossiblySynonymous" => "Possibly synonymous",
+		"ow_Relations" => "Relations",
+		"ow_RelationType" => "Relation type",
+		"ow_Spelling" => "Spelling",
+		"ow_Synonyms" => "Synonyms", 
+		"ow_SynonymsAndTranslations" => "Synonyms and translations",
+		"ow_Source" => "Source",
+		"ow_SourceIdentifier" => "Source identifier",
+		"ow_TextAttribute" => "Property",
+		"ow_Text" => "Text",
+		"ow_TextAttributeValues" => "String properties",
+		"ow_TranslatedTextAttribute" => "Property",
+		"ow_TranslatedText" => "Translated text",
+		"ow_TranslatedTextAttributeValue" => "Text",
+		"ow_TranslatedTextAttributeValues" => "Text properties",
+		"ow_LinkAttribute" => "Property",
+		"ow_LinkAttributeValues" => "Links"
+
 		)
 	);
+
 
 	$datasets=wdGetDatasets();
 	$datasetarray['']=wfMsgHtml('ow_none_selected');
@@ -180,6 +187,10 @@ function initializeWikidata() {
 	'options'=>$datasetarray
 	);
 	
+	global 
+		$messageCacheOK;
+	$messageCacheOK=True;
+
 	return true;
 }
 

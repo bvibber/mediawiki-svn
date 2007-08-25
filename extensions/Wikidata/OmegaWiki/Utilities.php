@@ -15,8 +15,8 @@ function wfMsg_sc($message) {
 	$args=func_get_args();
 	array_shift($args);
 	global 
-		$SiteContext;
-	return wfMsgReal("${SiteContext}_${message}", $args, true);
+		$wdSiteContext;
+	return wfMsgReal("${wdSiteContext}_${message}", $args, true);
 }
 
 
