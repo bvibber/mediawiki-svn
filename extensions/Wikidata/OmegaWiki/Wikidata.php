@@ -82,7 +82,7 @@ class DefaultWikidataApplication {
 		
 		$this->viewInformation = $viewInformation;
 
-		initializeOmegaWikiAttributes($viewInformation);	
+		initializeOmegaWikiAttributes($viewInformation);
 		initializeObjectAttributeEditors($viewInformation);		
 	}
 	
@@ -297,9 +297,9 @@ function wdGetDataSetContext($dc=null) {
 
 	# overrides
 	if (!is_null($dc)) 
-		return $dc; 
+		return $dc; #local override
 	if (!is_null($wdCurrentContext))
-		return $wdCurrentContext;
+		return $wdCurrentContext; #global override
 		
 	$datasets=wdGetDataSets();
 	$groups=$wgUser->getGroups();

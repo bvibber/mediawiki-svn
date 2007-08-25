@@ -1,4 +1,5 @@
 <?php
+require_once("Wikidata.php");
 
 function implodeFixed($values, $separator = ", ", $prefix = '"', $suffix = '"') {
 	$result = $prefix . $values[0] . $suffix;
@@ -8,5 +9,15 @@ function implodeFixed($values, $separator = ", ", $prefix = '"', $suffix = '"') 
 		
 	return $result;
 }
+
+
+function wfMsg_sc($message) {
+	$args=func_get_args();
+	array_shift($args);
+	global 
+		$SiteContext;
+	return wfMsgReal("${SiteContext}_${message}", $args, true);
+}
+
 
 ?>

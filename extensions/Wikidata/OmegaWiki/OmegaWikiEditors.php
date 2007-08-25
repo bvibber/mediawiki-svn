@@ -180,7 +180,7 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 
 function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 
-	$o=OmegaWikiAttributes::getInstance();
+	$o=OmegaWikiAttributes::getInstance($viewInformation);
 	global
 
 		$textValueObjectAttributesEditors, 

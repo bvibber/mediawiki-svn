@@ -18,17 +18,13 @@ require_once("ViewInformation.php");
  * merging here.
  *
  * TODO:
- * - The current model of a ton of hardcoded globals is highly inadequate
- * and should be replaced with a more abstract schema description. 
- *	-replacing with a single associative array.
- * - Attribute names are in WikidataGlobals.php, but should really be 
- * localizable through MediaWiki's wfMsg() function.
- * 	-this is step 2
  * - Records and RecordSets are currently capable of storing most (not all)
  * data, but can't actually commit them to the database again. To achieve
  * proper separation of architectural layers, the Records should learn
  * to talk directly with the DB layer.
- *	-this is what RecordHelpers are for.
+ # - This is not a pure singleton, because it relies on the existence of
+ #   of viewInformation, and a message cache. We now defer lookups in these
+ #   to as late as possible, to make sure these items are actually initialized.
  */
 function initializeOmegaWikiAttributes(ViewInformation $viewInformation){
 	$init_and_discard_this= OmegaWikiAttributes::getInstance($viewInformation); 
@@ -52,10 +48,39 @@ class OmegaWikiAttributes {
 		return $instance["last"];
 	}
 
+
 	protected $attributes = array();
+	protected $setup_completed=False;
+	protected $in_setup=False; # for use by functions doing the setup itself (currently hardValues) 
+	protected $viewInformation=null;
 
 	function __construct(ViewInformation $viewInformation) {
-		$this->hardValues($viewInformation);
+		$this->setup($viewInformation);
+	}
+
+	protected function setup(ViewInformation $viewInformation=null) {
+		if ($this->in_setup or $this->setup_completed)
+			return True;	
+
+		if (!is_null($viewInformation)) {
+			$this->viewInformation=$viewInformation;
+		}
+		$viewInformation=$this->viewInformation;
+
+		if (!is_null($viewInformation)) {
+			global $messageCacheOK;
+			var_dump($messageCacheOK);
+			if (!$messageCacheOK) {
+				#We're not ready to do this yet!
+				return False; #so we get out, but with viewinfo cached
+			}
+			if (!$this->setup_completed) {
+				$this->hardValues($viewInformation);
+			}
+			$this->setup_completed=True;
+			return True;
+		}
+		return False;
 	}
 
 	/** Hardcoded schema for now. Later refactor to load from file or DB 
@@ -63,10 +88,12 @@ class OmegaWikiAttributes {
 	 * Naming: keys are previous name minus -"Attribute"
 	 * 	(-"Structure" is retained, -"Attributes" is retained)
 	*/
-	private function hardValues($viewInformation) {
+	private function hardValues(viewInformation $viewInformation) {
 	
+		assert (!is_null($viewInformation));
 		$t=$this; #<-keep things short to declutter
 	
+		$t->in_setup=True;
 		$t->language = new Attribute("language", wfMsg("Language"), "language");
 		$t->spelling = new Attribute("spelling", wfMsg("Spelling"), "spelling");
 		$t->text = new Attribute("text", wfMsg("Text"), "text");
@@ -261,14 +288,19 @@ class OmegaWikiAttributes {
 			foreach ($t->annotatedAttributes as $annotatedAttribute) 		
 				$annotatedAttribute->type->addAttribute($attribute);
 		}
+		$t->in_setup=False;
 	}
 
 	protected function __set($key,$value) {
+		if (!$this->setup()) 
+			throw new Exception("OmegaWikiAttributes accessed, but was not properly initialized");
 		$attributes=&$this->attributes;
 		$attributes[$key]=$value;
 	}
 	
 	public function __get($key) {
+		if (!$this->setup()) 
+			throw new Exception("OmegaWikiAttributes accessed, but was not properly initialized");
 		$attributes=&$this->attributes;
 		if (!array_key_exists($key, $attributes)) {
 			throw new Exception("Key does not exist: " . $key);

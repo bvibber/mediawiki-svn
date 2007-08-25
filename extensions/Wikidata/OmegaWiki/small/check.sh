@@ -1,6 +1,6 @@
 #!/bin/bash
 export myfile=$1; 
 
-small/ra3.pl $myfile 		|
+small/wfMsg.pl $myfile 		|
 	diff -dy $myfile - 	| 
 	less
