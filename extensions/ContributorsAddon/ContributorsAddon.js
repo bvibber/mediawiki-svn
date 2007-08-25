@@ -8,8 +8,8 @@
 */
 
 function setupContributionsAddon() {
-	var contributorsLink = document.getElementById('t-contributors').firstChild;
-	if (contributorsLink != null) {
+	if (document.getElementById('t-contributors')) {
+		var contributorsLink = document.getElementById('t-contributors').firstChild;
 		contributorsLink.onmouseover = showContributors;
 		contributorsLink.onmouseout = hideContributors;
 		var cDiv = document.createElement('div');
