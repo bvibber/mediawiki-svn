@@ -35,7 +35,7 @@ print """
 store = shelve.open('baselines')
 
 if 'action' not in form:
-	if 'sample' in form:
+	if 'sample' in form and authed:
 		del store[form['sample']]
 elif form['action'] == 'clear' and authed:
 	from socket import *
