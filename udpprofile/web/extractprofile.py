@@ -7,12 +7,14 @@
 
 import sys
 import os
+import socket
 
 import xml.sax
 from xml.sax import saxutils
 from xml.sax import make_parser
 from xml.sax.handler import feature_namespaces
 
+# XML SAX parser class, puts stuff into some array!
 class ExtractProfile(xml.sax.handler.ContentHandler):
 	def __init__(self):
 		self.parser=make_parser()
@@ -60,6 +62,20 @@ class ExtractProfile(xml.sax.handler.ContentHandler):
 		self.inContent=0
 		self.parser.parse(file)
 		return self.profile
+		
+class SocketProfile:
+	def __init__(self,host='localhost',port=3811):
+		self.sock=SocketSource()
+		self.sock.connect((host,port))
+		
+	def extract(self):
+		return ExtractProfile().extract(self.sock)
+		
+class SocketSource (socket.socket):
+	"""Stub class for extending socket object to support file source mechanics"""
+	def read(self,what):
+		"""Alias recv to read, missing in socket.socket"""
+		return self.recv(what,0)
 
 if __name__ == '__main__':
         print "\nNot a valid entry point"
