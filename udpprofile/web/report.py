@@ -168,20 +168,25 @@ for event in events:
 	onereal=event["onereal"]
 	
 	if old:
-		oldcount=float(old["count"])/oldtotal["count"]
-		countdiff = (callcount-oldcount)/oldcount
+		try:
+			oldcount=float(old["count"])/oldtotal["count"]
+			countdiff = (callcount-oldcount)/oldcount
 		
-		oldcpupct = old["cpu"]/oldtotal["cpu"]
-		cpupctdiff = (cpupct-oldcpupct)/oldcpupct
+			oldcpupct = old["cpu"]/oldtotal["cpu"]
+			cpupctdiff = (cpupct-oldcpupct)/oldcpupct
 		
-		onecpudiff = ( onecpu - old["onecpu"] ) / old["onecpu"]
+			onecpudiff = ( onecpu - old["onecpu"] ) / old["onecpu"]
 		
-		oldrealpct = old["real"]/oldtotal["real"]
-		realpctdiff = (realpct-oldrealpct)/oldrealpct
+			oldrealpct = old["real"]/oldtotal["real"]
+			realpctdiff = (realpct-oldrealpct)/oldrealpct
 		
-		o=old["onereal"]
-		onerealdiff = ( onereal - old["onereal"] ) / old["onereal"]
-		
+			onerealdiff = ( onereal - old["onereal"] ) / old["onereal"]
+		except ZeroDivisionError:
+			countdiff=0
+			cpupctdiff=0
+			onecpudiff=0
+			realpctdiff=0
+			onerealdiff=0
 	else:
 		countdiff=0
 		cpupctdiff=0
