@@ -118,7 +118,7 @@ function initializeWikidata() {
 			'ow_will_insert'=>"Will insert the following:",
 			'ow_contents_of_mapping'=>'Contents of mapping',
 			'ow_available_contexts'=>'Available contexts',
-			'add_concept_link'=>'Add link to other concepts',
+			'ow_add_concept_link'=>'Add link to other concepts',
 			'ow_concept_panel'=>'Concept Panel',
 			'ow_dm_badtitle'=>'This page does not point to any DefinedMeaning (concept). Please check the web address.',
 			'ow_dm_missing'=>'This page seems to point to a non-existent DefinedMeaning (concept). Please check the web address.',
@@ -170,7 +170,6 @@ function initializeWikidata() {
 		"ow_TranslatedTextAttributeValues" => "Text properties",
 		"ow_LinkAttribute" => "Property",
 		"ow_LinkAttributeValues" => "Links"
-
 		)
 	);
 

@@ -237,7 +237,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		}
 
 		$datasets=wdGetDatasets();
-		$datasetarray['']=wfMsgSc('ow_none_selected');
+		$datasetarray['']=wfMsgSc('none_selected');
 		foreach($datasets as $datasetid=>$dataset) {
 			$datasetarray[$datasetid]=$dataset->fetchName();
 		}
