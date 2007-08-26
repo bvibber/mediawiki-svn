@@ -1,4 +1,8 @@
 <?php
+/** \file
+* \brief Contains setup code for the Password Reset Extension.
+*/
+
 # Not a valid entry point, skip unless MEDIAWIKI is defined
 if (!defined('MEDIAWIKI')) {
         echo "Password Reset extension";
@@ -8,9 +12,9 @@ if (!defined('MEDIAWIKI')) {
 $wgExtensionCredits['specialpage'][] = array(
     'name'=>'Password Reset',
     'url'=>'http://www.mediawiki.org/wiki/Extension:Password_Reset',
-    'author'=>'Tim Laqua, t.laqua at gmail dot com',
+    'author'=>'Tim Laqua',
     'description'=>"Resets Wiki user's passwords - requires 'userrights' privileges",
-    'version'=>'1.0'
+    'version'=>'1.1'
 );
  
 $wgAutoloadClasses['PasswordReset'] = dirname(__FILE__) . '/PasswordReset_body.php';
