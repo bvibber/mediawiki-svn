@@ -24,8 +24,8 @@ function setupContributionsAddon() {
 }
 
 function showContributors() {
-	var contributorsDiv = document.getElementById('contributorsDiv');
-	if (contributorsDiv != null) {
+	if (document.getElementById('contributorsDiv')) {
+		var contributorsDiv = document.getElementById('contributorsDiv');
 		contributorsDiv.className = 'contributorsDivShow pBody';
 		var arrCoords = findPos(document.getElementById('t-contributors'));
 		contributorsDiv.style.top = (arrCoords[1]-5) + 'px';
@@ -34,8 +34,8 @@ function showContributors() {
 }
 
 function hideContributors() {
-	var contributorsDiv = document.getElementById('contributorsDiv');
-	if (contributorsDiv != null) {
+	if (document.getElementById('contributorsDiv')) {
+		var contributorsDiv = document.getElementById('contributorsDiv');
 		contributorsDiv.className = 'contributorsDivHide';
 	}
 }
