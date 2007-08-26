@@ -28,6 +28,9 @@ function showContributors() {
 		var contributorsDiv = document.getElementById('contributorsDiv');
 		contributorsDiv.className = 'contributorsDivShow pBody';
 		var arrCoords = findPos(document.getElementById('t-contributors'));
+		var arrFooterPos = findPos(document.getElementById('footer'));
+		if (arrCoords[1] + contributorsDiv.clientHeight > arrFooterPos[1])
+			arrCoords[1] = arrFooterPos[1] - contributorsDiv.clientHeight;
 		contributorsDiv.style.top = (arrCoords[1]-5) + 'px';
 		contributorsDiv.style.left = (arrCoords[0]+40) + 'px';
 	}
