@@ -129,8 +129,16 @@ class HistoricalThread extends Thread {
 	static function fromTextRepresentation($r) {
 		return unserialize($r);
 	}
-	static function create( $t ) {
-		$tmt = $t->topmostThread();
+	private static function setChangeOnDescendents($thread, $change_type, $change_object) {
+		$thread->setChangeType($change_type);
+		$thread->setChangeObject($change_object);
+		foreach($thread->replies() as $r)
+			self::setChangeOnDescendents($r, $change_type, $change_object);
+		return $thread;
+	}
+	static function create( $t, $change_type, $change_object ) {
+		$tmt_tmp = $t->topmostThread();
+		$tmt = self::setChangeOnDescendents( $tmt_tmp, $change_type, $change_object );
 		$contents = HistoricalThread::textRepresentation($tmt);
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->insert( 'historical_thread', array(
@@ -262,7 +270,7 @@ class Thread {
 		$this->changeUserText = $wgUser->getName();
 		
 		// TODO open a transaction.
-		HistoricalThread::create( $this->double );
+		HistoricalThread::create( $this->double, $change_type, $change_object );
 
 		$this->bumpRevisionsOnAncestors($change_type, $change_object);
 		
@@ -437,6 +445,9 @@ class Thread {
 		} else {
 			return false;
 		}
+	}
+	function replies() {
+		return $this->replies;
 	}
 
 	function setSuperthread($thread) {

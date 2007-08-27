@@ -12,6 +12,15 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( -1 );
 }
 
+function efVarDump($output, $value) {
+	ob_start();
+	var_dump($value);
+	$tmp=ob_get_contents();
+	ob_end_clean();
+	$output->addHTML('<pre>' . htmlspecialchars($tmp,ENT_QUOTES) . '</pre>');
+}
+
+
 require_once('LqtModel.php');
 require_once('Pager.php');
 require_once('PageHistory.php');
@@ -541,10 +550,16 @@ HTML;
 	function showThread( $thread ) {
 		global $wgLang; # TODO global.
 		
-		$is_changed_thread = $thread->isHistorical() && $thread->changeObject() == $thread->id();
+		$is_changed_thread = $thread->isHistorical() && $thread->changeObject()->id() == $thread->id();
 		
 		$this->showThreadHeading( $thread );
 		
+		
+		
+/*		efVarDump($this->output, $thread->isHistorical());
+		efVarDump($this->output, $thread->id());
+		efVarDump($this->output, $thread->changeObject()->id());
+*/		
 		$this->output->addHTML( "<a name=\"lqt_thread_{$thread->id()}\" ></a>" );
 
 		if ($thread->type() == Threads::TYPE_MOVED) {
