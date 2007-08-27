@@ -15,6 +15,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 	$wgExtensionFunctions[] = 'efContributorsAddon';
 	$wgExtensionCredits['other'][] = array(
 		'name' => 'ContributorsAddon',
+		'url' => 'http://www.mediawiki.org/wiki/Extension:ContributorsAddon',
 		'author' => 'Tim Laqua',
 		'description' => 'Adds JS onMouseOver popups to "Main Contributors" links',
 	);
