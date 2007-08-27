@@ -20,6 +20,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount'  =>  'Cet utilisateur a $1 éditions.',
 ),
 
+'nl' => array(
+	'contributionseditcount'  =>  'Deze gebruiker heeft $1 bewerkingen.',
+),
+
 );
 	return $messages;
 }

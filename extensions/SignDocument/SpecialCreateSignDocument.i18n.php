@@ -33,6 +33,43 @@ all fields exactly as they should be, ''before submitting this form''.",
 		'createsigndoc-error-pagenoexist' => 'Error: The page [[$1]] does not exist.',
 		'createsigndoc-success'      => 'Document signing has been successfully enabled
 on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
-	)
+	),
+	'nl' => array( 
+		'createsigndocument'         => 'Documentondertekening inschakelen',
+		'createsigndoc-head'         => 
+"Gebruik dit formulier om een pagina 'Document ondertekenen' voor een gegeven
+pagina te maken, zodat gebruikers het kunnen ondertekenen via
+[[Special:SignDocument]]. Geef alstublieft op voor welke pagina u digitaal
+ondertekenen wilt inschakelen, welke gebruikersgroepen kunnen ondertekeken,
+welke velden zichtbaar moeten zijn voor gebruikers en welke optioneel zijn,
+een minimale leeftijd waaraan gebruikers moeten voldoen alvorens te kunnen
+ondertekenen (geen beperkingen als leeg gelaten), en een korte inleidende
+tekst over het document en instructies voor de gebruikers.
+
+<b>Er is op het moment geen mogelijkheid om te ondertekenen documenten te
+verwijderen of te wijzigen nadat ze zijn aangemaakt</b> zonder directe
+toegang tot de database. Daarnaast is de tekst van de pagina die wordt
+weergegeven op de ondertekeningspagina de ''huidige'' tekst van de pagina,
+ongeacht de wijzigingen die erna gemaakt worden. Zorg er alstublieft voor
+dat het document een stabiele versie heeft voordat u ondertekenen inschakelt,
+en zorg er alstublieft voor dat alle velden de juiste waarden hebben
+''voordat u het formulier instuurt''.",
+		'createsigndoc-pagename'     => 'Pagina:',
+		'createsigndoc-allowedgroup' => 'Toegelaten groep:',
+		'createsigndoc-email'        => 'E-mailadres:',
+		'createsigndoc-address'      => 'Adres:',
+		'createsigndoc-extaddress'   => 'Stad, staat, land:',
+		'createsigndoc-phone'        => 'Telefoonnummer:',
+		'createsigndoc-bday'         => 'Geboortedatum:',
+		'createsigndoc-minage'       => 'Minimum leeftijd:',
+		'createsigndoc-introtext'    => 'Inleiding:',
+		'createsigndoc-hidden'       => 'Verborgen',
+		'createsigndoc-optional'     => 'Optioneel',
+		'createsigndoc-create'       => 'Aanmaken',
+		'createsigndoc-error-generic'=> 'Fout: $1',
+		'createsigndoc-error-pagenoexist' => 'Error: De pagina [[$1]] bestaat niet.',
+		'createsigndoc-success'      => 'Documentondertekening is ingeschakeld op
+[[$1]]. Ga alstublieft naar [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} deze pagina] om het te testen.',
+	),
 );
 ?>

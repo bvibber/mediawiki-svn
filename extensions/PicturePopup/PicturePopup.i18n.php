@@ -79,6 +79,18 @@ function efPicturePopupMessages() {
 	'picturepopup_no_license_text' => 'ليتسەنزييا ٷلگٸسٸندە  id=imageLicenseText دەگەن دانا جوق',
 	'picturepopup_invalid_icon' => 'ليتسەنزييا ٷلگٸسٸندە imageLicenseIcon دەگەن دانا جوعالتىلعان نە جارامسىز',
 ),
+
+/* Dutch (Siebrand Mazeland) */
+'nl' => array(
+	'picturepopup_invalid_title' => 'Ongeldige afbeeldingsnaam',
+	'picturepopup_no_license' => 'Afbeelding heeft geen licentiesjabloon',
+	'picturepopup_no_image' => 'Afbeelding bestaat niet',
+	'picturepopup_no_license_list' => 'Licentielijst is ongeldig of niet aanwezig',
+	'picturepopup_license_list' => 'Project:Afbeeldingslicenties',
+	'picturepopup_no_license_text' => 'Licentieshabloon heeft geen element met id=imageLicenseText',
+	'picturepopup_invalid_icon' => 'Licentiesjabloon mist het element imageLicenseIcon of het is niet juist ingesteld',
+),
+
 /* Norwegian (Jon Harald Søby) */
 'no' => array(
 'picturepopup_invalid_title' => 'Ugyldig bildetittel',
@@ -158,6 +170,7 @@ function efPicturePopupMessages() {
 
 	return $messages;
 }
+
 
 
 

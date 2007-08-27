@@ -19,3 +19,7 @@ $wgDataSearchMessages['id'] = array(
 	'datasearch' => 'Wikidata: Pencarian data',
 );
 
+$wgDataSearchMessages['nl'] = array(
+	'datasearch' => 'Wikidata: Gegevens zoeken',
+);
+

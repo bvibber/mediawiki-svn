@@ -25,6 +25,11 @@ function efNewUserNotifMessages() {
 	'newusernotifbody' => "Bonjour $1,\n\nUn nouveau compte utilisateur, $2, a été créé sur $3 le $4.",
 ),
 
+'nl' => array(
+	'newusernotifsubj' => 'Notificatie nieuwe gebruiker voor  $1',
+	'newusernotifbody' => "Hallo $1.\n\nEr is een nieuwe gebruiker $2 aangemaakt om $3 op $4.",
+),
+
 'yue' => array(
 	'newusernotifsubj' => '$1嘅新用戶通知',
 	'newusernotifbody' => "你好 $1，\n\n一個新嘅用戶戶口$2，已經響$4喺$3度開咗。",

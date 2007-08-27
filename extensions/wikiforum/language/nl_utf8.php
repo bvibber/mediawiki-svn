@@ -1,7 +1,7 @@
 <?php
 /* Wikiforum.php -- a basic forum extension for Mediawiki
  * Copyright 2004-2005 Guillaume Blanchard <aoineko@free.fr>
- * Copyright      2006 Siebrand Mazeland <s.mazeland@xs4all.nl> Dutch translation
+ * Copyright 2006-2007 Siebrand Mazeland <s.mazeland@xs4all.nl> Dutch translation
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,9 +42,11 @@ if(defined('MEDIAWIKI'))
       'ThreadIncluded'  => '$1 threads opgenomen',
       'ThreadNew'       => 'Nieuwe thread',
       'ThreadTitle'     => 'Threadnaam',
+      'ThreadOpen'      => 'Start thread',
       'ThreadExist'     => 'Deze thread bestaat al, kies alstublieft een andere naam!',
       'ThreadInvalid'   => 'Deze threadnaam is ongeldig, kies alstublieft een andere naam!',
    );
 } // end if(defined('MEDIAWIKI'))
+
 
 

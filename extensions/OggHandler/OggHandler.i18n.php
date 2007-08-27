@@ -48,4 +48,26 @@ $messages = array(
 		'ogg-player-none'         => '(keiner)',
 		'ogg-using-player'        => 'Verwende Player:',
 	),
+
+	'nl' => array(
+		'ogg-short-audio'      => 'Ogg $1 geluidsbestand, $2',
+		'ogg-short-video'      => 'Ogg $1 videobestande, $2',
+		'ogg-short-general'    => 'Ogg $1 mediabestand, $2',
+		'ogg-long-audio'       => '(Ogg $1 geluidsbestand, lengte $2, $3)',
+		'ogg-long-video'       => '(Ogg $1 video file, lengte $2, $4×$5 pixels, $3)',
+		'ogg-long-multiplexed' => '(Ogg gemultiplexed geluids/videobestand, $1, lengte $2, $4×$5 pixels, $3 totaal)',
+		'ogg-long-general'     => '(Ogg mediabestand, lengte $2, $3)',
+		'ogg-long-error'       => '(Ongeldig ogg-bestand: $1)',
+		'ogg-play'             => 'Afspelen',
+		'ogg-pause'            => 'Pauze',
+		'ogg-stop'             => 'Stop',
+		'ogg-play-video'       => 'Video afspelen',
+		'ogg-play-sound'       => 'Geluid afspelen',
+		'ogg-no-player'        => 'Sorry, uw systeem heeft geen van de ondersteunde mediaspelers. ' . 
+			'Installeer alstublieft <a href="http://www.java.com/nl/download/manual.jsp">Java</a>.',
+		'ogg-player-videoElement' => '<video>-element',
+		'ogg-player-oggPlugin' => 'Ogg-plugin',
+		'ogg-player-none'      => '(geen)',
+		'ogg-using-player'     => 'Gebruikte speler:',
+	),
 );

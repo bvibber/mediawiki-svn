@@ -37,8 +37,10 @@ $wgLanguageManagerMessages['kk-cn'] = array(
 $wgLanguageManagerMessages['kk'] = $wgLanguageManagerMessages['kk-kz'];
 $wgLanguageManagerMessages['nl'] = array(
 	'langman_title' => 'Taalmanager',
+	'languages'=>'Wikidata: Taalmanager',
 );
 $wgLanguageManagerMessages['sk'] = array(
 	'langman_title' => 'Správca jazykov',
 );
+
 

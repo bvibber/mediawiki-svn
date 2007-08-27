@@ -19,4 +19,8 @@ $allMessages = array(
         'de' => array( 
                 'passwordreset' => 'Passwort zurücksetzen',
         ),
+
+        'nl' => array( 
+                'passwordreset' => 'Wachtwoord opnieuw instellen',
+        ),
 );

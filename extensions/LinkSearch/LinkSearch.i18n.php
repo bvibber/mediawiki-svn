@@ -119,6 +119,9 @@ $wgLinkSearchMessages['lo'] = array(
 );
 $wgLinkSearchMessages['nl'] = array(
 	'linksearch'       => 'Zoek externe links',
+	'linksearch-pat'   => 'Zoekpatroon:',
+	'linksearch-ns'    => 'Naamruimte:',
+	'linksearch-ok'    => 'Zoeken',
 	'linksearch-text'  => 'Wildcards zoals "*.wikipedia.org" of "*.org" zijn toegestaan.',
 	'linksearch-line'  => '$1 gelinkt vanaf $2',
 	'linksearch-error' => 'Wildcards zijn alleen toegestaan aan het begin van een hostnaam.'
@@ -204,5 +207,6 @@ $wgLinkSearchMessages['zh-hk'] = $wgLinkSearchMessages['zh-hant'];
 $wgLinkSearchMessages['zh-sg'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-tw'] = $wgLinkSearchMessages['zh-hant'];
 $wgLinkSearchMessages['zh-yue'] = $wgLinkSearchMessages['yue'];
+
 
 
