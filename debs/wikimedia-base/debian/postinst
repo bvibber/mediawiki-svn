@@ -73,6 +73,13 @@ case "$1" in
 		invoke-rc.d ntp-server restart || invoke-rc.d ntp restart
 	fi
 
+	# Remote syslogging
+	if [ $CLUSTERNAME = "pmtpa" ] && ! grep -q "@syslog\.pmtpa\.wmnet" /etc/syslog.conf
+	then
+		echo "*.info;mail.none;authpriv.none;cron.none	@syslog.pmtpa.wmnet" >> /etc/syslog.conf
+		invoke-rc.d sysklogd restart
+	fi
+
 	# Optimize TCP
 	if ! grep -q "^### START: Added by wikimedia-base" /etc/sysctl.conf
 	then

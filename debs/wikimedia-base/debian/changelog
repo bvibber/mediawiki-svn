@@ -1,3 +1,11 @@
+wikimedia-base (0.16) dapper; urgency=low
+
+  * Automatically configure remote syslogging to syslog.pmtpa.wmnet on pmtpa
+    servers
+  * Depend on gdb
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 28 Aug 2007 15:16:18 +0000
+
 wikimedia-base (0.15) dapper; urgency=low
 
   * ntp-server renamed to ntp in Ubuntu Feisty, support both.
