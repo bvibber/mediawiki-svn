@@ -70,7 +70,7 @@ case "$1" in
 	if [ -n "$NTP_SERVER" ] && ! grep -q "^server $NTP_SERVER" /etc/ntp.conf
 	then
 		sed -i -e "/^server ntp\.ubuntu\.com/s/ntp\.ubuntu\.com/$NTP_SERVER/" /etc/ntp.conf
-		invoke-rc.d ntp-server restart
+		invoke-rc.d ntp-server restart || invoke-rc.d ntp restart
 	fi
 
 	# Optimize TCP

@@ -1,3 +1,9 @@
+wikimedia-base (0.15) dapper; urgency=low
+
+  * ntp-server renamed to ntp in Ubuntu Feisty, support both.
+
+ -- Mark Bergsma <mark@wikimedia.org>  Sun, 22 Apr 2007 17:23:40 +0000
+
 wikimedia-base (0.14) dapper; urgency=low
 
   * Added configuration for vim and bash
