@@ -295,6 +295,21 @@ class OmegaWikiAttributes {
 				$annotatedAttribute->type->addAttribute($attribute);
 		}
 		
+		# transaction stuff 
+		$t->transactionId = new Attribute('transaction-id', 'Transaction ID', 'integer');
+		$t->user = new Attribute('user', 'User', 'user');
+		$t->userIP = new Attribute('user-ip', 'User IP', 'IP');
+		$t->timestamp = new Attribute('timestamp', 'Time', 'timestamp');
+		$t->summary = new Attribute('summary', 'Summary', 'text');
+		$t->transactionStructure = new Structure($t->transactionId, $t->user, $t->userIP, $t->timestamp, $t->summary);
+		$t->transaction = new Attribute('transaction', 'Transaction', $t->transactionStructure);
+
+		$t->addTransaction = new Attribute('add-transaction', 'Added', $t->transactionStructure);
+		$t->removeTransaction = new Attribute('remove-transaction', 'Removed', $t->transactionStructure);
+
+		$t->recordLifeSpanStructure = new Structure($t->addTransaction, $t->removeTransaction);
+		$t->recordLifeSpan = new Attribute('record-life-span', 'Record life span', $t->recordLifeSpanStructure);
+
 		$t->in_setup=False;
 	}
 

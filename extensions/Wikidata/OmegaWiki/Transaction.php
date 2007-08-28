@@ -219,23 +219,6 @@ function getInTransactionRestriction($table, $transactionId) {
 }
 
 
-$o=OmegaWikiAttributes::getInstance();
-	
-$o->transactionId = new Attribute('transaction-id', 'Transaction ID', 'integer');
-$o->user = new Attribute('user', 'User', 'user');
-$o->userIP = new Attribute('user-ip', 'User IP', 'IP');
-$o->timestamp = new Attribute('timestamp', 'Time', 'timestamp');
-$o->summary = new Attribute('summary', 'Summary', 'text');
-$transactionStructure = new Structure($o->transactionId, $o->user, $o->userIP, $o->timestamp, $o->summary);
-$o->transaction = new Attribute('transaction', 'Transaction', $transactionStructure);
-
-$o->addTransaction = new Attribute('add-transaction', 'Added', $transactionStructure);
-$o->removeTransaction = new Attribute('remove-transaction', 'Removed', $transactionStructure);
-
-$recordLifeSpanStructure = new Structure($o->addTransaction, $o->removeTransaction);
-$o->recordLifeSpan = new Attribute('record-life-span', 'Record life span', $recordLifeSpanStructure);
-
-
 function getUserName($userId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT user_name FROM user WHERE user_id=$userId");
@@ -280,7 +263,7 @@ function getTransactionRecord($transactionId) {
 	$o=OmegaWikiAttributes::getInstance();
 	
 	$dc=wdGetDataSetContext();
-	$result = new ArrayRecord($transactionStructure);
+	$result = new ArrayRecord($o->transactionStructure);
 	$result->transactionId = $transactionId;
 	
 	if ($transactionId > 0) {
@@ -310,7 +293,7 @@ function getRecordLifeSpanTuple($addTransactionId, $removeTransactionId) {
 
 	$o=OmegaWikiAttributes::getInstance();
 	
-	$result = new ArrayRecord($recordLifeSpanStructure);
+	$result = new ArrayRecord($o->recordLifeSpanStructure);
 	$result->addTransaction = getTransactionRecord($addTransactionId);
 	$result->removeTransaction = getTransactionRecord($removeTransactionId);
 	
