@@ -39,6 +39,12 @@ class Attribute {
 		}
 	}
 
+	function __tostring() {
+		$id=$this->id;
+		$name=$this->name;
+		$type=$this->type;
+		return "Attribute($id, $name, $type)";
+	}
 }
 
 class Structure {
@@ -111,7 +117,7 @@ class Structure {
 			throw new Exception("Invalid structure constructor: ".print_r($args,true));
 		}
 	}
-	
+
 	public function supportsAttributeId($attributeId) {
 //		$result = false;
 //		$i = 0;

@@ -58,6 +58,10 @@ class ViewInformation {
 			$this->showRecordLifeSpan.",".
 			$this->viewOrEdit;
 	}
+
+	public function __tostring(){
+		return "viewinformation object>";
+	}
 }
 
 ?>

@@ -88,6 +88,10 @@ class IdStack {
 	public function getKeyStack() {
 		return $this->keyStack;
 	}
+
+	public function __tostring() {
+		return "<object of class IdStack>";
+	}
 }
 
 //added the "allow add controller" to be able to control the usage of the add field in different circumstances

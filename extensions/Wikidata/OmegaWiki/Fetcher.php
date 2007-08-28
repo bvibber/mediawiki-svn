@@ -32,6 +32,12 @@ class ObjectIdFetcher extends DefaultFetcher {
 //	public function fetch($keyPath, $record) {
 //		return $keyPath->peek($this->objectIdAttributeLevel)->getAttributeValue($this->objectIdAttribute);			
 //	}
+	function __tostring(){
+		$attributeLevel=$this->attributeLevel;
+		$attribute=$this->attribute;
+		return "ObjectIdFetcher($attributeLevel, $attribute)";
+	}
+
 }
 
 class DefinitionObjectIdFetcher extends DefaultFetcher {
@@ -39,6 +45,12 @@ class DefinitionObjectIdFetcher extends DefaultFetcher {
 		$definedMeaningId = $keyPath->peek($this->attributeLevel)->getAttributeValue($this->attribute);
 		return getDefinedMeaningDefinitionId($definedMeaningId);
 	}	
+
+	function __tostring(){
+		$attributeLevel=$this->attributeLevel;
+		$attribute=$this->attribute;
+		return "DefinitionObjectIdFetcher($attributeLevel, $attribute)";
+	}
 }
 
 

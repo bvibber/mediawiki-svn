@@ -1,6 +1,10 @@
 #!/usr/bin/perl
 
+my $myclass="";
 while(<>) {
-	s/(function.*)/$1\nprint"$1";\n/;
+	if (/class/){
+		$myclass=$_;
+	}
+	s/function(.*?)(\(.*$)/function$1$2\nwfDebug("$myclass--$1\\n");\n/;
 	print;
 }

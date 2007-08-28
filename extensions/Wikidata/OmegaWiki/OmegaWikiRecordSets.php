@@ -1175,7 +1175,8 @@ function getDefinedMeaningClassMembershipRecordSet($definedMeaningId, ViewInform
 }
 
 function getDefiningExpressionRecord($definedMeaningId) {
-		$o=OmegaWikiAttributes::getInstance();	
+
+		$o=OmegaWikiAttributes::getInstance();
 
 		$definingExpression=definingExpressionRow($definedMeaningId);
 		$definingExpressionRecord = new ArrayRecord($o->definedMeaningCompleteDefiningExpression->type);

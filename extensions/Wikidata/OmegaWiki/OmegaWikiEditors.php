@@ -756,6 +756,7 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	$classMembershipEditor = getDefinedMeaningClassMembershipEditor($viewInformation);
 	$collectionMembershipEditor = getDefinedMeaningCollectionMembershipEditor($viewInformation);
 	
+	#var_dump($definitionEditor);
 	$possiblySynonymousEditor = getGroupedRelationTypeEditor(
 		$o->possiblySynonymous, 
 		$o->possiblySynonymousId, 
