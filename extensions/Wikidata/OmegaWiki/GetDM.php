@@ -51,7 +51,7 @@ $model=getDM(663674,"tt");
 
 $record=$model->getRecord();
 echo $record;
-$defexp=$record->getValue("defined-meaning-full-defining-expression");
+$defexp=$record->getValue("defined-meaning-complete-defining-expression");
 echo $defexp."\n";
 #$expid=$record->getAttributeValue(new Attribute("expression-id"));
 $id=$defexp->getValue("expression-id");
