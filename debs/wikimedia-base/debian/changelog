@@ -1,3 +1,9 @@
+wikimedia-base (0.17) feisty; urgency=low
+
+  * Set /proc/sys/vm/swappiness to 10 in sysctl.conf
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 28 Aug 2007 16:07:50 +0000
+
 wikimedia-base (0.16) dapper; urgency=low
 
   * Automatically configure remote syslogging to syslog.pmtpa.wmnet on pmtpa
