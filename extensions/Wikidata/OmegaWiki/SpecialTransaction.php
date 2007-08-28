@@ -131,8 +131,6 @@ function initializeAttributes() {
 
 	$o=OmegaWikiAttributes::getInstance();
 
-	$o=OmegaWikiAttributes::getInstance();
-
 	$o->operation = new Attribute('operation', 'Operation', 'text');
 	$o->isLatest = new Attribute('is-latest', 'Is latest', 'boolean');
 
@@ -149,57 +147,46 @@ function initializeAttributes() {
 	$o->translatedContentHistory = new Attribute('translated-content-history', 'History', $o->translatedContentHistoryStructure);
 	$o->translatedContentId = new Attribute('translated-content-id', 'Translated content ID', 'object-id');
 
-
-	$o=OmegaWikiAttributes::getInstance();
-
-	$o->rollBackTranslatedContentStructure = new Structure($isLatestAttribute, $operationAttribute, $translatedContentHistoryAttribute);
+	$o->rollBackTranslatedContentStructure = new Structure($o->isLatest, $o->operation, $o->translatedContentHistory);
 	$o->rollBackTranslatedContent = new Attribute('roll-back', 'Roll back', $o->rollBackTranslatedContentStructure);
 
 
-	$o=OmegaWikiAttributes::getInstance();
-	
 	$o->updatedDefinitionStructure = new Structure(
-		$rollBackTranslatedContentAttribute,
-		$definedMeaningIdAttribute, 
-		$definedMeaningReferenceAttribute, 
-		$translatedContentIdAttribute,
+		$o->rollBackTranslatedContent,
+		$o->definedMeaningId, 
+		$o->definedMeaningReference, 
+		$o->translatedContentId,
 		$o->language, 
 		$o->text,
-		$operationAttribute,
-		$isLatestAttribute
+		$o->operation,
+		$o->isLatest
 	);		
 	
 	$o->updatedDefinition = new Attribute('updated-definition', 'Definition', $o->updatedDefinitionStructure);
 
-
-	$o=OmegaWikiAttributes::getInstance();
-
 	$o->updatedSyntransesStructure = new Structure(
 		$o->syntransId,
-		$definedMeaningIdAttribute, 
-		$definedMeaningReferenceAttribute,
+		$o->definedMeaningId, 
+		$o->definedMeaningReference,
 		$o->expressionId, 
 		$o->expression, 
 		$o->identicalMeaning,
-		$operationAttribute
+		$o->operation
 	); 
 	
 	$o->updatedSyntranses = new Attribute('updated-syntranses', 'Synonyms and translations', $o->updatedSyntransesStructure);
 	
-
-	$o=OmegaWikiAttributes::getInstance();
-	
-	$o->firstMeaning = new Attribute('first-meaning', "First defined meaning", $definedMeaningReferenceStructure);
-	$o->secondMeaning = new Attribute('second-meaning', "Second defined meaning", $definedMeaningReferenceStructure);
+	$o->firstMeaning = new Attribute('first-meaning', "First defined meaning", $o->definedMeaningReferenceStructure);
+	$o->secondMeaning = new Attribute('second-meaning', "Second defined meaning", $o->definedMeaningReferenceStructure);
 
 	$o->updatedRelationsStructure = new Structure(
-		$rollBackAttribute,
+		$o->rollBack,
 		$o->relationId,
 		$o->firstMeaning, 
 		$o->relationType, 
 		$o->secondMeaning,
-		$operationAttribute,
-		$isLatestAttribute
+		$o->operation,
+		$o->isLatest
 	);
 	
 	$o->updatedRelations = new Attribute('updated-relations', 'Relations', $o->updatedRelationsStructure);
@@ -207,90 +194,80 @@ function initializeAttributes() {
 
 	$o=OmegaWikiAttributes::getInstance();
 		
-	$o->classMember = new Attribute('class-member', 'Class member', $definedMeaningReferenceStructure);
+	$o->classMember = new Attribute('class-member', 'Class member', $o->definedMeaningReferenceStructure);
 	
 	$o->updatedClassMembershipStructure = new Structure(
-		$rollBackAttribute,
+		$o->rollBack,
 		$o->classMembershipId,
 		$o->class,
 		$o->classMember,
-		$operationAttribute,
-		$isLatestAttribute
+		$o->operation,
+		$o->isLatest
 	);
 	
 	$o->updatedClassMembership = new Attribute('updated-class-membership', 'Class membership', $o->updatedClassMembershipStructure);
 	
 
-	$o=OmegaWikiAttributes::getInstance();
 		
-	$o->collectionMember = new Attribute('collection-member', 'Collection member', $definedMeaningReferenceStructure);
+	$o->collectionMember = new Attribute('collection-member', 'Collection member', $o->definedMeaningReferenceStructure);
 	$o->collectionMemberId = new Attribute('collection-member-id', 'Collection member identifier', 'defined-meaning-id');
 	
 	$o->updatedCollectionMembershipStructure = new Structure(
-		$rollBackAttribute,
+		$o->rollBack,
 		$o->collectionId,
 		$o->collectionMeaning,
 		$o->collectionMemberId,
 		$o->collectionMember,
 		$o->sourceIdentifier,
-		$operationAttribute
+		$o->operation
 	);
 	
 	$o->updatedCollectionMembership = new Attribute('updated-collection-membership', 'Collection membership', $o->updatedCollectionMembershipStructure);
 	
 
-	$o=OmegaWikiAttributes::getInstance();
 		
 	$o->objectId = new Attribute('object-id', 'Object', 'object-id');
 	$o->valueId = new Attribute('value-id', 'Value identifier', 'object-id');
-	$o->attribute = new Attribute('attribute', 'Attribute', $definedMeaningReferenceStructure);
+	$o->attribute = new Attribute('attribute', 'Attribute', $o->definedMeaningReferenceStructure);
 		
 
-	$o=OmegaWikiAttributes::getInstance();
 		
 	$o->updatedLinkStructure = new Structure(
-		$rollBackAttribute,
-		$valueIdAttribute,
-		$objectIdAttribute,
-		$attributeAttribute,
+		$o->rollBack,
+		$o->valueId,
+		$o->objectId,
+		$o->attribute,
 		$o->link,
-		$operationAttribute,
-		$isLatestAttribute
+		$o->operation,
+		$o->isLatest
 	);
 
 	$o->updatedLink = new Attribute('updated-link', 'Link properties', $o->updatedLinkStructure);
 	
 
-	$o=OmegaWikiAttributes::getInstance();
-		
-	$o=OmegaWikiAttributes::getInstance();
-
 	$o->updatedTextStructure = new Structure(
-		$rollBackAttribute,
-		$valueIdAttribute,
-		$objectIdAttribute,
-		$attributeAttribute,
+		$o->rollBack,
+		$o->valueId,
+		$o->objectId,
+		$o->attribute,
 		$o->text,
-		$operationAttribute,
-		$isLatestAttribute
+		$o->operation,
+		$o->isLatest
 	);
 
 	$o->updatedText = new Attribute('updated-text', 'Unstructured text properties', $o->updatedTextStructure);
 	
-
-	$o=OmegaWikiAttributes::getInstance();
-	
 	$o->translatedTextText = new Attribute('translated-text-property-text', 'Text', $o->translatedTextStructure); 
 	
 	$o->updatedTranslatedTextPropertyStructure = new Structure(
-		$rollBackAttribute,
-		$valueIdAttribute,
-		$objectIdAttribute,
-		$attributeAttribute,
-		$translatedContentIdAttribute,
+		$o->rollBack,
+		$o->valueId,
+		$o->objectId,
+		$o->attribute,
+		$o->translatedContentId,
 		$o->translatedTextText, 
-		$operationAttribute,
-		$isLatestAttribute
+		$o->operation,
+		$o->isLatest
 	);
 	
 	$o->updatedTranslatedTextProperty = new Attribute('updated-translated-text-property', 'Text properties', $o->updatedTranslatedTextPropertyStructure);
@@ -299,87 +276,78 @@ function initializeAttributes() {
 	$o=OmegaWikiAttributes::getInstance();
 	
 	$o->updatedTranslatedTextStructure = new Structure(
-		$rollBackTranslatedContentAttribute,
-		$valueIdAttribute,
-		$objectIdAttribute,
-		$attributeAttribute,
-		$translatedContentIdAttribute,
+		$o->rollBackTranslatedContent,
+		$o->valueId,
+		$o->objectId,
+		$o->attribute,
+		$o->translatedContentId,
 		$o->language, 
 		$o->text,
-		$operationAttribute,
-		$isLatestAttribute
+		$o->operation,
+		$o->isLatest
 	);		
 	
 	$o->updatedTranslatedText = new Attribute('updated-translated-text', 'Texts', $o->updatedTranslatedTextStructure);
 
 
-	$o=OmegaWikiAttributes::getInstance();
-
 	$o->classId = new Attribute('class-attribute-id', 'Class attribute id', 'object-id');
-	$o->level = new Attribute('level', 'Level', $definedMeaningReferenceStructure);
+	$o->level = new Attribute('level', 'Level', $o->definedMeaningReferenceStructure);
 	$o->type = new Attribute('type', 'Type', 'text');
 
 	$o->updatedClassAttributesStructure = new Structure(
-		$rollBackAttribute,
+		$o->rollBack,
 		$o->classId,
 		$o->class,
 		$o->level,
 		$o->type,
-		$attributeAttribute,
-		$operationAttribute,
-		$isLatestAttribute
+		$o->attribute,
+		$o->operation,
+		$o->isLatest
 	);
 	
 	$o->updatedClassAttributes = new Attribute('updated-class-attributes', 'Class attributes', $o->updatedClassAttributesStructure);
 
-
-	$o=OmegaWikiAttributes::getInstance();
-
-	$o->alternativeDefinitionText = new Attribute('alternative-definition-text', 'Definition', $translatedTextStructure);
-	$o->source = new Attribute('source', 'Source', $definedMeaningReferenceStructure);
+	$o->alternativeDefinitionText = new Attribute('alternative-definition-text', 'Definition', $o->translatedTextStructure);
+	$o->source = new Attribute('source', 'Source', $o->definedMeaningReferenceStructure);
 
 	$o->updatedAlternativeDefinitionsStructure = new Structure(
-		$rollBackAttribute,
-		$definedMeaningIdAttribute,
-		$translatedContentIdAttribute,
+		$o->rollBack,
+		$o->definedMeaningId,
+		$o->translatedContentId,
 		$o->alternativeDefinitionText,
-		$definedMeaningReferenceAttribute,
+		$o->definedMeaningReference,
 		$o->source,
-		$operationAttribute,
-		$isLatestAttribute
+		$o->operation,
+		$o->isLatest
 	);	
 
 	$o->updatedAlternativeDefinitions = new Attribute('updated-alternative-definitions', 'Alternative definitions', $o->updatedAlternativeDefinitionsStructure);
 
-
-	$o=OmegaWikiAttributes::getInstance();
 		
 	$o->updatedAlternativeDefinitionTextStructure = new Structure(
-		$rollBackTranslatedContentAttribute,
-		$definedMeaningIdAttribute,
-		$definedMeaningReferenceAttribute,
-		$translatedContentIdAttribute,
-		$sourceAttribute,
+		$o->rollBackTranslatedContent,
+		$o->definedMeaningId,
+		$o->definedMeaningReference,
+		$o->translatedContentId,
+		$o->source,
 		$o->language,
 		$o->text,
-		$operationAttribute,
-		$isLatestAttribute
+		$o->operation,
+		$o->isLatest
 	);
 
 	$o->updatedAlternativeDefinitionText = new Attribute('updated-alternative-definition-text', 'Alternative definition text', $o->updatedAlternativeDefinitionTextStructure);	
 
 
-	$o=OmegaWikiAttributes::getInstance();
-
 	$updatesInTransactionStructure = new Structure(
-		$updatedDefinitionAttribute,
-		$updatedSyntransesAttribute,
-		$updatedRelationsAttribute,
-		$updatedClassMembershipAttribute,
-		$updatedLinkAttribute,
-		$updatedTextAttribute,
-		$updatedTranslatedTextAttribute,
-		$updatedAlternativeDefinitionsAttribute
+		$o->updatedDefinition,
+		$o->updatedSyntranses,
+		$o->updatedRelations,
+		$o->updatedClassMembership,
+		$o->updatedLink,
+		$o->updatedText,
+		$o->updatedTranslatedText,
+		$o->updatedAlternativeDefinitions
 	);
 
 	$o->updatesInTransaction = new Attribute('updates-in-transaction', 'Updates in transaction', $updatesInTransactionStructure);
