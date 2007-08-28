@@ -195,8 +195,7 @@ public class Suggest {
 		ArrayList<SuggestResult> possibleStopWords = new ArrayList<SuggestResult>();
 		HashSet<Integer> correctPhrases = new HashSet<Integer>(); // indexes of words in correct phrases
 		int numStopWords = 0;
-		// spell-check 
-		//if(numHits < minHitsWords){
+
 		// generate list of correct phrases
 		for(int i=0;i<tokens.size();i++){
 			Token t = tokens.get(i);
@@ -261,6 +260,16 @@ public class Suggest {
 					}						
 				}
 				possibleStopWords.add(maybeStopWord);
+				// detect common misspells
+				if(sug.size() > 1){
+					SuggestResult r1 = sug.get(0);
+					SuggestResult r2 = sug.get(1);
+					if(r1.dist == 1 && r2.dist == 0 && r1.frequency > 100 * r2.frequency){
+						Change c = new Change(r1.dist,r1.frequency,Change.Type.WORD);
+						c.substitutes.put(i,r1.word);
+						suggestions.add(c);
+					}
+				}
 			} else{
 				wordSug.add(null);
 				possibleStopWords.add(null);
@@ -294,6 +303,7 @@ public class Suggest {
 			ArrayList<SuggestResult> sug2 = null;
 			String w2 = null;
 			String gap = "_";
+			boolean good1 = sug1.get(0).getDist() == 0; // w1 is spellchecked right
 			int i2 = i;
 			boolean maybeStopWord = false; // the currecnt i2 might be a stop word, try to find phrases with it as stop word
 			int distOffset = 0; // if we spellcheked to stop word, all phrases should have this initial dist
@@ -318,12 +328,13 @@ public class Suggest {
 				}
 				if(sug2 == null)
 					continue;
+				boolean good2 = sug2.get(0).getDist() == 0; // w2 is spellchecked right
 				int maxdist = Math.min((w1.length() + w2.length()) / 3, 5);
 				int mindist = -1;
-				//String gap = (i2 == i+1)? "_" : "__";
 				boolean forTitlesOnly = false; 
 				if(correctIndex.contains(i) && correctIndex.contains(i2))
 					forTitlesOnly = true;
+				// construct phrases
 				for(int in1=0;in1<sug1.size();in1++){
 					SuggestResult s1 = sug1.get(in1);
 					for(int in2=0;in2<sug2.size();in2++){
@@ -332,29 +343,42 @@ public class Suggest {
 							continue;
 						String phrase = s1.word+gap+s2.word;
 						int freq = 0;
+						boolean inTitle = false;
 						TermDocs td = titlesReader.termDocs(new Term("phrase",phrase));
 						if(td.next()){
-							NamespaceFreq f = new NamespaceFreq(titlesReader.document(td.doc()).get("freq"));
-							freq = f.getFrequency(nsf);
+							int docid = td.doc();
+							String f = titlesReader.document(docid).get("freq");
+							freq = Integer.parseInt(f.substring(2,f.length()-1));
+							String it = titlesReader.document(docid).get("intitle");
+							if(it!=null && it.equals("1"))
+								inTitle = true;
+
 						}
 						//log.info("Checking "+phrase);
 						if(freq > 0){
-							log.info("Found "+phrase+" at dist="+(s1.dist+s2.dist)+", freq="+freq);
+							log.info("Found "+phrase+" at dist="+(s1.dist+s2.dist)+", freq="+freq+" inTitle="+inTitle);
 							int dist = s1.dist + s2.dist + distOffset;
-							if(mindist == -1)
-								mindist = dist + 1;
+							boolean accept = true;
 							Change c = new Change(dist,freq,Change.Type.PHRASE);
 							if(s1.word.equals(w1))
 								c.preserves.put(i,w1);
-							else					
+							else if(!good1 || inTitle)					
 								c.substitutes.put(i,s1.word);
+							else
+								accept = false;
 							if(s2.word.equals(w2))
 								c.preserves.put(i2,w2);
-							else					
+							else if(!good2 || inTitle)					
 								c.substitutes.put(i2,s2.word);
-							if(!forTitlesOnly)
-								suggestions.add(c);
-							suggestionsTitle.add(c);
+							else
+								accept = false;
+							if(accept){
+								if(mindist == -1)
+									mindist = dist + 1;
+								if(!forTitlesOnly)
+									suggestions.add(c);
+								suggestionsTitle.add(c);
+							}
 						}
 					}	
 				}
@@ -402,9 +426,7 @@ public class Suggest {
 				}
 			}
 		}
-		// checked titles, see if there are few enough hits to proceed
-		//if(numHits >= minHitsTitles)
-		//	return null;
+
 		// find best suggestions so far
 		HashSet<Integer> preserveTokens = new HashSet<Integer>();
 		ArrayList<Entry<Integer,String>> proposedChanges = new ArrayList<Entry<Integer,String>>();
@@ -456,95 +478,6 @@ public class Suggest {
 			if(madeChanges)
 				return new SuggestQuery(tidy(searchterm),tidy(formated));
 		}
-		//}
-		
-		// OLD
-		/*
-		for(int i=0;i<tokens.size();i++){
-			Token t = tokens.get(i);
-			String w = t.termText();
-			if(!"word".equals(t.type()) && !"phrase".equals(t.type()))
-				continue; // ignore aliases and such
-			if(tokens.size() == 1 && w.length() > 1){
-				// only one word in query, try to get it from title
-				ArrayList<SuggestResult> sug = suggestWordsFromTitle(w,nsf,1);
-				if(sug.size() > 0){
-					SuggestResult r = sug.get(0);
-					Change c = new Change(r.dist,r.frequency,Change.Type.TITLE_WORD);
-					if(r.word.equals(w))
-						c.preserves.put(i,r.word);
-					else					
-						c.substitutes.put(i,r.word);
-					suggestions.add(c);
-				}	
-			}
-			// suggest split
-			SuggestResult split = suggestSplitFromTitle(t.termText(),nsf,minFreq);
-			if(split != null){
-				Change sc = new Change(split.dist,split.frequency,Change.Type.SPLIT);
-				sc.substitutes.put(i,split.word.replace("_"," "));
-				suggestions.add(sc);
-			}
-			// get suggestions for pairs of words
-			for(int j=i+1;j<tokens.size();j++){
-				if(!correctWords.contains(tokens.get(i)) && !correctWords.contains(tokens.get(j))){
-					boolean succ = addPhraseSuggestion(tokens,i,j,suggestions,nsf,minFreq);
-					if(succ)
-						break;
-				}
-			}
-			
-		}
-		// indexes of tokens to be preserved in individual word check
-		HashSet<Integer> preserveTokens = new HashSet<Integer>();
-		if(suggestions.size() > 0){
-			// found some suggestions
-			Object[] ret = calculateChanges(suggestions,searchterm.length()/2);
-			ArrayList<Entry<Integer,String>> proposedChanges = (ArrayList<Entry<Integer, String>>) ret[0];
-			ArrayList<Entry<Integer,String>> preservedWords = (ArrayList<Entry<Integer, String>>) ret[1];
-			for(Entry<Integer,String> e : preservedWords)
-				preserveTokens.add(e.getKey());
-			// substitute
-			if(proposedChanges.size() > 0){
-				for(Entry<Integer,String> e : proposedChanges){
-					Token t = tokens.get(e.getKey());
-					searchterm = markSuggestion(searchterm,t,e.getValue());
-				}
-				return new SuggestQuery(tidy(searchterm));
-			}
-		}
-		
-		// spell-check individual words
-		if(numHits < minHitsWords && tokens.size() != 1){
-			LinkedList<Change> changes = new LinkedList<Change>();
-			for(int i=0;i<tokens.size();i++){
-				Token t = tokens.get(i);
-				String w = t.termText();
-				if(w.length() < 2)
-					continue;
-				if(correctWords.contains(w) || preserveTokens.contains(i))
-					continue;
-				ArrayList<SuggestResult> sug = suggestWordsFromTitle(w,nsf,1);
-				if(sug.size() > 0){
-					SuggestResult r = sug.get(0);
-					if(r.word.equals(w))
-						continue; // the word is correct
-					Change c = new Change(r.dist,r.frequency,Change.Type.WORD);
-					c.substitutes.put(i,r.word);
-					changes.addFirst(c);
-				}				
-			}
-			// do changes
-			if(changes.size() > 0){
-				for(Change c : changes){
-					for(Entry<Integer,String> e : c.substitutes.entrySet()){
-						Token t = tokens.get(e.getKey());
-						searchterm = markSuggestion(searchterm,t,e.getValue());
-					}
-				}
-				return new SuggestQuery(tidy(searchterm),true);
-			}
-		} */
 
 		return null;
 	}	

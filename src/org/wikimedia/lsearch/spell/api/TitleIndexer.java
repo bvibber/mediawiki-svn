@@ -265,7 +265,7 @@ public class TitleIndexer {
 							//NamespaceFreq nf = getFrequency(searcher,namespaces,phrase.split("_"));
 							if(nf.getFrequency() > minPhraseFreq){
 								//Collection<Integer> pns = getNamespaces(searcher,namespaces,phrase.split("_"));
-								addPhrase(phrase,nf,pns);
+								addPhrase(phrase,nf,pns,false);
 							}
 						}
 						totalAdded += phrases.size();
@@ -336,11 +336,12 @@ public class TitleIndexer {
 						}
 					}
 					if(allowed && freq > minPhraseFreq){
+						boolean inTitle = ir.docFreq(new Term("title",w))!= 0;
 						NamespaceFreq nsf = new NamespaceFreq();
 						nsf.setFrequency(0,freq);
 						ArrayList<Integer> nss = new ArrayList<Integer>();
 						nss.add(0);
-						addPhrase(w,nsf,nss);
+						addPhrase(w,nsf,nss,inTitle);
 					}
 				} else{
 					if(freq > minWordFreq){
@@ -367,7 +368,7 @@ public class TitleIndexer {
 						nsf.setFrequency(0,freq);
 						ArrayList<Integer> nss = new ArrayList<Integer>();
 						nss.add(0);
-						addPhrase(w,nsf,nss);
+						addPhrase(w,nsf,nss,true);
 					}
 				} /* else if(ngramReader.docFreq(new Term("word",w))==0){
 					// add words from titles
@@ -408,7 +409,7 @@ public class TitleIndexer {
 	 * @param nf -  frequencies of phrase in various namespaces
 	 * @param namespaces - namespaces where phrase appears in title
 	 */
-	public void addPhrase(String phrase, NamespaceFreq nf, Collection<Integer> namespaces){
+	public void addPhrase(String phrase, NamespaceFreq nf, Collection<Integer> namespaces, boolean inTitle){
 		String freq = nf.serialize(minPhraseFreq);
 		if(freq.length() == 0)
 			return;
@@ -423,6 +424,8 @@ public class TitleIndexer {
 		for(Integer ns : namespaces){
 			doc.add(new Field("namespace",ns.toString(),Field.Store.NO, Field.Index.UN_TOKENIZED));
 		}
+		if(inTitle)
+			doc.add(new Field("intitle","1", Field.Store.YES, Field.Index.UN_TOKENIZED));
 
 		ngramWriter.addDocument(doc);
 	}
