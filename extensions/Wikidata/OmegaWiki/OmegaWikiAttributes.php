@@ -106,20 +106,20 @@ class OmegaWikiAttributes {
 			$t->expression = new Attribute("expression", wfMsgSc("Spelling"), "spelling");
 		else {
 			$t->expressionStructure = new Structure("expression", $t->language, $t->spelling);
-			$t->expression = new Attribute(null, wfMsgSc("Expression"), $t->expressionStructure);
+			$t->expression = new Attribute("expression", wfMsgSc("Expression"), $t->expressionStructure);
 		}
 		
 		$t->definedMeaningId = new Attribute("defined-meaning-id", "Defined meaning identifier", "defined-meaning-id");
 		$t->definedMeaningDefiningExpression = new Attribute("defined-meaning-defining-expression", "Defined meaning defining expression", "short-text");
 		$t->definedMeaningCompleteDefiningExpressionStructure = 
-			new Structure("defined-meaning-full-defining-expression",
+			new Structure("defined-meaning-complete-defining-expression",
 				  $t->definedMeaningDefiningExpression,
 				  $t->expressionId,
 				  $t->language
 			);
 		#try this
 		$t->definedMeaningCompleteDefiningExpressionStructure->setStructureType("expression");
-		$t->definedMeaningCompleteDefiningExpression=new Attribute(null, "Defining expression", $t->definedMeaningCompleteDefiningExpressionStructure);
+		$t->definedMeaningCompleteDefiningExpression = new Attribute(null, "Defining expression", $t->definedMeaningCompleteDefiningExpressionStructure);
 		global
 			  $definedMeaningReferenceType;
 			
@@ -160,7 +160,7 @@ class OmegaWikiAttributes {
 		    $wgRelationsAttributeId, $wgIncomingRelationsAttributeId ;
 			
 		$t->relationStructure = new Structure("relations", $t->relationId, $t->relationType, $t->otherDefinedMeaning, $t->objectAttributes);
-		$t->relations = new Attribute(null, wfMsgSc("Relations"), $t->relationStructure);
+		$t->relations = new Attribute("relations", wfMsgSc("Relations"), $t->relationStructure);
 		$t->reciprocalRelations = new Attribute("reciprocal-relations", wfMsgSc("IncomingRelations"), $t->relationStructure);
 		$t->translatedTextId = new Attribute("translated-text-id", "Translated text ID", "integer");	
 		$t->translatedTextStructure = new Structure("translated-text", $t->language, $t->text);	
@@ -178,7 +178,6 @@ class OmegaWikiAttributes {
 			$wgAlternativeDefinitionsAttributeId;
 			
 		$t->alternativeDefinitionsStructure =  new Structure("alternative-definitions", $t->definitionId, $t->alternativeDefinition, $t->source);
-			
 		$t->alternativeDefinitions = new Attribute(null, wfMsgSc("AlternativeDefinitions"), $t->alternativeDefinitionsStructure);
 		
 		global
@@ -201,7 +200,7 @@ class OmegaWikiAttributes {
 		if ($viewInformation->filterOnLanguage() && !$viewInformation->hasMetaDataAttributes())
 			$t->translatedTextValue = new Attribute("translated-text-value", wfMsgSc("TranslatedTextAttributeValue"), "text");
 		else
-			$t->translatedTextValue = new Attribute("translated-text", wfMsgSc("TranslatedTextAttributeValue"), $t->translatedTextStructure);
+			$t->translatedTextValue = new Attribute("translated-text-value", wfMsgSc("TranslatedTextAttributeValue"), $t->translatedTextStructure);
 		
 		$t->translatedTextAttributeValuesStructure = new Structure("translated-text-attribute-values",$t->translatedTextAttributeId, $t->attributeObjectId, $t->translatedTextAttribute, $t->translatedTextValueId, $t->translatedTextValue, $t->objectAttributes);
 		$t->translatedTextAttributeValues = new Attribute(null, wfMsgSc("TranslatedTextAttributeValues"), $t->translatedTextAttributeValuesStructure);
@@ -220,20 +219,20 @@ class OmegaWikiAttributes {
 		$t->linkAttribute = new Attribute("link-attribute", wfMsgSc("LinkAttribute"), $t->definedMeaningReferenceStructure);
 		$t->linkAttributeValuesStructure = new Structure("link-attribute-values", $t->linkAttributeId, $t->linkAttributeObject, $t->linkAttribute, $t->link, $t->objectAttributes);	
 		$t->linkAttributeValues = new Attribute(null, wfMsgSc("LinkAttributeValues"), $t->linkAttributeValuesStructure);
-		$t->optionAttributeId = new Attribute('option-attribute-id', 'Attribute identifier', 'object-id');
-		$t->optionAttributeObject = new Attribute('option-attribute-object-id', 'Attribute object', 'object-id');
-		$t->optionAttribute = new Attribute('option-attribute', wfMsgSc("OptionAttribute"), $definedMeaningReferenceType);
-		$t->optionAttributeOption = new Attribute('option-attribute-option', wfMsgSc("OptionAttributeOption"), $definedMeaningReferenceType);
-		$t->optionAttributeValuesStructure = new Structure('option-attribute-values', $t->optionAttributeId, $t->optionAttribute, $t->optionAttributeObject, $t->optionAttributeOption, $t->objectAttributes);
+		$t->optionAttributeId = new Attribute("option-attribute-id", "Attribute identifier", "object-id");
+		$t->optionAttributeObject = new Attribute("option-attribute-object-id", "Attribute object", "object-id");
+		$t->optionAttribute = new Attribute("option-attribute", wfMsgSc("OptionAttribute"), $definedMeaningReferenceType);
+		$t->optionAttributeOption = new Attribute("option-attribute-option", wfMsgSc("OptionAttributeOption"), $definedMeaningReferenceType);
+		$t->optionAttributeValuesStructure = new Structure("option-attribute-values", $t->optionAttributeId, $t->optionAttribute, $t->optionAttributeObject, $t->optionAttributeOption, $t->objectAttributes);
 		$t->optionAttributeValues = new Attribute(null, wfMsgSc("OptionAttributeValues"), $t->optionAttributeValuesStructure);
-		$t->optionAttributeOptionId = new Attribute('option-attribute-option-id', 'Option identifier', 'object-id');
-		$t->optionAttributeOptionsStructure = new Structure('option-attribute-options', $t->optionAttributeOptionId, $t->optionAttribute, $t->optionAttributeOption, $t->language);
+		$t->optionAttributeOptionId = new Attribute("option-attribute-option-id", "Option identifier", "object-id");
+		$t->optionAttributeOptionsStructure = new Structure("option-attribute-options", $t->optionAttributeOptionId, $t->optionAttribute, $t->optionAttributeOption, $t->language);
 		$t->optionAttributeOptions = new Attribute(null, wfMsgSc("OptionAttributeOptions"), $t->optionAttributeOptionsStructure);
 		
 		if ($viewInformation->filterOnLanguage() && !$viewInformation->hasMetaDataAttributes())
 			$t->translatedText = new Attribute("translated-text", wfMsgSc("Text"), "text");	
 		else
-			$t->translatedText = new Attribute(null, wfMsgSc("TranslatedText"), $t->translatedTextStructure);
+			$t->translatedText = new Attribute("translated-text", wfMsgSc("TranslatedText"), $t->translatedTextStructure);
 			
 		$t->definition = new Attribute(null, wfMsgSc("Definition"), new Structure("definition", $t->translatedText, $t->objectAttributes));
 
@@ -250,6 +249,7 @@ class OmegaWikiAttributes {
 		$t->definedMeaning = new Attribute(null, wfMsgSc("DefinedMeaning"), 
 			new Structure(
 				"defined-meaning",
+				$t->definedMeaningCompleteDefiningExpression,
 				$t->definition, 
 				$t->classAttributes, 
 				$t->alternativeDefinitions, 
@@ -258,11 +258,12 @@ class OmegaWikiAttributes {
 				$t->reciprocalRelations, 
 				$t->classMembership, 
 				$t->collectionMembership, 
-				$t->definedMeaningAttributes)
+				$t->definedMeaningAttributes
+			)
 		);
 
-		$t->expressionMeaningStructure = new Structure("expression-exact-meanings", $t->definedMeaningId, $t->text, $t->definedMeaning); 	
-		$t->expressionExactMeanings = new Attribute(null, wfMsgSc("ExactMeanings"), $t->expressionMeaningStructure);
+		$t->expressionMeaningStructure = new Structure($t->definedMeaningId, $t->text, $t->definedMeaning); 	
+		$t->expressionExactMeanings = new Attribute("expression-exact-meanings", wfMsgSc("ExactMeanings"), $t->expressionMeaningStructure);
 		$t->expressionApproximateMeanings = new Attribute("expression-approximate-meanings", wfMsgSc("ApproximateMeanings"), $t->expressionMeaningStructure);
 		# bug found here also: $t->expressionAoproximateMeaning_S_	
 		$t->expressionMeaningsStructure = new Structure("expression-meanings", $t->expressionExactMeanings, $t->expressionApproximateMeanings);
@@ -270,22 +271,27 @@ class OmegaWikiAttributes {
 		$t->expressionsStructure = new Structure("expressions", $t->expressionId, $t->expression, $t->expressionMeanings);
 		$t->expressions = new Attribute(null, wfMsgSc("Expressions"), $t->expressionsStructure);
 		$t->objectId = new Attribute("object-id", "Object identifier", "object-id");
-		$t->objectAttributesStructure = new Structure("object-attributes", $t->objectId, $t->textAttributeValues, $t->translatedTextAttributeValues, $t->optionAttributeValues);
+		$t->objectAttributesStructure = new Structure("object-attributes", $t->objectId, $t->textAttributeValues, $t->translatedTextAttributeValues, $t->linkAttributeValues, $t->optionAttributeValues);
 		$t->objectAttributes->setAttributeType($t->objectAttributesStructure);
 		$t->definedMeaningAttributes->setAttributeType($t->objectAttributesStructure);
 		
-		$t->annotatedAttributes = array(
+		$annotatedAttributes = array(
+			$t->definedMeaning,
 			$t->definition, 
 			$t->synonymsAndTranslations, 
 			$t->relations,
-			$t->reciprocalRelations
+			$t->reciprocalRelations,
+			$t->textAttributeValues,
+			$t->linkAttributeValues,
+			$t->translatedTextAttributeValues,
+			$t->optionAttributeValues
 		);
 		
 		foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) {
 			$attribute = $propertyToColumnFilter->getAttribute();
 			$attribute->setAttributeType($t->objectAttributesStructure);
 			
-			foreach ($t->annotatedAttributes as $annotatedAttribute) 		
+			foreach ($annotatedAttributes as $annotatedAttribute) 		
 				$annotatedAttribute->type->addAttribute($attribute);
 		}
 		$t->in_setup=False;

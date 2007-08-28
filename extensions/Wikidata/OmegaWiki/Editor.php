@@ -1289,13 +1289,11 @@ class OptionAttributeEditor extends AttributeEditor {
 	public function add(IdStack $idPath) {
 		if ($this->isAddField) {
 
-			$o=OmegaWikiAttributes::getInstance();
-
-			$syntransId = $idPath->getKeyStack()->peek(0)->syntransId;
+			$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
 			$parameters = array(
 				'attributesLevel' => $this->attributesLevelName, 
-				'attributesObjectId' => $this->objectIdFetcher->fetch($idPath->getKeyStack()),
-				'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId
+				'attributesObjectId' => $objectId,
+				'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $objectId
 			);
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);
 		}

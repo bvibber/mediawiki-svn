@@ -25,9 +25,19 @@ class ArrayRecord implements Record {
 		return $this->structure;
 	}
 	
+	protected function getAttributeValueForId($attributeId) {
+		if ($this->structure->supportsAttributeId($attributeId)) {
+			if (isset($this->values[$attributeId]))
+				return $this->values[$attributeId];
+			else
+				return null;
+		}
+		else
+			throw new Exception("Structure does not support attribute!\n  Structure: " . $this->structure . "\n  Attribute: " . $attributeId);
+	}
+	
 	public function getAttributeValue($attribute) {
-		#FIXME: check if valid
-		return @$this->values[$attribute->id];
+		return $this->getAttributeValueForId($attribute->id);
 	}
 	
 	/**
@@ -64,9 +74,15 @@ class ArrayRecord implements Record {
 		return $result;
 	}
 
+	public function setAttributeValueForId($attributeId, $value) {
+		if ($this->structure->supportsAttributeId($attributeId))
+			$this->values[$attributeId] = $value;
+		else
+			throw new Exception("Structure does not support attribute!\n  Structure: " . $this->structure. "\n  Attribute: " . $attributeId);
+	}
+
 	public function setAttributeValue(Attribute $attribute, $value) {
-		#FIXME: check if valid
-		@$this->values[$attribute->id] = $value;
+		$this->setAttributeValueForId($attribute->id, $value);
 	}
 	
 	/**

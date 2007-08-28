@@ -42,16 +42,15 @@ class Attribute {
 }
 
 class Structure {
-	
-	private $structure; 
+	private $attributes; 
 	private $type; 
 	
 	public function getAttributes() {
-		return $this->structure;
+		return $this->attributes;
 	}
 
-	public function addAttribute($attribute) {
-		$this->structure[]=$attribute;
+	public function addAttribute(Attribute $attribute) {
+		$this->attributes[] = $attribute;
 	}
 
 	public function getStructureType() {
@@ -59,7 +58,7 @@ class Structure {
 	}
 
 	public function setStructureType($type) {
-		$this->type=$type;
+		$this->type = $type;
 	}
 
 
@@ -78,22 +77,22 @@ class Structure {
 
 		# We're trying to be clever.
 		$args=func_get_args();
-		$this->structure=null;
+		$this->attributes=null;
 		
 		if($args[0] instanceof Attribute) {
-			$this->structure=$args; 
+			$this->attributes=$args; 
 		} elseif(is_array($args[0])) {
-			$this->structure=$args[0];
+			$this->attributes=$args[0];
 		}
 
-		if(is_array($this->structure)) {
+		if(is_array($this->attributes)) {
 			# We don't know what to call an unnamed
 			# structure with multiple attributes.
-			if(sizeof($this->structure)>1) {
+			if(sizeof($this->attributes) > 1) {
 				$this->type='anonymous-structure';			
 			# Meh, just one Attribute. Let's eat it.
-			} elseif(sizeof($this->structure)==1) {
-				$this->type=$this->structure[0]->id;
+			} elseif(sizeof($this->attributes)==1) {
+				$this->type=$this->attributes[0]->id;
 			} else {
 				$this->type='empty-structure';
 			}
@@ -102,15 +101,47 @@ class Structure {
 		} elseif(is_string($args[0]) && !empty($args[0])) {
 			$this->type=$args[0];
 			if(is_array($args[1])) {
-				$this->structure=$args[1];
+				$this->attributes = $args[1];
 			} else {
 				array_shift($args);
-				$this->structure=$args;
+				$this->attributes = $args;
 			}
 		} else {
 			# WTF?
 			throw new Exception("Invalid structure constructor: ".print_r($args,true));
 		}
+	}
+	
+	public function supportsAttributeId($attributeId) {
+//		$result = false;
+//		$i = 0;
+//		
+//		while (!$result && $i < count($this->attributes)) {
+//			$result = $this->attributes[$i]->id == $attributeId;
+//			$i++;
+//		}
+//			
+//		return $result;
+		return true;
+	}
+	
+	public function supportsAttribute(Attribute $attribute) {
+		return $this->supportsAttributeId($attribute->id);
+	}
+	
+	public function __tostring() {
+		$result = "{";
+
+		if (count($this->attributes) > 0) {
+			$result .= $this->attributes[0]->id;
+			
+			for ($i = 1; $i < count($this->attributes); $i++)
+				$result .= ", " . $this->attributes[$i]->id;
+		}	
+
+		$result .= "}";
+		
+		return $result;
 	}
 }
 

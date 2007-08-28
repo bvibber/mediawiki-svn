@@ -14,7 +14,10 @@ class DefaultFetcher implements Fetcher {
 		$this->attribute = $attribute;
 	}
 	public function fetch($keyPath) {
-		return $keyPath->peek($this->attributeLevel)->getAttributeValue($this->attribute);			
+		if ($keyPath->peek($this->attributeLevel)->getStructure()->supportsAttribute($this->attribute))
+			return $keyPath->peek($this->attributeLevel)->getAttributeValue($this->attribute); 
+		else
+			return null; # FIXME: Should not happen, check should leave	when the reason of the attribute not being support by the record is determined 		
 	}	
 }
 

@@ -523,7 +523,7 @@ function getDefinedMeaningDefinitionRecord($definedMeaningId, ViewInformation $v
 	$o=OmegaWikiAttributes::getInstance();
 		
 	$definitionId = getDefinedMeaningDefinitionId($definedMeaningId);
-	$record = new ArrayRecord(new Structure($o->definition));
+	$record = new ArrayRecord($o->definition->type);
 	$record->translatedText = getTranslatedContentValue($definitionId, $viewInformation);
 	
 	$objectAttributesRecord = getObjectAttributesRecord($definitionId, $viewInformation, $o->objectAttributes->id);
@@ -553,13 +553,12 @@ function applyPropertyToColumnFiltersToRecordSet(RecordSet $recordSet, Attribute
 }
 
 function getObjectAttributesRecord($objectId, ViewInformation $viewInformation, $structuralOverride = null) {
-
 	$o=OmegaWikiAttributes::getInstance();
 
 	if ($structuralOverride) 
-		$record = new ArrayRecord(new Structure($structuralOverride, $o->definedMeaningAttributes));
+		$record = new ArrayRecord(new Structure($structuralOverride, $o->definedMeaningAttributes->type->getAttributes()));
 	else 
-		$record = new ArrayRecord(new Structure($o->definedMeaningAttributes));
+		$record = new ArrayRecord($o->definedMeaningAttributes->type);
 	
 	$record->objectId = $objectId;
 	$record->textAttributeValues = getTextAttributesValuesRecordSet(array($objectId), $viewInformation);
@@ -571,9 +570,6 @@ function getObjectAttributesRecord($objectId, ViewInformation $viewInformation, 
 }
 
 function filterAttributeValues(RecordSet $sourceRecordSet, Attribute $attributeAttribute, array &$attributeIds) {
-
-	$o=OmegaWikiAttributes::getInstance();
-	
 	$result = new ArrayRecordSet($sourceRecordSet->getStructure(), $sourceRecordSet->getKey());
 	$i = 0; 
 	
@@ -744,6 +740,9 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 		
 	$recordSetStructure = $recordSet->getStructure();
 	$recordSetStructure->addAttribute($attributeToExpand);
+	
+	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter)
+		$recordSetStructure->addAttribute($propertyToColumnFilter->getAttribute());
 			
 	$objectAttributesRecordStructure = $attributeToExpand->type;
 	$objectIds = getUniqueIdsInRecordSet($recordSet, array($objectIdAttribute));
@@ -825,7 +824,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 				$optionAttributeValuesRecordSet = $emptyOptionAttributesRecordSet;
 
 			$objectAttributesRecord = new ArrayRecord($objectAttributesRecordStructure);
-			$objectAttributesRecord->setAttributeValue($objectIdAttribute, $objectId);
+			$objectAttributesRecord->objectId = $objectId;
 			$objectAttributesRecord->textAttributeValues = $textAttributeValuesRecordSet;
 			$objectAttributesRecord->translatedTextAttributeValues = $translatedTextAttributeValuesRecordSet;
 			$objectAttributesRecord->linkAttributeValues = $linkAttributeValuesRecordSet;
@@ -963,7 +962,9 @@ function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, ViewI
 		array("member_mid=$definedMeaningId")
 	);
 
-	$recordSet->getStructure()->addAttribute($o->collectionMeaning);
+	$structure = $recordSet->getStructure();
+	$structure->addAttribute($o->collectionMeaning);
+	$structure->addAttribute($o->gotoSource);
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
@@ -1115,6 +1116,9 @@ function expandOptionsInRecordSet(RecordSet $recordSet, ViewInformation $viewInf
 	global
 		    $optionAttributeOptionsTable, $classAttributesTable;
 
+	$recordSet->getStructure()->addAttribute($o->optionAttributeOption);
+	$recordSet->getStructure()->addAttribute($o->optionAttribute);
+
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
 
@@ -1171,10 +1175,6 @@ function getDefinedMeaningClassMembershipRecordSet($definedMeaningId, ViewInform
 }
 
 function getDefiningExpressionRecord($definedMeaningId) {
-
-
-		$o=OmegaWikiAttributes::getInstance();
-
 		$o=OmegaWikiAttributes::getInstance();	
 
 		$definingExpression=definingExpressionRow($definedMeaningId);
@@ -1183,5 +1183,4 @@ function getDefiningExpressionRecord($definedMeaningId) {
 		$definingExpressionRecord->definedMeaningDefiningExpression = $definingExpression[1];
 		$definingExpressionRecord->language = $definingExpression[2];
 		return $definingExpressionRecord;
-
 }
