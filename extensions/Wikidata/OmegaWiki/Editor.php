@@ -1292,12 +1292,15 @@ class OptionAttributeEditor extends AttributeEditor {
 
 	public function add(IdStack $idPath) {
 		if ($this->isAddField) {
-
+			$syntransId = $idPath->getKeyStack()->peek(0)->syntransId;
 			$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
+			
+//			echo "SyntransId: $syntransId  ObjectId: $objectId\n";
+			
 			$parameters = array(
 				'attributesLevel' => $this->attributesLevelName, 
 				'attributesObjectId' => $objectId,
-				'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $objectId
+				'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId
 			);
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);
 		}
