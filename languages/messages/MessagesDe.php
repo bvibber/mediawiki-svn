@@ -431,62 +431,62 @@ $messages = array(
 Alle verfügbaren Spezialseiten sind in der [[{{ns:special}}:Specialpages|Liste der Spezialseiten]] zu finden.",
 
 # General errors
-'error'                => 'Fehler',
-'databaseerror'        => 'Fehler in der Datenbank',
-'dberrortext'          => 'Es gab einen Syntaxfehler in der Datenbankabfrage.
+'error'                   => 'Fehler',
+'databaseerror'           => 'Fehler in der Datenbank',
+'dberrortext'             => 'Es gab einen Syntaxfehler in der Datenbankabfrage.
 Die letzte Datenbankabfrage lautete: <blockquote><tt>$1</tt></blockquote> aus der Funktion „<tt>$2</tt>“.
 MySQL meldete den Fehler „<tt>$3: $4</tt>“.',
-'dberrortextcl'        => 'Es gab einen Syntaxfehler in der Datenbankabfrage.
+'dberrortextcl'           => 'Es gab einen Syntaxfehler in der Datenbankabfrage.
 Die letzte Datenbankabfrage lautete: „$1“ aus der Funktion „<tt>$2</tt>“.
 MySQL meldete den Fehler: „<tt>$3: $4</tt>“.',
-'noconnect'            => 'Konnte keine Verbindung zur Datenbank auf $1 herstellen',
-'nodb'                 => 'Konnte Datenbank $1 nicht auswählen',
-'cachederror'          => 'Das Folgende ist eine Kopie aus dem Cache und möglicherweise nicht aktuell.',
-'laggedslavemode'      => 'Achtung: Die angezeigte Seite enthält unter Umständen nicht die jüngsten Bearbeitungen.',
-'readonly'             => 'Datenbank ist gesperrt',
-'enterlockreason'      => 'Bitte gebe einen Grund ein, warum die Datenbank gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung',
-'readonlytext'         => 'Die Datenbank ist vorübergehend für Neueinträge und Änderungen gesperrt. Bitte versuchen Sie es später noch einmal.
+'noconnect'               => 'Konnte keine Verbindung zur Datenbank auf $1 herstellen',
+'nodb'                    => 'Konnte Datenbank $1 nicht auswählen',
+'cachederror'             => 'Das Folgende ist eine Kopie aus dem Cache und möglicherweise nicht aktuell.',
+'laggedslavemode'         => 'Achtung: Die angezeigte Seite enthält unter Umständen nicht die jüngsten Bearbeitungen.',
+'readonly'                => 'Datenbank ist gesperrt',
+'enterlockreason'         => 'Bitte gebe einen Grund ein, warum die Datenbank gesperrt werden soll und eine Abschätzung über die Dauer der Sperrung',
+'readonlytext'            => 'Die Datenbank ist vorübergehend für Neueinträge und Änderungen gesperrt. Bitte versuchen Sie es später noch einmal.
 
 Grund der Sperrung: $1',
-'missingarticle'       => 'Der Text für „$1“ wurde nicht in der Datenbank gefunden.
+'missingarticle'          => 'Der Text für „$1“ wurde nicht in der Datenbank gefunden.
 
 Die Seite ist möglicherweise gelöscht oder verschoben worden.
 
 Falls dies nicht der Fall ist, hast du eventuell einen Fehler in der Software gefunden. Bitte melde  dies einem [[{{MediaWiki:grouppage-sysop}}|Administrator]] unter Nennung der URL.',
-'readonly_lag'         => 'Die Datenbank wurde automatisch für Schreibzugriffe gesperrt, damit sich die verteilten Datenbankserver (slaves) mit dem Hauptdatenbankserver (master) abgleichen können.',
-'internalerror'        => 'Interner Fehler',
-'internalerror_info'   => 'Interner Fehler: $1',
-'filecopyerror'        => 'Die Datei „$1“ konnte nicht nach „$2“ kopiert werden.',
-'filerenameerror'      => 'Die Datei „$1“ konnte nicht nach „$2“ umbenannt werden.',
-'filedeleteerror'      => 'Die Datei „$1“ konnte nicht gelöscht werden.',
-'directorycreateerror' => 'Das Verzeichnis „$1“ konnte nicht angelegt werden.',
-'filenotfound'         => 'Die Datei „$1“ wurde nicht gefunden.',
-'fileexistserror'      => 'In die Datei „$1“ konnte nicht geschrieben werden, da die Datei bereits vorhanden ist.',
-'unexpected'           => 'Unerwarteter Wert: „$1“=„$2“.',
-'formerror'            => 'Fehler: Die Eingaben konnten nicht verarbeitet werden.',
-'badarticleerror'      => 'Diese Aktion kann auf diese Seite nicht angewendet werden.',
-'cannotdelete'         => 'Die gewählte Seite kann nicht gelöscht werden. Möglicherweise wurde sie bereits gelöscht.',
-'badtitle'             => 'Ungültiger Titel',
-'badtitletext'         => 'Der Titel der angeforderten Seite ist ungültig, leer oder ein ungültiger Sprachlink von einem anderen Wiki.',
-'perfdisabled'         => "'''Entschuldigung!''' Diese Funktion wurde wegen Überlastung des Servers vorübergehend deaktiviert.",
-'perfcached'           => 'Die folgenden Daten stammen aus dem Cache und sind möglicherweise nicht aktuell:',
-'perfcachedts'         => 'Diese Daten stammen aus dem Cache, letztes Update: $1',
-'querypage-no-updates' => "'''Die Aktualisierungsfunktion für diese Seite ist zur Zeit deaktiviert. Die Daten werden bis auf weiteres nicht erneuert.'''",
-'wrong_wfQuery_params' => 'Falsche Parameter für wfQuery()<br />
+'readonly_lag'            => 'Die Datenbank wurde automatisch für Schreibzugriffe gesperrt, damit sich die verteilten Datenbankserver (slaves) mit dem Hauptdatenbankserver (master) abgleichen können.',
+'internalerror'           => 'Interner Fehler',
+'internalerror_info'      => 'Interner Fehler: $1',
+'filecopyerror'           => 'Die Datei „$1“ konnte nicht nach „$2“ kopiert werden.',
+'filerenameerror'         => 'Die Datei „$1“ konnte nicht nach „$2“ umbenannt werden.',
+'filedeleteerror'         => 'Die Datei „$1“ konnte nicht gelöscht werden.',
+'directorycreateerror'    => 'Das Verzeichnis „$1“ konnte nicht angelegt werden.',
+'filenotfound'            => 'Die Datei „$1“ wurde nicht gefunden.',
+'fileexistserror'         => 'In die Datei „$1“ konnte nicht geschrieben werden, da die Datei bereits vorhanden ist.',
+'unexpected'              => 'Unerwarteter Wert: „$1“=„$2“.',
+'formerror'               => 'Fehler: Die Eingaben konnten nicht verarbeitet werden.',
+'badarticleerror'         => 'Diese Aktion kann auf diese Seite nicht angewendet werden.',
+'cannotdelete'            => 'Die gewählte Seite kann nicht gelöscht werden. Möglicherweise wurde sie bereits gelöscht.',
+'badtitle'                => 'Ungültiger Titel',
+'badtitletext'            => 'Der Titel der angeforderten Seite ist ungültig, leer oder ein ungültiger Sprachlink von einem anderen Wiki.',
+'perfdisabled'            => "'''Entschuldigung!''' Diese Funktion wurde wegen Überlastung des Servers vorübergehend deaktiviert.",
+'perfcached'              => 'Die folgenden Daten stammen aus dem Cache und sind möglicherweise nicht aktuell:',
+'perfcachedts'            => 'Diese Daten stammen aus dem Cache, letztes Update: $1',
+'querypage-no-updates'    => "'''Die Aktualisierungsfunktion für diese Seite ist zur Zeit deaktiviert. Die Daten werden bis auf weiteres nicht erneuert.'''",
+'wrong_wfQuery_params'    => 'Falsche Parameter für wfQuery()<br />
 Funktion: $1<br />
 Abfrage: $2',
-'viewsource'           => 'Quelltext betrachten',
-'viewsourcefor'        => 'für $1',
-'protectedpagetext'    => 'Diese Seite ist für das Bearbeiten gesperrt.',
-'viewsourcetext'       => 'Quelltext dieser Seite:',
-'protectedinterface'   => 'Diese Seite enthält Text für das Sprach-Interface der Software und ist gesperrt, um Missbrauch zu verhindern.',
-'editinginterface'     => "'''Warnung:''' Diese Seite enthält von der MediaWiki-Software benutzten Text. Änderungen wirken sich auf die Benutzeroberfläche aus.",
-'sqlhidden'            => '(SQL-Abfrage versteckt)',
-'cascadeprotected'     => 'Diese Seite ist zur Bearbeitung gesperrt. Sie ist in die {{PLURAL:$1|folgende Seite|folgenden Seiten}} eingebunden, die mittels der Kaskadensperroption geschützt {{PLURAL:$1|ist|sind}}:
+'viewsource'              => 'Quelltext betrachten',
+'viewsourcefor'           => 'für $1',
+'protectedpagetext'       => 'Diese Seite ist für das Bearbeiten gesperrt.',
+'viewsourcetext'          => 'Quelltext dieser Seite:',
+'protectedinterface'      => 'Diese Seite enthält Text für das Sprach-Interface der Software und ist gesperrt, um Missbrauch zu verhindern.',
+'editinginterface'        => "'''Warnung:''' Diese Seite enthält von der MediaWiki-Software benutzten Text. Änderungen wirken sich auf die Benutzeroberfläche aus.",
+'sqlhidden'               => '(SQL-Abfrage versteckt)',
+'cascadeprotected'        => 'Diese Seite ist zur Bearbeitung gesperrt. Sie ist in die {{PLURAL:$1|folgende Seite|folgenden Seiten}} eingebunden, die mittels der Kaskadensperroption geschützt {{PLURAL:$1|ist|sind}}:
 $2',
-'namespaceprotected'   => "Du hast keine Berechtigung, die Seite in dem '''$1'''-Namensraum zu bearbeiten.",
-'customcssjsprotected' => 'Du bist nicht berechtigt diese Seite zu bearbeiten, da sie zu den persönlichen Einstellungen eines anderen Benutzers gehört.',
-'ns-specialprotected'  => 'Seiten im {{ns:special}}-Namensraum können nicht bearbeitet werden.',
+'namespaceprotected'      => "Du hast keine Berechtigung, die Seite in dem '''$1'''-Namensraum zu bearbeiten.",
+'customcssjsprotected'    => 'Du bist nicht berechtigt diese Seite zu bearbeiten, da sie zu den persönlichen Einstellungen eines anderen Benutzers gehört.',
+'ns-specialprotected'     => 'Seiten im {{ns:special}}-Namensraum können nicht bearbeitet werden.',
 
 # Login and logout pages
 'logouttitle'                => 'Benutzer-Abmeldung',
@@ -536,9 +536,9 @@ ohne dass du deine E-Mail-Adresse veröffentlichen musst. Für den Fall, dass du
 'noname'                     => 'Du musst einen gültigen Benutzernamen angeben.',
 'loginsuccesstitle'          => 'Anmeldung erfolgreich',
 'loginsuccess'               => 'Du bist jetzt als „$1“ bei {{SITENAME}} angemeldet.',
-'nosuchuser'                 => 'Der Benutzername „$1“ existiert nicht. Überprüfe die Schreibweise oder lege ein neues Benutzerkonto an.',
+'nosuchuser'                 => 'Der Benutzername „$1“ existiert nicht. Überprüfe die Schreibweise oder melde dich als neuer Benutzer an.',
 'nosuchusershort'            => 'Der Benutzername „$1“ existiert nicht. Bitte überprüfe die Schreibweise.',
-'nouserspecified'            => 'Bitte gebe einen Benutzernamen an.',
+'nouserspecified'            => 'Bitte gib einen Benutzernamen an.',
 'wrongpassword'              => 'Das Passwort ist falsch (oder fehlt). Bitte versuche es erneut.',
 'wrongpasswordempty'         => 'Das eingegebene Passwort war leer. Bitte versuche es erneut.',
 'passwordtooshort'           => 'Fehler bei der Passwort-Wahl: Es muss mindestens $1 Zeichen lang sein und darf nicht mit dem Benutzernamen identisch sein.',
@@ -660,46 +660,6 @@ Du kannst $1 oder einen der anderen [[{{MediaWiki:grouppage-sysop}}|Administrato
 *IP-Adresse: $3
 *Sperr-ID: #$5
 </div>',
-'blockedtext-concise'       => 'Dein Benutzername oder Deine IP-Adresse wurde von $1 gesperrt. Als Grund wurde angegeben:
-
-:\'\'$2\'\' (<span class="plainlinks">[{{fullurl:Special:Ipblocklist|&action=search&limit=&ip=%23}}$5 Logbucheintrag]</span>)
-
-<p style="border-style: solid; border-color: red; border-width: 1px; padding:5px;"><b>Ein Lesezugriff ist weiterhin möglich,</b> 
-nur die Bearbeitung und Erstellung von Seiten in {{SITENAME}} wurde gesperrt.
-Sollte diese Nachricht angezeigt werden, obwohl nur lesend zugriffen wurde, bist du einem (roten) Link auf einen noch nicht existenten Artikel gefolgt.</p>
-
-Du kannst $1 oder einen der anderen [[{{MediaWiki:grouppage-sysop}}|Administratoren]] kontaktieren, um über die Sperre zu diskutieren.
-
-<div style="border-style: solid; border-color: red; border-width: 1px; padding:5px;">
-\'\'\'Bitte gebe folgende Daten in jeder Anfrage an:\'\'\'
-*Sperrender Administrator: $1
-*Sperrgrund: $2
-*Beginn der Sperre: $8
-*Sperr-Ende: $6
-*IP-Adresse: $3
-*Sperre betrifft: $7
-*Sperr-ID: #$5
-</div>',
-'autoblockedtext-concise'   => 'Deine IP-Adresse wurde automatisch gesperrt, da sie von einem anderen Benutzer genutzt wurde, der durch $1 gesperrt wurde.
-Als Grund wurde angegeben:
-
-:\'\'$2\'\' (<span class="plainlinks">[{{fullurl:Special:Ipblocklist|&action=search&limit=&ip=%23}}$5 Logbucheintrag]</span>)
-
-<p style="border-style: solid; border-color: red; border-width: 1px; padding:5px;"><b>Ein Lesezugriff ist weiterhin möglich,</b> 
-nur die Bearbeitung und Erstellung von Seiten in {{SITENAME}} wurde gesperrt.
-Sollte diese Nachricht angezeigt werden, obwohl nur lesend zugriffen wurde, bist du einem (roten) Link auf einen noch nicht existenten Artikel gefolgt.</p>
-
-Du kannst $1 oder einen der anderen [[{{MediaWiki:grouppage-sysop}}|Administratoren]] kontaktieren, um über die Sperre zu diskutieren.
-
-<div style="border-style: solid; border-color: red; border-width: 1px; padding:5px;">
-\'\'\'Bitte gebe folgende Daten in jeder Anfrage an:\'\'\'
-*Sperrender Administrator: $1
-*Sperrgrund: $2
-*Beginn der Sperre: $8
-*Sperr-Ende: $6
-*IP-Adresse: $3
-*Sperr-ID: #$5
-</div>',
 'blockedoriginalsource'     => "Der Quelltext von '''$1''' wird hier angezeigt:",
 'blockededitsource'         => "Der Quelltext '''deiner Änderungen''' an '''$1''':",
 'whitelistedittitle'        => 'Zum Bearbeiten ist es erforderlich, angemeldet zu sein',
@@ -764,9 +724,9 @@ Reiche hier keine Texte ein, falls du nicht willst, dass diese ohne Einschränku
 
 Du bestätigst hiermit auch, dass du diese Texte selbst geschrieben hast oder diese von einer gemeinfreien Quelle kopiert habst
 (siehe $1 für weitere Details). <strong>ÜBERTRAGE OHNE GENEHMIGUNG KEINE URHEBERRECHTLICH GESCHÜTZTEN INHALTE!</strong>',
-'longpagewarning'           => '<strong>WARNUNG: Diese Seite ist $1 kB groß; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die größer als 32 kB sind.
+'longpagewarning'           => '<strong>WARNUNG: Diese Seite ist $1 kB groß; einige Browser könnten Probleme haben, Seiten zu bearbeiten, die größer als 32 KB sind.
 Überlege bitte, ob eine Aufteilung der Seite in kleinere Abschnitte möglich ist.</strong>',
-'longpageerror'             => '<strong>FEHLER: Der Text, den du zu speichern versuchst, ist $1 kB groß. Das ist größer als das erlaubte Maximum von $2 kB. Speicherung nicht möglich.</strong>',
+'longpageerror'             => '<strong>FEHLER: Der Text, den du zu speichern versuchst, ist $1 KB groß. Das ist größer als das erlaubte Maximum von $2 KB – Speicherung nicht möglich.</strong>',
 'readonlywarning'           => '<strong>WARNUNG: Die Datenbank wurde während der Seitenbearbeitung für Wartungsarbeiten gesperrt, so dass du die Seite im Moment nicht
 speichern kannst. Sichere den Text und versuche die Änderungen später einzuspielen.</strong>',
 'protectedpagewarning'      => "'''ACHTUNG: Diese Seite wurde gesperrt, so dass sie nur durch Benutzer mit Administratorrechten bearbeitet werden kann.'''",
@@ -830,7 +790,7 @@ Dies geschah vermutlich auf Grund von wiederholtem Vandalismus von Besuchern dei
 'history-feed-title'          => 'Versionsgeschichte',
 'history-feed-description'    => 'Versionsgeschichte für diese Seite in {{SITENAME}}',
 'history-feed-item-nocomment' => '$1 um $2', # user at time
-'history-feed-empty'          => 'Die angeforderte Seite existiert nicht. Vielleicht wurde sie gelöscht oder verschoben. [[Special:Search|Durchsuchen]] Sie {{SITENAME}} für passende neue Seiten.',
+'history-feed-empty'          => 'Die angeforderte Seite existiert nicht. Vielleicht wurde sie gelöscht oder verschoben. [[Special:Search|Durchsuche]] {{SITENAME}} für passende neue Seiten.',
 
 # Revision deletion
 'rev-deleted-comment'         => '(Bearbeitungskommentar entfernt)',
@@ -888,12 +848,6 @@ Administratoren können den entfernten Inhalt oder andere entfernte Bestandteile
 'searchresulttext'      => 'Für mehr Informationen zur Suche siehe die [[{{MediaWiki:helppage}}|Hilfeseite]].',
 'searchsubtitle'        => 'Für deine Suchanfrage „[[:$1]]“.',
 'searchsubtitleinvalid' => 'Für deine Suchanfrage „$1“.',
-'badquery'              => 'Falsche Suchanfrage',
-'badquerytext'          => 'Deine Suchanfrage konnte nicht verarbeitet werden. 
-Vermutlich hast du versucht, ein Wort zu suchen, das kürzer als drei Buchstaben ist. 
-Dies ist nicht möglich. Vielleicht hast du auch die Anfrage falsch formuliert, z.&nbsp;B. „Lohn und und Steuern“. 
-Bitte versuche eine andere Anfrage.',
-'matchtotals'           => 'Die Suchanfrage „$1“ stimmt mit $2 Seitentiteln und dem Inhalt von $3 Seiten überein.',
 'noexactmatch'          => "'''Es existiert keine Seite mit dem Titel „$1“.'''
 
 Versuche es über die Volltextsuche.
@@ -913,7 +867,6 @@ Wenn du dich mit dem Thema auskennen, kannst du selbst die Seite „[[$1]]“ ve
 'powersearch'           => 'Suche',
 'powersearchtext'       => 'Suche in Namensräumen:<br />$1<br />$2 Weiterleitungen anzeigen<br />Suche nach: $3 $9',
 'searchdisabled'        => 'Die {{SITENAME}} Suche wurde deaktiviert. Du kannst unterdessen über Google suchen. Bitte bedenken, dass der Suchindex für {{SITENAME}} veraltet sein kann.',
-'blanknamespace'        => '(Seiten)',
 
 # Preferences page
 'preferences'              => 'Einstellungen',
@@ -993,19 +946,22 @@ Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit '''Str
 'userrights-available-remove' => 'Du darst Benutzer aus den Grupppen $1 entfernen.',
 
 # Groups
-'group'            => 'Gruppe:',
-'group-bot'        => 'Bots',
-'group-sysop'      => 'Administratoren',
-'group-bureaucrat' => 'Bürokraten',
-'group-all'        => '(alle)',
+'group'               => 'Gruppe:',
+'group-autoconfirmed' => 'Bestätigte Benutzer',
+'group-bot'           => 'Bots',
+'group-sysop'         => 'Administratoren',
+'group-bureaucrat'    => 'Bürokraten',
+'group-all'           => '(alle)',
 
-'group-bot-member'        => 'Bot',
-'group-sysop-member'      => 'Administrator',
-'group-bureaucrat-member' => 'Bürokrat',
+'group-autoconfirmed-member' => 'Bestätigter Benutzer',
+'group-bot-member'           => 'Bot',
+'group-sysop-member'         => 'Administrator',
+'group-bureaucrat-member'    => 'Bürokrat',
 
-'grouppage-bot'        => '{{ns:project}}:Bots',
-'grouppage-sysop'      => '{{ns:project}}:Administratoren',
-'grouppage-bureaucrat' => '{{ns:project}}:Bürokraten',
+'grouppage-autoconfirmed' => '{{ns:project}}:Bestätigte Benutzer',
+'grouppage-bot'           => '{{ns:project}}:Bots',
+'grouppage-sysop'         => '{{ns:project}}:Administratoren',
+'grouppage-bureaucrat'    => '{{ns:project}}:Bürokraten',
 
 # User rights log
 'rightslog'      => 'Rechte-Logbuch',
@@ -1485,7 +1441,7 @@ Um die Einstellungen deiner Beobachtungsliste anzupassen, besuche: {{fullurl:Spe
 'exblank'                     => 'Seite war leer',
 'confirmdelete'               => 'Löschen bestätigen',
 'deletesub'                   => '(Lösche „$1“)',
-'historywarning'              => 'WARNUNG: Die Seite, die du löschen willst, hat eine Versionsgeschichte:',
+'historywarning'              => 'Achtung, die Seite, die du löschen möchtest, hat eine Versionsgeschichte:',
 'confirmdeletetext'           => 'Du bist dabei, eine Seite oder eine Datei und alle zugehörigen älteren Versionen zu löschen. Bitte bestätige dazu, dass du dir der Konsequenzen bewusst bist, und dass Du in Übereinstimmung mit den [[{{MediaWiki:policy-url}}|Richtlinien]] handelst.',
 'actioncomplete'              => 'Aktion beendet',
 'deletedtext'                 => '„$1“ wurde gelöscht. Im $2 findest du eine Liste der letzten Löschungen.',
@@ -1597,8 +1553,9 @@ Im [[Special:Log/delete|Lösch-Logbuch]] findest du eine Übersicht der gelösch
 $1',
 
 # Namespace form on various pages
-'namespace' => 'Namensraum:',
-'invert'    => 'Auswahl umkehren',
+'namespace'      => 'Namensraum:',
+'invert'         => 'Auswahl umkehren',
+'blanknamespace' => '(Seiten)',
 
 # Contributions
 'contributions' => 'Benutzerbeiträge',
@@ -1817,8 +1774,8 @@ Alternativ ist der Export auch mit der Syntax <tt><nowiki>[[</nowiki>{{ns:specia
 'import'                     => 'Seiten importieren',
 'importinterwiki'            => 'Transwiki-Import',
 'import-interwiki-text'      => 'Wähle ein Wiki und eine Seite zum Importieren aus.
-Das Datum der jeweiligen Versionen und die Autoren bleiben erhalten.
-Alle Transwiki Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] protokolliert.',
+Die Versionsdaten und Benutzernamen bleiben dabei erhalten.
+Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] protokolliert.',
 'import-interwiki-history'   => 'Importiere alle Versionen dieser Seite',
 'import-interwiki-submit'    => 'Import',
 'import-interwiki-namespace' => 'Importiere die Seite in den Namensraum:',

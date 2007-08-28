@@ -283,7 +283,12 @@ class Title {
 			if( preg_match( '!\[{2}(.*?)(?:\||\]{2})!', $text, $m ) ) {
 				// Strip preceding colon used to "escape" categories, etc.
 				// and URL-decode links
-				$m[1] = urldecode( ltrim( $m[1], ':' ) );
+				if( strpos( $m[1], '%' ) !== false ) {
+					// Match behavior of inline link parsing here;
+					// don't interpret + as " " most of the time!
+					// It might be safe to just use rawurldecode instead, though.
+					$m[1] = urldecode( ltrim( $m[1], ':' ) );
+				}
 				$title = Title::newFromText( $m[1] );
 				// Redirects to Special:Userlogout are not permitted
 				if( $title instanceof Title && !$title->isSpecial( 'Userlogout' ) )
@@ -1061,6 +1066,7 @@ class Title {
 			$link = '[[' . $wgContLang->getNsText( NS_USER ) . ":{$name}|{$name}]]";
 			$blockid = $block->mId;
 			$blockExpiry = $user->mBlock->mExpiry;
+			$blockTimestamp = $wgLang->timeanddate( wfTimestamp( TS_MW, $wgUser->mBlock->mTimestamp ), true );
 
 			if ( $blockExpiry == 'infinity' ) {
 				// Entry in database (table ipblocks) is 'infinity' but 'ipboptions' uses 'infinite' or 'indefinite'
@@ -1083,7 +1089,7 @@ class Title {
 
 			$intended = $user->mBlock->mAddress;
 
-			$errors[] = array ( ($block->mAuto ? 'autoblockedtext-concise' : 'blockedtext-concise'), $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended );
+			$errors[] = array ( ($block->mAuto ? 'autoblockedtext' : 'blockedtext'), $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended, $blockTimestamp );
 		}
 
 		return $errors;

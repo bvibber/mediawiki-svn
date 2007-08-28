@@ -411,6 +411,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   available databases in installer
 * Resizing transparent GIF images with GD now retains transparency by skipping
   resampling
+* (bug 11065) Fix regression in handling of wiki-formatted EXIF metadata
+* Double encoding broke Special:Newpages for some languages
+* Adding a newline before the statistics footer, to prevent parsing problems
+* Preventing the TOC from appearing in Special:Statistics
+* (bug 11082) Fix check for fully-specced table names in Database::tableName
+* (bug 11067) Fix regression in upload conflict thumbnail display
+* (bug 11072) Fix regression in API image history query
 
 
 == API changes since 1.10 ==
@@ -469,6 +476,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 10971) `aufrom` parameter doesn't work with spaces
 * Fix username handling issue with `auprefix` parameter
 * Treat underscores as spaces for `aufrom` and `auprefix` parameters
+* Added edit/delete/... token retrieval to prop=info
+* Added meta=userinfo - logged-in user information, group membership, rights
 
 == Maintenance script changes since 1.10 ==
 

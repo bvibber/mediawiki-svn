@@ -459,7 +459,7 @@ class Linker {
 			$frameParams['framed'] = true;
 		}
 		if ( $thumb ) {
-			$frameParams['thumb'] = true;
+			$frameParams['thumbnail'] = true;
 		}
 		if ( $manualthumb ) {
 			$frameParams['manualthumb'] = $manualthumb;
@@ -468,7 +468,7 @@ class Linker {
 			$frameParams['valign'] = $valign;
 		}
 		$file = wfFindFile( $title, $time );
-		return $this->makeImageLink2( $title, $file, $label, $alt, $frameParams, $handlerParams );
+		return $this->makeImageLink2( $title, $file, $frameParams, $handlerParams );
 	}
 
 	/**
@@ -530,13 +530,13 @@ class Linker {
 				}
 
 				// Reduce width for upright images when parameter 'upright' is used
-				if ( !isset( $fp['upright_factor'] ) || $fp['upright_factor'] == 0 ) {
-					$fp['upright_factor'] = $wgThumbUpright;
+				if ( isset( $fp['upright'] ) && $fp['upright'] == 0 ) {
+					$fp['upright'] = $wgThumbUpright;
 				}
 				// Use width which is smaller: real image width or user preference width
 				// For caching health: If width scaled down due to upright parameter, round to full __0 pixel to avoid the creation of a lot of odd thumbs
 				$prefWidth = isset( $fp['upright'] ) ? 
-					round( $wgThumbLimits[$wopt] * $fp['upright_factor'], -1 ) : 
+					round( $wgThumbLimits[$wopt] * $fp['upright'], -1 ) : 
 					$wgThumbLimits[$wopt];
 				if ( $hp['width'] <= 0 || $prefWidth < $hp['width'] ) {
 					$hp['width'] = $prefWidth;
@@ -544,7 +544,7 @@ class Linker {
 			}
 		}
 
-		if ( isset( $fp['thumbnail'] ) || isset( $fp['framed'] ) ) {
+		if ( isset( $fp['thumbnail'] ) || isset( $fp['manualthumb'] ) || isset( $fp['framed'] ) ) {
 
 			# Create a thumbnail. Alignment depends on language
 			# writing direction, # right aligned for left-to-right-

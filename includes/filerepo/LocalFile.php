@@ -261,8 +261,7 @@ class LocalFile extends File
 			return;
 		}
 		if ( is_null($this->media_type) || 
-			$this->mime == 'image/svg' || 
-			$this->sha1 == ''
+			$this->mime == 'image/svg'
 		) {
 			$this->upgradeRow();
 			$this->upgraded = true;
@@ -972,6 +971,19 @@ class LocalFile extends File
 
 	function getSha1() {
 		$this->load();
+		// Initialise now if necessary
+		if ( $this->sha1 == '' && $this->fileExists ) {
+			$this->sha1 = File::sha1Base36( $this->getPath() );
+			if ( strval( $this->sha1 ) != '' ) {
+				$dbw = $this->repo->getMasterDB();
+				$dbw->update( 'image', 
+					array( 'img_sha1' => $this->sha1 ),
+					array( 'img_name' => $this->getName() ),
+					__METHOD__ );
+				$this->saveToCache();
+			}
+		}
+
 		return $this->sha1;
 	}
 
@@ -1418,6 +1430,21 @@ class LocalFileRestoreBatch {
 			if ( strlen( $sha1 ) == 32 && $sha1[0] == '0' ) {
 				$sha1 = substr( $sha1, 1 );
 			}
+			
+			if( is_null( $row->fa_major_mime ) || $row->fa_major_mime == 'unknown'
+				|| is_null( $row->fa_minor_mime ) || $row->fa_minor_mime == 'unknown'
+				|| is_null( $row->fa_media_type ) || $row->fa_media_type == 'UNKNOWN'
+				|| is_null( $row->fa_metadata ) ) {
+				// Refresh our metadata
+				// Required for a new current revision; nice for older ones too. :)
+				$props = RepoGroup::singleton()->getFileProps( $deletedUrl );
+			} else {
+				$props = array(
+					'minor_mime' => $row->fa_minor_mime,
+					'major_mime' => $row->fa_major_mime,
+					'media_type' => $row->fa_media_type,
+					'metadata' => $row->fa_metadata );
+			}
 
 			if ( $first && !$exists ) {
 				// This revision will be published as the new current version
@@ -1427,11 +1454,11 @@ class LocalFileRestoreBatch {
 					'img_size'        => $row->fa_size,
 					'img_width'       => $row->fa_width,
 					'img_height'      => $row->fa_height,
-					'img_metadata'    => $row->fa_metadata,
+					'img_metadata'    => $props['metadata'],
 					'img_bits'        => $row->fa_bits,
-					'img_media_type'  => $row->fa_media_type,
-					'img_major_mime'  => $row->fa_major_mime,
-					'img_minor_mime'  => $row->fa_minor_mime,
+					'img_media_type'  => $props['media_type'],
+					'img_major_mime'  => $props['major_mime'],
+					'img_minor_mime'  => $props['minor_mime'],
 					'img_description' => $row->fa_description,
 					'img_user'        => $row->fa_user,
 					'img_user_text'   => $row->fa_user_text,
@@ -1462,10 +1489,10 @@ class LocalFileRestoreBatch {
 					'oi_user'         => $row->fa_user,
 					'oi_user_text'    => $row->fa_user_text,
 					'oi_timestamp'    => $row->fa_timestamp,
-					'oi_metadata'     => $row->fa_metadata,
-					'oi_media_type'   => $row->fa_media_type,
-					'oi_major_mime'   => $row->fa_major_mime,
-					'oi_minor_mime'   => $row->fa_minor_mime,
+					'oi_metadata'     => $props['metadata'],
+					'oi_media_type'   => $props['media_type'],
+					'oi_major_mime'   => $props['major_mime'],
+					'oi_minor_mime'   => $props['minor_mime'],
 					'oi_deleted'      => $row->fa_deleted,
 					'oi_sha1'         => $sha1 );
 			}

@@ -454,8 +454,6 @@ $wgMessageStructure = array(
 		'blockedtitle',
 		'blockedtext',
 		'autoblockedtext',
-		'blockedtext-concise',
-		'autoblockedtext-concise',
 		'blockedoriginalsource',
 		'blockededitsource',
 		'whitelistedittitle',
@@ -619,9 +617,6 @@ $wgMessageStructure = array(
 		'searchresulttext',
 		'searchsubtitle',
 		'searchsubtitleinvalid',
-		'badquery',
-		'badquerytext',
-		'matchtotals',
 		'noexactmatch',
 		'titlematches',
 		'notitlematches',
@@ -637,7 +632,6 @@ $wgMessageStructure = array(
 		'powersearchtext',
 		'searchdisabled',
 		'googlesearch',
-		'blanknamespace',
 	),
 	'preferences' => array(
 		'preferences',
@@ -717,17 +711,20 @@ $wgMessageStructure = array(
 	),
 	'group' => array(
 		'group',
+		'group-autoconfirmed',
 		'group-bot',
 		'group-sysop',
 		'group-bureaucrat',
 		'group-all',
 	),
 	'group-member' => array(
+		'group-autoconfirmed-member',
 		'group-bot-member',
 		'group-sysop-member',
 		'group-bureaucrat-member',
 	),
 	'grouppage' => array(
+		'grouppage-autoconfirmed',
 		'grouppage-bot',
 		'grouppage-sysop',
 		'grouppage-bureaucrat',
@@ -1276,6 +1273,7 @@ $wgMessageStructure = array(
 	'nsform' => array(
 		'namespace',
 		'invert',
+		'blanknamespace',
 	),
 	'contributions' => array(
 		'contributions',

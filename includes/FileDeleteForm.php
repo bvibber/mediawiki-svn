@@ -63,7 +63,7 @@ class FileDeleteForm {
 		
 		// Perform the deletion if appropriate
 		if( $wgRequest->wasPosted() && $wgUser->matchEditToken( $token, $this->oldimage ) ) {
-			$comment = $wgRequest->getText( 'wpComment' );
+			$comment = $wgRequest->getText( 'wpReason' );
 			if( $this->oldimage ) {
 				$status = $this->file->deleteOld( $this->oldimage, $comment );
 				if( $status->ok ) {
@@ -90,27 +90,47 @@ class FileDeleteForm {
 			return;
 		}
 		
-		// Show the form
-		$this->showForm();		
+		$this->showForm();
+		$this->showLogEntries();
 	}
 	
 	/**
 	 * Show the confirmation form
 	 */
 	private function showForm() {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgRequest;
 		
 		$form  = Xml::openElement( 'form', array( 'method' => 'post', 'action' => $this->getAction() ) );
 		$form .= Xml::hidden( 'wpEditToken', $wgUser->editToken( $this->oldimage ) );
 		$form .= '<fieldset><legend>' . wfMsgHtml( 'filedelete-legend' ) . '</legend>';
 		$form .= $this->prepareMessage( 'filedelete-intro' );
 		
-		$form .= '<p>' . Xml::inputLabel( wfMsg( 'filedelete-comment' ), 'wpComment', 'wpComment', 60 ) . '</p>';
+		$form .= '<p>' . Xml::inputLabel( wfMsg( 'filedelete-comment' ), 'wpReason', 'wpReason',
+			60, $wgRequest->getText( 'wpReason' ) ) . '</p>';
 		$form .= '<p>' . Xml::submitButton( wfMsg( 'filedelete-submit' ) ) . '</p>';
 		$form .= '</fieldset>';
 		$form .= '</form>';
 		
 		$wgOut->addHtml( $form );
+	}
+	
+	/**
+	 * Show deletion log fragments pertaining to the current file
+	 */
+	private function showLogEntries() {
+		global $wgOut;
+		$wgOut->addHtml( '<h2>' . htmlspecialchars( LogPage::logName( 'delete' ) ) . "</h2>\n" );
+		$reader = new LogViewer(
+			new LogReader(
+				new FauxRequest(
+					array(
+						'type' => 'delete',
+						'page' => $this->title->getPrefixedText(),
+					)
+				)
+			)
+		);
+		$reader->showList( $wgOut );		
 	}
 	
 	/**
