@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.13) feisty; urgency=low
+
+  * Handle diversions only on install and remove 
+
+ -- Tim Starling <tstarling@wikimedia.org>  Tue, 28 Aug 2007 19:38:06 +0000
+
 wikimedia-task-appserver (1.12) feisty; urgency=low
 
   * Fixed permissions on /etc/sudoers 

@@ -16,7 +16,7 @@ set -e
 
 
 case "$1" in
-    install|upgrade)
+    install)
 	dpkg-divert --package wikimedia-task-appserver --add --rename \
 			--divert /etc/apache2/apache2.conf.default /etc/apache2/apache2.conf
 	dpkg-divert --package wikimedia-task-appserver --add --rename \

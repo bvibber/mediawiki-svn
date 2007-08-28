@@ -28,14 +28,18 @@ removemount() {
 }
 
 case "$1" in
-       purge)
+    purge)
 	;;
-       remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
+    remove)
 	dpkg-divert --package wikimedia-task-appserver --remove --rename \
 		--divert /etc/apache2/apache2.conf.default /etc/apache2/apache2.conf
 	dpkg-divert --package wikimedia-task-appserver --remove --rename \
 		--divert /etc/php5/apache2/php.ini.default /etc/php5/apache2/php.ini
+       	removemount /mnt/upload3
+       	removemount /mnt/math
+       	;;
 
+    upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
        removemount /mnt/upload3
        removemount /mnt/math
         ;;
