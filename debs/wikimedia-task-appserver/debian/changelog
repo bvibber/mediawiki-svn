@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.9) feisty; urgency=low
+
+  * Add dependency on php5-fss
+
+ -- Mark Bergsma <mark@wikimedia.org>  Tue, 28 Aug 2007 14:42:29 +0000
+
 wikimedia-task-appserver (1.8) feisty; urgency=low
 
   * Add diversion of /etc/apache2/apache2.conf
