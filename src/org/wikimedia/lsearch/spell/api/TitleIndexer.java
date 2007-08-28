@@ -14,6 +14,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.MultiSearcher;
@@ -30,6 +31,7 @@ import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.IndexSearcherMul;
 import org.wikimedia.lsearch.search.WikiSearcher;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
+import org.wikimedia.lsearch.spell.dist.DoubleMetaphone;
 import org.wikimedia.lsearch.util.HighFreqTerms;
 
 /** 
@@ -53,6 +55,7 @@ public class TitleIndexer {
 	protected IndexId iid,titles;
 	protected String langCode;
 	protected IndexRegistry registry;
+	protected DoubleMetaphone dmeta = new DoubleMetaphone();
 	
 	public TitleIndexer(IndexId iid){
 		this(iid,false);
@@ -290,7 +293,7 @@ public class TitleIndexer {
 		try {
 			ngramWriter.createIndex(path,new SimpleAnalyzer());
 			IndexReader ir = IndexReader.open(iid.getSpellWords().getTempPath());
-			Collection<String> mostfreq = HighFreqTerms.getHighFreqTerms(ir,"contents",50);
+			/*Collection<String> mostfreq = HighFreqTerms.getHighFreqTerms(iid,"contents",50);
 			// get at most 25 stopwords
 			HashSet<String> stopWords = new HashSet<String>();
 			for(String w : mostfreq){
@@ -298,8 +301,22 @@ public class TitleIndexer {
 					stopWords.add(w);
 				if(stopWords.size() >= 25)
 					break;
+			} */
+			HashSet<String> stopWords = new HashSet<String>();
+			TermDocs td = ir.termDocs(new Term("metadata_key","stopWords"));
+			if(td.next()){
+				for(String s : ir.document(td.doc()).get("metadata_value").split(" "))
+					stopWords.add(s);
 			}
 			addMetadata("stopWords",stopWords);
+			// add all titles
+			for(int i=0;i<ir.maxDoc();i++){
+				if(ir.isDeleted(i))
+					continue;
+				String title = ir.document(i).get("title");
+				if(title != null)
+					addTitle(title);
+			}
 			
 			LuceneDictionary dict = new LuceneDictionary(ir,"contents");
 			Word word;
@@ -307,11 +324,13 @@ public class TitleIndexer {
 				String w = word.getWord();
 				int freq = word.getFrequency();
 				if(w.contains("_")){ // phrase
-					String[] words = w.split("_");
+					String[] words = w.split("_+");					
+					if(stopWords.contains(words[0]) || stopWords.contains(words[words.length-1]))
+						continue;
 					boolean allowed = true;
 					for(String ww : words){
 						// allow only those phrases consisting of title words
-						if(stopWords.contains(ww) || ir.docFreq(new Term("title",ww)) == 0){
+						if(ir.docFreq(new Term("title",ww)) == 0){
 							allowed = false; 
 							break; 
 						}
@@ -333,6 +352,33 @@ public class TitleIndexer {
 					}
 				}
 			}
+			//ngramWriter.closeAndOptimize();
+			//ngramWriter.reopenIndex(path,new SimpleAnalyzer());
+			//IndexReader ngramReader = ngramWriter.getReader();
+			// add stuff from titles with stop words
+			dict = new LuceneDictionary(ir,"title");
+			while((word = dict.next()) != null){
+				String w = word.getWord();
+				if(w.contains("_")){ // phrase
+					String[] words = w.split("_+");
+					if(stopWords.contains(words[0]) || stopWords.contains(words[words.length-1])){
+						int freq = ir.docFreq(new Term("contents",w));
+						NamespaceFreq nsf = new NamespaceFreq();
+						nsf.setFrequency(0,freq);
+						ArrayList<Integer> nss = new ArrayList<Integer>();
+						nss.add(0);
+						addPhrase(w,nsf,nss);
+					}
+				} /* else if(ngramReader.docFreq(new Term("word",w))==0){
+					// add words from titles
+					int freq = ir.docFreq(new Term("contents",w));
+					NamespaceFreq nsf = new NamespaceFreq();
+					nsf.setFrequency(0,freq);
+					ArrayList<Integer> nss = new ArrayList<Integer>();
+					nss.add(0);
+					addWord(w,nsf,nss);
+				} */
+			}
 			ngramWriter.closeAndOptimize();
 			ir.close();
 			
@@ -344,6 +390,17 @@ public class TitleIndexer {
 		
 	}
 	
+	
+	/**
+	 * Register a title in the index, without tokenization, just lowercase. 
+	 * 
+	 * @param title
+	 */
+	public void addTitle(String title){
+		Document doc = new Document();
+		doc.add(new Field("title", title.toLowerCase(), Field.Store.NO, Field.Index.UN_TOKENIZED));
+		ngramWriter.addDocument(doc);
+	}
 	/** 
 	 * Add phrase to index
 	 * 
@@ -360,7 +417,7 @@ public class TitleIndexer {
 			return;
 		}
 		Document doc = new Document();
-		ngramWriter.createNgramFields(doc,"phrase",phrase);
+		//ngramWriter.createNgramFields(doc,"phrase",phrase);
 		doc.add(new Field("phrase",phrase, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("freq",freq, Field.Store.YES, Field.Index.NO));
 		for(Integer ns : namespaces){
@@ -398,13 +455,15 @@ public class TitleIndexer {
 	public void addWord(String word, NamespaceFreq nf, Collection<Integer> namespaces){
 		if(word.length() < 2)
 			return;
-		String freq = nf.serialize(minWordFreq);
+		String freq = nf.serialize();
 		if(freq.length() == 0)
 			return;
 		Document doc = new Document();
 		ngramWriter.createNgramFields(doc,"word",word);
 		doc.add(new Field("word",word, Field.Store.YES, Field.Index.UN_TOKENIZED));
 		doc.add(new Field("freq",freq, Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("meta1",dmeta.doubleMetaphone(word), Field.Store.YES, Field.Index.NO));
+		doc.add(new Field("meta2",dmeta.doubleMetaphone(word,true), Field.Store.YES, Field.Index.NO));
 		for(Integer ns : namespaces){
 			doc.add(new Field("namespace",ns.toString(),Field.Store.NO, Field.Index.UN_TOKENIZED));
 		}

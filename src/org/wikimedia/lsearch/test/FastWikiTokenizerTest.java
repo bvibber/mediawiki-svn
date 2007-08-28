@@ -60,7 +60,7 @@ public class FastWikiTokenizerTest {
 		}
 		
 		public static void main(String args[]) throws IOException{
-			String text = "(ant) and some. it's stupid";
+			String text = "(ant) and some. it's stupid it's something";
 			showTokens(text);
 			text = "Æ (ď), l' (ľ), תּפר ä, ö, ü; for instance, Ø ÓóÒò Goedel for Gödel; ĳ čakšire תפר   ";
 			showTokens(text);

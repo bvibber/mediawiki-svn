@@ -1,12 +1,15 @@
 package org.wikimedia.lsearch.spell;
 
 import java.io.IOException;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
@@ -17,6 +20,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.index.WikiSimilarity;
+import org.wikimedia.lsearch.util.HighFreqTerms;
 
 /**
  * IndexWriter for making temporary "clean" indexes which
@@ -33,14 +37,32 @@ public class CleanIndexWriter {
 	protected FieldBuilder builder;
 	protected String langCode;
 	
+	public static final String[] ENGLISH_STOP_WORDS = {
+	    "a", "an", "and", "are", "as", "at", "be", "but", "by",
+	    "for", "if", "in", "into", "is", "it",
+	    "no", "not", "of", "on", "or", "such",
+	    "that", "the", "their", "then", "there", "these",
+	    "they", "this", "to", "was", "will", "with"
+	  };
+	
 	public CleanIndexWriter(IndexId iid) throws IOException{
 		this.iid = iid;		
 		this.builder = new FieldBuilder("",FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
 		this.langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
+		HashSet<String> stopWords = new HashSet<String>();
+		if(langCode.equals("en")){
+			for(String w : ENGLISH_STOP_WORDS)
+				stopWords.add(w);
+		} else{
+			stopWords.addAll(HighFreqTerms.getHighFreqTerms(iid.getDB(),"contents",20));
+		}
+		log.info("Using phrase stopwords: "+stopWords);
+		builder.getBuilder().getFilters().setStopWords(stopWords);
 		String pathMain = iid.getSpellWords().getTempPath();
 		//String pathAll = iid.getSpellTitles().getTempPath();
 		writerMain = open(pathMain);
 		//writerAll = open(pathAll);			
+		addMetadata(writerMain,"stopWords",stopWords);
 	}
 	
 	protected IndexWriter open(String path) throws IOException {
@@ -106,6 +128,29 @@ public class CleanIndexWriter {
 		} catch(IOException e){
 			log.warn("I/O error optimizing/closing index at "+iid.getTempPath());
 			throw e;
+		}
+	}
+	
+	/** 
+	 * Add into metadata_key and metadata_value. 
+	 * Collection is assumed to contain words (without spaces) 
+	 */
+	public void addMetadata(IndexWriter writer, String key, Collection<String> values){
+		StringBuilder sb = new StringBuilder();
+		// serialize by joining with spaces
+		for(String val : values){
+			if(sb.length() != 0)
+				sb.append(" ");
+			sb.append(val);
+		}
+		Document doc = new Document();
+		doc.add(new Field("metadata_key",key, Field.Store.YES, Field.Index.UN_TOKENIZED));
+		doc.add(new Field("metadata_value",sb.toString(), Field.Store.YES, Field.Index.NO));
+		
+		try {
+			writer.addDocument(doc);
+		} catch (IOException e) {
+			log.warn("Cannot write metadata : "+e.getMessage());
 		}
 	}
 }

@@ -17,7 +17,7 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.ranks.LinkReader;
-import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.ranks.OldLinks;
 import org.wikimedia.lsearch.ranks.RankBuilder;
 import org.wikimedia.lsearch.storage.Storage;
 import org.wikimedia.lsearch.util.Localization;
@@ -103,7 +103,7 @@ public class Importer {
 			long start = System.currentTimeMillis();
 			
 			// regenerate link and redirect information
-			Links links = RankBuilder.processLinks(inputfile,RankBuilder.getTitles(inputfile,langCode),langCode,LinkReader.READ_REDIRECTS);
+			OldLinks links = RankBuilder.processLinks(inputfile,RankBuilder.getTitles(inputfile,langCode),langCode,LinkReader.READ_REDIRECTS);
 
 			if(updateReferences){				
 				try {

@@ -212,7 +212,8 @@ public class SearchEngine {
 						if(sq == null)
 							res.setSuggest(null);
 						else{
-							if(res.getNumHits() == 0){
+							res.setSuggest(sq.getFormated());
+							/*if(res.getNumHits() == 0){
 								// no hits: show the spell-checked results
 								SearchResults sugres = messenger.searchPart(piid,sq.getSearchterm(),q,nsfw,offset,limit,explain,host);
 								if(sugres.getNumHits() > 0){
@@ -225,7 +226,7 @@ public class SearchEngine {
 								if(sugres.getNumHits() > 0){
 									res.setSuggest(sq.getSearchterm());
 								}
-							}
+							}  */
 						}
 					}
 					return res;
@@ -241,20 +242,21 @@ public class SearchEngine {
 					if(sq == null)
 						res.setSuggest(null);
 					else{
-						if(res.getNumHits() == 0){
+						res.setSuggest(sq.getFormated());
+						/*if(res.getNumHits() == 0){
 							// no hits: show the spell-checked results
 							hits = searcher.search(q,nsfw,offset+limit);
 							if(hits.totalHits != 0){
 								res = makeSearchResults(searcher,hits,offset,limit,iid,sq.getSearchterm(),q,searchStart,explain);
-								res.setSuggest(sq.getSearchterm());
+								res.setSuggest(sq.getFormated());
 							}
 						} else if(sq.needsCheck()){
 							q = parseQuery(sq.getSearchterm(),parser,iid,raw,nsfw,searchAll);
 							hits = searcher.search(q,nsfw,1); // fetch only one result
 							if(hits.totalHits != 0){
-								res.setSuggest(sq.getSearchterm());
+								res.setSuggest(sq.getFormated());
 							}
-						}
+						} */
 					}
 				}
 				return res;

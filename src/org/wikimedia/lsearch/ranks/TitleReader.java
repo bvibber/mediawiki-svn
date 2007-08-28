@@ -23,7 +23,7 @@ import org.wikimedia.lsearch.util.Localization;
 public class TitleReader  implements DumpWriter{
 	Page page;
 	Revision revision;
-	Links links = new Links();
+	OldLinks links = new OldLinks();
 	protected String langCode;
 	
 	public TitleReader(String langCode){
@@ -40,7 +40,7 @@ public class TitleReader  implements DumpWriter{
 		String key = page.Title.Namespace+":"+page.Title.Text;
 		links.add(key,0);
 	}
-	public Links getTitles() {
+	public OldLinks getTitles() {
 		return links;
 	}
 	public void close() throws IOException {

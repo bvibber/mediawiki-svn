@@ -59,7 +59,7 @@ public class SuggestTest {
 			long start = System.currentTimeMillis();
 			if(!suggestOnly){
 				for(String text : inputtext.split(" ")){
-					if(text.length()>2){
+					if(text.length()>=2){
 						System.out.println("METAPHONES: "+dmeta.doubleMetaphone(text)+", "+dmeta.doubleMetaphone(text,true));
 						System.out.println("SUGGEST: ");
 						for(SuggestResult r : sc.suggestWords(text,10)){

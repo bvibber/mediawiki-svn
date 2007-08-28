@@ -70,7 +70,7 @@ public class RankBuilder {
 		long start = System.currentTimeMillis();
 
 		// regenerate link info
-		Links links = processLinks(inputfile,getTitles(inputfile,langCode),langCode,LinkReader.NO_REDIRECTS);
+		OldLinks links = processLinks(inputfile,getTitles(inputfile,langCode),langCode,LinkReader.NO_REDIRECTS);
 		links.compactAll();
 		Storage store = Storage.getInstance();
 		store.storePageReferences(links.getAll(),dbname);
@@ -81,7 +81,7 @@ public class RankBuilder {
 		System.out.println("Finished generating ranks in "+formatTime(end-start));
 	}
 
-	public static Links processLinks(String inputfile, Links links, String langCode, boolean readRedirects) {
+	public static OldLinks processLinks(String inputfile, OldLinks links, String langCode, boolean readRedirects) {
 		log.info("Second pass, calculating article links...");
 		InputStream input = null;
 		// second pass - calculate page ranks
@@ -103,7 +103,7 @@ public class RankBuilder {
 		return links;
 	}
 
-	public static Links getTitles(String inputfile,String langCode) {
+	public static OldLinks getTitles(String inputfile,String langCode) {
 		log.info("First pass, getting a list of valid articles...");
 		InputStream input = null;
 		try {
@@ -125,7 +125,7 @@ public class RankBuilder {
 		return tr.getTitles();
 	}
 	
-	public static void storeRelated(Storage store, Links links, String dbname) throws IOException{
+	public static void storeRelated(Storage store, OldLinks links, String dbname) throws IOException{
 		int num = 0;
 		int total = links.getAll().size();
 		ArrayList<Related> buf = new ArrayList<Related>();
@@ -143,7 +143,7 @@ public class RankBuilder {
 	/** 
 	 * Get related articles, sorted descending by score
 	 */
-	public static ArrayList<Related> getRelated(CompactArticleLinks cs, Links links){
+	public static ArrayList<Related> getRelated(CompactArticleLinks cs, OldLinks links){
 		ArrayList<Related> ret = new ArrayList<Related>();
 		
 		HashSet<CompactArticleLinks> ll = new HashSet<CompactArticleLinks>();			
@@ -170,7 +170,7 @@ public class RankBuilder {
 	/**
 	 * Get related titles (RelatedTitle is used in Article)
 	 */
-	public static ArrayList<RelatedTitle> getRelatedTitles(CompactArticleLinks cs, Links links){
+	public static ArrayList<RelatedTitle> getRelatedTitles(CompactArticleLinks cs, OldLinks links){
 		ArrayList<Related> rel = getRelated(cs,links);
 		ArrayList<RelatedTitle> ret = new ArrayList<RelatedTitle>();
 		for(Related r : rel){

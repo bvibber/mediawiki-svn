@@ -32,7 +32,7 @@ public class LinkReader implements DumpWriter {
 	Revision revision;
 	Siteinfo siteinfo;
 	/** ns:title -> number of referring articles */
-	Links links;
+	OldLinks links;
 	HashSet<String> interwiki;
 	String langCode;
 	boolean readRedirects;
@@ -40,11 +40,11 @@ public class LinkReader implements DumpWriter {
 	public static final boolean READ_REDIRECTS = true;
 	public static final boolean NO_REDIRECTS = false;
 
-	public LinkReader(Links links, String langCode){
+	public LinkReader(OldLinks links, String langCode){
 		this(links,langCode,false);
 	}
 	
-	public LinkReader(Links links, String langCode, boolean readRedirects){
+	public LinkReader(OldLinks links, String langCode, boolean readRedirects){
 		this.links = links;
 		this.readRedirects = readRedirects;
 		if(langCode == null || langCode.equals(""))
@@ -178,7 +178,7 @@ public class LinkReader implements DumpWriter {
 	public void writeStartWiki() throws IOException {
 		// nop		
 	}
-	public Links getRanks() {
+	public OldLinks getRanks() {
 		return links;
 	}
 	

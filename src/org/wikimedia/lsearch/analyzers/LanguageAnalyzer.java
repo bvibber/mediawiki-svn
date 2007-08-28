@@ -64,7 +64,7 @@ public class LanguageAnalyzer extends Analyzer {
 		TokenStream out = new AliasFilter(filters,
 				new ArrayTokens(tokens), new ArrayTokens(tokens));
 		if(filters.hasAdditionalFilters())
-			return filters.makeAdditionalFilterChain(out);
+			return filters.makeAdditionalFilterChain(fieldName,out);
 		else
 			return out;
 	}

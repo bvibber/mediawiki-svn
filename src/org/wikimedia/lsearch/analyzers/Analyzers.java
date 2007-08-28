@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.analyzers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
@@ -122,8 +123,10 @@ public class Analyzers {
 		return getSearcherAnalyzer(new FilterFactory(langCode),new FieldNameFactory(exactCase));
 	}
 	
-	public static PerFieldAnalyzerWrapper getSpellCheckAnalyzer(String langCode){
-		return getSearcherAnalyzer(new FilterFactory(langCode,FilterFactory.Type.SPELL_CHECK),new FieldNameFactory());
+	public static PerFieldAnalyzerWrapper getSpellCheckAnalyzer(String langCode, HashSet<String> stopWords){
+		FilterFactory filters = new FilterFactory(langCode,FilterFactory.Type.SPELL_CHECK);
+		filters.setStopWords(stopWords);
+		return getSearcherAnalyzer(filters,new FieldNameFactory());
 	}
 	
 	/**

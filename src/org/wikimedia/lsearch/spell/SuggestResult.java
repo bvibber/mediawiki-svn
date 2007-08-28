@@ -20,6 +20,15 @@ public class SuggestResult {
 		}
 	}
 	
+	static class ComparatorNoCommonMisspell implements java.util.Comparator<SuggestResult> {
+		public int compare(SuggestResult o1, SuggestResult o2){	
+			if(o1.dist == o2.dist)
+				return o2.getFrequency() - o1.getFrequency();
+			else 
+				return o1.dist - o2.dist;					
+		}
+	}
+	
 	/** Init main attributes (metaphone distances default to 0) */
 	public SuggestResult(String word, int frequency, int dist) {
 		this.word = word;
@@ -34,6 +43,15 @@ public class SuggestResult {
 		this.dist = metric.distance(word);
 		this.distMetaphone = metric.meta1Distance(word);
 		this.distMetaphone2 = metric.meta2Distance(word);
+	}
+	
+	/** Initialize all atributes using suggestion metrics */
+	public SuggestResult(String word, int frequency, Suggest.Metric metric, String meta1, String meta2) {
+		this.word = word;
+		this.frequency = frequency;
+		this.dist = metric.distance(word);
+		this.distMetaphone = metric.sdmeta1.getDistance(meta1);
+		this.distMetaphone2 = metric.sdmeta2.getDistance(meta2);
 	}
 	
 	public int getDist() {
@@ -79,6 +97,31 @@ public class SuggestResult {
 	@Override
 	public String toString() {
 		return "("+word + " dist:" + dist + ",freq:" + frequency+",meta:"+distMetaphone+",meta2:"+distMetaphone2+")" ;
+	}
+
+	@Override
+	public int hashCode() {
+		final int PRIME = 31;
+		int result = 1;
+		result = PRIME * result + ((word == null) ? 0 : word.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		final SuggestResult other = (SuggestResult) obj;
+		if (word == null) {
+			if (other.word != null)
+				return false;
+		} else if (!word.equals(other.word))
+			return false;
+		return true;
 	}
 	
 }

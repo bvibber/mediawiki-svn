@@ -300,6 +300,7 @@ public class FastWikiTokenizerEngine {
 				if(length<buffer.length)
 					buffer[length++] = c;
 			} else if(decomposer.isCombiningChar(c)); // ignore 
+			else if(c == '\''); // ignore if single quote				
 			else{
 				addToken();
 			}

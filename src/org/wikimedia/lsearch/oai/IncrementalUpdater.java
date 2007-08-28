@@ -28,7 +28,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.ranks.CompactArticleLinks;
-import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.ranks.OldLinks;
 import org.wikimedia.lsearch.ranks.Related;
 import org.wikimedia.lsearch.ranks.RelatedTitle;
 import org.wikimedia.lsearch.storage.Storage;
@@ -298,7 +298,7 @@ public class IncrementalUpdater {
 			}			
 		}
 		// fetch
-		Links links = new Links(store.getPageReferences(titles,dbname));
+		OldLinks links = new OldLinks(store.getPageReferences(titles,dbname));
 		HashMap<Title,ArrayList<RelatedTitle>> rel = store.getRelatedPages(titles,dbname);
 		// update
 		for(IndexUpdateRecord rec : records){

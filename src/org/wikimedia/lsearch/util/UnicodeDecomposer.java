@@ -140,10 +140,6 @@ public class UnicodeDecomposer {
 				if(table[ich]==null)
 					continue;
 				Buffer buffer = new Buffer(buf,0);
-				if(ich == 0xD4A){
-					int b = 0;
-					b++;
-				}
 				recursiveDecompose(buffer,table,letters,(char)ich);
 				if(buffer.len != 0){
 					decomposition[ich]= new char[buffer.len];

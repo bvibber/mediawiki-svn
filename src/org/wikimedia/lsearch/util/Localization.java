@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.net.URL;
 import java.text.MessageFormat;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.HashSet;
 import java.util.Map.Entry;
@@ -78,6 +79,21 @@ public class Localization {
 					return new HashSet<String>();
 			}
 			return collect(namespaces.get(langCode),nsId);
+		}
+	}
+	
+	/** Get mapping namespace_name (lowercase) -> namespace_index */
+	public static HashMap<String,Integer> getLocalizedNamespaces(String langCode){
+		synchronized (lock){
+			HashMap<String,Integer> ret = new HashMap<String,Integer>();
+			ret.putAll(canonicalNamespaces);
+			langCode = langCode.toLowerCase();
+			if(namespaces.get(langCode)==null){
+				if(badLocalizations.contains(langCode) || !readLocalization(langCode))
+					return ret;
+			}
+			ret.putAll(namespaces.get(langCode));
+			return ret;
 		}
 	}
 	

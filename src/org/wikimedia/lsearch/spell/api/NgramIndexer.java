@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 
@@ -21,6 +22,7 @@ public class NgramIndexer {
 	protected String path;
 	protected Analyzer analyzer;
 	protected IndexWriter writer;
+	protected IndexReader reader;
 	
 	public NgramIndexer(){
 		path = null;
@@ -58,6 +60,8 @@ public class NgramIndexer {
 		writer.setMaxBufferedDocs(500);		
 		writer.setUseCompoundFile(true);
 		writer.setMaxFieldLength(WikiIndexModifier.MAX_FIELD_LENGTH);
+		
+		reader = IndexReader.open(path);
 			
 	}
 	
@@ -69,8 +73,10 @@ public class NgramIndexer {
 	/** Optimize and close index, always call when done indexing */
 	public void close() throws IOException {
 		try{
+			reader.close();
+			reader = null;
 			writer.close();
-			writer = null;
+			writer = null;			
 		} catch(IOException e){
 			log.warn("I/O error closing index at "+path);
 			throw e;
@@ -80,6 +86,8 @@ public class NgramIndexer {
 	/** Optimize and close index, always call when done indexing */
 	public void closeAndOptimize() throws IOException {
 		try{
+			reader.close();
+			reader = null;
 			writer.optimize();
 			writer.close();
 			writer = null;
@@ -100,7 +108,7 @@ public class NgramIndexer {
 	}
 	
 	/** Reverse a string */
-	protected static String reverse(String source){
+	public static String reverse(String source){
 	    int len = source.length();
 	    StringBuilder dest = new StringBuilder(len);
 
@@ -110,6 +118,22 @@ public class NgramIndexer {
 	}
 	
 	/** Return ngrams of specific size for text, assuming circular string */
+	public static String[] nGramsCir(String text, int size) {
+		int len = text.length();
+		String[] res = null;
+		if(len <= 6 && size == 2){ // produce reversed 2-grams
+			String[] rev = nGramsRegular(reverse(text),size);
+			res = new String[len - size + 1 + rev.length];
+			System.arraycopy(rev,0,res,len - size + 1,rev.length);
+		} else
+			res = new String[len - size + 1];
+		for (int i = 0; i < len - size + 1; i++) {
+			res[i] = text.substring(i, i + size);
+		}
+		return res;
+	}
+	
+	/** Return normal ngrams + reverse ones for size 2 */
 	public static String[] nGrams(String text, int size) {
 		int len = text.length();
 		String[] res = null;
@@ -140,12 +164,10 @@ public class NgramIndexer {
 	
 	/** Maximal size of ngram block, at most the length of word */
 	public static int getMaxNgram(String word){
-		if(word.length() == 4)
+		if(word.length() <= 4)
 			return 2;
-		else if(word.length() <= 6)
+		else
 			return 3;
-		else 
-			return 4;
 	}
 	
 	/** Get ngram field name with no prefix */
@@ -161,6 +183,14 @@ public class NgramIndexer {
 			return prefix+"_ngram";
 	}
 	
+	/** Get prefixed ngram field name */
+	public static String getStartField(String prefix){
+		if(prefix == null || prefix.equals(""))
+			return "start";
+		else
+			return prefix+"_start";
+	}
+	
 	/** 
 	 * Add ngrams of all sizes from 1 to word.length to document
 	 * 
@@ -172,11 +202,14 @@ public class NgramIndexer {
 		int min = getMinNgram(word);
 		int max = getMaxNgram(word);
 		String fieldBase = getNgramField(prefix);
+		String startField= getStartField(prefix);
 		for(int i=min ; i <= max ; i++ ){
 			String[] ngrams = nGrams(word,i);
 			String field = fieldBase+i;
 			for(int j=0 ; j<ngrams.length ; j++){
 				String ngram = ngrams[j];				
+				if(j==0)
+					doc.add(new Field(startField+i, ngram, Field.Store.NO, Field.Index.UN_TOKENIZED));
 				doc.add(new Field(field, ngram, Field.Store.NO, Field.Index.UN_TOKENIZED));
 			}
 		}		
@@ -190,5 +223,9 @@ public class NgramIndexer {
 			log.error("Cannot add document "+doc+" : "+e.getMessage());
 			e.printStackTrace();
 		}
+	}
+
+	public IndexReader getReader() {
+		return reader;
 	}
 }

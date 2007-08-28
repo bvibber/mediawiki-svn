@@ -153,27 +153,12 @@ public class WikiIndexModifier {
 		boolean addDocuments(Collection<IndexUpdateRecord> records){
 			boolean succ = true;
 			String path = iid.getIndexPath();
-			try {
-				writer = new IndexWriter(path,null,rewrite);
-			} catch (IOException e) {				
-				try {
-					// unlock, retry
-					if(!new File(path).exists()){
-						// try to make brand new index
-						makeDBPath(path); // ensure all directories are made
-						log.info("Making new index at path "+path);
-						writer = new IndexWriter(path,null,true);
-					} else if(IndexReader.isLocked(path)){
-						unlockIndex(path);
-						writer = new IndexWriter(path,null,rewrite); 					
-					} else
-						throw e;
-				} catch (IOException e1) {
-					e1.printStackTrace();
-					log.error("I/O error openning index for addition of documents at "+path+" : "+e.getMessage());
-					return false;
-				}				
+			try{
+				openForWrite(path,rewrite);
+			} catch(IOException e){
+				return false;
 			}
+			
 			writer.setSimilarity(new WikiSimilarity());
 			int mergeFactor = iid.getIntParam("mergeFactor",10);
 			int maxBufDocs = iid.getIntParam("maxBufDocs",10);
@@ -224,6 +209,30 @@ public class WikiIndexModifier {
 
 		public boolean checkPreconditions(IndexUpdateRecord rec){
 			return checkAddPreconditions(rec.getArticle(),langCode);
+		}
+	}
+	
+	public static IndexWriter openForWrite(String path, boolean rewrite) throws IOException{
+		try {
+			return new IndexWriter(path,null,rewrite);
+		} catch (IOException e) {				
+			try {
+				// unlock, retry
+				if(!new File(path).exists()){
+					// try to make brand new index
+					makeDBPath(path); // ensure all directories are made
+					log.info("Making new index at path "+path);
+					return new IndexWriter(path,null,true);
+				} else if(IndexReader.isLocked(path)){
+					unlockIndex(path);
+					return new IndexWriter(path,null,rewrite); 					
+				} else
+					throw e;
+			} catch (IOException e1) {
+				e1.printStackTrace();
+				log.error("I/O error openning index for addition of documents at "+path+" : "+e.getMessage());
+				throw e1;
+			}				
 		}
 	}
 	

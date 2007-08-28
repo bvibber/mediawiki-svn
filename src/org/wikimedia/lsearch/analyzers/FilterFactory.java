@@ -28,6 +28,7 @@ public class FilterFactory {
 	protected ArrayList<Class> additionalFilters = null;
 	
 	protected FilterFactory noStemmerFilterFactory=null;
+	protected Set<String> stopWords;
 	
 	public enum Type { FULL, NO_STEM, SPELL_CHECK };
 	protected Type type = null;
@@ -150,14 +151,17 @@ public class FilterFactory {
 		return null;
 	}
 	
-	public TokenStream makeAdditionalFilterChain(TokenStream in){
+	public TokenStream makeAdditionalFilterChain(String field, TokenStream in){
 		if(additionalFilters == null)
 			return in;
 		try {
 			TokenStream chain = in;
 			// nest additional filters, apply them as added to the list
 			for(Class filter : additionalFilters){				
-				chain = (TokenStream) filter.getConstructor(TokenStream.class).newInstance(chain);				
+				chain = (TokenStream) filter.getConstructor(TokenStream.class).newInstance(chain);
+				if(filter.getName().equals("org.wikimedia.lsearch.analyzers.PhraseFilter")){
+					((PhraseFilter) chain).setStopWords(stopWords);
+				}
 			}
 			return chain;
 		} catch (Exception e) {
@@ -187,22 +191,7 @@ public class FilterFactory {
 	}
 	
 	public void setStopWords(Set<String> stopWords){
-		for(Class filter : additionalFilters){
-			for(Method m : filter.getMethods()){
-				if(m.getName().equals("setStopWords")){
-					try {
-						m.invoke(filter,new Object[] {stopWords});
-					} catch (IllegalArgumentException e) {
-						e.printStackTrace();
-					} catch (IllegalAccessException e) {
-						e.printStackTrace();
-					} catch (InvocationTargetException e) {
-						e.printStackTrace();
-					}
-				}
-			}
-			
-		}
+		this.stopWords = stopWords;
 	}
 	
 	

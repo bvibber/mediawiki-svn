@@ -24,7 +24,11 @@ import java.util.LinkedList;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermEnum;
+import org.apache.lucene.index.TermPositions;
 import org.apache.lucene.util.PriorityQueue;
+import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.config.IndexRegistry;
+import org.wikimedia.lsearch.search.SearcherCache;
 
 /**
  * <code>HighFreqTerms</code> class extracts terms and their frequencies out
@@ -34,7 +38,18 @@ import org.apache.lucene.util.PriorityQueue;
  */
 public class HighFreqTerms {
 
-	public static Collection<String> getHighFreqTerms(IndexReader reader, String field, int numTerms) throws IOException {
+	/** 
+	 * Get terms with highest frequency from latest snapshot of iid 
+	 */
+	public static Collection<String> getHighFreqTerms(IndexId iid, String field, int numTerms) throws IOException {
+		IndexRegistry registry = IndexRegistry.getInstance(); 
+		IndexReader reader = null;
+		if(iid.isMainsplit())
+			reader = IndexReader.open(registry.getLatestSnapshot(iid.getMainPart()).getPath());
+		else if(iid.isNssplit())
+			reader = IndexReader.open(registry.getLatestSnapshot(iid.getPartByNamespace(0)).getPath());
+		else
+			reader = IndexReader.open(registry.getLatestSnapshot(iid).getPath());
 		TermInfoQueue tiq = new TermInfoQueue(numTerms);
 		TermEnum terms = reader.terms();
 		LinkedList<String> ret = new LinkedList<String>();
@@ -43,7 +58,11 @@ public class HighFreqTerms {
 			// collect terms from field into priority queue
 			while (terms.next()) {
 				if (terms.term().field().equals(field)) {
-					tiq.insert(new TermInfo(terms.term(), terms.docFreq()));
+					TermPositions pos = reader.termPositions(terms.term());
+					int freq = 0;
+					while(pos.next())
+						freq += pos.freq();
+					tiq.insert(new TermInfo(terms.term(), freq));
 				}
 			}
 		} else {

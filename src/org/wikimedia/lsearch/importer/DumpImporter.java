@@ -21,7 +21,7 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.ranks.CompactArticleLinks;
-import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.ranks.OldLinks;
 import org.wikimedia.lsearch.ranks.RankBuilder;
 import org.wikimedia.lsearch.ranks.RelatedTitle;
 import org.wikimedia.lsearch.util.Localization;
@@ -32,11 +32,11 @@ public class DumpImporter implements DumpWriter {
 	Revision revision;
 	SimpleIndexWriter writer;
 	int count = 0, limit;
-	Links links;
+	OldLinks links;
 	String langCode;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
-			Integer maxBufDocs, boolean newIndex, Links ranks, String langCode){
+			Integer maxBufDocs, boolean newIndex, OldLinks ranks, String langCode){
 		Configuration.open(); // make sure configuration is loaded
 		writer = new SimpleIndexWriter(IndexId.get(dbname), optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;

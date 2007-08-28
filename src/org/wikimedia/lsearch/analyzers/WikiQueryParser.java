@@ -296,7 +296,8 @@ public class WikiQueryParser {
 					int start = cur - length;
 					analyzeBuffer();					
 					for(Token t : tokens){
-						ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),"phrase"));
+						if(t.type().equals("word"))
+							ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),"phrase"));
 					}
 				}
 			}
@@ -323,7 +324,8 @@ public class WikiQueryParser {
 				if(tokenType == TokenType.WORD){
 					analyzeBuffer();
 					for(Token t : tokens){
-						ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),"word"));
+						if(t.type().equals("word"))
+							ret.add(new Token(t.termText(),start+t.startOffset(),start+t.endOffset(),"word"));
 					}					
 				}
 			} else if(c == '['){
@@ -1391,6 +1393,12 @@ public class WikiQueryParser {
 	}
 	public void setNamespacePolicy(NamespacePolicy namespacePolicy) {
 		this.namespacePolicy = namespacePolicy;
+	}
+	public FieldBuilder.BuilderSet getBuilder() {
+		return builder;
+	}
+	public void setBuilder(FieldBuilder.BuilderSet builder) {
+		this.builder = builder;
 	}
 
 	

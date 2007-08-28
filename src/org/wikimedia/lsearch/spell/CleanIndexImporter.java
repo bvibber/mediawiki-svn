@@ -24,7 +24,7 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.ranks.CompactArticleLinks;
-import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.ranks.OldLinks;
 import org.wikimedia.lsearch.ranks.RelatedTitle;
 import org.wikimedia.lsearch.util.Localization;
 

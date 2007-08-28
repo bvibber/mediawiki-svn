@@ -940,6 +940,10 @@ public class GlobalConfiguration {
 		return host.equalsIgnoreCase(hostAddr) || host.equalsIgnoreCase(hostName);
 	}
 
+	public String getLanguage(IndexId iid){
+		return getLanguage(iid.getDBname());
+	}
+	
 	/** Get language for a dbname */
 	public String getLanguage(String dbname) {
 		// first check explicit language paramter in global settings
