@@ -23,7 +23,7 @@ case "$1" in
 			--divert /etc/php5/apache2/php.ini.default /etc/php5/apache2/php.ini
     ;;
 
-    abort-upgrade)
+    upgrade|abort-upgrade)
     ;;
 
     *)
