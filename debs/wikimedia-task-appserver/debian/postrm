@@ -29,12 +29,10 @@ removemount() {
 
 case "$1" in
     purge)
+        dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/apache2.conf
+        dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/php5/apache2/php.ini
 	;;
     remove)
-	dpkg-divert --package wikimedia-task-appserver --remove --rename \
-		--divert /etc/apache2/apache2.conf.default /etc/apache2/apache2.conf
-	dpkg-divert --package wikimedia-task-appserver --remove --rename \
-		--divert /etc/php5/apache2/php.ini.default /etc/php5/apache2/php.ini
        	removemount /mnt/upload3
        	removemount /mnt/math
        	;;
