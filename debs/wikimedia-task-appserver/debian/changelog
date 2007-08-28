@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.11) feisty; urgency=low
+
+  * Add diversion of /etc/php5/apache2/php.ini
+
+ -- Tim Starling <tstarling@wikimedia.org>  Tue, 28 Aug 2007 16:56:26 +0000
+
 wikimedia-task-appserver (1.10) feisty; urgency=low
 
   * Fix control file that was accidently overwritten

@@ -1,3 +1,4 @@
 etc
 etc/apache2
 usr/local/apache
+etc/php5/apache2/

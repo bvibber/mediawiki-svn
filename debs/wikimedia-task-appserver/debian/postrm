@@ -33,6 +33,8 @@ case "$1" in
        remove|upgrade|failed-upgrade|abort-install|abort-upgrade|disappear)
 	dpkg-divert --package wikimedia-task-appserver --remove --rename \
 		--divert /etc/apache2/apache2.conf.default /etc/apache2/apache2.conf
+	dpkg-divert --package wikimedia-task-appserver --remove --rename \
+		--divert /etc/php5/apache2/php.ini.default /etc/php5/apache2/php.ini
 
        removemount /mnt/upload3
        removemount /mnt/math
