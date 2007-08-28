@@ -482,8 +482,8 @@ function getClassAttributesRecordSet($definedMeaningId, ViewInformation $viewInf
 }
 
 function expandOptionAttributeOptionsInRecordSet(RecordSet $recordSet, Attribute $attributeIdAttribute, ViewInformation $viewInformation) {
-
 	$o=OmegaWikiAttributes::getInstance();
+	$recordSet->getStructure()->addAttribute($o->optionAttributeOptions);
 
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) {
 		$record = $recordSet->getRecord($i);
