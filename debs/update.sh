@@ -25,7 +25,7 @@ tar -v -N"$prebuild_date" -c $package''_* | ssh -A root@khaldun.wikimedia.org "
 	test -e /srv/wikimedia/pool/main/$package || mkdir /srv/wikimedia/pool/main/$package
 	tar -C /srv/wikimedia/pool/main/$package -x && \
 	echo && \
-	echo Updating the repository || \
+	echo Updating the repository && \
 	/root/update-repository 2>/dev/null && \
 	echo Success || \
 	echo update-repository failed
