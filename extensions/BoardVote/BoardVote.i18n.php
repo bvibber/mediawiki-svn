@@ -1393,6 +1393,7 @@ $wgBoardVoteMessages['yue'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|返去]]",
+	'boardvote_nosession'     => "我唔知你嘅維基媒體用戶ID。 唔該登入你合資格嘅維基，然後去嗰度嘅<nowiki>[[Special:Boardvote]]</nowiki>。你要喺$2之前要有至少$1次編輯，第一次編輯要早過$3。",
 	'boardvote_notloggedin'   => "你仲未登入。要投票，你一定要用一個響$2之前最少有$1次貢獻，而且響$3之前作第一次編輯嘅戶口。",
 	'boardvote_notqualified'  => "你仲未有資格響呢次選舉度投票。你需要用響$2之前最少有$1次編輯，你而家有$1次編輯。而且，你嘅第一次編輯響$4，佢係需要響$5之前。",
 	'boardvote_novotes'       => "仲未有人投票。",
@@ -1416,6 +1417,14 @@ $1去睇加密嘅資料。</p>",
 	'group-boardvote'         => '理事會投票管理員',
 	'group-boardvote-member'  => '理事會投票管理員',
 	'grouppage-boardvote'     => '{{ns:project}}:理事會投票管理員',
+	'boardvote_blocked'       => '對唔住，響你註冊咗嘅維基度，你被封住咗。封住咗嘅用戶係唔畀投票嘅。',
+	'boardvote_welcome'       => "'''$1'''，歡迎你！",
+	'go_to_board_vote'        => 'Wikimedia理事委員會選舉2007',
+	'boardvote_redirecting'   => '為咗好啲嘅保安同埋透明度，我哋用一個外置、獨立控制嘅伺服器去搞呢次嘅投票。
+
+20秒之內你會彈去呢個外置伺服器。如果你想即刻去，就[$1 撳呢度]。
+
+你有可能會收到一個安全警告，話個憑證冇簽到。',
 );
 $wgBoardVoteMessages['zh-hans'] = array(
 	'boardvote'               => "维基媒体基金会理事会选举",
@@ -1450,6 +1459,7 @@ $wgBoardVoteMessages['zh-hans'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|返回]]",
+	'boardvote_nosession'     => "我不能确定您的维基媒体账户名称。请您登入到合乎资格的维基计划，然后转到 <nowiki>[[Special:Boardvote]]</nowiki>。您必须用一个账户，在 $2 以前有 $1 次编辑，而且其首次编辑必须在 $3 以前。",
 	'boardvote_notloggedin'   => "您还没有登录。要参与投票，您必须在$2之前至少贡献了$1次以上，而且在$3前作出第一次编辑。",
 	'boardvote_notqualified'  => "抱歉，您在$2之前只有$1次贡献。 您必须至少贡献了$3次以上才可以参与本次投票。而且，您的第一次编辑是在$4，这需要在$5之前。",
 	'boardvote_novotes'       => "目前还没有人投票。",
@@ -1472,11 +1482,15 @@ $wgBoardVoteMessages['zh-hans'] = array(
 	'group-boardvote'         => '理事会投票管理员',
 	'group-boardvote-member'  => '理事会投票管理员',
 	'grouppage-boardvote'     => '{{ns:project}}:理事会投票管理员',
-	'boardvote_redirecting'   => '為改善投票的保安和透明度，這次選舉將會在一個站外獨立的伺服器上進行。
+	'boardvote_blocked'       => '很抱歉，您在已注册的维基计划里遭到封禁。被封禁的用户并不能在选举中投票。',
+	'boardvote_welcome'       => "欢迎您， '''$1'''！",
+	'go_to_board_vote'        => '维基媒体基金会理事会选举2007',
+	'boardvote_redirecting'   => '为改善投票的保安和透明度，这次选举将会在一个站外独立的服务器上进行。
 
-20秒後瀏覽器將會自動轉到這個站外伺服器。你也可以馬上[$1 點擊這裡]直接到那裡。
+20秒后浏览器将会自动转到这个站外服务器。您也可以马上[$1 点击这里]直接到那里。
 
-稍後，你的瀏覽器可能會彈出未驗證安全憑證的警告。',
+稍后，您的浏览器可能会弹出未验证安全凭证的警告。',
+
 );
 $wgBoardVoteMessages['zh-hant'] = array(
 	'boardvote'               => "維基媒體基金會理事會選舉",
@@ -1511,6 +1525,7 @@ $wgBoardVoteMessages['zh-hant'] = array(
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|返回]]",
+	'boardvote_nosession'     => "我不能確定您的維基媒體帳號名稱。請您登入到合乎資格的維基計劃，然後轉到 <nowiki>[[Special:Boardvote]]</nowiki>。您必須用一個帳號，在 $2 以前有 $1 次編輯，而且其首次編輯必須在 $3 以前。",
 	'boardvote_notloggedin'   => "您還沒有登錄。要參與投票，您必須在$2之前至少貢獻了$1次以上，而且在$3前作出第一次編輯。",
 	'boardvote_notqualified'  => "對不起，您在$2之前只有$1次貢獻。 您必須至少貢獻了$3次以上才可以參與本次投票。而且，您的第一次編輯是在$4，這需要在$5之前。",
 	'boardvote_novotes'       => "目前還沒有人投票。",
@@ -1533,12 +1548,21 @@ $wgBoardVoteMessages['zh-hant'] = array(
 	'group-boardvote'         => '理事會投票管理員',
 	'group-boardvote-member'  => '理事會投票管理員',
 	'grouppage-boardvote'     => '{{ns:project}}:理事會投票管理員',
+	'boardvote_blocked'       => '很抱歉，您在已註冊的維基計劃裡遭到封禁。被封禁的用戶並不能在選舉中投票。',
+	'boardvote_welcome'       => "歡迎您， '''$1'''！",
+	'go_to_board_vote'        => '維基媒體基金會理事會選舉2007',
+	'boardvote_redirecting'   => '為改善投票的保安和透明度，這次選舉將會在一個站外獨立的伺服器上進行。
+
+20秒後瀏覽器將會自動轉到這個站外伺服器。您也可以馬上[$1 點擊這裡]直接到那裡。
+
+稍後，您的瀏覽器可能會彈出未驗證安全憑證的警告。',
 );
 $wgBoardVoteMessages['zh-cn'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-hk'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-sg'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-tw'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-yue'] = $wgBoardVoteMessages['yue'];
+
 
 
 

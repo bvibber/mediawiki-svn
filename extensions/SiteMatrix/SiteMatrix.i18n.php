@@ -130,15 +130,29 @@ $wgSiteMatrixMessages['ur'] = array(
 );
 $wgSiteMatrixMessages['yue'] = array(
 	"sitematrix" => "Wikimedia嘅wiki一覽",
+	'sitematrix-language' => '語言',
+	'sitematrix-project'  => '計劃名、跨計劃連結同埋跨維基連結',
+	'sitematrix-others'   => 'Wikimedia嘅其它計劃',
 );
 $wgSiteMatrixMessages['zh-hans'] = array(
 	"sitematrix" => "维基媒体站点列表",
+	'sitematrix-language' => '语言',
+	'sitematrix-project'  => '计划名称、跨计划链接以及跨维基链接',
+	'sitematrix-others'   => '维基媒体的其它计划',
 );
 $wgSiteMatrixMessages['zh-hant'] = array(
 	"sitematrix" => "維基媒體網站清單",
+	'sitematrix-language' => '語言',
+	'sitematrix-project'  => '計劃名稱、跨計劃連結以及跨維基連結',
+	'sitematrix-others'   => '維基媒體的其它計劃',
+);
+$wgSiteMatrixMessages['zh-tw'] = array(
+	"sitematrix" => "維基媒體網站清單",
+	'sitematrix-language' => '語言',
+	'sitematrix-project'  => '計畫名稱、跨計畫連結以及跨維基連結',
+	'sitematrix-others'   => '維基媒體的其它計畫',
 );
 $wgSiteMatrixMessages['zh-cn'] = $wgSiteMatrixMessages['zh-hans'];
 $wgSiteMatrixMessages['zh-hk'] = $wgSiteMatrixMessages['zh-hant'];
 $wgSiteMatrixMessages['zh-sg'] = $wgSiteMatrixMessages['zh-hans'];
-$wgSiteMatrixMessages['zh-tw'] = $wgSiteMatrixMessages['zh-hant'];
 $wgSiteMatrixMessages['zh-yue'] = $wgSiteMatrixMessages['yue'];

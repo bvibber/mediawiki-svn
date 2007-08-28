@@ -32,7 +32,39 @@ function efBlockTitlesMessages() {
 	'block_title_error_page_title' => 'Titre invalide',		
 	'block_title_error' => 'Désolé, le titre de cet article n’est pas autorisé à être sauvegardé.',
 ),
+
+/**
+ * 
+ * Cantonese (Shinjiman)
+ */
+'zh-hant' => array(
+	'block_title_error_page_title' => '已經封鎖嘅標題',		
+	'block_title_error' => '對唔住，呢篇文章嘅標題唔容許保存。',
+),
+
+/**
+ * Chinese (Simplified) (Shinjiman)
+ */
+'zh-hans' => array(
+	'block_title_error_page_title' => '已封锁的标题',		
+	'block_title_error' => '抱歉，这篇文章的标题不允许保存。',
+),
+
+/**
+ * Chinese (Traditional) (Shinjiman)
+ */
+'zh-hant' => array(
+	'block_title_error_page_title' => '已封鎖的標題',		
+	'block_title_error' => '抱歉，這篇文章的標題不允許保存。',
+),
 	
 	);
+
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+
 	return $messages;	
 }
