@@ -25,10 +25,10 @@
 				initializeOmegaWikiAttributes(new ViewInformation());
 				$wgOut->setPageTitle('Expressions needing translation');
 
-				$sourceLanguageId = $_GET['from-lang'];
-				$destinationLanguageId = $_GET['to-lang'];
-				$collectionId = $_GET['collection'];
-
+                                $destinationLanguageId = array_key_exists('to-lang', $_GET)? $_GET['to-lang']:'';
+				$collectionId = array_key_exists('collection', $_GET) ? $_GET['collection'] : '';
+				$sourceLanguageId = array_key_exists('from-lang', $_GET)? $_GET['from-lang'] : '';
+                                                                
 				$wgOut->addHTML(getOptionPanel(
 					array(
 						'Destination language' => getSuggest('to-lang', 'language', array(), $destinationLanguageId, languageIdAsText($destinationLanguageId)),
