@@ -55,6 +55,8 @@ function wfSpecialDatasearch() {
 			require_once("OmegaWikiRecordSets.php");
 			require_once("OmegaWikiEditors.php");
 			
+			$wgOut->setPageTitle(wfMsg('search'));
+			
 			$this->spellingAttribute = new Attribute("found-word", "Found word", "short-text");
 			$this->languageAttribute = new Attribute("language", "Language", "language");
 			

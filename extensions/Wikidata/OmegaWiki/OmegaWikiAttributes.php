@@ -44,7 +44,7 @@ class OmegaWikiAttributes {
 			}
 		}		
 		if (!array_key_exists("last", $instance)) {
-			$instance["last"]=new ViewInformation();
+			$instance["last"]=new OmegaWikiAttributes(new ViewInformation());
 		}
 		return $instance["last"];
 	}
