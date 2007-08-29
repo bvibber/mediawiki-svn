@@ -34,7 +34,7 @@
 					require_once('WikiDataAPI.php');
 					require_once('Transaction.php');
 
-					$dc = $wgRequest->getText('Dataset');
+					$dc = $wgRequest->getText('dataset');
 					$collectionName = $wgRequest->getText('collection');
 					startNewTransaction($wgUser->getID(), wfGetIP(), 'Add collection ' . $collectionName);
 					bootstrapCollection($collectionName,$wgRequest->getText('language'),$wgRequest->getText('type'), $dc);
@@ -51,7 +51,7 @@
 						'Collection name' => getTextBox('collection'),
 						'Language of name' => getSuggest('language','language'),
 						'Collection type' => getSelect('type',array('' => 'None','RELT' => 'RELT','LEVL' => 'LEVL','CLAS' => 'CLAS', 'MAPP' => 'MAPP')),
-						'Dataset' => getSelect('Dataset',$datasetarray)
+						'Dataset' => getSelect('dataset',$datasetarray)
 					),
 					'',array('create' => 'Create')
 				));

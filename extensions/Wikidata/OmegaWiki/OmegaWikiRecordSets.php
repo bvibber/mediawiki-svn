@@ -399,7 +399,7 @@ function getExpressionsRecordSet($spelling, ViewInformation $viewInformation, $d
 	$languageRestriction = $viewInformation->filterLanguageId != 0 ? " AND language_id=". $viewInformation->filterLanguageId : "";
 
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query(
+	$sql=
 		"SELECT expression_id, language_id " .
 		" FROM {$dc}_expression_ns" .
 		" WHERE spelling=BINARY " . $dbr->addQuotes($spelling) .
@@ -410,8 +410,8 @@ function getExpressionsRecordSet($spelling, ViewInformation $viewInformation, $d
 			" FROM {$dc}_syntrans " .
 			" WHERE {$dc}_syntrans.expression_id={$dc}_expression_ns.expression_id" .
 			" AND ". getLatestTransactionRestriction("{$dc}_syntrans") 
-		.")"
-	);
+		.")";
+	$queryResult = $dbr->query($sql);
 	
 	$result = new ArrayRecordSet($o->expressionsStructure, new Structure("expression-id", $o->expressionId));
 	$languageStructure = new Structure("language", $o->language);

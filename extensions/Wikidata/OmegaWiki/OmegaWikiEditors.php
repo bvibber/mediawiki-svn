@@ -662,7 +662,6 @@ function getOptionAttributeValuesEditor(ViewInformation $viewInformation, Update
 function getOptionAttributeOptionsEditor() {
 
 	$o=OmegaWikiAttributes::getInstance();
-	$o=OmegaWikiAttributes::getInstance();
 
 	$editor = new RecordSetTableEditor($o->optionAttributeOptions, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new OptionAttributeOptionsController());
 	$editor->addEditor(new DefinedMeaningReferenceEditor($o->optionAttributeOption, new SimplePermissionController(false), true)); 
@@ -688,8 +687,6 @@ function getExpressionMeaningsEditor(Attribute $attribute, $allowAdd, ViewInform
 }
 
 function getExpressionsEditor($spelling, ViewInformation $viewInformation) {
-
-	$o=OmegaWikiAttributes::getInstance();
 
 	$o=OmegaWikiAttributes::getInstance();
 
