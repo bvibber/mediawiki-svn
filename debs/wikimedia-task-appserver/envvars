@@ -1,0 +1,11 @@
+# Wikimedia configuration file, a hook into apache2ctl
+# vim: ft=sh :
+
+# Set nice level
+HTTPD="nice -n10 /usr/sbin/apache2 -DPHP5"
+
+# Image scaler detection
+if [ -e /etc/wikimedia-image-scaler ]; then
+	HTTPD="$HTTPD -DSCALER"
+fi
+

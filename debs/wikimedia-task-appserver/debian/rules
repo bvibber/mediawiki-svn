@@ -49,6 +49,7 @@ install: build
 	dh_link
 	
 	install -m 0644 apache2.conf $(DESTDIR)/etc/apache2
+	install -m 0644 envvars $(DESTDIR)/etc/apache2
 	install -m 0644 php.ini $(DESTDIR)/etc/php5/apache2
 	install -m 0400 sudoers $(DESTDIR)/etc/
 

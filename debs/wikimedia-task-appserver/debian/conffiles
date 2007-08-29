@@ -1,3 +1,4 @@
 /etc/apache2/apache2.conf
 /etc/php5/apache2/php.ini
 /etc/sudoers
+/etc/apache2/envvars
