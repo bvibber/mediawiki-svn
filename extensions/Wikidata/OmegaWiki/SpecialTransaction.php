@@ -995,8 +995,6 @@ function getUpdatedAlternativeDefinitionTextEditor($attribute, $showRollBackOpti
 
 	$o=OmegaWikiAttributes::getInstance();
 
-	$o=OmegaWikiAttributes::getInstance();
-	
 	$editor = createTableViewer($attribute);
 	
 	if ($showRollBackOptions) {

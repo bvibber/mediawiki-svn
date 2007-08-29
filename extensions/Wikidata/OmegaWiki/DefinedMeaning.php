@@ -6,6 +6,7 @@ require_once('OmegaWikiEditors.php');
 require_once('DefinedMeaningModel.php');
 
 class DefinedMeaning extends DefaultWikidataApplication {
+	protected $definedMeaningModel;
 	public function view() {
 		global
 			$wgOut, $wgTitle, $wgRequest, $wdCurrentContext;
@@ -21,6 +22,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		}
 		parent::view();
 		$definedMeaningModel = new DefinedMeaningModel($dmInfo["id"], $this->viewInformation);
+		$this->definedMeaningModel=$definedMeaningModel; #TODO if I wasn't so sleepy I'd make this consistent
 
 		$copyTo=$wgRequest->getText('CopyTo');
 		if ($copyTo) {
@@ -244,7 +246,28 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		$html= getOptionPanel( array (
 			'Copy to' => getSelect('CopyTo', $datasetarray)
 		));
+		$html.=$this->getCopyPanel2();
 		return $html;
 	}	
+	
+	/** links to futt bugly alternate copy mechanism, the
+	 * latter being something that actually is somewhat
+	 * understandable (though not yet refactored into
+	 * something purdy and maintainable)
+	 */
+	protected function getCopyPanel2() { 
+		$html="Copy to (approach B):<br>\n"; 
+		$datasets=wdGetDatasets();
+		$dmid=$this->definedMeaningModel->getId();
+		$dc1=$this->definedMeaningModel->getDataSet();
+		foreach($datasets as $datasetid=>$dataset) {
+			$name=$dataset->fetchName(); 
+			$dc2=$datasetid;
+			$html.="<a href='extended/Wikidata/util/copy.php?dmid=$dmid&dc1=$dc1&dc2=$dc2'>$name</a><br>\n";
+		}
+
+		return $html;
+	}
+
 }
 
