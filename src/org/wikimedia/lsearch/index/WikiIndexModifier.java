@@ -494,7 +494,7 @@ public class WikiIndexModifier {
 			if(ranks.get(i) == 0)
 				break; // we don't want redirects with zero links
 			//log.info("For "+article+" alttitle"+(i+1)+" "+redirects.get(i)+" = "+ranks.get(i));
-			Field alttitle = new Field(prefix+(i+1), redirects.get(i),Field.Store.NO, Field.Index.TOKENIZED);				
+			Field alttitle = new Field(prefix+(i+1), redirects.get(i),Field.Store.YES, Field.Index.TOKENIZED);				
 			alttitle.setBoost(calculateArticleRank(ranks.get(i)));
 			doc.add(alttitle);			
 		}

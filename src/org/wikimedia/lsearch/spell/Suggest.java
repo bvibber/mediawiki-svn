@@ -84,6 +84,10 @@ public class Suggest {
 		public int meta2Distance(String w){
 			return sdmeta2.getDistance(dmeta.doubleMetaphone(w,true));
 		}
+		/** If string differs only in duplication of some letters */
+		public boolean hasSameLetters(String w){
+			return sd.hasSameLetters(w);
+		}
 	}
 	
 	/** Number of results to fetch */
@@ -153,21 +157,21 @@ public class Suggest {
 	@SuppressWarnings("unchecked")
 	public SuggestQuery suggest(String searchterm, WikiQueryParser parser, NamespaceFilter nsf, SearchResults res) throws IOException{
 		ArrayList<Token> tokens = parser.tokenizeBareText(searchterm);
-		int numHits = res.getNumHits();
-		
-		//if(numHits >= minHitsTitles)
-		//return null;
 		
 		// collect words in titles, these shouldn't be spell-checked
+		ArrayList<HashSet<String>> titles = new ArrayList<HashSet<String>>();
 		HashSet<String> correctWords = new HashSet<String>();
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,false);
 		try {
 			for(ResultSet r : res.getResults()){
+				HashSet<String> title = new HashSet<String>();
 				Token t = null;
 				TokenStream ts = analyzer.tokenStream("title",r.title);				
 				while( (t = ts.next()) != null ){
 					correctWords.add(t.termText());
+					title.add(t.termText());
 				}				
+				titles.add(title);
 			}
 		} catch (IOException e) {
 			log.error("I/O error trying to get list of correct words : "+e.getMessage());
@@ -223,7 +227,15 @@ public class Suggest {
 			if(titlesReader.docFreq(new Term("phrase",phrase)) != 0){
 				correctPhrases.add(i);
 				correctPhrases.add(i2);
-			}				
+			} else if(correctWords.contains(w) && correctWords.contains(w2)){
+				for(HashSet<String> title : titles){
+					if(title.contains(w) && title.contains(w2)){
+						correctPhrases.add(i);
+						correctPhrases.add(i2);
+						break;
+					}
+				}
+			}
 		}
 		if(correctPhrases.size()+numStopWords >= tokens.size() 
 				&& correctWords.size()+numStopWords >= tokens.size()){
@@ -410,7 +422,7 @@ public class Suggest {
 		} else if(tokens.size() == 1 && wordSug.get(0)!=null
 				&& wordSug.get(0).size() > 0 && !correctWords.contains(tokens.get(0).termText())){ 
 			// only one token, try different spell-checks for title
-			ArrayList<SuggestResult> sg = wordSug.get(0);
+			ArrayList<SuggestResult> sg = (ArrayList<SuggestResult>) wordSug.get(0).clone();
 			Collections.sort(sg,new SuggestResult.ComparatorNoCommonMisspell());
 			Token t = tokens.get(0);
 			int maxdist = sg.get(0).getDist();

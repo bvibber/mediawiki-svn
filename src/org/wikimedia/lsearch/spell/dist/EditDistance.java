@@ -29,7 +29,6 @@ public class EditDistance {
     final int n;
     final int[][][] cache=new int[30][][];
 
-
     /**
      * Optimized to run a bit faster than the static getDistance().
      * In one benchmark times were 5.3sec using ctr vs 8.5sec w/ static method, thus 37% faster.
@@ -37,6 +36,33 @@ public class EditDistance {
     public EditDistance (String target) {
         sa=target.toCharArray();
         n=sa.length;
+    }
+    
+    /** Check if only difference is duplication of some letters */
+    public boolean hasSameLetters(String other){
+   	 final char[] ta=other.toCharArray();
+       final int m=ta.length;
+       int i=0,j=0;
+       for(;i<n && j<m;i++,j++){
+      	 if(sa[i]!=ta[j]){
+      		 if(i>0 && sa[i-1] == ta[j]){
+      			 i--;
+      			 continue;
+      		 } else if(j>0 && sa[i] == ta[j-1]){
+      			 j--;
+      			 continue;
+      		 } else
+      			 return false;
+      	 }
+      	 if(i == n - 1 && j < m - 1)
+      		 i--;
+      	 else if(j == m - 1 && i < n - 1)
+      		 j--;
+       }
+       if(i == n && j == m)
+      	 return true;
+       
+       return false;
     }
 
 

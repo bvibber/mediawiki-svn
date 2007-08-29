@@ -6,6 +6,7 @@ public class SuggestResult {
 	int dist=0;
 	int distMetaphone=0;
 	int distMetaphone2=0;
+	boolean sameLetters=false;
 	
 	static class Comparator implements java.util.Comparator<SuggestResult> {
 		public int compare(SuggestResult o1, SuggestResult o2){	
@@ -13,18 +14,28 @@ public class SuggestResult {
 				return 1;
 			else if(o1.dist - o2.dist == 1 && o2.frequency * 100 < o1.frequency)
 				return -1;
-			else if(o1.dist == o2.dist)
-				return o2.getFrequency() - o1.getFrequency();
-			else 
+			else if(o1.dist == o2.dist){
+				if(!o1.sameLetters && o2.sameLetters)
+					return 1;
+				else if(o1.sameLetters && !o2.sameLetters)
+					return -1;
+				else
+					return o2.getFrequency() - o1.getFrequency();
+			} else 
 				return o1.dist - o2.dist;					
 		}
 	}
 	
 	static class ComparatorNoCommonMisspell implements java.util.Comparator<SuggestResult> {
 		public int compare(SuggestResult o1, SuggestResult o2){	
-			if(o1.dist == o2.dist)
-				return o2.getFrequency() - o1.getFrequency();
-			else 
+			if(o1.dist == o2.dist){
+				if(!o1.sameLetters && o2.sameLetters)
+					return 1;
+				else if(o1.sameLetters && !o2.sameLetters)
+					return -1;
+				else
+					return o2.getFrequency() - o1.getFrequency();
+			} else 
 				return o1.dist - o2.dist;					
 		}
 	}
@@ -43,6 +54,7 @@ public class SuggestResult {
 		this.dist = metric.distance(word);
 		this.distMetaphone = metric.meta1Distance(word);
 		this.distMetaphone2 = metric.meta2Distance(word);
+		this.sameLetters = metric.hasSameLetters(word);
 	}
 	
 	/** Initialize all atributes using suggestion metrics */
@@ -52,6 +64,7 @@ public class SuggestResult {
 		this.dist = metric.distance(word);
 		this.distMetaphone = metric.sdmeta1.getDistance(meta1);
 		this.distMetaphone2 = metric.sdmeta2.getDistance(meta2);
+		this.sameLetters = metric.hasSameLetters(word);
 	}
 	
 	public int getDist() {

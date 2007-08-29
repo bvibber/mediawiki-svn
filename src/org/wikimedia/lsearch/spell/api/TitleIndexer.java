@@ -24,10 +24,12 @@ import org.apache.lucene.search.SearchableMul;
 import org.apache.lucene.search.Searcher;
 import org.apache.lucene.search.TermQuery;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
+import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
+import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.search.IndexSearcherMul;
 import org.wikimedia.lsearch.search.WikiSearcher;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
@@ -290,18 +292,13 @@ public class TitleIndexer {
 	
 	public void createFromTempIndex(){
 		String path = titles.getImportPath(); // dest where to put index
+		FieldNameFactory fields = new FieldNameFactory();
+		final String title = fields.title();
+		final String contents = fields.contents();
+		final String alttitle = fields.alttitle();
 		try {
 			ngramWriter.createIndex(path,new SimpleAnalyzer());
 			IndexReader ir = IndexReader.open(iid.getSpellWords().getTempPath());
-			/*Collection<String> mostfreq = HighFreqTerms.getHighFreqTerms(iid,"contents",50);
-			// get at most 25 stopwords
-			HashSet<String> stopWords = new HashSet<String>();
-			for(String w : mostfreq){
-				if(!w.contains("_"))
-					stopWords.add(w);
-				if(stopWords.size() >= 25)
-					break;
-			} */
 			HashSet<String> stopWords = new HashSet<String>();
 			TermDocs td = ir.termDocs(new Term("metadata_key","stopWords"));
 			if(td.next()){
@@ -309,16 +306,23 @@ public class TitleIndexer {
 					stopWords.add(s);
 			}
 			addMetadata("stopWords",stopWords);
+
 			// add all titles
 			for(int i=0;i<ir.maxDoc();i++){
 				if(ir.isDeleted(i))
 					continue;
-				String title = ir.document(i).get("title");
-				if(title != null)
-					addTitle(title);
+				String titleText = ir.document(i).get(title);
+				if(titleText != null)
+					addTitle(titleText);
+				// FIXME: alttitle fiels is not generated!
+				for(int j=0;j<WikiIndexModifier.ALT_TITLES;j++){
+					String altTitleText = ir.document(i).get(alttitle+j);
+					if(altTitleText != null)
+						addTitle(altTitleText);
+				}
 			}
 			
-			LuceneDictionary dict = new LuceneDictionary(ir,"contents");
+			LuceneDictionary dict = new LuceneDictionary(ir,contents);
 			Word word;
 			while((word = dict.next()) != null){
 				String w = word.getWord();
@@ -330,13 +334,13 @@ public class TitleIndexer {
 					boolean allowed = true;
 					for(String ww : words){
 						// allow only those phrases consisting of title words
-						if(ir.docFreq(new Term("title",ww)) == 0){
+						if(ir.docFreq(new Term(title,ww)) == 0){
 							allowed = false; 
 							break; 
 						}
 					}
 					if(allowed && freq > minPhraseFreq){
-						boolean inTitle = ir.docFreq(new Term("title",w))!= 0;
+						boolean inTitle = ir.docFreq(new Term(title,w))!= 0;
 						NamespaceFreq nsf = new NamespaceFreq();
 						nsf.setFrequency(0,freq);
 						ArrayList<Integer> nss = new ArrayList<Integer>();
@@ -357,7 +361,7 @@ public class TitleIndexer {
 			//ngramWriter.reopenIndex(path,new SimpleAnalyzer());
 			//IndexReader ngramReader = ngramWriter.getReader();
 			// add stuff from titles with stop words
-			dict = new LuceneDictionary(ir,"title");
+			dict = new LuceneDictionary(ir,title);
 			while((word = dict.next()) != null){
 				String w = word.getWord();
 				if(w.contains("_")){ // phrase
@@ -370,16 +374,8 @@ public class TitleIndexer {
 						nss.add(0);
 						addPhrase(w,nsf,nss,true);
 					}
-				} /* else if(ngramReader.docFreq(new Term("word",w))==0){
-					// add words from titles
-					int freq = ir.docFreq(new Term("contents",w));
-					NamespaceFreq nsf = new NamespaceFreq();
-					nsf.setFrequency(0,freq);
-					ArrayList<Integer> nss = new ArrayList<Integer>();
-					nss.add(0);
-					addWord(w,nsf,nss);
-				} */
-			}
+				}
+			}			
 			ngramWriter.closeAndOptimize();
 			ir.close();
 			
@@ -390,8 +386,7 @@ public class TitleIndexer {
 		}
 		
 	}
-	
-	
+
 	/**
 	 * Register a title in the index, without tokenization, just lowercase. 
 	 * 
