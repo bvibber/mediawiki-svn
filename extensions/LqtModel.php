@@ -77,6 +77,8 @@ class Date {
 	}
 }
 
+
+// TODO get rid of this class. sheesh.
 class Post extends Article {
 	/**
 	* Return the User object representing the author of the first revision
@@ -97,6 +99,40 @@ class Post extends Article {
 			return null;
 	}
 }
+
+
+class ThreadHistoryIterator extends ArrayIterator {
+	
+	function __construct($thread, $limit, $offset) {
+		$this->thread = $thread;
+		$this->limit = $limit;
+		$this->offset = $offset;
+		$this->loadRows();
+	}
+	
+	private function loadRows() {
+		if( $this->offset == 0 ) {
+			$this->append( $this->thread );
+			$this->limit -= 1;
+		} else {
+			$this->offset -= 1;
+		}
+		
+		$dbr =& wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			'historical_thread',
+			'hthread_contents, hthread_revision',
+			array('hthread_id' => $this->thread->id()),
+			__METHOD__,
+			array('ORDER BY' => 'hthread_revision DESC',
+			      'LIMIT' =>  $this->limit,
+			      'OFFSET' => $this->offset));
+		while($l = $dbr->fetchObject($res)) {
+			$this->append( HistoricalThread::fromTextRepresentation($l->hthread_contents) );
+		}
+	}
+}
+
 
 class HistoricalThread extends Thread {
 	function __construct($t) {
@@ -129,16 +165,8 @@ class HistoricalThread extends Thread {
 	static function fromTextRepresentation($r) {
 		return unserialize($r);
 	}
-	private static function setChangeOnDescendents($thread, $change_type, $change_object) {
-		$thread->setChangeType($change_type);
-		$thread->setChangeObject($change_object);
-		foreach($thread->replies() as $r)
-			self::setChangeOnDescendents($r, $change_type, $change_object);
-		return $thread;
-	}
 	static function create( $t, $change_type, $change_object ) {
-		$tmt_tmp = $t->topmostThread();
-		$tmt = self::setChangeOnDescendents( $tmt_tmp, $change_type, $change_object );
+		$tmt = $t->topmostThread();
 		$contents = HistoricalThread::textRepresentation($tmt);
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->insert( 'historical_thread', array(
@@ -165,6 +193,7 @@ class HistoricalThread extends Thread {
 		return true;
 	}
 }
+
 
 class Thread {
 	/* SCHEMA changes must be reflected here. */
@@ -262,6 +291,14 @@ class Thread {
 		     __METHOD__);
 	}
 	
+	private static function setChangeOnDescendents($thread, $change_type, $change_object) {
+		$thread->setChangeType($change_type);
+		$thread->setChangeObject($change_object);
+		foreach($thread->replies() as $r)
+			self::setChangeOnDescendents($r, $change_type, $change_object);
+		return $thread;
+	}
+	
 	function commitRevision($change_type, $change_object = null, $reason = "") {
 		global $wgUser; // TODO global.
 		
@@ -273,6 +310,7 @@ class Thread {
 		HistoricalThread::create( $this->double, $change_type, $change_object );
 
 		$this->bumpRevisionsOnAncestors($change_type, $change_object);
+	//	self::setChangeOnDescendents($this->topmostThread(), $change_type, $change_object);
 		
 		/* SCHEMA changes must be reflected here. */
 		
@@ -836,6 +874,7 @@ SQL;
 	}
 
 }
+
 
 class QueryGroup {
 	protected $queries;

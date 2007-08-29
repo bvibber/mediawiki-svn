@@ -228,7 +228,8 @@ class LqtView {
 		$curr_rev_id = $changed_thread->rootRevision();
 		$curr_rev = Revision::newFromTitle( $changed_thread->root()->getTitle(), $curr_rev_id );
 		$prev_rev = $curr_rev->getPrevious();
-		return self::permalinkUrlWithQuery( $changed_thread, array('diff'=>$curr_rev_id, 'oldid'=>$prev_rev->getId()) );
+		$oldid = $prev_rev ? $prev_rev->getId() : "";
+		return self::permalinkUrlWithQuery( $changed_thread, array('diff'=>$curr_rev_id, 'oldid'=>$oldid) );
 	}
 
 	static function talkpageUrl( $title, $method = null, $operand = null, $includeFragment = true ) {
@@ -549,7 +550,8 @@ HTML;
 
 	function showThread( $thread ) {
 		global $wgLang; # TODO global.
-		
+
+		efVarDump($this->output, $thread->changeObject()->id());
 		$is_changed_thread = $thread->isHistorical() && $thread->changeObject()->id() == $thread->id();
 		
 		$this->showThreadHeading( $thread );
@@ -580,7 +582,7 @@ HTML;
 		
 		if ( $thread->type() == Threads::TYPE_DELETED ) {
 			if ( in_array('deletedhistory',  $this->user->getRights()) ) {
-				$this->output->addHTML("<p>The following thread has been <b>deleted</b> and is not visible to non-sysops.</p>");
+				$this->output->addHTML("<p>The following thread has been <b>deleted</b> and is invisible to non-sysops.</p>");
 			}
 			else {
 				$this->output->addHTML("<p><em>This thread was deleted.</em></p>");

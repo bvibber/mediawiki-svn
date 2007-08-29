@@ -556,17 +556,41 @@ class ThreadHistoryPager extends PageHistoryPager {
 }
 
 class ThreadHistoryView extends ThreadPermalinkView {
+	
+	private function rowForThread($t) {
+		global $wgLang, $wgOut; // TODO global.
 		
+		/* TODO: best not to refer to LqtView class directly. */
+		/* We don't use oldid because that has side-effects. */
+		$result = array();
+		$change_names = array(Threads::CHANGE_EDITED_ROOT => "Comment text edited:",
+		                      Threads::CHANGE_EDITED_SUMMARY => "Summary changed:",
+		                      Threads::CHANGE_REPLY_CREATED => "New reply created:",
+		                      Threads::CHANGE_NEW_THREAD => "New thread created:",
+							  Threads::CHANGE_DELETED => "Deleted:",
+							  Threads::CHANGE_UNDELETED => "Undeleted:");
+		$change_label = array_key_exists($t->changeType(), $change_names) ? $change_names[$t->changeType()] : "";
+
+		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $t->revisionNumber() );
+		
+		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $t->changeUser() ), false );
+		
+		$result[] = "<tr>";
+		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->timestamp()) . "</a></td>";
+		$result[] = "<td>" . $sig . "</td>";
+		$result[] = "<td>$change_label</td>";
+		$result[] = "<td>" . $t->changeComment() . "</td>";
+		$result[] = "</tr>";
+		return implode('', $result);
+	}
+	
 	function showHistoryListing($t) {
-		$pager = new ThreadHistoryPager( $this->thread );
-		$this->linesonpage = $pager->getNumRows();
-		$this->output->addHTML(
-			$pager->getNavigationBar() . 
-//			$this->beginHistoryList() . 
-			$pager->getBody() .
-//			$this->endHistoryList() .
-			$pager->getNavigationBar()
-		);
+		$revisions = new ThreadHistoryIterator($t, 10, 0);
+		$this->output->addHTML('<table>');
+		foreach($revisions as $ht) {
+			$this->output->addHTML($this->rowForThread($ht));
+		}
+		$this->output->addHTML('</table>');
 	}
 	
 	function show() {
