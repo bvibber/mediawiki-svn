@@ -120,6 +120,29 @@ function dupobject($id, $table, $dc1, $dc2) {
 	}
    }
 
+function getOldSyntrans($dc1, $dmid, $expid) {
+	$syntrans_table=mysql_real_escape_string("${dc1}_syntrans");
+	$query="SELECT * from $syntrans_table where defined_meaning_id=$dmid and expression_id=$expid";
+	$result = mysql_query($query)or die ("error ".mysql_error());
+	$data= mysql_fetch_assoc($result);
+	var_dump($data);
+	return $data;
+}
+
+function writeSyntrans($syntrans, $newdmid, $newexpid, $dc2) {
+	$syntrans["defined_meaning_id"]=$newdmid;
+	$syntrans["expression_id"]=$newexpid;
+	$syntrans_table=mysql_real_escape_string("${dc2}_syntrans");
+	mysql_insert_assoc($syntrans_table,$syntrans);
+}	
+
+function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
+	$syntrans=getOldSyntrans($dc1, $olddmid, $oldexpid);
+	$table=mysql_real_escape_string("${dc2}_syntrans");
+	$newid=dupObject($syntrans["syntrans_sid"], $table, $dc1, $dc2);
+	$syntrans["syntrans_sid"]=$newid;
+	writeSyntrans($syntrans, $newdmid, $newexpid, $dc2);
+}
 
 
 $start=stopwatch();
@@ -161,11 +184,21 @@ mysql_insert_assoc($target_table,$save_expression);
 $save_meaning["expression_id"]=$target_expid1;
 mysql_insert_assoc($dm_target_table, $save_meaning);
 
+dupsyntrans(
+	$dc1,
+	$dc2,
+	$defined_meaning["defined_meaning_id"],
+	$defining_expression["expression_id"],
+	$save_meaning["defined_meaning_id"],
+	$save_expression["expression_id"]
+);
+
 $title_name=$defining_expression["spelling"];
 $title_number=$target_dmid;
 $title=str_replace(" ","_",$title_name)."_(".$title_number.")";
 $pagedata=array("page_namespace"=>24, "page_title"=>$title);
 mysql_insert_assoc("page",$pagedata);
+
 
 
 echo"
