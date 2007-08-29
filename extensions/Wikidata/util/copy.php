@@ -2,10 +2,12 @@
 header("Content-type: text/html; charset=UTF-8");
 
 define('MEDIAWIKI', true );
+require_once("../../../StartProfiler.php");
 include_once("../../../includes/Defines.php");
 include_once("../../../LocalSettings.php");
+require_once("Setup.php");
 require_once("../OmegaWiki/WikiDataAPI.php");
-require_once("Database/MySQL.php");
+
 
 global $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname;
 
@@ -17,15 +19,8 @@ $db4=$wgDBname;  # db-name
 $connection=MySQL_connect($db1,$db2,$db3);
 if (!$connection)die("Cannot connect to SQL server. Try again later.");
 MySQL_select_db($db4)or die("Cannot open database");
-global $db;
-$db = new MySQL($db1,$db2,$db3,$db4); # alternate OO
 mysql_query("SET NAMES 'utf8'");
 
-#fakes out WikiDataAPI, hopefully
-function wfGetDB($ignore) {
-	global $db;
-	return $db;
-};
 
 function stopwatch(){
    list($usec, $sec) = explode(" ", microtime());
