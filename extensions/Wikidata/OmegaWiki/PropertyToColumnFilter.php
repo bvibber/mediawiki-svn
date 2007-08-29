@@ -7,12 +7,12 @@ class PropertyToColumnFilter {
 	protected $attribute;   	// Attribute
 	protected $propertyCaption; // Caption of the first column
 	
-	public function __construct($identifier, $caption, $propertyCaption, array $attributeIDs) {
-		$this->attributeIDs = $attributeIDs;
-		$this->attribute = new Attribute($identifier, $caption, "will-be-specified-later");
-		$this->propertyCaption = $propertyCaption;		
-	}
-	
+        public function __construct($identifier, $propertyCaption, array $attributeIDs) {
+        	$this->attributeIDs = $attributeIDs;
+                $this->attribute = new Attribute($identifier, $propertyCaption, "will-be-specified-later");
+                $this->propertyCaption = $propertyCaption;
+	}                                                                
+                                                                	
 	public function getAttribute() {
 		return $this->attribute;
 	} 
