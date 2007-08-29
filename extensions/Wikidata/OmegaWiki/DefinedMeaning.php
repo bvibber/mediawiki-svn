@@ -243,10 +243,14 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		foreach($datasets as $datasetid=>$dataset) {
 			$datasetarray[$datasetid]=$dataset->fetchName();
 		}
+
+		/* Deprecated for now
+		
 		$html= getOptionPanel( array (
 			'Copy to' => getSelect('CopyTo', $datasetarray)
 		));
-		$html.=$this->getCopyPanel2();
+		*/
+		$html=$this->getCopyPanel2();
 		return $html;
 	}	
 	
@@ -256,14 +260,16 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	 * something purdy and maintainable)
 	 */
 	protected function getCopyPanel2() { 
-		$html="Copy to (approach B):<br>\n"; 
+		global $wgScriptPath;
+		
+		$html="Copy to:<br>\n"; 
 		$datasets=wdGetDatasets();
 		$dmid=$this->definedMeaningModel->getId();
 		$dc1=$this->definedMeaningModel->getDataSet();
 		foreach($datasets as $datasetid=>$dataset) {
 			$name=$dataset->fetchName(); 
 			$dc2=$datasetid;
-			$html.="<a href='../extensions/Wikidata/util/copy.php?dmid=$dmid&dc1=$dc1&dc2=$dc2'>$name</a><br>\n";
+			$html.="<a href='$wgScriptPath/extensions/Wikidata/util/copy.php?dmid=$dmid&dc1=$dc1&dc2=$dc2'>$name</a><br>\n";
 		}
 
 		return $html;
