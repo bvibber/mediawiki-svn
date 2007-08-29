@@ -60,7 +60,7 @@ function wfSpecialTransaction() {
 			else
 				$transactionCount = min($transactionCount, 20);
 			
-			$wgOut->addHTML('<h1>Recent changes</h1>');
+			$wgOut->setPageTitle(wfMsg('recentchanges'));
 			$wgOut->addHTML(getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName, $showRollBackOptions));
 
 			if ($showRollBackOptions) 
@@ -130,15 +130,11 @@ function getFilterOptionsPanel($fromTransactionId, $transactionCount, $userName,
 function initializeAttributes() {
 
 	$o=OmegaWikiAttributes::getInstance();
-
 	$o->operation = new Attribute('operation', 'Operation', 'text');
 	$o->isLatest = new Attribute('is-latest', 'Is latest', 'boolean');
 
 	$o->rollBackStructure = new Structure($o->isLatest, $o->operation);
 	$o->rollBack = new Attribute('roll-back', 'Roll back', $o->rollBackStructure);
-	
-
-	$o=OmegaWikiAttributes::getInstance();
 	
 	$o->addTransactionId = new Attribute('add-transaction-id', 'Add transaction ID', 'identifier');
 		
@@ -149,7 +145,6 @@ function initializeAttributes() {
 
 	$o->rollBackTranslatedContentStructure = new Structure($o->isLatest, $o->operation, $o->translatedContentHistory);
 	$o->rollBackTranslatedContent = new Attribute('roll-back', 'Roll back', $o->rollBackTranslatedContentStructure);
-
 
 	$o->updatedDefinitionStructure = new Structure(
 		$o->rollBackTranslatedContent,
@@ -191,9 +186,6 @@ function initializeAttributes() {
 	
 	$o->updatedRelations = new Attribute('updated-relations', 'Relations', $o->updatedRelationsStructure);
 	
-
-	$o=OmegaWikiAttributes::getInstance();
-		
 	$o->classMember = new Attribute('class-member', 'Class member', $o->definedMeaningReferenceStructure);
 	
 	$o->updatedClassMembershipStructure = new Structure(
@@ -273,8 +265,6 @@ function initializeAttributes() {
 	$o->updatedTranslatedTextProperty = new Attribute('updated-translated-text-property', 'Text properties', $o->updatedTranslatedTextPropertyStructure);
 
 
-	$o=OmegaWikiAttributes::getInstance();
-	
 	$o->updatedTranslatedTextStructure = new Structure(
 		$o->rollBackTranslatedContent,
 		$o->valueId,
@@ -379,10 +369,9 @@ function getTransactionRecordSet($fromTransactionId, $transactionCount, $userNam
 		array('transaction_id DESC'),
 		$transactionCount
 	);
-	
+
 	$recordSet->getStructure()->addAttribute($o->transactionId);
-	expandTransactionIDsInRecordSet($recordSet, $o->transactionId, $o->transaction);
-	
+	expandTransactionIDsInRecordSet($recordSet);
 	$recordSet->getStructure()->addAttribute($o->updatesInTransaction);
 	expandUpdatesInTransactionInRecordSet($recordSet);
 

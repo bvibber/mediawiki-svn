@@ -251,10 +251,10 @@ function expandUserIDsInRecordSet(RecordSet $recordSet, Attribute $userID, Attri
 	}
 }								
 
-function expandTransactionIdsInRecordSet(RecordSet $recordSet, Attribute $transactionId, Attribute $transaction) {
+function expandTransactionIdsInRecordSet(RecordSet $recordSet) {
 	for ($i = 0; $i < $recordSet->getRecordCount(); $i++) { 
 		$record = $recordSet->getRecord($i);
-		$record->$transaction = getTransactionRecord($record->$transactionId);
+		$record->transaction = getTransactionRecord($record->transactionId);
 	}
 }	
 
