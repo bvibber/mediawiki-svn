@@ -31,6 +31,7 @@ case "$1" in
     purge)
         dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/apache2/apache2.conf
         dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/php5/apache2/php.ini
+        dpkg-divert --package wikimedia-task-appserver --rename --remove /etc/sudoers
 	;;
     remove)
        	removemount /mnt/upload3

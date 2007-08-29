@@ -1,3 +1,10 @@
+wikimedia-task-appserver (1.15) feisty; urgency=low
+
+  * No, really, mode 400 for sudoers. 
+  * Diversion for sudoers
+
+ -- Tim Starling <tstarling@wikimedia.org>  Tue, 28 Aug 2007 23:56:38 +0000
+
 wikimedia-task-appserver (1.14) feisty; urgency=low
 
   * Remove conf file diversions on purge, not on remove 
