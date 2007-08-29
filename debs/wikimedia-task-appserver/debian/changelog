@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.17) feisty; urgency=low
+
+  * log_errors=On 
+
+ -- Tim Starling <tstarling@wikimedia.org>  Wed, 29 Aug 2007 14:08:12 +0000
+
 wikimedia-task-appserver (1.16) feisty; urgency=low
 
   * Added /etc/apache2/envvars 
