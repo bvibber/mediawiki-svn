@@ -334,7 +334,11 @@ function __autoload($className) {
 		'ApiQuerySiteinfo' => 'includes/api/ApiQuerySiteinfo.php',
 		'ApiQueryUserInfo' => 'includes/api/ApiQueryUserInfo.php',
 		'ApiQueryWatchlist' => 'includes/api/ApiQueryWatchlist.php',
-		'ApiResult' => 'includes/api/ApiResult.php',
+		'ApiResult' => 'includes/api/ApiResult.php',		
+		// Added by VF
+		'ApiEditPage' => 'includes/api/ApiEditPage.php',
+    'ApiRegUser' => 'includes/api/ApiRegUser.php',
+		'ApiUploadFile' => 'includes/api/ApiUploadFile.php',
 	);
 	
 	wfProfileIn( __METHOD__ );
@@ -385,3 +389,5 @@ function wfLoadAllExtensions() {
 		}
 	}
 }
+
+
