@@ -110,6 +110,6 @@ function wfNewsSkinTemplateOutputPageBeforeExec( &$skin, &$tpl ) {
     }
 
     $tpl->setRef( 'feeds', $feeds );
-    true;
+    return true;
 }
 
