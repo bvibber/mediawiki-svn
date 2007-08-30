@@ -22,23 +22,19 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
  * http://www.gnu.org/copyleft/gpl.html
  *
- * @addtogroup SpecialPage
+ * @addtogroup Maintenance
  */
 
 #
 # Lacking documentation. Examples:
-# php checkExtensioni18n.php /opt/mw/extensions/CentralAuth/CentralAuth.i18n.php wgCentralAuthMessages
-# php checkExtensioni18n.php --extdir /opt/mw/extensions/
+# php checkExtensions.php /opt/mw/extensions/CentralAuth/CentralAuth.i18n.php wgCentralAuthMessages
+# php checkExtensions.php --extdir /opt/mw/extensions/
 #
 # BUGS: cant guess registered extensions :)
-# TODO: let users set parameters to configure checklanguage.inc (it uses globals)
+# TODO: let users set parameters to configure checklanguage.inc
 
 // Filename for the extension i18n files database:
 define( 'EXT_I18N_DB', 'i18n.db' );
-
-// Global parameters for checkLanguage.inc
-$wgDisplayLevel = 2;
-$wgChecks = array( 'untranslated', 'obsolete', 'variables', 'empty', 'whitespace', 'xhtml', 'chars' );
 
 $optionsWithArgs = array( 'extdir', 'lang' );
 
@@ -143,13 +139,7 @@ class extensionLanguages extends languages {
  * @param $filter Optional, restrict check to a given language code (default; null)
  */
 function checkExtensionLanguage( $filename, $arrayname, $filter = null ) {
-	global $wgGeneralMessages, $wgRequiredMessagesNumber;
-
 	$extLanguages = new extensionLanguages($filename, $arrayname);
-
-	// Stuff needed by the checkLanguage routine (globals)
-	$wgGeneralMessages = $extLanguages->getGeneralMessages();
-	$wgRequiredMessagesNumber = count( $wgGeneralMessages['required'] );
 
 	$langs = $extLanguages->getLanguages();
 	if( !$langs ) {
@@ -228,8 +218,8 @@ function usage() {
 // Usage
 print <<<END
 Usage:
-    php checkExtensioni18n.php <filename> <arrayname>
-    php checkExtensioni18n.php --extdir <extension repository>
+    php checkExtensions.php <filename> <arrayname>
+    php checkExtensions.php --extdir <extension repository>
 
 Common option:
     --lang <language code> : only check the given language.

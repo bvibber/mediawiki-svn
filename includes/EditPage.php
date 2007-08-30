@@ -457,7 +457,7 @@ class EditPage {
 		} elseif( $this->section == 'new' ) {
 			// Nothing *to* preview for new sections
 			return false;
-		} elseif( $title->exists() && $wgUser->getOption( 'previewonfirst' ) ) {
+		} elseif( ( $wgRequest->getVal( 'preload' ) !== '' || $title->exists() ) && $wgUser->getOption( 'previewonfirst' ) ) {
 			// Standard preference behaviour
 			return true;
 		} elseif( !$title->exists() && $title->getNamespace() == NS_CATEGORY ) {
@@ -553,9 +553,10 @@ class EditPage {
 			$this->summary   = '';
 			$this->edittime  = '';
 			$this->starttime = wfTimestampNow();
+			$this->edit      = false;
 			$this->preview   = false;
 			$this->save      = false;
-			$this->diff	 = false;
+			$this->diff      = false;
 			$this->minoredit = false;
 			$this->watchthis = false;
 			$this->recreate  = false;
