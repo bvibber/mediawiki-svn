@@ -19,6 +19,20 @@ function wfSpecialUpload() {
  * @addtogroup SpecialPage
  */
 class UploadForm {
+	const SUCCESS = 0;
+	const BEFORE_PROCESSING = 1;
+	const LARGE_FILE_SERVER = 2;
+	const EMPTY_FILE = 3;
+	const MIN_LENGHT_PARTNAME = 4;
+	const ILLEGAL_FILENAME = 5;
+	const PROTECTED_PAGE = 6;
+	const OVERWRITE_EXISTING_FILE = 7;
+	const FILETYPE_MISSING = 8;
+	const FILETYPE_BADTYPE = 9;
+	const VERIFICATION_ERROR = 10;
+	const UPLOAD_VERIFICATION_ERROR = 11;
+	const UPLOAD_WARNING = 12;
+
 	/**#@+
 	 * @access private
 	 */
@@ -245,7 +259,9 @@ class UploadForm {
 			}
 			$this->mainUploadForm();
 		} else if( 'submit' == $this->mAction || $this->mUploadClicked ) {
-			$this->processUpload();
+			$details = null;
+			$retval = $this->processUpload( $details );
+			$this->processRest($retval, $details);
 		} else {
 			$this->mainUploadForm();
 		}
@@ -253,34 +269,107 @@ class UploadForm {
 		$this->cleanupTempFile();
 	}
 
+	function processRest($value, $details) {
+		global $wgUser, $wgOut, $wgFileExtensions;
+
+		switch ($value)
+		{
+			case self::SUCCESS:
+				$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
+			    break;
+
+			case self::BEFORE_PROCESSING:
+				return false;
+			    break;
+
+			case self::LARGE_FILE_SERVER:
+				$this->mainUploadForm( wfMsgHtml( 'largefileserver' ) );
+			    break;
+
+			case self::EMPTY_FILE:
+				$this->mainUploadForm( wfMsgHtml( 'emptyfile' ) );
+			    break;
+
+			case self::MIN_LENGHT_PARTNAME:
+				$this->mainUploadForm( wfMsgHtml( 'minlength1' ) );
+			    break;
+
+			case self::ILLEGAL_FILENAME:
+				$filtered = $details['filtered'];
+				$this->uploadError( wfMsgWikiHtml( 'illegalfilename', htmlspecialchars( $filtered ) ) );
+			    break;
+
+			case self::PROTECTED_PAGE:
+				$this->uploadError( wfMsgWikiHtml( 'protectedpage' ) );
+			    break;
+
+			case self::OVERWRITE_EXISTING_FILE:
+				$overwrite = $details['overwrite'];
+				$overwrite = new WikiError( $wgOut->parse( $overwrite ) );
+
+				if( WikiError::isError( $overwrite ) ) {
+					$this->uploadError( $overwrite->toString() );
+				}
+			    break;
+
+			case self::FILETYPE_MISSING:
+				$this->uploadError( wfMsgExt( 'filetype-missing', array ( 'parseinline' ) ) );
+			    break;
+
+			case self::FILETYPE_BADTYPE:
+				$finalExt = $details['finalExt'];
+				$this->uploadError( wfMsgExt( 'filetype-badtype', array ( 'parseinline' ), htmlspecialchars( $finalExt ), implode ( ', ', $wgFileExtensions ) ) );
+			    break;
+
+			case self::VERIFICATION_ERROR:
+				$veri = $details['veri'];
+				$this->uploadError( $veri->toString() );
+			    break;
+
+			case self::UPLOAD_VERIFICATION_ERROR:
+				$error = $details['error'];
+				$this->uploadError( $error );
+			    break;
+
+			case self::UPLOAD_WARNING:
+				$warning = $details['warning'];
+				$this->uploadWarning( $warning );
+			    break;
+			    
+		}
+	}
+
+
 	/* -------------------------------------------------------------- */
 
 	/**
 	 * Really do the upload
 	 * Checks are made in SpecialUpload::execute()
+	 * 
+	 * @param array $resultDetails contains result-specific dict of additional values
+	 * 
 	 * @access private
 	 */
-	function processUpload() {
+	function processUpload( &$resultDetails="" ) {
 		global $wgUser, $wgOut;
 
 		if( !wfRunHooks( 'UploadForm:BeforeProcessing', array( &$this ) ) )
 		{
 			wfDebug( "Hook 'UploadForm:BeforeProcessing' broke processing the file." );
-			return false;
+			return self::BEFORE_PROCESSING;
+			
 		}
 
 		/* Check for PHP error if any, requires php 4.2 or newer */
 		if( $this->mCurlError == 1/*UPLOAD_ERR_INI_SIZE*/ ) {
-			$this->mainUploadForm( wfMsgHtml( 'largefileserver' ) );
-			return;
+			return self::LARGE_FILE_SERVER;
 		}
 
 		/**
 		 * If there was no filename or a zero size given, give up quick.
 		 */
 		if( trim( $this->mSrcName ) == '' || empty( $this->mFileSize ) ) {
-			$this->mainUploadForm( wfMsgHtml( 'emptyfile' ) );
-			return;
+			return self::EMPTY_FILE;
 		}
 
 		# Chop off any directories in the given filename
@@ -309,10 +398,10 @@ class UploadForm {
 			for( $i = 0; $i < count( $ext ) - 1; $i++ )
 				$partname .= '.' . $ext[$i];
 		}
+		
 
 		if( strlen( $partname ) < 1 ) {
-			$this->mainUploadForm( wfMsgHtml( 'minlength1' ) );
-			return;
+			return self::MIN_LENGHT_PARTNAME;
 		}
 
 		/**
@@ -321,9 +410,10 @@ class UploadForm {
 		 */
 		$filtered = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $filtered );
 		$nt = Title::makeTitleSafe( NS_IMAGE, $filtered );
+
 		if( is_null( $nt ) ) {
-			$this->uploadError( wfMsgWikiHtml( 'illegalfilename', htmlspecialchars( $filtered ) ) );
-			return;
+			$resultDetails = array( 'filtered' => $filtered );
+			return self::ILLEGAL_FILENAME;
 		}
 		$this->mLocalFile = wfLocalFile( $nt );
 		$this->mDestName = $this->mLocalFile->getName();
@@ -333,26 +423,30 @@ class UploadForm {
 		 * to modify it by uploading a new revision.
 		 */
 		if( !$nt->userCan( 'edit' ) ) {
-			return $this->uploadError( wfMsgWikiHtml( 'protectedpage' ) );
+			return self::PROTECTED_PAGE;
 		}
 
 		/**
 		 * In some cases we may forbid overwriting of existing files.
 		 */
 		$overwrite = $this->checkOverwrite( $this->mDestName );
-		if( WikiError::isError( $overwrite ) ) {
-			return $this->uploadError( $overwrite->toString() );
+
+		if( !is_null( $overwrite ) && $overwrite != 1 ) {
+			$resultDetails = array( 'overwrite' => $overwrite );
+			return self::OVERWRITE_EXISTING_FILE;
 		}
 
 		/* Don't allow users to override the blacklist (check file extension) */
 		global $wgStrictFileExtensions;
 		global $wgFileExtensions, $wgFileBlacklist;
+
 		if ($finalExt == '') {
-			return $this->uploadError( wfMsgExt( 'filetype-missing', array ( 'parseinline' ) ) );
+			return self::FILETYPE_MISSING;
+			
 		} elseif ( $this->checkFileExtensionList( $ext, $wgFileBlacklist ) ||
 				($wgStrictFileExtensions && !$this->checkFileExtension( $finalExt, $wgFileExtensions ) ) ) {
-			return $this->uploadError( wfMsgExt( 'filetype-badtype', array ( 'parseinline' ), 
-				htmlspecialchars( $finalExt ), implode ( ', ', $wgFileExtensions ) ) );
+			$resultDetails = array( 'finalExt' => $finalExt );
+			return self::FILETYPE_BADTYPE;
 		}
 
 		/**
@@ -366,7 +460,8 @@ class UploadForm {
 			$veri = $this->verify( $this->mTempPath, $finalExt );
 
 			if( $veri !== true ) { //it's a wiki error...
-				return $this->uploadError( $veri->toString() );
+				$resultDetails = array( 'veri' => $veri );
+				return self::VERIFICATION_ERROR;
 			}
 
 			/**
@@ -375,7 +470,8 @@ class UploadForm {
 			$error = '';
 			if( !wfRunHooks( 'UploadVerification',
 					array( $this->mDestName, $this->mTempPath, &$error ) ) ) {
-				return $this->uploadError( $error );
+				$resultDetails = array( 'error' => $error );
+				return self::UPLOAD_VERIFICATION_ERROR;
 			}
 		}
 
@@ -385,7 +481,6 @@ class UploadForm {
 		 */
 		if ( ! $this->mIgnoreWarning ) {
 			$warning = '';
-
 			global $wgCapitalLinks;
 			if( $wgCapitalLinks ) {
 				$filtered = ucfirst( $filtered );
@@ -416,12 +511,14 @@ class UploadForm {
 			if ( !$this->mDestWarningAck ) {
 				$warning .= self::getExistsWarning( $this->mLocalFile );
 			}
+
 			if( $warning != '' ) {
 				/**
 				 * Stash the file in a temporary location; the user can choose
 				 * to let it through and we'll complete the upload then.
 				 */
-				return $this->uploadWarning( $warning );
+				$resultDetails = array( 'warning' => $warning );
+				return self::UPLOAD_WARNING;
 			}
 		}
 
@@ -442,9 +539,9 @@ class UploadForm {
 				$wgUser->addWatch( $this->mLocalFile->getTitle() );
 			}
 			// Success, redirect to description page
-			$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
 			$img = null; // @todo: added to avoid passing a ref to null - should this be defined somewhere?
 			wfRunHooks( 'UploadComplete', array( &$img ) );
+			return self::SUCCESS;
 		}
 	}
 
@@ -544,6 +641,7 @@ class UploadForm {
 			$llink = $sk->makeKnownLinkObj( $ltitle, wfMsgHtml( 'deletionlog' ), 
 				'type=delete&page=' . $file->getTitle()->getPrefixedUrl() );
 			$warning .= '<li>' . wfMsgWikiHtml( 'filewasdeleted', $llink ) . '</li>';
+
 		}
 		return $warning;
 	}
@@ -758,7 +856,7 @@ wgAjaxLicensePreview = {$alp};
 			wfDebug( "Hook 'UploadForm:initial' broke output of the upload form" );
 			return false;
 		}
-		
+
 		if( $this->mDesiredDestName && $wgUser->isAllowed( 'deletedhistory' ) ) {
 			$title = Title::makeTitleSafe( NS_IMAGE, $this->mDesiredDestName );
 			if( $title instanceof Title && ( $count = $title->isDeleted() ) > 0 ) {
@@ -1009,7 +1107,6 @@ EOT
 		#check mime type, if desired
 		global $wgVerifyMimeType;
 		if ($wgVerifyMimeType) {
-
 		  wfDebug ( "\n\nmime: <$mime> extension: <$extension>\n\n");
 			#check mime type against file extension
 			if( !$this->verifyExtension( $mime, $extension ) ) {
@@ -1020,6 +1117,7 @@ EOT
 			global $wgMimeTypeBlacklist;
 			if( isset($wgMimeTypeBlacklist) && !is_null($wgMimeTypeBlacklist)
 				&& $this->checkFileExtension( $mime, $wgMimeTypeBlacklist ) ) {
+				
 				return new WikiErrorMsg( 'filetype-badmime', htmlspecialchars( $mime ) );
 			}
 		}
@@ -1038,6 +1136,7 @@ EOT
 		}
 
 		wfDebug( __METHOD__.": all clear; passing.\n" );
+
 		return true;
 	}
 
@@ -1343,7 +1442,7 @@ EOT
 
 		if( $error ) {
 			$errorText = wfMsg( $error, wfEscapeWikiText( $img->getName() ) );
-			return new WikiError( $wgOut->parse( $errorText ) );
+			return $errorText;
 		}
 
 		// Rockin', go ahead and upload
@@ -1411,3 +1510,5 @@ EOT
 		return $pageText;
 	}
 }
+
+
