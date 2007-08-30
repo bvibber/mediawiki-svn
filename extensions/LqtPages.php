@@ -433,6 +433,8 @@ class ThreadPermalinkView extends LqtView {
 			$this->showSummarizeForm($this->thread);
 
 		$this->showThread($this->thread);
+		
+		return false;
 	}
 }
 
@@ -597,6 +599,8 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 		$this->showHistoryListing($this->thread);
 
 		$this->showThread($this->thread);
+		
+		return false;
 	}
 }
 
@@ -636,6 +640,7 @@ class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 		function show() {
 			$this->showHistoryInfo();
 			parent::show();
+			return false;
 		}
 }
 

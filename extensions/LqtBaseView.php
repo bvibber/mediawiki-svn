@@ -32,6 +32,7 @@ class LqtDispatch {
 		'TalkpageView' => 'TalkpageView',
 		'ThreadHistoryListingView' => 'ThreadHistoryListingView',
 		'ThreadHistoricalRevisionView' => 'ThreadHistoricalRevisionView',
+		'ThreadDiffView' => 'ThreadDiffView',
 		'ThreadPermalinkView' => 'ThreadPermalinkView'
 		);
 
@@ -64,18 +65,19 @@ class LqtDispatch {
 	}
 
 	static function threadPermalinkMain(&$output, &$article, &$title, &$user, &$request) {
-			/* breaking the lqt_method paradigm to make the history tab work. 
-			  (just changing the href doesn't make the highlighting correct.) */
+		/* breaking the lqt_method paradigm to make the history tab work. 
+		  (just changing the href doesn't make the highlighting correct.) */
 		if( $request->getVal('action') == 'history' ) {
 			$viewname = self::$views['ThreadHistoryListingView'];
+		} else if ( $request->getVal('lqt_method') == 'diff' ) {
+			$viewname = self::$views['ThreadDiffView'];
 		} else if ( $request->getVal('lqt_oldid', null) !== null ) {
 			$viewname = self::$views['ThreadHistoricalRevisionView'];
 		} else {
 			$viewname = self::$views['ThreadPermalinkView'];
 		}
 		$view = new $viewname( $output, $article, $title, $user, $request );
-		$view->show();
-		return false;
+		return $view->show();
 	}
 	
 	/**
@@ -107,6 +109,29 @@ class LqtDispatch {
 
 
 class TalkpageHeaderView /* doesn't derive from LqtView -- why bother? */ {
+	function customizeTabs( $skintemplate, $content_actions ) {
+		unset($content_actions['edit']);
+		unset($content_actions['addsection']);
+		unset($content_actions['history']);
+		unset($content_actions['watch']);
+		unset($content_actions['move']);
+		
+		$content_actions['talk']['class'] = false;
+		$content_actions['header'] = array( 'class'=>'selected',
+		                                    'text'=>'header',
+		                                    'href'=>'');
+
+		return true;
+	}
+	
+	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		return true;
+	}
+}
+
+class ThreadDiffView {
 	function customizeTabs( $skintemplate, $content_actions ) {
 		unset($content_actions['edit']);
 		unset($content_actions['addsection']);
@@ -232,7 +257,7 @@ class LqtView {
 		$curr_rev = Revision::newFromTitle( $changed_thread->root()->getTitle(), $curr_rev_id );
 		$prev_rev = $curr_rev->getPrevious();
 		$oldid = $prev_rev ? $prev_rev->getId() : "";
-		return self::permalinkUrlWithQuery( $changed_thread, array('diff'=>$curr_rev_id, 'oldid'=>$oldid) );
+		return self::permalinkUrlWithQuery( $changed_thread, array('lqt_method'=>'diff', 'diff'=>$curr_rev_id, 'oldid'=>$oldid) );
 	}
 
 	static function talkpageUrl( $title, $method = null, $operand = null, $includeFragment = true ) {
