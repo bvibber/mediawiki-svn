@@ -51,13 +51,23 @@ function hawpedia_error($error_msg)
 	exit();
 }
 
+function validate_language($lang) {
+	global $supportedLanguages;
+	return is_string($lang) &&
+		preg_match('/^[a-z][a-z_]*[a-z]$/', $lang) &&
+		isset($supportedLanguages[$lang]) &&
+		$supportedLanguages[$lang] == 1;
+}
+
 function determine_settings()
 {
-	global $supportedLanguages;
+    // Validate previously set session data
+    if (isset($_SESSION['lang']) && !validate_language($_SESSION['lang'])) {
+		unset($_SESSION['lang']);
+	}
 
 	if (isset($_GET['lang']) &&
-		isset($supportedLanguages[$_GET['lang']]) &&
-		($supportedLanguages[$_GET['lang']] == 1)) {
+		validate_language($_GET['lang'])) {
 			// language explicitely requested in url parameter
 			$_SESSION['language'] = $_GET['lang']; // overwrite session info
 		}
@@ -65,18 +75,19 @@ function determine_settings()
 	{
 		// no language info stored in session
 		if(isset($_SERVER['HTTP_ACCEPT_LANGUAGE']) && 
-			isset($supportedLanguages[$_SERVER['HTTP_ACCEPT_LANGUAGE']]) &&
-			($supportedLanguages[$_SERVER['HTTP_ACCEPT_LANGUAGE']] == 1) &&
+			validate_language($_SERVER['HTTP_ACCEPT_LANGUAGE']) &&
 			(!defined('FORCE_DEFAULT_LANGUAGE') || !FORCE_DEFAULT_LANGUAGE))
 			{
 				// store browser's preference in session
+				// @fixme -- Won't actually work, since Accept-Language
+				// isn't just a language code, but a list of codes with
+				// priority values :)
 				$_SESSION['language'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
 			}
 		elseif(isset($_SERVER['HTTP_HOST']) &&
 			($dot = strpos($_SERVER['HTTP_HOST'], '.')) &&
 			($domlang = substr($_SERVER['HTTP_HOST'], 0, $dot)) &&
-			isset($supportedLanguages[$domlang]) &&
-			($supportedLanguages[$domlang] == 1) &&
+			validate_language($domlang) &&
 			(defined('FORCE_DEFAULT_LANGUAGE') && ('subdomain'==FORCE_DEFAULT_LANGUAGE)))
 			{
 				// store language subdomain in session
@@ -87,6 +98,10 @@ function determine_settings()
 			// store default language in session
 			$_SESSION['language'] = DEFAULT_LANGUAGE;
 		}
+	}
+
+	if (!validate_language($_SESSION['language'])) {
+		$_SESSION['language'] = DEFAULT_LANGUAGE;
 	}
 
 	require('lang/' . $_SESSION['language'] . '/phonenumbers.php');

@@ -13,8 +13,8 @@ start_hawpedia_session(); // set session params
 require('lang/' . $_SESSION['language'] . '/phonenumbers.php');
 
 if (isset($_GET['save'])) {
-	// store submitted data in session
-	if (isset($_GET['lang'])) {
+	// store validated submitted data in session
+	if (isset($_GET['lang']) && validate_language($_GET['lang'])) {
 	  $_SESSION['language'] = $_GET['lang'];
 
     // unset language-specific session variables
