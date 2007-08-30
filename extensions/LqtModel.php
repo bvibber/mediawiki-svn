@@ -2,6 +2,8 @@
 
 require_once('Article.php');
 
+$wgHooks['TitleGetRestrictions'][] = array('Thread::getRestrictionsForTitle');
+
 // TODO if we're gonna have a Date class we should really do it.
 class Date {
 	public $year, $month, $day, $hour, $minute, $second;
@@ -509,7 +511,7 @@ class Thread {
 	function replies() {
 		return $this->replies;
 	}
-
+	
 	function setSuperthread($thread) {
 		$this->path = $thread->path . '.' . $this->id;
 	}
@@ -698,6 +700,36 @@ class Thread {
 	
 	function changeComment() {
 		return $this->changeComment;
+	}
+	
+	// Called from hook in Title::isProtected.
+	static function getRestrictionsForTitle($title, $action, &$result) {
+		$thread = Threads::withRoot(new Post($title));
+		if ($thread)
+			return $thread->getRestrictions($action, $result);
+		else
+			return true; // not a thread; do normal protection check.
+	}
+	
+	// This only makes sense when called from the hook, because it uses the hook's
+	// default behavior to check whether this thread itself is protected, so you'll
+	// get false negatives if you use it from some other context.
+	function getRestrictions($action, &$result) {
+		if( $this->hasSuperthread() ) {
+			$parent_restrictions = $this->superthread()->root()->getTitle()->getRestrictions($action);
+		} else {
+			$parent_restrictions = $this->article()->getTitle()->getTalkPage()->getRestrictions($action);
+		}
+		
+		// TODO this may not be the same as asking "are the parent restrictions more restrictive than
+		// our own restrictions?", which is what we really want.
+		if( count($parent_restrictions) == 0 ) {
+			return true; // go to normal protection check.
+		} else {
+			$result = $parent_restrictions;
+			return false;
+		}
+			
 	}
 }
 

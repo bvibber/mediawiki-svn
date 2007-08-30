@@ -19,6 +19,7 @@ class TalkpageView extends LqtView {
 	function customizeTabs( $skintemplate, $content_actions ) {
 		// The arguments are passed in by reference.
 		unset($content_actions['edit']);
+		unset($content_actions['viewsource']);
 		unset($content_actions['addsection']);
 		unset($content_actions['history']);
 		unset($content_actions['watch']);
@@ -489,6 +490,7 @@ class ThreadDiffView {
 class ThreadProtectionFormView {
 	function customizeTabs( $skintemplate, $content_actions ) {
 		unset($content_actions['edit']);
+		unset($content_actions['addsection']);
 		unset($content_actions['viewsource']);
 		unset($content_actions['talk']);
 		

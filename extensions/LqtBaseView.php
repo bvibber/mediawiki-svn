@@ -13,6 +13,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 function efVarDump($output, $value) {
+	if ($output == null) {
+		global $wgOut;
+		$output = $wgOut;
+	}
 	ob_start();
 	var_dump($value);
 	$tmp=ob_get_contents();
@@ -53,13 +57,15 @@ class LqtDispatch {
 		/* Certain actions apply to the "header", which is stored in the actual talkpage
 		   in the database. Drop everything and behave like a normal page if those
 		   actions come up, to avoid hacking the various history, editing, etc. code. */
-		$header_actions = array('history', 'edit', 'submit', 'protect');
-		if ($request->getVal('lqt_method', null) === null && (
-				in_array( $request->getVal('action'), $header_actions ) ||
-				$request->getVal('diff', null) !== null ) ) {
+		$action =  $request->getVal('action');
+		$header_actions = array('history', 'edit', 'submit');
+		if ($request->getVal('lqt_method', null) === null &&
+				( in_array( $action, $header_actions ) ||
+					$request->getVal('diff', null) !== null ) ) {
 			$viewname = self::$views['TalkpageHeaderView'];
-		}
-		else if ( $request->getVal('lqt_method') == 'talkpage_archive' ) {
+		} else if ( $action == 'protect' || $action == 'unprotect' ) {
+			$viewname = self::$views['ThreadProtectionFormView'];
+		} else if ( $request->getVal('lqt_method') == 'talkpage_archive' ) {
 			$viewname = self::$views['TalkpageArchiveView'];
 		} else {
 			$viewname = self::$views['TalkpageView'];
@@ -457,8 +463,8 @@ HTML;
 		$this->output->addHTML( wfOpenElement( 'li' ) );
 		$this->output->addHTML( $wgLang->timeanddate($thread->timestamp()) );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
-		
-		$edit_label = $thread->root()->getTitle()->isProtected('edit') ? 'View source' : 'Edit';
+
+		$edit_label = $thread->root()->getTitle()->quickUserCan( 'edit' ) ? 'Edit' : 'View source';
 		
 		$commands = array( $edit_label => $this->talkpageUrl( $this->title, 'edit', $thread ),
 		 					'Reply' => $this->talkpageUrl( $this->title, 'reply', $thread ),
