@@ -57,6 +57,10 @@ class ApiMain extends ApiBase {
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
 		'help' => 'ApiHelp',
+		//Added by VF
+		'reguser' => 'ApiRegUser',
+		'upload' => 'ApiUploadFile',
+		'edit' => 'ApiEditPage'
 	);
 
 	/**
