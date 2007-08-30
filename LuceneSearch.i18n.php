@@ -79,14 +79,14 @@ $wgLuceneSearchMessages['de'] = array(
 	'searchnext'            => "<span style='font-size: smaller'>Nächste</span> &rarr;",
 	'searchscore'           => "Relevanz: $1",
 	'searchsize'            => "$1 kB ($2 Wörter)",
-	'searchdidyoumean'      => "Meinten Sie „<a href=\"$1\">$2</a>“?",
-	'searchnoresults'       => "Es wurden keine passenden Seiten für Ihre Suchanfrage gefunden.",
+	'searchdidyoumean'      => "Meintest du „<a href=\"$1\">$2</a>“?",
+	'searchnoresults'       => "Es wurden keine passenden Seiten für deine Suchanfrage gefunden.",
 	'searchnearmatches'     => "<b>Diese Seiten haben zu der Suchanfrage ähnliche Titel:</b>\n",
 	'searchnearmatch'       => "<li>$1</li>\n",
 	'lucenepowersearchtext' => "Suche in den Namensräumen $1<br />Suchbegriff: $3 $9 $10",
 	'lucenefallback'        => "Bei der {{SITENAME}}-internen Suche ist ein Problem aufgetreten.
-Dies ist normalerweise ein vorübergehendes Problem. Bitte versuchen Sie es nochmal.
-Alternativ können Sie auch die externen Suchmöglichkeiten nutzen:\n",
+Dies ist normalerweise ein vorübergehendes Problem. Bitte versuche es nochmal.
+Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
 	'searchexactcase'       => 'Exakte Groß-/Kleinschreibungssuche',
 	'searchall'             => 'alle',
 	'searchincategory'      => 'in Kategorie',
