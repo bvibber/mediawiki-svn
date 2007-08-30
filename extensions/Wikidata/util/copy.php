@@ -1,6 +1,6 @@
 <?php
 
-# (C) 2007  Alan Smithee  (licensed under the GPL v. 3, or any later version, though you're not likely to care)
+# (C) 2007  Alan Smithee  (licensed under the GPL v. 2, GPL v. 3 or any later version, though you're not likely to care)
 # throwaway rapid prototype to copy defined meanings between tables.
 # I didn't write this, nobody saw me, you can't prove a thing!
 # Actually somewhat easier than fighting through multiple layers of
