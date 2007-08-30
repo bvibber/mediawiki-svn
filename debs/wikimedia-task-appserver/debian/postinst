@@ -58,7 +58,18 @@ case "$1" in
 
         checkmount amane:/export/upload /mnt/upload3
         checkmount amane:/export/math /mnt/math
-        echo "remember to sync this server before you start it!"
+
+	CLUSTER=$(cat /etc/wikimedia-cluster)
+	if [ $CLUSTER="pmtpa" ]
+	then
+		rsync -a /home/wikipedia/conf/httpd/ /usr/local/apache/conf
+
+		PATH=$PATH:/home/wikipedia/bin
+		sync-common
+		apache-start
+	else
+		echo "remember to sync this server before you start it!"
+	fi
     ;;
 
     abort-upgrade|abort-remove|abort-deconfigure)

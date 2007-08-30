@@ -1,3 +1,9 @@
+wikimedia-task-appserver (1.18) feisty; urgency=low
+
+  * Put the Mediawiki sync scripts in the postinst
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 30 Aug 2007 12:53:02 +0000
+
 wikimedia-task-appserver (1.17) feisty; urgency=low
 
   * log_errors=On 
