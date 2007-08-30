@@ -359,6 +359,7 @@ class ThreadPermalinkView extends LqtView {
 	function customizeTabs( $skintemplate, $content_actions ) {
 		// The arguments are passed in by reference.
 		unset($content_actions['edit']);
+		unset($content_actions['viewsource']);
 		unset($content_actions['talk']);
 /*		unset($content_actions['history']);
 		unset($content_actions['watch']);
@@ -440,15 +441,73 @@ class ThreadPermalinkView extends LqtView {
 
 
 /*
-CREATE TABLE historical_thread (
-  -- Note that many hthreads can share an id, which is the same as the id
-  -- of the live thread. It is only the id/revision combo which must be unique.
-  hthread_id int(8) unsigned NOT NULL,
-  hthread_revision int(8) unsigned NOT NULL,
-  hthread_contents BLOB NOT NULL,
-  PRIMARY KEY hthread_id_revision (hthread_id, hthread_revision)
-) TYPE=InnoDB;
-*/
+ * Cheap views that just pass through to MW functions.
+ */
+
+class TalkpageHeaderView {
+	function customizeTabs( $skintemplate, $content_actions ) {
+		unset($content_actions['edit']);
+		unset($content_actions['addsection']);
+		unset($content_actions['history']);
+		unset($content_actions['watch']);
+		unset($content_actions['move']);
+		
+		$content_actions['talk']['class'] = false;
+		$content_actions['header'] = array( 'class'=>'selected',
+		                                    'text'=>'header',
+		                                    'href'=>'');
+
+		return true;
+	}
+	
+	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		return true;
+	}
+}
+
+class ThreadDiffView {
+	function customizeTabs( $skintemplate, $content_actions ) {
+		unset($content_actions['edit']);
+		unset($content_actions['viewsource']);
+		unset($content_actions['talk']);
+		
+		$content_actions['talk']['class'] = false;
+		$content_actions['history']['class'] = 'selected';
+		
+		return true;
+	}
+	
+	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		return true;
+	}
+}
+
+class ThreadProtectionFormView {
+	function customizeTabs( $skintemplate, $content_actions ) {
+		unset($content_actions['edit']);
+		unset($content_actions['viewsource']);
+		unset($content_actions['talk']);
+		
+		$content_actions['talk']['class'] = false;
+		if ( array_key_exists('protect', $content_actions) )
+			$content_actions['protect']['class'] = 'selected';
+		else if ( array_key_exists('unprotect', $content_actions) )
+			$content_actions['unprotect']['class'] = 'selected';
+					
+		return true;
+	}
+	
+	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		return true;
+	}
+}
+
 /**
  * @addtogroup Pager
  */

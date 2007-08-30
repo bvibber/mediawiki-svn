@@ -25,6 +25,9 @@ require_once('LqtModel.php');
 require_once('Pager.php');
 require_once('PageHistory.php');
 
+$wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
+$wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
+
 class LqtDispatch {
 	public static $views = array(
 		'TalkpageArchiveView' => 'TalkpageArchiveView',
@@ -33,7 +36,8 @@ class LqtDispatch {
 		'ThreadHistoryListingView' => 'ThreadHistoryListingView',
 		'ThreadHistoricalRevisionView' => 'ThreadHistoricalRevisionView',
 		'ThreadDiffView' => 'ThreadDiffView',
-		'ThreadPermalinkView' => 'ThreadPermalinkView'
+		'ThreadPermalinkView' => 'ThreadPermalinkView',
+		'ThreadProtectionFormView' => 'ThreadProtectionFormView'
 		);
 
 	static function talkpageMain(&$output, &$talk_article, &$title, &$user, &$request) {
@@ -67,8 +71,11 @@ class LqtDispatch {
 	static function threadPermalinkMain(&$output, &$article, &$title, &$user, &$request) {
 		/* breaking the lqt_method paradigm to make the history tab work. 
 		  (just changing the href doesn't make the highlighting correct.) */
-		if( $request->getVal('action') == 'history' ) {
+		$action =  $request->getVal('action');
+		if( $action == 'history' ) {
 			$viewname = self::$views['ThreadHistoryListingView'];
+		} else if ( $action == 'protect' || $action == 'unprotect' ) {
+			$viewname = self::$views['ThreadProtectionFormView'];
 		} else if ( $request->getVal('lqt_method') == 'diff' ) {
 			$viewname = self::$views['ThreadDiffView'];
 		} else if ( $request->getVal('lqt_oldid', null) !== null ) {
@@ -106,56 +113,6 @@ class LqtDispatch {
 		return true;
 	}
 }
-
-
-class TalkpageHeaderView /* doesn't derive from LqtView -- why bother? */ {
-	function customizeTabs( $skintemplate, $content_actions ) {
-		unset($content_actions['edit']);
-		unset($content_actions['addsection']);
-		unset($content_actions['history']);
-		unset($content_actions['watch']);
-		unset($content_actions['move']);
-		
-		$content_actions['talk']['class'] = false;
-		$content_actions['header'] = array( 'class'=>'selected',
-		                                    'text'=>'header',
-		                                    'href'=>'');
-
-		return true;
-	}
-	
-	function show() {
-		global $wgHooks;
-		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
-		return true;
-	}
-}
-
-class ThreadDiffView {
-	function customizeTabs( $skintemplate, $content_actions ) {
-		unset($content_actions['edit']);
-		unset($content_actions['addsection']);
-		unset($content_actions['history']);
-		unset($content_actions['watch']);
-		unset($content_actions['move']);
-		
-		$content_actions['talk']['class'] = false;
-		$content_actions['header'] = array( 'class'=>'selected',
-		                                    'text'=>'header',
-		                                    'href'=>'');
-
-		return true;
-	}
-	
-	function show() {
-		global $wgHooks;
-		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
-		return true;
-	}
-}
-
-$wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
-$wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
 
  
 class LqtView {
@@ -501,7 +458,9 @@ HTML;
 		$this->output->addHTML( $wgLang->timeanddate($thread->timestamp()) );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 		
-		$commands = array( 'Edit' => $this->talkpageUrl( $this->title, 'edit', $thread ),
+		$edit_label = $thread->root()->getTitle()->isProtected('edit') ? 'View source' : 'Edit';
+		
+		$commands = array( $edit_label => $this->talkpageUrl( $this->title, 'edit', $thread ),
 		 					'Reply' => $this->talkpageUrl( $this->title, 'reply', $thread ),
 		 					'Permalink' => $this->permalinkUrl( $thread ) );
 
