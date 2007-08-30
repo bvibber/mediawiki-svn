@@ -176,6 +176,13 @@ class ChangesList {
 		global $wgContLang;
 		$articlelink .= $wgContLang->getDirMark();
 
+		// LQT HACK.
+		$thread = Threads::withRoot(new Post( $rc->getTitle() ));
+		if ($thread) {
+			$articlelink .= ' (from ' . $this->skin->makeKnownLinkObj(
+				$thread->article()->getTitle()->getTalkPage() ) . ')';
+		}
+
 		$s .= ' '.$articlelink;
 	}
 
