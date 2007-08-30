@@ -386,30 +386,13 @@ class ThreadPermalinkView extends LqtView {
 		}
 	}
 	
-	function showHistoryInfo() {
-		global $wgLang; // TODO global.
-		$this->openDiv('lqt_history_info');
-		$this->output->addHTML('Revision as of ' . $wgLang->timeanddate($this->thread->timestamp()) . '.<br>' );
-		if( $this->thread->changeType() == Threads::CHANGE_NEW_THREAD ) {
-			$this->output->addHTML('This is the thread\'s initial revision.');
-		}
-		else if( $this->thread->changeType() == Threads::CHANGE_REPLY_CREATED ) {
-			$this->output->addHTML('The highlighted comment was created in this revision.');
-		} else if( $this->thread->changeType() == Threads::CHANGE_EDITED_ROOT ) {
-			$diff_url = $this->permalinkUrlWithDiff($this->thread);
-			$this->output->addHTML('The highlighted comment was edited in this revision. ');
-			$this->output->addHTML( "[<a href=\"$diff_url\">show diffs</a>]" );
-		}
-		$this->closeDiv();
-	}
-	
 	function noSuchRevision() {
 		$this->output->addHTML("There is no such revision of this thread.");
 	}
-
-	function show() {
-		global $wgHooks;
-		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+	
+	function __construct(&$output, &$article, &$title, &$user, &$request) {
+		
+		parent::__construct($output, $article, $title, $user, $request);
 		
 		$t = Threads::withRoot( $this->article );
 		$r = $this->request->getVal('lqt_oldid', null); if( $r ) {
@@ -422,32 +405,34 @@ class ThreadPermalinkView extends LqtView {
 		// TODO this is a holdover from the special page; not sure what's correct here.
 		// we now have a real true $this->article that makes some sense.
 		// but we still want to know about $t->article.
-		$this->article = $t->article(); # for creating reply threads.
+//		$this->article = $t->article(); # for creating reply threads.
 		
+	}
+
+	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+
 		// Make a link back to the talk page, including the correct archive month.
  		// TODO this is obsolete.
-		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($t->timestamp()) ))
+		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($this->thread->timestamp()) ))
 			$query = '';
 		else
-			$query = 'lqt_archive_month=' . substr($t->timestamp(),0,6);
+			$query = 'lqt_archive_month=' . substr($this->thread->timestamp(),0,6);
 			
-		$talkpage = $t->article()->getTitle()->getTalkpage();
+		$talkpage = $this->thread->article()->getTitle()->getTalkpage();
 		$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($talkpage, '', $query);
 		
-		if ( $t->hasSuperthread() ) {
-			$this->output->setSubtitle( "a fragment of <a href=\"{$this->permalinkUrl($t->topmostThread())}\">a discussion</a> from " . $talkpage_link );
+		if ( $this->thread->hasSuperthread() ) {
+			$this->output->setSubtitle( "a fragment of <a href=\"{$this->permalinkUrl($this->thread->topmostThread())}\">a discussion</a> from " . $talkpage_link );
 		} else {
 			$this->output->setSubtitle( "from " . $talkpage_link );
 		}
 		
 		if( $this->methodApplies('summarize') )
-			$this->showSummarizeForm($t);
+			$this->showSummarizeForm($this->thread);
 
-		if($t->isHistorical()) {
-			$this->showHistoryInfo();
-		}
-
-		$this->showThread($t);
+		$this->showThread($this->thread);
 	}
 }
 
@@ -555,7 +540,7 @@ class ThreadHistoryPager extends PageHistoryPager {
 	}
 }
 
-class ThreadHistoryView extends ThreadPermalinkView {
+class ThreadHistoryListingView extends ThreadPermalinkView {
 	
 	private function rowForThread($t) {
 		global $wgLang, $wgOut; // TODO global.
@@ -596,24 +581,63 @@ class ThreadHistoryView extends ThreadPermalinkView {
 	function show() {
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
-		
+
+/*		var_dump($this->article);
 		$t = Threads::withRoot( $this->article );
 		$this->thread = $t;
-
+*/
 		// TODO this is a holdover from the special page; not sure what's correct here.
 		// we now have a real true $this->article that makes some sense.
 		// but we still want to know about $t->article.
-		$this->article = $t->article(); # for creating reply threads.
+//		$this->article = $t->article(); # for creating reply threads.
 		
 		$this->output->setSubtitle("Viewing a history listing.");
 				
-		$this->showThreadHeading($t);
-		$this->showHistoryListing($t);
+		$this->showThreadHeading($this->thread);
+		$this->showHistoryListing($this->thread);
 
-		$this->showThread($t);
+		$this->showThread($this->thread);
 	}
 }
 
+class ThreadHistoricalRevisionView extends ThreadPermalinkView {
+	
+		/* TOOD: customize tabs so that History is highlighted. */
+
+		function threadDivClass($thread) {
+	//		efVarDump($this->output, $thread->changeObject()->id());
+			$is_changed_thread = $thread->changeObject() &&
+				$thread->changeObject()->id() == $thread->id();
+
+			if ( $is_changed_thread )
+				return 'lqt_thread lqt_thread_changed_by_history';
+			else
+				return 'lqt_thread';
+		}
+		
+		
+		function showHistoryInfo() {
+			global $wgLang; // TODO global.
+			$this->openDiv('lqt_history_info');
+			$this->output->addHTML('Revision as of ' . $wgLang->timeanddate($this->thread->timestamp()) . '.<br>' );
+			if( $this->thread->changeType() == Threads::CHANGE_NEW_THREAD ) {
+				$this->output->addHTML('This is the thread\'s initial revision.');
+			}
+			else if( $this->thread->changeType() == Threads::CHANGE_REPLY_CREATED ) {
+				$this->output->addHTML('The highlighted comment was created in this revision.');
+			} else if( $this->thread->changeType() == Threads::CHANGE_EDITED_ROOT ) {
+				$diff_url = $this->permalinkUrlWithDiff($this->thread);
+				$this->output->addHTML('The highlighted comment was edited in this revision. ');
+				$this->output->addHTML( "[<a href=\"$diff_url\">show diffs</a>]" );
+			}
+			$this->closeDiv();
+		}
+		
+		function show() {
+			$this->showHistoryInfo();
+			parent::show();
+		}
+}
 
 
 /* We have to do this goofy wgExtensionFunctions run-around because

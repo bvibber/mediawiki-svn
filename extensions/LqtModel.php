@@ -292,8 +292,16 @@ class Thread {
 	}
 	
 	private static function setChangeOnDescendents($thread, $change_type, $change_object) {
+		// TODO this is ludicrously inefficient.
 		$thread->setChangeType($change_type);
 		$thread->setChangeObject($change_object);
+		$dbr =& wfGetDB( DB_MASTER );
+		$res = $dbr->update( 'thread',
+		     /* SET */ array('thread_revision' => $thread->revisionNumber,
+		                     'thread_change_type'=>$thread->changeType,
+		                     'thread_change_object'=>$thread->changeObject),
+		     /* WHERE */ array( 'thread_id' => $thread->id ),
+		     __METHOD__);
 		foreach($thread->replies() as $r)
 			self::setChangeOnDescendents($r, $change_type, $change_object);
 		return $thread;
@@ -310,7 +318,7 @@ class Thread {
 		HistoricalThread::create( $this->double, $change_type, $change_object );
 
 		$this->bumpRevisionsOnAncestors($change_type, $change_object);
-	//	self::setChangeOnDescendents($this->topmostThread(), $change_type, $change_object);
+		self::setChangeOnDescendents($this->topmostThread(), $change_type, $change_object);
 		
 		/* SCHEMA changes must be reflected here. */
 		
@@ -461,6 +469,18 @@ class Thread {
 		
 		$this->double = clone $this;
 	}
+	
+	function __clone() {
+		// Cloning does not normally create a new array (but the clone keyword doesn't
+		// work on arrays -- go figure).
+		
+		// Update: this doesn't work for some reason, but why do we update the replies array
+		// in the first place after creating a new reply?
+		$new_array = array();
+		foreach( $this->replies as $r )
+			$new_array[] = $r;
+		$this->replies = $new_array;
+	}
 
 	/*
 	More evidence that the way I'm doing history is totally screwed.
@@ -468,7 +488,9 @@ class Thread {
 	is make sure the latest info gets into any historicalthreads we commit.
 	 */
 	function addReply($thread) {
-		$this->replies[] = $thread;
+		// TODO: question for myself to ponder: We don't want the latest info in the
+		// historical thread, duh. Why were we doing this?
+//		$this->replies[] = $thread;
 	}
 	function removeReplyWithId($id) {
 		$target = null;

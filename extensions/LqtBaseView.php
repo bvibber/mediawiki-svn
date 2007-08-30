@@ -30,7 +30,8 @@ class LqtDispatch {
 		'TalkpageArchiveView' => 'TalkpageArchiveView',
 		'TalkpageHeaderView' => 'TalkpageHeaderView',
 		'TalkpageView' => 'TalkpageView',
-		'ThreadHistoryView' => 'ThreadHistoryView',
+		'ThreadHistoryListingView' => 'ThreadHistoryListingView',
+		'ThreadHistoricalRevisionView' => 'ThreadHistoricalRevisionView',
 		'ThreadPermalinkView' => 'ThreadPermalinkView'
 		);
 
@@ -66,7 +67,9 @@ class LqtDispatch {
 			/* breaking the lqt_method paradigm to make the history tab work. 
 			  (just changing the href doesn't make the highlighting correct.) */
 		if( $request->getVal('action') == 'history' ) {
-			$viewname = self::$views['ThreadHistoryView'];
+			$viewname = self::$views['ThreadHistoryListingView'];
+		} else if ( $request->getVal('lqt_oldid', null) !== null ) {
+			$viewname = self::$views['ThreadHistoricalRevisionView'];
 		} else {
 			$viewname = self::$views['ThreadPermalinkView'];
 		}
@@ -547,21 +550,16 @@ HTML;
 			                        $html . wfCloseElement("h{$this->headerLevel}") );
 		}
 	}
+	
+	function threadDivClass( $thread ) {
+		return 'lqt_thread';
+	}
 
 	function showThread( $thread ) {
 		global $wgLang; # TODO global.
 
-		efVarDump($this->output, $thread->changeObject()->id());
-		$is_changed_thread = $thread->isHistorical() && $thread->changeObject()->id() == $thread->id();
-		
 		$this->showThreadHeading( $thread );
 		
-		
-		
-/*		efVarDump($this->output, $thread->isHistorical());
-		efVarDump($this->output, $thread->id());
-		efVarDump($this->output, $thread->changeObject()->id());
-*/		
 		$this->output->addHTML( "<a name=\"lqt_thread_{$thread->id()}\" ></a>" );
 
 		if ($thread->type() == Threads::TYPE_MOVED) {
@@ -597,12 +595,8 @@ HTML;
 		            && !$thread->summary() && !$thread->hasSuperthread() && !$thread->isHistorical() ) {
 			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'summarize')}\">write a summary</a>. There have been no changes here for at least $this->archive_start_days days.</p>");
 		}
-		
-		if( $is_changed_thread ) {
-			$this->openDiv('lqt_thread lqt_thread_changed_by_history', "lqt_thread_id_{$thread->id()}");
-		} else {
-			$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");
-		}
+
+		$this->openDiv($this->threadDivClass($thread), "lqt_thread_id_{$thread->id()}");
 		
 		$this->showRootPost( $thread );
 		$this->indent();
