@@ -1,4 +1,13 @@
 <?php
+
+# (C) 2007  Alan Smithee  (licensed under the GPL v. 3, or any later version, though you're not likely to care)
+# throwaway rapid prototype to copy defined meanings between tables.
+# I didn't write this, nobody saw me, you can't prove a thing!
+# Actually somewhat easier than fighting through multiple layers of
+# code in the recordsets for now.
+# probably will refactor this code into ulta-pretty helpers or
+# other recordset improvements.
+#
 header("Content-type: text/html; charset=UTF-8");
 
 define('MEDIAWIKI', true );
@@ -150,12 +159,62 @@ function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
 	writeSyntrans($syntrans, $newdmid, $newexpid, $dc2);
 }
 
+function get_syntranses($dmid, $dc1) {
+	$syntranses=array();
+	$syntrans_table=mysql_real_escape_string("${dc1}_syntrans");
+	$query="SELECT * from $syntrans_table where defined_meaning_id=$dmid";
+	$result = mysql_query($query)or die ("error ".mysql_error());
+	var_dump($result);
+	while ($nextexp=mysql_fetch_assoc($result)) {
+		$syntranses[]=$nextexp;
+	}
+	return $syntranses;
+}
+
+/* some coy&paste happening here, might want to tidy even before we
+* toss this throwaway code*/
+function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
+	$target_table=mysql_real_escape_string("${dc2}_expression_ns");
+	$target_expid1=dupobject($expression["expression_id"], $target_table, $dc1, $dc2);
+	var_dump($target_expid1);
+	$save_expression=$expression;
+	$save_expression["expression_id"]=$target_expid1;
+	mysql_insert_assoc($target_table,$save_expression);
+	dupsyntrans(
+		$dc1,
+		$dc2,
+		$src_dmid,
+		$expression["expression_id"],
+		$dst_dmid,
+		$save_expression["expression_id"]
+	);
+
+}
+
+function write_syntranses($syntranses, $src_dmid, $dst_dmid, $dc1, $dc2) {
+	var_dump($syntranses);
+	print "<br>\nExpressions:";
+	foreach ($syntranses as $syntrans) {
+		$expression=expression($syntrans["expression_id"],$dc1);
+		print $expression["spelling"].";";
+		write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2);
+		# ^- which incidentally also dups the syntrans
+	}
+}
+
+function dup_syntranses($src_dmid, $dst_dmid, $dc1, $dc2) {
+	$syntranses=get_syntranses($src_dmid, $dc1);
+	write_syntranses($syntranses, $src_dmid, $dst_dmid, $dc1, $dc2);
+}
 
 $start=stopwatch();
 
 $dmid=$_REQUEST['dmid'];
 $dc1=$_REQUEST['dc1'];
 $dc2=$_REQUEST['dc2'];
+
+
+# dm
 $dmid_esc=mysql_real_escape_string($dmid);
 
 echo $dmid_esc;
@@ -171,6 +230,7 @@ $result = mysql_query($query)or die ("error ".mysql_error());
 $defined_meaning=mysql_fetch_assoc($result);
 var_dump($defined_meaning);
 
+# bit of exp here too (defnitely need to tidy)
 $defining_expression=expression($defined_meaning["expression_id"], $dc1);
 var_dump($defining_expression);
 
@@ -180,6 +240,7 @@ var_dump($target_dmid);
 $save_meaning=$defined_meaning;
 $save_meaning["defined_meaning_id"]=$target_dmid;
 
+# exp
 $target_table=mysql_real_escape_string("${dc2}_expression_ns");
 $target_expid1=dupobject($defining_expression["expression_id"], $target_table, $dc1, $dc2);
 var_dump($target_expid1);
@@ -187,9 +248,12 @@ $save_expression=$defining_expression;
 $save_expression["expression_id"]=$target_expid1;
 mysql_insert_assoc($target_table,$save_expression);
 
+# and insert that info into the dm +save it
 $save_meaning["expression_id"]=$target_expid1;
 mysql_insert_assoc($dm_target_table, $save_meaning);
 
+# the defining expression is also in syntrans,
+# so this might be redundant.
 dupsyntrans(
 	$dc1,
 	$dc2,
@@ -210,6 +274,13 @@ $concepts=array(
 	$dc2 => $save_meaning["defined_meaning_id"]
 );
 createConceptMapping($concepts);
+
+dup_syntranses(
+	$defined_meaning["defined_meaning_id"],
+	$save_meaning["defined_meaning_id"],
+	$dc1,
+	$dc2
+);
 
 echo"
 <hr>
