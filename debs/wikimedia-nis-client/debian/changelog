@@ -1,3 +1,10 @@
+wikimedia-nis-client (1.2) feisty; urgency=low
+
+  * Since most of the package hardcodes values anyway, let's skip the debconf
+    questions (set seen flag)
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 30 Aug 2007 11:59:56 +0000
+
 wikimedia-nis-client (1.1) feisty; urgency=low
 
   * Service aliases for NIS.
