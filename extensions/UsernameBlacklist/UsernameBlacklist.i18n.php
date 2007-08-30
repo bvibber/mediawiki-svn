@@ -205,18 +205,42 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 'yue' => array(
 'blacklistedusername' => '列入黑名單嘅用戶名',
 'blacklistedusernametext' => '你所揀嘅用戶名係同[[MediaWiki:Usernameblacklist|用戶名黑名單一覽]]符合。請揀過另一個名喇。',
+'usernameblacklist' => '<pre>
+# 響呢個表嘅項目，當將註冊嗰陣嘅用戶名會用來做黑名單時，
+# 會成為標準表示式嘅一部份。每一個項目都應該要係點列嘅一部份，好似
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => '下面響用戶名黑名單嘅{{PLURAL:$1|一行|咁多行}}唔正確；請響儲存之前改正{{PLURAL:$1|佢|佢哋}}:',
 ),
 
 /* Chinese (Simplified) (Shinjiman) */
 'zh-hans' => array(
 'blacklistedusername' => '列入黑名单的用户名',
 'blacklistedusernametext' => '您所选择的用户名是与[[MediaWiki:Usernameblacklist|用户名黑名单列表]]匹配。请选择另一个名称。',
+'usernameblacklist' => '<pre>
+# 在这个表中的项目，当将注册时的用户名会用来做黑名单的时候，
+# 会成为标准表示式的一部份。每一个项目都应该要是点列的一部份，好像
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => '以下在用户名黑名单中{{PLURAL:$1|一行|多行}}不正确；请于保存之前改正{{PLURAL:$1|它|它们}}:',
 ),
 
 /* Chinese (Traditional) (Shinjiman) */
 'zh-hant' => array(
 'blacklistedusername' => '列入黑名單的用戶名',
 'blacklistedusernametext' => '您所選擇的用戶名是與[[MediaWiki:Usernameblacklist|用戶名黑名單列表]]符合。請選擇另一個名稱。',
+'usernameblacklist' => '<pre>
+# 在這個表中的項目，當將註冊時的用戶名會用來做黑名單的時候，
+# 會成為標準表示式的一部份。每一個項目都應該要是點列的一部份，好像
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => '以下在用戶名黑名單中{{PLURAL:$1|一行|多行}}不正確；請於保存之前改正{{PLURAL:$1|它|它們}}:',
 ),
 
 	);
@@ -225,6 +249,7 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 	$messages['kk'] = $messages['kk-kz'];
 
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];
 	$messages['zh-hk'] = $messages['zh-hant'];
 	$messages['zh-sg'] = $messages['zh-hans'];

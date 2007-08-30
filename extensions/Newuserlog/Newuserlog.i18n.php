@@ -214,6 +214,12 @@ $wgNewuserlogMessages['yue'] = array(
 	'newuserlog-create-entry'  => '新用戶',
 	'newuserlog-create2-entry' => '已經開咗$1嘅戶口',
 );
+$wgNewuserlogMessages['zh-classical'] = array(
+	'newuserlogpage'           => '誌簿',
+	'newuserlogpagetext'       => '此為誌簿之記也',
+	'newuserlog-create-entry'  => '新簿',
+	'newuserlog-create2-entry' => '已註$1之簿',
+);
 $wgNewuserlogMessages['zh-hans'] = array(
 	'newuserlogpage'           => '新进用户名册',
 	'newuserlogpagetext'       => '本日志是显示新注册用户的日志',
@@ -226,10 +232,12 @@ $wgNewuserlogMessages['zh-hant'] = array(
 	'newuserlog-create-entry'  => '新用戶',
 	'newuserlog-create2-entry' => '已創建$1的帳戶',
 );
+$wgNewuserlogMessages['zh'] = $wgNewuserlogMessages['zh-hans'];
 $wgNewuserlogMessages['zh-cn'] = $wgNewuserlogMessages['zh-hans'];
 $wgNewuserlogMessages['zh-hk'] = $wgNewuserlogMessages['zh-hant'];
 $wgNewuserlogMessages['zh-sg'] = $wgNewuserlogMessages['zh-hans'];
 $wgNewuserlogMessages['zh-tw'] = $wgNewuserlogMessages['zh-hant'];
 $wgNewuserlogMessages['zh-yue'] = $wgNewuserlogMessages['yue'];
+
 
 

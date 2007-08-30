@@ -333,11 +333,13 @@ $wgExpandTemplatesMessages['zh-hant'] = array(
 	'expand_templates_remove_comments' => '移除注釋',
 	'expand_templates_preview'         => '預覽',
 );
+$wgExpandTemplatesMessages['zh'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-cn'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-hk'] = $wgExpandTemplatesMessages['zh-hant'];
 $wgExpandTemplatesMessages['zh-sg'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-tw'] = $wgExpandTemplatesMessages['zh-hant'];
 $wgExpandTemplatesMessages['zh-yue'] = $wgExpandTemplatesMessages['yue'];
+
 
 
 

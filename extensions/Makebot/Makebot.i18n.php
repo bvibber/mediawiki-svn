@@ -712,6 +712,7 @@ function efMakeBotMessages() {
 	$messages['kk'] = $messages['kk-kz'];
 
 	/* Chinese defaults, fallback to zh-hans */
+	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];
 	$messages['zh-sg'] = $messages['zh-hans'];
 	$messages['zh-tw'] = $messages['zh-hant'];
@@ -721,5 +722,6 @@ function efMakeBotMessages() {
 
 	return $messages;
 }
+
 
 

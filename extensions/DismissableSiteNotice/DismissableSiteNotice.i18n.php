@@ -131,17 +131,22 @@ $wgDismissableSiteNoticeMessages['ur'] = array(
 $wgDismissableSiteNoticeMessages['yue'] = array(
 	'sitenotice_close' => '閂咗佢',
 );
+$wgDismissableSiteNoticeMessages['zh-classical'] = array(
+	'sitenotice_close' => '關',
+);
 $wgDismissableSiteNoticeMessages['zh-hans'] = array(
 	'sitenotice_close' => '关闭',
 );
 $wgDismissableSiteNoticeMessages['zh-hant'] = array(
 	'sitenotice_close' => '關閉',
 );
+$wgDismissableSiteNoticeMessages['zh'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-cn'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
 $wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
 $wgDismissableSiteNoticeMessages['zh-yue'] = $wgDismissableSiteNoticeMessages['yue'];
+
 
 
 

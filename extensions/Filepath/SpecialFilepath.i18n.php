@@ -228,11 +228,13 @@ $wgFilepathMessages['zh-hant'] = array(
 	
 	請輸入檔名，不要包含"{{ns:image}}:"開頭。',
 );
+$wgFilepathMessages['zh'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-cn'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-hant'];
 $wgFilepathMessages['zh-sg'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-tw'] = $wgFilepathMessages['zh-hant'];
 $wgFilepathMessages['zh-yue'] = $wgFilepathMessages['yue'];
+
 
 
 

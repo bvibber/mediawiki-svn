@@ -70,6 +70,7 @@ $wgDeletedContribsMessages['zh-hant'] = array(
 	'deletedcontributions'		 => '已刪除的用戶貢獻'
 );
 
+$wgDeletedContribsMessages['zh'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-cn'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-hk'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-sg'] = $wgDeletedContribsMessages['zh-hans'];

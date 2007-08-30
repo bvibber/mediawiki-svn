@@ -639,6 +639,7 @@ $1\n
 	'searchincategory'      => '在分類中'
 );
 
+$wgLuceneSearchMessages['zh'] = $wgLuceneSearchMessages['zh-hans'];
 $wgLuceneSearchMessages['zh-cn'] = $wgLuceneSearchMessages['zh-hans'];
 $wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-hant'];
 $wgLuceneSearchMessages['zh-sg'] = $wgLuceneSearchMessages['zh-hans'];

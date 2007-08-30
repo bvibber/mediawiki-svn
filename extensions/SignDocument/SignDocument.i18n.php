@@ -37,10 +37,12 @@ $allMessages = array(
 	),
 );
 
+$allMessages['zh'] = $allMessages['zh-hans'];
 $allMessages['zh-cn'] = $allMessages['zh-hans'];
 $allMessages['zh-hk'] = $allMessages['zh-hant'];
 $allMessages['zh-sg'] = $allMessages['zh-hans'];
 $allMessages['zh-tw'] = $allMessages['zh-hant'];
 $allMessages['zh-yue'] = $allMessages['yue'];
+
 
 

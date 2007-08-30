@@ -123,19 +123,20 @@ function efUserImagesMessages() {
 ),
 
 	);
-/* Chinese (PRC), inherited from Chinese (Simplified) */
-$messages['zh-cn'] = $messages['zh-hans'];
-/* Chinese (Hong Kong), inherited from Chinese (Traditional) */
-$messages['zh-hk'] = $messages['zh-hant'];
-/* Chinese (Singapore), inherited from Chinese (Simplified) */
-$messages['zh-sg'] = $messages['zh-hans'];
-/* Chinese (Taiwan), inherited from Chinese (Traditional) */
-$messages['zh-hk'] = $messages['zh-hant'];
-/* Cantonese, fallback to yue */
-$messages['zh-yue'] = $messages['yue'];
 
-return $messages;
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh'] = $messages['zh-hans'];
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-sg'] = $messages['zh-hans'];
+	$messages['zh-tw'] = $messages['zh-hant'];
+
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
+	return $messages;
 }
+
 
 
 

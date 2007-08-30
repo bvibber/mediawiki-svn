@@ -429,27 +429,35 @@ function efInputBoxMessages() {
 	'createarticle' => 'Ahiver årtike',
 ),
 
+'yue' => array(
+	'inputbox-error-no-type'  => '你重未指定開輸入盒嘅指定類型。',
+	'inputbox-error-bad-type' => '輸入盒類型"$1"認唔到。請指定"create"、"comment"、"search"或"search2"。',
+	'tryexact'                => '試吓精確嘅比較',
+	'searchfulltext'          => '搵全文',
+	'createarticle'           => '建立文章',
+),
+
 'zh-classical' => array(
+	'inputbox-error-no-type'  => '汝未定輸入盒之類也。',
+	'inputbox-error-bad-type' => '輸入盒之類"$1"無認耳。指"create"、"comment"、"search"或"search2"之。',	
 	'tryexact'       => '查全合',
 	'searchfulltext' => '尋全文',
 	'createarticle'  => '撰文',
 ),
 
-'zh-cn' => array(
+'zh-hans' => array(
+	'inputbox-error-no-type'  => '您尚未指定创建输入箱的指定类型。',
+	'inputbox-error-bad-type' => '输入箱类型"$1"无法辨识。请指定"create"、"comment"、"search"或"search2"。',
 	'tryexact'       => '尝试精确匹配',
 	'searchfulltext' => '全文搜索',
 	'createarticle'  => '建立文章',
 ),
 
-'zh-tw' => array(
+'zh-hant' => array(
+	'inputbox-error-no-type'  => '您尚未指定創建輸入箱的指定類型。',
+	'inputbox-error-bad-type' => '輸入箱類型"$1"無法辨識。請指定"create"、"comment"、"search"或"search2"。',
 	'tryexact'       => '嘗試精確匹配',
 	'searchfulltext' => '全文檢索',
-	'createarticle'  => '建立文章',
-),
-
-'zh-yue' => array(
-	'tryexact'       => '試吓精確嘅比較',
-	'searchfulltext' => '搵全文',
 	'createarticle'  => '建立文章',
 ),
 
@@ -457,6 +465,14 @@ function efInputBoxMessages() {
 
 	/* Kazakh default, fallback to kk-kz */
 	$messages['kk'] = $messages['kk-kz'];
+	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh'] = $messages['zh-hans'];
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-tw'] = $messages['zh-hans'];
+	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
 
 	return $messages;
 }

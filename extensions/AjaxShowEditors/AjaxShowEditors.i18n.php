@@ -103,6 +103,7 @@ $wgAjaxShowEditorsMessages['zh-hant'] = array(
 	'ajax-se-pending' => '正在重新整理 ... (按一下這個框開始編輯)',
 	'ajax-se-idling' => '($1秒前)',
 );
+$wgAjaxShowEditorsMessages['zh'] = $wgAjaxShowEditorsMessages['zh-hans'];
 $wgAjaxShowEditorsMessages['zh-cn'] = $wgAjaxShowEditorsMessages['zh-hans'];
 $wgAjaxShowEditorsMessages['zh-hk'] = $wgAjaxShowEditorsMessages['zh-hant'];
 $wgAjaxShowEditorsMessages['zh-sg'] = $wgAjaxShowEditorsMessages['zh-hans'];

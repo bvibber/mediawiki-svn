@@ -1426,6 +1426,11 @@ $1去睇加密嘅資料。</p>",
 
 你有可能會收到一個安全警告，話個憑證冇簽到。',
 );
+$wgBoardVoteMessages['zh-classical'] = array(
+	'boardvote_time'          => "時辰",
+	'boardvote_user'          => "編者",
+	'boardvote_submit'        => '確定',
+);
 $wgBoardVoteMessages['zh-hans'] = array(
 	'boardvote'               => "维基媒体基金会理事会选举",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|参与投票]]
@@ -1557,11 +1562,13 @@ $wgBoardVoteMessages['zh-hant'] = array(
 
 稍後，您的瀏覽器可能會彈出未驗證安全憑證的警告。',
 );
+$wgBoardVoteMessages['zh'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-cn'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-hk'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-sg'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-tw'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-yue'] = $wgBoardVoteMessages['yue'];
+
 
 
 

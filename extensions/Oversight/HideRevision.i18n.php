@@ -773,6 +773,7 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 	/* Kazakh default, fallback to kk-kz */
 	$messages['kk'] = $messages['kk-kz'];
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];
 	$messages['zh-hk'] = $messages['zh-hant'];
 	$messages['zh-sg'] = $messages['zh-hans'];
@@ -783,4 +784,5 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 	return $messages;
 
 }
+
 

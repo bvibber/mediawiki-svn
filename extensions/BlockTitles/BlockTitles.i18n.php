@@ -37,7 +37,7 @@ function efBlockTitlesMessages() {
  * 
  * Cantonese (Shinjiman)
  */
-'zh-hant' => array(
+'yue' => array(
 	'block_title_error_page_title' => '已經封鎖嘅標題',		
 	'block_title_error' => '對唔住，呢篇文章嘅標題唔容許保存。',
 ),
@@ -61,10 +61,13 @@ function efBlockTitlesMessages() {
 	);
 
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];
 	$messages['zh-hk'] = $messages['zh-hant'];
 	$messages['zh-tw'] = $messages['zh-hans'];
 	$messages['zh-sg'] = $messages['zh-hant'];
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
 
 	return $messages;	
 }

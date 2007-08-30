@@ -998,11 +998,13 @@ $wgDPL2Messages['zh-hant'] = array(
 	*/
 	'dpl2_articlecount' => '在這個標題中有$1篇條目。'
 );
+$wgDPL2Messages['zh'] = $wgDPL2Messages['zh-hans'];
 $wgDPL2Messages['zh-cn'] = $wgDPL2Messages['zh-hans'];
 $wgDPL2Messages['zh-hk'] = $wgDPL2Messages['zh-hant'];
 $wgDPL2Messages['zh-sg'] = $wgDPL2Messages['zh-hans'];
 $wgDPL2Messages['zh-tw'] = $wgDPL2Messages['zh-hant'];
 $wgDPL2Messages['zh-yue'] = $wgDPL2Messages['yue'];
+
 
 
 

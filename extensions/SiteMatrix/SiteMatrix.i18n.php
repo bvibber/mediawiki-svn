@@ -152,6 +152,7 @@ $wgSiteMatrixMessages['zh-tw'] = array(
 	'sitematrix-project'  => '計畫名稱、跨計畫連結以及跨維基連結',
 	'sitematrix-others'   => '維基媒體的其它計畫',
 );
+$wgSiteMatrixMessages['zh'] = $wgSiteMatrixMessages['zh-hans'];
 $wgSiteMatrixMessages['zh-cn'] = $wgSiteMatrixMessages['zh-hans'];
 $wgSiteMatrixMessages['zh-hk'] = $wgSiteMatrixMessages['zh-hant'];
 $wgSiteMatrixMessages['zh-sg'] = $wgSiteMatrixMessages['zh-hans'];

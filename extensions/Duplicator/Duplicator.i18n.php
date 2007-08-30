@@ -446,9 +446,9 @@ kopiën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzov
 
 /* Chinese (Simplified) (Shinjiman) */
 'zh-hans' => array(
-'duplicator' => '复制一条条目',
-'duplicator-toolbox' => '复制这条条目',
-'duplicator-header' => '这一版可以完全复制一条条目，建立一个完整的修订历史。这对于文章分叉等的动作是很有用的。',
+'duplicator' => '复制一篇文章',
+'duplicator-toolbox' => '复制这篇文章',
+'duplicator-header' => '这一版可以完全复制一篇文章，建立一个完整的修订历史。这对于文章分叉等的动作是很有用的。',
 
 'duplicator-options' => '选项',
 'duplicator-source' => '来源:',
@@ -473,9 +473,9 @@ kopiën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzov
 
 /* Chinese (Traditional) (Shinjiman) */
 'zh-hant' => array(
-'duplicator' => '複製一條條目',
-'duplicator-toolbox' => '複製這條條目',
-'duplicator-header' => '這一版可以完全複製一條條目，建立一個完整的修訂歷史。這對於文章分叉等的動作是很有用的。',
+'duplicator' => '複製一篇文章',
+'duplicator-toolbox' => '複製這篇文章',
+'duplicator-header' => '這一版可以完全複製一篇文章，建立一個完整的修訂歷史。這對於文章分叉等的動作是很有用的。',
 
 'duplicator-options' => '選項',
 'duplicator-source' => '來源:',
@@ -501,6 +501,7 @@ kopiën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzov
 	);
 
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];
 	$messages['zh-hk'] = $messages['zh-hant'];
 	$messages['zh-tw'] = $messages['zh-hans'];

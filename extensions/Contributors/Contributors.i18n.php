@@ -403,6 +403,7 @@ function efContributorsMessages() {
 	/* Kazakh default, fallback to kk-kz */
 	$messages['kk'] = $messages['kk-kz'];
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
+	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];
 	$messages['zh-hk'] = $messages['zh-hant'];
 	$messages['zh-tw'] = $messages['zh-hans'];
@@ -413,6 +414,7 @@ function efContributorsMessages() {
 	return $messages;
 
 }
+
 
 
 

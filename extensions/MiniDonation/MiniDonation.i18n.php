@@ -79,10 +79,12 @@ $wgMiniDonationMessages['zh-hans'] = array(
 $wgMiniDonationMessages['zh-hant'] = array(
 	'donationform-submit' => '經PayPal捐款',
 );
+$wgMiniDonationMessages['zh'] = $wgMiniDonationMessages['zh-hans'];
 $wgMiniDonationMessages['zh-cn'] = $wgMiniDonationMessages['zh-hans'];
 $wgMiniDonationMessages['zh-hk'] = $wgMiniDonationMessages['zh-hant'];
 $wgMiniDonationMessages['zh-sg'] = $wgMiniDonationMessages['zh-hans'];
 $wgMiniDonationMessages['zh-tw'] = $wgMiniDonationMessages['zh-hant'];
+
 
 
 

@@ -202,11 +202,13 @@ $wgLinkSearchMessages['zh-hant'] = array(
 	'linksearch-line'  => '$1 連自 $2',
 	'linksearch-error' => '萬用字元僅可在主機名稱的開頭使用。',
 );
+$wgLinkSearchMessages['zh'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-cn'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-hk'] = $wgLinkSearchMessages['zh-hant'];
 $wgLinkSearchMessages['zh-sg'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-tw'] = $wgLinkSearchMessages['zh-hant'];
 $wgLinkSearchMessages['zh-yue'] = $wgLinkSearchMessages['yue'];
+
 
 
 

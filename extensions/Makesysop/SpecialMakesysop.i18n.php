@@ -1159,31 +1159,19 @@ $wgMakesysopMessages['zh-hant'] = array(
 	'group-steward-member' => '監管員',
 	'grouppage-steward'    => '{{ns:project}}:監管員',
 );
+$wgMakesysopMessages['zh-tw'] = $wgMakesysopMessages['zh-hant'];
 $wgMakesysopMessages['zh-tw'] = array(
-	'makesysoptitle'       => '將用戶設置為操作員',
-	'makesysoptext'        => '這個由行政管理員使用的表單可以將普通用戶變為管理員。在輸入框中輸入用戶名並點擊按鈕就可以將用戶設置為管理員。',
-	'makesysopname'        => '用戶名：',
-	'makesysopsubmit'      => '將這位用戶設置為操作員',
-	'makesysopok'          => "<b>用戶\"$1\"現在是操作員了</b>",
-	'makebureaucratok'     => "<b>用戶\"$1\"現在是行政員了</b>",
-	'makesysopfail'        => "<b>不能把用戶\"$1\"設置為操作員。（你輸入的用戶名正確嗎？）</b>",
-	'setbureaucratflag'    => '設置行政員標記',
 	'rights'               => '許可權：',
 	'set_user_rights'      => '設定用戶許可權',
 	'user_rights_set'      => "<b>用戶\"$1\"的許可權已經更新</b>",
 	'set_rights_fail'      => "<b>無法設定用戶\"$1\"的許可權。（您是否輸入了正確的用戶名？）</b>",
-	'makesysop'            => '將一名用戶設為操作員',
-	'already_sysop'        => '這位用戶已經是一名管理員',
-	'already_bureaucrat'   => '這位用戶已經是一名行政員',
-	'makesysop-nodatabase' => '錯誤的跨維基用戶名：$1',
-	'group-steward'        => '監管員',
-	'group-steward-member' => '監管員',
-	'grouppage-steward'    => '{{ns:project}}:監管員',
 );
+$wgMakesysopMessages['zh'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-cn'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-hk'] = $wgMakesysopMessages['zh-hant'];
 $wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-yue'] = $wgMakesysopMessages['yue'];
+
 
 
 

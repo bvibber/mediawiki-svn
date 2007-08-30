@@ -63,6 +63,7 @@ $wgMathStatFunctionsMessages['zh-hant'] = array(
         'msfunc_inf' => "結果數值是無限" ,
         'msfunc_div_zero' => "除以零",
 );
+$wgMathStatFunctionsMessages['zh'] = $wgMathStatFunctionsMessages['zh-hans'];
 $wgMathStatFunctionsMessages['zh-cn'] = $wgMathStatFunctionsMessages['zh-hans'];
 $wgMathStatFunctionsMessages['zh-hk'] = $wgMathStatFunctionsMessages['zh-hant'];
 $wgMathStatFunctionsMessages['zh-sg'] = $wgMathStatFunctionsMessages['zh-hans'];
@@ -94,5 +95,6 @@ $wgMathStatFunctionsMagic['en'] = array(
         'csc'           => array( 0, 'csc' ),
         'acsc'          => array( 0, 'acsc', 'arccsc' ),
 );
+
 
 

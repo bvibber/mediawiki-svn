@@ -170,10 +170,12 @@ $wgCrossNamespaceLinksMessages['zh-hant'] = array(
 	'crossnamespacelinks-summary' => '本頁面提供一個從主名字空間到其他名字空間頁面的連結清單（{{ns:special}}, {{ns:talk}}, {{ns:project}} 和 {{ns:template}}名字空間的除外），我們不推薦這種從主名字空間鏈接到到其他名字的做法。',
 	'crossnamespacelinkstext' => '$1: $2 個連結到 $3'
 );
+$wgCrossNamespaceLinksMessages['zh'] = $wgCrossNamespaceLinksMessages['zh-hans'];
 $wgCrossNamespaceLinksMessages['zh-cn'] = $wgCrossNamespaceLinksMessages['zh-hans'];
 $wgCrossNamespaceLinksMessages['zh-hk'] = $wgCrossNamespaceLinksMessages['zh-hant'];
 $wgCrossNamespaceLinksMessages['zh-sg'] = $wgCrossNamespaceLinksMessages['zh-hans'];
 $wgCrossNamespaceLinksMessages['zh-tw'] = $wgCrossNamespaceLinksMessages['zh-hant'];
 $wgCrossNamespaceLinksMessages['zh-yue'] = $wgCrossNamespaceLinksMessages['yue'];
+
 
 

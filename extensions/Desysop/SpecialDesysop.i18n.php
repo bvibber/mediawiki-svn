@@ -247,10 +247,12 @@ $wgDesysopMessages['zh-hant'] = array(
 	'desysop'              => '解除一位用戶的操作員權限',
 	'not_sysop'            => '這位用戶不是一位管理員',
 );
+$wgDesysopMessages['zh'] = $wgDesysopMessages['zh-hans'];
 $wgDesysopMessages['zh-cn'] = $wgDesysopMessages['zh-hans'];
 $wgDesysopMessages['zh-hk'] = $wgDesysopMessages['zh-hant'];
 $wgDesysopMessages['zh-sg'] = $wgDesysopMessages['zh-hans'];
 $wgDesysopMessages['zh-tw'] = $wgDesysopMessages['zh-hant'];
 $wgDesysopMessages['zh-yue'] = $wgDesysopMessages['yue'];
+
 
 
