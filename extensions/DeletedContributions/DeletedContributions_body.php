@@ -269,6 +269,9 @@ function deletedContributionsSub( $nt, $id ) {
 		}
 		# Other logs link
 		$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Log' ), wfMsgHtml( 'log' ), 'user=' . $nt->getPartialUrl() );
+		# Link to undeleted contributions
+		$tools[] = $sk->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions' ), wfMsgHtml( 'contributions' ), 'target=' . $nt->getPartialUrl() );
+
 		$links = implode( ' | ', $tools );
 	}
 
@@ -329,5 +332,3 @@ function deletedContributionsForm( $options ) {
 		Xml::closeElement( 'form' );
 	return $f;
 }
-
-
