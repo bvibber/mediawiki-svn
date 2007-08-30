@@ -269,13 +269,16 @@ class Article {
 				'page_random',
 				'page_touched',
 				'page_latest',
-				'page_len' ) ;
-		wfRunHooks( 'ArticlePageDataBefore', array( &$this , &$fields ) )	;
-		$row = $dbr->selectRow( 'page',
+				'page_len',
+		);
+		wfRunHooks( 'ArticlePageDataBefore', array( &$this, &$fields ) );
+		$row = $dbr->selectRow(
+			'page',
 			$fields,
 			$conditions,
-			'Article::pageData' );
-		wfRunHooks( 'ArticlePageDataAfter', array( &$this , &$row ) )	;
+			__METHOD__
+		);
+		wfRunHooks( 'ArticlePageDataAfter', array( &$this, &$row ) );
 		return $row ;
 	}
 
@@ -799,6 +802,7 @@ class Article {
 				// Give hooks a chance to customise the output
 				if( wfRunHooks( 'ShowRawCssJs', array( $this->mContent, $this->mTitle, $wgOut ) ) ) {
 					// Wrap the whole lot in a <pre> and don't parse
+					$m = array();
 					preg_match( '!\.(css|js)$!u', $this->mTitle->getText(), $m );
 					$wgOut->addHtml( "<pre class=\"mw-code mw-{$m[1]}\" dir=\"ltr\">\n" );
 					$wgOut->addHtml( htmlspecialchars( $this->mContent ) );
@@ -1250,7 +1254,10 @@ class Article {
 				}
 			}
 
-			$this->doRedirect( $this->isRedirect( $text ), $sectionanchor );
+			$extraq = ''; // Give extensions a chance to modify URL query on update
+			wfRunHooks( 'ArticleUpdateBeforeRedirect', array( $this, &$sectionanchor, &$extraq ) );
+
+			$this->doRedirect( $this->isRedirect( $text ), $sectionanchor, $extraq );
 		}
 		return $good;
 	}
@@ -1390,6 +1397,7 @@ class Article {
 					$dbw->commit();
 				}
 			} else {
+				$revision = null;
 				// Keep the same revision ID, but do some updates on it
 				$revisionId = $this->getRevIdFetched();
 				// Update page_touched, this is usually implicit in the page update
@@ -1486,12 +1494,14 @@ class Article {
 	 * @param boolean $noRedir Add redirect=no
 	 * @param string $sectionAnchor section to redirect to, including "#"
 	 */
-	function doRedirect( $noRedir = false, $sectionAnchor = '' ) {
+	function doRedirect( $noRedir = false, $sectionAnchor = '', $extraq = '' ) {
 		global $wgOut;
 		if ( $noRedir ) {
 			$query = 'redirect=no';
+			if( $extraq )
+				$query .= "&$query";
 		} else {
-			$query = '';
+			$query = $extraq;
 		}
 		$wgOut->redirect( $this->mTitle->getFullURL( $query ) . $sectionAnchor );
 	}
@@ -2338,7 +2348,7 @@ class Article {
 				$wgOut->returnToMain( false, $this->mTitle );
 				break;
 			default:
-				throw new MWException( __METHOD__ . ": Unknown return value `{$retval}`" );
+				throw new MWException( __METHOD__ . ": Unknown return value `{$result}`" );
 		}
 	}
 
@@ -2395,12 +2405,11 @@ class Article {
 		$u = new LinksUpdate( $this->mTitle, $poutput );
 		$u->doUpdate();
 
-		if ( wfRunHooks( 'ArticleEditUpdatesDeleteFromRecentchanges', array( &$this ) ) ) {
-			wfSeedRandom();
+		if( wfRunHooks( 'ArticleEditUpdatesDeleteFromRecentchanges', array( &$this ) ) ) {
 			if ( 0 == mt_rand( 0, 99 ) ) {
-				# Periodically flush old entries from the recentchanges table.
+				// Flush old entries from the `recentchanges` table; we do this on
+				// random requests so as to avoid an increase in writes for no good reason
 				global $wgRCMaxAge;
-
 				$dbw = wfGetDB( DB_MASTER );
 				$cutoff = $dbw->timestamp( time() - $wgRCMaxAge );
 				$recentchanges = $dbw->tableName( 'recentchanges' );

@@ -155,14 +155,17 @@ class LogPage {
 					switch( $type ) {
 						case 'move':
 							$titleLink = $skin->makeLinkObj( $title, $title->getPrefixedText(), 'redirect=no' );
-							$params[0] = $skin->makeLinkObj( Title::newFromText( $params[0] ), $params[0] );
+							$params[0] = $skin->makeLinkObj( Title::newFromText( $params[0] ), htmlspecialchars( $params[0] ) );
 							break;
 						case 'block':
 							if( substr( $title->getText(), 0, 1 ) == '#' ) {
 								$titleLink = $title->getText();
 							} else {
-								$titleLink = $skin->makeLinkObj( $title, $title->getText() );
-								$titleLink .= ' (' . $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $title->getDBkey() ), wfMsg( 'contribslink' ) ) . ')';
+								// TODO: Store the user identifier in the parameters
+								// to make this faster for future log entries
+								$id = User::idFromName( $title->getText() );
+								$titleLink = $skin->userLink( $id, $title->getText() )
+									. $skin->userToolLinks( $id, $title->getText(), false, Linker::TOOL_LINKS_NOBLOCK );
 							}
 							break;
 						case 'rights':

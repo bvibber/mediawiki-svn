@@ -443,6 +443,7 @@ class UploadForm {
 			}
 			// Success, redirect to description page
 			$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
+			$img = null; // @todo: added to avoid passing a ref to null - should this be defined somewhere?
 			wfRunHooks( 'UploadComplete', array( &$img ) );
 		}
 	}
@@ -736,7 +737,7 @@ class UploadForm {
 	function mainUploadForm( $msg='' ) {
 		global $wgOut, $wgUser, $wgContLang;
 		global $wgUseCopyrightUpload, $wgUseAjax, $wgAjaxUploadDestCheck, $wgAjaxLicensePreview;
-		global $wgRequest, $wgAllowCopyUploads, $wgEnableAPI;
+		global $wgRequest, $wgAllowCopyUploads;
 		global $wgStylePath, $wgStyleVersion;
 
 		$useAjaxDestCheck = $wgUseAjax && $wgAjaxUploadDestCheck;
@@ -757,6 +758,21 @@ wgAjaxLicensePreview = {$alp};
 			wfDebug( "Hook 'UploadForm:initial' broke output of the upload form" );
 			return false;
 		}
+		
+		if( $this->mDesiredDestName && $wgUser->isAllowed( 'deletedhistory' ) ) {
+			$title = Title::makeTitleSafe( NS_IMAGE, $this->mDesiredDestName );
+			if( $title instanceof Title && ( $count = $title->isDeleted() ) > 0 ) {
+				$link = wfMsgExt(
+					$wgUser->isAllowed( 'delete' ) ? 'thisisdeleted' : 'viewdeleted',
+					array( 'parse', 'replaceafter' ),
+					$wgUser->getSkin()->makeKnownLinkObj(
+						SpecialPage::getTitleFor( 'Undelete', $title->getPrefixedText() ),
+						wfMsgHtml( 'restorelink', $count )
+					)
+				);
+				$wgOut->addHtml( "<div id=\"contentSub2\">{$link}</div>" );
+			}				
+		}
 
 		$cols = intval($wgUser->getOption( 'cols' ));
 		$ew = $wgUser->getOption( 'editwidth' );
@@ -774,7 +790,7 @@ wgAjaxLicensePreview = {$alp};
 
 		$sourcefilename = wfMsgHtml( 'sourcefilename' );
 		$destfilename = wfMsgHtml( 'destfilename' );
-		$summary = wfMsgWikiHtml( 'fileuploadsummary' );
+		$summary = wfMsgExt( 'fileuploadsummary', 'parseinline' );
 
 		$licenses = new Licenses();
 		$license = wfMsgExt( 'license', array( 'parseinline' ) );
@@ -823,7 +839,7 @@ wgAjaxLicensePreview = {$alp};
 				"<input type='hidden' name='wpSourceType' value='file' />" ;
 		}
 		if ( $useAjaxDestCheck ) {
-			$warningRow = "<tr><td colspan='2' id='wpDestFile-warning'>&nbsp</td></tr>";
+			$warningRow = "<tr><td colspan='2' id='wpDestFile-warning'>&nbsp;</td></tr>";
 			$destOnkeyup = 'onkeyup="wgUploadWarningObj.keypress();"';
 		} else {
 			$warningRow = '';
@@ -917,7 +933,7 @@ EOT
 	$warningRow
 	<tr>
 		<td></td>
-		<td align='$align2'><input tabindex='9' type='submit' name='wpUpload' value=\"{$ulb}\" /></td>
+		<td align='$align2'><input tabindex='9' type='submit' name='wpUpload' value=\"{$ulb}\"" . $wgUser->getSkin()->tooltipAndAccesskey( 'upload' ) . " /></td>
 	</tr>
 	<tr>
 		<td></td>
@@ -1395,5 +1411,3 @@ EOT
 		return $pageText;
 	}
 }
-
-

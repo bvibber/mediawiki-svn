@@ -109,6 +109,10 @@ class OutputPage {
 		$this->mHeadItems[$name] = $value;
 	}
 
+	function hasHeadItem( $name ) {
+		return isset( $this->mHeadItems[$name] );
+	}
+
 	function setETag($tag) { $this->mETag = $tag; }
 	function setArticleBodyOnly($only) { $this->mArticleBodyOnly = $only; }
 	function getArticleBodyOnly($only) { return $this->mArticleBodyOnly; }
@@ -377,7 +381,16 @@ class OutputPage {
 		# Display title
 		if( ( $dt = $parserOutput->getDisplayTitle() ) !== false )
 			$this->setPageTitle( $dt );
-		
+
+		# Hooks registered in the object
+		global $wgParserOutputHooks;
+		foreach ( $parserOutput->getOutputHooks() as $hookInfo ) {
+			list( $hookName, $data ) = $hookInfo;
+			if ( isset( $wgParserOutputHooks[$hookName] ) ) {
+				call_user_func( $wgParserOutputHooks[$hookName], $this, $parserOutput, $data );
+			}
+		}
+
 		wfRunHooks( 'OutputPageParserOutput', array( &$this, $parserOutput ) );
 	}
 
@@ -809,14 +822,19 @@ class OutputPage {
 		$this->mRedirect = '';
 		$this->mBodytext = '';
 		
+		array_unshift( $params, 'parse' );
 		array_unshift( $params, $msg );
-		$message = call_user_func_array( 'wfMsg', $params );
-		$this->addWikiText( $message );
+		$this->addHtml( call_user_func_array( 'wfMsgExt', $params ) );
 		
 		$this->returnToMain( false );
 	}
 
-	public function showPermissionsErrorPage( $title, $errors )
+	/**
+	 * Output a standard permission error page
+	 *
+	 * @param array $errors Error message keys
+	 */
+	public function showPermissionsErrorPage( $errors )
 	{
 		global $wgTitle;
 
@@ -829,8 +847,6 @@ class OutputPage {
 		$this->enableClientCache( false );
 		$this->mRedirect = '';
 		$this->mBodytext = '';
-
-		$this->addWikiText( wfMsg('permissionserrorstext') );
 		$this->addWikitext( $this->formatPermissionsErrorMessage( $errors ) );
 	}
 
@@ -950,22 +966,27 @@ class OutputPage {
 	}
 
 	/**
-	 * @param array $errors An array returned by Title::getUserPermissionsErrors
+	 * @param array $errors An array of arrays returned by Title::getUserPermissionsErrors
 	 * @return string The error-messages, formatted into a list.
 	 */
 	public function formatPermissionsErrorMessage( $errors ) {
 		$text = '';
 
-		$text .= wfMsg('permissionserrorstext')."\n";
-		$text .= '<ul class="permissions-errors">' . "\n";
+		if (sizeof( $errors ) > 1) {
 
-		foreach( $errors as $error )
-		{
-			$text .= '<li>';
-			$text .= call_user_func_array( 'wfMsg', $error );
-			$text .= "</li>\n";
+			$text .= wfMsgExt( 'permissionserrorstext', array( 'parse' ), count( $errors ) ) . "\n";
+			$text .= '<ul class="permissions-errors">' . "\n";
+
+			foreach( $errors as $error )
+			{
+				$text .= '<li>';
+				$text .= call_user_func_array( 'wfMsg', $error );
+				$text .= "</li>\n";
+			}
+			$text .= '</ul>';
+		} else {
+			$text .= call_user_func_array( 'wfMsg', $errors[0]);
 		}
-		$text .= '</ul>';
 
 		return $text;
 	}
@@ -1006,7 +1027,6 @@ class OutputPage {
 					$this->addWikiText( wfMsgExt( 'cascadeprotected', 'parsemag', $count ) . "\n{$titles}" );
 			} elseif( !$wgTitle->isProtected( 'edit' ) && $wgTitle->isNamespaceProtected() ) {
 				// Namespace protection
-				global $wgNamespaceProtection;
 				$ns = $wgTitle->getNamespace() == NS_MAIN
 					? wfMsg( 'nstab-main' )
 					: $wgTitle->getNsText();
@@ -1280,7 +1300,7 @@ class OutputPage {
 	/**
 	 * Show an "add new section" link?
 	 *
-	 * @return bool True if the parser output instructs us to add one
+	 * @return bool
 	 */
 	public function showNewSectionLink() {
 		return $this->mNewSectionLink;
@@ -1289,22 +1309,21 @@ class OutputPage {
 	/**
 	 * Show a warning about slave lag
 	 *
-	 * If the lag is higher than 30 seconds, then the warning is
-	 * a bit more obvious
+	 * If the lag is higher than $wgSlaveLagCritical seconds,
+	 * then the warning is a bit more obvious. If the lag is
+	 * lower than $wgSlaveLagWarning, then no warning is shown.
 	 *
 	 * @param int $lag Slave lag
 	 */
 	public function showLagWarning( $lag ) {
 		global $wgSlaveLagWarning, $wgSlaveLagCritical;
-		
-		if ($lag < $wgSlaveLagWarning)
-			return;
-
-		$message = ($lag >= $wgSlaveLagCritical) ? 'lag-warn-high' : 'lag-warn-normal';
-		$warning = wfMsgHtml( $message, htmlspecialchars( $lag ) );
-		$this->addHtml( "<div class=\"mw-{$message}\">\n{$warning}\n</div>\n" );
+		if( $lag >= $wgSlaveLagWarning ) {
+			$message = $lag < $wgSlaveLagCritical
+				? 'lag-warn-normal'
+				: 'lag-warn-high';
+			$warning = wfMsgExt( $message, 'parse', $lag );
+			$this->addHtml( "<div class=\"mw-{$message}\">\n{$warning}\n</div>\n" );
+		}
 	}
 	
 }
-
-

@@ -209,7 +209,9 @@ $bookstoreList = array(
 
 /**
  * Magic words
- * Customisable syntax for wikitext and elsewhere
+ * Customisable syntax for wikitext and elsewhere.
+ *
+ * IDs must be valid identifiers, they can't contain hyphens. 
  *
  * Note to translators:
  *   Please include the English words as synonyms.  This allows people
@@ -225,7 +227,6 @@ $magicWords = array(
 	'forcetoc'               => array( 0,    '__FORCETOC__'           ),
 	'toc'                    => array( 0,    '__TOC__'                ),
 	'noeditsection'          => array( 0,    '__NOEDITSECTION__'      ),
-	'start'                  => array( 0,    '__START__'              ),
 	'currentmonth'           => array( 1,    'CURRENTMONTH'           ),
 	'currentmonthname'       => array( 1,    'CURRENTMONTHNAME'       ),
 	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN'    ),
@@ -288,10 +289,10 @@ $magicWords = array(
 	'img_sub'                => array( 1,    'sub'                    ),
 	'img_super'              => array( 1,    'super', 'sup'           ),
 	'img_top'                => array( 1,    'top'                    ),
-	'img_text-top'           => array( 1,    'text-top'               ),
+	'img_text_top'           => array( 1,    'text-top'               ),
 	'img_middle'             => array( 1,    'middle'                 ),
 	'img_bottom'             => array( 1,    'bottom'                 ),
-	'img_text-bottom'        => array( 1,    'text-bottom'            ),
+	'img_text_bottom'        => array( 1,    'text-bottom'            ),
 	'int'                    => array( 0,    'INT:'                   ),
 	'sitename'               => array( 1,    'SITENAME'               ),
 	'ns'                     => array( 0,    'NS:'                    ),
@@ -562,8 +563,7 @@ XHTML id names.
 'category_header'       => 'Articles in category "$1"',
 'subcategories'         => 'Subcategories',
 'category-media-header' => 'Media in category "$1"',
-'category-empty'        => "''This category contains currently no articles or media.''",
-
+'category-empty' => "''This category currently contains no articles or media.''",
 'linkprefix'        => '/^(.*?)([a-zA-Z\x80-\xff]+)$/sD', # only translate this message to other languages if you have to change it
 'mainpagetext'      => "<big>'''MediaWiki has been successfully installed.'''</big>",
 'mainpagedocfooter' => "Consult the [http://meta.wikimedia.org/wiki/Help:Contents User's Guide] for information on using the wiki software.
@@ -683,30 +683,32 @@ XHTML id names.
 'versionrequired'     => 'Version $1 of MediaWiki required',
 'versionrequiredtext' => 'Version $1 of MediaWiki is required to use this page. See [[Special:Version|version page]].',
 
-'ok'                   => 'OK',
-'sitetitle'            => '{{SITENAME}}', # don't translate or duplicate this message to other languages
-'pagetitle'            => '$1 - {{SITENAME}}',
-'sitesubtitle'         => '', # don't translate or duplicate this message to other languages
-'retrievedfrom'        => 'Retrieved from "$1"',
-'youhavenewmessages'   => 'You have $1 ($2).',
-'newmessageslink'      => 'new messages',
-'newmessagesdifflink'  => 'last change',
-'editsection'          => 'edit',
-'editsection-brackets' => '[$1]', # only translate this message to other languages if you have to change it
-'editold'              => 'edit',
-'editsectionhint'      => 'Edit section: $1',
-'toc'                  => 'Contents',
-'showtoc'              => 'show',
-'hidetoc'              => 'hide',
-'thisisdeleted'        => 'View or restore $1?',
-'viewdeleted'          => 'View $1?',
-'restorelink'          => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
-'feedlinks'            => 'Feed:',
-'feed-invalid'         => 'Invalid subscription feed type.',
-'feed-atom'            => 'Atom', # only translate this message to other languages if you have to change it
-'feed-rss'             => 'RSS', # only translate this message to other languages if you have to change it
-'sitenotice'           => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
-'anonnotice'           => '-', # don't translate or duplicate this message to other languages
+'ok'                      => 'OK',
+'sitetitle'               => '{{SITENAME}}', # don't translate or duplicate this message to other languages
+'pagetitle'               => '$1 - {{SITENAME}}',
+'sitesubtitle'            => '', # don't translate or duplicate this message to other languages
+'retrievedfrom'           => 'Retrieved from "$1"',
+'youhavenewmessages'      => 'You have $1 ($2).',
+'newmessageslink'         => 'new messages',
+'newmessagesdifflink'     => 'last change',
+'youhavenewmessagesmulti' => 'You have new messages on $1',
+'newtalkseperator'        => ',_', # don't translate or duplicate this message to other languages
+'editsection'             => 'edit',
+'editsection-brackets'    => '[$1]', # only translate this message to other languages if you have to change it
+'editold'                 => 'edit',
+'editsectionhint'         => 'Edit section: $1',
+'toc'                     => 'Contents',
+'showtoc'                 => 'show',
+'hidetoc'                 => 'hide',
+'thisisdeleted'           => 'View or restore $1?',
+'viewdeleted'             => 'View $1?',
+'restorelink'             => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
+'feedlinks'               => 'Feed:',
+'feed-invalid'            => 'Invalid subscription feed type.',
+'feed-atom'               => 'Atom', # only translate this message to other languages if you have to change it
+'feed-rss'                => 'RSS', # only translate this message to other languages if you have to change it
+'sitenotice'              => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
+'anonnotice'              => '-', # don't translate or duplicate this message to other languages
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Article',
@@ -725,7 +727,9 @@ XHTML id names.
 'nosuchactiontext'  => 'The action specified by the URL is not
 recognized by the wiki',
 'nosuchspecialpage' => 'No such special page',
-'nospecialpagetext' => 'You have requested an invalid special page, a list of valid special pages may be found at [[Special:Specialpages|special pages list]].',
+'nospecialpagetext' => "'''<big>You have requested an invalid special page.</big>'''
+
+A list of valid special pages can be found at [[Special:Specialpages]].",
 
 # General errors
 'error'                => 'Error',
@@ -792,7 +796,7 @@ Query: $2',
 $2",
 'namespaceprotected'   => "You do not have permission to edit pages in the '''$1''' namespace.",
 'customcssjsprotected' => "You do not have permission to edit this page, because it contains another user's personal settings.",
-'ns-specialprotected'  => "Pages in the special namespace cannot be edited.",
+'ns-specialprotected'  => "Pages in the {{ns:special}} namespace cannot be edited.",
 
 # Login and logout pages
 'logouttitle'                => 'User logout',
@@ -812,7 +816,6 @@ Your account has been created. Don't forget to change your {{SITENAME}} preferen
 'yourdomainname'             => 'Your domain:',
 'externaldberror'            => 'There was either an external authentication database error or you are not allowed to update your external account.',
 'loginproblem'               => '<b>There has been a problem with your login.</b><br />Try again!',
-'alreadyloggedin'            => '<strong>User $1, you are already logged in!</strong><br />',
 'login'                      => 'Log in',
 'loginprompt'                => 'You must have cookies enabled to log in to {{SITENAME}}.',
 'userlogin'                  => 'Log in / create account',
@@ -886,6 +889,14 @@ will be sent for any of the following features.',
 format. Please enter a well-formatted address or empty that field.',
 'accountcreated'             => 'Account created',
 'accountcreatedtext'         => 'The user account for $1 has been created.',
+'loginlanguagelabel'         => 'Language: $1',
+'loginlanguagelinks'         => '* Deutsch|de
+* English|en
+* Esperanto|eo
+* Français|fr
+* Español|es
+* Italiano|it
+* Nederlands|nl', # don't translate or duplicate this message to other languages
 
 # Password reset dialog
 'resetpass'               => 'Reset account password',
@@ -964,12 +975,6 @@ Note that you may not use the "e-mail this user" feature unless you have a valid
 registered in your [[Special:Preferences|user preferences]] and you have not been blocked from using it.
 
 Your block ID is $5. Please include this ID in any queries you make.',
-'blockedtext-concise'       => "$7, which matches your username or IP address, has been blocked by $1. The reason given was $2. The expiry time of this block is $6. To discuss the block, you can 
-contact $1, or another administrator. You cannot use the 'email this user' feature unless a valid email address is specified in your account preferences and you have not been blocked from using it. 
-Your current IP address is $3, and the block ID is #$5. Please include either or both of these in any queries.",
-'autoblockedtext-concise'       => "Your IP address has recently been used by a user who was blocked. The block was made by $1. The reason given was $2. The expiry time of this block is $6. To 
-discuss the block, you can contact $1, or another administrator. You cannot use the 'email this user' feature unless a valid email address is specified in your account preferences and you have not 
-been blocked from using it. Your current IP address is $3, and the block ID is #$5. Please include either or both of these in any queries.",
 'blockedoriginalsource'     => "The source of '''$1''' is 
 shown below:",
 'blockededitsource'         => "The text of '''your edits''' to '''$1''' is shown below:",
@@ -1017,7 +1022,6 @@ Please try again. If it still doesn't work, try logging out and logging back in.
 'token_suffix_mismatch'     => '<strong>Your edit has been rejected because your client mangled the punctuation characters 
 in the edit token. The edit has been rejected to prevent corruption of the article text. 
 This sometimes happens when you are using a buggy web-based anonymous proxy service.</strong>',
-'importing'                 => 'Importing $1',
 'editing'                   => 'Editing $1',
 'editinguser'               => 'Editing user <b>$1</b>',
 'editingsection'            => 'Editing $1 (section)',
@@ -1184,15 +1188,6 @@ hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list o
 'searchresulttext'      => 'For more information about searching {{SITENAME}}, see [[{{MediaWiki:helppage}}|{{int:help}}]].',
 'searchsubtitle'        => "You searched for '''[[:$1]]'''",
 'searchsubtitleinvalid' => "You searched for '''$1'''",
-'badquery'              => 'Badly formed search query',
-'badquerytext'          => 'We could not process your query.
-This is probably because you have attempted to search for a
-word fewer than three letters long, which is not yet supported.
-It could also be that you have mistyped the expression, for
-example "fish and and scales".
-Please try another query.',
-'matchtotals'           => 'The query "$1" matched $2 page titles
-and the text of $3 pages.',
 'noexactmatch'          => "'''There is no page titled \"\$1\".''' You can [[:\$1|create this page]].",
 'titlematches'          => 'Article title matches',
 'notitlematches'        => 'No page title matches',
@@ -1200,7 +1195,7 @@ and the text of $3 pages.',
 'notextmatches'         => 'No page text matches',
 'prevn'                 => 'previous $1',
 'nextn'                 => 'next $1',
-'viewprevnext'          => 'View ($1) ($2) ($3).',
+'viewprevnext'          => 'View ($1) ($2) ($3)',
 'showingresults'        => "Showing below up to {{PLURAL:$1|'''1''' result|'''$1''' results}} starting with #'''$2'''.",
 'showingresultsnum'     => "Showing below {{PLURAL:$3|'''1''' result|'''$3''' results}} starting with #'''$2'''.",
 'nonefound'             => "'''Note''': Unsuccessful searches are
@@ -1224,12 +1219,12 @@ containing all of the search terms will appear in the result).",
     <input type="radio" name="sitesearch" id="gWWW" value="" /><label for="gWWW">WWW</label>
   </div>
 </form>', # don't translate or duplicate this message to other languages
-'blanknamespace'        => '(Main)',
 
 # Preferences page
 'preferences'              => 'Preferences',
 'preferences-summary'      => '', # only translate this message to other languages if you have to change it
 'mypreferences'            => 'My preferences',
+'prefs-edits' => 'Number of edits:',
 'prefsnologin'             => 'Not logged in',
 'prefsnologintext'         => 'You must be [[Special:Userlogin|logged in]] to set user preferences.',
 'prefsreset'               => 'Preferences have been reset from storage.',
@@ -1303,19 +1298,22 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'userrights-available-remove' => 'You can remove users from $1.',
 
 # Groups
-'group'            => 'Group:',
-'group-bot'        => 'Bots',
-'group-sysop'      => 'Sysops',
-'group-bureaucrat' => 'Bureaucrats',
-'group-all'        => '(all)',
+'group'               => 'Group:',
+'group-autoconfirmed' => 'Autoconfirmed users',
+'group-bot'           => 'Bots',
+'group-sysop'         => 'Sysops',
+'group-bureaucrat'    => 'Bureaucrats',
+'group-all'           => '(all)',
 
-'group-bot-member'        => 'Bot',
-'group-sysop-member'      => 'Sysop',
-'group-bureaucrat-member' => 'Bureaucrat',
+'group-autoconfirmed-member' => 'Autoconfirmed user',
+'group-bot-member'           => 'Bot',
+'group-sysop-member'         => 'Sysop',
+'group-bureaucrat-member'    => 'Bureaucrat',
 
-'grouppage-bot'        => '{{ns:project}}:Bots',
-'grouppage-sysop'      => '{{ns:project}}:Administrators',
-'grouppage-bureaucrat' => '{{ns:project}}:Bureaucrats',
+'grouppage-autoconfirmed' => '{{ns:project}}:Autoconfirmed users',
+'grouppage-bot'           => '{{ns:project}}:Bots',
+'grouppage-sysop'         => '{{ns:project}}:Administrators',
+'grouppage-bureaucrat'    => '{{ns:project}}:Bureaucrats',
 
 # User rights log
 'rightslog'      => 'User rights log',
@@ -1355,6 +1353,7 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 
 # Recent changes linked
 'recentchangeslinked'          => 'Related changes',
+'recentchangeslinked-title' => 'Changes related to $1',
 'recentchangeslinked-noresult' => 'No changes on linked pages during the given period.',
 'recentchangeslinked-summary'  => "This special page lists the last changes on pages who are linked. Pages on your watchlist are '''bold'''.",
 
@@ -1411,6 +1410,7 @@ If you have this image in full resolution upload this one, otherwise change the 
 'uploadwarning'               => 'Upload warning',
 'savefile'                    => 'Save file',
 'uploadedimage'               => 'uploaded "[[$1]]"',
+'overwroteimage'              => 'uploaded a new version of "[[$1]]"',
 'uploaddisabled'              => 'Uploads disabled',
 'uploaddisabledtext'          => 'File uploads are disabled on this wiki.',
 'uploadscripted'              => 'This file contains HTML or script code that may be erroneously be interpreted by a web browser.',
@@ -1445,7 +1445,6 @@ If you have this image in full resolution upload this one, otherwise change the 
 'imagelist'                 => 'File list',
 'imagelist-summary'         => '', # only translate this message to other languages if you have to change it
 'imagelisttext'             => "Below is a list of '''$1''' {{PLURAL:$1|file|files}} sorted $2.",
-'imagelistforuser'          => 'This shows only images uploaded by $1.',
 'getimagelist'              => 'fetching file list',
 'ilsubmit'                  => 'Search',
 'showlast'                  => 'Show last $1 files sorted $2.',
@@ -1485,13 +1484,28 @@ If you have this image in full resolution upload this one, otherwise change the 
 
 # File reversion
 'filerevert'                => 'Revert $1',
+'filerevert-backlink'       => '← $1', # only translate this message to other languages if you have to change it
 'filerevert-legend'         => 'Revert file',
-'filerevert-intro'          => "<span class=\"plainlinks\">You are reverting '''[[Media:$1|$1]]''' to the [$4 version as of $2, $3].</span>",
+'filerevert-intro'          => "<span class=\"plainlinks\">You are reverting '''[[Media:$1|$1]]''' to the [$4 version as of $3, $2].</span>",
 'filerevert-comment'        => 'Comment:',
-'filerevert-defaultcomment' => 'Reverted to version as of $1, $2',
+'filerevert-defaultcomment' => 'Reverted to version as of $2, $1',
 'filerevert-submit'         => 'Revert',
-'filerevert-success'        => "<span class=\"plainlinks\">'''[[Media:$1|$1]]''' has been reverted to the [$4 version as of $2, $3].</span>",
+'filerevert-success'        => "<span class=\"plainlinks\">'''[[Media:$1|$1]]''' has been reverted to the [$4 version as of $3, $2].</span>",
 'filerevert-badversion'     => 'There is no previous local version of this file with the provided timestamp.',
+
+# File deletion
+'filedelete'             => 'Delete $1',
+'filedelete-backlink'    => '← $1', # only translate this message to other languages if you have to change it
+'filedelete-legend'      => 'Delete file',
+'filedelete-intro'       => "You are deleting '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'   => "<span class=\"plainlinks\">You are deleting the version of '''[[Media:$1|$1]]''' as of [$4 $3, $2].</span>",
+'filedelete-comment'     => 'Comment:',
+'filedelete-submit'      => 'Delete',
+'filedelete-success'     => "'''$1''' has been deleted.",
+'filedelete-success-old' => "<span class=\"plainlinks\">The version of '''[[Media:$1|$1]]''' as of $3, $2 has been deleted.</span>",
+'filedelete-nofile'      => "'''$1''' does not exist on this site.",
+'filedelete-nofile-old'  => "There is no archived version of '''$1''' with the specified attributes.",
+'filedelete-iscurrent'   => 'You are attempting to delete the most recent version of this file. Please revert to an older version first.',
 
 # MIME search
 'mimesearch'         => 'MIME search',
@@ -1546,7 +1560,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 
 'doubleredirects'         => 'Double redirects',
 'doubleredirects-summary' => '', # only translate this message to other languages if you have to change it
-'doubleredirectstext'     => 'Each row contains links to the first and second redirect, as well as the target of the second redirect, which is usually "real" target page, which the first redirect should point to.',
+'doubleredirectstext'     => 'This page lists pages which redirect to other redirect pages. Each row contains links to the first and second redirect, as well as the target of the second redirect, which is usually "real" target page, which the first redirect should point to.',
 
 'brokenredirects'         => 'Broken redirects',
 'brokenredirects-summary' => '', # only translate this message to other languages if you have to change it
@@ -1722,7 +1736,6 @@ or has chosen not to receive e-mail from other users.',
 'watchlistfor'         => "(for '''$1''')",
 'nowatchlist'          => 'You have no items on your watchlist.',
 'watchlistanontext'    => 'Please $1 to view or edit items on your watchlist.',
-'watchlistcount'       => "'''You have {{PLURAL:$1|$1 item|$1 items}} on your watchlist, including talk pages.'''",
 'watchnologin'         => 'Not logged in',
 'watchnologintext'     => 'You must be [[Special:Userlogin|logged in]] to modify your watchlist.',
 'addedwatch'           => 'Added to watchlist',
@@ -1749,7 +1762,6 @@ If you want to remove the page from your watchlist later, click \"Unwatch\" in t
 'iteminvalidname'      => "Problem with item '$1', invalid name...",
 'wlnote'               => "Below {{PLURAL:$1|is the last change|are the last '''$1''' changes}} in the last {{PLURAL:$2|hour|'''$2''' hours}}.",
 'wlshowlast'           => 'Show last $1 hours $2 days $3',
-'wlsaved'              => 'This is a saved version of your watchlist.',
 'watchlist-show-bots'  => 'Show bot edits',
 'watchlist-hide-bots'  => 'Hide bot edits',
 'watchlist-show-own'   => 'Show my edits',
@@ -1839,7 +1851,7 @@ Please hit "back" and reload the page you came from, then try again.',
 'protectedarticle'            => 'protected "[[$1]]"',
 'modifiedarticleprotection'   => 'changed protection level for "[[$1]]"',
 'unprotectedarticle'          => 'unprotected "[[$1]]"',
-'protectsub'                  => '(Protecting "$1")',
+'protectsub'                  => '(Setting protection level for "$1")',
 'confirmprotect'              => 'Confirm protection',
 'protectcomment'              => 'Comment:',
 'protectexpiry'               => 'Expires:',
@@ -1856,6 +1868,7 @@ Here are the current settings for the page <strong>$1</strong>:',
 Here are the current settings for the page <strong>$1</strong>:',
 'protect-cascadeon'           => "This page is currently protected because it is included in the following {{PLURAL:$1|page, which has|pages, which have}} cascading protection turned on. You can change this page's protection level, but it will not affect the cascading protection.",
 'protect-default'             => '(default)',
+'protect-fallback' => 'Require "$1" permission',
 'protect-level-autoconfirmed' => 'Block unregistered users',
 'protect-level-sysop'         => 'Sysops only',
 'protect-summary-cascade'     => 'cascading',
@@ -1897,7 +1910,7 @@ that you don't have permission to view will not be restored.",
 'undeletehistorynoadmin'   => 'This article has been deleted. The reason for deletion is
 shown in the summary below, along with details of the users who had edited this page
 before deletion. The actual text of these deleted revisions is only available to administrators.',
-'undelete-revision'        => 'Deleted revision of $1 from $2:',
+'undelete-revision' => 'Deleted revision of $1 (as of $2) by $3:',
 'undeleterevision-missing' => 'Invalid or missing revision. You may have a bad link, or the
 revision may have been restored or removed from the archive.',
 'undeletebtn'              => 'Restore',
@@ -1925,8 +1938,9 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 'undelete-error-long'      => "Errors were encountered while undeleting the file:\n\n$1\n",
 
 # Namespace form on various pages
-'namespace' => 'Namespace:',
-'invert'    => 'Invert selection',
+'namespace'      => 'Namespace:',
+'invert'         => 'Invert selection',
+'blanknamespace' => '(Main)',
 
 # Contributions
 'contributions' => 'User contributions',
@@ -1957,6 +1971,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 
 # What links here
 'whatlinkshere'         => 'What links here',
+'whatlinkshere-title' => 'Pages that link to $1',
 'whatlinkshere-summary' => '', # only translate this message to other languages if you have to change it
 'whatlinkshere-barrow'  => '&lt;', # only translate this message to other languages if you have to change it
 'notargettitle'         => 'No target',
@@ -2013,12 +2028,13 @@ pages that were vandalized).',
 'ipb-blocklist-addr'          => 'View existing blocks for $1',
 'ipb-blocklist'               => 'View existing blocks',
 'unblockip'                   => 'Unblock user',
-'unblockiptext'               => 'Use the form below to restore write access
-to a previously blocked IP address or username.',
+'unblockiptext'               => 'Use the form below to restore write access to a previously blocked IP address or username.',
 'ipusubmit'                   => 'Unblock this address',
 'unblocked'                   => '[[User:$1|$1]] has been unblocked',
 'unblocked-id'                => 'Block $1 has been removed',
 'ipblocklist'                 => 'List of blocked IP addresses and usernames',
+'ipblocklist-legend'          => 'Find a blocked user',
+'ipblocklist-username'        => 'Username or IP address:',
 'ipblocklist-summary'         => '', # only translate this message to other languages if you have to change it
 'ipblocklist-submit'          => 'Search',
 'blocklistline'               => '$1, $2 blocked $3 ($4)',
@@ -2035,7 +2051,7 @@ to a previously blocked IP address or username.',
 'contribslink'                => 'contribs',
 'autoblocker'                 => 'Autoblocked because your IP address has been recently used by "[[User:$1|$1]]". The reason given for $1\'s block is: "$2"',
 'blocklogpage'                => 'Block log',
-'blocklogentry'               => 'blocked "[[$1]]" with an expiry time of $2 $3',
+'blocklogentry'               => 'blocked [[$1]] with an expiry time of $2 $3',
 'blocklogtext'                => 'This is a log of user blocking and unblocking actions. Automatically
 blocked IP addresses are not listed. See the [[Special:Ipblocklist|IP block list]] for
 the list of currently operational bans and blocks.',
@@ -2108,9 +2124,8 @@ proceeding.",
 In those cases, you will have to move or merge the page manually if desired.",
 'movearticle'             => 'Move page:',
 'movenologin'             => 'Not logged in',
-'movenologintext'         => 'You must be a registered user and [[Special:Userlogin|logged in]]
-to move a page.',
-'movenotallowed'	  => 'You do not have permission to move pages on this wiki.',
+'movenologintext'         => 'You must be a registered user and [[Special:Userlogin|logged in]] to move a page.',
+'movenotallowed'          => 'You do not have permission to move pages on this wiki.',
 'newtitle'                => 'To new title:',
 'move-watch'              => 'Watch this page',
 'movepagebtn'             => 'Move page',
@@ -2215,7 +2230,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'accesskey-pt-anonuserpage'         => '.', # don't translate or duplicate this message to other languages
 'accesskey-pt-mytalk'               => 'n', # don't translate or duplicate this message to other languages
 'accesskey-pt-anontalk'             => 'n', # don't translate or duplicate this message to other languages
-'accesskey-pt-preferences'          => '', # don't translate or duplicate this message to other languages
+'accesskey-pt-preferences'          => '9', # don't translate or duplicate this message to other languages
 'accesskey-pt-watchlist'            => 'l', # don't translate or duplicate this message to other languages
 'accesskey-pt-mycontris'            => 'y', # don't translate or duplicate this message to other languages
 'accesskey-pt-login'                => 'o', # don't translate or duplicate this message to other languages
@@ -2267,6 +2282,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'accesskey-diff'                    => 'v', # don't translate or duplicate this message to other languages
 'accesskey-compareselectedversions' => 'v', # don't translate or duplicate this message to other languages
 'accesskey-watch'                   => 'w', # don't translate or duplicate this message to other languages
+'accesskey-upload'                  => 's', # don't translate or duplicate this message to other languages
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'My user page',
@@ -2326,6 +2342,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'tooltip-compareselectedversions' => 'See the differences between the two selected versions of this page.',
 'tooltip-watch'                   => 'Add this page to your watchlist',
 'tooltip-recreate'                => 'Recreate the page despite it has been deleted',
+'tooltip-upload'                  => 'Start upload',
 
 # Stylesheets
 'common.css'   => '/** CSS placed here will be applied to all skins */',
@@ -2416,17 +2433,25 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'imagemaxsize'         => 'Limit images on image description pages to:',
 'thumbsize'            => 'Thumbnail size:',
 'widthheight'          => '$1×$2', # only translate this message to other languages if you have to change it
+'widthheightpage'      => '$1×$2, $3 pages',
 'file-info'            => '(file size: $1, MIME type: $2)',
 'file-info-size'       => '($1 × $2 pixel, file size: $3, MIME type: $4)',
 'file-nohires'         => '<small>No higher resolution available.</small>',
-'file-svg'             => '<small>This is a lossless scalable vector image. Base size: $1 × $2 pixels.</small>',
+'svg-long-desc'        => '(SVG file, nominally $1 × $2 pixels, file size: $3)',
 'show-big-image'       => 'Full resolution',
 'show-big-image-thumb' => '<small>Size of this preview: $1 × $2 pixels</small>',
 
+# Special:Newimages
 'newimages'         => 'Gallery of new files',
 'newimages-summary' => '', # only translate this message to other languages if you have to change it
 'showhidebots'      => '($1 bots)',
 'noimages'          => 'Nothing to see.',
+
+# Video information, used by Language::formatTimePeriod() to format lengths in the above messages
+'video-dims'     => '$1, $2×$3', # only translate this message to other languages if you have to change it
+'seconds-abbrev' => 's', # only translate this message to other languages if you have to change it
+'minutes-abbrev' => 'm', # only translate this message to other languages if you have to change it
+'hours-abbrev'   => 'h', # only translate this message to other languages if you have to change it
 
 # Bad image list
 'bad_image_list' => 'The format is as follows:
@@ -2807,11 +2832,6 @@ $3
 If this is *not* you, don\'t follow the link. This confirmation code
 will expire at $4.',
 
-# Inputbox extension, may be useful in other contexts as well
-'tryexact'       => 'Try exact match',
-'searchfulltext' => 'Search full text',
-'createarticle'  => 'Create article',
-
 # Scary transclusion
 'scarytranscludedisabled' => '[Interwiki transcluding is disabled]',
 'scarytranscludefailed'   => '[Template fetch failed for $1; sorry]',
@@ -2846,9 +2866,7 @@ Please confirm that really want to recreate this page.",
 $1',
 'confirm_purge_button' => 'OK',
 
-'youhavenewmessagesmulti' => 'You have new messages on $1',
-'newtalkseperator'        => ',_', # don't translate or duplicate this message to other languages
-
+# AJAX search
 'searchcontaining' => "Search for articles containing ''$1''.",
 'searchnamed'      => "Search for articles named ''$1''.",
 'articletitles'    => "Articles starting with ''$1''",
@@ -2856,15 +2874,6 @@ $1',
 
 # Separator for categories in page lists
 'catseparator' => '|', # don't translate or duplicate this message to other languages
-
-'loginlanguagelabel' => 'Language: $1',
-'loginlanguagelinks' => '* Deutsch|de
-* English|en
-* Esperanto|eo
-* Français|fr
-* Español|es
-* Italiano|it
-* Nederlands|nl', # don't translate or duplicate this message to other languages
 
 # Multipage image navigation
 'imgmultipageprev'   => '← previous page',

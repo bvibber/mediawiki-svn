@@ -156,8 +156,39 @@ CONTROL;
 		} else {
 			$rollback = '';
 		}
-		if( $wgUseRCPatrol && $this->mRcidMarkPatrolled != 0 && $wgUser->isAllowed( 'patrol' ) ) {
-			$patrol = ' [' . $sk->makeKnownLinkObj( $this->mTitle, wfMsg( 'markaspatrolleddiff' ), "action=markpatrolled&rcid={$this->mRcidMarkPatrolled}" ) . ']';
+		
+		// Prepare a change patrol link, if applicable
+		if( $wgUseRCPatrol && $wgUser->isAllowed( 'patrol' ) ) {
+			// If we've been given an explicit change identifier, use it; saves time
+			if( $this->mRcidMarkPatrolled ) {
+				$rcid = $this->mRcidMarkPatrolled;
+			} else {
+				// Look for an unpatrolled change corresponding to this diff
+				$change = RecentChange::newFromConds(
+					array(
+						'rc_this_oldid' => $this->mNewid,
+						'rc_last_oldid' => $this->mOldid,
+						'rc_patrolled' => 0,
+					),
+					__METHOD__
+				);
+				if( $change instanceof RecentChange ) {
+					$rcid = $change->mAttribs['rc_id'];
+				} else {
+					// None found
+					$rcid = 0;
+				}
+			}
+			// Build the link
+			if( $rcid ) {
+				$patrol = ' [' . $sk->makeKnownLinkObj(
+					$this->mTitle,
+					wfMsgHtml( 'markaspatrolleddiff' ),
+					"action=markpatrolled&rcid={$rcid}"
+				) . ']';
+			} else {
+				$patrol = '';
+			}
 		} else {
 			$patrol = '';
 		}
@@ -558,16 +589,15 @@ CONTROL;
 		}
 
 		// Load the new revision object
-		if( $this->mNewid ) {
-			$this->mNewRev = Revision::newFromId( $this->mNewid );
-		} else {
-			$this->mNewRev = Revision::newFromTitle( $this->mTitle );
-		}
-
-		if( is_null( $this->mNewRev ) ) {
+		$this->mNewRev = $this->mNewid
+			? Revision::newFromId( $this->mNewid )
+			: Revision::newFromTitle( $this->mTitle );
+		if( !$this->mNewRev instanceof Revision )
 			return false;
-		}
-
+		
+		// Update the new revision ID in case it was 0 (makes life easier doing UI stuff)
+		$this->mNewid = $this->mNewRev->getId();
+		
 		// Set assorted variables
 		$timestamp = $wgLang->timeanddate( $this->mNewRev->getTimestamp(), true );
 		$this->mNewPage = $this->mNewRev->getTitle();
@@ -616,7 +646,8 @@ CONTROL;
 			$oldEdit = $this->mOldPage->escapeLocalUrl( 'action=edit&oldid=' . $this->mOldid );
 			$this->mOldtitle = "<a href='$oldLink'>" . htmlspecialchars( wfMsg( 'revisionasof', $t ) )
 				. "</a> (<a href='$oldEdit'>" . htmlspecialchars( wfMsg( 'editold' ) ) . "</a>)";
-			//now that we considered old rev, we can make undo link (bug 8133, multi-edit undo)
+			
+			// Add an "undo" link
 			$newUndo = $this->mNewPage->escapeLocalUrl( 'action=edit&undoafter=' . $this->mOldid . '&undo=' . $this->mNewid);
 			$this->mNewtitle .= " (<a href='$newUndo'>" . htmlspecialchars( wfMsg( 'editundo' ) ) . "</a>)";
 		}

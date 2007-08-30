@@ -311,14 +311,14 @@ class User {
 	}
 
 	/**
-	 * Get real username given an id.
-	 * @param integer $id Database user id
-	 * @return string Realname of a user
-	 * @static
+	 * Get the real name of a user given their identifier
+	 *
+	 * @param int $id Database user id
+	 * @return string Real name of a user
 	 */
 	static function whoIsReal( $id ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		return $dbr->selectField( 'user', 'user_real_name', array( 'user_id' => $id ), 'User::whoIsReal' );
+		return $dbr->selectField( 'user', 'user_real_name', array( 'user_id' => $id ), __METHOD__ );
 	}
 
 	/**
@@ -452,7 +452,7 @@ class User {
 	static function isUsableName( $name ) {
 		global $wgReservedUsernames;
 		return
-			// Must be a usable username, obviously ;)
+			// Must be a valid username, obviously ;)
 			self::isValidUserName( $name ) &&
 			
 			// Certain names may be reserved for batch processes.
@@ -2527,7 +2527,8 @@ class User {
 	 * @static
 	 */
 	static function getGroupName( $group ) {
-		MessageCache::loadAllMessages();
+		global $wgMessageCache;
+		$wgMessageCache->loadAllMessages();
 		$key = "group-$group";
 		$name = wfMsg( $key );
 		return $name == '' || wfEmptyMsg( $key, $name )
@@ -2541,7 +2542,8 @@ class User {
 	 * @static
 	 */
 	static function getGroupMember( $group ) {
-		MessageCache::loadAllMessages();
+		global $wgMessageCache;
+		$wgMessageCache->loadAllMessages();
 		$key = "group-$group-member";
 		$name = wfMsg( $key );
 		return $name == '' || wfEmptyMsg( $key, $name )
@@ -2561,7 +2563,22 @@ class User {
 		global $wgGroupPermissions;
 		return array_diff(
 			array_keys( $wgGroupPermissions ),
-			array( '*', 'user', 'autoconfirmed', 'emailconfirmed' ) );
+			self::getImplicitGroups()
+		);
+	}
+
+	/**
+	 * Get a list of implicit groups
+	 *
+	 * @return array
+	 */
+	public static function getImplicitGroups() {
+		static $groups = null;
+		if( !is_array( $groups ) ) {
+			$groups = array( '*', 'user', 'autoconfirmed', 'emailconfirmed' );
+			wfRunHooks( 'UserGetImplicitGroups', array( &$groups ) );
+		}
+		return $groups;
 	}
 
 	/**
@@ -2571,7 +2588,8 @@ class User {
 	 * @return mixed
 	 */
 	static function getGroupPage( $group ) {
-		MessageCache::loadAllMessages();
+		global $wgMessageCache;
+		$wgMessageCache->loadAllMessages();
 		$page = wfMsgForContent( 'grouppage-' . $group );
 		if( !wfEmptyMsg( 'grouppage-' . $group, $page ) ) {
 			$title = Title::newFromText( $page );

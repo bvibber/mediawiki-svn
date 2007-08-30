@@ -298,7 +298,6 @@ class EditPage {
 	 */
 	function edit() {
 		global $wgOut, $wgUser, $wgRequest, $wgTitle;
-		global $wgEmailConfirmToEdit;
 
 		if ( ! wfRunHooks( 'AlternateEdit', array( &$this ) ) )
 			return;
@@ -333,10 +332,11 @@ class EditPage {
 
 			if ($error[0] == 'readonlytext')
 			{
-				if ($this->edit)
+				if ($this->edit) {
 					$this->formtype = 'preview';
-				else if ($this->save || $this->preview || $this->diff)
+				} elseif ($this->save || $this->preview || $this->diff) {
 					$remove[] = $error;
+				}
 			}
 		}
 		# array_diff returns elements in $permErrors that are not in $remove.
@@ -449,7 +449,7 @@ class EditPage {
 		} elseif( $this->section == 'new' ) {
 			// Nothing *to* preview for new sections
 			return false;
-		} elseif( $this->mTitle->exists() && $wgUser->getOption( 'previewonfirst' ) ) {
+		} elseif( ( $wgRequest->getVal( 'preload' ) !== '' || $this->mTitle->exists() ) && $wgUser->getOption( 'previewonfirst' ) ) {
 			// Standard preference behaviour
 			return true;
 		} elseif( !$this->mTitle->exists() && $this->mTitle->getNamespace() == NS_CATEGORY ) {
@@ -545,9 +545,10 @@ class EditPage {
 			$this->summary   = '';
 			$this->edittime  = '';
 			$this->starttime = wfTimestampNow();
+			$this->edit      = false;
 			$this->preview   = false;
 			$this->save      = false;
-			$this->diff	 = false;
+			$this->diff      = false;
 			$this->minoredit = false;
 			$this->watchthis = false;
 			$this->recreate  = false;
@@ -1018,9 +1019,10 @@ class EditPage {
 			if ( count($cascadeSources) > 0 ) {
 				# Explain, and list the titles responsible
 				$notice = wfMsgExt( 'cascadeprotectedwarning', array('parsemag'), count($cascadeSources) ) . "\n";
-				foreach( $cascadeSources as $id => $page )
+				foreach( $cascadeSources as $page ) {
 					$notice .= '* [[:' . $page->getPrefixedText() . "]]\n";
 				}
+			}
 			$wgOut->addWikiText( $notice );
 		}
 

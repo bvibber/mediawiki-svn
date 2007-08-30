@@ -80,6 +80,31 @@ class RecentChange
 			return NULL;
 		}
 	}
+	
+	/**
+	 * Find the first recent change matching some specific conditions
+	 *
+	 * @param array $conds Array of conditions
+	 * @param mixed $fname Override the method name in profiling/logs
+	 * @return RecentChange
+	 */
+	public static function newFromConds( $conds, $fname = false ) {
+		if( $fname === false )
+			$fname = __METHOD__;
+		$dbr = wfGetDB( DB_SLAVE );
+		$res = $dbr->select(
+			'recentchanges',
+			'*',
+			$conds,
+			$fname
+		);
+		if( $res instanceof ResultWrapper && $res->numRows() > 0 ) {
+			$row = $res->fetchObject();
+			$res->free();
+			return self::newFromRow( $row );
+		}
+		return null;
+	}
 
 	# Accessors
 
@@ -210,24 +235,30 @@ class RecentChange
 		wfRunHooks( 'RecentChange_save', array( &$this ) );
 	}
 
-	# Marks a certain row as patrolled
-	function markPatrolled( $rcid )
-	{
-		$fname = 'RecentChange::markPatrolled';
-
+	/**
+	 * Mark a given change as patrolled
+	 *
+	 * @param mixed $change RecentChange or corresponding rc_id
+	 */
+	public static function markPatrolled( $change ) {
+		$rcid = $change instanceof RecentChange
+			? $change->mAttribs['rc_id']
+			: $change;
 		$dbw = wfGetDB( DB_MASTER );
-
-		$dbw->update( 'recentchanges',
-			array( /* SET */
+		$dbw->update(
+			'recentchanges',
+			array(
 				'rc_patrolled' => 1
-			), array( /* WHERE */
+			),
+			array(
 				'rc_id' => $rcid
-			), $fname
+			),
+			__METHOD__
 		);
 	}
 
 	# Makes an entry in the database corresponding to an edit
-	/*static*/ function notifyEdit( $timestamp, &$title, $minor, &$user, $comment,
+	public static function notifyEdit( $timestamp, &$title, $minor, &$user, $comment,
 		$oldId, $lastTimestamp, $bot = "default", $ip = '', $oldSize = 0, $newSize = 0,
 		$newId = 0)
 	{
@@ -330,7 +361,7 @@ class RecentChange
 	}
 
 	# Makes an entry in the database corresponding to a rename
-	/*static*/ function notifyMove( $timestamp, &$oldTitle, &$newTitle, &$user, $comment, $ip='', $overRedir = false )
+	public static function notifyMove( $timestamp, &$oldTitle, &$newTitle, &$user, $comment, $ip='', $overRedir = false )
 	{
 		if ( !$ip ) {
 			$ip = wfGetIP();
@@ -371,17 +402,17 @@ class RecentChange
 		$rc->save();
 	}
 
-	/* static */ function notifyMoveToNew( $timestamp, &$oldTitle, &$newTitle, &$user, $comment, $ip='' ) {
+	public static function notifyMoveToNew( $timestamp, &$oldTitle, &$newTitle, &$user, $comment, $ip='' ) {
 		RecentChange::notifyMove( $timestamp, $oldTitle, $newTitle, $user, $comment, $ip, false );
 	}
 
-	/* static */ function notifyMoveOverRedirect( $timestamp, &$oldTitle, &$newTitle, &$user, $comment, $ip='' ) {
+	public static function notifyMoveOverRedirect( $timestamp, &$oldTitle, &$newTitle, &$user, $comment, $ip='' ) {
 		RecentChange::notifyMove( $timestamp, $oldTitle, $newTitle, $user, $comment, $ip, true );
 	}
 
 	# A log entry is different to an edit in that previous revisions are
 	# not kept
-	/*static*/ function notifyLog( $timestamp, &$title, &$user, $comment, $ip='',
+	public static function notifyLog( $timestamp, &$title, &$user, $comment, $ip='',
 	   $type, $action, $target, $logComment, $params )
 	{
 		if ( !$ip ) {

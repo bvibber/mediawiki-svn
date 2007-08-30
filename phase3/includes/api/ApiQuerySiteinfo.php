@@ -60,6 +60,9 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				case 'dbrepllag' :
 					$this->appendDbReplLagInfo($p, $params['showalldb']);
 					break;
+				case 'statistics' :
+					$this->appendStatistics($p);
+					break;
 			}
 		}
 	}
@@ -103,12 +106,13 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$this->addTables('interwiki');
 		$this->addFields(array('iw_prefix', 'iw_local', 'iw_url'));
 
-		if($filter === 'local')
+		if($filter === 'local') {
 			$this->addWhere('iw_local = 1');
-		else if($filter === '!local')
+		} elseif($filter === '!local') {
 			$this->addWhere('iw_local = 0');
-		else if($filter !== false)
+		} elseif($filter !== false) {
 			ApiBase :: dieDebug(__METHOD__, "Unknown filter=$filter");
+		}
 
 		$this->addOption('ORDER BY', 'iw_prefix');
 		
@@ -160,6 +164,19 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		$result->addValue('query', $property, $data);
 	}	
 
+	protected function appendStatistics($property) {
+		$data = array ();
+		$data['pages'] = intval(SiteStats::pages());
+		$data['articles'] = intval(SiteStats::articles());
+		$data['views'] = intval(SiteStats::views());
+		$data['edits'] = intval(SiteStats::edits());
+		$data['images'] = intval(SiteStats::images());
+		$data['users'] = intval(SiteStats::users());
+		$data['admins'] = intval(SiteStats::admins());
+		$data['jobs'] = intval(SiteStats::jobs());
+		$this->getResult()->addValue('query', $property, $data);
+	}	
+	
 	protected function getAllowedParams() {
 		return array (
 		
@@ -171,6 +188,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 					'namespaces',
 					'interwikimap',
 					'dbrepllag',
+					'statistics',
 				)),
 
 			'filteriw' => array (
@@ -189,11 +207,12 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 				'Which sysinfo properties to get:',
 				' "general"      - Overall system information',
 				' "namespaces"   - List of registered namespaces (localized)',
-				' "interwikimap" - Return interwiki map (optionally filtered)',
-				' "dbrepllag"    - Returns DB server with the highest replication lag',
+				' "statistics"   - Returns site statistics',
+				' "interwikimap" - Returns interwiki map (optionally filtered)',
+				' "dbrepllag"    - Returns database server with the highest replication lag',
 			),
 			'filteriw' =>  'Return only local or only nonlocal entries of the interwiki map',
-			'showalldb' => 'List all DB servers, not just the one lagging the most',
+			'showalldb' => 'List all database servers, not just the one lagging the most',
 		);
 	}
 
@@ -203,7 +222,7 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 
 	protected function getExamples() {
 		return array(
-			'api.php?action=query&meta=siteinfo&siprop=general|namespaces',
+			'api.php?action=query&meta=siteinfo&siprop=general|namespaces|statistics',
 			'api.php?action=query&meta=siteinfo&siprop=interwikimap&sifilteriw=local',
 			'api.php?action=query&meta=siteinfo&siprop=dbrepllag&sishowalldb',
 			);
@@ -213,4 +232,3 @@ class ApiQuerySiteinfo extends ApiQueryBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-

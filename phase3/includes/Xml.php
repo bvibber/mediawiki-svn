@@ -41,14 +41,15 @@ class Xml {
 	 * @param $attribs Array of attributes for an XML element
 	 */
 	private static function expandAttributes( $attribs ) {
+		$out = '';
 		if( is_null( $attribs ) ) {
 			return null;
-		} else {
-			$out = '';
-			foreach( $attribs as $name => $val ) {
-				$out .= ' ' . $name . '="' . Sanitizer::encodeAttribute( $val ) . '"';
-			}
+		} elseif( is_array( $attribs ) ) {
+			foreach( $attribs as $name => $val )
+				$out .= " {$name}=\"" . Sanitizer::encodeAttribute( $val ) . '"';
 			return $out;
+		} else {
+			throw new MWException( 'Expected attribute array, got something else in ' . __METHOD__ );
 		}
 	}
 
@@ -91,39 +92,36 @@ class Xml {
 	}
 
 	/**
-	 * Create a namespace selector
+	 * Build a drop-down box for selecting a namespace
 	 *
-	 * @param $selected Mixed: the namespace which should be selected, default ''
-	 * @param $allnamespaces String: value of a special item denoting all namespaces. Null to not include (default)
-	 * @param $includehidden Bool: include hidden namespaces?
-	 * @return String: Html string containing the namespace selector
+	 * @param mixed $selected Namespace which should be pre-selected
+	 * @param mixed $all Value of an item denoting all namespaces, or null to omit
+	 * @param bool $hidden Include hidden namespaces? [WTF? --RC]
+	 * @return string
 	 */
-	public static function namespaceSelector($selected = '', $allnamespaces = null, $includehidden=false) {
+	public static function namespaceSelector( $selected = '', $all = null, $hidden = false ) {
 		global $wgContLang;
-		if( is_null( $selected ) )
-			$selected = '';
-		$s = "\n<select id='namespace' name='namespace' class='namespaceselector'>\n";
-		$arr = $wgContLang->getFormattedNamespaces();
-		if( !is_null($allnamespaces) ) {
-			$arr = array($allnamespaces => wfMsg('namespacesall')) + $arr;
+		$namespaces = $wgContLang->getFormattedNamespaces();
+		$options = array();
+		
+		if( !is_null( $all ) )
+			$namespaces = array( $all => wfMsg( 'namespacesall' ) ) + $namespaces;
+		foreach( $namespaces as $index => $name ) {
+			if( $index < NS_MAIN )
+				continue;
+			if( $index === 0 )
+				$name = wfMsg( 'blanknamespace' );
+			$options[] = self::option( $name, $index, $index === $selected );
 		}
-		foreach ($arr as $index => $name) {
-			if ($index < NS_MAIN) continue;
-
-			$name = $index !== 0 ? $name : wfMsg('blanknamespace');
-
-			if ($index === $selected) {
-				$s .= "\t" . self::element("option",
-						array("value" => $index, "selected" => "selected"),
-						$name) . "\n";
-			} else {
-				$s .= "\t" . self::element("option", array("value" => $index), $name) . "\n";
-			}
-		}
-		$s .= "</select>\n";
-		return $s;
+		
+		return Xml::openElement( 'select', array( 'id' => 'namespace', 'name' => 'namespace',
+			'class' => 'namespaceselector' ) )
+			. "\n"
+			. implode( "\n", $options )
+			. "\n"
+			. Xml::closeElement( 'select' );
 	}
-	
+		
 	/**
 	* Create a date selector 	 
 	* 	 

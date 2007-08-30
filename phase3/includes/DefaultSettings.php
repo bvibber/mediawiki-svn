@@ -646,6 +646,19 @@ $wgDBmysql5			= false;
 $wgLocalDatabases   = array();
 
 /**
+ * For multi-wiki clusters with multiple master servers; if an alternate
+ * is listed for the requested database, a connection to it will be opened
+ * instead of to the current wiki's regular master server when cross-wiki
+ * data operations are done from here.
+ *
+ * Requires that the other server be accessible by network, with the same
+ * username/password as the primary.
+ *
+ * eg $wgAlternateMaster['enwiki'] = 'ariel';
+ */
+$wgAlternateMaster = array();
+
+/**
  * Object cache settings
  * See Defines.php for types
  */
@@ -998,6 +1011,11 @@ $wgEmailConfirmToEdit=false;
  * combined with the permissions of all groups that a given user is listed
  * in in the user_groups table.
  *
+ * Note: Don't set $wgGroupPermissions = array(); unless you know what you're
+ * doing! This will wipe all permissions, and may mean that your users are
+ * unable to perform certain essential tasks or access new functionality
+ * when new permissions are introduced and default grants established.
+ *
  * Functionality to make pages inaccessible has not been extensively tested
  * for security. Use at your own risk!
  *
@@ -1085,12 +1103,14 @@ $wgGroupPermissions['bureaucrat']['userrights'] = true;
 $wgRestrictionTypes = array( 'edit', 'move' );
 
 /**
- * Set of permission keys that can be selected via action=protect.
- * 'autoconfirm' allows all registerd users if $wgAutoConfirmAge is 0.
+ * Rights which can be required for each protection level (via action=protect)
  *
  * You can add a new protection level that requires a specific
  * permission by manipulating this array. The ordering of elements
  * dictates the order on the protection form's lists.
+ *
+ * '' will be ignored (i.e. unprotected)
+ * 'sysop' is quietly rewritten to 'protect' for backwards compatibility
  */
 $wgRestrictionLevels = array( '', 'autoconfirmed', 'sysop' );
 
@@ -1143,8 +1163,7 @@ $wgAutoConfirmCount = 0;
  * // Sysops can disable other sysops in an emergency, and disable bots
  * $wgRemoveGroups['sysop'] = array( 'sysop', 'bot' ); 
  */
-$wgAddGroups = $wgRemoveGroups = array(); // Add customizations after this line
-
+$wgAddGroups = $wgRemoveGroups = array();
 
 # Proxy scanner settings
 #
@@ -1195,7 +1214,7 @@ $wgCacheEpoch = '20030516000000';
  * to ensure that client-side caches don't keep obsolete copies of global
  * styles.
  */
-$wgStyleVersion = '95';
+$wgStyleVersion = '97';
 
 
 # Server-side caching:
@@ -1898,6 +1917,28 @@ $wgExtensionFunctions = array();
 $wgSkinExtensionFunctions = array();
 
 /**
+ * Extension messages files
+ * Associative array mapping extension name to the filename where messages can be found.
+ * The file must create a variable called $messages.
+ * When the messages are needed, the extension should call wfLoadMessagesFile()
+ */
+$wgExtensionMessagesFiles = array();
+
+/**
+ * Parser output hooks.
+ * This is an associative array where the key is an extension-defined tag
+ * (typically the extension name), and the value is a PHP callback.
+ * These will be called as an OutputPageParserOutput hook, if the relevant
+ * tag has been registered with the parser output object.
+ *
+ * Registration is done with $pout->addOutputHook( $tag, $data ). 
+ *
+ * The callback has the form:
+ *    function outputHook( $outputPage, $parserOutput, $data ) { ... }
+ */
+$wgParserOutputHooks = array();
+
+/**
  * List of valid skin names.
  * The key should be the name in all lower case, the value should be a display name.
  * The default skins will be added later, by Skin::getSkinNames(). Use 
@@ -2252,6 +2293,7 @@ $wgLogActions = array(
 	'delete/restore'    => 'undeletedarticle',
 	'delete/revision'   => 'revdelete-logentry',
 	'upload/upload'     => 'uploadedimage',
+	'upload/overwrite'	=> 'overwroteimage',
 	'upload/revert'     => 'uploadedimage',
 	'move/move'         => '1movedto2',
 	'move/move_redir'   => '1movedto2_redir',
@@ -2643,10 +2685,18 @@ $wgDjvuPostProcessor = 'pnmtojpeg';
 $wgDjvuOutputExtension = 'jpg';
 
 /**
-* Enable direct access to the data API
-* through api.php
-*/
+ * Enable the MediaWiki API for convenient access to
+ * machine-readable data via api.php
+ *
+ * See http://www.mediawiki.org/wiki/API
+ */
 $wgEnableAPI = true;
+
+/**
+ * Allow the API to be used to perform write operations
+ * (page edits, rollback, etc.) when an authorised user
+ * accesses it
+ */
 $wgEnableWriteAPI = false;
 
 /**

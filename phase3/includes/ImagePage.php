@@ -16,6 +16,7 @@ if( !defined( 'MEDIAWIKI' ) )
 class ImagePage extends Article {
 
 	/* private */ var $img;  // Image object this page is shown for
+	/* private */ var $repo;
 	var $mExtraDescription = false;
 
 	function __construct( $title ) {
@@ -24,6 +25,7 @@ class ImagePage extends Article {
 		if ( !$this->img ) {
 			$this->img = wfLocalFile( $this->mTitle );
 		}
+		$this->repo = $this->img->repo;
 	}
 
 	/**
@@ -46,6 +48,7 @@ class ImagePage extends Article {
 			return Article::view();
 
 		if ($wgShowEXIF && $this->img->exists()) {
+			// FIXME: bad interface, see note on MediaHandler::formatMetadata(). 
 			$formattedMetadata = $this->img->formatMetadata();
 			$showmeta = $formattedMetadata !== false;
 		} else {
@@ -115,6 +118,8 @@ class ImagePage extends Article {
 	/**
 	 * Make a table with metadata to be shown in the output page.
 	 *
+	 * FIXME: bad interface, see note on MediaHandler::formatMetadata(). 
+	 *
 	 * @access private
 	 *
 	 * @param array $exif The array containing the EXIF data
@@ -124,7 +129,7 @@ class ImagePage extends Article {
 		$r = wfMsg( 'metadata-help' ) . "\n\n";
 		$r .= "{| id=mw_metadata class=mw_metadata\n";
 		foreach ( $metadata as $type => $stuff ) {
-			foreach ( $stuff as $k => $v ) {
+			foreach ( $stuff as $v ) {
 				$class = Sanitizer::escapeId( $v['id'] );
 				if( $type == 'collapsed' ) {
 					$class .= ' collapsable';
@@ -188,14 +193,15 @@ class ImagePage extends Article {
 			$mime = $this->img->getMimeType();
 			$showLink = false;
 			$linkAttribs = array( 'href' => $full_url );
+			$longDesc = $this->img->getLongDesc();
 
-      wfRunHooks( 'ImageOpenShowImageInlineBefore', array( &$this , &$wgOut ) )	;
+			wfRunHooks( 'ImageOpenShowImageInlineBefore', array( &$this , &$wgOut ) )	;
 
-			if ( $this->img->allowInlineDisplay() and $width and $height) {
+			if ( $this->img->allowInlineDisplay() ) {
 				# image
 
 				# "Download high res version" link below the image
-				$msgsize = wfMsgHtml('file-info-size', $width_orig, $height_orig, $sk->formatSize( $this->img->getSize() ), $mime );
+				#$msgsize = wfMsgHtml('file-info-size', $width_orig, $height_orig, $sk->formatSize( $this->img->getSize() ), $mime );
 				# We'll show a thumbnail of this image
 				if ( $width > $maxWidth || $height > $maxHeight ) {
 					# Calculate the thumbnail size.
@@ -229,7 +235,7 @@ class ImagePage extends Article {
 				} else {
 					$anchorclose .= 
 						$msgsmall .
-						'<br />' . Xml::tags( 'a', $linkAttribs,  $msgbig ) . ' ' . $msgsize;
+						'<br />' . Xml::tags( 'a', $linkAttribs,  $msgbig ) . ' ' . $longDesc;
 				}
 
 				if ( $this->img->isMultipage() ) {
@@ -301,26 +307,16 @@ class ImagePage extends Article {
 
 
 			if ($showLink) {
-				// Workaround for incorrect MIME type on SVGs uploaded in previous versions
-				if ($mime == 'image/svg') $mime = 'image/svg+xml';
-
 				$filename = wfEscapeWikiText( $this->img->getName() );
-				$info = wfMsg( 'file-info', $sk->formatSize( $this->img->getSize() ), $mime );
-				$infores = '';
-
-				// Check for MIME type. Other types may have more information in the future.
-				if (substr($mime,0,9) == 'image/svg' ) {
-					$infores = wfMsg('file-svg', $width_orig, $height_orig ) . '<br />';
-				}
 
 				global $wgContLang;
 				$dirmark = $wgContLang->getDirMark();
 				if (!$this->img->isSafeFile()) {
 					$warning = wfMsg( 'mediawarning' );
 					$wgOut->addWikiText( <<<EOT
-<div class="fullMedia">$infores
+<div class="fullMedia">
 <span class="dangerousLink">[[Media:$filename|$filename]]</span>$dirmark
-<span class="fileInfo"> $info</span>
+<span class="fileInfo"> $longDesc</span>
 </div>
 
 <div class="mediaWarning">$warning</div>
@@ -328,8 +324,8 @@ EOT
 						);
 				} else {
 					$wgOut->addWikiText( <<<EOT
-<div class="fullMedia">$infores
-[[Media:$filename|$filename]]$dirmark <span class="fileInfo"> $info</span>
+<div class="fullMedia">
+[[Media:$filename|$filename]]$dirmark <span class="fileInfo"> $longDesc</span>
 </div>
 EOT
 						);
@@ -421,18 +417,22 @@ EOT
 
 		if ( $line ) {
 			$list = new ImageHistoryList( $sk, $this->img );
+			$file = $this->repo->newFileFromRow( $line );
+			$dims = $file->getDimensionsString();
 			$s = $list->beginImageHistoryList() .
 				$list->imageHistoryLine( true, wfTimestamp(TS_MW, $line->img_timestamp),
 					$this->mTitle->getDBkey(),  $line->img_user,
 					$line->img_user_text, $line->img_size, $line->img_description,
-					$line->img_width, $line->img_height
+					$dims
 				);
 
 			while ( $line = $this->img->nextHistoryLine() ) {
-				$s .= $list->imageHistoryLine( false, $line->img_timestamp,
-			  		$line->oi_archive_name, $line->img_user,
-			  		$line->img_user_text, $line->img_size, $line->img_description,
-					$line->img_width, $line->img_height
+				$file = $this->repo->newFileFromRow( $line );
+				$dims = $file->getDimensionsString();
+				$s .= $list->imageHistoryLine( false, $line->oi_timestamp,
+			  		$line->oi_archive_name, $line->oi_user,
+			  		$line->oi_user_text, $line->oi_size, $line->oi_description,
+					$dims
 				);
 			}
 			$s .= $list->endImageHistoryList();
@@ -479,141 +479,23 @@ EOT
 		$wgOut->addHTML( "</ul>\n" );
 	}
 
-	function delete()
-	{
-		global $wgUser, $wgOut, $wgRequest;
-
-		if ( !$this->img->exists() || !$this->img->isLocal() ) {
-			# Use standard article deletion
+	/**
+	 * Delete the file, or an earlier version of it
+	 */
+	public function delete() {
+		if( !$this->img->exists() || !$this->img->isLocal() ) {
+			// Standard article deletion
 			Article::delete();
 			return;
 		}
-
-		$confirm = $wgRequest->wasPosted();
-		$reason = $wgRequest->getVal( 'wpReason' );
-		$image = $wgRequest->getVal( 'image' );
-		$oldimage = $wgRequest->getVal( 'oldimage' );
-
-		# Only sysops can delete images. Previously ordinary users could delete
-		# old revisions, but this is no longer the case.
-		if ( !$wgUser->isAllowed('delete') ) {
-			$wgOut->permissionRequired( 'delete' );
-			return;
-		}
-		if ( $wgUser->isBlocked() ) {
-			$wgOut->blockedPage();
-			return;
-		}
-		if ( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
-			return;
-		}
-
-		# Better double-check that it hasn't been deleted yet!
-		$wgOut->setPagetitle( wfMsg( 'confirmdelete' ) );
-		if ( ( !is_null( $image ) )
-		  && ( '' == trim( $image ) ) ) {
-			$wgOut->showFatalError( wfMsg( 'cannotdelete' ) );
-			return;
-		}
-
-		# Deleting old images doesn't require confirmation
-		if ( !is_null( $oldimage ) || $confirm ) {
-			if( $wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ), $oldimage ) ) {
-				$this->doDeleteImage( $reason );
-			} else {
-				$wgOut->showFatalError( wfMsg( 'sessionfailure' ) );
-			}
-			return;
-		}
-
-		if ( !is_null( $image ) ) {
-			$q = '&image=' . urlencode( $image );
-		} else if ( !is_null( $oldimage ) ) {
-			$q = '&oldimage=' . urlencode( $oldimage );
-		} else {
-			$q = '';
-		}
-		return $this->confirmDelete( $q, $wgRequest->getText( 'wpReason' ) );
-	}
-
-	/*
-	 * Delete an image.
-	 * Called doDeleteImage() not doDelete() so that Article::delete() doesn't 
-	 * call back to here.
-	 *
-	 * @param $reason User provided reason for deletion.
-	 */
-	function doDeleteImage( $reason ) {
-		global $wgOut, $wgRequest;
-
-		$oldimage = $wgRequest->getVal( 'oldimage' );
-
-		if ( !is_null( $oldimage ) ) {
-			if ( strlen( $oldimage ) < 16 ) {
-				$wgOut->showUnexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
-				return;
-			}
-			if( strpos( $oldimage, '/' ) !== false || strpos( $oldimage, '\\' ) !== false ) {
-				$wgOut->showUnexpectedValueError( 'oldimage', htmlspecialchars($oldimage) );
-				return;
-			}
-			$status = $this->doDeleteOldImage( $oldimage );
-			$deleted = $oldimage;
-		} else {
-			$status = $this->img->delete( $reason );
-			if ( !$status->isGood() ) {
-				// Warning or error
-				$wgOut->addWikiText( $status->getWikiText( 'filedeleteerror-short', 'filedeleteerror-long' ) );
-			}
-			if ( $status->ok ) {
-				# Image itself is now gone, and database is cleaned.
-				# Now we remove the image description page.
-				$article = new Article( $this->mTitle );
-				$article->doDeleteArticle( $reason ); # ignore errors
-				$deleted = $this->img->getName();
-			}
-		}
-
-		$wgOut->setRobotpolicy( 'noindex,nofollow' );
-
-		if ( !$status->ok ) {
-			// Fatal error flagged
-			$wgOut->setPagetitle( wfMsg( 'errorpagetitle' ) );
-			$wgOut->returnToMain( false, $this->mTitle->getPrefixedText() );
-		} else {
-			// Operation completed
-			$wgOut->setPagetitle( wfMsg( 'actioncomplete' ) );
-			$loglink = '[[Special:Log/delete|' . wfMsg( 'deletionlog' ) . ']]';
-			$text = wfMsg( 'deletedtext', $deleted, $loglink );
-			$wgOut->addWikiText( $text );
-			$wgOut->returnToMain( false, $this->mTitle->getPrefixedText() );
-		}
-	}
-
-	/**
-	 * Delete an old revision of an image, 
-	 * @return FileRepoStatus
-	 */
-	function doDeleteOldImage( $oldimage ) {
-		global $wgOut;
-
-		$status = $this->img->deleteOld( $oldimage, '' );
-		if( !$status->isGood() ) {
-			$wgOut->addWikiText( $status->getWikiText( 'filedeleteerror-short', 'filedeleteerror-long' ) );
-		}
-		if ( $status->ok ) {
-			# Log the deletion
-			$log = new LogPage( 'delete' );
-			$log->addEntry( 'delete', $this->mTitle, wfMsg('deletedrevision',$oldimage) );
-		}
-		return $status;
+		$deleter = new FileDeleteForm( $this->img );
+		$deleter->execute();
 	}
 
 	/**
 	 * Revert the file to an earlier version
 	 */
-	function revert() {
+	public function revert() {
 		$reverter = new FileRevertForm( $this->img );
 		$reverter->execute();
 	}
@@ -655,7 +537,7 @@ EOT
  */
 class ImageHistoryList {
 
-	protected $img, $skin, $title;
+	protected $img, $skin, $title, $repo;
 
 	public function __construct( $skin, $img ) {
 		$this->skin = $skin;
@@ -682,8 +564,8 @@ class ImageHistoryList {
 		return "</table>\n";
 	}
 
-	public function imageHistoryLine( $iscur, $timestamp, $img, $user, $usertext, $size, $description, $width, $height ) {
-		global $wgUser, $wgLang, $wgTitle, $wgContLang;
+	public function imageHistoryLine( $iscur, $timestamp, $img, $user, $usertext, $size, $description, $dims ) {
+		global $wgUser, $wgLang, $wgContLang;
 		$local = $this->img->isLocal();
 		$row = '';
 
@@ -692,9 +574,8 @@ class ImageHistoryList {
 			$row .= '<td>';
 			$q = array();
 			$q[] = 'action=delete';
-			$q[] = ( $iscur ? 'image=' . $this->title->getPartialUrl() : 'oldimage=' . urlencode( $img ) );
 			if( !$iscur )
-				$q[] = 'wpEditToken=' . urlencode( $wgUser->editToken( $img ) );
+				$q[] = 'oldimage=' . urlencode( $img );
 			$row .= '(' . $this->skin->makeKnownLinkObj(
 				$this->title,
 				wfMsgHtml( $iscur ? 'filehist-deleteall' : 'filehist-deleteone' ),
@@ -740,10 +621,7 @@ class ImageHistoryList {
 		$row .= '</td>';
 
 		// Image dimensions
-		// FIXME: It would be nice to show the duration (sound files) or
-		// width/height/duration (video files) here, but this needs some
-		// additional media handler work
-		$row .= '<td>' . wfMsgHtml( 'widthheight', $width, $height ) . '</td>';
+		$row .= '<td>' . htmlspecialchars( $dims ) . '</td>';
 
 		// File size
 		$row .= '<td class="mw-imagepage-filesize">' . $this->skin->formatSize( $size ) . '</td>';

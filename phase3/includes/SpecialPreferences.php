@@ -558,7 +558,7 @@ class PreferencesForm {
 				$skin = $wgUser->getSkin();
 				$emailauthenticated = wfMsg('emailnotauthenticated').'<br />' .
 					$skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Confirmemail' ),
-						wfMsg( 'emailconfirmlink' ) );
+						wfMsg( 'emailconfirmlink' ) ) . '<br />';
 			}
 		} else {
 			$emailauthenticated = '';
@@ -566,7 +566,7 @@ class PreferencesForm {
 		}
 
 		if ($this->mUserEmail == '') {
-			$emailauthenticated = wfMsg( 'noemailprefs' );
+			$emailauthenticated = wfMsg( 'noemailprefs' ) . '<br />';
 		}
 
 		$ps = $this->namespacesCheckboxes();
@@ -592,7 +592,11 @@ class PreferencesForm {
 
 		$userInformationHtml =
 			$this->tableRow( wfMsgHtml( 'username' ), htmlspecialchars( $wgUser->getName() ) ) .
-			$this->tableRow( wfMsgHtml( 'uid' ), htmlspecialchars( $wgUser->getID() ) );
+			$this->tableRow( wfMsgHtml( 'uid' ), htmlspecialchars( $wgUser->getID() ) ) .
+			$this->tableRow(
+				wfMsgHtml( 'prefs-edits' ),
+				$wgLang->formatNum( User::edits( $wgUser->getId() ) )
+			);
 
 		if( wfRunHooks( 'PreferencesUserInformationPanel', array( $this, &$userInformationHtml ) ) ) {
 			$wgOut->addHtml( $userInformationHtml );

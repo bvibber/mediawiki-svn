@@ -86,11 +86,10 @@ $magicWords = array(
 #   ID                                 CASE  SYNONYMS
 	'redirect'               => array( 0,    '#REDIRECT', '#ПЕРЕНАПРАВЛЕННЯ', '#ПЕРЕНАПР'),
 	'notoc'                  => array( 0,    '__NOTOC__', '__БЕЗ_ЗМІСТУ__'),
-	'nogallery'  			 => array( 0,    '__NOGALLERY__', '__БЕЗ_ГАЛЕРЕЇ__'),
+	'nogallery'              => array( 0,    '__NOGALLERY__', '__БЕЗ_ГАЛЕРЕЇ__'),
 	'forcetoc'               => array( 0,    '__FORCETOC__',  '__ОБОВ_ЗМІСТ__'),
 	'toc'                    => array( 0,    '__TOC__', '__ЗМІСТ__'),
 	'noeditsection'          => array( 0,    '__NOEDITSECTION__', '__БЕЗ_РЕДАГУВ_РОЗДІЛУ__'),
-	'start'                  => array( 0,    '__START__', '__ПОЧАТОК__'),
 	'currentmonth'           => array( 1,    'CURRENTMONTH', 'ПОТОЧНИЙ_МІСЯЦЬ'),
 	'currentmonthname'       => array( 1,    'CURRENTMONTHNAME','НАЗВА_ПОТОЧНОГО_МІСЯЦЯ'),
 	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN','НАЗВА_ПОТОЧНОГО_МІСЯЦЯ_РОД'),
@@ -118,7 +117,7 @@ $magicWords = array(
 	'pagename'               => array( 1,    'PAGENAME','НАЗВА_СТОРІНКИ'),
 	'pagenamee'              => array( 1,    'PAGENAMEE','НАЗВА_СТОРІНКИ_2'),
 	'namespace'              => array( 1,    'NAMESPACE','ПРОСТІР_ІМЕН'),
-	'namespacee'              => array( 1,    'NAMESPACEE','ПРОСТІР_ІМЕН_2'),
+	'namespacee'             => array( 1,    'NAMESPACEE','ПРОСТІР_ІМЕН_2'),
 	'talkspace'              => array( 1,    'TALKSPACE', 'ПРОСТІР_ОБГОВОРЕННЯ'),
 	'talkspacee'             => array( 1,    'TALKSPACEE', 'ПРОСТІР_ОБГОВОРЕННЯ_2'),
 	'subjectspace'           => array( 1,    'SUBJECTSPACE', 'ARTICLESPACE', 'ПРОСТІР_СТАТЕЙ' ),
@@ -165,7 +164,6 @@ $magicWords = array(
 	'revisionday2'           => array( 1,    'REVISIONDAY2' , 'ДЕНЬ_ВЕРСІЇ_2'),
 	'revisionmonth'          => array( 1,    'REVISIONMONTH' , 'МІСЯЦЬ_ВЕРСІЇ'),
 	'revisionyear'           => array( 1,    'REVISIONYEAR' , 'РІК_ВЕРСІЇ'),
-	'revisiontimestamp'      => array( 1,    'REVISIONTIMESTAMP'      ),
 	'plural'                 => array( 0,    'PLURAL:', 'МНОЖИНА:' ),
 	'fullurl'                => array( 0,    'FULLURL:', 'ПОВНА_АДРЕСА:' ),
 	'fullurle'               => array( 0,    'FULLURLE:', 'ПОВНА_АДРЕСА_2:' ),
@@ -179,7 +177,7 @@ $magicWords = array(
 	'newsectionlink'         => array( 1,    '__NEWSECTIONLINK__', '__ПОСИЛАННЯ_НА_НОВИЙ_РОЗДІЛ__' ),
 	'currentversion'         => array( 1,    'CURRENTVERSION' , 'ПОТОЧНА_ВЕРСІЯ' ),
 	'urlencode'              => array( 0,    'URLENCODE:' , 'ЗАКОДОВАНА_АДРЕСА:' ),
-	'anchorencode'                   => array( 0,    'ANCHORENCODE', 'КОДУВАТИ_МІТКУ'),
+	'anchorencode'           => array( 0,    'ANCHORENCODE', 'КОДУВАТИ_МІТКУ'),
 	'currenttimestamp'       => array( 1,    'CURRENTTIMESTAMP' , 'ШТАМП_ПОТОЧНОГО_ЧАСУ' ),
 	'localtimestamp'         => array( 1,    'LOCALTIMESTAMP' , 'ШТАМП_ЛОКОЛЬН_ЧАСУ'),
 	'directionmark'          => array( 1,    'DIRECTIONMARK', 'DIRMARK' , 'НАПРЯМОК_ПИСЬМА' ),
@@ -191,7 +189,7 @@ $magicWords = array(
 	'padleft'                => array( 0,    'PADLEFT', 'ЗАПОВНИТИ_ЛІВОРУЧ'),
 	'padright'               => array( 0,    'PADRIGHT', 'ЗАПОВНИТИ_ПРАВОРУЧ'),
 	'special'                => array( 0,    'special', 'спеціальна' ),
-	'defaultsort'           => array( 1,    'DEFAULTSORT:', 'СТАНДАРТНЕ_СОРТУВАННЯ'),
+	'defaultsort'            => array( 1,    'DEFAULTSORT:', 'СТАНДАРТНЕ_СОРТУВАННЯ'),
 );
 
 $linkTrail = '/^([a-zабвгґдеєжзиіїйклмнопрстуфхцчшщьєюяёъы“»]+)(.*)$/sDu';
@@ -416,23 +414,24 @@ $messages = array(
 'versionrequired'     => 'Потрібна MediaWiki версій $1',
 'versionrequiredtext' => 'Для роботи з цією сторінкою потрібна MediaWiki версій $1. Див. [[{{ns:special}}:Version]].',
 
-'ok'                  => 'OK',
-'pagetitle'           => '$1 — {{SITENAME}}',
-'retrievedfrom'       => 'Отримано з $1',
-'youhavenewmessages'  => 'Ви отримали $1 ($2).',
-'newmessageslink'     => 'нові повідомлення',
-'newmessagesdifflink' => 'різниця останнього редагування',
-'editsection'         => 'ред.',
-'editold'             => 'ред.',
-'editsectionhint'     => 'Редагувати секцію: $1',
-'toc'                 => 'Зміст',
-'showtoc'             => 'показати',
-'hidetoc'             => 'сховати',
-'thisisdeleted'       => 'Переглянути чи відновити $1?',
-'viewdeleted'         => 'Переглянути $1?',
-'restorelink'         => '$1 {{PLURAL:$1|редагування|редагування|редагувань}} вилучено',
-'feedlinks'           => 'В вигляді:',
-'feed-invalid'        => 'Невірний тип каналу для підписки.',
+'ok'                      => 'OK',
+'pagetitle'               => '$1 — {{SITENAME}}',
+'retrievedfrom'           => 'Отримано з $1',
+'youhavenewmessages'      => 'Ви отримали $1 ($2).',
+'newmessageslink'         => 'нові повідомлення',
+'newmessagesdifflink'     => 'різниця останнього редагування',
+'youhavenewmessagesmulti' => 'Ви отримали нові повідомлення на $1',
+'editsection'             => 'ред.',
+'editold'                 => 'ред.',
+'editsectionhint'         => 'Редагувати секцію: $1',
+'toc'                     => 'Зміст',
+'showtoc'                 => 'показати',
+'hidetoc'                 => 'сховати',
+'thisisdeleted'           => 'Переглянути чи відновити $1?',
+'viewdeleted'             => 'Переглянути $1?',
+'restorelink'             => '$1 {{PLURAL:$1|редагування|редагування|редагувань}} вилучено',
+'feedlinks'               => 'В вигляді:',
+'feed-invalid'            => 'Невірний тип каналу для підписки.',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Стаття',
@@ -522,7 +521,6 @@ $1",
 'yourdomainname'             => 'Ваш домен',
 'externaldberror'            => 'Сталася помилка при аутентифікації за допомогою зовнішньої бази даних, або у вас недостатньо прав для внесення змін до свого зовнішнього облікового запису.',
 'loginproblem'               => '<span style="color:red">Проблема при вході в систему. <br />попробуйте ще раз!</span>',
-'alreadyloggedin'            => '<strong>Користувач $1, ви вже ввійшли в систему!</strong><br />',
 'login'                      => 'Вхід в систему',
 'loginprompt'                => "*Реєстрація користувача займає декілька секунд, а зареєстровані користувачі мають [[{{ns:project}}:В чому доцільність реєстрації|ряд переваг]]
 *Для входу в систему необхідно, щоб були активовані куки (''cookies'').",
@@ -560,6 +558,7 @@ $1",
 'nouserspecified'            => "Ви повинні вказати ім'я користувача.",
 'wrongpassword'              => 'Введений вами пароль невірний. Попробуйте ще раз.',
 'wrongpasswordempty'         => 'Будь-ласка, введіть непорожній пароль.',
+'passwordtooshort'           => 'Ваш пароль занадто короткий. Він має містити принаймні $1 символів.',
 'mailmypassword'             => 'Надіслати новий пароль',
 'passwordremindertitle'      => "Пам'ятка пароля користувача {{grammar:genitive|{{SITENAME}}}}",
 'passwordremindertext'       => 'Хтось (можливо, ви - з IP-адреси $1)
@@ -585,6 +584,7 @@ $1",
 'invalidemailaddress'        => 'Введену адресу не можливо прийняти, вона не відповідає формату адрес електронної пошти. Будь-ласка, введіть коректну адресу або залиште поле порожнім.',
 'accountcreated'             => 'Обліковий запис створено.',
 'accountcreatedtext'         => 'Створено обліковий запис для користувача $1.',
+'loginlanguagelabel'         => 'Мова: $1',
 
 # Password reset dialog
 'resetpass'               => 'Очистити пароль облікового запису',
@@ -664,8 +664,8 @@ $1",
 Щоб створити нову статтю, наберіть текст в вікні нижче
 (див. [[Project:Довідка|довідкову статтю]] щоб отримати більше інформації).
 Якщо ви опинились тут помилково, просто натисніть кнопку браузера '''назад'''.",
-'anontalkpagetext'          => '---- 
-\'\'Це сторінка обговорення, що належить анонімному користувачу, який ще не зареєструвався або не скористався зареєстрованим ім\'ям. Тому ми вимушені використовувати IP-адресу для його ідентифікації. Одна IP-адреса може використовуватися декількома користувачами. Якщо ви - анонімний користувач і вважаєте, що отримали коментарі, адресовані не вам, будь ласка [[Special:userlogin|зареєструйтесь або увійдіть в систему як зареєстрований користувач]], щоб у майбутньому уникнути можливої плутанини з іншими анонімними користувачами.\'\'',
+'anontalkpagetext'          => "---- 
+''Це сторінка обговорення, що належить анонімному користувачу, який ще не зареєструвався або не скористався зареєстрованим ім'ям. Тому ми вимушені використовувати IP-адресу для його ідентифікації. Одна IP-адреса може використовуватися декількома користувачами. Якщо ви - анонімний користувач і вважаєте, що отримали коментарі, адресовані не вам, будь ласка [[Special:userlogin|зареєструйтесь або увійдіть в систему як зареєстрований користувач]], щоб у майбутньому уникнути можливої плутанини з іншими анонімними користувачами.''",
 'noarticletext'             => "<div style=\"border: 1px solid #ccc; padding: 7px; background-color: #fff; color: #000\">'''На даний момент текст в цієї статті відсутній.'''
 * '''[{{SERVER}}{{localurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} Створити статтю {{PAGENAME}} ]'''.
 * [[{{ns:special}}:Search/{{PAGENAMEE}}|Шукати {{PAGENAME}}]] у інших статтях.
@@ -689,7 +689,6 @@ $1",
 ''Так як дана вікі дозволяє використовувати чистий HTML, попередній перегляд відключено, щоб попередити JavaScript-атаки.''
 	  	 
 <sstrong>Якщо це доброякісна спроба редагування, будь-ласка, спробуйте ще раз. Якщо не вийде знову, - спробуйте завершити сеанс роботи й ще раз ввійти до системи.</sstrong>",
-'importing'                 => 'Імпорт $1',
 'editing'                   => 'Редагування $1',
 'editinguser'               => 'Редагування <b>$1</b>',
 'editingsection'            => 'Редагування $1 (секція)',
@@ -1060,7 +1059,6 @@ $2 Показувати перенаправлення   Пошук на $3 $9',
 # Image list
 'imagelist'                 => 'Список файлів',
 'imagelisttext'             => "Нижче подано список з '''$1''' {{plural:$1|файлу|файлів|файлів}}, відсортованих $2.",
-'imagelistforuser'          => 'Тільки зображення завантажені користувачем $1.',
 'getimagelist'              => 'отримання списку файлів',
 'ilsubmit'                  => 'Шукати',
 'showlast'                  => 'Показати останні $1 {{plural:$1|файл|файли|файлів}}, {{plural:$1|впорядкований|впорядковані|впорядкованих}} $2.',
@@ -1070,22 +1068,9 @@ $2 Показувати перенаправлення   Пошук на $3 $9',
 'imgdelete'                 => 'вилуч.',
 'imgdesc'                   => 'опис',
 'imgfile'                   => 'файл',
-'imglegend'                 => 'Пояснення: (опис) = показати/змінити опис зображення.',
-'imghistory'                => 'Журнал зображення',
-'revertimg'                 => 'відкин.',
-'deleteimg'                 => 'вилуч.',
-'deleteimgcompletely'       => 'Вилучити всі версії',
-'imghistlegend'             => 'Пояснення: (поточ.) = це - поточне зображення, (вилуч.) = вилучити цю стару версію, (відкин.) = відкинути до цієї старої версії.
-<br /><i>Виберіть дату, щоб переглянути список зображень, звантажених на цю дату</i>.',
 'imagelinks'                => 'Посилання',
 'linkstoimage'              => 'Ось статті, що посилаються на даний файл:',
 'nolinkstoimage'            => 'Статті, що посилаються на дане зображення, відсутні.',
-'sharedupload'              => '<div style="clear:both;"></div>
-{| align=center border=0 cellpadding=2 cellspacing=2 style="border: solid #aaa 1px; background: #f9f9f9; margin: .2em auto .2em auto;"
-|- 
-| [[Image:Commons-logo.svg|20px|Wikimedia Commons logo]]
-| [[Commons:Image:{{PAGENAME}}|Відомості про цей файл]] знаходяться в [[Wikimedia Commons|ВікіСховищі]], централізованому сховищі вільно розповсюджуваних зображень та мультимедія для використання у проектах [http://wikimediafoundation.org Фонду Вікімедія].
-|}',
 'shareduploadwiki'          => 'Додаткову інформацію можна знайти на $1.',
 'shareduploadwiki-linktext' => 'сторінка опису файлу',
 'noimage'                   => 'Немає файлу з такою назвою, ви можете $1.',
@@ -1256,7 +1241,6 @@ $2 Показувати перенаправлення   Пошук на $3 $9',
 'watchlistfor'         => "(користувача '''$1''')",
 'nowatchlist'          => 'Ваш список спостереження порожній.',
 'watchlistanontext'    => 'Вам необхідно $1, щоб переглянути чи редагувати список спостереження.',
-'watchlistcount'       => "'''В вашому списку спостереження $1 {{plural:$1|сторінка|сторінки|стрінок}}, включно зі сторінками обговорення.'''",
 'watchnologin'         => 'Ви не ввійшли в систему',
 'watchnologintext'     => 'Щоб змінювати список спостереження, ви повинні [[{{ns:special}}:Userlogin|ввійти в систему]].',
 'addedwatch'           => 'Додана до списку спостереження',
@@ -1344,7 +1328,6 @@ $NEWPAGE
 'deletionlog'                 => 'список вилучень',
 'reverted'                    => 'Відновлено зі старої версії',
 'deletecomment'               => 'Причина вилучення',
-'imagereverted'               => 'Повернення до молодшої версії виконано.',
 'rollback'                    => 'Відкинути редагування',
 'rollback_short'              => 'Відкинути',
 'rollbacklink'                => 'відкинути',
@@ -1582,7 +1565,6 @@ $NEWPAGE
 'allmessagesdefault'        => 'Стандартний текст',
 'allmessagescurrent'        => 'Поточний текст',
 'allmessagestext'           => 'Це список усіх системних повідомлень, які доступні в просторі імен «MediaWiki:».',
-'allmessagesnotsupportedUI' => 'Встановлена поточна мова <strong>$1</strong> не підтримується Special:Allmessages на цьому сайті.',
 'allmessagesnotsupportedDB' => "'''Special:Allmessages''' не підтримується, так як вимкнена опція '''wgUseDatabaseMessages'''.",
 'allmessagesfilter'         => 'Фільтр в форматі регулярного виразу:',
 'allmessagesmodified'       => 'Показати лише змінені',
@@ -1626,13 +1608,13 @@ $NEWPAGE
 'import-logentry-interwiki-detail' => '$1 версій з $2',
 
 # Tooltip help for the actions
-'tooltip-search'                  => 'Шукати [alt-f]',
-'tooltip-minoredit'               => 'Відмінити це редагування як незначне [alt-i]',
-'tooltip-save'                    => 'зберегти ваші редагування [alt-s]',
-'tooltip-preview'                 => 'Попередній перегляд сторінок, будь-ласка, використовуйте перед збереженням! [alt-p]',
-'tooltip-diff'                    => 'Показати зміни, що зроблені відносно початкового тексту. [alt-v]',
-'tooltip-compareselectedversions' => 'Переглянути різницю між двома вказаними версіями цієї сторінки. [alt-v]',
-'tooltip-watch'                   => 'Додати поточну сторінку в список спостереження [alt-w]',
+'tooltip-search'                  => 'Шукати',
+'tooltip-minoredit'               => 'Відмінити це редагування як незначне',
+'tooltip-save'                    => 'зберегти ваші редагування',
+'tooltip-preview'                 => 'Попередній перегляд сторінок, будь-ласка, використовуйте перед збереженням!',
+'tooltip-diff'                    => 'Показати зміни, що зроблені відносно початкового тексту.',
+'tooltip-compareselectedversions' => 'Переглянути різницю між двома вказаними версіями цієї сторінки.',
+'tooltip-watch'                   => 'Додати поточну сторінку в список спостереження',
 'tooltip-recreate'                => 'Відновити сторінку недивлячись на те, що її вилучено',
 
 # Stylesheets
@@ -1652,7 +1634,7 @@ $NEWPAGE
 }',
 
 # Scripts
-'common.js'   => '/* Розміщений тут код JavaScript буде завантажений всім користувачам при зверненні до будь-якої сторінки */',
+'common.js' => '/* Розміщений тут код JavaScript буде завантажений всім користувачам при зверненні до будь-якої сторінки */',
 
 # Metadata
 'nodublincore'      => 'Метадані Dublin Core RDF заборонені для цього сервера.',
@@ -1723,11 +1705,10 @@ The wiki server can't provide data in a format your client can read.",
 'thumbsize'    => 'Розмір зменшеної версії зображення:',
 'widthheight'  => '$1 × $2',
 
+# Special:Newimages
 'newimages'    => 'Галерея нових файлів',
 'showhidebots' => '($1 ботів)',
 'noimages'     => 'Файли відсутні.',
-
-'passwordtooshort' => 'Ваш пароль занадто короткий. Він має містити принаймні $1 символів.',
 
 # Metadata
 'metadata'          => 'Метадані',
@@ -2036,11 +2017,6 @@ $3
 
 Якщо ви не відправляли подібного запиту — просто ігноруйте цей лист.',
 
-# Inputbox extension, may be useful in other contexts as well
-'tryexact'       => 'Строгий пошук',
-'searchfulltext' => 'Повнотекстовий пошук',
-'createarticle'  => 'Створити статтю',
-
 # Scary transclusion
 'scarytranscludedisabled' => '[«Interwiki transcluding» вимкнено]',
 'scarytranscludefailed'   => '[Нажаль, невдалося звернення до шаблону $1]',
@@ -2073,14 +2049,11 @@ $1
 $1',
 'confirm_purge_button' => 'OK',
 
-'youhavenewmessagesmulti' => 'Ви отримали нові повідомлення на $1',
-
+# AJAX search
 'searchcontaining' => 'Шукати статті, які містять «$1».',
 'searchnamed'      => 'Шукати статті з назвою «$1».',
 'articletitles'    => 'Статті, що починаються з «$1»',
 'hideresults'      => 'Сховати результати',
-
-'loginlanguagelabel' => 'Мова: $1',
 
 # Multipage image navigation
 'imgmultipageprev' => '← попередня сторінка',
@@ -2102,7 +2075,7 @@ $1',
 # Auto-summaries
 'autosumm-blank'   => 'Видалений весь вміст сторінки',
 'autosumm-replace' => 'Замінено сторінку на «$1»',
-'autoredircomment' => 'Перенаправлено на [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => 'Перенаправлено на [[$1]]',
 'autosumm-new'     => 'Нова сторінка: $1',
 
 # Size units
@@ -2112,5 +2085,3 @@ $1',
 'size-gigabytes' => '$1 ГБ',
 
 );
-
-

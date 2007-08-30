@@ -279,10 +279,16 @@ class Title {
 		$redir = MagicWord::get( 'redirect' );
 		if( $redir->matchStart( $text ) ) {
 			// Extract the first link and see if it's usable
+			$m = array();
 			if( preg_match( '!\[{2}(.*?)(?:\||\]{2})!', $text, $m ) ) {
 				// Strip preceding colon used to "escape" categories, etc.
 				// and URL-decode links
-				$m[1] = urldecode( ltrim( $m[1], ':' ) );
+				if( strpos( $m[1], '%' ) !== false ) {
+					// Match behavior of inline link parsing here;
+					// don't interpret + as " " most of the time!
+					// It might be safe to just use rawurldecode instead, though.
+					$m[1] = urldecode( ltrim( $m[1], ':' ) );
+				}
 				$title = Title::newFromText( $m[1] );
 				// Redirects to Special:Userlogout are not permitted
 				if( $title instanceof Title && !$title->isSpecial( 'Userlogout' ) )
@@ -1031,10 +1037,11 @@ class Title {
 		global $wgLang;
 
 		if ( wfReadOnly() && $action != 'read' ) {
-			$errors[] = array( 'readonlytext' );
+			global $wgReadOnly;
+			$errors[] = array( 'readonlytext', $wgReadOnly );
 		}
 
-		global $wgEmailConfirmToEdit;
+		global $wgEmailConfirmToEdit, $wgUser;
 
 		if ( $wgEmailConfirmToEdit && !$wgUser->isEmailConfirmed() )
 		{
@@ -1060,6 +1067,7 @@ class Title {
 			$link = '[[' . $wgContLang->getNsText( NS_USER ) . ":{$name}|{$name}]]";
 			$blockid = $block->mId;
 			$blockExpiry = $user->mBlock->mExpiry;
+			$blockTimestamp = $wgLang->timeanddate( wfTimestamp( TS_MW, $wgUser->mBlock->mTimestamp ), true );
 
 			if ( $blockExpiry == 'infinity' ) {
 				// Entry in database (table ipblocks) is 'infinity' but 'ipboptions' uses 'infinite' or 'indefinite'
@@ -1082,7 +1090,7 @@ class Title {
 
 			$intended = $user->mBlock->mAddress;
 
-			$errors[] = array ( ($block->mAuto ? 'autoblockedtext-concise' : 'blockedtext-concise'), $link, $reason, $ip, name, $blockid, $blockExpiry, $intended );
+			$errors[] = array ( ($block->mAuto ? 'autoblockedtext' : 'blockedtext'), $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended, $blockTimestamp );
 		}
 
 		return $errors;
@@ -1110,7 +1118,12 @@ class Title {
 		}
 		
 		if ( $this->isNamespaceProtected() ) {
-			$errors[] = (NS_MEDIAWIKI == $this->mNamespace ? array('protectedinterface') : array( 'namespaceprotected', $wgContLang->getNSText( $this->mNamespace ) ) );
+			$ns = $this->getNamespace() == NS_MAIN
+				? wfMsg( 'nstab-main' )
+				: $this->getNsText();
+			$errors[] = (NS_MEDIAWIKI == $this->mNamespace 
+				? array('protectedinterface') 
+				: array( 'namespaceprotected',  $ns ) );
 		}
 
 		if( $this->mDbkeyform == '_' ) {
@@ -1142,9 +1155,9 @@ class Title {
 					$right = ( $right == 'sysop' ) ? 'protect' : $right;
 					if( '' != $right && !$user->isAllowed( $right ) ) {
 						$pages = '';
-						foreach( $cascadeSources as $id => $page )
+						foreach( $cascadingSources as $page )
 							$pages .= '* [[:' . $page->getPrefixedText() . "]]\n";
-						$errors[] = array( 'cascadeprotected', array_len( $cascadingSources ), $pages );
+						$errors[] = array( 'cascadeprotected', count( $cascadingSources ), $pages );
 					}
 				}
 			}
@@ -1289,7 +1302,7 @@ class Title {
 			 */
 			if( $this->getNamespace() == NS_SPECIAL ) {
 				$name = $this->getText();
-				list( $name, $subpage ) = SpecialPage::resolveAliasWithSubpage( $name );
+				list( $name, /* $subpage */) = SpecialPage::resolveAliasWithSubpage( $name );
 				$pure = SpecialPage::getTitleFor( $name )->getPrefixedText();
 				if( in_array( $pure, $wgWhitelistRead, true ) )
 					return true;
@@ -1391,7 +1404,7 @@ class Title {
 	 * @return bool If the page is subject to cascading restrictions.
 	 */
 	public function isCascadeProtected() {
-		list( $sources, $restrictions ) = $this->getCascadeProtectionSources( false );
+		list( $sources, /* $restrictions */ ) = $this->getCascadeProtectionSources( false );
 		return ( $sources > 0 );
 	}
 

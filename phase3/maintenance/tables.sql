@@ -378,8 +378,11 @@ CREATE TABLE /*$wgDBprefix*/archive (
   ar_len int unsigned,
 
   -- Reference to page_id. Useful for sysadmin fixing of large pages 
-  -- merged together in the archives
-  ar_page int unsigned NOT NULL,
+  -- merged together in the archives, or for cleanly restoring a page
+  -- at its original ID number if possible.
+  --
+  -- Will be NULL for pages deleted prior to 1.11.
+  ar_page_id int unsigned,
   
   KEY name_title_timestamp (ar_namespace,ar_title,ar_timestamp),
   KEY usertext_timestamp (ar_user_text,ar_timestamp)
@@ -870,7 +873,7 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   -- Store log action or null
   rc_log_action varbinary(255) NULL default NULL,
   -- Log params
-  rc_params blob NOT NULL default '',
+  rc_params blob NULL,
   
   PRIMARY KEY rc_id (rc_id),
   INDEX rc_timestamp (rc_timestamp),
@@ -879,7 +882,8 @@ CREATE TABLE /*$wgDBprefix*/recentchanges (
   INDEX new_name_timestamp (rc_new,rc_namespace,rc_timestamp),
   INDEX rc_ip (rc_ip),
   INDEX rc_ns_usertext (rc_namespace, rc_user_text),
-  INDEX rc_user_text (rc_user_text, rc_timestamp)
+  INDEX rc_user_text (rc_user_text, rc_timestamp),
+  INDEX rc_patrolling (rc_this_oldid, rc_last_oldid, rc_patrolled)
 
 ) /*$wgDBTableOptions*/;
 

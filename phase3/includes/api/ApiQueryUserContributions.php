@@ -39,7 +39,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		parent :: __construct($query, $moduleName, 'uc');
 	}
 
-	private $params, $userTitle;
+	private $params, $username;
 	private $fld_ids = false, $fld_title = false, $fld_timestamp = false,
 			$fld_comment = false, $fld_flags = false;
 
@@ -60,7 +60,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		$db = $this->getDB();
 
 		// Prepare query
-		$this->getUserTitle();
+		$this->prepareUsername();
 		$this->prepareQuery();
 
 		//Do the actual query.
@@ -93,27 +93,23 @@ class ApiQueryContributions extends ApiQueryBase {
 	}
 
 	/**
-	 * Convert 'user' parameter into a proper user login name.
-	 * This method also validates that this user actually exists in the database.  
+	 * Validate the 'user' parameter and set the value to compare
+	 * against `revision`.`rev_user_text`
 	 */
-	private function getUserTitle() {
-
+	private function prepareUsername() {
 		$user = $this->params['user'];
-		if (is_null($user))
-			$this->dieUsage("User parameter may not be empty", 'param_user');
-
-		$userTitle = Title::makeTitleSafe( NS_USER, $user );
-		if ( is_null( $userTitle ) )
-			$this->dieUsage("User name $user is not valid", 'param_user');
-
-		$userid = $this->getDB()->selectField('user', 'user_id', array (
-			'user_name' => $userTitle->getText()
-		));
-		
-		if (!$userid)
-			$this->dieUsage("User name $user not found", 'param_user');
-			
-		$this->userTitle = $userTitle;
+		if( $user ) {
+			$name = User::isIP( $user )
+				? $user
+				: User::getCanonicalName( $user, 'valid' );
+			if( $name === false ) {
+				$this->dieUsage( "User name {$user} is not valid", 'param_user' );
+			} else {
+				$this->username = $name;
+			}
+		} else {
+			$this->dieUsage( 'User parameter may not be empty', 'param_user' );
+		}
 	}
 	
 	/**
@@ -129,7 +125,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		$this->addWhereFld('rev_deleted', 0);
 		
 		// We only want pages by the specified user.
-		$this->addWhereFld('rev_user_text', $this->userTitle->getText());
+		$this->addWhereFld( 'rev_user_text', $this->username );
 
 		// ... and in the specified timeframe.
 		$this->addWhereRange('rev_timestamp', 

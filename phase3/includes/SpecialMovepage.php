@@ -12,7 +12,7 @@ function wfSpecialMovepage( $par = null ) {
 
 	# Check rights
 	if ( !$wgUser->isAllowed( 'move' ) ) {
-		$wgOut->showErrorPage( 'movenologin', 'movenologintext' );
+		$wgOut->showPermissionsErrorPage( array( $wgUser->isAnon() ? 'movenologintext' : 'movenotallowed' ) );
 		return;
 	}
 
@@ -266,7 +266,7 @@ class MovePageForm {
 	}
 
 	function showSuccess() {
-		global $wgOut, $wgRequest, $wgUser, $wgRawHtml;
+		global $wgOut, $wgRequest, $wgUser;
 		
 		$old = Title::newFromText( $wgRequest->getVal( 'oldtitle' ) );
 		$new = Title::newFromText( $wgRequest->getVal( 'newtitle' ) );

@@ -101,6 +101,7 @@ function __autoload($className) {
 		'ImagePage' => 'includes/ImagePage.php',
 		'ImageHistoryList' => 'includes/ImagePage.php',
 		'ImageRemote' => 'includes/ImageRemote.php',
+		'FileDeleteForm' => 'includes/FileDeleteForm.php',
 		'FileRevertForm' => 'includes/FileRevertForm.php',
 		'Job' => 'includes/JobQueue.php',
 		'EmaillingJob' => 'includes/EmaillingJob.php',
@@ -118,6 +119,7 @@ function __autoload($className) {
 		'LogPage' => 'includes/LogPage.php',
 		'MacBinary' => 'includes/MacBinary.php',
 		'MagicWord' => 'includes/MagicWord.php',
+		'MagicWordArray' => 'includes/MagicWord.php',
 		'MathRenderer' => 'includes/Math.php',
 		'MediaTransformOutput' => 'includes/MediaTransformOutput.php',
 		'ThumbnailImage' => 'includes/MediaTransformOutput.php',
@@ -387,5 +389,3 @@ function wfLoadAllExtensions() {
 		}
 	}
 }
-
-

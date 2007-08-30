@@ -39,7 +39,7 @@ class LocalFile extends File
 		$media_type,    # MEDIATYPE_xxx (bitmap, drawing, audio...)
 		$mime,          # MIME type, determined by MimeMagic::guessMimeType
 		$major_mime,    # Major mime type
-		$minor_mine,    # Minor mime type
+		$minor_mime,    # Minor mime type
 		$size,          # Size in bytes (loadFromXxx)
 		$metadata,      # Handler-specific metadata
 		$timestamp,     # Upload timestamp
@@ -210,7 +210,6 @@ class LocalFile extends File
 		}
 		$decoded = array();
 		foreach ( $array as $name => $value ) {
-			$deprefixedName = substr( $name, $prefixLength );
 			$decoded[substr( $name, $prefixLength )] = $value;
 		}
 		$decoded['timestamp'] = wfTimestamp( TS_MW, $decoded['timestamp'] );
@@ -231,6 +230,7 @@ class LocalFile extends File
 	 * Load file metadata from a DB result row
 	 */
 	function loadFromRow( $row, $prefix = 'img_' ) {
+		$this->dataLoaded = true;
 		$array = $this->decodeRow( $row, $prefix );
 		foreach ( $array as $name => $value ) {
 			$this->$name = $value;
@@ -261,8 +261,7 @@ class LocalFile extends File
 			return;
 		}
 		if ( is_null($this->media_type) || 
-			$this->mime == 'image/svg' || 
-			$this->sha1 == ''
+			$this->mime == 'image/svg'
 		) {
 			$this->upgradeRow();
 			$this->upgraded = true;
@@ -287,6 +286,11 @@ class LocalFile extends File
 
 		$this->loadFromFile();
 
+		# Don't destroy file info of missing files
+		if ( !$this->fileExists ) {
+			wfDebug( __METHOD__.": file does not exist, aborting\n" );
+			return;
+		}
 		$dbw = $this->repo->getMasterDB();
 		list( $major, $minor ) = self::splitMime( $this->mime );
 
@@ -317,6 +321,12 @@ class LocalFile extends File
 			if ( isset( $info[$field] ) ) {
 				$this->$field = $info[$field];
 			}
+		}
+		// Fix up mime fields
+		if ( isset( $info['major_mime'] ) ) {
+			$this->mime = "{$info['major_mime']}/{$info['minor_mime']}";
+		} elseif ( isset( $info['mime'] ) ) {
+			list( $this->major_mime, $this->minor_mime ) = self::splitMime( $this->mime );
 		}
 	}
 
@@ -527,7 +537,6 @@ class LocalFile extends File
 		$dir = $this->getThumbPath();
 		$urls = array();
 		foreach ( $files as $file ) {
-			$m = array();
 			# Check that the base file name is part of the thumb name
 			# This is a basic sanity check to avoid erasing unrelated directories
 			if ( strpos( $file, $this->getName() ) !== false ) {
@@ -560,14 +569,9 @@ class LocalFile extends File
 		$dbr = $this->repo->getSlaveDB();
 
 		if ( $this->historyLine == 0 ) {// called for the first time, return line from cur
-			$this->historyRes = $dbr->select( 'image',
+			$this->historyRes = $dbr->select( 'image', 
 				array(
-					'img_size',
-					'img_description',
-					'img_user','img_user_text',
-					'img_timestamp',
-					'img_width',
-					'img_height',
+					'*',
 					"'' AS oi_archive_name"
 				),
 				array( 'img_name' => $this->title->getDBkey() ),
@@ -580,17 +584,7 @@ class LocalFile extends File
 			}
 		} else if ( $this->historyLine == 1 ) {
 			$dbr->freeResult($this->historyRes);
-			$this->historyRes = $dbr->select( 'oldimage',
-				array(
-					'oi_size AS img_size',
-					'oi_description AS img_description',
-					'oi_user AS img_user',
-					'oi_user_text AS img_user_text',
-					'oi_timestamp AS img_timestamp',
-					'oi_width as img_width',
-					'oi_height as img_height',
-					'oi_archive_name'
-				),
+			$this->historyRes = $dbr->select( 'oldimage', '*', 
 				array( 'oi_name' => $this->title->getDBkey() ),
 				__METHOD__,
 				array( 'ORDER BY' => 'oi_timestamp DESC' )
@@ -697,6 +691,7 @@ class LocalFile extends File
 			return false;
 		}
 
+		$reupload = false;
 		if ( $timestamp === false ) {
 			$timestamp = $dbw->timestamp();
 		}
@@ -726,6 +721,8 @@ class LocalFile extends File
 		);
 
 		if( $dbw->affectedRows() == 0 ) {
+			$reupload = true;
+		
 			# Collision, this is an update of a file
 			# Insert previous contents into oldimage
 			$dbw->insertSelect( 'oldimage', 'image',
@@ -780,12 +777,14 @@ class LocalFile extends File
 
 		# Add the log entry
 		$log = new LogPage( 'upload' );
-		$log->addEntry( 'upload', $descTitle, $comment );
+		$action = $reupload ? 'overwrite' : 'upload';
+		$log->addEntry( $action, $descTitle, $comment );
 
 		if( $descTitle->exists() ) {
 			# Create a null revision
 			$nullRevision = Revision::newNullRevision( $dbw, $descTitle->getArticleId(), $log->getRcComment(), false );
 			$nullRevision->insertOn( $dbw );
+			$article->updateRevisionOn( $dbw, $nullRevision );
 
 			# Invalidate the cache for the description page
 			$descTitle->invalidateCache();
@@ -972,6 +971,19 @@ class LocalFile extends File
 
 	function getSha1() {
 		$this->load();
+		// Initialise now if necessary
+		if ( $this->sha1 == '' && $this->fileExists ) {
+			$this->sha1 = File::sha1Base36( $this->getPath() );
+			if ( strval( $this->sha1 ) != '' ) {
+				$dbw = $this->repo->getMasterDB();
+				$dbw->update( 'image', 
+					array( 'img_sha1' => $this->sha1 ),
+					array( 'img_name' => $this->getName() ),
+					__METHOD__ );
+				$this->saveToCache();
+			}
+		}
+
 		return $this->sha1;
 	}
 
@@ -1241,7 +1253,6 @@ class LocalFileDeleteBatch {
 		$dbw = $this->file->repo->getMasterDB();
 		list( $oldRels, $deleteCurrent ) = $this->getOldRels();
 		if ( $deleteCurrent ) {
-			$where = array( 'img_name' => $this->file->getName() );
 			$dbw->delete( 'image', array( 'img_name' => $this->file->getName() ), __METHOD__ );
 		}
 		if ( count( $oldRels ) ) {
@@ -1304,7 +1315,7 @@ class LocalFileDeleteBatch {
 			$urls = array();
 			foreach ( $this->srcRels as $srcRel ) {
 				$urlRel = str_replace( '%2F', '/', rawurlencode( $srcRel ) );
-				$urls[] = $this->repo->getZoneUrl( 'public' ) . '/' . $urlRel;
+				$urls[] = $this->file->repo->getZoneUrl( 'public' ) . '/' . $urlRel;
 			}
 			SquidUpdate::purge( $urls );
 		}
@@ -1419,21 +1430,35 @@ class LocalFileRestoreBatch {
 			if ( strlen( $sha1 ) == 32 && $sha1[0] == '0' ) {
 				$sha1 = substr( $sha1, 1 );
 			}
+			
+			if( is_null( $row->fa_major_mime ) || $row->fa_major_mime == 'unknown'
+				|| is_null( $row->fa_minor_mime ) || $row->fa_minor_mime == 'unknown'
+				|| is_null( $row->fa_media_type ) || $row->fa_media_type == 'UNKNOWN'
+				|| is_null( $row->fa_metadata ) ) {
+				// Refresh our metadata
+				// Required for a new current revision; nice for older ones too. :)
+				$props = RepoGroup::singleton()->getFileProps( $deletedUrl );
+			} else {
+				$props = array(
+					'minor_mime' => $row->fa_minor_mime,
+					'major_mime' => $row->fa_major_mime,
+					'media_type' => $row->fa_media_type,
+					'metadata' => $row->fa_metadata );
+			}
 
 			if ( $first && !$exists ) {
 				// This revision will be published as the new current version
 				$destRel = $this->file->getRel();
-				$info = $this->file->repo->getFileProps( $deletedUrl );
 				$insertCurrent = array(
 					'img_name'        => $row->fa_name,
 					'img_size'        => $row->fa_size,
 					'img_width'       => $row->fa_width,
 					'img_height'      => $row->fa_height,
-					'img_metadata'    => $row->fa_metadata,
+					'img_metadata'    => $props['metadata'],
 					'img_bits'        => $row->fa_bits,
-					'img_media_type'  => $row->fa_media_type,
-					'img_major_mime'  => $row->fa_major_mime,
-					'img_minor_mime'  => $row->fa_minor_mime,
+					'img_media_type'  => $props['media_type'],
+					'img_major_mime'  => $props['major_mime'],
+					'img_minor_mime'  => $props['minor_mime'],
 					'img_description' => $row->fa_description,
 					'img_user'        => $row->fa_user,
 					'img_user_text'   => $row->fa_user_text,
@@ -1464,10 +1489,10 @@ class LocalFileRestoreBatch {
 					'oi_user'         => $row->fa_user,
 					'oi_user_text'    => $row->fa_user_text,
 					'oi_timestamp'    => $row->fa_timestamp,
-					'oi_metadata'     => $row->fa_metadata,
-					'oi_media_type'   => $row->fa_media_type,
-					'oi_major_mime'   => $row->fa_major_mime,
-					'oi_minor_mime'   => $row->fa_minor_mime,
+					'oi_metadata'     => $props['metadata'],
+					'oi_media_type'   => $props['media_type'],
+					'oi_major_mime'   => $props['major_mime'],
+					'oi_minor_mime'   => $props['minor_mime'],
 					'oi_deleted'      => $row->fa_deleted,
 					'oi_sha1'         => $sha1 );
 			}

@@ -214,7 +214,7 @@ border=\"0\" ALT=\"Google\"></A>
 
 			$cache = new HTMLFileCache( $t );
 			if( $cache->isFileCached() ) {
-				// FIXME: $msg is not defined on the next line.
+				// @todo, FIXME: $msg is not defined on the next line.
 				$msg = '<p style="color: red"><b>'.$msg."<br />\n" .
 					$cachederror . "</b></p>\n";
 
@@ -1582,7 +1582,7 @@ class Database {
 		global $wgSharedDB;
 		# Skip quoted literals
 		if ( $name{0} != '`' ) {
-			if ( $this->mTablePrefix !== '' &&  strpos( '.', $name ) === false ) {
+			if ( $this->mTablePrefix !== '' &&  strpos( $name, '.' ) === false ) {
 				$name = "{$this->mTablePrefix}$name";
 			}
 			if ( isset( $wgSharedDB ) && "{$this->mTablePrefix}user" == $name ) {
