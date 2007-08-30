@@ -22,6 +22,8 @@ case "$1" in
 	dpkg-divert --package wikimedia-task-appserver --add --rename \
 			--divert /etc/php5/apache2/php.ini.default /etc/php5/apache2/php.ini
 	dpkg-divert --package wikimedia-task-appserver --add --rename \
+			--divert /usr/share/php5/php.ini-dist.default /usr/share/php5/php.ini-dist
+	dpkg-divert --package wikimedia-task-appserver --add --rename \
 			--divert /etc/sudoers.default /etc/sudoers
 	dpkg-divert --package wikimedia-task-appserver --add --rename \
 			--divert /etc/apache2/envvars.default /etc/apache2/envvars

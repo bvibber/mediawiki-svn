@@ -1,3 +1,16 @@
+wikimedia-task-appserver (1.20) feisty; urgency=low
+
+  * Alternate approach to solving the ucf conflict: replace ucf master file as
+    well
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 30 Aug 2007 13:43:50 +0000
+
+wikimedia-task-appserver (1.19) feisty; urgency=low
+
+  * divert ucf files as well to avoid prompting
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu, 30 Aug 2007 13:34:04 +0000
+
 wikimedia-task-appserver (1.18) feisty; urgency=low
 
   * Put the Mediawiki sync scripts in the postinst
