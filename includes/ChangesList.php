@@ -179,8 +179,8 @@ class ChangesList {
 		// LQT HACK.
 		$thread = Threads::withRoot(new Post( $rc->getTitle() ));
 		if ($thread) {
-			$articlelink .= ' (from ' . $this->skin->makeKnownLinkObj(
-				$thread->article()->getTitle()->getTalkPage() ) . ')';
+			$articlelink .= ' from ' . $this->skin->makeKnownLinkObj(
+				$thread->article()->getTitle()->getTalkPage() );
 		}
 
 		$s .= ' '.$articlelink;
