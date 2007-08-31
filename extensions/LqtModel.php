@@ -216,7 +216,6 @@ class Thread {
 	protected $superthread;
 
 	/* Simple strings: */
-	protected $subject;
 	protected $timestamp;
 	protected $path;
 	
@@ -603,15 +602,33 @@ class Thread {
 	function title() {
 		return $this->root()->getTitle();
 	}
+
+	private function splitIncrementFromSubject($subject_string) {
+		preg_match('/^(.*) \((\d+)\)$/', $subject_string, $matches);
+		if( count($matches) != 3 )
+			throw new MWException( __METHOD__ . ": thread subject has no increment: " . $this->subject() );
+		else
+			return $matches;
+	}
 	
 	function wikilink() {
 		return $this->root()->getTitle()->getPrefixedText();
 	}
 	
+	function subject() {
+		return $this->root()->getTitle()->getText();
+	}
+	
 	function wikilinkWithoutIncrement() {
-		$foo = explode( ' ', $this->wikilink() );
-		array_pop($foo);
-		return implode( ' ', $foo );
+		$tmp = $this->splitIncrementFromSubject($this->wikilink()); return $tmp[1];
+	}
+
+	function subjectWithoutIncrement() {
+		$tmp = $this->splitIncrementFromSubject($this->subject()); return $tmp[1];
+	}
+	
+	function increment() {
+		$tmp = $this->splitIncrementFromSubject($this->subject()); return $tmp[2];
 	}
 	
 	function hasDistinctSubject() {
@@ -621,21 +638,6 @@ class Thread {
 		} else {
 			return true;
 		}
-	}
-
-	function subject() {
-		return $this->root()->getTitle()->getText();
-		return $this->subject;
-	}
-	
-	function subjectWithoutIncrement() {
-		$foo = explode( ' ', $this->subject() );
-		array_pop($foo);
-		return implode( ' ', $foo );
-	}
-	
-	function increment() {
-		return array_pop( explode(' ', $this->subject()) );
 	}
 	
 	function hasSubthreads() {

@@ -371,7 +371,7 @@ HTML;
 	/** Keep trying titles starting with $basename until one is unoccupied. */
 	function incrementedTitle($basename, $namespace) {
 		$i = 1; do {
-			$t = Title::newFromText( $basename.'_'.$i, $namespace );
+			$t = Title::newFromText( $basename.'_('.$i.')', $namespace );
 			$i++;
 		} while ( $t->exists() || in_array($t->getPrefixedDBkey(), self::$occupied_titles) );
 		return $t;
@@ -534,8 +534,8 @@ HTML;
 	function showThreadHeading( $thread ) {
 		if ( $thread->hasDistinctSubject() ) {
 			$html = $thread->subjectWithoutIncrement() .
-			        ' <span class="lqt_subject_increment">' .
-			        $thread->increment() . '</span>';
+			        ' <span class="lqt_subject_increment">(' .
+			        $thread->increment() . ')</span>';
 			$this->output->addHTML( wfOpenElement( "h{$this->headerLevel}", array('class'=>'lqt_header') ) .
 			                        $html . wfCloseElement("h{$this->headerLevel}") );
 		}
