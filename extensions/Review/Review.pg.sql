@@ -15,4 +15,4 @@ CREATE TABLE validate (
   PRIMARY KEY (val_id)
 );
 
-CREATE INDEX validate_index ON validate(val_user,val_revision);
+CREATE INDEX validate_index ON validate(val_user,val_revision,val_type);

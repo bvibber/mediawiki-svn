@@ -10,6 +10,6 @@ CREATE TABLE /*$wgDBprefix*/validate (
   val_ip varchar(255) NOT NULL default '',
 
   PRIMARY KEY (val_id),
-  UNIQUE KEY (val_user,val_revision),
-  UNIQUE KEY (val_ip,val_revision)
+  UNIQUE KEY (val_user,val_revision,val_type),
+  UNIQUE KEY (val_ip,val_revision,val_type)
 ) TYPE=InnoDB;
