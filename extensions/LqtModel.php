@@ -606,7 +606,7 @@ class Thread {
 	private function splitIncrementFromSubject($subject_string) {
 		preg_match('/^(.*) \((\d+)\)$/', $subject_string, $matches);
 		if( count($matches) != 3 )
-			throw new MWException( __METHOD__ . ": thread subject has no increment: " . $this->subject() );
+			throw new MWException( __METHOD__ . ": thread subject has no increment: " . $subject_string );
 		else
 			return $matches;
 	}
