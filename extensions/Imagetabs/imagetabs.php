@@ -54,4 +54,3 @@ function createImageTabs_hook(&$content_actions)
 }
 
 ?>
-
