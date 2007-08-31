@@ -1,11 +1,19 @@
 <?php
 /**
+ * This program is free software; you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation; either version 2 of the License, or
+ * (at your option) any later version.
+ *
+ * @author Roan Kattouw <roan.kattouw@home.nl>
+ * @copyright Copyright (C) 2007 Roan Kattouw 
+ * @license http://www.gnu.org/copyleft/gpl.html GNU General Public License
+ *
  * An extension that shows interwiki tabs above Image: pages
  * Original code by Joe Beaudoin Jr. from www.battlestarwiki.org (joe(AT)frakmedia(DOT)net)
  * Modified for more generic usage by Roan Kattouw (AKA Catrope) (roan(DOT)kattouw(AT)home(DOT)nl)
  * For information how to install and use this extension, see the README file.
  *
- * Copyright (C) Joe Beaudoin Jr. and Roan Kattouw 2007
  */
 
 $wgExtensionFunctions[] = 'createImageTabs_setup';
@@ -46,3 +54,4 @@ function createImageTabs_hook(&$content_actions)
 }
 
 ?>
+
