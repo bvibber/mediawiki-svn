@@ -244,7 +244,8 @@ function wfReviewExtensionReadLastForm ( &$ratings , $title , $merge_others = tr
 
 	$fname = 'wfReviewExtensionReadLastForm' ;
 	$dbw =& wfGetDB( DB_MASTER );
-	$user_ip = $wgUser->getID() == 0 ? $wgUser->getName() : "" ;
+	# Avoid user/ip tuplet unique index collisions
+	$user_ip = $wgUser->getID() == 0 ? $wgUser->getName() : NULL ;
 
 	# Read form values
 	$oldrev = $wgRequest->getInt ( 'review_oldid' ) ;
@@ -311,7 +312,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $title , $merge_others = tr
 
 	# Insert new ratings into the database
 	if ( count ( $new_data ) > 0 ) {
-		$dbw->begin () ;
+		$dbw->begin() ;
 		foreach ( $new_data AS $key => $value ) {
 			$data = array (
 				'val_user' => $value->val_user ,
@@ -322,7 +323,9 @@ function wfReviewExtensionReadLastForm ( &$ratings , $title , $merge_others = tr
 				'val_comment' => $value->val_comment ,
 				'val_ip' => $value->val_ip ,
 			) ;
-			$dbw->replace( 'validate', array('val_user') , $data ) ;
+			$name = $value->val_user ? 'val_user' : 'val_ip';
+			
+			$dbw->replace( 'validate', array( array($name,'val_revision','val_type') ), $data ) ;
 		}
 		$dbw->commit();
 	}

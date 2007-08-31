@@ -7,7 +7,7 @@ CREATE TABLE /*$wgDBprefix*/validate (
   val_type int NOT NULL,
   val_value int(2) NOT NULL,
   val_comment varchar(255) NOT NULL default '',
-  val_ip varchar(255) NOT NULL default '',
+  val_ip varchar(255) NULL default '',
 
   PRIMARY KEY (val_id),
   UNIQUE KEY (val_user,val_revision,val_type),

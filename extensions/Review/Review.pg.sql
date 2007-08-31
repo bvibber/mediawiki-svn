@@ -11,7 +11,7 @@ CREATE TABLE validate (
   val_type      SMALLINT NOT NULL DEFAULT 1,
   val_value     SMALLINT NOT NULL,
   val_comment   TEXT     NOT NULL DEFAULT '',
-  val_ip        TEXT     NOT NULL DEFAULT '',
+  val_ip        TEXT     NULL,
   PRIMARY KEY (val_id)
 );
 
