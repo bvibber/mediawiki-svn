@@ -610,7 +610,7 @@ function wfReviewExtensionFunction () {
 					$ret .= "</td>" ;
 				} else {
 					$ret .= "<td id='review_statistics_table_cell'>" ;
-					if ( $data[$type]->total_count > 0 ) {
+					if ( isset( $data[$type] ) && $data[$type]->total_count > 0 ) {
 						$average = $data[$type]->sum / $data[$type]->total_count ;
 						$ret .= "<div id='" ;
 						$ret .= "review_radio_" . (int) $average . "_of_" . $data[$type]->max ;
