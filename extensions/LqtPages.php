@@ -362,9 +362,6 @@ class ThreadPermalinkView extends LqtView {
 		unset($content_actions['edit']);
 		unset($content_actions['viewsource']);
 		unset($content_actions['talk']);
-/*		unset($content_actions['history']);
-		unset($content_actions['watch']);
-		unset($content_actions['move']);*/
 		if( array_key_exists( 'move', $content_actions ) && $this->thread ) {
 			$content_actions['move']['href'] =
 				SpecialPage::getPage('Movethread')->getTitle()->getFullURL() . '/' .
@@ -374,9 +371,7 @@ class ThreadPermalinkView extends LqtView {
 			$content_actions['delete']['href'] =
 				SpecialPage::getPage('Deletethread')->getTitle()->getFullURL() . '/' .
 				$this->thread->title()->getPrefixedURL();
-		}
-		
-		
+		}	
 		return true;
 	}
 	
@@ -392,6 +387,10 @@ class ThreadPermalinkView extends LqtView {
 		$this->output->addHTML("There is no such revision of this thread.");
 	}
 	
+	function showMissingThreadPage() {
+		$this->output->addHTML("There is no such thread.");	
+	}
+	
 	function __construct(&$output, &$article, &$title, &$user, &$request) {
 		
 		parent::__construct($output, $article, $title, $user, $request);
@@ -403,10 +402,12 @@ class ThreadPermalinkView extends LqtView {
 			
 		}
 		$this->thread = $t;
+		if( ! $t ) {
+			return; // error reporting is handled in show(). this kinda sucks.
+		}
 
-		// TODO this is a holdover from the special page; not sure what's correct here.
-		// we now have a real true $this->article that makes some sense.
-		// but we still want to know about $t->article.
+		// $this->article gets saved to thread_article, so we want it to point to the
+		// subject page associated with the talkpage, always, not the permalink url.
 		$this->article = $t->article(); # for creating reply threads.
 		
 	}
@@ -414,6 +415,11 @@ class ThreadPermalinkView extends LqtView {
 	function show() {
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		
+		if( ! $this->thread ) {
+			$this->showMissingThreadPage();
+			return false;
+		}
 
 		// Make a link back to the talk page, including the correct archive month.
  		// TODO this is obsolete.
@@ -647,17 +653,11 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 	function show() {
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
-
-/*		var_dump($this->article);
-		$t = Threads::withRoot( $this->article );
-		$this->thread = $t;
-*/
-		// TODO this is a holdover from the special page; not sure what's correct here.
-		// we now have a real true $this->article that makes some sense.
-		// but we still want to know about $t->article.
-		// $this->article gets saved to thread_article, so we want it to point to the
-		// subject page associated with the talkpage, always, not the permalink url.
-//		$this->article = $t->article(); # for creating reply threads.
+		
+		if( ! $this->thread ) {
+			$this->showMissingThreadPage();
+			return false;
+		}
 		
 		$this->output->setSubtitle("Viewing a history listing.");
 				
@@ -704,6 +704,10 @@ class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 		}
 		
 		function show() {
+			if( ! $this->thread ) {
+				$this->showMissingThreadPage();
+				return false;
+			}			
 			$this->showHistoryInfo();
 			parent::show();
 			return false;
