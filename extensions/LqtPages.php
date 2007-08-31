@@ -407,7 +407,7 @@ class ThreadPermalinkView extends LqtView {
 		// TODO this is a holdover from the special page; not sure what's correct here.
 		// we now have a real true $this->article that makes some sense.
 		// but we still want to know about $t->article.
-//		$this->article = $t->article(); # for creating reply threads.
+		$this->article = $t->article(); # for creating reply threads.
 		
 	}
 
@@ -652,6 +652,8 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 		// TODO this is a holdover from the special page; not sure what's correct here.
 		// we now have a real true $this->article that makes some sense.
 		// but we still want to know about $t->article.
+		// $this->article gets saved to thread_article, so we want it to point to the
+		// subject page associated with the talkpage, always, not the permalink url.
 //		$this->article = $t->article(); # for creating reply threads.
 		
 		$this->output->setSubtitle("Viewing a history listing.");
