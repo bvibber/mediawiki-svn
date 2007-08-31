@@ -1,4 +1,3 @@
-
 // This is a global configuration object which can embed multiple video instances
 var wgOggPlayer = {
 	'detectionDone': false,
@@ -8,7 +7,8 @@ var wgOggPlayer = {
 	// Downpreffed VLC because it crashes my browser all the damn time -- TS
 	'players': ['videoElement', 'oggPlugin', 'cortado', 'quicktime-mozilla', 'quicktime-activex', 'vlc-mozilla', 'vlc-activex'],
 
-	'clientSupports': {},
+	'clientSupports': { 'thumbnail' : true },
+	'savedThumbs': {},
 
 	// Configuration from MW
 	'msg': {},
@@ -20,8 +20,15 @@ var wgOggPlayer = {
 	// Main entry point: initialise a video player
 	// Player will be created as a child of the given ID
 	// There may be multiple players in a document
-	'init': function ( player, id, videoUrl, width, height, length ) {
-		var elt = document.getElementById( id );
+	'init': function ( player, id, videoUrl, width, height, length, linkUrl ) {
+		elt = document.getElementById( id );
+
+		// Save still image HTML
+		if ( !(id in this.savedThumbs) ) {
+			var thumb = document.createDocumentFragment();
+			thumb.appendChild( elt.cloneNode( true ) );
+			this.savedThumbs[id] = thumb;
+		}
 
 		this.detect( elt );
 
@@ -34,6 +41,10 @@ var wgOggPlayer = {
 				var semicolon = player.indexOf( ";" );
 				if ( semicolon > -1 ) {
 					player = player.substr( cookiePos, semicolon );
+					if ( player == 'thumbnail' ) {
+						// Can't select this one permanently
+						player = false;
+					}
 				}
 			}
 		}
@@ -48,7 +59,7 @@ var wgOggPlayer = {
 		}
 
 		elt.innerHTML = '';
-
+			
 		switch ( player ) {
 			case 'videoElement':
 				this.embedVideoElement( elt, videoUrl, width, height, length );
@@ -68,17 +79,23 @@ var wgOggPlayer = {
 			case 'quicktime-mozilla':
 				this.embedQuicktimePlugin( elt, videoUrl, width, height, length );
 				break;
+			case 'thumbnail':
+				if ( id in this.savedThumbs ) {
+					elt.appendChild( this.savedThumbs[id].cloneNode( true ) );
+				} else {
+					elt.appendChild( document.createTextNode( 'Missing saved thumbnail for ' + id ) );
+				}
+				break;
 			default:
 				elt.innerHTML = this.msg['ogg-no-player'] + '<br/>';
 				player = 'none';
 		}
-		if ( this.showPlayerSelect ) {
+		if ( player != 'thumbnail' ) {
+			var optionsBox = this.makeOptionsBox( player, id, videoUrl, width, height, length, linkUrl );
+			var optionsLink = this.makeOptionsLink( id );
 			elt.appendChild( document.createElement( 'br' ) );
-			var label = document.createElement( 'label' );
-			label.setAttribute( 'class', 'ogg_player_using' );
-			label.appendChild( document.createTextNode( ' ' + this.msg['ogg-using-player'] ) );
-			label.appendChild( this.makePlayerSelect( player, id, videoUrl, width, height, length ) );
-			elt.appendChild( label );
+			elt.appendChild( optionsBox );
+			elt.appendChild( optionsLink );
 		}
 	},
 
@@ -99,7 +116,7 @@ var wgOggPlayer = {
 			this.clientSupports['vlc-activex'] = true;
 		}
 		// Java
-		if ( javaEnabled && this.testActiveX( 'JavaPlugin' ) ) {
+		if ( javaEnabled && this.testActiveX( 'JavaWebStart.isInstalled' ) ) {
 			this.clientSupports['cortado'] = true;
 		}
 		// QuickTime
@@ -180,23 +197,136 @@ var wgOggPlayer = {
 		}
 	},
 
-	'makePlayerSelect' : function ( selectedPlayer, id, videoUrl, width, height, length ) {
-		var select = document.createElement( 'select' );
-		if ( selectedPlayer == 'none' ) {
-			this.addOption( select, 'none', this.msg['ogg-player-none'], true );
-		}
-		for ( var player in this.clientSupports ) {
-			this.addOption( select, player, this.getMsg( 'ogg-player-' + player ), selectedPlayer == player );
-		}
-		select.value = selectedPlayer;
+	'makeOptionsBox' : function ( selectedPlayer, id, videoUrl, width, height, length, linkUrl ) {
+		var div, p, a, ul, li, button;
 
-		var me = this;
-		select.onchange = function () {
-			var player = select.value;
-			document.cookie = "ogg_player=" + player;
-			me.init( player, id, videoUrl, width, height, length );
+		div = document.createElement( 'div' );
+		div.style.cssText = "width: " + ( width - 10 ) + "px; display: none;";
+		div.className = 'ogg-player-options';
+		div.id = id + '_options_box';
+		div.align = 'center';
+
+		ul = document.createElement( 'ul' );
+
+		// Description page link
+		if ( linkUrl ) {
+			li = document.createElement( 'li' );
+			a = document.createElement( 'a' );
+			a.href = linkUrl;
+			a.appendChild( document.createTextNode( this.msg['ogg-desc-link'] ) );
+			li.appendChild( a );
+			ul.appendChild( li );
+		}
+
+		// Download link
+		li = document.createElement( 'li' );
+		a = document.createElement( 'a' );
+		a.href = videoUrl;
+		a.appendChild( document.createTextNode( this.msg['ogg-download'] ) );
+		li.appendChild( a );
+		ul.appendChild( li );
+		
+		div.appendChild( ul );
+
+		// Player list caption
+		p = document.createElement( 'p' );
+		p.appendChild( document.createTextNode( this.msg['ogg-use-player'] ) );
+		div.appendChild( p );
+
+		// Make player list
+		ul = document.createElement( 'ul' );
+		for ( var i = 0; i < this.players.length + 1; i++ ) {
+			var player;
+			if ( i == this.players.length ) {
+				player = 'thumbnail';
+			} else {
+				player = this.players[i];
+				// Skip unsupported players
+				if ( ! this.clientSupports[player] ) {
+					continue;
+				}
+			}
+
+			// Make list item
+			li = document.createElement( 'li' );
+			if ( player == selectedPlayer ) {
+				var strong = document.createElement( 'strong' );
+				strong.appendChild( document.createTextNode( 
+					this.msg['ogg-player-' + player] + ' ' + this.msg['ogg-player-selected'] ) );
+				li.appendChild( strong );
+			} else {
+				a = document.createElement( 'a' );
+				a.href = 'javascript:void("' + player + '")';
+				a.onclick = this.makePlayerFunction( player, id, videoUrl, width, height, length, linkUrl );
+				a.appendChild( document.createTextNode( this.msg['ogg-player-' + player] ) );
+				li.appendChild( a );
+			}
+			ul.appendChild( li );
+		}
+		div.appendChild( ul );
+		
+		div2 = document.createElement( 'div' );
+		div2.style.cssText = 'text-align: center;';
+		button = document.createElement( 'button' );
+		button.appendChild( document.createTextNode( this.msg['ogg-dismiss'] ) );
+		button.onclick = this.makeDismissFunction( id );
+		div2.appendChild( button );
+		div.appendChild( div2 );
+
+		return div;
+	},
+
+	'makeOptionsLink' : function ( id ) {
+		var a = document.createElement( 'a' );
+		a.href = 'javascript:void("options")';
+		a.id = id + '_options_link';
+		a.onclick = this.makeDisplayOptionsFunction( id );
+		a.appendChild( document.createTextNode( this.msg['ogg-more'] ) );
+		return a;
+	},
+
+	'setCssProperty' : function ( elt, prop, value ) {
+		// Could use style.setProperty() here if it worked in IE
+		var re = new RegExp( prop + ':[^;](;|$)' );
+		if ( elt.style.cssText.search( re ) > -1 ) {
+			elt.style.cssText = elt.style.cssText.replace( re, prop + ':' + value + '$1' );
+		} else if ( elt.style.cssText == '' ) {
+			elt.style.cssText = prop + ':' + value + ';';
+		} else if ( elt.style.cssText[elt.style.cssText.length - 1] == ';' ) {
+			elt.style.cssText += prop + ':' + value + ';';
+		} else {
+			elt.style.cssText += ';' + prop + ':' + value + ';';
+		}
+	},
+
+	'makeDismissFunction' : function ( id ) {
+		var this_ = this;
+		return function () {
+			var optionsLink = document.getElementById( id + '_options_link' );
+			var optionsBox = document.getElementById( id + '_options_box' );
+			this_.setCssProperty( optionsLink, 'display', 'inline' );
+			this_.setCssProperty( optionsBox, 'display', 'none' );
+		}
+	},
+
+	'makeDisplayOptionsFunction' : function ( id ) {
+		var this_ = this;
+		return function () {
+			var optionsLink = document.getElementById( id + '_options_link' );
+			var optionsBox = document.getElementById( id + '_options_box' );
+			this_.setCssProperty( optionsLink, 'display', 'none' );
+			this_.setCssProperty( optionsBox, 'display', 'block' );
+		}
+	},
+
+	'makePlayerFunction' : function ( player, id, videoUrl, width, height, length, linkUrl ) {
+		var this_ = this;
+		return function () {
+			if ( player != 'thumbnail' ) {
+				document.cookie = "ogg_player=" + player;
+			}
+			this_.init( player, id, videoUrl, width, height, length, linkUrl );
 		};
-		return select;
 	},
 
 	'newButton': function ( caption, callback ) {
@@ -350,11 +480,11 @@ var wgOggPlayer = {
 			"</object>";
 
 		// Disable autoplay on back button
-		var me = this;
+		var this_ = this;
 		window.setTimeout( 
 			function () {
 				var videoElt = document.getElementById( id );
-				me.setParam( videoElt, 'AUTOPLAY', 'False' );
+				this_.setParam( videoElt, 'AUTOPLAY', 'False' );
 			}, 3000 );
 	},
 
@@ -376,6 +506,4 @@ var wgOggPlayer = {
 		this.addParam( elt, name, value );
 	}
 };
-
 // vim: ts=4 sw=4 noet cindent :
-

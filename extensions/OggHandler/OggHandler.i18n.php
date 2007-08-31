@@ -24,8 +24,13 @@ $messages = array(
 		'ogg-player-vlc-activex' => 'VLC (ActiveX)', # only translate this message to other languages if you have to change it
 		'ogg-player-quicktime-mozilla' => 'QuickTime', # only translate this message to other languages if you have to change it
 		'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)', # only translate this message to other languages if you have to change it
-		'ogg-player-none'      => '(none)',
-		'ogg-using-player'     => 'Using player:',
+		'ogg-player-thumbnail' => 'Still image only',
+		'ogg-player-selected'  => '(selected)',
+		'ogg-use-player'       => 'Use player: ',
+		'ogg-more'             => 'More...',
+		'ogg-dismiss'          => 'Close',
+		'ogg-download'         => 'Download file',
+		'ogg-desc-link'        => 'About this file',
 	),
 
 	'de' => array(
@@ -45,8 +50,6 @@ $messages = array(
 		'ogg-no-player'           => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.java.com/de/download/manual.jsp">Java</a>',
 		'ogg-player-videoElement' => '<video>-Element',
 		'ogg-player-oggPlugin'    => 'Ogg-Plugin',
-		'ogg-player-none'         => '(keiner)',
-		'ogg-using-player'        => 'Verwende Player:',
 	),
 
 	'nl' => array(
@@ -67,7 +70,5 @@ $messages = array(
 			'Installeer alstublieft <a href="http://www.java.com/nl/download/manual.jsp">Java</a>.',
 		'ogg-player-videoElement' => '<video>-element',
 		'ogg-player-oggPlugin' => 'Ogg-plugin',
-		'ogg-player-none'      => '(geen)',
-		'ogg-using-player'     => 'Gebruikte speler:',
 	),
 );

@@ -143,11 +143,11 @@ class OggHandler extends MediaHandler {
 				$width = $params['width'];
 			}
 			$height = $icon->getHeight();
-			return new OggAudioDisplay( $file->getURL(), $icon->getUrl(), $width, $height, $length );
+			return new OggAudioDisplay( $file, $file->getURL(), $icon->getUrl(), $width, $height, $length );
 		}
 
 		if ( $flags & self::TRANSFORM_LATER ) {
-			return new OggVideoDisplay( $file->getURL(), $dstUrl, $width, $height, $length );
+			return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length );
 		}
 
 		wfMkdirParents( dirname( $dstPath ) );
@@ -180,7 +180,7 @@ class OggHandler extends MediaHandler {
 			// Return error box
 			return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
 		}
-		return new OggVideoDisplay( $file->getURL(), $dstUrl, $width, $height, $length );
+		return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length );
 	}
 
 	function canRender() { return true; }
@@ -319,7 +319,8 @@ class OggHandler extends MediaHandler {
 		$msgNames = array( 'ogg-play', 'ogg-pause', 'ogg-stop', 'ogg-no-player',
 			'ogg-player-videoElement', 'ogg-player-oggPlugin', 'ogg-player-cortado', 'ogg-player-vlc-mozilla', 
 			'ogg-player-vlc-activex', 'ogg-player-quicktime-mozilla', 'ogg-player-quicktime-activex',
-			'ogg-player-none', 'ogg-using-player' );
+			'ogg-player-thumbnail', 'ogg-player-selected', 'ogg-use-player', 'ogg-more', 'ogg-download',
+	   		'ogg-desc-link', 'ogg-dismiss' );
 		$msgValues = array_map( 'wfMsg', $msgNames );
 		$jsMsgs = Xml::encodeJsVar( (object)array_combine( $msgNames, $msgValues ) );
 		$cortadoUrl = $wgCortadoJarFile;
@@ -337,6 +338,14 @@ wgOggPlayer.msg = $jsMsgs;
 wgOggPlayer.cortadoUrl = $encCortadoUrl;
 wgOggPlayer.smallFileUrl = $encSmallFileUrl;
 </script>
+<style type="text/css">
+.ogg-player-options {
+	border: solid 1px #ccc;
+	padding: 2pt;
+	text-align: left;
+	font-size: 10pt;
+}
+</style>
 EOT
 		);
 		
@@ -361,7 +370,8 @@ EOT
 class OggTransformOutput extends MediaTransformOutput {
 	static $serial = 0;
 
-	function __construct( $videoUrl, $thumbUrl, $width, $height, $length, $isVideo ) {
+	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, $isVideo ) {
+		$this->file = $file;
 		$this->videoUrl = $videoUrl;
 		$this->url = $thumbUrl;
 		$this->width = round( $width );
@@ -370,12 +380,13 @@ class OggTransformOutput extends MediaTransformOutput {
 		$this->isVideo = $isVideo;
 	}
 
-	function toHtml( $attribs = array() , $linkAttribs = false ) {
+	function toHtml( $options = array() ) {
 		wfLoadExtensionMessages( 'OggHandler' );
+		if ( count( func_get_args() ) == 2 ) {
+			throw new MWException( __METHOD__ .' called in the old style' );
+		}
 
 		OggTransformOutput::$serial++;
-
-		$encThumbUrl = htmlspecialchars( $this->url );
 
 		if ( substr( $this->videoUrl, 0, 4 ) != 'http' ) {
 			global $wgServer;
@@ -383,11 +394,11 @@ class OggTransformOutput extends MediaTransformOutput {
 		} else {
 			$encUrl = Xml::encodeJsVar( $this->videoUrl );
 		}
-		#$encUrl = htmlspecialchars( $encUrl );
 		$length = intval( $this->length );
 		$width = intval( $this->width );
 		$height = intval( $this->height );
-		$attribs['src'] = $this->url;
+		$alt = empty( $options['alt'] ) ? '' : $options['alt'];
+		$attribs = array( 'src' => $this->url );
 		if ( $this->isVideo ) {
 			$msgStartPlayer = wfMsg( 'ogg-play-video' );
 			$attribs['width'] = $width;
@@ -400,18 +411,23 @@ class OggTransformOutput extends MediaTransformOutput {
 		}
 
 		$thumb = Xml::element( 'img', $attribs, null );
-		if ( $linkAttribs ) {
+		if ( !empty( $options['desc-link'] ) ) {
+			$linkAttribs = $this->getDescLinkAttribs( $alt );
 			$thumb = Xml::tags( 'a', $linkAttribs, $thumb );
+			$encLink = Xml::encodeJsVar( $linkAttribs['href'] );
+		} else {
+			// We don't respect the file-link option, click-through to download is not appropriate
+			$encLink = 'false';
 		}
 		$thumb .= "<br/>\n";
 
 		$id = "ogg_player_" . OggTransformOutput::$serial;
 
-		$s = Xml::tags( 'div', array( 'id' => $id ), 
+		$s = Xml::tags( 'div', array( 'id' => $id, /*'align' => 'center',*/ 'style' => 'width: ' . $width . 'px' ), 
 			$thumb .
 			Xml::element( 'button', 
 				array(
-					'onclick' => "wgOggPlayer.init(false, '$id', $encUrl, $width, $playerHeight, $length);",
+					'onclick' => "wgOggPlayer.init(false, '$id', $encUrl, $width, $playerHeight, $length, $encLink);",
 				), 
 				$msgStartPlayer
 			)
@@ -421,14 +437,14 @@ class OggTransformOutput extends MediaTransformOutput {
 }
 
 class OggVideoDisplay extends OggTransformOutput {
-	function __construct( $videoUrl, $thumbUrl, $width, $height, $length ) {
-		parent::__construct( $videoUrl, $thumbUrl, $width, $height, $length, true );
+	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length ) {
+		parent::__construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, true );
 	}
 }
 
 class OggAudioDisplay extends OggTransformOutput {
-	function __construct( $videoUrl, $iconUrl, $width, $height, $length ) {
-		parent::__construct( $videoUrl, $iconUrl, $width, $height, $length, false );
+	function __construct( $file, $videoUrl, $iconUrl, $width, $height, $length ) {
+		parent::__construct( $file, $videoUrl, $iconUrl, $width, $height, $length, false );
 	}
 }
 
