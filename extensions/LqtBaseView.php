@@ -248,6 +248,13 @@ HTML;
 		}
 	}
 
+	function showReplyProtectedNotice($thread) {
+		// http://localhost:8000/lqt07/index.php?title=Special%3ALog&type=protect&user=&page=Thread%3ADiscussion+noveu+%281%29
+		$log_url = SpecialPage::getPage('Log')->getTitle()->getFullURL(
+			"type=protect&user=&page={$thread->title()->getPrefixedURL()}");
+		$this->output->addHTML("<p>This thread has been <a href=\"$log_url\">protected</a> from being replied to.");
+	}
+
 	function showNewThreadForm() {
 		$this->showEditingFormInGeneral( null, 'new', null );
 	}
@@ -257,7 +264,11 @@ HTML;
 	}
 
 	function showReplyForm( $thread ) {
-		$this->showEditingFormInGeneral( null, 'reply', $thread );
+		if( $thread->root()->getTitle()->userCan( 'edit' ) ) {
+			$this->showEditingFormInGeneral( null, 'reply', $thread );
+		} else {
+			$this->showReplyProtectedNotice($thread);
+		}
 	}
 
 	function showSummarizeForm( $thread ) {
@@ -411,6 +422,51 @@ HTML;
 		return true;
 	}
 
+	/**
+	* Example return value:
+	*   array (
+	*       0 => array( 'label'   => 'Edit',
+	*                   'href'    => 'http...',
+	*                   'enabled' => false ),
+	*       1 => array( 'label'   => 'Reply',
+	*                   'href'    => 'http...',
+	*                   'enabled' => true )
+	*   )
+	*/
+	function applicableThreadCommands($thread) {
+		$commands = array();
+		
+		$user_can_edit = $thread->root()->getTitle()->quickUserCan( 'edit' );
+
+		$commands[] = array( 'label' => $user_can_edit ? 'Edit' : 'View source',
+		                     'href' => $this->talkpageUrl( $this->title, 'edit', $thread ),
+		                     'enabled' => true );
+		
+		$commands[] = array( 'label' => 'Reply',
+							 'href' =>  $this->talkpageUrl( $this->title, 'reply', $thread ),
+							 'enabled' => $user_can_edit );
+		
+		$commands[] = array( 'label' => 'Permalink',
+							 'href' =>  $this->permalinkUrl( $thread ),
+							 'enabled' => true );
+
+		if( !$thread->hasSuperthread() ) {
+			$commands[] = array( 'label' => 'History',
+								 'href' =>  $this->permalinkUrlWithQuery($thread, 'action=history'),
+								 'enabled' => true );
+		}
+		
+		if ( in_array('delete',  $this->user->getRights()) ) {
+			$delete_url = SpecialPage::getPage('Deletethread')->getTitle()->getFullURL()
+				. '/' . $thread->title()->getPrefixedURL();
+			$commands[] = array( 'label' => $thread->type() == Threads::TYPE_DELETED ? 'Undelete' : 'Delete',
+								 'href' =>  $delete_url,
+								 'enabled' => true );
+		}
+		
+		return $commands;
+	}
+
 	/*************************
 	* Output methods         *
 	*************************/
@@ -464,29 +520,16 @@ HTML;
 		$this->output->addHTML( $wgLang->timeanddate($thread->timestamp()) );
 		$this->output->addHTML( wfCloseElement( 'li' ) );
 
-		$edit_label = $thread->root()->getTitle()->quickUserCan( 'edit' ) ? 'Edit' : 'View source';
-		
-		$commands = array( $edit_label => $this->talkpageUrl( $this->title, 'edit', $thread ),
-		 					'Reply' => $this->talkpageUrl( $this->title, 'reply', $thread ),
-		 					'Permalink' => $this->permalinkUrl( $thread ) );
-
-		if( !$thread->hasSuperthread() ) {
-			$commands['History'] = $this->permalinkUrlWithQuery($thread, 'action=history');
-		}
-		
-		if ( in_array('delete',  $this->user->getRights()) ) {
-			if( $thread->type() == Threads::TYPE_DELETED )
-				$delete_command_label = 'Undelete';
-			else
-				$delete_command_label = 'Delete';
-			
-			$commands[$delete_command_label] = SpecialPage::getPage('Deletethread')->getTitle()->getFullURL()
-				. '/' . $thread->title()->getPrefixedURL();
-		}
-
-		foreach( $commands as $label => $href ) {
+		foreach( $this->applicableThreadCommands($thread) as $command ) {
+			$label = $command['label'];
+			$href = $command['href'];
+			$enabled = $command['enabled'];
 			$this->output->addHTML( wfOpenElement( 'li' ) );
-			$this->output->addHTML( wfElement('a', array('href'=>$href), $label) );
+			if( $enabled ) {
+				$this->output->addHTML( wfElement('a', array('href'=>$href), $label) );
+			} else {
+				$this->output->addHTML( wfElement('span', array('class'=>'lqt_footer_disabled'), $label) );
+			}
 			$this->output->addHTML( wfCloseElement( 'li' ) );
 		}
 
