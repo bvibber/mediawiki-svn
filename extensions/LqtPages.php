@@ -621,7 +621,10 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 
 		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $t->revisionNumber() );
 		
-		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $t->changeUser() ), false );
+		$user_id = $t->changeUser()->getID(); # ever heard of a User object?
+		$user_text = $t->changeUser()->getName();
+		$sig = $this->user->getSkin()->userLink( $user_id, $user_text ) .
+			   $this->user->getSkin()->userToolLinks( $user_id, $user_text );
 		
 		$result[] = "<tr>";
 		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->timestamp()) . "</a></td>";
