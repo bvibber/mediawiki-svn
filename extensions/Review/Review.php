@@ -322,7 +322,7 @@ function wfReviewExtensionReadLastForm ( &$ratings , $title , $merge_others = tr
 				'val_comment' => $value->val_comment ,
 				'val_ip' => $value->val_ip ,
 			) ;
-			$dbw->insert ( 'validate' , $data ) ;
+			$dbw->replace( 'validate', array('val_user') , $data ) ;
 		}
 		$dbw->commit();
 	}
@@ -751,7 +751,7 @@ function wfReviewExtensionFunction () {
 
 			$out = "" ;
 			$skin =& $wgUser->getSkin () ;
-			$mode = $wgRequest->getText ( 'mode' , "" ) ;
+			$mode = $wgRequest->getText ( 'mode' , 'view_page_statistics' ) ;
 			$page_id = $wgRequest->getInt ( 'page_id' , 0 ) ;
 			$rev_id = $wgRequest->getInt ( 'rev_id' , 0 ) ;
 			$user_id = $wgRequest->getInt ( 'user_id' , 0 ) ;
@@ -769,7 +769,13 @@ function wfReviewExtensionFunction () {
 			}
 			
 			if ( $page_id == 0 ) {
-				$title = NULL ;
+				if( $par != null){
+					$title = Title::newFromUrl($par);
+					$page_id = $title->getArticleID();
+				}
+				else{
+					$title = NULL ;
+				}
 			} else {
 				$title = Title::newFromID ( $page_id ) ;
 			}
@@ -794,7 +800,7 @@ function wfReviewExtensionFunction () {
 
 			// FIXME: use private methods!
 			# Modes
-			if ( $mode == 'view_page_statistics' ) {
+			if ( $mode == 'view_page_statistics' && $title != null ) {
 				# View statistics for one page
 				$revisions = $this->get_reviewed_revisions ( $title ) ;
 				arsort ( $revisions ) ; # Newest first
@@ -816,7 +822,7 @@ function wfReviewExtensionFunction () {
 					$out .= "</table>\n" ;
 				}
 				$page_title = wfMsgForContent ( 'review_for_page' , $title->getPrefixedText() ) ;
-			} else if ( $mode == 'view_version_statistics' ) {
+			} else if ( $mode == 'view_version_statistics' && $title != null ) {
 				# View statistics for a specific version of a page
 				$data = array () ;
 				$out .= "<table id='review_statistics_table'>\n" ;
