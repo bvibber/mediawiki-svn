@@ -50,6 +50,13 @@ $messages = array(
 		'ogg-no-player'           => 'Dein System scheint über keine Abspielsoftware zu verfügen. Bitte installiere <a href="http://www.java.com/de/download/manual.jsp">Java</a>',
 		'ogg-player-videoElement' => '<video>-Element',
 		'ogg-player-oggPlugin'    => 'Ogg-Plugin',
+		'ogg-player-thumbnail'    => 'Zeige Vorschaubild',
+		'ogg-player-selected'     => '(ausgewählt)',
+		'ogg-use-player'          => 'Abspielsoftware: ',
+		'ogg-more'                => 'Mehr …',
+		'ogg-dismiss'             => 'Schließen',
+		'ogg-download'            => 'Datei speichern',
+		'ogg-desc-link'           => 'Über diese Datei',
 	),
 
 	'nl' => array(
