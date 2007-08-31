@@ -194,6 +194,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   text for a non-existent page
 * (bug 11022) Use a more accurate page title for Special:Whatlinkshere and
   Special:Recentchangeslinked
+* Add link to user contributions in normal watchlist edit mode
 
 == Bugfixes since 1.10 ==
 
@@ -505,16 +506,20 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 
 * Afrikaans (af)
 * Arabic (ar)
+* Bikol (bcl)
 * Bulgarian (bg)
 * Catalan (ca)
 * Danish (da)
 * German (de)
 * Greek (el)
 * Spanish (es)
+* Estonian (et)
+* Extremaduran (ext)
 * Farsi (fa)
 * Finnish (fi)
 * Võro (fiu-vro)
 * French (fr)
+* Franco-Provençal/Arpitan (frp)
 * Galician (gl)
 * Hakka (hak)
 * Hebrew (he)
@@ -544,6 +549,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Romanian (ro)
 * Aromanian (roa-rup)
 * Russian (ru)
+* Sakha (sah)
 * Slovak (sk)
 * Slovenian (sl)
 * Shona (sn)

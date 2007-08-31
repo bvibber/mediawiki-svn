@@ -956,7 +956,7 @@ format. Please enter a well-formatted address or empty that field.',
 
 The block was made by $1. The reason given is ''$2''.
 
-* Begin of block: $8
+* Start of block: $8
 * Expiry of block: $6
 * Intended blockee: $7
 
@@ -969,7 +969,7 @@ The reason given is this:
 
 :\'\'$2\'\'
 
-* Begin of block: $8
+* Start of block: $8
 * Expiry of block: $6
 
 You may contact $1 or one of the other

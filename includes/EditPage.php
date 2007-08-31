@@ -1315,6 +1315,7 @@ END
 		if($this->mArticle->getTitle()->getNamespace() == NS_CATEGORY) {
 			$this->mArticle->openShowCategory();
 		}
+		wfRunHooks( 'OutputPageBeforeHTML',array( &$wgOut, &$text ) );
 		$wgOut->addHTML( $text );
 		if($this->mArticle->getTitle()->getNamespace() == NS_CATEGORY) {
 			$this->mArticle->closeShowCategory();
