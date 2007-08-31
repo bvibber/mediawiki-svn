@@ -516,98 +516,7 @@ class ThreadProtectionFormView {
 	}
 }
 
-/**
- * @addtogroup Pager
- */
-class ThreadHistoryPager extends PageHistoryPager {
-	protected $thread;
-	
-	function __construct( $thread ) {
-		// mPageHistory = this in the PageHistoryPager methods now.
-		parent::__construct($this);
-		$this->thread = $thread;
-	}
 
-	function getQueryInfo() {
-		return array(
-			'tables' => 'historical_thread',
-			'fields' => 'hthread_id, hthread_revision, hthread_contents, hthread_change_type, hthread_change_object',
-			'conds' => array('hthread_id' => $this->thread->id() ),
-			'options' => array()
-		);
-	}
-
-	function getIndexField() {
-		return 'hthread_revision';
-	}
-	
-	/**
-	 * Returns a row from the history printout.
-	 *
-	 * @param object $row The database row corresponding to the line (or is it the previous line?).
-	 * @param object $next The database row corresponding to the next line (or is it this one?).
-	 * @param int $counter Apparently a counter of what row number we're at, counted from the top row = 1.
-	 * @param $notificationtimestamp
-	 * @param bool $latest Whether this row corresponds to the page's latest revision.
-	 * @param bool $firstInList Whether this row corresponds to the first displayed on this history page.
-	 * @return string HTML output for the row
-	 */
-	function historyLine( $row, $next, $counter = '', $notificationtimestamp = false, $latest = false, $firstInList = false ) {
-
-		$hthread = HistoricalThread::fromTextRepresentation($row->hthread_contents);
-		return $this->rowForThread($hthread);
-	}
-	
-	private function rowForThread($t) {
-		global $wgLang, $wgOut; // TODO global.
-		
-		/* TODO: best not to refer to LqtView class directly. */
-		/* We don't use oldid because that has side-effects. */
-		$result = array();
-		$change_names = array(Threads::CHANGE_EDITED_ROOT => "Comment text edited:",
-		                      Threads::CHANGE_EDITED_SUMMARY => "Summary changed:",
-		                      Threads::CHANGE_REPLY_CREATED => "New reply created:",
-		                      Threads::CHANGE_NEW_THREAD => "New thread created:",
-							  Threads::CHANGE_DELETED => "Deleted:",
-							  Threads::CHANGE_UNDELETED => "Undeleted:");
-		$change_label = array_key_exists($t->changeType(), $change_names) ? $change_names[$t->changeType()] : "";
-
-		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $t->revisionNumber() );
-		
-		$p = new Parser(); $sig = $wgOut->parse( $p->getUserSig( $t->changeUser() ), false );
-		
-		$result[] = "<tr>";
-		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->timestamp()) . "</a></td>";
-		$result[] = "<td>" . $sig . "</td>";
-		$result[] = "<td>$change_label</td>";
-		$result[] = "<td>" . $t->changeComment() . "</td>";
-		$result[] = "</tr>";
-		return implode('', $result);
-	}
-	
-	function getNotificationTimestamp() {
-		return "foo";
-	}
-/*
-	function formatRow( $row ) {
-		return '<li>' . $row->hthread_revision;
-	}
-*/	
-	function getStartBody() {
-		$this->mLastRow = false;
-		$this->mCounter = 1;
-
-		// Due to the screwy way we're doing history, the last revision we show,
-		// that is, the current revision, is in the thread table, not the
-		// historical_thread table. aurggghhh!
-		// TODO paging.
-		return '<table>' . $this->rowForThread($this->thread);
-	}
-
-	function getEndBody() {
-		return '</table>';
-	}
-}
 
 class ThreadHistoryListingView extends ThreadPermalinkView {
 	
@@ -674,15 +583,13 @@ class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 	
 		/* TOOD: customize tabs so that History is highlighted. */
 
-		function threadDivClass($thread) {
-	//		efVarDump($this->output, $thread->changeObject()->id());
+		function postDivClass($thread) {
 			$is_changed_thread = $thread->changeObject() &&
 				$thread->changeObject()->id() == $thread->id();
-
 			if ( $is_changed_thread )
-				return 'lqt_thread lqt_thread_changed_by_history';
+				return 'lqt_post_changed_by_history';
 			else
-				return 'lqt_thread';
+				return 'lqt_post';
 		}
 		
 		

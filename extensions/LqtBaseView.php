@@ -556,7 +556,7 @@ HTML;
 
 /*		$color_number = $this->selectNewUserColor( $thread->root()->originalAuthor() );
 		$this->openDiv( "lqt_post lqt_post_color_$color_number" );*/
-		$this->openDiv( 'lqt_post' );
+		$this->openDiv( $this->postDivClass($thread) );
 		
 		if( $this->methodAppliesToThread( 'edit', $thread ) ) {
 			$this->showPostEditingForm( $thread );
@@ -584,8 +584,8 @@ HTML;
 		}
 	}
 	
-	function threadDivClass( $thread ) {
-		return 'lqt_thread';
+	function postDivClass( $thread ) {
+		return 'lqt_post';
 	}
 
 	function showThread( $thread ) {
@@ -629,7 +629,7 @@ HTML;
 			$this->output->addHTML("<p class=\"lqt_summary_notice\">If this discussion seems to be concluded, you are encouraged to <a href=\"{$this->permalinkUrl($thread, 'summarize')}\">write a summary</a>. There have been no changes here for at least $this->archive_start_days days.</p>");
 		}
 
-		$this->openDiv($this->threadDivClass($thread), "lqt_thread_id_{$thread->id()}");
+		$this->openDiv('lqt_thread', "lqt_thread_id_{$thread->id()}");
 		
 		$this->showRootPost( $thread );
 		$this->indent();
