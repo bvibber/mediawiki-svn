@@ -339,10 +339,10 @@ HTML;
 			$thread->commitRevision( Threads::CHANGE_EDITED_ROOT, $thread, $e->summary );
 		}
 				
-		// I have lost track of where the redirect happens, so I can't set a flag there until I find it.
-		// In the meantime, just check if somewhere somebody redirected. I'm afraid this might have
-		// unwanted side-effects.
-		if ( $this->output->getRedirect() != '' ) {
+		// A redirect without $e->didSave will happen if the new text is blank (EditPage::attemptSave).
+		// This results in a new Thread object not being created for replies and new discussions,
+		// so $thread is null. In that case, just allow editpage to redirect back to the talk page.
+		if ( $this->output->getRedirect() != '' && $thread ) {
 			$this->output->redirect( $this->title->getFullURL() . '#' . 'lqt_thread_' . $thread->id() );
 		}
 	}
