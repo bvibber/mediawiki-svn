@@ -1,16 +1,16 @@
-Hello, thanks for your interest. Please read all of this; it's short and important.
+Hello, and thanks for your interest. Please read all of this; it's short and important.
 
-This is a pre-alpha. This code is in rapid flux. It is undocumented, or doesn't yet make sense, or is confused. I am sketching. Therefore, don't report or try to fix obvious bugs; I simply haven't gotten to them yet. Also, don't commit to this branch. Instead, send me patches.
+You shouldn't deploy this with real users without warning them. They will find bugs.
 
-Liquid Threads is going to change a lot before release. Some of the coolest features haven't appeared yet. Don't let this pre-alpha disappoint you.
+Please hack Liquid Threads and make it more awesome. However, since the code is in rapid flux, send me patches instead of committing directly to this branch.
 
 To try Liquid Threads, first, install MediaWiki as usual. Then, source maintenance/lqt.sql from your mysql console. Finally, add the following to the end of your LocalSettings.php:
 
- require_once('extensions/LqtPages.php');
+	require_once('extensions/LqtPages.php');
 
 How to contact me:
-davemccabe@gmail.com (email or jabber)
-davidmccabe in #mediawiki on irc.freenode.net
+	davemccabe@gmail.com (email or jabber)
+	davidmccabe in #mediawiki on irc.freenode.net
 
 Thanks again! Obey all signs.
 -- ~~~~
