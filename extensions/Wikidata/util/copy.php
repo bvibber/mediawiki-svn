@@ -36,49 +36,44 @@ function stopwatch(){
    return ((float)$usec + (float)$sec);
 }
 
-function expression($expression_id, $dc1) {
-	$expression=mysql_real_escape_string("${dc1}_expression_ns");
-	$query=
-	"SELECT  *
-	FROM $expression
-	WHERE expression_id=$expression_id";
+function getrow($dc, $table, $where) {
+	$target_table=mysql_real_escape_string("${dc}_${table}");
+	$query="SELECT * FROM $target_table ".$where;
+	return doquery($query);
+}
+
+
+function getrows($dc, $table, $where) {
+	$target_table=mysql_real_escape_string("${dc}_${table}");
+	$query="SELECT * FROM $target_table ".$where;
+	return do_multirow_query($query);
+}
+
+function doquery($query) {
 	echo $query;
-
-	$result = mysql_query($query)or die ("error ".mysql_error());
-
-	$dmdata= mysql_fetch_assoc($result);
-	return $dmdata;
-}
-
-/**@deprecated , use dupobject*/
-function new_dm_id($dc2) {
-	$defined_meaning=mysql_real_escape_string("${dc2}_defined_meaning");
-	$query="SELECT max(defined_meaning_id) as maxdm from $defined_meaning";
-	echo "$query\n";
-	$result = mysql_query($query)or die ("error ".mysql_error());
-	echo "bla\n";
-	$data= mysql_fetch_assoc($result);
-	var_dump($data);
-	return $data["maxdm"]+1;
-}
-
-/**@deprecated , use dupobject*/
-function new_exp_id($dc2) {
-	$expression_ns=mysql_real_escape_string("${dc2}_expression_ns");
-	$query="SELECT max(expression_id) as maxexp from $expression_ns";
 	$result = mysql_query($query)or die ("error ".mysql_error());
 	$data= mysql_fetch_assoc($result);
-	var_dump($data);
-	return $data["maxexp"]+1;
+	return $data;
+}
+
+function do_multirow_query($query) {
+	$result = mysql_query($query)or die ("error ".mysql_error());
+	$items=array();
+	while ($nextexp=mysql_fetch_assoc($result)) {
+		$items[]=$nextexp;
+	}
+	return $items;
+}
+
+
+function expression($expression_id, $dc1) {
+	return getrow($dc1, "expression_ns", "WHERE expression_id=$expression_id");
 }
 
 function readobject($id, $dc1) {
 	$objects=mysql_real_escape_string("${dc1}_objects");
 	$query="SELECT * from $objects where object_id=$id";
-	$result = mysql_query($query)or die ("error ".mysql_error());
-	$data= mysql_fetch_assoc($result);
-	var_dump($data);
-	return $data;
+	return getrow($dc1, "objects", "WHERE object_id=$id");
 }
 
 function writeobject($object,$dc2,$table) {
@@ -94,8 +89,6 @@ function dupobject($id, $table, $dc1, $dc2) {
 	$newid=writeobject($object,$dc2, $table);
 	return $newid;
 }
-
-
 /**
  * inverse of mysql_fetch_assoc
 /* see: http://www.php.net/mysql_fetch_assoc (Comment by R. Bradly, 14-Sep-2006)
@@ -136,12 +129,7 @@ function dupobject($id, $table, $dc1, $dc2) {
    }
 
 function getOldSyntrans($dc1, $dmid, $expid) {
-	$syntrans_table=mysql_real_escape_string("${dc1}_syntrans");
-	$query="SELECT * from $syntrans_table where defined_meaning_id=$dmid and expression_id=$expid";
-	$result = mysql_query($query)or die ("error ".mysql_error());
-	$data= mysql_fetch_assoc($result);
-	var_dump($data);
-	return $data;
+	return getrow($dc1, "syntrans", "where defined_meaning_id=$dmid and expression_id=$expid");
 }
 
 function writeSyntrans($syntrans, $newdmid, $newexpid, $dc2) {
@@ -160,16 +148,9 @@ function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
 }
 
 function get_syntranses($dmid, $dc1) {
-	$syntranses=array();
-	$syntrans_table=mysql_real_escape_string("${dc1}_syntrans");
-	$query="SELECT * from $syntrans_table where defined_meaning_id=$dmid";
-	$result = mysql_query($query)or die ("error ".mysql_error());
-	var_dump($result);
-	while ($nextexp=mysql_fetch_assoc($result)) {
-		$syntranses[]=$nextexp;
-	}
-	return $syntranses;
+	return getrows($dc1, "syntrans", "where defined_meaning_id=$dmid");
 }
+
 
 /* some coy&paste happening here, might want to tidy even before we
 * toss this throwaway code*/
@@ -193,7 +174,7 @@ function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 
 function write_syntranses($syntranses, $src_dmid, $dst_dmid, $dc1, $dc2) {
 	var_dump($syntranses);
-	print "<br>\nExpressions:";
+	print "<br>\nExpressions:"; 
 	foreach ($syntranses as $syntrans) {
 		$expression=expression($syntrans["expression_id"],$dc1);
 		print $expression["spelling"].";";
@@ -206,6 +187,49 @@ function dup_syntranses($src_dmid, $dst_dmid, $dc1, $dc2) {
 	$syntranses=get_syntranses($src_dmid, $dc1);
 	write_syntranses($syntranses, $src_dmid, $dst_dmid, $dc1, $dc2);
 }
+
+function read_translated_content($dc1,$tcid) {
+	return getrows($dc1,"translated_content","where translated_content_id=$tcid");
+}
+
+function write_translated_content($dc1, $dc2, $tcid, $content) { 
+	$target_table=mysql_real_escape_string("${dc2}_translated_content");
+	var_dump($content);
+	$content["translated_content_id"]=$tcid;
+	$content["text_id"]=dup_text($dc1, $dc2, $content["text_id"]);
+	var_dump($content);
+	mysql_insert_assoc($target_table, $content);
+}
+
+
+function dup_translated_content($dc1, $dc2, $tcid) {
+	$translated_content=read_translated_content($dc1, $tcid);
+	$target_table=mysql_real_escape_string("${dc2}_translated_content");
+	$new_tcid=dupobject($tcid, $target_table, $dc1, $dc2);
+	foreach ($translated_content as $item) {
+		write_translated_content($dc1, $dc2, $new_tcid, $item);
+	}
+	return $new_tcid;
+}
+
+function read_text($dc1,$text_id) {
+	return getrow($dc1,"text","where text_id=$text_id");
+}
+
+function write_text($dc2,$text) {
+	unset($text["text_id"]);
+	# inconsistent, insert_assoc should accept dc, table
+	$target_table=mysql_real_escape_string("${dc2}_text");
+	mysql_insert_assoc($target_table,$text);
+	return mysql_insert_id();
+}
+
+function dup_text($dc1, $dc2, $text_id) {
+	$text=read_text($dc1, $text_id);
+	$id=write_text($dc2, $text);
+	return $id;
+}
+
 
 $start=stopwatch();
 
@@ -247,9 +271,10 @@ var_dump($target_expid1);
 $save_expression=$defining_expression;
 $save_expression["expression_id"]=$target_expid1;
 mysql_insert_assoc($target_table,$save_expression);
-
-# and insert that info into the dm +save it
+# and insert that info into the dm
 $save_meaning["expression_id"]=$target_expid1;
+$save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $defined_meaning["meaning_text_tcid"]);
+
 mysql_insert_assoc($dm_target_table, $save_meaning);
 
 # the defining expression is also in syntrans,
@@ -281,6 +306,7 @@ dup_syntranses(
 	$dc1,
 	$dc2
 );
+
 
 echo"
 <hr>
