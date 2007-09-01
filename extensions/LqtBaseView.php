@@ -2,7 +2,7 @@
 
 /**
 * @package MediaWiki
-* @subpackage Extensions
+* @subpackage LiquidThreads
 * @author David McCabe <davemccabe@gmail.com>
 * @licence GPL2
 */
@@ -231,8 +231,8 @@ class LqtView {
 
 	/*************************************************************
 	* Editing methods (here be dragons)                          *
-        * Forget dragons: This section distorts the rest of the code *
-        * like a star bending spacetime around itself.               *
+    * Forget dragons: This section distorts the rest of the code *
+    * like a star bending spacetime around itself.               *
 	*************************************************************/
 
 	/**
@@ -249,7 +249,6 @@ HTML;
 	}
 
 	function showReplyProtectedNotice($thread) {
-		// http://localhost:8000/lqt07/index.php?title=Special%3ALog&type=protect&user=&page=Thread%3ADiscussion+noveu+%281%29
 		$log_url = SpecialPage::getPage('Log')->getTitle()->getFullURL(
 			"type=protect&user=&page={$thread->title()->getPrefixedURL()}");
 		$this->output->addHTML("<p>This thread has been <a href=\"$log_url\">protected</a> from being replied to.");
@@ -553,9 +552,7 @@ HTML;
 		$post = $thread->root();
 
 		$oldid = $thread->isHistorical() ? $thread->rootRevision() : null;
-
-/*		$color_number = $this->selectNewUserColor( $thread->root()->originalAuthor() );
-		$this->openDiv( "lqt_post lqt_post_color_$color_number" );*/
+		
 		$this->openDiv( $this->postDivClass($thread) );
 		
 		if( $this->methodAppliesToThread( 'edit', $thread ) ) {

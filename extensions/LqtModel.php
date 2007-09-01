@@ -1,5 +1,17 @@
 <?php
 
+/**
+* @package MediaWiki
+* @subpackage LiquidThreads
+* @author David McCabe <davemccabe@gmail.com>
+* @licence GPL2
+*/
+
+if( !defined( 'MEDIAWIKI' ) ) {
+	echo( "This file is an extension to the MediaWiki software and cannot be used standalone.\n" );
+	die( -1 );
+}
+
 require_once('Article.php');
 
 $wgHooks['TitleGetRestrictions'][] = array('Thread::getRestrictionsForTitle');

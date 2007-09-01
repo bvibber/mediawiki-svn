@@ -2,7 +2,7 @@
 
 /**
 * @package MediaWiki
-* @subpackage Extensions
+* @subpackage LiquidThreads
 * @author David McCabe <davemccabe@gmail.com>
 * @licence GPL2
 */
@@ -581,44 +581,44 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 
 class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 	
-		/* TOOD: customize tabs so that History is highlighted. */
+	/* TOOD: customize tabs so that History is highlighted. */
 
-		function postDivClass($thread) {
-			$is_changed_thread = $thread->changeObject() &&
-				$thread->changeObject()->id() == $thread->id();
-			if ( $is_changed_thread )
-				return 'lqt_post_changed_by_history';
-			else
-				return 'lqt_post';
+	function postDivClass($thread) {
+		$is_changed_thread = $thread->changeObject() &&
+			$thread->changeObject()->id() == $thread->id();
+		if ( $is_changed_thread )
+			return 'lqt_post_changed_by_history';
+		else
+			return 'lqt_post';
+	}
+	
+	
+	function showHistoryInfo() {
+		global $wgLang; // TODO global.
+		$this->openDiv('lqt_history_info');
+		$this->output->addHTML('Revision as of ' . $wgLang->timeanddate($this->thread->timestamp()) . '.<br>' );
+		if( $this->thread->changeType() == Threads::CHANGE_NEW_THREAD ) {
+			$this->output->addHTML('This is the thread\'s initial revision.');
 		}
-		
-		
-		function showHistoryInfo() {
-			global $wgLang; // TODO global.
-			$this->openDiv('lqt_history_info');
-			$this->output->addHTML('Revision as of ' . $wgLang->timeanddate($this->thread->timestamp()) . '.<br>' );
-			if( $this->thread->changeType() == Threads::CHANGE_NEW_THREAD ) {
-				$this->output->addHTML('This is the thread\'s initial revision.');
-			}
-			else if( $this->thread->changeType() == Threads::CHANGE_REPLY_CREATED ) {
-				$this->output->addHTML('The highlighted comment was created in this revision.');
-			} else if( $this->thread->changeType() == Threads::CHANGE_EDITED_ROOT ) {
-				$diff_url = $this->permalinkUrlWithDiff($this->thread);
-				$this->output->addHTML('The highlighted comment was edited in this revision. ');
-				$this->output->addHTML( "[<a href=\"$diff_url\">show diffs</a>]" );
-			}
-			$this->closeDiv();
+		else if( $this->thread->changeType() == Threads::CHANGE_REPLY_CREATED ) {
+			$this->output->addHTML('The highlighted comment was created in this revision.');
+		} else if( $this->thread->changeType() == Threads::CHANGE_EDITED_ROOT ) {
+			$diff_url = $this->permalinkUrlWithDiff($this->thread);
+			$this->output->addHTML('The highlighted comment was edited in this revision. ');
+			$this->output->addHTML( "[<a href=\"$diff_url\">show diffs</a>]" );
 		}
-		
-		function show() {
-			if( ! $this->thread ) {
-				$this->showMissingThreadPage();
-				return false;
-			}			
-			$this->showHistoryInfo();
-			parent::show();
+		$this->closeDiv();
+	}
+	
+	function show() {
+		if( ! $this->thread ) {
+			$this->showMissingThreadPage();
 			return false;
-		}
+		}			
+		$this->showHistoryInfo();
+		parent::show();
+		return false;
+	}
 }
 
 
