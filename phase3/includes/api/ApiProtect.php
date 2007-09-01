@@ -61,7 +61,7 @@ class ApiProtect extends ApiBase {
 		if(!$titleObj)
 			$this->dieUsage("bad title {$params['title']}", 'invalidtitle');
 		if(!$titleObj->exists())
-			$this->dieUsage("{$params['title']} doesn't exist", "nonexistenttitle");
+			$this->dieUsage("{$params['title']} doesn't exist", 'missingtitle');
 		$articleObj = new Article($titleObj);
 		
 		if(in_array($params['expiry'], array('infinite', 'indefinite', 'never')))

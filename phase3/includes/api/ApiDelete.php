@@ -103,6 +103,8 @@ class ApiDelete extends ApiBase {
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
 			$this->dieUsage("bad title {$params['title']}", 'invalidtitle');
+		if(!$titleObj->exists())
+			$this->dieUsage("{$params['title']} doesn't exist", 'missingtitle');
 
 		$articleObj = new Article($titleObj);
 		$reason = (isset($params['reason']) ? $params['reason'] : NULL);

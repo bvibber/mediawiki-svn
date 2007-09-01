@@ -27,15 +27,18 @@ api/ApiRollback.php (NEW)
 
 api/ApiDelete.php (NEW)
 * action=delete module that wraps around Article::doDeleteArticle() (r23590)
+* Added missingtitle error message (r25389)
 
 api/ApiQueryDeletedRevs.php (NEW)
 * action=query&list=deletedrevs module that lists deleted revisions from the archive table (r23668)
 
 api/ApiUndelete.php (NEW)
 * action=undelete module that wraps around PageArchive::undelete() (r23687, r23697)
+* Added missingtitle error message (r25389)
 
 api/ApiProtect.php (NEW)
 * action=protect module that wraps around Article::updateRestrictions() (r25388)
+* Added missingtitle error message (r25389)
 
 AutoLoader.php
 * Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588)
