@@ -9,6 +9,7 @@ Article.php
 ** Introduced Article::ROLLBACK_* constants for rollback()'s return values (r23627)
 * Made a separate function (Article::generateReason()) for generating deletion reasons (r23590)
 * Added begin() and commit() to Article::doDeleteArticle() (r23590)
+* Added begin() and commit() to Article::updateRestrictions() (r25388)
 
 SpecialUndelete.php
 * Added begin() and commit() to PageArchive::undelete() (r23687)
@@ -33,11 +34,14 @@ api/ApiQueryDeletedRevs.php (NEW)
 api/ApiUndelete.php (NEW)
 * action=undelete module that wraps around PageArchive::undelete() (r23687, r23697)
 
+api/ApiProtect.php (NEW)
+* action=protect module that wraps around Article::updateRestrictions() (r25388)
+
 AutoLoader.php
-* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687)
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588)
 
 api/ApiMain.php
-* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687)
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687), ApiProtect (r23588)
 
 api/ApiQuery.php
 * Added entry for ApiQueryDeletedRevs (r23668)

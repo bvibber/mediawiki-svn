@@ -311,6 +311,7 @@ function __autoload($className) {
 		'ApiMain' => 'includes/api/ApiMain.php',
 		'ApiOpenSearch' => 'includes/api/ApiOpenSearch.php',
 		'ApiPageSet' => 'includes/api/ApiPageSet.php',
+		'ApiProtect' => 'includes/api/ApiProtect.php',
 		'ApiQuery' => 'includes/api/ApiQuery.php',
 		'ApiQueryAllpages' => 'includes/api/ApiQueryAllpages.php',
 		'ApiQueryAllLinks' => 'includes/api/ApiQueryAllLinks.php',

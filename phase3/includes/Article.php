@@ -1719,6 +1719,7 @@ class Article {
 			if( wfRunHooks( 'ArticleProtect', array( &$this, &$wgUser, $limit, $reason ) ) ) {
 
 				$dbw = wfGetDB( DB_MASTER );
+				$dbw->begin();
 
 				$encodedExpiry = Block::encodeExpiry($expiry, $dbw );
 
@@ -1792,6 +1793,7 @@ class Article {
 				} else {
 					$log->addEntry( 'unprotect', $this->mTitle, $reason );
 				}
+				$dbw->commit();
 
 			} # End hook
 		} # End "changed" check
