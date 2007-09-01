@@ -23,7 +23,8 @@
 	'az' => 'Azərbaycan',	# Azerbaijani
 	'ba' => 'Башҡорт',	# Bashkir
 	'bar' => 'Boarisch',	# Bavarian (Austro-Bavarian and South Tyrolean)
-	'bat-smg' => 'Žemaitėška', # Samogitian 
+	'bat-smg' => 'Žemaitėška', # Samogitian
+	'bcl' => 'Bikol Central', # Bikol: Central Bicolano language
 	'be' => 'Беларуская',	#  Belarusian normative
 	'be-tarask' => 'Беларуская (тарашкевіца)',	# Belarusian in Taraskievica orthography
 	'be-x-old' => 'Беларуская (тарашкевіца)',	# Belarusian in Taraskievica orthography; compat link
@@ -71,6 +72,7 @@
 	'es' => 'Español',	# Spanish
 	'et' => 'Eesti',		# Estonian
 	'eu' => 'Euskara',		# Basque
+	'ext' => 'Estremeñu', # Extremaduran
 	'fa' => 'فارسی',	# Persian
 	'ff' => 'Fulfulde',		# Fulah
 	'fi' => 'Suomi',		# Finnish
@@ -78,7 +80,7 @@
 	'fj' => 'Na Vosa Vakaviti',	# Fijian
 	'fo' => 'Føroyskt',	# Faroese
 	'fr' => 'Français',	# French
-	'frp' => 'Arpitan',	# Franco-Provençal/Arpitan
+	'frp' => 'Arpetan',	# Franco-Provençal/Arpitan
 	'fur' => 'Furlan',		# Friulian
 	'fy' => 'Frysk',		# Frisian
 	'ga' => 'Gaeilge',		# Irish
@@ -214,6 +216,7 @@
 	'ru-sib' => 'Сибирской',	# Siberian/North Russian
 	'rw' => 'Kinyarwanda',	# Kinyarwanda, should possibly be Kinyarwandi
 	'sa' => 'संस्कृत',	# Sanskrit
+	'sah' => 'Саха тыла', # Sakha
 	'sc' => 'Sardu',		# Sardinian
 	'scn' => 'Sicilianu',	# Sicilian
 	'sco' => 'Scots',       # Scots
