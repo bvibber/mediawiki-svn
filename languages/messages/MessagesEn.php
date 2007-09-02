@@ -709,6 +709,7 @@ XHTML id names.
 'feed-rss'                => 'RSS', # only translate this message to other languages if you have to change it
 'sitenotice'              => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
 'anonnotice'              => '-', # don't translate or duplicate this message to other languages
+'newsectionheaderdefaultlevel' => '== $1 ==', # don't translate or duplicate this message to other languages
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Article',
@@ -952,7 +953,7 @@ format. Please enter a well-formatted address or empty that field.',
 
 The block was made by $1. The reason given is ''$2''.
 
-* Begin of block: $8
+* Start of block: $8
 * Expiry of block: $6
 * Intended blockee: $7
 
@@ -965,7 +966,7 @@ The reason given is this:
 
 :\'\'$2\'\'
 
-* Begin of block: $8
+* Start of block: $8
 * Expiry of block: $6
 
 You may contact $1 or one of the other
@@ -1353,6 +1354,7 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 
 # Recent changes linked
 'recentchangeslinked'          => 'Related changes',
+'recentchangeslinked-title' => 'Changes related to $1',
 'recentchangeslinked-noresult' => 'No changes on linked pages during the given period.',
 'recentchangeslinked-summary'  => "This special page lists the last changes on pages who are linked. Pages on your watchlist are '''bold'''.",
 
@@ -1559,7 +1561,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''\$7''
 
 'doubleredirects'         => 'Double redirects',
 'doubleredirects-summary' => '', # only translate this message to other languages if you have to change it
-'doubleredirectstext'     => 'Each row contains links to the first and second redirect, as well as the target of the second redirect, which is usually "real" target page, which the first redirect should point to.',
+'doubleredirectstext'     => 'This page lists pages which redirect to other redirect pages. Each row contains links to the first and second redirect, as well as the target of the second redirect, which is usually "real" target page, which the first redirect should point to.',
 
 'brokenredirects'         => 'Broken redirects',
 'brokenredirects-summary' => '', # only translate this message to other languages if you have to change it
@@ -1761,7 +1763,6 @@ If you want to remove the page from your watchlist later, click \"Unwatch\" in t
 'iteminvalidname'      => "Problem with item '$1', invalid name...",
 'wlnote'               => "Below {{PLURAL:$1|is the last change|are the last '''$1''' changes}} in the last {{PLURAL:$2|hour|'''$2''' hours}}.",
 'wlshowlast'           => 'Show last $1 hours $2 days $3',
-'wlsaved'              => 'This is a saved version of your watchlist.',
 'watchlist-show-bots'  => 'Show bot edits',
 'watchlist-hide-bots'  => 'Hide bot edits',
 'watchlist-show-own'   => 'Show my edits',
@@ -1971,6 +1972,7 @@ Consult the [[Special:Log/delete|deletion log]] for a record of recent deletions
 
 # What links here
 'whatlinkshere'         => 'What links here',
+'whatlinkshere-title' => 'Pages that link to $1',
 'whatlinkshere-summary' => '', # only translate this message to other languages if you have to change it
 'whatlinkshere-barrow'  => '&lt;', # only translate this message to other languages if you have to change it
 'notargettitle'         => 'No target',

@@ -266,6 +266,7 @@ $wgMessageStructure = array(
 		'feed-rss',
 		'sitenotice',
 		'anonnotice',
+		'newsectionheaderdefaultlevel',
 	),
 	'nstab' => array(
 		'nstab-main',
@@ -767,6 +768,7 @@ $wgMessageStructure = array(
 	),
 	'recentchangeslinked' => array(
 		'recentchangeslinked',
+		'recentchangeslinked-title',
 		'recentchangeslinked-noresult',
 		'recentchangeslinked-summary',
 	),
@@ -1143,7 +1145,6 @@ $wgMessageStructure = array(
 		'iteminvalidname',
 		'wlnote',
 		'wlshowlast',
-		'wlsaved',
 		'watchlist-show-bots',
 		'watchlist-hide-bots',
 		'watchlist-show-own',
@@ -1306,6 +1307,7 @@ $wgMessageStructure = array(
 	),
 	'whatlinkshere' => array(
 		'whatlinkshere',
+		'whatlinkshere-title',
 		'whatlinkshere-summary',
 		'whatlinkshere-barrow',
 		'notargettitle',

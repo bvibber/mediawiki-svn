@@ -578,8 +578,8 @@ class UploadForm {
 					$file->getName(), 'right', array(), false, true );
 			} elseif ( !$file->allowInlineDisplay() && $file->isSafeFile() ) {
 				$icon = $file->iconThumb();
-				$dlink2 = '<div style="float:right" id="mw-media-icon"><a href="' . $file->getURL() . '">' . 
-					$icon->toHtml() . '</a><br />' . $dlink . '</div>';
+				$dlink2 = '<div style="float:right" id="mw-media-icon">' . 
+					$icon->toHtml( array( 'desc-link' => true ) ) . '<br />' . $dlink . '</div>';
 			} else {
 				$dlink2 = '';
 			}
@@ -595,8 +595,8 @@ class UploadForm {
 					$nt_lc->getText(), 'right', array(), false, true );
 			} elseif ( !$file_lc->allowInlineDisplay() && $file_lc->isSafeFile() ) {
 				$icon = $file_lc->iconThumb();
-				$dlink2 = '<div style="float:right" id="mw-media-icon"><a href="' . $file_lc->getURL() . '">' . 
-					$icon->toHtml() . '</a><br />' . $dlink . '</div>';
+				$dlink2 = '<div style="float:right" id="mw-media-icon">' . 
+					$icon->toHtml( array( 'desc-link' => true ) ) . '<br />' . $dlink . '</div>';
 			} else {
 				$dlink2 = '';
 			}
@@ -619,8 +619,8 @@ class UploadForm {
 						$nt_thb->getText(), 'right', array(), false, true );
 				} elseif ( !$file_thb->allowInlineDisplay() && $file_thb->isSafeFile() ) {
 					$icon = $file_thb->iconThumb();
-					$dlink2 = '<div style="float:right" id="mw-media-icon"><a href="' . 
-						$file_thb->getURL() . '">' . $icon->toHtml() . '</a><br />' . 
+					$dlink2 = '<div style="float:right" id="mw-media-icon">' . 
+						$icon->toHtml( array( 'desc-link' => true ) ) . '<br />' . 
 						$dlink . '</div>';
 				} else {
 					$dlink2 = '';

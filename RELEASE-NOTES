@@ -190,7 +190,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Add accesskey 's' and tooltip to 'upload file' button at Special:Upload
 * Introduced 'SkinAfterBottomScripts' hook; see docs/hooks.txt for
   more information
-
+* (bug 11095) Honour "preview on first edit" preference when preloading
+  text for a non-existent page
+* (bug 11022) Use a more accurate page title for Special:Whatlinkshere and
+  Special:Recentchangeslinked
+* Add 'newsectionheaderdefaultlevel' message to allow modification of the 
+  heading formatting for new sections when section=new argument is supplied
+  
 == Bugfixes since 1.10 ==
 
 * (bug 9712) Use Arabic comma in date/time formats for Arabic and Farsi
@@ -418,7 +424,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11082) Fix check for fully-specced table names in Database::tableName
 * (bug 11067) Fix regression in upload conflict thumbnail display
 * (bug 11072) Fix regression in API image history query
-
+* (bug 10985) Resolved cached entries on Special:DoubleRedirects were being
+  supressed, breaking paging - now strikes out "fixed" results
+* (bug 8393) <sup> and <sub> need to be preserved (without attributes) for
+  entries in the table of contents
+* (bug 11114) Fix regression in read-only mode error display during editing
 
 == API changes since 1.10 ==
 
@@ -496,22 +506,27 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 
 * Afrikaans (af)
 * Arabic (ar)
+* Bikol (bcl)
 * Bulgarian (bg)
 * Catalan (ca)
 * Danish (da)
 * German (de)
 * Greek (el)
 * Spanish (es)
+* Estonian (et)
+* Extremaduran (ext)
 * Farsi (fa)
 * Finnish (fi)
 * Võro (fiu-vro)
 * French (fr)
+* Franco-Provençal/Arpitan (frp)
 * Galician (gl)
 * Hakka (hak)
 * Hebrew (he)
 * Upper Sorbian (hsb)
 * Haitian (ht)
 * Indonesian (id)
+* Icelandic (is)
 * Italian (it)
 * Japanese (ja)
 * Georgian (ka)
@@ -524,14 +539,17 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Lithuanian (lt)
 * Malayalam (ml)
 * Burmese (my)
+* Low German (nds)
 * Dutch (nl)
 * Norwegian (no)
+* Occitan (oc)
 * Polish (pl)
 * Piedmontese (pms)
 * Portuguese (pt)
 * Romanian (ro)
 * Aromanian (roa-rup)
 * Russian (ru)
+* Sakha (sah)
 * Slovak (sk)
 * Slovenian (sl)
 * Shona (sn)
@@ -542,6 +560,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Thai (th)
 * Tigrinya (ti)
 * Setswana (tn)
+* Tok Pisin (tpi)
+* Uyghur (ug)
 * Volapük (vo)
 * Old Chinese / Late Middle Chinese (zh-classical)
 * Chinese (PRC) (zh-cn)

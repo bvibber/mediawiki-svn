@@ -79,6 +79,7 @@ $wgIgnoredMessages = array(
 	'loginlanguagelinks',
 	'markaspatrolledlink',
 	'newarticletextanon',
+	'newsectionheaderdefaultlevel',
 	'newtalkseperator',
 	'noarticletextanon',
 	'number_of_watching_users_RCview',
@@ -202,6 +203,7 @@ $wgOptionalMessages = array(
 	'hours-abbrev',
 	'filerevert-backlink',
 	'filedelete-backlink',
+	'pagetitle',
 );
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */
