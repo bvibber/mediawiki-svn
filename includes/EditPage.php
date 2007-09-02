@@ -325,6 +325,8 @@ class EditPage {
 		}
 
 		$permErrors = $this->mArticle->getTitle()->getUserPermissionsErrors( 'edit', $wgUser);
+		if( !$this->mTitle->exists() )
+			$permErrors += $this->mTitle->getUserPermissionsErrors( 'create', $wgUser);
 
 		# Ignore some permissions errors.
 		$remove = array();
@@ -349,7 +351,7 @@ class EditPage {
 		# array_diff returns elements in $permErrors that are not in $remove.
 		$permErrors = array_diff( $permErrors, $remove );
 
-		if ($permErrors != array())
+		if ( !empty($permErrors) )
 		{
 			wfDebug( "$fname: User can't edit\n" );
 			$wgOut->readOnlyPage( $this->getContent(), true, $permErrors );
