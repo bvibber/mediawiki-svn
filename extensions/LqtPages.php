@@ -336,7 +336,7 @@ HTML
 		$empty = $this->showSearchForm();
 		if ($empty) {
 			$this->output->addHTML('<p>There are no threads in the archive.');
-			return;
+			return false;
 		}
 
 		$this->output->addHTML(<<<HTML
