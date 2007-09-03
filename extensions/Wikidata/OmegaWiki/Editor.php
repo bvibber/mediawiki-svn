@@ -5,6 +5,7 @@ require_once("Controller.php");
 require_once("type.php");
 require_once("GotoSourceTemplate.php");
 require_once("Wikidata.php");
+require_once("ContextFetcher.php");
 
 function addCollapsablePrefixToClass($class) {
 	return "collapsable-$class";
@@ -1230,7 +1231,7 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 	protected $attributesLevelName;
 	protected $objectIdFetcher;
 
-	public function __construct(Attribute $attribute = null, PermissionController $permissionController, $isAddField, $attributesLevelName, Fetcher $objectIdFetcher) {
+	public function __construct(Attribute $attribute = null, PermissionController $permissionController, $isAddField, $attributesLevelName, ContextFetcher $objectIdFetcher) {
 		parent::__construct($attribute, $permissionController, $isAddField);
 
 		$this->attributesLevelName = $attributesLevelName;
