@@ -31,6 +31,8 @@ import org.wikimedia.lsearch.ranks.CompactArticleLinks;
 import org.wikimedia.lsearch.ranks.OldLinks;
 import org.wikimedia.lsearch.ranks.Related;
 import org.wikimedia.lsearch.ranks.RelatedTitle;
+import org.wikimedia.lsearch.storage.ArticleAnalytics;
+import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
 import org.wikimedia.lsearch.storage.Storage;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
@@ -284,7 +286,6 @@ public class IncrementalUpdater {
 	}
 
 	protected static void fetchReferencesAndRelated(ArrayList<IndexUpdateRecord> records, String dbname) throws IOException {
-		Storage store = Storage.getInstance();
 		ArrayList<Title> titles = new ArrayList<Title>();
 		for(IndexUpdateRecord rec : records){
 			if(rec.isDelete())
@@ -298,23 +299,31 @@ public class IncrementalUpdater {
 			}			
 		}
 		// fetch
-		OldLinks links = new OldLinks(store.getPageReferences(titles,dbname));
-		HashMap<Title,ArrayList<RelatedTitle>> rel = store.getRelatedPages(titles,dbname);
+		LinkAnalysisStorage store = new LinkAnalysisStorage(IndexId.get(dbname));
+		//OldLinks links = new OldLinks(store.getPageReferences(titles,dbname));
+		//HashMap<Title,ArrayList<RelatedTitle>> rel = store.getRelatedPages(titles,dbname);
 		// update
 		for(IndexUpdateRecord rec : records){
 			if(rec.isDelete())
 				continue;
 			Article ar = rec.getArticle();
 			Title t = ar.makeTitle();
+			ArticleAnalytics aa = store.getAnalitics(t.getKey());
+			ArrayList<String> anchors = new ArrayList<String>();
+			anchors.addAll(aa.getAnchorText());
 			// set references
-			ar.setReferences(links.getLinks(t.getKey()));
+			ar.setReferences(aa.getReferences());
 			if(ar.getRedirects() != null){
 				for(Redirect r : ar.getRedirects()){
-					r.setReferences(links.getLinks(r.makeTitle().getKey()));
+					ArticleAnalytics raa = store.getAnalitics(r.makeTitle().getKey());
+					r.setReferences(raa.getReferences());
+					anchors.addAll(raa.getAnchorText());
 				}
 			}
+			// set anchors
+			ar.setAnchorText(anchors);
 			// set related
-			ArrayList<RelatedTitle> rt = rel.get(t.getKey());
+			/*ArrayList<RelatedTitle> rt = rel.get(t.getKey());
 			if(rt != null){
 				Collections.sort(rt,new Comparator<RelatedTitle>() {
 					public int compare(RelatedTitle o1, RelatedTitle o2){
@@ -325,7 +334,7 @@ public class IncrementalUpdater {
 					}
 				});
 				ar.setRelated(rt);
-			}
+			}*/
 		}		
 	}
 }

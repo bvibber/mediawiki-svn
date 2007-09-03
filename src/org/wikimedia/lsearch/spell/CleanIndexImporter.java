@@ -26,6 +26,8 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.ranks.CompactArticleLinks;
 import org.wikimedia.lsearch.ranks.OldLinks;
 import org.wikimedia.lsearch.ranks.RelatedTitle;
+import org.wikimedia.lsearch.storage.ArticleAnalytics;
+import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
@@ -40,11 +42,13 @@ public class CleanIndexImporter implements DumpWriter {
 	Revision revision;
 	CleanIndexWriter writer;
 	String langCode;
+	LinkAnalysisStorage las;
 
 	public CleanIndexImporter(IndexId iid, String langCode) throws IOException{
 		Configuration.open(); // make sure configuration is loaded
 		this.writer = new CleanIndexWriter(iid);
 		this.langCode = langCode;
+		this.las = new LinkAnalysisStorage(iid);
 	}
 	public void writeRevision(Revision revision) throws IOException {
 		this.revision = revision;		
@@ -53,22 +57,27 @@ public class CleanIndexImporter implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
-		boolean isRedirect = Localization.getRedirectTarget(revision.Text,langCode) != null;
-		ArrayList<RelatedTitle> related = new ArrayList<RelatedTitle>();
-		// make article
-		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,0,redirects,related);
-		//if(page.Title.Namespace != 0)
-		//	article.setContents("");
+		String key = page.Title.Namespace+":"+page.Title.Text;
+		ArticleAnalytics aa = las.getAnalitics(key); 
+		int references = aa.getReferences();
+		boolean isRedirect = aa.isRedirect();
 		
-		writer.addMainArticle(article);
-		//writer.addAllArticle(article);
-		// generate phrases
-		/* FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(page.Title.Text,langCode,false); 
-		ArrayList<Token> tokens = parser.parse();
-		for(int i=0;i<tokens.size()-1;i++){
-			phrases.addPhrase(tokens.get(i).termText(),tokens.get(i+1).termText());
-		} */
+		// make list of redirects
+		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
+		ArrayList<String> anchors = new ArrayList<String>();
+		anchors.addAll(aa.getAnchorText());
+		for(String rk : aa.getRedirectKeys()){
+			String[] parts = rk.toString().split(":",2);
+			ArticleAnalytics raa = las.getAnalitics(rk);
+			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],raa.getReferences()));
+			anchors.addAll(raa.getAnchorText());
+		}
+		// make article
+		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
+				references,redirects,new ArrayList<RelatedTitle>(),anchors);
+		// Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,0,redirects,related);
+		
+		writer.addArticle(article);
 	}	
 	
 	public void close() throws IOException {

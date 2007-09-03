@@ -2,37 +2,34 @@ package org.wikimedia.lsearch.analyzers;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Iterator;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.Tokenizer;
+import org.wikimedia.lsearch.ranks.StringList;
 
 /** Split the text by some specific char */
 public class SplitAnalyzer extends Analyzer {
 	class SplitTokenStream extends Tokenizer {
-		String[] tokens;
+		Iterator<String> it = null;
 		int in = 0;
 		int start = 0;
-		SplitTokenStream(String inputStr){
-			tokens = inputStr.split(""+splitChar);
+		SplitTokenStream(String input){
+			it = new StringList(input).iterator();
 		}
 		@Override
 		public Token next() throws IOException {
-			if(in >= tokens.length)
+			if(!it.hasNext())
 				return null;
 			else{
+				String str = it.next();
 				int s = start;
-				int e = start + tokens[in].length();
-				start = e + 1;
-				return new Token(tokens[in++],s,e);
-			}
+				int e = start + str.length();
+				return new Token(str,s,e);
+			}			
 		}		
-	}
-	char splitChar;
-	
-	public SplitAnalyzer(char splitChar){
-		this.splitChar = splitChar;
 	}
 	
 	@Override

@@ -20,6 +20,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.index.WikiSimilarity;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.util.HighFreqTerms;
 
 /**
@@ -32,37 +33,85 @@ import org.wikimedia.lsearch.util.HighFreqTerms;
 public class CleanIndexWriter {
 	static Logger log = Logger.getLogger(CleanIndexWriter.class);
 	protected IndexId iid;
-	protected IndexWriter writerMain;
-	protected IndexWriter writerAll;
+	protected IndexWriter writer;
 	protected FieldBuilder builder;
 	protected String langCode;
+	protected NamespaceFilter nsf;
 	
 	public static final String[] ENGLISH_STOP_WORDS = {
-	    "a", "an", "and", "are", "as", "at", "be", "but", "by",
-	    "for", "if", "in", "into", "is", "it",
-	    "no", "not", "of", "on", "or", "such",
-	    "that", "the", "their", "then", "there", "these",
-	    "they", "this", "to", "was", "will", "with"
-	  };
+		"a", "an", "and", "are", "as", "at", "be", "but", "by",
+		"for", "if", "in", "into", "is", "it",
+		"no", "not", "of", "on", "or", "such",
+		"that", "the", "their", "then", "there", "these",
+		"they", "this", "to", "was", "will", "with"
+	};
+
+	public final static String[] FRENCH_STOP_WORDS = {
+		"a", "afin", "ai", "ainsi", "apres", "attendu", "au", "aujourd", "auquel", "aussi",
+		"autre", "autres", "aux", "auxquelles", "auxquels", "avait", "avant", "avec", "avoir",
+		"c", "car", "ce", "ceci", "cela", "celle", "celles", "celui", "cependant", "certain",
+		"certaine", "certaines", "certains", "ces", "cet", "cette", "ceux", "chez", "ci",
+		"combien", "comme", "comment", "concernant", "contre", "d", "dans", "de", "debout",
+		"dedans", "dehors", "dela", "depuis", "derriere", "des", "desormais", "desquelles",
+		"desquels", "dessous", "dessus", "devant", "devers", "devra", "divers", "diverse",
+		"diverses", "doit", "donc", "dont", "du", "duquel", "durant", "des", "elle", "elles",
+		"en", "entre", "environ", "est", "et", "etc", "etre", "eu", "eux", "excepte", "hormis",
+		"hors", "helas", "hui", "il", "ils", "j", "je", "jusqu", "jusque", "l", "la", "laquelle",
+		"le", "lequel", "les", "lesquelles", "lesquels", "leur", "leurs", "lorsque", "lui", "la",
+		"ma", "mais", "malgre", "me", "merci", "mes", "mien", "mienne", "miennes", "miens", "moi",
+		"moins", "mon", "moyennant", "meme", "memes", "n", "ne", "ni", "non", "nos", "notre",
+		"nous", "neanmoins", "notre", "notres", "on", "ont", "ou", "outre", "ou", "par", "parmi",
+		"partant", "pas", "passe", "pendant", "plein", "plus", "plusieurs", "pour", "pourquoi",
+		"proche", "pres", "puisque", "qu", "quand", "que", "quel", "quelle", "quelles", "quels",
+		"qui", "quoi", "quoique", "revoici", "revoila", "s", "sa", "sans", "sauf", "se", "selon",
+		"seront", "ses", "si", "sien", "sienne", "siennes", "siens", "sinon", "soi", "soit",
+		"son", "sont", "sous", "suivant", "sur", "ta", "te", "tes", "tien", "tienne", "tiennes",
+		"tiens", "toi", "ton", "tous", "tout", "toute", "toutes", "tu", "un", "une", "va", "vers",
+		"voici", "voila", "vos", "votre", "vous", "vu", "votre", "votres", "y", "a", "ca", "es",
+		"ete", "etre", "o"
+	};
 	
+	public final static String[] GERMAN_STOP_WORDS = {
+		"einer", "eine", "eines", "einem", "einen",
+		"der", "die", "das", "dass", "daß",
+		"du", "er", "sie", "es",
+		"was", "wer", "wie", "wir",
+		"und", "oder", "ohne", "mit",
+		"am", "im", "in", "aus", "auf",
+		"ist", "sein", "war", "wird",
+		"ihr", "ihre", "ihres",
+		"als", "für", "von", "mit",
+		"dich", "dir", "mich", "mir",
+		"mein", "sein", "kein",
+		"durch", "wegen", "wird"
+	};
+
 	public CleanIndexWriter(IndexId iid) throws IOException{
+		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		this.iid = iid;		
 		this.builder = new FieldBuilder("",FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
-		this.langCode = GlobalConfiguration.getInstance().getLanguage(iid.getDBname());
+		this.langCode = global.getLanguage(iid.getDBname());
 		HashSet<String> stopWords = new HashSet<String>();
-		if(langCode.equals("en")){
-			for(String w : ENGLISH_STOP_WORDS)
-				stopWords.add(w);
+		String[] words = null;
+		if(langCode.equals("en"))
+			words = ENGLISH_STOP_WORDS;
+		else if(langCode.equals("de"))
+			words = GERMAN_STOP_WORDS;
+		else if(langCode.equals("fr"))
+			words = FRENCH_STOP_WORDS;
+		
+		if(words != null){
+			for(String w : words)
+				stopWords.add(w);			
 		} else{
 			stopWords.addAll(HighFreqTerms.getHighFreqTerms(iid.getDB(),"contents",20));
 		}
 		log.info("Using phrase stopwords: "+stopWords);
 		builder.getBuilder().getFilters().setStopWords(stopWords);
-		String pathMain = iid.getSpellWords().getTempPath();
-		//String pathAll = iid.getSpellTitles().getTempPath();
-		writerMain = open(pathMain);
-		//writerAll = open(pathAll);			
-		addMetadata(writerMain,"stopWords",stopWords);
+		String path = iid.getSpell().getTempPath();
+		writer = open(path);
+		addMetadata(writer,"stopWords",stopWords);
+		nsf = global.getDefaultNamespace(iid);
 	}
 	
 	protected IndexWriter open(String path) throws IOException {
@@ -88,16 +137,12 @@ public class CleanIndexWriter {
 		return writer;
 	}
 
-	/** Add to index used for spell_words */
-	public void addMainArticle(Article a){
-		if(a.getNamespace().equals("0"))
-			addArticle(a,writerMain);
+	/** Add to index used for spell-check */
+	public void addArticle(Article a){
+		if(nsf.contains(Integer.parseInt(a.getNamespace())))
+			addArticle(a,writer);
 	}
-	/** Add to inde used for spell_titles */
-	public void addAllArticle(Article a){
-		//addArticle(a,writerAll);
-	}
-	
+
 	/** Add single article */
 	protected void addArticle(Article a, IndexWriter writer){
 		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
@@ -121,12 +166,10 @@ public class CleanIndexWriter {
 	 * @throws IOException */
 	public void close() throws IOException{
 		try{
-			writerMain.optimize();
-			writerMain.close();
-			//writerAll.optimize();
-			//writerAll.close();
+			writer.optimize();
+			writer.close();
 		} catch(IOException e){
-			log.warn("I/O error optimizing/closing index at "+iid.getTempPath());
+			log.error("I/O error optimizing/closing index at "+iid.getTempPath()+" : "+e.getMessage());
 			throw e;
 		}
 	}

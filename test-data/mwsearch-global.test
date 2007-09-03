@@ -9,7 +9,7 @@
 #   aspell <language>
 [Database]
 entest : (mainsplit), (mainpart,false,2,10), (restpart,true,2)
-entest : (ngram), (spell_words,3,20), (spell_titles,1,2,20)
+entest : (ngram), (spell,1,2)
 detest,rutest : (single,true,2,10)
 frtest : (split,3) (part1) (part2) (part3)
 srwiki : (single)
@@ -28,7 +28,7 @@ njawiki : (nssplit,3) (nspart1,[0,1],false,5) (nspart2,[12,13,14,15]) (nspart3,[
 192.168.0.10 :entest.mainpart
 192.168.0.2 : entest.restpart, rutest
 [Search-Group]
-192.168.0.1 : njawiki entest.spell_words entest.spell_titles
+192.168.0.1 : njawiki entest.spell
 
 # Index nodes
 # host: db1.role, db2.role

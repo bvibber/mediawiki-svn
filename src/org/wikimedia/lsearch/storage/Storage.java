@@ -11,7 +11,7 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.ranks.CompactArticleLinks;
 import org.wikimedia.lsearch.ranks.Related;
 import org.wikimedia.lsearch.ranks.RelatedTitle;
-
+@Deprecated
 abstract public class Storage {
 	static protected Storage instance = null;
 	

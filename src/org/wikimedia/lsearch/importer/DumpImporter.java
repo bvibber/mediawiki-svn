@@ -21,9 +21,12 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.ranks.CompactArticleLinks;
+import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.OldLinks;
 import org.wikimedia.lsearch.ranks.RankBuilder;
 import org.wikimedia.lsearch.ranks.RelatedTitle;
+import org.wikimedia.lsearch.storage.ArticleAnalytics;
+import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
 import org.wikimedia.lsearch.util.Localization;
 
 public class DumpImporter implements DumpWriter {
@@ -32,15 +35,15 @@ public class DumpImporter implements DumpWriter {
 	Revision revision;
 	SimpleIndexWriter writer;
 	int count = 0, limit;
-	OldLinks links;
+	LinkAnalysisStorage las;
 	String langCode;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
-			Integer maxBufDocs, boolean newIndex, OldLinks ranks, String langCode){
+			Integer maxBufDocs, boolean newIndex, LinkAnalysisStorage las, String langCode){
 		Configuration.open(); // make sure configuration is loaded
 		writer = new SimpleIndexWriter(IndexId.get(dbname), optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;
-		this.links = ranks;
+		this.las = las;
 		this.langCode = langCode;
 	}
 	public void writeRevision(Revision revision) throws IOException {
@@ -50,28 +53,25 @@ public class DumpImporter implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		// get reference count
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		CompactArticleLinks r = links.get(key);
-		int references;
-		boolean isRedirect = r.redirectsTo != null; 
-		if(r == null){
-			references = 0;
-			log.error("Reference count for "+key+" is undefined, which should never happen.");
-		} else
-			references = r.links;
+		ArticleAnalytics aa = las.getAnalitics(key); 
+		int references = aa.getReferences();
+		boolean isRedirect = aa.isRedirect();
+		
 		// make list of redirects
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
-		if(r.redirected != null){
-			for(CompactArticleLinks rk : r.redirected){
-				String[] parts = rk.toString().split(":",2);
-				redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],rk.links));
-			}
+		ArrayList<String> anchors = new ArrayList<String>();
+		anchors.addAll(aa.getAnchorText());
+		for(String rk : aa.getRedirectKeys()){
+			String[] parts = rk.toString().split(":",2);
+			ArticleAnalytics raa = las.getAnalitics(rk);
+			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],raa.getReferences()));
+			anchors.addAll(raa.getAnchorText());
 		}
-		ArrayList<RelatedTitle> related = RankBuilder.getRelatedTitles(r,links);  
+		//TODO: ArrayList<RelatedTitle> related = RankBuilder.getRelatedTitles(r,links);  
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
-				references,redirects,related);
+				references,redirects,new ArrayList<RelatedTitle>(),anchors);
 		writer.addArticle(article);
 		count++;
 		if(limit >= 0 && count > limit)

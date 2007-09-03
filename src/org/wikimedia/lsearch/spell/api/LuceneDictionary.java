@@ -39,6 +39,7 @@ public class LuceneDictionary implements Dictionary {
   private TermEnum termEnum;
   private int count = 0;
   private String field;
+  private boolean first = true;
 
   public LuceneDictionary(IndexReader reader, String field) {
     try {
@@ -55,10 +56,14 @@ public class LuceneDictionary implements Dictionary {
 	  }
 	  try {
 		  while(true){
-			  if(!termEnum.next())
+			  if(first){
+				  first = false;
+				  break;
+			  }
+			  else if(!termEnum.next())
 				  return null;
 			  else if(!termEnum.term().field().equals(field))
-				  continue; // skip terms that are not from the desired field
+				  return null; // end of our field
 			  
 			  break;
 		  }

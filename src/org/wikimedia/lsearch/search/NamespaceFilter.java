@@ -91,6 +91,16 @@ public class NamespaceFilter implements Serializable {
 		return included.get(namespace);
 	}
 	
+	/** Set bit for namespace to true */
+	public void set(int namespace){
+		included.set(namespace);
+	}
+	
+	/** Set bit for namespace to false */
+	public void unset(int namespace){
+		included.set(namespace,false);
+	}
+	
 	public boolean contains(int namespace){
 		return included.get(namespace);
 	}

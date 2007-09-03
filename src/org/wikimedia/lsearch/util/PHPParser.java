@@ -12,6 +12,8 @@ import java.util.Hashtable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.wikimedia.lsearch.search.NamespaceFilter;
+
 /** 
  * Extract some variable from MediaWiki MessageXX.php files. In particular,
  * the localized namespace names (needed for proper parsing of wiki code).
@@ -160,6 +162,58 @@ public class PHPParser {
 		return servers;
 	}
 	
+	/** Get wgNamespacesToBeSearchedDefault from InitialiseSettings */
+	public Hashtable<String,NamespaceFilter> getDefaultSearch(String text){
+		text = text.replaceAll("(#.*)",""); // strip comments
+		Hashtable<String,NamespaceFilter> ret = new Hashtable<String,NamespaceFilter>();		
+		
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		//Pattern wgns = Pattern.compile("[\"']wgNamespacesToBeSearchedDefault[\"']\\s*=>\\s*array\\s*\\(((.*?\\(.*?\\).*?)+)\\)",flags);
+		Pattern db = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
+		Pattern entry = Pattern.compile("(-?[0-9]+)\\s*=>\\s*([01])",flags);
+		String t = fetchArray(text,"'wgNamespacesToBeSearchedDefault'");
+		Matcher md = db.matcher(t);
+		while(md.find()){
+			String dbname = md.group(1);
+			NamespaceFilter nsf = new NamespaceFilter();
+			Matcher me = entry.matcher(md.group(2));
+			while(me.find()){
+				if(!me.group(2).equals("0"))
+					nsf.set(Integer.parseInt(me.group(1)));
+			}
+			ret.put(dbname,nsf);
+		}
+		return ret;
+	}
+	
+	/** Fetche array by balancing out parenthesis */
+	public String fetchArray(String text, String var){
+		int start = text.indexOf(var);
+		if(start == -1)
+			return null;
+		char[] t = text.toCharArray();
+		int level = 0; boolean ret = false;
+		boolean comment = false;
+		for(int i=start+var.length();i<t.length;i++){
+			if(level == 0 && ret)
+				return new String(t,start+var.length(),i-start-var.length());
+			if(comment){
+				if(t[i] == '#')
+					comment = false;
+				else
+					continue;
+			}
+			if(t[i] == '('){
+				ret = true;
+				level ++;
+			} else if(t[i] == ')')
+				level--;
+			else if(t[i] == '#')
+				comment = true;
+		}
+		return null;
+	}
+	
 	public String readFile(String path){
 		char buffer[] = new char[32768];
 		String text = "";
@@ -221,6 +275,7 @@ public class PHPParser {
 		String initset = p.readURL(new URL("file:///home/rainman/Desktop/InitialiseSettings.php"));
 		System.out.println(p.getLanguages(initset));
 		System.out.println(p.getServer(initset));
+		System.out.println(p.getDefaultSearch(initset));
 		
 		
 	}

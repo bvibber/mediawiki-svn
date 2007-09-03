@@ -12,6 +12,8 @@ import org.mediawiki.importer.Page;
 import org.mediawiki.importer.Revision;
 import org.mediawiki.importer.Siteinfo;
 import org.wikimedia.lsearch.beans.ArticleLinks;
+import org.wikimedia.lsearch.beans.Title;
+import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
@@ -23,11 +25,12 @@ import org.wikimedia.lsearch.util.Localization;
 public class TitleReader  implements DumpWriter{
 	Page page;
 	Revision revision;
-	OldLinks links = new OldLinks();
+	Links links;
 	protected String langCode;
 	
-	public TitleReader(String langCode){
+	public TitleReader(String langCode, IndexId iid) throws IOException{
 		this.langCode = langCode;
+		this.links = Links.createNew(iid);
 	}
 
 	public void writeRevision(Revision revision) throws IOException {
@@ -38,9 +41,9 @@ public class TitleReader  implements DumpWriter{
 	}
 	public void writeEndPage() throws IOException {
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		links.add(key,0);
+		links.addTitle(new Title(key));
 	}
-	public OldLinks getTitles() {
+	public Links getLinks() {
 		return links;
 	}
 	public void close() throws IOException {

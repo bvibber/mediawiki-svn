@@ -58,7 +58,7 @@ public class IndexId {
 	/** If true, this machine is an indexer for this index */
 	protected boolean myIndex;
 	
-	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL_WORDS, SPELL_TITLES };
+	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINK_ANALYSIS };
 	
 	/** Type of index, enumeration */
 	protected IndexType type;
@@ -156,10 +156,10 @@ public class IndexId {
 			this.type = IndexType.SPLIT;
 		else if(type.equals("nssplit"))
 			this.type = IndexType.NSSPLIT;
-		else if(type.equals("spell_words"))
-			this.type = IndexType.SPELL_WORDS;
-		else if(type.equals("spell_titles"))
-			this.type = IndexType.SPELL_TITLES;
+		else if(type.equals("spell"))
+			this.type = IndexType.SPELL;
+		else if(type.equals("link_analysis"))
+			this.type = IndexType.LINK_ANALYSIS;
 		
 		// parts
 		String[] parts = dbrole.split("\\.");
@@ -251,17 +251,13 @@ public class IndexId {
 	public boolean isNssplit(){
 		return type == IndexType.NSSPLIT;
 	}
-	/** If this is the spell-check index for words */
-	public boolean isSpellWords(){
-		return type == IndexType.SPELL_WORDS;
+	/** If this is the spell-check index */
+	public boolean isSpell(){
+		return type == IndexType.SPELL;
 	}
-	/** It this is the spell-check index for phrases and words from titles */
-	public boolean isSpellTitles(){
-		return type == IndexType.SPELL_TITLES;
-	}
-	/** If this is one of the spell-check indexes */
-	public boolean isSpellCheck(){
-		return isSpellWords() || isSpellTitles();
+	/** If this is the link-analysis index */
+	public boolean isLinkAnalysis(){
+		return type == IndexType.LINK_ANALYSIS;
 	}
 	
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
@@ -374,7 +370,6 @@ public class IndexId {
 		return tempPath;
 	}
 
-
 	/** Get search path with resolved symlinks */
 	public String getCanonicalSearchPath(){
 		try {
@@ -411,7 +406,7 @@ public class IndexId {
 	
 	/** get all hosts that search db this iid belongs to */
 	public HashSet<String> getDBSearchHosts(){
-		if(isSingle() || isSpellWords() || isSpellTitles())
+		if(isSingle() || isSpell() || isLinkAnalysis())
 			return searchHosts;
 		else{
 			// add all hosts that search: dbname and all parts
@@ -462,7 +457,7 @@ public class IndexId {
 	 */
 	public HashSet<String> getPhysicalIndexes() {
 		HashSet<String> ret = new HashSet<String>();
-		if(isSingle() || isSpellWords() || isSpellTitles())
+		if(isSingle() || isSpell() || isLinkAnalysis())
 			ret.add(dbrole);
 		else if(isMainsplit() || isSplit() || isNssplit()){
 			for(String p : splitParts)
@@ -534,13 +529,13 @@ public class IndexId {
 	}
 
 	/** Get the coresponding spell words iid */
-	public IndexId getSpellWords() {
-		return get(dbname+".spell_words");
+	public IndexId getSpell() {
+		return get(dbname+".spell");
 	}
 	
-	/** Get the coresponding spell titles iid */
-	public IndexId getSpellTitles() {
-		return get(dbname+".spell_titles");
+	/** Get the link analysis iid */
+	public IndexId getLinkAnalysis() {
+		return get(dbname+".link_analysis");
 	}
 	
 	

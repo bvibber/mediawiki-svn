@@ -62,19 +62,14 @@ public class SuggestTest {
 					if(text.length()>=2){
 						System.out.println("METAPHONES: "+dmeta.doubleMetaphone(text)+", "+dmeta.doubleMetaphone(text,true));
 						System.out.println("SUGGEST: ");
-						for(SuggestResult r : sc.suggestWords(text,10)){
-							System.out.println(r);
-						}
-						System.out.println("SUGGEST_TITLE: ");
-						for(SuggestResult r : sc.suggestWordsFromTitle(text,new NamespaceFilter(ns),10)){
+						for(SuggestResult r : sc.suggestWords(text,new NamespaceFilter(ns),10)){
 							System.out.println(r);
 						}
 
-						System.out.println("SPLIT: "+sc.suggestSplitFromTitle(text,new NamespaceFilter(ns),0));
+						System.out.println("SPLIT: "+sc.suggestSplit(text,new NamespaceFilter(ns),0));
 					}
 					if(last != null){
-						System.out.println("JOIN: "+sc.suggestJoinFromTitle(last,text,new NamespaceFilter(ns),0));
-						System.out.println("PHRASE: "+sc.suggestPhraseFromTitle(last,text,2,new NamespaceFilter(ns),0));
+						System.out.println("JOIN: "+sc.suggestJoin(last,text,new NamespaceFilter(ns),0));
 					}
 					last = text;
 				}

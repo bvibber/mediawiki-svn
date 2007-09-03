@@ -51,6 +51,8 @@ public class Article implements Serializable  {
 	private transient int rank;
 	/** names of articles that relate to this article  */
 	private ArrayList<RelatedTitle> related;
+	/** names of articles that relate to this article  */
+	private ArrayList<String> anchorText;
 	
 	public Article(){
 		namespace="";
@@ -61,6 +63,7 @@ public class Article implements Serializable  {
 		references = 0;
 		redirects=new ArrayList<Redirect>();
 		related = new ArrayList<RelatedTitle>();
+		anchorText = new ArrayList<String>();
 	}
 	
 	public Article(long pageId, Title title, String text, boolean redirect, int references) {
@@ -72,6 +75,7 @@ public class Article implements Serializable  {
 		this.references = references;
 		this.redirects = new ArrayList<Redirect>();
 		this.related = new ArrayList<RelatedTitle>();
+		this.anchorText = new ArrayList<String>();
 	}
 	
 	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references) {
@@ -83,9 +87,11 @@ public class Article implements Serializable  {
 		this.references = references;
 		this.redirects = new ArrayList<Redirect>();
 		this.related = new ArrayList<RelatedTitle>();
+		this.anchorText = new ArrayList<String>();
 	}
 	
-	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related) {
+	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, 
+			ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related, ArrayList<String> anchorText) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		contents = text;
@@ -94,6 +100,7 @@ public class Article implements Serializable  {
 		this.references = references;
 		this.redirects = redirects;
 		this.related = related;
+		this.anchorText = anchorText;
 	}
 	
 	public boolean isRedirect() {
@@ -216,11 +223,14 @@ public class Article implements Serializable  {
 
 	public void setRelated(ArrayList<RelatedTitle> related) {
 		this.related = related;
+	}
+
+	public ArrayList<String> getAnchorText() {
+		return anchorText;
+	}
+
+	public void setAnchorText(ArrayList<String> anchorText) {
+		this.anchorText = anchorText;
 	}	
-	
-	
-	
-	
-	
 	
 }

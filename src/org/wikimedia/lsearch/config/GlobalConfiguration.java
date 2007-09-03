@@ -66,6 +66,8 @@ public class GlobalConfiguration {
 	protected Hashtable<String,String> wgLanguageCode = null;
 	/** wgServer, suffix -> server (default server is "default")*/
 	protected Hashtable<String,String> wgServer = null;
+	/** wgNamespacesToBeSearchedDefault from InitialiseSettings, suffix -> lang code */
+	protected Hashtable<String,NamespaceFilter> wgDefaultSearch = null;
 	
 	/** info about this host */
 	protected static InetAddress myHost;
@@ -183,6 +185,9 @@ public class GlobalConfiguration {
 						database.get(dbname).put(dbpart,new Hashtable<String,String>());
 				}
 			}
+			// add the link analysis to indexers
+			if(!types.contains("link_analysis"))
+				database.get(dbname).put("link_analysis",new Hashtable<String,String>());
 			// add spellcheck indexes
 			/* if(!types.contains("spell_words"))
 				database.get(dbname).put("spell_words",new Hashtable<String,String>());
@@ -209,8 +214,7 @@ public class GlobalConfiguration {
 					}
 				}
 				// spell check indexes are searched by default if they exist
-				addToList(hostsearch,dbname+".spell_words");
-				addToList(hostsearch,dbname+".spell_titles");
+				addToList(hostsearch,dbname+".spell");
 			}
 		}
 
@@ -231,7 +235,7 @@ public class GlobalConfiguration {
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
 					dbrole = dbname + "." + typeid;
-				} else if(typeid.equals("spell_words") || typeid.equals("spell_titles")){
+				} else if(typeid.equals("spell") || typeid.equals("link_analysis")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else
@@ -250,7 +254,7 @@ public class GlobalConfiguration {
 					}
 				}
 				boolean searched = (getSearchHosts(dbrole).size() != 0); 
-				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split") || typeid.equals("nssplit"))){
+				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split") || typeid.equals("nssplit") || typeid.equals("link_analysis"))){
 					if(verbose)
 						System.out.println("WARNING: in Global Configuration: index "+dbrole+" is not searched by any host.");
 				}
@@ -455,6 +459,7 @@ public class GlobalConfiguration {
 			String text = parser.readURL(new URL(initset));
 			wgLanguageCode = parser.getLanguages(text);
 			wgServer = parser.getServer(text);
+			wgDefaultSearch = parser.getDefaultSearch(text);
 		} catch (IOException e) {
 			System.out.println("Error: Cannot read InitialiseSettings.php from url "+initset+" : "+e.getMessage());
 		}	
@@ -516,7 +521,7 @@ public class GlobalConfiguration {
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
 					dbrole = dbname + "." + typeid;
-				} else if(typeid.equals("spell_words") || typeid.equals("spell_titles")){
+				} else if(typeid.equals("spell") || typeid.equals("link_analysis")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else
@@ -802,27 +807,14 @@ public class GlobalConfiguration {
 			
 			dbroles.put(type,params);
 						
-		} else if(type.equals("spell_words")){			
-			// all params are optional, if absent default will be used
-			if(tokens.length>1)
-				params.put("minFreq",tokens[1]);
-			if(tokens.length>2)
-				params.put("minHits",tokens[2]);			
-			
-			if(tokens.length>3 && verbose)
-				System.out.println("Unrecognized suggest parameters in ("+role+")");
-			
-			dbroles.put(type,params);
-		} else if(type.equals("spell_titles")){			
+		} else if(type.equals("spell")){			
 			// all params are optional, if absent default will be used
 			if(tokens.length>1)
 				params.put("wordsMinFreq",tokens[1]);
 			if(tokens.length>2)
 				params.put("phrasesMinFreq",tokens[2]);
-			if(tokens.length>3)
-				params.put("minHits",tokens[3]);			
 			
-			if(tokens.length>4 && verbose)
+			if(tokens.length>3 && verbose)
 				System.out.println("Unrecognized suggest parameters in ("+role+")");
 			
 			dbroles.put(type,params);			
@@ -1100,6 +1092,19 @@ public class GlobalConfiguration {
 
 	public static void setVerbose(boolean verbose) {
 		GlobalConfiguration.verbose = verbose;
+	}
+	
+	public NamespaceFilter getDefaultNamespace(IndexId iid){
+		return getDefaultNamespace(iid.getDBname());
+	}
+	public NamespaceFilter getDefaultNamespace(String dbname){
+		if(wgDefaultSearch != null){
+			if(wgDefaultSearch.containsKey(dbname))
+				return wgDefaultSearch.get(dbname);
+			else if(wgDefaultSearch.containsKey("default"))
+				return wgDefaultSearch.get("default");
+		}
+		return new NamespaceFilter(0);
 	}
 	
 	

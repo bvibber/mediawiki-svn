@@ -31,6 +31,7 @@ import org.wikimedia.lsearch.ranks.RelatedTitle;
  * @author rainman
  *
  */
+@Deprecated
 public class MySQLStorage extends Storage {
 	static Logger log = Logger.getLogger(MySQLStorage.class);
 	protected Configuration config;

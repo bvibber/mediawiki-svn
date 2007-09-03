@@ -99,5 +99,14 @@ public class Title implements java.io.Serializable {
     public void setTitle(java.lang.String title) {
         this.title = title;
     }
+    
+    /**
+     * Get string representation of namespace
+     * 
+     * @return
+     */
+    public String getNamespaceAsString(){
+   	 return Integer.toString(namespace);
+    }
 
 }
