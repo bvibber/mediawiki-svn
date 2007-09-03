@@ -1601,7 +1601,6 @@ END
 //$baseRevision=true;
 		if( is_null( $baseRevision ) ) {
 			wfProfileOut( $fname );
-//break;
 			return false;
 		}
 		$baseText = $baseRevision->getText();
@@ -2136,103 +2135,80 @@ END
 			case self::AS_END:
 			//wfProfileOut( $fname );
 			return true;
-			break;
-
+		
 		case self::AS_SUCCESS_UPDATE:
 			return false;
-			break;
-
+			
 		case self::AS_MAX_ARTICLE_SIZE_EXCEDED:
 			return true;
-			break;
-
+			
 		case self::AS_TEXTBOX_EMPTY:
 			return true;
-			break;
-
+			
 		case self::AS_SUMMARY_NEEDED_B:
 			return true;
-			break;
-
+			
 		case self::AS_SUMMARY_NEEDED_A:
 			return true;
-			break;
-
+			
 		case self::AS_CONFLICT_DETECTED:
 			return true;
-			break;
-
+			
 		case self::AS_SUCCESS_NEW_ARTICLE:
 			return false;
-			break;
-
+			
 		 case self::AS_BLANK_ARTICLE:
 		 	$wgOut->redirect( $this->mTitle->getFullURL() );
 		 	return false;
-		 	break;
-
+		 	
 		 case self::AS_NO_CREATE_PERMISSION;
 		 	$this->noCreatePermission();
 		 	return;
-		 	break;
-
+		 
 		 case self::AS_ARTICLE_WAS_DELETED:
 		 	return true;
-		 	break;
-
+		 	
 		 case self::AS_RATE_LIMITED:
 		 	$wgOut->rateLimited();
 		 	return false;
-		 	break;
-
+		 	
 		 case self::AS_READ_ONLY_PAGE:
 		 	$wgOut->readOnlyPage();
 		 	return false;
-		 	break;
-
+		 	
 		 case self::AS_READ_ONLY_PAGE_LOGGED:
 			$wgOut->readOnlyPage();
 			return false;
-			break;
-
+			
 		case self::AS_READ_ONLY_PAGE_ANON:
 			$this->userNotLoggedInPage();
 			return false;
-			break;
-
+			
 		case self::AS_CONTENT_TOO_BIG:
 			return true;
-			break;
-
+			
 		case self::AS_BLOCKED_PAGE_FOR_USER:
 			$this->blockedPage();
 			return false;
-			break;
-
+			
 		case self::AS_EXIST_HOOK_ERROR_A:
 			return false;
-			break;
-
+		
 		case self::AS_SPAM_ERROR:
 			$this->spamPage ( $matches[0] );
 			return false;
-			break;
-
+			
 		case self::AS_FILTERING:
 			return false;
-			break;
-
+			
 		case self::AS_EXIST_HOOK_ERROR_B:
 			return false;
-			break;
-
+			
 		case self::AS_EXIST_HOOK_ERROR_C:
 			return true;
-			break;
-
+			
 //		case DEFAULT:
 //			return true;
-//			break;
 		}
 }
 
