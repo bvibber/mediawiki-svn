@@ -85,7 +85,8 @@ class ApiEditPage extends ApiBase {
     }
 
 		extract($this->extractRequestParams());
-
+		// Ensure the correct timestamp format
+		$edittime =eregi_replace("[-,a-z,:]","",$edittime);
     $object_title = Title::newFromDBkey($title);
 		$myArticle = new Article($object_title);
 
