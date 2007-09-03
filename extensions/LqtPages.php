@@ -13,6 +13,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 }
 
 require_once('LqtBaseView.php');
+require_once('LqtI18N.php');
 
 class TalkpageView extends LqtView {
 	/* Added to SkinTemplateTabs hook in TalkpageView::show(). */
@@ -48,17 +49,18 @@ class TalkpageView extends LqtView {
 	function showArchiveWidget() {
 		$threads = $this->queries->query('recently-archived');
 		$threadlinks = $this->permalinksForThreads($threads);
-		
+
 		if ( count($threadlinks) > 0 ) {
 			$this->openDiv('lqt_archive_teaser');
-			$this->output->addHTML('Recently archived:');
+			$this->output->addHTML(wfMsg('lqt_recently_archived'));
 			$this->outputList('ul', '', '', $threadlinks);
 		} else {
 			$this->openDiv();
 		}
 		$url = $this->talkpageUrl($this->title, 'talkpage_archive');
+		$browse=wfMsg('lqt_browse_archive');
 		$this->output->addHTML(<<<HTML
-			<p><a href="$url" class="lqt_browse_archive">Browse the Archive</a></p>
+			<p><a href="$url" class="lqt_browse_archive">$browse</a></p>
 HTML
 		);
 		$this->closeDiv();
@@ -72,21 +74,22 @@ HTML
 	
 	function showHeader() {
 		/* Show the contents of the actual talkpage article if it exists. */
+
 		$article = new Article( $this->title );
 		$oldid = $this->request->getVal('oldid', null);
+		$editlink = $this->title->getFullURL( 'action=edit' );
 
 		if ( $article->exists() ) {
-			$edit = $this->title->getFullURL( 'action=edit' );
-			$history = $this->title->getFullURL( 'action=history' );
+			$historylink = $this->title->getFullURL( 'action=history' );
 			$this->openDiv('lqt_header_content');
 			$this->showPostBody($article, $oldid);
 			$this->outputList('ul', 'lqt_header_commands', null, array(
-				"[<a href=\"$edit\">edit</a>]", 
-				"[<a href=\"$history\">history</a>]"
+				"[<a href=\"$editlink\">".wfMsg('edit')."</a>]", 
+				"[<a href=\"$historylink\">".wfMsg('history_short')."</a>]"
 				));
 			$this->closeDiv();
 		} else {
-			$this->output->addHTML("<p class=\"lqt_header_notice\">[<a href=\"{$this->title->getFullURL('action=edit')}\">add header</a>]</p>");
+			$this->output->addHTML("<p class=\"lqt_header_notice\">[<a href=\"$editlink\">".wfMsg('lqt_add_header')."</a>]</p>");
 		}
 	}
 	
@@ -103,7 +106,7 @@ HTML
 	function show() {
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
-		
+
 		$this->output->setPageTitle( $this->title->getTalkpage()->getPrefixedText() );
 		$this->addJSandCSS();
 
@@ -117,7 +120,7 @@ HTML
 			$this->showNewThreadForm();
 		} else {
 			$url = $this->talkpageUrl( $this->title, 'talkpage_new_thread' );
-			$this->output->addHTML("<strong><a class=\"lqt_start_discussion\" href=\"$url\">Start&nbsp;a&nbsp;Discussion</a></strong>");
+			$this->output->addHTML("<strong><a class=\"lqt_start_discussion\" href=\"$url\">".wfMsg('lqt_new_thread')."</a></strong>");
 		}
 
 		$threads = $this->queries->query('fresh');
@@ -143,7 +146,7 @@ HTML
 );		if( $t->hasSummary() ) {
 			$this->showPostBody($t->summary());
 		} else if ( $t->type() == Threads::TYPE_MOVED ) {
-			$this->output->addHTML("<i>Placeholder left when the thread was moved to another page.</i>");
+			$this->output->addWikiText(wfMsg('lqt_move_placeholder'));
 		}
 			$this->output->addHTML(<<<HTML
 	</td>
@@ -432,9 +435,10 @@ class ThreadPermalinkView extends LqtView {
 		$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($talkpage, '', $query);
 		
 		if ( $this->thread->hasSuperthread() ) {
-			$this->output->setSubtitle( "a fragment of <a href=\"{$this->permalinkUrl($this->thread->topmostThread())}\">a discussion</a> from " . $talkpage_link );
+			$subtitle=wfMsg('lqt_fragment',"<a href=\"{$this->permalinkUrl($this->thread->topmostThread())}\">".wfMsg('lqt_discussion_link')."</a>",$talkpage_link);
+			$this->output->setSubtitle( $subtitle);
 		} else {
-			$this->output->setSubtitle( "from " . $talkpage_link );
+			$this->output->setSubtitle( wfMsg('lqt_from_talk', $talkpage_link));
 		}
 		
 		if( $this->methodApplies('summarize') )
@@ -526,12 +530,12 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 		/* TODO: best not to refer to LqtView class directly. */
 		/* We don't use oldid because that has side-effects. */
 		$result = array();
-		$change_names = array(Threads::CHANGE_EDITED_ROOT => "Comment text edited:",
-		                      Threads::CHANGE_EDITED_SUMMARY => "Summary changed:",
-		                      Threads::CHANGE_REPLY_CREATED => "New reply created:",
-		                      Threads::CHANGE_NEW_THREAD => "New thread created:",
-							  Threads::CHANGE_DELETED => "Deleted:",
-							  Threads::CHANGE_UNDELETED => "Undeleted:");
+		$change_names = array(	Threads::CHANGE_EDITED_ROOT => wfMsg('lqt_comment_edited'),
+		                      	Threads::CHANGE_EDITED_SUMMARY => wfMsg('lqt_summary_changed'),
+		                      	Threads::CHANGE_REPLY_CREATED => wfMsg('lqt_reply_created'),
+		                      	Threads::CHANGE_NEW_THREAD => wfMsg('lqt_thread_created'),
+					Threads::CHANGE_DELETED => wfMsg('lqt_deleted'),
+					Threads::CHANGE_UNDELETED => wfMsg('lqt_undeleted'));
 		$change_label = array_key_exists($t->changeType(), $change_names) ? $change_names[$t->changeType()] : "";
 
 		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $t->revisionNumber() );
@@ -541,11 +545,15 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 		$sig = $this->user->getSkin()->userLink( $user_id, $user_text ) .
 			   $this->user->getSkin()->userToolLinks( $user_id, $user_text );
 		
+		$change_comment=$t->changeComment();
+		if(!empty($change_comment))
+			$change_comment="<em>($change_comment)</em>";
+
 		$result[] = "<tr>";
 		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->timestamp()) . "</a></td>";
 		$result[] = "<td>" . $sig . "</td>";
 		$result[] = "<td>$change_label</td>";
-		$result[] = "<td>" . $t->changeComment() . "</td>";
+		$result[] = "<td>$change_comment</td>";
 		$result[] = "</tr>";
 		return implode('', $result);
 	}
@@ -568,7 +576,7 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 			return false;
 		}
 		
-		$this->output->setSubtitle("Viewing a history listing.");
+		$this->output->setSubtitle(wfMsg('lqt_history_subtitle'));
 				
 		$this->showThreadHeading($this->thread);
 		$this->showHistoryListing($this->thread);
@@ -890,5 +898,6 @@ HTML
     
      SpecialPage::addPage( new SpecialDeleteThread() );
 }
+
 
 ?>

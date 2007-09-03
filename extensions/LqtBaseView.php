@@ -437,20 +437,20 @@ HTML;
 		
 		$user_can_edit = $thread->root()->getTitle()->quickUserCan( 'edit' );
 
-		$commands[] = array( 'label' => $user_can_edit ? 'Edit' : 'View source',
+		$commands[] = array( 'label' => $user_can_edit ? wfMsg('edit') : wfMsg('viewsource'),
 		                     'href' => $this->talkpageUrl( $this->title, 'edit', $thread ),
 		                     'enabled' => true );
 		
-		$commands[] = array( 'label' => 'Reply',
+		$commands[] = array( 'label' => wfMsg('lqt_reply'),
 							 'href' =>  $this->talkpageUrl( $this->title, 'reply', $thread ),
 							 'enabled' => $user_can_edit );
 		
-		$commands[] = array( 'label' => 'Permalink',
+		$commands[] = array( 'label' => wfMsg('lqt_permalink'),
 							 'href' =>  $this->permalinkUrl( $thread ),
 							 'enabled' => true );
 
 		if( !$thread->hasSuperthread() ) {
-			$commands[] = array( 'label' => 'History',
+			$commands[] = array( 'label' => wfMsg('history_short'),
 								 'href' =>  $this->permalinkUrlWithQuery($thread, 'action=history'),
 								 'enabled' => true );
 		}
@@ -458,7 +458,7 @@ HTML;
 		if ( in_array('delete',  $this->user->getRights()) ) {
 			$delete_url = SpecialPage::getPage('Deletethread')->getTitle()->getFullURL()
 				. '/' . $thread->title()->getPrefixedURL();
-			$commands[] = array( 'label' => $thread->type() == Threads::TYPE_DELETED ? 'Undelete' : 'Delete',
+			$commands[] = array( 'label' => $thread->type() == Threads::TYPE_DELETED ? wfMsg('lqt_undelete') : wfMsg('delete'),
 								 'href' =>  $delete_url,
 								 'enabled' => true );
 		}
