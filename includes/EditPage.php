@@ -664,7 +664,6 @@ class EditPage {
 
 		if( !wfRunHooks( 'EditPage::attemptSave', array( &$this ) ) )
 		{
-print "AS-->(IN1) wfRunHooks(EditPage::attemptSave) = false <br>";
 			wfDebug( "Hook 'EditPage::attemptSave' aborted article saving" );
 			return self::AS_EXIST_HOOK_ERROR_A;
 //			return false;
@@ -673,16 +672,10 @@ print "AS-->(IN1) wfRunHooks(EditPage::attemptSave) = false <br>";
 		# Reintegrate metadata
 		if ( $this->mMetaData != '' ) $this->textbox1 .= "\n" . $this->mMetaData ;
 		$this->mMetaData = '' ;
-print "attemptSave --> mTitle: ".$this->mTitle."<br>";
-print "attemptSave --> texbox1: ".$this->tilabarg01extbox1."<br>";
-print "attemptSave --> mMetaData: ".$this->mMetaData."<br>";
-print "attemptSave --> section: ".$this->section."<br>";
-print "attemptSave --> summary:".$this->summary."<br>";
 
 		# Check for spam
 		$matches = array();
 		if ( $wgSpamRegex && preg_match( $wgSpamRegex, $this->textbox1, $matches ) ) {
-print "AS-->(IN2) Checking for spam..<br>";
 //			$this->spamPage ( $matches[0] );
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
@@ -690,7 +683,6 @@ print "AS-->(IN2) Checking for spam..<br>";
 //			return false;
 		}
 		if ( $wgFilterCallback && $wgFilterCallback( $this->mTitle, $this->textbox1, $this->section ) ) {
-print "AS-->(IN3) Filtering contents..<br>";
 			# Error messages or other handling should be performed by the filter function
 			wfProfileOut( $fname );
 			wfProfileOut( "$fname-checks" );
@@ -699,13 +691,11 @@ print "AS-->(IN3) Filtering contents..<br>";
 		}
 		if ( !wfRunHooks( 'EditFilter', array( $this, $this->textbox1, $this->section, &$this->hookError ) ) ) {
 			# Error messages etc. could be handled within the hook...
-print "AS-->(IN4) wfRinHooks = false (EditFilter', array) <br>";
 			wfProfileOut( $fname );
 			wfProfileOut( "$fname-checks" );
 			return AS_EXIST_HOOK_ERROR_B;
 //			return false;
 		} elseif( $this->hookError != '' ) {
-print "AS-->(IN-IN4.1) this->hookError != ''<br>";
 			# ...or the hook could be expecting us to produce an error
 			wfProfileOut( "$fname-checks " );
 			wfProfileOut( $fname );
@@ -713,7 +703,6 @@ print "AS-->(IN-IN4.1) this->hookError != ''<br>";
 //			return true;
 		}
 		if ( $wgUser->isBlockedFrom( $this->mTitle, false ) ) {
-print "AS-->(IN5) wgUser->isBlockedFrom( this->mTitle, false )<br>";
 			# Check block state against master, thus 'false'.
 //			$this->blockedPage();
 			wfProfileOut( "$fname-checks" );
@@ -722,9 +711,7 @@ print "AS-->(IN5) wgUser->isBlockedFrom( this->mTitle, false )<br>";
 //			return false;
 		}
 		$this->kblength = (int)(strlen( $this->textbox1 ) / 1024);
-print "AS-->this->kblength;".$this->kblength."<br>";
 		if ( $this->kblength > $wgMaxArticleSize ) {
-print "AS-->(IN6) this->kblength > wgMaxArticleSize<br>";
 			// Error will be displayed by showEditForm()
 //			$this->tooBig = true;
 			wfProfileOut( "$fname-checks" );
@@ -734,9 +721,7 @@ print "AS-->(IN6) this->kblength > wgMaxArticleSize<br>";
 		}
 
 		if ( !$wgUser->isAllowed('edit') ) {
-print "AS-->(IN7) !wgUser->isAllowed('edit')<br>";
 			if ( $wgUser->isAnon() ) {
-print "AS-->(IN-IN7.1)wgUser->isAnon()<br>";
 //				$this->userNotLoggedInPage();
 				wfProfileOut( "$fname-checks" );
 				wfProfileOut( $fname );
@@ -744,7 +729,6 @@ print "AS-->(IN-IN7.1)wgUser->isAnon()<br>";
 //				return false;
 			}
 			else {
-print "AS-->(IN-IN7.2)!wgUser->isAnon()<br>";
 //				$wgOut->readOnlyPage();
 				wfProfileOut( "$fname-checks" );
 				wfProfileOut( $fname );
@@ -754,7 +738,6 @@ print "AS-->(IN-IN7.2)!wgUser->isAnon()<br>";
 		}
 
 		if ( wfReadOnly() ) {
-print "AS-->(IN8) wfReadOnly()<br>";
 //			$wgOut->readOnlyPage();
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
@@ -762,7 +745,6 @@ print "AS-->(IN8) wfReadOnly()<br>";
 //			return false;
 		}
 		if ( $wgUser->pingLimiter() ) {
-print "AS-->(IN9) wgUser->pingLimiter()<br>";
 //			$wgOut->rateLimited();
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
@@ -773,7 +755,6 @@ print "AS-->(IN9) wgUser->pingLimiter()<br>";
 		# If the article has been deleted while editing, don't save it without
 		# confirmation
 		if ( $this->deletedSinceEdit && !$this->recreate ) {
-print "AS-->(IN10) this->deletedSinceEdit && !this->recreate <br>";
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_ARTICLE_WAS_DELETED;
@@ -784,13 +765,9 @@ print "AS-->(IN10) this->deletedSinceEdit && !this->recreate <br>";
 
 		# If article is new, insert it.
 		$aid = $this->mTitle->getArticleID( GAID_FOR_UPDATE );
-print "attemptSave --> aid: ".$aid."<br>";
-print "attemptSave --> minoredit: ".$this->minoredit."<br>";
 		if ( 0 == $aid ) {
-print "AS-->(IN11) aid = 0, NEW ARTICLE<br>";
 			// Late check for create permission, just in case *PARANOIA*
 			if ( !$this->mTitle->userCan( 'create' ) ) {
-print "AS-->(IN-IN11.1) aid = 0, !this->mTitle->userCan('create')<br>";
 				wfDebug( "$fname: no create permission\n" );
 				wfProfileOut( $fname );
 				return self::AS_NO_CREATE_PERMISSION;
@@ -800,49 +777,32 @@ print "AS-->(IN-IN11.1) aid = 0, !this->mTitle->userCan('create')<br>";
 
 			# Don't save a new article if it's blank.
 			if ( ( '' == $this->textbox1 ) ) {
-print "AS-->(IN-IN11.2) aid = 0, '' == this->textbox1<br>";
 					wfProfileOut( $fname );
 					return self::AS_BLANK_ARTICLE;
 //					return false;
 			}
 
 			$isComment=($this->section=='new');
-print "AS-->(IN11) aid = 0,isComment:".$isComment."<br>";
-print "AS-->(IN11) aid = 0,this->textbox1:".$this->textbox1."<br>";
-print "AS-->(IN11) aid = 0,this->summary".$this->summary."<br>";
-print "AS-->(IN11) aid = 0,this->minoredit:".$this->minoredit."<br>";
-print "AS-->(IN11) aid = 0,this->watchthis:".$this->watchthis."<br>";
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
 				$this->minoredit, $this->watchthis, false, $isComment);
 			wfProfileOut( $fname );
 			return self::AS_SUCCESS_NEW_ARTICLE;
 //			return false;
 		}
-print "AS-->ARTICLE EXIST (aid=".$aid.")<br>";
 		# Article exists. Check for edit conflict.
 		$this->mArticle->clear(); # Force reload of dates, etc.
 		$this->mArticle->forUpdate( true ); # Lock the article
-print "AS-->this->mArticle->getTimestamp():".$this->mArticle->getTimestamp()."<br>";
-print "AS-->this->edittime:".$this->edittime."<br>";
 		wfDebug("timestamp: {$this->mArticle->getTimestamp()}, edittime: {$this->edittime}\n");
 		if( $this->mArticle->getTimestamp() != $this->edittime ) {
-print "AS-->(IN12) this->mArticle->getTimestamp() != this->edittime<br>";
 			$this->isConflict = true;
-print "AS-->(IN12)mArticle->getUserText(): ".$this->mArticle->getUserText()."<br>";
-print "AS-->(IN12)wgUser->getName(): ".$wgUser->getName()."<br>";
-print "AS-->(IN12)this->mArticle->getComment(): ".$this->mArticle->getComment()."<br>";
-print "AS-->(IN12)this->summary: ".$this->summary."<br>";
 			if( $this->section == 'new' ) {
-print "AS-->(IN-IN12.1) this->section == 'new'<br>";
 				if( $this->mArticle->getUserText() == $wgUser->getName() &&
 					$this->mArticle->getComment() == $this->summary ) {
-print "AS-->(IN-IN-IN12.1.1) Texto propietario, getcomment = summary<br>";
 					// Probably a duplicate submission of a new comment.
 					// This can happen when squid resends a request after
 					// a timeout but the first one actually went through.
 					wfDebug( "EditPage::editForm duplicate new section submission; trigger edit conflict!\n" );
 				} else {
-print "AS-->(IN-IN-IN12.1.2) New comment; suppress conflict<br>";
 					// New comment; suppress conflict.
 					$this->isConflict = false;
 					wfDebug( "EditPage::editForm conflict suppressed; new section\n" );
@@ -850,73 +810,54 @@ print "AS-->(IN-IN-IN12.1.2) New comment; suppress conflict<br>";
 			}
 		}
 		$userid = $wgUser->getID();
-print "AS-->userid: ".$userid."<br>";
-print "AS --> conflict_B: ".$this->isConflict."<br>";
 		if ( $this->isConflict) {
-print "AS-->(IN13) entra x 2=>EXIST CONFLICT<br>";
 			wfDebug( "EditPage::editForm conflict! getting section '$this->section' for time '$this->edittime' (article time '" .
 				$this->mArticle->getTimestamp() . "')\n" );
 			$text = $this->mArticle->replaceSection( $this->section, $this->textbox1, $this->summary, $this->edittime);
 		}
 		else {
-print "AS-->(IN14) no entra x 2=>NOT EXIST CONFLICT<br>";
 			wfDebug( "EditPage::editForm getting section '$this->section'\n" );
 			$text = $this->mArticle->replaceSection( $this->section, $this->textbox1, $this->summary);
 		}
-print "AS-->text: ".$text."<br>";
 
 		if( is_null( $text ) ) {
 			wfDebug( "EditPage::editForm activating conflict; section replace failed.\n" );
-print "AS-->(IN15) text es null (conflicto)<br>";
 			$this->isConflict = true;
 			$text = $this->textbox1;
-print "AS-->(IN15)text: ".$text."<br>";
 		}
 
 		# Suppress edit conflict with self, except for section edits where merging is required.
 		if ( ( $this->section == '' ) && ( 0 != $userid ) && ( $this->mArticle->getUser() == $userid ) ) {
-print "AS-->(IN16) Se elimina el conflicto al no ser anonimo,section ser 0 y ser creador del articulo.<br>";
 			wfDebug( "EditPage::editForm Suppressing edit conflict, same user.\n" );
 			$this->isConflict = false;
 		} else {
-print "AS-->(IN17) Anon o Section != 0 or not owner<br>";
 			# switch from section editing to normal editing in edit conflict
 			if($this->isConflict) {
-print "AS-->(IN-IN17.1) EXIST CONFLICT!<br>";
 				# Attempt merge
 				if( $this->mergeChangesInto( $text ) ){
-print "AS-->(IN-IN-IN17.1.1)this->mergeChangesInto(text)=>merge successfully so conflict cleaned<br>";
 					// Successful merge! Maybe we should tell the user the good news?
 					$this->isConflict = false;
 					wfDebug( "EditPage::editForm Suppressing edit conflict, successful merge.\n" );
 				} else {
 					$this->section = '';
 					$this->textbox1 = $text;
-print "AS-->(IN-IN-IN17.1.2)Merge failed so conflict here yet<br>";
 					wfDebug( "EditPage::editForm Keeping edit conflict, failed merge.\n" );
 				}
 			}
 		}
-print "AS--> Exit from IFS<br>";
 
 		if ( $this->isConflict ) {
-print "AS -->(IN18) this->isConflict: ".$this->isConflict." => EXIT!<br>";
 			wfProfileOut( $fname );
 			return self::AS_CONFLICT_DETECTED;
 // 			return true;
 		}
-print "<br>AS-->------------------------------------<br><br>";
-print "AS--> NO MORE CONFLICTS <br>";
 
 		$oldtext = $this->mArticle->getContent();
-print "AS --> oldtext: ".$oldtext."<br>";
 
 		# Handle the user preference to force summaries here, but not for null edits
 		if( $this->section != 'new' && !$this->allowBlankSummary && $wgUser->getOption( 'forceeditsummary')
 			&&  0 != strcmp($oldtext, $text) && !Article::getRedirectAutosummary( $text )) {
-print "<br>AS-->(IN19)Summary mandatory according preferences<br>";
 			if( md5( $this->summary ) == $this->autoSumm ) {
-print "<br>AS-->(IN-IN19.1)Testing autosummary MD5 token<br> =>EXIT!";
 				$this->missingSummary = true;
 				wfProfileOut( $fname );
 				return self::AS_SUMMARY_NEEDED_A;
@@ -926,34 +867,26 @@ print "<br>AS-->(IN-IN19.1)Testing autosummary MD5 token<br> =>EXIT!";
 
 		#And a similar thing for new sections
 		if( $this->section == 'new' && !$this->allowBlankSummary && $wgUser->getOption( 'forceeditsummary' ) ) {
-print "<br>AS-->(IN20)Summary mandatory in new sections<br>";
 			if (trim($this->summary) == '') {
-print "<br>AS-->(IN-IN20.1)summary=''<br> =>EXIT!";
 				$this->missingSummary = true;
 				wfProfileOut( $fname );
 				return self::AS_SUMMARY_NEEDED_B;
 //				return( true );
 			}
 		}
-print "<br>AS-->------------------------------------<br><br>";
-print "AS-->**** SINCE HERE ALL RIGTH ****<br>";
 		# All's well
 		wfProfileIn( "$fname-sectionanchor" );
 		$sectionanchor = '';
 		if( $this->section == 'new' ) {
-print "AS-->(IN21)Section= new<br>";
 			if ( $this->textbox1 == '' ) {
-print "AS-->(IN-IN21.1)Section= new & this->textbox1 == ''=>EXIT!<br>";
 				$this->missingComment = true;
 				return self::AS_TEXTBOX_EMPTY;
 //				return true;
 			}
 			if( $this->summary != '' ) {
-print "AS-->(IN-IN21.2)Section= new & this->summary != ''<br>";
 				$sectionanchor = $this->sectionAnchor( $this->summary );
 			}
 		} elseif( $this->section != '' ) {
-print "AS-->(IN22)Section != '' or NEW<br>";
 			# Try to get a section anchor from the section source, redirect to edited section if header found
 			# XXX: might be better to integrate this into Article::replaceSection
 			# for duplicate heading checking and maybe parsing
@@ -972,13 +905,9 @@ print "AS-->(IN22)Section != '' or NEW<br>";
 		// replace that into a duplicated mess.
 		$this->textbox1 = $text;
 		$this->section = '';
-print "AS-->this->textbox1:".$this->textbox1."<br>";
-print "AS-->this->section:".$this->section."<br>";
 		// Check for length errors again now that the section is merged in
 		$this->kblength = (int)(strlen( $text ) / 1024);
-print "AS --> kblength: ".$this->kblength."<br>";
 		if ( $this->kblength > $wgMaxArticleSize ) {
-print "AS -->(IN23) kblength > wgMaxArticleSize=>EXIT!<br>";
 			$this->tooBig = true;
 			wfProfileOut( $fname );
 			return self::AS_MAX_ARTICLE_SIZE_EXCEDED;
@@ -986,20 +915,14 @@ print "AS -->(IN23) kblength > wgMaxArticleSize=>EXIT!<br>";
 		}
 
 		# update the article here
-print "<br>AS-->------------------------------------<br><br>";
-print "AS-->**** LETS UPDATE ARTICLE ****<br>";
 		if( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
 			$this->watchthis, '', $sectionanchor ) ) {
-print "AS-->(IN24) Articulo actualizado=>Success<br>";
 			wfProfileOut( $fname );
 return self::AS_SUCCESS_UPDATE;
 //			return false;
 		} else {
-print "AS-->(IN25) UPDATE FAILED! => Conflict<br>";
 			$this->isConflict = true;
 		}
-print "AS-->End of attempSave and exit with true (fail)<br>";
-print "<br>AS-->------------------------------------<br><br>";
 		wfProfileOut( $fname );
 		return self::AS_END;
 //		return true;
@@ -1667,8 +1590,6 @@ END
 	 * @todo document
 	 */
 	function mergeChangesInto( &$editText ){
-		print "!!!!!!!!!!!!!!!!!!!!this->revid:".$this->revid."<br>";
-		print "mergeChanges->edittext:".$editText."<br>";
 		$fname = 'EditPage::mergeChangesInto';
 		wfProfileIn( $fname );
 
@@ -1679,7 +1600,6 @@ END
 			$db, $this->mArticle->mTitle, $this->edittime );
 //$baseRevision=true;
 		if( is_null( $baseRevision ) ) {
-print "mergeChanges-->baseRevision es NULL<br>";
 			wfProfileOut( $fname );
 //break;
 			return false;
@@ -1690,7 +1610,6 @@ print "mergeChanges-->baseRevision es NULL<br>";
 		$currentRevision =  Revision::loadFromTitle(
 			$db, $this->mArticle->mTitle );
 		if( is_null( $currentRevision ) ) {
-			print "mergeChanges-->currentRevision es NULL<br>";
 			wfProfileOut( $fname );
 			return false;
 		}
