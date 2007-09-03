@@ -340,9 +340,8 @@ function getSQLForCollection($language="<ANY>") {
 }
 
 function getSQLForLevels($language="<ANY>") {
-
 	global
-		$definedMeaningTable, $expressionTable, $bootstrappedDefinedMeaningsTable;
+		$definedMeaningTable, $expressionTable, $bootstrappedDefinedMeaningsTable, $classAttributeLevels;
 	
 	$o=OmegaWikiAttributes::getInstance();
 	// TO DO: Add support for multiple languages here
