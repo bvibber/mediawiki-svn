@@ -37,15 +37,13 @@ function wfSpecialSuggest() {
 
 
 function getSuggestions() {
-
-
 	$o=OmegaWikiAttributes::getInstance();
 	global $wgUser;
 	$dc=wdGetDataSetContext();	
 	@$search = ltrim($_GET['search-text']);
 	@$prefix = $_GET['prefix'];
 	@$query = $_GET['query'];
-	@$objectId = $_GET['objectId'];
+	@$definedMeaningId = $_GET['definedMeaningId'];
 	@$offset = $_GET['offset'];
 	@$attributesLevel = $_GET['attributesLevel'];
 	$sql='';
@@ -64,16 +62,16 @@ function getSuggestions() {
 			$sql=constructSQLWithFallback($sqlActual, $sqlFallback, array("member_mid", "spelling", "collection_mid"));
 			break;
 		case 'option-attribute':
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'OPTN');
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, 'OPTN');
 			break;
 		case 'translated-text-attribute':
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TRNS');
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, 'TRNS');
 			break;
 		case 'text-attribute':	
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'TEXT');
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, 'TEXT');
 			break;
 		case 'link-attribute':	
-			$sql = getSQLToSelectPossibleAttributes($objectId, $attributesLevel, 'URL');
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, 'URL');
 			break;
 		case 'language':
 			require_once('languages.php');
@@ -226,19 +224,19 @@ function constructSQLWithFallback($actual_query, $fallback_query, $fields){
 	return $sql;
 }
 
-function getSQLToSelectPossibleAttributes($objectId, $attributesLevel, $attributesType) {
+function getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $attributesType) {
 	global
 		$wgUser;
 	
-	$sqlActual = getSQLToSelectPossibleAttributesForLanguage($objectId, $attributesLevel, $attributesType, $wgUser->getOption('language'));
-	$sqlFallback = getSQLToSelectPossibleAttributesForLanguage($objectId, $attributesLevel, $attributesType, 'en');
+	$sqlActual = getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attributesLevel, $attributesType, $wgUser->getOption('language'));
+	$sqlFallback = getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attributesLevel, $attributesType, 'en');
 	
 	return constructSQLWithFallback($sqlActual, $sqlFallback, array("attribute_mid", "spelling")); 
 }
 
 # language is the 2 letter wikimedia code. use "<ANY>" if you don't want language filtering
 # (any does set limit 1 hmph)
-function getSQLToSelectPossibleAttributesForLanguage($objectId, $attributesLevel, $attributesType, $language="<ANY>") {
+function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attributesLevel, $attributesType, $language="<ANY>") {
 	global $wgDefaultClassMids;
 	global $wgUser;
 	$dc=wdGetDataSetContext();
@@ -274,7 +272,7 @@ function getSQLToSelectPossibleAttributesForLanguage($objectId, $attributesLevel
 		" AND ({$dc}_class_attributes.class_mid IN (" .
 				' SELECT class_mid ' .
 				" FROM   {$dc}_class_membership" .
-				" WHERE  {$dc}_class_membership.class_member_mid = " . $objectId .
+				" WHERE  {$dc}_class_membership.class_member_mid = " . $definedMeaningId .
 				' AND ' . getLatestTransactionRestriction("{$dc}_class_membership") .
 				' )'.
 				$defaultClassRestriction .

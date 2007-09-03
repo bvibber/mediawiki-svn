@@ -46,8 +46,8 @@ function updateSuggestions(suggestPrefix) {
 	suggestText = document.getElementById(suggestPrefix + "text");
 	suggestText.className = "suggest-loading";
 
-	var suggestAttributesLevel = document.getElementById(suggestPrefix + "parameter-attributesLevel");
-	var suggestObjectId = document.getElementById(suggestPrefix + "parameter-attributesObjectId");
+	var suggestAttributesLevel = document.getElementById(suggestPrefix + "parameter-level");
+	var suggestDefinedMeaningId = document.getElementById(suggestPrefix + "parameter-definedMeaningId");
 
 	var URL = 'index.php';
 	var location = "" + document.location;
@@ -63,11 +63,11 @@ function updateSuggestions(suggestPrefix) {
 		'&offset=' + encodeURI(suggestOffset) + 
 		'&dataset='+dataSet;
 
-	if((suggestAttributesLevel != null) && (suggestObjectId != null)) 
+	if((suggestAttributesLevel != null) && (suggestDefinedMeaningId != null)) 
 		URL = 
 			URL + 
 			'&attributesLevel=' + encodeURI(suggestAttributesLevel.value) + 
-			'&objectId=' + encodeURI(suggestObjectId.value);
+			'&definedMeaningId=' + encodeURI(suggestDefinedMeaningId.value);
 	http.open('GET', URL, true);
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {

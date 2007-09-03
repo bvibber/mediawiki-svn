@@ -1263,8 +1263,8 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 	public function add(IdStack $idPath) {
 		if ($this->isAddField) {
 			$parameters = array(
-				"attributesLevel" => $this->attributesLevelName, 
-				"attributesObjectId" => $idPath->getDefinedMeaningId() 
+				"level" => $this->attributesLevelName, 
+				"definedMeaningId" => $idPath->getDefinedMeaningId() 
 			);
 								
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);			
@@ -1274,7 +1274,7 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 	}
 	
 	public function getEditHTML(IdStack $idPath, $value) {
-		$parameters = array("attributesLevel" => $this->attributesLevelName);
+		$parameters = array("level" => $this->attributesLevelName);
 		return getSuggest($this->updateId($idPath->getId()), $this->suggestType(), $parameters); 
 	}
 }
@@ -1307,9 +1307,9 @@ class OptionAttributeEditor extends AttributeEditor {
 			$syntransId = $idPath->getKeyStack()->peek(0)->syntransId;
 			
 			$parameters = array(
-				'attributesLevel' => $this->attributesLevelName, 
-				'attributesObjectId' => $idPath->getDefinedMeaningId(),
-				'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId
+				"level" => $this->attributesLevelName, 
+				"definedMeaningId" => $idPath->getDefinedMeaningId(),
+				"onUpdate" => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId
 			);
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);
 		}
@@ -1319,8 +1319,8 @@ class OptionAttributeEditor extends AttributeEditor {
 
 	public function getEditHTML(IdStack $idPath, $value) {
 		$parameters = array(
-			'attributesLevel' => $this->attributesLevelName,
-			'onUpdate' => 'updateSelectOptions(\'' . $this->updateId($idPath->getId()) . '-option\''
+			"level" => $this->attributesLevelName,
+			"onUpdate" => 'updateSelectOptions(\'' . $this->updateId($idPath->getId()) . '-option\''
 		);
 		
 		return getSuggest($this->updateId($idPath->getId()), $this->suggestType(), $parameters); 
