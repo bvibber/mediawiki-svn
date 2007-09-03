@@ -16,12 +16,19 @@ function addCollapsablePrefixToClass($class) {
 define('EOL',"\n"); # Makes human (and vim :-p) readable output (somewhat...)
 #define('EOL',""); # Output only readable by browsers
 
+/**
+ * Class IdStack is used to keep track of context during the rendering of
+ * a hierarchical structure of Records and RecordSets. The name IdStack might
+ * not be accurate anymore and might be renamed to something else like RenderContext.
+ */
+
 class IdStack {
 	protected $keyStack;
 	protected $idStack = array();
 	protected $currentId;
 	protected $classStack = array();
 	protected $currentClass;
+	protected $definedMeaningIdStack = array(); // Used to keep track of which defined meaning is being rendered
 	
 	public function __construct($prefix) {
 	 	$this->keyStack = new RecordStack();
@@ -88,6 +95,23 @@ class IdStack {
 
 	public function getKeyStack() {
 		return $this->keyStack;
+	}
+	
+	public function pushDefinedMeaningId($definedMeaningId) {
+		return $this->definedMeaningIdStack[] = $definedMeaningId;
+	}
+	
+	public function popDefinedMeaningId() {
+		return array_pop($this->definedMeaningIdStack);
+	}
+	
+	public function getDefinedMeaningId() {
+		$stackSize = count($this->definedMeaningIdStack);
+		
+		if ($stackSize > 0)
+			return $this->definedMeaningIdStack[$stackSize - 1];
+		else
+			throw new Exception("There is no defined meaning defined in the current context");
 	}
 
 	public function __tostring() {
@@ -1229,20 +1253,18 @@ class CollectionReferenceEditor extends DefinedMeaningReferenceEditor {
 
 class AttributeEditor extends DefinedMeaningReferenceEditor {
 	protected $attributesLevelName;
-	protected $objectIdFetcher;
 
-	public function __construct(Attribute $attribute = null, PermissionController $permissionController, $isAddField, $attributesLevelName, ContextFetcher $objectIdFetcher) {
+	public function __construct(Attribute $attribute = null, PermissionController $permissionController, $isAddField, $attributesLevelName) {
 		parent::__construct($attribute, $permissionController, $isAddField);
 
 		$this->attributesLevelName = $attributesLevelName;
-		$this->objectIdFetcher = $objectIdFetcher;
 	}
 
 	public function add(IdStack $idPath) {
 		if ($this->isAddField) {
 			$parameters = array(
 				"attributesLevel" => $this->attributesLevelName, 
-				"attributesObjectId" => $this->objectIdFetcher->fetch($idPath->getKeyStack())
+				"attributesObjectId" => $idPath->getDefinedMeaningId() 
 			);
 								
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);			
@@ -1283,13 +1305,10 @@ class OptionAttributeEditor extends AttributeEditor {
 	public function add(IdStack $idPath) {
 		if ($this->isAddField) {
 			$syntransId = $idPath->getKeyStack()->peek(0)->syntransId;
-			$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
-			
-//			echo "SyntransId: $syntransId  ObjectId: $objectId\n";
 			
 			$parameters = array(
 				'attributesLevel' => $this->attributesLevelName, 
-				'attributesObjectId' => $objectId,
+				'attributesObjectId' => $idPath->getDefinedMeaningId(),
 				'onUpdate' => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId
 			);
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);
@@ -2199,5 +2218,29 @@ class GotoSourceEditor extends Viewer {
 	
 	public function showsData($value) {
 		return true;
+	}
+}
+
+class DefinedMeaningContextEditor extends WrappingEditor {
+	public function view(IdStack $idPath, $value) {
+		$idPath->pushDefinedMeaningId($value->definedMeaningId);	
+		$result = $this->wrappedEditor->view($idPath, $value);
+		$idPath->popDefinedMeaningId();
+		
+		return $result;
+	}
+	
+	public function edit(IdStack $idPath, $value) {
+		$idPath->pushDefinedMeaningId($value->definedMeaningId);	
+		$result = $this->wrappedEditor->edit($idPath, $value);
+		$idPath->popDefinedMeaningId();
+		
+		return $result;	
+	}
+	
+	public function save(IdStack $idPath, $value) {
+		$idPath->pushDefinedMeaningId($value->definedMeaningId);	
+		$this->wrappedEditor->save($idPath, $value);
+		$idPath->popDefinedMeaningId();
 	}
 }

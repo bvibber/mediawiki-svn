@@ -247,6 +247,7 @@ class OmegaWikiAttributes {
 		$t->definedMeaning = new Attribute(null, wfMsgSc("DefinedMeaning"), 
 			new Structure(
 				"defined-meaning",
+				$t->definedMeaningId,
 				$t->definedMeaningCompleteDefiningExpression,
 				$t->definition, 
 				$t->classAttributes, 

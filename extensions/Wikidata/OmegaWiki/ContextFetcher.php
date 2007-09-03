@@ -27,6 +27,7 @@ class DefaultContextFetcher implements ContextFetcher {
 		$this->levelsToLookUp = $levelsToLookUp;
 		$this->attribute = $attribute;
 	}
+
 	public function fetch($keyPath) {
 		if ($keyPath->peek($this->levelsToLookUp)->getStructure()->supportsAttribute($this->attribute))
 			return $keyPath->peek($this->levelsToLookUp)->getAttributeValue($this->attribute); 
@@ -55,6 +56,6 @@ class DefinitionObjectIdFetcher extends DefaultContextFetcher {
 		$attribute = $this->attribute;
 		return "DefinitionObjectIdFetcher($levelsToLookUp, $attribute)";
 	}
-}
+} 
 
 

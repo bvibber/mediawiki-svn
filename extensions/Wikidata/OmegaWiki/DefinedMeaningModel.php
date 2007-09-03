@@ -144,6 +144,7 @@ class DefinedMeaningModel {
 		$o=OmegaWikiAttributes::getInstance();
 
 		$record = new ArrayRecord($o->definedMeaning->type);
+		$record->definedMeaningId = $id;
 		$record->definedMeaningCompleteDefiningExpression =  getDefiningExpressionRecord($id);
 		$record->definition = getDefinedMeaningDefinitionRecord($id, $view);
 		$record->classAttributes = getClassAttributesRecordSet($id, $view);
