@@ -1062,9 +1062,6 @@ class ShortTextEditor extends ScalarEditor {
 
 class LinkEditor extends ShortTextEditor {
 	public function getViewHTML(IdStack $idPath, $value) {
-
-		$o=OmegaWikiAttributes::getInstance();
-		
 		$label = htmlspecialchars($value->linkLabel);
 		$url = htmlspecialchars($value->linkURL); 
 
@@ -1136,8 +1133,6 @@ class DefinedMeaningReferenceEditor extends SuggestEditor {
 	}
 
 	public function getViewHTML(IdStack $idPath, $value) {
-
-		$o=OmegaWikiAttributes::getInstance();
 		$definedMeaningId = $value->definedMeaningId;
 		$definedMeaningLabel = $value->definedMeaningLabel;
 		$definedMeaningDefiningExpression = $value->definedMeaningDefiningExpression;
@@ -1152,9 +1147,6 @@ class ClassAttributesLevelDefinedMeaningEditor extends SuggestEditor {
 	}
 
 	public function getViewHTML(IdStack $idPath, $value) {
-
-		$o=OmegaWikiAttributes::getInstance();
-
 		$definedMeaningId = $value->definedMeaningId;
 		$definedMeaningLabel = $value->definedMeaningLabel;
 		$definedMeaningDefiningExpression = $value->definedMeaningDefiningExpression;
@@ -1208,9 +1200,6 @@ class OptionSelectEditor extends SelectEditor {
 	}
 
 	public function getViewHTML(IdStack $idPath, $value) {
-
-		$o=OmegaWikiAttributes::getInstance();
-
 		$definedMeaningId = $value->definedMeaningId;
 		$definedMeaningLabel = $value->definedMeaningLabel;
 		$definedMeaningDefiningExpression = $value->definedMeaningDefiningExpression;
@@ -1915,9 +1904,6 @@ class RollBackEditor extends ScalarEditor {
 	}
 	
 	public function getViewHTML(IdStack $idPath, $value) {
-
-		$o=OmegaWikiAttributes::getInstance();
-			
 		$isLatest = $value->isLatest;
 		$operation = $value->operation;
 		
@@ -2193,8 +2179,6 @@ class ObjectPathEditor extends Viewer {
 
 class GotoSourceEditor extends Viewer {	
 	public function view(IdStack $idPath, $value) {
-
-		$o=OmegaWikiAttributes::getInstance();
 		global
 			  $wgGotoSourceTemplates;
 		
