@@ -64,8 +64,7 @@ class ApiEditPage extends ApiBase {
 	const AS_NO_CREATE_PERMISSION			= 223;
 	const AS_BLANK_ARTICLE					= 224;
 	const AS_CONFLICT_DETECTED				= 225;
-	const AS_SUMMARY_NEEDED_A				= 226;
-	const AS_SUMMARY_NEEDED_B				= 227;
+	const AS_SUMMARY_NEEDED					= 226;
 	const AS_TEXTBOX_EMPTY					= 228;
 	const AS_MAX_ARTICLE_SIZE_EXCEDED		= 229;
 	const AS_OK								= 230;
@@ -159,12 +158,8 @@ class ApiEditPage extends ApiBase {
 				$result['result'] = 'Blank edition';
 				break;
 
-			case self::AS_SUMMARY_NEEDED_B:
-				$result['result'] = 'Summary is mandatory (B)';
-				break;
-
-			case self::AS_SUMMARY_NEEDED_A:
-				$result['result'] = 'Summary is mandatory (A)';
+			case self::AS_SUMMARY_NEEDED:
+				$result['result'] = 'Summary is mandatory';
 				break;
 
 			case self::AS_CONFLICT_DETECTED:
