@@ -52,9 +52,7 @@ class ApiEditPage extends ApiBase {
 	const AS_SUCCESS_NEW_ARTICLE			= 201;
 	const AS_HOOK_ERROR 					= 210;
 	const AS_FILTERING						= 211;
-	const AS_EXIST_HOOK_ERROR_A				= 212;
-	const AS_EXIST_HOOK_ERROR_B				= 213;
-	const AS_EXIST_HOOK_ERROR_C				= 214;
+	const AS_HOOK_ERROR_EXPECTED				= 212;
 	const AS_BLOCKED_PAGE_FOR_USER			= 215;
 	const AS_CONTENT_TOO_BIG				= 216;
 	const AS_USER_CANNOT_EDIT				= 217;
@@ -217,8 +215,8 @@ class ApiEditPage extends ApiBase {
 				$result['result'] = 'Blocked page for the user';
 				break;
 
-			case self::AS_EXIST_HOOK_ERROR_A:
-				$result['result'] = 'Hook error detected(A)';
+			case self::AS_HOOK_ERROR:
+				$result['result'] = 'Hook error detected';
 				break;
 
 			case self::AS_SPAM_ERROR:
@@ -229,12 +227,8 @@ class ApiEditPage extends ApiBase {
 				$result['result'] = 'Filtering not passed';
 				break;
 
-			case self::AS_EXIST_HOOK_ERROR_B:
-				$result['result'] = 'Hook error detected(B)';
-				break;
-
-			case self::AS_EXIST_HOOK_ERROR_C:
-				$result['result'] = 'Hook error detected(C)';
+			case self::AS_HOOK_ERROR_EXPECTED:
+				$result['result'] = 'Hook error detected';
 				break;
 
 			case self::NO_POST_REQUEST:
