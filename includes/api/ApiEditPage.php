@@ -81,28 +81,15 @@ class ApiEditPage extends ApiBase {
 
     public function execute() {
         global $wgUser, $wgRequest;
-print "**** API EDIT PAGE BEGINS.. - EXECUTE (AEP-E)**** <br>";
-		$title = $text = $summary = $edittime = $lgtoken = $userid = $tokenid = null;
+				$title = $text = $summary = $edittime = $lgtoken = $userid = $tokenid = null;
 
 		if( session_id() == '' ) {
 			wfSetupSession();
-        }
+    }
 
 		extract($this->extractRequestParams());
 
-print "-------------------------------<br>";
-print "AEP-E->Inner params :<br>";
-print_r($this->extractRequestParams())."<br>";
-print "FROM extract-title:"		.$title."<br>";
-print "FROM extract-text:"		.$text."<br>";
-print "FROM extract-summary:"	.$summary."<br>";
-print "FROM extract-edittime:"	.$edittime."<br>";
-print "FROM extract-lgtoken:"	.$lgtoken."<br>";
-print "FROM extract-userid:"	.$userid."<br>";
-print "FROM extract-tokenid:"	.$tokenid."<br>";
-print "-------------------------------<br>";
-
-        $object_title = Title::newFromDBkey($title);
+    $object_title = Title::newFromDBkey($title);
 		$myArticle = new Article($object_title);
 
         // User creation since UserID number
@@ -114,15 +101,14 @@ print "-------------------------------<br>";
 		 	$wgUser = $myUser;
 
 		 	if ($lgtoken != $_SESSION['wsToken']){
-				print 'LGTOKEN ARE DIFFERENT! - ERROR !!!!!!!!!!!<br>';
-        		$value = BAD_LGTOKEN;
-        	}
+				$value = BAD_LGTOKEN;
+      }
 		}
 
 		if ($value != 'BAD_LGTOKEN'){
-        	$md5 = $wgUser->editToken();
-        // This is only to fast testing. So must be cleanned before a Release
-        	$tokenid = $md5;
+    	$md5 = $wgUser->editToken();
+      // This is only to fast testing. So must be cleanned before a Release
+      $tokenid = $md5;
 
 			$params = new FauxRequest(array (
 	        	'wpTitle' 		=> $title,
@@ -132,41 +118,28 @@ print "-------------------------------<br>";
 	        	'wplgToken' 	=> $lgtoken,
 	        	'wpUserID'		=> $userid,
 	        	'wpEditToken'	=> $tokenid
-	        ));
+	    ));
 
-        // APiEditPage only accepts POST requests
+      // APiEditPage only accepts POST requests
 			if (!$_SERVER['REQUEST_METHOD']){
-        		$value = 'NO_POST_REQUEST';
-        	}
+      	$value = 'NO_POST_REQUEST';
+      }
 
-        	else{
-        		$params->wasPosted = true;
+      else{
+      	$params->wasPosted = true;
+     		if ($md5 != $tokenid){
+					$value = BAD_EDITTOKEN;
+      	}
 
-        		if ($md5 != $tokenid){
-					print 'TOKEN ARE DIFFERENT! - ERROR !!!!!!!!!!!<br>';
-        			$value = BAD_EDITTOKEN;
-        		}
-
-        		else {
-print 'ApiEditPage-->Token ok ..<br>';
-        			$editForm = new EditPage($myArticle);
+      	else {
+					$editForm = new EditPage($myArticle);
 					$editForm->mTitle = $object_title;
 					$editForm->importFormData($params);
 
-print "-------------------------------<br>";
-print "AEP-E->Param sent by editPage->attemptSave: <br>";
-print "AEP-E->form->mTitle:"	.$editForm->mTitle."<br>";
-print "AEP-E->form->textbox1:"	.$editForm->textbox1."<br>";
-print "AEP-E->form->summary:"	.$editForm->summary."<br>";
-print "AEP-E->form->revid:"		.$editForm->revid."<br>";
-print "AEP-E->form->edittime:"	.$editForm->edittime."<br>";
-
 					$value=$editForm->attemptSave();
-print "VALUE returned by attemptSave:".$value."<br>";
-        		}
-        	}
-        }
-print "VALUE tested in SWITCH:".$value."br";
+				}
+    	}
+		}
 		switch ($value){
 			case self::AS_END:
 				$result['result'] = 'COnflict detected';
