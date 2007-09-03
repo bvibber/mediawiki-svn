@@ -28,8 +28,7 @@ class EditPage {
 	const AS_NO_CREATE_PERMISSION			= 223;
 	const AS_BLANK_ARTICLE					= 224;
 	const AS_CONFLICT_DETECTED				= 225;
-	const AS_SUMMARY_NEEDED_A				= 226;
-	const AS_SUMMARY_NEEDED_B				= 227;
+	const AS_SUMMARY_NEEDED					= 226;
 	const AS_TEXTBOX_EMPTY					= 228;
 	const AS_MAX_ARTICLE_SIZE_EXCEDED		= 229;
 	const AS_OK								= 230;
@@ -858,7 +857,7 @@ class EditPage {
 			if( md5( $this->summary ) == $this->autoSumm ) {
 				$this->missingSummary = true;
 				wfProfileOut( $fname );
-				return self::AS_SUMMARY_NEEDED_A;
+				return self::AS_SUMMARY_NEEDED;
 //				return( true );
 			}
 		}
@@ -868,7 +867,7 @@ class EditPage {
 			if (trim($this->summary) == '') {
 				$this->missingSummary = true;
 				wfProfileOut( $fname );
-				return self::AS_SUMMARY_NEEDED_B;
+				return self::AS_SUMMARY_NEEDED;
 //				return( true );
 			}
 		}
@@ -2143,10 +2142,7 @@ END
 		case self::AS_TEXTBOX_EMPTY:
 			return true;
 			
-		case self::AS_SUMMARY_NEEDED_B:
-			return true;
-			
-		case self::AS_SUMMARY_NEEDED_A:
+		case self::AS_SUMMARY_NEEDED:
 			return true;
 			
 		case self::AS_CONFLICT_DETECTED:
