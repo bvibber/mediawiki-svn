@@ -16,9 +16,7 @@ class EditPage {
 	const AS_SUCCESS_NEW_ARTICLE			= 201;
 	const AS_HOOK_ERROR 					= 210;
 	const AS_FILTERING						= 211;
-	const AS_EXIST_HOOK_ERROR_A				= 212;
-	const AS_EXIST_HOOK_ERROR_B				= 213;
-	const AS_EXIST_HOOK_ERROR_C				= 214;
+	const AS_EXIST_HOOK_ERROR					= 212;
 	const AS_BLOCKED_PAGE_FOR_USER			= 215;
 	const AS_CONTENT_TOO_BIG				= 216;
 	const AS_USER_CANNOT_EDIT				= 217;
@@ -665,7 +663,7 @@ class EditPage {
 		if( !wfRunHooks( 'EditPage::attemptSave', array( &$this ) ) )
 		{
 			wfDebug( "Hook 'EditPage::attemptSave' aborted article saving" );
-			return self::AS_EXIST_HOOK_ERROR_A;
+			return self::AS_EXIST_HOOK_ERROR;
 //			return false;
 		}
 
@@ -693,13 +691,13 @@ class EditPage {
 			# Error messages etc. could be handled within the hook...
 			wfProfileOut( $fname );
 			wfProfileOut( "$fname-checks" );
-			return AS_EXIST_HOOK_ERROR_B;
+			return AS_EXIST_HOOK_ERROR;
 //			return false;
 		} elseif( $this->hookError != '' ) {
 			# ...or the hook could be expecting us to produce an error
 			wfProfileOut( "$fname-checks " );
 			wfProfileOut( $fname );
-			return self::AS_EXIST_HOOK_ERROR_C;
+			return self::AS_EXIST_HOOK_ERROR;
 //			return true;
 		}
 		if ( $wgUser->isBlockedFrom( $this->mTitle, false ) ) {
@@ -2191,7 +2189,7 @@ END
 			$this->blockedPage();
 			return false;
 			
-		case self::AS_EXIST_HOOK_ERROR_A:
+		case self::AS_EXIST_HOOK_ERROR:
 			return false;
 		
 		case self::AS_SPAM_ERROR:
@@ -2200,12 +2198,6 @@ END
 			
 		case self::AS_FILTERING:
 			return false;
-			
-		case self::AS_EXIST_HOOK_ERROR_B:
-			return false;
-			
-		case self::AS_EXIST_HOOK_ERROR_C:
-			return true;
 			
 //		case DEFAULT:
 //			return true;
