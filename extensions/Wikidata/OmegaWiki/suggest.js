@@ -1,4 +1,4 @@
-window.onload=sortAll;
+//window.onload=sortAll;
 
 function getHTTPObject() {
 	var xmlhttp;
@@ -194,6 +194,7 @@ function suggestNextClicked(event, suggestNext, dataSetOverride) {
 	var suggestPrefix = getSuggestPrefix(suggestNext, 'next');
 	var suggestOffset = document.getElementById(suggestPrefix + 'offset');
 	suggestOffset.value = parseInt(suggestOffset.value) + 10;
+	updateSuggestions(suggestPrefix);
 	stopEventHandling(event);
 }
 
@@ -201,6 +202,7 @@ function suggestPreviousClicked(event, suggestPrevious) {
 	var suggestPrefix = getSuggestPrefix(suggestPrevious, 'previous');
 	var suggestOffset = document.getElementById(suggestPrefix + 'offset');
 	suggestOffset.value = Math.max(parseInt(suggestOffset.value) - 10, 0);
+	updateSuggestions(suggestPrefix);
 	stopEventHandling(event);
 }
 

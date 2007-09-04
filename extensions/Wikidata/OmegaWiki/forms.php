@@ -98,10 +98,10 @@ function getSuggest($name, $query, $parameters = array(), $value=0, $label='', $
         	'<div><table>' .
         		'<tr>' .
         			'<td><input type="text" id="'. $name .'-suggest-text" autocomplete="off" onkeyup="suggestTextChanged(this)" style="width: 300px"></input></td>' .
-        			'<td><a id="'. $name .'-suggest-clear" href="#'. $name . '-suggest-link" onclick="suggestClearClicked(event, this)">Clear</a></td>' .
-        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-previous" href="#'. $name .'-suggest-table" class="suggest-previous" onclick="suggestPreviousClicked(event, this)"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowLeft.png" alt="Previous"/> Previous</a></td>'.
-        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-next" href="#'. $name .'-suggest-table" class="suggest-next" onclick="suggestNextClicked(event, this)">Next <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowRight.png" alt="Next"/></a></td>'.
-        			'<td><a id="'. $name .'-suggest-close" href="#'. $name . '-suggest-link" onclick="suggestCloseClicked(event, this)">[X]</a></td>' .
+        			'<td><a id="'. $name .'-suggest-clear" href="javascript:void(0)" onclick="suggestClearClicked(event, this)">Clear</a></td>' .
+        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-previous" href="javascript:void(0)" class="suggest-previous" onclick="suggestPreviousClicked(event, this)"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowLeft.png" alt="Previous"/> Previous</a></td>'.
+        			'<td style="white-space: nowrap"><a id="'. $name .'-suggest-next" href="javascript:void(0)" class="suggest-next" onclick="suggestNextClicked(event, this)">Next <img src="'.$wgScriptPath.'/extensions/Wikidata/Images/ArrowRight.png" alt="Next"/></a></td>'.
+        			'<td><a id="'. $name .'-suggest-close" href="javascript:void(0)" onclick="suggestCloseClicked(event, this)">[X]</a></td>' .
         		'</tr>' .
         	'</table></div>' .
         	'<div><table id="'. $name .'-suggest-table"><tr><td></td></tr></table></div>'.
@@ -129,7 +129,7 @@ function getStaticSuggest($name, $suggestions, $idColumns = 1, $value=0, $label=
         '<div class="suggest-drop-down" style="position: relative"><div id="'. $name .'-suggest-div" style="position: absolute; left: 0px; top: 0px; border: 1px solid #000000; display: none; background-color: white; padding: 4px">' .
         	'<div><table><tr><td>' .
 //        	'<input type="text" id="'. $name .'-suggest-text" autocomplete="off" onkeyup="suggestTextChanged(this)" style="width: 300px"></input>' .
-        	'</td><td><a id="'. $name .'-suggest-clear" href="#'. $name . '-suggest-link" onclick="suggestClearClicked(event, this)">Clear</a></td><td><a id="'. $name .'-suggest-close" href="#'. $name . '-suggest-link" onclick="suggestCloseClicked(event, this)">[X]</a></td></tr></table></div>' .
+        	'</td><td><a id="'. $name .'-suggest-clear" href="javascript:void(0)" onclick="suggestClearClicked(event, this)">Clear</a></td><td><a id="'. $name .'-suggest-close" href="#'. $name . '-suggest-link" onclick="suggestCloseClicked(event, this)">[X]</a></td></tr></table></div>' .
         	'<div>' . $suggestions .
         	//<table id="'. $name .'-suggest-table"><tr><td></td></tr></table>
         	'</div>'.
