@@ -29,7 +29,9 @@ var wgOggPlayer = {
 		// Save still image HTML
 		if ( !(params.id in this.savedThumbs) ) {
 			var thumb = document.createDocumentFragment();
-			thumb.appendChild( elt.cloneNode( true ) );
+			for ( i = 0; i < elt.childNodes.length; i++ ) {
+				thumb.appendChild( elt.childNodes.item( i ).cloneNode( true ) );
+			}
 			this.savedThumbs[params.id] = thumb;
 		}
 
@@ -52,7 +54,11 @@ var wgOggPlayer = {
 			}
 		}
 
-		if ( !player || !this.clientSupports[player] ) {
+		if ( !this.clientSupports[player] )  {
+			player = false;
+		}
+
+		if ( !player ) {
 			for ( var i = 0; i < this.players.length; i++ ) {
 				if ( this.clientSupports[this.players[i]] ) {
 					player = this.players[i];
@@ -62,7 +68,6 @@ var wgOggPlayer = {
 		}
 
 		elt.innerHTML = '';
-			
 		switch ( player ) {
 			case 'videoElement':
 				this.embedVideoElement( elt, params );
@@ -83,15 +88,20 @@ var wgOggPlayer = {
 				this.embedQuicktimePlugin( elt, params );
 				break;
 			case 'thumbnail':
+			default:
 				if ( params.id in this.savedThumbs ) {
 					elt.appendChild( this.savedThumbs[params.id].cloneNode( true ) );
 				} else {
 					elt.appendChild( document.createTextNode( 'Missing saved thumbnail for ' + params.id ) );
 				}
-				break;
-			default:
-				elt.innerHTML = '<div>' + this.msg['ogg-no-player'] + '</div>';
-				player = 'none';
+				if ( player != 'thumbnail' ) {
+					var div = document.createElement( 'div' );
+					div.className = 'ogg-player-options';
+					div.style.cssText = 'width: ' + ( params.width - 10 ) + 'px;';
+					div.innerHTML = this.msg['ogg-no-player'];
+					elt.appendChild( div );
+					player = 'none';
+				}
 		}
 		if ( player != 'thumbnail' ) {
 			var optionsBox = this.makeOptionsBox( player, params );
@@ -137,7 +147,6 @@ var wgOggPlayer = {
 		}
 
 		// Mozilla plugins
-
 		
 		if(navigator.mimeTypes && navigator.mimeTypes.length > 0) {
 			for ( var i = 0; i < navigator.mimeTypes.length; i++) {
