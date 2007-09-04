@@ -289,8 +289,8 @@ class ApiEditPage extends ApiBase {
 
     protected function getExamples() {
         return array (
-                "Edit a page (anonimous user)",
-                "http://localhost/WikiMob/api.php?action=edit&eptitle=Test&epsummary=test%20summary&eptext=article%20content&epedittime=20070824123454&eptokenid=+\\"
+                "Edit a page (anonimous user):",
+                "    api.php?action=edit&eptitle=Test&epsummary=test%20summary&eptext=article%20content&epedittime=20070824123454&eptokenid=+%5C"
             );
     }
 
