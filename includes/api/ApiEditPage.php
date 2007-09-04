@@ -78,7 +78,7 @@ class ApiEditPage extends ApiBase {
 
     public function execute() {
         global $wgUser, $wgRequest;
-				$title = $text = $summary = $edittime = $lgtoken = $userid = $tokenid = null;
+				$title = $text = $summary = $edittime = $lgtoken = $userid = $tokenid = $value = null;
 
 		if( session_id() == '' ) {
 			wfSetupSession();
