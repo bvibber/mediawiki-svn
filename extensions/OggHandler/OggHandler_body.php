@@ -187,16 +187,23 @@ class OggHandler extends MediaHandler {
 
 		if ( $srcHeight == 0 || $srcWidth == 0 ) {
 			// Make audio player
+			$height = empty( $params['height'] ) ? 20 : $params['height'];
 			if ( $noPlayer ) {
-				$scriptPath = self::getMyScriptPath();
-				return new ThumbnailImage( $file, "$scriptPath/info.png", 22, 22 );
+				if ( $height > 100 ) {
+					global $wgScriptPath;
+					$iconUrl = "$wgScriptPath/skins/common/images/icons/fileicon-ogg.png";
+					return new ThumbnailImage( $file, $iconUrl, 120, 120 );
+				} else {
+					$scriptPath = self::getMyScriptPath();
+					$iconUrl = "$scriptPath/info.png";
+					return new ThumbnailImage( $file, $iconUrl, 22, 22 );
+				}
 			}
 			if ( empty( $params['width'] ) ) {
 				$width = 200;
 			} else {
 				$width = $params['width'];
 			}
-			$height = empty( $params['height'] ) ? 20 : $params['height'];
 			return new OggAudioDisplay( $file, $file->getURL(), $width, $height, $length );
 		}
 
