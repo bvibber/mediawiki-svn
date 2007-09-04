@@ -13,21 +13,24 @@ var wgOggPlayer = {
 	// Configuration from MW
 	'msg': {},
 	'cortadoUrl' : '',
-	'smallFileUrl' : '',
+	'extPathUrl' : '',
 	'showPlayerSelect': true,
 	'controlsHeightGuess': 20, 
 
-	// Main entry point: initialise a video player
-	// Player will be created as a child of the given ID
-	// There may be multiple players in a document
-	'init': function ( player, id, videoUrl, width, height, length, linkUrl ) {
-		elt = document.getElementById( id );
+	/**
+	 * Main entry point: initialise a video player
+	 * Player will be created as a child of the given ID
+	 * There may be multiple players in a document.
+	 * Parameters are: id, videoUrl, width, height, length, linkUrl
+	 */
+	'init': function ( player, params ) {
+		elt = document.getElementById( params.id );
 
 		// Save still image HTML
-		if ( !(id in this.savedThumbs) ) {
+		if ( !(params.id in this.savedThumbs) ) {
 			var thumb = document.createDocumentFragment();
 			thumb.appendChild( elt.cloneNode( true ) );
-			this.savedThumbs[id] = thumb;
+			this.savedThumbs[params.id] = thumb;
 		}
 
 		this.detect( elt );
@@ -62,40 +65,41 @@ var wgOggPlayer = {
 			
 		switch ( player ) {
 			case 'videoElement':
-				this.embedVideoElement( elt, videoUrl, width, height, length );
+				this.embedVideoElement( elt, params );
 				break;
 			case 'oggPlugin':
-				this.embedOggPlugin( elt, videoUrl, width, height, length );
+				this.embedOggPlugin( elt, params );
 				break;
 			case 'vlc-mozilla':
-				this.embedVlcPlugin( elt, videoUrl, width, height, length );
+				this.embedVlcPlugin( elt, params );
 				break;
 			case 'vlc-activex':
-				this.embedVlcActiveX( elt, videoUrl, width, height, length );
+				this.embedVlcActiveX( elt, params );
 				break;
 			case 'cortado':
-				this.embedCortado( elt, videoUrl, width, height, length );
+				this.embedCortado( elt, params );
 				break;
 			case 'quicktime-mozilla':
-				this.embedQuicktimePlugin( elt, videoUrl, width, height, length );
+				this.embedQuicktimePlugin( elt, params );
 				break;
 			case 'thumbnail':
-				if ( id in this.savedThumbs ) {
-					elt.appendChild( this.savedThumbs[id].cloneNode( true ) );
+				if ( params.id in this.savedThumbs ) {
+					elt.appendChild( this.savedThumbs[params.id].cloneNode( true ) );
 				} else {
-					elt.appendChild( document.createTextNode( 'Missing saved thumbnail for ' + id ) );
+					elt.appendChild( document.createTextNode( 'Missing saved thumbnail for ' + params.id ) );
 				}
 				break;
 			default:
-				elt.innerHTML = this.msg['ogg-no-player'] + '<br/>';
+				elt.innerHTML = '<div>' + this.msg['ogg-no-player'] + '</div>';
 				player = 'none';
 		}
 		if ( player != 'thumbnail' ) {
-			var optionsBox = this.makeOptionsBox( player, id, videoUrl, width, height, length, linkUrl );
-			var optionsLink = this.makeOptionsLink( id );
-			elt.appendChild( document.createElement( 'br' ) );
-			elt.appendChild( optionsBox );
-			elt.appendChild( optionsLink );
+			var optionsBox = this.makeOptionsBox( player, params );
+			var optionsLink = this.makeOptionsLink( params.id );
+			var div = document.createElement( 'div' );
+			div.appendChild( optionsBox );
+			div.appendChild( optionsLink );
+			elt.appendChild( div );
 		}
 	},
 
@@ -197,22 +201,22 @@ var wgOggPlayer = {
 		}
 	},
 
-	'makeOptionsBox' : function ( selectedPlayer, id, videoUrl, width, height, length, linkUrl ) {
+	'makeOptionsBox' : function ( selectedPlayer, params ) {
 		var div, p, a, ul, li, button;
 
 		div = document.createElement( 'div' );
-		div.style.cssText = "width: " + ( width - 10 ) + "px; display: none;";
+		div.style.cssText = "width: " + ( params.width - 10 ) + "px; display: none;";
 		div.className = 'ogg-player-options';
-		div.id = id + '_options_box';
+		div.id = params.id + '_options_box';
 		div.align = 'center';
 
 		ul = document.createElement( 'ul' );
 
 		// Description page link
-		if ( linkUrl ) {
+		if ( params.linkUrl ) {
 			li = document.createElement( 'li' );
 			a = document.createElement( 'a' );
-			a.href = linkUrl;
+			a.href = params.linkUrl;
 			a.appendChild( document.createTextNode( this.msg['ogg-desc-link'] ) );
 			li.appendChild( a );
 			ul.appendChild( li );
@@ -221,7 +225,7 @@ var wgOggPlayer = {
 		// Download link
 		li = document.createElement( 'li' );
 		a = document.createElement( 'a' );
-		a.href = videoUrl;
+		a.href = params.videoUrl;
 		a.appendChild( document.createTextNode( this.msg['ogg-download'] ) );
 		li.appendChild( a );
 		ul.appendChild( li );
@@ -236,15 +240,21 @@ var wgOggPlayer = {
 		// Make player list
 		ul = document.createElement( 'ul' );
 		for ( var i = 0; i < this.players.length + 1; i++ ) {
-			var player;
+			var player, playerMsg;
 			if ( i == this.players.length ) {
 				player = 'thumbnail';
+				if ( params.isVideo ) {
+					playerMsg = 'ogg-player-thumbnail';
+				} else {
+					playerMsg = 'ogg-player-soundthumb';
+				}
 			} else {
 				player = this.players[i];
 				// Skip unsupported players
 				if ( ! this.clientSupports[player] ) {
 					continue;
 				}
+				playerMsg = 'ogg-player-' + player;
 			}
 
 			// Make list item
@@ -252,13 +262,13 @@ var wgOggPlayer = {
 			if ( player == selectedPlayer ) {
 				var strong = document.createElement( 'strong' );
 				strong.appendChild( document.createTextNode( 
-					this.msg['ogg-player-' + player] + ' ' + this.msg['ogg-player-selected'] ) );
+					this.msg[playerMsg] + ' ' + this.msg['ogg-player-selected'] ) );
 				li.appendChild( strong );
 			} else {
 				a = document.createElement( 'a' );
 				a.href = 'javascript:void("' + player + '")';
-				a.onclick = this.makePlayerFunction( player, id, videoUrl, width, height, length, linkUrl );
-				a.appendChild( document.createTextNode( this.msg['ogg-player-' + player] ) );
+				a.onclick = this.makePlayerFunction( player, params );
+				a.appendChild( document.createTextNode( this.msg[playerMsg] ) );
 				li.appendChild( a );
 			}
 			ul.appendChild( li );
@@ -269,7 +279,7 @@ var wgOggPlayer = {
 		div2.style.cssText = 'text-align: center;';
 		button = document.createElement( 'button' );
 		button.appendChild( document.createTextNode( this.msg['ogg-dismiss'] ) );
-		button.onclick = this.makeDismissFunction( id );
+		button.onclick = this.makeDismissFunction( params.id );
 		div2.appendChild( button );
 		div.appendChild( div2 );
 
@@ -319,165 +329,172 @@ var wgOggPlayer = {
 		}
 	},
 
-	'makePlayerFunction' : function ( player, id, videoUrl, width, height, length, linkUrl ) {
+	'makePlayerFunction' : function ( player, params ) {
 		var this_ = this;
 		return function () {
 			if ( player != 'thumbnail' ) {
 				document.cookie = "ogg_player=" + player;
 			}
-			this_.init( player, id, videoUrl, width, height, length, linkUrl );
+			this_.init( player, params );
 		};
 	},
 
-	'newButton': function ( caption, callback ) {
+	'newButton': function ( caption, image, callback ) {
 		var elt = document.createElement('input');
-		elt.type = 'button';
-		elt.value = this.msg[caption];
+		elt.type = 'image';
+		elt.src = this.extPathUrl + '/' + image;
+		elt.alt = elt.value = elt.title = this.msg[caption];
 		elt.onclick = callback;
 		return elt;
 	},
 
 	'newPlayButton': function ( videoElt ) {
-		return this.newButton( 'ogg-play', function () { videoElt.play(); } );
+		return this.newButton( 'ogg-play', 'play.png', function () { videoElt.play(); } );
 	},
 
 	'newPauseButton': function ( videoElt ) {
-		return this.newButton( 'ogg-pause', function () { videoElt.pause(); } );
+		return this.newButton( 'ogg-pause', 'pause.png', function () { videoElt.pause(); } );
 	},
 
 	'newStopButton': function ( videoElt ) {
-		return this.newButton( 'ogg-stop', function () { videoElt.stop(); } );
+		return this.newButton( 'ogg-stop', 'stop.png', function () { videoElt.stop(); } );
 	},
 
-	'embedVideoElement': function ( elt, videoUrl, width, height, length ) {
+	'embedVideoElement': function ( elt, params ) {
 		var videoElt = document.createElement('video');
-		videoElt.setAttribute( 'width', width );
-		videoElt.setAttribute( 'height', height + this.controlsHeightGuess );
-		videoElt.setAttribute( 'src', videoUrl );
+		videoElt.setAttribute( 'width', params.width );
+		videoElt.setAttribute( 'height', params.height + this.controlsHeightGuess );
+		videoElt.setAttribute( 'src', params.videoUrl );
 		videoElt.setAttribute( 'autoplay', '1' );
 		videoElt.setAttribute( 'controls', '1' );
-		elt.appendChild( videoElt );
+		var div = document.createElement( 'div' );
+		div.appendChild( videoElt );
+		elt.appendChild( div );
 
 		// Try to detect implementations that don't support controls
 		// This works for the Opera test build
 		if ( !videoElt.controls ) {
-			elt.appendChild( document.createElement( 'br' ) );
-			elt.appendChild( this.newPlayButton( videoElt ) );
-			elt.appendChild( this.newPauseButton( videoElt ) );
-			elt.appendChild( this.newStopButton( videoElt ) );
+			div = document.createElement( 'div' );
+			div.appendChild( this.newPlayButton( videoElt ) );
+			div.appendChild( this.newPauseButton( videoElt ) );
+			div.appendChild( this.newStopButton( videoElt ) );
+			elt.appendChild( div );
 			//videoElt.play();
 		}
 	},
 
-	'embedOggPlugin': function ( elt, videoUrl, width, height, length ) {
+	'embedOggPlugin': function ( elt, params ) {
 		var id = elt.id + "_obj";
 		elt.innerHTML += 
-			"<object id=" + this.hq( id ) + 
+			"<div><object id=" + this.hq( id ) + 
 			" type='application/ogg'" +
-			" width=" + this.hq( width ) + 
-			" height=" + this.hq( height + this.controlsHeightGuess ) + 
-			" data=" + this.hq( videoUrl ) + "></object>";
+			" width=" + this.hq( params.width ) + 
+			" height=" + this.hq( params.height + this.controlsHeightGuess ) + 
+			" data=" + this.hq( params.videoUrl ) + "></object></div>";
 	},
 
-	'embedVlcPlugin' : function ( elt, videoUrl, width, height, length ) {
+	'embedVlcPlugin' : function ( elt, params ) {
 		var id = elt.id + "_obj";
 		elt.innerHTML += 	
-			"<object id=" + this.hq( id ) + 
+			"<div><object id=" + this.hq( id ) + 
 			" type='application/x-vlc-plugin'" +
-			" width=" + this.hq( width ) + 
-			" height=" + this.hq( height ) + 
-			" data=" + this.hq( videoUrl ) + "></object>";
+			" width=" + this.hq( params.width ) + 
+			" height=" + this.hq( params.height ) + 
+			" data=" + this.hq( params.videoUrl ) + "></object></div>";
 		
 		var videoElt = document.getElementById( id );
-		elt.appendChild( document.createElement( 'br' ) );
+		var div = document.createElement( 'div' );
 		// TODO: seek bar
-		elt.appendChild( this.newPlayButton( videoElt ) );
-		elt.appendChild( this.newPauseButton( videoElt ) );
-		elt.appendChild( this.newStopButton( videoElt ) );
+		div.appendChild( this.newPlayButton( videoElt ) );
+		div.appendChild( this.newPauseButton( videoElt ) );
+		div.appendChild( this.newStopButton( videoElt ) );
+		elt.appendChild( div );
 	},
 
-	'embedVlcActiveX' : function ( elt, videoUrl, width, height, length ) {
+	'embedVlcActiveX' : function ( elt, params ) {
 		var id = elt.id + "_obj";
 
 		var html = 
-			'<object id=' + this.hq( id ) + 
+			'<div><object id=' + this.hq( id ) + 
 			' classid="clsid:9BE31822-FDAD-461B-AD51-BE1D1C159921"' + 
 			' codebase="http://downloads.videolan.org/pub/videolan/vlc/latest/win32/axvlc.cab#Version=0,8,6,0"' + 
-			' width=' + this.hq( width ) + 
-			' height=' + this.hq( height ) + 
-			' style="width: ' + this.hx( width ) + 'px; height: ' + this.hx( height ) + 'px;"' +
+			' width=' + this.hq( params.width ) + 
+			' height=' + this.hq( params.height ) + 
+			' style="width: ' + this.hx( params.width ) + 'px; height: ' + this.hx( params.height ) + 'px;"' +
 			">" + 
-			'<param name="mrl" value=' + this.hq( videoUrl ) + '/>' + 
-			'</object>';
+			'<param name="mrl" value=' + this.hq( params.videoUrl ) + '/>' + 
+			'</object></div>';
 		elt.innerHTML += html;
 
 		var videoElt = document.getElementById( id );
 
 		// IE says "sorry, I wasn't listening, what were the dimensions again?"
-		if ( width && height ) {
-			videoElt.width = width;
-			videoElt.height = height;
-			videoElt.style.width = width + 'px';
-			videoElt.style.height = height + 'px';
+		if ( params.width && params.height ) {
+			videoElt.width = params.width;
+			videoElt.height = params.height;
+			videoElt.style.width = params.width + 'px';
+			videoElt.style.height = params.height + 'px';
 		}
-
-		elt.appendChild( document.createElement( 'br' ) );
+		var div = document.createElement( 'div' );
 		// TODO: seek bar
-		elt.appendChild( this.newButton( 'ogg-play', function() { videoElt.playlist.play(); } ) );
+		div.appendChild( this.newButton( 'ogg-play', 'play.png', function() { videoElt.playlist.play(); } ) );
 		// FIXME: playlist.pause() doesn't work
-		elt.appendChild( this.newButton( 'ogg-stop', function() { videoElt.playlist.stop(); } ) );
+		div.appendChild( this.newButton( 'ogg-stop', 'stop.png', function() { videoElt.playlist.stop(); } ) );
+		elt.appendChild( div );
 	},
 
-	'embedCortado' : function ( elt, videoUrl, width, height, length ) {
+	'embedCortado' : function ( elt, params ) {
 		var statusHeight = 18;
 		// Given extra vertical space, cortado centres the video and then overlays the status 
 		// line, leaving an ugly black bar at the top. So we don't give it any.
-		var playerHeight = height < statusHeight ? statusHeight : height;
+		var playerHeight = params.height < statusHeight ? statusHeight : params.height;
 
 		// Create the applet all at once
 		// In Opera, document.createElement('applet') immediately creates
 		// a non-working applet with unchangeable parameters, similar to the 
 		// problem with IE and ActiveX. 
-		elt.innerHTML = 
+		elt.innerHTML = '<div>' +
 		    '<applet code="com.fluendo.player.Cortado.class" ' +
-		    '      width=' + this.hq( width ) +
+		    '      width=' + this.hq( params.width ) +
 		    '      height=' + this.hq( playerHeight ) + 
 		    '      archive=' + this.hq( this.cortadoUrl ) + '>' +
-		    '  <param name="url"  value=' + this.hq( videoUrl ) + '/>' +
-		    '  <param name="duration"  value=' + this.hq( length ) + '/>' +
+		    '  <param name="url"  value=' + this.hq( params.videoUrl ) + '/>' +
+		    '  <param name="duration"  value=' + this.hq( params.length ) + '/>' +
 		    '  <param name="seekable"  value="true"/>' +
 		    '  <param name="autoPlay" value="true"/>' +
 		    '  <param name="showStatus"  value="show"/>' +
 		    '  <param name="statusHeight"  value="' + statusHeight + '"/>' +
-		    '</applet>';
+		    '</applet>' +
+			'</div>';
 
 		// Disable autoPlay in the DOM right now, to prevent Mozilla from 
 		// restarting an arbitrary number of applet instances on a back button click.
 		// Unfortunately this means that some clients (e.g. Opera) won't autoplay at all
-		var videoElt = elt.getElementsByTagName( 'applet' )[0];
+		var videoElt = elt.getElementsByTagName( 'div' ) [0] . 
+			getElementsByTagName( 'applet' )[0];
 		this.setParam( videoElt, 'autoPlay', '' );
 	},
 
-	'embedQuicktimePlugin': function ( elt, videoUrl, width, height, length ) {
+	'embedQuicktimePlugin': function ( elt, params ) {
 		var id = elt.id + "_obj";
 		var controllerHeight = 16; // by observation
 		elt.innerHTML += 
-			"<object id=" + this.hq( id ) + 
+			"<div><object id=" + this.hq( id ) + 
 			" type='video/quicktime'" +
-			" width=" + this.hq( width ) + 
-			" height=" + this.hq( height + controllerHeight ) + 
+			" width=" + this.hq( params.width ) + 
+			" height=" + this.hq( params.height + controllerHeight ) + 
 			
 			// Use QTSRC parameter instead of data attribute to allow progressive download
 			// The data attribute and src parameter point to a small file, as recommended in
 			// http://developer.apple.com/documentation/QuickTime/Conceptual/QTScripting_HTML/QTScripting_HTML_Document/chapter_1000_section_6.html
-			" data=" + this.hq( this.smallFileUrl ) +
+			" data=" + this.hq( this.extPathUrl + '/null_file' ) +
 			">" + 
 			// Scale, don't clip
 			"<param name='SCALE' value='Aspect'/>" + 
 			"<param name='AUTOPLAY' value='True'/>" +
-			"<param name='src' value=" + this.hq( this.smallFileUrl ) +  "/>" +
-			"<param name='QTSRC' value=" + this.hq( videoUrl ) + "/>" +
-			"</object>";
+			"<param name='src' value=" + this.hq( this.extPathUrl + '/null_file' ) +  "/>" +
+			"<param name='QTSRC' value=" + this.hq( params.videoUrl ) + "/>" +
+			"</object></div>";
 
 		// Disable autoplay on back button
 		var this_ = this;

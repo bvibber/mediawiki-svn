@@ -20,9 +20,19 @@ The bundled Cortado player is licensed under the GPL, the source is available fr
 
     http://www.flumotion.net/cortado/
 
+We have patched Cortado to allow multiple instances to exist on the one page, 
+the patch is in cortado-tweak.diff. The recompiled binary is at 
+cortado-ovt-stripped-0.2.2.1-patched.jar .
+
 The PEAR directory contains a fork of the File_Ogg package, licensed under the
 LGPL. The stock File_Ogg will not work -- I have made many aggressive changes
 including support for stream formats other than Vorbis. I'll try to get my
 changes committed to the official PEAR tree at some point in the future.
+
+The icons play.png, pause.png, stop.png and info.png are from the Crystal Project:
+
+   http://www.everaldo.com/crystal/
+
+They are licensed under the LGPL. 
 
 -- Tim Starling

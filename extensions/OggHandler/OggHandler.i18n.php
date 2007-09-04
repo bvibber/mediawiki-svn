@@ -25,6 +25,7 @@ $messages = array(
 		'ogg-player-quicktime-mozilla' => 'QuickTime', # only translate this message to other languages if you have to change it
 		'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)', # only translate this message to other languages if you have to change it
 		'ogg-player-thumbnail' => 'Still image only',
+		'ogg-player-soundthumb' => 'No player',
 		'ogg-player-selected'  => '(selected)',
 		'ogg-use-player'       => 'Use player: ',
 		'ogg-more'             => 'More...',
@@ -77,5 +78,12 @@ $messages = array(
 			'Installeer alstublieft <a href="http://www.java.com/nl/download/manual.jsp">Java</a>.',
 		'ogg-player-videoElement' => '<video>-element',
 		'ogg-player-oggPlugin' => 'Ogg-plugin',
+	),
+);
+
+$magicWords = array(
+	'en' => array(
+		'ogg_noplayer' => array( 0, 'noplayer' ),
+		'ogg_thumbtime' => array( 0, 'thumbtime=$1' ),
 	),
 );

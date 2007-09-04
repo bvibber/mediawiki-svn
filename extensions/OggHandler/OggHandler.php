@@ -22,6 +22,7 @@ $wgOggScriptVersion = '1';
 $wgFFmpegLocation = 'ffmpeg';
 $wgExtensionMessagesFiles['OggHandler'] = "$oggDir/OggHandler.i18n.php";
 $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
+$wgHooks['LanguageGetMagic'][] = 'OggHandler::registerMagicWords';
 
 // Filename or URL path to the Cortado Java player applet.
 //
