@@ -46,6 +46,8 @@ function getSuggestions() {
 	@$definedMeaningId = $_GET['definedMeaningId'];
 	@$offset = $_GET['offset'];
 	@$attributesLevel = $_GET['attributesLevel'];
+	@$annotationAttributeId = $_GET['annotationAttributeId'];
+		 
 	$sql='';
 	
 	$dbr =& wfGetDB( DB_SLAVE );
@@ -62,16 +64,16 @@ function getSuggestions() {
 			$sql=constructSQLWithFallback($sqlActual, $sqlFallback, array("member_mid", "spelling", "collection_mid"));
 			break;
 		case 'option-attribute':
-			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, 'OPTN');
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'OPTN');
 			break;
 		case 'translated-text-attribute':
-			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, 'TRNS');
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'TRNS');
 			break;
 		case 'text-attribute':	
-			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, 'TEXT');
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'TEXT');
 			break;
 		case 'link-attribute':	
-			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, 'URL');
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'URL');
 			break;
 		case 'language':
 			require_once('languages.php');
@@ -224,19 +226,81 @@ function constructSQLWithFallback($actual_query, $fallback_query, $fields){
 	return $sql;
 }
 
-function getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $attributesType) {
+function getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType) {
 	global
 		$wgUser;
 	
-	$sqlActual = getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attributesLevel, $attributesType, $wgUser->getOption('language'));
-	$sqlFallback = getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attributesLevel, $attributesType, 'en');
+	$sqlActual = getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType, $wgUser->getOption('language'));
+	$sqlFallback = getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType, 'en');
 	
 	return constructSQLWithFallback($sqlActual, $sqlFallback, array("attribute_mid", "spelling")); 
 }
 
+function getPropertyToColumnFilterForAttribute($annotationAttributeId) {
+	global
+		$wgPropertyToColumnFilters;
+	
+	$i = 0;
+	$result = null;
+	
+	while ($result == null && $i < count($wgPropertyToColumnFilters)) 
+		if ($wgPropertyToColumnFilters[$i]->getAttribute()->id == $annotationAttributeId) 
+			$result = $wgPropertyToColumnFilters[$i];
+		else
+			$i++;
+
+	return $result;	
+}
+
+function getFilteredAttributes($annotationAttributeId) {
+	$propertyToColumnFilter = getPropertyToColumnFilterForAttribute($annotationAttributeId);
+	
+	if ($propertyToColumnFilter != null) 
+		return $propertyToColumnFilter->attributeIDs;
+	else 
+		return array();
+}
+
+function getAllFilteredAttributes() {
+	global
+		$wgPropertyToColumnFilters;
+
+	$result = array();
+	
+	foreach ($wgPropertyToColumnFilters as $propertyToColumnFilter) 
+		$result = array_merge($result, $propertyToColumnFilter->attributeIDs);
+	
+	return $result;	
+}
+
+function getFilteredAttributesRestriction($annotationAttributeId) {
+	$dc=wdGetDataSetContext();
+
+	$propertyToColumnFilter = getPropertyToColumnFilterForAttribute($annotationAttributeId);
+	
+	if ($propertyToColumnFilter != null) {
+		$filteredAttributes = $propertyToColumnFilter->attributeIDs;
+
+		if (count($filteredAttributes) > 0)
+			$result = " AND {$dc}_class_attributes.attribute_mid IN (" . join($filteredAttributes, ", ") . ")";
+		else 
+			$result = " AND 0 ";	
+	}
+	else {
+		$allFilteredAttributes = getAllFilteredAttributes();
+
+		if (count($allFilteredAttributes) > 0)
+			$result = " AND {$dc}_class_attributes.attribute_mid NOT IN (" . join($allFilteredAttributes, ", ") . ")";
+		else
+			$result = "";
+	}
+	
+	return $result;	
+}
+
 # language is the 2 letter wikimedia code. use "<ANY>" if you don't want language filtering
 # (any does set limit 1 hmph)
-function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attributesLevel, $attributesType, $language="<ANY>") {
+function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attributesLevel, $annotationAttributeId, $attributesType, $language="<ANY>") {
 	global $wgDefaultClassMids;
 	global $wgUser;
 	$dc=wdGetDataSetContext();
@@ -245,6 +309,8 @@ function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attribu
 		$defaultClassRestriction = " OR {$dc}_class_attributes.class_mid IN (" . join($wgDefaultClassMids, ", ") . ")";
 	else
 		$defaultClassRestriction = "";
+		
+	$filteredAttributesRestriction = getFilteredAttributesRestriction($annotationAttributeId);	
 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$sql = 
@@ -254,7 +320,8 @@ function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attribu
 		" AND {$dc}_bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
 		" AND {$dc}_class_attributes.attribute_type = " . $dbr->addQuotes($attributesType) .
 		" AND {$dc}_syntrans.defined_meaning_id = {$dc}_class_attributes.attribute_mid" .
-		" AND {$dc}_expression_ns.expression_id = {$dc}_syntrans.expression_id";
+		" AND {$dc}_expression_ns.expression_id = {$dc}_syntrans.expression_id" .
+		$filteredAttributesRestriction . " ";
 
 	if ($language!="<ANY>") {
 		$sql .=

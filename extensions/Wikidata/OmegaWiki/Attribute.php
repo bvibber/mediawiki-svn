@@ -38,8 +38,12 @@ class Attribute {
 			$this->type->setStructureType($this->id);
 		}
 	}
+	
+	public function getId() {
+		return $this->id;
+	}
 
-	function __tostring() {
+	public function __tostring() {
 		$id=$this->id;
 		$name=$this->name;
 		$type=$this->type;

@@ -28,7 +28,8 @@ class IdStack {
 	protected $currentId;
 	protected $classStack = array();
 	protected $currentClass;
-	protected $definedMeaningIdStack = array(); // Used to keep track of which defined meaning is being rendered
+	protected $definedMeaningIdStack = array(); 	// Used to keep track of which defined meaning is being rendered
+	protected $annotationAttributeStack = array();	// Used to keep track of which annotation attribute currently is being rendered
 	
 	public function __construct($prefix) {
 	 	$this->keyStack = new RecordStack();
@@ -98,7 +99,7 @@ class IdStack {
 	}
 	
 	public function pushDefinedMeaningId($definedMeaningId) {
-		return $this->definedMeaningIdStack[] = $definedMeaningId;
+		$this->definedMeaningIdStack[] = $definedMeaningId;
 	}
 	
 	public function popDefinedMeaningId() {
@@ -112,6 +113,23 @@ class IdStack {
 			return $this->definedMeaningIdStack[$stackSize - 1];
 		else
 			throw new Exception("There is no defined meaning defined in the current context");
+	}
+
+	public function pushAnnotationAttribute(Attribute $annotationAttribute) {
+		$this->annotationAttributeStack[] = $annotationAttribute;
+	}
+	
+	public function popAnnotationAttribute() {
+		return array_pop($this->annotationAttributeStack);
+	}
+	
+	public function getAnnotationAttribute() {
+		$stackSize = count($this->annotationAttributeStack);
+		
+		if ($stackSize > 0)
+			return $this->annotationAttributeStack[$stackSize - 1];
+		else
+			throw new Exception("There is no annotation attribute in the current context");
 	}
 
 	public function __tostring() {
@@ -1264,7 +1282,8 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 		if ($this->isAddField) {
 			$parameters = array(
 				"level" => $this->attributesLevelName, 
-				"definedMeaningId" => $idPath->getDefinedMeaningId() 
+				"definedMeaningId" => $idPath->getDefinedMeaningId(),
+				"annotationAttributeId" => $idPath->getAnnotationAttribute()->getId() 
 			);
 								
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);			

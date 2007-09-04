@@ -48,7 +48,8 @@ function updateSuggestions(suggestPrefix) {
 
 	var suggestAttributesLevel = document.getElementById(suggestPrefix + "parameter-level");
 	var suggestDefinedMeaningId = document.getElementById(suggestPrefix + "parameter-definedMeaningId");
-
+	var suggestAnnotationAttributeId = document.getElementById(suggestPrefix + "parameter-annotationAttributeId");
+	
 	var URL = 'index.php';
 	var location = "" + document.location;
 	
@@ -62,12 +63,13 @@ function updateSuggestions(suggestPrefix) {
 		'&query=' + encodeURI(suggestQuery) + 
 		'&offset=' + encodeURI(suggestOffset) + 
 		'&dataset='+dataSet;
-
-	if((suggestAttributesLevel != null) && (suggestDefinedMeaningId != null)) 
-		URL = 
-			URL + 
+		
+	if (suggestAttributesLevel != null && suggestDefinedMeaningId != null && suggestAnnotationAttributeId != null) 
+		URL = URL + 
 			'&attributesLevel=' + encodeURI(suggestAttributesLevel.value) + 
-			'&definedMeaningId=' + encodeURI(suggestDefinedMeaningId.value);
+			'&definedMeaningId=' + encodeURI(suggestDefinedMeaningId.value) +
+			'&annotationAttributeId=' + encodeURI(suggestAnnotationAttributeId.value);
+			
 	http.open('GET', URL, true);
 	http.onreadystatechange = function() {
 		if (http.readyState == 4) {

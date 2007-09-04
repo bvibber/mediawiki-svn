@@ -151,6 +151,7 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 	}
 
 	public function view(IdStack $idPath, $value) {
+		$idPath->pushAnnotationAttribute($this->getAttribute());
 		$visibleSuffixAttributes = $this->determineVisibleSuffixAttributes($value); 
 		
 		$visibleStructure = new Structure(array_merge(
@@ -173,7 +174,31 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 		
 		$result .= $this->recordSetTableEditor->viewFooter($idPath, $visibleStructure);
 
+		$idPath->popAnnotationAttribute();
+
 		return $result;
+	}
+
+	public function edit(IdStack $idPath, $value) {
+		$idPath->pushAnnotationAttribute($this->getAttribute());
+		$result = $this->wrappedEditor->edit($idPath, $value);		
+		$idPath->popAnnotationAttribute();
+		
+		return $result;
+	}
+	
+	public function add(IdStack $idPath) {
+		$idPath->pushAnnotationAttribute($this->getAttribute());
+		$result = $this->wrappedEditor->add($idPath);		
+		$idPath->popAnnotationAttribute();
+		
+		return $result;
+	}
+	
+	public function save(IdStack $idPath, $value) {
+		$idPath->pushAnnotationAttribute($this->getAttribute());
+		$this->wrappedEditor->save($idPath, $value);		
+		$idPath->popAnnotationAttribute();
 	}
 }
 
