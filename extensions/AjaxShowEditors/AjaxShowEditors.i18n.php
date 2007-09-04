@@ -28,6 +28,10 @@ $wgAjaxShowEditorsMessages['el'] = array(
 	'ajax-se-pending' => 'εκκρεμή ανανέωση ... (κάντε κλικ σε αυτό το κουτί ή ξεκινήστε την επεξεργασία)',
 	'ajax-se-idling'  => '($1s πριν)',
 );
+$wgAjaxShowEditorsMessages['bcl'] = array(
+	'ajax-se-title' => 'Presenteng pighihira:',
+	'ajax-se-idling' => '($1s na an nakaagi)',
+);
 $wgAjaxShowEditorsMessages['fi'] = array(
 	'ajax-se-title'   => 'Samanaikaiset muokkaajat:',
 	'ajax-se-pending' => 'odotetaan päivitystä… (napsauta tästä tai aloita muokkaaminen)',
@@ -37,6 +41,11 @@ $wgAjaxShowEditorsMessages['fr'] = array(
 	'ajax-se-title' => 'En train d’être modifié par :',
 	'ajax-se-pending' => 'rafraîchissement en cours ... (cliquez sur ce message ou modifiez la page)',
 	'ajax-se-idling' => '(il y a $1 s)',
+);
+$wgAjaxShowEditorsMessages['hsb'] = array(
+	'ajax-se-title' => 'Wobdźěłuje so runje wot:',
+	'ajax-se-pending' => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',
+	'ajax-se-idling' => '(před $1s)',
 );
 $wgAjaxShowEditorsMessages['id'] = array(
 	'ajax-se-title'   => 'Sedang menyunting:',

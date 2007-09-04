@@ -19,9 +19,24 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Previous ($1)',
 ),
 
+'bcl' => array(
+	'backforth-next' => 'Sunod ($1)',
+	'backforth-prev' => 'Nakaagi ($1)',
+),
+
 'de' => array(
 	'backforth-next' => 'Nächste ($1)',
 	'backforth-prev' => 'Vorherige ($1)',
+),
+
+'eo' => array(
+	'backforth-next' => 'Sekva ($1)',
+	'backforth-prev' => 'Antaŭa ($1)',
+),
+
+'hsb' => array(
+	'backforth-next' => 'Přichodne ($1)',
+	'backforth-prev' => 'Předchadne ($1)',
 ),
 
 'yue' => array(

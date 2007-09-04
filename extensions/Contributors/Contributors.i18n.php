@@ -94,16 +94,16 @@ function efContributorsMessages() {
 ),
 
 'hsb' => array(
-'contributors'=> 'Přinošowarjo',
-'contributors-toolbox'=> 'Hłowni přinošowarjo',
-'contributors-legend'=> 'Pokazaj hłownych přinošowarjow strony',
-'contributors-target'=> 'Titl:',
-'contributors-submit'=> 'Pokazać',
-'contributors-subtitle'=> 'Hłowni přinošowarjo strony $1',
-'contributors-others-long'=> 'Je hišće druhich $1 přinošowarjow k tutej stronje.',
-'contributors-others'=> 'a $1 {{PLURAL:$1|druhi|druhej|druzy|druhich}}',
-'contributors-badtitle'=> 'Njepłaćiwy titl.',
-'contributors-nosuchpage'=> 'Strona $1 njeeksistuje.',
+'contributors' => 'Přinošowarjo',
+'contributors-toolbox' => 'Hłowni přinošowarjo',
+'contributors-legend' => 'Pokazaj hłownych přinošowarjow strony',
+'contributors-target' => 'Titl:',
+'contributors-submit' => 'Pokazać',
+'contributors-subtitle' => 'Hłowni přinošowarjo strony $1',
+'contributors-others-long' => 'Je hišće druhich $1 přinošowarjow k tutej stronje.',
+'contributors-others' => 'a $1 {{PLURAL:$1|druhi|druhej|druzy|druhich}}',
+'contributors-badtitle' => 'Njepłaćiwy titl.',
+'contributors-nosuchpage' => 'Strona $1 njeeksistuje.',
 ),
 
 /* Indonesian (Ivan Lanin) */
@@ -345,9 +345,7 @@ function efContributorsMessages() {
 /* Sundanese (Kandar via BetaWiki) */
 'su' => array(
 'contributors' => 'Kontributor',
-'contributors-toolbox' => 'Kontributor utama',#identical but defined
 'contributors-legend' => 'Béréndélkeun kontributor utama artikel',
-'contributors-target' => 'Judul:',#identical but defined
 'contributors-submit' => 'Témbongkeun',
 'contributors-subtitle' => 'Kontributor utama $1',
 'contributors-others-long' => 'Aya $1 kontributor séjénna pikeun kaca ieu.',

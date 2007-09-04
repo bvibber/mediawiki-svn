@@ -159,6 +159,17 @@ $wgBoardVoteMessages['ar'] = array(
 
 قد يتم عرض تحذير للسرية حول شهادة غير موقعة.',
 );
+$wgBoardVoteMessages['bcl'] = array(
+	'boardvote_novotes'       => 'Mayô pang naboto.',
+	'boardvote_time'          => 'Oras',
+	'boardvote_user'          => 'Parágamit',
+	'boardvote_edits'         => 'Mga hira',
+	'boardvote_days'          => 'Aldaw',
+	'boardvote_dumplink'      => 'Lagatik digdi',
+	'boardvote_notstarted'    => 'Dai pa napoon an pirilian',
+	'boardvote_edits_many'    => 'dakol',
+	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
+);
 $wgBoardVoteMessages['ca'] = array(
 	'boardvote_redirecting'   => "Per millorar la seguretat i la transparència de la votació, aquesta es farà en un servidor independent extern.
 
@@ -435,6 +446,24 @@ $wgBoardVoteMessages['he'] = array(
 בתוך 20 שניות תבוצע הפניה לשרת החיצוני הזה.. [$1 לחצו כאן] כדי להגיע לשם עכשיו.
 
 ייתכן שתוצג אזהרת אבטחה בגלל תעודת אישור בלתי חתומה.',
+);
+
+$wgBoardVoteMessages['hsb'] = array(
+	'boardvote'               => 'Wólby za kuratorij Wikimedia',
+	'boardvote_novotes'       => 'Dotal nichtó njeje hłosował.',
+	'boardvote_time'          => 'Čas',
+	'boardvote_user'          => 'Wužiwar',
+	'boardvote_edits'         => 'Změny',
+	'boardvote_days'          => 'Dny',
+	'boardvote_ua'            => 'Klient',
+	'boardvote_dumplink'      => 'Tu kliknyć',
+	'boardvote_submit'        => 'Hłosować',
+	'boardvote_strike'        => 'Hłos wušmórnyć',
+	'boardvote_unstrike'      => 'Wušmórnjenje hłosu cofnyć',
+	'boardvote_notstarted'    => 'Wólba hišće njeje so započała.',
+	'boardvote_edits_many'    => 'mnohe',
+	'boardvote_blocked'       => 'Wodaj, ale ty bu we swojim wikiju zablokowany. Zablokowani wužiwarjo njesmědźa so na wólbje wobdźělić.',
+	'boardvote_welcome'       => 'Witaj \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
@@ -765,12 +794,10 @@ stemmen heeft u er $3 nodig.',
 	'boardvote_user'          => 'Gebruiker',
 	'boardvote_edits'         => 'Bewerkingen',
 	'boardvote_days'          => 'Dagen',
-	'boardvote_ip'            => 'IP',#identical but defined
 	'boardvote_ua'            => 'User-agent',
 	'boardvote_listintro'     => '<p>Hieronder staan alle stemmen die tot nu toe zijn
 uitgebracht. $1 voor de versleutelde gegevens.</p>',
 	'boardvote_dumplink'      => 'Klik hier',
-	'boardvote_submit'        => 'OK',#identical but defined
 	'boardvote_strike'        => 'Ongeldig',
 	'boardvote_unstrike'      => 'Geldig',
 	'boardvote_needadmin'     => 'Alleen leden van de Verkiezingscommissie kunnen deze handeling uitvoeren.',
@@ -811,11 +838,9 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 	'boardvote_user'          => 'Bruker',
 	'boardvote_edits'         => 'Redigeringer',
 	'boardvote_days'          => 'Dager',
-	'boardvote_ip'            => 'IP',#identical but defined
 	'boardvote_ua'            => 'Brukeragent',
 	'boardvote_listintro'     => '<p>Dette er en liste over alle stemmer som har blitt registrert hittil. $1 for krypterte data.</p>',
 	'boardvote_dumplink'      => 'Klikk her',
-	'boardvote_submit'        => 'OK',#identical but defined
 	'boardvote_strike'        => 'Stryk',
 	'boardvote_unstrike'      => 'Fjern strykning',
 	'boardvote_needadmin'     => 'Kun valgadministratorer kan utføre dette.',
@@ -954,11 +979,9 @@ Ch\'as visa ch\'a l\'ha dë regolé sò navigator (browser) an manera ch\'a pija
 	'boardvote_notloggedin'   => 'A l\'é anco\' pa rintra ant ël sistema. Për voté a venta dovré un cont con almanch $1 modìfiche faite anans dij $2, e dont prima modìfica a la sia staita faita anans dij $3.',
 	'boardvote_notqualified'  => 'Chiel a l\'ha nen drit al vot an st\'elession-sì. Un për podej voté a dev avej fait almanch $3 modìfiche anans dël $2, e soa prima modìfica a dovrìa esse staita faita anans dël $5.',
 	'boardvote_novotes'       => 'A l\'ha anco\' pa votà gnun.',
-	'boardvote_time'          => 'Data e ora',#identical but defined
 	'boardvote_user'          => 'Utent',
 	'boardvote_edits'         => 'Modìfiche',
 	'boardvote_days'          => 'Dì',
-	'boardvote_ip'            => 'IP',#identical but defined
 	'boardvote_ua'            => 'Agent dl\'utent',
 	'boardvote_listintro'     => '<p>Sòn a l\'é la lista ëd tuti ij vot ch\'a son ëstait registrà al dì d\'ancheuj. $1 për ës-ciairé ij dat segretà.</p>',
 	'boardvote_dumplink'      => 'Ch\'a-i bata ansima a sossì',
@@ -1226,10 +1249,8 @@ $wgBoardVoteMessages['su'] = array(
 	'boardvote_user'          => 'Pamaké',
 	'boardvote_edits'         => 'Édit',
 	'boardvote_days'          => 'Poé',
-	'boardvote_ip'            => 'IP',#identical but defined
 	'boardvote_dumplink'      => 'Klik di dieu',
 	'boardvote_submit'        => 'Kintun',
-	'boardvote_strike'        => 'Coret',#identical but defined
 	'boardvote_unstrike'      => 'Hapus nu dicoret',
 	'boardvote_needadmin'     => 'Ngan kuncén saémbara nu bisa ngalakukeun ieu.',
 	'boardvote_notstarted'    => 'Saémbara can dimimitian',

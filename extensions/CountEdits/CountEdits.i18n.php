@@ -100,15 +100,15 @@ function efCountEditsMessages( $single = false ) {
 ),
 
 'hsb' => array(
-'countedits'=> 'Ličak přinoškow',
-'countedits-warning'=> '\'\'\'Kedźbu\'\'\': Njeposudź knihu wobalki dla, njeposudź wužiwarja ličby jeho přinoškow dla!',
-'countedits-username'=> 'Wužiwarske mjeno:',
-'countedits-ok'=> 'OK',#identical but defined
-'countedits-nosuchuser'=> 'Wužiwar z mjenom $1 njeeksistuje.',
-'countedits-resultheader'=> 'Wuslědki za wužiwarja $1',
-'countedits-resulttext'=> '$1 je $2 wobdźěłanjow sčinił.',
-'countedits-mostactive'=> 'Najaktiwniši přinošowarjo',
-'countedits-nocontribs'=> 'Njejsu žane změny w tutym wikiju.',
+'countedits' => 'Ličak přinoškow',
+'countedits-warning' => '\'\'\'Kedźbu\'\'\': Njeposudź knihu wobalki dla, njeposudź wužiwarja ličby jeho přinoškow dla!',
+'countedits-username' => 'Wužiwarske mjeno:',
+'countedits-ok' => 'W porjadku',
+'countedits-nosuchuser' => 'Wužiwar z mjenom $1 njeeksistuje.',
+'countedits-resultheader' => 'Wuslědki za wužiwarja $1',
+'countedits-resulttext' => '$1 je $2 wobdźěłanjow sčinił.',
+'countedits-mostactive' => 'Najaktiwniši přinošowarjo',
+'countedits-nocontribs' => 'Njejsu žane změny w tutym wikiju.',
 ),
 
 /* Indonesian (Ivan Lanin) */
@@ -207,7 +207,6 @@ function efCountEditsMessages( $single = false ) {
 'countedits' => 'Tell redigeringer',
 'countedits-warning' => '\'\'\'Advarsel:\'\'\' Ikke sku hunden på hårene. Ikke døm en bidragsyter på antall redigeringer.',
 'countedits-username' => 'Brukernavn:',
-'countedits-ok' => 'OK',#identical but defined
 'countedits-nosuchuser' => 'Det er ingen bruker ved navnet $1.',
 'countedits-resultheader' => 'Resultater for $1',
 'countedits-resulttext' => '$1 har gjort $2 redigeringer',
@@ -258,7 +257,6 @@ function efCountEditsMessages( $single = false ) {
 'countedits' => 'Număr de modificări',
 'countedits-warning' => '\'\'\'Atenţie:\'\'\' Nu judeca o carte după copertă. Nu judeca un contribuitor după numărul de modificări.',
 'countedits-username' => 'Nume de utilizator:',
-'countedits-ok' => 'OK',#identical but defined
 'countedits-nosuchuser' => 'Nu există nici un utilizator cu numele $1.',
 'countedits-resultheader' => 'Rezultate pentru $1',
 'countedits-resulttext' => '$1 a efectuat {{PLURAL:$2|o modificare|$2 modificări}}',

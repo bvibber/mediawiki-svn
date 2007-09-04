@@ -50,6 +50,18 @@ Utilisez les apostrophes ('comme ceci') pour les chaînes de caractères. Ceci p
 'querysuccessful' => 'La requête a été exécutée avec succès.',
 ),
 
+'hsb' => array(
+'asksql'           => 'SQL wotprašenje',
+'asksqltext'       => 'Wužij tutón formular, zo by datowu banku direktnje wotprašował.
+Wužij jednore pazorki (\'kaž tutej\'), zo by znamješkowe literale wotdźělił.
+To móže husto serwer sylnišo wobćežić, prošu wužij tuž tutu funkciju zrědka.',
+'sqlislogged'      => 'Wobkedźbuj, zo so wšě wotprašenja protokoluja.',
+'sqlquery'         => 'Wotprašenje zapodać',
+'querybtn'         => 'Wotprašenje wotesłać',
+'selectonly'       => 'Su jenož wotprašenja dowolene, kotrež su jenož čitajomne.',
+'querysuccessful'  => 'Wotprašenje wuspěšne',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'asksql' => 'Kueri SQL',

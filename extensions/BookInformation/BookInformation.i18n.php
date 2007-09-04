@@ -111,6 +111,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Fournisseur des données : $1',
 ),
 
+'hsb' => array(
+'bookinfo-header' => 'Informacije wo knihach',
+'bookinfo-result-title' => 'Titul:',
+'bookinfo-result-author' => 'Awtor:',
+'bookinfo-result-publisher' => 'Nakładnistwo:',
+'bookinfo-result-year' => 'Lěto:',
+'bookinfo-error-invalidisbn' => 'ISBN njepłaćiwe.',
+'bookinfo-error-nosuchitem' => 'Artikl njeeksistuje abo njeda so namakać.',
+'bookinfo-error-nodriver' => 'Njeběše móžno wotpowědny ćěrjak za informacije wo knihach inicializować.',
+'bookinfo-error-noresponse' => 'Žana wotmołwa abo překročenje časa.',
+'bookinfo-purchase' => 'Tuta kniha hodźi so wot $1 kupić.',
+'bookinfo-provider' => 'Dodawar datow: $1',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'bookinfo-header' => 'Informasi buku',

@@ -56,6 +56,13 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'تمت إزالة [[$1]] من قائمة الصور السيئة',
 ),
 
+'bcl' => array(
+'badimages-add-btn' => 'Magdugang',
+'badimages-name' => 'Pangaran:',
+'badimages-reason' => 'Rason:',
+'badimages-remove' => '(halîon)',
+'badimages-remove-btn' => 'Halîon',
+),
 
 'br' => array(
 'badimages' => 'Roll ar skeudennoù fall',
@@ -142,6 +149,27 @@ function efBadImageMessages() {
 'badimages-log-header' => 'Historique des modifications de la [[Aide:Liste des images indésirables|liste des images indésirables]].',
 'badimages-log-add' => 'a ajouté [[$1]] à la liste des images indésirables',
 'badimages-log-remove' => 'a retiré [[$1]] de la liste des images indésirables',
+),
+
+'hsb' => array(
+'badimages' => 'Lisćina njewitanych wobrazow',
+'badimages-add-btn' => 'Přidać',
+'badimages-added' => '$1 bu k lisćinje přidaty.',
+'badimages-count' => 'Lisćina njewitanych wobrazow \'\'\'$1\'\'\' zapiskow wobsahuje.',
+'badimages-name' => 'Mjeno:',
+'badimages-not-added' => 'Wobraz njeda so přidać.',
+'badimages-not-removed' => 'Wobraz njeda so wotstronić.',
+'badimages-reason' => 'Přičina:',
+'badimages-remove' => '(wotstronić)',
+'badimages-remove-btn' => 'Wotstronić',
+'badimages-remove-confirm' => 'Prošu potwjerdź, zo chceš $1 z lisćiny wotstronić.',
+'badimages-removed' => '$1 bu z lisćiny wotstronjeny.',
+'badimages-subheading' => 'Aktualne zapiski',
+'badimages-unprivileged' => '(Nimaš woprawnjenje, zo by lisćinu změnił)',
+'badimages-log-name' => 'Lisćina njewitanych wobrazow',
+'badimages-log-header' => 'To je protokol změnow w lisćinje njewitanych wobrazow.',
+'badimages-log-add' => 'přida [[$1]] k lisćinje njewitanych wobrazow',
+'badimages-log-remove' => 'wotstroni [[$1]] z lisćiny njewitanych wobrazow',
 ),
 
 /* Indonesian (Ivan Lanin) */
