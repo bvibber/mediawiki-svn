@@ -115,7 +115,7 @@ class ApiDelete extends ApiBase {
 			case self::DELETE_SUCCESS:
 				break; // We'll deal with that later
 			case self::DELETE_PERM:  // If we get PERM, BLOCKED or READONLY that's weird, but it's possible
-				$this->dieUsage('You don\'t have permission to rollback', 'permissiondenied');
+				$this->dieUsage('You don\'t have permission to delete', 'permissiondenied');
 			case self::DELETE_BLOCKED:
 				$this->dieUsage('You have been blocked from editing', 'blocked');
 			case self::DELETE_READONLY:
