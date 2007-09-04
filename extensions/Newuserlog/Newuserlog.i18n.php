@@ -39,6 +39,12 @@ $wgNewuserlogMessages['de'] = array(
 	'newuserlog-create-entry'  => 'Benutzer wurde neu registriert',
 	'newuserlog-create2-entry' => 'erstellte Benutzerkonto für $1',
 );
+$wgNewuserlogMessages['eo'] = array(
+	'newuserlogpage'           => 'Uzantokreada loglibro',
+	'newuserlogpagetext'       => 'Ĉi tio estas loglibro de uzantokreadoj',
+	'newuserlog-create-entry'  => 'Nova uzanto',
+	'newuserlog-create2-entry' => 'kreis konton por $1',
+);
 $wgNewuserlogMessages['fi'] = array(
 	'newuserlogpage'           => 'Uudet käyttäjät',
 	'newuserlogpagetext'       => 'Tämä on loki luoduista käyttäjätunnuksista.',
@@ -56,6 +62,12 @@ $wgNewuserlogMessages['he'] = array(
 	'newuserlogpagetext'       => 'זהו יומן המכיל הרשמות של משתמשים.',
 	'newuserlog-create-entry'  => 'משתמש חדש',
 	'newuserlog-create2-entry' => 'יצר חשבון עבור $1',
+);
+$wgNewuserlogMessages['hsb'] = array(
+	'newuserlogpage'           => 'Protokol nowych wužiwarjow',
+	'newuserlogpagetext'       => 'To je protokol wutworjenja nowych wužiwarskich kontow.',
+	'newuserlog-create-entry'  => 'Nowy wužiwar',
+	'newuserlog-create2-entry' => 'je konto za wužiwarja [[$1]] wutworił',
 );
 $wgNewuserlogMessages['hu'] = array(
 	'newuserlogpage'           => 'Új felhasználók naplója',

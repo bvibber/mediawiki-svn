@@ -72,6 +72,20 @@ sphinx|Sphinx",
 'vote-invalid-choice' => 'Vous devez choisir une des options disponible.',
 ),
 
+'hsb' => array(
+'vote' => 'Hłosować',
+'vote-current' => 'Twój aktualny hłós je za \'\'\'$1\'\'\'.',
+'vote-caption' => 'Waš wuběr:',
+'vote-submit' => 'Hłosować',
+'vote-registered' => 'Waše wuzwolenje bu zregistrowane.',
+'vote-view-results' => 'Wuslědki sej wobhladać',
+'vote-results' => 'Wothłosowanske wuslědki',
+'vote-results-choice' => 'Wólba',
+'vote-results-count' => 'Ličić',
+'vote-login' => 'Dyrbiš $1, zo by wothłosował.',
+'vote-login-link' => 'přizjewić',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'vote' => 'Pemilihan',
@@ -154,6 +168,24 @@ sphinx|Esfinx',
 'vote-login' => 'Devètz $1 per votar.',
 'vote-login-link' => 'vos connectar',
 'vote-invalid-choice' => 'Devètz causir una de las opcions disponibla.',
+),
+
+'pl' => array(
+'vote' => 'Głosuj',
+'vote-header' => 'Tutaj możesz zagłosować na \'\'\'Naczelnego Przywódcę Świata\'\'\'!',
+'vote-current' => 'Aktualnie Twój głos oddany jest za \'\'\'$1\'\'\'.',
+'vote-legend' => 'Zagłosuj lub zmień głos',
+'vote-caption' => 'Twój wybór:',
+'vote-submit' => 'Głosuj',
+'vote-registered' => 'Twój głos został zarejestrowany.',
+'vote-view-results' => 'Zobacz wyniki',
+'vote-results' => 'Wyniki głosowania',
+'vote-results-choice' => 'Wybór',
+'vote-results-count' => 'Policz',
+'vote-results-none' => 'Nikt jeszcze dotąd nie głosował.',
+'vote-login' => 'By głosować, musisz $1.',
+'vote-login-link' => 'zaloguj',
+'vote-invalid-choice' => 'Musisz wybrać jedną z dostępnych opcji.',
 ),
 
 /* Piedmontese (Bèrto 'd Sèra) */

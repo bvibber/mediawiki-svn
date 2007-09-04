@@ -60,6 +60,21 @@ $messages = array(
 		'ogg-desc-link'           => 'Über diese Datei',
 	),
 
+  'hsb' => array(
+	'ogg-long-error' => '(Njepłaćiwa ogg-dataja: $1)',
+	'ogg-play' => 'Wothrać',
+	'ogg-pause' => 'Přestawka',
+	'ogg-play-video' => 'Widejo wothrać',
+	'ogg-play-sound' => 'Zynk wothrać',
+	'ogg-player-videoElement' => 'Element <video>',
+	'ogg-player-selected' => '(wubrany)',
+	'ogg-use-player' => 'Wuzij wothrawak:',
+	'ogg-more' => 'Wjace ...',
+	'ogg-dismiss' => 'Začinić',
+	'ogg-download' => 'Dataju sćahnyć',
+	'ogg-desc-link' => 'Wo tutej dataji',
+);
+
 	'nl' => array(
 		'ogg-short-audio'      => 'Ogg $1 geluidsbestand, $2',
 		'ogg-short-video'      => 'Ogg $1 videobestande, $2',

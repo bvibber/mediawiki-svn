@@ -19,6 +19,12 @@ $wgSiteMatrixMessages['af'] = array(
 $wgSiteMatrixMessages['ar'] = array(
 	'sitematrix' => 'قائمة بمشاريع ويكيميديا',
 );
+$wgSiteMatrixMessages['bcl'] = array(
+	'sitematrix' => 'Lista kan mga Wikimedia wiki',
+	'sitematrix-language' => 'Tataramon',
+	'sitematrix-project' => 'Pangaran kan proyekto, interproject link asin interwiki link',
+	'sitematrix-others' => 'Ibang mga proyekto kan Wikimedia',
+);
 $wgSiteMatrixMessages['cs'] = array(
 	"sitematrix" => "Seznam wiki projektů nadace Wikimedia",
 );
@@ -27,6 +33,12 @@ $wgSiteMatrixMessages['de'] = array(
 	'sitematrix-language' => 'Sprache',
 	'sitematrix-project'  => 'Projektname, Interprojekt-Link und Interwiki-Link',
 	'sitematrix-others'   => 'Weitere Wikimedia-Projekte',
+);
+$wgSiteMatrixMessages['eo'] = array(
+	'sitematrix' => 'Listo de vikioj de Wikimedia',
+	'sitematrix-language' => 'Lingvo',
+	'sitematrix-project' => 'Nomo de projekto, interprojekta ligilo kaj intervikia ligilo',
+	'sitematrix-others' => 'Aliaj projektoj de Wikimedia',
 );
 $wgSiteMatrixMessages['fi'] = array(
 	"sitematrix" => "Luettelo Wikimedian wikeistä",
@@ -39,6 +51,12 @@ $wgSiteMatrixMessages['he'] = array(
 	'sitematrix-language' => 'שפה',
 	'sitematrix-project'  => 'שם הפרויקט, קישורי אינטרוויקי ובין המיזמים',
 	'sitematrix-others'   => 'מיזמים אחרים של ויקימדיה',
+);
+$wgSiteMatrixMessages['hsb'] = array(
+	'sitematrix' => 'Lisćina wšěch wikijow we Wikimediji',
+	'sitematrix-language' => 'Rěč',
+	'sitematrix-project' => 'Projektowe mjeno, mjezyprojektowy wotkaz a mjezyrěčny wotkaz',
+	'sitematrix-others' => 'Dalše projekty we Wikimediji',
 );
 $wgSiteMatrixMessages['hu'] = array(
 	"sitematrix" => "Az összes Wikimedia wiki listája",

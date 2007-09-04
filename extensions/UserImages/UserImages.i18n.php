@@ -28,6 +28,11 @@ function efUserImagesMessages() {
 'userimages-noname' => 'Nom d’utilisateur invalide ou manquant.',
 'userimages-noimages' => '$1 n’a importé aucune image.',
 ),
+'hsb' => array(
+'userimages-caption' => 'Wobrazy wot $1 nahrate',
+'userimages-noname' => 'Njepłaćiwe wužiwarske mjeno abo njepodate.',
+'userimages-noimages' => '$1 nahraća wobrazow nima.',
+),
 /* Indonesian */
 'id' => array(
 'userimages-caption' => 'Berkas yang dimuatkan oleh $1',

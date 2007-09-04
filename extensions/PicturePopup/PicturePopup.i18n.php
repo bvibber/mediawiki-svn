@@ -38,6 +38,16 @@ function efPicturePopupMessages() {
 	'picturepopup_invalid_icon'    => 'Le modèle de licence n’a pas d’élément imageLicenseIcon ou est invalide',
 ),
 
+'hsb' => array(
+'picturepopup_invalid_title' => 'Njepłaciwy wobrazowy titul',
+'picturepopup_no_license' => 'Wobraz licencny etiket nima',
+'picturepopup_no_image' => 'Wobraz njeeksistuje',
+'picturepopup_no_license_list' => 'Licencna lisćina je njepłaćiwa ab faluje',
+'picturepopup_license_list' => 'Projekt:Wobrazowe kopirajtowe etikety',
+'picturepopup_no_license_text' => 'Licencna předłoha nima element z id=imageLicenseText',
+'picturepopup_invalid_icon' => 'Licencna předłoha ma falowacy abo njepłaćiwy element imageLicenseIcon',
+),
+
 /* Indonesian */
 'id' => array(
 	'picturepopup_invalid_title' => 'Judul gambar tak sah',

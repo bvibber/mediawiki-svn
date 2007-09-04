@@ -125,6 +125,10 @@ function efPatrollerMessages() {
 'grouppage-patroller' => '{{ns:project}}:Patrouilleur',
 ),
 
+'hsb' => array(
+'patrol-revert-reason' => 'Přičina:',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'patrol'                 => 'Patroli suntingan',

@@ -75,6 +75,12 @@ Muista: '''Et voi saada oikeuksiasi takaisin tämän sivun avulla!''' Sinun täy
 'resign-logentry'  => 'הסיר את ההרשאות $2 שלו',
 ),
 	
+'hsb' => array(
+'resign' => 'Wotstup',
+'resign-reason' => 'Přičina',
+'resign-success' => '\'\'\'Prawa buchu wuspěšnje wotstronjene.\'\'\'',
+),
+
 'id' => array(
 'resign'           => 'Pengunduran diri',
 'resign-text'      => "Anda dapat melepaskan hak Anda (mis. pengurus) melalui halaman ini. Silakan tandai hak yang ingin Anda lepas.

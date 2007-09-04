@@ -29,6 +29,10 @@ function efMinimumNameLengthMessages() {
 'minnamelength-error' => 'Votre nom d\'utilisateur est trop court (minimum $1).',
 ),
 
+'hsb' => array(
+'minnamelength-error' => 'Wužiwarske mjeno je překrótke. Minimalna dołhosć je $1 znamješkow.',
+),
+
 /* Indonesian (IvanLanin) */
 'id' => array(
 'minnamelength-error' => 'Nama pengguna Anda terlalu pendek. Panjang minimum adalah $1.',
