@@ -52,6 +52,7 @@ $messages = array(
 		'ogg-player-videoElement' => '<video>-Element',
 		'ogg-player-oggPlugin'    => 'Ogg-Plugin',
 		'ogg-player-thumbnail'    => 'Zeige Vorschaubild',
+		'ogg-player-soundthumb'   => 'Kein Player',
 		'ogg-player-selected'     => '(ausgewählt)',
 		'ogg-use-player'          => 'Abspielsoftware: ',
 		'ogg-more'                => 'Mehr …',
@@ -73,7 +74,7 @@ $messages = array(
 	'ogg-dismiss' => 'Začinić',
 	'ogg-download' => 'Dataju sćahnyć',
 	'ogg-desc-link' => 'Wo tutej dataji',
-);
+),
 
 	'nl' => array(
 		'ogg-short-audio'      => 'Ogg $1 geluidsbestand, $2',
