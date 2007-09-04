@@ -84,6 +84,15 @@ $wgExpandTemplatesMessages['he'] = array(
 	'expand_templates_remove_comments' => 'הסר הערות',
 	'expand_templates_preview'         => 'תצוגה מקדימה',
 );
+$wgExpandTemplatesMessages['hsb'] = array(
+	'expandtemplates'                  => 'Předłohi ekspandować',
+	'expand_templates_title'           => 'Kontekstowy titul, za {{PAGENAME}} atd.:',
+	'expand_templates_input'           => 'Tekst zapodać:',
+	'expand_templates_output'          => 'Wuslědk',
+	'expand_templates_ok'              => 'W porjadku',
+	'expand_templates_remove_comments' => 'Komentary wotstronić',
+	'expand_templates_preview'         => 'Přehlad',
+);
 $wgExpandTemplatesMessages['hu'] = array(
 	'expandtemplates'                  => 'Sablonok kibontása',
 	'expand_templates_intro'           => 'Ez a speciális lap a bevitt szövegekben megkeresi a sablonokat és rekurzívan kibontja őket.
@@ -197,7 +206,6 @@ $wgExpandTemplatesMessages['no'] = array(
 	'expand_templates_title'           => 'Konteksttittel, for {{PAGENAME}}, etc.:',
 	'expand_templates_input'           => 'Skriv inn tekst:',
 	'expand_templates_output'          => 'Resultat',
-	'expand_templates_ok'              => 'OK',#identical but defined
 	'expand_templates_remove_comments' => 'Fjern kommentarer',
 );
 $wgExpandTemplatesMessages['oc'] = array(
@@ -247,7 +255,6 @@ volania relevantnej fázy parsera samotného MediaWiki.',
 	'expand_templates_title'           => 'Názov kontextu pre {{PAGENAME}} atď.:',
 	'expand_templates_input'           => 'Vstupný text:',
 	'expand_templates_output'          => 'Výsledok',
-	'expand_templates_ok'              => 'OK',#identical but defined
 	'expand_templates_remove_comments' => 'Odstrániť komentáre',
 	'expand_templates_preview'         => 'Náhľad',
 );
@@ -288,7 +295,6 @@ $wgExpandTemplatesMessages['sr'] = $wgExpandTemplatesMessages['sr-ec'];
 
 $wgExpandTemplatesMessages['su'] = array(
 	'expandtemplates'                  => 'Mekarkeun citakan',
-	'expand_templates_output'          => 'Hasil',#identical but defined
 	'expand_templates_ok'              => 'Heug',
 );
 

@@ -37,6 +37,12 @@ $wgFilepathMessages['de'] = array(
 
 	Die Eingabe muss ohne den Zusatz „{{ns:image}}:“ erfolgen.',
 );
+$wgFilepathMessages['eo'] = array(
+	'filepath'        => 'Dosiera pado',
+	'filepath_page'   => 'Dosiero:',
+	'filepath_submit' => 'Pado',
+	'filepath-summary' => 'Ĉi tiu speciala paĝo redonas la kompletan padon por dosiero. Bildoj estas montrataj en alta distingivo, aliaj dosieraj tipoj estas rekte startataj per ties asociita programo.',
+);
 $wgFilepathMessages['fi'] = array(
 	'filepath'         => 'Tiedoston osoite',
 	'filepath_page'    => 'Tiedosto',
@@ -64,6 +70,14 @@ $wgFilepathMessages['he'] = array(
 	'filepath-summary' => 'דף זה מציג את הנתיב המלא לקבצים שהועלו. תמונות מוצגות ברזולוציה מלאה, ואילו סוגי קבצים אחרים מוצגים ישירות באמצעות התוכנה שהוגדרה להצגתם.
 	
 	יש להקליד את שם הקובץ ללא הקידומת "{{ns:image}}:".',
+);
+$wgFilepathMessages['hsb'] = array(
+	'filepath'        => 'Puć k dataji',
+	'filepath_page'   => 'Dataja:',
+	'filepath_submit' => 'Puć pytać',
+	'filepath-summary' => 'Tuta specialna strona wróća dospołny puć aktualneje datajoweje wersije. Wobrazy so dospołnje pokazuja, druhe datajowe typy so přez zwjazanym programom startuja.
+
+Zapisaj datajowe mjeno bjez prefiksa "{{ns:image}}:".',
 );
 $wgFilepathMessages['hu'] = array(
 	'filepath'        => 'Fájl elérés',

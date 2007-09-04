@@ -22,6 +22,10 @@ $wgDeletedContribsMessages['he'] = array(
 	'deletedcontributions' => 'תרומות משתמש מחוקות',
 );
 
+$wgDeletedContribsMessages['hsb'] = array(
+	'deletedcontributions' => 'Wušmórnjene wužiwarske přinoški',
+);
+
 $wgDeletedContribsMessages['id'] = array(
 	'deletedcontributions'		 => 'Kontribusi yang dihapus'
 );

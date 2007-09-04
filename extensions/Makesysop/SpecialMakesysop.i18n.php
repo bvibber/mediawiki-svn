@@ -56,6 +56,11 @@ $wgMakesysopMessages['az'] = array(
 $wgMakesysopMessages['ba'] = array(
 	'makesysopname'        => 'Ҡатнашыусы исеме:',
 );
+$wgMakesysopMessages['bcl'] = array(
+	'makesysopname' => 'Pangaran kan parágamit:',
+	'rights' => 'Derechos:',
+	'already_sysop' => 'An parágamit na ini sarô nang administrador',
+);
 $wgMakesysopMessages['be'] = array(
 	'makesysoptitle'       => 'Зрабіць карыстальніка сісопам',
 	'makesysopsubmit'      => 'Зрабіць карыстальніка сісопам',
@@ -221,24 +226,25 @@ $wgMakesysopMessages['el'] = array(
 	'already_bureaucrat'   => 'Ο χρήστης αυτός είναι ήδη διαχειριστής.',
 );
 $wgMakesysopMessages['eo'] = array(
-	'makesysoptitle'       => 'Igu uzanton administranto',
-	'makesysoptext'        => 'Ĉi formularo estas uzita de burokratoj por igi ordinarajn uzantojn administrantoj. Bonvlolu tajpi la nomon de la uzanto en la skatoleton kaj premu la butonon por igi la uzanton administranto.',
-	'makesysopname'        => 'Nomo de la uzanto:',
-	'makesysopsubmit'      => 'Igu ĉi uzanton administranto',
-	'makesysopok'          => "<b>Uzanto \"$1\" nun estas administranto</b>",
-	'makesysopfail'        => "<b>Uzanto \"$1\" ne povis esti admnistrantigita. (Ĉu vi ĝuste tajis ties nomon ?)</b>",
-	'setbureaucratflag'    => 'Aldonu burokratan markilon',
-	'rights'               => 'Rajtoj:',
-	'set_user_rights'      => 'Ŝanĝu uzulajn rajtojn',
-	'user_rights_set'      => "<b>Uzulaj rajtoj por \"$1\" ĝisdatigitaj</b>",
-	'set_rights_fail'      => "<b>Uzantorajtoj por \"$1\" ne povis esti difinataj. (Ĉu vi entajpis la nomon korekte?)</b>",
-	'makesysop'            => 'Igu uzanton administranto',
-	'already_sysop'        => 'Tiu ĉi uzanto jam estas administranto.',
-	'already_bureaucrat'   => 'Tiu ĉi uzanto jam estas burokrato',
+	'makesysoptitle' => 'Igu uzanton administranto',
+	'makesysoptext' => 'Ĉi formularo estas uzita de burokratoj por igi ordinarajn uzantojn administrantoj. Bonvlolu tajpi la nomon de la uzanto en la skatoleton kaj premu la butonon por igi la uzanton administranto.',
+	'makesysopname' => 'Nomo de la uzanto:',
+	'makesysopsubmit' => 'Igu ĉi uzanton administranto',
+	'makesysopok' => '<b>Uzanto "$1" nun estas administranto</b>',
+	'makebureaucratok' => '<b>[[User:$1|$1]] estas nun burokrato</b>',
+	'makesysopfail' => '<b>Uzanto "$1" ne povis esti admnistrantigita. (Ĉu vi ĝuste tajis ties nomon ?)</b>',
+	'setbureaucratflag' => 'Aldonu burokratan markilon',
+	'rights' => 'Rajtoj:',
+	'set_user_rights' => 'Ŝanĝu uzantorajtojn',
+	'user_rights_set' => '<b>Uzantorajtoj por "$1" ĝisdatigitaj</b>',
+	'set_rights_fail' => '<b>Uzantorajtoj por "$1" ne povis esti difinataj. (Ĉu vi entajpis la nomon korekte?)</b>',
+	'makesysop' => 'Igu uzanton administranto',
+	'already_sysop' => 'Tiu ĉi uzanto jam estas administranto.',
+	'already_bureaucrat' => 'Tiu ĉi uzanto jam estas burokrato',
 	'makesysop-nodatabase' => 'Malbona intervikia salutnomo: $1',
-	'group-steward'        => 'Stevardoj',
+	'group-steward' => 'Stevardoj',
 	'group-steward-member' => 'Stevardo',
-	'grouppage-steward'    => '{{ns:project}}:Stevardoj',
+	'grouppage-steward' => '{{ns:project}}:Stevardoj',
 );
 $wgMakesysopMessages['es'] = array(
 	'makesysoptitle'       => 'Convertir a este usuario en administrador',
@@ -378,20 +384,22 @@ $wgMakesysopMessages['hr'] = array(
 	'already_bureaucrat'   => 'Ovaj je suradnik već birokrat',
 );
 $wgMakesysopMessages['hsb'] = array(
-	'makesysoptitle'       => 'Wužiwarja k administratorej činić',
-	'makesysoptext'        => 'Tutón formular so wot běrokratow wužiwa, zo bychu so jednori wužiwarjo do administratorow přeměnili. Zadodajće wužiwarske mjeno do wotpowědneho pola a klikńće na tłočatko, zo byšće wužiwarja k administratorej činił(a).',
-	'makesysopname'        => 'Mjeno wužiwarja:',
-	'makesysopsubmit'      => 'Wužiwarja k administratorej činić',
-	'makesysopok'          => '<b>Wužiwar „$1” je nětko administrator.</b>',
-	'makesysopfail'        => '<b>Wužiwar „$1” njeda so k sysopej činić. (Sće mjeno prawje zapisał(a)?)</b>',
-	'setbureaucratflag'    => 'Wužiwarja k běrokratej činić',
-	'rights'               => 'Prawa:',
-	'set_user_rights'      => 'Wužiwarske prawa zrjadować',
-	'user_rights_set'      => '<b>Prawa za wužiwarja „$1” zaktualizowane</b>',
-	'set_rights_fail'      => '<b>Prawa za wužiwarja „$1” njedadźa so nastajić. (Sće mjeno prawje zapisał(a)?)</b>',
-	'makesysop'            => 'Wužiwarja k administratorej činić',
-	'already_sysop'        => 'Tutón wužiwar je hižo administrator.',
-	'already_bureaucrat'   => 'Tutón wužiwar je hižo běrokrat.',
+	'makesysoptitle' => 'Wužiwarja k administratorej činić',
+	'makesysoptext' => 'Tutón formular so wot běrokratow wužiwa, zo bychu so jednori wužiwarjo do administratorow přeměnili. Zadodajće wužiwarske mjeno do wotpowědneho pola a klikńće na tłočatko, zo byšće wužiwarja k administratorej činił(a).',
+	'makesysopname' => 'Mjeno wužiwarja:',
+	'makesysopsubmit' => 'Wužiwarja k administratorej činić',
+	'makesysopok' => '<b>Wužiwar „$1” je nětko administrator.</b>',
+	'makebureaucratok' => '<b>Wužiwar „$1“ je nětko běrokrat.</b>',
+	'makesysopfail' => '<b>Wužiwar „$1” njeda so k sysopej činić. (Sće mjeno prawje zapisał(a)?)</b>',
+	'setbureaucratflag' => 'Wužiwarja k běrokratej činić',
+	'rights' => 'Prawa:',
+	'set_user_rights' => 'Wužiwarske prawa zrjadować',
+	'user_rights_set' => '<b>Prawa za wužiwarja „$1” zaktualizowane</b>',
+	'set_rights_fail' => '<b>Prawa za wužiwarja „$1” njedadźa so nastajić. (Sće mjeno prawje zapisał(a)?)</b>',
+	'makesysop' => 'Wužiwarja k administratorej činić',
+	'already_sysop' => 'Tutón wužiwar je hižo administrator.',
+	'already_bureaucrat' => 'Tutón wužiwar je hižo běrokrat.',
+	'group-steward-member' => 'steward',
 );
 $wgMakesysopMessages['hu'] = array(
 	'makesysopok'          => '<b>User „$1” mostantól adminisztrátor</b>',
@@ -659,9 +667,6 @@ $wgMakesysopMessages['nl'] = array(
 	'already_sysop' => 'Deze gebruiker is al beheerder',
 	'already_bureaucrat' => 'Deze gebruiker is al bureaucraat',
 	'makesysop-nodatabase' => 'Onjuiste interwikigebruikersnaam: $1',
-	'group-steward' => 'Stewards',#identical but defined
-	'group-steward-member' => 'Steward',#identical but defined
-	'grouppage-steward' => '{{ns:project}}:Stewards',#identical but defined
 );
 $wgMakesysopMessages['nn'] = array(
 	'makesysoptitle'	=> 'Gjer brukar om til administrator',
@@ -696,8 +701,6 @@ $wgMakesysopMessages['no'] = array(
 	'already_sysop' => 'Den brukeren er allerede administrator',
 	'already_bureaucrat' => 'Denne brukeren er allerede byråkrat',
 	'makesysop-nodatabase' => 'Ugyldig interwiki-brukernavn: $1',
-	'group-steward' => 'Stewards',#identical but defined
-	'group-steward-member' => 'Steward',#identical but defined
 	'grouppage-steward' => 'Project:Stewards',
 );
 $wgMakesysopMessages['oc'] = array(
@@ -805,7 +808,6 @@ Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din u
 	'already_bureaucrat' => 'Acest utilizator este deja birocrat.',
 	'makesysop-nodatabase' => 'Nume de utilizator interwiki invalid $1',
 	'group-steward' => 'Stewarzi',
-	'group-steward-member' => 'Steward',#identical but defined
 	'grouppage-steward' => '{{ns:project}}:Stewarzi',
 );
 $wgMakesysopMessages['ru'] = array(
@@ -848,7 +850,6 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'already_bureaucrat' => 'Tento používateľ už je byrokrat',
 	'makesysop-nodatabase' => 'Zlé interwiki používateľské meno: $1',
 	'group-steward' => 'Stewardi',
-	'group-steward-member' => 'Steward',#identical but defined
 	'grouppage-steward' => '{{ns:project}}:Stewardi',
 );
 $wgMakesysopMessages['sl'] = array(
@@ -950,8 +951,6 @@ $wgMakesysopMessages['su'] = array(
 	'already_sysop' => 'Pamaké ieu geus boga kalungguhan kuncén',
 	'already_bureaucrat' => 'Pamaké ieu geus boga kalungguhan birokrat',
 	'makesysop-nodatabase' => 'Ngaran pamaké interwiki salah: $1',
-	'group-steward' => 'Steward',#identical but defined
-	'group-steward-member' => 'Steward',#identical but defined
 	'grouppage-steward' => '{{ns:project}}:Steward',
 );
 

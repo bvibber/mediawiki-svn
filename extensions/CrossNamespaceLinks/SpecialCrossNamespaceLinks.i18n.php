@@ -42,6 +42,11 @@ $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinks-summary' => 'דף זה מספק רשימה של קישורים מדפים במרחב השם הראשי לדפים במרחבי שם אחרים (למעט מרחבי השם {{ns:special}}, {{ns:talk}}, {{ns:project}} ו{{ns:template}}), שאינם רצויים לשימוש.',
 	'crossnamespacelinkstext'     => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
+$wgCrossNamespaceLinksMessages['hsb'] = array(
+	'crossnamespacelinks'         => 'Nastawki z wotkazami do druhich mjenowych rumow',
+	'crossnamespacelinks-summary' => 'Tuta specialna strona naliči wotkazy z nastawka we hłownym (nastawkowym) mjenowym rumje do druhich mjenowych rumow (nimo {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), kotrychž wužiwanje njeje doporučomne.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|wotkaz|wotkazaj|wotkazy|wotkazow}} do mjenoweho ruma „$3”',
+);
 $wgCrossNamespaceLinksMessages['hu'] = array(
 	'crossnamespacelinks'         => 'Névtérközi linkek',
 	'crossnamespacelinkstext'     => '$1: $2 link a $3 névtérbe.'

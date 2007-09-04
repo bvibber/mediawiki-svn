@@ -89,6 +89,10 @@ function efImageMapMessages() {
 'imagemap_description'          => 'אודות התמונה',
 ),
 
+'hsb' => array(
+'imagemap_description'          => 'Wo tutym wobrazu',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: harus memberikan suatu gambar di baris pertama',

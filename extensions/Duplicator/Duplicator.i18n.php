@@ -66,6 +66,11 @@ copies of all histories. This is useful for article forking, etc.',
 'duplicator-dest-exists' => '[[$1]] موجودة بالفعل. من فضلك اكتب عنوان هدف غير موجود.',
 ),
 
+'bcl' => array(
+'duplicator-source' => 'Ginikanan:',
+'duplicator-dest' => 'Destinasyon:',
+'duplicator-summary' => 'Kinopya sa [[$1]]',
+),
 
 'br' => array(
 'duplicator'=> 'Eilañ ur pennad',
@@ -142,6 +147,28 @@ copies of all histories. This is useful for article forking, etc.',
 	'duplicator-toomanyrevisions' => 'Die Seite [[$1]] hat $2 Versionen, um kann daher nicht dupliziert. Es können nur Seiten mit maximal $3 Versionen dupliziert werden.',
 ),
 
+'eo' => array(
+'duplicator' => 'Duobligu artikolon',
+'duplicator-toolbox' => 'Duobligu ĉi tiun artikolon',
+'duplicator-header' => 'Ĉi tiu paĝo permesas kompletan duobligon de artikolo, kreante sendependajn kopiojn de ĉiuj historioj. Ĉi tio estas utila por artikola disigo, ktp.',
+'duplicator-options' => 'Preferoj',
+'duplicator-source' => 'Fonto:',
+'duplicator-dest' => 'Destino:',
+'duplicator-dotalk' => 'Duobligu diskutan paĝon (se estas aplikebla)',
+'duplicator-submit' => 'Duobligu',
+'duplicator-summary' => 'Kopiita de [[$1]]',
+'duplicator-success' => '<big>\'\'\'[[$1]] estas kopiita al [[$2]].\'\'\'</big>',
+'duplicator-success-revisions' => '$1 {{PLURAL:$1|revizio|revizioj}} estas {{PLURAL:$1|kopiita|kopiitaj}}.',
+'duplicator-success-talkcopied' => 'La diskuta paĝo ankaŭ estas kopiita.',
+'duplicator-success-talknotcopied' => 'La diskuta paĝo ne povis esti kopiita.',
+'duplicator-failed' => 'La paĝo ne povis esti duobligita. Nekonata eraro okazis.',
+'duplicator-source-invalid' => 'Bonvolu provizi validan fontan titolon.',
+'duplicator-source-notexist' => '[[$1]] ne ekzistas. Bonvolu provizi la titolon de paĝo kiu ekzistas.',
+'duplicator-dest-invalid' => 'Bonvolu provizi validan destinan titolon.',
+'duplicator-dest-exists' => '[[$1]] jam ekzistas. Bonvolu provizi destinan titolon kiu ne ekzistas.',
+'duplicator-toomanyrevisions' => '[[$1]] havas tro multajn ($2) reviziojn kaj ne povas esti kopiata. La aktuala limo estas $3.',
+),
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 'duplicator' => 'Monista sivu',
@@ -195,6 +222,22 @@ indépendantes de l’historique complet. Il sert par exemple à séparer un art
 'duplicator-dest-invalid' => 'Veuillez donner un nom valide pour la destination.',
 'duplicator-dest-exists' => '[[$1]] existe déjà. Veuillez donner le nom d’un article qui n’existe pas encore.',
 'duplicator-toomanyrevisions' => '[[$1]] a trop ($2) de révisions et ne peut pas être copié. La limite actuelle est de $3.',
+),
+
+'hsb' => array(
+'duplicator-options' => 'Opcije',
+'duplicator-source' => 'Žórło:',
+'duplicator-dest' => 'Cil:',
+'duplicator-dotalk' => 'Diskusijnu stronu sobu kopěrować (jeli móžno)',
+'duplicator-submit' => 'Duplicěrować',
+'duplicator-summary' => '[[$1]] kopěrowany.',
+'duplicator-success' => '<big>\'\'\'[[$1]] bu do [[$2]] kopěrowany.\'\'\'</big>',
+'duplicator-success-revisions' => '$1 {{PLURAL:$1|wersija bu kopěrowana|wersijow bu kopěrowane|wersiji buštej kopěrowanej|wersije buchu kopěrowane}}.',
+'duplicator-success-talkcopied' => 'Diskusijna strona bu tež kopěrowana.',
+'duplicator-success-talknotcopied' => 'Diskusijna strona njeda so kopěrować.',
+'duplicator-failed' => 'Strona njeda so duplicěrować. Njeznaty zmylk je wustupił.',
+'duplicator-source-invalid' => 'Prošu podaj płaćiwu žórłowu stronu.',
+'duplicator-dest-invalid' => 'Prošu podaj płaćiwu cilowu stronu.',
 ),
 
 /* Indonesia (Ivan Lanin) */

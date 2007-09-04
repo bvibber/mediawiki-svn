@@ -46,6 +46,17 @@ $wgDesysopMessages['el'] = array(
 	'user_rights_set'      => '<b>Τα δικαιώματα χρήστη για τον/την "$1" έχουν ενημερωθεί.</b>',
 	'set_rights_fail'      => '<b>Δεν ήταν δυνατή η ρύθμιση των δικαιωμάτων για το χρήστη "$1". Βεβαιωθείτε πως έχετε πληκτρολογήσει σωστά το όνομα.</b>',
 );
+$wgDesysopMessages['eo'] = array(
+	'desysoptitle'         => 'Revoku administrantan akceson por uzanto',
+	'desysoptext'          => 'Ĉi tiu formularo estas uzata de burokratoj por revoki la administrantan permeson de uzanto. Tajpu la uzantan nomon en la keston kaj presu la butonon por revoki la administrantan akceson de uzanto.',
+	'desysopname'          => 'Nomo de la uzanto:',
+	'desysopok'            => '<b>Uzanto "$1" estis neadministrantigita</b>',
+	'set_user_rights'      => 'Ŝanĝu uzantorajtojn',
+	'user_rights_set'      => '<b>Uzantorajtoj por "$1" ĝisdatigitaj</b>',
+	'set_rights_fail'      => '<b>Uzantorajtoj por "$1" ne povis esti difinataj. (Ĉu vi entajpis la nomon korekte?)</b>',
+	'desysop'              => 'Neadministrantigu uzanton',
+	'not_sysop'            => 'Ĉi tiu uzanto ne estas administranto',
+);
 $wgDesysopMessages['fr'] = array(
 	'desysoptitle'         => 'Enlever les droits d’administrateur à cet utilisateur',
 	'desysoptext'          => "Ce formulaire est utilisé par les bureaucrates pour enlever ses droits à un administrateur. Entrez le nom d’un administrateur ci-dessous et pressez le bouton pour enlever les droits.",
@@ -67,6 +78,13 @@ $wgDesysopMessages['he'] = array(
 	'set_rights_fail'      => '\'\'\'שינוי הרשאות המשתמש "$1" נכשל.\'\'\' (האם הקלדתם נכונה את שם המשתמש?)',
 	'desysop'              => 'בטל הרשאת מפעיל מערכת למשתמש',
 	'not_sysop'            => 'משתמש זה אינו מפעיל מערכת',
+);
+$wgDesysopMessages['hsb'] = array(
+	'desysopname'          => 'Mjeno wužiwarja:',
+	'set_user_rights'      => 'Wužiwarske prawa zrjadować',
+	'user_rights_set'      => '<b>Prawa za wužiwarja „$1” zaktualizowane</b>',
+	'set_rights_fail'      => '<b>Prawa za wužiwarja „$1” njedadźa so nastajić. (Sće mjeno prawje zapisał(a)?)</b>',
+	'not_sysop'            => 'Tutón wužiwar administrator njeje.',
 );
 $wgDesysopMessages['id'] = array(
 	'desysoptitle'         => 'Mencabut akses pengurus dari pengguna',

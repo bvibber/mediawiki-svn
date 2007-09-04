@@ -101,6 +101,26 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'entfernte den Botstatus von [[$1]]',
 ),
 
+'eo' => array(
+'makebot'                 => 'Koncedi aŭ revoki robotan statuson',
+'makebot-header'          => '\'\'\'Loka burokrato povas uzi ĉi tiun paĝon por koncedi aŭ revoki [[Help:Roboto|robotan statuson]] al alia uzantokonto.\'\'\'<br />Robota statuso kaŝas uzantoredaktojn de la [[Special:Recentchanges|lastaj ŝanĝoj]] kaj similaj listoj, kaj estas utila por markigo de uzantoj kiuj faras aŭtomatajn redaktojn. Ĉi tio estu farata en akordo kun ĉi tieaj reguloj.',
+'makebot-username'        => 'Uzantonomo:',
+'makebot-search'          => 'Ek',
+'makebot-isbot'           => '[[User:$1|$1]] havas robotan statuson.',
+'makebot-notbot'          => '[[User:$1|$1]] ne havas robotan statuson.',
+'makebot-privileged'      => '[[User:$1|$1]] havas [[Special:Listadmins|administrantajn aŭ burokratajn privilegiojn]], kaj ne povas esti koncedata je robota statuso.',
+'makebot-change'          => 'Ŝanĝu statuson:',
+'makebot-grant'           => 'Koncedi',
+'makebot-revoke'          => 'Revoki',
+'makebot-comment'         => 'Komento:',
+'makebot-granted'         => '[[User:$1|$1]] nun havas robotan statuson.',
+'makebot-revoked'         => '[[User:$1|$1]] ne plu havas robotan statuson.',
+'makebot-logpage'         => 'Robotostatusa loglibro',
+'makebot-logpagetext'     => 'Ĉi tio estas loglibro de ŝanĝoj de uzanta [[Help:Roboto|robota]] statuso.',
+'makebot-logentrygrant'   => 'koncedis robotan statuson al [[$1]]',
+'makebot-logentryrevoke'  => 'revokis robotan statuson de [[$1]]',
+),
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 'makebot' => 'Anna tai poista botti-merkintä',
@@ -162,6 +182,14 @@ function efMakeBotMessages() {
 'makebot-logpagetext'    => 'זהו יומן השינויים בהרשאות ה[[{{ns:help}}:בוט|בוט]] של המשתמשים.',
 'makebot-logentrygrant'  => 'העניק הרשאת בוט למשתמש [[$1]]',
 'makebot-logentryrevoke' => 'ביטל את הרשאת הבוט למשתמש [[$1]]',
+),
+
+'hsb' => array(
+'makebot-username'        => 'Wužiwarske mjeno:',
+'makebot-search'          => 'Pytać',
+'makebot-isbot'           => '[[User:$1|$1]] ma botowy status.',
+'makebot-change'          => 'Status změnić',
+'makebot-comment'         => 'Komentar:',
 ),
 
 /* Hungarian */

@@ -48,6 +48,10 @@ $wgDismissableSiteNoticeMessages['he'] = array(
 	'sitenotice_close' => 'הסתר',
 );
 
+$wgDismissableSiteNoticeMessages['hsb'] = array(
+	'sitenotice_close' => 'Rozžohnować',
+);
+
 $wgDismissableSiteNoticeMessages['hu'] = array(
 	'sitenotice_close' => 'elrejt',
 );
