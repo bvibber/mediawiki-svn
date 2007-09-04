@@ -56,7 +56,6 @@ $1
 	'searchall'             => 'الكل',
 );
 
-
 $wgLuceneSearchMessages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
@@ -93,23 +92,26 @@ Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
 
 );
 $wgLuceneSearchMessages['eo'] = array(
-	'searchnumber'          => "<strong>Rezultoj $1-$2 el $3</strong>",
-	'searchprev'            => "&#x00AB; <span style='font-size: small'>Antaŭa</span>",
-	'searchnext'            => "<span style='font-size: small'>Sekvanta</span> &#x00BB;",
-	'searchscore'           => "Kongrueco: $1",
-	'searchsize'            => "$1 kB ($2 vortoj)",
-	'searchdidyoumean'      => "Ĉu vi celis : \"<a href=\"$1\">$2</a>\"?",
-	'searchnoresults'       => "Bedaŭrinde ne estas precize kongrua rezulto por via serĉo.",
-	'searchnearmatches'     => "<b>Ĉi tiuj paĝoj havas titolojn similajn al via serĉo:</b>\n",
-	'lucenepowersearchtext' => "
-Serĉo en nomspacoj:\n
-$1\n
-Serĉo de $3 $9 $10",
-	'lucenefallback'        => "Estis problemo kun la serĉilo de ĉi vikio.
-Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
-aŭ vi povas esplori la vikion per eksteraj serĉservoj.\n"
-);
+	'searchnumber'          => '<strong>Rezultoj $1-$2 el $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Antaŭa</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Sekvanta</span> &#x00BB;',
+	'searchscore'           => 'Kongrueco: $1',
+	'searchsize'            => '$1 kB ($2 vortoj)',
+	'searchdidyoumean'      => 'Ĉu vi celis : "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'Bedaŭrinde ne estas precize kongrua rezulto por via serĉo.',
+	'searchnearmatches'     => '<b>Ĉi tiuj paĝoj havas titolojn similajn al via serĉo:</b>
+',
+	'lucenepowersearchtext' => '
+Serĉo en nomspacoj:
 
+$1
+
+Serĉo de $3 $9 $10',
+	'lucenefallback'        => 'Estis problemo kun la serĉilo de ĉi vikio.
+Estas verŝajne nur portempa; bonvolu provi denove post iom da tempo
+aŭ vi povas esplori la vikion per eksteraj serĉservoj.
+',
+);
 $wgLuceneSearchMessages['es'] = array(
     'searchnumber'          => "<strong>Resultados $1-$2 de $3</strong>",
     'searchprev'            => "&#x00AB; <span style='font-size: small'>Previos</span>",
@@ -188,6 +190,14 @@ $1\n
 	'searchincategory'      => 'בקטגוריה',
 	'searchaliases'         => '',
 );
+
+$wgLuceneSearchMessages['hsb'] = array(
+	'searchsize'            => '$1 KB ($2 słowow)',
+	'searchdidyoumean'      => 'Měnješe ty „<a href="$1">$2</a>“?',
+	'searchall'             => 'wšě',
+	'searchincategory'      => 'w kategoriji',
+);
+
 $wgLuceneSearchMessages['hu'] = array(
 	'searchnumber'          => "<strong>$1-$2, összesen: $3 találat</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>előző</span>",
@@ -250,8 +260,6 @@ $wgLuceneSearchMessages['ja'] = array(
 	'searchnoresults'       => '該当するページが見つかりませんでした。',
 	'searchnearmatches'     => '<b>タイトルが検索語に近い項目:</b>
 ',
-	'searchnearmatch'       => '<li>$1</li>
-',#identical but defined
 	'lucenepowersearchtext' => '
 検索する名前空間:
 
@@ -445,7 +453,6 @@ $wgLuceneSearchMessages['pt'] = array(
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Anterior</span>',
 	'searchnext'            => '<span style=\'font-size: small\'>Posterior</span> &#x00BB;',
 	'searchscore'           => 'Relevância: $1',
-	'searchsize'            => '$1 KB ($2 words)',#identical but defined
 	'searchdidyoumean'      => 'Você quis dizer: "<a href="$1">$2</a>"?',
 	'searchnoresults'       => 'Desculpe, mas não existem resultados exatos correspondentes à sua procura.',
 	'searchnearmatches'     => '<b>As páginas a seguir possuem títulos similares com o que você pesquisou:</b>
