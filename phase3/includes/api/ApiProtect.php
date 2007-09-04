@@ -42,7 +42,7 @@ class ApiProtect extends ApiBase {
 		
 		$titleObj = NULL;
 		if(!isset($params['title']))
-			$this->dieUsage('The title parameter must be set', 'notarget');
+			$this->dieUsage('The title parameter must be set', 'notitle');
 		if(!isset($params['token']))
 			$this->dieUsage('The token parameter must be set', 'notoken');
 		if(!isset($params['protections']) || empty($params['protections']))
@@ -59,7 +59,7 @@ class ApiProtect extends ApiBase {
 
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
-			$this->dieUsage("bad title {$params['title']}", 'invalidtitle');
+			$this->dieUsage("Bad title {$params['title']}", 'invalidtitle');
 		if(!$titleObj->exists())
 			$this->dieUsage("{$params['title']} doesn't exist", 'missingtitle');
 		$articleObj = new Article($titleObj);

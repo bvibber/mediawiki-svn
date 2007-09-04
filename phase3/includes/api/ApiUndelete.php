@@ -57,7 +57,7 @@ class ApiUndelete extends ApiBase {
 
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
-			$this->dieUsage("bad title {$params['title']}", 'invalidtitle');
+			$this->dieUsage("Bad title {$params['title']}", 'invalidtitle');
 		$pa = new PageArchive($titleObj);
 		$retval = $pa->undelete((isset($params['timestamps']) ? $params['timestamps'] : array()), $params['reason']);
 		if(!is_array($retval))

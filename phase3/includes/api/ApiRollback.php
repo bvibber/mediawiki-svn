@@ -42,7 +42,7 @@ class ApiRollback extends ApiBase {
 		
 		$titleObj = NULL;
 		if(!isset($params['title']))
-			$this->dieUsage('The title parameter must be set', 'notarget');
+			$this->dieUsage('The title parameter must be set', 'notitle');
 		if(!isset($params['user']))
 			$this->dieUsage('The user parameter must be set', 'nouser');
 		if(!isset($params['token']))
@@ -58,12 +58,12 @@ class ApiRollback extends ApiBase {
 
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
-			$this->dieUsage("bad title {$params['title']}", 'invalidtitle');
+			$this->dieUsage("Bad title {$params['title']}", 'invalidtitle');
 
 		$articleObj = new Article($titleObj);
 		$summary = (isset($params['summary']) ? $params['summary'] : "");
 		$details = NULL;
-		$retval = $articleObj->doRollback($params['user'], $summary, $params['token'], isset($params['markbot']), &$details);
+		$retval = $articleObj->doRollback($params['user'], $summary, $params['token'], $params['markbot'], &$details);
 
 		switch($retval)
 		{
@@ -78,7 +78,7 @@ class ApiRollback extends ApiBase {
 			case Article::BAD_TOKEN:
 				$this->dieUsage('Invalid token', 'badtoken');
 			case Article::BAD_TITLE:
-				$this->dieUsage("The article ``{$params['title']}'' doesn't exist", 'missingtitle');
+				$this->dieUsage("{$params['title']} doesn't exist", 'missingtitle');
 			case Article::ALREADYROLLED:
 				$current = $details['current'];
 				$currentID = $current->getId();
@@ -114,7 +114,7 @@ class ApiRollback extends ApiBase {
 			'user' => null,
 			'token' => null,
 			'summary' => null,
-			'markbot' => null
+			'markbot' => false
 		);
 	}
 
