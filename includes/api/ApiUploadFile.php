@@ -30,7 +30,7 @@ if (!defined('MEDIAWIKI')) {
 
 /**
  * A module to upload given files
- * 
+ *
  * @addtogroup API
  */
 class ApiUploadFile extends ApiBase {
@@ -42,7 +42,7 @@ class ApiUploadFile extends ApiBase {
 	const UPLOAD_READ_ONLY = -6;
 	const UPLOAD_BAD_TOKEN = -7;
 
-	
+
 	public function __construct($query, $moduleName) {
 		parent :: __construct($query, $moduleName, 'up');
 	}
@@ -58,20 +58,20 @@ class ApiUploadFile extends ApiBase {
             extract($this->extractRequestParams());
 
             /*** VODAFONE DEBUG COMMENTS ***/
-			print "\nPARAMETERS POST:\n <br>";
+		/**	print "\nPARAMETERS POST:\n <br>";
 			print_r($this->extractRequestParams());
 			print "<br><br>";
 			print "\n_FILES:\n <br>";
 			print_r($_FILES);
-			print "<br><br>";
+			print "<br><br>"; */
             /*******************************/
 
-            $data = array(//'wpUploadFile' => $file, 
-                          'wpSourceType' => "file", 
-                          'wpDestFile' => $destfile, 
-                          'wpUploadDescription' => $summary, 
-                          'wpWatchthis' => $watch, 
-                          'wpIgnoreWarning' => $ignore, 
+            $data = array(//'wpUploadFile' => $file,
+                          'wpSourceType' => "file",
+                          'wpDestFile' => $destfile,
+                          'wpUploadDescription' => $summary,
+                          'wpWatchthis' => $watch,
+                          'wpIgnoreWarning' => $ignore,
                           'wpLicense' => $license);
             $request = new FauxRequest($data);
 
@@ -86,16 +86,16 @@ class ApiUploadFile extends ApiBase {
 			if( $userid!="" && $usertoken!="" ){
 				$MyUser = new User();
 				$MyUser->setID( $userid );
-				
+
 				if( $MyUser->loadFromId() ){
-					print "\n<br>entro x 1 - user cargado\n<br>";
-					
+					//print "\n<br>entro x 1 - user cargado\n<br>";
+
 					if( $usertoken == $MyUser->mToken ){
-						print "\n<br>entro x 2 - tokens coinciden\n<br>";
+						//print "\n<br>entro x 2 - tokens coinciden\n<br>";
 						$MyUser->setCookies();
 						$wgUser = $MyUser;
 					}else{
-						print "\n<br>entro x 3 - mal token\n<br>";
+						//print "\n<br>entro x 3 - mal token\n<br>";
 						$this->process( self::UPLOAD_BAD_TOKEN );
 						return;
 					}
@@ -103,12 +103,12 @@ class ApiUploadFile extends ApiBase {
 			}
 
             /*** VODAFONE DEBUG COMMENTS ***/
-			print "\n<br>USER: <br>";
+			/**print "\n<br>USER: <br>";
 			print_r($wgUser);
 			print "<br><br>";
 			print "_SESSION: <br>";
 			print_r($_SESSION);
-			print "<br><br>";
+			print "<br><br>"; */
             /*******************************/
 
 			# Check uploading enabled
@@ -143,9 +143,9 @@ class ApiUploadFile extends ApiBase {
 				return;
 			}
 
-			$this->process($form->processUpload());
+			$this->process($form->internalProcessUpload());
 //			$this->cleanupTempFile();
-			
+
         } else {
         	$this->process( self::UPLOAD_INVALID );
         }
@@ -178,7 +178,7 @@ class ApiUploadFile extends ApiBase {
 			case ApiUploadFile::UPLOAD_READ_ONLY :
 	            $result['result'] = 'Upload_Read_Only';
 			    break;
-			    
+
 			case ApiUploadFile::UPLOAD_BAD_TOKEN :
 	            $result['result'] = 'UPLOAD_BAD_TOKEN';
 			    break;
@@ -236,7 +236,7 @@ class ApiUploadFile extends ApiBase {
 			case UploadForm::UPLOAD_WARNING:
 	            $result['result'] = 'Upload_Warning';
 			    break;
-			    
+
             default :
             	$result['result'] = 'Upload_Invalid';
         }
@@ -271,7 +271,7 @@ class ApiUploadFile extends ApiBase {
                 ApiBase :: PARAM_TYPE => 'string'
             ),
 
-            
+
         );
     }
 
@@ -294,9 +294,17 @@ class ApiUploadFile extends ApiBase {
 
 	protected function getExamples() {
 		return array (
-				"For test Upload file selected: ",
-				"	http://esdt32606/wikisvn/api_upload_form.php",
-				
+				"Multipart post request:  api.php ? action=upload ",
+				"Post Parameters:",
+				"  upfile=<path_to_file>",
+				"  upsourcetype=<file>",
+				"  updestfile=<file_name.jpg>",
+				"  upsummary=<summary>",
+				"  [upwatch=yes/no]",
+				"  [upignore=yes/no]",
+				"  [uplicense=<License>]",
+				"  [upuserid=<userId>]",
+				"  [uplgtoken=lgToken]",
 			);
 	}
 
