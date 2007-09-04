@@ -5,7 +5,7 @@ var wgOggPlayer = {
 
 	// List of players in order of preference
 	// Downpreffed VLC because it crashes my browser all the damn time -- TS
-	'players': ['videoElement', 'oggPlugin', 'cortado', 'quicktime-mozilla', 'quicktime-activex', 'vlc-mozilla', 'vlc-activex'],
+	'players': ['cortado', 'quicktime-mozilla', 'quicktime-activex', 'vlc-mozilla', 'vlc-activex', 'oggPlugin', 'videoElement'],
 
 	'clientSupports': { 'thumbnail' : true },
 	'savedThumbs': {},
@@ -21,7 +21,7 @@ var wgOggPlayer = {
 	 * Main entry point: initialise a video player
 	 * Player will be created as a child of the given ID
 	 * There may be multiple players in a document.
-	 * Parameters are: id, videoUrl, width, height, length, linkUrl
+	 * Parameters are: id, videoUrl, width, height, length, linkUrl, isVideo
 	 */
 	'init': function ( player, params ) {
 		elt = document.getElementById( params.id );
@@ -152,14 +152,17 @@ var wgOggPlayer = {
 			for ( var i = 0; i < navigator.mimeTypes.length; i++) {
 				var type = navigator.mimeTypes[i].type;
 				var pluginName = navigator.mimeTypes[i].enabledPlugin ? navigator.mimeTypes[i].enabledPlugin.name : '';
-				if ( type == 'application/ogg' && pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
-					this.clientSupports['vlc-mozilla'] = true;
+				if ( type == 'application/ogg' ) {
+					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
+						this.clientSupports['vlc-mozilla'] = true;
+					} else if ( pluginName.indexOf( 'QuickTime' ) > -1 ) {
+						this.clientSupports['quicktime-mozilla'] = true;
+					} else {
+						this.clientSupports['oggPlugin'] = true;
+					}
 					continue;
 				}
-				if ( type == 'application/ogg' && pluginName.indexOf( 'QuickTime' ) > -1 ) {
-					this.clientSupports['quicktime-mozilla'] = true;
-					continue;
-				}
+
 				if ( javaEnabled && type == 'application/x-java-applet' ) {
 					this.clientSupports['cortado'] = true;
 					continue;
