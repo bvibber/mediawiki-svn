@@ -409,8 +409,8 @@ $translatedContentTable = new TranslatedContentTable("translated_content");
 $optionAttributeOptionsTable = new OptionAttributeOptionsTable("option_attribute_options");
 $optionAttributeValuesTable = new OptionAttributeValuesTable("option_attribute_values");
 
-function select(array $expressions, array $tables, array $restrictions) {
-	$result = "SELECT " . $expressions[0]->toExpression();
+function genericSelect($selectCommand, array $expressions, array $tables, array $restrictions) {
+	$result = $selectCommand . " " . $expressions[0]->toExpression();
 	
 	for ($i = 1; $i < count($expressions); $i++)
 		$result .= ", " . $expressions[$i]->toExpression();
@@ -432,16 +432,45 @@ function select(array $expressions, array $tables, array $restrictions) {
 	return $result;
 }
 
-function selectLatest(array $expressions, array $tables, array $restrictions) {
+function select(array $expressions, array $tables, array $restrictions) {
+	return genericSelect("SELECT", $expressions, $tables, $restrictions);
+}
+
+function selectDistinct(array $expressions, array $tables, array $restrictions) {
+	return genericSelect("SELECT DISTINCT", $expressions, $tables, $restrictions);
+}
+
+function genericSelectLatest($selectCommand, array $expressions, array $tables, array $restrictions) {
 	foreach($tables as $table)
 		if ($table->isVersioned)
 			$restrictions[] = $table->removeTransactionId->toExpression() . " IS NULL";
 	
-	return select($expressions, $tables, $restrictions);
+	return genericSelect($selectCommand, $expressions, $tables, $restrictions);
 }
 
-function equals(DatabaseExpression $expression1, DatabaseExpression $expression2) {
-	return '(' . $expression1->toExpression() . ') = (' . $expression2->toExpression() . ')';
+function selectLatest(array $expressions, array $tables, array $restrictions) {
+	return genericSelectLatest("SELECT", $expressions, $tables, $restrictions);
+}
+
+function selectLatestDistinct(array $expressions, array $tables, array $restrictions) {
+	return genericSelectLatest("SELECT DISTINCT", $expressions, $tables, $restrictions);
+}
+
+function expressionToSQL($expression) {
+	if (is_int($expression))
+		return $expression;
+	else if (is_string($expression)) {
+		$dbr =& wfGetDB(DB_SLAVE);
+		return $dbr->addQuotes($expression);
+	}
+	else if (is_object($expression) && $expression instanceof DatabaseExpression) 
+		return $expression->toExpression();
+	else
+		throw new Exception("Cannot convert expression to SQL: " . $expression); 
+}
+
+function equals($expression1, $expression2) {
+	return '(' . expressionToSQL($expression1) . ') = (' . expressionToSQL($expression2) . ')';
 }
 
 ?>

@@ -1396,3 +1396,57 @@ function getTextValue($textId) {
 	return $dbr->fetchObject($queryResult)->text_text; 
 }
 
+class ClassAttribute {
+	public $attributeId;
+	public $levelName;
+	public $type;
+}
+
+class ClassAttributes {
+	protected $classAttributes;
+	
+	public function __construct($definedMeaningId) {
+		$dc=wdGetDataSetContext();
+		$dbr =& wfGetDB(DB_SLAVE);
+
+		global
+			$classAttributesTable, $bootstrappedDefinedMeaningsTable, $classMembershipsTable;
+		
+		$queryResult = $dbr->query(
+			SelectLatestDistinct(
+				array(
+					$classAttributesTable->attributeMid,
+					$classAttributesTable->attributeType,
+					$bootstrappedDefinedMeaningsTable->name 
+				),
+				array($classAttributesTable, $bootstrappedDefinedMeaningsTable, $classMembershipsTable),
+				array(
+					equals($classMembershipsTable->classMemberMid, $definedMeaningId), 
+					equals($classAttributesTable->classMid, $classMembershipsTable->classMid),
+					equals($classAttributesTable->levelMid, $bootstrappedDefinedMeaningsTable->definedMeaningId) 
+				)
+			)
+		);
+		
+		$this->classAttributes = array();
+		
+		while ($row = $dbr->fetchRow($queryResult)) {
+			$classAttribute = new ClassAttribute();
+			$classAttribute->attributeId = $row[0];
+			$classAttribute->type = $row[1];
+			$classAttribute->levelName = $row[2];
+			
+			$this->classAttributes[] = $classAttribute;
+		}
+	}
+	
+	public function filterClassAttributes($levelName, $type) {
+		$result = array();
+		
+		foreach ($this->classAttributes as $classAttribute) 
+			if ($classAttribute->type == $type && $classAttribute->levelName == $levelName)
+				$result[] = $classAttribute->attributeId;
+		
+		return $result;
+	}
+}

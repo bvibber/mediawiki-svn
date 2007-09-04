@@ -30,6 +30,7 @@ class IdStack {
 	protected $currentClass;
 	protected $definedMeaningIdStack = array(); 	// Used to keep track of which defined meaning is being rendered
 	protected $annotationAttributeStack = array();	// Used to keep track of which annotation attribute currently is being rendered
+	protected $classAttributesStack = array();		// Used to keep track of the class attributes that are currently in effect
 	
 	public function __construct($prefix) {
 	 	$this->keyStack = new RecordStack();
@@ -132,6 +133,23 @@ class IdStack {
 			throw new Exception("There is no annotation attribute in the current context");
 	}
 
+	public function pushClassAttributes(ClassAttributes $classAttributes) {
+		$this->classAttributesStack[] = $classAttributes;
+	}
+	
+	public function popClassAttributes() {
+		return array_pop($this->classAttributesStack);
+	}
+	
+	public function getClassAttributes() {
+		$stackSize = count($this->classAttributesStack);
+		
+		if ($stackSize > 0)
+			return $this->classAttributesStack[$stackSize - 1];
+		else
+			throw new Exception("There are no class attributes in the current context");
+	}
+
 	public function __tostring() {
 		return "<object of class IdStack>";
 	}
@@ -170,6 +188,7 @@ class ShowEditFieldForClassesChecker extends ShowEditFieldChecker{
 		$this->objectIdAttributeLevel = $objectIdAttributeLevel;
 		$this->objectIdAttribute = $objectIdAttribute;
 	}
+	
 	public function check(IdStack $idPath) {
 		$objectId = $idPath->getKeyStack()->peek($this->objectIdAttributeLevel)->getAttributeValue($this->objectIdAttribute);
 		return isClass($objectId);			
@@ -2250,8 +2269,14 @@ class DefinedMeaningContextEditor extends WrappingEditor {
 	}
 	
 	public function edit(IdStack $idPath, $value) {
-		$idPath->pushDefinedMeaningId($value->definedMeaningId);	
+		$definedMeaningId = (int) $value->definedMeaningId;
+		
+		$idPath->pushDefinedMeaningId($definedMeaningId);
+		$idPath->pushClassAttributes(new ClassAttributes($definedMeaningId));
+			
 		$result = $this->wrappedEditor->edit($idPath, $value);
+		
+		$idPath->popClassAttributes();
 		$idPath->popDefinedMeaningId();
 		
 		return $result;	

@@ -200,6 +200,26 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 		$this->wrappedEditor->save($idPath, $value);		
 		$idPath->popAnnotationAttribute();
 	}
+	
+	public function showEditField(IdStack $idPath) {
+		return true;
+	}
+}
+
+class ShowEditFieldForAttributeValuesChecker extends ShowEditFieldChecker {
+	protected $levelDefinedMeaningName;
+	protected $annotationType;
+	
+	public function __construct($levelDefinedMeaningName, $annotationType) {
+		$this->levelDefinedMeaningName = $levelDefinedMeaningName;
+		$this->annotationType = $annotationType;
+	}
+
+	public function check(IdStack $idPath) {
+		$classAttributes = $idPath->getClassAttributes()->filterClassAttributes($this->levelDefinedMeaningName, $this->annotationType);
+		
+		return count($classAttributes) > 0;
+	}
 }
 
 function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
@@ -590,7 +610,9 @@ function getTextAttributeValuesEditor(ViewInformation $viewInformation, $control
 
 	$o=OmegaWikiAttributes::getInstance();
 
-	$editor = new RecordSetTableEditor($o->textAttributeValues, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
+	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "TEXT");
+
+	$editor = new RecordSetTableEditor($o->textAttributeValues, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TextAttributeEditor($o->textAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName));
 	$editor->addEditor(new TextEditor($o->text, new SimplePermissionController(true), true));
 	
@@ -606,7 +628,9 @@ function getLinkAttributeValuesEditor(ViewInformation $viewInformation, UpdateCo
 
 	$o=OmegaWikiAttributes::getInstance();
 
-	$editor = new RecordSetTableEditor($o->linkAttributeValues, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
+	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "URL");
+
+	$editor = new RecordSetTableEditor($o->linkAttributeValues, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new LinkAttributeEditor($o->linkAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName));
 	
 	if ($viewInformation->viewOrEdit == "view")
@@ -631,7 +655,9 @@ function getTranslatedTextAttributeValuesEditor(ViewInformation $viewInformation
 
 	$o=OmegaWikiAttributes::getInstance();
 
-	$editor = new RecordSetTableEditor($o->translatedTextAttributeValues, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
+	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "TRNS");
+
+	$editor = new RecordSetTableEditor($o->translatedTextAttributeValues, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
 	$editor->addEditor(new TranslatedTextAttributeEditor($o->translatedTextAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName));
 	$editor->addEditor(getTranslatedTextEditor(
 		$o->translatedTextValue, 
@@ -652,7 +678,9 @@ function getOptionAttributeValuesEditor(ViewInformation $viewInformation, Update
 
 	$o=OmegaWikiAttributes::getInstance();
 
-	$editor = new RecordSetTableEditor($o->optionAttributeValues, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, $controller);
+	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "OPTN");
+	
+	$editor = new RecordSetTableEditor($o->optionAttributeValues, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
 
 	$editor->addEditor(new OptionAttributeEditor($o->optionAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName));
 	$editor->addEditor(new OptionSelectEditor($o->optionAttributeOption, new SimplePermissionController(false), true));
@@ -772,7 +800,7 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	$availableEditors->addEditor($classMembershipEditor);
 	$availableEditors->addEditor($collectionMembershipEditor);
 
-	foreach (createPropertyToColumnFilterEditors($viewInformation, $o->definedMeaningId, 0, $definedMeaningMeaningName) as $propertyToColumnEditor) 	
+	foreach (createPropertyToColumnFilterEditors($viewInformation, $o->definedMeaningId, $definedMeaningMeaningName) as $propertyToColumnEditor) 	
 		$availableEditors->addEditor($propertyToColumnEditor);
 	
 	$availableEditors->addEditor(createObjectAttributesEditor($viewInformation, $o->definedMeaningAttributes, $wgPropertyAttributeName, $o->definedMeaningId, $definedMeaningMeaningName));
