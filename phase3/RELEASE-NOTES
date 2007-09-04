@@ -186,7 +186,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   when a destination filename is provided that corresponds with previous
   deleted files
 * Make the "invalid special page" message clearer
-* (bug 5206) Add accesskey ',' to 'preferences' navigationlink
 * Add accesskey 's' and tooltip to 'upload file' button at Special:Upload
 * Introduced 'SkinAfterBottomScripts' hook; see docs/hooks.txt for
   more information
@@ -195,7 +194,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11022) Use a more accurate page title for Special:Whatlinkshere and
   Special:Recentchangeslinked
 * Add link to user contributions in normal watchlist edit mode
-
+* (bug 9426) Add 'newsectionheaderdefaultlevel' message to allow 
+  modification of the heading formatting for new sections when section=new 
+  argument is supplied
+* (bug 10836) Add 'newsectionsummary' message to allow modification of the 
+  text that prefixes a new section link in Recent Changes
+  
 == Bugfixes since 1.10 ==
 
 * (bug 9712) Use Arabic comma in date/time formats for Arabic and Farsi
@@ -422,13 +426,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Preventing the TOC from appearing in Special:Statistics
 * (bug 11082) Fix check for fully-specced table names in Database::tableName
 * (bug 11067) Fix regression in upload conflict thumbnail display
-* (bug 11072) Fix regression in API image history query
 * (bug 10985) Resolved cached entries on Special:DoubleRedirects were being
   supressed, breaking paging - now strikes out "fixed" results
 * (bug 8393) <sup> and <sub> need to be preserved (without attributes) for
   entries in the table of contents
 * (bug 11114) Fix regression in read-only mode error display during editing
-
+* Force non-MySQL databases to use an ORDER BY in SpecialAllpages to ensure 
+  that the first page_title is truly the first page title.
+* (bug 10836) Change the summary on creating of new section
 
 == API changes since 1.10 ==
 
@@ -488,6 +493,11 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Treat underscores as spaces for `aufrom` and `auprefix` parameters
 * Added edit/delete/... token retrieval to prop=info
 * Added meta=userinfo - logged-in user information, group membership, rights
+* (bug 11072) Fix regression in API image history query
+* (bug 11115) Adding SHA1 hash to imageinfo query
+* (bug 10898) API does not return an edit token for non-existent pages
+* (bug 10890) Timestamp support for categorymembers query
+* (bug 10980) Add exclude redirects on backlinks
 
 == Maintenance script changes since 1.10 ==
 
@@ -543,6 +553,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Dutch (nl)
 * Norwegian (no)
 * Occitan (oc)
+* Punjabi (Gurmukhi) (pa)
 * Polish (pl)
 * Piedmontese (pms)
 * Portuguese (pt)

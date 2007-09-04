@@ -414,8 +414,8 @@ class WatchlistEditor {
 		if( $title->exists() ) {
 			$tools[] = $skin->makeKnownLinkObj( $title, wfMsgHtml( 'history_short' ), 'action=history' );
 		}
-		if( $title->getNamespace() == NS_USER ) {
-			$tools[] = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions' ), wfMsgHtml( 'contributions' ), 'target=' . $title->getPartialUrl() );
+		if( $title->getNamespace() == NS_USER && !$title->isSubpage() ) {
+			$tools[] = $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $title->getText() ), wfMsgHtml( 'contributions' ) );
 		}
 		return '<li>'
 			. Xml::check( 'titles[]', false, array( 'value' => $title->getPrefixedText() ) )

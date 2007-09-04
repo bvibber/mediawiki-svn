@@ -709,6 +709,7 @@ XHTML id names.
 'feed-rss'                => 'RSS', # only translate this message to other languages if you have to change it
 'sitenotice'              => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
 'anonnotice'              => '-', # don't translate or duplicate this message to other languages
+'newsectionheaderdefaultlevel' => '== $1 ==', # don't translate or duplicate this message to other languages
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Article',
@@ -1350,6 +1351,7 @@ Unselected groups will not be changed. You can deselect a group with CTRL + Left
 'rc_categories'                     => 'Limit to categories (separate with "|")',
 'rc_categories_any'                 => 'Any',
 'rc-change-size'                    => '$1', # only translate this message to other languages if you have to change it
+'newsectionsummary'                 => 'New section:',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Related changes',
@@ -2230,7 +2232,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'accesskey-pt-anonuserpage'         => '.', # don't translate or duplicate this message to other languages
 'accesskey-pt-mytalk'               => 'n', # don't translate or duplicate this message to other languages
 'accesskey-pt-anontalk'             => 'n', # don't translate or duplicate this message to other languages
-'accesskey-pt-preferences'          => '9', # don't translate or duplicate this message to other languages
+'accesskey-pt-preferences'          => '', # don't translate or duplicate this message to other languages
 'accesskey-pt-watchlist'            => 'l', # don't translate or duplicate this message to other languages
 'accesskey-pt-mycontris'            => 'y', # don't translate or duplicate this message to other languages
 'accesskey-pt-login'                => 'o', # don't translate or duplicate this message to other languages

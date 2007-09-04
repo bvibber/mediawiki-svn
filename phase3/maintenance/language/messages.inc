@@ -266,6 +266,7 @@ $wgMessageStructure = array(
 		'feed-rss',
 		'sitenotice',
 		'anonnotice',
+		'newsectionheaderdefaultlevel',
 	),
 	'nstab' => array(
 		'nstab-main',
@@ -764,6 +765,7 @@ $wgMessageStructure = array(
 		'rc_categories',
 		'rc_categories_any',
 		'rc-change-size',
+		'newsectionsummary',
 	),
 	'recentchangeslinked' => array(
 		'recentchangeslinked',

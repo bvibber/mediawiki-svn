@@ -1181,7 +1181,7 @@ class Article {
 
 			if( $section == 'new' ) {
 				# Inserting a new section
-				$subject = $summary ? "== {$summary} ==\n\n" : '';
+				$subject = $summary ? wfMsgForContent('newsectionheaderdefaultlevel',$summary) . "\n\n" : '';
 				$text = strlen( trim( $oldtext ) ) > 0
 						? "{$oldtext}\n\n{$subject}{$text}"
 						: "{$subject}{$text}";
@@ -1207,7 +1207,7 @@ class Article {
 
 		# If this is a comment, add the summary as headline
 		if ( $comment && $summary != "" ) {
-			$text = "== {$summary} ==\n\n".$text;
+			$text = wfMsgForContent('newsectionheaderdefaultlevel',$summary) . "\n\n".$text;
 		}
 
 		$this->doEdit( $text, $summary, $flags );
@@ -1473,8 +1473,10 @@ class Article {
 			wfDoUpdates();
 		}
 
-		wfRunHooks( 'ArticleSaveComplete', array( &$this, &$wgUser, $text, $summary,
-			$flags & EDIT_MINOR, null, null, &$flags, $revision ) );
+		if ( $good ) {
+			wfRunHooks( 'ArticleSaveComplete', array( &$this, &$wgUser, $text, $summary,
+				$flags & EDIT_MINOR, null, null, &$flags, $revision ) );
+		}
 
 		wfProfileOut( __METHOD__ );
 		return $good;
@@ -2379,7 +2381,7 @@ class Article {
 	/**
 	 * Do standard deferred updates after page edit.
 	 * Update links tables, site stats, search index and message cache.
-	 * Every 1000th edit, prune the recent changes table.
+	 * Every 100th edit, prune the recent changes table.
 	 *
 	 * @private
 	 * @param $text New text of the article
