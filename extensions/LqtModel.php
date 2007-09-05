@@ -771,7 +771,8 @@ class Threads {
 	static $VALID_CHANGE_TYPES = array(self::CHANGE_EDITED_SUMMARY, self::CHANGE_EDITED_ROOT,
 		self::CHANGE_REPLY_CREATED, self::CHANGE_NEW_THREAD, self::CHANGE_DELETED, self::CHANGE_UNDELETED);
 
-	static $loadedThreads = array();
+	static $cache_by_root = array();
+	static $cache_by_id = array();
 	
 	static $thread_children = array();
 	
@@ -890,11 +891,10 @@ SQL;
 			}
 			
 			self::$cache_by_root[$thread->root()->getID()] = $thread;
+			self::$cache_by_id[$thread->id()] = $thread;
 		}
 		return $top_level_threads;
 	}
-	
-	static $cache_by_root = array();
 
 	private static function databaseError( $msg ) {
 		// TODO tie into MW's error reporting facilities.
@@ -921,8 +921,8 @@ SQL;
 	}
 
 	static function withId( $id ) {
-		if( array_key_exists( $id, Threads::$loadedThreads ) ) {
-			return Threads::$loadedThreads[ $id ];
+		if( array_key_exists( $id, self::$cache_by_id ) ) {
+			return self::$cache_by_id[$id];
 		}
 			
 		$ts = Threads::where( array('thread.thread_id' => $id ) );
