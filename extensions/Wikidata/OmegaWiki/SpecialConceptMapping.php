@@ -27,6 +27,7 @@ function wfSpecialConceptMapping() {
 	require_once("Wikidata.php");
 	require_once("WikiDataAPI.php");
 	require_once("Utilities.php");
+	require_once("DefinedMeaningModel.php");
 	class SpecialConceptMapping extends SpecialPage {
 
 		function SpecialConceptMapping() {
