@@ -266,7 +266,7 @@ function efBadImageMessages() {
 'badimages-added' => '$1 is toegevoegd.',
 'badimages-count' => "Er staan '''$1''' afbeeldingen op de verwijderlijst afbeeldingen.",
 'badimages-name' => 'Naam:',
-'badimages-not-added' => 'De afbeelding kon niet toegevoegd worden.',
+'badimages-not-added' => 'De afbeelding kon niet worden toegevoegd.',
 'badimages-not-removed' => 'De afbeelding kon niet verwijderd worden.',
 'badimages-reason' => 'Reden:',
 'badimages-remove' => '(verwijderen)',
