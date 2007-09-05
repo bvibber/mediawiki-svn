@@ -230,11 +230,11 @@ class OggHandler extends MediaHandler {
 		wfDebug( "Creating video thumbnail at $dstPath\n" );
 
 		$cmd = wfEscapeShellArg( $wgFFmpegLocation ) . 
+			' -ss ' . intval( $thumbTime ) . ' ' .
 			' -i ' . wfEscapeShellArg( $file->getPath() ) . 
 			# MJPEG, that's the same as JPEG except it's supported by the windows build of ffmpeg
 			# No audio, one frame
-			' -f mjpeg -an -vframes 1' .
-			' -ss ' . intval( $thumbTime ) . ' ' .
+			' -f mjpeg -an -vframes 1 ' .
 			wfEscapeShellArg( $dstPath ) . ' 2>&1';
 
 		$retval = 0;
