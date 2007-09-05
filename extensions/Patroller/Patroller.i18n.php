@@ -187,10 +187,15 @@ function efPatrollerMessages() {
 'patrol-reverted-ok' => 'De bewerking is teruggedraaid.',
 'patrol-reverted-failed' => 'De bewerking kon niet teruggedraaid worden.',
 'patrol-skipped-ok' => 'Bewerking wordt genegeerd.',
-'patrol-reasons' => "* Eenvoudig vandalisme\n* Zandbakken\n* Zie overlegpagina",
+'patrol-reasons' => '* Eenvoudig vandalisme
+* Zandbakken
+* Zie overlegpagina',
 'patrol-another' => 'Toon andere bewerking als beschikbaar.',
 'patrol-stopped' => 'U heeft gekozen geen andere bewerking te controleren. $1',
 'patrol-resume' => 'Klik hier om verder te gaan.',
+'group-patroller' => 'Controleurs',
+'group-patroller-member' => 'Controleur',
+'grouppage-patroller' => '{{ns:project}}:Controleur',
 ),
 
 /* Norwegian (Jon Harald Søby) */

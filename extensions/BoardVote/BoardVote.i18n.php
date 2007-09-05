@@ -740,7 +740,7 @@ $wgBoardVoteMessages['kk-cn'] = array(
 $wgBoardVoteMessages['kk'] = $wgBoardVoteMessages['kk-kz'];
 $wgBoardVoteMessages['nl'] = array(
 	'boardvote'               => 'Wikimedia Board of Trustees-verkiezing',
-	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vote]]
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Stemmen]]
 * [[Special:Boardvote/list|Toon uitgebrachte stemmen]]
 * [[Special:Boardvote/dump|Dump encrypted election record]]',
 	'boardvote_intro'         => '
@@ -784,7 +784,7 @@ Nu volgt de versleutelde versie. Deze is openbaar en na te zien op [[Special:Boa
 <pre>$3</pre>
 
 [[Special:Boardvote/entry|Terug]]',
-	'boardvote_nosession'     => 'Ik kan uw Wikimedia-gebruikersnummer niet bepalen. Gelieve in te loggen in de wiki waar je voldoet aan de eisen, en ga naar <nowiki>[[Special:Boardvote]]</nowiki>. Je moet een account gebruiken met tenminste $1 bijdragen voor $2, en met uw eerst bewerking voor $3.',
+	'boardvote_nosession'     => 'Uw Wikimedia-gebruikersnummer kan niet bepaald worden. Meldt u zich aan in wiki waar u voldoet aan de eisen, en ga naar <nowiki>[[Special:Boardvote]]</nowiki>. Gebruik een gebruiker met tenminste $1 bijdragen voor $2, en met uw eerste bewerking voor $3.',
 	'boardvote_notloggedin'   => 'U bent niet aangemeld. U kunt stemmen als u voor $2 ten minste
 $1 bewerkingen heeft gemaakt.',
 	'boardvote_notqualified'  => 'Sorry, u heeft voor $2 $1 bewerkingen gemaakt. Om te kunnen
@@ -794,6 +794,7 @@ stemmen heeft u er $3 nodig.',
 	'boardvote_user'          => 'Gebruiker',
 	'boardvote_edits'         => 'Bewerkingen',
 	'boardvote_days'          => 'Dagen',
+	'boardvote_ip'            => 'IP-adres',
 	'boardvote_ua'            => 'User-agent',
 	'boardvote_listintro'     => '<p>Hieronder staan alle stemmen die tot nu toe zijn
 uitgebracht. $1 voor de versleutelde gegevens.</p>',
@@ -801,14 +802,20 @@ uitgebracht. $1 voor de versleutelde gegevens.</p>',
 	'boardvote_strike'        => 'Ongeldig',
 	'boardvote_unstrike'      => 'Geldig',
 	'boardvote_needadmin'     => 'Alleen leden van de Verkiezingscommissie kunnen deze handeling uitvoeren.',
+	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Bestuursverkiezingen</a>:<!--  Vote open until July 12 -->',
 	'boardvote_notstarted'    => 'Het stemmen is nog niet gestart',
 	'boardvote_edits_many'    => 'veel',
 	'group-boardvote'         => 'Board vote beheerders',
 	'group-boardvote-member'  => 'Board vote beheerder',
 	'grouppage-boardvote'     => '{{ns:project}}:Board vote beheerder',
-	'boardvote_blocked'       => 'Sorry, je bent geblokkeerd op je geregistreerde wiki. Geblokkeerde gebruikers mogen niet stemmen.',
+	'boardvote_blocked'       => 'Sorry, u bent geblokkeerd op uw geregistreerde wiki. Geblokkeerde gebruikers mogen niet stemmen.',
 	'boardvote_welcome'       => 'Welkom, \'\'\'$1\'\'\'!',
 	'go_to_board_vote'        => 'Wikimedia Bestuursverkiezing 2007',
+	'boardvote_redirecting'   => 'Vanwege een betere beveiliging en meer transparantie vinden de verkiezingen plaats op een externe, onafhankelijke beheerde server.
+
+U wordt over 20 seconden omgeleid naar deze externe server. [$1 Klik hier] om er nu heen te gaan.
+
+Het is mogelijk dat u een waarschuwing krijgt vanwege een niet ondertekend certificaat.',
 );
 
 $wgBoardVoteMessages['no'] = array(
@@ -1589,6 +1596,7 @@ $wgBoardVoteMessages['zh-hk'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-sg'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-tw'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-yue'] = $wgBoardVoteMessages['yue'];
+
 
 
 

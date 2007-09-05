@@ -38,6 +38,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Désolé, le titre de cet article n’est pas autorisé à être sauvegardé.',
 ),
 
+'nl' => array(
+	'block_title_error_page_title' => 'Geblokkeerde paginanaam',
+	'block_title_error' => 'Sorry, het is niet toegestaan een pagina met deze naam op te slaan.',
+),
+
 /**
  * 
  * Cantonese (Shinjiman)

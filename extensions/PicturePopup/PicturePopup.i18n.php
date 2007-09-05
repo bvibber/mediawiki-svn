@@ -99,10 +99,10 @@ function efPicturePopupMessages() {
 	'picturepopup_invalid_title' => 'Ongeldige afbeeldingsnaam',
 	'picturepopup_no_license' => 'Afbeelding heeft geen licentiesjabloon',
 	'picturepopup_no_image' => 'Afbeelding bestaat niet',
-	'picturepopup_no_license_list' => 'Licentielijst is ongeldig of niet aanwezig',
+	'picturepopup_no_license_list' => 'Licentielijst is ongeldig of ontbreekt',
 	'picturepopup_license_list' => 'Project:Afbeeldingslicenties',
-	'picturepopup_no_license_text' => 'Licentieshabloon heeft geen element met id=imageLicenseText',
-	'picturepopup_invalid_icon' => 'Licentiesjabloon mist het element imageLicenseIcon of het is niet juist ingesteld',
+	'picturepopup_no_license_text' => 'Licentiesjabloon heeft geen element met id=imageLicenseText',
+	'picturepopup_invalid_icon' => 'Licentiesjabloon heeft een missend of onjuist element imageLicenseIcon',
 ),
 
 /* Norwegian (Jon Harald Søby) */

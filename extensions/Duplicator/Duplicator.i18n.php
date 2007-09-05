@@ -324,7 +324,7 @@ utile per scindere due pagine (''forking''), ecc.",
 'duplicator' => 'Kopieer een pagina',
 'duplicator-toolbox' => 'Kopieer deze pagina',
 'duplicator-header' => 'Deze pagina maakt het mogelijk een pagina volledig te kopiëren, waardoor er onafhankelijke
-kopiën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzovoort.',
+kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzovoort.',
 'duplicator-options' => 'Opties',
 'duplicator-source' => 'Bron:',
 'duplicator-dest' => 'Doel:',

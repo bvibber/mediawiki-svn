@@ -103,6 +103,9 @@ $wgSiteMatrixMessages['lt'] = array(
 );
 $wgSiteMatrixMessages['nl'] = array(
 	'sitematrix' => 'Lijst met Wikimedia-wiki\'s',
+	'sitematrix-language' => 'Taal',
+	'sitematrix-project' => 'Naam van het project, interprojectlink en interwikilink',
+	'sitematrix-others' => 'Andere projecten van Wikimedia',
 );
 $wgSiteMatrixMessages['no'] = array(
 	'sitematrix' => 'Liste over Wikimedia-prosjekter',

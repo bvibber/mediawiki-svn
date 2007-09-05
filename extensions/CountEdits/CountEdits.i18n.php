@@ -194,7 +194,6 @@ function efCountEditsMessages( $single = false ) {
 'countedits' => 'Bewerkingen tellen',
 'countedits-warning' => "'''Waarschuwing:''' Beoordeel het boek niet op de buitenkant. Beoordeel een redacteur niet alleen op het aantal bijdragen.",
 'countedits-username' => 'Gebruiker:',
-'countedits-ok' => 'OK',
 'countedits-nosuchuser' => 'Er is geen gebruiker met de naam $1.',
 'countedits-resultheader' => 'Resulaten voor $1',
 'countedits-resulttext' => '$1 heeft $2 bewerkingen gemaakt',
@@ -395,6 +394,7 @@ function efCountEditsMessages( $single = false ) {
 
 	return $single ? $messages['en'] : $messages;
 }
+
 
 
 

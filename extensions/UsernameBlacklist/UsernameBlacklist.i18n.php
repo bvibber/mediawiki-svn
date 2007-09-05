@@ -140,6 +140,15 @@ Basqa ataw talğañız.',
 'blacklistedusername' => 'Gebruikersnaam op zwarte lijst',
 'blacklistedusernametext' => 'De gebruikersnaam die u heeft gekozen staat op de [[MediaWiki:Usernameblacklist|
 zwarte lijst van gebruikersnamen]]. Kies alstublieft een andere naam.',
+'usernameblacklist' => '<pre>
+# Regels in deze lijst worden gebruikt als reguliere expressie voor
+# gebruikersnamen op de zwarte lijst bij inschrijving. Iedere regel moet
+# onderdeel zijn van een ongenummerde lijst, bijvoorbeeld:
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => 'De volgende {{PLURAL:$1|regel|regels}} in de zwarte lijst met gebruikersnamen {{PLURAL:$1|is|zijn}} onjuist; corrigeer {{PLURAL:$1|hem|ze}} alstublieft voordat u de pagina opslaat:',
 ),
 
 /* Norwegian (Jon Harald Søby) */

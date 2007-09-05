@@ -111,15 +111,15 @@ prega quindi di usarla con molta parsimonia.",
 
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
-'asksql' => 'SQL query',
-'asksqltext' => "Gebruik het onderstaande formulier om direct een query op de database te maken.
-Gebruik apostrofs ('zo dus') als delimiter voor strings.
-Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaarzaam.",
-'sqlislogged' => 'Alle query\'s worden in een logboek opgeslagen.',
-'sqlquery' => 'Voer query in',
-'querybtn' => 'Voer query uit',
-'selectonly' => 'U kunt slechts alleen-lezen query\'s uitvoeren.',
-'querysuccessful' => 'Query uitgevoerd',
+'asksql'           => 'SQL-zoekopdracht',
+'asksqltext'       => 'Gebruik het onderstaande formulier om direct een query op de database te maken.
+Gebruik apostrofs (\'zo dus\') als delimiter voor strings.
+Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaarzaam.',
+'sqlislogged'      => 'Alle zoekopdrachten worden in een logboek opgeslagen.',
+'sqlquery'         => 'Voer een zoekopdracht in',
+'querybtn'         => 'Voer zoekopdracht uit',
+'selectonly'       => 'U kunt slechts alleen-lezen zoekopdrachten uitvoeren.',
+'querysuccessful'  => 'Zoekopdracht uitgevoerd',
 ),
 
 /* Norwegian (Jon Harald Søby) */

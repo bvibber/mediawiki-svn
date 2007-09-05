@@ -187,8 +187,7 @@ function efImageMapMessages() {
 'imagemap_no_link'              => '&lt;imagemap&gt;: er is geen geldige link aangetroffen aan het einde van regel $1',
 'imagemap_invalid_title'        => '&lt;imagemap&gt;: er staat een ongeldige titel in de verwijzing op regel $1',
 'imagemap_missing_coord'        => '&lt;imagemap&gt;: niet genoeg coördinaten voor vorm in regel $1',
-'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: niet herkende vorm in regel $1, iedere regel moet beginnen met één van de commando\'s: '.
-								   'default, rect, circle of poly',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: niet herkende vorm in regel $1, iedere regel moet beginnen met één van de commando\'s: default, rect, circle of poly',
 'imagemap_no_areas'             => '&lt;imagemap&gt;: er moet tenminste één gebied gespecificeerd worden',
 'imagemap_invalid_coord'        => '&lt;imagemap&gt;: ongeldige coördinaten in regel $1, moet een getal zijn',
 'imagemap_invalid_desc'         => '&lt;imagemap&gt;: ongeldige beschrijvingsspecificatie, dit moet er één zijn uit de volgende lijst: $1',
