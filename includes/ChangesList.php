@@ -212,7 +212,7 @@ class ChangesList {
 	 */
 	function usePatrol() {
 		global $wgUseRCPatrol, $wgUser;
-		return( $wgUseRCPatrol && $wgUser->isAllowed( 'patrol' ) );
+		return( $wgUseRCPatrol && ($wgUser->isAllowed('patrol') || $wgUser->isAllowed('patrolmarks')) );
 	}
 
 	/**
