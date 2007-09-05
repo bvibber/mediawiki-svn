@@ -773,6 +773,8 @@ class Threads {
 
 	static $loadedThreads = array();
 	
+	static $thread_children = array();
+	
     static function newThread( $root, $article, $superthread = null, $type = self::TYPE_NORMAL ) {
 
 		// SCHEMA changes must be reflected here.
@@ -888,32 +890,6 @@ SQL;
 			}
 		}
 		return $top_level_threads;
-	}
-	
-	/*
-	private function splitIncrementFromSubject($subject_string) {
-		preg_match('/^(.*) \((\d+)\)$/', $subject_string, $matches);
-		if( count($matches) != 3 )
-			throw new MWException( __METHOD__ . ": thread subject has no increment: " . $subject_string );
-		else
-			return $matches;
-	}
-	*/
-	
-	static $thread_children = array();
-
-	private static function buildThread( $lines, $l ) {
-		$children = array();
-		$l_path = preg_quote($l->thread_path);
-		foreach( $lines as $key => $m ) {
-			if ( preg_match( "/^{$l_path}\.\d+$/", $m->thread_path ) ) {
-//				unset($lines[$key]);
-				$children[] = Threads::buildThread( $lines, $m );
-			}
-		}
-		$t = new Thread($l, $children);
-		Threads::$loadedThreads[$l->thread_id] = $t;
-		return $t;
 	}
 
 	private static function databaseError( $msg ) {
