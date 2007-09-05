@@ -107,9 +107,10 @@ class ObjectCopier {
 	}
 
 	protected function identical() {
+		var_dump($this->object);
 		$uuid=mysql_escape_string($this->object["UUID"]);
 		$dc2=$this->dc2;
-		return getrow($dc2,"objects", "WHERE `uuid`='$uuid'");
+		return getrow($dc2, "objects", "WHERE `UUID`='$uuid'");
 	}
 
 	function write() {
@@ -203,10 +204,10 @@ function writeSyntrans($syntrans, $newdmid, $newexpid, $dc2) {
 function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
 	$syntrans=getOldSyntrans($dc1, $olddmid, $oldexpid);
 	$copier=new ObjectCopier($syntrans["syntrans_sid"], "syntrans", $dc1, $dc2);
+	$newid=$copier->dup();
 	if ($copier->already_there()) {
 		return;
 	}
-	$newid=$copier->dup();
 	$syntrans["syntrans_sid"]=$newid;
 	writeSyntrans($syntrans, $newdmid, $newexpid, $dc2);
 }
@@ -271,8 +272,7 @@ function write_translated_content($dc1, $dc2, $tcid, $content) {
 
 function dup_translated_content($dc1, $dc2, $tcid) {
 	$translated_content=read_translated_content($dc1, $tcid);
-	$target_table=mysql_real_escape_string("translated_content");
-	$copier=new ObjectCopier($tcid, $target_table, $dc1, $dc2);
+	$copier=new ObjectCopier($tcid, "translated_content", $dc1, $dc2);
 	$new_tcid=$copier->dup();
 	# note the issue where translated content is added later:
 	# since all translated content for a single dm 
