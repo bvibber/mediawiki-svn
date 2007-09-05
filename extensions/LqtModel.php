@@ -465,6 +465,10 @@ class Thread {
 		$this->changeComment = $line->thread_change_comment;
 		$this->changeUser = $line->thread_change_user;
 		$this->changeUserText = $line->thread_change_user_text;
+
+	}
+	
+	function initWithReplies( $children ) {
 		
 		$this->replies = $children;
 		
@@ -476,6 +480,8 @@ class Thread {
 		
 		(we could do Revision::getPrevious() we just need to know whether or not
 		there was a new revision saved at save time. make it run then make it right.)
+		
+		TODO this is expensive and should be ripped out.
 		*/
 		$rev = Revision::newFromTitle( $this->root()->getTitle() );
 		$this->rootRevision = $rev->getId();
@@ -855,21 +861,46 @@ $options
 SQL;
 		$res = $dbr->query($sql); 
 
-		$lines = array();
 		$threads = array();
+		$top_level_threads = array();
 
 		while ( $line = $dbr->fetchObject($res) ) {
-			$lines[] = $line;
-		}
-
-		foreach( $lines as $key => $l ) {
-			if( $l->is_root ) {
-//				unset($lines[$key]);
-				$threads[] = Threads::buildThread( $lines, $l );
+			$new_thread = new Thread($line, null);
+			$threads[] = $new_thread;
+			if( $line->is_root )
+				// thread is one of those that was directly queried for.
+				$top_level_threads[] = $new_thread;
+			if( strstr( $line->thread_path, '.' ) !== false ) {
+				// thread has a parent. extract second-to-last path element.
+				preg_match( '/([^.]+)\.[^.]+$/', $line->thread_path, $path_matches );
+				$parent_id = $path_matches[1];
+				if( !array_key_exists( $parent_id, self::$thread_children ) )
+					self::$thread_children[$parent_id] = array();
+				self::$thread_children[$parent_id][] = $new_thread;
 			}
 		}
-		return $threads;
+
+		foreach( $threads as $thread ) {
+			if( array_key_exists( $thread->id(), self::$thread_children ) ) {
+				$thread->initWithReplies( self::$thread_children[$thread->id()] );
+			} else {
+				$thread->initWithReplies( array() );
+			}
+		}
+		return $top_level_threads;
 	}
+	
+	/*
+	private function splitIncrementFromSubject($subject_string) {
+		preg_match('/^(.*) \((\d+)\)$/', $subject_string, $matches);
+		if( count($matches) != 3 )
+			throw new MWException( __METHOD__ . ": thread subject has no increment: " . $subject_string );
+		else
+			return $matches;
+	}
+	*/
+	
+	static $thread_children = array();
 
 	private static function buildThread( $lines, $l ) {
 		$children = array();
