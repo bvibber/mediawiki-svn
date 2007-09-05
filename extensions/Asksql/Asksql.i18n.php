@@ -25,6 +25,18 @@ this function sparingly.",
 'querysuccessful' => 'Query successful',
 ),
 
+'ar' => array(
+'asksql'           => 'استعلام إس كيو إل',
+'asksqltext'       => 'استخدم الاستمارة بالأسفل لعمل استعلام مباشر لقاعدة البيانات.
+استخدم علامات مفردة (\'مثل هذه\') لتحديد حدود الخيوط.
+هذا عادة يضيف عبئا كبيرا للخادم، لذا من فضلك استخدم هذه الخاصية بقلة.',
+'sqlislogged'      => 'من فضلك لاحظ أن كل الاستعلامات مسجلة.',
+'sqlquery'         => 'أدخل الاستعلام',
+'querybtn'         => 'تنفيذ الاستعلام',
+'selectonly'       => 'فقط استعلامات القراءة فقط مسموحة.',
+'querysuccessful'  => 'الاستعلام ناجح',
+),
+
 /* Greece */
 'el' => array(
 'asksql'           => 'ερώτημα SQL',
@@ -239,6 +251,7 @@ používajte túto funkciu s rozmyslom.",
 	return $messages;
 
 }
+
 
 
 

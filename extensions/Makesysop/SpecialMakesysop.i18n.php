@@ -46,8 +46,10 @@ $wgMakesysopMessages['ar'] = array(
 	'makesysop' => 'منح مستخدم صلاحيات إدارية',
 	'already_sysop' => 'هذا المستخدم بالفعل إداري',
 	'already_bureaucrat' => 'هذا المستخدم بالفعل بيروقراط',
+	'makesysop-nodatabase' => 'خطأ في الإنترويكي في اسم المستخدم: $1',
 	'group-steward' => 'مضيفون',
 	'group-steward-member' => 'مضيف',
+	'grouppage-steward' => '{{ns:project}}:مضيفون',
 );
 $wgMakesysopMessages['az'] = array(
 	'already_sysop'        => 'Bu istifadəçi hazirdə idarəçidir',
@@ -1170,6 +1172,7 @@ $wgMakesysopMessages['zh-cn'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-hk'] = $wgMakesysopMessages['zh-hant'];
 $wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-yue'] = $wgMakesysopMessages['yue'];
+
 
 
 

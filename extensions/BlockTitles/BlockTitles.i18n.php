@@ -20,6 +20,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Sorry, the title of this article is not allowed to be saved.',
 ),
  
+'ar' => array(
+	'block_title_error_page_title' => 'عنوان ممنوع',
+	'block_title_error' => 'عذرا، عنوان هذه المقالة غير مسموح بحفظه.',
+),
+
 'de' => array(
 	'block_title_error_page_title' => 'Sperre Artikelname',
 	'block_title_error'            => 'Entschuldigung, aber ein Artikel mit diesem Namen darf nicht gespeichert werden.',

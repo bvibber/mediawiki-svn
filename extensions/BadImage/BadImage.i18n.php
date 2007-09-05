@@ -36,7 +36,7 @@ function efBadImageMessages() {
 
 /* Arabic (Meno25) */
 'ar' => array(
-'badimages' => 'قائمة صور سيئة',
+'badimages' => 'قائمة الصور السيئة',
 'badimages-add-btn' => 'إضافة',
 'badimages-added' => '$1 تمت إضافتها للقائمة.',
 'badimages-count' => 'توجد \'\'\'$1\'\'\' صورة في قائمة الصور السيئة.',
@@ -51,9 +51,9 @@ function efBadImageMessages() {
 'badimages-subheading' => 'المدخلات الحالية',
 'badimages-unprivileged' => '(لا تمتلك الصلاحية اللازمة لتعديل القائمة)',
 'badimages-log-name' => 'قائمة الصور السيئة',
-'badimages-log-header' => 'هذا سجل بالتغييرات ل[[Help:Bad image list|قائمة الصور السيئة]].',
-'badimages-log-add' => 'تم إضافة [[$1]] لقائمة الصور السيئة',
-'badimages-log-remove' => 'تمت إزالة [[$1]] من قائمة الصور السيئة',
+'badimages-log-header' => 'هذا سجل بالتغييرات ل[[Help:قائمة الصور السيئة|قائمة الصور السيئة]].',
+'badimages-log-add' => 'أضاف [[$1]] لقائمة الصور السيئة',
+'badimages-log-remove' => 'أزال [[$1]] من قائمة الصور السيئة',
 ),
 
 'bcl' => array(
@@ -557,6 +557,7 @@ function efBadImageMessages() {
 	return $messages;
 
 }
+
 
 
 

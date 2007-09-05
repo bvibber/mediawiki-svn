@@ -45,6 +45,7 @@ function efPatrollerMessages() {
 'patrol-reverting' => 'استرجاع: $1',
 'patrol-nonefound' => 'لم يتم العثور على تعديلات مناسبة للمراجعة.',
 'patrol-endorsed-ok' => 'تم تعليم التعديل كمراجع.',
+'patrol-endorsed-failed' => 'هذا التعديل لم يمكن تعليمه كمراجع.',
 'patrol-reverted-ok' => 'التعديل تم استرجاعه.',
 'patrol-reverted-failed' => 'لم يمكن استرجاع التعديل.',
 'patrol-skipped-ok' => 'تجاهل التعديل.',
@@ -400,6 +401,7 @@ function efPatrollerMessages() {
 	return $messages;
 
 }
+
 
 
 

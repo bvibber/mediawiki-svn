@@ -18,6 +18,9 @@ $wgSiteMatrixMessages['af'] = array(
 );
 $wgSiteMatrixMessages['ar'] = array(
 	'sitematrix' => 'قائمة بمشاريع ويكيميديا',
+	'sitematrix-language' => 'اللغة',
+	'sitematrix-project' => 'اسم المشروع، وصلة المشروع الداخلية و وصلة الإنترويكي',
+	'sitematrix-others' => 'مشاريع ويكيميديا الأخرى',
 );
 $wgSiteMatrixMessages['bcl'] = array(
 	'sitematrix' => 'Lista kan mga Wikimedia wiki',

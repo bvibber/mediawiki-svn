@@ -64,6 +64,7 @@ copies of all histories. This is useful for article forking, etc.',
 'duplicator-source-notexist' => '[[$1]] غير موجودة. من فضلك اكتب عنوان صفحة موجودة.',
 'duplicator-dest-invalid' => 'من فضلك اكتب عنوان وجهة صحيح.',
 'duplicator-dest-exists' => '[[$1]] موجودة بالفعل. من فضلك اكتب عنوان هدف غير موجود.',
+'duplicator-toomanyrevisions' => '[[$1]] لديه عدد كبير ($2) من النسخ و لا يمكن نسخه. الحد الحالي هو $3.',
 ),
 
 'bcl' => array(

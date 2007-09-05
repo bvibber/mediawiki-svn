@@ -33,7 +33,7 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 'resign-noconfirm' => 'من فضلك علم على صندوق التأكيد إذا كنت تريد إزالة صلاحياتك.',
 'resign-nogroups' => 'من فضلك اختر الصلاحيات التي تريد إزالتها.',
 'resign-success' => '\'\'\'الصلاحيات تمت إزالتها بنجاح.\'\'\'',
-'resign-logentry' => 'أزال الصلاحيات $2 من نفسه',
+'resign-logentry' => 'سحب الصلاحيات $2 من نفسه',
 ),
 
 'de' => array(
@@ -216,6 +216,7 @@ Pamätajte: \'\'\'Týmto spôsobom už svoje privilégiá nedostanete naspäť!\
 
 	return $messages;
 }
+
 
 
 

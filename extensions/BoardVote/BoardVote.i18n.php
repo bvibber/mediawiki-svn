@@ -113,7 +113,7 @@ $wgBoardVoteMessages['ar'] = array(
 </ul>',
 	'boardvote_intro_change'  => '<p>لقد قمت بالتصويت من قبل. إذا أردت تغيير صوتك، من الممكن عمل ذلك من النموذج التالي. 
 يرجى وضع إشارة في الصندوق بجانب المرشح الذي تود التصويت له.</p>',
-	'boardvote_entered'       => 'شكرًا لك، لقد تم اعتماد صوتك.
+	'boardvote_entered'       => 'شكرا لك، لقد تم اعتماد صوتك.
 
 إذا كنت ترغب بحفظ المعلومات التالية، هي لسجل تصويتك:
 
@@ -128,7 +128,7 @@ $wgBoardVoteMessages['ar'] = array(
 
 [[Special:Boardvote/entry|Back]]',
 	'boardvote_nosession'     => 'لا يمكنني تحديد رقم المستخدم الخاص بك. من فضلك، ادخل للويكي الذي أنت مؤهل به و اذهب إلى<nowiki>[[Special:Boardvote]]</nowiki>. يجب أن تستخدم حسابا لديه على الأقل $1 مساهمة قبل $2، و المساهمة الأولى قبل $3',
-	'boardvote_notloggedin'   => 'لم تقم بتسجيل الدخول إلى النظام. لكي تستطيع التصويت هنا في ويكيبيديا العربية، يجب أن يكون لديك حساب في الموسوعة و أجريت $1 تعديل قبل $2، و تكون مساهمتك الأولى قبل $3.',
+	'boardvote_notloggedin'   => 'لم تقم بتسجيل الدخول. لكي تستطيع التصويت، يجب أن يكون لديك حساب و أجريت $1 تعديل قبل $2، و تكون مساهمتك الأولى قبل $3.',
 	'boardvote_notqualified'  => 'أنت غير مؤهل للتصويت في هذه الانتخابات. يجب أن يكون لديك $3 مساهمة قبل $2، و مساهمتك الأولى يجب أن تكون قبل $5.',
 	'boardvote_novotes'       => 'لم يقم أي شخص بالتصويت بعد.',
 	'boardvote_time'          => 'الزمن',
@@ -147,9 +147,9 @@ $wgBoardVoteMessages['ar'] = array(
 	'boardvote_notstarted'    => 'لم يبدأ التصويت بعد',
 	'boardvote_closed'        => 'تم غلق باب التصويت، انظر [http://meta.wikimedia.org/w/index.php?title=Election_results_2006/ar هذه الصفحة لمشاهدة النتائج]',
 	'boardvote_edits_many'    => 'كثير',
-	'group-boardvote'         => 'إداريو انتخابات مجلس الأمناء',
-	'group-boardvote-member'  => 'إداري انتحابات مجلس الأمناء',
-	'grouppage-boardvote'     => '{{ns:project}}:إداري انتخابات مجلس الأمناء',
+	'group-boardvote'         => 'إداريو انتخابات المجلس',
+	'group-boardvote-member'  => 'إداري انتخابات المجلس',
+	'grouppage-boardvote'     => '{{ns:project}}:إداري انتخابات المجلس',
 	'boardvote_blocked'       => 'عذرا، لقد تم منعك في الويكي الذي أنت مسجل به. المستخدمون الممنوعون غير مسموح لهم بالتصويت.',
 	'boardvote_welcome'       => 'مرحبا \'\'\'$1\'\'\'!',
 	'go_to_board_vote'        => 'انتخابات مجلس أمناء ويكيميديا 2007',
@@ -1589,6 +1589,7 @@ $wgBoardVoteMessages['zh-hk'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-sg'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-tw'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-yue'] = $wgBoardVoteMessages['yue'];
+
 
 
 

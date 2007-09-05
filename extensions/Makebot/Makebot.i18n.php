@@ -50,8 +50,8 @@ function efMakeBotMessages() {
 'makebot-revoked'         => 'فقد [[User:$1|$1]] صلاحية البوت.',
 'makebot-logpage'         => 'سجل صلاحيات البوت',
 'makebot-logpagetext'     => 'هذا سجل لتغييرات صلاحية [[Help:بوت|البوت]].',
-'makebot-logentrygrant'   => 'تم منح صلاحية بوت إلى [[$1]]',
-'makebot-logentryrevoke'  => 'تم سحب صلاحية بوت من [[$1]]',
+'makebot-logentrygrant'   => 'منح صلاحية بوت إلى [[$1]]',
+'makebot-logentryrevoke'  => 'سحب صلاحية بوت من [[$1]]',
 ),
 
 /* Old Church Slavonic (language file) */
@@ -750,6 +750,7 @@ function efMakeBotMessages() {
 
 	return $messages;
 }
+
 
 
 

@@ -46,14 +46,23 @@ Soek vir $3 $9 $10",
 );
 
 $wgLuceneSearchMessages['ar'] = array(
+	'searchnumber'          => '<strong>النتائج $1-$2 ل$3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>السابق</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>التالي</span> &#x00BB;',
+	'searchscore'           => 'الارتباط: $1',
 	'searchsize'            => '$1 كيلوبايت ($2 كلمة)',
 	'searchdidyoumean'      => 'هل تقصد: "<a href="$1">$2</a>"?',
+	'searchnoresults'       => 'عذرا، لم توجد نتائج مطابقة لاستعلامك.',
+	'searchnearmatches'     => '<b>هذه الصفحات لها عناوين مشابهة لاستعلامك:</b>',
 	'lucenepowersearchtext' => 'ابحث في النطاقات:
 
 $1
 
 ابحث عن $3 $9',
+	'lucenefallback'        => 'هناك خلل في نظام البحث في ويكي. غالبا ما تكون هذه مشكلة مؤقتة، بإمكانك أن تنتظر لفترة قليلة ثم تعاود المحاولة، و يمكن أن تبحث في الويكي باستخدام خدمة بحث خارجة:',
+	'searchexactcase'       => 'بحث مطابق',
 	'searchall'             => 'الكل',
+	'searchincategory'      => 'في التصنيف',
 );
 
 $wgLuceneSearchMessages['cs'] = array(

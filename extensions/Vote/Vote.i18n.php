@@ -36,8 +36,13 @@ riddler|Riddler",
 /* Arabic (Meno25) */
 'ar' => array(
 'vote' => 'تصويت',
+'vote-header' => 'يمكنك التصويت لاختيار \'\'\'الرئيس الأعلى للعالم\'\'\' هنا!',
 'vote-current' => 'تصويتك الحالي ل \'\'\'$1\'\'\'.',
+'vote-legend' => 'وضع أو تغيير التصويت',
 'vote-caption' => 'اختيارك:',
+'vote-choices' => 'جوكر|الجوكر
+بطريق|البطريق
+ريدلر|ريدلر',
 'vote-submit' => 'تصويت',
 'vote-registered' => 'تصويتك تم تسجيله',
 'vote-view-results' => 'عرض النتائج',
@@ -243,5 +248,6 @@ Gioanin|Gioanin',
 	);
 	return $messages;
 }
+
 
 

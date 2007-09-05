@@ -24,6 +24,19 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'top-right, bottom-right, bottom-left, top-left, none',
 ),
 
+'ar' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: يجب تحديد صورة في الخط الأول',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: الصورة غير صحيحة أو غير موجودة',
+'imagemap_no_link'              => '&lt;imagemap&gt;: لم يتم العثور على وصلة صحيحة في نهاية السطر $1',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: عنوان غير صحيح في الوصلة في السطر $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: إحداثيات غير كافية للشكل عند الخط $1',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: شكل غير معروف عند الخط $1, كل خط يجب أن يبدأ بواحد من: default, rect, circle or poly',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: على الأقل محدد مساحة واحد يجب إعطاؤه',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: إحداثي غير صحيح عند الخط $1، يجب أن يكون رقما',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: محدد وصف غير صحيح، يجب أن يكون واحدا من: <tt>$1</tt>',
+'imagemap_description'          => 'حول هذه الصورة',
+),
+
 /* Danish (Wegge) */
 'da' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',
@@ -337,6 +350,7 @@ function efImageMapMessages() {
 	return $messages;
 
 }
+
 
 
 

@@ -19,6 +19,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Previous ($1)',
 ),
 
+'ar' => array(
+	'backforth-next' => 'التالي ($1)',
+	'backforth-prev' => 'السابق ($1)',
+),
+
 'bcl' => array(
 	'backforth-next' => 'Sunod ($1)',
 	'backforth-prev' => 'Nakaagi ($1)',
