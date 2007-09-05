@@ -500,8 +500,8 @@ $1\n
 );
 $wgLuceneSearchMessages['sk'] = array(
 	'searchnumber'          => '<strong>Výsledky $1-$2 zo $3</strong>',
-	'searchprev'            => '« <span style=\'font-size: small\'>Späť</span>',
-	'searchnext'            => '<span style=\'font-size: small\'>Ďalej</span> »',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Späť</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Ďalej</span> &#x00BB;',
 	'searchscore'           => 'Relevantnosť: $1',
 	'searchsize'            => '$1KB ($2 slov)',
 	'searchdidyoumean'      => 'Mali ste na mysli: "<a href="$1">$2</a>"?',

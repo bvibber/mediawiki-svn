@@ -480,7 +480,7 @@ function efMakeBotMessages() {
 /* Slovak (helix84) */
 'sk' => array(
 'makebot'                 => 'Udeliť alebo odobrať status bota',
-'makebot-header'          => '\'\'\'Miestny byrokrat m§že použiť túto stránku na udelenie alebo odobranie [[Help:Bot|statusu bot]] inému užívateľskému účtu.\'\'\'<br />Status bot skrýva úpravy používateľa z [[Special:Recentchanges|posledných zmien]] a podobných zoznamov, používa sa na označenie používateľov, ktorí robia automatizované úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.',
+'makebot-header'          => '\'\'\'Miestny byrokrat môže použiť túto stránku na udelenie alebo odobranie [[Help:Bot|statusu bot]] inému používateľskému účtu.\'\'\'<br />Status bot skrýva úpravy používateľa z [[Special:Recentchanges|posledných zmien]] a podobných zoznamov, používa sa na označenie používateľov, ktorí robia automatizované úpravy. Využívanie tejto stránky by malo prebiehať v súlade s prijatými zásadami.',
 'makebot-username'        => 'Používateľské meno:',
 'makebot-search'          => 'Vykonaj',
 'makebot-isbot'           => '[[User:$1|$1]] má status bot.',
@@ -493,7 +493,7 @@ function efMakeBotMessages() {
 'makebot-granted'         => '[[User:$1|$1]] odteraz má status bot.',
 'makebot-revoked'         => '[[User:$1|$1]] odteraz nemá status bot.',
 'makebot-logpage'         => 'Záznam statusu bot',
-'makebot-logpagetext'     => 'Toto je záznam zmien statusu [[Help:Bot|bot]] používateľov.',
+'makebot-logpagetext'     => 'Toto je záznam zmien používateľského stavu na/z [[Help:Bot|bot]].',
 'makebot-logentrygrant'   => 'udelený status bot používateľovi [[$1]]',
 'makebot-logentryrevoke'  => 'odobratý status bot používateľovi [[$1]]',
 ),
