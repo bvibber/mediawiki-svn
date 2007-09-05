@@ -911,7 +911,6 @@ SQL;
 		if( array_key_exists( $post->getID(), self::$cache_by_root ) ) {
 			return self::$cache_by_root[$post->getID()];
 		}
-		efVarDump(null, "withRoot( {$post->getID()} ) missed.");
 		$ts = Threads::where( array('thread.thread_root' => $post->getID()) );
 		if( count($ts) == 0 ) { return null; }
 		if ( count($ts) >1 ) {
