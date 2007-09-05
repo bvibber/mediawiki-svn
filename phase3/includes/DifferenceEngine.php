@@ -166,6 +166,9 @@ CONTROL;
 				// Look for an unpatrolled change corresponding to this diff
 				$change = RecentChange::newFromConds(
 					array(
+						// Add redundant timestamp condition so we can use the
+						// existing index
+						'rc_timestamp' => $this->mNewRev->getTimestamp(),
 						'rc_this_oldid' => $this->mNewid,
 						'rc_last_oldid' => $this->mOldid,
 						'rc_patrolled' => 0,
