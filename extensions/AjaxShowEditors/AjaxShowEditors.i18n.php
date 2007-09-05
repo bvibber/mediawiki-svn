@@ -42,6 +42,11 @@ $wgAjaxShowEditorsMessages['fr'] = array(
 	'ajax-se-pending' => 'rafraîchissement en cours ... (cliquez sur ce message ou modifiez la page)',
 	'ajax-se-idling' => '(il y a $1 s)',
 );
+$wgAjaxShowEditorsMessages['frc'] = array(
+	'ajax-se-title' => 'Après changer:',
+	'ajax-se-pending' => 'Le système est après espérer le renouvelage de la page.  Cliquez cette boëte ici ou commencez à changer la page.',
+	'ajax-se-idling' => '($1 secondes passées)',
+);
 $wgAjaxShowEditorsMessages['hsb'] = array(
 	'ajax-se-title' => 'Wobdźěłuje so runje wot:',
 	'ajax-se-pending' => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',

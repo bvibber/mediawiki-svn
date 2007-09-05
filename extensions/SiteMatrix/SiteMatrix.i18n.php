@@ -49,6 +49,9 @@ $wgSiteMatrixMessages['fi'] = array(
 $wgSiteMatrixMessages['fr'] = array(
 	"sitematrix" => "Liste des wikis Wikimedia",
 );
+$wgSiteMatrixMessages['frc'] = array(
+	'sitematrix' => 'Liste de wikis à Wikimedia',
+);
 $wgSiteMatrixMessages['he'] = array(
 	'sitematrix'          => 'רשימת אתרי ויקי של ויקימדיה',
 	'sitematrix-language' => 'שפה',

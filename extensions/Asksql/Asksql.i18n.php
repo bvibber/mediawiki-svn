@@ -62,6 +62,16 @@ Utilisez les apostrophes ('comme ceci') pour les chaînes de caractères. Ceci p
 'querysuccessful' => 'La requête a été exécutée avec succès.',
 ),
 
+'frc' => array(
+'asksql'           => 'Demande SQL',
+'asksqltext'       => 'Usez la forme en bas pour faire une demande directe de la base d\'information. Usez des marques de citation simples (\'comme ça ici\') pour délimiter les chaînes en ligne. Cette fonction peut mettre un gros voyage dessus le serveur, s\'il vous plaît, usez cette fonction accordant.',
+'sqlislogged'      => 'Soyez connaissant que toutes le demandes sont notées.',
+'sqlquery'         => 'Mettez la demande',
+'querybtn'         => 'Envoyez la demande',
+'selectonly'       => 'Juste les demandes marquées \'seulement lisable\' sont acceptées.',
+'querysuccessful'  => 'La demande est faite.',
+),
+
 'hsb' => array(
 'asksql'           => 'SQL wotprašenje',
 'asksqltext'       => 'Wužij tutón formular, zo by datowu banku direktnje wotprašował.

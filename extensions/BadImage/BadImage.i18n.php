@@ -151,6 +151,27 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'a retiré [[$1]] de la liste des images indésirables',
 ),
 
+'frc' => array(
+'badimages' => 'Liste des mauvaises images',
+'badimages-add-btn' => 'Additionner',
+'badimages-added' => '$1 a été additionné à la liste.',
+'badimages-count' => 'Y a \'\'\'$1\'\'\' images dans la liste des mauvaises images.',
+'badimages-name' => 'Nom:',
+'badimages-not-added' => 'L\'image a pas pu être additionnée.',
+'badimages-not-removed' => 'L\'image a pas pu être ôtée.',
+'badimages-reason' => 'Raison:',
+'badimages-remove' => '(ôter)',
+'badimages-remove-btn' => 'Ôter',
+'badimages-remove-confirm' => 'Confirmez donc que vous souhaitez ôter $1 de la liste:',
+'badimages-removed' => '$1 a été ôté de la liste.',
+'badimages-subheading' => 'Liste courante',
+'badimages-unprivileged' => '(Vous avez pas la permission de changer la liste.)',
+'badimages-log-name' => 'Liste des mauvaises images',
+'badimages-log-header' => 'Ça ici, c\'est une liste de changements à la [[Aide:Liste des mauvaises images|liste des mauvaises images]].',
+'badimages-log-add' => 'a additionné [[$1]] à la liste des mauvaises images',
+'badimages-log-remove' => 'a ôté [[$1]] de la liste des mauvaises images',
+),
+
 'hsb' => array(
 'badimages' => 'Lisćina njewitanych wobrazow',
 'badimages-add-btn' => 'Přidać',
@@ -557,6 +578,7 @@ function efBadImageMessages() {
 	return $messages;
 
 }
+
 
 
 
