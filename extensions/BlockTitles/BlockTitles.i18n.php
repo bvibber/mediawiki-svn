@@ -43,6 +43,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Sorry, het is niet toegestaan een pagina met deze naam op te slaan.',
 ),
 
+'oc' => array(
+	'block_title_error_page_title' => 'Títol invalid',
+	'block_title_error' => 'O planhem, lo títol d\'aqueste article es pas autorizat a èsser salvagardat.',
+),
+
 /**
  * 
  * Cantonese (Shinjiman)

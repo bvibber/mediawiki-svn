@@ -147,6 +147,7 @@ $wgFilepathMessages['oc'] = array(
 	'filepath'        => 'Camin d\'un fichièr',
 	'filepath_page'   => 'Fichièr:',
 	'filepath_submit' => 'Camin',
+	'filepath-summary' => 'Aquesta pagina especiala balha lo camin complet d’un fichièr ; los imatges son mostrats en nauta resolucion, los fichièrs audiò e vidèo s’executisson amb lor programa associat. Picatz lo nom del fichièr sens lo prefix « {{ns:image}}: »',
 );
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgFilepathMessages['pms'] = array(

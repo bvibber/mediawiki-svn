@@ -46,6 +46,10 @@ $wgDeletedContribsMessages['nl'] = array(
 	'deletedcontributions' => 'Verwijderde gebruikersbijdragen',
 );
 
+$wgDeletedContribsMessages['oc'] = array(
+	'deletedcontributions' => 'Contribucions suprimidas d’un utilizaire',
+);
+
 $wgDeletedContribsMessages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
 );

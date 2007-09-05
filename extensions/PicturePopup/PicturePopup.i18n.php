@@ -116,6 +116,16 @@ function efPicturePopupMessages() {
 'picturepopup_invalid_icon' => 'Lisensmalen mangler eller har ugyldig imageLicenseIcon-element',
 ),
 
+'oc' => array(
+'picturepopup_invalid_title' => 'Títol de l’imatge invalid',
+'picturepopup_no_license' => 'L’imatge a pas de modèl de licéncia',
+'picturepopup_no_image' => 'L’imatge existís pas',
+'picturepopup_no_license_list' => 'La lista de las licéncias es absenta o invalida',
+'picturepopup_license_list' => 'Projècte:Lista dels bendèls de licéncia',
+'picturepopup_no_license_text' => 'Lo modèl de licéncia a pas d’element amb id=imageLicenseText',
+'picturepopup_invalid_icon' => 'Lo modèl de licéncia a pas d’element imageLicenseIcon o es invalid',
+),
+
 /* Piedmontese (Bèrto 'd Sèra) */
 'pms' => array(
 'picturepopup_invalid_title' => 'Tìtol dla figura nen bon',
