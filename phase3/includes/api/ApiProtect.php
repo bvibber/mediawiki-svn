@@ -113,7 +113,7 @@ class ApiProtect extends ApiBase {
 			'title' => 'Title of the page you want to restore.',
 			'token' => 'A protect token previously retrieved through prop=info',
 			'protections' => 'Pipe-separated list of protection levels, formatted action=group (e.g. edit=sysop)',
-			'expiry' => 'Expiry timestamp. If set to \'infinite\', \'indefinite\' or \'never\', the protection never expires.',
+			'expiry' => 'Expiry timestamp. If set to \'infinite\', \'indefinite\' or \'never\', the protection will never expire.',
 			'reason' => 'Reason for (un)protecting (optional)',
 			'cascade' => 'Enable cascading protection (i.e. protect pages included in this page)'
 		);

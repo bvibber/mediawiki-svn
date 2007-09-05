@@ -18,6 +18,11 @@ SpecialUndelete.php
 ** undelete() returns array with number of restored revisions/file versions and undeletion summary on success, UNDELETE_* on failure
 ** Updated SpecialUndelete::undelete() to recognize changed PageArchive::undelete() return values
 
+SpecialBlockip.php
+* Separated UI and DB code in BlockIPForm::doSubmit() (r25548)
+** doBlock() does the dirty work, doSubmit() wraps around it
+** Introduced BlockIPForm::BLOCK_* constants for doBlock()'s return values
+
 api/ApiQueryInfo.php
 * Implemented tokens (r23562, r23568,r23638, r23668)
 * Fixed bug 10898 (r24458)
@@ -40,11 +45,14 @@ api/ApiProtect.php (NEW)
 * action=protect module that wraps around Article::updateRestrictions() (r25388)
 * Added missingtitle error message (r25389)
 
+api/ApiBlock.php (NEW)
+* action=block module that wraps around BlockIPForm::doBlock() (r25548)
+
 AutoLoader.php
-* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588)
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548)
 
 api/ApiMain.php
-* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687), ApiProtect (r23588)
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548)
 
 api/ApiQuery.php
 * Added entry for ApiQueryDeletedRevs (r23668)
