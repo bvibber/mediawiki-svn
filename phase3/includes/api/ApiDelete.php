@@ -88,7 +88,7 @@ class ApiDelete extends ApiBase {
 		
 		$titleObj = NULL;
 		if(!isset($params['title']))
-			$this->dieUsage('The title parameter must be set', 'notarget');
+			$this->dieUsage('The title parameter must be set', 'notitle');
 		if(!isset($params['token']))
 			$this->dieUsage('The token parameter must be set', 'notoken');
 

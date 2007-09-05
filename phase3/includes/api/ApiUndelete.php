@@ -42,7 +42,7 @@ class ApiUndelete extends ApiBase {
 		
 		$titleObj = NULL;
 		if(!isset($params['title']))
-			$this->dieUsage('The title parameter must be set', 'notarget');
+			$this->dieUsage('The title parameter must be set', 'notitle');
 		if(!isset($params['token']))
 			$this->dieUsage('The token parameter must be set', 'notoken');
 
@@ -67,7 +67,7 @@ class ApiUndelete extends ApiBase {
 					$this->dieUsage('No revisions could be restored', 'norevs');
 				case PageArchive::UNDELETE_NOTAVAIL:
 					$this->dieUsage('Not all requested revisions could be found', 'revsnotfound');
-				case PageArchive::UNDELETE_UNKNOWN:
+				case PageArchive::UNDELETE_UNKNOWNERR:
 					$this->dieUsage('Undeletion failed with unknown error', 'unknownerror');
 			}
 

@@ -428,6 +428,9 @@ class PageArchive {
 			$revision->insertOn( $dbw );
 			$restored++;
 		}
+		// Was anything restored at all?
+		if($restored == 0)
+			return 0;
 
 		if( $revision ) {
 			// Attach the latest revision to the page...
