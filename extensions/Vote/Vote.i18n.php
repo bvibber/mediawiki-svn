@@ -55,6 +55,17 @@ riddler|Riddler",
 'vote-invalid-choice' => 'يجب عليك اختيار واحد من الخيارات المتاحة.',
 ),
 
+'bcl' => array(
+'vote' => 'Magboto',
+'vote-submit' => 'Magboto',
+'vote-view-results' => 'Hilingón an mga resulta',
+'vote-results' => 'Mga resulta kan boto',
+'vote-results-choice' => 'Pinilî',
+'vote-results-count' => 'Bilang',
+'vote-login' => 'Kaipuhan mong $1 magboto.',
+'vote-login-link' => 'maglaog',
+),
+
 /* French (Ashar Voultoiz) */
 'fr' => array(
 'vote' => 'Vote',

@@ -36,6 +36,10 @@ Remember: '''You cannot get your permissions back this way!''' You will have to 
 'resign-logentry' => 'سحب الصلاحيات $2 من نفسه',
 ),
 
+'bcl' => array(
+'resign-reason' => 'Rason:',
+),
+
 'de' => array(
 'resign'           => 'Rücktritt',
 'resign-text'      => "Sie können auf dieser Seite '''Ihre Berechtigungen zurückgeben''' (z.B. die Administrator-Berechtigung). Bitte prüfen Sie die Berechtigungen, die Sie zurückgeben möchten.

@@ -38,6 +38,12 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'لا يوجد مقالة بعنوان $1.',
 ),
 
+'bcl' => array(
+'contributors-target' => 'Titulo:',
+'contributors-submit' => 'Hilingón',
+'contributors-others' => 'asin $1 iba pa',
+'contributors-nosuchpage' => 'An artikulong $1 mayô man.',
+),
 
 'br' => array(
 'contributors' => 'Aozerien',

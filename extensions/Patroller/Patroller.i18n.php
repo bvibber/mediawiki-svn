@@ -60,6 +60,14 @@ function efPatrollerMessages() {
 'grouppage-patroller' => '{{ns:project}}:مراجع',
 ),
 
+'bcl' => array(
+'patrol-endorse' => 'Iindorso',
+'patrol-revert-reason' => 'Rason:',
+'patrol-skip' => 'Laktawan',
+'patrol-reverting' => 'Pigbabalik: $1',
+'patrol-resume' => 'Lagatik digdi tangarig magpadagos.',
+),
+
 /* German (Raymond) */
 'de' => array(
 'patrol'                 => 'Kontrolle der Bearbeitungen',

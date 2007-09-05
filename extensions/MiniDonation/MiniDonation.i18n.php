@@ -13,6 +13,9 @@ $wgMiniDonationMessages['en'] = array(
 $wgMiniDonationMessages['ar'] = array(
 	'donationform-submit' => 'تبرع من خلال باي بال',
 );
+$wgMiniDonationMessages['bcl'] = array(
+	'donationform-submit' => 'Magdonar sa paagi kan PayPal',
+);
 $wgMiniDonationMessages['de'] = array(
 	'donationform-submit' => 'Spenden über PayPal',
 );

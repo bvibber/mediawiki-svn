@@ -168,6 +168,7 @@ $wgBoardVoteMessages['bcl'] = array(
 	'boardvote_dumplink'      => 'Lagatik digdi',
 	'boardvote_notstarted'    => 'Dai pa napoon an pirilian',
 	'boardvote_edits_many'    => 'dakol',
+	'boardvote_blocked'       => 'Despensa, pigbágat ka sa pagrehistrohan mong wiki. An mga pigbágat na parágamit dai pigtotogotan na makaboto.',
 	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['ca'] = array(

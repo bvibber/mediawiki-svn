@@ -66,6 +66,11 @@ $messages = array(
 		'ogg-desc-link' => 'حول هذا الملف',
 	),
 
+	'bcl' => array(
+	'ogg-more' => 'Dakol pa..',
+	'ogg-dismiss' => 'Isara',
+	),
+
 	'de' => array(
 		'ogg-short-audio'         => 'Ogg-$1-Audiodatei, $2',
 		'ogg-short-video'         => 'Ogg-$1-Videodatei, $2',

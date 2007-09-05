@@ -25,6 +25,10 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'عذرا، عنوان هذه المقالة غير مسموح بحفظه.',
 ),
 
+'bcl' => array(
+	'block_title_error_page_title' => 'Pigbágat na Titulo',
+),
+
 'de' => array(
 	'block_title_error_page_title' => 'Sperre Artikelname',
 	'block_title_error'            => 'Entschuldigung, aber ein Artikel mit diesem Namen darf nicht gespeichert werden.',
