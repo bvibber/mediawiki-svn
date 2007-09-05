@@ -19,10 +19,20 @@ ini_set( 'include_path',
 // Bump this when updating OggPlayer.js to help update caches
 $wgOggScriptVersion = '1';
 
-$wgFFmpegLocation = 'ffmpeg';
 $wgExtensionMessagesFiles['OggHandler'] = "$oggDir/OggHandler.i18n.php";
 $wgParserOutputHooks['OggHandler'] = array( 'OggHandler', 'outputHook' );
 $wgHooks['LanguageGetMagic'][] = 'OggHandler::registerMagicWords';
+$wgExtensionCredits['media'][] = array(
+	'name' => 'OggHandler',
+	'author' => 'Tim Starling',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:OggHandler',
+	'description' => 'Handler for Ogg Theora and Vorbis files, with JavaScript player.',
+);
+
+/******************* CONFIGURATION STARTS HERE **********************/
+
+// Location of the FFmpeg binary
+$wgFFmpegLocation = 'ffmpeg';
 
 // Filename or URL path to the Cortado Java player applet.
 //
