@@ -16,11 +16,18 @@ extremely slow when used in this way. Our ffmpeg-bugfix.diff will fix this.
 Download source: http://ffmpeg.mplayerhq.hu/download.html
 About the bug: http://bugzilla.mplayerhq.hu/show_bug.cgi?id=892
 
+Suggested configure line for minimal functionality:
+
+./configure --disable-demuxers --disable-muxers --disable-decoders --disable-encoders \
+  --disable-ffserver --disable-ffplay --enable-encoder=mjpeg --enable-muxer=mjpeg \
+  --enable-decoder=theora --enable-demuxer=ogg --disable-network \
+  --build-suffix=-still
+
 Set the FFmpeg binary location with:
 
     $wgFFmpegLocation = '/path/to/ffmpeg';
 
-after the require line above. 
+after the require line in LocalSettings.php. 
 
 Cortado
 -------
