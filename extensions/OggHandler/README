@@ -6,15 +6,24 @@ To install this extension, add the following to the end of your LocalSettings.ph
 
     require( "$IP/extensions/OggHandler/OggHandler.php" );
 
-You will also need a copy of ffmpeg on the server. You can get it from:
+FFmpeg
+------
 
-    http://ffmpeg.mplayerhq.hu/
+We use FFmpeg for creating still images of videos, you will need a copy on your 
+server. Unfortunately the current version of FFmpeg has a bug which makes it
+extremely slow when used in this way. Our ffmpeg-bugfix.diff will fix this. 
 
-Set the binary location with:
+Download source: http://ffmpeg.mplayerhq.hu/download.html
+About the bug: http://bugzilla.mplayerhq.hu/show_bug.cgi?id=892
+
+Set the FFmpeg binary location with:
 
     $wgFFmpegLocation = '/path/to/ffmpeg';
 
 after the require line above. 
+
+Cortado
+-------
 
 The bundled Cortado player is licensed under the GPL, the source is available from:
 
@@ -24,10 +33,16 @@ We have patched Cortado to allow multiple instances to exist on the one page,
 the patch is in cortado-tweak.diff. The recompiled binary is at 
 cortado-ovt-stripped-0.2.2.1-patched.jar .
 
+PEAR File_Ogg
+-------------
+
 The PEAR directory contains a fork of the File_Ogg package, licensed under the
 LGPL. The stock File_Ogg will not work -- I have made many aggressive changes
 including support for stream formats other than Vorbis. I'll try to get my
 changes committed to the official PEAR tree at some point in the future.
+
+Graphics
+--------
 
 The icons play.png, pause.png, stop.png and info.png are from the Crystal Project:
 
