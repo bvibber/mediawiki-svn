@@ -203,6 +203,9 @@ function writeSyntrans($syntrans, $newdmid, $newexpid, $dc2) {
 function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
 	$syntrans=getOldSyntrans($dc1, $olddmid, $oldexpid);
 	$copier=new ObjectCopier($syntrans["syntrans_sid"], "syntrans", $dc1, $dc2);
+	if ($copier->already_there()) {
+		return;
+	}
 	$newid=$copier->dup();
 	$syntrans["syntrans_sid"]=$newid;
 	writeSyntrans($syntrans, $newdmid, $newexpid, $dc2);
@@ -219,11 +222,12 @@ function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 
 	$copier=new ObjectCopier($expression["expression_id"], "expression_ns", $dc1, $dc2);
 	$target_expid1=$copier->dup();
-	var_dump($target_expid1);
 	$save_expression=$expression;
 	$save_expression["expression_id"]=$target_expid1;
 	$target_table=mysql_real_escape_string("${dc2}_expression_ns");
-	mysql_insert_assoc($target_table,$save_expression);
+	if  (!($copier->already_there())) {
+		mysql_insert_assoc($target_table,$save_expression);
+	}
 	dupsyntrans(
 		$dc1,
 		$dc2,
@@ -270,6 +274,12 @@ function dup_translated_content($dc1, $dc2, $tcid) {
 	$target_table=mysql_real_escape_string("translated_content");
 	$copier=new ObjectCopier($tcid, $target_table, $dc1, $dc2);
 	$new_tcid=$copier->dup();
+	# note the issue where translated content is added later:
+	# since all translated content for a single dm 
+	# shares one UUID, we can't check for that eventuality.
+	if ($copier->already_there()) {
+		return;
+	}
 	foreach ($translated_content as $item) {
 		write_translated_content($dc1, $dc2, $new_tcid, $item);
 	}
@@ -301,6 +311,9 @@ function read_meaning_relations($dc1, $dmid) {
 function write_meaning_relation($dc1, $dc2, $new_dmid, $relation) {
 	$copier=new ObjectCopier($relation["relation_id"], "meaning_relations", $dc1, $dc2);
 	$relation["relation_id"]=$copier->dup;
+	if ($copier->already_there()) {
+		return;
+	}
 	$relation["meaning1_mid"]=$new_dmid;
 	$relation["meaning2_mid"]=dup_defined_meaning($relation["meaning2_mid"],$dc1, $dc2);
 }
@@ -352,25 +365,29 @@ class defined_meaning_copier {
 		$this->save_meaning=$this->defined_meaning;
 		$this->save_meaning["defined_meaning_id"]=$target_dmid;
 
-		# exp
-		$target_table=mysql_real_escape_string("${dc2}_expression_ns");
-		$exp_copier=new ObjectCopier($defining_expression["expression_id"], $target_table, $dc1, $dc2);
-		$target_expid1=$exp_copier->dup();
-		var_dump($target_expid1);
-		$save_expression=$defining_expression;
-		$save_expression["expression_id"]=$target_expid1;
-		mysql_insert_assoc($target_table,$save_expression);
-		# and insert that info into the dm
-		$this->save_meaning["expression_id"]=$target_expid1;
+		if (!($copier->already_there())) {
+			# exp
+			$target_table=mysql_real_escape_string("${dc2}_expression_ns");
+			$exp_copier=new ObjectCopier($defining_expression["expression_id"], $target_table, $dc1, $dc2);
+			$target_expid1=$exp_copier->dup();
+			var_dump($target_expid1);
+			$save_expression=$defining_expression;
+			$save_expression["expression_id"]=$target_expid1;
+			mysql_insert_assoc($target_table,$save_expression);
+			# and insert that info into the dm
+			$this->save_meaning["expression_id"]=$target_expid1;
+		}
 		$this->save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $this->defined_meaning["meaning_text_tcid"]);
 
-		mysql_insert_assoc($dm_target_table, $this->save_meaning);
+		if (!($copier->already_there())) {
+			mysql_insert_assoc($dm_target_table, $this->save_meaning);
 
-		$title_name=$defining_expression["spelling"];
-		$title_number=$target_dmid;
-		$title=str_replace(" ","_",$title_name)."_(".$title_number.")";
-		$pagedata=array("page_namespace"=>24, "page_title"=>$title);
-		mysql_insert_assoc("page",$pagedata);
+			$title_name=$defining_expression["spelling"];
+			$title_number=$target_dmid;
+			$title=str_replace(" ","_",$title_name)."_(".$title_number.")";
+			$pagedata=array("page_namespace"=>24, "page_title"=>$title);
+			mysql_insert_assoc("page",$pagedata);
+		}
 
 		$concepts=array(
 			$dc1 => $this->defined_meaning["defined_meaning_id"],
