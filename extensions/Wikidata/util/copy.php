@@ -71,63 +71,123 @@ function expression($expression_id, $dc1) {
 	return getrow($dc1, "expression_ns", "WHERE expression_id=$expression_id");
 }
 
-function readobject($id, $dc1) {
-	$objects=mysql_real_escape_string("${dc1}_objects");
-	$query="SELECT * from $objects where object_id=$id";
-	return getrow($dc1, "objects", "WHERE object_id=$id");
+class ObjectCopier {
+	
+	protected $id;
+	protected $dc1;
+	protected $dc2;
+	protected $object;
+	protected $table;
+	protected $already_there=null;
+
+	function __construct($id, $table, $dc1, $dc2) {
+		$this->id=$id;
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+		$this->table=mysql_escape_string("${table}_${dc2}");
+	}
+
+	function getObject() {
+		return $this->object;
+	}
+
+	function setObject($object) {
+		$this->object=$object;
+	}
+
+	/** return true if the object was already present in the other dataset*/
+	public function already_there(){
+		return $this->already_there;
+	}
+
+	protected function read() {
+		$dc1=$this->dc1;
+		$id=$this->id;
+		$this->object=getrow($dc1, "objects", "WHERE object_id=$id");
+	}
+
+	protected function identical() {
+		$uuid=mysql_escape_string($this->object["UUID"]);
+		$dc2=$this->dc2;
+		return getrow($dc2,"objects", "WHERE `uuid`='$uuid'");
+	}
+
+	function write() {
+		$dc2=$this->dc2;
+		$objects_table=mysql_real_escape_string("${dc2}_objects");
+		$object=$this->object;
+		unset($object["object_id"]);
+		$object["table"]=$objects_table;
+		mysql_insert_assoc($objects_table,$object);
+		return mysql_insert_id();
+	}
+
+	function dup() {
+		$this->read();
+		$object2=$this->identical();
+		if (sane_key_exists("object_id",$object2)) {
+			$this->already_there=true;
+			$newid=$object2["object_id"];
+		} else {
+			$this->already_there=false;
+			$newid=$this->write();
+		}
+		return $newid;
+	}
 }
 
-function writeobject($object,$dc2,$table) {
-	$objects=mysql_real_escape_string("${dc2}_objects");
-	unset($object["object_id"]);
-	$object["table"]=$table;
-	mysql_insert_assoc($objects,$object);
-	return mysql_insert_id();
+/** identical to array_key_exists(), but eats dirtier input
+ * returns false (rather than an error) on somewhat invalid input
+ */
+function sane_key_exists($key, $array) {
+	if (is_null($key) or $key==false){
+		return false;
+	}
+	if (is_null($array) or $array==false) {
+		return false;
+	}
+	var_dump($array);
+	return array_key_exists($key, $array);
 }
 
-function dupobject($id, $table, $dc1, $dc2) {
-	$object=readobject($id, $dc1);
-	$newid=writeobject($object,$dc2, $table);
-	return $newid;
-}
 /**
  * inverse of mysql_fetch_assoc
 /* see: http://www.php.net/mysql_fetch_assoc (Comment by R. Bradly, 14-Sep-2006)
  */
-   function mysql_insert_assoc ($my_table, $my_array) {
+function mysql_insert_assoc ($my_table, $my_array) {
 
-	// Find all the keys (column names) from the array $my_array
+// Find all the keys (column names) from the array $my_array
 
-	// We compose the query
-	$sql = "insert into `$my_table` set";
-	// implode the column names, inserting "\", \"" between each (but not after the last one)
-	// we add the enclosing quotes at the same time
-	$sql_comma=$sql;
-	foreach($my_array as $key=>$value) {
-		$sql=$sql_comma;
-		if (is_null($value)) {
-			$value="DEFAULT";
-		} else {
-			$value="\"$value\"";
-		}
-		$sql.=" `$key`=$value";
-		$sql_comma=$sql.",";
+// We compose the query
+$sql = "insert into `$my_table` set";
+// implode the column names, inserting "\", \"" between each (but not after the last one)
+// we add the enclosing quotes at the same time
+$sql_comma=$sql;
+foreach($my_array as $key=>$value) {
+	$sql=$sql_comma;
+	if (is_null($value)) {
+		$value="DEFAULT";
+	} else {
+		$value="\"$value\"";
 	}
-	// Same with the values
-	echo $sql."; <br>\n";
-	$result = mysql_query($sql);
+	$sql.=" `$key`=$value";
+	$sql_comma=$sql.",";
+}
+// Same with the values
+echo $sql."; <br>\n";
+$result = mysql_query($sql);
 
-	if ($result)
-	{
-		echo "The row was added sucessfully";
-		return true;
-	}
-	else
-	{
-		echo ("The row was not added<br>The error was" . mysql_error());
-		return false;
-	}
-   }
+if ($result)
+{
+	echo "The row was added sucessfully";
+	return true;
+}
+else
+{
+	echo ("The row was not added<br>The error was" . mysql_error());
+	return false;
+}
+}
 
 function getOldSyntrans($dc1, $dmid, $expid) {
 	return getrow($dc1, "syntrans", "where defined_meaning_id=$dmid and expression_id=$expid");
@@ -142,8 +202,8 @@ function writeSyntrans($syntrans, $newdmid, $newexpid, $dc2) {
 
 function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
 	$syntrans=getOldSyntrans($dc1, $olddmid, $oldexpid);
-	$table=mysql_real_escape_string("${dc2}_syntrans");
-	$newid=dupObject($syntrans["syntrans_sid"], $table, $dc1, $dc2);
+	$copier=new ObjectCopier($syntrans["syntrans_sid"], "syntrans", $dc1, $dc2);
+	$newid=$copier->dup();
 	$syntrans["syntrans_sid"]=$newid;
 	writeSyntrans($syntrans, $newdmid, $newexpid, $dc2);
 }
@@ -156,11 +216,13 @@ function get_syntranses($dmid, $dc1) {
 /* some coy&paste happening here, might want to tidy even before we
 * toss this throwaway code*/
 function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
-	$target_table=mysql_real_escape_string("${dc2}_expression_ns");
-	$target_expid1=dupobject($expression["expression_id"], $target_table, $dc1, $dc2);
+
+	$copier=new ObjectCopier($expression["expression_id"], "expression_ns", $dc1, $dc2);
+	$target_expid1=$copier->dup();
 	var_dump($target_expid1);
 	$save_expression=$expression;
 	$save_expression["expression_id"]=$target_expid1;
+	$target_table=mysql_real_escape_string("${dc2}_expression_ns");
 	mysql_insert_assoc($target_table,$save_expression);
 	dupsyntrans(
 		$dc1,
@@ -205,8 +267,9 @@ function write_translated_content($dc1, $dc2, $tcid, $content) {
 
 function dup_translated_content($dc1, $dc2, $tcid) {
 	$translated_content=read_translated_content($dc1, $tcid);
-	$target_table=mysql_real_escape_string("${dc2}_translated_content");
-	$new_tcid=dupobject($tcid, $target_table, $dc1, $dc2);
+	$target_table=mysql_real_escape_string("translated_content");
+	$copier=new ObjectCopier($tcid, $target_table, $dc1, $dc2);
+	$new_tcid=$copier->dup();
 	foreach ($translated_content as $item) {
 		write_translated_content($dc1, $dc2, $new_tcid, $item);
 	}
@@ -236,7 +299,8 @@ function read_meaning_relations($dc1, $dmid) {
 }
 
 function write_meaning_relation($dc1, $dc2, $new_dmid, $relation) {
-	$relation["relation_id"]=dupobject($relation["relation_id"]);
+	$copier=new ObjectCopier($relation["relation_id"], "meaning_relations", $dc1, $dc2);
+	$relation["relation_id"]=$copier->dup;
 	$relation["meaning1_mid"]=$new_dmid;
 	$relation["meaning2_mid"]=dup_defined_meaning($relation["meaning2_mid"],$dc1, $dc2);
 }
@@ -282,14 +346,16 @@ class defined_meaning_copier {
 		# bit of exp here too (defnitely need to tidy)
 		$defining_expression=expression($this->defined_meaning["expression_id"], $dc1);
 		$dm_target_table=mysql_real_escape_string("${dc2}_defined_meaning");
-		$target_dmid=dupobject($this->defined_meaning["defined_meaning_id"], $dm_target_table, $dc1, $dc2);
+		$copier=new ObjectCopier($this->defined_meaning["defined_meaning_id"], "defined_meaning", $dc1, $dc2);
+		$target_dmid=$copier->dup();
 		var_dump($target_dmid);
 		$this->save_meaning=$this->defined_meaning;
 		$this->save_meaning["defined_meaning_id"]=$target_dmid;
 
 		# exp
 		$target_table=mysql_real_escape_string("${dc2}_expression_ns");
-		$target_expid1=dupobject($defining_expression["expression_id"], $target_table, $dc1, $dc2);
+		$exp_copier=new ObjectCopier($defining_expression["expression_id"], $target_table, $dc1, $dc2);
+		$target_expid1=$exp_copier->dup();
 		var_dump($target_expid1);
 		$save_expression=$defining_expression;
 		$save_expression["expression_id"]=$target_expid1;
