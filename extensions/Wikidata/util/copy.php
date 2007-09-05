@@ -39,6 +39,7 @@ function stopwatch(){
 function getrow($dc, $table, $where) {
 	$target_table=mysql_real_escape_string("${dc}_${table}");
 	$query="SELECT * FROM $target_table ".$where;
+	print $query."<br>\n";
 	return doquery($query);
 }
 
@@ -240,68 +241,85 @@ function write_meaning_relation($dc1, $dc2, $new_dmid, $relation) {
 	$relation["meaning2_mid"]=dup_defined_meaning($relation["meaning2_mid"],$dc1, $dc2);
 }
 
-function read_defined_meaning($dc1,$dmid) {
-	return getrow($dc1,"defined_meaning","where defined_meaning_id=$dmid");
-}
+
+class defined_meaning_copier {
+
+	protected $defined_meaning;
+	protected $save_meaning;
+	protected $dmid;
+	protected $dc1;
+	protected $dc2;
+	
+	public function __construct ($dmid, $dc1, $dc2) {
+		$this->dmid=$dmid;
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+	}
+	
+	protected function read() {
+		$dmid=$this->dmid;
+		print "<".$dmid."-".$this->dc1.">";
+		$this->defined_meaning=getrow($this->dc1,"defined_meaning","where defined_meaning_id=$dmid");
+		return $this->defined_meaning; # for convenience
+	}
 
 
-function dup_defined_meaning ($dmid, $dc1, $dc2){
+	public function getDM() {
+		$dm=$this->defined_meaning;
+		if (is_null($dm)) {
+			$dm=$this->read();
+		}
+		return $this->defined_meaning;
+	}
 
-	$defined_meaning=read_defined_meaning($dc1, $dmid);
+	function dup (){
+		$dmid=$this->dmid;
+		$dc1=$this->dc1;
+		$dc2=$this->dc2;
 
-	# bit of exp here too (defnitely need to tidy)
-	$defining_expression=expression($defined_meaning["expression_id"], $dc1);
-	var_dump($defining_expression);
+		$this->read();
 
-	$dm_target_table=mysql_real_escape_string("${dc2}_defined_meaning");
-	$target_dmid=dupobject($defined_meaning["defined_meaning_id"], $dm_target_table, $dc1, $dc2);
-	var_dump($target_dmid);
-	$save_meaning=$defined_meaning;
-	$save_meaning["defined_meaning_id"]=$target_dmid;
+		# bit of exp here too (defnitely need to tidy)
+		$defining_expression=expression($this->defined_meaning["expression_id"], $dc1);
+		$dm_target_table=mysql_real_escape_string("${dc2}_defined_meaning");
+		$target_dmid=dupobject($this->defined_meaning["defined_meaning_id"], $dm_target_table, $dc1, $dc2);
+		var_dump($target_dmid);
+		$this->save_meaning=$this->defined_meaning;
+		$this->save_meaning["defined_meaning_id"]=$target_dmid;
 
-	# exp
-	$target_table=mysql_real_escape_string("${dc2}_expression_ns");
-	$target_expid1=dupobject($defining_expression["expression_id"], $target_table, $dc1, $dc2);
-	var_dump($target_expid1);
-	$save_expression=$defining_expression;
-	$save_expression["expression_id"]=$target_expid1;
-	mysql_insert_assoc($target_table,$save_expression);
-	# and insert that info into the dm
-	$save_meaning["expression_id"]=$target_expid1;
-	$save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $defined_meaning["meaning_text_tcid"]);
+		# exp
+		$target_table=mysql_real_escape_string("${dc2}_expression_ns");
+		$target_expid1=dupobject($defining_expression["expression_id"], $target_table, $dc1, $dc2);
+		var_dump($target_expid1);
+		$save_expression=$defining_expression;
+		$save_expression["expression_id"]=$target_expid1;
+		mysql_insert_assoc($target_table,$save_expression);
+		# and insert that info into the dm
+		$this->save_meaning["expression_id"]=$target_expid1;
+		$this->save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $this->defined_meaning["meaning_text_tcid"]);
 
-	mysql_insert_assoc($dm_target_table, $save_meaning);
+		mysql_insert_assoc($dm_target_table, $this->save_meaning);
 
-	# the defining expression is also in syntrans,
-	# so this might be redundant.
-	dupsyntrans(
-		$dc1,
-		$dc2,
-		$defined_meaning["defined_meaning_id"],
-		$defining_expression["expression_id"],
-		$save_meaning["defined_meaning_id"],
-		$save_expression["expression_id"]
-	);
+		$title_name=$defining_expression["spelling"];
+		$title_number=$target_dmid;
+		$title=str_replace(" ","_",$title_name)."_(".$title_number.")";
+		$pagedata=array("page_namespace"=>24, "page_title"=>$title);
+		mysql_insert_assoc("page",$pagedata);
 
-	$title_name=$defining_expression["spelling"];
-	$title_number=$target_dmid;
-	$title=str_replace(" ","_",$title_name)."_(".$title_number.")";
-	$pagedata=array("page_namespace"=>24, "page_title"=>$title);
-	mysql_insert_assoc("page",$pagedata);
+		$concepts=array(
+			$dc1 => $this->defined_meaning["defined_meaning_id"],
+			$dc2 => $this->save_meaning["defined_meaning_id"]
+		);
+		createConceptMapping($concepts);
 
-	$concepts=array(
-		$dc1 => $defined_meaning["defined_meaning_id"],
-		$dc2 => $save_meaning["defined_meaning_id"]
-	);
-	createConceptMapping($concepts);
+		dup_syntranses(
+			$this->defined_meaning["defined_meaning_id"],
+			$this->save_meaning["defined_meaning_id"],
+			$dc1,
+			$dc2
+		);
 
-	dup_syntranses(
-		$defined_meaning["defined_meaning_id"],
-		$save_meaning["defined_meaning_id"],
-		$dc1,
-		$dc2
-	);
-
+	}
 }
 
 
@@ -315,7 +333,8 @@ $dmid=mysql_real_escape_string($dmid_dirty);
 $dc1=mysql_real_escape_string($dc1_dirty);
 $dc2=mysql_real_escape_string($dc2_dirty);
 
-dup_defined_meaning($dmid, $dc1, $dc2);
+$dmc=new defined_meaning_copier($dmid, $dc1, $dc2); #sorry, not a [[delorean]]
+$dmc->dup(); 
 
 echo"
 <hr>
