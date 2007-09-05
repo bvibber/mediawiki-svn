@@ -888,9 +888,13 @@ SQL;
 			} else {
 				$thread->initWithReplies( array() );
 			}
+			
+			self::$cache_by_root[$thread->root()->getID()] = $thread;
 		}
 		return $top_level_threads;
 	}
+	
+	static $cache_by_root = array();
 
 	private static function databaseError( $msg ) {
 		// TODO tie into MW's error reporting facilities.
@@ -899,6 +903,15 @@ SQL;
 	}
 
 	static function withRoot( $post ) {
+		if( $post->getTitle()->getNamespace() != NS_LQT_THREAD ) {
+			// No articles outside the thread namespace have threads associated with them;
+			// avoiding the query saves time during the TitleGetRestrictions hook.
+			return null;
+		}
+		if( array_key_exists( $post->getID(), self::$cache_by_root ) ) {
+			return self::$cache_by_root[$post->getID()];
+		}
+		efVarDump(null, "withRoot( {$post->getID()} ) missed.");
 		$ts = Threads::where( array('thread.thread_root' => $post->getID()) );
 		if( count($ts) == 0 ) { return null; }
 		if ( count($ts) >1 ) {
