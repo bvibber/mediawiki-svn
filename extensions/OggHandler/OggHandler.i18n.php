@@ -98,13 +98,18 @@ $messages = array(
 		'ogg-desc-link'           => 'Über diese Datei',
 	),
 
-  'hsb' => array(
+	'hsb' => array(
+	'ogg-short-audio' => 'Awdiodataja Ogg $1, $2',
+	'ogg-short-video' => 'Widejodataja Ogg $1, $2',
 	'ogg-long-error' => '(Njepłaćiwa ogg-dataja: $1)',
 	'ogg-play' => 'Wothrać',
 	'ogg-pause' => 'Přestawka',
+	'ogg-stop' => 'Stop',#identical but defined
 	'ogg-play-video' => 'Widejo wothrać',
 	'ogg-play-sound' => 'Zynk wothrać',
 	'ogg-player-videoElement' => 'Element <video>',
+	'ogg-player-oggPlugin' => 'Tykač Ogg',
+	'ogg-player-soundthumb' => 'Žadyn wothrawak',
 	'ogg-player-selected' => '(wubrany)',
 	'ogg-use-player' => 'Wuzij wothrawak:',
 	'ogg-more' => 'Wjace ...',
