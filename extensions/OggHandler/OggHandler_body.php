@@ -204,7 +204,7 @@ class OggHandler extends MediaHandler {
 			} else {
 				$width = $params['width'];
 			}
-			return new OggAudioDisplay( $file, $file->getURL(), $width, $height, $length );
+			return new OggAudioDisplay( $file, $file->getURL(), $width, $height, $length, $dstPath );
 		}
 
 		// Video thumbnail only
@@ -213,7 +213,7 @@ class OggHandler extends MediaHandler {
 		}
 
 		if ( $flags & self::TRANSFORM_LATER ) {
-			return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length );
+			return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length, $dstPath );
 		}
 
 		$thumbTime = false;
@@ -254,7 +254,7 @@ class OggHandler extends MediaHandler {
 			// Return error box
 			return new MediaTransformError( 'thumbnail_error', $width, $height, implode( "\n", $lines ) );
 		}
-		return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length );
+		return new OggVideoDisplay( $file, $file->getURL(), $dstUrl, $width, $height, $length, $dstPath );
 	}
 
 	function canRender() { return true; }
@@ -450,7 +450,7 @@ EOT
 class OggTransformOutput extends MediaTransformOutput {
 	static $serial = 0;
 
-	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, $isVideo ) {
+	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, $isVideo, $path ) {
 		$this->file = $file;
 		$this->videoUrl = $videoUrl;
 		$this->url = $thumbUrl;
@@ -458,6 +458,7 @@ class OggTransformOutput extends MediaTransformOutput {
 		$this->height = round( $height );
 		$this->length = round( $length );
 		$this->isVideo = $isVideo;
+		$this->path = $path;
 	}
 
 	function toHtml( $options = array() ) {
@@ -580,14 +581,14 @@ class OggTransformOutput extends MediaTransformOutput {
 }
 
 class OggVideoDisplay extends OggTransformOutput {
-	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length ) {
-		parent::__construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, true );
+	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, $path ) {
+		parent::__construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, true, $path );
 	}
 }
 
 class OggAudioDisplay extends OggTransformOutput {
-	function __construct( $file, $videoUrl, $width, $height, $length ) {
-		parent::__construct( $file, $videoUrl, false, $width, $height, $length, false );
+	function __construct( $file, $videoUrl, $width, $height, $length, $path ) {
+		parent::__construct( $file, $videoUrl, false, $width, $height, $length, false, $path );
 	}
 }
 
