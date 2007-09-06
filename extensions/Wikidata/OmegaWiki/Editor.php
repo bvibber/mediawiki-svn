@@ -1394,7 +1394,23 @@ class RecordListEditor extends RecordEditor {
 		return $result;
 	}
 	
-	protected function viewEditors(IdStack $idPath, $value, $editors, $htmlTag) {
+	protected function shouldCompressOnView($idPath, $value, $editors) {
+		$visibleEditorCount = 0;
+		
+		foreach ($editors as $editor) {
+			$attribute = $editor->getAttribute();
+			$idPath->pushAttribute($attribute);
+			
+			if ($editor->showsData($value->getAttributeValue($attribute)))
+				$visibleEditorCount++;
+
+			$idPath->popAttribute();
+		}
+		
+		return $visibleEditorCount <= 1;
+	}
+
+	protected function viewEditors(IdStack $idPath, $value, $editors, $htmlTag, $compress) {
 		$result = '';
 		
 		foreach ($editors as $editor) {
@@ -1404,12 +1420,17 @@ class RecordListEditor extends RecordEditor {
 			$attributeId = $idPath->getId();
 			$attributeValue = $value->getAttributeValue($attribute);
 						
-			if ($editor->showsData($attributeValue)) 	
-				$result .=	
-					'<' . $htmlTag . '>' . 
-				    	$this->childHeader($editor, $attribute, $class, $attributeId) .
-				    	$this->viewChild($editor, $idPath, $value, $attribute, $class, $attributeId) .
-				    '</' . $htmlTag . '>';
+			if ($editor->showsData($attributeValue)) { 	
+				if (!$compress) 
+					$result .=	
+						'<' . $htmlTag . '>' . 
+					    	$this->childHeader($editor, $attribute, $class, $attributeId);
+					    	
+				$result .= $this->viewChild($editor, $idPath, $value, $attribute, $class, $attributeId);
+				    
+			    if (!$compress)
+			    	$result .= '</' . $htmlTag . '>';
+			}
 			           
 			$idPath->popAttribute();			           
 		}
@@ -1418,14 +1439,31 @@ class RecordListEditor extends RecordEditor {
 	}
 
 	public function view(IdStack $idPath, $value) {
-		return $this->viewEditors($idPath, $value, $this->getEditors(), $this->htmlTag);
+		$editors = $this->getEditors();
+		return $this->viewEditors($idPath, $value, $editors, $this->htmlTag, $this->shouldCompressOnView($idPath, $value, $editors));
 	}
 
 	public function showEditField(IdStack $idPath) {
 		return true;
 	}
 
-	protected function editEditors(IdStack $idPath, $value, $editors, $htmlTag) {
+	protected function shouldCompressOnEdit($idPath, $value, $editors) {
+		$visibleEditorCount = 0;
+		
+		foreach ($editors as $editor) {
+			$attribute = $editor->getAttribute();
+			$idPath->pushAttribute($attribute);
+			
+			if ($editor->showEditField($idPath))
+				$visibleEditorCount++;
+
+			$idPath->popAttribute();
+		}
+		
+		return $visibleEditorCount <= 1;
+	}
+
+	protected function editEditors(IdStack $idPath, $value, $editors, $htmlTag, $compress) {
 		$result = '';
 		
 		foreach ($editors as $editor) {
@@ -1435,13 +1473,18 @@ class RecordListEditor extends RecordEditor {
 			if ($editor->showEditField($idPath)) {
 				$class = $idPath->getClass();
 				$attributeId = $idPath->getId();
-	
-				$result .= 	
-					'<' . $htmlTag . '>'.
-					   	$this->childHeader($editor, $attribute, $class, $attributeId) .
-					    $this->editChild($editor, $idPath, $value,  $attribute, $class, $attributeId) .
-					'</' . $htmlTag . '>';
+
+				if (!$compress)	
+					$result .= 	
+						'<' . $htmlTag . '>'.
+						   	$this->childHeader($editor, $attribute, $class, $attributeId); 
+						   	
+				$result	.= $this->editChild($editor, $idPath, $value,  $attribute, $class, $attributeId);
+				
+				if (!$compress)	
+					$result .= '</' . $htmlTag . '>';
 			}
+			
 			$idPath->popAttribute();
 		}
 
@@ -1449,7 +1492,8 @@ class RecordListEditor extends RecordEditor {
 	}
 
 	public function edit(IdStack $idPath, $value) {
-		return $this->editEditors($idPath, $value, $this->getEditors(), $this->htmlTag);
+		$editors = $this->getEditors();
+		return $this->editEditors($idPath, $value, $editors, $this->htmlTag, $this->shouldCompressOnEdit($idPath, $value, $editors));
 	}
 	
 	protected function addEditors(IdStack $idPath, $editors, $htmlTag) {
@@ -1520,11 +1564,25 @@ class RecordUnorderedListEditor extends RecordListEditor {
 	}
 	
 	public function view(IdStack $idPath, $value) {
-		return $this->wrapInList(parent::view($idPath, $value));
+		$editors = $this->getEditors();
+		$compress = $this->shouldCompressOnView($idPath, $value, $editors);
+		$result = $this->viewEditors($idPath, $value, $editors, $this->htmlTag, $compress);
+		
+		if (!$compress)
+			return $this->wrapInList($result);
+		else
+			return $result;
 	}
 
 	public function edit(IdStack $idPath, $value) {
-		return $this->wrapInList(parent::edit($idPath, $value));
+		$editors = $this->getEditors();
+		$compress = $this->shouldCompressOnEdit($idPath, $value, $editors);
+		$result = $this->editEditors($idPath, $value, $editors, $this->htmlTag, $compress);
+		
+		if (!$compress)
+			return $this->wrapInList($result);
+		else
+			return $result;
 	}
 
 	public function add(IdStack $idPath) {
