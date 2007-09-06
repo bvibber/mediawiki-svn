@@ -145,7 +145,7 @@ $messages = array(
 	'ogg-desc-link' => 'Wo tutej dataji',
 	),
 
-  'nl' => array(
+	'nl' => array(
 	'ogg-short-audio' => 'Ogg $1 geluidsbestand, $2',
 	'ogg-short-video' => 'Ogg $1 videobestande, $2',
 	'ogg-short-general' => 'Ogg $1 mediabestand, $2',
@@ -162,6 +162,7 @@ $messages = array(
 	'ogg-player-videoElement' => '<video>-element',
 	'ogg-player-oggPlugin' => 'Ogg-plugin',
 	'ogg-player-thumbnail' => 'Alleen stilstaand beeld',
+	'ogg-player-soundthumb' => 'Geen mediaspeler',
 	'ogg-player-selected' => '(geselecteerd)',
 	'ogg-use-player' => 'Gebruik speler:',
 	'ogg-more' => 'Meer...',
