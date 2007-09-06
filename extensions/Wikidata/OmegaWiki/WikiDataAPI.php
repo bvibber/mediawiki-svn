@@ -1410,8 +1410,9 @@ class ClassAttributes {
 		$dbr =& wfGetDB(DB_SLAVE);
 
 		global
+			$wgDefaultClassMids,
 			$classAttributesTable, $bootstrappedDefinedMeaningsTable, $classMembershipsTable;
-		
+
 		$queryResult = $dbr->query(
 			SelectLatestDistinct(
 				array(
@@ -1419,15 +1420,23 @@ class ClassAttributes {
 					$classAttributesTable->attributeType,
 					$bootstrappedDefinedMeaningsTable->name 
 				),
-				array($classAttributesTable, $bootstrappedDefinedMeaningsTable, $classMembershipsTable),
+				array($classAttributesTable, $bootstrappedDefinedMeaningsTable),
 				array(
-					equals($classMembershipsTable->classMemberMid, $definedMeaningId), 
-					equals($classAttributesTable->classMid, $classMembershipsTable->classMid),
-					equals($classAttributesTable->levelMid, $bootstrappedDefinedMeaningsTable->definedMeaningId) 
+					equals($classAttributesTable->levelMid, $bootstrappedDefinedMeaningsTable->definedMeaningId),
+					sqlOr(
+						in($classAttributesTable->classMid, 
+							selectLatest(
+								array($classMembershipsTable->classMid),
+								array($classMembershipsTable),
+								array(equals($classMembershipsTable->classMemberMid, $definedMeaningId))
+							)
+						),
+						inArray($classAttributesTable->classMid, $wgDefaultClassMids)
+					) 
 				)
 			)
 		);
-		
+
 		$this->classAttributes = array();
 		
 		while ($row = $dbr->fetchRow($queryResult)) {

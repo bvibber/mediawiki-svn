@@ -21,6 +21,38 @@ interface DatabaseExpression {
 	public function toExpression();
 }
 
+class DefaultDatabaseExpression implements DatabaseExpression {
+	protected $sql;
+	
+	public function __construct($sql) {
+		$this->sql = $sql;
+	} 
+	
+	public function toExpression() {
+		return $this->sql;
+	}
+	
+	public function __toString() {
+		return $this->sql;
+	}
+}
+
+class SelectExpression implements DatabaseExpression {
+	protected $selectSQL;
+	
+	public function __construct($selectSQL) {
+		$this->selectSQL = $selectSQL;
+	} 
+	
+	public function toExpression() {
+		return $this->selectSQL;
+	}
+	
+	public function __toString() {
+		return $this->selectSQL;
+	}
+}
+
 class TableColumn implements DatabaseExpression {
 	public $table;
 	public $identifier;
@@ -429,7 +461,7 @@ function genericSelect($selectCommand, array $expressions, array $tables, array 
 			$result .= " AND (" . $restrictions[$i] . ")";
 	}
 	
-	return $result;
+	return new SelectExpression($result);
 }
 
 function select(array $expressions, array $tables, array $restrictions) {
@@ -470,7 +502,31 @@ function expressionToSQL($expression) {
 }
 
 function equals($expression1, $expression2) {
-	return '(' . expressionToSQL($expression1) . ') = (' . expressionToSQL($expression2) . ')';
+	return new DefaultDatabaseExpression('(' . expressionToSQL($expression1) . ') = (' . expressionToSQL($expression2) . ')');
+}
+
+function in(DatabaseExpression $expression1, $expression2) {
+	return new DefaultDatabaseExpression($expression1->toExpression() . " IN (" . expressionToSQL($expression2) . ")");
+}
+
+function inArray(DatabaseExpression $expression, $values) {
+	$sqlValues = array();
+	
+	foreach($values as $value)
+		$sqlValues[] = expressionToSQL($value);
+	
+	if (count($values) > 0)
+		return new DefaultDatabaseExpression($expression->toExpression() . " IN (" . join($sqlValues, ", ") . ")");
+	else
+		return new DefaultDatabaseExpression(1);
+}
+
+function sqlOr($expression1, $expression2) {
+	return new DefaultDatabaseExpression('(' . expressionToSQL($expression1) . ') OR (' . expressionToSQL($expression2) . ')');
+}
+
+function sqlAnd($expression1, $expression2) {
+	return new DefaultDatabaseExpression('(' . expressionToSQL($expression1) . ') AND (' . expressionToSQL($expression2) . ')');
 }
 
 ?>
