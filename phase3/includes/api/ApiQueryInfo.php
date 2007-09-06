@@ -164,7 +164,7 @@ class ApiQueryInfo extends ApiQueryBase {
 		if(isset($params['tokens']['edit']))
 		{
 			$missing = $pageSet->getMissingTitles();
-			$res = $result->getData();
+			$res = &$result->getData();
 			foreach($missing as $pageid => $title)
 				$res['query']['pages'][$pageid]['tokens']['edit'] = $wgUser->editToken();
 		}
