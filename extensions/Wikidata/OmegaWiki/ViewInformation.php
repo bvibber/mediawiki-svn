@@ -44,6 +44,15 @@ class ViewInformation {
 	public function getPropertyToColumnFilters() {
 		return $this->propertyToColumnFilters;
 	}
+	
+	public function getLeftOverAttributeFilter() {
+		$allFilteredAttributeIds = array();	
+		
+		foreach ($this->getPropertyToColumnFilters() as $propertyToColumnFilter)  
+			$allFilteredAttributeIds = array_merge($allFilteredAttributeIds, $propertyToColumnFilter->attributeIDs);
+		
+		return new ExcludeAttributeIDsFilter($allFilteredAttributeIds);
+	}
 
 	/* make an attempt at a hashCode function.
 	 * note that this function is imperfect..., I've left out

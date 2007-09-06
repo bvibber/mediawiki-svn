@@ -1347,6 +1347,7 @@ class OptionAttributeEditor extends AttributeEditor {
 			$parameters = array(
 				"level" => $this->attributesLevelName, 
 				"definedMeaningId" => $idPath->getDefinedMeaningId(),
+				"annotationAttributeId" => $idPath->getAnnotationAttribute()->getId(), 
 				"onUpdate" => 'updateSelectOptions(\'' . $this->addId($idPath->getId()) . '-option\',' . $syntransId
 			);
 			return getSuggest($this->addId($idPath->getId()), $this->suggestType(), $parameters);
