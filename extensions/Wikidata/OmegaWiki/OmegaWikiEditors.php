@@ -23,11 +23,14 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 	protected $propertyAttribute;
 	protected $valueAttribute;
 	protected $attributeIDFilter;
+	protected $levelName;
 	
-	public function __construct(Attribute $attribute, $propertyCaption, ViewInformation $viewInformation, AttributeIDFilter $attributeIDFilter) {
+	public function __construct(Attribute $attribute, $propertyCaption, ViewInformation $viewInformation, $levelName, AttributeIDFilter $attributeIDFilter) {
 		parent::__construct(new RecordUnorderedListEditor($attribute, 5));
 		
+		$this->levelName = $levelName;
 		$this->attributeIDFilter = $attributeIDFilter;
+		
 		$this->recordSetTableEditor = new RecordSetTableEditor(
 			$attribute, 
 			new SimplePermissionController(false), 
@@ -52,6 +55,10 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 	
 	public function getAttributeIDFilter() {
 		return $this->attributeIDFilter;
+	}
+	
+	public function getLevelName() {
+		return $this->levelName;
 	}
 	
 	protected function attributeInStructure(Attribute $attribute, Structure $structure) {
@@ -208,7 +215,10 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 	}
 	
 	public function showEditField(IdStack $idPath) {
-		return true;
+		$classAttributes = $idPath->getClassAttributes()->filterClassAttributesOnLevel($this->getLevelName());
+		$classAttributes = $this->getAttributeIDFilter()->filter($classAttributes);
+		
+		return count($classAttributes) > 0;
 	}
 }
 
@@ -224,7 +234,7 @@ class ShowEditFieldForAttributeValuesChecker extends ShowEditFieldChecker {
 	}
 
 	public function check(IdStack $idPath) {
-		$classAttributes = $idPath->getClassAttributes()->filterClassAttributes($this->levelDefinedMeaningName, $this->annotationType);
+		$classAttributes = $idPath->getClassAttributes()->filterClassAttributesOnLevelAndType($this->levelDefinedMeaningName, $this->annotationType);
 		$classAttributes = $this->attributeIDFilter->filter($classAttributes);
 		
 		return count($classAttributes) > 0;
@@ -236,8 +246,8 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 		$textValueObjectAttributesEditors, 
 		$linkValueObjectAttributesEditors, 
 		$translatedTextValueObjectAttributesEditors, 
-		$optionValueObjectAttributesEditors,  $annotationMeaningName,
-		$wgPropertyAttributeName;
+		$optionValueObjectAttributesEditors, 
+		$annotationMeaningName,	$wgPropertyAttributeName;
 		
 	$o=OmegaWikiAttributes::getInstance($viewInformation);
 
@@ -251,30 +261,30 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 		$propertyCaption = $propertyToColumnFilter->getPropertyCaption();
 		$attributeIDfilter = $propertyToColumnFilter->getAttributeIDFilter();
 		
-		$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $attributeIDfilter);
-		$linkValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $attributeIDfilter);
-		$translatedTextValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $attributeIDfilter);
-		$optionValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $attributeIDfilter);
+		$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $annotationMeaningName, $attributeIDfilter);
+		$linkValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $annotationMeaningName, $attributeIDfilter);
+		$translatedTextValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $annotationMeaningName, $attributeIDfilter);
+		$optionValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $annotationMeaningName, $attributeIDfilter);
 	}
 	
 	$leftOverAttributeIdFilter = $viewInformation->getLeftOverAttributeFilter();
 	
-	$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, $wgPropertyAttributeName, $viewInformation, $leftOverAttributeIdFilter);
-	$linkValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, $wgPropertyAttributeName, $viewInformation, $leftOverAttributeIdFilter);
-	$translatedTextValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, $wgPropertyAttributeName, $viewInformation, $leftOverAttributeIdFilter);
-	$optionValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, $wgPropertyAttributeName, $viewInformation, $leftOverAttributeIdFilter);
+	$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, $wgPropertyAttributeName, $viewInformation,	$annotationMeaningName, $leftOverAttributeIdFilter);
+	$linkValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, $wgPropertyAttributeName, $viewInformation, $annotationMeaningName, $leftOverAttributeIdFilter);
+	$translatedTextValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, $wgPropertyAttributeName, $viewInformation, $annotationMeaningName, $leftOverAttributeIdFilter);
+	$optionValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, $wgPropertyAttributeName, $viewInformation, $annotationMeaningName, $leftOverAttributeIdFilter);
 	
 	foreach ($textValueObjectAttributesEditors as $textValueObjectAttributesEditor)
-		addObjectAttributesEditors($textValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->textAttributeId), $annotationMeaningName);
+		addObjectAttributesEditors($textValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->textAttributeId));
 
 	foreach ($linkValueObjectAttributesEditors as $linkValueObjectAttributesEditor)
-		addObjectAttributesEditors($linkValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->linkAttributeId), $annotationMeaningName);
+		addObjectAttributesEditors($linkValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->linkAttributeId));
 
 	foreach ($translatedTextValueObjectAttributesEditors as $translatedTextValueObjectAttributesEditor)
-		addObjectAttributesEditors($translatedTextValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->translatedTextAttributeId), $annotationMeaningName);
+		addObjectAttributesEditors($translatedTextValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->translatedTextAttributeId));
 		
 	foreach ($optionValueObjectAttributesEditors as $optionValueObjectAttributesEditor)
-		addObjectAttributesEditors($optionValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->optionAttributeId), $annotationMeaningName);
+		addObjectAttributesEditors($optionValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->optionAttributeId));
 }
 
 function getTransactionEditor(Attribute $attribute) {
@@ -392,8 +402,9 @@ function getTranslatedTextEditor(Attribute $attribute, UpdateController $updateC
 	return $editor;
 }
 
-function addObjectAttributesEditors(ObjectAttributeValuesEditor $objectAttributesEditor, ViewInformation $viewInformation, ContextFetcher $annotatedObjectIdFetcher, $annotationLevelName) {
+function addObjectAttributesEditors(ObjectAttributeValuesEditor $objectAttributesEditor, ViewInformation $viewInformation, ContextFetcher $annotatedObjectIdFetcher) {
 	$attributeIDFilter = $objectAttributesEditor->getAttributeIDfilter();
+	$annotationLevelName = $objectAttributesEditor->getLevelName();
 	
 	$objectAttributesEditor->addEditor(getTextAttributeValuesEditor($viewInformation, new TextAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));
 	$objectAttributesEditor->addEditor(getTranslatedTextAttributeValuesEditor($viewInformation, new TranslatedTextAttributeValuesController($annotatedObjectIdFetcher, $viewInformation->filterLanguageId), $annotationLevelName, $attributeIDFilter));
@@ -404,13 +415,12 @@ function addObjectAttributesEditors(ObjectAttributeValuesEditor $objectAttribute
 function createObjectAttributesEditor(ViewInformation $viewInformation, Attribute $attribute, $propertyCaption, Attribute $idAttribute, $levelName, AttributeIDFilter $attributeIDFilter) {
 	$o=OmegaWikiAttributes::getInstance();
 	
-	$result = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $attributeIDFilter); 
+	$result = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $levelName, $attributeIDFilter); 
 	
 	addObjectAttributesEditors(
 		$result, 
 		$viewInformation, 
-		new ObjectIdFetcher(0, $idAttribute), 
-		$levelName 
+		new ObjectIdFetcher(0, $idAttribute) 
 	);
 	
 	return $result;
@@ -419,13 +429,12 @@ function createObjectAttributesEditor(ViewInformation $viewInformation, Attribut
 function createDefinitionObjectAttributesEditor(ViewInformation $viewInformation, Attribute $attribute, $propertyCaption, Attribute $idAttribute, $levelName, AttributeIDFilter $attributeIDFilter) {
 	$o=OmegaWikiAttributes::getInstance();
 	
-	$result = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $attributeIDFilter); 
+	$result = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $viewInformation, $levelName, $attributeIDFilter); 
 	
 	addObjectAttributesEditors(
 		$result, 
 		$viewInformation, 
-		new DefinitionObjectIdFetcher(0, $idAttribute), 
-		$levelName 
+		new DefinitionObjectIdFetcher(0, $idAttribute) 
 	);
 	
 	return $result;

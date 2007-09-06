@@ -1449,11 +1449,21 @@ class ClassAttributes {
 		}
 	}
 	
-	public function filterClassAttributes($levelName, $type) {
+	public function filterClassAttributesOnLevelAndType($levelName, $type) {
 		$result = array();
 		
 		foreach ($this->classAttributes as $classAttribute) 
-			if ($classAttribute->type == $type && $classAttribute->levelName == $levelName)
+			if ($classAttribute->levelName == $levelName && $classAttribute->type == $type)
+				$result[] = $classAttribute->attributeId;
+		
+		return $result;
+	}
+	
+	public function filterClassAttributesOnLevel($levelName) {
+		$result = array();
+		
+		foreach ($this->classAttributes as $classAttribute) 
+			if ($classAttribute->levelName == $levelName)
 				$result[] = $classAttribute->attributeId;
 		
 		return $result;
