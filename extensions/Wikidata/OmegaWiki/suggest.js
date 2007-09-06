@@ -64,11 +64,14 @@ function updateSuggestions(suggestPrefix) {
 		'&offset=' + encodeURI(suggestOffset) + 
 		'&dataset='+dataSet;
 		
-	if (suggestAttributesLevel != null && suggestDefinedMeaningId != null && suggestAnnotationAttributeId != null) 
-		URL = URL + 
-			'&attributesLevel=' + encodeURI(suggestAttributesLevel.value) + 
-			'&definedMeaningId=' + encodeURI(suggestDefinedMeaningId.value) +
-			'&annotationAttributeId=' + encodeURI(suggestAnnotationAttributeId.value);
+	if (suggestAttributesLevel != null)
+		URL = URL + '&attributesLevel=' + encodeURI(suggestAttributesLevel.value);
+	
+	if (suggestDefinedMeaningId != null) 
+		URL = URL + '&definedMeaningId=' + encodeURI(suggestDefinedMeaningId.value);
+		
+	if (suggestAnnotationAttributeId != null)
+		URL = URL + '&annotationAttributeId=' + encodeURI(suggestAnnotationAttributeId.value);
 			
 	http.open('GET', URL, true);
 	http.onreadystatechange = function() {
