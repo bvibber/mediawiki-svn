@@ -509,9 +509,11 @@ class TextAttributeValuesController extends ObjectAttributeValuesController {
 		$o=OmegaWikiAttributes::getInstance();
 			
 		$textId = $keyPath->peek(0)->textAttributeId;
+		
 		$text = $record->text;
 		
-		updateTextAttributeValue($text, $textId);
+		if ($text != "")
+			updateTextAttributeValue($text, $textId);
 	}
 }
 
