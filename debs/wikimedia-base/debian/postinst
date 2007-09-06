@@ -81,7 +81,7 @@ case "$1" in
 	fi
 
 	# Optimize TCP
-	if ! grep -q "^### START: Added by wikimedia-base" /etc/sysctl.conf || dpkg --compare-versions "$2" lt "0.17"
+	if ! grep -q "^### START: Added by wikimedia-base" /etc/sysctl.conf || dpkg --compare-versions "$2" lt "0.18"
 	then
 		cat /usr/share/doc/wikimedia-base/sysctl.conf >> /etc/sysctl.conf
 		sysctl -p /usr/share/doc/wikimedia-base/sysctl.conf

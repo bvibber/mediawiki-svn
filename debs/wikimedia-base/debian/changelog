@@ -1,3 +1,9 @@
+wikimedia-base (0.18) feisty; urgency=low
+
+  * Decrease default TCP keepalive parameters in sysctl.conf
+
+ -- Mark Bergsma <mark@wikimedia.org>  Thu,  6 Sep 2007 14:04:31 +0000
+
 wikimedia-base (0.17) feisty; urgency=low
 
   * Set /proc/sys/vm/swappiness to 10 in sysctl.conf
