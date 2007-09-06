@@ -548,7 +548,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$this->rowHTMLAttributes = $rowHTMLAttributes;
 	}
 	
-	protected function columnShowsData(Editor $columnEditor, $value, $attributePath) {
+	protected function columnShowsData(Editor $columnEditor, RecordSet $value, $attributePath) {
 		$result = false;
 		$recordCount = $value->getRecordCount();
 		$i = 0;
@@ -583,7 +583,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		return new Structure($attributes);
 	}
 	
-	protected function getTableStructureShowingData(Editor $editor, $value, $attributePath = array()) {
+	protected function getTableStructureShowingData($viewOrEdit, Editor $editor, IdStack $idPath, RecordSet $value, $attributePath = array()) {
 		$attributes = array();
 
 		foreach ($editor->getEditors() as $childEditor) {
@@ -591,12 +591,13 @@ class RecordSetTableEditor extends RecordSetEditor {
 			array_push($attributePath, $childAttribute);
 
 			if ($childEditor instanceof RecordTableCellEditor) {
-				$type = $this->getTableStructureShowingData($childEditor, $value, $attributePath);
+				$type = $this->getTableStructureShowingData($viewOrEdit, $childEditor, $idPath, $value, $attributePath);
 				
 				if (count($type->getAttributes()) > 0)
 					$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, $type);
 			}
-			else if ($this->columnShowsData($childEditor, $value, $attributePath))
+			else if (($viewOrEdit == "view" && $this->columnShowsData($childEditor, $value, $attributePath)) ||
+					 ($viewOrEdit == "edit") && $childEditor->showEditField($idPath))
 				$attributes[] = new Attribute($childAttribute->id, $childAttribute->name, 'short-text');
 				
 			array_pop($attributePath);
@@ -614,7 +615,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		return $result;
 	}
 	
-	public function viewRows(IdStack $idPath, $value, Structure $visibleStructure) {
+	public function viewRows(IdStack $idPath, RecordSet $value, Structure $visibleStructure) {
 		$result = "";
 		$rowAttributes = $this->getRowAttributesText();
 		$key = $value->getKey();
@@ -638,15 +639,19 @@ class RecordSetTableEditor extends RecordSetEditor {
 		return '</table>' . EOL;
 	}
 	
-	public function getTableStructureForView($value) {
+	public function getTableStructureForView(IdStack $idPath, RecordSet $value) {
 		if ($this->hideEmptyColumns)
-			return $this->getTableStructureShowingData($this, $value);
+			return $this->getTableStructureShowingData("view", $this, $idPath, $value);
 		else	
 			return $this->getTableStructure($this);		
 	}
+	
+	public function getTableStructureForEdit(IdStack $idPath, RecordSet $value) {
+		return $this->getTableStructureShowingData("edit", $this, $idPath, $value);
+	}
 
 	public function view(IdStack $idPath, $value) {
-		$visibleStructure = $this->getTableStructureForView($value);
+		$visibleStructure = $this->getTableStructureForView($idPath, $value);
 		
 		$result = 
 			$this->viewHeader($idPath, $visibleStructure) .
@@ -663,9 +668,10 @@ class RecordSetTableEditor extends RecordSetEditor {
 		$result = '<table id="'. $idPath->getId() .'" class="wiki-data-table">';
 		$key = $value->getKey();
 		$rowAttributes = $this->getRowAttributesText();
-		$visibleStructure = $this->getTableStructure($this);
+		$visibleStructure = $this->getTableStructureForEdit($idPath, $value);
+		
 		$columnOffset = $this->allowRemove ? 1 : 0;
-		$headerRows = getStructureAsTableHeaderRows($this->getTableStructure($this), $columnOffset, $idPath);
+		$headerRows = getStructureAsTableHeaderRows($visibleStructure, $columnOffset, $idPath);
 
 		if ($this->allowRemove)
 			$headerRows[0] = '<th class="remove" rowspan="' . count($headerRows) . '"><img src="'.$wgStylePath.'/amethyst/delete.png" title="Mark rows to remove" alt="Remove"/></th>' . $headerRows[0];

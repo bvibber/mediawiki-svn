@@ -133,11 +133,11 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 		return $result;
 	}
 	
-	public function determineVisibleSuffixAttributes($value) {
+	public function determineVisibleSuffixAttributes(IdStack $idPath, $value) {
 		$visibleStructures = array();
 		
 		foreach ($this->getEditors() as $editor) {
-			$visibleStructure = $editor->getTableStructureForView($value->getAttributeValue($editor->getAttribute()));
+			$visibleStructure = $editor->getTableStructureForView($idPath, $value->getAttributeValue($editor->getAttribute()));
 			
 			if (count($visibleStructure->getAttributes()) > 0)
 				$visibleStructures[] = $visibleStructure;
@@ -165,7 +165,7 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 
 	public function view(IdStack $idPath, $value) {
 		$idPath->pushAnnotationAttribute($this->getAttribute());
-		$visibleSuffixAttributes = $this->determineVisibleSuffixAttributes($value); 
+		$visibleSuffixAttributes = $this->determineVisibleSuffixAttributes($idPath, $value); 
 		
 		$visibleStructure = new Structure(array_merge(
 			array($this->propertyAttribute, $this->valueAttribute),
