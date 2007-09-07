@@ -1,4 +1,5 @@
 <?php
+
 require_once("Wikidata.php");
 
 function implodeFixed($values, $separator = ", ", $prefix = '"', $suffix = '"') {
