@@ -91,7 +91,7 @@ class SiteMatrixPage extends SpecialPage {
 		$s = '<table>
 			<tr>
 				<th>' . wfMsg( 'sitematrix-language' ) . '</th>
-				<th colspan="' . count( $sites ) . '>' . wfMsg( 'sitematrix-project' ) . '"</th>
+				<th colspan="' . count( $sites ) . '">' . wfMsg( 'sitematrix-project' ) . '</th>
 			</tr><tr>
 				<th>&nbsp;</th>';
 				foreach ( $names as $name ) {

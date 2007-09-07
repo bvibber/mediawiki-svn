@@ -10,7 +10,7 @@ if (!defined('MEDIAWIKI')) {
 
 $wgExtensionCredits['specialpage'][] = array(
 	'name' => 'SiteMatrix',
-	'description' => 'display a list of wikimedia wikis'
+	'description' => 'Displays a list of Wikimedia wikis'
 );
 
 # Internationalisation file
