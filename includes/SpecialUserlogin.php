@@ -8,7 +8,7 @@
  * constructor
  */
 function wfSpecialUserlogin() {
-                                                                             
+	
 	global $wgRequest;
 	if( session_id() == '' ) {
 		wfSetupSession();
@@ -24,40 +24,40 @@ function wfSpecialUserlogin() {
  */
 class LoginForm {
 
-  const SUCCESS = 0;
-  const NO_NAME = 1;
-  const ILLEGAL = 2;
-  const WRONG_PLUGIN_PASS = 3;
-  const NOT_EXISTS = 4;
-  const WRONG_PASS = 5;
-  const EMPTY_PASS = 6;
-  const RESET_PASS = 7;
-  const ABORTED = 8;
-  const COOKIE = 9;
-  const NOCOOKIE = 10;
-  const READ_ONLY = 11;
-  const NOT_ALLOWED = 12;
-  const SORBS = 13;
-  const USER_EXISTS = 14;
-  const BAD_RETYPE = 15;
-  const TOO_SHORT = 16;
-  const ABORT_ERROR = 17;
-  const DB_ERROR = 18;
-  const NO_EMAIL = 19;
-  const MAIL_ERROR = 20;
-  const ACCMAILTEXT = 21;
-  const PASSWORD_SENT = 22;
-  const PASSWORD_REMINDER_THROTTLED = 23;
-  const NO_SUCH_USER = 24;
-  const RATE_LIMITED = 25;
-  const MAILPASSWORD_BLOCKED = 26;
-  const RESETPASS_FORBIDDEN = 27;
-  const NO_COOKIES_NEW = 28;
-  const NO_COOKIES_LOGIN = 29;   
-  const ERROR = 30;
-  const SUCCESFUL_LOGIN = 31;
-  
-     
+	const SUCCESS = 0;
+	const NO_NAME = 1;
+	const ILLEGAL = 2;
+	const WRONG_PLUGIN_PASS = 3;
+	const NOT_EXISTS = 4;
+	const WRONG_PASS = 5;
+	const EMPTY_PASS = 6;
+	const RESET_PASS = 7;
+	const ABORTED = 8;
+	const COOKIE = 9;
+	const NOCOOKIE = 10;
+	const READ_ONLY = 11;
+	const NOT_ALLOWED = 12;
+	const SORBS = 13;
+	const USER_EXISTS = 14;
+	const BAD_RETYPE = 15;
+	const TOO_SHORT = 16;
+	const ABORT_ERROR = 17;
+	const DB_ERROR = 18;
+	const NO_EMAIL = 19;
+	const MAIL_ERROR = 20;
+	const ACCMAILTEXT = 21;
+	const PASSWORD_SENT = 22;
+	const PASSWORD_REMINDER_THROTTLED = 23;
+	const NO_SUCH_USER = 24;
+	const RATE_LIMITED = 25;
+	const MAILPASSWORD_BLOCKED = 26;
+	const RESETPASS_FORBIDDEN = 27;
+	const NO_COOKIES_NEW = 28;
+	const NO_COOKIES_LOGIN = 29;   
+	const ERROR = 30;
+	const SUCCESFUL_LOGIN = 31;
+	
+	
 	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
 	var $mLoginattempt, $mRemember, $mEmail, $mDomain, $mLanguage;
@@ -76,8 +76,8 @@ class LoginForm {
 		$this->mRetype = $request->getText( 'wpRetype' );
 		$this->mDomain = $request->getText( 'wpDomain' );
 		$this->mReturnTo = $request->getVal( 'returnto' );
-        
-        //
+		
+		
 		$this->mCookieCheck = $request->getVal( 'wpCookieCheck' );
 		$this->mPosted = $request->wasPosted();
 		$this->mCreateaccount = $request->getCheck( 'wpCreateaccount' );
@@ -113,21 +113,21 @@ class LoginForm {
 	}
 
 	function execute() {
-        $resultDetails = null;
-        $value = null;
-        
+		$resultDetails = null;
+		$value = null;
+				
 		if ( !is_null( $this->mCookieCheck ) ) {
-            $value = $this->onCookieRedirectCheck( $this->mCookieCheck, $resultDetails );
-			return $this->processRest($value, $resultDetails);			
+			$value = $this->onCookieRedirectCheck( $this->mCookieCheck, $resultDetails );
+			return $this->processRest($value, $resultDetails);
 		} else if( $this->mPosted ) {
 			if( $this->mCreateaccount ) {
-                $value = $this->addNewAccount($resultDetails);
+				$value = $this->addNewAccount($resultDetails);
 				return $this->processRest($value,$resultDetails);
 			} else if ( $this->mCreateaccountMail ) {
-                $value = $this->addNewAccountMailPassword($resultDetails);
+				$value = $this->addNewAccountMailPassword($resultDetails);
 				return $this->processRest($value,$resultDetails);
 			} else if ( $this->mMailmypassword ) {
-                $value = $this->mailPassword($resultDetails);
+				$value = $this->mailPassword($resultDetails);
 				return $this->processRest($value,$resultDetails);
 			} else if ( ( 'submitlogin' == $this->mAction ) || $this->mLoginattempt ) {
 				return $this->processLogin();
@@ -143,7 +143,7 @@ class LoginForm {
 		global $wgOut;
 
 		if ('' == $this->mEmail) {
-        return self::NO_EMAIL;  
+			return self::NO_EMAIL; 
 		}
 
 		$u = $this->addNewaccountInternal($results);
@@ -159,15 +159,13 @@ class LoginForm {
 
 		wfRunHooks( 'AddNewAccount', array( $u ) );
 
-
-        $results['user'] = $u;
+		$results['user'] = $u;
 		if( WikiError::isError( $results['error']  ) ) {
-            return self::MAIL_ERROR;
+			return self::MAIL_ERROR;
 		} else {            
 			return self::ACCMAILTEXT;
 		}
 	}
-                                                
 
 	/**
 	 * @private
@@ -191,11 +189,11 @@ class LoginForm {
 		if( $wgEmailAuthentication && User::isValidEmailAddr( $u->getEmail() ) ) {
 			global $wgOut;
 			$results['error'] = $u->sendConfirmationMail();
-            $results['mailMsg'] = 0;
+			$results['mailMsg'] = 0;
 			if( WikiError::isError( $results['error'] ) ) {
-                $results['mailMsg'] = 2;
+				$results['mailMsg'] = 2;
 			} else {
-			    $results['mailMsg'] = 1;
+				$results['mailMsg'] = 1;
 			}
 		}
 
@@ -208,11 +206,13 @@ class LoginForm {
 			if( $this->hasSessionCookie() ) {
 				return self::COOKIE;
 			} else {
-                return self::NOCOOKIE;
+				return self::NOCOOKIE;
 			}
 		} else {
 			# Confirm that the account was created
-            $results['user'] = $u;
+			$results['user'] = $u;
+			
+			
 			wfRunHooks( 'AddNewAccount', array( $u ) );
 			return self::SUCCESS;
 		}
@@ -226,11 +226,10 @@ class LoginForm {
 		global $wgEnableSorbs, $wgProxyWhitelist;
 		global $wgMemc, $wgAccountCreationThrottle;
 		global $wgAuth, $wgMinimalPasswordLength;
-        
+		
 		// If the user passes an invalid domain, something is fishy
 		if( !$wgAuth->validDomain( $this->mDomain ) ) {
 			return self::WRONG_PASS;
-
 		}
 
 		// If we are not allowing users to login locally, we should
@@ -242,26 +241,23 @@ class LoginForm {
 		if( 'local' != $this->mDomain && '' != $this->mDomain ) {
 			if( !$wgAuth->canCreateAccounts() && ( !$wgAuth->userExists( $this->mName ) || !$wgAuth->authenticate( $this->mName, $this->mPassword ) ) ) {
 				return self::WRONG_PASS;
-
 			}
 		}
 
 		if ( wfReadOnly() ) {
 			return self::READ_ONLY;
-
 		}
 
 		# Check anonymous user ($wgUser) limitations :
 		if (!$wgUser->isAllowedToCreateAccount()) {
 			return self::NOT_ALLOWED;
-
 		}
 
 		$ip = wfGetIP();
 		if ( $wgEnableSorbs && !in_array( $ip, $wgProxyWhitelist ) &&
 		  $wgUser->inSorbsBlacklist( $ip ) )
 		{
-            $results['ip'] = $ip;
+			$results['ip'] = $ip;
 			return self::SORBS;
 
 		}
@@ -447,108 +443,108 @@ class LoginForm {
 	function processRest($value,$results = null) {
 		global $wgUser, $wgAuth, $wgOut;
 		if ($results['mailMsg'] == 1) {
-          $wgOut->addWikiText( wfMsg( 'confirmemail_oncreate' ) );
-        } else if ($results['mailMsg'] == 2) {
-          $wgOut->addWikiText( wfMsg( 'confirmemail_sendfailed', $results['error']->getMessage() ) ); 
-        }
+			$wgOut->addWikiText( wfMsg( 'confirmemail_oncreate' ) );
+		} else if ($results['mailMsg'] == 2) {
+			$wgOut->addWikiText( wfMsg( 'confirmemail_sendfailed', $results['error']->getMessage() ) );
+		}
 		switch ($value)
 		{
 			case self::SUCCESS:
-                $self = SpecialPage::getTitleFor( 'Userlogin' );
-                $wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
-                $wgOut->setArticleRelated( false );
-                $wgOut->setRobotPolicy( 'noindex,nofollow' );
-                $wgOut->addHtml( wfMsgWikiHtml( 'accountcreatedtext', $this->mName ) );
-                $wgOut->returnToMain( $self->getPrefixedText() );
-			    break;
+				$self = SpecialPage::getTitleFor( 'Userlogin' );
+				$wgOut->setPageTitle( wfMsgHtml( 'accountcreated' ) );
+				$wgOut->setArticleRelated( false );
+				$wgOut->setRobotPolicy( 'noindex,nofollow' );
+				$wgOut->addHtml( wfMsgWikiHtml( 'accountcreatedtext', $this->mName ) );
+				$wgOut->returnToMain( $self->getPrefixedText() );
+				break;
 
 			case self::COOKIE:
 				$this->successfulLogin( wfMsg( 'welcomecreation', $wgUser->getName() ), false );
 				break;
 			case self::NOCOOKIE:
 				$this->cookieRedirectCheck( 'new' );
-				break;  
-            case self::WRONG_PASS :
-                $this->mainLoginForm( wfMsg( 'wrongpassword' ) ); 
-                break; 
-            case self::READ_ONLY:
-                $wgOut->readOnlyPage();
-                break; 
-            case self::NOT_ALLOWED:
-                $this->userNotPrivilegedMessage();
-                break; 
-            case self::SORBS:
-                $this->mainLoginForm( wfMsg( 'sorbs_create_account_reason' ) . ' (' . htmlspecialchars( $results['ip'] ) . ')' );
-                break; 
-            case self::NO_NAME:
-                $this->mainLoginForm( wfMsg( 'noname' ) );  
-                break; 
-            case self::USER_EXISTS:
-                $this->mainLoginForm( wfMsg( 'userexists' ) ); 
-                break; 
-            case self::BAD_RETYPE:
-                $this->mainLoginForm( wfMsg( 'badretype' ) ); 
-                break; 
-            case self::TOO_SHORT:
-                $this->mainLoginForm( wfMsg( 'passwordtooshort', $wgMinimalPasswordLength ) ); 
-                break; 
-            case self::ABORT_ERROR:
-                $this->mainLoginForm( $results['error'] );
-                break; 
-            case self::DB_ERROR:
-               $this->mainLoginForm( wfMsg( 'externaldberror' ) ); 
-                break; 
-            case self::NO_EMAIL:
-                $this->mainLoginForm( wfMsg( 'noemail', htmlspecialchars( $this->mName ) ) );
-                break;
-            case self::MAIL_ERROR:
-                $wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
-                $wgOut->setRobotpolicy( 'noindex,nofollow' );
-                $wgOut->setArticleRelated( false );
-                $this->mainLoginForm( wfMsg( 'mailerror', $results['error']->getMessage() ) );
-                break;
-            case self::ACCMAILTEXT:
-                $wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
-                $wgOut->setRobotpolicy( 'noindex,nofollow' );
-                $wgOut->setArticleRelated( false );
-                $wgOut->addWikiText( wfMsg( 'accmailtext', $results['user']->getName(), $results['user']->getEmail() ) );
-                $wgOut->returnToMain( false );    
-                break;
-            case self::ILLEGAL:
-                $this->throttleHit( $wgAccountCreationThrottle );  
-                break;
-           case self::PASSWORD_SENT:
-                $this->mainLoginForm( wfMsg( 'passwordsent', $results['user']->getName() ), 'success' ); 
-                break;
-            case self::PASSWORD_REMINDER_THROTTLED:
-                global $wgPasswordReminderResendTime;
-                # Round the time in hours to 3 d.p., in case someone is specifying minutes or seconds.
-                $this->mainLoginForm( wfMsg( 'throttled-mailpassword', round( $wgPasswordReminderResendTime, 3 ) ) );
-                break;
-            case self::NO_SUCH_USER:
-                $this->mainLoginForm( wfMsg( 'nosuchuser', $results['user']->getName() ) );
-                break;
-            case self::RATE_LIMITED:
-                $wgOut->rateLimited(); 
-                break;
-            case self::MAILPASSWORD_BLOCKED:
-                $this->mainLoginForm( wfMsg( 'blocked-mailpassword' ) ); 
-                break;
-            case self::RESETPASS_FORBIDDEN:
-                $this->mainLoginForm( wfMsg( 'resetpass_forbidden' ) ); 
-                 break;
-            case self::NO_COOKIES_NEW:
-                $this->mainLoginForm( wfMsg( 'nocookiesnew' ) );
-                break;
-            case self::NO_COOKIES_LOGIN:
-                $this->mainLoginForm( wfMsg( 'nocookieslogin' ) );
-                break;
-            case self::ERROR:
-                $this->mainLoginForm( wfMsg( 'error' ) );
-                break;
-            case self::LOGIN_SUCCESS:
-                $this->successfulLogin( wfMsg( 'loginsuccess', $wgUser->getName() ) );
-                break;
+				break;
+			case self::WRONG_PASS :
+				$this->mainLoginForm( wfMsg( 'wrongpassword' ) );
+				break; 
+			case self::READ_ONLY:
+				$wgOut->readOnlyPage();
+				break; 
+			case self::NOT_ALLOWED:
+				$this->userNotPrivilegedMessage();
+				break; 
+			case self::SORBS:
+				$this->mainLoginForm( wfMsg( 'sorbs_create_account_reason' ) . ' (' . htmlspecialchars( $results['ip'] ) . ')' );
+				break;
+			case self::NO_NAME:
+				$this->mainLoginForm( wfMsg( 'noname' ) );
+				break; 
+			case self::USER_EXISTS:
+				$this->mainLoginForm( wfMsg( 'userexists' ) );
+				break; 
+			case self::BAD_RETYPE:
+				$this->mainLoginForm( wfMsg( 'badretype' ) );
+				break; 
+			case self::TOO_SHORT:
+				$this->mainLoginForm( wfMsg( 'passwordtooshort', $wgMinimalPasswordLength ) );
+				break; 
+			case self::ABORT_ERROR:
+				$this->mainLoginForm( $results['error'] );
+				break; 
+			case self::DB_ERROR:
+				$this->mainLoginForm( wfMsg( 'externaldberror' ) );
+				break; 
+			case self::NO_EMAIL:
+				$this->mainLoginForm( wfMsg( 'noemail', htmlspecialchars( $this->mName ) ) );
+				break;
+			case self::MAIL_ERROR:
+				$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
+				$wgOut->setRobotpolicy( 'noindex,nofollow' );
+				$wgOut->setArticleRelated( false );
+				$this->mainLoginForm( wfMsg( 'mailerror', $results['error']->getMessage() ) );
+				break;
+			case self::ACCMAILTEXT:
+				$wgOut->setPageTitle( wfMsg( 'accmailtitle' ) );
+				$wgOut->setRobotpolicy( 'noindex,nofollow' );
+				$wgOut->setArticleRelated( false );
+				$wgOut->addWikiText( wfMsg( 'accmailtext', $results['user']->getName(), $results['user']->getEmail() ) );
+				$wgOut->returnToMain( false );
+				break;
+			case self::ILLEGAL:
+				$this->throttleHit( $wgAccountCreationThrottle );
+				break;
+			case self::PASSWORD_SENT:
+				$this->mainLoginForm( wfMsg( 'passwordsent', $results['user']->getName() ), 'success' );
+				break;
+			case self::PASSWORD_REMINDER_THROTTLED:
+				global $wgPasswordReminderResendTime;
+				# Round the time in hours to 3 d.p., in case someone is specifying minutes or seconds.
+				$this->mainLoginForm( wfMsg( 'throttled-mailpassword', round( $wgPasswordReminderResendTime, 3 ) ) );
+				break;
+			case self::NO_SUCH_USER:
+				$this->mainLoginForm( wfMsg( 'nosuchuser', $results['user']->getName() ) );
+				break;
+			case self::RATE_LIMITED:
+				$wgOut->rateLimited();
+				break;
+			case self::MAILPASSWORD_BLOCKED:
+				$this->mainLoginForm( wfMsg( 'blocked-mailpassword' ) );
+				break;
+			case self::RESETPASS_FORBIDDEN:
+				$this->mainLoginForm( wfMsg( 'resetpass_forbidden' ) );
+				break;
+			case self::NO_COOKIES_NEW:
+				$this->mainLoginForm( wfMsg( 'nocookiesnew' ) );
+				break;
+			case self::NO_COOKIES_LOGIN:
+				$this->mainLoginForm( wfMsg( 'nocookieslogin' ) );
+				break;
+			case self::ERROR:
+				$this->mainLoginForm( wfMsg( 'error' ) );
+				break;
+			case self::LOGIN_SUCCESS:
+				$this->successfulLogin( wfMsg( 'loginsuccess', $wgUser->getName() ) );
+				break;
 			default:
 				wfDebugDieBacktrace( "Unhandled case value" );
 		}
@@ -641,7 +637,7 @@ class LoginForm {
 
 		}
 		if ( 0 == $u->getID() ) {
-            $results['user']=$u;
+			$results['user']=$u;
 			return self::NO_SUCH_USER;
 
 		}
@@ -652,11 +648,11 @@ class LoginForm {
 		}
 
 		$results['error'] = $this->mailPasswordInternal( $u, true );
-        $results['user'] = $u;
+		$results['user'] = $u;
 		if( WikiError::isError( $results['error'] ) ) {
-            return self::MAIL_ERROR;            
+			return self::MAIL_ERROR;
 		} else {
-            return self::PASSWORD_SENT;
+			return self::PASSWORD_SENT;
 		}
 	}
 
@@ -894,15 +890,15 @@ class LoginForm {
 
 		if ( !$this->hasSessionCookie() ) {
 			if ( $type == 'new' ) {
-                return self::NO_COOKIES_NEW;
+				return self::NO_COOKIES_NEW;
 			} else if ( $type == 'login' ) {
-                return self::NO_COOKIES_LOGIN;
+				return self::NO_COOKIES_LOGIN;
 			} else {
-                # shouldn't happen
-                return self::ERROR;
+				# shouldn't happen
+				return self::ERROR;
 			}
 		} else {
-            return self::LOGIN_SUCCESS;
+			return self::LOGIN_SUCCESS;
 		}
 	}
 
