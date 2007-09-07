@@ -993,7 +993,7 @@ Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit '''Str
 'rc_categories'                     => 'Nur Seiten aus den Kategorien (getrennt mit „|“):',
 'rc_categories_any'                 => 'Alle',
 'rc-change-size'                    => '$1 {{PLURAL:$1|Byte|Bytes}}',
-'newsectionsummary'                 => 'Neuer Abschnitt:',
+'newsectionsummary'                 => 'Neuer Abschnitt: /* $1 */',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Änderungen an verlinkten Seiten',
@@ -1073,6 +1073,8 @@ Bitte prüfe, ob du das Bild in voller Auflösung vorliegen hast und lade dieses
 'destfilename'                => 'Zielname',
 'watchthisupload'             => 'Diese Seite beobachten',
 'filewasdeleted'              => 'Eine Datei mit diesem Namen wurde schon einmal hochgeladen und zwischenzeitlich wieder gelöscht. Bitte prüfe zuerst den Eintrag im $1, bevor du die Datei wirklich speicherst.',
+'filename-prefix'             => 'Der Dateiname beginnt mit <strong>„$1“</strong>. Dies ist im allgemeinen der von einer Digitalkamera vorgegebener Dateiname und daher nicht sehr aussagekräftig.
+Bitte gebe der Datei einen Namen, der den Inhalt besser beschreibt.',
 
 'upload-proto-error'      => 'Falsches Protokoll',
 'upload-proto-error-text' => 'Die URL muss mit <code>http://</code> oder <code>ftp://</code> beginnen.',
@@ -1107,12 +1109,12 @@ Bitte prüfe, ob du das Bild in voller Auflösung vorliegen hast und lade dieses
 'imgdesc'                   => 'Beschreibung',
 'imgfile'                   => 'Datei',
 'filehist'                  => 'Dateiversionen',
-'filehist-help'             => 'Klicke auf einen Zeitpunkt, um die Dateiversion zu diesem Zeitpunkt darzustellen.',
+'filehist-help'             => 'Klicke auf einen Zeitpunkt, um diese Version zu laden.',
 'filehist-deleteall'        => 'Alle Versionen löschen',
 'filehist-deleteone'        => 'Diese Version löschen',
 'filehist-revert'           => 'zurücksetzen',
 'filehist-current'          => 'aktuell',
-'filehist-datetime'         => 'Zeitpunkt',
+'filehist-datetime'         => 'Version vom',
 'filehist-user'             => 'Benutzer',
 'filehist-dimensions'       => 'Maße',
 'filehist-filesize'         => 'Dateigröße',

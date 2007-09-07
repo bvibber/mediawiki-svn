@@ -845,9 +845,7 @@ class EditPage {
 				# This is a new section, so create a link to the new section
 				# in the revision summary.
 				$cleanSummary = $this->pseudoParseSectionAnchor( $this->summary );
-				$sectionanchor = $this->sectionAnchor( $cleanSummary );
-				$this->summary = wfMsgForContent('newsectionsummary') . 
-					" [[{$this->mTitle->getPrefixedText()}{$sectionanchor}|{$cleanSummary}]]";
+				$this->summary = wfMsgForContent( 'newsectionsummary', $cleanSummary );
 			}
 		} elseif( $this->section != '' ) {
 			# Try to get a section anchor from the section source, redirect to edited section if header found
@@ -1627,13 +1625,18 @@ END
 		
 		# Strip internal link markup
 		$text = preg_replace('/\[\[:?([^[|]+)\|([^[]+)\]\]/','$2',$text);
-		$text = preg_replace('/\[\[:?([^[]+)\]\]/','$1',$text);
+		$text = preg_replace('/\[\[:?([^[]+)\|?\]\]/','$1',$text);
 		
 		# Strip external link markup (FIXME: Not Tolerant to blank link text
 		# I.E. [http://www.mediawiki.org] will render as [1] or something depending
 		# on how many empty links there are on the page - need to figure that out.
 		$text = preg_replace('/\[(?:' . wfUrlProtocols() . ')([^ ]+?) ([^[]+)\]/','$2',$text);
 		
+		# Parse wikitext quotes (italics & bold)
+		$text = Parser::doQuotes($text);
+		
+		# Strip HTML tags
+		$text = preg_replace( '/<.*?' . '>/', '', $text );
 		return $text;
 	}
 

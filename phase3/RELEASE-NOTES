@@ -18,18 +18,28 @@ will be made on the development trunk and appear in the next quarterly release.
 Those wishing to use the latest code instead of a branch release can obtain
 it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
-=== Configuration changes since 1.11 ===
+=== Configuration changes in 1.12 ===
 
 === New features in 1.12 ===
+* Add a warning for non-descriptive filenames at Special:Upload
 
 === Bug fixes in 1.12 ===
+
+* Subpages are now indexed for searching properly when using PostgreSQL
+* (bug 3846) Suppress warnings from, e.g. open_basedir when scanning for
+  ImageMagick, diff3 et al. during installation [patch by Jan Reininghaus]
 
 === API changes in 1.12 ===
 
 Full API documentation is available at http://www.mediawiki.org/wiki/API
 
-
 === Languages updated in 1.12 ===
+
+* Danish (da)
+* German (de)
+* Persian (fa)
+* French (fr)
+* Kazakh (kk)
 
 == Compatibility ==
 
@@ -45,7 +55,7 @@ At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
 
 == Upgrading ==
 
-1.12 has several database changes since 1.10, and will not work without schema
+1.12 has several database changes since 1.11, and will not work without schema
 updates.
 
 If upgrading from before 1.7, you may want to run refreshLinks.php to ensure
