@@ -1,0 +1,66 @@
+--- squid-2.6.STABLE14/src/http.c.orig	2007-03-26 23:08:00.000000000 +0000
++++ squid-2.6.STABLE14/src/http.c	2007-09-05 15:41:14.000000000 +0000
+@@ -387,14 +387,48 @@
+ 	}
+ 	strListAdd(&vstr, name, ',');
+ 	hdr = httpHeaderGetByName(&request->header, name);
+-	safe_free(name);
+ 	value = strBuf(hdr);
+ 	if (value) {
+-	    value = rfc1738_escape_part(value);
+-	    stringAppend(&vstr, "=\"", 2);
+-	    stringAppend(&vstr, value, strlen(value));
+-	    stringAppend(&vstr, "\"", 1);
++	    if (strcmp(name, "cookie") == 0) {
++		const char *hdritem; int hdrilen; const char *hdrpos = NULL;
++    		String cookieitem = StringNull, newhdr = StringNull;
++
++		stringClean(&cookieitem); stringClean(&newhdr);
++		while (strListGetItem(&hdr, ';', &hdritem, &hdrilen, &hdrpos)) {
++		    const char *cookiename; int cookienamelen; const char *cookienamepos = NULL;
++		    char *cookie = xmalloc(hdrilen + 1);
++		    xstrncpy(cookie, hdritem, hdrilen + 1);
++		    stringAppend(&cookieitem, cookie, strlen(cookie));
++		    if (strListGetItem(&cookieitem, '=', &cookiename, &cookienamelen, &cookienamepos)) {
++			char *cn = xmalloc(cookienamelen + 1);
++			xstrncpy(cn, cookiename, cookienamelen + 1);
++			if (strcmp(cn, "__utma") && strcmp(cn, "__utmb") && strcmp(cn, "__utmc") && strcmp(cn, "__utmv") && strcmp(cn, "__utmz")) {
++			    stringAppend(&newhdr, strBuf(cookieitem), strlen(strBuf(cookieitem)));
++			    debug(11,3) ("cookie accepted = {%s}\n", cn);
++			} else {
++			    debug(11,3) ("cookie rejected = {%s}\n", cn);
++			}
++			safe_free(cn);
++		    }
++		    safe_free(cookie);
++		    stringClean(&cookieitem);
++		}
++
++		const char *newvalue = strBuf(newhdr);
++		if (newvalue) {
++		    value = rfc1738_escape_part(newvalue);
++		    stringAppend(&vstr, "=\"", 2);
++		    stringAppend(&vstr, value, strlen(value));
++		    stringAppend(&vstr, "\"", 1);
++		}
++	    } else {
++		value = rfc1738_escape_part(value);
++		stringAppend(&vstr, "=\"", 2);
++		stringAppend(&vstr, value, strlen(value));
++		stringAppend(&vstr, "\"", 1);
++	    }
+ 	}
++	safe_free(name);
+ 	stringClean(&hdr);
+     }
+     safe_free(request->vary_hdr);
+@@ -403,7 +437,8 @@
+ 	request->vary_hdr = xstrdup(strBuf(vary));
+ 	request->vary_headers = xstrdup(strBuf(vstr));
+     }
+-    debug(11, 3) ("httpMakeVaryMark: %s\n", strBuf(vstr));
++    debug(11, 3) ("httpMakeVaryMark (vary): %s\n", strBuf(vary));
++    debug(11, 3) ("httpMakeVaryMark (vstr): %s\n", strBuf(vstr));
+     stringClean(&vary);
+     stringClean(&vstr);
+     return request->vary_headers;
