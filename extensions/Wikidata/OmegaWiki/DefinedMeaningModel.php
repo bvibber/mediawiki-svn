@@ -156,7 +156,7 @@ class DefinedMeaningModel {
 			$record->possiblySynonymous = getPossiblySynonymousRecordSet($id, $view);
 			$filterRelationTypes[] = $view->possiblySynonymousRelationTypeId;
 		}
-		$record->relations = getDefinedMeaningRelationsRecordSet($id, $filterRelationTypes, $view);
+
 		$record->reciprocalRelations = getDefinedMeaningReciprocalRelationsRecordSet($id, $view);
 		$record->classMembership = getDefinedMeaningClassMembershipRecordSet($id, $view);
 		$record->collectionMembership= getDefinedMeaningCollectionMembershipRecordSet($id, $view);

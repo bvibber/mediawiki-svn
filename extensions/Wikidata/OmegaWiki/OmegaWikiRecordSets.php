@@ -561,6 +561,7 @@ function getObjectAttributesRecord($objectId, ViewInformation $viewInformation, 
 		$record = new ArrayRecord($o->definedMeaningAttributes->type);
 	
 	$record->objectId = $objectId;
+	$record->relations = getDefinedMeaningAttributeValuesRecordSet(array($objectId), array(), $viewInformation);
 	$record->textAttributeValues = getTextAttributesValuesRecordSet(array($objectId), $viewInformation);
 	$record->translatedTextAttributeValues = getTranslatedTextAttributeValuesRecordSet(array($objectId), $viewInformation);
 	$record->linkAttributeValues = getLinkAttributeValuesRecordSet(array($objectId), $viewInformation);	
@@ -588,11 +589,16 @@ function filterAttributeValues(RecordSet $sourceRecordSet, Attribute $attributeA
 }
 
 function filterObjectAttributesRecord(Record $sourceRecord, array &$attributeIds) {
-
 	$o=OmegaWikiAttributes::getInstance();
 	
 	$result = new ArrayRecord($sourceRecord->getStructure());
 	$result->objectId = $sourceRecord->objectId;
+	
+	$result->setAttributeValue($o->relations, filterAttributeValues(
+		$sourceRecord->relations, 
+		$o->relationType,
+		$attributeIds
+	));
 	
 	$result->setAttributeValue($o->textAttributeValues, filterAttributeValues(
 		$sourceRecord->textAttributeValues, 
@@ -622,32 +628,29 @@ function filterObjectAttributesRecord(Record $sourceRecord, array &$attributeIds
 }
 
 function getTranslatedContentValue($translatedContentId, ViewInformation $viewInformation) {
-
 	$o=OmegaWikiAttributes::getInstance();
 	
 	if ($viewInformation->filterLanguageId == 0) {
 		return getTranslatedContentRecordSet($translatedContentId, $viewInformation);
 	
-	} else {
+	} 
+	else {
 		$recordSet = getFilteredTranslatedContentRecordSet($translatedContentId, $viewInformation);
 		
 		if (count($viewInformation->queryTransactionInformation->versioningAttributes()) > 0) 
 			return $recordSet;
 		else {
-			if ($recordSet->getRecordCount() > 0) {
+			if ($recordSet->getRecordCount() > 0) 
 				return $recordSet->getRecord(0)->text;
-			} else	
+			else	
 				return "";
 		}
 	}
 }
 
 function getTranslatedContentRecordSet($translatedContentId, ViewInformation $viewInformation) {
-
-	$o=OmegaWikiAttributes::getInstance();
 	global
 		$translatedContentTable;
-	
 
 	$o=OmegaWikiAttributes::getInstance();
 
@@ -754,6 +757,16 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 				$objectAttributesRecords[$objectIds[$i]] = $record;
 			}
 
+		// Defined meaning attributes		
+		$allDefinedMeaningAttributeValuesRecordSet = getDefinedMeaningAttributeValuesRecordSet($objectIds, array(), $viewInformation); 
+		$definedMeaningAttributeValuesRecordSets = 
+			splitRecordSet(
+				$allDefinedMeaningAttributeValuesRecordSet,
+				$o->relationType
+			);	
+			
+		$emptyDefinedMeaningAttributesRecordSet = new ArrayRecordSet($allDefinedMeaningAttributeValuesRecordSet->getStructure(), $allDefinedMeaningAttributeValuesRecordSet->getKey());
+		
 		// Text attributes		
 		$allTextAttributeValuesRecordSet = getTextAttributesValuesRecordSet($objectIds, $viewInformation); 
 		$textAttributeValuesRecordSets = 
@@ -799,6 +812,12 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 			$record = $recordSet->getRecord($i);
 			$objectId = $record->getAttributeValue($objectIdAttribute);
 			
+			// Defined meaning attributes
+			if (isset($definedMeaningAttributeValuesRecordSets[$objectId]))
+				$definedMeaningAttributeValuesRecordSet = $definedMeaningAttributeValuesRecordSets[$objectId];
+			else 
+				$definedMeaningAttributeValuesRecordSet = $emptyDefinedMeaningAttributesRecordSet;
+
 			// Text attributes
 			if (isset($textAttributeValuesRecordSets[$objectId]))
 				$textAttributeValuesRecordSet = $textAttributeValuesRecordSets[$objectId];
@@ -825,6 +844,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 
 			$objectAttributesRecord = new ArrayRecord($objectAttributesRecordStructure);
 			$objectAttributesRecord->objectId = $objectId;
+			$objectAttributesRecord->relations = $definedMeaningAttributeValuesRecordSet;
 			$objectAttributesRecord->textAttributeValues = $textAttributeValuesRecordSet;
 			$objectAttributesRecord->translatedTextAttributeValues = $translatedTextAttributeValuesRecordSet;
 			$objectAttributesRecord->linkAttributeValues = $linkAttributeValuesRecordSet;
@@ -848,16 +868,15 @@ function getDefinedMeaningReferenceRecord($definedMeaningId) {
 	return $record;
 }
 
-function getDefinedMeaningRelationsRecordSet($definedMeaningId, array $filterRelationTypes, ViewInformation $viewInformation) {
-
-	$o=OmegaWikiAttributes::getInstance();
+function getDefinedMeaningAttributeValuesRecordSet(array $objectIds, array $filterRelationTypes, ViewInformation $viewInformation) {
 	global
 		$meaningRelationsTable;
 
-	$restrictions = array("meaning1_mid=$definedMeaningId");
-
-	if (count($filterRelationTypes) > 0) 
-		$restrictions[] = "relationtype_mid NOT IN (". implode(", ", $filterRelationTypes) .")";
+	$o=OmegaWikiAttributes::getInstance();
+//	$restrictions = array("meaning1_mid=$definedMeaningId");
+//
+//	if (count($filterRelationTypes) > 0) 
+//		$restrictions[] = "relationtype_mid NOT IN (". implode(", ", $filterRelationTypes) .")";
 
 	$recordSet = queryRecordSet(
 		$o->relationStructure->getStructureType(),
@@ -869,7 +888,7 @@ function getDefinedMeaningRelationsRecordSet($definedMeaningId, array $filterRel
 			new TableColumnsToAttribute(array('meaning2_mid'), $o->otherDefinedMeaning)
 		),
 		$meaningRelationsTable,
-		$restrictions,
+		array("meaning1_mid IN (" . implode(", ", $objectIds) . ")"),
 		array('add_transaction_id')
 	);
 	

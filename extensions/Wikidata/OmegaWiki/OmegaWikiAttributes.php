@@ -203,20 +203,22 @@ class OmegaWikiAttributes {
 		$t->translatedTextAttributeValuesStructure = new Structure("translated-text-attribute-values",$t->translatedTextAttributeId, $t->attributeObjectId, $t->translatedTextAttribute, $t->translatedTextValueId, $t->translatedTextValue);
 		$t->translatedTextAttributeValues = new Attribute(null, wfMsgSc("TranslatedTextAttributeValues"), $t->translatedTextAttributeValuesStructure);
 		$t->attributeObject = new Attribute("attribute-object-id", "Attribute object", "object-id");
+
 		$t->textAttributeId = new Attribute("text-attribute-id", "Attribute identifier", "object-id");
 		$t->textAttributeObject = new Attribute("text-attribute-object-id", "Attribute object", "object-id");
 		$t->textAttribute = new Attribute("text-attribute", wfMsgSc("TextAttribute"), $t->definedMeaningReferenceStructure);
 		$t->textAttributeValuesStructure = new Structure("text-attribute-values", $t->textAttributeId, $t->textAttributeObject, $t->textAttribute, $t->text);	
 		$t->textAttributeValues = new Attribute(null, wfMsgSc("TextAttributeValues"), $t->textAttributeValuesStructure);
+		
 		$t->linkLabel = new Attribute("label", "Label", "short-text"); 
 		$t->linkURL = new Attribute("url", "URL", "url");
 		$t->link = new Attribute("link", "Link", new Structure($t->linkLabel, $t->linkURL));
-		
 		$t->linkAttributeId = new Attribute("link-attribute-id", "Attribute identifier", "object-id");
 		$t->linkAttributeObject = new Attribute("link-attribute-object-id", "Attribute object", "object-id");
 		$t->linkAttribute = new Attribute("link-attribute", wfMsgSc("LinkAttribute"), $t->definedMeaningReferenceStructure);
 		$t->linkAttributeValuesStructure = new Structure("link-attribute-values", $t->linkAttributeId, $t->linkAttributeObject, $t->linkAttribute, $t->link);	
 		$t->linkAttributeValues = new Attribute(null, wfMsgSc("LinkAttributeValues"), $t->linkAttributeValuesStructure);
+		
 		$t->optionAttributeId = new Attribute("option-attribute-id", "Attribute identifier", "object-id");
 		$t->optionAttributeObject = new Attribute("option-attribute-object-id", "Attribute object", "object-id");
 		$t->optionAttribute = new Attribute("option-attribute", wfMsgSc("OptionAttribute"), $definedMeaningReferenceType);
@@ -253,7 +255,6 @@ class OmegaWikiAttributes {
 				$t->classAttributes, 
 				$t->alternativeDefinitions, 
 				$t->synonymsAndTranslations, 
-				$t->relations, 
 				$t->reciprocalRelations, 
 				$t->classMembership, 
 				$t->collectionMembership, 
@@ -268,8 +269,17 @@ class OmegaWikiAttributes {
 		$t->expressionMeanings = new Attribute(null, wfMsgSc("ExpressionMeanings"), $t->expressionMeaningsStructure);
 		$t->expressionsStructure = new Structure("expressions", $t->expressionId, $t->expression, $t->expressionMeanings);
 		$t->expressions = new Attribute(null, wfMsgSc("Expressions"), $t->expressionsStructure);
+		
 		$t->objectId = new Attribute("object-id", "Object identifier", "object-id");
-		$t->objectAttributesStructure = new Structure("object-attributes", $t->objectId, $t->textAttributeValues, $t->translatedTextAttributeValues, $t->linkAttributeValues, $t->optionAttributeValues);
+		$t->objectAttributesStructure = new Structure("object-attributes", 
+			$t->objectId, 
+			$t->relations,
+			$t->textAttributeValues, 
+			$t->translatedTextAttributeValues, 
+			$t->linkAttributeValues, 
+			$t->optionAttributeValues
+		);
+		
 		$t->objectAttributes->setAttributeType($t->objectAttributesStructure);
 		$t->definedMeaningAttributes->setAttributeType($t->objectAttributesStructure);
 		

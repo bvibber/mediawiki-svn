@@ -243,6 +243,7 @@ class ShowEditFieldForAttributeValuesChecker extends ShowEditFieldChecker {
 
 function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 	global
+		$definedMeaningValueObjectAttributesEditors, 
 		$textValueObjectAttributesEditors, 
 		$linkValueObjectAttributesEditors, 
 		$translatedTextValueObjectAttributesEditors, 
@@ -251,9 +252,10 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 		
 	$o=OmegaWikiAttributes::getInstance($viewInformation);
 
-	$linkValueObjectAttributesEditors = array();
+	$definedMeaningValueObjectAttributesEditors = array();
 	$textValueObjectAttributesEditors = array();
 	$translatedTextValueObjectAttributesEditors = array();
+	$linkValueObjectAttributesEditors = array();
 	$optionValueObjectAttributesEditors = array();	
 	
 	foreach ($viewInformation->getPropertyToColumnFilters() as $propertyToColumnFilter) { 
@@ -262,6 +264,7 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 		$valueCaption = $propertyToColumnFilter->getValueCaption();
 		$attributeIDfilter = $propertyToColumnFilter->getAttributeIDFilter();
 		
+		$definedMeaningValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $valueCaption, $viewInformation, $annotationMeaningName, $attributeIDfilter);
 		$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $valueCaption, $viewInformation, $annotationMeaningName, $attributeIDfilter);
 		$linkValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $valueCaption, $viewInformation, $annotationMeaningName, $attributeIDfilter);
 		$translatedTextValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($attribute, $propertyCaption, $valueCaption, $viewInformation, $annotationMeaningName, $attributeIDfilter);
@@ -270,11 +273,15 @@ function initializeObjectAttributeEditors(ViewInformation $viewInformation) {
 	
 	$leftOverAttributeIdFilter = $viewInformation->getLeftOverAttributeFilter();
 	
-	$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $viewInformation,	$annotationMeaningName, $leftOverAttributeIdFilter);
+	$definedMeaningValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $viewInformation,	$annotationMeaningName, $leftOverAttributeIdFilter);
+	$textValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $viewInformation, $annotationMeaningName, $leftOverAttributeIdFilter);
 	$linkValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $viewInformation, $annotationMeaningName, $leftOverAttributeIdFilter);
 	$translatedTextValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $viewInformation, $annotationMeaningName, $leftOverAttributeIdFilter);
 	$optionValueObjectAttributesEditors[] = new ObjectAttributeValuesEditor($o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $viewInformation, $annotationMeaningName, $leftOverAttributeIdFilter);
 	
+	foreach ($definedMeaningValueObjectAttributesEditors as $definedMeaningValueObjectAttributesEditor)
+		addObjectAttributesEditors($definedMeaningValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->relationType));
+
 	foreach ($textValueObjectAttributesEditors as $textValueObjectAttributesEditor)
 		addObjectAttributesEditors($textValueObjectAttributesEditor, $viewInformation, new ObjectIdFetcher(0, $o->textAttributeId));
 
@@ -419,6 +426,7 @@ function addObjectAttributesEditors(ObjectAttributeValuesEditor $objectAttribute
 	$attributeIDFilter = $objectAttributesEditor->getAttributeIDfilter();
 	$annotationLevelName = $objectAttributesEditor->getLevelName();
 	
+	$objectAttributesEditor->addEditor(getDefinedMeaningAttributeValuesEditor($viewInformation, new DefinedMeaningAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));
 	$objectAttributesEditor->addEditor(getTextAttributeValuesEditor($viewInformation, new TextAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));
 	$objectAttributesEditor->addEditor(getTranslatedTextAttributeValuesEditor($viewInformation, new TranslatedTextAttributeValuesController($annotatedObjectIdFetcher, $viewInformation->filterLanguageId), $annotationLevelName, $attributeIDFilter));
 	$objectAttributesEditor->addEditor(getLinkAttributeValuesEditor($viewInformation, new LinkAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));
@@ -538,23 +546,19 @@ function getSynonymsAndTranslationsEditor(ViewInformation $viewInformation) {
 	return $tableEditor;
 }
 
-function getDefinedMeaningRelationsEditor(ViewInformation $viewInformation) {
+function getDefinedMeaningAttributeValuesEditor(ViewInformation $viewInformation, UpdateController $controller, $levelDefinedMeaningName, AttributeIDFilter $attributeIDFilter) {
 	global
-		$relationsObjectAttributesEditor,  $relationMeaningName, $wgPopupAnnotationName;
+		$definedMeaningValueObjectAttributesEditors;
 
 	$o=OmegaWikiAttributes::getInstance();
 
-	$editor = new RecordSetTableEditor($o->relations, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningRelationController());
-	$editor->addEditor(new RelationTypeReferenceEditor($o->relationType, new SimplePermissionController(false), true));
-	$editor->addEditor(new DefinedMeaningReferenceEditor($o->otherDefinedMeaning, new SimplePermissionController(false), true));
-	
-	addPropertyToColumnFilterEditors($editor, $viewInformation, $o->relationId, $relationMeaningName);
-	
-	$editor->addEditor(new PopUpEditor(
-		createObjectAttributesEditor($viewInformation, $o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $o->relationId, $relationMeaningName, $viewInformation->getLeftOverAttributeFilter()), 
-		$wgPopupAnnotationName
-	));
+	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "DM", $attributeIDFilter);
 
+	$editor = new RecordSetTableEditor($o->relations, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
+	$editor->addEditor(new DefinedMeaningAttributeEditor($o->relationType, new SimplePermissionController(false), true, $levelDefinedMeaningName));
+	$editor->addEditor(new DefinedMeaningReferenceEditor($o->otherDefinedMeaning, new SimplePermissionController(false), true));
+
+	addPopupEditors($editor, $definedMeaningValueObjectAttributesEditors);
 	addTableMetadataEditors($editor, $viewInformation);
 
 	return $editor;
@@ -810,7 +814,6 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	$alternativeDefinitionsEditor = getAlternativeDefinitionsEditor($viewInformation);
 	$classAttributesEditor = getClassAttributesEditor($viewInformation);		
 	$synonymsAndTranslationsEditor = getSynonymsAndTranslationsEditor($viewInformation);
-	$relationsEditor = getDefinedMeaningRelationsEditor($viewInformation);
 	$reciprocalRelationsEditor = getDefinedMeaningReciprocalRelationsEditor($viewInformation);
 	$classMembershipEditor = getDefinedMeaningClassMembershipEditor($viewInformation);
 	$collectionMembershipEditor = getDefinedMeaningCollectionMembershipEditor($viewInformation);
@@ -830,7 +833,6 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	$availableEditors->addEditor($alternativeDefinitionsEditor);
 	$availableEditors->addEditor($classAttributesEditor);
 	$availableEditors->addEditor($synonymsAndTranslationsEditor);
-	$availableEditors->addEditor($relationsEditor);
 	$availableEditors->addEditor($reciprocalRelationsEditor);
 	$availableEditors->addEditor($classMembershipEditor);
 	$availableEditors->addEditor($collectionMembershipEditor);

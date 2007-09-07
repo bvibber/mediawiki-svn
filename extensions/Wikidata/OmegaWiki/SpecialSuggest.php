@@ -63,17 +63,20 @@ function getSuggestions() {
 			$sqlFallback = getSQLForCollectionOfType('CLAS', 'en');
 			$sql=constructSQLWithFallback($sqlActual, $sqlFallback, array("member_mid", "spelling", "collection_mid"));
 			break;
-		case 'option-attribute':
-			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'OPTN');
-			break;
-		case 'translated-text-attribute':
-			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'TRNS');
+		case 'defined-meaning-attribute':	
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'DM');
 			break;
 		case 'text-attribute':	
 			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'TEXT');
 			break;
+		case 'translated-text-attribute':
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'TRNS');
+			break;
 		case 'link-attribute':	
 			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'URL');
+			break;
+		case 'option-attribute':
+			$sql = getSQLToSelectPossibleAttributes($definedMeaningId, $attributesLevel, $annotationAttributeId, 'OPTN');
 			break;
 		case 'language':
 			require_once('languages.php');
@@ -154,17 +157,20 @@ function getSuggestions() {
 		case 'class':
 			list($recordSet, $editor) = getClassAsRecordSet($queryResult);
 			break;
+		case 'defined-meaning-attribute':
+			list($recordSet, $editor) = getDefinedMeaningAttributeAsRecordSet($queryResult);
+			break;
 		case 'text-attribute':
 			list($recordSet, $editor) = getTextAttributeAsRecordSet($queryResult);
 			break;
 		case 'translated-text-attribute':
 			list($recordSet, $editor) = getTranslatedTextAttributeAsRecordSet($queryResult);
 			break;
-		case 'option-attribute':
-			list($recordSet, $editor) = getOptionAttributeAsRecordSet($queryResult);
-			break;
 		case 'link-attribute':
 			list($recordSet, $editor) = getLinkAttributeAsRecordSet($queryResult);
+			break;
+		case 'option-attribute':
+			list($recordSet, $editor) = getOptionAttributeAsRecordSet($queryResult);
 			break;
 		case 'defined-meaning':
 			list($recordSet, $editor) = getDefinedMeaningAsRecordSet($queryResult);
@@ -459,6 +465,23 @@ function getClassAsRecordSet($queryResult) {
 	$editor = createSuggestionsTableViewer(null);
 	$editor->addEditor(createShortTextViewer($classAttribute));
 	$editor->addEditor(createShortTextViewer($collectionAttribute));
+
+	return array($recordSet, $editor);		
+}
+
+function getDefinedMeaningAttributeAsRecordSet($queryResult) {
+	$o=OmegaWikiAttributes::getInstance();
+	
+	$dbr =& wfGetDB(DB_SLAVE);
+	
+	$definedMeaningAttributeAttribute = new Attribute("defined-meaning-attribute", "Relation type", "short-text");
+	$recordSet = new ArrayRecordSet(new Structure($o->id, $definedMeaningAttributeAttribute), new Structure($o->id));
+	
+	while ($row = $dbr->fetchObject($queryResult)) 
+		$recordSet->addRecord(array($row->attribute_mid, $row->spelling));
+
+	$editor = createSuggestionsTableViewer(null);
+	$editor->addEditor(createShortTextViewer($definedMeaningAttributeAttribute));
 
 	return array($recordSet, $editor);		
 }

@@ -18,7 +18,6 @@ $annotationMeaningName = "Annotation";
 $classAttributeLevels = array(
 	$definedMeaningMeaningName,
 	$definitionMeaningName,
-	$relationMeaningName,
 	$synTransMeaningName,
 	$annotationMeaningName
 );

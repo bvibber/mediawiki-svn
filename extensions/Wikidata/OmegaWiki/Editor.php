@@ -1254,9 +1254,10 @@ abstract class SelectEditor extends ScalarEditor {
 class ClassAttributesTypeEditor extends SelectEditor {
 	protected function getOptions() {
 		return array(
+			'DM' => 'Defined meaning', 
 			'TRNS' => 'Translatable text', 
 			'TEXT' => 'Plain text', 
-			'URL' => 'URL', 
+			'URL' => 'Link', 
 			'OPTN' => 'Option list'
 		);
 	}
@@ -1323,6 +1324,12 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 	}
 }
 
+class DefinedMeaningAttributeEditor extends AttributeEditor {
+	protected function suggestType() {
+		return "defined-meaning-attribute";
+	}
+}
+
 class TextAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
 		return "text-attribute";
@@ -1343,7 +1350,7 @@ class LinkAttributeEditor extends AttributeEditor {
 
 class OptionAttributeEditor extends AttributeEditor {
 	protected function suggestType() {
-		return 'option-attribute';
+		return "option-attribute";
 	}
 
 	public function add(IdStack $idPath) {

@@ -266,31 +266,6 @@ class ClassAttributesController implements UpdateController {
 	}	
 }
 
-class DefinedMeaningRelationController implements UpdateController {
-	public function add($keyPath, $record) {
-
-		$o=OmegaWikiAttributes::getInstance();
-
-		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
-		$relationTypeId = $record->relationType;
-		$otherDefinedMeaningId = $record->otherDefinedMeaning;
-
-		if ($relationTypeId != 0 && $otherDefinedMeaningId != 0)
-			addRelation($definedMeaningId, $relationTypeId, $otherDefinedMeaningId);
-	}
-
-	public function remove($keyPath) {
-
-		$o=OmegaWikiAttributes::getInstance();
-			
-		$relationId = $keyPath->peek(0)->relationId;
-		removeRelationWithId($relationId);
-	}
-
-	public function update($keyPath, $record) {
-	}
-}
-
 class GroupedRelationTypeController implements UpdateController {
 	protected $relationTypeId;
 	protected $groupedRelationIdAttribute;
@@ -483,6 +458,25 @@ abstract class ObjectAttributeValuesController implements UpdateController {
 	
 	public function __construct($objectIdFetcher) {
 		$this->objectIdFetcher = $objectIdFetcher;
+	}
+}
+
+class DefinedMeaningAttributeValuesController extends ObjectAttributeValuesController {
+	public function add($keyPath, $record)  {
+		$objectId = $this->objectIdFetcher->fetch($keyPath);
+		$definedMeaningAttributeId = $record->relationType;
+		$definedMeaningValue = $record->otherDefinedMeaning;
+		
+		if ($definedMeaningAttributeId != 0 && $definedMeaningValue != "") 		
+			addRelation($objectId, $definedMeaningAttributeId, $definedMeaningValue);
+	}
+
+	public function remove($keyPath) {
+		$valueId = $keyPath->peek(0)->relationId;
+		removeRelationWithId($valueId);
+	}
+
+	public function update($keyPath, $record) {
 	}
 }
 

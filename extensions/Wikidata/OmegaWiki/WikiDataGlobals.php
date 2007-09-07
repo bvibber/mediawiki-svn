@@ -143,7 +143,6 @@ $wdDefinedMeaningAttributesOrder = array(
 	$wgAlternativeDefinitionsAttributeId,
 	$wgSynonymsAndTranslationsAttributeId,
 	$wgPossiblySynonymousAttributeId,
-	$wgRelationsAttributeId, 
 	$wgIncomingRelationsAttributeId,
 	$wgClassMembershipAttributeId,
 	$wgCollectionMembershipAttributeId,
