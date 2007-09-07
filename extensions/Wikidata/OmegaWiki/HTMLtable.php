@@ -128,7 +128,7 @@ function getRecordAsTableCells(IdStack $idPath, Editor $editor, Structure $visib
 				$result .= getRecordAsTableCells($idPath, $childEditor, $visibleAttribute->type, $value, $startColumn);	
 			else {
 				$displayValue = $childEditor->showsData($value) ? $childEditor->view($idPath, $value) : "";
-				$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
+				$result .= '<td class="'. getHTMLClassForType($type, $attribute) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
 				$startColumn++;
 			}
 			
@@ -141,29 +141,36 @@ function getRecordAsTableCells(IdStack $idPath, Editor $editor, Structure $visib
 	return $result;
 }
 
-function getRecordAsEditTableCells(Record $record, IdStack $idPath, Editor $editor, &$startColumn = 0) {
+function getRecordAsEditTableCells(IdStack $idPath, Editor $editor, Structure $visibleStructure, Record $record, &$startColumn = 0) {
 	$result = '';
+	$childEditorMap = $editor->getAttributeEditorMap();
 	
-	foreach($editor->getEditors() as $childEditor) {
-		$attribute = $childEditor->getAttribute();
-		$type = $attribute->type;
-		$value = $record->getAttributeValue($attribute);
-		$idPath->pushAttribute($attribute);
-			
-		if ($childEditor instanceof RecordTableCellEditor)			
-			$result .= getRecordAsEditTableCells($value, $idPath, $childEditor, $startColumn); 
-		else {	
-			if($childEditor->showEditField($idPath))
-				$displayValue = $childEditor->edit($idPath, $value);
-			else
-				$displayValue = "";
-			
-			$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
-				
-			$startColumn++;
-		}
+	foreach($visibleStructure->getAttributes() as $visibleAttribute) {
+		$childEditor = $childEditorMap->getEditorForAttribute($visibleAttribute);
 		
-		$idPath->popAttribute();
+		if ($childEditor != null) {
+			$attribute = $childEditor->getAttribute();
+			$type = $attribute->type;
+			$value = $record->getAttributeValue($attribute);
+			$idPath->pushAttribute($attribute);
+				
+			if ($childEditor instanceof RecordTableCellEditor)			
+				$result .= getRecordAsEditTableCells($idPath, $childEditor, $visibleAttribute->type, $value, $startColumn); 
+			else {	
+				if($childEditor->showEditField($idPath))
+					$displayValue = $childEditor->edit($idPath, $value);
+				else
+					$displayValue = "";
+				
+				$result .= '<td class="'. getHTMLClassForType($type, $attribute) .' column-'. parityClass($startColumn) . '">'. $displayValue . '</td>';
+					
+				$startColumn++;
+			}
+			
+			$idPath->popAttribute();
+		}
+		else 
+			$result .= "<td/>";
 	}
 	
 	return $result;

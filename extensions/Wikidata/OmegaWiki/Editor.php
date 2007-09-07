@@ -699,7 +699,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 			}
 			
 			if ($this->permissionController->allowUpdateOfValue($idPath, $record))
-				$result .= getRecordAsEditTableCells($record, $idPath, $this);
+				$result .= getRecordAsEditTableCells($idPath, $this, $visibleStructure, $record);
 			else
 				$result .= getRecordAsTableCells($idPath, $this, $visibleStructure, $record);
 			
