@@ -426,7 +426,7 @@ function addObjectAttributesEditors(ObjectAttributeValuesEditor $objectAttribute
 	$attributeIDFilter = $objectAttributesEditor->getAttributeIDfilter();
 	$annotationLevelName = $objectAttributesEditor->getLevelName();
 	
-	$objectAttributesEditor->addEditor(getDefinedMeaningAttributeValuesEditor($viewInformation, new DefinedMeaningAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));
+	$objectAttributesEditor->addEditor(getDefinedMeaningAttributeValuesEditor($viewInformation, new DefinedMeaningAttributeValuesController($annotatedObjectIdFetcher, $attributeIDFilter), $annotationLevelName, $attributeIDFilter));
 	$objectAttributesEditor->addEditor(getTextAttributeValuesEditor($viewInformation, new TextAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));
 	$objectAttributesEditor->addEditor(getTranslatedTextAttributeValuesEditor($viewInformation, new TranslatedTextAttributeValuesController($annotatedObjectIdFetcher, $viewInformation->filterLanguageId), $annotationLevelName, $attributeIDFilter));
 	$objectAttributesEditor->addEditor(getLinkAttributeValuesEditor($viewInformation, new LinkAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));

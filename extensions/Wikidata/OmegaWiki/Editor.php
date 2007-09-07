@@ -482,7 +482,7 @@ abstract class RecordSetEditor extends DefaultEditor {
 			if (count($addStructure->getAttributes()) > 0) {
 				$addEditors = $this->getAddEditors();
 				$record = $this->getAddRecord($idPath, $addStructure, $addEditors);
-				$this->controller->add($idPath->getKeyStack(), $record);
+				$this->controller->add($idPath, $record);
 			}
 		}
 
@@ -2181,7 +2181,7 @@ class RecordSetFirstRecordEditor extends RecordSetEditor {
 			$idPath->popKey();
 		}
 		else 
-			$this->controller->add($idPath->getKeyStack(), $this->recordEditor->getAddValue($idPath));
+			$this->controller->add($idPath, $this->recordEditor->getAddValue($idPath));
 	}
 
 	public function setRecordEditor(Editor $recordEditor) {

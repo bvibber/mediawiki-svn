@@ -3,7 +3,7 @@
 require_once("OmegaWikiAttributes.php");
 
 interface UpdateController {
-	public function add($keyPath, $record);
+	public function add(IdStack $idPath, $record);
 	public function remove($keyPath);
 	public function update($keyPath, $record);
 }
@@ -40,9 +40,20 @@ class SimplePermissionController implements PermissionController {
 	}
 }
 
-class DefinedMeaningDefinitionController implements UpdateController {
-	public function add($keyPath, $record) {
-		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+class DefaultUpdateController implements UpdateController {
+	public function add(IdStack $idPath, $record) {
+	}
+	
+	public function remove($keyPath) {
+	}
+
+	public function update($keyPath, $record) {
+	}
+}
+
+class DefinedMeaningDefinitionController extends DefaultUpdateController {
+	public function add(IdStack $idPath, $record) {
+		$definedMeaningId = $idPath->getKeyStack()->peek(0)->definedMeaningId;
 		$languageId = $record->language;
 		$text = $record->text;
 
@@ -81,15 +92,15 @@ class DefinedMeaningFilteredDefinitionController implements UpdateAttributeContr
 	}
 }
 
-class DefinedMeaningAlternativeDefinitionsController implements UpdateController {
+class DefinedMeaningAlternativeDefinitionsController extends DefaultUpdateController {
 	protected $filterLanguageId;
 	
 	public function __construct($filterLanguageId) {
 		$this->filterLanguageId = $filterLanguageId;
 	}
 	
-	public function add($keyPath, $record)  {
-		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+	public function add(IdStack $idPath, $record)  {
+		$definedMeaningId = $idPath->getKeyStack()->peek(0)->definedMeaningId;
 		$alternativeDefinition = $record->alternativeDefinition;
 		$sourceId = $record->source;
 
@@ -113,14 +124,11 @@ class DefinedMeaningAlternativeDefinitionsController implements UpdateController
 		$definitionId = $keyPath->peek(0)->definitionId;
 		removeDefinedMeaningAlternativeDefinition($definedMeaningId, $definitionId);
 	}
-
-	public function update($keyPath, $record) {
-	}
 }
 
-class DefinedMeaningAlternativeDefinitionController implements UpdateController {
-	public function add($keyPath, $record) {
-		$definitionId = $keyPath->peek(0)->definitionId;
+class DefinedMeaningAlternativeDefinitionController extends DefaultUpdateController {
+	public function add(IdStack $idPath, $record) {
+		$definitionId = $idPath->getKeyStack()->peek(0)->definitionId;
 		$languageId = $record->language;
 		$text = $record->text;
 
@@ -160,15 +168,15 @@ class DefinedMeaningFilteredAlternativeDefinitionController implements UpdateAtt
 	}
 }
 
-class SynonymTranslationController implements UpdateController {
+class SynonymTranslationController extends DefaultUpdateController {
 	protected $filterLanguageId;
 	
 	public function __construct($filterLanguageId) {
 		$this->filterLanguageId = $filterLanguageId;
 	}
 	
-	public function add($keyPath, $record) {
-		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+	public function add(IdStack $idPath, $record) {
+		$definedMeaningId = $idPath->getKeyStack()->peek(0)->definedMeaningId;
 		$expressionValue = $record->expression;
 		
 		if ($this->filterLanguageId == 0) {
@@ -202,9 +210,9 @@ class SynonymTranslationController implements UpdateController {
 	}
 }
 
-class ClassAttributesController implements UpdateController {
-	public function add($keyPath, $record) {
-		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+class ClassAttributesController extends DefaultUpdateController {
+	public function add(IdStack $idPath, $record) {
+		$definedMeaningId = $idPath->getKeyStack()->peek(0)->definedMeaningId;
 		$attributeLevelId = $record->classAttributeLevel;
 		$attributeMeaningId = $record->classAttributeAttribute;
 		$attributeType = $record->classAttributeType;
@@ -217,12 +225,9 @@ class ClassAttributesController implements UpdateController {
 		$classAttributeId = $keyPath->peek(0)->classAttributeId;
 		removeClassAttributeWithId($classAttributeId);
 	}
-
-	public function update($keyPath, $record) {
-	}	
 }
 
-class GroupedRelationTypeController implements UpdateController {
+class GroupedRelationTypeController extends DefaultUpdateController {
 	protected $relationTypeId;
 	protected $groupedRelationIdAttribute;
 	protected $otherDefinedMeaningAttribute;
@@ -233,8 +238,8 @@ class GroupedRelationTypeController implements UpdateController {
 		$this->otherDefinedMeaningAttribute = $otherDefinedMeaningAttribute;
 	}
 	
-	public function add($keyPath, $record) {
-		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+	public function add(IdStack $idPath, $record) {
+		$definedMeaningId = $idPath->getKeyStack()->peek(0)->definedMeaningId;
 		$otherDefinedMeaningId = $record->getAttributeValue($this->otherDefinedMeaningAttribute);
 
 		if ($otherDefinedMeaningId != 0)
@@ -245,14 +250,11 @@ class GroupedRelationTypeController implements UpdateController {
 		$relationId = $keyPath->peek(0)->getAttributeValue($this->groupedRelationIdAttribute);
 		removeRelationWithId($relationId);
 	}
-
-	public function update($keyPath, $record) {
-	}
 }
 
-class DefinedMeaningClassMembershipController implements UpdateController {
-	public function add($keyPath, $record) {
-		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+class DefinedMeaningClassMembershipController extends DefaultUpdateController {
+	public function add(IdStack $idPath, $record) {
+		$definedMeaningId = $idPath->getKeyStack()->peek(0)->definedMeaningId;
 		$classId = $record->class;
 
 		if ($classId != 0)
@@ -262,14 +264,11 @@ class DefinedMeaningClassMembershipController implements UpdateController {
 	public function remove($keyPath) {
 		removeClassMembershipWithId($keyPath->peek(0)->classMembershipId);
 	}
-
-	public function update($keyPath, $record) {
-	}
 }
 
-class DefinedMeaningCollectionController implements UpdateController {
-	public function add($keyPath, $record) {
-		$definedMeaningId = $keyPath->peek(0)->definedMeaningId;
+class DefinedMeaningCollectionController extends DefaultUpdateController {
+	public function add(IdStack $idPath, $record) {
+		$definedMeaningId = $idPath->getKeyStack()->peek(0)->definedMeaningId;
 		$collectionMeaningId = $record->collectionMeaning;
 		$internalId = $record->sourceIdentifier;
 		
@@ -294,17 +293,17 @@ class DefinedMeaningCollectionController implements UpdateController {
 	}
 }
 
-class ExpressionMeaningController implements UpdateController {
+class ExpressionMeaningController extends DefaultUpdateController {
 	protected $filterLanguageId;
 	
 	public function __construct($filterLanguageId) {
 		$this->filterLanguageId = $filterLanguageId;
 	}
 
-	public function add($keyPath, $record) {
+	public function add(IdStack $idPath, $record) {
 		$definition = $record->definedMeaning->definition;
 		$translatedContent = $definition->translatedText;
-		$expressionId = $keyPath->peek(0)->expressionId;
+		$expressionId = $idPath->getKeyStack()->peek(0)->expressionId;
 
 		if ($this->filterLanguageId == 0) {
 			if ($translatedContent->getRecordCount() > 0) {
@@ -320,15 +319,9 @@ class ExpressionMeaningController implements UpdateController {
 		else if ($translatedContent != "") 
 			createNewDefinedMeaning($expressionId, $this->filterLanguageId, $translatedContent);
 	}
-
-	public function remove($keyPath) {
-	}
-
-	public function update($keyPath, $record) {
-	}
 }
 
-class ExpressionController implements UpdateController {
+class ExpressionController extends DefaultUpdateController {
 	protected $spelling;
 	protected $filterLanguageId;
 
@@ -337,7 +330,7 @@ class ExpressionController implements UpdateController {
 		$this->filterLanguageId = $filterLanguageId;
 	}
 
-	public function add($keyPath, $record) {
+	public function add(IdStack $idPath, $record) {
 		if ($this->filterLanguageId == 0)
 			$expressionLanguageId = $record->expression->language;
 		else
@@ -370,25 +363,30 @@ class ExpressionController implements UpdateController {
 			}
 		}
 	}
-
-	public function remove($keyPath) {
-	}
-
-	public function update($keyPath, $record) {
-	}
 }
 
-abstract class ObjectAttributeValuesController implements UpdateController {
+class ObjectAttributeValuesController extends DefaultUpdateController {
 	protected $objectIdFetcher;
 	
-	public function __construct($objectIdFetcher) {
+	public function __construct(ContextFetcher $objectIdFetcher) {
 		$this->objectIdFetcher = $objectIdFetcher;
 	}
 }
 
 class DefinedMeaningAttributeValuesController extends ObjectAttributeValuesController {
-	public function add($keyPath, $record)  {
-		$objectId = $this->objectIdFetcher->fetch($keyPath);
+	protected $attributeIDFilter;
+
+	public function __construct(ContextFetcher $objectIdFetcher, AttributeIDFilter $attributeIDFilter) {
+		parent::__construct($objectIdFetcher);
+		
+		$this->attributeIDFilter = $attributeIDFilter;
+	}
+	
+	public function add(IdStack $idPath, $record)  {
+//		if ($this->allowedAttributeIDs != null && count($this->allowedAttributeIDs) == 1)
+//			echo "Allowed attribute: " . $this->allowedAttributeIDs[0];
+		
+		$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
 		$definedMeaningAttributeId = $record->relationType;
 		$definedMeaningValue = $record->otherDefinedMeaning;
 		
@@ -400,16 +398,14 @@ class DefinedMeaningAttributeValuesController extends ObjectAttributeValuesContr
 		$valueId = $keyPath->peek(0)->relationId;
 		removeRelationWithId($valueId);
 	}
-
-	public function update($keyPath, $record) {
-	}
 }
 
 class TextAttributeValuesController extends ObjectAttributeValuesController {
-	public function add($keyPath, $record)  {
-		$objectId = $this->objectIdFetcher->fetch($keyPath);
+	public function add(IdStack $idPath, $record)  {
+		$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
 		$textAttributeId = $record->textAttribute;
 		$text = $record->text;
+		
 		if ($textAttributeId != 0 && $text != '')		
 			addTextAttributeValue($objectId, $textAttributeId, $text);
 	}
@@ -437,8 +433,8 @@ class LinkAttributeValuesController extends ObjectAttributeValuesController {
 		return $url;
 	}
 	
-	public function add($keyPath, $record)  {
-		$objectId = $this->objectIdFetcher->fetch($keyPath);
+	public function add(IdStack $idPath, $record)  {
+		$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
 		$linkAttributeId = $record->linkAttribute;
 		$linkValue = $record->link;
 		$label = $linkValue->linkLabel;
@@ -473,8 +469,8 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 		$this->filterLanguageId = $filterLanguageId;
 	}
 	
-	public function add($keyPath, $record)  {
-		$objectId = $this->objectIdFetcher->fetch($keyPath);
+	public function add(IdStack $idPath, $record)  {
+		$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
 		$textValue = $record->translatedTextValue;
 		$textAttributeId = $record->translatedTextAttribute;
 
@@ -499,14 +495,11 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 		$valueId = $keyPath->peek(0)->translatedTextAttributeId;
 		removeTranslatedTextAttributeValue($valueId);
 	}
-
-	public function update($keyPath, $record) {
-	}
 }
 
-class TranslatedTextAttributeValueController implements UpdateController {
-	public function add($keyPath, $record) {
-		$valueId = $keyPath->peek(0)->translatedTextAttributeId;
+class TranslatedTextAttributeValueController extends DefaultUpdateController {
+	public function add(IdStack $idPath, $record) {
+		$valueId = $idPath->getKeyStack()->peek(0)->translatedTextAttributeId;
 		$languageId = $record->language;
 		$text = $record->text;
 		$translatedTextAttribute = getTranslatedTextAttribute($valueId);
@@ -551,8 +544,8 @@ class FilteredTranslatedTextAttributeValueController implements UpdateAttributeC
 }
 
 class OptionAttributeValuesController extends ObjectAttributeValuesController {
-	public function add($keyPath, $record) {
-		$objectId = $this->objectIdFetcher->fetch($keyPath);
+	public function add(IdStack $idPath, $record) {
+		$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
 		$optionId = $record->optionAttributeOption;
 
 		if ($optionId)
@@ -563,13 +556,11 @@ class OptionAttributeValuesController extends ObjectAttributeValuesController {
 		$valueId = $keyPath->peek(0)->optionAttributeId;
 		removeOptionAttributeValue($valueId);
 	}
-
-	public function update($keyPath, $record) {}
 }
 
-class OptionAttributeOptionsController implements UpdateController {
-	public function add($keyPath, $record) {
-		$attributeId = $keyPath->peek(0)->classAttributeId;
+class OptionAttributeOptionsController extends DefaultUpdateController {
+	public function add(IdStack $idPath, $record) {
+		$attributeId = $idPath->getKeyStack()->peek(0)->classAttributeId;
 		$optionMeaningId = $record->optionAttributeOption;
 		$languageId = $record->language;
 
@@ -580,9 +571,6 @@ class OptionAttributeOptionsController implements UpdateController {
 	public function remove($keyPath) {
 		$optionId = $keyPath->peek(0)->optionAttributeOptionId;
 		removeOptionAttributeOption($optionId);
-	}
-
-	public function update($keyPath, $record) {
 	}
 }
 
