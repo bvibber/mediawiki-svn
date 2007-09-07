@@ -392,7 +392,7 @@ class DefinedMeaningAttributeValuesController extends ObjectAttributeValuesContr
 		$definedMeaningAttributeId = $record->relationType;
 		$definedMeaningValue = $record->otherDefinedMeaning;
 		
-		if ($definedMeaningAttributeId != 0 && $definedMeaningValue != "") 		
+		if ($definedMeaningAttributeId != 0 && $definedMeaningValue != 0) 		
 			addRelation($objectId, $definedMeaningAttributeId, $definedMeaningValue);
 	}
 
