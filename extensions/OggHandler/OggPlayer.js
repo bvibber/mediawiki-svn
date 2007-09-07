@@ -499,12 +499,16 @@ var wgOggPlayer = {
 			// Use QTSRC parameter instead of data attribute to allow progressive download
 			// The data attribute and src parameter point to a small file, as recommended in
 			// http://developer.apple.com/documentation/QuickTime/Conceptual/QTScripting_HTML/QTScripting_HTML_Document/chapter_1000_section_6.html
-			" data=" + this.hq( this.extPathUrl + '/null_file' ) +
+			// (Actually that's supposed to be for streaming, you're not supposed to need
+			// anything fancy for progressive download. But sometimes it doesn't start playing
+			// properly if you don't use this trick. Also don't forget to use an empty .mov file
+			// rather than an extensionless file, or Opera prompts you to download it.)
+			" data=" + this.hq( this.extPathUrl + '/null_file.mov' ) +
 			">" + 
 			// Scale, don't clip
 			"<param name='SCALE' value='Aspect'/>" + 
 			"<param name='AUTOPLAY' value='True'/>" +
-			"<param name='src' value=" + this.hq( this.extPathUrl + '/null_file' ) +  "/>" +
+			"<param name='src' value=" + this.hq( this.extPathUrl + '/null_file.mov' ) +  "/>" +
 			"<param name='QTSRC' value=" + this.hq( params.videoUrl ) + "/>" +
 			"</object></div>";
 
