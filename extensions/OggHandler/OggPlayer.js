@@ -496,9 +496,7 @@ var wgOggPlayer = {
 			" width=" + this.hq( params.width ) + 
 			" height=" + this.hq( params.height + controllerHeight ) + 
 			
-			// Use QTSRC parameter instead of data attribute to allow progressive download
-			// The data attribute and src parameter point to a small file, as recommended in
-			// http://developer.apple.com/documentation/QuickTime/Conceptual/QTScripting_HTML/QTScripting_HTML_Document/chapter_1000_section_6.html
+			// See http://svn.wikimedia.org/viewvc/mediawiki?view=rev&revision=25605
 			" data=" + this.hq( this.extPathUrl + '/null_file.mov' ) +
 			">" + 
 			// Scale, don't clip
