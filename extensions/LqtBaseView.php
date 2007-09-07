@@ -517,7 +517,7 @@ HTML;
 <li class="lqt_author_sig lqt_post_color_{$color_number}">
 HTML
 );
-		$this->output->addWikitext($sig); #gah!
+		$this->output->addWikitext($sig, false); #gah!
 		$this->output->addHTML(<<<HTML
 </li>
 <li>$timestamp</li>
