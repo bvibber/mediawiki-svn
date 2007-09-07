@@ -340,6 +340,7 @@ function __autoload($className) {
 		'ApiQueryWatchlist' => 'includes/api/ApiQueryWatchlist.php',
 		'ApiResult' => 'includes/api/ApiResult.php',
 		'ApiRollback' => 'includes/api/ApiRollback.php',
+		'ApiUnblock' => 'includes/api/ApiUnblock.php',
 		'ApiUndelete' => 'includes/api/ApiUndelete.php'
 	);
 	

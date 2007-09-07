@@ -59,6 +59,7 @@ class ApiMain extends ApiBase {
 		'undelete' => 'ApiUndelete',
 		'protect' => 'ApiProtect',
 		'block' => 'ApiBlock',
+		'unblock' => 'ApiUnblock',
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
 		'help' => 'ApiHelp',

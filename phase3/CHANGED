@@ -19,9 +19,14 @@ SpecialUndelete.php
 ** Updated SpecialUndelete::undelete() to recognize changed PageArchive::undelete() return values
 
 SpecialBlockip.php
-* Separated UI and DB code in BlockIPForm::doSubmit() (r25548)
+* Separated UI and DB code in IPBlockForm::doSubmit() (r25548)
 ** doBlock() does the dirty work, doSubmit() wraps around it
-** Introduced BlockIPForm::BLOCK_* constants for doBlock()'s return values
+** Introduced IPBlockForm::BLOCK_* constants for doBlock()'s return values
+
+SpecialIpblocklist.php 
+* Separated UI and DB code in IPUnblockForm::doSubmit() (r25633)
+** Static function doUnblock() does the dirty work, doSubmit() wraps around it
+** Introduced IPUnblockForm::UNBLOCK_* constants for doUnblock()'s return values
 
 api/ApiQueryInfo.php
 * Implemented tokens (r23562, r23568,r23638, r23668)
@@ -46,7 +51,10 @@ api/ApiProtect.php (NEW)
 * Added missingtitle error message (r25389)
 
 api/ApiBlock.php (NEW)
-* action=block module that wraps around BlockIPForm::doBlock() (r25548)
+* action=block module that wraps around IPBlockForm::doBlock() (r25548)
+
+api/ApiUnblock.php (NEW)
+* action=unblock module that wraps around IPUnblockForm::doUnblock() (r25633)
 
 AutoLoader.php
 * Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548)

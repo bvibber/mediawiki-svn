@@ -140,44 +140,66 @@ class IPUnblockForm {
 
 	}
 
-	function doSubmit() {
-		global $wgOut;
+	const UNBLOCK_SUCCESS = 0; // Success
+	const UNBLOCK_NO_SUCH_ID = 1; // No such block ID
+	const UNBLOCK_USER_NOT_BLOCKED = 2; // IP wasn't blocked
+	const UNBLOCK_UNKNOWNERR = 3; // Unknown error
 
-		if ( $this->id ) {
-			$block = Block::newFromID( $this->id );
-			if ( $block ) {
-				$this->ip = $block->getRedactedName();
+	/**
+	 * Backend code for unblocking. doSubmit() wraps around this.
+	 * Returns one of UNBLOCK_*
+	 */
+
+	static function doUnblock(&$id, &$ip, &$reason)
+	{
+		if ( $id ) {
+			$block = Block::newFromID( $id );
+			if ( !$block ) {
+				return self::UNBLOCK_NO_SUCH_ID;
 			}
+			$ip = $block->getRedactedName();
 		} else {
 			$block = new Block();
-			$this->ip = trim( $this->ip );
-			if ( substr( $this->ip, 0, 1 ) == "#" ) {
-				$id = substr( $this->ip, 1 );
+			$ip = trim( $ip );
+			if ( substr( $ip, 0, 1 ) == "#" ) {
+				$id = substr( $ip, 1 );
 				$block = Block::newFromID( $id );
+				if( !$block ) {
+					return self::UNBLOCK_NO_SUCH_ID;
+				}
 			} else {
-				$block = Block::newFromDB( $this->ip );
+				$block = Block::newFromDB( $ip );
 				if ( !$block ) { 
-					$block = null;
+					return self::UNBLOCK_USER_NOT_BLOCKED;
 				}
 			}
 		}
-		$success = false;
-		if ( $block ) {
-			# Delete block
-			if ( $block->delete() ) {
-				# Make log entry
-				$log = new LogPage( 'block' );
-				$log->addEntry( 'unblock', Title::makeTitle( NS_USER, $this->ip ), $this->reason );
-				$success = true;
-			}
+		// Yes, this is really necessary
+		$id = $block->mId;
+
+		# Delete block
+		$dbw = wfGetDB( DB_MASTER );
+		$dbw->begin();
+		if ( !$block->delete() ) {
+			return self::UNBLOCK_UNKNOWNERR;
 		}
 
-		if ( $success ) {
+		# Make log entry
+		$log = new LogPage( 'block' );
+		$log->addEntry( 'unblock', Title::makeTitle( NS_USER, $ip ), $reason );
+		$dbw->commit();
+		return self::UNBLOCK_SUCCESS;
+	}
+
+	function doSubmit() {
+		global $wgOut;
+		$retval = self::doUnblock(&$this->id, &$this->ip, &$this->reason);
+		if($retval == self::UNBLOCK_SUCCESS) {
 			# Report to the user
 			$titleObj = SpecialPage::getTitleFor( "Ipblocklist" );
 			$success = $titleObj->getFullURL( "action=success&successip=" . urlencode( $this->ip ) );
 			$wgOut->redirect( $success );
-		} else {
+		} else { // UI code doesn't distinguish between errors. Maybe it should
 			if ( !$this->ip && $this->id ) {
 				$this->ip = '#' . $this->id;
 			}
