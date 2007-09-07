@@ -1115,7 +1115,7 @@ class BotQueryProcessor {
 		{
 			if ($wgContLang->getNsText($cpnamespace) === false)
 				$this->dieUsage( "cpnamespace is invalid", "cp_badnamespace" );
-			$tables[] = 'page';
+			array_unshift($tables,'page');
 			$conds[] = 'cl_from = page_id';
 			$conds['page_namespace'] = $cpnamespace;
 		}
@@ -1134,7 +1134,7 @@ class BotQueryProcessor {
 			$fields,
 			$conds,
 			__METHOD__,
-			array( 'ORDER BY' => 'cl_sortkey', 'LIMIT' => $cplimit+1 ));
+			array( 'ORDER BY' => 'cl_sortkey', 'LIMIT' => $cplimit+1, 'USE INDEX' => 'cl_sortkey' ));
 		$this->endDbProfiling( $prop );
 
 		$count = 0;
