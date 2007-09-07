@@ -367,27 +367,30 @@ class ExpressionController extends DefaultUpdateController {
 
 class ObjectAttributeValuesController extends DefaultUpdateController {
 	protected $objectIdFetcher;
+	protected $attributeIDFilter;
+	protected $levelName;
 	
-	public function __construct(ContextFetcher $objectIdFetcher) {
+	public function __construct(ContextFetcher $objectIdFetcher, $levelName, AttributeIDFilter $attributeIDFilter) {
 		$this->objectIdFetcher = $objectIdFetcher;
+		$this->attributeIDFilter = $attributeIDFilter;
+		$this->levelName = $levelName;
+	}
+
+	protected function determineAttributeId(IdStack $idPath, $annotationType, $attributeIdFromRecord) {
+		$classAttributes = $idPath->getClassAttributes()->filterClassAttributesOnLevelAndType($this->levelName, $annotationType);
+		$classAttributes = $this->attributeIDFilter->filter($classAttributes);
+		
+		if (count($classAttributes) == 1)
+			return $classAttributes[0];
+		else
+			return $attributeIdFromRecord;
 	}
 }
 
 class DefinedMeaningAttributeValuesController extends ObjectAttributeValuesController {
-	protected $attributeIDFilter;
-
-	public function __construct(ContextFetcher $objectIdFetcher, AttributeIDFilter $attributeIDFilter) {
-		parent::__construct($objectIdFetcher);
-		
-		$this->attributeIDFilter = $attributeIDFilter;
-	}
-	
 	public function add(IdStack $idPath, $record)  {
-//		if ($this->allowedAttributeIDs != null && count($this->allowedAttributeIDs) == 1)
-//			echo "Allowed attribute: " . $this->allowedAttributeIDs[0];
-		
 		$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
-		$definedMeaningAttributeId = $record->relationType;
+		$definedMeaningAttributeId = $this->determineAttributeId($idPath, "DM", $record->relationType);
 		$definedMeaningValue = $record->otherDefinedMeaning;
 		
 		if ($definedMeaningAttributeId != 0 && $definedMeaningValue != 0) 		
@@ -403,7 +406,7 @@ class DefinedMeaningAttributeValuesController extends ObjectAttributeValuesContr
 class TextAttributeValuesController extends ObjectAttributeValuesController {
 	public function add(IdStack $idPath, $record)  {
 		$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
-		$textAttributeId = $record->textAttribute;
+		$textAttributeId = $this->determineAttributeId($idPath, "TEXT", $record->textAttribute);
 		$text = $record->text;
 		
 		if ($textAttributeId != 0 && $text != '')		
@@ -435,7 +438,7 @@ class LinkAttributeValuesController extends ObjectAttributeValuesController {
 	
 	public function add(IdStack $idPath, $record)  {
 		$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
-		$linkAttributeId = $record->linkAttribute;
+		$linkAttributeId = $this->determineAttributeId($idPath, "URL", $record->linkAttribute);
 		$linkValue = $record->link;
 		$label = $linkValue->linkLabel;
 		$url = $linkValue->linkURL;		
@@ -463,8 +466,8 @@ class LinkAttributeValuesController extends ObjectAttributeValuesController {
 class TranslatedTextAttributeValuesController extends ObjectAttributeValuesController {
 	protected $filterLanguageId;
 	
-	public function __construct($objectIdFetcher, $filterLanguageId) {
-		parent::__construct($objectIdFetcher);
+	public function __construct(ContextFetcher $objectIdFetcher, $levelName, AttributeIDFilter $attributeIDFilter, $filterLanguageId) {
+		parent::__construct($objectIdFetcher, $levelName, $attributeIDFilter);
 		
 		$this->filterLanguageId = $filterLanguageId;
 	}
@@ -472,7 +475,7 @@ class TranslatedTextAttributeValuesController extends ObjectAttributeValuesContr
 	public function add(IdStack $idPath, $record)  {
 		$objectId = $this->objectIdFetcher->fetch($idPath->getKeyStack());
 		$textValue = $record->translatedTextValue;
-		$textAttributeId = $record->translatedTextAttribute;
+		$textAttributeId = $this->determineAttributeId($idPath, "TRNS", $record->translatedTextAttribute);
 
 		if ($textAttributeId != 0) {
 			if ($this->filterLanguageId == 0) {

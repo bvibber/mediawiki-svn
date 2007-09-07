@@ -2355,8 +2355,14 @@ class DefinedMeaningContextEditor extends WrappingEditor {
 	}
 	
 	public function save(IdStack $idPath, $value) {
-		$idPath->pushDefinedMeaningId($value->definedMeaningId);	
+		$definedMeaningId = (int) $value->definedMeaningId;
+		
+		$idPath->pushDefinedMeaningId($definedMeaningId);	
+		$idPath->pushClassAttributes(new ClassAttributes($definedMeaningId));
+
 		$this->wrappedEditor->save($idPath, $value);
+
+		$idPath->popClassAttributes();
 		$idPath->popDefinedMeaningId();
 	}
 }

@@ -426,11 +426,11 @@ function addObjectAttributesEditors(ObjectAttributeValuesEditor $objectAttribute
 	$attributeIDFilter = $objectAttributesEditor->getAttributeIDfilter();
 	$annotationLevelName = $objectAttributesEditor->getLevelName();
 	
-	$objectAttributesEditor->addEditor(getDefinedMeaningAttributeValuesEditor($viewInformation, new DefinedMeaningAttributeValuesController($annotatedObjectIdFetcher, $attributeIDFilter), $annotationLevelName, $attributeIDFilter));
-	$objectAttributesEditor->addEditor(getTextAttributeValuesEditor($viewInformation, new TextAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));
-	$objectAttributesEditor->addEditor(getTranslatedTextAttributeValuesEditor($viewInformation, new TranslatedTextAttributeValuesController($annotatedObjectIdFetcher, $viewInformation->filterLanguageId), $annotationLevelName, $attributeIDFilter));
-	$objectAttributesEditor->addEditor(getLinkAttributeValuesEditor($viewInformation, new LinkAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));
-	$objectAttributesEditor->addEditor(getOptionAttributeValuesEditor($viewInformation, new OptionAttributeValuesController($annotatedObjectIdFetcher), $annotationLevelName, $attributeIDFilter));
+	$objectAttributesEditor->addEditor(getDefinedMeaningAttributeValuesEditor($viewInformation, new DefinedMeaningAttributeValuesController($annotatedObjectIdFetcher, $annotationLevelName, $attributeIDFilter), $annotationLevelName, $attributeIDFilter));
+	$objectAttributesEditor->addEditor(getTextAttributeValuesEditor($viewInformation, new TextAttributeValuesController($annotatedObjectIdFetcher, $annotationLevelName, $attributeIDFilter), $annotationLevelName, $attributeIDFilter));
+	$objectAttributesEditor->addEditor(getTranslatedTextAttributeValuesEditor($viewInformation, new TranslatedTextAttributeValuesController($annotatedObjectIdFetcher, $annotationLevelName, $attributeIDFilter, $viewInformation->filterLanguageId), $annotationLevelName, $attributeIDFilter));
+	$objectAttributesEditor->addEditor(getLinkAttributeValuesEditor($viewInformation, new LinkAttributeValuesController($annotatedObjectIdFetcher, $annotationLevelName, $attributeIDFilter), $annotationLevelName, $attributeIDFilter));
+	$objectAttributesEditor->addEditor(getOptionAttributeValuesEditor($viewInformation, new OptionAttributeValuesController($annotatedObjectIdFetcher, $annotationLevelName, $attributeIDFilter), $annotationLevelName, $attributeIDFilter));
 }
 
 function createObjectAttributesEditor(ViewInformation $viewInformation, Attribute $attribute, $propertyCaption, $valueCaption, Attribute $idAttribute, $levelName, AttributeIDFilter $attributeIDFilter) {
