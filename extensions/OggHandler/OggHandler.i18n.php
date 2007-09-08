@@ -92,7 +92,7 @@ $messages = array(
 		'ogg-player-soundthumb'   => 'Kein Player',
 		'ogg-player-selected'     => '(ausgewählt)',
 		'ogg-use-player'          => 'Abspielsoftware: ',
-		'ogg-more'                => 'Mehr …',
+		'ogg-more'                => 'Optionen …',
 		'ogg-dismiss'             => 'Schließen',
 		'ogg-download'            => 'Datei speichern',
 		'ogg-desc-link'           => 'Über diese Datei',
@@ -145,6 +145,92 @@ $messages = array(
 		'ogg-desc-link' => 'Wo tutej dataji',
 	),
 
+	'kk-kz' => array(
+		'ogg-short-audio'      => 'Ogg $1 дыбыс файлы, $2',
+		'ogg-short-video'      => 'Ogg $1 бейне файлы, $2',
+		'ogg-short-general'    => 'Ogg $1 таспа файлы, $2',
+		'ogg-long-audio'       => '(Ogg $1 дыбыс файлы, ұзақтығы $2, $3)',
+		'ogg-long-video'       => '(Ogg $1 бейне файлы, ұзақтығы $2, $4 × $5 пиксел, $3)',
+		'ogg-long-multiplexed' => '(Ogg құрамды дыбыс/бейне файлы, $1, ұзақтығы $2, $4 × $5 пиксел, $3 не барлығы)',
+		'ogg-long-general'     => '(Ogg таспа файлы, ұзақтығы $2, $3)',
+		'ogg-long-error'       => '(Жарамсыз ogg файлы: $1)',
+		'ogg-play'             => 'Ойнату',
+		'ogg-pause'            => 'Аялдату',
+		'ogg-stop'             => 'Тоқтату',
+		'ogg-play-video'       => 'Бейнені ойнату',
+		'ogg-play-sound'       => 'Дыбысты ойнату',
+		'ogg-no-player'        => 'Ғафу етіңіз, жүйеңізде еш сүйемелдеген ойнату бағдарламалық қамтамасыздандырғыш орнатылмаған. ' . 
+			'<a href="http://www.java.com/en/download/manual.jsp">Java</a> бумасын орнатып шығыңыз.',
+		'ogg-player-videoElement' => '<video> данасы',
+		'ogg-player-oggPlugin' => 'Ogg қосымша бағдарламасы',
+
+		'ogg-player-thumbnail' => 'Тек стоп-кадр',
+		'ogg-player-soundthumb' => 'Ойнатқышсыз',
+		'ogg-player-selected'  => '(бөлектелген)',
+		'ogg-use-player'       => 'Ойнатқыш пайдалануы: ',
+		'ogg-more'             => 'Көбірек...',
+		'ogg-dismiss'          => 'Жабу',
+		'ogg-download'         => 'Файлды жүктеу',
+		'ogg-desc-link'        => 'Бұл файл туралы',
+	),
+
+	'kk-tr' => array(
+		'ogg-short-audio'      => 'Ogg $1 dıbıs faýlı, $2',
+		'ogg-short-video'      => 'Ogg $1 beýne faýlı, $2',
+		'ogg-short-general'    => 'Ogg $1 taspa faýlı, $2',
+		'ogg-long-audio'       => '(Ogg $1 dıbıs faýlı, uzaqtığı $2, $3)',
+		'ogg-long-video'       => '(Ogg $1 beýne faýlı, uzaqtığı $2, $4 × $5 pïksel, $3)',
+		'ogg-long-multiplexed' => '(Ogg quramdı dıbıs/beýne faýlı, $1, uzaqtığı $2, $4 × $5 pïksel, $3 ne barlığı)',
+		'ogg-long-general'     => '(Ogg taspa faýlı, uzaqtığı $2, $3)',
+		'ogg-long-error'       => '(Jaramsız ogg faýlı: $1)',
+		'ogg-play'             => 'Oýnatw',
+		'ogg-pause'            => 'Ayaldatw',
+		'ogg-stop'             => 'Toqtatw',
+		'ogg-play-video'       => 'Beýneni oýnatw',
+		'ogg-play-sound'       => 'Dıbıstı oýnatw',
+		'ogg-no-player'        => 'Ğafw etiñiz, jüýeñizde eş süýemeldegen oýnatw bağdarlamalıq qamtamasızdandırğış ornatılmağan. ' . 
+			'<a href="http://www.java.com/en/download/manual.jsp">Java</a> bwmasın ornatıp şığıñız.',
+		'ogg-player-videoElement' => '<video> danası',
+		'ogg-player-oggPlugin' => 'Ogg qosımşa bağdarlaması',
+
+		'ogg-player-thumbnail' => 'Tek stop-kadr',
+		'ogg-player-soundthumb' => 'Oýnatqışsız',
+		'ogg-player-selected'  => '(bölektelgen)',
+		'ogg-use-player'       => 'Oýnatqış paýdalanwı: ',
+		'ogg-more'             => 'Köbirek...',
+		'ogg-dismiss'          => 'Jabw',
+		'ogg-download'         => 'Faýldı jüktew',
+		'ogg-desc-link'        => 'Bul faýl twralı',
+	),
+
+	'kk-cn' => array(
+		'ogg-short-audio'      => 'Ogg $1 دىبىس فايلى, $2',
+		'ogg-short-video'      => 'Ogg $1 بەينە فايلى, $2',
+		'ogg-short-general'    => 'Ogg $1 تاسپا فايلى, $2',
+		'ogg-long-audio'       => '(Ogg $1 دىبىس فايلى, ۇزاقتىعى $2, $3)',
+		'ogg-long-video'       => '(Ogg $1 بەينە فايلى, ۇزاقتىعى $2, $4 × $5 پيكسەل, $3)',
+		'ogg-long-multiplexed' => '(Ogg قۇرامدى دىبىس/بەينە فايلى, $1, ۇزاقتىعى $2, $4 × $5 پيكسەل, $3 نە بارلىعى)',
+		'ogg-long-general'     => '(Ogg تاسپا فايلى, ۇزاقتىعى $2, $3)',
+		'ogg-long-error'       => '(جارامسىز ogg فايلى: $1)',
+		'ogg-play'             => 'ويناتۋ',
+		'ogg-pause'            => 'ايالداتۋ',
+		'ogg-stop'             => 'توقتاتۋ',
+		'ogg-play-video'       => 'بەينەنٸ ويناتۋ',
+		'ogg-play-sound'       => 'دىبىستى ويناتۋ',
+		'ogg-no-player'        => 'عافۋ ەتٸڭٸز, جٷيەڭٸزدە ەش سٷيەمەلدەگەن ويناتۋ باعدارلامالىق قامتاماسىزداندىرعىش ورناتىلماعان. ' . 
+			'<a href="http://www.java.com/en/download/manual.jsp">Java</a> بۋماسىن ورناتىپ شىعىڭىز.',
+		'ogg-player-videoElement' => '<video> داناسى',
+		'ogg-player-oggPlugin' => 'Ogg قوسىمشا باعدارلاماسى',
+
+		'ogg-player-thumbnail' => 'تەك ستوپ-كادر',
+		'ogg-player-soundthumb' => 'ويناتقىشسىز',
+		'ogg-player-selected'  => '(بٶلەكتەلگەن)',
+		'ogg-use-player'       => 'ويناتقىش پايدالانۋى: ',
+		'ogg-more'             => 'كٶبٸرەك...',
+		'ogg-dismiss'          => 'جابۋ',
+		'ogg-download'         => 'فايلدى جٷكتەۋ',
+		'ogg-desc-link'        => 'بۇل فايل تۋرالى',
+	),
 	'nl' => array(
 		'ogg-short-audio' => 'Ogg $1 geluidsbestand, $2',
 		'ogg-short-video' => 'Ogg $1 videobestande, $2',
@@ -256,6 +342,10 @@ $messages = array(
 	),
 );
 
+/* Kazakh default, fallback to kk-kz */
+$messages['kk'] = $messages['kk-kz'];
+
+/* Chinese defaults, fallback to zh-hans */
 $messages['zh'] = $messages['zh-hans'];
 $messages['zh-cn'] = $messages['zh-hans'];
 $messages['zh-hk'] = $messages['zh-hant'];
