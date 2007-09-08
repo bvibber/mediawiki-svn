@@ -466,25 +466,15 @@ class Thread {
 		$this->changeUser = $line->thread_change_user;
 		$this->changeUserText = $line->thread_change_user_text;
 
+		$root_title = Title::makeTitle( $line->page_namespace, $line->page_title );
+		$this->root = new Post($root_title);
+		$this->root->loadPageData($line);
+		$this->rootRevision = $this->root->mLatest;
 	}
 	
 	function initWithReplies( $children ) {
 		
 		$this->replies = $children;
-		
-		/*
-		Root revision is ignored on live threads but will be important when
-		when we save a historical thread, since by that time an edit will
-		have already taken place and it will be more difficult to find
-		the pre-edit revision number. But I hate this.
-		
-		(we could do Revision::getPrevious() we just need to know whether or not
-		there was a new revision saved at save time. make it run then make it right.)
-		
-		TODO this is expensive and should be ripped out.
-		*/
-		$rev = Revision::newFromTitle( $this->root()->getTitle() );
-		$this->rootRevision = $rev->getId();
 		
 		$this->double = clone $this;
 	}
@@ -839,6 +829,7 @@ class Threads {
 		$dbr = wfGetDB( DB_SLAVE );
 		if ( is_array($where) ) $where = $dbr->makeList( $where, LIST_AND );
 		if ( is_array($options) ) $options = implode(',', $options);
+		
 		if( is_array($extra_tables) && count($extra_tables) != 0 ) {
 			$tables = implode(',', $extra_tables) . ', ';
 		} else if ( is_string( $extra_tables ) ) {
@@ -857,11 +848,13 @@ class Threads {
 		$root_test = str_replace( 'thread.', 'children.', $where ); // TODO fragile?
 
 		$sql = <<< SQL
-SELECT children.*, ($root_test) as is_root FROM $tables thread, thread children
-WHERE $where AND
-children.thread_path LIKE CONCAT(thread.thread_path, "%")
+SELECT children.*, child_page.*, ($root_test) as is_root FROM $tables thread, thread children, page child_page
+WHERE $where
+AND children.thread_path LIKE CONCAT(thread.thread_path, "%")
+AND child_page.page_id = children.thread_root
 $options
 SQL;
+	echo($sql);
 		$res = $dbr->query($sql); 
 
 		$threads = array();

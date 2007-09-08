@@ -171,9 +171,9 @@ class LqtView {
 		$g->extendQuery('archived', 'recently-archived',
 		                array('( thread.thread_timestamp >=' . $recentstartdate->text() .
 				      '  OR  rev_timestamp >= ' . $recentstartdate->text() . ')',
-				      'page_id = thread.thread_summary_page', 'page_latest = rev_id'),
+				      'summary_page.page_id = thread.thread_summary_page', 'summary_page.page_latest = rev_id'),
 				array(),
-				array('page', 'revision'));
+				array('page summary_page', 'revision'));
 		return $g;
 	}
 
