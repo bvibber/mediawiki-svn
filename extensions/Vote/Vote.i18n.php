@@ -256,9 +256,87 @@ Gioanin|Gioanin',
 'vote-invalid-choice' => 'Anjeun kudu milih salah sahiji ti nu aya.',
 ),
 
+/* Cantonese (Shinjiman) */
+'yue' => array(
+'vote' => '投票',
+'vote-header' => "你可以響呢度投下'''響呢個世界度至高無尚'''嘅一票！",
+'vote-current' => "你而家係投緊'''$1'''。",
+'vote-legend' => '放或改票',
+'vote-caption' => '你嘅選擇:',
+'vote-choices' => "joker|小丑
+penguin|企鵝
+riddler|謎人",
+'vote-submit' => '投',
+'vote-registered' => '你嘅一票已經記錄咗。',
+'vote-view-results' => '睇結果',
+'vote-results' => '投票結果',
+'vote-results-choice' => '選擇',
+'vote-results-count' => '數量',
+'vote-results-none' => '響呢個時間無放任何票。',
+'vote-login' => '你一定要$1先可以投票。',
+'vote-login-link' => '登入',
+'vote-invalid-choice' => '你一定要響可以揀嘅選項度揀一個。',
+),
+
+/* Chinese (Simplified) (Shinjiman) */
+'zh-hans' => array(
+'vote' => '投票',
+'vote-header' => "您可以在这里投下'''在这个世界中至高无尚'''的一票！",
+'vote-current' => "您现正为'''$1'''投票。",
+'vote-legend' => '放下或更改投票',
+'vote-caption' => '您的选择:',
+'vote-choices' => "joker|小丑
+penguin|企鹅
+riddler|谜人",
+'vote-submit' => '投票',
+'vote-registered' => '您的一票已经记录。',
+'vote-view-results' => '看结果',
+'vote-results' => '投票结果',
+'vote-results-choice' => '选择',
+'vote-results-count' => '数量',
+'vote-results-none' => '在这个时间无放任何投票。',
+'vote-login' => '您一定要$1先可以投票。',
+'vote-login-link' => '登入',
+'vote-invalid-choice' => '您一定要在可以选择的选项中选择一个。',
+),
+
+/* Chinese (Traditonal) (Shinjiman) */
+'zh-hant' => array(
+'vote' => '投票',
+'vote-header' => "您可以在這裡投下'''在這個世界中至高無尚'''的一票！",
+'vote-current' => "您現正為'''$1'''投票。",
+'vote-legend' => '放下或更改投票',
+'vote-caption' => '您的選擇:',
+'vote-choices' => "joker|小丑
+penguin|企鵝
+riddler|謎人",
+'vote-submit' => '投票',
+'vote-registered' => '您的一票已經記錄。',
+'vote-view-results' => '看結果',
+'vote-results' => '投票結果',
+'vote-results-choice' => '選擇',
+'vote-results-count' => '數量',
+'vote-results-none' => '在這個時間無放任何投票。',
+'vote-login' => '您一定要$1先可以投票。',
+'vote-login-link' => '登入',
+'vote-invalid-choice' => '您一定要在可以選擇的選項中選擇一個。',
+),
+
 	);
+
+	/* Chinese defaults, fallback to zh-hans */
+	$messages['zh'] = $messages['zh-hans'];
+	$messages['zh-cn'] = $messages['zh-hans'];
+	$messages['zh-hk'] = $messages['zh-hant'];
+	$messages['zh-sg'] = $messages['zh-hans'];
+	$messages['zh-tw'] = $messages['zh-hant'];
+
+	/* Cantonese default, fallback to yue */
+	$messages['zh-yue'] = $messages['yue'];
+
 	return $messages;
 }
+
 
 
 

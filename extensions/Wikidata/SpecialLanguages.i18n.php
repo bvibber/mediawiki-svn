@@ -42,5 +42,20 @@ $wgLanguageManagerMessages['nl'] = array(
 $wgLanguageManagerMessages['sk'] = array(
 	'langman_title' => 'Správca jazykov',
 );
+$wgLanguageManagerMessages['zh-hans'] = array(
+	'langman_title' => '语言管理员',
+	'languages'=>'Wikidata: 语言管理员',
+);
+$wgLanguageManagerMessages['zh-hant'] = array(
+	'langman_title' => '語言管理員',
+	'languages'=>'Wikidata: 語言管理員',
+);
 
+$wgLanguageManagerMessages['yue'] = $wgLanguageManagerMessages['zh-hant'];
+$wgLanguageManagerMessages['zh'] = $wgLanguageManagerMessages['zh-hans'];
+$wgLanguageManagerMessages['zh-cn'] = $wgLanguageManagerMessages['zh-hans'];
+$wgLanguageManagerMessages['zh-hk'] = $wgLanguageManagerMessages['zh-hant'];
+$wgLanguageManagerMessages['zh-sg'] = $wgLanguageManagerMessages['zh-hans'];
+$wgLanguageManagerMessages['zh-tw'] = $wgLanguageManagerMessages['zh-hant'];
+$wgLanguageManagerMessages['zh-yue'] = $wgLanguageManagerMessages['yue'];
 

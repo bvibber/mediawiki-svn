@@ -542,7 +542,7 @@ function efBadImageMessages() {
 'badimages-log-remove' => '已经由坏图像列表中移除 [[$1]]',
 ),
 
-/* Chinese (Hong Kong) (Shinjiman) */
+/* Chinese (Traditional) (Shinjiman) */
 'zh-hant' => array(
 'badimages' => '壞圖像列表',
 'badimages-add-btn' => '加入',
@@ -578,6 +578,7 @@ function efBadImageMessages() {
 	return $messages;
 
 }
+
 
 
 
