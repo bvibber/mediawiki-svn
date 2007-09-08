@@ -151,7 +151,16 @@ var wgOggPlayer = {
 		if(navigator.mimeTypes && navigator.mimeTypes.length > 0) {
 			for ( var i = 0; i < navigator.mimeTypes.length; i++) {
 				var type = navigator.mimeTypes[i].type;
+				var semicolonPos = type.indexOf( ';' );
+				if ( semicolonPos > -1 ) {
+					type = type.substr( 0, semicolonPos );
+				}
+
 				var pluginName = navigator.mimeTypes[i].enabledPlugin ? navigator.mimeTypes[i].enabledPlugin.name : '';
+				if ( !pluginName ) {
+					// In case it is null or undefined
+					pluginName = '';
+				}
 				if ( type == 'application/ogg' ) {
 					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
 						this.clientSupports['vlc-mozilla'] = true;
@@ -166,6 +175,10 @@ var wgOggPlayer = {
 				if ( javaEnabled && type == 'application/x-java-applet' ) {
 					this.clientSupports['cortado'] = true;
 					continue;
+				}
+				// Hack for Opera
+				if ( type == 'application/x-vlc-plugin' ) {
+					this.clientSupports['vlc-mozilla'] = true;
 				}
 			}
 		}
@@ -465,7 +478,7 @@ var wgOggPlayer = {
 		// In Opera, document.createElement('applet') immediately creates
 		// a non-working applet with unchangeable parameters, similar to the 
 		// problem with IE and ActiveX. 
-		elt.innerHTML = '<div>' +
+		var html =
 		    '<applet code="com.fluendo.player.Cortado.class" ' +
 		    '      width=' + this.hq( params.width ) +
 		    '      height=' + this.hq( playerHeight ) + 
@@ -476,15 +489,33 @@ var wgOggPlayer = {
 		    '  <param name="autoPlay" value="true"/>' +
 		    '  <param name="showStatus"  value="show"/>' +
 		    '  <param name="statusHeight"  value="' + statusHeight + '"/>' +
-		    '</applet>' +
-			'</div>';
+		    '</applet>';
 
-		// Disable autoPlay in the DOM right now, to prevent Mozilla from 
-		// restarting an arbitrary number of applet instances on a back button click.
-		// Unfortunately this means that some clients (e.g. Opera) won't autoplay at all
-		var videoElt = elt.getElementsByTagName( 'div' ) [0] . 
-			getElementsByTagName( 'applet' )[0];
-		this.setParam( videoElt, 'autoPlay', '' );
+		// Wrap it in an iframe to avoid hanging the rendering thread in FF 2.0 and similar
+		if ( navigator.appName != "Microsoft Internet Explorer" ) {
+			var iframeHtml = '<html><body>' + html + '</body></html>';
+			var iframeJs = 'parent.wgOggPlayer.writeApplet(self, "' + iframeHtml.replace( /"/g, '\\"' ) + '");';
+			var iframeUrl = 'javascript:' + encodeURIComponent( iframeJs );
+				'document.write("' + iframeHtml.replace( /"/g, '\\"' ) + '");';
+			html = '<iframe width=' + this.hq( params.width ) + 
+				'     height=' + this.hq( playerHeight ) + 
+				'     scrolling="no" frameborder="0" marginwidth="0" marginheight="0"' +
+				'     src=' + this.hq( iframeUrl ) + '/>';
+		}
+		elt.innerHTML = '<div>' + html + '</div>';
+	},
+
+	'writeApplet' : function ( win, html ) {
+		win.document.write( html );
+		win.stop();
+		// Disable autoplay on back button
+		this_ = this;
+		win.setTimeout( 
+			function () { 
+				this_.setParam( win.document.applets[0], 'autoPlay', '' ); 
+			}, 
+			1 
+		);
 	},
 
 	'embedQuicktimePlugin': function ( elt, params ) {
