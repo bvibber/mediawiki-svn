@@ -37,7 +37,7 @@ if (defined('MEDIAWIKI')) {
 	# If false, works like "Order Deny,Allow" in Apache; allow by default,
 	# deny items in deny that aren't in allow.
 
-	$wgOpenIDConsumerDenyByDefault = true;
+	$wgOpenIDConsumerDenyByDefault = false;
 
 	# Which partners to allow; regexps here. See above.
 
@@ -57,6 +57,12 @@ if (defined('MEDIAWIKI')) {
 	# directory to store the data in.
 
 	$wgOpenIDConsumerStorePath = NULL;
+
+	# Expiration time for the OpenID cookie. Lets the user re-authenticate
+	# automatically if their session is expired. Only really useful if
+	# it's much greater than $wgCookieExpiration. Default: about one year.
+
+	$wgOpenIDCookieExpiration = 365 * 24 * 60 * 60;
 
 	function wfSpecialOpenIDLogin($par) {
 		global $wgRequest, $wgUser, $wgOut;
@@ -195,11 +201,24 @@ if (defined('MEDIAWIKI')) {
 
 		wfRunHooks('UserLoginComplete', array(&$wgUser));
 
+		# Set a cookie for later check-immediate use
+
+		OpenIDLoginSetCookie($openid);
+
 		$wgOut->setPageTitle( wfMsg( 'openidsuccess' ) );
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( wfMsg( 'openidsuccess', $wgUser->getName(), $openid ) );
 		$wgOut->returnToMain( );
+	}
+
+	function OpenIDLoginSetCookie($openid) {
+		global $wgCookiePath, $wgCookieDomain, $wgCookieSecure, $wgCookiePrefix;
+		global $wgOpenIDCookieExpiration;
+
+		$exp = time() + $wgOpenIDCookieExpiration;
+
+		setcookie($wgCookiePrefix.'OpenID', $openid, $exp, $wgCookiePath, $wgCookieDomain, $wgCookieSecure);
 	}
 
 	function OpenIDLoginForm() {
@@ -771,3 +790,4 @@ if (defined('MEDIAWIKI')) {
 	}
 }
 
+?>
