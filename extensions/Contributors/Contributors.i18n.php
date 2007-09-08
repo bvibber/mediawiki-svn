@@ -45,6 +45,19 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'An artikulong $1 mayô man.',
 ),
 
+'bn' => array(
+'contributors' => 'অবদানকারী',
+'contributors-toolbox' => 'মূল অবদানকারী',
+'contributors-legend' => 'একটি নিবন্ধে মূল অবদানকারীগণের তালিকা',
+'contributors-target' => 'শিরোনাম:',
+'contributors-submit' => 'দেখাও',
+'contributors-subtitle' => 'মূল অবদানকারী $1',
+'contributors-others-long' => 'এ পাতায় আরও $1 অবদানকারী রয়েছে।',
+'contributors-others' => 'এবং আরও $1',
+'contributors-badtitle' => 'অসিদ্ধ শিরোনাম।',
+'contributors-nosuchpage' => '$1 শিরোনামের কোন নিবন্ধ নাই।',
+),
+
 'br' => array(
 'contributors' => 'Aozerien',
 'contributors-toolbox' => 'Aozerien bennañ',

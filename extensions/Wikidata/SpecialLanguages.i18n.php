@@ -11,6 +11,10 @@ $wgLanguageManagerMessages['en'] = array(
 	'langman_title' => 'Language manager',
 	'languages'=>'Wikidata: Language manager',
 );
+$wgLanguageManagerMessages['bn'] = array(
+	'langman_title' => 'ভাষা ব্যবস্থাপক',
+	'languages' => 'উইকিতথ্য: ভাষা ব্যবস্থাপক',
+);
 $wgLanguageManagerMessages['de'] = array(
 	'langman_title' => 'Sprachmanager',
 );

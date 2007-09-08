@@ -11,6 +11,10 @@ $wgDataSearchMessages['en'] = array(
 	'datasearch' => 'Wikidata: Data search',
 );
 
+$wgDataSearchMessages['bn'] = array(
+	'datasearch' => 'উইকিতথ্য: তথ্য অনুসন্ধান',
+);
+
 $wgDataSearchMessages['fr'] = array(
 	'datasearch' => 'Wikidata: Recherche de données',
 );

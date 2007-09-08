@@ -42,6 +42,14 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Създаване на статия',
 ),
 
+'bn' => array(
+	'inputbox-error-no-type'  => 'আপনি ইনপুট বক্স তৈরির জন্য ইনপুট বক্সের ধরণ নির্ধারণ করেননি।',
+	'inputbox-error-bad-type' => '"$1" ধরণের ইনপুট বক্স নেই। দয়া করে "create", "comment", "search" অথবা "search2" নির্ধারণ করুন।',
+	'tryexact'                => 'ঠিক এই নামের নিবন্ধে যান',
+	'searchfulltext'          => 'সব বিষয়বস্তুতে খুঁজুন',
+	'createarticle'           => 'নিবন্ধ শুরু করুন',
+),
+
 'br' => array(
 	'tryexact'       => 'Klask ma klotfe rik',
 	'searchfulltext' => 'Klask an destenn a-bezh',

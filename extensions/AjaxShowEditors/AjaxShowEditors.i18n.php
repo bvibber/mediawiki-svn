@@ -13,6 +13,11 @@ $wgAjaxShowEditorsMessages['ar'] = array(
 	'ajax-se-pending' => 'انتظار التحديث ... (اضغط على هذا الصندوق أو ابدأ في التحرير)',
 	'ajax-se-idling' => '(منذ $1ث)',
 );
+$wgAjaxShowEditorsMessages['bn'] = array(
+	'ajax-se-title' => 'বর্তমানে সম্পাদনা করছেন:',
+	'ajax-se-pending' => 'সতেজ(refresh) করা বাকী আছে... (এই বাক্সে ক্লিক করুন অথবা সম্পাদনা শুরু করুন)',
+	'ajax-se-idling' => '($1সেকেন্ড পূর্বে)',
+);
 $wgAjaxShowEditorsMessages['br'] = array(
 	'ajax-se-title' => 'Oc\'h adaozañ :',
 	'ajax-se-pending' => 'trevell war ar stern ... (klikit war ar voest-mañ pe krogit da zegas kemmoù)',
