@@ -192,8 +192,8 @@ class OggHandler extends MediaHandler {
 			$height = empty( $params['height'] ) ? 20 : $params['height'];
 			if ( $noPlayer ) {
 				if ( $height > 100 ) {
-					global $wgScriptPath;
-					$iconUrl = "$wgScriptPath/skins/common/images/icons/fileicon-ogg.png";
+					global $wgStylePath;
+					$iconUrl = "$wgStylePath/common/images/icons/fileicon-ogg.png";
 					return new ThumbnailImage( $file, $iconUrl, 120, 120 );
 				} else {
 					$scriptPath = self::getMyScriptPath();
@@ -498,9 +498,9 @@ class OggTransformOutput extends MediaTransformOutput {
 			// Sound file
 			if ( $height > 100 ) {
 				// Use a big file icon
-				global $wgScriptPath;
+				global $wgStylePath;
 				$imgAttribs = array( 
-					'src' => "$wgScriptPath/skins/common/images/icons/fileicon-ogg.png",
+					'src' => "$wgStylePath/common/images/icons/fileicon-ogg.png",
 					'width' => 125,
 					'height' => 125,
 				);
