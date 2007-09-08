@@ -33,9 +33,9 @@ def extractUrl(line):
 	# $hostname %sn %ts.%03tu %tr %>a %Ss/%03Hs %<st %rm %ru %Sh/%<A %mt %{Referer}>h %{X-Forwarded-For}>h %{User-Agent}>h
 	# ...
 	# 9. URL
-	bits = line.split(" ", 9)
-	if len(bits) > 8 and bits[7] == "GET":
-		return bits[8]
+	bits = line.split(" ", 10)
+	if len(bits) > 9 and bits[8] == "GET":
+		return bits[9]
 	else:
 		return None
 
