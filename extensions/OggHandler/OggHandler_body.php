@@ -24,6 +24,7 @@ class OggHandler extends MediaHandler {
 		return array( 
 			'img_width' => 'width',
 			'ogg_noplayer' => 'noplayer',
+			'ogg_noicon' => 'noicon',
 			'ogg_thumbtime' => 'thumbtime',
 		);
 	}
@@ -178,6 +179,7 @@ class OggHandler extends MediaHandler {
 		$height = $srcWidth == 0 ? $srcHeight : $width * $srcHeight / $srcWidth;
 		$length = $this->getLength( $file );
 		$noPlayer = isset( $params['noplayer'] );
+		$noIcon = isset( $params['noicon'] );
 
 		if ( !$noPlayer ) {
 			// Hack for miscellaneous callers
@@ -204,7 +206,7 @@ class OggHandler extends MediaHandler {
 			} else {
 				$width = $params['width'];
 			}
-			return new OggAudioDisplay( $file, $file->getURL(), $width, $height, $length, $dstPath );
+			return new OggAudioDisplay( $file, $file->getURL(), $width, $height, $length, $dstPath, $noIcon );
 		}
 
 		// Video thumbnail only
@@ -450,7 +452,9 @@ EOT
 class OggTransformOutput extends MediaTransformOutput {
 	static $serial = 0;
 
-	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, $isVideo, $path ) {
+	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, $isVideo, 
+		$path, $noIcon = false ) 
+	{
 		$this->file = $file;
 		$this->videoUrl = $videoUrl;
 		$this->url = $thumbUrl;
@@ -459,6 +463,7 @@ class OggTransformOutput extends MediaTransformOutput {
 		$this->length = round( $length );
 		$this->isVideo = $isVideo;
 		$this->path = $path;
+		$this->noIcon = $noIcon;
 	}
 
 	function toHtml( $options = array() ) {
@@ -502,7 +507,7 @@ class OggTransformOutput extends MediaTransformOutput {
 			} else {
 				 // make an icon later if necessary
 				$imgAttribs = false;
-				$showDescIcon = true;
+				$showDescIcon = !$this->noIcon;
 				//$thumbDivAttribs = array( 'style' => 'text-align: right;' );
 			}
 			$msgStartPlayer = wfMsg( 'ogg-play-sound' );
@@ -525,9 +530,11 @@ class OggTransformOutput extends MediaTransformOutput {
 				$descIcon = Xml::tags( 'a', $linkAttribs, 
 					Xml::element( 'img', $imgAttribs, null ) );
 				$thumb = '';
-			} else {
+			} elseif ( $imgAttribs ) {
 				$thumb = Xml::tags( 'a', $linkAttribs, 
 					Xml::element( 'img', $imgAttribs, null ) );
+			} else {
+				$thumb = '';
 			}
 			$linkUrl = $linkAttribs['href'];
 		} else {
@@ -582,13 +589,13 @@ class OggTransformOutput extends MediaTransformOutput {
 
 class OggVideoDisplay extends OggTransformOutput {
 	function __construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, $path ) {
-		parent::__construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, true, $path );
+		parent::__construct( $file, $videoUrl, $thumbUrl, $width, $height, $length, true, $path, false );
 	}
 }
 
 class OggAudioDisplay extends OggTransformOutput {
-	function __construct( $file, $videoUrl, $width, $height, $length, $path ) {
-		parent::__construct( $file, $videoUrl, false, $width, $height, $length, false, $path );
+	function __construct( $file, $videoUrl, $width, $height, $length, $path, $noIcon = false ) {
+		parent::__construct( $file, $videoUrl, false, $width, $height, $length, false, $path, $noIcon );
 	}
 }
 

@@ -266,6 +266,7 @@ $messages['zh-yue'] = $messages['yue'];
 $magicWords = array(
 	'en' => array(
 		'ogg_noplayer' => array( 0, 'noplayer' ),
+		'ogg_noicon' => array( 0, 'noicon' ),
 		'ogg_thumbtime' => array( 0, 'thumbtime=$1' ),
 	),
 );
