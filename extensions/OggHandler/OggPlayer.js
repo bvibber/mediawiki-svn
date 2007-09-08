@@ -123,6 +123,14 @@ var wgOggPlayer = {
 		// navigator.javaEnabled() only tells us about preferences, we need to
 		// search navigator.mimeTypes to see if it's installed
 		var javaEnabled = navigator.javaEnabled();
+		var uniqueMimesOnly = ( navigator.appName == 'Opera' );
+		var invisibleJava = ( navigator.appName == 'Opera' );
+
+		// Opera will switch off javaEnabled in preferences if java can't be found.
+		// And it doesn't register an application/x-java-applet mime type like Mozilla does.
+		if ( invisibleJava && javaEnabled ) {
+			this.clientSupports['cortado'] = true;
+		}
 
 		// ActiveX plugins
 		// VLC
@@ -171,13 +179,12 @@ var wgOggPlayer = {
 					}
 					continue;
 				}
-
 				if ( javaEnabled && type == 'application/x-java-applet' ) {
 					this.clientSupports['cortado'] = true;
 					continue;
 				}
-				// Hack for Opera
-				if ( type == 'application/x-vlc-plugin' ) {
+				if ( uniqueMimesOnly && type == 'application/x-vlc-plugin' ) {
+					// Client does not define multiple mimeType entries for application/ogg
 					this.clientSupports['vlc-mozilla'] = true;
 				}
 			}
