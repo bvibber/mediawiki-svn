@@ -1,3 +1,8 @@
+wikimedia-task-appserver (1.22) feisty; urgency=low
+
+  * Depend on php-pear, needed for OggHandler
+
+ -- Tim Starling <tstarling@wikimedia.org>  Sat, 8 Sep 2007 06:16:00 +0000
 wikimedia-task-appserver (1.21) feisty; urgency=low
 
   * Depend on tetex-extra
