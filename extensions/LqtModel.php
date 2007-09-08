@@ -854,7 +854,7 @@ AND children.thread_path LIKE CONCAT(thread.thread_path, "%")
 AND child_page.page_id = children.thread_root
 $options
 SQL;
-	echo($sql);
+
 		$res = $dbr->query($sql); 
 
 		$threads = array();
