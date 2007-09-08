@@ -17,8 +17,8 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.ranks.RankBuilder;
-import org.wikimedia.lsearch.ranks.Related;
-import org.wikimedia.lsearch.ranks.RelatedTitle;
+import org.wikimedia.lsearch.related.Related;
+import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.util.Localization;
 
 public class IndexUpdatesCollector implements DumpWriter {
@@ -52,7 +52,7 @@ public class IndexUpdatesCollector implements DumpWriter {
 	
 	public void addDeletion(long pageId){
 		// pageId is enough for page deletion
-		Article article = new Article(pageId,-1,"","",false,1);
+		Article article = new Article(pageId,-1,"","",false,1,0);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.DELETE));
 		log.debug(iid+": Deletion for "+pageId);
 	}
@@ -69,7 +69,7 @@ public class IndexUpdatesCollector implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,revision.isRedirect(),
-				references,redirects,new ArrayList<RelatedTitle>(), new ArrayList<String>()); // references and related titles are set correctly later (in incremental updater)
+				references,0,redirects,new ArrayList<RelatedTitle>(), new ArrayList<String>()); // references and related titles are set correctly later (in incremental updater)
 		log.debug("Collected "+article+" with rank "+references+" and "+redirects.size()+" redirects: "+redirects);
 		records.add(new IndexUpdateRecord(iid,article,IndexUpdateRecord.Action.UPDATE));
 		log.debug(iid+": Update for "+article);

@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.ranks;
+package org.wikimedia.lsearch.related;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -14,13 +14,13 @@ import org.wikimedia.lsearch.beans.ArticleLinks;
  * @author rainman
  *
  */
-public class OldLinks {
+public class CompactLinks {
 	protected HashMap<CompactArticleLinks,CompactArticleLinks> links = new HashMap<CompactArticleLinks,CompactArticleLinks>();
 	
-	public OldLinks() {		
+	public CompactLinks() {		
 	}
 	
-	public OldLinks(Collection<CompactArticleLinks> col){
+	public CompactLinks(Collection<CompactArticleLinks> col){
 		for(CompactArticleLinks c : col){
 			links.put(c,c);
 		}
@@ -55,7 +55,7 @@ public class OldLinks {
 		return links.values();
 	}
 	
-	/** Get number of references (links) to article of key */
+	/** Get number of references (links) to article */
 	public int getLinks(String key){
 		CompactArticleLinks c = links.get(new CompactArticleLinks(key));
 		if(c == null)
@@ -77,7 +77,7 @@ public class OldLinks {
 	public void compactAll() {
 		for(CompactArticleLinks r : links.values()){
 			r.compact();
-		}
-		
+		}		
 	}
+	
 }

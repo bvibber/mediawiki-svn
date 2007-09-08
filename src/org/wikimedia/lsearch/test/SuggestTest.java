@@ -39,7 +39,7 @@ public class SuggestTest {
 		int bad=0;
 		long start = System.currentTimeMillis();
 		for(String[] m : DATA){
-			ArrayList<SuggestResult> res = sc.suggestWords(m[0],new NamespaceFilter(0),5);
+			ArrayList<SuggestResult> res = sc.suggestWords(m[0],5);
 			if(res.size() > 0){
 				SuggestResult r = res.get(0);
 				if(r.getWord().equals(m[1]))
@@ -48,7 +48,7 @@ public class SuggestTest {
 						&& res.get(1).getWord().equals(m[1]))
 					good++;
 				else if(r.getDist() > 1){
-					SuggestResult split = sc.suggestSplit(m[0],new NamespaceFilter(0),0);
+					SuggestResult split = sc.suggestSplit(m[0],0);
 					if(split!=null && m[1].equals(split.getWord()))
 						good++;
 					else{

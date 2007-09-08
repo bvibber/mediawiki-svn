@@ -18,9 +18,11 @@ import org.apache.lucene.search.Filter;
  */
 public class NamespaceCompositeFilter extends Filter {
 	protected ArrayList<Filter> filters;
+	protected ArrayList<Filter> redirects;
 	
-	public NamespaceCompositeFilter(ArrayList<Filter> filters){
+	public NamespaceCompositeFilter(ArrayList<Filter> filters, ArrayList<Filter> redirects){
 		this.filters = filters;
+		this.redirects = redirects;
 	}
 	
 	@Override
@@ -30,6 +32,10 @@ public class NamespaceCompositeFilter extends Filter {
 		// do logical OR to get composite filter
 		for(Filter f : filters){
 			bits.or(f.bits(reader));
+		}
+		// delete cross-namespace redirects
+		for(Filter f : redirects){
+			bits.andNot(f.bits(reader));
 		}
 
 		return bits;

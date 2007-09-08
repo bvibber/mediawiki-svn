@@ -146,7 +146,7 @@ public class Suggest {
 	 * @throws IOException 
 	 */
 	@SuppressWarnings("unchecked")
-	public SuggestQuery suggest(String searchterm, WikiQueryParser parser, NamespaceFilter nsf, SearchResults res) throws IOException{
+	public SuggestQuery suggest(String searchterm, WikiQueryParser parser, SearchResults res) throws IOException{
 		ArrayList<Token> tokens = parser.tokenizeBareText(searchterm);
 		
 		// collect words in titles, these shouldn't be spell-checked
@@ -249,9 +249,9 @@ public class Suggest {
 			// suggest word
 			ArrayList<SuggestResult> sug;
 			if(correctWords.contains(w))
-				sug = suggestWords(w,w,nsf,POOL/2,POOL/2);
+				sug = suggestWords(w,w,POOL/2,POOL/2);
 			else
-				sug = suggestWords(w,nsf,POOL);
+				sug = suggestWords(w,POOL);
 			if(sug.size() > 0){
 				wordSug.add(sug);
 				SuggestResult maybeStopWord = null;
@@ -278,7 +278,7 @@ public class Suggest {
 				possibleStopWords.add(null);
 			}
 			// suggest split
-			SuggestResult split = suggestSplit(w,nsf,minFreq);
+			SuggestResult split = suggestSplit(w,minFreq);
 			if(split != null){
 				Change sc = new Change(split.dist,split.frequency,Change.Type.SPLIT);
 				sc.substitutes.put(i,split.word.replace("_"," "));
@@ -288,7 +288,7 @@ public class Suggest {
 			if(i-1 >= 0 
 					&& (wordSug.get(i-1)==null || wordSug.get(i-1).get(0).dist!=0)
 					&& (wordSug.get(i)==null || wordSug.get(i).get(0).dist!=0)){
-				SuggestResult join = suggestJoin(tokens.get(i-1).termText(),w,nsf,minFreq);
+				SuggestResult join = suggestJoin(tokens.get(i-1).termText(),w,minFreq);
 				if(join != null){
 					Change sc = new Change(join.dist,join.frequency,Change.Type.JOIN);
 					sc.substitutes.put(i-1,""); 
@@ -350,8 +350,7 @@ public class Suggest {
 						TermDocs td = reader.termDocs(new Term("phrase",phrase));
 						if(td.next()){
 							int docid = td.doc();
-							String f = reader.document(docid).get("freq");
-							freq = Integer.parseInt(f.substring(2,f.length()-1));
+							freq = Integer.parseInt(reader.document(docid).get("freq"));
 							String it = reader.document(docid).get("intitle");
 							if(it!=null && it.equals("1"))
 								inTitle = true;
@@ -565,12 +564,12 @@ public class Suggest {
 		return new Object[] {proposedChanges, preservedWords};
 	}
 	
-	public ArrayList<SuggestResult> suggestWords(String word, NamespaceFilter nsf, int num){
-		ArrayList<SuggestResult> r1 = suggestWords(word,word,nsf,POOL,POOL);
+	public ArrayList<SuggestResult> suggestWords(String word, int num){
+		ArrayList<SuggestResult> r1 = suggestWords(word,word,POOL,POOL);
 		if(r1 != null && r1.size() > 0){
 			if(r1.get(0).dist == 0)
 				return r1;
-			ArrayList<SuggestResult> r2 = suggestWords(word,r1.get(0).word,nsf,POOL/2,POOL/2);
+			ArrayList<SuggestResult> r2 = suggestWords(word,r1.get(0).word,POOL/2,POOL/2);
 			if(r2 != null && r2.size() > 0){
 				HashSet<SuggestResult> hr = new HashSet<SuggestResult>();
 				hr.addAll(r1); hr.addAll(r2);
@@ -584,23 +583,22 @@ public class Suggest {
 			return r1;
 	}
 	
-	public ArrayList<SuggestResult> suggestWords(String word, String searchword, NamespaceFilter nsf, int num, int pool_size){
+	public ArrayList<SuggestResult> suggestWords(String word, String searchword, int num, int pool_size){
 		Metric metric = new Metric(word);
 		BooleanQuery bq = new BooleanQuery();		
 		bq.add(makeWordQuery(searchword,"word"),BooleanClause.Occur.SHOULD);
 		
 		try {
-			TopDocs docs = searcher.search(bq,new NamespaceFilterWrapper(nsf),pool_size);			
+			TopDocs docs = searcher.search(bq,null,pool_size);			
 			ArrayList<SuggestResult> res = new ArrayList<SuggestResult>();
 			// fetch results, calculate various edit distances
 			for(ScoreDoc sc : docs.scoreDocs){		
 				Document d = searcher.doc(sc.doc);
 				String w = d.get("word");
-				String f = d.get("freq");
 				String meta1 = d.get("meta1");
 				String meta2 = d.get("meta2");
 				SuggestResult r = new SuggestResult(w, // new NamespaceFreq(d.get("freq")).getFrequency(nsf),
-						Integer.parseInt(f.substring(2,f.length()-1)),
+						Integer.parseInt(d.get("freq")),
 						metric, meta1, meta2);			
 				if(acceptWord(r,metric))				
 					res.add(r);
@@ -660,20 +658,20 @@ public class Suggest {
 	}
 	
 	/** Try to split word into 2 words which make up a phrase */
-	public SuggestResult suggestSplit(String word, NamespaceFilter nsf, int minFreq){
+	public SuggestResult suggestSplit(String word, int minFreq){
 		int freq = 0;
 		Hits hits;
 		ArrayList<SuggestResult> res = new ArrayList<SuggestResult>();
 		try {
 			// find frequency
-			hits = searcher.search(new TermQuery(new Term("word",word)),new NamespaceFilterWrapper(nsf));
+			hits = searcher.search(new TermQuery(new Term("word",word)));
 			if(hits.length() == 1)
 				freq = Integer.parseInt(hits.doc(0).get("freq"));
 
 			// try different splits 
 			for(int i=1;i<word.length()-1;i++){
 				String phrase = word.substring(0,i) + "_" + word.substring(i);
-				hits = searcher.search(new TermQuery(new Term("phrase",phrase)),new NamespaceFilterWrapper(nsf));
+				hits = searcher.search(new TermQuery(new Term("phrase",phrase)));
 				if(hits.length() > 0){
 					int pfreq = Integer.parseInt(hits.doc(0).get("freq"));
 					if(pfreq >= freq && pfreq > minFreq)
@@ -692,9 +690,9 @@ public class Suggest {
 	}
 	
 	/** Returns suggestion if joining words makes sense */
-	public SuggestResult suggestJoin(String word1, String word2, NamespaceFilter nsf, int minFreq){
+	public SuggestResult suggestJoin(String word1, String word2, int minFreq){
 		try {
-			Hits hits = searcher.search(new TermQuery(new Term("word",word1+word2)),new NamespaceFilterWrapper(nsf));
+			Hits hits = searcher.search(new TermQuery(new Term("word",word1+word2)));
 			if(hits.length() > 0){
 				int freq = Integer.parseInt(hits.doc(0).get("freq"));
 				if(freq >= minFreq)

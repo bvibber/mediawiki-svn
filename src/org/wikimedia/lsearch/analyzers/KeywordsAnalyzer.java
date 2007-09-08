@@ -19,7 +19,7 @@ import org.apache.lucene.analysis.TokenStream;
  *  ("something different", "other") ->
  *  "something" +1 "different" +201 "other"
  * 
- * Currently used for fields "redirect" and "keyword"
+ * Currently used for field "keyword"
  * 
  * @author rainman
  *
@@ -36,6 +36,8 @@ public class KeywordsAnalyzer extends Analyzer{
 	/** positional increment between different redirects */
 	public static final int TOKEN_GAP = 201;
 
+	protected KeywordsAnalyzer(){}
+	
 	public KeywordsAnalyzer(HashSet<String> keywords, FilterFactory filters, String prefix, boolean exactCase){
 		ArrayList<String> k = new ArrayList<String>();
 		if(keywords != null)
@@ -52,7 +54,7 @@ public class KeywordsAnalyzer extends Analyzer{
 		if(keywords == null){
 			// init empty token streams
 			for(int i=0; i< KEYWORD_LEVELS; i++){
-				tokensBySize[i] = new KeywordsTokenStream(null,filters,exactCase);			
+				tokensBySize[i] = new KeywordsTokenStream(null,filters,exactCase,TOKEN_GAP);			
 			}	
 			return;
 		}
@@ -70,7 +72,7 @@ public class KeywordsAnalyzer extends Analyzer{
 				keywordsBySize.get(KEYWORD_LEVELS-1).add(k);
 		}		
 		for(int i=0; i< KEYWORD_LEVELS; i++){
-			tokensBySize[i] = new KeywordsTokenStream(keywordsBySize.get(i),filters,exactCase);			
+			tokensBySize[i] = new KeywordsTokenStream(keywordsBySize.get(i),filters,exactCase,TOKEN_GAP);			
 		}
 	}
 	
@@ -80,7 +82,7 @@ public class KeywordsAnalyzer extends Analyzer{
 			int inx = Integer.parseInt(fieldName.substring(prefix.length()));
 			return tokensBySize[inx-1];
 		} else{
-			log.error("Trying to get tokenStream for wrong field "+fieldName);
+			log.error("Trying to get tokenStream for wrong field "+fieldName+", expecting "+prefix);
 			return null;
 		}
 	}
@@ -95,13 +97,15 @@ public class KeywordsAnalyzer extends Analyzer{
 		protected int index;
 		protected String keyword;
 		protected TokenStream tokens;
+		protected int tokenGap;
 		
-		public KeywordsTokenStream(ArrayList<String> keywords, FilterFactory filters, boolean exactCase){
+		public KeywordsTokenStream(ArrayList<String> keywords, FilterFactory filters, boolean exactCase, int tokenGap){
 			this.analyzer = new QueryLanguageAnalyzer(filters,exactCase);
 			this.keywords = keywords;
 			this.index = 0;
 			this.keyword = null;
 			this.tokens = null;
+			this.tokenGap = tokenGap;
 		}
 		@Override
 		public Token next() throws IOException {
@@ -117,7 +121,7 @@ public class KeywordsAnalyzer extends Analyzer{
 				if(t == null){
 					t = openNext();
 					if(t != null)
-						t.setPositionIncrement(TOKEN_GAP);
+						t.setPositionIncrement(tokenGap);
 				}
 				return t;
 			} else{

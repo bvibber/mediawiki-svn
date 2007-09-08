@@ -112,7 +112,7 @@ public class HighlightDaemon extends Thread {
 				String title = parts[3];
 				log.debug("Got HIGHLIGHT of size "+size+" on "+ns+":"+title);
 				String content = readString(size);
-				articles.add(new Article(0,ns,title,content,false,1));
+				articles.add(new Article(0,ns,title,content,false,1,0));
 			} else if(line.startsWith("FETCH")){
 				parts = line.split(" ",2);
 				if(parts.length == 2)
@@ -130,7 +130,7 @@ public class HighlightDaemon extends Thread {
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
 		FieldBuilder.BuilderSet bs = new FieldBuilder(lang,dCase).getBuilder(dCase);
 		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),
-				new NamespaceFilter("0"),analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE);
+				new NamespaceFilter("0"),analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE,null);
 		Query q = parser.parseFourPass(query,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 		Scorer scorer = new QueryScorer(q);
 		SimpleHTMLFormatter formatter = new SimpleHTMLFormatter("<span class=\"searchmatch\">","</span>");

@@ -7,6 +7,8 @@ import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.FieldSelector;
+import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.Filter;
@@ -176,6 +178,14 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 			return Arrays.toString(ms.getSearchables());
 		else 
 			return searcher.toString();
+	}
+
+	public Document[] docs(int[] i, FieldSelector sel) throws IOException {
+		return searcher.docs(i,sel);
+	}
+
+	public Document doc(int i, FieldSelector sel) throws CorruptIndexException, IOException {
+		return searcher.doc(i,sel);
 	}
 	
 	

@@ -1,4 +1,4 @@
-package org.wikimedia.lsearch.ranks;
+package org.wikimedia.lsearch.related;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -12,8 +12,6 @@ import org.mediawiki.importer.Page;
 import org.mediawiki.importer.Revision;
 import org.mediawiki.importer.Siteinfo;
 import org.wikimedia.lsearch.beans.ArticleLinks;
-import org.wikimedia.lsearch.beans.Title;
-import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
@@ -25,12 +23,11 @@ import org.wikimedia.lsearch.util.Localization;
 public class TitleReader  implements DumpWriter{
 	Page page;
 	Revision revision;
-	Links links;
+	CompactLinks links = new CompactLinks();
 	protected String langCode;
 	
-	public TitleReader(String langCode, IndexId iid) throws IOException{
+	public TitleReader(String langCode){
 		this.langCode = langCode;
-		this.links = Links.createNew(iid);
 	}
 
 	public void writeRevision(Revision revision) throws IOException {
@@ -41,9 +38,9 @@ public class TitleReader  implements DumpWriter{
 	}
 	public void writeEndPage() throws IOException {
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		links.addTitle(new Title(key));
+		links.add(key,0);
 	}
-	public Links getLinks() {
+	public CompactLinks getTitles() {
 		return links;
 	}
 	public void close() throws IOException {
@@ -58,7 +55,6 @@ public class TitleReader  implements DumpWriter{
 		while(it.hasNext()){
 			Entry<Integer,String> pair = (Entry<Integer,String>)it.next();
 			Localization.addCustomMapping(pair.getValue(),pair.getKey(),langCode);
-			links.addToNamespaceMap(pair.getValue(),pair.getKey());
 		}
 	}	
 	public void writeStartWiki() throws IOException {

@@ -10,6 +10,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.log4j.Logger;
+import org.apache.lucene.document.FieldSelector;
+import org.apache.lucene.document.SetBasedFieldSelector;
 import org.mediawiki.importer.DumpWriter;
 import org.mediawiki.importer.Page;
 import org.mediawiki.importer.Revision;
@@ -20,13 +22,14 @@ import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
-import org.wikimedia.lsearch.ranks.CompactArticleLinks;
 import org.wikimedia.lsearch.ranks.Links;
-import org.wikimedia.lsearch.ranks.OldLinks;
 import org.wikimedia.lsearch.ranks.RankBuilder;
-import org.wikimedia.lsearch.ranks.RelatedTitle;
+import org.wikimedia.lsearch.related.CompactArticleLinks;
+import org.wikimedia.lsearch.related.CompactLinks;
+import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.storage.ArticleAnalytics;
 import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
+import org.wikimedia.lsearch.storage.RelatedStorage;
 import org.wikimedia.lsearch.util.Localization;
 
 public class DumpImporter implements DumpWriter {
@@ -37,14 +40,19 @@ public class DumpImporter implements DumpWriter {
 	int count = 0, limit;
 	LinkAnalysisStorage las;
 	String langCode;
+	RelatedStorage related;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
 			Integer maxBufDocs, boolean newIndex, LinkAnalysisStorage las, String langCode){
 		Configuration.open(); // make sure configuration is loaded
-		writer = new SimpleIndexWriter(IndexId.get(dbname), optimize, mergeFactor, maxBufDocs, newIndex);
+		IndexId iid = IndexId.get(dbname);
+		writer = new SimpleIndexWriter(iid, optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;
 		this.las = las;
 		this.langCode = langCode;
+		this.related = new RelatedStorage(iid);
+		if(!related.canRead())
+			related = null; // add only if available
 	}
 	public void writeRevision(Revision revision) throws IOException {
 		this.revision = revision;		
@@ -54,9 +62,10 @@ public class DumpImporter implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		ArticleAnalytics aa = las.getAnalitics(key); 
+		ArticleAnalytics aa = las.getAnaliticsForArticle(key); 
 		int references = aa.getReferences();
 		boolean isRedirect = aa.isRedirect();
+		int redirectTargetNamespace = aa.getRedirectTargetNamespace();
 		
 		// make list of redirects
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
@@ -64,14 +73,18 @@ public class DumpImporter implements DumpWriter {
 		anchors.addAll(aa.getAnchorText());
 		for(String rk : aa.getRedirectKeys()){
 			String[] parts = rk.toString().split(":",2);
-			ArticleAnalytics raa = las.getAnalitics(rk);
+			ArticleAnalytics raa = las.getAnaliticsForReferences(rk);
 			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],raa.getReferences()));
 			anchors.addAll(raa.getAnchorText());
 		}
-		//TODO: ArrayList<RelatedTitle> related = RankBuilder.getRelatedTitles(r,links);  
+		ArrayList<RelatedTitle> rel = null;
+		if(related != null)
+			rel = related.getRelated(key);
+		else
+			rel = new ArrayList<RelatedTitle>();
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
-				references,redirects,new ArrayList<RelatedTitle>(),anchors);
+				references,redirectTargetNamespace,redirects,rel,anchors);
 		writer.addArticle(article);
 		count++;
 		if(limit >= 0 && count > limit)

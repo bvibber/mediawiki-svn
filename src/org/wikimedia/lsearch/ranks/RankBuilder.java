@@ -27,6 +27,10 @@ import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexThread;
+import org.wikimedia.lsearch.related.CompactArticleLinks;
+import org.wikimedia.lsearch.related.CompactLinks;
+import org.wikimedia.lsearch.related.Related;
+import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.spell.SuggestResult;
 import org.wikimedia.lsearch.spell.api.Dictionary;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
@@ -95,14 +99,41 @@ public class RankBuilder {
 			links = processLinks(inputfile,getTitles(inputfile,langCode,iid),langCode);
 		//links.cacheInLinks();
 		/*log.info("Creating ref count cache");
-		HashMap<String,Integer> refCount = new HashMap<String,Integer>();
-		HashMap<Integer,String> keyCache = new HashMap<Integer,String>();
+		HashMap<Integer,Integer> refCache = new HashMap<Integer,Integer>();
+		HashMap<Integer,String> keyCache = new HashMap<Integer,String>();		
+		HashMap<String,Integer> docIdCache = new HashMap<String,Integer>();
 		Word w; Dictionary d = links.getKeys();
 		while((w = d.next()) != null){
 			String key = w.getWord();
-			refCount.put(key,links.getNumInLinks(key));
-			keyCache.put(links.getDocId(key),key);						
-		} */		
+			int docid = links.getDocId(key);
+			refCache.put(docid,links.getNumInLinks(key));
+			keyCache.put(docid,key);
+			docIdCache.put(key,docid);
+		}
+		log.info("Caching in/out links");
+		HashMap<Integer,int[]> outLinkCache = new HashMap<Integer,int[]>();
+		HashMap<Integer,int[]> inLinkCache = new HashMap<Integer,int[]>();
+		// cache in/out links
+		d = links.getKeys();
+		while((w = d.next()) != null){
+			String key = w.getWord();
+			int docid = docIdCache.get(key);
+			Collection<String> in = links.getInLinks(key,keyCache);
+			int[] inset = new int[in.size()];
+			int i=0;
+			for(String k : in)
+				inset[i++] = docIdCache.get(k);
+			inLinkCache.put(docid,inset);
+			
+			Collection<String> out = links.getOutLinks(key).toCollection();
+			int[] outset = new int[out.size()];
+			i = 0;
+			for(String k : out){
+				outset[i++] = docIdCache.get(k);
+			}
+			outLinkCache.put(docid,outset);
+		}
+		storeLinkAnalysis(links,iid,docIdCache,keyCache,refCache,inLinkCache,outLinkCache); */
 		storeLinkAnalysis(links,iid);
 		//Storage store = Storage.getInstance();
 		//store.storePageReferences(links.getAll(),dbname);
@@ -113,6 +144,7 @@ public class RankBuilder {
 		System.out.println("Finished generating ranks in "+formatTime(end-start));
 	}
 
+	//public static void storeLinkAnalysis(Links links, IndexId iid, HashMap<String, Integer> docIdCache, HashMap<Integer, String> keyCache, HashMap<Integer, Integer> refCache, HashMap<Integer, int[]> inLinkCache, HashMap<Integer, int[]> outLinkCache) throws IOException{
 	public static void storeLinkAnalysis(Links links, IndexId iid) throws IOException{
 		log.info("Storing link analysis data");
 		LinkAnalysisStorage store = new LinkAnalysisStorage(iid);
@@ -124,6 +156,7 @@ public class RankBuilder {
 			String redirectTarget = links.getRedirectTarget(key);
 			ArrayList<String> anchor = links.getAnchors(key);
 			ArrayList<Related> related = new ArrayList<Related>(); //FIXME: too slow getRelated(key,links,refCount,keyCache);
+			//ArrayList<Related> related = getRelated(key,links,docIdCache,keyCache,refCache,inLinkCache,outLinkCache);
 			ArrayList<String> redirect = links.getRedirectsTo(key); 
 			store.addAnalitics(new ArticleAnalytics(key,ref,redirectTarget,anchor,related,redirect));
 		}
@@ -138,7 +171,7 @@ public class RankBuilder {
 		try {
 			input = Tools.openInputFile(inputfile);
 		} catch (IOException e) {
-			log.fatal("I/O error opening "+inputfile);
+			log.fatal("I/O error opening "+inputfile+" : "+e.getMessage());
 			return null;
 		}
 		// calculate ranks
@@ -148,7 +181,7 @@ public class RankBuilder {
 			reader.readDump();
 			links.flush();
 		} catch (IOException e) {
-			log.fatal("I/O error reading dump while calculating ranks for from "+inputfile);
+			log.fatal("I/O error reading dump while calculating ranks for from "+inputfile+" : "+e.getMessage());
 			return null;
 		}
 		return links;
@@ -160,7 +193,7 @@ public class RankBuilder {
 		try {
 			input = Tools.openInputFile(inputfile);
 		} catch (IOException e) {
-			log.fatal("I/O error opening "+inputfile);
+			log.fatal("I/O error opening "+inputfile+" : "+e.getMessage());
 			return null;
 		}
 		try {
@@ -173,7 +206,7 @@ public class RankBuilder {
 			links.flush();
 			return links;
 		} catch (IOException e) {
-			log.fatal("I/O error reading dump while getting titles from "+inputfile);
+			log.fatal("I/O error reading dump while getting titles from "+inputfile+" : "+e.getMessage());
 			return null;
 		}
 		
@@ -181,42 +214,44 @@ public class RankBuilder {
 	
 	/** 
 	 * Get related articles, sorted descending by score
+	 * @param docIdCache 
+	 * @param refCache 
+	 * @param outLinkCache 
+	 * @param inLinkCache 
 	 * @throws IOException 
 	 */
-	public static ArrayList<Related> getRelated(String key, Links links, HashMap<String,Integer> refCache, HashMap<Integer,String> keyCache) throws IOException{
+	public static ArrayList<Related> getRelated(String key, Links links, HashMap<String, Integer> docIdCache, HashMap<Integer,String> keyCache, HashMap<Integer, Integer> refCache, HashMap<Integer, int[]> inLinkCache, HashMap<Integer, int[]> outLinkCache) throws IOException{
 		ArrayList<Related> ret = new ArrayList<Related>();
-		
+		int docid = docIdCache.get(key);
+		int[] in = inLinkCache.get(docid);
+		HashSet<Integer> inLinks = new HashSet<Integer>();
+		for(int i : in)
+			inLinks.add(i);
+		/*
 		HashMap<String,Integer> map = new HashMap<String,Integer>();
 		int i = 1;
 		ArrayList<String> inLinks = links.getInLinks(key,keyCache);
 		for(String in : inLinks){
 			map.put(in,i++);
-		}
+		} */
 		HashSet<Long> internal = new HashSet<Long>(); 
-		for(Entry<String,Integer> e : map.entrySet()){
-			String from = e.getKey();
-			long inx = e.getValue();
-			long offset = inx << 32;
-			StringList sl = links.getOutLinks(from);
-			Iterator<String> it = sl.iterator();
-			while(it.hasNext()){
-				Integer inx2 = map.get(it.next());
-				if(inx2 != null){
-					internal.add(offset + inx2);
-				}
+		for(int from : in){
+			long offset = ((long)from) << 32;
+			int[] out = outLinkCache.get(from);
+			for(int o : out){
+				if(inLinks.contains(o))
+					internal.add(offset + o);
 			}
 		}
-		for(Entry<String,Integer> e : map.entrySet()){
-			String from = e.getKey();
-			int inx = e.getValue();
+		for(int from : in){
 			//double score = relatedScore(links,in,from,refCount);
-			double score = relatedScore(inx,internal,inLinks,refCache);
+			double score = relatedScore(from,internal,refCache);
 			if(score != 0)
-				ret.add(new Related(key,from,score));
+				ret.add(new Related(key,keyCache.get(from),score));
 		}
 		Collections.sort(ret,new Comparator<Related>() {
 			public int compare(Related o1, Related o2){
-				double d = o2.score-o1.score;
+				double d = o2.getScore()-o1.getScore();
 				if(d == 0) return 0;
 				else if(d > 0) return 1;
 				else return -1;
@@ -225,14 +260,29 @@ public class RankBuilder {
 		return ret;
 	}
 	
+	private static double relatedScore(int q, HashSet<Long> internal, HashMap<Integer, Integer> refCache) {
+		double score = 0;
+		for(Long l : internal){
+			long l1 = l >> 32;
+			long l2 = l - (l1 << 32);
+			if(l1 == q && l2 == q)
+				continue;
+			else if(l1 == q)
+				score += 1.0/norm(refCache.get((int) (l2)));
+			else if(l2 == q)
+				score += 1.0/norm(refCache.get((int) (l1)));
+		}
+		return score;
+	}
+
 	/**
 	 * Get related titles (RelatedTitle is used in Article)
 	 */
-	public static ArrayList<RelatedTitle> getRelatedTitles(CompactArticleLinks cs, OldLinks links){
+	public static ArrayList<RelatedTitle> getRelatedTitles(CompactArticleLinks cs, CompactLinks links){
 		ArrayList<Related> rel = null; // getRelated(cs,links);
 		ArrayList<RelatedTitle> ret = new ArrayList<RelatedTitle>();
 		for(Related r : rel){
-			ret.add(new RelatedTitle(new Title(r.relates.toString()),r.score));
+			ret.add(new RelatedTitle(new Title(r.getRelates().toString()),r.getScore()));
 		}
 		return ret;
 	}

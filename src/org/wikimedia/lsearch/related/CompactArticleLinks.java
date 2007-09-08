@@ -1,7 +1,8 @@
-package org.wikimedia.lsearch.ranks;
+package org.wikimedia.lsearch.related;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 
@@ -75,6 +76,24 @@ public class CompactArticleLinks{
 		}
 		redirected[redirectedIndex++] = from;
 	}
+	/** set links to this article */
+	public void setInLinks(Collection<CompactArticleLinks> col){
+		linksIn = new CompactArticleLinks[col.size()];
+		int i=0;
+		for(CompactArticleLinks l : col){
+			linksIn[i++] = l;
+		}
+		linksInIndex = col.size();
+	}
+	/** set links from this article */
+	public void setOutLinks(Collection<CompactArticleLinks> col){
+		linksOut = new CompactArticleLinks[col.size()];
+		int i=0;
+		for(CompactArticleLinks l : col){
+			linksOut[i++] = l;
+		}
+		linksOutIndex = col.size();
+	}
 	/** add link to this article */
 	public void addInLink(CompactArticleLinks from){
 		if(linksIn == null)
@@ -96,26 +115,6 @@ public class CompactArticleLinks{
 			linksOut = nv;
 		}
 		linksOut[linksOutIndex++] = to;
-	}
-	
-	public boolean hasLinkFrom(CompactArticleLinks from){
-		if(linksIn == null)
-			return false;
-		// use binary search, assumes linked is sorted
-		int h = from.hashCode();
-		int low = 0;
-		int high = linksIn.length-1;
-
-      while (low <= high) {
-          int mid = (low + high) / 2;
-          if (linksIn[mid].hashCode() > h)
-              high = mid - 1;
-          else if (linksIn[mid].hashCode() < h)
-              low = mid + 1;
-          else
-              return true;
-      }
-      return false;
 	}
 	
 	@Override

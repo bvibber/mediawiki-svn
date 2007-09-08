@@ -1,5 +1,7 @@
 package org.wikimedia.lsearch.util;
 
+import java.util.Arrays;
+
 import org.wikimedia.lsearch.test.MathFuncTest;
 
 public class MathFunc {
@@ -18,8 +20,16 @@ public class MathFunc {
 	 * @return list of discontinuities (begin points of horizontal lines)
 	 */
 	public static int[] partitionList(double[] val, int num){
+		//System.out.println("Doing: "+Arrays.toString(val));
 		int[] part = new int[num+1]; // point of discontinuity
 		//double[] av = new double[num]; // approximate (average over included points)
+		if(val.length <= num){
+			// no need to partition
+			for(int i=0;i<num;i++)
+				part[i]=Math.min(i,val.length);
+			part[num] = val.length;
+			return part;
+		}
 		// make first num-1 segments have length 1
 		for(int i=0;i<num;i++)
 			part[i]=i;
@@ -34,7 +44,9 @@ public class MathFunc {
 		//double[] newav = new double[num];
 		double newerr = 0, newerr2 = 0;
 		
-		while(true){
+		main_loop : while(true){
+			if(part[num-1] == part[num] - 1)
+				break; // more transformations will get it out of bounds error
 			for(int i=0;i<num-1;i++){
 				merge(i,part,newpart,val,num);
 				newerr = calcErr(newpart,val,num);
@@ -44,7 +56,7 @@ public class MathFunc {
 					err = newerr;
 					err2 = newerr2;
 					//MathFuncTest.print(newpart,val);
-					continue;
+					continue main_loop;
 				}
 			}
 			// try extending last
@@ -56,7 +68,7 @@ public class MathFunc {
 				err = newerr;
 				err2 = newerr2;
 				//MathFuncTest.print(newpart,val);
-				continue;
+				continue main_loop;
 			}
 			break;
 			

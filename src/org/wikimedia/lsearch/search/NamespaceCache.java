@@ -25,6 +25,7 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 public class NamespaceCache {
 	static org.apache.log4j.Logger log = Logger.getLogger(NamespaceCache.class);
 	protected static Hashtable<NamespaceFilter,CachingWrapperFilter> cache = new Hashtable<NamespaceFilter,CachingWrapperFilter>();
+	protected static Hashtable<NamespaceFilter,CachingWrapperFilter> redirectCache = new Hashtable<NamespaceFilter,CachingWrapperFilter>();
 	
 	public static CachingWrapperFilter get(NamespaceFilter key){
 		return cache.get(key);
@@ -64,6 +65,7 @@ public class NamespaceCache {
 			if(key.cardinality() > 1){
 				ArrayList<NamespaceFilter> dec = key.decompose();
 				ArrayList<Filter> filters = new ArrayList<Filter>();
+				ArrayList<Filter> redirects = new ArrayList<Filter>();
 				for(NamespaceFilter nsf : dec){
 					if(cache.containsKey(nsf))
 						filters.add(cache.get(nsf));
@@ -73,10 +75,18 @@ public class NamespaceCache {
 						cache.put(nsf,cwf);
 						filters.add(cwf);
 					}
+					if(redirectCache.containsKey(nsf))
+						redirects.add(redirectCache.get(nsf));
+					else{ // make the bitset of all pages that redirect to namespace
+						log.info("Making redirect cache for "+nsf);
+						CachingWrapperFilter cwf = makeRedirectFilter(nsf);
+						redirectCache.put(nsf,cwf);
+						redirects.add(cwf);						
+					}
 				}
 				log.debug("Made composite filter for "+key);
 				// never cache composite filters
-				return new NamespaceCompositeFilter(filters).bits(reader);				
+				return new NamespaceCompositeFilter(filters,redirects).bits(reader);				
 			}
 			// build new filter from query
 			CachingWrapperFilter cwf = makeFilter(key);
@@ -90,6 +100,11 @@ public class NamespaceCache {
 	
 	protected static CachingWrapperFilter makeFilter(NamespaceFilter key){
 		Query q = WikiQueryParser.generateRewrite(key);
+		return new CachingWrapperFilter(new QueryFilter(q));
+	}
+	
+	protected static CachingWrapperFilter makeRedirectFilter(NamespaceFilter key){
+		Query q = WikiQueryParser.generateRedirectRewrite(key);
 		return new CachingWrapperFilter(new QueryFilter(q));
 	}
 }

@@ -47,7 +47,7 @@ public class SuggestTest {
 		NamespaceFilter nsDefault = new NamespaceFilter("0"); // default to main namespace
 		FieldBuilder.Case dCase = FieldBuilder.Case.IGNORE_CASE;
 		FieldBuilder.BuilderSet bs = new FieldBuilder(global.getLanguage(iid.getDBname()),dCase).getBuilder(dCase);
-		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE);
+		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE,null);
 		while(true){
 			System.out.print(">> ");
 			String inputtext = in.readLine().trim();
@@ -62,19 +62,19 @@ public class SuggestTest {
 					if(text.length()>=2){
 						System.out.println("METAPHONES: "+dmeta.doubleMetaphone(text)+", "+dmeta.doubleMetaphone(text,true));
 						System.out.println("SUGGEST: ");
-						for(SuggestResult r : sc.suggestWords(text,new NamespaceFilter(ns),10)){
+						for(SuggestResult r : sc.suggestWords(text,10)){
 							System.out.println(r);
 						}
 
-						System.out.println("SPLIT: "+sc.suggestSplit(text,new NamespaceFilter(ns),0));
+						System.out.println("SPLIT: "+sc.suggestSplit(text,0));
 					}
 					if(last != null){
-						System.out.println("JOIN: "+sc.suggestJoin(last,text,new NamespaceFilter(ns),0));
+						System.out.println("JOIN: "+sc.suggestJoin(last,text,0));
 					}
 					last = text;
 				}
 			}
-			System.out.println("#suggest: "+sc.suggest(inputtext,parser,new NamespaceFilter(ns),new SearchResults()));
+			System.out.println("#suggest: "+sc.suggest(inputtext,parser,new SearchResults()));
 			System.out.println("(finished in "+(System.currentTimeMillis()-start)+" ms)");
 		}
 		

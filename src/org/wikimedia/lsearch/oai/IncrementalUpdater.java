@@ -27,12 +27,13 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
-import org.wikimedia.lsearch.ranks.CompactArticleLinks;
-import org.wikimedia.lsearch.ranks.OldLinks;
-import org.wikimedia.lsearch.ranks.Related;
-import org.wikimedia.lsearch.ranks.RelatedTitle;
+import org.wikimedia.lsearch.related.CompactArticleLinks;
+import org.wikimedia.lsearch.related.CompactLinks;
+import org.wikimedia.lsearch.related.Related;
+import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.storage.ArticleAnalytics;
 import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
+import org.wikimedia.lsearch.storage.RelatedStorage;
 import org.wikimedia.lsearch.storage.Storage;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
@@ -189,12 +190,14 @@ public class IncrementalUpdater {
 					ArrayList<IndexUpdateRecord> records = harvester.getRecords(from);
 					if(records.size() == 0)
 						continue;
+					LinkAnalysisStorage las = new LinkAnalysisStorage(iid);
+					RelatedStorage related = new RelatedStorage(iid);
 					boolean hasMore = false;
 					do{
 						if(fetchReferences){
-							try{
+							try{								
 								// fetch references for records
-								fetchReferencesAndRelated(records,dbname);
+								fetchReferencesAndRelated(records,las,related);
 							} catch(IOException e){
 								// FIXME: quick hack, if the table cannot be found (e.g. for new wikis) don't abort 
 								if(e.getMessage().contains("Base table or view not found")){
@@ -285,7 +288,7 @@ public class IncrementalUpdater {
 		} while(daemon);
 	}
 
-	protected static void fetchReferencesAndRelated(ArrayList<IndexUpdateRecord> records, String dbname) throws IOException {
+	protected static void fetchReferencesAndRelated(ArrayList<IndexUpdateRecord> records, LinkAnalysisStorage las, RelatedStorage related) throws IOException {
 		ArrayList<Title> titles = new ArrayList<Title>();
 		for(IndexUpdateRecord rec : records){
 			if(rec.isDelete())
@@ -299,7 +302,6 @@ public class IncrementalUpdater {
 			}			
 		}
 		// fetch
-		LinkAnalysisStorage store = new LinkAnalysisStorage(IndexId.get(dbname));
 		//OldLinks links = new OldLinks(store.getPageReferences(titles,dbname));
 		//HashMap<Title,ArrayList<RelatedTitle>> rel = store.getRelatedPages(titles,dbname);
 		// update
@@ -308,14 +310,17 @@ public class IncrementalUpdater {
 				continue;
 			Article ar = rec.getArticle();
 			Title t = ar.makeTitle();
-			ArticleAnalytics aa = store.getAnalitics(t.getKey());
+			ArticleAnalytics aa = las.getAnaliticsForArticle(t.getKey());
 			ArrayList<String> anchors = new ArrayList<String>();
 			anchors.addAll(aa.getAnchorText());
 			// set references
 			ar.setReferences(aa.getReferences());
+			ar.setRedirect(aa.isRedirect());
+			if(aa.isRedirect())
+				ar.setRedirectTargetNamespace(aa.getRedirectTargetNamespace());
 			if(ar.getRedirects() != null){
 				for(Redirect r : ar.getRedirects()){
-					ArticleAnalytics raa = store.getAnalitics(r.makeTitle().getKey());
+					ArticleAnalytics raa = las.getAnaliticsForReferences(r.makeTitle().getKey());
 					r.setReferences(raa.getReferences());
 					anchors.addAll(raa.getAnchorText());
 				}
@@ -323,6 +328,8 @@ public class IncrementalUpdater {
 			// set anchors
 			ar.setAnchorText(anchors);
 			// set related
+			if(related.canRead())
+				ar.setRelated(related.getRelated(t.getKey()));
 			/*ArrayList<RelatedTitle> rt = rel.get(t.getKey());
 			if(rt != null){
 				Collections.sort(rt,new Comparator<RelatedTitle>() {

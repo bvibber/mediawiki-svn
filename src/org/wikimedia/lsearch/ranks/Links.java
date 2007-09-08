@@ -28,6 +28,7 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
+import org.wikimedia.lsearch.related.CompactArticleLinks;
 import org.wikimedia.lsearch.spell.api.Dictionary;
 import org.wikimedia.lsearch.spell.api.LuceneDictionary;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
@@ -38,7 +39,7 @@ public class Links {
 	protected IndexId iid;
 	protected String langCode;
 	protected IndexWriter writer = null;
-	protected HashMap<String,Integer> nsmap = new HashMap<String,Integer>();
+	protected HashMap<String,Integer> nsmap = null;
 	protected HashSet<String> interwiki = new HashSet<String>();
 	protected IndexReader reader = null;
 	protected String path;
@@ -102,6 +103,10 @@ public class Links {
 		for(Entry<String,Integer> e : map.entrySet()){
 			nsmap.put(e.getKey().toLowerCase(),e.getValue());
 		}
+	}
+	
+	public void addToNamespaceMap(String namespace, int index){
+		nsmap.put(namespace.toLowerCase(),index);
 	}
 	
 	/** Write all changes, call after batch-adding of titles and articles 
@@ -357,7 +362,31 @@ public class Links {
 		ArrayList<String> ret = new ArrayList<String>();
 		TermDocs td = reader.termDocs(new Term("links",key+"|"));
 		while(td.next()){
-			//ret.add(keyCache.get(td.doc()));
+			ret.add(keyCache.get(td.doc()));
+			//ret.add(reader.document(td.doc()).get("article_key"));
+		}
+		return ret;
+	}
+	
+	/** Get all article titles linking to given title 
+	 * @throws IOException */
+	public ArrayList<CompactArticleLinks> getInLinks(CompactArticleLinks key, HashMap<Integer,CompactArticleLinks> keyCache) throws IOException{
+		ensureRead();
+		ArrayList<CompactArticleLinks> ret = new ArrayList<CompactArticleLinks>();
+		TermDocs td = reader.termDocs(new Term("links",key+"|"));
+		while(td.next()){
+			ret.add(keyCache.get(td.doc()));
+		}
+		return ret;
+	}
+	
+	/** Get all article titles linking to given title 
+	 * @throws IOException */
+	public ArrayList<String> getInLinks(String key) throws IOException{
+		ensureRead();
+		ArrayList<String> ret = new ArrayList<String>();
+		TermDocs td = reader.termDocs(new Term("links",key+"|"));
+		while(td.next()){
 			ret.add(reader.document(td.doc()).get("article_key"));
 		}
 		return ret;
@@ -428,5 +457,16 @@ public class Links {
 			return td.doc();
 		}
 		return null;
+	}
+
+	/** Close everything */
+	public void close() throws IOException {
+		if(writer != null)
+			writer.close();
+		if(reader != null)
+			reader.close();
+		if(directory != null)
+			directory.close();
+		
 	}
 }

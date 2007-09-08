@@ -52,6 +52,21 @@ public class FieldNameFactory {
 		else
 			return "keyword";
 	}
+	
+	public String related(){
+		if(exactCase)
+			return "related_exact";
+		else
+			return "related";
+	}
+	
+	public String anchor(){
+		if(exactCase)
+			return "anchor_exact";
+		else
+			return "anchor";
+	}
+
 
 	public boolean isExactCase() {
 		return exactCase;

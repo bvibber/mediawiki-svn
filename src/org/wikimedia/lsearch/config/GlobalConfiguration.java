@@ -188,11 +188,8 @@ public class GlobalConfiguration {
 			// add the link analysis to indexers
 			if(!types.contains("link_analysis"))
 				database.get(dbname).put("link_analysis",new Hashtable<String,String>());
-			// add spellcheck indexes
-			/* if(!types.contains("spell_words"))
-				database.get(dbname).put("spell_words",new Hashtable<String,String>());
-			if(!types.contains("spell_titles"))
-				database.get(dbname).put("spell_titles",new Hashtable<String,String>()); */
+			if(!types.contains("related"))
+				database.get(dbname).put("related",new Hashtable<String,String>());
 		}
 		// expand logical index names on searchers
 		for(String host : search.keySet()){
@@ -235,7 +232,7 @@ public class GlobalConfiguration {
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
 					dbrole = dbname + "." + typeid;
-				} else if(typeid.equals("spell") || typeid.equals("link_analysis")){
+				} else if(typeid.equals("spell") || typeid.equals("link_analysis") || typeid.equals("related")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else
@@ -254,7 +251,8 @@ public class GlobalConfiguration {
 					}
 				}
 				boolean searched = (getSearchHosts(dbrole).size() != 0); 
-				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split") || typeid.equals("nssplit") || typeid.equals("link_analysis"))){
+				if(!searched && !(typeid.equals("mainsplit") || typeid.equals("split") 
+						|| typeid.equals("nssplit") || typeid.equals("link_analysis") || typeid.equals("related"))){
 					if(verbose)
 						System.out.println("WARNING: in Global Configuration: index "+dbrole+" is not searched by any host.");
 				}
@@ -521,7 +519,7 @@ public class GlobalConfiguration {
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
 					dbrole = dbname + "." + typeid;
-				} else if(typeid.equals("spell") || typeid.equals("link_analysis")){
+				} else if(typeid.equals("spell") || typeid.equals("link_analysis") || typeid.equals("related")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else

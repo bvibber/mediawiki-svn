@@ -105,6 +105,7 @@ public class UpdateThread extends Thread {
 		HashSet<IndexId> iids = global.getMySearch();
 		HashMap<String,ArrayList<IndexId>> hostMap = new HashMap<String,ArrayList<IndexId>>();
 		ArrayList<LocalIndex> forUpdate = new ArrayList<LocalIndex>();
+		boolean urgent = false; // if indexes are broke and should be rsynced right away
 		
 		// organize into hostmap: host -> iids (indexes at that host)
 		for(IndexId iid : iids){
@@ -136,11 +137,13 @@ public class UpdateThread extends Thread {
 							timestamps[i]);
 					forUpdate.add(li); // newer snapshot available
 					pending.put(iid.toString(),new Long(timestamps[i]));
+					if(registry.getCurrentSearch(iid) == null)
+						urgent = true;
 				}
 			}
 		}
 		if(forUpdate.size()>0)
-			new DeferredUpdate(forUpdate,delayInterval).start();
+			new DeferredUpdate(forUpdate,urgent? 0 : delayInterval).start();
 	}
 	
 	/** Rsync a remote snapshot to a local one, updates registry, cache */

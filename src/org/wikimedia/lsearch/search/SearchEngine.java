@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.net.URI;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -21,6 +22,7 @@ import org.apache.lucene.search.TopDocs;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
+import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
@@ -140,7 +142,13 @@ public class SearchEngine {
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
 		FieldBuilder.Case dCase = exactCase? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE;
 		FieldBuilder.BuilderSet bs = new FieldBuilder(global.getLanguage(iid.getDBname()),dCase).getBuilder(dCase);
-		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE);
+		ArrayList<String> stopWords = null;
+		try{
+			stopWords = StopWords.getCached(iid);
+		} catch(IOException e){
+			log.warn("Error fetching stop words for "+iid+" : "+e.getMessage());
+		}
+		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE,stopWords);
 		HashSet<NamespaceFilter> fields = parser.getFieldNamespaces(searchterm);
 		NamespaceFilterWrapper nsfw = null;
 		Query q = null;
@@ -208,7 +216,7 @@ public class SearchEngine {
 					RMIMessengerClient messenger = new RMIMessengerClient();
 					res = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
 					if(sug != null){
-						SuggestQuery sq = sug.suggest(searchterm,parser,(nsfw==null)? null : nsfw.getFilter(),res);
+						SuggestQuery sq = sug.suggest(searchterm,parser,res);
 						if(sq == null)
 							res.setSuggest(null);
 						else{
@@ -238,7 +246,7 @@ public class SearchEngine {
 				hits = searcher.search(q,nsfw,offset+limit);
 				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 				if(sug != null){
-					SuggestQuery sq = sug.suggest(searchterm,parser,(nsfw==null)? null : nsfw.getFilter(),res);
+					SuggestQuery sq = sug.suggest(searchterm,parser,res);
 					if(sq == null)
 						res.setSuggest(null);
 					else{

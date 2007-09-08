@@ -13,6 +13,7 @@ import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
+import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
@@ -38,80 +39,21 @@ public class CleanIndexWriter {
 	protected String langCode;
 	protected NamespaceFilter nsf;
 	
-	public static final String[] ENGLISH_STOP_WORDS = {
-		"a", "an", "and", "are", "as", "at", "be", "but", "by",
-		"for", "if", "in", "into", "is", "it",
-		"no", "not", "of", "on", "or", "such",
-		"that", "the", "their", "then", "there", "these",
-		"they", "this", "to", "was", "will", "with"
-	};
-
-	public final static String[] FRENCH_STOP_WORDS = {
-		"a", "afin", "ai", "ainsi", "apres", "attendu", "au", "aujourd", "auquel", "aussi",
-		"autre", "autres", "aux", "auxquelles", "auxquels", "avait", "avant", "avec", "avoir",
-		"c", "car", "ce", "ceci", "cela", "celle", "celles", "celui", "cependant", "certain",
-		"certaine", "certaines", "certains", "ces", "cet", "cette", "ceux", "chez", "ci",
-		"combien", "comme", "comment", "concernant", "contre", "d", "dans", "de", "debout",
-		"dedans", "dehors", "dela", "depuis", "derriere", "des", "desormais", "desquelles",
-		"desquels", "dessous", "dessus", "devant", "devers", "devra", "divers", "diverse",
-		"diverses", "doit", "donc", "dont", "du", "duquel", "durant", "des", "elle", "elles",
-		"en", "entre", "environ", "est", "et", "etc", "etre", "eu", "eux", "excepte", "hormis",
-		"hors", "helas", "hui", "il", "ils", "j", "je", "jusqu", "jusque", "l", "la", "laquelle",
-		"le", "lequel", "les", "lesquelles", "lesquels", "leur", "leurs", "lorsque", "lui", "la",
-		"ma", "mais", "malgre", "me", "merci", "mes", "mien", "mienne", "miennes", "miens", "moi",
-		"moins", "mon", "moyennant", "meme", "memes", "n", "ne", "ni", "non", "nos", "notre",
-		"nous", "neanmoins", "notre", "notres", "on", "ont", "ou", "outre", "ou", "par", "parmi",
-		"partant", "pas", "passe", "pendant", "plein", "plus", "plusieurs", "pour", "pourquoi",
-		"proche", "pres", "puisque", "qu", "quand", "que", "quel", "quelle", "quelles", "quels",
-		"qui", "quoi", "quoique", "revoici", "revoila", "s", "sa", "sans", "sauf", "se", "selon",
-		"seront", "ses", "si", "sien", "sienne", "siennes", "siens", "sinon", "soi", "soit",
-		"son", "sont", "sous", "suivant", "sur", "ta", "te", "tes", "tien", "tienne", "tiennes",
-		"tiens", "toi", "ton", "tous", "tout", "toute", "toutes", "tu", "un", "une", "va", "vers",
-		"voici", "voila", "vos", "votre", "vous", "vu", "votre", "votres", "y", "a", "ca", "es",
-		"ete", "etre", "o"
-	};
-	
-	public final static String[] GERMAN_STOP_WORDS = {
-		"einer", "eine", "eines", "einem", "einen",
-		"der", "die", "das", "dass", "daß",
-		"du", "er", "sie", "es",
-		"was", "wer", "wie", "wir",
-		"und", "oder", "ohne", "mit",
-		"am", "im", "in", "aus", "auf",
-		"ist", "sein", "war", "wird",
-		"ihr", "ihre", "ihres",
-		"als", "für", "von", "mit",
-		"dich", "dir", "mich", "mir",
-		"mein", "sein", "kein",
-		"durch", "wegen", "wird"
-	};
-
 	public CleanIndexWriter(IndexId iid) throws IOException{
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		this.iid = iid;		
 		this.builder = new FieldBuilder("",FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
 		this.langCode = global.getLanguage(iid.getDBname());
 		HashSet<String> stopWords = new HashSet<String>();
-		String[] words = null;
-		if(langCode.equals("en"))
-			words = ENGLISH_STOP_WORDS;
-		else if(langCode.equals("de"))
-			words = GERMAN_STOP_WORDS;
-		else if(langCode.equals("fr"))
-			words = FRENCH_STOP_WORDS;
-		
-		if(words != null){
-			for(String w : words)
-				stopWords.add(w);			
-		} else{
-			stopWords.addAll(HighFreqTerms.getHighFreqTerms(iid.getDB(),"contents",20));
-		}
+		for(String w : StopWords.getStopWords(iid,langCode))
+			stopWords.add(w);			
 		log.info("Using phrase stopwords: "+stopWords);
 		builder.getBuilder().getFilters().setStopWords(stopWords);
 		String path = iid.getSpell().getTempPath();
 		writer = open(path);
 		addMetadata(writer,"stopWords",stopWords);
 		nsf = global.getDefaultNamespace(iid);
+		log.info("Rebuild for namespaces: "+nsf);
 	}
 	
 	protected IndexWriter open(String path) throws IOException {

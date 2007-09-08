@@ -8,9 +8,9 @@ import java.util.List;
 import java.util.Map.Entry;
 
 import org.wikimedia.lsearch.beans.Title;
-import org.wikimedia.lsearch.ranks.CompactArticleLinks;
-import org.wikimedia.lsearch.ranks.Related;
-import org.wikimedia.lsearch.ranks.RelatedTitle;
+import org.wikimedia.lsearch.related.CompactArticleLinks;
+import org.wikimedia.lsearch.related.Related;
+import org.wikimedia.lsearch.related.RelatedTitle;
 @Deprecated
 abstract public class Storage {
 	static protected Storage instance = null;

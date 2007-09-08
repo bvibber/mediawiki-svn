@@ -32,6 +32,7 @@ import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.KeywordsAnalyzer;
+import org.wikimedia.lsearch.analyzers.RelatedAnalyzer;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
@@ -40,8 +41,10 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.spell.api.SpellCheckIndexer;
 import org.wikimedia.lsearch.util.Localization;
+import org.wikimedia.lsearch.util.MathFunc;
 
 /**
  * IndexModifier for batch update of local lucene index. 
@@ -62,8 +65,7 @@ public class WikiIndexModifier {
 	static public final int MAX_FIELD_LENGTH = 100000;
 	/** number of aditional alttitle1, alttitle2, .. etc fields to be filled in with redirects */
 	static public int ALT_TITLES = 3;	
-	/** number of related fields in the index, first has the top-scored, etc, last everything else */
-	static public int RELATED_GROUPS = 4;
+
 	/** Simple implementation of batch addition and deletion */
 	class SimpleIndexModifier {
 		protected IndexId iid;
@@ -281,7 +283,7 @@ public class WikiIndexModifier {
 			// to avoid a lot of unusable redirects from/to
 			// user namespace, but always index redirect FROM main
 			for(Redirect r : redirects){
-				if(ns == r.getNamespace()){
+				if(ns == r.getNamespace() || (r.getNamespace() == 0 && ns != 0)){
 					filtered.add(r.getTitle());
 					ranks.add(r.getReferences());
 					ar.addToRank(r.getReferences()+1);
@@ -423,8 +425,17 @@ public class WikiIndexModifier {
 		doc.add(new Field("rank",Integer.toString(article.getRank()),
 				Field.Store.YES, Field.Index.NO));
 		
+		// related partition
+		int[] p = null;
+		
+		if(article.isRedirect()){
+			doc.add(new Field("redirect_namespace",Integer.toString(article.getRedirectTargetNamespace()),
+					Field.Store.NO, Field.Index.UN_TOKENIZED));
+		}
+		
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			FieldNameFactory fields = bs.getFields();
+			
 			// boost document title with it's article rank
 			Field title = new Field(fields.title(), article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);				
 			//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
@@ -442,25 +453,51 @@ public class WikiIndexModifier {
 			// put the best redirects as alternative titles
 			makeAltTitles(doc,fields.alttitle(),article);
 
-			bs.setAddKeywords(checkKeywordPreconditions(article,iid));
 			// most significant words in the text, gets extra score, from analyzer
+			bs.setAddKeywords(checkKeywordPreconditions(article,iid));		
 			makeKeywordField(doc,fields.keyword(),rankBoost);
 
-			// the next fields are generated using wikitokenizer 
-			doc.add(new Field(fields.contents(), "", 
-					Field.Store.NO, Field.Index.TOKENIZED));
+			// contents - generated using wikitokenizer
+			Field contents = new Field(fields.contents(), "", 
+					Field.Store.NO, Field.Index.TOKENIZED); 
+			doc.add(contents);
+			
+			// related articles
+			p = makeRelated(doc,fields.related(),article,1);
+			
+			// anchors
+			makeKeywordField(doc,fields.anchor(),rankBoost);
 
-			// set boost for keyword field
-			// tokenizer = (WikiTokenizer) ret[1];
-			// keyword.setBoost(calculateKeywordsBoost(tokenizer.getTokens().size()));
 		}
 		// make analyzer
 		String text = article.getContents();
-		Object[] ret = Analyzers.getIndexerAnalyzer(text,builder,article.getRedirectKeywords());
+		Object[] ret = Analyzers.getIndexerAnalyzer(text,builder,article.getRedirectKeywords(),article.getAnchorText(),article.getRelated(),p);
 		perFieldAnalyzer = (PerFieldAnalyzerWrapper) ret[0];
 
 		
 		return new Object[] { doc, perFieldAnalyzer };
+	}
+
+	/** Returns partioning of related titles, or null if there aren't any */
+	protected static int[] makeRelated(Document doc, String prefix, Article article, float boost) {
+		ArrayList<RelatedTitle> rel = article.getRelated();
+		if(rel == null || rel.size()==0)
+			return null;
+		double[] scores = new double[rel.size()];
+		for(int i=0;i<rel.size();i++)
+			scores[i] = rel.get(i).getScore();
+		
+		// partition the sorted scores into groups
+		int[] p = MathFunc.partitionList(scores,RelatedAnalyzer.RELATED_GROUPS);
+		// don't add last related group
+		for(int i=1;i<RelatedAnalyzer.RELATED_GROUPS;i++){
+			Field relfield = new Field(prefix+i, "", 
+					Field.Store.NO, Field.Index.TOKENIZED);
+			relfield.setBoost(boost*(float)MathFunc.avg(scores,p[i-1],p[i]));
+			doc.add(relfield);
+		}
+		
+		return p;
 	}
 
 	/** Make a multiple keyword field, e.g. redirect1, redirect2, redirect3 ...  */
@@ -505,22 +542,19 @@ public class WikiIndexModifier {
 		else 
 			return (float) (1 + rank/15.0);
 	}
-	
+
 	/**
-	 * We currently don't penalize short articles on keywords.
+	 * Boost factor for contents 
 	 * 
-	 * 
-	 * @param numTokens
+	 * @param rank
 	 * @return
 	 */
-	public static float calculateKeywordsBoost(int numTokens){
-		return 1;
-		/*
-		if(numTokens > 2 * FastWikiTokenizerEngine.KEYWORD_TOKEN_LIMIT)
+	public static float contentsBoost(int rank) {
+		if(rank == 0)
 			return 1;
 		else
-			return ((float)numTokens)/FastWikiTokenizerEngine.KEYWORD_TOKEN_LIMIT/2;
-		*/
+			return (float) (Math.log(Math.E + rank/15.0) / 10.0);
 	}
 
+	
 }

@@ -2,7 +2,7 @@ package org.wikimedia.lsearch.storage;
 
 import java.util.Collection;
 
-import org.wikimedia.lsearch.ranks.Related;
+import org.wikimedia.lsearch.related.Related;
 
 /**
  * Various link analysis info about the article
@@ -43,6 +43,13 @@ public class ArticleAnalytics {
 
 	public boolean isRedirect(){
 		return redirectTarget != null;
+	}
+	
+	public int getRedirectTargetNamespace(){
+		if(redirectTarget != null)
+			return Integer.parseInt(redirectTarget.substring(0,redirectTarget.indexOf(':')));
+		return 0;
+			
 	}
 
 

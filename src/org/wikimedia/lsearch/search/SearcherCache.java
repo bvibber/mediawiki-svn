@@ -201,6 +201,8 @@ public class SearcherCache {
 	 * @throws IOException 
 	 */
 	public IndexSearcherMul getLocalSearcher(IndexId iid) throws IOException{
+		if(iid == null)
+			throw new IOException("Index unavailable");
 		IndexSearcherMul s = fromLocalCache(iid.toString());
 
 		if(s == null)

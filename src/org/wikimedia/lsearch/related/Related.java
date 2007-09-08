@@ -1,7 +1,9 @@
-package org.wikimedia.lsearch.ranks;
+package org.wikimedia.lsearch.related;
 
 import java.util.ArrayList;
 import java.util.Collection;
+
+import org.wikimedia.lsearch.beans.Title;
 
 public class Related {
 	protected String title;
@@ -38,6 +40,15 @@ public class Related {
 		ArrayList<Related> ret = new ArrayList<Related>();
 		for(String s : sl){
 			ret.add(new Related(s));
+		}
+		return ret;
+	}
+	
+	public static ArrayList<RelatedTitle> convertToRelatedTitleList(Collection<String> sl){
+		ArrayList<RelatedTitle> ret = new ArrayList<RelatedTitle>();
+		for(String s : sl){
+			Related r = new Related(s);			
+			ret.add(new RelatedTitle(new Title(r.getRelates()),r.getScore()));
 		}
 		return ret;
 	}

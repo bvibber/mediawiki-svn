@@ -28,7 +28,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import org.wikimedia.lsearch.ranks.RelatedTitle;
+import org.wikimedia.lsearch.related.RelatedTitle;
 
 /**
  * Wiki article. 
@@ -53,6 +53,8 @@ public class Article implements Serializable  {
 	private ArrayList<RelatedTitle> related;
 	/** names of articles that relate to this article  */
 	private ArrayList<String> anchorText;
+	/** If this is redirect, the redirect target namespace */
+	private int redirectTargetNamespace = 0;
 	
 	public Article(){
 		namespace="";
@@ -66,7 +68,7 @@ public class Article implements Serializable  {
 		anchorText = new ArrayList<String>();
 	}
 	
-	public Article(long pageId, Title title, String text, boolean redirect, int references) {
+	public Article(long pageId, Title title, String text, boolean redirect, int references, int redirectTargetNamespace) {
 		namespace = Integer.toString(title.getNamespace());
 		this.title = title.getTitle();
 		contents = text;
@@ -76,9 +78,10 @@ public class Article implements Serializable  {
 		this.redirects = new ArrayList<Redirect>();
 		this.related = new ArrayList<RelatedTitle>();
 		this.anchorText = new ArrayList<String>();
+		this.redirectTargetNamespace = redirectTargetNamespace;
 	}
 	
-	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references) {
+	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, int redirectTargetNamespace) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
 		contents = text;
@@ -88,9 +91,10 @@ public class Article implements Serializable  {
 		this.redirects = new ArrayList<Redirect>();
 		this.related = new ArrayList<RelatedTitle>();
 		this.anchorText = new ArrayList<String>();
+		this.redirectTargetNamespace = redirectTargetNamespace;
 	}
 	
-	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, 
+	public Article(long pageId, int namespace, String titleText, String text, boolean redirect, int references, int redirectTargetNamespace, 
 			ArrayList<Redirect> redirects, ArrayList<RelatedTitle> related, ArrayList<String> anchorText) {
 		this.namespace = Integer.toString(namespace);
 		this.title = titleText;
@@ -101,6 +105,7 @@ public class Article implements Serializable  {
 		this.redirects = redirects;
 		this.related = related;
 		this.anchorText = anchorText;
+		this.redirectTargetNamespace = redirectTargetNamespace;
 	}
 	
 	public boolean isRedirect() {
@@ -231,6 +236,16 @@ public class Article implements Serializable  {
 
 	public void setAnchorText(ArrayList<String> anchorText) {
 		this.anchorText = anchorText;
+	}
+
+	public int getRedirectTargetNamespace() {
+		return redirectTargetNamespace;
+	}
+
+	public void setRedirectTargetNamespace(int redirectTargetNamespace) {
+		this.redirectTargetNamespace = redirectTargetNamespace;
 	}	
+	
+	
 	
 }

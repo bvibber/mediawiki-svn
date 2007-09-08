@@ -23,9 +23,9 @@ import org.wikimedia.lsearch.beans.Redirect;
 import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
-import org.wikimedia.lsearch.ranks.CompactArticleLinks;
-import org.wikimedia.lsearch.ranks.OldLinks;
-import org.wikimedia.lsearch.ranks.RelatedTitle;
+import org.wikimedia.lsearch.related.CompactArticleLinks;
+import org.wikimedia.lsearch.related.CompactLinks;
+import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.storage.ArticleAnalytics;
 import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
 import org.wikimedia.lsearch.util.Localization;
@@ -58,9 +58,10 @@ public class CleanIndexImporter implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		ArticleAnalytics aa = las.getAnalitics(key); 
+		ArticleAnalytics aa = las.getAnaliticsForArticle(key); 
 		int references = aa.getReferences();
 		boolean isRedirect = aa.isRedirect();
+		int redirectTargetNamespace = aa.getRedirectTargetNamespace();
 		
 		// make list of redirects
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
@@ -68,13 +69,13 @@ public class CleanIndexImporter implements DumpWriter {
 		anchors.addAll(aa.getAnchorText());
 		for(String rk : aa.getRedirectKeys()){
 			String[] parts = rk.toString().split(":",2);
-			ArticleAnalytics raa = las.getAnalitics(rk);
+			ArticleAnalytics raa = las.getAnaliticsForReferences(rk);
 			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],raa.getReferences()));
 			anchors.addAll(raa.getAnchorText());
 		}
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
-				references,redirects,new ArrayList<RelatedTitle>(),anchors);
+				references,redirectTargetNamespace,redirects,new ArrayList<RelatedTitle>(),anchors);
 		// Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,0,redirects,related);
 		
 		writer.addArticle(article);

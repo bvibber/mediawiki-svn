@@ -5,6 +5,8 @@ import java.util.Arrays;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.FieldSelector;
+import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.Filter;
@@ -58,10 +60,30 @@ public class CachedSearchable implements SearchableMul {
 		}
 	}
 	
+	public Document doc(int i, FieldSelector sel) throws IOException {
+		log.debug("called doc("+i+","+sel+")");
+		try{
+			return searchable.doc(i,sel);
+		} catch(Exception e){
+			SearcherCache.getInstance().checkSearchable(searchable,this);
+			throw new IOException(e.getMessage());
+		}
+	}
+	
 	public Document[] docs(int[] i) throws IOException {
 		log.debug("called docs("+Arrays.toString(i)+")");
 		try{
 			return searchable.docs(i);
+		} catch(Exception e){
+			SearcherCache.getInstance().checkSearchable(searchable,this);
+			throw new IOException(e.getMessage());
+		}
+	}
+	
+	public Document[] docs(int[] i, FieldSelector sel) throws IOException {
+		log.debug("called docs("+Arrays.toString(i)+","+sel+")");
+		try{
+			return searchable.docs(i,sel);
 		} catch(Exception e){
 			SearcherCache.getInstance().checkSearchable(searchable,this);
 			throw new IOException(e.getMessage());
@@ -158,8 +180,6 @@ public class CachedSearchable implements SearchableMul {
 	public String toString() {
 		return searchable.toString();
 	}
-	
-	
 
 	
 }

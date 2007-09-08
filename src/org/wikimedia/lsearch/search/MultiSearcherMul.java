@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 
 import org.apache.lucene.document.Document;
+import org.apache.lucene.document.FieldSelector;
 import org.apache.lucene.search.MultiSearcher;
 import org.apache.lucene.search.SearchableMul;
 
@@ -13,8 +14,7 @@ public class MultiSearcherMul extends MultiSearcher implements SearchableMul {
 		super(searchables);
 	}
 	
-	// inherit javadoc
-	public Document[] docs(int[] n) throws IOException {
+	public Document[] docs(int[] n, FieldSelector sel) throws IOException {
 		// searchable -> doc ids 
 		int[][] map = new int[searchables.length][n.length];
 		// searchable -> number of doc ids
@@ -39,7 +39,10 @@ public class MultiSearcherMul extends MultiSearcher implements SearchableMul {
 				continue;
 			int[] val = new int[count[j]];
 			System.arraycopy( map[j], 0, val, 0, count[j] );
-			docs[j] = searchables[j].docs(val);
+			if(sel == null)
+				docs[j] = searchables[j].docs(val);
+			else
+				docs[j] = searchables[j].docs(val,sel);
 		}
 		// arrange in original order
 		Document[] ret = new Document[n.length];
@@ -48,6 +51,11 @@ public class MultiSearcherMul extends MultiSearcher implements SearchableMul {
 		}
 		
 		return ret;
+
+	}	
+	// inherit javadoc
+	public Document[] docs(int[] n) throws IOException {
+		return docs(n,null);
 	}
 
 }

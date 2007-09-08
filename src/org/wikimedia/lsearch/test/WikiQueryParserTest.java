@@ -43,7 +43,7 @@ public class WikiQueryParserTest extends TestCase {
 		FieldBuilder.BuilderSet bs = new FieldBuilder("").getBuilder();
 		FieldNameFactory ff = new FieldNameFactory();
 		try{
-			WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),new SimpleAnalyzer(),bs);
+			WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),new SimpleAnalyzer(),bs,null);
 			Query q;
 			HashSet<String> fields;
 
@@ -122,7 +122,22 @@ public class WikiQueryParserTest extends TestCase {
 			fields = parser.getFields("contents:making +breakfast \"incategory:food\"");
 			assertEquals(1,fields.size());
 			assertTrue(fields.contains("contents"));
+
+			// extraction of phrases
+			ArrayList<String> stopWords = new ArrayList<String>();
+			stopWords.add("the"); stopWords.add("who");
+			stopWords.add("is"); stopWords.add("a");			
+			Analyzer analyzer = Analyzers.getSearcherAnalyzer("en");
+			bs = new FieldBuilder("en").getBuilder();
+			parser = new WikiQueryParser(bs.getFields().title(),"0",analyzer,bs,NamespacePolicy.IGNORE,stopWords);
+			assertEquals("[how, do, you, do]",parser.extractPhrases(parser.parseRaw("how do you do")).toString());
+			assertEquals("[making, something, rest]",parser.extractPhrases(parser.parseRaw("(help:making something incategory:blah) OR (rest incategory:crest)")).toString());
+			assertEquals("[godel, theorem]",parser.extractPhrases(parser.parseRaw("gödel theorem")).toString());
+			assertEquals("[some, text, and, some, phrase]",parser.extractPhrases(parser.parseRaw("some_text and \"some phrase\"")).toString());
 			
+			ArrayList<String> words = parser.extractPhrases(parser.parseRaw("the who band is something nobody knows about"));
+			assertEquals("contents:\"the who band\"~10 contents:\"band is something\"~10 contents:\"something nobody\"~10 contents:\"nobody knows\"~10 contents:\"knows about\"~10",parser.makePhraseQueries(words,"contents",10,1).toString());
+						
 			// namespace policies
 			parser = new WikiQueryParser(ff.contents(),"0",new SimpleAnalyzer(), bs, WikiQueryParser.NamespacePolicy.IGNORE);
 			q = parser.parseRaw("help:making breakfast incategory:food");
@@ -166,7 +181,7 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parse("(help:making something incategory:blah) OR (rest incategory:crest)");
 			assertEquals("(+namespace:12 +(+(+(contents:making contents:make^0.5) title:making^2.0) +(+(contents:something contents:someth^0.5) title:something^2.0) +category:blah)) (+namespace:0 +(+(+contents:rest +category:crest) title:rest^2.0))",q.toString());
 			
-			parser = new WikiQueryParser(ff.contents(),new EnglishAnalyzer(),bs);
+			parser = new WikiQueryParser(ff.contents(),new EnglishAnalyzer(),bs,null);
 
 			q = parser.parseRaw("laziness");
 			assertEquals("contents:laziness contents:lazi^0.5",q.toString());
@@ -215,7 +230,7 @@ public class WikiQueryParserTest extends TestCase {
 			// ==================================
 			// Tests with actual params :)
 			// ==================================
-			Analyzer analyzer = Analyzers.getSearcherAnalyzer("en");
+			analyzer = Analyzers.getSearcherAnalyzer("en");
 			bs = new FieldBuilder("en").getBuilder();
 			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.LEAVE);
 			WikiQueryParser.ADD_STEM_TITLE = false;
@@ -328,7 +343,7 @@ public class WikiQueryParserTest extends TestCase {
 			// title phrases
 			WikiQueryParser.ADD_TITLE_PHRASES = true;
 			q = parser.parseFourPass("Israeli Palestinian conflict",NamespacePolicy.IGNORE,true);
-			assertEquals("(+(contents:israeli contents:isra^0.5) +contents:palestinian +contents:conflict (stemtitle:\"israeli palestinian\"~2^2.0 stemtitle:\"palestinian conflict\"~2^2.0)) (+title:israeli^2.0 +title:palestinian^2.0 +title:conflict^2.0) ((+alttitle1:israeli^6.0 +alttitle1:palestinian^6.0 +alttitle1:conflict^6.0) (+alttitle2:israeli^6.0 +alttitle2:palestinian^6.0 +alttitle2:conflict^6.0) (+alttitle3:israeli^6.0 +alttitle3:palestinian^6.0 +alttitle3:conflict^6.0)) (spanNear([keyword1:israeli, keyword1:palestinian, keyword1:conflict], 100, false)^0.05 spanNear([keyword2:israeli, keyword2:palestinian, keyword2:conflict], 100, false)^0.025 spanNear([keyword3:israeli, keyword3:palestinian, keyword3:conflict], 100, false)^0.016666668 spanNear([keyword4:israeli, keyword4:palestinian, keyword4:conflict], 100, false)^0.0125 spanNear([keyword5:israeli, keyword5:palestinian, keyword5:conflict], 100, false)^0.01)",q.toString());
+			assertEquals("(+(contents:israeli contents:isra^0.5) +contents:palestinian +contents:conflict) (+title:israeli^2.0 +title:palestinian^2.0 +title:conflict^2.0) ((+alttitle1:israeli^6.0 +alttitle1:palestinian^6.0 +alttitle1:conflict^6.0) (+alttitle2:israeli^6.0 +alttitle2:palestinian^6.0 +alttitle2:conflict^6.0) (+alttitle3:israeli^6.0 +alttitle3:palestinian^6.0 +alttitle3:conflict^6.0)) (spanNear([keyword1:israeli, keyword1:palestinian, keyword1:conflict], 100, false)^0.05 spanNear([keyword2:israeli, keyword2:palestinian, keyword2:conflict], 100, false)^0.025 spanNear([keyword3:israeli, keyword3:palestinian, keyword3:conflict], 100, false)^0.016666668 spanNear([keyword4:israeli, keyword4:palestinian, keyword4:conflict], 100, false)^0.0125 spanNear([keyword5:israeli, keyword5:palestinian, keyword5:conflict], 100, false)^0.01)",q.toString());
 			WikiQueryParser.ADD_TITLE_PHRASES = false;
 			
 			// alternative transliterations
