@@ -37,12 +37,12 @@ if (defined('MEDIAWIKI')) {
 	# global caching object, or 'file' if caching is turned off
 	# completely and you need a fallback.
 
-	$wgOpenIDServerStoreType = 'memc';
+	$wgOpenIDServerStoreType = ($wgMainCacheType == CACHE_NONE) ? 'file' : 'memc';
 
 	# If the store type is set to 'file', this is is the name of a
 	# directory to store the data in.
 
-	$wgOpenIDServerStorePath = NULL;
+	$wgOpenIDServerStorePath = ($wgMainCacheType == CACHE_NONE) ? "/tmp/$wgDBname/openidserver/" : NULL;
 
 	# Outputs a Yadis (http://yadis.org/) XRDS file, saying that this server
 	# supports OpenID and lots of other jazz.

@@ -242,14 +242,18 @@ LocalSettings.php file. Please read carefully.
   one or both is "file", $wgOpenIDConsumerStorePath or
   $wgOpenIDServerStorePath must be set, respectively (see below).  If
   either of these variables is set to an invalid value, an error page
-  will be displayed.
+  will be displayed. The default is "memc", unless the main cache is
+  set to CACHE_NONE (default for MW), in which case it is "file".
 
 * $wgOpenIDConsumerStorePath and $wgOpenIDServerStorePath -- strings
   specifying the paths where OpenID assocation data should be stored
   when acting as a relying party (consumer) or server, respectively.
   Each of these need only be set if the store type settings (above)
   are set to "file", respectively.  These strings, if both are set,
-  MUST NOT be equal.
+  MUST NOT be equal. If the store type is "file", the default here is
+  "/tmp/$wgDBname/openidconsumer/" and "/tmp/$wgDBname/openidserver/"
+  respectively. The path will be automatically created if it doesn't
+  exist at runtime.
 
 == Skins ==
 

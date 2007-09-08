@@ -50,13 +50,15 @@ if (defined('MEDIAWIKI')) {
 	# Where to store transitory data. Can be 'memc' for the $wgMemc
 	# global caching object, or 'file' if caching is turned off
 	# completely and you need a fallback.
+	
+	# Default is memc unless the global cache is disabled.
 
-	$wgOpenIDConsumerStoreType = 'memc';
+	$wgOpenIDConsumerStoreType = ($wgMainCacheType == CACHE_NONE) ? 'file' : 'memc';
 
 	# If the store type is set to 'file', this is is the name of a
 	# directory to store the data in.
 
-	$wgOpenIDConsumerStorePath = NULL;
+	$wgOpenIDConsumerStorePath = ($wgMainCacheType == CACHE_NONE) ? "/tmp/$wgDBname/openidconsumer/" : NULL;
 
 	# Expiration time for the OpenID cookie. Lets the user re-authenticate
 	# automatically if their session is expired. Only really useful if

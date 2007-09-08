@@ -172,6 +172,13 @@ if (defined('MEDIAWIKI')) {
 			return new OpenID_MemcStore($prefix);
 
 		 case 'file':
+			# Auto-create path if it doesn't exist
+			if (!is_dir($options['path'])) {
+				if (!mkdir($options['path'], 0770, true)) {
+					$wgOut->errorPage('openidconfigerror', 'openidconfigerrortext');
+					return NULL;
+				}
+			}
 			return new Auth_OpenID_FileStore($options['path']);
 
 		 default:
