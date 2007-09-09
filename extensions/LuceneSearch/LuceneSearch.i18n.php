@@ -201,8 +201,18 @@ $1\n
 );
 
 $wgLuceneSearchMessages['hsb'] = array(
+	'searchnumber'          => '<strong>Wuslědki $1–$2 z $3</strong>',
+	'searchprev'            => '&larr; <span style=\'font-size: smaller\'>Předchadny</span>',
+	'searchnext'            => '<span style=\'font-size: smaller\'>Přichodny</span> &rarr;',
+	'searchscore'           => 'Relewanca: $1',
 	'searchsize'            => '$1 KB ($2 słowow)',
 	'searchdidyoumean'      => 'Měnješe ty „<a href="$1">$2</a>“?',
+	'searchnoresults'       => 'Bohužel njebuchu přihódne strony za twoje pytanske naprašowanje namakane.',
+	'searchnearmatches'     => '<b>Tute strony maja k pytanskemu naprašowanju podobne titule:</b>',
+	'lucenepowersearchtext' => 'W mjenowych rumach pytać: $1<br />Pytać za: $3 $9 $10',
+	'lucenefallback'        => 'Běše problem z wikipytanjom.
+To je najskerje nachwilny problem; spytaj za někotre mjeńšiny hišće raz. Móžeš tež eksternu pytansku słužbu wužić.',
+	'searchexactcase'       => 'Wulko-/małopisanje při pytanju wobkedźbować',
 	'searchall'             => 'wšě',
 	'searchincategory'      => 'w kategoriji',
 );

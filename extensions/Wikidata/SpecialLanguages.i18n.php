@@ -25,6 +25,10 @@ $wgLanguageManagerMessages['fr'] = array(
 $wgLanguageManagerMessages['he'] = array(
 	'langman_title' => 'מנהל שפות',
 );
+$wgLanguageManagerMessages['hsb'] = array(
+	'langman_title' => 'Zrjadowak rěčow',
+	'languages' => 'Wikidata: Zrjadowak rěčow',
+);
 $wgLanguageManagerMessages['id'] = array(
 	'langman_title' => 'Pengelola bahasa',
 	'languages'=>'Wikidata: Pengelola bahasa',

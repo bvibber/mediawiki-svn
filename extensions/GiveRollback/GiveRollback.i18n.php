@@ -79,6 +79,15 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentryrevoke' => 'a enlevé les droits de révocation de [[$1]]',
 ),
 	
+'hsb' => array(
+'giverollback-username' => 'Wužiwarske mjeno:',
+'giverollback-search' => 'Pytać',
+'giverollback-change' => 'Status změnić:',
+'giverollback-grant' => 'Dowolić',
+'giverollback-revoke' => 'Wotwołać',
+'giverollback-comment' => 'Komentar:',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'giverollback' => 'Pemberian atau penarikan hak pengembalian',

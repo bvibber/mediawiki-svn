@@ -20,6 +20,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount'  =>  'Cet utilisateur a $1 éditions.',
 ),
 
+'hsb' => array(
+	'contributionseditcount' => 'WuÅ¾iwar ma $1 zmÄ›now.',
+),
+
 'nl' => array(
 	'contributionseditcount'  =>  'Deze gebruiker heeft $1 bewerkingen.',
 ),

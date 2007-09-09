@@ -136,6 +136,7 @@ function efPatrollerMessages() {
 
 'hsb' => array(
 'patrol-revert-reason' => 'Přičina:',
+'patrol-another' => 'Dalšu změnu pokazać, jeli k dispoziciji stejaca.',
 ),
 
 /* Indonesian (Ivan Lanin) */

@@ -120,6 +120,13 @@ $wgChemFunctions_Messages['de'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Eingabe Fehler!'
 );
 
+$wgChemFunctions_Messages['hsb'] = array(
+	'chemicalsources' => 'Chemiske žórła',
+	'ChemFunctions_ListPage' => 'Chemiske žórła',
+	'ChemFunctions_Formula' => 'Formla',
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Zapodatny zmylk',
+);
+
 /**
  * id
  */

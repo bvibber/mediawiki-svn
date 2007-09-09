@@ -54,6 +54,11 @@ function efMediaFunctionsMessages() {
 'mediafunctions-not-exist'     => '„$1“ ist nicht vorhanden',
 ),
 
+'hsb' => array(
+'mediafunctions-invalid-title' => '"$1" płaćiwe mjeno njeje.',
+'mediafunctions-not-exist'     => '"1" njeeksistuje',
+),
+
 'nl' => array(
 'mediafunctions-invalid-title' => '"$1" is geen geldige titel',
 'mediafunctions-not-exist'     => '"$1" bestaat niet',

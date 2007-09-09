@@ -56,6 +56,15 @@ $wgLinkSearchMessages['he'] = array(
 	'linksearch-line'  => '$1 מקושר מהדף $2',
 	'linksearch-error' => 'תווים כלליים יכולים להופיע רק בתחילת שם השרת.',
 );
+$wgLinkSearchMessages['hsb'] = array(
+	'linksearch'       => 'Webwotkazy pytać',
+	'linksearch-pat'   => 'Pytanski muster:',
+	'linksearch-ns'    => 'Mjenowy rum:',
+	'linksearch-ok'    => 'Pytać',
+	'linksearch-text'  => 'Zastupniske znamjenja kaž "*.wikipedia.org" smědźa so wužiwać.<br />Podpěrowane protokole: <tt>$1</tt>',
+	'linksearch-line'  => '$1 je z $2 wotkazany.',
+	'linksearch-error' => 'Zastupniske znamjenja dadźa so jenož na spočatku URL wužiwać.',
+);
 $wgLinkSearchMessages['hu'] = array(
 	'linksearch'       => 'Keresés külső hivatkozások szerint',
 	'linksearch-text'  => 'A helyettesítő karaktereket is lehet használni, például "*.wikipedia.org".',

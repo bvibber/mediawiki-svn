@@ -168,9 +168,11 @@ function efInputBoxMessages() {
 ),
 
 'hsb' => array(
-	'tryexact'       => 'Dokładne pytanje spytać',
-	'searchfulltext' => 'Dospołny tekst pytać',
-	'createarticle'  => 'Nastawk wutworić',
+	'inputbox-error-no-type'  => 'Njesy typ zapodatneho kašćika podał.',
+	'inputbox-error-bad-type' => 'Typ zapodatneho kašćika "$1" je njeznaty. Prošu podaj płaćiwy typ: "create", "comment", "search" abo "search2".',
+	'tryexact'                => 'Dokładne pytanje spytać',
+	'searchfulltext'          => 'Dospołny tekst pytać',
+	'createarticle'           => 'Nastawk wutworić',
 ),
 
 'hu' => array(

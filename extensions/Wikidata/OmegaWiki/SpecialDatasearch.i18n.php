@@ -19,6 +19,10 @@ $wgDataSearchMessages['fr'] = array(
 	'datasearch' => 'Wikidata: Recherche de données',
 );
 
+$wgDataSearchMessages['hsb'] = array(
+	'datasearch' => 'Wikidata: Pytanje datow',
+);
+
 $wgDataSearchMessages['id'] = array(
 	'datasearch' => 'Wikidata: Pencarian data',
 );

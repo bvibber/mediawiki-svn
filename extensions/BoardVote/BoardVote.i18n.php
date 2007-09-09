@@ -465,7 +465,9 @@ $wgBoardVoteMessages['hsb'] = array(
 	'boardvote_edits_many'    => 'mnohe',
 	'boardvote_blocked'       => 'Wodaj, ale ty bu we swojim wikiju zablokowany. Zablokowani wužiwarjo njesmědźa so na wólbje wobdźělić.',
 	'boardvote_welcome'       => 'Witaj \'\'\'$1\'\'\'!',
+	'go_to_board_vote'        => 'Wólby k Wikimedija-kuratorijej 2007',
 );
+
 $wgBoardVoteMessages['id'] = array(
 	'boardvote'               => "Pemilihan Anggota Dewan Kepercayaan Yayasan Wikimedia",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Berikan suara]]
