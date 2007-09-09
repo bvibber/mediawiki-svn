@@ -92,6 +92,14 @@ $wgChemFunctions_Messages['en'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Input error!'
 );
 
+$wgChemFunctions_Messages['ar'] = array(
+	'chemicalsources' => 'مصادر كيميائية',
+	'ChemFunctions_ListPage' => 'مصادر كيميائية',
+	'ChemFunctions_CAS' => 'رقم CAS',
+	'ChemFunctions_Formula' => 'الصيغة',
+	'ChemFunctions_Name' => 'اسم IUPAC',
+);
+
 /**
  * de
  */
@@ -347,5 +355,3 @@ $wgChemFunctions_Messages['vi'] = array(
 
 	'ChemFunctions_ChemFormInputError' => 'Chemform: lỗi nhập!'
 );
-
-

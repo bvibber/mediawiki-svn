@@ -34,6 +34,11 @@ function efGiveRollbackMessages() {
 'giverollback-logentryrevoke' => 'removed rollback rights from [[$1]]',
 ),
 
+'ar' => array(
+'giverollback-username' => 'اسم المستخدم:',
+'giverollback-search' => 'اذهب',
+),
+
 /* German (Raymond) */
 'de' => array(
 'giverollback' => 'Zurücksetzen-Recht erteilen oder entziehen',
