@@ -266,7 +266,11 @@ LocalSettings.php file. Please read carefully.
   'http://www.openid.net/login-bg.gif', but you may want to move it to
   a local URL, or an URL on a CDN, if that kind of thing floats your
   boat.
-  
+
+* $wgOpenIDShowUrlOnUserPage -- whether to show the OpenID identity URL
+  on a user's home page. Possible values are 'always', 'never', or 'user' 
+  (lets the user decide). Default is 'user'.
+
 == Skins ==
 
 If you are customizing a skin, and you want to show the OpenID

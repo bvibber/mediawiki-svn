@@ -46,7 +46,15 @@ if (defined('MEDIAWIKI')) {
 	# Whether to hide the "Login with OpenID link" link; set to true if you already have this link in your skin.
 	
 	$wgHideOpenIDLoginLink = false;
+	
+	# Location of the OpenID login logo. You can copy this to your server if you want.
+	
 	$wgOpenIDLoginLogoUrl = 'http://www.openid.net/login-bg.gif';
+	
+	# Whether to show the OpenID identity URL on a user's home page. Possible values are 'always', 'never', or 'user' 
+	# 'user' lets the user decide.
+	
+	$wgOpenIDShowUrlOnUserPage = 'user';
 	
 	function setupOpenID() {
 		global $wgMessageCache, $wgOut, $wgRequest, $wgHooks;
@@ -93,6 +101,7 @@ if (defined('MEDIAWIKI')) {
 										   'openidconvertyourstext' => 'That is already your OpenID.',
 										   'openidconvertothertext' => 'That is someone else\'s OpenID.',
 										   'openidalreadyloggedin' => '<strong>User $1, you are already logged in!</strong>',
+										   'tog-hideopenid' => 'Hide your <a href="http://openid.net/">OpenID</a> on your user page, if you log in with OpenID.',
 										   ));
 
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDLogin'));
@@ -102,6 +111,8 @@ if (defined('MEDIAWIKI')) {
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDXRDS'));
 
 		$wgHooks['PersonalUrls'][] = 'OpenIDPersonalUrls';
+		$wgHooks['UserToggles'][] = 'OpenIDUserToggles';
+
 		$wgOut->addHeadItem('openidloginstyle', OpenIDLoginStyle());
 		
 		$action = $wgRequest->getText('action', 'view');
@@ -139,12 +150,20 @@ if (defined('MEDIAWIKI')) {
 				if ($user && $user->getID() != 0) {
 					$openid = OpenIdGetUserUrl($user);
 					if (isset($openid) && strlen($openid) != 0) {
-						$url = OpenIDToUrl($openid);
-						$disp = htmlspecialchars($openid);
-						$wgOut->setSubtitle("<span class='subpages'>" .
-											"<img src='http://openid.net/login-bg.gif' alt='OpenID' />" .
-											"<a href='$url'>$disp</a>" .
-											"</span>");
+						global $wgOpenIDShowUrlOnUserPage;
+						
+						if ($wgOpenIDShowUrlOnUserPage == 'always' ||
+							($wgOpenIDShowUrlOnUserPage == 'user' && !$user->getOption('hideopenid')))
+						  {
+								global $wgOpenIDLoginLogoUrl;
+						
+								$url = OpenIDToUrl($openid);
+								$disp = htmlspecialchars($openid);
+								$wgOut->setSubtitle("<span class='subpages'>" .
+													"<img src='$wgOpenIDLoginLogoUrl' alt='OpenID' />" .
+													"<a href='$url'>$disp</a>" .
+													"</span>");
+						  }
 					} else {
 						$wgOut->addLink(array('rel' => 'openid.server',
 											  'href' => OpenIDServerUrl()));
@@ -227,6 +246,10 @@ if (defined('MEDIAWIKI')) {
 		}
 		
 		return true;
+	}
+	
+	function OpenIDUserToggles(&$extraToggles) {
+		$extraToggles[] = 'hideopenid';
 	}
 	
 	function OpenIDLoginStyle() {
