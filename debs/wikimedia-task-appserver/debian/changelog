@@ -1,3 +1,10 @@
+wikimedia-task-appserver (1.23) feisty; urgency=low
+
+  * Added LoadModule for autoindex, dir and setenvif. Removed some <IfModule>
+    directives, it's better to fail noisily if they're missing.
+
+ -- Tim Starling <tstarling@wikimedia.org>  Sun,  9 Sep 2007 18:05:10 +0000
+
 wikimedia-task-appserver (1.22) feisty; urgency=low
 
   * Depend on php-pear, needed for OggHandler
