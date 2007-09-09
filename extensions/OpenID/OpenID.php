@@ -249,7 +249,13 @@ if (defined('MEDIAWIKI')) {
 	}
 	
 	function OpenIDUserToggles(&$extraToggles) {
-		$extraToggles[] = 'hideopenid';
+		global $wgOpenIDShowUrlOnUserPage;
+		
+		if ($wgOpenIDShowUrlOnUserPage == 'user') {
+			$extraToggles[] = 'hideopenid';
+		}
+		
+		return true;
 	}
 	
 	function OpenIDLoginStyle() {
