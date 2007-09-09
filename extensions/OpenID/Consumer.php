@@ -224,14 +224,14 @@ if (defined('MEDIAWIKI')) {
 	}
 
 	function OpenIDLoginForm() {
-		global $wgOut, $wgUser;
+		global $wgOut, $wgUser, $wgOpenIDLoginLogoUrl;
 		$sk = $wgUser->getSkin();
 		$instructions = wfMsg('openidlogininstructions');
 		$ok = wfMsg('login');
 		$wgOut->addHTML("<p>{$instructions}</p>" .
 						'<form action="' . $sk->makeSpecialUrl('OpenIDLogin') . '" method="POST">' .
 						'<input type="text" name="openid_url" size=30 ' .
-						' style="background: url(http://www.openid.net/login-bg.gif) ' .
+						' style="background: url(' . $wgOpenIDLoginLogoUrl . ') ' .
 						'        no-repeat; background-color: #fff; background-position: 0 50%; ' .
 						'        color: #000; padding-left: 18px;" value="" />' .
 						'<input type="submit" value="' . $ok . '" />' .

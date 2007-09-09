@@ -42,9 +42,14 @@ if (defined('MEDIAWIKI')) {
 										   'url' => 'http://www.mediawiki.org/wiki/Extension:OpenID',
 										   'description' => 'lets users login to the wiki with an [http://openid.net/ OpenID] ' .
 										   'and login to other OpenID-aware Web sites with their wiki user account');
-
+	
+	# Whether to hide the "Login with OpenID link" link; set to true if you already have this link in your skin.
+	
+	$wgHideOpenIDLoginLink = false;
+	$wgOpenIDLoginLogoUrl = 'http://www.openid.net/login-bg.gif';
+	
 	function setupOpenID() {
-		global $wgMessageCache, $wgOut, $wgRequest;
+		global $wgMessageCache, $wgOut, $wgRequest, $wgHooks;
 
 		$wgMessageCache->addMessages(array('openidlogin' => 'Login with OpenID',
 										   'openidfinish' => 'Finish OpenID login',
@@ -88,7 +93,6 @@ if (defined('MEDIAWIKI')) {
 										   'openidconvertyourstext' => 'That is already your OpenID.',
 										   'openidconvertothertext' => 'That is someone else\'s OpenID.',
 										   'openidalreadyloggedin' => '<strong>User $1, you are already logged in!</strong>',
-
 										   ));
 
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDLogin'));
@@ -97,6 +101,9 @@ if (defined('MEDIAWIKI')) {
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDConvert'));
 		SpecialPage::AddPage(new UnlistedSpecialPage('OpenIDXRDS'));
 
+		$wgHooks['PersonalUrls'][] = 'OpenIDPersonalUrls';
+		$wgOut->addHeadItem('openidloginstyle', OpenIDLoginStyle());
+		
 		$action = $wgRequest->getText('action', 'view');
 
 		if ($action == 'view') {
@@ -205,6 +212,34 @@ if (defined('MEDIAWIKI')) {
 		} else {
 			return $openid;
 		}
+	}
+	
+	function OpenIDPersonalUrls(&$personal_urls, &$title) {
+		global $wgHideOpenIDLoginLink, $wgUser;
+		
+		if (!$wgHideOpenIDLoginLink && $wgUser->getID() == 0) {
+			$sk = $wgUser->getSkin();
+			$personal_urls['openidlogin'] = array(
+					'text' => wfMsg('openidlogin'),
+					'href' => $sk->makeSpecialUrl( 'OpenIDLogin', 'returnto=' . $title->getPrefixedURL() ),
+					'active' => $title->isSpecial( 'OpenIDLogin' )
+				);
+		}
+		
+		return true;
+	}
+	
+	function OpenIDLoginStyle() {
+		global $wgOpenIDLoginLogoUrl;
+		return <<<EOS
+<style type='text/css'>
+li#pt-openidlogin {
+  background: url($wgOpenIDLoginLogoUrl) top left no-repeat;
+  padding-left: 20px;
+  text-transform: none;
+}
+</style>
+EOS;
 	}
 }
 

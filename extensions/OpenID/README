@@ -255,6 +255,18 @@ LocalSettings.php file. Please read carefully.
   respectively. The path will be automatically created if it doesn't
   exist at runtime.
 
+* $wgHideOpenIDLoginLink -- boolean that says whether or not to hide
+  the OpenID login link in the personal URLs. Typically you'd use this
+  if you've already got some other method for showing the OpenID login
+  link, like in your skin. Note that it will *not* prevent login if
+  the user navigates to Special:OpenIDLogin directly; it's simply
+  cosmetic. This is mostly a backwards-compatibility option.
+  
+* $wgOpenIDLoginLogoUrl -- Url of the OpenID login logo. Defaults to
+  'http://www.openid.net/login-bg.gif', but you may want to move it to
+  a local URL, or an URL on a CDN, if that kind of thing floats your
+  boat.
+  
 == Skins ==
 
 If you are customizing a skin, and you want to show the OpenID
