@@ -37,9 +37,9 @@
   http://profile.typekey.com/EvanProdromou/
 + Allow specifying a FileStore rather than a MemcStore
 - Allow specifying a MySQLStore rather than a MemcStore
-- Fall back to DumbStore if Memc is bogus
++ Fall back to FileStore if Memc is bogus
 + Unit test for MemcStore
 - for just-a-hostname OpenIDs, if the first element is not
   www, use the first element as a proposed ID
 - configurable regexps for finding a user ID from an OpenID.
-- Make the OpenID login page more prominent. A personal toolbox link for each page?
++ Make the OpenID login page more prominent. A personal toolbox link for each page?
