@@ -74,6 +74,10 @@ if (defined('MEDIAWIKI')) {
 			return;
 		}
 
+		if ($wgRequest->getText('returnto')) {
+			OpenIDConsumerSetReturnTo($wgRequest->getText('returnto'));
+		}
+		
 		$openid_url = $wgRequest->getText('openid_url');
 		if (isset($openid_url) && strlen($openid_url) > 0) {
 			OpenIDLogin($openid_url);
@@ -211,7 +215,7 @@ if (defined('MEDIAWIKI')) {
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( wfMsg( 'openidsuccess', $wgUser->getName(), $openid ) );
-		$wgOut->returnToMain( );
+		$wgOut->returnToMain(false, OpenIDConsumerReturnTo());
 	}
 
 	function OpenIDLoginSetCookie($openid) {
@@ -653,7 +657,7 @@ if (defined('MEDIAWIKI')) {
 		$wgOut->setRobotpolicy( 'noindex,nofollow' );
 		$wgOut->setArticleRelated( false );
 		$wgOut->addWikiText( wfMsg( 'openidalreadyloggedin', $wgUser->getName() ) );
-		$wgOut->returnToMain( $auto );
+		$wgOut->returnToMain(false, OpenIDConsumerReturnTo() );
 	}
 
 	function OpenIDGetUserUrl($user) {
@@ -762,6 +766,14 @@ if (defined('MEDIAWIKI')) {
 
 	function OpenIDConsumerFetchValues() {
 		return array($_SESSION['openid_consumer_response'], $_SESSION['openid_consumer_sreg']);
+	}
+
+	function OpenIDConsumerReturnTo() {
+		return $_SESSION['openid_consumer_returnto'];
+	}
+	
+	function OpenIDConsumerSetReturnTo($returnto) {
+		$_SESSION['openid_consumer_returnto'] = $returnto;
 	}
 
 	function OpenIDGetName($response, $sreg, $choice, $nameValue) {

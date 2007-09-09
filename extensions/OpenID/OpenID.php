@@ -234,13 +234,16 @@ if (defined('MEDIAWIKI')) {
 	}
 	
 	function OpenIDPersonalUrls(&$personal_urls, &$title) {
-		global $wgHideOpenIDLoginLink, $wgUser;
+		global $wgHideOpenIDLoginLink, $wgUser, $wgLang;
 		
 		if (!$wgHideOpenIDLoginLink && $wgUser->getID() == 0) {
 			$sk = $wgUser->getSkin();
+			$returnto = ($title->getPrefixedUrl() == $wgLang->specialPage( 'Userlogout' )) ?
+			  '' : ('returnto=' . $title->getPrefixedURL());
+			  
 			$personal_urls['openidlogin'] = array(
 					'text' => wfMsg('openidlogin'),
-					'href' => $sk->makeSpecialUrl( 'OpenIDLogin', 'returnto=' . $title->getPrefixedURL() ),
+					'href' => $sk->makeSpecialUrl( 'OpenIDLogin', $returnto ),
 					'active' => $title->isSpecial( 'OpenIDLogin' )
 				);
 		}
