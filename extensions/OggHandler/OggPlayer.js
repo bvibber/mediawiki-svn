@@ -1,7 +1,9 @@
 // This is a global configuration object which can embed multiple video instances
 var wgOggPlayer = {
 	'detectionDone': false,
-	'vlc-activex': false,
+	'msie': false,
+	'safari' : false,
+	'opera' : false,
 
 	// List of players in order of preference
 	// Downpreffed VLC because it crashes my browser all the damn time -- TS
@@ -119,15 +121,18 @@ var wgOggPlayer = {
 		}
 		this.detectionDone = true;
 
+		// First some browser detection
+		this.msie = ( navigator.appName == "Microsoft Internet Explorer" );
+		this.opera = ( navigator.appName == 'Opera' );
+		this.safari = ( navigator.vendor && navigator.vendor.substr( 0, 5 ) == 'Apple' );
+		
 		// In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		// search navigator.mimeTypes to see if it's installed
 		var javaEnabled = navigator.javaEnabled();
 		// In Opera, navigator.javaEnabled() is all there is
-		var invisibleJava = ( navigator.appName == 'Opera' );
+		var invisibleJava = this.opera;
 		// Some browsers filter out duplicate mime types, hiding some plugins
-		var uniqueMimesOnly = ( navigator.appName == 'Opera' ) || 
-			(navigator.vendor && navigator.vendor.substr( 0, 5 ) == 'Apple' );
-
+		var uniqueMimesOnly = this.opera || this.safari;
 
 		// Opera will switch off javaEnabled in preferences if java can't be found.
 		// And it doesn't register an application/x-java-applet mime type like Mozilla does.
@@ -514,7 +519,8 @@ var wgOggPlayer = {
 		    '</applet>';
 
 		// Wrap it in an iframe to avoid hanging the rendering thread in FF 2.0 and similar
-		if ( navigator.appName != "Microsoft Internet Explorer" ) {
+		// Doesn't work in Safari/Mac
+		if ( !this.msie && !this.safari ) {
 			var iframeHtml = '<html><body>' + html + '</body></html>';
 			var iframeJs = 'parent.wgOggPlayer.writeApplet(self, "' + iframeHtml.replace( /"/g, '\\"' ) + '");';
 			var iframeUrl = 'javascript:' + encodeURIComponent( iframeJs );
