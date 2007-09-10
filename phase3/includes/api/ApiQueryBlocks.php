@@ -125,12 +125,7 @@ class ApiQueryBlocks extends ApiQueryBase {
 			if($fld_timestamp)
 				$block['timestamp'] = wfTimestamp(TS_ISO_8601, $row->ipb_timestamp);
 			if($fld_expiry)
-			{
-				if($row->ipb_expiry == Block::infinity())
-					$block['expiry'] = 'infinity';
-				else
-					$block['expiry'] = wfTimestamp(TS_ISO_8601, $row->ipb_expiry);
-			}
+				$block['expiry'] = Block::decodeExpiry($row->ipb_expiry, TS_ISO_8601);
 			if($fld_reason)
 				$block['reason'] = $row->ipb_reason;
 			if($fld_range)
