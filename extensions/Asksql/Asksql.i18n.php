@@ -183,6 +183,16 @@ Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi 
 'querysuccessful' => 'Запрос выполнен',
 ),
 
+'sah' => array(
+'asksql'           => 'SQL ыйытык',
+'asksqltext'       => 'Бу халыыбы билии олоҕор быһа ыйытыкка тутун. Сиимбол тиһиликтэрин биирдии кавычкаларынан саҕалаа уонна түмүктээ (\'бу курдук\'). Бу сиэрбэри олус толкуйдатыан сөп, онон сэрэнэн тутун.',
+'sqlislogged'      => 'Бары ыйытыктар тиһиллэн иһэллэр',
+'sqlquery'         => 'Ыйытык киллэрии',
+'querybtn'         => 'Ыйытыгы ыытыы',
+'selectonly'       => 'Ааҕарга эрэ аналлаах ыйытыктар көҥүллэнэллэр',
+'querysuccessful'  => 'Ыйытык оҥоһулунна',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'asksql' => 'SQL požiadavka',

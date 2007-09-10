@@ -40,6 +40,11 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'مزود البيانات: $1',
 ),
 
+'bcl' => array(
+'bookinfo-result-title' => 'Titulo:',
+'bookinfo-result-year' => 'Taon:',
+),
+
 'br' => array(
 'bookinfo-header' => 'Titouroù war al levr',
 'bookinfo-result-title' => 'Titl :',

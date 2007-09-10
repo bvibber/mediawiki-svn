@@ -10,6 +10,10 @@ $wgDeletedContribsMessages['ar'] = array(
 	'deletedcontributions' => 'مساهمات المستخدم المحذوفة',
 );
 
+$wgDeletedContribsMessages['bcl'] = array(
+	'deletedcontributions' => 'Parâon an mga kontribusyon kan parágamit',
+);
+
 $wgDeletedContribsMessages['de'] = array(
 	'deletedcontributions'		 => 'Gelöschte Benutzerbeiträge'
 );

@@ -97,6 +97,11 @@ $wgAjaxShowEditorsMessages['ru'] = array(
 	'ajax-se-pending' => 'ожидание обновления... (нажмите здесь или начните редактирование)',
 	'ajax-se-idling' => '($1 с назад)',
 );
+$wgAjaxShowEditorsMessages['sah'] = array(
+	'ajax-se-title' => 'Билигин көннөрө сылдьаллар:',
+	'ajax-se-pending' => 'саҥардылларын кэтэс ... (маны баттаа эбэтэр көннөрүүнү саҕалаа)',
+	'ajax-se-idling' => '($1 c анараа өттүгэр)',
+);
 $wgAjaxShowEditorsMessages['sk'] = array(
 	'ajax-se-title' => 'Práve upravuje:',
 	'ajax-se-pending' => 'čaká sa na obnovenie... (kliknite do tohto poľa alebo začnite upravovať)',

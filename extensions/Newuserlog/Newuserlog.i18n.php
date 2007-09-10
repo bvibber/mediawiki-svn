@@ -27,6 +27,9 @@ $wgNewuserlogMessages['ar'] = array(
 	'newuserlog-create-entry'  => 'مستخدم جديد',
 	'newuserlog-create2-entry' => 'أنشأ الحساب الخاص باسم $1',
 );
+$wgNewuserlogMessages['bcl'] = array(
+	'newuserlog-create-entry'  => 'Bâgong parágamit',
+);
 $wgNewuserlogMessages['cs'] = array(
 	'newuserlogpage'           => 'Kniha nových uživatelů',
 	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',

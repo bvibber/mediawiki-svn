@@ -100,6 +100,7 @@ sphinx|Sphinx",
 'vote-results-count' => 'Ličić',
 'vote-login' => 'Dyrbiš $1, zo by wothłosował.',
 'vote-login-link' => 'přizjewić',
+'vote-invalid-choice' => 'Dyrbiš jednu z k dispoziciji stejacych opcijow wubrać.',
 ),
 
 /* Indonesian (Ivan Lanin) */

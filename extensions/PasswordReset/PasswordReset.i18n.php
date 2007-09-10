@@ -21,6 +21,16 @@ $allMessages = array(
 		'passwordreset' => 'Passwort zurücksetzen',
 	),
 
+	'hsb' => array(
+		'passwordreset-invalidusername' => 'Njepłaćiwe wužiwarske mjeno',
+		'passwordreset-emptyusername' => 'Žane wužiwarske mjeno',
+		'passwordreset-username' => 'Wužiwarske mjeno',
+		'passwordreset-newpass' => 'Nowe hesło',
+		'passwordreset-confirmpass' => 'Hesło wobkrućić',
+		'passwordreset-submit' => 'Hesło wróćo stajić',
+		'passwordreset-success' => 'Hesło bu za wužiwarski ID $1 wróćo stajene.',
+	),
+
 	'nl' => array(
 		'passwordreset' => 'Wachtwoord opnieuw instellen',
 		'passwordreset-invalidusername' => 'Onjuiste gebruiker',

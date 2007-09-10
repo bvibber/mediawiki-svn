@@ -54,6 +54,12 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke'  => 'سحب صلاحية بوت من [[$1]]',
 ),
 
+'bcl' => array(
+'makebot-search'          => 'Dumanán',
+'makebot-grant'           => 'Otobón',
+'makebot-comment'         => 'Komento:',
+),
+
 /* Old Church Slavonic (language file) */
 'cu' => array(
 'makebot-search' => 'Прѣиди',

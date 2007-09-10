@@ -65,6 +65,13 @@ $1
 	'searchincategory'      => 'في التصنيف',
 );
 
+$wgLuceneSearchMessages['bcl'] = array(
+	'searchsize'            => '$1 KB ($2 mga tataramon)',
+	'searchdidyoumean'      => 'An gusto mo: "<a href="$1">$2</a>"?',
+	'searchall'             => 'gabos',
+	'searchincategory'      => 'sakategorya',
+);
+
 $wgLuceneSearchMessages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",

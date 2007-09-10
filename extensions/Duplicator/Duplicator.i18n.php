@@ -226,6 +226,8 @@ indépendantes de l’historique complet. Il sert par exemple à séparer un art
 ),
 
 'hsb' => array(
+'duplicator' => 'Nastawk duplicěrować',
+'duplicator-toolbox' => 'Tutón nastawk duplicěrować',
 'duplicator-options' => 'Opcije',
 'duplicator-source' => 'Žórło:',
 'duplicator-dest' => 'Cil:',
