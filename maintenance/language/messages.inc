@@ -824,6 +824,8 @@ $wgMessageStructure = array(
 		'destfilename',
 		'watchthisupload',
 		'filewasdeleted',
+		'filename-bad-prefix',
+		'filename-prefix-blacklist',
 	),
 	'upload-errors' => array(
 		'upload-proto-error',

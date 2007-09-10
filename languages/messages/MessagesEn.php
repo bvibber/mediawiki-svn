@@ -1087,9 +1087,8 @@ The deletion log for this page is provided here for convenience:",
 
 # Account creation failure
 'cantcreateaccounttitle' => "Can't create account",
-'cantcreateaccounttext'  => 'Account creation from this IP address (<b>$1</b>) has been blocked.
-This is probably due to persistent vandalism from your school or Internet service
-provider.',
+'cantcreateaccounttext'  => "Account creation from this IP address (<b>$1</b>) has been blocked by [[User:$3|$3]].
+The reason given by $3 is ''$2''",
 
 # History pages
 'revhistory'            => 'Revision history',
@@ -1426,6 +1425,21 @@ If you have this image in full resolution upload this one, otherwise change the 
 'destfilename'                => 'Destination filename',
 'watchthisupload'             => 'Watch this page',
 'filewasdeleted'              => 'A file of this name has been previously uploaded and subsequently deleted. You should check the $1 before proceeding to upload it again.',
+'filename-bad-prefix'             => 'The name of the file you are uploading begins with <strong>"$1"</strong>, which is a non-descriptive name typically assigned automatically by digital cameras. Please choose a more descriptive name for your file.',
+'filename-prefix-blacklist'        => ' #<!-- leave this line exactly as it is --> <pre>
+# Syntax is as follows: 
+#   * Everything from a "#" character to the end of the line is a comment
+#   * Every non-blank line is a prefix for typical file names assigned automatically by digital cameras
+CIMG # Casio
+DSC_ # Nikon
+DSCF # Fuji
+DSCN # Nikon
+DUW # some mobil phones
+IMG # generic
+JD # Jenoptik
+MGP # Pentax
+PICT # misc.
+ #</pre> <!-- leave this line exactly as it is -->', # only translate this message to other languages if you have to change it
 
 'upload-proto-error'      => 'Incorrect protocol',
 'upload-proto-error-text' => 'Remote upload requires URLs beginning with <code>http://</code> or <code>ftp://</code>.',
@@ -2422,7 +2436,7 @@ All transwiki import actions are logged at the [[Special:Log/import|import log]]
 'patrol-log-diff'   => 'r$1',
 
 # Image deletion
-'deletedrevision' => 'Deleted old revision $1.',
+'deletedrevision' => 'Deleted old revision $1',
 'filedeleteerror-short' => "Error deleting file: $1",
 'filedeleteerror-long' => "Errors were encountered while deleting the file:\n\n$1\n",
 'filedelete-missing' => 'The file "$1" cannot be deleted, because it doesn\'t exist.',

@@ -1073,6 +1073,8 @@ Bitte prüfe, ob du das Bild in voller Auflösung vorliegen hast und lade dieses
 'destfilename'                => 'Zielname',
 'watchthisupload'             => 'Diese Seite beobachten',
 'filewasdeleted'              => 'Eine Datei mit diesem Namen wurde schon einmal hochgeladen und zwischenzeitlich wieder gelöscht. Bitte prüfe zuerst den Eintrag im $1, bevor du die Datei wirklich speicherst.',
+'filename-bad-prefix'         => 'Der Dateiname beginnt mit <strong>„$1“</strong>. Dies ist im allgemeinen der von einer Digitalkamera vorgegebener Dateiname und daher nicht sehr aussagekräftig.
+Bitte gebe der Datei einen Namen, der den Inhalt besser beschreibt.',
 
 'upload-proto-error'      => 'Falsches Protokoll',
 'upload-proto-error-text' => 'Die URL muss mit <code>http://</code> oder <code>ftp://</code> beginnen.',
@@ -1940,7 +1942,7 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'patrol-log-diff' => 'Version $1',
 
 # Image deletion
-'deletedrevision'                 => 'alte Version: $1.',
+'deletedrevision'                 => 'alte Version: $1',
 'filedeleteerror-short'           => 'Fehler beim Datei-Löschen: $1',
 'filedeleteerror-long'            => 'Beim Datei-Löschen wurden Fehler festgestellt:
 

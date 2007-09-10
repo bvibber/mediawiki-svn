@@ -837,6 +837,7 @@ $2 Inclure les page de redirections<br /> Rechercher $3 $9',
 'number_of_watching_users_pageview' => '[$1 utilisateur(s) suivant]',
 'rc_categories'                     => 'Limite des catégories (séparation avec « | »)',
 'rc_categories_any'                 => 'Toutes',
+'newsectionsummary'                 => '/* $1 */ nouvelle section',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Suivi des liens',
@@ -1290,7 +1291,7 @@ Voici les réglages actuels de la page <strong>$1</strong> :',
 Voici les réglages actuels de la page <strong>$1</strong> :',
 'protect-cascadeon'           => 'Cette page est actuellement protégée car incluse dans {{PLURAL:$1|la page suivante|les pages suivantes}}, ayant été protégée avec l’option « protection en cascade » activée. Vous pouvez changer le niveau de protection de cette page sans que cela n’affecte la protection en cascade.',
 'protect-default'             => 'Pas de protection',
-'protect-fallback'            => 'Nécessite l’habilitation "$1" ',
+'protect-fallback'            => 'Nécessite l’habilitation "$1"',
 'protect-level-autoconfirmed' => 'Semi-protection',
 'protect-level-sysop'         => 'Administrateurs uniquement',
 'protect-summary-cascade'     => 'protection en cascade',
@@ -1324,7 +1325,7 @@ L’archive peut être effacée périodiquement.',
 Si une nouvelle page avec le même nom a été créée depuis la suppression, les révisions restaurées apparaîtront dans l’historique antérieur et la version courante ne sera pas automatiquement remplacée.',
 'undeleterevdel'               => 'La restauration ne sera pas effectuée si, au final, la version la plus récente de la page sera partiellement supprimée. Dans ce cas, vous devez déselectionner les versions les plus récentes (en haut). Les versions des fichiers auxquelles vous n’avez pas accès ne seront pas restaurées.',
 'undeletehistorynoadmin'       => 'Cet article a été supprimé. Le motif de la suppression est indiqué dans le résumé ci-dessous, avec les détails des utilisateurs qui l’ont modifié avant sa suppression. Le contenu de ces versions n’est accessible qu’aux administrateurs.',
-'undelete-revision'            => 'Version supprimée de $1, (révision du $2) par $3 : ',
+'undelete-revision'            => 'Version supprimée de $1, (révision du $2) par $3 :',
 'undeleterevision-missing'     => 'Version invalide ou manquante. Vous avez peut-être un mauvais lien, ou la version a été restaurée ou supprimée de l’archive.',
 'undeletebtn'                  => 'Restaurer',
 'undeletereset'                => 'Réinitialiser',
@@ -1382,6 +1383,7 @@ $1',
 
 # What links here
 'whatlinkshere'       => 'Pages liées',
+'whatlinkshere-title' => 'Pages ayant des liens pointant vers $1',
 'notargettitle'       => 'Pas de cible',
 'notargettext'        => 'Indiquez une page cible ou un utilisateur cible.',
 'linklistsub'         => '(Liste de liens)',
@@ -1667,6 +1669,7 @@ Toutes les actions d’importation interwiki sont conservées dans le [[Special:
 'tooltip-compareselectedversions' => 'Afficher les différences entre deux versions de cette page',
 'tooltip-watch'                   => 'Ajouter cette page à votre liste de suivi',
 'tooltip-recreate'                => 'Recréer la page même si celle-ci a été effacée',
+'tooltip-upload'                  => 'Lancer l’import',
 
 # Stylesheets
 'common.css'   => '/** Le CSS placé ici sera appliqué à toutes les apparences. */',
@@ -1738,7 +1741,7 @@ Toutes les actions d’importation interwiki sont conservées dans le [[Special:
 'patrol-log-diff' => '$1',
 
 # Image deletion
-'deletedrevision'                 => 'L’ancienne version $1 a été supprimée.',
+'deletedrevision'                 => 'L’ancienne version $1 a été supprimée',
 'filedeleteerror-short'           => 'Erreur lors de la suppression du fichier : $1',
 'filedeleteerror-long'            => 'Des erreurs ont été rencontrées lors de la suppression du fichier :\n\n$1\n',
 'filedelete-missing'              => 'Le fichier « $1 » ne peut pas être supprimé parce qu’il n’existe pas.',
