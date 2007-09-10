@@ -298,7 +298,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		addClassMemberShip($this->activityConceptId, $this->functionallyRelatedId);
 			
 		if ($this->containsConceptId == 0)
-			$this->containsConceptId = $this->bootstrapDefinedMeaning("performs");
+			$this->containsConceptId = $this->bootstrapDefinedMeaning("contains");
 		addClassMemberShip($this->containsConceptId, $this->functionallyRelatedId);
 		
 		if ($this->includesConceptId == 0)
