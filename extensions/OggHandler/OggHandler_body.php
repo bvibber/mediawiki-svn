@@ -567,7 +567,7 @@ class OggTransformOutput extends MediaTransformOutput {
 				Xml::tags( 'button', 
 					array(
 						'onclick' => "wgOggPlayer.init(false, $playerParams);",
-						'style' => "width: {$width}px;",
+						'style' => "width: {$width}px; text-align: center",
 						'title' => $msgStartPlayer,
 					), 
 					Xml::element( 'img', 
