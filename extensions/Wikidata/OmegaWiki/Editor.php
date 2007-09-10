@@ -2333,8 +2333,14 @@ class GotoSourceEditor extends Viewer {
 
 class DefinedMeaningContextEditor extends WrappingEditor {
 	public function view(IdStack $idPath, $value) {
-		$idPath->pushDefinedMeaningId($value->definedMeaningId);	
+		$definedMeaningId = (int) $value->definedMeaningId;
+
+		$idPath->pushDefinedMeaningId($definedMeaningId);	
+		$idPath->pushClassAttributes(new ClassAttributes($definedMeaningId));
+
 		$result = $this->wrappedEditor->view($idPath, $value);
+
+		$idPath->popClassAttributes();
 		$idPath->popDefinedMeaningId();
 		
 		return $result;

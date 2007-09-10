@@ -24,12 +24,14 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 	protected $valueAttribute;
 	protected $attributeIDFilter;
 	protected $levelName;
+	protected $showPropertyColumn;
 	
 	public function __construct(Attribute $attribute, $propertyCaption, $valueCaption, ViewInformation $viewInformation, $levelName, AttributeIDFilter $attributeIDFilter) {
 		parent::__construct(new RecordUnorderedListEditor($attribute, 5));
 		
 		$this->levelName = $levelName;
 		$this->attributeIDFilter = $attributeIDFilter;
+		$this->showPropertyColumn = !$attributeIDFilter->leavesOnlyOneOption();
 		
 		$this->recordSetTableEditor = new RecordSetTableEditor(
 			$attribute, 
@@ -153,24 +155,28 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 		$this->wrappedEditor->addEditor($editor);
 	}
 	
-	protected function getVisibleStructureForEditor(Editor $editor, array &$suffixAttributes) {
+	protected function getVisibleStructureForEditor(Editor $editor, $showPropertyColumn, array &$suffixAttributes) {
 		$leadingAttributes = array();
 		$childEditors = $editor->getEditors();
 		
-		for ($i = 0; $i < 2; $i++)
+		for ($i = $showPropertyColumn ? 0 : 1; $i < 2; $i++)
 			$leadingAttributes[] = $childEditors[$i]->getAttribute();
 			
 		return new Structure(array_merge($leadingAttributes, $suffixAttributes));
 	}
 
 	public function view(IdStack $idPath, $value) {
+		$visibleAttributes = array();
+
+		if ($this->showPropertyColumn)
+			$visibleAttributes[] = $this->propertyAttribute;
+			
+		$visibleAttributes[] = $this->valueAttribute;	
+
 		$idPath->pushAnnotationAttribute($this->getAttribute());
 		$visibleSuffixAttributes = $this->determineVisibleSuffixAttributes($idPath, $value); 
 		
-		$visibleStructure = new Structure(array_merge(
-			array($this->propertyAttribute, $this->valueAttribute),
-			$visibleSuffixAttributes
-		));
+		$visibleStructure = new Structure(array_merge($visibleAttributes, $visibleSuffixAttributes));
 		
 		$result = $this->recordSetTableEditor->viewHeader($idPath, $visibleStructure);
 
@@ -180,7 +186,7 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 			$result .= $editor->viewRows(
 				$idPath, 
 				$value->getAttributeValue($attribute),
-				$this->getVisibleStructureForEditor($editor, $visibleSuffixAttributes)
+				$this->getVisibleStructureForEditor($editor, $this->showPropertyColumn, $visibleSuffixAttributes)
 			);
 			$idPath->popAttribute();
 		} 
@@ -214,11 +220,15 @@ class ObjectAttributeValuesEditor extends WrappingEditor {
 		$idPath->popAnnotationAttribute();
 	}
 	
-	public function showEditField(IdStack $idPath) {
+	protected function getAttributeOptionCount(IdStack $idPath) {
 		$classAttributes = $idPath->getClassAttributes()->filterClassAttributesOnLevel($this->getLevelName());
 		$classAttributes = $this->getAttributeIDFilter()->filter($classAttributes);
 		
-		return count($classAttributes) > 0;
+		return count($classAttributes);
+	}
+	
+	public function showEditField(IdStack $idPath) {
+		return $this->getAttributeOptionCount($idPath) > 0;		
 	}
 }
 

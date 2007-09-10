@@ -4,6 +4,7 @@ require_once('Attribute.php');
 
 interface AttributeIDFilter {
 	public function filter(array $attributeIDs);
+	public function leavesOnlyOneOption();
 }
 
 class IncludeAttributeIDsFilter implements AttributeIDFilter {
@@ -22,6 +23,10 @@ class IncludeAttributeIDsFilter implements AttributeIDFilter {
 			
 		return $result;
 	}
+
+	public function leavesOnlyOneOption() {
+		return count($this->attributeIDsToInclude) == 1;
+	}
 }
 
 class ExcludeAttributeIDsFilter implements AttributeIDFilter {
@@ -39,6 +44,10 @@ class ExcludeAttributeIDsFilter implements AttributeIDFilter {
 				$result[] = $attributeID;
 			
 		return $result;
+	}
+
+	public function leavesOnlyOneOption() {
+		return false;
 	}
 }
 
