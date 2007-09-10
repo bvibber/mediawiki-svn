@@ -57,7 +57,7 @@ class ApiDelete extends ApiBase {
 		global $wgUser;
 
 		// Check permissions first
-		if(!$wgUser->isAllowed('delete'))
+		if(!$article->mTitle->userCan('delete'))
 			return self::DELETE_PERM;
 		if($wgUser->isBlocked())
 			return self::DELETE_BLOCKED;

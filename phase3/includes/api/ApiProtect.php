@@ -48,8 +48,6 @@ class ApiProtect extends ApiBase {
 		if(!isset($params['protections']) || empty($params['protections']))
 			$this->dieUsage('The protections parameter must be set', 'noprotections');
 
-		if(!$wgUser->isAllowed('protect'))
-			$this->dieUsage('You don\'t have permission to change protection levels', 'permissiondenied');
 		if($wgUser->isBlocked())
 			$this->dieUsage('You have been blocked from editing', 'blocked');
 		if(wfReadOnly())
@@ -62,6 +60,8 @@ class ApiProtect extends ApiBase {
 			$this->dieUsage("Bad title {$params['title']}", 'invalidtitle');
 		if(!$titleObj->exists())
 			$this->dieUsage("{$params['title']} doesn't exist", 'missingtitle');
+		if(!$titleObj->userCan('protect'))
+			$this->dieUsage('You don\'t have permission to change protection levels', 'permissiondenied');
 		$articleObj = new Article($titleObj);
 		
 		if(in_array($params['expiry'], array('infinite', 'indefinite', 'never')))

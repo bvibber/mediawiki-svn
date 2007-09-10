@@ -49,8 +49,6 @@ class ApiRollback extends ApiBase {
 			$this->dieUsage('The token parameter must be set', 'notoken');
 
 		// doRollback() also checks for these, but we wanna save some work
-		if(!$wgUser->isAllowed('rollback'))
-			$this->dieUsage('You don\'t have permission to rollback', 'permissiondenied');
 		if($wgUser->isBlocked())
 			$this->dieUsage('You have been blocked from editing', 'blocked');
 		if(wfReadOnly())
@@ -59,6 +57,9 @@ class ApiRollback extends ApiBase {
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
 			$this->dieUsage("Bad title {$params['title']}", 'invalidtitle');
+		if(!$titleObj->userCan('rollback'))
+			$this->dieUsage('You don\'t have permission to rollback', 'permissiondenied');
+
 
 		$articleObj = new Article($titleObj);
 		$summary = (isset($params['summary']) ? $params['summary'] : "");
