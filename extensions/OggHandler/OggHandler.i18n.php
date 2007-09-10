@@ -116,7 +116,9 @@ $messages = array(
 		'ogg-stop'                => 'עצור',
 		'ogg-play-video'          => 'נגן וידאו',
 		'ogg-play-sound'          => 'נגן שמע',
-		'ogg-no-player'           => 'מצטערים, נראה שהמערכת שלכם אינה כוללת תוכנת נגן נתמכת. אנא התקינו <a href="http://www.java.com/en/download/manual.jsp">Java</a>.',
+		'ogg-no-player'           => 'מצטערים, נראה שהמערכת שלכם אינה כוללת תוכנת נגן נתמכת. אנא <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">הורידו נגן</a>.',
+		'ogg-no-xiphqt'          => 'נראה שלא התקנתם את רכיב XiphQT של QuickTime, אך QuickTime אינו יכול לנגן קבצי Ogg בלי רכיב זה. אנא <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">הורידו את XiphQT</a> או בחרו נגן אחר.',
+
 		'ogg-player-videoElement' => 'רכיב <video>',
 		'ogg-player-oggPlugin'    => 'תוסף Ogg',
 		'ogg-player-thumbnail'    => 'עדיין תמונה בלבד',
