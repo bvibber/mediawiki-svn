@@ -16,7 +16,11 @@ $messages = array(
 		'ogg-play-video'       => 'Play video',
 		'ogg-play-sound'       => 'Play sound',
 		'ogg-no-player'        => 'Sorry, your system does not appear to have any supported player software. ' . 
-			'Please install <a href="http://www.java.com/en/download/manual.jsp">Java</a>.',
+			'Please <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download a player</a>.',
+		'ogg-no-xiphqt'        => 'You do not appear to have the XiphQT component for QuickTime. QuickTime cannot play ' .
+			'Ogg files without this component. Please ' . 
+			'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download XiphQT</a> or choose another player.',
+			
 		'ogg-player-videoElement' => '<video> element',
 		'ogg-player-oggPlugin' => 'Ogg plugin',
 		'ogg-player-cortado'   => 'Cortado (Java)', # only translate this message to other languages if you have to change it

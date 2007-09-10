@@ -9,6 +9,13 @@ var wgOggPlayer = {
 
 	'clientSupports': { 'thumbnail' : true },
 	'savedThumbs': {},
+	'qtTimers' : {},
+	// Text for new messages, to support cached HTML invocation
+	'defaultMsg' : { 
+		'ogg-no-xiphqt': 'You do not appear to have the XiphQT component for QuickTime. QuickTime cannot play ' + 
+			'Ogg files without this component. Please ' + 
+			'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">download XiphQT</a> or choose another player.'
+	},
 
 	// Configuration from MW
 	'msg': {},
@@ -39,18 +46,9 @@ var wgOggPlayer = {
 
 		if ( !player ) {
 			// See if there is a cookie specifying a preferred player
-			var cookieName = "ogg_player=";
-			var cookiePos = document.cookie.indexOf(cookieName);
-			if (cookiePos > -1) {
-				player = document.cookie.substr( cookiePos + cookieName.length );
-				var semicolon = player.indexOf( ";" );
-				if ( semicolon > -1 ) {
-					player = player.substr( cookiePos, semicolon );
-					if ( player == 'thumbnail' ) {
-						// Can't select this one permanently
-						player = false;
-					}
-				}
+			var cookieVal = this.getCookie( 'ogg_player' );
+			if ( cookieVal && cookieVal != 'thumbnail' ) {
+				player = cookieVal;
 			}
 		}
 
@@ -85,7 +83,8 @@ var wgOggPlayer = {
 				this.embedCortado( elt, params );
 				break;
 			case 'quicktime-mozilla':
-				this.embedQuicktimePlugin( elt, params );
+			case 'quicktime-activex':
+				this.embedQuicktimePlugin( elt, params, player );
 				break;
 			case 'thumbnail':
 			default:
@@ -120,11 +119,15 @@ var wgOggPlayer = {
 		}
 		this.detectionDone = true;
 
-		// navigator.javaEnabled() only tells us about preferences, we need to
+		// In Mozilla, navigator.javaEnabled() only tells us about preferences, we need to
 		// search navigator.mimeTypes to see if it's installed
 		var javaEnabled = navigator.javaEnabled();
-		var uniqueMimesOnly = ( navigator.appName == 'Opera' );
+		// In Opera, navigator.javaEnabled() is all there is
 		var invisibleJava = ( navigator.appName == 'Opera' );
+		// Some browsers filter out duplicate mime types, hiding some plugins
+		var uniqueMimesOnly = ( navigator.appName == 'Opera' ) || 
+			(navigator.vendor && navigator.vendor.substr( 0, 5 ) == 'Apple' );
+
 
 		// Opera will switch off javaEnabled in preferences if java can't be found.
 		// And it doesn't register an application/x-java-applet mime type like Mozilla does.
@@ -142,10 +145,9 @@ var wgOggPlayer = {
 			this.clientSupports['cortado'] = true;
 		}
 		// QuickTime
-		/*
 		if ( this.testActiveX( 'QuickTimeCheckObject.QuickTimeCheck.1' ) ) {
-			// TODO: Determine if it has XiphQT somehow...
-		*/
+			this.clientSupports['quicktime-activex'] = true;
+		}
 
 		// <video> element
 		elt.innerHTML = '<video id="testvideo"></video>\n';
@@ -169,6 +171,10 @@ var wgOggPlayer = {
 					// In case it is null or undefined
 					pluginName = '';
 				}
+				if ( javaEnabled && type == 'application/x-java-applet' ) {
+					this.clientSupports['cortado'] = true;
+					continue;
+				}
 				if ( type == 'application/ogg' ) {
 					if ( pluginName.toLowerCase() == 'vlc multimedia plugin' ) {
 						this.clientSupports['vlc-mozilla'] = true;
@@ -178,16 +184,22 @@ var wgOggPlayer = {
 						this.clientSupports['oggPlugin'] = true;
 					}
 					continue;
+				} else if ( uniqueMimesOnly ) {
+					if ( type == 'application/x-vlc-player' ) {
+						this.clientSupports['vlc-mozilla'] = true;
+						continue;
+					} else if ( type == 'video/quicktime' ) {
+						this.clientSupports['quicktime-mozilla'] = true;
+						continue;
+					}
 				}
-				if ( javaEnabled && type == 'application/x-java-applet' ) {
-					this.clientSupports['cortado'] = true;
+			
+				if ( type == 'video/quicktime' ) {
+					this.clientSupports['quicktime-mozilla'] = true;
 					continue;
 				}
-				if ( uniqueMimesOnly && type == 'application/x-vlc-plugin' ) {
-					// Client does not define multiple mimeType entries for application/ogg
-					this.clientSupports['vlc-mozilla'] = true;
-				}
 			}
+
 		}
 	},
 
@@ -226,10 +238,12 @@ var wgOggPlayer = {
 	},
 
 	'getMsg': function ( key ) {
-		if ( ! (key in this.msg) ) {
-			return '<' + key + '>';
-		} else {
+		if ( key in this.msg ) {
 			return this.msg[key];
+		} else if ( key in this.defaultMsg ) {
+			return this.defaultMsg[key];
+		} else {
+			return '[' + key + ']';
 		}
 	},
 
@@ -365,7 +379,8 @@ var wgOggPlayer = {
 		var this_ = this;
 		return function () {
 			if ( player != 'thumbnail' ) {
-				document.cookie = "ogg_player=" + player;
+				var week = 7*86400*1000;
+				this_.setCookie( 'ogg_player', player, week, false, false, false, false );
 			}
 			this_.init( player, params );
 		};
@@ -525,9 +540,14 @@ var wgOggPlayer = {
 		);
 	},
 
-	'embedQuicktimePlugin': function ( elt, params ) {
+	'embedQuicktimePlugin': function ( elt, params, player ) {
 		var id = elt.id + "_obj";
 		var controllerHeight = 16; // by observation
+		var extraAttribs = '';
+		if ( player == 'quicktime-activex' ) {
+			extraAttribs = 'classid="clsid:02BF25D5..."';
+		}
+
 		elt.innerHTML += 
 			"<div><object id=" + this.hq( id ) + 
 			" type='video/quicktime'" +
@@ -536,6 +556,7 @@ var wgOggPlayer = {
 			
 			// See http://svn.wikimedia.org/viewvc/mediawiki?view=rev&revision=25605
 			" data=" + this.hq( this.extPathUrl + '/null_file.mov' ) +
+			' ' + extraAttribs + 
 			">" + 
 			// Scale, don't clip
 			"<param name='SCALE' value='Aspect'/>" + 
@@ -544,13 +565,43 @@ var wgOggPlayer = {
 			"<param name='QTSRC' value=" + this.hq( params.videoUrl ) + "/>" +
 			"</object></div>";
 
-		// Disable autoplay on back button
+		// Poll for completion
 		var this_ = this;
-		window.setTimeout( 
-			function () {
-				var videoElt = document.getElementById( id );
-				this_.setParam( videoElt, 'AUTOPLAY', 'False' );
-			}, 3000 );
+		this.qtTimers[params.id] = window.setInterval( this.makeQuickTimePollFunction( params ), 500 );
+	},
+
+	'makeQuickTimePollFunction' : function ( params ) {
+		var this_ = this;
+		return function () {
+			var elt = document.getElementById( params.id );
+			var id = params.id + '_obj';
+			var videoElt = document.getElementById( id );
+			if ( elt && videoElt ) {
+				// Detect XiphQT (may throw)
+				var xiphQtVersion = false, done = false;
+				try {
+					xiphQtVersion = videoElt.GetComponentVersion('imdc','XiTh', 'Xiph');
+					done = true;
+				} catch ( e ) {}
+				if ( done ) {
+					window.clearInterval( this_.qtTimers[params.id] );
+					if ( !xiphQtVersion || xiphQtVersion == '0.0' ) {
+						var div = document.createElement( 'div' );
+						div.className = 'ogg-player-options';
+						div.style.cssText = 'width:' + ( params.width - 10 ) + 'px;'
+						div.innerHTML = this_.getMsg( 'ogg-no-xiphqt' );
+						var optionsDiv = document.getElementById( params.id + '_options_box' );
+						if ( optionsDiv ) {
+							elt.insertBefore( div, optionsDiv.parentNode );
+						} else {
+							elt.appendChild( div );
+						}
+					}
+					// Disable autoplay on back button
+					this_.setParam( videoElt, 'AUTOPLAY', 'False' );
+				}
+			}
+		};
 	},
 
 	'addParam': function ( elt, name, value ) {
@@ -569,6 +620,24 @@ var wgOggPlayer = {
 			}
 		}
 		this.addParam( elt, name, value );
+	},
+
+	'setCookie' : function ( name, value, expiry, path, domain, secure ) {
+		var expiryDate = false;
+		if ( expiry ) {
+			expiryDate = new Date();
+			expiryDate.setTime( expiryDate.getTime() + expiry );
+		}
+		document.cookie = name + "=" + escape(value) + 
+			(expiryDate ? ("; expires=" + expiryDate.toGMTString()) : "") + 
+			(path ? ("; path=" + path) : "") + 
+			(domain ? ("; domain=" + domain) : "") + 
+			(secure ? "; secure" : "");
+	},
+
+	'getCookie' : function ( cookieName ) {
+		var m = document.cookie.match( cookieName + '=(.*?)(;|$)' );
+		return m ? unescape( m[1] ) : false;
 	}
 };
 // vim: ts=4 sw=4 noet cindent :
