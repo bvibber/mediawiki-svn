@@ -28,18 +28,48 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Subpages are now indexed for searching properly when using PostgreSQL
 * (bug 3846) Suppress warnings from, e.g. open_basedir when scanning for
   ImageMagick, diff3 et al. during installation [patch by Jan Reininghaus]
+* (bug 7027) Shift handling of deletion permissions-checking to
+  getUserPermissionsErrors.
+* Login and signup forms are now more correct for right-to-left languages.
+* Fix inconsistent section edit link size for some browsers.
+* (bug 5387) Block log items on RecentChanges don't make use of possible
+  translations
+* (bug 11211) Pass, as a parameter to the protectedpagetext interface
+  message, the level of protection.
+* (bug 9611) Supply the blocker and reason for the cantcreateaccounttext
+  message.
+* (bug 8759) Fixed bug where rollback was allowed on protected pages for wikis
+  where rollback is given to non-sysops.
+* (bug 8834) Split off permission for editing user JavaScript and CSS from
+  editinterface to a new permission key editusercssjs.
+* (bug 11266) Set fallback language for Fulfulde (ff) to French
 
 === API changes in 1.12 ===
 
 Full API documentation is available at http://www.mediawiki.org/wiki/API
 
+* (bug 11275) Enable descending sort in categorymembers
+
 === Languages updated in 1.12 ===
 
+* Arabic (ar)
+* Mapudungun (arn) (new)
+* Bikol Central (bcl)
+* Belarusian Taraskievica orthography (be-tarask)
+* Bengali (bn)
+* Cassubian (csb)
+* Welsh (cy)
 * Danish (da)
 * German (de)
 * Persian (fa)
+* Frisian (fy)
 * French (fr)
+* Upper Sorbian (hsb)
 * Kazakh (kk)
+* Dutch (nl)
+* Slovak (sk)
+* Sakha (sah)
+* Zealandic (zea)
 
 == Compatibility ==
 

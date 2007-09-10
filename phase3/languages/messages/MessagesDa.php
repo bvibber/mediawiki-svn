@@ -721,8 +721,7 @@ denne side er vist nedenfor:",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Brugerkontoen kan ikke oprettes.',
-'cantcreateaccounttext'  => 'Oprettelsen af en brugerkonto fra IP-adressen <b>$1</b> er spærret.
-Det er formentligt sket pga. gentagen vandalisme fra brugere på uddannelsesstedet eller andre brugere under Internet-udbyderen.',
+'cantcreateaccounttext'  => "Oprettelsen af en brugerkonto fra IP-adressen <b>$1</b> er spærret af [[User:$3|$3]]. Årsagen til blokeringen er angivet som ''$2''",
 
 # History pages
 'revhistory'          => 'Versionshistorik',
@@ -1045,7 +1044,7 @@ Kontroller om du har billedet i fuld størrelse og upload det under det original
 'destfilename'                => 'Målnavn',
 'watchthisupload'             => 'Overvåge denne side',
 'filewasdeleted'              => 'En fil med dette navn er tidligere uploadet og i mellemtiden slettet igen. Kontroller først indførslen i $1, før du gemmer filen.',
-'filename-prefix'             => 'Navnet på filen du er ved at lægge op begynder med <strong>"$1"</strong>. Dette er et ikkebeskrivende navn, der typisk er skabt automatisk af et digitalkamera. Vær venlig at vælge et mere beskrivende navn på dit billede.',
+'filename-bad-prefix'         => 'Navnet på filen du er ved at lægge op begynder med <strong>"$1"</strong>. Dette er et ikkebeskrivende navn, der typisk er skabt automatisk af et digitalkamera. Vær venlig at vælge et mere beskrivende navn på dit billede.',
 
 'upload-proto-error'      => 'Forkert protokol',
 'upload-proto-error-text' => 'Adressen skal begynde med <code>http://</code> eller <code>ftp://</code>.',

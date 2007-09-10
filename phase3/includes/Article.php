@@ -645,6 +645,7 @@ class Article {
 		$rcid = $wgRequest->getVal( 'rcid' );
 		$rdfrom = $wgRequest->getVal( 'rdfrom' );
 		$diffOnly = $wgRequest->getBool( 'diffonly', $wgUser->getOption( 'diffonly' ) );
+		$purge = $wgRequest->getVal( 'action' ) == 'purge';
 
 		$wgOut->setArticleFlag( true );
 
@@ -668,7 +669,7 @@ class Article {
 		if ( !is_null( $diff ) ) {
 			$wgOut->setPageTitle( $this->mTitle->getPrefixedText() );
 
-			$de = new DifferenceEngine( $this->mTitle, $oldid, $diff, $rcid );
+			$de = new DifferenceEngine( $this->mTitle, $oldid, $diff, $rcid, $purge );
 			// DifferenceEngine directly fetched the revision:
 			$this->mRevIdFetched = $de->mNewid;
 			$de->showDiffPage( $diffOnly );
@@ -925,13 +926,11 @@ class Article {
 			return;
 		}
 
-		if ((!$wgUser->isAllowed('delete'))) {
-			$wgOut->permissionRequired( 'delete' );
-			return;
-		}
+		$permission_errors = $this->mTitle->getUserPermissionsErrors( 'delete', $wgUser );
 
-		if (wfReadOnly()) {
-			$wgOut->readOnlyPage();
+		if (count($permission_errors)>0)
+		{
+			$wgOut->showPermissionsErrorPage( $permission_errors );
 			return;
 		}
 
@@ -960,7 +959,7 @@ class Article {
 			}
 		} else {
 			$msg = $wgOut->parse( wfMsg( 'confirm_purge' ) );
-			$action = $this->mTitle->escapeLocalURL( 'action=purge' );
+			$action = htmlspecialchars( $_SERVER['REQUEST_URI'] );
 			$button = htmlspecialchars( wfMsg( 'confirm_purge_button' ) );
 			$msg = str_replace( '$1',
 				"<form method=\"post\" action=\"$action\">\n" .
@@ -1895,18 +1894,11 @@ class Article {
 		# This code desperately needs to be totally rewritten
 
 		# Check permissions
-		if( $wgUser->isAllowed( 'delete' ) ) {
-			if( $wgUser->isBlocked( !$confirm ) ) {
-				$wgOut->blockedPage();
-				return;
-			}
-		} else {
-			$wgOut->permissionRequired( 'delete' );
-			return;
-		}
+		$permission_errors = $this->mTitle->getUserPermissionsErrors( 'delete', $wgUser );
 
-		if( wfReadOnly() ) {
-			$wgOut->readOnlyPage();
+		if (count($permission_errors)>0)
+		{
+			$wgOut->showPermissionsErrorPage( $permission_errors );
 			return;
 		}
 
@@ -2202,7 +2194,10 @@ class Article {
 		global $wgUser, $wgUseRCPatrol;
 		$resultDetails = null;
 
-		if( $wgUser->isAllowed( 'rollback' ) ) {
+
+		# Just in case it's being called from elsewhere		
+
+		if( $wgUser->isAllowed( 'rollback' ) && $this->mTitle->userCan( 'edit' ) ) {
 			if( $wgUser->isBlocked() ) {
 				return self::BLOCKED;
 			}
@@ -2295,6 +2290,17 @@ class Article {
 		global $wgUser, $wgOut, $wgRequest, $wgUseRCPatrol;
 
 		$details = null;
+
+		# Skip the permissions-checking in doRollback() itself, by checking permissions here.
+
+		$perm_errors = array_merge( $this->mTitle->getUserPermissionsErrors( 'edit', $wgUser ),
+						$this->mTitle->getUserPermissionsErrors( 'rollback', $wgUser ) );
+
+		if (count($perm_errors)) {
+			$wgOut->showPermissionsErrorPage( $perm_errors );
+			return;
+		}
+
 		$result = $this->doRollback(
 			$wgRequest->getVal( 'from' ),
 			$wgRequest->getText( 'summary' ),
@@ -2467,8 +2473,8 @@ class Article {
 	 *
 	 * @param Revision $rev
 	 *
-	 * @todo This is a lousy interface function. Kill it and replace the
-	 * other cruddy functions like editUpdates and such so it's not needed
+	 * @todo This is a shitty interface function. Kill it and replace the
+	 * other shitty functions like editUpdates and such so it's not needed
 	 * anymore.
 	 */
 	function createUpdates( $rev ) {
