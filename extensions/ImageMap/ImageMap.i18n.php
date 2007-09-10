@@ -37,6 +37,10 @@ function efImageMapMessages() {
 'imagemap_description'          => 'حول هذه الصورة',
 ),
 
+'bcl' => array(
+'imagemap_description'          => 'Manónongod sa retratong ini',
+),
+
 /* Danish (Wegge) */
 'da' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: Der skal angives et billednavn i første linje',

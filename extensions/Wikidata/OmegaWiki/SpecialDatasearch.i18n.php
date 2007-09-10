@@ -12,7 +12,7 @@ $wgDataSearchMessages['en'] = array(
 );
 
 $wgDataSearchMessages['bn'] = array(
-	'datasearch' => 'উইকিতথ্য: তথ্য অনুসন্ধান',
+	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
 );
 
 $wgDataSearchMessages['fr'] = array(

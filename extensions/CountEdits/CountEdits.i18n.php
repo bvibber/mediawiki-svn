@@ -36,6 +36,10 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'لا يوجد مساهمون في هذه الويكي.',
 ),
 
+'bcl' => array(
+'countedits-resultheader' => 'Mga resulta kan $1',
+),
+
 'br' => array(
 'countedits' => 'Degasadennoù ar gont',
 'countedits-warning' => '\'\'\'Diwallit :\'\'\' Ne varner ket ul levr diouzh ar golo anezhañ. Arabat barnañ un implijer diouzh an niver a zegasadennoù graet gantañ.',

@@ -119,6 +119,11 @@ $wgDesysopMessages['ja'] = array(
 	'desysop'              => '管理者権限の取り消し',
 	'not_sysop'            => 'この利用者は管理者ではありません',
 );
+$wgDesysopMessages['ko'] = array(
+	'set_user_rights'      => '사용자 권한 설정',
+	'user_rights_set'      => '\'\'\'"$1"의 권한이 변경되었습니다.\'\'\'',
+	'set_rights_fail'      => '\'\'\'$1 사용자에게 관리자 권한을 줄 수 없습니다(철자를 맞게 입력했는지 확인해주세요).\'\'\'',
+);
 $wgDesysopMessages['nl'] = array(
 	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
 	'desysoptext'          => 'Bureaucraten gebruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.',

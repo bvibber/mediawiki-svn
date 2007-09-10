@@ -175,6 +175,9 @@ $wgExpandTemplatesMessages['kk-cn'] = array(
 	'expand_templates_remove_comments' => 'مٵندەمەلەرٸن الاستاتىپ؟',
 );
 $wgExpandTemplatesMessages['kk'] = $wgExpandTemplatesMessages['kk-kz'];
+$wgExpandTemplatesMessages['ko'] = array(
+	'expandtemplates'                  => '틀 확장',
+);
 $wgExpandTemplatesMessages['ksh'] = array(
 	'expandtemplates'                  => 'Schablone üvverpröfe',
 	'expand_templates_intro'           => 'Hee kanns de en Schablon usprobeere. Do jiss ene Oprof en, un dann kriss De dä

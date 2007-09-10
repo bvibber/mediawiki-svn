@@ -95,6 +95,9 @@ $wgSiteMatrixMessages['kk-cn'] = array(
 	'sitematrix-others'   => 'باسقا Wikimedia جوبالارى',
 );
 $wgSiteMatrixMessages['kk'] = $wgSiteMatrixMessages['kk-kz'];
+$wgSiteMatrixMessages['ko'] = array(
+	'sitematrix' => '위키미디어 위키 목록',
+);
 $wgSiteMatrixMessages['lo'] = array(
 	"sitematrix" => "ລາຍການ wiki ໃນ Wikimedia",
 );

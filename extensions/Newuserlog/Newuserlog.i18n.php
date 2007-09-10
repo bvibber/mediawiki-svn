@@ -115,6 +115,11 @@ $wgNewuserlogMessages['kk-cn'] = array(
 	'newuserlog-create2-entry' => 'جاڭا تٸركەلگٸ جاسادى — $1',
 );
 $wgNewuserlogMessages['kk'] = $wgNewuserlogMessages['kk-kz'];
+$wgNewuserlogMessages['ko'] = array(
+	'newuserlogpage'           => '사용자 등록 기록',
+	'newuserlogpagetext'       => '사용자 등록 기록입니다.',
+	'newuserlog-create-entry'  => '새 사용자',
+);
 $wgNewuserlogMessages['ku'] = array(
 	'newuserlogpage'           => 'Reşahiya çêkirina hesabên nû',
 	'newuserlog-create-entry'  => 'Bikarhênerekî nuh',
