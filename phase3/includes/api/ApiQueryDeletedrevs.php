@@ -114,12 +114,12 @@ class ApiQueryDeletedrevs extends ApiQueryBase {
 			if($count++ == $params['limit'])
 			{
 				// We've had enough
-				$this->setContinueEnumParameter('start', $row->ar_timestamp);
+				$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->ar_timestamp));
 				break;
 			}
 
 			$rev = array();
-			$rev['timestamp'] = $row->ar_timestamp;
+			$rev['timestamp'] = wfTimestamp(TS_ISO_8601, $row->ar_timestamp);
 			if($fld_revid)
 				$rev['revid'] = $row->ar_rev_id;
 			if($fld_user)

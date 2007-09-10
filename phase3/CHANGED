@@ -54,13 +54,16 @@ api/ApiBlock.php (NEW)
 * action=block module that wraps around IPBlockForm::doBlock() (r25548)
 
 api/ApiUnblock.php (NEW)
-* action=unblock module that wraps around IPUnblockForm::doUnblock() (r25633)
+* action=unblock module that wraps around IPUnblockForm::doUnblock() (r25633)i
+
+api/ApiQueryBlocks.php (NEW)
+* action=query&list=blocks module that lists blocks from the ipblocks table (r25735)
 
 AutoLoader.php
-* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548)
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548), ApiQueryBlocks (r25735)
 
 api/ApiMain.php
 * Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548)
 
 api/ApiQuery.php
-* Added entry for ApiQueryDeletedRevs (r23668)
+* Added entries for ApiQueryDeletedRevs (r23668), ApiQueryBlocks (r25735)
