@@ -494,7 +494,8 @@ HTML;
 			// Cache miss; parse and output it.
 			$rev = Revision::newFromTitle( $post->getTitle(), $oldid );
 			if ($rev) {
-				$this->output->addWikiText( $rev->getText() );
+				$this->output->addPrimaryWikiText( $rev->getText(), $post, true );
+			//	$this->output->addWikiText( $rev->getText() );
 				return true;
 			} else {
 				return false;
