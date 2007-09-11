@@ -227,31 +227,6 @@ class ClassAttributesController extends DefaultUpdateController {
 	}
 }
 
-class GroupedRelationTypeController extends DefaultUpdateController {
-	protected $relationTypeId;
-	protected $groupedRelationIdAttribute;
-	protected $otherDefinedMeaningAttribute;
-	
-	public function __construct($relationTypeId, $groupedRelationIdAttribute, $otherDefinedMeaningAttribute) {
-		$this->relationTypeId = $relationTypeId;
-		$this->groupedRelationIdAttribute = $groupedRelationIdAttribute;
-		$this->otherDefinedMeaningAttribute = $otherDefinedMeaningAttribute;
-	}
-	
-	public function add(IdStack $idPath, $record) {
-		$definedMeaningId = $idPath->getKeyStack()->peek(0)->definedMeaningId;
-		$otherDefinedMeaningId = $record->getAttributeValue($this->otherDefinedMeaningAttribute);
-
-		if ($otherDefinedMeaningId != 0)
-			addRelation($definedMeaningId, $this->relationTypeId, $otherDefinedMeaningId);
-	}
-
-	public function remove($keyPath) {
-		$relationId = $keyPath->peek(0)->getAttributeValue($this->groupedRelationIdAttribute);
-		removeRelationWithId($relationId);
-	}
-}
-
 class DefinedMeaningClassMembershipController extends DefaultUpdateController {
 	public function add(IdStack $idPath, $record) {
 		$definedMeaningId = $idPath->getKeyStack()->peek(0)->definedMeaningId;

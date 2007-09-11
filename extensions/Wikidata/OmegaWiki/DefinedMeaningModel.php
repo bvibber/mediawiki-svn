@@ -150,13 +150,6 @@ class DefinedMeaningModel {
 		$record->classAttributes = getClassAttributesRecordSet($id, $view);
 		$record->alternativeDefinitions = getAlternativeDefinitionsRecordSet($id, $view);
 		$record->synonymsAndTranslations = getSynonymAndTranslationRecordSet($id, $view);
-		$filterRelationTypes = array();
-	
-		if ($view->possiblySynonymousRelationTypeId != 0) {
-			$record->possiblySynonymous = getPossiblySynonymousRecordSet($id, $view);
-			$filterRelationTypes[] = $view->possiblySynonymousRelationTypeId;
-		}
-
 		$record->reciprocalRelations = getDefinedMeaningReciprocalRelationsRecordSet($id, $view);
 		$record->classMembership = getDefinedMeaningClassMembershipRecordSet($id, $view);
 		$record->collectionMembership= getDefinedMeaningCollectionMembershipRecordSet($id, $view);

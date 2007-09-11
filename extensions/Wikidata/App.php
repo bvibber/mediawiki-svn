@@ -88,8 +88,7 @@ function initializeWikidata() {
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("SET NAMES utf8");
 	
-	$msgarray=
-		array(
+	$msgarray = array(
 		"save" => "Save",
 		"history" => "History",
 		"datasets" => "Data-set selection",
@@ -152,8 +151,6 @@ function initializeWikidata() {
 		"OptionAttributeValues" => "Option values",
 		"OtherDefinedMeaning" => "Other defined meaning",
 		"PopupAnnotation" => "Annotation",
-		"PossibleSynonym" => "Possible synonym",
-		"PossiblySynonymous" => "Possibly synonymous",
 		"Relations" => "Relations",
 		"RelationType" => "Relation type",
 		"Spelling" => "Spelling",
@@ -170,32 +167,34 @@ function initializeWikidata() {
 		"TranslatedTextAttributeValues" => "Translatable texts",
 		"LinkAttribute" => "Property",
 		"LinkAttributeValues" => "Links",
-		);
+		"Property" => "Property",
+		"Value" => "Value"
+	);
 
 	$prefixedmsgarray=array();
-	foreach($msgarray as $key=>$value) {
+	
+	foreach($msgarray as $key=>$value) 
 		$prefixedmsgarray[$wdSiteContext."_".$key]=$value;
-	}
 
 	$wgMessageCache->addMessages($prefixedmsgarray);
-
 
 	$datasets=wdGetDatasets();
 	$datasetarray['']=wfMsgHtml('ow_none_selected');
 	foreach($datasets as $datasetid=>$dataset) {
 		$datasetarray[$datasetid]=$dataset->fetchName();
 	}
-	$wgExtensionPreferences[]=array(
-	'name'=>'ow_uipref_datasets',
-	'section'=>'ow_uiprefs',
-	'type'=>PREF_OPTIONS_T,
-	'size'=>10,
-	'options'=>$datasetarray
+	$wgExtensionPreferences[] = array(
+		'name' => 'ow_uipref_datasets',
+		'section' => 'ow_uiprefs',
+		'type' => PREF_OPTIONS_T,
+		'size' => 10,
+		'options' => $datasetarray
 	);
 	
 	global 
 		$messageCacheOK;
-	$messageCacheOK=True;
+		
+	$messageCacheOK = true;
 
 	return true;
 }

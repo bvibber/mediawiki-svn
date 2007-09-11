@@ -607,30 +607,6 @@ function getDefinedMeaningClassMembershipEditor(ViewInformation $viewInformation
 	return $editor;
 }
 
-function getGroupedRelationTypeEditor(Attribute $groupedRelationsAttribute, Attribute $groupedRelationIdAttribute, Attribute $otherDefinedMeaningAttribute, $relationTypeId, ViewInformation $viewInformation, Editor $objectAttributesEditor) {
-	global
-		$wgPopupAnnotationName;
-	
-	$editor = new RecordSetTableEditor(
-		$groupedRelationsAttribute, 
-		new SimplePermissionController(true), 
-		new ShowEditFieldChecker(true), 
-		new AllowAddController(true), 
-		true, 
-		false, 
-		new GroupedRelationTypeController($relationTypeId, $groupedRelationIdAttribute, $otherDefinedMeaningAttribute)
-	);
-
-	$editor->addEditor(new DefinedMeaningReferenceEditor($otherDefinedMeaningAttribute, new SimplePermissionController(false), true));
-	
-	if ($objectAttributesEditor != null)
-		$editor->addEditor(new PopUpEditor($objectAttributesEditor, $wgPopupAnnotationName));
-
-	addTableMetadataEditors($editor, $viewInformation);
-
-	return $editor;
-}
-
 function getDefinedMeaningCollectionMembershipEditor(ViewInformation $viewInformation) {
 	global
 		 $wgGotoSourceTemplates;
@@ -828,16 +804,6 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 	$classMembershipEditor = getDefinedMeaningClassMembershipEditor($viewInformation);
 	$collectionMembershipEditor = getDefinedMeaningCollectionMembershipEditor($viewInformation);
 	
-	#var_dump($definitionEditor);
-	$possiblySynonymousEditor = getGroupedRelationTypeEditor(
-		$o->possiblySynonymous, 
-		$o->possiblySynonymousId, 
-		$o->possibleSynonym, 
-		$viewInformation->possiblySynonymousRelationTypeId,
-		$viewInformation, 
-		createObjectAttributesEditor($viewInformation, $o->objectAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $o->possiblySynonymousId, $relationMeaningName, $viewInformation->getLeftOverAttributeFilter())
-	); 
-	
 	$availableEditors = new AttributeEditorMap();
 	$availableEditors->addEditor($definitionEditor);
 	$availableEditors->addEditor($alternativeDefinitionsEditor);
@@ -851,9 +817,6 @@ function getDefinedMeaningEditor(ViewInformation $viewInformation) {
 		$availableEditors->addEditor($propertyToColumnEditor);
 	
 	$availableEditors->addEditor(createObjectAttributesEditor($viewInformation, $o->definedMeaningAttributes, wfMsgSc("Property"), wfMsgSc("Value"), $o->definedMeaningId, $definedMeaningMeaningName, $viewInformation->getLeftOverAttributeFilter()));
-
-	if ($viewInformation->possiblySynonymousRelationTypeId != 0)
-		$availableEditors->addEditor($possiblySynonymousEditor);
 
 	$definedMeaningEditor = new RecordUnorderedListEditor($o->definedMeaning, 4);
 	

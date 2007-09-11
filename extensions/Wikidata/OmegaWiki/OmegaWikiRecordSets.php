@@ -561,7 +561,7 @@ function getObjectAttributesRecord($objectId, ViewInformation $viewInformation, 
 		$record = new ArrayRecord($o->definedMeaningAttributes->type);
 	
 	$record->objectId = $objectId;
-	$record->relations = getDefinedMeaningAttributeValuesRecordSet(array($objectId), array(), $viewInformation);
+	$record->relations = getDefinedMeaningAttributeValuesRecordSet(array($objectId), $viewInformation);
 	$record->textAttributeValues = getTextAttributesValuesRecordSet(array($objectId), $viewInformation);
 	$record->translatedTextAttributeValues = getTranslatedTextAttributeValuesRecordSet(array($objectId), $viewInformation);
 	$record->linkAttributeValues = getLinkAttributeValuesRecordSet(array($objectId), $viewInformation);	
@@ -758,7 +758,7 @@ function expandObjectAttributesAttribute(RecordSet $recordSet, Attribute $attrib
 			}
 
 		// Defined meaning attributes		
-		$allDefinedMeaningAttributeValuesRecordSet = getDefinedMeaningAttributeValuesRecordSet($objectIds, array(), $viewInformation); 
+		$allDefinedMeaningAttributeValuesRecordSet = getDefinedMeaningAttributeValuesRecordSet($objectIds, $viewInformation); 
 		$definedMeaningAttributeValuesRecordSets = 
 			splitRecordSet(
 				$allDefinedMeaningAttributeValuesRecordSet,
@@ -868,15 +868,11 @@ function getDefinedMeaningReferenceRecord($definedMeaningId) {
 	return $record;
 }
 
-function getDefinedMeaningAttributeValuesRecordSet(array $objectIds, array $filterRelationTypes, ViewInformation $viewInformation) {
+function getDefinedMeaningAttributeValuesRecordSet(array $objectIds, ViewInformation $viewInformation) {
 	global
 		$meaningRelationsTable;
 
 	$o=OmegaWikiAttributes::getInstance();
-//	$restrictions = array("meaning1_mid=$definedMeaningId");
-//
-//	if (count($filterRelationTypes) > 0) 
-//		$restrictions[] = "relationtype_mid NOT IN (". implode(", ", $filterRelationTypes) .")";
 
 	$recordSet = queryRecordSet(
 		$o->relationStructure->getStructureType(),
@@ -924,36 +920,7 @@ function getDefinedMeaningReciprocalRelationsRecordSet($definedMeaningId, ViewIn
 	return $recordSet;
 }
 
-function getPossiblySynonymousRecordSet($definedMeaningId, ViewInformation $viewInformation) {
-
-	$o=OmegaWikiAttributes::getInstance();
-	global
-		$meaningRelationsTable;
-
-	$recordSet = queryRecordSet(
-		null,
-		$viewInformation->queryTransactionInformation,
-		$o->possiblySynonymousId,
-		new TableColumnsToAttributesMapping(
-			new TableColumnsToAttribute(array('relation_id'), $o->possiblySynonymousId), 
-			new TableColumnsToAttribute(array('meaning2_mid'), $o->possibleSynonym)
-		),
-		$meaningRelationsTable,
-		array(
-			"meaning1_mid=$definedMeaningId",
-			"relationtype_mid=" . $viewInformation->possiblySynonymousRelationTypeId
-		),
-		array('add_transaction_id')
-	);
-	
-	expandDefinedMeaningReferencesInRecordSet($recordSet, array($o->possibleSynonym));
-	expandObjectAttributesAttribute($recordSet, $o->objectAttributes, $o->possiblySynonymousId, $viewInformation);
-	
-	return $recordSet;
-}
-
 function getGotoSourceRecord($record) {
-
 	$o=OmegaWikiAttributes::getInstance();
 		
 	$result = new ArrayRecord($o->gotoSourceStructure);
@@ -964,10 +931,10 @@ function getGotoSourceRecord($record) {
 }
 
 function getDefinedMeaningCollectionMembershipRecordSet($definedMeaningId, ViewInformation $viewInformation) {
-
-	$o=OmegaWikiAttributes::getInstance();
 	global
 		$collectionMembershipsTable;
+
+	$o=OmegaWikiAttributes::getInstance();
 
 	$recordSet = queryRecordSet(
 		$o->collectionMembershipStructure->getStructureType(),

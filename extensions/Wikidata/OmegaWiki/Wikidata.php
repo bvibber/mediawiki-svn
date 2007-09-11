@@ -13,9 +13,8 @@ class DefaultWikidataApplication {
 	protected $showCommunityContribution;
 	
 	// The following member variables control some application specific preferences
-	protected $filterLanguageId = 0;						// Filter pages on this languageId, set to 0 to show all languages
-	protected $possiblySynonymousRelationTypeId = 0;		// Put this relation type in a special section "Possibly synonymous"
-	protected $showClassicPageTitles = true;				// Show classic page titles instead of prettier page titles
+	protected $filterLanguageId = 0;			// Filter pages on this languageId, set to 0 to show all languages
+	protected $showClassicPageTitles = true;	// Show classic page titles instead of prettier page titles
 	
 	protected $propertyToColumnFilters = array();	
 	protected $viewInformation;
@@ -26,7 +25,7 @@ class DefaultWikidataApplication {
 	public function __construct() {
 		global
 			$wgFilterLanguageId, 
-			$wgShowClassicPageTitles, $wgPossiblySynonymousRelationTypeId,
+			$wgShowClassicPageTitles, 
 			$wgPropertyToColumnFilters;
 			
 		if (isset($wgFilterLanguageId))
@@ -34,9 +33,6 @@ class DefaultWikidataApplication {
 			
 		if (isset($wgShowClassicPageTitles))
 			$this->showClassicPageTitles = $wgShowClassicPageTitles;
-			
-		if (isset($wgPossiblySynonymousRelationTypeId))
-			$this->possiblySynonymousRelationTypeId = $wgPossiblySynonymousRelationTypeId;
 			
 		if (isset($wgPropertyToColumnFilters))
 			$this->propertyToColumnFilters = $wgPropertyToColumnFilters;  
@@ -76,7 +72,6 @@ class DefaultWikidataApplication {
 		
 		$viewInformation = new ViewInformation();
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
-		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = false;
 		$viewInformation->queryTransactionInformation = $this->queryTransactionInformation;
 		$viewInformation->setPropertyToColumnFilters($this->propertyToColumnFilters);
@@ -112,7 +107,6 @@ class DefaultWikidataApplication {
 	protected function save($referenceQueryTransactionInformation) {
 		$viewInformation = new ViewInformation();
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
-		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->queryTransactionInformation = $referenceQueryTransactionInformation; 
 		$viewInformation->setPropertyToColumnFilters($this->propertyToColumnFilters);
 		$viewInformation->viewOrEdit = "edit";
@@ -164,7 +158,6 @@ class DefaultWikidataApplication {
 
 		$viewInformation = new ViewInformation();
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
-		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = false;
 		$viewInformation->queryTransactionInformation = new QueryLatestTransactionInformation();
 		$viewInformation->viewOrEdit = "edit";
@@ -219,7 +212,6 @@ class DefaultWikidataApplication {
 
 		$viewInformation = new ViewInformation();
 		$viewInformation->filterLanguageId = $this->filterLanguageId;
-		$viewInformation->possiblySynonymousRelationTypeId = $this->possiblySynonymousRelationTypeId;
 		$viewInformation->showRecordLifeSpan = $this->showRecordLifeSpan;
 		$viewInformation->queryTransactionInformation = $this->queryTransactionInformation;
 		$viewInformation->setPropertyToColumnFilters($this->propertyToColumnFilters);

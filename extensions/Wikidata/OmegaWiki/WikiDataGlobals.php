@@ -41,8 +41,6 @@ global
 	$wgOptionAttributeValuesAttributeName,
 	$wgOtherDefinedMeaningAttributeName,
 	$wgPopupAnnotationName, 
-	$wgPossibleSynonymAttributeName,
-	$wgPossiblySynonymousAttributeName,
 	$wgRelationsAttributeName, 
 	$wgRelationTypeAttributeName, 
 	$wgSourceAttributeName,
@@ -88,8 +86,6 @@ $wgOptionAttributeOptionsAttributeName = "Options";
 $wgOptionAttributeValuesAttributeName = "Options";
 $wgOtherDefinedMeaningAttributeName = "Other defined meaning";
 $wgPopupAnnotationName = "Annotation";
-$wgPossibleSynonymAttributeName = "Possible synonym";
-$wgPossiblySynonymousAttributeName = "Possibly synonymous";
 $wgRelationsAttributeName = "Relations";
 $wgRelationTypeAttributeName = "Relation type";
 $wgSpellingAttributeName = "Spelling";
@@ -117,7 +113,6 @@ global
 	$wgDefinedMeaningAttributesAttributeId,
 	$wgDefinitionAttributeId,
 	$wgIncomingRelationsAttributeId,
-	$wgPossiblySynonymousAttributeId,
 	$wgRelationsAttributeId, 
 	$wgSynonymsAndTranslationsAttributeId;
 	
@@ -128,7 +123,6 @@ $wgCollectionMembershipAttributeId = "collection-membership";
 $wgDefinedMeaningAttributesAttributeId = "defined-meaning-attributes";
 $wgDefinitionAttributeId = "definition";
 $wgIncomingRelationsAttributeId = "reciprocal-relations";
-$wgPossiblySynonymousAttributeId = "possibly-synonymous";
 $wgRelationsAttributeId = "relations"; 
 $wgSynonymsAndTranslationsAttributeId = "synonyms-translations";
 
@@ -142,7 +136,6 @@ $wdDefinedMeaningAttributesOrder = array(
 	$wgClassAttributesAttributeId,
 	$wgAlternativeDefinitionsAttributeId,
 	$wgSynonymsAndTranslationsAttributeId,
-	$wgPossiblySynonymousAttributeId,
 	$wgIncomingRelationsAttributeId,
 	$wgClassMembershipAttributeId,
 	$wgCollectionMembershipAttributeId,

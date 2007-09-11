@@ -140,14 +140,6 @@ class OmegaWikiAttributes {
 		$t->classMembership = new Attribute(null, wfMsgSc("ClassMembership"), $t->classMembershipStructure);
 		
 		global
-			 $wgPossiblySynonymousAttributeId;
-			 
-		$t->possiblySynonymousId = new Attribute("possibly-synonymous-id", "Possibly synonymous id", "integer");	 
-		$t->possibleSynonym = new Attribute("possible-synonym", wfMsgSc("PossibleSynonym"), $t->definedMeaningReferenceStructure);
-		$t->possiblySynonymousStructure = new Structure("possibly-synonymous", $t->possiblySynonymousId, $t->possibleSynonym);
-		$t->possiblySynonymous = new Attribute(null, wfMsgSc("PossiblySynonymous"), $t->possiblySynonymousStructure);
-
-		global
 			$relationTypeType;
 		
 		$t->relationId = new Attribute("relation-id", "Relation identifier", "object-id");
