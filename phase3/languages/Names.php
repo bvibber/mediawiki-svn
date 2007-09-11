@@ -63,6 +63,7 @@
 	'de' => 'Deutsch',		# German
 	'diq' => 'Zazaki',		# Zazaki
 	'dk' => 'Dansk', 		# Unused code currently redirecting to Danish, 'da' is correct for the language
+	'dsb' => 'Dolnoserbski', # Lower Sorbian
 	'dv' => 'ދިވެހިބަސް',		# Dhivehi
 	'dz' => 'ཇོང་ཁ',		# Bhutani
 	'ee' => 'Eʋegbe',	# Ewe
@@ -301,10 +302,3 @@
 	'zu' => 'isiZulu'		# Zulu
 );
 
- /* private */ $wgLanguageNamesLocal = array();
-foreach( $wgLanguageNames as $codes => $code ) {
-	$message = wfMsg( "languagename-local-$codes" );
-	if( $message && !( wfEmptyMsg(  "languagename-local-$codes", $message ) ) ) {
-		$wgLanguageNamesLocal[$codes]['languageLocalName'] = $message ;
-	}
-};
