@@ -776,7 +776,7 @@ $2',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'לא ניתן ליצור את החשבון',
-'cantcreateaccounttext'  => 'אפשרות יצירת החשבונות מכתובת ה־IP הזו (<b>$1</b>) נחסמה, כנראה עקב השחתות מתמשכות מבית־הספר או ספק האינטרנט שלך.',
+'cantcreateaccount-text' => 'אפשרות יצירת החשבונות מכתובת ה־IP הזו (<b>$1</b>) נחסמה על־ידי [[User:$3|$3]]. הסיבה שניתנה על־ידי $3 היא "$2".',
 
 # History pages
 'revhistory'          => 'היסטוריית שינויים',
@@ -863,7 +863,7 @@ $2',
 'selectolderversionfordiff' => 'בחר גרסה ישנה יותר להשוואה',
 'compareselectedversions'   => 'השווה את הגרסאות שנבחרו',
 'editundo'                  => 'ביטול',
-'diff-multi'                => '({{plural:$1|גרסה אמצעית אחת לא מוצגת|$1 גרסאות אמצעיות לא מוצגות}}.)',
+'diff-multi'                => '({{plural:$1|גרסת ביניים אחת אינה מוצגת|$1 גרסאות ביניים אינן מוצגות}}.)',
 
 # Search results
 'searchresults'         => 'תוצאות החיפוש',
@@ -1923,7 +1923,7 @@ $1
 'patrol-log-diff' => 'גרסה $1',
 
 # Image deletion
-'deletedrevision'                 => 'מחק גרסה ישנה $1.',
+'deletedrevision'                 => 'מחק גרסה ישנה $1',
 'filedeleteerror-short'           => 'שגיאה במחיקת הקובץ: $1',
 'filedeleteerror-long'            => 'שגיאות שאירעו בעת מחיקת הקובץ:
 

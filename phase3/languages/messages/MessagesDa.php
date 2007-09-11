@@ -721,7 +721,7 @@ denne side er vist nedenfor:",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Brugerkontoen kan ikke oprettes.',
-'cantcreateaccounttext'  => "Oprettelsen af en brugerkonto fra IP-adressen <b>$1</b> er spærret af [[User:$3|$3]]. Årsagen til blokeringen er angivet som ''$2''",
+'cantcreateaccount-text' => "Oprettelsen af en brugerkonto fra IP-adressen <b>$1</b> er spærret af [[User:$3|$3]]. Årsagen til blokeringen er angivet som ''$2''",
 
 # History pages
 'revhistory'          => 'Versionshistorik',
@@ -1889,7 +1889,7 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 'patrol-log-diff' => 'Version $1',
 
 # Image deletion
-'deletedrevision' => 'Slettede gammel version $1.',
+'deletedrevision' => 'Slettede gammel version $1',
 'filedeleteerror-short' => "Fejl under sletning af fil: $1",
 'filedeleteerror-long' => "Der opstod en fejl under sletningen af filen:\n\n$1\n",
 'filedelete-missing' => 'Filen "$1" kan ikke slettes fordi den ikke findes.',

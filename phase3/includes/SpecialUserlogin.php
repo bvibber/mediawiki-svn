@@ -228,7 +228,7 @@ class LoginForm {
 			return false;
 		}
 
-		#Â Check anonymous user ($wgUser) limitations :
+		# Check anonymous user ($wgUser) limitations :
 		if (!$wgUser->isAllowedToCreateAccount()) {
 			$this->userNotPrivilegedMessage();
 			return false;
@@ -611,10 +611,10 @@ class LoginForm {
 		$wgOut->setArticleRelated( false );
 
 		$ip = wfGetIP();
-		$blocker = User::whoIs($wgUser->mBlock->mBy);
+		$blocker = User::whoIs( $wgUser->mBlock->mBy );
 		$block_reason = $wgUser->mBlock->mReason;
 
-		$wgOut->addWikiText( wfMsg( 'cantcreateaccounttext', $ip, $block_reason, $blocker ) );
+		$wgOut->addWikiText( wfMsg( 'cantcreateaccount-text', $ip, $block_reason, $blocker ) );
 		$wgOut->returnToMain( false );
 	}
 

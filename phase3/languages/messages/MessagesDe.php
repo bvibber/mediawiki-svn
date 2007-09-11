@@ -752,9 +752,10 @@ Zu Deiner Information folgt das Lösch-Logbuch mit der Begründung für die vorh
 'undo-summary' => 'Änderung $1 von [[{{ns:special}}:Contributions/$2|$2]] ([[{{ns:user_talk}}:$2|Diskussion]]) wurde rückgängig gemacht.',
 
 # Account creation failure
-'cantcreateaccounttitle' => 'Benutzerkonto kann nicht erstellt werden.',
-'cantcreateaccounttext'  => 'Die Erstellung eines Benutzerkontos von der IP-Adresse <b>$1</b> wurde gesperrt.
-Dies geschah vermutlich auf Grund von wiederholtem Vandalismus von Besuchern deiner Bildungseinrichtung oder anderen Benutzern des Internet-Service-Providers.',
+'cantcreateaccounttitle' => 'Benutzerkonto kann nicht erstellt werden',
+'cantcreateaccount-text' => "Die Erstellung eines Benutzerkontos von der IP-Adresse <b>$1</b> aus wurde von [[User:$3|$3]] gesperrt.
+
+Grund der Sperre: ''$2''",
 
 # History pages
 'revhistory'          => 'Frühere Versionen',
@@ -993,7 +994,7 @@ Nicht selektierte Gruppen werden nicht geändert. Eine Selektion kann mit '''Str
 'rc_categories'                     => 'Nur Seiten aus den Kategorien (getrennt mit „|“):',
 'rc_categories_any'                 => 'Alle',
 'rc-change-size'                    => '$1 {{PLURAL:$1|Byte|Bytes}}',
-'newsectionsummary'                 => 'Neuer Abschnitt: /* $1 */',
+'newsectionsummary'                 => 'Neuer Abschnitt /* $1 */',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Änderungen an verlinkten Seiten',
@@ -1942,7 +1943,7 @@ Alle Transwiki-Import-Aktionen werden im [[Special:Log/import|Import-Logbuch]] p
 'patrol-log-diff' => 'Version $1',
 
 # Image deletion
-'deletedrevision'                 => 'alte Version: $1.',
+'deletedrevision'                 => 'alte Version: $1',
 'filedeleteerror-short'           => 'Fehler beim Datei-Löschen: $1',
 'filedeleteerror-long'            => 'Beim Datei-Löschen wurden Fehler festgestellt:
 
@@ -2392,5 +2393,10 @@ Bitte bestätige, dass du diese Seite wirklich neu erstellen möchten.",
 'watchlisttools-edit'  => 'normal bearbeiten',
 'watchlisttools-raw'   => 'Listenformat bearbeiten (Import/Export)',
 'watchlisttools-clear' => 'löschen',
+
+# Language names in user language
+'languagename-local-de'           => 'Deutsch',
+'languagename-local-en'           => 'Englisch',
+'languagename-local-fr'           => 'Französisch',
 
 );
