@@ -56,6 +56,12 @@ function wfNewsFeedTag( $templatetext, $argv, &$parser ) {
     $parser->disableCache(); //TODO: use smart cache & purge...?
     $wgOut->setSyndicated( true );
 
+    $silent = @$argv['silent'];
+    if ( $silent === 'false' || $silent === 'no' || $silent === '0' )
+        $silent = false;
+
+    if ( $silent ) return "";
+
     $renderer = new NewsRenderer($wgTitle, $templatetext, $argv, $parser);
     $html = $renderer->renderFeedPreview();
     return $html;
