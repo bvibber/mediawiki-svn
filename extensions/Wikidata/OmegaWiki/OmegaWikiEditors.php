@@ -565,7 +565,7 @@ function getDefinedMeaningAttributeValuesEditor(ViewInformation $viewInformation
 	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "DM", $attributeIDFilter);
 
 	$editor = new RecordSetTableEditor($o->relations, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
-	$editor->addEditor(new DefinedMeaningAttributeEditor($o->relationType, new SimplePermissionController(false), true, $levelDefinedMeaningName));
+	$editor->addEditor(new DefinedMeaningAttributeEditor($o->relationType, new SimplePermissionController(false), true, $attributeIDFilter, $levelDefinedMeaningName));
 	$editor->addEditor(new DefinedMeaningReferenceEditor($o->otherDefinedMeaning, new SimplePermissionController(false), true));
 
 	addPopupEditors($editor, $definedMeaningValueObjectAttributesEditors);
@@ -663,7 +663,7 @@ function getTextAttributeValuesEditor(ViewInformation $viewInformation, UpdateCo
 	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "TEXT", $attributeIDFilter);
 
 	$editor = new RecordSetTableEditor($o->textAttributeValues, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
-	$editor->addEditor(new TextAttributeEditor($o->textAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName));
+	$editor->addEditor(new TextAttributeEditor($o->textAttribute, new SimplePermissionController(false), true, $attributeIDFilter, $levelDefinedMeaningName));
 	$editor->addEditor(new TextEditor($o->text, new SimplePermissionController(true), true));
 	
 	addPopupEditors($editor, $textValueObjectAttributesEditors);
@@ -681,7 +681,7 @@ function getLinkAttributeValuesEditor(ViewInformation $viewInformation, UpdateCo
 	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "URL", $attributeIDFilter);
 
 	$editor = new RecordSetTableEditor($o->linkAttributeValues, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
-	$editor->addEditor(new LinkAttributeEditor($o->linkAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName));
+	$editor->addEditor(new LinkAttributeEditor($o->linkAttribute, new SimplePermissionController(false), true, $attributeIDFilter, $levelDefinedMeaningName));
 	
 	if ($viewInformation->viewOrEdit == "view")
 		$linkEditor = new LinkEditor($o->link, new SimplePermissionController(true), true);
@@ -708,7 +708,7 @@ function getTranslatedTextAttributeValuesEditor(ViewInformation $viewInformation
 	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "TRNS", $attributeIDFilter);
 
 	$editor = new RecordSetTableEditor($o->translatedTextAttributeValues, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
-	$editor->addEditor(new TranslatedTextAttributeEditor($o->translatedTextAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName));
+	$editor->addEditor(new TranslatedTextAttributeEditor($o->translatedTextAttribute, new SimplePermissionController(false), true, $attributeIDFilter, $levelDefinedMeaningName));
 	$editor->addEditor(getTranslatedTextEditor(
 		$o->translatedTextValue, 
 		new TranslatedTextAttributeValueController(),
@@ -731,7 +731,7 @@ function getOptionAttributeValuesEditor(ViewInformation $viewInformation, Update
 	$showEditFieldChecker = new ShowEditFieldForAttributeValuesChecker($levelDefinedMeaningName, "OPTN", $attributeIDFilter);
 	
 	$editor = new RecordSetTableEditor($o->optionAttributeValues, new SimplePermissionController(true), $showEditFieldChecker, new AllowAddController(true), true, false, $controller);
-	$editor->addEditor(new OptionAttributeEditor($o->optionAttribute, new SimplePermissionController(false), true, $levelDefinedMeaningName));
+	$editor->addEditor(new OptionAttributeEditor($o->optionAttribute, new SimplePermissionController(false), true, $attributeIDFilter, $levelDefinedMeaningName));
 	$editor->addEditor(new OptionSelectEditor($o->optionAttributeOption, new SimplePermissionController(false), true));
 	
 	addPopupEditors($editor, $optionValueObjectAttributesEditors);

@@ -739,6 +739,29 @@ class RecordSetTableEditor extends RecordSetEditor {
 			return "";
 	}
 
+	function getStructureAsAddCells(IdStack $idPath, Editor $editor, &$startColumn = 0) {
+		$result = '';
+		
+		foreach($editor->getEditors() as $childEditor) {
+			$attribute = $childEditor->getAttribute();
+			$type = $attribute->type;
+			$idPath->pushAttribute($attribute);
+			
+			if ($childEditor instanceof RecordTableCellEditor)
+				$result .= $this->getStructureAsAddCells($idPath, $childEditor, $startColumn);
+			else {
+				if ($childEditor->showEditField($idPath))
+					$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">' . $childEditor->add($idPath) . '</td>';
+					
+				$startColumn++;
+			}
+			
+			$idPath->popAttribute();
+		}
+		
+		return $result;
+	}
+	
 	function getAddRowAsHTML(IdStack $idPath, $repeatInput, $allowRemove) {
 		global
 			$wgScriptPath;
@@ -754,7 +777,7 @@ class RecordSetTableEditor extends RecordSetEditor {
 		if ($allowRemove)
 			$result .= '<td class="add"><img src="'.$wgScriptPath.'/extensions/Wikidata/Images/Add.png" title="Enter new rows to add" alt="Add"/></td>' . EOL;
 
-		$result .= getStructureAsAddCells($idPath, $this);
+		$result .= $this->getStructureAsAddCells($idPath, $this);
 
 		if ($repeatInput)
 			$result .= '<td class="input-rows"/>' .  EOL;
@@ -1297,10 +1320,12 @@ class CollectionReferenceEditor extends DefinedMeaningReferenceEditor {
 
 class AttributeEditor extends DefinedMeaningReferenceEditor {
 	protected $attributesLevelName;
+	protected $attributeIDFilter;
 
-	public function __construct(Attribute $attribute = null, PermissionController $permissionController, $isAddField, $attributesLevelName) {
+	public function __construct(Attribute $attribute = null, PermissionController $permissionController, $isAddField, AttributeIDFilter $attributeIDFilter, $attributesLevelName) {
 		parent::__construct($attribute, $permissionController, $isAddField);
 
+		$this->attributeIDFilter = $attributeIDFilter;
 		$this->attributesLevelName = $attributesLevelName;
 	}
 
@@ -1321,6 +1346,10 @@ class AttributeEditor extends DefinedMeaningReferenceEditor {
 	public function getEditHTML(IdStack $idPath, $value) {
 		$parameters = array("level" => $this->attributesLevelName);
 		return getSuggest($this->updateId($idPath->getId()), $this->suggestType(), $parameters); 
+	}
+	
+	public function showEditField(IdStack $idPath) {
+		return !$this->attributeIDFilter->leavesOnlyOneOption();
 	}
 }
 

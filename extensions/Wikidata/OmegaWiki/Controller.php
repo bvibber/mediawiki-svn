@@ -377,13 +377,17 @@ class ObjectAttributeValuesController extends DefaultUpdateController {
 	}
 
 	protected function determineAttributeId(IdStack $idPath, $annotationType, $attributeIdFromRecord) {
-		$classAttributes = $idPath->getClassAttributes()->filterClassAttributesOnLevelAndType($this->levelName, $annotationType);
-		$classAttributes = $this->attributeIDFilter->filter($classAttributes);
+		$result = $attributeIdFromRecord;
 		
-		if (count($classAttributes) == 1)
-			return $classAttributes[0];
-		else
-			return $attributeIdFromRecord;
+		if ($this->attributeIDFilter->leavesOnlyOneOption()) {
+			$classAttributes = $idPath->getClassAttributes()->filterClassAttributesOnLevelAndType($this->levelName, $annotationType);
+			$classAttributes = $this->attributeIDFilter->filter($classAttributes);
+		
+			if (count($classAttributes) == 1)
+				$result = $classAttributes[0];
+		}  
+		
+		return $result;
 	}
 }
 

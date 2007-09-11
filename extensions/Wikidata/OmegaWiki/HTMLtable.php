@@ -157,7 +157,7 @@ function getRecordAsEditTableCells(IdStack $idPath, Editor $editor, Structure $v
 			if ($childEditor instanceof RecordTableCellEditor)			
 				$result .= getRecordAsEditTableCells($idPath, $childEditor, $visibleAttribute->type, $value, $startColumn); 
 			else {	
-				if($childEditor->showEditField($idPath))
+				if ($childEditor->showEditField($idPath))
 					$displayValue = $childEditor->edit($idPath, $value);
 				else
 					$displayValue = "";
@@ -176,25 +176,4 @@ function getRecordAsEditTableCells(IdStack $idPath, Editor $editor, Structure $v
 	return $result;
 }
 
-function getStructureAsAddCells(IdStack $idPath, Editor $editor, &$startColumn = 0) {
-	$result = '';
-	
-	foreach($editor->getEditors() as $childEditor) {
-		$attribute = $childEditor->getAttribute();
-		$type = $attribute->type;
-		$idPath->pushAttribute($attribute);
-		
-		if ($childEditor instanceof RecordTableCellEditor)
-			$result .= getStructureAsAddCells($idPath, $childEditor, $startColumn);
-		else {
-			$result .= '<td class="'. getHTMLClassForType($type,$attribute) .' column-'. parityClass($startColumn) . '">' . $childEditor->add($idPath) . '</td>';
-			$startColumn++;
-		}
-		
-		$idPath->popAttribute();
-	}
-	
-	return $result;
-}
-
-
+?>
