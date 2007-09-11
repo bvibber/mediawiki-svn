@@ -507,23 +507,21 @@ HTML;
 	function showThreadFooter( $thread ) {
 		global $wgLang; // TODO global.
 		
-		$thread_author = $thread->root()->originalAuthor();
-		$color_number = $this->selectNewUserColor($thread_author);
-		$p = new Parser();   $sig = $p->getUserSig($thread_author);
+		$author = $thread->root()->originalAuthor();
+		$color_number = $this->selectNewUserColor($author);
+
+		$sig = $this->user->getSkin()->userLink( $author->getID(), $author->getName() ) .
+			   $this->user->getSkin()->userToolLinks( $author->getID(), $author->getName() );
+
 		$timestamp = $wgLang->timeanddate($thread->timestamp());
 		
 		$this->output->addHTML(<<<HTML
 <ul class="lqt_footer">
-<li class="lqt_author_sig lqt_post_color_{$color_number}">
-HTML
-);
-		$this->output->addWikitext($sig, false); #gah!
-		$this->output->addHTML(<<<HTML
-</li>
+<li class="lqt_author_sig lqt_post_color_{$color_number}">$sig</li>
 <li>$timestamp</li>
 HTML
-);
-
+		);
+		
 		foreach( $this->applicableThreadCommands($thread) as $command ) {
 			$label = $command['label'];
 			$href = $command['href'];
@@ -535,6 +533,7 @@ HTML
 				$this->output->addHTML( "<li><span class=\"lqt_footer_disabled\">$label</span></li>" );
 			}
 		}
+		
 		$this->output->addHTML('</ul>');
 	}
 
