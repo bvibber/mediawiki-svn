@@ -57,7 +57,7 @@ class ApiUndelete extends ApiBase {
 
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
-			$this->dieUsage("Bad title {$params['title']}", 'invalidtitle');
+			$this->dieUsage("Bad title ``{$params['title']}''", 'invalidtitle');
 
 		// Convert timestamps
 		if(!is_array($params['timestamps']))

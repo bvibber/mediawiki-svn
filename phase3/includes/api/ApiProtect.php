@@ -57,9 +57,9 @@ class ApiProtect extends ApiBase {
 
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
-			$this->dieUsage("Bad title {$params['title']}", 'invalidtitle');
+			$this->dieUsage("Bad title ``{$params['title']}''", 'invalidtitle');
 		if(!$titleObj->exists())
-			$this->dieUsage("{$params['title']} doesn't exist", 'missingtitle');
+			$this->dieUsage("``{$params['title']}'' doesn't exist", 'missingtitle');
 		if(!$titleObj->userCan('protect'))
 			$this->dieUsage('You don\'t have permission to change protection levels', 'permissiondenied');
 		$articleObj = new Article($titleObj);

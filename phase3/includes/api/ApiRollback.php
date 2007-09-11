@@ -56,15 +56,18 @@ class ApiRollback extends ApiBase {
 
 		$titleObj = Title::newFromText($params['title']);
 		if(!$titleObj)
-			$this->dieUsage("Bad title {$params['title']}", 'invalidtitle');
+			$this->dieUsage("Bad title ``{$params['title']}''", 'invalidtitle');
 		if(!$titleObj->userCan('rollback'))
 			$this->dieUsage('You don\'t have permission to rollback', 'permissiondenied');
 
+		$username = User::getCanonicalName($params['user']);
+		if(!$username)
+			$this->dieUsage("Invalid username ``{$params['user']}''", 'invaliduser');
 
 		$articleObj = new Article($titleObj);
 		$summary = (isset($params['summary']) ? $params['summary'] : "");
 		$details = NULL;
-		$retval = $articleObj->doRollback($params['user'], $summary, $params['token'], $params['markbot'], &$details);
+		$retval = $articleObj->doRollback($username, $summary, $params['token'], $params['markbot'], &$details);
 
 		switch($retval)
 		{
@@ -79,14 +82,14 @@ class ApiRollback extends ApiBase {
 			case Article::BAD_TOKEN:
 				$this->dieUsage('Invalid token', 'badtoken');
 			case Article::BAD_TITLE:
-				$this->dieUsage("{$params['title']} doesn't exist", 'missingtitle');
+				$this->dieUsage("``{$params['title']}'' doesn't exist", 'missingtitle');
 			case Article::ALREADYROLLED:
 				$current = $details['current'];
 				$currentID = $current->getId();
 				$this->dieUsage("The edit(s) you tried to rollback is/are already rolled back." .
-						"The current revision ID is $currentID", 'alreadyrolled');
+						"The current revision ID is ``$currentID''", 'alreadyrolled');
 			case Article::ONLY_AUTHOR:
-				$this->dieUsage("{$params['user']} is the only author of the page", 'onlyauthor');
+				$this->dieUsage("User ``$username'' is the only author of the page", 'onlyauthor');
 			case Article::EDIT_FAILED:
 				$this->dieDebug(__METHOD__, 'Article::doEdit() failed');
 			default:
