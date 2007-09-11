@@ -580,6 +580,11 @@ function efDuplicatorAliases( $lang ) {
 	'Seiten_duplizieren',
 	'Duplizieren',
 ),
+
+'fi' => array(
+	'Monista',
+),
+
 	);
 	return isset( $aliases[$lang] ) && $lang != 'en'
 		? array_merge( $aliases[$lang], $aliases['en'] )
