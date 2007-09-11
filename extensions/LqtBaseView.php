@@ -579,8 +579,8 @@ HTML
 			$html = $thread->subjectWithoutIncrement() .
 			        ' <span class="lqt_subject_increment">(' .
 			        $thread->increment() . ')</span>';
-			$this->output->addHTML( wfOpenElement( "h{$this->headerLevel}", array('class'=>'lqt_header') ) .
-			                        $html . wfCloseElement("h{$this->headerLevel}") );
+			$this->output->addHTML( "<h{$this->headerLevel} class=\"lqt_header\"><span class=\"mw-headline\">"
+				. $html . "</span></h{$this->headerLevel}>" );
 		}
 	}
 	
