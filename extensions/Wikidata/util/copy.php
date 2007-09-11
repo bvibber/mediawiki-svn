@@ -153,6 +153,8 @@ function sane_key_exists($key, $array) {
 
 /**
  * inverse of mysql_fetch_assoc
+ * takes an associative array as parameter, and inserts data
+ * into table as a single row (keys=column names, values = data to be inserted)
 /* see: http://www.php.net/mysql_fetch_assoc (Comment by R. Bradly, 14-Sep-2006)
  */
 function mysql_insert_assoc ($my_table, $my_array) {
@@ -304,19 +306,68 @@ function dup_text($dc1, $dc2, $text_id) {
 	return $id;
 }
 
-function read_meaning_relations($dc1, $dmid) {
-	return getrows($dc1,"meaning_relations","where meaning1_mid=$dmid");
+class RelationsCopier {
+
+	protected $old_dmid;
+	protected $new_dmid;
+	protected $dc1;
+	protected $dc2;
+
+	function __construct($dc1, $dc2, $old_dmid, $new_dmid) {
+		$this->old_dmid=$old_dmid;
+		$this->new_dmid=$new_dmid;
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+	}
+
+	function read() {
+		$dc1=$this->dc1;
+		$dmid=$this->old_dmid;
+		return getrows($dc1,"meaning_relations","where meaning1_mid=$dmid");
+	}
+
+	function write_single($relation) {
+		echo "RELATION";
+		var_dump($relation);
+		$dc1=$this->dc1;
+		$dc2=$this->dc2;
+		$new_dmid=$this->new_dmid;
+
+		$copier=new ObjectCopier($relation["relation_id"], "meaning_relations", $dc1, $dc2);
+		$relation["relation_id"]=$copier->dup();
+		if ($copier->already_there()) {
+			return;
+		}
+		$relation["meaning1_mid"]=$new_dmid;
+		$dmcopier=new defined_meaning_copier($relation["meaning2_mid"],$dc1, $dc2);
+		$relation["meaning2_mid"]=$dmcopier->dup();
+		# Typically checks same values each time. Accelerated by query_cache:
+		$rtcopier=new defined_meaning_copier($relation["relationtype_mid"],$dc1, $dc2);
+		$relation["relationtype_mid"]=$rtcopier->dup();
+		echo ">>PRE!<br>\n";
+		var_dump($relation);
+		$copier=new ObjectCopier($relation["relation_id"], "meaning_relations", $dc1, $dc2);
+		$relation["relation_id"]=$copier->dup();
+		if ($copier->already_there()) {
+			return;
+		}
+		echo ">>POST!<br>\n";
+		var_dump($relation);
+		$target_table=mysql_real_escape_string("${dc2}_meaning_relations");
+		mysql_insert_assoc($target_table,$relation);
+
+	}
+
+	function dup() {
+		$rows=$this->read();
+		echo "copying relations";
+		foreach ($rows as $row) {
+			$this->write_single($row);
+		}
+	}			
 }
 
-function write_meaning_relation($dc1, $dc2, $new_dmid, $relation) {
-	$copier=new ObjectCopier($relation["relation_id"], "meaning_relations", $dc1, $dc2);
-	$relation["relation_id"]=$copier->dup;
-	if ($copier->already_there()) {
-		return;
-	}
-	$relation["meaning1_mid"]=$new_dmid;
-	$relation["meaning2_mid"]=dup_defined_meaning($relation["meaning2_mid"],$dc1, $dc2);
-}
+
 
 
 class defined_meaning_copier {
@@ -328,6 +379,7 @@ class defined_meaning_copier {
 	protected $dc2;
 	
 	public function __construct ($dmid, $dc1, $dc2) {
+		echo "constructing dmc $dmid, $dc1 -> $dc2";
 		$this->dmid=$dmid;
 		$this->dc1=$dc1;
 		$this->dc2=$dc2;
@@ -354,6 +406,7 @@ class defined_meaning_copier {
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
 
+		echo "<br><h3>copying dm $dmid</h3><br>\n";
 		$this->read();
 
 		# bit of exp here too (defnitely need to tidy)
@@ -401,7 +454,14 @@ class defined_meaning_copier {
 			$dc1,
 			$dc2
 		);
-
+		
+		$relationsCopier=new RelationsCopier(
+			$dc1, 
+			$dc2, 
+			$this->defined_meaning["defined_meaning_id"],
+			$this->save_meaning["defined_meaning_id"]);
+		$relationsCopier->dup();
+		return $this->save_meaning["defined_meaning_id"];
 	}
 }
 
