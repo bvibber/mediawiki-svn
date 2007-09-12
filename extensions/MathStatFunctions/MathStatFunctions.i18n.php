@@ -17,6 +17,11 @@ $wgMathStatFunctionsMessages['fr'] = array(
         'msfunc_inf' => "Le résultat est l’infini" ,
         'msfunc_div_zero' => "Division par zéro",
 );
+$wgMathStatFunctionsMessages['hsb'] = array(
+	'msfunc_nan' => 'Wuslědk ličba njeje.',
+	'msfunc_inf' => 'Wuslědk je njekónčna hódnota.',
+	'msfunc_div_zero' => 'Diwizija přez nulu',
+);
 $wgMathStatFunctionsMessages['id'] = array(
         'msfunc_nan' => "Nilai hasil tidak berupa angka" ,
         'msfunc_inf' => "Nilai hasil tak hingga" ,

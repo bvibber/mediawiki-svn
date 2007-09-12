@@ -150,6 +150,9 @@ $wgSiteMatrixMessages['sr'] = $wgSiteMatrixMessages['sr-ec'];
 
 $wgSiteMatrixMessages['su'] = array(
 	'sitematrix' => 'Béréndélan wiki Wikimédia',
+	'sitematrix-language' => 'Basa',
+	'sitematrix-project' => 'Ngaran proyék , tumbu interproyék jeung tumbu interwiki',
+	'sitematrix-others' => 'Proyék laina ti Wikimedia',
 );
 
 $wgSiteMatrixMessages['sv'] = array(

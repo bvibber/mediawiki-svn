@@ -180,6 +180,36 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 שחרור מידע זה לציבור עלול לגרום להסרה לצמיתות של ההרשאות.',
 ),
 
+'hsb' => array(
+'hiderevision' => 'Wersije na stajnje schować',
+'hiderevision-prompt' => 'Wersijowe čisło, kotrež ma so wotstronić:',
+'hiderevision-continue' => 'Dale',
+'hiderevision-text' => 'To smě \'\'\'jeničce\'\'\' w slědowacych padach wužić;
+* Wosobinske informacije:
+*: \'\'woprawdźite mjeno, adresa, telefonowe čisło a podobne priwatne podrobnosće\'\'
+
+\'\'\'Znjewužiwanje tutoho systema zawinuje zhubjenje tutych prawow!\'\'\'
+
+Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wušmórnjenja protokoluja so a hodźa so manuelnje wot administratora datoweje banki wobnowić, jeli činiš zmylk.',
+'hiderevision-reason' => 'Přičina (protokoluje so skradźu)',
+'hiderevision-submit' => 'Tute daty na stajnje schować',
+'hiderevision-tab' => 'Wersiju schować',
+'hiderevision-norevisions' => 'Žane wersije za wušmórnjenje podate.',
+'hiderevision-noreason' => 'Dyrbiš přičinu za wotstronjenje podać.',
+'hiderevision-status' => 'Wersija $1: $2',
+'hiderevision-success' => 'Wuspěšnje archiwowany a zničeny.',
+'hiderevision-error-missing' => 'W datowej bance njenamakany.',
+'hiderevision-error-current' => 'Poslednja změna njehodźi so wušmórnyć. Staj tutu změnu wróćo.',
+'hiderevision-error-delete' => 'Archiwowanje njemóžno. Bu prjedy wušmórnjene?',
+'hiderevision-archive-status' => 'Wušmórnjena wersija z $1: $2',
+'oversight-log-hiderev' => 'změna wot $1 bu wotstronjena.',
+'oversight' => 'Oversight',#identical but defined
+'oversight-view' => 'podrobnosće',
+'oversight-difference' => '(Rozdźěl wot předchadneje zwostawaceje wersije)',
+'oversight-prev' => 'Poslednja předchadna wersija',
+'oversight-hidden' => 'Schowana wersija',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 'hiderevision' => 'Oscuramento permanente di una revisione',

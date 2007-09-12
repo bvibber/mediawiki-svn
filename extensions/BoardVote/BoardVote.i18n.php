@@ -466,6 +466,7 @@ $wgBoardVoteMessages['hsb'] = array(
 	'boardvote_blocked'       => 'Wodaj, ale ty bu we swojim wikiju zablokowany. Zablokowani wužiwarjo njesmědźa so na wólbje wobdźělić.',
 	'boardvote_welcome'       => 'Witaj \'\'\'$1\'\'\'!',
 	'go_to_board_vote'        => 'Wólby k Wikimedija-kuratorijej 2007',
+	'boardvote_redirecting'   => 'Zo bychmy wěstosć a transparencu zaručili, přewjedźemy wólby na eksternym, njewotwisnje kontrolowanym serwerje. Sposrědkujemy tam w běhu 20 sekundow. [$1 Klikń tu] zo by so bjesporědnje tam dóstał. Je móžno, zo widźiš naprjedy wěstotne warnowanje wo njesignowanym certifikaće.',
 );
 
 $wgBoardVoteMessages['id'] = array(

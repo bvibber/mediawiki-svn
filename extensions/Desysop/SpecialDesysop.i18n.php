@@ -80,10 +80,14 @@ $wgDesysopMessages['he'] = array(
 	'not_sysop'            => 'משתמש זה אינו מפעיל מערכת',
 );
 $wgDesysopMessages['hsb'] = array(
+	'desysoptitle'         => 'Prawa administratora zebrać',
+	'desysoptext'          => 'Z tutym formularom móža běrokraća wužiwarjej prawa administratora zebrać. Zapisaj mjeno wužiwarja do kašćika a tłóč na knefl zo by wužiwarjej   přistup administratora zebrał.',
 	'desysopname'          => 'Mjeno wužiwarja:',
+	'desysopok'            => '<b>Wužiwarjej „$1” buchu prawa administratora zebrane.</b>',
 	'set_user_rights'      => 'Wužiwarske prawa zrjadować',
 	'user_rights_set'      => '<b>Prawa za wužiwarja „$1” zaktualizowane</b>',
 	'set_rights_fail'      => '<b>Prawa za wužiwarja „$1” njedadźa so nastajić. (Sće mjeno prawje zapisał(a)?)</b>',
+	'desysop'              => 'Desysop',
 	'not_sysop'            => 'Tutón wužiwar administrator njeje.',
 );
 $wgDesysopMessages['id'] = array(

@@ -22,8 +22,11 @@ $allMessages = array(
 	),
 
 	'hsb' => array(
+		'passwordreset' => 'Hesło wróćo stajić',
 		'passwordreset-invalidusername' => 'Njepłaćiwe wužiwarske mjeno',
 		'passwordreset-emptyusername' => 'Žane wužiwarske mjeno',
+		'passwordreset-nopassmatch' => 'Hesle njerunatej so',
+		'passwordreset-badtoken' => 'Njepłaćiwe wobdźěłanske znamjo',
 		'passwordreset-username' => 'Wužiwarske mjeno',
 		'passwordreset-newpass' => 'Nowe hesło',
 		'passwordreset-confirmpass' => 'Hesło wobkrućić',

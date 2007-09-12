@@ -228,6 +228,7 @@ indépendantes de l’historique complet. Il sert par exemple à séparer un art
 'hsb' => array(
 'duplicator' => 'Nastawk duplicěrować',
 'duplicator-toolbox' => 'Tutón nastawk duplicěrować',
+'duplicator-header' => 'Z tutej specialnej stronu móžeš strony dospołnje duplicěrować. Při tym přewozmu so cyle stawizny strony. To móže z wužitkom być, hdyž ma so na pr. strona do wjacorych nastawkow rozdźělić.',
 'duplicator-options' => 'Opcije',
 'duplicator-source' => 'Žórło:',
 'duplicator-dest' => 'Cil:',
@@ -240,7 +241,10 @@ indépendantes de l’historique complet. Il sert par exemple à séparer un art
 'duplicator-success-talknotcopied' => 'Diskusijna strona njeda so kopěrować.',
 'duplicator-failed' => 'Strona njeda so duplicěrować. Njeznaty zmylk je wustupił.',
 'duplicator-source-invalid' => 'Prošu podaj płaćiwu žórłowu stronu.',
+'duplicator-source-notexist' => 'Strona [[$1]] njeeksistuje. Prošu zapodaj eksistowacu stronu.',
 'duplicator-dest-invalid' => 'Prošu podaj płaćiwu cilowu stronu.',
+'duplicator-dest-exists' => 'Strona [[$1]] hižo eksistuje. Prošu zapodaj cilowy titl kotryž hišće njeeksistuje.',
+'duplicator-toomanyrevisions' => 'Strona [[$1]] ma přewjele ($2) wersijow a njehodźi so tohodla kopěrować. Kopěrowanje je na strony z maksimalnje $3 wersijemi wobmjezowane.',
 ),
 
 /* Indonesia (Ivan Lanin) */

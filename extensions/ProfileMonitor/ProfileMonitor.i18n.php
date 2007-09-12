@@ -24,6 +24,10 @@ function efProfileMonitorMessages() {
 'profiling-no-data' => 'No matching data found.',
 ),
 
+'hsb' => array(
+'profiling-ok' => 'W porjadku',
+),
+
 /* Indonesian (IvanLanin) */
 'id' => array(
 'profiling' => 'Profilisasi data',

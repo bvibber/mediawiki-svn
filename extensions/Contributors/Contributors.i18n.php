@@ -364,7 +364,9 @@ function efContributorsMessages() {
 /* Sundanese (Kandar via BetaWiki) */
 'su' => array(
 'contributors' => 'Kontributor',
+'contributors-toolbox' => 'Kontributor utama',
 'contributors-legend' => 'Béréndélkeun kontributor utama artikel',
+'contributors-target' => 'Judul:',
 'contributors-submit' => 'Témbongkeun',
 'contributors-subtitle' => 'Kontributor utama $1',
 'contributors-others-long' => 'Aya $1 kontributor séjénna pikeun kaca ieu.',

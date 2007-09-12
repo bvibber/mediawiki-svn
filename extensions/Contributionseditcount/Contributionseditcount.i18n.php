@@ -12,6 +12,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount'  =>  'This user has $1 edits.',
 ),
 
+'ar' => array(
+	'contributionseditcount' => 'هذا المستخدم لديه $1 تعديل.',
+),
+
 'de' => array(
 	'contributionseditcount'  =>  'Dieser Benutzer hat $1 Bearbeitungen.',
 ),

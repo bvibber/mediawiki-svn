@@ -90,10 +90,10 @@ $wgExpandTemplatesMessages['he'] = array(
 );
 $wgExpandTemplatesMessages['hsb'] = array(
 	'expandtemplates'                  => 'Předłohi ekspandować',
+	'expand_templates_intro'           => 'Na tutej specialnej stronje móžeš tekst zapodać a wšitke do njeje zapřijate předłohi so rekursiwnje ekspanduja. Tež funkcije parsera kaž <nowiki>{{</nowiki>#if:...}} a wariable kaž <nowiki>{{</nowiki>CURRENTDAY}} so wuhódnočeja – faktisce wšo, štož steji mjezy dwójnymaj wopušatymaj spinkomaj. To so přez zawołanje jednotliwych fazow parsera software MediaWiki stawa.',
 	'expand_templates_title'           => 'Kontekstowy titul, za {{PAGENAME}} atd.:',
 	'expand_templates_input'           => 'Tekst zapodać:',
 	'expand_templates_output'          => 'Wuslědk',
-	'expand_templates_ok'              => 'W porjadku',
 	'expand_templates_remove_comments' => 'Komentary wotstronić',
 	'expand_templates_preview'         => 'Přehlad',
 );
@@ -302,6 +302,7 @@ $wgExpandTemplatesMessages['sr'] = $wgExpandTemplatesMessages['sr-ec'];
 
 $wgExpandTemplatesMessages['su'] = array(
 	'expandtemplates'                  => 'Mekarkeun citakan',
+	'expand_templates_output'          => 'Hasil:',
 	'expand_templates_ok'              => 'Heug',
 );
 
