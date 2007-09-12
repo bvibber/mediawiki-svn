@@ -15,6 +15,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 require_once('LqtBaseView.php');
 require_once('LqtI18N.php');
 
+$wgExtensionFunctions[] = 'wfLqtSpecialDeleteThread';
+$wgExtensionFunctions[] = 'wfLqtSpecialMoveThreadToAnotherPage';
+$wgExtensionFunctions[] = 'wfLqtSpecialNewMessages';
+$wgHooks['BeforeWatchlist'][] = 'wfLqtBeforeWatchlistHook';
+
 class TalkpageView extends LqtView {
 	/* Added to SkinTemplateTabs hook in TalkpageView::show(). */
 	function customizeTabs( $skintemplate, $content_actions ) {
@@ -630,12 +635,6 @@ class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 }
 
 
-/* We have to do this goofy wgExtensionFunctions run-around because
-   the files required by SpecialPage aren't required_onced() yet by
-  the time this file is. Don't ask me why. */
-
-$wgExtensionFunctions[] = 'wfLqtSpecialMoveThreadToAnotherPage';
-
 function wfLqtSpecialMoveThreadToAnotherPage() {
     global $wgMessageCache;
 
@@ -767,9 +766,6 @@ HTML
 }
 
 
-
-$wgExtensionFunctions[] = 'wfLqtSpecialDeleteThread';
-
 function wfLqtSpecialDeleteThread() {
     global $wgMessageCache;
 
@@ -897,6 +893,80 @@ HTML
     }
     
      SpecialPage::addPage( new SpecialDeleteThread() );
+}
+
+
+
+class NewUserMessagesView extends LqtView {
+	
+	function addJSandCSS() {
+		global $wgJsMimeType, $wgStylePath; // TODO globals.
+		$s = "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/lqt.js\"><!-- lqt js --></script>\n";
+		$this->output->addScript($s);
+	}
+	
+	function postDivClass($thread) {
+		
+	}
+	
+	function show() {
+		$this->addJSandCSS();
+
+		$threads = NewMessages::newUserMessages($this->user);
+		foreach($threads as $t) {
+			$this->showThread($t);
+		}
+		return false;
+	}
+}
+
+function wfLqtSpecialNewMessages() {
+    global $wgMessageCache;
+
+    require_once('SpecialPage.php');
+    
+    $wgMessageCache->addMessage( 'newmessages', 'New Messages' );
+    
+    class SpecialNewMessages extends SpecialPage {
+
+        function __construct() {
+            SpecialPage::SpecialPage( 'Newmessages' );
+            SpecialPage::$mStripSubpages = false;
+            $this->includable( true );
+        }
+
+
+        function execute( $par = null ) {
+            global $wgOut, $wgRequest, $wgUser;
+	
+            $this->setHeaders();
+
+			$title = $this->getTitle();
+			$view = new NewUserMessagesView( $wgOut, new Article($title), $title, $wgUser, $wgRequest );
+			return $view->show();
+			
+			// and then the same for the other talkpage messagess.
+        }
+    }
+    
+     SpecialPage::addPage( new SpecialNewMessages() );
+}
+
+
+function wfLqtBeforeWatchlistHook( $options, $user ) {
+	global $wgOut;
+	
+	$user_messages = NewMessages::newUserMessages($user);
+	$n = count($user_messages);
+	
+	$wgOut->addHTML(<<< HTML
+		<div class="lqt_watchlist_messages_notice">
+			There are $n messages for you.
+		</div>
+HTML
+	);
+	
+	return true;
 }
 
 

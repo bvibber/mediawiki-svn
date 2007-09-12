@@ -986,4 +986,30 @@ class QueryGroup {
 	}
 }
 
+
+class NewMessages {
+	
+	static function newUserMessages($user) {
+/*		$article_clause = Threads::articleClause(new Article($user->getUserPage()))
+		$sql = <<< SQL
+			select * from thread, page, recentchanges
+			where thread_root = rc_cur_id
+				and $article_clause
+SQL;
+		$dbr = wfGetDB( DB_SLAVE );
+		res = $dbr->query($sql); 
+		while ( $line = $dbr->fetchObject($res) ) {
+			
+		}*/
+		
+		$ts = Threads::where( array('thread.thread_root = rc_cur_id', 
+									Threads::articleClause(new Article($user->getUserPage()))),
+							 array(), array('recentchanges') );
+		return $ts;
+	}
+	
+
+	
+}
+
 ?>

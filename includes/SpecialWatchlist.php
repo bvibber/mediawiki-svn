@@ -122,6 +122,10 @@ function wfSpecialWatchlist( $par ) {
 	wfAppendToArrayIfNotDefault( 'hideMinor', (int)$hideMinor, $defaults, $nondefaults );
 	wfAppendToArrayIfNotDefault('namespace', $nameSpace    , $defaults, $nondefaults);
 
+	if( ! wfRunHooks('BeforeWatchlist', array($nondefaults, $wgUser)) ) {
+		return;
+	}
+
 	if ( $days <= 0 ) {
 		$andcutoff = '';
 	} else {

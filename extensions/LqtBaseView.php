@@ -21,7 +21,7 @@ function efVarDump($output, $value) {
 	var_dump($value);
 	$tmp=ob_get_contents();
 	ob_end_clean();
-	$output->addHTML('<pre>' . htmlspecialchars($tmp,ENT_QUOTES) . '</pre>');
+	$output->addHTML(/*'<pre>' . htmlspecialchars($tmp,ENT_QUOTES) . '</pre>'*/ $tmp);
 }
 
 
