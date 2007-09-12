@@ -29,8 +29,9 @@ $wgSiteMatrixMessages['bcl'] = array(
 	'sitematrix-others' => 'Ibang mga proyekto kan Wikimedia',
 );
 $wgSiteMatrixMessages['cs'] = array(
-	"sitematrix" => "Seznam wiki projektů nadace Wikimedia",
+	'sitematrix' => 'Seznam všech wiki nadace Wikimedia',
 );
+
 $wgSiteMatrixMessages['de'] = array(
 	"sitematrix"          => "Liste der Wikimedia-Wikis",
 	'sitematrix-language' => 'Sprache',

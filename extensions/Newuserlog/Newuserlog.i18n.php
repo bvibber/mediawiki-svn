@@ -31,7 +31,7 @@ $wgNewuserlogMessages['bcl'] = array(
 	'newuserlog-create-entry'  => 'Bâgong parágamit',
 );
 $wgNewuserlogMessages['cs'] = array(
-	'newuserlogpage'           => 'Kniha nových uživatelů',
+	'newuserlogpage'           => 'Kniha nových wikipedistů',
 	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',
 	'newuserlog-create-entry'  => 'Nově založený uživatel',
 	'newuserlog-create2-entry' => 'založil účet pro $1',
