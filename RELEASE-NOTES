@@ -31,7 +31,6 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 7027) Shift handling of deletion permissions-checking to
   getUserPermissionsErrors.
 * Login and signup forms are now more correct for right-to-left languages.
-* Fix inconsistent section edit link size for some browsers.
 * (bug 5387) Block log items on RecentChanges don't make use of possible
   translations
 * (bug 11211) Pass, as a parameter to the protectedpagetext interface
@@ -45,6 +44,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11266) Set fallback language for Fulfulde (ff) to French
 * (bug 11179) Include image version deletion comment in public log
 * (bug 11158) Fix escaping in API HTML-formatted JSON
+* Fixed notice when accessing special page without read permission and whitelist
+  is not defined
+* (bug 9252) Fix for tidy funkiness when using editintro mode
+* (bug 4021) Fix for MySQL wildcard search
+* (bug 10699) Fix for MySQL phrase search
 
 
 === API changes in 1.12 ===
@@ -64,13 +68,20 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Welsh (cy)
 * Danish (da)
 * German (de)
+* Lower Sorbian (dsb)
 * Persian (fa)
+* Võro (fiu-vro)
 * Frisian (fy)
 * French (fr)
+* Hebrew (he)
 * Upper Sorbian (hsb)
+* Icelandic (is)
 * Kazakh (kk)
+* Korean (ko)
 * Dutch (nl)
+* Russian (ru)
 * Slovak (sk)
+* Serbian (Cyrillic) (sr-ec)
 * Sakha (sah)
 * Zealandic (zea)
 
