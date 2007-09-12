@@ -224,6 +224,15 @@ lista negra de nomes de utilizadores]]. Por gentileza, escolha outro.',
 'sv' => array(
 'blacklistedusername' => 'Svartlistat användarnamn',
 'blacklistedusernametext' => 'Det användarnamn du vill använda är [[MediaWiki:Usernameblacklist|svartlistat]]. Välj ett annat namn.',
+'usernameblacklist' => '<pre>
+# Innehållet i den här listan används som del i ett reguljärt uttryck
+# för att förhindra användarnamn från att registreras.
+# Varje post i listan måste inledas med en asterisk (*), t.ex.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => 'Följande {{PLURAL:$1|rad|rader}} i listan är {{PLURAL:$1|ogiltig|ogiltiga}}; rätta {{PLURAL:$1|den|dem}} innan du sparar:',
 ),
 
 /* Cantonese (Shinjiman) */

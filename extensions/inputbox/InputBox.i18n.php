@@ -386,6 +386,8 @@ function efInputBoxMessages() {
 ),
 
 'sv' => array(
+	'inputbox-error-no-type'  => 'Du har inte angivit vilken typ av inputbox som ska skapas..',
+	'inputbox-error-bad-type' => '"$1" är inte en känd typ av inputbox. Giltiga typer är "create", "comment", "search" och "search2".',
 	'tryexact'       => 'Försök hitta exakt matchning',
 	'searchfulltext' => 'Fulltextsökning',
 	'createarticle'  => 'Skapa artikel',

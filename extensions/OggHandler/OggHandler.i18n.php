@@ -290,6 +290,37 @@ $messages = array(
 		'ogg-desc-link' => 'Over dit bestand',
 	),
 
+	'sv' => array(
+		'ogg-short-audio'      => 'Ogg $1 ljudfil, $2',
+		'ogg-short-video'      => 'Ogg $1 videofil, $2',
+		'ogg-short-general'    => 'Ogg $1 mediafil, $2',
+		'ogg-long-audio'       => '(Ogg $1 ljudfil, längd $2, $3)',
+		'ogg-long-video'       => '(Ogg $1 videofil, längd $2, $4×$5 pixel, $3)',
+		'ogg-long-multiplexed' => '(Ogg multiplexad ljud/video-fil, $1, längd $2, $4×$5 pixel, $3 totalt)',
+		'ogg-long-general'     => '(Ogg mediafil, längd $2, $3)',
+		'ogg-long-error'       => '(Felaktig ogg-fil: $1)',
+		'ogg-play'             => 'Spela upp',
+		'ogg-pause'            => 'Pausa',
+		'ogg-stop'             => 'Stoppa',
+		'ogg-play-video'       => 'Spela upp video',
+		'ogg-play-sound'       => 'Spela upp ljud',
+		'ogg-no-player'        => 'Tyvärr verkar det inte finnas någon mediaspelare som stöds installerad i ditt system. ' . 
+			'Det finns <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">spelare att ladda ner</a>.',
+		'ogg-no-xiphqt'        => 'Du verkar inte ha XiphQT-komponenten för QuickTime. Utan den kan inte QuickTime spela upp ogg-filer.' .
+			'Du kan <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ladda ner XiphQT</a> eller välja någon annan spelare.',
+			
+		'ogg-player-videoElement' => '<video>-element',
+		'ogg-player-oggPlugin' => 'Ogg-plugin',
+		'ogg-player-thumbnail' => 'Endast stillbilder',
+		'ogg-player-soundthumb' => 'Ingen spelare',
+		'ogg-player-selected'  => '(vald)',
+		'ogg-use-player'       => 'Välj mediaspelare: ',
+		'ogg-more'             => 'Alternativ...',
+		'ogg-dismiss'          => 'Stäng',
+		'ogg-download'         => 'Ladda ner filen',
+		'ogg-desc-link'        => 'Om filen',
+	),
+
 	'yue' => array(
 		'ogg-short-audio'      => 'Ogg $1 聲檔，$2',
 		'ogg-short-video'      => 'Ogg $1 畫檔，$2',

@@ -153,7 +153,10 @@ $wgSiteMatrixMessages['su'] = array(
 );
 
 $wgSiteMatrixMessages['sv'] = array(
-	"sitematrix" => "Lista över Wikimedias wikis",
+	"sitematrix"          => "Lista över Wikimedias wikis",
+	'sitematrix-language' => 'Språk',
+	'sitematrix-project'  => 'Projektnamn, interprojektlänk och interwiki-länk',
+	'sitematrix-others'   => 'Andra Wikimediaprojekt',
 );
 $wgSiteMatrixMessages['ur'] = array(
 	"sitematrix" => 'فہرست وکی میڈیا کے دیگر وکییوں کی',

@@ -54,6 +54,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Precedent ($1)',
 ),
 
+'sv' => array(
+	'backforth-next' => 'Nästa ($1)',
+	'backforth-prev' => 'Föregående ($1)',
+),
+
 'yue' => array(
 	'backforth-next' => '下一篇 ($1)',
 	'backforth-prev' => '上一篇 ($1)',
