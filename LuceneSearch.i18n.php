@@ -258,6 +258,11 @@ Pencarian terhadap $3 $9 $10",
 Masalah ini mungkin hanya sementara; silakan coba lagi dalam beberapa saat,
 atau gunakan layanan pencari eksternal:\n"
 );
+
+$wgLuceneSearchMessages['is'] = array(
+	'searchdidyoumean'      => 'Áttirðu við: "<a href="$1">$2</a>"?',
+);
+
 $wgLuceneSearchMessages['it'] = array(
 	'searchnumber'          => "<strong>Risultati da $1 a $2 su un totale di $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Precedente</span>",
@@ -276,6 +281,7 @@ Testo da ricercare $3 $9 $10",
 	Probabilmente si tratta di un errore temporaneo, destinato a risolversi in breve tempo. 
 	Nel frattempo, si consiglia di riprovare tra qualche istante o di utilizzare un motore di ricerca esterno:\n"
 );
+
 $wgLuceneSearchMessages['ja'] = array(
 	'searchnumber'          => '<strong>$3 件中 $1 - $2 件目</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>前へ</span>',
@@ -385,6 +391,21 @@ Ieškoma $3 $9 $10",
 	'lucenefallback'        => "Buvo problemų su projekto paieška.
 Tai turbūt laikina; pamėginkite šiek tiek vėliau,
 arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:\n"
+);
+$wgLuceneSearchMessages['nds'] = array(
+	'searchnumber'          => '<strong>Resultaten $1-$2 vun $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Vörig</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Tokamen</span> &#x00BB;',
+	'searchscore'           => 'Relevanz: $1',
+	'searchsize'            => '$1 KB ($2 Wöör)',
+	'searchdidyoumean'      => 'Hest du „<a href="$1">$2</a>“ meent?',
+	'searchnoresults'       => 'Deit uns leed, gifft nix, wat akraat to dien Söökanfraag passt.',
+	'searchnearmatches'     => '\'\'\'Disse Sieden hebbt Titels, de dien Söökanfraag ähnelt:\'\'\'',
+	'lucenepowersearchtext' => 'Söken in Naamrüüm: $1 Söök na $3 $9 $10',
+	'lucenefallback'        => 'Dat geev en Problem mit de Söök in dit Wiki. Dat is wohrschienlich blot för en Tiet; versöök dat later noch wedder oder söök mit en annere Söökmaschien in dat Wiki:',
+	'searchexactcase'       => 'nipp un nau op Lütt- un Grootschrieven achten',
+	'searchall'             => 'all',#identical but defined
+	'searchincategory'      => 'inKategorie',
 );
 $wgLuceneSearchMessages['nl'] = array(
 	'searchnumber'          => '<strong>Resultaten $1-$2 van de $3</strong>',
