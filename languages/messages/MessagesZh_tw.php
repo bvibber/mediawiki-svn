@@ -856,6 +856,7 @@ $2',
 'number_of_watching_users_pageview' => '[$1個關注用戶]',
 'rc_categories'                     => '分類界限(以"|"分割)',
 'rc_categories_any'                 => '任意',
+'newsectionsummary'                 => '/* $1 */ 新段落',
 
 # Recent changes linked
 'recentchangeslinked'          => '鏈出更改',
@@ -908,7 +909,7 @@ $2',
 上載檔案的檔名: <strong><tt>$1</tt></strong><br />
 現有檔案的檔名: <strong><tt>$2</tt></strong><br />
 請選擇一個不同的名字。',
-'fileexists-thumb'            => "'''<center>已經存在的圖像</center>'''",
+'fileexists-thumb'            => "<center>'''已經存在的圖像'''</center>",
 'fileexists-thumbnail-yes'    => '這個檔案好像是一幅圖像的縮圖版本<i>(縮圖)</i>。請檢查清楚該檔案<strong><tt>$1</tt></strong>。<br />
 如果檢查後的檔案是同原本圖像的大小是一樣的話，就不用再上載多一幅縮圖。',
 'file-thumbnail-no'           => '該檔名是以<strong><tt>$1</tt></strong>開始。它好像一幅圖像的縮圖版本<i>(縮圖)</i>。
@@ -1216,7 +1217,6 @@ $2',
 'iteminvalidname'      => "頁面'$1'錯誤，無效命名...",
 'wlnote'               => '以下是最近<b>$2</b>小時內的最後$1次修改。',
 'wlshowlast'           => '顯示最近$1小時；$2天；$3的修改。',
-'wlsaved'              => '您的監視列表如下：',
 'watchlist-show-bots'  => '顯示機器人的編輯',
 'watchlist-hide-bots'  => '隱藏機器人的編輯',
 'watchlist-show-own'   => '顯示我的修改',
@@ -1775,7 +1775,7 @@ $1',
 'patrol-log-diff' => 'r$1',
 
 # Image deletion
-'deletedrevision'                 => '已刪除舊版本$1。',
+'deletedrevision'                 => '已刪除舊版本$1',
 'filedeleteerror-short'           => '刪除檔案發生錯誤: $1',
 'filedeleteerror-long'            => '當刪除檔案時遇到錯誤:
 

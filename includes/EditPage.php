@@ -652,7 +652,7 @@ class EditPage {
 	 * @return bool false if output is done, true if the rest of the form should be displayed
 	 */
 	function attemptSave() {
-		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgOut;
+		global $wgSpamRegex, $wgFilterCallback, $wgUser, $wgOut, $wgParser;
 		global $wgMaxArticleSize;
 
 		$fname = 'EditPage::attemptSave';
@@ -881,7 +881,11 @@ class EditPage {
 //				return true;
 			}
 			if( $this->summary != '' ) {
-				$sectionanchor = $this->sectionAnchor( $this->summary );
+				$sectionanchor = $wgParser->guessSectionNameFromWikiText( $this->summary );
+				# This is a new section, so create a link to the new section
+				# in the revision summary.
+				$cleanSummary = $wgParser->stripSectionName( $this->summary );
+				$this->summary = wfMsgForContent( 'newsectionsummary', $cleanSummary );
 			}
 		} elseif( $this->section != '' ) {
 			# Try to get a section anchor from the section source, redirect to edited section if header found
@@ -891,7 +895,7 @@ class EditPage {
 			# we can't deal with anchors, includes, html etc in the header for now,
 			# headline would need to be parsed to improve this
 			if($hasmatch and strlen($matches[2]) > 0) {
-				$sectionanchor = $this->sectionAnchor( $matches[2] );
+				$sectionanchor = $wgParser->guessSectionNameFromWikiText( $matches[2] );
 			}
 		}
 		wfProfileOut( "$fname-sectionanchor" );
@@ -987,7 +991,10 @@ return self::AS_SUCCESS_UPDATE;
 							$this->textbox1,
 							$matches );
 						if( !empty( $matches[2] ) ) {
-							$this->summary = "/* ". trim($matches[2])." */ ";
+							global $wgParser;
+							$this->summary = "/* " . 
+								$wgParser->stripSectionName(trim($matches[2])) . 
+								" */ ";
 						}
 					}
 				}
@@ -1645,25 +1652,22 @@ END
 	}
 
 	/**
+	 * @deprecated use $wgParser->stripSectionName()
+	 */
+	function pseudoParseSectionAnchor( $text ) {
+		global $wgParser;
+		return $wgParser->stripSectionName( $text );
+	}
+
+	/**
 	 * Format an anchor fragment as it would appear for a given section name
 	 * @param string $text
 	 * @return string
 	 * @private
 	 */
 	function sectionAnchor( $text ) {
-		$headline = Sanitizer::decodeCharReferences( $text );
-		# strip out HTML
-		$headline = preg_replace( '/<.*?' . '>/', '', $headline );
-		$headline = trim( $headline );
-		$sectionanchor = '#' . urlencode( str_replace( ' ', '_', $headline ) );
-		$replacearray = array(
-			'%3A' => ':',
-			'%' => '.'
-		);
-		return str_replace(
-			array_keys( $replacearray ),
-			array_values( $replacearray ),
-			$sectionanchor );
+		global $wgParser;
+		return $wgParser->guessSectionNameFromWikiText( $text );
 	}
 
 	/**

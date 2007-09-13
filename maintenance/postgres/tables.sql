@@ -344,7 +344,6 @@ CREATE INDEX rc_namespace_title ON recentchanges (rc_namespace, rc_title);
 CREATE INDEX rc_cur_id          ON recentchanges (rc_cur_id);
 CREATE INDEX new_name_timestamp ON recentchanges (rc_new, rc_namespace, rc_timestamp);
 CREATE INDEX rc_ip              ON recentchanges (rc_ip);
-CREATE INDEX rc_patrolling      ON recentchanges (rc_this_oldid, rc_last_oldid, rc_patrolled);
 
 
 CREATE TABLE watchlist (
@@ -458,9 +457,9 @@ CREATE FUNCTION ts2_page_title() RETURNS TRIGGER LANGUAGE plpgsql AS
 $mw$
 BEGIN
 IF TG_OP = 'INSERT' THEN
-  NEW.titlevector = to_tsvector('default',NEW.page_title);
+  NEW.titlevector = to_tsvector('default',REPLACE(NEW.page_title,'/',' '));
 ELSIF NEW.page_title != OLD.page_title THEN
-  NEW.titlevector := to_tsvector('default',NEW.page_title);
+  NEW.titlevector := to_tsvector('default',REPLACE(NEW.page_title,'/',' '));
 END IF;
 RETURN NEW;
 END;

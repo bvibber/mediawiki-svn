@@ -852,7 +852,6 @@ function do_templatelinks_update() {
 
 // Add index on ( rc_namespace, rc_user_text ) [Jul. 2006]
 // Add index on ( rc_user_text, rc_timestamp ) [Nov. 2006]
-// Add index on ( rc_this_oldid, rc_last_oldid, rc_patrolled ) [Aug. 2007]
 function do_rc_indices_update() {
 	global $wgDatabase;
 	echo( "Checking for additional recent changes indices...\n" );
@@ -860,7 +859,6 @@ function do_rc_indices_update() {
 	$indexes = array(
 		'rc_ns_usertext' => 'patch-recentchanges-utindex.sql',
 		'rc_user_text' => 'patch-rc_user_text-index.sql',
-		'rc_patrolling' => 'patch-rc_patrol_index.sql',
 	);
 	
 	foreach( $indexes as $index => $patch ) {
@@ -1369,7 +1367,6 @@ function do_postgres_updates() {
 		array("archive",       "archive_user_text", "(ar_user_text)"),
 		array("image",         "img_sha1",          "(img_sha1)"),
 		array("oldimage",      "oi_sha1",           "(oi_sha1)"),
-		array("recentchanges", "rc_patrolling",     "(rc_this_oldid, rc_last_oldid, rc_patrolled)"),
 		array("revision",      "rev_text_id_idx",   "(rev_text_id)"),
 	);
 
@@ -1528,6 +1525,10 @@ function do_postgres_updates() {
 		}
 		dbsource($ni[2]);
 	}
+
+	# Tweak the page_title tsearch2 trigger to filter out slashes
+	# This is create or replace, so harmless to call if not needed
+	dbsource(archive("patch-ts2pagetitle.sql"));
 
 	return;
 }

@@ -883,6 +883,7 @@ $2',
 'number_of_watching_users_pageview' => '[$1个关注用户]',
 'rc_categories'                     => '分类界限(以"|"分割)',
 'rc_categories_any'                 => '任意',
+'newsectionsummary'                 => '/* $1 */ 新段落',
 
 # Recent changes linked
 'recentchangeslinked'          => '链出更改',
@@ -934,7 +935,7 @@ $2',
 上载文件的档名: <strong><tt>$1</tt></strong><br />
 现有文件的档名: <strong><tt>$2</tt></strong><br />
 请选择一个不同的名字。',
-'fileexists-thumb'            => "'''<center>已经存在的图像</center>'''",
+'fileexists-thumb'            => "<center>'''已经存在的图像'''</center>",
 'fileexists-thumbnail-yes'    => '这个文件好像是一幅图像的缩图版本<i>(缩图)</i>。请检查清楚该文件<strong><tt>$1</tt></strong>。<br />
 如果检查后的文件是同原本图像的大小是一样的话，就不用再上载多一幅缩图。',
 'file-thumbnail-no'           => '该档名是以<strong><tt>$1</tt></strong>开始。它好像一幅图像的缩图版本<i>(缩图)</i>。
@@ -1242,7 +1243,6 @@ $2',
 'iteminvalidname'      => "页面'$1'错误，无效命名...",
 'wlnote'               => "以下是最近'''$2'''小时内的最后'''$1'''次修改:",
 'wlshowlast'           => '显示最近$1小时 $2天 $3的修改',
-'wlsaved'              => '这是您的监视列表的一个保存版本。',
 'watchlist-show-bots'  => '显示机器人的编辑',
 'watchlist-hide-bots'  => '隐藏机器人的编辑',
 'watchlist-show-own'   => '显示我的编辑',
@@ -1802,7 +1802,7 @@ $1',
 'patrol-log-diff' => 'r$1',
 
 # Image deletion
-'deletedrevision'                 => '已删除旧版本$1。',
+'deletedrevision'                 => '已删除旧版本$1',
 'filedeleteerror-short'           => '删除文件发生错误: $1',
 'filedeleteerror-long'            => '当删除文件时遇到错误:
 

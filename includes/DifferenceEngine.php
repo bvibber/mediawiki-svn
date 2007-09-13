@@ -38,8 +38,9 @@ class DifferenceEngine {
 	 * @param $old Integer: old ID we want to show and diff with.
 	 * @param $new String: either 'prev' or 'next'.
 	 * @param $rcid Integer: ??? FIXME (default 0)
+	 * @param $refreshCache boolean If set, refreshes the diff cache
 	 */
-	function DifferenceEngine( $titleObj = null, $old = 0, $new = 0, $rcid = 0 ) {
+	function DifferenceEngine( $titleObj = null, $old = 0, $new = 0, $rcid = 0, $refreshCache = false ) {
 		$this->mTitle = $titleObj;
 		wfDebug("DifferenceEngine old '$old' new '$new' rcid '$rcid'\n");
 
@@ -68,6 +69,7 @@ class DifferenceEngine {
 			$this->mNewid = intval($new);
 		}
 		$this->mRcidMarkPatrolled = intval($rcid);  # force it to be an integer
+		$this->mRefreshCache = $refreshCache;
 	}
 
 	function showDiffPage( $diffOnly = false ) {
@@ -164,8 +166,12 @@ CONTROL;
 				$rcid = $this->mRcidMarkPatrolled;
 			} else {
 				// Look for an unpatrolled change corresponding to this diff
+				$db = wfGetDB( DB_SLAVE );
 				$change = RecentChange::newFromConds(
 					array(
+						// Add redundant timestamp condition so we can use the
+						// existing index
+						'rc_timestamp' => $db->timestamp( $this->mNewRev->getTimestamp() ),
 						'rc_this_oldid' => $this->mNewid,
 						'rc_last_oldid' => $this->mOldid,
 						'rc_patrolled' => 0,
@@ -215,14 +221,14 @@ CONTROL;
 			wfMsg( 'minoreditletter') ) . ' ';
 		}
 
-		$oldHeader = "<strong>{$this->mOldtitle}</strong><br />" .
-			$sk->revUserTools( $this->mOldRev ) . "<br />" .
-			$oldminor . $sk->revComment( $this->mOldRev, !$diffOnly ) . "<br />" .
-			$prevlink;
-		$newHeader = "<strong>{$this->mNewtitle}</strong><br />" .
-			$sk->revUserTools( $this->mNewRev ) . " $rollback<br />" .
-			$newminor . $sk->revComment( $this->mNewRev, !$diffOnly ) . "<br />" .
-			$nextlink . $patrol;
+		$oldHeader = '<div id="mw-diff-otitle1"><strong>' . $this->mOldtitle . '</strong></div>' .
+			'<div id="mw-diff-otitle2">' . $sk->revUserTools( $this->mOldRev ) . "</div>" .
+			'<div id="mw-diff-otitle3">' . $oldminor . $sk->revComment( $this->mOldRev, !$diffOnly ) . "</div>" .
+			'<div id="mw-diff-otitle4">' . $prevlink . '</div>';
+		$newHeader = '<div id="mw-diff-ntitle1"><strong>' .$this->mNewtitle . '</strong></div>' .
+			'<div id="mw-diff-ntitle2">' . $sk->revUserTools( $this->mNewRev ) . " $rollback</div>" .
+			'<div id="mw-diff-ntitle3">' . $newminor . $sk->revComment( $this->mNewRev, !$diffOnly ) . "</div>" .
+			'<div id="mw-diff-ntitle4">' . $nextlink . $patrol . '</div>';
 
 		$this->showDiff( $oldHeader, $newHeader );
 
@@ -321,8 +327,8 @@ CONTROL;
 	 * Returns false if the diff could not be generated, otherwise returns true
 	 */
 	function showDiff( $otitle, $ntitle ) {
-		global $wgOut, $wgRequest;
-		$diff = $this->getDiff( $otitle, $ntitle, $wgRequest->getVal( 'action' ) == 'purge' );
+		global $wgOut;
+		$diff = $this->getDiff( $otitle, $ntitle );
 		if ( $diff === false ) {
 			$wgOut->addWikitext( wfMsg( 'missingarticle', "<nowiki>(fixme, bug)</nowiki>" ) );
 			return false;
@@ -349,11 +355,10 @@ CONTROL;
 	 *
 	 * @param Title $otitle Old title
 	 * @param Title $ntitle New title
-	 * @param bool $skipCache Skip the diff cache for this request?
 	 * @return mixed
 	 */
-	function getDiff( $otitle, $ntitle, $skipCache = false ) {
-		$body = $this->getDiffBody( $skipCache );
+	function getDiff( $otitle, $ntitle ) {
+		$body = $this->getDiffBody();
 		if ( $body === false ) {
 			return false;
 		} else {
@@ -365,27 +370,28 @@ CONTROL;
 	/**
 	 * Get the diff table body, without header
 	 *
-	 * @param bool $skipCache Skip cache for this request?
 	 * @return mixed
 	 */
-	function getDiffBody( $skipCache = false ) {
+	function getDiffBody() {
 		global $wgMemc;
 		$fname = 'DifferenceEngine::getDiffBody';
 		wfProfileIn( $fname );
 		
 		// Cacheable?
 		$key = false;
-		if ( $this->mOldid && $this->mNewid && !$skipCache ) {
-			// Try cache
+		if ( $this->mOldid && $this->mNewid ) {
 			$key = wfMemcKey( 'diff', 'version', MW_DIFF_VERSION, 'oldid', $this->mOldid, 'newid', $this->mNewid );
-			$difftext = $wgMemc->get( $key );
-			if ( $difftext ) {
-				wfIncrStats( 'diff_cache_hit' );
-				$difftext = $this->localiseLineNumbers( $difftext );
-				$difftext .= "\n<!-- diff cache key $key -->\n";
-				wfProfileOut( $fname );
-				return $difftext;
-			}
+			// Try cache
+			if ( !$this->mRefreshCache ) {
+				$difftext = $wgMemc->get( $key );
+				if ( $difftext ) {
+					wfIncrStats( 'diff_cache_hit' );
+					$difftext = $this->localiseLineNumbers( $difftext );
+					$difftext .= "\n<!-- diff cache key $key -->\n";
+					wfProfileOut( $fname );
+					return $difftext;
+				}
+			} // don't try to load but save the result
 		}
 
 		#loadtext is permission safe, this just clears out the diff
@@ -1867,5 +1873,6 @@ class TableDiffFormatter extends DiffFormatter
 		wfProfileOut( $fname );
 	}
 }
+
 
 

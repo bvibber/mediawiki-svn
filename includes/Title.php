@@ -1043,7 +1043,7 @@ class Title {
 
 		global $wgEmailConfirmToEdit, $wgUser;
 
-		if ( $wgEmailConfirmToEdit && !$wgUser->isEmailConfirmed() )
+		if ( $wgEmailConfirmToEdit && !$user->isEmailConfirmed() )
 		{
 			$errors[] = array( 'confirmedittext' );
 		}
@@ -1067,7 +1067,7 @@ class Title {
 			$link = '[[' . $wgContLang->getNsText( NS_USER ) . ":{$name}|{$name}]]";
 			$blockid = $block->mId;
 			$blockExpiry = $user->mBlock->mExpiry;
-			$blockTimestamp = $wgLang->timeanddate( wfTimestamp( TS_MW, $wgUser->mBlock->mTimestamp ), true );
+			$blockTimestamp = $wgLang->timeanddate( wfTimestamp( TS_MW, $user->mBlock->mTimestamp ), true );
 
 			if ( $blockExpiry == 'infinity' ) {
 				// Entry in database (table ipblocks) is 'infinity' but 'ipboptions' uses 'infinite' or 'indefinite'
@@ -1135,7 +1135,7 @@ class Title {
 		# XXX: this might be better using restrictions
 		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssJsSubpage() from working
 		if( $this->isCssJsSubpage()
-			&& !$user->isAllowed('editinterface')
+			&& !$user->isAllowed('editusercssjs')
 			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) ) {
 			$errors[] = array('customcssjsprotected');
 		}
@@ -1169,7 +1169,7 @@ class Title {
 				$right = 'protect';
 			}
 			if( '' != $right && !$user->isAllowed( $right ) ) {
-				$errors[] = array( 'protectedpagetext' );
+				$errors[] = array( 'protectedpagetext', $right );
 			}
 		}
 
@@ -1278,19 +1278,26 @@ class Title {
 			if( $this->isSpecial( 'Userlogin' ) || $this->isSpecial( 'Resetpass' ) ) {
 				return true;
 			}
+
+			/**
+			 * Bail out if there isn't whitelist
+			 */
+			if( !is_array($wgWhitelistRead) ) {
+				return false;
+			}
 			
 			/**
 			 * Check for explicit whitelisting
 			 */
 			$name = $this->getPrefixedText();
-			if( $wgWhitelistRead && in_array( $name, $wgWhitelistRead, true ) )
+			if( in_array( $name, $wgWhitelistRead, true ) )
 				return true;
 			
 			/**
 			 * Old settings might have the title prefixed with
 			 * a colon for main-namespace pages
 			 */
-			if( $wgWhitelistRead && $this->getNamespace() == NS_MAIN ) {
+			if( $this->getNamespace() == NS_MAIN ) {
 				if( in_array( ':' . $name, $wgWhitelistRead ) )
 					return true;
 			}
@@ -1394,7 +1401,7 @@ class Title {
 	 */
 	public function userCanEditCssJsSubpage() {
 		global $wgUser;
-		return ( $wgUser->isAllowed('editinterface') or preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
+		return ( $wgUser->isAllowed('editusercssjs') or preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
 	}
 
 	/**
@@ -1916,7 +1923,14 @@ class Title {
 			$this->mNamespace != NS_MAIN ) {
 			return false;
 		}
-
+		// Allow IPv6 usernames to start with '::' by canonicalizing IPv6 titles.
+		// IP names are not allowed for accounts, and can only be referring to 
+		// edits from the IP. Given '::' abbreviations and caps/lowercaps, 
+		// there are numerous ways to present the same IP. Having sp:contribs scan 
+		// them all is silly and having some show the edits and others not is 
+		// inconsistent. Same for talk/userpages. Keep them normalized instead.
+		$dbkey = ($this->mNamespace == NS_USER || $this->mNamespace == NS_USER_TALK) ? 
+			IP::sanitizeIP( $dbkey ) : $dbkey;
 		// Any remaining initial :s are illegal.
 		if ( $dbkey !== '' && ':' == $dbkey{0} ) {
 			return false;

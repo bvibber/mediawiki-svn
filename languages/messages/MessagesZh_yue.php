@@ -960,6 +960,7 @@ $2',
 'number_of_watching_users_pageview' => '[$1位用戶監視]',
 'rc_categories'                     => '限定到分類（以"|"作分隔）',
 'rc_categories_any'                 => '任何',
+'newsectionsummary'                 => '/* $1 */ 新小節',
 
 # Recent changes linked
 'recentchangeslinked'          => '連結頁嘅更改',
@@ -1008,7 +1009,7 @@ $2',
 上載檔案嘅檔名: <strong><tt>$1</tt></strong><br />
 現有檔案嘅檔名: <strong><tt>$2</tt></strong><br />
 請揀一個唔同嘅名。',
-'fileexists-thumb'            => "'''<center>已經存在嘅圖像</center>'''",
+'fileexists-thumb'            => "<center>'''已經存在嘅圖像'''</center>",
 'fileexists-thumbnail-yes'    => '呢個檔案好似係一幅圖像縮細咗嘅版本<i>（縮圖）</i>。請檢查清楚個檔案<strong><tt>$1</tt></strong>。<br />
 如果檢查咗嘅檔案係同原本幅圖個大細係一樣嘅話，就唔使再上載多一幅縮圖。',
 'file-thumbnail-no'           => '個檔名係以<strong><tt>$1</tt></strong>開始。佢好似係一幅圖像嘅縮細版本<i>（縮圖）</i>。
@@ -1318,7 +1319,6 @@ $2',
 'iteminvalidname'      => "項目'$1'出錯，無效嘅名稱...",
 'wlnote'               => '以下係最近<b>$2</b>個鐘之內嘅最新$1次修改。',
 'wlshowlast'           => '顯示最近 $1 個鐘 $2 日 $3 嘅修改',
-'wlsaved'              => '呢個係你嘅監視清單入面儲存咗嘅版本。',
 'watchlist-show-bots'  => '顯示機械人嘅編輯',
 'watchlist-hide-bots'  => '隱藏機械人嘅編輯',
 'watchlist-show-own'   => '顯示我嘅編輯',
@@ -1879,7 +1879,7 @@ $1',
 'patrol-log-diff' => 'r$1',
 
 # Image deletion
-'deletedrevision'                 => '刪除咗$1嘅舊有修訂。',
+'deletedrevision'                 => '刪除咗$1嘅舊有修訂',
 'filedeleteerror-short'           => '刪除檔案出錯: $1',
 'filedeleteerror-long'            => '當刪除檔案嗰陣遇到錯誤:
 

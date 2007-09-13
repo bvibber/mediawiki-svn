@@ -58,10 +58,11 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		if ( is_null( $categoryTitle ) )
 			$this->dieUsage("Category name $category is not valid", 'param_category');
 		
-		$prop = array_flip($params['prop']);		
+		$prop = array_flip($params['prop']);
 		$fld_ids = isset($prop['ids']);
 		$fld_title = isset($prop['title']);
 		$fld_sortkey = isset($prop['sortkey']);
+		$fld_timestamp = isset($prop['timestamp']);
 
 		if (is_null($resultPageSet)) {
 			$this->addFields(array('cl_from', 'cl_sortkey', 'page_namespace', 'page_title'));
@@ -70,16 +71,26 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 			$this->addFields($resultPageSet->getPageTableFields()); // will include page_ id, ns, title
 			$this->addFields(array('cl_from', 'cl_sortkey'));
 		}
-		
+
+		$this->addFieldsIf('cl_timestamp', $fld_timestamp);
 		$this->addTables(array('page','categorylinks'));	// must be in this order for 'USE INDEX' 
-		$this->addOption('USE INDEX', 'cl_sortkey');		// Not needed after bug 10280 is applied to servers
+									// Not needed after bug 10280 is applied to servers
+		if($params['sort'] == 'timestamp')
+		{
+			$this->addOption('USE INDEX', 'cl_timestamp');
+			$this->addOption('ORDER BY', 'cl_to, cl_timestamp' . ($params['dir'] == 'desc' ? ' DESC' : ''));
+		}
+		else
+		{
+			$this->addOption('USE INDEX', 'cl_sortkey');
+			$this->addOption('ORDER BY', 'cl_to, cl_sortkey' . ($params['dir'] == 'desc' ? ' DESC' : '') . ', cl_from');
+		}
 
 		$this->addWhere('cl_from=page_id');
 		$this->setContinuation($params['continue']);		
 		$this->addWhereFld('cl_to', $categoryTitle->getDBkey());
 		$this->addWhereFld('page_namespace', $params['namespace']);
-		$this->addOption('ORDER BY', "cl_to, cl_sortkey, cl_from");
-
+		
 		$limit = $params['limit'];
 		$this->addOption('LIMIT', $limit +1);
 
@@ -110,6 +121,8 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 				}
 				if ($fld_sortkey)
 					$vals['sortkey'] = $row->cl_sortkey;
+				if ($fld_timestamp)
+					$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->cl_timestamp);
 				$data[] = $vals;
 			} else {
 				$resultPageSet->processDbRow($row);
@@ -148,13 +161,14 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 		if ($hasError)
 			$this->dieUsage("Invalid continue param. You should pass the original value returned by the previous query", "badcontinue");
 
-		$sortKey = $this->getDB()->addQuotes($continueList[0]);
+		$encSortKey = $this->getDB()->addQuotes($continueList[0]);
+		$encFrom = $this->getDB()->addQuotes($from);
 
 		if ($from != 0) {
 			// Duplicate sort key continue
-			$this->addWhere( "cl_sortkey>$sortKey OR (cl_sortkey=$sortKey AND cl_from>=$from)" );						
+			$this->addWhere( "cl_sortkey>$encSortKey OR (cl_sortkey=$encSortKey AND cl_from>=$encFrom)" );
 		} else {
-			$this->addWhere( "cl_sortkey>=$sortKey" );						
+			$this->addWhere( "cl_sortkey>=$encSortKey" );
 		}
 	}
 
@@ -163,15 +177,16 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 			'category' => null,
 			'prop' => array (
 				ApiBase :: PARAM_DFLT => 'ids|title',
-				ApiBase :: PARAM_ISMULTI => true,				
+				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => array (
 					'ids',
 					'title',
 					'sortkey',
+					'timestamp',
 				)
 			),
 			'namespace' => array (
-				ApiBase :: PARAM_ISMULTI => true,			
+				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_TYPE => 'namespace',
 			),
 			'continue' => null,
@@ -182,6 +197,20 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
 				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
+			'sort' => array(
+				ApiBase :: PARAM_DFLT => 'sortkey',
+				ApiBase :: PARAM_TYPE => array(
+					'sortkey',
+					'timestamp'
+				)
+			),
+			'dir' => array(
+				ApiBase :: PARAM_DFLT => 'asc',
+				ApiBase :: PARAM_TYPE => array(
+					'asc',
+					'desc'
+				)
+			)
 		);
 	}
 
@@ -190,6 +219,8 @@ class ApiQueryCategoryMembers extends ApiQueryGeneratorBase {
 			'category' => 'Which category to enumerate (required)',
 			'prop' => 'What pieces of information to include',
 			'namespace' => 'Only include pages in these namespaces',
+			'sort' => 'Property to sort by',
+			'dir' => 'In which direction to sort',
 			'continue' => 'For large categories, give the value retured from previous query',
 			'limit' => 'The maximum number of pages to return.',
 		);

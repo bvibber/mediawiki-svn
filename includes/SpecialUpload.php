@@ -556,16 +556,22 @@ class UploadForm {
 		// Check for uppercase extension. We allow these filenames but check if an image
 		// with lowercase extension exists already
 		$warning = '';
-		$ext = $file->getExtension();
-		$sk = $wgUser->getSkin();
-		if ( $ext !== '' ) {
-			$partname = substr( $file->getName(), 0, -strlen( $ext ) - 1 );
-		} else {
+		
+		if( strpos( $file->getName(), '.' ) == false ) {
 			$partname = $file->getName();
+			$rawExtension = '';
+		} else {
+			list( $partname, $rawExtension ) = explode( '.', $file->getName(), 2 );
 		}
+		$sk = $wgUser->getSkin();
 
-		if ( $ext != strtolower( $ext ) ) {
-			$nt_lc = Title::newFromText( $partname . '.' . strtolower( $ext ) );
+		if ( $rawExtension != $file->getExtension() ) {
+			// We're not using the normalized form of the extension.
+			// Normal form is lowercase, using most common of alternate
+			// extensions (eg 'jpg' rather than 'JPEG').
+			//
+			// Check for another file using the normalized form...
+			$nt_lc = Title::newFromText( $partname . '.' . $file->getExtension() );
 			$file_lc = wfLocalFile( $nt_lc );
 		} else {
 			$file_lc = false;
@@ -601,14 +607,13 @@ class UploadForm {
 				$dlink2 = '';
 			}
 
-			$warning .= '<li>' . wfMsgExt( 'fileexists-extension', 'parsemag' , $partname . '.' 
-				. $ext , $dlink ) . '</li>' . $dlink2;				
+			$warning .= '<li>' . wfMsgExt( 'fileexists-extension', 'parsemag', $file->getName(), $dlink ) . '</li>' . $dlink2;				
 
 		} elseif ( ( substr( $partname , 3, 3 ) == 'px-' || substr( $partname , 2, 3 ) == 'px-' ) 
 			&& ereg( "[0-9]{2}" , substr( $partname , 0, 2) ) )
 		{
 			# Check for filenames like 50px- or 180px-, these are mostly thumbnails
-			$nt_thb = Title::newFromText( substr( $partname , strpos( $partname , '-' ) +1 ) . '.' . $ext );
+			$nt_thb = Title::newFromText( substr( $partname , strpos( $partname , '-' ) +1 ) . '.' . $rawExtension );
 			$file_thb = wfLocalFile( $nt_thb );
 			if ($file_thb->exists() ) {
 				# Check if an image without leading '180px-' (or similiar) exists
@@ -634,6 +639,16 @@ class UploadForm {
 					substr( $partname , 0, strpos( $partname , '-' ) +1 ) ) . '</li>';
 			}
 		}
+
+		$filenamePrefixBlacklist = self::getFilenamePrefixBlacklist();
+		# Do the match
+		foreach( $filenamePrefixBlacklist as $prefix ) {
+			if ( substr( $partname, 0, strlen( $prefix ) ) == $prefix ) {
+				$warning .= '<li>' . wfMsgExt( 'filename-bad-prefix', 'parseinline', $prefix ) . '</li>';
+				break;
+			}
+		}
+
 		if ( $file->wasDeleted() ) {
 			# If the file existed before and was deleted, warn the user of this
 			# Don't bother doing so if the image exists now, however
@@ -646,8 +661,19 @@ class UploadForm {
 		return $warning;
 	}
 
+	/**
+	 * Get a list of warnings
+	 *
+	 * @param string local filename, e.g. 'file exists', 'non-descriptive filename'
+	 * @return array list of warning messages
+	 */
 	static function ajaxGetExistsWarning( $filename ) {
 		$file = wfFindFile( $filename );
+		if( !$file ) {
+			// Force local file so we have an object to do further checks against
+			// if there isn't an exact match...
+			$file = wfLocalFile( $filename );
+		}
 		$s = '&nbsp;';
 		if ( $file ) {
 			$warning = self::getExistsWarning( $file );
@@ -675,6 +701,33 @@ class UploadForm {
 		$output = $wgParser->parse( $text, $title, $options );
 		
 		return $output->getText();
+	}
+
+	/**
+	 * Get a list of blacklisted filename prefixes from [[MediaWiki:filename-prefix-blacklist]]
+	 *
+	 * @return array list of prefixes
+	 */
+	public static function getFilenamePrefixBlacklist() {
+		$blacklist = array();
+		$message = wfMsgForContent( 'filename-prefix-blacklist' );
+		if( $message && !( wfEmptyMsg( 'filename-prefix-blacklist', $message ) || $message == '-' ) ) {
+			$lines = explode( "\n", $message );
+			foreach( $lines as $line ) {
+				// Remove comment lines
+				$comment = substr( trim( $line ), 0, 1 );
+				if ( $comment == '#' || $comment == '' ) {
+					continue;
+				}
+				// Remove additional comments after a prefix
+				$comment = strpos( $line, '#' );
+				if ( $comment > 0 ) {
+					$line = substr( $line, 0, $comment-1 );
+				}
+				$blacklist[] = trim( $line );
+			}
+		}
+		return $blacklist;
 	}
 
 	/**

@@ -721,8 +721,7 @@ denne side er vist nedenfor:",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Brugerkontoen kan ikke oprettes.',
-'cantcreateaccounttext'  => 'Oprettelsen af en brugerkonto fra IP-adressen <b>$1</b> er spærret.
-Det er formentligt sket pga. gentagen vandalisme fra brugere på uddannelsesstedet eller andre brugere under Internet-udbyderen.',
+'cantcreateaccount-text' => "Oprettelsen af en brugerkonto fra IP-adressen <b>$1</b> er spærret af [[User:$3|$3]]. Årsagen til blokeringen er angivet som ''$2''",
 
 # History pages
 'revhistory'          => 'Versionshistorik',
@@ -965,9 +964,11 @@ Grupper som ikke er valgt, vil ikke blive ændret. Du kan ophæve valget af en g
 'rc_categories'                     => 'Kun sider fra kategorierne (adskilt med „|“):',
 'rc_categories_any'                 => 'Alle',
 'rc-change-size'                    => '$1 {{PLURAL:$1|Byte|Bytes}}',
+'newsectionsummary'                 => '/* $1 */ nyt afsnit',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Relaterede ændringer',
+'recentchangeslinked-title'    => 'Ændringer der relaterer til $1',
 'recentchangeslinked-noresult' => 'I det udvalgte tidsrum blev der ikke foretaget ændringer på siderne der henvises til.',
 'recentchangeslinked-summary'  => "Denne specialside viser de seneste ændringer på de sider der henvises til. Sider på din overvågningsliste er vist med '''fed''' skrift.",
 
@@ -1043,6 +1044,7 @@ Kontroller om du har billedet i fuld størrelse og upload det under det original
 'destfilename'                => 'Målnavn',
 'watchthisupload'             => 'Overvåge denne side',
 'filewasdeleted'              => 'En fil med dette navn er tidligere uploadet og i mellemtiden slettet igen. Kontroller først indførslen i $1, før du gemmer filen.',
+'filename-bad-prefix'         => 'Navnet på filen du er ved at lægge op begynder med <strong>"$1"</strong>. Dette er et ikkebeskrivende navn, der typisk er skabt automatisk af et digitalkamera. Vær venlig at vælge et mere beskrivende navn på dit billede.',
 
 'upload-proto-error'      => 'Forkert protokol',
 'upload-proto-error-text' => 'Adressen skal begynde med <code>http://</code> eller <code>ftp://</code>.',
@@ -1543,6 +1545,7 @@ I [[Special:Log/delete|slette-loggen]] findes en oversigt over de nyligt sletted
 
 # What links here
 'whatlinkshere'         => 'Hvad henviser hertil',
+'whatlinkshere-title'   => 'Sider der henviser til $1',
 'whatlinkshere-summary' => 'Denne specialside viser alle interne henvisninger til en bestemt side. De mulige tilføjelser „(skabelonmedtagning)“ og „(omdirigeringsside)“ viser, at siden ikke er henvist med et normalt Wikilink. ',
 'notargettitle'         => 'Sideangivelse mangler',
 'notargettext'          => 'Du har ikke angivet en side eller bruger at udføre denne funktion på.',
@@ -1886,7 +1889,7 @@ Alle Transwiki import-aktioner protokolleres i [[Special:Log/import|import-logge
 'patrol-log-diff' => 'Version $1',
 
 # Image deletion
-'deletedrevision' => 'Slettede gammel version $1.',
+'deletedrevision' => 'Slettede gammel version $1',
 'filedeleteerror-short' => "Fejl under sletning af fil: $1",
 'filedeleteerror-long' => "Der opstod en fejl under sletningen af filen:\n\n$1\n",
 'filedelete-missing' => 'Filen "$1" kan ikke slettes fordi den ikke findes.',

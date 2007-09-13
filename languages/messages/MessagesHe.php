@@ -776,7 +776,7 @@ $2',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'לא ניתן ליצור את החשבון',
-'cantcreateaccounttext'  => 'אפשרות יצירת החשבונות מכתובת ה־IP הזו (<b>$1</b>) נחסמה, כנראה עקב השחתות מתמשכות מבית־הספר או ספק האינטרנט שלך.',
+'cantcreateaccount-text' => 'אפשרות יצירת החשבונות מכתובת ה־IP הזו (<b>$1</b>) נחסמה על־ידי [[User:$3|$3]]. הסיבה שניתנה על־ידי $3 היא "$2".',
 
 # History pages
 'revhistory'          => 'היסטוריית שינויים',
@@ -863,7 +863,7 @@ $2',
 'selectolderversionfordiff' => 'בחר גרסה ישנה יותר להשוואה',
 'compareselectedversions'   => 'השווה את הגרסאות שנבחרו',
 'editundo'                  => 'ביטול',
-'diff-multi'                => '({{plural:$1|גרסה אמצעית אחת לא מוצגת|$1 גרסאות אמצעיות לא מוצגות}}.)',
+'diff-multi'                => '({{plural:$1|גרסת ביניים אחת אינה מוצגת|$1 גרסאות ביניים אינן מוצגות}}.)',
 
 # Search results
 'searchresults'         => 'תוצאות החיפוש',
@@ -1013,6 +1013,7 @@ $2',
 'number_of_watching_users_pageview' => '[$1 משתמש/ים צופים]',
 'rc_categories'                     => 'הגבל לקטגוריות (הפרד עם "|")',
 'rc_categories_any'                 => 'הכול',
+'newsectionsummary'                 => '/* $1 */ פסקה חדשה',
 
 # Recent changes linked
 'recentchangeslinked'          => 'שינויים בדפים המקושרים',
@@ -1081,6 +1082,7 @@ $2',
 'destfilename'                => 'שמור קובץ בשם',
 'watchthisupload'             => 'מעקב אחרי דף זה',
 'filewasdeleted'              => 'קובץ בשם זה כבר הועלה בעבר, ולאחר מכן נמחק. אנא בדקו את הדף $1 לפני שתמשיכו להעלותו שנית.',
+'filename-bad-prefix'         => 'שם הקובץ שאתם מעלים מתחיל עם <strong>"$1"</strong>, שהוא שם שאינו מתאר את הקובץ ובדרך כלל מוכנס אוטומטית על־ידי מצלמות דיגיטליות. אנא בחרו שם מתאים יותר לקובץ, שיתאר את תכניו.',
 
 'upload-proto-error'      => 'פרוטוקול שגוי',
 'upload-proto-error-text' => 'בהעלאה מרוחקת, יש להשתמש בכתובות URL המתחילות עם <code>http://</code> או <code>ftp://</code>.',
@@ -1921,7 +1923,7 @@ $1
 'patrol-log-diff' => 'גרסה $1',
 
 # Image deletion
-'deletedrevision'                 => 'מחק גרסה ישנה $1.',
+'deletedrevision'                 => 'מחק גרסה ישנה $1',
 'filedeleteerror-short'           => 'שגיאה במחיקת הקובץ: $1',
 'filedeleteerror-long'            => 'שגיאות שאירעו בעת מחיקת הקובץ:
 

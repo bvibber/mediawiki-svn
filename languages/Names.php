@@ -16,6 +16,7 @@
 	'ang' => 'Anglo Saxon',	# Old English
 	'ar' => 'العربية',	# Arabic
 	'arc' => 'ܐܪܡܝܐ',	# Aramaic
+	'arn' => 'Mapudungun',	# Mapuche, Mapudungu, Araucanian (Araucano)
 	'as' => 'অসমীয়া',	# Assamese
 	'ast' => 'Asturianu',	# Asturian
 	'av' => 'Авар',	# Avar
@@ -62,6 +63,7 @@
 	'de' => 'Deutsch',		# German
 	'diq' => 'Zazaki',		# Zazaki
 	'dk' => 'Dansk', 		# Unused code currently redirecting to Danish, 'da' is correct for the language
+	'dsb' => 'Dolnoserbski', # Lower Sorbian
 	'dv' => 'ދިވެހިބަސް',		# Dhivehi
 	'dz' => 'ཇོང་ཁ',		# Bhutani
 	'ee' => 'Eʋegbe',	# Ewe
@@ -80,6 +82,7 @@
 	'fj' => 'Na Vosa Vakaviti',	# Fijian
 	'fo' => 'Føroyskt',	# Faroese
 	'fr' => 'Français',	# French
+	'frc' => 'Français cadien', # Cajun French
 	'frp' => 'Arpetan',	# Franco-Provençal/Arpitan
 	'fur' => 'Furlan',		# Friulian
 	'fy' => 'Frysk',		# Frisian
@@ -134,6 +137,7 @@
 	'kn' => 'ಕನ್ನಡ',	# Kannada
 	'ko' => '한국어',	# Korean
 	'kr' => 'Kanuri',		# Kanuri (FIXME!)
+	'krj' => 'Kinaray-a', # Kinaray-a
 	'ks' => 'कश्मीरी - (كشميري)',	# Kashmiri
 	'ksh' => 'Ripoarisch', 	# Ripuarian 
 	'ku'  => 'Kurdî / كوردی',	# Kurdish

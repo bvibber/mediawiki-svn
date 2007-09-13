@@ -530,7 +530,7 @@ $wgMessageStructure = array(
 	),
 	'cantcreateaccount' => array(
 		'cantcreateaccounttitle',
-		'cantcreateaccounttext',
+		'cantcreateaccount-text',
 	),
 	'history' => array(
 		'revhistory',
@@ -765,6 +765,7 @@ $wgMessageStructure = array(
 		'rc_categories',
 		'rc_categories_any',
 		'rc-change-size',
+		'newsectionsummary',
 	),
 	'recentchangeslinked' => array(
 		'recentchangeslinked',
@@ -823,6 +824,8 @@ $wgMessageStructure = array(
 		'destfilename',
 		'watchthisupload',
 		'filewasdeleted',
+		'filename-bad-prefix',
+		'filename-prefix-blacklist',
 	),
 	'upload-errors' => array(
 		'upload-proto-error',

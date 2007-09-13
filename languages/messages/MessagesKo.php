@@ -347,6 +347,8 @@ $messages = array(
 'cascadeprotected'     => '다음의 문서에서 이 문서를 사용하고 있고 그 문서에 연쇄적 보호 설정이 걸려 있어, 이 문서도 편집에서 보호됩니다:
 $2',
 'namespaceprotected'   => "'''$1''' 네임스페이스를 편집할 수 있는 권한이 없습니다.",
+'customcssjsprotected' => '이 문서는 다른 사용자의 개인 설정을 담고 있기 때문에, 편집할 권한이 없습니다.',
+'ns-specialprotected'  => '{{ns:special}} 네임스페이스의 문서는 편집할 수 없습니다.',
 
 # Login and logout pages
 'logouttitle'                => '로그아웃',
@@ -367,7 +369,7 @@ $2',
 'userlogin'                  => '로그인 / 계정 만들기',
 'logout'                     => '로그아웃',
 'userlogout'                 => '로그아웃',
-'notloggedin'                => '로그인하지 않음',
+'notloggedin'                => '로그인하고 있지 않음',
 'nologin'                    => '계정이 없나요? $1.',
 'nologinlink'                => '계정을 만들 수 있습니다',
 'createaccount'              => '계정 만들기',
@@ -549,13 +551,16 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'edittools'                 => '<!-- 이 문서는 편집 창과 파일 올리기 창에 출력됩니다. -->',
 'nocreatetitle'             => '문서 생성 제한',
 'nocreatetext'              => '이 사이트에서는 새로운 문서를 생성하는 것에 제한을 두고 있습니다. 이미 존재하는 문서를 편집하거나, [[Special:Userlogin|로그인하거나 계정을 만들 수 있습니다]].',
+'nocreate-loggedin'         => '새 문서를 만들 권한이 없습니다.',
+'permissionserrors'         => '권한 오류',
+'permissionserrorstext'     => '해당 명령을 수행할 권한이 없습니다. 다음의 이유를 확인해보세요:',
 
 # "Undo" feature
+'undo-failure' => '중간의 다른 편집과 충돌하여 이 편집을 되돌릴 수 없습니다.',
 'undo-summary' => '[[Special:Contributions/$2|$2]]([[User talk:$2|토론]])의 $1판 편집을 되돌림',
 
 # Account creation failure
 'cantcreateaccounttitle' => '계정을 만들 수 없음',
-'cantcreateaccounttext'  => "이 IP 주소('''$1''')에서 계정을 만드는 것이 금지되어 있습니다. 학교나 인터넷 서비스 공급자를 통한 반달행위로 인한 것일 수도 있습니다.",
 
 # History pages
 'revhistory'          => '문서 역사',
@@ -586,6 +591,9 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 # Revision feed
 'history-feed-title'       => '편집 역사',
 'history-feed-description' => '이 문서의 편집 역사',
+'history-feed-empty'       => '요청한 문서가 존재하지 않습니다.
+해당 문서가 삭제되었거나, 문서 이름이 바뀌었을 수 있습니다.
+[[Special:Search|위키 검색 기능]]을 이용해 관련 문서를 찾아보세요.',
 
 # Revision deletion
 'rev-delundel'   => '보이기/숨기기',
@@ -607,9 +615,6 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'searchresulttext'      => '{{SITENAME}} 찾기 기능에 대한 자세한 정보는 [[Project:찾기|{{SITENAME}} 찾기]]를 보세요.',
 'searchsubtitle'        => "열쇠말 '''[[:$1]]'''",
 'searchsubtitleinvalid' => "열쇠말 '$1'",
-'badquery'              => '잘못된 질의 구문',
-'badquerytext'          => '당신의 질의 구문을 실행하지 못했습니다. 3글자보다 짧은 문자열 검색은 지원하지 않습니다. 입력한 문장에 오타가 없는지도 확인해 주시기 바랍니다. 다른 문장을 입력해주세요.',
-'matchtotals'           => '열쇠말 ‘$1’이 문서 제목 $2개, 문서 내용 $3개에 들어있습니다.',
 'noexactmatch'          => "'''$1 문서가 없습니다.''' 문서를 [[:$1|만들 수]] 있습니다.",
 'titlematches'          => '문서 제목 일치',
 'notitlematches'        => '해당하는 제목 없음',
@@ -624,11 +629,11 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'powersearch'           => '찾기',
 'powersearchtext'       => '다음의 네임스페이스에서 찾기:<br />$1<br />$2 넘겨주기 표시<br />$3를 $9',
 'searchdisabled'        => '{{SITENAME}} 검색 기능이 비활성화되어 있습니다. 기능이 작동하지 않는 동안에는 Google을 이용해 검색할 수 있습니다. 검색 엔진의 내용은 최근 것이 아닐 수 있다는 점을 주의해주세요.',
-'blanknamespace'        => '(일반)',
 
 # Preferences page
 'preferences'              => '사용자 환경 설정',
 'mypreferences'            => '사용자 환경 설정',
+'prefs-edits'              => '편집 횟수:',
 'prefsnologin'             => '로그인하지 않음',
 'prefsnologintext'         => '사용자 환경 설정을 바꾸려면 먼저 [[Special:Userlogin|로그인]]해야 합니다.',
 'prefsreset'               => '사용자 환경 설정을 기본값으로 되돌렸습니다.',
@@ -647,6 +652,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'math_failure'             => '해석 실패',
 'math_unknown_error'       => '알 수 없는 오류',
 'math_unknown_function'    => '알 수 없는 함수',
+'math_lexing_error'        => '어휘 오류',
 'math_syntax_error'        => '구문 오류',
 'math_image_error'         => 'PNG 변환 실패 - latex, dvips, gs가 올바르게 설치되어 있는지 확인해 주세요.',
 'math_bad_tmpdir'          => '수식을 임시 폴더에 저장하거나 폴더를 만들 수 없습니다.',
@@ -670,6 +676,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'resultsperpage'           => '쪽마다 보이는 결과 수:',
 'contextlines'             => '결과마다 보이는 줄 수:',
 'contextchars'             => '각 줄에 보이는 글 수:',
+'stub-threshold'           => '<a href="#" class="stub">토막글 링크</a>를 표시할 임계값:',
 'recentchangesdays'        => '최근 바뀜에 표시할 날짜 수:',
 'recentchangescount'       => '최근 바뀜에 표시할 항목 수:',
 'savedprefs'               => '설정을 저장했습니다.',
@@ -716,6 +723,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'rightsnone'     => '(없음)',
 
 # Recent changes
+'nchanges'                          => '$1개 바뀜',
 'recentchanges'                     => '최근 바뀜',
 'recentchangestext'                 => '위키의 최근 바뀜 내역이 나와 있습니다.',
 'rcnote'                            => '다음은 $3까지 <strong>$2</strong>일간 바뀐 <strong>$1</strong>개의 문서입니다.',
@@ -737,6 +745,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'number_of_watching_users_pageview' => '[$1 명이 주시하고 있음]',
 'rc_categories'                     => '다음 분류로 제한 (‘|’로 구분)',
 'rc_categories_any'                 => '모두',
+'newsectionsummary'                 => '새 주제: /* $1 */',
 
 # Recent changes linked
 'recentchangeslinked' => '가리키는 글의 바뀜',
@@ -767,6 +776,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'minlength1'                  => '파일 이름은 적어도 1글자 이상이어야 합니다.',
 'illegalfilename'             => '파일명 "$1"에는 문서 제목으로 허용되지 않는 글자가 포함되어 있습니다. 이름을 바꾸어 다시 시도해 주세요.',
 'badfilename'                 => '파일 이름이 ‘$1’(으)로 바뀌었습니다.',
+'filetype-badmime'            => '‘$1’ MIME을 가진 파일은 올릴 수 없습니다.',
 'filetype-badtype'            => "'''.$1'''은 허용되지 않은 파일 확장자입니다.
 :가능한 파일 확장자 목록: $2",
 'filetype-missing'            => "파일의 확장자('.jpg' 등)가 없습니다.",
@@ -784,7 +794,8 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'successfulupload'            => '올리기 성공',
 'uploadwarning'               => '올리기 경고',
 'savefile'                    => '파일 저장',
-'uploadedimage'               => '"[[$1]]"을(를) 올렸습니다.',
+'uploadedimage'               => '‘[[$1]]’을(를) 올렸습니다.',
+'overwroteimage'              => '‘[[$1]]’ 파일의 새 버전을 올렸습니다.',
 'uploaddisabled'              => '올리기 비활성화됨',
 'uploaddisabledtext'          => '이 위키에서는 파일 올리기 기능이 비활성화되어 있습니다.',
 'uploadscripted'              => '이 파일에는 HTML이나 다른 스크립트 코드가 포함되어 있어, 웹 브라우저에서 오류를 일으킬 수 있습니다.',
@@ -821,6 +832,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'imgdelete'                 => '삭제',
 'imgdesc'                   => '설명',
 'imgfile'                   => '파일',
+'filehist'                  => '파일 역사',
 'imagelinks'                => '그림 링크',
 'linkstoimage'              => '다음 문서들이 이 그림을 사용하고 있습니다:',
 'nolinkstoimage'            => '이 그림을 사용하는 문서가 없습니다.',
@@ -853,7 +865,8 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'unusedtemplateswlh'  => '다른 링크',
 
 # Random redirect
-'randomredirect' => '임의 넘겨주기 문서로',
+'randomredirect'         => '임의 넘겨주기 문서로',
+'randomredirect-nopages' => '이 네임스페이스에서 해당하는 넘겨주기 문서가 없습니다.',
 
 # Statistics
 'statistics'             => '통계',
@@ -866,7 +879,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 위키가 설치된 후 문서는 전체 '''\$3'''번 읽혔고, '''\$4'''번 편집되었습니다. 문서당 평균 편집 횟수는 '''\$5'''번이고, 한번 편집할 때마다 평균 '''\$6'''번 문서를 보았습니다.
 
 [http://meta.wikimedia.org/wiki/Help:Job_queue job queue]의 길이는 '''\$7'''입니다.",
-'userstatstext'          => "'''$1'''명의 사용자가 등록되어 있고, 이 중 $5 수는 '''$2'''명('''$4%''')입니다. ($3 참조)",
+'userstatstext'          => "'''$1'''명의 [[Special:Listusers|사용자]]가 등록되어 있고, 이 중 $5 권한을 가진 사용자 수는 '''$2'''명('''$4%''')입니다.",
 'statistics-mostpopular' => '가장 많이 읽힌 문서',
 
 'disambiguations'      => '동음이의 문서 목록',
@@ -881,7 +894,8 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'brokenredirects-edit'   => '(편집)',
 'brokenredirects-delete' => '(삭제)',
 
-'withoutinterwiki' => '언어 인터위키 링크가 없는 문서 목록',
+'withoutinterwiki'        => '언어 인터위키 링크가 없는 문서 목록',
+'withoutinterwiki-header' => '다른 언어로의 연결이 없는 문서의 목록입니다:',
 
 'fewestrevisions' => '편집 역사가 짧은 문서 목록',
 
@@ -889,7 +903,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'nbytes'                  => '$1 바이트',
 'ncategories'             => '$1개의 분류',
 'nlinks'                  => '$1개의 링크',
-'nmembers'                => '$1명의 사용자',
+'nmembers'                => '$1개의 항목',
 'nrevisions'              => '$1개의 판',
 'nviews'                  => '$1번 읽음',
 'specialpage-empty'       => '명령에 대한 결과가 없습니다.',
@@ -912,6 +926,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'allpages'                => '모든 문서 목록',
 'prefixindex'             => '접두어 목록',
 'randompage'              => '임의 문서로',
+'randompage-nopages'      => '이 네임스페이스에는 문서가 없습니다.',
 'shortpages'              => '짧은 문서 목록',
 'longpages'               => '긴 문서 목록',
 'deadendpages'            => '막다른 문서 목록',
@@ -950,6 +965,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'specialloguserlabel'  => '이름:',
 'speciallogtitlelabel' => '제목:',
 'log'                  => '로그 목록',
+'all-logs-page'        => '모든 기록',
 'alllogstext'          => '파일 올리기, 문서 삭제, 보호, 사용자 차단, 관리자 기록이 모두 나와 있습니다. 원하는 기록을 선택해서 볼 수 있습니다.',
 'logempty'             => '일치하는 항목이 없습니다.',
 
@@ -965,9 +981,12 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'allpagessubmit'    => '표시',
 'allpagesprefix'    => '다음 접두어로 시작하는 문서 목록:',
 'allpagesbadtitle'  => '문서 제목이 잘못되었거나 다른 사이트로 연결되는 인터위키를 가지고 있습니다. 문서 제목에 사용할 수 없는 문자를 사용했을 수 있습니다.',
+'allpages-bad-ns'   => '{{SITENAME}}에는 ‘$1’ 네임스페이스를 사용하지 않습니다.',
 
 # Special:Listusers
-'listusersfrom' => '다음으로 시작하는 사용자 보이기:',
+'listusersfrom'      => '다음으로 시작하는 사용자 보이기:',
+'listusers-submit'   => '보이기',
+'listusers-noresult' => '해당 사용자가 없습니다.',
 
 # E-mail user
 'mailnologin'     => '보낼 이메일 주소가 없음',
@@ -991,7 +1010,7 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 
 # Watchlist
 'watchlist'            => '주시문서 목록',
-'mywatchlist'          => '주시문서 목록',
+'mywatchlist'          => '내 주시문서 목록',
 'watchlistfor'         => "('''$1'''의 목록)",
 'nowatchlist'          => '주시하는 문서가 아직 없습니다.',
 'watchlistanontext'    => '주시문서 목록의 항목들을 보거나 편집하려면 $1을(를) 보세요.',
@@ -1014,7 +1033,6 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'iteminvalidname'      => '"$1" 항목에 문제가 발생했습니다. 이름이 잘못되었습니다...',
 'wlnote'               => "다음은 최근 '''$2'''시간 동안에 바뀐 $1개의 문서입니다.",
 'wlshowlast'           => '$3 최근 $1 시간 $2 일 동안에 바뀐 문서',
-'wlsaved'              => '이것은 주시문서 목록에 저장되어 있는 판입니다.',
 'watchlist-show-bots'  => '봇의 편집을 보이기',
 'watchlist-hide-bots'  => '봇의 편집을 숨기기',
 'watchlist-show-own'   => '나의 편집을 보이기',
@@ -1022,16 +1040,22 @@ $1, 또는 [[{{MediaWiki:grouppage-sysop}}|다른 관리자]]에게 차단에 �
 'watchlist-show-minor' => '사소한 편집을 보이기',
 'watchlist-hide-minor' => '사소한 편집을 숨기기',
 
-'enotif_mailer'      => '{{SITENAME}} 자동 알림 메일',
-'enotif_reset'       => '모든 문서를 방문한 것으로 표시하기',
-'enotif_newpagetext' => '이것은 새 문서입니다.',
-'changed'            => '바뀜',
-'created'            => '만들어짐',
-'enotif_subject'     => '{{SITENAME}}의 문서 $PAGETITLE이 $PAGEEDITOR에 의해 $CHANGEDORCREATED되었습니다',
-'enotif_lastvisited' => '당신의 마지막 방문 이후의 모든 변경사항을 보려면 $1을(를) 보십시오.',
-'enotif_body'        => '$WATCHINGUSERNAME에게,
+# Displayed when you click the "watch" button and it's in the process of watching
+'watching'   => '주시하는 중...',
+'unwatching' => '주시 해제하는 중...',
 
-{{SITENAME}}의 문서 $PAGETITLE이 $PAGEEDITOR에 의해 $CHANGEDORCREATED되었습니다. 현재의 문서는 $PAGETITLE_URL에서 볼 수 있습니다.
+'enotif_mailer'                => '{{SITENAME}} 자동 알림 메일',
+'enotif_reset'                 => '모든 문서를 방문한 것으로 표시하기',
+'enotif_newpagetext'           => '이것은 새 문서입니다.',
+'enotif_impersonal_salutation' => '{{SITENAME}} 사용자',
+'changed'                      => '바뀜',
+'created'                      => '만들어짐',
+'enotif_subject'               => '{{SITENAME}}의 문서 $PAGETITLE이 $PAGEEDITOR에 의해 $CHANGEDORCREATED되었습니다',
+'enotif_lastvisited'           => '당신의 마지막 방문 이후의 모든 변경사항을 보려면 $1을(를) 보십시오.',
+'enotif_anon_editor'           => '익명 사용자 $1',
+'enotif_body'                  => '$WATCHINGUSERNAME에게,
+
+{{SITENAME}}의 문서 $PAGETITLE이(가) $PAGEEDITOR에 의해 $CHANGEDORCREATED되었습니다. 현재의 문서는 $PAGETITLE_URL에서 볼 수 있습니다.
 
 $NEWPAGE
 
@@ -1050,7 +1074,7 @@ $NEWPAGE
 {{fullurl:{{ns:special}}:Watchlist/edit}}
 
 도움말:
-{{fullurl:{{ns:help}}:Contents}}',
+{{fullurl:{{MediaWiki:helppage}}}}',
 
 # Delete/protect/revert
 'deletepage'                  => '문서 삭제하기',
@@ -1081,10 +1105,12 @@ $NEWPAGE
 마지막으로 문서를 편집한 사람은[[User:$3|$3]]([[User talk:$3|토론]])입니다.',
 'editcomment'                 => "편집 요약: ''$1''", # only shown if there is an edit comment
 'revertpage'                  => '[[Special:Contributions/$2|$2]]([[User talk:$2|토론]])의 편집을 [[Special:Contributions/$1|$1]]의 버전으로 되돌림',
+'rollback-success'            => '$1의 편집을 $2의 마지막 버전으로 되돌렸습니다.',
 'sessionfailure'              => '로그인 세션에 문제가 발생한 것 같습니다. 세션 하이재킹을 막기 위해 동작이 취소되었습니다. 브라우저의 "뒤로" 버튼을 누르고 문서를 새로고침한 후에 다시 시도해 주세요.',
 'protectlogpage'              => '문서 보호 기록',
 'protectlogtext'              => '아래의 목록은 문서 보호와 보호 해제 기록입니다.',
-'protectedarticle'            => '[[$1]] 문서가 보호됨',
+'protectedarticle'            => '‘[[$1]]’ 문서가 보호됨',
+'modifiedarticleprotection'   => '‘[[$1]]’ 문서의 보호 설정이 변경됨',
 'unprotectedarticle'          => '"[[$1]]" 문서가 보호 해제되었음',
 'protectsub'                  => '("$1" 보호하기)',
 'confirmprotect'              => '보호 확인',
@@ -1094,10 +1120,12 @@ $NEWPAGE
 'protect-text'                => "'''$1''' 문서의 보호 수준을 보거나 변경할 수 있습니다.",
 'protect-cascadeon'           => '이 문서는 다음의 틀에서 사용하고 있고 그 틀에 연쇄적 보호가 걸려 있어 이 문서도 자동으로 보호됩니다. 이 문서의 보호 설정을 바꾸어도 연쇄적 보호에 영향을 받지 않습니다.',
 'protect-default'             => '(기본값)',
+'protect-fallback'            => '‘$1’ 권한 필요',
 'protect-level-autoconfirmed' => '등록된 사용자만 가능',
 'protect-level-sysop'         => '관리자만 가능',
 'protect-summary-cascade'     => '연쇄적',
 'protect-cascade'             => '연쇄적 보호 - 이 문서에서 사용되는 다른 문서를 함께 보호합니다.',
+'pagesize'                    => '(바이트)',
 
 # Restrictions (nouns)
 'restriction-edit' => '편집',
@@ -1130,13 +1158,14 @@ $NEWPAGE
 'undelete-header'          => '최근에 삭제된 문서 기록을 [[Special:Log/delete|여기]]에서 볼 수 있습니다.',
 
 # Namespace form on various pages
-'namespace' => '네임스페이스:',
-'invert'    => '선택 반전',
+'namespace'      => '네임스페이스:',
+'invert'         => '선택 반전',
+'blanknamespace' => '(일반)',
 
 # Contributions
 'contributions' => '사용자 기여',
 'mycontris'     => '내 기여 목록',
-'contribsub2'   => '$1 ($2)의',
+'contribsub2'   => '$1($2)의 기여',
 'nocontribs'    => '이 사용자는 어디에도 기여하지 않았습니다.',
 'ucnote'        => "이 사용자가 '''$2'''일 동안에 바꾼 '''$1'''개의 목록입니다.",
 'uclinks'       => '최근 $1개 보기; 최근 $2일 보기',
@@ -1148,14 +1177,19 @@ $NEWPAGE
 'sp-newimages-showfrom' => '$1부터 올라온 그림 목록 보기',
 
 # What links here
-'whatlinkshere' => '여기를 가리키는 글',
-'notargettitle' => '해당하는 문서 없음',
-'notargettext'  => '기능을 수행할 목표 문서나 목표 사용자를 지정하지 않았습니다.',
-'linklistsub'   => '(링크 목록)',
-'linkshere'     => "다음의 문서들이 '''[[:$1]]''' 문서를 가리키고 있습니다:",
-'nolinkshere'   => "'''[[:$1]]''' 문서를 가리키는 문서가 없습니다.",
-'isredirect'    => '넘겨주기 문서',
-'istemplate'    => '포함',
+'whatlinkshere'       => '여기를 가리키는 글',
+'whatlinkshere-title' => '$1 문서를 가리키는 문서 목록',
+'notargettitle'       => '해당하는 문서 없음',
+'notargettext'        => '기능을 수행할 목표 문서나 목표 사용자를 지정하지 않았습니다.',
+'linklistsub'         => '(링크 목록)',
+'linkshere'           => "다음의 문서들이 '''[[:$1]]''' 문서를 가리키고 있습니다:",
+'nolinkshere'         => "'''[[:$1]]''' 문서를 가리키는 문서가 없습니다.",
+'nolinkshere-ns'      => "해당 네임스페이스에서 '''[[:$1]]''' 문서를 가리키는 문서가 없습니다.",
+'isredirect'          => '넘겨주기 문서',
+'istemplate'          => '포함',
+'whatlinkshere-prev'  => '{{PLURAL:$1|이전|이전 $1}}',
+'whatlinkshere-next'  => '{{PLURAL:$1|다음|다음 $1}}',
+'whatlinkshere-links' => '← 가리키는 문서 목록',
 
 # Block/unblock
 'blockip'                     => '사용자 차단',
@@ -1164,8 +1198,10 @@ $NEWPAGE
 'ipadressorusername'          => 'IP 주소 또는 사용자 이름',
 'ipbexpiry'                   => '기간',
 'ipbreason'                   => '이유',
+'ipbreasonotherlist'          => '다른 이유',
 'ipbanononly'                 => '익명 사용자만 차단',
 'ipbcreateaccount'            => '계정 생성을 막기',
+'ipbemailban'                 => '이메일 보내기 기능을 막기',
 'ipbenableautoblock'          => '이 사용자가 최근에 사용했거나 앞으로 사용하는 IP를 자동으로 막기',
 'ipbsubmit'                   => '이 사용자를 차단하기',
 'ipbother'                    => '지정 기간',
@@ -1182,6 +1218,7 @@ $NEWPAGE
 'unblockiptext'               => '아래의 양식에 차단 해제하려는 IP 주소나 사용자 이름을 입력하세요.',
 'ipusubmit'                   => '차단 해제',
 'unblocked'                   => '[[User:$1|$1]] 사용자 차단 해제됨',
+'unblocked-id'                => '차단 $1 해제됨',
 'ipblocklist'                 => '현재 차단 중인 IP 주소와 사용자 이름 목록',
 'blocklistline'               => '$1, $2 사용자는 $3을 차단함 ($4)',
 'infiniteblock'               => '무기한',
@@ -1196,6 +1233,7 @@ $NEWPAGE
 'blocklogentry'               => '[[$1]] 사용자를 $2 $3 차단함',
 'blocklogtext'                => '이 목록은 사용자 차단/차단 해제 기록입니다. 자동으로 차단된 IP 주소는 여기에 나오지 않습니다. [[Special:Ipblocklist|여기]]에서 현재 차단된 사용자 목록을 볼 수 있습니다.',
 'unblocklogentry'             => '$1을 차단 해제했습니다.',
+'block-log-flags-anononly'    => 'IP 접속만 차단하기',
 'range_block_disabled'        => 'IP 범위 차단 기능이 비활성화되어 있습니다.',
 'ipb_expiry_invalid'          => '차단 기간이 잘못되었습니다.',
 'ipb_already_blocked'         => '$1 사용자는 이미 차단됨',
@@ -1238,9 +1276,12 @@ $NEWPAGE
 'movearticle'             => '문서 이동하기',
 'movenologin'             => '로그인하지 않음',
 'movenologintext'         => '[[Special:Userlogin|로그인]]해야만 문서를 이동할 수 있습니다.',
+'movenotallowed'          => '문서를 이동할 권한이 없습니다.',
 'newtitle'                => '새 문서 이름',
+'move-watch'              => '이 문서 주시하기',
 'movepagebtn'             => '이동',
-'pagemovedsub'            => '문서 옮겨짐',
+'pagemovedsub'            => '문서 이동함',
+'movepage-moved'          => "<big>'''‘$1’ 문서를 ‘$2’(으)로 이동함 '''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => '문서가 이미 존재하거나, 문서 이름이 올바르지 않습니다. 다른 제목으로 시도해주세요.',
 'talkexists'              => "'''문서는 이동되었습니다. 하지만 딸린 토론 문서의 새 이름으로 된 문서가 이미 존재해서, 토론 문서는 이동하지 않았습니다. 직접 문서를 합쳐 주세요.'''",
 'movedto'                 => '새 이름',
@@ -1300,9 +1341,9 @@ $NEWPAGE
 
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => '내 사용자 문서',
-'tooltip-pt-anonuserpage'         => '현재 사용하고 있는 IP의 사용자 문서',
+'tooltip-pt-anonuserpage'         => '현재 사용하는 IP의 사용자 문서',
 'tooltip-pt-mytalk'               => '내 토론 문서',
-'tooltip-pt-anontalk'             => '당신이 사용하는 IP를 위한 사용자 토론 문서',
+'tooltip-pt-anontalk'             => '현재 사용하는 IP를 위한 사용자 토론 문서',
 'tooltip-pt-preferences'          => '사용자 환경 설정',
 'tooltip-pt-watchlist'            => '주시문서 목록',
 'tooltip-pt-mycontris'            => '내가 편집한 글',
@@ -1336,6 +1377,8 @@ $NEWPAGE
 'tooltip-t-emailuser'             => '이 사용자에게 이메일을 보냅니다.',
 'tooltip-t-upload'                => '파일을 올립니다.',
 'tooltip-t-specialpages'          => '모든 특수 문서의 목록입니다.',
+'tooltip-t-print'                 => '이 문서의 인쇄용 버전',
+'tooltip-t-permalink'             => '문서의 현재 버전에 대한 고유링크',
 'tooltip-ca-nstab-main'           => '문서 내용을 봅니다.',
 'tooltip-ca-nstab-user'           => '사용자 문서 내용을 봅니다.',
 'tooltip-ca-nstab-media'          => '미디어 문서 내용을 봅니다.',
@@ -1353,13 +1396,15 @@ $NEWPAGE
 'tooltip-compareselectedversions' => '이 문서에서 선택한 두 버전간의 차이를 비교',
 'tooltip-watch'                   => '이 문서를 주시문서 목록에 추가',
 'tooltip-recreate'                => '문서를 편집하는 중 삭제되어도 새로 만들기',
+'tooltip-upload'                  => '파일 올리기 시작',
 
 # Stylesheets
 'common.css'   => '/** 이 CSS 설정은 모든 스킨에 적용됩니다 */',
 'monobook.css' => '/* 이 CSS 설정은 모든 모노북 스킨에 적용됩니다 */',
 
 # Scripts
-'common.js' => '/* 이 자바스크립트 설정은 모든 문서, 모든 사용자에게 적용됩니다. */',
+'common.js'   => '/* 이 자바스크립트 설정은 모든 문서, 모든 사용자에게 적용됩니다. */',
+'monobook.js' => '/* 현재는 사용하지 않습니다. 대신 [[MediaWiki:common.js]]를 사용해주세요. */',
 
 # Metadata
 'nodublincore'      => '더블린 코어 RDF 메타데이터 기능은 비활성되어 있습니다.',
@@ -1374,6 +1419,7 @@ $NEWPAGE
 'others'           => '기타',
 'siteusers'        => '{{SITENAME}} 사용자 $1',
 'creditspage'      => '문서 기여자들',
+'nocredits'        => '이 문서에서는 기여자 정보가 없습니다.',
 
 # Spam protection
 'spamprotectiontitle'    => '스팸 방지 필터',
@@ -1425,9 +1471,11 @@ $NEWPAGE
 'nextdiff'     => '다음 비교 →',
 
 # Media information
-'mediawarning' => "'''경고''': 이 파일에는 시스템을 위험하게 만드는 악성 코드가 들어있을 수 있습니다.<br />",
-'imagemaxsize' => '그림 설명 문서에 그림 크기를 다음으로 제한:',
-'thumbsize'    => '섬네일 크기:',
+'mediawarning'   => "'''경고''': 이 파일에는 시스템을 위험하게 만드는 악성 코드가 들어있을 수 있습니다.<br />",
+'imagemaxsize'   => '그림 설명 문서에 그림 크기를 다음으로 제한:',
+'thumbsize'      => '섬네일 크기:',
+'file-info'      => '(파일 크기: $1, MIME 종류: $2)',
+'file-info-size' => '($1 × $2 픽셀, 파일 크기: $3, MIME 종류: $4)',
 
 # Special:Newimages
 'newimages'    => '새 그림 파일 목록',

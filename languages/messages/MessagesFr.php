@@ -455,7 +455,7 @@ Avant qu’un autre courriel ne soit envoyé à ce compte, vous devrez suivre le
 # Password reset dialog
 'resetpass'               => 'Remise à zéro du mot de passe',
 'resetpass_announce'      => 'Vous vous êtes enregistré avec un mot de passe temporaire envoyé par e-mail. Pour terminer l’enregistrement, vous devez entreer un nouveau mot de passe ici :',
-'resetpass_text'          => '<!-- Add text here -->',
+'resetpass_text'          => '<!-- Ajoutez le texte ici -->',
 'resetpass_header'        => 'Remise à zéro du mot de passe',
 'resetpass_submit'        => 'Changer le mot de passe et s’enregistrer',
 'resetpass_success'       => 'Votre mot de passe a été changé avec succès ! Enregistrement en cours...',
@@ -608,7 +608,9 @@ Demandez-vous s’il est réellement approprié de la recréer en vous référan
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Vous ne pouvez pas créer de compte.',
-'cantcreateaccounttext'  => 'La création de compte depuis cette adresse IP (<b>$1</b>) a été bloquée. Ceci est probablement la conséquence d’un vandalisme répété depuis votre école ou votre fournisseur d’accès à internet.',
+'cantcreateaccount-text' => "La création de compte depuis cette adresse IP (<b>$1</b>) a été bloquée par [[User:$3|$3]].
+
+La raison donnée par $3 était ''$2''.",
 
 # History pages
 'revhistory'          => 'Historique de la page et liste des auteurs.',
@@ -789,15 +791,17 @@ $2 Inclure les page de redirections<br /> Rechercher $3 $9',
 'userrights-available-remove' => 'Vous pouvez enlever des utilisateurs de $1.',
 
 # Groups
-'group'            => 'Groupe :',
-'group-bot'        => 'Bots',
-'group-sysop'      => 'Administrateurs',
-'group-bureaucrat' => 'Bureaucrates',
-'group-all'        => 'Tous',
+'group'               => 'Groupe :',
+'group-autoconfirmed' => 'Utilisateurs enregistrés',
+'group-bot'           => 'Bots',
+'group-sysop'         => 'Administrateurs',
+'group-bureaucrat'    => 'Bureaucrates',
+'group-all'           => 'Tous',
 
-'group-bot-member'        => 'Bot',
-'group-sysop-member'      => 'Administrateur',
-'group-bureaucrat-member' => 'Bureaucrate',
+'group-autoconfirmed-member' => 'Utilisateur enregistré',
+'group-bot-member'           => 'Bot',
+'group-sysop-member'         => 'Administrateur',
+'group-bureaucrat-member'    => 'Bureaucrate',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Utilisateurs enregistrés',
 'grouppage-bot'           => '{{ns:project}}:Bots',
@@ -835,9 +839,11 @@ $2 Inclure les page de redirections<br /> Rechercher $3 $9',
 'number_of_watching_users_pageview' => '[$1 utilisateur(s) suivant]',
 'rc_categories'                     => 'Limite des catégories (séparation avec « | »)',
 'rc_categories_any'                 => 'Toutes',
+'newsectionsummary'                 => '/* $1 */ nouvelle section',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Suivi des liens',
+'recentchangeslinked-title'    => 'Suivi des liens associés à $1',
 'recentchangeslinked-noresult' => 'Aucun changement sur les pages liées pendant la période choisie.',
 'recentchangeslinked-summary'  => "Cette page spéciale montre les modifications récentes sur les pages qui sont liées. Les pages de votre liste de suivi sont '''en gras'''.",
 
@@ -893,7 +899,8 @@ Si vous disposez du fichier en haute résolution, importez-le, sinon veuillez ch
 'uploadwarning'               => 'Attention !',
 'savefile'                    => 'Sauvegarder le fichier',
 'uploadedimage'               => 'a importé « [[$1]] »',
-'uploaddisabled'              => 'Désolé, l’envoi de fichier est désactivé.',
+'overwroteimage'              => 'a importé une nouvelle version de « [[$1]] »',
+'uploaddisabled'              => 'Désolé, l’import de fichier est désactivé.',
 'uploaddisabledtext'          => 'La copie de fichiers est désactivée sur ce wiki.',
 'uploadscripted'              => 'Ce fichier contient du code HTML ou un script qui pourrait être interprété de façon incorrecte par un navigateur Internet.',
 'uploadcorrupt'               => 'Ce fichier est corrompu, a une taille nulle ou possède une extension invalide.
@@ -903,6 +910,7 @@ Veuillez vérifer le fichier.',
 'destfilename'                => 'Nom sous lequel le fichier sera enregistré',
 'watchthisupload'             => 'Suivre ce fichier',
 'filewasdeleted'              => 'Un fichier avec ce nom a déjà été copié, puis supprimé. Vous devriez vérifier le $1 avant de procéder à une nouvelle copie.',
+'filename-bad-prefix'         => 'Le nom du fichier que vous importez commence par <strong>"$1"</strong> qui est un nom généralement donné par les appareils photo numérique et qui ne décrit pas le fichier. Veuillez choisir un nom de fichier décrivant votre fichier.',
 
 'upload-proto-error'      => 'Protocole incorrect',
 'upload-proto-error-text' => 'L’import requiert des URLs commençant par <code>http://</code> ou <code>ftp://</code>.',
@@ -1188,7 +1196,6 @@ Les prochaines modifications de cette page et de la page de discussion associée
 'iteminvalidname'      => 'Problème avec l’article « $1 » : le nom est invalide...',
 'wlnote'               => 'Ci-dessous se {{PLURAL:$1|trouve la dernière modification|trouvent les $1 dernières modifications}} depuis {{PLURAL:$2|la dernière heure|les <b>$2</b> dernières heures}}.',
 'wlshowlast'           => 'Montrer les dernières $1 heures, les derniers $2 jours, ou $3.',
-'wlsaved'              => 'La liste de suivi n’est remise à jour qu’une fois par heure pour alléger la charge sur le serveur.',
 'watchlist-show-bots'  => 'Afficher les contributions de bots',
 'watchlist-hide-bots'  => 'Masquer les contributions de bots',
 'watchlist-show-own'   => 'Afficher mes modifications',
@@ -1287,7 +1294,7 @@ Voici les réglages actuels de la page <strong>$1</strong> :',
 Voici les réglages actuels de la page <strong>$1</strong> :',
 'protect-cascadeon'           => 'Cette page est actuellement protégée car incluse dans {{PLURAL:$1|la page suivante|les pages suivantes}}, ayant été protégée avec l’option « protection en cascade » activée. Vous pouvez changer le niveau de protection de cette page sans que cela n’affecte la protection en cascade.',
 'protect-default'             => 'Pas de protection',
-'protect-fallback'            => 'Nécessite l’habilitation "$1" ',
+'protect-fallback'            => 'Nécessite l’habilitation "$1"',
 'protect-level-autoconfirmed' => 'Semi-protection',
 'protect-level-sysop'         => 'Administrateurs uniquement',
 'protect-summary-cascade'     => 'protection en cascade',
@@ -1321,7 +1328,7 @@ L’archive peut être effacée périodiquement.',
 Si une nouvelle page avec le même nom a été créée depuis la suppression, les révisions restaurées apparaîtront dans l’historique antérieur et la version courante ne sera pas automatiquement remplacée.',
 'undeleterevdel'               => 'La restauration ne sera pas effectuée si, au final, la version la plus récente de la page sera partiellement supprimée. Dans ce cas, vous devez déselectionner les versions les plus récentes (en haut). Les versions des fichiers auxquelles vous n’avez pas accès ne seront pas restaurées.',
 'undeletehistorynoadmin'       => 'Cet article a été supprimé. Le motif de la suppression est indiqué dans le résumé ci-dessous, avec les détails des utilisateurs qui l’ont modifié avant sa suppression. Le contenu de ces versions n’est accessible qu’aux administrateurs.',
-'undelete-revision'            => 'Version supprimée de $1, (révision du $2) par $3 : ',
+'undelete-revision'            => 'Version supprimée de $1, (révision du $2) par $3 :',
 'undeleterevision-missing'     => 'Version invalide ou manquante. Vous avez peut-être un mauvais lien, ou la version a été restaurée ou supprimée de l’archive.',
 'undeletebtn'                  => 'Restaurer',
 'undeletereset'                => 'Réinitialiser',
@@ -1379,6 +1386,7 @@ $1',
 
 # What links here
 'whatlinkshere'       => 'Pages liées',
+'whatlinkshere-title' => 'Pages ayant des liens pointant vers $1',
 'notargettitle'       => 'Pas de cible',
 'notargettext'        => 'Indiquez une page cible ou un utilisateur cible.',
 'linklistsub'         => '(Liste de liens)',
@@ -1468,7 +1476,7 @@ d’une adresse IP précédemment bloquée.',
 'ip_range_invalid'            => 'Bloc IP incorrect.',
 'proxyblocker'                => 'Bloqueur de proxy',
 'ipb_cant_unblock'            => 'Erreur : Le blocage d’ID $1 n’existe pas. Il est possible qu’un déblocage ait déjà été effectué.',
-'proxyblockreason'            => 'Votre ip a été bloquée car il s’agit d’un proxy ouvert. Merci de contacter votre fournisseur d’accès internet ou votre support technique et de l’informer de ce problème de sécurité.',
+'proxyblockreason'            => 'Votre adresse IP a été bloquée car il s’agit d’un proxy ouvert. Merci de contacter votre fournisseur d’accès internet ou votre support technique et de l’informer de ce problème de sécurité.',
 'proxyblocksuccess'           => 'Terminé.',
 'sorbsreason'                 => 'Votre adresse IP est listée en tant que proxy ouvert DNSBL.',
 'sorbs_create_account_reason' => 'Votre adresse IP est listée en tant que proxy ouvert DNSBL. Vous ne pouvez créer un compte',
@@ -1664,6 +1672,7 @@ Toutes les actions d’importation interwiki sont conservées dans le [[Special:
 'tooltip-compareselectedversions' => 'Afficher les différences entre deux versions de cette page',
 'tooltip-watch'                   => 'Ajouter cette page à votre liste de suivi',
 'tooltip-recreate'                => 'Recréer la page même si celle-ci a été effacée',
+'tooltip-upload'                  => 'Lancer l’import',
 
 # Stylesheets
 'common.css'   => '/** Le CSS placé ici sera appliqué à toutes les apparences. */',
@@ -1735,7 +1744,7 @@ Toutes les actions d’importation interwiki sont conservées dans le [[Special:
 'patrol-log-diff' => '$1',
 
 # Image deletion
-'deletedrevision'                 => 'L’ancienne version $1 a été supprimée.',
+'deletedrevision'                 => 'L’ancienne version $1 a été supprimée',
 'filedeleteerror-short'           => 'Erreur lors de la suppression du fichier : $1',
 'filedeleteerror-long'            => 'Des erreurs ont été rencontrées lors de la suppression du fichier :\n\n$1\n',
 'filedelete-missing'              => 'Le fichier « $1 » ne peut pas être supprimé parce qu’il n’existe pas.',
@@ -1776,12 +1785,12 @@ Les autres liens sur la même ligne sont considérés comme des exceptions, par 
 'metadata-expand'   => 'Montrer les informations détaillées',
 'metadata-collapse' => 'Cacher les informations détaillées',
 'metadata-fields'   => 'Les champs de métadonnées d’EXIF listés dans ce message seront inclus dans la page de description de l’image quand la table de métadonnées sera réduite. Les autres champs seront cachés par défaut.
-* constructeur
-* modèle
-* Date et heure
-* temps d’exposition
-* Nombre F
-* longueur de la focale',
+* make
+* model
+* datetimeoriginal
+* exposuretime
+* fnumber
+* focallength',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Largeur',
@@ -2106,8 +2115,8 @@ Veuillez confirmer que vous désirez recréer cet article.",
 'hideresults'      => 'Cacher les résultats',
 
 # Multipage image navigation
-'imgmultipageprev'   => '&larr; page précédente',
-'imgmultipagenext'   => 'page suivante &rarr;',
+'imgmultipageprev'   => '← page précédente',
+'imgmultipagenext'   => 'page suivante →',
 'imgmultigo'         => 'Accéder !',
 'imgmultigotopre'    => 'Accéder à la page',
 'imgmultiparseerror' => 'Ce fichier image est apparemment corrompu ou incorrect, et {{SITENAME}} ne peut pas fournir une liste des pages.',
