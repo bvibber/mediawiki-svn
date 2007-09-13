@@ -905,6 +905,31 @@ class NewUserMessagesView extends LqtView {
 		$this->output->addScript($s);
 	}
 	
+	function preShowThread($t) {
+		$this->output->addHTML(<<<HTML
+		<table ><tr>
+		<td style="padding-right: 1em; vertical-align: top; padding-top: 1em;" >
+		<form method="POST">
+		<input type="submit" value="Read" title="Remove this thread from New Messages." />
+		</form>
+		</td>
+		<td>
+HTML
+		);
+	}
+	
+	function postShowThread($t) {
+		$this->output->addHTML(<<<HTML
+		</td>
+		</tr></table>
+HTML
+		);
+	}
+
+	private function showClearButtonForThread($thread) {
+		$this->output->addHTML('<input type="submit">');
+	}
+	
 	function postDivClass($thread) {
 		
 	}
@@ -914,7 +939,9 @@ class NewUserMessagesView extends LqtView {
 
 		$threads = NewMessages::newUserMessages($this->user);
 		foreach($threads as $t) {
+			$this->preShowThread($t);
 			$this->showThread($t);
+			$this->postShowThread($t);
 		}
 		return false;
 	}
@@ -928,6 +955,7 @@ function wfLqtSpecialNewMessages() {
     $wgMessageCache->addMessage( 'newmessages', 'New Messages' );
     
     class SpecialNewMessages extends SpecialPage {
+		private $user, $output, $request, $title;
 
         function __construct() {
             SpecialPage::SpecialPage( 'Newmessages' );
@@ -935,17 +963,24 @@ function wfLqtSpecialNewMessages() {
             $this->includable( true );
         }
 
-
         function execute( $par = null ) {
-            global $wgOut, $wgRequest, $wgUser;
+		    global $wgOut, $wgRequest, $wgTitle, $wgUser;
+			$this->user = $wgUser;
+			$this->output = $wgOut;
+			$this->request = $wgRequest;
+			$this->title = $wgTitle;
 	
             $this->setHeaders();
 
-			$title = $this->getTitle();
-			$view = new NewUserMessagesView( $wgOut, new Article($title), $title, $wgUser, $wgRequest );
-			return $view->show();
+			$this->output->addHTML('<h2 class="lqt_newmessages_section">Messages sent to you:</h2>');
+			
+			$view = new NewUserMessagesView( $this->output, new Article($this->title),
+							$this->title, $this->user, $this->request );
+			$view->setHeaderLevel(3);
+			$view->show();
 			
 			// and then the same for the other talkpage messagess.
+			$this->output->addHTML('<h2 class="lqt_newmessages_section">Messages on other talkpages:</h2>');
         }
     }
     

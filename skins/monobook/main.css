@@ -31,6 +31,10 @@ li {
 	margin-bottom: .1em;
 }*/
 
+.lqt_newmessages_section {
+	border-bottom: 0px;
+}
+
 .lqt_disabled_link {
 	color: #999;
 }

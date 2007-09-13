@@ -149,6 +149,10 @@ class LqtView {
 		$this->queries = $this->initializeQueries();
 	}
 	
+	function setHeaderLevel($int) {
+		$this->headerLevel = $int;
+	}
+	
 	function initializeQueries() {
 		$g = new QueryGroup();
 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
