@@ -92,16 +92,16 @@ function wfReviewExtensionInitMessages () {
 	foreach ( $s AS $v ) {
 		$v = explode ( ':' , trim ( $v ) ) ;
 		if ( count ( $v ) != 5 ) continue ; # Some other line, ignore it
-		$x = "" ;
-		$x->key = (int) trim ( array_shift ( $v ) ) ;
-		$x->name = trim ( array_shift ( $v ) ) ;
-		$x->range = (int) trim ( array_shift ( $v ) ) ;
-		$x->left = trim ( array_shift ( $v ) ) ;
-		$x->right = trim ( array_shift ( $v ) ) ;
-		if ( $x->key == 0 ) continue ; # Paranoia
-		if ( $x->range < 2 ) continue ; # Paranoia
-		if ( $x->name == "" ) continue ; # Paranoia
-		$wgReviewExtensionTopics[$x->key] = $x ;
+		$x = array();
+		$x['key'] = (int) trim ( array_shift ( $v ) ) ;
+		$x['name'] = trim ( array_shift ( $v ) ) ;
+		$x['range'] = (int) trim ( array_shift ( $v ) ) ;
+		$x['left'] = trim ( array_shift ( $v ) ) ;
+		$x['right'] = trim ( array_shift ( $v ) ) ;
+		if ( $x['key'] == 0 ) continue ; # Paranoia
+		if ( $x['range'] < 2 ) continue ; # Paranoia
+		if ( $x['name'] == "" ) continue ; # Paranoia
+		$wgReviewExtensionTopics[$x['key']] = $x ;
 	}
 }
 
@@ -115,7 +115,7 @@ function wfReviewExtensionGetTopicForm ( $topic , $fullpage = false ) {
 	if ( !isset ( $topic->value ) )
 		$topic->value = 0 ;
 	
-	$tkey = "review_topic[" . $topic->key . "]" ;
+	$tkey = "review_topic[" . $topic['key'] . "]" ;
 	$ret = "" ;
 	if ( $fullpage )
 		$ret .= "<td align='center'>" ;
@@ -125,31 +125,31 @@ function wfReviewExtensionGetTopicForm ( $topic , $fullpage = false ) {
 		$ret .= "/></td>" ;
 	else
 		$ret .= '/>&nbsp;' ;
-	if ( $topic->range == 2 ) { # Yes/No
+	if ( $topic['range'] == 2 ) { # Yes/No
 		if ( $fullpage )
 			$ret .= "<td/><td nowrap>" ;
 		$ret .= '<input type="radio" name="' . $tkey . '" value="1" id="review_radio_1_of_2"' ;
 		$ret .= $topic->value == 1 ? " checked" : "" ;
-		$ret .= '></input>' . $topic->left . ' ' ;
+		$ret .= '></input>' . $topic['left'] . ' ' ;
 		$ret .= '<input type="radio" name="' . $tkey . '" value="2" id="review_radio_2_of_2"' ;
 		$ret .= $topic->value == 2 ? " checked" : "" ;
-		$ret .= '/>' . $topic->right ;
+		$ret .= '/>' . $topic['right'] ;
 		if ( $fullpage )
 			$ret .= "</td><td/><td>" ;
 	} else { # Range
 		if ( $fullpage )
-			$ret .= "<td align='right' nowrap>" . $topic->left . "</td><td nowrap>" ;
-		for ( $a = 1 ; $a <= $topic->range ; $a++ ) {
+			$ret .= "<td align='right' nowrap>" . $topic['left'] . "</td><td nowrap>" ;
+		for ( $a = 1 ; $a <= $topic['range'] ; $a++ ) {
 			$ret .= '<input type="radio" name="' . $tkey . '" value="' . $a . '"' ;
-			$ret .= " id='review_radio_" . $a . "_of_" . $topic->range . "'" ; # This doesn't show for some weird reason...
+			$ret .= " id='review_radio_" . $a . "_of_" . $topic['range'] . "'" ; # This doesn't show for some weird reason...
 			$ret .= $topic->value == $a ? " checked" : "" ;
 			$ret .= '/>' ;
 		}
 		if ( $fullpage )
-			$ret .= "</td><td nowrap>" . $topic->right . "</td><td width='100%'>" ;
+			$ret .= "</td><td nowrap>" . $topic['right'] . "</td><td width='100%'>" ;
 	}
 	if ( $fullpage ) {
-		$ret .= "<input type='text' style='width:100%' name='review_comment[" . $topic->key . "]' value='" . htmlentities ( $topic->comment ) . "'/>" ;
+		$ret .= "<input type='text' style='width:100%' name='review_comment[" . $topic['key'] . "]' value='" . htmlentities ( $topic->comment ) . "'/>" ;
 		$ret .= "</td>\n" ;
 	}
 	return $ret ;
@@ -378,17 +378,17 @@ function wfReviewExtensionAfterToolbox( &$tpl ) {
 ?>
 			<a id="review_sidebar_link" href="
 <?php
-	$topic_title = Title::makeTitleSafe( NS_MEDIAWIKI, wfMsgForContent('review_topic_page').'#'.$topic->name );
+	$topic_title = Title::makeTitleSafe( NS_MEDIAWIKI, wfMsgForContent('review_topic_page').'#'.$topic['name'] );
 	print $topic_title->escapeLocalURL();
 ?>
 				">
 <?php
-	echo $topic->name ;
+	echo $topic['name'] ;
 ?>
 				</a>
 <?php
-	if ( $topic->range > 2 )
-		print "<small> (" . $topic->left . "&rarr;" . $topic->right . ")</small><br />" ;
+	if ( $topic['range'] > 2 )
+		print "<small> (" . $topic['left'] . "&rarr;" . $topic['right'] . ")</small><br />" ;
 	echo "<div id='review_sidebar_range'>" . wfReviewExtensionGetTopicForm ( $topic ) . "</div>" ;
 ?>
 <?php
@@ -517,7 +517,7 @@ function wfReviewExtensionFunction () {
 					$data[$type]->total_count = 0 ;
 					$data[$type]->anon_count = 0 ;
 					$data[$type]->sum = 0 ;
-					$data[$type]->max = $wgReviewExtensionTopics[$type]->range ;
+					$data[$type]->max = $wgReviewExtensionTopics[$type]['range'] ;
 				}
 				$data[$type]->total_count++ ;
 				if ( $review->val_user == 0 )
@@ -598,14 +598,14 @@ function wfReviewExtensionFunction () {
 			foreach ( $wgReviewExtensionTopics AS $type => $topic ) {
 				if ( $revision < 0 ) {
 					# Table header row
-					$ret .= "<th id='review_statistics_table_header'>{$topic->name}</th>" ;
+					$ret .= "<th id='review_statistics_table_header'>{$topic['name']}</th>" ;
 				} else if ( $revision_mode ) {
 					$ret .= "<td id='review_statistics_table_cell'>" ;
 					if ( isset ( $data[$type] ) ) {
 						$ret .= "<div id='" ;
-						$ret .= "review_radio_" . $data[$type]->val_value . "_of_" . $topic->range ;
+						$ret .= "review_radio_" . $data[$type]->val_value . "_of_" . $topic['range'] ;
 						$ret .= "'>" ;
-						$ret .= wfMsgForContent ( 'review_version_statistic_cell' , $data[$type]->val_value , $topic->range ) ;
+						$ret .= wfMsgForContent ( 'review_version_statistic_cell' , $data[$type]->val_value , $topic['range'] ) ;
 						$ret .= "</div>" ;
 					} else {
 						$ret .= "&mdash;" ;
@@ -723,8 +723,8 @@ function wfReviewExtensionFunction () {
 			$out .= "</th><th colspan='3'>" . wfMsg('review_rating') . "</th><th>" ;
 			$out .= wfMsg('review_comment') . "</th></tr>" ;
 			foreach( $wgReviewExtensionTopics as $topic ) {
-				$topic_title = Title::makeTitleSafe( NS_MEDIAWIKI, wfMsgForContent('review_topic_page').'#'.$topic->name );
-				$link = $skin->makeLinkObj( $topic_title,$topic->name );
+				$topic_title = Title::makeTitleSafe( NS_MEDIAWIKI, wfMsgForContent('review_topic_page').'#'.$topic['name'] );
+				$link = $skin->makeLinkObj( $topic_title,$topic['name'] );
 				$out .= "<tr><th align='left' nowrap>{$link}</th>" ;
 				$out .= wfReviewExtensionGetTopicForm ( $topic , true ) . "</tr>" ;
 				
@@ -748,7 +748,7 @@ function wfReviewExtensionFunction () {
 		/**
 		* Special page main function
 		*/
-		function execute( $par = null ) {
+		function execute( $par ) {
 			global $wgRequest , $wgOut , $wgUser , $wgTitle ;
 			wfReviewExtensionInitMessages () ;
 
@@ -772,7 +772,7 @@ function wfReviewExtensionFunction () {
 			}
 			
 			if ( $page_id == 0 ) {
-				if( $par != null){
+				if( $par != ''){
 					$title = Title::newFromUrl($par);
 					$page_id = $title->getArticleID();
 				}
