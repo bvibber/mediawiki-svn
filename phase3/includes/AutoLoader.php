@@ -296,6 +296,7 @@ function __autoload($className) {
 		# API
 		'ApiBase' => 'includes/api/ApiBase.php',
 		'ApiBlock' => 'includes/api/ApiBlock.php',
+		'ApiChangeRights' => 'includes/api/ApiChangeRights.php',
 		'ApiDelete' => 'includes/api/ApiDelete.php',
 		'ApiFormatFeedWrapper' => 'includes/api/ApiFormatBase.php',
 		'ApiFeedWatchlist' => 'includes/api/ApiFeedWatchlist.php',

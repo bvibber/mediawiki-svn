@@ -28,6 +28,10 @@ SpecialIpblocklist.php
 ** Static function doUnblock() does the dirty work, doSubmit() wraps around it
 ** Introduced IPUnblockForm::UNBLOCK_* constants for doUnblock()'s return values
 
+SpecialUserrights.php
+* Separated UI and DB code in UserrightsForm::saveUserGroups() (r25834)
+** doSaveUserGroups() does the dirty work, saveUserGroups() wraps around it
+
 api/ApiQueryInfo.php
 * Implemented tokens (r23562, r23568,r23638, r23668)
 * Fixed bug 10898 (r24458)
@@ -59,11 +63,14 @@ api/ApiUnblock.php (NEW)
 api/ApiQueryBlocks.php (NEW)
 * action=query&list=blocks module that lists blocks from the ipblocks table (r25735)
 
+api/ApiChangeRights.php (NEW)
+* action=changerights module that changes users' rights (r25834)
+
 AutoLoader.php
-* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548), ApiQueryBlocks (r25735)
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiQueryDeletedRevs (r23668), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548), ApiQueryBlocks (r25735), ApiChangeRights (r25834)
 
 api/ApiMain.php
-* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548)
+* Added entries for ApiRollback (r23562), ApiDelete (r23590), ApiUndelete (r23687), ApiProtect (r23588), ApiBlock (r25548), ApiChangeRights (r25834)
 
 api/ApiQuery.php
 * Added entries for ApiQueryDeletedRevs (r23668), ApiQueryBlocks (r25735)

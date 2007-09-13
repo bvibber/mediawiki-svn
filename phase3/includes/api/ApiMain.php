@@ -60,6 +60,7 @@ class ApiMain extends ApiBase {
 		'protect' => 'ApiProtect',
 		'block' => 'ApiBlock',
 		'unblock' => 'ApiUnblock',
+		'changerights' => 'ApiChangeRights',
 		'opensearch' => 'ApiOpenSearch',
 		'feedwatchlist' => 'ApiFeedWatchlist',
 		'help' => 'ApiHelp',
