@@ -84,6 +84,9 @@ $wgNewuserlogMessages['id'] = array(
 	'newuserlog-create-entry'  => 'mendaftar sebagai pengguna',
 	'newuserlog-create2-entry' => 'mendaftarkan akun untuk $1',
 );
+$wgNewuserlogMessages['is'] = array(
+	'newuserlog-create-entry'  => 'Nýr notandi',
+);
 $wgNewuserlogMessages['it'] = array(
 	'newuserlogpage'           => 'Registro nuovi utenti',
 	'newuserlogpagetext'       => 'Di seguito viene riportato il registro dei nomi utente di nuova creazione',

@@ -325,6 +325,10 @@ utile per scindere due pagine (''forking''), ecc.",
 'duplicator-toomanyrevisions' => '[[$1]] は版が多すぎるため（$2 版）複製できません。現在の上限は $3 版までです。',
 ),
 
+'nds' => array(
+'duplicator-options' => 'Opschonen',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'duplicator' => 'Kopieer een pagina',

@@ -190,6 +190,7 @@ $messages = array(
 	'ogg-short-general' => 'Ogg medijowa dataja $1, $2',
 	'ogg-long-audio' => '(Ogg-awdiodataja $1, dołhosć: $2, $3)',
 	'ogg-long-video' => '(Ogg-widejodataja $1, dołhosć: $2, $4×$5 pikselow, $3)',
+	'ogg-long-multiplexed' => 'Ogg awdio-/widejodataja, $1, dołhosć: $2, $4×$5 pikselow, $3)',
 	'ogg-long-general' => '(Ogg medijowa dataja, dołhosć: $2, $3)',
 	'ogg-long-error' => '(Njepłaćiwa ogg-dataja: $1)',
 	'ogg-play' => 'Wothrać',
@@ -197,8 +198,15 @@ $messages = array(
 	'ogg-stop' => 'Stop',#identical but defined
 	'ogg-play-video' => 'Widejo wothrać',
 	'ogg-play-sound' => 'Zynk wothrać',
+	'ogg-no-player' => 'Bohužel twój system po wšěm zdaću nima wothrawansku software. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń wothrawak</a>.',
+	'ogg-no-xiphqt' => 'Po wšěm zdaću nimaš komponentu XiphQT za QuickTime. QuickTime njemóže Ogg-dataje bjez tuteje komponenty wothrawać. Prošu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">sćehń XiphQT</a> abo wubjer druhi wothrawak.',
 	'ogg-player-videoElement' => 'Element <video>',
 	'ogg-player-oggPlugin' => 'Tykač Ogg',
+	'ogg-player-cortado' => 'Cortado (Java)',#identical but defined
+	'ogg-player-vlc-mozilla' => 'VLC',#identical but defined
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',#identical but defined
+	'ogg-player-quicktime-mozilla' => 'QuickTime',#identical but defined
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',#identical but defined
 	'ogg-player-thumbnail' => 'Napohlad pokazać',
 	'ogg-player-soundthumb' => 'Žadyn wothrawak',
 	'ogg-player-selected' => '(wubrany)',

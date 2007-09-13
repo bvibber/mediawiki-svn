@@ -191,11 +191,23 @@ function efMakeBotMessages() {
 ),
 
 'hsb' => array(
+'makebot'                 => 'Botowy status dać abo zebrać',
+'makebot-header'          => '\'\'\'Lokalny běrokrat móže tut stronu wužiwać, zo by [[Help:Bot|botowy status]] konće druheho wužiwarja dał abo zebrał.\'\'\'<br />Botowy status chowa změny wužiwarja w [[Special:Recentchanges|aktualnych změnach]] a podobnych lisćinach a je za woznamjenjenje wužiwarjow, kotřiž awtomatiske změny, wužitne. To měło so po přihódnych postajenjach stać.',
 'makebot-username'        => 'Wužiwarske mjeno:',
 'makebot-search'          => 'Pytać',
 'makebot-isbot'           => '[[User:$1|$1]] ma botowy status.',
+'makebot-notbot'          => '[[User:$1|$1]] nima botowy status.',
+'makebot-privileged'      => '[[User:$1|$1]] ma [[Special:Listusers/sysop|prawa administratora abo běrokrata]], botowy status njehodźi so dać.',
 'makebot-change'          => 'Status změnić',
+'makebot-grant'           => 'Dać',
+'makebot-revoke'          => 'Zebrać',
 'makebot-comment'         => 'Komentar:',
+'makebot-granted'         => '[[User:$1|$1]] ma nětko botowy status.',
+'makebot-revoked'         => '[[User:$1|$1]] hižo nima botowy status.',
+'makebot-logpage'         => 'Protokol botoweho statusa',
+'makebot-logpagetext'     => 'To je protokol wšěch změnow [[Help:Bot|botoweho statusa]] wužiwarja.',
+'makebot-logentrygrant'   => 'Botowy status za [[$1]] daty',
+'makebot-logentryrevoke'  => 'Botowy status wužiwarjej [[$1]] zebrany.',
 ),
 
 /* Hungarian */

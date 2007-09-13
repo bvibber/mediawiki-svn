@@ -193,6 +193,18 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'بۇل ۋيكيدە ەش ٷلەس بولعان جوق.',
 ),
 
+'nds' => array(
+'countedits' => 'Tellen, wo faken de Bruker Sieden ännert hett',
+'countedits-warning' => '\'\'\'Wohrschau:\'\'\' Schasst de Deern nich na ehr Schört reken. Wo faken en Bruker Sieden ännert hett, seggt nix över sien Arbeit ut.',
+'countedits-username' => 'Brukernaam:',
+'countedits-ok' => 'Okay',
+'countedits-nosuchuser' => 'Dat gifft keen Bruker mit’n Naam $1.',
+'countedits-resultheader' => 'Wat för $1 rutkamen is',
+'countedits-resulttext' => '$1 hett $2 Maal wat ännert.',
+'countedits-mostactive' => 'Brukers, de opmehrst Maal wat ännert hebbt',
+'countedits-nocontribs' => 'Kene Bidrääg op dit Wiki.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'countedits' => 'Bewerkingen tellen',

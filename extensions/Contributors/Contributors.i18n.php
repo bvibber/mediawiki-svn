@@ -209,6 +209,12 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => '$1 دەگەن ماقالا بٸزدە جوق.',
 ),
 
+'nds' => array(
+'contributors-target' => 'Titel:',
+'contributors-badtitle' => 'Titel ungüllig.',
+'contributors-nosuchpage' => 'Artikel $1 gifft dat nich.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'contributors' => 'Contribuanten',

@@ -101,6 +101,9 @@ $wgDesysopMessages['id'] = array(
 	'desysop'              => 'Mencabut hak pengurus pengguna',
 	'not_sysop'            => 'Pengguna ini bukan pengurus',
 );
+$wgDesysopMessages['is'] = array(
+	'set_user_rights'      => 'Breyta réttindum notanda',
+);
 $wgDesysopMessages['it'] = array(
 	'desysoptitle'         => "Revoca dei privilegi di amministratore",
 	'desysoptext'          => "Questo modulo consente ai burocrati di revocare i privilegi di amministratore a un utente. Inserire il nome utente nella casella di testo e premere il pulsante per revocarne l'accesso come amministratore.",

@@ -185,6 +185,10 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Buat artikel',
 ),
 
+'is' => array(
+	'createarticle'           => 'Búa til grein',
+),
+
 'it' => array(
 	'tryexact'       => 'Cerca corrispondenza esatta',
 	'searchfulltext' => 'Ricerca nel testo',

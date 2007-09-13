@@ -184,6 +184,19 @@ function efImageMapMessages() {
 'imagemap_description'          => 'بۇل سۋرەت تۋرالى',
 ),
 
+'nds' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt;: in de eerste Reeg mutt en Bild angeven wesen',
+'imagemap_invalid_image'        => '&lt;imagemap&gt;: Bild geiht nich oder dat gifft dat gornich',
+'imagemap_no_link'              => '&lt;imagemap&gt;: an dat Enn vun Reeg $1 weer keen Lenk',
+'imagemap_invalid_title'        => '&lt;imagemap&gt;: in Reeg $1 is de Titel in’n Lenk nich bi de Reeg',
+'imagemap_missing_coord'        => '&lt;imagemap&gt;: Form in Reeg $1 hett nich noog Koordinaten',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt;: Form in Reeg $1 nich kennt, jede Reeg mutt mit \'\'default\'\', \'\'rect\'\', \'\'circle\'\' oder \'\'poly\'\' anfangen',
+'imagemap_no_areas'             => '&lt;imagemap&gt;: opminnst een Areal mutt angeven wesen',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: Koordinaat in Reeg $1 nich bi de Reeg, mutt en Tall wesen',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: Beschrieven nich bi de Reeg, mutt een vun disse wesen: <tt>$1</tt>',
+'imagemap_description'          => 'Över dit Bild',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: geef een afbeelding op in de eerste regel',

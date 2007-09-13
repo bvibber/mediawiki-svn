@@ -49,7 +49,7 @@ $wgDismissableSiteNoticeMessages['he'] = array(
 );
 
 $wgDismissableSiteNoticeMessages['hsb'] = array(
-	'sitenotice_close' => 'Rozžohnować',
+	'sitenotice_close' => 'schować',
 );
 
 $wgDismissableSiteNoticeMessages['hu'] = array(
@@ -82,6 +82,10 @@ $wgDismissableSiteNoticeMessages['kk']= $wgDismissableSiteNoticeMessages['kk-kz'
 
 $wgDismissableSiteNoticeMessages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
+);
+
+$wgDismissableSiteNoticeMessages['nds'] = array(
+	'sitenotice_close' => 'wegmaken',
 );
 
 $wgDismissableSiteNoticeMessages['nl'] = array(

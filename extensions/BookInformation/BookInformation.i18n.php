@@ -88,6 +88,16 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Daten-Lieferant: $1',
 ),
 
+'ext' => array(
+'bookinfo-header' => 'Enhormación el libru',
+'bookinfo-result-title' => 'Entítulu:',
+'bookinfo-result-author' => 'Autol:',
+'bookinfo-result-publisher' => 'Eitorial:',
+'bookinfo-result-year' => 'Añu:',
+'bookinfo-error-nosuchitem' => 'El artículu nu desisti u nu puei sel alcuentrau.',
+'bookinfo-purchase' => 'Mercal esti libru e $1',
+),
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 'bookinfo-header' => 'Kirjan tiedot',
