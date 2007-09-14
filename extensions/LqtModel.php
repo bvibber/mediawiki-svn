@@ -989,13 +989,36 @@ class QueryGroup {
 
 class NewMessages {
 	
+	static function markThreadAsUnreadByUser($thread, $user) {
+		self::writeUserMessageState($thread, $user, null);
+	}
+	
 	static function markThreadAsReadByUser($thread, $user) {
+		self::writeUserMessageState($thread, $user, wfTimestampNow());		
+	}
+	
+	private static function writeUserMessageState($thread, $user, $timestamp) {
+		if( is_object($thread) ) $thread_id = $thread->id();
+		else if( is_integer($thread) ) $thread_id = $thread;
+		else throw new MWException("writeUserMessageState expected Thread or integer but got $thread");
+		
+		if( is_object($user) ) $user_id = $user->getID();
+		else if( is_integer($user) ) $user_id = $user;
+		else throw new MWException("writeUserMessageState expected User or integer but got $user");
+		
+		// use query() directly to pass is 'true' for don't-die on errors.
 		$dbr =& wfGetDB( DB_MASTER );
-        $res = $dbr->insert('user_message_state',
-            array( 'ums_user' => $user->getID(),
-                   'ums_thread' => $thread->id(),
-                   'ums_read_timestamp' => wfTimestampNow() ),
-            __METHOD__);
+        $success = $dbr->query("insert into user_message_state values ($user_id, $thread_id, $timestamp)",
+            __METHOD__, true);
+
+		if ( $timestamp === null ) $timestamp = "NULL";
+
+		if( !$success ) {
+			// duplicate key; update.
+			$dbr->query("update user_message_state set ums_read_timestamp = $timestamp" .
+						" where ums_thread = $thread_id and ums_user = $user_id",
+	            		__METHOD__);
+		}
 	}
 	
 	static function newUserMessages($user) {

@@ -928,18 +928,33 @@ HTML
 		);
 	}
 	
-	function postDivClass($thread) {
-		
+	function showUndo($t) {
+		$this->output->addHTML(<<<HTML
+		<form method="POST" class="lqt_undo_mark_as_read">
+			Thread <b>{$t->subject()}</b> marked as read.
+			<input type="hidden" name="lqt_method" value="mark_as_unread" />
+			<input type="hidden" name="lqt_operand" value="{$t->id()}" />
+			<input type="submit" value="Undo" name="lqt_read_button" title="Bring back the thread you just dismissed." />
+		</form>
+HTML
+		);
 	}
 	
 	function show() {
 		$this->addJSandCSS();
+		
+		if( $this->request->wasPosted() && $this->methodApplies('mark_as_unread') ) {
+			$thread_id = $this->request->getInt( 'lqt_operand', null );
+			if( $thread_id !== null )
+				NewMessages::markThreadAsUnreadByUser($thread_id, $this->user);
+		}
 		
 		$threads = NewMessages::newUserMessages($this->user);
 		foreach($threads as $t) {
 			
 			if( $this->request->wasPosted() && $this->methodAppliesToThread('mark_as_read', $t) ) {
 				NewMessages::markThreadAsReadByUser($t, $this->user);
+				$this->showUndo($t);
 				continue;
 			}
 			

@@ -35,6 +35,10 @@ li {
 	border-bottom: 0px;
 }
 
+.lqt_undo_mark_as_read {
+	background-color: #f0f0e3;
+}
+
 .lqt_disabled_link {
 	color: #999;
 }
