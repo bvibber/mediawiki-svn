@@ -33,7 +33,7 @@ if (defined('MEDIAWIKI')) {
 
 	require_once("SpecialPage.php");
 
-	define('MEDIAWIKI_OPENID_VERSION', '0.6.1');
+	define('MEDIAWIKI_OPENID_VERSION', '0.7.0');
 
 	$wgExtensionFunctions[] = 'setupOpenID';
 	$wgExtensionCredits['other'][] = array('name' => 'OpenID',

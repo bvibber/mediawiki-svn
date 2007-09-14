@@ -1,7 +1,7 @@
 MediaWiki OpenID extension
 
-version 0.6.1
-29 Nov 2006
+version 0.7.0
+14 Sep 2007
 
 This is the README file for the OpenID extension for MediaWiki
 software. The extension is only useful if you've got a MediaWiki
@@ -55,24 +55,22 @@ Patches for YADIS support and FileStore storage by Jonathan Daugherty
 
 == Pre-requisites ==
 
-This software has been tested in production with MediaWiki 1.6.x,
-1.7.x and 1.8.x. It may or may not work with earlier or later
-versions, but I'm interested in making later versions work, and I'd be
-happy to make minor changes to make older, unsupported versions work
-too.
+This software has been tested in production with MediaWiki 1.10.x. It
+may or may not work with earlier or later versions, but I'm interested
+in making later versions work, and I'd be happy to make minor changes
+to make older, unsupported versions work too.
 
 The software depends on the OpenIDEnabled.com PHP library for OpenID,
 which in turn depends on the OpenIDEnabled.com PHP library for YADIS.
 At the time of this writing, info on installing these libraries was
 available here:
 
-	  http://www.openidenabled.com/openid/libraries/php
-	  http://www.openidenabled.com/yadis/libraries/php
+	  http://www.openidenabled.com/php-openid/
 
-The last version tested with is 1.2.0. There are also some required
-extensions; see the OpenIDEnabled documentation for details. This
-software has been tested with the gmp and curl extension installed,
-and it's recommended that you install them, too.
+The last version tested with is 1.2.3 and 2.0.0 rc2. There are also
+some required extensions; see the OpenIDEnabled documentation for
+details. This software has been tested with the gmp and curl PHP
+extensions installed, and it's recommended that you install them, too.
 
 Note that some versions of MediaWiki overwrite the PHP library path in
 LocalSettings.php. You may need to add the path to your PHP library
