@@ -1008,7 +1008,7 @@ class NewMessages {
 		
 		if ( $timestamp === null ) $timestamp = "NULL";
 		
-		// use query() directly to pass is 'true' for don't-die on errors.
+		// use query() directly to pass in 'true' for don't-die-on-errors.
 		$dbr =& wfGetDB( DB_MASTER );
         $success = $dbr->query("insert into user_message_state values ($user_id, $thread_id, $timestamp)",
             __METHOD__, true);
@@ -1025,7 +1025,7 @@ class NewMessages {
 
 		$ts = Threads::where( array('ums_read_timestamp is null',
 									Threads::articleClause(new Article($user->getUserPage()))),
-							 array(), array(), 'left outer join user_message_state on ums_user is null or (ums_user = 2 and ums_thread = thread.thread_id)' );
+							 array(), array(), "left outer join user_message_state on ums_user is null or (ums_user = {$user->getID()} and ums_thread = thread.thread_id)" );
 		return $ts;
 	}
 	
