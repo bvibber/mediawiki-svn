@@ -16,7 +16,7 @@ class EditPage {
 	const AS_SUCCESS_NEW_ARTICLE			= 201;
 	const AS_HOOK_ERROR 					= 210;
 	const AS_FILTERING						= 211;
-	const AS_HOOK_ERROR_EXPECTED				= 212;
+	const AS_HOOK_ERROR_EXPECTED			= 212;
 	const AS_BLOCKED_PAGE_FOR_USER			= 215;
 	const AS_CONTENT_TOO_BIG				= 216;
 	const AS_USER_CANNOT_EDIT				= 217;
@@ -364,7 +364,7 @@ class EditPage {
 			{
 				if ($this->edit) {
 					$this->formtype = 'preview';
-				}  else if ($this->save || $this->preview || $this->diff)  {
+				} elseif ($this->save || $this->preview || $this->diff) {
 					$remove[] = $error;
 				}
 			}
@@ -663,7 +663,6 @@ class EditPage {
 		{
 			wfDebug( "Hook 'EditPage::attemptSave' aborted article saving" );
 			return self::AS_HOOK_ERROR;
-//			return false;
 		}
 
 		# Reintegrate metadata
@@ -677,27 +676,23 @@ class EditPage {
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_SPAM_ERROR;
-//			return false;
 		}
 		if ( $wgFilterCallback && $wgFilterCallback( $this->mTitle, $this->textbox1, $this->section ) ) {
 			# Error messages or other handling should be performed by the filter function
 			wfProfileOut( $fname );
 			wfProfileOut( "$fname-checks" );
 			return self::AS_FILTERING;
-//			return false;
 		}
 		if ( !wfRunHooks( 'EditFilter', array( $this, $this->textbox1, $this->section, &$this->hookError ) ) ) {
 			# Error messages etc. could be handled within the hook...
 			wfProfileOut( $fname );
 			wfProfileOut( "$fname-checks" );
-			return AS_HOOK_ERROR;
-//			return false;
+			return self::AS_HOOK_ERROR;
 		} elseif( $this->hookError != '' ) {
 			# ...or the hook could be expecting us to produce an error
 			wfProfileOut( "$fname-checks " );
 			wfProfileOut( $fname );
 			return self::AS_HOOK_ERROR_EXPECTED;
-//			return true;
 		}
 		if ( $wgUser->isBlockedFrom( $this->mTitle, false ) ) {
 			# Check block state against master, thus 'false'.
@@ -705,7 +700,6 @@ class EditPage {
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_BLOCKED_PAGE_FOR_USER;
-//			return false;
 		}
 		$this->kblength = (int)(strlen( $this->textbox1 ) / 1024);
 		if ( $this->kblength > $wgMaxArticleSize ) {
@@ -714,7 +708,6 @@ class EditPage {
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_CONTENT_TOO_BIG;
-//			return true;
 		}
 
 		if ( !$wgUser->isAllowed('edit') ) {
@@ -723,14 +716,12 @@ class EditPage {
 				wfProfileOut( "$fname-checks" );
 				wfProfileOut( $fname );
 				return self::AS_READ_ONLY_PAGE_ANON;
-//				return false;
 			}
 			else {
 //				$wgOut->readOnlyPage();
 				wfProfileOut( "$fname-checks" );
 				wfProfileOut( $fname );
 				return self::AS_READ_ONLY_PAGE_LOGGED;
-//				return false;
 			}
 		}
 
@@ -739,14 +730,12 @@ class EditPage {
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_READ_ONLY_PAGE;
-//			return false;
 		}
 		if ( $wgUser->pingLimiter() ) {
 //			$wgOut->rateLimited();
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_RATE_LIMITED;
-//			return false;
 		}
 
 		# If the article has been deleted while editing, don't save it without
@@ -755,7 +744,6 @@ class EditPage {
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_ARTICLE_WAS_DELETED;
-//			return true;
 		}
 
 		wfProfileOut( "$fname-checks" );
@@ -763,33 +751,37 @@ class EditPage {
 		# If article is new, insert it.
 		$aid = $this->mTitle->getArticleID( GAID_FOR_UPDATE );
 		if ( 0 == $aid ) {
+
 			// Late check for create permission, just in case *PARANOIA*
 			if ( !$this->mTitle->userCan( 'create' ) ) {
 				wfDebug( "$fname: no create permission\n" );
+//				$this->noCreatePermission();
 				wfProfileOut( $fname );
 				return self::AS_NO_CREATE_PERMISSION;
-//				$this->noCreatePermission();
-//				return;
 			}
 
 			# Don't save a new article if it's blank.
 			if ( ( '' == $this->textbox1 ) ) {
+//					$wgOut->redirect( $this->mTitle->getFullURL() );
 					wfProfileOut( $fname );
 					return self::AS_BLANK_ARTICLE;
-//					return false;
 			}
 
 			$isComment=($this->section=='new');
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
 				$this->minoredit, $this->watchthis, false, $isComment);
+
 			wfProfileOut( $fname );
 			return self::AS_SUCCESS_NEW_ARTICLE;
-//			return false;
 		}
+
 		# Article exists. Check for edit conflict.
+
 		$this->mArticle->clear(); # Force reload of dates, etc.
 		$this->mArticle->forUpdate( true ); # Lock the article
+
 		wfDebug("timestamp: {$this->mArticle->getTimestamp()}, edittime: {$this->edittime}\n");
+
 		if( $this->mArticle->getTimestamp() != $this->edittime ) {
 			$this->isConflict = true;
 			if( $this->section == 'new' ) {
@@ -807,6 +799,7 @@ class EditPage {
 			}
 		}
 		$userid = $wgUser->getID();
+
 		if ( $this->isConflict) {
 			wfDebug( "EditPage::editForm conflict! getting section '$this->section' for time '$this->edittime' (article time '" .
 				$this->mArticle->getTimestamp() . "')\n" );
@@ -816,7 +809,6 @@ class EditPage {
 			wfDebug( "EditPage::editForm getting section '$this->section'\n" );
 			$text = $this->mArticle->replaceSection( $this->section, $this->textbox1, $this->summary);
 		}
-
 		if( is_null( $text ) ) {
 			wfDebug( "EditPage::editForm activating conflict; section replace failed.\n" );
 			$this->isConflict = true;
@@ -846,7 +838,6 @@ class EditPage {
 		if ( $this->isConflict ) {
 			wfProfileOut( $fname );
 			return self::AS_CONFLICT_DETECTED;
-// 			return true;
 		}
 
 		$oldtext = $this->mArticle->getContent();
@@ -858,7 +849,6 @@ class EditPage {
 				$this->missingSummary = true;
 				wfProfileOut( $fname );
 				return self::AS_SUMMARY_NEEDED;
-//				return( true );
 			}
 		}
 
@@ -868,9 +858,9 @@ class EditPage {
 				$this->missingSummary = true;
 				wfProfileOut( $fname );
 				return self::AS_SUMMARY_NEEDED;
-//				return( true );
 			}
 		}
+
 		# All's well
 		wfProfileIn( "$fname-sectionanchor" );
 		$sectionanchor = '';
@@ -878,7 +868,6 @@ class EditPage {
 			if ( $this->textbox1 == '' ) {
 				$this->missingComment = true;
 				return self::AS_TEXTBOX_EMPTY;
-//				return true;
 			}
 			if( $this->summary != '' ) {
 				$sectionanchor = $wgParser->guessSectionNameFromWikiText( $this->summary );
@@ -906,27 +895,25 @@ class EditPage {
 		// replace that into a duplicated mess.
 		$this->textbox1 = $text;
 		$this->section = '';
+
 		// Check for length errors again now that the section is merged in
 		$this->kblength = (int)(strlen( $text ) / 1024);
 		if ( $this->kblength > $wgMaxArticleSize ) {
 			$this->tooBig = true;
 			wfProfileOut( $fname );
 			return self::AS_MAX_ARTICLE_SIZE_EXCEDED;
-//			return true;
 		}
 
 		# update the article here
 		if( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
 			$this->watchthis, '', $sectionanchor ) ) {
 			wfProfileOut( $fname );
-return self::AS_SUCCESS_UPDATE;
-//			return false;
+			return self::AS_SUCCESS_UPDATE;
 		} else {
 			$this->isConflict = true;
 		}
 		wfProfileOut( $fname );
 		return self::AS_END;
-//		return true;
 	}
 
 	/**
@@ -2205,8 +2192,7 @@ END
 //		case DEFAULT:
 //			return true;
 		}
-}
-
+	}
 }
 
 

@@ -357,7 +357,6 @@ class UploadForm {
 		{
 			wfDebug( "Hook 'UploadForm:BeforeProcessing' broke processing the file." );
 			return self::BEFORE_PROCESSING;
-			
 		}
 
 		/* Check for PHP error if any, requires php 4.2 or newer */
@@ -399,7 +398,6 @@ class UploadForm {
 				$partname .= '.' . $ext[$i];
 		}
 		
-
 		if( strlen( $partname ) < 1 ) {
 			return self::MIN_LENGHT_PARTNAME;
 		}
@@ -410,7 +408,6 @@ class UploadForm {
 		 */
 		$filtered = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $filtered );
 		$nt = Title::makeTitleSafe( NS_IMAGE, $filtered );
-
 		if( is_null( $nt ) ) {
 			$resultDetails = array( 'filtered' => $filtered );
 			return self::ILLEGAL_FILENAME;
@@ -439,10 +436,8 @@ class UploadForm {
 		/* Don't allow users to override the blacklist (check file extension) */
 		global $wgStrictFileExtensions;
 		global $wgFileExtensions, $wgFileBlacklist;
-
 		if ($finalExt == '') {
 			return self::FILETYPE_MISSING;
-			
 		} elseif ( $this->checkFileExtensionList( $ext, $wgFileBlacklist ) ||
 				($wgStrictFileExtensions && !$this->checkFileExtension( $finalExt, $wgFileExtensions ) ) ) {
 			$resultDetails = array( 'finalExt' => $finalExt );
@@ -481,6 +476,7 @@ class UploadForm {
 		 */
 		if ( ! $this->mIgnoreWarning ) {
 			$warning = '';
+
 			global $wgCapitalLinks;
 			if( $wgCapitalLinks ) {
 				$filtered = ucfirst( $filtered );
@@ -511,7 +507,6 @@ class UploadForm {
 			if ( !$this->mDestWarningAck ) {
 				$warning .= self::getExistsWarning( $this->mLocalFile );
 			}
-
 			if( $warning != '' ) {
 				/**
 				 * Stash the file in a temporary location; the user can choose
@@ -656,7 +651,6 @@ class UploadForm {
 			$llink = $sk->makeKnownLinkObj( $ltitle, wfMsgHtml( 'deletionlog' ), 
 				'type=delete&page=' . $file->getTitle()->getPrefixedUrl() );
 			$warning .= '<li>' . wfMsgWikiHtml( 'filewasdeleted', $llink ) . '</li>';
-
 		}
 		return $warning;
 	}
@@ -1160,6 +1154,7 @@ EOT
 		#check mime type, if desired
 		global $wgVerifyMimeType;
 		if ($wgVerifyMimeType) {
+
 		  wfDebug ( "\n\nmime: <$mime> extension: <$extension>\n\n");
 			#check mime type against file extension
 			if( !$this->verifyExtension( $mime, $extension ) ) {
@@ -1170,7 +1165,6 @@ EOT
 			global $wgMimeTypeBlacklist;
 			if( isset($wgMimeTypeBlacklist) && !is_null($wgMimeTypeBlacklist)
 				&& $this->checkFileExtension( $mime, $wgMimeTypeBlacklist ) ) {
-				
 				return new WikiErrorMsg( 'filetype-badmime', htmlspecialchars( $mime ) );
 			}
 		}
@@ -1189,7 +1183,6 @@ EOT
 		}
 
 		wfDebug( __METHOD__.": all clear; passing.\n" );
-
 		return true;
 	}
 
@@ -1563,5 +1556,3 @@ EOT
 		return $pageText;
 	}
 }
-
-

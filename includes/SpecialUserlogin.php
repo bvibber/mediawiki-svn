@@ -8,7 +8,6 @@
  * constructor
  */
 function wfSpecialUserlogin() {
-	
 	global $wgRequest;
 	if( session_id() == '' ) {
 		wfSetupSession();
@@ -57,7 +56,6 @@ class LoginForm {
 	const ERROR = 30;
 	const SUCCESFUL_LOGIN = 31;
 	
-	
 	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
 	var $mLoginattempt, $mRemember, $mEmail, $mDomain, $mLanguage;
@@ -76,8 +74,6 @@ class LoginForm {
 		$this->mRetype = $request->getText( 'wpRetype' );
 		$this->mDomain = $request->getText( 'wpDomain' );
 		$this->mReturnTo = $request->getVal( 'returnto' );
-		
-		
 		$this->mCookieCheck = $request->getVal( 'wpCookieCheck' );
 		$this->mPosted = $request->wasPosted();
 		$this->mCreateaccount = $request->getCheck( 'wpCreateaccount' );
@@ -115,7 +111,7 @@ class LoginForm {
 	function execute() {
 		$resultDetails = null;
 		$value = null;
-				
+		
 		if ( !is_null( $this->mCookieCheck ) ) {
 			$value = $this->onCookieRedirectCheck( $this->mCookieCheck, $resultDetails );
 			return $this->processRest($value, $resultDetails);
@@ -166,6 +162,7 @@ class LoginForm {
 			return self::ACCMAILTEXT;
 		}
 	}
+
 
 	/**
 	 * @private
@@ -259,7 +256,6 @@ class LoginForm {
 		{
 			$results['ip'] = $ip;
 			return self::SORBS;
-
 		}
 
 		# Now create a dummy user ($u) and check if it is valid
@@ -267,22 +263,18 @@ class LoginForm {
 		$u = User::newFromName( $name, 'creatable' );
 		if ( is_null( $u ) ) {
 			return self::NO_NAME;
-
 		}
 
 		if ( 0 != $u->idForName() ) {
 			return self::USER_EXISTS;
-
 		}
 
 		if ( 0 != strcmp( $this->mPassword, $this->mRetype ) ) {
 			return self::BAD_RETYPE;
-
 		}
 
 		if ( !$u->isValidPassword( $this->mPassword ) ) {
 			return self::TOO_SHORT;
-
 		}
 		
 		# Set some additional data so the AbortNewAccount hook can be
@@ -296,7 +288,6 @@ class LoginForm {
 			wfDebug( "LoginForm::addNewAccountInternal: a hook blocked creation\n" );
 			$results['error'] = $abortError;
 			return self::ABORT_ERROR;
-
 		}
 
 		if ( $wgAccountCreationThrottle && $wgUser->isPingLimitable() ) {
@@ -313,7 +304,6 @@ class LoginForm {
 
 		if( !$wgAuth->addUser( $u, $this->mPassword, $this->mEmail, $this->mRealName ) ) {
 			return self::DB_ERROR;
-
 		}
 
 		return $this->initUser( $u, false );
@@ -611,35 +601,29 @@ class LoginForm {
 
 		if( !$wgAuth->allowPasswordChange() ) {
 			return self::RESETPASS_FORBIDDEN;
-
 		}
 
 		# Check against blocked IPs
 		# fixme -- should we not?
 		if( $wgUser->isBlocked() ) {
 			return self::MAILPASSWORD_BLOCKED;
-
 		}
 
 		# Check against the rate limiter
 		if( $wgUser->pingLimiter( 'mailpassword' ) ) {
 			return self::RATE_LIMITED; 
-
 		}
 
 		if ( '' == $this->mName ) {
 			return self::NO_NAME;
-
 		}
 		$u = User::newFromName( $this->mName );
 		if( is_null( $u ) ) {
 			return self::NO_NAME;
-
 		}
 		if ( 0 == $u->getID() ) {
 			$results['user']=$u;
 			return self::NO_SUCH_USER;
-
 		}
 
 		# Check against password throttle

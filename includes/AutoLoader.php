@@ -335,9 +335,10 @@ function __autoload($className) {
 		'ApiQueryUserInfo' => 'includes/api/ApiQueryUserInfo.php',
 		'ApiQueryWatchlist' => 'includes/api/ApiQueryWatchlist.php',
 		'ApiResult' => 'includes/api/ApiResult.php',		
-		// Added by VF
+
+		# Added by VF - Api Edit branch
 		'ApiEditPage' => 'includes/api/ApiEditPage.php',
-    'ApiRegUser' => 'includes/api/ApiRegUser.php',
+		'ApiRegUser' => 'includes/api/ApiRegUser.php',
 		'ApiUploadFile' => 'includes/api/ApiUploadFile.php',
 	);
 	
@@ -389,5 +390,3 @@ function wfLoadAllExtensions() {
 		}
 	}
 }
-
-
