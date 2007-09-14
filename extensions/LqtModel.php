@@ -1006,12 +1006,12 @@ class NewMessages {
 		else if( is_integer($user) ) $user_id = $user;
 		else throw new MWException("writeUserMessageState expected User or integer but got $user");
 		
+		if ( $timestamp === null ) $timestamp = "NULL";
+		
 		// use query() directly to pass is 'true' for don't-die on errors.
 		$dbr =& wfGetDB( DB_MASTER );
         $success = $dbr->query("insert into user_message_state values ($user_id, $thread_id, $timestamp)",
             __METHOD__, true);
-
-		if ( $timestamp === null ) $timestamp = "NULL";
 
 		if( !$success ) {
 			// duplicate key; update.
