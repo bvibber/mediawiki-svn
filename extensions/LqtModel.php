@@ -825,7 +825,7 @@ class Threads {
 		return $newthread;
      }
 	
-	static function where( $where, $options = array(), $extra_tables = array() ) {
+	static function where( $where, $options = array(), $extra_tables = array(), $joins = "" ) {
 		$dbr = wfGetDB( DB_SLAVE );
 		if ( is_array($where) ) $where = $dbr->makeList( $where, LIST_AND );
 		if ( is_array($options) ) $options = implode(',', $options);
@@ -837,7 +837,7 @@ class Threads {
 		} else {
 			$tables = "";
 		}
-		
+				
 		/* Select the client's threads, AND all their children.
 		  The ones the client actually asked for are marked with root_test.
 		  In theory we could also grab the page and revision data, to avoid having
@@ -848,7 +848,7 @@ class Threads {
 		$root_test = str_replace( 'thread.', 'children.', $where ); // TODO fragile?
 
 		$sql = <<< SQL
-SELECT children.*, child_page.*, ($root_test) as is_root FROM $tables thread, thread children, page child_page
+SELECT children.*, child_page.*, ($root_test) as is_root FROM $tables thread, thread children, page child_page $joins
 WHERE $where
 AND children.thread_path LIKE CONCAT(thread.thread_path, "%")
 AND child_page.page_id = children.thread_root
@@ -989,22 +989,20 @@ class QueryGroup {
 
 class NewMessages {
 	
+	static function markThreadAsReadByUser($thread, $user) {
+		$dbr =& wfGetDB( DB_MASTER );
+        $res = $dbr->insert('user_message_state',
+            array( 'ums_user' => $user->getID(),
+                   'ums_thread' => $thread->id(),
+                   'ums_read_timestamp' => wfTimestampNow() ),
+            __METHOD__);
+	}
+	
 	static function newUserMessages($user) {
-/*		$article_clause = Threads::articleClause(new Article($user->getUserPage()))
-		$sql = <<< SQL
-			select * from thread, page, recentchanges
-			where thread_root = rc_cur_id
-				and $article_clause
-SQL;
-		$dbr = wfGetDB( DB_SLAVE );
-		res = $dbr->query($sql); 
-		while ( $line = $dbr->fetchObject($res) ) {
-			
-		}*/
-		
-		$ts = Threads::where( array('thread.thread_root = rc_cur_id', 
+
+		$ts = Threads::where( array('ums_read_timestamp is null',
 									Threads::articleClause(new Article($user->getUserPage()))),
-							 array(), array('recentchanges') );
+							 array(), array(), 'left outer join user_message_state on ums_user is null or (ums_user = 2 and ums_thread = thread.thread_id)' );
 		return $ts;
 	}
 	

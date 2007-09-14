@@ -910,7 +910,9 @@ class NewUserMessagesView extends LqtView {
 		<table ><tr>
 		<td style="padding-right: 1em; vertical-align: top; padding-top: 1em;" >
 		<form method="POST">
-		<input type="submit" value="Read" title="Remove this thread from New Messages." />
+			<input type="hidden" name="lqt_method" value="mark_as_read" />
+			<input type="hidden" name="lqt_operand" value="{$t->id()}" />
+			<input type="submit" value="Read" name="lqt_read_button" title="Remove this thread from New Messages." />
 		</form>
 		</td>
 		<td>
@@ -925,10 +927,6 @@ HTML
 HTML
 		);
 	}
-
-	private function showClearButtonForThread($thread) {
-		$this->output->addHTML('<input type="submit">');
-	}
 	
 	function postDivClass($thread) {
 		
@@ -936,9 +934,16 @@ HTML
 	
 	function show() {
 		$this->addJSandCSS();
-
+		
 		$threads = NewMessages::newUserMessages($this->user);
 		foreach($threads as $t) {
+			
+			if( $this->request->wasPosted() && $this->methodAppliesToThread('mark_as_read', $t) ) {
+				NewMessages::markThreadAsReadByUser($t, $this->user);
+				continue;
+			}
+			
+			// Call for POST as well as GET so that edit, reply, etc. will work.
 			$this->preShowThread($t);
 			$this->showThread($t);
 			$this->postShowThread($t);
