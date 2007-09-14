@@ -41,7 +41,7 @@ class ApiUploadFile extends ApiBase {
 	const UPLOAD_BLOCKED_PAGE = -5;
 	const UPLOAD_READ_ONLY = -6;
 	const UPLOAD_BAD_TOKEN = -7;
-
+	const UPLOAD_WITHOUT_POSTPARAMETERS = -8;
 
 	public function __construct($query, $moduleName) {
 		parent :: __construct($query, $moduleName, 'up');
@@ -147,7 +147,7 @@ class ApiUploadFile extends ApiBase {
 //			$this->cleanupTempFile();
 
         } else {
-        	$this->process( self::UPLOAD_INVALID );
+        	$this->process( self::UPLOAD_WITHOUT_POSTPARAMETERS );
         }
 	}
 
@@ -156,89 +156,93 @@ class ApiUploadFile extends ApiBase {
 
         switch ($value) {
 			case ApiUploadFile::UPLOAD_INVALID :
-	            $result['result'] = 'Upload_Invalid';
+	            $result['result'] = 'UPLOAD_INVALID';
 			    break;
 
 			case ApiUploadFile::UPLOAD_ENABLED_UPLOADS :
-	            $result['result'] = 'Upload_Enabled_Uploads';
+	            $result['result'] = 'UPLOAD_ENABLED_UPLOADS';
 			    break;
 
 			case ApiUploadFile::UPLOAD_NOT_LOGGED :
-	            $result['result'] = 'Upload_Not_Logged';
+	            $result['result'] = 'UPLOAD_NOT_LOGGED';
 			    break;
 
 			case ApiUploadFile::UPLOAD_NOT_ALLOWED :
-	            $result['result'] = 'Upload_Not_Allowed';
+	            $result['result'] = 'UPLOAD_NOT_ALLOWED';
 			    break;
 
 			case ApiUploadFile::UPLOAD_BLOCKED_PAGE :
-	            $result['result'] = 'Upload_Blocked_Page';
+	            $result['result'] = 'UPLOAD_BLOCKED_PAGE';
 			    break;
 
 			case ApiUploadFile::UPLOAD_READ_ONLY :
-	            $result['result'] = 'Upload_Read_Only';
+	            $result['result'] = 'UPLOAD_READ_ONLY';
 			    break;
 
 			case ApiUploadFile::UPLOAD_BAD_TOKEN :
 	            $result['result'] = 'UPLOAD_BAD_TOKEN';
 			    break;
 
+			case ApiUploadFile::UPLOAD_WITHOUT_POSTPARAMETERS :
+	            $result['result'] = 'UPLOAD_WITHOUT_POSTPARAMETERS';
+			    break;
+
             case UploadForm::SUCCESS :
-	            $result['result'] = 'Success';
+	            $result['result'] = 'SUCCESS';
 				$result['title'] = $wgRequest->getText( 'updestfile' );
 				$result['ns'] = "6";
 	            break;
 
 			case UploadForm::BEFORE_PROCESSING:
-	            $result['result'] = 'Upload_BeforeProcessing';
+	            $result['result'] = 'UPLOAD_BEFORE_PROCESSING ';
 			    break;
 
 			case UploadForm::LARGE_FILE_SERVER:
-	            $result['result'] = 'Upload_LargeFileServer';
+	            $result['result'] = 'UPLOAD_LARGE_FILE_SERVER';
 			    break;
 
 			case UploadForm::EMPTY_FILE:
-	            $result['result'] = 'Upload_EmptyFile';
+	            $result['result'] = 'UPLOAD_EMPTY_FILE';
 			    break;
 
 			case UploadForm::MIN_LENGHT_PARTNAME:
-	            $result['result'] = 'Upload_MinLenghtPartName';
+	            $result['result'] = 'UPLOAD_MIN_LENGHT_PARTNAME';
 			    break;
 
 			case UploadForm::ILLEGAL_FILENAME:
-	            $result['result'] = 'Upload_IllegalFilename';
+	            $result['result'] = 'UPLOAD_ILLEGAL_FILENAME';
 			    break;
 
 			case UploadForm::PROTECTED_PAGE:
-	            $result['result'] = 'Upload_ProtectedPage';
+	            $result['result'] = 'UPLOAD_PROTECTED_PAGE';
 			    break;
 
 			case UploadForm::OVERWRITE_EXISTING_FILE:
-	            $result['result'] = 'Upload_OverwriteExistingFile';
+	            $result['result'] = 'UPLOAD_OVERWRITE_EXISTING_FILE';
 			    break;
 
 			case UploadForm::FILETYPE_MISSING:
-	            $result['result'] = 'Upload_FiletypeMissing';
+	            $result['result'] = 'UPLOAD_FILETYPE_MISSING';
 			    break;
 
 			case UploadForm::FILETYPE_BADTYPE:
-	            $result['result'] = 'Upload_FiletypeBadType';
+	            $result['result'] = 'UPLOAD_FILETYPE_BADTYPE';
 			    break;
 
 			case UploadForm::VERIFICATION_ERROR:
-	            $result['result'] = 'Upload_VerificationError';
+	            $result['result'] = 'UPLOAD_VERIFICATION_ERROR';
 			    break;
 
 			case UploadForm::UPLOAD_VERIFICATION_ERROR:
-	            $result['result'] = 'Upload_UploadVerificationError';
+	            $result['result'] = 'UPLOAD_UPLOADVERIFICATION_ERROR';
 			    break;
 
 			case UploadForm::UPLOAD_WARNING:
-	            $result['result'] = 'Upload_Warning';
+	            $result['result'] = 'UPLOAD_WARNING';
 			    break;
 
             default :
-            	$result['result'] = 'Upload_Invalid';
+            	$result['result'] = 'UPLOAD_INVALID';
         }
 
         $this->getResult()->addValue(null, 'upload', $result);

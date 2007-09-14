@@ -259,9 +259,7 @@ class UploadForm {
 			}
 			$this->mainUploadForm();
 		} else if( 'submit' == $this->mAction || $this->mUploadClicked ) {
-			$details = null;
-			$retval = $this->processUpload( $details );
-			$this->processRest($retval, $details);
+			$this->processUpload();			
 		} else {
 			$this->mainUploadForm();
 		}
@@ -269,11 +267,18 @@ class UploadForm {
 		$this->cleanupTempFile();
 	}
 
-	function processRest($value, $details) {
+	/**
+	 * Do the upload
+	 * Checks are made in SpecialUpload::execute()
+	 *
+	 * @access private
+	 */
+	function processUpload(){
 		global $wgUser, $wgOut, $wgFileExtensions;
-
-		switch ($value)
-		{
+	 	$results = null;
+	 	$value = null;
+	 	$value = internalProcessUpload($results);
+	 	switch($value) {
 			case self::SUCCESS:
 				$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
 			    break;
@@ -335,28 +340,25 @@ class UploadForm {
 				$warning = $details['warning'];
 				$this->uploadWarning( $warning );
 			    break;
-			    
-		}
+	 	}
 	}
-
-
-	/* -------------------------------------------------------------- */
 
 	/**
 	 * Really do the upload
 	 * Checks are made in SpecialUpload::execute()
-	 * 
+	 *
 	 * @param array $resultDetails contains result-specific dict of additional values
-	 * 
+	 *
 	 * @access private
 	 */
-	function processUpload( &$resultDetails="" ) {
+	function internalProcessUpload( &$resultDetails="" ) {
 		global $wgUser, $wgOut;
 
 		if( !wfRunHooks( 'UploadForm:BeforeProcessing', array( &$this ) ) )
 		{
 			wfDebug( "Hook 'UploadForm:BeforeProcessing' broke processing the file." );
 			return self::BEFORE_PROCESSING;
+
 		}
 
 		/* Check for PHP error if any, requires php 4.2 or newer */
@@ -397,7 +399,8 @@ class UploadForm {
 			for( $i = 0; $i < count( $ext ) - 1; $i++ )
 				$partname .= '.' . $ext[$i];
 		}
-		
+
+
 		if( strlen( $partname ) < 1 ) {
 			return self::MIN_LENGHT_PARTNAME;
 		}
@@ -408,6 +411,7 @@ class UploadForm {
 		 */
 		$filtered = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $filtered );
 		$nt = Title::makeTitleSafe( NS_IMAGE, $filtered );
+
 		if( is_null( $nt ) ) {
 			$resultDetails = array( 'filtered' => $filtered );
 			return self::ILLEGAL_FILENAME;
@@ -436,8 +440,10 @@ class UploadForm {
 		/* Don't allow users to override the blacklist (check file extension) */
 		global $wgStrictFileExtensions;
 		global $wgFileExtensions, $wgFileBlacklist;
+
 		if ($finalExt == '') {
 			return self::FILETYPE_MISSING;
+
 		} elseif ( $this->checkFileExtensionList( $ext, $wgFileBlacklist ) ||
 				($wgStrictFileExtensions && !$this->checkFileExtension( $finalExt, $wgFileExtensions ) ) ) {
 			$resultDetails = array( 'finalExt' => $finalExt );
@@ -476,7 +482,6 @@ class UploadForm {
 		 */
 		if ( ! $this->mIgnoreWarning ) {
 			$warning = '';
-
 			global $wgCapitalLinks;
 			if( $wgCapitalLinks ) {
 				$filtered = ucfirst( $filtered );
@@ -488,7 +493,7 @@ class UploadForm {
 			global $wgCheckFileExtensions;
 			if ( $wgCheckFileExtensions ) {
 				if ( ! $this->checkFileExtension( $finalExt, $wgFileExtensions ) ) {
-					$warning .= '<li>'.wfMsgExt( 'filetype-badtype', array ( 'parseinline' ), 
+					$warning .= '<li>'.wfMsgExt( 'filetype-badtype', array ( 'parseinline' ),
 						htmlspecialchars( $finalExt ), implode ( ', ', $wgFileExtensions ) ).'</li>';
 				}
 			}
@@ -507,6 +512,7 @@ class UploadForm {
 			if ( !$this->mDestWarningAck ) {
 				$warning .= self::getExistsWarning( $this->mLocalFile );
 			}
+
 			if( $warning != '' ) {
 				/**
 				 * Stash the file in a temporary location; the user can choose
@@ -524,7 +530,7 @@ class UploadForm {
 		$pageText = self::getInitialPageText( $this->mComment, $this->mLicense,
 			$this->mCopyrightStatus, $this->mCopyrightSource );
 
-		$status = $this->mLocalFile->upload( $this->mTempPath, $this->mComment, $pageText, 
+		$status = $this->mLocalFile->upload( $this->mTempPath, $this->mComment, $pageText,
 			File::DELETE_SOURCE, $this->mFileProps );
 		if ( !$status->isGood() ) {
 			$this->showError( $status->getWikiText() );
