@@ -39,14 +39,14 @@ class Article {
 	/**
 	 * Constants used by internal components to get rollback results
 	 */
-	const SUCCESS = 0;	// Operation successful
-	const PERM_DENIED = 1;	// Permission denied
-	const BLOCKED = 2;	// User has been blocked
-	const READONLY = 3;	// Wiki is in read-only mode
-	const BAD_TOKEN = 4;	// Invalid token specified
-	const BAD_TITLE = 5;	// $this is not a valid Article
-	const ALREADY_ROLLED = 6;// Someone else already rolled this back. $from and $summary will be set
-	const ONLY_AUTHOR = 7;	// User is the only author of the page
+	const SUCCESS = 0;			// Operation successful
+	const PERM_DENIED = 1;		// Permission denied
+	const BLOCKED = 2;			// User has been blocked
+	const READONLY = 3;			// Wiki is in read-only mode
+	const BAD_TOKEN = 4;		// Invalid token specified
+	const BAD_TITLE = 5;		// $this is not a valid Article
+	const ALREADY_ROLLED = 6;	// Someone else already rolled this back. $from and $summary will be set
+	const ONLY_AUTHOR = 7;		// User is the only author of the page
  
 	/**
 	 * Constructor and clear the article
@@ -1465,7 +1465,7 @@ class Article {
 			Article::onArticleCreate( $this->mTitle );
 
 			wfRunHooks( 'ArticleInsertComplete', array( &$this, &$wgUser, $text, $summary,
-					$flags & EDIT_MINOR, null, null, &$flags, $revision ) );
+			 $flags & EDIT_MINOR, null, null, &$flags, $revision ) );
 		}
 
 		if ( $good && !( $flags & EDIT_DEFER_UPDATES ) ) {
@@ -2121,8 +2121,8 @@ class Article {
 				'ar_text_id'    => 'rev_text_id',
 				'ar_text'       => '\'\'', // Be explicit to appease
 				'ar_flags'      => '\'\'', // MySQL's "strict mode"...
-				'ar_len'	=> 'rev_len',
-				'ar_page_id'	=> 'page_id'
+				'ar_len'		=> 'rev_len',
+				'ar_page_id'    => 'page_id',
 			), array(
 				'page_id' => $id,
 				'page_id = rev_page'
@@ -2179,21 +2179,20 @@ class Article {
 	 * from the same user; fails if there are no eligible edits to
 	 * roll back to, e.g. user is the sole contributor
 	 *
-	 * @param string $fromP - Name of the user whose edits to rollback.
+	 * @param string $fromP - Name of the user whose edits to rollback. 
 	 * @param string $summary - Custom summary. Set to default summary if empty.
 	 * @param string $token - Rollback token.
 	 * @param bool $bot - If true, mark all reverted edits as bot.
-	 *
+	 * 
 	 * @param array $resultDetails contains result-specific dict of additional values
 	 *    ALREADY_ROLLED : 'current' (rev)
 	 *    SUCCESS        : 'summary' (str), 'current' (rev), 'target' (rev)
-	 *
+	 * 
 	 * @return self::SUCCESS on succes, self::* on failure
 	 */
 	public function doRollback( $fromP, $summary, $token, $bot, &$resultDetails ) {
 		global $wgUser, $wgUseRCPatrol;
 		$resultDetails = null;
-
 
 		# Just in case it's being called from elsewhere		
 
@@ -2204,10 +2203,11 @@ class Article {
 		} else {
 			return self::PERM_DENIED;
 		}
-
+			
 		if ( wfReadOnly() ) {
 			return self::READONLY;
 		}
+
 		if( !$wgUser->matchEditToken( $token, array( $this->mTitle->getPrefixedText(), $fromP ) ) )
 			return self::BAD_TOKEN;
 
@@ -2278,12 +2278,12 @@ class Article {
 		$resultDetails = array(
 			'summary' => $summary,
 			'current' => $current,
-			'target' => $target
+			'target' => $target,
 		);
 		return self::SUCCESS;
 	}
 
-	/** 
+	/**
 	 * User interface for rollback operations
 	 */
 	function rollback() {
@@ -2360,6 +2360,7 @@ class Article {
 			default:
 				throw new MWException( __METHOD__ . ": Unknown return value `{$result}`" );
 		}
+
 	}
 
 
@@ -3088,5 +3089,3 @@ class Article {
 	}
 
 }
-
-

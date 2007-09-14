@@ -270,10 +270,10 @@ class PageArchive {
 		$dbw = wfGetDB(DB_MASTER);
 		$dbw->begin();
 		$restoreAll = empty( $timestamps ) && empty( $fileVersions );
-
+		
 		$restoreText = $restoreAll || !empty( $timestamps );
 		$restoreFiles = $restoreAll || !empty( $fileVersions );
-
+		
 		if( $restoreFiles && $this->title->getNamespace() == NS_IMAGE ) {
 			$img = wfLocalFile( $this->title );
 			$this->fileStatus = $img->restore( $fileVersions );
@@ -281,7 +281,7 @@ class PageArchive {
 		} else {
 			$filesRestored = 0;
 		}
-
+		
 		if( $restoreText ) {
 			$textRestored = $this->undeleteRevisions( $timestamps );
 			if($textRestored < 0) // It must be one of UNDELETE_*
@@ -319,7 +319,7 @@ class PageArchive {
 		$dbw->commit();
 		return array($textRestored, $filesRestored, $reason);
 	}
-
+	
 	/**
 	 * This is the meaty bit -- restores archived revisions of the given page
 	 * to the cur/old tables. If the page currently exists, all revisions will
@@ -755,13 +755,13 @@ class UndeleteForm {
 		$logViewer = new LogViewer(
 			new LogReader(
 				new FauxRequest(
-					array(
+					array( 
 						'page' => $this->mTargetObj->getPrefixedText(),
-						'type' => 'delete'
-					)
+						'type' => 'delete' 
+					) 
 				)
 			), LogViewer::NO_ACTION_LINK
-		);
+	   	);
 		$logViewer->showList( $wgOut );
 
 		if( $this->mAllowed && ( $haveRevisions || $haveFiles ) ) {
@@ -901,7 +901,6 @@ class UndeleteForm {
 		} else {
 			$wgOut->showFatalError( wfMsg( "cannotundelete" ) );
 		}
-
 		return false;
 	}
 }

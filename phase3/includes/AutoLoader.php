@@ -295,9 +295,6 @@ function __autoload($className) {
 
 		# API
 		'ApiBase' => 'includes/api/ApiBase.php',
-		'ApiBlock' => 'includes/api/ApiBlock.php',
-		'ApiChangeRights' => 'includes/api/ApiChangeRights.php',
-		'ApiDelete' => 'includes/api/ApiDelete.php',
 		'ApiFormatFeedWrapper' => 'includes/api/ApiFormatBase.php',
 		'ApiFeedWatchlist' => 'includes/api/ApiFeedWatchlist.php',
 		'ApiFormatBase' => 'includes/api/ApiFormatBase.php',
@@ -313,7 +310,6 @@ function __autoload($className) {
 		'ApiMain' => 'includes/api/ApiMain.php',
 		'ApiOpenSearch' => 'includes/api/ApiOpenSearch.php',
 		'ApiPageSet' => 'includes/api/ApiPageSet.php',
-		'ApiProtect' => 'includes/api/ApiProtect.php',
 		'ApiQuery' => 'includes/api/ApiQuery.php',
 		'ApiQueryAllpages' => 'includes/api/ApiQueryAllpages.php',
 		'ApiQueryAllLinks' => 'includes/api/ApiQueryAllLinks.php',
@@ -321,11 +317,9 @@ function __autoload($className) {
 		'ApiQueryBase' => 'includes/api/ApiQueryBase.php',
 		'ApiQueryGeneratorBase' => 'includes/api/ApiQueryBase.php',
 		'ApiQueryBacklinks' => 'includes/api/ApiQueryBacklinks.php',
-		'ApiQueryBlocks' => 'includes/api/ApiQueryBlocks.php',
 		'ApiQueryCategories' => 'includes/api/ApiQueryCategories.php',
 		'ApiQueryCategoryMembers' => 'includes/api/ApiQueryCategoryMembers.php',
 		'ApiQueryContributions' => 'includes/api/ApiQueryUserContributions.php',
-		'ApiQueryDeletedrevs' => 'includes/api/ApiQueryDeletedrevs.php',
 		'ApiQueryExternalLinks' => 'includes/api/ApiQueryExternalLinks.php',
 		'ApiQueryExtLinksUsage' => 'includes/api/ApiQueryExtLinksUsage.php',
 		'ApiQueryImages' => 'includes/api/ApiQueryImages.php',
@@ -341,6 +335,14 @@ function __autoload($className) {
 		'ApiQueryUserInfo' => 'includes/api/ApiQueryUserInfo.php',
 		'ApiQueryWatchlist' => 'includes/api/ApiQueryWatchlist.php',
 		'ApiResult' => 'includes/api/ApiResult.php',
+
+		# apiedit branch
+		'ApiBlock' => 'includes/api/ApiBlock.php',
+		'ApiChangeRights' => 'includes/api/ApiChangeRights.php',
+		'ApiDelete' => 'includes/api/ApiDelete.php',
+		'ApiProtect' => 'includes/api/ApiProtect.php',
+		'ApiQueryBlocks' => 'includes/api/ApiQueryBlocks.php',
+		'ApiQueryDeletedrevs' => 'includes/api/ApiQueryDeletedrevs.php',
 		'ApiRollback' => 'includes/api/ApiRollback.php',
 		'ApiUnblock' => 'includes/api/ApiUnblock.php',
 		'ApiUndelete' => 'includes/api/ApiUndelete.php'
