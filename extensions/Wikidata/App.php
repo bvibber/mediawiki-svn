@@ -82,8 +82,7 @@ function addHistoryLinkTrail(&$trail) {
 
 function initializeWikidata() {
 	global 
-		$wgMessageCache, $wgExtensionPreferences, $wdSiteContext;
-;
+		$wgMessageCache, $wgExtensionPreferences, $wdSiteContext, $wgPropertyToColumnFilters;
 		
 	$dbr =& wfGetDB(DB_MASTER);
 	$dbr->query("SET NAMES utf8");
@@ -168,7 +167,9 @@ function initializeWikidata() {
 		"LinkAttribute" => "Property",
 		"LinkAttributeValues" => "Links",
 		"Property" => "Property",
-		"Value" => "Value"
+		"Value" => "Value",
+		"meaningsoftitle"=>"Meanings of \"$1\"",
+		"meaningsofsubtitle"=>"<em>Wiki link:</em> [[$1]]",
 	);
 
 	$prefixedmsgarray=array();
@@ -190,7 +191,10 @@ function initializeWikidata() {
 		'size' => 10,
 		'options' => $datasetarray
 	);
-	
+        $wgPropertyToColumnFilters = array(
+                    new PropertyToColumnFilter("partOfSpeech", "Part of speech", array(358760))
+	);
+                            	
 	global 
 		$messageCacheOK;
 		

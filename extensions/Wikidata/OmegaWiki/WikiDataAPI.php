@@ -8,11 +8,18 @@ class Expression {
 	public $spelling;
 	public $languageId;
 	public $pageId;
-	
-	function __construct($id, $spelling, $languageId) {
+	public $meaningIds=array();
+	public $dataset;
+
+	function __construct($id, $spelling, $languageId, $dc=null) {
 		$this->id = $id;
 		$this->spelling = $spelling;
 		$this->languageId = $languageId;
+		if(is_null($dc)) {
+			$this->dataset=wdGetDataSetContext();
+		} else {
+			$this->dataset=$dc;
+		}
 	}
 	
 	function createNewInDatabase() {
@@ -38,8 +45,19 @@ class Expression {
 		if (!$this->isBoundToDefinedMeaning($definedMeaningId)) 
 			$this->bindToDefinedMeaning($definedMeaningId, $identicalMeaning);		
 	}
-}
 
+	function fetchMeaningIds() {
+	
+		$dbr =& wfGetDB(DB_SLAVE);
+		$dc=$this->dataset;
+		$id=$this->id;
+		$queryResult = $dbr->query("SELECT * FROM {$dc}_syntrans where expression_id=$id AND ".getLatestTransactionRestriction("{$dc}_syntrans"));
+		while($syntransRecord=$dbr->fetchObject($queryResult)) {
+			$this->meaningIds[]=$syntransRecord->defined_meaning_id;
+		}
+	}
+
+}
 function getExpression($expressionId, $dc=null) {
 	if(is_null($dc)) {
 		$dc=wdGetDataSetContext();
@@ -902,8 +920,11 @@ function removeOptionAttributeOption($optionId) {
 	$dbr->query($sql);
 }
 
-function getDefinedMeaningDefinitionForLanguage($definedMeaningId, $languageId) {
-	$dc=wdGetDataSetContext();
+function getDefinedMeaningDefinitionForLanguage($definedMeaningId, $languageId, $dc=null) {
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+
+	}
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT text_text FROM {$dc}_defined_meaning as dm, {$dc}_translated_content as tc, {$dc}_text as t ".
 								"WHERE dm.defined_meaning_id=$definedMeaningId " .
@@ -1080,8 +1101,10 @@ function getAnyDefinedMeaningWithSourceIdentifier($sourceIdentifier) {
         return 0;
 }
 
-function getExpressionMeaningIds($spelling) {
-    $dc=wdGetDataSetContext();
+function getExpressionMeaningIds($spelling, $dc=null) {
+    if(is_null($dc)) {
+    	$dc=wdGetDataSetContext();
+    }
     $dbr = & wfGetDB(DB_SLAVE);
     $queryResult = $dbr->query(
 		"SELECT defined_meaning_id" .
@@ -1285,8 +1308,10 @@ function &getDefinedMeaningDataAssociatedByConcept($dm, $dc) {
 	return $meanings;
 }
 
-function definingExpressionRow($definedMeaningId) {
-	$dc=wdGetDataSetContext();
+function definingExpressionRow($definedMeaningId, $dc=null) {
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+	}
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT {$dc}_expression_ns.expression_id, spelling, language_id " .
 								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
@@ -1396,6 +1421,23 @@ function getTextValue($textId) {
 	return $dbr->fetchObject($queryResult)->text_text; 
 }
 
+function getExpressions($spelling, $dc=null) {
+	if(is_null($dc)) {
+		$dc=wdGetDataSetContext();
+	}
+	$dbr =& wfGetDB(DB_SLAVE);
+
+	$spelling=$dbr->addQuotes($spelling);
+	$queryResult = $dbr->query("SELECT * FROM {$dc}_expression_ns WHERE {$dc}_expression_ns.spelling=$spelling AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
+
+	$rv=array();
+	while($expressionRecord = $dbr->fetchObject($queryResult)) {
+		$rv[]=new Expression($expressionRecord->expression_id, $expressionRecord->spelling, $expressionRecord->language_id);
+	}
+	return $rv;
+
+}
+
 class ClassAttribute {
 	public $attributeId;
 	public $levelName;
@@ -1468,4 +1510,6 @@ class ClassAttributes {
 		
 		return $result;
 	}
+
+
 }
