@@ -2028,7 +2028,7 @@ class Article {
 	<input type='hidden' name='wpEditToken' value=\"{$token}\" />
 </form>\n" );
 
-		$wgOut->returnToMain( false );
+		$wgOut->returnToMain( false, $this->mTitle );
 
 		$this->showLogExtract( $wgOut );
 	}

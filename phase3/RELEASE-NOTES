@@ -22,6 +22,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
 === New features in 1.12 ===
 * Add a warning for non-descriptive filenames at Special:Upload
+* Add {{filepath:}} parser function to get full path to an uploaded file,
+  complementing {{fullurl:}} for pages.
+
 
 === Bug fixes in 1.12 ===
 
@@ -49,6 +52,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 4021) Fix for MySQL wildcard search
 * (bug 10699) Fix for MySQL phrase search
 * (bug 11321) Fix width of gallerybox when option "width=xxx" is used
+* (bug 7890) Special:BrokenRedirects links deleted redirects to a non-existent page
+* Fix initial statistics when installing: add correct values
+* (bug 11342) Fix several 'returnto' links in permissions/error pages which
+  linked to the main page instead of targetted page
+
 
 === API changes in 1.12 ===
 
@@ -70,6 +78,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Danish (da)
 * German (de)
 * Lower Sorbian (dsb)
+* Greek (el)
 * Extremaduran (ext)
 * Persian (fa)
 * Võro (fiu-vro)
@@ -80,6 +89,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Icelandic (is)
 * Kazakh (kk)
 * Korean (ko)
+* Low Saxon (nds)
 * Dutch (nl)
 * Russian (ru)
 * Sakha (sah)
@@ -87,6 +97,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Serbian (Cyrillic) (sr-ec)
 * Sudanese (su)
 * Tamil (ta)
+* Walloon (wa)
+* Zhuang (za)
 * Zealandic (zea)
 
 == Compatibility ==

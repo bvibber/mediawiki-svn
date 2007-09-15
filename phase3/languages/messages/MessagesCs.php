@@ -687,6 +687,8 @@ Pokud jste zde omylem, stiskněte ve svém prohlížeči tlačítko ''Zpět''.",
 ''Jelikož tato wiki má povoleno libovolné HTML, není zobrazen náhled jako prevence proti útokům JavaScriptem.''
 
 Pokud jde o zamýšlenou editaci, zkuste to prosím znovu. Pokud se tento problém bude opakovat, zkuste se odhlásit a znovu přihlásit.",
+'token_suffix_mismatch'     => '<strong>Vaše editace byla odmítnuta, protože Váš prohlížeč komolí některé znaky v editovaném textu. Editace byla odmítnuta, aby se zabránilo poškození textu stránky. 
+Toto se může někdy stát pokud používáte chybující webový anonymizér.</strong>',
 'editing'                   => 'Editace stránky $1',
 'editinguser'               => 'Úprava práv uživatele $1',
 'editingsection'            => 'Editace stránky $1 (část)',
@@ -732,6 +734,9 @@ Níže vidíte výpis z knihy smazaných stránek pro tuto stránku:",
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Nelze vytvořit uživatelský účet',
+'cantcreateaccount-text' => "Zakládání nových účtů z této IP adresy (<b>$1</b>) bylo zablokováno uživatelem [[User:$3|$3]].
+
+$3 uvádí toto zdůvodnění: ''$2''",
 
 # History pages
 'revhistory'          => 'Historie editací',
@@ -793,9 +798,12 @@ pokud to provozovatel serveru nezakázal.',
 'revdelete-hide-comment'      => 'Skrýt editační komentář',
 'revdelete-hide-user'         => 'Skrýt uživatelovu IP adresu',
 'revdelete-hide-restricted'   => 'Tato omezení aplikovat i na správce',
+'revdelete-hide-image'        => 'Skrýt obsah souboru',
+'revdelete-unsuppress'        => 'Odstranit omezení na vrácené verze',
 'revdelete-log'               => 'Komentář:',
 'revdelete-submit'            => 'Aplikovat nastavení',
 'revdelete-logentry'          => 'změnil viditelnost revizí u [[$1]]',
+'logdelete-logentry'          => 'mění viditelnost události [[$1]]',
 
 # Oversight log
 'oversightlog'    => 'Kniha dohledu',
@@ -897,34 +905,41 @@ $2 Vypsat přesměrování &nbsp; Hledat $3 $9',
 'files'                    => 'Soubory',
 
 # User rights
-'userrights-lookup-user'     => 'Spravovat uživatelské skupiny',
-'userrights-user-editname'   => 'Zadejte uživatelské jméno:',
-'editusergroup'              => 'Upravit uživatelskou skupinu',
-'userrights-editusergroup'   => 'Upravit uživatelské skupiny',
-'saveusergroups'             => 'Uložit uživatelské skupiny',
-'userrights-groupsmember'    => 'Člen skupin:',
-'userrights-groupsavailable' => 'Dostupné skupiny:',
-'userrights-groupshelp'      => 'Zvolte skupiny, do/ze kterých chcete uživatele přidat/odebrat.
+'userrights-lookup-user'      => 'Spravovat uživatelské skupiny',
+'userrights-user-editname'    => 'Zadejte uživatelské jméno:',
+'editusergroup'               => 'Upravit uživatelskou skupinu',
+'userrights-editusergroup'    => 'Upravit uživatelské skupiny',
+'saveusergroups'              => 'Uložit uživatelské skupiny',
+'userrights-groupsmember'     => 'Člen skupin:',
+'userrights-groupsavailable'  => 'Dostupné skupiny:',
+'userrights-groupshelp'       => 'Zvolte skupiny, do/ze kterých chcete uživatele přidat/odebrat.
 Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pomocí CTRL + Levé tlačítko myši',
+'userrights-reason'           => 'Zdůvodnění:',
+'userrights-available-none'   => 'Nemůžete měnit zařazení do skupin.',
+'userrights-available-add'    => 'Můžete uživatele přidat do skupiny $1.',
+'userrights-available-remove' => 'Můžete odebrat uživatele ze skupiny $1.',
 
 # Groups
-'group'            => 'Skupina:',
-'group-bot'        => 'Boti',
-'group-sysop'      => 'Správci',
-'group-bureaucrat' => 'Byrokraté',
-'group-all'        => '(všichni)',
+'group'               => 'Skupina:',
+'group-autoconfirmed' => 'schválení uživatelé',
+'group-bot'           => 'Boti',
+'group-sysop'         => 'Správci',
+'group-bureaucrat'    => 'Byrokraté',
+'group-all'           => '(všichni)',
 
-'group-sysop-member'      => 'Správce',
-'group-bureaucrat-member' => 'Byrokrat',
+'group-autoconfirmed-member' => 'schválený uživatel',
+'group-sysop-member'         => 'Správce',
+'group-bureaucrat-member'    => 'Byrokrat',
 
-'grouppage-bot'        => '{{ns:Project}}:Boti',
-'grouppage-sysop'      => '{{ns:Project}}:Správci',
-'grouppage-bureaucrat' => '{{ns:Project}}:Byrokraté',
+'grouppage-autoconfirmed' => '{{ns:project}}:Schválení uživatelé',
+'grouppage-bot'           => '{{ns:Project}}:Boti',
+'grouppage-sysop'         => '{{ns:Project}}:Správci',
+'grouppage-bureaucrat'    => '{{ns:Project}}:Byrokraté',
 
 # User rights log
 'rightslog'      => 'Kniha práv uživatelů',
 'rightslogtext'  => 'Toto je záznam změn uživatelských práv.',
-'rightslogentry' => 'změnil pro $1 členství ve skupinách z $2 na $3',
+'rightslogentry' => 'změnil pro $1 zařazení ve skupinách z $2 na $3',
 'rightsnone'     => '(žádné)',
 
 # Recent changes
@@ -1002,18 +1017,33 @@ váš uživatelský účet zablokován.',
 'uploadedfiles'               => 'Načtené soubory',
 'ignorewarning'               => 'Ignorovat varování a načíst soubor.',
 'ignorewarnings'              => 'Ignorovat všechna varování',
+'minlength1'                  => 'Jméno souboru musí mít alespoň jeden znak.',
 'illegalfilename'             => 'Název souboru "$1" obsahuje znaky, které nejsou povoleny v názvech stránek. Prosím přejmenujte soubor a zkuste jej nahrát znovu.',
 'badfilename'                 => 'Jméno souboru bylo změněno na „$1“.',
+'filetype-badmime'            => 'Není povoleno načítat soubory MIME typu „$1“.',
+'filetype-badtype'            => "'''\".\$1\"''' je nedovolený typ
+: Seznam povolených typů soborů: \$2",
+'filetype-missing'            => 'Soubor nemá příponu (např. ".jpg").',
 'large-file'                  => 'Doporučuje se, aby délka souboru nepřesahovala $1, tento soubor má $2.',
 'largefileserver'             => 'Velikost tohoto souboru překračuje limit nastavený na serveru.',
 'emptyfile'                   => 'Soubor, který jste vložili, se zdá být prázdný. Mohl to způsobit překlep v názvu souboru. Prosím zkontrolujte, zda jste opravdu chtěli vložit tento soubor.',
 'fileexists'                  => ' Soubor s tímto jménem již existuje, prosím podívejte se na $1, pokud nevíte jistě, zda chcete tento soubor nahradit.',
+'fileexists-extension'        => 'Již existuje soubor s podobným jménem:<br />
+Jméno načítaného souboru: <strong><tt>$1</tt></strong><br />
+Jméno existujícího souboru: <strong><tt>$2</tt></strong><br />
+Vyberte jiné jméno.',
+'fileexists-thumb'            => "'''<center>Existujícího soubor:</center>'''",
+'fileexists-thumbnail-yes'    => 'Toto soubor je možná obrázek ve zmenšené velikosti <i>(náhled)</i>. Zkontrolujte soubor <strong><tt>$1</tt></strong>.<br />
+Pokud je zmiňovaný soubor větší, ale jinak stejný, není potřeba zvlášť načítat jeho zmenšenou verzi.',
+'file-thumbnail-no'           => 'Jméno souboru začíná na <strong><tt>$1</tt></strong>. Možná to je obrázek ve zmenšené velikosti <i>(náhled)</i>. 
+Načtěte soubor v plném rozlišením, pokud je k dispozici, nebo změňte jméno souboru.',
 'fileexists-forbidden'        => 'Soubor s tímto názvem již existuje; vraťte se a zvolte jiný název. [[{{ns:image}}:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Soubor s tímto názvem již existuje ve sdíleném úložišti; vraťte se a zvolte jiný název. [[{{ns:image}}:$1|thumb|center|$1]]',
 'successfulupload'            => 'Načtení úspěšně provedeno!',
 'uploadwarning'               => 'Varování',
 'savefile'                    => 'Uložit soubor',
 'uploadedimage'               => 'načítá „[[$1]]“',
+'overwroteimage'              => 'načtena nová verze "[[$1]]"',
 'uploaddisabled'              => 'Načítání souborů vypnuto.',
 'uploaddisabledtext'          => 'Promiňte, ale načítání souborů je na této wiki vypnuto.',
 'uploadscripted'              => 'Tento soubor obsahuje HTML nebo kód skriptu, který by mohl být prohlížečem chybně interpretován.',
@@ -1023,6 +1053,7 @@ váš uživatelský účet zablokován.',
 'destfilename'                => 'Cílové jméno',
 'watchthisupload'             => 'Sledovat tuto stránku',
 'filewasdeleted'              => 'Soubor stejného jména byl již dříve načten a posléze smazán. Podrobnosti obsahuje $1.',
+'filename-bad-prefix'         => 'Jméno souboru, který načítáte, začíná na <strong>"$1"</strong>, což je nevhodné jméno, obvykle automaticky přiřazované digitálním fotoaparátem. Zvolte jméno, která Váš soubor lépe popíše.',
 
 'upload-proto-error'      => 'Neplatný protokol',
 'upload-proto-error-text' => 'Nahrání vzdáleného souboru vyžaduje zadání URLs začínající na <code>http://</code> nebo <code>ftp://</code>.',
@@ -1084,6 +1115,7 @@ váš uživatelský účet zablokován.',
 
 # File reversion
 'filerevert'                => 'Vrátit zpět $1',
+'filerevert-comment'        => 'Zdůvodnění:',
 'filerevert-defaultcomment' => 'Navrácena verze nahraná v $2 dne $1.',
 
 # File deletion
@@ -1232,7 +1264,9 @@ Zobrazení můžete zúžit výběrem typu záznamu, uživatelského jména nebo
 'allpages-bad-ns'   => '{{SITENAME}} nemá jmenný prostor "$1".',
 
 # Special:Listusers
-'listusersfrom' => 'Zobrazit uživatele počínaje od:',
+'listusersfrom'      => 'Zobrazit uživatele počínaje od:',
+'listusers-submit'   => 'Ukázat',
+'listusers-noresult' => 'Nenalezen žádný uživatel.',
 
 # E-mail user
 'mailnologin'     => 'Bez odesílací adresy',
@@ -1370,49 +1404,66 @@ Stiskněte tlačítko „zpět“, obnovte stránku, ze které jste přišli a z
 'unprotectsub'                => '(Odemyká se „$1“)',
 'protect-unchain'             => 'Oddělené ovládání zámku přesunů',
 'protect-text'                => 'Zde si můžete prohlédnout či změnit nastavení zámků stránky <strong>$1</strong>.',
+'protect-locked-blocked'      => 'Nemůžete měnit nastavení zámků pokud jste zablokován. Současné nastavení pro tuto stránku je: <strong>$1</strong>:',
+'protect-locked-dblock'       => 'Nastavení zámků nejde změnit kvůli zamčení databáze.
+Současné nastavení pro tuto stránku je: <strong>$1</strong>:',
+'protect-locked-access'       => 'Tento účet nemá povoleno měnit nastavení zámků.
+Současné nastavení pro tuto stránku je: <strong>$1</strong>:',
 'protect-cascadeon'           => 'Tato stránka je právě zamčena, protože je vložena do následujících stránek zamčených kaskádovým zámkem. Můžete změnit zámky pro tuto stránku, ale nebude to mít žádný vliv na kaskádové zamčení.',
 'protect-default'             => '(odemčeno)',
+'protect-fallback'            => 'Vyžaduje povolení "$1"',
 'protect-level-autoconfirmed' => 'Pouze registrovaní',
 'protect-level-sysop'         => 'Pouze správci',
 'protect-summary-cascade'     => 'kaskádový',
 'protect-expiring'            => 'vyprší $1 (UTC)',
 'protect-cascade'             => 'Kaskádní zámek - zamkne všechny stránky vložené do této stránky.',
+'restriction-type'            => 'Povolení:',
+'restriction-level'           => 'Úroveň omezení:',
 'pagesize'                    => '(bajtů)',
 
 # Restrictions (nouns)
-'restriction-edit' => 'Editace',
-'restriction-move' => 'Přesun',
+'restriction-edit' => 'editace',
+'restriction-move' => 'přesun',
 
 # Restriction levels
 'restriction-level-sysop'         => 'zamčeno',
 'restriction-level-autoconfirmed' => 'polozamčeno',
+'restriction-level-all'           => 'kterákoliv úroveň',
 
 # Undelete
-'undelete'                 => 'Smazané stránky',
-'undeletepage'             => 'Prohlédnout si a obnovit smazanou stránku',
-'viewdeletedpage'          => 'Zobrazení smazané stránky',
-'undeletepagetext'         => 'Tyto stránky jsou smazány, avšak dosud archivovány, a proto je možno je obnovit. Archiv může být pravidelně vyprazdňován.',
-'undeleteextrahelp'        => "Pro úplné obnovení stránky s kompletní historií ponechte všechny čtverečky nezaškrtnuté a klikněte na '''''Obnovit'''''. Pro částečné obnovení zašrktněte čtverečky u obnovovaných revizí a klikněte na '''''Obnovit'''''. Kliknutí na '''''Reset''''' vyprázdní komentář a zruší všechna zaškrtnutí.",
-'undeleterevisions'        => '$1 {{plural:$1|verze je archivována|verze jsou archivovány|verzí je archivováno}}',
-'undeletehistory'          => 'Pokud stránku obnovíte, všechny revize budou v historii obnoveny. Pokud byla vytvořena nová stránka se stejným jménem jako smazaná, obnovené revize se zapíší na starší místo v historii a nová stránka nebude nahrazena.',
-'undeletehistorynoadmin'   => 'Tato stránka byla smazána. Důvod smazání je uveden níže, spolu s informacemi o uživatelích, kteří tuto stránku před smazáním editovali. Samotný text stránky je dostupný pouze správcům.',
-'undelete-revision'        => 'Smazaná verze článku $1 z $2:',
-'undeleterevision-missing' => 'Nesprávná nebo chybějící revize. Možná máte špatný odkaz, nebo revize byla obnovena či odstraněna z archivu.',
-'undeletebtn'              => 'Obnovit',
-'undeletecomment'          => 'Komentář:',
-'undeletedarticle'         => 'obnovuje „[[$1]]“',
-'undeletedrevisions'       => '{{plural:$1|Obnovena $1 verze|Obnoveny $1 verze|Obnoveno $1 verzí}}',
-'undeletedrevisions-files' => '{{plural:$1|Obnovena jedna verze|Obnoveny $1 verze|Obnoveno $1 verzí}} a $2 {{plural:$2|soubor|soubory|souborů}}.',
-'undeletedfiles'           => '{{plural:$1|obnoven $1 soubor|obnoveny $1 soubory|obnoveno $1 souborů}}',
-'cannotundelete'           => 'Obnovení se nepovedlo; někdo jiný pravděpodobně obnovil stránku dřív než Vy.',
-'undeletedpage'            => "<big>'''$1 byla obnovena'''</big>
+'undelete'                     => 'Smazané stránky',
+'undeletepage'                 => 'Prohlédnout si a obnovit smazanou stránku',
+'viewdeletedpage'              => 'Zobrazení smazané stránky',
+'undeletepagetext'             => 'Tyto stránky jsou smazány, avšak dosud archivovány, a proto je možno je obnovit. Archiv může být pravidelně vyprazdňován.',
+'undeleteextrahelp'            => "Pro úplné obnovení stránky s kompletní historií ponechte všechny čtverečky nezaškrtnuté a klikněte na '''''Obnovit'''''. Pro částečné obnovení zašrktněte čtverečky u obnovovaných revizí a klikněte na '''''Obnovit'''''. Kliknutí na '''''Reset''''' vyprázdní komentář a zruší všechna zaškrtnutí.",
+'undeleterevisions'            => '$1 {{plural:$1|verze je archivována|verze jsou archivovány|verzí je archivováno}}',
+'undeletehistory'              => 'Pokud stránku obnovíte, všechny revize budou v historii obnoveny. Pokud byla vytvořena nová stránka se stejným jménem jako smazaná, obnovené revize se zapíší na starší místo v historii a nová stránka nebude nahrazena.',
+'undeletehistorynoadmin'       => 'Tato stránka byla smazána. Důvod smazání je uveden níže, spolu s informacemi o uživatelích, kteří tuto stránku před smazáním editovali. Samotný text stránky je dostupný pouze správcům.',
+'undelete-revision'            => 'Smazaná verze článku $1 z $2:',
+'undeleterevision-missing'     => 'Nesprávná nebo chybějící revize. Možná máte špatný odkaz, nebo revize byla obnovena či odstraněna z archivu.',
+'undeletebtn'                  => 'Obnovit',
+'undeletecomment'              => 'Komentář:',
+'undeletedarticle'             => 'obnovuje „[[$1]]“',
+'undeletedrevisions'           => '{{plural:$1|Obnovena $1 verze|Obnoveny $1 verze|Obnoveno $1 verzí}}',
+'undeletedrevisions-files'     => '{{plural:$1|Obnovena jedna verze|Obnoveny $1 verze|Obnoveno $1 verzí}} a $2 {{plural:$2|soubor|soubory|souborů}}.',
+'undeletedfiles'               => '{{plural:$1|obnoven $1 soubor|obnoveny $1 soubory|obnoveno $1 souborů}}',
+'cannotundelete'               => 'Obnovení se nepovedlo; někdo jiný pravděpodobně obnovil stránku dřív než Vy.',
+'undeletedpage'                => "<big>'''$1 byla obnovena'''</big>
 
 Záznam o posledních mazáních a obnoveních najdete v [[Special:Log/delete|knize smazaných stránek]].",
-'undelete-header'          => 'Vizte nedávno smazané stránky v [[Special:Log/delete|knize smazaných stránek]].',
-'undelete-search-box'      => 'Hledání smazaných stránek',
-'undelete-search-prefix'   => 'Zobraz stránky začínající na:',
-'undelete-search-submit'   => 'Hledat',
-'undelete-no-results'      => 'Dotazu žádné smazané stránky neodpovídají.',
+'undelete-header'              => 'Vizte nedávno smazané stránky v [[Special:Log/delete|knize smazaných stránek]].',
+'undelete-search-box'          => 'Hledání smazaných stránek',
+'undelete-search-prefix'       => 'Zobraz stránky začínající na:',
+'undelete-search-submit'       => 'Hledat',
+'undelete-no-results'          => 'Dotazu žádné smazané stránky neodpovídají.',
+'undelete-filename-mismatch'   => 'Nelze obnovit verzi souboru s časovou značkou $1: jméno souboru neodpovídá',
+'undelete-bad-store-key'       => 'Nelze obnovit verzi souboru s časovou značkou $1: soubor před smazáním chyběl.',
+'undelete-cleanup-error'       => 'Chyba při mazání nepoužívaného archivního souboru „$1“.',
+'undelete-missing-filearchive' => 'Nepodařilo se obnovit soubor archivu s identifikací $1 , protože není v databázi. Možná již byl obnoven.',
+'undelete-error-short'         => 'Chyba při obnovování souboru: $1',
+'undelete-error-long'          => 'Vyskytla se chyba při obnovování souboru:
+
+$1',
 
 # Namespace form on various pages
 'namespace'      => 'Jmenný prostor:',
@@ -1600,6 +1651,7 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'export-submit'     => 'Exportovat',
 'export-addcattext' => 'Přidat stránky z kategorie:',
 'export-addcat'     => 'Přidat',
+'export-download'   => 'Nabídnout uložení jako soubor',
 
 # Namespace 8 related
 'allmessages'               => 'Všechna systémová hlášení',
@@ -1778,7 +1830,15 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'patrol-log-auto' => '(automaticky)',
 
 # Image deletion
-'deletedrevision' => 'Smazána stará revize $1',
+'deletedrevision'                 => 'Smazána stará revize $1',
+'filedeleteerror-short'           => 'Chyba při mazání souboru: $1',
+'filedeleteerror-long'            => 'Vyskytla se chyba při mazání souboru:
+
+$1',
+'filedelete-missing'              => 'Soubor „$1“ nelze smazat, protože neexistuje.',
+'filedelete-old-unregistered'     => 'Určená verze souboru „$1“ není v databázi.',
+'filedelete-current-unregistered' => 'Určený soubor „$1“ není v databázi.',
+'filedelete-archive-read-only'    => 'Do archivního adresáře „$1“ nemůže webový server psát.',
 
 # Browsing diffs
 'previousdiff' => '← Předchozí porovnání',
@@ -2178,6 +2238,12 @@ $1',
 
 # Size units
 'size-kilobytes' => '$1 kB',
+
+# Live preview
+'livepreview-loading' => 'Nahrávám…',
+'livepreview-ready'   => 'Nahrávám… Připraven!',
+'livepreview-failed'  => 'Rychlý náhled není dostupný! Použijte normální náhled.',
+'livepreview-error'   => 'Neúspěšné spojení: $1 "$2". Použijte normální náhled.',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Změny za posledních $1 sekund nemusí být v tomto seznamu zobrazeny.',
