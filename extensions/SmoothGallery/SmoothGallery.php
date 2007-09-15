@@ -77,6 +77,7 @@ function smoothGalleryImagesByCat( $title ) {
 function renderSmoothGallery( $input, $argv, &$parser ) {
 	global $wgContLang, $wgUser, $wgTitle;
 	global $wgSmoothGalleryDelimiter;
+	global $wgVersion;
 
 	$skin = $wgUser->getSkin();
 
@@ -299,7 +300,11 @@ function renderSmoothGallery( $input, $argv, &$parser ) {
 
 		$output .= '</div>';
 
-		$plain_gallery->add( $img_obj->getTitle() ); //TODO: use text
+		if ( version_compare( $wgVersion, "1.11", '<' ) ) {
+			$plain_gallery->add( $img_obj ); //TODO: use text
+		} else {
+			$plain_gallery->add( $img_obj->getTitle() ); //TODO: use text
+		}
 	}
 
 	//Make sure we have something to output
