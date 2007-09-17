@@ -72,6 +72,16 @@ $wgLuceneSearchMessages['bcl'] = array(
 	'searchincategory'      => 'sakategorya',
 );
 
+$wgLuceneSearchMessages['ca'] = array(
+	'searchnumber'          => '<strong>Resultats $1-$2 de $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Anterior</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Següent</span> &#x00BB;',
+	'searchscore'           => 'Rellevància: $1',
+	'searchsize'            => '$1 KB ($2 paraules)',
+	'searchdidyoumean'      => 'Potser volíeu dir «<a href="$1">$2</a>»?',
+	'searchnoresults'       => 'Malauradament no s\'ha trobat cap resultat per aquesta cerca.',
+);
+
 $wgLuceneSearchMessages['cs'] = array(
 	'searchnumber'          => '<strong>Výsledky $1–$2 z $3</strong>',
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Předchozí</span>",
@@ -129,25 +139,25 @@ aŭ vi povas esplori la vikion per eksteraj serĉservoj.
 ',
 );
 $wgLuceneSearchMessages['es'] = array(
-    'searchnumber'          => "<strong>Resultados $1-$2 de $3</strong>",
-    'searchprev'            => "&#x00AB; <span style='font-size: small'>Previos</span>",
-    'searchnext'            => "<span style='font-size: small'>Siguientes</span> &#x00BB;",
-    'searchscore'           => "Relevancia: $1",
-    'searchsize'            => "$1 KB ($2 palabras)",
-    'searchdidyoumean'      => "¿Quisiste decir: \"<a href=\"$1\">$2</a>\"?",
-    'searchnoresults'       => "Lo sentimos, no se encontraron resultados para tu consulta.",
-    'searchnearmatches'     => "<b>Estas páginas tienen títulos similares a tu consulta:</b>\n",
-    'searchnearmatch'       => "<li>$1</li>\n",
-    'lucenepowersearchtext' => "
-Búsqueda en espacios de nombres:\n
-$1\n
-Buscar $3 $9 $10",
-    'lucenefallback'        => "Hubo un problema con la búsqueda en el wiki.
-Es probablemente un problema temporal; intenta de nuevo dentro de un tiempo,
-o puedes buscar en el wiki a través de un servicio externo de búsqueda:\n",
-    'searchexactcase'       => 'Búsqueda sensible a mayúsculas',
-    'searchall'             => 'todos',
-    'searchincategory'      => 'en categoría'
+	'searchnumber'          => '<strong>Resultados $1-$2 de $3</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Previo</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Siguiente</span> &#x00BB;',
+	'searchscore'           => 'Relevancia: $1',
+	'searchsize'            => '$1 KB ($2 palabras)',
+	'searchdidyoumean'      => '¿Quisiste decir «<a href="$1">$2</a>»?',
+	'searchnoresults'       => 'Lo sentimos, no hay ningún artículo con el texto buscado.',
+	'searchnearmatches'     => '<b>Estas páginas tienen títulos similares a tu consulta:</b>',
+	'lucenepowersearchtext' => 'Buscar sólo en los espacios de nombre:
+
+$1
+
+Buscar $3 $9',
+	'lucenefallback'        => 'Ha habido un problema con la búsqueda.
+Probablemente sea temporal. Intentelo de nuevo en unos minutos, 
+o emplee algún buscador externo para explorar la wiki.',
+	'searchexactcase'       => 'Búsqueda sensible a mayúsculas',
+	'searchall'             => 'todos',
+	'searchincategory'      => 'en categoría',
 );
 
 $wgLuceneSearchMessages['fi'] = array(
