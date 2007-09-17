@@ -62,6 +62,10 @@ $wgDeletedContribsMessages['pt'] = array(
 	'deletedcontributions' => 'Edições eliminadas',
 );
 
+$wgDeletedContribsMessages['ru'] = array(
+	'deletedcontributions'		 => 'Удалённый вклад'
+);
+
 $wgDeletedContribsMessages['sk'] = array(
 	'deletedcontributions' => 'Zmazané príspevky používateľa',
 );
