@@ -166,6 +166,11 @@ $wgSiteMatrixMessages['sv'] = array(
 	'sitematrix-project'  => 'Projektnamn, interprojektlänk och interwiki-länk',
 	'sitematrix-others'   => 'Andra Wikimediaprojekt',
 );
+$wgSiteMatrixMessages['tet'] = array(
+	'sitematrix' => 'Lista wiki sira Wikimedia nian',
+	'sitematrix-language' => 'Lian',
+	'sitematrix-others' => 'Projetu seluk Wikimedia nian',
+);
 $wgSiteMatrixMessages['ur'] = array(
 	"sitematrix" => 'فہرست وکی میڈیا کے دیگر وکییوں کی',
 );

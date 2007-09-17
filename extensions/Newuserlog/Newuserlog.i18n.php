@@ -232,6 +232,12 @@ $wgNewuserlogMessages['sv'] = array(
 	'newuserlog-create-entry'  => 'Ny användare',
 	'newuserlog-create2-entry' => 'skapade användarkontot $1',
 );
+$wgNewuserlogMessages['tet'] = array(
+	'newuserlogpage'           => 'Lista kria uza-na\'in',
+	'newuserlogpagetext'       => 'Ne\'e lista kria uza-na\'in',
+	'newuserlog-create-entry'  => 'Uza-na\'in foun',
+	'newuserlog-create2-entry' => 'kria uza-na\'in $1',
+);
 $wgNewuserlogMessages['ur'] = array(
 	'newuserlogpage'           => 'نوشتۂ آمد صارف',
 	'newuserlogpagetext'       => 'یہ نۓ صارفوں کی آمد کا نوشتہ ہے',
