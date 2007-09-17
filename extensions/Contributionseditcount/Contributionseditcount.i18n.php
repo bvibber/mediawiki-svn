@@ -16,6 +16,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'هذا المستخدم لديه $1 تعديل.',
 ),
 
+'bn' => array(
+	'contributionseditcount' => 'এ ব্যবহারকারীর $1 সম্পাদনা হয়েছে।',
+),
+
 'de' => array(
 	'contributionseditcount'  =>  'Dieser Benutzer hat $1 Bearbeitungen.',
 ),
@@ -25,7 +29,7 @@ function efContributionseditcountMessages()  {
 ),
 
 'hsb' => array(
-	'contributionseditcount' => 'WuÅ¾iwar ma $1 zmÄ›now.',
+	'contributionseditcount' => 'Wužiwar ma $1 změnow.',
 ),
 
 'nl' => array(

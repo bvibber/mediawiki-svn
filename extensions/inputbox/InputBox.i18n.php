@@ -98,15 +98,19 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Kreu artikolon',
 ),
 'es' => array(
-	'tryexact'       => 'Probar con coincidencia exacta',
-	'searchfulltext' => 'Buscar por texto completo',
-	'createarticle'  => 'Crear artículo',
+	'tryexact'                => 'Buscar título exacto',
+	'searchfulltext'          => 'Buscar por texto completo',
+	'createarticle'           => 'Crear artículo',
 ),
 
 'eu' => array(
 	'tryexact'       => 'Izenburu zehatza bilatu',
 	'searchfulltext' => 'Testu osoa bilatu',
 	'createarticle'  => 'Artikulua sortu',
+),
+
+'ext' => array(
+	'createarticle'           => 'Creal artículu',
 ),
 
 'fa' => array(

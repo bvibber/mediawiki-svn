@@ -75,6 +75,23 @@ $messages = array(
 	'ogg-dismiss' => 'Isara',
 	),
 
+	'ca' => array(
+	'ogg-long-audio' => '(Ogg $1 arxiu de so, llargada $2, $3)',
+	'ogg-long-general' => '(Arxiu multimèdia OGG, llargada $2, $3)',
+	'ogg-long-error' => '(Arxiu OGG invàlid: $1)',
+	'ogg-pause' => 'Pausa',
+	'ogg-no-player' => 'No teniu instal·lat cap reproductor acceptat. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-ne</a> un.',
+	'ogg-no-xiphqt' => 'No disposeu del component XiphQT al vostre QuickTime. Aquest component és imprescindible per a que el QuickTime pugui reproduir fitxers OGG. Podeu <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">descarregar-lo</a> o escollir un altre reproductor.',
+	'ogg-player-thumbnail' => 'Només un fotograma',
+	'ogg-player-soundthumb' => 'Cap reproductor',
+	'ogg-player-selected' => '(seleccionat)',
+	'ogg-use-player' => 'Usa el reproductor:',
+	'ogg-more' => 'Més...',
+	'ogg-dismiss' => 'Tanca',
+	'ogg-download' => 'Descarrega l\'arxiu',
+	'ogg-desc-link' => 'Informació de l\'arxiu',
+	),
+
 	'cs' => array(
 	'ogg-short-audio' => 'Zvukový soubor ogg $1, $2',
 	'ogg-short-video' => 'Videosoubor ogg $1, $2',

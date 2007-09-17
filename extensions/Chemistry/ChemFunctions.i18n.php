@@ -131,7 +131,10 @@ $wgChemFunctions_Messages['de'] = array(
 $wgChemFunctions_Messages['hsb'] = array(
 	'chemicalsources' => 'Chemiske žórła',
 	'ChemFunctions_ListPage' => 'Chemiske žórła',
+	'ChemFunctions_DataList' => 'Deleka je lisćina websydłow, kotrež poskića dalše informacije wo substancy za kotrejž pytaš:<br /><br /> * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula at NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS uniwersity Oxford (UK) (njepřepytajomne)</a><br />',
+	'ChemFunctions_CAS' => 'Ličba CAS',
 	'ChemFunctions_Formula' => 'Formla',
+	'ChemFunctions_Name' => 'Mjeno IUPAC',
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Zapodatny zmylk',
 );
 

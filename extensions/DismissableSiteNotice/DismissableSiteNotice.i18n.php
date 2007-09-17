@@ -20,6 +20,14 @@ $wgDismissableSiteNoticeMessages['ar'] = array(
 	'sitenotice_close' => 'إغلاق',
 );
 
+$wgDismissableSiteNoticeMessages['bn'] = array(
+	'sitenotice_close' => 'নোটিশ বন্ধ করুন',
+);
+
+$wgDismissableSiteNoticeMessages['ca'] = array(
+	'sitenotice_close' => 'amaga',
+);
+
 $wgDismissableSiteNoticeMessages['cs'] = array(
 	'sitenotice_close' => 'zavřít',
 );
@@ -29,7 +37,7 @@ $wgDismissableSiteNoticeMessages['de'] = array(
 );
 
 $wgDismissableSiteNoticeMessages['es'] = array(
-	'sitenotice_close' => 'esconder',
+	'sitenotice_close' => 'ocultar',
 );
 
 $wgDismissableSiteNoticeMessages['fi'] = array(

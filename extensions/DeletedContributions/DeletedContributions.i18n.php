@@ -14,8 +14,16 @@ $wgDeletedContribsMessages['bcl'] = array(
 	'deletedcontributions' => 'Parâon an mga kontribusyon kan parágamit',
 );
 
+$wgDeletedContribsMessages['cs'] = array(
+	'deletedcontributions' => 'Smazané editace uživatele',
+);
+
 $wgDeletedContribsMessages['de'] = array(
 	'deletedcontributions'		 => 'Gelöschte Benutzerbeiträge'
+);
+
+$wgDeletedContribsMessages['es'] = array(
+	'deletedcontributions' => 'Contribuciones de usuario borradas',
 );
 
 $wgDeletedContribsMessages['fr'] = array(
@@ -27,7 +35,7 @@ $wgDeletedContribsMessages['he'] = array(
 );
 
 $wgDeletedContribsMessages['hsb'] = array(
-	'deletedcontributions' => 'Wušmórnjene wužiwarske přinoški',
+	'deletedcontributions' => 'wušmórnjene přinoški',
 );
 
 $wgDeletedContribsMessages['id'] = array(

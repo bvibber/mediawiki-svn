@@ -18,6 +18,11 @@ $wgCrossNamespaceLinksMessages['ar'] = array(
 	'crossnamespacelinks-summary' => 'تعرض هذه الصفحة قائمة بالصفحات التي تقع في نطاق المقالات و تحتوي على روابط من نطاقات أخرى (ماعدا {{ns:special}} و {{ns:talk}}و {{ns:project}} و{{ns:template}})، والتي لا ينصح باستعمالها.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|وصلة|وصلات}} ل $3',
 );
+$wgCrossNamespaceLinksMessages['ca'] = array(
+	'crossnamespacelinks'         => 'Enllaços entre espais de noms',
+	'crossnamespacelinks-summary' => 'Aquesta pàgina conté una llista d\'enllaços des de pàgines de l\'espai de noms principal a pàgines d\'altres espais de noms (a excepció dels espais {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}) que no és recomanable tenir.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enllaç|enllaços}} a $3',
+);
 $wgCrossNamespaceLinksMessages['cs'] = array(
 	'crossnamespacelinks'     => 'Odkazy napříč jmennými prostory',
 	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|odkaz|odkazy|odkazů}} do $3'
@@ -26,6 +31,11 @@ $wgCrossNamespaceLinksMessages['de'] = array(
 	'crossnamespacelinks'     => 'Artikel mit Links in andere Namensräume',
 	'crossnamespacelinks-summary' => 'Diese Liste zeigt Artikel, die Links auf Seiten anderer Namensräume enthalten. Ausgenommen sind dabei die Namensräume {{ns:special}}, {{ns:talk}}, {{ns:project}} und {{ns:template}}.',
  	'crossnamespacelinkstext' => '$1: {{PLURAL:$2|1 Link zeigt|$2 Links zeigen}} in den $3-Namensraum'
+);
+$wgCrossNamespaceLinksMessages['es'] = array(
+	'crossnamespacelinks'         => 'Enlaces entre diferentes espacios de nombres',
+	'crossnamespacelinks-summary' => 'Ésta página proporciona una lista de enlaces desde una página en el espacio de nombres principal hacia una página en otros espacios de nombres (excepto para los espacios de nombres {{ns:special}}, {{ns:talk}}, {{ns:project}} y {{ns:template}}), los cuales no son aconsejables.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|enlace a página|enlaces a páginas}} de $3',
 );
 $wgCrossNamespaceLinksMessages['fi'] = array(
 	'crossnamespacelinks'         => 'Nimiavaruuksienväliset linkit',

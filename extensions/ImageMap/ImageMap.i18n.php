@@ -107,6 +107,15 @@ function efImageMapMessages() {
 ),
 
 'hsb' => array(
+'imagemap_no_image'             => '&lt;imagemap&gt; zmylk: Dyrbiš w prěnjej lince wobraz podać',
+'imagemap_invalid_image'        => '&lt;imagemap&gt; zmylk: Wobraz je njepłaćiwy abo njeeksistuje',
+'imagemap_no_link'              => '&lt;imagemap&gt; zmylk: Na kóncu linki $1 njebu płaćiwy wotkaz namakany',
+'imagemap_invalid_title'        => '&lt;imagemap&gt; zmylk: njepłaćiwy titul we wotkazu w lince $1',
+'imagemap_missing_coord'        => '&lt;imagemap&gt; zmylk: Přemało koordinatow w lince $1 za podobu',
+'imagemap_unrecognised_shape'   => '&lt;imagemap&gt; zmylk: Njeznata podoba w lince $1, kóžda linka dyrbi so z jednym z tutych parametrow započeć: <tt>default, rect, circle</tt> abo <tt>poly</tt>',
+'imagemap_no_areas'             => '&lt;imagemap&gt; zmylk: Dyrbi so znajmjeńša přestrjeń definować.',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt; zmylk: njepłaćiwa koordinata w lince $1: su jenož ličby dowolene',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt; zmylk: Njepłaćiwy parameter "desc", móžne su: <tt>$1</tt>',
 'imagemap_description'          => 'Wo tutym wobrazu',
 ),
 

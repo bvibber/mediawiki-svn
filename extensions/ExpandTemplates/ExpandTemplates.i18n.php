@@ -37,6 +37,14 @@ $wgExpandTemplatesMessages['bcl'] = array(
 	'expand_templates_remove_comments' => 'Tanggalon an mga komento',
 	'expand_templates_preview'         => 'Patânaw',
 );
+$wgExpandTemplatesMessages['ca'] = array(
+	'expandtemplates'                  => 'Expansió de plantilles',
+	'expand_templates_intro'           => 'Aquesta pàgina especial permet provar plantilles, amb expansions recursives. Les funcions i les variables predefinides, com ara <nowiki>{{</nowiki>#if:...}} o <nowiki>{{</nowiki>CURRENTDAY}}, també són substituïdes.',
+	'expand_templates_title'           => 'Títol per contextualitzar ({{PAGENAME}}, etc):',
+	'expand_templates_input'           => 'El vostre text:',
+	'expand_templates_output'          => 'Resultat:',
+	'expand_templates_remove_comments' => 'Elimina els comentaris',
+);
 $wgExpandTemplatesMessages['cs'] = array(
 	'expandtemplates'                  => 'Substituovat šablony',
 	'expand_templates_intro'           => 'Pomocí této speciální stránky můžete nechat v textu substituovat všechny šablony a funkce parseru jako <code><nowiki>{{</nowiki>#if:…...}}</code> či proměnné jako <code><nowiki>{{</nowiki>CURRENTDAY}} – tzn. prakticky všechno v dvojitých složených závorkách. K tomu se používají přímo odpovídající funkce parseru MediaWiki.',
@@ -55,6 +63,12 @@ $wgExpandTemplatesMessages['de'] = array(
 	'expand_templates_ok'              => 'Ausführen',
 	'expand_templates_remove_comments' => 'Kommentare entfernen',
 	'expand_templates_preview'         => 'Vorschau',
+);
+$wgExpandTemplatesMessages['es'] = array(
+	'expandtemplates'                  => 'Sustituidor de plantillas',
+	'expand_templates_input'           => 'Texto a expandir:',
+	'expand_templates_output'          => 'Resultado:',
+	'expand_templates_remove_comments' => 'Eliminar comentarios',
 );
 $wgExpandTemplatesMessages['fi'] = array(
 	'expandtemplates'                  => 'Mallineiden laajennus',
@@ -305,7 +319,6 @@ $wgExpandTemplatesMessages['su'] = array(
 	'expand_templates_output'          => 'Hasil:',
 	'expand_templates_ok'              => 'Heug',
 );
-
 $wgExpandTemplatesMessages['sv'] = array(
 	'expandtemplates'                  => 'Expandera mallar',
 	'expand_templates_intro'           => 'Den här specialsidan tar en text och expanderar rekursivt alla mallar som används. Även parserfunktioner (som <nowiki>{{</nowiki>#if:...}}), variabler som <nowiki>{{</nowiki>CURRENTDAY}} och annan kod med dubbla klammerparenteser expanderas.',
@@ -316,7 +329,6 @@ $wgExpandTemplatesMessages['sv'] = array(
 	'expand_templates_remove_comments' => 'Ta bort kommentarer',
 	'expand_templates_preview'         => 'Förhandsvisning',
 );
-
 $wgExpandTemplatesMessages['yue'] = array(
 	'expandtemplates'                  => '展開模',
 	'expand_templates_intro'           => '呢個特別頁係用於將一啲文字中嘅模展開，包括響個模度引用嘅模。同時亦都展開解譯器函數好似<nowiki>{{</nowiki>#if:...}}，以及一啲變數好似<nowiki>{{</nowiki>CURRENTDAY}}&mdash;實際上，幾乎所有響雙括弧中嘅內容都會被展開。呢個特別頁係通過使用MediaWiki嘅相關解釋階段嘅功能完成嘅。',
@@ -353,7 +365,3 @@ $wgExpandTemplatesMessages['zh-hk'] = $wgExpandTemplatesMessages['zh-hant'];
 $wgExpandTemplatesMessages['zh-sg'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-tw'] = $wgExpandTemplatesMessages['zh-hant'];
 $wgExpandTemplatesMessages['zh-yue'] = $wgExpandTemplatesMessages['yue'];
-
-
-
-

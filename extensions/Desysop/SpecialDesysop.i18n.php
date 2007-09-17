@@ -30,6 +30,10 @@ $wgDesysopMessages['ar'] = array(
 	'desysop'              => 'عزل مستخدم',
 	'not_sysop'            => 'هذا المستخدم ليس إداريا',
 );
+$wgDesysopMessages['ca'] = array(
+	'set_user_rights'      => 'Defineix els permisos d\'usuaris',
+	'user_rights_set'      => '<strong>S\'han actualitzat els permisos de l\'usuari «$1»</strong>',
+);
 $wgDesysopMessages['cs'] = array(
 	'desysoptitle'         => 'Odebrat uživateli práva správce',
 	'desysoptext'          => 'Pomocí tohoto formuláře může byrokrat odebrat uživateli práva správce. Napište uživatelovo jméno do rámečku a klikněte na tlačítko, práva budou odebrána.',
@@ -244,6 +248,11 @@ $wgDesysopMessages['su'] = array(
 	'desysop'              => 'Cabut status kuncén pamaké',
 	'not_sysop'            => 'Pamaké ieu lain administrator',
 );
+$wgDesysopMessages['wa'] = array(
+	'set_user_rights'      => 'Defini les droets d\'&nbsp;l\'&nbsp;uzeu',
+	'user_rights_set'      => '<b>Les droets po l\' uzeu «$1» ont stî metous a djoû</b>',
+	'set_rights_fail'      => '<b>Les droets po l\' uzeu «$1» n\' ont nén polou esse definis. (Avoz vs tapé l\' no bén comifåt?)</b>',
+);
 $wgDesysopMessages['yue'] = array(
 	'desysoptitle'         => '撤銷一位用戶嘅操作員權限',
 	'desysoptext'          => "呢個表格係畀事務員用以撤銷一位用戶嘅操作員權限。響下面嘅框度輸入用戶名並撳一下個掣去撤銷嗰位用戶嘅操作員權限。",
@@ -283,6 +292,3 @@ $wgDesysopMessages['zh-hk'] = $wgDesysopMessages['zh-hant'];
 $wgDesysopMessages['zh-sg'] = $wgDesysopMessages['zh-hans'];
 $wgDesysopMessages['zh-tw'] = $wgDesysopMessages['zh-hant'];
 $wgDesysopMessages['zh-yue'] = $wgDesysopMessages['yue'];
-
-
-

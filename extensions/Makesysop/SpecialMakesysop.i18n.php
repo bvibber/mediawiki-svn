@@ -131,13 +131,17 @@ $wgMakesysopMessages['bs'] = array(
 	'makesysop'            => 'Dodijeli administratorska prava korisniku',
 );
 $wgMakesysopMessages['ca'] = array(
-	'makesysoptitle'       => 'Converteix en administrador',
-	'makesysoptext'        => 'Aquest formulari serveix per a que els buròcrates puguin convertir un usuari en administrador. Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
-	'makesysopname'        => 'Nom de l\'usuari:',
-	'makesysopsubmit'      => 'Converteix aquest usuari en administrador',
-	'makesysopok'          => '<b>L\'usuari "$1" és un administrador a partir d\'ara</b>',
-	'rights'               => 'Permisos:',
-	'already_sysop'        => 'Aquest usuari ja és un administrador',
+	'makesysoptitle' => 'Converteix en administrador',
+	'makesysoptext' => 'Aquest formulari serveix per a que els buròcrates puguin convertir un usuari en administrador.
+Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
+	'makesysopname' => 'Nom de l\'usuari:',
+	'makesysopsubmit' => 'Converteix aquest usuari en administrador',
+	'makesysopok' => '<b>L\'usuari "$1" és un administrador a partir d\'ara</b>',
+	'rights' => 'Permisos:',
+	'set_user_rights' => 'Defineix els permisos d\'usuaris',
+	'user_rights_set' => '<strong>S\'han actualitzat els permisos de l\'usuari «$1»</strong>',
+	'already_sysop' => 'Aquest usuari ja és un administrador',
+	'already_bureaucrat' => 'Aquest usuari ja és buròcrata',
 );
 $wgMakesysopMessages['cs'] = array(
 	'makesysoptitle'       => 'Učinit uživatele správcem',
@@ -401,7 +405,10 @@ $wgMakesysopMessages['hsb'] = array(
 	'makesysop' => 'Wužiwarja k administratorej činić',
 	'already_sysop' => 'Tutón wužiwar je hižo administrator.',
 	'already_bureaucrat' => 'Tutón wužiwar je hižo běrokrat.',
+	'makesysop-nodatabase' => 'Wopačne wužiwarske mjeno interwiki: $1',
+	'group-steward' => 'Stewardźa',
 	'group-steward-member' => 'steward',
+	'grouppage-steward' => '{{ns:project}}:Stewardźa',
 );
 $wgMakesysopMessages['hu'] = array(
 	'makesysopok'          => '<b>User „$1” mostantól adminisztrátor</b>',
@@ -1073,34 +1080,22 @@ $wgMakesysopMessages['vi'] = array(
 	'already_bureaucrat'   => 'Người này đã là tổng quản lý',
 );
 $wgMakesysopMessages['wa'] = array(
-	'makesysoptitle'       => 'Diner a èn uzeu on livea di manaedjeu',
-	'makesysoptext'        => "Cisse pådje ci c'&nbsp;est po les mwaisses-manaedjeus («burocrates») poleur hôssî l'&nbsp;livea d'&nbsp;èn uzeu do livea d'&nbsp;simpe uzeu eredjîstré, å ci d'&nbsp;manaedjeu. Tapez l'&nbsp;no d'&nbsp;l'&nbsp;uzeu dins l'&nbsp;boesse di tecse poy clitchîz sol boton po ndè fé on manaedjeu.",
-	'makesysopname'        => "Li no d' l' uzeu:",
-	'makesysopsubmit'      => 'Endè fé on manaedjeu',
-	'makesysopok'          => "<b>Asteure l'&nbsp;uzeu «$1» a l'&nbsp;livea d'&nbsp;manaedjeu</b>",
-	'makesysopfail'        => "<b>L'&nbsp;uzeu «$1» èn pout nén esse fwait on manaedjeu. (Avoz vs tapé l'&nbsp;no bén comifåt?)</b>",
-	'setbureaucratflag'    => 'Mete li drapea mwaisse-manaedjeu',
-	'rights'               => 'Droets:',
-	'set_user_rights'      => "Defini les droets d'&nbsp;l'&nbsp;uzeu",
-	'user_rights_set'      => "<b>Les droets po l' uzeu «$1» ont stî metous a djoû</b>",
-	'set_rights_fail'      => "<b>Les droets po l'&nbsp;uzeu «$1» n'&nbsp;ont nén polou esse definis. (Avoz vs tapé l'&nbsp;no bén comifåt?)</b>",
-	'makesysop'            => 'Diner a èn uzeu on livea di manaedjeu',
-	'already_sysop'        => "Cist uzeu ci a ddja l' livea di manaedjeu",
-	'already_bureaucrat'   => "Cist uzeu ci a ddja l' livea di mwaisse-manaedjeu",
-	'makesysop-nodatabase' => 'Bad interwiki username: $1',
-	'group-steward'        => 'Mwaisse-manaedjeus tot avå',
-	'group-steward-member' => 'Mwaisse-manaedjeu tot avå',
-	'grouppage-steward'    => '{{ns:project}}:Stewards',
-);
-$wgMakesysopMessages['zh-classical'] = array(
-	'makesysoptitle'       => '封有秩',
-	'makesysopname'        => '簿名：',
-	'makesysopsubmit'      => '封之有秩',
-	'makesysopok'          => "<b>\"$1\"成有秩矣。</b>",
-	'makesysopfail'        => "<b>\"$1\"未封之，疑名謬。</b>",
-	'makesysop'            => '封有秩',
-	'already_sysop'        => '早封有秩矣',
-	'already_bureaucrat'   => '早封門下矣',
+	'makesysoptitle' => 'Diner a èn uzeu on livea di manaedjeu',
+	'makesysoptext' => 'Cisse pådje ci c\'&nbsp;est po les mwaisses-manaedjeus («burocrates») poleur hôssî l\'&nbsp;livea d\'&nbsp;èn uzeu do livea d\'&nbsp;simpe uzeu eredjîstré, å ci d\'&nbsp;manaedjeu. Tapez l\'&nbsp;no d\'&nbsp;l\'&nbsp;uzeu dins l\'&nbsp;boesse di tecse poy clitchîz sol boton po ndè fé on manaedjeu.',
+	'makesysopname' => 'Li no d\' l\' uzeu:',
+	'makesysopsubmit' => 'Endè fé on manaedjeu',
+	'makesysopok' => '<b>Asteure l\'&nbsp;uzeu «$1» a l\'&nbsp;livea d\'&nbsp;manaedjeu</b>',
+	'makesysopfail' => '<b>L\'&nbsp;uzeu «$1» èn pout nén esse fwait on manaedjeu. (Avoz vs tapé l\'&nbsp;no bén comifåt?)</b>',
+	'setbureaucratflag' => 'Mete li drapea mwaisse-manaedjeu',
+	'rights' => 'Droets:',
+	'set_user_rights' => 'Defini les droets d\'&nbsp;l\'&nbsp;uzeu',
+	'user_rights_set' => '<b>Les droets po l\' uzeu «$1» ont stî metous a djoû</b>',
+	'set_rights_fail' => '<b>Les droets po l\' uzeu «$1» n\' ont nén polou esse definis. (Avoz vs tapé l\' no bén comifåt?)</b>',
+	'makesysop' => 'Diner a èn uzeu on livea di manaedjeu',
+	'already_sysop' => 'Cist uzeu ci a ddja l\' livea di manaedjeu',
+	'already_bureaucrat' => 'Cist uzeu ci a ddja l\' livea di mwaisse-manaedjeu',
+	'group-steward' => 'Mwaisse-manaedjeus tot avå',
+	'group-steward-member' => 'mwaisse-manaedjeu tot avå',
 );
 $wgMakesysopMessages['yue'] = array(
 	'makesysoptitle'       => '整一位用戶做操作員',
@@ -1123,6 +1118,16 @@ $wgMakesysopMessages['yue'] = array(
 	'group-steward'        => '執行員',
 	'group-steward-member' => '執行員',
 	'grouppage-steward'    => '{{ns:project}}:執行員',
+);
+$wgMakesysopMessages['zh-classical'] = array(
+	'makesysoptitle'       => '封有秩',
+	'makesysopname'        => '簿名：',
+	'makesysopsubmit'      => '封之有秩',
+	'makesysopok'          => "<b>\"$1\"成有秩矣。</b>",
+	'makesysopfail'        => "<b>\"$1\"未封之，疑名謬。</b>",
+	'makesysop'            => '封有秩',
+	'already_sysop'        => '早封有秩矣',
+	'already_bureaucrat'   => '早封門下矣',
 );
 $wgMakesysopMessages['zh-hans'] = array(
 	'makesysoptitle'       => '将用户设置为操作员',
@@ -1178,10 +1183,3 @@ $wgMakesysopMessages['zh-cn'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-hk'] = $wgMakesysopMessages['zh-hant'];
 $wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-yue'] = $wgMakesysopMessages['yue'];
-
-
-
-
-
-
-

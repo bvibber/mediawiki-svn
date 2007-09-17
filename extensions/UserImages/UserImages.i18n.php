@@ -27,6 +27,10 @@ function efUserImagesMessages() {
 'userimages-noname' => 'অসিদ্ধ ব্যবহারকারী নাম দেওয়া হয়েছে অথবা ব্যবহারকারী নাম দেওয়া হয় নাই।',
 'userimages-noimages' => '$1 কোন চিত্র আপলোড করেন নাই।',
 ),
+'ext' => array(
+'userimages-caption' => 'Imahis empuntás pol $1',
+'userimages-noimages' => '$1 nu á empuntau denguna imahin.',
+),
 /* French */
 'fr' => array(
 'userimages-caption' => 'Images importées par $1',

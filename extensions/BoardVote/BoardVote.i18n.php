@@ -172,11 +172,12 @@ $wgBoardVoteMessages['bcl'] = array(
 	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['ca'] = array(
-	'boardvote_redirecting'   => "Per millorar la seguretat i la transparència de la votació, aquesta es farà en un servidor independent extern.
+	'boardvote'               => 'Eleccions al Consell d\'Administració de la Fundació Wikimedia',
+	'boardvote_redirecting'   => 'Per millorar la seguretat i la transparència de la votació, aquesta es farà en un servidor independent extern.
 
-D'aquí 20 segons sereu redirigit a aquesta pàgina. [$1 Cliqueu aquí] per anar-hi ara mateix.
+D\'aquí 20 segons sereu redirigit a aquesta pàgina. [$1 Cliqueu aquí] per anar-hi ara mateix.
 
-Tingueu en compte que us pot aparèixer un avís de certificat de seguretat.",
+Tingueu en compte que us pot aparèixer un avís de certificat de seguretat.',
 );
 $wgBoardVoteMessages['cs'] = array(
 	'boardvote'               => "Volby do Správní rady nadace Wikimedia",

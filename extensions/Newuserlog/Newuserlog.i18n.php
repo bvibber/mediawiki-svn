@@ -30,8 +30,14 @@ $wgNewuserlogMessages['ar'] = array(
 $wgNewuserlogMessages['bcl'] = array(
 	'newuserlog-create-entry'  => 'Bâgong parágamit',
 );
+$wgNewuserlogMessages['ca'] = array(
+	'newuserlogpage'           => 'Registre de creació de l\'usuari',
+	'newuserlogpagetext'       => 'Aquest és un registre de creació de nous usuaris',
+	'newuserlog-create-entry'  => 'Nou usuari',
+	'newuserlog-create2-entry' => 's\'ha creat un compte per a $1',
+);
 $wgNewuserlogMessages['cs'] = array(
-	'newuserlogpage'           => 'Kniha nových wikipedistů',
+	'newuserlogpage'           => 'Kniha nových uživatelů',
 	'newuserlogpagetext'       => 'Toto je záznam nově zaregistrovaných uživatelů.',
 	'newuserlog-create-entry'  => 'Nově založený uživatel',
 	'newuserlog-create2-entry' => 'založil účet pro $1',
@@ -47,6 +53,12 @@ $wgNewuserlogMessages['eo'] = array(
 	'newuserlogpagetext'       => 'Ĉi tio estas loglibro de uzantokreadoj',
 	'newuserlog-create-entry'  => 'Nova uzanto',
 	'newuserlog-create2-entry' => 'kreis konton por $1',
+);
+$wgNewuserlogMessages['es'] = array(
+	'newuserlogpage'           => 'Registro de creación de usuarios',
+	'newuserlogpagetext'       => 'Este es un registro de creación de usuarios',
+	'newuserlog-create-entry'  => 'Usuario nuevo',
+	'newuserlog-create2-entry' => 'creó una cuenta para $1',
 );
 $wgNewuserlogMessages['fi'] = array(
 	'newuserlogpage'           => 'Uudet käyttäjät',
@@ -228,7 +240,7 @@ $wgNewuserlogMessages['ur'] = array(
 $wgNewuserlogMessages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',
 	'newuserlogpagetext'       => 'Chal pa dzo c\' est ene djivêye des uzeus novelmint eredjîstrés.',
-	'newuserlog-create-entry'  => 'novea uzeu',
+	'newuserlog-create-entry'  => 'Novea uzeu',
 	'newuserlog-create2-entry' => 'conte ahivé po $1',
 );
 $wgNewuserlogMessages['yue'] = array(
@@ -261,6 +273,3 @@ $wgNewuserlogMessages['zh-hk'] = $wgNewuserlogMessages['zh-hant'];
 $wgNewuserlogMessages['zh-sg'] = $wgNewuserlogMessages['zh-hans'];
 $wgNewuserlogMessages['zh-tw'] = $wgNewuserlogMessages['zh-hant'];
 $wgNewuserlogMessages['zh-yue'] = $wgNewuserlogMessages['yue'];
-
-
-

@@ -23,7 +23,11 @@ $wgFilepathMessages['ar'] = array(
 	'filepath_submit' => 'المسار',
 	'filepath-summary' => 'هذه الصفحة الخاصة تعرض المسار الكامل لملف. ستعرض الصور بأقصى دقة، ستعمل أنواع الملفات الأخرى بالبرنامج المخصص لهم مباشرة؛ أدخل اسم الملف بدون البادئة "{{ns:image}}:"',
 );
-
+$wgFilepathMessages['ca'] = array(
+	'filepath'        => 'Camí d\'arxiu',
+	'filepath_page'   => 'Arxiu:',
+	'filepath_submit' => 'Camí',
+);
 $wgFilepathMessages['cs'] = array(
 	'filepath'        => 'Cesta k souboru',
 	'filepath_page'   => 'Soubor:',
@@ -42,6 +46,11 @@ $wgFilepathMessages['eo'] = array(
 	'filepath_page'   => 'Dosiero:',
 	'filepath_submit' => 'Pado',
 	'filepath-summary' => 'Ĉi tiu speciala paĝo redonas la kompletan padon por dosiero. Bildoj estas montrataj en alta distingivo, aliaj dosieraj tipoj estas rekte startataj per ties asociita programo.',
+);
+$wgFilepathMessages['es'] = array(
+	'filepath'        => 'Ruta de archivo',
+	'filepath_page'   => 'Archivo:',
+	'filepath_submit' => 'Ruta',
 );
 $wgFilepathMessages['fi'] = array(
 	'filepath'         => 'Tiedoston osoite',
@@ -209,7 +218,6 @@ $wgFilepathMessages['su'] = array(
 	'filepath_page'   => 'Koropak:',
 	'filepath_submit' => 'Jalur',
 );
-
 $wgFilepathMessages['sv'] = array(
 	'filepath'         => 'Sökväg till fil',
 	'filepath_page'    => 'Fil:',
@@ -233,7 +241,6 @@ $wgFilepathMessages['zh-hans'] = array(
 	'filepath-summary' => '这个特殊页面撷取一个文件的完整路径。图像会以完整的解像度显示，其它的文件类型会以同它们已关联程序启动。
 	
 	请输入档名，不要包含"{{ns:image}}:"开头。',
-
 );
 $wgFilepathMessages['zh-hant'] = array(
 	'filepath'        => '檔案路徑',
@@ -249,7 +256,3 @@ $wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-hant'];
 $wgFilepathMessages['zh-sg'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-tw'] = $wgFilepathMessages['zh-hant'];
 $wgFilepathMessages['zh-yue'] = $wgFilepathMessages['yue'];
-
-
-
-

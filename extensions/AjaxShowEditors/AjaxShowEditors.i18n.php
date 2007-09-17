@@ -23,6 +23,11 @@ $wgAjaxShowEditorsMessages['br'] = array(
 	'ajax-se-pending' => 'trevell war ar stern ... (klikit war ar voest-mañ pe krogit da zegas kemmoù)',
 	'ajax-se-idling' => '($1 zo)',
 );
+$wgAjaxShowEditorsMessages['cs'] = array(
+	'ajax-se-title' => 'Právě edituje:',
+	'ajax-se-pending' => 'očekává se změna... (klikněte do tohoto pole nebo začněte editovat)',
+	'ajax-se-idling' => '(před $1 s)',
+);
 $wgAjaxShowEditorsMessages['de'] = array(
 	'ajax-se-title'   => 'Wird zur Zeit bearbeitet von:',
 	'ajax-se-pending' => 'bevorstehende Aktualisierungen… (klicke auf diesen Kasten oder beginne mit der Bearbeitung)',

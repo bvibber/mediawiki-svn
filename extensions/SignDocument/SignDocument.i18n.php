@@ -12,6 +12,12 @@ $allMessages = array(
 		'signaturelogentry'     => 'hat das Dokument $1 unterschrieben',
 	),
 
+	'hsb' => array(
+		'signaturelogpage' => 'Proatokol podpisow',
+		'signaturelogpagetext' => 'Tio estas protokol wšěch podpisow, kotrež buchu přez [[Special:SignDocument]] dokumentam přidate.',
+		'signaturelogentry' => 'je dokument $1 podpisał',
+	),
+
 	'nl' => array(
 		'signaturelogpage'      => 'Logboek ondertekeningen',
 		'signaturelogpagetext'  => 'Dit is een logboek van alle ondertekeningen van documenten via [[Special:SignDocument]].',

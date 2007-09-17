@@ -60,9 +60,24 @@ function efMakeBotMessages() {
 'makebot-comment'         => 'Komento:',
 ),
 
-/* Old Church Slavonic (language file) */
-'cu' => array(
-'makebot-search' => 'Прѣиди',
+'ca' => array(
+'makebot'                 => 'Donar o treure la marca de bot',
+'makebot-header'          => '\'\'\'Un buròcrata local pot fer servir aquesta pàgina per a concedir o retirar l\'estatus de [[Help:Bot|bot]] a qualsevol compte d\'usuari.\'\'\'<br />L\'estatus de bot oculta les edicions d\'un usuari a la pàgina de [[Special:Recentchanges|canvis recents]] i llistes semblants, i és útil per a usuaris que realitzen edicions automàticament. Això s\'ha de fer segons les polítiques aplicables.',
+'makebot-username'        => 'Usuari:',
+'makebot-search'          => 'Continua',
+'makebot-isbot'           => 'L\'usuari [[User:$1|$1]] té estatus de bot.',
+'makebot-notbot'          => 'L\'usuari [[User:$1|$1]] no té estatus de bot.',
+'makebot-privileged'      => 'L\'usuari [[User:$1|$1]] és [[Special:Listadmins|administrador o buròcrata]] i no pot rebre l\'estatus de bot.',
+'makebot-change'          => 'Canvia l\'estatus:',
+'makebot-grant'           => 'Concedeix',
+'makebot-revoke'          => 'Retira',
+'makebot-comment'         => 'Comentaris:',
+'makebot-granted'         => 'L\'usuari [[User:$1|$1]] ha rebut l\'estatus de bot.',
+'makebot-revoked'         => 'L\'usuari [[User:$1|$1]] ja no té l\'estatus de bot.',
+'makebot-logpage'         => 'Registre de marca de bot',
+'makebot-logpagetext'     => 'Aquest és un registre dels canvis d\'estatus de [[Help:Bot|bot]] als usuaris.',
+'makebot-logentrygrant'   => 'concedida la marca de bot a [[$1]]',
+'makebot-logentryrevoke'  => 'retirada la marca de bot a [[$1]]',
 ),
 
 /* Czech (bug 8455) */
@@ -84,6 +99,11 @@ function efMakeBotMessages() {
 'makebot-logpagetext' => 'Tato kniha zobrazuje změny v udělovaných příznacích [[{{ns:help}}:Bot|bot]].',
 'makebot-logentrygrant' => 'přiděluje účtu [[$1]] příznak bot',
 'makebot-logentryrevoke' => 'odebírá účtu [[$1]] příznak bot',
+),
+
+/* Old Church Slavonic (language file) */
+'cu' => array(
+'makebot-search' => 'Прѣиди',
 ),
 
 /* German (Raymond) */
@@ -125,6 +145,26 @@ function efMakeBotMessages() {
 'makebot-logpagetext'     => 'Ĉi tio estas loglibro de ŝanĝoj de uzanta [[Help:Roboto|robota]] statuso.',
 'makebot-logentrygrant'   => 'koncedis robotan statuson al [[$1]]',
 'makebot-logentryrevoke'  => 'revokis robotan statuson de [[$1]]',
+),
+
+'es' => array(
+'makebot'                 => 'Establecer o quitar el flag de bot',
+'makebot-header'          => '\'\'\'Un burócrata local puede usar esta página  para dar o quitar el [[Help:Bot|flag de bot]] a otra cuenta de usuario.\'\'\'<br />El flag de bot oculta las ediciones de un usuario en [[Special:Recentchanges|cambios recientes]] y listas similares, siendo útil para usuarios que realizan ediciones automáticas. Esto debe hacerse de acuerdo con las políticas aplicables.',
+'makebot-username'        => 'Usuario:',
+'makebot-search'          => 'Seguir',
+'makebot-isbot'           => 'El [[User:$1|usuario $1]] tiene flag de bot.',
+'makebot-notbot'          => 'El [[User:$1|$1]] no tiene flag de bot.',
+'makebot-privileged'      => 'El usuario [[User:$1|$1]] tiene [[Special:Listadmins|privilegios de administrador o burócrata]], y no se le puede dar flag de bot.',
+'makebot-change'          => 'Cambiar estado:',
+'makebot-grant'           => 'Dar',
+'makebot-revoke'          => 'Quitar',
+'makebot-comment'         => 'Motivo:',
+'makebot-granted'         => 'Ahora [[User:$1|$1]] tiene flag de bot.',
+'makebot-revoked'         => 'El usuario [[User:$1|$1]] ya no tiene flag de bot.',
+'makebot-logpage'         => 'Registro del flag de bot',
+'makebot-logpagetext'     => 'Este es un registro de los cambios del flag de [[Help:Bot|bot]].',
+'makebot-logentrygrant'   => 'dio flag de bot a [[$1]]',
+'makebot-logentryrevoke'  => 'quitó el flag de bot a [[$1]]',
 ),
 
 /* Finnish (Niklas Laxström) */
@@ -649,23 +689,23 @@ function efMakeBotMessages() {
 
 /* Walloon (language file) */
 'wa' => array(
-'makebot' => 'Diner ou rsaetchî l\' livea d\' robot',
-'makebot-header' => '\'\'\'On mwaisse-manaedjeu sol wiki pout eployî cisse pådje ci po dner ou rsaetchî l\' [[{{ns:help}}:Robots|livea d\' robot]] a èn ôte conte d\' uzeu.\'\'\'<br />El livea d\' robot fwait ki les candjmints da cist uzeu la si polèt catchî dins l\' pådje des [[{{special}}:Recentchanges|dierins candjmints]] et des sfwaitès djivêyes, çou k\' est ahessåve po mårker les uzeus ki fjhèt des candjmints otomatikes. Çoula doet esse fwait tot shuvant les rîles ki s\' aplikèt.',
-'makebot-username' => 'No d\' uzeu:',
-'makebot-search' => 'I va',
-'makebot-change' => 'Candjî l\' livea:',
-'makebot-grant' => 'Diner',
-'makebot-revoke' => 'Rissaetchî',
-'makebot-comment' => 'Comintaire:',
-'makebot-logpage' => 'Djournå des liveas d\' robot',
-'makebot-granted' => '[[{{ns:user}}:$1|$1]] a-st asteure li livea d\' robot.',
-'makebot-isbot' => '[[{{ns:user}}:$1|$1]] a l\' livea d\' robot.',
-'makebot-logentrygrant' => 'a dné l\' livea d\' robot a [[$1]]',
-'makebot-logentryrevoke' => 'a rsaetchî l\' livea d\' robot da [[$1]]',
-'makebot-logpagetext' => 'Çouchal, c\' est on djournå des dinaedjes eyet rsaetchaedjes do [[{{ns:help}}:Robots|livea d\' robot]] a des uzeus.',
-'makebot-notbot' => '[[{{ns:user}}:$1|$1]] n\' a nén l\' livea d\' robot',
-'makebot-privileged' => '[[{{ns:user}}:$1|$1]] a ddja on livea d\' [[{{ns:special}}:Listadmins|manaedjeu ou mwaisse-manaedjeu]], ça fwait k\' i n\' pout nén eployî ç\' conte la po on robot.',
-'makebot-revoked' => '[[{{ns:user}}:$1|$1]] n\' a pus d\' livea d\' robot.',
+'makebot'                 => 'Diner ou rsaetchî l\' livea d\' robot',
+'makebot-header'          => '\'\'\'On mwaisse-manaedjeu sol wiki pout eployî cisse pådje ci po dner ou rsaetchî l\' [[Help:Robots|livea d\' robot]] a èn ôte conte d\' uzeu.\'\'\'<br />El livea d\' robot fwait ki les candjmints da cist uzeu la si polèt catchî dins l\' pådje des [[Special:Recentchanges|dierins candjmints]] et des sfwaitès djivêyes, çou k\' est ahessåve po mårker les uzeus ki fjhèt des candjmints otomatikes. Çoula doet esse fwait tot shuvant les rîles ki s\' aplikèt.',
+'makebot-username'        => 'No d\' uzeu:',
+'makebot-search'          => 'I va',
+'makebot-isbot'           => '[[User:$1|$1]] a l\' livea d\' robot.',
+'makebot-notbot'          => '[[User:$1|$1]] n\' a nén l\' livea d\' robot',
+'makebot-privileged'      => '[[User:$1|$1]] a ddja on livea d\' [[Special:Listadmins|manaedjeu ou mwaisse-manaedjeu]], ça fwait k\' i n\' pout nén eployî ç\' conte la po on robot.',
+'makebot-change'          => 'Candjî l\' livea:',
+'makebot-grant'           => 'Diner',
+'makebot-revoke'          => 'Rissaetchî',
+'makebot-comment'         => 'Comintaire:',
+'makebot-granted'         => '[[User:$1|$1]] a-st asteure li livea d\' robot.',
+'makebot-revoked'         => '[[User:$1|$1]] n\' a pus d\' livea d\' robot.',
+'makebot-logpage'         => 'Djournå des liveas d\' robot',
+'makebot-logpagetext'     => 'Çouchal, c\' est on djournå des dinaedjes eyet rsaetchaedjes do [[Help:Robots|livea d\' robot]] a des uzeus.',
+'makebot-logentrygrant'   => 'a dné l\' livea d\' robot a [[$1]]',
+'makebot-logentryrevoke'  => 'a rsaetchî l\' livea d\' robot da [[$1]]',
 ),
 
 /* Cantonese (Hillgentleman, Shinjiman) */
@@ -768,7 +808,3 @@ function efMakeBotMessages() {
 
 	return $messages;
 }
-
-
-
-

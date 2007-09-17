@@ -202,12 +202,16 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 'hiderevision-error-current' => 'Poslednja změna njehodźi so wušmórnyć. Staj tutu změnu wróćo.',
 'hiderevision-error-delete' => 'Archiwowanje njemóžno. Bu prjedy wušmórnjene?',
 'hiderevision-archive-status' => 'Wušmórnjena wersija z $1: $2',
+'oversight-nodiff' => 'Njeje přirunanje wersijow móžno, dokelž prjedawša wersija njeje. Móžnej přičinje:
+*Strona bu zničena
+*Schowana wersija běše přenja wersija',
 'oversight-log-hiderev' => 'změna wot $1 bu wotstronjena.',
 'oversight' => 'Oversight',#identical but defined
 'oversight-view' => 'podrobnosće',
 'oversight-difference' => '(Rozdźěl wot předchadneje zwostawaceje wersije)',
 'oversight-prev' => 'Poslednja předchadna wersija',
 'oversight-hidden' => 'Schowana wersija',
+'oversight-header' => 'Slěduje lisćina wersijow na stajnje schowanych za zjawnosć. Wozjewjenje tutych informacijow móže k stajnemu zhubjenju prawow za Oversight wjesć.',
 ),
 
 /* Italian (BrokenArrow) */

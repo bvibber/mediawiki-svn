@@ -165,6 +165,19 @@ Pamätajte: \'\'\'Týmto spôsobom už svoje privilégiá nedostanete naspäť!\
 'resign-logentry' => 'odstránil svoje privilégiá $2',
 ),
 
+'wa' => array(
+'resign' => 'Si rsaetchî',
+'resign-text' => 'Vos ploz \'\'\'rissaetchî vos permissions\'\'\' (eg d\' manaedjeu) e cisse pådje ci. S\' i vs plait verifyîz les permissions ki vos vs voloz rsaetchî.
+
+Èn rovyîz nén: \'\'\'Vos n\' poloz pus rprinde vos permissions come çoula!\'\'\' Vos dvroz trover on mwaisse-manaedjeu ki s\' laireut adire po vos ridner ces permissions. Adon, tuzez bén divant d\' eployî cisse pådje ci.',
+'resign-reason' => 'Råjhon:',
+'resign-confirm' => 'Dj\' acertene ki dj\' vou rsaetchî totes les permissions ki dj\' a clitchî',
+'resign-noconfirm' => 'Clitchîz l\' boesse a clitchî d\' acertinaedje si vos vs vloz rsaetchî vos permissions.',
+'resign-nogroups' => 'Verifyîz s\' i vs plait les permissions ki vos vloz rsaetchî.',
+'resign-success' => '\'\'\'Les permissions ont stî rsaetcheyes comifåt.\'\'\'',
+'resign-logentry' => 'rissaetcha les permissions $2 po lu-minme',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 'resign'           => '劈炮',
@@ -220,9 +233,3 @@ Pamätajte: \'\'\'Týmto spôsobom už svoje privilégiá nedostanete naspäť!\
 
 	return $messages;
 }
-
-
-
-
-
-

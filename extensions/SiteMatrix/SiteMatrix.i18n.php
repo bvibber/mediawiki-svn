@@ -28,10 +28,12 @@ $wgSiteMatrixMessages['bcl'] = array(
 	'sitematrix-project' => 'Pangaran kan proyekto, interproject link asin interwiki link',
 	'sitematrix-others' => 'Ibang mga proyekto kan Wikimedia',
 );
+$wgSiteMatrixMessages['ca'] = array(
+	'sitematrix' => 'Llista de tots els projectes en els diferents idiomes.',
+);
 $wgSiteMatrixMessages['cs'] = array(
 	'sitematrix' => 'Seznam všech wiki nadace Wikimedia',
 );
-
 $wgSiteMatrixMessages['de'] = array(
 	"sitematrix"          => "Liste der Wikimedia-Wikis",
 	'sitematrix-language' => 'Sprache',
@@ -43,6 +45,9 @@ $wgSiteMatrixMessages['eo'] = array(
 	'sitematrix-language' => 'Lingvo',
 	'sitematrix-project' => 'Nomo de projekto, interprojekta ligilo kaj intervikia ligilo',
 	'sitematrix-others' => 'Aliaj projektoj de Wikimedia',
+);
+$wgSiteMatrixMessages['es'] = array(
+	'sitematrix' => 'Lista de wikis de Wikimedia',
 );
 $wgSiteMatrixMessages['fi'] = array(
 	"sitematrix" => "Luettelo Wikimedian wikeistä",
@@ -155,7 +160,6 @@ $wgSiteMatrixMessages['su'] = array(
 	'sitematrix-project' => 'Ngaran proyék , tumbu interproyék jeung tumbu interwiki',
 	'sitematrix-others' => 'Proyék laina ti Wikimedia',
 );
-
 $wgSiteMatrixMessages['sv'] = array(
 	"sitematrix"          => "Lista över Wikimedias wikis",
 	'sitematrix-language' => 'Språk',
@@ -164,6 +168,12 @@ $wgSiteMatrixMessages['sv'] = array(
 );
 $wgSiteMatrixMessages['ur'] = array(
 	"sitematrix" => 'فہرست وکی میڈیا کے دیگر وکییوں کی',
+);
+$wgSiteMatrixMessages['wa'] = array(
+	'sitematrix' => 'Djivêye des wikis Wikimedia',
+	'sitematrix-language' => 'Lingaedje',
+	'sitematrix-project' => 'No do pordjet, loyén eterpordjet eyet loyén eterwiki',
+	'sitematrix-others' => 'Ôtes pordjes Wikimedia',
 );
 $wgSiteMatrixMessages['yue'] = array(
 	"sitematrix" => "Wikimedia嘅wiki一覽",

@@ -19,6 +19,9 @@ $wgMiniDonationMessages['bcl'] = array(
 $wgMiniDonationMessages['de'] = array(
 	'donationform-submit' => 'Spenden über PayPal',
 );
+$wgMiniDonationMessages['ext'] = array(
+	'donationform-submit' => 'Donal meyanti PayPal',
+);
 $wgMiniDonationMessages['fi'] = array(
 	'donationform-submit' => 'Lahjoita PayPalin kautta',
 );

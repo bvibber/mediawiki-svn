@@ -25,6 +25,13 @@ function efNewUserNotifMessages() {
 	'newusernotifbody' => "Bonjour $1,\n\nUn nouveau compte utilisateur, $2, a été créé sur $3 le $4.",
 ),
 
+'hsb' => array(
+'newusernotifsubj' => 'Zdźělenka za noweho wužiwarja $1',
+'newusernotifbody' => 'Witaj $1,
+
+Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
+),
+
 'nl' => array(
 	'newusernotifsubj' => 'Notificatie nieuwe gebruiker voor  $1',
 	'newusernotifbody' => "Hallo $1.\n\nEr is een nieuwe gebruiker $2 aangemaakt om $3 op $4.",
