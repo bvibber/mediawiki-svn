@@ -8,6 +8,17 @@
 # probably will refactor this code into ulta-pretty helpers or
 # other recordset improvements.
 #
+
+
+# common abbreviations used in varnames and comments:
+# dm = defined meaning. 
+# dmid = defined meaning id: unique identifier for each dm.
+# dc = dataset context. datasets are implemented by having
+#			tables with different prefixes
+# dc1 = dataset (context) 1 (we are copying FROM dc1)
+# dc2 = dataset (context) 2 (we are copying TO dc2)
+# 
+
 header("Content-type: text/html; charset=UTF-8");
 
 define('MEDIAWIKI', true );
@@ -77,14 +88,12 @@ class ObjectCopier {
 	protected $dc1;
 	protected $dc2;
 	protected $object;
-	protected $table;
 	protected $already_there=null;
 
-	function __construct($id, $table, $dc1, $dc2) {
+	function __construct($id, $dc1, $dc2) {
 		$this->id=$id;
 		$this->dc1=$dc1;
 		$this->dc2=$dc2;
-		$this->table=mysql_escape_string("${table}_${dc2}");
 	}
 
 	function getObject() {
@@ -159,37 +168,45 @@ function sane_key_exists($key, $array) {
  */
 function mysql_insert_assoc ($my_table, $my_array) {
 
-// Find all the keys (column names) from the array $my_array
+	// Find all the keys (column names) from the array $my_array
 
-// We compose the query
-$sql = "insert into `$my_table` set";
-// implode the column names, inserting "\", \"" between each (but not after the last one)
-// we add the enclosing quotes at the same time
-$sql_comma=$sql;
-foreach($my_array as $key=>$value) {
-	$sql=$sql_comma;
-	if (is_null($value)) {
-		$value="DEFAULT";
-	} else {
-		$value="\"$value\"";
+	// We compose the query
+	$sql = "insert into `$my_table` set";
+	// implode the column names, inserting "\", \"" between each (but not after the last one)
+	// we add the enclosing quotes at the same time
+	$sql_comma=$sql;
+	foreach($my_array as $key=>$value) {
+		$sql=$sql_comma;
+		if (is_null($value)) {
+			$value="DEFAULT";
+		} else {
+			$value="\"$value\"";
+		}
+		$sql.=" `$key`=$value";
+		$sql_comma=$sql.",";
 	}
-	$sql.=" `$key`=$value";
-	$sql_comma=$sql.",";
-}
-// Same with the values
-echo $sql."; <br>\n";
-$result = mysql_query($sql);
+	// Same with the values
+	echo $sql."; <br>\n";
+	$result = mysql_query($sql);
 
-if ($result)
-{
-	echo "The row was added sucessfully";
-	return true;
+	if ($result)
+	{
+		echo "The row was added sucessfully";
+		return true;
+	}
+	else
+	{
+		echo ("The row was not added<br>The error was" . mysql_error());
+		return false;
+	}
 }
-else
-{
-	echo ("The row was not added<br>The error was" . mysql_error());
-	return false;
-}
+
+/**convenience wrapper around mysql_insert_assoc
+ * like mysql_insert_assoc, but allows you to specify dc prefix+table name separately
+ */
+function dc_insert_assoc($dc, $table_name, $array) {
+	$target_table=mysql_real_escape_string("${dc}_${table_name}");
+	return mysql_insert_assoc($target_table, $array);
 }
 
 function getOldSyntrans($dc1, $dmid, $expid) {
@@ -205,7 +222,7 @@ function writeSyntrans($syntrans, $newdmid, $newexpid, $dc2) {
 
 function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
 	$syntrans=getOldSyntrans($dc1, $olddmid, $oldexpid);
-	$copier=new ObjectCopier($syntrans["syntrans_sid"], "syntrans", $dc1, $dc2);
+	$copier=new ObjectCopier($syntrans["syntrans_sid"], $dc1, $dc2);
 	$newid=$copier->dup();
 	if ($copier->already_there()) {
 		return;
@@ -223,7 +240,7 @@ function get_syntranses($dmid, $dc1) {
 * toss this throwaway code*/
 function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 
-	$copier=new ObjectCopier($expression["expression_id"], "expression_ns", $dc1, $dc2);
+	$copier=new ObjectCopier($expression["expression_id"], $dc1, $dc2);
 	$target_expid1=$copier->dup();
 	$save_expression=$expression;
 	$save_expression["expression_id"]=$target_expid1;
@@ -274,7 +291,7 @@ function write_translated_content($dc1, $dc2, $tcid, $content) {
 
 function dup_translated_content($dc1, $dc2, $tcid) {
 	$translated_content=read_translated_content($dc1, $tcid);
-	$copier=new ObjectCopier($tcid, "translated_content", $dc1, $dc2);
+	$copier=new ObjectCopier($tcid, $dc1, $dc2);
 	$new_tcid=$copier->dup();
 	# note the issue where translated content is added later:
 	# since all translated content for a single dm 
@@ -306,6 +323,9 @@ function dup_text($dc1, $dc2, $text_id) {
 	return $id;
 }
 
+/** @deprecated Relations have been removed. (could someone have told
+ * me that before I started? 
+ */
 class RelationsCopier {
 
 	protected $old_dmid;
@@ -333,7 +353,7 @@ class RelationsCopier {
 		$dc2=$this->dc2;
 		$new_dmid=$this->new_dmid;
 
-		$copier=new ObjectCopier($relation["relation_id"], "meaning_relations", $dc1, $dc2);
+		$copier=new ObjectCopier($relation["relation_id"], $dc1, $dc2);
 		$relation["relation_id"]=$copier->dup();
 		if ($copier->already_there()) {
 			return;
@@ -346,7 +366,7 @@ class RelationsCopier {
 		$relation["relationtype_mid"]=$rtcopier->dup();
 		echo ">>PRE!<br>\n";
 		var_dump($relation);
-		$copier=new ObjectCopier($relation["relation_id"], "meaning_relations", $dc1, $dc2);
+		$copier=new ObjectCopier($relation["relation_id"], $dc1, $dc2);
 		$relation["relation_id"]=$copier->dup();
 		if ($copier->already_there()) {
 			return;
@@ -367,8 +387,91 @@ class RelationsCopier {
 	}			
 }
 
+class CollectionCopier {
+	protected $dmid;
+	protected $save_dmid;
+	protected $dc1;
+	protected $dc2;
+	
+	public function __construct ($dc1, $dc2, $dmid, $save_dmid) {
+		$this->dmid=$dmid;
+		$this->save_dmid=$save_dmid;
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+	}
+
+	public function read(){
+		$dc1=$this->dc1;
+		$dmid=$this->dmid;
+		return getrows($dc1, "collection_contents", "WHERE member_mid=$dmid");
+	}
 
 
+	public function read_definition($collection_id) {
+		$dc1=$this->dc1;
+		return getrow($dc1,"collection_ns","WHERE collection_id=$collection_id");
+	}
+
+	/** write collection definition (and associated dm) to dc2
+	 * if it doesn't already exist.
+	 * If it already exists, will only look up the id.
+	 * returns the  id for dc2 either way.
+	 */
+	public function write_definition($definition){
+		$dc1=$this->dc1;
+		$dc2=$this->dc2;
+
+		print "<br>\nCopying collection</br>";
+		var_dump($definition);
+		print $definition["collection_id"];
+		$objcopier=new ObjectCopier($definition["collection_id"], $dc1, $dc2);
+		$definition["collection_id"]=$objcopier->dup();
+		if (!$objcopier->already_there()) {
+			$dmid= $definition["collection_mid"];
+			$dmcopier=new defined_meaning_copier($dmid,$dc1,$dc2);
+			$definition["collection_mid"]=$dmcopier->dup();
+
+			dc_insert_assoc($dc2, "collection_ns", $definition);
+
+		}
+		return $definition["collection_id"];
+
+	}
+	
+	/** look up the collection definition in %_collection_ns, 
+	 * and copy if doesn't already exist in dc2 
+	 */
+	public function dup_definition($collection_id) {
+		$definition=$this->read_definition($collection_id);
+		return $this->write_definition($definition);
+	}
+
+	/** write a single collection_contents row,
+	 * (if the collection doesn't exist yet), also dup the definition
+	 */
+	public function write_single($row){
+		$dc2=$this->dc2;
+		$save_dmid=$this->save_dmid;
+		$row["collection_id"]=$this->dup_definition($row["collection_id"]);
+		$row["member_mid"]=$save_dmid;
+		dc_insert_assoc($dc2, "collection_contents", $row);
+	}
+
+	public function write($rows){
+		foreach ($rows as $row) {
+			$this->write_single($row);
+		}
+	}
+
+	/** writes a duplicate. does *NOT* return ids on return, as there
+	 * are multiple ids 
+	 */
+	public function dup() {
+		$rows=$this->read();
+		$this->write($rows);
+	}
+}
+	
 
 class defined_meaning_copier {
 
@@ -379,7 +482,6 @@ class defined_meaning_copier {
 	protected $dc2;
 	
 	public function __construct ($dmid, $dc1, $dc2) {
-		echo "constructing dmc $dmid, $dc1 -> $dc2";
 		$this->dmid=$dmid;
 		$this->dc1=$dc1;
 		$this->dc2=$dc2;
@@ -412,7 +514,7 @@ class defined_meaning_copier {
 		# bit of exp here too (defnitely need to tidy)
 		$defining_expression=expression($this->defined_meaning["expression_id"], $dc1);
 		$dm_target_table=mysql_real_escape_string("${dc2}_defined_meaning");
-		$copier=new ObjectCopier($this->defined_meaning["defined_meaning_id"], "defined_meaning", $dc1, $dc2);
+		$copier=new ObjectCopier($this->defined_meaning["defined_meaning_id"], $dc1, $dc2);
 		$target_dmid=$copier->dup();
 		var_dump($target_dmid);
 		$this->save_meaning=$this->defined_meaning;
@@ -421,7 +523,7 @@ class defined_meaning_copier {
 		if (!($copier->already_there())) {
 			# exp
 			$target_table=mysql_real_escape_string("${dc2}_expression_ns");
-			$exp_copier=new ObjectCopier($defining_expression["expression_id"], $target_table, $dc1, $dc2);
+			$exp_copier=new ObjectCopier($defining_expression["expression_id"], $dc1, $dc2);
 			$target_expid1=$exp_copier->dup();
 			var_dump($target_expid1);
 			$save_expression=$defining_expression;
@@ -461,6 +563,14 @@ class defined_meaning_copier {
 			$this->defined_meaning["defined_meaning_id"],
 			$this->save_meaning["defined_meaning_id"]);
 		$relationsCopier->dup();
+
+		$collectionCopier=new CollectionCopier(
+			$dc1, 
+			$dc2, 
+			$this->defined_meaning["defined_meaning_id"],
+			$this->save_meaning["defined_meaning_id"]);
+		$collectionCopier->dup();
+
 		return $this->save_meaning["defined_meaning_id"];
 	}
 }
