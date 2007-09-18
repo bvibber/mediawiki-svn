@@ -33,6 +33,9 @@ $wgSiteMatrixMessages['ca'] = array(
 );
 $wgSiteMatrixMessages['cs'] = array(
 	'sitematrix' => 'Seznam všech wiki nadace Wikimedia',
+	'sitematrix-language' => 'Jazyk',
+	'sitematrix-project' => 'Jméno projektu, meziprojektový odkaz a mezijazykový odkaz',
+	'sitematrix-others' => 'Ostatní projekty nadace Wikimedia',
 );
 $wgSiteMatrixMessages['de'] = array(
 	"sitematrix"          => "Liste der Wikimedia-Wikis",

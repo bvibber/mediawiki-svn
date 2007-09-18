@@ -6,3 +6,4 @@ $messages = array(
 	'smoothgallery-no-images' => 'W tutej galeriji njebuchu wobrazy namakane. Zawesc, zo wše wobrazy eksistuja. Sledowace wobrazy njebuchu namakane: $1',
 	'smoothgallery-unexpected-error' => 'Beše njewocakowany zmylk. Prošu spisaj zmylkowu rozprawu.',
 );
+

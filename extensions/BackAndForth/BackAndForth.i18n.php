@@ -54,6 +54,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Precedent ($1)',
 ),
 
+'sah' => array(
+	'backforth-next' => 'Аныгыскы ($1)',
+	'backforth-prev' => 'Иннинээҕи ($1)',
+),
+
 'sv' => array(
 	'backforth-next' => 'Nästa ($1)',
 	'backforth-prev' => 'Föregående ($1)',

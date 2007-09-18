@@ -390,6 +390,12 @@ function efBadImageMessages() {
 'badimages-log-remove' => '[[$1]] удалено из списка нежелательных изображений',
 ),
 
+'sah' => array(
+'badimages' => 'Көҥүллэммэт ойуулар испииһэктэрэ',
+'badimages-add-btn' => 'Эбэн биэр',
+'badimages-added' => 'Испииһэккэ $1 эбилиннэ.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'badimages' => 'Zoznam zlých obrázkov',

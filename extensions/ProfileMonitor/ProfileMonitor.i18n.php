@@ -26,6 +26,10 @@ function efProfileMonitorMessages() {
 
 'hsb' => array(
 'profiling-ok' => 'W porjadku',
+'profiling-data-process' => 'Proces',
+'profiling-data-count' => 'Ličić',
+'profiling-data-time' => 'Čas (dohromady)',
+'profiling-data-average' => 'Čas (přerězk)',
 ),
 
 /* Indonesian (IvanLanin) */
