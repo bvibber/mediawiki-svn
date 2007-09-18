@@ -466,7 +466,15 @@ public class WikiIndexModifier {
 			p = makeRelated(doc,fields.related(),article,1);
 			
 			// anchors
-			makeKeywordField(doc,fields.anchor(),rankBoost);
+			// makeKeywordField(doc,fields.anchor(),rankBoost);
+			
+			// add the whole title for extract boost
+			String wt = FastWikiTokenizerEngine.stipTitle(article.getTitle());
+			if(!bs.isExactCase())
+				wt = wt.toLowerCase();
+			Field wtitle = new Field(fields.wholetitle(),wt,Field.Store.NO, Field.Index.UN_TOKENIZED);				
+			wtitle.setBoost(rankBoost);
+			doc.add(wtitle);
 
 		}
 		// make analyzer
@@ -522,7 +530,7 @@ public class WikiIndexModifier {
 			if(ranks.get(i) == 0)
 				break; // we don't want redirects with zero links
 			//log.info("For "+article+" alttitle"+(i+1)+" "+redirects.get(i)+" = "+ranks.get(i));
-			Field alttitle = new Field(prefix+(i+1), redirects.get(i),Field.Store.YES, Field.Index.TOKENIZED);				
+			Field alttitle = new Field(prefix+(i+1), redirects.get(i),Field.Store.NO, Field.Index.TOKENIZED);				
 			alttitle.setBoost(calculateArticleRank(ranks.get(i)));
 			doc.add(alttitle);			
 		}

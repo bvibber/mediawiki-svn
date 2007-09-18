@@ -107,10 +107,16 @@ public class Benchmark extends Thread {
 	@SuppressWarnings("deprecation")
 	protected int search(){
 		String query = "";
-		for(int i=0;i<words;i++){
-			if(!query.equals(""))
-				query += " OR ";
-			query += terms.next();
+		if(verb.equals("prefix")){
+			int num = (int)(Math.random()*8);
+			String t = terms.next();
+			query = namespaceFilter+":"+t.substring(0,Math.min(num,t.length()));
+		} else{
+			for(int i=0;i<words;i++){
+				if(!query.equals(""))
+					query += " OR ";
+				query += terms.next();
+			}
 		}
 		String urlString;
 		if(namespace.equals("")){
@@ -132,11 +138,13 @@ public class Benchmark extends Thread {
                               new InputStreamReader(
                               		conn.getInputStream()));
 			String inputLine;
-			int resCount = -1;
+			int resCount = verb.equals("prefix")? 0 : -1;
 			
 			while ((inputLine = in.readLine()) != null){
 				if(resCount == -1)
 					resCount = Integer.parseInt(inputLine);
+				if(verb.equals("prefix"))
+					resCount ++ ;
 			}
 			in.close();
 			
@@ -195,7 +203,7 @@ public class Benchmark extends Thread {
 			} else if (args[i].equals("-c")) {
 				runs = Integer.parseInt(args[++i]);
 			} else if (args[i].equals("-v")) {
-				database = args[++i];
+				verb = args[++i];
 			} else if (args[i].equals("-wf")) {
 				wordfile = args[++i];
 			} else if (args[i].equals("-n") || args[i].equals("-ns")) {

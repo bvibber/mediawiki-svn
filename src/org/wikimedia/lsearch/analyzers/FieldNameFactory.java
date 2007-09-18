@@ -66,6 +66,13 @@ public class FieldNameFactory {
 		else
 			return "anchor";
 	}
+	
+	public String wholetitle(){
+		if(exactCase)
+			return "wholetitle_exact";
+		else
+			return "wholetitle";
+	}
 
 
 	public boolean isExactCase() {

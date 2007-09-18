@@ -51,7 +51,7 @@ public class Suggest {
 	protected Set<String> stopWords;
 	
 	/** Distance an metaphone metrics */
-	static class Metric {
+	static public class Metric {
 		protected DoubleMetaphone dmeta =  new DoubleMetaphone();
 		protected String meta1, meta2;
 		protected EditDistance sd;
@@ -132,7 +132,7 @@ public class Suggest {
 			this.type = type;
 		}		
 		public String toString(){
-			return "dist:"+dist+"-freq:"+freq+"-sub:"+substitutes+"-pres:"+preserves;
+			return "["+type+" dist:"+dist+" freq:"+freq+" sub:"+substitutes+" pres:"+preserves+"]";
 		}
 	}
 	
@@ -176,15 +176,23 @@ public class Suggest {
 		ArrayList<Change> suggestionsTitle = new ArrayList<Change>();
 		
 		// add correct words
-		for(int i=0;i<tokens.size();i++){
+		/*for(int i=0;i<tokens.size();i++){
 			Token t = tokens.get(i);
 			if(correctWords.contains(t.termText())){
 				Change c = new Change(0,1,Change.Type.TITLE_WORD);
 				c.preserves.put(i,t.termText());
 				suggestions.add(c);
 			}
+		} */
+		
+		// check for exact title match
+		if(tokens.size() == 1){
+			String w = tokens.get(0).termText();
+			if(correctWords.contains(w) && reader.docFreq(new Term("title",w)) != 0)
+				return null;
 		}
 
+		HashSet<String> stemmedCorrectWords = stemSet(correctWords,parser.getBuilder().getFilters());
 		ArrayList<ArrayList<SuggestResult>> wordSug = new ArrayList<ArrayList<SuggestResult>>();
 		HashSet<Integer> correctIndex = new HashSet<Integer>();
 		ArrayList<SuggestResult> possibleStopWords = new ArrayList<SuggestResult>();
@@ -214,11 +222,7 @@ public class Suggest {
 			if(w2 == null)
 				continue;
 			
-			String phrase = w+gap+w2;
-			if(reader.docFreq(new Term("phrase",phrase)) != 0){
-				correctPhrases.add(i);
-				correctPhrases.add(i2);
-			} else if(correctWords.contains(w) && correctWords.contains(w2)){
+			if(correctWords.contains(w) && correctWords.contains(w2)){
 				for(HashSet<String> title : titles){
 					if(title.contains(w) && title.contains(w2)){
 						correctPhrases.add(i);
@@ -263,26 +267,18 @@ public class Suggest {
 					}						
 				}
 				possibleStopWords.add(maybeStopWord);
-				// detect common misspells
-				if(sug.size() > 1){
-					SuggestResult r1 = sug.get(0);
-					SuggestResult r2 = sug.get(1);
-					if(r1.dist == 1 && r2.dist == 0 && r1.frequency > 100 * r2.frequency){
-						Change c = new Change(r1.dist,r1.frequency,Change.Type.WORD);
-						c.substitutes.put(i,r1.word);
-						suggestions.add(c);
-					}
-				}
 			} else{
 				wordSug.add(null);
 				possibleStopWords.add(null);
 			}
 			// suggest split
-			SuggestResult split = suggestSplit(w,minFreq);
-			if(split != null){
-				Change sc = new Change(split.dist,split.frequency,Change.Type.SPLIT);
-				sc.substitutes.put(i,split.word.replace("_"," "));
-				suggestions.add(sc);
+			if(!correctWords.contains(w)){
+				SuggestResult split = suggestSplit(w,minFreq);
+				if(split != null){
+					Change sc = new Change(split.dist,split.frequency,Change.Type.SPLIT);
+					sc.substitutes.put(i,split.word.replace("_"," "));
+					suggestions.add(sc);
+				}
 			}
 			// suggest join
 			if(i-1 >= 0 
@@ -306,7 +302,8 @@ public class Suggest {
 			ArrayList<SuggestResult> sug2 = null;
 			String w2 = null;
 			String gap = "_";
-			boolean good1 = sug1.get(0).getDist() == 0; // w1 is spellchecked right
+			// if w1 is spellchecked right
+			boolean good1 = sug1.get(0).getDist() == 0;
 			int i2 = i;
 			boolean maybeStopWord = false; // the currecnt i2 might be a stop word, try to find phrases with it as stop word
 			int distOffset = 0; // if we spellcheked to stop word, all phrases should have this initial dist
@@ -331,7 +328,8 @@ public class Suggest {
 				}
 				if(sug2 == null)
 					continue;
-				boolean good2 = sug2.get(0).getDist() == 0; // w2 is spellchecked right
+				// if second word is spelled right
+				boolean good2 = sug2.get(0).getDist() == 0;
 				int maxdist = Math.min((w1.length() + w2.length()) / 3, 5);
 				int mindist = -1;
 				boolean forTitlesOnly = false; 
@@ -358,21 +356,30 @@ public class Suggest {
 						}
 						//log.info("Checking "+phrase);
 						if(freq > 0){
+							// number of characters added/substracted
+							int diff1 = Math.abs(s1.word.length()-w1.length());
+							int diff2 = Math.abs(s2.word.length()-w2.length());
 							log.info("Found "+phrase+" at dist="+(s1.dist+s2.dist)+", freq="+freq+" inTitle="+inTitle);
 							int dist = s1.dist + s2.dist + distOffset;
 							boolean accept = true;
 							Change c = new Change(dist,freq,Change.Type.PHRASE);
 							if(s1.word.equals(w1))
 								c.preserves.put(i,w1);
-							else if(!good1 || inTitle)					
+							else if(!good1 || (inTitle && diff1 <= 2 && !correctWords.contains(w1)))					
 								c.substitutes.put(i,s1.word);
-							else
+							else if(!good1 || (inTitle && diff1 <=2)){
+								forTitlesOnly = true;
+								c.substitutes.put(i,s1.word);
+							} else
 								accept = false;
 							if(s2.word.equals(w2))
 								c.preserves.put(i2,w2);
-							else if(!good2 || inTitle)					
+							else if(!good2 || (inTitle && diff2 <= 2 && !correctWords.contains(w2)))					
 								c.substitutes.put(i2,s2.word);
-							else
+							else if(!good2 || (inTitle && diff2 <= 2)){
+								forTitlesOnly = true;
+								c.substitutes.put(i2,s2.word);
+							} else
 								accept = false;
 							if(accept){
 								if(mindist == -1)
@@ -384,10 +391,11 @@ public class Suggest {
 						}
 					}	
 				}
-			} while(maybeStopWord);
+			} while(maybeStopWord && i2+1<tokens.size());
 		}
 		// try to construct a valid title by spell-checking all words
 		if(suggestionsTitle.size() > 0){
+			log.info("Trying exact-title matches");
 			Object[] ret = calculateChanges(suggestionsTitle,searchterm.length()/2);
 			ArrayList<Entry<Integer,String>> proposedTitle = (ArrayList<Entry<Integer, String>>) ret[0];
 			boolean madeChanges = false;
@@ -395,8 +403,10 @@ public class Suggest {
 			String formated = searchterm;
 			for(Entry<Integer,String> e : proposedTitle){
 				Token t = tokens.get(e.getKey());
-				String nt = e.getValue();					
-				if(!stemsToSame(t.termText(),nt,parser.getBuilder().getFilters())){
+				String nt = e.getValue();
+				// replace words if they don't stem to same word, of they stem to same, but the words is misspelled
+				boolean stemNotSame = stemNotSameOrInSet(t.termText(),nt,parser.getBuilder().getFilters(),stemmedCorrectWords); 
+				if(stemNotSame || (!stemNotSame && reader.docFreq(new Term("word",t.termText())) == 0)){
 					formated = markSuggestion(formated,t,nt);
 					title = applySuggestion(title,t,nt);
 					madeChanges = true;
@@ -412,6 +422,7 @@ public class Suggest {
 		} else if(tokens.size() == 1 && wordSug.get(0)!=null
 				&& wordSug.get(0).size() > 0 && !correctWords.contains(tokens.get(0).termText())){ 
 			// only one token, try different spell-checks for title
+			log.info("Trying exact-title single word match");
 			ArrayList<SuggestResult> sg = (ArrayList<SuggestResult>) wordSug.get(0).clone();
 			Collections.sort(sg,new SuggestResult.ComparatorNoCommonMisspell());
 			Token t = tokens.get(0);
@@ -434,6 +445,7 @@ public class Suggest {
 		ArrayList<Entry<Integer,String>> proposedChanges = new ArrayList<Entry<Integer,String>>();
 		if(suggestions.size() > 0){
 			// found some suggestions
+			log.info("Trying phrases ...");
 			Object[] ret = calculateChanges(suggestions,searchterm.length()/2);
 			proposedChanges = (ArrayList<Entry<Integer, String>>) ret[0];
 			ArrayList<Entry<Integer,String>> preservedWords = (ArrayList<Entry<Integer, String>>) ret[1];
@@ -442,12 +454,13 @@ public class Suggest {
 			for(Entry<Integer,String> e : proposedChanges)
 				preserveTokens.add(e.getKey());
 		}
-
+		log.info("Adding words, preserve tokens: "+preserveTokens+", preserve correct phrases: "+correctPhrases);
 		// last resort: go with individual word suggestions
 		HashMap<Integer,String> wordChanges = new HashMap<Integer,String>();
-		for(int i=0;i<tokens.size();i++){				
-			if(preserveTokens.contains(i))
+		for(int i=0;i<tokens.size();i++){
+			if(preserveTokens.contains(i) || correctPhrases.contains(i))
 				continue;
+			// TODO: maybe check for common misspells here?!
 			ArrayList<SuggestResult> sug = wordSug.get(i);
 			if(sug == null)
 				continue;
@@ -457,7 +470,7 @@ public class Suggest {
 		}
 		if(wordChanges.size() != 0)
 			proposedChanges.addAll(wordChanges.entrySet());
-
+		
 		// sort in reverse order from that in query, i.e. first change in the last term
 		Collections.sort(proposedChanges,new Comparator<Entry<Integer,String>>() {
 			public int compare(Entry<Integer,String> o1, Entry<Integer,String> o2){
@@ -471,7 +484,9 @@ public class Suggest {
 			for(Entry<Integer,String> e : proposedChanges){
 				Token t = tokens.get(e.getKey());
 				String nt = e.getValue();
-				if(!stemsToSame(t.termText(),nt,parser.getBuilder().getFilters())){
+				// incorrect words, or doesn't stem to same
+				boolean stemNotSame = stemNotSameOrInSet(t.termText(),nt,parser.getBuilder().getFilters(),stemmedCorrectWords); 
+				if(stemNotSame || (!stemNotSame && reader.docFreq(new Term("word",t.termText())) == 0)){
 					formated = markSuggestion(formated,t,nt);
 					searchterm = applySuggestion(searchterm,t,nt);
 					madeChanges = true;
@@ -484,15 +499,27 @@ public class Suggest {
 		return null;
 	}
 
+	/** try to figure out the case of original spell-checked word, and output the new word in that case */
+	protected String simulateCase(String formated, Token t, String newWord) {
+		String old = formated.substring(t.startOffset(),t.endOffset());
+		if(old.equals(old.toLowerCase()))
+			return newWord.toLowerCase();
+		if(old.equals(old.toUpperCase()))
+			return newWord.toUpperCase();
+		if(old.length()>1 && old.equals(old.substring(0,1).toUpperCase()+old.substring(1)))
+			return newWord.substring(0,1).toUpperCase()+newWord.substring(1).toLowerCase();
+		return newWord;
+	}
+
 	protected String markSuggestion(String formated, Token t, String newWord){
 		return formated.substring(0,t.startOffset()) 
-		+ "<i>" + newWord	+ "</i>"
+		+ "<i>" + simulateCase(formated,t,newWord) + "</i>"
 		+ formated.substring(t.endOffset());
 	}
 	
 	protected String applySuggestion(String searchterm, Token t, String newWord){
 		return searchterm.substring(0,t.startOffset())  
-		+ newWord
+		+ simulateCase(searchterm,t,newWord)
 		+ searchterm.substring(t.endOffset());
 	}
 	
@@ -575,7 +602,7 @@ public class Suggest {
 				hr.addAll(r1); hr.addAll(r2);
 				ArrayList<SuggestResult> res = new ArrayList<SuggestResult>();
 				res.addAll(hr);
-				Collections.sort(res,new SuggestResult.Comparator());
+				Collections.sort(res,new SuggestResult.ComparatorNoCommonMisspell());
 				return res;
 			}
 			return r1;
@@ -718,9 +745,44 @@ public class Suggest {
 			if(t1 != null && t2 != null && t1.termText().equals(t2.termText()))
 				return true;
 		} catch (IOException e) {
-			log.error("Cannot stemm words "+word1+", "+word2+" : "+e.getMessage());			
+			log.error("Cannot stem words "+word1+", "+word2+" : "+e.getMessage());			
 		}
 		return false;
+	}
+	
+	/** check if stemmed newWord is 1) not same to stememed oldWord, OR  2) not in stemmed set*/
+	public boolean stemNotSameOrInSet(String oldWord, String newWord, FilterFactory filters, Set<String> stemmedSet){
+		if(!filters.hasStemmer())
+			return false;
+		ArrayList<String> in = new ArrayList<String>();
+		in.add(oldWord); in.add(newWord);
+		TokenStream ts = filters.makeStemmer(new StringsTokenStream(in));
+		try {
+			Token t1 = ts.next();
+			Token t2 = ts.next();
+			if(t1 != null && t2 != null && (t1.termText().equals(t2.termText()) && stemmedSet.contains(t2.termText())))
+				return false;
+		} catch (IOException e) {
+			log.error("Cannot stem words "+oldWord+", "+oldWord+" : "+e.getMessage());			
+		}
+		return true;
+	}
+	
+	/** stem all words in the set */
+	public HashSet<String> stemSet(HashSet<String> set, FilterFactory filters){
+		if(!filters.hasStemmer())
+			return new HashSet<String>();
+		HashSet<String> ret = new HashSet<String>();
+		TokenStream ts = filters.makeStemmer(new StringsTokenStream(set));
+		try {
+			Token t;
+			while((t = ts.next()) != null)
+				ret.add(t.termText());
+			return ret;
+		} catch (IOException e) {
+			log.error("Cannot stem set "+set+" : "+e.getMessage());
+			return new HashSet<String>();
+		}
 	}
 	
 	static class StringsTokenStream extends TokenStream {

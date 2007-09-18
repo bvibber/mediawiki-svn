@@ -40,23 +40,37 @@ public class LuceneDictionary implements Dictionary {
   private int count = 0;
   private String field;
   private boolean first = true;
+  private String prefix = null;
+  private boolean silent = false; // no report output
 
   public LuceneDictionary(IndexReader reader, String field) {
-    try {
-   	 this.field = field;
-       termEnum = reader.terms(new Term(field, ""));
-     } catch (IOException e) {
-       throw new RuntimeException(e);
-     }    
+	  this(reader,field,"");
+  }
+  
+  public LuceneDictionary(IndexReader reader, String field, String prefix) {
+	  if(!prefix.equals(""))
+		  this.prefix = prefix;
+	  
+	  try {
+		  this.field = field;
+		  termEnum = reader.terms(new Term(field, prefix));
+	  } catch (IOException e) {
+		  throw new RuntimeException(e);
+	  }    
+  }
+  
+  /** Don't print progress */
+  public void setNoProgressReport(){
+	  silent = true;
   }
   
   public Word next() {
-	  if(++count % REPORT == 0){
+	  if(!silent && ++count % REPORT == 0){
 		  System.out.println("Processed "+count+" terms");
 	  }
 	  try {
 		  while(true){
-			  if(first){
+			  if(first && termEnum.term() != null){
 				  first = false;
 				  break;
 			  }
@@ -64,6 +78,8 @@ public class LuceneDictionary implements Dictionary {
 				  return null;
 			  else if(!termEnum.term().field().equals(field))
 				  return null; // end of our field
+			  else if(prefix != null && !termEnum.term().text().startsWith(prefix))
+				  return null; // no longer same prefix
 			  
 			  break;
 		  }

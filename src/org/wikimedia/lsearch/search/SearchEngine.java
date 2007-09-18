@@ -1,17 +1,22 @@
 package org.wikimedia.lsearch.search;
 
 import java.io.IOException;
+import java.io.Reader;
 import java.net.URI;
 import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
+import java.util.Iterator;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.index.Term;
+import org.apache.lucene.index.TermDocs;
+import org.apache.lucene.index.TermEnum;
 import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.Query;
@@ -31,6 +36,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.frontend.SearchDaemon;
 import org.wikimedia.lsearch.frontend.SearchServer;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.ranks.StringList;
 import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
 import org.wikimedia.lsearch.util.QueryStringMap;
@@ -57,9 +63,7 @@ public class SearchEngine {
 	/** Main search method, call this from the search frontend */
 	public SearchResults search(IndexId iid, String what, String searchterm, HashMap query) {
 		
-		if (what.equals("titlematch")) {
-			// TODO: return searchTitles(searchterm);
-		} else if (what.equals("search") || what.equals("explain")) {
+		if (what.equals("search") || what.equals("explain")) {
 			int offset = 0, limit = 100; boolean exactCase = false;
 			if (query.containsKey("offset"))
 				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
@@ -94,16 +98,57 @@ public class SearchEngine {
 				exactCase = true;
 			NamespaceFilter namespaces = new NamespaceFilter((String)query.get("namespaces"));
 			return search(iid, searchterm, offset, limit, namespaces, what.equals("rawexplain"), exactCase, true);
+		} else if (what.equals("titlematch")) {
+				// TODO: return searchTitles(searchterm);
+		} else if (what.equals("prefix")){
+			return prefixSearch(iid, searchterm);
 		} else {
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Unrecognized search type. Try one of: " +
-			              "search, explain, raw, rawexplain.");
+			              "search, explain, raw, rawexplain, prefix.");
 			log.warn("Unknown request type [" + what + "].");
 			return res;
 		}
 		return null;
 	}
 	
+	private SearchResults prefixSearch(IndexId iid, String searchterm) {
+		IndexId pre = iid.getPrefix();
+		SearcherCache cache = SearcherCache.getInstance();
+		SearchResults res = new SearchResults();
+		try {
+			long start = System.currentTimeMillis();
+			searchterm = searchterm.toLowerCase();
+			IndexSearcherMul searcher = cache.getLocalSearcher(pre);
+			IndexReader reader = searcher.getIndexReader();
+			TermDocs td = reader.termDocs(new Term("prefix",searchterm));
+			if(td.next()){
+				// found entry with a prefix, return				
+				StringList sl = new StringList(reader.document(td.doc()).get("articles"));
+				Iterator<String> it = sl.iterator();
+				while(it.hasNext())
+					res.addResult(new ResultSet(it.next()));
+				//logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
+				return res;
+			}
+			// check if it's an unique prefix
+			TermEnum te = reader.terms(new Term("key",searchterm));
+			String r = te.term().text();
+			if(r.startsWith(searchterm)){
+				TermDocs td1 = reader.termDocs(new Term("key",r));
+				if(td1.next()){
+					res.addResult(new ResultSet(reader.document(td1.doc()).get("key")));
+					//logRequest(pre,"prefix",searchterm,null,res.getNumHits(),start,searcher);
+					return res;
+				}
+			}			
+		} catch (IOException e) {
+			// res.setErrorMsg("Internal error during prefix search: "+e.getMessage());
+			log.error("Internal error in SearchEngine::prefixSearch : "+e.getMessage());
+		}
+		return res;
+	}
+
 	/** Search mainpart or restpart of the split index */
 	public SearchResults searchPart(IndexId iid, String searchterm, Query q, NamespaceFilterWrapper filter, int offset, int limit, boolean explain){
 		if( ! (iid.isMainsplit() || iid.isNssplit()))
@@ -390,6 +435,6 @@ public class SearchEngine {
 		long delta = System.currentTimeMillis() - start;
 		SearchServer.stats.add(true, delta, SearchDaemon.getOpenCount());
 		log.info(MessageFormat.format("{0} {1}: query=[{2}] parsed=[{3}] hit=[{4}] in {5}ms using {6}",
-			new Object[] {what, iid.toString(), searchterm, query.toString(), new Integer(numhits), new Long(delta), searcher.toString()}));
+			new Object[] {what, iid.toString(), searchterm, query==null? "" : query.toString(), new Integer(numhits), new Long(delta), searcher.toString()}));
 	}
 }

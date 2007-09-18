@@ -232,6 +232,70 @@ public class Links {
 		writer.addDocument(doc,an);
 		state = State.MODIFIED_ARTICLES;
 	}
+	public static HashSet<Character> separators = new HashSet<Character>();
+	static{
+		separators.add(' ');
+		separators.add('\r');
+		separators.add('\n');
+		separators.add('\t');
+		separators.add(':');
+		separators.add('(');
+		separators.add(')');
+		separators.add('[');
+		separators.add(']');
+		separators.add('.');
+		separators.add(',');
+		separators.add(':');
+		separators.add(';');
+		separators.add('"');
+		separators.add('+');
+		separators.add('*');
+		separators.add('!');
+		separators.add('~');
+		separators.add('$');
+		separators.add('%');
+		separators.add('^');
+		separators.add('&');
+		separators.add('_');
+		separators.add('=');
+		separators.add('|');
+		separators.add('\\');	
+	}
+	
+	/**
+	 * Find a sentance boundaries 
+	 * 
+	 * @param text - raw text
+	 * @param start - start index to search from
+	 * @param reverse - if true, will lookup in reverse
+	 * @param max - radius of search (if no boundary is found return last wordbreak)
+	 * @return
+	 */
+	protected int findSentance(char[] text, int start, boolean reverse, int max){
+		int inc = (reverse)? -1 : 1;
+		int count = 0;
+		int wordbreak = start;
+		int i = start;
+		for(;i>0 && i<text.length;i+=inc){
+			char c = text[i];
+			if(c == '.')
+				return i;
+			else if(c == '*' && ((i>1 && text[i-1]=='\n') || i==0))
+				return i;
+			else if(separators.contains(c))
+				wordbreak = i;
+			if(count >= max)
+				return wordbreak; // more than max chars away, return the latest wordbreak
+			count ++;
+		}
+		return i;
+	}
+	
+	/** Find surrounding for a link - extract sentances, list items .... */
+	protected String findContext(char[] text, int start, int end){
+		// TODO: implement
+		return null;
+	}
 	
 	/** Find the target key to title (ns:title) to which the links is pointing to 
 	 * @throws IOException */

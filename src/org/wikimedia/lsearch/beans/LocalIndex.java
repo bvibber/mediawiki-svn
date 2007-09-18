@@ -49,5 +49,9 @@ public class LocalIndex {
 		this.timestamp = timestamp;
 	}
 	
+	public String toString(){
+		return path+" at "+timestamp+" for "+iid;
+	}
+	
 	
 }

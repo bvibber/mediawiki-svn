@@ -792,5 +792,50 @@ public class FastWikiTokenizerEngine {
 		return keywords;
 	}
 	
-	
+	/** Delete everything that is not being indexes, decompose chars */
+	public static String stipTitle(String title){
+		UnicodeDecomposer decomposer = UnicodeDecomposer.getInstance();
+		char[] str = title.toCharArray();
+		char[] buf = new char[256];
+		int len = 0;
+		for(int i=0;i<str.length;i++){
+			char ch = str[i];
+			if(ch == ':' || ch == '(' || ch == ')' || ch =='[' || ch == ']' || ch == '.' || ch == ',' 
+				|| ch == ';' || ch == '"' || ch=='-' || ch=='+' || ch=='*' || ch=='!' || ch=='~' || ch=='$' 
+					|| ch == '%' || ch == '^' || ch == '&' || ch == '_' || ch=='=' || ch=='|' || ch=='\\'){
+				if(len > 0 && buf[len-1]!=' '){
+					if(len >= buf.length){ // extend buf
+						char[] n = new char[buf.length*2];
+						System.arraycopy(buf,0,n,0,buf.length);
+						buf = n;
+					}
+					buf[len++] = ' '; // replace the special char with space
+				}
+			} else{
+				char[] decomp = decomposer.decompose(ch);
+				if(decomp == null){
+					// no decomposition add char, but don't double spaces
+					if(ch!=' ' || (len>0 && buf[len-1]!=' ')){
+						if(len >= buf.length){ 
+							char[] n = new char[buf.length*2];
+							System.arraycopy(buf,0,n,0,buf.length);
+							buf = n;
+						}
+						buf[len++] = ch;
+					}
+				} else{
+					// add decomposed chars
+					for(int j = 0; j < decomp.length; j++){
+						if(len >= buf.length){ 
+							char[] n = new char[buf.length*2];
+							System.arraycopy(buf,0,n,0,buf.length);
+							buf = n;
+						}
+						buf[len++] = decomp[j];
+					}
+				}					
+			}
+		}
+		return new String(buf,0,len);	
+	}	
 }

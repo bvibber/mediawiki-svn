@@ -40,7 +40,7 @@ public class Warmup {
 			global = GlobalConfiguration.getInstance();		
 		
 		Hashtable<String,String> warmup = global.getDBParams(iid.getDBname(),"warmup");
-		if(iid.isSpell()); // no warmup for spell-chekers
+		if(iid.isSpell() || iid.isPrefix()); // no warmup for spell-chekers and prefixes (for now)
 		else if(warmup == null){
 			makeNamespaceFilters(is,iid);
 			simpleWarmup(is,iid);

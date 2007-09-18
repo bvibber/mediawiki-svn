@@ -65,7 +65,19 @@ public class SearchDaemon extends HttpHandler {
 			HashMap query = new QueryStringMap(uri);
 			SearchResults res = engine.search(IndexId.get(dbname),what,searchterm,query);
 			contentType = "text/plain";
-			if(res!=null && res.isSuccess()){
+			// format: 
+			// <namespace> <title> (resNum-times)
+			if(what.equals("prefix")){
+				sendHeaders(200, "OK");
+				for(ResultSet rs : res.getResults()){
+					sendResultLine(rs.namespace, rs.title);
+				}
+			}
+			// format:
+			// <num of hits>
+			// #suggest <query> or #no suggestion
+			// <score> <ns> <title> (resNum-times)
+			else if(res!=null && res.isSuccess()){
 				sendHeaders(200, "OK");
 				sendOutputLine(Integer.toString(res.getNumHits()));
 				if(res.getSuggest() != null)
@@ -119,6 +131,14 @@ public class SearchDaemon extends HttpHandler {
 			URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
 		} catch(Exception e){
 			log.error("Error sending result line ("+score + " " + namespace + " " + title +"): "+e.getMessage());
+		}
+	}
+	
+	private void sendResultLine(String namespace, String title) {
+		try{
+			sendOutputLine(namespace + " " +	URLEncoder.encode(title.replaceAll(" ", "_"), "UTF-8"));
+		} catch(Exception e){
+			log.error("Error sending prefix result line (" + namespace + " " + title +"): "+e.getMessage());
 		}
 	}
 	

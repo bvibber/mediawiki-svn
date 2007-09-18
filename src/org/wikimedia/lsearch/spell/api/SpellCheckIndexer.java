@@ -32,18 +32,18 @@ import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.search.IndexSearcherMul;
 import org.wikimedia.lsearch.search.WikiSearcher;
+import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
 import org.wikimedia.lsearch.spell.dist.DoubleMetaphone;
 import org.wikimedia.lsearch.util.HighFreqTerms;
 
 /** 
- * Index words and phrases from article titles. 
+ * Index words and phrases from articles. 
  * 
  * Fields:
  *  * word - word from title
+ *  * word_ngramN - word ngrams
  *  * phrase - phrase like douglas_adams
- *  * freq - stored serialized NamespaceFreq (ns:frequency, e.g. 0:234 1:12 14:3)
- *  * namespace - namespaces where the word/phrase is present   
  * 
  * @author rainman
  *
@@ -146,16 +146,33 @@ public class SpellCheckIndexer {
 						addPhrase(w,freq,true);
 					}
 				}
-			}			
+			}
 			ngramWriter.closeAndOptimize();
-			ir.close();
-			
+			ir.close();			
 		} catch (IOException e) {
 			log.fatal("Cannot build titles suggest index for "+iid+" : "+e.getMessage());
 			e.printStackTrace();
 			return;
 		}
 		
+	}
+
+	/** Check if there are common mispellings of this phrase */
+	protected boolean checkCommonPhraseMisspell(String phrase, int freq, IndexReader ir, String field) {
+		LuceneDictionary d = new LuceneDictionary(ir,field,phrase.substring(0,1));
+		d.setNoProgressReport();
+		Suggest.Metric metric = new Suggest.Metric(phrase);
+		Word word;
+		while((word = d.next()) != null){
+			if(word.getFrequency() * 100 < freq && word.getWord().indexOf("_")!=-1 ){
+				String w = word.getWord();
+				if(metric.distance(w) == 1){
+					System.out.println("Detected common mispelling for "+w+" (correct: "+phrase+")");
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 	/**

@@ -62,7 +62,10 @@ public class SuggestTest {
 					if(text.length()>=2){
 						System.out.println("METAPHONES: "+dmeta.doubleMetaphone(text)+", "+dmeta.doubleMetaphone(text,true));
 						System.out.println("SUGGEST: ");
+						int count = 0;
 						for(SuggestResult r : sc.suggestWords(text,10)){
+							if(++count >= 10 )
+								break;
 							System.out.println(r);
 						}
 

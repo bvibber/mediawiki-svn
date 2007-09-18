@@ -58,7 +58,7 @@ public class IndexId {
 	/** If true, this machine is an indexer for this index */
 	protected boolean myIndex;
 	
-	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINK_ANALYSIS, RELATED };
+	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINK_ANALYSIS, RELATED, PREFIX };
 	
 	/** Type of index, enumeration */
 	protected IndexType type;
@@ -162,6 +162,8 @@ public class IndexId {
 			this.type = IndexType.LINK_ANALYSIS;
 		else if(type.equals("related"))
 			this.type = IndexType.RELATED;
+		else if(type.equals("prefix"))
+			this.type = IndexType.PREFIX;
 		
 		// parts
 		String[] parts = dbrole.split("\\.");
@@ -264,6 +266,10 @@ public class IndexId {
 	/** If this is the index storing info about related articles */
 	public boolean isRelated(){
 		return type == IndexType.RELATED;
+	}
+	/** If this is the index storing article list for specific prefixes */
+	public boolean isPrefix(){
+		return type == IndexType.PREFIX;
 	}
 	
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
@@ -412,7 +418,7 @@ public class IndexId {
 	
 	/** get all hosts that search db this iid belongs to */
 	public HashSet<String> getDBSearchHosts(){
-		if(isSingle() || isSpell() || isLinkAnalysis() || isRelated())
+		if(isSingle() || isSpell() || isLinkAnalysis() || isRelated() || isPrefix())
 			return searchHosts;
 		else{
 			// add all hosts that search: dbname and all parts
@@ -463,7 +469,7 @@ public class IndexId {
 	 */
 	public HashSet<String> getPhysicalIndexes() {
 		HashSet<String> ret = new HashSet<String>();
-		if(isSingle() || isSpell() || isLinkAnalysis() || isRelated())
+		if(isSingle() || isSpell() || isLinkAnalysis() || isRelated() || isPrefix())
 			ret.add(dbrole);
 		else if(isMainsplit() || isSplit() || isNssplit()){
 			for(String p : splitParts)
@@ -547,6 +553,11 @@ public class IndexId {
 	/** Get the related-articles index iid */
 	public IndexId getRelated() {
 		return get(dbname+".related");
+	}
+	
+	/** Get the prefix index iid */
+	public IndexId getPrefix() {
+		return get(dbname+".prefix");
 	}
 	
 	

@@ -130,12 +130,12 @@ public class WikiQueryParserTest extends TestCase {
 			Analyzer analyzer = Analyzers.getSearcherAnalyzer("en");
 			bs = new FieldBuilder("en").getBuilder();
 			parser = new WikiQueryParser(bs.getFields().title(),"0",analyzer,bs,NamespacePolicy.IGNORE,stopWords);
-			assertEquals("[how, do, you, do]",parser.extractPhrases(parser.parseRaw("how do you do")).toString());
-			assertEquals("[making, something, rest]",parser.extractPhrases(parser.parseRaw("(help:making something incategory:blah) OR (rest incategory:crest)")).toString());
-			assertEquals("[godel, theorem]",parser.extractPhrases(parser.parseRaw("gödel theorem")).toString());
-			assertEquals("[some, text, and, some, phrase]",parser.extractPhrases(parser.parseRaw("some_text and \"some phrase\"")).toString());
+			assertEquals("[how, do, you, do]",parser.extractWords(parser.parseRaw("how do you do")).toString());
+			assertEquals("[making, something, rest]",parser.extractWords(parser.parseRaw("(help:making something incategory:blah) OR (rest incategory:crest)")).toString());
+			assertEquals("[godel, theorem]",parser.extractWords(parser.parseRaw("gödel theorem")).toString());
+			assertEquals("[some, text, and, some, phrase]",parser.extractWords(parser.parseRaw("some_text and \"some phrase\"")).toString());
 			
-			ArrayList<String> words = parser.extractPhrases(parser.parseRaw("the who band is something nobody knows about"));
+			ArrayList<String> words = parser.extractWords(parser.parseRaw("the who band is something nobody knows about"));
 			assertEquals("contents:\"the who band\"~10 contents:\"band is something\"~10 contents:\"something nobody\"~10 contents:\"nobody knows\"~10 contents:\"knows about\"~10",parser.makePhraseQueries(words,"contents",10,1).toString());
 						
 			// namespace policies

@@ -125,7 +125,7 @@ public class LinkAnalysisStorage extends LuceneStorage {
 	}
 	
 	public class LinkAnalysisIterator implements Iterator<ArticleAnalytics>{
-		int inx = 0, next = -1;
+		int inx = -1, next = -1;
 		int maxdoc;
 		
 		public LinkAnalysisIterator() throws IOException{
@@ -137,7 +137,7 @@ public class LinkAnalysisStorage extends LuceneStorage {
 			if(inx >= maxdoc)
 				return false;
 			if(next == -1){
-				for(next=inx;next<maxdoc;next++)
+				for(next=inx+1;next<maxdoc;next++)
 					if(!reader.isDeleted(next))
 						return true;
 				return false;
@@ -152,6 +152,8 @@ public class LinkAnalysisStorage extends LuceneStorage {
 				inx = next;
 				next = -1;	
 			} else{
+				if(inx == -1)
+					inx = 0;
 				for(;inx<maxdoc;inx++){
 					if(!reader.isDeleted(inx))
 						break;

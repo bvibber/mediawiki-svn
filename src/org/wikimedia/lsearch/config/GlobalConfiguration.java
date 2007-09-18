@@ -232,7 +232,7 @@ public class GlobalConfiguration {
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
 					dbrole = dbname + "." + typeid;
-				} else if(typeid.equals("spell") || typeid.equals("link_analysis") || typeid.equals("related")){
+				} else if(typeid.equals("spell") || typeid.equals("link_analysis") || typeid.equals("related") || typeid.equals("prefix")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else
@@ -519,7 +519,7 @@ public class GlobalConfiguration {
 				} else if(typeid.matches("nspart[1-9][0-9]*")){
 					type = "nssplit";
 					dbrole = dbname + "." + typeid;
-				} else if(typeid.equals("spell") || typeid.equals("link_analysis") || typeid.equals("related")){
+				} else if(typeid.equals("spell") || typeid.equals("link_analysis") || typeid.equals("related") || typeid.equals("prefix")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
 				} else
@@ -814,6 +814,12 @@ public class GlobalConfiguration {
 			
 			if(tokens.length>3 && verbose)
 				System.out.println("Unrecognized suggest parameters in ("+role+")");
+			
+			dbroles.put(type,params);			
+		} else if(type.equals("prefix")){
+			// no params
+			if(tokens.length>1 && verbose)
+				System.out.println("Unrecognized prefix parameters in ("+role+")");
 			
 			dbroles.put(type,params);			
 		} else{
