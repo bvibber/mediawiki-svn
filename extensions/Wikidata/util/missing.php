@@ -2,6 +2,8 @@
 header("Content-type: text/html; charset=UTF-8");
 
 define('MEDIAWIKI', true );
+
+include_once("../../../includes/Defines.php");
 include_once("../../../LocalSettings.php");
 global $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname;
 
