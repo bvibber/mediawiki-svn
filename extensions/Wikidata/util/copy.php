@@ -77,7 +77,6 @@ function do_multirow_query($query) {
 	return $items;
 }
 
-
 function expression($expression_id, $dc1) {
 	return getrow($dc1, "expression_ns", "WHERE expression_id=$expression_id");
 }
@@ -400,10 +399,12 @@ class CollectionCopier {
 		$this->dc2=$dc2;
 	}
 
-	public function read(){
-		$dc1=$this->dc1;
+	public function read($dc=Null){
+		if (is_null($dc)) {
+			$dc=$this->dc1;
+		}
 		$dmid=$this->dmid;
-		return getrows($dc1, "collection_contents", "WHERE member_mid=$dmid");
+		return getrows($dc, "collection_contents", "WHERE member_mid=$dmid");
 	}
 
 
@@ -467,7 +468,7 @@ class CollectionCopier {
 	 * are multiple ids 
 	 */
 	public function dup() {
-		$rows=$this->read();
+		$rows=$this->read($this->dc1);
 		$this->write($rows);
 	}
 }
@@ -480,6 +481,7 @@ class defined_meaning_copier {
 	protected $dmid;
 	protected $dc1;
 	protected $dc2;
+	protected $already_there=false;
 	
 	public function __construct ($dmid, $dc1, $dc2) {
 		$this->dmid=$dmid;
@@ -503,6 +505,10 @@ class defined_meaning_copier {
 		return $this->defined_meaning;
 	}
 
+	public function already_there() {
+		return $this->already_there;
+	}
+
 	function dup (){
 		$dmid=$this->dmid;
 		$dc1=$this->dc1;
@@ -520,6 +526,7 @@ class defined_meaning_copier {
 		$this->save_meaning=$this->defined_meaning;
 		$this->save_meaning["defined_meaning_id"]=$target_dmid;
 
+		$this->already_there=$copier->already_there();
 		if (!($copier->already_there())) {
 			# exp
 			$target_table=mysql_real_escape_string("${dc2}_expression_ns");
@@ -563,13 +570,17 @@ class defined_meaning_copier {
 			$this->defined_meaning["defined_meaning_id"],
 			$this->save_meaning["defined_meaning_id"]);
 		$relationsCopier->dup();
-
-		$collectionCopier=new CollectionCopier(
-			$dc1, 
-			$dc2, 
-			$this->defined_meaning["defined_meaning_id"],
-			$this->save_meaning["defined_meaning_id"]);
-		$collectionCopier->dup();
+		
+		# can't merge collections, since they're not entirely covered by
+		# the objects table. So we don't copy them more than once.
+		if (!$this->already_there()) {
+			$collectionCopier=new CollectionCopier(
+				$dc1, 
+				$dc2, 
+				$this->defined_meaning["defined_meaning_id"],
+				$this->save_meaning["defined_meaning_id"]);
+			$collectionCopier->dup();
+		}
 
 		return $this->save_meaning["defined_meaning_id"];
 	}
