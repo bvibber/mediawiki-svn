@@ -5,6 +5,26 @@ require_once('Record.php');
 require_once('RecordSet.php');
 require_once('Wikidata.php');
 
+/** 
+ * Transaction.php
+ *
+ * Manage internal transactions (NOT mysql transactions... confuzzeled yet?)
+ *
+ * To use: 
+ * 
+ * startNewTransaction($userId, $userIP, $comment, $dc) 
+ * then do a getUpdateTransactionId() to find the id you need for
+ * add_transaction_id.
+ * 
+ * Since this is not a mysql transaction, I don't THINK you need
+ * to close it. If you do, it wasn't documented.
+ *
+ * There's also something to do with restrictions. This is the only
+ * documentation you get so far. You're on your own now :-P
+ * (Please document anything else that's really needed for anything)
+ */
+
+
 interface QueryTransactionInformation {
 	public function getRestriction(Table $table);
 	public function getTables();
