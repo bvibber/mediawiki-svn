@@ -8,6 +8,8 @@
 # probably will refactor this code into ulta-pretty helpers or
 # other recordset improvements.
 #
+# Addendum: this might not actually be so throwaway as was hoped.
+# Don't you love it when that happens?
 
 
 # common abbreviations used in varnames and comments:
@@ -15,8 +17,8 @@
 # dmid = defined meaning id: unique identifier for each dm.
 # dc = dataset context. datasets are implemented by having
 #			tables with different prefixes
-# dc1 = dataset (context) 1 (we are copying FROM dc1)
-# dc2 = dataset (context) 2 (we are copying TO dc2)
+# dc1 = dataset (context) 1 (we are copying FROM dc1 (so we READ) )
+# dc2 = dataset (context) 2 (we are copying TO dc2 (so we WRITE) ) 
 # 
 
 header("Content-type: text/html; charset=UTF-8");
@@ -27,6 +29,7 @@ include_once("../../../includes/Defines.php");
 include_once("../../../LocalSettings.php");
 require_once("Setup.php");
 require_once("../OmegaWiki/WikiDataAPI.php");
+require_once("../OmegaWiki/Transaction.php");
 
 
 global $wgDBserver, $wgDBuser, $wgDBpassword, $wgDBname;
@@ -42,11 +45,27 @@ MySQL_select_db($db4)or die("Cannot open database");
 mysql_query("SET NAMES 'utf8'");
 
 
+/** Times our execution time, nifty! */
 function stopwatch(){
    list($usec, $sec) = explode(" ", microtime());
    return ((float)$usec + (float)$sec);
 }
 
+/** start a new copy transaction
+ */
+function newCopyTransaction($dc1, $dc2) {
+	startNewTransaction(0, "127.0.0.1", "copying from $dc1 to $dc2", $dc2);
+}
+
+
+
+/** retrieve a single row from the database as an associative array
+ * @param $dc		the dataset prefix we need
+ * @param $table	the name of the table (minus dataset prefix)
+ * @peram $where		the actual WHERE clause we need to uniquely find our row
+ * @returns an associative array, representing our row. \
+ *	keys=column headers, values = row contents
+ */
 function getrow($dc, $table, $where) {
 	$target_table=mysql_real_escape_string("${dc}_${table}");
 	$query="SELECT * FROM $target_table ".$where;
@@ -55,18 +74,41 @@ function getrow($dc, $table, $where) {
 }
 
 
+/** retrieve multiple rows from the database, as an array of associative arrays.
+ * @param $dc		the dataset prefix we need
+ * @param $table	the name of the table (minus dataset prefix)
+ * @peram $where		the actual WHERE clause we need to uniquely find our row
+ * @returns an array of associative arrays, representing our rows.  \
+ *	each associative array is structured with:		\
+ *	keys=column headers, values = row contents
+ */
 function getrows($dc, $table, $where) {
 	$target_table=mysql_real_escape_string("${dc}_${table}");
 	$query="SELECT * FROM $target_table ".$where;
 	return do_multirow_query($query);
 }
 
+
+/** Performs an arbitrary SQL query and returns an associative array
+ * Assumes that only 1 row can be returned!
+ * @param $query	a valid SQL query
+ * @returns an associative array, representing our row. \
+ *	keys=column headers, values = row contents
+ *
+ */
 function doquery($query) {
 	echo $query;
 	$result = mysql_query($query)or die ("error ".mysql_error());
 	$data= mysql_fetch_assoc($result);
 	return $data;
 }
+/** Perform an arbitrary SQL query
+ * 
+ * @param $query	a valid SQL query
+ * @returns an array of associative arrays, representing our rows.  \
+ *	each associative array is structured with:		\
+ *	keys=column headers, values = row contents
+ */
 
 function do_multirow_query($query) {
 	$result = mysql_query($query)or die ("error ".mysql_error());
@@ -77,10 +119,20 @@ function do_multirow_query($query) {
 	return $items;
 }
 
+/** obtain an expression definition from the database
+ * @param $expression_id	the id of the expression
+ * @param $dc1			dataset to READ expression FROM
+ */
 function expression($expression_id, $dc1) {
 	return getrow($dc1, "expression_ns", "WHERE expression_id=$expression_id");
 }
 
+/** copies items in the objects table.
+ * As a "side-effect" 
+ * also conveniently reports  to see if something was already_there
+ * (we don't want to accidentally duplicate things umpteen times, so the
+ * side-effect is almost as important)
+ */
 class ObjectCopier {
 	
 	protected $id;
@@ -114,6 +166,11 @@ class ObjectCopier {
 		$this->object=getrow($dc1, "objects", "WHERE object_id=$id");
 	}
 
+	/* tries to retrieve the identical UUID from the destination
+	 * (dc2) dataset, if it exists.
+	 * @returns the associative array representing this object,
+	 *  if successful. Else returns an empty array.
+	 */
 	protected function identical() {
 		var_dump($this->object);
 		$uuid=mysql_escape_string($this->object["UUID"]);
@@ -145,7 +202,7 @@ class ObjectCopier {
 	}
 }
 
-/** identical to array_key_exists(), but eats dirtier input
+/** identical to the php function array_key_exists(), but eats dirtier input
  * returns false (rather than an error) on somewhat invalid input
  */
 function sane_key_exists($key, $array) {
@@ -202,9 +259,13 @@ function mysql_insert_assoc ($my_table, $my_array) {
 
 /**convenience wrapper around mysql_insert_assoc
  * like mysql_insert_assoc, but allows you to specify dc prefix+table name separately
+ * Also transparently handles the internal transaction (WHICH MUST ALREADY BE OPEN!)
  */
 function dc_insert_assoc($dc, $table_name, $array) {
 	$target_table=mysql_real_escape_string("${dc}_${table_name}");
+	if (sane_key_exists("add_transaction_id", $array)) {
+		$array["add_transaction_id"]=getUpdateTransactionId();
+	}
 	return mysql_insert_assoc($target_table, $array);
 }
 
