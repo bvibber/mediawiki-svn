@@ -23,7 +23,7 @@ $wgExtensionFunctions[] = 'efInputBoxSetup';
 $wgExtensionCredits['parserhook'][] = array(
 	'name' => 'Inputbox',
 	'author' => array( 'Erik Moeller', 'Leonardo Pimenta', 'Rob Church' ),
-	'url' => 'http://meta.wikimedia.org/wiki/Help:Inputbox',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Inputbox',
 	'description' => 'Allow inclusion of predefined HTML forms.',
 );
 
