@@ -391,6 +391,11 @@ class CollectionCopier {
 	protected $save_dmid;
 	protected $dc1;
 	protected $dc2;
+	protected $already_there=false;
+
+	public function already_there() {
+		return $this->already_there;
+	}
 	
 	public function __construct ($dc1, $dc2, $dmid, $save_dmid) {
 		$this->dmid=$dmid;
@@ -468,6 +473,16 @@ class CollectionCopier {
 	 * are multiple ids 
 	 */
 	public function dup() {
+		# Is there something already there? If so, do not dup.
+		$checkrows=$this->read($this->dc2);
+		foreach ($checkrows as $row) {
+			if ($row["member_mid"]==$this->save_dmid){
+				$this->already_there=true;
+				return;
+			}
+		}
+
+		#seems ok, let's dup.
 		$rows=$this->read($this->dc1);
 		$this->write($rows);
 	}
