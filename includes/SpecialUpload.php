@@ -277,7 +277,7 @@ class UploadForm {
 		global $wgUser, $wgOut, $wgFileExtensions;
 	 	$results = null;
 	 	$value = null;
-	 	$value = internalProcessUpload($results);
+	 	$value = $this->internalProcessUpload($results);
 	 	switch($value) {
 			case self::SUCCESS:
 				$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
