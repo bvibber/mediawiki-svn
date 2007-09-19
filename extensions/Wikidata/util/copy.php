@@ -422,11 +422,11 @@ class RelationsCopier {
 			return;
 		}
 		$relation["meaning1_mid"]=$new_dmid;
-		$dmcopier=new defined_meaning_copier($relation["meaning2_mid"],$dc1, $dc2);
-		$relation["meaning2_mid"]=$dmcopier->dup();
+		$dmcopier=new DefinedMeaningCopier($relation["meaning2_mid"],$dc1, $dc2);
+		$relation["meaning2_mid"]=$dmcopier->dup_stub();
 		# Typically checks same values each time. Accelerated by query_cache:
-		$rtcopier=new defined_meaning_copier($relation["relationtype_mid"],$dc1, $dc2);
-		$relation["relationtype_mid"]=$rtcopier->dup();
+		$rtcopier=new DefinedMeaningCopier($relation["relationtype_mid"],$dc1, $dc2);
+		$relation["relationtype_mid"]=$rtcopier->dup_stub();
 		var_dump($relation);
 		$copier=new ObjectCopier($relation["relation_id"], $dc1, $dc2);
 		$relation["relation_id"]=$copier->dup();
@@ -494,8 +494,8 @@ class CollectionCopier {
 		$definition["collection_id"]=$objcopier->dup();
 		if (!$objcopier->already_there()) {
 			$dmid= $definition["collection_mid"];
-			$dmcopier=new defined_meaning_copier($dmid,$dc1,$dc2);
-			$definition["collection_mid"]=$dmcopier->dup();
+			$dmcopier=new DefinedMeaningCopier($dmid,$dc1,$dc2);
+			$definition["collection_mid"]=$dmcopier->dup_stub();
 
 			dc_insert_assoc($dc2, "collection_ns", $definition);
 
@@ -549,7 +549,7 @@ class CollectionCopier {
 }
 	
 
-class defined_meaning_copier {
+class DefinedMeaningCopier {
 
 	protected $defined_meaning;
 	protected $save_meaning;
@@ -697,7 +697,7 @@ $dmid=mysql_real_escape_string($dmid_dirty);
 $dc1=mysql_real_escape_string($dc1_dirty);
 $dc2=mysql_real_escape_string($dc2_dirty);
 
-$dmc=new defined_meaning_copier($dmid, $dc1, $dc2); #sorry, not a [[delorean]]
+$dmc=new DefinedMeaningCopier($dmid, $dc1, $dc2); #sorry, not a [[delorean]]
 $dmc->dup(); 
 
 echo"
