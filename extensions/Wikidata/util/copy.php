@@ -57,8 +57,6 @@ function newCopyTransaction($dc1, $dc2) {
 	startNewTransaction(0, "127.0.0.1", "copying from $dc1 to $dc2", $dc2);
 }
 
-
-
 /** retrieve a single row from the database as an associative array
  * @param $dc		the dataset prefix we need
  * @param $table	the name of the table (minus dataset prefix)
@@ -70,7 +68,7 @@ function getrow($dc, $table, $where) {
 	$target_table=mysql_real_escape_string("${dc}_${table}");
 	$query="SELECT * FROM $target_table ".$where;
 	print $query."<br>\n";
-	return doquery($query);
+	return doQuery($query);
 }
 
 
@@ -96,7 +94,7 @@ function getrows($dc, $table, $where) {
  *	keys=column headers, values = row contents
  *
  */
-function doquery($query) {
+function doQuery($query) {
 	echo $query;
 	$result = mysql_query($query)or die ("error ".mysql_error());
 	$data= mysql_fetch_assoc($result);
@@ -178,13 +176,23 @@ class ObjectCopier {
 		return getrow($dc2, "objects", "WHERE `UUID`='$uuid'");
 	}
 
+	/** Write copy of object into the objects table,taking into account
+	 * necessary changes.
+	 * possible TODO: Currently induces the target table from the original
+	 * destination table name.
+	 * Perhaps would be wiser to get the target table as an (override) parameter.
+	 */
 	function write() {
-		$dc2=$this->dc2;
-		$objects_table=mysql_real_escape_string("${dc2}_objects");
-		$object=$this->object;
+		$dc2 = $this->dc2;
+		$object = $this->object;
 		unset($object["object_id"]);
-		$object["table"]=$objects_table;
-		mysql_insert_assoc($objects_table,$object);
+
+		$tableName_exploded = explode("_", $object["table"]);
+		$tableName_exploded[0] = $dc2;
+		$tableName = implode("_", $tableName_exploded);
+		$object["table"]=$tableName;
+
+		dc_insert_assoc($dc2,"objects",$object);
 		return mysql_insert_id();
 	}
 
@@ -276,8 +284,7 @@ function getOldSyntrans($dc1, $dmid, $expid) {
 function writeSyntrans($syntrans, $newdmid, $newexpid, $dc2) {
 	$syntrans["defined_meaning_id"]=$newdmid;
 	$syntrans["expression_id"]=$newexpid;
-	$syntrans_table=mysql_real_escape_string("${dc2}_syntrans");
-	mysql_insert_assoc($syntrans_table,$syntrans);
+	dc_insert_assoc($dc2,"syntrans",$syntrans);
 }	
 
 function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
@@ -304,9 +311,8 @@ function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 	$target_expid1=$copier->dup();
 	$save_expression=$expression;
 	$save_expression["expression_id"]=$target_expid1;
-	$target_table=mysql_real_escape_string("${dc2}_expression_ns");
 	if  (!($copier->already_there())) {
-		mysql_insert_assoc($target_table,$save_expression);
+		dc_insert_assoc($dc,"expression_ns",$save_expression);
 	}
 	dupsyntrans(
 		$dc1,
@@ -340,12 +346,10 @@ function read_translated_content($dc1,$tcid) {
 }
 
 function write_translated_content($dc1, $dc2, $tcid, $content) { 
-	$target_table=mysql_real_escape_string("${dc2}_translated_content");
-	var_dump($content);
 	$content["translated_content_id"]=$tcid;
 	$content["text_id"]=dup_text($dc1, $dc2, $content["text_id"]);
 	var_dump($content);
-	mysql_insert_assoc($target_table, $content);
+	dc_insert_assoc($dc2, "translated_content", $content);
 }
 
 
@@ -373,7 +377,7 @@ function write_text($dc2,$text) {
 	unset($text["text_id"]);
 	# inconsistent, insert_assoc should accept dc, table
 	$target_table=mysql_real_escape_string("${dc2}_text");
-	mysql_insert_assoc($target_table,$text);
+	dc_insert_assoc($dc2, "text", $text);
 	return mysql_insert_id();
 }
 
@@ -407,7 +411,6 @@ class RelationsCopier {
 	}
 
 	function write_single($relation) {
-		echo "RELATION";
 		var_dump($relation);
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
@@ -424,17 +427,13 @@ class RelationsCopier {
 		# Typically checks same values each time. Accelerated by query_cache:
 		$rtcopier=new defined_meaning_copier($relation["relationtype_mid"],$dc1, $dc2);
 		$relation["relationtype_mid"]=$rtcopier->dup();
-		echo ">>PRE!<br>\n";
 		var_dump($relation);
 		$copier=new ObjectCopier($relation["relation_id"], $dc1, $dc2);
 		$relation["relation_id"]=$copier->dup();
 		if ($copier->already_there()) {
 			return;
 		}
-		echo ">>POST!<br>\n";
-		var_dump($relation);
-		$target_table=mysql_real_escape_string("${dc2}_meaning_relations");
-		mysql_insert_assoc($target_table,$relation);
+		dc_insert_assoc($dc2,"meaning_relations",$relation);
 
 	}
 
@@ -585,7 +584,14 @@ class defined_meaning_copier {
 		return $this->already_there;
 	}
 
-	function dup (){
+	public	function dup() {
+		$this->dup_stub();
+		$this->dup_rest();
+		return $this->save_meaning["defined_meaning_id"];
+	}
+
+
+	function dup_stub (){
 		$dmid=$this->dmid;
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
@@ -611,21 +617,27 @@ class defined_meaning_copier {
 			var_dump($target_expid1);
 			$save_expression=$defining_expression;
 			$save_expression["expression_id"]=$target_expid1;
-			mysql_insert_assoc($target_table,$save_expression);
+			dc_insert_assoc($dc2, "expression_ns", $save_expression);
 			# and insert that info into the dm
 			$this->save_meaning["expression_id"]=$target_expid1;
 		}
 		$this->save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $this->defined_meaning["meaning_text_tcid"]);
 
 		if (!($copier->already_there())) {
-			mysql_insert_assoc($dm_target_table, $this->save_meaning);
+			dc_insert_assoc($dc2, "defined_meaning", $this->save_meaning);
 
 			$title_name=$defining_expression["spelling"];
 			$title_number=$target_dmid;
 			$title=str_replace(" ","_",$title_name)."_(".$title_number.")";
-			$pagedata=array("page_namespace"=>24, "page_title"=>$title);
-			mysql_insert_assoc("page",$pagedata);
+			CopyTools::createPage($title);
 		}
+		return $this->save_meaning["defined_meaning_id"];
+	}		
+			
+	function dup_rest() {
+		$dmid=$this->dmid;
+		$dc1=$this->dc1;
+		$dc2=$this->dc2;
 
 		$concepts=array(
 			$dc1 => $this->defined_meaning["defined_meaning_id"],
@@ -658,7 +670,19 @@ class defined_meaning_copier {
 			$collectionCopier->dup();
 		}
 
-		return $this->save_meaning["defined_meaning_id"];
+	}
+}
+	
+class CopyTools {
+	/** create a relevant entry in the `page` table. */
+	public static function createPage($title) {
+		# page is not a Wikidata table, so it needs to be treated differently (yet again :-/)
+		$escTitle=mysql_real_escape_string($title);
+		$existing_page_data=doQuery("SELECT * FROM page WHERE page_namespace=24 AND page_title=\"$escTitle\"");
+		if (count($existing_page_data)==0) {
+			$pagedata=array("page_namespace"=>24, "page_title"=>$title);
+			mysql_insert_assoc("page",$pagedata);
+		}
 	}
 }
 
