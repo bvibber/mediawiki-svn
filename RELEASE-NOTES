@@ -24,7 +24,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Add a warning for non-descriptive filenames at Special:Upload
 * Add {{filepath:}} parser function to get full path to an uploaded file,
   complementing {{fullurl:}} for pages.
-
+* (bug 11136) If using Postgres, search path is explicitly set if wgDBmwschema is 
+  not set to 'mediawiki', allowing multiple mediawiki instances per user.
 
 === Bug fixes in 1.12 ===
 
@@ -54,6 +55,11 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11321) Fix width of gallerybox when option "width=xxx" is used
 * (bug 7890) Special:BrokenRedirects links deleted redirects to a non-existent page
 * Fix initial statistics when installing: add correct values
+* (bug 11342) Fix several 'returnto' links in permissions/error pages which
+  linked to the main page instead of targetted page
+* Strike the link to the redirect rather than using an asterisk in Special:Listredirects
+* (bug 11355) Fix false positives in Safe Mode and other config detection
+  when boolean settings are disabled with 'Off' via php_admin_value/php_value
 
 === API changes in 1.12 ===
 
@@ -61,6 +67,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 
 * (bug 11275) Enable descending sort in categorymembers
 * (bug 11308) Allow the API to output the image metadata
+* (bug 11296) Temporary fix for escaping of ampersands inside links in pretty-printed
+  help document.
 
 === Languages updated in 1.12 ===
 
@@ -69,6 +77,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Bikol Central (bcl)
 * Belarusian Taraskievica orthography (be-tarask)
 * Bengali (bn)
+* Catalan (ca)
 * Czech (cs)
 * Cassubian (csb)
 * Welsh (cy)
@@ -76,6 +85,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * German (de)
 * Lower Sorbian (dsb)
 * Greek (el)
+* Spanish (es)
 * Extremaduran (ext)
 * Persian (fa)
 * Võro (fiu-vro)
@@ -83,6 +93,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * French (fr)
 * Hebrew (he)
 * Upper Sorbian (hsb)
+* Indonesian (id)
 * Icelandic (is)
 * Kazakh (kk)
 * Korean (ko)
@@ -90,11 +101,14 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Dutch (nl)
 * Russian (ru)
 * Sakha (sah)
+* Sicilian (scn)
 * Slovak (sk)
 * Serbian (Cyrillic) (sr-ec)
-* Sudanese (su)
+* Sundanese (su)
 * Tamil (ta)
+* Tetun (tet) (new)
 * Walloon (wa)
+* Zhuang (za)
 * Zealandic (zea)
 
 == Compatibility ==
