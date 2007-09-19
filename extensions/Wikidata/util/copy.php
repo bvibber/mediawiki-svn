@@ -20,6 +20,12 @@
 # dc1 = dataset (context) 1 (we are copying FROM dc1 (so we READ) )
 # dc2 = dataset (context) 2 (we are copying TO dc2 (so we WRITE) ) 
 # 
+# naming conventions:
+# Normal: Java Style  
+#	* ClassName->methodName($variableName); /* comment */
+#	* CopyTools::getRow(...); # comment
+# Wrappers around PHP functions or extensions to PHP function set: Same style as the wrapped function
+#	* mysql_insert_assoc(...); # comment
 
 header("Content-type: text/html; charset=UTF-8");
 
@@ -44,86 +50,6 @@ if (!$connection)die("Cannot connect to SQL server. Try again later.");
 MySQL_select_db($db4)or die("Cannot open database");
 mysql_query("SET NAMES 'utf8'");
 
-
-/** Times our execution time, nifty! */
-function stopwatch(){
-   list($usec, $sec) = explode(" ", microtime());
-   return ((float)$usec + (float)$sec);
-}
-
-/** start a new copy transaction
- */
-function newCopyTransaction($dc1, $dc2) {
-	startNewTransaction(0, "127.0.0.1", "copying from $dc1 to $dc2", $dc2);
-}
-
-/** retrieve a single row from the database as an associative array
- * @param $dc		the dataset prefix we need
- * @param $table	the name of the table (minus dataset prefix)
- * @peram $where		the actual WHERE clause we need to uniquely find our row
- * @returns an associative array, representing our row. \
- *	keys=column headers, values = row contents
- */
-function getrow($dc, $table, $where) {
-	$target_table=mysql_real_escape_string("${dc}_${table}");
-	$query="SELECT * FROM $target_table ".$where;
-	print $query."<br>\n";
-	return doQuery($query);
-}
-
-
-/** retrieve multiple rows from the database, as an array of associative arrays.
- * @param $dc		the dataset prefix we need
- * @param $table	the name of the table (minus dataset prefix)
- * @peram $where		the actual WHERE clause we need to uniquely find our row
- * @returns an array of associative arrays, representing our rows.  \
- *	each associative array is structured with:		\
- *	keys=column headers, values = row contents
- */
-function getrows($dc, $table, $where) {
-	$target_table=mysql_real_escape_string("${dc}_${table}");
-	$query="SELECT * FROM $target_table ".$where;
-	return do_multirow_query($query);
-}
-
-
-/** Performs an arbitrary SQL query and returns an associative array
- * Assumes that only 1 row can be returned!
- * @param $query	a valid SQL query
- * @returns an associative array, representing our row. \
- *	keys=column headers, values = row contents
- *
- */
-function doQuery($query) {
-	echo $query;
-	$result = mysql_query($query)or die ("error ".mysql_error());
-	$data= mysql_fetch_assoc($result);
-	return $data;
-}
-/** Perform an arbitrary SQL query
- * 
- * @param $query	a valid SQL query
- * @returns an array of associative arrays, representing our rows.  \
- *	each associative array is structured with:		\
- *	keys=column headers, values = row contents
- */
-
-function do_multirow_query($query) {
-	$result = mysql_query($query)or die ("error ".mysql_error());
-	$items=array();
-	while ($nextexp=mysql_fetch_assoc($result)) {
-		$items[]=$nextexp;
-	}
-	return $items;
-}
-
-/** obtain an expression definition from the database
- * @param $expression_id	the id of the expression
- * @param $dc1			dataset to READ expression FROM
- */
-function expression($expression_id, $dc1) {
-	return getrow($dc1, "expression_ns", "WHERE expression_id=$expression_id");
-}
 
 /** copies items in the objects table.
  * As a "side-effect" 
@@ -161,7 +87,7 @@ class ObjectCopier {
 	protected function read() {
 		$dc1=$this->dc1;
 		$id=$this->id;
-		$this->object=getrow($dc1, "objects", "WHERE object_id=$id");
+		$this->object=CopyTools::getRow($dc1, "objects", "WHERE object_id=$id");
 	}
 
 	/* tries to retrieve the identical UUID from the destination
@@ -173,7 +99,7 @@ class ObjectCopier {
 		var_dump($this->object);
 		$uuid=mysql_escape_string($this->object["UUID"]);
 		$dc2=$this->dc2;
-		return getrow($dc2, "objects", "WHERE `UUID`='$uuid'");
+		return CopyTools::getRow($dc2, "objects", "WHERE `UUID`='$uuid'");
 	}
 
 	/** Write copy of object into the objects table,taking into account
@@ -192,14 +118,14 @@ class ObjectCopier {
 		$tableName = implode("_", $tableName_exploded);
 		$object["table"]=$tableName;
 
-		dc_insert_assoc($dc2,"objects",$object);
+		CopyTools::dc_insert_assoc($dc2,"objects",$object);
 		return mysql_insert_id();
 	}
 
 	function dup() {
 		$this->read();
 		$object2=$this->identical();
-		if (sane_key_exists("object_id",$object2)) {
+		if (CopyTools::sane_key_exists("object_id",$object2)) {
 			$this->already_there=true;
 			$newid=$object2["object_id"];
 		} else {
@@ -210,81 +136,24 @@ class ObjectCopier {
 	}
 }
 
-/** identical to the php function array_key_exists(), but eats dirtier input
- * returns false (rather than an error) on somewhat invalid input
+
+/** obtain an expression definition from the database
+ * @param $expression_id	the id of the expression
+ * @param $dc1			dataset to READ expression FROM
  */
-function sane_key_exists($key, $array) {
-	if (is_null($key) or $key==false){
-		return false;
-	}
-	if (is_null($array) or $array==false) {
-		return false;
-	}
-	var_dump($array);
-	return array_key_exists($key, $array);
+function expression($expression_id, $dc1) {
+	return CopyTools::getRow($dc1, "expression_ns", "WHERE expression_id=$expression_id");
 }
 
-/**
- * inverse of mysql_fetch_assoc
- * takes an associative array as parameter, and inserts data
- * into table as a single row (keys=column names, values = data to be inserted)
-/* see: http://www.php.net/mysql_fetch_assoc (Comment by R. Bradly, 14-Sep-2006)
- */
-function mysql_insert_assoc ($my_table, $my_array) {
-
-	// Find all the keys (column names) from the array $my_array
-
-	// We compose the query
-	$sql = "insert into `$my_table` set";
-	// implode the column names, inserting "\", \"" between each (but not after the last one)
-	// we add the enclosing quotes at the same time
-	$sql_comma=$sql;
-	foreach($my_array as $key=>$value) {
-		$sql=$sql_comma;
-		if (is_null($value)) {
-			$value="DEFAULT";
-		} else {
-			$value="\"$value\"";
-		}
-		$sql.=" `$key`=$value";
-		$sql_comma=$sql.",";
-	}
-	// Same with the values
-	echo $sql."; <br>\n";
-	$result = mysql_query($sql);
-
-	if ($result)
-	{
-		echo "The row was added sucessfully";
-		return true;
-	}
-	else
-	{
-		echo ("The row was not added<br>The error was" . mysql_error());
-		return false;
-	}
-}
-
-/**convenience wrapper around mysql_insert_assoc
- * like mysql_insert_assoc, but allows you to specify dc prefix+table name separately
- * Also transparently handles the internal transaction (WHICH MUST ALREADY BE OPEN!)
- */
-function dc_insert_assoc($dc, $table_name, $array) {
-	$target_table=mysql_real_escape_string("${dc}_${table_name}");
-	if (sane_key_exists("add_transaction_id", $array)) {
-		$array["add_transaction_id"]=getUpdateTransactionId();
-	}
-	return mysql_insert_assoc($target_table, $array);
-}
 
 function getOldSyntrans($dc1, $dmid, $expid) {
-	return getrow($dc1, "syntrans", "where defined_meaning_id=$dmid and expression_id=$expid");
+	return CopyTools::getRow($dc1, "syntrans", "where defined_meaning_id=$dmid and expression_id=$expid");
 }
 
 function writeSyntrans($syntrans, $newdmid, $newexpid, $dc2) {
 	$syntrans["defined_meaning_id"]=$newdmid;
 	$syntrans["expression_id"]=$newexpid;
-	dc_insert_assoc($dc2,"syntrans",$syntrans);
+	CopyTools::dc_insert_assoc($dc2,"syntrans",$syntrans);
 }	
 
 function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
@@ -299,7 +168,7 @@ function dupSyntrans($dc1, $dc2, $olddmid, $oldexpid, $newdmid, $newexpid) {
 }
 
 function get_syntranses($dmid, $dc1) {
-	return getrows($dc1, "syntrans", "where defined_meaning_id=$dmid");
+	return CopyTools::getRows($dc1, "syntrans", "where defined_meaning_id=$dmid");
 }
 
 
@@ -312,7 +181,7 @@ function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 	$save_expression=$expression;
 	$save_expression["expression_id"]=$target_expid1;
 	if  (!($copier->already_there())) {
-		dc_insert_assoc($dc,"expression_ns",$save_expression);
+		CopyTools::dc_insert_assoc($dc,"expression_ns",$save_expression);
 	}
 	dupsyntrans(
 		$dc1,
@@ -342,14 +211,14 @@ function dup_syntranses($src_dmid, $dst_dmid, $dc1, $dc2) {
 }
 
 function read_translated_content($dc1,$tcid) {
-	return getrows($dc1,"translated_content","where translated_content_id=$tcid");
+	return CopyTools::getRows($dc1,"translated_content","where translated_content_id=$tcid");
 }
 
 function write_translated_content($dc1, $dc2, $tcid, $content) { 
 	$content["translated_content_id"]=$tcid;
 	$content["text_id"]=dup_text($dc1, $dc2, $content["text_id"]);
 	var_dump($content);
-	dc_insert_assoc($dc2, "translated_content", $content);
+	CopyTools::dc_insert_assoc($dc2, "translated_content", $content);
 }
 
 
@@ -370,14 +239,14 @@ function dup_translated_content($dc1, $dc2, $tcid) {
 }
 
 function read_text($dc1,$text_id) {
-	return getrow($dc1,"text","where text_id=$text_id");
+	return CopyTools::getRow($dc1,"text","where text_id=$text_id");
 }
 
 function write_text($dc2,$text) {
 	unset($text["text_id"]);
 	# inconsistent, insert_assoc should accept dc, table
 	$target_table=mysql_real_escape_string("${dc2}_text");
-	dc_insert_assoc($dc2, "text", $text);
+	CopyTools::dc_insert_assoc($dc2, "text", $text);
 	return mysql_insert_id();
 }
 
@@ -387,9 +256,6 @@ function dup_text($dc1, $dc2, $text_id) {
 	return $id;
 }
 
-/** @deprecated Relations have been removed. (could someone have told
- * me that before I started? 
- */
 class RelationsCopier {
 
 	protected $old_dmid;
@@ -407,7 +273,7 @@ class RelationsCopier {
 	function read() {
 		$dc1=$this->dc1;
 		$dmid=$this->old_dmid;
-		return getrows($dc1,"meaning_relations","where meaning1_mid=$dmid");
+		return CopyTools::getRows($dc1,"meaning_relations","where meaning1_mid=$dmid");
 	}
 
 	function write_single($relation) {
@@ -433,7 +299,7 @@ class RelationsCopier {
 		if ($copier->already_there()) {
 			return;
 		}
-		dc_insert_assoc($dc2,"meaning_relations",$relation);
+		CopyTools::dc_insert_assoc($dc2,"meaning_relations",$relation);
 
 	}
 
@@ -469,13 +335,13 @@ class CollectionCopier {
 			$dc=$this->dc1;
 		}
 		$dmid=$this->dmid;
-		return getrows($dc, "collection_contents", "WHERE member_mid=$dmid");
+		return CopyTools::getRows($dc, "collection_contents", "WHERE member_mid=$dmid");
 	}
 
 
 	public function read_definition($collection_id) {
 		$dc1=$this->dc1;
-		return getrow($dc1,"collection_ns","WHERE collection_id=$collection_id");
+		return CopyTools::getRow($dc1,"collection_ns","WHERE collection_id=$collection_id");
 	}
 
 	/** write collection definition (and associated dm) to dc2
@@ -497,7 +363,7 @@ class CollectionCopier {
 			$dmcopier=new DefinedMeaningCopier($dmid,$dc1,$dc2);
 			$definition["collection_mid"]=$dmcopier->dup_stub();
 
-			dc_insert_assoc($dc2, "collection_ns", $definition);
+			CopyTools::dc_insert_assoc($dc2, "collection_ns", $definition);
 
 		}
 		return $definition["collection_id"];
@@ -512,6 +378,24 @@ class CollectionCopier {
 		return $this->write_definition($definition);
 	}
 
+
+	# we create a mapping and THEN do collections, now we need to prevent ourselves dupping 
+	# existing mappings
+	public function existing_mapping($member_id) {
+		$dc2=$this->dc2;
+		$query="SELECT ${dc2}_collection_contents.* FROM ${dc2}_collection_contents, ${dc2}_collection_ns
+			WHERE ${dc2}_collection_contents.collection_id = ${dc2}_collection_ns.collection_id
+			AND collection_type=\"MAPP\" 
+			AND internal_member_id=\"${member_id}\"";
+		$mapping_here=CopyTools::doQuery($query);
+
+		if ($mapping_here==false)
+			return false;
+		else
+			return true; # if anything is actually returned, we know the score.
+	}
+
+
 	/** write a single collection_contents row,
 	 * (if the collection doesn't exist yet), also dup the definition
 	 */
@@ -519,8 +403,12 @@ class CollectionCopier {
 		$dc2=$this->dc2;
 		$save_dmid=$this->save_dmid;
 		$row["collection_id"]=$this->dup_definition($row["collection_id"]);
+		
+		if ( $this->existing_mapping($row["internal_member_id"]) )
+			return;
+
 		$row["member_mid"]=$save_dmid;
-		dc_insert_assoc($dc2, "collection_contents", $row);
+		CopyTools::dc_insert_assoc($dc2, "collection_contents", $row);
 	}
 
 	public function write($rows){
@@ -567,7 +455,7 @@ class DefinedMeaningCopier {
 	protected function read() {
 		$dmid=$this->dmid;
 		print "<".$dmid."-".$this->dc1.">";
-		$this->defined_meaning=getrow($this->dc1,"defined_meaning","where defined_meaning_id=$dmid");
+		$this->defined_meaning=CopyTools::getRow($this->dc1,"defined_meaning","where defined_meaning_id=$dmid");
 		return $this->defined_meaning; # for convenience
 	}
 
@@ -590,8 +478,7 @@ class DefinedMeaningCopier {
 		return $this->save_meaning["defined_meaning_id"];
 	}
 
-
-	function dup_stub (){
+	private function dup_stub (){
 		$dmid=$this->dmid;
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
@@ -617,20 +504,26 @@ class DefinedMeaningCopier {
 			var_dump($target_expid1);
 			$save_expression=$defining_expression;
 			$save_expression["expression_id"]=$target_expid1;
-			dc_insert_assoc($dc2, "expression_ns", $save_expression);
+			CopyTools::dc_insert_assoc($dc2, "expression_ns", $save_expression);
 			# and insert that info into the dm
 			$this->save_meaning["expression_id"]=$target_expid1;
 		}
 		$this->save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $this->defined_meaning["meaning_text_tcid"]);
 
 		if (!($copier->already_there())) {
-			dc_insert_assoc($dc2, "defined_meaning", $this->save_meaning);
+			CopyTools::dc_insert_assoc($dc2, "defined_meaning", $this->save_meaning);
 
 			$title_name=$defining_expression["spelling"];
 			$title_number=$target_dmid;
 			$title=str_replace(" ","_",$title_name)."_(".$title_number.")";
 			CopyTools::createPage($title);
+		
+			$concepts=array(
+				$dc1 => $this->defined_meaning["defined_meaning_id"],
+				$dc2 => $this->save_meaning["defined_meaning_id"]);
+			createConceptMapping($concepts);
 		}
+
 		return $this->save_meaning["defined_meaning_id"];
 	}		
 			
@@ -638,13 +531,6 @@ class DefinedMeaningCopier {
 		$dmid=$this->dmid;
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
-
-		$concepts=array(
-			$dc1 => $this->defined_meaning["defined_meaning_id"],
-			$dc2 => $this->save_meaning["defined_meaning_id"]
-		);
-		createConceptMapping($concepts);
-
 		dup_syntranses(
 			$this->defined_meaning["defined_meaning_id"],
 			$this->save_meaning["defined_meaning_id"],
@@ -678,16 +564,158 @@ class CopyTools {
 	public static function createPage($title) {
 		# page is not a Wikidata table, so it needs to be treated differently (yet again :-/)
 		$escTitle=mysql_real_escape_string($title);
-		$existing_page_data=doQuery("SELECT * FROM page WHERE page_namespace=24 AND page_title=\"$escTitle\"");
-		if (count($existing_page_data)==0) {
+		$existing_page_data=CopyTools::doQuery("SELECT * FROM page WHERE page_namespace=24 AND page_title=\"$escTitle\"");
+		print "<br>PAGE COUNT: ".count($existing_page_data)."<br>\n";
+		if ($existing_page_data==false) {
 			$pagedata=array("page_namespace"=>24, "page_title"=>$title);
-			mysql_insert_assoc("page",$pagedata);
+			CopyTools::mysql_insert_assoc("page",$pagedata);
 		}
 	}
+
+	/** Times our execution time, nifty! */
+	public static function stopwatch(){
+	   list($usec, $sec) = explode(" ", microtime());
+	   return ((float)$usec + (float)$sec);
+	}
+
+	/** start a new copy transaction
+	 */
+	public static function newCopyTransaction($dc1, $dc2) {
+		startNewTransaction(0, "127.0.0.1", "copying from $dc1 to $dc2", $dc2);
+	}
+
+	/** retrieve a single row from the database as an associative array
+	 * @param $dc		the dataset prefix we need
+	 * @param $table	the name of the table (minus dataset prefix)
+	 * @peram $where		the actual WHERE clause we need to uniquely find our row
+	 * @returns an associative array, representing our row. \
+	 *	keys=column headers, values = row contents
+	 */
+	public static function getRow($dc, $table, $where) {
+		$target_table=mysql_real_escape_string("${dc}_${table}");
+		$query="SELECT * FROM $target_table ".$where;
+		print $query."<br>\n";
+		return CopyTools::doQuery($query);
+	}
+
+
+	/** retrieve multiple rows from the database, as an array of associative arrays.
+	 * @param $dc		the dataset prefix we need
+	 * @param $table	the name of the table (minus dataset prefix)
+	 * @peram $where		the actual WHERE clause we need to uniquely find our row
+	 * @returns an array of associative arrays, representing our rows.  \
+	 *	each associative array is structured with:		\
+	 *	keys=column headers, values = row contents
+	 */
+	public static function getRows($dc, $table, $where) {
+		$target_table=mysql_real_escape_string("${dc}_${table}");
+		$query="SELECT * FROM $target_table ".$where;
+		return CopyTools::doMultirowQuery($query);
+	}
+
+
+	/** Performs an arbitrary SQL query and returns an associative array
+	 * Assumes that only 1 row can be returned!
+	 * @param $query	a valid SQL query
+	 * @returns an associative array, representing our row. \
+	 *	keys=column headers, values = row contents
+	 *
+	 */
+	public static function doQuery($query) {
+		echo $query;
+		$result = mysql_query($query)or die ("error ".mysql_error());
+		$data= mysql_fetch_assoc($result);
+		return $data;
+	}
+	/** Perform an arbitrary SQL query
+	 * 
+	 * @param $query	a valid SQL query
+	 * @returns an array of associative arrays, representing our rows.  \
+	 *	each associative array is structured with:		\
+	 *	keys=column headers, values = row contents
+	 */
+
+	public static function doMultirowQuery($query) {
+		$result = mysql_query($query)or die ("error ".mysql_error());
+		$items=array();
+		while ($nextexp=mysql_fetch_assoc($result)) {
+			$items[]=$nextexp;
+		}
+		return $items;
+	}
+
+	/** identical to the php function array_key_exists(), but eats dirtier input
+	 * returns false (rather than an error) on somewhat invalid input
+	 */
+	public static function sane_key_exists($key, $array) {
+		if (is_null($key) or $key==false){
+			return false;
+		}
+		if (is_null($array) or $array==false) {
+			return false;
+		}
+		var_dump($array);
+		return array_key_exists($key, $array);
+	}
+
+	/**
+	 * inverse of mysql_fetch_assoc
+	 * takes an associative array as parameter, and inserts data
+	 * into table as a single row (keys=column names, values = data to be inserted)
+	/* see: http://www.php.net/mysql_fetch_assoc (Comment by R. Bradly, 14-Sep-2006)
+	 */
+	public static function mysql_insert_assoc ($my_table, $my_array) {
+
+		// Find all the keys (column names) from the array $my_array
+
+		// We compose the query
+		$sql = "insert into `$my_table` set";
+		// implode the column names, inserting "\", \"" between each (but not after the last one)
+		// we add the enclosing quotes at the same time
+		$sql_comma=$sql;
+		foreach($my_array as $key=>$value) {
+			$sql=$sql_comma;
+			if (is_null($value)) {
+				$value="DEFAULT";
+			} else {
+				$value="\"$value\"";
+			}
+			$sql.=" `$key`=$value";
+			$sql_comma=$sql.",";
+		}
+		// Same with the values
+		echo $sql."; <br>\n";
+		$result = mysql_query($sql);
+
+		if ($result)
+		{
+			echo "The row was added sucessfully";
+			return true;
+		}
+		else
+		{
+			echo ("The row was not added<br>The error was" . mysql_error());
+			return false;
+		}
+	}
+
+	/**convenience wrapper around mysql_insert_assoc
+	 * like mysql_insert_assoc, but allows you to specify dc prefix+table name separately
+	 * Also transparently handles the internal transaction (WHICH MUST ALREADY BE OPEN!)
+	 */
+	public static function dc_insert_assoc($dc, $table_name, $array) {
+		$target_table=mysql_real_escape_string("${dc}_${table_name}");
+		if (CopyTools::sane_key_exists("add_transaction_id", $array)) {
+			$array["add_transaction_id"]=getUpdateTransactionId();
+		}
+		return CopyTools::mysql_insert_assoc($target_table, $array);
+	}
+
+
 }
 
 
-$start=stopwatch();
+$start=CopyTools::stopwatch();
 
 $dmid_dirty=$_REQUEST['dmid'];
 $dc1_dirty=$_REQUEST['dc1'];
@@ -697,13 +725,14 @@ $dmid=mysql_real_escape_string($dmid_dirty);
 $dc1=mysql_real_escape_string($dc1_dirty);
 $dc2=mysql_real_escape_string($dc2_dirty);
 
+CopyTools::newCopyTransaction($dc1, $dc2);
 $dmc=new DefinedMeaningCopier($dmid, $dc1, $dc2); #sorry, not a [[delorean]]
 $dmc->dup(); 
 
 echo"
 <hr>
 <div align=\"right\">
-<small>Page time: ".substr((stopwatch()-$start),0,5)." seconds</small>
+<small>Page time: ".substr((CopyTools::stopwatch()-$start),0,5)." seconds</small>
 </div>
 ";
 
