@@ -186,7 +186,6 @@ class AlternativeDefinitionsTable extends VersionedTable {
 class ExpressionTable extends VersionedTable {
 	public $expressionId;
 	public $spelling;	
-	public $hyphenation;
 	public $languageId;
 	
 	public function __construct($name) {
@@ -194,7 +193,6 @@ class ExpressionTable extends VersionedTable {
 		
 		$this->expressionId = $this->createColumn("expression_id");
 		$this->spelling = $this->createColumn("spelling");
-		$this->hyphenation = $this->createColumn("hyphenation");
 		$this->languageId = $this->createColumn("language_id");
 		
 		$this->setKeyColumns(array($this->expressionId));	
@@ -277,7 +275,6 @@ class SyntransTable extends VersionedTable {
 	public $syntransSid;
 	public $definedMeaningId;	
 	public $expressionId;
-	public $firstUse;
 	public $identicalMeaning;
 	
 	public function __construct($name) {
@@ -286,7 +283,6 @@ class SyntransTable extends VersionedTable {
 		$this->syntransSid = $this->createColumn("syntrans_sid"); 	
 		$this->definedMeaningId = $this->createColumn("defined_meaning_id"); 	
 		$this->expressionId = $this->createColumn("expression_id"); 	
-		$this->firstUse = $this->createColumn("firstuse"); 	
 		$this->identicalMeaning = $this->createColumn("identical_meaning");
 		
 		$this->setKeyColumns(array($this->syntransSid));	
@@ -332,7 +328,6 @@ class TranslatedContentAttributeValuesTable extends VersionedTable {
 class TranslatedContentTable extends VersionedTable {
 	public $translatedContentId;
 	public $languageId;	
-	public $shortTextId;
 	public $textId;
 	public $originalLanguageId;
 	
@@ -341,7 +336,6 @@ class TranslatedContentTable extends VersionedTable {
 		
 		$this->translatedContentId = $this->createColumn("translated_content_id"); 	
 		$this->languageId = $this->createColumn("language_id"); 	
-		$this->shortTextId = $this->createColumn("shorttext_id"); 	
 		$this->textId = $this->createColumn("text_id"); 	
 		$this->originalLanguageId = $this->createColumn("original_language_id");
 		
@@ -430,7 +424,7 @@ $classAttributesTable = new ClassAttributesTable("class_attributes");
 $classMembershipsTable = new ClassMembershipsTable("class_membership");
 $collectionMembershipsTable = new CollectionMembershipsTable("collection_contents");
 $definedMeaningTable = new DefinedMeaningTable("defined_meaning");
-$expressionTable = new ExpressionTable("expression_ns");
+$expressionTable = new ExpressionTable("expression");
 $linkAttributeValuesTable = new LinkAttributeValuesTable("url_attribute_values");
 $meaningRelationsTable = new MeaningRelationsTable("meaning_relations");
 $syntransTable = new SyntransTable("syntrans");

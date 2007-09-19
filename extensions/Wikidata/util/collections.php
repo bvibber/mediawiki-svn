@@ -43,17 +43,17 @@ $result = mysql_query("
 	SELECT spellings.id, spelling, counts.total FROM
 	(
 		SELECT collection_id as id, spelling 
-		FROM  uw_collection_ns, uw_defined_meaning, uw_expression_ns
+		FROM  uw_collection, uw_defined_meaning, uw_expression
 		WHERE collection_mid=defined_meaning_id
-		AND uw_defined_meaning.expression_id=uw_expression_ns.expression_id
+		AND uw_defined_meaning.expression_id=uw_expression.expression_id
 	) AS spellings JOIN
 	( 
-		SELECT uw_collection_ns.collection_id AS id ,count(*) AS total
-		FROM  uw_collection_contents, uw_collection_ns
-		WHERE uw_collection_ns.collection_id=uw_collection_contents.collection_id
+		SELECT uw_collection.collection_id AS id ,count(*) AS total
+		FROM  uw_collection_contents, uw_collection
+		WHERE uw_collection.collection_id=uw_collection_contents.collection_id
 		AND uw_collection_contents.remove_transaction_id is NULL
-		AND uw_collection_ns.remove_transaction_id is NULL
-		GROUP BY uw_collection_ns.collection_id
+		AND uw_collection.remove_transaction_id is NULL
+		GROUP BY uw_collection.collection_id
 	) AS counts
 		ON spellings.id=counts.id
 		ORDER BY spelling

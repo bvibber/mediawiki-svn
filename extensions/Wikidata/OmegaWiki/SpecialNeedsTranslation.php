@@ -58,7 +58,7 @@
 				$dbr = &wfGetDB(DB_SLAVE);
 
 				$sql = 'SELECT source_expression.expression_id AS source_expression_id, source_expression.language_id AS source_language_id, source_expression.spelling AS source_spelling, source_syntrans.defined_meaning_id AS source_defined_meaning_id' .
-					" FROM ({$dc}_syntrans source_syntrans, {$dc}_expression_ns source_expression)";
+					" FROM ({$dc}_syntrans source_syntrans, {$dc}_expression source_expression)";
 
 				if ($collectionId != '')
 					$sql .= " JOIN {$dc}_collection_contents ON source_syntrans.defined_meaning_id = member_mid";
@@ -72,7 +72,7 @@
 						' AND ' . getLatestTransactionRestriction("{$dc}_collection_contents");
 
 				$sql .= ' AND NOT EXISTS (' .
-					" SELECT * FROM {$dc}_syntrans destination_syntrans, {$dc}_expression_ns destination_expression" .
+					" SELECT * FROM {$dc}_syntrans destination_syntrans, {$dc}_expression destination_expression" .
 					' WHERE destination_syntrans.expression_id = destination_expression.expression_id AND destination_expression.language_id = ' .$destinationLanguageId .
 					' AND source_syntrans.defined_meaning_id = destination_syntrans.defined_meaning_id' .
 					' AND ' . getLatestTransactionRestriction('destination_syntrans') .

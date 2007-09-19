@@ -38,10 +38,10 @@ $language_esc=mysql_real_escape_string( $language_id);
 
 $result = mysql_query(
 "SELECT spelling 
-FROM uw_collection_ns, uw_defined_meaning, uw_expression_ns
+FROM uw_collection, uw_defined_meaning, uw_expression
 WHERE collection_id=$collection_id
 AND collection_mid=defined_meaning_id 
-AND uw_defined_meaning.expression_id=uw_expression_ns.expression_id
+AND uw_defined_meaning.expression_id=uw_expression.expression_id
 ")or die ("error ".mysql_error());
 
 $row= mysql_fetch_array($result, MYSQL_NUM);
@@ -72,10 +72,10 @@ $result = mysql_query("
 	FROM 
 	(
 		SELECT member_mid as id, spelling
-		FROM uw_collection_contents, uw_syntrans, uw_expression_ns 
+		FROM uw_collection_contents, uw_syntrans, uw_expression 
 		WHERE collection_id = $collection_esc 
 		AND uw_syntrans.defined_meaning_id= uw_collection_contents.member_mid 
-		AND uw_expression_ns.expression_id = uw_syntrans.expression_id 
+		AND uw_expression.expression_id = uw_syntrans.expression_id 
 		AND language_id=85 
 		AND uw_syntrans.remove_transaction_id IS NULL 
 		ORDER BY spelling
@@ -83,10 +83,10 @@ $result = mysql_query("
 	LEFT JOIN 
 	(
 		SELECT member_mid as id, spelling 
-		FROM uw_collection_contents, uw_syntrans, uw_expression_ns WHERE
+		FROM uw_collection_contents, uw_syntrans, uw_expression WHERE
 		collection_id = $collection_esc 
 		AND uw_syntrans.defined_meaning_id= uw_collection_contents.member_mid 
-		AND uw_expression_ns.expression_id = uw_syntrans.expression_id 
+		AND uw_expression.expression_id = uw_syntrans.expression_id 
 		AND language_id = $language_esc 
 		AND uw_syntrans.remove_transaction_id IS NULL 
 		ORDER BY spelling
@@ -115,8 +115,8 @@ $result = mysql_query("
 		LEFT JOIN
 		(
 		 SELECT spelling, defined_meaning_id
-		 FROM uw_syntrans, uw_expression_ns WHERE
-		 uw_expression_ns.expression_id = uw_syntrans.expression_id 
+		 FROM uw_syntrans, uw_expression WHERE
+		 uw_expression.expression_id = uw_syntrans.expression_id 
 		 AND uw_syntrans.remove_transaction_id IS NULL 
 		 AND language_id = $language_esc 
 		 AND defined_meaning_id IN
@@ -135,10 +135,10 @@ $result = mysql_query("
 			 FROM 
 			 (
 				 SELECT spelling as spelling_dm, defined_meaning_id
-				 FROM uw_defined_meaning,  uw_expression_ns WHERE
-				 uw_expression_ns.expression_id = uw_defined_meaning.expression_id
+				 FROM uw_defined_meaning,  uw_expression WHERE
+				 uw_expression.expression_id = uw_defined_meaning.expression_id
 				 AND uw_defined_meaning.remove_transaction_id IS NULL
-				 AND uw_expression_ns.remove_transaction_id IS NULL
+				 AND uw_expression.remove_transaction_id IS NULL
 				 AND defined_meaning_id IN
 				(
 					SELECT member_mid as id
@@ -150,8 +150,8 @@ $result = mysql_query("
 			LEFT JOIN
 			(
 				 SELECT spelling as spelling_en, defined_meaning_id
-				 FROM uw_syntrans, uw_expression_ns WHERE
-				 uw_expression_ns.expression_id = uw_syntrans.expression_id
+				 FROM uw_syntrans, uw_expression WHERE
+				 uw_expression.expression_id = uw_syntrans.expression_id
 				 AND uw_syntrans.remove_transaction_id IS NULL
 				 AND language_id = 85
 				 AND defined_meaning_id IN
@@ -197,10 +197,10 @@ $result = mysql_query("
 	FROM 
 	(
 		SELECT member_mid as id, spelling
-		FROM uw_collection_contents, uw_syntrans, uw_expression_ns 
+		FROM uw_collection_contents, uw_syntrans, uw_expression 
 		WHERE collection_id = $collection_esc 
 		AND uw_syntrans.defined_meaning_id= uw_collection_contents.member_mid 
-		AND uw_expression_ns.expression_id = uw_syntrans.expression_id 
+		AND uw_expression.expression_id = uw_syntrans.expression_id 
 		AND language_id=85 
 		AND uw_syntrans.remove_transaction_id IS NULL 
 		ORDER BY spelling
@@ -208,10 +208,10 @@ $result = mysql_query("
 	LEFT JOIN 
 	(
 		SELECT member_mid as id, spelling 
-		FROM uw_collection_contents, uw_syntrans, uw_expression_ns WHERE
+		FROM uw_collection_contents, uw_syntrans, uw_expression WHERE
 		collection_id = $collection_esc 
 		AND uw_syntrans.defined_meaning_id= uw_collection_contents.member_mid 
-		AND uw_expression_ns.expression_id = uw_syntrans.expression_id 
+		AND uw_expression.expression_id = uw_syntrans.expression_id 
 		AND language_id = $language_esc 
 		AND uw_syntrans.remove_transaction_id IS NULL 
 		ORDER BY spelling
@@ -225,8 +225,8 @@ $result = mysql_query("
 
 $result = mysql_query(" 
 		SELECT defined_meaning_id, spelling
-		FROM uw_syntrans, uw_expression_ns WHERE
-		uw_expression_ns.expression_id = uw_syntrans.expression_id 
+		FROM uw_syntrans, uw_expression WHERE
+		uw_expression.expression_id = uw_syntrans.expression_id 
 		AND uw_syntrans.remove_transaction_id IS NULL 
 		AND language_id = $language_esc 
 		AND uw_syntrans.defined_meaning_id IN

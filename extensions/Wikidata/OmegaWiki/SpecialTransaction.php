@@ -606,10 +606,10 @@ function getUpdatedSyntransesRecordSet($transactionId, $dc=null) {
 		"SELECT syntrans_sid, defined_meaning_id, {$dc}_syntrans.expression_id, language_id, spelling, identical_meaning, " . 
 			getOperationSelectColumn("{$dc}_syntrans", $transactionId) . ', ' .
 			getIsLatestSelectColumn("{$dc}_syntrans", array('syntrans_sid'), $transactionId) . 
-		" FROM {$dc}_syntrans, {$dc}_expression_ns " .
-		" WHERE {$dc}_syntrans.expression_id={$dc}_expression_ns.expression_id " .
+		" FROM {$dc}_syntrans, {$dc}_expression " .
+		" WHERE {$dc}_syntrans.expression_id={$dc}_expression.expression_id " .
 		" AND " . getInTransactionRestriction("{$dc}_syntrans", $transactionId) .
-		" AND " . getAtTransactionRestriction("{$dc}_expression_ns", $transactionId)
+		" AND " . getAtTransactionRestriction("{$dc}_expression", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($o->updatedSyntransesStructure, new Structure($o->syntransId));
@@ -730,10 +730,10 @@ function getUpdatedCollectionMembershipRecordSet($transactionId) {
 		"SELECT {$dc}_collection_contents.collection_id, collection_mid, member_mid, internal_member_id, " . 
 			getOperationSelectColumn("{$dc}_collection_contents", $transactionId) . ', ' .
 			getIsLatestSelectColumn("{$dc}_collection_contents", array('collection_id', 'member_mid'), $transactionId) . 
-		" FROM {$dc}_collection_contents, {$dc}_collection_ns " .
-		" WHERE {$dc}_collection_contents.collection_id={$dc}_collection_ns.collection_id " .
+		" FROM {$dc}_collection_contents, {$dc}_collection " .
+		" WHERE {$dc}_collection_contents.collection_id={$dc}_collection.collection_id " .
 		" AND " . getInTransactionRestriction("{$dc}_collection_contents", $transactionId) .
-		" AND " . getAtTransactionRestriction("{$dc}_collection_ns", $transactionId)
+		" AND " . getAtTransactionRestriction("{$dc}_collection", $transactionId)
 	);
 		
 	$recordSet = new ArrayRecordSet($o->updatedCollectionMembershipStructure, new Structure($o->collectionId, $o->collectionMemberId));

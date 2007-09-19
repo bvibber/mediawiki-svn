@@ -85,12 +85,12 @@ function getSuggestions() {
 			break;
 		case 'defined-meaning':
 			$sql = 
-				"SELECT {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS spelling, {$dc}_expression_ns.language_id AS language_id ".
-				" FROM {$dc}_expression_ns, {$dc}_syntrans ".
-	            " WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id " .
+				"SELECT {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS spelling, {$dc}_expression.language_id AS language_id ".
+				" FROM {$dc}_expression, {$dc}_syntrans ".
+	            " WHERE {$dc}_expression.expression_id={$dc}_syntrans.expression_id " .
 	            " AND {$dc}_syntrans.identical_meaning=1 " .
 	            " AND " . getLatestTransactionRestriction("{$dc}_syntrans").
-	            " AND " . getLatestTransactionRestriction("{$dc}_expression_ns");
+	            " AND " . getLatestTransactionRestriction("{$dc}_expression");
 	        break;
 	    case 'class-attributes-level':
 	    	$sql = getSQLForLevels($wgUser->getOption('language'));
@@ -321,12 +321,12 @@ function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attribu
 	$dbr =& wfGetDB(DB_SLAVE);
 	$sql = 
 		'SELECT attribute_mid, spelling' .
-		" FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression_ns" .
+		" FROM {$dc}_bootstrapped_defined_meanings, {$dc}_class_attributes, {$dc}_syntrans, {$dc}_expression" .
 		" WHERE {$dc}_bootstrapped_defined_meanings.name = " . $dbr->addQuotes($attributesLevel) .
 		" AND {$dc}_bootstrapped_defined_meanings.defined_meaning_id = {$dc}_class_attributes.level_mid" .
 		" AND {$dc}_class_attributes.attribute_type = " . $dbr->addQuotes($attributesType) .
 		" AND {$dc}_syntrans.defined_meaning_id = {$dc}_class_attributes.attribute_mid" .
-		" AND {$dc}_expression_ns.expression_id = {$dc}_syntrans.expression_id" .
+		" AND {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
 		$filteredAttributesRestriction . " ";
 
 	if ($language!="<ANY>") {
@@ -340,7 +340,7 @@ function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attribu
 
 	$sql .=	
 		' AND ' . getLatestTransactionRestriction("{$dc}_class_attributes") .
-		' AND ' . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		' AND ' . getLatestTransactionRestriction("{$dc}_expression") .
 		' AND ' . getLatestTransactionRestriction("{$dc}_syntrans") .
 		" AND ({$dc}_class_attributes.class_mid IN (" .
 				' SELECT class_mid ' .
@@ -363,15 +363,15 @@ function getSQLToSelectPossibleAttributesForLanguage($definedMeaningId, $attribu
 function getSQLForCollectionOfType($collectionType, $language="<ANY>") {
 	$dc=wdGetDataSetContext();
 	$sql="SELECT member_mid, spelling, collection_mid " .
-        " FROM {$dc}_collection_contents, {$dc}_collection_ns, {$dc}_syntrans, {$dc}_expression_ns " .
-        " WHERE {$dc}_collection_contents.collection_id={$dc}_collection_ns.collection_id " .
-        " AND {$dc}_collection_ns.collection_type='$collectionType' " .
+        " FROM {$dc}_collection_contents, {$dc}_collection, {$dc}_syntrans, {$dc}_expression " .
+        " WHERE {$dc}_collection_contents.collection_id={$dc}_collection.collection_id " .
+        " AND {$dc}_collection.collection_type='$collectionType' " .
         " AND {$dc}_syntrans.defined_meaning_id={$dc}_collection_contents.member_mid " .
-        " AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id " .
+        " AND {$dc}_expression.expression_id={$dc}_syntrans.expression_id " .
         " AND {$dc}_syntrans.identical_meaning=1 " .
         " AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
-        " AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
-        " AND " . getLatestTransactionRestriction("{$dc}_collection_ns") .
+        " AND " . getLatestTransactionRestriction("{$dc}_expression") .
+        " AND " . getLatestTransactionRestriction("{$dc}_collection") .
         " AND " . getLatestTransactionRestriction("{$dc}_collection_contents");
 	if ($language!="<ANY>") {
 		$dbr =& wfGetDB(DB_SLAVE);
@@ -389,13 +389,13 @@ function getSQLForCollection($language="<ANY>") {
 	$dc=wdGetDataSetContext();
 	$sql = 
 		"SELECT collection_id, spelling ".
-		" FROM {$dc}_expression_ns, {$dc}_collection_ns, {$dc}_syntrans " .
-		" WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
-		" AND {$dc}_syntrans.defined_meaning_id={$dc}_collection_ns.collection_mid " .
+		" FROM {$dc}_expression, {$dc}_collection, {$dc}_syntrans " .
+		" WHERE {$dc}_expression.expression_id={$dc}_syntrans.expression_id" .
+		" AND {$dc}_syntrans.defined_meaning_id={$dc}_collection.collection_mid " .
 		" AND {$dc}_syntrans.identical_meaning=1" .
 		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
-		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
-		" AND " . getLatestTransactionRestriction("{$dc}_collection_ns");
+		" AND " . getLatestTransactionRestriction("{$dc}_expression") .
+		" AND " . getLatestTransactionRestriction("{$dc}_collection");
 	
 	if ($language!="<ANY>") {
 		$dbr =& wfGetDB(DB_SLAVE);

@@ -29,10 +29,10 @@ function stopwatch(){
 
 /*
 $result = mysql_query("SELECT 
-{$dc}_defined_meaning.defined_meaning_id , {$dc}_expression_ns.spelling
-FROM {$dc}_defined_meaning, {$dc}_expression_ns
+{$dc}_defined_meaning.defined_meaning_id , {$dc}_expression.spelling
+FROM {$dc}_defined_meaning, {$dc}_expression
 where {$dc}_defined_meaning.defined_meaning_id=1446
-and {$dc}_defined_meaning.expression_id={$dc}_expression_ns.expression_id
+and {$dc}_defined_meaning.expression_id={$dc}_expression.expression_id
 limit 0,40")or die ("error ".mysql_error());
 
 */
@@ -43,10 +43,10 @@ $collection_id=$_REQUEST['collection'];
 
 $result = mysql_query(
 "SELECT spelling 
-FROM {$dc}_collection_ns, {$dc}_defined_meaning, {$dc}_expression_ns
+FROM {$dc}_collection, {$dc}_defined_meaning, {$dc}_expression
 WHERE collection_id=$collection_id
 AND collection_mid=defined_meaning_id 
-AND {$dc}_defined_meaning.expression_id={$dc}_expression_ns.expression_id
+AND {$dc}_defined_meaning.expression_id={$dc}_expression.expression_id
 ")or die ("error ".mysql_error());
 
 $row= mysql_fetch_array($result, MYSQL_NUM);
@@ -74,11 +74,11 @@ $lang[$row[0]]=$row[2];
 $collection_esc=mysql_real_escape_string( $collection_id);
 $result = mysql_query("SELECT 
 language_id, COUNT(DISTINCT defined_meaning_id) as counts
-FROM {$dc}_collection_contents, {$dc}_syntrans, {$dc}_expression_ns
+FROM {$dc}_collection_contents, {$dc}_syntrans, {$dc}_expression
 WHERE  collection_id = $collection_esc
 AND  {$dc}_syntrans.defined_meaning_id= {$dc}_collection_contents.member_mid
-AND {$dc}_expression_ns.expression_id = {$dc}_syntrans.expression_id
-AND {$dc}_expression_ns.remove_transaction_id IS NULL
+AND {$dc}_expression.expression_id = {$dc}_syntrans.expression_id
+AND {$dc}_expression.remove_transaction_id IS NULL
 AND {$dc}_syntrans.remove_transaction_id IS NULL
 AND {$dc}_collection_contents.remove_transaction_id is NULL
 GROUP BY language_id

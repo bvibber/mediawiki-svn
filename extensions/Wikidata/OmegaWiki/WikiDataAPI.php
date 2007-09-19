@@ -64,9 +64,9 @@ function getExpression($expressionId, $dc=null) {
 	}
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT spelling, language_id " .
-								" FROM {$dc}_expression_ns " .
-								" WHERE {$dc}_expression_ns.expression_id=$expressionId".
-								" AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
+								" FROM {$dc}_expression " .
+								" WHERE {$dc}_expression.expression_id=$expressionId".
+								" AND " . getLatestTransactionRestriction("{$dc}_expression"));
 	$expressionRecord = $dbr->fetchObject($queryResult);
 	if($expressionRecord) {
 		$expression = new Expression($expressionId, $expressionRecord->spelling, $expressionRecord->language_id);
@@ -106,9 +106,9 @@ function getExpressionId($spelling, $languageId) {
 	$dc=wdGetDataSetContext();
 
 	$dbr = &wfGetDB(DB_SLAVE);
-	$sql = "SELECT expression_id FROM {$dc}_expression_ns " .
+	$sql = "SELECT expression_id FROM {$dc}_expression " .
 			'WHERE spelling=binary '. $dbr->addQuotes($spelling) . ' AND language_id=' . $languageId .
-			' AND '. getLatestTransactionRestriction("{$dc}_expression_ns");
+			' AND '. getLatestTransactionRestriction("{$dc}_expression");
 	$queryResult = $dbr->query($sql);
 	$expression = $dbr->fetchObject($queryResult);
 	return isset($expression->expression_id) ? $expression->expression_id : null;
@@ -118,12 +118,12 @@ function createExpressionId($spelling, $languageId) {
 	
 	$dc=wdGetDataSetContext();
 	
-	$expressionId = newObjectId("{$dc}_expression_ns");
+	$expressionId = newObjectId("{$dc}_expression");
 
 	$dbr = &wfGetDB(DB_MASTER);
 	$spelling = $dbr->addQuotes($spelling);
 
-	$dbr->query("INSERT INTO {$dc}_expression_ns(expression_id, spelling, language_id, add_transaction_id) values($expressionId, $spelling, $languageId, ". getUpdateTransactionId() .")");
+	$dbr->query("INSERT INTO {$dc}_expression(expression_id, spelling, language_id, add_transaction_id) values($expressionId, $spelling, $languageId, ". getUpdateTransactionId() .")");
 	 
 	return $expressionId;		
 }
@@ -659,8 +659,8 @@ function bootstrapCollection($collection, $languageId, $collectionType){
 function getCollectionMeaningId($collectionId) {
 	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT collection_mid FROM {$dc}_collection_ns " .
-								" WHERE collection_id=$collectionId AND " . getLatestTransactionRestriction("{$dc}_collection_ns"));
+	$queryResult = $dbr->query("SELECT collection_mid FROM {$dc}_collection " .
+								" WHERE collection_id=$collectionId AND " . getLatestTransactionRestriction("{$dc}_collection"));
 	
 	return $dbr->fetchObject($queryResult)->collection_mid;	
 }
@@ -668,18 +668,18 @@ function getCollectionMeaningId($collectionId) {
 function getCollectionId($collectionMeaningId) {
 	$dc=wdGetDataSetContext();
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT collection_id FROM {$dc}_collection_ns " .
-								" WHERE collection_mid=$collectionMeaningId AND " . getLatestTransactionRestriction("{$dc}_collection_ns"));
+	$queryResult = $dbr->query("SELECT collection_id FROM {$dc}_collection " .
+								" WHERE collection_mid=$collectionMeaningId AND " . getLatestTransactionRestriction("{$dc}_collection"));
 
 	return $dbr->fetchObject($queryResult)->collection_id;	
 }
 
 function addCollection($definedMeaningId, $collectionType) {
 	$dc=wdGetDataSetContext();
-	$collectionId = newObjectId("{$dc}_collection_ns");
+	$collectionId = newObjectId("{$dc}_collection");
 	
 	$dbr = &wfGetDB(DB_MASTER);
-	$dbr->query("INSERT INTO {$dc}_collection_ns(collection_id, collection_mid, collection_type, add_transaction_id)" .
+	$dbr->query("INSERT INTO {$dc}_collection(collection_id, collection_mid, collection_type, add_transaction_id)" .
 				" VALUES($collectionId, $definedMeaningId, '$collectionType', ". getUpdateTransactionId() .")");
 	
 	return $collectionId;	
@@ -994,20 +994,20 @@ function getSpellingForLanguage($definedMeaningId, $languageCode, $fallbackLangu
 	$fallbackLanguageId=$dbr->addQuotes($fallbackLanguageId);
 	
 	if($userLanguageId) {
-		$actual_query="select spelling from {$dc}_syntrans,{$dc}_expression_ns where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id and language_id=$userLanguageId and {$dc}_expression_ns.remove_transaction_id is NULL";
+		$actual_query="select spelling from {$dc}_syntrans,{$dc}_expression where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression.expression_id={$dc}_syntrans.expression_id and language_id=$userLanguageId and {$dc}_expression.remove_transaction_id is NULL";
 	
 		$res=$dbr->query($actual_query);
 		$row=$dbr->fetchObject($res);
 		if(isset($row->spelling)) return $row->spelling;
 	}
 
-	$fallback_query="select spelling from {$dc}_syntrans,{$dc}_expression_ns where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id and language_id=$fallbackLanguageId and {$dc}_expression_ns.remove_transaction_id is NULL";
+	$fallback_query="select spelling from {$dc}_syntrans,{$dc}_expression where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression.expression_id={$dc}_syntrans.expression_id and language_id=$fallbackLanguageId and {$dc}_expression.remove_transaction_id is NULL";
 
 	$res=$dbr->query($fallback_query);
 	$row=$dbr->fetchObject($res);
 	if(isset($row->spelling)) return $row->spelling;
 
-	$final_fallback="select spelling from {$dc}_syntrans,{$dc}_expression_ns where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id and {$dc}_expression_ns.remove_transaction_id is NULL LIMIT 1";
+	$final_fallback="select spelling from {$dc}_syntrans,{$dc}_expression where {$dc}_syntrans.defined_meaning_id=$definedMeaningId and {$dc}_expression.expression_id={$dc}_syntrans.expression_id and {$dc}_expression.remove_transaction_id is NULL LIMIT 1";
 
 	$res=$dbr->query($final_fallback);
 	$row=$dbr->fetchObject($res);
@@ -1026,11 +1026,11 @@ function isClass($objectId) {
 		$dc=wdGetDataSetContext();
 		$dbr = & wfGetDB(DB_SLAVE);	
 		$query = 
-			"SELECT {$dc}_collection_ns.collection_id " .
-			" FROM ({$dc}_collection_contents INNER JOIN {$dc}_collection_ns ON {$dc}_collection_ns.collection_id = {$dc}_collection_contents.collection_id) " .
-			" WHERE {$dc}_collection_contents.member_mid = $objectId AND {$dc}_collection_ns.collection_type = 'CLAS' " .
+			"SELECT {$dc}_collection.collection_id " .
+			" FROM ({$dc}_collection_contents INNER JOIN {$dc}_collection ON {$dc}_collection.collection_id = {$dc}_collection_contents.collection_id) " .
+			" WHERE {$dc}_collection_contents.member_mid = $objectId AND {$dc}_collection.collection_type = 'CLAS' " .
 			" AND " . getLatestTransactionRestriction("{$dc}_collection_contents") . " ".
-			" AND " .getLatestTransactionRestriction("{$dc}_collection_ns");
+			" AND " .getLatestTransactionRestriction("{$dc}_collection");
 		$queryResult = $dbr->query($query);
 	
 		$result = $dbr->numRows($queryResult) > 0;
@@ -1042,10 +1042,10 @@ function isClass($objectId) {
 function findCollection($name) {
 	$dc=wdGetDataSetContext();
 	$dbr = & wfGetDB(DB_SLAVE);
-	$query = "SELECT collection_id, collection_mid, collection_type FROM {$dc}_collection_ns" .
-			" WHERE ".getLatestTransactionRestriction("{$dc}_collection_ns") .
+	$query = "SELECT collection_id, collection_mid, collection_type FROM {$dc}_collection" .
+			" WHERE ".getLatestTransactionRestriction("{$dc}_collection") .
 			" AND collection_mid = (SELECT defined_meaning_id FROM {$dc}_syntrans WHERE expression_id = " . 
-             "(SELECT expression_id FROM {$dc}_expression_ns WHERE spelling LIKE " . $dbr->addQuotes($name) . " limit 1) limit 1)";
+             "(SELECT expression_id FROM {$dc}_expression WHERE spelling LIKE " . $dbr->addQuotes($name) . " limit 1) limit 1)";
 	$queryResult = $dbr->query($query);
 	
 	if ($collectionObject = $dbr->fetchObject($queryResult)) 
@@ -1108,11 +1108,11 @@ function getExpressionMeaningIds($spelling, $dc=null) {
     $dbr = & wfGetDB(DB_SLAVE);
     $queryResult = $dbr->query(
 		"SELECT defined_meaning_id" .
-		" FROM {$dc}_expression_ns, {$dc}_syntrans " .
+		" FROM {$dc}_expression, {$dc}_syntrans " .
         " WHERE spelling=". $dbr->addQuotes($spelling) .
-        " AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
+        " AND {$dc}_expression.expression_id={$dc}_syntrans.expression_id" .
         " AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
-        " AND " . getLatestTransactionRestriction("{$dc}_expression_ns")
+        " AND " . getLatestTransactionRestriction("{$dc}_expression")
     );
 
 	$result = array();
@@ -1190,9 +1190,9 @@ function getUUID($concepts) {
 function getCollectionIdForDC($dc) {
     	$dbr = & wfGetDB(DB_SLAVE);
 	$query="
-		SELECT collection_id FROM {$dc}_collection_ns
+		SELECT collection_id FROM {$dc}_collection
 		WHERE collection_type=\"MAPP\"
-         	AND  ". getLatestTransactionRestriction("{$dc}_collection_ns") ."
+         	AND  ". getLatestTransactionRestriction("{$dc}_collection") ."
 		LIMIT 1
 		";
 	$queryResult = $dbr->query($query);
@@ -1313,12 +1313,12 @@ function definingExpressionRow($definedMeaningId, $dc=null) {
 		$dc=wdGetDataSetContext();
 	}
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT {$dc}_expression_ns.expression_id, spelling, language_id " .
-								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
+	$queryResult = $dbr->query("SELECT {$dc}_expression.expression_id, spelling, language_id " .
+								" FROM {$dc}_defined_meaning, {$dc}_expression " .
 								" WHERE {$dc}_defined_meaning.defined_meaning_id=$definedMeaningId " .
-								" AND {$dc}_expression_ns.expression_id={$dc}_defined_meaning.expression_id".
+								" AND {$dc}_expression.expression_id={$dc}_defined_meaning.expression_id".
 								" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning").
-								" AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
+								" AND " . getLatestTransactionRestriction("{$dc}_expression"));
 	$expression = $dbr->fetchObject($queryResult);
 	return array($expression->expression_id, $expression->spelling, $expression->language_id); 
 }
@@ -1329,11 +1329,11 @@ function definingExpression($definedMeaningId, $dc=null) {
 	} 
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query("SELECT spelling " .
-								" FROM {$dc}_defined_meaning, {$dc}_expression_ns " .
+								" FROM {$dc}_defined_meaning, {$dc}_expression " .
 								" WHERE {$dc}_defined_meaning.defined_meaning_id=$definedMeaningId " .
-								" AND {$dc}_expression_ns.expression_id={$dc}_defined_meaning.expression_id".
+								" AND {$dc}_expression.expression_id={$dc}_defined_meaning.expression_id".
 								" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning").
-								" AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
+								" AND " . getLatestTransactionRestriction("{$dc}_expression"));
 	$expression = $dbr->fetchObject($queryResult);
 	if($expression) {
 		return $expression->spelling; 
@@ -1347,13 +1347,13 @@ function definedMeaningExpressionForLanguage($definedMeaningId, $languageId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT spelling" .
-		" FROM {$dc}_syntrans, {$dc}_expression_ns " .
+		" FROM {$dc}_syntrans, {$dc}_expression " .
 		" WHERE defined_meaning_id=$definedMeaningId" .
-		" AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
-		" AND {$dc}_expression_ns.language_id=$languageId" .
+		" AND {$dc}_expression.expression_id={$dc}_syntrans.expression_id" .
+		" AND {$dc}_expression.language_id=$languageId" .
 		" AND {$dc}_syntrans.identical_meaning=1" .
 		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
-		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression") .
 		" LIMIT 1"
 	);
 
@@ -1368,12 +1368,12 @@ function definedMeaningExpressionForAnyLanguage($definedMeaningId) {
 	$dbr =& wfGetDB(DB_SLAVE);
 	$queryResult = $dbr->query(
 		"SELECT spelling " .
-		" FROM {$dc}_syntrans, {$dc}_expression_ns" .
+		" FROM {$dc}_syntrans, {$dc}_expression" .
 		" WHERE defined_meaning_id=$definedMeaningId" .
-		" AND {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id" .
+		" AND {$dc}_expression.expression_id={$dc}_syntrans.expression_id" .
 		" AND {$dc}_syntrans.identical_meaning=1" .
 		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
-		" AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+		" AND " . getLatestTransactionRestriction("{$dc}_expression") .
 		" LIMIT 1");
 
 	if ($expression = $dbr->fetchObject($queryResult))
@@ -1428,7 +1428,7 @@ function getExpressions($spelling, $dc=null) {
 	$dbr =& wfGetDB(DB_SLAVE);
 
 	$spelling=$dbr->addQuotes($spelling);
-	$queryResult = $dbr->query("SELECT * FROM {$dc}_expression_ns WHERE {$dc}_expression_ns.spelling=$spelling AND " . getLatestTransactionRestriction("{$dc}_expression_ns"));
+	$queryResult = $dbr->query("SELECT * FROM {$dc}_expression WHERE {$dc}_expression.spelling=$spelling AND " . getLatestTransactionRestriction("{$dc}_expression"));
 
 	$rv=array();
 	while($expressionRecord = $dbr->fetchObject($queryResult)) {

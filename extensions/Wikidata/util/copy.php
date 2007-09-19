@@ -142,7 +142,7 @@ class ObjectCopier {
  * @param $dc1			dataset to READ expression FROM
  */
 function expression($expression_id, $dc1) {
-	return CopyTools::getRow($dc1, "expression_ns", "WHERE expression_id=$expression_id");
+	return CopyTools::getRow($dc1, "expression", "WHERE expression_id=$expression_id");
 }
 
 
@@ -181,7 +181,7 @@ function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 	$save_expression=$expression;
 	$save_expression["expression_id"]=$target_expid1;
 	if  (!($copier->already_there())) {
-		CopyTools::dc_insert_assoc($dc,"expression_ns",$save_expression);
+		CopyTools::dc_insert_assoc($dc,"expression",$save_expression);
 	}
 	dupsyntrans(
 		$dc1,
@@ -341,7 +341,7 @@ class CollectionCopier {
 
 	public function read_definition($collection_id) {
 		$dc1=$this->dc1;
-		return CopyTools::getRow($dc1,"collection_ns","WHERE collection_id=$collection_id");
+		return CopyTools::getRow($dc1,"collection","WHERE collection_id=$collection_id");
 	}
 
 	/** write collection definition (and associated dm) to dc2
@@ -363,14 +363,14 @@ class CollectionCopier {
 			$dmcopier=new DefinedMeaningCopier($dmid,$dc1,$dc2);
 			$definition["collection_mid"]=$dmcopier->dup_stub();
 
-			CopyTools::dc_insert_assoc($dc2, "collection_ns", $definition);
+			CopyTools::dc_insert_assoc($dc2, "collection", $definition);
 
 		}
 		return $definition["collection_id"];
 
 	}
 	
-	/** look up the collection definition in %_collection_ns, 
+	/** look up the collection definition in %_collection, 
 	 * and copy if doesn't already exist in dc2 
 	 */
 	public function dup_definition($collection_id) {
@@ -383,8 +383,8 @@ class CollectionCopier {
 	# existing mappings
 	public function existing_mapping($member_id) {
 		$dc2=$this->dc2;
-		$query="SELECT ${dc2}_collection_contents.* FROM ${dc2}_collection_contents, ${dc2}_collection_ns
-			WHERE ${dc2}_collection_contents.collection_id = ${dc2}_collection_ns.collection_id
+		$query="SELECT ${dc2}_collection_contents.* FROM ${dc2}_collection_contents, ${dc2}_collection
+			WHERE ${dc2}_collection_contents.collection_id = ${dc2}_collection.collection_id
 			AND collection_type=\"MAPP\" 
 			AND internal_member_id=\"${member_id}\"";
 		$mapping_here=CopyTools::doQuery($query);
@@ -498,13 +498,13 @@ class DefinedMeaningCopier {
 		$this->already_there=$copier->already_there();
 		if (!($copier->already_there())) {
 			# exp
-			$target_table=mysql_real_escape_string("${dc2}_expression_ns");
+			$target_table=mysql_real_escape_string("${dc2}_expression");
 			$exp_copier=new ObjectCopier($defining_expression["expression_id"], $dc1, $dc2);
 			$target_expid1=$exp_copier->dup();
 			var_dump($target_expid1);
 			$save_expression=$defining_expression;
 			$save_expression["expression_id"]=$target_expid1;
-			CopyTools::dc_insert_assoc($dc2, "expression_ns", $save_expression);
+			CopyTools::dc_insert_assoc($dc2, "expression", $save_expression);
 			# and insert that info into the dm
 			$this->save_meaning["expression_id"]=$target_expid1;
 		}

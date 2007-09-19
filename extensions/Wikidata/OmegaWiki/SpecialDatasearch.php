@@ -202,16 +202,16 @@ function wfSpecialDatasearch() {
 			$dbr = &wfGetDB(DB_SLAVE);
 			
 			$sql = 
-				"SELECT ". $this->getPositionSelectColumn($text, "{$dc}_expression_ns.spelling") ." {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS spelling, {$dc}_expression_ns.language_id AS language_id ".
-				"FROM {$dc}_expression_ns, {$dc}_syntrans ";
+				"SELECT ". $this->getPositionSelectColumn($text, "{$dc}_expression.spelling") ." {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS spelling, {$dc}_expression.language_id AS language_id ".
+				"FROM {$dc}_expression, {$dc}_syntrans ";
 					
 			if ($collectionId > 0)
 				$sql .= ", {$dc}_collection_contents ";
 				
 			$sql .=
-		    	"WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id AND {$dc}_syntrans.identical_meaning=1 " .
+		    	"WHERE {$dc}_expression.expression_id={$dc}_syntrans.expression_id AND {$dc}_syntrans.identical_meaning=1 " .
 				" AND " . getLatestTransactionRestriction("{$dc}_syntrans").
-				" AND " . getLatestTransactionRestriction("{$dc}_expression_ns").
+				" AND " . getLatestTransactionRestriction("{$dc}_expression").
 				$this->getSpellingRestriction($text, 'spelling');
 				
 			if ($collectionId > 0)
@@ -222,10 +222,10 @@ function wfSpecialDatasearch() {
 					
 			if ($languageId > 0)
 				$sql .= 
-					" AND {$dc}_expression_ns.language_id=$languageId";
+					" AND {$dc}_expression.language_id=$languageId";
 			
 			$sql .=
-				" ORDER BY " . $this->getSpellingOrderBy($text) . "{$dc}_expression_ns.spelling ASC limit 100";
+				" ORDER BY " . $this->getSpellingOrderBy($text) . "{$dc}_expression.spelling ASC limit 100";
 			
 			$queryResult = $dbr->query($sql);
 			$recordSet = $this->getWordsSearchResultAsRecordSet($queryResult);
@@ -278,18 +278,18 @@ function wfSpecialDatasearch() {
 			$dbr = &wfGetDB(DB_SLAVE);
 			
 			$sql = 
-				"SELECT ". $this->getPositionSelectColumn($text, "{$dc}_collection_contents.internal_member_id") ." {$dc}_collection_contents.member_mid AS member_mid, {$dc}_collection_contents.internal_member_id AS external_identifier, {$dc}_collection_ns.collection_mid AS collection_mid ".
-				"FROM {$dc}_collection_contents, {$dc}_collection_ns ";
+				"SELECT ". $this->getPositionSelectColumn($text, "{$dc}_collection_contents.internal_member_id") ." {$dc}_collection_contents.member_mid AS member_mid, {$dc}_collection_contents.internal_member_id AS external_identifier, {$dc}_collection.collection_mid AS collection_mid ".
+				"FROM {$dc}_collection_contents, {$dc}_collection ";
 					
 			$sql .=
-		    	"WHERE {$dc}_collection_ns.collection_id={$dc}_collection_contents.collection_id " .
-				" AND " . getLatestTransactionRestriction("{$dc}_collection_ns").
+		    	"WHERE {$dc}_collection.collection_id={$dc}_collection_contents.collection_id " .
+				" AND " . getLatestTransactionRestriction("{$dc}_collection").
 				" AND " . getLatestTransactionRestriction("{$dc}_collection_contents").
 				$this->getSpellingRestriction($text, "{$dc}_collection_contents.internal_member_id");
 				
 			if ($collectionId > 0)
 				$sql .= 
-					" AND {$dc}_collection_ns.collection_id=$collectionId ";
+					" AND {$dc}_collection.collection_id=$collectionId ";
 			
 			$sql .=
 				" ORDER BY " . $this->getSpellingOrderBy($text) . "{$dc}_collection_contents.internal_member_id ASC limit 100";

@@ -27,13 +27,13 @@ class Search extends DefaultWikidataApplication {
 		$dc=wdGetDataSetContext();
 		$dbr = &wfGetDB(DB_SLAVE);
 		
-		$sql = "SELECT INSTR(LCASE({$dc}_expression_ns.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression_ns.spelling AS spelling, {$dc}_expression_ns.language_id AS language_id ".
-				"FROM {$dc}_expression_ns, {$dc}_syntrans ".
-	            "WHERE {$dc}_expression_ns.expression_id={$dc}_syntrans.expression_id AND {$dc}_syntrans.identical_meaning=1 " .
+		$sql = "SELECT INSTR(LCASE({$dc}_expression.spelling), LCASE(". $dbr->addQuotes("$text") .")) as position, {$dc}_syntrans.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS spelling, {$dc}_expression.language_id AS language_id ".
+				"FROM {$dc}_expression, {$dc}_syntrans ".
+	            "WHERE {$dc}_expression.expression_id={$dc}_syntrans.expression_id AND {$dc}_syntrans.identical_meaning=1 " .
 	            " AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
-	            " AND " . getLatestTransactionRestriction("{$dc}_expression_ns") .
+	            " AND " . getLatestTransactionRestriction("{$dc}_expression") .
 				" AND spelling LIKE " . $dbr->addQuotes("%$text%") .
-				" ORDER BY position ASC, {$dc}_expression_ns.spelling ASC limit 100";
+				" ORDER BY position ASC, {$dc}_expression.spelling ASC limit 100";
 		
 		$queryResult = $dbr->query($sql);
 		list($recordSet, $editor) = getSearchResultAsRecordSet($queryResult);

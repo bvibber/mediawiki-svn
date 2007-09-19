@@ -32,12 +32,12 @@
 				$dbr = &wfGetDB(DB_MASTER);
 
 				/* Get collection ID for "ISO 639-3 codes" collection. */
-				$sql = "SELECT collection_id FROM {$dc}_collection_ns" .
+				$sql = "SELECT collection_id FROM {$dc}_collection" .
 					" JOIN {$dc}_defined_meaning ON defined_meaning_id = collection_mid" .
-					" JOIN {$dc}_expression_ns ON" .
-					" {$dc}_defined_meaning.expression_id = {$dc}_expression_ns.expression_id" .
+					" JOIN {$dc}_expression ON" .
+					" {$dc}_defined_meaning.expression_id = {$dc}_expression.expression_id" .
 					' WHERE spelling LIKE "ISO 639-3 codes"' .
-					' AND ' . getLatestTransactionRestriction("{$dc}_collection_ns") .
+					' AND ' . getLatestTransactionRestriction("{$dc}_collection") .
 					' LIMIT 1';
 				$collection_id_res = $dbr->query($sql);
 				$collection_id = $this->fetchResult($dbr->fetchRow($collection_id_res));
@@ -66,8 +66,8 @@
 						$wgOut->addHTML('Language names for "' . $iso_code . '" added.');
 
 						/* Add current language to list of portals/DMs. */
-						$sql = "SELECT spelling FROM {$dc}_expression_ns" .
-							" JOIN {$dc}_defined_meaning ON {$dc}_defined_meaning.expression_id = {$dc}_expression_ns.expression_id" .
+						$sql = "SELECT spelling FROM {$dc}_expression" .
+							" JOIN {$dc}_defined_meaning ON {$dc}_defined_meaning.expression_id = {$dc}_expression.expression_id" .
 							' WHERE defined_meaning_id = ' . $dm_id .
 							' LIMIT 1';
 						$dm_expr_res = $dbr->query($sql);
@@ -92,11 +92,11 @@
 					$dbr->query($sql);
 
 					/*	Get syntrans expressions for names of language and IDs for the languages the names are in. */
-					$sql = "SELECT spelling,language_id FROM {$dc}_expression_ns" .
+					$sql = "SELECT spelling,language_id FROM {$dc}_expression" .
 						" JOIN {$dc}_syntrans" .
-						" ON {$dc}_expression_ns.expression_id = {$dc}_syntrans.expression_id" .
+						" ON {$dc}_expression.expression_id = {$dc}_syntrans.expression_id" .
 						' WHERE defined_meaning_id = ' . $dm_id .
-						' AND ' . getLatestTransactionRestriction("{$dc}_expression_ns") .
+						' AND ' . getLatestTransactionRestriction("{$dc}_expression") .
 						' AND ' . getLatestTransactionRestriction("{$dc}_syntrans") .
 						' GROUP BY language_id ORDER BY NULL';
 					$syntrans_res = $dbr->query($sql);

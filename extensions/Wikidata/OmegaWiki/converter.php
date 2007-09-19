@@ -75,8 +75,8 @@ class ExpressionIdConverter extends DefaultConverter {
 		
 		$dbr =& wfGetDB(DB_SLAVE);
 		$expressionId = $record->getAttributeValue($this->attribute);
-		$queryResult = $dbr->query("SELECT language_id, spelling from {$dc}_expression_ns WHERE expression_id=$expressionId" .
-									" AND ". getLatestTransactionRestriction("{$dc}_expression_ns"));
+		$queryResult = $dbr->query("SELECT language_id, spelling from {$dc}_expression WHERE expression_id=$expressionId" .
+									" AND ". getLatestTransactionRestriction("{$dc}_expression"));
 		$expression = $dbr->fetchObject($queryResult); 
 
 		$expressionRecord = new ArrayRecord(new Structure($o->language, $o->spelling));

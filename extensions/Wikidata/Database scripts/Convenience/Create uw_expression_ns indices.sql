@@ -1,4 +1,4 @@
-ALTER TABLE `%dc%_expression_ns` 
+ALTER TABLE `%dc%_expression` 
 	ADD INDEX `versioned_end_expression` (`remove_transaction_id`, `expression_id`, `language_id`),
 	ADD INDEX `versioned_end_language` (`remove_transaction_id`, `language_id`, `expression_id`),
 	ADD INDEX `versioned_end_spelling` (`remove_transaction_id`, `spelling` (255), `expression_id`, `language_id`),

@@ -29,10 +29,10 @@ function stopwatch(){
 
 /*
 $result = mysql_query("SELECT 
-uw_defined_meaning.defined_meaning_id , uw_expression_ns.spelling
-FROM uw_defined_meaning, uw_expression_ns
+uw_defined_meaning.defined_meaning_id , uw_expression.spelling
+FROM uw_defined_meaning, uw_expression
 where uw_defined_meaning.defined_meaning_id=1446
-and uw_defined_meaning.expression_id=uw_expression_ns.expression_id
+and uw_defined_meaning.expression_id=uw_expression.expression_id
 limit 0,40")or die ("error ".mysql_error());
 
 */
@@ -44,7 +44,7 @@ echo"<center>
 <hr width=950 size=1 noshade><br>
 ";
 
-$expressions_r=mysql_query("SELECT  COUNT(*) FROM uw_expression_ns WHERE remove_transaction_id IS NULL");
+$expressions_r=mysql_query("SELECT  COUNT(*) FROM uw_expression WHERE remove_transaction_id IS NULL");
 $expressions_a=mysql_fetch_row($expressions_r);
 $expressions=$expressions_a[0];
 
@@ -71,7 +71,7 @@ $lang[$row[0]]=$row[2];
 $result = mysql_query("
 SELECT 
 language_id, count(*) as tot
-FROM uw_expression_ns
+FROM uw_expression
 WHERE expression_id IN
 (
 	SELECT DISTINCT expression_id

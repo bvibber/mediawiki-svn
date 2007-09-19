@@ -1,4 +1,4 @@
-ALTER TABLE `%dc%_collection_ns` 
+ALTER TABLE `%dc%_collection` 
 	ADD INDEX `versioned_end_collection` (`remove_transaction_id`, `collection_id`, `collection_mid`),
 	ADD INDEX `versioned_end_collection_meaning` (`remove_transaction_id`, `collection_mid`, `collection_id`),
 	ADD INDEX `versioned_end_collection_type` (`remove_transaction_id`, `collection_type` (4), `collection_id`, `collection_mid`),
