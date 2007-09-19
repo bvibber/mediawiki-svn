@@ -72,6 +72,15 @@ $wgNewuserlogMessages['fr'] = array(
 	'newuserlog-create-entry'  => 'Nouvel utilisateur',
 	'newuserlog-create2-entry' => 'a créé le compte $1',
 );
+$wgNewuserlogMessages['gl'] = array(
+	'newuserlogpage'           => 'Rexistro de usuarios',
+);
+$wgNewuserlogMessages['hak'] = array(
+	'newuserlogpage'           => 'Sîn-chin yung-fu miàng-chhak',
+	'newuserlogpagetext'       => 'Liá-he yit-ke chui-khiun pûn chhóng-kien yung-fu ke ngit-ki',
+	'newuserlog-create-entry'  => 'Sîn yung-fu',
+	'newuserlog-create2-entry' => 'Yí-kîn chhong-kien $1 ke chong-fu',
+);
 $wgNewuserlogMessages['he'] = array(
 	'newuserlogpage'           => 'יומן רישום משתמשים',
 	'newuserlogpagetext'       => 'זהו יומן המכיל הרשמות של משתמשים.',

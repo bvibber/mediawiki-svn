@@ -194,6 +194,16 @@ Texte à rechercher : $3 $9 $10",
 	'lucenefallback'        => "Un problème est survenu avec la recherche wiki. Ce souci est probablement temporaire ; merci de réessayer dans un instant ou d’utiliser un service de recherche externe.",
 	'searchexactcase'       => 'Rechercher (sensible à la casse)',
 );
+$wgLuceneSearchMessages['hak'] = array(
+	'searchnumber'          => '<strong>Khiung-yû $3 hong chhìm-chhut ke kiet-kó, yî-ha he thi $1-$2 hong ke kiet-kó</strong>',
+	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Song yit-hong</span>',
+	'searchnext'            => '<span style=\'font-size: small\'>Hâ yit-hong</span> &#x00BB;',
+	'searchscore'           => 'Kôan-lièn-thu：$1',
+	'searchsize'            => '$1KB ($2-ke sṳ)',
+	'searchdidyoumean'      => 'He "<a href="$1">$2</a>" mâ?',
+	'searchnoresults'       => 'Tui-put-hí, vù-nèn chhìm-cháu-to khi̍p ngì phit-phi ke chhà-chhìm.',
+	'searchnearmatches'     => '<b>Yî-ha hong-mien lâu ngì chhà-chhìm ke nui-yùng yû siong-sṳ ke phêu-thì:</b>',
+);
 $wgLuceneSearchMessages['he'] = array(
 	'searchnumber'          => "<strong>תוצאות $1-$2 מתוך $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>הקודם</span>",

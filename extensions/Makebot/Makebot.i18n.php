@@ -209,6 +209,21 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'a retiré le statut de bot de [[$1]]',
 ),
 
+'gl' => array(
+'makebot'                 => 'Outorgar ou retirar o status de bot',
+'makebot-username'        => 'Nome de usuario:',
+'makebot-search'          => 'Ir',
+'makebot-isbot'           => '[[User:$1|$1]] ten status de bot.',
+'makebot-notbot'          => '[[User:$1|$1]] non ten status de bot.',
+'makebot-grant'           => 'Outorgar',
+'makebot-comment'         => 'Comentario:',
+'makebot-granted'         => 'Agora [[User:$1|$1]] ten o status de bot.',
+'makebot-revoked'         => '[[User:$1|$1]] xa non ten status de bot.',
+'makebot-logpage'         => 'Rexistro de bots',
+'makebot-logentrygrant'   => 'outorgado status de bot a [[$1]]',
+'makebot-logentryrevoke'  => 'retirado status de bot a [[$1]]',
+),
+
 /* Hebrew (Rotem Liss) */
 'he' => array(
 'makebot'          => 'הענק או בטל הרשאת בוט',

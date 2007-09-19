@@ -72,6 +72,9 @@ $wgDesysopMessages['fr'] = array(
 	'desysop'              => 'Enlever les droits d’administrateur',
 	'not_sysop'            => 'Cet utilisateur n’est pas un administrateur',
 );
+$wgDesysopMessages['hak'] = array(
+	'user_rights_set'      => '<b>Yung-fu "$1" ke hí-khó-khièn yí-kîn kiên-sîn</b>',
+);
 $wgDesysopMessages['he'] = array(
 	'desysoptitle'         => 'בטל הרשאת מפעיל מערכת למשתמש',
 	'desysoptext'          => "דף זה משמש ביורוקרטים לביטול הרשאת מפעיל מערכת של משתמש. אנא הקישו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.",

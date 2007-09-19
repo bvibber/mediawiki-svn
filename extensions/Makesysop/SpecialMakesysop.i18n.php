@@ -101,20 +101,21 @@ $wgMakesysopMessages['bpy'] = array(
 	'already_bureaucrat'    => 'আতাকুরা এগ এচুদিনে ব্যুরোক্র্যাটগ ইয়াপরিলগাহে',
 );
 $wgMakesysopMessages['br'] = array(
-	'makesysoptitle'       => 'A ro ar gwirioù merañ.',
-	'makesysoptext'        => 'Graet e vez gant ar furmskrid-mañ gant ar Pennoù-bras a-benn reiñ ar gwirioù merañ. Lakait anv an implijer er voest ha pouezit war ar bouton evit reiñ ar gwirioù dezhañ/i.',
-	'makesysopname'        => 'Anv an implijer(ez):',
-	'makesysopsubmit'      => "Reiñ ar gwirioù merañ d'an implijer(ez)-mañ",
-	'makesysopok'          => '<b>An implijer(ez) "$1" zo bremañ merour(ez)</b>',
-	'rights'               => 'Gwirioù:',
-	'makesysopfail'        => '<b>N\'en/he deus ket gallet an implijer(ez) "$1" resev ar gwirioù merañ. (Ha skrivet hoc\'h eus an anv evel m\'eo dleet?)</b>',
-	'setbureaucratflag'    => 'A ro ar gwirioù Penn-bras',
-	'set_user_rights'      => 'A laka gwirioù an implijer(ez)',
-	'user_rights_set'      => '<b>Hizivaet eo gwirioù an implijer(ez) "$1"</b>',
-	'set_rights_fail'      => '<b>N\'eus ket bet gallet lakaat e plas gwirioù an implijer(ez) "$1". (Ha skrivet hoc\'h eus an anv evel m\'eo dleet?)</b>',
-	'makesysop'            => "Reiñ ar gwirioù merañ d'un implijer(ez)",
-	'already_sysop'        => 'Merour eo an implijer-mañ dija',
-	'already_bureaucrat'   => 'Penn-bras eo an implijer-mañ dija',
+	'makesysoptitle' => 'A ro ar statud merour.',
+	'makesysoptext' => 'Graet e vez gant ar furmskrid-mañ gant ar Pennoù-bras a-benn reiñ ar statud merour.
+Lakait anv an implijer(ez) er voest ha pouezit war ar bouton evit reiñ ar gwirioù dezhañ/i.',
+	'makesysopname' => 'Anv an implijer(ez):',
+	'makesysopsubmit' => 'Reiñ ar statud merour d\'an implijer(ez)-mañ',
+	'makesysopok' => '<b>An implijer(ez) "$1" zo bremañ merour(ez)</b>',
+	'makesysopfail' => '<b>N\'en/he deus ket gallet an implijer(ez) "$1" resev ar statud merour. (Ha skrivet hoc\'h eus an anv evel m\'eo dleet?)</b>',
+	'setbureaucratflag' => 'A ro ar statud Penn-bras',
+	'rights' => 'Statudoù :',
+	'set_user_rights' => 'A laka statud an implijer(ez)',
+	'user_rights_set' => '<b>Hizivaet eo statud an implijer(ez) "$1"</b>',
+	'set_rights_fail' => '<b>N\'eus ket bet gallet ober war-dro statud an implijer(ez) "$1". (Ha skrivet hoc\'h eus an anv evel m\'eo dleet?)</b>',
+	'makesysop' => 'Reiñ ar gwirioù merañ d\'un implijer(ez)',
+	'already_sysop' => 'Merour eo an implijer-mañ dija',
+	'already_bureaucrat' => 'Penn-bras eo an implijer-mañ dija',
 );
 $wgMakesysopMessages['bs'] = array(
 	'makesysoptitle'       => 'Pretvorite korisnika u administratora',
@@ -164,7 +165,9 @@ $wgMakesysopMessages['cs'] = array(
 	'grouppage-steward'    => '{{ns:project}}:Stevardi',
 );
 $wgMakesysopMessages['csb'] = array(
-	'rights'               => 'Prawa:',
+	'rights' => 'Prawa:',
+	'already_sysop' => 'Nen brëkòwnik je ju administratorã',
+	'already_bureaucrat' => 'Nen brëkòwnik je ju biurokratą',
 );
 $wgMakesysopMessages['cv'] = array(
 	'rights'               => 'Тума пултарать:',
@@ -272,6 +275,11 @@ $wgMakesysopMessages['es'] = array(
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
+$wgMakesysopMessages['et'] = array(
+	'user_rights_set' => '<b>Kasutaja "$1" õigused muudetud</b>',
+	'already_sysop' => 'See kasutaja on juba administraator',
+	'already_bureaucrat' => 'See kasutaja on juba bürokraat',
+);
 $wgMakesysopMessages['eu'] = array(
 	'makesysoptitle'	=> 'Lankide bat administratzaile egin',
 	'makesysoptext'		=> 'Lankide arruntei administratzaile baimenak emateko erabiltzen da orrialde hau. Lankidearen izena ipini laukian eta botoia sakatu.',
@@ -348,9 +356,17 @@ $wgMakesysopMessages['ga'] = array(
 	'already_sysop'		=> 'Is oibreoir córais é an usáideoir seo cheana féin',
 	'already_bureaucrat'	=> 'Is maorlathach é an úsáideoir seo cheana féin',
 );
+$wgMakesysopMessages['gl'] = array(
+	'already_bureaucrat' => 'Este usuario xa é burócrata',
+);
 $wgMakesysopMessages['gsw'] = array(
 	'already_bureaucrat'	=> 'Selle Benutzer isch scho Bürokrat.',
 	'already_sysop'		=> 'Selle Benutzer isch scho Adminischtrator.',
+);
+$wgMakesysopMessages['hak'] = array(
+	'user_rights_set' => '<b>Yung-fu "$1" ke hí-khó-khièn yí-kîn kiên-sîn</b>',
+	'already_sysop' => 'Liá-vi yung-fu yí-kîn he yit-miàng kón-lî-yèn',
+	'already_bureaucrat' => 'Liá-vi yung-fu yí-kîn he yit-miàng hàng-chṳn-yèn',
 );
 $wgMakesysopMessages['he'] = array(
 	'makesysoptitle'       => 'הפוך משתמש למפעיל מערכת',

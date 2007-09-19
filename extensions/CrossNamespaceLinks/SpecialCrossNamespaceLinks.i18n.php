@@ -18,6 +18,9 @@ $wgCrossNamespaceLinksMessages['ar'] = array(
 	'crossnamespacelinks-summary' => 'تعرض هذه الصفحة قائمة بالصفحات التي تقع في نطاق المقالات و تحتوي على روابط من نطاقات أخرى (ماعدا {{ns:special}} و {{ns:talk}}و {{ns:project}} و{{ns:template}})، والتي لا ينصح باستعمالها.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|وصلة|وصلات}} ل $3',
 );
+$wgCrossNamespaceLinksMessages['br'] = array(
+	'crossnamespacelinks'         => 'Liammoù esaouennoù anv kroaziet',
+);
 $wgCrossNamespaceLinksMessages['ca'] = array(
 	'crossnamespacelinks'         => 'Enllaços entre espais de noms',
 	'crossnamespacelinks-summary' => 'Aquesta pàgina conté una llista d\'enllaços des de pàgines de l\'espai de noms principal a pàgines d\'altres espais de noms (a excepció dels espais {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}) que no és recomanable tenir.',
@@ -46,6 +49,10 @@ $wgCrossNamespaceLinksMessages['fr'] = array(
 	'crossnamespacelinks'         => 'Pages contenant des liens vers un autre espace de nom',
 	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est recommandé.',
 	'crossnamespacelinkstext'     => '$1 : possède $2 {{PLURAL:$2|lien|liens}} vers l’espace « $3 »'
+);
+$wgCrossNamespaceLinksMessages['hak'] = array(
+	'crossnamespacelinks'         => 'khiam-ko miàng-sṳ khûng-kiên ke lièn-kiet',
+	'crossnamespacelinkstext'     => '$1: $2-ke lièn-kiet to $3',
 );
 $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinks'         => 'קישורים מדפי תוכן למרחבי שם אחרים',

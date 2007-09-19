@@ -136,6 +136,12 @@ function efPatrollerMessages() {
 
 'hsb' => array(
 'patrol-revert-reason' => 'Přičina:',
+'patrol-reverted-ok' => 'Změna bu cofnjena.',
+'patrol-reverted-failed' => 'Změna njeda so cofnyć',
+'patrol-skipped-ok' => 'Změna so ignoruje.',
+'patrol-reasons' => '* Jednory wandalizm
+* Test nowačka
+* Hlej diskusijna strona',
 'patrol-another' => 'Dalšu změnu pokazać, jeli k dispoziciji stejaca.',
 ),
 

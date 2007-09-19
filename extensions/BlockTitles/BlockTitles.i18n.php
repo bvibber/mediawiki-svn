@@ -42,6 +42,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Désolé, le titre de cet article n’est pas autorisé à être sauvegardé.',
 ),
 
+'frp' => array(
+	'block_title_error_page_title' => 'Titro envalido',
+	'block_title_error' => 'Dèsolâ, lo titro de cél articllo est pas ôtorisâ a étre sôvo.',
+),
+
 'hsb' => array(
 	'block_title_error_page_title' => 'Mjeno nastawka zablokowane',
 	'block_title_error' => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',

@@ -37,6 +37,11 @@ $wgExpandTemplatesMessages['bcl'] = array(
 	'expand_templates_remove_comments' => 'Tanggalon an mga komento',
 	'expand_templates_preview'         => 'Patânaw',
 );
+$wgExpandTemplatesMessages['br'] = array(
+	'expand_templates_output'          => 'Disoc\'h :',
+	'expand_templates_ok'              => 'Mat eo',
+	'expand_templates_remove_comments' => 'Lemel an notennoù kuit',
+);
 $wgExpandTemplatesMessages['ca'] = array(
 	'expandtemplates'                  => 'Expansió de plantilles',
 	'expand_templates_intro'           => 'Aquesta pàgina especial permet provar plantilles, amb expansions recursives. Les funcions i les variables predefinides, com ara <nowiki>{{</nowiki>#if:...}} o <nowiki>{{</nowiki>CURRENTDAY}}, també són substituïdes.',

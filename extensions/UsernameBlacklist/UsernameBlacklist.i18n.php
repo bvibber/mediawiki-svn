@@ -71,6 +71,16 @@ function efUsernameBlacklistMessages( $single = false ) {
 [[MediaWiki:Usernameblacklist|liste des noms interdits]]. Veuillez choisir un autre nom.',
 ),
 
+'gl' => array(
+'blacklistedusername' => 'Nome de usuario non permitido',
+'blacklistedusernametext' => 'O nome de usuario que elixiu está na [[MediaWiki:Usernameblacklist| lista de nomes de usuario non permitidos]]. Por favor escolla outro nome.',
+),
+
+'hak' => array(
+'blacklistedusername' => 'Lie̍t-ngi̍p het-miàng-tân ke yung-fu-miàng',
+'blacklistedusernametext' => 'Ngì só sién-chet ke yung-fu-miàng he lâu [[MediaWiki:Usernameblacklist|Yung-fu-miàng het-miàng-tân lie̍t-péu]] fù-ha̍p. Chhiáng sién-chet nang-ngoi yit-ke miàng-chhṳ̂n.',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'blacklistedusername' => 'Daftar hitam nama pengguna',

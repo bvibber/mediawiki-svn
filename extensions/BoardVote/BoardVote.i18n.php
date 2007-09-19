@@ -171,6 +171,12 @@ $wgBoardVoteMessages['bcl'] = array(
 	'boardvote_blocked'       => 'Despensa, pigbágat ka sa pagrehistrohan mong wiki. An mga pigbágat na parágamit dai pigtotogotan na makaboto.',
 	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
 );
+$wgBoardVoteMessages['br'] = array(
+	'boardvote_novotes'       => 'Den n\'eus votet c\'hoazh.',
+	'boardvote_time'          => 'Eur',
+	'boardvote_user'          => 'Implijer',
+	'boardvote_edits'         => 'Degasadennoù',
+);
 $wgBoardVoteMessages['ca'] = array(
 	'boardvote'               => 'Eleccions al Consell d\'Administració de la Fundació Wikimedia',
 	'boardvote_redirecting'   => 'Per millorar la seguretat i la transparència de la votació, aquesta es farà en un servidor independent extern.
@@ -384,6 +390,72 @@ La version cryptée suit. Elle sera affichée publiquement sur [[Special:Boardvo
 Vous serez redirigé à ce serveur externe en 20 secondes. [$1 Cliquez ici] pour y aller maintenant.
 
 Un avertissement concernant un certificat non signé sera peut-être affiché.',
+);
+$wgBoardVoteMessages['frp'] = array(
+	'boardvote'               => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Voto/votacion]]
+* [[Special:Boardvote/list|Lista des votos/de les votacions enregistrâs]]
+* [[Special:Boardvote/dump|Enregistraments criptâs]]',
+	'boardvote_intro'         => '<p>Benvegnua a les trêsiémes èlèccions du Consèly d’administracion de la <i><a href="http://wikimediafoundation.org/wiki/Accueil" class="extiw" title="Pâge de reçua en francês">Wikimedia Foundation Inc.</a></i>.
+Nos votens por una pèrsona que reprèsenterat la comunôtât des utilisators sur los difèrents projèts Wikimedia.
+Cela pèrsona et los ôtros membros votants du Consèly d’administracion contribueront a oriantar la dirèccion de celos projèts et reprèsenteront <i>voutros</i> entèrèts et soucis vers lo Consèly d’administracion.
+Dècideront des moyens de financement et de l’afèctacion des fonds.</p>
+
+<p>Liéséd bien les dècllaracions des candidats et lors rèponses a les quèstions devant que votar.
+Tôs los candidats sont des utilisators rèspèctâs, qu’ont balyê tot plen de temps et d’èfôrt por fére/fâre de celos projèts un endrêt recevent consacrâ u dèvelopament de l’abada difusion du savêr humen.</p>
+
+<p>Vos pouede votar por atant de candidats que vos lo souhètâd. Celi que remporterat lo més de vouèx serat dècllarâ èlu por lo pôsto uquint s’est presentâ. En câs de balotâjo, y arat un voto/una votacion de dèpartâjo.</p>
+
+<p>Por més d’enformacion, vêde :</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Election_FAQ_2006" class="extiw" title="« meta:Election FAQ 2006 » : pâge multilinga">FAQ sur les èlèccions</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Election_candidates_2006/Fr" class="extiw" title="« meta:Election candidates 2006/Fr » : pâge en francês">Candidat(e)s</a></li></ul>',
+	'boardvote_intro_change'  => '<p>Vos éd ja votâ. Portant vos pouede modifiar
+voutron voto/voutra votacion en utilisent lo formulèro ce-desot. Marci de marcar les câses en regârd de châque candidat qu’at voutron supôrt.</p>',
+	'boardvote_entered'       => 'Marci, voutron voto/voutra votacion at étâ enregistrâ.
+
+Se vos lo souhètâd, vos pouede enregistrar los dètalys siuvents. Voutron historico de voto/votacion est :
+
+<pre>$1</pre>
+
+Il at étâ criptâ avouéc la cllâf publica des scrutators oficièls por l’èlèccion :
+
+<pre>$2</pre>
+
+La vèrsion criptâ siut. Serat afichiêe publicament dessus [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Retôrn]]',
+	'boardvote_nosession'     => 'Empossiblo de dètèrmenar voutron identifiant Wikimedia. Volyéd tornar a voutron vouiqui d’origina, vos enregistrar, et pués alar a la pâge <nowiki>[[Special:Boardvote]]</nowiki>. Vos dête avêr un compto avouéc u muens $1 contribucions fêtes devant lo $2, et avêr fêt voutra premiére èdicion devant lo $3.',
+	'boardvote_notloggedin'   => 'Orendrêt vos éte pas ôtentifiâ. Por votar, vos dête utilisar un compto comportent u muens $1 contribucions devant lo $2, et que la premiére remonte u $3.',
+	'boardvote_notqualified'  => 'Vos rèpondéd pas a yona de les condicions requises por votar pendent ceta èlèccion. O fôt avêr $3 contribucions devant lo $2, et vos en éd fêtes $1. Et pués, voutra premiére modificacion dâte du $4, et dêt avêr étâ fêta devant lo $5.',
+	'boardvote_novotes'       => 'Nion at adés votâ.',
+	'boardvote_time'          => 'Hora',
+	'boardvote_user'          => 'Utilisator',
+	'boardvote_edits'         => 'Modificacions',
+	'boardvote_days'          => 'Jorns',
+	'boardvote_ua'            => 'Reprèsentent de l’utilisator',
+	'boardvote_listintro'     => 'Lista de les gens èyent votâ :<br /><br />',
+	'boardvote_dumplink'      => 'Clicâd ique',
+	'boardvote_submit'        => 'D’acôrd',
+	'boardvote_strike'        => 'Traciér',
+	'boardvote_unstrike'      => 'Dètraciér',
+	'boardvote_needadmin'     => 'Solèts los administrators du voto/de la votacion pôvont fére/fâre cela opèracion.',
+	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Èlèccions u Consèly d’administracion de la Wikimedia Foundation</a> : voto uvèrt/votacion uvèrta tant qu’u 12 de julyèt 2005.',
+	'boardvote_notstarted'    => 'Lo voto/la votacion est p’oncor comenciê(e).',
+	'boardvote_closed'        => 'L’èlèccion est dês ora cllôsa. Lo rèsultat est procllamâ sur [[:meta:Board elections/2006/Results/fr|<span title="« Board elections/2006/Results/fr » : pâge en francês" style="text-decoration:none">la pâge des rèsultats</span>]].',
+	'boardvote_edits_many'    => 'plusiors',
+	'group-boardvote'         => 'Membros votants du Consèly d’administracion',
+	'group-boardvote-member'  => 'Membro votant du Consèly d’administracion',
+	'grouppage-boardvote'     => '{{ns:project}}:Membros votants du Consèly d’administracion',
+	'boardvote_blocked'       => 'Dèsolâ, mas vos avéd étâ blocâ sur voutron vouiqui d’origina. Los utilisators blocâs pôvont pas votar.',
+	'boardvote_welcome'       => 'Benvegnua \'\'\'$1\'\'\' !',
+	'go_to_board_vote'        => 'Èlèccions u Consèly d’administracion de la Wikimedia Foundation 2007',
+	'boardvote_redirecting'   => 'Por més de transparence et de sècuritât lo voto/la votacion sè pâsse sur un sèrvior de defôr et endèpendent.
+
+Vos seréd redirigiê vers cél sèrvior de defôr en 20 secondes. [$1 Clicâd ique] por y alar orendrêt.
+
+Un avèrtissement regardent un cèrtificat pas signê serat pôt-étre afichiê.',
 );
 $wgBoardVoteMessages['he'] = array(
 	'boardvote'               => "בחירות לחבר הנאמנים של ויקימדיה",

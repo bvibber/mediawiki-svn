@@ -66,6 +66,17 @@ riddler|Riddler",
 'vote-login-link' => 'maglaog',
 ),
 
+'br' => array(
+'vote' => 'Votiñ',
+'vote-current' => 'Votet hoc\'h eus evit \'\'\'$1\'\'\'.',
+'vote-registered' => 'Enrollet eo bet ho vot.',
+'vote-view-results' => 'Gwelet an disoc\'hoù',
+'vote-results' => 'Disoc\'h ar votadeg',
+'vote-results-choice' => 'Dibab',
+'vote-login' => 'Ret eo deoc\'h $1 evit votiñ.',
+'vote-login-link' => 'en em enrollañ',
+),
+
 /* French (Ashar Voultoiz) */
 'fr' => array(
 'vote' => 'Vote',

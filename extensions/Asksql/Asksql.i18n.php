@@ -72,6 +72,20 @@ Utilisez les apostrophes ('comme ceci') pour les chaînes de caractères. Ceci p
 'querysuccessful'  => 'La demande est faite.',
 ),
 
+'frp' => array(
+'asksql'           => 'Requéta SQL',
+'asksqltext'       => 'Utilisâd ceti formulèro por fére/fâre una requéta drêta
+dens la bâsa de balyês.
+Utilisâd les apostrofes (\'d’ense\') por les chênes de caractèros.
+Cen pôt sovent surchargiér lo sèrvior. Donc, utilisâd
+cela fonccion avouéc parcimonie.',
+'sqlislogged'      => 'Notâd bien que totes les requétes sont jornalisâs.',
+'sqlquery'         => 'Entrâd la requéta',
+'querybtn'         => 'Sometre la requéta',
+'selectonly'       => 'Solètes les requétes en lèctures solètes sont pèrmêses.',
+'querysuccessful'  => 'La requéta at étâ ègzécutâ avouéc reusséta.',
+),
+
 'hsb' => array(
 'asksql'           => 'SQL wotprašenje',
 'asksqltext'       => 'Wužij tutón formular, zo by datowu banku direktnje wotprašował.

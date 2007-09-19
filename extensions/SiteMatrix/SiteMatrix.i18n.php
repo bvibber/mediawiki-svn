@@ -28,6 +28,12 @@ $wgSiteMatrixMessages['bcl'] = array(
 	'sitematrix-project' => 'Pangaran kan proyekto, interproject link asin interwiki link',
 	'sitematrix-others' => 'Ibang mga proyekto kan Wikimedia',
 );
+$wgSiteMatrixMessages['bg'] = array(
+	'sitematrix' => 'Списък на уикитата на Уикимедия',
+);
+$wgSiteMatrixMessages['br'] = array(
+	'sitematrix' => 'Roll holl raktresoù Wikimedia',
+);
 $wgSiteMatrixMessages['ca'] = array(
 	'sitematrix' => 'Llista de tots els projectes en els diferents idiomes.',
 );
@@ -36,6 +42,9 @@ $wgSiteMatrixMessages['cs'] = array(
 	'sitematrix-language' => 'Jazyk',
 	'sitematrix-project' => 'Jméno projektu, meziprojektový odkaz a mezijazykový odkaz',
 	'sitematrix-others' => 'Ostatní projekty nadace Wikimedia',
+);
+$wgSiteMatrixMessages['da'] = array(
+	'sitematrix' => 'Liste over alle Wikimedias wikier',
 );
 $wgSiteMatrixMessages['de'] = array(
 	"sitematrix"          => "Liste der Wikimedia-Wikis",

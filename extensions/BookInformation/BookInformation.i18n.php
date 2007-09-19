@@ -128,6 +128,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Fournisseur des données : $1',
 ),
 
+'frp' => array(
+'bookinfo-header' => 'Enformacions sur les ôvres',
+'bookinfo-result-title' => 'Titro :',
+'bookinfo-result-author' => 'Ôtor :',
+'bookinfo-result-publisher' => 'Èditor :',
+'bookinfo-result-year' => 'An :',
+'bookinfo-error-invalidisbn' => 'ISBN envalido.',
+'bookinfo-error-nosuchitem' => 'Cél èlèment ègziste pas ou at pas possu étre trovâ.',
+'bookinfo-error-nodriver' => 'Empossiblo d’inicialisar un motor d’enformacion sur les ôvres.',
+'bookinfo-error-noresponse' => 'Niona rèponsa ou ben nion dèpassement du dèlê.',
+'bookinfo-purchase' => 'Achetar cél lévro dessus $1',
+'bookinfo-provider' => 'Fornissor de les balyês : $1',
+),
+
 'hsb' => array(
 'bookinfo-header' => 'Informacije wo knihach',
 'bookinfo-result-title' => 'Titul:',

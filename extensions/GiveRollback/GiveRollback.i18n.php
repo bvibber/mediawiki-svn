@@ -85,12 +85,23 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 ),
 	
 'hsb' => array(
+'giverollback' => 'Prawa wróćostajenja dać abo zebrać',
 'giverollback-username' => 'Wužiwarske mjeno:',
 'giverollback-search' => 'Pytać',
+'giverollback-hasrb' => '[[User:$1|$1]] ma prawo wróćostajenja.',
+'giverollback-norb' => '[[User:$1|$1]] nima prawo wróćostajenja.',
+'giverollback-toonew' => '[[User:$1|$1]] je přenowy, njemóže prawo wróćostajenja dóstać.',
+'giverollback-sysop' => '[[User:$1|$1]] je administrator a ma hižo prawo wróćostajenja.',
 'giverollback-change' => 'Status změnić:',
 'giverollback-grant' => 'Dowolić',
 'giverollback-revoke' => 'Wotwołać',
 'giverollback-comment' => 'Komentar:',
+'giverollback-granted' => '[[User:$1|$1]] ma nětko prawo wróćostajenja.',
+'giverollback-revoked' => '[[User:$1|$1]] hižo nima prawo wróćostajenja.',
+'giverollback-logpage' => 'Protokol wo prawach wróćostajenja.',
+'giverollback-logpagetext' => 'Tuto je protokol wo změnach prawow wróćostajenja za njeadministratorow.',
+'giverollback-logentrygrant' => 'da prawo wróćostajenja [[$1]]',
+'giverollback-logentryrevoke' => 'zebra prawo wróćostajenja [[$1]]',
 ),
 
 /* Indonesian (Ivan Lanin) */
