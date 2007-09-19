@@ -1,6 +1,13 @@
 <?php
 
-/* Read a .sql file and apply it to tables with the defined prefix. */
+/* Read a .sql file and apply it to tables with the defined prefix. 
+
+NOTE: Since LocalSettings.php loads App.php, which depends on a whole lot of 
+Wikidata crud, in some circumstances (when your code refers to tables that
+no longer exist) it may be wise to comment out the require_once line
+in LocalSettings.php which loads App.php before running this script.
+
+*/
 
 define('MEDIAWIKI', true );
 ob_end_flush();
@@ -19,9 +26,6 @@ require_once( "Defines.php");
 require_once( "ProfilerStub.php");
 require_once( "LocalSettings.php");
 require_once( "Setup.php");
-require_once( "Attribute.php" );
-require_once( "Transaction.php");
-require_once( "WikiDataBootstrappedMeanings.php");
 require_once( "StartProfiler.php" );
 require_once( "Exception.php");
 require_once( "GlobalFunctions.php");
