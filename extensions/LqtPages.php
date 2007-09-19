@@ -163,7 +163,7 @@ HTML
 	function loadQueryFromRequest() {
 		// Begin with with the requirements for being *in* the archive.
 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
-		$where = array('thread.thread_article' => $this->article->getID(),
+		$where = array(Threads::articleClause($this->article),
 		                     'instr(thread.thread_path, ".")' => '0',
 		                   '(thread.thread_summary_page is not null' .
 			                  ' OR thread.thread_type = '.Threads::TYPE_MOVED.')',
@@ -1008,19 +1008,28 @@ function wfLqtSpecialNewMessages() {
 }
 
 
-function wfLqtBeforeWatchlistHook( $options, $user ) {
+function wfLqtBeforeWatchlistHook( $options, $user, &$hook_sql ) {
 	global $wgOut;
+	
+	$hook_sql = "AND page_namespace != " . NS_LQT_THREAD;
 	
 	$user_messages = NewMessages::newUserMessages($user);
 	$n = count($user_messages);
 	
+	if( $n == 0 )
+		return true;
+	
+	if ( $n == 1 ) $phrase = "is 1 message";
+	else $phrase = "are $n messages";
+	
+	$messages_url = SpecialPage::getPage('Newmessages')->getTitle()->getFullURL();
 	$wgOut->addHTML(<<< HTML
-		<div class="lqt_watchlist_messages_notice">
-			There are $n messages for you.
-		</div>
+		<a href="$messages_url" class="lqt_watchlist_messages_notice">
+			&#x2712; There $phrase for you.
+		</a>
 HTML
 	);
-	
+
 	return true;
 }
 

@@ -338,7 +338,6 @@ class Thread {
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
 		     /* SET */array( 'thread_root' => $this->rootId,
-					'thread_article' => $this->articleId,
 					'thread_path' => $this->path,
 					'thread_type' => $this->type,
 					'thread_summary_page' => $this->summaryId,
@@ -354,6 +353,9 @@ class Thread {
 					),
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     __METHOD__);
+		
+		NewMessages::checkWatchlistsForThread($this);
+		
 	
 	//	RecentChange::notifyEdit( wfTimestampNow(), $this->root(), /*minor*/false, $wgUser, $summary,
 	//		$lastRevision, $this->getTimestamp(), $bot, '', $oldsize, $newsize,
@@ -388,7 +390,6 @@ class Thread {
 			$res = $dbr->update( 'thread',
 			     /* SET */array(
 						'thread_revision' => $r->revisionNumber() + 1,
-						'thread_article' => $new_articleId,
 						'thread_article_namespace' => $new_articleNamespace,
 					    'thread_article_title' => $new_articleTitle),
 			     /* WHERE */ array( 'thread_id' => $r->id(), ),
@@ -452,7 +453,6 @@ class Thread {
 		
 		$this->id = $line->thread_id;
 		$this->rootId = $line->thread_root;
-		$this->articleId = $line->thread_article;
 		$this->articleNamespace = $line->thread_article_namespace;
 		$this->articleTitle = $line->thread_article_title;
 		$this->summaryId = $line->thread_summary_page;
@@ -777,13 +777,6 @@ class Threads {
 			throw new MWException(__METHOD__ . ": invalid type $type.");
 		}
 		
-		if( $article->exists() ) {
-			$aclause = array("thread_article" => $article->getID());
-		} else {
-			$aclause = array("thread_article_namespace" => $article->getTitle()->getNamespace(),
-						     "thread_article_title" => $article->getTitle()->getDBkey());
-		}
-		
 		if ($superthread) {
 			$change_type = self::CHANGE_REPLY_CREATED;
 		} else {
@@ -794,6 +787,8 @@ class Threads {
 
         $res = $dbr->insert('thread',
             array('thread_root' => $root->getID(),
+				  'thread_article_namespace' => $article->getTitle()->getNamespace(),
+				  'thread_article_title' => $article->getTitle()->getDBkey(),
                   'thread_timestamp' => wfTimestampNow(),
 				  'thread_change_type' => $change_type,
 				  'thread_change_comment' => "", // TODO
@@ -822,6 +817,9 @@ class Threads {
 		if($superthread) {
 			$superthread->addReply( $newthread );
 		}
+		
+		NewMessages::checkWatchlistsForThread($newthread);
+		
 		return $newthread;
      }
 	
@@ -929,7 +927,7 @@ SQL;
 	* Horrible, horrible!
 	* List of months in which there are >0 threads, suitable for threadsOfArticleInMonth. */
 	static function monthsWhereArticleHasThreads( $article ) {
-		$threads = Threads::where( array('thread.thread_article' => $article->getID()) );
+		$threads = Threads::where( Threads::articleClause($article) );
 		$months = array();
 		foreach( $threads as $t ) {
 			$m = substr( $t->timestamp(), 0, 6 );
@@ -942,10 +940,8 @@ SQL;
 	
 	static function articleClause($article) {
 		return <<<SQL
-		IF(thread.thread_article = 0,
-				thread.thread_article_title = "{$article->getTitle()->getDBkey()}"
-				AND thread.thread_article_namespace = {$article->getTitle()->getNamespace()}
-			, thread.thread_article = {$article->getID()})
+(thread.thread_article_title = "{$article->getTitle()->getDBkey()}"
+	AND thread.thread_article_namespace = {$article->getTitle()->getNamespace()})
 SQL;
 	}
 	
@@ -1019,6 +1015,10 @@ class NewMessages {
 						" where ums_thread = $thread_id and ums_user = $user_id",
 	            		__METHOD__);
 		}
+	}
+	
+	static function checkWatchlistsForThread($t) {
+		
 	}
 	
 	static function newUserMessages($user) {

@@ -31,6 +31,17 @@ li {
 	margin-bottom: .1em;
 }*/
 
+.lqt_watchlist_messages_notice {
+	background-color: #eee;
+	border: 1px solid #ddd;
+	margin: 1em 0;
+	margin-right: 0;
+	padding: .5em 1em;
+	
+	display: table;
+	width: auto;
+}
+
 .lqt_newmessages_section {
 	border-bottom: 0px;
 }

@@ -122,7 +122,8 @@ function wfSpecialWatchlist( $par ) {
 	wfAppendToArrayIfNotDefault( 'hideMinor', (int)$hideMinor, $defaults, $nondefaults );
 	wfAppendToArrayIfNotDefault('namespace', $nameSpace    , $defaults, $nondefaults);
 
-	if( ! wfRunHooks('BeforeWatchlist', array($nondefaults, $wgUser)) ) {
+	$hookSql = "";
+	if( ! wfRunHooks('BeforeWatchlist', array($nondefaults, $wgUser, &$hookSql)) ) {
 		return;
 	}
 
@@ -197,6 +198,7 @@ function wfSpecialWatchlist( $par ) {
 	  $andHideBots
 	  $andHideMinor
 	  $nameSpaceClause
+	  $hookSql
 	  ORDER BY rc_timestamp DESC
 	  $limitWatchlist";
 

@@ -1,16 +1,13 @@
 CREATE TABLE /*$wgDBprefix*/thread (
   thread_id int(8) unsigned NOT NULL auto_increment,
   thread_root int(8) unsigned UNIQUE NOT NULL,
-  thread_article int(8) unsigned NOT NULL default 0,
   thread_path text NOT NULL,
   thread_summary_page int(8) unsigned NULL,
   thread_timestamp char(14) binary NOT NULL default '',
   thread_revision int(8) unsigned NOT NULL default 1,
 
-  -- The following are used only for non-existant article where
-  -- thread_article = 0. They should be ignored if thread_article != 0.
-  thread_article_namespace int NULL,
-  thread_article_title varchar(255) binary NULL,
+  thread_article_namespace int NOT NULL,
+  thread_article_title varchar(255) binary NOT NULL,
 
   -- Special thread types such as schrodinger's thread:
   thread_type int(4) unsigned NOT NULL default 0,
@@ -23,7 +20,6 @@ CREATE TABLE /*$wgDBprefix*/thread (
 
   PRIMARY KEY thread_id (thread_id),
   UNIQUE INDEX thread_id (thread_id),
-  INDEX thread_article (thread_article),
   INDEX thread_article_title (thread_article_namespace, thread_article_title),
   INDEX( thread_path(255) ),
   INDEX thread_timestamp (thread_timestamp)
