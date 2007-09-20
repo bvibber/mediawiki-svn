@@ -26,6 +26,12 @@
 #	* CopyTools::getRow(...); # comment
 # Wrappers around PHP functions or extensions to PHP function set: Same style as the wrapped function
 #	* mysql_insert_assoc(...); # comment
+#
+# TODO:
+# * Change to library
+# some read/write/dup functions are still main namespace, should get their own
+# classes
+
 
 header("Content-type: text/html; charset=UTF-8");
 
@@ -559,6 +565,9 @@ class DefinedMeaningCopier {
 	}
 }
 	
+/** provide a namespace for copying tools (so we don't clutter up the main namespace with
+ * all our utility and tool functions) All functions here are public+static.
+ */
 class CopyTools {
 	/** create a relevant entry in the `page` table. */
 	public static function createPage($title) {
@@ -579,9 +588,31 @@ class CopyTools {
 	}
 
 	/** start a new copy transaction
+	 * Gets a virtual user id from the wikidata_sets table, if available
+	 * (else uses user 0)
+	 * There's still some issues with transactions  especially wrt with user assignment
+	 * where we intersect with the (old) "WikiDataAPI".
 	 */
 	public static function newCopyTransaction($dc1, $dc2) {
-		startNewTransaction(0, "127.0.0.1", "copying from $dc1 to $dc2", $dc2);
+
+		$datasets=CopyTools::getRow_noDC("wikidata_sets", "WHERE set_prefix=\"$dc2\"");
+		if (  $datasets == false  ) {
+			throw new Exception("Dataset info for $dc2 not found.");
+		}
+		
+		if (  array_key_exists("virtual_user_id", $datasets)  ) {
+			$virtual_user_id=$datasets["virtual_user_id"];
+		} else {
+			$virtual_user_id=0;
+		}
+		
+		print " VUID: $virtual_user_id";
+		startNewTransaction(
+			$virtual_user_id, 
+			"0.0.0.0", 
+			"copying from $dc1 to $dc2", 
+			$dc2	);
+		print " UTID: ".getUpdateTransactionId();
 	}
 
 	/** retrieve a single row from the database as an associative array
@@ -594,10 +625,14 @@ class CopyTools {
 	public static function getRow($dc, $table, $where) {
 		$target_table=mysql_real_escape_string("${dc}_${table}");
 		$query="SELECT * FROM $target_table ".$where;
-		print $query."<br>\n";
 		return CopyTools::doQuery($query);
 	}
 
+	public static function getRow_noDC($table, $where) {
+		$target_table=mysql_real_escape_string("${table}");
+		$query="SELECT * FROM $target_table ".$where;
+		return CopyTools::doQuery($query);
+	}
 
 	/** retrieve multiple rows from the database, as an array of associative arrays.
 	 * @param $dc		the dataset prefix we need
