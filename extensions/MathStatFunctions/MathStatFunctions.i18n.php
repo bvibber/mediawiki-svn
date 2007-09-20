@@ -12,6 +12,9 @@ $wgMathStatFunctionsMessages['en'] = array(
         'msfunc_inf' => "Resulting value is infinity" ,
         'msfunc_div_zero' => "Division by zero",
 );
+$wgMathStatFunctionsMessages['ar'] = array(
+	'msfunc_div_zero' => 'القسمة على صفر',
+);
 $wgMathStatFunctionsMessages['fr'] = array(
         'msfunc_nan' => "Le résultat n’est pas un nombre" ,
         'msfunc_inf' => "Le résultat est l’infini" ,

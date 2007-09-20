@@ -135,7 +135,15 @@ function efPatrollerMessages() {
 ),
 
 'hsb' => array(
+'patrol' => 'Dohladowanje změnow',
+'patrol-endorse' => 'Přihłosować',
+'patrol-revert' => 'Cofnyć',
 'patrol-revert-reason' => 'Přičina:',
+'patrol-skip' => 'Přeskočić',
+'patrol-reverting' => 'Cofnjenje: $1',
+'patrol-nonefound' => 'Za dohladowanje njebuchu přihódne změny namakane.',
+'patrol-endorsed-ok' => 'Tuta změna bu jako dohladowana markěrowana.',
+'patrol-endorsed-failed' => 'Tuta změna njemóže so jako dohladowana markěrować.',
 'patrol-reverted-ok' => 'Změna bu cofnjena.',
 'patrol-reverted-failed' => 'Změna njeda so cofnyć',
 'patrol-skipped-ok' => 'Změna so ignoruje.',
@@ -143,6 +151,10 @@ function efPatrollerMessages() {
 * Test nowačka
 * Hlej diskusijna strona',
 'patrol-another' => 'Dalšu změnu pokazać, jeli k dispoziciji stejaca.',
+'patrol-resume' => 'Klikń sem, zo by pokročował.',
+'group-patroller' => 'Dohladowarjo',
+'group-patroller-member' => 'Dohladowar',
+'grouppage-patroller' => '{{ns:project}}:Dohladowar',
 ),
 
 /* Indonesian (Ivan Lanin) */

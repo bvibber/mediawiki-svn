@@ -25,6 +25,8 @@ function efProfileMonitorMessages() {
 ),
 
 'hsb' => array(
+'profiling' => 'Daty so profiluja',
+'profiling-process' => 'Znamjenjowy slěd předźěłać:',
 'profiling-ok' => 'W porjadku',
 'profiling-data-process' => 'Proces',
 'profiling-data-count' => 'Ličić',

@@ -52,6 +52,28 @@ database administrator if you make a mistake.",
 Releasing this information can result in permanent loss of Oversight privileges.',
 ),
 
+'ar' => array(
+'hiderevision' => 'أخف النسخ بشكل دائم',
+'hiderevision-prompt' => 'رقم النسخة للإزالة:',
+'hiderevision-continue' => 'استمر',
+'hiderevision-reason' => 'السبب (سيسجل سرا):',
+'hiderevision-submit' => 'أخف هذه البيانات بشكل دائم',
+'hiderevision-tab' => 'إخفاء النسخة',
+'hiderevision-norevisions' => 'لا نسخ محددة للحذف.',
+'hiderevision-noreason' => 'يجب أن تصف السبب لهذه الإزالة.',
+'hiderevision-status' => 'النسخة $1: $2',
+'hiderevision-success' => 'تمت الأرشفة والحذف بنجاح.',
+'hiderevision-error-missing' => 'غير موجود في قاعدة البيانات.',
+'hiderevision-error-delete' => 'لم يمكن الأرشفة؛ هل تم حذفها سابقا؟',
+'hiderevision-archive-status' => 'النسخة المحذوفة من $1: $2',
+'oversight-log-hiderev' => 'أزال تعديلا من $1',
+'oversight' => 'أوفرسايت',
+'oversight-view' => 'التفاصيل',
+'oversight-difference' => '(الفرق من النسخة المتبقية السابقة)',
+'oversight-prev' => 'آخر نسخة سابقة',
+'oversight-hidden' => 'نسخة مخفية',
+),
+
 /* German (Raymond) */
 'de' => array(
 'hiderevision' => 'Versionen dauerhaft entfernen',

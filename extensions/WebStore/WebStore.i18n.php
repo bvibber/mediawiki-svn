@@ -57,6 +57,7 @@ $messages = array(
 	'inplace_access_disabled' => 'Pristup k tutej slubje bu za wše klienty znjemónjeny.',
 	'inplace_scaler_not_enough_params' => 'Falowace parametry.',
 	'inplace_scaler_invalid_image' => 'Njeplaciwy wobraz, wulkosc njeda so zwescic.',
+	'inplace_scaler_failed' => 'Pri skalowanju je zmylk wustupil: $1',
 	'webstore_path_invalid' => 'Datajowe mjeno be njeplaciwe.',
 	'webstore_dest_open' => 'Njeje móno cilowu dataju "$1" wocinic.',
 	'webstore_dest_mkdir' => 'Njeje móno cilowy zapis "$1" wutworic.',
@@ -80,10 +81,14 @@ $messages = array(
 	'webstore_php_warning' => 'Warnowanje PHP: $1',
 	'webstore_metadata_not_found' => 'Dataja njenamakana: $1',
 	'webstore_postfile_not_found' => 'Dataja, kotra ma so woteslac, njebu namakana.',
+	'webstore_scaler_empty_response' => 'Wobrazowy skalowar wróci prózdnu wotmolwu z wotmolwnym kodom 200. Pricina móhla ceki zmylk PHP w skalowarju byc.',
 	'webstore_invalid_response' => 'Njeplaciwa wotmolwa ze serwera:
 
 $1',
 	'webstore_no_response' => 'ana wotmolwa ze serwera',
+	'webstore_backend_error' => 'Zmylk ze skladowanskeho serwera:
+
+$1',
 	'webstore_php_error' => 'Zmylki PHP su wustupili:',
 	),
 	'nl' => array(

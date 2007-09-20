@@ -37,6 +37,19 @@ function efGiveRollbackMessages() {
 'ar' => array(
 'giverollback-username' => 'اسم المستخدم:',
 'giverollback-search' => 'اذهب',
+'giverollback-hasrb' => '[[User:$1|$1]] لديه صلاحيات استرجاع.',
+'giverollback-norb' => '[[User:$1|$1]] ليس لديه صلاحيات استرجاع.',
+'giverollback-toonew' => '[[User:$1|$1]] جديد جدا، ولا يمكن إعطاؤه صلاحيات استرجاع.',
+'giverollback-sysop' => '[[User:$1|$1]] إداري، ولديه بالفعل سماحات استرجاع.',
+'giverollback-change' => 'غير الحالة:',
+'giverollback-grant' => 'منح',
+'giverollback-revoke' => 'سحب',
+'giverollback-comment' => 'تعليق:',
+'giverollback-granted' => '[[User:$1|$1]] لديه الآن صلاحيات استرجاع.',
+'giverollback-revoked' => '[[User:$1|$1]] لم يعد لديه صلاحيات استرجاع.',
+'giverollback-logpage' => 'سجل صلاحيات الاسترجاع',
+'giverollback-logentrygrant' => 'منح صلاحيات استرجاع إلى [[$1]]',
+'giverollback-logentryrevoke' => 'أزال صلاحيات استرجاع من [[$1]]',
 ),
 
 /* German (Raymond) */
@@ -86,6 +99,7 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	
 'hsb' => array(
 'giverollback' => 'Prawa wróćostajenja dać abo zebrać',
+'giverollback-header' => '\'\'\'Lokalny běrokrat móže stronu wužiwać, zo by druhim wužiwarjam prawo wróćostajenja \'\'(rollback)\'\' dał abo zebrał.\'\'\'<br /> Tak móža tež wužiwarjo bjez prawow administratora wandalizm spěšnje wróćo stajić. To měło so w přezjednosći z nałožujomnymi prawidłami stać.',
 'giverollback-username' => 'Wužiwarske mjeno:',
 'giverollback-search' => 'Pytać',
 'giverollback-hasrb' => '[[User:$1|$1]] ma prawo wróćostajenja.',
@@ -98,34 +112,12 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-comment' => 'Komentar:',
 'giverollback-granted' => '[[User:$1|$1]] ma nětko prawo wróćostajenja.',
 'giverollback-revoked' => '[[User:$1|$1]] hižo nima prawo wróćostajenja.',
-'giverollback-logpage' => 'Protokol wo prawach wróćostajenja.',
+'giverollback-logpage' => 'Protokol wo prawach wróćostajenja',
 'giverollback-logpagetext' => 'Tuto je protokol wo změnach prawow wróćostajenja za njeadministratorow.',
-'giverollback-logentrygrant' => 'da prawo wróćostajenja [[$1]]',
-'giverollback-logentryrevoke' => 'zebra prawo wróćostajenja [[$1]]',
+'giverollback-logentrygrant' => 'je wužiwarjej [[$1]] prawo wróćostajenja dał',
+'giverollback-logentryrevoke' => 'je wužiwarjej [[$1]] prawo wróćostajenja zebrał',
 ),
 
-/* Indonesian (Ivan Lanin) */
-'id' => array(
-'giverollback' => 'Pemberian atau penarikan hak pengembalian',
-'giverollback-header' => "'''Seorang birokrat lokal dapat menggunakan halaman ini untuk memberikan atau menarik  [[{{NS:HELP}}:Pengembalian|hak pengembalian]] ke akun pengguna lain.'''<br />Hal ini dapat dilakukan untuk mengizinkan non-pengurus untuk mengembalikan vandalisme dengan cepat. Hal ini harus dilakukan sesuai dengan kebijakan yang ada.",
-'giverollback-username' => 'Nama pengguna:',
-'giverollback-search' => 'Cari',
-'giverollback-hasrb' => '[[User:$1|$1]] memiliki hak pengembalian.',
-'giverollback-norb' => '[[User:$1|$1]] tidak memiliki hak pengembalian.',
-'giverollback-toonew' => '[[User:$1|$1]] terlalu baru, sehingga tak dapat diberikan hak pengembalian.',
-'giverollback-sysop' => '[[User:$1|$1]] adalah pengurs, dan telah memiliki hak pengembalian.',
-'giverollback-change' => 'Ganti status:',
-'giverollback-grant' => 'Berikan',
-'giverollback-revoke' => 'Tarik',
-'giverollback-comment' => 'Komentar:',
-'giverollback-granted' => '[[User:$1|$1]] sekarang memiliki hak pengembalian.',
-'giverollback-revoked' => '[[User:$1|$1]] sekarang tidak lagi memiliki hak pengembalian.',
-'giverollback-logpage' => 'Log perubahan hak pengembalian',
-'giverollback-logpagetext' => 'Di bawah ini adalah log perubahan [[{{NS:HELP}}:Pengembalian|hak pengembalian]] untuk non-pengurus.',
-'giverollback-logentrygrant' => 'memberikan hak pengembalian ke untuk [[$1]]',
-'giverollback-logentryrevoke' => 'menarik hak pengembalian ke untuk [[$1]]',
-),
-	
 /* Italian (BrokenArrow) */
 'it' => array(
 'giverollback' => 'Assegna o revoca il diritto di rollback',

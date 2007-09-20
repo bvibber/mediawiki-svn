@@ -17,6 +17,11 @@ $wgLinkSearchMessages['en'] = array(
 	'linksearch-line'  => '$1 linked from $2',
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
+$wgLinkSearchMessages['ar'] = array(
+	'linksearch-ns'    => 'النطاق:',
+	'linksearch-ok'    => 'بحث',
+	'linksearch-line'  => '$1 موصولة من $2',
+);
 $wgLinkSearchMessages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',
 	'linksearch-text'  => 'Lze používat zástupné znaky, např. „*.wikipedia.org“.',

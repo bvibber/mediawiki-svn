@@ -17,6 +17,16 @@ $allMessages = array(
 		'passwordreset-success' => 'Password has been reset for user_id: $1'
 	),
 
+	'ar' => array(
+		'passwordreset-invalidusername' => 'اسم مستخدم غير صحيح',
+		'passwordreset-emptyusername' => 'اسم مستخدم فارغ',
+		'passwordreset-nopassmatch' => 'كلمات السر لا تتطابق',
+		'passwordreset-username' => 'اسم مستخدم',
+		'passwordreset-newpass' => 'كلمة سر جديدة',
+		'passwordreset-confirmpass' => 'أكد كلمة السر',
+		'passwordreset-submit' => 'أعد ضبط كلمة السر',
+	),
+
 	'de' => array( 
 		'passwordreset' => 'Passwort zurücksetzen',
 	),
