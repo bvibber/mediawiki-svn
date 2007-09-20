@@ -63,25 +63,25 @@ $beginTime = time();
 $wgCommandLineMode = true;
 $dc = "uw";
 
-$tables =	array(
-					"bootstrapped_defined_meanings",
-					"transactions",
-					"translated_content",
-					"alt_meaningtexts",
-					"class_attributes",
-					"class_membership",
-					"collection_contents",
-					"collection_ns",
-					"defined_meaning",
-					"expression_ns",
-					"meaning_relations",
-					"option_attribute_options",
-					"option_attribute_values",
-					"syntrans",
-					"text_attribute_values",
-					"translated_content_attribute_values",
-					"url_attribute_values"
-				);
+$tables = array(
+	"bootstrapped_defined_meanings",
+	"transactions",
+	"translated_content",
+	"alt_meaningtexts",
+	"class_attributes",
+	"class_membership",
+	"collection_contents",
+	"collection",
+	"defined_meaning",
+	"expression",
+	"meaning_relations",
+	"option_attribute_options",
+	"option_attribute_values",
+	"syntrans",
+	"text_attribute_values",
+	"translated_content_attribute_values",
+	"url_attribute_values"
+);
 					
 $prefixes = retrieve_datasets();
 
