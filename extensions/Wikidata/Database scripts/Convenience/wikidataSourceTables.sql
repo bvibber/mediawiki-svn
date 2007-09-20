@@ -16,7 +16,7 @@ CREATE TABLE /*$wgWDprefix*/bootstrapped_defined_meanings (
   `name` varchar(255) NOT NULL,
   `defined_meaning_id` int(11) NOT NULL,
   KEY `unversioned_meaning` (`defined_meaning_id`),
-  KEY `unversioned_name` (`name`,`defined_meaning_id`)
+  KEY `unversioned_name` (`name` (255),`defined_meaning_id`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 -- object_id - key for the attribute, used elsewhere as a foreign key
@@ -83,10 +83,10 @@ CREATE TABLE /*$wgWDprefix*/collection (
   `remove_transaction_id` int(11) default NULL,
   KEY `versioned_end_collection` (`remove_transaction_id`,`collection_id`,`collection_mid`),
   KEY `versioned_end_collection_meaning` (`remove_transaction_id`,`collection_mid`,`collection_id`),
-  KEY `versioned_end_collection_type` (`remove_transaction_id`,`collection_type`,`collection_id`,`collection_mid`),
+  KEY `versioned_end_collection_type` (`remove_transaction_id`,`collection_type` (4),`collection_id`,`collection_mid`),
   KEY `versioned_start_collection` (`add_transaction_id`,`collection_id`,`collection_mid`),
   KEY `versioned_start_collection_meaning` (`add_transaction_id`,`collection_mid`,`collection_id`),
-  KEY `versioned_start_collection_type` (`add_transaction_id`,`collection_type`,`collection_id`,`collection_mid`)
+  KEY `versioned_start_collection_type` (`add_transaction_id`,`collection_type` (4),`collection_id`,`collection_mid`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/defined_meaning (
@@ -111,7 +111,7 @@ CREATE TABLE /*$wgWDprefix*/expression (
   `remove_transaction_id` int(11) default NULL,
   KEY `versioned_end_expression` (`remove_transaction_id`,`expression_id`,`language_id`),
   KEY `versioned_end_language` (`remove_transaction_id`,`language_id`,`expression_id`),
-  KEY `versioned_end_spelling` (`remove_transaction_id`,`spelling`,`expression_id`,`language_id`),
+  KEY `versioned_end_spelling` (`remove_transaction_id`,`spelling`(255),`expression_id`,`language_id`),
   KEY `versioned_start_expression` (`add_transaction_id`,`expression_id`,`language_id`),
   KEY `versioned_start_language` (`add_transaction_id`,`language_id`,`expression_id`),
   KEY `versioned_start_spelling` (`add_transaction_id`,`spelling`,`expression_id`,`language_id`)
