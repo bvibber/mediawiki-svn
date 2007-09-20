@@ -1027,19 +1027,19 @@ function wfLqtBeforeWatchlistHook( $options, $user, &$hook_sql ) {
 	
 	$hook_sql = "AND page_namespace != " . NS_LQT_THREAD;
 	
-	$user_messages = NewMessages::newUserMessages($user);
-	$n = count($user_messages);
+	$talkpage_messages = NewMessages::newUserMessages($user);
+	$tn = count($talkpage_messages);
 	
-	if( $n == 0 )
+	$watch_messages = NewMessages::watchedThreadsForUser($user);
+	$wn = count($watch_messages);
+	
+	if( $tn == 0 && $wn == 0 )
 		return true;
-	
-	if ( $n == 1 ) $phrase = "is 1 message";
-	else $phrase = "are $n messages";
 	
 	$messages_url = SpecialPage::getPage('Newmessages')->getTitle()->getFullURL();
 	$wgOut->addHTML(<<< HTML
 		<a href="$messages_url" class="lqt_watchlist_messages_notice">
-			&#x2712; There $phrase for you.
+			&#x2712; There are new messages for you.
 		</a>
 HTML
 	);

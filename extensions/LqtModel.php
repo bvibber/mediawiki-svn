@@ -1035,7 +1035,9 @@ SQL;
 		
 		// it sucks to not have 'on duplicate key update'. first update users who already have a ums for this thread
 		// and who have already read it, by setting their state to unread.
-		$dbw->query("update user_message_state, thread, watchlist set ums_read_timestamp = null where ums_user = wl_user and ums_thread = thread_id and $where_clause");
+		
+		// this is touching all ums rows instead of just the ones for the thread in question.
+		$dbw->query("update user_message_state, watchlist set ums_read_timestamp = null where ums_user = wl_user and ums_thread = {$t->id()} and $where_clause");
 		
 		$dbw->query("insert ignore into user_message_state (ums_user, ums_thread) select user_id, {$t->id()} from user, watchlist where user_id = wl_user and $where_clause;");
 	}
@@ -1048,6 +1050,7 @@ SQL;
 
 	static function watchedThreadsForUser($user) {
 		return Threads::where( array('ums_read_timestamp is null',
+		                             'ums_user' => $user->getID(),
 									 'ums_thread = thread.thread_id',
 								'NOT (' . Threads::articleClause(new Article($user->getUserPage())) . ')' ),
 							array(), array('user_message_state') );
