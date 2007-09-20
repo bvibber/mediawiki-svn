@@ -1026,6 +1026,7 @@ class NewMessages {
 		$talkpage_t = $t->article()->getTitle();
 		$root_t = $t->root()->getTitle();
 		
+		// Select any applicable watchlist entries for the thread.
 		$where_clause = <<<SQL
 (
 	(wl_namespace = {$talkpage_t->getNamespace()} and wl_title = "{$talkpage_t->getDBKey()}" )
@@ -1035,8 +1036,6 @@ SQL;
 		
 		// it sucks to not have 'on duplicate key update'. first update users who already have a ums for this thread
 		// and who have already read it, by setting their state to unread.
-		
-		// this is touching all ums rows instead of just the ones for the thread in question.
 		$dbw->query("update user_message_state, watchlist set ums_read_timestamp = null where ums_user = wl_user and ums_thread = {$t->id()} and $where_clause");
 		
 		$dbw->query("insert ignore into user_message_state (ums_user, ums_thread) select user_id, {$t->id()} from user, watchlist where user_id = wl_user and $where_clause;");
