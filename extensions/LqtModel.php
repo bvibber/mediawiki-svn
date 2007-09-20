@@ -354,7 +354,7 @@ class Thread {
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     __METHOD__);
 		
-		NewMessages::checkWatchlistsForThread($this);
+		NewMessages::writeMessageStateForUpdatedThread($this);
 		
 	
 	//	RecentChange::notifyEdit( wfTimestampNow(), $this->root(), /*minor*/false, $wgUser, $summary,
@@ -794,7 +794,7 @@ class Threads {
 				  'thread_change_comment' => "", // TODO
 				  'thread_change_user' => $wgUser->getID(),
 				  'thread_change_user_text' => $wgUser->getName(),
-				  'thread_type' => $type) + $aclause,
+				  'thread_type' => $type),
             __METHOD__);
 		
 		$newid = $dbr->insertId();
@@ -818,7 +818,7 @@ class Threads {
 			$superthread->addReply( $newthread );
 		}
 		
-		NewMessages::checkWatchlistsForThread($newthread);
+		NewMessages::writeMessageStateForUpdatedThread($newthread);
 		
 		return $newthread;
      }
@@ -1017,20 +1017,42 @@ class NewMessages {
 		}
 	}
 	
-	static function checkWatchlistsForThread($t) {
+	static function writeMessageStateForUpdatedThread($t) {
+		// retrieve all users who are watching t.
+		// write a ums for each one.
 		
+		$dbw =& wfGetDB( DB_MASTER );
+		
+		$talkpage_t = $t->article()->getTitle();
+		$root_t = $t->root()->getTitle();
+		
+		$where_clause = <<<SQL
+(
+	(wl_namespace = {$talkpage_t->getNamespace()} and wl_title = "{$talkpage_t->getDBKey()}" )
+or	(wl_namespace = {$root_t->getNamespace()} and wl_title = "{$root_t->getDBKey()}" )
+)
+SQL;
+		
+		// it sucks to not have 'on duplicate key update'. first update users who already have a ums for this thread
+		// and who have already read it, by setting their state to unread.
+		$dbw->query("update user_message_state, thread, watchlist set ums_read_timestamp = null where ums_user = wl_user and ums_thread = thread_id and $where_clause");
+		
+		$dbw->query("insert ignore into user_message_state (ums_user, ums_thread) select user_id, {$t->id()} from user, watchlist where user_id = wl_user and $where_clause;");
 	}
 	
 	static function newUserMessages($user) {
-
-		$ts = Threads::where( array('ums_read_timestamp is null',
+		return Threads::where( array('ums_read_timestamp is null',
 									Threads::articleClause(new Article($user->getUserPage()))),
 							 array(), array(), "left outer join user_message_state on ums_user is null or (ums_user = {$user->getID()} and ums_thread = thread.thread_id)" );
-		return $ts;
 	}
-	
 
-	
+	static function watchedThreadsForUser($user) {
+		return Threads::where( array('ums_read_timestamp is null',
+									 'ums_thread = thread.thread_id',
+								'NOT (' . Threads::articleClause(new Article($user->getUserPage())) . ')' ),
+							array(), array('user_message_state') );
+	}
+
 }
 
 ?>

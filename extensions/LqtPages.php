@@ -899,6 +899,8 @@ HTML
 
 class NewUserMessagesView extends LqtView {
 	
+	protected $threads;
+	
 	function addJSandCSS() {
 		global $wgJsMimeType, $wgStylePath; // TODO globals.
 		$s = "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/lqt.js\"><!-- lqt js --></script>\n";
@@ -943,15 +945,19 @@ HTML
 	function show() {
 		$this->addJSandCSS();
 		
+		// TODO, this will be invoked twice because show() is invoked twice. not fatal but hurts performance.
 		if( $this->request->wasPosted() && $this->methodApplies('mark_as_unread') ) {
 			$thread_id = $this->request->getInt( 'lqt_operand', null );
 			if( $thread_id !== null )
 				NewMessages::markThreadAsUnreadByUser($thread_id, $this->user);
+			$this->output->redirect( $this->title->getFullURL() );
 		}
 		
-		$threads = NewMessages::newUserMessages($this->user);
-		foreach($threads as $t) {
-			
+		if ( ! is_array( $this->threads ) ) {
+			throw new MWException('You must use NewUserMessagesView::setThreads() before calling NewUserMessagesView::show().');
+		}
+		
+		foreach($this->threads as $t) {
 			if( $this->request->wasPosted() && $this->methodAppliesToThread('mark_as_read', $t) ) {
 				NewMessages::markThreadAsReadByUser($t, $this->user);
 				$this->showUndo($t);
@@ -964,6 +970,10 @@ HTML
 			$this->postShowThread($t);
 		}
 		return false;
+	}
+	
+	function setThreads( $threads ) {
+		$this->threads = $threads;
 	}
 }
 
@@ -997,10 +1007,14 @@ function wfLqtSpecialNewMessages() {
 			$view = new NewUserMessagesView( $this->output, new Article($this->title),
 							$this->title, $this->user, $this->request );
 			$view->setHeaderLevel(3);
+			$view->setThreads( NewMessages::newUserMessages($this->user) );
 			$view->show();
 			
 			// and then the same for the other talkpage messagess.
 			$this->output->addHTML('<h2 class="lqt_newmessages_section">Messages on other talkpages:</h2>');
+			
+			$view->setThreads( NewMessages::watchedThreadsForUser($this->user) );
+			$view->show();
         }
     }
     
