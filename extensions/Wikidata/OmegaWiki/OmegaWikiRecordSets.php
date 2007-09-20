@@ -10,47 +10,59 @@ require_once('RecordSetQueries.php');
 require_once('DefinedMeaningModel.php');
 require_once('ViewInformation.php');
 
+
 function getSynonymSQLForLanguage($languageId, array &$definedMeaningIds) {
 	$dc=wdGetDataSetContext();
-
-	return 
-		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS label " .
+	
+	# Query building
+    $frontQuery = "SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS label " .
 		" FROM {$dc}_defined_meaning, {$dc}_syntrans, {$dc}_expression " .
-		" WHERE {$dc}_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
-		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" WHERE " . getLatestTransactionRestriction("{$dc}_syntrans") .
 		" AND " . getLatestTransactionRestriction("{$dc}_expression") .
 		" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning") .
 		" AND {$dc}_expression.language_id=" . $languageId .
 		" AND {$dc}_expression.expression_id={$dc}_syntrans.expression_id " .
 		" AND {$dc}_defined_meaning.defined_meaning_id={$dc}_syntrans.defined_meaning_id " . 
 		" AND {$dc}_syntrans.identical_meaning=1 " .
-		" GROUP BY {$dc}_defined_meaning.defined_meaning_id";
+		" AND {$dc}_defined_meaning.defined_meaning_id = "; 
+		
+    # Build atomic queries
+	$definedMeaningIdsCopy = $definedMeaningIds;
+    foreach ($definedMeaningIdsCopy as &$value) {$value = $frontQuery . $value; }
+    unset($value);
+	# Union of the atoms
+    return implode(' UNION ',$definedMeaningIdsCopy);
 }
 
 function getSynonymSQLForAnyLanguage(array &$definedMeaningIds) {
 	$dc=wdGetDataSetContext();
 
-	return 
-		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS label " .
+	# Query building
+    $frontQuery = "SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS label " .
 		" FROM {$dc}_defined_meaning, {$dc}_syntrans, {$dc}_expression " .
-		" WHERE {$dc}_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
-		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" WHERE " . getLatestTransactionRestriction("{$dc}_syntrans") .
 		" AND " . getLatestTransactionRestriction("{$dc}_expression") .
 		" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning") .
 		" AND {$dc}_expression.expression_id={$dc}_syntrans.expression_id " .
 		" AND {$dc}_defined_meaning.defined_meaning_id={$dc}_syntrans.defined_meaning_id " . 
 		" AND {$dc}_syntrans.identical_meaning=1 " .
-		" GROUP BY {$dc}_defined_meaning.defined_meaning_id";
+		" AND {$dc}_defined_meaning.defined_meaning_id = "; 
+
+    # Build atomic queries
+	$definedMeaningIdsCopy = $definedMeaningIds;
+    foreach ($definedMeaningIdsCopy as &$value) {$value = $frontQuery . $value; }
+    unset($value);
+	# Union of the atoms
+    return implode(' UNION ',$definedMeaningIdsCopy);
 }
 
 function getDefiningSQLForLanguage($languageId, array &$definedMeaningIds) {
 	$dc=wdGetDataSetContext();
 
-	return 
-		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS label " .
+	# Query building
+    $frontQuery = "SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling AS label " .
 		" FROM {$dc}_defined_meaning, {$dc}_syntrans, {$dc}_expression " .
-		" WHERE {$dc}_defined_meaning.defined_meaning_id IN (" . implode(", ", $definedMeaningIds) . ")" .
-		" AND " . getLatestTransactionRestriction("{$dc}_syntrans") .
+		" WHERE ". getLatestTransactionRestriction("{$dc}_syntrans") .
 		" AND " . getLatestTransactionRestriction("{$dc}_expression") .
 		" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning") .
 		" AND {$dc}_expression.expression_id={$dc}_syntrans.expression_id " .
@@ -58,8 +70,16 @@ function getDefiningSQLForLanguage($languageId, array &$definedMeaningIds) {
 		" AND {$dc}_syntrans.identical_meaning=1 " .
 		" AND {$dc}_defined_meaning.expression_id={$dc}_expression.expression_id " .
 		" AND {$dc}_expression.language_id=" . $languageId .
-		" GROUP BY {$dc}_defined_meaning.defined_meaning_id";
+		" AND {$dc}_defined_meaning.defined_meaning_id = "; 
+
+    # Build atomic queries
+	$definedMeaningIdsCopy = $definedMeaningIds;
+    foreach ($definedMeaningIdsCopy as &$value) {$value = $frontQuery . $value; }
+    unset($value);
+	# Union of the atoms
+    return implode(' UNION ',$definedMeaningIdsCopy);
 }
+
 
 function fetchDefinedMeaningReferenceRecords($sql, array &$definedMeaningIds, array &$definedMeaningReferenceRecords, $usedAs='defined-meaning') {
 	$dc=wdGetDataSetContext();
@@ -88,21 +108,31 @@ function fetchDefinedMeaningReferenceRecords($sql, array &$definedMeaningIds, ar
 	$definedMeaningIds = array_diff($definedMeaningIds, $foundDefinedMeaningIds);
 }
 
-function fetchDefinedMeaningDefiningExpressions(array &$definedMeaningIds, array &$definedMeaningReferenceRecords) {
 
+function fetchDefinedMeaningDefiningExpressions(array &$definedMeaningIds, array &$definedMeaningReferenceRecords) {
 	$o=OmegaWikiAttributes::getInstance();
 
 	$dc=wdGetDataSetContext();
 	
 	$dbr =& wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query(
-		"SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling" .
+	
+	# Query building
+	$frontQuery = "SELECT {$dc}_defined_meaning.defined_meaning_id AS defined_meaning_id, {$dc}_expression.spelling" .
 		" FROM {$dc}_defined_meaning, {$dc}_expression " .
 		" WHERE {$dc}_defined_meaning.expression_id={$dc}_expression.expression_id " .
 		" AND " . getLatestTransactionRestriction("{$dc}_defined_meaning") .
 		" AND " . getLatestTransactionRestriction("{$dc}_expression") . 
-		" AND {$dc}_defined_meaning.defined_meaning_id IN (". implode(", ", $definedMeaningIds) .")"
-	);
+		" AND {$dc}_defined_meaning.defined_meaning_id = ";
+
+    # Build atomic queries
+	$definedMeaningIdsCopy = $definedMeaningIds;
+    unset($value);	
+    foreach ($definedMeaningIdsCopy as &$value) {$value = $frontQuery . $value; }
+    unset($value);
+	# Union of the atoms
+    $finalQuery = implode(' UNION ',$definedMeaningIdsCopy);
+	
+	$queryResult = $dbr->query($finalQuery);
 
 	while ($row = $dbr->fetchObject($queryResult)) {
 		$definedMeaningReferenceRecord = $definedMeaningReferenceRecords[$row->defined_meaning_id];
@@ -115,7 +145,7 @@ function fetchDefinedMeaningDefiningExpressions(array &$definedMeaningIds, array
 		}
 		
 		$definedMeaningReferenceRecord->definedMeaningDefiningExpression = $row->spelling;
-	}	
+	}		
 }
 
 function getNullDefinedMeaningReferenceRecord() {
@@ -227,17 +257,24 @@ function expandTranslatedContentsInRecordSet(RecordSet $recordSet, Attribute $id
 function getExpressionReferenceRecords($expressionIds) {
 
 	$o=OmegaWikiAttributes::getInstance();
-	
 	$dc=wdGetDataSetContext();
 
 	if (count($expressionIds) > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query(
-			"SELECT expression_id, language_id, spelling" .
+		
+        # Query building
+		$frontQuery = "SELECT expression_id, language_id, spelling" .
 			" FROM {$dc}_expression" .
-			" WHERE expression_id IN (". implode(', ', $expressionIds) .")" .
-			" AND ". getLatestTransactionRestriction("{$dc}_expression")
-		);
+			" WHERE expression_id = ";
+		$queueQuery = " AND ". getLatestTransactionRestriction("{$dc}_expression");
+
+        # Build atomic queries
+        foreach ($expressionIds as &$value) {$value = $frontQuery . $value . $queueQuery; }
+        unset($value);
+		# Union of the atoms
+        $finalQuery = implode(' UNION ',$expressionIds);
+		
+		$queryResult = $dbr->query($finalQuery);
 		
 		$result = array();
 	
@@ -270,19 +307,21 @@ function expandExpressionReferencesInRecordSet(RecordSet $recordSet, array $expr
 }
 
 function getExpressionSpellings(array $expressionIds) {
-
-	$o=OmegaWikiAttributes::getInstance();
-	
 	$dc=wdGetDataSetContext();
 
 	if (count($expressionIds) > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query(
-			"SELECT expression_id, spelling" .
-			" FROM {$dc}_expression" .
-			" WHERE expression_id IN (". implode(', ', $expressionIds) .")" .
-			" AND ". getLatestTransactionRestriction("{$dc}_expression")
-		);
+		
+		# Prepare steady components
+		$frontQuery = "SELECT expression_id, spelling FROM {$dc}_expression WHERE expression_id ="; 
+        $queueQuery	= " AND ". getLatestTransactionRestriction("{$dc}_expression");
+        # Build atomic queries
+        foreach ($expressionIds as &$value) {$value = $frontQuery . $value . $queueQuery; }
+        unset($value);
+		# Union of the atoms
+        $finalQuery = implode(' UNION ',$expressionIds);
+		
+		$queryResult = $dbr->query($finalQuery);
 		
 		$result = array();
 	
@@ -313,11 +352,19 @@ function getTextReferences(array $textIds) {
 	$dc=wdGetDataSetContext();
 	if (count($textIds) > 0) {
 		$dbr =& wfGetDB(DB_SLAVE);
-		$queryResult = $dbr->query(
-			"SELECT text_id, text_text" .
+		
+		# Query building
+		$frontQuery = "SELECT text_id, text_text" .
 			" FROM {$dc}_text" .
-			" WHERE text_id IN (". implode(', ', $textIds) .")"
-		);
+			" WHERE text_id = ";
+
+        # Build atomic queries
+        foreach ($textIds as &$value) {$value = $frontQuery . $value; }
+        unset($value);
+		# Union of the atoms
+        $finalQuery = implode(' UNION ',$textIds);		
+		
+		$queryResult = $dbr->query($finalQuery);
 		
 		$result = array();
 	
