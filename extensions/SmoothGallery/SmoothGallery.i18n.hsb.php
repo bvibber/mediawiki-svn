@@ -2,8 +2,8 @@
 
 $messages = array(
 	'smoothgallery-error' => '<b>SmoothGallery zmylk:</b>',
-	'smoothgallery-not-found' => 'Žane wobrazy njebuchu ke galeriji pridate. Prošu pridaj znajmjenša jedyn wobraz.',
-	'smoothgallery-no-images' => 'W tutej galeriji njebuchu wobrazy namakane. Zawesc, zo wše wobrazy eksistuja. Sledowace wobrazy njebuchu namakane: $1',
-	'smoothgallery-unexpected-error' => 'Beše njewocakowany zmylk. Prošu spisaj zmylkowu rozprawu.',
+	'smoothgallery-not-found' => 'Å½ane wobrazy njebuchu ke galeriji pridate. ProÅ¡u pridaj znajmjenÅ¡a jedyn wobraz.',
+	'smoothgallery-no-images' => 'W tutej galeriji njebuchu wobrazy namakane. Zawesc, zo wÅ¡e wobrazy eksistuja. Sledowace wobrazy njebuchu namakane: $1',
+	'smoothgallery-unexpected-error' => 'BeÅ¡e njewocakowany zmylk. ProÅ¡u spisaj zmylkowu rozprawu.',
 );
 
