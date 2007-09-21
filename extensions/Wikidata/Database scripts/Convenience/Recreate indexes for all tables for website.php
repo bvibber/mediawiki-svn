@@ -7,6 +7,7 @@ require_once("../../../../LocalSettings.php");
 require_once("../../php-tools/ProgressBar.php");
 require_once("DatabaseUtilities.php");
 require_once("Setup.php");
+require_once("../../OmegaWiki/WikiDataTables.php");
 
 ob_end_flush();
 
@@ -50,14 +51,45 @@ function recreateIndexesForTable($dc, $tableName) {
 	createIndexesForTable($dc,$tableName);
 }
 
-function recreateIndexesForTables($dc, $tableNames) {
-	foreach ($tableNames as $tableName){
-		recreateIndexesForTable($dc,$tableName);
+function addIndexesForTable($table) {
+	$tableIndexes = $table->getIndexes("WebSite");
+	$indexes = array();
+	
+	foreach ($tableIndexes as $tableIndex) {
+		$index = array();
+		
+		foreach ($tableIndex->getColumns() as $column) {
+			$indexColumn = $column->getIdentifier();
+			
+			$length = $column->getLength();
+			
+			if ($length != null)
+				$indexColumn .= " (" . $length . ")";
+				
+			$index[] = $indexColumn; 
+		}
+		
+		$indexes[$tableIndex->getName()] = $index;
 	}
+	
+	addIndexes($table->getIdentifier(), $indexes);	
+}
+
+function recreateIndexesForTableNew(Table $table) {
+	echo "Dropping indices from table " . $table->getIdentifier() . ".\n";
+	dropAllIndicesFromTable($table->getIdentifier());
+
+	echo "Creating new indices for table " . $table->getIdentifier() . ".\n";
+	addIndexesForTable($table);	
+}
+
+function recreateIndexesForTables($dc, $tableNames) {
+	foreach ($tableNames as $tableName)
+		recreateIndexesForTable($dc, $tableName);
 }
 
 global
-$beginTime, $wgCommandLineMode;
+	$beginTime, $wgCommandLineMode;
 
 $beginTime = time();
 $wgCommandLineMode = true;
@@ -85,7 +117,10 @@ $tables = array(
 					
 $prefixes = retrieve_datasets();
 
-foreach( $prefixes as $prefix ){
+//$dataSet = new WikiDataSet("uw");
+//recreateIndexesForTableNew($dataSet->expression);
+
+foreach($prefixes as $prefix) {
 	recreateIndexesForTables( $prefix, $tables );
 }
 

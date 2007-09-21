@@ -3,9 +3,7 @@
 function dropAllIndicesFromTable($tableName) {
 	$dbr =& wfGetDB(DB_MASTER);
 	
-	$queryResult = $dbr->query(
-		"SHOW INDEXES FROM " . $tableName
-	);
+	$queryResult = $dbr->query("SHOW INDEXES FROM " . $tableName);
 	
 	$indexNames = array();
 
@@ -26,6 +24,18 @@ function dropAllIndicesFromTable($tableName) {
 		
 		$dbr->query($sql);
 	}
+}
+
+function addIndexes($tableName, array $indexes) {
+	$dbr =& wfGetDB(DB_MASTER);
+	
+	$indexesSQL = array();
+	
+	foreach ($indexes as $indexName => $columns)  
+		$indexesSQL[] = " ADD INDEX `" . $indexName . "` (" . implode(", ", $columns) .") ";
+
+	$sql = "ALTER TABLE " . $tableName . " " . implode(", ", $indexesSQL);
+	$dbr->query($sql);	
 }	
 
 

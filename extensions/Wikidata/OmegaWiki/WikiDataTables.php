@@ -15,8 +15,6 @@
  * 3) Table: represents a specific table in the database, meant as a base class for specific tables        
  */
 
-require_once("Wikidata.php");
-
 interface DatabaseExpression {
 	public function toExpression();
 }
@@ -56,10 +54,12 @@ class SelectExpression implements DatabaseExpression {
 class TableColumn implements DatabaseExpression {
 	public $table;
 	public $identifier;
+	protected $length;
 	
-	public function __construct($table, $identifier) {
+	public function __construct($table, $identifier, $length = null) {
 		$this->table = $table;		
 		$this->identifier = $identifier;
+		$this->length = $length;
 	}
 	
 	public function getIdentifier() {
@@ -73,6 +73,14 @@ class TableColumn implements DatabaseExpression {
 	public function toExpression() {
 		return $this->qualifiedName();
 	}
+	
+	public function subPart($length) {
+		return new TableColumn($this->table, $this->identifier, $length);
+	}
+	
+	public function getLength() {
+		return $this->length;
+	}
 }
 
 class Table {
@@ -81,10 +89,16 @@ class Table {
 	public $keyColumns;
 	public $columns;
 	
+	protected $webSiteIndexes;
+	protected $massUpdateIndexes;
+	
 	public function __construct($identifier, $isVersioned) {
 		$this->identifier = $identifier;
 		$this->isVersioned = $isVersioned;
 		$this->columns = array();
+		
+		$this->webSiteIndexes = array();
+		$this->massUpdateIndexes = array();
 	}
 
 	public function getIdentifier() {
@@ -100,6 +114,49 @@ class Table {
 	
 	protected function setKeyColumns(array $keyColumns) {
 		$this->keyColumns = $keyColumns;
+	}
+	
+	protected function setWebSiteIndexes(array $webSiteIndexes) {
+		$this->webSiteIndexes = $webSiteIndexes;
+	}
+	
+	public function getWebSiteIndexes() {
+		return $this->webSiteIndexes;
+	}
+	
+	protected function setMassUpdateIndexes(array $massUpdateIndexes) {
+		$this->massUpdateIndexes = $massUpdateIndexes;
+	}
+	
+	public function getMassUpdateIndexes() {
+		return $this->massUpdateIndexes;
+	}
+	
+	public function getIndexes($purpose) {
+		if ($purpose == "WebSite")
+			return $this->getWebSiteIndexes();
+		else if ($purpose == "MassUpdate")
+			return $this->getMassUpdateIndexes();
+		else
+			return null;
+	}
+}
+
+class TableIndex {
+	protected $name;
+	protected $columns;
+	
+	public function __construct($name, array $columns) {
+		$this->name = $name;
+		$this->columns = $columns;
+	}
+	
+	public function getName() {
+		return $this->name;
+	}
+	
+	public function getColumns() {
+		return $this->columns;
 	}
 }
 
@@ -193,7 +250,46 @@ class ExpressionTable extends VersionedTable {
 		$this->spelling = $this->createColumn("spelling");
 		$this->languageId = $this->createColumn("language_id");
 		
-		$this->setKeyColumns(array($this->expressionId));	
+		$this->setKeyColumns(array($this->expressionId));
+		
+		$this->setWebSiteIndexes(array(
+			new TableIndex("versioned_end_expression", array(
+				$this->removeTransactionId,
+				$this->expressionId, 
+				$this->languageId
+			)),
+			new TableIndex("versioned_end_language", array(
+				$this->removeTransactionId, 
+				$this->languageId, 
+				$this->expressionId
+			)),
+			new TableIndex("versioned_end_spelling", array(
+				$this->removeTransactionId, 
+				$this->spelling->subPart(255), 
+				$this->expressionId, 
+				$this->languageId
+			)),
+			new TableIndex("versioned_start_expression", array(
+				$this->addTransactionId, 
+				$this->expressionId, 
+				$this->languageId
+			)),
+			new TableIndex("versioned_start_language", array(
+				$this->addTransactionId, 
+				$this->languageId, 
+				$this->expressionId
+			)),
+			new TableIndex("versioned_start_spelling", array(
+				$this->addTransactionId, 
+				$this->spelling->subPart(255), 
+				$this->expressionId, 
+				$this->languageId
+			)),
+			new TableIndex("expressions_unique_idx", array(
+				$this->expressionId, 
+				$this->languageId
+			))
+		));	
 	}
 }
 
@@ -436,8 +532,9 @@ class WikiDataSet {
 global
 	$dataSet;
 
-$dc=wdGetDataSetContext();
-$dataSet = new WikiDataSet($dc);
+require_once("Wikidata.php");
+
+$dataSet = new WikiDataSet(wdGetDataSetContext());
 
 function genericSelect($selectCommand, array $expressions, array $tables, array $restrictions) {
 	$result = $selectCommand . " " . $expressions[0]->toExpression();
