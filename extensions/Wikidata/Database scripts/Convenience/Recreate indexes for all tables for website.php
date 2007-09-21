@@ -48,11 +48,11 @@ function recreateIndexesForTable($dc, $tableName) {
 	echo "Dropping indices from table " . $dc . "_" . $tableName . ".\n";
 	dropAllIndicesFromTable($dc . "_" . $tableName);
 	echo "Creating new indices for table " . $dc . "_" . $tableName . ".\n";
-	createIndexesForTable($dc,$tableName);
+	createIndexesForTable($dc, $tableName);
 }
 
-function addIndexesForTable($table) {
-	$tableIndexes = $table->getIndexes("WebSite");
+function addIndexesForTable($table, $purpose) {
+	$tableIndexes = $table->getIndexes($purpose);
 	$indexes = array();
 	
 	foreach ($tableIndexes as $tableIndex) {
@@ -74,12 +74,12 @@ function addIndexesForTable($table) {
 	addIndexes($table->getIdentifier(), $indexes);	
 }
 
-function recreateIndexesForTableNew(Table $table) {
+function recreateIndexesForTableNew(Table $table, $purpose) {
 	echo "Dropping indices from table " . $table->getIdentifier() . ".\n";
 	dropAllIndicesFromTable($table->getIdentifier());
 
 	echo "Creating new indices for table " . $table->getIdentifier() . ".\n";
-	addIndexesForTable($table);	
+	addIndexesForTable($table, $purpose);	
 }
 
 function recreateIndexesForTables($dc, $tableNames) {
@@ -95,7 +95,6 @@ $wgCommandLineMode = true;
 $dc = "uw";
 
 $tables = array(
-	"bootstrapped_defined_meanings",
 	"transactions",
 	"translated_content",
 	"alt_meaningtexts",
@@ -113,11 +112,13 @@ $tables = array(
 	"url_attribute_values"
 );
 					
+$purpose = "WebSite";
 $prefixes = retrieve_datasets();
 
 foreach($prefixes as $prefix) {
 	$dataSet = new WikiDataSet($prefix);
-	recreateIndexesForTableNew($dataSet->expression);
+	recreateIndexesForTableNew($dataSet->bootstrappedDefinedMeanings, $purpose);
+	recreateIndexesForTableNew($dataSet->expression, $purpose);
 	
 	recreateIndexesForTables($prefix, $tables);
 }

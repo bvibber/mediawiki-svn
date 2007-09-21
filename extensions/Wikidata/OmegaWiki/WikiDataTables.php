@@ -105,8 +105,8 @@ class Table {
 		return $this->identifier;
 	}	
 	
-	protected function createColumn($identifier) {
-		$result = new TableColumn($this, $identifier);
+	protected function createColumn($identifier, $length = null) {
+		$result = new TableColumn($this, $identifier, $length);
 		$this->columns[] = $result;
 		
 		return $result;
@@ -194,10 +194,14 @@ class BootstrappedDefinedMeaningsTable extends Table {
 	public function __construct($identifier) {
 		parent::__construct($identifier, false);
 		
-		$this->name = $this->createColumn("name");
+		$this->name = $this->createColumn("name", 255);
 		$this->definedMeaningId = $this->createColumn("defined_meaning_id");
 		
-		$this->setKeyColumns(array($this->name));	
+		$this->setKeyColumns(array($this->name));
+		$this->setWebSiteIndexes(array(
+			new TableIndex("unversioned_meaning", array($this->definedMeaningId)),
+			new TableIndex("unversioned_name", array($this->name, $this->definedMeaningId))
+		));
 	}
 }
 
@@ -262,7 +266,7 @@ class ExpressionTable extends VersionedTable {
 		parent::__construct($name);
 		
 		$this->expressionId = $this->createColumn("expression_id");
-		$this->spelling = $this->createColumn("spelling");
+		$this->spelling = $this->createColumn("spelling", 255);
 		$this->languageId = $this->createColumn("language_id");
 		
 		$this->setKeyColumns(array($this->expressionId));
@@ -275,7 +279,7 @@ class ExpressionTable extends VersionedTable {
 				array($this->languageId, $this->expressionId)
 			),
 			$this->createVersionedIndexes("spelling", true, true, false, 
-				array($this->spelling->subPart(255),$this->languageId, $this->expressionId)
+				array($this->spelling, $this->languageId, $this->expressionId)
 			)
 		));
 	}
