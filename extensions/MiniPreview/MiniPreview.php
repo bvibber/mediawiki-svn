@@ -6,7 +6,7 @@
  *
  * @addtogroup Extensions
  * @author Magnus Manske
- * @copyright © 2007 Magnus Manske
+ * @copyright Â© 2007 Magnus Manske
  * @licence GNU General Public Licence 2.0 or later
  */
 
