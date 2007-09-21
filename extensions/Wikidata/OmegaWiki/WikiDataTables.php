@@ -171,6 +171,12 @@ class VersionedTable extends Table {
 		$this->removeTransactionId = $this->createColumn("remove_transaction_id");
 	}
 	
+	/**
+	 * Create different index variants based on different versioning needs. 
+	 * Due to a bug in MySQL it is often advisible to set $unversioned to false
+	 * as the MySQL might get confused when such an index is present. 
+	 */
+	
 	protected function createVersionedIndexes($name, $versionedEnd, $versionedStart, $unversioned, array $columns) {
 		$result = array();
 		
@@ -476,6 +482,12 @@ class TextAttributeValuesTable extends VersionedTable {
 		$this->text = $this->createColumn("text");
 		
 		$this->setKeyColumns(array($this->valueId));	
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("object", true, true, false, array($this->objectId, $this->attributeMid, $this->valueId)),
+			$this->createVersionedIndexes("attribute", true, true, false, array($this->attributeMid, $this->objectId, $this->valueId)),
+			$this->createVersionedIndexes("value", true, true, false, array($this->valueId))
+		));
 	}
 }
 
@@ -494,6 +506,13 @@ class TranslatedContentAttributeValuesTable extends VersionedTable {
 		$this->valueTcid = $this->createColumn("value_tcid");
 		
 		$this->setKeyColumns(array($this->valueId));	
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("object", true, true, false, array($this->objectId, $this->attributeMid, $this->valueTcid)),
+			$this->createVersionedIndexes("attribute", true, true, false, array($this->attributeMid, $this->objectId, $this->valueTcid)),
+			$this->createVersionedIndexes("translated_content", true, true, false, array($this->valueTcid, $this->valueId)),
+			$this->createVersionedIndexes("value", true, true, false, array($this->valueId))
+		));
 	}
 }
 
@@ -538,7 +557,13 @@ class OptionAttributeOptionsTable extends VersionedTable {
 		$this->optionMid = $this->createColumn("option_mid"); 	
 		$this->languageId = $this->createColumn("language_id");
 		
-		$this->setKeyColumns(array($this->attributeId, $this->optionMid)); // TODO: is this the correct key?	
+		$this->setKeyColumns(array($this->attributeId, $this->optionMid)); // TODO: is this the correct key?
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("option", true, true, false, array($this->optionMid, $this->attributeId, $this->optionId)),
+			$this->createVersionedIndexes("atttribute", true, true, false, array($this->attributeId, $this->optionId, $this->optionMid)),
+			$this->createVersionedIndexes("id", true, true, false, array($this->optionId))	
+		));	
 	}
 }
 
@@ -554,7 +579,13 @@ class OptionAttributeValuesTable extends VersionedTable {
 		$this->objectId = $this->createColumn("object_id"); 	
 		$this->optionId = $this->createColumn("option_id"); 	
 		
-		$this->setKeyColumns(array($this->valueId));	
+		$this->setKeyColumns(array($this->valueId));
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("object", true, true, false, array($this->objectId, $this->optionId, $this->valueId)),
+			$this->createVersionedIndexes("option", true, true, false, array($this->optionId, $this->objectId, $this->valueId)),
+			$this->createVersionedIndexes("value", true, true, false, array($this->valueId))
+		));	
 	}
 }
 
@@ -574,7 +605,13 @@ class LinkAttributeValuesTable extends VersionedTable {
 		$this->url = $this->createColumn("url");
 		$this->label = $this->createColumn("label");
 		
-		$this->setKeyColumns(array($this->valueId));	
+		$this->setKeyColumns(array($this->valueId));
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("object", true, true, false, array($this->objectId, $this->attributeMid, $this->valueId)),
+			$this->createVersionedIndexes("attribute", true, true, false, array($this->attributeMid, $this->objectId, $this->valueId)),
+			$this->createVersionedIndexes("value", true, true, false, array($this->valueId))
+		));	
 	}
 }
 

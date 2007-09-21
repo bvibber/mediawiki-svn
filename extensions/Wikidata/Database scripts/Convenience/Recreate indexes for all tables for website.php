@@ -25,32 +25,6 @@ function retrieve_datasets(){
 	return $prefixes;
 }
 
-function createIndexesForTable($dc,$tableName) {
-	$handle = fopen("Create uw_" . $tableName . " indices.sql", "r");
-	$sql = "";
-	
-	while (!feof($handle)) {
-		$line = fgets($handle);
-		
-		if (substr($line, 0, 2) != "--")	
-			$sql .= $line;
-	}
-	
-	$sql = str_replace("%dc%", $dc, $sql);
-	
-	$dbr =& wfGetDB(DB_MASTER);
-	$queryResult = $dbr->query($sql);
-	
-	fclose($handle);
-}
-
-function recreateIndexesForTableOld($dc, $tableName) {
-	echo "Dropping indices from table " . $dc . "_" . $tableName . ".\n";
-	dropAllIndicesFromTable($dc . "_" . $tableName);
-	echo "Creating new indices for table " . $dc . "_" . $tableName . ".\n";
-	createIndexesForTable($dc, $tableName);
-}
-
 function addIndexesForTable($table, $purpose) {
 	$tableIndexes = $table->getIndexes($purpose);
 	$indexes = array();
@@ -82,11 +56,6 @@ function recreateIndexesForTable(Table $table, $purpose) {
 	addIndexesForTable($table, $purpose);	
 }
 
-function recreateIndexesForTables($dc, $tableNames) {
-	foreach ($tableNames as $tableName)
-		recreateIndexesForTableOld($dc, $tableName);
-}
-
 global
 	$beginTime, $wgCommandLineMode;
 
@@ -94,14 +63,6 @@ $beginTime = time();
 $wgCommandLineMode = true;
 $dc = "uw";
 
-$tables = array(
-	"option_attribute_options",
-	"option_attribute_values",
-	"text_attribute_values",
-	"translated_content_attribute_values",
-	"url_attribute_values"
-);
-					
 $purpose = "WebSite";
 $prefixes = retrieve_datasets();
 
@@ -115,12 +76,15 @@ foreach ($prefixes as $prefix) {
 	recreateIndexesForTable($dataSet->collectionMemberships, $purpose);
 	recreateIndexesForTable($dataSet->definedMeaning, $purpose);
 	recreateIndexesForTable($dataSet->expression, $purpose);
+	recreateIndexesForTable($dataSet->linkAttributeValues, $purpose);
 	recreateIndexesForTable($dataSet->meaningRelations, $purpose);
+	recreateIndexesForTable($dataSet->optionAttributeOptions, $purpose);
+	recreateIndexesForTable($dataSet->optionAttributeValues, $purpose);
 	recreateIndexesForTable($dataSet->syntrans, $purpose);
+	recreateIndexesForTable($dataSet->textAttributeValues, $purpose);
 	recreateIndexesForTable($dataSet->translatedContent, $purpose);
+	recreateIndexesForTable($dataSet->translatedContentAttributeValues, $purpose);
 	recreateIndexesForTable($dataSet->transactions, $purpose);
-	
-	recreateIndexesForTables($prefix, $tables);
 }
 
 $endTime = time();
