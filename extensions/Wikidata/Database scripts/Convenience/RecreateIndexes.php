@@ -1,5 +1,20 @@
 <?php
 
+/**
+ * Use this script to recreate indexes for all configured wiki data tables. 
+ * Recreating indexes is profitable because:
+ * 
+ * 1) Different indexes are better for different purposes
+ * 2) After a while index fragmentation can occur, degrading performance
+ * 
+ * The script takes two parameters: 
+ * 1) dataset: for which dataset should the indexes be create, if ommitted recrate for all datasets
+ * 2) purpose: can be either WebSite or MassUpdate
+ * 
+ * Usage example:
+ *   prompt> php "RecreateIndexes.php" --dataset=uw --purpose=WebSite 
+ */
+
 define('MEDIAWIKI', true );
 
 require_once("../../../../StartProfiler.php");
@@ -10,6 +25,27 @@ require_once("Setup.php");
 require_once("../../OmegaWiki/WikiDataTables.php");
 
 ob_end_flush();
+
+function parseCommandLine() {
+	global
+		$argv;
+	
+	$result = array();
+	
+	foreach ($argv as $arg) {
+		if (substr($arg, 0, 2) == '--') {
+			$arg = substr($arg, 2);
+			$equalsPosition = strpos($arg, "=");
+			
+			if ($equalsPosition !== false)
+				$result[substr($arg, 0, $equalsPosition)] = substr($arg, $equalsPosition + 1);
+			else
+				$result[$arg] = null;
+		}
+	}
+	
+	return $result;
+}
 
 /*
  * This function wil retrieve a list of the data sets defined in this
@@ -61,10 +97,18 @@ global
 
 $beginTime = time();
 $wgCommandLineMode = true;
-$dc = "uw";
 
-$purpose = "WebSite";
-$prefixes = retrieve_datasets();
+$options = parseCommandLine();
+
+if (isset($options["purpose"]))
+	$purpose = $options["purpose"];
+else
+	die("Missing argument: --purpose\nPossible values: WebSite and MassUpdate");
+
+if (isset($options["dataset"]))
+	$prefixes = array($options["dataset"]);
+else
+	$prefixes = retrieve_datasets();
 
 foreach ($prefixes as $prefix) {
 	$dataSet = new WikiDataSet($prefix);
