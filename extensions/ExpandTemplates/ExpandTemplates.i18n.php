@@ -140,8 +140,8 @@ $wgExpandTemplatesMessages['it'] = array(
 	'expand_templates_title'           => 'Contesto (per {{PAGENAME}} ecc.):',
 	'expand_templates_input'           => 'Testo da espandere:',
 	'expand_templates_output'          => 'Risultato',
-	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'Ignora i commenti',
+	'expand_templates_preview'         => 'Anteprima',
 );
 $wgExpandTemplatesMessages['ja'] = array(
 	'expandtemplates'                  => 'テンプレートを展開',

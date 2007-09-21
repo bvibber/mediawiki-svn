@@ -86,6 +86,12 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Seite anlegen',
 ),
 
+'dsb' => array(
+	'tryexact'                => 'Nawłos pytaś:',
+	'searchfulltext'          => 'Ceły tekst pytaś',
+	'createarticle'           => 'Nastawk natworiś',
+),
+
 'el' => array(
 	'tryexact'       => 'Δοκιμάστε την επακριβή αντιστοιχία.',
 	'searchfulltext' => 'Αναζήτηση με το πλήρες κείμενο',
@@ -194,9 +200,9 @@ function efInputBoxMessages() {
 ),
 
 'it' => array(
-	'tryexact'       => 'Cerca corrispondenza esatta',
-	'searchfulltext' => 'Ricerca nel testo',
-	'createarticle'  => 'Crea voce',
+	'tryexact'                => 'Cerca corrispondenza esatta',
+	'searchfulltext'          => 'Ricerca nel testo',
+	'createarticle'           => 'Crea voce',
 ),
 
 'ja' => array(

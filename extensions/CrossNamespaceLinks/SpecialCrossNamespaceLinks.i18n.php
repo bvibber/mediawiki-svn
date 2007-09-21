@@ -74,9 +74,13 @@ $wgCrossNamespaceLinksMessages['id'] = array(
 	'crossnamespacelinkstext' => '$1: $2 terpaut ke $3'
 );
 $wgCrossNamespaceLinksMessages['it'] = array(
-	'crossnamespacelinks'     => 'Collegamenti tra namespace',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|collegamento|collegamenti}} al namespace $3'
+	'crossnamespacelinks'         => 'Collegamenti tra namespace',
+	'crossnamespacelinks-summary' => 'Questa pagina presenta un elenco di collegamenti tra le pagine del namespace principale e le pagine di altri namespace, che non dovrebbero essere usati.
+
+Sono esclusi i collegamenti verso i namespace {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}}.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|collegamento|collegamenti}} al namespace $3',
 );
+
 $wgCrossNamespaceLinksMessages['ja'] = array(
 	'crossnamespacelinks'         => '名前空間をまたぐリンク',
 	'crossnamespacelinks-summary' => '通常名前空間から他の名前空間（ {{ns:special}}, {{ns:talk}}, {{ns:project}}, {{ns:template}} を除く）のページへとリンクしているページの一覧です。',

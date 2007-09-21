@@ -89,7 +89,8 @@ $wgSiteMatrixMessages['id'] = array(
 	"sitematrix" => "Daftar wiki Wikimedia",
 );
 $wgSiteMatrixMessages['it'] = array(
-	"sitematrix" => "Elenco dei progetti wiki Wikimedia",
+	'sitematrix' => 'Elenco di tutti i progetti Wikimedia nelle varie lingue',
+	'sitematrix-language' => 'Lingua',
 );
 $wgSiteMatrixMessages['ja'] = array(
 	"sitematrix" => "Wikimediaウィキの一覧",
@@ -181,6 +182,7 @@ $wgSiteMatrixMessages['sv'] = array(
 $wgSiteMatrixMessages['tet'] = array(
 	'sitematrix' => 'Lista wiki sira Wikimedia nian',
 	'sitematrix-language' => 'Lian',
+	'sitematrix-project' => 'Naran projetu nian, ligasaun projetu no ligasaun interwiki',
 	'sitematrix-others' => 'Projetu seluk Wikimedia nian',
 );
 $wgSiteMatrixMessages['ur'] = array(

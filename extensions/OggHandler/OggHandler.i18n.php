@@ -234,6 +234,21 @@ $messages = array(
 	'ogg-desc-link' => 'Wo tutej dataji',
 	),
 
+	'it' => array(
+	'ogg-long-error' => '(File ogg non valido: $1)',
+	'ogg-play' => 'Riproduci',
+	'ogg-pause' => 'Pausa',
+	'ogg-stop' => 'Ferma',
+	'ogg-play-video' => 'Riproduci il filmato',
+	'ogg-player-oggPlugin' => 'Plugin ogg',
+	'ogg-player-soundthumb' => 'Nessun player',
+	'ogg-player-selected' => '(selezionato)',
+	'ogg-more' => 'Altro...',
+	'ogg-dismiss' => 'Chiudi',
+	'ogg-download' => 'Scarica il file',
+	'ogg-desc-link' => 'Informazioni su questo file',
+	),
+
 	'kk-kz' => array(
 		'ogg-short-audio'      => 'Ogg $1 дыбыс файлы, $2',
 		'ogg-short-video'      => 'Ogg $1 бейне файлы, $2',

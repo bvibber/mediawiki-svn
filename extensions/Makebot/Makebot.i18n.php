@@ -697,6 +697,24 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'Återkallade robotstatus från [[$1]]',
 ),
 
+'tet' => array(
+'makebot'                 => 'Fó ka hasai kuana "bot"',
+'makebot-username'        => 'Naran uza-na\'in',
+'makebot-search'          => 'Halo',
+'makebot-isbot'           => '[[User:$1|$1]] iha kuana bot.',
+'makebot-notbot'          => '[[User:$1|$1]] la iha kuana bot.',
+'makebot-privileged'      => '[[User:$1|$1]] iha [[Special:Listadmins|kuana administradór ka burokrata]]; ó la bele fó kuana bot.',
+'makebot-change'          => 'Filak kuana bot:',
+'makebot-grant'           => 'Fó',
+'makebot-revoke'          => 'Hasai',
+'makebot-comment'         => 'Komentáriu:',
+'makebot-granted'         => '[[User:$1|$1]] agora iha kuana bot.',
+'makebot-revoked'         => '[[User:$1|$1]] agora la iha kuana bot.',
+'makebot-logpage'         => 'Log fó ka hasai kuana bot',
+'makebot-logentrygrant'   => 'fó kuana bot ba [[User:$1|$1]]',
+'makebot-logentryrevoke'  => 'hasai kuana bot [[User:$1|$1]] nian',
+),
+
 /* Urdu */
 'ur' => array(
 'makebot' => 'بخشیں یا منسوخ کریں درجہ خودکارصارف',

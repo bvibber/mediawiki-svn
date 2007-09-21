@@ -42,6 +42,10 @@ $wgDeletedContribsMessages['id'] = array(
 	'deletedcontributions'		 => 'Kontribusi yang dihapus'
 );
 
+$wgDeletedContribsMessages['it'] = array(
+	'deletedcontributions' => 'Contributi utente cancellati',
+);
+
 $wgDeletedContribsMessages['kk-kz'] = array(
 	'deletedcontributions'		 => 'Пайдаланушының жойлған үлестері'
 );
