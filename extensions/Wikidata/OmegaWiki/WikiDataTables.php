@@ -170,6 +170,21 @@ class VersionedTable extends Table {
 		$this->addTransactionId = $this->createColumn("add_transaction_id");
 		$this->removeTransactionId = $this->createColumn("remove_transaction_id");
 	}
+	
+	protected function createVersionedIndexes($name, $versionedEnd, $versionedStart, $unversioned, array $columns) {
+		$result = array();
+		
+		if ($versionedEnd) 
+			$result[] = new TableIndex("versioned_end_" . $name, array_merge(array($this->removeTransactionId), $columns));
+
+		if ($versionedStart)
+			$result[] = new TableIndex("versioned_start_" . $name, array_merge(array($this->addTransactionId), $columns));
+			
+		if ($unversioned)
+			$result[] = new TableIndex("unversioned_" . $name, $columns);
+		
+		return $result;
+	}
 }
 
 class BootstrappedDefinedMeaningsTable extends Table {
@@ -252,44 +267,17 @@ class ExpressionTable extends VersionedTable {
 		
 		$this->setKeyColumns(array($this->expressionId));
 		
-		$this->setWebSiteIndexes(array(
-			new TableIndex("versioned_end_expression", array(
-				$this->removeTransactionId,
-				$this->expressionId, 
-				$this->languageId
-			)),
-			new TableIndex("versioned_end_language", array(
-				$this->removeTransactionId, 
-				$this->languageId, 
-				$this->expressionId
-			)),
-			new TableIndex("versioned_end_spelling", array(
-				$this->removeTransactionId, 
-				$this->spelling->subPart(255), 
-				$this->expressionId, 
-				$this->languageId
-			)),
-			new TableIndex("versioned_start_expression", array(
-				$this->addTransactionId, 
-				$this->expressionId, 
-				$this->languageId
-			)),
-			new TableIndex("versioned_start_language", array(
-				$this->addTransactionId, 
-				$this->languageId, 
-				$this->expressionId
-			)),
-			new TableIndex("versioned_start_spelling", array(
-				$this->addTransactionId, 
-				$this->spelling->subPart(255), 
-				$this->expressionId, 
-				$this->languageId
-			)),
-			new TableIndex("expressions_unique_idx", array(
-				$this->expressionId, 
-				$this->languageId
-			))
-		));	
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("expression", true, true, true, 
+				array($this->expressionId, $this->languageId)
+			),
+			$this->createVersionedIndexes("language", true, true, false, 
+				array($this->languageId, $this->expressionId)
+			),
+			$this->createVersionedIndexes("spelling", true, true, false, 
+				array($this->spelling->subPart(255),$this->languageId, $this->expressionId)
+			)
+		));
 	}
 }
 
