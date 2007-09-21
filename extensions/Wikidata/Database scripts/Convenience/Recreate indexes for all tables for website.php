@@ -44,7 +44,7 @@ function createIndexesForTable($dc,$tableName) {
 	fclose($handle);
 }
 
-function recreateIndexesForTable($dc, $tableName) {
+function recreateIndexesForTableOld($dc, $tableName) {
 	echo "Dropping indices from table " . $dc . "_" . $tableName . ".\n";
 	dropAllIndicesFromTable($dc . "_" . $tableName);
 	echo "Creating new indices for table " . $dc . "_" . $tableName . ".\n";
@@ -74,7 +74,7 @@ function addIndexesForTable($table, $purpose) {
 	addIndexes($table->getIdentifier(), $indexes);	
 }
 
-function recreateIndexesForTableNew(Table $table, $purpose) {
+function recreateIndexesForTable(Table $table, $purpose) {
 	echo "Dropping indices from table " . $table->getIdentifier() . ".\n";
 	dropAllIndicesFromTable($table->getIdentifier());
 
@@ -84,7 +84,7 @@ function recreateIndexesForTableNew(Table $table, $purpose) {
 
 function recreateIndexesForTables($dc, $tableNames) {
 	foreach ($tableNames as $tableName)
-		recreateIndexesForTable($dc, $tableName);
+		recreateIndexesForTableOld($dc, $tableName);
 }
 
 global
@@ -95,11 +95,6 @@ $wgCommandLineMode = true;
 $dc = "uw";
 
 $tables = array(
-	"translated_content",
-	"alt_meaningtexts",
-	"class_attributes",
-	"class_membership",
-	"collection_contents",
 	"collection",
 	"defined_meaning",
 	"meaning_relations",
@@ -114,11 +109,16 @@ $tables = array(
 $purpose = "WebSite";
 $prefixes = retrieve_datasets();
 
-foreach($prefixes as $prefix) {
+foreach ($prefixes as $prefix) {
 	$dataSet = new WikiDataSet($prefix);
-	recreateIndexesForTableNew($dataSet->bootstrappedDefinedMeanings, $purpose);
-	recreateIndexesForTableNew($dataSet->expression, $purpose);
-	recreateIndexesForTableNew($dataSet->transactions, $purpose);
+	recreateIndexesForTable($dataSet->alternativeDefinitions, $purpose);
+	recreateIndexesForTable($dataSet->bootstrappedDefinedMeanings, $purpose);
+	recreateIndexesForTable($dataSet->classAttributes, $purpose);
+	recreateIndexesForTable($dataSet->classMemberships, $purpose);
+	recreateIndexesForTable($dataSet->collectionMemberships, $purpose);
+	recreateIndexesForTable($dataSet->expression, $purpose);
+	recreateIndexesForTable($dataSet->translatedContent, $purpose);
+	recreateIndexesForTable($dataSet->transactions, $purpose);
 	
 	recreateIndexesForTables($prefix, $tables);
 }

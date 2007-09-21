@@ -258,6 +258,18 @@ class AlternativeDefinitionsTable extends VersionedTable {
 		$this->sourceId = $this->createColumn("source_id");
 		
 		$this->setKeyColumns(array($this->meaningMid, $this->meaningTextTcid));	
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("meaning", true, true, false, 
+				array($this->meaningMid, $this->meaningTextTcid, $this->sourceId)
+			),
+			$this->createVersionedIndexes("text", true, true, false, 
+				array($this->meaningTextTcid, $this->meaningMid, $this->sourceId)
+			),
+			$this->createVersionedIndexes("source", true, true, false, 
+				array($this->sourceId, $this->meaningMid, $this->meaningTextTcid)
+			)
+		));
 	}
 }
 
@@ -306,6 +318,18 @@ class ClassAttributesTable extends VersionedTable {
 		$this->attributeType = $this->createColumn("attribute_type");
 		
 		$this->setKeyColumns(array($this->objectId));	
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("class", true, true, false, 
+				array($this->classMid, $this->attributeMid, $this->objectId)
+			),
+			$this->createVersionedIndexes("attribute", true, true, false, 
+				array($this->attributeMid, $this->classMid, $this->objectId)
+			),
+			$this->createVersionedIndexes("object", true, true, false, 
+				array($this->objectId)
+			)
+		));
 	}
 }
 
@@ -322,6 +346,12 @@ class ClassMembershipsTable extends VersionedTable {
 		$this->classMemberMid = $this->createColumn("class_member_mid");
 		
 		$this->setKeyColumns(array($this->classMembershipId));	
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("class", true, true, false, array($this->classMid, $this->classMemberMid)),
+			$this->createVersionedIndexes("class_member", true, true, false, array($this->classMemberMid, $this->classMid)),
+			$this->createVersionedIndexes("class_membership", true, true, false, array($this->classMembershipId))
+		));
 	}
 }
 
@@ -336,10 +366,16 @@ class CollectionMembershipsTable extends VersionedTable {
 		
 		$this->collectionId = $this->createColumn("collection_id"); 	
 		$this->memberMid = $this->createColumn("member_mid"); 	
-		$this->internalMemberId = $this->createColumn("internal_member_id"); 	
+		$this->internalMemberId = $this->createColumn("internal_member_id", 255); 	
 		$this->applicableLanguageId = $this->createColumn("applicable_language_id");
 		
-		$this->setKeyColumns(array($this->collectionId, $this->memberMid));	
+		$this->setKeyColumns(array($this->collectionId, $this->memberMid));
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("collection", true, true, true, array($this->collectionId, $this->memberMid)),
+			$this->createVersionedIndexes("collection_member", true, true, true, array($this->memberMid, $this->collectionId)),
+			$this->createVersionedIndexes("internal_id", true, true, false, array($this->internalMemberId, $this->collectionId, $this->memberMid))
+		));	
 	}
 }
 
@@ -430,6 +466,15 @@ class TranslatedContentTable extends VersionedTable {
 		$this->originalLanguageId = $this->createColumn("original_language_id");
 		
 		$this->setKeyColumns(array($this->translatedContentId, $this->languageId));	
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("translated_content", true, true, false,
+				array($this->translatedContentId, $this->languageId, $this->textId)
+			),
+			$this->createVersionedIndexes("text", true, true, false,
+				array($this->textId, $this->translatedContentId, $this->languageId)
+			)
+		));
 	}
 }
 
