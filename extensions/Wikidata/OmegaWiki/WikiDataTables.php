@@ -615,7 +615,32 @@ class LinkAttributeValuesTable extends VersionedTable {
 	}
 }
 
+class ObjectsTable extends VersionedTable {
+	public $objectId;
+	public $table;	
+	public $originalId;
+	public $uuid;
+	
+	public function __construct($name) {
+		parent::__construct($name);
+		
+		$this->objectId = $this->createColumn("object_id"); 	
+		$this->table = $this->createColumn("table", 100); 	
+		$this->originalId = $this->createColumn("original_id"); 	
+		$this->uuid = $this->createColumn("UUID", 36);
+		
+		$this->setKeyColumns(array($this->objectId));
+		
+		$this->setWebSiteIndexes(array(
+			new TableIndex("uuid", array($this->uuid, $this->objectId)),
+			new TableIndex("table", array($this->table, $this->objectId))
+		));	
+	}
+}
+
 class WikiDataSet {
+	protected $allTables;
+	
 	public $alternativeDefinitions;
 	public $bootstrappedDefinedMeanings; 
 	public $classAttributes;
@@ -632,25 +657,38 @@ class WikiDataSet {
 	public $translatedContentAttributeValues; 
 	public $translatedContent; 
 	public $transactions;
+	public $objects;
 	
 	public function __construct($dataSetPrefix) {
-		$this->alternativeDefinitions = new AlternativeDefinitionsTable("{$dataSetPrefix}_alt_meaningtexts");
-		$this->bootstrappedDefinedMeanings = new BootstrappedDefinedMeaningsTable("{$dataSetPrefix}_bootstrapped_defined_meanings");
-		$this->classAttributes = new ClassAttributesTable("{$dataSetPrefix}_class_attributes");
-		$this->classMemberships = new ClassMembershipsTable("{$dataSetPrefix}_class_membership");
-		$this->collection = new CollectionTable("{$dataSetPrefix}_collection");
-		$this->collectionMemberships = new CollectionMembershipsTable("{$dataSetPrefix}_collection_contents");
-		$this->definedMeaning = new DefinedMeaningTable("{$dataSetPrefix}_defined_meaning");
-		$this->expression = new ExpressionTable("{$dataSetPrefix}_expression");
-		$this->linkAttributeValues = new LinkAttributeValuesTable("{$dataSetPrefix}_url_attribute_values");
-		$this->meaningRelations = new MeaningRelationsTable("{$dataSetPrefix}_meaning_relations");
-		$this->syntrans = new SyntransTable("{$dataSetPrefix}_syntrans");
-		$this->textAttributeValues = new TextAttributeValuesTable("{$dataSetPrefix}_text_attribute_values");
-		$this->transactions = new TransactionsTable("{$dataSetPrefix}_transactions", false, array("transaction_id"));
-		$this->translatedContentAttributeValues = new TranslatedContentAttributeValuesTable("{$dataSetPrefix}_translated_content_attribute_values");
-		$this->translatedContent = new TranslatedContentTable("{$dataSetPrefix}_translated_content");
-		$this->optionAttributeOptions = new OptionAttributeOptionsTable("{$dataSetPrefix}_option_attribute_options");
-		$this->optionAttributeValues = new OptionAttributeValuesTable("{$dataSetPrefix}_option_attribute_values");
+		$this->allTables = array();
+		
+		$this->alternativeDefinitions = $this->add(new AlternativeDefinitionsTable("{$dataSetPrefix}_alt_meaningtexts"));
+		$this->bootstrappedDefinedMeanings = $this->add(new BootstrappedDefinedMeaningsTable("{$dataSetPrefix}_bootstrapped_defined_meanings"));
+		$this->classAttributes = $this->add(new ClassAttributesTable("{$dataSetPrefix}_class_attributes"));
+		$this->classMemberships = $this->add(new ClassMembershipsTable("{$dataSetPrefix}_class_membership"));
+		$this->collection = $this->add(new CollectionTable("{$dataSetPrefix}_collection"));
+		$this->collectionMemberships = $this->add(new CollectionMembershipsTable("{$dataSetPrefix}_collection_contents"));
+		$this->definedMeaning = $this->add(new DefinedMeaningTable("{$dataSetPrefix}_defined_meaning"));
+		$this->expression = $this->add(new ExpressionTable("{$dataSetPrefix}_expression"));
+		$this->linkAttributeValues = $this->add(new LinkAttributeValuesTable("{$dataSetPrefix}_url_attribute_values"));
+		$this->meaningRelations = $this->add(new MeaningRelationsTable("{$dataSetPrefix}_meaning_relations"));
+		$this->syntrans = $this->add(new SyntransTable("{$dataSetPrefix}_syntrans"));
+		$this->textAttributeValues = $this->add(new TextAttributeValuesTable("{$dataSetPrefix}_text_attribute_values"));
+		$this->transactions = $this->add(new TransactionsTable("{$dataSetPrefix}_transactions", false, array("transaction_id")));
+		$this->translatedContentAttributeValues = $this->add(new TranslatedContentAttributeValuesTable("{$dataSetPrefix}_translated_content_attribute_values"));
+		$this->translatedContent = $this->add(new TranslatedContentTable("{$dataSetPrefix}_translated_content"));
+		$this->optionAttributeOptions = $this->add(new OptionAttributeOptionsTable("{$dataSetPrefix}_option_attribute_options"));
+		$this->optionAttributeValues = $this->add(new OptionAttributeValuesTable("{$dataSetPrefix}_option_attribute_values"));
+		$this->objects = $this->add(new ObjectsTable("{$dataSetPrefix}_objects"));
+	}
+	
+	protected function add(Table $table) {
+		$this->allTables[] = $table;
+		return $table;
+	}
+	
+	public function getAllTables() {
+		return $this->allTables;
 	}
 }
 

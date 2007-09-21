@@ -68,23 +68,9 @@ $prefixes = retrieve_datasets();
 
 foreach ($prefixes as $prefix) {
 	$dataSet = new WikiDataSet($prefix);
-	recreateIndexesForTable($dataSet->alternativeDefinitions, $purpose);
-	recreateIndexesForTable($dataSet->bootstrappedDefinedMeanings, $purpose);
-	recreateIndexesForTable($dataSet->classAttributes, $purpose);
-	recreateIndexesForTable($dataSet->classMemberships, $purpose);
-	recreateIndexesForTable($dataSet->collection, $purpose);
-	recreateIndexesForTable($dataSet->collectionMemberships, $purpose);
-	recreateIndexesForTable($dataSet->definedMeaning, $purpose);
-	recreateIndexesForTable($dataSet->expression, $purpose);
-	recreateIndexesForTable($dataSet->linkAttributeValues, $purpose);
-	recreateIndexesForTable($dataSet->meaningRelations, $purpose);
-	recreateIndexesForTable($dataSet->optionAttributeOptions, $purpose);
-	recreateIndexesForTable($dataSet->optionAttributeValues, $purpose);
-	recreateIndexesForTable($dataSet->syntrans, $purpose);
-	recreateIndexesForTable($dataSet->textAttributeValues, $purpose);
-	recreateIndexesForTable($dataSet->translatedContent, $purpose);
-	recreateIndexesForTable($dataSet->translatedContentAttributeValues, $purpose);
-	recreateIndexesForTable($dataSet->transactions, $purpose);
+	
+	foreach ($dataSet->getAllTables() as $table)
+		recreateIndexesForTable($table, $purpose);
 }
 
 $endTime = time();
