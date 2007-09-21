@@ -764,6 +764,11 @@ CopyTools::newCopyTransaction($dc1, $dc2);
 $dmc=new DefinedMeaningCopier($dmid, $dc1, $dc2); #sorry, not a [[delorean]]
 $dmc->dup(); 
 
+mysql_query("COMMIT");	# Ok, that should not be nescesaty
+			# but on wikiproteins it is?
+
+
+
 echo"
 <hr>
 <div align=\"right\">
