@@ -1452,28 +1452,27 @@ class ClassAttributes {
 		$dbr =& wfGetDB(DB_SLAVE);
 
 		global
-			$wgDefaultClassMids,
-			$classAttributesTable, $bootstrappedDefinedMeaningsTable, $classMembershipsTable;
+			$wgDefaultClassMids, $dataSet;
 
 		$queryResult = $dbr->query(
 			SelectLatestDistinct(
 				array(
-					$classAttributesTable->attributeMid,
-					$classAttributesTable->attributeType,
-					$bootstrappedDefinedMeaningsTable->name 
+					$dataSet->classAttributes->attributeMid,
+					$dataSet->classAttributes->attributeType,
+					$dataSet->bootstrappedDefinedMeanings->name 
 				),
-				array($classAttributesTable, $bootstrappedDefinedMeaningsTable),
+				array($dataSet->classAttributes, $dataSet->bootstrappedDefinedMeanings),
 				array(
-					equals($classAttributesTable->levelMid, $bootstrappedDefinedMeaningsTable->definedMeaningId),
+					equals($dataSet->classAttributes->levelMid, $dataSet->bootstrappedDefinedMeanings->definedMeaningId),
 					sqlOr(
-						in($classAttributesTable->classMid, 
+						in($dataSet->classAttributes->classMid, 
 							selectLatest(
-								array($classMembershipsTable->classMid),
-								array($classMembershipsTable),
-								array(equals($classMembershipsTable->classMemberMid, $definedMeaningId))
+								array($dataSet->classMemberships->classMid),
+								array($dataSet->classMemberships),
+								array(equals($dataSet->classMemberships->classMemberMid, $definedMeaningId))
 							)
 						),
-						inArray($classAttributesTable->classMid, $wgDefaultClassMids)
+						inArray($dataSet->classAttributes->classMid, $wgDefaultClassMids)
 					) 
 				)
 			)

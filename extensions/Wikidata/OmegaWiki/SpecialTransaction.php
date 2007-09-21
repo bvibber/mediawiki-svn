@@ -344,11 +344,10 @@ function initializeAttributes() {
 }
 
 function getTransactionRecordSet($fromTransactionId, $transactionCount, $userName) {
-
-	$o=OmegaWikiAttributes::getInstance();
 	global
-		  $transactionsTable;
+		  $dataSet;
 		
+	$o=OmegaWikiAttributes::getInstance();
 	$dc=wdGetDataSetContext();	
 	$queryTransactionInformation = new QueryLatestTransactionInformation();
 
@@ -364,7 +363,7 @@ function getTransactionRecordSet($fromTransactionId, $transactionCount, $userNam
 		new TableColumnsToAttributesMapping(
 			new TableColumnsToAttribute(array('transaction_id'), $o->transactionId)
 		),
-		$transactionsTable,
+		$dataSet->transactions,
 		$restrictions,
 		array('transaction_id DESC'),
 		$transactionCount

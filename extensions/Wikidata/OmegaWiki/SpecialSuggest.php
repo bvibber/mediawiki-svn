@@ -412,18 +412,18 @@ function getSQLForCollection($language="<ANY>") {
 
 function getSQLForLevels($language="<ANY>") {
 	global
-		$definedMeaningTable, $expressionTable, $bootstrappedDefinedMeaningsTable, $classAttributeLevels;
+		$classAttributeLevels, $dataSet;
 	
 	$o=OmegaWikiAttributes::getInstance();
 	// TO DO: Add support for multiple languages here
 	return
 		selectLatest(
-			array($bootstrappedDefinedMeaningsTable->definedMeaningId, $expressionTable->spelling), 
-			array($definedMeaningTable, $expressionTable, $bootstrappedDefinedMeaningsTable),
+			array($dataSet->bootstrappedDefinedMeanings->definedMeaningId, $dataSet->expression->spelling), 
+			array($dataSet->definedMeaning, $dataSet->expression, $dataSet->bootstrappedDefinedMeanings),
 			array(
 				'name IN (' . implodeFixed($classAttributeLevels) . ')',
-				equals($definedMeaningTable->definedMeaningId, $bootstrappedDefinedMeaningsTable->definedMeaningId),
-				equals($definedMeaningTable->expressionId, $expressionTable->expressionId) 
+				equals($dataSet->definedMeaning->definedMeaningId, $dataSet->bootstrappedDefinedMeanings->definedMeaningId),
+				equals($dataSet->definedMeaning->expressionId, $dataSet->expression->expressionId) 
 			)
 		);
 }

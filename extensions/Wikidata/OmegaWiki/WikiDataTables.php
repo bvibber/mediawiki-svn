@@ -82,15 +82,13 @@ class Table {
 	public $columns;
 	
 	public function __construct($identifier, $isVersioned) {
-		# Without dataset prefix!
 		$this->identifier = $identifier;
 		$this->isVersioned = $isVersioned;
 		$this->columns = array();
 	}
 
 	public function getIdentifier() {
-		$dc = wdGetDataSetContext();
-		return "{$dc}_" . $this->identifier;
+		return $this->identifier;
 	}	
 	
 	protected function createColumn($identifier) {
@@ -397,43 +395,49 @@ class LinkAttributeValuesTable extends VersionedTable {
 	}
 }
 
-global
-	$tables, 
+class WikiDataSet {
+	public $alternativeDefinitions;
+	public $bootstrappedDefinedMeanings; 
+	public $classAttributes;
+	public $classMemberships; 
+	public $collectionMemberships;
+	public $definedMeaning; 
+	public $expression;
+	public $linkAttributeValues;
+	public $meaningRelations; 
+	public $optionAttributeOptions; 
+	public $optionAttributeValues; 
+	public $syntrans; 
+	public $textAttributeValues; 
+	public $translatedContentAttributeValues; 
+	public $translatedContent; 
+	public $transactions;
+	
+	public function __construct($dataSetPrefix) {
+		$this->alternativeDefinitions = new AlternativeDefinitionsTable("{$dataSetPrefix}_alt_meaningtexts");
+		$this->bootstrappedDefinedMeanings = new BootstrappedDefinedMeaningsTable("{$dataSetPrefix}_bootstrapped_defined_meanings");
+		$this->classAttributes = new ClassAttributesTable("{$dataSetPrefix}_class_attributes");
+		$this->classMemberships = new ClassMembershipsTable("{$dataSetPrefix}_class_membership");
+		$this->collectionMemberships = new CollectionMembershipsTable("{$dataSetPrefix}_collection_contents");
+		$this->definedMeaning = new DefinedMeaningTable("{$dataSetPrefix}_defined_meaning");
+		$this->expression = new ExpressionTable("{$dataSetPrefix}_expression");
+		$this->linkAttributeValues = new LinkAttributeValuesTable("{$dataSetPrefix}_url_attribute_values");
+		$this->meaningRelations = new MeaningRelationsTable("{$dataSetPrefix}_meaning_relations");
+		$this->syntrans = new SyntransTable("{$dataSetPrefix}_syntrans");
+		$this->textAttributeValues = new TextAttributeValuesTable("{$dataSetPrefix}_text_attribute_values");
+		$this->transactions = new Table("{$dataSetPrefix}_transactions", false, array("transaction_id"));
+		$this->translatedContentAttributeValues = new TranslatedContentAttributeValuesTable("{$dataSetPrefix}_translated_content_attribute_values");
+		$this->translatedContent = new TranslatedContentTable("{$dataSetPrefix}_translated_content");
+		$this->optionAttributeOptions = new OptionAttributeOptionsTable("{$dataSetPrefix}_option_attribute_options");
+		$this->optionAttributeValues = new OptionAttributeValuesTable("{$dataSetPrefix}_option_attribute_values");
+	}
+}
 
-	$alternativeDefinitionsTable,
-	$bootstrappedDefinedMeaningsTable, 
-	$classAttributesTable,
-	$classMembershipsTable, 
-	$collectionMembershipsTable,
-	$definedMeaningTable, 
-	$expressionTable,
-	$linkAttributeValuesTable,
-	$meaningRelationsTable, 
-	$optionAttributeOptionsTable, 
-	$optionAttributeValuesTable, 
-	$syntransTable, 
-	$textAttributeValuesTable, 
-	$translatedContentAttributeValuesTable, 
-	$translatedContentTable, 
-	$transactionsTable;
+global
+	$dataSet;
 
 $dc=wdGetDataSetContext();
-$alternativeDefinitionsTable = new AlternativeDefinitionsTable("alt_meaningtexts");
-$bootstrappedDefinedMeaningsTable = new BootstrappedDefinedMeaningsTable("bootstrapped_defined_meanings");
-$classAttributesTable = new ClassAttributesTable("class_attributes");
-$classMembershipsTable = new ClassMembershipsTable("class_membership");
-$collectionMembershipsTable = new CollectionMembershipsTable("collection_contents");
-$definedMeaningTable = new DefinedMeaningTable("defined_meaning");
-$expressionTable = new ExpressionTable("expression");
-$linkAttributeValuesTable = new LinkAttributeValuesTable("url_attribute_values");
-$meaningRelationsTable = new MeaningRelationsTable("meaning_relations");
-$syntransTable = new SyntransTable("syntrans");
-$textAttributeValuesTable = new TextAttributeValuesTable("text_attribute_values");
-$transactionsTable = new Table("transactions", false, array('transaction_id'));
-$translatedContentAttributeValuesTable = new TranslatedContentAttributeValuesTable("translated_content_attribute_values");
-$translatedContentTable = new TranslatedContentTable("translated_content");
-$optionAttributeOptionsTable = new OptionAttributeOptionsTable("option_attribute_options");
-$optionAttributeValuesTable = new OptionAttributeValuesTable("option_attribute_values");
+$dataSet = new WikiDataSet($dc);
 
 function genericSelect($selectCommand, array $expressions, array $tables, array $restrictions) {
 	$result = $selectCommand . " " . $expressions[0]->toExpression();
