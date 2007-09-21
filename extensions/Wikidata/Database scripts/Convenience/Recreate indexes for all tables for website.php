@@ -95,7 +95,6 @@ $wgCommandLineMode = true;
 $dc = "uw";
 
 $tables = array(
-	"transactions",
 	"translated_content",
 	"alt_meaningtexts",
 	"class_attributes",
@@ -119,6 +118,7 @@ foreach($prefixes as $prefix) {
 	$dataSet = new WikiDataSet($prefix);
 	recreateIndexesForTableNew($dataSet->bootstrappedDefinedMeanings, $purpose);
 	recreateIndexesForTableNew($dataSet->expression, $purpose);
+	recreateIndexesForTableNew($dataSet->transactions, $purpose);
 	
 	recreateIndexesForTables($prefix, $tables);
 }

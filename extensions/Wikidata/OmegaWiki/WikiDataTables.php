@@ -221,7 +221,11 @@ class TransactionsTable extends Table {
 		$this->timestamp = $this->createColumn("timestamp"); 	
 		$this->comment = $this->createColumn("comment");
 		
-		$this->setKeyColumns(array($this->transactionId));	
+		$this->setKeyColumns(array($this->transactionId));
+		
+		$this->setWebSiteIndexes(array(
+			new TableIndex("user", array($this->userId, $this->transactionId))
+		));	
 	}
 }
 
@@ -513,7 +517,7 @@ class WikiDataSet {
 		$this->meaningRelations = new MeaningRelationsTable("{$dataSetPrefix}_meaning_relations");
 		$this->syntrans = new SyntransTable("{$dataSetPrefix}_syntrans");
 		$this->textAttributeValues = new TextAttributeValuesTable("{$dataSetPrefix}_text_attribute_values");
-		$this->transactions = new Table("{$dataSetPrefix}_transactions", false, array("transaction_id"));
+		$this->transactions = new TransactionsTable("{$dataSetPrefix}_transactions", false, array("transaction_id"));
 		$this->translatedContentAttributeValues = new TranslatedContentAttributeValuesTable("{$dataSetPrefix}_translated_content_attribute_values");
 		$this->translatedContent = new TranslatedContentTable("{$dataSetPrefix}_translated_content");
 		$this->optionAttributeOptions = new OptionAttributeOptionsTable("{$dataSetPrefix}_option_attribute_options");
