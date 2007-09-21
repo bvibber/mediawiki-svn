@@ -26,6 +26,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   complementing {{fullurl:}} for pages.
 * (bug 11136) If using Postgres, search path is explicitly set if wgDBmwschema is 
   not set to 'mediawiki', allowing multiple mediawiki instances per user.
+* (bug 11151) Add descriptive <title> to revision history page
 
 === Bug fixes in 1.12 ===
 
@@ -72,25 +73,37 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 
 === Languages updated in 1.12 ===
 
+* Amharic (am) (new)
 * Arabic (ar)
 * Mapudungun (arn) (new)
+* Samogitian (bat-smg)
 * Bikol Central (bcl)
 * Belarusian Taraskievica orthography (be-tarask)
+* Bulgarian (bg)
+* Bislama (bi) (new)
 * Bengali (bn)
 * Catalan (ca)
+* Breton (br)
 * Czech (cs)
 * Cassubian (csb)
 * Welsh (cy)
 * Danish (da)
 * German (de)
-* Lower Sorbian (dsb)
+* Lower Sorbian (dsb) (new)
 * Greek (el)
 * Spanish (es)
 * Extremaduran (ext)
+* Finnish (fi)
 * Persian (fa)
 * Võro (fiu-vro)
 * Frisian (fy)
 * French (fr)
+* Cajun French (frc)
+* Franco-Provençal (frp)
+* Irish (ga)
+* Galician (gl)
+* Ancient Greek (grc) (new)
+* Hakka (hak)
 * Hebrew (he)
 * Upper Sorbian (hsb)
 * Indonesian (id)
@@ -108,6 +121,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Tamil (ta)
 * Tetun (tet) (new)
 * Walloon (wa)
+* Yiddish (yi)
 * Zhuang (za)
 * Zealandic (zea)
 

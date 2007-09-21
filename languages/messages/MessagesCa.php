@@ -160,9 +160,9 @@ $messages = array(
 
 == Per a començar ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Llista de característiques configurables]
-* [http://www.mediawiki.org/wiki/Help:FAQ PMF del MediaWiki]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce Llista de correu (''listserv'') per a anuncis del MediaWiki]",
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Llista de característiques configurables]
+* [http://www.mediawiki.org/wiki/Manual:FAQ PMF del MediaWiki]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Llista de correu (''listserv'') per a anuncis del MediaWiki]",
 
 'about'          => 'Quant a',
 'article'        => 'Contingut de la pàgina',
@@ -678,6 +678,7 @@ Altres administradors d'aquest web basat en wiki encara podrien accedir al conti
 'oversightlog' => "Registre d'oversight",
 
 # Diffs
+'history-title'             => 'Historial de versions de «$1»',
 'difference'                => '(Diferència entre revisions)',
 'loadingrev'                => 'recuperant revisió per a diff',
 'lineno'                    => 'Línia $1:',
@@ -923,10 +924,9 @@ Totes les hores són les del servidor (UTC).",
 'imagelist_search_for'      => "Cerca un nom d'imatge:",
 
 # MIME search
-'mimesearch'         => 'Cerca per MIME',
-'mimesearch-summary' => 'This page enables the filtering of files for its MIME-type. Input: contenttype/subtype, e.g. <tt>image/jpeg</tt>.',
-'mimetype'           => 'Tipus MIME:',
-'download'           => 'descarrega',
+'mimesearch' => 'Cerca per MIME',
+'mimetype'   => 'Tipus MIME:',
+'download'   => 'descarrega',
 
 # Unwatched pages
 'unwatchedpages' => 'Pàgines desateses',
