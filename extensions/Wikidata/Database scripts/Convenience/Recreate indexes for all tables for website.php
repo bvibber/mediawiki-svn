@@ -95,12 +95,8 @@ $wgCommandLineMode = true;
 $dc = "uw";
 
 $tables = array(
-	"collection",
-	"defined_meaning",
-	"meaning_relations",
 	"option_attribute_options",
 	"option_attribute_values",
-	"syntrans",
 	"text_attribute_values",
 	"translated_content_attribute_values",
 	"url_attribute_values"
@@ -115,8 +111,12 @@ foreach ($prefixes as $prefix) {
 	recreateIndexesForTable($dataSet->bootstrappedDefinedMeanings, $purpose);
 	recreateIndexesForTable($dataSet->classAttributes, $purpose);
 	recreateIndexesForTable($dataSet->classMemberships, $purpose);
+	recreateIndexesForTable($dataSet->collection, $purpose);
 	recreateIndexesForTable($dataSet->collectionMemberships, $purpose);
+	recreateIndexesForTable($dataSet->definedMeaning, $purpose);
 	recreateIndexesForTable($dataSet->expression, $purpose);
+	recreateIndexesForTable($dataSet->meaningRelations, $purpose);
+	recreateIndexesForTable($dataSet->syntrans, $purpose);
 	recreateIndexesForTable($dataSet->translatedContent, $purpose);
 	recreateIndexesForTable($dataSet->transactions, $purpose);
 	

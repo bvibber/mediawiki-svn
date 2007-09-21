@@ -242,6 +242,12 @@ class DefinedMeaningTable extends VersionedTable {
 		$this->meaningTextTcid = $this->createColumn("meaning_text_tcid");
 		
 		$this->setKeyColumns(array($this->definedMeaningId));	
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("meaning", true, true, true, array($this->definedMeaningId, $this->expressionId)),
+			$this->createVersionedIndexes("expression", true, true, true, array($this->expressionId, $this->definedMeaningId)),
+			$this->createVersionedIndexes("meaning_text", true, true, false, array($this->meaningTextTcid, $this->definedMeaningId))
+		));
 	}
 }
 
@@ -355,6 +361,28 @@ class ClassMembershipsTable extends VersionedTable {
 	}
 }
 
+class CollectionTable extends VersionedTable {
+	public $collectionId;
+	public $collectionMid;	
+	public $collectionType;
+	
+	public function __construct($name) {
+		parent::__construct($name);
+		
+		$this->collectionId = $this->createColumn("collection_id"); 	
+		$this->collectionMid = $this->createColumn("collection_mid"); 	
+		$this->collectionType = $this->createColumn("collection_type", 4); 	
+		
+		$this->setKeyColumns(array($this->collectionId));
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("collection", true, true, false, array($this->collectionId, $this->collectionMid)),
+			$this->createVersionedIndexes("collection_meaning", true, true, false, array($this->collectionMid, $this->collectionId)),
+			$this->createVersionedIndexes("collection_type", true, true, false, array($this->collectionType, $this->collectionId, $this->collectionMid))
+		));	
+	}
+}
+
 class CollectionMembershipsTable extends VersionedTable {
 	public $collectionId;
 	public $memberMid;	
@@ -393,7 +421,19 @@ class MeaningRelationsTable extends VersionedTable {
 		$this->meaning2Mid = $this->createColumn("meaning2_mid"); 	
 		$this->relationTypeMid = $this->createColumn("relationtype_mid");
 		
-		$this->setKeyColumns(array($this->relationId));	
+		$this->setKeyColumns(array($this->relationId));
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("outgoing", true, true, false, 
+				array($this->meaning1Mid, $this->relationTypeMid, $this->meaning2Mid)
+			),
+			$this->createVersionedIndexes("incoming", true, true, false, 
+				array($this->meaning2Mid, $this->relationTypeMid, $this->meaning1Mid)
+			),
+			$this->createVersionedIndexes("relation", true, true, false, 
+				array($this->relationId)
+			)
+		));	
 	}
 }
 
@@ -412,6 +452,12 @@ class SyntransTable extends VersionedTable {
 		$this->identicalMeaning = $this->createColumn("identical_meaning");
 		
 		$this->setKeyColumns(array($this->syntransSid));	
+		
+		$this->setWebSiteIndexes(array_merge(
+			$this->createVersionedIndexes("syntrans", true, true, true, array($this->syntransSid)),
+			$this->createVersionedIndexes("expression", true, true, true, array($this->expressionId, $this->identicalMeaning, $this->definedMeaningId)),
+			$this->createVersionedIndexes("defined_meaning", true, true, true, array($this->definedMeaningId, $this->identicalMeaning, $this->expressionId))
+		));
 	}
 }
 
@@ -555,6 +601,7 @@ class WikiDataSet {
 		$this->bootstrappedDefinedMeanings = new BootstrappedDefinedMeaningsTable("{$dataSetPrefix}_bootstrapped_defined_meanings");
 		$this->classAttributes = new ClassAttributesTable("{$dataSetPrefix}_class_attributes");
 		$this->classMemberships = new ClassMembershipsTable("{$dataSetPrefix}_class_membership");
+		$this->collection = new CollectionTable("{$dataSetPrefix}_collection");
 		$this->collectionMemberships = new CollectionMembershipsTable("{$dataSetPrefix}_collection_contents");
 		$this->definedMeaning = new DefinedMeaningTable("{$dataSetPrefix}_defined_meaning");
 		$this->expression = new ExpressionTable("{$dataSetPrefix}_expression");
