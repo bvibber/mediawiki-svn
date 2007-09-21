@@ -59,8 +59,7 @@ function addIndexesForTable($table) {
 		$index = array();
 		
 		foreach ($tableIndex->getColumns() as $column) {
-			$indexColumn = $column->getIdentifier();
-			
+			$indexColumn = '`' . $column->getIdentifier() . '`';
 			$length = $column->getLength();
 			
 			if ($length != null)
@@ -105,7 +104,6 @@ $tables = array(
 	"collection_contents",
 	"collection",
 	"defined_meaning",
-	"expression",
 	"meaning_relations",
 	"option_attribute_options",
 	"option_attribute_values",
@@ -117,11 +115,11 @@ $tables = array(
 					
 $prefixes = retrieve_datasets();
 
-//$dataSet = new WikiDataSet("uw");
-//recreateIndexesForTableNew($dataSet->expression);
-
 foreach($prefixes as $prefix) {
-	recreateIndexesForTables( $prefix, $tables );
+	$dataSet = new WikiDataSet($prefix);
+	recreateIndexesForTableNew($dataSet->expression);
+	
+	recreateIndexesForTables($prefix, $tables);
 }
 
 $endTime = time();

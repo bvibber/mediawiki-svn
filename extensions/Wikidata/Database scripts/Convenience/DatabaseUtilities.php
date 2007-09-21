@@ -27,15 +27,14 @@ function dropAllIndicesFromTable($tableName) {
 }
 
 function addIndexes($tableName, array $indexes) {
-	$dbr =& wfGetDB(DB_MASTER);
+	if (count($indexes) > 0) {
+		$dbr =& wfGetDB(DB_MASTER);
+		$indexesSQL = array();
+		
+		foreach ($indexes as $indexName => $columns)  
+			$indexesSQL[] = " ADD INDEX `" . $indexName . "` (" . implode(", ", $columns) .") ";
 	
-	$indexesSQL = array();
-	
-	foreach ($indexes as $indexName => $columns)  
-		$indexesSQL[] = " ADD INDEX `" . $indexName . "` (" . implode(", ", $columns) .") ";
-
-	$sql = "ALTER TABLE " . $tableName . " " . implode(", ", $indexesSQL);
-	$dbr->query($sql);	
-}	
-
-
+		$sql = "ALTER TABLE " . $tableName . " " . implode(", ", $indexesSQL);
+		$dbr->query($sql);
+	}	
+}
