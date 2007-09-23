@@ -2,7 +2,7 @@ This extension allows for a template to be transcluded as a new page, using Spec
 To do that, wrap the template in a <templatelink> tag.
 
 Example:
-<templatelink>test::param1=value1::param2=value2</templatelink>
+<templatelink>test|param1=value1|param2=value2</templatelink>
 
 links to a special page that will display "Test" (variation configurable in i18n) as title and
 
@@ -12,7 +12,7 @@ as content.
 
 You can also specify the title of the link in a new line:
 <templatelink>
-test::param1=value1::param2=value2
+test|param1=value1|param2=value2
 Click on this!
 </templatelink>
 
