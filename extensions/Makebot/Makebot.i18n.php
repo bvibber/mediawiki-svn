@@ -247,7 +247,7 @@ function efMakeBotMessages() {
 
 'hsb' => array(
 'makebot'                 => 'Botowy status dać abo zebrać',
-'makebot-header'          => '\'\'\'Lokalny běrokrat móže tut stronu wužiwać, zo by [[Help:Bot|botowy status]] konće druheho wužiwarja dał abo zebrał.\'\'\'<br />Botowy status chowa změny wužiwarja w [[Special:Recentchanges|aktualnych změnach]] a podobnych lisćinach a je za woznamjenjenje wužiwarjow, kotřiž awtomatiske změny, wužitne. To měło so po přihódnych postajenjach stać.',
+'makebot-header'          => '\'\'\'Lokalny běrokrat móže tutu stronu wužiwać, zo by [[Help:Bot|botowy status]] dał abo zebrał.\'\'\'<br />Botowy status chowa změny wužiwarja w [[Special:Recentchanges|aktualnych změnach]] a podobnych lisćinach a je za woznamjenjenje wužiwarjow, kotřiž awtomatisce měnja, wužitne. To měło so po přihódnych postajenjach stać.',
 'makebot-username'        => 'Wužiwarske mjeno:',
 'makebot-search'          => 'Pytać',
 'makebot-isbot'           => '[[User:$1|$1]] ma botowy status.',

@@ -60,7 +60,7 @@ $wgCrossNamespaceLinksMessages['he'] = array(
 	'crossnamespacelinkstext'     => '$1: {{plural:$2|קישור אחד|$2 קישורים}} למרחב $3'
 );
 $wgCrossNamespaceLinksMessages['hsb'] = array(
-	'crossnamespacelinks'         => 'Nastawki z wotkazami do druhich mjenowych rumow',
+	'crossnamespacelinks'         => 'Wotkazy přez mjenowe rumy',
 	'crossnamespacelinks-summary' => 'Tuta specialna strona naliči wotkazy z nastawka we hłownym (nastawkowym) mjenowym rumje do druhich mjenowych rumow (nimo {{ns:special}}, {{ns:talk}}, {{ns:project}} a {{ns:template}}), kotrychž wužiwanje njeje doporučomne.',
 	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|wotkaz|wotkazaj|wotkazy|wotkazow}} do mjenoweho ruma „$3”',
 );

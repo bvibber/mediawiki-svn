@@ -101,6 +101,7 @@ sphinx|Sphinx",
 
 'hsb' => array(
 'vote' => 'Hłosować',
+'vote-header' => 'Móžeš tu za \'\'\'Supreme Overlord of the World\'\'\' hłosować!',
 'vote-current' => 'Twój aktualny hłós je za \'\'\'$1\'\'\'.',
 'vote-caption' => 'Waš wuběr:',
 'vote-submit' => 'Hłosować',

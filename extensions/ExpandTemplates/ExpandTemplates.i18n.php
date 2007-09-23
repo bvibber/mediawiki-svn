@@ -113,6 +113,7 @@ $wgExpandTemplatesMessages['hsb'] = array(
 	'expand_templates_title'           => 'Kontekstowy titul, za {{PAGENAME}} atd.:',
 	'expand_templates_input'           => 'Tekst zapodać:',
 	'expand_templates_output'          => 'Wuslědk',
+	'expand_templates_ok'              => 'Wuwjesć',
 	'expand_templates_remove_comments' => 'Komentary wotstronić',
 	'expand_templates_preview'         => 'Přehlad',
 );

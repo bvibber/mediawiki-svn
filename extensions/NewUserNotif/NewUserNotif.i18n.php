@@ -26,15 +26,20 @@ function efNewUserNotifMessages() {
 ),
 
 'hsb' => array(
-'newusernotifsubj' => 'Zdźělenka za noweho wužiwarja $1',
-'newusernotifbody' => 'Witaj $1,
+	'newusernotifsubj' => 'Zdźělenka za noweho wužiwarja $1',
+	'newusernotifbody' => 'Witaj $1,
 
-Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
+	Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 ),
 
 'nl' => array(
 	'newusernotifsubj' => 'Notificatie nieuwe gebruiker voor  $1',
 	'newusernotifbody' => "Hallo $1.\n\nEr is een nieuwe gebruiker $2 aangemaakt om $3 op $4.",
+),
+
+'tet' => array(
+	'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
+	'newusernotifbody' => 'Olá $1, uza-na\'in foun, $2, nakria iha $3 iha loron $4.',
 ),
 
 'yue' => array(

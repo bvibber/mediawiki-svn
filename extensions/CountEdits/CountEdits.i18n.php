@@ -292,6 +292,17 @@ function efCountEditsMessages( $single = false ) {
 ),
 
 
+'sah' => array(
+'countedits' => 'Хас көннөрүүлээҕэ',
+'countedits-warning' => '\'\'\'Болҕой:\'\'\' Кинигэни таһыттан сыаналаабаттарын курдук, кыттааччыны правката элбэҕинэн сыаналаабаттар.',
+'countedits-username' => 'Аата:',
+'countedits-nosuchuser' => 'Маннык $1 ааттаах кыттааччы суох',
+'countedits-resultheader' => '$1 дааннайдара (түмүктэрэ)',
+'countedits-resulttext' => '$1 $2 көннөрүүнү оҥорбут',
+'countedits-mostactive' => 'Саамай элбэх көннөрүүнү оҥорбут кыттааччылар',
+'countedits-nocontribs' => 'Бу биикигэ көннөрүү оҥоһуллубатах.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'countedits' => 'Počet príspevkov',

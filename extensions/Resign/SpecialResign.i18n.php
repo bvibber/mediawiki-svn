@@ -83,6 +83,7 @@ Muista: '''Et voi saada oikeuksiasi takaisin tämän sivun avulla!''' Sinun täy
 'resign' => 'Wotstup',
 'resign-reason' => 'Přičina',
 'resign-success' => '\'\'\'Prawa buchu wuspěšnje wotstronjene.\'\'\'',
+'resign-logentry' => 'wróći prawa $2',
 ),
 
 'id' => array(

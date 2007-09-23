@@ -237,8 +237,8 @@ $wgLuceneSearchMessages['hsb'] = array(
 	'searchnoresults'       => 'Bohužel njebuchu přihódne strony za twoje pytanske naprašowanje namakane.',
 	'searchnearmatches'     => '<b>Tute strony maja k pytanskemu naprašowanju podobne titule:</b>',
 	'lucenepowersearchtext' => 'W mjenowych rumach pytać: $1<br />Pytać za: $3 $9 $10',
-	'lucenefallback'        => 'Běše problem z wikipytanjom.
-To je najskerje nachwilny problem; spytaj za někotre mjeńšiny hišće raz. Móžeš tež eksternu pytansku słužbu wužić.',
+	'lucenefallback'        => '<br /> ---- <br />
+Je nachwilny problem z nutřkownej pytawu. Spytaj za někotre wokomiki hišće raz abo přepytuj Wikipediju z eksternej pytawu:',
 	'searchexactcase'       => 'Wulko-/małopisanje při pytanju wobkedźbować',
 	'searchall'             => 'wšě',
 	'searchincategory'      => 'w kategoriji',

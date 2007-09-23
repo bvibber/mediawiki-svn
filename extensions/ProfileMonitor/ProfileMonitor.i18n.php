@@ -25,13 +25,16 @@ function efProfileMonitorMessages() {
 ),
 
 'hsb' => array(
-'profiling' => 'Daty so profiluja',
+'profiling' => 'Profilowanske daty',
 'profiling-process' => 'Znamjenjowy slěd předźěłać:',
+'profiling-wildcard' => 'Zastupowacy symbol wužiwać',
 'profiling-ok' => 'W porjadku',
+'profiling-data' => 'Profilowanske daty za `$1`',
 'profiling-data-process' => 'Proces',
 'profiling-data-count' => 'Ličić',
 'profiling-data-time' => 'Čas (dohromady)',
 'profiling-data-average' => 'Čas (přerězk)',
+'profiling-no-data' => 'Žane wotpowědne daty namakane.',
 ),
 
 /* Indonesian (IvanLanin) */

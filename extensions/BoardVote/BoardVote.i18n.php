@@ -536,6 +536,7 @@ $wgBoardVoteMessages['hsb'] = array(
 	'boardvote_user'          => 'Wužiwar',
 	'boardvote_edits'         => 'Změny',
 	'boardvote_days'          => 'Dny',
+	'boardvote_ip'            => 'IP-adresa',
 	'boardvote_ua'            => 'Klient',
 	'boardvote_listintro'     => '<p>To je lisćina wšěch hłosow, kotrež buchu dotal wotedate. $1 za zaklučowane daty.</p>',
 	'boardvote_dumplink'      => 'Tu kliknyć',

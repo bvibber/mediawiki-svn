@@ -151,6 +151,7 @@ function efPatrollerMessages() {
 * Test nowačka
 * Hlej diskusijna strona',
 'patrol-another' => 'Dalšu změnu pokazać, jeli k dispoziciji stejaca.',
+'patrol-stopped' => 'Sy rozsudźił, zo njeby žane dalše změny dohladował.',
 'patrol-resume' => 'Klikń sem, zo by pokročował.',
 'group-patroller' => 'Dohladowarjo',
 'group-patroller-member' => 'Dohladowar',

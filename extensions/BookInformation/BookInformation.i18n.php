@@ -275,6 +275,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Поставщик информации: $1',
 ),
 
+'sah' => array(
+'bookinfo-header' => 'Кинигэ туһунан',
+'bookinfo-result-title' => 'Аата:',
+'bookinfo-result-author' => 'Суруйааччы:',
+'bookinfo-result-publisher' => 'Кинигэ кыһата:',
+'bookinfo-result-year' => 'Сыла:',
+'bookinfo-error-invalidisbn' => 'Сыыһа ISBN турбут.',
+'bookinfo-error-nosuchitem' => 'Бу туһунан суох эбэтэр кыайан булуллубата.',
+'bookinfo-error-nodriver' => 'Кинигэ туһунан драйвер сатаан инициализацияламмат.',
+'bookinfo-error-noresponse' => 'Хоруй суох эбэтэр болдьоҕо ааста.',
+'bookinfo-purchase' => 'Бу кинигэни мантан атыылаһарга: $1',
+'bookinfo-provider' => 'Информацияны ким биэрбитэ: $1',
+),
+
 'sk' => array(
 'bookinfo-header' => 'Informácie o knihách',
 'bookinfo-result-title' => 'Názov:',

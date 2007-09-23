@@ -203,7 +203,7 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 ),
 
 'hsb' => array(
-'hiderevision' => 'Wersije na stajnje schować',
+'hiderevision' => 'Wersije na přeco schować',
 'hiderevision-prompt' => 'Wersijowe čisło, kotrež ma so wotstronić:',
 'hiderevision-continue' => 'Dale',
 'hiderevision-text' => 'To smě \'\'\'jeničce\'\'\' w slědowacych padach wužić;
@@ -222,7 +222,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 'hiderevision-success' => 'Wuspěšnje archiwowany a zničeny.',
 'hiderevision-error-missing' => 'W datowej bance njenamakany.',
 'hiderevision-error-current' => 'Poslednja změna njehodźi so wušmórnyć. Staj tutu změnu wróćo.',
-'hiderevision-error-delete' => 'Archiwowanje njemóžno. Bu prjedy wušmórnjene?',
+'hiderevision-error-delete' => 'Archiwowanje njemóžno. Bu wersija prjedy wušmórnjena?',
 'hiderevision-archive-status' => 'Wušmórnjena wersija z $1: $2',
 'oversight-nodiff' => 'Njeje přirunanje wersijow móžno, dokelž prjedawša wersija njeje. Móžnej přičinje:
 *Strona bu zničena

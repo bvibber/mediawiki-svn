@@ -90,7 +90,7 @@ $wgNewuserlogMessages['he'] = array(
 $wgNewuserlogMessages['hsb'] = array(
 	'newuserlogpage'           => 'Protokol nowych wužiwarjow',
 	'newuserlogpagetext'       => 'To je protokol wutworjenja nowych wužiwarskich kontow.',
-	'newuserlog-create-entry'  => 'Nowy wužiwar',
+	'newuserlog-create-entry'  => 'nowy wužiwar',
 	'newuserlog-create2-entry' => 'je konto za wužiwarja [[$1]] wutworił',
 );
 $wgNewuserlogMessages['hu'] = array(

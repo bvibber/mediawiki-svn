@@ -141,6 +141,9 @@ $wgDismissableSiteNoticeMessages['su'] = array(
 $wgDismissableSiteNoticeMessages['sv'] = array(
 	'sitenotice_close' => 'dölj',
 );
+$wgDismissableSiteNoticeMessages['tet'] = array(
+	'sitenotice_close' => 'subar',
+);
 $wgDismissableSiteNoticeMessages['ur'] = array(
 	'sitenotice_close' => 'ترک',
 );
