@@ -1,4 +1,14 @@
 <?php
+/**
+ * TemplateLink extension - shows a template as a new page
+ *
+ * @package MediaWiki
+ * @subpackage Extensions
+ * @author Magnus Manske
+ * @copyright © 2007 Magnus Manske
+ * @licence GNU General Public Licence 2.0 or later
+ */
+
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the skin file directly.
 if (!defined('MEDIAWIKI')) {
         echo <<<EOT
@@ -23,4 +33,28 @@ function TemplateLinkLocalizedPageName(&$specialPageArray, $code) {
   $specialPageArray['TemplateLink'][] = $title->getDBKey();
  
   return true;
+}
+
+
+# The tag
+$wgExtensionFunctions[] = 'efTemplateLinkSetup';
+ 
+function efTemplateLinkSetup() {
+    global $wgParser;
+    $wgParser->setHook( 'templatelink', 'efTemplateLink' );
+}
+ 
+function efTemplateLink( $input, $args, $parser ) {
+  $input = str_replace ( "<sep>" , "|" , $input );
+  $arr = explode( "\n", trim( $input ) );
+  $template = array_shift( $arr );
+  if( trim( $template ) == '' ) return htmlspecialchars( $template );
+  if( count( $arr ) > 0 ) $title = array_pop( $arr );
+  else $title = ucfirst( array_shift( explode( "|", $template ) ) );
+  
+  $nt = Title::newFromText( "Special:TemplateLink" );
+  $url = $nt->escapeLocalURL();
+  $url .= "?template=" . urlencode ( $template );
+  $link = "<a href=\"$url\" class=\"internal\">$title</a>" ;
+  return $link ;
 }

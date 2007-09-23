@@ -1,4 +1,14 @@
 <?php
+/**
+ * TemplateLink extension - shows a template as a new page
+ *
+ * @package MediaWiki
+ * @subpackage Extensions
+ * @author Magnus Manske
+ * @copyright © 2007 Magnus Manske
+ * @licence GNU General Public Licence 2.0 or later
+ */
+
 class TemplateLink extends SpecialPage
 {
         function TemplateLink(){
@@ -7,20 +17,20 @@ class TemplateLink extends SpecialPage
         }
  
         function execute( $par ){
-                global $wgOut;
+                global $wgOut, $wgRequest;
 
                 $this->setHeaders();
+                $template = $param = $wgRequest->getText('template');
  
                 # Check if parameter is empty
-                $par = trim( $par );
-                if( $par == '' ){
+                $template = trim( $template );
+                if( $template == '' ){
                   $wgOut->addWikiText( wfMsg('templatelink_empty') );
                   return;
                 }
  
                 # Expand template
-                $arr = explode( '::' , $par );
-                $wikitext = '{{' . implode( '|' , $arr ). '}}';
+                $wikitext = '{{' . $template. '}}';
 
                 # Output
 #                $wgOut->addWikiText( $wikitext ); # This works, but is not recommended on mediawiki.org...
@@ -28,7 +38,8 @@ class TemplateLink extends SpecialPage
                 
 
                 # Setting page tatle based on used template
-                $wgOut->setPageTitle( wfMsg( 'templatelink_newtitle' , ucfirst( $arr[0] ) ) );
+                $title = ucfirst( trim( array_shift( explode( '|', $template, 2 ) ) ) );
+                $wgOut->setPageTitle( wfMsg( 'templatelink_newtitle' , $title ) );
         }
         
         function sandboxParse($wikiText){
