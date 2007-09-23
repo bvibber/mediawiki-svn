@@ -26,6 +26,10 @@ $wgDeletedContribsMessages['es'] = array(
 	'deletedcontributions' => 'Contribuciones de usuario borradas',
 );
 
+$wgDeletedContribsMessages['fi'] = array(
+	'deletedcontributions' => 'Poistetut muokkaukset',
+);
+
 $wgDeletedContribsMessages['fr'] = array(
 	'deletedcontributions'		 => 'Contributions supprimées d’un utilisateur'
 );

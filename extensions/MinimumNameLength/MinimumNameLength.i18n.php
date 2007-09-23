@@ -28,6 +28,10 @@ function efMinimumNameLengthMessages() {
 'minnamelength-error' => 'Der Benutzername ist zu kurz. Die Mindestlänge beträgt $1 Zeichen.',
 ),
 
+'fi' => array(
+'minnamelength-error' => 'Käyttäjänimesi on liian lyhyt. Minimipituus on $1.',
+),
+
 /* French (Ashar Voultoiz) */
 'fr' => array(
 'minnamelength-error' => 'Votre nom d\'utilisateur est trop court (minimum $1).',

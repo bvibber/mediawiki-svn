@@ -117,6 +117,14 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 'oversight-header' => 'Es folgt die Liste der dauerhaft für die öffentliche Einsicht entfernten Versionen. Die Veröffentlichung dieser Informationen kann den dauerhaften Entzug der Oversight-Rechte bedeuten.',
 ),
 
+'fi' => array(
+'hiderevision-continue' => 'Jatka',
+'hiderevision-reason' => 'Syy (kirjataan yksityisesti):',
+'hiderevision-submit' => 'Piilota nämä tiedot pysyvästi',
+'hiderevision-tab' => 'Piilota versio',
+'hiderevision-error-missing' => 'Ei löydy tietokannasta.',
+),
+
 /* French (Bertrand Grondin) */
 'fr' => array(
 'hiderevision' => 'Cacher définitivement les révisions',

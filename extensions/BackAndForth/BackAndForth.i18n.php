@@ -39,6 +39,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Antaŭa ($1)',
 ),
 
+'fi' => array(
+	'backforth-next' => 'Seuraava ($1)',
+	'backforth-prev' => 'Edellinen ($1)',
+),
+
 'frp' => array(
 	'backforth-next' => 'Siuventa ($1)',
 	'backforth-prev' => 'Prècèdenta ($1)',

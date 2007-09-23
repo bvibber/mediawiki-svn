@@ -39,6 +39,9 @@ $wgLinkSearchMessages['de'] = array(
 );
 $wgLinkSearchMessages['fi'] = array(
 	'linksearch'       => 'Etsi ulkoisia linkkejä',
+	'linksearch-pat'   => 'Hakukenttä:',
+	'linksearch-ns'    => 'Nimiavaruus:',
+	'linksearch-ok'    => 'Etsi',
 	'linksearch-text'  => 'Asteriskia (*) voi käyttää jokerimerkkinä, esimerkiksi ”*.wikipedia.org”.',
 	'linksearch-line'  => '$1 on linkitetty sivulta $2',
 	'linksearch-error' => 'Jokerimerkkiä voi käyttää ainoastaan osoitteen alussa.',
