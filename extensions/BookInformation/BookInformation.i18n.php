@@ -200,6 +200,10 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'データ提供元: $1',
 ),
 
+'la' => array(
+'bookinfo-result-year' => 'Annus:',
+),
+
 /* nld / Dutch (Dirk Beetstra) */
 'nl' => array(
 'bookinfo-header' => 'Boekinformatie',

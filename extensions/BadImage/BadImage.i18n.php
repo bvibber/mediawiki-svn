@@ -280,6 +280,14 @@ function efBadImageMessages() {
 'badimages-log-remove' => '[[$1]] を一覧から削除しました。',
 ),
 
+'la' => array(
+'badimages-add-btn' => 'Addere',
+'badimages-name' => 'Nomen:',
+'badimages-reason' => 'Causa:',
+'badimages-remove' => '(removere)',
+'badimages-remove-btn' => 'Removere',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'badimages' => 'Verwijderlijst afbeeldingen',

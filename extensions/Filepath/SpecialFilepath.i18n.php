@@ -193,7 +193,7 @@ $wgFilepathMessages['sk'] = array(
 	'filepath_page'   => 'Súbor:',
 	'filepath_submit' => 'Cesta',
 	'filepath-summary' => 'Táto špeciálna stránka vráti úplnú cestu k súboru. Obrázky sa zobrazia v plnom rozlíšení, ostatné typy súborov sa spustia v príslušnom priradenom programe.
-
+	
 	Zadajte názov súboru bez predpony "{{ns:image}}:".',
 );
 $wgFilepathMessages['sq'] = array(

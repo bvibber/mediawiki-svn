@@ -621,6 +621,13 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 $wgMakesysopMessages['ku'] = array(
 	'makesysopname'        => 'Navê bikarhêner:',
 );
+$wgMakesysopMessages['la'] = array(
+	'makesysopname' => 'Nomen usoris:',
+	'makesysopok' => '<b>Usor "$1" nunc est magistratus</b>',
+	'makebureaucratok' => '<b>Usor "$1" nunc est grapheocrates</b>',
+	'already_sysop' => 'Hic usor etiam est [[{{MediaWiki:grouppage-sysop}}|magistratus]].',
+	'already_bureaucrat' => 'Hic usor etiam est [[{{MediaWiki:grouppage-bureaucrat}}|grapheocrates]].',
+);
 $wgMakesysopMessages['li'] = array(
 	'already_sysop'        => 'Deze gebroeker is al systeemwèrker',
 	'already_bureaucrat'   => 'Deze gebroeker is al amtenaer',
@@ -964,7 +971,6 @@ $wgMakesysopMessages['sr-el'] = array(
 	'grouppage-steward'    => '{{ns:project}}:stjuardi',
 );
 $wgMakesysopMessages['sr'] = $wgMakesysopMessages['sr-ec'];
-
 $wgMakesysopMessages['su'] = array(
 	'makesysoptitle' => 'Ngangkat pamaké jadi kuncén',
 	'makesysoptext' => 'Formulir ieu dipaké ku birokrat pikeun ngangkat pamaké biasa jadi kuncén. Ketik ngaran pamaké na kotak, terus pencét tombol pikeun ngangkat pamaké jadi kuncén.',
@@ -984,7 +990,6 @@ $wgMakesysopMessages['su'] = array(
 	'makesysop-nodatabase' => 'Ngaran pamaké interwiki salah: $1',
 	'grouppage-steward' => '{{ns:project}}:Steward',
 );
-
 $wgMakesysopMessages['sv'] = array(
 	'makesysoptitle'       => 'Gör en användare till administratör',
 	'makesysoptext'        => 'Det här formuläret används av byråkrater för att göra vanliga användare till administratörer. Skriv användarens namn i rutan och tryck på knappen för att göra användaren till administratör',
@@ -1017,6 +1022,23 @@ $wgMakesysopMessages['te'] = array(
 	'makesysoptext'        => 'మామూలు సభ్యులను నిర్వాహకులు చెయ్యడానికి అధికారులు ఈ ఫారంను వాడతారు. దీని కొరకు సభ్యుని పేరు పెట్టెలో టైపు చేసి, మీట నొక్కండి.',
 	'rights'               => 'హక్కులు:',
 
+);
+$wgMakesysopMessages['tet'] = array(
+	'makesysoptitle' => 'Fó kuana administradór',
+	'makesysoptext' => 'Burokrata bele uza pájina ne\'e ba fó kuana administradó ba uza-na\'in ida. Hakerek naran uza-na\'in no hanehan "button" ba fó kuana administradór.',
+	'makesysopname' => 'Naran uza-na\'in:',
+	'makesysopsubmit' => 'Fó kuana administradór ba uza-na\'in ne\'e',
+	'makesysopok' => '<b>Uza-na\'in "$1" agora administradór</b>',
+	'makebureaucratok' => '<b>Uza-na\'in "$1" agora burokrata</b>',
+	'makesysopfail' => '<b>La bele fó kuana administradór ba "$1". (Ó hakerek naran loloos?)</b>',
+	'setbureaucratflag' => 'Fó kuana burokrata',
+	'makesysop' => 'Fó kuana administradór',
+	'already_sysop' => 'Uza-na\'in ne\'e administradór tiha ona',
+	'already_bureaucrat' => 'Uza-na\'in ne\'e burokrata tiha ona',
+	'makesysop-nodatabase' => 'Naran uza-na\'in "interwiki" sala: $1',
+	'group-steward' => 'Steward sira',
+	'group-steward-member' => 'Steward',#identical but defined
+	'grouppage-steward' => '{{ns:project}}:Steward sira',
 );
 $wgMakesysopMessages['tr'] = array(
 	'already_bureaucrat'   => 'Bu kullanıcı zaten bürokrat',

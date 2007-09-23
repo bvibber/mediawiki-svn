@@ -26,10 +26,10 @@ function efNewUserNotifMessages() {
 ),
 
 'hsb' => array(
-	'newusernotifsubj' => 'Zdźělenka za noweho wužiwarja $1',
-	'newusernotifbody' => 'Witaj $1,
+'newusernotifsubj' => 'Zdźělenka za noweho wužiwarja $1',
+'newusernotifbody' => 'Witaj $1,
 
-	Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
+Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 ),
 
 'nl' => array(

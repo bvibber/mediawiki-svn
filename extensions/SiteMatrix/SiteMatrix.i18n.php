@@ -117,6 +117,9 @@ $wgSiteMatrixMessages['kk'] = $wgSiteMatrixMessages['kk-kz'];
 $wgSiteMatrixMessages['ko'] = array(
 	'sitematrix' => '위키미디어 위키 목록',
 );
+$wgSiteMatrixMessages['la'] = array(
+	'sitematrix' => 'Wikimediae wiki omnia',
+);
 $wgSiteMatrixMessages['lo'] = array(
 	"sitematrix" => "ລາຍການ wiki ໃນ Wikimedia",
 );

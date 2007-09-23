@@ -830,6 +830,15 @@ $wgBoardVoteMessages['kk-cn'] = array(
 	'grouppage-boardvote'     => '{{ns:project}}:كەڭەس سايلاۋ ٴاكٴىمشٴىلەرٴى',
 );
 $wgBoardVoteMessages['kk'] = $wgBoardVoteMessages['kk-kz'];
+$wgBoardVoteMessages['la'] = array(
+	'boardvote_time'          => 'Tempus',
+	'boardvote_user'          => 'Usor',
+	'boardvote_edits'         => 'Recensiones',
+	'boardvote_days'          => 'Dies',
+	'boardvote_dumplink'      => 'Imprime hic',
+	'boardvote_edits_many'    => 'plurimae',
+	'boardvote_welcome'       => 'Salve \'\'\'$1\'\'\'!',
+);
 $wgBoardVoteMessages['nl'] = array(
 	'boardvote'               => 'Wikimedia Board of Trustees-verkiezing',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Stemmen]]

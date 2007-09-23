@@ -268,7 +268,7 @@ function efInputBoxMessages() {
 ),
 
 'la' => array(
-	'createarticle' => 'Paginam creare',
+	'createarticle'           => 'Paginam creare',
 ),
 
 'lg' => array(
@@ -306,9 +306,11 @@ function efInputBoxMessages() {
 ),
 
 'nl' => array(
-	'tryexact'       => 'Zoek op exacte overeenkomst',
-	'searchfulltext' => 'Volledige tekst doorzoeken',
-	'createarticle'  => 'Maak nieuwe pagina',
+	'inputbox-error-no-type'  => 'U heeft het type inputbox niet aangegeven. Zie [http://www.mediawiki.org/wiki/Extension:Inputbox MediaWiki.org] voor meer informatie.',
+	'inputbox-error-bad-type' => 'Inputbox-type "$1" niet herkend. Gebruik "create", "comment", "search" of "search2".',
+	'tryexact'                => 'Zoek op exacte overeenkomst',
+	'searchfulltext'          => 'Volledige tekst doorzoeken',
+	'createarticle'           => 'Maak nieuwe pagina',
 ),
 
 'nn' => array(

@@ -138,6 +138,10 @@ $wgDesysopMessages['ko'] = array(
 	'user_rights_set'      => '\'\'\'"$1"의 권한이 변경되었습니다.\'\'\'',
 	'set_rights_fail'      => '\'\'\'$1 사용자에게 관리자 권한을 줄 수 없습니다(철자를 맞게 입력했는지 확인해주세요).\'\'\'',
 );
+$wgDesysopMessages['la'] = array(
+	'desysopname'          => 'Nomen usoris:',
+	'not_sysop'            => 'Hic usor non est magistratus',
+);
 $wgDesysopMessages['nl'] = array(
 	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
 	'desysoptext'          => 'Bureaucraten gebruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.',
@@ -207,7 +211,7 @@ $wgDesysopMessages['ru'] = array(
 );
 $wgDesysopMessages['sk'] = array(
 	'desysoptitle'         => 'Odober používateľovi privilégiá správcu',
-	'desysoptext'          => 'Tento formulár používajú byrokrati na odobratie privilégií správcu používateľovi. Do poľa napíšte meno používateľa. Po stlačení tlačidla s odoberiú používateľovi privilégiá správcu.',
+	'desysoptext'          => 'Tento formulár používajú byrokrati na odobratie privilégií správcu používateľovi. Do poľa napíšte meno používateľa. Po stlačení tlačidla sa odoberú používateľovi privilégiá správcu.',
 	'desysopname'          => 'Meno používateľa:',
 	'desysopok'            => '<b>Používateľovi "$1" boli odobrané privilégiá správcu</b>',
 	'set_user_rights'      => 'Nastav redaktorove práva',

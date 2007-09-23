@@ -148,6 +148,12 @@ $wgNewuserlogMessages['ku'] = array(
 	'newuserlogpage'           => 'Reşahiya çêkirina hesabên nû',
 	'newuserlog-create-entry'  => 'Bikarhênerekî nuh',
 );
+$wgNewuserlogMessages['la'] = array(
+	'newuserlogpage'           => 'Index rationum novarum creatarum',
+	'newuserlogpagetext'       => 'Hic est index rationum novarum creatarum',
+	'newuserlog-create-entry'  => 'Usor novus',
+	'newuserlog-create2-entry' => 'creavit rationem pro $1',
+);
 $wgNewuserlogMessages['lo'] = array(
 	'newuserlogpage'           => 'ບັນທຶກການສ້າງບັນຊີຜູ້ໃຊ້',
 	'newuserlogpagetext'       => 'ນີ້ແມ່ນ ບັນທຶກການສ້າງ ບັນຊີຜູ້ໃຊ້ໃໝ່',

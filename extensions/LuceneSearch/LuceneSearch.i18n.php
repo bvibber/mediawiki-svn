@@ -224,7 +224,6 @@ $1\n
 	'searchexactcase'       => 'חיפוש תלוי־רישיות',
 	'searchall'             => 'הכל',
 	'searchincategory'      => 'בקטגוריה',
-	'searchaliases'         => '',
 );
 
 $wgLuceneSearchMessages['hsb'] = array(

@@ -81,7 +81,13 @@ Muista: '''Et voi saada oikeuksiasi takaisin tämän sivun avulla!''' Sinun täy
 	
 'hsb' => array(
 'resign' => 'Wotstup',
+'resign-text' => 'Móžeš na tutej stronje \'\'\'swoje prawa wróćo dać\'\'\' (na př. prawo administratora). Prošu pruwuj prawa, kotrež chceš wróćo dać.
+
+Kedźbu: \'\'\'Njemóžeš te prawa na tute wašnje wróćo dóstać!\'\'\' Dyrbiš běrokrata abo stewarda skontaktować, zo by swoje prawa wróćo dóstał. Prošu wužij tutu stronu tohodla jenož po starosćiwym přemyslenju.',
 'resign-reason' => 'Přičina',
+'resign-confirm' => 'Potwjerdźam, zo chcu wšě markěrowane prawa wróćo dóstać.',
+'resign-noconfirm' => 'Prošu markěruj kontrolowy kašćik, zo by swoje prawa wróćo dał.',
+'resign-nogroups' => 'Prošu markěruj prawa, kotrež chceš wróćo dać.',
 'resign-success' => '\'\'\'Prawa buchu wuspěšnje wotstronjene.\'\'\'',
 'resign-logentry' => 'wróći prawa $2',
 ),

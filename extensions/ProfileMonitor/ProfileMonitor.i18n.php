@@ -24,6 +24,10 @@ function efProfileMonitorMessages() {
 'profiling-no-data' => 'No matching data found.',
 ),
 
+'ar' => array(
+'profiling-ok' => 'موافق',
+),
+
 'hsb' => array(
 'profiling' => 'Profilowanske daty',
 'profiling-process' => 'Znamjenjowy slěd předźěłać:',

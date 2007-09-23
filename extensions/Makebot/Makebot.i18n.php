@@ -396,6 +396,19 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => '[[$1]] دەگەننەن بوت كٷيٸ الاستاتىلدى',
 ),
 
+'la' => array(
+'makebot-username'        => 'Nomen usoris:',
+'makebot-search'          => 'Ire',
+'makebot-isbot'           => '[[User:$1|$1]]] statum bot habet.',
+'makebot-notbot'          => '[[User:$1|$1]] non habet statum bot.',
+'makebot-change'          => 'Cambiare statum:',
+'makebot-grant'           => 'Licere',
+'makebot-comment'         => 'Sententia:',
+'makebot-granted'         => '[[User:$1|$1]] nunc statum bot habet.',
+'makebot-logpage'         => 'Index mutatorum statui bot',
+'makebot-logpagetext'     => 'Hic index omnes mutationes statui [[{{ns:project}}:Bot|Bot]] monstrat.',
+),
+
 /* Lao */
 'lo' => array(
 'makebot-username' => 'ຊື່ຜູ້ໃຊ້:',
@@ -699,6 +712,7 @@ function efMakeBotMessages() {
 
 'tet' => array(
 'makebot'                 => 'Fó ka hasai kuana "bot"',
+'makebot-header'          => '\'\'\'Burokrata bele uza pájina ne\'e ba fó ka hasai [[Help:Bot|kuana bot]] ba uza-na\'in seluk.\'\'\'<br />Kuana bot hamsumik edita uza-na\'in nian iha [[Special:Recentchanges|mudansa foufoun sira]] no lista hanesan; di\'ak ba uza-na\'in, ne\'ebé edita automátiku. Tenke halo ne\'e de\'it karik ukun fó lisensa ba halo ne\'e.',
 'makebot-username'        => 'Naran uza-na\'in',
 'makebot-search'          => 'Halo',
 'makebot-isbot'           => '[[User:$1|$1]] iha kuana bot.',

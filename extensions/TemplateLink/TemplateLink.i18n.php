@@ -20,6 +20,11 @@ $allMessages = array(
                 'templatelink_empty' => 'Ein Parameter muss angegeben werden.',
                 'templatelink_newtitle' => '$1 (ersetzt)',
         ),
+	'hsb' => array(
+		'templatelink' => 'Předłohowy wotkaz',
+		'templatelink_empty' => 'Dyrbiš parameter podać.',
+		'templatelink_newtitle' => '$1 (narunany)',
+	),
         'nl' => array(
                 'templatelink' => 'Sjabloonverwijzing',
                 'templatelink_empty' => 'Geef een parameter op.',
