@@ -17,7 +17,23 @@ require_once( "$IP/extensions/TemplateLink/TemplateLink.setup.php" );
 EOT;
         exit( 1 );
 }
- 
+
+# Credits
+$wgExtensionCredits['specialpage'][] = array(
+       'name' => 'TemplateLink',
+       'author' =>'Magnus Manske', 
+       'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
+       'description' => 'This extension can show a template as a new page'
+       );
+$wgExtensionCredits['parserhook'][] = array(
+       'name' => 'TemplateLink',
+       'author' =>'Magnus Manske', 
+       'url' => 'http://www.mediawiki.org/wiki/Extension:TemplateLink',
+       'description' => 'This extension can show a template as a new page'
+       );
+
+
+# Special page registration
 $wgAutoloadClasses['TemplateLink'] = dirname(__FILE__) . '/TemplateLink.body.php'; # Tell MediaWiki to load the extension body.
 $wgSpecialPages['TemplateLink'] = 'TemplateLink'; # Let MediaWiki know about your new special page.
 $wgHooks['LoadAllMessages'][] = 'TemplateLink::loadMessages'; # Load the internationalization messages for your special page.
