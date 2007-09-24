@@ -131,7 +131,7 @@ class ApiEditPage extends ApiBase {
 		}
 		switch ($value){
 			case self::AS_END:
-				$result['result'] = 'COnflict detected';
+				$result['result'] = 'Conflict detected';
 				break;
 
 			case self::AS_SUCCESS_UPDATE:
