@@ -184,8 +184,8 @@ $messages = array(
 
 == Começando ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Lista de configuração de opções]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki Perguntas e respostas frequentes]
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista de configuração de opções]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki Perguntas e respostas frequentes]
 * [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Lista de e-mail de anúncios de novas versões do MediaWiki]',
 
 'about'          => 'Sobre',
@@ -756,7 +756,7 @@ Outros administradores nesta wiki continuarão a poder aceder ao conteúdo escon
 'diff-multi'                => '({{PLURAL:$1|uma edição intermediária não está sendo exibida|$1 edições intermediárias não estão sendo exibidas}}.)',
 
 # Search results
-'searchresults'         => 'Resultados de pesquisa',
+'searchresults-title'   => 'Resultados de pesquisa "$1"',
 'searchresulttext'      => 'Para mais informações de como pesquisar na {{SITENAME}}, consulte [[{{ns:project}}:Pesquisa|Pesquisando {{SITENAME}}]].',
 'searchsubtitle'        => 'Você pesquisou por "[[:$1]]"',
 'searchsubtitleinvalid' => 'Você pesquisou por "$1"',

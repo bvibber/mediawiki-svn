@@ -92,6 +92,7 @@
 	'glk' => 'گیلکی',	# Gilaki
 	'gn' => 'Avañe\'ẽ',	# Guarani
 	'got' => '𐌲𐌿𐍄𐌹𐍃𐌺',	# Gothic
+	'grc' => 'Ἀρχαία ἑλληνικὴ', # Ancient Greece
 	'gsw' => 'Alemannisch',	# Alemannic
 	'gu' => 'ગુજરાતી',	# Gujarati
 	'gv' => 'Gaelg',		# Manx
@@ -226,6 +227,7 @@
 	'sco' => 'Scots',       # Scots
 	'sd' => 'سنڌي',	# Sindhi
 	'se' => 'Sámegiella',	# Northern Sami
+	'sei' => 'Cmique Itom',	# Seri
 	'sg' => 'Sängö',		# Sango, possible alternative is Sangho
 	'sh' => 'Srpskohrvatski / Српскохрватски', # Serbocroatian
 	'si' => 'සිංහල',	# Sinhalese

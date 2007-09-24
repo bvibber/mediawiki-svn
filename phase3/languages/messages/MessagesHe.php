@@ -422,6 +422,10 @@ $messages = array(
 'restorelink'             => '{{plural:$1|גרסה מחוקה אחת|$1 גרסאות מחוקות}}',
 'feedlinks'               => 'הזנה:',
 'feed-invalid'            => 'סוג הזנת המנוי שגוי.',
+'site-rss-feed'           => 'RSS של $1',
+'site-atom-feed'          => 'Atom של $1',
+'page-rss-feed'           => 'RSS של $1',
+'page-atom-feed'          => 'Atom של $1',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'דף תוכן',
@@ -847,6 +851,7 @@ $2',
 'overlogpagetext' => 'להלן רשימת המחיקות והחסימות האחרונות הכוללות תוכן המוסתר ממפעילי המערכת. ראו גם את [[{{ns:special}}:Ipblocklist|רשימת המשתמשים החסומים]] הנוכחית.',
 
 # Diffs
+'history-title'             => 'היסטוריית הגרסאות של $1',
 'difference'                => '(הבדלים בין גרסאות)',
 'loadingrev'                => 'טוען את הגרסה להשוואה',
 'lineno'                    => 'שורה $1:',
@@ -858,7 +863,7 @@ $2',
 'diff-multi'                => '({{plural:$1|גרסת ביניים אחת אינה מוצגת|$1 גרסאות ביניים אינן מוצגות}}.)',
 
 # Search results
-'searchresults'         => 'תוצאות החיפוש',
+'searchresults-title'   => 'תוצאות החיפוש "$1"',
 'searchresulttext'      => 'למידע נוסף על חיפוש ב{{grammar:תחילית|{{SITENAME}}}}, עיינו ב[[{{ns:project}}:עזרה|דפי העזרה]].',
 'searchsubtitle'        => "לחיפוש המונח '''[[:$1]]'''",
 'searchsubtitleinvalid' => "לחיפוש המונח '''$1'''",

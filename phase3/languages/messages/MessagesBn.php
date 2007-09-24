@@ -138,7 +138,14 @@ $messages = array(
 'category-media-header' => '"$1" বিষয়শ্রেণীতে অন্তর্ভুক্ত মিডিয়া ফাইলসমূহ',
 'category-empty'        => "''এই বিষয়শ্রণীতে বর্তমানে কোন নিবন্ধ বা মিডিয়া ফাইল নাই।''",
 
-'mainpagetext' => "<big>'''মিডিয়াউইকি সফল ভাবে ইন্সটল হয়েছে।'''</big>",
+'mainpagetext'      => "<big>'''মিডিয়াউইকি সফল ভাবে ইন্সটল হয়েছে।'''</big>",
+'mainpagedocfooter' => 'কিভাবে উইকি সফটওয়্যারটি ব্যবহারকার করবে জানতে দেখুন [http://meta.wikimedia.org/wiki/Help:Contents ব্যবহারবিধি]।
+
+== শুরু করুন ==
+
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Configuration settings list]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki release mailing list]',
 
 'about'          => 'বৃত্তান্ত',
 'article'        => 'আধেয় পাতা',
@@ -281,6 +288,7 @@ $1',
 'nodb'                 => 'ডাটাবেস $1 নির্বাচন করা যায়নি',
 'laggedslavemode'      => 'সতর্কীকরণ: পাতাটি সম্ভবত সাম্প্রতি হালনাগাদকৃত নয়।',
 'readonly'             => 'ডাটাবেসের ব্যবহার সীমাবদ্ধ',
+'enterlockreason'      => 'তালাবদ্ধ করার কারণ কি তা বলুন, সাথে কখন তালা খুলবেন তার আনুমানিক সময় উল্লখ্য করুন',
 'internalerror'        => 'আভ্যন্তরীণ ত্রুটি',
 'internalerror_info'   => 'আভ্যন্তরীণ ত্রুটি: $1',
 'filecopyerror'        => '"$1" থেকে "$2" ফাইল কপি করা যায়নি',
@@ -357,21 +365,26 @@ $1',
 'mailmypassword'             => 'নতুন শব্দচাবি আমার ইমেইলে পাঠাও',
 'passwordremindertitle'      => '{{SITENAME}} থেকে শব্দচাবি মনে রাখো',
 'noemail'                    => '"$1" ব্যবহারকারীর জন্য কোন ই-মেইল ঠিকানা সংরক্ষিত নাই।',
+'passwordsent'               => 'একটি নতুন শব্দচাবি "$1" ব্যবহারকারীর ই-মেইল ঠিকানায় পাঠানো হয়েছে। দয়াকরে তা পাওয়ার পর আবার লগ্‌-ইন করুন।',
 'mailerror'                  => 'ইমেইল পাঠাতে সমস্যা: $1',
 'acct_creation_throttle_hit' => 'দুঃখিত, আপনি ইতিমধ্যে $1টি অ্যাকাউন্ট তৈরী করেছেন৷ এর বেশী আপনি তৈরী করতে পারবেন না৷',
 'emailauthenticated'         => 'আপনার ই-মেইল ঠিকানাটি $1 তারিখে নিশ্চিত করা হয়েছে।',
 'emailnotauthenticated'      => 'আপনার ই-মেইলের ঠিকানা <strong>এখনও যাচাই করা হয়নি</strong>। নিচের বৈশিষ্ট্যগুলোর (features) জন্য কোনো ই-মেইল পাঠানো হবে না।',
+'noemailprefs'               => 'এই বৈশিষ্টটি কাজ করাতে হলে একটি ই-মেইল ঠিকানা নির্ধারণ করতে হবে।',
 'emailconfirmlink'           => 'আপনার ই-মেইলের ঠিকানা নিশ্চিত করুন',
 'accountcreated'             => 'অ্যাকাউন্ট তৈরি করা হয়েছে',
 'accountcreatedtext'         => '$1 এর জন্য ব্যবহারকারী অ্যাকাউন্ট তৈরি করা হয়েছে।',
 'loginlanguagelabel'         => 'ভাষা: $1',
 
 # Password reset dialog
-'resetpass'           => 'অ্যাকাউন্টের শব্দচাবি নতুন (reset) করে দাও',
-'resetpass_text'      => '<!-- এখানে লেখা যোগ করুন -->',
-'resetpass_header'    => 'নতুন (reset) শব্দচাবি দাও',
-'resetpass_submit'    => 'শব্দচাবি দাও এবং লগ্‌-ইন করো',
-'resetpass_forbidden' => 'এই উইকিতে শব্দচাবি পরিবর্তন করা যাবে না',
+'resetpass'               => 'অ্যাকাউন্টের শব্দচাবি নতুন (reset) করে দাও',
+'resetpass_announce'      => 'আপন ই-মেইলকৃত সংকেত দ্বারা লগ-ইন আছেন। লগ-ইন পদ্ধতি সম্পূর্ণ করতে আপনাকে অবশ্যই একটি নতুন শব্দচাবি গ্রহণ করতে হবে:',
+'resetpass_text'          => '<!-- এখানে লেখা যোগ করুন -->',
+'resetpass_header'        => 'নতুন (reset) শব্দচাবি দাও',
+'resetpass_submit'        => 'শব্দচাবি দাও এবং লগ্‌-ইন করো',
+'resetpass_success'       => 'আপনার শব্দচাবি সাফল্যের সাথে পরিবর্তীত হয়েছে! এখন আপনি তে লগ-ইন হচ্ছেন...',
+'resetpass_bad_temporary' => 'অস্থায়ী শব্দচাবিটি ভুল। আপনি হয়তো ইতিমধ্যে সফলভাবে শব্দচাবি পরিবর্তন করেছেন অথবা নতুন অস্থায়ী শব্দচাবির জন্য অনুরোধ করেছেন।',
+'resetpass_forbidden'     => 'এই উইকিতে শব্দচাবি পরিবর্তন করা যাবে না',
 
 # Edit page toolbar
 'bold_sample'     => 'গাঢ় লেখা',
@@ -400,6 +413,7 @@ $1',
 'anoneditwarning'          => 'আপনি লগ ইন করেননি। এই পাতার সম্পাদনার ইতিহাসে আপনার আইপি সংখ্যা সংরক্ষিত হবে।',
 'missingsummary'           => "'''খেয়াল করুন''':  আপনি কিন্তু সম্পাদনার সারাংশ দেননি। আবার যদি \"সংরক্ষণ\" বোতামে ক্লিক করেন, তাহলে ঐ সারাংশ বাক্যটি ছাড়াই আপনার সম্পাদনা সংরক্ষিত হবে।",
 'missingcommenttext'       => 'দয়াকরে নিচে মন্তব্য যোগ করুন।',
+'missingcommentheader'     => "'''মনে রাখবেন:''' আপনি এই মন্তব্যের জন্য কোন বিষয়/শিরোনাম দেননি। আপনি যদি সংরক্ষণ বোতাম ক্লিক করেন, তাহলে আপনার সম্পাদনা কোন বিষয়/শিরোনাম ছাড়াই সংরক্ষিত হবে।",
 'summary-preview'          => 'সারাংশ প্রাকদর্শন',
 'subject-preview'          => 'বিষয়/শিরোনাম প্রাকদর্শন',
 'blockedtitle'             => 'ব্যবহারকারীকে বাধা দেয়া হয়েছে',
@@ -508,14 +522,16 @@ $1',
 'revdelete-submit'          => 'নির্বাচিত সংশোধনে প্রয়োগ করো',
 
 # Diffs
+'history-title'             => '"$1" এর সংশোধনের ইতিহাস',
 'difference'                => '(সংশোধনগুলোর মধ্যে পার্থক্য)',
 'lineno'                    => '$1 নং লাইন:',
+'editcurrent'               => 'এই পাতার বর্তমান সংস্করণ সম্পাদনা করো',
 'selectnewerversionfordiff' => 'পার্থক্য করার জন্য একটি নতুন সংস্করণ নির্বাচন করুন',
 'selectolderversionfordiff' => 'পার্থক্য করার জন্য একটি পুরাতন সংস্করণ নির্বাচন করুন',
 'compareselectedversions'   => 'নির্বাচিত সংস্করণগুলো তুলনা করো',
 
 # Search results
-'searchresults'         => 'অনুসন্ধানের ফলাফল',
+'searchresults-title'   => 'অনুসন্ধানের ফলাফল "$1"',
 'searchresulttext'      => '{{SITENAME}} এ অনুসন্ধানের ব্যাপারে আরও তথ্যের জন্য [[{{MediaWiki:helppage}}|{{int:help}}]] দেখুন।',
 'searchsubtitle'        => "আপনি অনুসন্ধান করেছেন '''[[:$1]]'''",
 'searchsubtitleinvalid' => "আপনি অনুসন্ধান করেছেন '''$1'''",
@@ -532,38 +548,67 @@ $1',
 'powersearch'           => 'অনুসন্ধান করো',
 
 # Preferences page
-'preferences'       => 'আমার পছন্দ',
-'mypreferences'     => 'আমার পছন্দ',
-'prefs-edits'       => 'সম্পাদনার সংখ্যা:',
-'prefsnologin'      => 'আপনি লগ-ইন করেননি',
-'prefsnologintext'  => 'ব্যবহারকারীর পছন্দ ঠিক করতে আপনাকে অবশ্যই [[Special:Userlogin|লগ্‌-ইন]] থাকতে হবে।',
-'qbsettings-none'   => 'কিছুই না',
-'changepassword'    => 'শব্দচাবি (password) পরিবর্তন',
-'skin'              => 'আবরণ (Skin)',
-'math'              => 'গণিত',
-'datetime'          => 'তারিখ ও সময়',
-'prefs-personal'    => 'ব্যবহারকারীর প্রোফাইল',
-'prefs-rc'          => 'সাম্প্রতিক পরিবর্তনসমূহ',
-'prefs-watchlist'   => 'নজর তালিকা',
-'prefs-misc'        => 'বিবিধ',
-'saveprefs'         => 'সংরক্ষণ করো',
-'resetprefs'        => 'আবার শুরু করো',
-'oldpassword'       => 'পুরনো শব্দচাবি',
-'newpassword'       => 'নতুন শব্দচাবি:',
-'retypenew'         => 'নতুন শব্দচাবি আবার টাইপ করুন:',
-'textboxsize'       => 'সম্পাদনা',
-'rows'              => 'সারি:',
-'columns'           => 'কলাম:',
-'searchresultshead' => 'অনুসন্ধান',
-'savedprefs'        => 'আপনার পছন্দগুলো সংরক্ষণ করা হয়েছে।',
-'timezonelegend'    => 'সময় বলয়',
-'timezonetext'      => 'আপনার স্থানীয় সময় থেকে সার্ভারের সময়ের (UTC) পার্থক্য (ঘন্টায়)।',
-'localtime'         => 'স্থানীয় সময়',
-'timezoneoffset'    => 'সময়পার্থক্য¹',
-'servertime'        => 'সার্ভারের সময়',
-'guesstimezone'     => 'ব্রাউজার থেকে পূরণ করো',
-'allowemail'        => 'অন্য ব্যবহারকারীদেরকে আপনাকে ই-মেইল পাঠানোর অনুমতি দিন।',
-'files'             => 'ফাইল',
+'preferences'           => 'আমার পছন্দ',
+'mypreferences'         => 'আমার পছন্দ',
+'prefs-edits'           => 'সম্পাদনার সংখ্যা:',
+'prefsnologin'          => 'আপনি লগ-ইন করেননি',
+'prefsnologintext'      => 'ব্যবহারকারীর পছন্দ ঠিক করতে আপনাকে অবশ্যই [[Special:Userlogin|লগ্‌-ইন]] থাকতে হবে।',
+'qbsettings-none'       => 'কিছুই না',
+'changepassword'        => 'শব্দচাবি (password) পরিবর্তন',
+'skin'                  => 'আবরণ (Skin)',
+'math'                  => 'গণিত',
+'datetime'              => 'তারিখ ও সময়',
+'math_unknown_error'    => 'অজানা ত্রুটি',
+'math_unknown_function' => 'অজানা ফাংশন',
+'prefs-personal'        => 'ব্যবহারকারীর প্রোফাইল',
+'prefs-rc'              => 'সাম্প্রতিক পরিবর্তনসমূহ',
+'prefs-watchlist'       => 'নজর তালিকা',
+'prefs-watchlist-days'  => 'সর্বোচ্চ দিনের নজর তালিকা দেখানোর জন্য:',
+'prefs-watchlist-edits' => 'সম্প্রসারিত নজর তালিকায় সর্বোচ্চ সংখ্যার পরিবর্তন দেখানোর জন্য:',
+'prefs-misc'            => 'বিবিধ',
+'saveprefs'             => 'সংরক্ষণ করো',
+'resetprefs'            => 'আবার শুরু করো',
+'oldpassword'           => 'পুরনো শব্দচাবি',
+'newpassword'           => 'নতুন শব্দচাবি:',
+'retypenew'             => 'নতুন শব্দচাবি আবার টাইপ করুন:',
+'textboxsize'           => 'সম্পাদনা',
+'rows'                  => 'সারি:',
+'columns'               => 'কলাম:',
+'searchresultshead'     => 'অনুসন্ধান',
+'resultsperpage'        => 'প্রতি পাতায় হিট:',
+'contextlines'          => 'লাইন প্রতি হিটে:',
+'recentchangesdays'     => 'সাম্প্রতিক পরিবর্তনে দিনসমূহ দেখানোর জন্য:',
+'recentchangescount'    => 'সাম্প্রতিক পরিবর্তনে প্রদর্শিত সম্পাদনার সংখ্যা:',
+'savedprefs'            => 'আপনার পছন্দগুলো সংরক্ষণ করা হয়েছে।',
+'timezonelegend'        => 'সময় বলয়',
+'timezonetext'          => 'আপনার স্থানীয় সময় থেকে সার্ভারের সময়ের (UTC) পার্থক্য (ঘন্টায়)।',
+'localtime'             => 'স্থানীয় সময়',
+'timezoneoffset'        => 'সময়পার্থক্য¹',
+'servertime'            => 'সার্ভারের সময়',
+'guesstimezone'         => 'ব্রাউজার থেকে পূরণ করো',
+'allowemail'            => 'অন্য ব্যবহারকারীদেরকে আপনাকে ই-মেইল পাঠানোর অনুমতি দিন।',
+'files'                 => 'ফাইল',
+
+# User rights
+'userrights-user-editname'    => 'ব্যবহারকারীর নাম লিখুন:',
+'editusergroup'               => 'ব্যবহারকারীর দল সম্পাদনা করো',
+'userrights-editusergroup'    => 'ব্যবহারকারীর দল সম্পাদনা করো',
+'saveusergroups'              => 'ব্যবহারকারীর দল সংরক্ষণ করো',
+'userrights-groupsmember'     => 'সদস্য:',
+'userrights-groupsavailable'  => 'বিদ্যমান দলসমূহ:',
+'userrights-reason'           => 'পরিবর্তনের কারণ:',
+'userrights-available-add'    => 'আপনি $1 এ ব্যবহারকারী যোগ করতে পারবেন।',
+'userrights-available-remove' => 'আপনি $1 থেকে ব্যবহারকারী বাদ দিতে পারবেন।',
+
+# Groups
+'group-bot'        => 'বট',
+'group-sysop'      => 'প্রশাসক',
+'group-bureaucrat' => 'নীতি নির্ধারক',
+'group-all'        => '(সমস্ত)',
+
+'group-bot-member'        => 'বট',
+'group-sysop-member'      => 'প্রশাসক',
+'group-bureaucrat-member' => 'নীতি নির্ধারক',
 
 # Recent changes
 'nchanges'                          => '$1 টি পরিবর্তন',
@@ -589,6 +634,7 @@ $1',
 'boteditletter'                     => 'ব',
 'number_of_watching_users_pageview' => '[$1 জন নজরকারী]',
 'rc_categories_any'                 => 'যেকোনো',
+'newsectionsummary'                 => '/* $1 */ নতুন অনুচ্ছেদ',
 
 # Recent changes linked
 'recentchangeslinked' => 'সম্পর্কিত পরিবর্তন',
@@ -863,15 +909,21 @@ $1',
 'tooltip-t-print'   => 'এ পাতার ছাপানোর উপযোগী সংস্করণ',
 
 # Attribution
-'anonymous' => '{{SITENAME}} এর বেনামী ব্যবহারকারীবৃন্দ',
-'and'       => 'এবং',
+'anonymous'        => '{{SITENAME}} এর বেনামী ব্যবহারকারীবৃন্দ',
+'lastmodifiedatby' => 'এই পাতাটিতে শেষ পরিবর্তন হয়েছিল $2, $1 by $3।', # $1 date, $2 time, $3 user
+'and'              => 'এবং',
 
 # Spam protection
 'subcategorycount'     => 'এই বিষয়শ্রেণীতে $1 টি উপবিষয়শ্রেণী রয়েছে।',
 'categoryarticlecount' => 'এই বিষয়শ্রেণীতে $1টি নিবন্ধ রয়েছে।',
 
 # Info page
-'numauthors' => 'পৃথক (নিবন্ধ) লেখকের সংখ্যা: $1',
+'infosubtitle'   => 'পাতার তথ্য',
+'numedits'       => 'সম্পাদনার সংখ্যা (পাতা): $1',
+'numtalkedits'   => 'সম্পাদনার সংখ্যা (আলাপের পাতা): $1',
+'numwatchers'    => 'নজরকারীর সংখ্যা: $1',
+'numauthors'     => 'পৃথক (নিবন্ধ) লেখকের সংখ্যা: $1',
+'numtalkauthors' => 'পৃথক লেখকের সংখ্যা(আলাপের পাতা): $1',
 
 # Math options
 'mw_math_png'    => 'সবসময় পিএনজি (PNG) দেখাও',
@@ -895,27 +947,69 @@ $1',
 'patrol-log-line' => '$2 গুলোর $1 কে পরীক্ষিত বলে চিহ্নিত করা হয়েছে $3',
 'patrol-log-auto' => '(স্বয়ংক্রিয়)',
 
+# Image deletion
+'deletedrevision'                 => 'মুছে ফেলা পুরাতন সংশোধন $1',
+'filedeleteerror-long'            => 'ফাইলটি মুছার সময় ত্রুটি দেখা দিয়েছে:
+
+$1',
+'filedelete-missing'              => 'ফাইল "$1" মুছে ফেলা যাবে না, কারণ ফাইলটি ডাটাবেজে নেই।',
+'filedelete-old-unregistered'     => 'নির্ধারিত ফাইলের সংশোধন "$1" ডাটাবেজে নেই।',
+'filedelete-current-unregistered' => 'নির্ধারিত ফাইল "$1" ডাটাবেজে নেই।',
+
 # Browsing diffs
 'previousdiff' => '← পূর্বের পার্থক্য',
 'nextdiff'     => 'পরবর্তী পার্থক্য →',
 
+# Media information
+'widthheightpage'      => '$1×$2, $3 পাতাসমূহ',
+'file-info'            => '(ফাইলের আকার: $1, MIME ধরণ: $2)',
+'file-info-size'       => '($1 × $2 pixel, ফাইলের আকার: $3, MIME ধরণ: $4)',
+'file-nohires'         => '<small>বেশি রেজুলেশন বিদ্যমান নয়।</small>',
+'svg-long-desc'        => '(SVG ফাইল, সাধারণত $1 × $2 pixels, ফাইলের আকার: $3)',
+'show-big-image'       => 'পূর্ণ রেজুলেশন',
+'show-big-image-thumb' => '<small>আকারের প্রাকদর্শন: $1 × $2 pixels</small>',
+
 # Special:Newimages
-'newimages' => 'নতুন ফাইলের গ্যালারি',
-'noimages'  => 'দেখার মত কিছই নাই।',
+'newimages'    => 'নতুন ফাইলের গ্যালারি',
+'showhidebots' => '($1 বট)',
+'noimages'     => 'দেখার মত কিছই নাই।',
+
+# Metadata
+'metadata-expand'   => 'সম্প্রসারিত সবিস্তারে দেখাও',
+'metadata-collapse' => 'সম্প্রসারিত সবিস্তারে দেখিও না',
 
 # EXIF tags
-'exif-imagewidth'  => 'চওড়া',
-'exif-imagelength' => 'লম্বা',
-'exif-lightsource' => 'বাতির উৎস',
+'exif-imagewidth'       => 'চওড়া',
+'exif-imagelength'      => 'লম্বা',
+'exif-datetime'         => 'ফাইল পরিবর্তনের তারিখ ও সময়',
+'exif-imagedescription' => 'ছবির শিরোনাম',
+'exif-make'             => 'ক্যামেরার তৈরিকারক',
+'exif-model'            => 'ক্যামেরা মডেল',
+'exif-software'         => 'ব্যবহৃত সফটওয়্যার',
+'exif-artist'           => 'স্রষ্টা',
+'exif-lightsource'      => 'বাতির উৎস',
 
 'exif-unknowndate' => 'অজানা তারিখ',
 
 'exif-orientation-1' => 'সাধারণ', # 0th row: top; 0th column: left
 
+'exif-componentsconfiguration-0' => 'বিদ্যমান নয়',
+
 'exif-subjectdistance-value' => '$1 মিটার',
 
-'exif-meteringmode-0' => 'অজানা',
-'exif-meteringmode-1' => 'গড়',
+'exif-meteringmode-0'   => 'অজানা',
+'exif-meteringmode-1'   => 'গড়',
+'exif-meteringmode-6'   => 'আংশিক',
+'exif-meteringmode-255' => 'অন্য',
+
+'exif-lightsource-0'  => 'অজানা',
+'exif-lightsource-1'  => 'দিনের আলো',
+'exif-lightsource-9'  => 'চমৎকার আবহাওয়া',
+'exif-lightsource-10' => 'মেঘাচ্ছন্ন আবহাওয়া',
+
+'exif-focalplaneresolutionunit-2' => 'ইঞ্চি',
+
+'exif-sensingmethod-1' => 'অসংজ্ঞায়িত',
 
 'exif-gaincontrol-0' => 'কিছুই না',
 
@@ -930,6 +1024,13 @@ $1',
 'exif-sharpness-2' => 'কঠিন',
 
 'exif-subjectdistancerange-0' => 'অজানা',
+
+# Pseudotags used for GPSSpeedRef and GPSDestDistanceRef
+'exif-gpsspeed-k' => 'কিলোমিটার প্রতি ঘন্টা',
+'exif-gpsspeed-m' => 'মাইল প্রতি ঘন্টা',
+
+# External editor support
+'edit-externally' => 'ফাইলটি অন্য কোন সফটওয়্যার দিয়ে সম্পাদনা করুন',
 
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'সমস্ত',
@@ -947,6 +1048,7 @@ $1',
 'confirmemail_needlogin'  => 'আপনার ই-মেইল ঠিকানা নিশ্চিত করতে আপনার $1 প্রয়োজন।',
 'confirmemail_success'    => 'আপনার ই-মেইল ঠিকানাটি নিশ্চিত করা হয়েছে। আপনি এখন লগ-ইন করতে পারেন।',
 'confirmemail_loggedin'   => 'আপনার ই-মেইল ঠিকানাটি নিশ্চিত করা হয়েছে।',
+'confirmemail_error'      => 'আপনার নিশ্চিতকরণ সংরক্ষণ করতে হয়তো কিছু সমস্যা হয়েছিল',
 'confirmemail_subject'    => '{{SITENAME}} ই-মেইল ঠিকানা নিশ্চিতকরণ',
 
 # Delete conflict

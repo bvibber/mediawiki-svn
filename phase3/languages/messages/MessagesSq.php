@@ -137,7 +137,7 @@ $messages = array(
 'category-media-header' => 'Skeda në kategori "$1"',
 
 'mainpagetext'      => 'Wiki software u instalua me sukses.',
-'mainpagedocfooter' => 'Ju lutem shikoni [http://meta.wikimedia.org/wiki/MediaWiki_i18n dukumentacionin për ndryshimin e pamjes] dhe [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide faqet rreth përdorimit] për të mësuar se si përdoret dhe ndryshohet MediaWiki.',
+'mainpagedocfooter' => 'Ju lutem shikoni [http://meta.wikimedia.org/wiki/MediaWiki_localisation dukumentacionin për ndryshimin e pamjes] dhe [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide faqet rreth përdorimit] për të mësuar se si përdoret dhe ndryshohet MediaWiki.',
 
 'about'          => 'Rreth',
 'article'        => 'Artikulli',
@@ -577,7 +577,7 @@ Shiko tek [{{fullurl:Speciale:Log/delete|page={{PAGENAMEE}}}} regjistri i grisje
 'diff-multi'                => '({{plural:$1|Një redaktim ndërmjet nuk është|$1 redaktime ndërmjet nuk janë}} treguar.)',
 
 # Search results
-'searchresults'         => 'Rezultatet e kërkimit',
+'searchresults-title'   => 'Rezultatet e kërkimit "$1"',
 'searchsubtitle'        => 'Kërkim për "[[$1]]"',
 'searchsubtitleinvalid' => 'Kërkim për "$1"',
 'badquery'              => 'Pyetje kërkese e formuluar gabim',

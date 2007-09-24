@@ -232,8 +232,8 @@ $messages = array(
 'mainpagedocfooter' => 'Zobacz [http://meta.wikimedia.org/wiki/Help:Contents przewodnik użytkownika] w celu uzyskania informacji o działaniu oprogramowania wiki.
 
 == Na początek ==
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Lista ustawień konfiguracyjnych]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki FAQ]
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Lista ustawień konfiguracyjnych]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
 * [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce Komunikaty o nowych wersjach MediaWiki]',
 
 'about'          => 'O serwisie',
@@ -752,7 +752,7 @@ Inni administratorzy tej wiki nadal mają dostęp do ukrytych wersji i mogą je 
 'diff-multi'                => '(Nie pokazano {{plural:$1|jednej wersji pośredniej|$1 wersji pośrednich}}.)',
 
 # Search results
-'searchresults'         => 'Wyniki wyszukiwania',
+'searchresults-title'   => 'Wyniki wyszukiwania "$1"',
 'searchresulttext'      => 'Aby dowiedzieć się więcej o przeszukiwaniu serwisu {{SITENAME}}, zobacz stronę [[{{ns:Project}}:Przeszukiwanie|Przeszukiwanie]].',
 'searchsubtitle'        => 'Dla zapytania "[[:$1]]"',
 'searchsubtitleinvalid' => 'Dla zapytania "$1"',

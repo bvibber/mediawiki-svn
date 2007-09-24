@@ -803,8 +803,9 @@ ID pemblokiran Anda adalah $5. Tolong sertakan ID ini dalam setiap pertanyaan An
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Akun tak dapat dibuat',
-'cantcreateaccounttext'  => 'Pembuatan akun dari alamat IP ini (<strong>$1</strong>) diblokir.
-Hal ini mungkin disebabkan adanya vandalisme berulang yang berasal dari sekolah atau penyedia jasa Internet Anda.',
+'cantcreateaccount-text' => "Pembuatan akun dari alamat IP ini (<strong>$1</strong>) telah diblokir oleh [[User:$3|$3]].
+
+Alasan yang diberikan oleh $3 adalah ''$2''",
 
 # History pages
 'revhistory'          => 'Sejarah revisi',
@@ -887,7 +888,7 @@ Pengurus lain akan dapat mengakses isi tersebunyi dan dapat membatalkan penghapu
 'diff-multi'                => '({{PLURAL:$1|Satu|$1}} revisi antara tak ditampilkan.)',
 
 # Search results
-'searchresults'         => 'Hasil pencarian',
+'searchresults-title'   => 'Hasil pencarian "$1"',
 'searchresulttext'      => 'Untuk informasi lebih lanjut tentang pencarian di {{SITENAME}}, lihat [[{{MediaWiki:helppage}}|halaman bantuan]].',
 'searchsubtitle'        => "Anda mencari '''[[:$1]]'''",
 'searchsubtitleinvalid' => "Anda mencari '''$1'''",
@@ -1214,7 +1215,7 @@ Jika Anda memiliki versi resolusi penuh dari gambar ini, harap muatkan berkas te
 Telah terjadi sejumlah '''$3''' penampilan halaman dan '''$4''' penyuntingan sejak {{SITENAME}} dimulai. Ini berarti rata-rata '''$5''' suntingan per halaman, dan '''$6''' penampilan per penyuntingan.
 
 Telah dimuat sejumlah '''$8''' berkas dan sedang terjadi '''$7''' [http://meta.wikimedia.org/wiki/Help:Job_queue antrian pekerjaan].",
-'userstatstext'          => "Terdapat '''$1''' [[[[Special:Listusers|pengguna]] terdaftar. '''$2''' (atau '''$4%''') diantaranya memiliki hak akses $5.",
+'userstatstext'          => "Terdapat '''$1''' [[Special:Listusers|pengguna]] terdaftar. '''$2''' (atau '''$4%''') diantaranya memiliki hak akses $5.",
 'statistics-mostpopular' => 'Halaman yang paling banyak ditampilkan',
 
 'disambiguations'      => 'Halaman disambiguasi',

@@ -160,7 +160,7 @@ $messages = array(
 'subcategories'   => 'Podkategorije',
 
 'mainpagetext'      => 'Wikiprogramje ste uspešno naložili!',
-'mainpagedocfooter' => 'Za uporabo in pomoč pri nastavitvi, prosimo, preglejte [http://meta.wikimedia.org/wiki/MediaWiki_i18n dokumentacijo za prilagajanje vmesnika]
+'mainpagedocfooter' => 'Za uporabo in pomoč pri nastavitvi, prosimo, preglejte [http://meta.wikimedia.org/wiki/MediaWiki_localisation dokumentacijo za prilagajanje vmesnika]
 in [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Uporabniški priročnik].',
 
 'about'          => 'O projektu',
@@ -591,7 +591,7 @@ Do skrite vsebine bodo še vedno lahko dostopali drugi administratorji in jo z u
 'compareselectedversions'   => 'Primerjaj izbrani redakciji',
 
 # Search results
-'searchresults'         => 'Izid iskanja',
+'searchresults-title'   => 'Izid iskanja "$1"',
 'searchresulttext'      => 'Za več sporočil o iskanju v {{GRAMMAR:dajalnik|{{SITENAME}}}} glej [[{{MediaWiki:helppage}}|Iščem v {{GRAMMAR:dajalnik|{{SITENAME}}}}]].',
 'searchsubtitleinvalid' => 'Za povpraševanje "$1"',
 'badquery'              => 'Napačno oblikovana iskalna poizvedba',

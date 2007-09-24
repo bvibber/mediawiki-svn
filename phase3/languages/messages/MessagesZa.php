@@ -8,6 +8,13 @@ $fallback = 'zh-cn';
 
 $messages = array(
 # Dates
+'sunday'        => 'Swnggeiz Yaet',
+'monday'        => 'Swnggeiz Wtx',
+'tuesday'       => 'Swnggeiz Yeih',
+'wednesday'     => 'Swnggeiz Sam',
+'thursday'      => 'Swnggeiz Seiq',
+'friday'        => 'Swnggeiz Haj',
+'saturday'      => 'Swnggeiz Lokj',
 'january'       => 'Nin Wtj',
 'february'      => 'Nin Yeih',
 'march'         => 'Nin Sam',
@@ -24,23 +31,31 @@ $messages = array(
 'september-gen' => 'Nin Gouj',
 'sep'           => 'Nin Gouj',
 
-'cancel'     => 'Fwtqfex',
-'mytalk'     => 'Gaeq gou gangj',
-'navigation' => 'Dazzaeuh',
+'cancel'         => 'Fwtqfex',
+'qbspecialpages' => 'Doenghmae daegxsei',
+'mytalk'         => 'Gaeq gou gangj',
+'navigation'     => 'Dazzaeuh',
 
-'help'          => 'Caeuq',
-'search'        => 'Cwmh',
-'searchbutton'  => 'Cwmh',
-'searcharticle' => 'Bei',
-'history_short' => 'Doenghmatq',
-'protect'       => 'Hahdiuz',
-'talk'          => 'Kwng',
-'toolbox'       => 'Loengx hong',
+'help'             => 'Caeuq',
+'search'           => 'Cwmh',
+'searchbutton'     => 'Cwmh',
+'searcharticle'    => 'Bei',
+'history_short'    => 'Doenghmatq',
+'permalink'        => 'Gaeq-lamh kaemdaengz',
+'protect'          => 'Hahdiuz',
+'talk'             => 'Kwng',
+'toolbox'          => 'Loengx hong',
+'jumptonavigation' => 'Dazzaeuh',
+'jumptosearch'     => 'Cwmh',
 
 # All link text and link target definitions of links into project namespace that get used by other message strings, with the exception of user group pages (see grouppage) and the disambiguation template definition (see disambiguations).
+'edithelp' => 'Caeuq mungz san-zonz',
 'mainpage' => 'Mae meh',
 
+'youhavenewmessages' => 'Mungz meiz $1（$2）。',
+
 # Short words for each namespace, by default used in the 'article' tab in monobook
+'nstab-main' => 'Faenzueng',
 'nstab-user' => 'Mae bouxdeiz',
 
 # General errors
@@ -52,30 +67,84 @@ $messages = array(
 'username'    => 'Ciu bouxdeiz:',
 
 # Edit pages
-'summary'   => 'Saegmangj',
-'watchthis' => 'Demq mae-nej',
+'summary'            => 'Saegmangj',
+'minoredit'          => 'Di-nej gaij noix',
+'watchthis'          => 'Demq mae-nej',
+'savearticle'        => 'Zonzdiuz mae-nej',
+'showpreview'        => 'Okqhaej piu-ngoengx',
+'showdiff'           => 'Okqhaej gaeqgaei',
+'whitelistedittitle' => 'Laezdiuz haeuj aiq naej san-zonz',
+
+# Search results
+'powersearch' => 'Cwmh',
 
 # Preferences page
-'mypreferences' => 'Doenghgaeq gou hae',
+'mypreferences'     => 'Doenghgaeq gou hae',
+'prefsnologin'      => 'Maengx laezhaej',
+'searchresultshead' => 'Cwmh',
 
 # Recent changes
 'recentchanges' => 'Gaeqgaij suijnej',
 
+# Upload
+'uploadnologin'     => 'Maengx laezhaej',
+'filedesc'          => 'Saegmangj',
+'fileuploadsummary' => 'Saegmangj:',
+'watchthisupload'   => 'Demq mae-nej',
+
+# Image list
+'ilsubmit' => 'Cwmh',
+
 # Miscellaneous special pages
-'randompage'   => 'Mae zaihzex',
-'move'         => 'Caen',
-'movethispage' => 'Caen mae nej',
+'randompage'        => 'Mae zaihzex',
+'specialpages'      => 'Doenghmae daegxsei',
+'newpages-username' => 'Ciu bouxdeiz:',
+'move'              => 'Caen',
+'movethispage'      => 'Caen mae nej',
+
+# Special:Log
+'log-search-submit' => 'Bei',
 
 # Watchlist
+'watchlist'     => 'Gaeq gou demq',
 'mywatchlist'   => 'Gaeq gou demq',
+'watchnologin'  => 'Maengx laezhaej',
 'watch'         => 'Demq',
 'watchthispage' => 'Demq mae-nej',
+
+# Restrictions (nouns)
+'restriction-move' => 'Caen',
+
+# Contributions
+'contributions' => 'Gaeq bouxdeiz haej',
+'mycontris'     => 'Gaeq gou haej',
+
+'sp-contributions-submit' => 'Cwmh',
 
 # What links here
 'whatlinkshere' => 'Maelaez lamh haenznej',
 
+# Block/unblock
+'ipblocklist-submit' => 'Cwmh',
+
 # Move page
-'movepage' => 'Caen doengh mae',
-'movedto'  => 'Caen bei',
+'movepage'    => 'Caen doengh mae',
+'movearticle' => 'Caen doengh mae:',
+'movenologin' => 'Maengx laezhaej',
+'move-watch'  => 'Demq mae-nej',
+'movepagebtn' => 'Caen doengh mae',
+'movedto'     => 'Caen bei',
+'1movedto2'   => '[[$1]] caen bei [[$2]]',
+'movereason'  => 'Haujgaemj',
+
+# Tooltip help for the actions
+'tooltip-pt-preferences' => 'Doenghgaeq gou hae',
+'tooltip-p-logo'         => 'Mae meh',
+
+# Multipage image navigation
+'imgmultigo' => 'Bei！',
+
+# Table pager
+'table_pager_limit_submit' => 'Bei',
 
 );

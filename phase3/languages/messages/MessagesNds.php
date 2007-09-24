@@ -180,7 +180,7 @@ Na ''Ünnerscheed wiesen'' nich de kumplette Siet wiesen",
 'category-empty'        => "''In disse Kategorie sünd aktuell kene Sieden.''",
 
 'mainpagetext'      => 'De Wiki-Software is mit Spood installeert worrn.',
-'mainpagedocfooter' => 'Kiek de [http://meta.wikimedia.org/wiki/MediaWiki_i18n Dokumentatschoon för dat Anpassen vun de Brukerböversiet]
+'mainpagedocfooter' => 'Kiek de [http://meta.wikimedia.org/wiki/MediaWiki_localisation Dokumentatschoon för dat Anpassen vun de Brukerböversiet]
 un dat [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Brukerhandbook] för Hülp to de Bruuk un Konfiguratschoon.',
 
 'about'          => 'Över',
@@ -603,7 +603,7 @@ Versöök [[Special:Search|dat Söken]] na annere relevante Sieden.',
 'editundo'                  => 'rutnehmen',
 
 # Search results
-'searchresults'         => 'Söökresultaten',
+'searchresults-title'   => 'Söökresultaten "$1"',
 'searchresulttext'      => 'För mehr Informatschonen över {{SITENAME}}, kiek [[{{MediaWiki:helppage}}|{{SITENAME}} dörsöken]].',
 'searchsubtitle'        => 'För de Söökanfraag „[[:$1]]“',
 'searchsubtitleinvalid' => 'För de Söökanfraag „$1“',
