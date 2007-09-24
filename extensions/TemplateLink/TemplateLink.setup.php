@@ -10,7 +10,7 @@
  */
 
 # Alert the user that this is not a valid entry point to MediaWiki if they try to access the skin file directly.
-if (!defined('MEDIAWIKI')) {
+if(!defined('MEDIAWIKI')){
         echo <<<EOT
 To install my extension, put the following line in LocalSettings.php:
 require_once( "$IP/extensions/TemplateLink/TemplateLink.setup.php" );
@@ -34,12 +34,12 @@ $wgExtensionCredits['parserhook'][] = array(
 
 
 # Special page registration
-$wgAutoloadClasses['TemplateLink'] = dirname(__FILE__) . '/TemplateLink.body.php'; # Tell MediaWiki to load the extension body.
+$wgAutoloadClasses['TemplateLink'] = dirname(__FILE__). '/TemplateLink.body.php'; # Tell MediaWiki to load the extension body.
 $wgSpecialPages['TemplateLink'] = 'TemplateLink'; # Let MediaWiki know about your new special page.
 $wgHooks['LoadAllMessages'][] = 'TemplateLink::loadMessages'; # Load the internationalization messages for your special page.
 $wgHooks['LanguageGetSpecialPageAliases'][] = 'TemplateLinkLocalizedPageName'; # Add any aliases for the special page.
  
-function TemplateLinkLocalizedPageName(&$specialPageArray, $code) {
+function TemplateLinkLocalizedPageName(&$specialPageArray, $code){
   # The localized title of the special page is among the messages of the extension:
   TemplateLink::loadMessages();
   $text = wfMsg('TemplateLink');
@@ -55,22 +55,23 @@ function TemplateLinkLocalizedPageName(&$specialPageArray, $code) {
 # The tag
 $wgExtensionFunctions[] = 'efTemplateLinkSetup';
  
-function efTemplateLinkSetup() {
+function efTemplateLinkSetup(){
     global $wgParser;
     $wgParser->setHook( 'templatelink', 'efTemplateLink' );
 }
  
-function efTemplateLink( $input, $args, $parser ) {
-  $input = str_replace ( "<sep>" , "|" , $input );
-  $arr = explode( "\n", trim( $input ) );
-  $template = array_shift( $arr );
-  if( trim( $template ) == '' ) return htmlspecialchars( $template );
-  if( count( $arr ) > 0 ) $title = array_pop( $arr );
-  else $title = ucfirst( array_shift( explode( "|", $template ) ) );
+function efTemplateLink( $input, $args, $parser ){
+  $template = trim( $input );
+  if( trim( $template )== '' )return htmlspecialchars( $template );
+
+  if( isset( $args['text'] ))$text = $args['text'];
+  else $text = ucfirst( trim( array_shift( explode( '|' , $template , 2 ))));
+
   
   $nt = Title::newFromText( "Special:TemplateLink" );
   $url = $nt->escapeLocalURL();
-  $url .= "?template=" . urlencode ( $template );
-  $link = "<a href=\"$url\" class=\"internal\">$title</a>" ;
-  return $link ;
+  $url .= "?template=" . urlencode( $template );
+  if( isset( $args['title'] ))$url .= "&newtitle=" . ucfirst( trim( $args['title'] ));
+  $link = "<a href=\"$url\" class=\"internal\">$text</a>";
+  return $link;
 }
