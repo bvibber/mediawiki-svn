@@ -51,6 +51,7 @@ require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialImportLangNames.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialAddCollection.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialConceptMapping.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialCopy.php");
+require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialExportTSV.php");
 
 function addWikidataHeader() {
 	global $wgOut,$wgScriptPath;

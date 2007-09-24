@@ -60,7 +60,8 @@ class ExpressionPage extends DefaultWikidataApplication {
 			$meaningList="No meanings found.";
 		}
 		$templatesAsHTML=$wgOut->parse($wikiMagic);
-
+		$lang_select=getLanguageSelect("Language");
+		
 	$boxhtml=<<<HTML
 <P>
 <div style="border-style:solid;border-width:1px;border-color:#666666;padding:5px;">
@@ -70,8 +71,8 @@ $templatesAsHTML
 <br/>
 <B>Add new meaning:</B>
 <form>
-Language: <select><option name="English">English</option></select><br/>
-Definition:<br/><textarea></textarea>
+Language: $lang_select<br/>
+Definition:<br/><textarea cols="80"></textarea>
 <input type="submit" value="Add meaning">
 
 </form>
