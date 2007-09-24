@@ -20,7 +20,7 @@ $IP = realpath( dirname( __FILE__ ) .  "/../../../../" );
 $currentdir = dirname( __FILE__ );
 chdir( $IP );
 
-ini_set( 'include_path', ".$sepIP$sep$IP/extensions/Wikidata/OmegaWiki$sep$IP/includes$sep$IP/languages$sep$IP/maintenance" );
+ini_set( 'include_path', ".$sep$IP$sep$IP/extensions/Wikidata/OmegaWiki$sep$IP/includes$sep$IP/languages$sep$IP/maintenance" );
 
 require_once( "Defines.php");
 require_once( "ProfilerStub.php");
