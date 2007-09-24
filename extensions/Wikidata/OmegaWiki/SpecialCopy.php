@@ -39,13 +39,12 @@ function wfSpecialCopy() {
 		function SpecialCopy() {
 			SpecialPage::SpecialPage( 'Copy' );
 		}
-
 		function execute( $par ) {
 			global $wgOut, $wgRequest, $wgTitle, $wgUser, $wdTermDBDataSet;
 			$wgOut->setPageTitle("Special:Copy");
 
 			if(!$wgUser->isAllowed('wikidata-copy')) {
-				$wgOut->addHTML("Permission denied.");
+				$wgOut->addHTML(wfMsgSci("Permission_denied"));
 				return false;
 			}
 
@@ -53,7 +52,7 @@ function wfSpecialCopy() {
 			if(!$action) {
 				$this->ui();
 			} elseif ($action=="copy") {
-				$this->copy();
+				$this->copy_by_param();
 			} elseif ($action=="list") {
 				$this->list_sets();
 			} elseif ($action=="help"){
@@ -162,25 +161,28 @@ function wfSpecialCopy() {
 			createConceptMapping($map);
 		}
 
-		# TODO, this should actually copy :-P
-		protected function copy() {
+		/**read in and partially validate parameters,
+		 * then call docopy()
+		 */
+		protected function copy_by_param() {
 			global 
 				$wgRequest, $wgOut;
-		
-			$dmid=$wgRequest("dmid");
-			$dc1=$wgRequest("dc1");
-			$dc2=$wgRequest("dc2");	
-			$abort=false;
+			
+			$dmid_dirty=$wgRequest->getText("dmid");
+			$dc1_dirty=$wgRequest->getText("dc1");
+			$dc2_dirty=$wgRequest->getText("dc2");	
 
-			if (is_null($dmid)) {
+			$abort=false; 	# check all input before aborting
+
+			if (is_null($dmid_dirty)) {
 				$wgOut->addWikiText(wfMsgSc("please_provide_dmid"));
 				$abort=true;
 			}
-			if (is_null($dc1)) {
+			if (is_null($dc1_dirty)) {
 				$wgOut->addWikiText(wfMsgSc("please_provide_dc1"));
 				$abort=true;
 			}
-			if (is_null($dc2)) {
+			if (is_null($dc2_dirty)) {
 				$wgOut->addWikiText(wfMsgSc("please_provide_dc2"));
 				$abort=true;
 			}
@@ -188,27 +190,36 @@ function wfSpecialCopy() {
 			if ($abort)
 				return;
 
-			# $wgRequest->getText( 'page' );
-			$sets=wdGetDataSets();
-			#$requests=$wgRequest->getValues();
-			$wgOut->addWikiText("<h2>".wfMsgSc("will_insert")."</h2>");
-			$map=array();
-			foreach ($sets as $key => $set) {
-				$dc=$set->getPrefix();
-				$dm_id=$wgRequest->getText($dc);
-				$name=$set->fetchName();
-
-				$dm_id_ui=$dm_id; # Only for teh purdy
-				if ($dm_id_ui==null)
-					$dm_id_ui="unset";  
-				$wgOut->addWikiText("$name ->$dm_id_ui");
-				$map[$dc]=$dm_id;
-			#$dbr=&wfGetDB(DB_MASTER);
-			}
-			createConceptMapping($map);
+			#seems ok so far, let's try and copy.
+			$success=$this->_doCopy($dmid_dirty, $dc1_dirty, $dc2_dirty);
+			if ($success)
+				$wgOut->addWikiText(wfMsgSc("copy_successful"));
 		}
 
 
+		protected function _doCopy($dmid_dirty, $dc1_dirty, $dc2_dirty) {
+			global 
+				$wgCommunityEditPermission, $wgOut, $wgUser, $wgCommunity_dc;
+			$dmid=mysql_real_escape_string($dmid_dirty);
+			$dc1=mysql_real_escape_string($dc1_dirty);
+			$dc2=mysql_real_escape_string($dc2_dirty);
+
+			if (!($wgUser->isAllowed($wgCommunityEditPermission)) or $dc2!=$wgCommunity_dc) {
+				$wgOut->addHTML(wfMsgSc("permission_denied"));
+				return false; #"houston, we have a problem"
+			}
+			CopyTools::newCopyTransaction($dc1, $dc2);
+			$dmc=new DefinedMeaningCopier($dmid, $dc1, $dc2); #sorry, not a [[delorean]]
+			$dmc->dup(); 
+			# Do we need this here? Or is there already transaction
+			# management on speial pages. :-/
+			# mysql_query("COMMIT");	# force commit where no autocommit
+						# full mysql transactions mihgt	be a good plan
+			return true; # seems everything went ok.
+	
+		}
+
+		
 		protected function get() {
 			global 
 				$wgOut, $wgRequest;

@@ -39,7 +39,7 @@ function wfSpecialConceptMapping() {
 			$wgOut->setPageTitle("ConceptMapping");
 
 			if(!$wgUser->isAllowed('editwikidata-'.$wdTermDBDataSet)) {
-				$wgOut->addHTML("Permission denied.");
+				$wgOut->addHTML(wfMsgSc("Permission_denied"));
 				return false;
 			}
 			$action=$wgRequest->getText('action');

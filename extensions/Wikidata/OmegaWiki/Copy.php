@@ -163,7 +163,7 @@ function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 	$save_expression=$expression;
 	$save_expression["expression_id"]=$target_expid1;
 	if  (!($copier->already_there())) {
-		CopyTools::dc_insert_assoc($dc,"expression",$save_expression);
+		CopyTools::dc_insert_assoc($dc2,"expression",$save_expression);
 	}
 	dupsyntrans(
 		$dc1,
@@ -460,7 +460,7 @@ class DefinedMeaningCopier {
 		return $this->save_meaning["defined_meaning_id"];
 	}
 
-	private function dup_stub (){
+	public function dup_stub (){
 		$dmid=$this->dmid;
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;

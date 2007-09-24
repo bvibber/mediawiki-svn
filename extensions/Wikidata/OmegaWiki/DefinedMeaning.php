@@ -269,7 +269,7 @@ class DefinedMeaning extends DefaultWikidataApplication {
 		foreach($datasets as $datasetid=>$dataset) {
 			$name=$dataset->fetchName(); 
 			$dc2=$datasetid;
-			$html.="<a href='$wgScriptPath/extensions/Wikidata/util/copy.php?dmid=$dmid&dc1=$dc1&dc2=$dc2'>$name</a><br>\n";
+			$html.="<a href='index.php?title=Special:Copy&action=copy&dmid=$dmid&dc1=$dc1&dc2=$dc2'>$name</a><br>\n";
 		}
 
 		return $html;
