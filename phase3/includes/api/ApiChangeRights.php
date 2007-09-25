@@ -44,12 +44,6 @@ class ApiChangeRights extends ApiBase {
 		$allowed = $ur->changeableGroups();
 		$res = array();
 
-		if($params['listgroups'])
-		{
-			$res['allowedgroups'] = $allowed;
-			$this->getResult()->setIndexedTagName($res['allowedgroups']['add'], 'group');
-			$this->getResult()->setIndexedTagName($res['allowedgroups']['remove'], 'group');
-		}
 		if(is_null($params['user']))
 			$this->dieUsage('The user parameter must be set', 'nouser');
 
@@ -58,7 +52,19 @@ class ApiChangeRights extends ApiBase {
 		if(!$u)
 			$this->dieUsage("Invalid username ``{$params['user']}''", 'invaliduser');
 		if($u->getId() == 0) // Anon or non-existent
-			$this->dieUsage("User ``{$params['user']}'' doesn't exist", 'nosuchuser')
+			$this->dieUsage("User ``{$params['user']}'' doesn't exist", 'nosuchuser');
+
+		$curgroups = $u->getGroups();
+
+		if($params['listgroups'])
+		{
+			$res['user'] = $uName;
+			$res['allowedgroups'] = $allowed;
+			$res['ingroups'] = $curgroups;
+			$this->getResult()->setIndexedTagName($res['ingroups'], 'group');
+			$this->getResult()->setIndexedTagName($res['allowedgroups']['add'], 'group');
+			$this->getResult()->setIndexedTagName($res['allowedgroups']['remove'], 'group');
+		}
 ;
 		if($params['gettoken'])
 		{
@@ -78,7 +84,6 @@ class ApiChangeRights extends ApiBase {
 			$this->dieUsage('You don\'t have permission to change users\' rights', 'permissiondenied');
 
 		// First let's remove redundant groups and check permissions while we're at it
-		$curgroups = $u->getGroups();
 		if(is_null($params['addto']))
 			$params['addto'] = array();
 		$addto = array();
@@ -133,7 +138,7 @@ class ApiChangeRights extends ApiBase {
 			'user' => 'The user you want to add to or remove from groups.',
 			'token' => 'A changerights token previously obtained through the gettoken parameter.',
 			'gettoken' => 'Output a token. Note that the user parameter still has to be set.',
-			'listgroups' => 'List the groups you can add users to and remove them from.',
+			'listgroups' => 'List the groups the user is in, and te ones you can add them to and remove them from.',
 			'addto' => 'Pipe-separated list of groups to add this user to',
 			'rmfrom' => 'Pipe-separated list of groups to remove this user from',
 			'reason' => 'Reason for change (optional)'
