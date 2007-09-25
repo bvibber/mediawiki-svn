@@ -153,30 +153,31 @@ function getSourceName($sourceAbbreviation) {
 
 function importUMLSTerms($sab, $umlsCollectionId, $sourceCollectionId, $languageId, $isoLanguages) {
 	global
-	$db;
+		$db;
 
 	$queryResult = mysql_query("select str, cui, lat, code from MRCONSO where sab like '$sab'", $db);
-	initializeProgressBar(mysql_num_rows($queryResult), 100);
+	
+	$progressBar = new ProgressBar(mysql_num_rows($queryResult), 100);
 
 	$collectionMeaningId = getCollectionMeaningId($sourceCollectionId);
 
 	while ($umlsTerm = mysql_fetch_object($queryResult)) {
 		$definedMeaningId = getDefinedMeaningFromCollection($umlsCollectionId, $umlsTerm->cui);
-		$string = str_replace('_', ' ', substr( trim($umlsTerm->str), 0, 240 ) );
+		$string = str_replace('_', ' ', substr(trim($umlsTerm->str), 0, 240));
 		$expression = findOrCreateExpression($string, $isoLanguages[strtolower($umlsTerm->lat)]);
 		
-		if(!$definedMeaningId) {
+		if (!$definedMeaningId) {
 			$definedMeaningId = addDefinedMeaning($expression->id);
 			addDefinedMeaningToCollection($definedMeaningId, $umlsCollectionId, $umlsTerm->cui);
 		}
 
 		$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
 		addDefinedMeaningToCollectionIfNotPresent($definedMeaningId, $sourceCollectionId, $umlsTerm->code);
-		advanceProgressBar(1);
+		$progressBar->advance(1);
 	}
 	
 	mysql_free_result($queryResult);
-	clearProgressBar();
+	$progressBar->clear();
 }
 
 function importUMLSDefinitions($sab, $umlsCollectionId, $sourceCollectionId, $languageId) {
@@ -184,25 +185,25 @@ function importUMLSDefinitions($sab, $umlsCollectionId, $sourceCollectionId, $la
 		$db;
 	
 	$queryResult = mysql_query("select def, cui from MRDEF where sab = '$sab'", $db);
-	initializeProgressBar(mysql_num_rows($queryResult), 100);
+	$progressBar = new ProgressBar(mysql_num_rows($queryResult), 100);
 
 	$collectionMeaningId = getCollectionMeaningId($sourceCollectionId);
 
 	while ($definition = mysql_fetch_object($queryResult)) {
 		$definedMeaningId = getDefinedMeaningFromCollection($umlsCollectionId, $definition->cui);
 		
-		if($definedMeaningId) {
-			if(!getDefinedMeaningDefinitionId($definedMeaningId)) 
+		if ($definedMeaningId) {
+			if (!getDefinedMeaningDefinitionId($definedMeaningId)) 
 				addDefinedMeaningDefiningDefinition($definedMeaningId, $languageId, $definition->def);
 
 			addDefinedMeaningAlternativeDefinition($definedMeaningId, $languageId, $definition->def, $collectionMeaningId);
 		}
 		
-		advanceProgressBar(1);
+		$progressBar->advance(1);
 	}
 	
 	mysql_free_result($queryResult);
-	clearProgressBar();
+	$rogressBar->clear();
 }
 
 function importUMLSRelationTypes($relationCollectionId, $languageId) {
@@ -213,7 +214,8 @@ function importUMLSRelationTypes($relationCollectionId, $languageId) {
 	while ($relationType = mysql_fetch_object($queryResult)) {
 		$definedMeaningId = getDefinedMeaningFromCollection($relationCollectionId, $relationType->ABBREV);
 		$expression = findOrCreateExpression(trim($relationType->FULL), $languageId);
-		if(!$definedMeaningId) {
+		
+		if (!$definedMeaningId) {
 			$definedMeaningId = addDefinedMeaning($expression->id);
 			$expression->assureIsBoundToDefinedMeaning($definedMeaningId, true);
 			addDefinedMeaningToCollection($definedMeaningId, $relationCollectionId, $relationType->ABBREV);		
@@ -246,7 +248,7 @@ function importUMLSRelations($umlsCollectionId, $relationCollectionContents, $qu
 		$db;
 
 	$queryResult = mysql_query($query, $db);
-	initializeProgressBar(mysql_num_rows($queryResult), 100);
+	$progressBar = new ProgressBar(mysql_num_rows($queryResult), 100);
 	
 	while ($relation = mysql_fetch_row($queryResult)) {
 		$relationType = $relation[2];
@@ -283,10 +285,10 @@ function importUMLSRelations($umlsCollectionId, $relationCollectionContents, $qu
 		if ($definedMeaningId2 > 0 && $definedMeaningId1 > 0 && $relationMeaningId > 0)
 			addRelation($definedMeaningId2, $relationMeaningId, $definedMeaningId1);
 				
-		advanceProgressBar(1);	
+		$progressBar->advance(1);	
 	}	
 	
-	clearProgressBar();
+	$progressBar->clear();
 }
 
 function importSNTypes($collectionId, $query, $languageId) {
@@ -344,9 +346,9 @@ function importUMLSSemanticTypes($sab, $collectionId, $attributeTypes) {
 		$db;
 
 	$query = "SELECT MRSTY.CUI, MRSTY.STY FROM MRCONSO,MRSTY where MRCONSO.SAB like '$sab' and MRCONSO.CUI=MRSTY.CUI";
-	if ( $queryResult = mysql_query($query, $db) ){
-		
-		initializeProgressBar(mysql_num_rows($queryResult), 100);
+
+	if ($queryResult = mysql_query($query, $db)) {
+		$progressBar->initialize(mysql_num_rows($queryResult), 100);
 		
 		while ($attribute = mysql_fetch_object($queryResult)) {
 			$definedMeaningId = getDefinedMeaningFromCollection($collectionId, $attribute->CUI);
@@ -368,10 +370,10 @@ function importUMLSSemanticTypes($sab, $collectionId, $attributeTypes) {
 			if ($definedMeaningId > 0 && $attributeMeaningId > 0)
 				addClassMembership($definedMeaningId, $attributeMeaningId);
 				
-			advanceProgressBar(1);
+			$progressBar->advance(1);
 		}
 		
-		clearProgressBar();
+		$progressBar->clear();
 	}	
 }
 

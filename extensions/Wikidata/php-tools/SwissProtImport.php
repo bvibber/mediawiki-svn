@@ -37,20 +37,21 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 //		}
 	}
 	
-	if($hugoCollectionId != 0) {
+	if ($hugoCollectionId != 0) {
 		$hugoCollection = getCollectionContents($hugoCollectionId);
 	}
 
 	// SwissProt import:
-	$numberOfMegaBytes = largeFilePositionInMegabytes(filesize($xmlFileName));  
-	initializeProgressBar($numberOfMegaBytes, 1, " Mb");
+	$numberOfMegaBytes = largeFilePositionInMegabytes(filesize($xmlFileName));
+	$progressBar = new ProgressBar($numberOfMegaBytes, 1, " Mb");
+	
 	$fileHandle = fopen($xmlFileName, "r");
-	importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection, $hugoCollection, $EC2GoMeaningId, $keyword2GoMeaningId);
+	importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection, $hugoCollection, $EC2GoMeaningId, $keyword2GoMeaningId, $progressBar);
 
 	fclose($fileHandle);
 }
 
-function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection, $hugoCollection, $EC2GoMeaningIdMapping, $keyword2GoMeaningIdMapping) {
+function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection, $hugoCollection, $EC2GoMeaningIdMapping, $keyword2GoMeaningIdMapping, ProgressBar $progressBar) {
 	$languageId = 85;
 	$collectionId = bootstrapCollection("Swiss-Prot", $languageId, "");
 	$classCollectionId = bootstrapCollection("Swiss-Prot classes", $languageId, "CLAS");
@@ -90,6 +91,7 @@ function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection,
 		$xmlParser->cellularComponentConceptId = $goCollection["GO:0005575"];
 	}
 	
+	$xmlParser->setProgressBar($progressBar);
 	$xmlParser->initialize();
 	
 	parseXML($fileHandle, $xmlParser);
@@ -184,6 +186,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $miscellaneousId = 0;
 	public $cautionId = 0;
 	
+	protected $progressBar;
 	
 	protected function bootstrapDefinedMeaning($spelling, $definition = null) {
 		if (!isset( $definition ) ){
@@ -420,6 +423,10 @@ class SwissProtXMLParser extends BaseXMLParser {
 		}		
 	}
 	
+	public function setProgressBar(ProgressBar $progressBar) {
+		$this->progressBar = $progressBar;
+	}
+	
 	public function initialize() {
 		$this->bootstrapConceptIds();
 		
@@ -462,8 +469,10 @@ class SwissProtXMLParser extends BaseXMLParser {
 		}
 		else {
 			if (count($this->stack) == 1) {
-				$currentByteIndex = largeFilePositionInMegabytes(xml_get_current_byte_index($parser));
-				setProgressBarPosition($currentByteIndex);
+				if ($this->progressBar != null) {
+					$currentByteIndex = largeFilePositionInMegabytes(xml_get_current_byte_index($parser));
+					$this->progressBar->setPosition($currentByteIndex);
+				}
 			}
 			
 			parent::startElement($parser, $name, $attributes);
@@ -1183,14 +1192,14 @@ class CommentXMLElementHandler extends DefaultXMLElementHandler {
 	}
 	
 	public function getHandlerForNewElement($name) {
-		switch($name) { // composed children
-			case "LOCATION":
-			case "KINETICS";
-			case "INTERACTANT";	// TODO: Is this intentional?
+		switch ($name) { // composed children
+			case "LOCATION": 
+			case "KINETICS":  
+			case "INTERACTANT":  
 				$result = new CommentChildXMLElementHandler();				
 				break;
 			default:
-				$result = DefaultXMLElementHandler::getHandlerForNewElement($name);
+				$result = parent::getHandlerForNewElement($name);
 				break;
 			}
 		$result->name = $name;
