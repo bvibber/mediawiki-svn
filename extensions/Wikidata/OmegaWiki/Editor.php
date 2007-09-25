@@ -2376,6 +2376,14 @@ class DefinedMeaningContextEditor extends WrappingEditor {
 	}
 	
 	public function edit(IdStack $idPath, $value) {
+		if (is_null($idPath)) {
+			throw new Exception("Null provided for idPath while trying to edit()");
+		}
+
+		if (is_null($value)) {
+			throw new Exception("Null provided for value while trying to edit()");
+		}
+
 		$definedMeaningId = (int) $value->definedMeaningId;
 		
 		$idPath->pushDefinedMeaningId($definedMeaningId);

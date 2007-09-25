@@ -92,7 +92,12 @@ class DefinedMeaning extends DefaultWikidataApplication {
 
 		$this->outputEditHeader();
 		$dmModel = new DefinedMeaningModel($definedMeaningId, $this->viewInformation);
-		 
+		
+		if (is_null($dmModel->getRecord())) {
+			$wgOut->addHTML(wfMsgSc("db_consistency__not_found")." ID:$definedMeaningId");
+			return;
+		}
+		
 		$wgOut->addHTML(
 			getDefinedMeaningEditor($this->viewInformation)->edit(
 				$this->getIdStack($dmModel->getId()), 

@@ -165,7 +165,7 @@ function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 	if  (!($copier->already_there())) {
 		CopyTools::dc_insert_assoc($dc2,"expression",$save_expression);
 	}
-	dupsyntrans(
+	dupSyntrans(
 		$dc1,
 		$dc2,
 		$src_dmid,
@@ -173,6 +173,7 @@ function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 		$dst_dmid,
 		$save_expression["expression_id"]
 	);
+	return $target_expid1;
 
 }
 
@@ -212,7 +213,7 @@ function dup_translated_content($dc1, $dc2, $tcid) {
 	# since all translated content for a single dm 
 	# shares one UUID, we can't check for that eventuality.
 	if ($copier->already_there()) {
-		return;
+		return $new_tcid;
 	}
 	foreach ($translated_content as $item) {
 		write_translated_content($dc1, $dc2, $new_tcid, $item);
@@ -465,7 +466,7 @@ class DefinedMeaningCopier {
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
 
-		echo "<br><h3>copying dm $dmid</h3><br>\n";
+		echo "<br><h2>copying dm $dmid</h2><br>\n";
 		$this->read();
 
 		# bit of exp here too (defnitely need to tidy)
@@ -478,21 +479,16 @@ class DefinedMeaningCopier {
 		$this->save_meaning["defined_meaning_id"]=$target_dmid;
 
 		$this->already_there=$copier->already_there();
+		echo "<h3>Ok, here we go with expressions and translated content</h3>";
 		if (!($copier->already_there())) {
-			# exp
-			$target_table=mysql_real_escape_string("${dc2}_expression");
-			$exp_copier=new ObjectCopier($defining_expression["expression_id"], $dc1, $dc2);
-			$target_expid1=$exp_copier->dup();
-			var_dump($target_expid1);
-			$save_expression=$defining_expression;
-			$save_expression["expression_id"]=$target_expid1;
-			CopyTools::dc_insert_assoc($dc2, "expression", $save_expression);
-			# and insert that info into the dm
-			$this->save_meaning["expression_id"]=$target_expid1;
+		echo "<BR>Defining expression first...</br>\n";
+			$this->save_meaning["expression_id"]=write_expression($defining_expression, $dmid, $target_dmid, $dc1, $dc2);
 		}
 		$this->save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $this->defined_meaning["meaning_text_tcid"]);
-
+		echo "<br>OK stand by to insert... here's the data:<br>\n";
+		var_dump($this->save_meaning);
 		if (!($copier->already_there())) {
+			echo "<br>Inserting DC!<br>\n";
 			CopyTools::dc_insert_assoc($dc2, "defined_meaning", $this->save_meaning);
 
 			$title_name=$defining_expression["spelling"];
@@ -506,13 +502,14 @@ class DefinedMeaningCopier {
 			createConceptMapping($concepts);
 		}
 
-		return $this->save_meaning["defined_meaning_id"];
+				return $this->save_meaning["defined_meaning_id"];
 	}		
 			
 	function dup_rest() {
 		$dmid=$this->dmid;
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
+
 		dup_syntranses(
 			$this->defined_meaning["defined_meaning_id"],
 			$this->save_meaning["defined_meaning_id"],
@@ -520,6 +517,7 @@ class DefinedMeaningCopier {
 			$dc2
 		);
 		
+
 		$relationsCopier=new RelationsCopier(
 			$dc1, 
 			$dc2, 
