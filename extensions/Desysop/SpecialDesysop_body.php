@@ -94,8 +94,8 @@ class DesysopForm {
 				</td>
 			</tr>" 
 		);
-		
-		$mss = wfMsg( "set_user_rights" );
+
+		$mss = wfMsg( "desysopsetrights" );
 
 		$token = htmlspecialchars( $wgUser->editToken() );
 		$wgOut->addHTML(
@@ -113,7 +113,7 @@ class DesysopForm {
 		global $wgDBname, $wgMemc, $wgLocalDatabases, $wgSharedDB;
 
 		$fname = 'DesysopForm::doSubmit';
-		
+
 		$dbw =& wfGetDB( DB_MASTER );
 		$user_groups = $dbw->tableName( 'user_groups' );
 		$usertable   = $dbw->tableName( 'user' );
@@ -128,7 +128,7 @@ class DesysopForm {
 			return;
 		}
 		$username = $t->getText();
-		
+
 		if ( $username{0} == "#" ) {
 			$id = intval( substr( $username, 1 ) );
 		} else {
@@ -163,15 +163,15 @@ class DesysopForm {
                         	'DesysopForm::doSubmit' );
 			$addedGroups[] = "sysop";
 		} elseif ( !$wasSysop ) {
-			$this->showFail( 'not_sysop' );
+			$this->showFail( 'desysopnot_sysop' );
 			return;
 		}
-		
+
 		$wgMemc->delete( "$dbName:user:id:$id" );
 
 		//array_diff does the trick.
 		$newGroups = array_diff($oldGroups, $addedGroups);
-		
+
 		$log = new LogPage( 'rights' );
 		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $this->mUser ), '',
 			array( $this->makeGroupNameList( $oldGroups ), $this->makeGroupNameList( $newGroups ) ) );
@@ -190,7 +190,7 @@ class DesysopForm {
 
 	}
 
-	function showFail( $msg = 'set_rights_fail' ) {
+	function showFail( $msg = 'desysoprightsfail' ) {
 		global $wgOut, $wgUser;
 
 		$wgOut->setPagetitle( wfMsg( "desysoptitle" ) );
@@ -202,5 +202,3 @@ class DesysopForm {
 	}
 
 }
-
-
