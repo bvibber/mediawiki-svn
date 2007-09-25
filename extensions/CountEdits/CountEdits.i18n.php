@@ -193,6 +193,10 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'بۇل ۋيكيدە ەش ٷلەس بولعان جوق.',
 ),
 
+'la' => array(
+'countedits-username' => 'Nomen usoris:',
+),
+
 'nds' => array(
 'countedits' => 'Tellen, wo faken de Bruker Sieden ännert hett',
 'countedits-warning' => '\'\'\'Wohrschau:\'\'\' Schasst de Deern nich na ehr Schört reken. Wo faken en Bruker Sieden ännert hett, seggt nix över sien Arbeit ut.',

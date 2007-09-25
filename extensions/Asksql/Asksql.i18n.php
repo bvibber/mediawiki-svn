@@ -50,6 +50,16 @@ this function sparingly.",
 'querysuccessful'  => 'Ερώτημα επιτυχές',
 ),
 
+'fi' => array(
+'asksql'           => 'SQL-kysely',
+'asksqltext'       => 'Käytä alla olevaa lomaketta tehdäksesi suoria kyselyitä tietokannasta. Merkkijonovakioita merkitään yksinkertaisilla lainausmerkeillä (\'näin\'). Kyselyt voivat usein kuormittaa palvelinta huomattavasti, joten käytä tätä toimintoa säästeliäästi.',
+'sqlislogged'      => 'Huomioithan, että kaikki kyselyt kirjataan.',
+'sqlquery'         => 'Kirjoita kysely',
+'querybtn'         => 'Lähetä kysely',
+'selectonly'       => 'Ainoastaan vain luku -kyselyt ovat sallittuja.',
+'querysuccessful'  => 'Kysely onnistui',
+),
+
 /*French (Bertrand Grondin) */
 'fr' => array(
 'asksql' => 'Requête SQL',

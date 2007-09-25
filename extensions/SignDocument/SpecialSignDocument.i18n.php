@@ -129,6 +129,7 @@ $allMessages = array(
 		'signdocument' => 'Dokument podpisać',
 		'sign-nodocselected' => 'Prošu wubjer dokument, kotryž chceš podpisać.',
 		'sign-selectdoc' => 'Dokument:',
+		'sign-docheader' => '<div class="noarticletext">Prošu wužij tutón formular, zo by dokument podpisał "[[$1]]," kotryž deleka steji. Prošu přečitaj cyły dokument, a jeli chceš jón podpěrać, wupjelń prošu trěbne pola a podpisaj jón.</div>',
 		'sign-error-nosuchdoc' => 'Dokument, kotryž sy požadał ($1) njeeksistuje.',
 		'sign-realname' => 'Mjeno:',
 		'sign-address' => 'Hasa:',
@@ -148,6 +149,7 @@ $allMessages = array(
 		'sign-list-hidebday' => 'Njenalistuj starobu',
 		'sign-list-hideemail' => 'Njenalistuj e-mejlowu adresu',
 		'sign-submit' => 'Dokument podpisać',
+		'sign-information' => '<div class="noarticletext">Dźakujemy so, zo sej bjerješ čas, zo by tutón dokument přečitał. Jeli sy z nim přezjedny, wupjelń trěbne pola a klikń na "Dokument podpisać", zo by swoje podpěru pokazał. Prošu zawěsć sej, zo twoje wosobinske informacije su korektne a podaj móžnosć, z kotrejž móžemy će skontaktować, zo bychmy twoju identitu přepruwowali. Wobkedźbuj, zo twoja [[Wikipedija:IP-adresa|IP-adresa]] a druhe identifikowace informacije budu so z tutym formularom registrować a wot moderatorow wužiwać, zo bychu dwójne podpisy wotstronili a korektnosć twojich wosobinskich informacijow potwjerdźili. Dokelž wotewrjene a anonymizowace proksy wobmjezuja našu kmanosć tutón nadawk wuwjesć, njebudu so podpisy z tajkich proksy najskerje ličić. Jeli sy tuchwilu přez proksy-serwer zwjazany, rozdźěl tutón zwjazk a wutwar standardny zwjazk za podpisowanje. <br /><br /> $1',
 		'sig-success' => 'Sy dokument wuspěšnje podpisał.',
 		'sign-view-selectfields' => '<b>Pola, kotrež maja so zwobraznić:</b>',
 		'sign-viewfield-entryid' => 'ID zapiska',
@@ -159,10 +161,12 @@ $allMessages = array(
 		'sign-viewfield-country' => 'Kraj',
 		'sign-viewfield-zip' => 'Póstowe wodźenske čisło',
 		'sign-viewfield-ip' => 'IP-adresa',
+		'sign-viewfield-agent' => 'User agent',#identical but defined
 		'sign-viewfield-phone' => 'Telefonowe čisło',
 		'sign-viewfield-email' => 'E-mejl',
 		'sign-viewfield-age' => 'Staroba',
 		'sign-viewfield-options' => 'Opcije',
+		'sign-viewsigs-intro' => 'Deleka su podpisy, kotrež buchu za <span class="plainlinks">[{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} $1] zregistrowane.',
 		'sign-sigadmin-currentlyopen' => 'Podpisanje je tuchwilu za tutón dokument zmóžnjene.',
 		'sign-sigadmin-close' => 'Podpisanje znjemóžnić',
 		'sign-sigadmin-currentlyclosed' => 'Podpisanje je tuchwilu za tutón dokument znjemóžnjene.',
@@ -177,6 +181,17 @@ $allMessages = array(
 		'sig-private' => '<i>Priwatny</i>',
 		'sign-sigdetails' => 'Podrobnosće podpisanja',
 		'sign-emailto' => '<a href="mailto:$1">$1</a>',#identical but defined
+		'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+		-->[[User:$1|$1]] ([[User talk:$1|Diskusija]] • <!--
+		-->[[Special:Contributions/$1|Přinoški]] • <!--
+		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+		-->[[Special:Blockip/$1|Wužiwarja blokować]] • <!--
+		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} Protokol blokowanja] • <!--
+		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} checkip])<!--
+		--></span>',
+		'sign-viewfield-stricken' => 'Wušmórnjeny',
 		'sign-viewfield-reviewedby' => 'Pruwowar',
 		'sign-viewfield-reviewcomment' => 'Komentar',
 		'sign-detail-uniquequery' => 'Podobne entity',
@@ -184,10 +199,12 @@ $allMessages = array(
 		'sign-detail-strike' => 'Podpis šmórnyć',
 		'sign-reviewsig' => 'Podpis přepruwować',
 		'sign-review-comment' => 'Komentar',
+		'sign-submitreview' => 'Pruwowanje přewjesć',
 		'sign-uniquequery-similarname' => 'Podobne mjeno',
 		'sign-uniquequery-similaraddress' => 'Podobna adresa',
 		'sign-uniquequery-similarphone' => 'Podobne telefonowe čisło',
 		'sign-uniquequery-similaremail' => 'Podobna e-mejlowa adresa',
+		'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] je [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2] podpisał.',
 	),
 	'nl' => array( 
 		'signdocument'         => 'Document ondertekenen',

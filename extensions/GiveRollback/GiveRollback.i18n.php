@@ -140,6 +140,15 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentryrevoke' => 'ha revocato il diritto di rollback a [[$1]]',
 ),
 
+'la' => array(
+'giverollback-username' => 'Nomen usoris:',
+'giverollback-search' => 'Ire',
+'giverollback-grant' => 'Licere',
+'giverollback-revoke' => 'Revocare',
+'giverollback-comment' => 'Summarium:',
+'giverollback-granted' => '[[User:$1|$1]] nunc habet iures \'\'rollback\'\'.',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'giverollback' => 'Terugdraairechten beheren',

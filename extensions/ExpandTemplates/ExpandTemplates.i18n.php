@@ -84,6 +84,7 @@ $wgExpandTemplatesMessages['fi'] = array(
 	'expand_templates_output'          => 'Tulos',
 	'expand_templates_ok'              => 'Laajenna',
 	'expand_templates_remove_comments' => 'Poista kommentit',
+	'expand_templates_preview'         => 'Esikatselu',
 );
 $wgExpandTemplatesMessages['fr'] = array(
 	'expandtemplates'                  => 'Expansion des modèles',

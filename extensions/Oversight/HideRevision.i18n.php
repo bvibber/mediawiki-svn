@@ -118,11 +118,25 @@ Sie werden aber protokolliert und können bei einem Fehler durch einen Datenbank
 ),
 
 'fi' => array(
+'hiderevision' => 'Pysyvä versioiden piilottaminen',
+'hiderevision-prompt' => 'Poistettava versionumero:',
 'hiderevision-continue' => 'Jatka',
+'hiderevision-text' => 'Tätä toimintoa tulisi käyttää \'\'\'vain\'\'\' seuraavissa tapauksissa:
+* Sopimattomat henkilötiedot
+*: \'\'esim. kotiosoitteet, puhelinnumerot ja henkilötunnukset.\'\'
+
+\'\'\'Tämän järjestelmän väärinkäyttö johtaa käyttöoikeuksien menetykseen.\'\'\'
+
+Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki poistot kirjataan ja tietokannan ylläpitäjä voi manuaalisesti palauttaa vahingossa poistetut kohteet.',
 'hiderevision-reason' => 'Syy (kirjataan yksityisesti):',
 'hiderevision-submit' => 'Piilota nämä tiedot pysyvästi',
 'hiderevision-tab' => 'Piilota versio',
+'hiderevision-norevisions' => 'Poistettavaa versiota ei ole määritelty.',
+'hiderevision-noreason' => 'Poistosyy on määriteltävä.',
+'hiderevision-success' => 'Arkistoitu ja poistettu onnistuneesti.',
 'hiderevision-error-missing' => 'Ei löydy tietokannasta.',
+'hiderevision-error-current' => 'Uusinta muokkausta ei voi poistaa. Palauta muutos ensin.',
+'oversight-log-hiderev' => 'poisti muokkauksen sivulta $1',
 ),
 
 /* French (Bertrand Grondin) */

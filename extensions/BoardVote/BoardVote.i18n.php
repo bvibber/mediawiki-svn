@@ -323,6 +323,25 @@ Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aqu�
 
 Un aviso de seguridad sobre un certificado no cifrado podría aparacer.',
 );
+$wgBoardVoteMessages['fi'] = array(
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Äänestä]]
+* [[Special:Boardvote/list|Listaa tähänastiset äänet]]
+* [[Special:Boardvote/dump|Salattu äänestystallenne]]',
+	'boardvote_intro_change'  => '<p>Olet jo äänestänyt. Voit kuitenkin muuttaa ääntäsi käyttämällä alla olevaa lomaketta. Napsauta kunkin hyväksymäsi ehdokkaan vieressä olevaa ruutua.</p>',
+	'boardvote_notloggedin'   => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja ensimmäisen muokkaus ennen $3.',
+	'boardvote_notqualified'  => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $3 muokkausta ennen $2, ja ensimmäinen muokkauksesi pitää olla tehty ennen $5.',
+	'boardvote_novotes'       => 'Kukaan ei ole vielä äänestänyt.',
+	'boardvote_time'          => 'Aika',
+	'boardvote_user'          => 'Käyttäjä',
+	'boardvote_edits'         => 'Muokkausta',
+	'boardvote_days'          => 'Päivää',
+	'boardvote_ua'            => 'Käyttäjäagentti',
+	'boardvote_listintro'     => '<p>Tämä on lista kaikista äänistä, jotka on kirjattu tähän mennessä. $1 nähdäksesi tiedot salattuna.</p>',
+	'boardvote_dumplink'      => 'Napsauta tästä',
+	'boardvote_notstarted'    => 'Äänestys ei ole vielä alkanut',
+	'boardvote_edits_many'    => 'monta',
+	'boardvote_welcome'       => 'Tervetuloa \'\'\'$1\'\'\'!',
+);
 $wgBoardVoteMessages['fr'] = array(
 	'boardvote'               => "Élections au conseil d’administration de la Wikimedia Foundation",
 	'boardvote_entry'         => "* [[Special:Boardvote/vote|Vote]]
@@ -522,12 +541,47 @@ $wgBoardVoteMessages['he'] = array(
 ייתכן שתוצג אזהרת אבטחה בגלל תעודת אישור בלתי חתומה.',
 );
 
+'hsb' => array(
+	'block_title_error_page_title' => 'Mjeno nastawka zablokowane',
+	'block_title_error' => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',
+),
+
 $wgBoardVoteMessages['hsb'] = array(
 	'boardvote'               => 'Wólby za kuratorij Wikimedia',
 	'boardvote_entry'         => '* [[{{ns:special}}:Boardvote/vote|Wothłosować]]
 * [[{{ns:special}}:Boardvote/list|Dotal wotedate hłosy]]
 * [[{{ns:special}}:Boardvote/dump|Zaklučowane wólbne zapiski]]',
+	'boardvote_intro'         => '<blockquote>
+<p>
+Witaj k štwórtej wólbje do kuratorija Wikimedija. Wola so třo wužiwarjo, zo bychu zhromadźenstwo wužiwarjow we wšelakich projektach reprezentowali. Tući třo wužiwarjo wola so za dobu dweju lět. Budu pomhać, přichodny směr projektow Wikimedije postajić, jednotliwje a jako skupina a reprezentuja <em>twoje</em> zajimy a naležnosće. Budu nimo wjele druhich wěcow wo dochodach a wudawkach rozsudźeć.
+</p>
+
+<p>Přečitaj přošu před twojim hłosowanjom předstajenja kandidatow a jich wotmołwy na prašenja. Kóždy kandidat je respektowany wužiwar, kiž je hižo wjele časa a prócy inwestował, zo by projektam pozitiwnu wokolinu za swobodne rozšerjowanje čłowječeje wědy wutworił.</p>
+
+<p>Směš za telko kandidatow hłosować, kaž chceš. Třo kandidaća z najwjace hłosami budu dobyćerjo. Jeli je jenaki staw, budu so rozsudne wólby wotměwać.</p>
+
+<p>Prošu kedźbuj, zo směš jenož z jednoho projekta hłosować. Tež jeli maš přez 400 změnow we wjacorych projektach, njesměš dwójce hłosować. Jeli chceš swój hłós změnić, wothłosuj prošu znowa z toho projekta, w kotrymž sy hižo prjedy wothłosował.</p>
+
+<p>Dalše informacije:</p>
+<ul><li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/FAQ/de" class="external">FAQ k wólbam</a></li>
+<li><a href="http://meta.wikimedia.org/wiki/Board_elections/2007/Candidates/hsb" class="external">Kandidaća</a></li></ul>
+</blockquote>',
 	'boardvote_intro_change'  => '<p>Sy hižo wothłosował. Ale móžeš swoje wothłosowanje ze slědowacym formularom změnić. Markěruj prošu kašćiki pódla kandidatow, za kotrychž hłosuješ.</p>',
+	'boardvote_entered'       => 'Dźakujemy so ći, twój hłós bu zregistrowany.
+
+Jeli chceš, móžeš slědowace podrobnosce zapisować. Twoje zregistrowane wothłosowanje je:
+
+<pre>$1</pre>
+
+Bu ze zjawnym klučom wólbnych administratorow zaklučowane:
+
+<pre>$2</pre>
+
+Slěduje nastata zaklučowana wersija. Budźe so na [[{{ns:special}}:Boardvote/dump]] zjawnje zwobraznjeć.
+
+<pre>$3</pre>
+
+[[{{ns:special}}:Boardvote/entry|Wróćo]]',
 	'boardvote_nosession'     => 'Twój wužiwarski ID za Wikimediju njehodźi so zwěsćić. Prošu přizjew so w tym wikiju, w kotrymž sy za wólbu pušćeny a dźi tam k <nowiki>[[Special:Boardvote]]</nowiki>. Zo by wolić móhł, dyrbiš wužiwarske konto měć, kotrež znajmjeńša $1 přinoškow před $2 pokazuje, přeni přinošk dyrbi před $3 być.',
 	'boardvote_notloggedin'   => 'Njejsy so přizjewił. Zo by wohthłosować móhł, dyrbiš přizjewjeny być a wužiwarske konto wužiwać, z kotrymž sy znajmjeńša $1 změnow před $2 činił a hdźež prěnja změna je před $3.',
 	'boardvote_notqualified'  => 'Njejsy woprawnjeny so na tutej wólbje wobdźělić. Dyrbiš $3 změnow před $2 činić a twoja prěnja změna dyrbi před $5 być.',

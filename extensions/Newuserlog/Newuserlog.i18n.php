@@ -118,7 +118,7 @@ $wgNewuserlogMessages['ja'] = array(
 	'newuserlogpage'           => 'アカウント作成記録',
 	'newuserlogpagetext'       => '以下は最近作成されたアカウントの一覧です。',
 	'newuserlog-create-entry'  => '新規利用者',
-	'newuserlog-create2-entry' => 'が新規に $1 を作成しました',
+	'newuserlog-create2-entry' => 'アカウント $1 が作成されました',
 );
 $wgNewuserlogMessages['kk-kz'] = array(
 	'newuserlogpage'           => 'Тіркелу журналы',

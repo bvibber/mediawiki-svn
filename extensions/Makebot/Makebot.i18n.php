@@ -403,10 +403,13 @@ function efMakeBotMessages() {
 'makebot-notbot'          => '[[User:$1|$1]] non habet statum bot.',
 'makebot-change'          => 'Cambiare statum:',
 'makebot-grant'           => 'Licere',
+'makebot-revoke'          => 'Revocare',
 'makebot-comment'         => 'Sententia:',
 'makebot-granted'         => '[[User:$1|$1]] nunc statum bot habet.',
 'makebot-logpage'         => 'Index mutatorum statui bot',
 'makebot-logpagetext'     => 'Hic index omnes mutationes statui [[{{ns:project}}:Bot|Bot]] monstrat.',
+'makebot-logentrygrant'   => 'licuit statum bot pro [[$1]]',
+'makebot-logentryrevoke'  => 'removit statum bot usoris [[$1]]',
 ),
 
 /* Lao */

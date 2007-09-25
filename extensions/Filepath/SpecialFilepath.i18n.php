@@ -133,6 +133,9 @@ $wgFilepathMessages['kk-cn'] = array(
 	فايل اتاۋىن «{{ns:image}}:» دەگەن باستاۋىشسىز ەڭگٸزٸڭٸز.',
 );
 $wgFilepathMessages['kk'] = $wgFilepathMessages['kk-kz'];
+$wgFilepathMessages['la'] = array(
+	'filepath_page'   => 'Fasciculus:',
+);
 $wgFilepathMessages['lo'] = array(
 	'filepath'         => 'ທາງໄປຫາໄຟລ໌',
 );

@@ -132,8 +132,9 @@ $wgDesysopMessages['ko'] = array(
 	'desysoprightsfail'    => '\'\'\'$1 사용자에게 관리자 권한을 줄 수 없습니다(철자를 맞게 입력했는지 확인해주세요).\'\'\'',
 );
 $wgDesysopMessages['la'] = array(
+	'desysoptitle'         => 'Revocare statum magistratum usoris',
 	'desysopname'          => 'Nomen usoris:',
-	'desysopnot_sysop'     => 'Hic usor non est magistratus',
+	'not_sysop'            => 'Hic usor non est magistratus',
 );
 $wgDesysopMessages['nl'] = array(
 	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
@@ -237,6 +238,14 @@ $wgDesysopMessages['su'] = array(
 	'desysoprightsfail'    => '<b>Kawenangan pamaké "$1" teu bisa disetél (landihan nu diasupkeun geus bener, can?)</b>',
 	'desysop'              => 'Cabut status kuncén pamaké',
 	'desysopnot_sysop'     => 'Pamaké ieu lain administrator',
+);
+$wgDesysopMessages['tet'] = array(
+	'desysoptitle'         => 'Hasai kuana administradór ba uza-na\'in ida',
+	'desysoptext'          => 'Burokrata bele uza pájina ne\'e ba hasai kuana administradór. Hakerek naran uza-na\'in no hanehan "button" ba hasai kuana administradór.',
+	'desysopname'          => 'Naran uza-na\'in:',
+	'desysopok'            => '<b>"$1" agora lá\'os administradór</b>',
+	'desysop'              => 'Hasai kuana administradór ba uza-na\'in ida',
+	'not_sysop'            => 'Uza-na\'in ne\'e lá\'os administradór',
 );
 $wgDesysopMessages['wa'] = array(
 	'desysopsetrights'     => 'Defini les droets d\'&nbsp;l\'&nbsp;uzeu',
