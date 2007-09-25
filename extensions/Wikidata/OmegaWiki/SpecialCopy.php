@@ -205,7 +205,7 @@ function wfSpecialCopy() {
 			$dc2=mysql_real_escape_string($dc2_dirty);
 
 			if (!($wgUser->isAllowed($wgCommunityEditPermission)) or $dc2!=$wgCommunity_dc) {
-				$wgOut->addHTML(wfMsgSc("permission_denied"));
+				$wgOut->addHTML(wfMsgSc("Permission_denied"));
 				return false; #"houston, we have a problem"
 			}
 			CopyTools::newCopyTransaction($dc1, $dc2);

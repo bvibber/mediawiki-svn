@@ -265,17 +265,17 @@ class DefinedMeaning extends DefaultWikidataApplication {
 	 * something purdy and maintainable)
 	 */
 	protected function getCopyPanel2() { 
-		global $wgScriptPath;
+		global 
+			$wgScriptPath, $wgCommunity_dc;
 		
 		$html="Copy to:<br>\n"; 
 		$datasets=wdGetDatasets();
+		$dataset=$datasets[$wgCommunity_dc];
 		$dmid=$this->definedMeaningModel->getId();
 		$dc1=$this->definedMeaningModel->getDataSet();
-		foreach($datasets as $datasetid=>$dataset) {
-			$name=$dataset->fetchName(); 
-			$dc2=$datasetid;
-			$html.="<a href='index.php?title=Special:Copy&action=copy&dmid=$dmid&dc1=$dc1&dc2=$dc2'>$name</a><br>\n";
-		}
+		$name=$dataset->fetchName(); 
+		$dc2=$wgCommunity_dc;
+		$html.="<a href='index.php?title=Special:Copy&action=copy&dmid=$dmid&dc1=$dc1&dc2=$dc2'>$name</a><br>\n";
 
 		return $html;
 	}
