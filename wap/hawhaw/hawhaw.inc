@@ -2,8 +2,8 @@
 
 // HAWHAW: HTML and WML hybrid adapted webserver
 // PHP class library
-// Copyright (C) 2006 Norbert Huffschmid
-// Last modified: 1. November 2006
+// Copyright (C) 2007 Norbert Huffschmid
+// Last modified: 11. April 2007
 //
 // This library is free software; you can redistribute it and/or modify it under the
 // terms of the GNU Library General Public License as published by the Free Software
@@ -25,11 +25,10 @@
 // - bugfix: no VoiceXML timeout for non-triggerable HAW_phone objects
 // - new feature: dotmobi compliance
 // - optimization: create "submit links" for Nokia WAP browsers 
-// mod against V5.14B:
-// - LINKS_HAVE_NO_BRACKETS may be used to output unbracketted links. (Purodha)
+// - bugfix: "0"-string in add_option() and add_button()
 
 // miscellaneous constants
-define("HAW_VERSION", "HAWHAW V5.14B-a");
+define("HAW_VERSION", "HAWHAW V5.14B");
 define("HAW_COPYRIGHT", "(C) Norbert Huffschmid");
 
 // constants for markup languages
@@ -1765,10 +1764,10 @@ class HAW_deck
           if ($this->lynx)
             $ct = "content-type: text/html";
           else
-            $ct = ('content-type: application/vnd.wap.xhtml+xml'.($this->charset?('; charset='.$this->charset):''));
+            $ct = "content-type: application/vnd.wap.xhtml+xml";
         }
         else
-          $ct = ('content-type: text/html;charset='.$this->charset);
+          $ct = sprintf("content-type: text/html;charset=%s", $this->charset);
 
         header($ct);
       }
@@ -4274,13 +4273,13 @@ class HAW_select
   */
   function add_option($label, $value, $is_selected=HAW_NOTSELECTED)
   {
-    if (!$label || !$value)
+    if (!is_string($label) || !is_string($value))
       die("invalid argument in add_option()");
 
     $this->options[$this->number_of_options]["label"] = $label;
     $this->options[$this->number_of_options]["value"] = $value;
 
-    if (!$this->value || ($is_selected == HAW_SELECTED))
+    if ((strlen($this->value) == 0) || ($is_selected == HAW_SELECTED))
       $this->value = $value;
 
     $this->number_of_options++;
@@ -4545,13 +4544,13 @@ class HAW_radio
   */
   function add_button($label, $value, $is_checked=HAW_NOTCHECKED)
   {
-    if (!$label || !$value)
+    if (!is_string($label) || !is_string($value))
       die("invalid argument in add_button()");
 
     $this->buttons[$this->number_of_buttons]["label"] = $label;
     $this->buttons[$this->number_of_buttons]["value"] = $value;
 
-    if (!$this->value || ($is_checked == HAW_CHECKED))
+    if ((strlen($this->value) == 0) || ($is_checked == HAW_CHECKED))
       $this->value = $value;
 
     $this->number_of_buttons++;
@@ -5410,9 +5409,7 @@ class HAW_link
         for ($i=0; $i < $this->br; $i++)
           $br .= "<br />";
 
-        printf((defined('LINKS_HAVE_NO_BRACKETS') && LINKS_HAVE_NO_BRACKETS)
-			? "<a href=\"%s\"%s%s>%s</a>%s\n"
-			: "[<a href=\"%s\"%s%s>%s</a>]%s\n",
+        printf("[<a href=\"%s\"%s%s>%s</a>]%s\n",
                HAW_specchar($this->url, $deck), $title_option, $accesskey_option,
                HAW_specchar($this->label, $deck), $br);
       }

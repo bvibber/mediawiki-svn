@@ -1,7 +1,7 @@
 <?php
 /*
  * hawiki config file for hawpedia
- * $Date: 2007/04/10 11:20:25 $
+ * $Date$
  */
 
 //define("HAWIKI_TITLE", "HawPedia");            // to be defined on hawpedia config layer
@@ -12,7 +12,6 @@ define("HAWIKI_DISP_BGCOLOR", "#FFFFFF");        //                background co
 define("HAWIKI_DATETIME_SHORT", "d/m/Y [H:i]");  // for modifications see PHP function date()
 define("HAWIKI_DATETIME_LONG",  "l, F jS Y, g:i A");
 define("HAWIKI_EXTLINK_ICON", "images/external_link"); // must exist as .gif and .wbmp version
-define("HAWIKI_WIKIPEDIA_ICON", "images/81px-Wikipedia-logo"); // must exist as .gif and .wbmp version, we have 16, 32, 58, 81.
 define("HAWIKI_SKIN", "hawhaw/skin/hawpedia_phone/skin.css");  // comment out to disable skin
 
 ?>

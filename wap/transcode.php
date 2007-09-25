@@ -1,10 +1,9 @@
 <?php
 /*
  * transcode wikipedia content for hawpedia
- * $Date: 2006/11/22 19:59:25 $
+ * $Date$
  */
-header('Content-Type: application/vnd.wap.xhtml+xml; charset=UTF-8');
-header('Charset: UTF-8');
+
 require_once('hawpedia.php');
 require_once('hawiki/hawiki_parser_hawpedia.inc');
 require_once('hawiki/hawiki.inc');
@@ -14,7 +13,7 @@ start_hawpedia_session(); // set session params
 require('lang/' . $_SESSION['language'] . '/phonenumbers.php');
 
 // pediaphon support is optional for a given language
-# disable# disabledd	@include('lang/' . $_SESSION['language'] . '/pediaphon_data.php');
+@include('lang/' . $_SESSION['language'] . '/pediaphon_data.php');
 
 // get wikipedia article via export interface
 $export_result = export_wikipedia($_GET['go']);
@@ -37,7 +36,7 @@ if (!$export_result) {
 $title = $export_result['title'];
 $wikitext = $export_result['wikitext'];
 
-if (preg_match("/^#REDIRECT\s\[\[(.*)\]\]/i", $wikitext, $matches))
+if (preg_match("/^#REDIRECT:?\s*\[\[(.*)\]\]/i", $wikitext, $matches))
 {
 	// perform redirection (only once - no endless loops!!!)
 	$_GET['go'] = $matches[1];
@@ -46,9 +45,6 @@ if (preg_match("/^#REDIRECT\s\[\[(.*)\]\]/i", $wikitext, $matches))
   $wikitext = $export_result['wikitext'];
 }
 
-// expand all templates
-if(defined('EXPAND_TEMPLATES') && EXPAND_TEMPLATES)
-$wikitext = replace_sections($wikitext, '{{', '}}', $title);#, 'expand_template');
 // remove all templates
 $wikitext = remove_section($wikitext, "{{", "}}");
 
@@ -113,7 +109,6 @@ if (isset($_GET['mode']) && ($_GET['mode'] == "content"))
 }
 else
 {
-# echo $wikipage->wiki_string;
 	// not content mode ...
 	
 	// create dummy deck for markup distiction
@@ -122,12 +117,13 @@ else
 	// extract chapter
 	if (isset($_GET['chapter']))
 	  $wikitext = extract_chapter($wikitext, $_GET['chapter']);
-#echo $wikitext;
 	  
 	// VoiceXML treatment
 	if ($dummyDeck->ml == HAW_VXML) {
 	  $wikitext = links2text($wikitext); // remove all links for VoiceXML
-    $wikitext = hawtra("you hear an article from the wikipedia") . "\n" . $wikitext;
+    $wikitext = hawpptra("preamble") . "\n"
+                . $wikitext
+                . hawpptra("credits") . "\n";
 	}
 	
 	// determine maximum segment length from browser type
@@ -141,7 +137,7 @@ else
 	
 	// split wikitext into appropriate segments
 	$segments = split_wikitext($wikitext, $segLength);
-# echo $segments[0];
+	
 	if (isset($_GET['seg'])) {
 	  $segNumber = $_GET['seg'];
 	  if ($segNumber > count($segments))

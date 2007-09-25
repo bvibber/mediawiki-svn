@@ -1,11 +1,11 @@
 <?php
 /*
  * english about texts for hawpedia
- * $Date: 2007/03/31 22:34:06 $
+ * $Date$
  */
 
 $about = Array(
-"title" => "About HawPedia",
+"title" => "About Wikipedia",
 "text" => 'Wikipedia is a free content encyclopedia written by a global community of volunteers. Sometimes, false information is added to Wikipedia. Do not trust information in Wikipedia - use additional references',
 "imp1" => "Wikipedia is operated by:",
 "imp2" => "Wikimedia Foundation Inc.",

@@ -1,7 +1,7 @@
 <?php
 /*
  * hawpedia settings page
- * $Date: 2006/11/22 21:40:03 $
+ * $Date$
  */
 
 require_once('config.php');
@@ -29,8 +29,8 @@ $deck = new HAW_deck(HAWIKI_TITLE, HAW_ALIGN_CENTER);
 set_deck_properties($deck);
 
 $emptyLine = new HAW_text("");
-$wp_image = new HAW_image(HAWIKI_WIKIPEDIA_ICON . ".wbmp",
-		HAWIKI_WIKIPEDIA_ICON . ".gif", "");
+$wp_image = new HAW_image(HAWPEDIA_ICON . ".wbmp",
+		HAWPEDIA_ICON . ".gif", "");
 $deck->add_image($wp_image);
 
 $deck->add_text($emptyLine);

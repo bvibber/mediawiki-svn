@@ -1,7 +1,7 @@
 <?php
 /*
  * common functions for hawpedia
- * $Date: 2007/04/10 09:59:25 $
+ * $Date$
  */
 
 require_once('hawhaw/hawhaw.inc');
@@ -79,10 +79,10 @@ function determine_settings()
 			(!defined('FORCE_DEFAULT_LANGUAGE') || !FORCE_DEFAULT_LANGUAGE))
 			{
 				// store browser's preference in session
-				// @fixme -- Won't actually work, since Accept-Language
-				// isn't just a language code, but a list of codes with
-				// priority values :)
-				$_SESSION['language'] = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+        if (preg_match('/^\s*([a-zA-Z]+)/', $_SERVER['HTTP_ACCEPT_LANGUAGE'], $matches))
+  				$_SESSION['language'] = strtolower($matches[1]);
+        else
+    			$_SESSION['language'] = DEFAULT_LANGUAGE;
 			}
 		elseif(isset($_SERVER['HTTP_HOST']) &&
 			($dot = strpos($_SERVER['HTTP_HOST'], '.')) &&
@@ -141,6 +141,23 @@ function hawtra($text)
 		return $text; // no translation available
 }
 
+function hawpptra($input)
+{
+  // translate given phone phrase	
+
+  $phraseFile = "lang/" . $_SESSION['language'] . "/phone_phrases.php";
+
+  if (!file_exists($phraseFile))
+    return($input); // no translation possible
+     
+  require($phraseFile);
+  
+  if (isset($phrase[$input]))
+    return $phrase[$input];
+  else
+    return $input; // no translation available
+}
+
 function translate_wikipedia_keyword($keyword) {
 
 	// translate language-specific wikipedia keyword
@@ -195,106 +212,6 @@ function export_wikipedia($searchTerm)
 	return $result;
 }
 
-function expand_template($Term, $Page)
-{
-	# echo("\n".'<br />'.__LINE__.': expantemplate: Term='.$Term.', Page='.$Page.', ');
-	$result = ('');
-
-	$export_keyword = translate_wikipedia_keyword('Special:ExpandTemplates');
-
-	// get wikipedia xml file
-	$ch = curl_init();
-	$url = ("http://" . $_SESSION['language'] . ".wikipedia.org/wiki/" . urlencode($export_keyword)
-		. '?' . 'input='.urlencode($Term)
-		. '&' . 'contexttitle='.urlencode($Page)
-		. '&removecomments=1');
-	curl_setopt($ch, CURLOPT_URL, $url);
-	curl_setopt($ch, CURLOPT_HEADER, FALSE);
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-	$curlResultString = curl_exec($ch);
-	if (!is_string($curlResultString))
-		hawpedia_error(hawtra("Wikipedia Special:ExpandTemplates currently not available")); // exits internally
-
-	curl_close($ch);
-
-	// determine wiki text
-	if (!preg_match('_(<textarea [^>]* readonly="readonly">)_', $curlResultString, $matches))
-		hawpedia_error(hawtra("wikipedia export error")); // exits internally
-	$textStart = strpos($curlResultString, $matches[1]) + strlen($matches[1]);
-	$textEnd = strpos($curlResultString, "</textarea>", $textStart);
-	$result = substr($curlResultString, $textStart, $textEnd - $textStart);
-	# echo("\n".'<br />'.__LINE__.': expantemplate: result='.$result.',, ');
-	return $result;
-}
-
-function replace_sections($wikitext, $startStr, $endStr, $title='', $replacementfunction='expand_template')
-{
-	// remove all text within startStr and endStr (incl. limiters)
-	// thereby replacing it with the result of $replcementfunction of the removed string and $title.
-	// preg_replace can cause problems as described here: http://bugs.php.net/bug.php?id=24460
-	$len = strlen($startStr);
-	$sec = 0;
-	$pos = array();
-	while(FALSE !== ($sec = (strpos($wikitext, $startStr, $sec))))
-	{
-		$pos[$sec] = -1;
-		$sec += $len;
-	}
-	$len = strlen($endStr);
-	$sec = 0;	
-	while(FALSE !== ($sec = (strpos($wikitext, $endStr, $sec))))
-	{
-		$sec += $len;
-		$pos[$sec] = -2;
-	}
-	// collect (nested) sections
-	ksort($pos);
-	$sec = array();
-	$level = 0;	// nesting level
-	foreach($pos as $index => $what)
-	{
-		# echo("\n".'<br />'.__LINE__.': index='.$index.', what='.$what.' level='.$level);
-		switch($what)
-		{
-		case -1 :
-			if(0 == ($level++))
-			{
-				$start = $index;
-			}
-			break;
-		case -2 : 
-			if(0 == (--$level))
-			{
-				$sec[$start] = $index;
-			}
-			elseif($level < 0)
-			{
-				$level = 0;
-			}
-			break;
-		default :
-			die('Internal Error in replace_sections');
-		}
-	}
-	krsort($sec); //sort reverse so as to allow expansion to take place in the data itself.
-	//replace sections - from rear to beginning which maintains start/end positions for undone ones.
-	foreach($sec as $start => $end)
-	{
-		#echo("\n".'<br /><br />'.__LINE__.': start='.$start.', end='.$end.' wikitext='.$wikitext);
-		#echo "\n".'<br /><br />'.__LINE__.': beginning part='.
-		$begining_part = substr($wikitext, 0, $start);
-		#echo "\n".'<br /><br />'.__LINE__.': template call='.
-		$template_call = substr($wikitext, $start, $end-$start);
-		#echo "\n".'<br /><br />'.__LINE__.': final part='.
-		$final_part    = substr($wikitext, $end);
-		#echo "\n".'<br /><br />'.__LINE__.': replacement='.
-		$replacement   = $replacementfunction($template_call, $title);
-
-		$wikitext = ($begining_part.$replacement.$final_part);
-	}
-	#echo "\n".'<br /><br />'.__LINE__.': wikitext='.$wikitext;
-	return($wikitext);
-}
 
 function uri_exists($uri)
 {
@@ -407,28 +324,53 @@ function remove_section($wikitext, $startStr, $endStr)
 {
 	// remove all text within startStr and endStr (incl. limiters)
 	// preg_replace can cause problems as described here: http://bugs.php.net/bug.php?id=24460
+
 	while (true) {
-		$secStart = strpos($wikitext, $startStr);	
-		if ($secStart === false)
-			break;
+		// do for all sections in $wikitext ...
 
-		$secEnd = strpos($wikitext, $endStr, $secStart);
-		if ($secEnd === false)
-			break;
+	  $secStart = strpos($wikitext, $startStr);	
+	  if ($secStart === false)
+	    break;
 
-		$nestedStart = strpos($wikitext, $startStr, $secStart + strlen($startStr));
-		if (($nestedStart !== false) && ($nestedStart < $secEnd)) {
-			// nested section found
-			// algorithm does work for one nested section only! (Sufficient???)
-			$secEnd = strpos($wikitext, $endStr, $secEnd + strlen($endStr));
-			if ($secEnd === false)
-				break;
-		}
+  	// consider nested limiters
+  	$nest_count = 1;
+	  $search_pos = $secStart + strlen($startStr);
+	  $secEnd = false;
+		while (true) {
+  	  $start_pos = strpos($wikitext, $startStr, $search_pos);
+	    $end_pos   = strpos($wikitext, $endStr,   $search_pos + strlen($startStr));
+	    
+	    if (($start_pos !== false) && ($start_pos < $end_pos)) {
+	    	// nested section found
+	    	$search_pos = $start_pos + strlen($startStr);
+	    	$nest_count++;
+	    	continue;	
+    	}
 
-		//remove section
-		$wikitext = substr($wikitext, 0, $secStart) . substr($wikitext, $secEnd + strlen($endStr));
-	}
+    	if ($end_pos !== false) {
+    		$nest_count--;
+    		if ($nest_count == 0) {
+    			// end of section found
+    		  $secEnd = $end_pos;
+    		  break;
+      	}
+      	else {
+      	  // continue after end of nested section
+      	  $search_pos = $end_pos + strlen($endStr);
+      	}
+    	}
+    	else
+    	  break; // invalid section syntax!
+  	};
 
+    //remove section
+    if (($secStart !== false) && ($secEnd !== false)) {
+      $wikitext = substr($wikitext, 0, $secStart) . substr($wikitext, $secEnd + strlen($endStr));
+  	}
+    else
+      break;
+	};
+	
 	return($wikitext);
 }
 
@@ -504,15 +446,15 @@ function split_wikitext($wikitext, $segLength)
 
 function save_url()
 {
-	/*
-	// write location parameter to temporary file
-	$fp = fopen(HAWPEDIA_VXML_TMP_FILE, "w");
-	if (!$fp)
-	  return; // unsuccessful ...
+	if (defined('HAWPEDIA_VXML_TMP_FILE')) {
+    // write location parameter to temporary file
+	  $fp = fopen(HAWPEDIA_VXML_TMP_FILE, "w");
+	  if (!$fp)
+	    return; // unsuccessful ...
 
-  fputs($fp, $_SERVER["REQUEST_URI"]);
-	fclose($fp);
-	 */
+    fputs($fp, $_SERVER["REQUEST_URI"]);
+	  fclose($fp);
+  }
 }
 
 ?>

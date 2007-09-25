@@ -18,8 +18,6 @@ Necessary to do:
 * /config.php
   - should likely be taylored.
 
-* merge with HawPedia V1.1
-
 Changes:
 --------
 + Name changed from Hawpedia to Wikipedia
@@ -97,6 +95,7 @@ Images:
 Merge with HawPedia V1.1
 (by Norbert Huffschmid - http://en.wikipedia.org/wiki/User:H2fen)
 
+Step 1:
 - added language support for
   o czech
   o hungarian
@@ -105,3 +104,14 @@ Merge with HawPedia V1.1
 - completed spanish translation file
 - settings: display available languages in localized style
 - fixed wiki parser (hawiki_parser_hawpedia.inc) for image handling
+
+Step 2:
+- use of latest hawhaw.inc
+- renamed HAWIKI_WIKIPEDIA_ICON to HAWPEDIA icon and moved it from hawiki_cfg.inc to config.php
+- copyright.php: handle external and wikipedia links to gfdl
+- default language: english
+- removed template expansion (dead code)
+- updated remove_section() (hawpedia.php)
+- updated REDIRECT syntax
+- added english and german phone phrases (spoken wikipedia preparation)
+- fixed accept-language detection (hawpedia.php)
