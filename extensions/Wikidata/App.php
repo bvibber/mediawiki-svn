@@ -35,6 +35,10 @@ $wgGroupPermissions['wikidata-omega']['editwikidata-tt']=false;
 $wgGroupPermissions['wikidata-test']['editwikidata-tt']=true;
 $wgGroupPermissions['wikidata-copy']['wikidata-copy']=true;
 
+# The permission needed to do ...
+$wgCommunityEditPermission="editwikidata-tt"; # only used for copy for now
+$wgCommunity_dc="tt";
+
 # The site prefix allows us to have multiple sets of customized
 # messages (for different, typically site-specific UIs)
 # in a single database.
@@ -172,6 +176,14 @@ function initializeWikidata() {
 		"Value" => "Value",
 		"meaningsoftitle"=>"Meanings of \"$1\"",
 		"meaningsofsubtitle"=>"<em>Wiki link:</em> [[$1]]",
+		"Permission_denied"=>"<h2>PERMISSION DENIED</h2>",
+		"copy_no_action_specified"=>"Please specify an action",
+		"copy_help"=>"Someday, we might help you.",
+		"please_proved_dmid"=>"Oh dear, it seems your input is missing a ?dmid=<something>   (dmid=Defined Meaning ID)<br>Whoops, please contact a server administrator.", 
+		"please_proved_dc1"=>"Oh dear, it seems your input is missing a ?dc1=<something>   (dc1=dataset context 1, dataset to copy FROM)<br>Whoops, please contact a server administrator.", 
+		"please_proved_dc2"=>"Oh dear, it seems your input is missing a ?dc2=<something>   (dc2=dataset context 2, dataset to copy TO)<br>Whoops, please contact a server administrator.", 
+		"copy_successful"=>"<h2>Copy Successful</h2>Your data appears to have been copied successfully. Don't forget to doublecheck to make sure!",
+		"db_consistency__not_found"=>"<h2>Error</h2>There is an issue with database consistency, wikidata can't find valid data connected to this defined meaning ID, it might be lost. Please contact the server operator or administrator."
 	);
 
 	$prefixedmsgarray=array();
