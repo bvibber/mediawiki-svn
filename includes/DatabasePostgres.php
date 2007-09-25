@@ -112,6 +112,11 @@ class DatabasePostgres extends Database {
 		return true;
 	}
 
+	function hasConstraint( $name ) {
+		$SQL = "SELECT 1 FROM pg_catalog.pg_constraint WHERE conname = '" . pg_escape_string( $name ) . "'";
+		return $this->numRows($res = $this->doQuery($SQL));
+	}
+
 	static function newFromParams( $server, $user, $password, $dbName, $failFunction = false, $flags = 0)
 	{
 		return new DatabasePostgres( $server, $user, $password, $dbName, $failFunction, $flags );
@@ -1148,9 +1153,13 @@ END;
 	}
 
 	function encodeBlob( $b ) {
-		return pg_escape_bytea( $b );
+		return new Blob ( pg_escape_bytea( $b ) ) ;
 	}
+
 	function decodeBlob( $b ) {
+		if ($b instanceof Blob) {
+			$b = $b->fetch();
+		}
 		return pg_unescape_bytea( $b );
 	}
 
@@ -1161,11 +1170,10 @@ END;
 	function addQuotes( $s ) {
 		if ( is_null( $s ) ) {
 			return 'NULL';
-		} else if (is_array( $s )) { ## Assume it is bytea data
-			return "E'$s[1]'";
+		} else if ($s instanceof Blob) {
+			return "'".$s->fetch($s)."'";
 		}
 		return "'" . pg_escape_string($s) . "'";
-		// Unreachable: return "E'" . pg_escape_string($s) . "'";
 	}
 
 	function quote_ident( $s ) {
@@ -1230,6 +1238,10 @@ END;
 	public function getLag() {
 		# Not implemented for PostgreSQL
 		return false;
+	}
+
+	function buildConcat( $stringList ) {
+		return implode( ' || ', $stringList );
 	}
 
 } // end DatabasePostgres class

@@ -415,6 +415,10 @@ $messages = array(
 'restorelink'             => '{{plural:$1|smazanou editaci|$1 smazané editace|$1 smazaných editací}}',
 'feedlinks'               => 'Kanály:',
 'feed-invalid'            => 'Neplatný typ kanálu.',
+'site-rss-feed'           => 'RSS kanál {{grammar:2sg|$1}}.',
+'site-atom-feed'          => 'Atom kanál {{grammar:2sg|$1}}.',
+'page-rss-feed'           => 'RSS kanál stránky „$1“',
+'page-atom-feed'          => 'Atom kanál stránky „$1“',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Článek',
@@ -789,7 +793,7 @@ podrobnosti o smazání mohou být uvedeny v [{{fullurl:Special:Log/delete|page=
 'revisiondelete'              => 'Smazat/obnovit revize',
 'revdelete-nooldid-title'     => 'Nezadána revize',
 'revdelete-nooldid-text'      => 'Nezvolili jste revize, na které chcete tuto funkci použít.',
-'revdelete-selected'          => 'Zvolené revize [[:$1]]:',
+'revdelete-selected'          => "{{PLURAL:$2|Zvolená revize|Zvolené revize|Zvolené revize}} stránky '''$1:'''",
 'logdelete-selected'          => "{{PLURAL:$2|Vybraná protokolovaná událost|Vybrané protokolované události|Vybrané protokolované události}} pro '''$1:'''",
 'revdelete-text'              => 'Smazané revize budou nadále zobrazeny v historii stránky, ale jejich text nebude veřejně dostupný.
 
@@ -965,7 +969,8 @@ Nezvolené skupiny nebudou změněny. Skupinu můžete vyřadit z vybraných pom
 'rcshowhideanons'                   => '$1 anonymní uživatele',
 'rcshowhidepatr'                    => '$1 prověřené editace',
 'rcshowhidemine'                    => '$1 moje editace',
-'rclinks'                           => 'Ukázat $1 posledních změn během posledních $2 dnů<br />$3',
+'rclinks'                           => 'Ukázat $1 posledních změn během {{plural:$2|posledního dne|posledních $2 dnů|posledních $2 dnů}}<br />
+$3',
 'diff'                              => 'rozdíl',
 'hist'                              => 'historie',
 'hide'                              => 'skrýt',
@@ -1147,7 +1152,8 @@ Načtěte soubor v plném rozlišením, pokud je k dispozici, nebo změňte jmé
 
 # MIME search
 'mimesearch'         => 'Hledání podle MIME typu',
-'mimesearch-summary' => 'Tato stránka umožňuje filtrovat soubory podle MIME typu. Vstup: typobsahu/podtyp, např. <tt>image/jpeg</tt>.',
+'mimesearch-summary' => 'Tato stránka umožňuje filtrovat soubory podle MIME typu.<br />
+Vstup: <code>typ obsahu/podtyp</code>, např. <code>image/jpeg</code>.',
 'mimetype'           => 'MIME typ:',
 'download'           => 'stažení',
 
@@ -1177,8 +1183,7 @@ Načtěte soubor v plném rozlišením, pokud je k dispozici, nebo změňte jmé
 Od založení wiki bylo navštíveno celkem '''$3''' stránek a editováno '''$4'''krát. To činí v průměru '''$5''' editací na stránku a '''$6''' návštěv na editaci.
 
 Aktuální délka fronty údržby je '''$7'''.",
-'userstatstext'          => "Je zde '''$1''' registrovaných uživatelů,
-z toho '''$2''' (nebo '''$4%''') správců (podívejte se na $3).",
+'userstatstext'          => "{{plural:$1|Je|Jsou|Je}} zde '''$1''' {{plural:$1|registrovaný [[Special:Listusers|uživatel]]|registrovaní [[Special:Listusers|uživatelé]]|registrovaných [[Special:Listusers|uživatelů]]}}, z&nbsp;toho '''$2''' (což je '''$4&nbsp;%''') {{plural:$2|má|mají|má}} práva $5.",
 'statistics-mostpopular' => 'Nejčtenější stránky',
 
 'disambiguations'      => 'Stránky odkazující na rozcestníky',
@@ -1464,7 +1469,7 @@ Současné nastavení pro tuto stránku je: <strong>$1</strong>:',
 'undeleterevisions'            => '$1 {{plural:$1|verze je archivována|verze jsou archivovány|verzí je archivováno}}',
 'undeletehistory'              => 'Pokud stránku obnovíte, všechny revize budou v historii obnoveny. Pokud byla vytvořena nová stránka se stejným jménem jako smazaná, obnovené revize se zapíší na starší místo v historii a nová stránka nebude nahrazena.',
 'undeletehistorynoadmin'       => 'Tato stránka byla smazána. Důvod smazání je uveden níže, spolu s informacemi o uživatelích, kteří tuto stránku před smazáním editovali. Samotný text stránky je dostupný pouze správcům.',
-'undelete-revision'            => 'Smazaná verze článku $1 z $2:',
+'undelete-revision'            => 'Smazaná verze článku $1 (z $2) - $3:',
 'undeleterevision-missing'     => 'Nesprávná nebo chybějící revize. Možná máte špatný odkaz, nebo revize byla obnovena či odstraněna z archivu.',
 'undeletebtn'                  => 'Obnovit',
 'undeletecomment'              => 'Komentář:',
@@ -1693,6 +1698,8 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'missingimage'             => '<b>Chybějící obrázek</b><br /><i>$1</i>',
 'filemissing'              => 'Chybějící soubor',
 'thumbnail_error'          => 'Chyba při vytváření náhledu: $1',
+'djvu_page_error'          => 'Stránka DjVu mimo rozsah',
+'djvu_no_xml'              => 'Vytvoření XML pro soubor DjVu se nezdařilo.',
 'thumbnail_invalid_params' => 'Neplatný parametr náhledu',
 'thumbnail_dest_directory' => 'Nelze vytvořit cílový adresář',
 
@@ -1800,7 +1807,7 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 'notacceptable'     => 'Tento wiki server není schopen poskytnout data ve formátu, který by váš klient byl schopen přečíst.',
 
 # Attribution
-'anonymous'        => 'Anonymní uživatel(é) {{GRAMMAR:2sg|{{SITENAME}}}}',
+'anonymous'        => 'anonymní uživatel(é) {{GRAMMAR:2sg|{{SITENAME}}}}',
 'siteuser'         => 'uživatel {{grammar:2sg|{{SITENAME}}}} $1',
 'lastmodifiedatby' => 'Tuto stránku naposledy měnil $3 v $2, $1.', # $1 date, $2 time, $3 user
 'and'              => 'a',
@@ -1851,7 +1858,7 @@ Do níže uvedeného editačního pole zadejte názvy stránek, které chcete ex
 
 # Patrol log
 'patrol-log-page' => 'Kniha prověřených editací',
-'patrol-log-line' => 'označit revizi $1 článku $2 za prověřenou $3',
+'patrol-log-line' => 'označuje revizi $1 článku $2 za prověřenou $3',
 'patrol-log-auto' => '(automaticky)',
 
 # Image deletion

@@ -151,6 +151,7 @@ $messages = array(
 'category_header'       => 'カテゴリ “$1” にあるページ',
 'subcategories'         => 'サブカテゴリ',
 'category-media-header' => 'カテゴリ “$1” にあるメディア',
+'category-empty'        => 'このカテゴリにはページまたはメディアがひとつもありません。',
 
 'mainpagetext'      => 'MediaWikiが正常にインストールされました。',
 'mainpagedocfooter' => '[http://meta.wikimedia.org/wiki/MediaWiki_localisation インターフェースの変更方法]や、そのほかの使い方・設定に関しては[http://meta.wikimedia.org/wiki/Help:Contents ユーザーズガイド]を参照してください。',
@@ -242,7 +243,6 @@ $messages = array(
 'disclaimerpage'    => 'Project:免責事項',
 'edithelp'          => '編集の仕方',
 'edithelppage'      => 'Help:編集の仕方',
-'faq'               => 'FAQ',
 'faqpage'           => 'Project:FAQ',
 'helppage'          => 'Help:目次',
 'mainpage'          => 'メインページ',
@@ -263,8 +263,6 @@ $messages = array(
 'versionrequired'     => 'MediaWiki バージョン $1 が必要',
 'versionrequiredtext' => 'このページの利用には MediaWiki Version $1 が必要です。[[Special:Version|{{int:version}}]]を確認してください。',
 
-'ok'                      => 'OK',
-'pagetitle'               => '$1 - {{SITENAME}}',
 'retrievedfrom'           => ' "$1" より作成',
 'youhavenewmessages'      => 'あなた宛の$1が届いています。（$2）',
 'newmessageslink'         => '新しいメッセージ',
@@ -324,11 +322,6 @@ MySQL returned error "$3: $4"',
 'enterlockreason'      => 'ロックする理由を入力してください。ロックが解除されるのがいつになるかの見積もりについても述べてください。',
 'readonlytext'         => 'データベースは現在、新しいページの追加や編集を受け付けない「ロック状態」になっています。これはおそらく定期的なメンテナンスのためで、メンテナンス終了後は正常な状態に復帰します。データベースをロックしたサーバー管理者は次のような説明をしています:
 
-$1
-
-----
-The database is currently locked to new entries and other modifications, probably for routine database maintenance, after which it will be back to normal. The administrator who locked it offered this explanation:
-
 $1',
 'missingarticle'       => '<p>"$1" という題のページは見つかりませんでした。すでに削除された版を参照しようとしている可能性があります。これがソフトウェアのバグだと思われる場合は、URIと共にサーバー管理者に報告して下い。</p>',
 'readonly_lag'         => 'データベースはスレーブ・サーバーがマスタ・サーバーに同期するまで自動的にロックされています。しばらくお待ちください。',
@@ -359,6 +352,7 @@ $1',
 'sqlhidden'            => '（SQLクエリー非表示）',
 'cascadeprotected'     => 'このページはカスケード保護されている以下のページから呼び出されているため、編集できないように保護されています。',
 'namespaceprotected'   => "'''$1''' 名前空間に属するページを編集する権限がありません。",
+'customcssjsprotected' => 'このページはユーザーの環境設定を記録するページです。ユーザー本人以外は編集できません。',
 
 # Login and logout pages
 'logouttitle'                => 'ログアウト',
@@ -460,7 +454,6 @@ $1',
 'math_tip'        => '数式 (LaTeX)',
 'nowiki_sample'   => 'そのまま表示させたい文字を入力',
 'nowiki_tip'      => '入力文字をそのまま表示',
-'image_sample'    => 'Example.jpg',
 'image_tip'       => '埋め込み画像',
 'media_sample'    => 'Example.mp3',
 'media_tip'       => 'メディアファイル（音声）へのリンク',
@@ -587,7 +580,6 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 
 # Account creation failure
 'cantcreateaccounttitle' => 'アカウントを作成できません',
-'cantcreateaccounttext'  => 'このIPアドレス (<b>$1</b>) からのアカウント作成はブロックされています。',
 
 # History pages
 'revhistory'          => '変更履歴',
@@ -662,6 +654,7 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'overlogpagetext' => '以下は{{int:group-sysop}}が最近隠蔽した版削除およびブロックの記録です。現時点で有効な投稿ブロックは[[Special:Ipblocklist|{{int:ipblocklist}}]]をご覧ください。',
 
 # Diffs
+'history-title'             => '$1 の変更履歴',
 'difference'                => '版間での差分',
 'loadingrev'                => '差分をとるために古い版を読み込んでいます',
 'lineno'                    => '$1 行',
@@ -677,9 +670,6 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 'searchresulttext'      => '{{SITENAME}}の検索に関する詳しい情報は、[[{{MediaWiki:helppage}}|{{int:help}}]]をご覧ください。',
 'searchsubtitle'        => '問い合わせ: "[[:$1]]"',
 'searchsubtitleinvalid' => '問い合わせ: "$1"',
-'badquery'              => 'おかしな形式の検索問い合わせ',
-'badquerytext'          => '問い合わせを処理できませんでした。おそらく3文字未満の語を検索しようとしたためですが、まだ対応していません。例えば「魚 and and 大きさ」のように、表現を誤記しているのかもしれません。',
-'matchtotals'           => '"$1" を検索し、 $2 の項目名及び $3 ページの本文と一致しました。',
 'noexactmatch'          => '"$1" という名称のページは存在しませんでした。[[:$1|新規作成する]]。',
 'titlematches'          => '項目名と一致',
 'notitlematches'        => '項目名とは一致しませんでした',
@@ -696,11 +686,11 @@ $1 または他の[[{{int:grouppage-sysop}}|{{int:group-sysop}}]]にこの件に
 $1<br />
 $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'searchdisabled'        => '<p>全文検索はサーバー負荷の都合から、一時的に使用停止しています。元に戻るまでGoogleでの全文検索を利用してください。検索結果は少し古い内容となります。</p>',
-'blanknamespace'        => '（標準）',
 
 # Preferences page
 'preferences'              => 'オプション',
 'mypreferences'            => 'オプション',
+'prefs-edits'              => '編集回数:',
 'prefsnologin'             => 'ログインしていません',
 'prefsnologintext'         => 'オプションを変更するためには、[[Special:Userlogin|ログイン]]する必要があります。',
 'prefsreset'               => 'オプションは初期化されました。',
@@ -813,8 +803,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'hide'                              => '隠す',
 'show'                              => '表示',
 'minoreditletter'                   => 'M',
-'newpageletter'                     => 'N',
-'boteditletter'                     => 'b',
 'number_of_watching_users_pageview' => '[$1人がウォッチしています]',
 'rc_categories'                     => 'カテゴリを制限（"|" で区切る）',
 'rc_categories_any'                 => 'すべて',
@@ -858,8 +846,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'illegalfilename'             => 'ファイル名 "$1" にページ・タイトルとして使えない文字が含まれています。ファイル名を変更してからもう一度アップロードしてください。',
 'badfilename'                 => 'ファイル名は "$1" へ変更されました。',
 'filetype-badmime'            => 'MIME タイプ "$1" のファイルのアップロードは許可されていません。',
-'filetype-badtype'            => "'''\".\$1\"''' is an unwanted file type
-: List of allowed file types: \$2",
 'filetype-missing'            => 'ファイルに拡張子 (".jpg" など）がありません。',
 'large-file'                  => 'ファイルサイズは $1 バイト以下に抑えることが推奨されています。このファイルは $2 バイトです。',
 'largefileserver'             => 'ファイルが大きすぎます。サーバー設定で許されている最大値を超過しました。',
@@ -938,6 +924,15 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'imagelist_size'            => 'サイズ（バイト）',
 'imagelist_description'     => '概要',
 'imagelist_search_for'      => '画像名で検索:',
+
+# File deletion
+'filedelete-legend'     => 'ファイルの削除',
+'filedelete-intro'      => "あなたは'''[[Media:$1|$1]]'''を削除しようとしています。",
+'filedelete-intro-old'  => '<span class="plainlinks">あなたは\'\'\'[[Media:$1|$1]]\'\'\'の[$4 $3, $2]の版を削除しようとしています。</span>',
+'filedelete-comment'    => 'コメント:',
+'filedelete-submit'     => '削除する',
+'filedelete-success'    => "'''$1''' は削除されました。",
+'filedelete-nofile-old' => "指定された属性を持つ'''$1'''の古い版は存在しません。",
 
 # MIME search
 'mimesearch'         => 'MIMEタイプ検索',
@@ -1137,7 +1132,6 @@ $2リダイレクトを含める &nbsp; &nbsp; &nbsp; $3 $9',
 'iteminvalidname'      => '"$1" をウォッチリストから削除できません。ページ名が不正です。',
 'wlnote'               => '以下は最近 <strong>$2</strong> 時間に編集された <strong>$1</strong> ページです。',
 'wlshowlast'           => '最近の [$1時間] [$2日間] [$3] のものを表示する',
-'wlsaved'              => '現在、バックアップされたウォッチリストのみの表示となっています。',
 'watchlist-show-bots'  => 'ボットの編集を表示',
 'watchlist-hide-bots'  => 'ボットの編集を隠す',
 'watchlist-show-own'   => '自分の編集を表示',
@@ -1293,8 +1287,9 @@ $NEWPAGE
 'undelete-no-results'      => '一致する削除済みページのアーカイブが見つかりませんでした。',
 
 # Namespace form on various pages
-'namespace' => '名前空間:',
-'invert'    => '選択した名前空間を隠す',
+'namespace'      => '名前空間:',
+'invert'         => '選択した名前空間を隠す',
+'blanknamespace' => '（標準）',
 
 # Contributions
 'contributions' => '利用者の投稿記録',
@@ -1663,7 +1658,9 @@ $NEWPAGE
 'patrol-log-diff' => '第$1版',
 
 # Image deletion
-'deletedrevision' => '古い版 $1 を削除しました',
+'deletedrevision'                 => '古い版 $1 を削除しました',
+'filedelete-missing'              => 'ファイル"$1"は存在しないため、削除することができません。',
+'filedelete-current-unregistered' => '指定されたファイル"$1"はデータベース内にはありません。',
 
 # Browsing diffs
 'previousdiff' => '←前の差分',

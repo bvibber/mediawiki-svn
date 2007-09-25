@@ -27,6 +27,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11136) If using Postgres, search path is explicitly set if wgDBmwschema is 
   not set to 'mediawiki', allowing multiple mediawiki instances per user.
 * (bug 11151) Add descriptive <title> to revision history page
+* (bug 5412) Add feed links for the site to all pages
 
 === Bug fixes in 1.12 ===
 
@@ -61,6 +62,14 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Strike the link to the redirect rather than using an asterisk in Special:Listredirects
 * (bug 11355) Fix false positives in Safe Mode and other config detection
   when boolean settings are disabled with 'Off' via php_admin_value/php_value
+* (bug 11292) Fixed unserialize errors with Postgres by creating special Blob object.
+* (bug 11363) Make all metadata fields bytea when using Postgres.
+* (bug 11331) Add buildConcat() and use CASE not IF for DB compatibility. Make oldimage 
+  cascade delete via image table for Postgres, change fa_storage_key TEXT.
+* (bug 11438) Live Preview chops returned text
+* Show the right message on account creation when the user is blocked
+* (bug 11450) Fix creation of objectcache table on upgrade
+
 
 === API changes in 1.12 ===
 
@@ -70,18 +79,21 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 11308) Allow the API to output the image metadata
 * (bug 11296) Temporary fix for escaping of ampersands inside links in pretty-printed
   help document.
+* (bug 11405) Expand templates implementation in the API
 
 === Languages updated in 1.12 ===
 
 * Amharic (am) (new)
 * Arabic (ar)
 * Mapudungun (arn) (new)
+* Asturian (ast)
 * Samogitian (bat-smg)
 * Bikol Central (bcl)
 * Belarusian Taraskievica orthography (be-tarask)
 * Bulgarian (bg)
 * Bislama (bi) (new)
 * Bengali (bn)
+* Bishnupriya Manipuri (bpy)
 * Catalan (ca)
 * Breton (br)
 * Czech (cs)
@@ -90,6 +102,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Danish (da)
 * German (de)
 * Lower Sorbian (dsb) (new)
+* Ewe (ee) (new)
 * Greek (el)
 * Spanish (es)
 * Extremaduran (ext)
@@ -101,6 +114,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Cajun French (frc)
 * Franco-Provençal (frp)
 * Irish (ga)
+* Gön-gnŷ (gan) (new)
 * Galician (gl)
 * Ancient Greek (grc) (new)
 * Hakka (hak)
@@ -108,13 +122,21 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Upper Sorbian (hsb)
 * Indonesian (id)
 * Icelandic (is)
+* Italian (it)
+* Japanese (ja)
 * Kazakh (kk)
 * Korean (ko)
+* Latin (la)
+* Limbugian (li)
+* Malay (ms)
 * Low Saxon (nds)
 * Dutch (nl)
+* Norwegian (no)
+* Portugese (pt)
 * Russian (ru)
 * Sakha (sah)
 * Sicilian (scn)
+* Seri (sei) (new)
 * Slovak (sk)
 * Serbian (Cyrillic) (sr-ec)
 * Sundanese (su)

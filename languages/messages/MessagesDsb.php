@@ -458,37 +458,39 @@ Nježli až wótpósćelo se dalšna e-mail na to wužywarske konto, dejš slěd
 'missingcommenttext'     => 'Pšosym zespominanje zapódaś.',
 'missingcommentheader'   => "'''WARNOWANJE:''' Njejsy žedno nadpismo zapódał. Gaž kliknjoš na \"Składowaś\", składujo se twójo wobźěłanje mimo nadpisma.",
 'summary-preview'        => 'Pśeglěd zespominanja',
-'subject-preview'        => 'Pśeglěd nastupanja',
-'blockedtitle'           => 'Wužywaŕ jo zablokěrowany',
-'blockedtext'            => "<big>'''Twóje wužywarske mě abo IP-adresa stej zablokowanej.'''</big>
+'subject-preview'        => 'Pśeglěd nadpisma',
+'blockedtitle'           => 'Wužywaŕ jo se blokěrował',
+'blockedtext'            => "<big>'''Twójo wužywarske mě abo IP-adresa stej se blokěrowałej.'''</big>
 
-Zablokował(a) $1. Pśicyna: ''$2''.
+Zablokěrował(a) $1. Pśicyna: ''$2''.
 
-* Zachopjeńk blokady: $8
-* Kóńc blokady: $6
-* Z wótmyslenim blokowanja: $7
+* Zachopjeńk blokěrowanja: $8
+* Kóńc blokěrowanja: $6
+* Wótmyslenje blokěrowanja: $7
 
-Ty móžoš wužywarja $1 abo [[{{MediaWiki:grouppage-sysop}}|administrator]] kontaktowaś aby wó blokaźe diskutěrowaś.
-Njamóžoš emaila wótposłaś tak dłujko ako dobreje adresy na boku
-[[Special:Preferences|account preferences]] njezapodaš a teke njebuźoš měś tej funkciji wótblokowanej. 
-Twója IP-adresa jo $3, a ID blokady jo #$5. Pšošym jeje zapodaś w diskusji.",
-'autoblockedtext'        => "Twója IP-adresa jo awtomatisko zablokowana, dokulaž jo wóna była wužyta pśez drugego wužywarja, kótaryž jo był zablokowany pśez $1.
+Móžoš wužywarja $1 abo [[{{MediaWiki:grouppage-sysop}}|administratora]] kontaktěrowaś, aby wó blokěrowanju diskutěrował.
+Njamóžoš e-mail wótpósłaś nježlic až njezapódajoš płaśecu adresu na boku
+[[Special:Preferences|account preferences]] a nježlic njebuźo se blokěrowanje zwignuś. 
+Twója IP-adresa jo $3, a ID blokěrowanja jo #$5. Pšosym pódaj ju w diskusiji.",
+'autoblockedtext'        => "Twója IP-adresa jo awtomatiski se blokěrowała, dokulaž jo wót drugego wužywarja se wužywała, kótaryž jo był pśez $1 blokěrowany.
 Pśicyna:
 
 :''$2''
 
-* Zachopjeńk blokady: $8
-* Kóńc blokady: $6
+* Zachopjeńk blokěrowanja: $8
+* Kóńc blokěrowanja: $6
 
-Ty móžoš wužywarja $1 abo [[{{MediaWiki:grouppage-sysop}}|administrator]] kontaktowaś aby wó blokaźe diskutěrowaś.
+Ty móžoš wužywarja $1 abo [[{{MediaWiki:grouppage-sysop}}|administrator]] kontaktěrowaś, aby wó blokaźe diskutěrował.
 
-Njamóžoš emaila wótposłaś tak dłujko ako dobreje adresy na boku [[Special:Preferences|user preferences]] njezapodaš a teke njebuźoš měś tej funkciji wótblokowanej.
+Njamóžoš e-mail wótpósłaś nježlic až njezapódajoš płaśecu adresu na boku [[Special:Preferences|user preferences]] a nježlic až se blokěrowanje njezwignjo.
 
-ID twójej blokady jo $5. Pšošym jeje zapodaś w swójich pšašanjach.",
+ID twójogo blokěrowanja jo $5. Pšosym pódaj ju w swójich pšašanjach.",
 'blockedoriginalsource'  => "Žrědłowy tekst boka '''$1''':",
 'blockededitsource'      => "Žrědłowy tekst '''Twójich pśinoskow''' do '''$1''' jo:",
-'whitelistedittitle'     => 'Trjeba se pśizjawiś aby wobźěłaś',
-'whitelistreadtitle'     => 'Trjeba se pśizjawiś aby cytaś',
+'whitelistedittitle'     => 'Za wobźěłanje dejš se pśizjawiś',
+'whitelistedittext'      => 'Musyš se $1, aby mógał boki wobźěłowaś.',
+'whitelistreadtitle'     => 'Za cytanje dejš se pśizjawiś',
+'whitelistreadtext'      => 'Za cytanje bokow dejš se [[Special:Userlogin|hier anmelden]].',
 'loginreqtitle'          => 'Pśizjawjenje trěbne',
 'loginreqlink'           => 'pśizjawiś',
 'accmailtitle'           => 'Pótajmne słowo bu pósłane.',
@@ -526,6 +528,7 @@ ID twójej blokady jo $5. Pšošym jeje zapodaś w swójich pšašanjach.",
 'deletedrev'          => '[wylašowane]',
 'histfirst'           => 'nejstarše',
 'histlast'            => 'nejnowše',
+'historysize'         => '($1 Bytes)',
 'historyempty'        => '(prozny)',
 
 # Revision feed
@@ -559,6 +562,7 @@ ID twójej blokady jo $5. Pšošym jeje zapodaś w swójich pšašanjach.",
 'qbsettings'            => 'Bocna lejstwa',
 'qbsettings-none'       => 'Žedne',
 'changepassword'        => 'Pótajmne słowo pśeměniś',
+'math'                  => 'TeX',
 'dateformat'            => 'Format datuma',
 'datedefault'           => 'Žedna preferenca',
 'datetime'              => 'Datum a cas',
@@ -917,12 +921,20 @@ abo njoco dostawaś powěscow wót drugich wužywarjow.',
 'proxyblocksuccess'        => 'Gótowy.',
 
 # Developer tools
-'lockdb'        => 'Zablokowaś datowu banku',
-'unlockdb'      => 'Wótblokowaś datowu banku',
-'lockconfirm'   => 'Jo, ja wěrno com zablokowaś datowu banku.',
-'unlockconfirm' => 'Jo, ja wěrno com wótblokowaś datowu banku.',
-'lockbtn'       => 'Zablokowaś datowu banku',
-'unlockbtn'     => 'Wótblokowaś datowu banku',
+'lockdb'              => 'Zablokowaś datowu banku',
+'unlockdb'            => 'Wótblokowaś datowu banku',
+'lockdbtext'          => 'Zablokowanje datoweje banki znjemóžni wšěm wužywarjam boki wobźěłaś, jich nastajenja změnjaś, jich wobźěłowbowanki wobźěłaś a druge źěła cyniś, kótarež pominaju změn w datowej bance. Psošym wobkruśiś, až coš něnto datowu banku zablokowaś a wótblokowaś kak změny docyniš.',
+'unlockdbtext'        => 'Wótblokowanje datoweje banki zmóžni wšěm wužywarjam boki wobźěłaś, jich nastajenja změnjaś, jich wobźěłowbowanki wobźěłaś a druge źěła cyniś, kótarež pominaju změn w datowej bance. Psošym wobkruśiś, až coš datowu banku wótblokowaś.',
+'lockconfirm'         => 'Jo, ja wěrno com zablokowaś datowu banku.',
+'unlockconfirm'       => 'Jo, ja wěrno com wótblokowaś datowu banku.',
+'lockbtn'             => 'Zablokowaś datowu banku',
+'unlockbtn'           => 'Wótblokowaś datowu banku',
+'locknoconfirm'       => 'Ty njesy wobkšuśenja zamarkěrował.',
+'lockdbsuccesssub'    => 'Datowa banka zablokowana wuspěšnje',
+'unlockdbsuccesssub'  => 'Datowa banka wótblokowana wuspěšnje',
+'lockdbsuccesstext'   => 'Datowa banka jo zablokowana.
+<br />Njezabyj jeje [[Special:Unlockdb|wótblokowaś]] kak změny docyniš.',
+'lockfilenotwritable' => 'Blokada datoweje banki njemóžo byś nadpisana. Aby datowu banku wótblokowaś webowy serwer musy pisanske prawo měś.',
 
 # Move page
 'movepage'        => 'Bok pśesunuś',
@@ -936,6 +948,12 @@ abo njoco dostawaś powěscow wót drugich wužywarjow.',
 
 # Export
 'export'        => 'Boki eksportěrowaś',
+'exporttext'    => 'Móžoš tekst a stawizny boka abo skupiny bokow, kótarež su w XML zapisane, eksportěrowaś. Pótom móžna to do drugej wiki pśeź MediaWiki [[Special:Import|bok importa]] importěrowaś.
+
+Aby boki eksportěrowaś, zapodaj nadpisma do tekstowogo póla dołoj, jadno nadpismo na werš, a wubjer teke nowe a stare wersije z wótkazami stawiznow boka abo jano aktualnu wersiju z informacijami wó slědnjej změnje.
+
+W slědnym padźe móžoš teke wótkaza wužywaś, na pśikład [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] za boka "[[{{MediaWiki:mainpage}}]]".',
+'exportcuronly' => 'Jano aktuelne wersije, bźez stawiznow',
 'export-submit' => 'Eksportěrowaś',
 'export-addcat' => 'Dodaś',
 
@@ -1022,18 +1040,48 @@ abo njoco dostawaś powěscow wót drugich wužywarjow.',
 'metadata' => 'Metadaty',
 
 # EXIF tags
-'exif-imagewidth'       => 'Šyrokosć',
-'exif-imagelength'      => 'Wusokosć',
-'exif-imagedescription' => 'Mě wóbraza',
-'exif-make'             => 'Zgótowaŕ kamery',
-'exif-model'            => 'Model kamery',
-'exif-software'         => 'Softwara',
-'exif-artist'           => 'Awtor',
-'exif-copyright'        => 'Wobsejźaŕ stwóriśelskech pšaw',
-'exif-exifversion'      => 'Wersija Exif',
-'exif-colorspace'       => 'Barwowy rum',
+'exif-imagewidth'          => 'Šyrokosć',
+'exif-imagelength'         => 'Wusokosć',
+'exif-imagedescription'    => 'Mě wóbraza',
+'exif-make'                => 'Zgótowaŕ kamery',
+'exif-model'               => 'Model kamery',
+'exif-software'            => 'Softwara',
+'exif-artist'              => 'Awtor',
+'exif-copyright'           => 'Wobsejźaŕ stwóriśelskech pšaw',
+'exif-exifversion'         => 'Wersija Exif',
+'exif-flashpixversion'     => 'Pódpěrana wersija Flashpix',
+'exif-colorspace'          => 'Barwowy rum',
+'exif-imageuniqueid'       => 'Jadnorazny ID wobraza',
+'exif-gpsversionid'        => 'Wersija taga GPS',
+'exif-gpslatituderef'      => 'Pódpołnocna abo pódpołdnjowa šyrina',
+'exif-gpslatitude'         => 'Šyrina',
+'exif-gpslongituderef'     => 'Pódzajtšna abo pódwjacorna dliń',
+'exif-gpslongitude'        => 'Dliń',
+'exif-gpsaltituderef'      => 'Referencna wusokosć',
+'exif-gpsdestdistance'     => 'Distanca k celowemu městnu',
+'exif-gpsprocessingmethod' => 'Mě metody pśeźěłanja GPS',
+'exif-gpsareainformation'  => 'Mě wobcerka GPS',
+'exif-gpsdatestamp'        => 'Datum GPS',
+'exif-gpsdifferential'     => 'Diferencialna korektura GPS',
+
+# EXIF attributes
+'exif-compression-1' => 'Njeskompriměrowany',
+
+'exif-unknowndate' => 'Njeznaty datum',
 
 'exif-orientation-1' => 'Normalny', # 0th row: top; 0th column: left
+'exif-orientation-2' => 'Wobrośiony horicontalnje', # 0th row: top; 0th column: right
+'exif-orientation-3' => 'Pśewobrośiony', # 0th row: bottom; 0th column: right
+'exif-orientation-4' => 'Wobrośiony wertikalnje', # 0th row: bottom; 0th column: left
+'exif-orientation-5' => 'Wobrośiony wó 90° nalěwo a wertikalnje', # 0th row: left; 0th column: top
+'exif-orientation-6' => 'Wobrośiony wó 90° napšawo', # 0th row: right; 0th column: top
+'exif-orientation-7' => 'Wobrośiony wó 90° napšawo a wertikalnje', # 0th row: right; 0th column: bottom
+'exif-orientation-8' => 'Wobrośiony wó 90° nalěwo', # 0th row: left; 0th column: bottom
+
+'exif-planarconfiguration-1' => 'gropny format',
+'exif-planarconfiguration-2' => 'płony format',
+
+'exif-xyresolution-i' => '$1 dpi (dypkow na col)',
 
 'exif-exposureprogram-2' => 'Normalny program',
 

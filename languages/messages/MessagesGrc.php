@@ -1,5 +1,5 @@
 <?php
-/** Ancient Greece (Ἀρχαία ἑλληνικὴ)
+/** Ancient Greek (Ἀρχαία ἑλληνικὴ)
  *
  * @addtogroup Language
  * Translators: LeighvsOptimvsMaximvs, Lefcant, AndreasJS, Neachili, SPQRobin,
@@ -184,7 +184,6 @@ $messages = array(
 'badaccess-group0' => 'Οὐκ ἔξεστί σοι ταῦτα διαπράττειν.',
 
 'ok'                  => 'εἶεν',
-'pagetitle'           => '$1 - {{ΙΣΤΟΣΕΛΙΣ}}',
 'youhavenewmessages'  => 'Ἔχεις $1 ($2).',
 'newmessageslink'     => 'νέαι ἀγγελίαι',
 'newmessagesdifflink' => 'ἐσχάτη μεταβολή',
@@ -299,6 +298,9 @@ $messages = array(
 'imagelist_size'        => 'Ὁπόσος',
 'imagelist_description' => 'Διέξοδος',
 
+# MIME search
+'mimesearch' => 'MIME Ζητεῖν',
+
 # Unused templates
 'unusedtemplateswlh' => 'οἱ σύνδεσμοι οἱ ἄλλοι',
 
@@ -373,9 +375,10 @@ $messages = array(
 'whatlinkshere-links' => '← σύνδεσμοι',
 
 # Block/unblock
-'infiniteblock' => 'ἄπειρον',
-'blocklink'     => 'ἀποκλῃειν',
-'contribslink'  => 'Ἔρανοι',
+'ipblocklist-submit' => 'Ζητεῖν',
+'infiniteblock'      => 'ἄπειρον',
+'blocklink'          => 'ἀποκλῃειν',
+'contribslink'       => 'Ἔρανοι',
 
 # Move page
 'movepage'    => 'Κινεῖν τὴν δέλτον',

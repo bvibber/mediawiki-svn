@@ -400,7 +400,7 @@ class Thread {
 		$this->articleNamespace = $new_articleNamespace;
 		$this->articleTitle = $new_articleTitle;
 		$this->revisionNumber += 1;
-		$this->commitRevision();
+		$this->commitRevision(Threads::CHANGE_MOVED_TALKPAGE, null, $reason);
 		
 		if($leave_trace) {
 			$this->leaveTrace($reason);
@@ -758,8 +758,10 @@ class Threads {
 	const CHANGE_EDITED_SUMMARY = 3;
 	const CHANGE_DELETED = 4;
 	const CHANGE_UNDELETED = 5;
+	const CHANGE_MOVED_TALKPAGE = 6;
 	static $VALID_CHANGE_TYPES = array(self::CHANGE_EDITED_SUMMARY, self::CHANGE_EDITED_ROOT,
-		self::CHANGE_REPLY_CREATED, self::CHANGE_NEW_THREAD, self::CHANGE_DELETED, self::CHANGE_UNDELETED);
+		self::CHANGE_REPLY_CREATED, self::CHANGE_NEW_THREAD, self::CHANGE_DELETED, self::CHANGE_UNDELETED,
+		self::CHANGE_MOVED_TALKPAGE);
 
 	static $cache_by_root = array();
 	static $cache_by_id = array();

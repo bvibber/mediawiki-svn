@@ -36,6 +36,22 @@ class DBObject {
 };
 
 /**
+ * Utility class
+ * @addtogroup Database
+ *
+ * This allows us to distinguish a blob from a normal string and an array of strings
+ */
+class Blob {
+	var $data;
+	function __construct($data) {
+		$this->mData = $data;
+	}
+	function fetch() {
+		return $this->mData;
+	}
+};
+
+/**
  * Utility class.
  * @addtogroup Database
  */
@@ -2284,6 +2300,13 @@ class Database {
 	 */
 	protected function tableNameCallback( $matches ) {
 		return $this->tableName( $matches[1] );
+	}
+
+	/*
+	 * Build a concatenation list to feed into a SQL query
+	*/
+	function buildConcat( $stringList ) {
+		return 'CONCAT(' . implode( ',', $stringList ) . ')';
 	}
 
 }
