@@ -376,15 +376,8 @@ class Thread {
 	function moveToSubjectPage($title, $reason, $leave_trace) {
 		$dbr =& wfGetDB( DB_MASTER );
 		
-		if( $title->exists() ) {
-			$new_articleId = $title->getArticleId();
-			$new_articleNamespace = null;
-			$new_articleTitle = null;
-		} else {
-			$new_articleId = 0;
-			$new_articleNamespace = $title->getNamespace();
-			$new_articleTitle = $title->getDBKey();
-		}
+		$new_articleNamespace = $title->getNamespace();
+		$new_articleTitle = $title->getDBKey();
 		
 		foreach($this->replies as $r) {
 			$res = $dbr->update( 'thread',
@@ -396,7 +389,6 @@ class Thread {
 			     __METHOD__);
 		}
 		
-		$this->articleId = $new_articleId;
 		$this->articleNamespace = $new_articleNamespace;
 		$this->articleTitle = $new_articleTitle;
 		$this->revisionNumber += 1;

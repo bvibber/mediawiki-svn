@@ -33,12 +33,13 @@ function wfInitializeLqtMessages() {
 		'lqt_fragment'=>'a fragment of a $1 from $2',
 		'lqt_discussion_link'=>'discussion', // substituted above
 		'lqt_from_talk'=>'from $1',
-		'lqt_comment_edited'=>'Comment text edited',
-		'lqt_summary_changed'=>'Summary changed',
-		'lqt_reply_created'=>'New reply created',
-		'lqt_thread_created'=>'New thread created',
-		'lqt_deleted'=>'Deleted',
-		'lqt_undeleted'=>'Undeleted',
+		'lqt_hist_comment_edited'=>'Comment text edited',
+		'lqt_hist_summary_changed'=>'Summary changed',
+		'lqt_hist_reply_created'=>'New reply created',
+		'lqt_hist_thread_created'=>'New thread created',
+		'lqt_hist_deleted'=>'Deleted',
+		'lqt_hist_undeleted'=>'Undeleted',
+		'lqt_hist_moved_talkpage'=>'Moved',
 		'lqt_history_subtitle'=>'Viewing a history listing.',
 	);
         

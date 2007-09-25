@@ -535,12 +535,13 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 		/* TODO: best not to refer to LqtView class directly. */
 		/* We don't use oldid because that has side-effects. */
 		$result = array();
-		$change_names = array(	Threads::CHANGE_EDITED_ROOT => wfMsg('lqt_comment_edited'),
-		                      	Threads::CHANGE_EDITED_SUMMARY => wfMsg('lqt_summary_changed'),
-		                      	Threads::CHANGE_REPLY_CREATED => wfMsg('lqt_reply_created'),
-		                      	Threads::CHANGE_NEW_THREAD => wfMsg('lqt_thread_created'),
-					Threads::CHANGE_DELETED => wfMsg('lqt_deleted'),
-					Threads::CHANGE_UNDELETED => wfMsg('lqt_undeleted'));
+		$change_names = array(	Threads::CHANGE_EDITED_ROOT => wfMsg('lqt_hist_comment_edited'),
+		                      	Threads::CHANGE_EDITED_SUMMARY => wfMsg('lqt_hist_summary_changed'),
+		                      	Threads::CHANGE_REPLY_CREATED => wfMsg('lqt_hist_reply_created'),
+		                      	Threads::CHANGE_NEW_THREAD => wfMsg('lqt_hist_thread_created'),
+								Threads::CHANGE_DELETED => wfMsg('lqt_hist_deleted'),
+								Threads::CHANGE_UNDELETED => wfMsg('lqt_hist_undeleted'),
+								Threads::CHANGE_MOVED_TALKPAGE => wfMsg('lqt_hist_moved_talkpage'));
 		$change_label = array_key_exists($t->changeType(), $change_names) ? $change_names[$t->changeType()] : "";
 
 		$url = LqtView::permalinkUrlWithQuery( $this->thread, 'lqt_oldid=' . $t->revisionNumber() );
