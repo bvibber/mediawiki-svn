@@ -68,7 +68,7 @@ class SearchEngine {
 				return $title;
 			}
 
-	                if(!empty($wgDefaultGoPrefix) && $title->getNamespace == NS_MAIN ) {
+	                if(!empty($wgDefaultGoPrefix) && $title->getNamespace() == NS_MAIN ) {
 	                	$term=$wgDefaultGoPrefix.$term;
 			}
                                                                                 
