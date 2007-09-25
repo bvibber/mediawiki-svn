@@ -95,13 +95,18 @@ class UserrightsForm extends HTMLForm {
 			}
 		}
 		$newGroups = array_unique( $newGroups );
+		if($oldGroups == $newGroups) // Nothing to do
+		{
+			$dbw->rollback();
+			return;
+		}
 
 		wfDebug( 'oldGroups: ' . print_r( $oldGroups, true ) );
 		wfDebug( 'newGroups: ' . print_r( $newGroups, true ) );
 
 		wfRunHooks( 'UserRights', array( &$u, $addgroup, $removegroup ) );	
 		$log = new LogPage( 'rights' );
-		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $username ), $reason, array( $this->makeGroupNameList( $oldGroups ),
+		$log->addEntry( 'rights', Title::makeTitle( NS_USER, $u->getName() ), $reason, array( $this->makeGroupNameList( $oldGroups ),
 			$this->makeGroupNameList( $newGroups ) ) );
 		$dbw->commit();
 	}

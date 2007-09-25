@@ -45,15 +45,19 @@ class ApiChangeRights extends ApiBase {
 		$res = array();
 
 		if($params['listgroups'])
+		{
 			$res['allowedgroups'] = $allowed;
+			$this->getResult()->setIndexedTagName($res['allowedgroups']['add'], 'group');
+			$this->getResult()->setIndexedTagName($res['allowedgroups']['remove'], 'group');
+		}
 		if(is_null($params['user']))
 			$this->dieUsage('The user parameter must be set', 'nouser');
 
 		$uName = User::getCanonicalName($params['user']);
-		if(!$uName)
-			$this->dieUsage("Invalid username ``{$params['user']}''", 'invaliduser');
 		$u = User::newFromName($uName);
 		if(!$u)
+			$this->dieUsage("Invalid username ``{$params['user']}''", 'invaliduser');
+		if($u->getId() == 0) // Anon or non-existent
 			$this->dieUsage("User ``{$params['user']}'' doesn't exist", 'nosuchuser')
 ;
 		if($params['gettoken'])
@@ -64,7 +68,7 @@ class ApiChangeRights extends ApiBase {
 		}
 
 		if(empty($params['addto']) && empty($params['rmfrom']))
-			$this->dieUsage('At least one of the addto and rmfrom parameters must be set', 'nochange');
+			$this->dieUsage('At least one of the addto and rmfrom parameters must be set', 'noaddrm');
 		if(is_null($params['token']))
 			$this->dieUsage('The token parameter must be set', 'notoken');
 		if(!$wgUser->matchEditToken($params['token'], $uName))
@@ -73,20 +77,38 @@ class ApiChangeRights extends ApiBase {
 		if(!$wgUser->isAllowed('userrights'))
 			$this->dieUsage('You don\'t have permission to change users\' rights', 'permissiondenied');
 
-		// Check $wgUser can really add and remove all the groups he wants to
+		// First let's remove redundant groups and check permissions while we're at it
+		$curgroups = $u->getGroups();
+		if(is_null($params['addto']))
+			$params['addto'] = array();
+		$addto = array();
 		foreach($params['addto'] as $g)
+		{
 			if(!in_array($g, $allowed['add']))
 				$this->dieUsage("You don't have permission to add to group ``$g''", 'cantadd');
+			if(!in_array($g, $curgroups))
+				$addto[] = $g;
+		}
+
+		if(is_null($params['rmfrom']))
+			$params['rmfrom'] = array();
+		$rmfrom = array();
 		foreach($params['rmfrom'] as $g)
+		{
 			if(!in_array($g, $allowed['remove']))
 				$this->dieUsage("You don't have permission to remove from group ``$g''", 'cantremove');
+			if(in_array($g, $curgroups))
+				$rmfrom[] = $g;
+		}
 
-		$ur->doSaveUserGroups($uName, $params['rmfrom'], $params['addto'], $params['reason']);
+		$ur->doSaveUserGroups($u, $rmfrom, $addto, $params['reason']);
 		$res['user'] = $uName;
-		$res['addedto'] = $params['addto'];
-		$res['removedfrom'] = $params['rmfrom'];
+		$res['addedto'] = $addto;
+		$res['removedfrom'] = $rmfrom;
 		$res['reason'] = $params['reason'];
 
+		$this->getResult()->setIndexedTagName($res['addedto'], 'group');
+		$this->getResult()->setIndexedTagName($res['removedfrom'], 'group');
 		$this->getResult()->addValue(null, $this->getModuleName(), $res);
 	}
 
@@ -97,10 +119,10 @@ class ApiChangeRights extends ApiBase {
 			'gettoken' => false,
 			'listgroups' => false,
 			'addto' => array(
-				ApiBase :: PARAM_MULTI => true
+				ApiBase :: PARAM_ISMULTI => true,
 			),
 			'rmfrom' => array(
-				ApiBase :: PARAM_MULTI => true
+				ApiBase :: PARAM_ISMULTI => true,
 			),
 			'reason' => ''
 		);
