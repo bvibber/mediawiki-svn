@@ -12,6 +12,7 @@ require_once('SwissProtImport.php');
 require_once('XMLImport.php');
 require_once('2GoMappingImport.php');
 require_once("UMLSImport.php");
+require_once("../Console/CommandLine.php");
 require_once("../../../includes/Namespace.php");
 
 ob_end_flush();
@@ -30,14 +31,17 @@ function getUserId($real_name){
 	}
 }
 
+$options = parseCommandLine(array(new CommandLineOption("dataset", true)));
+$dataset = $options["dataset"];
+
 $beginTime = time();
 $wgCommandLineMode = true;
-$wdDefaultViewDataSet = 'sp';
+$wdDefaultViewDataSet = $dataset;
 
-$arg = reset( $argv ); 
-if ( $arg !== false ){
- 	$wdDefaultViewDataSet = next( $argv );
-}
+//$arg = reset( $argv ); 
+//if ( $arg !== false ){
+// 	$wdDefaultViewDataSet = next( $argv );
+//}
 
 /*
  * User IDs to use during the import of both UMLS and Swiss-Prot
@@ -53,6 +57,7 @@ if ( $sibUserId == -1 ){
 
 //$linkEC2GoFileName = "LinksEC2Go.txt";
 //$linkSwissProtKeyWord2GoFileName = "LinksSP2Go.txt";
+//$swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\uniprot_sprot.xml";
 $swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\uniprot_sprot.xml";
 //$swissProtXMLFileName =  "100000lines.xml";
 //$swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\SPentriesForWPTest.xml";
@@ -67,6 +72,8 @@ $swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\uniprot_
 
 //$EC2GoMapping = loadEC2GoMapping($linkEC2GoFileName);
 //$SP2GoMapping = loadSwissProtKeyWord2GoMapping($linkSwissProtKeyWord2GoFileName);
+
+ini_set('memory_limit', '256M');
 
 $wgUser->setID($sibUserID);
 startNewTransaction($sibUserID, 0, "Swiss-Prot Import");

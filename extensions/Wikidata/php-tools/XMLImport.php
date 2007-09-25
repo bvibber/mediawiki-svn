@@ -37,9 +37,9 @@ class BaseXMLParser implements XMLParser {
 	public function endElement($parser) {
 		$handler = array_pop($this->stack);
 		$handler->close();
-		if (count($this->stack)>0){
+		
+		if (count($this->stack) > 0) 
 			end($this->stack)->notify($handler);			
-		} 
 	}
 }
 
@@ -60,6 +60,24 @@ class DefaultXMLElementHandler implements XMLElementHandler {
 	
 	public function processData($data) {
 		$this->data .= $data;
+	}
+	
+	public function close() {
+	}
+	
+	public function notify($childHandler) {
+	}
+}
+
+class DummyXMLElementHandler implements XMLElementHandler {
+	public function getHandlerForNewElement($name) {
+		return $this;
+	}
+	
+	public function setAttributes($attributes) {
+	} 
+	
+	public function processData($data) {
 	}
 	
 	public function close() {
@@ -163,7 +181,7 @@ function parseXML($fileHandle, $xmlParser) {
 	xml_set_element_handler($standardXmlParser,  array($xmlParser, "startElement"), array($xmlParser, "endElement"));
 	xml_set_character_data_handler($standardXmlParser, array($xmlParser, "characterData"));
 	
-	while ($data = fread($fileHandle, 4096)) {
+	while ($data = fread($fileHandle, 32 * 1024 * 1024)) {
 	    if (!xml_parse($standardXmlParser, $data, feof($fileHandle))) {
 	        die(sprintf("XML error: %s at line %d",
 	                    xml_error_string(xml_get_error_code($standardXmlParser)),

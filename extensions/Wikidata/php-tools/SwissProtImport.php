@@ -4,6 +4,10 @@ require_once('XMLImport.php');
 require_once('ProgressBar.php');
 require_once('../OmegaWiki/WikiDataAPI.php');
 
+function largeFilePositionInMegabytes($position) {
+	return round(sprintf("%u", $position) / (1024 * 1024)); 
+}
+
 /*
  * Import Swiss-Prot from the XML file. Be sure to have started a transaction first!
  */
@@ -38,8 +42,8 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 	}
 
 	// SwissProt import:
-	$numberOfBytes = filesize($xmlFileName);
-	initializeProgressBar($numberOfBytes, 5000000);
+	$numberOfMegaBytes = largeFilePositionInMegabytes(filesize($xmlFileName));  
+	initializeProgressBar($numberOfMegaBytes, 1, " Mb");
 	$fileHandle = fopen($xmlFileName, "r");
 	importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection, $hugoCollection, $EC2GoMeaningId, $keyword2GoMeaningId);
 
@@ -181,7 +185,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $cautionId = 0;
 	
 	
-	protected function bootstrapDefinedMeaning($spelling, $definition = NULL) {
+	protected function bootstrapDefinedMeaning($spelling, $definition = null) {
 		if (!isset( $definition ) ){
 			$definition = $spelling;
 		}
@@ -458,11 +462,11 @@ class SwissProtXMLParser extends BaseXMLParser {
 		}
 		else {
 			if (count($this->stack) == 1) {
-				$currentByteIndex = xml_get_current_byte_index($parser);
+				$currentByteIndex = largeFilePositionInMegabytes(xml_get_current_byte_index($parser));
 				setProgressBarPosition($currentByteIndex);
 			}
 			
-			BaseXMLParser::startElement($parser, $name, $attributes);
+			parent::startElement($parser, $name, $attributes);
 		}
 	}
 	
@@ -899,20 +903,19 @@ class UniProtXMLElementHandler extends DefaultXMLElementHandler {
 	public $importer;
 	
 	public function getHandlerForNewElement($name) {
-		if($name=="ENTRY") {
+		if ($name == "ENTRY")  
 			$result = new EntryXMLElementHandler();
-		}
-		else {
-			$result = DefaultXMLElementHandler::getHandlerForNewElement($name);
-		}
+		else 
+			$result = parent::getHandlerForNewElement($name);
+
 		$result->name = $name;
+		
 		return $result;
 	}
 	
 	public function notify($childHandler) {
-		if (is_a($childHandler, EntryXMLElementHandler)) {
+		if ($childHandler instanceof EntryXMLElementHandler) 
 			$this->importer->import($childHandler->entry);
-		}
 	}
 }
 
@@ -1183,7 +1186,7 @@ class CommentXMLElementHandler extends DefaultXMLElementHandler {
 		switch($name) { // composed children
 			case "LOCATION":
 			case "KINETICS";
-			case "INTERACTANT";	
+			case "INTERACTANT";	// TODO: Is this intentional?
 				$result = new CommentChildXMLElementHandler();				
 				break;
 			default:

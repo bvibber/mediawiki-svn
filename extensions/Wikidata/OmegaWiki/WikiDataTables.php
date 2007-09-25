@@ -254,6 +254,10 @@ class DefinedMeaningTable extends VersionedTable {
 			$this->createVersionedIndexes("expression", true, true, true, array($this->expressionId, $this->definedMeaningId)),
 			$this->createVersionedIndexes("meaning_text", true, true, false, array($this->meaningTextTcid, $this->definedMeaningId))
 		));
+
+		$this->setMassUpdateIndexes(array(
+			new TableIndex("defined_meaning", array($this->definedMeaningId))
+		));
 	}
 }
 
@@ -310,6 +314,11 @@ class ExpressionTable extends VersionedTable {
 				array($this->spelling, $this->languageId, $this->expressionId)
 			)
 		));
+		
+		$this->setMassUpdateIndexes(array(
+			new TableIndex("spelling", array($this->spelling, $this->languageId, $this->expressionId)),
+			new TableIndex("expression", array($this->expressionId))
+		));
 	}
 }
 
@@ -364,6 +373,10 @@ class ClassMembershipsTable extends VersionedTable {
 			$this->createVersionedIndexes("class_member", true, true, false, array($this->classMemberMid, $this->classMid)),
 			$this->createVersionedIndexes("class_membership", true, true, false, array($this->classMembershipId))
 		));
+		
+		$this->setMassUpdateIndexes(array(
+			new TableIndex("class", array($this->classMid, $this->classMemberMid, $this->classMembershipId))
+		));
 	}
 }
 
@@ -410,6 +423,10 @@ class CollectionMembershipsTable extends VersionedTable {
 			$this->createVersionedIndexes("collection_member", true, true, true, array($this->memberMid, $this->collectionId)),
 			$this->createVersionedIndexes("internal_id", true, true, false, array($this->internalMemberId, $this->collectionId, $this->memberMid))
 		));	
+
+		$this->setMassUpdateIndexes(array(
+			new TableIndex("collection_id", array($this->collectionId, $this->memberMid))
+		));
 	}
 }
 
@@ -439,7 +456,11 @@ class MeaningRelationsTable extends VersionedTable {
 			$this->createVersionedIndexes("relation", true, true, false, 
 				array($this->relationId)
 			)
-		));	
+		));
+		
+		$this->setMassUpdateIndexes(array(
+			new TableIndex("relation", array($this->meaning1Mid, $this->relationTypeMid, $this->meaning2Mid, $this->relationId))
+		));
 	}
 }
 
@@ -463,6 +484,10 @@ class SyntransTable extends VersionedTable {
 			$this->createVersionedIndexes("syntrans", true, true, true, array($this->syntransSid)),
 			$this->createVersionedIndexes("expression", true, true, true, array($this->expressionId, $this->identicalMeaning, $this->definedMeaningId)),
 			$this->createVersionedIndexes("defined_meaning", true, true, true, array($this->definedMeaningId, $this->identicalMeaning, $this->expressionId))
+		));
+		
+		$this->setMassUpdateIndexes(array(
+			new TableIndex("syntrans", array($this->definedMeaningId, $this->expressionId, $this->syntransSid))
 		));
 	}
 }
@@ -632,14 +657,15 @@ class ObjectsTable extends VersionedTable {
 		$this->setKeyColumns(array($this->objectId));
 		
 		$this->setWebSiteIndexes(array(
-			new TableIndex("uuid", array($this->uuid, $this->objectId)),
-			new TableIndex("table", array($this->table, $this->objectId))
+			new TableIndex("uuid", array($this->uuid, $this->objectId))
 		));	
 	}
 }
 
 class WikiDataSet {
 	protected $allTables;
+	protected $tableLookupMap;
+	protected $dataSetPrefix;
 	
 	public $alternativeDefinitions;
 	public $bootstrappedDefinedMeanings; 
@@ -661,6 +687,8 @@ class WikiDataSet {
 	
 	public function __construct($dataSetPrefix) {
 		$this->allTables = array();
+		$this->tableLookupMap = array();
+		$this->dataSetPrefix = $dataSetPrefix;
 		
 		$this->alternativeDefinitions = $this->add(new AlternativeDefinitionsTable("{$dataSetPrefix}_alt_meaningtexts"));
 		$this->bootstrappedDefinedMeanings = $this->add(new BootstrappedDefinedMeaningsTable("{$dataSetPrefix}_bootstrapped_defined_meanings"));
@@ -684,11 +712,21 @@ class WikiDataSet {
 	
 	protected function add(Table $table) {
 		$this->allTables[] = $table;
+		$this->tableLookupMap[$table->getIdentifier()] = $table;
 		return $table;
 	}
 	
 	public function getAllTables() {
 		return $this->allTables;
+	}
+	
+	public function getTableWithIdentifier($identifier) {
+		$prefixedIdentifier = $this->dataSetPrefix . "_" . $identifier;
+		
+		if (isset($this->tableLookupMap[$prefixedIdentifier]))
+			return $this->tableLookupMap[$prefixedIdentifier];
+		else
+			return null;
 	}
 }
 
