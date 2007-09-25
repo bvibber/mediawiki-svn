@@ -78,7 +78,6 @@ class ObjectCopier {
 	 *  if successful. Else returns an empty array.
 	 */
 	protected function identical() {
-		var_dump($this->object);
 		$uuid=mysql_escape_string($this->object["UUID"]);
 		$dc2=$this->dc2;
 		return CopyTools::getRow($dc2, "objects", "WHERE `UUID`='$uuid'");
@@ -178,11 +177,8 @@ function write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2) {
 }
 
 function write_syntranses($syntranses, $src_dmid, $dst_dmid, $dc1, $dc2) {
-	var_dump($syntranses);
-	print "<br>\nExpressions:"; 
 	foreach ($syntranses as $syntrans) {
 		$expression=expression($syntrans["expression_id"],$dc1);
-		print $expression["spelling"].";";
 		write_expression($expression, $src_dmid, $dst_dmid, $dc1, $dc2);
 		# ^- which incidentally also dups the syntrans
 	}
@@ -200,7 +196,6 @@ function read_translated_content($dc1,$tcid) {
 function write_translated_content($dc1, $dc2, $tcid, $content) { 
 	$content["translated_content_id"]=$tcid;
 	$content["text_id"]=dup_text($dc1, $dc2, $content["text_id"]);
-	var_dump($content);
 	CopyTools::dc_insert_assoc($dc2, "translated_content", $content);
 }
 
@@ -260,7 +255,6 @@ class RelationsCopier {
 	}
 
 	function write_single($relation) {
-		var_dump($relation);
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
 		$new_dmid=$this->new_dmid;
@@ -276,7 +270,6 @@ class RelationsCopier {
 		# Typically checks same values each time. Accelerated by query_cache:
 		$rtcopier=new DefinedMeaningCopier($relation["relationtype_mid"],$dc1, $dc2);
 		$relation["relationtype_mid"]=$rtcopier->dup_stub();
-		var_dump($relation);
 		$copier=new ObjectCopier($relation["relation_id"], $dc1, $dc2);
 		$relation["relation_id"]=$copier->dup();
 		if ($copier->already_there()) {
@@ -288,7 +281,6 @@ class RelationsCopier {
 
 	function dup() {
 		$rows=$this->read();
-		echo "copying relations";
 		foreach ($rows as $row) {
 			$this->write_single($row);
 		}
@@ -336,9 +328,6 @@ class CollectionCopier {
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
 
-		print "<br>\nCopying collection</br>";
-		var_dump($definition);
-		print $definition["collection_id"];
 		$objcopier=new ObjectCopier($definition["collection_id"], $dc1, $dc2);
 		$definition["collection_id"]=$objcopier->dup();
 		if (!$objcopier->already_there()) {
@@ -437,7 +426,6 @@ class DefinedMeaningCopier {
 	
 	protected function read() {
 		$dmid=$this->dmid;
-		print "<".$dmid."-".$this->dc1.">";
 		$this->defined_meaning=CopyTools::getRow($this->dc1,"defined_meaning","where defined_meaning_id=$dmid");
 		return $this->defined_meaning; # for convenience
 	}
@@ -466,7 +454,6 @@ class DefinedMeaningCopier {
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
 
-		echo "<br><h2>copying dm $dmid</h2><br>\n";
 		$this->read();
 
 		# bit of exp here too (defnitely need to tidy)
@@ -474,21 +461,15 @@ class DefinedMeaningCopier {
 		$dm_target_table=mysql_real_escape_string("${dc2}_defined_meaning");
 		$copier=new ObjectCopier($this->defined_meaning["defined_meaning_id"], $dc1, $dc2);
 		$target_dmid=$copier->dup();
-		var_dump($target_dmid);
 		$this->save_meaning=$this->defined_meaning;
 		$this->save_meaning["defined_meaning_id"]=$target_dmid;
 
 		$this->already_there=$copier->already_there();
-		echo "<h3>Ok, here we go with expressions and translated content</h3>";
 		if (!($copier->already_there())) {
-		echo "<BR>Defining expression first...</br>\n";
 			$this->save_meaning["expression_id"]=write_expression($defining_expression, $dmid, $target_dmid, $dc1, $dc2);
 		}
 		$this->save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $this->defined_meaning["meaning_text_tcid"]);
-		echo "<br>OK stand by to insert... here's the data:<br>\n";
-		var_dump($this->save_meaning);
 		if (!($copier->already_there())) {
-			echo "<br>Inserting DC!<br>\n";
 			CopyTools::dc_insert_assoc($dc2, "defined_meaning", $this->save_meaning);
 
 			$title_name=$defining_expression["spelling"];
@@ -548,7 +529,6 @@ class CopyTools {
 		# page is not a Wikidata table, so it needs to be treated differently (yet again :-/)
 		$escTitle=mysql_real_escape_string($title);
 		$existing_page_data=CopyTools::doQuery("SELECT * FROM page WHERE page_namespace=24 AND page_title=\"$escTitle\"");
-		print "<br>PAGE COUNT: ".count($existing_page_data)."<br>\n";
 		if ($existing_page_data==false) {
 			$pagedata=array("page_namespace"=>24, "page_title"=>$title);
 			CopyTools::mysql_insert_assoc("page",$pagedata);
@@ -580,13 +560,11 @@ class CopyTools {
 			$virtual_user_id=0;
 		}
 		
-		print " VUID: $virtual_user_id";
 		startNewTransaction(
 			$virtual_user_id, 
 			"0.0.0.0", 
 			"copying from $dc1 to $dc2", 
 			$dc2	);
-		print " UTID: ".getUpdateTransactionId();
 	}
 
 	/** retrieve a single row from the database as an associative array
@@ -631,7 +609,6 @@ class CopyTools {
 	 *
 	 */
 	public static function doQuery($query) {
-		echo $query;
 		$result = mysql_query($query)or die ("error ".mysql_error());
 		$data= mysql_fetch_assoc($result);
 		return $data;
@@ -663,7 +640,6 @@ class CopyTools {
 		if (is_null($array) or $array==false) {
 			return false;
 		}
-		var_dump($array);
 		return array_key_exists($key, $array);
 	}
 
@@ -693,16 +669,16 @@ class CopyTools {
 			$sql_comma=$sql.",";
 		}
 		// Same with the values
-		echo $sql."; <br>\n";
 		$result = mysql_query($sql);
 
 		if ($result)
 		{
-			echo "The row was added sucessfully";
+			#echo "The row was added sucessfully";
 			return true;
 		}
 		else
 		{
+			# how did we do errors again?
 			echo ("The row was not added<br>The error was" . mysql_error());
 			return false;
 		}
