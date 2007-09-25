@@ -45,6 +45,17 @@ $wgDesysopMessages['cs'] = array(
 	'desysop'              => 'Odebrat práva',
 	'not_sysop'            => 'Tento uživatel není správce.',
 );
+$wgDesysopMessages['de'] = array(
+	'desysoptitle'         => 'Einem Benutzer die Administratorenrechte entziehen',
+	'desysoptext'          => 'Mit diesem Formular können Bürokraten Administratoren wieder zu normalen Benutzern machen',
+	'desysopname'          => 'Benutzername:',
+	'desysopok'            => '<b>„$1“ ist nun kein Administrator mehr</b>',
+	'set_user_rights'      => 'Benutzerrechte setzen',
+	'user_rights_set'      => '<b>Benutzerrechte für „$1“ aktualisiert</b>',
+	'set_rights_fail'      => '<b>Benutzerrechte für „$1“ konnten nicht gesetzt werden. Hast du den Namen korrekt eingegeben?</b>',
+	'desysop'              => 'Einem Benutzer die Administratorenrechte entziehen',
+	'not_sysop'            => 'Dieser Benutzer ist kein Administrator',
+);
 $wgDesysopMessages['el'] = array(
 	'set_user_rights'      => 'Καθορισμός δικαιωμάτων χρήστη',
 	'user_rights_set'      => '<b>Τα δικαιώματα χρήστη για τον/την "$1" έχουν ενημερωθεί.</b>',
