@@ -688,7 +688,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 						$comment->url = "http://www.ebi.ac.uk/intact/search/do/search?binary=" . 
 						$comment->children[0]->att_intactId . ",". 
 						$comment->children[0]->att_intactId;
-					}else {
+					}
+					else {
 						if ($comment->children[1]->label == "")
 							$textValue .= "with -";					
 						else
@@ -792,15 +793,11 @@ class SwissProtXMLParser extends BaseXMLParser {
 				$textValue .= " (" . $comment->status . ")";
 
 			// add the comment fields as text attributes to the entry	
-			addTextAttributeValue($definedMeaningId, $attributeMeaningId, $textValue);
+			$textAttributeValueId = addTextAttributeValue($definedMeaningId, $attributeMeaningId, $textValue);
 			
 			// add the comment URL as URL attribute to the entry and link URL attribute with text attribute
-			if ($comment->url != ""){
-				addLinkAttributeValue($definedMeaningId, $attributeMeaningId, $comment->url);
-				
-				// link comment with its URL
-				//addRelation($textId, $this->hasURLid, $urlId);
-			}					
+			if ($comment->url != "")
+				addLinkAttributeValue($textAttributeValueId, $this->onlineInformationId, $comment->url);
 		}
 		
 		// add EC number:
@@ -817,7 +814,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 //			}
 //		}
 		
-		if($this->goCollection) {
+		if ($this->goCollection) {
 			foreach ($entry->GOReference as $key => $goReference) {
 				$relationConcept = 0;
 				switch($goReference->type) {
@@ -862,9 +859,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 	}
 	
 	public function getOrCreateAttributeMeaningId($attribute) {
-		if (array_key_exists($attribute, $this->attributes)) {
+		if (array_key_exists($attribute, $this->attributes)) 
 			$definedMeaningId = $this->attributes[$attribute];
-		}
 		else {
 			$definedMeaningId = $this->addExpressionAsDefinedMeaning($attribute, $attribute, $attribute, $this->textAttibuteCollectionId);
 			addClassMembership($definedMeaningId, $this->textAttributeConceptId);

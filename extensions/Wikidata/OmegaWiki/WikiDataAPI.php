@@ -716,6 +716,8 @@ function addTextAttributeValue($objectId, $textAttributeId, $text) {
 	$dc=wdGetDataSetContext();
 	$textValueAttributeId = newObjectId("{$dc}_text_attribute_values");
 	createTextAttributeValue($textValueAttributeId, $objectId, $textAttributeId, $text);
+	
+	return $textValueAttributeId;
 }
 
 function createTextAttributeValue($textValueAttributeId, $objectId, $textAttributeId, $text) {
