@@ -425,6 +425,10 @@ $messages = array(
 'restorelink'             => '$1 ویرایش حذف‌شده',
 'feedlinks'               => 'خبرخوان:',
 'feed-invalid'            => 'اشکال در آبونمان خبرخوان',
+'site-rss-feed'           => 'خبرخوان RSS برای $1',
+'site-atom-feed'          => 'خبرخوان Atom برای $1',
+'page-rss-feed'           => 'خبرخوان RSS برای «$1»',
+'page-atom-feed'          => 'خبرخوان Atom برای «$1»',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'مقاله',
@@ -866,7 +870,7 @@ your old password.
 'diff-multi'                => '({{PLURAL:$1||$1&nbsp;}}ویرایش میانی نشان داده نشده‌است.)',
 
 # Search results
-'searchresults-title'   => 'نتایج جستجو "$1"',
+'searchresults'         => 'نتایج جستجو',
 'searchresulttext'      => 'برای اطلاعات بیشتر دربارهٔ جستجوی {{SITENAME}}، به [[{{ns:project}}:جستجو کردن|جستجوی {{SITENAME}}]] مراجعه کنید.',
 'searchsubtitle'        => '«[[:$1]]» را جُستید',
 'searchsubtitleinvalid' => 'برای پرس‌وجوی «$1»',

@@ -409,6 +409,10 @@ $messages = array(
 'restorelink'             => '$1 {{PLURAL:$1|gelöschte Version|gelöschte Versionen}}',
 'feedlinks'               => 'Feed:',
 'feed-invalid'            => 'Ungültiger Abonnement-Typ.',
+'site-rss-feed'           => 'RSS-Feed für $1',
+'site-atom-feed'          => 'Atom-Feed für $1',
+'page-rss-feed'           => 'RSS-Feed für „$1“',
+'page-atom-feed'          => 'Atom-Feed für „$1“',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Seite',
@@ -844,7 +848,7 @@ Administratoren können den entfernten Inhalt oder andere entfernte Bestandteile
 'diff-multi'                => "<span style='font-size: smaller'>(Der Versionsvergleich bezieht {{plural:$1|eine dazwischen liegende Version|$1 dazwischen liegende Versionen}} mit ein.)</span>",
 
 # Search results
-'searchresults-title'   => 'Suchergebnisse für „$1“',
+'searchresults'         => 'Suchergebnisse',
 'searchresulttext'      => 'Für mehr Informationen zur Suche siehe die [[{{MediaWiki:helppage}}|Hilfeseite]].',
 'searchsubtitle'        => 'Für deine Suchanfrage „[[:$1|$1]]“.',
 'searchsubtitleinvalid' => 'Für deine Suchanfrage „$1“.',
