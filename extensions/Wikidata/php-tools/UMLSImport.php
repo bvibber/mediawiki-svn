@@ -203,7 +203,7 @@ function importUMLSDefinitions($sab, $umlsCollectionId, $sourceCollectionId, $la
 	}
 	
 	mysql_free_result($queryResult);
-	$rogressBar->clear();
+	$progressBar->clear();
 }
 
 function importUMLSRelationTypes($relationCollectionId, $languageId) {
