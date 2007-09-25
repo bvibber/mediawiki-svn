@@ -38,6 +38,7 @@ $wgGroupPermissions['wikidata-copy']['wikidata-copy']=true;
 # The permission needed to do ...
 $wgCommunityEditPermission="editwikidata-tt"; # only used for copy for now
 $wgCommunity_dc="tt";
+$extra_debugging=true;
 
 # The site prefix allows us to have multiple sets of customized
 # messages (for different, typically site-specific UIs)

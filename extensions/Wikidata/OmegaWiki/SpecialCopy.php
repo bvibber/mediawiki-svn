@@ -137,32 +137,8 @@ function wfSpecialCopy() {
 			$wgOut->addWikiText(wfMsgSc("copy_help"));
 		}
 		
-		protected function insert() {
-			global 
-				$wgRequest, $wgOut;
-			
-			# $wgRequest->getText( 'page' );
-			$sets=wdGetDataSets();
-			#$requests=$wgRequest->getValues();
-			$wgOut->addWikiText("<h2>".wfMsgSc("will_insert")."</h2>");
-			$map=array();
-			foreach ($sets as $key => $set) {
-				$dc=$set->getPrefix();
-				$dm_id=$wgRequest->getText($dc);
-				$name=$set->fetchName();
-
-				$dm_id_ui=$dm_id; # Only for teh purdy
-				if ($dm_id_ui==null)
-					$dm_id_ui="unset";  
-				$wgOut->addWikiText("$name ->$dm_id_ui");
-				$map[$dc]=$dm_id;
-			#$dbr=&wfGetDB(DB_MASTER);
-			}
-			createConceptMapping($map);
-		}
-
 		/**read in and partially validate parameters,
-		 * then call docopy()
+		 * then call _doCopy()
 		 */
 		protected function copy_by_param() {
 			global 
@@ -218,32 +194,7 @@ function wfSpecialCopy() {
 			return true; # seems everything went ok.
 	
 		}
-
-		
-		protected function get() {
-			global 
-				$wgOut, $wgRequest;
-			$concept_id=$wgRequest->getText("concept");
-			$wgOut->addWikiText("<h2>".wfMsgSc("contents_of_mapping")."</h2>");
-			$map=readConceptMapping($concept_id);
-			#$sets=wdGetDataSets();
-
-			foreach ($map as $dc => $dm_id) {
-				$wgOut->addWikiText("$dc -> $dm_id");
-			}
-		}
-
-		protected function list_sets() {
-			global $wgOut;
-			$wgOut->addWikiText("<h2>".wfMsgSc("available contexts")."</h2>");
-			$sets=wdGetDataSets();
-			foreach ($sets as $key => $set) {
-				$name=$set->fetchName();
-				$wgOut->addWikiText("$key => $name");
-			}
-		}
 	}
-
 	SpecialPage::addPage( new SpecialCopy );
 	
 }
