@@ -12,16 +12,13 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( -1 );
 }
 
-function efVarDump($output, $value) {
-	if ($output == null) {
-		global $wgOut;
-		$output = $wgOut;
-	}
+function efVarDump($value) {
+	global $wgOut;
 	ob_start();
 	var_dump($value);
 	$tmp=ob_get_contents();
 	ob_end_clean();
-	$output->addHTML(/*'<pre>' . htmlspecialchars($tmp,ENT_QUOTES) . '</pre>'*/ $tmp);
+	$wgOut->addHTML(/*'<pre>' . htmlspecialchars($tmp,ENT_QUOTES) . '</pre>'*/ $tmp);
 }
 
 
