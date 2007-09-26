@@ -12,7 +12,7 @@ if( defined( 'MEDIAWIKI' ) ) {
 
 	$wgAutoloadClasses['SpecialDuplicator'] = dirname( __FILE__ ) . '/Duplicator.page.php';
 	$wgSpecialPages['Duplicator'] = 'SpecialDuplicator';
-	$wgHooks['LangugeGetSpecialPageAliases'][] = 'efDuplicatorSetupAliases';
+	$wgHooks['LanguageGetSpecialPageAliases'][] = 'efDuplicatorSetupAliases';
 
 	$wgExtensionCredits['specialpage'][] = array(
 		'name' => 'Duplicator',
