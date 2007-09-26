@@ -53,6 +53,8 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 
 function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection, $hugoCollection, $EC2GoMeaningIdMapping, $keyword2GoMeaningIdMapping, ProgressBar $progressBar) {
 	$languageId = 85;
+	bootstrapCollection("concept mapping", $languageId, "MAPP");
+
 	$collectionId = bootstrapCollection("Swiss-Prot", $languageId, "");
 	$classCollectionId = bootstrapCollection("Swiss-Prot classes", $languageId, "CLAS");
 	$relationTypeCollectionId = bootstrapCollection("Swiss-Prot relation types", $languageId, "RELT");
@@ -189,238 +191,98 @@ class SwissProtXMLParser extends BaseXMLParser {
 	protected $progressBar;
 	
 	protected function bootstrapDefinedMeaning($spelling, $definition = null) {
-		if (!isset( $definition ) ){
+		if (!isset($definition)) 
 			$definition = $spelling;
-		}
+		
 		$expression = $this->getOrCreateExpression($spelling);
 		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $definition);
 
 		return $definedMeaningId;
 	}
 	
-	protected function bootstrapConceptIds() {
-		if ($this->proteinConceptId == 0)
-			$this->proteinConceptId = $this->bootstrapDefinedMeaning("amino acid, peptide, or protein");
-
-		if ($this->proteinFragmentConceptId == 0)
-			$this->proteinFragmentConceptId = $this->bootstrapDefinedMeaning("protein fragment");
-		
-		if ($this->organismSpecificProteinConceptId == 0)
-			$this->organismSpecificProteinConceptId = $this->bootstrapDefinedMeaning("organism specific protein");
-
-		if ($this->organismSpecificGeneConceptId == 0)
-			$this->organismSpecificGeneConceptId = $this->bootstrapDefinedMeaning("organism specific gene");
-		
-		if ($this->geneConceptId == 0)
-			$this->geneConceptId = $this->bootstrapDefinedMeaning("gene or genome");
-		
-		if ($this->organismConceptId == 0)
-			$this->organismConceptId = $this->bootstrapDefinedMeaning("organism");
-
-		if ($this->functionalDomainConceptId == 0)
-			$this->functionalDomainConceptId = $this->bootstrapDefinedMeaning("functional domain");
-		
-		if ($this->proteinComponentConceptId == 0)
-			$this->proteinComponentConceptId = $this->bootstrapDefinedMeaning("protein component");
+	protected function bootstrapConcept($conceptId, $spelling, $classId = 0) {
+		if ($conceptId == 0)
+			$conceptId = $this->bootstrapDefinedMeaning($spelling);
 			
-		if ($this->biologicalProcessConceptId == 0)
-			$this->biologicalProcessConceptId = $this->bootstrapDefinedMeaning("biological process");		
+		if ($classId != 0)	
+			addClassMembership($conceptId, $classId);
+			
+		return $conceptId;
+	}
+	
+	protected function bootstrapConceptIds() {
+		$this->proteinConceptId = $this->bootstrapConcept($this->proteinConceptId, "protein");
+		$this->proteinFragmentConceptId = $this->bootstrapConcept($this->proteinFragmentConceptId, "protein fragment");
+		$this->organismSpecificProteinConceptId = $this->bootstrapConcept($this->organismSpecificProteinConceptId, "organism specific protein");
+		$this->organismSpecificGeneConceptId = $this->bootstrapConcept($this->organismSpecificGeneConceptId, "organism specific gene");
+		$this->geneConceptId = $this->bootstrapConcept($this->geneConceptId, "gene or genome");
+		$this->organismConceptId = $this->bootstrapConcept($this->organismConceptId, "organism");
+		$this->functionalDomainConceptId = $this->bootstrapConcept($this->functionalDomainConceptId, "functional domain");
+		$this->proteinComponentConceptId = $this->bootstrapConcept($this->proteinComponentConceptId, "protein component");
+		$this->biologicalProcessConceptId = $this->bootstrapConcept($this->biologicalProcessConceptId, "biological process");		
+		$this->molecularFunctionConceptId = $this->bootstrapConcept($this->molecularFunctionConceptId, "molecular function");		
+		$this->cellularComponentConceptId = $this->bootstrapConcept($this->cellularComponentConceptId, "cellular component");		
+//		$this->keywordConceptId = $this->bootstrapConcept($this->keywordConceptId, "keyword");
+		$this->enzymeCommissionNumberConceptId = $this->bootstrapConcept($this->enzymeCommissionNumberConceptId, "enzyme commission number");
 
-		if ($this->molecularFunctionConceptId == 0)
-			$this->molecularFunctionConceptId = $this->bootstrapDefinedMeaning("molecular function");		
-
-		if ($this->cellularComponentConceptId == 0)
-			$this->cellularComponentConceptId = $this->bootstrapDefinedMeaning("cellular component");		
-		
-//		if ($this->keywordConceptId == 0)
-//			$this->keywordConceptId = $this->bootstrapDefinedMeaning("keyword");
-				
-		if ($this->enzymeCommissionNumberConceptId == 0)
-			$this->enzymeCommissionNumberConceptId = $this->bootstrapDefinedMeaning("enzyme commission number");
-
-		if ($this->textAttributeConceptId == 0)
-			$this->textAttributeConceptId = $this->bootstrapDefinedMeaning("text attribute");
+		$this->textAttributeConceptId = $this->bootstrapConcept($this->textAttributeConceptId, "text attribute"); // TODO: Is this one necessary?
 		
 		// create root class for all defined meaning comment types
-		if ($this->textAttributeClassId == 0)
-			$this->textAttributeClassId = $this->bootstrapDefinedMeaning("text attribute class");
+		$this->textAttributeClassId = $this->bootstrapConcept($this->textAttributeClassId, "text attribute class"); // TODO: Is this one necessary?
 		
 		// create top class for semantic comment types and link it to the root class
-		if ($this->semanticGroupId == 0)
-			$this->semanticGroupId = $this->bootstrapDefinedMeaning("Semantic Group");
-		addClassMemberShip($this->semanticGroupId, $this->textAttributeClassId);
+		$this->semanticGroupId = $this->bootstrapConcept($this->semanticGroupId, "Semantic Group", $this->textAttributeClassId);
 		
 		// define a different comment type aspects and link them with the comment top class
-		if ($this->localizationAspectId == 0)
-			$this->localizationAspectId = $this->bootstrapDefinedMeaning("Localization aspects");
-		addClassMemberShip($this->localizationAspectId, $this->semanticGroupId);
+		$this->localizationAspectId = $this->bootstrapConcept($this->localizationAspectId, "Localization aspects", $this->semanticGroupId);
+		$this->functionalAspectId = $this->bootstrapConcept($this->functionalAspectId, "Functional aspects", $this->semanticGroupId);
+		$this->structuralAspectId = $this->bootstrapConcept($this->structuralAspectId, "Structural aspects", $this->semanticGroupId);
+		$this->pharmaceuticalAspectId = $this->bootstrapConcept($this->pharmaceuticalAspectId, "Pharmaceutical aspects", $this->semanticGroupId);
+		$this->externalInformationId = $this->bootstrapConcept($this->externalInformationId, "External information", $this->semanticGroupId);
+		$this->otherAspectId = $this->bootstrapConcept($this->otherAspectId, "Other aspects", $this->semanticGroupId);
+		$this->functionallyRelatedId = $this->bootstrapConcept($this->functionallyRelatedId, "Functionally related", $this->semanticGroupId);
+		$this->spatiallyRelatedId = $this->bootstrapConcept($this->spatiallyRelatedId, "Spatially related", $this->semanticGroupId);
+		$this->physicallyRelatedId = $this->bootstrapConcept($this->physicallyRelatedId, "Physically related", $this->semanticGroupId);
+		$this->temporallyRelatedId = $this->bootstrapConcept($this->temporallyRelatedId, "Temporally related", $this->semanticGroupId);
+		$this->terminologicallyRelatedId = $this->bootstrapConcept($this->terminologicallyRelatedId, "Terminologically related", $this->semanticGroupId);
+		$this->conceptuallyRelatedId = $this->bootstrapConcept($this->conceptuallyRelatedId, "Conceptually related", $this->semanticGroupId);
 		
-		if ($this->functionalAspectId == 0)
-			$this->functionalAspectId = $this->bootstrapDefinedMeaning("Functional aspects");
-		addClassMemberShip($this->functionalAspectId, $this->semanticGroupId);
-			
-		if ($this->structuralAspectId == 0)
-			$this->structuralAspectId = $this->bootstrapDefinedMeaning("Structural aspects");
-		addClassMemberShip($this->structuralAspectId, $this->semanticGroupId);
-			
-		if ($this->pharmaceuticalAspectId == 0)
-			$this->pharmaceuticalAspectId = $this->bootstrapDefinedMeaning("Pharmaceutical aspects");
-		addClassMemberShip($this->pharmaceuticalAspectId, $this->semanticGroupId);
-			
-		if ($this->externalInformationId == 0)
-			$this->externalInformationId = $this->bootstrapDefinedMeaning("External information");
-		addClassMemberShip($this->externalInformationId, $this->semanticGroupId);
-			
-		if ($this->otherAspectId == 0)
-			$this->otherAspectId = $this->bootstrapDefinedMeaning("Other aspects");
-		addClassMemberShip($this->otherAspectId, $this->semanticGroupId);
-			
-		if ($this->functionallyRelatedId == 0)
-			$this->functionallyRelatedId = $this->bootstrapDefinedMeaning("Functionally related");
-		addClassMemberShip($this->functionallyRelatedId, $this->semanticGroupId);
-			
-		if ($this->spatiallyRelatedId == 0)
-			$this->spatiallyRelatedId = $this->bootstrapDefinedMeaning("Spatially related");
-		addClassMemberShip($this->spatiallyRelatedId, $this->semanticGroupId);
-			
-		if ($this->physicallyRelatedId == 0)
-			$this->physicallyRelatedId = $this->bootstrapDefinedMeaning("Physically related");
-		addClassMemberShip($this->physicallyRelatedId, $this->semanticGroupId);
-			
-		if ($this->temporallyRelatedId == 0)
-			$this->temporallyRelatedId = $this->bootstrapDefinedMeaning("Temporally related");
-		addClassMemberShip($this->temporallyRelatedId, $this->semanticGroupId);
-			
-		if ($this->terminologicallyRelatedId == 0)
-			$this->terminologicallyRelatedId = $this->bootstrapDefinedMeaning("Terminologically related");
-		addClassMemberShip($this->terminologicallyRelatedId, $this->semanticGroupId);
-			
-		if ($this->conceptuallyRelatedId == 0)
-			$this->conceptuallyRelatedId = $this->bootstrapDefinedMeaning("Conceptually related");
-		addClassMemberShip($this->conceptuallyRelatedId, $this->semanticGroupId);
-		
-		// some relation and there supper class
-		if ($this->activityConceptId == 0)
-			$this->activityConceptId = $this->bootstrapDefinedMeaning("performs");
-		addClassMemberShip($this->activityConceptId, $this->functionallyRelatedId);
-			
-		if ($this->containsConceptId == 0)
-			$this->containsConceptId = $this->bootstrapDefinedMeaning("contains");
-		addClassMemberShip($this->containsConceptId, $this->functionallyRelatedId);
-		
-		if ($this->includesConceptId == 0)
-			$this->includesConceptId = $this->bootstrapDefinedMeaning("consists of");
-		addClassMemberShip($this->includesConceptId, $this->physicallyRelatedId);
+		// some relations and their super class
+		$this->activityConceptId = $this->bootstrapConcept($this->activityConceptId, "performs", $this->functionallyRelatedId);
+		$this->containsConceptId = $this->bootstrapConcept($this->containsConceptId, "contains", $this->functionallyRelatedId);
+		$this->includesConceptId = $this->bootstrapConcept($this->includesConceptId, "consists of", $this->physicallyRelatedId);
 		
 		// assign each comment type to one type aspect (later perhaps to multiple aspects)
-		if ($this->subcellularLocationId == 0){
-			$this->subcellularLocationId = $this->bootstrapDefinedMeaning("SUBCELLULAR LOCATION");
-			addClassMemberShip($this->subcellularLocationId, $this->localizationAspectId); 
-		}	
-		if ($this->tissueSpecificityId == 0){
-			$this->tissueSpecificityId = $this->bootstrapDefinedMeaning("TISSUE SPECIFICITY");
-			addClassMemberShip($this->tissueSpecificityId, $this->localizationAspectId); 
-		}			
-		if ($this->catalyticActivityId == 0){
-			$this->catalyticActivityId = $this->bootstrapDefinedMeaning("CATALYTIC ACTIVITY");
-			addClassMemberShip($this->catalyticActivityId, $this->functionalAspectId); 
-		}		
-		if ($this->cofactorId == 0){
-			$this->cofactorId = $this->bootstrapDefinedMeaning("COFACTOR");
-			addClassMemberShip($this->cofactorId, $this->functionalAspectId); 
-		}
-		if ($this->functionId == 0){
-			$this->functionId = $this->bootstrapDefinedMeaning("FUNCTION");
-			addClassMemberShip($this->functionId, $this->functionalAspectId); 
-		}
-		if ($this->diseaseId == 0){
-			$this->diseaseId = $this->bootstrapDefinedMeaning("DISEASE");
-			addClassMemberShip($this->diseaseId, $this->functionalAspectId); 
-		}
-		if ($this->enzymeRegulationId == 0){
-			$this->enzymeRegulationId = $this->bootstrapDefinedMeaning("ENZYME REGULATION");
-			addClassMemberShip($this->enzymeRegulationId, $this->functionalAspectId); 
-		}
-		if ($this->inductionId == 0){
-			$this->inductionId = $this->bootstrapDefinedMeaning("INDUCTION");
-			addClassMemberShip($this->inductionId, $this->functionalAspectId); 
-		}
-		if ($this->interactionId == 0){
-			$this->interactionId = $this->bootstrapDefinedMeaning("INTERACTION");
-			addClassMemberShip($this->interactionId, $this->functionalAspectId); 
-		}
-		if ($this->pathwayId == 0){
-			$this->pathwayId = $this->bootstrapDefinedMeaning("PATHWAY");
-			addClassMemberShip($this->pathwayId, $this->functionalAspectId); 
-		}
-		if ($this->rnaEditingId == 0){
-			$this->rnaEditingId = $this->bootstrapDefinedMeaning("RNA EDITING");
-			addClassMemberShip($this->rnaEditingId, $this->functionalAspectId); 
-		}
-		if ($this->alternativeProductsId == 0){
-			$this->alternativeProductsId = $this->bootstrapDefinedMeaning("ALTERNATIVE PRODUCTS");
-			addClassMemberShip($this->alternativeProductsId, $this->structuralAspectId); 
-		}		
-		if ($this->domainId == 0){
-			$this->domainId = $this->bootstrapDefinedMeaning("DOMAIN");
-			addClassMemberShip($this->domainId, $this->structuralAspectId); 
-		}
-		if ($this->ptmId == 0){
-			$this->ptmId = $this->bootstrapDefinedMeaning("PTM");
-			addClassMemberShip($this->ptmId, $this->structuralAspectId); 
-		}
-		if ($this->polymorphismId == 0){
-			$this->polymorphismId = $this->bootstrapDefinedMeaning("POLYMORPHISM");
-			addClassMemberShip($this->polymorphismId, $this->structuralAspectId); 
-		}
-		if ($this->similarityId == 0){
-			$this->similarityId = $this->bootstrapDefinedMeaning("SIMILARITY");
-			addClassMemberShip($this->similarityId, $this->structuralAspectId); 
-		}
-		if ($this->massSpectrometryId == 0){
-			$this->massSpectrometryId = $this->bootstrapDefinedMeaning("MASS SPECTROMETRY");
-			addClassMemberShip($this->massSpectrometryId, $this->structuralAspectId); 
-		}
-		if ($this->subunitId == 0){
-			$this->subunitId = $this->bootstrapDefinedMeaning("SUBUNIT");
-			addClassMemberShip($this->subunitId, $this->structuralAspectId); 
-		}
-		if ($this->allergenId == 0){
-			$this->allergenId = $this->bootstrapDefinedMeaning("ALLERGEN");
-			addClassMemberShip($this->allergenId, $this->pharmaceuticalAspectId); 
-		}
-		if ($this->pharmaceuticalId == 0){
-			$this->pharmaceuticalId = $this->bootstrapDefinedMeaning("PHARMACEUTICAL");
-			addClassMemberShip($this->pharmaceuticalId, $this->pharmaceuticalAspectId); 
-		}
-		if ($this->biotechnologyId == 0){
-			$this->biotechnologyId = $this->bootstrapDefinedMeaning("BIOTECHNOLOGY");
-			addClassMemberShip($this->biotechnologyId, $this->pharmaceuticalAspectId); 
-		}
-		if ($this->toxicDoseId == 0){
-			$this->toxicDoseId = $this->bootstrapDefinedMeaning("TOXIC DOSE");
-			addClassMemberShip($this->toxicDoseId, $this->pharmaceuticalAspectId); 
-		}
-		if ($this->biophysicochemicalPropertiesId == 0){
-			$this->biophysicochemicalPropertiesId = $this->bootstrapDefinedMeaning("BIOPHYSICOCHEMICAL PROPERTIES");
-			addClassMemberShip($this->biophysicochemicalPropertiesId, $this->pharmaceuticalAspectId); 
-		}
-		if ($this->onlineInformationId == 0){
-			$this->onlineInformationId = $this->bootstrapDefinedMeaning("ONLINE INFORMATION");
-			addClassMemberShip($this->onlineInformationId, $this->externalInformationId); 
-		}
-		if ($this->developmentalStageId == 0){
-			$this->developmentalStageId = $this->bootstrapDefinedMeaning("DEVELOPMENTAL STAGE");
-			addClassMemberShip($this->developmentalStageId, $this->otherAspectId); 
-		}		
-		if ($this->miscellaneousId == 0){
-			$this->miscellaneousId = $this->bootstrapDefinedMeaning("MISCELLANEOUS");
-			addClassMemberShip($this->miscellaneousId, $this->otherAspectId); 
-		}
-		if ($this->cautionId == 0){
-			$this->cautionId = $this->bootstrapDefinedMeaning("CAUTION");
-			addClassMemberShip($this->cautionId, $this->otherAspectId); 
-		}		
+		$this->subcellularLocationId = $this->bootstrapConcept($this->subcellularLocationId, "subcellular location", $this->localizationAspectId);
+		$this->tissueSpecificityId = $this->bootstrapConcept($this->tissueSpecificityId, "tissue specificity", $this->localizationAspectId);
+		$this->catalyticActivityId = $this->bootstrapConcept($this->catalyticActivityId, "catalytic activity", $this->functionalAspectId);
+		$this->cofactorId = $this->bootstrapConcept($this->cofactorId, "cofactor", $this->functionalAspectId);
+		$this->functionId = $this->bootstrapConcept($this->functionId, "function", $this->functionalAspectId);
+		$this->diseaseId = $this->bootstrapConcept($this->diseaseId, "disease", $this->functionalAspectId);
+		$this->enzymeRegulationId = $this->bootstrapConcept($this->enzymeRegulationId, "enzyme regulation", $this->functionalAspectId);
+		$this->inductionId = $this->bootstrapConcept($this->inductionId, "induction", $this->functionalAspectId);
+		$this->interactionId = $this->bootstrapConcept($this->interactionId, "interaction", $this->functionalAspectId);
+		$this->pathwayId = $this->bootstrapConcept($this->pathwayId, "pathway", $this->functionalAspectId);
+		$this->rnaEditingId = $this->bootstrapConcept($this->rnaEditingId, "RNA editing", $this->functionalAspectId);
+		
+		$this->alternativeProductsId = $this->bootstrapConcept($this->alternativeProductsId, "alternative products", $this->structuralAspectId);
+		$this->domainId = $this->bootstrapConcept($this->domainId, "domain", $this->structuralAspectId);
+		$this->ptmId = $this->bootstrapConcept($this->ptmId, "PTM", $this->structuralAspectId);
+		$this->polymorphismId = $this->bootstrapConcept($this->polymorphismId, "polymorphism", $this->structuralAspectId);
+		$this->similarityId = $this->bootstrapConcept($this->similarityId, "similarity", $this->structuralAspectId);
+		$this->massSpectrometryId = $this->bootstrapConcept($this->massSpectrometryId, "mass spectometry", $this->structuralAspectId);
+		$this->subunitId = $this->bootstrapConcept($this->subunitId, "subunit", $this->structuralAspectId);
+		
+		$this->allergenId = $this->bootstrapConcept($this->allergenId, "allergen", $this->pharmaceuticalAspectId);
+		$this->pharmaceuticalId = $this->bootstrapConcept($this->pharmaceuticalId, "pharmaceutical", $this->pharmaceuticalAspectId);
+		$this->biotechnologyId = $this->bootstrapConcept($this->biotechnologyId, "biotechnology", $this->pharmaceuticalAspectId);
+		$this->toxicDoseId = $this->bootstrapConcept($this->toxicDoseId, "toxic dose", $this->pharmaceuticalAspectId);
+		$this->biophysicochemicalPropertiesId = $this->bootstrapConcept($this->biophysicochemicalPropertiesId, "biophysicochemical properties", $this->pharmaceuticalAspectId);
+
+		$this->onlineInformationId = $this->bootstrapConcept($this->onlineInformationId, "online information", $this->externalInformationId);
+		$this->developmentalStageId = $this->bootstrapConcept($this->developmentalStageId, "developmental stage", $this->otherAspectId);
+		$this->miscellaneousId = $this->bootstrapConcept($this->miscellaneousId, "miscellaneous", $this->otherAspectId);
+		$this->cautionId = $this->bootstrapConcept($this->cautionId, "caution", $this->otherAspectId);
 	}
 	
 	public function setProgressBar(ProgressBar $progressBar) {
