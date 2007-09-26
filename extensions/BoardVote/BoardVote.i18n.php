@@ -541,11 +541,6 @@ $wgBoardVoteMessages['he'] = array(
 ייתכן שתוצג אזהרת אבטחה בגלל תעודת אישור בלתי חתומה.',
 );
 
-'hsb' => array(
-	'block_title_error_page_title' => 'Mjeno nastawka zablokowane',
-	'block_title_error' => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',
-),
-
 $wgBoardVoteMessages['hsb'] = array(
 	'boardvote'               => 'Wólby za kuratorij Wikimedia',
 	'boardvote_entry'         => '* [[{{ns:special}}:Boardvote/vote|Wothłosować]]
