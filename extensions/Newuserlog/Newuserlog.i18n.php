@@ -66,6 +66,10 @@ $wgNewuserlogMessages['fi'] = array(
 	'newuserlog-create-entry'  => 'Uusi käyttäjä',
 	'newuserlog-create2-entry' => 'loi käyttäjätunnuksen tunnukselle $1',
 );
+$wgNewuserlogMessages['fo'] = array(
+	'newuserlogpage'           => 'Brúkara logg',
+	'newuserlog-create-entry'  => 'Nýggjur brúkari',
+);
 $wgNewuserlogMessages['fr'] = array(
 	'newuserlogpage'           => 'Historique des créations de comptes',
 	'newuserlogpagetext'       => 'Voici le journal de création des nouveaux comptes utilisateurs',
