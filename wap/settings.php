@@ -58,6 +58,7 @@ else if ($_GET['mode'] == 'lang') {
     "bar" => "Boarisch",
     "cs" => "Česky",
     "de" => "Deutsch",
+    "el" => "Ελληνικά", 
     "en" => "English",
     "es" => "Español",
     "fr" => "Français",

@@ -20,7 +20,7 @@ $deck->add_image($wp_image);
 
 $deck->add_text($emptyLine);
 		
-$title = new HAW_text(HAWIKI_TITLE, HAW_TEXTFORMAT_BIG);
+$title = new HAW_text(hawtra(HAWIKI_TITLE), HAW_TEXTFORMAT_BIG);
 $deck->add_text($title);
 
 $form = new HAW_form("transcode.php"); 

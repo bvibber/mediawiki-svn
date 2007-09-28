@@ -28,6 +28,7 @@ $supportedLanguages = Array(
 "bar" => 1,
 "cs" => 1,
 "de" => 1,
+"el" => 1,
 "en" => 1,
 "es" => 1,
 "fr" => 0,

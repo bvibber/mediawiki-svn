@@ -66,7 +66,8 @@ $wikitext = remove_controls($wikitext);
 
 // replace html entities
 $wikitext = str_replace("&amp;", "&", $wikitext);
-$wikitext = html_entity_decode($wikitext, ENT_QUOTES, 'UTF-8');
+// throws warning PHP4: http://bugs.php.net/bug.php?id=25670
+$wikitext = @html_entity_decode($wikitext, ENT_QUOTES, 'UTF-8');
 
 // replace some control codes
 $wikitext = str_replace("\vec", "", $wikitext);
