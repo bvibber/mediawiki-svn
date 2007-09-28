@@ -615,7 +615,7 @@ function getDefinedMeaningCollectionMembershipEditor(ViewInformation $viewInform
 
 	$editor = new RecordSetTableEditor($o->collectionMembership, new SimplePermissionController(true), new ShowEditFieldChecker(true), new AllowAddController(true), true, false, new DefinedMeaningCollectionController());
 	$editor->addEditor(new CollectionReferenceEditor($o->collectionMeaning, new SimplePermissionController(false), true));
-	$editor->addEditor(new ShortTextEditor($o->sourceIdentifier, new SimplePermissionController(true), true));
+	$editor->addEditor(new ShortTextEditor($o->sourceIdentifier, new SimplePermissionController(false), true));
 	
 	if (count($wgGotoSourceTemplates) > 0)
 		$editor->addEditor(new GotoSourceEditor($o->gotoSource, new SimplePermissionController(true), true));
