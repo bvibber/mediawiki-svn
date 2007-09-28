@@ -60,7 +60,8 @@ class ApiMain extends ApiBase {
 		//Added by VF
 		'reguser' => 'ApiRegUser',
 		'upload' => 'ApiUploadFile',
-		'edit' => 'ApiEditPage'
+		'edit' => 'ApiEditPage',
+		'talk'	=> 'ApiTalk'
 	);
 
 	/**
