@@ -77,6 +77,11 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'In {{ns:project}} sind keine Bearbeitungen vorhanden.',
 ),
 
+'ext' => array(
+'countedits-username' => 'Nombri d´usuáriu:',
+'countedits-resulttext' => '$1 á hechu $2 eicionis',
+),
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 'countedits' => 'Muokkausmäärälaskuri',

@@ -107,6 +107,14 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'entfernte [[$1]] von der Liste unerwünschter Bilder',
 ),
 
+'ext' => array(
+'badimages-add-btn' => 'Añiil',
+'badimages-name' => 'Nombri:',
+'badimages-reason' => 'Razón:',
+'badimages-remove' => '(esborral)',
+'badimages-remove-btn' => 'Esborral',
+),
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 'badimages' => 'Kiellettyjen kuvien luettelo',

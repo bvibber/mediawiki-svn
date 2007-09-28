@@ -24,6 +24,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount'  =>  'Dieser Benutzer hat $1 Bearbeitungen.',
 ),
 
+'ext' => array(
+	'contributionseditcount' => 'Esti usuáriu á hechu $1 eicionis.',
+),
+
 'fr' => array(
 	'contributionseditcount'  =>  'Cet utilisateur a $1 éditions.',
 ),

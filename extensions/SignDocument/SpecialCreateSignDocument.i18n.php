@@ -66,6 +66,10 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 		'createsigndoc-error-pagenoexist' => 'Zmylk: Strona [[$1]] njeeksistuje.',
 		'createsigndoc-success' => 'Podpisanje dokumentow bu wuspěšnje na [[$1]]aktiwizowane. Zo by je testował, wopytaj prošu [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} tutu stronu:].',
 	),
+	'la' => array(
+		'createsigndoc-pagename' => 'Pagina:',
+		'createsigndoc-error-pagenoexist' => 'Error: Pagina [[$1]] non existit.',
+	),
 	'nl' => array( 
 		'createsigndocument'         => 'Documentondertekening inschakelen',
 		'createsigndoc-head'         => 

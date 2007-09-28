@@ -52,6 +52,9 @@ $wgFilepathMessages['es'] = array(
 	'filepath_page'   => 'Archivo:',
 	'filepath_submit' => 'Ruta',
 );
+$wgFilepathMessages['ext'] = array(
+	'filepath_page'   => 'Archivu:',
+);
 $wgFilepathMessages['fi'] = array(
 	'filepath'         => 'Tiedoston osoite',
 	'filepath_page'    => 'Tiedosto',

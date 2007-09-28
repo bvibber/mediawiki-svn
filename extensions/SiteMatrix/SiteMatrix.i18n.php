@@ -119,6 +119,9 @@ $wgSiteMatrixMessages['ko'] = array(
 );
 $wgSiteMatrixMessages['la'] = array(
 	'sitematrix' => 'Wikimediae wiki omnia',
+	'sitematrix-language' => 'Lingua',
+	'sitematrix-project' => 'Inceptum, nexus ad inceptum, et nexus ad linguam',
+	'sitematrix-others' => 'Alii incepta Vicimediorum',
 );
 $wgSiteMatrixMessages['lo'] = array(
 	"sitematrix" => "ລາຍການ wiki ໃນ Wikimedia",

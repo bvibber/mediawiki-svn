@@ -336,6 +336,9 @@ $messages = array(
 		'ogg-download'         => 'فايلدى جٷكتەۋ',
 		'ogg-desc-link'        => 'بۇل فايل تۋرالى',
 	),
+	'la' => array(
+	'ogg-more' => 'Plus...',
+	),
 	'nds' => array(
 	'ogg-short-audio' => 'Ogg-$1-Toondatei, $2',
 	'ogg-short-video' => 'Ogg-$1-Videodatei, $2',

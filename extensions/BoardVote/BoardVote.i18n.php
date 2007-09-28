@@ -323,6 +323,12 @@ Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aqu�
 
 Un aviso de seguridad sobre un certificado no cifrado podría aparacer.',
 );
+$wgBoardVoteMessages['ext'] = array(
+	'boardvote_user'          => 'Usuáriu',
+	'boardvote_edits'         => 'Eicionis',
+	'boardvote_days'          => 'Dias',
+	'boardvote_welcome'       => 'Bienviniu \'\'\'$1\'\'\'!',
+);
 $wgBoardVoteMessages['fi'] = array(
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Äänestä]]
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]

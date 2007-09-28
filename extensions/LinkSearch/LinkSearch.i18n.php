@@ -37,6 +37,9 @@ $wgLinkSearchMessages['de'] = array(
 	'linksearch-line'  => '$1 ist verlinkt von $2',
 	'linksearch-error' => 'Wildcards können nur am Anfang der URL verwendet werden.',
 );
+$wgLinkSearchMessages['ext'] = array(
+	'linksearch-ok'    => 'Landeal',
+);
 $wgLinkSearchMessages['fi'] = array(
 	'linksearch'       => 'Etsi ulkoisia linkkejä',
 	'linksearch-pat'   => 'Hakukenttä:',

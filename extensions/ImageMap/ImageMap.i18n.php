@@ -75,6 +75,10 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'oben rechts, unten rechts, unten links, oben links, keine',
 ),
 
+'ext' => array(
+'imagemap_description'          => 'Al tentu esta imahin',
+),
+
 /* French */
 'fr' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt; : vous devez spécifier une image dans la première ligne',

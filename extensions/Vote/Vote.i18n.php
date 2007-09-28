@@ -77,6 +77,10 @@ riddler|Riddler",
 'vote-login-link' => 'en em enrollañ',
 ),
 
+'ext' => array(
+'vote-results-count' => 'Cuenta',
+),
+
 /* French (Ashar Voultoiz) */
 'fr' => array(
 'vote' => 'Vote',

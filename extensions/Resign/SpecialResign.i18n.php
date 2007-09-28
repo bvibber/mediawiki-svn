@@ -105,6 +105,12 @@ Ingat: '''Anda tidak dapat memperoleh kembali hak Anda melalui ini!''' Anda haru
 'resign-logentry'  => 'melepaskan hak $2 dari dirinya sendiri',
 ),
 
+'la' => array(
+'resign-reason' => 'Causa:',
+'resign-success' => '\'\'\'Permissiones remotae erant.\'\'\'',
+'resign-logentry' => 'removit suae permissiones $2',
+),
+
 'nl' => array(
 'resign' => 'Opzeggen',
 'resign-text' => 'Op deze pagina kunt u uw \'\'\'gebruikersrechten intrekken\'\'\' (bijvoorbeeld uw rol als beheerder). Markeer de rechten die u wilt verwijderen.

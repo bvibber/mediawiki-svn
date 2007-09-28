@@ -98,6 +98,12 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'Die Seite $1 ist nicht vorhanden.',
 ),
 
+'ext' => array(
+'contributors-toolbox' => 'Prencipalis colabutaoris',
+'contributors-target' => 'Entítulu:',
+'contributors-submit' => 'Muestral',
+),
+
 /* French */
 'fr' => array(
 'contributors' => 'Contributeurs',

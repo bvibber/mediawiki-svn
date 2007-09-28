@@ -38,6 +38,10 @@ $wgAjaxShowEditorsMessages['el'] = array(
 	'ajax-se-pending' => 'εκκρεμή ανανέωση ... (κάντε κλικ σε αυτό το κουτί ή ξεκινήστε την επεξεργασία)',
 	'ajax-se-idling'  => '($1s πριν)',
 );
+$wgAjaxShowEditorsMessages['ext'] = array(
+	'ajax-se-title' => 'Uguañoti eitandu:',
+	'ajax-se-idling' => '(hazi $1s)',
+);
 $wgAjaxShowEditorsMessages['bcl'] = array(
 	'ajax-se-title' => 'Presenteng pighihira:',
 	'ajax-se-idling' => '($1s na an nakaagi)',

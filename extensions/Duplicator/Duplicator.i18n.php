@@ -170,6 +170,10 @@ copies of all histories. This is useful for article forking, etc.',
 'duplicator-toomanyrevisions' => '[[$1]] havas tro multajn ($2) reviziojn kaj ne povas esti kopiata. La aktuala limo estas $3.',
 ),
 
+'ext' => array(
+'duplicator-options' => 'Ocionis',
+),
+
 /* Finnish (Niklas Laxström) */
 'fi' => array(
 'duplicator' => 'Monista sivu',
