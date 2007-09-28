@@ -126,6 +126,8 @@ class LqtView {
 	protected $request;
 	
 	protected $headerLevel = 2; 	/* h1, h2, h3, etc. */
+	protected $maxIndentationLevel = 4;
+	
 	protected $user_colors;
 	protected $user_color_index;
 	const number_of_user_colors = 6;
@@ -643,13 +645,19 @@ HTML
 	}
 
 	function indent() {
-		$this->output->addHTML( wfOpenElement( 'dl', array('class'=>'lqt_replies') ) );
-		$this->output->addHTML( wfOpenElement( 'dd') );
+		if( $this->headerLevel <= $this->maxIndentationLevel ) {
+			$this->output->addHTML('<dl class="lqt_replies"><dd>');
+		} else {
+			$this->output->addHTML('<div class="lqt_replies_without_indent">');
+		}
 		$this->headerLevel += 1;
 	}
 	function unindent() {
-		$this->output->addHTML( wfCloseElement( 'dd') );
-		$this->output->addHTML( wfCloseElement( 'dl') );
+		if( $this->headerLevel <= $this->maxIndentationLevel + 1 ) {
+			$this->output->addHTML('</dd></dl>');
+		} else {
+			$this->output->addHTML('</div>');
+		}
 		$this->headerLevel -= 1;
 	}
 
