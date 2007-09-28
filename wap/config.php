@@ -35,6 +35,7 @@ $supportedLanguages = Array(
 "hu" => 1,
 "ksh" => 1,
 "nds" => 1,
+"nl" => 1,
 "pt" => 1,
 "sr" => 1,
 "zxx" => 0);

@@ -65,6 +65,7 @@ else if ($_GET['mode'] == 'lang') {
     "hu" => "Magyar",
     "ksh" => "Ripoarisch",
     "nds" => "Plattdüütsch",
+    "nl" => "Nederlands",
     "pt" => "Português",
     "sr" => "Српски / Srpski",
   );
