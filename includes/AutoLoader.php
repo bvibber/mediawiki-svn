@@ -340,6 +340,7 @@ function __autoload($className) {
 		'ApiEditPage' => 'includes/api/ApiEditPage.php',
 		'ApiRegUser' => 'includes/api/ApiRegUser.php',
 		'ApiUploadFile' => 'includes/api/ApiUploadFile.php',
+		'ApiTalk' 		=>	'includes/api/ApiTalk.php',
 	);
 	
 	wfProfileIn( __METHOD__ );
