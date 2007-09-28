@@ -55,7 +55,8 @@ class LoginForm {
 	const NO_COOKIES_LOGIN = 29;   
 	const ERROR = 30;
 	const SUCCESFUL_LOGIN = 31;
-	
+	const USER_BLOCKED = 32;
+
 	var $mName, $mPassword, $mRetype, $mReturnTo, $mCookieCheck, $mPosted;
 	var $mAction, $mCreateaccount, $mCreateaccountMail, $mMailmypassword;
 	var $mLoginattempt, $mRemember, $mEmail, $mDomain, $mLanguage;
@@ -111,7 +112,6 @@ class LoginForm {
 	function execute() {
 		$resultDetails = null;
 		$value = null;
-		
 		if ( !is_null( $this->mCookieCheck ) ) {
 			$value = $this->onCookieRedirectCheck( $this->mCookieCheck, $resultDetails );
 			return $this->processRest($value, $resultDetails);
@@ -163,7 +163,6 @@ class LoginForm {
 		}
 	}
 
-
 	/**
 	 * @private
 	 */
@@ -208,8 +207,7 @@ class LoginForm {
 		} else {
 			# Confirm that the account was created
 			$results['user'] = $u;
-			
-			
+
 			wfRunHooks( 'AddNewAccount', array( $u ) );
 			return self::SUCCESS;
 		}
@@ -223,7 +221,7 @@ class LoginForm {
 		global $wgEnableSorbs, $wgProxyWhitelist;
 		global $wgMemc, $wgAccountCreationThrottle;
 		global $wgAuth, $wgMinimalPasswordLength;
-		
+
 		// If the user passes an invalid domain, something is fishy
 		if( !$wgAuth->validDomain( $this->mDomain ) ) {
 			return self::WRONG_PASS;
@@ -245,9 +243,11 @@ class LoginForm {
 			return self::READ_ONLY;
 		}
 
-		# Check anonymous user ($wgUser) limitations :
-		if (!$wgUser->isAllowedToCreateAccount()) {
+		# Check permissions
+		if ( !$wgUser->isAllowed( 'createaccount' ) ) {
 			return self::NOT_ALLOWED;
+		} elseif ( $wgUser->isBlockedFromCreateAccount() ) {
+			return self::USER_BLOCKED;
 		}
 
 		$ip = wfGetIP();
@@ -297,7 +297,6 @@ class LoginForm {
 				$wgMemc->set( $key, 1, 86400 );
 			}
 			if ( $value > $wgAccountCreationThrottle ) {
-				
 				return self::ILLEGAL;
 			}
 		}
@@ -447,7 +446,6 @@ class LoginForm {
 				$wgOut->addHtml( wfMsgWikiHtml( 'accountcreatedtext', $this->mName ) );
 				$wgOut->returnToMain( $self->getPrefixedText() );
 				break;
-
 			case self::COOKIE:
 				$this->successfulLogin( wfMsg( 'welcomecreation', $wgUser->getName() ), false );
 				break;
@@ -463,6 +461,9 @@ class LoginForm {
 			case self::NOT_ALLOWED:
 				$this->userNotPrivilegedMessage();
 				break; 
+			case self::USER_BLOCKED:
+				$this->userBlockedMessage();
+				break;
 			case self::SORBS:
 				$this->mainLoginForm( wfMsg( 'sorbs_create_account_reason' ) . ' (' . htmlspecialchars( $results['ip'] ) . ')' );
 				break;

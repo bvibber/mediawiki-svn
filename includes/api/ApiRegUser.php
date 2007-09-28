@@ -42,19 +42,34 @@ class ApiRegUser extends ApiBase {
 		parent :: __construct($query, $moduleName, 'ru');
 	}
 
+	/**
+	* Return the link to the captcha generated
+	*/
+	function captchaSupport($myCaptcha, &$result) {
+		$info = $myCaptcha->pickImage();
+		if( !$info ) {
+			return -1;
+		} else {
+			$index = $myCaptcha->storeCaptcha( $info );
+			$title = Title::makeTitle( NS_SPECIAL, 'Captcha/image' );
+			$result['captchaId']  = $index;
+			$result['captchaURL'] = $title->getLocalUrl( 'wpCaptchaId=' . urlencode( $index ) );
+		} 
+	}
+
 	public function process($value,$results = null) { 
 		switch ($value) {
 			case ApiRegUser::GET_CAPTCHA :
 										$myCaptcha = new FancyCaptcha();
 										$myCaptcha->storage->clearAll();
 										$result['result'] = 'CaptchaIdGenerated';
-										$myCaptcha->getXML($result);
+										$this->captchaSupport($myCaptcha, $result);
 										break;
 			case ApiRegUser::MISSING_CAPTCHA :
 										$myCaptcha = new FancyCaptcha();
 										$myCaptcha->storage->clearAll();
 										$result['result'] = 'MissingCaptcha';
-										$myCaptcha->getXML($result);
+										$this->captchaSupport($myCaptcha, $result);
 										break;
 			case LoginForm::SUCCESS :
 										$result['result'] = 'Success';
@@ -79,6 +94,9 @@ class ApiRegUser extends ApiBase {
 										break;
 			case LoginForm::NOT_ALLOWED :
 										$result['result'] = 'NotAllowed';
+										break;
+			case LoginForm::USER_BLOCKED :
+										$result['result'] = 'UserBlocked';
 										break;
 			case LoginForm::SORBS :
 										$result['result'] = 'Sorbs';
