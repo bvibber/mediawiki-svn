@@ -111,7 +111,7 @@ $messages = array(
 'category-empty'        => "''Kategori ieu, ayeuna teu ngabogaan artikel atawa gambar.''",
 
 'mainpagetext'      => "''Software'' Wiki geus diinstal.",
-'mainpagedocfooter' => "Mangga tingal ''[http://meta.wikimedia.org/wiki/MediaWiki_i18n documentation on customizing the interface]'' jeung [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Tungtunan Pamaké] pikeun pitulung maké jeung konfigurasi.",
+'mainpagedocfooter' => "Mangga tingal ''[http://meta.wikimedia.org/wiki/MediaWiki_localisation documentation on customizing the interface]'' jeung [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Tungtunan Pamaké] pikeun pitulung maké jeung konfigurasi.",
 
 'about'          => 'Ngeunaan',
 'article'        => 'Kaca eusi',
@@ -459,7 +459,7 @@ ID peungpeukan anjeun $5. Mangga sebatkeun éta ID dina pamundut-pamundut anjeun
 'whitelistacctitle'         => 'Anjeun teu diwenangkeun nyieun rekening',
 'whitelistacctext'          => 'Sangkan diwenangkeun nyieun rekening na wiki ieu, anjeun kudu asup [[Special:Userlogin|log]] sarta boga kawenangan nu cukup.',
 'confirmedittitle'          => 'Konfirmasi surélék diperlukeun pikeun ngédit.',
-'confirmedittext'           => 'Saméméh ngédit, kompirmasikeun heula alamat surélék anjeun. Mangga setél, lajeng sahkeun alamat surélék anjeun dina [[{{ns:special}}:Preferences|préferénsi pamaké]].',
+'confirmedittext'           => 'Saméméh ngédit, kompirmasikeun heula alamat surélék anjeun. Mangga setél, lajeng sahkeun alamat surélék anjeun dina [[Special:Preferences|préferénsi pamaké]].',
 'nosuchsectiontitle'        => 'Subbab éta teu aya',
 'nosuchsectiontext'         => 'Anjeun geus nyoba ngarobah bab $1 nu sabenerna euweuh, ku kituna robahan anjeun teu bisa disimpen.',
 'loginreqtitle'             => 'Kudu asup log',

@@ -409,6 +409,10 @@ $messages = array(
 'restorelink'             => '$1 {{PLURAL:$1|gelöschte Version|gelöschte Versionen}}',
 'feedlinks'               => 'Feed:',
 'feed-invalid'            => 'Ungültiger Abonnement-Typ.',
+'site-rss-feed'           => 'RSS-Feed für $1',
+'site-atom-feed'          => 'Atom-Feed für $1',
+'page-rss-feed'           => 'RSS-Feed für „$1“',
+'page-atom-feed'          => 'Atom-Feed für „$1“',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Seite',
@@ -832,6 +836,7 @@ Administratoren können den entfernten Inhalt oder andere entfernte Bestandteile
 'overlogpagetext' => 'Das ist das Logbuch der Löschungen und Sperren, die vor Administratoren versteckt sind.',
 
 # Diffs
+'history-title'             => 'Versionsgeschichte von „$1“',
 'difference'                => '(Unterschied zwischen Versionen)',
 'loadingrev'                => 'Lade Versionen zur Unterscheidung',
 'lineno'                    => 'Zeile $1:',

@@ -444,7 +444,7 @@ class LoginForm {
 				$wgOut->setArticleRelated( false );
 				$wgOut->setRobotPolicy( 'noindex,nofollow' );
 				$wgOut->addHtml( wfMsgWikiHtml( 'accountcreatedtext', $this->mName ) );
-				$wgOut->returnToMain( $self->getPrefixedText() );
+				$wgOut->returnToMain( false, $self );
 				break;
 			case self::COOKIE:
 				$this->successfulLogin( wfMsg( 'welcomecreation', $wgUser->getName() ), false );

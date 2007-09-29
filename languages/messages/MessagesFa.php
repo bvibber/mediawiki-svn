@@ -425,6 +425,10 @@ $messages = array(
 'restorelink'             => '$1 ویرایش حذف‌شده',
 'feedlinks'               => 'خبرخوان:',
 'feed-invalid'            => 'اشکال در آبونمان خبرخوان',
+'site-rss-feed'           => 'خبرخوان RSS برای $1',
+'site-atom-feed'          => 'خبرخوان Atom برای $1',
+'page-rss-feed'           => 'خبرخوان RSS برای «$1»',
+'page-atom-feed'          => 'خبرخوان Atom برای «$1»',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'مقاله',
@@ -778,7 +782,9 @@ your old password.
 
 # Account creation failure
 'cantcreateaccounttitle' => 'نمی‌توان حساب باز کرد.',
-'cantcreateaccounttext'  => 'امکان ایجاد حساب کاربری از این آی‌پی (<b>$1</b>) مسدود شده‌است. این احتمالاً به خاطر خرابکاری‌های پیاپی از آموزشگاه یا آی‌اس‌پی  شماست.',
+'cantcreateaccount-text' => "امكان ساختن حساب کاربری از این این نشانی آی‌پی ('''$1''') توسط [[User:$3|$3]] سلب شده است.
+
+دلیل ارائه شده چنین بوده است: $2",
 
 # History pages
 'revhistory'          => 'تاریخچهٔ تغییرات',
@@ -852,6 +858,7 @@ your old password.
 'overlogpagetext' => 'آن چه در زیر می‌آید فهرست آخرین موارد حذف و قطع دسترسی است که شامل اطلاعاتی است که مدیران قادر به مشاهدهٔ آن نیستند.',
 
 # Diffs
+'history-title'             => 'تاریخچه ویرایش‌های «$1»',
 'difference'                => '(تفاوت بین نسخه‌ها)',
 'loadingrev'                => 'در حال خواندن نسخه برای تفاوت گرفتن',
 'lineno'                    => 'سطر $1:',
@@ -1086,6 +1093,8 @@ $2 تغییرمسیرها فهرست شوند &nbsp; جستجو برای $3 $9',
 'destfilename'                => 'نام پروندهٔ مقصد',
 'watchthisupload'             => 'تعقیب این صفحه',
 'filewasdeleted'              => 'پرونده‌ای با همین نام پیشتر بارگذاری و پس از آن پاک شده‌است. بهتر است پیش از بارگذاری مجدد نگاهی به $1 بیندازید.',
+'filename-bad-prefix'         => "نام پرونده‌ای که بارگذاری می‌کنید با '''$1''' آغاز می‌شود که یک پیشوند مخصوص تصاویر ثبت شده توسط دوربین‌های دیجیتال است.
+لطفاً نامی بهتر برای پرونده برگزینید.",
 
 'upload-proto-error'      => 'قرارداد نادرست',
 'upload-proto-error-text' => 'بارگذاری از دوردست به نشانی‌هایی که با <code dir=ltr>http://</code> یا <code dir=ltr>ftp://</code> آغاز شوند نیاز دارد.',

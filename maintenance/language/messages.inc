@@ -262,6 +262,10 @@ $wgMessageStructure = array(
 		'restorelink',
 		'feedlinks',
 		'feed-invalid',
+		'site-rss-feed',
+		'site-atom-feed',
+		'page-rss-feed',
+		'page-atom-feed',
 		'feed-atom',
 		'feed-rss',
 		'sitenotice',
@@ -603,6 +607,7 @@ $wgMessageStructure = array(
 		'overlogpagetext',
 	),
 	'diffs' => array(
+		'history-title',
 		'difference',
 		'loadingrev',
 		'lineno',

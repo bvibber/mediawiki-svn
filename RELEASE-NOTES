@@ -22,6 +22,12 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
 === New features in 1.12 ===
 * Add a warning for non-descriptive filenames at Special:Upload
+* Add {{filepath:}} parser function to get full path to an uploaded file,
+  complementing {{fullurl:}} for pages.
+* (bug 11136) If using Postgres, search path is explicitly set if wgDBmwschema is 
+  not set to 'mediawiki', allowing multiple mediawiki instances per user.
+* (bug 11151) Add descriptive <title> to revision history page
+* (bug 5412) Add feed links for the site to all pages
 
 === Bug fixes in 1.12 ===
 
@@ -49,6 +55,21 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 4021) Fix for MySQL wildcard search
 * (bug 10699) Fix for MySQL phrase search
 * (bug 11321) Fix width of gallerybox when option "width=xxx" is used
+* (bug 7890) Special:BrokenRedirects links deleted redirects to a non-existent page
+* Fix initial statistics when installing: add correct values
+* (bug 11342) Fix several 'returnto' links in permissions/error pages which
+  linked to the main page instead of targetted page
+* Strike the link to the redirect rather than using an asterisk in Special:Listredirects
+* (bug 11355) Fix false positives in Safe Mode and other config detection
+  when boolean settings are disabled with 'Off' via php_admin_value/php_value
+* (bug 11292) Fixed unserialize errors with Postgres by creating special Blob object.
+* (bug 11363) Make all metadata fields bytea when using Postgres.
+* (bug 11331) Add buildConcat() and use CASE not IF for DB compatibility. Make oldimage 
+  cascade delete via image table for Postgres, change fa_storage_key TEXT.
+* (bug 11438) Live Preview chops returned text
+* (bug 8376) Special:Newpages accepts namespace in subpage form
+* Make input form of Special:Newpages nicer for RTL wikis
+* Fix namespace selection after submit of Special:Newpages
 
 === API changes in 1.12 ===
 
@@ -56,37 +77,69 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 
 * (bug 11275) Enable descending sort in categorymembers
 * (bug 11308) Allow the API to output the image metadata
+* (bug 11296) Temporary fix for escaping of ampersands inside links in pretty-printed
+  help document.
 
 === Languages updated in 1.12 ===
 
+* Amharic (am) (new)
 * Arabic (ar)
 * Mapudungun (arn) (new)
+* Asturian (ast)
+* Samogitian (bat-smg)
 * Bikol Central (bcl)
 * Belarusian Taraskievica orthography (be-tarask)
+* Bulgarian (bg)
+* Bislama (bi) (new)
 * Bengali (bn)
+* Bishnupriya Manipuri (bpy)
+* Catalan (ca)
+* Breton (br)
 * Czech (cs)
 * Cassubian (csb)
 * Welsh (cy)
 * Danish (da)
 * German (de)
-* Lower Sorbian (dsb)
+* Lower Sorbian (dsb) (new)
+* Greek (el)
+* Spanish (es)
 * Extremaduran (ext)
+* Finnish (fi)
 * Persian (fa)
 * Võro (fiu-vro)
 * Frisian (fy)
 * French (fr)
+* Cajun French (frc)
+* Franco-Provençal (frp)
+* Irish (ga)
+* Galician (gl)
+* Ancient Greek (grc) (new)
+* Hakka (hak)
 * Hebrew (he)
 * Upper Sorbian (hsb)
+* Indonesian (id)
 * Icelandic (is)
+* Italian (it)
 * Kazakh (kk)
 * Korean (ko)
+* Latin (la)
+* Limbugian (li)
+* Malay (ms)
+* Low Saxon (nds)
 * Dutch (nl)
+* Norwegian (no)
 * Russian (ru)
 * Sakha (sah)
+* Sicilian (scn)
+* Seri (sei) (new)
 * Slovak (sk)
 * Serbian (Cyrillic) (sr-ec)
-* Sudanese (su)
+* Sundanese (su)
 * Tamil (ta)
+* Tetun (tet) (new)
+* Walloon (wa)
+* Yiddish (yi)
+* Zhuang (za)
 * Zealandic (zea)
 
 == Compatibility ==

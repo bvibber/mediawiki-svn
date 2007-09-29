@@ -35,7 +35,7 @@ if (!defined('MEDIAWIKI')) {
  */
 abstract class ApiFormatBase extends ApiBase {
 
-	private $mIsHtml, $mFormat;
+	private $mIsHtml, $mFormat, $mUnescapeAmps;
 
 	/**
 	* Create a new instance of the formatter.
@@ -66,6 +66,18 @@ abstract class ApiFormatBase extends ApiBase {
 	 */
 	public function getNeedsRawData() {
 		return false;
+	}
+
+	/**
+	 * Specify whether or not ampersands should be escaped to '&amp;' when rendering. This
+	 * should only be set to true for the help message when rendered in the default (xmlfm)
+	 * format. This is a temporary special-case fix that should be removed once the help
+	 * has been reworked to use a fully html interface.
+	 *
+	 * @param boolean Whether or not ampersands should be escaped.
+	 */
+	public function setUnescapeAmps ( $b ) {
+		$this->mUnescapeAmps = $b;
 	}
 
 	/**
@@ -160,7 +172,7 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 	protected function formatHTML($text) {
 		// Escape everything first for full coverage
 		$text = htmlspecialchars($text);
-		
+
 		// encode all comments or tags as safe blue strings
 		$text = preg_replace('/\&lt;(!--.*?--|.*?)\&gt;/', '<span style="color:blue;">&lt;\1&gt;</span>', $text);
 		// identify URLs
@@ -172,6 +184,13 @@ See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or
 		$text = ereg_replace("\\*[^<>\n]+\\*", '<b>\\0</b>', $text);
 		// make strings inside $ italic
 		$text = ereg_replace("\\$[^<>\n]+\\$", '<b><i>\\0</i></b>', $text);
+		
+		/* Temporary fix for bad links in help messages. As a special case,
+		 * XML-escaped metachars are de-escaped one level in the help message
+		 * for legibility. Should be removed once we have completed a fully-html
+		 * version of the help message. */
+		if ( $this->mUnescapeAmps )
+			$text = preg_replace( '/&amp;(amp|quot|lt|gt);/', '&\1;', $text );
 
 		return $text;
 	}

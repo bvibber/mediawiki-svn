@@ -340,6 +340,7 @@ $magicWords = array(
 	'padright'               => array( 0,    'PADRIGHT'               ),
 	'special'                => array( 0,    'special',               ),
 	'defaultsort'            => array( 1,    'DEFAULTSORT:', 'DEFAULTSORTKEY:', 'DEFAULTCATEGORYSORT:' ),
+	'filepath'               => array( 0,    'FILEPATH:'              ),
 );
 
 /**
@@ -705,6 +706,10 @@ XHTML id names.
 'restorelink'             => '{{PLURAL:$1|one deleted edit|$1 deleted edits}}',
 'feedlinks'               => 'Feed:',
 'feed-invalid'            => 'Invalid subscription feed type.',
+'site-rss-feed'           => '$1 RSS Feed',
+'site-atom-feed'          => '$1 Atom Feed',
+'page-rss-feed'           => '"$1" RSS Feed',
+'page-atom-feed'          => '"$1" Atom Feed',
 'feed-atom'               => 'Atom', # only translate this message to other languages if you have to change it
 'feed-rss'                => 'RSS', # only translate this message to other languages if you have to change it
 'sitenotice'              => '-', # the equivalent to wgSiteNotice; don't translate or duplicate this message to other languages
@@ -1071,7 +1076,7 @@ You can go back and edit an existing page, or [[Special:Userlogin|log in or crea
 'nocreate-loggedin'	    => 'You do not have permission to create new pages on this wiki.',
 'permissionserrors'	    => "Permissions Errors",
 'permissionserrorstext'	    => "You do not have permission to do that, for the following {{PLURAL:$1|reason|reasons}}:",
-'recreate-deleted-warn'     => "'''Warning: You are recreating a page that was previously deleted.''',
+'recreate-deleted-warn'     => "'''Warning: You are recreating a page that was previously deleted.'''
 
 You should consider whether it is appropriate to continue editing this page.
 The deletion log for this page is provided here for convenience:",
@@ -1174,6 +1179,7 @@ undelete it again through this same interface, unless additional restrictions ar
 hidden from Sysops. See the [[Special:Ipblocklist|IP block list]] for the list of currently operational bans and blocks.',
 
 # Diffs
+'history-title'             => 'Revision history of "$1"',
 'difference'                => '(Difference between revisions)',
 'loadingrev'                => 'loading revision for diff',
 'lineno'                    => 'Line $1:',
