@@ -231,6 +231,25 @@ class LqtView {
 		$query = $operand ? "$query&lqt_operand={$operand->id()}" : $query;
 		return $title->getFullURL( $query ) . ($operand && $includeFragment ? "#lqt_thread_{$operand->id()}" : "");
 	}
+	
+	
+	/**
+     * Return a URL for the current page, including Title and query vars,
+	 * with the given replacements made.
+     * @param $repls array( 'name'=>new_value, ... )
+	*/
+	function queryReplace( $repls ) {
+		$vs = $this->request->getValues();
+		$rs = array();
+		foreach ($vs as $k => $v) {
+			if ( array_key_exists( $k, $repls ) ) {
+				$rs[$k] = $repls[$k];
+			} else {
+				$rs[$k] = $vs[$k];
+			}
+		}
+		return $this->title->getFullURL(self::queryStringFromArray($rs));
+	}
 
 	/*************************************************************
 	* Editing methods (here be dragons)                          *

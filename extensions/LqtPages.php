@@ -237,24 +237,6 @@ HTML
 		$result .= "</select>";
 		return $result;
 	}
-	
-	/**
-     * Return a URL for the current page, including Title and query vars,
-	 * with the given replacements made.
-     * @param $repls array( 'name'=>new_value, ... )
-	*/
-	function queryReplace( $repls ) {
-		$vs = $this->request->getValues();
-		$rs = array();
-		foreach ($vs as $k => $v) {
-			if ( array_key_exists( $k, $repls ) ) {
-				$rs[$k] = $repls[$k];
-			} else {
-				$rs[$k] = $vs[$k];
-			}
-		}
-		return $this->title->getFullURL(self::queryStringFromArray($rs));
-	}
 
 	function clip( $vals, $min, $max ) {
 		$res = array();
@@ -289,20 +271,20 @@ HTML
 				$this->clip( array($oatte, $oatts, $natts, $natte),
 					     0, count($months)-1 );
 
-			$older = '<a href="' . $this->queryReplace(array(
+			$older = '<a class="lqt_newer_older" href="' . $this->queryReplace(array(
 				     'lqt_archive_filter_by_date'=>'1',
 				     'lqt_archive_start' => $months[$os],
 				     'lqt_archive_end' => $months[$oe]))
 				. '">«older</a>';
-			$newer = '<a href="' . $this->queryReplace(array(
+			$newer = '<a class="lqt_newer_older" href="' . $this->queryReplace(array(
 				     'lqt_archive_filter_by_date'=>'1',
 				     'lqt_archive_start' => $months[$ns],
 				     'lqt_archive_end' => $months[$ne]))
 				. '">newer»</a>';
 		}
 		else {
-			$older = '<span class="lqt_disabled_link" title="This link is disabled because you are viewing threads from all dates.">«older</span>';
-			$newer = '<span class="lqt_disabled_link" title="This link is disabled because you are viewing threads from all dates.">newer»</span>';
+			$older = '<span class="lqt_newer_older_disabled" title="This link is disabled because you are viewing threads from all dates.">«older</span>';
+			$newer = '<span class="lqt_newer_older_disabled" title="This link is disabled because you are viewing threads from all dates.">newer»</span>';
 		}
 		
 		$this->output->addHTML(<<<HTML
@@ -565,14 +547,50 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 	}
 	
 	function showHistoryListing($t) {
-		$revisions = new ThreadHistoryIterator($t, 10, 0);
+		$revisions = new ThreadHistoryIterator($t, $this->perPage, $this->perPage * ($this->page - 1));
+
 		$this->output->addHTML('<table>');
 		foreach($revisions as $ht) {
 			$this->output->addHTML($this->rowForThread($ht));
 		}
 		$this->output->addHTML('</table>');
+
+		
+		if ( count($revisions) == 0 && $this->page == 1 ) {
+			$this->output->addHTML('<p>This thread doesn\'t have any history revisions. That\'s pretty weird.');
+		}
+		else if ( count($revisions) == 0 ) {
+			// we could redirect to the previous page... yow.
+			$this->output->addHTML('<p>You are beyond the number of pages of history that exist.');
+		}
+		
+		if( $this->page > 1 ) {
+			$this->output->addHTML( '<a class="lqt_newer_older" href="' . $this->queryReplace(array('lqt_hist_page'=>$this->page - 1)) . '">«newer</a>' );
+		} else {
+			$this->output->addHTML( '<span class="lqt_newer_older_disabled" title="This link is disabled because you are on the first page.">«newer</span>' );
+		}
+		
+		$is_last_page = false;
+		foreach($revisions as $r)
+			if( $r->changeType() == Threads::CHANGE_NEW_THREAD )
+				$is_last_page = true;
+		if( $is_last_page ) {
+			$this->output->addHTML( '<span class="lqt_newer_older_disabled" title="This link is disabled because you are on the last page.">older»</span>' );
+		} else {
+			$this->output->addHTML( '<a class="lqt_newer_older" href="' . $this->queryReplace(array('lqt_hist_page'=>$this->page + 1)) . '">older»</a>' );			
+		}
+	}
+
+	function __construct(&$output, &$article, &$title, &$user, &$request) {
+		parent::__construct($output, $article, $title, $user, $request);
+		$this->loadParametersFromRequest();
 	}
 	
+	function loadParametersFromRequest() {
+		$this->perPage = $this->request->getInt('lqt_hist_per_page', 10);
+		$this->page = $this->request->getInt('lqt_hist_page', 1);
+	}
+
 	function show() {
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');

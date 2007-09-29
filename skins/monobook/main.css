@@ -50,7 +50,11 @@ li {
 	background-color: #f0f0e3;
 }
 
-.lqt_disabled_link {
+.lqt_newer_older {
+	margin-right: 1em;
+}
+.lqt_newer_older_disabled {
+	margin-right: 1em;
 	color: #999;
 }
 
