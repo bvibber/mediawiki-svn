@@ -346,8 +346,8 @@ class UploadForm {
 	 *
 	 * @access private
 	 */
-	function internalProcessUpload( &$resultDetails="" ) {
-		global $wgUser, $wgOut;
+	function internalProcessUpload( &$resultDetails ) {
+		global $wgUser;
 
 		if( !wfRunHooks( 'UploadForm:BeforeProcessing', array( &$this ) ) )
 		{

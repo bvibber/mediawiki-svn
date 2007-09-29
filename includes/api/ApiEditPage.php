@@ -125,7 +125,8 @@ class ApiEditPage extends ApiBase {
 					$editForm->mTitle = $object_title;
 					$editForm->importFormData($params);
 
-					$value=$editForm->attemptSave();
+					$resultDetails = false;
+					$value=$editForm->internalAttemptSave( &$resultDetails );
 				}
     	}
 		}
