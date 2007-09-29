@@ -278,69 +278,64 @@ class UploadForm {
 	 	$details = null;
 	 	$value = null;
 	 	$value = $this->internalProcessUpload( $details );
+		
 	 	switch($value) {
 			case self::SUCCESS:
 				$wgOut->redirect( $this->mLocalFile->getTitle()->getFullURL() );
-			    break;
+			    return;
 
 			case self::BEFORE_PROCESSING:
 				return false;
-			    break;
 
 			case self::LARGE_FILE_SERVER:
 				$this->mainUploadForm( wfMsgHtml( 'largefileserver' ) );
-			    break;
+			    return;
 
 			case self::EMPTY_FILE:
 				$this->mainUploadForm( wfMsgHtml( 'emptyfile' ) );
-			    break;
+			    return;
 
 			case self::MIN_LENGHT_PARTNAME:
 				$this->mainUploadForm( wfMsgHtml( 'minlength1' ) );
-			    break;
+			    return;
 
 			case self::ILLEGAL_FILENAME:
 				$filtered = $details['filtered'];
 				$this->uploadError( wfMsgWikiHtml( 'illegalfilename', htmlspecialchars( $filtered ) ) );
-			    break;
+			    return;
 
 			case self::PROTECTED_PAGE:
-				$this->uploadError( wfMsgWikiHtml( 'protectedpage' ) );
-			    break;
+				return $this->uploadError( wfMsgWikiHtml( 'protectedpage' ) );
 
 			case self::OVERWRITE_EXISTING_FILE:
-				$overwrite = $details['overwrite'];
-				$overwrite = new WikiError( $wgOut->parse( $overwrite ) );
-
-				if( WikiError::isError( $overwrite ) ) {
-					$this->uploadError( $overwrite->toString() );
-				}
-			    break;
+				$errorText = $details['overwrite'];
+				$overwrite = new WikiError( $wgOut->parse( $errorText ) );
+				return $this->uploadError( $overwrite->toString() );
 
 			case self::FILETYPE_MISSING:
-				$this->uploadError( wfMsgExt( 'filetype-missing', array ( 'parseinline' ) ) );
-			    break;
+				return $this->uploadError( wfMsgExt( 'filetype-missing', array ( 'parseinline' ) ) );
 
 			case self::FILETYPE_BADTYPE:
 				$finalExt = $details['finalExt'];
-				$this->uploadError( wfMsgExt( 'filetype-badtype', array ( 'parseinline' ), htmlspecialchars( $finalExt ), implode ( ', ', $wgFileExtensions ) ) );
-			    break;
+				return $this->uploadError( wfMsgExt( 'filetype-badtype', array ( 'parseinline' ), htmlspecialchars( $finalExt ), implode ( ', ', $wgFileExtensions ) ) );
 
 			case self::VERIFICATION_ERROR:
 				$veri = $details['veri'];
-				$this->uploadError( $veri->toString() );
-			    break;
+				return $this->uploadError( $veri->toString() );
 
 			case self::UPLOAD_VERIFICATION_ERROR:
 				$error = $details['error'];
-				$this->uploadError( $error );
-			    break;
+				return $this->uploadError( $error );
 
 			case self::UPLOAD_WARNING:
 				$warning = $details['warning'];
-				$this->uploadWarning( $warning );
-			    break;
+				return $this->uploadWarning( $warning );
 	 	}
+		
+		/* TODO: Each case returns instead of breaking to maintain the highest level of compatibility during branch merging.
+		They should be reviewed and corrected separatelly.
+		*/
+		 new MWException( __METHOD__ . ": Unknown value `{$value}`" );
 	}
 
 	/**
@@ -358,7 +353,6 @@ class UploadForm {
 		{
 			wfDebug( "Hook 'UploadForm:BeforeProcessing' broke processing the file." );
 			return self::BEFORE_PROCESSING;
-
 		}
 
 		/* Check for PHP error if any, requires php 4.2 or newer */
@@ -400,7 +394,6 @@ class UploadForm {
 				$partname .= '.' . $ext[$i];
 		}
 
-
 		if( strlen( $partname ) < 1 ) {
 			return self::MIN_LENGHT_PARTNAME;
 		}
@@ -411,7 +404,6 @@ class UploadForm {
 		 */
 		$filtered = preg_replace ( "/[^".Title::legalChars()."]|:/", '-', $filtered );
 		$nt = Title::makeTitleSafe( NS_IMAGE, $filtered );
-
 		if( is_null( $nt ) ) {
 			$resultDetails = array( 'filtered' => $filtered );
 			return self::ILLEGAL_FILENAME;
@@ -431,8 +423,7 @@ class UploadForm {
 		 * In some cases we may forbid overwriting of existing files.
 		 */
 		$overwrite = $this->checkOverwrite( $this->mDestName );
-
-		if( !is_null( $overwrite ) && $overwrite != 1 ) {
+		if( $overwrite !== true ) {
 			$resultDetails = array( 'overwrite' => $overwrite );
 			return self::OVERWRITE_EXISTING_FILE;
 		}
@@ -440,10 +431,8 @@ class UploadForm {
 		/* Don't allow users to override the blacklist (check file extension) */
 		global $wgStrictFileExtensions;
 		global $wgFileExtensions, $wgFileBlacklist;
-
 		if ($finalExt == '') {
 			return self::FILETYPE_MISSING;
-
 		} elseif ( $this->checkFileExtensionList( $ext, $wgFileBlacklist ) ||
 				($wgStrictFileExtensions && !$this->checkFileExtension( $finalExt, $wgFileExtensions ) ) ) {
 			$resultDetails = array( 'finalExt' => $finalExt );
@@ -482,6 +471,7 @@ class UploadForm {
 		 */
 		if ( ! $this->mIgnoreWarning ) {
 			$warning = '';
+
 			global $wgCapitalLinks;
 			if( $wgCapitalLinks ) {
 				$filtered = ucfirst( $filtered );
@@ -512,7 +502,6 @@ class UploadForm {
 			if ( !$this->mDestWarningAck ) {
 				$warning .= self::getExistsWarning( $this->mLocalFile );
 			}
-
 			if( $warning != '' ) {
 				/**
 				 * Stash the file in a temporary location; the user can choose
