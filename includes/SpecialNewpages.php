@@ -145,16 +145,26 @@ class NewPagesPage extends QueryPage {
 			Xml::hidden( 'title', $self->getPrefixedDBkey() ) .
 			Xml::openElement( 'table' ) .
 			"<tr>
-				<td align=\"$align\">" . Xml::label( wfMsg( 'namespace' ), 'namespace' ) . "</td>
-				<td>" . Xml::namespaceSelector( intval( $this->namespace ), 'all' ) . "</td>
+				<td align=\"$align\">" .
+					Xml::label( wfMsg( 'namespace' ), 'namespace' ) .
+				"</td>
+				<td>" .
+					Xml::namespaceSelector( intval( $this->namespace ), 'all' ) .
+				"</td>
 			</tr>
 			<tr>
-				<td align=\"$align\">" . Xml::label( wfMsg( 'newpages-username' ), 'mw-np-username' ) . "</td>
-				<td>" . Xml::input( 'username', 30, $this->username, array( 'id' => 'mw-np-username' ) ) . "</td>
+				<td align=\"$align\">" .
+					Xml::label( wfMsg( 'newpages-username' ), 'mw-np-username' ) .
+				"</td>
+				<td>" .
+					Xml::input( 'username', 30, $this->username, array( 'id' => 'mw-np-username' ) ) .
+				"</td>
 			</tr>
 			<tr>
 				<td></td>
-				<td>" . Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "</td>
+				<td>" .
+					Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
+				"</td>
 			</tr>" .
 			Xml::closeElement( 'table' ) .
 			Xml::hidden( 'offset', $this->offset ) .
@@ -177,7 +187,7 @@ class NewPagesPage extends QueryPage {
 /**
  * constructor
  */
-function wfSpecialNewpages( $par, $specialPage ) {
+function wfSpecialNewpages($par, $specialPage) {
 	global $wgRequest, $wgContLang;
 
 	list( $limit, $offset ) = wfCheckLimits();
@@ -185,13 +195,32 @@ function wfSpecialNewpages( $par, $specialPage ) {
 	$username = '';
 
 	if ( $par ) {
-		$namespace = $wgContLang->getNsIndex( $par );
+		$bits = preg_split( '/\s*,\s*/', trim( $par ) );
+		foreach ( $bits as $bit ) {
+			if ( 'shownav' == $bit )
+				$shownavigation = true;
+			if ( is_numeric( $bit ) )
+				$limit = $bit;
+
+			$m = array();
+			if ( preg_match( '/^limit=(\d+)$/', $bit, $m ) )
+				$limit = intval($m[1]);
+			if ( preg_match( '/^offset=(\d+)$/', $bit, $m ) )
+				$offset = intval($m[1]);
+			if ( preg_match( '/^namespace=(.*)$/', $bit, $m ) ) {
+				$ns = $wgContLang->getNsIndex( $m[1] );
+				if( $ns !== false ) {
+					$namespace = $ns;
+				}
+			}
+		}
 	} else {
 		if( $ns = $wgRequest->getText( 'namespace', NS_MAIN ) )
 			$namespace = $ns;
+		if( $un = $wgRequest->getText( 'username' ) )
+			$username = $un;
 	}
-	if( $un = $wgRequest->getText( 'username' ) )
-		$username = $un;
+	
 	if ( ! isset( $shownavigation ) )
 		$shownavigation = ! $specialPage->including();
 

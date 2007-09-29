@@ -215,7 +215,7 @@ $messages = array(
 'search'            => 'Leit',
 'searchbutton'      => 'Leita',
 'go'                => 'Áfram',
-'searcharticle'     => 'Leita',
+'searcharticle'     => 'Áfram',
 'history'           => 'Breytingaskrá',
 'history_short'     => 'Breytingaskrá',
 'updatedmarker'     => 'uppfært frá síðustu heimsókn minni',
@@ -442,7 +442,7 @@ Vinsamlegast skráðu þig inn á ný þegar þú hefur móttekið það.',
 'emailconfirmlink'           => 'Staðfesta netfang þitt',
 'invalidemailaddress'        => 'Ekki er hægt að taka við netfangi þínu þar sem að villa er í því.
 Gjörðu svo vel að setja inn rétt netfang eða tæmdu reitinn.',
-'accountcreated'             => 'Notandanafn tilbúið',
+'accountcreated'             => 'Aðgangur búinn til',
 'accountcreatedtext'         => 'Notandaaðgangur fyrir $1 er tilbúinn.',
 'loginlanguagelabel'         => 'Tungumál: $1',
 
@@ -617,6 +617,7 @@ Prófaðu [[Special:Search|að leita á þessari wiki síðu]] að svipuðum sí
 'logdelete-selected'  => "{{PLURAL:$2|Valin aðgerð|Valdar aðgerðir}} fyrir '''$1:'''",
 
 # Diffs
+'history-title'             => 'Breytingaskrá fyrir "$1"',
 'difference'                => '(Munur milli útgáfa)',
 'lineno'                    => 'Lína $1:',
 'editcurrent'               => 'Breyta núverandi útgáfu þessarar síðu',
@@ -870,7 +871,7 @@ The [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] length is '''$7'''
 
 'disambiguations'      => 'Tenglar í aðgreiningarsíður',
 'disambiguationspage'  => '{{ns:template}}:Aðgreining',
-'disambiguations-text' => "Þessar síður innihalda hlekki á svokallaðar „'''aðgreiningarsíður'''“. Laga ætti hlekkina og láta þá vísa á rétta síðu.  <br /> Farið er með síðu sem aðgreiningarsíðu ef að hún inniheldur snið sem vísað er í frá [[MediaWiki:disambiguationspage/is]]",
+'disambiguations-text' => "Þessar síður innihalda tengla á svokallaðar „'''aðgreiningarsíður'''“. Laga ætti tenglanna og láta þá vísa á rétta síðu. <br/>Farið er með síðu sem aðgreiningarsíðu ef að hún inniheldur snið sem vísað er í frá [[MediaWiki:disambiguationspage/is]]",
 
 'doubleredirects' => 'Tvöfaldar tilvísanir',
 

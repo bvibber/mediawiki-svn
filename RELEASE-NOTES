@@ -21,13 +21,17 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 === Configuration changes in 1.12 ===
 
 === New features in 1.12 ===
-* Add a warning for non-descriptive filenames at Special:Upload
+* (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
 * Add {{filepath:}} parser function to get full path to an uploaded file,
   complementing {{fullurl:}} for pages.
 * (bug 11136) If using Postgres, search path is explicitly set if wgDBmwschema is 
   not set to 'mediawiki', allowing multiple mediawiki instances per user.
 * (bug 11151) Add descriptive <title> to revision history page
 * (bug 5412) Add feed links for the site to all pages
+* (bug 11353) Add ability to retrieve raw section content via action=raw
+* Show relevant deletion log lines when uploading a previously deleted file
+* On SkinTemplate based skins (like MonoBook), omit confusing "edit"/"view source"
+  tab entirely if the page doesn't exist and the user isn't allowed to create it
 
 === Bug fixes in 1.12 ===
 
@@ -67,9 +71,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11331) Add buildConcat() and use CASE not IF for DB compatibility. Make oldimage 
   cascade delete via image table for Postgres, change fa_storage_key TEXT.
 * (bug 11438) Live Preview chops returned text
-* (bug 8376) Special:Newpages accepts namespace in subpage form
-* Make input form of Special:Newpages nicer for RTL wikis
+* Show the right message on account creation when the user is blocked
+* (bug 11450) Fix creation of objectcache table on upgrade
 * Fix namespace selection after submit of Special:Newpages
+* Make input form of Special:Newpages nicer for RTL wikis
+* (bug 11462) Fix typo in LanguageGetSpecialPageAliases hook name
+* (bug 11474) Fix unintentional fall-through in math error handling
+* (bug 11478) Fix undefined method call in file deletion interface
 
 === API changes in 1.12 ===
 
@@ -79,6 +87,10 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 11308) Allow the API to output the image metadata
 * (bug 11296) Temporary fix for escaping of ampersands inside links in pretty-printed
   help document.
+* (bug 11405) Expand templates implementation in the API
+* (bug 11218) Add option to feedwatchlist to display multiple revisions for each page.
+* (bug 11404) Provide name of exception caught in error code field of internal api 
+  error messages.
 
 === Languages updated in 1.12 ===
 
@@ -101,36 +113,44 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Danish (da)
 * German (de)
 * Lower Sorbian (dsb) (new)
+* Ewe (ee) (new)
 * Greek (el)
 * Spanish (es)
 * Extremaduran (ext)
 * Finnish (fi)
 * Persian (fa)
 * Võro (fiu-vro)
+* Faroese (fo)
 * Frisian (fy)
 * French (fr)
 * Cajun French (frc)
 * Franco-Provençal (frp)
 * Irish (ga)
+* Gön-gnŷ (gan) (new)
 * Galician (gl)
 * Ancient Greek (grc) (new)
 * Hakka (hak)
 * Hebrew (he)
+* Croatian (hr)
 * Upper Sorbian (hsb)
 * Indonesian (id)
 * Icelandic (is)
 * Italian (it)
+* Japanese (ja)
 * Kazakh (kk)
 * Korean (ko)
 * Latin (la)
 * Limbugian (li)
 * Malay (ms)
+* Nahuatl (nah)
 * Low Saxon (nds)
 * Dutch (nl)
 * Norwegian (no)
+* Portugese (pt)
 * Russian (ru)
 * Sakha (sah)
 * Sicilian (scn)
+* Sassarese (sdc) (new)
 * Seri (sei) (new)
 * Slovak (sk)
 * Serbian (Cyrillic) (sr-ec)
@@ -139,8 +159,12 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Tetun (tet) (new)
 * Walloon (wa)
 * Yiddish (yi)
+* Cantonese (yue)
 * Zhuang (za)
 * Zealandic (zea)
+* Old Chinese/Late Time Chinese (zh-classical)
+* Chinese (Simplified) (zh-hans)
+* Chinese (Traditional) (zh-hant)
 
 == Compatibility ==
 
