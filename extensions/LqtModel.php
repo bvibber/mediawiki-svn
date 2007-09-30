@@ -840,7 +840,7 @@ class Threads {
 		$root_test = str_replace( 'thread.', 'children.', $where ); // TODO fragile?
 
 		$sql = <<< SQL
-SELECT children.*, child_page.*, ($root_test) as is_root FROM ($tables thread, thread children, page child_page) $joins
+SELECT DISTINCT children.*, child_page.*, ($root_test) as is_root FROM ($tables thread, thread children, page child_page) $joins
 WHERE $where
 AND children.thread_path LIKE CONCAT(thread.thread_path, "%")
 AND child_page.page_id = children.thread_root
