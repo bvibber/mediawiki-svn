@@ -18,6 +18,8 @@ $wgLinkSearchMessages['en'] = array(
 	'linksearch-error' => 'Wildcards may appear only at the start of the hostname.',
 );
 $wgLinkSearchMessages['ar'] = array(
+	'linksearch'       => 'بحث وصلات الويب',
+	'linksearch-pat'   => 'نمط البحث:',
 	'linksearch-ns'    => 'النطاق:',
 	'linksearch-ok'    => 'بحث',
 	'linksearch-line'  => '$1 موصولة من $2',

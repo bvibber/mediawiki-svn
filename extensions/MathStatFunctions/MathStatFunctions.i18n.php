@@ -13,6 +13,8 @@ $wgMathStatFunctionsMessages['en'] = array(
         'msfunc_div_zero' => "Division by zero",
 );
 $wgMathStatFunctionsMessages['ar'] = array(
+	'msfunc_nan' => 'القيمة الناتجة ليست رقما',
+	'msfunc_inf' => 'القيمة الناتجة هي المالانهاية',
 	'msfunc_div_zero' => 'القسمة على صفر',
 );
 $wgMathStatFunctionsMessages['fr'] = array(

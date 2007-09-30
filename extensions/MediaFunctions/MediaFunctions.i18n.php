@@ -49,6 +49,11 @@ function efMediaFunctionsMessages() {
 'mediafunctions-not-exist'     => '"$1" does not exist',
 ),
 
+'ar' => array(
+'mediafunctions-invalid-title' => '"$1" ليس عنوانا صحيحا',
+'mediafunctions-not-exist'     => '"$1" غير موجود',
+),
+
 'de' => array(
 'mediafunctions-invalid-title' => '„$1“ ist kein gültiger Name',
 'mediafunctions-not-exist'     => '„$1“ ist nicht vorhanden',
@@ -57,6 +62,11 @@ function efMediaFunctionsMessages() {
 'hsb' => array(
 'mediafunctions-invalid-title' => '"$1" płaćiwe mjeno njeje.',
 'mediafunctions-not-exist'     => '"1" njeeksistuje',
+),
+
+'nds' => array(
+'mediafunctions-invalid-title' => '„$1“ is keen validen Titel',
+'mediafunctions-not-exist'     => '„$1“ gifft dat nich',
 ),
 
 'nl' => array(

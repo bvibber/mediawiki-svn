@@ -26,6 +26,9 @@ function efProfileMonitorMessages() {
 
 'ar' => array(
 'profiling-ok' => 'موافق',
+'profiling-data-process' => 'عملية',
+'profiling-data-count' => 'عداد',
+'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
 ),
 
 'hsb' => array(

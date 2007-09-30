@@ -136,6 +136,16 @@ $wgDesysopMessages['la'] = array(
 	'desysopname'          => 'Nomen usoris:',
 	'not_sysop'            => 'Hic usor non est magistratus',
 );
+$wgDesysopMessages['nds'] = array(
+	'desysoptitle'         => 'Bruker as Admin aflohnen',
+	'desysoptext'          => 'Dit Formular warrt vun Bürokraten bruukt, Admins aftolohnen. Musst den Brukernaam in dat Feld ingeven un den Knopp drücken, dat de Adminrechten wegnahmen warrt.',
+	'desysopname'          => 'Naam vun’n Bruker:',
+	'desysopok'            => '<b>Bruker „$1“ as Admin aflohnt</b>',
+	'desysopsetrights'     => 'Brukerrechten setten',
+	'desysoprightsfail'    => '<b>Brukerrechten för „$1“ kunnen nich sett warrn. (Hest du den Naam korrekt ingeven?)</b>',
+	'desysop'              => 'Bruker as Admin aflohnen',
+	'desysopnot_sysop'     => 'Disse Bruker is keen Admin',
+);
 $wgDesysopMessages['nl'] = array(
 	'desysoptitle'         => 'Beheerdersrechten voor een gebruiker intrekken',
 	'desysoptext'          => 'Bureaucraten gebruiken dit formulier om beheerdersrechten voor een gebruiker in te trekken. Voer de gebruikersnaam in het veld in en klik op de knop om de beheerdersrechten in te trekken.',

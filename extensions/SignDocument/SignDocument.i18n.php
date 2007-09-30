@@ -6,6 +6,11 @@ $allMessages = array(
 		'signaturelogentry'     => 'signed the document $1',
 	),
 
+	'ar' => array(
+		'signaturelogpage' => 'سجل التوقيع',
+		'signaturelogentry' => 'وقع الوثيقة $1',
+	),
+
 	'de' => array(
 		'signaturelogpage'      => 'Unterschrifts-Logbuch',
 		'signaturelogpagetext'  => 'Dies ist das Unterschrifts-Logbuch für Dokumente, die über die Seite [[{{ns:special}}:SignDocument]] unterschrieben werden können.',

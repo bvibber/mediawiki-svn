@@ -336,9 +336,11 @@ $messages = array(
 		'ogg-download'         => 'فايلدى جٷكتەۋ',
 		'ogg-desc-link'        => 'بۇل فايل تۋرالى',
 	),
+
 	'la' => array(
 	'ogg-more' => 'Plus...',
 	),
+
 	'nds' => array(
 	'ogg-short-audio' => 'Ogg-$1-Toondatei, $2',
 	'ogg-short-video' => 'Ogg-$1-Videodatei, $2',
@@ -366,6 +368,7 @@ $messages = array(
 	'ogg-download' => 'Datei dalladen',
 	'ogg-desc-link' => 'Över disse Datei',
 	),
+
 	'nl' => array(
 	'ogg-short-audio' => 'Ogg $1 geluidsbestand, $2',
 	'ogg-short-video' => 'Ogg $1 videobestande, $2',
@@ -377,6 +380,7 @@ $messages = array(
 	'ogg-long-error' => '(Ongeldig ogg-bestand: $1)',
 	'ogg-play' => 'Afspelen',
 	'ogg-pause' => 'Pauze',
+	'ogg-stop' => 'Stop',#identical but defined
 	'ogg-play-video' => 'Video afspelen',
 	'ogg-play-sound' => 'Geluid afspelen',
 	'ogg-no-player' => 'Sorry, uw systeem heeft geen van de ondersteunde mediaspelers. Installeer alstublieft <a href="http://www.java.com/nl/download/manual.jsp">Java</a>.',

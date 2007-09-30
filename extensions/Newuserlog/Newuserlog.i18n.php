@@ -21,6 +21,11 @@ $wgNewuserlogMessages['af'] = array(
 	'newuserlog-create-entry'  => 'Nuwe gebruiker',
 	'newuserlog-create2-entry' => 'rekening geskep vir $1',
 );
+$wgNewuserlogMessages['am'] = array(
+	'newuserlogpage'           => 'የአባልነት መዝገብ (user log)',
+	'newuserlogpagetext'       => 'ይህ መዝገብ ወደ አባልነት የገቡትን ብዕር ስሞች ይዘርዝራል።',
+	'newuserlog-create-entry'  => 'አዲስ አባል',
+);
 $wgNewuserlogMessages['ar'] = array(
 	'newuserlogpage'           => 'سجل إنشاء الحسابات الجديدة',
 	'newuserlogpagetext'       => 'هذا سجل بعمليات إنشاء الحسابات الجديدة',

@@ -35,6 +35,7 @@ function efGiveRollbackMessages() {
 ),
 
 'ar' => array(
+'giverollback' => 'منح أو سحب صلاحيات الاسترجاع',
 'giverollback-username' => 'اسم المستخدم:',
 'giverollback-search' => 'اذهب',
 'giverollback-hasrb' => '[[User:$1|$1]] لديه صلاحيات استرجاع.',

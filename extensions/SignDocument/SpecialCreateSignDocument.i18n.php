@@ -36,10 +36,13 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 	),
 	'ar' => array(
 		'createsigndoc-pagename' => 'صفحة:',
+		'createsigndoc-allowedgroup' => 'المجموعة المسموحة:',
 		'createsigndoc-email' => 'عنوان البريد الإلكتروني:',
 		'createsigndoc-address' => 'عنوان المنزل:',
 		'createsigndoc-phone' => 'رقم الهاتف:',
 		'createsigndoc-bday' => 'تاريخ الميلاد:',
+		'createsigndoc-minage' => 'العمر الأدنى:',
+		'createsigndoc-introtext' => 'مقدمة:',
 		'createsigndoc-hidden' => 'مخفية',
 		'createsigndoc-optional' => 'اختياري',
 		'createsigndoc-create' => 'أنشيء',

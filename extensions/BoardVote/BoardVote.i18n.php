@@ -955,11 +955,13 @@ stemmen heeft u er $3 nodig.',
 	'boardvote_listintro'     => '<p>Hieronder staan alle stemmen die tot nu toe zijn
 uitgebracht. $1 voor de versleutelde gegevens.</p>',
 	'boardvote_dumplink'      => 'Klik hier',
+	'boardvote_submit'        => 'OK',#identical but defined
 	'boardvote_strike'        => 'Ongeldig',
 	'boardvote_unstrike'      => 'Geldig',
 	'boardvote_needadmin'     => 'Alleen leden van de Verkiezingscommissie kunnen deze handeling uitvoeren.',
 	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Wikimedia Bestuursverkiezingen</a>:<!--  Vote open until July 12 -->',
 	'boardvote_notstarted'    => 'Het stemmen is nog niet gestart',
+	'boardvote_closed'        => 'Stemming is nu gesloten, zie binnenkort [http://meta.wikimedia.org/wiki/Board_elections de verkiezingspagina voor de resultaten].',
 	'boardvote_edits_many'    => 'veel',
 	'group-boardvote'         => 'Board vote beheerders',
 	'group-boardvote-member'  => 'Board vote beheerder',

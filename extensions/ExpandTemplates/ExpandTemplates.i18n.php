@@ -225,6 +225,7 @@ Hiervoor worden de relevante functies van de MediaWiki-parser gebruikt.',
 	'expand_templates_title'           => 'Contexttitel, voor {{PAGENAME}}, enzovoort:',
 	'expand_templates_input'           => 'Inputtekst:',
 	'expand_templates_output'          => 'Resultaat',
+	'expand_templates_ok'              => 'OK',#identical but defined
 	'expand_templates_remove_comments' => 'Verwijder opmerkingen',
 	'expand_templates_preview'         => 'Voorvertoning',
 );

@@ -81,6 +81,11 @@ function efUsernameBlacklistMessages( $single = false ) {
 'blacklistedusernametext' => 'Ngì só sién-chet ke yung-fu-miàng he lâu [[MediaWiki:Usernameblacklist|Yung-fu-miàng het-miàng-tân lie̍t-péu]] fù-ha̍p. Chhiáng sién-chet nang-ngoi yit-ke miàng-chhṳ̂n.',
 ),
 
+'hu' => array(
+'blacklistedusername' => 'Feketelistás felhasználónév',
+'blacklistedusernametext' => 'Az általad választott felhasználónév megegyezik a egyik [[MediaWiki:Usernameblacklist|feketelistán lévővel]]. Válassz másikat.',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'blacklistedusername' => 'Daftar hitam nama pengguna',

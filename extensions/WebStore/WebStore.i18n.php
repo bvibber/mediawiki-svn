@@ -53,6 +53,11 @@ $messages = array(
 		'webstore_php_error' => 'PHP errors were encountered:',
 		'webstore_no_handler' => 'No handler for transforming this MIME type',
 	),
+	'ar' => array(
+	'webstore_path_invalid' => 'اسم الملف كان غير صحيح.',
+	'webstore_no_file' => 'لم يتم رفع أي ملف.',
+	'webstore_404' => 'لم يتم إيجاد الملف.',
+	),
 	'ext' => array(
 	'webstore_rename' => 'Marru rehucheandu el archivu "$1" a "$2".',
 	'webstore_404' => 'Archivu nu alcuentrau.',

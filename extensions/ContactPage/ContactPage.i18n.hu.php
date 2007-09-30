@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Internationalisation file for the PageBy extension
+ * Internationalisation file for the ContactPage extension
  *
  * @package MediaWiki
  * @subpackage Extensions
@@ -11,7 +11,5 @@
  */
 
 $messages = array(
-	'pageby-first' => 'الصفحة تم إنشاؤها بواسطة $1، $2',
-	'pageby-contributors' => 'مساهمون:',
-	'pageby-anon' => '<i>مجهول</i>',
+'contact' => 'Kapcsolatfelvétel',
 );

@@ -11,11 +11,13 @@ $wgLanguageManagerMessages['en'] = array(
 	'langman_title' => 'Language manager',
 	'languages'=>'Wikidata: Language manager',
 );
+$wgLanguageManagerMessages['ar'] = array(
+	'langman_title' => 'مدير اللغة',
+);
 $wgLanguageManagerMessages['bn'] = array(
 	'langman_title' => 'ভাষা ব্যবস্থাপক',
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',
 );
-
 $wgLanguageManagerMessages['de'] = array(
 	'langman_title' => 'Sprachmanager',
 );
@@ -59,7 +61,6 @@ $wgLanguageManagerMessages['zh-hant'] = array(
 	'langman_title' => '語言管理員',
 	'languages'=>'Wikidata: 語言管理員',
 );
-
 $wgLanguageManagerMessages['yue'] = $wgLanguageManagerMessages['zh-hant'];
 $wgLanguageManagerMessages['zh'] = $wgLanguageManagerMessages['zh-hans'];
 $wgLanguageManagerMessages['zh-cn'] = $wgLanguageManagerMessages['zh-hans'];
@@ -67,4 +68,3 @@ $wgLanguageManagerMessages['zh-hk'] = $wgLanguageManagerMessages['zh-hant'];
 $wgLanguageManagerMessages['zh-sg'] = $wgLanguageManagerMessages['zh-hans'];
 $wgLanguageManagerMessages['zh-tw'] = $wgLanguageManagerMessages['zh-hant'];
 $wgLanguageManagerMessages['zh-yue'] = $wgLanguageManagerMessages['yue'];
-

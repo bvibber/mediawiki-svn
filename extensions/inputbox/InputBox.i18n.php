@@ -186,7 +186,8 @@ function efInputBoxMessages() {
 ),
 
 'hu' => array(
-	'searchfulltext' => 'Teljes szöveg keresése',
+	'searchfulltext'          => 'Keresés a teljes szövegben',
+	'createarticle'           => 'Szócikk létrehozása',
 ),
 
 'id' => array(

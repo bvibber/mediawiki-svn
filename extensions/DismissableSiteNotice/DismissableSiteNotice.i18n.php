@@ -16,6 +16,10 @@ $wgDismissableSiteNoticeMessages['af'] = array(
 	'sitenotice_close' => 'versteek',
 );
 
+$wgDismissableSiteNoticeMessages['am'] = array(
+	'sitenotice_close' => '<-- ይህን አውጣ',
+);
+
 $wgDismissableSiteNoticeMessages['ar'] = array(
 	'sitenotice_close' => 'إغلاق',
 );
