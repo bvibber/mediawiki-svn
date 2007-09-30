@@ -977,6 +977,10 @@ HTML
 		}
 		
 		foreach($this->threads as $t) {
+			// It turns out that with lqtviews composed of threads from various talkpages,
+			// each thread is going to have a different article... this is pretty ugly.
+			$this->article = $t->article();
+			
 			if( $this->request->wasPosted() && $this->methodAppliesToThread('mark_as_read', $t) ) {
 				NewMessages::markThreadAsReadByUser($t, $this->user);
 				$this->showUndo($t);
