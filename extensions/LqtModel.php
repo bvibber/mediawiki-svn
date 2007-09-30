@@ -858,7 +858,7 @@ SQL;
 			if( $line->is_root )
 				// thread is one of those that was directly queried for.
 				$top_level_threads[] = $new_thread;
-			if( strstr( $line->thread_path, '.' ) !== false ) {
+			else if( strstr( $line->thread_path, '.' ) !== false ) { // see note below *
 				// thread has a parent. extract second-to-last path element.
 				preg_match( '/([^.]+)\.[^.]+$/', $line->thread_path, $path_matches );
 				$parent_id = $path_matches[1];
@@ -867,6 +867,15 @@ SQL;
 				self::$thread_children[$parent_id][] = $new_thread;
 			}
 		}
+		
+		/*
+			The two clauses of the above loop used to be orthogonal, instead of exclusive. The reason
+			they are exclusive is not that 'is_root' indicates a top-level thread -- 'is_root' indicates
+			a thread that directly matches the given criteria, as opposed to a thread that is merely included
+			because it is a child of a selected thread. They are exclusive because a thread can be both, and
+			otherwise you would get duplicate children (since sql will return two rows that differ only in the
+			'is_root' property).
+		*/
 
 		foreach( $threads as $thread ) {
 			if( array_key_exists( $thread->id(), self::$thread_children ) ) {
