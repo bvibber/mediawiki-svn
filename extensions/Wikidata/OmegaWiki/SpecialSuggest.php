@@ -123,7 +123,8 @@ function getSuggestions() {
 			$query == 'translated-text-attribute' or
 			$query == 'text-attribute' or
 			$query == 'link-attribute' or
-			$query == 'collection') 
+			$query == 'collection' or
+			$query == 'defined-meaning-attribute') 
 			$searchCondition = " WHERE $rowText LIKE " . $dbr->addQuotes("$search%");
 		else	
 			$searchCondition = " AND $rowText LIKE " . $dbr->addQuotes("$search%");
