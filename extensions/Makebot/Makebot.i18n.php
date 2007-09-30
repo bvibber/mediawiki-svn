@@ -103,7 +103,16 @@ function efMakeBotMessages() {
 
 /* Old Church Slavonic (language file) */
 'cu' => array(
-'makebot-search' => 'Прѣиди',
+'makebot'                 => 'Аѵтоматьства даниѥ и отѧтиѥ',
+'makebot-username'        => 'Польѕевател имѧ:',
+'makebot-search'          => 'Прѣиди',
+'makebot-isbot'           => '[[Польѕевател҄ь:$1|$1]] ѥстъ аѵтоматъ.',
+'makebot-notbot'          => '[[Польѕевател҄ь:$1|$1]] нѣстъ аѵтоматъ.',
+'makebot-privileged'      => '[[Польѕевател҄ь:$1|$1]] [[Special:Listadmins|съмотрител҄ь или чинодател҄ь]] ѥстъ, и нѣстъ възможьно ѥго аѵтомата сътворити.',
+'makebot-change'          => 'Аѵтоматьства измѣнѥниѥ:',
+'makebot-grant'           => 'Даждь',
+'makebot-revoke'          => 'Отьми',
+'makebot-logentrygrant'   => 'сътвори [[$1]] аѵтоматъ',
 ),
 
 /* German (Raymond) */
@@ -165,6 +174,12 @@ function efMakeBotMessages() {
 'makebot-logpagetext'     => 'Este es un registro de los cambios del flag de [[Help:Bot|bot]].',
 'makebot-logentrygrant'   => 'dio flag de bot a [[$1]]',
 'makebot-logentryrevoke'  => 'quitó el flag de bot a [[$1]]',
+),
+
+'ext' => array(
+'makebot-username'        => 'Nombri el usuáriu:',
+'makebot-search'          => 'Dil',
+'makebot-change'          => 'Chambal estau:',
 ),
 
 /* Finnish (Niklas Laxström) */

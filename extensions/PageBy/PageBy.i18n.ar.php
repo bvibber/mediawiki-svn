@@ -12,6 +12,7 @@
 
 $messages = array(
 	'pageby-first' => 'الصفحة تم إنشاؤها بواسطة $1، $2',
+	'pageby-last' => 'تم <a href="$3">تعديلها</a> آخر مرة بواسطة $1، $2',
 	'pageby-contributors' => 'مساهمون:',
 	'pageby-anon' => '<i>مجهول</i>',
 );

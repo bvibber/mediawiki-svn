@@ -13,6 +13,7 @@ $wgLanguageManagerMessages['en'] = array(
 );
 $wgLanguageManagerMessages['ar'] = array(
 	'langman_title' => 'مدير اللغة',
+	'languages' => 'Wikidata: مدير اللغة',
 );
 $wgLanguageManagerMessages['bn'] = array(
 	'langman_title' => 'ভাষা ব্যবস্থাপক',

@@ -160,6 +160,10 @@ o emplee algún buscador externo para explorar la wiki.',
 	'searchincategory'      => 'en categoría',
 );
 
+$wgLuceneSearchMessages['ext'] = array(
+	'searchall'             => 'tó',
+);
+
 $wgLuceneSearchMessages['fi'] = array(
 	'searchnumber'          => '<strong>Tulokset $1–$2 (yhteensä $3)</strong>',
 	'searchprev'            => '← <span style=\'font-size: small\'>edelliset</span>',

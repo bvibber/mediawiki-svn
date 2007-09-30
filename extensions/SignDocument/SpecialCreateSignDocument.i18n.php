@@ -35,6 +35,7 @@ all fields exactly as they should be, ''before submitting this form''.",
 on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
 	),
 	'ar' => array(
+		'createsigndocument' => 'فعل توقيع الوثيقة',
 		'createsigndoc-pagename' => 'صفحة:',
 		'createsigndoc-allowedgroup' => 'المجموعة المسموحة:',
 		'createsigndoc-email' => 'عنوان البريد الإلكتروني:',
@@ -47,6 +48,10 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 		'createsigndoc-optional' => 'اختياري',
 		'createsigndoc-create' => 'أنشيء',
 		'createsigndoc-error-generic' => 'خطأ: $1',
+	),
+	'ext' => array(
+		'createsigndoc-pagename' => 'Páhina:',
+		'createsigndoc-allowedgroup' => 'Alabán premitiu:',
 	),
 	'hsb' => array(
 		'createsigndocument' => 'Podpisanje dokumentow zmóžnić',

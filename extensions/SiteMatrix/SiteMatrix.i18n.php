@@ -76,6 +76,9 @@ $wgSiteMatrixMessages['he'] = array(
 	'sitematrix-project'  => 'שם הפרויקט, קישורי אינטרוויקי ובין המיזמים',
 	'sitematrix-others'   => 'מיזמים אחרים של ויקימדיה',
 );
+$wgSiteMatrixMessages['hr'] = array(
+	'sitematrix' => 'Tablica Wikimedijinih projekata',
+);
 $wgSiteMatrixMessages['hsb'] = array(
 	'sitematrix' => 'Lisćina wšěch wikijow we Wikimediji',
 	'sitematrix-language' => 'Rěč',
@@ -155,6 +158,9 @@ $wgSiteMatrixMessages['pt'] = array(
 );
 $wgSiteMatrixMessages['pt-br'] = array(
 	"sitematrix" => "Lista de wikis da Wikimedia",
+);
+$wgSiteMatrixMessages['ro'] = array(
+	'sitematrix' => 'Lista proiectelor Wikimedia',
 );
 $wgSiteMatrixMessages['ru'] = array(
 	"sitematrix" => "Проекты Викимедиа",

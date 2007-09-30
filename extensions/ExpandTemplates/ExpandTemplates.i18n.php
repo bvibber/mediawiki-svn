@@ -74,6 +74,10 @@ $wgExpandTemplatesMessages['es'] = array(
 	'expand_templates_input'           => 'Texto a expandir:',
 	'expand_templates_output'          => 'Resultado:',
 	'expand_templates_remove_comments' => 'Eliminar comentarios',
+	'expand_templates_preview'         => 'Previsualización',
+);
+$wgExpandTemplatesMessages['ext'] = array(
+	'expand_templates_preview'         => 'Previsoreal',
 );
 $wgExpandTemplatesMessages['fi'] = array(
 	'expandtemplates'                  => 'Mallineiden laajennus',
@@ -211,6 +215,9 @@ sinn kriss wat erus kütt.',
 	'expand_templates_output'          => 'Wat erus kütt es',
 	'expand_templates_ok'              => 'OK',
 	'expand_templates_remove_comments' => 'De ennere Kommentare fottlooße',
+);
+$wgExpandTemplatesMessages['la'] = array(
+	'expandtemplates'                  => 'Formulas resolvere',
 );
 $wgExpandTemplatesMessages['lo'] = array(
 	'expandtemplates'                  => 'ຂະຫຍາຍແມ່ແບບ',

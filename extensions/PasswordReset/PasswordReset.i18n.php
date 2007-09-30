@@ -18,9 +18,11 @@ $allMessages = array(
 	),
 
 	'ar' => array(
+		'passwordreset' => 'تمت إعادة ضبط كلمة السر',
 		'passwordreset-invalidusername' => 'اسم مستخدم غير صحيح',
 		'passwordreset-emptyusername' => 'اسم مستخدم فارغ',
 		'passwordreset-nopassmatch' => 'كلمات السر لا تتطابق',
+		'passwordreset-badtoken' => 'نص تعديل غير صحيح',
 		'passwordreset-username' => 'اسم مستخدم',
 		'passwordreset-newpass' => 'كلمة سر جديدة',
 		'passwordreset-confirmpass' => 'أكد كلمة السر',

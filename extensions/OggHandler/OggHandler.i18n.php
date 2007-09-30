@@ -145,6 +145,10 @@ $messages = array(
 		'ogg-desc-link'           => 'Über diese Datei',
 	),
 
+	'es' => array(
+	'ogg-more' => 'Opciones...',
+	),
+
 	'fi' => array(
 	'ogg-short-audio' => 'Ogg $1 -äänitiedosto, $2',
 	'ogg-short-video' => 'Ogg $1 -videotiedosto, $2',
@@ -387,6 +391,11 @@ $messages = array(
 	'ogg-no-xiphqt' => 'Het lijkt erop dat u de component XiphQT voor QuickTime niet heeft. QuickTime kan Ogg-bestanden niet afspelen zonder deze component. Download <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">XiphQT</a> alstublieft of kies een andere speler.',
 	'ogg-player-videoElement' => '<video>-element',
 	'ogg-player-oggPlugin' => 'Ogg-plugin',
+	'ogg-player-cortado' => 'Cortado (Java)',#identical but defined
+	'ogg-player-vlc-mozilla' => 'VLC',#identical but defined
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',#identical but defined
+	'ogg-player-quicktime-mozilla' => 'QuickTime',#identical but defined
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',#identical but defined
 	'ogg-player-thumbnail' => 'Alleen stilstaand beeld',
 	'ogg-player-soundthumb' => 'Geen mediaspeler',
 	'ogg-player-selected' => '(geselecteerd)',

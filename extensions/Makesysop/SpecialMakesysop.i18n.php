@@ -296,6 +296,13 @@ $wgMakesysopMessages['eu'] = array(
 	'already_sysop'		=> 'Erabiltzaile hau bada administratzailea',
 	'already_bureaucrat'	=> 'Erabiltzaile hau bada burokrata',
 );
+$wgMakesysopMessages['ext'] = array(
+	'makesysoptitle' => 'Hazel duendi a un usuáriu',
+	'makesysopname' => 'Nombri el usuáriu:',
+	'makesysop' => 'Hazel duendi a un usuáriu',
+	'already_sysop' => 'Esti usuáriu ya es un duendi',
+	'already_bureaucrat' => 'Esti usuáriu ya es un alministraol',
+);
 $wgMakesysopMessages['fi'] = array(
 	'makesysoptitle'       => 'Tee käyttäjästä ylläpitäjä',
 	'makesysoptext'        => 'Byrokraatit voivat tällä lomakkeella tehdä käyttäjistä ylläpitäjiä ja byrokraatteja. Kirjoita laatikkoon sen käyttäjän nimi, jolle haluat antaa oikeuksia.',
@@ -717,6 +724,9 @@ $wgMakesysopMessages['nl'] = array(
 	'already_sysop' => 'Deze gebruiker is al beheerder',
 	'already_bureaucrat' => 'Deze gebruiker is al bureaucraat',
 	'makesysop-nodatabase' => 'Onjuiste interwikigebruikersnaam: $1',
+	'group-steward' => 'Stewards',#identical but defined
+	'group-steward-member' => 'Steward',#identical but defined
+	'grouppage-steward' => '{{ns:project}}:Stewards',#identical but defined
 );
 $wgMakesysopMessages['nn'] = array(
 	'makesysoptitle'	=> 'Gjer brukar om til administrator',

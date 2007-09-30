@@ -25,9 +25,12 @@ function efProfileMonitorMessages() {
 ),
 
 'ar' => array(
+'profiling-wildcard' => 'استخدم كارتا خاصا',
 'profiling-ok' => 'موافق',
 'profiling-data-process' => 'عملية',
 'profiling-data-count' => 'عداد',
+'profiling-data-time' => 'الزمن (الكل)',
+'profiling-data-average' => 'الزمن (متوسط)',
 'profiling-no-data' => 'لم يتم إيجاد بيانات مطابقة.',
 ),
 

@@ -207,6 +207,12 @@ $wgNewuserlogMessages['pt'] = array(
 	'newuserlog-create2-entry' => 'criou conta para $1',
 );
 
+$wgNewuserlogMessages['ro'] = array(
+	'newuserlogpage'           => 'Jurnal utilizatori noi',
+	'newuserlog-create-entry'  => 'Utilizator nou',
+	'newuserlog-create2-entry' => 'a deschis cont pentru $1',
+);
+
 $wgNewuserlogMessages['ru'] = array(
 	'newuserlogpage'           => 'Журнал регистрации участников',
 	'newuserlogpagetext'       => 'Список недавно зарегистрировавшихся участников',

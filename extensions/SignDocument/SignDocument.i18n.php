@@ -8,6 +8,7 @@ $allMessages = array(
 
 	'ar' => array(
 		'signaturelogpage' => 'سجل التوقيع',
+		'signaturelogpagetext' => 'هذا سجل بكل التوقيعات التي أضيفت إلى الوثائق من خلال [[Special:SignDocument]].',
 		'signaturelogentry' => 'وقع الوثيقة $1',
 	),
 

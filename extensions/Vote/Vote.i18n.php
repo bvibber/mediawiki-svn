@@ -78,6 +78,9 @@ riddler|Riddler",
 ),
 
 'ext' => array(
+'vote' => 'Votal',
+'vote-submit' => 'Votal',
+'vote-registered' => 'El tu votu s´á ruhistrau.',
 'vote-results-count' => 'Cuenta',
 ),
 

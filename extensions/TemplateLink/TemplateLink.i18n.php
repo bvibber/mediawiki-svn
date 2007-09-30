@@ -15,6 +15,11 @@ $allMessages = array(
                 'templatelink_empty' => 'You have to supply a parameter.',
                 'templatelink_newtitle' => '$1 (transcluded)',
         ),
+	'ar' => array(
+		'templatelink' => 'وصلة قالب',
+		'templatelink_empty' => 'يجب عليك توفير محدد.',
+		'templatelink_newtitle' => '$1 (مضمنة)',
+	),
         'de' => array(
                 'templatelink' => 'Vorlagen-Link',
                 'templatelink_empty' => 'Ein Parameter muss angegeben werden.',

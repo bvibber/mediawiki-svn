@@ -64,6 +64,9 @@ $wgDesysopMessages['eo'] = array(
 	'desysop'              => 'Neadministrantigu uzanton',
 	'desysopnot_sysop'     => 'Ĉi tiu uzanto ne estas administranto',
 );
+$wgDesysopMessages['ext'] = array(
+	'desysopnot_sysop'     => 'Esti usuáriu nu es un duendi',
+);
 $wgDesysopMessages['fr'] = array(
 	'desysoptitle'         => 'Enlever les droits d’administrateur à cet utilisateur',
 	'desysoptext'          => "Ce formulaire est utilisé par les bureaucrates pour enlever ses droits à un administrateur. Entrez le nom d’un administrateur ci-dessous et pressez le bouton pour enlever les droits.",

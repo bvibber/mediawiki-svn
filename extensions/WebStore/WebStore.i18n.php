@@ -54,12 +54,23 @@ $messages = array(
 		'webstore_no_handler' => 'No handler for transforming this MIME type',
 	),
 	'ar' => array(
+	'inplace_scaler_not_enough_params' => 'لا محددات كافية.',
+	'inplace_scaler_invalid_image' => 'صورة غير صحيحة، لم يمكن تحديد الحجم.',
 	'webstore_path_invalid' => 'اسم الملف كان غير صحيح.',
 	'webstore_no_file' => 'لم يتم رفع أي ملف.',
+	'webstore_invalid_zone' => 'منطقة غير صحيحة "$1".',
 	'webstore_404' => 'لم يتم إيجاد الملف.',
+	'webstore_php_warning' => 'تحذير PHP: $1',
+	'webstore_metadata_not_found' => 'الملف غير موجود: $1',
+	'webstore_postfile_not_found' => 'الملف للإرسال غير موجود.',
+	'webstore_invalid_response' => 'رد غير صحيح من الخادم:
+
+$1',
+	'webstore_no_response' => 'لا رد من الخادم',
 	),
 	'ext' => array(
 	'webstore_rename' => 'Marru rehucheandu el archivu "$1" a "$2".',
+	'webstore_no_file' => 'Nu s´á empuntau dengún archivu.',
 	'webstore_404' => 'Archivu nu alcuentrau.',
 	),
 	'hsb' => array(

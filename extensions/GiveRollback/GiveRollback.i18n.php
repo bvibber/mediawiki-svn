@@ -75,6 +75,12 @@ function efGiveRollbackMessages() {
 'giverollback-logentryrevoke' => 'entzog das Zurücksetzen-Recht von [[$1]]',
 ),
 
+'ext' => array(
+'giverollback-username' => 'Nombri el usuáriu:',
+'giverollback-search' => 'Dil',
+'giverollback-change' => 'Chambal estau:',
+),
+
 /* French */
 'fr' => array(
 'giverollback' => 'Donner ou enlever les droits de révocation',

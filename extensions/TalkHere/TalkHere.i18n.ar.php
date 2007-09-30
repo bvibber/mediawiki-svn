@@ -15,4 +15,6 @@ $messages = array(
 	'talkhere-notalk' => '\'\'(لا تعليقات بعد)\'\'',
 	'talkhere-addcomment' => 'أضف تعليقا',
 	'talkhere-beforeinput' => 'يمكنك إضافة تعليق بالأسفل',
+	'talkhere-loading' => 'جاري تحميل المحرر...',
+	'talkhere-collapse' => 'إخفاء المحرر',
 );

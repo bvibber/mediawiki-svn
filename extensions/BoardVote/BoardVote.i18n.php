@@ -324,6 +324,8 @@ Serás redireccionado a este servidor externo en 20 segundos. [$1 Haz click aqu�
 Un aviso de seguridad sobre un certificado no cifrado podría aparacer.',
 );
 $wgBoardVoteMessages['ext'] = array(
+	'boardvote_novotes'       => 'Naidi á votau entovia.',
+	'boardvote_time'          => 'Ora',
 	'boardvote_user'          => 'Usuáriu',
 	'boardvote_edits'         => 'Eicionis',
 	'boardvote_days'          => 'Dias',
@@ -334,7 +336,7 @@ $wgBoardVoteMessages['fi'] = array(
 * [[Special:Boardvote/list|Listaa tähänastiset äänet]]
 * [[Special:Boardvote/dump|Salattu äänestystallenne]]',
 	'boardvote_intro_change'  => '<p>Olet jo äänestänyt. Voit kuitenkin muuttaa ääntäsi käyttämällä alla olevaa lomaketta. Napsauta kunkin hyväksymäsi ehdokkaan vieressä olevaa ruutua.</p>',
-	'boardvote_notloggedin'   => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja ensimmäisen muokkaus ennen $3.',
+	'boardvote_notloggedin'   => 'Et ole kirjautunut sisään. Äänestääksesi sinulla täytyy olla käyttäjätunnus, vähintään $1 muokkausta ennen $2 ja ensimmäisen muokkauksen pitää olla ennen $3.',
 	'boardvote_notqualified'  => 'Et ole äänioikeutettu näissä vaaleissa. Sinulla täytyy olla $3 muokkausta ennen $2, ja ensimmäinen muokkauksesi pitää olla tehty ennen $5.',
 	'boardvote_novotes'       => 'Kukaan ei ole vielä äänestänyt.',
 	'boardvote_time'          => 'Aika',
@@ -344,8 +346,12 @@ $wgBoardVoteMessages['fi'] = array(
 	'boardvote_ua'            => 'Käyttäjäagentti',
 	'boardvote_listintro'     => '<p>Tämä on lista kaikista äänistä, jotka on kirjattu tähän mennessä. $1 nähdäksesi tiedot salattuna.</p>',
 	'boardvote_dumplink'      => 'Napsauta tästä',
+	'boardvote_strike'        => 'Älä tue',
+	'boardvote_unstrike'      => 'Palauta tuetuksi',
+	'boardvote_needadmin'     => 'Vain vaalitarkastajat voivat suorittaa tämän toiminnon.',
 	'boardvote_notstarted'    => 'Äänestys ei ole vielä alkanut',
 	'boardvote_edits_many'    => 'monta',
+	'boardvote_blocked'       => 'Valitettavasti muokkausestosi projektissa johon olet kirjautunut estää sinua äänestämästä.',
 	'boardvote_welcome'       => 'Tervetuloa \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['fr'] = array(

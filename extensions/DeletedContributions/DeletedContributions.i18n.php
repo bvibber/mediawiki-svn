@@ -62,6 +62,10 @@ $wgDeletedContribsMessages['kk-cn'] = array(
 $wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-kz'];
 
 
+$wgDeletedContribsMessages['la'] = array(
+	'deletedcontributions' => 'Conlationes usoris deletae',
+);
+
 $wgDeletedContribsMessages['nl'] = array(
 	'deletedcontributions' => 'Verwijderde gebruikersbijdragen',
 );

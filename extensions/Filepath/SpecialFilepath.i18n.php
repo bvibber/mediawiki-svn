@@ -137,8 +137,10 @@ $wgFilepathMessages['kk-cn'] = array(
 );
 $wgFilepathMessages['kk'] = $wgFilepathMessages['kk-kz'];
 $wgFilepathMessages['la'] = array(
+	'filepath'        => 'Fasciculorum inscriptio',
 	'filepath_page'   => 'Fasciculus:',
 );
+
 $wgFilepathMessages['lo'] = array(
 	'filepath'         => 'ທາງໄປຫາໄຟລ໌',
 );
