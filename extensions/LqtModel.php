@@ -818,11 +818,16 @@ class Threads {
      }
 	
 	static function where( $where, $options = array(), $extra_tables = array(), $joins = "" ) {
+		global $wgDBprefix;
 		$dbr = wfGetDB( DB_SLAVE );
 		if ( is_array($where) ) $where = $dbr->makeList( $where, LIST_AND );
 		if ( is_array($options) ) $options = implode(',', $options);
 		
 		if( is_array($extra_tables) && count($extra_tables) != 0 ) {
+			if(!empty($wgDBprefix)) {
+				foreach($extra_tables as $tablekey=>$extra_table) 
+					$extra_tables[$tablekey]=$wgDBprefix.$extra_table;
+			}
 			$tables = implode(',', $extra_tables) . ', ';
 		} else if ( is_string( $extra_tables ) ) {
 			$tables = $extra_tables . ', ';
@@ -840,7 +845,7 @@ class Threads {
 		$root_test = str_replace( 'thread.', 'children.', $where ); // TODO fragile?
 
 		$sql = <<< SQL
-SELECT DISTINCT children.*, child_page.*, ($root_test) as is_root FROM ($tables thread, thread children, page child_page) $joins
+SELECT DISTINCT children.*, child_page.*, ($root_test) as is_root FROM ($tables {$wgDBprefix}thread thread, {$wgDBprefix}thread children, {$wgDBprefix}page child_page) $joins
 WHERE $where
 AND children.thread_path LIKE CONCAT(thread.thread_path, "%")
 AND child_page.page_id = children.thread_root
@@ -997,6 +1002,7 @@ class NewMessages {
 	}
 	
 	private static function writeUserMessageState($thread, $user, $timestamp) {
+		global $wgDBprefix;
 		if( is_object($thread) ) $thread_id = $thread->id();
 		else if( is_integer($thread) ) $thread_id = $thread;
 		else throw new MWException("writeUserMessageState expected Thread or integer but got $thread");
@@ -1009,18 +1015,19 @@ class NewMessages {
 		
 		// use query() directly to pass in 'true' for don't-die-on-errors.
 		$dbr =& wfGetDB( DB_MASTER );
-        $success = $dbr->query("insert into user_message_state values ($user_id, $thread_id, $timestamp)",
+        $success = $dbr->query("insert into {$wgDBprefix}user_message_state values ($user_id, $thread_id, $timestamp)",
             __METHOD__, true);
 
 		if( !$success ) {
 			// duplicate key; update.
-			$dbr->query("update user_message_state set ums_read_timestamp = $timestamp" .
+			$dbr->query("update {$wgDBprefix}user_message_state set ums_read_timestamp = $timestamp" .
 						" where ums_thread = $thread_id and ums_user = $user_id",
 	            		__METHOD__);
 		}
 	}
 	
 	static function writeMessageStateForUpdatedThread($t) {
+		global $wgDBprefix;
 		// retrieve all users who are watching t.
 		// write a ums for each one.
 		
@@ -1039,15 +1046,16 @@ SQL;
 		
 		// it sucks to not have 'on duplicate key update'. first update users who already have a ums for this thread
 		// and who have already read it, by setting their state to unread.
-		$dbw->query("update user_message_state, watchlist set ums_read_timestamp = null where ums_user = wl_user and ums_thread = {$t->id()} and $where_clause");
+		$dbw->query("update {$wgDBprefix}user_message_state, {$wgDBprefix}watchlist set ums_read_timestamp = null where ums_user = wl_user and ums_thread = {$t->id()} and $where_clause");
 		
-		$dbw->query("insert ignore into user_message_state (ums_user, ums_thread) select user_id, {$t->id()} from user, watchlist where user_id = wl_user and $where_clause;");
+		$dbw->query("insert ignore into {$wgDBprefix}user_message_state (ums_user, ums_thread) select user_id, {$t->id()} from {$wgDBprefix}user, {$wgDBprefix}watchlist where user_id = wl_user and $where_clause;");
 	}
 	
 	static function newUserMessages($user) {
+		global $wgDBprefix;
 		return Threads::where( array('ums_read_timestamp is null',
 									Threads::articleClause(new Article($user->getUserPage()))),
-							 array(), array(), "left outer join user_message_state on ums_user is null or (ums_user = {$user->getID()} and ums_thread = thread.thread_id)" );
+							 array(), array(), "left outer join {$wgDBprefix}user_message_state on ums_user is null or (ums_user = {$user->getID()} and ums_thread = thread.thread_id)" );
 	}
 
 	static function watchedThreadsForUser($user) {
