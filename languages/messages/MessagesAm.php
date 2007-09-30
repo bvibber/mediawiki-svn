@@ -59,6 +59,7 @@ $messages = array(
 'navigation' => 'የማውጫ ቁልፎች',
 
 'returnto'         => '(ወደ $1 ለመመለስ)',
+'tagline'          => 'ከ{{SITENAME}}',
 'help'             => 'እርዳታ ገጽ',
 'search'           => 'ፍለጋ',
 'searchbutton'     => 'ፍለጋ',
@@ -112,6 +113,7 @@ $messages = array(
 'nstab-category'  => 'የመደብ ገጽ',
 
 # General errors
+'perfcachedts'       => 'ማስታወቂያ፡ በዚሁ ገጽ ላይ ያለው መረጃ መጨረሻ የታደሠው $1 እ.ኤ.አ. ነበር።',
 'viewsource'         => 'ጥሬ ኮድ ለመመልከት',
 'viewsourcefor'      => 'ለ«$1»',
 'protectedpagetext'  => 'ይኸው ገጽ እንዳይዘጋጅ ተቆልፏል።',
@@ -173,6 +175,7 @@ $messages = array(
 'showpreview'              => 'ቅድመ እይታ',
 'showdiff'                 => 'ማነጻጸሪያ',
 'anoneditwarning'          => "'''ማስታወቂያ:''' እርስዎ አሁን በአባል ስምዎ ያልገቡ ነዎት። ማዘጋጀት ይቻሎታል፤ ነገር ግን ለውጦችዎ በአባል ስም ሳይሆን በቁጥር አድራሻዎ ይመዘገባሉ። ከፈለጉ፥ በአባልነት [[Special:Userlogin|መግባት]] ይችላሉ።",
+'missingsummary'           => "'''ማስታወሻ፦''' ማጠቃለያ ገና አላቀረቡም። እንደገና «ገጹን ለማቅረብ» ቢጫኑ፣ ያለ ማጠቃለያ ይላካል።",
 'summary-preview'          => 'የማጠቃለያ ቅድመ እይታ',
 'newarticletext'           => 'ይኸው ገጽ ገና አይኖርም። ገጹን አዲስ ለመፍጠር፣ ዝም ብለው ከታች በሚገኘው ሳጥን ውስጥ ማቀነባበር ሊጀምሩ ይችላሉ። ለተጨማሪ መረጃ፣ [[{{MediaWiki:helppage}}|የረዳቱን ገጽ]] ይጐብኙት። <br>ወደዚህ በስሕተት የደረሱ እንደ ሆነ፣ «Back» የሚለውን በኮምፒውተርዎ ብራውዘር መጫን ይችላሉ።',
 'anontalkpagetext'         => "----''ይኸው ገጽ ገና ያልገባ ወይም ብዕር ስም የሌለው ተጠቃሚ ውይይት ገጽ ነው። መታወቂያው በ[[ቁጥር አድራሻ]] እንዲሆን ያስፈልጋል። አንዳንዴ ግን አንድ የቁጥር አድራሻ በሁለት ወይም በብዙ ተጠቃሚዎች የጋራ ሊሆን ይችላል። ስለዚህ ለርስዎ የማይገባ ውይይት እንዳይደርስልዎ፣ [[Special:Userlogin|«መግቢያ»]] በመጫን የብዕር ስም ለማውጣት ይችላሉ።''",
@@ -185,6 +188,7 @@ $messages = array(
 'yourtext'                 => 'የእርስዎ እትም',
 'editingold'               => '<strong><big>ማስጠንቀቂያ፦</big><br>ይህ እትም የአሁኑ አይደለም፣ ከዚህ ሁናቴ ታድሷል።<br> ይህንን እንዳቀረቡ ከዚህ እትም በኋላ የተቀየረው ለውጥ ሁሉ ያልፋል።</strong>',
 'copyrightwarning'         => "*<big> '''መጣጥፎችን ለመፍጠርና ለማሻሻል አይፈሩ''!''''' &mdash; </big>ሥራዎ ትክክለኛ ካልሆነ፣ በሌሎቹ አዘጋጆች ሊታረም ይችላል።",
+'longpagewarning'          => '<strong>ማስጠንቀቂያ፦ የዚሁ ገጽ መጠን እስከ $1 kilobyte ድረስ ደርሷል፤ አንድ ጽሑፍ ከ32 kilobyte የበለጠ ሲሆን ይህ ግዙፍነት ለአንዳንድ ተጠቃሚ ዌብ-ብራውዘር ያስቸግራል። እባክዎን፣ ገጹን ወደ ተለያዩ ገጾች ማከፋፈልን ያስቡበት። </strong>',
 'readonlywarning'          => ':<strong>ማስታወቂያ፦</strong> {{SITENAME}} አሁን ለአጭር ግዜ ተቆልፎ ገጹን ለማቅረብ አይቻልም። ጥቂት ደቂቃ ቆይተው እባክዎ እንደገና ይሞክሩት!
 :(The database has been temporarily locked for maintenance, so you cannot save your edits at this time. You may wish to cut-&-paste the text into another file, and try again in a moment or two.)',
 'semiprotectedpagewarning' => "'''ማስታወቂያ፦''' ይኸው ገጽ ከቋሚ አዛጋጆች በተቀር በማንም እንዳይለወጥ ተቆልፏል።",
@@ -223,11 +227,12 @@ The deletion log for this page appears below:",
 'historyempty'        => '(ባዶ)',
 
 # Diffs
-'history-title' => 'የ«$1» እትሞች ታሪክ',
-'difference'    => '(በ2ቱ እትሞቹ ዘንድ ያለው ልዩነት)',
-'lineno'        => 'መስመር፡ $1፦',
-'editundo'      => 'ለውጡ ይገለበጥ',
-'diff-multi'    => '(ከነዚህ 2 እትሞች መካከል {{plural:$1|አንድ ለውጥ ነበር|$1 ለውጦች ነበሩ}}።)',
+'history-title'           => 'የ«$1» እትሞች ታሪክ',
+'difference'              => '(በ2ቱ እትሞቹ ዘንድ ያለው ልዩነት)',
+'lineno'                  => 'መስመር፡ $1፦',
+'compareselectedversions' => 'የተመረጡትን እትሞች ለማነፃፀር',
+'editundo'                => 'ለውጡ ይገለበጥ',
+'diff-multi'              => '(ከነዚህ 2 እትሞች መካከል {{plural:$1|አንድ ለውጥ ነበር|$1 ለውጦች ነበሩ}}።)',
 
 # Search results
 'searchresulttext' => 'በተጨማሪ ስለ ፍለጋዎች ለመረዳት፣ [[{{MediaWiki:helppage}}]] ያንብቡ።',
@@ -278,11 +283,14 @@ The deletion log for this page appears below:",
 'defaultns'             => 'በመጀመርያው ፍለጋዎ በነዚህ ክፍለ-ዊኪዎች ብቻ ይደረግ:',
 'files'                 => 'የስዕሎች መጠን',
 
+# Groups
+'group' => 'ደረጃ፦',
+
 # Recent changes
 'nchanges'          => '$1 {{PLURAL:$1|ለውጥ|ለውጦች}}',
 'recentchanges'     => 'በቅርብ ጊዜ የተለወጡ',
 'recentchangestext' => "በዚሁ ገጽ ላይ በቅርብ ጊዜ የወጡ አዳዲስ ለውጦች ለመከታተል ይችላሉ። <br /> ('''ጥ'''፦ ጥቃቅን ለውጥ፤ '''አ'''፦ አዲስ ገጽ)",
-'rcnote'            => 'ባለፉት <strong>$2</strong>  ቀኖች የተደረጉት <strong>$1</strong> መጨረሻ ለውጦች እታች ይገኛሉ።
+'rcnote'            => 'ከ$3 እ.ኤ.አ. ባለፉት <strong>$2</strong>  ቀኖች የተደረጉት <strong>$1</strong> መጨረሻ ለውጦች እታች ይገኛሉ።
 
 :<big>አ</big>ማራጮች፦',
 'rcnotefrom'        => 'ከ<b>$2</b> ጀምሮ የተቀየሩትን ገጾች (እስከ <b>$1</b> ድረስ) ክዚህ በታች ይታያሉ።',
@@ -470,6 +478,7 @@ The deletion log for this page appears below:",
 'watchlist'            => 'የምከታተላቸው ገጾች፤',
 'mywatchlist'          => 'የምከታተላቸው ገጾች፤',
 'watchlistfor'         => "(ለ'''$1''')",
+'nowatchlist'          => 'ዝርዝርዎ ባዶ ነው። ምንም ገጽ ገና አልተጨመረም።',
 'addedwatch'           => 'ወደሚከታተሉት ገጾች ተጨመረ',
 'addedwatchtext'       => "ገጹ «$1» [[Special:Watchlist|ለሚከታተሉት ገጾች]] ተጨምሯል። ወደፊት ይህ ገጽ ወይም የውይይቱ ገጽ ሲቀየር፣ በዚያ ዝርዝር ላይ ይታያል። በተጨማሪም [[Special:Recentchanges|«በቅርብ ጊዜ በተለወጡ» ገጾች]] ዝርዝር፣ በቀላሉ እንዲታይ በ'''ጨለማ ጽህፈት''' ተጽፎ ይገኛል።
 
@@ -479,6 +488,7 @@ The deletion log for this page appears below:",
 'watch'                => 'ለመከታተል',
 'watchthispage'        => 'ይህንን ገጽ ለመከታተል',
 'unwatch'              => 'አለመከታተል',
+'watchnochange'        => 'ከተካከሉት ገጾች አንዳችም በተወሰነው ጊዜ ውስጥ አልተለወጠም።',
 'watchlist-details'    => 'አሁን በሙሉ {{PLURAL:$1|$1 ገጽ|$1 ገጾች}} እየተከታተሉ ነው።',
 'watchlistcontains'    => 'አሁን በሙሉ $1 ገጾች እየተከታተሉ ነው።',
 'wlnote'               => 'ባለፉት <b>$2</b> ሰዓቶች የተደረጉት $1 መጨረሻ ለውጦች እታች ይገኛሉ።',
@@ -491,7 +501,8 @@ The deletion log for this page appears below:",
 'watchlist-hide-minor' => "'ጥ' (ጥቃቅን) ለውጦች ይደበቁ",
 
 # Displayed when you click the "watch" button and it's in the process of watching
-'watching' => 'እየተጨመረ ነው...',
+'watching'   => 'እየተጨመረ ነው...',
+'unwatching' => 'እየተወገደ ነው...',
 
 # Delete/protect/revert
 'deletepage'                => 'ገጹ ይጥፋ',
@@ -515,10 +526,196 @@ The deletion log for this page appears below:",
 'protectedarticle'          => 'ገጹን «[[$1]]» ቆለፈው።',
 'modifiedarticleprotection' => 'የመቆለፍ ደረጃ ለ«[[$1]]» ቀየረ።',
 'unprotectedarticle'        => 'ገጹን «[[$1]]» ፈታ።',
+'protect-summary-cascade'   => 'በውስጡም ያለውን የሚያቆልፍ አይነት',
+'restriction-type'          => 'ፈቃድ፦',
+'restriction-level'         => 'የመቆለፍ ደረጃ፦',
 'minimum-size'              => 'ቢያንስ',
 'maximum-size'              => 'ቢበዛ',
+'pagesize'                  => 'byte መጠን ያለው ሁሉ',
 
 # Restriction levels
-'restriction-level-sysop' => 'በሙሉ ተቆልፎ',
+'restriction-level-sysop'         => 'በሙሉ ተቆልፎ',
+'restriction-level-autoconfirmed' => 'በከፊል ተቆልፎ',
+
+# Namespace form on various pages
+'namespace' => 'ዓይነት፦',
+
+# Contributions
+'contributions' => 'ያባል አስተዋጽኦች',
+'mycontris'     => 'የኔ አስተዋጽኦች፤',
+'contribsub2'   => 'ለ $1 ($2)',
+'nocontribs'    => 'ምንም አልተገኘም።',
+'uctop'         => ' (ላይኛ)',
+'month'         => 'እስከዚህ ወር ድረስ፦',
+'year'          => 'እስከዚህ አመት (እ.ኤ.አ.) ድረስ፡-',
+
+'sp-contributions-newest'      => 'ኋለኞች',
+'sp-contributions-oldest'      => 'ቀድመኞች',
+'sp-contributions-newer'       => 'ፊተኛ $1',
+'sp-contributions-older'       => 'ቀጥሎ $1',
+'sp-contributions-newbies'     => 'የአዳዲስ ተጠቃሚዎች አስተዋጽዖ ብቻ እዚህ ይታይ',
+'sp-contributions-newbies-sub' => '(ለአዳዲስ ተጠቃሚዎች)',
+'sp-contributions-blocklog'    => 'የማገጃ መዝገብ',
+'sp-contributions-search'      => 'የሰውን አስተዋጽኦች ለመፈለግ፦',
+'sp-contributions-username'    => 'ብዕር ስም ወይም የቁ. አድራሻ፦',
+'sp-contributions-submit'      => 'ፍለጋ',
+
+'sp-newimages-showfrom' => 'ከ$1 እኤአ ጀምሮ አዲስ ይታዩ',
+
+# What links here
+'whatlinkshere'       => 'ወዲህ የሚያያዝ',
+'whatlinkshere-title' => 'ወደ «$1» የሚያያዙት ገጾች',
+'linklistsub'         => '(ወዲህ የሚያያዝ)',
+'linkshere'           => 'የሚከተሉት ገጾች ወደዚሁ ተያይዘዋል።',
+'nolinkshere'         => 'ወዲህ የተያያዘ ገጽ የለም።',
+'nolinkshere-ns'      => 'ባመለከቱት ክፍለ-ዊኪ ወዲህ የተያያዘ ገጽ የለም።',
+'isredirect'          => 'መምሪያ መንገድ',
+'istemplate'          => 'የተሰካ',
+'whatlinkshere-prev'  => 'ፊተኛ $1',
+'whatlinkshere-next'  => 'ቀጥሎ $1',
+'whatlinkshere-links' => '← ወዲህም የሚያያዝ',
+
+# Block/unblock
+'ipblocklist'              => 'የአሁኑ ማገጃዎች ዝርዝር',
+'ipblocklist-legend'       => 'አንድ የታገደውን ተጠቃሚ ለመለግ፦',
+'ipblocklist-username'     => 'ይህ ብዕር ስም ወይም የቁጥር አድራሻ #፡',
+'ipblocklist-submit'       => 'ይፈለግ',
+'blocklistline'            => '$1 (እ.ኤ.አ.)፦ $2 በ$3 ላይ ማገጃ ጣለ ($4)',
+'expiringblock'            => 'በ$1 እ.ኤ.አ. ያልቃል',
+'anononlyblock'            => 'ያልገቡት የቁ.# ብቻ',
+'createaccountblock'       => 'ስም ከማውጣት ተከለከለ',
+'contribslink'             => 'አስተዋጽኦች',
+'blocklogpage'             => 'የማገጃ መዝገብ (blocklog)',
+'blocklogentry'            => 'እስከ $2 ድረስ [[$1]] አገዳ $3',
+'blocklogtext'             => 'ይህ መዝገብ ተጠቃሚዎች መቸም ሲታገዱ ወይም ማገጃ ሲነሣ የሚዘረዝር ነው። ለአሁኑ የታገዱት ሰዎች [[Special:Ipblocklist|በአሁኑ ማገጃዎች ዝርዝር]] ይታያሉ።',
+'unblocklogentry'          => 'የ$1 ማገጃ አነሣ',
+'block-log-flags-anononly' => 'ያልገቡት የቁ. አድራሻዎች ብቻ',
+'block-log-flags-nocreate' => 'አዲስ ብዕር ስም ከማውጣት ተከለከለ',
+
+# Move page
+'movepage'         => 'የሚዛወር ገጽ',
+'movepagetext'     => "ከታች የሚገኘው ማመልከቻ ለገጹ ይዞታ አዲስ አርእስት ያወጣል። 
+ከይዞታው ጋራ የእትሞች ታሪክ ደግሞ ወደ አዲሱ ገጽ ይዛወራል።
+የቆየው አርእስት እንደ መምሪያ መንገድ ለአዲሱ ገጽ ይሆናል። 
+ይህ ማለት ወደዚያ የሚያያዝ መያያዣ ሁሉ በቀጥታ ወደ አዲሱ ሥፍራ ይወስዳል።
+ነገር ግን ገጹን እርስዎ ካዛወሩ፣ መያያዣዎቹ ድርብ ወይም ሰባራ እንዳይሆኑ ለማረጋገጥ ኃላፊነትዎ ነው።
+
+ባዲሱ አርእስት ሥፍራ ሌላ ገጽ ቀድሞ ካለ፤ ሌላው ገጽ ታሪክ የሌለው፣ ባዶ ወይም መምሪያ መንገድ ካልሆነ በቀር፣ 
+ይህ ገጽ ወደዚያ ለማዛወር '''የማይቻል''' ነው።  ስለዚህ ስሕተት ካደረጉ ወደ ቆየው አርእስት ገጹን መመለስ ይችላሉ፤ የኖረውን ገጽ በስሕተት ለመደምሰስ አይቻልም ማለት ነው።
+
+'''ማስጠንቀቂያ፦''' 
+በጣም ለተወደደ ወይም ብዙ ጊዜ ለሚነበብ ገጽ፣ እንዲህ ያለ ለውጥ በፍጹም ያልተጠበቀ ወይም ከባድ ውጤት ሊሆን ይችላል።  ስለዚህ እባክዎ የሚገባ መደምደሚያ መሆኑን አስቀድመው ያረጋግጡ።",
+'movepagetalktext' => "አብዛኛው ጊዜ፣ ከዚሁ ገጽ ጋራ የሚገናኘው የውይይት ገጽ አንድላይ ይዛወራል፤ '''ነገር ግን፦'''
+
+* ገጹን ወደማይመሳስል ክፍለ-ዊኪ (ለምሳሌ Mediawiki:) ቢያዛውሩት፤
+* ባዶ ያልሆነ ውይይት ገጽ ቅድሞ ቢገኝ፤ ወይም
+* እታች ከሚገኘውን ሳጥን ምልክቱን ካጠፉ፤
+:
+:ከነውይይቱ ገጽ አንድላይ አይዛወሩም። የዚያን ጊዜ የውይይቱን ገጽ ለማዛወር ከወደዱ በእጅ ማድረግ ያስፈልግዎታል።",
+'movearticle'      => 'የቆየ አርእስት፡',
+'newtitle'         => 'አዲሱ አርእስት',
+'move-watch'       => 'ይህ ገጽ በተከታተሉት ገጾች ይጨመር',
+'movepagebtn'      => 'ገጹ ይዛወር',
+'pagemovedsub'     => 'መዛወሩ ተከናወነ',
+'movepage-moved'   => "<big>'''«$1» ወደ «$2» ተዛውሯል'''</big>", # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
+'movetalk'         => 'ከተቻለ፣ ከነውይይቱ ገጽ ጋራ ይዛወር',
+'talkpagemoved'    => 'ተመሳሳዩ የውይይት ገጽ ደግሞ ተዛውሯል።',
+'talkpagenotmoved' => 'ተመሳሳዩ የውይይት ገጽ ግን <strong>አልተዛወረም</strong>።',
+'1movedto2'        => '«$1» ወደ «[[$2]]» አዛወረ',
+'1movedto2_redir'  => '«$1» ወደ «[[$2]]» አዛወረ -- በመምሪያ መንገድ ፈንታ',
+'movelogpage'      => 'የማዛወር መዝገብ (movelog)',
+'movelogpagetext'  => 'ይህ መዝገብ ገጽ ሲዛወር ይመዝገባል። <ይመለስ> ቢጫኑ ኖሮ መዛወሩን ይገለብጣል!',
+'movereason'       => 'ምክንያት',
+'revertmove'       => 'ይመለስ',
+
+# Spam protection
+'subcategorycount'       => 'በዚሁ መደብ ውስጥ {{PLURAL:$1|አንድ ንዑስ-መደብ አለ|$1 ንዑስ-መደቦች አሉ}}።',
+'categoryarticlecount'   => 'በዚሁ መደብ ውስጥ {{PLURAL:$1|አንድ መጣጥፍ አለ|$1 መጣጥፎች አሉ}}።',
+'listingcontinuesabbrev' => '(ተቀጥሏል)',
+
+# Browsing diffs
+'previousdiff' => '← የፊተኛው ለውጥ',
+'nextdiff'     => 'የሚከተለው ለውጥ →',
+
+# Special:Newimages
+'newimages'    => 'የአዳዲስ ሥዕሎች ማሳያ አዳራሽ',
+'showhidebots' => '(«bots» $1)',
+
+# 'all' in various places, this might be different for inflected languages
+'watchlistall2' => 'ሁሉ',
+'namespacesall' => 'ሁሉ (all)',
+
+# E-mail address confirmation
+'confirmemail'            => 'ኢ-ሜልዎን ለማረጋገጥ',
+'confirmemail_text'       => 'አሁን በ{{SITENAME}} በኩል «ኢ-ሜል» ለመላክም ሆነ ለመቀበል አድራሻዎን ማረጋገጥ ግዴታ ሆኗል። እታች ያለውን በተጫኑ ጊዜ አንድ የማረጋገጫ መልእክት ቀድሞ ወደ ሰጡት ኢሜል አድራሻ በቀጥታ ይላካል። በዚህ መልእክት ልዩ ኮድ ያለበት መያያዣ ይገኝበታል፣ ይህንን መያያዣ ከዚያ ቢጎብኙ ኢ-ሜል አድራሻዎ የዛኔ ይረጋግጣል።',
+'confirmemail_send'       => 'የማረጋገጫ ኮድ ወደኔ ኢ-ሜል ይላክልኝ',
+'confirmemail_sent'       => 'የማረጋገጫ ኢ-ሜል ቅድም ወደ ሰጡት አድራሻ አሁን ተልኳል! (ሁለተኛ መጫን የለብዎትም፣ ወደ [[{{MediaWiki:Mainpage}}|ዋናው ገጽ]] ይመልሱ።)',
+'confirmemail_sendfailed' => 'ወደሰጡት ኢሜል አድራሻ መላክ አልተቻለም። እባክዎ፣ ወደ [[Special:Preferences|«ምርጫዎች»]] ተመልሰው የጻፉትን አድራሻ ደንበኛነት ይመለከቱ።',
+'confirmemail_invalid'    => 'ይህ ኮድ አልተከናወነም። (ምናልባት ጊዜው አልፏል።) እንደገና ይሞክሩ!',
+'confirmemail_loggedin'   => 'የርስዎ ኢ-ሜል አድራሻ ተረጋግጧል። አሁን ኢ-ሜል በ{{SITENAME}} በኩል ለመላክ ወይም ለመቀበል ይችላሉ።',
+'confirmemail_body'       => 'Someone from IP address $1 (probably you), has registered an
+account with the user name "$2" with this e-mail address on {{SITENAME}}.
+
+To confirm that this account really does belong to you, and to activate e-mail features on {{SITENAME}}, open this link in your browser:
+
+$3
+
+If for some reason this is *not* you, don\'t follow the link. This confirmation code will expire at $4.
+
+Amharic text follows:
+
+ጤና ይስጥልኝ
+
+የርስዎ ኢ-ሜል አድራሻ በ$1 ለ{{SITENAME}} ብዕር ስም «$2» ቀርቧል። 
+
+ይህ እርስዎ እንደ ሆኑ ለማረጋገጥና የ{{SITENAME}} ኢ-ሜል ጥቅም ለማግኘት፣ እባክዎን የሚከተለውን መያያዣ ይጎበኙ።
+
+$3
+
+ይህ ምናልባት እርስዎ ካልሆኑ፣ መያያዣውን አይከተሉ። 
+
+የዚህ መያያዣው ኮድ እስከ $4 ድረስ ይሠራል።',
+
+# Table pager
+'table_pager_limit'        => 'በየገጹ $1 መስመሮች',
+'table_pager_limit_submit' => 'ይታዩ',
+
+# Auto-summaries
+'autosumm-blank'   => 'ጽሑፉን በሙሉ ደመሰሰ።',
+'autosumm-replace' => 'ጽሑፉ በ«$1» ተተካ።',
+'autoredircomment' => 'ወደ [[$1]] መምሪያ መንገድ ፈጠረ',
+'autosumm-new'     => 'አዲስ ገጽ ፈጠረ፦ «$1»',
+
+# Watchlist editor
+'watchlistedit-numitems'       => 'አሁን በሙሉ {{PLURAL:$1|$1 ገጽ|$1 ገጾች}} እየተከታተሉ ነው።',
+'watchlistedit-noitems'        => 'ዝርዝርዎ ባዶ ነው።',
+'watchlistedit-clear-title'    => 'ዝርዝሩን ለማሟጠጥ',
+'watchlistedit-clear-legend'   => 'ዝርዝርዎን ለማሟጠጥ',
+'watchlistedit-clear-confirm'  => '«ለማሟጠጥ» በመጫንዎ አርእስቶቹ በሙሉ ከተከታተሉት ገጾች ዝርዝር ይፋቃሉ። ይህንን ማድረግ እንደ ወደዱ እርግጠኛ ነዎት? አለዚያ [[Special:Watchlist/edit|በየአርእስቱ ማስወግድ]] ደግሞ ይቻሎታል።',
+'watchlistedit-clear-submit'   => 'ለማሟጠጥ',
+'watchlistedit-clear-done'     => 'ዝርዝርዎ ተሟጠጠና አርእስቶቹ ሁሉ ተወግደዋል።',
+'watchlistedit-normal-title'   => 'ዝርዝሩን ለማስተካከል',
+'watchlistedit-normal-legend'  => 'አርእስቶችን ከተካከሉት ገጾች ዝርዝር ለማስወግድ...',
+'watchlistedit-normal-explain' => 'ከዚህ ታች፣ የሚከታተሉት ገጾች ሁሉ በሙሉ ተዘርዝረው ይገኛሉ። 
+
+አንዳንድ ገጽ ከዚህ ዝርዝር ለማስወግድ ያሠቡ እንደሆነ፣ በሳጥኑ ውስጥ ምልክት አድርገው በስተግርጌ በሚገኘው «ማስወግጃ» የሚለውን ተጭነው ከዚህ ዝርዝር ሊያስወግዷቸው ይቻላል። (ይህን በማድረግዎ ከገጹ ጋር የሚገናኘው ውይይት ገጽ ድግሞ ከዝርዝርዎ ይጠፋል።)
+
+ከዚህ ዘዴ ሌላ [[Special:Watchlist/raw|ጥሬውን ኮድ መቅዳት ወይም ማዘጋጀት]] ይቻላል። ወይም ደግሞ [[Special:Watchlist/clear|ዝርዝሩን በሙሉ ለማሟጠጥ]] ይቻላል።',
+'watchlistedit-normal-submit'  => 'ማስወገጃ',
+'watchlistedit-normal-done'    => 'ከዝርዝርዎ እነዚህ አርእስቶች ተወግደዋል፦',
+'watchlistedit-raw-title'      => 'የዝርዝሩ ጥሬ ኮድ',
+'watchlistedit-raw-legend'     => 'የዝርዝሩን ጥሬ ኮድ ለማዘጋጀት...',
+'watchlistedit-raw-explain'    => 'በተከታተሉት ገጾች ዝርዝር ላይ ያሉት አርእስቶች ሁሉ ከዚህ ታች ይታያሉ። በየመስመሩ አንድ አርእስት እንደሚኖር፣ ይህን ዝርዝር ለማዘጋጀት ይችላሉ። አዘጋጅተውት ከጨረሱ በኋላ በስተግርጌ «ዝርዝሩን ለማሳደስ» የሚለውን ይጫኑ። አለበለዚያ ቢሻልዎት፣ የተለመደውን ዘዴ ([[Special:Watchlist/edit|«ዝርዝሩን ለማስተካከል»]]) ይጠቀሙ።',
+'watchlistedit-raw-titles'     => 'የተከታተሉት አርእስቶች፦',
+'watchlistedit-raw-submit'     => 'ዝርዝሩን ለማሳደስ',
+'watchlistedit-raw-done'       => 'ዝርዝርዎ ታድሷል።',
+'watchlistedit-raw-added'      => '$1 አርዕስት {{PLURAL:$1|ተጨመረ|ተጨመሩ}}፦',
+'watchlistedit-raw-removed'    => '$1 አርዕስት {{PLURAL:$1|ተወገደ|ተወገዱ}}፦',
+
+# Watchlist editing tools
+'watchlisttools-view'  => 'የምከታተላቸው ለውጦች',
+'watchlisttools-edit'  => 'ዝርዝሩን ለማስተካከል',
+'watchlisttools-raw'   => 'የዝርዝሩ ጥሬ ኮድ',
+'watchlisttools-clear' => 'ዝርዝሩን ለማሟጠጥ',
 
 );

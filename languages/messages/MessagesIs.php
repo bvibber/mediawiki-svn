@@ -215,7 +215,7 @@ $messages = array(
 'search'            => 'Leit',
 'searchbutton'      => 'Leita',
 'go'                => 'Áfram',
-'searcharticle'     => 'Leita',
+'searcharticle'     => 'Áfram',
 'history'           => 'Breytingaskrá',
 'history_short'     => 'Breytingaskrá',
 'updatedmarker'     => 'uppfært frá síðustu heimsókn minni',
@@ -617,6 +617,7 @@ Prófaðu [[Special:Search|að leita á þessari wiki síðu]] að svipuðum sí
 'logdelete-selected'  => "{{PLURAL:$2|Valin aðgerð|Valdar aðgerðir}} fyrir '''$1:'''",
 
 # Diffs
+'history-title'             => 'Breytingaskrá fyrir "$1"',
 'difference'                => '(Munur milli útgáfa)',
 'lineno'                    => 'Lína $1:',
 'editcurrent'               => 'Breyta núverandi útgáfu þessarar síðu',
