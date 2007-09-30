@@ -74,7 +74,7 @@ function wfTalkHereArticleFromTitle( &$title, &$article ) {
 		$tns = Namespace::getTalk($ns);
 		$talk = Title::makeTitle($tns, $title->getDBKey());
 
-		if ($talk && $talk->userCan('view')) {
+		if ($talk && $talk->userCan('read')) {
 			$t = clone $title;
 			$t->noTalkHere = true; //stop recursion
 	
