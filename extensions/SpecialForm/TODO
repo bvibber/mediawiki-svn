@@ -1,0 +1,16 @@
++ set title correctly
+- add a token to session, store it in the form, and check that they
+  match on submit, to prevent automated creation
++ create a new article on submit
+- required/optional fields
++ check for existing article before saving
++ add a default value if passed in using GET
++ test setting custom title in form description
++ test setting custom template in form description
++ parse instructions from wikitext to HTML
++ parse descriptions from wikitext to HTML
+- automatic type-ahead fields
+- create more than one article from one form
+- text field validation with regexes on client and server
+- file upload fields (for uploading an associated image)
+
