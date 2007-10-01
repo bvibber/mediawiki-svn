@@ -404,7 +404,7 @@ class LuceneSearch extends SpecialPage
 	 * @access private
 	 */
 	function regexQuote( $term ) {
-		return preg_quote( $term, '/' );
+		return '\b' . preg_quote( $term, '/' ) . '\b';
 	}
 
 	/**
