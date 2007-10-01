@@ -78,8 +78,8 @@ Output templates are just regular ol' MediaWiki templates. They should
 use ''named'' parameters rather than numbered parameters.
 
 There is a sample form definition article in
-"MediaWiki:Sample-form.wiki" that came with this package, and a
-corresponding output template in "Template:Sample.wiki".
+"MediaWiki-Sample-form.wiki" that came with this package, and a
+corresponding output template in "Template-Sample.wiki".
 
 == Form definitions ==
 
