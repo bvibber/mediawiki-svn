@@ -15,6 +15,13 @@ function efNewUserNotifMessages() {
 	'newusernotifbody' => "Hello $1,\n\nA new user account, $2, has been created on $3 at $4.",
 ),
 
+'ar' => array(
+'newusernotifsubj' => 'إخطار مستخدم جديد ل$1',
+'newusernotifbody' => 'مرحبا يا $1،
+
+حساب مستخدم جديد، $2، تم إنشاؤه على $3 في $4.',
+),
+
 'de' => array(
 	'newusernotifsubj' => 'Benachrichtung für $1 über die Einrichtung eines neuen Benutzerskontos',
 	'newusernotifbody' => "Hallo $1,\n\nEin neues Benutzerkonto, $2, wurde am $4 auf $3 angelegt.",

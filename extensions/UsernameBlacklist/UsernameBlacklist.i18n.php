@@ -81,6 +81,20 @@ function efUsernameBlacklistMessages( $single = false ) {
 'blacklistedusernametext' => 'Ngì só sién-chet ke yung-fu-miàng he lâu [[MediaWiki:Usernameblacklist|Yung-fu-miàng het-miàng-tân lie̍t-péu]] fù-ha̍p. Chhiáng sién-chet nang-ngoi yit-ke miàng-chhṳ̂n.',
 ),
 
+'hsb' => array(
+'blacklistedusername' => 'Wužiwarske mjeno na lisćinje zawrjenjow',
+'blacklistedusernametext' => 'Wubrane wužiwarske mjeno steji na [[MediaWiki:Usernameblacklist|lisćinje zawrjenych wužiwarskich mjenow]]. Prošu wubjer druhe mjeno.',
+'usernameblacklist' => '<pre>
+# Zapiski w tutej lisćinje budu so jako dźěl regularneho wuraza wužiwać, 
+# hdyž so wužiwarske mjena z registracije blokuja. Kóždy zapisk měł dźěl
+# nječisłowaneje lisćiny być, na př.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => '{{PLURAL:$1|slědowaca linka|slědowacej lince|slědowace linki|slědowacych linkow}} {{PLURAL:$1|je|stej|su|je}}w lisćinje njewitanych wužiwarskich mjenow je {{PLURAL:$1|njepłaćiwa|njepłaćiwje|njepłaćiwe|njepłaćiwe}}; prošu skoriguj {{PLURAL:$1|ju|jej|je|je}} před składowanjom:',
+),
+
 'hu' => array(
 'blacklistedusername' => 'Feketelistás felhasználónév',
 'blacklistedusernametext' => 'Az általad választott felhasználónév megegyezik a egyik [[MediaWiki:Usernameblacklist|feketelistán lévővel]]. Válassz másikat.',

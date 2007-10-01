@@ -239,6 +239,11 @@ $messages = array(
 	'ogg-desc-link' => 'Wo tutej dataji',
 	),
 
+	'is' => array(
+	'ogg-play-sound' => 'Spila hljóð',
+	'ogg-more' => 'Meira...',
+	),
+
 	'it' => array(
 	'ogg-long-error' => '(File ogg non valido: $1)',
 	'ogg-play' => 'Riproduci',
