@@ -25,21 +25,32 @@ if (!defined('MEDIAWIKI')) {
 	exit( 1 );
 }
 
-$SpecialFormMessages =
-  array('en' => array('form' => 'Form',
-					  'formnoname' => 'No Form Name',
-					  'formnonametext' => 'You must provide a form name, like "Special:Form/Nameofform".',
-					  'formbadname' => 'Bad Form Name',
-					  'formbadnametext' => 'There is no form by that name.',
-					  'formpattern' => '$1-form',
-					  'formtemplatepattern' => '$1',
-					  'formtitlepattern' => 'Add New $1',
-					  'formsave' => 'Save',
-					  'formarticleexists' => 'Article Exists',
-					  'formarticleexiststext' => 'The article [[$1]] already exists.',
-					  'formsavesummary' => 'New article using [[Special:Form/$1]]',
-					  'formsaveerror' => 'Error Saving Form',
-					  'formsaveerrortext' => 'There was an unknown error saving article \'$1\'.'),
-		'fr' => array('form' => 'Formule'));
+$SpecialFormMessages =array(
+	'en' => array(
+		'form' => 'Form',
+		'formnoname' => 'No Form Name',
+		'formnonametext' => 'You must provide a form name, like "Special:Form/Nameofform".',
+		'formbadname' => 'Bad Form Name',
+		'formbadnametext' => 'There is no form by that name.',
+		'formpattern' => '$1-form',
+		'formtemplatepattern' => '$1',
+		'formtitlepattern' => 'Add New $1',
+		'formsave' => 'Save',
+		'formarticleexists' => 'Article Exists',
+		'formarticleexiststext' => 'The article [[$1]] already exists.',
+		'formsavesummary' => 'New article using [[Special:Form/$1]]',
+		'formsaveerror' => 'Error Saving Form',
+		'formsaveerrortext' => 'There was an unknown error saving article \'$1\'.',
+	),
+
+	'fr' => array(
+		'form' => 'Formule',
+	),
+
+	'nl' => array(
+		'form' => 'Formulier',
+		'formnoname' => 'Geen formuliernaam',
+	),
+);
 
 ?>
