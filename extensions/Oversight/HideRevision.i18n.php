@@ -152,7 +152,7 @@ Poistetut kohteet eivät näy kenellekään web-sivuston kautta, mutta kaikki po
 * Information personnelle inappropriée,
 *: ''Adresse personnelle et numéro de téléphone, numéro de sécurité sociale, etc...''
 
-''' L'abus de cette fonctionnalité impliquera la perte de ces privilèges.
+''' L'abus de cette fonctionnalité impliquera la perte de ces privilèges.'''
 
 Les articles effacés ne sont plus visibles dans ce système, mais ces suppressions sont journalisées et peuvent être restaurées manuellement par un administrateur ayant l'accès direct sur la base de données si vous avez fait une erreur.",
 'hiderevision-reason' => 'Motif (sera enregistré séparément) :',
@@ -179,7 +179,7 @@ Les articles effacés ne sont plus visibles dans ce système, mais ces suppressi
 'oversight-difference' => '(Différence par rapport à la révision précédente)',
 'oversight-prev' => 'Dernière révision précédente',
 'oversight-hidden' => 'Révision cachée',
-'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d\'Oversight.',
+'oversight-header' => 'Ci-dessous, figure la liste des révisions cachées de manière permanente au public. La divulgation de cette information peut avoir comme conséquence la déchéance des privilèges d’Oversight.',
 ),
 
 /* Hebrew (Rotem Liss) */
@@ -858,5 +858,3 @@ i administratori baze podataka ih mogu ručno vratiti ako napravite grešku.",
 	return $messages;
 
 }
-
-
