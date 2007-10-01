@@ -43,6 +43,22 @@ $SpecialFormMessages =array(
 		'formsaveerrortext' => 'There was an unknown error saving article \'$1\'.',
 	),
 
+	'de' => array(
+		'form'                  => 'Formular',
+		'formnoname'            => 'Kein Formular-Name',
+		'formnonametext'        => 'Du musst einen Formular-Namen angeben, z.B. „{{ns:Special}}:Form/Formularname“.',
+		'formbadname'           => 'Falscher Formular-Name',
+		'formbadnametext'       => 'Es gibt kein Formular mit diesem Namen',
+		'formpattern'           => '$1-Formular',
+		'formtitlepattern'      => 'Füge neue $1 hinzu',
+		'formsave'              => 'Speichern',
+		'formarticleexists'     => 'Seite bereits vorhanden',
+		'formarticleexiststext' => 'Die Seite „[[$1]]“ ist bereits vorhanden.',
+		'formsavesummary'       => 'Neue Seite, die auf [[{{ns:Special}}:Form/$1]] basiert',
+		'formsaveerror'         => 'Fehler beim Speichern des Formulares',
+		'formsaveerrortext'     => 'Es gab einen unbekannten Fehler beim Speichern der Seite „$1“.',
+	),
+
 	'fr' => array(
 		'form' => 'Formule',
 	),
@@ -52,5 +68,3 @@ $SpecialFormMessages =array(
 		'formnoname' => 'Geen formuliernaam',
 	),
 );
-
-?>
