@@ -168,7 +168,7 @@ function efInputBoxMessages() {
 'he' => array(
 	'tryexact'       => 'חיפוש בכותרת הדפים',
 	'searchfulltext' => 'חיפוש בתוכן הדפים',
-	'createarticle'  => 'יצירת דף',
+	'createarticle'  => 'יצירת הדף',
 ),
 
 'hr' => array(
