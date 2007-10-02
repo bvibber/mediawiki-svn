@@ -1,6 +1,6 @@
---- squid-2.6.STABLE14/src/http.c.orig	2007-03-26 23:08:00.000000000 +0000
-+++ squid-2.6.STABLE14/src/http.c	2007-09-05 15:41:14.000000000 +0000
-@@ -387,14 +387,48 @@
+--- src/http.c.orig	2007-09-26 15:42:22.000000000 +0000
++++ src/http.c	2007-09-26 15:44:42.000000000 +0000
+@@ -387,14 +387,49 @@
  	}
  	strListAdd(&vstr, name, ',');
  	hdr = httpHeaderGetByName(&request->header, name);
@@ -24,7 +24,7 @@
 +		    if (strListGetItem(&cookieitem, '=', &cookiename, &cookienamelen, &cookienamepos)) {
 +			char *cn = xmalloc(cookienamelen + 1);
 +			xstrncpy(cn, cookiename, cookienamelen + 1);
-+			if (strcmp(cn, "__utma") && strcmp(cn, "__utmb") && strcmp(cn, "__utmc") && strcmp(cn, "__utmv") && strcmp(cn, "__utmz")) {
++			if (strncmp(cn, "__utm", 5)) {
 +			    stringAppend(&newhdr, strBuf(cookieitem), strlen(strBuf(cookieitem)));
 +			    debug(11,3) ("cookie accepted = {%s}\n", cn);
 +			} else {
@@ -43,6 +43,7 @@
 +		    stringAppend(&vstr, value, strlen(value));
 +		    stringAppend(&vstr, "\"", 1);
 +		}
++		stringClean(&newhdr);
 +	    } else {
 +		value = rfc1738_escape_part(value);
 +		stringAppend(&vstr, "=\"", 2);
@@ -54,7 +55,7 @@
  	stringClean(&hdr);
      }
      safe_free(request->vary_hdr);
-@@ -403,7 +437,8 @@
+@@ -403,7 +438,8 @@
  	request->vary_hdr = xstrdup(strBuf(vary));
  	request->vary_headers = xstrdup(strBuf(vstr));
      }
