@@ -62,8 +62,8 @@ def extractUrl(line):
 	# ...
 	# 9. URL
 	bits = line.split(" ", 10)
-	if len(bits) > 8 and bits[7] == "GET":
-		return (bits[8],int(round(float(bits[2]))))
+	if len(bits) > 9 and bits[8] == "GET":
+		return (bits[9],int(round(float(bits[3]))))
 	else:
 		return None
 
