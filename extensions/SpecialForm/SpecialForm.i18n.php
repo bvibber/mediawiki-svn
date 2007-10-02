@@ -1,6 +1,6 @@
 <?php
 /**
- * SpecialForm.i18n.php -- I18N for form-based interface to start new articles
+ * SpecialForm.i18n.php -- I18N for form-based interface to start new pages
  * Copyright 2007 Vinismo, Inc. (http://vinismo.com/)
  *
  *  This program is free software; you can redistribute it and/or modify
@@ -36,11 +36,11 @@ $SpecialFormMessages =array(
 		'formtemplatepattern' => '$1',
 		'formtitlepattern' => 'Add New $1',
 		'formsave' => 'Save',
-		'formarticleexists' => 'Article Exists',
-		'formarticleexiststext' => 'The article [[$1]] already exists.',
-		'formsavesummary' => 'New article using [[Special:Form/$1]]',
+		'formarticleexists' => 'Page Exists',
+		'formarticleexiststext' => 'The page [[$1]] already exists.',
+		'formsavesummary' => 'New page using [[Special:Form/$1]]',
 		'formsaveerror' => 'Error Saving Form',
-		'formsaveerrortext' => 'There was an unknown error saving article \'$1\'.',
+		'formsaveerrortext' => 'There was an unknown error saving page \'$1\'.',
 	),
 
 	'de' => array(
@@ -60,7 +60,7 @@ $SpecialFormMessages =array(
 	),
 
 	'fr' => array(
-        'form' => 'Formulaire',
+		'form' => 'Formulaire',
 		'formnoname' => 'Aucun nom',
 		'formnonametext' => 'Veuillez spécifier le nom du formulaire, sous la forme "Special:Formulaire/NomDuFormulaire".',
 		'formbadname' => 'Nom incorrect',
@@ -79,5 +79,17 @@ $SpecialFormMessages =array(
 	'nl' => array(
 		'form' => 'Formulier',
 		'formnoname' => 'Geen formuliernaam',
+		'formnonametext' => 'Geef een formuliernaam op, bijvoorbeeld "Special:Form/Formuliernaam".',
+		'formbadname' => 'Ongeldige formuliernaam',
+		'formbadnametext' => 'Er bestaat geen formulier met die naam.',
+		'formpattern' => '$1-form',#identical but defined
+		'formtemplatepattern' => '$1',#identical but defined
+		'formtitlepattern' => 'Voeg nieuw $1 toe',
+		'formsave' => 'Opslaan',
+		'formarticleexists' => 'Pagina bestaat al',
+		'formarticleexiststext' => 'De pagina [[$1]] bestaat al.',
+		'formsavesummary' => 'Nieuwe pagina via [[Special:Form/$1]]',
+		'formsaveerror' => 'Fout bij opslaan formulier',
+		'formsaveerrortext' => 'Er is een onbekende fout opgetreden bij het opslaan van pagina \'$1\'.',
 	),
 );
