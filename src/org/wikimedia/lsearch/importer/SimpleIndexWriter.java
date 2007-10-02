@@ -17,6 +17,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.index.WikiSimilarity;
+import org.wikimedia.lsearch.ranks.Links;
 
 /**
  * IndexWriter for building indexes from scratch.
@@ -33,8 +34,10 @@ public class SimpleIndexWriter {
 	protected Integer mergeFactor, maxBufDocs;
 	protected boolean newIndex;
 	protected String langCode;
+	protected Links links;
 	
-	public SimpleIndexWriter(IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
+	public SimpleIndexWriter(Links links, IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
+		this.links = links;
 		this.iid = iid;
 		this.optimize = optimize;
 		this.mergeFactor = mergeFactor;
@@ -43,7 +46,7 @@ public class SimpleIndexWriter {
 		GlobalConfiguration global = GlobalConfiguration.getInstance(); 
 		langCode = global.getLanguage(iid.getDBname());
 		FieldBuilder.Case dCase = (global.exactCaseIndex(iid.getDBname()))? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 		
-		builder = new FieldBuilder(langCode,dCase);
+		builder = new FieldBuilder(iid,dCase);
 		indexes = new HashMap<String,IndexWriter>();
 		// open all relevant indexes
 		if(iid.isSingle())
@@ -109,7 +112,7 @@ public class SimpleIndexWriter {
 		IndexWriter writer = indexes.get(target.toString());
 		if(writer == null)
 			return;
-		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,builder,iid);
+		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,builder,iid,links);
 		Document doc = (Document) ret[0];
 		Analyzer analyzer = (Analyzer) ret[1];
 		try {

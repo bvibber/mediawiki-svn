@@ -36,7 +36,7 @@ public class CompactRelated {
 		this.title = title;
 	}
 	public String serialize(){
-		return score+" "+relates;
+		return ((float)score)+" "+relates;
 	}
 	
 	public static ArrayList<String> convertToStringList(Collection<CompactRelated> rel){

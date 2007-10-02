@@ -128,7 +128,7 @@ public class HighlightDaemon extends Thread {
 		FieldBuilder.Case dCase = exactCase? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE;
 		String lang = global.getLanguage(dbname);
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,exactCase);
-		FieldBuilder.BuilderSet bs = new FieldBuilder(lang,dCase).getBuilder(dCase);
+		FieldBuilder.BuilderSet bs = new FieldBuilder(iid,dCase).getBuilder(dCase);
 		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),
 				new NamespaceFilter("0"),analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE,null);
 		Query q = parser.parseFourPass(query,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
@@ -139,7 +139,7 @@ public class HighlightDaemon extends Thread {
 		
 		for(Article ar : articles){
 			log.debug("Sending highlighted text for "+ar);
-			String clean = new CleanupParser(ar.getContents(),lang).parse();
+			String clean = new CleanupParser(ar.getContents(),iid).parse();
 			TokenStream tokens = analyzer.tokenStream("contents",clean);
 			out.println("HIGHLIGHTING "+ar.getNamespace()+" "+ar.getTitle());
 			String[] highlighted = highlighter.getBestFragments(tokens,clean,segments);			

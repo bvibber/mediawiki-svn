@@ -41,7 +41,7 @@ abstract public class HttpHandler extends Thread {
 	protected String postData;
 
 	protected final int BUF_SIZE = 8192;
-	protected final char[] outputBuffer = new char[BUF_SIZE];
+	protected char[] outputBuffer = new char[BUF_SIZE];
 	protected int bufLength = 0;
 
 	protected int minorVersion; // the x in HTTP 1.x
@@ -227,9 +227,12 @@ abstract public class HttpHandler extends Thread {
 		log.debug(">>>"+sout);
 		// write to buffer instead directly to stream!
 		char[] s = (sout+"\r\n").toCharArray(); 
-		if(bufLength + s.length >= BUF_SIZE)
+		if(bufLength + s.length >= outputBuffer.length)
 			flushOutput();
-		// FIXME: what if array is 2x larger than buffer?
+		// extend buffer if needed
+		if(s.length > bufLength){
+			outputBuffer = new char[s.length*2];
+		}
 		System.arraycopy(s,0,outputBuffer,bufLength,s.length);
 		bufLength+=s.length;
 	}

@@ -38,6 +38,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.util.Command;
+import org.wikimedia.lsearch.util.FSUtils;
 
 /**
  * Indexer.  
@@ -235,20 +236,6 @@ public class IndexThread extends Thread {
 		}
 	}
 	
-	protected static void deleteDirRecursive(File file){
-		if(!file.exists())
-			return;
-		else if(file.isDirectory()){
-			File[] files = file.listFiles();
-			for(File f: files)
-				deleteDirRecursive(f);
-			file.delete();
-			log.debug("Deleted old snapshot at "+file);
-		} else{
-			file.delete();			
-		}
-	}
-	
 	/**
 	 * Make a snapshot of all changed indexes
 	 *
@@ -296,20 +283,27 @@ public class IndexThread extends Thread {
 			File[] files = spd.listFiles();
 			for(File f: files){
 				if(!f.getAbsolutePath().equals(li.path)) // leave the last snapshot
-					deleteDirRecursive(f);
+					FSUtils.deleteRecursive(f);
 			}
 		}
 		new File(snapshot).mkdirs();
+		try {
+			FSUtils.createHardLinkRecursive(indexPath,snapshot);
+		} catch (IOException e) {
+			log.error("Error making snapshot "+snapshot+": "+e.getMessage());
+			return;
+		}
+		/*
 		File ind =new File(indexPath);
 		for(File f: ind.listFiles()){
-			// use a cp -lr command for each file in the index
+			// hardlink the snapshot
 			try {
 				Command.exec("/bin/cp -lr "+indexPath+sep+f.getName()+" "+snapshot+sep+f.getName());
 			} catch (IOException e) {
 				log.error("Error making snapshot "+snapshot+": "+e.getMessage());
 				continue;
 			}
-		}
+		} */
 		log.info("Made snapshot "+snapshot);		
 	}
 	

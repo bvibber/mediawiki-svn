@@ -94,6 +94,8 @@ public class SpellCheckTest {
    	{"cource", "course"},
    	{"carolene products",""},
    	{"orvileWright","overnight"},
+   	{"livia tremor control","olivia tremor control"},
+   	{"ommmited","omitted"},
    	
    };
 

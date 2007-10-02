@@ -3,6 +3,8 @@ package org.wikimedia.lsearch.ranks;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -35,12 +37,14 @@ public class LinkReader implements DumpWriter {
 	Links links;
 	HashSet<String> interwiki;
 	String langCode;
+	IndexId iid;
 
-	public LinkReader(Links links, String langCode){
+	public LinkReader(Links links, IndexId iid, String langCode){
 		this.links = links;
 		if(langCode == null || langCode.equals(""))
 			langCode = "en";
 		this.langCode = langCode;
+		this.iid = iid;
 		interwiki = Localization.getInterwiki();
 	}
 	public void writeRevision(Revision revision) throws IOException {
@@ -50,10 +54,23 @@ public class LinkReader implements DumpWriter {
 		this.page = page;
 	}
 	public void writeEndPage() throws IOException {
-		links.addArticleInfo(revision.Text,new Title(page.Title.Namespace,page.Title.Text));
+		Title t = new Title(page.Title.Namespace,page.Title.Text);
+		try{
+			links.addArticleInfo(revision.Text,t);
+		} catch(Exception e){
+			log.error("Error adding article "+t+" : "+e.getMessage());
+			e.printStackTrace();
+		}
 	}	
 	public void writeSiteinfo(Siteinfo info) throws IOException {
 		siteinfo = info;
+		// write siteinfo to localization
+		Iterator it = info.Namespaces.orderedEntries();
+		while(it.hasNext()){
+			Entry<Integer,String> pair = (Entry<Integer,String>)it.next();
+			Localization.addCustomMapping(pair.getValue(),pair.getKey(),iid.getDBname());
+			links.addToNamespaceMap(pair.getValue(),pair.getKey());
+		}
 	}	
 	public void close() throws IOException {
 		// nop		

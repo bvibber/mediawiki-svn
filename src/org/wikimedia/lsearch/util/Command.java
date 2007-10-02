@@ -24,10 +24,17 @@ public class Command {
 	}
 	
 	public static void exec(String command) throws IOException {
+		exec(new String[] {command});
+	}
+	
+	public static void exec(String[] command) throws IOException {
 		Process p = null;
 		log.debug("Executing shell command "+command);		
 		try {
-			p = Runtime.getRuntime().exec(command);
+			if(command.length == 1)
+				p = Runtime.getRuntime().exec(command[0]);
+			else
+				p = Runtime.getRuntime().exec(command);
 			p.waitFor();		
 			if(p.exitValue()!=0){
 				log.warn("Got exit value "+p.exitValue()+" while executing "+command);
@@ -43,6 +50,8 @@ public class Command {
 			throw new IOException("Interrupted");
 		} finally {
 			closeStreams(p);
+			if(p != null)
+				p.destroy();
 		}
 	}
 

@@ -18,6 +18,7 @@ import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser.NamespacePolicy;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
+import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 
@@ -40,7 +41,7 @@ public class WikiQueryParserTest extends TestCase {
 		WikiQueryParser.KEYWORD_BOOST = 0.05f;
 		WikiQueryParser.ADD_TITLE_PHRASES = false;
 		WikiIndexModifier.ALT_TITLES = 3;		
-		FieldBuilder.BuilderSet bs = new FieldBuilder("").getBuilder();
+		FieldBuilder.BuilderSet bs = new FieldBuilder(IndexId.get("enwiki")).getBuilder();
 		FieldNameFactory ff = new FieldNameFactory();
 		try{
 			WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),new SimpleAnalyzer(),bs,null);
@@ -126,9 +127,10 @@ public class WikiQueryParserTest extends TestCase {
 			// extraction of phrases
 			ArrayList<String> stopWords = new ArrayList<String>();
 			stopWords.add("the"); stopWords.add("who");
-			stopWords.add("is"); stopWords.add("a");			
-			Analyzer analyzer = Analyzers.getSearcherAnalyzer("en");
-			bs = new FieldBuilder("en").getBuilder();
+			stopWords.add("is"); stopWords.add("a");	
+			IndexId enwiki = IndexId.get("enwiki");
+			Analyzer analyzer = Analyzers.getSearcherAnalyzer(enwiki);
+			bs = new FieldBuilder(enwiki).getBuilder();
 			parser = new WikiQueryParser(bs.getFields().title(),"0",analyzer,bs,NamespacePolicy.IGNORE,stopWords);
 			assertEquals("[how, do, you, do]",parser.extractWords(parser.parseRaw("how do you do")).toString());
 			assertEquals("[making, something, rest]",parser.extractWords(parser.parseRaw("(help:making something incategory:blah) OR (rest incategory:crest)")).toString());
@@ -230,8 +232,8 @@ public class WikiQueryParserTest extends TestCase {
 			// ==================================
 			// Tests with actual params :)
 			// ==================================
-			analyzer = Analyzers.getSearcherAnalyzer("en");
-			bs = new FieldBuilder("en").getBuilder();
+			analyzer = Analyzers.getSearcherAnalyzer(enwiki);
+			bs = new FieldBuilder(enwiki).getBuilder();
 			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.LEAVE);
 			WikiQueryParser.ADD_STEM_TITLE = false;
 			WikiQueryParser.STEM_TITLE_BOOST = 0;
@@ -354,8 +356,8 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("(+(contents:something contents:someth^0.5) +contents:for +(contents:godel contents:goedel)) (+title:something^2.0 +title:for^2.0 +(title:godel^2.0 title:goedel^2.0)) ((+alttitle1:something^6.0 +alttitle1:for^6.0 +(alttitle1:godel^6.0 alttitle1:goedel^6.0)) (+alttitle2:something^6.0 +alttitle2:for^6.0 +(alttitle2:godel^6.0 alttitle2:goedel^6.0)) (+alttitle3:something^6.0 +alttitle3:for^6.0 +(alttitle3:godel^6.0 alttitle3:goedel^6.0)))",q.toString());
 
 			// Backward compatiblity for complex filters
-			analyzer = Analyzers.getSearcherAnalyzer("en");
-			bs = new FieldBuilder("en").getBuilder();
+			analyzer = Analyzers.getSearcherAnalyzer(enwiki);
+			bs = new FieldBuilder(enwiki).getBuilder();
 			parser = new WikiQueryParser(bs.getFields().contents(),"0,1,4,12",analyzer,bs,NamespacePolicy.IGNORE);
 			
 			q = parser.parseTwoPass("beans everyone",NamespacePolicy.REWRITE);
@@ -381,15 +383,15 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("[(many,1,5), (more,7,11), (has,16,19), (some,23,27), (g,29,30)]",t.toString());
 			
 			// German
-			analyzer = Analyzers.getSearcherAnalyzer("de");
-			bs = new FieldBuilder("de").getBuilder();
+			analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("dewiki"));
+			bs = new FieldBuilder(IndexId.get("dewiki")).getBuilder();
 			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.IGNORE);
 			q = parser.parseTwoPass("welche rolle spielen Mineralstoffe in der Ernährung?",NamespacePolicy.IGNORE);
 			assertEquals("(+(contents:welche contents:welch^0.5) +(contents:rolle contents:roll^0.5) +(contents:spielen contents:spiel^0.5) +(contents:mineralstoffe contents:mineralstoff^0.5) +contents:in +contents:der +(+(contents:ernahrung contents:ernahr^0.5) (contents:ernaehrung contents:ernaehr^0.5))) (+title:welche^2.0 +title:rolle^2.0 +title:spielen^2.0 +title:mineralstoffe^2.0 +title:in^2.0 +title:der^2.0 +(title:ernahrung^2.0 title:ernaehrung^2.0))",q.toString());			
 			
 			// CJK
-			analyzer = Analyzers.getSearcherAnalyzer("ja");
-			bs = new FieldBuilder("ja").getBuilder();
+			analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("jawiki"));
+			bs = new FieldBuilder(IndexId.get("jawiki")).getBuilder();
 			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.IGNORE);
 			q = parser.parseFourPass("うろパン",NamespacePolicy.IGNORE,false);
 			assertEquals("contents:\"うろ ろハ ハン\" title:\"うろ ろハ ハン\"^2.0 (alttitle1:\"うろ ろハ ハン\"^6.0 alttitle2:\"うろ ろハ ハン\"^6.0 alttitle3:\"うろ ろハ ハン\"^6.0)",q.toString());
@@ -402,8 +404,8 @@ public class WikiQueryParserTest extends TestCase {
 			
 			
 			// Malayalam
-			analyzer = Analyzers.getSearcherAnalyzer("ml");
-			bs = new FieldBuilder("ml").getBuilder();
+			analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("mlwiki"));
+			bs = new FieldBuilder(IndexId.get("mlwiki")).getBuilder();
 			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.IGNORE);
 			q = parser.parseFourPass("കൊറിയ ",NamespacePolicy.IGNORE,false);
 			assertEquals("contents:കറയ title:കറയ^2.0 (alttitle1:കറയ^6.0 alttitle2:കറയ^6.0 alttitle3:കറയ^6.0)",q.toString());
@@ -420,8 +422,8 @@ public class WikiQueryParserTest extends TestCase {
 			WikiQueryParser.STEM_TITLE_BOOST = 1;
 			
 			// Localization tests
-			analyzer = Analyzers.getSearcherAnalyzer("sr");
-			bs = new FieldBuilder("sr").getBuilder();
+			analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("srwiki"));
+			bs = new FieldBuilder(IndexId.get("srwiki")).getBuilder();
 			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.LEAVE);
 			
 			q = parser.parseTwoPass("all:добродошли на википедију",NamespacePolicy.IGNORE);
@@ -430,8 +432,8 @@ public class WikiQueryParserTest extends TestCase {
 			q = parser.parseTwoPass("all:dobrodošli na šđčćž",NamespacePolicy.IGNORE);
 			assertEquals("(+contents:dobrodosli +contents:na +contents:sdjccz) (+title:dobrodosli^3.0 +title:na^3.0 +title:sdjccz^3.0)",q.toString());
 			
-			analyzer = Analyzers.getSearcherAnalyzer("th");
-			bs = new FieldBuilder("th").getBuilder();
+			analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("thwiki"));
+			bs = new FieldBuilder(IndexId.get("thwiki")).getBuilder();
 			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.LEAVE);
 			
 			q = parser.parseTwoPass("ภาษาไทย",NamespacePolicy.IGNORE);
@@ -441,8 +443,8 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("(+namespace:12 +(+contents:ภาษา +contents:ไทย)) (+namespace:12 +(+title:ภาษา^3.0 +title:ไทย^3.0))",q.toString());
 			
 			// vietnamese
-			analyzer = Analyzers.getSearcherAnalyzer("vi");
-			bs = new FieldBuilder("vi").getBuilder();
+			analyzer = Analyzers.getSearcherAnalyzer(IndexId.get("viwiki"));
+			bs = new FieldBuilder(IndexId.get("viwiki")).getBuilder();
 			parser = new WikiQueryParser(bs.getFields().contents(),"0",analyzer,bs,NamespacePolicy.LEAVE);
 			
 			q = parser.parseTwoPass("Gánh nước đêm trăng",NamespacePolicy.IGNORE);

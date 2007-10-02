@@ -32,17 +32,20 @@ import org.wikimedia.lsearch.spell.api.Dictionary.Word;
  * @author rainman
  *
  */
+@Deprecated
 public class LinkAnalysisStorage extends LuceneStorage {
 	static Logger log = Logger.getLogger(LinkAnalysisStorage.class);
 	protected SetBasedFieldSelector selRef;
 	
 	public LinkAnalysisStorage(IndexId iid){
-		super(iid.getLinkAnalysis());
+		//super(iid.getLinkAnalysis());
+		super(iid);
 		init();
 	}
 	
 	public LinkAnalysisStorage(IndexId iid, String path){
-		super(iid.getLinkAnalysis(),path);
+		//super(iid.getLinkAnalysis(),path);
+		super(iid,path);
 		init();
 	}
 	

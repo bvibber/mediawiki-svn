@@ -9,6 +9,7 @@ import java.util.Hashtable;
 
 import org.apache.commons.lang.WordUtils;
 import org.apache.lucene.analysis.Token;
+import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
@@ -67,6 +68,7 @@ public class FastWikiTokenizerEngine {
 	
 	/** language code */
 	private String language;
+	private IndexId iid;
 	/** language code -> set (image namespace names) */
 	private static Hashtable<String,HashSet<String>> imageLocalized = new Hashtable<String,HashSet<String>>();
 	/** language code -> set (category namespace names) */
@@ -111,10 +113,11 @@ public class FastWikiTokenizerEngine {
 		}
 	}
 	
-	public FastWikiTokenizerEngine(String text, String lang, boolean exactCase){
+	public FastWikiTokenizerEngine(String text, IndexId iid, boolean exactCase){
 		this.text = text.toCharArray();
 		this.textString = text;
-		this.language = lang;
+		this.language = iid.getLangCode();
+		this.iid = iid;
 		this.exactCase = exactCase;
 		textLength = text.length();
 		init();
@@ -744,7 +747,7 @@ public class FastWikiTokenizerEngine {
 		else if(language!=null && language.length()!=0){
 			HashSet<String> loc = imageLocalized.get(language);
 			if(loc == null){
-				loc = Localization.getLocalizedImage(language);
+				loc = Localization.getLocalizedImage(language,iid.getDBname());
 				imageLocalized.put(language,loc);
 			}
 			if(loc.contains(prefix))
@@ -761,7 +764,7 @@ public class FastWikiTokenizerEngine {
 		else if(language!=null && language.length()!=0){
 			HashSet<String> loc = categoryLocalized.get(language);
 			if(loc == null){
-				loc = Localization.getLocalizedCategory(language);
+				loc = Localization.getLocalizedCategory(language,iid.getDBname());
 				categoryLocalized.put(language,loc);
 			}
 			if(loc.contains(prefix))

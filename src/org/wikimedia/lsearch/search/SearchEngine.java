@@ -5,6 +5,7 @@ import java.io.Reader;
 import java.net.URI;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
@@ -31,14 +32,19 @@ import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.analyzers.WikiQueryParser;
 import org.wikimedia.lsearch.beans.ResultSet;
 import org.wikimedia.lsearch.beans.SearchResults;
+import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.frontend.SearchDaemon;
 import org.wikimedia.lsearch.frontend.SearchServer;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.StringList;
+import org.wikimedia.lsearch.related.Related;
+import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.spell.Suggest;
 import org.wikimedia.lsearch.spell.SuggestQuery;
+import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.QueryStringMap;
 
 /**
@@ -54,6 +60,7 @@ public class SearchEngine {
 	protected final int maxlines = 1000;
 	protected final int maxoffset = 10000;
 	protected static GlobalConfiguration global = null;
+	protected static Hashtable<String,Hashtable<String,Integer>> dbNamespaces = new Hashtable<String,Hashtable<String,Integer>>();
 	
 	public SearchEngine(){
 		if(global == null)
@@ -102,17 +109,87 @@ public class SearchEngine {
 				// TODO: return searchTitles(searchterm);
 		} else if (what.equals("prefix")){
 			return prefixSearch(iid, searchterm);
+		} else if (what.equals("related")){
+			int offset = 0, limit = 100; boolean exactCase = false;
+			if (query.containsKey("offset"))
+				offset = Math.max(Integer.parseInt((String)query.get("offset")), 0);
+			if (query.containsKey("limit"))
+				limit = Math.min(Integer.parseInt((String)query.get("limit")), maxlines);
+			return relatedSearch(iid, searchterm, offset, limit);
 		} else {
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Unrecognized search type. Try one of: " +
-			              "search, explain, raw, rawexplain, prefix.");
+			              "search, explain, raw, rawexplain, prefix, related.");
 			log.warn("Unknown request type [" + what + "].");
 			return res;
 		}
 		return null;
 	}
 	
-	private SearchResults prefixSearch(IndexId iid, String searchterm) {
+	/** Convert User:Rainman into 2:Rainman  */
+	protected String getKey(String title, IndexId iid){
+		int colon = title.indexOf(':');
+		if(colon != -1 && colon != title.length()-1){
+			String ns = title.substring(0,colon);
+			Integer inx = dbNamespaces.get(iid.getDBname()).get(ns.toLowerCase());
+			if(inx != null){
+				return inx +":"+ title.substring(colon+1);
+			}
+		}
+		
+		return "0:" + title;		
+	}
+	
+	protected SearchResults relatedSearch(IndexId iid, String searchterm, int offset, int limit) {
+		readLocalization(iid);
+		IndexId rel = iid.getRelated();
+		IndexId lin = iid.getLinks();
+		SearcherCache cache = SearcherCache.getInstance();
+		SearchResults res = new SearchResults();
+		try {
+			IndexSearcherMul searcher = cache.getLocalSearcher(rel);
+			IndexReader reader = searcher.getIndexReader();
+			String key = getKey(searchterm,iid);
+			TermDocs td = reader.termDocs(new Term("key",key));
+			if(td.next()){
+				ArrayList<RelatedTitle> col = Related.convertToRelatedTitleList(new StringList(reader.document(td.doc()).get("related")).toCollection());
+				res.setNumHits(col.size());
+				res.setSuccess(true);
+				// TODO: this is extremely slow
+				Links links = Links.openForRead(lin,lin.getSearchPath());
+				for(int i=offset;i<offset+limit && i<col.size();i++){
+					RelatedTitle rt = col.get(i);
+					Title t = rt.getRelated();
+					ResultSet rs = new ResultSet(rt.getScore(),t.getNamespaceAsString(),t.getTitle());
+					rs.addContext(links.getContext(t.getKey(),key));
+					res.addResult(rs);
+				}
+			} else{
+				res.setSuccess(true);
+				res.setNumHits(0);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+			log.error("I/O error in relatedSearch on "+rel+" : "+e.getMessage());			
+			res.setErrorMsg("I/O Error processing index for "+rel);
+		}
+		return res;
+	}
+
+	protected void readLocalization(IndexId iid){
+		if(!dbNamespaces.containsKey(iid.getDBname())){
+			synchronized(dbNamespaces){
+				HashMap<String,Integer> m = Localization.getLocalizedNamespaces(iid.getLangCode(),iid.getDBname());
+				Hashtable<String,Integer> map = new Hashtable<String,Integer>();
+				if(m != null)
+					map.putAll(m);
+				dbNamespaces.put(iid.getDBname(),map);
+			}
+		}
+	}
+	
+	protected SearchResults prefixSearch(IndexId iid, String searchterm) {
+		readLocalization(iid);
 		IndexId pre = iid.getPrefix();
 		SearcherCache cache = SearcherCache.getInstance();
 		SearchResults res = new SearchResults();
@@ -144,7 +221,8 @@ public class SearchEngine {
 			}			
 		} catch (IOException e) {
 			// res.setErrorMsg("Internal error during prefix search: "+e.getMessage());
-			log.error("Internal error in SearchEngine::prefixSearch : "+e.getMessage());
+			log.error("Internal error in prefixSearch on "+pre+" : "+e.getMessage());
+			res.setErrorMsg("I/O error on index "+pre);
 		}
 		return res;
 	}
@@ -166,9 +244,10 @@ public class SearchEngine {
 				localfilter = null;
 			if(localfilter != null)
 				log.info("Using local filter: "+localfilter);
-			Hits hits = searcher.search(q,localfilter);
+			TopDocs hits = searcher.search(q,localfilter,offset+limit);
 			return makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);		
 		} catch (IOException e) {
+			e.printStackTrace();
 			SearchResults res = new SearchResults();
 			res.setErrorMsg("Internal error in SearchEngine: "+e.getMessage());
 			log.error("Internal error in SearchEngine while trying to search main part: "+e.getMessage());
@@ -186,7 +265,7 @@ public class SearchEngine {
 		if(nsDefault == null || nsDefault.cardinality() == 0)
 			nsDefault = new NamespaceFilter("0"); // default to main namespace
 		FieldBuilder.Case dCase = exactCase? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE;
-		FieldBuilder.BuilderSet bs = new FieldBuilder(global.getLanguage(iid.getDBname()),dCase).getBuilder(dCase);
+		FieldBuilder.BuilderSet bs = new FieldBuilder(iid,dCase).getBuilder(dCase);
 		ArrayList<String> stopWords = null;
 		try{
 			stopWords = StopWords.getCached(iid);
@@ -354,7 +433,8 @@ public class SearchEngine {
 
 	/** Our scores can span several orders of magnitude, transform them to be more relevant to the user */
 	public float transformScore(double score){
-		return (float) (Math.log10(1+score*99)/2);		
+		//return (float) (Math.log10(1+score*99)/2);
+		return (float) score;
 	}
 	
 	protected SearchResults makeSearchResults(SearchableMul s, TopDocs hits, int offset, int limit, IndexId iid, String searchterm, Query q, long searchStart, boolean explain) throws IOException{
@@ -375,14 +455,15 @@ public class SearchEngine {
 		// fetch documents
 		Document[] docs = s.docs(docids);
 		int j=0;
-		float maxScore = hits.getMaxScore();
+		//float maxScore = hits.getMaxScore();
+		float maxScore = 1;
 		for(Document doc : docs){
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");
 			float score = transformScore(scores[j]/maxScore); 
 			ResultSet rs = new ResultSet(score,namespace,title);
 			if(explain)
-				rs.setExplanation(((WikiSearcher)s).explain(q,docids[j]));
+				rs.setExplanation(((Searcher)s).explain(q,docids[j]));
 			res.addResult(rs);
 			j++;
 		}
@@ -410,8 +491,8 @@ public class SearchEngine {
 		Document[] docs = s.docs(docids);
 		int j=0;
 		float maxScore = 1;
-		if(numhits>0)
-			maxScore = hits.score(0);
+		//if(numhits>0)
+		//	maxScore = hits.score(0);
 		for(Document doc : docs){
 			String namespace = doc.get("namespace");
 			String title = doc.get("title");

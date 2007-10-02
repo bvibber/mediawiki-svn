@@ -11,6 +11,7 @@ import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.de.GermanStemFilter;
 import org.apache.lucene.analysis.snowball.SnowballFilter;
 import org.apache.lucene.analysis.th.ThaiWordFilter;
+import org.wikimedia.lsearch.config.IndexId;
 
 /**
  * Make a language-dependent pair of filters. The custom filter is to be applied before the stemmer.
@@ -20,6 +21,7 @@ import org.apache.lucene.analysis.th.ThaiWordFilter;
  */
 public class FilterFactory {
 	protected String lang;
+	protected IndexId iid;
 	protected String snowballName = null;
 	protected boolean useStemmer,useLangFilter;
 	protected Class stemmer = null;
@@ -33,18 +35,20 @@ public class FilterFactory {
 	public enum Type { FULL, NO_STEM, SPELL_CHECK };
 	protected Type type = null;
 	
-	public FilterFactory(String lang){
-		this(lang,Type.FULL);
+	public FilterFactory(IndexId iid){
+		this(iid,Type.FULL);
 	}
 		
-	public FilterFactory(String lang, Type type){
-		this.lang = lang;
+	public FilterFactory(IndexId iid, Type type){
+		this.lang = iid.getLangCode();
+		this.iid = iid;
 		this.type = type;
 		init();
-		noStemmerFilterFactory = new FilterFactory(lang,snowballName,false,useLangFilter,null,langFilter,additionalFilters); 
+		noStemmerFilterFactory = new FilterFactory(iid,lang,snowballName,false,useLangFilter,null,langFilter,additionalFilters); 
 	}
 		
-	public FilterFactory(String lang, String snowballName, boolean useStemmer, boolean useLangFilter, Class stemmer, Class langFilter, ArrayList<Class> additionalFilters) {
+	public FilterFactory(IndexId iid, String lang, String snowballName, boolean useStemmer, boolean useLangFilter, Class stemmer, Class langFilter, ArrayList<Class> additionalFilters) {
+		this.iid = iid;
 		this.lang = lang;
 		this.snowballName = snowballName;
 		this.useStemmer = useStemmer;
@@ -193,6 +197,12 @@ public class FilterFactory {
 	public void setStopWords(Set<String> stopWords){
 		this.stopWords = stopWords;
 	}
+
+	public IndexId getIndexId() {
+		return iid;
+	}
+	
+	
 	
 	
 }

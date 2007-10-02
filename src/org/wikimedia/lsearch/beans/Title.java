@@ -17,11 +17,11 @@ public class Title implements java.io.Serializable {
     }
     
     public Title(String key){
-   	 String[] parts = key.split(":",2);
-   	 if(parts.length != 2)
+   	 int col = key.indexOf(':');
+   	 if(col == -1)
    		 throw new RuntimeException("Wrong key format in Title constructor");
-   	 this.namespace = Integer.parseInt(parts[0]);
-   	 this.title = parts[1];
+   	 this.namespace = Integer.parseInt(key.substring(0,col));
+   	 this.title = key.substring(col+1);
     }
     
     public String getKey(){

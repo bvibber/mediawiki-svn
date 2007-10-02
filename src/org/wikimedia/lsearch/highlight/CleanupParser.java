@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.highlight;
 import java.util.HashSet;
 import java.util.Hashtable;
 
+import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.Localization;
 
 /**
@@ -34,6 +35,7 @@ public class CleanupParser {
 	
 	/** language code */
 	private String language;
+	private IndexId iid;
 	/** language code -> set (image namespace names) */
 	private static Hashtable<String,HashSet<String>> imageLocalized = new Hashtable<String,HashSet<String>>();
 	/** language code -> set (category namespace names) */
@@ -47,10 +49,11 @@ public class CleanupParser {
 		
 	enum FetchState { WORD, CATEGORY, INTERWIKI, KEYWORD };
 	
-	public CleanupParser(String text, String lang){
+	public CleanupParser(String text, IndexId iid){
 		this.text = text.toCharArray();
 		this.textString = text;
-		this.language = lang;
+		this.iid = iid;
+		this.language = iid.getLangCode();
 		textLength = text.length();
 		out = new char[textLength];
 	}
@@ -409,7 +412,7 @@ public class CleanupParser {
 		else if(language!=null && language.length()!=0){
 			HashSet<String> loc = imageLocalized.get(language);
 			if(loc == null){
-				loc = Localization.getLocalizedImage(language);
+				loc = Localization.getLocalizedImage(language,iid.getDBname());
 				imageLocalized.put(language,loc);
 			}
 			if(loc.contains(prefix))
@@ -426,7 +429,7 @@ public class CleanupParser {
 		else if(language!=null && language.length()!=0){
 			HashSet<String> loc = categoryLocalized.get(language);
 			if(loc == null){
-				loc = Localization.getLocalizedCategory(language);
+				loc = Localization.getLocalizedCategory(language,iid.getDBname());
 				categoryLocalized.put(language,loc);
 			}
 			if(loc.contains(prefix))

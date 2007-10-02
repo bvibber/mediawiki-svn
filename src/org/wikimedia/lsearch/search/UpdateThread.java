@@ -27,6 +27,7 @@ import org.wikimedia.lsearch.index.WikiSimilarity;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
 import org.wikimedia.lsearch.interoperability.RMIServer;
 import org.wikimedia.lsearch.util.Command;
+import org.wikimedia.lsearch.util.FSUtils;
 
 
 /**
@@ -179,16 +180,16 @@ public class UpdateThread extends Thread {
 		try{
 			// if local, use cp -lr instead of rsync
 			if(global.isLocalhost(iid.getIndexHost())){
-				Command.exec("/bin/cp -lr "+iid.getSnapshotPath()+sep+li.timestamp+" "+iid.getUpdatePath());
+				FSUtils.createHardLinkRecursive(
+						iid.getSnapshotPath()+sep+li.timestamp,
+						updatepath);
 			} else{
 				File ind = new File(iid.getCanonicalSearchPath());
 
 				if(ind.exists()){ // prepare a local hard-linked copy of index
-					ind = ind.getCanonicalFile();
-					for(File f: ind.listFiles()){
-						//  a cp -lr command for each file in the index
-						Command.exec("/bin/cp -lr "+ind.getCanonicalPath()+sep+f.getName()+" "+updatepath+sep+f.getName());
-					}
+					FSUtils.createHardLinkRecursive(
+							ind.getCanonicalPath(),
+							updatepath);					
 				}
 				long startTime = System.currentTimeMillis();
 				// rsync
@@ -208,8 +209,8 @@ public class UpdateThread extends Thread {
 			SearcherCache.SearcherPool pool = new SearcherCache.SearcherPool(iid,li.path,cache.getSearchPoolSize()); 
 			
 			// refresh the symlink
-			Command.exec("/bin/rm -rf "+iid.getSearchPath());
-			Command.exec("/bin/ln -fs "+updatepath+" "+iid.getSearchPath());			
+			FSUtils.delete(iid.getSearchPath());
+			FSUtils.createSymLink(updatepath,iid.getSearchPath());
 			
 			// update registry, cache, rmi object
 			registry.refreshUpdates(iid);

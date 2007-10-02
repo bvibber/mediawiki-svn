@@ -18,11 +18,14 @@ import org.apache.lucene.index.IndexWriter;
 import org.mediawiki.dumper.ProgressFilter;
 import org.mediawiki.dumper.Tools;
 import org.mediawiki.importer.XmlDumpReader;
+import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
+import org.wikimedia.lsearch.config.IndexRegistry;
 import org.wikimedia.lsearch.index.IndexThread;
 import org.wikimedia.lsearch.ranks.Links;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.spell.api.Dictionary;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
 import org.wikimedia.lsearch.storage.ArticleAnalytics;
@@ -46,7 +49,7 @@ public class RelatedBuilder {
 		System.out.println("MediaWiki Lucene search indexer - build a map of related articles.\n");
 		
 		Configuration.open();
-		if(args.length > 2 && args.length < 1){
+		if(args.length > 2 || args.length < 1){
 			System.out.println("Syntax: java RelatedBuilder <dbname> [<dump file>]");
 			return;
 		}		
@@ -64,7 +67,7 @@ public class RelatedBuilder {
 			if(dumpfile != null)
 				rebuildFromDump(dumpfile,iid);
 			else
-				rebuildFromTemp(iid);
+				rebuildFromLinks(iid);
 		} catch (IOException e) {
 			log.fatal("Rebuild I/O error: "+e.getMessage());
 			e.printStackTrace();
@@ -83,7 +86,8 @@ public class RelatedBuilder {
 		// first pass - titles
 		InputStream input = null;
 		input = Tools.openInputFile(inputfile);
-		TitleReader tr = new TitleReader(langCode);
+		NamespaceFilter nsf = GlobalConfiguration.getInstance().getDefaultNamespace(iid);
+		TitleReader tr = new TitleReader(iid,langCode,nsf);
 		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(tr, 5000));
 		reader.readDump();
 		input.close();
@@ -104,32 +108,42 @@ public class RelatedBuilder {
 	 * Rebuild related articles index for iid
 	 * @throws IOException 
 	 */
-	public static void rebuildFromTemp(IndexId iid) throws IOException {
+	public static void rebuildFromLinks(IndexId iid) throws IOException {
 		CompactLinks links = new CompactLinks();
-		Links temp = Links.openExisting(iid);
+		Links temp = Links.openForRead(iid,iid.getLinks().getImportPath());
 		
-		log.info("Reading all titles");
+		NamespaceFilter nsf = GlobalConfiguration.getInstance().getDefaultNamespace(iid); 
+		log.info("Reading titles in default search");
 		Dictionary dict = temp.getKeys();
 		Word w;
 		HashMap<Integer,CompactArticleLinks> keyCache = new HashMap<Integer,CompactArticleLinks>();
 		while((w = dict.next()) != null){
 			String key = w.getWord();
-			links.add(key,temp.getNumInLinks(key));
-			keyCache.put(temp.getDocId(key),links.get(key));
+			int ns = Integer.parseInt(key.substring(0,key.indexOf(':')));
+			if(nsf.contains(ns)){
+				links.add(key,temp.getNumInLinks(key));
+				keyCache.put(temp.getDocId(key),links.get(key));
+			}
 		}
 
 		log.info("Reading in/out links");
 		dict = temp.getKeys();
 		while((w = dict.next()) != null){
 			String key = w.getWord();
-			CompactArticleLinks l = links.get(key);
-			// inlinks
-			l.setInLinks(temp.getInLinks(l,keyCache));
-			// outlinks
-			ArrayList<CompactArticleLinks> out = new ArrayList<CompactArticleLinks>();
-			for(String k : temp.getOutLinks(key).toCollection())
-				out.add(links.get(k));
-			l.setOutLinks(out);
+			int ns = Integer.parseInt(key.substring(0,key.indexOf(':')));
+			if(nsf.contains(ns)){
+				CompactArticleLinks l = links.get(key);
+				// inlinks
+				l.setInLinks(temp.getInLinks(l,keyCache));
+				// outlinks
+				ArrayList<CompactArticleLinks> out = new ArrayList<CompactArticleLinks>();
+				for(String k : temp.getOutLinks(key).toCollection()){
+					CompactArticleLinks cs = links.get(k);
+					if(cs != null)
+						out.add(cs);
+				}
+				l.setOutLinks(out);
+			}
 		}
 		temp.close(); 
 		temp = null; // GC
@@ -144,14 +158,19 @@ public class RelatedBuilder {
 		RelatedStorage store = new RelatedStorage(iid);
 		int num = 0;
 		int total = links.getAll().size();
-		for(CompactArticleLinks cs : links.getAll()){
+		NamespaceFilter nsf = GlobalConfiguration.getInstance().getDefaultNamespace(iid);
+		for(CompactArticleLinks cs : links.getAll()){			
 			num++;
 			if(num % 1000 == 0)
-				log.info("Storing ["+num+"/"+total+"]");			
-			ArrayList<CompactRelated> rel = getRelated(cs,links);
-			if(rel.size() == 0)
-				continue;
-			store.addRelated(cs.toString(),rel);
+				log.info("Storing ["+num+"/"+total+"]");
+			Title t = new Title(cs.getKey());
+			// do analysis only for default search namespace (usually main namespace)
+			if(nsf.contains(t.getNamespace())){				
+				ArrayList<CompactRelated> rel = getRelated(cs,links);
+				if(rel.size() == 0)
+					continue;
+				store.addRelated(cs.toString(),rel);
+			}
 		}
 		store.snapshot();
 	}
@@ -161,15 +180,19 @@ public class RelatedBuilder {
 	 */
 	public static ArrayList<CompactRelated> getRelated(CompactArticleLinks cs, CompactLinks links){
 		ArrayList<CompactRelated> ret = new ArrayList<CompactRelated>();
-		
-		HashSet<CompactArticleLinks> ll = new HashSet<CompactArticleLinks>();			
+ 
+		HashSet<CompactArticleLinks> ll = new HashSet<CompactArticleLinks>();
+		double maxnorm = 0; // maximal value for related score, used for scaling
 		if(cs.linksIn != null){
-			for(CompactArticleLinks csl : cs.linksIn)
+			for(CompactArticleLinks csl : cs.linksIn){
 				ll.add(csl);
+				maxnorm += 1.0/norm(csl.links);
+			}
 		}
 		for(CompactArticleLinks from : ll){
 			if(from != cs){
-				double score = relatedScore(cs,ll,from);
+				double rscore = relatedScore(cs,ll,from); 
+				double score = (rscore / maxnorm) * rscore;
 				if(score != 0)
 					ret.add(new CompactRelated(cs,from,score));
 			}

@@ -73,7 +73,7 @@ public class RMIMessengerClient {
 				log.debug("Calling remotely indexUpdate("+myhost+","+iid+") on "+host);
 				r.indexUpdated(myhost,iid.toString());
 			} catch (Exception e) {
-				log.warn("Error invoking remote method notifyIndexUpdated() on host "+host);
+				log.warn("Error invoking remote method notifyIndexUpdated() on host "+host+" : "+e.getMessage());
 				continue;
 			}			
 		}
@@ -102,10 +102,10 @@ public class RMIMessengerClient {
 			log.debug("Got new RMI messenger for host "+host);
 			return r;
 		} catch (RemoteException e) {
-			log.warn("Cannot contact RMI registry for host "+host);
+			log.warn("Cannot contact RMI registry for host "+host+" : "+e.getMessage());
 			throw e;
 		} catch (NotBoundException e) {
-			log.warn("No RMIMessenger instance at host "+host);
+			log.warn("No RMIMessenger instance at host "+host+" : "+e.getMessage());
 			throw e;
 		}
 	}
@@ -126,7 +126,7 @@ public class RMIMessengerClient {
 			return res;
 		} catch (Exception e) {
 			//e.printStackTrace();
-			log.warn("Error invoking remote method getIndexTimestamp() on host "+host);
+			log.warn("Error invoking remote method getIndexTimestamp() on host "+host+" : "+e.getMessage());
 		}
 		return null;
 	}
@@ -137,7 +137,7 @@ public class RMIMessengerClient {
 			log.debug("Calling enqueueUpdateRecords("+records.length+" records) on "+host);
 			r.enqueueUpdateRecords(records);
 		} catch (Exception e) {
-			log.warn("Error invoking remote method enqueueUpdateRecords() on host "+host);
+			log.warn("Error invoking remote method enqueueUpdateRecords() on host "+host+" : "+e.getMessage());
 			throw e;
 		}
 	}
@@ -148,7 +148,7 @@ public class RMIMessengerClient {
 			log.debug("Calling enqueueFrontend("+records.length+" records) on "+host);
 			r.enqueueFrontend(records);
 		} catch (Exception e) {
-			log.warn("Error invoking remote method enqueueFrontend() on host "+host);
+			log.warn("Error invoking remote method enqueueFrontend() on host "+host+" : "+e.getMessage());
 			throw e;
 		}
 	}
@@ -159,7 +159,7 @@ public class RMIMessengerClient {
 			log.debug("Calling reportBack("+cards.length+" records) on "+host);
 			r.reportBack(cards);
 		} catch (Exception e) {
-			log.warn("Error invoking remote method sendReports on host "+host);
+			log.warn("Error invoking remote method sendReports on host "+host+" : "+e.getMessage());
 		}
 	}
 	
@@ -177,7 +177,7 @@ public class RMIMessengerClient {
 			cache.invalidateSearchable(iid,host);
 			SearchResults res = new SearchResults();
 			res.retry();
-			log.warn("Error invoking remote method searchPart on host "+host);
+			log.warn("Error invoking remote method searchPart on host "+host+" : "+e.getMessage());
 			return res;
 		}
 	}
@@ -188,7 +188,7 @@ public class RMIMessengerClient {
 			log.debug("Calling requestFlushAndNotify("+dbname+" records) on "+host);
 			return r.requestFlushAndNotify(dbname);
 		} catch (Exception e) {
-			log.warn("Error invoking remote method requestFlushAndNotify on host "+host);
+			log.warn("Error invoking remote method requestFlushAndNotify on host "+host+" : "+e.getMessage());
 			return false;
 		}
 	}
@@ -199,7 +199,7 @@ public class RMIMessengerClient {
 			log.debug("Calling isSuccessfulFlush("+dbname+" records) on "+host);
 			return r.isSuccessfulFlush(dbname);
 		} catch (Exception e) {
-			log.warn("Error invoking remote method isSuccessfulFlush on host "+host);
+			log.warn("Error invoking remote method isSuccessfulFlush on host "+host+" : "+e.getMessage());
 			throw new IOException("Remote error");
 		}
 	}
@@ -212,7 +212,7 @@ public class RMIMessengerClient {
 			log.debug(" \\-> got: "+size);
 			return size;
 		} catch (Exception e) {
-			log.warn("Error invoking remote method getIndexerQueueSize on host "+host);
+			log.warn("Error invoking remote method getIndexerQueueSize on host "+host+" : "+e.getMessage());
 			return -1;
 		}	
 	}

@@ -15,9 +15,11 @@ import org.apache.lucene.analysis.nl.DutchStemFilter;
 import org.apache.lucene.analysis.ru.RussianStemFilter;
 import org.apache.lucene.analysis.th.ThaiWordFilter;
 import org.apache.lucene.search.FieldSortedHitQueue;
+import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
+import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.test.AliasPorterStemFilter;
 
@@ -54,12 +56,13 @@ public class Analyzers {
 	 * @param languageAnalyzer  language filter class (e.g. PorterStemFilter)
 	 * @return  {PerFieldAnalyzerWrapper,WikiTokenizer}
 	 */
-	public static Object[] getIndexerAnalyzer(String text, FieldBuilder builder, ArrayList<String> redirects, ArrayList<String> anchors, ArrayList<RelatedTitle> related, int[] relatedPartition) {
+	public static Object[] getIndexerAnalyzer(String text, FieldBuilder builder, ArrayList<String> redirects, ArrayList<String> anchors, 
+			ArrayList<RelatedTitle> related, int[] relatedPartition, Title title, Links links) {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = new PerFieldAnalyzerWrapper(new SimpleAnalyzer());
 		WikiTokenizer tokenizer = null;
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			tokenizer = addFieldsForIndexing(perFieldAnalyzer, text, bs.getFilters(), bs.getFields(),
-					redirects, anchors, related, relatedPartition, bs.isExactCase(), bs.isAddKeywords());
+					redirects, anchors, related, relatedPartition, title, links, bs.isExactCase(), bs.isAddKeywords());
 		} 
 		return new Object[] {perFieldAnalyzer,tokenizer};
 	}
@@ -70,9 +73,9 @@ public class Analyzers {
 	 */
 	public static WikiTokenizer addFieldsForIndexing(PerFieldAnalyzerWrapper perFieldAnalyzer, String text, 
 			FilterFactory filters, FieldNameFactory fields, ArrayList<String> redirects, ArrayList<String> anchors,
-			ArrayList<RelatedTitle> related, int[] relatedPartition, boolean exactCase, boolean addKeywords) {
+			ArrayList<RelatedTitle> related, int[] relatedPartition, Title title, Links links, boolean exactCase, boolean addKeywords) {
 		// parse wiki-text to get categories
-		WikiTokenizer tokenizer = new WikiTokenizer(text,filters.getLanguage(),exactCase);
+		WikiTokenizer tokenizer = new WikiTokenizer(text,filters.getIndexId(),exactCase);
 		tokenizer.tokenize();
 		ArrayList<String> categories = tokenizer.getCategories();
 		HashMap<String,String> interwiki = tokenizer.getInterwikis();
@@ -106,6 +109,9 @@ public class Analyzers {
 		// related
 		setRelatedAnalyzer(perFieldAnalyzer,fields.related(), 
 				new RelatedAnalyzer(related,relatedPartition,filters.getNoStemmerFilterFactory(),fields.related(),exactCase));
+		// context
+		setContextAnalyzer(perFieldAnalyzer,fields.context(), 
+				new ContextAnalyzer(title,links,related,relatedPartition,filters.getNoStemmerFilterFactory(),fields.context(),exactCase));
 		return tokenizer;
 	}
 	
@@ -126,24 +132,24 @@ public class Analyzers {
 			perFieldAnalyzer.addAnalyzer(prefix+i,analyzer);
 		}
 	}
-
+	
+	protected static void setContextAnalyzer(PerFieldAnalyzerWrapper perFieldAnalyzer, String prefix, ContextAnalyzer analyzer) {
+		for(int i=1;i<=ContextAnalyzer.CONTEXT_GROUPS;i++){
+			perFieldAnalyzer.addAnalyzer(prefix+i,analyzer);
+		}
+	}
+	
+	
+	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(IndexId iid){
+		return getSearcherAnalyzer(iid,false);
+	}
+	
 	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(IndexId iid, boolean exactCase){
-		if(global == null)
-			global = GlobalConfiguration.getInstance();
-		return getSearcherAnalyzer(global.getLanguage(iid.getDBname()),exactCase);
-		
+		return getSearcherAnalyzer(new FilterFactory(iid),new FieldNameFactory(exactCase));
 	}
 	
-	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(String langCode){
-		return getSearcherAnalyzer(langCode,false);
-	}
-	
-	public static PerFieldAnalyzerWrapper getSearcherAnalyzer(String langCode, boolean exactCase){
-		return getSearcherAnalyzer(new FilterFactory(langCode),new FieldNameFactory(exactCase));
-	}
-	
-	public static PerFieldAnalyzerWrapper getSpellCheckAnalyzer(String langCode, HashSet<String> stopWords){
-		FilterFactory filters = new FilterFactory(langCode,FilterFactory.Type.SPELL_CHECK);
+	public static PerFieldAnalyzerWrapper getSpellCheckAnalyzer(IndexId iid, HashSet<String> stopWords){
+		FilterFactory filters = new FilterFactory(iid,FilterFactory.Type.SPELL_CHECK);
 		filters.setStopWords(stopWords);
 		return getSearcherAnalyzer(filters,new FieldNameFactory());
 	}

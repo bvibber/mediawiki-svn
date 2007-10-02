@@ -10,7 +10,7 @@ import org.apache.lucene.analysis.TokenStream;
 import org.apache.lucene.analysis.Tokenizer;
 import org.wikimedia.lsearch.ranks.StringList;
 
-/** Split the text by some specific char */
+/** Analyzes serialized StringLists into its components */
 public class SplitAnalyzer extends Analyzer {
 	class SplitTokenStream extends Tokenizer {
 		Iterator<String> it = null;

@@ -20,6 +20,7 @@ import org.wikimedia.lsearch.ranks.LinkReader;
 import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.ranks.RankBuilder;
 import org.wikimedia.lsearch.related.CompactLinks;
+import org.wikimedia.lsearch.related.RelatedBuilder;
 import org.wikimedia.lsearch.storage.LinkAnalysisStorage;
 import org.wikimedia.lsearch.storage.Storage;
 import org.wikimedia.lsearch.util.Localization;
@@ -45,6 +46,7 @@ public class Importer {
 		Integer mergeFactor = null, maxBufDocs = null;
 		boolean newIndex = true, makeSnapshot = false;
 		boolean snapshotDb = false, useOldLinkAnalysis = false;
+		boolean useOldRelated = false;
 		
 		System.out.println("MediaWiki Lucene search indexer - index builder from xml database dumps.\n");
 		
@@ -52,12 +54,13 @@ public class Importer {
 		log = Logger.getLogger(Importer.class);
 		
 		if(args.length < 2){
-			System.out.println("Syntax: java Importer [-a] [-n] [-s] [-la] [-l limit] [-o optimize] [-m mergeFactor] [-b maxBufDocs] <inputfile> <dbname>");
+			System.out.println("Syntax: java Importer [-a] [-n] [-s] [-l] [-r] [-lm limit] [-o optimize] [-m mergeFactor] [-b maxBufDocs] <inputfile> <dbname>");
 			System.out.println("Options: ");
 			System.out.println("  -a              - don't create new index, append to old");
 			System.out.println("  -s              - make index snapshot when finished");
-			System.out.println("  -la             - use earlier link analysis index, don't recalculate");
-			System.out.println("  -l limit_num    - add at most limit_num articles");
+			System.out.println("  -l             - use earlier link analysis index, don't recalculate");
+			System.out.println("  -r             - use earlier related index, don't recalculate");
+			System.out.println("  -lm limit_num    - add at most limit_num articles");
 			System.out.println("  -o optimize     - true/false overrides optimization param from global settings");
 			System.out.println("  -m mergeFactor  - overrides param from global settings");
 			System.out.println("  -b maxBufDocs   - overrides param from global settings");
@@ -65,7 +68,7 @@ public class Importer {
 			return;
 		}
 		for(int i=0;i<args.length;i++){
-			if(args[i].equals("-l"))
+			if(args[i].equals("-lm"))
 				limit = Integer.parseInt(args[++i]);
 			else if(args[i].equals("-o"))
 				optimize = Boolean.parseBoolean(args[++i]);
@@ -75,8 +78,10 @@ public class Importer {
 				maxBufDocs = Integer.parseInt(args[++i]);
 			else if(args[i].equals("-a"))
 				newIndex = false;
-			else if(args[i].equals("-la"))
+			else if(args[i].equals("-l"))
 				useOldLinkAnalysis = true;
+			else if(args[i].equals("-r"))
+				useOldRelated = true;
 			else if(args[i].equals("-s"))
 				makeSnapshot = true;
 			else if(args[i].equals("--snapshot")){
@@ -106,17 +111,23 @@ public class Importer {
 			long start = System.currentTimeMillis();
 			
 			if(!useOldLinkAnalysis){
-				// regenerate link and redirect information
-				Links links = RankBuilder.processLinks(inputfile,RankBuilder.getTitles(inputfile,langCode,iid),langCode);
+				// regenerate link and redirect information				
 				try {
-					RankBuilder.storeLinkAnalysis(links,iid);
+					RankBuilder.processLinks(inputfile,Links.createNew(iid),iid,langCode);
 				} catch (IOException e) {
 					log.fatal("Cannot store link analytics: "+e.getMessage());
 					return;
 				}
 			}
-			log.info("Third pass, indexing articles...");
-			
+			if(!useOldRelated){
+				try {
+					RelatedBuilder.rebuildFromLinks(iid);
+				} catch (IOException e) {
+					log.fatal("Cannot make related mapping: "+e.getMessage());
+					return;
+				}
+			}
+						
 			// open			
 			InputStream input = null;
 			try {
@@ -124,31 +135,29 @@ public class Importer {
 			} catch (IOException e) {
 				log.fatal("I/O error opening "+inputfile);
 				return;
-			}
-			LinkAnalysisStorage las = new LinkAnalysisStorage(iid);
-			// read
-			DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,las,langCode);
-			XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(dp, 1000));
+			}			
+			long end = start;
 			try {
+				log.info("Indexing articles...");
+				IndexId ll = iid.getLinks();
+				Links links = Links.openForRead(ll,ll.getImportPath());
+				// read
+				DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,links,langCode);
+				XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(dp, 1000));
 				reader.readDump();
+				log.info("Closing/optimizing index...");
+				dp.closeIndex();
+				end = System.currentTimeMillis();
+				System.out.println("Cache stats: "+links.getCache().getStats());
 			} catch (IOException e) {
 				if(!e.getMessage().equals("stopped")){
-					log.fatal("I/O error reading dump for "+dbname+" from "+inputfile);
+					log.fatal("I/O error processing dump for "+dbname+" from "+inputfile+" : "+e.getMessage());
+					e.printStackTrace();
 					return;
 				}
-			}
-
-			long end = System.currentTimeMillis();
-
-			log.info("Closing/optimizing index...");
-			try{
-				dp.closeIndex();
-			} catch(IOException e){
-				e.printStackTrace();
-				log.fatal("Cannot close/optimize index : "+e.getMessage());
 				System.exit(1);
 			}
-
+			
 			long finalEnd = System.currentTimeMillis();
 			
 			System.out.println("Finished indexing in "+formatTime(end-start)+", with final index optimization in "+formatTime(finalEnd-end));
@@ -168,6 +177,16 @@ public class Importer {
 			} else
 				IndexThread.makeIndexSnapshot(iid,iid.getImportPath());
 		}		
+		
+		// some cache stats
+		/*Cache cache = CacheManager.create().getCache("links");
+		Statistics s = cache.getStatistics();
+		
+		long hit = s.getCacheHits();
+		long miss = s.getCacheMisses();
+		
+		System.out.println("Cache stats: hits = "+hit+", miss = "+miss); */
+
 	}
 
 	private static String formatTime(long l) {

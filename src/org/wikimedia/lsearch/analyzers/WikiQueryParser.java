@@ -16,11 +16,17 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
+import org.apache.lucene.search.CustomBoostQuery;
+import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.Query;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.WildcardQuery;
 import org.apache.lucene.search.BooleanClause.Occur;
+import org.apache.lucene.search.function.CustomScoreQuery;
+import org.apache.lucene.search.function.FieldScoreQuery;
+import org.apache.lucene.search.function.ValueSource;
+import org.apache.lucene.search.function.ValueSourceQuery;
 import org.apache.lucene.search.spans.SpanNearQuery;
 import org.apache.lucene.search.spans.SpanQuery;
 import org.apache.lucene.search.spans.SpanTermQuery;
@@ -28,6 +34,8 @@ import org.mediawiki.importer.ExactListFilter;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.search.NamespaceFilter;
+import org.wikimedia.lsearch.search.RankValueSource;
+import org.wikimedia.lsearch.search.RankValueSourceQuery;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
 /**
@@ -88,12 +96,13 @@ public class WikiQueryParser {
 	public static float KEYWORD_BOOST = 0.02f;
 	public static float CONTENTS_BOOST = 0.2f;
 	
-	public static int ADDITIONAL_PHRASE_SLOP_CONTENTS = 20;
+	public static int ADDITIONAL_PHRASE_SLOP_CONTENTS = 5000;
 	public static float ADDITIONAL_BOOST_CONTENTS = 0.5f;
-	public static int ADDITIONAL_PHRASE_SLOP_TITLE = 1;
+	public static int ADDITIONAL_PHRASE_SLOP_TITLE = 0;
 	public static float ADDITIONAL_BOOST_TITLE = 0.5f;
-	public static int ADDITIONAL_PHRASE_SLOP_RELATED = 10;
-	public static float ADDITIONAL_BOOST_RELATED = 0.04f;
+	public static int ADDITIONAL_PHRASE_SLOP_RELATED = 0;
+	public static float ADDITIONAL_BOOST_RELATED = 0.2f;	
+	public static float ADDITIONAL_BOOST_CONTEXT = 0.05f;
 	
 	public static float WHOLE_TITLE_BOOST = 8f;
 	public static float EXACT_CONTENTS_BOOST = 1f;
@@ -1422,9 +1431,28 @@ public class WikiQueryParser {
 		pq.setSlop(slop);
 		return pq;
 	}
-	
+
 	/** Make phrase queries for additional scores */
 	public Query makePhraseQueries(ArrayList<String> words, String field, int slop, float boost){
+		if(words.size() <= 1)
+			return null;
+		else{
+			PhraseQuery pq = new PhraseQuery();
+			for(String w : words){
+				if(!stopWords.contains(w))
+					pq.add(new Term(field,w));
+			}
+			pq.setSlop(slop);
+			pq.setBoost(boost);
+			return pq;
+		}
+			
+	}
+
+	
+	/** Make phrase queries for additional scores */
+	@Deprecated
+	public Query makePhraseQueriesOld(ArrayList<String> words, String field, int slop, float boost){
 		if(words.size() <= 1)
 			return null;
 		else if(words.size() == 2){
@@ -1550,26 +1578,73 @@ public class WikiQueryParser {
 		// skip last related group
 		Query[] pqr = new Query[RelatedAnalyzer.RELATED_GROUPS-1];
 		for(int i=1;i<RelatedAnalyzer.RELATED_GROUPS;i++){
-			pqr[i-1] = makePhraseQueries(words,"related"+i,ADDITIONAL_PHRASE_SLOP_RELATED,ADDITIONAL_BOOST_RELATED);
+			pqr[i-1] = makePhraseQueries(words,fields.related()+i,ADDITIONAL_PHRASE_SLOP_RELATED,ADDITIONAL_BOOST_RELATED);
 		}
 		Query[] wqr = new Query[RelatedAnalyzer.RELATED_GROUPS-1];
 		for(int i=1;i<RelatedAnalyzer.RELATED_GROUPS;i++){
-			wqr[i-1] = makeWordQueries(words,"related"+i,ADDITIONAL_BOOST_RELATED / 4);
+			wqr[i-1] = makeWordQueries(words,fields.related()+i,ADDITIONAL_BOOST_RELATED / 4);
+		}
+		Query[] pqx = new Query[ContextAnalyzer.CONTEXT_GROUPS];		
+		// make context queries
+		for(int i=1;i<=ContextAnalyzer.CONTEXT_GROUPS;i++){
+			pqx[i-1] = makePhraseQueries(words,fields.context()+i,0,ADDITIONAL_BOOST_CONTEXT);
 		}
 		if(wt==null && pqc == null && pqt == null && pqr[0] == null && wqr[0] == null)
 			return bq;
 		// build the final query
-		BooleanQuery finalQuery = new BooleanQuery(true);		
+		BooleanQuery coreQuery = new BooleanQuery(true);		
 		BooleanQuery additional = new BooleanQuery(true);
+		//BooleanQuery boostQuery = new BooleanQuery(true);
 		
-		if(pqc != null)
-			additional.add(pqc,Occur.MUST);
+		if(pqc != null){
+			//additional.add(pqc,Occur.MUST);
+			additional.add(new CustomScoreQuery(pqc, new RankValueSourceQuery(new RankValueSource())){
+			   public float customScore(int doc, float subQueryScore, float valSrcScore) {
+			   	return (float) (subQueryScore * Math.log(Math.E+valSrcScore/15));
+			   }
+			   public Explanation customExplain(int doc, Explanation subQueryExpl, Explanation valSrcExpl) {
+			      float valSrcScore = valSrcExpl==null ? 1 : valSrcExpl.getValue();
+			      Explanation exp = new Explanation( (float)Math.log(Math.E+valSrcScore/15) * subQueryExpl.getValue(), ": "+valSrcScore+" "+(float)Math.log(Math.E+valSrcScore/15)+"*"+subQueryExpl.getValue()+" custom score: product of:");
+			      exp.addDetail(subQueryExpl);
+			      if (valSrcExpl != null) {
+			        exp.addDetail(valSrcExpl);
+			      }
+			      return exp;
+			    }
+			},Occur.MUST);
+		}
 		if(pqt != null)
 			additional.add(pqt,Occur.SHOULD);
 		if(wt != null)
 			additional.add(wt,Occur.SHOULD);
-		if(wc != null)
-			additional.add(wc,Occur.SHOULD);
+		if(wc != null){
+			//	additional.add(wc,Occur.SHOULD);
+			BooleanQuery boostExact = new BooleanQuery();
+			for(Query q : pqr){
+				if(q != null)
+					boostExact.add(q,Occur.SHOULD);
+			}
+			for(Query q : wqr){
+				if(q != null)
+					boostExact.add(q,Occur.SHOULD);
+			}
+			CustomBoostQuery cbq = new CustomBoostQuery(wc,boostExact);
+			/*CustomScoreQuery csq = new CustomScoreQuery(cbq, new RankValueSourceQuery(new RankValueSource())) {
+			   public float customScore(int doc, float subQueryScore, float valSrcScore) {
+			   	return (float) (subQueryScore * Math.log10(10+valSrcScore));
+			   }
+			   public Explanation customExplain(int doc, Explanation subQueryExpl, Explanation valSrcExpl) {
+			      float valSrcScore = valSrcExpl==null ? 1 : valSrcExpl.getValue();
+			      Explanation exp = new Explanation( (float)Math.log10(10+valSrcScore) * subQueryExpl.getValue(), "custom score: product of:");
+			      exp.addDetail(subQueryExpl);
+			      if (valSrcExpl != null) {
+			        exp.addDetail(valSrcExpl);
+			      }
+			      return exp;
+			    }
+			}; */
+			additional.add(cbq,Occur.SHOULD);
+		}
 		for(Query q : pqr){
 			if(q != null)
 				additional.add(q,Occur.SHOULD);
@@ -1578,16 +1653,21 @@ public class WikiQueryParser {
 			if(q != null)
 				additional.add(q,Occur.SHOULD);
 		}
+		/*for(Query q : pqx){
+			if(q != null)
+				additional.add(q,Occur.SHOULD);
+		} */
 		
 		// anchors
 		//Query anchors = multiplySpans(nostem,0,fields.anchor(),ANCHOR_BOOST);		
 		
-		finalQuery.add(bq,Occur.MUST);
-		finalQuery.add(additional,Occur.SHOULD);
+		coreQuery.add(bq,Occur.MUST);
+		coreQuery.add(additional,Occur.SHOULD);
 		//if(anchors != null)
 		//	finalQuery.add(anchors,Occur.SHOULD);
 		
-		return finalQuery;
+		return coreQuery;
+		//return new CustomBoostQuery(coreQuery,boostQuery);
 		
 	}
 

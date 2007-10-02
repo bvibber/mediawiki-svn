@@ -56,7 +56,6 @@ public class RankBuilder {
 	public static void main(String[] args) throws IOException {
 		String inputfile = null;
 		String dbname = null;
-		boolean useExistingTemp = false;
 		
 		System.out.println("MediaWiki Lucene search indexer - build rank info from xml dumps.\n");
 		
@@ -64,15 +63,11 @@ public class RankBuilder {
 		log = Logger.getLogger(RankBuilder.class);
 		
 		if(args.length < 2){
-			System.out.println("Syntax: java RankBuilder [-t] <inputfile> <dbname>");
-			System.out.println("Options:");
-			System.out.println("  -t   - use existing temporary ranking index");
+			System.out.println("Syntax: java RankBuilder <inputfile> <dbname>");
 			return;
 		}
 		for(int i=0;i<args.length;i++){
-			if(args[i].equals("-t"))
-				useExistingTemp = true;
-			else if(inputfile == null)
+			if(inputfile == null)
 				inputfile = args[i];
 			else if(dbname == null)
 				dbname = args[i];
@@ -92,59 +87,22 @@ public class RankBuilder {
 		long start = System.currentTimeMillis();
 
 		// link info
-		Links links = null;
-		if(useExistingTemp)
-			links = Links.openExisting(iid);
-		else
-			links = processLinks(inputfile,getTitles(inputfile,langCode,iid),langCode);
-		//links.cacheInLinks();
-		/*log.info("Creating ref count cache");
-		HashMap<Integer,Integer> refCache = new HashMap<Integer,Integer>();
-		HashMap<Integer,String> keyCache = new HashMap<Integer,String>();		
-		HashMap<String,Integer> docIdCache = new HashMap<String,Integer>();
-		Word w; Dictionary d = links.getKeys();
-		while((w = d.next()) != null){
-			String key = w.getWord();
-			int docid = links.getDocId(key);
-			refCache.put(docid,links.getNumInLinks(key));
-			keyCache.put(docid,key);
-			docIdCache.put(key,docid);
+		Links links = Links.createNew(iid);
+		try{
+			processLinks(inputfile,links,iid,langCode);
+		} catch(IOException e){
+			log.fatal("I/O error processing "+inputfile+" : "+e.getMessage());
+			e.printStackTrace();
 		}
-		log.info("Caching in/out links");
-		HashMap<Integer,int[]> outLinkCache = new HashMap<Integer,int[]>();
-		HashMap<Integer,int[]> inLinkCache = new HashMap<Integer,int[]>();
-		// cache in/out links
-		d = links.getKeys();
-		while((w = d.next()) != null){
-			String key = w.getWord();
-			int docid = docIdCache.get(key);
-			Collection<String> in = links.getInLinks(key,keyCache);
-			int[] inset = new int[in.size()];
-			int i=0;
-			for(String k : in)
-				inset[i++] = docIdCache.get(k);
-			inLinkCache.put(docid,inset);
-			
-			Collection<String> out = links.getOutLinks(key).toCollection();
-			int[] outset = new int[out.size()];
-			i = 0;
-			for(String k : out){
-				outset[i++] = docIdCache.get(k);
-			}
-			outLinkCache.put(docid,outset);
-		}
-		storeLinkAnalysis(links,iid,docIdCache,keyCache,refCache,inLinkCache,outLinkCache); */
-		storeLinkAnalysis(links,iid);
-		//Storage store = Storage.getInstance();
-		//store.storePageReferences(links.getAll(),dbname);
-		//storeRelated(store,links,dbname);
-
+		
+		IndexThread.makeIndexSnapshot(iid.getLinks(),iid.getLinks().getImportPath());
+		
 		long end = System.currentTimeMillis();
 
 		System.out.println("Finished generating ranks in "+formatTime(end-start));
 	}
 
-	//public static void storeLinkAnalysis(Links links, IndexId iid, HashMap<String, Integer> docIdCache, HashMap<Integer, String> keyCache, HashMap<Integer, Integer> refCache, HashMap<Integer, int[]> inLinkCache, HashMap<Integer, int[]> outLinkCache) throws IOException{
+	@Deprecated
 	public static void storeLinkAnalysis(Links links, IndexId iid) throws IOException{
 		log.info("Storing link analysis data");
 		LinkAnalysisStorage store = new LinkAnalysisStorage(iid);
@@ -154,7 +112,7 @@ public class RankBuilder {
 			String key = w.getWord();
 			int ref = links.getNumInLinks(key);
 			String redirectTarget = links.getRedirectTarget(key);
-			ArrayList<String> anchor = links.getAnchors(key);
+			ArrayList<String> anchor = null; //links.getAnchors(key);
 			ArrayList<Related> related = new ArrayList<Related>(); //FIXME: too slow getRelated(key,links,refCount,keyCache);
 			//ArrayList<Related> related = getRelated(key,links,docIdCache,keyCache,refCache,inLinkCache,outLinkCache);
 			ArrayList<String> redirect = links.getRedirectsTo(key); 
@@ -164,52 +122,15 @@ public class RankBuilder {
 		
 	}
 	
-	public static Links processLinks(String inputfile, Links links, String langCode) {
-		log.info("Second pass, calculating article links...");
-		InputStream input = null;
-		// second pass - calculate page ranks
-		try {
-			input = Tools.openInputFile(inputfile);
-		} catch (IOException e) {
-			log.fatal("I/O error opening "+inputfile+" : "+e.getMessage());
-			return null;
-		}
+	public static Links processLinks(String inputfile, Links links, IndexId iid, String langCode) throws IOException {
+		log.info("Calculating article links...");
+		InputStream input = Tools.openInputFile(inputfile);
 		// calculate ranks
-		LinkReader rr = new LinkReader(links,langCode);
+		LinkReader rr = new LinkReader(links,iid,langCode);
 		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(rr, 5000));
-		try {
-			reader.readDump();
-			links.flush();
-		} catch (IOException e) {
-			log.fatal("I/O error reading dump while calculating ranks for from "+inputfile+" : "+e.getMessage());
-			return null;
-		}
+		reader.readDump();
+		links.flush();
 		return links;
-	}
-
-	public static Links getTitles(String inputfile,String langCode,IndexId iid) {
-		log.info("First pass, getting a list of valid articles...");
-		InputStream input = null;
-		try {
-			input = Tools.openInputFile(inputfile);
-		} catch (IOException e) {
-			log.fatal("I/O error opening "+inputfile+" : "+e.getMessage());
-			return null;
-		}
-		try {
-			// first pass, get titles
-			TitleReader tr = new TitleReader(langCode,iid);
-			XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(tr, 5000));
-			reader.readDump();
-			input.close();
-			Links links = tr.getLinks();
-			links.flush();
-			return links;
-		} catch (IOException e) {
-			log.fatal("I/O error reading dump while getting titles from "+inputfile+" : "+e.getMessage());
-			return null;
-		}
-		
 	}
 	
 	/** 

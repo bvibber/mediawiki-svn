@@ -8,6 +8,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
@@ -28,9 +29,16 @@ public class Localization {
 	protected static Object lock = new Object();
 	/** Languages for which loading of localization failed */
 	protected static HashSet<String> badLocalizations = new HashSet<String>();
+	/** Languages for which we loaded localication */
+	protected static HashSet<String> loadedLocalizations = new HashSet<String>();
 	protected static HashSet<String> interwiki = null;
 	/** lowecased canonical names of namespaces */
-	protected static Hashtable<String,Integer> canonicalNamespaces = new Hashtable<String,Integer>();		
+	protected static Hashtable<String,Integer> canonicalNamespaces = new Hashtable<String,Integer>();
+	/** dbname -> meta namespace name */
+	protected static Hashtable<String,String> metaNamespaces = new Hashtable<String,String>();
+	/** custom maps (for oai headers, etc..) dbname -> nsname -> nsindex  */
+	protected static Hashtable<String,Hashtable<String,Integer>> customNamespaces = new Hashtable<String,Hashtable<String,Integer>>();
+	
 	static{
 		canonicalNamespaces.put("media",-2);
 		canonicalNamespaces.put("special",-1);
@@ -51,48 +59,72 @@ public class Localization {
 		canonicalNamespaces.put("category_talk",15);
 	}
 	
-	/** Add custom mapping not found in localization files from other source, e.g. project name, etc.. */
-	public static void addCustomMapping(String namespace, int index, String langCode){
+	/** set meta namespaces for specific db names */
+	public static void setMetaNamespace(Map<String,String> dbmeta){
 		synchronized(lock){
-			Hashtable<String,Integer> map = namespaces.get(langCode);
+			metaNamespaces.putAll(dbmeta);
+		}
+	}
+	
+	/** Add custom mapping not found in localization files from other source, e.g. project name, etc.. */
+	public static void addCustomMapping(String namespace, int index, String dbname){
+		synchronized(lock){
+			Hashtable<String,Integer> map = customNamespaces.get(dbname);
 			if(map == null){
 				map = new Hashtable<String,Integer>();
-				namespaces.put(langCode,map);
+				customNamespaces.put(dbname,map);
 			}
 			map.put(namespace.toLowerCase(),index);
 		}
 	}
-	
-	public static HashSet<String> getLocalizedImage(String langCode){
-		return getLocalizedNamespace(langCode,6);
+	/** Get a new hashset of localized image namespace names */
+	public static HashSet<String> getLocalizedImage(String langCode, String dbname){
+		return getLocalizedNamespace(langCode,6,dbname);
+	}
+	/** Get a new hashset of localized category namespace names */
+	public static HashSet<String> getLocalizedCategory(String langCode, String dbname){
+		return getLocalizedNamespace(langCode,14,dbname);
 	}
 	
-	public static HashSet<String> getLocalizedCategory(String langCode){
-		return getLocalizedNamespace(langCode,14);
-	}
-	
-	public static HashSet<String> getLocalizedNamespace(String langCode, int nsId){
+	public static HashSet<String> getLocalizedNamespace(String langCode, int nsId, String dbname){
 		synchronized (lock){
+			HashSet<String> res = new HashSet<String>();
 			langCode = langCode.toLowerCase();
-			if(namespaces.get(langCode)==null){
-				if(badLocalizations.contains(langCode) || !readLocalization(langCode))
-					return new HashSet<String>();
+			if(namespaces.get(langCode)==null)
+				readLocalization(langCode);
+			
+			// get namespaces from message files
+			res.addAll(collect(namespaces.get(langCode),nsId));
+			// get db-specific names, like meta namespaces or ones obtained via oai or other ways
+			if(dbname != null){
+				res.addAll(collect(customNamespaces.get(dbname),nsId));
+				if(nsId == 4 && metaNamespaces.containsKey(dbname))
+					res.add(metaNamespaces.get(dbname));
 			}
-			return collect(namespaces.get(langCode),nsId);
+			return res;
 		}
 	}
 	
 	/** Get mapping namespace_name (lowercase) -> namespace_index */
-	public static HashMap<String,Integer> getLocalizedNamespaces(String langCode){
+	public static HashMap<String,Integer> getLocalizedNamespaces(String langCode, String dbname){
 		synchronized (lock){
 			HashMap<String,Integer> ret = new HashMap<String,Integer>();
 			ret.putAll(canonicalNamespaces);
 			langCode = langCode.toLowerCase();
-			if(namespaces.get(langCode)==null){
-				if(badLocalizations.contains(langCode) || !readLocalization(langCode))
-					return ret;
+			if(namespaces.get(langCode)==null)
+				readLocalization(langCode);
+			// localization from messages files
+			if(namespaces.containsKey(langCode))
+				ret.putAll(namespaces.get(langCode));
+			// db-specific
+			if(dbname != null){
+				// meta namespaces
+				if(metaNamespaces.containsKey(dbname))
+					ret.put(metaNamespaces.get(dbname),4);
+				// custom 
+				if(customNamespaces.containsKey(dbname))
+					ret.putAll(customNamespaces.get(dbname));
 			}
-			ret.putAll(namespaces.get(langCode));
 			return ret;
 		}
 	}
@@ -107,6 +139,8 @@ public class Localization {
 	/** Collect all the names with some certain namespace id */
 	protected static HashSet<String> collect(Hashtable<String,Integer> ns, int nsid) {
 		HashSet<String> ret = new HashSet<String>();
+		if(ns == null)
+			return ret;
 		for(Entry<String,Integer> e : ns.entrySet()){
 			if(e.getValue().intValue() == nsid)
 				ret.add(e.getKey());
@@ -123,6 +157,10 @@ public class Localization {
 	/** Level is recursion level (to detect infinite recursion if language
 	 * defines itself as a fallback) */
 	protected static boolean readLocalization(String langCode, int level){
+		if(badLocalizations.contains(langCode))
+			return false; // failed previously
+		if(loadedLocalizations.contains(langCode))
+			return true; // already loaded
 		Configuration config = Configuration.open();
 		if(langCode == null || langCode.equals(""))
 			return false;
@@ -158,6 +196,7 @@ public class Localization {
 				if(ns!=null && ns.size()!=0){
 					namespaces.put(langCode.toLowerCase(),ns);					
 					log.debug("Succesfully loaded localization for "+langCode.toLowerCase());
+					loadedLocalizations.add(langCode);
 					return true;
 				} else{ // maybe a fallback language is defines instead
 					String fallback = parser.getFallBack(text);
@@ -165,6 +204,7 @@ public class Localization {
 						fallback = fallback.replace('-','_');
 						boolean succ = readLocalization(fallback,level+1);
 						if(succ){
+							loadedLocalizations.add(fallback);
 							namespaces.put(langCode.toLowerCase(),namespaces.get(fallback.toLowerCase()));
 							redirects.put(langCode.toLowerCase(),redirects.get(fallback.toLowerCase()));
 						}
@@ -216,9 +256,13 @@ public class Localization {
 			int end = line.indexOf("]]");
 			if(begin != -1 && end != -1 && end > begin){
 				String redirectText = text.substring(begin+2,end);
+				int pipe = redirectText.indexOf('|');
+				if(pipe != -1)
+					redirectText = redirectText.substring(0,pipe);
 				int fragment = redirectText.lastIndexOf('#');
 				if(fragment != -1)
 					redirectText = redirectText.substring(0,fragment);
+				redirectText = redirectText.replace('_',' ');
 				return redirectText;
 			}
 		}

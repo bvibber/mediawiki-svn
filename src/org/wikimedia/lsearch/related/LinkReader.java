@@ -80,31 +80,11 @@ public class LinkReader implements DumpWriter {
 		rank = links.get(key);
 		if(rank != null)
 			return rank;
-		// try lowercase 
-		key = ns+":"+title.toLowerCase();
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
 		// try lowercase with first letter upper case
 		if(title.length()==1) 
 			key = ns+":"+title.toUpperCase();
 		else
-			key = ns+":"+title.substring(0,1).toUpperCase()+title.substring(1).toLowerCase();
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
-		// try title case
-		key = ns+":"+WordUtils.capitalize(title);
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
-		// try upper case
-		key = ns+":"+title.toUpperCase();
-		rank = links.get(key);
-		if(rank != null)
-			return rank;
-		// try capitalizing at word breaks
-		key = ns+":"+WordUtils.capitalize(title,new char[] {' ','-','(',')','}','{','.',',','?','!'});
+			key = ns+":"+title.substring(0,1).toUpperCase()+title.substring(1);
 		rank = links.get(key);
 		if(rank != null)
 			return rank;

@@ -42,7 +42,7 @@ public class CleanIndexWriter {
 	public CleanIndexWriter(IndexId iid) throws IOException{
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		this.iid = iid;		
-		this.builder = new FieldBuilder("",FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
+		this.builder = new FieldBuilder(iid,FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
 		this.langCode = global.getLanguage(iid.getDBname());
 		HashSet<String> stopWords = new HashSet<String>();
 		for(String w : StopWords.getStopWords(iid,langCode))
@@ -90,7 +90,7 @@ public class CleanIndexWriter {
 		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
 			return; // don't add if preconditions are not met
 
-		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,builder,iid);
+		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,builder,iid,null);
 		Document doc = (Document) ret[0];
 		Analyzer analyzer = (Analyzer) ret[1];
 		try {

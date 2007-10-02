@@ -65,7 +65,7 @@ public class Warmup {
 	/** Warmup index using some number of simple searches */
 	protected static void warmupSearchTerms(IndexSearcherMul is, IndexId iid, int count, boolean useDelay) {
 		String lang = global.getLanguage(iid.getDBname());
-		FieldBuilder.BuilderSet b = new FieldBuilder(lang).getBuilder();
+		FieldBuilder.BuilderSet b = new FieldBuilder(iid).getBuilder();
 		WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE,null);
 		Terms terms = getTermsForLang(lang);
 		
@@ -122,7 +122,7 @@ public class Warmup {
 	public static void simpleWarmup(IndexSearcherMul is, IndexId iid){
 		try{
 			String lang = global.getLanguage(iid.getDBname());
-			FieldBuilder.BuilderSet b = new FieldBuilder(lang).getBuilder();
+			FieldBuilder.BuilderSet b = new FieldBuilder(iid).getBuilder();
 			WikiQueryParser parser = new WikiQueryParser(b.getFields().contents(),"0",Analyzers.getSearcherAnalyzer(iid,false),b,WikiQueryParser.NamespacePolicy.IGNORE,null);
 			Query q = parser.parseFourPass("a OR very OR long OR title OR involving OR both OR wikipedia OR and OR pokemons",WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
 			is.search(q,new NamespaceFilterWrapper(new NamespaceFilter("0")));

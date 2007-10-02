@@ -9,6 +9,7 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
+import org.wikimedia.lsearch.config.IndexId;
 
 /** 
  * Analyzer that builds a field with an array of keywords,
@@ -28,6 +29,7 @@ public class KeywordsAnalyzer extends Analyzer{
 	static Logger log = Logger.getLogger(KeywordsAnalyzer.class);	
 	protected KeywordsTokenStream[] tokensBySize = null;
 	protected String prefix;
+	protected IndexId iid;
 	
 	/** number of field to be generated, e.g. keyword1 for single-word keywords, 
 	 * keyword2 for two-word keywords, etc ... the last field has all the remaining keys
@@ -50,6 +52,7 @@ public class KeywordsAnalyzer extends Analyzer{
 	
 	protected void init(ArrayList<String> keywords, FilterFactory filters, String prefix, boolean exactCase) {
 		this.prefix = prefix;
+		this.iid = filters.getIndexId();
 		tokensBySize = new KeywordsTokenStream[KEYWORD_LEVELS];
 		if(keywords == null){
 			// init empty token streams
@@ -63,7 +66,7 @@ public class KeywordsAnalyzer extends Analyzer{
 			keywordsBySize.add(new ArrayList<String>());
 		// arange keywords into a list by token number 
 		for(String k : keywords){
-			ArrayList<Token> parsed = new FastWikiTokenizerEngine(k,filters.getLanguage(),exactCase).parse();
+			ArrayList<Token> parsed = new FastWikiTokenizerEngine(k,iid,exactCase).parse();
 			if(parsed.size() == 0)
 				continue;
 			else if(parsed.size() < KEYWORD_LEVELS)

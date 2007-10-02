@@ -176,13 +176,13 @@ public class SpellCheckIndexer {
 	}
 
 	/**
-	 * Register a title in the index, without tokenization, just lowercase. 
+	 * Register a title in the index, without tokenization, strip of accents and such. 
 	 * 
 	 * @param title
 	 */
 	public void addTitle(String title){
 		Document doc = new Document();
-		doc.add(new Field("title", title.toLowerCase(), Field.Store.NO, Field.Index.UN_TOKENIZED));
+		doc.add(new Field("title", FastWikiTokenizerEngine.stipTitle(title.toLowerCase()), Field.Store.NO, Field.Index.UN_TOKENIZED));
 		ngramWriter.addDocument(doc);
 	}
 	/** 

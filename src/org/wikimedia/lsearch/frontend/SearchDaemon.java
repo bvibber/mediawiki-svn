@@ -86,6 +86,10 @@ public class SearchDaemon extends HttpHandler {
 					sendOutputLine("#no suggestion");
 				for(ResultSet rs : res.getResults()){
 					sendResultLine(rs.score, rs.namespace, rs.title);
+					if(rs.getContext() != null){
+						for(String c : rs.getContext())
+							sendOutputLine("#context "+c);
+					}
 					if(rs.getExplanation() != null)
 						sendOutputLine(rs.getExplanation().toString());
 				}

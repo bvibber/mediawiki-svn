@@ -1,10 +1,13 @@
 package org.wikimedia.lsearch.related;
 
+import java.util.ArrayList;
+
 import org.wikimedia.lsearch.beans.Title;
 
 public class RelatedTitle {
 	protected Title related;
 	protected double score;
+	protected ArrayList<String> contexts = null;
 	
 	public RelatedTitle(Title related, double score) {
 		this.related = related;
@@ -21,6 +24,12 @@ public class RelatedTitle {
 	}
 	public void setScore(double score) {
 		this.score = score;
+	}
+	public ArrayList<String> getContexts() {
+		return contexts;
+	}
+	public void setContexts(ArrayList<String> contexts) {
+		this.contexts = contexts;
 	}
 	@Override
 	public String toString() {

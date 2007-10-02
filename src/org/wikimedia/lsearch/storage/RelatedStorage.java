@@ -35,7 +35,7 @@ public class RelatedStorage extends LuceneStorage {
 		StringList sl = new StringList(CompactRelated.convertToStringList(rel));
 		Document doc = new Document();
 		doc.add(new Field("key",key,Field.Store.YES,Field.Index.UN_TOKENIZED));
-		doc.add(new Field("related",sl.toString(),Field.Store.YES,Field.Index.NO));
+		doc.add(new Field("related",sl.toString(),Field.Store.COMPRESS,Field.Index.NO));
 		writer.addDocument(doc);
 	}
 	

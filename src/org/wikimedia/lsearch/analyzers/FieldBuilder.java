@@ -1,5 +1,7 @@
 package org.wikimedia.lsearch.analyzers;
 
+import org.wikimedia.lsearch.config.IndexId;
+
 /**
  * Agregate class for FilterFactory and FieldNameFactory. This class
  * contains methods used to build various fields of the index, 
@@ -47,15 +49,15 @@ public class FieldBuilder {
 	public static enum Options { NONE, SPELL_CHECK };
 	
 	/** Construct case-insensitive field builder with stemming */
-	public FieldBuilder(String lang){
-		this(lang,Case.IGNORE_CASE,Stemmer.USE_STEMMER,Options.NONE);
+	public FieldBuilder(IndexId iid){
+		this(iid,Case.IGNORE_CASE,Stemmer.USE_STEMMER,Options.NONE);
 	}
 	
-	public FieldBuilder(String lang, Case useCase){
-		this(lang,useCase,Stemmer.USE_STEMMER,Options.NONE);
+	public FieldBuilder(IndexId iid, Case useCase){
+		this(iid,useCase,Stemmer.USE_STEMMER,Options.NONE);
 	}
 	
-	public FieldBuilder(String lang, Case useCase, Stemmer useStemmer, Options options){
+	public FieldBuilder(IndexId iid, Case useCase, Stemmer useStemmer, Options options){
 		FilterFactory.Type type = FilterFactory.Type.FULL;
 		if(options == Options.SPELL_CHECK)
 			type = FilterFactory.Type.SPELL_CHECK;
@@ -63,7 +65,7 @@ public class FieldBuilder {
 		if(useCase == Case.EXACT_CASE){
 			builders = new BuilderSet[2];	
 			builders[1] = new BuilderSet(
-					new FilterFactory(lang,type).getNoStemmerFilterFactory(),
+					new FilterFactory(iid,type).getNoStemmerFilterFactory(),
 					new FieldNameFactory(FieldNameFactory.EXACT_CASE));
 		} else
 			builders = new BuilderSet[1];
@@ -71,11 +73,11 @@ public class FieldBuilder {
 		// default factory, lowercase all data
 		if(useStemmer == Stemmer.USE_STEMMER){
 			builders[0] = new BuilderSet(
-					new FilterFactory(lang,type),
+					new FilterFactory(iid,type),
 					new FieldNameFactory());
 		} else{
 			builders[0] = new BuilderSet(
-					new FilterFactory(lang,type).getNoStemmerFilterFactory(),
+					new FilterFactory(iid,type).getNoStemmerFilterFactory(),
 					new FieldNameFactory());
 		}
 		

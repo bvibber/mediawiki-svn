@@ -27,6 +27,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Analyzers;
+import org.wikimedia.lsearch.analyzers.ContextAnalyzer;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
@@ -41,6 +42,7 @@ import org.wikimedia.lsearch.beans.Title;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.interoperability.RMIMessengerClient;
+import org.wikimedia.lsearch.ranks.Links;
 import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.spell.api.SpellCheckIndexer;
 import org.wikimedia.lsearch.util.Localization;
@@ -169,7 +171,15 @@ public class WikiIndexModifier {
 			writer.setUseCompoundFile(true);
 			writer.setMaxFieldLength(MAX_FIELD_LENGTH);
 			FieldBuilder.Case dCase = (exactCase)? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 
-			FieldBuilder builder = new FieldBuilder(langCode,dCase);
+			FieldBuilder builder = new FieldBuilder(iid,dCase);
+			// TODO: fixme
+			Links links = null;
+			try {
+				links = Links.openForRead(iid,iid.getImportPath());
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 			for(IndexUpdateRecord rec : records){								
 				if(rec.doAdd()){
@@ -178,7 +188,7 @@ public class WikiIndexModifier {
 					if(!checkPreconditions(rec))
 						continue; // article shouldn't be added for some reason					
 					IndexReportCard card = getReportCard(rec);
-					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),builder,iid);
+					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),builder,iid,links);
 					Document doc = (Document) ret[0];
 					Analyzer analyzer = (Analyzer) ret[1];
 					try {
@@ -400,9 +410,8 @@ public class WikiIndexModifier {
 	 * @param languageAnalyzer
 	 * @return array { document, analyzer }
 	 */
-	public static Object[] makeDocumentAndAnalyzer(Article article, FieldBuilder builder, IndexId iid){
+	public static Object[] makeDocumentAndAnalyzer(Article article, FieldBuilder builder, IndexId iid, Links links){
 		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
-		WikiTokenizer tokenizer = null;
 		Document doc = new Document();
 
 		// tranform record so that unnecessary stuff is deleted, e.g. some redirects
@@ -463,7 +472,9 @@ public class WikiIndexModifier {
 			doc.add(contents);
 			
 			// related articles
-			p = makeRelated(doc,fields.related(),article,1);
+			p = makeRelated(doc,fields.related(),article,1,fields.context());
+			
+			//makeContextField(doc,fields.context(),fields.related());
 			
 			// anchors
 			// makeKeywordField(doc,fields.anchor(),rankBoost);
@@ -479,7 +490,7 @@ public class WikiIndexModifier {
 		}
 		// make analyzer
 		String text = article.getContents();
-		Object[] ret = Analyzers.getIndexerAnalyzer(text,builder,article.getRedirectKeywords(),article.getAnchorText(),article.getRelated(),p);
+		Object[] ret = Analyzers.getIndexerAnalyzer(text,builder,article.getRedirectKeywords(),article.getAnchorText(),article.getRelated(),p,article.makeTitle(),links);
 		perFieldAnalyzer = (PerFieldAnalyzerWrapper) ret[0];
 
 		
@@ -487,7 +498,7 @@ public class WikiIndexModifier {
 	}
 
 	/** Returns partioning of related titles, or null if there aren't any */
-	protected static int[] makeRelated(Document doc, String prefix, Article article, float boost) {
+	protected static int[] makeRelated(Document doc, String prefix, Article article, float boost, String context) {
 		ArrayList<RelatedTitle> rel = article.getRelated();
 		if(rel == null || rel.size()==0)
 			return null;
@@ -501,14 +512,32 @@ public class WikiIndexModifier {
 		for(int i=1;i<RelatedAnalyzer.RELATED_GROUPS;i++){
 			Field relfield = new Field(prefix+i, "", 
 					Field.Store.NO, Field.Index.TOKENIZED);
-			relfield.setBoost(boost*(float)MathFunc.avg(scores,p[i-1],p[i]));
+			float fb = boost*(float)MathFunc.avg(scores,p[i-1],p[i]);
+			relfield.setBoost(fb);
 			doc.add(relfield);
+			if(i <= ContextAnalyzer.CONTEXT_GROUPS){
+				Field confield = new Field(context+i, "", 
+						Field.Store.NO, Field.Index.TOKENIZED);
+				confield.setBoost(fb); // use same boost as related field
+				doc.add(confield);
+			} 
 		}
 		
 		return p;
 	}
 
-	/** Make a multiple keyword field, e.g. redirect1, redirect2, redirect3 ...  */
+	/** Make a multiple context field ...  */
+	protected static void makeContextField(Document doc, String prefix, String related) {
+		for(int i=1;i<=ContextAnalyzer.CONTEXT_GROUPS;i++){
+			Field keyfield = new Field(prefix+i, "", 
+					Field.Store.NO, Field.Index.TOKENIZED);
+			keyfield.setBoost(doc.getField(related+i).getBoost()); // use same boost as related field
+			doc.add(keyfield);
+		}
+		
+	}
+
+	/** Make a multiple keyword field, e.g. keyword1, keyword2, keyword3 ...  */
 	protected static void makeKeywordField(Document doc, String prefix, float boost) {
 		for(int i=1;i<=KeywordsAnalyzer.KEYWORD_LEVELS;i++){
 			Field keyfield = new Field(prefix+i, "", 

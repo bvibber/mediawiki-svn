@@ -1,6 +1,11 @@
 package org.wikimedia.lsearch.ranks;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -15,6 +20,9 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.SimpleAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
+import org.apache.lucene.document.FieldSelector;
+import org.apache.lucene.document.SetBasedFieldSelector;
+import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
@@ -29,6 +37,7 @@ import org.wikimedia.lsearch.config.GlobalConfiguration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 import org.wikimedia.lsearch.related.CompactArticleLinks;
+import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.spell.api.Dictionary;
 import org.wikimedia.lsearch.spell.api.LuceneDictionary;
 import org.wikimedia.lsearch.spell.api.Dictionary.Word;
@@ -40,61 +49,93 @@ public class Links {
 	protected String langCode;
 	protected IndexWriter writer = null;
 	protected HashMap<String,Integer> nsmap = null;
-	protected HashSet<String> interwiki = new HashSet<String>();
+	protected HashSet<String> interwiki;
+	protected HashSet<String> categoryLocalized;
+	protected HashSet<String> imageLocalized;
 	protected IndexReader reader = null;
 	protected String path;
-	protected enum State { MODIFIED_TITLES, FLUSHED, MODIFIED_ARTICLES, READ };
+	protected enum State { FLUSHED, WRITE, MODIFIED, READ };
 	protected State state;
-	protected Directory directory;
+	protected Directory directory = null;
+	protected NamespaceFilter nsf; // default search
+	protected ObjectCache cache;
+	//protected ObjectCache refCache;
+	protected FieldSelector keyOnly,redirectOnly,contextOnly,linksOnly;
 	
-	private Links(IndexId iid){
+	private Links(IndexId iid, String path, IndexWriter writer) throws CorruptIndexException, IOException{
+		this.writer = writer;
+		this.path = path;
 		this.iid = iid;
-		this.langCode = GlobalConfiguration.getInstance().getLanguage(iid);
+		GlobalConfiguration global = GlobalConfiguration.getInstance(); 
+		this.langCode = global.getLanguage(iid);
+		String dbname = iid.getDBname();
+		nsmap = Localization.getLocalizedNamespaces(langCode,dbname);
+		interwiki = Localization.getInterwiki();
+		categoryLocalized = Localization.getLocalizedCategory(langCode,dbname);
+		imageLocalized = Localization.getLocalizedImage(langCode,dbname);
+		state = State.FLUSHED;
+		initWriter(writer);
+		//reader = IndexReader.open(path);
+		nsf = global.getDefaultNamespace(iid);
+		cache = new ObjectCache(10000);
+		// init cache manager
+		/*CacheManager manager = CacheManager.create();
+		cache = new Cache("links", 5000, false, false, 5, 2);
+		manager.addCache(cache); */		
+		keyOnly = makeSelector("article_key");
+		redirectOnly = makeSelector("redirect");
+		contextOnly = makeSelector("context");
+		linksOnly = makeSelector("links");
 	}
 	
-	public static Links openExisting(IndexId iid) throws IOException{
-		Links links = new Links(iid);
-		links.path = iid.getTempPath();
-		log.info("Using index at "+links.path);
-		links.writer = WikiIndexModifier.openForWrite(links.path,false);
-		initWriter(links.writer);
-		links.reader = IndexReader.open(links.path);
-		links.nsmap = Localization.getLocalizedNamespaces(links.langCode);
-		links.interwiki = Localization.getInterwiki();		
-		links.state = State.FLUSHED;
-		links.directory = links.writer.getDirectory();
-		return links;
+	protected FieldSelector makeSelector(String field){
+		HashSet<String> onlySet = new HashSet<String>();		
+		onlySet.add(field);
+		return new SetBasedFieldSelector(onlySet, new HashSet<String>());
 	}
 	
-	private static void initWriter(IndexWriter writer) {
-		writer.setMergeFactor(20);
-		writer.setMaxBufferedDocs(500);		
-		writer.setUseCompoundFile(true);		
+	private void initWriter(IndexWriter writer) {
+		if(writer != null){
+			writer.setMergeFactor(20);
+			writer.setMaxBufferedDocs(500);		
+			writer.setUseCompoundFile(true);
+			if(directory == null)
+				directory = writer.getDirectory();
+		}
 	}
-
+	
+	/** Open the index path for updates */
+	public static Links openForModification(IndexId iid) throws IOException{
+		iid = iid.getLinks();
+		String path = iid.getIndexPath();
+		log.info("Using index at "+path);
+		IndexWriter writer = WikiIndexModifier.openForWrite(path,false);
+		return new Links(iid,path,writer);		
+	}
+	
+	/** Open index at path for reading */
+	public static Links openForRead(IndexId iid, String path) throws IOException {
+		iid = iid.getLinks();
+		log.info("Opening for read "+path);
+		return new Links(iid,path,null);
+	}
+		
+	/** Create new in the import path */
 	public static Links createNew(IndexId iid) throws IOException{
-		Links links = new Links(iid);
-		links.path = iid.getTempPath();
-		log.info("Making index at "+links.path);
-		links.writer = WikiIndexModifier.openForWrite(links.path,true);
-		links.reader = IndexReader.open(links.path);
-		links.nsmap = Localization.getLocalizedNamespaces(links.langCode);
-		links.interwiki = Localization.getInterwiki();		
-		links.state = State.FLUSHED;
-		links.directory = links.writer.getDirectory();
+		iid = iid.getLinks();
+		String path = iid.getImportPath();
+		log.info("Making index at "+path);
+		IndexWriter writer = WikiIndexModifier.openForWrite(path,true);
+		Links links = new Links(iid,path,writer);		
 		return links;
 	}
 	
+	/** Create new index in memory (RAMDirectory) */
 	public static Links createNewInMemory(IndexId iid) throws IOException{
-		Links links = new Links(iid);
-		links.path = iid.getTempPath();
-		log.info("Making index at "+links.path);
-		links.writer = new IndexWriter(new RAMDirectory(),new SimpleAnalyzer(),true);
-		links.reader = IndexReader.open(links.path);
-		links.nsmap = Localization.getLocalizedNamespaces(links.langCode);
-		links.interwiki = Localization.getInterwiki();		
-		links.state = State.FLUSHED;
-		links.directory = links.writer.getDirectory();
+		iid = iid.getLinks();
+		log.info("Making index in memory");
+		IndexWriter writer = new IndexWriter(new RAMDirectory(),new SimpleAnalyzer(),true);
+		Links links = new Links(iid,null,writer);		
 		return links;
 	}
 	
@@ -105,23 +146,21 @@ public class Links {
 		}
 	}
 	
+	/** Add a custom namespace mapping */
 	public void addToNamespaceMap(String namespace, int index){
 		nsmap.put(namespace.toLowerCase(),index);
 	}
 	
-	/** Write all changes, call after batch-adding of titles and articles 
+	/** Write all changes, optimize/close everything
 	 * @throws IOException */
 	public void flush() throws IOException{
 		// close & optimize
-		reader.close();
+		if(reader != null)
+			reader.close();
 		if(writer != null){
 			writer.optimize();
 			writer.close();	
 		}
-		// reopen
-		writer = new IndexWriter(directory, new SimpleAnalyzer(), false);
-		initWriter(writer);
-		reader = IndexReader.open(path);
 		state = State.FLUSHED;
 	}
 	
@@ -130,40 +169,70 @@ public class Links {
 	 * Can still read. 
 	 * @throws IOException 
 	 */
-	public void flushForRead() throws IOException{
+	protected void flushForRead() throws IOException{		
 		// close & optimize
-		reader.close();
-		writer.optimize();
-		writer.close();		
+		if(reader != null)
+			reader.close();
+		if(writer != null){
+			writer.optimize();
+			writer.close();	
+		}
+		log.debug("Opening index reader");
 		// reopen
 		reader = IndexReader.open(path);
 		writer = null;
 		state = State.READ;
 	}
 	
-	/** Add a title to enable proper link analysis when adding articles 
-	 * @throws IOException */
-	public void addTitle(Title t) throws IOException{
-		Document doc = new Document();
-		doc.add(new Field("namespace",Integer.toString(t.getNamespace()),Field.Store.YES,Field.Index.UN_TOKENIZED));
-		doc.add(new Field("title",t.getTitle(),Field.Store.YES,Field.Index.UN_TOKENIZED));
-		doc.add(new Field("title_key",t.getKey(),Field.Store.YES,Field.Index.UN_TOKENIZED));
-		writer.addDocument(doc);
-		state = State.MODIFIED_TITLES;
+	/** Open the writer, and close the reader (if any) */
+	protected void openForWrite() throws IOException{
+		if(reader != null)
+			reader.close();
+		if(writer == null){
+			if(directory == null)
+				throw new RuntimeException("Opened for read, but trying to write");
+			writer = new IndexWriter(directory,new SimpleAnalyzer(),false);
+			initWriter(writer);
+			reader = null;
+			state = State.WRITE;
+		}
+	}
+	
+	protected void ensureRead() throws IOException {
+		if(state != State.READ)
+			flushForRead();
+	}
+	
+	protected void ensureWrite() throws IOException {
+		if(writer == null)
+			openForWrite();
+	}
+	
+	/** Modify existing article links info */
+	public void modifyArticleInfo(String text, Title t) throws IOException{
+		ensureWrite();
+		writer.deleteDocuments(new Term("article_key",t.getKey()));
+		addArticleInfo(text,t);
 	}
 	
 	/** Add links and other info from article 
 	 * @throws IOException */
 	public void addArticleInfo(String text, Title t) throws IOException{
-		if(state == State.MODIFIED_TITLES)
-			flush();
+		ensureWrite();
 		Pattern linkPat = Pattern.compile("\\[\\[(.*?)(\\|(.*?))?\\]\\]");
 		int namespace = t.getNamespace();
 		Matcher matcher = linkPat.matcher(text);
 		int ns; String title;
 		boolean escaped;
+
 		HashSet<String> pagelinks = new HashSet<String>();
-		HashSet<String> linkkeys = new HashSet<String>();		
+		// article link -> contexts
+		HashMap<String,ArrayList<String>> contextMap = new HashMap<String,ArrayList<String>>();
+		
+		// use context only for namespace in default search
+		boolean useContext = nsf.contains(t.getNamespace());
+		
+		ContextParser cp = new ContextParser(text,imageLocalized,categoryLocalized,interwiki);
 		
 		Title redirect = Localization.getRedirectTitle(text,langCode);
 		String redirectsTo = null;
@@ -172,9 +241,8 @@ public class Links {
 		} else { 
 			while(matcher.find()){
 				String link = matcher.group(1);
-				String anchor = matcher.group(2);
-				if(anchor != null && anchor.length()>1 && anchor.substring(1).equalsIgnoreCase(title(link)))
-					anchor = null; // anchor same as link text
+				ContextParser.Context context = useContext? cp.getNext(matcher.start(1)) : null;
+
 				int fragment = link.lastIndexOf('#');
 				if(fragment != -1)
 					link = link.substring(0,fragment);
@@ -204,97 +272,49 @@ public class Links {
 				}
 				if(ns == 0 && namespace!=0)
 					continue; // skip links from other namespaces into the main namespace
-				String target = findTargetLink(ns,title);
+				String target = findTargetLink(ns,title);				
 				if(target != null){
-					//System.out.println("Found "+link);
-					linkkeys.add(target); // for outlink storage
-					pagelinks.add(target+"|"); // for backlinks
-					if(anchor != null && !"|".equals(anchor))
-						pagelinks.add(target+anchor); // for efficient anchortext extraction
+					int targetNs = Integer.parseInt(target.substring(0,target.indexOf(':')));					
+					pagelinks.add(target); // for outlink storage
+					// register context of this link
+					if(context != null && nsf.contains(targetNs)){
+						ArrayList<String> ct = contextMap.get(target); 
+						if(ct==null){
+							ct = new ArrayList<String>();
+							contextMap.put(target,ct);
+						}
+						ct.add(context.get(text));
+					}
 				}
 			}
 		}
 		// index article
-		StringList sl = new StringList(pagelinks);
-		StringList lk = new StringList(linkkeys);
+		StringList lk = new StringList(pagelinks);
 		Analyzer an = new SplitAnalyzer();
 		Document doc = new Document();
-		doc.add(new Field("namespace",t.getNamespaceAsString(),Field.Store.YES,Field.Index.UN_TOKENIZED));
-		doc.add(new Field("title",t.getTitle(),Field.Store.YES,Field.Index.UN_TOKENIZED));
 		doc.add(new Field("article_key",t.getKey(),Field.Store.YES,Field.Index.UN_TOKENIZED));
 		if(redirectsTo != null)
-			doc.add(new Field("redirect",redirectsTo,Field.Store.YES,Field.Index.UN_TOKENIZED));
+			doc.add(new Field("redirect",redirectsTo+"|"+t.getKey(),Field.Store.YES,Field.Index.UN_TOKENIZED));
 		else{
-			doc.add(new Field("links",sl.toString(),Field.Store.NO,Field.Index.TOKENIZED));
-			doc.add(new Field("links_stored",lk.toString(),Field.Store.YES,Field.Index.TOKENIZED));
+			doc.add(new Field("links",lk.toString(),Field.Store.COMPRESS,Field.Index.TOKENIZED));
+		}
+		if(contextMap.size() != 0){
+			/*for(Entry<String,ArrayList<String>> e : contextMap.entrySet()){
+				Document con = new Document();
+				con.add(new Field("context_key",e.getKey()+"|"+t.getKey(),Field.Store.NO,Field.Index.UN_TOKENIZED));
+				con.add(new Field("context",new StringList(e.getValue()).toString(),Field.Store.COMPRESS,Field.Index.NO));
+				writer.addDocument(con,an);
+			}*/
+			// serialize the java object (contextMap) into context field
+			//ByteArrayOutputStream ba = new ByteArrayOutputStream();
+			//ObjectOutputStream ob = new ObjectOutputStream(ba);
+			//ob.writeObject(contextMap);
+			//doc.add(new Field("context",ba.toByteArray(),Field.Store.COMPRESS)); 
+			doc.add(new Field("context",new StringMap(contextMap).serialize(),Field.Store.COMPRESS));
 		}
 		
 		writer.addDocument(doc,an);
-		state = State.MODIFIED_ARTICLES;
-	}
-	public static HashSet<Character> separators = new HashSet<Character>();
-	static{
-		separators.add(' ');
-		separators.add('\r');
-		separators.add('\n');
-		separators.add('\t');
-		separators.add(':');
-		separators.add('(');
-		separators.add(')');
-		separators.add('[');
-		separators.add(']');
-		separators.add('.');
-		separators.add(',');
-		separators.add(':');
-		separators.add(';');
-		separators.add('"');
-		separators.add('+');
-		separators.add('*');
-		separators.add('!');
-		separators.add('~');
-		separators.add('$');
-		separators.add('%');
-		separators.add('^');
-		separators.add('&');
-		separators.add('_');
-		separators.add('=');
-		separators.add('|');
-		separators.add('\\');	
-	}
-	
-	/**
-	 * Find a sentance boundaries 
-	 * 
-	 * @param text - raw text
-	 * @param start - start index to search from
-	 * @param reverse - if true, will lookup in reverse
-	 * @param max - radius of search (if no boundary is found return last wordbreak)
-	 * @return
-	 */
-	protected int findSentance(char[] text, int start, boolean reverse, int max){
-		int inc = (reverse)? -1 : 1;
-		int count = 0;
-		int wordbreak = start;
-		int i = start;
-		for(;i>0 && i<text.length;i+=inc){
-			char c = text[i];
-			if(c == '.')
-				return i;
-			else if(c == '*' && ((i>1 && text[i-1]=='\n') || i==0))
-				return i;
-			else if(separators.contains(c))
-				wordbreak = i;
-			if(count >= max)
-				return wordbreak; // more than max chars away, return the latest wordbreak
-			count ++;
-		}
-		return i;
-	}
-	
-	/** Find surrounding for a link - extract sentances, list items .... */
-	protected String findContext(char[] text, int start, int end){
-		// TODO: implement
-		return null;
+		state = State.MODIFIED;
 	}
 	
 	/** Find the target key to title (ns:title) to which the links is pointing to 
@@ -303,57 +323,56 @@ public class Links {
 		String key;
 		if(title.length() == 0)
 			return null;
-		// try exact match
-		key = ns+":"+title;
-		if(reader.docFreq(new Term("title_key",key)) != 0)
-			return key;
-		// try lowercase 
-		key = ns+":"+title.toLowerCase();
-		if(reader.docFreq(new Term("title_key",key)) != 0)
-			return key;
-		// try lowercase with first letter upper case
+		
+		// first letter uppercase
 		if(title.length()==1) 
 			key = ns+":"+title.toUpperCase();
 		else
-			key = ns+":"+title.substring(0,1).toUpperCase()+title.substring(1).toLowerCase();
-		if(reader.docFreq(new Term("title_key",key)) != 0)
-			return key;
-		// try title case
-		key = ns+":"+WordUtils.capitalize(title);
-		if(reader.docFreq(new Term("title_key",key)) != 0)
-			return key;
-		// try upper case
-		key = ns+":"+title.toUpperCase();
-		if(reader.docFreq(new Term("title_key",key)) != 0)
-			return key;
-		// try capitalizing at word breaks
-		key = ns+":"+WordUtils.capitalize(title,new char[] {' ','-','(',')','}','{','.',',','?','!'});
-		if(reader.docFreq(new Term("title_key",key)) != 0)
-			return key;
-		
-		return null;
+			key = ns+":"+title.substring(0,1).toUpperCase()+title.substring(1);
+		return key; // index everything, even if the target article doesn't exist
 	}
 	
 	/** Get number of backlinks to this title */
 	public int getNumInLinks(String key) throws IOException{
-		return reader.docFreq(new Term("links",key+"|"));
+		ensureRead();
+		/*String cacheKey = "getNumInLinks:"+key;
+		Object ref = refCache.get(cacheKey);
+		if(ref != null)
+			return (Integer) ref;
+		else{ */
+			int r = reader.docFreq(new Term("links",key));
+			//refCache.put(cacheKey,r);
+			return r; 
+		//}
 	}
 	
+	@Deprecated
 	/** Get all article titles that redirect to given title */
-	public ArrayList<String> getRedirectsTo(String key) throws IOException{
+	public ArrayList<String> getRedirectsToOld(String key) throws IOException{
+		ensureRead();
 		ArrayList<String> ret = new ArrayList<String>();
 		TermDocs td = reader.termDocs(new Term("redirect",key));
 		while(td.next()){
-			ret.add(reader.document(td.doc()).get("article_key"));
+			ret.add(reader.document(td.doc(),keyOnly).get("article_key"));
 		}
 		return ret;
 	}
 	
-	protected void ensureRead() throws IOException {
-		if(state != State.READ)
-			flushForRead();
+	/** Get all article titles that redirect to given title */
+	public ArrayList<String> getRedirectsTo(String key) throws IOException{
+		ensureRead();
+		ArrayList<String> ret = new ArrayList<String>();
+		String prefix = key+"|";
+		TermEnum te = reader.terms(new Term("redirect",prefix));
+		while(te.next()){
+			String t = te.term().text();
+			if(t.startsWith(prefix)){
+				ret.add(t.substring(t.indexOf('|')+1));
+			} else
+				break;
+		}
+		return ret;
 	}
-
 	
 	/** If an article is a redirect 
 	 * @throws IOException */
@@ -361,10 +380,21 @@ public class Links {
 		ensureRead();
 		TermDocs td = reader.termDocs(new Term("article_key",key));
 		if(td.next()){
-			if(reader.document(td.doc()).get("redirect")!=null)
+			if(reader.document(td.doc(),redirectOnly).get("redirect")!=null)
 				return true;
 		}
 		return false;
+	}
+
+	@Deprecated
+	/** If article is redirect, get target, else null */
+	public String getRedirectTargetOld(String key) throws IOException{
+		ensureRead();
+		TermDocs td = reader.termDocs(new Term("article_key",key));
+		if(td.next()){
+			 return reader.document(td.doc(),redirectOnly).get("redirect");
+		}
+		return null;
 	}
 	
 	/** If article is redirect, get target, else null */
@@ -372,64 +402,21 @@ public class Links {
 		ensureRead();
 		TermDocs td = reader.termDocs(new Term("article_key",key));
 		if(td.next()){
-			 return reader.document(td.doc()).get("redirect");
+			String t = reader.document(td.doc(),redirectOnly).get("redirect");
+			return t.substring(t.indexOf('|')+1);
 		}
 		return null;
 	}
-	
-	/** Get only anchors without frequency */
-	public ArrayList<String> getAnchors(String key) throws IOException{
-		ensureRead();
-		ArrayList<String> ret = new ArrayList<String>();
-		TermEnum te = reader.terms(new Term("links",key+"|"));
-		while(te.next()){
-			String t = te.term().text(); 
-			if(!t.startsWith(key) || !te.term().field().equals("links"))
-				break;
-			ret.add(t.substring(key.length()+1));			
-		}
-		return ret;
-	}
-	
-	/** Get title part of the key (ns:title) */
-	private String title(String key) {
-		return key.substring(key.indexOf(':')+1);
-	}
 
-	/** Get anchor texts for given title 
-	 * @throws IOException */
-	public ArrayList<AnchorText> getAnchorText(String key) throws IOException{
-		ensureRead();
-		ArrayList<AnchorText> ret = new ArrayList<AnchorText>();
-		TermEnum te = reader.terms(new Term("links",key+"|"));
-		while(te.next()){
-			if(!te.term().text().startsWith(key) || !te.term().field().equals("links"))
-				break;
-			ret.add(new AnchorText(te.term().text().substring(key.length()),te.docFreq()));			
-		}
-		return ret;
-	}
 	
-	static public class AnchorText {
-		public String text; /** ns:title **/
-		public int freq;
-		public AnchorText(String text, int freq) {
-			this.text = text;
-			this.freq = freq;
-		}		
-	}
-	
-	/** Get all article titles linking to given title 
-	 * @throws IOException */
-	public ArrayList<String> getInLinks(String key, HashMap<Integer,String> keyCache) throws IOException{
+	/** Return the namespace of the redirect taget (if any) */
+	public int getRedirectTargetNamespace(String key) throws IOException{
 		ensureRead();
-		ArrayList<String> ret = new ArrayList<String>();
-		TermDocs td = reader.termDocs(new Term("links",key+"|"));
-		while(td.next()){
-			ret.add(keyCache.get(td.doc()));
-			//ret.add(reader.document(td.doc()).get("article_key"));
+		String t = getRedirectTarget(key);
+		if(t != null){
+			return Integer.parseInt(t.substring(t.indexOf('|')+1,t.indexOf(':',t.indexOf('|'))));
 		}
-		return ret;
+		return 0;
 	}
 	
 	/** Get all article titles linking to given title 
@@ -437,9 +424,11 @@ public class Links {
 	public ArrayList<CompactArticleLinks> getInLinks(CompactArticleLinks key, HashMap<Integer,CompactArticleLinks> keyCache) throws IOException{
 		ensureRead();
 		ArrayList<CompactArticleLinks> ret = new ArrayList<CompactArticleLinks>();
-		TermDocs td = reader.termDocs(new Term("links",key+"|"));
+		TermDocs td = reader.termDocs(new Term("links",key.toString()));
 		while(td.next()){
-			ret.add(keyCache.get(td.doc()));
+			CompactArticleLinks cs = keyCache.get(td.doc());
+			if(cs != null)
+				ret.add(cs);
 		}
 		return ret;
 	}
@@ -449,9 +438,9 @@ public class Links {
 	public ArrayList<String> getInLinks(String key) throws IOException{
 		ensureRead();
 		ArrayList<String> ret = new ArrayList<String>();
-		TermDocs td = reader.termDocs(new Term("links",key+"|"));
+		TermDocs td = reader.termDocs(new Term("links",key));
 		while(td.next()){
-			ret.add(reader.document(td.doc()).get("article_key"));
+			ret.add(reader.document(td.doc(),keyOnly).get("article_key"));
 		}
 		return ret;
 	}
@@ -461,60 +450,77 @@ public class Links {
 		ensureRead();
 		TermDocs td = reader.termDocs(new Term("article_key",key));
 		if(td.next()){
-			return new StringList(reader.document(td.doc()).get("links_stored"));
+			return new StringList(reader.document(td.doc(),linksOnly).get("links"));
 		}
 		return null;
 	}
 	
+	/** Get all contexts in which article <i>to<i/> is linked from <i>from</i>. 
+	 *  Will return null if there is no context, or link is invalid.
+	 * @throws ClassNotFoundException */
+	@SuppressWarnings("unchecked")
+	public ArrayList<String> getContext(String from, String to) throws IOException {
+		ensureRead();
+		String cacheKey = "getContext:"+from;
+		//Element fromCache = cache.get(cacheKey);
+		Object fromCache = cache.get(cacheKey);
+		if(fromCache != null){
+			//HashMap<String, ArrayList<String>> map = (HashMap<String, ArrayList<String>>) fromCache.getObjectValue();
+			//HashMap<String, ArrayList<String>> map = (HashMap<String, ArrayList<String>>) fromCache;
+			StringMap map = (StringMap) fromCache;
+			return map.get(to);
+		}
+		TermDocs td = reader.termDocs(new Term("article_key",from));
+		if(td.next()){
+			byte[] serialized = reader.document(td.doc(),contextOnly).getBinaryValue("context");
+			if(serialized == null)
+				return null;
+			StringMap map = new StringMap(serialized);
+			try {				
+				//ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(serialized));						
+				//HashMap<String, ArrayList<String>> map;
+				//map = (HashMap<String, ArrayList<String>>) in.readObject();				
+				// cache it !
+				//cache.put(new Element(cacheKey,map));
+				if(from.equals("0:1910") && to.equals("0:April")){
+					int b =0;
+					b++;
+				}
+				cache.put(cacheKey,map);
+				return map.get(to);
+			/* } catch (ClassNotFoundException e) {
+				log.error("For getContext("+from+","+to+") got class not found exception: "+e.getMessage());
+				e.printStackTrace(); // shouldn't happen! */
+			} catch(Exception e){
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return null;
+	}
+	
+	/** Get all contexts in which article <i>to<i/> is linked from <i>from</i>. 
+	 *  Will return null if there is no context, or link is invalid.
+	 * @throws ClassNotFoundException */
+	@SuppressWarnings("unchecked")
+	public Collection<String> getContextOld(String from, String to) throws IOException {
+		ensureRead();
+		
+		TermDocs td = reader.termDocs(new Term("context_key",to+"|"+from));
+		if(td.next()){
+			return new StringList(reader.document(td.doc()).get("context")).toCollection();					
+		}
+		
+		return null;
+	}
+	
+	/** Get a dictionary of all article keys (ns:title) in this index */
 	public Dictionary getKeys() throws IOException{
 		ensureRead();
 		return new LuceneDictionary(reader,"article_key");
 	}
-	@Deprecated
-	protected void cacheInLinks() throws IOException{
-		if(state != State.FLUSHED)
-			flush();
-		log.info("Caching in-links");
-		int count = 0;
-		// docid -> key
-		HashMap<Integer,String> keyCache = new HashMap<Integer,String>();
-		Dictionary dict = new LuceneDictionary(reader,"article_key");
-		Word w;
-		// build key cache
-		while((w = dict.next()) != null){
-			String key = w.getWord();
-			TermDocs td = reader.termDocs(new Term("article_key",key));
-			if(td.next()){
-				keyCache.put(td.doc(),key);
-			} else
-				log.error("Cannot find article for key "+key);
-		}
-		
-		// get inlinks
-		for(String key : keyCache.values()){
-			ArrayList<String> in = getInLinks(key,keyCache);
-			Document doc = new Document();
-			doc.add(new Field("inlinks_key",key,Field.Store.YES,Field.Index.UN_TOKENIZED));
-			doc.add(new Field("inlinks",new StringList(in).toString(),Field.Store.YES,Field.Index.UN_TOKENIZED));
-			writer.addDocument(doc);
-			count ++;
-			if(count % 1000 == 0){
-				System.out.println("Cached inlinks for "+count);
-			}
-		}
-	}
 	
-	/** Get all article titles linking to given title (from inlinks cache) 
-	 * @throws IOException */
-	public Collection<String> getInLinksFromCache(String key) throws IOException{
-		ensureRead();		
-		TermDocs td = reader.termDocs(new Term("inlinks_key",key));
-		while(td.next()){
-			return new StringList(reader.document(td.doc()).get("inlinks")).toCollection();
-		}
-		return new ArrayList<String>();
-	}
-
 	public Integer getDocId(String key) throws IOException {
 		TermDocs td = reader.termDocs(new Term("article_key",key));
 		if(td.next()){
@@ -530,7 +536,18 @@ public class Links {
 		if(reader != null)
 			reader.close();
 		if(directory != null)
-			directory.close();
-		
+			directory.close();		
 	}
+
+	public ObjectCache getCache() {
+		return cache;
+	}
+
+	/*public ObjectCache getRefCache() {
+		return refCache;
+	} */
+	
+	
+	
+	
 }

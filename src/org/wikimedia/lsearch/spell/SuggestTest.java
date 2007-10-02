@@ -46,7 +46,7 @@ public class SuggestTest {
 		Analyzer analyzer = Analyzers.getSearcherAnalyzer(iid,false);
 		NamespaceFilter nsDefault = new NamespaceFilter("0"); // default to main namespace
 		FieldBuilder.Case dCase = FieldBuilder.Case.IGNORE_CASE;
-		FieldBuilder.BuilderSet bs = new FieldBuilder(global.getLanguage(iid.getDBname()),dCase).getBuilder(dCase);
+		FieldBuilder.BuilderSet bs = new FieldBuilder(iid,dCase).getBuilder(dCase);
 		WikiQueryParser parser = new WikiQueryParser(bs.getFields().contents(),nsDefault,analyzer,bs,WikiQueryParser.NamespacePolicy.IGNORE,null);
 		while(true){
 			System.out.print(">> ");

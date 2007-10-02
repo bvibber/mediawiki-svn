@@ -10,6 +10,7 @@ import java.util.Iterator;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.Tokenizer;
+import org.wikimedia.lsearch.config.IndexId;
 
 /** Uses FastWikiTokenizerEngine to tokenize text */
 public class WikiTokenizer extends Tokenizer {
@@ -36,8 +37,8 @@ public class WikiTokenizer extends Tokenizer {
 	 * @param str
 	 */
 	
-	public WikiTokenizer(String str, String lang, boolean exactCase){
-		parser = new FastWikiTokenizerEngine(str,lang,exactCase);		
+	public WikiTokenizer(String str, IndexId iid, boolean exactCase){
+		parser = new FastWikiTokenizerEngine(str,iid,exactCase);		
 		this.input = null;
 	}
 	

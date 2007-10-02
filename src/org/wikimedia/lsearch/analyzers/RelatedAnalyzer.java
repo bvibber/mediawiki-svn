@@ -21,6 +21,7 @@ public class RelatedAnalyzer extends KeywordsAnalyzer {
 
 	public RelatedAnalyzer(ArrayList<RelatedTitle> related, int[] p, FilterFactory filters, String prefix, boolean exactCase) {
 		this.prefix = prefix;
+		this.iid = filters.getIndexId();
 		tokensBySize = new KeywordsTokenStream[RELATED_GROUPS];
 		if(related == null || p == null){
 			// init empty token streams

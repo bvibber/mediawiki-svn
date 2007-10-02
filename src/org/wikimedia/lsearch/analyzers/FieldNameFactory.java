@@ -60,6 +60,13 @@ public class FieldNameFactory {
 			return "related";
 	}
 	
+	public String context(){
+		if(exactCase)
+			return "context_exact";
+		else
+			return "context";
+	}
+	
 	public String anchor(){
 		if(exactCase)
 			return "anchor_exact";

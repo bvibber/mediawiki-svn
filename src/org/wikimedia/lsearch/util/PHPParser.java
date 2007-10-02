@@ -162,6 +162,24 @@ public class PHPParser {
 		return servers;
 	}
 	
+	/** Get wgMetaNamespace (dbname->metans name) from InitialiseSettings */
+	public Hashtable<String,String> getMetaNamespace(String text){
+		text = text.replaceAll("(#.*)",""); // strip comments
+		Hashtable<String,String> meta = new Hashtable<String,String>();
+		
+		int flags = Pattern.CASE_INSENSITIVE | Pattern.DOTALL;
+		Pattern wgmeta = Pattern.compile("[\"']wgMetaNamespace[\"']\\s*=>\\s*array\\s*\\((.*?)\\)",flags);
+		Pattern entry = Pattern.compile("[\"'](.*?)[\"']\\s*=>\\s*[\"'](.*?)[\"']",flags);
+		Matcher matcher = wgmeta.matcher(text);
+		while(matcher.find()){
+			Matcher me = entry.matcher(matcher.group(1));
+			while(me.find()){
+				meta.put(me.group(1),me.group(2));				
+			}
+		}
+		return meta;
+	}
+	
 	/** Get wgNamespacesToBeSearchedDefault from InitialiseSettings */
 	public Hashtable<String,NamespaceFilter> getDefaultSearch(String text){
 		text = text.replaceAll("(#.*)",""); // strip comments
@@ -276,6 +294,7 @@ public class PHPParser {
 		System.out.println(p.getLanguages(initset));
 		System.out.println(p.getServer(initset));
 		System.out.println(p.getDefaultSearch(initset));
+		System.out.println(p.getMetaNamespace(initset));
 		
 		
 	}

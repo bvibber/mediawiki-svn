@@ -119,7 +119,7 @@ public class PrefixIndexBuilder {
 				selected.add(sorted.get(i).getKey());
 			}
 			Document d = new Document();
-			d.add(new Field("prefix",prefix,Field.Store.NO,Field.Index.UN_TOKENIZED));
+			d.add(new Field("prefix",prefix,Field.Store.NO,Field.Index.NO_NORMS));
 			d.add(new Field("articles",new StringList(selected).toString(),Field.Store.YES,Field.Index.NO));
 			writer.addDocument(d);
 		}

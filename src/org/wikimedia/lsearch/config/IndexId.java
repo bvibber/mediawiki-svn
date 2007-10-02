@@ -58,7 +58,7 @@ public class IndexId {
 	/** If true, this machine is an indexer for this index */
 	protected boolean myIndex;
 	
-	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINK_ANALYSIS, RELATED, PREFIX };
+	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINKS, RELATED, PREFIX, PREFIX_TITLES };
 	
 	/** Type of index, enumeration */
 	protected IndexType type;
@@ -95,6 +95,9 @@ public class IndexId {
 	protected String OAIRepository;
 	
 	protected String rsyncSnapshotPath = null;
+	
+	/** language code, e.g. "en" */
+	protected String langCode = null;
 
 	/**
 	 * Get index Id object given it's string representation, the actual object
@@ -105,7 +108,10 @@ public class IndexId {
 	 * @return
 	 */
 	static public IndexId get(String dbrole){
-		return GlobalConfiguration.getIndexId(dbrole);
+		IndexId ret = GlobalConfiguration.getIndexId(dbrole);
+		if(ret == null)
+			throw new RuntimeException("Index "+dbrole+" doesn't exist");
+		return ret;
 	}
 		
 	/**
@@ -158,12 +164,14 @@ public class IndexId {
 			this.type = IndexType.NSSPLIT;
 		else if(type.equals("spell"))
 			this.type = IndexType.SPELL;
-		else if(type.equals("link_analysis"))
-			this.type = IndexType.LINK_ANALYSIS;
+		else if(type.equals("links"))
+			this.type = IndexType.LINKS;
 		else if(type.equals("related"))
 			this.type = IndexType.RELATED;
 		else if(type.equals("prefix"))
 			this.type = IndexType.PREFIX;
+		else if(type.equals("prefix_titles"))
+			this.type = IndexType.PREFIX_TITLES;
 		
 		// parts
 		String[] parts = dbrole.split("\\.");
@@ -259,9 +267,9 @@ public class IndexId {
 	public boolean isSpell(){
 		return type == IndexType.SPELL;
 	}
-	/** If this is the link-analysis index */
-	public boolean isLinkAnalysis(){
-		return type == IndexType.LINK_ANALYSIS;
+	/** If this is the index storing pagelinks */
+	public boolean isLinks(){
+		return type == IndexType.LINKS;
 	}
 	/** If this is the index storing info about related articles */
 	public boolean isRelated(){
@@ -270,6 +278,10 @@ public class IndexId {
 	/** If this is the index storing article list for specific prefixes */
 	public boolean isPrefix(){
 		return type == IndexType.PREFIX;
+	}
+	/** If this is the index storing titles for the prefix index */
+	public boolean isPrefixTitles(){
+		return type == IndexType.PREFIX_TITLES;
 	}
 	
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
@@ -418,7 +430,7 @@ public class IndexId {
 	
 	/** get all hosts that search db this iid belongs to */
 	public HashSet<String> getDBSearchHosts(){
-		if(isSingle() || isSpell() || isLinkAnalysis() || isRelated() || isPrefix())
+		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isPrefixTitles())
 			return searchHosts;
 		else{
 			// add all hosts that search: dbname and all parts
@@ -469,7 +481,7 @@ public class IndexId {
 	 */
 	public HashSet<String> getPhysicalIndexes() {
 		HashSet<String> ret = new HashSet<String>();
-		if(isSingle() || isSpell() || isLinkAnalysis() || isRelated() || isPrefix())
+		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isPrefixTitles())
 			ret.add(dbrole);
 		else if(isMainsplit() || isSplit() || isNssplit()){
 			for(String p : splitParts)
@@ -545,9 +557,9 @@ public class IndexId {
 		return get(dbname+".spell");
 	}
 	
-	/** Get the link analysis iid */
-	public IndexId getLinkAnalysis() {
-		return get(dbname+".link_analysis");
+	/** Get the pagelinks iid */
+	public IndexId getLinks() {
+		return get(dbname+".links");
 	}
 	
 	/** Get the related-articles index iid */
@@ -560,6 +572,17 @@ public class IndexId {
 		return get(dbname+".prefix");
 	}
 	
+	/** Get the prefix titles index iid */
+	public IndexId getPrefixTitles() {
+		return get(dbname+".prefix_titles");
+	}
+	
+	/** Get language code for this db, e.g. "en" */
+	public String getLangCode(){
+		if(langCode == null)
+			langCode = GlobalConfiguration.getInstance().getLanguage(dbname);
+		return langCode;
+	}
 	
 		
 }

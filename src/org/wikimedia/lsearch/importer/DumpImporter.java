@@ -38,17 +38,17 @@ public class DumpImporter implements DumpWriter {
 	Revision revision;
 	SimpleIndexWriter writer;
 	int count = 0, limit;
-	LinkAnalysisStorage las;
+	Links links;
 	String langCode;
 	RelatedStorage related;
 
 	public DumpImporter(String dbname, int limit, Boolean optimize, Integer mergeFactor, 
-			Integer maxBufDocs, boolean newIndex, LinkAnalysisStorage las, String langCode){
+			Integer maxBufDocs, boolean newIndex, Links links, String langCode){
 		Configuration.open(); // make sure configuration is loaded
 		IndexId iid = IndexId.get(dbname);
-		writer = new SimpleIndexWriter(iid, optimize, mergeFactor, maxBufDocs, newIndex);
+		writer = new SimpleIndexWriter(links, iid, optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;
-		this.las = las;
+		this.links = links;
 		this.langCode = langCode;
 		this.related = new RelatedStorage(iid);
 		if(!related.canRead())
@@ -62,26 +62,29 @@ public class DumpImporter implements DumpWriter {
 	}
 	public void writeEndPage() throws IOException {
 		String key = page.Title.Namespace+":"+page.Title.Text;
-		ArticleAnalytics aa = las.getAnaliticsForArticle(key); 
-		int references = aa.getReferences();
-		boolean isRedirect = aa.isRedirect();
-		int redirectTargetNamespace = aa.getRedirectTargetNamespace();
+		int references = links.getNumInLinks(key);
+		boolean isRedirect = links.isRedirect(key);
+		int redirectTargetNamespace = isRedirect? links.getRedirectTargetNamespace(key) : -1;
 		
 		// make list of redirects
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
 		ArrayList<String> anchors = new ArrayList<String>();
-		anchors.addAll(aa.getAnchorText());
-		for(String rk : aa.getRedirectKeys()){
+		//anchors.addAll(aa.getAnchorText());
+		for(String rk : links.getRedirectsTo(key)){
 			String[] parts = rk.toString().split(":",2);
-			ArticleAnalytics raa = las.getAnaliticsForReferences(rk);
-			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],raa.getReferences()));
-			anchors.addAll(raa.getAnchorText());
+			int redirectRef = links.getNumInLinks(rk);
+			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],redirectRef));
+			//anchors.addAll(raa.getAnchorText());
 		}
 		ArrayList<RelatedTitle> rel = null;
 		if(related != null)
 			rel = related.getRelated(key);
 		else
 			rel = new ArrayList<RelatedTitle>();
+		// extract contexts
+		/*for(RelatedTitle t : rel){
+			links.getContext(t.getRelated().getKey(),key);
+		} */
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
 				references,redirectTargetNamespace,redirects,rel,anchors);
