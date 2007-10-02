@@ -1129,6 +1129,9 @@ function getExpressionMeaningIds($spelling, $dc=null) {
 /** Write a concept mapping to db
  * supply mapping as a valid
  * array("dataset_prefix"=>defined_meaning_id,...)
+ * @returns: uuid used for mapping. (typically you an just
+ *           discard this, but it's kinda important if you
+ *	     want to add objects table support
  */
 
 function createConceptMapping($concepts) {
@@ -1139,6 +1142,7 @@ function createConceptMapping($concepts) {
 			writeDmToCollection($dc, $collid, $uuid_map[$dc], $dm_id);
 		}
 	}
+	return $uuid_map;
 }
 
 function getMapping( $dc, $collid, $dm_id ){

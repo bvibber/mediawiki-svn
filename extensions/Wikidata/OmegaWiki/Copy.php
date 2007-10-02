@@ -26,6 +26,45 @@
 # * some read/write/dup functions are still main namespace, should get their own
 # * classes (!!)
 
+# How to use:
+#
+# Step 1:
+# Set up one of those fancy wikidata transactions on dc2
+# Don't have one? CopyTools::newCopyTransaction($dc1, $dc2) is your friend
+#
+# Step 2:  
+# copy
+# $copier=new DefinedMeaningCopier($dmid, $dc1, $dc2);
+# $copier->dup()
+# 
+# et voila!
+#
+# Optional 1:
+# dup()ing  something will return the new id.
+# so ie you can get the dmid (defined meaning id) in dc2 (the
+# destination dataset) with:
+# $newDmid=$copier->dup();
+# 
+# note that if something is already copied, no new
+# copy is made, but dup() will still return the appropriate
+# new id.
+# 
+# This behaviour is only true for singular items (like defined meanings).
+# O classes that duplicate entire sets of items at once, the dup method
+# currently returns nothing. Logically it should really return an array,
+# but I haven't really found anything that needs that yet, so haven't
+# made an effort.
+#
+# Optional 2:
+# If you attempt to dup something that was already there, nothing will
+# happen, the item will not be dupped and the already_there flag will be set.
+#  Querying $something->already_there() will return true in that case. 
+#
+# TWarning on testing:
+# so far I've only tested this thoroughly where DefinedMeaningCopier is the entry point.
+# In all other cases: YMMV, HTH, HAND. 
+# (we so need unit testing ^^;;)
+
 #require_once("../../../StartProfiler.php");
 #include_once("../../../includes/Defines.php");
 #include_once("../../../LocalSettings.php");
@@ -46,6 +85,25 @@ class ObjectCopier {
 	protected $dc2;
 	protected $object;
 	protected $already_there=null;
+	protected $autovivify=false; # tradeoff: create object references if not found,
+					# but catch less errors
+	protected $tableName;
+
+	function setTableName($tableName) {
+		$this->tableName=$tableName;
+	}
+
+	/** 
+	 * if can't find object in src (dc1) dataset,
+	 * if set:  create said object now.
+	 * if unset: throw exception.
+	 * default: unset, because typically not finding
+	 * the object we're looking for means something is
+	 * very wrong. Some tables (like uw_collection_conte
+	 */
+	function setAutovivify($bool) {
+		$this->autovivify=$bool;
+	}
 
 	function __construct($id, $dc1, $dc2) {
 		$this->id=$id;
@@ -67,9 +125,17 @@ class ObjectCopier {
 	}
 
 	protected function read() {
+		echo "crumb e1<br>\n";
 		$dc1=$this->dc1;
 		$id=$this->id;
+		if (is_null($dc1))
+			throw new Exception("ObjectCopier: provided source dataset(dc1) is null");
+		if (is_null($id))
+			throw new Exception("ObjectCopier: provided identifier is null");
+		echo "crumb e2 --$dc1--,--$id-- <br>\n";
 		$this->object=CopyTools::getRow($dc1, "objects", "WHERE object_id=$id");
+		var_dump($this->object);
+		echo "crumb e3<br>\n";
 	}
 
 	/* tries to retrieve the identical UUID from the destination
@@ -79,6 +145,10 @@ class ObjectCopier {
 	 */
 	protected function identical() {
 		$uuid=mysql_escape_string($this->object["UUID"]);
+		if (is_null($uuid))
+			throw new Exception("ObjectCopier: UUID is null");
+		echo "crumb f1 identical() old object :";
+		var_dump($this->object);
 		$dc2=$this->dc2;
 		return CopyTools::getRow($dc2, "objects", "WHERE `UUID`='$uuid'");
 	}
@@ -89,23 +159,91 @@ class ObjectCopier {
 	 * destination table name.
 	 * Perhaps would be wiser to get the target table as an (override) parameter.
 	 */
-	function write() {
-		$dc2 = $this->dc2;
+	function write($dc=Null) {
+
+		if (is_null($dc)) {
+			$dc = $this->dc2;
+		}
+		
 		$object = $this->object;
 		unset($object["object_id"]);
 
 		$tableName_exploded = explode("_", $object["table"]);
-		$tableName_exploded[0] = $dc2;
+		$tableName_exploded[0] = $dc;
 		$tableName = implode("_", $tableName_exploded);
 		$object["table"]=$tableName;
 
-		CopyTools::dc_insert_assoc($dc2,"objects",$object);
+		CopyTools::dc_insert_assoc($dc,"objects",$object);
 		return mysql_insert_id();
 	}
 
+	/** create a new objects table entry . 
+	 * See also database schema documentation (insofar available) or
+	 * do sql statement DESC <dc>_objects for table format (where <dc> is a valid
+	 * dataset prefix) */
+	function create_key($uuid=null) {
+		echo "crumb B1<br>\n";
+		if (is_null($this->tableName)) {
+			throw new Exception("ObjectCopier: Object autovivification requires a table name to assist in creating an object. No table name was provided.");
+		}
+		$this->object["object_id"]=null; # just to be on some kind of safe side.
+		$this->object["table"]="unset_".$this->tableName; # slightly hackish, this
+		$this->object["original_id"]=0;	# no idea what this is for.
+
+		if (is_null($uuid)) {
+			$uuid_query=CopyTools::doQuery("SELECT UUID()");
+			$uuid=$uuid_query["UUID()"];
+		}
+		$this->object["UUID"]=$uuid;
+		$this->id=$this->write($this->dc1);
+		return $this->id;
+		
+	}
+	
+	/** 
+	 *
+	 */
+	public static function makeObjectId($dc, $table, $uuid=null) {
+		# Sorta Exploiting internals, because -hey- we're internal
+		# don't try this at home kids. 
+		# probably this would be tidier if the non-static method called
+		# the static one, or something. We only really need
+		# create_key(), so only filling in the data that that method needs.
+		$objectCopier=new ObjectCopier(null, $dc, null);
+		$objectCopier->setTableName($table);
+		return $objectCopier->create_key($uuid);
+	}
+
 	function dup() {
+		echo "crumb d1<br>\n";
+		echo "crumb d2\n";
+		if (is_null($this->id)) {
+			echo "autovivify follows<br>\n";
+			var_dump($this->autovivify);
+			if ($this->autovivify) {
+				$this->create_key();
+			} else {
+				throw new Exception("ObjectCopier: provided id is null");
+			}
+		}
+	
 		$this->read();
+		if (!CopyTools::sane_key_exists("object_id", $this->object)) {
+			if ($this->autovivify) {
+				echo "crumb d2A more autovivify\n";
+				$this->create_key();
+			} else {
+				echo "crumb d2B\n";
+				$id=$this->id;
+				$table=$this->object["table"];
+				throw new Exception("ObjectCopier: Could not find object information for object with id '$id' stored in `$table` in the objects table with prefix '$dc1'");
+			}
+		}
+
+		echo "crumb d3\, comparison:\n";
 		$object2=$this->identical();
+		echo "other db object<br>";
+		var_dump($object2);
 		if (CopyTools::sane_key_exists("object_id",$object2)) {
 			$this->already_there=true;
 			$newid=$object2["object_id"];
@@ -113,6 +251,7 @@ class ObjectCopier {
 			$this->already_there=false;
 			$newid=$this->write();
 		}
+		echo "crumb d4\n";
 		return $newid;
 	}
 }
@@ -234,12 +373,13 @@ function dup_text($dc1, $dc2, $text_id) {
 	return $id;
 }
 
-class RelationsCopier {
+class RelationsCopier extends Copier {
 
 	protected $old_dmid;
 	protected $new_dmid;
 	protected $dc1;
 	protected $dc2;
+	protected $tableName="meaning_relations";
 
 	function __construct($dc1, $dc2, $old_dmid, $new_dmid) {
 		$this->old_dmid=$old_dmid;
@@ -251,7 +391,7 @@ class RelationsCopier {
 	function read() {
 		$dc1=$this->dc1;
 		$dmid=$this->old_dmid;
-		return CopyTools::getRows($dc1,"meaning_relations","where meaning1_mid=$dmid");
+		return CopyTools::getRows($dc1,$this->tableName,"where meaning1_mid=$dmid");
 	}
 
 	function write_single($relation) {
@@ -259,24 +399,15 @@ class RelationsCopier {
 		$dc2=$this->dc2;
 		$new_dmid=$this->new_dmid;
 
-		$copier=new ObjectCopier($relation["relation_id"], $dc1, $dc2);
-		$relation["relation_id"]=$copier->dup();
-		if ($copier->already_there()) {
-			return;
-		}
-		$relation["meaning1_mid"]=$new_dmid;
-		$dmcopier=new DefinedMeaningCopier($relation["meaning2_mid"],$dc1, $dc2);
-		$relation["meaning2_mid"]=$dmcopier->dup_stub();
-		# Typically checks same values each time. Accelerated by query_cache:
-		$rtcopier=new DefinedMeaningCopier($relation["relationtype_mid"],$dc1, $dc2);
-		$relation["relationtype_mid"]=$rtcopier->dup_stub();
-		$copier=new ObjectCopier($relation["relation_id"], $dc1, $dc2);
-		$relation["relation_id"]=$copier->dup();
-		if ($copier->already_there()) {
-			return;
-		}
-		CopyTools::dc_insert_assoc($dc2,"meaning_relations",$relation);
+		if ($this->doObject($relation, "relation_id")) 
+			return $relation["relation_id"];
 
+		$relation["meaning1_mid"]=$new_dmid;
+		$this->doDM($relation,"meaning2_mid");
+		$this->doDM($relation,"relationtype_mid");
+
+		$this->doInsert($relation);
+		return $relation["relation_id"];
 	}
 
 	function dup() {
@@ -287,18 +418,25 @@ class RelationsCopier {
 	}			
 }
 
-class CollectionCopier {
+/** copies collections 
+ * TODO:
+ * possibly *_definition should actually be in a different class.
+ */
+class CollectionCopier extends Copier {
 	protected $dmid;
 	protected $save_dmid;
 	protected $dc1;
 	protected $dc2;
 	protected $already_there=false;
+	protected $autovivifyObjects=true;
+	protected $tableName="collection_contents";
 
 	public function already_there() {
 		return $this->already_there;
 	}
 	
 	public function __construct ($dc1, $dc2, $dmid, $save_dmid) {
+		echo "crumb A1<br>\n";
 		$this->dmid=$dmid;
 		$this->save_dmid=$save_dmid;
 		$this->dc1=$dc1;
@@ -306,6 +444,7 @@ class CollectionCopier {
 	}
 
 	public function read($dc=Null){
+		echo "crumb A2<br>\n";
 		if (is_null($dc)) {
 			$dc=$this->dc1;
 		}
@@ -315,6 +454,7 @@ class CollectionCopier {
 
 
 	public function read_definition($collection_id) {
+		echo "crumb A3<br>\n";
 		$dc1=$this->dc1;
 		return CopyTools::getRow($dc1,"collection","WHERE collection_id=$collection_id");
 	}
@@ -325,19 +465,28 @@ class CollectionCopier {
 	 * returns the  id for dc2 either way.
 	 */
 	public function write_definition($definition){
+		echo "crumb A4--<br>\n";
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
-
+		
+		echo "crumb A4A-a<br>\n";
 		$objcopier=new ObjectCopier($definition["collection_id"], $dc1, $dc2);
 		$definition["collection_id"]=$objcopier->dup();
+		var_dump($objcopier->already_there()); #crumb !
+
+		echo "crumb A4A-b<br>\n";
 		if (!$objcopier->already_there()) {
+			echo "crumb A4B<br>\n";
 			$dmid= $definition["collection_mid"];
 			$dmcopier=new DefinedMeaningCopier($dmid,$dc1,$dc2);
 			$definition["collection_mid"]=$dmcopier->dup_stub();
 
+			echo "crumb A4C<br>\n";
 			CopyTools::dc_insert_assoc($dc2, "collection", $definition);
+			echo "crumb A4D<br>\n";
 
 		}
+		echo "crumb A4E<br>\n";
 		return $definition["collection_id"];
 
 	}
@@ -346,14 +495,19 @@ class CollectionCopier {
 	 * and copy if doesn't already exist in dc2 
 	 */
 	public function dup_definition($collection_id) {
+		echo "crumb A5<br>\n";
 		$definition=$this->read_definition($collection_id);
+		
+		echo "crumb A5A<br>\n";
 		return $this->write_definition($definition);
 	}
 
 
 	# we create a mapping and THEN do collections, now we need to prevent ourselves dupping 
 	# existing mappings
+	# @deprecated
 	public function existing_mapping($member_id) {
+		echo "crumb A6 ALERT DEPRECATED <br>\n";
 		$dc2=$this->dc2;
 		$query="SELECT ${dc2}_collection_contents.* FROM ${dc2}_collection_contents, ${dc2}_collection
 			WHERE ${dc2}_collection_contents.collection_id = ${dc2}_collection.collection_id
@@ -376,15 +530,19 @@ class CollectionCopier {
 		$save_dmid=$this->save_dmid;
 		$row["collection_id"]=$this->dup_definition($row["collection_id"]);
 		
-		if ( $this->existing_mapping($row["internal_member_id"]) )
-			return;
+		if ($this->doObject($row, "object_id")) {
+			$this->already_there=true;
+			return $row["object_id"];
+		}
 
 		$row["member_mid"]=$save_dmid;
 		CopyTools::dc_insert_assoc($dc2, "collection_contents", $row);
 	}
 
 	public function write($rows){
+		echo "crumb A8 <br>\n";
 		foreach ($rows as $row) {
+			echo "<a8>";
 			$this->write_single($row);
 		}
 	}
@@ -393,18 +551,11 @@ class CollectionCopier {
 	 * are multiple ids 
 	 */
 	public function dup() {
-		# Is there something already there? If so, do not dup.
-		$checkrows=$this->read($this->dc2);
-		foreach ($checkrows as $row) {
-			if ($row["member_mid"]==$this->save_dmid){
-				$this->already_there=true;
-				return;
-			}
-		}
-
-		#seems ok, let's dup.
+		echo "crumb A9 <br>\n";
 		$rows=$this->read($this->dc1);
+		echo "crumb A10 <br>\n";
 		$this->write($rows);
+		echo "crumb A11 <br>\n";
 	}
 }
 	
@@ -455,6 +606,7 @@ class DefinedMeaningCopier {
 		$dc2=$this->dc2;
 
 		$this->read();
+		echo "<br><h2>".$this->dmid."</h2></br>";
 
 		# bit of exp here too (defnitely need to tidy)
 		$defining_expression=expression($this->defined_meaning["expression_id"], $dc1);
@@ -470,6 +622,7 @@ class DefinedMeaningCopier {
 		}
 		$this->save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $this->defined_meaning["meaning_text_tcid"]);
 		if (!($copier->already_there())) {
+			echo "crumb 1<br>\n";
 			CopyTools::dc_insert_assoc($dc2, "defined_meaning", $this->save_meaning);
 
 			$title_name=$defining_expression["spelling"];
@@ -477,19 +630,32 @@ class DefinedMeaningCopier {
 			$title=str_replace(" ","_",$title_name)."_(".$title_number.")";
 			CopyTools::createPage($title);
 		
+			echo "crumb 2 concepts <br>\n";
 			$concepts=array(
 				$dc1 => $this->defined_meaning["defined_meaning_id"],
 				$dc2 => $this->save_meaning["defined_meaning_id"]);
-			createConceptMapping($concepts);
+			$uuid_data=createConceptMapping($concepts);
+			DefinedMeaningCopier::finishConceptMapping($dc1, $uuid_data[$dc1]);
+			DefinedMeaningCopier::finishConceptMapping($dc2, $uuid_data[$dc2]);
 		}
 
-				return $this->save_meaning["defined_meaning_id"];
+		echo "crumb 3<br>\n";
+		return $this->save_meaning["defined_meaning_id"];
 	}		
-			
+	
+	public static function finishConceptMapping($dc, $uuid) {
+		$object_id=ObjectCopier::makeObjectID($dc, "collection_contents", $uuid);
+		CopyTools::doQuery("	UPDATE ${dc}_collection_contents 
+					SET object_id=$object_id
+					WHERE internal_member_id=\"$uuid\"
+					");
+	}
+
 	function dup_rest() {
 		$dmid=$this->dmid;
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
+		echo "crumb 4<br>\n";
 
 		dup_syntranses(
 			$this->defined_meaning["defined_meaning_id"],
@@ -499,6 +665,7 @@ class DefinedMeaningCopier {
 		);
 		
 
+		echo "crumb 5 relation<br>\n";
 		$relationsCopier=new RelationsCopier(
 			$dc1, 
 			$dc2, 
@@ -506,16 +673,24 @@ class DefinedMeaningCopier {
 			$this->save_meaning["defined_meaning_id"]);
 		$relationsCopier->dup();
 		
-		# can't merge collections, since they're not entirely covered by
-		# the objects table. So we don't copy them more than once.
-		if (!$this->already_there()) {
-			$collectionCopier=new CollectionCopier(
-				$dc1, 
-				$dc2, 
-				$this->defined_meaning["defined_meaning_id"],
-				$this->save_meaning["defined_meaning_id"]);
-			$collectionCopier->dup();
-		}
+		echo "crumb 6 collection <br>\n";
+		$collectionCopier=new CollectionCopier(
+			$dc1, 
+			$dc2, 
+			$this->defined_meaning["defined_meaning_id"],
+			$this->save_meaning["defined_meaning_id"]);
+		$collectionCopier->dup();
+
+		echo "crumb 7 membership<br>\n";
+		$classMembershipCopier=new ClassMembershipCopier(
+			$dc1, 
+			$dc2, 
+			$this->defined_meaning["defined_meaning_id"],
+			$this->save_meaning["defined_meaning_id"]);
+		$classMembershipCopier->dup();
+		
+
+
 
 	}
 }
@@ -609,7 +784,18 @@ class CopyTools {
 	 *
 	 */
 	public static function doQuery($query) {
-		$result = mysql_query($query)or die ("error ".mysql_error());
+		$result = mysql_query($query);
+
+		if (!$result) 
+			throw new Exception("Mysql query failed: $query");
+
+		if ($result===true) 
+			return null;
+
+		if (mysql_num_rows($result)==0) 
+			return null;
+
+
 		$data= mysql_fetch_assoc($result);
 		return $data;
 	}
@@ -622,7 +808,16 @@ class CopyTools {
 	 */
 
 	public static function doMultirowQuery($query) {
-		$result = mysql_query($query)or die ("error ".mysql_error());
+		$result = mysql_query($query);
+		if (!$result) 
+			throw new Exception("Mysql query failed: $query");
+		
+		if ($result===true)
+			return array();
+
+		if (mysql_num_rows($result)==0) 
+			return array();
+
 		$items=array();
 		while ($nextexp=mysql_fetch_assoc($result)) {
 			$items[]=$nextexp;
@@ -631,7 +826,8 @@ class CopyTools {
 	}
 
 	/** identical to the php function array_key_exists(), but eats dirtier input
-	 * returns false (rather than an error) on somewhat invalid input
+	 * returns false (rather than an error) on somewhat invalid input. 
+	 * (Namely, if either $key or $array is either null or false)
 	 */
 	public static function sane_key_exists($key, $array) {
 		if (is_null($key) or $key==false){
@@ -668,6 +864,14 @@ class CopyTools {
 			$sql.=" `$key`=$value";
 			$sql_comma=$sql.",";
 		}
+		
+		global 
+			$extra_debugging;
+		if ($extra_debugging) {
+			var_dump ($my_array);
+			echo "<pre>$sql</pre>";
+		}
+
 		// Same with the values
 		$result = mysql_query($sql);
 
@@ -695,7 +899,203 @@ class CopyTools {
 		}
 		return CopyTools::mysql_insert_assoc($target_table, $array);
 	}
+}
+
+/**Copying uw_class_membership*/
+class ClassMembershipCopier extends Copier{
+
+	protected $old_class_member_mid;
+	protected $new_class_member_mid;
+	protected $dc1;
+	protected $dc2;
+
+	/** coming from the defined meaning(dm) we don't know the membership id,
+	 * but we do have the dmid (defined meaning id) for the class member, so let's use that
+	 */
+	public function __construct($dc1, $dc2, $old_class_member_mid, $new_class_member_mid) {
+		$this->old_class_member_mid=$old_class_member_mid;
+		$this->new_class_member_mid=$new_class_member_mid;
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+	}
+
+	public function dup() {
+		$memberships=$this->read();
+		$this->write($memberships);
+		
+		return;
+	}
+		
+	/** read all class memberships associated with the dmid */
+	public function read() {
+		$dc1=$this->dc1;
+		$class_member_mid=$this->old_class_member_mid;
+		return CopyTools::getRows($dc1, "class_membership", "WHERE class_member_mid=$class_member_mid");
+	}
+
+	public function write($memberships) {
+		foreach ($memberships as $membership) {
+			$this->write_single($membership);
+		}
+	}
+
+	public function write_single($membership) { 
+		$dc1=$this->dc1;
+		$dc2=$this->dc2;
+		$new_class_member_mid=$this->new_class_member_mid;
+	
+		$copier = new ObjectCopier($membership["class_membership_id"], $dc1, $dc2);
+		$newid=$copier->dup();
+		if ($copier->already_there()) {
+			return $newid;
+		}
+		$membership["class_membership_id"]=$newid;
+		$membership["class_member_mid"]=$new_class_member_mid;
+		# nope, that's not right.
+		#$classCopier=new ClassCopier($membership["class_mid"], $dc1, $dc2); 
+		#$membership["class_mid"]=$classCopier->dup();
+		$this->doDM($membership, "class_mid", true);
+		CopyTools::dc_insert_assoc($dc2, "class_membership", $membership);
+		return $newid;
+	}
+
+}
+
+/** copying stuff in the %_class_attributes table actually
+ */
+class ClassAttributesCopier extends Copier {
+	
+	protected $src_class_mid;
+	protected $dst_class_mid;
+	protected $dc1;
+	protected $dc2;
+	protected $tableName="class_attributes";
+
+	/** you saw that right, class_mid, not class_id, there's no such thing :-/
+	 */
+	public function __construct($class_mid, $dc1, $dc2) {
+		$this->src_class_mid=$class_mid;
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+	}
+
+	/** unchracteristically, returns the new class_mid, rather than object_id
+	 * because in this case, the class_mid is the key characteristic
+	 */
+	public function dup() {
+		$attributes=$this->read();
+		$this->write($attributes);
+		return $this->dst_class_mid;
+	}
+	
+	public function read() {
+		$dc1=$this->dc1;
+		$class_mid=$this->src_class_mid;
+		return CopyTools::getRows($dc1, "class_attributes", "WHERE class_mid=$class_mid");
+	}
+
+	public function write($attributes) {
+		foreach ($attributes as $attribute) {
+			$this->write_single($attribute);
+		}
+	}
+
+	
+	public function write_single($attribute) {
+		$dc1=$this->dc1;
+		$dc2=$this->dc2;
+		$class_mid=$this->src_class_mid;
+
+		if ($this->doObject($attribute,"object_id")) 
+			return $attribute["object_id"];
+
+		$this->doDM($attribute,"class_mid");
+		$this->doDM($attribute,"level_mid");
+		$this->doDM($attribute,"attribute_mid");
+
+		CopyTools::dc_insert_assoc($dc2, "class_attributes", $attribute);
+
+		$this->dst_class_mid=$attribute["class_mid"];
+		return $attribute["object_id"];
+	}
+
+}
+
+
+
+/** abstract superclass for copiers
+ *  will gradually be implemented anywhere I create, refactor, or 
+ */
+abstract class Copier {
+
+	protected $dc1;
+	protected $dc2;
+	protected $tableName;
+	protected $autovivifyObjects=false;
+
+	public abstract function dup();
+
+	/**
+	 * Odd Combined function found through refactoring:
+	 * So we have a row in the source (dc1) table, which has a column
+	 * referring to a defined meaning
+	 * Before the row can be stored in the destination dataset, 
+	 * we should
+	 * - Ensure that at least a stub of this defined meaning exists
+	 * - make sure that the row refers to the dmid in the *destination* dataset (dc2),
+	 *   instead of the source dataset (dc1).
+	 * - returns True if the defined meaning was already_there.
+	 * @param &$row : row to operate on, passed by reference
+	 * @param $dmid_colum: a column in said row, containing the dmid to operate on
+	 * @param $full=false (optional) : if true, does a dup instead of a dup_stub
+	 * @return true if the updated dmid already existed in the destination (dc2) dataset before now
+	 *	   false if it did not, and we just created it
+	 */
+	protected function doDM(&$row, $dmid_column, $full=false) {
+		$dmCopier=new DefinedMeaningCopier($row[$dmid_column], $this->dc1, $this->dc2);
+		if ($full) {
+			$row[$dmid_column]=$dmCopier->dup();
+		} else {
+			$row[$dmid_column]=$dmCopier->dup_stub();
+		}
+		return $dmCopier->already_there();
+	}
+
+	/** 
+	 * Another odd combined function found through refactoring
+	 * performs all operations to do with the column associated with
+	 * the objects table in one go.
+	 * 
+	 * Assuming the row originally contains an object_id in the source dataset (dc1)
+	 * updates the row(passed by reference) with the relevant object_id in the destination
+	 *   dataset (dc2)
+	 * 
+	 * @param row : row to operate on, passed by reference
+	 * @param object_column: a column in said row, containing the object reference to operate on
+	 * @returns 	true if examination of the objects table reveals that this particular row should already
+	 *			exist in the destination dataset
+	 *		false if this particular row does not yet exist. The objects table, and object reference
+	 *			have already been set correctly. Continue by filling in the rest of the rest
+	 *			0f the row data. (Do so before COMMIT).
+	 */
+	protected function doObject(&$row, $object_column) {
+		var_dump($object_column);
+		var_dump($row);
+		$copier=new ObjectCopier($row[$object_column], $this->dc1, $this->dc2);
+		$copier->setTableName($this->tableName);
+		var_dump($this->autovivifyObjects);
+		$copier->setAutovivify($this->autovivifyObjects);
+		$row[$object_column]=$copier->dup();
+		var_dump($copier->already_there());
+		return $copier->already_there();
+	}
+
+	protected function doInsert($row) {
+		CopyTools::dc_insert_assoc($this->dc2, $this->tableName, $row);
+	}
 
 
 }
+
+
 ?>
