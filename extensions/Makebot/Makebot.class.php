@@ -14,19 +14,19 @@ class MakeBot extends SpecialPage {
 	function MakeBot() {
 		SpecialPage::SpecialPage( 'Makebot', 'makebot' );
 	}
-	
+
 	/**
 	 * Main execution function
 	 * @param $par Parameters passed to the page
 	 */
 	function execute( $par ) {
 		global $wgRequest, $wgOut, $wgMakeBotPrivileged, $wgUser;
-		
+
 		if( !$wgUser->isAllowed( 'makebot' ) ) {
 			$wgOut->permissionRequired( 'makebot' );
 			return;
 		}
-		
+
 		$this->setHeaders();
 
 		$this->target = $par
@@ -35,7 +35,7 @@ class MakeBot extends SpecialPage {
 
 		$wgOut->addWikiText( wfMsgNoTrans( 'makebot-header' ) );
 		$wgOut->addHtml( $this->makeSearchForm() );
-		
+
 		if( $this->target != '' ) {
 			$wgOut->addHtml( wfElement( 'p', NULL, NULL ) );
 			$user = User::newFromName( $this->target );
@@ -49,34 +49,35 @@ class MakeBot extends SpecialPage {
 				# Valid username, check existence
 				if( $user->getID() ) {
 					# Exists; check current privileges
-					if( $this->canBecomeBot( $user ) ) {	
-						if( $wgRequest->getCheck( 'dosearch' ) || !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'makebot' ) ) {
-							# Exists, check botness
-							if( in_array( 'bot', $user->mGroups ) ) {
-								# Has a bot flag
-								$wgOut->addWikiText( wfMsg( 'makebot-isbot', $user->getName() ) );
-								$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_REVOKE ) );
-							} else {
-								# Not a bot; show the grant form
-								$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_GRANT ) );
-							}
-						} elseif( $wgRequest->getCheck( 'grant' ) ) {
-							# Grant the flag
-							$user->addGroup( 'bot' );
-							$this->addLogItem( 'grant', $user, trim( $wgRequest->getText( 'comment' ) ) );
-							$wgOut->addWikiText( wfMsg( 'makebot-granted', $user->getName() ) );
-						} elseif( $wgRequest->getCheck( 'revoke' ) ) {
-							# Revoke the flag
-							$user->removeGroup( 'bot' );
-							$this->addLogItem( 'revoke', $user, trim( $wgRequest->getText( 'comment' ) ) );
-							$wgOut->addWikiText( wfMsg( 'makebot-revoked', $user->getName() ) );
-						}
-						# Show log entries
-						$this->showLogEntries( $user );
-					} else {
-						# User account is privileged and can't be given a bot flag
-						$wgOut->addWikiText( wfMsg( 'makebot-privileged', $user->getName() ) );
+					$canBecomeBot = $this->canBecomeBot( $user );
+					if( $wgRequest->getCheck( 'dosearch' ) || !$wgRequest->wasPosted() || !$wgUser->matchEditToken( $wgRequest->getVal( 'token' ), 'makebot' ) ) {
+						# Exists, check botness
+						if( in_array( 'bot', $user->mGroups ) ) {
+							# Has a bot flag
+							$wgOut->addWikiText( wfMsg( 'makebot-isbot', $user->getName() ) );
+							$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_REVOKE ) );
+						} elseif ( $canBecomeBot ) {
+							# Not a bot; show the grant form
+							$wgOut->addWikiText( wfMsg( 'makebot-notbot', $user->getName() ) );
+							$wgOut->addHtml( $this->makeGrantForm( MW_MAKEBOT_GRANT ) );
+						} else {
+							# User account is privileged and can't be given a bot flag
+							$wgOut->addWikiText( wfMsg( 'makebot-privileged', $user->getName() ) );
+						}							
+					} elseif( $canBecomeBot && $wgRequest->getCheck( 'grant' ) ) {
+						# Grant the flag
+						$user->addGroup( 'bot' );
+						$this->addLogItem( 'grant', $user, trim( $wgRequest->getText( 'comment' ) ) );
+						$wgOut->addWikiText( wfMsg( 'makebot-granted', $user->getName() ) );
+					} elseif( $wgRequest->getCheck( 'revoke' ) ) {
+						# Revoke the flag, also if bot has got sysop/bureaucrat status in the meantime
+						$user->removeGroup( 'bot' );
+						$this->addLogItem( 'revoke', $user, trim( $wgRequest->getText( 'comment' ) ) );
+						$wgOut->addWikiText( wfMsg( 'makebot-revoked', $user->getName() ) );
 					}
+					# Show log entries
+					$this->showLogEntries( $user, 'makebot' );
+					$this->showLogEntries( $user, 'rights' );
 				} else {
 					# Doesn't exist
 					$wgOut->addWikiText( wfMsg( 'nosuchusershort', htmlspecialchars( $this->target ) ) );
@@ -86,9 +87,8 @@ class MakeBot extends SpecialPage {
 				$wgOut->addWikiText( wfMsg( 'noname' ) );
 			}
 		}
-		
 	}
-	
+
 	/**
 	 * Produce a form to allow for entering a username
 	 * @return string
@@ -102,7 +102,7 @@ class MakeBot extends SpecialPage {
 		$form .= wfCloseElement( 'form' );
 		return $form;
 	}
-	
+
 	/**
 	 * Produce a form to allow granting or revocation of the flag
 	 * @param $type Either MW_MAKEBOT_GRANT or MW_MAKEBOT_REVOKE
@@ -119,7 +119,7 @@ class MakeBot extends SpecialPage {
 			$grant = false;
 			$revoke = true;
 		}
-	
+
 		# Start the table
 		$form  = wfOpenElement( 'form', array( 'method' => 'post', 'action' => $thisTitle->getLocalUrl() ) );
 		$form .= wfOpenElement( 'table' ) . wfOpenElement( 'tr' );
@@ -160,16 +160,16 @@ class MakeBot extends SpecialPage {
 		$targetPage = $target->getUserPage();
 		$log->addEntry( $type, $targetPage, $comment );
 	}
-	
+
 	/**
 	 * Show the bot status log entries for the specified user
 	 * @param $user User to show the log for
 	 */
-	function showLogEntries( &$user ) {
+	function showLogEntries( &$user, $logtype = 'makebot' ) {
 		global $wgOut;
 		$title = $user->getUserPage();
-		$wgOut->addHtml( wfElement( 'h2', NULL, htmlspecialchars( LogPage::logName( 'makebot' ) ) ) );
-		$logViewer = new LogViewer( new LogReader( new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => 'makebot' ) ) ) );
+		$wgOut->addHtml( wfElement( 'h2', NULL, htmlspecialchars( LogPage::logName( $logtype ) ) ) );
+		$logViewer = new LogViewer( new LogReader( new FauxRequest( array( 'page' => $title->getPrefixedText(), 'type' => $logtype ) ) ) );
 		$logViewer->showList( $wgOut );
 	}
 
@@ -186,7 +186,4 @@ class MakeBot extends SpecialPage {
 				( !in_array( 'sysop', $user->mGroups ) &&
 				  !in_array( 'bureaucrat', $user->mGroups ) );
 	}
-
 }
-
-
