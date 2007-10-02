@@ -112,7 +112,11 @@ function efMakeBotMessages() {
 'makebot-change'          => 'Аѵтоматьства измѣнѥниѥ:',
 'makebot-grant'           => 'Даждь',
 'makebot-revoke'          => 'Отьми',
+'makebot-granted'         => '[[Польѕевател҄ь:$1|$1]] нынѣ аѵтоматъ ѥстъ.',
+'makebot-revoked'         => '[[Польѕевател҄ь:$1|$1]] вѧще нѣстъ аѵтоматъ.',
+'makebot-logpage'         => 'Їсторї аѵтоматьства',
 'makebot-logentrygrant'   => 'сътвори [[$1]] аѵтоматъ',
+'makebot-logentryrevoke'  => 'Отѧ аѵтоматьство ѹ польѕевател [[$1]]',
 ),
 
 /* German (Raymond) */
