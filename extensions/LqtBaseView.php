@@ -36,6 +36,7 @@ class LqtDispatch {
 		'TalkpageView' => 'TalkpageView',
 		'ThreadHistoryListingView' => 'ThreadHistoryListingView',
 		'ThreadHistoricalRevisionView' => 'ThreadHistoricalRevisionView',
+		'IndividualThreadHistoryView' => 'IndividualThreadHistoryView',
 		'ThreadDiffView' => 'ThreadDiffView',
 		'ThreadPermalinkView' => 'ThreadPermalinkView',
 		'ThreadProtectionFormView' => 'ThreadProtectionFormView'
@@ -72,18 +73,28 @@ class LqtDispatch {
 	}
 
 	static function threadPermalinkMain(&$output, &$article, &$title, &$user, &$request) {
-		/* breaking the lqt_method paradigm to make the history tab work. 
-		  (just changing the href doesn't make the highlighting correct.) */
+		
 		$action =  $request->getVal('action');
-		if( $action == 'history' ) {
+		$lqt_method = $request->getVal('lqt_method');
+		
+		if( $lqt_method == 'thread_history' ) {
 			$viewname = self::$views['ThreadHistoryListingView'];
-		} else if ( $action == 'protect' || $action == 'unprotect' ) {
-			$viewname = self::$views['ThreadProtectionFormView'];
-		} else if ( $request->getVal('lqt_method') == 'diff' ) {
+		}
+		else if ( $lqt_method == 'diff' ) { // this clause and the next must be in this order.
 			$viewname = self::$views['ThreadDiffView'];
-		} else if ( $request->getVal('lqt_oldid', null) !== null ) {
+		}
+		else if ( $action == 'history'
+			|| $request->getVal('diff', null) !== null
+			|| $request->getVal('oldid', null) !== null ) {
+			$viewname = self::$views['IndividualThreadHistoryView'];
+		}
+		else if ( $action == 'protect' || $action == 'unprotect' ) {
+			$viewname = self::$views['ThreadProtectionFormView'];
+		}
+		else if ( $request->getVal('lqt_oldid', null) !== null ) {
 			$viewname = self::$views['ThreadHistoricalRevisionView'];
-		} else {
+		}
+		else {
 			$viewname = self::$views['ThreadPermalinkView'];
 		}
 		$view = new $viewname( $output, $article, $title, $user, $request );
@@ -462,21 +473,19 @@ HTML;
 		$commands[] = array( 'label' => $user_can_edit ? wfMsg('edit') : wfMsg('viewsource'),
 		                     'href' => $this->talkpageUrl( $this->title, 'edit', $thread ),
 		                     'enabled' => true );
-		
-		$commands[] = array( 'label' => wfMsg('lqt_reply'),
-							 'href' =>  $this->talkpageUrl( $this->title, 'reply', $thread ),
-							 'enabled' => $user_can_edit );
+
+		$commands[] = array( 'label' => wfMsg('history_short'),
+							 'href' =>  $this->permalinkUrlWithQuery($thread, 'action=history'),
+							 'enabled' => true );
 		
 		$commands[] = array( 'label' => wfMsg('lqt_permalink'),
 							 'href' =>  $this->permalinkUrl( $thread ),
 							 'enabled' => true );
+							
+		$commands[] = array( 'label' => '<b class="lqt_reply_link">' . wfMsg('lqt_reply') . '</b>',
+							 'href' =>  $this->talkpageUrl( $this->title, 'reply', $thread ),
+							 'enabled' => $user_can_edit );
 
-		if( !$thread->hasSuperthread() ) {
-			$commands[] = array( 'label' => wfMsg('history_short'),
-								 'href' =>  $this->permalinkUrlWithQuery($thread, 'action=history'),
-								 'enabled' => true );
-		}
-		
 		if ( in_array('delete',  $this->user->getRights()) ) {
 			$delete_url = SpecialPage::getPage('Deletethread')->getTitle()->getFullURL()
 				. '/' . $thread->title()->getPrefixedURL();

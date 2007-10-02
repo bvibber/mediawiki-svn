@@ -361,7 +361,15 @@ class ThreadPermalinkView extends LqtView {
 			$content_actions['delete']['href'] =
 				SpecialPage::getPage('Deletethread')->getTitle()->getFullURL() . '/' .
 				$this->thread->title()->getPrefixedURL();
-		}	
+		}
+		
+		if( array_key_exists('history', $content_actions) ) {
+			$content_actions['history']['href'] = $this->permalinkUrl( $this->thread, 'thread_history' );
+			if( $this->methodApplies('thread_history') ) {
+				$content_actions['history']['class'] = 'selected';
+			}
+		}
+		
 		return true;
 	}
 	
@@ -463,6 +471,34 @@ class TalkpageHeaderView {
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
 		return true;
 	}
+}
+
+class IndividualThreadHistoryView extends ThreadPermalinkView {
+	function customizeTabs( $skintemplate, $content_actions ) {
+		unset($content_actions['edit']);
+		unset($content_actions['viewsource']);
+		unset($content_actions['talk']);
+		
+		$content_actions['talk']['class'] = false;
+		$content_actions['history']['class'] = 'selected';
+		
+		return true;
+	}
+
+	function customizeSubtitle() {
+		$threadhist = "<a href=\"{$this->permalinkUrl($this->thread, 'thread_history')}\">View history for the entire thread</a>";
+		$this->output->setSubtitle( $this->output->getSubtitle() . "<br />$threadhist" );
+		return true;
+	}
+	
+	function show() {
+		global $wgHooks;
+		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
+		
+		$wgHooks['PageHistoryBeforeList'][] = array($this, 'customizeSubtitle');
+		
+		return true;
+	}	
 }
 
 class ThreadDiffView {
