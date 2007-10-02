@@ -947,8 +947,10 @@ SQL;
 	}
 	
 	static function articleClause($article) {
+		$dbr = wfGetDB(DB_SLAVE);
+		$q_article= $dbr->addQuotes($article->getTitle()->getDBkey());
 		return <<<SQL
-(thread.thread_article_title = "{$article->getTitle()->getDBkey()}"
+(thread.thread_article_title = $q_article
 	AND thread.thread_article_namespace = {$article->getTitle()->getNamespace()})
 SQL;
 	}
@@ -1036,14 +1038,14 @@ class NewMessages {
 		$talkpage_t = $t->article()->getTitle();
 		$root_t = $t->root()->getTitle();
 		
-		$talkpage_t_s = $dbw->addQuotes($talkpage_t->getDBKey());
-		$root_t_s = $dbw->addQuotes($root_t->getDBKey());
+		$q_talkpage_t = $dbw->addQuotes($talkpage_t->getDBKey());
+		$q_root_t = $dbw->addQuotes($root_t->getDBKey());
 		
 		// Select any applicable watchlist entries for the thread.
 		$where_clause = <<<SQL
 (
-	(wl_namespace = {$talkpage_t->getNamespace()} and wl_title = $talkpage_t_s )
-or	(wl_namespace = {$root_t->getNamespace()} and wl_title = $root_t_s )
+	(wl_namespace = {$talkpage_t->getNamespace()} and wl_title = $q_talkpage_t )
+or	(wl_namespace = {$root_t->getNamespace()} and wl_title = $q_root_t )
 )
 SQL;
 		
