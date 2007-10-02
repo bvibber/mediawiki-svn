@@ -1036,11 +1036,14 @@ class NewMessages {
 		$talkpage_t = $t->article()->getTitle();
 		$root_t = $t->root()->getTitle();
 		
+		$talkpage_t_s = $dbw->addQuotes($talkpage_t->getDBKey());
+		$root_t_s = $dbw->addQuotes($root_t->getDBKey());
+		
 		// Select any applicable watchlist entries for the thread.
 		$where_clause = <<<SQL
 (
-	(wl_namespace = {$talkpage_t->getNamespace()} and wl_title = "{$talkpage_t->getDBKey()}" )
-or	(wl_namespace = {$root_t->getNamespace()} and wl_title = "{$root_t->getDBKey()}" )
+	(wl_namespace = {$talkpage_t->getNamespace()} and wl_title = $talkpage_t_s )
+or	(wl_namespace = {$root_t->getNamespace()} and wl_title = $root_t_s )
 )
 SQL;
 		
