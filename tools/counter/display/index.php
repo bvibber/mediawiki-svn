@@ -36,7 +36,7 @@ function doit() {
 		return debugError('Failed to select database.');
 	}
 
-	$res = mysql_query('SELECT hc_site, hc_page, COUNT(*) AS hc_count FROM hit_counter GROUP BY hc_site, hc_page ORDER BY hc_site, hc_page');
+	$res = mysql_query('SELECT hc_site, hc_page, sum(hc_count) AS hc_count FROM hit_counter GROUP BY hc_site, hc_page ORDER BY hc_site, hc_page');
 	if ($res === false) {
 		return debugError('Query failed.');
 	}
