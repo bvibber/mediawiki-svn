@@ -170,6 +170,8 @@ function wfSpecialCopy() {
 			$success=$this->_doCopy($dmid_dirty, $dc1_dirty, $dc2_dirty);
 			if ($success)
 				$wgOut->addWikiText(wfMsgSc("copy_successful"));
+			else
+				$wgOut->addWikiText(wfMsgSc("copy_unsuccessful"));
 		}
 
 
@@ -187,6 +189,11 @@ function wfSpecialCopy() {
 			CopyTools::newCopyTransaction($dc1, $dc2);
 			$dmc=new DefinedMeaningCopier($dmid, $dc1, $dc2); #sorry, not a [[delorean]]
 			$dmc->dup(); 
+
+			if ($dmc->already_there() ) {
+				$wgOut->addHTML(wfMsgSc("already_there"));
+				return false;
+			}
 			# Do we need this here? Or is there already transaction
 			# management on speial pages. :-/
 			# mysql_query("COMMIT");	# force commit where no autocommit

@@ -630,14 +630,13 @@ class DefinedMeaningCopier {
 			$title=str_replace(" ","_",$title_name)."_(".$title_number.")";
 			CopyTools::createPage($title);
 		
-			echo "crumb 2 concepts <br>\n";
-			$concepts=array(
-				$dc1 => $this->defined_meaning["defined_meaning_id"],
-				$dc2 => $this->save_meaning["defined_meaning_id"]);
-			$uuid_data=createConceptMapping($concepts);
-			DefinedMeaningCopier::finishConceptMapping($dc1, $uuid_data[$dc1]);
-			DefinedMeaningCopier::finishConceptMapping($dc2, $uuid_data[$dc2]);
 		}
+		$concepts=array(
+			$dc1 => $this->defined_meaning["defined_meaning_id"],
+			$dc2 => $this->save_meaning["defined_meaning_id"]);
+		$uuid_data=createConceptMapping($concepts);
+		DefinedMeaningCopier::finishConceptMapping($dc1, $uuid_data[$dc1]);
+		DefinedMeaningCopier::finishConceptMapping($dc2, $uuid_data[$dc2]);
 
 		echo "crumb 3<br>\n";
 		return $this->save_meaning["defined_meaning_id"];
@@ -952,8 +951,8 @@ class ClassMembershipCopier extends Copier{
 		$membership["class_membership_id"]=$newid;
 		$membership["class_member_mid"]=$new_class_member_mid;
 		# nope, that's not right.
-		#$classCopier=new ClassCopier($membership["class_mid"], $dc1, $dc2); 
-		#$membership["class_mid"]=$classCopier->dup();
+		$classAttributesCopier=new ClassAttributesCopier($membership["class_mid"], $dc1, $dc2); 
+		$membership["class_mid"]=$classAttributesCopier->dup();
 		$this->doDM($membership, "class_mid", true);
 		CopyTools::dc_insert_assoc($dc2, "class_membership", $membership);
 		return $newid;
@@ -1028,15 +1027,49 @@ class ClassAttributesCopier extends Copier {
  */
 abstract class Copier {
 
-	protected $dc1;
-	protected $dc2;
-	protected $tableName;
-	protected $autovivifyObjects=false;
+	protected $dc1; // Source dataset
+	protected $dc2; // Destination dataset
+	protected $tableName; 	//Name of the table this class operates on.
+				// if multiple tables, name of whatever principle table.
+	protected $autovivifyObjects=false; 	// false: throw an error if we find 
+						// 	  null references to the objects table
+						// true: instead, create a valid
+						// 	entry in the objects table and
+						//	do the correct referencing
+						// see also: ObjectCopier::$autovivify
+	protected $already_there=null;	// true:	item was already present in 
+					//		destination (dc2) dataset. No copy made.
+					// false:	item was not present. Copy made.
+					// null:	don't know (yet) / error/ other
+					// see also: ObjectCopier::$already_there
 
+	/** does the actual copying
+	 * @return the unique id for the item we just copied in the destination (dc2) dataset,
+	 *         or null, if no such id exists in this case (for instance, if we copied multiple
+	 *         items, there is no single unique id)
+	 */
 	public abstract function dup();
 
+	/** reads row or rows from table in source dataset (dc1) 
+	 * @return row or array of rows for table in mysql_read_assoc() format */
+	public abstract function read();
+
+	/** writes row or array of rows in mysql_read_assoc() format
+	 * @return the unique id for the item we just copied in the destination (dc2) dataset,
+	 *         or null, if no such id exists in this case (for instance, if we copied multiple
+	 *         items, there is no single unique id)
+	 */
+	public abstract function write();
+
+	/** @returns true if the copied item was already present in the other dataset, false if it wasn't (and we just copied it over) , or null if don't know/error/other.
+	 */
+	public function already_there(){
+		return $this->already_there;
+	}
+
 	/**
-	 * Odd Combined function found through refactoring:
+	 * A combination function to handle all the steps needed to check
+	 * and copy a Defined Meaning (DM)
 	 * So we have a row in the source (dc1) table, which has a column
 	 * referring to a defined meaning
 	 * Before the row can be stored in the destination dataset, 
@@ -1044,7 +1077,7 @@ abstract class Copier {
 	 * - Ensure that at least a stub of this defined meaning exists
 	 * - make sure that the row refers to the dmid in the *destination* dataset (dc2),
 	 *   instead of the source dataset (dc1).
-	 * - returns True if the defined meaning was already_there.
+	 * - returns True if the defined meaning was already_there().
 	 * @param &$row : row to operate on, passed by reference
 	 * @param $dmid_colum: a column in said row, containing the dmid to operate on
 	 * @param $full=false (optional) : if true, does a dup instead of a dup_stub
@@ -1062,31 +1095,29 @@ abstract class Copier {
 	}
 
 	/** 
-	 * Another odd combined function found through refactoring
-	 * performs all operations to do with the column associated with
+	 * performs all the tasks to do with the column associated with
 	 * the objects table in one go.
 	 * 
 	 * Assuming the row originally contains an object_id in the source dataset (dc1)
 	 * updates the row(passed by reference) with the relevant object_id in the destination
 	 *   dataset (dc2)
 	 * 
-	 * @param row : row to operate on, passed by reference
-	 * @param object_column: a column in said row, containing the object reference to operate on
+	 * @param &$row : row to operate on, passed by reference
+	 * @param $object_column: a column in said row, containing the object reference to operate on
 	 * @returns 	true if examination of the objects table reveals that this particular row should already
 	 *			exist in the destination dataset
-	 *		false if this particular row does not yet exist. The objects table, and object reference
-	 *			have already been set correctly. Continue by filling in the rest of the rest
-	 *			0f the row data. (Do so before COMMIT).
+	 *		false if this particular row does not yet exist in the table in the destination dataset. 
+	 *			The objects table, and object reference
+	 *			in your array have already been set correctly. Continue by filling in the rest
+	 *			of the row data. (Do so before COMMIT).
+	 *
+	 * behaviour is modified by object properties $this->tableName and $this->autovivifyObjects.
 	 */
 	protected function doObject(&$row, $object_column) {
-		var_dump($object_column);
-		var_dump($row);
 		$copier=new ObjectCopier($row[$object_column], $this->dc1, $this->dc2);
 		$copier->setTableName($this->tableName);
-		var_dump($this->autovivifyObjects);
 		$copier->setAutovivify($this->autovivifyObjects);
 		$row[$object_column]=$copier->dup();
-		var_dump($copier->already_there());
 		return $copier->already_there();
 	}
 
