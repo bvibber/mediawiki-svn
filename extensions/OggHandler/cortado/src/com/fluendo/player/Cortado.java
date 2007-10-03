@@ -36,6 +36,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
     private String urlString;
     private boolean audio;
     private boolean video;
+    private boolean showSpeaker;
     private boolean keepAspect;
     private boolean autoPlay;
     private int bufferSize;
@@ -104,6 +105,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
                 { "showStatus", "enum", "Show status area (auto|show|hide) (default auto)" },
                 { "hideTimeout", "int", "Timeout in seconds to hide the status area when " +
 			"showStatus is auto (default 0)" },
+                { "showSpeaker", "boolean", "Show a speaker icon when audio is available (default true)" },
                 { "keepAspect", "boolean",
                         "Use aspect ratio of video (default true)" },
                 { "bufferSize", "int",
@@ -219,6 +221,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         autoPlay = getBoolParam("autoPlay", true);
         showStatus = getEnumParam("showStatus", showStatusVals, "auto");
         hideTimeout = getIntParam("hideTimeout", 0);
+        showSpeaker = getBoolParam("showSpeaker", true);
         keepAspect = getBoolParam("keepAspect", true);
         bufferSize = getIntParam("bufferSize", 200);
         bufferLow = getIntParam("bufferLow", 10);
@@ -263,6 +266,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         setForeground(Color.white);
 
         status = new Status(this);
+        status.setShowSpeaker(showSpeaker);
         status.setHaveAudio(audio);
         status.setHavePercent(true);
 	/* assume live stream unless specified */

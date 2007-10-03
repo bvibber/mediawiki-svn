@@ -165,6 +165,9 @@ parameters:
 	      show will always show the status area.
 	      (default auto)
 
+  showSpeaker: boolean
+              Show a speaker icon when audio is available (default true)
+
   hideTimeout: int 
               Timeout in seconds to hide the status area when showStatus is
 	      auto. This timeout is to make sure that the status area is visible
