@@ -125,6 +125,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $geneConceptId = 0;
 	public $organismConceptId = 0;
 	public $occursInConceptId = 0;
+	public $isManifestationOfConceptId = 0;
 	public $functionalDomainConceptId = 0;
 	public $proteinComponentConceptId = 0;
 	public $biologicalProcessConceptId = 0;
@@ -212,6 +213,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		$this->geneConceptId = $this->bootstrapConcept($this->geneConceptId, "gene or genome");
 		$this->organismConceptId = $this->bootstrapConcept($this->organismConceptId, "organism");
 		$this->occursInConceptId = $this->bootstrapConcept($this->occursInConceptId, "occurs in");
+		$this->isManifestationOfConceptId = $this->bootstrapConcept($this->isManifestationOfConceptId, "is manifestation of");
 		$this->functionalDomainConceptId = $this->bootstrapConcept($this->functionalDomainConceptId, "functional domain");
 		$this->proteinComponentConceptId = $this->bootstrapConcept($this->proteinComponentConceptId, "protein component");
 		$this->biologicalProcessConceptId = $this->bootstrapConcept($this->biologicalProcessConceptId, "biological process");		
@@ -294,7 +296,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		
 		// Add concepts to relation types
 		addDefinedMeaningToCollectionIfNotPresent($this->geneConceptId, $this->relationTypeCollectionId, "gene or genome");
-		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificGeneConceptId, $this->relationTypeCollectionId, "organism specific gene");
+		addDefinedMeaningToCollectionIfNotPresent($this->isManifestationOfConceptId, $this->relationTypeCollectionId, "is manifestation of");
 		addDefinedMeaningToCollectionIfNotPresent($this->occursInConceptId, $this->relationTypeCollectionId, "occurs in");		
 		addDefinedMeaningToCollectionIfNotPresent($this->activityConceptId, $this->relationTypeCollectionId, "performs");
 		addDefinedMeaningToCollectionIfNotPresent($this->biologicalProcessConceptId, $this->relationTypeCollectionId, "biological process");
@@ -335,7 +337,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 
 		if ($entry->gene != "") {
 			$geneMeaningId = $this->addGene($entry->gene);
-			$organismSpecificGene = $this->addOrgansimSpecificGene($organismSpeciesMeaningId, $geneMeaningId, $entry->organism, $entry->gene, $entry->geneSynonyms, $entry->HGNCReference);			
+			$organismSpecificGene = $this->addOrganismSpecificGene($organismSpeciesMeaningId, $geneMeaningId, $entry->organism, $entry->gene, $entry->geneSynonyms, $entry->HGNCReference);			
 		}
 		else 
 			$organismSpecificGene = -1;
@@ -416,29 +418,27 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;		
 	}
 	
-	public function addOrgansimSpecificGene($organismSpeciesMeaningId, $geneMeaningId, $organismName, $geneName, $synonyms, $hgncReference) {
+	public function addOrganismSpecificGene($organismSpeciesMeaningId, $geneMeaningId, $organismName, $geneName, $synonyms, $hgncReference) {
 		$key = $geneMeaningId . "-" . $organismSpeciesMeaningId;
 		//The name of the entry should be the protein name parenthesis species;
 		//Example: Protein X (Homo sapiens)
 		$description = $geneName . " (" . $organismName . ")";
-		if (array_key_exists($key, $this->organismSpecificGenes)) {
+		
+		if (array_key_exists($key, $this->organismSpecificGenes)) 
 			$definedMeaningId = $this->organismSpecificGenes[$key];
-		}
 		else {
-			if(!($this->hugoCollection && ($hgncReference != 0) && ($definedMeaningId = $this->hugoCollection[$hgncReference]))){
+			if (!($this->hugoCollection && ($hgncReference != 0) && ($definedMeaningId = $this->hugoCollection[$hgncReference])))
 				$definedMeaningId = $this->addExpressionAsDefinedMeaning($description, $description, $geneName, $this->collectionId);
-			}
+
 			addSynonymOrTranslation($geneName, $this->languageId, $definedMeaningId, true);
 			$this->organismSpecificGenes[$key] = $definedMeaningId;			
 		}			
 		
 		addClassMembership($definedMeaningId, $this->organismSpecificGeneConceptId);
+		addClassMembership($definedMeaningId, $geneMeaningId);
 		
 		// Add relation between specific gene and organism 
 		addRelation($definedMeaningId, $this->occursInConceptId, $organismSpeciesMeaningId);
-		
-		// Add relation between specific gene and gene
-		addRelation($definedMeaningId, $this->geneConceptId, $geneMeaningId);
 		
 		foreach ($synonyms as $key => $synonym) 
 			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
@@ -472,7 +472,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 
 		// set the gene of the swiss prot entry and relate the gene to the entry:
 		if ($organismSpecificGene >= 0) 
-			addRelation($definedMeaningId, $this->organismSpecificGeneConceptId, $organismSpecificGene);
+			addRelation($definedMeaningId, $this->isManifestationOfConceptId, $organismSpecificGene);
 		
 		// set the species of the swiss prot entry and relate the species to the entry:		
 		addRelation($definedMeaningId, $this->occursInConceptId, $organismSpeciesMeaningId);
