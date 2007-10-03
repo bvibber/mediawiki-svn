@@ -229,9 +229,21 @@ function createSynonymOrTranslation($definedMeaningId, $expressionId, $identical
 }
 
 function expressionIsBoundToDefinedMeaning($definedMeaningId, $expressionId) {
+	global
+		$dataSet;
+	
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT expression_id FROM {$dc}_syntrans WHERE expression_id=$expressionId AND defined_meaning_id=$definedMeaningId AND ". getLatestTransactionRestriction("{$dc}_syntrans") ." LIMIT 1");
+	$queryResult = $dbr->query(
+		selectLatest(
+			array($dataSet->syntrans->expressionId),
+			array($dataSet->syntrans),
+			array(
+				equals($dataSet->syntrans->definedMeaningId, $definedMeaningId),
+				equals($dataSet->syntrans->expressionId, $expressionId)
+			)
+		)
+	);
 	
 	return $dbr->numRows($queryResult) > 0;
 }
@@ -1396,7 +1408,7 @@ function definedMeaningExpression($definedMeaningId) {
 	
 	list($definingExpressionId, $definingExpression, $definingExpressionLanguage) = definingExpressionRow($definedMeaningId);
 	
-	if ($definingExpressionLanguage == $userLanguage && expressionIsBoundToDefinedMeaning($definingExpressionId, $definedMeaningId))  
+	if ($definingExpressionLanguage == $userLanguage && expressionIsBoundToDefinedMeaning($definedMeaningId, $definingExpressionId))   
 		return $definingExpression;
 	else {	
 		if ($userLanguage > 0)
