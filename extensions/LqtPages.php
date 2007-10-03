@@ -389,6 +389,21 @@ class ThreadPermalinkView extends LqtView {
 		$this->output->addHTML("There is no such thread.");	
 	}
 	
+	function getSubtitle() {
+ 		// TODO the archive month part is obsolete.
+		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($this->thread->timestamp()) ))
+			$query = '';
+		else
+			$query = 'lqt_archive_month=' . substr($this->thread->timestamp(),0,6);
+		$talkpage = $this->thread->article()->getTitle()->getTalkpage();
+		$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($talkpage, '', $query);
+		if ( $this->thread->hasSuperthread() ) {
+			return wfMsg('lqt_fragment',"<a href=\"{$this->permalinkUrl($this->thread->topmostThread())}\">".wfMsg('lqt_discussion_link')."</a>",$talkpage_link);
+		} else {
+			return wfMsg('lqt_from_talk', $talkpage_link);
+		}
+	}
+	
 	function __construct(&$output, &$article, &$title, &$user, &$request) {
 		
 		parent::__construct($output, $article, $title, $user, $request);
@@ -419,22 +434,7 @@ class ThreadPermalinkView extends LqtView {
 			return false;
 		}
 
-		// Make a link back to the talk page, including the correct archive month.
- 		// TODO this is obsolete.
-		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($this->thread->timestamp()) ))
-			$query = '';
-		else
-			$query = 'lqt_archive_month=' . substr($this->thread->timestamp(),0,6);
-			
-		$talkpage = $this->thread->article()->getTitle()->getTalkpage();
-		$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($talkpage, '', $query);
-		
-		if ( $this->thread->hasSuperthread() ) {
-			$subtitle=wfMsg('lqt_fragment',"<a href=\"{$this->permalinkUrl($this->thread->topmostThread())}\">".wfMsg('lqt_discussion_link')."</a>",$talkpage_link);
-			$this->output->setSubtitle( $subtitle);
-		} else {
-			$this->output->setSubtitle( wfMsg('lqt_from_talk', $talkpage_link));
-		}
+		$this->output->setSubtitle($this->getSubtitle());
 		
 		if( $this->methodApplies('summarize') )
 			$this->showSummarizeForm($this->thread);
@@ -486,8 +486,8 @@ class IndividualThreadHistoryView extends ThreadPermalinkView {
 	}
 
 	function customizeSubtitle() {
-		$threadhist = "<a href=\"{$this->permalinkUrl($this->thread, 'thread_history')}\">View history for the entire thread</a>";
-		$this->output->setSubtitle( $this->output->getSubtitle() . "<br />$threadhist" );
+		$threadhist = "<a href=\"{$this->permalinkUrl($this->thread->topmostThread(), 'thread_history')}\">View history for the entire thread</a>";
+		$this->output->setSubtitle(  $this->getSubtitle() . '<br />' . $this->output->getSubtitle() . "<br />$threadhist" );
 		return true;
 	}
 	
@@ -636,7 +636,7 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 			return false;
 		}
 		
-		$this->output->setSubtitle(wfMsg('lqt_history_subtitle'));
+		$this->output->setSubtitle($this->getSubtitle() . '<br />' . wfMsg('lqt_history_subtitle'));
 				
 		$this->showThreadHeading($this->thread);
 		$this->showHistoryListing($this->thread);
