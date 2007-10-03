@@ -46,7 +46,7 @@ $extra_debugging=true;
 # The site prefix allows us to have multiple sets of customized
 # messages (for different, typically site-specific UIs)
 # in a single database.
-$wdSiteContext="ow";
+if(!isset($wdSiteContext)) $wdSiteContext="ow";
 
 require_once("{$IP}/extensions/Wikidata/AddPrefs.php");
 require_once("{$IP}/extensions/Wikidata/SpecialLanguages.php");
@@ -60,6 +60,7 @@ require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialAddCollection.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialConceptMapping.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialCopy.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialExportTSV.php");
+require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialImportTSV.php");
 require_once("{$IP}/extensions/Wikidata/LocalApp.php");
 
 function addWikidataHeader() {

@@ -57,6 +57,16 @@ function getSelect($name, $options, $selectedValue="", $onChangeHandler="") {
 	return $result . '</select>';
 }
 
+function getFileField($name, $onChangeHandler = "") {
+	if ($onChangeHandler != "")
+		$onChangeAttribute = ' onchange="'. $onChangeHandler . '"';
+	else
+		$onChangeAttribute = '';
+
+	return '<input type="file" id="'. $name .'" name="'. $name . '"' . $onChangeAttribute . ' style="width: 100%; padding: 0px; margin: 0px;"/>';
+}
+ 
+
 /**
  *
  * Returns HTML for an autocompleted form field.
@@ -175,6 +185,36 @@ function getOptionPanel($fields, $action = '', $buttons = array("show" => "Show"
 	$result = 
 		'<div class="option-panel">' .
 			'<form method="GET" action="">' .
+				'<table cellpadding="0" cellspacing="0">' .
+					'<input type="hidden" name="title" value="' . $wgTitle->getNsText() . ':' . htmlspecialchars($wgTitle->getText()) . '"/>';
+
+	if ($action && $action != '')
+		$result .= '<input type="hidden" name="action" value="' . $action . '"/>';
+
+	foreach($fields as $caption => $field) 
+		$result .= '<tr><th>' . $caption . ':</th><td class="option-field">' . $field . '</td></tr>';
+
+	$buttonHTML = "";
+	
+	foreach ($buttons as $name => $caption)
+		$buttonHTML .= getSubmitButton($name, $caption);
+	
+	$result .=
+					'<tr><th/><td>' . $buttonHTML . '</td></tr>' .
+				'</table>' .
+			'</form>' .
+		'</div>';
+		
+	return $result;
+}
+
+function getOptionPanelForFileUpload($fields, $action = '', $buttons = array("upload" => "Upload")) {
+	global 
+		$wgTitle;
+
+	$result = 
+		'<div class="option-panel">' .
+			'<form method="POST" enctype="multipart/form-data" action="">' .
 				'<table cellpadding="0" cellspacing="0">' .
 					'<input type="hidden" name="title" value="' . $wgTitle->getNsText() . ':' . htmlspecialchars($wgTitle->getText()) . '"/>';
 
