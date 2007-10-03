@@ -133,14 +133,12 @@ class SwissProtXMLParser extends BaseXMLParser {
 //	public $keywordConceptId = 0;
 	public $includesConceptId = 0;
 	public $containsConceptId = 0;
-	public $textAttributeConceptId = 0;
 	public $enzymeCommissionNumberConceptId = 0;
 	public $activityConceptId = 0;
 	
 	// comment relation Ids
 	public $hasURLid = 0;
 	// comment top classes
-	public $textAttributeClassId = 0;
 	public $semanticGroupId = 0;
 	// comment aspects type	
 	public $functionalAspectId = 0;
@@ -222,13 +220,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 //		$this->keywordConceptId = $this->bootstrapConcept($this->keywordConceptId, "keyword");
 		$this->enzymeCommissionNumberConceptId = $this->bootstrapConcept($this->enzymeCommissionNumberConceptId, "enzyme commission number");
 
-		$this->textAttributeConceptId = $this->bootstrapConcept($this->textAttributeConceptId, "text attribute"); // TODO: Is this one necessary?
-		
-		// create root class for all defined meaning comment types
-		$this->textAttributeClassId = $this->bootstrapConcept($this->textAttributeClassId, "text attribute class"); // TODO: Is this one necessary?
-		
 		// create top class for semantic comment types and link it to the root class
-		$this->semanticGroupId = $this->bootstrapConcept($this->semanticGroupId, "Semantic Group", $this->textAttributeClassId);
+		$this->semanticGroupId = $this->bootstrapConcept($this->semanticGroupId, "Semantic Group");
 		
 		// define a different comment type aspects and link them with the comment top class
 		$this->localizationAspectId = $this->bootstrapConcept($this->localizationAspectId, "Localization aspects", $this->semanticGroupId);
@@ -297,7 +290,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 		addDefinedMeaningToCollectionIfNotPresent($this->proteinComponentConceptId, $this->classCollectionId, "protein component");
 		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificProteinConceptId, $this->classCollectionId, "organism specific protein");
 		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificGeneConceptId, $this->classCollectionId, "organism specific gene");		
-		addDefinedMeaningToCollectionIfNotPresent($this->textAttributeConceptId, $this->classCollectionId, "text attribute");
 		addDefinedMeaningToCollectionIfNotPresent($this->enzymeCommissionNumberConceptId, $this->classCollectionId, "enzyme commission number");
 		
 		// Add concepts to relation types
@@ -706,9 +698,9 @@ class SwissProtXMLParser extends BaseXMLParser {
 			$definedMeaningId = $this->attributes[$attribute];
 		else {
 			$definedMeaningId = $this->addExpressionAsDefinedMeaning($attribute, $attribute, $attribute, $this->textAttibuteCollectionId);
-			addClassMembership($definedMeaningId, $this->textAttributeConceptId);
 			$this->attributes[$attribute] = $definedMeaningId;
 		}
+		
 		return $definedMeaningId;		
 	}
 	
