@@ -32,13 +32,15 @@ after the require line in LocalSettings.php.
 Cortado
 -------
 
-The bundled Cortado player is licensed under the GPL, the source is available from:
+The cortado directory contains a fork of the Cortado Java applet by Fluendo. For
+information about the original project see:
 
     http://www.flumotion.net/cortado/
 
-We have patched Cortado to allow multiple instances to exist on the one page, 
-the patch is in cortado-tweak.diff. The recompiled binary is at 
-cortado-ovt-stripped-0.2.2.1-patched.jar .
+See LICENSE.cortado, LICENSE.jheora and LICENSE.smoke for license information. 
+
+Our fork contains bug fixes and feature additions which we hope will be
+incorporated into the official Cortado release. 
 
 PEAR File_Ogg
 -------------
