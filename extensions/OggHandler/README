@@ -14,7 +14,7 @@ server. Unfortunately the current version of FFmpeg has a bug which makes it
 extremely slow when used in this way. Our ffmpeg-bugfix.diff will fix this. 
 
 Download source: http://ffmpeg.mplayerhq.hu/download.html
-About the bug: http://bugzilla.mplayerhq.hu/show_bug.cgi?id=892
+About the bug: https://roundup.mplayerhq.hu/roundup/ffmpeg/issue159
 
 Suggested configure line for minimal functionality:
 
