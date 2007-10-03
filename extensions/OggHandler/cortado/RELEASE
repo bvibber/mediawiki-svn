@@ -1,0 +1,72 @@
+
+Release notes for Cortado 0.2.2 "Really Tested Verily Exceptionally"
+        
+
+Cortado applet
+
+  
+Features of this release
+    
+      * add statusHeight property
+      * add autoPlay property
+      * add documentBase property
+      * add showStatus property
+      * add hideTimeout property
+      * add JavaScript methods
+      * seek slider is easier to manipulate
+      * framerate property is removed
+      * fix locking behaviour
+      * seek slider disabled on Microsoft VM
+      * set User-Agent and add SVN info to About dialog
+      * extensively tested on Windows XP and 2000 with Microsoft VM
+      * extensively tested on Linux, Windows XP and 2000 with Sun VM 
+             1.4.0_01, 1.4.2_12, 1.5.0_03, 1.5.0_06, 1.5.0_09
+
+Bugs fixed in this release
+    
+      * 390 : README not inline with code
+      * 423 : cortado: playback of ogg audio
+      * 63 : [cortado] stops after a few frames on certain browser/jdk combinations
+      * 149 : cortado 0.1.0 freeze because of javax.sound
+      * 155 : implement pause/play in cortado, with javascript methods
+      * 157 : Cortado is not doing any playback if the file has no audio while the applet is loaded with audio=true parameter
+      * 317 : cortado should do typefinding on its input instead of relying on mime type from server
+      * 384 : Cortado: Only play on click ­[in video-window]
+      * 389 : Cortado needs option to make status bar always visible
+      * 390 : README not inline with code
+      * 470 : stop() method raise a java.security.AccessControlException when calling
+
+Download
+
+You can find source releases of cortado in the download directory:
+http://flumotion.net/src/cortado/
+
+Flumotion Homepage
+
+More details can be found on the project's website:
+http://flumotion.net/
+
+Support and Bugs
+
+We use an issue tracker for bug reports and feature requests:
+https://core.fluendo.com/flumotion/trac/newticket
+
+Developers
+
+You can browse the repository of SVN code from our tracker.
+
+All code is in SVN and can be checked out from there.
+It is hosted on https://core.fluendo.com/svn/
+
+        
+Contributors to this release
+    
+      * J^
+      * Wim Taymans
+      * Thomas Vander Stichele
+ 
+        
+Maintainers
+    
+      * Wim Taymans
+ 
