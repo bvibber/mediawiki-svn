@@ -196,12 +196,15 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;
 	}
 	
-	protected function bootstrapConcept($conceptId, $spelling, $classId = 0) {
+	protected function bootstrapConcept($conceptId, $spelling, $classId = 0, $definition = "") {
 		if ($conceptId == 0)
 			$conceptId = $this->bootstrapDefinedMeaning($spelling);
 			
 		if ($classId != 0)	
 			addClassMembership($conceptId, $classId);
+			
+		if ($definition != "")
+			addDefinedMeaningDefiningDefinition($conceptId, 85, $definition);
 			
 		return $conceptId;
 	}
@@ -212,8 +215,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 		$this->organismSpecificGeneConceptId = $this->bootstrapConcept($this->organismSpecificGeneConceptId, "organism specific gene");
 		$this->geneConceptId = $this->bootstrapConcept($this->geneConceptId, "gene or genome");
 		$this->organismConceptId = $this->bootstrapConcept($this->organismConceptId, "organism");
-		$this->occursInConceptId = $this->bootstrapConcept($this->occursInConceptId, "occurs in");
-		$this->isManifestationOfConceptId = $this->bootstrapConcept($this->isManifestationOfConceptId, "is manifestation of");
+		$this->occursInConceptId = $this->bootstrapConcept($this->occursInConceptId, "occurs in", 0, "Takes place in or happens under given conditions, circumstances, or time periods, or in a given location or population. This includes appears in, transpires, comes about, is present in, and exists in.");
+		$this->isManifestationOfConceptId = $this->bootstrapConcept($this->isManifestationOfConceptId, "is manifestation of", 0, "That part of a phenomenon which is directly observable or concretely or visibly expressed, or which gives evidence to the underlying process. This includes expression of, display of, and exhibition of.");
 		$this->functionalDomainConceptId = $this->bootstrapConcept($this->functionalDomainConceptId, "functional domain");
 		$this->proteinComponentConceptId = $this->bootstrapConcept($this->proteinComponentConceptId, "protein component");
 		$this->biologicalProcessConceptId = $this->bootstrapConcept($this->biologicalProcessConceptId, "biological process");		
