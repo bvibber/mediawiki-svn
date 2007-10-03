@@ -30,8 +30,8 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         MouseListener, ComponentListener, BusHandler, StatusListener, ActionListener {
     private static final long serialVersionUID = 1L;
 
-    private static Cortado cortado;
-    private static CortadoPipeline pipeline;
+    private Cortado cortado;
+    private CortadoPipeline pipeline;
 
     private String urlString;
     private boolean audio;
@@ -192,10 +192,10 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
       return res;
     }
 
-    public static void shutDown(Throwable error) {
+    public void shutDown(Throwable error) {
         Debug.log(Debug.INFO, "shutting down: reason: " + error.getMessage());
         error.printStackTrace();
-        cortado.stop();
+        stop();
     }
 
     public synchronized void init() {
@@ -341,7 +341,7 @@ public class Cortado extends Applet implements Runnable, MouseMotionListener,
         try {
             realRun();
         } catch (Throwable t) {
-            Cortado.shutDown(t);
+            shutDown(t);
         }
     }
 
