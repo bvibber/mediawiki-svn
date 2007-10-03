@@ -577,6 +577,8 @@ class DefinedMeaningCopier {
 	
 	protected function read() {
 		$dmid=$this->dmid;
+		if (is_null($dmid))
+			throw new Exception ("DefinedMeaningCopier: read(): cannot read a dmid that is null");
 		$this->defined_meaning=CopyTools::getRow($this->dc1,"defined_meaning","where defined_meaning_id=$dmid");
 		return $this->defined_meaning; # for convenience
 	}
@@ -687,10 +689,6 @@ class DefinedMeaningCopier {
 			$this->defined_meaning["defined_meaning_id"],
 			$this->save_meaning["defined_meaning_id"]);
 		$classMembershipCopier->dup();
-		
-
-
-
 	}
 }
 	
@@ -907,6 +905,7 @@ class ClassMembershipCopier extends Copier{
 	protected $new_class_member_mid;
 	protected $dc1;
 	protected $dc2;
+	protected $tableName="class_membership";
 
 	/** coming from the defined meaning(dm) we don't know the membership id,
 	 * but we do have the dmid (defined meaning id) for the class member, so let's use that
@@ -950,10 +949,13 @@ class ClassMembershipCopier extends Copier{
 		}
 		$membership["class_membership_id"]=$newid;
 		$membership["class_member_mid"]=$new_class_member_mid;
-		# nope, that's not right.
-		$classAttributesCopier=new ClassAttributesCopier($membership["class_mid"], $dc1, $dc2); 
-		$membership["class_mid"]=$classAttributesCopier->dup();
-		$this->doDM($membership, "class_mid", true);
+		$oldmid=$membership["class_mid"];
+		$this->doDM($membership,"class_mid", true);
+		$newmid=$membership["class_mid"];
+		$classAttributesCopier=new ClassAttributesCopier($oldmid, $newmid, $dc1, $dc2); 
+		$classAttributesCopier->dup();
+		echo "What are we working with <br>\n";
+		var_dump($membership);
 		CopyTools::dc_insert_assoc($dc2, "class_membership", $membership);
 		return $newid;
 	}
@@ -972,8 +974,9 @@ class ClassAttributesCopier extends Copier {
 
 	/** you saw that right, class_mid, not class_id, there's no such thing :-/
 	 */
-	public function __construct($class_mid, $dc1, $dc2) {
-		$this->src_class_mid=$class_mid;
+	public function __construct($src_class_mid, $dst_class_mid, $dc1, $dc2) {
+		$this->src_class_mid=$src_class_mid;
+		$this->dst_class_mid=$dst_class_mid;
 		$this->dc1=$dc1;
 		$this->dc2=$dc2;
 	}
@@ -982,9 +985,11 @@ class ClassAttributesCopier extends Copier {
 	 * because in this case, the class_mid is the key characteristic
 	 */
 	public function dup() {
+		if (is_null($this->src_class_mid))
+			throw new Exception ("ClassAttributesCopier: Can't copy class; is null!");
 		$attributes=$this->read();
 		$this->write($attributes);
-		return $this->dst_class_mid;
+		return $this->dst_class_mid; # XXX currently broken:  actually it'll return the src_class_mid...
 	}
 	
 	public function read() {
@@ -1005,16 +1010,16 @@ class ClassAttributesCopier extends Copier {
 		$dc2=$this->dc2;
 		$class_mid=$this->src_class_mid;
 
+
 		if ($this->doObject($attribute,"object_id")) 
 			return $attribute["object_id"];
 
-		$this->doDM($attribute,"class_mid");
+		$attribute["class_mid"]=$this->dst_class_mid;
 		$this->doDM($attribute,"level_mid");
 		$this->doDM($attribute,"attribute_mid");
 
 		CopyTools::dc_insert_assoc($dc2, "class_attributes", $attribute);
 
-		$this->dst_class_mid=$attribute["class_mid"];
 		return $attribute["object_id"];
 	}
 
@@ -1059,7 +1064,7 @@ abstract class Copier {
 	 *         or null, if no such id exists in this case (for instance, if we copied multiple
 	 *         items, there is no single unique id)
 	 */
-	public abstract function write();
+	//public abstract function write();
 
 	/** @returns true if the copied item was already present in the other dataset, false if it wasn't (and we just copied it over) , or null if don't know/error/other.
 	 */
@@ -1085,6 +1090,8 @@ abstract class Copier {
 	 *	   false if it did not, and we just created it
 	 */
 	protected function doDM(&$row, $dmid_column, $full=false) {
+		echo "IN COPIER<br>\n";
+		var_dump($row);
 		$dmCopier=new DefinedMeaningCopier($row[$dmid_column], $this->dc1, $this->dc2);
 		if ($full) {
 			$row[$dmid_column]=$dmCopier->dup();
@@ -1118,7 +1125,8 @@ abstract class Copier {
 		$copier->setTableName($this->tableName);
 		$copier->setAutovivify($this->autovivifyObjects);
 		$row[$object_column]=$copier->dup();
-		return $copier->already_there();
+		$this->already_there=$copier->already_there();
+		return $this->already_there;
 	}
 
 	protected function doInsert($row) {
