@@ -288,13 +288,18 @@ class Thread {
 		return Threads::where($where);
 	}
 	
-	private function bumpRevisionsOnAncestors($change_type, $change_object) {
+	private function bumpRevisionsOnAncestors($change_type, $change_object, $change_reason) {
+		global $wgUser; // TODO global.
+		
 		$this->revisionNumber += 1;	
 		$this->setChangeType($change_type);
 		$this->setChangeObject($change_object);
+		$this->changeComment = $change_reason;
+		$this->changeUser = $wgUser->getID();
+		$this->changeUserText = $wgUser->getName();
 		
 		if( $this->hasSuperthread() )
-			$this->superthread()->bumpRevisionsOnAncestors($change_type, $change_object);
+			$this->superthread()->bumpRevisionsOnAncestors($change_type, $change_object, $change_reason);
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
 		     /* SET */ array('thread_revision' => $this->revisionNumber,
@@ -330,7 +335,7 @@ class Thread {
 		// TODO open a transaction.
 		HistoricalThread::create( $this->double, $change_type, $change_object );
 
-		$this->bumpRevisionsOnAncestors($change_type, $change_object);
+		$this->bumpRevisionsOnAncestors($change_type, $change_object, $reason);
 		self::setChangeOnDescendents($this->topmostThread(), $change_type, $change_object);
 		
 		/* SCHEMA changes must be reflected here. */
