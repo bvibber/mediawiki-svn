@@ -73,10 +73,10 @@ dumpAgg (Pvoid_t agg, int aggType, int thresh, int ftime, int ltime)
   JSLF (value, agg, buffer);
   while (value != NULL)
     {
+      totalp++;
+      totalh += *value;
       if (*value >= thresh)
 	{
-	  totalp++;
-	  totalh += *value;
 	  if (fp == NULL)
 	    {
 	      fp = fopen (fname, "w");
