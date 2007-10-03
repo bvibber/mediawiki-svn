@@ -82,9 +82,6 @@ function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection,
 		$xmlParser->geneConceptId = getCollectionMemberId($umlsCollectionId, "C0017337");
 		// UMLS Semantic Type: Organism
 		$xmlParser->organismConceptId = getCollectionMemberId($umlsCollectionId, "C0029235");
-		// UMLS Semantic Type: Amino Acid, Peptide, or Protein
-	    //                     Indicator, Reagent, or Diagnostic Aid
-		$xmlParser->proteinFragmentConceptId = getCollectionMemberId($umlsCollectionId, "C1335533");
 	}
 	
 	if ($goCollection) {
@@ -123,7 +120,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $proteinComponents = array();
 		
 	public $proteinConceptId = 0;
-	public $proteinFragmentConceptId = 0;
 	public $organismSpecificProteinConceptId = 0;
 	public $organismSpecificGeneConceptId = 0;
 	public $geneConceptId = 0;
@@ -212,7 +208,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 	
 	protected function bootstrapConceptIds() {
 		$this->proteinConceptId = $this->bootstrapConcept($this->proteinConceptId, "protein");
-		$this->proteinFragmentConceptId = $this->bootstrapConcept($this->proteinFragmentConceptId, "protein fragment");
 		$this->organismSpecificProteinConceptId = $this->bootstrapConcept($this->organismSpecificProteinConceptId, "organism specific protein");
 		$this->organismSpecificGeneConceptId = $this->bootstrapConcept($this->organismSpecificGeneConceptId, "organism specific gene");
 		$this->geneConceptId = $this->bootstrapConcept($this->geneConceptId, "gene or genome");
@@ -294,7 +289,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 		
 		// Add concepts to classes
 		addDefinedMeaningToCollectionIfNotPresent($this->proteinConceptId, $this->classCollectionId, "amino acid, peptide, or protein");
-		addDefinedMeaningToCollectionIfNotPresent($this->proteinFragmentConceptId, $this->classCollectionId, "protein fragment");
 		addDefinedMeaningToCollectionIfNotPresent($this->geneConceptId, $this->classCollectionId, "gene or genome");
 		addDefinedMeaningToCollectionIfNotPresent($this->organismConceptId, $this->classCollectionId, "organism");
 		addDefinedMeaningToCollectionIfNotPresent($this->functionalDomainConceptId, $this->classCollectionId, "functional domain");
@@ -359,18 +353,14 @@ class SwissProtXMLParser extends BaseXMLParser {
 	}
 	
 	public function addProtein($protein){
-		if (array_key_exists($protein->name, $this->proteins)) {
+		if (array_key_exists($protein->name, $this->proteins)) 
 			$definedMeaningId = $this->proteins[$protein->name];
-		}
 		else {
 			$definedMeaningId = $this->addExpressionAsDefinedMeaning($protein->name, $protein->name, $protein->name, $this->collectionId);
 			$this->proteins[$protein->name] = $definedMeaningId;
 		}
 		
-		if($protein->fragment) 
-			addClassMembership($definedMeaningId, $this->proteinFragmentConceptId);
-		else
-			addClassMembership($definedMeaningId, $this->proteinConceptId);			
+		addClassMembership($definedMeaningId, $this->proteinConceptId);			
 		
 		return $definedMeaningId;
 	}
@@ -490,15 +480,11 @@ class SwissProtXMLParser extends BaseXMLParser {
 
 		// set the class of the entry:
 		addClassMembership($definedMeaningId, $this->organismSpecificProteinConceptId);
-
-		// set the protein of the swiss prot entry and relate the protein to the entry:		
-		addRelation($definedMeaningId, $this->proteinConceptId, $proteinMeaningId);
+		addClassMembership($definedMeaningId, $proteinMeaningId);
 
 		// set the gene of the swiss prot entry and relate the gene to the entry:
-		if($organismSpecificGene >= 0) {
-			//add realtion between entry and gene			
+		if ($organismSpecificGene >= 0) 
 			addRelation($definedMeaningId, $this->organismSpecificGeneConceptId, $organismSpecificGene);
-		}
 		
 		// set the species of the swiss prot entry and relate the species to the entry:		
 		addRelation($definedMeaningId, $this->organismConceptId, $organismSpeciesMeaningId);
@@ -680,20 +666,19 @@ class SwissProtXMLParser extends BaseXMLParser {
 			foreach ($entry->GOReference as $key => $goReference) {
 				$relationConcept = 0;
 				switch($goReference->type) {
-				case("biological process"):
+				case "biological process":
 					$relationConcept = $this->biologicalProcessConceptId;
 					break;
-				case("molecular function"):
+				case "molecular function":
 					$relationConcept = $this->molecularFunctionConceptId;
 					break;
-				case("cellular component"):
+				case "cellular component":
 					$relationConcept = $this->cellularComponentConceptId;
 					break;
 				}
 				
-				if($relationConcept && ($goConcept = $this->goCollection[$goReference->goCode])) {
+				if ($relationConcept && ($goConcept = $this->goCollection[$goReference->goCode])) 
 					addRelation($definedMeaningId, $relationConcept, $goConcept);					
-				}
 			}			
 		}
 		
@@ -872,11 +857,6 @@ class ProteinXMLElementHandler extends DefaultXMLElementHandler {
 	public function __construct() {
 		$this->protein = new Protein();
 	}
-	
-	public function setAttributes($attributes) {
-		DefaultXMLElementHandler::setAttributes($attributes);
-		$this->protein->fragment = (array_key_exists("TYPE", $this->attributes) && ($this->attributes["TYPE"] == "fragment" || $this->attributes["TYPE"] == "fragments"));
-	} 
 	
 	public function getHandlerForNewElement($name) {
 		if ($name == "NAME") 
@@ -1198,7 +1178,6 @@ class CommentChild {
 
 class Protein {
 	public $name = "";
-	public $fragment = false;
 	public $synonyms = array();
 	public $domains = array();
 	public $components = array();
