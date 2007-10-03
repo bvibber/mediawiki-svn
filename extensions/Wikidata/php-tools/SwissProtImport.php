@@ -210,7 +210,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 	}
 	
 	protected function bootstrapConceptIds() {
-		$this->proteinConceptId = $this->bootstrapConcept($this->proteinConceptId, "protein");
+		$this->proteinConceptId = $this->bootstrapConcept($this->proteinConceptId, "amino acid, peptide or protein");
 		$this->organismSpecificProteinConceptId = $this->bootstrapConcept($this->organismSpecificProteinConceptId, "organism specific protein");
 		$this->organismSpecificGeneConceptId = $this->bootstrapConcept($this->organismSpecificGeneConceptId, "organism specific gene");
 		$this->geneConceptId = $this->bootstrapConcept($this->geneConceptId, "gene or genome");
