@@ -27,6 +27,10 @@ $wgDesysopMessages['ar'] = array(
 	'desysop'              => 'عزل مستخدم',
 	'desysopnot_sysop'     => 'هذا المستخدم ليس إداريا',
 );
+$wgDesysopMessages['bcl'] = array(
+	'desysopname'          => 'Pangaran kan parágamit:',
+	'desysopnot_sysop'     => 'Bakong administrador an parágamit na ini.',
+);
 $wgDesysopMessages['ca'] = array(
 	'desysopsetrights'     => 'Defineix els permisos d\'usuaris',
 );

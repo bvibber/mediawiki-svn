@@ -49,6 +49,7 @@ function efGiveRollbackMessages() {
 'giverollback-granted' => '[[User:$1|$1]] لديه الآن صلاحيات استرجاع.',
 'giverollback-revoked' => '[[User:$1|$1]] لم يعد لديه صلاحيات استرجاع.',
 'giverollback-logpage' => 'سجل صلاحيات الاسترجاع',
+'giverollback-logpagetext' => 'هذا سجل بالتغييرات لصلاحيات [[Help:Rollback|الاسترجاع]] لغير الإداريين.',
 'giverollback-logentrygrant' => 'منح صلاحيات استرجاع إلى [[$1]]',
 'giverollback-logentryrevoke' => 'أزال صلاحيات استرجاع من [[$1]]',
 ),

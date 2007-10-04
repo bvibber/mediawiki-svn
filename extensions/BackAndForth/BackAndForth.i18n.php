@@ -49,6 +49,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Prècèdenta ($1)',
 ),
 
+'gl' => array(
+	'backforth-next' => 'Seguinte ($1)',
+	'backforth-prev' => 'Anterior ($1)',
+),
+
 'hsb' => array(
 	'backforth-next' => 'Přichodne ($1)',
 	'backforth-prev' => 'Předchadne ($1)',

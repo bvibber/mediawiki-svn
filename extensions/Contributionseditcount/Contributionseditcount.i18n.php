@@ -16,6 +16,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'هذا المستخدم لديه $1 تعديل.',
 ),
 
+'bcl' => array(
+	'contributionseditcount' => 'An parágamit na ini igwang $1 na mga hirá.',
+),
+
 'bn' => array(
 	'contributionseditcount' => 'এ ব্যবহারকারীর $1 সম্পাদনা হয়েছে।',
 ),

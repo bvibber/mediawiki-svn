@@ -23,9 +23,10 @@ function efInputBoxMessages() {
 ),
 
 'ar' => array(
-	'tryexact'       => 'ابحث عن عنوان مطابق',
-	'searchfulltext' => 'ابحث في النص الكامل',
-	'createarticle'  => 'إنشاء مقالة',
+	'inputbox-error-no-type'  => 'لم تقم بتحديد نوع صندوق الإدخال للإنشاء.',
+	'tryexact'                => 'ابحث عن عنوان مطابق',
+	'searchfulltext'          => 'ابحث في النص الكامل',
+	'createarticle'           => 'إنشاء مقالة',
 ),
 
 'az' => array(

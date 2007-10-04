@@ -201,6 +201,18 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'at reteriê [[$1]] de la lista de les émâges endèsirâbles',
 ),
 
+'gl' => array(
+'badimages' => 'Listaxe de imaxes con fallas',
+'badimages-add-btn' => 'Engadir',
+'badimages-added' => '$1 foi engadida á listaxe.',
+'badimages-count' => 'Hai \'\'\'$1\'\'\' imaxes na listaxe de imaxes con fallas.',
+'badimages-name' => 'Nome:',
+'badimages-not-added' => 'A imaxe non pode ser engadida.',
+'badimages-not-removed' => 'A imaxe non pode ser eliminada.',
+'badimages-reason' => 'Razón:',
+'badimages-remove' => '(eliminar)',
+),
+
 'hsb' => array(
 'badimages' => 'Lisćina njewitanych wobrazow',
 'badimages-add-btn' => 'Přidać',

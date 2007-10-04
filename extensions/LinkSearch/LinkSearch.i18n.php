@@ -22,7 +22,9 @@ $wgLinkSearchMessages['ar'] = array(
 	'linksearch-pat'   => 'نمط البحث:',
 	'linksearch-ns'    => 'النطاق:',
 	'linksearch-ok'    => 'بحث',
+	'linksearch-text'  => 'الكروت الخاصة مثل "*.wikipedia.org" يمكن استخدامها.<br />البروتوكولات المدعومة: <tt>$1</tt>',
 	'linksearch-line'  => '$1 موصولة من $2',
+	'linksearch-error' => 'الكروت الخاصة يمكن أن تظهر فقط في بداية اسم المضيف.',
 );
 $wgLinkSearchMessages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',

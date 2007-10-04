@@ -38,6 +38,7 @@ function efCountEditsMessages( $single = false ) {
 
 'bcl' => array(
 'countedits-resultheader' => 'Mga resulta kan $1',
+'countedits-mostactive' => 'Pinaka mahigos na mga kontributor',
 ),
 
 'br' => array(

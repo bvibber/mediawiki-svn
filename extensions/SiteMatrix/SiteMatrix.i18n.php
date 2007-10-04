@@ -186,10 +186,10 @@ $wgSiteMatrixMessages['su'] = array(
 	'sitematrix-others' => 'Proyék laina ti Wikimedia',
 );
 $wgSiteMatrixMessages['sv'] = array(
-	"sitematrix"          => "Lista över Wikimedias wikis",
+	'sitematrix' => 'Lista över Wikimedias wikier',
 	'sitematrix-language' => 'Språk',
-	'sitematrix-project'  => 'Projektnamn, interprojektlänk och interwiki-länk',
-	'sitematrix-others'   => 'Andra Wikimediaprojekt',
+	'sitematrix-project' => 'Projektnamn, interprojektlänk och interwiki-länk',
+	'sitematrix-others' => 'Andra Wikimediaprojekt',
 );
 $wgSiteMatrixMessages['tet'] = array(
 	'sitematrix' => 'Lista wiki sira Wikimedia nian',

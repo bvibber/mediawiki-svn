@@ -46,7 +46,12 @@ Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 
 'tet' => array(
 	'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
-	'newusernotifbody' => 'Olá $1, uza-na\'in foun, $2, nakria iha $3 iha loron $4.',
+	'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, nakria iha $3 iha loron $4.',
+),
+
+'tet' => array(
+'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
+'newusernotifbody' => 'Olá $1, uza-na\'in foun, $2, nakria iha $3 iha loron $4.',
 ),
 
 'yue' => array(

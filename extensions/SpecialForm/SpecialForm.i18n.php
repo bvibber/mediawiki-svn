@@ -80,6 +80,23 @@ $SpecialFormMessages =array(
 		'formsaveerrortext' => 'Une erreur inconnue s\'est produite pendant la sauvegarde de l\'article \'$1\'.'
 	),
 
+	'hsb' => array(
+		'form' => 'Formular',
+		'formnoname' => 'Žane formularne mjeno',
+		'formnonametext' => 'Dyrbiš formularne mjeno podać, na př. „{{ns:Special}}:Form/Formularnemjeno“.',
+		'formbadname' => 'Wopačne formularne mjeno',
+		'formbadnametext' => 'Njeje formular z tutym mjenom',
+		'formpattern' => '$1 formular',
+		'formtemplatepattern' => '$1',#identical but defined
+		'formtitlepattern' => 'Nowe $1 přidać',
+		'formsave' => 'Składować',
+		'formarticleexists' => 'Nastawk hižo eksistuje',
+		'formarticleexiststext' => 'Nastawk [[$1]] hižo eksistuje.',
+		'formsavesummary' => 'Nowy nastawk, kotryž na [{{ns:Special}}:Form/$1]] bazěruje.',
+		'formsaveerror' => 'Zmylk při składowanju formulara',
+		'formsaveerrortext' => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
+	),
+
 	'nl' => array(
 		'form' => 'Formulier',
 		'formnoname' => 'Geen formuliernaam',

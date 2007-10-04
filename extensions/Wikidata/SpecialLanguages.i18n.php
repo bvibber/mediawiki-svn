@@ -15,6 +15,9 @@ $wgLanguageManagerMessages['ar'] = array(
 	'langman_title' => 'مدير اللغة',
 	'languages' => 'Wikidata: مدير اللغة',
 );
+$wgLanguageManagerMessages['bcl'] = array(
+	'languages' => 'Wikidata: Manager kan tataramon',
+);
 $wgLanguageManagerMessages['bn'] = array(
 	'langman_title' => 'ভাষা ব্যবস্থাপক',
 	'languages' => 'Wikidata: ভাষা ব্যবস্থাপক',

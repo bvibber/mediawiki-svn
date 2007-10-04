@@ -15,6 +15,10 @@ $wgDataSearchMessages['ar'] = array(
 	'datasearch' => 'Wikidata: بحث البيانات',
 );
 
+$wgDataSearchMessages['bcl'] = array(
+	'datasearch' => 'Wikidata: Data search',#identical but defined
+);
+
 $wgDataSearchMessages['bn'] = array(
 	'datasearch' => 'Wikidata: তথ্য অনুসন্ধান',
 );

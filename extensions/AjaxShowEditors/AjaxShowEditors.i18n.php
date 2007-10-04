@@ -66,6 +66,11 @@ $wgAjaxShowEditorsMessages['frp'] = array(
 	'ajax-se-pending' => 'rafrèchissement en cors ... (clicâd sur ceti mèssâjo ou modifiâd la pâge)',
 	'ajax-se-idling' => '(cen fét/fât $1 s)',
 );
+$wgAjaxShowEditorsMessages['gl'] = array(
+	'ajax-se-title' => 'Neste momento está a editar:',
+	'ajax-se-pending' => 'pendente de refresco... (clique nesta caixa ou comece a editar)',
+	'ajax-se-idling' => '(hai $1s)',
+);
 $wgAjaxShowEditorsMessages['hsb'] = array(
 	'ajax-se-title' => 'Wobdźěłuje so runje wot:',
 	'ajax-se-pending' => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',

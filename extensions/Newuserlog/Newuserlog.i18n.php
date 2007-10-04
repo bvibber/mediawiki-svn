@@ -258,9 +258,9 @@ $wgNewuserlogMessages['su'] = array(
 
 $wgNewuserlogMessages['sv'] = array(
 	'newuserlogpage'           => 'Logg över nya användare',
-	'newuserlogpagetext'       => 'Det här är en logg över användarkonton som registrerats',
+	'newuserlogpagetext'       => 'Detta är en logg över nyligen skapade användarkonton',
 	'newuserlog-create-entry'  => 'Ny användare',
-	'newuserlog-create2-entry' => 'skapade användarkontot $1',
+	'newuserlog-create2-entry' => 'skapade användarkonto för $1',
 );
 $wgNewuserlogMessages['tet'] = array(
 	'newuserlogpage'           => 'Lista kria uza-na\'in',

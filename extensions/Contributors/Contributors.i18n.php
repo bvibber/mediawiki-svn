@@ -39,6 +39,8 @@ function efContributorsMessages() {
 ),
 
 'bcl' => array(
+'contributors' => 'Mga kontributor',
+'contributors-toolbox' => 'Pangenot na mga kontributor',
 'contributors-target' => 'Titulo:',
 'contributors-submit' => 'Hilingón',
 'contributors-others' => 'asin $1 iba pa',

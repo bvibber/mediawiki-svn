@@ -68,6 +68,7 @@ copies of all histories. This is useful for article forking, etc.',
 ),
 
 'bcl' => array(
+'duplicator-options' => 'Mga pilian',
 'duplicator-source' => 'Ginikanan:',
 'duplicator-dest' => 'Destinasyon:',
 'duplicator-summary' => 'Kinopya sa [[$1]]',

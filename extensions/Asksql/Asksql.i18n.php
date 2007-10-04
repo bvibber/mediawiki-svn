@@ -37,6 +37,14 @@ this function sparingly.",
 'querysuccessful'  => 'الاستعلام ناجح',
 ),
 
+'bcl' => array(
+'asksql'           => 'Hapot na SQL',
+'sqlquery'         => 'Ilaog an hapot',
+'querybtn'         => 'Isumitir an hapot',
+'selectonly'       => 'Solamenteng an mga hapot na read-only sana an tinotogotan.',
+'querysuccessful'  => 'Matriumpo an paghapot',
+),
+
 /* Greece */
 'el' => array(
 'asksql'           => 'ερώτημα SQL',
@@ -94,6 +102,18 @@ cela fonccion avouéc parcimonie.',
 'querybtn'         => 'Sometre la requéta',
 'selectonly'       => 'Solètes les requétes en lèctures solètes sont pèrmêses.',
 'querysuccessful'  => 'La requéta at étâ ègzécutâ avouéc reusséta.',
+),
+
+'gl' => array(
+'asksql'           => 'Consulta SQL',
+'asksqltext'       => 'Use o formulario de embaixo para facer unha consulta directa na base de datos.
+Use só as comiñas ("desta maneira") para delimitar cadeas literais.
+Isto con frecuencia pode engadir unha carga considerábel ao servidor, así que por favor use esta función moderadamente.',
+'sqlislogged'      => 'Por favor dése conta de que todas as consultas son rexistradas.',
+'sqlquery'         => 'Introducir consulta',
+'querybtn'         => 'Enviar consulta',
+'selectonly'       => 'Só lecturas e só consultas están permitidas',
+'querysuccessful'  => 'Consulta con éxito',
 ),
 
 'hsb' => array(
