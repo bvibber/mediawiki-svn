@@ -90,7 +90,7 @@ class SpecialForm extends SpecialPage
 		return new Form($name, $text);
 	}
 
-	function showForm($form) {
+	function showForm($form, $errmsg = NULL) {
 		global $wgOut, $wgRequest, $wgParser, $wgTitle;
 
 		$self = SpecialPage::getTitleFor("Form/$form->name");
@@ -105,6 +105,13 @@ class SpecialForm extends SpecialPage
 							wfElement('br'));
 		}
 
+		if (!is_null($errmsg)) {
+			$wgOut->addHtml(wfOpenElement('div', array('class' => 'error')) .
+							$wgOut->parse($errmsg) .
+							wfCloseElement('div') .
+							wfElement('br'));
+		}
+		
 		$wgOut->addHtml(wfOpenElement('form',
 									  array('method' => 'POST',
 											'action' => $self->getLocalURL())));
@@ -121,14 +128,42 @@ class SpecialForm extends SpecialPage
 
 	function createArticle($form) {
 
-		global $wgOut, $wgRequest;
+		global $wgOut, $wgRequest, $wgLang;
+		
+		# Check for required fields
 
+		$missedFields = array();
+		
+		foreach ($form->fields as $name => $field) {
+			$value = $wgRequest->getText($name);
+			if ($field->isOptionTrue('required') && (is_null($value) || strlen($value) == 0)) {
+				$missedFields[] = $field->label;
+			}
+		}
+
+		# On error, show the form again with some error text.
+		
+		if ($missedFields) {
+			if (count($missedFields) > 1) {
+				$msg = wfMsg('formrequiredfieldpluralerror', $wgLang->listToText($missedFields));
+			} else {
+				$msg = wfMsg('formrequiredfielderror', $missedFields[0]);
+			}
+			$this->showForm($form, $msg);
+			return;
+		}
+		
 		$title = $this->makeTitle($form);
 
 		wfDebug("SpecialForm: saving article '$title'\n");
 
 		$nt = Title::newFromText($title);
 
+		if (!$nt) {
+			$wgOut->showErrorPage('formbadpagename', 'formbadpagenametext', array($title));
+			return;
+		}
+		
 		if ($nt->getArticleID() != 0) {
 			$wgOut->showErrorPage('formarticleexists', 'formarticleexists', array($title));
 			return;
@@ -137,7 +172,6 @@ class SpecialForm extends SpecialPage
 		$text = "{{subst:$form->template";
 
 		foreach ($form->fields as $name => $field) {
-			# XXX: check for required fields
 			# FIXME: strip/escape template-related chars (|, =, }})
 			$text .= "|$name=" . $wgRequest->getText($name);
 		}
@@ -275,6 +309,14 @@ class FormField {
 		}
 	}
 
+	function isOptionTrue($key, $default = false) {
+		$value = $this->getOption($key, $default);
+		return ((strcasecmp($value, 'on') == 0) ||
+				(strcasecmp($value, 'yes') == 0) ||
+				(strcasecmp($value, 'true') == 0) ||
+				(strcasecmp($value, '1') == 0));
+	}
+	
 	function render($def = NULL) {
 		global $wgOut;
 

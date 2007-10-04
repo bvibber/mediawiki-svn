@@ -174,6 +174,11 @@ The following types of form fields can be created.
    example, "Blue;Green;Red" will give the user a drop-down box with
    three choices, "Blue", "Green", and "Red".
 
+All field types support the option 'required'. If this option is 'on',
+'true', 'yes', or '1', saving the form without that field filled in
+will result in an error (and the user is given a chance to enter the
+data again).
+
 == Using forms ==
 
 To show a user a form, use the following special-page format:
