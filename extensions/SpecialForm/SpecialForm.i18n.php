@@ -60,7 +60,7 @@ $SpecialFormMessages =array(
 	),
 
 	'fr' => array(
-		'form' => 'Formulaire',
+        'form' => 'Formulaire',
 		'formnoname' => 'Aucun nom',
 		'formnonametext' => 'Veuillez spécifier le nom du formulaire, sous la forme "Special:Formulaire/NomDuFormulaire".',
 		'formbadname' => 'Nom incorrect',
@@ -79,9 +79,9 @@ $SpecialFormMessages =array(
 	'nl' => array(
 		'form' => 'Formulier',
 		'formnoname' => 'Geen formuliernaam',
-		'formnonametext' => 'Geef een formuliernaam op, bijvoorbeeld "Special:Form/Formuliernaam".',
-		'formbadname' => 'Ongeldige formuliernaam',
-		'formbadnametext' => 'Er bestaat geen formulier met die naam.',
+        'formnonametext' => 'Geef een formuliernaam op, bijvoorbeeld "Special:Form/Formuliernaam".',
+        'formbadname' => 'Ongeldige formuliernaam',
+	    'formbadnametext' => 'Er bestaat geen formulier met die naam.',
 		'formpattern' => '$1-form',#identical but defined
 		'formtemplatepattern' => '$1',#identical but defined
 		'formtitlepattern' => 'Voeg nieuw $1 toe',
@@ -91,5 +91,5 @@ $SpecialFormMessages =array(
 		'formsavesummary' => 'Nieuwe pagina via [[Special:Form/$1]]',
 		'formsaveerror' => 'Fout bij opslaan formulier',
 		'formsaveerrortext' => 'Er is een onbekende fout opgetreden bij het opslaan van pagina \'$1\'.',
-	),
+    ),
 );
