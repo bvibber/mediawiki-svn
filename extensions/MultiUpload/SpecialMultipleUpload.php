@@ -23,7 +23,7 @@ require_once("SpecialPage.php");
 
 $wgExtensionFunctions[] = 'wfMultipleUpload';
 
-$wgExtensionCredits['parserhook'][] = array(
+$wgExtensionCredits['specialpage'][] = array(
     'name' => 'MultipleUpload',
     'author' => 'Travis Derouin',
     'description' => 'Allows users to upload several files at once.',
