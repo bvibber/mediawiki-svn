@@ -3,6 +3,8 @@
   match on submit, to prevent automated creation
 + create a new article on submit
 + required/optional fields
+- add a bit of text to indicate required fields
+- client-side validation of required fields
 + check for existing article before saving
 + add a default value if passed in using GET
 + test setting custom title in form description
