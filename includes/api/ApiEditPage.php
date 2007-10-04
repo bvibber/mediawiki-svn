@@ -87,8 +87,6 @@ class ApiEditPage extends ApiBase {
       // This is only to fast testing. So must be cleanned before a Release
       $tokenid = $md5;
 
-			
-
       // APiEditPage only accepts POST requests
 			if (!$_SERVER['REQUEST_METHOD']){
       	$value = 'NO_POST_REQUEST';
