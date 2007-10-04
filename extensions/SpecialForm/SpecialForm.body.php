@@ -60,7 +60,7 @@ class SpecialForm extends SpecialPage
 		static $messagesLoaded = false;
 		global $wgMessageCache;
 
-		if ( $messagesLoaded ) return;
+		if ( $messagesLoaded ) return true;
 
 		require( dirname( __FILE__ ) . '/SpecialForm.i18n.php' );
 		foreach ( $SpecialFormMessages as $lang => $langMessages ) {
