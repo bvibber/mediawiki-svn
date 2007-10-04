@@ -411,6 +411,39 @@ $messages = array(
 	'ogg-desc-link' => 'Over dit bestand',
 	),
 
+	'pl' => array(
+	'ogg-short-audio' => 'Plik dźwiękowy Ogg $1, $2',
+	'ogg-short-video' => 'Plik wideo Ogg $1, $2',
+	'ogg-short-general' => 'Plik multimedialny Ogg $1, $2',
+	'ogg-long-audio' => '(Plik dźwiękowy Ogg $1, długość $2, $3)',
+	'ogg-long-video' => '(Plik wideo Ogg $1, długość $2, $4×$5 pikseli, $3)',
+	'ogg-long-multiplexed' => '(Plik audio/wideo Ogg, $1, długość $2, $4×$5 pikseli, ogółem $3)',
+	'ogg-long-general' => '(Plik multimedialny Ogg, długość $2, $3)',
+	'ogg-long-error' => '(Nieprawidłowy plik Ogg: $1)',
+	'ogg-play' => 'Odtwórz',
+	'ogg-pause' => 'Pauza',
+	'ogg-stop' => 'Stop',#identical but defined
+	'ogg-play-video' => 'Odtwórz wideo',
+	'ogg-play-sound' => 'Odtwórz dźwięk',
+	'ogg-no-player' => 'Przykro nam, twój system zdaje się nie mieć żadnego obsługiwanego programu do odtwarzania. Prosimy o <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">ściągnięcie odtwarzacza</a>.',
+	'ogg-no-xiphqt' => 'Zdaje się, że nie masz komponentu XiphQT dla programu QuickTime. QuickTime nie może odtwarzać plików Ogg bez tego komponentu. Prosimy <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download/pl">ściągnąć XiphQT</a> lub wybrać inny odtwarzacz.',
+	'ogg-player-videoElement' => 'element <video>',
+	'ogg-player-oggPlugin' => 'wtyczka Ogg',
+	'ogg-player-cortado' => 'Cortado (Java)',#identical but defined
+	'ogg-player-vlc-mozilla' => 'VLC',#identical but defined
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',#identical but defined
+	'ogg-player-quicktime-mozilla' => 'QuickTime',#identical but defined
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',#identical but defined
+	'ogg-player-thumbnail' => 'Tylko nieruchomy obraz',
+	'ogg-player-soundthumb' => 'Bez odtwarzacza',
+	'ogg-player-selected' => '(wybrany)',
+	'ogg-use-player' => 'Użyj odtwarzacza:',
+	'ogg-more' => 'Więcej...',
+	'ogg-dismiss' => 'Zamknij',
+	'ogg-download' => 'Ściągnij plik',
+	'ogg-desc-link' => 'O tym pliku',
+	),
+
 	'sv' => array(
 		'ogg-short-audio'      => 'Ogg $1 ljudfil, $2',
 		'ogg-short-video'      => 'Ogg $1 videofil, $2',
