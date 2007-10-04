@@ -29,7 +29,8 @@
 				
 				$dbr =& wfGetDB(DB_MASTER);
 				$dc = wdGetDataSetcontext();
-				
+				$wgOut->setPageTitle('Importing TSV data');
+				setlocale(LC_ALL, 'en_US.UTF-8');				
 				if ($wgRequest->getFileName('tsvfile')) {
 					// process tsv
 					
@@ -74,7 +75,7 @@
 						// perfomr some tests
 						if ($dmRecord = $dbr->fetchRow($dmResult)) {
 							if ($dmRecord['spelling'] != $exp) {
-								$wgOut->addHTML("Skipped line $line: defined meaning id $dmid does not match defining expression. Should be '$exp', found '{$dmRecord['spelling']}'.<br/>");
+								$wgOut->addHTML("Skipped line $line: defined meaning id $dmid does not match defining expression. Should be '{$dmRecord['spelling']}', found '$exp'.<br/>");
 								continue;
 							}
 							if ($dmRecord['remove_transaction_id']) {
