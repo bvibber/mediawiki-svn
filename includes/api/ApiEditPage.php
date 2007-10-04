@@ -54,6 +54,16 @@ class ApiEditPage extends ApiBase {
     }
 
 		extract($this->extractRequestParams());
+		$params = new FauxRequest(array (
+	        	'wpTitle' 		=> $title,
+	        	'wpTextbox1' 	=> $text,
+	        	'wpSummary'		=> $summary,
+	        	'wpEdittime'	=> $edittime,
+	        	'wplgToken' 	=> $lgtoken,
+	        	'wpUserID'		=> $userid,
+	        	'wpEditToken'	=> $tokenid
+	    ));
+	  $wgRequest = $params;
 		// Ensure the correct timestamp format
 		$edittime =eregi_replace("[-,a-z,:]","",$edittime);
     $object_title = Title::newFromDBkey($title);
@@ -77,15 +87,7 @@ class ApiEditPage extends ApiBase {
       // This is only to fast testing. So must be cleanned before a Release
       $tokenid = $md5;
 
-			$params = new FauxRequest(array (
-	        	'wpTitle' 		=> $title,
-	        	'wpTextbox1' 	=> $text,
-	        	'wpSummary'		=> $summary,
-	        	'wpEdittime'	=> $edittime,
-	        	'wplgToken' 	=> $lgtoken,
-	        	'wpUserID'		=> $userid,
-	        	'wpEditToken'	=> $tokenid
-	    ));
+			
 
       // APiEditPage only accepts POST requests
 			if (!$_SERVER['REQUEST_METHOD']){
