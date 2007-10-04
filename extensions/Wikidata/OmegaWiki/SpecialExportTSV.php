@@ -54,6 +54,7 @@
 					// separator character used.
 					$sc = "\t";
 					
+					echo(pack('CCC',0xef,0xbb,0xbf));
 					// start the first row: column names
 					echo('defined meaning id'.$sc.'defining expression');
 					foreach ($isoCodes as $isoCode) {
