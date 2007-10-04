@@ -39,28 +39,6 @@ class ApiEditPage extends ApiBase {
 	const BAD_LGTOKEN 						= 001;
 	const BAD_EDITTOKEN						= 002;
 	const NO_POST_REQUEST					= 003;
-	const AS_SUCCESS_UPDATE					= 200;
-	const AS_SUCCESS_NEW_ARTICLE			= 201;
-	const AS_HOOK_ERROR 					= 210;
-	const AS_FILTERING						= 211;
-	const AS_HOOK_ERROR_EXPECTED				= 212;
-	const AS_BLOCKED_PAGE_FOR_USER			= 215;
-	const AS_CONTENT_TOO_BIG				= 216;
-	const AS_USER_CANNOT_EDIT				= 217;
-	const AS_READ_ONLY_PAGE_ANON			= 218;
-	const AS_READ_ONLY_PAGE_LOGGED			= 219;
-	const AS_READ_ONLY_PAGE					= 220;
-	const AS_RATE_LIMITED					= 221;
-	const AS_ARTICLE_WAS_DELETED			= 222;
-	const AS_NO_CREATE_PERMISSION			= 223;
-	const AS_BLANK_ARTICLE					= 224;
-	const AS_CONFLICT_DETECTED				= 225;
-	const AS_SUMMARY_NEEDED					= 226;
-	const AS_TEXTBOX_EMPTY					= 228;
-	const AS_MAX_ARTICLE_SIZE_EXCEDED		= 229;
-	const AS_OK								= 230;
- 	const AS_END							= 231;
- 	const AS_SPAM_ERROR						= 232;
 	//----------------------------------------
 
     public function __construct($query, $moduleName) {
@@ -131,11 +109,11 @@ class ApiEditPage extends ApiBase {
     	}
 		}
 		switch ($value){
-			case self::AS_END:
+			case EditPage::AS_END:
 				$result['result'] = 'Conflict detected';
 				break;
 
-			case self::AS_SUCCESS_UPDATE:
+			case EditPage::AS_SUCCESS_UPDATE:
 				$result['result'] 		= 'Success';
 		       	$result['title']		= $editForm->mTitle;
 		       	$result['id']			= $myArticle->getID();
@@ -143,23 +121,23 @@ class ApiEditPage extends ApiBase {
 		       	$rtext['content']		= $editForm->textbox1;
 		       	break;
 
-			case self::AS_MAX_ARTICLE_SIZE_EXCEDED:
+			case EditPage::AS_MAX_ARTICLE_SIZE_EXCEDED:
 				$result['result'] = 'Article too long';
 		          break;
 
-			case self::AS_TEXTBOX_EMPTY:
+			case EditPage::AS_TEXTBOX_EMPTY:
 				$result['result'] = 'Blank edition';
 				break;
 
-			case self::AS_SUMMARY_NEEDED:
+			case EditPage::AS_SUMMARY_NEEDED:
 				$result['result'] = 'Summary is mandatory';
 				break;
 
-			case self::AS_CONFLICT_DETECTED:
+			case EditPage::AS_CONFLICT_DETECTED:
 				$result['result'] = 'Conflict detected';
 				break;
 
-			case self::AS_SUCCESS_NEW_ARTICLE:
+			case EditPage::AS_SUCCESS_NEW_ARTICLE:
 				$result['result'] 		= 'Success';
 		       	$result['title']		= $editForm->mTitle;
 		       	$result['id']			= $myArticle->getID();
@@ -167,55 +145,55 @@ class ApiEditPage extends ApiBase {
 		       	$rtext['content']		= $editForm->textbox1;
 		       	break;
 
-	 		case self::AS_BLANK_ARTICLE:
+	 		case EditPage::AS_BLANK_ARTICLE:
 			 	$result['result'] = 'Blank article';
 			 	break;
 
-		 	case self::AS_NO_CREATE_PERMISSION;
+		 	case EditPage::AS_NO_CREATE_PERMISSION;
 				$result['result'] = 'No create permission';
 				break;
 
-		 	case self::AS_ARTICLE_WAS_DELETED:
+		 	case EditPage::AS_ARTICLE_WAS_DELETED:
 			 	$result['result'] = 'Article was deleted before';
 			 	break;
 
-			case self::AS_RATE_LIMITED:
+			case EditPage::AS_RATE_LIMITED:
 			 	$result['result'] = 'Rate limit excedeed';
 			 	break;
 
-		 	case self::AS_READ_ONLY_PAGE:
+		 	case EditPage::AS_READ_ONLY_PAGE:
 			 	$result['result'] = 'Read only page';
 			 	break;
 
-		 	case self::AS_READ_ONLY_PAGE_LOGGED:
+		 	case EditPage::AS_READ_ONLY_PAGE_LOGGED:
 				$result['result'] = 'Read only allowed';
 				break;
 
-			case self::AS_READ_ONLY_PAGE_ANON:
+			case EditPage::AS_READ_ONLY_PAGE_ANON:
 				$result['result'] = 'Read only allowed';
 				break;
 
-			case self::AS_CONTENT_TOO_BIG:
+			case EditPage::AS_CONTENT_TOO_BIG:
 				$result['result'] = 'Article too long';
 				break;
 
-			case self::AS_BLOCKED_PAGE_FOR_USER:
+			case EditPage::AS_BLOCKED_PAGE_FOR_USER:
 				$result['result'] = 'Blocked page for the user';
 				break;
 
-			case self::AS_HOOK_ERROR:
+			case EditPage::AS_HOOK_ERROR:
 				$result['result'] = 'Hook error detected';
 				break;
 
-			case self::AS_SPAM_ERROR:
+			case EditPage::AS_SPAM_ERROR:
 				$result['result'] = 'Spam error detected';
 				break;
 
-			case self::AS_FILTERING:
+			case EditPage::AS_FILTERING:
 				$result['result'] = 'Filtering not passed';
 				break;
 
-			case self::AS_HOOK_ERROR_EXPECTED:
+			case EditPage::AS_HOOK_ERROR_EXPECTED:
 				$result['result'] = 'Hook error detected';
 				break;
 
