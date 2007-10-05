@@ -252,14 +252,18 @@ class LqtView {
 	function queryReplace( $repls ) {
 		$vs = $this->request->getValues();
 		$rs = array();
-		foreach ($vs as $k => $v) {
+/*		foreach ($vs as $k => $v) {
 			if ( array_key_exists( $k, $repls ) ) {
 				$rs[$k] = $repls[$k];
 			} else {
 				$rs[$k] = $vs[$k];
 			}
 		}
-		return $this->title->getFullURL(self::queryStringFromArray($rs));
+*/
+		foreach ( $repls as $k => $v ) {
+			$vs[$k] = $v;
+		}
+		return $this->title->getFullURL(self::queryStringFromArray($vs));
 	}
 
 	/*************************************************************
