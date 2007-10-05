@@ -14,12 +14,16 @@
 # dc1 = dataset (context) 1 (we are copying FROM dc1 (so we READ) )
 # dc2 = dataset (context) 2 (we are copying TO dc2 (so we WRITE) ) 
 # 
-# naming conventions:
+# naming conventions (may deviate slightly from current conventions document):
 # Normal: Java Style  
 #	* ClassName->methodName($variableName); /* comment */
 #	* CopyTools::getRow(...); # comment
 # Wrappers around PHP functions or extensions to PHP function set: Same style as the wrapped function
 #	* mysql_insert_assoc(...); # comment
+# Variables that coincide with database columns: Same style as column
+#	* $object_id
+#	* $defined_meaning_id
+#	$ $attribute_mid
 #
 # TODO:
 # * Change to library
@@ -125,17 +129,14 @@ class ObjectCopier {
 	}
 
 	protected function read() {
-		echo "crumb e1<br>\n";
 		$dc1=$this->dc1;
 		$id=$this->id;
 		if (is_null($dc1))
 			throw new Exception("ObjectCopier: provided source dataset(dc1) is null");
 		if (is_null($id))
 			throw new Exception("ObjectCopier: provided identifier is null");
-		echo "crumb e2 --$dc1--,--$id-- <br>\n";
+
 		$this->object=CopyTools::getRow($dc1, "objects", "WHERE object_id=$id");
-		var_dump($this->object);
-		echo "crumb e3<br>\n";
 	}
 
 	/* tries to retrieve the identical UUID from the destination
@@ -147,8 +148,6 @@ class ObjectCopier {
 		$uuid=mysql_escape_string($this->object["UUID"]);
 		if (is_null($uuid))
 			throw new Exception("ObjectCopier: UUID is null");
-		echo "crumb f1 identical() old object :";
-		var_dump($this->object);
 		$dc2=$this->dc2;
 		return CopyTools::getRow($dc2, "objects", "WHERE `UUID`='$uuid'");
 	}
@@ -201,7 +200,10 @@ class ObjectCopier {
 	}
 	
 	/** 
-	 *
+	 * create a valid object key in the objects table, and return it
+	 * @param $dc	the dataset (prefix) to create the object in
+	 * @param $table	which table is the object originally from? (minus dataset prefix)
+	 * @param $uuid  (optional) : override the auto-generated uuid with this one.
 	 */
 	public static function makeObjectId($dc, $table, $uuid=null) {
 		# Sorta Exploiting internals, because -hey- we're internal
@@ -215,10 +217,7 @@ class ObjectCopier {
 	}
 
 	function dup() {
-		echo "crumb d1<br>\n";
-		echo "crumb d2\n";
 		if (is_null($this->id)) {
-			echo "autovivify follows<br>\n";
 			var_dump($this->autovivify);
 			if ($this->autovivify) {
 				$this->create_key();
@@ -230,7 +229,6 @@ class ObjectCopier {
 		$this->read();
 		if (!CopyTools::sane_key_exists("object_id", $this->object)) {
 			if ($this->autovivify) {
-				echo "crumb d2A more autovivify\n";
 				$this->create_key();
 			} else {
 				echo "crumb d2B\n";
@@ -240,10 +238,7 @@ class ObjectCopier {
 			}
 		}
 
-		echo "crumb d3\, comparison:\n";
 		$object2=$this->identical();
-		echo "other db object<br>";
-		var_dump($object2);
 		if (CopyTools::sane_key_exists("object_id",$object2)) {
 			$this->already_there=true;
 			$newid=$object2["object_id"];
@@ -251,7 +246,7 @@ class ObjectCopier {
 			$this->already_there=false;
 			$newid=$this->write();
 		}
-		echo "crumb d4\n";
+		AttributeCopier::copy($object["object_id"], $object2["object_id"]);
 		return $newid;
 	}
 }
@@ -395,8 +390,6 @@ class RelationsCopier extends Copier {
 	}
 
 	function write_single($relation) {
-		$dc1=$this->dc1;
-		$dc2=$this->dc2;
 		$new_dmid=$this->new_dmid;
 
 		if ($this->doObject($relation, "relation_id")) 
@@ -963,6 +956,9 @@ class ClassMembershipCopier extends Copier{
 }
 
 /** copying stuff in the %_class_attributes table actually
+ * TODO: Actually I'm keying on class_mid atm, while I could be using the object_id-s
+ * instead, the same way as the other AttributesCopiers.
+ * I didn't realise this upfront. Changing this would be a nice improvement.
  */
 class ClassAttributesCopier extends Copier {
 	
@@ -1025,6 +1021,70 @@ class ClassAttributesCopier extends Copier {
 
 }
 
+/** copying stuff in the %_class_attributes table 
+ * This version keys on attribute_id (object_id)
+ */
+class ClassAttributesCopier2 extends Copier {
+	
+	protected $object_id;
+	protected $dc1;
+	protected $dc2;
+	protected $tableName="class_attributes";
+
+	/** you saw that right, class_mid, not class_id, there's no such thing :-/
+	 */
+	public function __construct($object_id, $dc1, $dc2) {
+		$this->object_id=$object_id;
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+	}
+
+	/** unchracteristically, returns the new class_mid, rather than object_id
+	 * because in this case, the class_mid is the key characteristic
+	 */
+	public function dup() {
+		if (is_null($this->object_id))
+			throw new Exception ("ClassAttributesCopier2: Can't copy class by object_id: is null!");
+		$attributes=$this->read();
+		return $this->write($attributes);
+	}
+	
+	# refactor candidate?
+	public function read() {
+		$dc1=$this->dc1;
+		$object_id=$this->object_id;
+		return CopyTools::getRows($dc1, $this->tableName, "WHERE object_id=$object_id");
+	}
+
+	#refactor_candidate
+	public function write($attributes) {
+		foreach ($attributes as $attribute) {
+			$latest=$this->write_single($attribute);
+		}
+		return $latest;
+	}
+
+	
+	public function write_single($attribute) {
+		$dc1=$this->dc1;
+		$dc2=$this->dc2;
+		
+		# TODO: Check: Is *this* actually safe?
+		if ($this->doObject($attribute,"object_id")) 
+			return $attribute["object_id"];
+
+		$this->doDM($attribute, "class_mid"); #safe to do here, though not in the first ver.
+		$this->doDM($attribute, "level_mid");
+		$this->doDM($attribute, "attribute_mid");
+
+		CopyTools::dc_insert_assoc($dc2, "class_attributes", $attribute);
+
+		return $attribute["object_id"];
+	}
+
+}
+
+
 
 
 /** abstract superclass for copiers
@@ -1057,7 +1117,7 @@ abstract class Copier {
 
 	/** reads row or rows from table in source dataset (dc1) 
 	 * @return row or array of rows for table in mysql_read_assoc() format */
-	public abstract function read();
+	protected abstract function read();
 
 	/** writes row or array of rows in mysql_read_assoc() format
 	 * @return the unique id for the item we just copied in the destination (dc2) dataset,
@@ -1131,6 +1191,164 @@ abstract class Copier {
 
 	protected function doInsert($row) {
 		CopyTools::dc_insert_assoc($this->dc2, $this->tableName, $row);
+	}
+
+}
+
+
+abstract class AttributeCopier extends Copier {
+
+	protected $src_object_id=null;
+	protected $dst_object_id=null;
+
+	public function __construct($dc1, $dc2, $src_object_id, $dst_object_id){
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+		$this->src_object_id=$src_object_id;
+		$this->dst_object_id=$dst_object_id;
+	}
+
+
+	public static function copy($src_object_id, $dst_object_id) {
+		echo "<h3> crumb: would copy attribs </h3>";
+		if (is_null($src_object_id)) 
+			throw new Exception("AttributeCopier: cannot copy: source object_id=null");
+
+		if (is_null($dst_object_id)) 
+			throw new Exception("AttributeCopier: cannot copy: destination object_id=null");
+		#$optionAttribueCopier=new OptionAttributeCopier($src_object_id, $dst_object_id);
+		#$optionAttributeCopier.dup();
+
+		#$textAttributeCopier=new textAttributeCopier($src_object_id, $dst_object_id);
+		#$textAttributeCopier.dup();
+
+		#$translatedContentCopier=new translatedContentCopier($src_object_id, $dst_object_id);
+		#$translatedContentCopier.dup();
+
+		#$urlAttributeCopier=new URLAttributeCpier($src_object_id, $dst_object_id);
+		#$urlAttributeCopier.dup();
+	}
+		
+	protected function write($values) {
+		foreach ($values as $value) {
+			$latest=write_single($value);
+		}
+		return $latest;
+	}
+
+	protected abstract function write_single($attribute);
+
+	protected function read() {
+		$src_object_id=$this->src_object_id;
+		if (is_null($src_object_id)) 
+			throw new Exception("*AttributeCopier: cannot read: source object_id is null");
+
+		$tableName=$this->tableName;
+		if (is_null($tableName)) 
+			throw new Exception("*AttributeCopier: cannot read: table name is null");
+
+		return CopyTools::getRows($dc1, $tableName, "WHERE object_id=$src_object_id");
+	}
+
+	/** slightly different dup interface yet again. 
+	 *  (I'm still experimenting. TODO: Settle on one for all.)
+	 *  always returns destination object_id of last/arbitrary 
+	 *  item dupped. (which means we can use this particular dup functuon 
+	 *  for single *or* multi copy)
+	 */
+	public function dup() {
+		$attributes=$this->read();
+		return	$this->write($attributes);
+	}
+
+}
+
+
+class OptionAttributeCopier extends AttributeCopier{
+	protected $tableName="option_attribute_values"; 	//Name of the table this class operates on.
+	
+	public function __construct($dc1, $dc2, $src_object_id, $dst_object_id){
+		parent::__construct($dc1, $dc2, $src_object_id, $dst_object_id);
+	}
+
+	/**
+	 * *all attribute_value tables:
+	 * **value_id: unique id in objects table
+	 * **object_id: object we are referring to
+	 * * Unique to option_attribute_values
+	 * ** option_id: reference to the option_attribute_options table
+	 */
+	public function write_single($attribute) {
+
+		if ($this->doObject($attribute, "value_id"))
+			return $attribute["value_id"];
+
+		$attribute["object_id"]=$this->new_object_id;
+
+		$oaocopier=new OptionAttributeOptionsCopier($attribute["option_id"], $dc1, $dc2);
+		$attribute["option_id"]=$oaocopier->dup();
+
+		$this->doInsert($attribute);
+		return $attribute["value_id"];
+	}
+}
+
+/** Yes, there is actually a table called option_attribute_options.
+ * These are the actual *options* that go with a particular option attribute
+ * extends copier, not AttributeCopier, because oa_options are not themselves attributes.
+ *
+ * naming: $oao(s) is/are ObjectAtributeOption(s).
+ */
+class OptionAttributeOptionsCopier extends Copier {
+	protected $option_id;
+	protected $tableName="option_attribute_options"; //Name of the table this class operates on.
+
+	public function __construct($option_id, $dc1, $dc2) {
+		if (is_null($option_id)) 
+			throw new Exception("OptionAttributeOptionsCopier: trying to construct with null option_id. No can do compadre.");
+
+		$this->option_id=$option_id;
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+	}	
+
+	public function dup() {
+		$oaos=read();
+		return write($oaos);
+	}
+	
+	public function read(){
+		return CopyTools::getRows($dc1, "class_membership", "WHERE class_member_mid=$class_member_mid");
+	}
+
+	/**
+	 * TODO This is a refactor-candidate.
+	 */
+	public function write($oaos) {
+		foreach ($oaos as $oao) {
+			$latest=$this->write_single($oao);
+		}
+		return $latest;
+	}
+
+	/**
+	* option_id: unique/ objects reference
+	* attribute_id: reference to class_attributes (we think!)
+	* option_mid: dm for this object. 
+	* language_id: reference to mediawiki languages table
+	*/
+	public function write_single($oao) {
+
+		if ($this->doObject($oao, "option_id"))
+			return $oao["option_id"];
+
+		$cacopier=new ClassAttributesCopier($oao["attribute_id"], $dc1, $dc2);
+		$oao["attribute_id"]=$cacopier->dup();
+
+		$this->doDM($oao, "option_mid");
+		#language_id is mediawiki, not wikidata, so that's ok.
+
+		return $oao["option_id"];
 	}
 
 
