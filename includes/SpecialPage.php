@@ -75,7 +75,6 @@ class SpecialPage
 	
 	/**
 	 * Should the subpage part be removed from titles in executePath()?
-	 * LQT HACK.
 	 **/
 	static public $mStripSubpages = true;
 
@@ -455,7 +454,7 @@ class SpecialPage
 			wfProfileOut( __METHOD__ );
 			return false;
 		} elseif ( !$including ) {
-			$wgTitle = $page->getTitle( SpecialPage::$mStripSubpages ? '' : $par ); # LQT HACK didn't have $par here.
+			$wgTitle = $page->getTitle( SpecialPage::$mStripSubpages ? '' : $par );
 		}
 		$page->including( $including );
 

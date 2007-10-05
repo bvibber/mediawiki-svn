@@ -371,7 +371,6 @@ class MediaWiki {
 
 		wfProfileIn( 'MediaWiki::performAction' );
 
-		// TODO LQT HACK
 		if ( !wfRunHooks('MediaWikiPerformAction', array($output, $article, $title, $user, $request)) ) {
 			wfProfileOut( 'MediaWiki::performAction' );
 			return;

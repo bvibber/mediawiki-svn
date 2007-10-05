@@ -47,8 +47,8 @@ class EditPage {
 	public $editFormTextAfterTools;
 	public $editFormTextBottom;
 
-	public $didSave = false; # LQT HACK.
-	public $suppressIntro = false; # LQT HACK.
+	public $didSave = false;
+	public $suppressIntro = false;
 
 	/**
 	 * @todo document
@@ -595,7 +595,7 @@ class EditPage {
 	 */
 	private function showIntro() {
 		global $wgOut, $wgUser;
-		if ( $this->suppressIntro ) return; # LQT HACK.
+		if ( $this->suppressIntro ) return;
 		if( !$this->showCustomIntro() && !$this->mArticle->getTitle()->exists() ) {
 			if( $wgUser->isLoggedIn() ) {
 				$wgOut->addWikiText( wfMsg( 'newarticletext' ) );
@@ -750,7 +750,7 @@ class EditPage {
 			$isComment=($this->section=='new');
 			$this->mArticle->insertNewArticle( $this->textbox1, $this->summary,
 				$this->minoredit, $this->watchthis, false, $isComment);
-			$this->didSave = true; # LQT HACK.
+			$this->didSave = true;
 
 			wfProfileOut( $fname );
 			return false;
@@ -888,7 +888,7 @@ class EditPage {
 		# update the article here
 		if( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
 			$this->watchthis, '', $sectionanchor ) ) {
-			$this->didSave = true; # LQT HACK. 
+			$this->didSave = true;
 			wfProfileOut( $fname );
 			return false;
 		} else {

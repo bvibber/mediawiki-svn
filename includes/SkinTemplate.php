@@ -765,6 +765,7 @@ class SkinTemplate extends Skin {
 					);
 				}
 			}
+
 			
 			wfRunHooks( 'SkinTemplateTabs', array( &$this , &$content_actions ) )	;
 		} else {

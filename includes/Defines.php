@@ -61,10 +61,6 @@ define('NS_HELP', 12);
 define('NS_HELP_TALK', 13);
 define('NS_CATEGORY', 14);
 define('NS_CATEGORY_TALK', 15);
-define('NS_LQT_THREAD', 16);
-define('NS_LQT_THREAD_TALK', 17);
-define('NS_LQT_SUMMARY', 18);
-define('NS_LQT_SUMMARY_TALK', 19);
 /**#@-*/
 
 /**

@@ -12,6 +12,16 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( -1 );
 }
 
+define('NS_LQT_THREAD', 16);
+define('NS_LQT_THREAD_TALK', 17);
+define('NS_LQT_SUMMARY', 18);
+define('NS_LQT_SUMMARY_TALK', 19);
+
+$wgCanonicalNamespaceNames[NS_LQT_THREAD]		= 'Thread';
+$wgCanonicalNamespaceNames[NS_LQT_THREAD_TALK]	= 'Thread_talk';
+$wgCanonicalNamespaceNames[NS_LQT_SUMMARY]		= 'Summary';
+$wgCanonicalNamespaceNames[NS_LQT_SUMMARY_TALK]	= 'Summary_talk';
+
 require_once('LqtBaseView.php');
 require_once('LqtI18N.php');
 
