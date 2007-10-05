@@ -84,7 +84,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11478) Fix undefined method call in file deletion interface
 * (bug 278) Search results no longer highlight incorrect partial word matches
 * Compatibility with incorrectly detected old-style DJVU mime types
-
+* (bug 11560) Fix broken HTML output from weird link nesting in edit comments.
+  Nested links (as in image caption text) still don't work _right_ but they're
+  less wrong
+* (bug 11561) Don't throw a PHP fatal error when non-existent "revert" action
+  attempted
+* (bug 9718) Remove unnecessary css from main.css causing spacing issues on
+  some browsers.
 
 === API changes in 1.12 ===
 
@@ -113,8 +119,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Bislama (bi) (new)
 * Bengali (bn)
 * Bishnupriya Manipuri (bpy)
-* Catalan (ca)
 * Breton (br)
+* Catalan (ca)
 * Czech (cs)
 * Cassubian (csb)
 * Welsh (cy)
@@ -164,6 +170,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Slovak (sk)
 * Serbian (Cyrillic) (sr-ec)
 * Sundanese (su)
+* Swedish (sv)
 * Tamil (ta)
 * Tetun (tet) (new)
 * Walloon (wa)

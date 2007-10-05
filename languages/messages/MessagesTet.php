@@ -8,24 +8,24 @@
  */
 
 $namespaceNames = array(
-	NS_MEDIA            => 'Media',
-	NS_SPECIAL          => 'Espesiál',
-	NS_MAIN             => '',
-	NS_TALK             => 'Diskusaun',
-	NS_USER             => "Uza-na'in",
-	NS_USER_TALK        => "Diskusaun_Uza-na'in",
+	NS_MEDIA          => 'Media',
+	NS_SPECIAL        => 'Espesiál',
+	NS_MAIN	          => '',
+	NS_TALK	          => 'Diskusaun',
+	NS_USER           => "Uza-na'in",
+	NS_USER_TALK      => "Diskusaun_Uza-na'in",
 	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK     => 'Diskusaun_$1',
-	NS_IMAGE            => 'Imajen',
-	NS_IMAGE_TALK       => 'Diskusaun_Imajen',
-	NS_MEDIAWIKI        => 'MediaWiki',
-	NS_MEDIAWIKI_TALK   => 'Diskusaun_MediaWiki',
-	NS_TEMPLATE         => 'Template',
-	NS_TEMPLATE_TALK    => 'Diskusaun_Template',
-	NS_HELP             => 'Ajuda',
-	NS_HELP_TALK        => 'Diskusaun_Ajuda',
-	NS_CATEGORY         => 'Kategoría',
-	NS_CATEGORY_TALK    => 'Diskusaun_Kategoría'
+	NS_PROJECT_TALK   => 'Diskusaun_$1',
+	NS_IMAGE          => 'Imajen',
+	NS_IMAGE_TALK     => 'Diskusaun_Imajen',
+	NS_MEDIAWIKI      => 'MediaWiki',
+	NS_MEDIAWIKI_TALK => 'Diskusaun_MediaWiki',
+	NS_TEMPLATE       => 'Template',
+	NS_TEMPLATE_TALK  => 'Diskusaun_Template',
+	NS_HELP           => 'Ajuda',
+	NS_HELP_TALK      => 'Diskusaun_Ajuda',
+	NS_CATEGORY       => 'Kategoría',
+	NS_CATEGORY_TALK  => 'Diskusaun_Kategoría',
 );
 
 $specialPageAliases = array(
@@ -37,13 +37,22 @@ $specialPageAliases = array(
 	'Listusers'                 => array( "Lista_uza-na'in" ),
 	'Statistics'                => array( "Estatístika" ),
 	'Randompage'                => array( "Pájina_ruma" ),
+	'Shortpages'                => array( "Pájina_badak" ),
+	'Longpages'                 => array( "Pájina_naruk" ),
+	'Protectedpages'            => array( "Pájina_sira-ne'ebé_proteje_tiha" ),
 	'Allpages'                  => array( "Pájina_hotu" ),
+	'Ipblocklist'               => array( "Lista_ema_sira-ne'ebé_blokeiu_tiha" ),
 	'Specialpages'              => array( "Pájina_espesiál_sira" ),
+	'Whatlinkshere'             => array( "Pájina_sira_ne'ebé_bá_iha_ne'e" ),
+	'Movepage'                  => array( "Book" ),
+	'Categories'                => array( "Kategoría" ),
 	'Version'                   => array( "Versaun" ),
 	'Allmessages'               => array( "Mensajen_hotu" ),
 	'Blockip'                   => array( "Blokeiu" ),
+	'Undelete'                  => array( "Restaurar" ),
 	'Userrights'                => array( "Kuana" ),
 	'Mypage'                    => array( "Ha'u-nia_pájina" ),
+	'Listadmins'                => array( "Lista_administradór" ),
 	'Search'                    => array( "Buka" ),
 );
 
@@ -121,6 +130,7 @@ $messages = array(
 'editthispage'     => "Edita pájina ne'e",
 'delete'           => 'Halakon',
 'deletethispage'   => "Halakon pájina ne'e",
+'undelete_short'   => 'Restaurar {{PLURAL:$1|versaun ida|$1 versaun}}',
 'protect'          => 'Proteje',
 'newpage'          => 'Pájina foun',
 'talkpagelinktext' => 'Diskusaun',
@@ -143,6 +153,7 @@ $messages = array(
 'privacy'       => 'Polítika privasidade nian',
 'sitesupport'   => 'Fó donativu ida',
 
+'badaccess-group0' => "Ó lalika halo ne'e.",
 'badaccess-group1' => "Ba halo ne'e tenke iha lubu $1.",
 
 'versionrequired'     => 'Presiza MediaWiki versaun $1',
@@ -170,12 +181,20 @@ $messages = array(
 
 # Login and logout pages
 'yourname'           => "Naran uza-n'in:",
+'nologinlink'        => "Kria uza-na'in ida",
+'createaccount'      => "Kria uza-na'in",
+'username'           => "Naran uza-na'in:",
+'yourlanguage'       => 'Lian:',
 'loginlanguagelabel' => 'Lian: $1',
+
+# Password reset dialog
+'resetpass_text' => "<!-- Hakerek testu iha ne'e -->",
 
 # Edit pages
 'minoredit'       => "Ne'e osan-rahun",
 'watchthis'       => "Hateke pájina ne'e",
 'anoneditwarning' => 'Ó lá\'os "log-in" iha momentu.',
+'noarticletext'   => "Iha momentu lá'os testu iha pájina ne'e, bele [[Special:Search/{{PAGENAME}}|buka naran pájina nian]] iha pájina seluk ka [{{fullurl:{{FULLPAGENAME}}|action=edit}} edita pájina ne'e].",
 'yourtext'        => 'Ó-nia testu',
 'yourdiff'        => 'Diferensa sira',
 
@@ -241,6 +260,9 @@ $messages = array(
 'unwatch'             => 'La hateke',
 'watchlist-hide-bots' => 'Hamsumik edita "bot" sira',
 'watchlist-hide-own'  => "Hamsumik edita ha'u-nia",
+
+# Undelete
+'undelete' => 'Haree pájina halakon tiha',
 
 # What links here
 'whatlinkshere' => "Artigu sira ne'ebé bá iha ne'e",
