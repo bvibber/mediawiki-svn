@@ -856,8 +856,8 @@ class CopyTools {
 		}
 		
 		global 
-			$extra_debugging;
-		if ($extra_debugging) {
+			$wdExtraDebugging;
+		if ($wdExtraDebugging) {
 			var_dump ($my_array);
 			echo "<pre>$sql</pre>";
 		}

@@ -6,8 +6,9 @@
 
 $wgDefaultGoPrefix='Expression:';
 $wgHooks['BeforePageDisplay'][]='addWikidataHeader';
-$wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail';
-$wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail';
+$wgHooks['GetEditLinkTrail'][]='addWikidataEditLinkTrail'; #TODO merge with modifyTabs
+$wgHooks['GetHistoryLinkTrail'][]='addHistoryLinkTrail'; #TODO merge with modifyTabs
+$wgHooks['SkinTemplateTabs'][]='modifyTabs';
 $wgExtensionFunctions[]='initializeWikidata';
 
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/Wikidata/OmegaWiki/");
@@ -37,10 +38,9 @@ $wgGroupPermissions['wikidata-omega']['editwikidata-uw']=true;
 $wgGroupPermissions['wikidata-copy']['wikidata-copy']=true;
 
 # The permission needed to do ...
-$wgCommunityEditPermission="editwikidata-tt"; # only used for copy for now
 $wgCommunity_dc="uw";
-global $extra_debugging;
-$extra_debugging=true;
+global $wdExtraDebugging;
+$wdExtraDebugging=true;
 
 
 # The site prefix allows us to have multiple sets of customized
@@ -72,10 +72,16 @@ function addWikidataHeader() {
 	return true;
 }
 
-function addWikidataEditLinkTrail(&$trail) {
+function wdIsWikidataNs() {
 	global $wgTitle;
-	$ns=Namespace::get($wgTitle->getNamespace());
-	if($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning') {
+	$ns=Namespace::get($wgTitle->getNamespace());	
+	return
+	($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning' || $ns->getHandlerClass()=='ExpressionPage');
+
+}
+
+function addWikidataEditLinkTrail(&$trail) {
+	if(wdIsWikidataNs()) {
 		$dc=wdGetDatasetContext();
 		$trail="&dataset=$dc";
 	}
@@ -83,12 +89,45 @@ function addWikidataEditLinkTrail(&$trail) {
 }
 
 function addHistoryLinkTrail(&$trail) {
-	global $wgTitle;
-	$ns=Namespace::get($wgTitle->getNamespace());  
-	if($ns->getHandlerClass()=='OmegaWiki' || $ns->getHandlerClass()=='DefinedMeaning') {  
-    	$dc=wdGetDatasetContext();
-    	$trail="&dataset=$dc";
+	if(wdIsWikidataNs()) {
+	    	$dc=wdGetDatasetContext();
+	    	$trail="&dataset=$dc";
   	}
+	return true;
+}
+
+/**
+ * Purpose: Add custom tabs
+ *
+ * When editing in read-only data-set, if you have the copy permission, you can
+ * make a copy into the designated community dataset and edit the data there.
+ * This is accessible through an 'edit copy' tab which is added below.
+ *
+ * @param $skin Skin as passed by MW
+ * @param $tabs as passed by MW
+ */
+function modifyTabs($skin, $content_actions) {
+	global $wgUser, $wgTitle;
+	$dc=wdGetDataSetContext();
+	$ns=Namespace::get($wgTitle->getNamespace());
+	if($ns->getHandlerClass()=='DefinedMeaning') {
+	
+		# Hackishly determine which DMID we're on by looking at the page title component
+		$tt=$wgTitle->getText();
+		$rpos1=strrpos( $tt, '(');
+		$rpos2=strrpos( $tt, ')');
+		$dmid = ($rpos1 && $rpos2) ? substr($tt, $rpos1+1, $rpos2-$rpos1-1) : 0;
+		if($dmid) {
+			$copyTitle=SpecialPage::getTitleFor('Copy');
+			if(wdIsWikidataNs() && !$wgUser->isAllowed('editwikidata-'.$dc) && $wgUser->isAllowed('wikidata-copy')) {
+				$content_actions['edit']=array(
+				'class'=>false, 
+				'text'=>'edit copy', 
+				'href'=>$copyTitle->getLocalUrl("action=copy&dmid=$dmid&dc1=$dc&warn=1")
+			);
+			}
+		}
+	}
 	return true;
 }
 
@@ -219,5 +258,3 @@ function initializeWikidata() {
 
 	return true;
 }
-
-

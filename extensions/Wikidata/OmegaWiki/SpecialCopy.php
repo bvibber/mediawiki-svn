@@ -182,7 +182,7 @@ function wfSpecialCopy() {
 			$dc1=mysql_real_escape_string($dc1_dirty);
 			$dc2=mysql_real_escape_string($dc2_dirty);
 
-			if (!($wgUser->isAllowed($wgCommunityEditPermission)) or $dc2!=$wgCommunity_dc) {
+			if (!($wgUser->isAllowed('wikidata-copy')) or $dc2!=$wgCommunity_dc) {
 				$wgOut->addHTML(wfMsgSc("Permission_denied"));
 				return false; #"houston, we have a problem"
 			}
