@@ -2,9 +2,10 @@
 
 #(c) Joerg Baach, Aaron Schulz, 2007 GPL
 
-global $IP;
-require_once( "$IP/includes/LogPage.php" );
-require_once( "$IP/includes/SpecialLog.php" );
+if ( !defined( 'MEDIAWIKI' ) ) {
+	echo "FlaggedRevs extension\n";
+	exit( 1 );
+}
 
 class Revisionreview extends SpecialPage
 {
@@ -35,13 +36,20 @@ class Revisionreview extends SpecialPage
 		}
 		
 		$this->setHeaders();
+		// Basic patrolling
+		$this->patrolonly = $wgRequest->getBool( 'patrolonly' );
+		$this->rcid = $wgRequest->getIntOrNull( 'rcid' );
+		if( $this->patrolonly && $this->rcid ) {
+			$this->markPatrolled();
+			return;
+		}
+		
 		// Our target page
 		$this->target = $wgRequest->getText( 'target' );
+		$this->page = Title::newFromUrl( $this->target );
 		// Revision ID
 		$this->oldid = $wgRequest->getIntOrNull( 'oldid' );
-		// Must be a valid content page
-		$this->page = Title::newFromUrl( $this->target );
-		if( !$this->target || !$this->oldid || !FlaggedRevs::isReviewable( $this->page ) ) {
+		if( !$this->target || !$this->oldid || !$wgFlaggedRevs->isReviewable( $this->page ) ) {
 			$wgOut->addHTML( wfMsgExt('revreview-main',array('parse')) );
 			return;
 		}
@@ -82,8 +90,8 @@ class Revisionreview extends SpecialPage
 				# Users can't take away a status they can't set
 				$wgOut->permissionRequired( 'badaccess-group0' );
 				return;
-			} else if( !$this->userCan( $tag, $this->dims[$tag] ) ) {
 			// Users cannot review to beyond their rights level
+			} else if( !$this->userCan( $tag, $this->dims[$tag] ) ) {
 				$wgOut->permissionRequired( 'badaccess-group0' );
 				return;
 			}
@@ -126,6 +134,17 @@ class Revisionreview extends SpecialPage
 		return false;
 	}
 	
+	function markPatrolled() {
+		global $wgOut;
+	
+		RecentChange::markPatrolled( $this->rcid );
+		PatrolLog::record( $this->rcid );
+		# Inform the user
+		$wgOut->setPageTitle( wfMsg( 'markedaspatrolled' ) );
+		$wgOut->addWikiText( wfMsgNoTrans( 'markedaspatrolledtext' ) );
+		$wgOut->returnToMain( false, SpecialPage::getTitleFor( 'Recentchanges' ) );
+	}
+	
 	/**
 	 * Show revision review form
 	 */
@@ -163,9 +182,9 @@ class Revisionreview extends SpecialPage
 			}
 		}
 		$hidden = array(
-			wfHidden( 'wpEditToken', $wgUser->editToken() ),
-			wfHidden( 'target', $this->page->getPrefixedText() ),
-			wfHidden( 'oldid', $this->oldid ) );	
+			Xml::hidden( 'wpEditToken', $wgUser->editToken() ),
+			Xml::hidden( 'target', $this->page->getPrefixedText() ),
+			Xml::hidden( 'oldid', $this->oldid ) );	
 		
 		$action = $wgTitle->escapeLocalUrl( 'action=submit' );
 		$form = "<form name='revisionreview' action='$action' method='post'>";
@@ -194,14 +213,16 @@ class Revisionreview extends SpecialPage
 		// Add box to add live notes to a flagged revision
 		if( $wgFlaggedRevComments && $wgUser->isAllowed( 'validate' ) ) {
 			$form .= "<fieldset><legend>" . wfMsgHtml( 'revreview-notes' ) . "</legend>" .
-			"<textarea tabindex='1' name='wpNotes' id='wpNotes' rows='3' cols='80' style='width:100%'>$this->notes</textarea>" .	
+			"<textarea tabindex='1' name='wpNotes' id='wpNotes' rows='3' cols='80' style='width:100%'>" .
+			htmlspecialchars( $this->notes ) .
+			"</textarea>" .	
 			"</fieldset>";
 		}
        	// Not much to say unless you are a validator
 		if( $wgUser->isAllowed( 'validate' ) )
-			$form .= '<p>'.wfInputLabel( wfMsgHtml( 'revreview-log' ), 'wpReason', 'wpReason', 60 ).'</p>';
+			$form .= '<p>'.Xml::inputLabel( wfMsg( 'revreview-log' ), 'wpReason', 'wpReason', 60 ).'</p>';
 		
-		$form .= '<p>'.wfSubmitButton( wfMsgHtml( 'revreview-submit' ) ).'</p>';
+		$form .= '<p>'.Xml::submitButton( wfMsg( 'revreview-submit' ) ).'</p>';
 		
 		foreach( $hidden as $item ) {
 			$form .= $item;
@@ -216,7 +237,7 @@ class Revisionreview extends SpecialPage
 	
 	/**
 	 * @param Revision $rev
-	 * @returns string
+	 * @return string
 	 */
 	function historyLine( $rev ) {
 		global $wgContLang;
@@ -232,10 +253,9 @@ class Revisionreview extends SpecialPage
 	}
 	
 	function submit( $request ) {
-		global $wgOut, $wgUser;
-		
-		$approved = false;
+		global $wgOut, $wgUser, $wgFlaggedRevs, $wgFlaggedRevTags;
 		# If all values are set to zero, this has been unapproved
+		$approved = empty($wgFlaggedRevTags);
 		foreach( $this->dims as $quality => $value ) {
 			if( $value ) {
 				$approved = true;
@@ -251,15 +271,16 @@ class Revisionreview extends SpecialPage
 				return;
 			}
 		} else {
-			$frev = FlaggedRevs::getFlaggedRev( $this->oldid );
+			$frev = $wgFlaggedRevs->getFlaggedRev( $this->page, $this->oldid );
 			// If we can't find this flagged rev, return to page???
 			if( is_null($frev) ) {
-				$wgOut->redirect( $this->page->escapeLocalUrl() );
+				$wgOut->redirect( $this->page->getFullUrl() );
 				return;
 			}
 		}
 		
-		$success = $approved ? $this->approveRevision( $rev, $this->notes ) : $this->unapproveRevision( $frev );
+		$success = $approved ? 
+			$this->approveRevision( $rev, $this->notes ) : $this->unapproveRevision( $frev );
 		// Return to our page			
 		if( $success ) {
 			if( $request->getCheck( 'wpWatchthis' ) ) {
@@ -267,7 +288,7 @@ class Revisionreview extends SpecialPage
 			} else {
 				$wgUser->removeWatch( $this->page );
 			}
-        	$wgOut->redirect( $this->page->escapeLocalUrl() );
+        	$wgOut->redirect( $this->page->getFullUrl() );
 		} else {
 			$wgOut->showErrorPage( 'internalerror', 'revreview-changed' );
 		}
@@ -278,7 +299,7 @@ class Revisionreview extends SpecialPage
 	 * Adds or updates the flagged revision table for this page/id set
 	 */
 	function approveRevision( $rev=NULL, $notes='' ) {
-		global $wgUser, $wgFlaggedRevsWatch, $wgParser;
+		global $wgUser, $wgFlaggedRevsWatch, $wgParser, $wgFlaggedRevs;
 		// Skip null edits
 		if( is_null($rev) ) 
 			return false;
@@ -286,8 +307,8 @@ class Revisionreview extends SpecialPage
 		$title = $rev->getTitle();
 		
 		$quality = 0;
-		if( FlaggedRevs::isQuality($this->dims) ) {
-			$quality = FlaggedRevs::isPristine($this->dims) ? 2 : 1;
+		if( $wgFlaggedRevs->isQuality($this->dims) ) {
+			$quality = $wgFlaggedRevs->isPristine($this->dims) ? 2 : 1;
 		}
 		// Our flags
 		$flagset = array();
@@ -361,13 +382,13 @@ class Revisionreview extends SpecialPage
 				__METHOD__ );
 		}
         // Get the page text and resolve all templates
-        list($fulltext,$complete) = FlaggedRevs::expandText( $rev->getText(), $rev->getTitle(), $rev->getId() );
+        list($fulltext,$complete) = $wgFlaggedRevs->expandText( $rev->getText(), $rev->getTitle(), $rev->getId() );
         if( !$complete ) {
         	$dbw->rollback(); // All versions must be specified, 0 for none
         	return false;
         }
         # Compress $fulltext, passed by reference
-        $textFlags = FlaggedRevs::compressText( $fulltext );
+        $textFlags = $wgFlaggedRevs->compressText( $fulltext );
 		// Our review entry
  		$revset = array(
  			'fr_rev_id'    => $rev->getId(),
@@ -381,13 +402,13 @@ class Revisionreview extends SpecialPage
 			'fr_flags'     => $textFlags
 		);
 		// Update flagged revisions table
-		$dbw->replace( 'flaggedrevs', array( array('fr_rev_id','fr_namespace','fr_title') ), $revset, __METHOD__ );
+		$dbw->replace( 'flaggedrevs', array( array('fr_rev_id') ), $revset, __METHOD__ );
 		// Set all of our flags
 		$dbw->replace( 'flaggedrevtags', array( array('frt_rev_id','frt_dimension') ), $flagset, __METHOD__ );
 		// Mark as patrolled
-		$dbw->update( 'recentchanges', 
-			array( 'rc_patrolled' => 1 ), 
-			array( 'rc_this_oldid' => $rev->getId() ), 
+		$dbw->update( 'recentchanges',
+			array( 'rc_patrolled' => 1 ),
+			array( 'rc_this_oldid' => $rev->getId() ),
 			__METHOD__ 
 		);
 		$dbw->commit();
@@ -397,7 +418,7 @@ class Revisionreview extends SpecialPage
 		
 		$article = new Article( $this->page );
 		// Update the links tables as the stable version may now be the default page...
-		$parserCache =& ParserCache::singleton();
+		$parserCache = ParserCache::singleton();
 		$poutput = $parserCache->get( $article, $wgUser );
 		if( $poutput==false ) {
 			$text = $article->getContent();
@@ -445,7 +466,7 @@ class Revisionreview extends SpecialPage
 		$article = new Article( $this->page );
 		// Update the links tables as a new stable version
 		// may now be the default page.
-		$parserCache =& ParserCache::singleton();
+		$parserCache = ParserCache::singleton();
 		$poutput = $parserCache->get( $article, $wgUser );
 		if( $poutput==false ) {
 			$text = $article->getContent();
@@ -473,17 +494,16 @@ class Revisionreview extends SpecialPage
 	 * @param string $comment
 	 * @param int $revid
 	 * @param bool $approve
-	 * @param bool $RC, add to recentchanges
+	 * @param bool $RC, add to recentchanges (kind of spammy)
 	 */	
-	public static function updateLog( $title, $dimensions, $comment, $oldid, $approve, $RC=true ) {
-		// Lets NOT spam RC, set $RC to false
+	public static function updateLog( $title, $dimensions, $comment, $oldid, $approve, $RC=false ) {
 		$log = new LogPage( 'review', $RC );
 		// ID, accuracy, depth, style
 		$ratings = array();
 		foreach( $dimensions as $quality => $level ) {
 			$ratings[] = wfMsg( "revreview-$quality" ) . ": " . wfMsg("revreview-$quality-$level");
 		}
-		$rating = ($approve) ? ' [' . implode(', ',$ratings). ']' : '';
+		$rating = ($approve && !empty($ratings) ) ? ' [' . implode(', ',$ratings). ']' : '';
 		// Append comment with action
 		// FIXME: do this better
 		$action = wfMsgExt('review-logaction', array('parsemag'), $oldid );
@@ -511,79 +531,96 @@ class Stableversions extends SpecialPage
         global $wgRequest, $wgUser;
 
 		$this->setHeaders();
-		// Our target page
-		$this->page = $wgRequest->getText( 'page' );
-		// Revision ID
-		$this->oldid = $wgRequest->getIntOrNull( 'oldid' );
-		
 		$this->skin = $wgUser->getSkin();
+		# Our target page
+		$this->target = $wgRequest->getText( 'page' );
+		$this->page = Title::newFromUrl( $this->target );
+		# Revision ID
+		$this->oldid = $wgRequest->getIntOrNull( 'oldid' );
+		# We need a page...
+		if( is_null($this->page) ) {
+			$this->showForm( $wgRequest );
+			return;
+		}
 		
 		if( $this->oldid ) {
 			$this->showStableRevision( $wgRequest );
-		} else if( $this->page ) {
-			$this->showStableList( $wgRequest );
 		} else {
 			$this->showForm( $wgRequest );
+			$this->showStableList( $wgRequest );
 		}
 	}
 	
 	function showForm( $wgRequest ) {
 		global $wgOut, $wgTitle, $wgScript;
 	
-		$encPage = $this->page;
-		$encId = $this->oldid;
+		$pageName = str_replace( '_', ' ', $this->target );
 		
-		$form = "<form name='stableversions' action='$wgScript' method='get'>";
+		$form = Xml::openElement( 'form',
+			array( 'name' => 'stableversions', 'action' => $wgScript, 'method' => 'get' ) );
 		$form .= "<fieldset><legend>".wfMsg('stableversions-leg1')."</legend>";
 		$form .= "<table><tr>";
 		$form .= "<td>".Xml::hidden( 'title', $wgTitle->getPrefixedText() )."</td>";
-		$form .= "<td>".wfMsgHtml("stableversions-page").":</td>";
-		$form .= "<td>".Xml::input('page', 50, $encPage, array( 'id' => 'page' ) )."</td>";
-		$form .= "<td>".wfSubmitButton( wfMsgHtml( 'go' ) )."</td>";
+		$form .= "<td>".wfMsgHtml("stableversions-page")."</td>";
+		$form .= "<td>".Xml::input('page', 40, $pageName, array( 'id' => 'page' ) )."</td>";
+		$form .= "<td>".Xml::submitButton( wfMsg( 'go' ) )."</td>";
 		$form .= "</tr></table>";
 		$form .= "</fieldset></form>\n";
-		
-		$form .= "<form name='stableversion' action='$wgScript' method='get'>";
-		$form .= "<fieldset><legend>".wfMsg('stableversions-leg2')."</legend>";
-		$form .= "<table><tr>";
-		$form .= "<td>".Xml::hidden( 'title', $wgTitle->getPrefixedDBkey() )."</td>";
-		$form .= "<td>".wfMsgHtml("stableversions-rev").":</td>";
-		$form .= "<td>".Xml::input('oldid', 15, $encId, array( 'id' => 'oldid' ) )."</td>";
-		$form .= "<td>".wfSubmitButton( wfMsgHtml( 'go' ) )."</td>";
-		$form .= "</tr></table>";
-		$form .= "</fieldset></form>";
 		
 		$wgOut->addHTML( $form );
 	}
 	
+	function showStableList() {
+		global $wgOut, $wgUser, $wgLang, $wgFlaggedRevs;
+		// Must be a content page
+		if( !$wgFlaggedRevs->isReviewable( $this->page ) ) {
+			$wgOut->addHTML( wfMsgExt('stableversions-none', array('parse'), 
+				$this->page->getPrefixedText() ) );
+			return;
+		}
+		$pager = new StableRevisionsPager( $this, array(), $this->page->getNamespace(), $this->page->getDBkey() );	
+		if( $pager->getNumRows() ) {
+			$wgOut->addHTML( wfMsgExt('stableversions-list', array('parse'), 
+				$this->page->getPrefixedText() ) );
+			$wgOut->addHTML( $pager->getNavigationBar() );
+			$wgOut->addHTML( "<ul>" . $pager->getBody() . "</ul>" );
+			$wgOut->addHTML( $pager->getNavigationBar() );
+		} else {
+			$wgOut->addHTML( wfMsgExt('stableversions-none', array('parse'), 
+				$this->page->getPrefixedText() ) );
+		}
+	}
+	
 	function showStableRevision( $frev ) {
-		global $wgParser, $wgLang, $wgUser, $wgOut, $wgFlaggedRevs;
+		global $wgParser, $wgLang, $wgUser, $wgOut, $wgFlaggedRevs, $wgFlaggedArticle;
 		// Get the revision
-		$frev = FlaggedRevs::getFlaggedRev( $this->oldid );
+		$frev = $wgFlaggedRevs->getFlaggedRev( $this->page, $this->oldid, true );
 		// Revision must exists
 		if( is_null($frev) ) {
 			$wgOut->showErrorPage( 'notargettitle', 'revnotfoundtext' );
 			return;
 		}
-		$page = Title::makeTitle( $frev->fr_namespace, $frev->fr_title );
-		
-		$wgOut->setPagetitle( $page->getPrefixedText() );
 		// Get flags and date
 		$flags = $wgFlaggedRevs->getFlagsForRevision( $frev->fr_rev_id );
 		$time = $wgLang->timeanddate( wfTimestamp(TS_MW, $frev->fr_timestamp), true );
        	// We will be looking at the reviewed revision...
-       	$tag = wfMsgExt('revreview-static', array('parseinline'), urlencode($page->getPrefixedText()), $time, $page->getPrefixedText());
-		$tag .= ' <a id="mwrevisiontoggle" style="display:none;" href="javascript:toggleRevRatings()">' . wfMsg('revreview-toggle') . '</a>';
-			$tag .= '<span id="mwrevisionratings" style="display:block;">' . 
-				wfMsg('revreview-oldrating') . $wgFlaggedRevs->addTagRatings( $flags ) . 
-				'</span>';
+       	$tag = wfMsgExt( 'revreview-static', array('parseinline'), 
+		   urlencode($this->page->getPrefixedText()), $time, $this->page->getPrefixedText() ) .
+			' <a id="mwrevisiontoggle" style="display:none;" href="javascript:toggleRevRatings()">' .
+			wfMsg('revreview-toggle') . '</a>' .
+			'<span id="mwrevisionratings" style="display:block;">' .
+			wfMsg('revreview-oldrating') . $wgFlaggedArticle->addTagRatings( $flags ) .
+			'</span>';
 		// Parse the text...
-		$text = $wgFlaggedRevs->getFlaggedRevText( $this->oldid );
-		$article = new Article( $page );
+		$article = new Article( $this->page );
+		
+		$text = $wgFlaggedRevs->uncompressText( $frev->fr_text, $frev->fr_flags );
+		
        	$parserOutput = $wgFlaggedRevs->parseStableText( $article, $text, $this->oldid );
 		$notes = $wgFlaggedRevs->ReviewNotes( $frev );
 		// Set the new body HTML, place a tag on top
-		$wgOut->addHTML('<div id="mwrevisiontag" class="flaggedrevs_notice plainlinks">'.$tag.'</div>' . $parserOutput->getText() . $notes);
+		$wgOut->addHTML('<div id="mwrevisiontag" class="flaggedrevs_notice plainlinks">' .
+			$tag . '</div>' . $parserOutput->getText() . $notes);
        	// Show stable categories and interwiki links only
        	$wgOut->mCategoryLinks = array();
        	$wgOut->addCategoryLinks( $parserOutput->getCategories() );
@@ -591,41 +628,20 @@ class Stableversions extends SpecialPage
        	$wgOut->addLanguageLinks( $parserOutput->getLanguageLinks() );
 	}
 	
-	function showStableList() {
-		global $wgOut, $wgUser, $wgLang;
-		
-		// Must be a valid page/Id
-		$page = Title::newFromUrl( $this->page );
-		if( is_null($page) || !FlaggedRevs::isReviewable( $page ) ) {
-			$wgOut->showErrorPage('notargettitle', 'allpagesbadtitle' );
-			return;
-		}
-		$article = new Article( $page );
-		if( !$article ) {
-			$wgOut->showErrorPage('notargettitle', 'allpagesbadtitle' );
-			return;
-		}
-		$pager = new StableRevisionsPager( $this, array(), $page->getNamespace(), $page->getDBkey() );	
-		if( $pager->getNumRows() ) {
-			$wgOut->addHTML( wfMsgExt('stableversions-list', array('parse'), $page->getPrefixedText() ) );
-			$wgOut->addHTML( $pager->getNavigationBar() );
-			$wgOut->addHTML( "<ul>" . $pager->getBody() . "</ul>" );
-			$wgOut->addHTML( $pager->getNavigationBar() );
-		} else {
-			$wgOut->addHTML( wfMsgExt('stableversions-none', array('parse'), $page->getPrefixedText() ) );
-		}
-	}
-	
 	function formatRow( $row ) {
 		global $wgLang, $wgUser;
 	
 		$SV = SpecialPage::getTitleFor( 'Stableversions' );
+		
 		$time = $wgLang->timeanddate( wfTimestamp(TS_MW, $row->rev_timestamp), true );
 		$ftime = $wgLang->timeanddate( wfTimestamp(TS_MW, $row->fr_timestamp), true );
-		$review = wfMsg( 'stableversions-review', $ftime );
+		$review = wfMsg( 'stableversions-review', $ftime, 
+			$this->skin->userLink( $row->fr_user, $row->user_name ) .
+			' ' . $this->skin->userToolLinks( $row->fr_user, $row->user_name ) );
 		
 		$lev = ( $row->fr_quality >=1 ) ? wfMsg('hist-quality') : wfMsg('hist-stable');
-		$link = $this->skin->makeKnownLinkObj( $SV, $time, 'oldid='.$row->fr_rev_id );
+		$link = $this->skin->makeKnownLinkObj( $SV, $time, 
+			'page='.urlencode( $this->page->getPrefixedText() ) . '&oldid='.$row->fr_rev_id );
 		
 		return '<li>'.$link.' ('.$review.') <strong>'.$lev.'</strong></li>';	
 	}
@@ -655,10 +671,12 @@ class StableRevisionsPager extends ReverseChronologicalPager {
 		$conds["fr_namespace"] = $this->namespace;
 		$conds["fr_title"] = $this->title;
 		$conds[] = "fr_rev_id = rev_id";
-		$conds["rev_deleted"] = 0;
+		$conds[] = "fr_user = user_id";
+		$conds[] = 'rev_deleted & '.Revision::DELETED_TEXT.' = 0';
 		return array(
-			'tables' => array('flaggedrevs','revision'),
-			'fields' => 'fr_rev_id,fr_timestamp,rev_timestamp,fr_quality',
+			'tables' => array('flaggedrevs','revision','user'),
+			'fields' => 'fr_rev_id,fr_timestamp,rev_timestamp,fr_quality,
+				fr_user,user_name',
 			'conds' => $conds
 		);
 	}
@@ -697,12 +715,12 @@ class Unreviewedpages extends SpecialPage
 		$wgOut->addHTML( "<form action=\"$action\" method=\"get\">\n" .
 			'<fieldset><legend>' . wfMsg('viewunreviewed') . '</legend>' .
 			Xml::hidden( 'title', $wgTitle->getPrefixedText() ) .
-			'<p>' . Xml::label( wfMsgHtml("namespace"), 'namespace' ) . ' ' .
+			'<p>' . Xml::label( wfMsg("namespace"), 'namespace' ) . ' ' .
 			$this->getNamespaceMenu( $namespace ) .
-			'&nbsp;' . Xml::label( wfMsgHtml("unreviewed-category"), 'category' ) . 
+			'&nbsp;' . Xml::label( wfMsg("unreviewed-category"), 'category' ) . 
 			' ' . Xml::input( 'category', 30, $category, array('id' => 'category') ) . '</p>' .
 			'<p>' . Xml::check( 'showoutdated', $showoutdated, array('id' => 'showoutdated') ) . 
-			' ' . Xml::label( wfMsgHtml("unreviewed-outdated"), 'showoutdated' ) . "</p>\n" .
+			' ' . Xml::label( wfMsg("unreviewed-outdated"), 'showoutdated' ) . "</p>\n" .
 			Xml::submitButton( wfMsg( 'allpagessubmit' ) ) . "\n" .
 			"</fieldset></form>");
 		
@@ -820,7 +838,6 @@ class UnreviewedPagesPage extends PageQueryPage {
 	function formatResult( $skin, $result ) {
 		global $wgLang;
 		
-		$fname = 'UnreviewedPagesPage::formatResult';
 		$title = Title::makeTitle( $result->ns, $result->title );
 		$link = $skin->makeKnownLinkObj( $title );
 		$stxt = $review = '';
@@ -835,5 +852,204 @@ class UnreviewedPagesPage extends PageQueryPage {
 				"diff=cur&oldid={$result->page_ext_stable}&editreview=1" ).')';
 
 		return( "{$link} {$stxt} {$review}" );
+	}
+}
+
+class Stabilization extends SpecialPage
+{
+
+    function Stabilization() {
+        SpecialPage::SpecialPage('Stabilization','stablesettings');
+    }
+
+    function execute( $par ) {
+        global $wgRequest, $wgUser, $wgOut, $wgFlaggedRevs;
+
+		$confirm = $wgRequest->wasPosted() &&
+			$wgUser->matchEditToken( $wgRequest->getVal( 'wpEditToken' ) );
+		
+		$this->isAllowed = $wgUser->isAllowed( 'stablesettings' );
+		# Let anyone view, but not submit...
+		if( $wgRequest->wasPosted() ) {
+			if( $wgUser->isBlocked( !$confirm ) ) {
+				$wgOut->blockedPage();
+				return;
+			} else if( !$this->isAllowed ) {
+				$wgOut->permissionRequired( 'stablesettings' );
+				return;
+			} else if( wfReadOnly() ) {
+				$wgOut->readOnlyPage();
+				return;
+			}
+		}
+
+		$this->setHeaders();
+		$this->skin = $wgUser->getSkin();
+		# Our target page
+		$this->target = $wgRequest->getText( 'page' );
+		$this->page = Title::newFromUrl( $this->target );
+		# Params
+		$this->select = $wgRequest->getInt( 'select' );
+		$this->override = intval( $wgRequest->getBool( 'override' ) );
+		$this->comment = $wgRequest->getVal( 'wpReason' );
+		
+		$isValid = true;
+		# Only 0 or 1
+		if( $this->select && ($this->select !==0 && $this->select !==1) ) {
+			$isValid = false;
+		}
+		
+		# We need a page...
+		if( is_null($this->page) ) {
+			$isValid = false;
+		} else if( !$this->page->exists() ) {
+			$wgOut->addHTML( wfMsgExt( 'stabilization-notexists', array('parseinline'),
+				$this->page->getPrefixedText() ) );
+			$isValid = false;
+		} else if( !$wgFlaggedRevs->isReviewable( $this->page ) ) {
+			$wgOut->addHTML( wfMsgExt( 'stabilization-notcontent', array('parseinline'),
+				$this->page->getPrefixedText() ) );
+			$isValid = false;
+		}
+		
+		if( !$isValid ) {
+			$this->showForm();
+			return;
+		}
+		
+		if( $confirm ) {
+			$this->submit();
+		} else {
+			$this->showSettings();
+		}
+	}
+	
+	function showForm() {
+		global $wgOut, $wgTitle, $wgScript;
+	
+		$pageName = str_replace( '_', ' ', $this->target );
+		$form = Xml::openElement( 'form', array( 'name' => 'stablization', 'action' => $wgScript, 'method' => 'get' ) );
+		$form .= "<fieldset><legend>".wfMsg('stabilization-leg')."</legend>";
+		$form .= "<table><tr>";
+		$form .= "<td>".Xml::hidden( 'title', $wgTitle->getPrefixedText() )."</td>";
+		$form .= "<td>".wfMsgHtml("stabilization-page")."</td>";
+		$form .= "<td>".Xml::input('page', 40, $pageName, array( 'id' => 'page' ) )."</td>";
+		$form .= "<td>".Xml::submitButton( wfMsg( 'go' ) )."</td>";
+		$form .= "</tr></table>";
+		$form .= "</fieldset></form>\n";
+		
+		$wgOut->addHTML( $form );
+	}
+	
+	function showSettings() {
+		global $wgOut, $wgScript, $wgTitle, $wgUser, $wgFlaggedRevs;
+		// Must be a content page
+		if( !$wgFlaggedRevs->isReviewable( $this->page ) ) {
+			$wgOut->addHTML( wfMsgExt('stableversions-none', array('parse'), 
+				$this->page->getPrefixedText() ) );
+			return;
+		}
+		// Get visiblity settings...
+		$config = $wgFlaggedRevs->getVisibilitySettings( $this->page, true );
+		$selectSetting = $this->select ? $this->select : $config['select'];
+		$overrideSetting = $this->override ? $this->override : $config['override'];
+		
+		if( !$this->isAllowed ) {
+			$form = '<p>'.wfMsgExt( 'stabilization-perm', array('parse'), $this->page->getPrefixedText() ).'</p>';
+			$off = array('disabled' => 'true');
+		} else {
+			$form = wfMsgExt( 'stabilization-text', array('parse'), $this->page->getPrefixedText() );
+			$off = array();
+		}
+		
+		$form .= Xml::openElement( 'form',
+			array( 'name' => 'stabilization', 'action' => $wgScript, 'method' => 'post' ) );
+		$form .= "<fieldset><legend>".wfMsg('stabilization-select')."</legend>";
+		$form .= "<table><tr>";
+		
+		$form .= "<td>".Xml::radio( 'select', 0, (0==$selectSetting), array('id' => 'select1') + $off )."</td>";
+		$form .= "<td>".Xml::label( wfMsg('stabilization-select1'), 'select1' )."</td>";
+		$form .= "</tr><tr>";
+		$form .= "<td>".Xml::radio( 'select', 1, (1==$selectSetting), array('id' => 'select2') + $off )."</td>";
+		$form .= "<td>".Xml::label( wfMsg('stabilization-select2'), 'select2' )."</td>";
+		$form .= "</tr></table></fieldset>";
+		
+		$form .= "<fieldset><legend>".wfMsg('stabilization-def')."</legend>";
+		$form .= "<table><tr>";
+		$form .= "<td>".Xml::radio( 'override', 1, (1==$overrideSetting), array('id' => 'default1') + $off)."</td>";
+		$form .= "<td>".Xml::label( wfMsg('stabilization-def1'), 'default1' )."</td>";
+		$form .= "</tr><tr>";
+		$form .= "<td>".Xml::radio( 'override', 0, (0==$overrideSetting), array('id' => 'default2') + $off)."</td>";
+		$form .= "<td>".Xml::label( wfMsg('stabilization-def2'), 'default2' )."</td>";
+		$form .= "</tr></table></fieldset>";
+		if( $this->isAllowed ) {
+			$form .= Xml::hidden('title', $wgTitle->getPrefixedText() );
+			$form .= Xml::hidden('page', $this->page->getPrefixedText() );
+			$form .= Xml::hidden( 'wpEditToken', $wgUser->editToken() );
+		
+			$form .= '<p>'.Xml::inputLabel( wfMsg( 'revreview-log' ), 'wpReason', 'wpReason', 60 ).'</p>';
+			$form .= Xml::submitButton( wfMsg( 'stabilization-submit' ) );
+		}
+		$form .= '</form>';
+		
+		$wgOut->addHTML( $form );
+		
+		$wgOut->addHtml( Xml::element( 'h2', NULL, htmlspecialchars( LogPage::logName( 'stable' ) ) ) );
+		$logViewer = new LogViewer( 
+			new LogReader( new FauxRequest( 
+				array( 'page' => $this->page->getPrefixedText(), 'type' => 'stable' ) ) ) );
+		$logViewer->showList( $wgOut );
+	}
+	
+	function submit() {
+		global $wgOut, $wgFlaggedRevs, $wgUser, $wgParser;
+		
+		$dbw = wfGetDB( DB_MASTER );
+		# Get current config
+		$row = $dbw->selectRow( 'flaggedpages', 
+			array( 'fp_select', 'fp_override' ),
+			array( 'fp_page_id' => $this->page->getArticleID() ),
+			__METHOD__ );
+		# Fire away!
+		$success = $dbw->replace( 'flaggedpages',
+			array( 'fp_page_id' ),
+			array( 'fp_page_id' => $this->page->getArticleID(),
+				'fp_select' => $this->select,
+				'fp_override' => $this->override ),
+			__METHOD__ );
+		# Log if changed
+		if( !$row || $row->fp_select != $this->select || $row->fp_override != $this->override ) {
+			$log = new LogPage( 'stable' );
+			// ID, accuracy, depth, style
+			$set = array();
+			$set[] = wfMsg( "stabilization-sel-short" ) . ": " . 
+				wfMsg("stabilization-sel-short-{$this->select}");
+			$set[] = wfMsg( "stabilization-def-short" ) . ": " . 
+				wfMsg("stabilization-def-short-{$this->override}");
+			
+			$settings = ' [' . implode(', ',$set). ']';
+			// Append comment with action
+			// FIXME: do this better
+			$comment = ($this->comment) ? "{$this->comment}$settings" : "$settings";
+			
+			$log->addEntry( 'config', $this->page, $comment );
+		}
+		
+    	$article = new Article( $this->page );
+		# Update the links tables as the stable version may now be the default page...
+		$parserCache = ParserCache::singleton();
+		$poutput = $parserCache->get( $article, $wgUser );
+		if( $poutput==false ) {
+			$text = $article->getContent();
+			$poutput = $wgParser->parse($text, $article->mTitle, ParserOptions::newFromUser($wgUser));
+			# Might as well save the cache while we're at it
+			$parserCache->save( $poutput, $article, $wgUser );
+		}
+		$u = new LinksUpdate( $article->mTitle, $poutput );
+		$u->doUpdate(); // this will trigger our hook to add stable links too...
+		
+		# Success message
+		$wgOut->addHTML( wfMsgExt('stabilization-success',array('parse'),
+			$this->page->getPrefixedText() ) );
 	}
 }

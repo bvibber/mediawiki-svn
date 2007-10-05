@@ -19,11 +19,25 @@ CREATE TABLE /*$wgDBprefix*/flaggedrevs (
   fr_text mediumblob NOT NULL default '',
   -- Comma-separated list of flags:
   -- gzip: text is compressed with PHP's gzdeflate() function.
+  -- utf8: in UTF-8
   fr_flags tinyblob NOT NULL,
   
   PRIMARY KEY (fr_namespace,fr_title,fr_rev_id),
-  UNIQUE KEY (fr_rev_id),
-  INDEX (fr_namespace,fr_title,fr_quality,fr_rev_id)
+  UNIQUE INDEX (fr_rev_id),
+  INDEX namespace_title_qal_rev (fr_namespace,fr_title,fr_quality,fr_rev_id)
+) TYPE=InnoDB;
+
+-- This stores settings on how to select the default revision
+CREATE TABLE /*$wgDBprefix*/flaggedpages (
+  fp_page_id int(10) NOT NULL,
+  -- Integers to represent what to show by default:
+  -- 0: quality -> stable -> current
+  -- 1: latest reviewed
+  fp_select int(10) NOT NULL,
+  -- Override the page?
+  fp_override bool NOT NULL,
+  
+  PRIMARY KEY (fp_page_id)
 ) TYPE=InnoDB;
 
 -- This stores all of our tag data
@@ -33,8 +47,7 @@ CREATE TABLE /*$wgDBprefix*/flaggedrevtags (
   frt_dimension varchar(255) NOT NULL,
   frt_value tinyint(2) NOT NULL,
   
-  PRIMARY KEY (frt_rev_id,frt_dimension),
-  INDEX (frt_rev_id,frt_dimension,frt_value)
+  PRIMARY KEY (frt_rev_id,frt_dimension)
 ) TYPE=InnoDB;
 
 -- This stores all of our transclusion revision pointers
@@ -46,8 +59,7 @@ CREATE TABLE /*$wgDBprefix*/flaggedtemplates (
   -- Revisions ID used when reviewed
   ft_tmp_rev_id int(10) NULL,
   
-  PRIMARY KEY (ft_rev_id,ft_namespace,ft_title),
-  INDEX (ft_rev_id,ft_namespace,ft_title,ft_tmp_rev_id)
+  PRIMARY KEY (ft_rev_id,ft_namespace,ft_title)
 ) TYPE=InnoDB;
 
 -- This stores all of our image revision pointers
@@ -60,9 +72,7 @@ CREATE TABLE /*$wgDBprefix*/flaggedimages (
   -- Statistically unique SHA-1 key
   fi_img_sha1 varbinary(32) NOT NULL default '',
   
-  PRIMARY KEY (fi_rev_id,fi_name),
-  INDEX (fi_rev_id,fi_name,fi_img_timestamp),
-  INDEX (fi_rev_id,fi_name,fi_img_sha1)
+  PRIMARY KEY (fi_rev_id,fi_name)
 ) TYPE=InnoDB;
 
 -- Add page_ext_stable column, similar to page_latest
