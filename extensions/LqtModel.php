@@ -288,7 +288,7 @@ class Thread {
 		return Threads::where($where);
 	}
 	
-	private function bumpRevisionsOnAncestors($change_type, $change_object, $change_reason) {
+	private function bumpRevisionsOnAncestors($change_type, $change_object, $change_reason, $timestamp) {
 		global $wgUser; // TODO global.
 		
 		$this->revisionNumber += 1;	
@@ -299,12 +299,16 @@ class Thread {
 		$this->changeUserText = $wgUser->getName();
 		
 		if( $this->hasSuperthread() )
-			$this->superthread()->bumpRevisionsOnAncestors($change_type, $change_object, $change_reason);
+			$this->superthread()->bumpRevisionsOnAncestors($change_type, $change_object, $change_reason, $timestamp);
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
 		     /* SET */ array('thread_revision' => $this->revisionNumber,
 		                     'thread_change_type'=>$this->changeType,
-		                     'thread_change_object'=>$this->changeObject),
+		                     'thread_change_object'=>$this->changeObject,
+							 'thread_change_comment' => $this->changeComment,
+							 'thread_change_user' => $this->changeUser,
+							 'thread_change_user_text' => $this->changeUserText,
+							 'thread_timestamp' => $timestamp),
 		     /* WHERE */ array( 'thread_id' => $this->id ),
 		     __METHOD__);
 	}
@@ -327,15 +331,15 @@ class Thread {
 	
 	function commitRevision($change_type, $change_object = null, $reason = "") {
 		global $wgUser; // TODO global.
-		
+		/*
 		$this->changeComment = $reason;
 		$this->changeUser = $wgUser->getID();
 		$this->changeUserText = $wgUser->getName();
-		
+		*/
 		// TODO open a transaction.
 		HistoricalThread::create( $this->double, $change_type, $change_object );
 
-		$this->bumpRevisionsOnAncestors($change_type, $change_object, $reason);
+		$this->bumpRevisionsOnAncestors($change_type, $change_object, $reason, wfTimestampNow());
 		self::setChangeOnDescendents($this->topmostThread(), $change_type, $change_object);
 		
 		/* SCHEMA changes must be reflected here. */
@@ -346,15 +350,15 @@ class Thread {
 					'thread_path' => $this->path,
 					'thread_type' => $this->type,
 					'thread_summary_page' => $this->summaryId,
-					'thread_timestamp' => wfTimestampNow(),
-					'thread_revision' => $this->revisionNumber,
+//					'thread_timestamp' => wfTimestampNow(),
+//					'thread_revision' => $this->revisionNumber,
 					'thread_article_namespace' => $this->articleNamespace,
 				    'thread_article_title' => $this->articleTitle,
-					'thread_change_type' => $this->changeType,
-					'thread_change_object' => $this->changeObject,
-					'thread_change_comment' => $this->changeComment,
-					'thread_change_user' => $this->changeUser,
-					'thread_change_user_text' => $this->changeUserText,
+//					'thread_change_type' => $this->changeType,
+//					'thread_change_object' => $this->changeObject,
+//					'thread_change_comment' => $this->changeComment,
+//					'thread_change_user' => $this->changeUser,
+//					'thread_change_user_text' => $this->changeUserText,
 					),
 		     /* WHERE */ array( 'thread_id' => $this->id, ),
 		     __METHOD__);
