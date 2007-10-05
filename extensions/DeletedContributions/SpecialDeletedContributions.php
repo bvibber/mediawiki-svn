@@ -1,6 +1,6 @@
 <?php
 /**
- @ Extension based on SpecialContributions for arhived revisions
+ @ Extension based on SpecialContributions for archived revisions
  @ Modifications made to SpecialContributions.php
  @ copyright © 2007 Aaron Schulz
  */
