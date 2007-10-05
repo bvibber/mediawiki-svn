@@ -240,13 +240,16 @@ class ObjectCopier {
 
 		$object2=$this->identical();
 		if (CopyTools::sane_key_exists("object_id",$object2)) {
+			echo "ALREADY THERE? o1, o2<br>\n";
+			var_dump($this->object);
+			var_dump($object2);
 			$this->already_there=true;
 			$newid=$object2["object_id"];
 		} else {
 			$this->already_there=false;
 			$newid=$this->write();
 		}
-		AttributeCopier::copy($object["object_id"], $object2["object_id"]);
+		AttributeCopier::copy($this->dc1, $this->dc2, $this->object["object_id"], $newid);
 		return $newid;
 	}
 }
@@ -1058,6 +1061,7 @@ class ClassAttributesCopier2 extends Copier {
 
 	#refactor_candidate
 	public function write($attributes) {
+		$latest=null;
 		foreach ($attributes as $attribute) {
 			$latest=$this->write_single($attribute);
 		}
@@ -1209,27 +1213,28 @@ abstract class AttributeCopier extends Copier {
 	}
 
 
-	public static function copy($src_object_id, $dst_object_id) {
+	public static function copy($dc1, $dc2, $src_object_id, $dst_object_id) {
 		echo "<h3> crumb: would copy attribs </h3>";
 		if (is_null($src_object_id)) 
 			throw new Exception("AttributeCopier: cannot copy: source object_id=null");
 
 		if (is_null($dst_object_id)) 
 			throw new Exception("AttributeCopier: cannot copy: destination object_id=null");
-		#$optionAttribueCopier=new OptionAttributeCopier($src_object_id, $dst_object_id);
-		#$optionAttributeCopier.dup();
+		$optionAttributeCopier=new OptionAttributeCopier($dc1, $dc2, $src_object_id, $dst_object_id);
+		$optionAttributeCopier->dup();
 
-		#$textAttributeCopier=new textAttributeCopier($src_object_id, $dst_object_id);
-		#$textAttributeCopier.dup();
+		#$textAttributeCopier=new textAttributeCopier($this->dc1, $this->dc2, $src_object_id, $dst_object_id);
+		#$textAttributeCopier->dup();
 
-		#$translatedContentCopier=new translatedContentCopier($src_object_id, $dst_object_id);
-		#$translatedContentCopier.dup();
+		#$translatedContentCopier=new translatedContentCopier($this->dc1, $this->dc2, $src_object_id, $dst_object_id);
+		#$translatedContentCopier->dup();
 
-		#$urlAttributeCopier=new URLAttributeCpier($src_object_id, $dst_object_id);
-		#$urlAttributeCopier.dup();
+		#$urlAttributeCopier=new URLAttributeCpier($this->dc1, $this->dc2, $src_object_id, $dst_object_id);
+		#$urlAttributeCopier->dup();
 	}
 		
 	protected function write($values) {
+		$latest=null;
 		foreach ($values as $value) {
 			$latest=write_single($value);
 		}
@@ -1247,7 +1252,7 @@ abstract class AttributeCopier extends Copier {
 		if (is_null($tableName)) 
 			throw new Exception("*AttributeCopier: cannot read: table name is null");
 
-		return CopyTools::getRows($dc1, $tableName, "WHERE object_id=$src_object_id");
+		return CopyTools::getRows($this->dc1, $tableName, "WHERE object_id=$src_object_id");
 	}
 
 	/** slightly different dup interface yet again. 
@@ -1325,6 +1330,7 @@ class OptionAttributeOptionsCopier extends Copier {
 	 * TODO This is a refactor-candidate.
 	 */
 	public function write($oaos) {
+		$latest=null;
 		foreach ($oaos as $oao) {
 			$latest=$this->write_single($oao);
 		}
