@@ -93,7 +93,7 @@ class SpecialForm extends SpecialPage
 	function showForm($form, $errmsg = NULL) {
 		global $wgOut, $wgRequest, $wgParser, $wgTitle;
 
-		$self = SpecialPage::getTitleFor("Form/$form->name");
+		$self = SpecialPage::getTitleFor(wfMsg('form') . '/' . $form->name);
 
 		$wgOut->setPageTitle($form->title);
 
