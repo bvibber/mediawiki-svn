@@ -15,7 +15,7 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *
  * Compilation:
- *      gcc -static -O3 -o fast_counter fast_counter.c -lJudy -lm
+ *      gcc -static -O3 -o fast_counter fast_counter.c -lJudy -lm 
  *
  * Usage:
  *      ./fast_counter factor hourlythreshold dailythreshold weeklythreshold
@@ -53,9 +53,88 @@
 #define GETFIELD 7
 #define TIMEFIELD 2
 #define URLFIELD 8
+#define IPFIELD 4
 
+
+Word_t ipaddr;
 uint8_t inbuffer[MAXINPUT];
 uint8_t buffer[MAXINPUT];
+uint8_t host[64];
+
+
+
+int
+freeJSI (Pvoid_t agg)
+{
+  Pvoid_t iarray;
+  PWord_t value;
+  uint8_t fbuffer[MAXINPUT];
+  Word_t Bytes = 0;
+
+  fbuffer[0] = '\0';
+  if (agg)
+    {
+      JSLF (value, agg, fbuffer);
+      while (value != NULL)
+	{
+	  iarray = (Pvoid_t) * value;
+	  JLFA (Bytes, iarray);
+	  JSLN (value, agg, fbuffer);
+	}
+      JSLFA (Bytes, agg);
+    }
+  return 0;
+}
+
+int
+freeJSS (Pvoid_t agg)
+{
+  Pvoid_t iarray;
+  PWord_t value;
+  uint8_t fbuffer[MAXINPUT];
+  Word_t Bytes = 0;
+
+  fbuffer[0] = '\0';
+  if (agg)
+    {
+      JSLF (value, agg, fbuffer);
+      while (value != NULL)
+	{
+	  iarray = (Pvoid_t) * value;
+	  JSLFA (Bytes, iarray);
+	  JSLN (value, agg, fbuffer);
+	}
+      JSLFA (Bytes, agg);
+    }
+  return 0;
+}
+
+int
+freeJS1 (Pvoid_t agg)
+{
+  Pvoid_t iarray;
+  PWord_t value;
+  uint8_t fbuffer[MAXINPUT];
+  Word_t Bytes = 0;
+  Word_t TBytes = 0;
+
+  fbuffer[0] = '\0';
+  if (agg)
+    {
+      JSLF (value, agg, fbuffer);
+      while (value != NULL)
+	{
+	  iarray = (Pvoid_t) * value;
+	  J1FA (Bytes, iarray);
+	  TBytes += Bytes;
+	  JSLN (value, agg, fbuffer);
+	}
+      JSLFA (Bytes, agg);
+      TBytes += Bytes;
+    }
+  return 0;
+}
+
 
 void
 dumpAgg (Pvoid_t agg, int aggType, int thresh, int ftime, int ltime)
@@ -183,9 +262,9 @@ extractPage ()
   char *hbuf;
 
   char timestamp[32];
-  char host[64];
   char page[256];
   int i;
+  char *x;
 
   char *result = NULL;
 
@@ -203,6 +282,24 @@ extractPage ()
 
 	case TIMEFIELD:
 	  strncpy (timestamp, result, 32);
+	  break;
+
+	case IPFIELD:
+	  if (strlen (result) < 8)
+	    return -1;
+	  ipaddr = 0;
+	  ipaddr += (strtol (result, &x, 10) << 24);
+	  if (result == x)
+	    return -1;
+	  ipaddr += (strtol (x + 1, &x, 10) << 16);
+	  if (result == x)
+	    return -1;
+	  ipaddr += (strtol (x + 1, &x, 10) << 8);
+	  if (result == x)
+	    return -1;
+	  ipaddr += strtol (x + 1, &x, 10);
+	  if (result == x)
+	    return -1;
 	  break;
 
 	case URLFIELD:
@@ -241,9 +338,12 @@ extractPage ()
 int
 main (int argc, char *argv[])
 {
-  Pvoid_t aggHour = (Pvoid_t) NULL;	// hour array
-  Pvoid_t aggDay = (Pvoid_t) NULL;	// day array
-  Pvoid_t aggWeek = (Pvoid_t) NULL;	// week array
+  Pvoid_t aggHour = (Pvoid_t) NULL;	/* hour array */
+  Pvoid_t aggDay = (Pvoid_t) NULL;	/* day array  */
+  Pvoid_t aggWeek = (Pvoid_t) NULL;	/* week array */
+
+  Pvoid_t aggSiteUnqW = (Pvoid_t) NULL;	/* per site unique visitors per week */
+  Pvoid_t uniqsite;
 
   pid_t aggHourpid = -1;
   pid_t aggDaypid = -1;
@@ -255,7 +355,8 @@ main (int argc, char *argv[])
 
   int sampleRate;
 
-  PWord_t value;		// item counter pointer
+
+  PWord_t value;
   Word_t Bytes;
   int linetime;
 
@@ -264,6 +365,7 @@ main (int argc, char *argv[])
       fprintf (stderr, "-EPEBCAK");
       exit (1);
     }
+
 
   sampleRate = atoi (argv[1]);
 
@@ -281,7 +383,7 @@ main (int argc, char *argv[])
 	  if (aggWeekStart == 0)
 	    aggWeekStart = linetime;
 
-	  //Handle Hourly aggregate 
+	  /*Handle Hourly aggregate */
 	  if (linetime >= aggHourStart + 3600)
 	    {
 	      waitpid (aggHourpid, NULL, 1);
@@ -291,9 +393,12 @@ main (int argc, char *argv[])
 		  dumpAgg (aggHour, 0, atoi (argv[2]), aggHourStart,
 			   aggHourStart + 3600);
 		}
-	      JSLFA (Bytes, aggHour);	// free array
-//        fprintf (stderr,"Freed %lu bytes of memory from hourly aggregate.\n", Bytes);
-
+	      JSLFA (Bytes, aggHour);
+#ifdef DEBUG
+	      fprintf (stderr,
+		       "Freed %lu bytes of memory from hourly aggregate.\n",
+		       Bytes);
+#endif
 	      aggHour = NULL;
 	      aggHourStart = aggHourStart + 3600;
 	    }
@@ -305,7 +410,7 @@ main (int argc, char *argv[])
 	    }
 	  (*value) += sampleRate;
 
-	  //Handle daily aggregate      
+	  /*Handle daily aggregate */
 	  if (linetime >= aggDayStart + 86400)
 	    {
 	      waitpid (aggDaypid, NULL, 1);
@@ -315,9 +420,12 @@ main (int argc, char *argv[])
 		  dumpAgg (aggDay, 1, atoi (argv[3]), aggDayStart,
 			   aggDayStart + 86400);
 		}
-	      JSLFA (Bytes, aggDay);	// free array
-//        fprintf (stderr,"Freed %lu bytes of memory from daily aggregate.\n", Bytes);
-
+	      JSLFA (Bytes, aggDay);
+#ifdef DEBUG
+	      fprintf (stderr,
+		       "Freed %lu bytes of memory from daily aggregate.\n",
+		       Bytes);
+#endif
 	      aggDay = NULL;
 	      aggDayStart = aggDayStart + 86400;
 	    }
@@ -329,7 +437,7 @@ main (int argc, char *argv[])
 	    }
 	  (*value) += sampleRate;
 
-	  //Handle weekly aggregate      
+	  /*Handle weekly aggregate      */
 	  if (linetime >= aggWeekStart + (86400 * 7))
 	    {
 	      waitpid (aggWeekpid, NULL, 1);
@@ -339,10 +447,15 @@ main (int argc, char *argv[])
 		  dumpAgg (aggWeek, 2, atoi (argv[4]), aggWeekStart,
 			   aggWeekStart + (86400 * 7));
 		}
-	      JSLFA (Bytes, aggWeek);	// free array
-//        fprintf (stderr,"Freed %lu bytes of memory from weekly aggregate.\n", Bytes);
-
+	      JSLFA (Bytes, aggWeek);
+	      freeJS1 (aggSiteUnqW);
+#ifdef DEBUG
+	      fprintf (stderr,
+		       "Freed %lu bytes of memory from weekly aggregate.\n",
+		       Bytes);
+#endif
 	      aggWeek = NULL;
+	      aggSiteUnqW = NULL;
 	      aggWeekStart = aggWeekStart + (86400 * 7);
 	    }
 	  JSLI (value, aggWeek, buffer);
@@ -353,6 +466,15 @@ main (int argc, char *argv[])
 	    }
 	  (*value) += sampleRate;
 
+	  JSLI (value, aggSiteUnqW, host);
+	  if (value == PJERR)
+	    {
+	      printf ("-EMALLOCBOOM\n");
+	      exit (1);
+	    }
+	  uniqsite = (Pvoid_t) * value;
+	  J1S (Bytes, uniqsite, ipaddr);
+	  (*value) = (Word_t) uniqsite;
 	}
     }
   waitpid (aggWeekpid, NULL, 1);
