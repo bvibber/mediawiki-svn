@@ -81,12 +81,6 @@ HTML
 		$this->closeDiv();
 	}
 	
-	function addJSandCSS() {
-		global $wgJsMimeType, $wgStylePath; // TODO globals.
-		$s = "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/lqt.js\"><!-- lqt js --></script>\n";
-		$this->output->addScript($s);
-	}
-	
 	function showHeader() {
 		/* Show the contents of the actual talkpage article if it exists. */
 
@@ -118,6 +112,19 @@ HTML
 		$this->output->addHTML(wfCloseElement($kind));
 	}
 	
+	function showTOC($threads) {
+		$sk = $this->user->getSkin();
+		$toclines = array();
+		$i = 1;
+		$toclines[] = $sk->tocIndent();
+		foreach($threads as $t) {
+			$toclines[] = $sk->tocLine($this->anchorName($t), $t->subjectWithoutIncrement(), $i, 1);
+			$i++;
+		}
+		$toclines[] = $sk->tocUnindent(1);
+		$this->output->addHTML($sk->tocList( implode('', $toclines) ));
+	}
+	
 	function show() {
 		global $wgHooks;
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
@@ -129,8 +136,6 @@ HTML
 		
 		$this->showArchiveWidget();
 
-//		var_dump(HistoricalThread::withIdAtRevision(3,11));
-		
 		if( $this->methodApplies('talkpage_new_thread') ) {
 			$this->showNewThreadForm();
 		} else {
@@ -139,6 +144,9 @@ HTML
 		}
 
 		$threads = $this->queries->query('fresh');
+		if(count($threads) > 3) {
+			$this->showTOC($threads);
+		}
 		foreach($threads as $t) {
 			$this->showThread($t);
 		}
@@ -444,6 +452,7 @@ class ThreadPermalinkView extends LqtView {
 			return false;
 		}
 
+		$this->addJSandCSS();
 		$this->output->setSubtitle($this->getSubtitle());
 		
 		if( $this->methodApplies('summarize') )
@@ -645,6 +654,7 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 			$this->showMissingThreadPage();
 			return false;
 		}
+		$this->addJSandCSS();
 		
 		$this->output->setSubtitle($this->getSubtitle() . '<br />' . wfMsg('lqt_history_subtitle'));
 				
@@ -967,13 +977,7 @@ class NewUserMessagesView extends LqtView {
 	protected $threads;
 	protected $tops;
 	protected $targets;
-	
-	function addJSandCSS() {
-		global $wgJsMimeType, $wgStylePath; // TODO globals.
-		$s = "<script type=\"{$wgJsMimeType}\" src=\"{$wgStylePath}/common/lqt.js\"><!-- lqt js --></script>\n";
-		$this->output->addScript($s);
-	}
-	
+		
 	function preShowThread($t) {
 //		$t_ids = implode(',', array_map(create_function('$t', 'return $t->id();'), $this->targets[$t->id()]));
 		$t_ids = implode(',', $this->targets[$t->id()]);

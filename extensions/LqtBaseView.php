@@ -522,6 +522,18 @@ HTML;
 	/*************************
 	* Output methods         *
 	*************************/
+	
+	function addJSandCSS() {
+		global $wgJsMimeType, $wgStylePath, $wgStyleVersion; // TODO globals.
+		$s = <<< HTML
+		<script type="{$wgJsMimeType}" src="{$wgStylePath}/common/lqt.js"><!-- lqt js --></script>
+		<style type="text/css" media="screen, projection">/*<![CDATA[*/
+			@import "{$wgStylePath}/common/lqt.css?{$wgStyleVersion}";
+		/*]]>*/</style>
+
+HTML;
+		$this->output->addScript($s);
+	}
 
 	/* @return False if the article and revision do not exist and we didn't show it, true if we did. */
 	function showPostBody( $post, $oldid = null ) {
@@ -640,13 +652,17 @@ HTML
 	function postDivClass( $thread ) {
 		return 'lqt_post';
 	}
+	
+	function anchorName($thread) {
+		return "lqt_thread_{$thread->id()}";
+	}
 
 	function showThread( $thread ) {
 		global $wgLang; # TODO global.
 
 		$this->showThreadHeading( $thread );
 		
-		$this->output->addHTML( "<a name=\"lqt_thread_{$thread->id()}\" ></a>" );
+		$this->output->addHTML( "<a name=\"{$this->anchorName($thread)}\" ></a>" );
 
 		if ($thread->type() == Threads::TYPE_MOVED) {
 			$revision = Revision::newFromTitle( $thread->title() );
