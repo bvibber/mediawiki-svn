@@ -5,8 +5,8 @@
  * @addtogroup Extensions
  * @todo document
  *
- * @author Magnus Manke <insertemail@here.please>
- * @copyright Copyright © 2005, Magnus Manke
+ * @author Magnus Manske <magnusmanske@googlemail.com>
+ * @copyright Copyright © 2005, Magnus Manske
  * @license <Please enter the license here>
  *
  */
@@ -33,7 +33,8 @@ if( !defined( 'REVIEW_CSS' ) ) define('REVIEW_CSS', $wgScriptPath.'/extensions/R
 $wgExtensionCredits['other'][] = array(
 	'name' => 'Review',
 	'description' => 'The resurrected validation feature.',
-	'author' => 'Magnus Manske'
+	'author' => 'Magnus Manske',
+	'url' => 'http://www.mediawiki.org/wiki/Extension:Review'
 );
 
 $wgExtensionFunctions[] = 'wfReviewExtensionFunction';
@@ -901,5 +902,3 @@ function wfReviewExtensionFunction () {
 
 	SpecialPage::addPage(new SpecialReview);
 }
-
-?>
