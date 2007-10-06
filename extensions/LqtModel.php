@@ -767,8 +767,6 @@ class Threads {
 	static $cache_by_root = array();
 	static $cache_by_id = array();
 	
-	static $thread_children = array();
-	
     static function newThread( $root, $article, $superthread = null, $type = self::TYPE_NORMAL ) {
 
 		// SCHEMA changes must be reflected here.
@@ -865,6 +863,7 @@ SQL;
 
 		$threads = array();
 		$top_level_threads = array();
+		$thread_children = array();
 
 		while ( $line = $dbr->fetchObject($res) ) {
 			$new_thread = new Thread($line, null);
@@ -876,9 +875,9 @@ SQL;
 				// thread has a parent. extract second-to-last path element.
 				preg_match( '/([^.]+)\.[^.]+$/', $line->thread_path, $path_matches );
 				$parent_id = $path_matches[1];
-				if( !array_key_exists( $parent_id, self::$thread_children ) )
-					self::$thread_children[$parent_id] = array();
-				self::$thread_children[$parent_id][] = $new_thread;
+				if( !array_key_exists( $parent_id, $thread_children ) )
+					$thread_children[$parent_id] = array();
+				$thread_children[$parent_id][] = $new_thread;
 			}
 		}
 		
@@ -892,8 +891,8 @@ SQL;
 		*/
 
 		foreach( $threads as $thread ) {
-			if( array_key_exists( $thread->id(), self::$thread_children ) ) {
-				$thread->initWithReplies( self::$thread_children[$thread->id()] );
+			if( array_key_exists( $thread->id(), $thread_children ) ) {
+				$thread->initWithReplies( $thread_children[$thread->id()] );
 			} else {
 				$thread->initWithReplies( array() );
 			}

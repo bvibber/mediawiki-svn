@@ -965,6 +965,8 @@ HTML
 class NewUserMessagesView extends LqtView {
 	
 	protected $threads;
+	protected $tops;
+	protected $targets;
 	
 	function addJSandCSS() {
 		global $wgJsMimeType, $wgStylePath; // TODO globals.
@@ -973,12 +975,14 @@ class NewUserMessagesView extends LqtView {
 	}
 	
 	function preShowThread($t) {
+//		$t_ids = implode(',', array_map(create_function('$t', 'return $t->id();'), $this->targets[$t->id()]));
+		$t_ids = implode(',', $this->targets[$t->id()]);
 		$this->output->addHTML(<<<HTML
 		<table ><tr>
 		<td style="padding-right: 1em; vertical-align: top; padding-top: 1em;" >
 		<form method="POST">
 			<input type="hidden" name="lqt_method" value="mark_as_read" />
-			<input type="hidden" name="lqt_operand" value="{$t->id()}" />
+			<input type="hidden" name="lqt_operand" value="{$t_ids}" />
 			<input type="submit" value="Read" name="lqt_read_button" title="Remove this thread from New Messages." />
 		</form>
 		</td>
@@ -995,45 +999,89 @@ HTML
 		);
 	}
 	
-	function showUndo($t) {
+	function showUndo($ids) {
+		if( count($ids) == 1 ) {
+			$t = Threads::withId($ids[0]);
+			$msg = "Thread <b>{$t->subject()}</b> marked as read.";
+		} else {
+			$count = count($ids);
+			$msg = "$count messages marked as read.";
+		}
+		$operand = implode(',', $ids);
 		$this->output->addHTML(<<<HTML
 		<form method="POST" class="lqt_undo_mark_as_read">
-			Thread <b>{$t->subject()}</b> marked as read.
+			$msg
 			<input type="hidden" name="lqt_method" value="mark_as_unread" />
-			<input type="hidden" name="lqt_operand" value="{$t->id()}" />
+			<input type="hidden" name="lqt_operand" value="{$operand}" />
 			<input type="submit" value="Undo" name="lqt_read_button" title="Bring back the thread you just dismissed." />
 		</form>
 HTML
 		);
 	}
 	
-	function show() {
+	function postDivClass($thread) {
+		$topid = $thread->topmostThread()->id();
+		if( in_array($thread->id(), $this->targets[$topid]) )
+			return 'lqt_post_new_message';
+		else
+			return 'lqt_post';
+	}
+	
+	function showOnce() {
 		$this->addJSandCSS();
 		
-		// TODO, this will be invoked twice because show() is invoked twice. not fatal but hurts performance.
 		if( $this->request->wasPosted() && $this->methodApplies('mark_as_unread') ) {
-			$thread_id = $this->request->getInt( 'lqt_operand', null );
-			if( $thread_id !== null )
-				NewMessages::markThreadAsUnreadByUser($thread_id, $this->user);
-			$this->output->redirect( $this->title->getFullURL() );
+			$ids = explode(',', $this->request->getVal('lqt_operand', ''));
+			if( $ids !== false ) {
+				foreach($ids as $id) {
+					NewMessages::markThreadAsUnreadByUser(Threads::withId($id), $this->user);
+				}
+				$this->output->redirect( $this->title->getFullURL() );
+			}
 		}
 		
+		else if( $this->request->wasPosted() && $this->methodApplies('mark_as_read') ) {
+			$ids = explode(',', $this->request->getVal('lqt_operand', ''));
+			if( $ids !== false ) {
+				foreach($ids as $id) {
+					NewMessages::markThreadAsReadByUser(Threads::withId($id), $this->user);
+				}
+				$query = 'lqt_method=undo_mark_as_read&lqt_operand=' . implode(',', $ids);
+				$this->output->redirect( $this->title->getFullURL($query) );
+			}
+		}
+		
+		else if( $this->methodApplies('undo_mark_as_read') ) {
+			$ids = explode(',', $this->request->getVal('lqt_operand', ''));
+			$this->showUndo($ids);
+		}
+	}
+	
+	function show() {
 		if ( ! is_array( $this->threads ) ) {
 			throw new MWException('You must use NewUserMessagesView::setThreads() before calling NewUserMessagesView::show().');
 		}
 		
-		foreach($this->threads as $t) {
+		// Do everything by id, because we can't depend on reference identity; a simple Thread::withId
+		// can change the cached value and screw up your references.
+
+		$this->targets = array();
+		$this->tops = array();
+		foreach( $this->threads as $t ) {
+			$top = $t->topmostThread();
+			if( !in_array($top->id(), $this->tops) )
+				$this->tops[] = $top->id();
+			if( !array_key_exists($top->id(), $this->targets) )
+				$this->targets[$top->id()] = array();
+			$this->targets[$top->id()][] = $t->id();
+		}
+
+		foreach($this->tops as $t_id) {
+			$t = Threads::withId($t_id);
 			// It turns out that with lqtviews composed of threads from various talkpages,
 			// each thread is going to have a different article... this is pretty ugly.
 			$this->article = $t->article();
 			
-			if( $this->request->wasPosted() && $this->methodAppliesToThread('mark_as_read', $t) ) {
-				NewMessages::markThreadAsReadByUser($t, $this->user);
-				$this->showUndo($t);
-				continue;
-			}
-			
-			// Call for POST as well as GET so that edit, reply, etc. will work.
 			$this->preShowThread($t);
 			$this->showThread($t);
 			$this->postShowThread($t);
@@ -1071,17 +1119,16 @@ function wfLqtSpecialNewMessages() {
 	
             $this->setHeaders();
 
-			$this->output->addHTML('<h2 class="lqt_newmessages_section">Messages sent to you:</h2>');
-			
 			$view = new NewUserMessagesView( $this->output, new Article($this->title),
 							$this->title, $this->user, $this->request );
 			$view->setHeaderLevel(3);
+			$view->showOnce();
+			
+			$this->output->addHTML('<h2 class="lqt_newmessages_section">Messages sent to you:</h2>');
 			$view->setThreads( NewMessages::newUserMessages($this->user) );
 			$view->show();
 			
-			// and then the same for the other talkpage messagess.
 			$this->output->addHTML('<h2 class="lqt_newmessages_section">Messages on other talkpages:</h2>');
-			
 			$view->setThreads( NewMessages::watchedThreadsForUser($this->user) );
 			$view->show();
         }

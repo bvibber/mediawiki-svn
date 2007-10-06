@@ -21,6 +21,24 @@ function efVarDump($value) {
 	$wgOut->addHTML(/*'<pre>' . htmlspecialchars($tmp,ENT_QUOTES) . '</pre>'*/ $tmp);
 }
 
+function efThreadTable($ts) {
+	global $wgOut;
+	$wgOut->addHTML('<table>');
+	foreach($ts as $t)
+		efThreadTableHelper($t, 0);
+	$wgOut->addHTML('</table>');
+}
+
+function efThreadTableHelper($t, $indent) {
+	global $wgOut;
+	$wgOut->addHTML('<tr>');
+	$wgOut->addHTML('<td>' . $indent);
+	$wgOut->addHTML('<td>' . $t->id());
+	$wgOut->addHTML('<td>' . $t->title()->getPrefixedText());
+	$wgOut->addHTML('</tr>');
+	foreach($t->subthreads() as $st)
+		efThreadTableHelper($st, $indent + 1);
+}
 
 require_once('LqtModel.php');
 require_once('Pager.php');
