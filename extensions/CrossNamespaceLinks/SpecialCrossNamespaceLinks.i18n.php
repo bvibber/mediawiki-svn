@@ -127,8 +127,9 @@ $wgCrossNamespaceLinksMessages['oc'] = array(
 	'crossnamespacelinkstext'     => '$1 : possedís $2 {{PLURAL:$2|ligam|ligams}} vèrs l’espaci « $3 »',
 );
 $wgCrossNamespaceLinksMessages['pl'] = array(
-	'crossnamespacelinks'     => 'Linki między przestrzeniami nazw',
-	'crossnamespacelinkstext' => '$1: $2 {{PLURAL:$2|link|linki}} do $3'
+	'crossnamespacelinks'         => 'Linki między przestrzeniami nazw',
+	'crossnamespacelinks-summary' => 'Ta strona podaje listę linków ze stron w głównej przestrzeni nazw do stron w innych przestrzeniach nazw (poza przestrzeniami {{ns:special}}, {{ns:talk}}, {{ns:project}} i {{ns:template}}). Odradza się używanie takich linków.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|link|linki}} do $3',
 );
 $wgCrossNamespaceLinksMessages['pms'] = array(
 	'crossnamespacelinks'         => 'Anliure antra spassi nominaj diferent',

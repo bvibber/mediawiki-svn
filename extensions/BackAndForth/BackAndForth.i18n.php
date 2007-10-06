@@ -39,6 +39,10 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Antaŭa ($1)',
 ),
 
+'ext' => array(
+	'backforth-next' => 'Siguienti ($1)',
+),
+
 'fi' => array(
 	'backforth-next' => 'Seuraava ($1)',
 	'backforth-prev' => 'Edellinen ($1)',
@@ -72,6 +76,11 @@ function efBackAndForthMessages() {
 'sah' => array(
 	'backforth-next' => 'Аныгыскы ($1)',
 	'backforth-prev' => 'Иннинээҕи ($1)',
+),
+
+'sk' => array(
+	'backforth-next' => 'Ďalšie ($1)',
+	'backforth-prev' => 'Predošlé ($1)',
 ),
 
 'sv' => array(

@@ -53,6 +53,10 @@ Wichtig: '''Dieser Schritt ist unwiderruflich.!''' Sie müssen einen Bürokraten
 'resign-logentry'  => 'gab die Berechtigung(en) $2 zurück',
 ),
 
+'ext' => array(
+'resign-reason' => 'Razón:',
+),
+
 'fi' => array(
 'resign'           => 'Eroa',
 'resign-text'      => "Voit '''poistaa omat oikeutesi''' (esim. ylläpitäjän oikeudet) tällä sivulla. Ole hyvä ja rastita oikeudet, jotka haluaisit poistaa.
@@ -136,6 +140,11 @@ Husk: \'\'\'Du kan ikke få tilbake rettighetene på denne måten!\'\'\' Du må 
 'resign-nogroups' => 'Vennligst merk av rettighetene du ønsker å fjerne.',
 'resign-success' => '\'\'\'Rettighetene ble fjernet.\'\'\'',
 'resign-logentry' => 'fjernet følgende tillatelser fra seg selv: $2',
+),
+
+'pl' => array(
+'resign' => 'Rezygnacja',
+'resign-reason' => 'Powód:',
 ),
 
 /* Piedmontese (Bèrto 'd Sèra) */

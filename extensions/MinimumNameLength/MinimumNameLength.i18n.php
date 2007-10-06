@@ -55,14 +55,17 @@ function efMinimumNameLengthMessages() {
 'kk' => array(
 'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',
 ),
+
 /* Kazakh Cyrillic */
 'kk-kz' => array(
 'minnamelength-error' => 'Қатысушы атыңыз тым қысқа.Ең кемінде ұзындығы $1 болуы қажет.',
 ),
+
 /* Kazakh Latin */
 'kk-tr' => array(
 'minnamelength-error' => 'Qatıswşı atıñız tım qısqa.Eñ keminde uzındığı $1 bolwı qajet.',
 ),
+
 /* Kazakh Arabic */
 'kk-cn' => array(
 'minnamelength-error' => 'قاتىسۋشى اتىڭىز تىم قىسقا.ەڭ كەمٴىندە ۇزىندىعى $1 بولۋى قاجەت.',
@@ -76,9 +79,15 @@ function efMinimumNameLengthMessages() {
 'no' => array(
 'minnamelength-error' => 'Brukernavnet ditt er for kort. Minimumslengden er $1.',
 ),
+
 'oc' => array(
 'minnamelength-error' => 'Vòstre nom d\'utilizaire es tròp cort. La longor minimom es $1.',
 ),
+
+'pl' => array(
+'minnamelength-error' => 'Twoja nazwa użytkownika jest za krótka. Minimalna długość to $1.',
+),
+
 /* Piedmontese (Bèrto 'd Sèra) */
 'pms' => array(
 'minnamelength-error' => 'Sò stranòm a l\'é tròp curt. A venta ch\'al sia longh almanch $1 caràter.',

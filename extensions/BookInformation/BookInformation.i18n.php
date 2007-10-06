@@ -249,6 +249,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Fornidor de donadas : $1',
 ),
 
+'pl' => array(
+'bookinfo-header' => 'Informacja o książce',
+'bookinfo-result-title' => 'Tytuł:',
+'bookinfo-result-author' => 'Autor:',
+'bookinfo-result-publisher' => 'Wydawca:',
+'bookinfo-result-year' => 'Rok:',
+'bookinfo-error-invalidisbn' => 'Wprowadzono niepoprawny ISBN',
+'bookinfo-error-nosuchitem' => 'Pozycja nie istnieje lub nie może być znaleziona',
+'bookinfo-error-nodriver' => 'Nie udało się zainicjalizować odpowiedniego Book Information Driver',
+'bookinfo-error-noresponse' => 'Brak odpowiedzi lub przekroczony czas odpowiedzi',
+'bookinfo-purchase' => 'Zakup tę książkę w $1',
+'bookinfo-provider' => 'Dostawca danych: $1',
+),
+
 /* Piedmontese (Bèrto 'd Sèra) */
 'pms' => array(
 'bookinfo-header' => 'Anformassion ant sëj lìber',

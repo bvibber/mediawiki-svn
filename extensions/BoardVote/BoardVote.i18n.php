@@ -179,6 +179,18 @@ $wgBoardVoteMessages['br'] = array(
 );
 $wgBoardVoteMessages['ca'] = array(
 	'boardvote'               => 'Eleccions al Consell d\'Administració de la Fundació Wikimedia',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Voteu]]
+* [[Special:Boardvote/list|Llista de vots emesos]]
+* [[Special:Boardvote/dump|Dades encriptades de la votació]]',
+	'boardvote_intro_change'  => '<p>Ja heu votat. Podeu canviar el vostre vot usant el següent formulari. Marqueu aquells candidats que voleu aprovar.</p>',
+	'boardvote_entered'       => 'Gràcies, el vostre vot ha estat registrat. A continuació podeu comprovar-ne els detalls. Les dades del vostre vot són: <pre>$1</pre> Ha estat codificat mitjançant la clau pública de l\'administració electoral de Wikimedia: <pre>$2</pre> La versió encriptada resultant apareix a continuació. Serà mostrada públicament a [[Special:Boardvote/dump]]. <pre>$3</pre> [[Special:Boardvote/entry|Torna]]',
+	'boardvote_nosession'     => 'No s\'ha pogut determinar l\'identificador del vostre compte Wikimedia. Si us plau, identifiqueu-vos al projecte en el que teniu dret a vot i aneu a <nowiki>[[Special:Boardvote]]</nowiki>. Recordeu que heu de tenir un mínim de $1 contribucions fetes abans del $2, i que la vostra primera edició ha de ser anterior al $3.',
+	'boardvote_novotes'       => 'Encara no ha votat ningú.',
+	'boardvote_user'          => 'Usuari',
+	'boardvote_edits'         => 'Edicions',
+	'boardvote_days'          => 'Dies',
+	'boardvote_blocked'       => 'Ho sentim, el vostre compte registrat ha estat blocat. Els usuaris blocats no tenen dret a vot.',
+	'boardvote_welcome'       => 'Benvingut \'\'\'$1\'\'\'!',
 	'boardvote_redirecting'   => 'Per millorar la seguretat i la transparència de la votació, aquesta es farà en un servidor independent extern.
 
 D\'aquí 20 segons sereu redirigit a aquesta pàgina. [$1 Cliqueu aquí] per anar-hi ara mateix.
@@ -329,6 +341,7 @@ $wgBoardVoteMessages['ext'] = array(
 	'boardvote_user'          => 'Usuáriu',
 	'boardvote_edits'         => 'Eicionis',
 	'boardvote_days'          => 'Dias',
+	'boardvote_dumplink'      => 'Pulsa aquí',
 	'boardvote_welcome'       => 'Bienviniu \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['fi'] = array(

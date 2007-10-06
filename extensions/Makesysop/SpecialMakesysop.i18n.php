@@ -1,4 +1,4 @@
-<?php
+	<?php
 /**
  * Internationalisation file for Makesysop extension.
  *
@@ -322,6 +322,9 @@ $wgMakesysopMessages['fi'] = array(
 	'group-steward'        => 'ylivalvojat',
 	'group-steward-member' => 'ylivalvoja',
 	'grouppage-steward'    => '{{ns:project}}:ylivalvojat',
+);
+$wgMakesysopMessages['fo'] = array(
+	'makesysop' => 'Ger ein brúkara til sysop',
 );
 $wgMakesysopMessages['fr'] = array(
 	'makesysoptitle'       => 'Donner les droits d’administrateur à un utilisateur',
@@ -785,24 +788,24 @@ $wgMakesysopMessages['os'] = array(
 	'rights'        => 'Бартæ',
 );
 $wgMakesysopMessages['pl'] = array(
-	'makesysoptitle'       => 'Nadaj użytkownikowi uprawnienia administratora',
-	'makesysoptext'        => 'Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania innym użytkownikom praw administratora. Aby to uczynić, wpisz nazwę użytkownika i kliknij na przycisk.',
-	'makesysopname'        => 'Nazwa użytkownika:',
-	'makesysopsubmit'      => 'Przyznaj temu użytkownikowi uprawnienia administratora',
-	'makesysopok'          => "<b>Użytkownik \"$1\" otrzymał uprawnienia administratora</b>",
-	'makesysopfail'        => "<b>Użytkownik \"$1\" nie otrzymał uprawnienień administratora. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>",
-	'setbureaucratflag'    => 'Ustaw status biurokraty',
-	'rights'               => 'Uprawnienia:',
-	'set_user_rights'      => 'Zmień uprawnienia użytkownika',
-	'user_rights_set'      => "<b>Uprawnienia użytkownika \"$1\" zostały zmienione</b>",
-	'set_rights_fail'      => "<b>Uprawnienia użytkownika \"$1\" nie zostały zmienione. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>",
-	'makesysop'            => 'Przyznaj użytkownikowi uprawnienia administratora',
-	'already_sysop'        => 'Ten użytkownik jest już administratorem',
-	'already_bureaucrat'   => 'Ten użytkownik jest już biurokratą',
+	'makesysoptitle' => 'Nadaj użytkownikowi uprawnienia administratora',
+	'makesysoptext' => 'Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania innym użytkownikom praw administratora. Aby to uczynić, wpisz nazwę użytkownika i kliknij na przycisk.',
+	'makesysopname' => 'Nazwa użytkownika:',
+	'makesysopsubmit' => 'Przyznaj temu użytkownikowi uprawnienia administratora',
+	'makesysopok' => '<b>Użytkownik "$1" otrzymał uprawnienia administratora</b>',
+	'makebureaucratok' => '<b>Użytkownik "$1" otrzymał uprawnienia biurokraty</b>',
+	'makesysopfail' => '<b>Użytkownik "$1" nie otrzymał uprawnienień administratora. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>',
+	'setbureaucratflag' => 'Ustaw status biurokraty',
+	'rights' => 'Uprawnienia:',
+	'set_user_rights' => 'Zmień uprawnienia użytkownika',
+	'user_rights_set' => '<b>Uprawnienia użytkownika "$1" zostały zmienione</b>',
+	'set_rights_fail' => '<b>Uprawnienia użytkownika "$1" nie zostały zmienione. (Czy wprowadziłeś poprawną nazwę użytkownika?)</b>',
+	'makesysop' => 'Przyznaj użytkownikowi uprawnienia administratora',
+	'already_sysop' => 'Ten użytkownik jest już administratorem',
+	'already_bureaucrat' => 'Ten użytkownik jest już biurokratą',
 	'makesysop-nodatabase' => 'Niewłaściwa nazwa użytkownika w interwiki: $1',
-	'group-steward'        => 'Zarządcy',
+	'group-steward' => 'Zarządcy',
 	'group-steward-member' => 'Zarządca',
-	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
 $wgMakesysopMessages['pms'] = array(
 	'makesysoptitle' => 'Deje a n\'utent la qualìfica da aministrator',

@@ -380,6 +380,13 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Can aya kontribusi ka ieu wiki.',
 ),
 
+'tet' => array(
+'countedits-username' => 'Naran uza-na\'in:',
+'countedits-ok' => 'OK',#identical but defined
+'countedits-nosuchuser' => 'Uza-na\'in ho naran $1 lá\'os iha ne\'e.',
+'countedits-resulttext' => '$1 edita tiha ona ba dala $2',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 'countedits' => '編輯數',

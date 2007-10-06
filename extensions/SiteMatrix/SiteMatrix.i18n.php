@@ -61,6 +61,9 @@ $wgSiteMatrixMessages['eo'] = array(
 $wgSiteMatrixMessages['es'] = array(
 	'sitematrix' => 'Lista de wikis de Wikimedia',
 );
+$wgSiteMatrixMessages['ext'] = array(
+	'sitematrix-language' => 'Palra',
+);
 $wgSiteMatrixMessages['fi'] = array(
 	"sitematrix" => "Luettelo Wikimedian wikeistä",
 );
@@ -145,7 +148,10 @@ $wgSiteMatrixMessages['oc'] = array(
 	'sitematrix' => 'Lista dels wikis Wikimedia',
 );
 $wgSiteMatrixMessages['pl'] = array(
-	"sitematrix" => "Lista projektów Wikimedia",
+	'sitematrix' => 'Lista projektów Wikimedia',
+	'sitematrix-language' => 'Język',
+	'sitematrix-project' => 'Nazwa projektu, link do projektu i link interwiki',
+	'sitematrix-others' => 'Inne projekty Wikimedia',
 );
 $wgSiteMatrixMessages['pms'] = array(
 	'sitematrix' => 'Lista ëd le wiki gestìe da Wikimedia',

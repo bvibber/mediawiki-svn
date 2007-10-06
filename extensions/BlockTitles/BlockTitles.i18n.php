@@ -62,6 +62,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'O planhem, lo títol d\'aqueste article es pas autorizat a èsser salvagardat.',
 ),
 
+'sk' => array(
+	'block_title_error_page_title' => '',
+	'block_title_error' => 'Prepáčte, články s týmto názvom nie je povolené ukladať.',
+),
+
 /**
  * 
  * Cantonese (Shinjiman)

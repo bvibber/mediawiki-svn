@@ -253,6 +253,16 @@ $wgExpandTemplatesMessages['oc'] = array(
 	'expand_templates_ok'              => 'D\'acòrdi',
 	'expand_templates_remove_comments' => 'Suprimir los comentaris.',
 );
+$wgExpandTemplatesMessages['pl'] = array(
+	'expandtemplates'                  => 'Rozwijanie szablonów',
+	'expand_templates_intro'           => 'Ta strona specjalna pobiera tekst i rozwija w nim rekursywnie wszystkie szablony. Rozwija także [[Wikipedia:Funkcje parsera|funkcje parsera]] takie jak <nowiki>{{</nowiki>#if...}} i zmienne jak <nowiki>{{</nowiki>CURRENTDAY}} &ndash; w zasadzie prawie wszystko w podwójnych nawiasach klamrowych. Robi się to przez wezwanie odpowiedniego przebiegu (etapu) parsera z samego MediaWiki.',
+	'expand_templates_title'           => 'Tytuł kontekstu, dla komunikatów typu {{PAGENAME}} itp.:',
+	'expand_templates_input'           => 'Tekst wejściowy:',
+	'expand_templates_output'          => 'Rezultat',
+	'expand_templates_ok'              => 'OK',#identical but defined
+	'expand_templates_remove_comments' => 'Usuń komentarze',
+	'expand_templates_preview'         => 'Podgląd',
+);
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgExpandTemplatesMessages['pms'] = array(
 	'expandtemplates'                  => 'Anàlisi djë stamp',

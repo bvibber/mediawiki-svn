@@ -52,6 +52,9 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 	'ext' => array(
 		'createsigndoc-pagename' => 'Páhina:',
 		'createsigndoc-allowedgroup' => 'Alabán premitiu:',
+		'createsigndoc-optional' => 'Ocional',
+		'createsigndoc-create' => 'Creal',
+		'createsigndoc-error-pagenoexist' => 'Marru: La páhina [[$1]] nu desisti.',
 	),
 	'hsb' => array(
 		'createsigndocument' => 'Podpisanje dokumentow zmóžnić',

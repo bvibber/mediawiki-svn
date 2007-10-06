@@ -334,9 +334,11 @@ function efInputBoxMessages() {
 ),
 
 'pl' => array(
-	'tryexact'       => 'Użyj dokładnego wyrażenia',
-	'searchfulltext' => 'Szukaj w całych tekstach',
-	'createarticle'  => 'Utwórz artykuł',
+	'inputbox-error-no-type'  => 'Typ pola wejściowego nie został określony',
+	'inputbox-error-bad-type' => 'Typ "$1" pola wejściowego nie został rozpoznany. Proszę wybrać "create", "comment", "search" lub "search2".',
+	'tryexact'                => 'Użyj dokładnego wyrażenia',
+	'searchfulltext'          => 'Szukaj w całych tekstach',
+	'createarticle'           => 'Utwórz artykuł',
 ),
 
 'pms' => array(

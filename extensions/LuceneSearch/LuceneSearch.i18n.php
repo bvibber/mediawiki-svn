@@ -182,6 +182,10 @@ Hakulauseke $3 $9 $10',
 	'searchall'             => 'kaikki',
 	'searchincategory'      => 'luokassa',
 );
+$wgLuceneSearchMessages['fo'] = array(
+	'searchnoresults'       => 'Tíverri vóru ongar síður, ið luku tíni leitikrøv.',
+	'lucenepowersearchtext' => 'Leita í navnaøki: $1 Leita eftur $3 $9',
+);
 $wgLuceneSearchMessages['fr'] = array(
 	'searchnumber'          => "<strong>Résultats $1 – $2 sur $3</strong>",
 	'searchprev'            => "&#x00AB; <span style='font-size: small'>Préc.</span>",

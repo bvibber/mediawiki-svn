@@ -67,6 +67,9 @@ $wgFilepathMessages['fiu-vro'] = array(
 	'filepath_page'   => 'Teedüstü:',
 	'filepath_submit' => 'Aadrõs',
 );
+$wgFilepathMessages['fo'] = array(
+	'filepath_page'   => 'Fíla:',
+);
 $wgFilepathMessages['fr'] = array(
 	'filepath'        => 'Chemin d’un fichier',
 	'filepath_page'   => 'Fichier :',

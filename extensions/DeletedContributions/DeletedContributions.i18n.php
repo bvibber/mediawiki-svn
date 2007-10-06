@@ -74,6 +74,10 @@ $wgDeletedContribsMessages['oc'] = array(
 	'deletedcontributions' => 'Contribucions suprimidas d’un utilizaire',
 );
 
+$wgDeletedContribsMessages['pl'] = array(
+	'deletedcontributions' => 'Skasowany wkład użytkownika',
+);
+
 $wgDeletedContribsMessages['pms'] = array(
 	'deletedcontributions' => 'Modìfiche faite da utent scancelà',
 );

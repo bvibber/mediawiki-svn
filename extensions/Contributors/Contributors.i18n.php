@@ -104,6 +104,8 @@ function efContributorsMessages() {
 'contributors-toolbox' => 'Prencipalis colabutaoris',
 'contributors-target' => 'Entítulu:',
 'contributors-submit' => 'Muestral',
+'contributors-others-long' => 'Ai otrus $1 colabutaoris nesti artículu.',
+'contributors-others' => 'i otrus $1',
 ),
 
 /* French */

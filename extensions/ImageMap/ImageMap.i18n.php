@@ -319,6 +319,10 @@ function efImageMapMessages() {
 'imagemap_desc_types'           => 'uppe till höger, nere till höger, nere till vänster, uppe till vänster, ingen',
 ),
 
+'tet' => array(
+'imagemap_description'          => 'Kona-ba imajen ne\'e',
+),
+
 /* Cantonese (Shinjiman) */
 'yue' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: 一定要響第一行指定一幅圖像',

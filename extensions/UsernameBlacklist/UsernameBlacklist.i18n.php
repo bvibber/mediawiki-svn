@@ -49,6 +49,12 @@ function efUsernameBlacklistMessages( $single = false ) {
 'usernameblacklist-invalid-lines' => 'এই {{PLURAL:$1|লাইন|লাইনসমূহ}} নিষিদ্ধ ব্যবহারকারী নাম তালিকাভুক্ত {{PLURAL:$1|নাম|নামসমূহ}} অসিদ্ধ; দয়াকরে সংরক্ষণ করার পূর্বে {{PLURAL:$1|এটি|এগুলো}} ঠিক করুন:',
 ),
 
+'ca' => array(
+'blacklistedusername' => 'Nom no permès',
+'blacklistedusernametext' => 'El nom d\'usuari que heu escollit forma part de la [[MediaWiki:Usernameblacklist|llista de noms no permesos]]. Escolliu-ne un altre de diferent, si us plau.',
+'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La següent línia|Les següents línies}} de la llista negra de noms d\'usuari no {{PLURAL:$1|és vàlida|són vàlides}}; si us plau, corregiu{{PLURAL:$1|-la|-les}} abans de desar-ho:',
+),
+
 /* German (Raymond) */
 'de' => array(
 'blacklistedusername'             => 'Benutzername auf der Sperrliste',

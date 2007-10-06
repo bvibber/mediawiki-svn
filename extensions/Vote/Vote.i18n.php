@@ -82,7 +82,7 @@ riddler|Riddler",
 'ext' => array(
 'vote' => 'Votal',
 'vote-submit' => 'Votal',
-'vote-registered' => 'El tu votu s´á ruhistrau.',
+'vote-registered' => 'El tu votu s´á rustrau.',
 'vote-results-count' => 'Cuenta',
 ),
 

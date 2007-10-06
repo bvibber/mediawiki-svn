@@ -177,6 +177,10 @@ $messages = array(
 	'ogg-desc-link' => 'Tiedoston tiedot',
 	),
 
+	'fo' => array(
+	'ogg-more' => 'Meira...',
+	),
+
 	'he' => array(
 		'ogg-short-audio'         => 'קובץ שמע $1 של Ogg, $2',
 		'ogg-short-video'         => 'קובץ וידאו $1 של Ogg, $2',
@@ -240,6 +244,8 @@ $messages = array(
 	),
 
 	'is' => array(
+	'ogg-play' => 'Spila',
+	'ogg-pause' => 'gera hlé',
 	'ogg-play-sound' => 'Spila hljóð',
 	'ogg-more' => 'Meira...',
 	),

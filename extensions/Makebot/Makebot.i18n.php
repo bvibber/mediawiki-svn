@@ -207,6 +207,11 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'poisti botti-merkinnän tunnukselta [[$1]]',
 ),
 
+'fo' => array(
+'makebot-username'        => 'Brúkaranavn:',
+'makebot-search'          => 'Far',
+),
+
 /* French (Bertrand Grondin) */
 'fr' => array(
 'makebot' => 'Donner ou retirer les droits de bot',
@@ -499,6 +504,26 @@ function efMakeBotMessages() {
 'makebot-logpagetext'     => 'Aquesta pagina repertòria los cambiaments (aquisicions e pèrdas) d\'estatut dels [[Ajuda:Bòt|bòts]].',
 'makebot-logentrygrant'   => 'a balhat l\'estatut de bòt a [[$1]]',
 'makebot-logentryrevoke'  => 'a levat l\'estatut de bòt de [[$1]]',
+),
+
+'pl' => array(
+'makebot'                 => 'Nadaj lub odbierz flagę bota',
+'makebot-header'          => '\'\'\'Lokalny biurokrata może użyć tej strony do przyznania lub odebrania kontu użytkownika [[Help:Bot|flagi bota]].\'\'\'<br />Flaga bota ukrywa edycje użytkownika w [[Special:Recentchanges|liście ostatnich zmian]] i podobnych listach, jest przydatna do oznaczania użytkowników, którzy robią automatyczne edycje. Przyznawanie flagi bota powinno się odbywać w zgodzie z lokalnymi zasadami.',
+'makebot-username'        => 'Konto:',
+'makebot-search'          => 'Start',
+'makebot-isbot'           => '[[User:$1|$1]] ma status bota.',
+'makebot-notbot'          => '[[User:$1|$1]] nie ma statusu bota.',
+'makebot-privileged'      => '[[User:$1|$1]] ma [[Special:Listadmins|uprawnienia administratora lub biurokraty]] i nie może otrzymać statusu bota.',
+'makebot-change'          => 'Zmień uprawnienia:',
+'makebot-grant'           => 'Przyznaj',
+'makebot-revoke'          => 'Odbierz',
+'makebot-comment'         => 'Komentarz:',
+'makebot-granted'         => '[[User:$1|$1]] otrzymał status bota.',
+'makebot-revoked'         => 'Konto [[User:$1|$1]] nie ma już flagi bota.',
+'makebot-logpage'         => 'Log flag bota',
+'makebot-logpagetext'     => 'Operacje nadawania i zdejmowania [[Help:Bots|flagi bota]]:',
+'makebot-logentrygrant'   => 'nadał/a kontu [[$1]] flagę bota.',
+'makebot-logentryrevoke'  => 'odebrał/a kontu [[$1]] flagę bota.',
 ),
 
 /* Piedmontese (Bèrto 'd Sèra) */

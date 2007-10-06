@@ -158,6 +158,8 @@ $allMessages = array(
 		'sign-uniquequery-similaremail' => 'بريد إلكتروني مشابه',
 	),
 	'ext' => array(
+		'sign-selectdoc' => 'Decumentu:',
+		'sign-error-nosuchdoc' => 'El decumentu que piisti ($1) nu desisti.',
 		'sign-realname' => 'Nombri:',
 		'sign-city' => 'Ciá:',
 		'sign-state' => 'Estau:',
@@ -167,6 +169,8 @@ $allMessages = array(
 		'sign-viewfield-state' => 'Estau',
 		'sign-viewfield-country' => 'Pais',
 		'sign-viewfield-options' => 'Ocionis',
+		'sign-signatures' => 'Firmas',
+		'sign-closed' => 'afechau',
 	),
 	'hsb' => array(
 		'signdocument' => 'Dokument podpisać',
