@@ -1,4 +1,11 @@
 <?php
+
+$wgExtensionCredits['other'][] = array(
+        'name' => 'DismissableSiteNotice',
+        'author' => 'Brion Vibber',
+        'description' => 'Allows users to close the sitenotice.'
+);
+
 function wfDismissableSiteNotice( &$notice ) {
 	global $wgMajorSiteNoticeID, $wgUser;
 	

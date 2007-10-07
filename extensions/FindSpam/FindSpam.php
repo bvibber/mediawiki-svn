@@ -12,8 +12,12 @@ global $wgAvailableRights, $wgGroupPermissions;
 $wgAvailableRights[] = 'findspam';
 $wgGroupPermissions['sysop']['findspam'] = true;
 
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-extAddSpecialPage( dirname(__FILE__) . '/FindSpam_body.php', 'FindSpam', 'FindSpamPage' );
+$wgSpecialPages['FindSpam'] = 'FindSpamPage';
+$wgAutoloadClasses['FindSpamPage'] = dirname(__FILE__) . '/FindSpam_body.php';
+ 
+$wgExtensionCredits['specialpage'][] = array(
+        'name' => 'FindSpam',
+        'author' => 'Tim Starling',
+        'description' => 'Adds a special page that allows to find recently added spam.'
+);
 
