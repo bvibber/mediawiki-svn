@@ -32,6 +32,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'Esti usuáriu á hechu $1 eicionis.',
 ),
 
+'fi' => array(
+	'contributionseditcount'  =>  'Tällä käyttäjällä on $1 muokkausta.',
+),
+
 'fr' => array(
 	'contributionseditcount'  =>  'Cet utilisateur a $1 éditions.',
 ),
