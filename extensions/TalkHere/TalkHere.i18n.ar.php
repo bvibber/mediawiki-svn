@@ -11,6 +11,7 @@
  */
 
 $messages = array(
+	'talkhere-title' => '$1',#identical but defined
 	'talkhere-talkpage' => 'صفحة نقاش',
 	'talkhere-notalk' => '\'\'(لا تعليقات بعد)\'\'',
 	'talkhere-addcomment' => 'أضف تعليقا',

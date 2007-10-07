@@ -1033,6 +1033,8 @@ Dette resulterer i den følgende krypterte versjonen. Den vil vises offentlig p�
 	'group-boardvote'         => 'valgadministratorer',
 	'group-boardvote-member'  => 'valgadministrator',
 	'grouppage-boardvote'     => '{{ns:project}}:Valgadministrator',
+	'boardvote_blocked'       => 'Beklager, du har blitt blokkert på den registrerte wikien. Blokkerte brukere har ikke lov til å stemme.',
+	'boardvote_welcome'       => 'Velkommen, \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['oc'] = array(
 	'boardvote'               => 'Eleccions al conselh d’administracion de la Wikimedia Foundation',

@@ -16,6 +16,7 @@ $messages = array(
 	'player-playertitle' => 'برنامج: $1',
 	'player-file' => 'اسم الملف',
 	'player-play' => 'عرض',
+	'player-imagepage-header' => '<h1>$1</h1>',#identical but defined
 	'player-not-allowed' => 'صيغة غير مسموح بها',
 	'player-not-found' => 'الملف غير موجود',
 	'player-invalid-title' => 'عنوان غير صحيح',

@@ -25,8 +25,11 @@ function efProfileMonitorMessages() {
 ),
 
 'ar' => array(
+'profiling' => 'معالجة البيانات',
+'profiling-process' => 'معالجة العملية:',
 'profiling-wildcard' => 'استخدم كارتا خاصا',
 'profiling-ok' => 'موافق',
+'profiling-data' => 'معالجة البيانات ل`$1`',
 'profiling-data-process' => 'عملية',
 'profiling-data-count' => 'عداد',
 'profiling-data-time' => 'الزمن (الكل)',

@@ -1,4 +1,4 @@
-<?PHP
+	<?PHP
 $allMessages = array(
 	'en' => array(
 		'signaturelogpage'      => 'Signature Log',

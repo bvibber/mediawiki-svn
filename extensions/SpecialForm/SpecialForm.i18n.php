@@ -47,6 +47,31 @@ $SpecialFormMessages =array(
 		'formsaveerrortext' => 'There was an unknown error saving page \'$1\'.',
 	),
 
+	'ar' => array(
+		'form' => 'استمارة',
+		'formnoname' => 'لا اسم استمارة',
+		'formnonametext' => 'يجب أن توفر اسم استمارة، مثل "Special:Form/Nameofform".',
+		'formbadname' => 'اسم استمارة سيء',
+		'formbadnametext' => 'لا توجد استمارة بهذا الاسم.',
+		'formpattern' => '$1-استمارة',
+		'formtemplatepattern' => '$1',#identical but defined
+		'formtitlepattern' => 'أضف $1 جديدا',
+		'formsave' => 'حفظ',
+		'formarticleexists' => 'الصفحة موجودة',
+		'formarticleexiststext' => 'الصفحة [[$1]] موجودة بالفعل.',
+		'formbadpagename' => 'اسم صفحة سيء',
+		'formbadpagenametext' => 'بيانات الاستمارة التي أدخلتها تصنع اسم صفحة سيئا، "$1".',
+		'formrequiredfieldpluralerror' => 'الحقول $1 مطلوبة لهذه الاستمارة. من فضلك املأهم.',
+		'formrequiredfielderror' => 'الحقل $1 مطلوب لهذه الاستمارة. من فضلك املأه.',
+		'formsavesummary' => 'صفحة جديدة باستخدام [[Special:Form/$1]]',
+		'formsaveerror' => 'خطأ في حفظ الاستمارة',
+		'formsaveerrortext' => 'حدث خطأ غير معروف أثناء حفظ الاستمارة \'$1\'.',
+	),
+
+	'bcl' => array(
+		'formsave' => 'Itagama',
+	),
+
 	'de' => array(
 		'form'                         => 'Formular',
 		'formnoname'                   => 'Kein Formularname',
@@ -108,17 +133,21 @@ $SpecialFormMessages =array(
 	'nl' => array(
 		'form' => 'Formulier',
 		'formnoname' => 'Geen formuliernaam',
-        'formnonametext' => 'Geef een formuliernaam op, bijvoorbeeld "Special:Form/Formuliernaam".',
-        'formbadname' => 'Ongeldige formuliernaam',
-	    'formbadnametext' => 'Er bestaat geen formulier met die naam.',
+		'formnonametext' => 'Geef een formuliernaam op, bijvoorbeeld "Special:Form/Formuliernaam".',
+		'formbadname' => 'Ongeldige formuliernaam',
+		'formbadnametext' => 'Er bestaat geen formulier met die naam.',
 		'formpattern' => '$1-form',#identical but defined
 		'formtemplatepattern' => '$1',#identical but defined
 		'formtitlepattern' => 'Voeg nieuw $1 toe',
 		'formsave' => 'Opslaan',
 		'formarticleexists' => 'Pagina bestaat al',
 		'formarticleexiststext' => 'De pagina [[$1]] bestaat al.',
+		'formbadpagename' => 'Onjuiste paginanaam',
+		'formbadpagenametext' => 'De formuliergegevens die u hebt opgegeven zorgen voor een onjuiste pagina, "$1".',
+		'formrequiredfieldpluralerror' => 'De velden $1 zijn verplicht voor dit formulier. Vul ze alstublieft in.',
+		'formrequiredfielderror' => 'Het veld $1 is verplicht voor dit formulier. Vul het alstublieft in.',
 		'formsavesummary' => 'Nieuwe pagina via [[Special:Form/$1]]',
 		'formsaveerror' => 'Fout bij opslaan formulier',
 		'formsaveerrortext' => 'Er is een onbekende fout opgetreden bij het opslaan van pagina \'$1\'.',
-    ),
+	),
 );

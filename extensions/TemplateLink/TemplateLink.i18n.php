@@ -20,6 +20,10 @@ $allMessages = array(
 		'templatelink_empty' => 'يجب عليك توفير محدد.',
 		'templatelink_newtitle' => '$1 (مضمنة)',
 	),
+	'bcl' => array(
+		'templatelink' => 'Takod kan Templato',
+		'templatelink_empty' => 'Kaipuhan mong suplayan an parametro.',
+	),
         'de' => array(
                 'templatelink' => 'Vorlagen-Link',
                 'templatelink_empty' => 'Ein Parameter muss angegeben werden.',

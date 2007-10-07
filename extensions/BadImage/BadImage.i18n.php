@@ -59,9 +59,11 @@ function efBadImageMessages() {
 'bcl' => array(
 'badimages-add-btn' => 'Magdugang',
 'badimages-name' => 'Pangaran:',
+'badimages-not-added' => 'Dai maikakaag an retrato.',
 'badimages-reason' => 'Rason:',
 'badimages-remove' => '(halîon)',
 'badimages-remove-btn' => 'Halîon',
+'badimages-removed' => 'Pighalî sa lista an $1.',
 ),
 
 'br' => array(

@@ -75,6 +75,15 @@ function efUsernameBlacklistMessages( $single = false ) {
 'blacklistedusername' => 'Noms d’utilisateurs en liste noire',
 'blacklistedusernametext' => 'Le nom d’utilisateur que vous avez choisi se trouve sur la
 [[MediaWiki:Usernameblacklist|liste des noms interdits]]. Veuillez choisir un autre nom.',
+'usernameblacklist' => '<pre>
+# Les entrées de cette liste seront utilisées en tant qu\'expressions régulières
+# afin d\'empêcher la création de noms d\'utilisateurs interdits. Chaque item doit
+# faire parti d\'une liste à puces, par exemple
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => '{{PLURAL:$1|La ligne suivante|Les lignes suivantes}} de la liste noire des noms d\'utilisateurs {{PLURAL:$1|est invalide|sont invalides}} ; veuillez {{PLURAL:$1|la|les}} corriger avant d\'enregistrer :',
 ),
 
 'gl' => array(

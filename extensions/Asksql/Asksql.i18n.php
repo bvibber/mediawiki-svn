@@ -39,6 +39,7 @@ this function sparingly.",
 
 'bcl' => array(
 'asksql'           => 'Hapot na SQL',
+'sqlislogged'      => 'Giromdomon na an gabos na hapot nakalaog.',
 'sqlquery'         => 'Ilaog an hapot',
 'querybtn'         => 'Isumitir an hapot',
 'selectonly'       => 'Solamenteng an mga hapot na read-only sana an tinotogotan.',

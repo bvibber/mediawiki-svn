@@ -27,6 +27,7 @@ function efBlockTitlesMessages() {
 
 'bcl' => array(
 	'block_title_error_page_title' => 'Pigbágat na Titulo',
+	'block_title_error' => 'Despensa, dai tinotogotan na itagama an titulo kaining artikulo.',
 ),
 
 'de' => array(
@@ -55,6 +56,11 @@ function efBlockTitlesMessages() {
 'nl' => array(
 	'block_title_error_page_title' => 'Geblokkeerde paginanaam',
 	'block_title_error' => 'Sorry, het is niet toegestaan een pagina met deze naam op te slaan.',
+),
+
+'no' => array(
+	'block_title_error_page_title' => 'Blokkert tittel',
+	'block_title_error' => 'Beklager, tittelen på denne artikkelen kunne ikke lagres.',
 ),
 
 'oc' => array(

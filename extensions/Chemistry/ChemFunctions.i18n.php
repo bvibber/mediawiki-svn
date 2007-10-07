@@ -234,6 +234,10 @@ $wgChemFunctions_Messages['nl'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Invoerfout!'
 );
 
+$wgChemFunctions_Messages['no'] = array(
+	'ChemFunctions_CAS' => 'CAS-nummer',
+);
+
 /**
  *  ru
  */
