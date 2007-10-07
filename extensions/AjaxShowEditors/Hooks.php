@@ -33,6 +33,7 @@ function wfAjaxShowEditorsCleanup( $article, $user ) {
 		),
 		__METHOD__
 	);
+	return true;
 }
 
 // Only when editing a page
@@ -69,5 +70,6 @@ function wfAjaxShowEditorsShowBox( ) {
 		. '<p id="ajax-se-editors">'. wfMsg('ajax-se-pending') . '</p>'
 		. '</div>'
 		);
+	return true;
 }
 
