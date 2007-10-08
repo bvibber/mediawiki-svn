@@ -104,6 +104,7 @@ $allMessages = array(
 		'signdocument' => 'توقيع الوثيقة',
 		'sign-nodocselected' => 'من فضلك اختر الوثيقة التي تود توقيعها.',
 		'sign-selectdoc' => 'وثيقة:',
+		'sign-docheader' => '<div class="noarticletext">من فضلك استخدم هذه الاستمارة لتوقيع الوثيقة "[[$1]]," المعروضة بالأسفل. من فضلك اقرأ الوثيقة كلها، وإذا كنت تود التعبير عن تأييدك لها، من فضلك املأ الحقول المطلوبة لتوقعها.</div>',
 		'sign-error-nosuchdoc' => 'الوثيقة التي طلبتها ($1) غير موجودة.',
 		'sign-realname' => 'اسم:',
 		'sign-address' => 'عنوان الشارع:',
@@ -123,6 +124,7 @@ $allMessages = array(
 		'sign-list-hidebday' => 'لا تعرض العمر',
 		'sign-list-hideemail' => 'لا تعرض البريد الإلكتروني',
 		'sign-submit' => 'توقيع الوثيقة',
+		'sign-information' => '<div class="noarticletext">شكرا لك لقضائك وقتا في قراءة هذه الوثيقة. لو أنك تتفق معها، من فضلك عبر عن تأييدك بواسطة ملأ الحقول المطلوبة بالأسفل وضغط "توقيع الوثيقة." من فضلك تأكد من أن معلوماتك الشخصية صحيحة وأننا نملك وسيلة للاتصال بك للتأكد من هويتك. لاحظ أن [[wikipedia:IP address|عنوان الأيبي]] الخاص بك و other معلومات التعريف الأخرى سيتم تسجيلها بواسطة هذه الاستمارة وسيتم استخدامها بواسطة المديرين لتحجيم التوقيعات المكررة وتأكيد صحة معلوماتك الشخصية. بما أن استخدام البروكسيهات المجهولة والمفتوحة يمنع قدرتنا على أداء هذه المهمة، التوقيعات من هذه البروكسيهات على الأرجح لن يتم احتسابها. لو أنك موصول حاليا بواسطة خادم بروكسي، من فضلك اقطع التوصيل منه واستخدم اتصالا قياسيا أثناء التوقيع. <br /><br /> $1',
 		'sig-success' => 'لقد وقعت الوثيقة بنجاح.',
 		'sign-view-selectfields' => '<b>الحقول للعرض:</b>',
 		'sign-viewfield-entryid' => 'رقم المدخلة',
@@ -154,6 +156,16 @@ $allMessages = array(
 		'sig-private' => '<i>خاص</i>',
 		'sign-sigdetails' => 'تفاصيل التوقيع',
 		'sign-emailto' => '<a href="mailto:$1">$1</a>',#identical but defined
+		'sign-iptools' => '<span class="plainlinksneverexpand"><!--
+		-->[[User:$1|$1]] ([[User talk:$1|talk]] • <!--
+		-->[[Special:Contributions/$1|contribs]] • <!--
+		-->[http://www.dnsstuff.com/tools/whois.ch?domain={{urlencode:$1}}&cache=off&email=on WHOIS] • <!--
+		-->[http://www.dnsstuff.com/tools/ptr.ch?ip={{urlencode:$1}}&cache=off&email=on RDNS] • <!--
+		-->[http://www.robtex.com/rbls/$1.html RBLs] • <!--
+		-->[[Special:Blockip/$1|منع المستخدم]] • <!--
+		-->[{{fullurl:Special:Log/block|page=User:{{urlencode:$1}}}} سجل المنع] • <!--
+		-->[{{fullurl:Special:CheckUser|ip={{urlencode:$1}}}} تدقيق الأيبي])<!--
+		--></span>',
 		'sign-viewfield-stricken' => 'مشطوب',
 		'sign-viewfield-reviewedby' => 'مراجع',
 		'sign-viewfield-reviewcomment' => 'تعليق',

@@ -36,10 +36,25 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 	),
 	'ar' => array(
 		'createsigndocument' => 'فعل توقيع الوثيقة',
+		'createsigndoc-head' => 'استخدم هذه الوثيقة لإنشاء صفحة \'Sign Document\' للمقالة المعطاة، بحيث
+يمكن للمستخدمين توقيعها من خلال [[Special:SignDocument]]. من فضلك حدد اسم
+المقالة التي تود تفعيل التوقيع الرقمي عليها، أعضاء أي 
+مجموعة مستخدم مسموح لهم بتوقيعها، أي حقول تود أن تكون مرئية للمستخدمين 
+وأي يجب أن تكون اختيارية، عمر أدنى لمستخدمين ليمكن لهم توقيع 
+الوثيقة (لا حد أدنى لو حذفت)، ونص تقديمي مختصر يصف 
+الوثيقة ويوفر التعليمات للمستخدمين.
+
+<b>لا توجد حاليا أية طريقة لحذف أو تعديل توقيعات الوثائق بعد
+إنشائها</b> بدون دخول قاعدة البيانات مباشرة. إضافة إلى ذلك، نص المقالة 
+المعروض في صفحة التوقيع سيكون النص \'\'الحالي\'\' للصفحة، بغض النظر عن
+التغييرات بها بعد اليوم. من فضلك كن متأكدا تماما من أن الوثيقة
+وصلت لنقطو ثبات للتوقيع، ومن فضلك أيضا تأكد أنك حددت
+كل الحقول تماما كما يجب أن تكون، \'\'قبل تنفيذ هذه الاستمارة\'\'.',
 		'createsigndoc-pagename' => 'صفحة:',
 		'createsigndoc-allowedgroup' => 'المجموعة المسموحة:',
 		'createsigndoc-email' => 'عنوان البريد الإلكتروني:',
 		'createsigndoc-address' => 'عنوان المنزل:',
+		'createsigndoc-extaddress' => 'المدينة، الولاية، البلد:',
 		'createsigndoc-phone' => 'رقم الهاتف:',
 		'createsigndoc-bday' => 'تاريخ الميلاد:',
 		'createsigndoc-minage' => 'العمر الأدنى:',
@@ -48,6 +63,8 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 		'createsigndoc-optional' => 'اختياري',
 		'createsigndoc-create' => 'أنشيء',
 		'createsigndoc-error-generic' => 'خطأ: $1',
+		'createsigndoc-error-pagenoexist' => 'خطأ: الصفحة [[$1]] غير موجودة.',
+		'createsigndoc-success' => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]]. لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
 	),
 	'ext' => array(
 		'createsigndoc-pagename' => 'Páhina:',

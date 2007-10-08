@@ -9,4 +9,5 @@
 
 $messages = array(
 	'selectcategory-title' => 'اختر التصنيفات',
+	'selectcategory-subtitle' => 'Shift-mouse لاختيار مدخلات متوافقة متعددة، Ctrl-mouse لاختيار مدخلات غير متوافقة.',
 );

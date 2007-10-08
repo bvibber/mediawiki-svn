@@ -12,6 +12,8 @@
 
 $messages = array(
 	'talkhere-title' => '$1',#identical but defined
+	'talkhere-foottext' => 'التعليقات بالأعلى ربما تكون قد تركها زائرون. <br/>
+	مديرو هذا الموقع لا يمكن أن يتحملوا المسؤولية لمحتوى هذه التعليقات.',
 	'talkhere-talkpage' => 'صفحة نقاش',
 	'talkhere-notalk' => '\'\'(لا تعليقات بعد)\'\'',
 	'talkhere-addcomment' => 'أضف تعليقا',

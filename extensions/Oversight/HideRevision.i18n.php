@@ -56,6 +56,14 @@ Releasing this information can result in permanent loss of Oversight privileges.
 'hiderevision' => 'أخف النسخ بشكل دائم',
 'hiderevision-prompt' => 'رقم النسخة للإزالة:',
 'hiderevision-continue' => 'استمر',
+'hiderevision-text' => 'هذا يجب أن يستخدم \'\'\'فقط\'\'\' في الحالات التالية:
+* معلومات شخصية غير ملائمة
+*: \'\'عناوين المنازل وأرقام الهواتف, أرقام التأمين الاجتماعي، إلى آخره\'\'
+
+\'\'\'إساءة استخدام هذا النظام سينتج عنه فقد الصلاحيات.\'\'\'
+
+المدخلات المزالة لن تكون مرئية لأي شخص عبر موقع الويب،
+لكن عمليات الحذف ستسجل ويمكن استرجاعها يدويا بواسطة مدير قاعدة بيانات لو ارتكبت خطأ.',
 'hiderevision-reason' => 'السبب (سيسجل سرا):',
 'hiderevision-submit' => 'أخف هذه البيانات بشكل دائم',
 'hiderevision-tab' => 'إخفاء النسخة',
@@ -67,12 +75,17 @@ Releasing this information can result in permanent loss of Oversight privileges.
 'hiderevision-error-current' => 'لا يمكن حذف آخر تعديل لصفحة. استرجع هذا التغيير أولا.',
 'hiderevision-error-delete' => 'لم يمكن الأرشفة؛ هل تم حذفها سابقا؟',
 'hiderevision-archive-status' => 'النسخة المحذوفة من $1: $2',
+'oversight-nodiff' => 'غير قادر على تتبع التغييرات حيث أنه لا توجد نسخة سابقة للصفحة. إما:
+*الصفحة تم حذفها
+*هذه النسخة المخفية كانت النسخة الأولى',
 'oversight-log-hiderev' => 'أزال تعديلا من $1',
 'oversight' => 'أوفرسايت',
 'oversight-view' => 'التفاصيل',
 'oversight-difference' => '(الفرق من النسخة المتبقية السابقة)',
 'oversight-prev' => 'آخر نسخة سابقة',
 'oversight-hidden' => 'نسخة مخفية',
+'oversight-header' => 'بالأسفل قائمة بالنسخ التي تم إخفاؤها بشكل دائم حديثا عن العامة.
+إفشاء هذه المعلومات يمكن أن ينتج عنه فقد دائم لصلاحيات الأوفرسايت.',
 ),
 
 /* German (Raymond) */

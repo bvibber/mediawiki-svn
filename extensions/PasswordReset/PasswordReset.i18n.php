@@ -27,6 +27,7 @@ $allMessages = array(
 		'passwordreset-newpass' => 'كلمة سر جديدة',
 		'passwordreset-confirmpass' => 'أكد كلمة السر',
 		'passwordreset-submit' => 'أعد ضبط كلمة السر',
+		'passwordreset-success' => 'كلمة السر تم ضبطها ل user_id: $1',
 	),
 
 	'de' => array( 

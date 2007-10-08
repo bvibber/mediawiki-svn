@@ -24,6 +24,7 @@ function efInputBoxMessages() {
 
 'ar' => array(
 	'inputbox-error-no-type'  => 'لم تقم بتحديد نوع صندوق الإدخال للإنشاء.',
+	'inputbox-error-bad-type' => 'نوع صندوق الإدخال "$1" لم يتم التعرف عليه. من فضلك حدد "create"، "comment"، "search" أو "search2".',
 	'tryexact'                => 'ابحث عن عنوان مطابق',
 	'searchfulltext'          => 'ابحث في النص الكامل',
 	'createarticle'           => 'إنشاء مقالة',

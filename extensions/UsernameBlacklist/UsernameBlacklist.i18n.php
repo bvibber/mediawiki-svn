@@ -42,6 +42,10 @@ function efUsernameBlacklistMessages( $single = false ) {
 'usernameblacklist-invalid-lines' => '{{PLURAL:$1|السطر التالي|السطور التالية}} في قائمة اسم المستخدم السوداء {{PLURAL:$1|غير صحيح|غير صحيحة}} ؛ من فضلك {{PLURAL:$1|صححه|صححها}} قبل الحفظ:',
 ),
 
+'bcl' => array(
+'blacklistedusername' => 'Blacklisted na username',
+),
+
 'bn' => array(
 'blacklistedusername' => 'নিষিদ্ধ ঘোষিত ব্যবহারকারী নাম',
 'blacklistedusernametext' => 'ব্যবহারকারীর নাম [[MediaWiki:Usernameblacklist|কালতালিকাভুক্ত ব্যবহারকারীর নাম সমূহের]] সাথে মিলেছে। দয়াকরে অন্য নাম পছন্দ করুন।',
@@ -78,7 +82,7 @@ function efUsernameBlacklistMessages( $single = false ) {
 'usernameblacklist' => '<pre>
 # Les entrées de cette liste seront utilisées en tant qu\'expressions régulières
 # afin d\'empêcher la création de noms d\'utilisateurs interdits. Chaque item doit
-# faire parti d\'une liste à puces, par exemple
+# faire partie d\'une liste à puces, par exemple
 #
 # * Foo
 # * [Bb]ar
