@@ -201,6 +201,10 @@ function efPatrollerMessages() {
 'patrol-resume' => 'Fare clic qui per riprendere.',
 ),
 
+'la' => array(
+'patrol-revert-reason' => 'Causa:',
+),
+
 /* nld / Dutch (Siebrand Mazeland) */
 'nl' => array(
 'patrol' => 'Wijzigingen controleren',

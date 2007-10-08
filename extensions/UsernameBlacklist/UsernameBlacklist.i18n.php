@@ -101,8 +101,8 @@ function efUsernameBlacklistMessages( $single = false ) {
 ),
 
 'hsb' => array(
-'blacklistedusername' => 'Wužiwarske mjeno na lisćinje zawrjenjow',
-'blacklistedusernametext' => 'Wubrane wužiwarske mjeno steji na [[MediaWiki:Usernameblacklist|lisćinje zawrjenych wužiwarskich mjenow]]. Prošu wubjer druhe mjeno.',
+'blacklistedusername' => 'Tute wužiwarske mjeno steji na čornej lisćinje.',
+'blacklistedusernametext' => 'Wubrane wužiwarske mjeno steji na [[MediaWiki:Usernameblacklist|čornej lisćinje wužiwarskich mjenow]]. Prošu wubjer druhe mjeno.',
 'usernameblacklist' => '<pre>
 # Zapiski w tutej lisćinje budu so jako dźěl regularneho wuraza wužiwać, 
 # hdyž so wužiwarske mjena z registracije blokuja. Kóždy zapisk měł dźěl

@@ -130,6 +130,11 @@ $SpecialFormMessages =array(
 		'formsaveerrortext' => 'Bě njeznaty zmylk při składowanju nastawka "$1".',
 	),
 
+	'la' => array(
+		'formsave' => 'Servare',
+		'formarticleexiststext' => 'Pagina [[$1]] iam existit.',
+	),
+
 	'nl' => array(
 		'form' => 'Formulier',
 		'formnoname' => 'Geen formuliernaam',

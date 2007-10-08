@@ -29,6 +29,11 @@ $wgMakesysopMessages['en'] = array(
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
 );
 
+$wgMakesysopMessages['af'] = array(
+	'already_sysop' => 'Hierdie gebruiker is al reeds \'n administrateur.',
+	'already_bureaucrat' => 'Hierdie gebruiker is al reeds \'n burokraat.',
+);
+
 /* Arabic (Meno25) */
 $wgMakesysopMessages['ar'] = array(
 	'makesysoptitle' => 'ترقية مستخدم لمدير نظام',

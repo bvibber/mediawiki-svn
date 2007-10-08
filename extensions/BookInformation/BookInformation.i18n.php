@@ -201,6 +201,8 @@ function efBookInformationMessages() {
 ),
 
 'la' => array(
+'bookinfo-result-title' => 'Titulus:',
+'bookinfo-result-author' => 'Auctor:',
 'bookinfo-result-year' => 'Annus:',
 ),
 

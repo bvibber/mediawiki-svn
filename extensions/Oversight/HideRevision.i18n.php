@@ -258,7 +258,7 @@ Wušmórnjene zapiski hižo njejsu za nikoho přez websydło widźeć.  Ale wuš
 'hiderevision-success' => 'Wuspěšnje archiwowany a zničeny.',
 'hiderevision-error-missing' => 'W datowej bance njenamakany.',
 'hiderevision-error-current' => 'Poslednja změna njehodźi so wušmórnyć. Staj tutu změnu wróćo.',
-'hiderevision-error-delete' => 'Archiwowanje njemóžno. Bu wersija prjedy wušmórnjena?',
+'hiderevision-error-delete' => 'Njemóžno do archiwa přewjesć – bu wersija do toho wušmórnjena?',
 'hiderevision-archive-status' => 'Wušmórnjena wersija z $1: $2',
 'oversight-nodiff' => 'Njeje přirunanje wersijow móžno, dokelž prjedawša wersija njeje. Móžnej přičinje:
 *Strona bu zničena

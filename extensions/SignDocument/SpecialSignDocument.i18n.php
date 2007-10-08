@@ -273,7 +273,11 @@ $allMessages = array(
 	),
 	'la' => array(
 		'sign-realname' => 'Nomen:',
+		'sign-city' => 'Urbs:',
 		'sign-viewfield-realname' => 'Nomen',
+		'sign-viewfield-city' => 'Urbs',
+		'sign-viewfield-reviewcomment' => 'Sententia',
+		'sign-review-comment' => 'Sententia',
 	),
 	'nl' => array(
 		'signdocument' => 'Document ondertekenen',

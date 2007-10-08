@@ -11,5 +11,6 @@
  */
 
 $messages = array(
+	'player-goto-page' => 'Pagina',
 	'player-goto-file' => 'Fasciculus',
 );

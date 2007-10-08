@@ -219,6 +219,12 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => '$1 دەگەن ماقالا بٸزدە جوق.',
 ),
 
+'la' => array(
+'contributors-target' => 'Titulus:',
+'contributors-submit' => 'Monstrare',
+'contributors-others' => 'et $1 alia',
+),
+
 'nds' => array(
 'contributors' => 'Lüüd, de bidragen hebbt',
 'contributors-toolbox' => 'Lüüd, de wichtige Delen bidragen hebbt',
