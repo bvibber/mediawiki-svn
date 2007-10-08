@@ -222,6 +222,12 @@ $wgExpandTemplatesMessages['la'] = array(
 $wgExpandTemplatesMessages['lo'] = array(
 	'expandtemplates'                  => 'ຂະຫຍາຍແມ່ແບບ',
 );
+$wgExpandTemplatesMessages['nan'] = array(
+	'expandtemplates'                  => 'Khok-chhiong pang-bô͘',
+	'expand_templates_input'           => 'Su-ji̍p bûn-jī:',
+	'expand_templates_output'          => 'Kiat-kó:',
+	'expand_templates_remove_comments' => 'Comments the̍h tiāu',
+);
 $wgExpandTemplatesMessages['nl'] = array(
 	'expandtemplates'                  => 'Sjablonen substitueren',
 	'expand_templates_intro'           => 'Deze speciale pagina leest de ingegeven tekst in en
@@ -387,6 +393,7 @@ $wgExpandTemplatesMessages['zh-hant'] = array(
 $wgExpandTemplatesMessages['zh'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-cn'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-hk'] = $wgExpandTemplatesMessages['zh-hant'];
+$wgExpandTemplatesMessages['zh-min-nan'] = $wgExpandTemplatesMessages['nan'];
 $wgExpandTemplatesMessages['zh-sg'] = $wgExpandTemplatesMessages['zh-hans'];
 $wgExpandTemplatesMessages['zh-tw'] = $wgExpandTemplatesMessages['zh-hant'];
 $wgExpandTemplatesMessages['zh-yue'] = $wgExpandTemplatesMessages['yue'];

@@ -147,6 +147,9 @@ $wgFilepathMessages['la'] = array(
 $wgFilepathMessages['lo'] = array(
 	'filepath'         => 'ທາງໄປຫາໄຟລ໌',
 );
+$wgFilepathMessages['nan'] = array(
+	'filepath'         => 'Tóng-àn ê soàⁿ-lō·',
+);
 $wgFilepathMessages['nl'] = array(
 	'filepath'        => 'Bestandslocatie',
 	'filepath_page'   => 'Bestand:',
@@ -264,6 +267,7 @@ $wgFilepathMessages['zh-hant'] = array(
 $wgFilepathMessages['zh'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-cn'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-hk'] = $wgFilepathMessages['zh-hant'];
+$wgFilepathMessages['zh-min-nan'] = $wgFilepathMessages['nan'];
 $wgFilepathMessages['zh-sg'] = $wgFilepathMessages['zh-hans'];
 $wgFilepathMessages['zh-tw'] = $wgFilepathMessages['zh-hant'];
 $wgFilepathMessages['zh-yue'] = $wgFilepathMessages['yue'];

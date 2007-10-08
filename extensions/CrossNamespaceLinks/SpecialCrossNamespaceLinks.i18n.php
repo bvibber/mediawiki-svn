@@ -116,6 +116,10 @@ $wgCrossNamespaceLinksMessages['ku'] = array(
 $wgCrossNamespaceLinksMessages['la'] = array(
 	'crossnamespacelinks'         => 'Nexus trans praefixa',
 );
+$wgCrossNamespaceLinksMessages['nan'] = array(
+	'crossnamespacelinks'         => 'Ha̍ⁿh kòe miâ-khong-kan ê liân-kiat',
+	'crossnamespacelinkstext'     => '$1: $2 ê liân-kiat kàu $3',
+);
 $wgCrossNamespaceLinksMessages['nl'] = array(
 	'crossnamespacelinks'         => 'Kruisverwijzingen tussen naamruimtes',
 	'crossnamespacelinks-summary' => 'Deze pagina voorziet in een overzicht van links vanuit een pagina in de hoofdnaamruimte naar andere naamruimtes (met uitzondering van de naamruimtes {{ns:special}}, {{ns:talk}}, {{ns:project}} en {{ns:template}}), waarvan het gebruik wordt afgeraden.',
@@ -208,9 +212,7 @@ $wgCrossNamespaceLinksMessages['zh-hant'] = array(
 $wgCrossNamespaceLinksMessages['zh'] = $wgCrossNamespaceLinksMessages['zh-hans'];
 $wgCrossNamespaceLinksMessages['zh-cn'] = $wgCrossNamespaceLinksMessages['zh-hans'];
 $wgCrossNamespaceLinksMessages['zh-hk'] = $wgCrossNamespaceLinksMessages['zh-hant'];
+$wgCrossNamespaceLinksMessages['zh-min-nan'] = $wgCrossNamespaceLinksMessages['nan'];
 $wgCrossNamespaceLinksMessages['zh-sg'] = $wgCrossNamespaceLinksMessages['zh-hans'];
 $wgCrossNamespaceLinksMessages['zh-tw'] = $wgCrossNamespaceLinksMessages['zh-hant'];
 $wgCrossNamespaceLinksMessages['zh-yue'] = $wgCrossNamespaceLinksMessages['yue'];
-
-
-

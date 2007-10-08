@@ -306,6 +306,10 @@ function efInputBoxMessages() {
 	'createarticle'  => 'Создади статија',
 ),
 
+'nan' => array(
+	'searchfulltext'          => 'Chhiau choan-bûn',
+),
+
 'nds' => array(
 	'tryexact'       => 'exakte Söök versöken',
 	'searchfulltext' => 'in’n Vulltext söken',
@@ -502,6 +506,8 @@ function efInputBoxMessages() {
 
 	/* Kazakh default, fallback to kk-kz */
 	$messages['kk'] = $messages['kk-kz'];
+	/* Min nan default, fallback to nan */
+	$messages['zh-min-nan'] = $messages['nan'];
 	/* Chinese defaults, fallback to zh-hans or zh-hant */
 	$messages['zh'] = $messages['zh-hans'];
 	$messages['zh-cn'] = $messages['zh-hans'];

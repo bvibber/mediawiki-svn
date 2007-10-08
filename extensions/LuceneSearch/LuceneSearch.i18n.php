@@ -419,6 +419,18 @@ Ieškoma $3 $9 $10",
 Tai turbūt laikina; pamėginkite šiek tiek vėliau,
 arba galite mėginti ieškoti projekte per išorines paieškos paslaugas:\n"
 );
+$wgLuceneSearchMessages['nan'] = array(
+	'searchnumber'          => "<strong>$3 hāng kiat-kó ê tē $1-$2 hāng</strong>",
+	'searchprev'            => "&#x00AB; <span style='font-size: small'>Thâu-chêng</span>",
+	'searchnext'            => "<span style='font-size: small'>Āu-piah</span> &#x00BB;",
+	'searchscore'           => "Koan-liân-sèng: $1",
+	'searchsize'            => "$1KB ($2 jī)",
+	'searchnoresults'       => "Chhōe bô tùi-tâng ê bûn-jī.",
+	'lucenepowersearchtext' => "Chhiau chia ê miâ-khong-kan:\n
+$1\n
+Chhōe $3 $9 $10",
+	'lucenefallback'        => "Wiki ê chhiau-chhoē kong-lêng chhut būn-tê, chiām-sî bē iōng tit; chhiáⁿ liâm-mī koh chhì. Mā thang ēng goā-chām ê kiám-sek ho̍k-bū chhiau-chhoē khoàⁿ-māi:\n",
+);
 $wgLuceneSearchMessages['nds'] = array(
 	'searchnumber'          => '<strong>Resultaten $1-$2 vun $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Vörig</span>',
@@ -723,6 +735,7 @@ $1\n
 $wgLuceneSearchMessages['zh'] = $wgLuceneSearchMessages['zh-hans'];
 $wgLuceneSearchMessages['zh-cn'] = $wgLuceneSearchMessages['zh-hans'];
 $wgLuceneSearchMessages['zh-hk'] = $wgLuceneSearchMessages['zh-hant'];
+$wgLuceneSearchMessages['zh-min-nan'] = $wgLuceneSearchMessages['nan'];
 $wgLuceneSearchMessages['zh-sg'] = $wgLuceneSearchMessages['zh-hans'];
 $wgLuceneSearchMessages['zh-tw'] = $wgLuceneSearchMessages['zh-hant'];
 $wgLuceneSearchMessages['zh-yue'] = $wgLuceneSearchMessages['yue'];

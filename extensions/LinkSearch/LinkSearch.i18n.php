@@ -147,6 +147,9 @@ $wgLinkSearchMessages['la'] = array(
 $wgLinkSearchMessages['lo'] = array(
 	'linksearch'       => 'ຄົ້ນຫາການເຊື່ອມຕໍ່ຫາເວັບ',
 );
+$wgLinkSearchMessages['nan'] = array(
+	'linksearch'       => 'Chhiau-chhoē chām-goā liân-kiat',
+);
 $wgLinkSearchMessages['nl'] = array(
 	'linksearch'       => 'Zoek externe links',
 	'linksearch-pat'   => 'Zoekpatroon:',
@@ -235,10 +238,7 @@ $wgLinkSearchMessages['zh-hant'] = array(
 $wgLinkSearchMessages['zh'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-cn'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-hk'] = $wgLinkSearchMessages['zh-hant'];
+$wgLinkSearchMessages['zh-min-nan'] = $wgLinkSearchMessages['nan'];
 $wgLinkSearchMessages['zh-sg'] = $wgLinkSearchMessages['zh-hans'];
 $wgLinkSearchMessages['zh-tw'] = $wgLinkSearchMessages['zh-hant'];
 $wgLinkSearchMessages['zh-yue'] = $wgLinkSearchMessages['yue'];
-
-
-
-

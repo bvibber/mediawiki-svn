@@ -61,6 +61,9 @@ $wgDeletedContribsMessages['kk-cn'] = array(
 );
 $wgDeletedContribsMessages['kk'] = $wgDeletedContribsMessages['kk-kz'];
 
+$wgDeletedContribsMessages['nan'] = array(
+	'deletedcontributions'		 => 'Hō͘ lâng thâi tiāu ê kòng-hiàn'
+);
 
 $wgDeletedContribsMessages['la'] = array(
 	'deletedcontributions' => 'Conlationes usoris deletae',
@@ -113,6 +116,7 @@ $wgDeletedContribsMessages['zh-hant'] = array(
 $wgDeletedContribsMessages['zh'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-cn'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-hk'] = $wgDeletedContribsMessages['zh-hant'];
+$wgDeletedContribsMessages['zh-min-nan'] = $wgDeletedContribsMessages['nan'];
 $wgDeletedContribsMessages['zh-sg'] = $wgDeletedContribsMessages['zh-hans'];
 $wgDeletedContribsMessages['zh-tw'] = $wgDeletedContribsMessages['zh-hant'];
 $wgDeletedContribsMessages['zh-yue'] = $wgDeletedContribsMessages['yue'];

@@ -144,6 +144,9 @@ $wgSiteMatrixMessages['lo'] = array(
 $wgSiteMatrixMessages['lt'] = array(
 	"sitematrix" => "Wikimedia projektų sąrašas",
 );
+$wgSiteMatrixMessages['nan'] = array(
+	'sitematrix' => 'Wikimedia wiki lia̍t-toaⁿ',
+);
 $wgSiteMatrixMessages['nl'] = array(
 	'sitematrix' => 'Lijst met Wikimedia-wiki\'s',
 	'sitematrix-language' => 'Taal',
@@ -248,5 +251,6 @@ $wgSiteMatrixMessages['zh-tw'] = array(
 $wgSiteMatrixMessages['zh'] = $wgSiteMatrixMessages['zh-hans'];
 $wgSiteMatrixMessages['zh-cn'] = $wgSiteMatrixMessages['zh-hans'];
 $wgSiteMatrixMessages['zh-hk'] = $wgSiteMatrixMessages['zh-hant'];
+$wgSiteMatrixMessages['zh-min-nan'] = $wgSiteMatrixMessages['nan'];
 $wgSiteMatrixMessages['zh-sg'] = $wgSiteMatrixMessages['zh-hans'];
 $wgSiteMatrixMessages['zh-yue'] = $wgSiteMatrixMessages['yue'];

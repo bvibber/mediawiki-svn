@@ -694,6 +694,12 @@ $wgMakesysopMessages['mk'] = array(
 	'group-steward-member' => 'Стјуард',
 	'grouppage-steward'    => '{{ns:project}}:Стјуарди',
 );
+$wgMakesysopMessages['nan'] = array(
+	'makesysoptitle'       => 'Kā iōng-chiá piàn chò hêng-chèng jîn-oân',
+	'makesysopname'        => 'Iōng-chiá ê miâ:',
+	'makesysopsubmit'      => 'Kā chit ūi iōng-chiá piàn chò hêng-chèng jîn-oân',
+	'makesysop'            => 'Kā iōng-chiá piàn chò hêng-chèng jîn-oân',
+);
 $wgMakesysopMessages['nds'] = array(
 	'makesysoptitle' => 'Maak en Bruker to en Administrater',
 	'makesysoptext' => 'Disse Mask warrt vun Bürokraten bruukt, üm normale Bruker to Administratern to maken.',
@@ -1244,5 +1250,6 @@ $wgMakesysopMessages['zh-tw'] = array(
 $wgMakesysopMessages['zh'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-cn'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-hk'] = $wgMakesysopMessages['zh-hant'];
+$wgMakesysopMessages['zh-min-nan'] = $wgMakesysopMessages['nan'];
 $wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-hans'];
 $wgMakesysopMessages['zh-yue'] = $wgMakesysopMessages['yue'];

@@ -913,6 +913,13 @@ $wgBoardVoteMessages['la'] = array(
 	'boardvote_edits_many'    => 'plurimae',
 	'boardvote_welcome'       => 'Salve \'\'\'$1\'\'\'!',
 );
+$wgBoardVoteMessages['nan'] = array(
+	'boardvote'               => "Wikimedia Táng-sū-hōe soán-kí",
+	'boardvote_entry'         => "* [[Special:Boardvote/vote|Tâu-phiò]]
+* [[Special:Boardvote/list|Lia̍t kàu taⁿ ê tâu-phiò]]
+* [[Special:Boardvote/dump|Dump encrypted soán-kí kì-lo̍k]]",
+	'boardvote_dumplink'      => "Chhi̍h chia",
+);
 $wgBoardVoteMessages['nl'] = array(
 	'boardvote'               => 'Wikimedia Board of Trustees-verkiezing',
 	'boardvote_entry'         => '* [[Special:Boardvote/vote|Stemmen]]
@@ -1775,13 +1782,7 @@ $wgBoardVoteMessages['zh-hant'] = array(
 $wgBoardVoteMessages['zh'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-cn'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-hk'] = $wgBoardVoteMessages['zh-hant'];
+$wgBoardVoteMessages['zh-min-nan'] = $wgBoardVoteMessages['nan'];
 $wgBoardVoteMessages['zh-sg'] = $wgBoardVoteMessages['zh-hans'];
 $wgBoardVoteMessages['zh-tw'] = $wgBoardVoteMessages['zh-hant'];
 $wgBoardVoteMessages['zh-yue'] = $wgBoardVoteMessages['yue'];
-
-
-
-
-
-
-

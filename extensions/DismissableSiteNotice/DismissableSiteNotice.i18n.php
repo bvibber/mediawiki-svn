@@ -96,6 +96,10 @@ $wgDismissableSiteNoticeMessages['lt'] = array(
 	'sitenotice_close' => 'paslėpti',
 );
 
+$wgDismissableSiteNoticeMessages['nan'] = array(
+	'sitenotice_close' => 'Chhú-siau',
+);
+
 $wgDismissableSiteNoticeMessages['nds'] = array(
 	'sitenotice_close' => 'wegmaken',
 );
@@ -166,10 +170,7 @@ $wgDismissableSiteNoticeMessages['zh-hant'] = array(
 $wgDismissableSiteNoticeMessages['zh'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-cn'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
+$wgDismissableSiteNoticeMessages['zh-min-nan'] = $wgDismissableSiteNoticeMessages['nan'];
 $wgDismissableSiteNoticeMessages['zh-sg'] = $wgDismissableSiteNoticeMessages['zh-hans'];
 $wgDismissableSiteNoticeMessages['zh-hk'] = $wgDismissableSiteNoticeMessages['zh-hant'];
 $wgDismissableSiteNoticeMessages['zh-yue'] = $wgDismissableSiteNoticeMessages['yue'];
-
-
-
-
