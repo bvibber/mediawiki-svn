@@ -83,6 +83,28 @@ function efGiveRollbackMessages() {
 'giverollback-change' => 'Chambal estau:',
 ),
 
+/* Finnish */
+'fi' => array(
+'giverollback' => 'Anna tai poista palautusoikeudet',
+'giverollback-header' => "'''Paikallinen byrokraatti voi käyttää tätä sivua antaakseen tai poistaakseen palautusoikeudet toiselta käyttäjältä.'''<br />Tätä voidaan käyttää niin, että ei-ylläpitäjät voivat nopeasti palauttaa vandalismia. Tämä tulisi tehdä soveltuvien käytäntöjen mukaisesti.",
+'giverollback-username' => 'Käyttäjänimi:',
+'giverollback-search' => 'Hae',
+'giverollback-hasrb' => 'Käyttäjällä [[User:$1|$1]] on palautusoikeudet.',
+'giverollback-norb' => 'Käyttäjällä [[User:$1|$1]] ei ole palautusoikeuksia.',
+'giverollback-toonew' => 'Käyttäjä [[User:$1|$1]] on liian uusi, ja täten hänelle ei voida antaa palautusoikeuksia.',
+'giverollback-sysop' => 'Käyttäjä [[User:$1|$1]] on ylläpitäjä ja täten hänellä on jo palautusoikeudet.',
+'giverollback-change' => 'Muuta tilaa:',
+'giverollback-grant' => 'Anna',
+'giverollback-revoke' => 'Poista',
+'giverollback-comment' => 'Kommentti:',
+'giverollback-granted' => 'Käyttäjällä [[User:$1|$1]] on nyt palautusoikeudet.',
+'giverollback-revoked' => 'Käyttäjällä [[User:$1|$1]] ei enää ole palautusoikeuksia.',
+'giverollback-logpage' => 'Palautusoikeusloki',
+'giverollback-logpagetext' => 'Tämä on loki muutoksista ei-ylläpitäjien palautusoikeuksiin.',
+'giverollback-logentrygrant' => 'antoi palautusoikeudet käyttäjälle [[$1]]',
+'giverollback-logentryrevoke' => 'poisti palautusoikeudet käyttäjältä [[$1]]',
+),
+
 /* French */
 'fr' => array(
 'giverollback' => 'Donner ou enlever les droits de révocation',
@@ -348,7 +370,3 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 	return $messages;
 
 }
-
-
-
-
