@@ -47,6 +47,7 @@ require_once('PageHistory.php');
 $wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
 $wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
 $wgHooks['LinkerMakeLinkObj'][] = array('LqtDispatch::makeLinkObj');
+$wgHooks['ChangesListInsertArticleLink'][] = array('LqtDispatch::changesListArticleLink');
 
 class LqtDispatch {
 	public static $views = array(
@@ -147,8 +148,6 @@ class LqtDispatch {
 	}
 	
 	static function makeLinkObj( &$returnValue, &$linker, $nt, $text, $query, $trail, $prefix ) {
-//		var_dump(array($nt, $text,$query,$trail, $prefix));
-		
 		if( ! $nt->isTalkPage() )
 			return true;
 		
@@ -174,6 +173,17 @@ class LqtDispatch {
 			$returnValue = $linker->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix );
 		}
 		return false;
+	}
+	
+	static function changesListArticleLink(&$changeslist, &$articlelink, &$s, &$rc, $unpatrolled, $watched) {
+		if( $rc->getTitle()->getNamespace() == NS_LQT_THREAD ) {
+			$thread = Threads::withRoot(new Post( $rc->getTitle() ));
+			if($thread) {
+				$articlelink .= ' from ' . $changeslist->skin->makeKnownLinkObj(
+					$thread->article()->getTitle()->getTalkPage() );
+			}
+		}
+		return true;	
 	}
 }
 
