@@ -115,6 +115,20 @@ function efUsernameBlacklistMessages( $single = false ) {
 'blacklistedusernametext' => 'Az általad választott felhasználónév megegyezik a egyik [[MediaWiki:Usernameblacklist|feketelistán lévővel]]. Válassz másikat.',
 ),
 
+'hy' => array(
+'blacklistedusername' => 'Արգելված մասնակցի անուն',
+'blacklistedusernametext' => 'Ձեր ընտրած մասնակցի անունը գտնվում է [[MediaWiki:Usernameblacklist|արգելված մասնակիցների անունների ցանկում]]։ Խնդրում ենք ընտրել մեկ այլ անուն։',
+'usernameblacklist' => '<pre>
+# Այս ցանկում ընդգրկված բառերը կօգտագործվեն որպես սովորական արտահայտության մաս
+# մասնակցային անունները գրանցման արգելման ժամանակ։ Յուրաքանչյուր բառ պետք է լինի
+# գնդիկներով ցանկի կետ, օրինակ.
+#
+# * Foo
+# * [Bb]ar
+</pre>',
+'usernameblacklist-invalid-lines' => 'Մասնակցայի անունների արգելման ցանկի հետևյալ {{PLURAL:$1|տողը|տողերը}} անթույլատրելի են; խնդրում ենք ուղղել {{PLURAL:$1|դա|դրանք}} էջը հիշելուց առաջ.',
+),
+
 /* Indonesian (Ivan Lanin) */
 'id' => array(
 'blacklistedusername' => 'Daftar hitam nama pengguna',

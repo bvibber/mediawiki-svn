@@ -94,6 +94,12 @@ $wgSiteMatrixMessages['hsb'] = array(
 $wgSiteMatrixMessages['hu'] = array(
 	"sitematrix" => "Az összes Wikimedia wiki listája",
 );
+$wgSiteMatrixMessages['hy'] = array(
+	'sitematrix' => 'Վիքիմեդիայի վիքիների ցանկ',
+	'sitematrix-language' => 'Լեզու',
+	'sitematrix-project' => 'Նախագծի անվանումը, միջ-նախագծային հղումը և ինտերվիքի հղումը',
+	'sitematrix-others' => 'Վիքիմեդիայի այլ նախագծեր',
+);
 $wgSiteMatrixMessages['id'] = array(
 	"sitematrix" => "Daftar wiki Wikimedia",
 );

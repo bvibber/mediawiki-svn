@@ -68,6 +68,11 @@ $wgCrossNamespaceLinksMessages['hu'] = array(
 	'crossnamespacelinks'         => 'Névtérközi linkek',
 	'crossnamespacelinkstext'     => '$1: $2 link a $3 névtérbe.'
 );
+$wgCrossNamespaceLinksMessages['hy'] = array(
+	'crossnamespacelinks'         => 'Միջանվանատարածքային հղումներ պարունակող էջեր',
+	'crossnamespacelinks-summary' => 'Այս էջում բերված է գլխավոր անվանատարածքների էջերից այլ անվանատարածքների էջերին հղումների ցանկը (բացառությամբ հետևյալ անվանատարածքների. {{ns:special}}, {{ns:talk}}, {{ns:project}} և {{ns:template}}))։ Այս տիպի հղումները չեն խրախուսվում։',
+	'crossnamespacelinkstext'     => '$1. $2 {{PLURAL:$2|հղում|հղում}} դեպի $3',
+);
 $wgCrossNamespaceLinksMessages['id'] = array(
 	'crossnamespacelinks'     => 'Pranala lintas ruang nama',
 	'crossnamespacelinks-summary' => 'Halaman ini memberikan daftar pranala dari suatu halaman di ruang nama utama ke halaman lain di ruang nama lain (kecuali {{ns:special}}, {{ns:talk}}, {{ns:project}} dan {{ns:template}} namespaces), yang tidak dianjurkan untuk digunakan.',

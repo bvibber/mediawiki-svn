@@ -191,6 +191,10 @@ function efInputBoxMessages() {
 	'createarticle'           => 'Szócikk létrehozása',
 ),
 
+'hy' => array(
+	'createarticle'           => 'Հոդված ստեղծել',
+),
+
 'id' => array(
 	'tryexact'       => 'Coba pencocokan eksak',
 	'searchfulltext' => 'Cari di teks lengkap',

@@ -77,6 +77,11 @@ $wgAjaxShowEditorsMessages['hsb'] = array(
 	'ajax-se-pending' => 'aktualizuje so ... (klikń do tutoho pola abo póčni wobdźěłować)',
 	'ajax-se-idling' => '(před $1s)',
 );
+$wgAjaxShowEditorsMessages['hy'] = array(
+	'ajax-se-title' => 'Ներկայումս խմբագրում են.',
+	'ajax-se-pending' => 'թարմացում... (մատնահարեք այստեղ կամ սկսեք խմբագրումը)',
+	'ajax-se-idling' => '($1 վ առաջ)',
+);
 $wgAjaxShowEditorsMessages['id'] = array(
 	'ajax-se-title'   => 'Sedang menyunting:',
 	'ajax-se-pending' => 'pemuatan ulang ditunda ... (klik kotak ini atau mulai menyunting)',
