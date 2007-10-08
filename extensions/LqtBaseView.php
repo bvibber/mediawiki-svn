@@ -46,6 +46,7 @@ require_once('PageHistory.php');
 
 $wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
 $wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
+$wgHooks['LinkerMakeLinkObj'][] = array('LqtDispatch::makeLinkObj');
 
 class LqtDispatch {
 	public static $views = array(
@@ -143,6 +144,36 @@ class LqtDispatch {
 		}
 		
 		return true;
+	}
+	
+	static function makeLinkObj( &$returnValue, &$linker, $nt, $text, $query, $trail, $prefix ) {
+//		var_dump(array($nt, $text,$query,$trail, $prefix));
+		
+		if( ! $nt->isTalkPage() )
+			return true;
+		
+		// Talkpages with headers.
+		if( $nt->getArticleID() != 0 )
+			return true;
+			
+		// Talkpages without headers -- check existance of threads.
+		$article = new Article($nt->getSubjectPage());
+		$threads = Threads::where(Threads::articleClause($article), "LIMIT 1");
+		if( count($threads) == 0 ) {
+			// We want it to look like a broken link, but not have action=edit, since that
+			// will edit the header, so we can't use makeBrokenLinkObj. This code is copied
+			// from the body of that method.
+			$url = $nt->escapeLocalURL( $query );
+			if ( '' == $text )
+				$text = htmlspecialchars( $nt->getPrefixedText() );
+			$style = $linker->getInternalLinkAttributesObj( $nt, $text, "yes" );
+			list( $inside, $trail ) = Linker::splitTrail( $trail );
+			$returnValue = "<a href=\"{$url}\"{$style}>{$prefix}{$text}{$inside}</a>{$trail}";			
+		}
+		else {
+			$returnValue = $linker->makeKnownLinkObj( $nt, $text, $query, $trail, $prefix );
+		}
+		return false;
 	}
 }
 

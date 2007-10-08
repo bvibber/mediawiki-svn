@@ -1611,7 +1611,6 @@ class Title {
 	 * @return array the array of groups allowed to edit this article
 	 */
 	public function getRestrictions( $action ) {		
-		// LQT HACK.
 		$result = array();
 		if( !wfRunHooks('TitleGetRestrictions', array($this, $action, &$result)) )
 			return $result;
@@ -2592,11 +2591,11 @@ class Title {
 	}
 
 	/**
-	 * Check if page exists LQT HACK
+	 * Check if page exists
 	 * @return bool
 	 */
 	public function exists() {
-		return $this->getArticleId() != 0 || $this->isTalkPage();
+		return $this->getArticleId() != 0;
 	}
 
 	/**
@@ -2604,13 +2603,9 @@ class Title {
 	 * consider that it exists?
 	 *
 	 * @return bool
-	 *
-	 * LQT HACK: Talk pages are also always known.
-	 * Should talk pages for non-existant articles be known?
-	 * Talk pages with no threads? With only archived threads?
 	 */
 	public function isAlwaysKnown() {
-		return $this->isExternal() || $this->isTalkPage()
+		return $this->isExternal()
 			|| ( $this->mNamespace == NS_MAIN && $this->mDbkeyform == '' )
 			|| ( $this->mNamespace == NS_MEDIAWIKI && wfMsgWeirdKey( $this->mDbkeyform ) );
 	}
