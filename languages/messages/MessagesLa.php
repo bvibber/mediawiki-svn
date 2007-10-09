@@ -2,6 +2,13 @@
 /** Latin (lingua Latina)
   *
   * @addtogroup Language
+  *
+  * @author SPQRobin
+  * @author UV
+  * @author Siebrand Mazeland
+  * @author Helix84
+  * @author LeighvsOptimvsMaximvs
+  *
   */
 
 $skinNames = array(
@@ -284,9 +291,9 @@ $messages = array(
 'userpage'          => 'Videre paginam usoris',
 'projectpage'       => 'Vide paginam coeptorum',
 'imagepage'         => 'Videre paginam fasciculi',
-'mediawikipage'     => 'Pagina nuntii videre',
-'templatepage'      => 'Pagina formulae videre',
-'viewhelppage'      => 'Pagina auxilii videre',
+'mediawikipage'     => 'Videre nuntium',
+'templatepage'      => 'Videre formulam',
+'viewhelppage'      => 'Videre auxilium',
 'categorypage'      => 'Videre categoriam',
 'viewtalkpage'      => 'Videre disputatum',
 'otherlanguages'    => 'Linguis aliis',
