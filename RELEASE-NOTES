@@ -77,7 +77,13 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * Make input form of Special:Newpages nicer for RTL wikis
 * (bug 278) Search results no longer highlight incorrect partial word matches
 * Compatibility with incorrectly detected old-style DJVU mime types
-
+* (bug 11560) Fix broken HTML output from weird link nesting in edit comments.
+  Nested links (as in image caption text) still don't work _right_ but they're
+  less wrong
+* (bug 11561) Don't throw a PHP fatal error when non-existent "revert" action
+  attempted
+* (bug 9718) Remove unnecessary css from main.css causing spacing issues on
+  some browsers.
 
 === API changes in 1.12 ===
 
@@ -92,6 +98,9 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 11404) Provide name of exception caught in error code field of internal api 
   error messages.
 * (bug 11534) rvendid doesn't work
+* Fixed rvlimit of the revisions query to only enforce the lower query limit if
+  revision content is requested.
+* Include svn revision number (if install is checked-out from svn) in siteinfo query.
 
 === Languages updated in 1.12 ===
 
@@ -106,8 +115,8 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Bislama (bi) (new)
 * Bengali (bn)
 * Bishnupriya Manipuri (bpy)
-* Catalan (ca)
 * Breton (br)
+* Catalan (ca)
 * Czech (cs)
 * Cassubian (csb)
 * Welsh (cy)
@@ -153,11 +162,14 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Sicilian (scn)
 * Sassarese (sdc) (new)
 * Seri (sei) (new)
+* Tachelhit (shi)
 * Slovak (sk)
 * Serbian (Cyrillic) (sr-ec)
 * Sundanese (su)
+* Swedish (sv)
 * Tamil (ta)
 * Tetun (tet) (new)
+* Tagalog (tl) (new)
 * Walloon (wa)
 * Yiddish (yi)
 * Cantonese (yue)
