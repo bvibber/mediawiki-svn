@@ -80,10 +80,10 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11560) Fix broken HTML output from weird link nesting in edit comments.
   Nested links (as in image caption text) still don't work _right_ but they're
   less wrong
-* (bug 11561) Don't throw a PHP fatal error when non-existent "revert" action
-  attempted
 * (bug 9718) Remove unnecessary css from main.css causing spacing issues on
   some browsers.
+* (bug 11574) Add an interface message loginstart, which, similarly to loginend,
+  appears just before the login form. Patch by MinuteElectron.
 
 === API changes in 1.12 ===
 
@@ -101,6 +101,9 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Fixed rvlimit of the revisions query to only enforce the lower query limit if
   revision content is requested.
 * Include svn revision number (if install is checked-out from svn) in siteinfo query.
+* (bug 11173) Allow limited wikicode rendering via api.php
+* (bug 11572) API should provide interface for expanding templates
+* (bug 11569) Login should return the cookie prefix 
 
 === Languages updated in 1.12 ===
 
@@ -131,10 +134,10 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Persian (fa)
 * Võro (fiu-vro)
 * Faroese (fo)
-* Frisian (fy)
 * French (fr)
 * Cajun French (frc)
 * Franco-Provençal (frp)
+* Frisian (fy)
 * Irish (ga)
 * Gön-gnŷ (gan) (new)
 * Galician (gl)
@@ -143,6 +146,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Hebrew (he)
 * Croatian (hr)
 * Upper Sorbian (hsb)
+* Armenian (hy)
 * Indonesian (id)
 * Icelandic (is)
 * Italian (it)
@@ -151,9 +155,12 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Korean (ko)
 * Latin (la)
 * Limbugian (li)
+* Lithuanian (lt)
 * Malay (ms)
 * Nahuatl (nah)
+* Min-nan (nan)
 * Low Saxon (nds)
+* Dutch Low Saxon (nds-nl)
 * Dutch (nl)
 * Norwegian (no)
 * Portugese (pt)
