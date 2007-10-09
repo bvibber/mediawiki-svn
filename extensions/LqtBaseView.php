@@ -544,10 +544,6 @@ HTML;
 		$commands[] = array( 'label' => wfMsg('lqt_permalink'),
 							 'href' =>  $this->permalinkUrl( $thread ),
 							 'enabled' => true );
-							
-		$commands[] = array( 'label' => '<b class="lqt_reply_link">' . wfMsg('lqt_reply') . '</b>',
-							 'href' =>  $this->talkpageUrl( $this->title, 'reply', $thread ),
-							 'enabled' => $user_can_edit );
 
 		if ( in_array('delete',  $this->user->getRights()) ) {
 			$delete_url = SpecialPage::getPage('Deletethread')->getTitle()->getFullURL()
@@ -556,7 +552,11 @@ HTML;
 								 'href' =>  $delete_url,
 								 'enabled' => true );
 		}
-		
+							
+		$commands[] = array( 'label' => '<b class="lqt_reply_link">' . wfMsg('lqt_reply') . '</b>',
+							 'href' =>  $this->talkpageUrl( $this->title, 'reply', $thread ),
+							 'enabled' => $user_can_edit );
+
 		return $commands;
 	}
 
