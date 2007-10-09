@@ -658,6 +658,11 @@ HTML
 	}
 
 	function showRootPost( $thread ) {
+		$popts = $this->output->parserOptions();
+		$previous_editsection = $popts->getEditSection();
+		$popts->setEditSection(false);
+		$this->output->parserOptions($popts);
+		
 		$post = $thread->root();
 
 		$oldid = $thread->isHistorical() ? $thread->rootRevision() : null;
@@ -678,6 +683,9 @@ HTML
 			$this->showReplyForm( $thread );
 			$this->unindent();
 		}
+		
+		$popts->setEditSection($previous_editsection);
+		$this->output->parserOptions($popts);
 	}
 
 	function showThreadHeading( $thread ) {
@@ -700,7 +708,7 @@ HTML
 
 	function showThread( $thread ) {
 		global $wgLang; # TODO global.
-
+		
 		$this->showThreadHeading( $thread );
 		
 		$this->output->addHTML( "<a name=\"{$this->anchorName($thread)}\" ></a>" );
