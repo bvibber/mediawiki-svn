@@ -29,6 +29,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11151) Add descriptive <title> to revision history page
 * (bug 5412) Add feed links for the site to all pages
 * (bug 11353) Add ability to retrieve raw section content via action=raw
+* AuthPlugin added strictUserAuth() method to allow per-user override
+  of the strict() authentication behavior.
+
 
 === Bug fixes in 1.12 ===
 
@@ -88,6 +91,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * (bug 11218) Add option to feedwatchlist to display multiple revisions for each page.
 * (bug 11404) Provide name of exception caught in error code field of internal api 
   error messages.
+* (bug 11534) rvendid doesn't work
 
 === Languages updated in 1.12 ===
 
