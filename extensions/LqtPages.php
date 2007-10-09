@@ -22,6 +22,11 @@ $wgCanonicalNamespaceNames[NS_LQT_THREAD_TALK]	= 'Thread_talk';
 $wgCanonicalNamespaceNames[NS_LQT_SUMMARY]		= 'Summary';
 $wgCanonicalNamespaceNames[NS_LQT_SUMMARY_TALK]	= 'Summary_talk';
 
+$wgExtraNamespaces[NS_LQT_THREAD]	= 'Thread';
+$wgExtraNamespaces[NS_LQT_THREAD_TALK] = 'Thread_talk';
+$wgExtraNamespaces[NS_LQT_SUMMARY] = 'Summary';
+$wgExtraNamespaces[NS_LQT_SUMMARY_TALK] = 'Summary_talk';
+
 require_once('LqtBaseView.php');
 require_once('LqtI18N.php');
 
