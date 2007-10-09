@@ -14,7 +14,7 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 require_once('Article.php');
 
-$wgHooks['TitleGetRestrictions'][] = array('Thread::getRestrictionsForTitle');
+$wgHooks['TitleGetRestrictions'][] = 'Thread::getRestrictionsForTitle';
 
 // TODO if we're gonna have a Date class we should really do it.
 class Date {

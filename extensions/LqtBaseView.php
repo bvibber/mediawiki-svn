@@ -44,10 +44,10 @@ require_once('LqtModel.php');
 require_once('Pager.php');
 require_once('PageHistory.php');
 
-$wgHooks['MediaWikiPerformAction'][] = array('LqtDispatch::tryPage');
-$wgHooks['SpecialMovepageAfterMove'][] = array('LqtDispatch::onPageMove');
-$wgHooks['LinkerMakeLinkObj'][] = array('LqtDispatch::makeLinkObj');
-$wgHooks['ChangesListInsertArticleLink'][] = array('LqtDispatch::changesListArticleLink');
+$wgHooks['MediaWikiPerformAction'][] = 'LqtDispatch::tryPage';
+$wgHooks['SpecialMovepageAfterMove'][] = 'LqtDispatch::onPageMove';
+$wgHooks['LinkerMakeLinkObj'][] = 'LqtDispatch::makeLinkObj';
+$wgHooks['ChangesListInsertArticleLink'][] = 'LqtDispatch::changesListArticleLink';
 
 class LqtDispatch {
 	public static $views = array(
