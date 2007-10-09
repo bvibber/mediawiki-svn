@@ -57,15 +57,6 @@ class ApiUploadFile extends ApiBase {
         if (sizeof($_POST) > 0) {
             extract($this->extractRequestParams());
 
-            /*** VODAFONE DEBUG COMMENTS ***/
-		/**	print "\nPARAMETERS POST:\n <br>";
-			print_r($this->extractRequestParams());
-			print "<br><br>";
-			print "\n_FILES:\n <br>";
-			print_r($_FILES);
-			print "<br><br>"; */
-            /*******************************/
-
             $data = array(//'wpUploadFile' => $file,
                           'wpSourceType' => "file",
                           'wpDestFile' => $destfile,
@@ -88,32 +79,18 @@ class ApiUploadFile extends ApiBase {
 				$MyUser->setID( $userid );
 
 				if( $MyUser->loadFromId() ){
-					//print "\n<br>entro x 1 - user cargado\n<br>";
-
 					if( $usertoken == $MyUser->mToken ){
-						//print "\n<br>entro x 2 - tokens coinciden\n<br>";
 						$MyUser->setCookies();
 						$wgUser = $MyUser;
 					}else{
-						//print "\n<br>entro x 3 - mal token\n<br>";
 						$this->process( self::UPLOAD_BAD_TOKEN );
 						return;
 					}
 				}
 			}
 
-            /*** VODAFONE DEBUG COMMENTS ***/
-			/**print "\n<br>USER: <br>";
-			print_r($wgUser);
-			print "<br><br>";
-			print "_SESSION: <br>";
-			print_r($_SESSION);
-			print "<br><br>"; */
-            /*******************************/
-
 			# Check uploading enabled
 			if( !$wgEnableUploads ) {
-				//$wgOut->showErrorPage( 'uploaddisabled', 'uploaddisabledtext', array( $this->mDesiredDestName ) );
 				$this->process( self::UPLOAD_ENABLED_UPLOADS );
 				return;
 			}
@@ -121,10 +98,8 @@ class ApiUploadFile extends ApiBase {
 			# Check permissions
 			if( !$wgUser->isAllowed( 'upload' ) ) {
 				if( !$wgUser->isLoggedIn() ) {
-					//$wgOut->showErrorPage( 'uploadnologin', 'uploadnologintext' );
 					$this->process( self::UPLOAD_NOT_LOGGED );
 				} else {
-					//$wgOut->permissionRequired( 'upload' );
 					$this->process( self::UPLOAD_NOT_ALLOWED );
 				}
 				return;
@@ -132,18 +107,17 @@ class ApiUploadFile extends ApiBase {
 
 			# Check blocks
 			if( $wgUser->isBlocked() ) {
-				//$wgOut->blockedPage();
 				$this->process( self::UPLOAD_BLOCKED_PAGE );
 				return;
 			}
 
 			if( wfReadOnly() ) {
-				//$wgOut->readOnlyPage();
 				$this->process( self::UPLOAD_READ_ONLY );
 				return;
 			}
 
-			$this->process($form->internalProcessUpload());
+		 	$details = null;
+			$this->process($form->internalProcessUpload( $details ));
 //			$this->cleanupTempFile();
 
         } else {
@@ -217,8 +191,8 @@ class ApiUploadFile extends ApiBase {
 	            $result['result'] = 'UPLOAD_PROTECTED_PAGE';
 			    break;
 
-			case UploadForm::OVERWRITE_EXISTING_FILE:
-	            $result['result'] = 'UPLOAD_OVERWRITE_EXISTING_FILE';
+			case UploadForm::OVERWRITE_NOT_ALLOWED:
+	            $result['result'] = 'UPLOAD_OVERWRITE_NOT_ALLOWED';
 			    break;
 
 			case UploadForm::FILETYPE_MISSING:
@@ -239,6 +213,10 @@ class ApiUploadFile extends ApiBase {
 
 			case UploadForm::UPLOAD_WARNING:
 	            $result['result'] = 'UPLOAD_WARNING';
+			    break;
+
+			case UploadForm::OVERWRITE_EXISTING_FILES:
+	            $result['result'] = 'UPLOAD_OVERWRITE_EXISTING_FILES';
 			    break;
 
             default :
