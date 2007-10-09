@@ -292,6 +292,7 @@ if (defined('MEDIAWIKI')) {
 		$cancel = wfMsg('cancel');
 
 		$wgOut->addHTML("<input type='submit' name='wpOK' value='{$ok}' /> <input type='submit' name='wpCancel' value='{$cancel}' />");
+		$wgOut->addHTML("</form>");
 	}
 
 	function OpenIDLogin($openid_url, $finish_page = 'OpenIDFinish') {
