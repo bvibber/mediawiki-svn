@@ -330,10 +330,9 @@ Adroddwch hwn i gweinyddwr os gwelwch yn dda, a cofiwch sylwi\'r URL.',
 'readonly_lag'       => "Mae'r databas wedi'i gloi'n awtomatig tra bod y gwas-weinyddion yn unionu gyda'r prif weinydd",
 'internalerror'      => 'Gwall mewnol',
 'filecopyerror'      => 'Wedi methu copïo\'r ffeil "$1" i "$2".',
-'filerenameerror'    => "Wedi methu ail-enwi'r ffeil '$1' yn '$2'.",
+'filerenameerror'    => 'Ddim yn gallu ail-enw ffeil "$1" i "$2".',
 'filedeleteerror'    => 'Wedi methu dileu\'r ffeil "$1".',
-'filenotfound'       => "Heb gael hyd i'r ffeil '$1'.",
-'fileexistserror'    => 'Nid oes modd ysgrifennu i\'r ffeil "$1": ffeil eisoes ar glawr',
+'filenotfound'       => 'Ddim yn gallu ffeindio ffeil "$1".',
 'unexpected'         => 'Gwerth annisgwyl: "$1"="$2".',
 'formerror'          => 'Gwall: ddim yn medru ymostwng y ffurflen',
 'badarticleerror'    => "Mae'n amhosib cyflawni'r weithred hon ar y dudalen hon.",
@@ -729,9 +728,6 @@ Pob amser sy'n dangos yw amser y gwasanaethwr (UTC).",
 Enw'r ffeil ar fin ei uwchlwytho: <strong><tt>$1</tt></strong><br />
 Enw'r ffeil sydd eisoes yn bod: <strong><tt>$2</tt></strong><br />
 Dewiswch enw arall os gwelwch yn dda.",
-'fileexists-thumb'            => "'''<center>Y ddelwedd eisoes ar glawr</center>'''",
-'fileexists-thumbnail-yes'    => "Ymddengys bod delwedd wedi ei leihau <i>(bawd)</i> ar y ffeil. Cymharwch gyda'r ffeil <strong><tt>$1</tt></strong>.<br />
-Os mai'r un un llun ar ei lawn faint sydd ar yr ail ffeil yna does dim angen uwchlwytho llun ychwanegol o faint bawd.",
 'file-thumbnail-no'           => "Mae <strong><tt>$1</tt></strong> ar ddechrau enw'r ffeil. Mae'n ymddangos bod y ddelwedd wedi ei leihau <i>(maint bawd)</i>.
 Os yw'r ddelwedd ar ei lawn faint gallwch barhau i'w uwchlwytho. Os na, newidiwch enw'r ffeil, os gwelwch yn dda.",
 'fileexists-forbidden'        => "Mae ffeil gyda'r enw hwn eisoes yn bodoli; ewch nôl ac uwchlwythwch y ffeil o dan enw newydd.

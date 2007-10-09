@@ -181,7 +181,8 @@ class ApiTalk extends ApiBase {
 					$editForm = new EditPage($myDiscussion);
 					$editForm->mTitle = $object_discussion_title;
 					$editForm->importFormData($params);
-					$value=$editForm->attemptSave();
+					$resultDetails = false;
+					$value=$editForm->internalAttemptSave( &$resultDetails );
 				}
    			}
 		}

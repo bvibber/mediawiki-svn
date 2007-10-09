@@ -1,4 +1,3 @@
-
 <?php
 /**
  * Contains the EditPage class
@@ -670,6 +669,7 @@ class EditPage {
 		# Check for spam
 		$matches = array();
 		if ( $wgSpamRegex && preg_match( $wgSpamRegex, $this->textbox1, $matches ) ) {
+			$resultDetails['spam'] = $matches[0];
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_SPAM_ERROR;
@@ -700,6 +700,7 @@ class EditPage {
 		$this->kblength = (int)(strlen( $this->textbox1 ) / 1024);
 		if ( $this->kblength > $wgMaxArticleSize ) {
 			// Error will be displayed by showEditForm()
+			$this->tooBig = true;
 			wfProfileOut( "$fname-checks" );
 			wfProfileOut( $fname );
 			return self::AS_CONTENT_TOO_BIG;
@@ -2105,7 +2106,11 @@ END
 		}				
 	}
 	
-	function processAttemptSave($value) {
+	/**
+	 * Attempt submission
+	 * @return bool false if output is done, true if the rest of the form should be displayed
+	 */
+	function attemptSave() {
 		global $wgUser, $wgOut;
 
 		$resultDetails = false;
@@ -2174,7 +2179,7 @@ END
 				return true;
 		
 			case self::AS_SPAM_ERROR:
-				$this->spamPage ( $matches[0] );
+				$this->spamPage ( $resultDetails['spam'] );
 				return false;
 			
 			case self::AS_FILTERING:

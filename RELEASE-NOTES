@@ -29,7 +29,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11151) Add descriptive <title> to revision history page
 * (bug 5412) Add feed links for the site to all pages
 * (bug 11353) Add ability to retrieve raw section content via action=raw
-* Clarify instructions given when an exception is thrown
+* Show relevant deletion log lines when uploading a previously deleted file
+* On SkinTemplate based skins (like MonoBook), omit confusing "edit"/"view source"
+  tab entirely if the page doesn't exist and the user isn't allowed to create it
 
 === Bug fixes in 1.12 ===
 
@@ -73,6 +75,9 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11450) Fix creation of objectcache table on upgrade
 * Fix namespace selection after submit of Special:Newpages
 * Make input form of Special:Newpages nicer for RTL wikis
+* (bug 11462) Fix typo in LanguageGetSpecialPageAliases hook name
+* (bug 11474) Fix unintentional fall-through in math error handling
+* (bug 11478) Fix undefined method call in file deletion interface
 
 === API changes in 1.12 ===
 
@@ -142,7 +147,6 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Dutch (nl)
 * Norwegian (no)
 * Portugese (pt)
-* Romanian (ro)
 * Russian (ru)
 * Sakha (sah)
 * Sicilian (scn)
