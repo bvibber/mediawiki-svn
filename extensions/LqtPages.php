@@ -12,10 +12,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 	die( -1 );
 }
 
-define('NS_LQT_THREAD', 16);
-define('NS_LQT_THREAD_TALK', 17);
-define('NS_LQT_SUMMARY', 18);
-define('NS_LQT_SUMMARY_TALK', 19);
+define('NS_LQT_THREAD', 90);
+define('NS_LQT_THREAD_TALK', 91);
+define('NS_LQT_SUMMARY', 92);
+define('NS_LQT_SUMMARY_TALK', 93);
 
 $wgCanonicalNamespaceNames[NS_LQT_THREAD]		= 'Thread';
 $wgCanonicalNamespaceNames[NS_LQT_THREAD_TALK]	= 'Thread_talk';
