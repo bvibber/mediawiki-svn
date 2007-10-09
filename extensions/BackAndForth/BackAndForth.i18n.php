@@ -63,6 +63,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Předchadne ($1)',
 ),
 
+'it' => array(
+	'backforth-next' => 'Successivi ($1)',
+	'backforth-prev' => 'Precedenti ($1)',
+),
+
 'nl' => array(
 	'backforth-next' => 'Volgende ($1)',
 	'backforth-prev' => 'Vorige ($1)',

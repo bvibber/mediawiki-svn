@@ -60,10 +60,13 @@ function efBadImageMessages() {
 'badimages-add-btn' => 'Magdugang',
 'badimages-name' => 'Pangaran:',
 'badimages-not-added' => 'Dai maikakaag an retrato.',
-'badimages-reason' => 'Rason:',
+'badimages-not-removed' => 'Dai mahahalî an ladawan.',
+'badimages-reason' => 'Rasón:',
 'badimages-remove' => '(halîon)',
 'badimages-remove-btn' => 'Halîon',
 'badimages-removed' => 'Pighalî sa lista an $1.',
+'badimages-log-add' => 'Idinugang an [[$1]] sa lista kan salang ladawan',
+'badimages-log-remove' => 'Pighalî an [[$1]] sa lista kan salang ladawan',
 ),
 
 'br' => array(

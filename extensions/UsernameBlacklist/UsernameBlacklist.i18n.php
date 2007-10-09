@@ -140,6 +140,10 @@ function efUsernameBlacklistMessages( $single = false ) {
 daftar hitam nama pengguna]]. Harap pilih nama lain.',
 ),
 
+'is' => array(
+'blacklistedusernametext' => 'Þetta notendanafn sem þú hefur valið passar við [[MediaWiki:Usernameblacklist|listann með bönnuðum notendanöfnum]]. Vinsamlegast veldu annað nafn.',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 'blacklistedusername' => 'Nome utente non consentito',

@@ -329,6 +329,7 @@ $wgMakesysopMessages['fi'] = array(
 	'grouppage-steward'    => '{{ns:project}}:ylivalvojat',
 );
 $wgMakesysopMessages['fo'] = array(
+	'rights' => 'Rættindi:',
 	'makesysop' => 'Ger ein brúkara til sysop',
 );
 $wgMakesysopMessages['fr'] = array(

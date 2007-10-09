@@ -44,6 +44,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'Wužiwar ma $1 změnow.',
 ),
 
+'it' => array(
+	'contributionseditcount' => 'Questo utente ha $1 edit',
+),
+
 'nl' => array(
 	'contributionseditcount'  =>  'Deze gebruiker heeft $1 bewerkingen.',
 ),

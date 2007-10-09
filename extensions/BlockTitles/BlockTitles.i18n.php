@@ -53,6 +53,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',
 ),
 
+'it' => array(
+	'block_title_error_page_title' => 'Titolo bloccato',
+	'block_title_error' => 'Siamo spiacenti, non è consentito salvare una voce con questo titolo.',
+),
+
 'nl' => array(
 	'block_title_error_page_title' => 'Geblokkeerde paginanaam',
 	'block_title_error' => 'Sorry, het is niet toegestaan een pagina met deze naam op te slaan.',

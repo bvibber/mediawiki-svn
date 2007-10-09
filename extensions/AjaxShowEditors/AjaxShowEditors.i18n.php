@@ -44,7 +44,7 @@ $wgAjaxShowEditorsMessages['ext'] = array(
 );
 $wgAjaxShowEditorsMessages['bcl'] = array(
 	'ajax-se-title' => 'Presenteng pighihira:',
-	'ajax-se-pending' => 'pendiente an pagpresko ... (lagatikon ining kahon o magpoon paghira)',
+	'ajax-se-pending' => 'pendiente an pagrepresko ... (pindoton an kahon o magpoon paghirá)',
 	'ajax-se-idling' => '($1s na an nakaagi)',
 );
 $wgAjaxShowEditorsMessages['fi'] = array(
