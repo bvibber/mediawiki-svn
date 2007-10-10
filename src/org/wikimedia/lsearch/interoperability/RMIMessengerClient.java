@@ -178,6 +178,7 @@ public class RMIMessengerClient {
 			SearchResults res = new SearchResults();
 			res.retry();
 			log.warn("Error invoking remote method searchPart on host "+host+" : "+e.getMessage());
+			e.printStackTrace();
 			return res;
 		}
 	}

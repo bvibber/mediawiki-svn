@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.StringWriter;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -28,6 +30,9 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.index.TermEnum;
+import org.apache.lucene.search.Hits;
+import org.apache.lucene.search.IndexSearcher;
+import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 import org.wikimedia.lsearch.analyzers.SplitAnalyzer;
@@ -53,6 +58,7 @@ public class Links {
 	protected HashSet<String> categoryLocalized;
 	protected HashSet<String> imageLocalized;
 	protected IndexReader reader = null;
+	protected IndexSearcher searcher = null;
 	protected String path;
 	protected enum State { FLUSHED, WRITE, MODIFIED, READ };
 	protected State state;
@@ -155,6 +161,8 @@ public class Links {
 	 * @throws IOException */
 	public void flush() throws IOException{
 		// close & optimize
+		if(searcher != null)
+			searcher.close();
 		if(reader != null)
 			reader.close();
 		if(writer != null){
@@ -171,6 +179,8 @@ public class Links {
 	 */
 	protected void flushForRead() throws IOException{		
 		// close & optimize
+		if(searcher != null)
+			searcher.close();
 		if(reader != null)
 			reader.close();
 		if(writer != null){
@@ -180,12 +190,15 @@ public class Links {
 		log.debug("Opening index reader");
 		// reopen
 		reader = IndexReader.open(path);
+		searcher = new IndexSearcher(reader);
 		writer = null;
 		state = State.READ;
 	}
 	
 	/** Open the writer, and close the reader (if any) */
 	protected void openForWrite() throws IOException{
+		if(searcher != null)
+			searcher.close();
 		if(reader != null)
 			reader.close();
 		if(writer == null){
@@ -194,6 +207,7 @@ public class Links {
 			writer = new IndexWriter(directory,new SimpleAnalyzer(),false);
 			initWriter(writer);
 			reader = null;
+			searcher = null;
 			state = State.WRITE;
 		}
 	}
@@ -225,7 +239,7 @@ public class Links {
 		int ns; String title;
 		boolean escaped;
 
-		HashSet<String> pagelinks = new HashSet<String>();
+		ArrayList<String> pagelinks = new ArrayList<String>();
 		// article link -> contexts
 		HashMap<String,ArrayList<String>> contextMap = new HashMap<String,ArrayList<String>>();
 		
@@ -239,9 +253,39 @@ public class Links {
 		if(redirect != null){
 			redirectsTo = findTargetLink(redirect.getNamespace(),redirect.getTitle());
 		} else { 
-			while(matcher.find()){
-				String link = matcher.group(1);
-				ContextParser.Context context = useContext? cp.getNext(matcher.start(1)) : null;
+			HashSet<String> contextLinks = new HashSet<String>();
+			ContextParser.Context curContext = null;
+			while(true){
+				boolean hasNext = matcher.find();
+				String link = null;
+				ContextParser.Context context = null;
+				if(hasNext){
+					link = matcher.group(1);
+					context = useContext? cp.getNext(matcher.start(1)) : null;
+				}
+				// get links in context if there is this one is last, or new contex has been found
+				if(!hasNext || context != null){ 
+					if(curContext == null)
+						curContext = context;
+					else if(curContext!=context){
+						/*if(contextLinks.size() == 1){
+							pagelinks.add(contextLinks.iterator().next());
+						} else{
+							// add link pairs that are in this context
+							for(String l1 : contextLinks){
+								for(String l2 : contextLinks)
+									if(l1 != l2) // if equal will be same string because they are from same collection
+										pagelinks.add(l1+"|"+l2);
+							}
+						}	 */
+						pagelinks.add("");
+						contextLinks.clear();
+						curContext = context;
+					}					
+				}
+				
+				if(!hasNext)
+					break;
 
 				int fragment = link.lastIndexOf('#');
 				if(fragment != -1)
@@ -274,29 +318,25 @@ public class Links {
 					continue; // skip links from other namespaces into the main namespace
 				String target = findTargetLink(ns,title);				
 				if(target != null){
-					int targetNs = Integer.parseInt(target.substring(0,target.indexOf(':')));					
-					pagelinks.add(target); // for outlink storage
+					int targetNs = Integer.parseInt(target.substring(0,target.indexOf(':')));
+					pagelinks.add(target); 
 					// register context of this link
 					if(context != null && nsf.contains(targetNs)){
-						ArrayList<String> ct = contextMap.get(target); 
-						if(ct==null){
-							ct = new ArrayList<String>();
-							contextMap.put(target,ct);
-						}
-						ct.add(context.get(text));
+						contextLinks.add(target);
 					}
+						
 				}
 			}
 		}
 		// index article
 		StringList lk = new StringList(pagelinks);
-		Analyzer an = new SplitAnalyzer();
+		Analyzer an = new SplitAnalyzer(1,true);
 		Document doc = new Document();
 		doc.add(new Field("article_key",t.getKey(),Field.Store.YES,Field.Index.UN_TOKENIZED));
 		if(redirectsTo != null)
 			doc.add(new Field("redirect",redirectsTo+"|"+t.getKey(),Field.Store.YES,Field.Index.UN_TOKENIZED));
 		else{
-			doc.add(new Field("links",lk.toString(),Field.Store.COMPRESS,Field.Index.TOKENIZED));
+			doc.add(new Field("links",lk.toString(),Field.Store.NO,Field.Index.TOKENIZED));
 		}
 		if(contextMap.size() != 0){
 			/*for(Entry<String,ArrayList<String>> e : contextMap.entrySet()){
@@ -310,7 +350,7 @@ public class Links {
 			//ObjectOutputStream ob = new ObjectOutputStream(ba);
 			//ob.writeObject(contextMap);
 			//doc.add(new Field("context",ba.toByteArray(),Field.Store.COMPRESS)); 
-			doc.add(new Field("context",new StringMap(contextMap).serialize(),Field.Store.COMPRESS));
+			//doc.add(new Field("context",new StringMap(contextMap).serialize(),Field.Store.COMPRESS));
 		}
 		
 		writer.addDocument(doc,an);
@@ -344,6 +384,21 @@ public class Links {
 			//refCache.put(cacheKey,r);
 			return r; 
 		//}
+	}
+	
+	/** Make cache: doc_id -> number of inlinks */
+	public int[] makeInLinkCache() throws IOException{
+		ensureRead();
+		Dictionary dict = getKeys();
+		Word w;
+		int[] ret = new int[reader.maxDoc()];
+		while((w = dict.next()) != null){
+			String key = w.getWord();
+			int docid = getDocId(key);
+			int in = getNumInLinks(key);
+			ret[docid] = in;
+		}
+		return ret;
 	}
 	
 	@Deprecated
@@ -499,6 +554,37 @@ public class Links {
 		
 		return null;
 	}
+	
+	/** return how many times article key1 and key2 cooccur in same context */ 
+	public int getRelatedCount(String key1, String key2) throws IOException {
+		ensureRead();
+		PhraseQuery pq = new PhraseQuery();
+		pq.add(new Term("links",key1));
+		pq.add(new Term("links",key2));
+		pq.setSlop(SplitAnalyzer.GROUP_GAP/2);
+		return searcher.search(pq).length();
+	}
+	
+	/** return how many times article key1 and key2 cooccur in same context */ 
+	public double getRelatedScore(String key1, String key2, int[] inLinkCache) throws IOException {
+		ensureRead();
+		PhraseQuery pq = new PhraseQuery();
+		pq.add(new Term("links",key1));
+		pq.add(new Term("links",key2));
+		pq.setSlop(SplitAnalyzer.GROUP_GAP/2);
+		Hits hits = searcher.search(pq);
+		int num = hits.length();
+		if(inLinkCache == null || num == 0)
+			return num;
+		double sum = 0;
+		for(int i=0;i<num;i++){
+			sum += Math.log10(10+inLinkCache[hits.id(i)]);
+		}
+		sum /= num; // take average
+		
+		return sum * num; // actually returns sum
+	}
+	
 	
 	/** Get all contexts in which article <i>to<i/> is linked from <i>from</i>. 
 	 *  Will return null if there is no context, or link is invalid.

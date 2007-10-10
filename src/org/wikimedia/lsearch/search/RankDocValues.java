@@ -1,6 +1,7 @@
 package org.wikimedia.lsearch.search;
 
 import java.io.IOException;
+import java.util.Hashtable;
 
 import org.apache.lucene.index.CorruptIndexException;
 import org.apache.lucene.index.IndexReader;
@@ -8,7 +9,7 @@ import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.search.function.DocValues;
 
 public class RankDocValues extends DocValues {
-	IndexReader reader;
+	protected IndexReader reader;
 	
 	public RankDocValues(IndexReader reader){
 		super(reader.maxDoc());

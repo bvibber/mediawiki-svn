@@ -54,7 +54,7 @@ public class Related {
 	}
 	
 	public String serialize(){
-		return score+" "+relates;
+		return (float)score+" "+relates;
 	}
 	
 	public String getRelates() {

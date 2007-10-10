@@ -28,7 +28,7 @@ public class LuceneStorage {
 	}
 	protected void ensureWrite() throws IOException{
 		if(writer == null){
-			writer = new IndexWriter(iid.getImportPath(), new SplitAnalyzer(), true);
+			writer = new IndexWriter(iid.getImportPath(), new SplitAnalyzer(1,false), true);
 			writer.setMaxBufferedDocs(300);
 			writer.setMergeFactor(20);
 		}

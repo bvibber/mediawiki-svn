@@ -83,10 +83,13 @@ public class Warmup {
 				}
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
 			log.error("Error warming up local IndexSearcherMul for "+iid);
 		} catch (ParseException e) {
+			e.printStackTrace();
 			log.error("Error parsing query in warmup of IndexSearcherMul for "+iid);
 		} catch (Exception e) {
+			e.printStackTrace();
 			log.error("Exception during warmup "+e.getMessage());
 		}		
 	}

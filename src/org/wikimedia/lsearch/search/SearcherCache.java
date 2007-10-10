@@ -271,7 +271,7 @@ public class SearcherCache {
 				if(!iid.isMySearch())
 					throw new IOException(iid+" is not searched by this host.");
 				if(iid.isLogical())
-					throw new IOException(iid+" will not open logical index.");
+					throw new IOException(iid+": will not open logical index.");
 				SearcherPool pool = new SearcherPool(iid,iid.getCanonicalSearchPath(),searchPoolSize);
 				localCache.put(iid.toString(),pool);
 				for(IndexSearcherMul s : pool.searchers)

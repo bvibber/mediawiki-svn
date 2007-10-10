@@ -121,7 +121,7 @@ public class Importer {
 			}
 			if(!useOldRelated){
 				try {
-					RelatedBuilder.rebuildFromLinks(iid);
+					RelatedBuilder.rebuildFromLinksNew(iid);
 				} catch (IOException e) {
 					log.fatal("Cannot make related mapping: "+e.getMessage());
 					return;

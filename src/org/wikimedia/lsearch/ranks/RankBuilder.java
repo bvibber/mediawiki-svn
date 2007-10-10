@@ -93,9 +93,7 @@ public class RankBuilder {
 		} catch(IOException e){
 			log.fatal("I/O error processing "+inputfile+" : "+e.getMessage());
 			e.printStackTrace();
-		}
-		
-		IndexThread.makeIndexSnapshot(iid.getLinks(),iid.getLinks().getImportPath());
+		}		
 		
 		long end = System.currentTimeMillis();
 
@@ -130,6 +128,7 @@ public class RankBuilder {
 		XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(rr, 5000));
 		reader.readDump();
 		links.flush();
+		IndexThread.makeIndexSnapshot(iid.getLinks(),iid.getLinks().getImportPath());
 		return links;
 	}
 	

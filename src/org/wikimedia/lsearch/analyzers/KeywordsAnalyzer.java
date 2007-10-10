@@ -103,7 +103,7 @@ public class KeywordsAnalyzer extends Analyzer{
 		protected int tokenGap;
 		
 		public KeywordsTokenStream(ArrayList<String> keywords, FilterFactory filters, boolean exactCase, int tokenGap){
-			this.analyzer = new QueryLanguageAnalyzer(filters,exactCase);
+			this.analyzer = new ReusableLanguageAnalyzer(filters,exactCase);
 			this.keywords = keywords;
 			this.index = 0;
 			this.keyword = null;

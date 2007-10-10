@@ -293,17 +293,6 @@ public class IndexThread extends Thread {
 			log.error("Error making snapshot "+snapshot+": "+e.getMessage());
 			return;
 		}
-		/*
-		File ind =new File(indexPath);
-		for(File f: ind.listFiles()){
-			// hardlink the snapshot
-			try {
-				Command.exec("/bin/cp -lr "+indexPath+sep+f.getName()+" "+snapshot+sep+f.getName());
-			} catch (IOException e) {
-				log.error("Error making snapshot "+snapshot+": "+e.getMessage());
-				continue;
-			}
-		} */
 		log.info("Made snapshot "+snapshot);		
 	}
 	

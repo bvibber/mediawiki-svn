@@ -96,6 +96,7 @@ public class SpellCheckTest {
    	{"orvileWright","overnight"},
    	{"livia tremor control","olivia tremor control"},
    	{"ommmited","omitted"},
+   	{"Good Thomas fft","Good Thomas fft"},
    	
    };
 

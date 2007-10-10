@@ -66,5 +66,9 @@ public class ResultSet implements Serializable {
 		return context;
 	}
 	
+	public String getKey(){
+		return namespace+":"+title;
+	}
+	
 	
 }

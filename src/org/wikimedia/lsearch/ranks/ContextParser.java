@@ -154,7 +154,9 @@ public class ContextParser {
 							contexts.add(new Context(start,cur));
 						start = cur;
 						cur = closingInx;						
-					} 
+					} else if(valid){
+						cur = closingInx;
+					}
 				}
 				break;
 			case 'h': case 'f':
@@ -185,21 +187,21 @@ public class ContextParser {
 					topLinkLevel--;
 				}
 				break;
-			case '"':
+			/*case '"':
 				// numbers like 6'5" 
 				if(cur>0 && Character.isDigit(text[cur-1]))
 					break;
 				inQuotes = !inQuotes;
-				break;
-			case '=':
+				break; */
+			/*case '=':
 			case '!':
-			case '?':
+			case '?': */ 
 			case '{':
 			case '}':
-			case '*':
+			/*case '*':
 			case '#':
 			case '|':
-			case '.':
+			case '.': */
 			case '\n':
 				// whole quote and link text is context 
 				//if(inQuotes || topLinkLevel!=0)
@@ -214,7 +216,7 @@ public class ContextParser {
 				if((c == '.' || c==',') && (cur>0 && Character.isDigit(text[cur-1]) && cur+1<len && Character.isDigit(text[cur+1])))
 					break;
 				// proceed only if this is not paragraph brake (i.e. \n\n)
-				if(c == '\n' && !(cur+1<len && (text[cur+1]=='\n' || text[cur+1]==':')))
+				if(c == '\n' && !(cur+1<len && (text[cur+1]=='\n' || text[cur+1]==':' || text[cur+1]=='*' || text[cur+1]=='#')))
 					break;
 				
 				if(seenLetter){

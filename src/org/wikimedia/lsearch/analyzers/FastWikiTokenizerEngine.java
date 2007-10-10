@@ -40,8 +40,7 @@ public class FastWikiTokenizerEngine {
 	protected ArrayList<String> categories;
 	protected HashMap<String,String> interwikis;
 	protected HashSet<String> keywords;
-	protected ArrayList<ArrayList<Token>> sections;
-	protected ArrayList<Token> textAbstract;
+	protected ArrayList<String> headingText;
 	private int decompLength=0, aliasLength=0;
 	private int length = 0; // length of token
 	private int start = 0; // start position of token
@@ -55,6 +54,8 @@ public class FastWikiTokenizerEngine {
 	private boolean numberToken; // if the buffer holds a number token
 	private int headings = 0; // how many headings did we see
 	private int templateLevel = 0; // level of nestedness of templates	
+	private int gap = 1;
+	private ArrayList<Token> nonContentTokens; // tokens from the beginning of the article that are not content, but templates, images, etc..
 	
 	private int prefixLen = 0;
 	private final char[] prefixBuf = new char[MAX_WORD_LEN];
@@ -65,6 +66,17 @@ public class FastWikiTokenizerEngine {
 	
 	/** This many tokens from begining of text are eligable for keywords */ 
 	public static int KEYWORD_TOKEN_LIMIT = 250;
+	
+	/** Token gap at first section break */ 
+	public static int FIRST_SECTION_GAP = 250;	
+	/** Token gap at any section break */ 
+	public static int SECTION_GAP = 20;	
+	/** Token gap at new paragraphs */ 
+	public static int PARAGRAPH_GAP = 10;	
+	/** Token gap at new bulletins (like *, #...) */ 
+	public static int BULLETIN_GAP = 10;
+	/** Gap between sentences */ 
+	public static int SENTENCE_GAP = 2;
 	
 	/** language code */
 	private String language;
@@ -94,6 +106,8 @@ public class FastWikiTokenizerEngine {
 		decomposer = UnicodeDecomposer.getInstance();
 		keywords = new HashSet<String>();
 		numberToken = false;
+		headingText = new ArrayList<String>();
+		nonContentTokens = new ArrayList<Token>();
 	}
 	
 	/** Note: this will read only 1024 bytes of reader, it's
@@ -253,6 +267,9 @@ public class FastWikiTokenizerEngine {
 					exact.setType("unicode");
 				tokens.add(exact);
 			} */
+			if(templateLevel == 0)
+				keywordTokens+=gap; // inc by gap (usually 1, can be more before paragraphs and sections)
+			
 			// add decomposed token to stream
 			if(decompLength!=0){
 				Token t = new Token(
@@ -261,7 +278,10 @@ public class FastWikiTokenizerEngine {
 					t.setPositionIncrement(0);
 					t.setType("transliteration");
 				} */
-				tokens.add(t);				
+				t.setPositionIncrement(gap);
+				if(gap != 1)
+					gap = 1; // reset token gap
+				addToTokens(t);
 			}
 			// add alias (if any) token to stream
 			if(aliasLength!=0){
@@ -269,13 +289,29 @@ public class FastWikiTokenizerEngine {
 						new String(aliasBuffer, 0, aliasLength), start, start + length);
 				t.setPositionIncrement(0);
 				t.setType("transliteration");
-				tokens.add(t);
+				addToTokens(t);
 			}
 			length = 0;
 			numberToken = false;
-			if(templateLevel == 0)
-				keywordTokens++;
+			
 		}
+	}
+	
+	/** 
+	 * Add a token to tokens list, in case of initial templates adds to special 
+	 * nonContentToken list, and later reintroduces them 
+	 * @param t
+	 */
+	private final void addToTokens(Token t){
+		if(templateLevel > 0 && keywordTokens < FIRST_SECTION_GAP){
+			nonContentTokens.add(t);
+			return;
+		} else if(t.getPositionIncrement() == FIRST_SECTION_GAP){
+			for(Token tt : nonContentTokens)
+				tokens.add(tt); // re-add nonconent tokens
+			nonContentTokens.clear();
+		}
+		tokens.add(t);
 	}
 
 	/**
@@ -435,6 +471,7 @@ public class FastWikiTokenizerEngine {
 			// check
 			if(start == end && start != 0 && start+end<endOfLine-cur && start>=2 && start<=4){
 				headings++;
+				headingText.add(new String(text,cur+start,endOfLine-(cur+start+end)));
 			}
 		}		
 	}
@@ -471,8 +508,30 @@ public class FastWikiTokenizerEngine {
 				case '\'':
 					continue; // ignore single quotes
 				case '=':
+					addToken();
 					checkHeadings();
-					break;
+					if(headings == 1)
+						gap = FIRST_SECTION_GAP;
+					else if(headings > 1)
+						gap = SECTION_GAP;
+					continue;
+				case '\n':
+					addToken();
+					if(cur + 1 < textLength){
+						switch(text[cur+1]){
+						case '\n': gap = PARAGRAPH_GAP; break;
+						case '*': case ':': case '#': gap = BULLETIN_GAP; break;
+						}
+					}
+					continue;
+				case '.':
+				case '(':
+				case ')':
+				case '?':
+				case '!':
+					addToken();
+					gap = SENTENCE_GAP;
+					continue;
 				case '<':
 					addToken();
 					state = ParserState.IGNORE;
@@ -736,6 +795,12 @@ public class FastWikiTokenizerEngine {
 			}		
 		}
 		addToken();
+		if(nonContentTokens.size() != 0){
+			// flush any remaning tokens from initial templates, etc..
+			for(Token tt : nonContentTokens)
+				tokens.add(tt);
+			nonContentTokens.clear();
+		}
 		return tokens;
 	}
 
@@ -793,6 +858,10 @@ public class FastWikiTokenizerEngine {
 
 	public HashSet<String> getKeywords() {
 		return keywords;
+	}
+	
+	public ArrayList<String> getHeadingText() {
+		return headingText;
 	}
 	
 	/** Delete everything that is not being indexes, decompose chars */

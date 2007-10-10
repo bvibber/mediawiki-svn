@@ -81,8 +81,9 @@ public class FieldNameFactory {
 			return "wholetitle";
 	}
 
-
 	public boolean isExactCase() {
 		return exactCase;
-	}	
+	}
+
+
 }

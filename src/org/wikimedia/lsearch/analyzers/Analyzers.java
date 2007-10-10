@@ -41,7 +41,7 @@ public class Analyzers {
 	 * @return
 	 */
 	public static Analyzer getReusableAnalyzer(FilterFactory filters, boolean exactCase){
-		return new QueryLanguageAnalyzer(filters,exactCase);
+		return new ReusableLanguageAnalyzer(filters,exactCase);
 	}
 
 	/**
@@ -71,7 +71,7 @@ public class Analyzers {
 	 * Add some fields to indexer's analyzer.
 	 * 
 	 */
-	public static WikiTokenizer addFieldsForIndexing(PerFieldAnalyzerWrapper perFieldAnalyzer, String text, 
+	public static WikiTokenizer addFieldsForIndexing(PerFieldAnalyzerWrapper perFieldAnalyzer, String text,
 			FilterFactory filters, FieldNameFactory fields, ArrayList<String> redirects, ArrayList<String> anchors,
 			ArrayList<RelatedTitle> related, int[] relatedPartition, Title title, Links links, boolean exactCase, boolean addKeywords) {
 		// parse wiki-text to get categories
@@ -85,13 +85,20 @@ public class Analyzers {
 			allKeywords.addAll(tokenizer.getKeywords());
 		if(redirects!=null)
 			allKeywords.addAll(redirects);
+		for(String heading : tokenizer.getHeadingText()){
+			allKeywords.add(title.getTitle()+" "+heading);
+		}
 		
+		// contents
 		perFieldAnalyzer.addAnalyzer(fields.contents(), 
 				new LanguageAnalyzer(filters,tokenizer));
+		// category
 		perFieldAnalyzer.addAnalyzer("category", 
 				new CategoryAnalyzer(categories,exactCase));
+		// interwiki (unused)
 		perFieldAnalyzer.addAnalyzer("interwiki", 
 				new InterwikiAnalyzer(interwiki));
+		// title
 		perFieldAnalyzer.addAnalyzer(fields.title(),
 				getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		// stemtitles
@@ -110,8 +117,8 @@ public class Analyzers {
 		setRelatedAnalyzer(perFieldAnalyzer,fields.related(), 
 				new RelatedAnalyzer(related,relatedPartition,filters.getNoStemmerFilterFactory(),fields.related(),exactCase));
 		// context
-		setContextAnalyzer(perFieldAnalyzer,fields.context(), 
-				new ContextAnalyzer(title,links,related,relatedPartition,filters.getNoStemmerFilterFactory(),fields.context(),exactCase));
+		/*setContextAnalyzer(perFieldAnalyzer,fields.context(), 
+				new ContextAnalyzer(title,links,related,relatedPartition,filters.getNoStemmerFilterFactory(),fields.context(),exactCase)); */
 		return tokenizer;
 	}
 	
@@ -166,7 +173,7 @@ public class Analyzers {
 		
 		perFieldAnalyzer = new PerFieldAnalyzerWrapper(getReusableAnalyzer(filters,exactCase));
 		perFieldAnalyzer.addAnalyzer(fields.contents(), 
-				new QueryLanguageAnalyzer(filters,exactCase));
+				new ReusableLanguageAnalyzer(filters,exactCase));
 		perFieldAnalyzer.addAnalyzer(fields.title(),
 				getReusableAnalyzer(filters.getNoStemmerFilterFactory(),exactCase));
 		perFieldAnalyzer.addAnalyzer(fields.stemtitle(),

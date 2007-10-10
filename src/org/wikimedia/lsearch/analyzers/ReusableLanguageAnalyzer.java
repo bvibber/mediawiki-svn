@@ -6,16 +6,16 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.TokenStream;
 
 /**
- * Analyzer used to analyzer search queries. 
+ * Reusable language analyzer. Can be used to tokenize arbitrary text. 
  * 
  * @author rainman
  *
  */
-public class QueryLanguageAnalyzer extends LanguageAnalyzer {
-	static org.apache.log4j.Logger log = Logger.getLogger(QueryLanguageAnalyzer.class);
+public class ReusableLanguageAnalyzer extends LanguageAnalyzer {
+	static org.apache.log4j.Logger log = Logger.getLogger(ReusableLanguageAnalyzer.class);
 	protected boolean exactCase;
 	
-	public QueryLanguageAnalyzer(FilterFactory filters, boolean exactCase){
+	public ReusableLanguageAnalyzer(FilterFactory filters, boolean exactCase){
 		super(filters,null);
 		this.exactCase = exactCase;
 	}
@@ -33,7 +33,7 @@ public class QueryLanguageAnalyzer extends LanguageAnalyzer {
 	public TokenStream tokenStream(String fieldName, Reader reader) {
 		Thread.dumpStack();
 		log.error("Invalid usage of QueryLanguageAnalyzer.tokenStream(String,Reader). Use tokenStream(String,String). Probably bug in the software. ");
-		return null;
+		throw new RuntimeException("Use tokenStream(String,String)");
 	}
 
 	@Override

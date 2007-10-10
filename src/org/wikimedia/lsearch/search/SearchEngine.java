@@ -156,12 +156,12 @@ public class SearchEngine {
 				res.setNumHits(col.size());
 				res.setSuccess(true);
 				// TODO: this is extremely slow
-				Links links = Links.openForRead(lin,lin.getSearchPath());
+				//Links links = Links.openForRead(lin,lin.getSearchPath());
 				for(int i=offset;i<offset+limit && i<col.size();i++){
 					RelatedTitle rt = col.get(i);
 					Title t = rt.getRelated();
 					ResultSet rs = new ResultSet(rt.getScore(),t.getNamespaceAsString(),t.getTitle());
-					rs.addContext(links.getContext(t.getKey(),key));
+					//rs.addContext(links.getContext(t.getKey(),key));
 					res.addResult(rs);
 				}
 			} else{
@@ -220,7 +220,6 @@ public class SearchEngine {
 				}
 			}			
 		} catch (IOException e) {
-			// res.setErrorMsg("Internal error during prefix search: "+e.getMessage());
 			log.error("Internal error in prefixSearch on "+pre+" : "+e.getMessage());
 			res.setErrorMsg("I/O error on index "+pre);
 		}
@@ -244,6 +243,10 @@ public class SearchEngine {
 				localfilter = null;
 			if(localfilter != null)
 				log.info("Using local filter: "+localfilter);
+			/*RelatedMap map = RelatedMap.getMap(iid);
+			RelatedHitCollector hitcol = new RelatedHitCollector(map,searcher.maxDoc(),offset+limit); 
+			searcher.search(q,localfilter,hitcol);
+			TopDocs hits = hitcol.getTopDocs(); */
 			TopDocs hits = searcher.search(q,localfilter,offset+limit);
 			return makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);		
 		} catch (IOException e) {

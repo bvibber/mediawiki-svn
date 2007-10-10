@@ -89,12 +89,18 @@ public class SearchServer extends Thread {
 		ExecutorService pool = Executors.newFixedThreadPool(maxThreads);
 		
 		for (;;) {
-			Socket client;
+			Socket client = null;
 			try {
 				log.debug("Listening...");
 				client = sock.accept();
 			} catch (Exception e) {
 				log.error("accept() error: " + e.getMessage());
+				// be sure to close all sockets
+				if(client != null){
+					try{ client.getInputStream().close(); } catch(Exception e1) {}
+					try{ client.getOutputStream().close(); } catch(Exception e1) {}
+					try{ client.close(); } catch(Exception e1) {}
+				}
 				continue;
 			}
 			
@@ -102,6 +108,13 @@ public class SearchServer extends Thread {
 			if (threadCount > maxThreads) {
 				stats.add(false, 0, threadCount);
 				log.error("too many connections, skipping a request");
+				// be sure to close all sockets
+				if(client != null){
+					try{ client.getInputStream().close(); } catch(Exception e1) {}
+					try{ client.getOutputStream().close(); } catch(Exception e1) {}
+					try{ client.close(); } catch(Exception e1) {}
+				}
+				continue;
 			} else {
 				SearchDaemon worker = new SearchDaemon(client);
 				pool.execute(worker);

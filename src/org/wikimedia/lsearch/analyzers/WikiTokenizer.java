@@ -20,6 +20,7 @@ public class WikiTokenizer extends Tokenizer {
 	protected ArrayList<String> categories = null;
 	protected HashMap<String,String> interwikis = null;
 	protected HashSet<String> keywords = null;
+	protected ArrayList<String> headingText = null;
 	
 	/** Use <code>WikiTokenizer(String)</code> constructor */
 	@Deprecated
@@ -53,6 +54,7 @@ public class WikiTokenizer extends Tokenizer {
 			categories = parser.getCategories();
 			interwikis = parser.getInterwikis();
 			keywords = parser.getKeywords();
+			headingText = parser.getHeadingText();
 		}
 	}
 	
@@ -89,6 +91,11 @@ public class WikiTokenizer extends Tokenizer {
 	public HashSet<String> getKeywords() {
 		return keywords;
 	}
+	
+	public ArrayList<String> getHeadingText() {
+		return headingText;
+	}
+	
 	
 	
 	

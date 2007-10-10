@@ -30,9 +30,18 @@ public class RelatedStorage extends LuceneStorage {
 		super(iid.getRelated());
 	}
 
-	public void addRelated(String key, Collection<CompactRelated> rel) throws IOException{
+	public void addCompactRelated(String key, Collection<CompactRelated> rel) throws IOException{
 		ensureWrite();
 		StringList sl = new StringList(CompactRelated.convertToStringList(rel));
+		Document doc = new Document();
+		doc.add(new Field("key",key,Field.Store.YES,Field.Index.UN_TOKENIZED));
+		doc.add(new Field("related",sl.toString(),Field.Store.COMPRESS,Field.Index.NO));
+		writer.addDocument(doc);
+	}
+	
+	public void addRelated(String key, Collection<Related> rel) throws IOException{
+		ensureWrite();
+		StringList sl = new StringList(Related.convertToStringList(rel));
 		Document doc = new Document();
 		doc.add(new Field("key",key,Field.Store.YES,Field.Index.UN_TOKENIZED));
 		doc.add(new Field("related",sl.toString(),Field.Store.COMPRESS,Field.Index.NO));

@@ -67,7 +67,7 @@ public class RelatedBuilder {
 			if(dumpfile != null)
 				rebuildFromDump(dumpfile,iid);
 			else
-				rebuildFromLinks(iid);
+				rebuildFromLinksNew(iid);
 		} catch (IOException e) {
 			log.fatal("Rebuild I/O error: "+e.getMessage());
 			e.printStackTrace();
@@ -152,6 +152,39 @@ public class RelatedBuilder {
 		store(links,iid);		
 	}
 	
+	public static void rebuildFromLinksNew(IndexId iid) throws IOException {
+		Links links = Links.openForRead(iid,iid.getLinks().getImportPath());
+		RelatedStorage store = new RelatedStorage(iid);
+		
+		Dictionary dict = links.getKeys();
+		Word w;
+		while((w = dict.next()) != null){
+			String key = w.getWord();
+			ArrayList<String> inlinks = links.getInLinks(key);
+			ArrayList<Related> related = new ArrayList<Related>();
+			for(String rel : inlinks){
+				int ref = links.getNumInLinks(rel);
+				if(ref == 0)
+					continue;
+				double rscore = links.getRelatedCount(key,rel);				 
+				double score = rscore * rscore/ref;
+				if(score >= 0.00001 && ref != 0){
+					related.add(new Related(key,rel,score));
+				}
+			}
+			Collections.sort(related,new Comparator<Related>() {
+				public int compare(Related o1, Related o2){
+					double d = o2.score-o1.score;
+					if(d == 0) return 0;
+					else if(d > 0) return 1;
+					else return -1;
+				}
+			});
+			store.addRelated(key,related);
+		}
+		store.snapshot();
+	}
+	
 	/** Calculate and store related info 
 	 * @throws IOException */
 	public static void store(CompactLinks links, IndexId iid) throws IOException{
@@ -169,7 +202,7 @@ public class RelatedBuilder {
 				ArrayList<CompactRelated> rel = getRelated(cs,links);
 				if(rel.size() == 0)
 					continue;
-				store.addRelated(cs.toString(),rel);
+				store.addCompactRelated(cs.toString(),rel);				
 			}
 		}
 		store.snapshot();

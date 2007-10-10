@@ -151,7 +151,7 @@ public class CustomBoostQuery extends Query {
    * @return custom score.
    */
   public float customScore(int doc, float subQueryScore, float boostScore) {
-    return (0.2f + boostScore * 10) * subQueryScore;
+    return boostScore * subQueryScore;
   }
 
   /**
@@ -166,8 +166,7 @@ public class CustomBoostQuery extends Query {
    */
   public Explanation customExplain(int doc, Explanation subQueryExpl, Explanation boostExpl) {
     float boostScore = boostExpl==null ? 1 : boostExpl.getValue();
-    float sc = (0.2f + boostScore * 10);
-    Explanation exp = new Explanation( sc * subQueryExpl.getValue(), "custom score: product of:");
+    Explanation exp = new Explanation( boostScore * subQueryExpl.getValue(), "custom score: product of:");
     exp.addDetail(subQueryExpl);
     if (boostExpl != null) {
       exp.addDetail(boostExpl);
@@ -281,7 +280,7 @@ public class CustomBoostQuery extends Query {
 
     /*(non-Javadoc) @see org.apache.lucene.search.Scorer#score() */
     public float score() throws IOException {
-      float boostScore = (boostScorer==null || subQueryScorer.doc() != boostScorer.doc() ? 0 : boostScorer.score()); 
+      float boostScore = (boostScorer==null || subQueryScorer.doc() != boostScorer.doc() ? 1 : boostScorer.score()); 
       return qWeight * customScore(subQueryScorer.doc(), subQueryScorer.score(), boostScore);
     }
 

@@ -515,12 +515,12 @@ public class WikiIndexModifier {
 			float fb = boost*(float)MathFunc.avg(scores,p[i-1],p[i]);
 			relfield.setBoost(fb);
 			doc.add(relfield);
-			if(i <= ContextAnalyzer.CONTEXT_GROUPS){
+			/*if(i <= ContextAnalyzer.CONTEXT_GROUPS){
 				Field confield = new Field(context+i, "", 
 						Field.Store.NO, Field.Index.TOKENIZED);
 				confield.setBoost(fb); // use same boost as related field
 				doc.add(confield);
-			} 
+			}  */
 		}
 		
 		return p;
