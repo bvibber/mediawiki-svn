@@ -41,10 +41,11 @@ function wfSpecialCopy() {
 		}
 		function execute( $par ) {
 			global $wgOut, $wgRequest, $wgTitle, $wgUser, $wdTermDBDataSet;
-			$wgOut->setPageTitle("Special:Copy");
 
+			#$wgOut->setPageTitle("Special:Copy");
 			if(!$wgUser->isAllowed('wikidata-copy')) {
-				$wgOut->addHTML(wfMsgSci("Permission_denied"));
+
+				$wgOut->addHTML(wfMsgSc("Permission_denied"));
 				return false;
 			}
 
@@ -58,79 +59,22 @@ function wfSpecialCopy() {
 			} elseif ($action=="help"){
 				$this->help();
 			} else {
-				$wgOut->addWikiText(wfMsgSc("copy_no_action_specified",$action));	
+				$wgOut->addWikiText(wfMsgSc("no_action_specified",$action));	
 				$wgOut->addWikiText(wfMsgSc("copy_help"));
 			}
 		}
 
+		/** reserved for ui elements */
 		protected function ui() {
 
-			global $wgOut, $wgRequest, $wgUser;
-			$lang=$wgUser->getOption("language");
-			require_once("forms.php");			
-			$wgOut->addHTML(wfMsgSc("conceptmapping_uitext"));
-			$sets=wdGetDataSets();
-			$options = array();
-			$html="";
-			$mappings=array();
-			$rq=array();
-
-			foreach ($sets as $key=>$setObject) {
-				$set=$setObject->getPrefix();
-				$rq[$set]=$wgRequest->getText("set_".$set);
-				$rq[$set]=trim($rq[$set]);
-				$rq[$set]=(int)$rq[$set];
-				if($rq[$set]) {
-					$dmModel=new DefinedMeaningModel($rq[$set],null,$setObject);
-					$defaultSel=$dmModel->getSyntransByLanguageCode($lang);
-					$options[$setObject->fetchName()]=getSuggest("set_$set", 'defined-meaning',array(), $rq[$set], $defaultSel, array(0), $setObject);
-				} else {
-					$options[$setObject->fetchName()]=getSuggest("set_$set", 'defined-meaning', array(), null, null, array(0), $setObject);
-				}
-
-			}
-			$wgOut->addHTML(getOptionPanel($options));
-			$noerror=$wgRequest->getText("suppressWarnings");
-
-			foreach ($sets as $key=>$setObject) {
-				$set=$setObject->getPrefix();
-				if(!$rq[$set]) {
-					$wgOut->addHTML(' <span style="color:yellow">['.wfMsgSc("dm_not_present").']</span>');
-				} else  {
-					$dmModel=new DefinedMeaningModel($rq[$set],null,$setObject);
-					$dmModel->checkExistence();
-					if ($dmModel->exists()) {
-						$id=$dmModel->getId();
-						$title=$dmModel->getTitleText();
-					} else {
-						$id=null;
-						$title=null;
-					}
-					if(!$noerror) {
-						$wgOut->addHTML("$key: ".$rq[$set]." ($title)");
-					}
-					if ($id!=null) {
-						$mappings[$key]=$id;
-						if(!$noerror) {
-							$wgOut->addHTML(' <span style="color:green">['.wfMsgSc("dm_OK").']</span>');
-						}
-					} else {
-						if(!$noerror) {
-							$wgOut->addHTML(' <span style="color:red">['.wfMsgSc("dm_not_found").']</span>');
-						}
-					}
-				}
-				$wgOut->addHTML("<br>\n");	
-			}
-			if (sizeOf($mappings)>1) { 
-				createConceptMapping($mappings);
-				$wgOut->addHTML(wfMsgSc("mapping_successful"));
-			} else {
-				$wgOut->addHTML(wfMsgSc("mapping_unsuccessful"));
-			}
+			global $wgOut ;
+			$wgOut->addWikiText(wfMsgSc("no_action_specified"));
 
 		}
 
+		/** display a helpful help message. 
+		 * (if desired)
+		 */
 		protected function help() {
 			global $wgOut;
 			$wgOut->addWikiText("<h2>Help</h2>");
@@ -169,35 +113,64 @@ function wfSpecialCopy() {
 			#seems ok so far, let's try and copy.
 			$success=$this->_doCopy($dmid_dirty, $dc1_dirty, $dc2_dirty);
 			if ($success)
-				$wgOut->addWikiText(wfMsgSc("copy_successful"));
+				$this->autoredir();
 			else
 				$wgOut->addWikiText(wfMsgSc("copy_unsuccessful"));
 		}
 
+		/** automatically redirects to another page.
+		 * make sure you haven't used $wgOut before calling this!
+		 */
+		protected function autoredir() {
+			global 
+				$wgTitle, $wgOut, $wgRequest;
 
+			$dmid_dirty=$wgRequest->getText("dmid");	
+			$dc1_dirty=$wgRequest->getText("dc1");	
+			$dc2_dirty=$wgRequest->getText("dc2");	
+
+			# Where should we redirect to?
+			$meanings=getDefinedMeaningDataAssociatedByConcept($dmid_dirty, $dc1_dirty);
+			$targetdmm=$meanings[$dc2_dirty];
+			$title=$targetdmm->getTitleObject();
+			$url=$title->getLocalURL()."&dataset=$dc2_dirty&action=edit";
+
+			# do the redirect
+			$wgOut->disable();
+			header('Location: '.$url);
+		}
+
+
+		/* Using Copy.php; perform a copy of a defined meaning from one dataset to another,
+		   provided the user has permission to do so,*/
 		protected function _doCopy($dmid_dirty, $dc1_dirty, $dc2_dirty) {
 			global 
 				$wgCommunityEditPermission, $wgOut, $wgUser, $wgCommunity_dc;
+			
+			# escape parameters
 			$dmid=mysql_real_escape_string($dmid_dirty);
 			$dc1=mysql_real_escape_string($dc1_dirty);
 			$dc2=mysql_real_escape_string($dc2_dirty);
 
+			# check permission
 			if (!($wgUser->isAllowed('wikidata-copy')) or $dc2!=$wgCommunity_dc) {
 				$wgOut->addHTML(wfMsgSc("Permission_denied"));
-				return false; #"houston, we have a problem"
+				return false; # we didn't perform the copy.
 			}
+
+			# copy
 			CopyTools::newCopyTransaction($dc1, $dc2);
-			$dmc=new DefinedMeaningCopier($dmid, $dc1, $dc2); #sorry, not a [[delorean]]
+			$dmc=new DefinedMeaningCopier($dmid, $dc1, $dc2);
 			$dmc->dup(); 
 
-			if ($dmc->already_there() ) {
-				$wgOut->addHTML(wfMsgSc("already_there"));
-				return false;
-			}
-			# Do we need this here? Or is there already transaction
-			# management on speial pages. :-/
-			# mysql_query("COMMIT");	# force commit where no autocommit
-						# full mysql transactions mihgt	be a good plan
+			# For purposes of current "edit copy", 
+			# having the dm be already_there() is ok.
+			# (hence commented out)
+			#if ($dmc->already_there() ) {
+			#	$wgOut->addHTML(wfMsgSc("already_there"));
+			#	return false;
+			#}
+
 			return true; # seems everything went ok.
 	
 		}

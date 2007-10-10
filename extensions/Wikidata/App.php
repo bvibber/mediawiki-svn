@@ -26,21 +26,24 @@ $wdTermDBDataSet='uw';
 # It _must_ exist for the Wikidata application to be executed 
 # successfully.
 $wdDefaultViewDataSet='uw';
-$wdShowCopyPanel=true;
+$wdShowCopyPanel=false;
 
 $wdGroupDefaultView=array();
 # Here you can set group defaults.
-$wdGroupDefaultView['wikidata-omega']='uw';
-#$wdGroupDefaultView['wikidata-test']='tt';
+#$wdGroupDefaultView['wikidata-omega']='uw';
+$wdGroupDefaultView['wikidata-test']='tt';
 
 # These are the user groups
 $wgGroupPermissions['wikidata-omega']['editwikidata-uw']=true;
+$wgGroupPermissions['wikidata-omega']['editwikidata-tt']=true;
 $wgGroupPermissions['wikidata-copy']['wikidata-copy']=true;
 
 # The permission needed to do ...
 $wgCommunity_dc="uw";
-global $wdExtraDebugging;
-$wdExtraDebugging=true;
+$wgCommunityEditPermission="editwikidata-uw"; # only used for copy for now
+global $wdExtraDebugging, $wdTesting;
+$wdExtraDebugging=false; # useful when testing. Use as needed
+$wdTesting=true; #useful when testing, use as needed
 
 
 # The site prefix allows us to have multiple sets of customized
@@ -61,7 +64,7 @@ require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialConceptMapping.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialCopy.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialExportTSV.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialImportTSV.php");
-require_once("{$IP}/extensions/Wikidata/LocalApp.php");
+#require_once("{$IP}/extensions/Wikidata/LocalApp.php");
 
 function addWikidataHeader() {
 	global $wgOut,$wgScriptPath;
@@ -107,7 +110,7 @@ function addHistoryLinkTrail(&$trail) {
  * @param $tabs as passed by MW
  */
 function modifyTabs($skin, $content_actions) {
-	global $wgUser, $wgTitle;
+	global $wgUser, $wgTitle, $wdTesting, $wgCommunity_dc;
 	$dc=wdGetDataSetContext();
 	$ns=Namespace::get($wgTitle->getNamespace());
 	if($ns->getHandlerClass()=='DefinedMeaning') {
@@ -119,11 +122,11 @@ function modifyTabs($skin, $content_actions) {
 		$dmid = ($rpos1 && $rpos2) ? substr($tt, $rpos1+1, $rpos2-$rpos1-1) : 0;
 		if($dmid) {
 			$copyTitle=SpecialPage::getTitleFor('Copy');
-			if(wdIsWikidataNs() && !$wgUser->isAllowed('editwikidata-'.$dc) && $wgUser->isAllowed('wikidata-copy')) {
+			if(wdIsWikidataNs() && (!$wgUser->isAllowed('editwikidata-'.$dc) || $wdTesting) && $wgUser->isAllowed('wikidata-copy')) {
 				$content_actions['edit']=array(
 				'class'=>false, 
 				'text'=>'edit copy', 
-				'href'=>$copyTitle->getLocalUrl("action=copy&dmid=$dmid&dc1=$dc&warn=1")
+				'href'=>$copyTitle->getLocalUrl("action=copy&dmid=$dmid&dc1=$dc&dc2=$wgCommunity_dc")
 			);
 			}
 		}

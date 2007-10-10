@@ -181,7 +181,6 @@ class ObjectCopier {
 	 * do sql statement DESC <dc>_objects for table format (where <dc> is a valid
 	 * dataset prefix) */
 	function create_key($uuid=null) {
-		echo "crumb B1<br>\n";
 		if (is_null($this->tableName)) {
 			throw new Exception("ObjectCopier: Object autovivification requires a table name to assist in creating an object. No table name was provided.");
 		}
@@ -218,7 +217,6 @@ class ObjectCopier {
 
 	function dup() {
 		if (is_null($this->id)) {
-			var_dump($this->autovivify);
 			if ($this->autovivify) {
 				$this->create_key();
 			} else {
@@ -231,7 +229,6 @@ class ObjectCopier {
 			if ($this->autovivify) {
 				$this->create_key();
 			} else {
-				echo "crumb d2B\n";
 				$id=$this->id;
 				$table=$this->object["table"];
 				throw new Exception("ObjectCopier: Could not find object information for object with id '$id' stored in `$table` in the objects table with prefix '$dc1'");
@@ -240,9 +237,6 @@ class ObjectCopier {
 
 		$object2=$this->identical();
 		if (CopyTools::sane_key_exists("object_id",$object2)) {
-			echo "ALREADY THERE? o1, o2<br>\n";
-			var_dump($this->object);
-			var_dump($object2);
 			$this->already_there=true;
 			$newid=$object2["object_id"];
 		} else {
@@ -432,7 +426,6 @@ class CollectionCopier extends Copier {
 	}
 	
 	public function __construct ($dc1, $dc2, $dmid, $save_dmid) {
-		echo "crumb A1<br>\n";
 		$this->dmid=$dmid;
 		$this->save_dmid=$save_dmid;
 		$this->dc1=$dc1;
@@ -440,7 +433,6 @@ class CollectionCopier extends Copier {
 	}
 
 	public function read($dc=Null){
-		echo "crumb A2<br>\n";
 		if (is_null($dc)) {
 			$dc=$this->dc1;
 		}
@@ -450,7 +442,6 @@ class CollectionCopier extends Copier {
 
 
 	public function read_definition($collection_id) {
-		echo "crumb A3<br>\n";
 		$dc1=$this->dc1;
 		return CopyTools::getRow($dc1,"collection","WHERE collection_id=$collection_id");
 	}
@@ -461,28 +452,20 @@ class CollectionCopier extends Copier {
 	 * returns the  id for dc2 either way.
 	 */
 	public function write_definition($definition){
-		echo "crumb A4--<br>\n";
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
 		
-		echo "crumb A4A-a<br>\n";
 		$objcopier=new ObjectCopier($definition["collection_id"], $dc1, $dc2);
 		$definition["collection_id"]=$objcopier->dup();
-		var_dump($objcopier->already_there()); #crumb !
 
-		echo "crumb A4A-b<br>\n";
 		if (!$objcopier->already_there()) {
-			echo "crumb A4B<br>\n";
 			$dmid= $definition["collection_mid"];
 			$dmcopier=new DefinedMeaningCopier($dmid,$dc1,$dc2);
 			$definition["collection_mid"]=$dmcopier->dup_stub();
 
-			echo "crumb A4C<br>\n";
 			CopyTools::dc_insert_assoc($dc2, "collection", $definition);
-			echo "crumb A4D<br>\n";
 
 		}
-		echo "crumb A4E<br>\n";
 		return $definition["collection_id"];
 
 	}
@@ -491,10 +474,8 @@ class CollectionCopier extends Copier {
 	 * and copy if doesn't already exist in dc2 
 	 */
 	public function dup_definition($collection_id) {
-		echo "crumb A5<br>\n";
 		$definition=$this->read_definition($collection_id);
 		
-		echo "crumb A5A<br>\n";
 		return $this->write_definition($definition);
 	}
 
@@ -503,7 +484,6 @@ class CollectionCopier extends Copier {
 	# existing mappings
 	# @deprecated
 	public function existing_mapping($member_id) {
-		echo "crumb A6 ALERT DEPRECATED <br>\n";
 		$dc2=$this->dc2;
 		$query="SELECT ${dc2}_collection_contents.* FROM ${dc2}_collection_contents, ${dc2}_collection
 			WHERE ${dc2}_collection_contents.collection_id = ${dc2}_collection.collection_id
@@ -536,9 +516,7 @@ class CollectionCopier extends Copier {
 	}
 
 	public function write($rows){
-		echo "crumb A8 <br>\n";
 		foreach ($rows as $row) {
-			echo "<a8>";
 			$this->write_single($row);
 		}
 	}
@@ -547,11 +525,8 @@ class CollectionCopier extends Copier {
 	 * are multiple ids 
 	 */
 	public function dup() {
-		echo "crumb A9 <br>\n";
 		$rows=$this->read($this->dc1);
-		echo "crumb A10 <br>\n";
 		$this->write($rows);
-		echo "crumb A11 <br>\n";
 	}
 }
 	
@@ -592,19 +567,28 @@ class DefinedMeaningCopier {
 		return $this->already_there;
 	}
 
+	/** duplicate the entire defined meaning, including all relations.
+	 * WARNING: relations are also defined meanings, so you can end up with a
+	 * runaway recursion. Use the safer dup_stub anywhere you can get away with it.
+	 */
 	public	function dup() {
 		$this->dup_stub();
 		$this->dup_rest();
 		return $this->save_meaning["defined_meaning_id"];
 	}
 
+	/** duplicate a basic defined meaning, translated text, and syntrans
+	 * this is relatively old code by now, and can probably be tidied/refactored
+	 * use dup_rest to duplicate everything else.
+	 *
+	 * There is/should be no risk of a stub copy leading to a runaway recursion
+	 */
 	public function dup_stub (){
 		$dmid=$this->dmid;
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
 
 		$this->read();
-		echo "<br><h2>".$this->dmid."</h2></br>";
 
 		# bit of exp here too (defnitely need to tidy)
 		$defining_expression=expression($this->defined_meaning["expression_id"], $dc1);
@@ -620,7 +604,6 @@ class DefinedMeaningCopier {
 		}
 		$this->save_meaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $this->defined_meaning["meaning_text_tcid"]);
 		if (!($copier->already_there())) {
-			echo "crumb 1<br>\n";
 			CopyTools::dc_insert_assoc($dc2, "defined_meaning", $this->save_meaning);
 
 			$title_name=$defining_expression["spelling"];
@@ -636,7 +619,6 @@ class DefinedMeaningCopier {
 		DefinedMeaningCopier::finishConceptMapping($dc1, $uuid_data[$dc1]);
 		DefinedMeaningCopier::finishConceptMapping($dc2, $uuid_data[$dc2]);
 
-		echo "crumb 3<br>\n";
 		return $this->save_meaning["defined_meaning_id"];
 	}		
 	
@@ -648,11 +630,18 @@ class DefinedMeaningCopier {
 					");
 	}
 
-	function dup_rest() {
+	/** duplicate everything else (that was not yet done by the stub
+	 * copy) so that we have a full copy of this defined meaning
+	 *
+	 * Is only called by dup(), after a call to  dup_stub()
+	 * 
+	 * it is possible to cause a runaway recursion with this function, 
+	 * hence  of Copy.php calls dup_stub() instead of dup() 
+	 */
+	protected function dup_rest() {
 		$dmid=$this->dmid;
 		$dc1=$this->dc1;
 		$dc2=$this->dc2;
-		echo "crumb 4<br>\n";
 
 		dup_syntranses(
 			$this->defined_meaning["defined_meaning_id"],
@@ -662,7 +651,6 @@ class DefinedMeaningCopier {
 		);
 		
 
-		echo "crumb 5 relation<br>\n";
 		$relationsCopier=new RelationsCopier(
 			$dc1, 
 			$dc2, 
@@ -670,7 +658,6 @@ class DefinedMeaningCopier {
 			$this->save_meaning["defined_meaning_id"]);
 		$relationsCopier->dup();
 		
-		echo "crumb 6 collection <br>\n";
 		$collectionCopier=new CollectionCopier(
 			$dc1, 
 			$dc2, 
@@ -678,7 +665,6 @@ class DefinedMeaningCopier {
 			$this->save_meaning["defined_meaning_id"]);
 		$collectionCopier->dup();
 
-		echo "crumb 7 membership<br>\n";
 		$classMembershipCopier=new ClassMembershipCopier(
 			$dc1, 
 			$dc2, 
@@ -861,8 +847,6 @@ class CopyTools {
 		global 
 			$wdExtraDebugging;
 		if ($wdExtraDebugging) {
-			var_dump ($my_array);
-			echo "<pre>$sql</pre>";
 		}
 
 		// Same with the values
@@ -870,13 +854,11 @@ class CopyTools {
 
 		if ($result)
 		{
-			#echo "The row was added sucessfully";
 			return true;
 		}
 		else
 		{
 			# how did we do errors again?
-			echo ("The row was not added<br>The error was" . mysql_error());
 			return false;
 		}
 	}
@@ -950,8 +932,6 @@ class ClassMembershipCopier extends Copier{
 		$newmid=$membership["class_mid"];
 		$classAttributesCopier=new ClassAttributesCopier($oldmid, $newmid, $dc1, $dc2); 
 		$classAttributesCopier->dup();
-		echo "What are we working with <br>\n";
-		var_dump($membership);
 		CopyTools::dc_insert_assoc($dc2, "class_membership", $membership);
 		return $newid;
 	}
@@ -961,7 +941,7 @@ class ClassMembershipCopier extends Copier{
 /** copying stuff in the %_class_attributes table actually
  * TODO: Actually I'm keying on class_mid atm, while I could be using the object_id-s
  * instead, the same way as the other AttributesCopiers.
- * I didn't realise this upfront. Changing this would be a nice improvement.
+ * I didn't realise this upfront. See ClassAttributesCopier2
  */
 class ClassAttributesCopier extends Copier {
 	
@@ -1025,7 +1005,7 @@ class ClassAttributesCopier extends Copier {
 }
 
 /** copying stuff in the %_class_attributes table 
- * This version keys on attribute_id (object_id)
+ * This version keys on attribute_id (which is the object_id in the objects table)
  */
 class ClassAttributesCopier2 extends Copier {
 	
@@ -1154,8 +1134,6 @@ abstract class Copier {
 	 *	   false if it did not, and we just created it
 	 */
 	protected function doDM(&$row, $dmid_column, $full=false) {
-		echo "IN COPIER<br>\n";
-		var_dump($row);
 		$dmCopier=new DefinedMeaningCopier($row[$dmid_column], $this->dc1, $this->dc2);
 		if ($full) {
 			$row[$dmid_column]=$dmCopier->dup();
@@ -1214,7 +1192,6 @@ abstract class AttributeCopier extends Copier {
 
 
 	public static function copy($dc1, $dc2, $src_object_id, $dst_object_id) {
-		echo "<h3> crumb: would copy attribs </h3>";
 		if (is_null($src_object_id)) 
 			throw new Exception("AttributeCopier: cannot copy: source object_id=null");
 
@@ -1223,20 +1200,20 @@ abstract class AttributeCopier extends Copier {
 		$optionAttributeCopier=new OptionAttributeCopier($dc1, $dc2, $src_object_id, $dst_object_id);
 		$optionAttributeCopier->dup();
 
-		#$textAttributeCopier=new textAttributeCopier($this->dc1, $this->dc2, $src_object_id, $dst_object_id);
-		#$textAttributeCopier->dup();
+		$textAttributeCopier=new TextAttributeCopier($dc1, $dc2, $src_object_id, $dst_object_id);
+		$textAttributeCopier->dup();
 
-		#$translatedContentCopier=new translatedContentCopier($this->dc1, $this->dc2, $src_object_id, $dst_object_id);
-		#$translatedContentCopier->dup();
+		$translatedContentAttributeCopier=new TranslatedContentAttributeCopier($dc1, $dc2, $src_object_id, $dst_object_id);
+		$translatedContentAttributeCopier->dup();
 
-		#$urlAttributeCopier=new URLAttributeCpier($this->dc1, $this->dc2, $src_object_id, $dst_object_id);
-		#$urlAttributeCopier->dup();
+		$urlAttributeCopier=new URLAttributeCopier($dc1, $dc2, $src_object_id, $dst_object_id);
+		$urlAttributeCopier->dup();
 	}
 		
 	protected function write($values) {
 		$latest=null;
 		foreach ($values as $value) {
-			$latest=write_single($value);
+			$latest=$this->write_single($value);
 		}
 		return $latest;
 	}
@@ -1288,9 +1265,9 @@ class OptionAttributeCopier extends AttributeCopier{
 		if ($this->doObject($attribute, "value_id"))
 			return $attribute["value_id"];
 
-		$attribute["object_id"]=$this->new_object_id;
+		$attribute["object_id"]=$this->dst_object_id;
 
-		$oaocopier=new OptionAttributeOptionsCopier($attribute["option_id"], $dc1, $dc2);
+		$oaocopier=new OptionAttributeOptionsCopier($attribute["option_id"], $this->dc1, $this->dc2);
 		$attribute["option_id"]=$oaocopier->dup();
 
 		$this->doInsert($attribute);
@@ -1318,12 +1295,14 @@ class OptionAttributeOptionsCopier extends Copier {
 	}	
 
 	public function dup() {
-		$oaos=read();
-		return write($oaos);
+		$oaos=$this->read();
+		return $this->write($oaos);
 	}
 	
 	public function read(){
-		return CopyTools::getRows($dc1, "class_membership", "WHERE class_member_mid=$class_member_mid");
+		$dc1=$this->dc1;
+		$option_id=$this->option_id;
+		return CopyTools::getRows($dc1, $tableName, "WHERE option_id=$option_id");
 	}
 
 	/**
@@ -1348,17 +1327,121 @@ class OptionAttributeOptionsCopier extends Copier {
 		if ($this->doObject($oao, "option_id"))
 			return $oao["option_id"];
 
-		$cacopier=new ClassAttributesCopier($oao["attribute_id"], $dc1, $dc2);
+		$cacopier=new ClassAttributesCopier($oao["attribute_id"], $this->dc1, $this->dc2);
 		$oao["attribute_id"]=$cacopier->dup();
 
 		$this->doDM($oao, "option_mid");
 		#language_id is mediawiki, not wikidata, so that's ok.
 
+		$this->doInsert($oao);
 		return $oao["option_id"];
 	}
 
 
 }
+
+class TextAttributeCopier extends AttributeCopier{
+	protected $tableName="text_attribute_values"; 	//Name of the table this class operates on.
+	
+	public function __construct($dc1, $dc2, $src_object_id, $dst_object_id){
+		parent::__construct($dc1, $dc2, $src_object_id, $dst_object_id);
+	}
+
+	/**
+	 * *all attribute_value tables:
+	 * **value_id: unique id in objects table
+	 * **object_id: object we are referring to
+	 * ** %_transaction_id	wikidata transactioning
+	 * * Unique(ish) to text_attribute_values
+	 * ** attribute_mid: name of the attribute, I presume
+	 * ** text: actual text
+	 * Possibly there's more refactor candidates (such as the value_id and object_id)
+	 */
+	public function write_single($attribute) {
+
+		if ($this->doObject($attribute, "value_id"))
+			return $attribute["value_id"];
+
+		$attribute["object_id"]=$this->dst_object_id;
+		$this->doDM($attribute, "attribute_mid");
+		# text field is unchanged.
+
+		$this->doInsert($attribute);
+		return $attribute["value_id"];
+	}
+}
+
+class URLAttributeCopier extends AttributeCopier{
+	protected $tableName="url_attribute_values"; 	//Name of the table this class operates on.
+	
+	public function __construct($dc1, $dc2, $src_object_id, $dst_object_id){
+		parent::__construct($dc1, $dc2, $src_object_id, $dst_object_id);
+	}
+
+	/**
+	 * *all attribute_value tables:
+	 * **value_id: unique id in objects table
+	 * **object_id: object we are referring to
+	 * ** %_transaction_id	wikidata transactioning
+	 * * Unique(ish) to text_attribute_values
+	 * ** attribute_mid: name of the attribute, I presume
+	 * ** url: arbitrary varchar (255)
+	 * ** label: arbitrary varchar (255)
+	 * Possibly there's more refactor candidates (such as the value_id and object_id and attribute mid?)
+	 */
+	public function write_single($attribute) {
+
+		if ($this->doObject($attribute, "value_id"))
+			return $attribute["value_id"];
+
+		$attribute["object_id"]=$this->dst_object_id;
+
+		$this->doDM($attribute, "attribute_mid");
+		#url is unchanged
+		# label is unchanged
+
+		$this->doInsert($attribute);
+		return $attribute["value_id"];
+	}
+}
+
+class TranslatedContentAttributeCopier  extends AttributeCopier{
+	protected $tableName="translated_content_attribute_values"; 	//Name of the table this class operates on.
+	
+	public function __construct($dc1, $dc2, $src_object_id, $dst_object_id){
+		parent::__construct($dc1, $dc2, $src_object_id, $dst_object_id);
+	}
+
+	/**
+	 * *all attribute_value tables:
+	 * **value_id: unique id in objects table
+	 * **object_id: object we are referring to
+	 * ** %_transaction_id	wikidata transactioning
+	 * * Unique(ish) to translated_content_attribute_values.
+	 * ** attribute_mid: name of the attribute, I presume
+	 * ** url: arbitrary varchar (255)
+	 * ** label: arbitrary varchar (255)
+	 * Possibly there's more refactor candidates (such as the value_id and object_id and attribute mid?)
+	 */
+	public function write_single($attribute) {
+
+		if ($this->doObject($attribute, "value_id"))
+			return $attribute["value_id"];
+
+		$attribute["object_id"]=$this->dst_object_id;
+
+		$this->doDM($attribute,"attribute_mid");
+		
+		# we need a value_tcid ... ut oh ...
+		$attribute["text_id"]=dup_translated_content($this->dc1, $this->dc2, $attribute["text_id"]);
+
+		$this->doInsert($attribute);
+		return $attribute["value_id"];
+	}
+}
+
+
+
 
 
 ?>
