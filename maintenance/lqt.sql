@@ -3,9 +3,10 @@ CREATE TABLE /*$wgDBprefix*/thread (
   thread_root int(8) unsigned UNIQUE NOT NULL,
   thread_ancestor int(8) unsigned NOT NULL,
   thread_parent int(8) unsigned NULL,
-
   thread_summary_page int(8) unsigned NULL,
-  thread_timestamp char(14) binary NOT NULL default '',
+
+  thread_modified char(14) binary NOT NULL default '',
+  thread_created char(14) binary NOT NULL default '',
   thread_revision int(8) unsigned NOT NULL default 1,
 
   thread_article_namespace int NOT NULL,
@@ -24,8 +25,8 @@ CREATE TABLE /*$wgDBprefix*/thread (
   UNIQUE INDEX thread_id (thread_id),
   INDEX thread_ancestor (thread_ancestor),
   INDEX thread_article_title (thread_article_namespace, thread_article_title),
-  INDEX( thread_path(255) ),
-  INDEX thread_timestamp (thread_timestamp)
+  INDEX thread_modified (thread_modified),
+  INDEX thread_created (thread_created)
 ) TYPE=InnoDB;
 
 CREATE TABLE /*$wgDBprefix*/historical_thread (
@@ -45,5 +46,4 @@ CREATE TABLE /*$wgDBprefix*/user_message_state (
   ums_read_timestamp varbinary(14),
   
   PRIMARY KEY (ums_user, ums_thread)
-
 ) TYPE=InnoDB;

@@ -230,19 +230,19 @@ class LqtView {
 		$g->addQuery('fresh',
 		              array($article_clause,
 							'thread.thread_parent is null',
-		                    '(thread.thread_timestamp >= ' . $startdate->text() .
+		                    '(thread.thread_modified >= ' . $startdate->text() .
 		 					'  OR (thread.thread_summary_page is NULL' . 
 								 ' AND thread.thread_type='.Threads::TYPE_NORMAL.'))'),
-		              array('ORDER BY thread.thread_timestamp DESC'));
+		              array('ORDER BY thread.thread_modified DESC'));
 		$g->addQuery('archived',
 		             array($article_clause,
 							'thread.thread_parent is null',
 		                   '(thread.thread_summary_page is not null' .
 			                  ' OR thread.thread_type='.Threads::TYPE_NORMAL.')',
-		                   'thread.thread_timestamp < ' . $startdate->text()),
-		             array('ORDER BY thread.thread_timestamp DESC'));
+		                   'thread.thread_modified < ' . $startdate->text()),
+		             array('ORDER BY thread.thread_modified DESC'));
 		$g->extendQuery('archived', 'recently-archived',
-		                array('( thread.thread_timestamp >=' . $recentstartdate->text() .
+		                array('( thread.thread_modified >=' . $recentstartdate->text() .
 				      '  OR  rev_timestamp >= ' . $recentstartdate->text() . ')',
 				      'summary_page.page_id = thread.thread_summary_page', 'summary_page.page_latest = rev_id'),
 				array(),
@@ -620,7 +620,7 @@ HTML;
 		$sig = $this->user->getSkin()->userLink( $author->getID(), $author->getName() ) .
 			   $this->user->getSkin()->userToolLinks( $author->getID(), $author->getName() );
 
-		$timestamp = $wgLang->timeanddate($thread->timestamp());
+		$timestamp = $wgLang->timeanddate($thread->modified());
 		
 		$this->output->addHTML(<<<HTML
 <ul class="lqt_footer">
@@ -722,7 +722,7 @@ HTML
 			$this->output->addHTML( "This thread is a placeholder indicating that a thread, <a href=\"{$target->getFullURL()}\">{$target->getText()}</a>, was removed from this page to another talk page. This move was made by " );
 			$this->output->addWikitext( $sig, false );
 			$this->output->addHTML( " at " );
-			$this->output->addHTML( $wgLang->timeanddate($thread->timestamp()) );
+			$this->output->addHTML( $wgLang->timeanddate($thread->modified()) );
 			$this->output->addHTML( "." );
 			
 			return;
@@ -739,7 +739,7 @@ HTML
 			}
 		}
 
-		$timestamp = new Date($thread->timestamp());
+		$timestamp = new Date($thread->modified());
 		if( $thread->summary() ) {
 			$this->showSummary($thread);
 		} else if ( $timestamp->isBefore(Date::now()->nDaysAgo($this->archive_start_days))

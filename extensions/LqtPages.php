@@ -190,8 +190,8 @@ HTML
 							'thread.thread_parent is null',
 		                   '(thread.thread_summary_page is not null' .
 			                  ' OR thread.thread_type = '.Threads::TYPE_MOVED.')',
-		                     'thread.thread_timestamp < ' . $startdate->text());
-		$options = array('ORDER BY thread.thread_timestamp DESC');
+		                     'thread.thread_modified < ' . $startdate->text());
+		$options = array('ORDER BY thread.thread_modified DESC');
 		
 		$annotations = array("Searching for threads");
 
@@ -209,13 +209,13 @@ HTML
 		if ($s && ctype_digit($s) && strlen($s) == 6 && !$ignore_dates) {
 			$this->selstart = new Date( "{$s}01000000" );
 			$this->starti = array_search($s, $months);
-			$where[] = 'thread.thread_timestamp >= ' . $this->selstart->text();
+			$where[] = 'thread.thread_modified >= ' . $this->selstart->text();
 		}
 		$e = $r->getVal('lqt_archive_end');
 		if ($e && ctype_digit($e) && strlen($e) == 6 && !$ignore_dates) {
 			$this->selend = new Date("{$e}01000000");
 			$this->endi = array_search($e, $months);
-			$where[] = 'thread.thread_timestamp < ' . $this->selend->nextMonth()->text();
+			$where[] = 'thread.thread_modified < ' . $this->selend->nextMonth()->text();
 		}
 		if ( isset($this->selstart) && isset($this->selend) ) {
 
@@ -414,10 +414,10 @@ class ThreadPermalinkView extends LqtView {
 	
 	function getSubtitle() {
  		// TODO the archive month part is obsolete.
-		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($this->thread->timestamp()) ))
+		if (Date::now()->nDaysAgo(30)->midnight()->isBefore( new Date($this->thread->modified()) ))
 			$query = '';
 		else
-			$query = 'lqt_archive_month=' . substr($this->thread->timestamp(),0,6);
+			$query = 'lqt_archive_month=' . substr($this->thread->modified(),0,6);
 		$talkpage = $this->thread->article()->getTitle()->getTalkpage();
 		$talkpage_link = $this->user->getSkin()->makeKnownLinkObj($talkpage, '', $query);
 		if ( $this->thread->hasSuperthread() ) {
@@ -598,7 +598,7 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 			$change_comment="<em>($change_comment)</em>";
 
 		$result[] = "<tr>";
-		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->timestamp()) . "</a></td>";
+		$result[] = "<td><a href=\"$url\">" . $wgLang->timeanddate($t->modified()) . "</a></td>";
 		$result[] = "<td>" . $sig . "</td>";
 		$result[] = "<td>$change_label</td>";
 		$result[] = "<td>$change_comment</td>";
@@ -689,7 +689,7 @@ class ThreadHistoricalRevisionView extends ThreadPermalinkView {
 	function showHistoryInfo() {
 		global $wgLang; // TODO global.
 		$this->openDiv('lqt_history_info');
-		$this->output->addHTML('Revision as of ' . $wgLang->timeanddate($this->thread->timestamp()) . '.<br>' );
+		$this->output->addHTML('Revision as of ' . $wgLang->timeanddate($this->thread->modified()) . '.<br>' );
 		if( $this->thread->changeType() == Threads::CHANGE_NEW_THREAD ) {
 			$this->output->addHTML('This is the thread\'s initial revision.');
 		}

@@ -157,7 +157,8 @@ class HistoricalThread extends Thread {
 		$this->summaryId = $t->summaryId;
 		$this->articleNamespace = $t->articleNamespace;
 		$this->articleTitle = $t->articleTitle;
-		$this->timestamp = $t->timestamp;
+		$this->modified = $t->modified;
+		$this->created = $t->created;
 		$this->ancestorId = $t->ancestorId;
 		$this->parentId = $t->parentId;
 		$this->id = $t->id;
@@ -220,23 +221,25 @@ class Thread {
 	protected $ancestorId;
 	protected $parentId;
 	
-	/* These are only used in the case of a non-existant article. */
-	protected $articleNamespace;
-	protected $articleTitle;
-
 	/* Actual objects loaded on demand from the above when accessors are called: */
 	protected $root;
 	protected $article;
 	protected $summary;
 	protected $superthread;
+	
+	/* Subject page of the talkpage we're attached to: */
+	protected $articleNamespace;
+	protected $articleTitle;
 
-	/* Simple strings: */
-	protected $timestamp;
+	/* Timestamps: */
+	protected $modified;
+	protected $created;
 	
 	protected $id;
 	protected $revisionNumber;
 	protected $type;
 	
+	/* Information about what changed in this revision. */
 	protected $changeType;
 	protected $changeObject;
 	protected $changeComment;
@@ -310,7 +313,7 @@ class Thread {
 							 'thread_change_comment' => $this->changeComment,
 							 'thread_change_user' => $this->changeUser,
 							 'thread_change_user_text' => $this->changeUserText,
-							 'thread_timestamp' => $timestamp),
+							 'thread_modified' => $timestamp),
 		     /* WHERE */ array( 'thread_id' => $this->id ),
 		     __METHOD__);
 	}
@@ -353,7 +356,7 @@ class Thread {
 					'thread_parent' => $this->parentId,
 					'thread_type' => $this->type,
 					'thread_summary_page' => $this->summaryId,
-//					'thread_timestamp' => wfTimestampNow(),
+//					'thread_modified' => wfTimestampNow(),
 //					'thread_revision' => $this->revisionNumber,
 					'thread_article_namespace' => $this->articleNamespace,
 				    'thread_article_title' => $this->articleTitle,
@@ -370,7 +373,7 @@ class Thread {
 		
 	
 	//	RecentChange::notifyEdit( wfTimestampNow(), $this->root(), /*minor*/false, $wgUser, $summary,
-	//		$lastRevision, $this->getTimestamp(), $bot, '', $oldsize, $newsize,
+	//		$lastRevision, $this->getModified(), $bot, '', $oldsize, $newsize,
 	//		$revisionId );
 	}
 	
@@ -462,7 +465,8 @@ class Thread {
 		$this->summaryId = $line->thread_summary_page;
 		$this->ancestorId = $line->thread_ancestor;
 		$this->parentId = $line->thread_parent;
-		$this->timestamp = $line->thread_timestamp;
+		$this->modified = $line->thread_modified;
+		$this->created = $line->thread_created;
 		$this->revisionNumber = $line->thread_revision;
 		$this->type = $line->thread_type;
 		$this->changeType = $line->thread_change_type;
@@ -660,8 +664,12 @@ class Thread {
 		return $this->replies;
 	}
 
-	function timestamp() {
-		return $this->timestamp;
+	function modified() {
+		return $this->modified;
+	}
+	
+	function created() {
+		return $this->created;
 	}
 	
 	function type() {
@@ -788,13 +796,16 @@ class Threads {
 		}
 		
 		global $wgUser; // TODO global.
+		
+		$timestamp = wfTimestampNow();
 
         $res = $dbr->insert('thread',
             array('thread_root' => $root->getID(),
                   'thread_parent' => $superthread ? $superthread->id() : null,
 				  'thread_article_namespace' => $article->getTitle()->getNamespace(),
 				  'thread_article_title' => $article->getTitle()->getDBkey(),
-                  'thread_timestamp' => wfTimestampNow(),
+                  'thread_modified' => $timestamp,
+				  'thread_created' => $timestamp,
 				  'thread_change_type' => $change_type,
 				  'thread_change_comment' => "", // TODO
 				  'thread_change_user' => $wgUser->getID(),
@@ -947,7 +958,7 @@ SQL;
 		$threads = Threads::where( Threads::articleClause($article) );
 		$months = array();
 		foreach( $threads as $t ) {
-			$m = substr( $t->timestamp(), 0, 6 );
+			$m = substr( $t->modified(), 0, 6 );
 			if ( !array_key_exists( $m, $months ) ) {
 				if (!in_array( $m, $months )) $months[] = $m;
 			}
