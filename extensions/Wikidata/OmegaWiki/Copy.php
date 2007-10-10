@@ -708,6 +708,7 @@ class CopyTools {
 			throw new Exception("Dataset info for $dc2 not found.");
 		}
 		
+		$virtual_user_id=0;
 		if (  array_key_exists("virtual_user_id", $datasets)  ) {
 			$virtual_user_id=$datasets["virtual_user_id"];
 		} else {
