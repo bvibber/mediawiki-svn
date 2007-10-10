@@ -187,7 +187,7 @@ HTML
 		// Begin with with the requirements for being *in* the archive.
 		$startdate = Date::now()->nDaysAgo($this->archive_start_days)->midnight();
 		$where = array(Threads::articleClause($this->article),
-		                     'instr(thread.thread_path, ".")' => '0',
+							'thread.thread_parent is null',
 		                   '(thread.thread_summary_page is not null' .
 			                  ' OR thread.thread_type = '.Threads::TYPE_MOVED.')',
 		                     'thread.thread_timestamp < ' . $startdate->text());

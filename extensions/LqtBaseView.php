@@ -229,14 +229,14 @@ class LqtView {
 		$article_clause = Threads::articleClause($this->article);
 		$g->addQuery('fresh',
 		              array($article_clause,
-		                   'instr(thread.thread_path, ".")' => '0',
+							'thread.thread_parent is null',
 		                    '(thread.thread_timestamp >= ' . $startdate->text() .
 		 					'  OR (thread.thread_summary_page is NULL' . 
 								 ' AND thread.thread_type='.Threads::TYPE_NORMAL.'))'),
 		              array('ORDER BY thread.thread_timestamp DESC'));
 		$g->addQuery('archived',
 		             array($article_clause,
-		                   'instr(thread.thread_path, ".")' => '0',
+							'thread.thread_parent is null',
 		                   '(thread.thread_summary_page is not null' .
 			                  ' OR thread.thread_type='.Threads::TYPE_NORMAL.')',
 		                   'thread.thread_timestamp < ' . $startdate->text()),

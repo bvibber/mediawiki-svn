@@ -158,7 +158,8 @@ class HistoricalThread extends Thread {
 		$this->articleNamespace = $t->articleNamespace;
 		$this->articleTitle = $t->articleTitle;
 		$this->timestamp = $t->timestamp;
-		$this->path = $t->path;
+		$this->ancestorId = $t->ancestorId;
+		$this->parentId = $t->parentId;
 		$this->id = $t->id;
 		$this->revisionNumber = $t->revisionNumber;
 		$this->changeType = $t->changeType;
@@ -216,6 +217,8 @@ class Thread {
 	protected $rootId;
 	protected $articleId;
 	protected $summaryId;
+	protected $ancestorId;
+	protected $parentId;
 	
 	/* These are only used in the case of a non-existant article. */
 	protected $articleNamespace;
@@ -229,7 +232,6 @@ class Thread {
 
 	/* Simple strings: */
 	protected $timestamp;
-	protected $path;
 	
 	protected $id;
 	protected $revisionNumber;
@@ -278,7 +280,7 @@ class Thread {
 		}
 		return $results;
 	}
-	
+/*	
 	function ancestors() {
  		$id_clauses = array();
 		foreach( explode('.', $this->path) as $id ) {
@@ -287,7 +289,7 @@ class Thread {
 		$where = implode(' OR ', $id_clauses);
 		return Threads::where($where);
 	}
-	
+*/	
 	private function bumpRevisionsOnAncestors($change_type, $change_object, $change_reason, $timestamp) {
 		global $wgUser; // TODO global.
 		
@@ -347,7 +349,8 @@ class Thread {
 		$dbr =& wfGetDB( DB_MASTER );
 		$res = $dbr->update( 'thread',
 		     /* SET */array( 'thread_root' => $this->rootId,
-					'thread_path' => $this->path,
+					'thread_ancestor' => $this->ancestorId,
+					'thread_parent' => $this->parentId,
 					'thread_type' => $this->type,
 					'thread_summary_page' => $this->summaryId,
 //					'thread_timestamp' => wfTimestampNow(),
@@ -457,7 +460,8 @@ class Thread {
 		$this->articleNamespace = $line->thread_article_namespace;
 		$this->articleTitle = $line->thread_article_title;
 		$this->summaryId = $line->thread_summary_page;
-		$this->path = $line->thread_path;
+		$this->ancestorId = $line->thread_ancestor;
+		$this->parentId = $line->thread_parent;
 		$this->timestamp = $line->thread_timestamp;
 		$this->revisionNumber = $line->thread_revision;
 		$this->type = $line->thread_type;
@@ -521,32 +525,31 @@ class Thread {
 	}
 	
 	function setSuperthread($thread) {
-		$this->path = $thread->path . '.' . $this->id;
+		$this->parentId = $thread->id();
+		$this->ancestorId = $thread->ancestorId();
 	}
 
 	function superthread() {
 		if( !$this->hasSuperthread() ) {
 			return null;
 		} else {
-			preg_match("/(\d+)\.\d+$/", $this->path, $matches);
-			$superthread_id = $matches[1];
-			return Threads::withId( $superthread_id );
+			return Threads::withId( $this->parentId );
 		}
 	}
 
 	function hasSuperthread() {
-		if( false === strpos($this->path,'.') ) return false;
-		else return true;
+		return $this->parentId != null;
 	}
 
 	function topmostThread() {
-		if( !$this->hasSuperthread() ) {
+		// In further evidence that the history mechanism is fragile,
+		// if we always use Threads::withId instead of returning $this,
+		// the historical revision is not incremented and we get a
+		// duplicate key.
+		if( $this->ancestorId == $this->id )
 			return $this;
-		} else {
-			preg_match("/^(\d+)\..*/", $this->path, $matches);
-			$superthread_id = $matches[1];
-			return Threads::withId( $superthread_id );
-		}
+		else
+			return Threads::withId( $this->ancestorId );
 	}
 	
 	function setArticle($a) {
@@ -570,10 +573,10 @@ class Thread {
 		return $this->id;
 	}
 	
-	function path() {
-		return $this->path;
+	function ancestorId() {
+		return $this->ancestorId;
 	}
-
+	
 	function root() {
 		if ( !$this->rootId ) return null;
 		if ( !$this->root ) $this->root = new Post( Title::newFromID( $this->rootId ),
@@ -788,6 +791,7 @@ class Threads {
 
         $res = $dbr->insert('thread',
             array('thread_root' => $root->getID(),
+                  'thread_parent' => $superthread ? $superthread->id() : null,
 				  'thread_article_namespace' => $article->getTitle()->getNamespace(),
 				  'thread_article_title' => $article->getTitle()->getDBkey(),
                   'thread_timestamp' => wfTimestampNow(),
@@ -801,14 +805,14 @@ class Threads {
 		$newid = $dbr->insertId();
 		
 		if( $superthread ) {
-			$newpath = $superthread->path() . '.' . $newid;
+			$ancestor = $superthread->ancestorId();
 			$change_object_clause = 'thread_change_object = ' . $newid;
 		} else {
-			$newpath = $newid;
+			$ancestor = $newid;
 			$change_object_clause = 'thread_change_object = null';
 		}
 		$res = $dbr->update( 'thread',
-			     /* SET */   array( 'thread_path' => $newpath,
+			     /* SET */   array( 'thread_ancestor' => $ancestor,
 			                         $change_object_clause ),
 			     /* WHERE */ array( 'thread_id' => $newid, ),
 			     __METHOD__);
@@ -854,7 +858,7 @@ class Threads {
 		$sql = <<< SQL
 SELECT DISTINCT children.*, child_page.*, ($root_test) as is_root FROM ($tables {$wgDBprefix}thread thread, {$wgDBprefix}thread children, {$wgDBprefix}page child_page) $joins
 WHERE $where
-AND children.thread_path LIKE CONCAT(thread.thread_path, "%")
+AND children.thread_ancestor = thread.thread_ancestor
 AND child_page.page_id = children.thread_root
 $options
 SQL;
@@ -871,13 +875,10 @@ SQL;
 			if( $line->is_root )
 				// thread is one of those that was directly queried for.
 				$top_level_threads[] = $new_thread;
-			else if( strstr( $line->thread_path, '.' ) !== false ) { // see note below *
-				// thread has a parent. extract second-to-last path element.
-				preg_match( '/([^.]+)\.[^.]+$/', $line->thread_path, $path_matches );
-				$parent_id = $path_matches[1];
-				if( !array_key_exists( $parent_id, $thread_children ) )
-					$thread_children[$parent_id] = array();
-				$thread_children[$parent_id][] = $new_thread;
+			else if( $line->thread_parent !== null ) { // see note below *
+				if( !array_key_exists( $line->thread_parent, $thread_children ) )
+					$thread_children[$line->thread_parent] = array();
+				$thread_children[$line->thread_parent][] = $new_thread;
 			}
 		}
 		
@@ -964,7 +965,7 @@ SQL;
 	}
 	
 	static function topLevelClause() {
-		return 'instr(thread.thread_path, ".") = 0';
+		return 'thread.thread_parent is null';
 	}
 
 }

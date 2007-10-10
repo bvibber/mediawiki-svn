@@ -1,7 +1,9 @@
 CREATE TABLE /*$wgDBprefix*/thread (
   thread_id int(8) unsigned NOT NULL auto_increment,
   thread_root int(8) unsigned UNIQUE NOT NULL,
-  thread_path text NOT NULL,
+  thread_ancestor int(8) unsigned NOT NULL,
+  thread_parent int(8) unsigned NULL,
+
   thread_summary_page int(8) unsigned NULL,
   thread_timestamp char(14) binary NOT NULL default '',
   thread_revision int(8) unsigned NOT NULL default 1,
@@ -20,6 +22,7 @@ CREATE TABLE /*$wgDBprefix*/thread (
 
   PRIMARY KEY thread_id (thread_id),
   UNIQUE INDEX thread_id (thread_id),
+  INDEX thread_ancestor (thread_ancestor),
   INDEX thread_article_title (thread_article_namespace, thread_article_title),
   INDEX( thread_path(255) ),
   INDEX thread_timestamp (thread_timestamp)
