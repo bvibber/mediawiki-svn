@@ -19,8 +19,10 @@ $wgExtensionCredits['specialpage'][] = array(
 	'url' => 'http://www.mediawiki.org/wiki/Extension:Makesysop'
 );
 
+$dir = dirname( __FILE__ );
+
 # Internationalisation file
-require_once( dirname(__FILE__) . '/SpecialMakesysop.i18n.php' );
+$wgExtensionMessagesFiles['Makesysop'] = "$dir/SpecialMakesysop.i18n.php";
 
 // Set groups to the appropriate sysop/bureaucrat structure:
 // * Steward can do 'full' work (makesysop && userrights)
@@ -30,12 +32,7 @@ $wgGroupPermissions['steward'   ]['userrights'] = true;
 $wgGroupPermissions['bureaucrat']['makesysop' ] = true;
 $wgGroupPermissions['bureaucrat']['userrights'] = false;
 
-$wgAvailableRights[] = 'makesysop';
-
 # Register special page
-if ( !function_exists( 'extAddSpecialPage' ) ) {
-	require( dirname(__FILE__) . '/../ExtensionFunctions.php' );
-}
-extAddSpecialPage( dirname(__FILE__) . '/SpecialMakesysop_body.php', 'Makesysop', 'MakeSysopPage' );
-
-
+$wgSpecialPages['Makesysop'] = 'MakesysopPage';
+$wgAutoloadClasses['MakesysopPage'] = "$dir/SpecialMakesysop_body.php";
+$wgAutoloadClasses['MakesysopForm'] = "$dir/SpecialMakesysop_body.php";

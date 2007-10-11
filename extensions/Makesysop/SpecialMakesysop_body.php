@@ -5,15 +5,10 @@ if ( !defined( 'MEDIAWIKI' ) ) {
 	exit( 1 );
 }
 
-# Add messages
-global $wgMessageCache, $wgMakesysopMessages;
-foreach( $wgMakesysopMessages as $key => $value ) {
-	$wgMessageCache->addMessages( $wgMakesysopMessages[$key], $key );
-}
-
 class MakeSysopPage extends SpecialPage {
 	function __construct() {
 		parent::__construct( 'Makesysop', 'makesysop' );
+		wfLoadExtensionMessages( 'Makesysop' );
 	}
 
 	function execute( $subpage ) {

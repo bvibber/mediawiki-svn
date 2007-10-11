@@ -5,9 +5,9 @@
  * @addtogroup Extensions
 */
 
-$wgMakesysopMessages = array();
+$messages = array(
 
-$wgMakesysopMessages['en'] = array(
+'en' => array(
 	'makesysoptitle'       => 'Make a user into a sysop',
 	'makesysoptext'        => 'This form is used by bureaucrats to turn ordinary users into administrators. Type the name of the user in the box and press the button to make the user an administrator.',
 	'makesysopname'        => 'Name of the user:',
@@ -27,15 +27,15 @@ $wgMakesysopMessages['en'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-);
+),
 
-$wgMakesysopMessages['af'] = array(
+'af' => array(
 	'already_sysop' => 'Hierdie gebruiker is al reeds \'n administrateur.',
 	'already_bureaucrat' => 'Hierdie gebruiker is al reeds \'n burokraat.',
-);
+),
 
 /* Arabic (Meno25) */
-$wgMakesysopMessages['ar'] = array(
+'ar' => array(
 	'makesysoptitle' => 'ترقية مستخدم لمدير نظام',
 	'makesysoptext' => 'هذه الاستمارة يتم استخدامها بواسطة البيروقراطيين لتحويل المستخدمين العاديين إلى إداريين. اكتب اسم المستخدم في الصندوق و اضغط الزر لتجعل المستخدم إداريا.',
 	'makesysopname' => 'اسم المستخدم:',
@@ -55,20 +55,20 @@ $wgMakesysopMessages['ar'] = array(
 	'group-steward' => 'مضيفون',
 	'group-steward-member' => 'مضيف',
 	'grouppage-steward' => '{{ns:project}}:مضيفون',
-);
-$wgMakesysopMessages['az'] = array(
+),
+'az' => array(
 	'already_sysop'        => 'Bu istifadəçi hazirdə idarəçidir',
 	'already_bureaucrat'   => 'Bu istifadəçi hazirdə bürokratdı',
-);
-$wgMakesysopMessages['ba'] = array(
+),
+'ba' => array(
 	'makesysopname'        => 'Ҡатнашыусы исеме:',
-);
-$wgMakesysopMessages['bcl'] = array(
+),
+'bcl' => array(
 	'makesysopname' => 'Pangaran kan parágamit:',
 	'rights' => 'Derechos:',
 	'already_sysop' => 'An parágamit na ini sarô nang administrador',
-);
-$wgMakesysopMessages['be'] = array(
+),
+'be' => array(
 	'makesysoptitle'       => 'Зрабіць карыстальніка сісопам',
 	'makesysopsubmit'      => 'Зрабіць карыстальніка сісопам',
 	'rights'               => 'Правы:',
@@ -76,14 +76,14 @@ $wgMakesysopMessages['be'] = array(
 	'makesysop'            => 'Зрабіць карыстальніка сісопам',
 	'already_sysop'        => 'Гэты карыстальнік ужо мае статус адміністратара',
 	'already_bureaucrat'   => 'Гэты карыстальнік ужо мае статус бюракрата',
-);
-$wgMakesysopMessages['be-x-old'] = array(
+),
+'be-x-old' => array(
 	'makesysopname'        => 'Імя ўдзельніка/ўдзельніцы:',
 	'makesysop'            => 'Зрабіць удзельніка адміністратарам',
 	'already_sysop'        => 'Гэты ўдзельнік ужо зьяўляецца адміністратарам',
 	'already_bureaucrat'   => 'Гэты ўдзельнік ужо зьяўляецца бюракратам',
-);
-$wgMakesysopMessages['bg'] = array(
+),
+'bg' => array(
 	'makesysoptitle'       => 'Превръщане на потребител в администратор',
 	'makesysoptext'        => 'Този формуляр се използва от бюрократи за превръщане на обикновени потребители в администратори.
 
@@ -100,12 +100,12 @@ $wgMakesysopMessages['bg'] = array(
 	'makesysop'            => 'Превръщане на потребител в администратор',
 	'already_sysop'        => 'Този потребител беше вече администратор',
 	'already_bureaucrat'   => 'Този потребител беше вече бюрократ',
-);
-$wgMakesysopMessages['bpy'] = array(
+),
+'bpy' => array(
 	'already_sysop'         => 'আতাকুরা এগ এচুদিনে ডান্ডি(প্রশাসক)গ ইয়াপরিলগাহে',
 	'already_bureaucrat'    => 'আতাকুরা এগ এচুদিনে ব্যুরোক্র্যাটগ ইয়াপরিলগাহে',
-);
-$wgMakesysopMessages['br'] = array(
+),
+'br' => array(
 	'makesysoptitle' => 'A ro ar statud merour.',
 	'makesysoptext' => 'Graet e vez gant ar furmskrid-mañ gant ar Pennoù-bras a-benn reiñ ar statud merour.
 Lakait anv an implijer(ez) er voest ha pouezit war ar bouton evit reiñ ar gwirioù dezhañ/i.',
@@ -121,8 +121,8 @@ Lakait anv an implijer(ez) er voest ha pouezit war ar bouton evit reiñ ar gwiri
 	'makesysop' => 'Reiñ ar gwirioù merañ d\'un implijer(ez)',
 	'already_sysop' => 'Merour eo an implijer-mañ dija',
 	'already_bureaucrat' => 'Penn-bras eo an implijer-mañ dija',
-);
-$wgMakesysopMessages['bs'] = array(
+),
+'bs' => array(
 	'makesysoptitle'       => 'Pretvorite korisnika u administratora',
 	'makesysoptext'        => 'Ovaj formular se koristi sa strane birokrata da se obični korisnici pretvore u administratore.  Unesite ime korisnika u kutiju i pritisnite dugme da bi korisnik postao administrator.',
 	'makesysopname'        => 'Ime korisnika:',
@@ -135,8 +135,8 @@ $wgMakesysopMessages['bs'] = array(
 	'user_rights_set'      => '<b>Prava za korisnika "$1" promjenjena</b>',
 	'set_rights_fail'      => '<b>Korisnička prava za $"1" nisu mogla da se podese.  (Da li ste pravilno unijeli ime?)</b>',
 	'makesysop'            => 'Dodijeli administratorska prava korisniku',
-);
-$wgMakesysopMessages['ca'] = array(
+),
+'ca' => array(
 	'makesysoptitle' => 'Converteix en administrador',
 	'makesysoptext' => 'Aquest formulari serveix per a que els buròcrates puguin convertir un usuari en administrador.
 Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
@@ -148,8 +148,8 @@ Escrigueu el nom de l\'usuari i premeu el botó per acceptar-ho.',
 	'user_rights_set' => '<strong>S\'han actualitzat els permisos de l\'usuari «$1»</strong>',
 	'already_sysop' => 'Aquest usuari ja és un administrador',
 	'already_bureaucrat' => 'Aquest usuari ja és buròcrata',
-);
-$wgMakesysopMessages['cs'] = array(
+),
+'cs' => array(
 	'makesysoptitle'       => 'Učinit uživatele správcem',
 	'makesysoptext'        => 'Pomocí tohoto formuláře mohou byrokraté uživateli přidělit práva správce. Vepište jméno uživatele do políčka a stiskněte tlačítko; zaškrtnutím políčka přidáte uživateli také oprávnění „byrokrat“.',
 	'makesysopname'        => 'Jméno uživatele:',
@@ -168,16 +168,16 @@ $wgMakesysopMessages['cs'] = array(
 	'group-steward'        => 'Stevardi',
 	'group-steward-member' => 'Stevard',
 	'grouppage-steward'    => '{{ns:project}}:Stevardi',
-);
-$wgMakesysopMessages['csb'] = array(
+),
+'csb' => array(
 	'rights' => 'Prawa:',
 	'already_sysop' => 'Nen brëkòwnik je ju administratorã',
 	'already_bureaucrat' => 'Nen brëkòwnik je ju biurokratą',
-);
-$wgMakesysopMessages['cv'] = array(
+),
+'cv' => array(
 	'rights'               => 'Тума пултарать:',
-);
-$wgMakesysopMessages['cy'] = array(
+),
+'cy' => array(
 	"makesysoptitle"       => "Gwnewch sysop allan o defnyddiwr",
 	"makesysoptext"	       => "Defnyddiwch y ffurflen hon i troi defnyddiwr cyffredin i gweinyddwr. Teipiwch enw'r defnyddiwr yn y blwch a cliciwch y botwm i troi'r defnyddiwr i gweinyddwr",
 	"makesysopname"	       => "Enw'r defnyddiwr:",
@@ -185,8 +185,8 @@ $wgMakesysopMessages['cy'] = array(
 	"makesysopok"          => "<b>Mae defnyddwr '$1' rwan yn gweinyddwr</b>",
 	"makesysopfail"	       => "<b>Wedi methu troi defnyddwr '$1' i gweinyddwr. (Ydych chi wedi sillafu'r enw'n iawn?)</b>",
 	"setbureaucratflag"    => "Gosod y fflag biwrocrat",
-);
-$wgMakesysopMessages['da'] = array(
+),
+'da' => array(
 	'makesysoptitle'	=> 'Gør en bruger til administrator - sysop',
 	'makesysoptext'		=> 'Denne formular bruges af bureaukrater til at gøre almindelige brugere til administratorer og/eller tildele andre rettigheder til en bruger. Indsæt navnet på brugeren i tekstboksen og tryk på knappen for at ændre rettighederne (i.e. gøre brugeren til administrator',
 	'makesysopname'		=> 'Brugerens navn:',
@@ -201,8 +201,8 @@ $wgMakesysopMessages['da'] = array(
 	'makesysop'		=> 'Tildel brugerrettigheder',
 	'already_sysop'		=> 'Denne bruger er allerede administrator',
 	'already_bureaucrat'	=> 'Denne bruger er allerede bureaucrat',
-);
-$wgMakesysopMessages['de'] = array(
+),
+'de' => array(
 	'makesysoptitle'       => 'Mache einen Benutzer zum Administrator',
 	'makesysoptext'        => 'Mit diesem Formular können Bürokraten normale Benutzer zu Administratoren machen.',
 	'makesysopname'        => 'Benutzername:',
@@ -222,8 +222,8 @@ $wgMakesysopMessages['de'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-);
-$wgMakesysopMessages['el'] = array(
+),
+'el' => array(
 	'makesysoptitle'       => 'Κάντε ένα χρήστη διαχειριστή',
 	'makesysoptext'        => 'Η φόρμα αυτή απευθύνεται στους διαχειριστές και χρησιμεύει στο να χαρακτηρισθεί ένας χρήστης \'διαχειριστής\'. Πληκτρολογήστε το όνομα του χρήστη στο πεδίο κειμένου και επικυρώστε πατώντας το αντίστοιχο κουμπί.',
 	'makesysopname'        => 'Όνομα χρήστη:',
@@ -238,8 +238,8 @@ $wgMakesysopMessages['el'] = array(
 	'makesysop'            => 'Χαρακτηρισμός χρήστη ως διαχειριστή',
 	'already_sysop'        => 'Ο χρήστης αυτός είναι ήδη διαχειριστής.',
 	'already_bureaucrat'   => 'Ο χρήστης αυτός είναι ήδη διαχειριστής.',
-);
-$wgMakesysopMessages['eo'] = array(
+),
+'eo' => array(
 	'makesysoptitle' => 'Igu uzanton administranto',
 	'makesysoptext' => 'Ĉi formularo estas uzita de burokratoj por igi ordinarajn uzantojn administrantoj. Bonvlolu tajpi la nomon de la uzanto en la skatoleton kaj premu la butonon por igi la uzanton administranto.',
 	'makesysopname' => 'Nomo de la uzanto:',
@@ -259,8 +259,8 @@ $wgMakesysopMessages['eo'] = array(
 	'group-steward' => 'Stevardoj',
 	'group-steward-member' => 'Stevardo',
 	'grouppage-steward' => '{{ns:project}}:Stevardoj',
-);
-$wgMakesysopMessages['es'] = array(
+),
+'es' => array(
 	'makesysoptitle'       => 'Convertir a este usuario en administrador',
 	'makesysoptext'        => 'Con este formulario los burócratas pueden convertir usuarios normales en administradores. Escribe el nombre del usuario en la caja y pulsa el botón para convertir a este usuario en administrador.',
 	'makesysopname'        => 'Nombre del usuario:',
@@ -279,13 +279,13 @@ $wgMakesysopMessages['es'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-);
-$wgMakesysopMessages['et'] = array(
+),
+'et' => array(
 	'user_rights_set' => '<b>Kasutaja "$1" õigused muudetud</b>',
 	'already_sysop' => 'See kasutaja on juba administraator',
 	'already_bureaucrat' => 'See kasutaja on juba bürokraat',
-);
-$wgMakesysopMessages['eu'] = array(
+),
+'eu' => array(
 	'makesysoptitle'	=> 'Lankide bat administratzaile egin',
 	'makesysoptext'		=> 'Lankide arruntei administratzaile baimenak emateko erabiltzen da orrialde hau. Lankidearen izena ipini laukian eta botoia sakatu.',
 	'makesysopname'		=> 'Lankidearen izena:',
@@ -300,15 +300,15 @@ $wgMakesysopMessages['eu'] = array(
 	'makesysop'		=> 'Lankide bat administratzaile egin',
 	'already_sysop'		=> 'Erabiltzaile hau bada administratzailea',
 	'already_bureaucrat'	=> 'Erabiltzaile hau bada burokrata',
-);
-$wgMakesysopMessages['ext'] = array(
+),
+'ext' => array(
 	'makesysoptitle' => 'Hazel duendi a un usuáriu',
 	'makesysopname' => 'Nombri el usuáriu:',
 	'makesysop' => 'Hazel duendi a un usuáriu',
 	'already_sysop' => 'Esti usuáriu ya es un duendi',
 	'already_bureaucrat' => 'Esti usuáriu ya es un alministraol',
-);
-$wgMakesysopMessages['fi'] = array(
+),
+'fi' => array(
 	'makesysoptitle'       => 'Tee käyttäjästä ylläpitäjä',
 	'makesysoptext'        => 'Byrokraatit voivat tällä lomakkeella tehdä käyttäjistä ylläpitäjiä ja byrokraatteja. Kirjoita laatikkoon sen käyttäjän nimi, jolle haluat antaa oikeuksia.',
 	'makesysopname'        => 'Käyttäjän nimi:',
@@ -327,12 +327,12 @@ $wgMakesysopMessages['fi'] = array(
 	'group-steward'        => 'ylivalvojat',
 	'group-steward-member' => 'ylivalvoja',
 	'grouppage-steward'    => '{{ns:project}}:ylivalvojat',
-);
-$wgMakesysopMessages['fo'] = array(
+),
+'fo' => array(
 	'rights' => 'Rættindi:',
 	'makesysop' => 'Ger ein brúkara til sysop',
-);
-$wgMakesysopMessages['fr'] = array(
+),
+'fr' => array(
 	'makesysoptitle'       => 'Donner les droits d’administrateur à un utilisateur',
 	'makesysoptext'	       => 'Ce formulaire est utilisé par les bureaucrates ' .
 				'pour donner les droits d’administrateur à un utilisateur ordinaire. Inscrivez ' .
@@ -355,8 +355,8 @@ $wgMakesysopMessages['fr'] = array(
 	'group-steward'	       => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Steward',
-);
-$wgMakesysopMessages['ga'] = array(
+),
+'ga' => array(
 	'makesysoptitle'	=> 'Déan oibreoir córais de húsáideoir',
 	'makesysoptext'		=> 'Úsáideann maorlathaigh an fhoirm seo chun riarthóirí a dhéanamh de ghnáthúsáideoirí. Iontráil ainm an úsáideora sa bosca seo agus brúigh an cnaipe chun riarthóir a dhéanamh den úsáideoir',
 	'makesysopname'		=> 'Ainm an úsáideora:',
@@ -371,20 +371,20 @@ $wgMakesysopMessages['ga'] = array(
 	'makesysop'		=> 'Déan oibreoir córais de húsáideoir',
 	'already_sysop'		=> 'Is oibreoir córais é an usáideoir seo cheana féin',
 	'already_bureaucrat'	=> 'Is maorlathach é an úsáideoir seo cheana féin',
-);
-$wgMakesysopMessages['gl'] = array(
+),
+'gl' => array(
 	'already_bureaucrat' => 'Este usuario xa é burócrata',
-);
-$wgMakesysopMessages['gsw'] = array(
+),
+'gsw' => array(
 	'already_bureaucrat'	=> 'Selle Benutzer isch scho Bürokrat.',
 	'already_sysop'		=> 'Selle Benutzer isch scho Adminischtrator.',
-);
-$wgMakesysopMessages['hak'] = array(
+),
+'hak' => array(
 	'user_rights_set' => '<b>Yung-fu "$1" ke hí-khó-khièn yí-kîn kiên-sîn</b>',
 	'already_sysop' => 'Liá-vi yung-fu yí-kîn he yit-miàng kón-lî-yèn',
 	'already_bureaucrat' => 'Liá-vi yung-fu yí-kîn he yit-miàng hàng-chṳn-yèn',
-);
-$wgMakesysopMessages['he'] = array(
+),
+'he' => array(
 	'makesysoptitle'       => 'הפוך משתמש למפעיל מערכת',
 	'makesysoptext'        => 'דף זה משמש ביורוקרטים להפיכת משתמש רגיל למפעיל מערכת. אנא הקישו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.',
 	'makesysopname'        => 'שם המשתמש:',
@@ -404,8 +404,8 @@ $wgMakesysopMessages['he'] = array(
 	'group-steward'        => 'דיילים',
 	'group-steward-member' => 'דייל',
 	'grouppage-steward'    => '{{ns:project}}:דיילים',
-);
-$wgMakesysopMessages['hr'] = array(
+),
+'hr' => array(
 	'makesysoptitle'       => 'Načini suradnika administratorom',
 	'makesysoptext'        => 'Ovaj obrazac služi birokratima za dodjeljivanje administratorskih prava pojedinom suradniku. Utipkajte ime suradnika u kućicu i pritisnite dugme kako biste suradniku dali administratorska prava.',
 	'makesysopname'        => 'Ime suradnika:',
@@ -420,8 +420,8 @@ $wgMakesysopMessages['hr'] = array(
 	'makesysop'            => 'Učini suradnika administratorom',
 	'already_sysop'        => 'Ovaj je suradnik već administrator',
 	'already_bureaucrat'   => 'Ovaj je suradnik već birokrat',
-);
-$wgMakesysopMessages['hsb'] = array(
+),
+'hsb' => array(
 	'makesysoptitle' => 'Wužiwarja k administratorej činić',
 	'makesysoptext' => 'Tutón formular so wot běrokratow wužiwa, zo bychu so jednori wužiwarjo do administratorow přeměnili. Zadodajće wužiwarske mjeno do wotpowědneho pola a klikńće na tłočatko, zo byšće wužiwarja k administratorej činił(a).',
 	'makesysopname' => 'Mjeno wužiwarja:',
@@ -441,8 +441,8 @@ $wgMakesysopMessages['hsb'] = array(
 	'group-steward' => 'Stewardźa',
 	'group-steward-member' => 'steward',
 	'grouppage-steward' => '{{ns:project}}:Stewardźa',
-);
-$wgMakesysopMessages['hu'] = array(
+),
+'hu' => array(
 	'makesysoptitle' => 'Felhasználó adminisztrátorrá tétele',
 	'makesysoptext' => 'Ezt az űrlapot a bürokraták használják, hogy a felhasználókat adminisztrátorrá tegyék.
 Írd be a felhasználó nevét a szövegmezőbe, és nyomd meg a gombot, hogy adminisztrátorrá tedd.',
@@ -459,14 +459,14 @@ $wgMakesysopMessages['hu'] = array(
 	'already_bureaucrat' => 'Ez a felhasználó már bürokrata.',
 	'group-steward' => 'Helytartók',
 	'group-steward-member' => 'Helytartó',
-);
-$wgMakesysopMessages['hy'] = array(
+),
+'hy' => array(
 	'already_sysop'        => 'Այս մասնակիցը արդեն ադմինիստրատոր է',
 	'already_bureaucrat'   => 'Այս մասնակիցը արդեն բյուրոկրատ է',
 	'makesysoptext'        => 'Տվյալ ձևն օգտագործվում է "բյուրոկրատների" կողմից, հասարակ օգտագործողներին ադմինիստրատոր հաստատելու համար: Նշեք օգտագործողի անունը հետևյալ տուփոմ և սեղմեք համապատասխան կոճակը, օգտագործողին ադմինիստրատոր կարգափոխելու համար:',
 	'makesysopname'        => 'Մասնակցի անունը`',
-);
-$wgMakesysopMessages['id'] = array(
+),
+'id' => array(
 	'makesysoptitle'       => 'Pemberian status pengurus',
 	'makesysoptext'        => 'Formulir ini digunakan oleh para birokrat untuk menjadikan pengguna biasa menjadi seorang pengurus. Ketikkan nama pengguna yang dimaksud dalam kotak dan tekan tombol untuk menjadikan pengguna tersebut seorang pengurus.',
 	'makesysopname'        => 'Nama pengguna:',
@@ -486,8 +486,8 @@ $wgMakesysopMessages['id'] = array(
 	'group-steward'        => 'Steward',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => 'Project:Steward',
-);
-$wgMakesysopMessages['is'] = array(
+),
+'is' => array(
 	'makesysoptext' => 'Kerfissíða þessi er notuð af möppudýrum til að veita venjulegum notendum stjórnendaréttindi.',
 	'makesysopname' => 'Notandi:',
 	'makesysopsubmit' => 'Gera að stjórnanda',
@@ -498,8 +498,8 @@ $wgMakesysopMessages['is'] = array(
 	'makesysop' => 'Veita stjórnandaréttindi',
 	'already_sysop' => 'Þessi notandi hefur þegar verið gerður að stjórnanda.',
 	'already_bureaucrat' => 'Þessi notandi hefur þegar verið gerður möppudýr',
-);
-$wgMakesysopMessages['it'] = array(
+),
+'it' => array(
 	'makesysoptitle' => 'Trasforma un utente in amministratore',
 	'makesysoptext' => 'Questo modulo consente ai burocrati di assegnare i privilegi di amministratore a un utente normale. Inserire il nome utente nella casella di testo e premere il pulsante per consentirne l\'accesso come amministratore.',
 	'makesysopname' => 'Nome utente:',
@@ -518,8 +518,8 @@ $wgMakesysopMessages['it'] = array(
 	'makesysop-nodatabase' => 'Nome utente inter-wiki errato: $1',
 	'group-steward' => 'Steward',
 	'grouppage-steward' => '{{ns:project}}:Steward',
-);
-$wgMakesysopMessages['ja'] = array(
+),
+'ja' => array(
 	'makesysoptitle' => '{{int:Makesysop}}',
 	'makesysoptext' => 'このフォームは通常の利用者を{{int:group-sysop}}にするために使用します。{{int:group-sysop}}にする利用者名を入力し、{{int:Makesysopsubmit}}ボタンを押してください。',
 	'makesysopname' => '利用者名:',
@@ -538,8 +538,8 @@ $wgMakesysopMessages['ja'] = array(
 	'group-steward' => 'スチュワード',
 	'group-steward-member' => '{{int:group-steward}}',
 	'grouppage-steward' => '{{ns:project}}:{{int:group-steward}}',
-);
-$wgMakesysopMessages['kk-kz'] = array(
+),
+'kk-kz' => array(
 	'makesysoptitle'       => 'Қатысушыны әкімші қылу',
 	'makesysoptext'        => 'Бұл үлгітті қарапайым қатысушыны әкімші қылу үшін төрешілер қолданады. Жолаққа қатысушы атын енгізіңіз де, және бұл қатысушыны әкімші қылу үшін, түймені басыңыз.',
 	'makesysopname'        => 'Қатысушы аты:',
@@ -559,8 +559,8 @@ $wgMakesysopMessages['kk-kz'] = array(
 	'group-steward'        => 'Жетекшілер',
 	'group-steward-member' => 'жетекші',
 	'grouppage-steward'    => '{{ns:project}}:Жетекшілер',
-);
-$wgMakesysopMessages['kk-tr'] = array(
+),
+'kk-tr' => array(
 	'makesysoptitle'       => 'Qatıswşını äkimşi qılw',
 	'makesysoptext'        => 'Bul ülgitti qarapaýım qatıswşını äkimşi qılw üşin töreşiler qoldanadı. Jolaqqa qatıswşı atın engiziñiz de, jäne bul qatıswşını äkimşi qılw üşin, tüýmeni basıñız.',
 	'makesysopname'        => 'Qatıswşı atı:',
@@ -580,8 +580,8 @@ $wgMakesysopMessages['kk-tr'] = array(
 	'group-steward'        => 'Jetekşiler',
 	'group-steward-member' => 'jetekşi',
 	'grouppage-steward'    => '{{ns:project}}:Jetekşiler',
-);
-$wgMakesysopMessages['kk-cn'] = array(
+),
+'kk-cn' => array(
 	'makesysoptitle'       => 'قاتىسۋشىنى ٵكٸمشٸ قىلۋ',
 	'makesysoptext'        => 'بۇل ٷلگٸتتٸ قاراپايىم قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن تٶرەشٸلەر قولدانادى. جولاققا قاتىسۋشى اتىن ەنگٸزٸڭٸز دە, جٵنە بۇل قاتىسۋشىنى ٵكٸمشٸ قىلۋ ٷشٸن, تٷيمەنٸ باسىڭىز.',
 	'makesysopname'        => 'قاتىسۋشى اتى:',
@@ -601,13 +601,12 @@ $wgMakesysopMessages['kk-cn'] = array(
 	'group-steward'        => 'جەتەكشٸلەر',
 	'group-steward-member' => 'جەتەكشٸ',
 	'grouppage-steward'    => '{{ns:project}}:جەتەكشٸلەر',
-);
-$wgMakesysopMessages['kk'] = $wgMakesysopMessages['kk-kz'];
-$wgMakesysopMessages['kn'] = array(
+),
+'kn' => array(
 	'makesysopname'        => 'ಸದಸ್ಯನ ಹೆಸರು:',
 	'rights'               => 'ಹಕ್ಕುಗಳು:',
-);
-$wgMakesysopMessages['ko'] = array(
+),
+'ko' => array(
 	'makesysoptitle' => '사용자에게 관리자 권한 주기',
 	'makesysoptext' => '이 양식은 뷰로크랫 권한이 있는 사용자가 다른 사용자에게 관리자 권한을 줄 때 사용됩니다. 사용자 이름을 입력하고 확인을 눌러 관리자 권한을 줄 수 있습니다.',
 	'makesysopname' => '사용자 이름:',
@@ -626,8 +625,8 @@ $wgMakesysopMessages['ko'] = array(
 	'group-steward' => '스튜워드',
 	'group-steward-member' => '스튜워드',
 	'grouppage-steward' => 'Project:스튜워드',
-);
-$wgMakesysopMessages['ksh'] = array(
+),
+'ksh' => array(
 	'makesysoptitle'       => 'Maach ene Wiki Köbes us däm Metmaacher',
 	'makesysoptext'        => 'Hee künne Bürrokrade us enem normale Metmaacher ene Wiki Köbes oder och ene
 Bürrokrad maache.
@@ -644,27 +643,27 @@ Schriev däm Metmaacher singe Metmaacher Name hee eren, un Loss Jonn!',
 	'makesysop'            => 'Metmaacher zom Wiki Köbes maache',
 	'already_sysop'        => 'Dä Metmaacher es ald ene Wiki Köbes.',
 	'already_bureaucrat'   => 'Dä Metmaacher es ald ene Bürrokrad.',
-);
-$wgMakesysopMessages['ku'] = array(
+),
+'ku' => array(
 	'makesysopname'        => 'Navê bikarhêner:',
-);
-$wgMakesysopMessages['la'] = array(
+),
+'la' => array(
 	'makesysopname' => 'Nomen usoris:',
 	'makesysopok' => '<b>Usor "$1" nunc est magistratus</b>',
 	'makebureaucratok' => '<b>Usor "$1" nunc est grapheocrates</b>',
 	'rights' => 'Iures:',
 	'already_sysop' => 'Hic usor etiam est [[{{MediaWiki:grouppage-sysop}}|magistratus]].',
 	'already_bureaucrat' => 'Hic usor etiam est [[{{MediaWiki:grouppage-bureaucrat}}|grapheocrates]].',
-);
-$wgMakesysopMessages['li'] = array(
+),
+'li' => array(
 	'already_sysop'        => 'Deze gebroeker is al systeemwèrker',
 	'already_bureaucrat'   => 'Deze gebroeker is al amtenaer',
-);
-$wgMakesysopMessages['lo'] = array(
+),
+'lo' => array(
 	'already_sysop'        => 'ຜູ້ໃຊ້ນີ້ ເປັນ ຜູ້ບໍລິຫານ ແລ້ວ',
 	'already_bureaucrat'   => 'ຜູ້ໃຊ້ນີ້​ ແມ່ນ buraucrat ແລ້ວ',
-);
-$wgMakesysopMessages['lt'] = array(
+),
+'lt' => array(
 	'makesysoptitle'     => 'Padaryti naudotoją administratoriumi',
 	'makesysoptext'      => 'Ši forma yra naudojama biurokratų, kad paprastus naudotojus pavestų į administratorius. Įveskite naudotojo vardą ir paspauskite mygtuką, kad padarytumėte naudotoją administratoriumi',
 	'makesysopname'      => 'Naudotojo vardas:',
@@ -679,8 +678,8 @@ $wgMakesysopMessages['lt'] = array(
 	'makesysop'          => 'Padaryti naudotoją administratoriumi',
 	'already_sysop'      => 'Naudotojas jau yra administratorius',
 	'already_bureaucrat' => 'Naudotojas jau yra biurokratas',
-);
-$wgMakesysopMessages['mk'] = array(
+),
+'mk' => array(
 	'makesysoptitle'       => 'Претвори го корисникот во администратор',
 	'makesysoptext'        => 'Овој формулар се користи од бирократи за претворање на обични корисници во администратори. Напишете го името на корисникот во полето и притиснете го копчето да го претворите корисникот во администратор',
 	'makesysopname'        => 'Име на корисникот:',
@@ -699,14 +698,14 @@ $wgMakesysopMessages['mk'] = array(
 	'group-steward'        => 'Стјуарди',
 	'group-steward-member' => 'Стјуард',
 	'grouppage-steward'    => '{{ns:project}}:Стјуарди',
-);
-$wgMakesysopMessages['nan'] = array(
+),
+'nan' => array(
 	'makesysoptitle'       => 'Kā iōng-chiá piàn chò hêng-chèng jîn-oân',
 	'makesysopname'        => 'Iōng-chiá ê miâ:',
 	'makesysopsubmit'      => 'Kā chit ūi iōng-chiá piàn chò hêng-chèng jîn-oân',
 	'makesysop'            => 'Kā iōng-chiá piàn chò hêng-chèng jîn-oân',
-);
-$wgMakesysopMessages['nds'] = array(
+),
+'nds' => array(
 	'makesysoptitle' => 'Maak en Bruker to en Administrater',
 	'makesysoptext' => 'Disse Mask warrt vun Bürokraten bruukt, üm normale Bruker to Administratern to maken.',
 	'makesysopname' => 'Naam vun de Bruker:',
@@ -721,8 +720,8 @@ $wgMakesysopMessages['nds'] = array(
 	'makesysop' => 'Maak en Bruker to en Administrater',
 	'already_sysop' => 'De Bruker is al en Administrater.',
 	'already_bureaucrat' => 'De Bruker is al en Bürokrat.',
-);
-$wgMakesysopMessages['nl'] = array(
+),
+'nl' => array(
 	'makesysoptitle' => 'Maak een gebruiker beheerder',
 	'makesysoptext' => 'Dit formulier wordt door bureaucraten gebruikt om een gebruiker beheerder te maken. Geef de naam van een gebruiker in het veld in en klik op de knop om de gebruiker beheerder te maken.',
 	'makesysopname' => 'Gebruikersnaam:',
@@ -742,8 +741,8 @@ $wgMakesysopMessages['nl'] = array(
 	'group-steward' => 'Stewards',#identical but defined
 	'group-steward-member' => 'Steward',#identical but defined
 	'grouppage-steward' => '{{ns:project}}:Stewards',#identical but defined
-);
-$wgMakesysopMessages['nn'] = array(
+),
+'nn' => array(
 	'makesysoptitle'	=> 'Gjer brukar om til administrator',
 	'makesysoptext'		=> 'Dette skjemaet kan brukast av byråkratar til å gjera vanlege brukarar om til administratorar. Skriv inn namnet på brukaren i tekstboksen og trykk på knappen for å gjere brukaren om til administrator',
 	'makesysopname'		=> 'Brukarnamn:',
@@ -758,8 +757,8 @@ $wgMakesysopMessages['nn'] = array(
 	'makesysop'             => 'Gje brukar administratortilgang',
 	'already_sysop'         => 'Denne brukaren har allereie administratortilgang',
 	'already_bureaucrat'    => 'Denne brukaren har allereie byråkrat-tilgang',
-);
-$wgMakesysopMessages['no'] = array(
+),
+'no' => array(
 	'makesysoptitle' => 'Gjør en bruker til administrator',
 	'makesysoptext' => 'Dette skjemaet blir brukt av byråkrater for å gjøre vanlige brukere til administratorer. Skriv brukernavnet i boksen og trykk på knappen for å gjøre en bruker til administrator.',
 	'makesysopname' => 'Brukernavn:',
@@ -777,8 +776,8 @@ $wgMakesysopMessages['no'] = array(
 	'already_bureaucrat' => 'Denne brukeren er allerede byråkrat',
 	'makesysop-nodatabase' => 'Ugyldig interwiki-brukernavn: $1',
 	'grouppage-steward' => 'Project:Stewards',
-);
-$wgMakesysopMessages['oc'] = array(
+),
+'oc' => array(
 	'makesysoptitle' => 'Balhar los dreches d’administrator a un utilizaire',
 	'makesysoptext' => 'Aqueste formulari es utilizat pels burocratas per balhar los dreches d’administrator a un utilizaire ordinari. Inscrivissètz lo nom de l’utilizaire dins lo quadre e clicatz sul boton per balhar los dreches en question.',
 	'makesysopname' => 'Nom de l\'utilizaire:',
@@ -794,12 +793,12 @@ $wgMakesysopMessages['oc'] = array(
 	'already_sysop' => 'Aqueste utilizaire ja es administrator',
 	'already_bureaucrat' => 'Aqueste utilizaire ja es burocrata',
 	'makesysop-nodatabase' => 'Marrit nom d’utilizaire interwiki : $1',
-);
-$wgMakesysopMessages['os'] = array(
+),
+'os' => array(
 	'makesysopname' => 'Архайæджы ном:',
 	'rights'        => 'Бартæ',
-);
-$wgMakesysopMessages['pl'] = array(
+),
+'pl' => array(
 	'makesysoptitle' => 'Nadaj użytkownikowi uprawnienia administratora',
 	'makesysoptext' => 'Ten formularz jest wykorzystywany przez użytkowników o statusie biurokraty do przyznawania innym użytkownikom praw administratora. Aby to uczynić, wpisz nazwę użytkownika i kliknij na przycisk.',
 	'makesysopname' => 'Nazwa użytkownika:',
@@ -818,8 +817,8 @@ $wgMakesysopMessages['pl'] = array(
 	'makesysop-nodatabase' => 'Niewłaściwa nazwa użytkownika w interwiki: $1',
 	'group-steward' => 'Zarządcy',
 	'group-steward-member' => 'Zarządca',
-);
-$wgMakesysopMessages['pms'] = array(
+),
+'pms' => array(
 	'makesysoptitle' => 'Deje a n\'utent la qualìfica da aministrator',
 	'makesysoptext' => 'Sta domanda-sì a la dòvro ij mangiapapé për deje a n\'utent normal la qualìfica da aministrator. Che a scriva lë stranòm dl\'utent che a veul fé aministrator e peuj che a sgnaca ël boton për deje la qualìfica.',
 	'makesysopname' => 'Stranòm:',
@@ -839,8 +838,8 @@ $wgMakesysopMessages['pms'] = array(
 	'group-steward' => 'Controlor',
 	'group-steward-member' => 'Controlor',
 	'grouppage-steward' => '{{ns:project}}:Controlor',
-);
-$wgMakesysopMessages['pt'] = array(
+),
+'pt' => array(
 	'makesysoptitle'       => 'Tornar um utilizador num administrador',
 	'makesysoptext'        => 'Este formulário é utilizado por burocratas para tornar utilizadores comuns em administradores. Introduza o nome do utilizador na caixa e clique no botão para tornar o utilizador num administrador.',
 	'makesysopname'        => 'Nome do utilizador:',
@@ -860,11 +859,11 @@ $wgMakesysopMessages['pt'] = array(
 	'group-steward'        => 'Stewards',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewards',
-);
-$wgMakesysopMessages['rmy'] = array(
+),
+'rmy' => array(
 	'rights'               => 'Chachimata (xakaya):',
-);
-$wgMakesysopMessages['ro'] = array(
+),
+'ro' => array(
 	'makesysoptitle' => 'Acordarea permisiunilor de administrator',
 	'makesysoptext' => 'Acest formular este utilizat de birocraţi pentru a transforma utilizatori în administratori. 
 Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din utilizator un administrator',
@@ -884,8 +883,8 @@ Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din u
 	'makesysop-nodatabase' => 'Nume de utilizator interwiki invalid $1',
 	'group-steward' => 'Stewarzi',
 	'grouppage-steward' => '{{ns:project}}:Stewarzi',
-);
-$wgMakesysopMessages['ru'] = array(
+),
+'ru' => array(
 
 	'makesysoptitle'       => 'Сделать пользователя администратором',
 	'makesysoptext'        => 'Эта форма предназначена для бюрократов, и позволяет присваивать участникам статус администратора. Наберите имя участника и нажмите кнопку, чтобы сделать участника администратором.',
@@ -905,8 +904,8 @@ $wgMakesysopMessages['ru'] = array(
 	'group-steward'        => 'Стюарды',
 	'group-steward-member' => 'стюард',
 	'grouppage-steward'    => '{{ns:project}}:Стюарды',
-);
-$wgMakesysopMessages['sk'] = array(
+),
+'sk' => array(
 	'makesysoptitle' => 'Urob z používateľa správcu',
 	'makesysoptext' => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 
 Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na správcu.',
@@ -926,8 +925,8 @@ Do poľa napíšte meno používateľa a potvrďte zmenu používateľa na sprá
 	'makesysop-nodatabase' => 'Zlé interwiki používateľské meno: $1',
 	'group-steward' => 'Stewardi',
 	'grouppage-steward' => '{{ns:project}}:Stewardi',
-);
-$wgMakesysopMessages['sl'] = array(
+),
+'sl' => array(
 	'makesysoptitle'       => 'Povišaj uporabnika v administratorja',
 	'makesysoptext'        => 'Obrazec uporabljajo birokrati za povišanje navadnih uporabnikov v administratorje. Da izbranega uporabnika povišate, vpišite njegovo ime v okence in pritisnite gumb.',
 	'makesysopname'        => 'Ime uporabnika:',
@@ -946,8 +945,8 @@ $wgMakesysopMessages['sl'] = array(
 	'group-steward'        => 'Upravniki',
 	'group-steward-member' => 'Upravnik',
 	'grouppage-steward'    => '{{ns:project}}:Upravniki',
-);
-$wgMakesysopMessages['sq'] = array(
+),
+'sq' => array(
 	'makesysoptitle'       => 'Jepini privilegjin e titullit administrues',
 	'makesysoptext'        => "Ky formular përdoret për tu dhënë titullin [[{{SITENAME}}:Administruesit|administrues]] një përdoruesi të thjeshtë. Kini kujdes, mbasi të jetë dhënë, vetëm një ''zhvillues'' mund t'ia heqi këtë titull një administruesi.",
 	'makesysopname'        => 'Emri i përdoruesit:',
@@ -966,8 +965,8 @@ $wgMakesysopMessages['sq'] = array(
 	'group-steward'        => 'Përgjegjës',
 	'group-steward-member' => 'Përgjegjës',
 	'grouppage-steward'    => '{{ns:project}}:Përgjegjës',
-);
-$wgMakesysopMessages['sr-ec'] = array(
+),
+'sr-ec' => array(
 	'makesysoptitle' => 'Претворите корисника у администратора',
 	'makesysoptext' => 'Овај формулар се користи од стране бирократа да се обични корисници претворе у администраторе. Унесите име корисника у кутију и притисните дугме да би корисник постао администратор',
 	'makesysopname' => 'Име корисника:',
@@ -986,8 +985,8 @@ $wgMakesysopMessages['sr-ec'] = array(
 	'group-steward' => 'Стјуарди',
 	'group-steward-member' => 'Стјуард',
 	'grouppage-steward' => '{{ns:project}}:стјуарди',
-);
-$wgMakesysopMessages['sr-el'] = array(
+),
+'sr-el' => array(
 	'makesysoptitle'       => 'Pretvorite korisnika u administratora',
 	'makesysoptext'        => 'Ovaj formular se koristi od strane birokrata da se obični korisnici pretvore u administratore. Unesite ime korisnika u kutiju i pritisnite dugme da bi korisnik postao administrator',
 	'makesysopname'        => 'Ime korisnika:',
@@ -1006,9 +1005,8 @@ $wgMakesysopMessages['sr-el'] = array(
 	'group-steward'        => 'stjuardi',
 	'group-steward-member' => 'stjuard',
 	'grouppage-steward'    => '{{ns:project}}:stjuardi',
-);
-$wgMakesysopMessages['sr'] = $wgMakesysopMessages['sr-ec'];
-$wgMakesysopMessages['su'] = array(
+),
+'su' => array(
 	'makesysoptitle' => 'Ngangkat pamaké jadi kuncén',
 	'makesysoptext' => 'Formulir ieu dipaké ku birokrat pikeun ngangkat pamaké biasa jadi kuncén. Ketik ngaran pamaké na kotak, terus pencét tombol pikeun ngangkat pamaké jadi kuncén.',
 	'makesysopname' => 'Ngaran pamaké:',
@@ -1026,8 +1024,8 @@ $wgMakesysopMessages['su'] = array(
 	'already_bureaucrat' => 'Pamaké ieu geus boga kalungguhan birokrat',
 	'makesysop-nodatabase' => 'Ngaran pamaké interwiki salah: $1',
 	'grouppage-steward' => '{{ns:project}}:Steward',
-);
-$wgMakesysopMessages['sv'] = array(
+),
+'sv' => array(
 	'makesysoptitle'       => 'Gör en användare till administratör',
 	'makesysoptext'        => 'Det här formuläret används av byråkrater för att göra vanliga användare till administratörer. Skriv användarens namn i rutan och tryck på knappen för att göra användaren till administratör',
 	'makesysopname'        => 'Användarens namn:',
@@ -1047,8 +1045,8 @@ $wgMakesysopMessages['sv'] = array(
 	'group-steward'        => 'Stewarder',
 	'group-steward-member' => 'Steward',
 	'grouppage-steward'    => '{{ns:project}}:Stewarder',
-);
-$wgMakesysopMessages['te'] = array(
+),
+'te' => array(
 	'already_bureaucrat'   => 'ఈ సభ్యుడు ఇప్పటికే అధికారి',
 	'already_sysop'        => 'ఈ సభ్యుడు ఇప్పటికే నిర్వాహకుడు',
 	'makesysop'            => 'సభ్యుడిని నిర్వాహకుడిగా మార్చు',
@@ -1059,8 +1057,8 @@ $wgMakesysopMessages['te'] = array(
 	'makesysoptext'        => 'మామూలు సభ్యులను నిర్వాహకులు చెయ్యడానికి అధికారులు ఈ ఫారంను వాడతారు. దీని కొరకు సభ్యుని పేరు పెట్టెలో టైపు చేసి, మీట నొక్కండి.',
 	'rights'               => 'హక్కులు:',
 
-);
-$wgMakesysopMessages['tet'] = array(
+),
+'tet' => array(
 	'makesysoptitle' => 'Fó kuana administradór',
 	'makesysoptext' => 'Burokrata bele uza pájina ne\'e ba fó kuana administradó ba uza-na\'in ida. Hakerek naran uza-na\'in no hanehan "button" ba fó kuana administradór.',
 	'makesysopname' => 'Naran uza-na\'in:',
@@ -1076,14 +1074,14 @@ $wgMakesysopMessages['tet'] = array(
 	'group-steward' => 'Steward sira',
 	'group-steward-member' => 'Steward',#identical but defined
 	'grouppage-steward' => '{{ns:project}}:Steward sira',
-);
-$wgMakesysopMessages['tr'] = array(
+),
+'tr' => array(
 	'already_bureaucrat'   => 'Bu kullanıcı zaten bürokrat',
 	'already_sysop'        => 'Bu kullanıcı zaten yönetici',
 	'rights'               => 'Haklar:',
 	'user_rights_set'      => '<b>"$1" için kullanıcı hakları güncellendi</b>',
-);
-$wgMakesysopMessages['tt'] = array(
+),
+'tt' => array(
 	'makesysoptitle'	=> 'Äğzäne idäräçe itep quyu',
 	'makesysopname'		=> 'Bu äğzäne:',
 	'makesysopsubmit'	=> 'Bu äğzäne idäräçe itep quy',
@@ -1093,11 +1091,11 @@ $wgMakesysopMessages['tt'] = array(
 	'set_user_rights'	=> 'Äğzä xoquqın üzgärt',
 	'user_rights_set'	=> '<b>«$1» atlı äğzä xoquqı yañartıldı</b>',
 	'makesysop'		=> 'Äğzäne idäräçe itep quyu',
-);
-$wgMakesysopMessages['tyv'] = array(
+),
+'tyv' => array(
 	'makesysopname'		=> 'Ажыглакчыниң ады:',
-);
-$wgMakesysopMessages['uk'] = array(
+),
+'uk' => array(
 	'makesysoptitle'       => 'Надати користувачу права адміністратора (sysop)',
 	'makesysoptext'        => "Ця форма призначена для бюрократів й дозволяє надавати користувачам статус адміністратора.
 Введіть ім'я користувача й натисніть кнопку, щоб надати користувачу права адміністратора",
@@ -1115,8 +1113,8 @@ $wgMakesysopMessages['uk'] = array(
 	'already_bureaucrat'   => 'Цей користувач вже є бюрократом',
 	'group-steward'        => 'Стюарди',
 	'group-steward-member' => 'стюард',
-);
-$wgMakesysopMessages['ur'] = array(
+),
+'ur' => array(
 	'makesysoptitle'       => 'صارف کو منتظم بنائیں',
 	'makesysopname'        => 'صارف کا نام:',
 	'makesysopsubmit'      => 'صارف کو منتظم بنائیں',
@@ -1124,8 +1122,8 @@ $wgMakesysopMessages['ur'] = array(
 	'rights'               => 'حقوق:',
 	'makesysop'            => 'صارف کو منتظم بنائیں',
 	'already_sysop'        => 'یہ صارف پہلے ہی منتظم ہے',
-);
-$wgMakesysopMessages['vec'] = array(
+),
+'vec' => array(
 	'makesysoptitle'       => 'Rendi aministradore un utente',
 	'makesysoptext'        => 'Sto form xè usà dai burocrati par far diventare amistradori i utenti normali. Scrivi el nome de l\'utente ne la caseła e struca el botón par far diventare aministradore un utente.',
 	'makesysopname'        => 'Nome dell\'utente:',
@@ -1137,8 +1135,8 @@ $wgMakesysopMessages['vec'] = array(
 	'makesysop'            => 'Rendi un utente aministrador',
 	'already_sysop'        => 'Sto utente l\'è xà un aministradór',
 	'already_bureaucrat'   => 'Sto utente l\'è xà un burocrate',
-);
-$wgMakesysopMessages['vi'] = array(
+),
+'vi' => array(
 	'makesysoptitle'       => 'Phong một thành viên làm quản lý',
 	'makesysoptext'        => 'Mẫu này được các tổng quản lý dùng để phong các thành viên bình thường thành người quản lý. Hãy gõ tên của thành viên cần phong quyền quản lý vào ô này và nhấn nút.',
 	'makesysopname'        => 'Tên thành viên:',
@@ -1153,8 +1151,8 @@ $wgMakesysopMessages['vi'] = array(
 	'makesysop'            => 'Phong một thành viên làm quản lý',
 	'already_sysop'        => 'Người này đã là quản lý',
 	'already_bureaucrat'   => 'Người này đã là tổng quản lý',
-);
-$wgMakesysopMessages['wa'] = array(
+),
+'wa' => array(
 	'makesysoptitle' => 'Diner a èn uzeu on livea di manaedjeu',
 	'makesysoptext' => 'Cisse pådje ci c\'&nbsp;est po les mwaisses-manaedjeus («burocrates») poleur hôssî l\'&nbsp;livea d\'&nbsp;èn uzeu do livea d\'&nbsp;simpe uzeu eredjîstré, å ci d\'&nbsp;manaedjeu. Tapez l\'&nbsp;no d\'&nbsp;l\'&nbsp;uzeu dins l\'&nbsp;boesse di tecse poy clitchîz sol boton po ndè fé on manaedjeu.',
 	'makesysopname' => 'Li no d\' l\' uzeu:',
@@ -1171,8 +1169,8 @@ $wgMakesysopMessages['wa'] = array(
 	'already_bureaucrat' => 'Cist uzeu ci a ddja l\' livea di mwaisse-manaedjeu',
 	'group-steward' => 'Mwaisse-manaedjeus tot avå',
 	'group-steward-member' => 'mwaisse-manaedjeu tot avå',
-);
-$wgMakesysopMessages['yue'] = array(
+),
+'yue' => array(
 	'makesysoptitle'       => '整一位用戶做操作員',
 	'makesysoptext'        => '呢一個表格係畀事務員用嘅，去轉普通嘅用戶到管理員。
 喺個框入面打用戶嘅名，然後撳個掣嚟設佢為管理員',
@@ -1193,8 +1191,8 @@ $wgMakesysopMessages['yue'] = array(
 	'group-steward'        => '執行員',
 	'group-steward-member' => '執行員',
 	'grouppage-steward'    => '{{ns:project}}:執行員',
-);
-$wgMakesysopMessages['zh-classical'] = array(
+),
+'zh-classical' => array(
 	'makesysoptitle'       => '封有秩',
 	'makesysopname'        => '簿名：',
 	'makesysopsubmit'      => '封之有秩',
@@ -1203,8 +1201,8 @@ $wgMakesysopMessages['zh-classical'] = array(
 	'makesysop'            => '封有秩',
 	'already_sysop'        => '早封有秩矣',
 	'already_bureaucrat'   => '早封門下矣',
-);
-$wgMakesysopMessages['zh-hans'] = array(
+),
+'zh-hans' => array(
 	'makesysoptitle'       => '将用户设置为操作员',
 	'makesysoptext'        => '这个由行政管理员使用的表单可以将普通用户变为管理员。在输入框中输入用户名并点击按钮就可以将用户设置为管理员。',
 	'makesysopname'        => '用户名：',
@@ -1224,8 +1222,8 @@ $wgMakesysopMessages['zh-hans'] = array(
 	'group-steward'        => '监管员',
 	'group-steward-member' => '监管员',
 	'grouppage-steward'    => '{{ns:project}}:监管员',
-);
-$wgMakesysopMessages['zh-hant'] = array(
+),
+'zh-hant' => array(
 	'makesysoptitle'       => '將用戶設置為操作員',
 	'makesysoptext'        => '這個由行政管理員使用的表單可以將普通用戶變為管理員。在輸入框中輸入用戶名並點擊按鈕就可以將用戶設置為管理員。',
 	'makesysopname'        => '用戶名：',
@@ -1245,17 +1243,22 @@ $wgMakesysopMessages['zh-hant'] = array(
 	'group-steward'        => '監管員',
 	'group-steward-member' => '監管員',
 	'grouppage-steward'    => '{{ns:project}}:監管員',
-);
-$wgMakesysopMessages['zh-tw'] = $wgMakesysopMessages['zh-hant'];
-$wgMakesysopMessages['zh-tw'] = array(
+),
+'zh-tw' => array(
 	'rights'               => '許可權：',
 	'set_user_rights'      => '設定用戶許可權',
 	'user_rights_set'      => "<b>用戶\"$1\"的許可權已經更新</b>",
 	'set_rights_fail'      => "<b>無法設定用戶\"$1\"的許可權。（您是否輸入了正確的用戶名？）</b>",
+),
+
 );
-$wgMakesysopMessages['zh'] = $wgMakesysopMessages['zh-hans'];
-$wgMakesysopMessages['zh-cn'] = $wgMakesysopMessages['zh-hans'];
-$wgMakesysopMessages['zh-hk'] = $wgMakesysopMessages['zh-hant'];
-$wgMakesysopMessages['zh-min-nan'] = $wgMakesysopMessages['nan'];
-$wgMakesysopMessages['zh-sg'] = $wgMakesysopMessages['zh-hans'];
-$wgMakesysopMessages['zh-yue'] = $wgMakesysopMessages['yue'];
+
+$messages['kk'] = $messages['kk-kz'];
+$messages['sr'] = $messages['sr-ec'];
+$messages['zh-tw'] = $messages['zh-hant'];
+$messages['zh'] = $messages['zh-hans'];
+$messages['zh-cn'] = $messages['zh-hans'];
+$messages['zh-hk'] = $messages['zh-hant'];
+$messages['zh-min-nan'] = $messages['nan'];
+$messages['zh-sg'] = $messages['zh-hans'];
+$messages['zh-yue'] = $messages['yue'];
