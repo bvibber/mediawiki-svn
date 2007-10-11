@@ -26,6 +26,10 @@ $wgLinkSearchMessages['ar'] = array(
 	'linksearch-line'  => '$1 موصولة من $2',
 	'linksearch-error' => 'الكروت الخاصة يمكن أن تظهر فقط في بداية اسم المضيف.',
 );
+$wgLinkSearchMessages['bcl'] = array(
+	'linksearch-ok'    => 'Hanápon',
+	'linksearch-line'  => '$1 an nakatakod sa $2',
+);
 $wgLinkSearchMessages['cs'] = array(
 	'linksearch'       => 'Hledání externích odkazů',
 	'linksearch-text'  => 'Lze používat zástupné znaky, např. „*.wikipedia.org“.',

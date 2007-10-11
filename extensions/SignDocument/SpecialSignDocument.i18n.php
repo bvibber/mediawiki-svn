@@ -182,6 +182,11 @@ $allMessages = array(
 		'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] وقع [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 	),
 	'bcl' => array(
+		'signdocument' => 'Pirmahan an Dokumento',
+		'sign-selectdoc' => 'Dokumento:',
+		'sign-realname' => 'Pangaran:',
+		'sign-city' => 'Ciudad:',
+		'sign-country' => 'Nacion:',
 		'sign-viewfield-realname' => 'Pangaran',
 		'sign-viewfield-address' => 'Istaran',
 		'sign-viewfield-city' => 'Ciudad',

@@ -66,6 +66,12 @@ on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|
 		'createsigndoc-error-pagenoexist' => 'خطأ: الصفحة [[$1]] غير موجودة.',
 		'createsigndoc-success' => 'توقيع الوثيقة تم تفعيله بنجاح على [[$1]]. لاختباره، من فضلك زر [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} هذه الصفحة].',
 	),
+	'bcl' => array(
+		'createsigndoc-pagename' => 'Páhina:',
+		'createsigndoc-bday' => 'Kamondágan:',
+		'createsigndoc-create' => 'Maggibo',
+		'createsigndoc-error-generic' => 'Salâ: $1',
+	),
 	'ext' => array(
 		'createsigndoc-pagename' => 'Páhina:',
 		'createsigndoc-allowedgroup' => 'Alabán premitiu:',

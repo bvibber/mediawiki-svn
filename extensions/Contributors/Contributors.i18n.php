@@ -41,10 +41,14 @@ function efContributorsMessages() {
 'bcl' => array(
 'contributors' => 'Mga kontributor',
 'contributors-toolbox' => 'Pangenot na mga kontributor',
+'contributors-legend' => 'Ilista an mga pangenot na kontributor sa artikulo',
 'contributors-target' => 'Titulo:',
 'contributors-submit' => 'Hilingón',
+'contributors-subtitle' => 'Mga pangenot na kontributor sa $1',
+'contributors-others-long' => 'Igwang $1 pang mga kontributor sa páhinang ini.',
 'contributors-others' => 'asin $1 iba pa',
-'contributors-nosuchpage' => 'An artikulong $1 mayô man.',
+'contributors-badtitle' => 'Salang titulo.',
+'contributors-nosuchpage' => 'An artikulong $1 mayò man.',
 ),
 
 'bn' => array(

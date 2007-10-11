@@ -69,6 +69,7 @@ $SpecialFormMessages =array(
 	),
 
 	'bcl' => array(
+		'formtitlepattern' => 'Magdugang nin Bâgong $1',
 		'formsave' => 'Itagama',
 	),
 

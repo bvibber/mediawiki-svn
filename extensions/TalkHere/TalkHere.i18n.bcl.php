@@ -11,12 +11,12 @@
  */
 
 $messages = array(
-	'talkhere-foottext' => 'An mga komento sa itaas pwedeng sa mga bisita. <br/>
-	Dai inaakô kan mga operador sa site na ini an mga responsibilidad para mga komentong iyan.',
-	'talkhere-talkpage' => 'pahina sa olay',
+	'talkhere-foottext' => 'Pwedeng sa mga bisita an mga komento sa itaas . <br/>
+	Dai inaakò kan mga operador sa site na ini an mga responsibilidad para mga komentong iyan.',
+	'talkhere-talkpage' => 'páhina kan olay',
 	'talkhere-notalk' => '\'\'(mayô pang komento)\'\'',
 	'talkhere-addcomment' => 'madugang nin komento',
 	'talkhere-beforeinput' => 'Pwedeng kang magdugang nin komento sa ibabâ',
 	'talkhere-loading' => 'pigkakarga an editor...',
-	'talkhere-collapse' => 'tagoon an editor',
+	'talkhere-collapse' => 'tagôon an editor',
 );
