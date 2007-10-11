@@ -39,11 +39,39 @@ class ApiEditPage extends ApiBase {
 	const BAD_LGTOKEN 						= 001;
 	const BAD_EDITTOKEN						= 002;
 	const NO_POST_REQUEST					= 003;
+	const GET_CAPTCHA						= 004;
+	const MISSING_CAPTCHA					= 005;
 	//----------------------------------------
 
     public function __construct($query, $moduleName) {
         parent :: __construct($query, $moduleName, 'ep');
     }
+
+	/**
+	* Return the link to the captcha generated
+	*/
+	function captchaSupport($myCaptcha, &$result) {
+		$info = $myCaptcha->pickImage();
+		if( !$info ) {
+			return -1;
+		} else {
+			$index = $myCaptcha->storeCaptcha( $info );
+			$title = Title::makeTitle( NS_SPECIAL, 'Captcha/image' );
+			$result['captchaId']  = $index;
+			$result['captchaURL'] = $title->getLocalUrl( 'wpCaptchaId=' . urlencode( $index ) );
+		}
+	}
+
+	public function checkCaptcha() {
+		global $wgHooks, $wgCaptchaTriggers;
+		$i = 0;
+		$value = false;
+		while ($i < sizeof($wgHooks['EditFilter'])) {
+			if (($wgHooks['EditFilter'][$i][0] instanceof FancyCaptcha) && ($wgCaptchaTriggers['edit'] == true)) $value = true;
+			$i++;
+		}
+		return $value;
+	}
 
     public function execute() {
         global $wgUser, $wgRequest;
@@ -51,62 +79,71 @@ class ApiEditPage extends ApiBase {
 
 		if( session_id() == '' ) {
 			wfSetupSession();
-    }
+    	}
 
 		extract($this->extractRequestParams());
 		$params = new FauxRequest(array (
-	        	'wpTitle' 		=> $title,
-	        	'wpTextbox1' 	=> $text,
-	        	'wpSummary'		=> $summary,
-	        	'wpEdittime'	=> $edittime,
-	        	'wplgToken' 	=> $lgtoken,
-	        	'wpUserID'		=> $userid,
-	        	'wpEditToken'	=> $tokenid
+	       	'wpTitle' 		=> $title,
+	       	'wpTextbox1' 	=> $text,
+	       	'wpSummary'		=> $summary,
+	       	'wpEdittime'	=> $edittime,
+	       	'wplgToken' 	=> $lgtoken,
+	       	'wpUserID'		=> $userid,
+	       	'wpEditToken'	=> $tokenid,
+	       	'wpCaptchaWord' => $captchaword,
+			'wpCaptchaId' 	=> $captchaid
 	    ));
-	  $wgRequest = $params;
-		// Ensure the correct timestamp format
-		$edittime =eregi_replace("[-,a-z,:]","",$edittime);
-    $object_title = Title::newFromDBkey($title);
-		$myArticle = new Article($object_title);
+	  	$wgRequest = $params;
 
-        // User creation since UserID number
-		if ($userid != 0){
-        	$myUser = new User();
-			$myUser->setID($userid);
-			$myUser->loadFromId();
-			$myUser->setCookies();
-		 	$wgUser = $myUser;
-
-		 	if ($lgtoken != $_SESSION['wsToken']){
-				$value = BAD_LGTOKEN;
-      }
+	  	if ((strlen($title) == 0) && ($this->checkCaptcha()) ) {
+			$value = 'GET_CAPTCHA';
+		} elseif ($this->checkCaptcha() && ($captchaid == 0)) {
+			$value = 'MISSING_CAPTCHA';
 		}
+		else{
+			// Ensure the correct timestamp format
+			$edittime =eregi_replace("[-,a-z,:]","",$edittime);
+    		$object_title = Title::newFromDBkey($title);
+			$myArticle = new Article($object_title);
 
-		if ($value != 'BAD_LGTOKEN'){
-    	$md5 = $wgUser->editToken();
-      // This is only to fast testing. So must be cleanned before a Release
-      $tokenid = $md5;
+        	// User creation since UserID number
+			if ($userid != 0){
+        		$myUser = new User();
+				$myUser->setID($userid);
+				$myUser->loadFromId();
+				$myUser->setCookies();
+		 		$wgUser = $myUser;
 
-      // APiEditPage only accepts POST requests
-			if (!$_SERVER['REQUEST_METHOD']){
-      	$value = 'NO_POST_REQUEST';
-      }
-
-      else{
-      	$params->wasPosted = true;
-     		if ($md5 != $tokenid){
-					$value = BAD_EDITTOKEN;
-      	}
-
-      	else {
-					$editForm = new EditPage($myArticle);
-					$editForm->mTitle = $object_title;
-					$editForm->importFormData($params);
-
-					$resultDetails = false;
-					$value=$editForm->internalAttemptSave( &$resultDetails );
+		 		if ($lgtoken != $_SESSION['wsToken']){
+					$value = BAD_LGTOKEN;
 				}
-    	}
+			}
+
+			if ($value != 'BAD_LGTOKEN'){
+    			$md5 = $wgUser->editToken();
+      			// This is only to fast testing. So must be cleanned before a Release
+      			$tokenid = $md5;
+
+      			// APiEditPage only accepts POST requests
+				if (!$_SERVER['REQUEST_METHOD']){
+      				$value = 'NO_POST_REQUEST';
+      			}
+
+      			else{
+      				$params->wasPosted = true;
+     				if ($md5 != $tokenid){
+						$value = BAD_EDITTOKEN;
+      				}
+			      	else {
+						$editForm = new EditPage($myArticle);
+						$editForm->mTitle = $object_title;
+						$editForm->importFormData($params);
+
+						$resultDetails = false;
+						$value=$editForm->internalAttemptSave( &$resultDetails );
+					}
+    			}
+			}
 		}
 		switch ($value){
 			case EditPage::AS_END:
@@ -209,6 +246,21 @@ class ApiEditPage extends ApiBase {
 				$result['result'] = "Error.Edit token is wrong";
 				break;
 
+			case GET_CAPTCHA :
+				$myCaptcha = new FancyCaptcha();
+				$myCaptcha->storage->clearAll();
+				$result['result'] = 'CaptchaIdGenerated';
+				$this->captchaSupport($myCaptcha, $result);
+				break;
+
+			case MISSING_CAPTCHA :
+				$myCaptcha = new FancyCaptcha();
+				$myCaptcha->storage->clearAll();
+				$result['result'] = 'MissingCaptcha';
+				$this->captchaSupport($myCaptcha, $result);
+				$result['result'] = 'Error-EditFilter';
+				break;
+
 			default :
                 $result['result'] = 'Invalid';
                 break;
@@ -242,6 +294,12 @@ class ApiEditPage extends ApiBase {
             'tokenid' => array(
                 ApiBase :: PARAM_TYPE => 'string'
             ),
+			'captchaword' => array(
+				ApiBase :: PARAM_TYPE => 'string'
+			),
+			'captchaid' => array(
+				ApiBase :: PARAM_TYPE => 'string'
+			),
        );
     }
 
@@ -252,7 +310,9 @@ class ApiEditPage extends ApiBase {
             'summary'		=> 'Summary of article',
 			'userid'		=> 'ID of the user',
 			'edittime'		=> 'Timestamp of base revision edited',
-			'lgtoken'		=> 'Login token of the user'
+			'lgtoken'		=> 'Login token of the user',
+			'captchaid' 	=> 'question',
+			'captchaword' 	=> 'answer'
 
         );
     }
