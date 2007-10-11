@@ -35,6 +35,30 @@ $wgExtensionFunctions[] = 'wfLqtSpecialMoveThreadToAnotherPage';
 $wgExtensionFunctions[] = 'wfLqtSpecialNewMessages';
 $wgHooks['BeforeWatchlist'][] = 'wfLqtBeforeWatchlistHook';
 
+
+/**
+ * Recreate the original associative array so that a new pair with the given key
+ * and value is inserted before the given existing key. $original_array gets
+ * modified in-place.
+*/
+function efInsertIntoAssoc( $new_key, $new_value, $before, &$original_array ) {
+	$ordered = array();
+	$i = 0;
+	foreach($original_array as $key=>$value) {
+		$ordered[$i] = array($key, $value);
+		$i += 1;
+	}
+	$new_assoc = array();
+	foreach($ordered as $pair) {
+		if( $pair[0] == $before ) {
+			$new_assoc[$new_key] = $new_value;
+		}
+		$new_assoc[$pair[0]] = $pair[1];
+	}
+	$original_array = $new_assoc;
+}
+
+
 class TalkpageView extends LqtView {
 	/* Added to SkinTemplateTabs hook in TalkpageView::show(). */
 	function customizeTabs( $skintemplate, $content_actions ) {
@@ -371,7 +395,13 @@ class ThreadPermalinkView extends LqtView {
 	protected $thread;
 	
 	function customizeTabs( $skintemplate, $content_actions ) {
-		// The arguments are passed in by reference.
+		// if you call the key 'talk', the url gets re-set later. Bug:
+		// the access key for the talk tab doesn't work.
+		$article_url = $this->thread->article()->getTitle()->getFullURL();
+		$talk_url = $this->thread->article()->getTitle()->getTalkPage()->getFullURL();
+		efInsertIntoAssoc('article', array('text'=>'article', 'href'=>$article_url), 'nstab-thread', $content_actions);
+		efInsertIntoAssoc('not_talk', array('text'=>'discussion', 'href'=>$talk_url), 'nstab-thread', $content_actions);
+
 		unset($content_actions['edit']);
 		unset($content_actions['viewsource']);
 		unset($content_actions['talk']);

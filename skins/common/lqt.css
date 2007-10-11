@@ -338,3 +338,7 @@ h2.lqt_header {
 .lqt_post_color_6 a { color: #00cd98 !important; }
 
 
+li#ca-nstab-thread {
+	/* from #ca-talk */
+	margin-right: 1.6em;
+}
