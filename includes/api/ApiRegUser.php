@@ -145,11 +145,11 @@ class ApiRegUser extends ApiBase {
 	}
 
 	public function checkCaptcha() {
-		global $wgHooks;
+		global $wgHooks, $wgCaptchaTriggers;
 		$i = 0;
 		$value = false;
 		while ($i < sizeof($wgHooks['UserCreateForm'])) {
-			if ($wgHooks['UserCreateForm'][$i][0] instanceof FancyCaptcha) $value = true;
+			if (($wgHooks['UserCreateForm'][$i][0] instanceof FancyCaptcha) && ($wgCaptchaTriggers['createaccount'] == true)) $value = true;
 			$i++;
 		}
 		return $value;
