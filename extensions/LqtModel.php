@@ -779,7 +779,6 @@ class Threads {
 	static $cache_by_id = array();
 	
     static function newThread( $root, $article, $superthread = null, $type = self::TYPE_NORMAL ) {
-
 		// SCHEMA changes must be reflected here.
 		// TODO: It's dumb that the commitRevision code isn't used here.
 
@@ -1047,11 +1046,18 @@ class NewMessages {
 	            		__METHOD__);
 		}
 	}
-	
+
+	/** 
+	 * Write a user_message_state for each user who is watching the thread.
+	 * If the thread is on a user's talkpage, set that user's newtalk.
+	*/
 	static function writeMessageStateForUpdatedThread($t) {
 		global $wgDBprefix;
-		// retrieve all users who are watching t.
-		// write a ums for each one.
+
+		if( $t->article()->getTitle()->getNamespace() == NS_USER ) {
+			$user = User::newFromName($t->article()->getTitle()->getDBKey());
+			$user->setNewtalk(true);
+		}
 		
 		$dbw =& wfGetDB( DB_MASTER );
 		

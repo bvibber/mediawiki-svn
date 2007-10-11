@@ -135,7 +135,7 @@ HTML
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
 
 		$this->output->setPageTitle( $this->title->getTalkpage()->getPrefixedText() );
-		$this->addJSandCSS();
+		self::addJSandCSS();
 
 		$this->showHeader();
 		
@@ -341,7 +341,7 @@ HTML
 		$wgHooks['SkinTemplateTabs'][] = array($this, 'customizeTabs');
 		
 		$this->output->setPageTitle( $this->title->getTalkpage()->getPrefixedText() );
-		$this->addJSandCSS();
+		self::addJSandCSS();
 		
 		$empty = $this->showSearchForm();
 		if ($empty) {
@@ -457,7 +457,7 @@ class ThreadPermalinkView extends LqtView {
 			return false;
 		}
 
-		$this->addJSandCSS();
+		self::addJSandCSS();
 		$this->output->setSubtitle($this->getSubtitle());
 		
 		if( $this->methodApplies('summarize') )
@@ -659,7 +659,7 @@ class ThreadHistoryListingView extends ThreadPermalinkView {
 			$this->showMissingThreadPage();
 			return false;
 		}
-		$this->addJSandCSS();
+		self::addJSandCSS();
 		
 		$this->output->setSubtitle($this->getSubtitle() . '<br />' . wfMsg('lqt_history_subtitle'));
 				
@@ -1037,7 +1037,14 @@ HTML
 	}
 	
 	function showOnce() {
-		$this->addJSandCSS();
+		self::addJSandCSS();
+		
+		if( $this->request->wasPosted() ) {
+			// If they just viewed this page, maybe they still want that notice.
+			// But if they took the time to dismiss even one message, they
+			// probably don't anymore.
+			$this->user->setNewtalk(false);
+		}
 		
 		if( $this->request->wasPosted() && $this->methodApplies('mark_as_unread') ) {
 			$ids = explode(',', $this->request->getVal('lqt_operand', ''));
@@ -1161,6 +1168,7 @@ function wfLqtBeforeWatchlistHook( $options, $user, &$hook_sql ) {
 	if( $tn == 0 && $wn == 0 )
 		return true;
 	
+	LqtView::addJSandCSS();
 	$messages_url = SpecialPage::getPage('Newmessages')->getTitle()->getFullURL();
 	$wgOut->addHTML(<<< HTML
 		<a href="$messages_url" class="lqt_watchlist_messages_notice">

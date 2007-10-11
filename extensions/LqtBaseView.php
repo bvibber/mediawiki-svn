@@ -48,6 +48,7 @@ $wgHooks['MediaWikiPerformAction'][] = 'LqtDispatch::tryPage';
 $wgHooks['SpecialMovepageAfterMove'][] = 'LqtDispatch::onPageMove';
 $wgHooks['LinkerMakeLinkObj'][] = 'LqtDispatch::makeLinkObj';
 $wgHooks['ChangesListInsertArticleLink'][] = 'LqtDispatch::changesListArticleLink';
+$wgHooks['SkinTemplateOutputPageBeforeExec'][] = 'LqtDispatch::setNewtalkHTML';
 
 class LqtDispatch {
 	public static $views = array(
@@ -184,6 +185,26 @@ class LqtDispatch {
 			}
 		}
 		return true;	
+	}
+	
+	static function setNewtalkHTML($skintemplate, $tpl) {
+		global $wgUser, $wgTitle, $wgOut;
+		
+		$newmsg_t = SpecialPage::getPage('Newmessages')->getTitle();
+		$watchlist_t = SpecialPage::getPage('Watchlist')->getTitle();
+		$usertalk_t = $wgUser->getTalkPage();
+		if( $wgUser->getNewtalk()
+				&&! $newmsg_t->equals($wgTitle)
+				&&! $watchlist_t->equals($wgTitle)
+				&&! $usertalk_t->equals($wgTitle)
+				) {
+			$tpl->set("newtalk", "You have <a href=\"{$newmsg_t->getFullURL()}\">new messages</a>.");
+			$wgOut->setSquidMaxage(0);
+		} else {
+			$tpl->set("newtalk", '');
+		}
+
+		return true;
 	}
 }
 
@@ -564,8 +585,11 @@ HTML;
 	* Output methods         *
 	*************************/
 	
-	function addJSandCSS() {
+	static function addJSandCSS() {
+		// Changed this to be static so that we can call it from
+		// wfLqtBeforeWatchlistHook.
 		global $wgJsMimeType, $wgStylePath, $wgStyleVersion; // TODO globals.
+		global $wgOut;
 		$s = <<< HTML
 		<script type="{$wgJsMimeType}" src="{$wgStylePath}/common/lqt.js"><!-- lqt js --></script>
 		<style type="text/css" media="screen, projection">/*<![CDATA[*/
@@ -573,7 +597,7 @@ HTML;
 		/*]]>*/</style>
 
 HTML;
-		$this->output->addScript($s);
+		$wgOut->addScript($s);
 	}
 
 	/* @return False if the article and revision do not exist and we didn't show it, true if we did. */
