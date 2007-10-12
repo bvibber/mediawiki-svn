@@ -16,11 +16,7 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 	$EC2GoMeaningId = array();
 	$keyword2GoMeaningId = array();
 	
-	$goCollection = NULL;
-	$hugoCollection = NULL;
-	
-	if ($goCollectionId != 0) {
-		$goCollection = getCollectionContents($goCollectionId);
+	$hugoCollection = null;
 	
 //		foreach ($EC2GoMapping as $EC => $GO) {
 //			if (array_key_exists($GO, $goCollection)) {
@@ -35,7 +31,6 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 //				$keyword2GoMeaningId[$keyword] = $goMeaningId;
 //			}
 //		}
-	}
 	
 	if ($hugoCollectionId != 0) 
 		$hugoCollection = getCollectionContents($hugoCollectionId);
@@ -45,12 +40,12 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 	$progressBar = new ProgressBar($numberOfMegaBytes, 1, " Mb");
 	
 	$fileHandle = fopen($xmlFileName, "r");
-	importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection, $hugoCollection, $EC2GoMeaningId, $keyword2GoMeaningId, $progressBar);
+	importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollectionId, $hugoCollection, $EC2GoMeaningId, $keyword2GoMeaningId, $progressBar);
 
 	fclose($fileHandle);
 }
 
-function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection, $hugoCollection, $EC2GoMeaningIdMapping, $keyword2GoMeaningIdMapping, ProgressBar $progressBar) {
+function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollectionId, $hugoCollection, $EC2GoMeaningIdMapping, $keyword2GoMeaningIdMapping, ProgressBar $progressBar) {
 	$languageId = 85;
 	bootstrapCollection("concept mapping", $languageId, "MAPP");
 
@@ -59,6 +54,8 @@ function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection,
 	$relationTypeCollectionId = bootstrapCollection("Swiss-Prot relation types", $languageId, "RELT");
 	$textAttibuteCollectionId = bootstrapCollection("Swiss-Prot text attributes", $languageId, "TATT");
 	$ECCollectionId = bootstrapCollection("Enzyme Commission numbers", $languageId, "");
+	
+	$goCollection = new CachedCollection($goCollectionId, "GO", $languageId);
 	
 	$xmlParser = new SwissProtXMLParser();
 	$xmlParser->languageId = $languageId;
@@ -82,17 +79,47 @@ function importEntriesFromXMLFile($fileHandle, $umlsCollectionId, $goCollection,
 		// UMLS Semantic Type: Organism
 		$xmlParser->organismConceptId = getCollectionMemberId($umlsCollectionId, "C0029235");
 	}
-	
-	if ($goCollection) {
-		$xmlParser->molecularFunctionConceptId = $goCollection["GO:0003674"];
-		$xmlParser->biologicalProcessConceptId = $goCollection["GO:0008150"];
-		$xmlParser->cellularComponentConceptId = $goCollection["GO:0005575"];
-	}
+
+	$xmlParser->molecularFunctionConceptId = $goCollection->getOrCreateMember("GO:0003674", "molecular function");
+	$xmlParser->biologicalProcessConceptId = $goCollection->getOrCreateMember("GO:0008150", "biological process");
+	$xmlParser->cellularComponentConceptId = $goCollection->getOrCreateMember("GO:0005575", "cellular component");
 	
 	$xmlParser->setProgressBar($progressBar);
 	$xmlParser->initialize();
 	
 	parseXML($fileHandle, $xmlParser);
+}
+
+class CachedCollection {
+	protected $collectionId;
+	protected $contents;
+	protected $languageId;
+	
+	public function __construct($collectionId, $collectionName, $languageId, $collectionType = "") {
+		$this->collectionId = $collectionId;
+		$this->languageId = $languageId;
+		
+		if ($this->collectionId == 0)
+			$this->collectionId = bootstrapCollection($collectionName, $languageId, $collectionType);
+			
+		$this->contents = getCollectionContents($this->collectionId);
+	}
+	
+	public function getOrCreateMember($internalMemberId, $spelling = "") {
+		if (isset($this->collectionContents[$internalMemberId]))
+			return $this->collectionContents[$internalMemberId];
+		else {
+			if ($spelling == "")
+				$spelling = $internalMemberId;
+			
+			$expression = findOrCreateExpression($spelling, $this->languageId); 
+			$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $spelling);
+			addDefinedMeaningToCollection($definedMeaningId, $this->collectionId, $internalMemberId);
+			$this->collectionContents[$internalMemberId] = $definedMeaningId;
+			
+			return $definedMeaningId;
+		}
+	}
 }
 
 class SwissProtXMLParser extends BaseXMLParser {
@@ -654,25 +681,24 @@ class SwissProtXMLParser extends BaseXMLParser {
 //			}
 //		}
 		
-		if ($this->goCollection) {
-			foreach ($entry->GOReference as $key => $goReference) {
-				$relationConcept = 0;
-				switch($goReference->type) {
-				case "biological process":
-					$relationConcept = $this->biologicalProcessConceptId;
-					break;
-				case "molecular function":
-					$relationConcept = $this->molecularFunctionConceptId;
-					break;
-				case "cellular component":
-					$relationConcept = $this->cellularComponentConceptId;
-					break;
-				}
-				
-				if ($relationConcept && ($goConcept = $this->goCollection[$goReference->goCode])) 
-					addRelation($definedMeaningId, $relationConcept, $goConcept);					
-			}			
-		}
+		foreach ($entry->GOReference as $key => $goReference) {
+			$relationConcept = 0;
+		
+			switch($goReference->type) {
+			case "biological process":
+				$relationConcept = $this->biologicalProcessConceptId;
+				break;
+			case "molecular function":
+				$relationConcept = $this->molecularFunctionConceptId;
+				break;
+			case "cellular component":
+				$relationConcept = $this->cellularComponentConceptId;
+				break;
+			}
+			
+			if ($relationConcept != 0) 
+				addRelation($definedMeaningId, $relationConcept, $this->goCollection->getOrCreateMember($goReference->goCode));
+		}			
 		
  		// Add 'included' functional domains:
 		foreach ($entry->protein->domains as $key => $domain) {
@@ -785,7 +811,7 @@ class EntryXMLElementHandler extends DefaultXMLElementHandler {
 				$result = new CommentXMLElementHandler();
 				break;
 			case "DBREFERENCE":
-				$result = new dbReferenceXMLElement();
+				$result = new DBReferenceXMLElement();
 				break;
 			default:
 				$result = DefaultXMLElementHandler::getHandlerForNewElement($name);
@@ -798,33 +824,35 @@ class EntryXMLElementHandler extends DefaultXMLElementHandler {
 	}
 	
 	public function notify($childHandler) {
-		if (is_a($childHandler, ProteinXMLElementHandler)) {
+		if ($childHandler instanceof ProteinXMLElementHandler) {
 			$this->entry->protein = $childHandler->protein;		
 		}
-		elseif (is_a($childHandler, GeneXMLElementHandler)) {
+		elseif ($childHandler instanceof GeneXMLElementHandler) {
 //			$this->entry->gene = $childHandler->gene;
 //			$this->entry->geneSynonyms = $childHandler->synonyms;
 			list($this->entry->gene, $this->entry->geneSynonyms) = $childHandler->getResult();
 		}
-		elseif (is_a($childHandler, OrganismXMLElementHandler)) {
+		elseif ($childHandler instanceof OrganismXMLElementHandler) {
 			$this->entry->organism = $childHandler->organism;
 			$this->entry->organismTranslations = $childHandler->translations;		
 		}
-		elseif (is_a($childHandler, CommentXMLElementHandler)) {
+		elseif ($childHandler instanceof CommentXMLElementHandler) {
 			if ($childHandler->comment != "")
 				$this->entry->comments[] = $childHandler->comment;
 		}
-		elseif (is_a($childHandler, dbReferenceXMLElement)) {
-			if ($childHandler->type == "EC") {
-				$this->entry->EC = $childHandler->id;
-			}
-			if ($childHandler->type == "GO") {
-				$this->entry->GOReference[] = new GOReference($childHandler->id, $childHandler->property["term"]);
-			}
-			if ($childHandler->type == "HGNC") {
+		elseif ($childHandler instanceof DBReferenceXMLElement) {
+			switch (strtoupper($childHandler->type)) {
+			case "EC": 
+				$this->entry->EC = $childHandler->id; 
+				break;
+			case "GO": 
+				$this->entry->GOReference[] = new GOReference($childHandler->id, $childHandler->property["term"]); 
+				break;	
+			case "HGNC": 
 				$position = strpos($childHandler->id, ":");
 				$this->entry->HGNCReference = substr($childHandler->id, $position + 1);
-			}			
+				break;
+			}
 		}
 		elseif($childHandler->name == "ACCESSION") {
 			if ($this->entry->accession == "") {
@@ -1109,7 +1137,7 @@ class CommentChildXMLElementHandler extends DefaultXMLElementHandler {
 	}
 }
 
-class dbReferenceXMLElement extends DefaultXMLElementHandler {
+class DBReferenceXMLElement extends DefaultXMLElementHandler {
 	public $type;
 	public $id;
 	public $property = array();

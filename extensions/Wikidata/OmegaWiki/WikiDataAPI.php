@@ -234,6 +234,7 @@ function expressionIsBoundToDefinedMeaning($definedMeaningId, $expressionId) {
 	
 	$dc=wdGetDataSetContext();
 	$dbr = &wfGetDB(DB_SLAVE);
+	
 	$queryResult = $dbr->query(
 		selectLatest(
 			array($dataSet->syntrans->expressionId),
@@ -1069,10 +1070,19 @@ function findCollection($name) {
 }
 
 function getCollectionContents($collectionId) {
+	global
+		$dataSet;
+		
 	$dc=wdGetDataSetContext();
 	$dbr = & wfGetDB(DB_SLAVE);
-	$queryResult = $dbr->query("SELECT member_mid,internal_member_id from {$dc}_collection_contents " .
-			                   "WHERE collection_id=$collectionId AND ". getLatestTransactionRestriction("{$dc}_collection_contents"));
+	$queryResult = $dbr->query(
+		selectLatest(
+			array($dataSet->collectionMemberships->memberMid, $dataSet->collectionMemberships->internalMemberId),
+			array($dataSet->collectionMemberships),
+			array(equals($dataSet->collectionMemberships->collectionId, $collectionId))
+		)
+	);
+	
 	$collectionContents = array();			                   
 	
 	while ($collectionEntry = $dbr->fetchObject($queryResult)) 

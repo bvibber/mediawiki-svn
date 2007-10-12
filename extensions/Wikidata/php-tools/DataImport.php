@@ -32,11 +32,16 @@ function getUserId($real_name){
 }
 
 $options = parseCommandLine(array(new CommandLineOption("dataset", true)));
-$dataset = $options["dataset"];
+$datasetName = $options["dataset"];
 
 $beginTime = time();
 $wgCommandLineMode = true;
-$wdDefaultViewDataSet = $dataset;
+$wdDefaultViewDataSet = $datasetName;
+
+global
+	$dataSet;
+
+$dataSet = new WikiDataSet(wdGetDataSetContext());
 
 //$arg = reset( $argv ); 
 //if ( $arg !== false ){
@@ -63,10 +68,11 @@ $swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\uniprot_
 //$swissProtXMLFileName =  "C:\Documents and Settings\mulligen\Bureaublad\SPentriesForWPTest.xml";
 //$swissProtXMLFileName =  "C:\Users\mulligen\Desktop\SPentriesForWPTest.xml";
 
+//$nlmUserID = $sibUserID;
 //$wgUser->setID($nlmUserID);
 //startNewTransaction($nlmUserID, 0, "UMLS Import");
 //echo "Importing UMLS\n";
-//$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod");//, array("NCI", "GO"));
+//$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "", array("NCI", "GO"));
 //$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", "nicheGod", array("GO", "SRC", "NCI", "HUGO"));
 //$umlsImport = importUMLSFromDatabase("localhost", "umls", "root", NULL, array("GO", "SRC", "NCI", "HUGO"));
 
@@ -77,7 +83,7 @@ ini_set('memory_limit', '256M');
 
 $wgUser->setID($sibUserID);
 startNewTransaction($sibUserID, 0, "Swiss-Prot Import");
-#echo "\nImporting Swiss-Prot\n";
+echo "\nImporting Swiss-Prot\n";
 #$nsstore=wfGetNamespaceStore();
 #print_r($nsstore->nsarray);
 #"Namespace id for expression=" . Namespace::getIndexForName('expression');

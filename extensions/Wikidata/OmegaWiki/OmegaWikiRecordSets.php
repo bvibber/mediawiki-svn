@@ -133,7 +133,10 @@ function fetchDefinedMeaningDefiningExpressions(array &$definedMeaningIds, array
 	$queryResult = $dbr->query($finalQuery);
 
 	while ($row = $dbr->fetchObject($queryResult)) {
-		$definedMeaningReferenceRecord = $definedMeaningReferenceRecords[$row->defined_meaning_id];
+		if (isset($definedMeaningReferenceRecords[$row->defined_meaning_id]))
+			$definedMeaningReferenceRecord = $definedMeaningReferenceRecords[$row->defined_meaning_id];
+		else
+			$definedMeaningReferenceRecord = null;
 		
 		if ($definedMeaningReferenceRecord == null) {
 			$definedMeaningReferenceRecord = new ArrayRecord($o->definedMeaningReferenceStructure);
