@@ -14,42 +14,59 @@ $wgExtensionFunctions[]='initializeWikidata';
 $wgCustomHandlerPath = array('*'=>"{$IP}/extensions/Wikidata/OmegaWiki/");
 $wgDefaultClassMids = array(402295);
 
+
+
 # The term dataset prefix identifies the Wikidata instance that will
 # be used as a resource for obtaining language-independent strings
 # in various places of the code. If the term db prefix is empty,
 # these code segments will fall back to (usually English) strings.
 # If you are setting up a new Wikidata instance, you may want to
 # set this to ''.
-$wdTermDBDataSet='uw';
+$wdTermDBDataSet='sp';
 
 # This is the dataset that should be shown to all users by default.
 # It _must_ exist for the Wikidata application to be executed 
 # successfully.
-$wdDefaultViewDataSet='uw';
+$wdDefaultViewDataSet='sp';
 $wdShowCopyPanel=false;
 
 $wdGroupDefaultView=array();
 # Here you can set group defaults.
+
 #$wdGroupDefaultView['wikidata-omega']='uw';
-$wdGroupDefaultView['wikidata-test']='tt';
+#$wdGroupDefaultView['wikidata-umls']='umls';
+#$wdGroupDefaultView['wikidata-sp']='sp';
+
+$wdGroupDefaultView['wikidata-omega']='sp';
+$wdGroupDefaultView['wikidata-umls']='sp';
+$wdGroupDefaultView['wikidata-sp']='sp';
 
 # These are the user groups
 $wgGroupPermissions['wikidata-omega']['editwikidata-uw']=true;
-$wgGroupPermissions['wikidata-omega']['editwikidata-tt']=true;
+#$wgGroupPermissions['wikidata-test']['editwikidata-tt']=true;
 $wgGroupPermissions['wikidata-copy']['wikidata-copy']=true;
+$wgGroupPermissions['wikidata-omega']['wikidata-copy']=true;
 
 # The permission needed to do ...
 $wgCommunity_dc="uw";
 $wgCommunityEditPermission="editwikidata-uw"; # only used for copy for now
 global $wdExtraDebugging, $wdTesting;
 $wdExtraDebugging=false; # useful when testing. Use as needed
-$wdTesting=true; #useful when testing, use as needed
+$wdTesting=false; #useful when testing, use as needed
 
 
 # The site prefix allows us to have multiple sets of customized
 # messages (for different, typically site-specific UIs)
 # in a single database.
-if(!isset($wdSiteContext)) $wdSiteContext="ow";
+#if(!isset($wdSiteContext)) $wdSiteContext="sp";
+$wdSiteContext="sp";
+
+$wgShowClassicPageTitles = false;
+$wgDefinedMeaningPageTitlePrefix = "";
+$wgExpressionPageTitlePrefix = "Multiple meanings";
+require_once("$IP/extensions/Wikidata/OmegaWiki/GotoSourceTemplate.php");
+			        			
+$wgGotoSourceTemplates = array(5 => $swissProtGotoSourceTemplate);  
 
 require_once("{$IP}/extensions/Wikidata/AddPrefs.php");
 require_once("{$IP}/extensions/Wikidata/SpecialLanguages.php");
@@ -64,7 +81,7 @@ require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialConceptMapping.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialCopy.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialExportTSV.php");
 require_once("{$IP}/extensions/Wikidata/OmegaWiki/SpecialImportTSV.php");
-#require_once("{$IP}/extensions/Wikidata/LocalApp.php");
+require_once("{$IP}/extensions/Wikidata/LocalApp.php");
 
 function addWikidataHeader() {
 	global $wgOut,$wgScriptPath;
@@ -122,13 +139,19 @@ function modifyTabs($skin, $content_actions) {
 		$dmid = ($rpos1 && $rpos2) ? substr($tt, $rpos1+1, $rpos2-$rpos1-1) : 0;
 		if($dmid) {
 			$copyTitle=SpecialPage::getTitleFor('Copy');
-			if(wdIsWikidataNs() && (!$wgUser->isAllowed('editwikidata-'.$dc) || $wdTesting) && $wgUser->isAllowed('wikidata-copy')) {
+			#if(wdIsWikidataNs() && (!$wgUser->isAllowed('editwikidata-'.$dc) || $wdTesting)) {
+			if(wdIsWikidataNs() && $dc!=$wgCommunity_dc) {
 				$content_actions['edit']=array(
 				'class'=>false, 
 				'text'=>'edit copy', 
 				'href'=>$copyTitle->getLocalUrl("action=copy&dmid=$dmid&dc1=$dc&dc2=$wgCommunity_dc")
 			);
 			}
+		 $content_actions['nstab-definedmeaning']=array(
+				 'class'=>'selected',
+				 'text'=>'defined meaning',
+				 'href'=>$wgTitle->getLocalUrl("dataset=$dc"));
+
 		}
 	}
 	return true;
