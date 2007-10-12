@@ -22,24 +22,20 @@ $wgDefaultClassMids = array(402295);
 # these code segments will fall back to (usually English) strings.
 # If you are setting up a new Wikidata instance, you may want to
 # set this to ''.
-$wdTermDBDataSet='sp';
+$wdTermDBDataSet='uw';
 
 # This is the dataset that should be shown to all users by default.
 # It _must_ exist for the Wikidata application to be executed 
 # successfully.
-$wdDefaultViewDataSet='sp';
+$wdDefaultViewDataSet='uw';
 $wdShowCopyPanel=false;
 
 $wdGroupDefaultView=array();
 # Here you can set group defaults.
 
-#$wdGroupDefaultView['wikidata-omega']='uw';
+$wdGroupDefaultView['wikidata-omega']='uw';
 #$wdGroupDefaultView['wikidata-umls']='umls';
 #$wdGroupDefaultView['wikidata-sp']='sp';
-
-$wdGroupDefaultView['wikidata-omega']='sp';
-$wdGroupDefaultView['wikidata-umls']='sp';
-$wdGroupDefaultView['wikidata-sp']='sp';
 
 # These are the user groups
 $wgGroupPermissions['wikidata-omega']['editwikidata-uw']=true;
@@ -59,7 +55,7 @@ $wdTesting=false; #useful when testing, use as needed
 # messages (for different, typically site-specific UIs)
 # in a single database.
 #if(!isset($wdSiteContext)) $wdSiteContext="sp";
-$wdSiteContext="sp";
+$wdSiteContext="uw";
 
 $wgShowClassicPageTitles = false;
 $wgDefinedMeaningPageTitlePrefix = "";
