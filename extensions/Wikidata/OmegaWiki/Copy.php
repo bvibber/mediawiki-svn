@@ -231,6 +231,9 @@ class ObjectCopier {
 			} else {
 				$id=$this->id;
 				$table=$this->object["table"];
+				if (is_null($table)) 
+					$table=$this->tableName;
+				$dc1=$this->dc1;
 				throw new Exception("ObjectCopier: Could not find object information for object with id '$id' stored in `$table` in the objects table with prefix '$dc1'");
 			}
 		}
@@ -332,8 +335,19 @@ function write_translated_content($dc1, $dc2, $tcid, $content) {
 
 
 function dup_translated_content($dc1, $dc2, $tcid) {
+	if (is_null($dc1))
+		throw new Exception ("dup_translated_content: dc1 is null");
+
+	if (is_null($dc2))
+		throw new Exception ("dup_translated_content: dc2 is null");
+
+	if (is_null($tcid))
+		throw new Exception ("dup_translated_content: tcid is null");
+	
+
 	$translated_content=read_translated_content($dc1, $tcid);
 	$copier=new ObjectCopier($tcid, $dc1, $dc2);
+	$copier->setTableName("translated_content");
 	$new_tcid=$copier->dup();
 	# note the issue where translated content is added later:
 	# since all translated content for a single dm 
