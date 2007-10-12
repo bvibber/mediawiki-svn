@@ -334,6 +334,13 @@ function write_translated_content($dc1, $dc2, $tcid, $content) {
 }
 
 
+/**
+ * duplicate translated content
+ * TODO: actually make a translated content class
+ * XXX: Warning: in the case of a tcid of 0 (almost certainly
+ *      a bug), this problem is silently dropped, due to 
+ *      possible issues with UMLS
+ */
 function dup_translated_content($dc1, $dc2, $tcid) {
 	if (is_null($dc1))
 		throw new Exception ("dup_translated_content: dc1 is null");
@@ -343,7 +350,24 @@ function dup_translated_content($dc1, $dc2, $tcid) {
 
 	if (is_null($tcid))
 		throw new Exception ("dup_translated_content: tcid is null");
-	
+	/* XXX UMLS problem? Knewcode tickets #258, #330 
+	 *12 oct 2007, wikitestserver
+	 * mysql> select count(*) from umls_defined_meaning where meaning_text_tcid=0;
+	 * +----------+
+	 * | count(*) |
+	 * +----------+
+	 * |   924247 | 
+	 * +----------+
+	 * 1 row in set (1.71 sec)
+         *
+	 * fix-ish below, currently no warning on this.
+	 * Note that this DOES introduce the same breakage into the
+	 * community dataset. 
+	 * TODO: Figure a way to elegantly "heal" data as it is being copied instead.
+	 */
+	if ($tcid==0) {
+		return 0;	
+	}
 
 	$translated_content=read_translated_content($dc1, $tcid);
 	$copier=new ObjectCopier($tcid, $dc1, $dc2);
