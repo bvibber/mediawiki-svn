@@ -16,14 +16,10 @@ if( !defined( 'MEDIAWIKI' ) ) {
 
 ## Entry point for the hook and main worker function for editing the page:
 function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
-	global $wgSelectCategoryNamespaces;
-	global $wgSelectCategoryEnableSubpages;
-	global $wgTitle;
 
-	# Check if page is subpage once to save method calls later:
-	$m_isSubpage = $wgTitle->isSubpage();
-	# Run only if we are in an upload, a activated namespace or if page is a subpage and subpages are enabled (unfortunately we can't use implication in PHP) but not if we do a sectionedit:
-	if ( $m_isUpload || ( $wgSelectCategoryNamespaces[$wgTitle->getNamespace()] && ( !$m_isSubpage || ( $m_isSubpage && $wgSelectCategoryEnableSubpages ) ) ) && $m_pageObj->section == false ) {
+	# check if we should do anything or sleep
+	if ( fnSelectCategoryCheckConditions( $m_isUpload, &$m_pageObj ) ) {
+
 		# Get all categories from wiki:
 		$m_allCats = fnSelectCategoryGetAllCategories();
 		# Load system messages:
@@ -82,20 +78,37 @@ function fnSelectCategoryShowHook( $m_isUpload = false, &$m_pageObj ) {
 ## Entry point for the hook and main worker function for saving the page:
 function fnSelectCategorySaveHook( $m_isUpload, &$m_pageObj ) {
 	global $wgContLang;
-	
-	# Get localised namespace string:
-	$m_catString = $wgContLang->getNsText( NS_CATEGORY );
-	# Get some distance from the rest of the content:
-	$m_text = "\n";
-	# Iterate through all selected category entries:
-	foreach( $_POST['SelectCategoryList'] as $m_cat ) {
-		$m_text .= "\n[[$m_catString:$m_cat]]";
-	}
-	# If it is an upload we have to call a different method:
-	if ( $m_isUpload ) {
-		$m_pageObj->mUploadDescription .= $m_text;
-	} else{
-		$m_pageObj->textbox1 .= $m_text;
+	global $wgTitle;
+
+	# check if we should do anything or sleep
+	if ( fnSelectCategoryCheckConditions( $m_isUpload, &$m_pageObj ) ) {
+
+		# Get localised namespace string:
+		$m_catString = $wgContLang->getNsText( NS_CATEGORY );
+
+		# default sort key is page name with stripped namespace name,
+		# otherwise sorting is ugly.
+		if ($wgTitle->getNamespace() == "NS_MAIN") {
+			$default_sortkey = "";
+		} else {
+			$default_sortkey = "|{{PAGENAME}}";
+		}
+
+		# Get some distance from the rest of the content:
+		$m_text = "\n";
+
+		# Iterate through all selected category entries:
+		if (array_key_exists('SelectCategoryList', $_POST)) {
+			foreach( $_POST['SelectCategoryList'] as $m_cat ) {
+				$m_text .= "\n[[$m_catString:$m_cat$default_sortkey]]";
+			}
+		}
+		# If it is an upload we have to call a different method:
+		if ( $m_isUpload ) {
+			$m_pageObj->mUploadDescription .= $m_text;
+		} else{
+			$m_pageObj->textbox1 .= $m_text;
+		}
 	}
 
 	# Return to the let MediaWiki do the rest of the work:
@@ -213,6 +226,17 @@ function fnSelectCategoryGetChildren( $m_root, $m_prefix = 1 ) {
 ## Returns an array with the categories the articles is in.
 ## Also removes them from the text the user views in the editbox.
 function fnSelectCategoryGetPageCategories( $m_pageObj ) {
+
+	if (array_key_exists('SelectCategoryList', $_POST)) {
+		# We have already extracted the categories, return them instead
+		# of extracting zero categories from the page text.
+		$m_catLinks = array();
+		foreach( $_POST['SelectCategoryList'] as $m_cat ) {
+			$m_catLinks[ $m_cat ] = true;
+		}
+		return $m_catLinks;
+	}
+
 	global $wgContLang;
 	
 	# Get page contents:
@@ -220,7 +244,7 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 	# Get localised namespace string:
 	$m_catString = strtolower( $wgContLang->getNsText( NS_CATEGORY ) );
 	# The regular expression to find the category links:
-	$m_pattern = "\[\[({$m_catString}|category):(.*)\]\]";
+	$m_pattern = "\[\[({$m_catString}|category):([^\|\]]*)(\|{{PAGENAME}}|)\]\]";
 	$m_replace = "$2";
 	# The container to store all found category links:
 	$m_catLinks = array ();
@@ -230,7 +254,7 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 	# Check linewise for category links:
 	foreach( explode( "\n", $m_pageText ) as $m_textLine ) {
 		# Filter line through pattern and store the result:
-                $m_cleanText .= trim( preg_replace( "/{$m_pattern}/i", "", $m_textLine ) ) . "\n";
+		$m_cleanText .= preg_replace( "/{$m_pattern}/i", "", $m_textLine ) . "\n";
 		# Check if we have found a category, else proceed with next line:
                 if( !preg_match( "/{$m_pattern}/i", $m_textLine) ) continue;
 		# Get the category link from the original text and store it in our list:
@@ -241,4 +265,23 @@ function fnSelectCategoryGetPageCategories( $m_pageObj ) {
 	
 	# Return the list of categories as an array:
 	return $m_catLinks;
+}
+
+# Function that checks if we meet the run conditions of the extension
+function fnSelectCategoryCheckConditions ($m_isUpload, &$m_pageObj ) {
+	global $wgSelectCategoryNamespaces;
+	global $wgSelectCategoryEnableSubpages;
+	global $wgTitle;
+
+	# Check if page is subpage once to save method calls later:
+	$m_isSubpage = $wgTitle->isSubpage();
+
+	# Run only if we are in an upload, a activated namespace or if page is
+        # a subpage and subpages are enabled (unfortunately we can't use
+        # implication in PHP) but not if we do a sectionedit:
+	if ( $m_isUpload || ( $wgSelectCategoryNamespaces[$wgTitle->getNamespace()] && ( !$m_isSubpage || ( $m_isSubpage && $wgSelectCategoryEnableSubpages ) ) ) && $m_pageObj->section == false ) {
+		return true;
+	} else {
+		return false;
+	}
 }

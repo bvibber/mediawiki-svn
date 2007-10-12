@@ -1,4 +1,12 @@
-  - do not show extension within sectionedits
+* v0.5 - 2007-10-12
+  - fixed problem with additional newline at sectionedits
+  - preserve category sortkeys
+  - don't show up on sectionedits
+  - make extension work with preview
+  - removed warning when no category is selected
+  - leading blanks will not be removed anymore
+  thanks to Daniel Arnold (sortkey, sectionedit) and Samuel Gélineau
+  (blanks, preview, warning)
 
 * v0.4 - 2006-17-12
   - added checks of global configuration variables before setting them
