@@ -37,9 +37,8 @@ function importSwissProt($xmlFileName, $umlsCollectionId = 0, $goCollectionId = 
 //		}
 	}
 	
-	if ($hugoCollectionId != 0) {
+	if ($hugoCollectionId != 0) 
 		$hugoCollection = getCollectionContents($hugoCollectionId);
-	}
 
 	// SwissProt import:
 	$numberOfMegaBytes = largeFilePositionInMegabytes(filesize($xmlFileName));
@@ -116,8 +115,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $attributes = array();
 	public $ECNumbers = array();
 	
-	public $funcionalDomains = array();
-	public $proteinComponents = array();
+	public $functionalDomains = array();
 		
 	public $proteinConceptId = 0;
 	public $organismSpecificProteinConceptId = 0;
@@ -127,7 +125,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $occursInConceptId = 0;
 	public $isManifestationOfConceptId = 0;
 	public $functionalDomainConceptId = 0;
-	public $proteinComponentConceptId = 0;
 	public $biologicalProcessConceptId = 0;
 	public $molecularFunctionConceptId = 0;
 	public $cellularComponentConceptId = 0;
@@ -218,7 +215,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 		$this->occursInConceptId = $this->bootstrapConcept($this->occursInConceptId, "occurs in", 0, "Takes place in or happens under given conditions, circumstances, or time periods, or in a given location or population. This includes appears in, transpires, comes about, is present in, and exists in.");
 		$this->isManifestationOfConceptId = $this->bootstrapConcept($this->isManifestationOfConceptId, "is manifestation of", 0, "That part of a phenomenon which is directly observable or concretely or visibly expressed, or which gives evidence to the underlying process. This includes expression of, display of, and exhibition of.");
 		$this->functionalDomainConceptId = $this->bootstrapConcept($this->functionalDomainConceptId, "functional domain");
-		$this->proteinComponentConceptId = $this->bootstrapConcept($this->proteinComponentConceptId, "protein component");
 		$this->biologicalProcessConceptId = $this->bootstrapConcept($this->biologicalProcessConceptId, "biological process");		
 		$this->molecularFunctionConceptId = $this->bootstrapConcept($this->molecularFunctionConceptId, "molecular function");		
 		$this->cellularComponentConceptId = $this->bootstrapConcept($this->cellularComponentConceptId, "cellular component");		
@@ -292,7 +288,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 		addDefinedMeaningToCollectionIfNotPresent($this->geneConceptId, $this->classCollectionId, "gene or genome");
 		addDefinedMeaningToCollectionIfNotPresent($this->organismConceptId, $this->classCollectionId, "organism");
 		addDefinedMeaningToCollectionIfNotPresent($this->functionalDomainConceptId, $this->classCollectionId, "functional domain");
-		addDefinedMeaningToCollectionIfNotPresent($this->proteinComponentConceptId, $this->classCollectionId, "protein component");
 		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificProteinConceptId, $this->classCollectionId, "organism specific protein");
 		addDefinedMeaningToCollectionIfNotPresent($this->organismSpecificGeneConceptId, $this->classCollectionId, "organism specific gene");		
 		addDefinedMeaningToCollectionIfNotPresent($this->enzymeCommissionNumberConceptId, $this->classCollectionId, "enzyme commission number");
@@ -333,7 +328,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		}
 	}
 	
-	public function import($entry){
+	public function import(SwissProtEntry $entry){
 		$proteinMeaningId = $this->addProtein($entry->protein);
 
 		$organismSpeciesMeaningId = $this->addOrganism($entry->organism, $entry->organismTranslations);
@@ -350,7 +345,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		$this->numberOfEntries += 1;
 	}
 	
-	public function addProtein($protein){
+	public function addProtein(Protein $protein) {
 		if (array_key_exists($protein->name, $this->proteins)) 
 			$definedMeaningId = $this->proteins[$protein->name];
 		else {
@@ -363,13 +358,13 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;
 	}
 	
-	public function addFunctionalDomain($domain) {
-		if (array_key_exists($domain->name, $this->funcionalDomains)) {
-			$definedMeaningId = $this->funcionalDomains[$domain->name];
+	public function addFunctionalDomain(Protein $domain) {
+		if (array_key_exists($domain->name, $this->functionalDomains)) {
+			$definedMeaningId = $this->functionalDomains[$domain->name];
 		}
 		else {
 			$definedMeaningId = $this->addExpressionAsDefinedMeaning($domain->name, "Functional domain " . $domain->name, $domain->name, $this->collectionId);
-			$this->funcionalDomains[$domain->name] = $definedMeaningId;
+			$this->functionalDomains[$domain->name] = $definedMeaningId;
 		}
 		
 		addClassMembership($definedMeaningId, $this->functionalDomainConceptId);
@@ -377,16 +372,15 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;
 	}
 	
-	public function addContainedProtein($component) {
-		if (array_key_exists($component->name, $this->proteinComponents)) {
-			$definedMeaningId = $this->proteinComponents[$component->name];
-		}
-		else {
-			$definedMeaningId = $this->addExpressionAsDefinedMeaning($component->name, "Protein component " . $component->name, $component->name, $this->collectionId);
-			$this->proteinComponents[$component->name] = $definedMeaningId;
-		}
-		
-		addClassMembership($definedMeaningId, $this->proteinComponentConceptId);
+	public function addContainedProtein(Protein $component, $organismName, $organismSpeciesMeaningId) {
+		$proteinMeaningId = $this->addProtein($component);
+		$definedMeaningId = $this->addOrganismSpecificProtein(
+			$component->name, 
+			$organismName, 
+			$proteinMeaningId, 
+			-1, 
+			$organismSpeciesMeaningId
+		);
 
 		return $definedMeaningId;
 	}
@@ -449,26 +443,18 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;	
 	}
 	
-	public function addEntry($entry, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId) {
-		// change name to make sure it works in wiki-urls:
-		$swissProtExpression = str_replace('_', '-', $entry->name);
-		
-		// The name of the entry should be the protein name parenthesis species;
+	protected function addOrganismSpecificProtein($proteinName, $organism, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId) {
+		// The name of the entry should be the protein name parenthesis species
 		// Example: Protein X (Homo sapiens)
-		$entryDefinition = $entry->protein->name . ' (' . $entry->organism . ')';
+		$entryDefinition = $proteinName . ' (' . $organism . ')';
 		
 		// add the expression as defined meaning:
 		$expression = $this->getOrCreateExpression($entryDefinition);
 		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $entryDefinition);
-		addDefinedMeaningToCollection($definedMeaningId, $this->collectionId, $entry->accession);
 		
 		// Add entry synonyms: protein name, Swiss-Prot entry name and species specific protein synonyms		
-		addSynonymOrTranslation($entry->protein->name, $this->languageId, $definedMeaningId, true);
-		addSynonymOrTranslation($swissProtExpression, $this->languageId, $definedMeaningId, true);
+		addSynonymOrTranslation($proteinName, $this->languageId, $definedMeaningId, true);
 		
-		foreach ($entry->protein->synonyms as $key => $synonym) 
-			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
-
 		// set the class of the entry:
 		addClassMembership($definedMeaningId, $this->organismSpecificProteinConceptId);
 		addClassMembership($definedMeaningId, $proteinMeaningId);
@@ -479,6 +465,21 @@ class SwissProtXMLParser extends BaseXMLParser {
 		
 		// set the species of the swiss prot entry and relate the species to the entry:		
 		addRelation($definedMeaningId, $this->occursInConceptId, $organismSpeciesMeaningId);
+		
+		return $definedMeaningId;
+	}
+	
+	public function addEntry(SwissProtEntry $entry, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId) {
+		$definedMeaningId = $this->addOrganismSpecificProtein($entry->protein->name, $entry->organism, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId);
+
+		// change name to make sure it works in wiki-urls:
+		$swissProtExpression = str_replace('_', '-', $entry->name);
+		addSynonymOrTranslation($swissProtExpression, $this->languageId, $definedMeaningId, true);
+		
+		foreach ($entry->protein->synonyms as $key => $synonym) 
+			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
+			
+		addDefinedMeaningToCollection($definedMeaningId, $this->collectionId, $entry->accession);
 		
 		// add the comment fields as text attributes to the entry and link comments with
 		// the appropriate definedMeaning
@@ -673,7 +674,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 			}			
 		}
 		
-		
  		// Add 'included' functional domains:
 		foreach ($entry->protein->domains as $key => $domain) {
 			$domainMeaningId = $this->addFunctionalDomain($domain);
@@ -686,13 +686,14 @@ class SwissProtXMLParser extends BaseXMLParser {
 
  		// Add 'contained' proteins:
 		foreach ($entry->protein->components as $key => $component) {
-			$componentMeaningId = $this->addContainedProtein($component);
+			$componentMeaningId = $this->addContainedProtein($component, $entry->organism, $organismSpeciesMeaningId);
 			
 			foreach ($component->synonyms as $componentKey => $synonym) 
 				addSynonymOrTranslation($synonym, $this->languageId, $componentMeaningId, true);
 			
 			addRelation($definedMeaningId, $this->containsConceptId, $componentMeaningId);
-		}		
+		}
+				
 		return $definedMeaningId;		
 	}
 	
