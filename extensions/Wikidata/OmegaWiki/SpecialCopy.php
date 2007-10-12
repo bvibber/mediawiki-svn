@@ -133,11 +133,12 @@ function wfSpecialCopy() {
 			$meanings=getDefinedMeaningDataAssociatedByConcept($dmid_dirty, $dc1_dirty);
 			$targetdmm=$meanings[$dc2_dirty];
 			$title=$targetdmm->getTitleObject();
-			$url=$title->getLocalURL()."&dataset=$dc2_dirty&action=edit";
+			$url=$title->getLocalURL("dataset=$dc2_dirty&action=edit");
 
 			# do the redirect
 			$wgOut->disable();
 			header('Location: '.$url);
+			#$wgOut->addHTML($url);
 		}
 
 
