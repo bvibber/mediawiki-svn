@@ -258,11 +258,10 @@ $wgDesysopMessages['su'] = array(
 );
 $wgDesysopMessages['tet'] = array(
 	'desysoptitle'         => 'Hasai kuana administradór ba uza-na\'in ida',
-	'desysoptext'          => 'Burokrata bele uza pájina ne\'e ba hasai kuana administradór. Hakerek naran uza-na\'in no hanehan "button" ba hasai kuana administradór.',
+	'desysoptext'          => 'Burokrata bele uza pájina ne\'e ba hasai kuana administradór.',
 	'desysopname'          => 'Naran uza-na\'in:',
 	'desysopok'            => '<b>"$1" agora lá\'os administradór</b>',
 	'desysop'              => 'Hasai kuana administradór ba uza-na\'in ida',
-	'not_sysop'            => 'Uza-na\'in ne\'e lá\'os administradór',
 );
 $wgDesysopMessages['wa'] = array(
 	'desysopsetrights'     => 'Defini les droets d\'&nbsp;l\'&nbsp;uzeu',

@@ -90,6 +90,9 @@ $wgExpandTemplatesMessages['fi'] = array(
 	'expand_templates_remove_comments' => 'Poista kommentit',
 	'expand_templates_preview'         => 'Esikatselu',
 );
+$wgExpandTemplatesMessages['fo'] = array(
+	'expand_templates_ok'              => 'Í lagi',
+);
 $wgExpandTemplatesMessages['fr'] = array(
 	'expandtemplates'                  => 'Expansion des modèles',
 	'expand_templates_intro'           => 'Cette page permet de tester l’expansion de modèles,
