@@ -90,6 +90,17 @@ class DefinedMeaningModel {
 
 	}
 
+	public function CheckIfStub() {
+		$dataset=$this->getDataset();
+		$id=$this->getId();
+		if (is_null($dataset)) 
+			throw new Exception ("DefinedMeaningModel->isStub: Dataset is null.");
+		if (is_null($id)) 
+			throw new Exception ("DefinedMeaningModel->isStub: Id is null.");
+		require_once("Copy.php");
+		return CopyTools::CheckIfStub($dataset, $id);
+	}
+
 	/**
 	 * @param DataSet where to look
 	 * @param Integer Defined Meaning Id

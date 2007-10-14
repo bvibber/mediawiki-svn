@@ -93,6 +93,10 @@ class ObjectCopier {
 					# but catch less errors
 	protected $tableName;
 
+	function getId() {
+		return $this->id;
+	}
+
 	function setTableName($tableName) {
 		$this->tableName=$tableName;
 	}
@@ -152,6 +156,12 @@ class ObjectCopier {
 		return CopyTools::getRow($dc2, "objects", "WHERE `UUID`='$uuid'");
 	}
 
+	/** Utility: provided with an id in dc1, return the equivalent id in dc2 */
+	public  function getIdenticalId() {
+		$destobject=$this->identical();
+		return $destobject["object_id"];
+	}
+
 	/** Write copy of object into the objects table,taking into account
 	 * necessary changes.
 	 * possible TODO: Currently induces the target table from the original
@@ -195,7 +205,6 @@ class ObjectCopier {
 		$this->object["UUID"]=$uuid;
 		$this->id=$this->write($this->dc1);
 		return $this->id;
-		
 	}
 	
 	/** 
@@ -540,17 +549,30 @@ class CollectionCopier extends Copier {
 	 * (if the collection doesn't exist yet), also dup the definition
 	 */
 	public function write_single($row){
+		$srcrow=$row;
 		$dc2=$this->dc2;
 		$save_dmid=$this->save_dmid;
 		$row["collection_id"]=$this->dup_definition($row["collection_id"]);
-		
+
 		if ($this->doObject($row, "object_id")) {
 			$this->already_there=true;
 			return $row["object_id"];
 		}
+		
+		if (is_null($srcrow["object_id"])) {
+			$srcrow["object_id"]=$this->objectCopier->getId();
+			$collection_id=$srcrow["collection_id"];
+			$member_mid=$srcrow["member_mid"];
+			$where="WHERE collection_id=$collection_id AND member_mid=$member_mid";
+			CopyTools::dc_update_assoc(
+				$this->dc1, 
+				$this->tableName, 
+				$srcrow, 
+				$where);
+		}
 
 		$row["member_mid"]=$save_dmid;
-		CopyTools::dc_insert_assoc($dc2, "collection_contents", $row);
+		CopyTools::dc_insert_assoc($dc2, $this->tableName, $row);
 	}
 
 	public function write($rows){
@@ -588,6 +610,8 @@ class DefinedMeaningCopier {
 		$dmid=$this->dmid;
 		if (is_null($dmid))
 			throw new Exception ("DefinedMeaningCopier: read(): cannot read a dmid that is null");
+		if (is_null($this->dc1))
+			throw new Exception ("DefinedMeaningCopier: read(): cannot read from dc1: is null. ");
 		$this->defined_meaning=CopyTools::getRow($this->dc1,"defined_meaning","where defined_meaning_id=$dmid");
 		return $this->defined_meaning; # for convenience
 	}
@@ -653,7 +677,7 @@ class DefinedMeaningCopier {
 		$concepts=array(
 			$dc1 => $this->defined_meaning["defined_meaning_id"],
 			$dc2 => $this->save_meaning["defined_meaning_id"]);
-		$uuid_data=createConceptMapping($concepts);
+		$uuid_data=createConceptMapping($concepts, getUpdateTransactionId());
 		DefinedMeaningCopier::finishConceptMapping($dc1, $uuid_data[$dc1]);
 		DefinedMeaningCopier::finishConceptMapping($dc2, $uuid_data[$dc2]);
 
@@ -725,6 +749,33 @@ class CopyTools {
 			$pagedata=array("page_namespace"=>24, "page_title"=>$title);
 			CopyTools::mysql_insert_assoc("page",$pagedata);
 		}
+	}
+
+	/**
+	 * @returns: null if not a stub
+	 *           else an array(original_dataset=>..., original_id=>...) 
+	 */
+	public static function checkIfStub($dataset,$id) {
+		$dmcopier=new DefinedMeaningCopier($id, $dataset, null);
+		$dm1=$dmCopier->read();
+		if (is_null($dm1)) 
+			throw new Exception("Could not find a defined meaning with id '$id' in dataset '$dataset'");
+		$original_dataset=$dm1["stub"];
+
+		if (is_null($original_dataset))
+			return null;
+
+		$obcopier=new ObjectCopier($id, $dataset, $original_dataset);
+		$original_id=$obcopier->getIdenticalId();
+		
+		if (is_null($original_id)) 
+			throw new Exception("CopyTools::checkIfStub: Database integrity failed: item marked as stub, but no original entry found.");
+
+		$rv=array();
+		$rv["original_dataset"]=$original_dataset;
+		$rv["original_id"]=$original_id;
+		return $rv;
+
 	}
 
 	/** Times our execution time, nifty! */
@@ -885,25 +936,51 @@ class CopyTools {
 			$sql.=" `$key`=$value";
 			$sql_comma=$sql.",";
 		}
-		
-		global 
-			$wdExtraDebugging;
-		if ($wdExtraDebugging) {
-		}
 
 		// Same with the values
 		$result = mysql_query($sql);
+		if (!$result) 
+			throw new Exception("Mysql query failed: $query");
 
 		if ($result)
-		{
 			return true;
-		}
 		else
-		{
-			# how did we do errors again?
 			return false;
-		}
 	}
+
+	/** similar to mysql_insert_assoc, except now we do an update (naturally) */
+	public static function mysql_update_assoc ($my_table, $my_array, $where) {
+
+		// Find all the keys (column names) from the array $my_array
+
+		// We compose the query
+		$sql = "update `$my_table` set";
+		// implode the column names, inserting "\", \"" between each (but not after the last one)
+		// we add the enclosing quotes at the same time
+		$sql_comma=$sql;
+		foreach($my_array as $key=>$value) {
+			if (!is_null($value)) {
+				$sql=$sql_comma;
+				$value="\"$value\"";
+				$sql.=" `$key`=$value";
+				$sql_comma=$sql.",";
+			}
+		}
+		$sql .= " ".$where;
+
+		echo "<pre>$sql</pre>\n";
+		// Same with the values
+		$result = mysql_query($sql);
+
+		if (!$result) 
+			throw new Exception("Mysql query failed: $query");
+
+		if ($result)
+			return true;
+		else
+			return false;
+	}
+
 
 	/**convenience wrapper around mysql_insert_assoc
 	 * like mysql_insert_assoc, but allows you to specify dc prefix+table name separately
@@ -916,6 +993,15 @@ class CopyTools {
 		}
 		return CopyTools::mysql_insert_assoc($target_table, $array);
 	}
+	
+	public static function dc_update_assoc($dc, $table_name, $array, $where) {
+		$target_table=mysql_real_escape_string("${dc}_${table_name}");
+		if (CopyTools::sane_key_exists("add_transaction_id", $array)) {
+			$array["add_transaction_id"]=getUpdateTransactionId();
+		}
+		return CopyTools::mysql_update_assoc($target_table, $array, $where);
+	}
+
 }
 
 /**Copying uw_class_membership*/
@@ -1133,6 +1219,8 @@ abstract class Copier {
 					// false:	item was not present. Copy made.
 					// null:	don't know (yet) / error/ other
 					// see also: ObjectCopier::$already_there
+	protected $objectCopier;	// an objectCopier associated with this class
+					// first gets set when doObject() is called
 
 	/** does the actual copying
 	 * @return the unique id for the item we just copied in the destination (dc2) dataset,
@@ -1206,6 +1294,7 @@ abstract class Copier {
 	 */
 	protected function doObject(&$row, $object_column) {
 		$copier=new ObjectCopier($row[$object_column], $this->dc1, $this->dc2);
+		$this->objectCopier=$copier;
 		$copier->setTableName($this->tableName);
 		$copier->setAutovivify($this->autovivifyObjects);
 		$row[$object_column]=$copier->dup();

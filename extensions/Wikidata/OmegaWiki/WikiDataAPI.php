@@ -1156,12 +1156,12 @@ function getExpressionMeaningIds($spelling, $dc=null) {
  *	     want to add objects table support
  */
 
-function createConceptMapping($concepts) {
+function createConceptMapping($concepts, $override_transaction=null) {
 	$uuid_map = getUUID($concepts);
 	foreach ($concepts as $dc => $dm_id) {
 		$collid=getCollectionIdForDC($dc);
 		if ( $uuid_map[$dc] != -1 ){
-			writeDmToCollection($dc, $collid, $uuid_map[$dc], $dm_id);
+			writeDmToCollection($dc, $collid, $uuid_map[$dc], $dm_id, $override_transaction);
 		}
 	}
 	return $uuid_map;
@@ -1230,7 +1230,7 @@ function getCollectionIdForDC($dc) {
 
 /** Write the dm to the correct collection for a particular dc */
 
-function writeDmToCollection($dc, $collid, $uuid, $dm_id) {
+function writeDmToCollection($dc, $collid, $uuid, $dm_id, $override_transaction=null) {
 	global 
 		$wgUser;
 	//if(is_null($dc)) {
@@ -1243,8 +1243,11 @@ function writeDmToCollection($dc, $collid, $uuid, $dm_id) {
 	$uuid=$dbr->addQuotes($uuid);
 	$dm_id=$dbr->addQuotes($dm_id);
 
-	startNewTransaction($wgUser->getId(), wfGetIP(), "inserting collection $collid", $dc);
-	$add_transaction_id=getUpdateTransactionId();
+	$add_transaction_id=$override_transaction;
+	if (is_null($add_transaction_id)) {
+		startNewTransaction($wgUser->getId(), wfGetIP(), "inserting collection $collid", $dc);
+		$add_transaction_id=getUpdateTransactionId();
+	}
 
 	$sql="
 		INSERT INTO $collection_contents
