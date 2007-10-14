@@ -10,7 +10,7 @@ class DeletedContribsPager extends IndexPager {
 
 	function __construct( $target, $namespace = false ) {
 		parent::__construct();
-		foreach( explode( ' ', 'deletionlog undeletebtn minoreditletter' ) as $msg ) {
+		foreach( explode( ' ', 'deletionlog undeletebtn minoreditletter diff' ) as $msg ) {
 			$this->messages[$msg] = wfMsgExt( $msg, array( 'escape') );
 		}
 		$this->target = $target;
@@ -126,6 +126,9 @@ class DeletedContribsPager extends IndexPager {
 		
 		$link = $sk->makeKnownLinkObj( $undelete, htmlspecialchars( $page->getPrefixedText() ), 'target=' . $page->getPrefixedUrl() . '&timestamp=' . $rev->getTimestamp());
 
+		$last = $sk->makeKnownLinkObj( $undelete, $this->messages['diff'], 
+				"target=" . $page->getPrefixedText() . "&timestamp=" . $row->ar_timestamp . "&diff=prev" );
+
 		$comment = $sk->revComment( $rev );
 		$d = $wgLang->timeanddate( $rev->getTimestamp(), true );
 	
@@ -144,7 +147,7 @@ class DeletedContribsPager extends IndexPager {
 		}
 		
 
-		$ret = "{$link} ({$dellog}) ({$reviewlink}) . . {$mflag} {$pagelink} {$comment}";
+		$ret = "{$link} ($last) ({$dellog}) ({$reviewlink}) . . {$mflag} {$pagelink} {$comment}";
 		if( $rev->isDeleted( Revision::DELETED_TEXT ) ) {
 			$ret .= ' ' . wfMsgHtml( 'deletedrev' );
 		}
