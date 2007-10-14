@@ -478,6 +478,38 @@ $messages = array(
 	'ogg-desc-link' => 'O tym pliku',
 	),
 
+	'ru' => array(
+		'ogg-short-audio'      => 'Звуковой файл Ogg $1, $2',
+		'ogg-short-video'      => 'Видео-файл Ogg $1, $2',
+		'ogg-short-general'    => 'Медиа-файл Ogg $1, $2',
+		'ogg-long-audio'       => '(звуковой файл Ogg $1, длина $2, $3)',
+		'ogg-long-video'       => '(видео-файл Ogg $1, длина $2, $4×$5 пикселов, $3)',
+		'ogg-long-multiplexed' => '(мультиплексный аудио/видео-файл Ogg, $1, длина $2, $4×$5 пикселов, $3 всего)',
+		'ogg-long-general'     => '(медиа-файл Ogg, длина $2, $3)',
+		'ogg-long-error'       => '(неправильный ogg-файл: $1)',
+		'ogg-play'             => 'Воспроизвести',
+		'ogg-pause'            => 'Пауза',
+		'ogg-stop'             => 'Остановить',
+		'ogg-play-video'       => 'Воспроизвести звук',
+		'ogg-play-sound'       => 'Воспроизвести звук',
+		'ogg-no-player'        => 'Извините, ваша система не имеет необходимого программного обеспечение для воспроизведения файлов. ' . 
+			'Пожалуйста, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте проигрыватель</a>.',
+		'ogg-no-xiphqt'        => 'Отсутствует компонент XiphQT для QuickTime. QuickTime не может воспроизвести ' .
+			'файл Ogg без этого компонента. Пожалуйста, ' . 
+			'<a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">скачайте XiphQT</a> или выберите другой проигрыватель.',
+			
+		'ogg-player-videoElement' => 'элемент <video>',
+		'ogg-player-oggPlugin' => 'Ogg модуль',
+		'ogg-player-thumbnail' => 'Только неподвижное изображение',
+		'ogg-player-soundthumb' => 'Нет проигрывателя',
+		'ogg-player-selected'  => '(выбран)',
+		'ogg-use-player'       => 'Использовать проигрыватель: ',
+		'ogg-more'             => 'Больше…',
+		'ogg-dismiss'          => 'Скрыть',
+		'ogg-download'         => 'Загрузить файл',
+		'ogg-desc-link'        => 'Информация об этом файле',
+	),
+
 	'sv' => array(
 		'ogg-short-audio'      => 'Ogg $1 ljudfil, $2',
 		'ogg-short-video'      => 'Ogg $1 videofil, $2',
