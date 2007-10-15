@@ -1347,7 +1347,6 @@ Vizitaţi [[Special:Ipblocklist|lista de adrese blocate]] pentru o listă explic
 'ipb_cant_unblock'            => 'Eroare: nu găsesc identificatorul $1. Probabil a fost deja deblocat.',
 'proxyblockreason'            => 'Adresa ta IP a fost blocată pentru că este un proxy deschis. Te rog, contactează provider-ul tău de servicii Internet sau tehnicieni IT şi informează-i asupra acestei probleme serioase de securitate.',
 'proxyblocksuccess'           => 'Realizat.',
-'sorbs'                       => 'Lista neagră DNS a SORBS',
 'sorbsreason'                 => 'Adresa dumneavoastră IP este listată ca un proxy deschis în [http://www.sorbs.net SORBS] DNSBL.',
 'sorbs_create_account_reason' => 'Adresa dvs. IP este listată la un proxy deschis în lista neagră DNS a [http://www.sorbs.net SORBS]. Nu vă puteţi crea un cont',
 
