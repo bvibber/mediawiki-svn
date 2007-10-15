@@ -8,6 +8,10 @@ function largeFilePositionInMegabytes($position) {
 	return round(sprintf("%u", $position) / (1024 * 1024)); 
 }
 
+function startsWith($string, $substring) {
+	return substr($string, 0, strlen($substring)) == $substring;
+}
+
 /*
  * Import Swiss-Prot from the XML file. Be sure to have started a transaction first!
  */
@@ -143,6 +147,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $ECNumbers = array();
 	
 	public $functionalDomains = array();
+	public $similarityDomains = array();
+	public $similarityFamilies = array();
 		
 	public $proteinConceptId = 0;
 	public $organismSpecificProteinConceptId = 0;
@@ -156,7 +162,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $molecularFunctionConceptId = 0;
 	public $cellularComponentConceptId = 0;
 //	public $keywordConceptId = 0;
-	public $includesConceptId = 0;
 	public $containsConceptId = 0;
 	public $enzymeCommissionNumberConceptId = 0;
 	public $activityConceptId = 0;
@@ -207,6 +212,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $onlineInformationId = 0;
 	public $miscellaneousId = 0;
 	public $cautionId = 0;
+	public $conceptualPartOfId = 0;
+	public $consistsOfId = 0;
 	
 	protected $progressBar;
 	
@@ -268,7 +275,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 		// some relations and their super class
 		$this->activityConceptId = $this->bootstrapConcept($this->activityConceptId, "performs", $this->functionallyRelatedId);
 		$this->containsConceptId = $this->bootstrapConcept($this->containsConceptId, "contains", $this->functionallyRelatedId);
-		$this->includesConceptId = $this->bootstrapConcept($this->includesConceptId, "consists of", $this->physicallyRelatedId);
+		$this->consistsOfId = $this->bootstrapConcept($this->consistsOfId, "consists of", $this->physicallyRelatedId);
+		$this->conceptualPartOfId = $this->bootstrapConcept($this->conceptualPartOfId, "conceptual part of", $this->conceptuallyRelatedId);	
 		
 		// assign each comment type to one type aspect (later perhaps to multiple aspects)
 		$this->subcellularLocationId = $this->bootstrapConcept($this->subcellularLocationId, "subcellular location", $this->localizationAspectId);
@@ -328,7 +336,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		addDefinedMeaningToCollectionIfNotPresent($this->molecularFunctionConceptId, $this->relationTypeCollectionId, "molecular function");
 		addDefinedMeaningToCollectionIfNotPresent($this->cellularComponentConceptId, $this->relationTypeCollectionId, "cellular component");		
 //		addDefinedMeaningToCollectionIfNotPresent($this->keywordConceptId, $this->relationTypeCollectionId, "keyword");
-		addDefinedMeaningToCollectionIfNotPresent($this->includesConceptId, $this->relationTypeCollectionId, "consists of");
+		addDefinedMeaningToCollectionIfNotPresent($this->consistsOfId, $this->relationTypeCollectionId, "consists of");
 		addDefinedMeaningToCollectionIfNotPresent($this->containsConceptId, $this->relationTypeCollectionId, "contains");
 	}
 	
@@ -442,6 +450,28 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;		
 	}
 	
+	public function addSimilarityFamily($family) {
+		if (array_key_exists($family, $this->similarityFamilies)) 
+			$definedMeaningId = $this->similarityFamilies[$family];
+		else {
+			$definedMeaningId = $this->addExpressionAsDefinedMeaning($family, $family, $family, $this->collectionId);
+			$this->similarityFamilies[$family] = $definedMeaningId;
+		}
+		
+		return $definedMeaningId;		
+	}
+	
+	public function addSimilarityDomain($domain) {
+		if (array_key_exists($domain, $this->similarityDomains)) 
+			$definedMeaningId = $this->similarityDomains[$domain];
+		else {
+			$definedMeaningId = $this->addExpressionAsDefinedMeaning($domain, $domain, $domain, $this->collectionId);
+			$this->similarityDomains[$domain] = $definedMeaningId;
+		}
+		
+		return $definedMeaningId;		
+	}
+	
 	public function addOrganismSpecificGene($organismSpeciesMeaningId, $geneMeaningId, $organismName, $geneName, $synonyms, $hgncReference) {
 		$key = $geneMeaningId . "-" . $organismSpeciesMeaningId;
 		//The name of the entry should be the protein name parenthesis species;
@@ -496,36 +526,22 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;
 	}
 	
-	public function addEntry(SwissProtEntry $entry, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId) {
-		$definedMeaningId = $this->addOrganismSpecificProtein($entry->protein->name, $entry->organism, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId);
-
-		// change name to make sure it works in wiki-urls:
-		$swissProtExpression = str_replace('_', '-', $entry->name);
-		addSynonymOrTranslation($swissProtExpression, $this->languageId, $definedMeaningId, true);
-		
-		foreach ($entry->protein->synonyms as $key => $synonym) 
-			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
-			
-		addDefinedMeaningToCollection($definedMeaningId, $this->collectionId, $entry->accession);
-		
-		// add the comment fields as text attributes to the entry and link comments with
-		// the appropriate definedMeaning
+	protected function addComments(SwissProtEntry $entry, $definedMeaningId) {
 		foreach ($entry->comments as $key => $comment) {
 			$commentType = strtoupper($comment->type);
 			
 			// f.) Information in the attribute 'caution' is imported but it many times doesn’t
 			// make sense due to the fact it refers to References (in the SP entry) that are
 			// not shown in wikiproteins, therefore it should NOT be imported presently.
-			if ($commentType == "CAUTION"){
-				// ignore
-				continue;
-			}
+			if ($commentType == "CAUTION")
+				continue; // ignore
 			
 			// create definedMeaning for SP comment type			
 			$attributeMeaningId = $this->getOrCreateAttributeMeaningId($comment->type);
 			
 			// initialize text value
 			$textValue = "";
+			$normalProcessing = true;
 			
 			// link comments with the appropriate definedMeaning(defined by Chrisi and Erik)
 			// we have to create relation between comment and its aspect
@@ -582,6 +598,22 @@ class SwissProtXMLParser extends BaseXMLParser {
 			case "PTM":
 			case "POLYMORPHISM":
 			case "SIMILARITY":
+				if (startsWith($comment->text, "Belongs to the ")) {
+					$family = trim(substr($comment->text, strlen("Belongs to the ")));
+					$familyId = $this->addSimilarityFamily($family); 					
+					
+					addRelation($definedMeaningId, $this->conceptualPartOfId, $familyId);
+					$normalProcessing = false;
+				}
+				else if (startsWith($comment->text, "Contains ")) {
+					$domain = trim(substr($comment->text, strlen("Contains ")));
+					$domainId = $this->addSimilarityFamily($domain); 					
+					
+					addRelation($definedMeaningId, $this->consistsOfId, $domainId);
+					$normalProcessing = false;
+				}
+				
+				break;
 			case "MASS SPECTROMETRY":
 			case "SUBUNIT":				
 				// add mass SPECTROMETRY to text value
@@ -657,7 +689,8 @@ class SwissProtXMLParser extends BaseXMLParser {
 				else
 					$idToAddLinkTo = $definedMeaningId;
 				
-				addLinkAttributeValue($idToAddLinkTo, $this->onlineInformationId, $comment->url, $label);				
+				addLinkAttributeValue($idToAddLinkTo, $this->onlineInformationId, $comment->url, $label);	
+				$normalProcessing = false;			
 				break;
 			//n.) the comments with the topic, MISCELLANEOUS and CAUTION need to be tagged
 			// with the attribute 'Other Aspects'
@@ -668,7 +701,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 				break;
 			}
 			
-			if ($commentType != "ONLINE INFORMATION") {
+			if ($normalProcessing) {
 				// add comment text to text value			
 				if ($textValue != "" && ($comment->text != "" || $comment->status != "")) 
 					$textValue .= " TEXT=";
@@ -688,6 +721,23 @@ class SwissProtXMLParser extends BaseXMLParser {
 					addLinkAttributeValue($textAttributeValueId, $this->onlineInformationId, $comment->url);
 			}
 		}
+	}
+	
+	public function addEntry(SwissProtEntry $entry, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId) {
+		$definedMeaningId = $this->addOrganismSpecificProtein($entry->protein->name, $entry->organism, $proteinMeaningId, $organismSpecificGene, $organismSpeciesMeaningId);
+
+		// change name to make sure it works in wiki-urls:
+		$swissProtExpression = str_replace('_', '-', $entry->name);
+		addSynonymOrTranslation($swissProtExpression, $this->languageId, $definedMeaningId, true);
+		
+		foreach ($entry->protein->synonyms as $key => $synonym) 
+			addSynonymOrTranslation($synonym, $this->languageId, $definedMeaningId, true);
+			
+		addDefinedMeaningToCollection($definedMeaningId, $this->collectionId, $entry->accession);
+		
+		// add the comment fields as text attributes to the entry and link comments with
+		// the appropriate definedMeaning
+		$this->addComments($entry, $definedMeaningId);
 		
 		// add EC number:
 		if ($entry->EC != ""){
@@ -729,7 +779,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			foreach ($domain->synonyms as $domainKey => $synonym) 
 				addSynonymOrTranslation($synonym, $this->languageId, $domainMeaningId, true);
 			
-			addRelation($definedMeaningId, $this->includesConceptId, $domainMeaningId);
+			addRelation($definedMeaningId, $this->consistsOfId, $domainMeaningId);
 		}
 
  		// Add 'contained' proteins:
