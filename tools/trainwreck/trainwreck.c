@@ -349,6 +349,8 @@ char	 line[1024];
 			nwriters = atoi(value);
 		} else if (!strcmp(opt, "max-buffer")) {
 			max_buffer = atoi(value);
+		} else if (!strcmp(opt, "server-id")) {
+			server_id = atoi(value);
 		} else if (!strcmp(opt, "only-replicate")) {
 		int	err;
 			db_regex = calloc(1, sizeof(*db_regex));

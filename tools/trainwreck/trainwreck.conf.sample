@@ -20,6 +20,9 @@ slave-user dbsyncer
 slave-pass whatever
 slave-port 3306
 
+# This should be different for every slave, or you'll get strange errors.
+server-id 4123
+
 # For multi-writer replication: number of concurrent writers to use.  Incoming 
 # transactions from the master will be split between them to improve speed.
 #
