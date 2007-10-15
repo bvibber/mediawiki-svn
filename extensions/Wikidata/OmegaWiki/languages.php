@@ -47,16 +47,16 @@ function getLanguageIdForCode($code) {
 
 function getLanguageIdForIso639_3($code) {
 
-	static $languages=null;
-	if(is_null($languages)) {
+	static $languageIsos=null;
+	if(is_null($languageIsos)) {
 		$dbr =& wfGetDB( DB_SLAVE );
 		$id_res=$dbr->query("select language_id,iso639_3 from language");
 		while($id_row=$dbr->fetchObject($id_res)) {
-			$languages[$id_row->iso639_3]=$id_row->language_id;
+			$languageIsos[$id_row->iso639_3]=$id_row->language_id;
 		}
 	}
-	if(is_array($languages) && array_key_exists($code,$languages)) {
-		return $languages[$code];
+	if(is_array($languageIsos) && array_key_exists($code,$languageIsos)) {
+		return $languageIsos[$code];
 	} else {
 		return null;
 	}
