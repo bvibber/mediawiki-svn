@@ -619,14 +619,10 @@ class SwissProtXMLParser extends BaseXMLParser {
 			// POLYMORPHISM, SIMILARITY,  MASS SPECTROMETRY, and SUBUNIT  need to be tagged
 			// with the attribute 'Structural Aspects'
 			case "ALTERNATIVE PRODUCTS":
-				if (count($comment->isoforms) != 0) {
-					echo "\n" . $entry->expression() . "\n";
-					
-					foreach ($comment->isoforms as $isoform) {
-						$isoformId = $this->addIsoform($entry, $definedMeaningId, $proteinMeaningId, $organismSpeciesMeaningId, $isoform);
-						addRelation($definedMeaningId, $this->alternativeProductId, $isoformId);
-					} 
-				}
+				foreach ($comment->isoforms as $isoform) {
+					$isoformId = $this->addIsoform($entry, $definedMeaningId, $proteinMeaningId, $organismSpeciesMeaningId, $isoform);
+					addRelation($definedMeaningId, $this->alternativeProductId, $isoformId);
+				} 
 				break;
 			case "DOMAIN":
 			case "PTM":
