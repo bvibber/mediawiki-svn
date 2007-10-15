@@ -221,6 +221,7 @@ class LoginForm {
 		global $wgEnableSorbs, $wgProxyWhitelist;
 		global $wgMemc, $wgAccountCreationThrottle;
 		global $wgAuth, $wgMinimalPasswordLength;
+		global $wgEmailConfirmToEdit;
 
 		// If the user passes an invalid domain, something is fishy
 		if( !$wgAuth->validDomain( $this->mDomain ) ) {
@@ -275,6 +276,17 @@ class LoginForm {
 
 		if ( !$u->isValidPassword( $this->mPassword ) ) {
 			return self::TOO_SHORT;
+		}
+		
+		# if you need a confirmed email address to edit, then obviously you need an email address.
+		if ( $wgEmailConfirmToEdit && empty( $this->mEmail ) ) {
+			$this->mainLoginForm( wfMsg( 'noemailtitle' ) );
+			return false;
+		}
+		
+		if( !empty( $this->mEmail ) && !User::isValidEmailAddr( $this->mEmail ) ) {
+			$this->mainLoginForm( wfMsg( 'invalidemailaddress' ) );
+			return false;
 		}
 		
 		# Set some additional data so the AbortNewAccount hook can be
@@ -738,7 +750,7 @@ class LoginForm {
 	function mainLoginForm( $msg, $msgtype = 'error' ) {
 		global $wgUser, $wgOut, $wgAllowRealName, $wgEnableEmail;
 		global $wgCookiePrefix, $wgAuth, $wgLoginLanguageSelector;
-		global $wgAuth;
+		global $wgAuth, $wgEmailConfirmToEdit;
 
 		if ( $this->mType == 'signup' ) {
 			if ( !$wgUser->isAllowed( 'createaccount' ) ) {
@@ -806,6 +818,7 @@ class LoginForm {
 		$template->set( 'createemail', $wgEnableEmail && $wgUser->isLoggedIn() );
 		$template->set( 'userealname', $wgAllowRealName );
 		$template->set( 'useemail', $wgEnableEmail );
+		$template->set( 'emailrequired', $wgEmailConfirmToEdit );
 		$template->set( 'canreset', $wgAuth->allowPasswordChange() );
 		$template->set( 'remember', $wgUser->getOption( 'rememberpassword' ) or $this->mRemember  );
 
