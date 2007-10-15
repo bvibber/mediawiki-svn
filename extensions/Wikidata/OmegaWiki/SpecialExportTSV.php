@@ -28,20 +28,29 @@
 				}
 				
 				$dbr =& wfGetDB(DB_SLAVE);
+				$dc = wdGetDataSetcontext();
 				
 				if ($wgRequest->getText('collection') && $wgRequest->getText('languages')) {
-					// render tsv
-					$wgOut->disable();
+					// render the tsv file
 					
 					require_once('WikiDataAPI.php');
 					require_once('Transaction.php');
-					// get the collection to export
-					$collectionId = $wgRequest->getText('collection');
+					// get the collection to export. Cut off the 'cid' part that we added
+					// to make the keys strings rather than numbers in the array sent to the form.
+					$collectionId = substr($wgRequest->getText('collection'), 3);
 					// get the languages requested, turn into an array, trim for spaces.
 					$isoCodes = explode(',', $wgRequest->getText('languages'));
 					for($i = 0; $i < count($isoCodes); $i++) {
 						$isoCodes[$i] = trim($isoCodes[$i]);
+						if (!getLanguageIdForIso639_3($isoCodes[$i])) {
+							$wgOut->setPageTitle('Export failed');
+							$wgOut->addHTML("<p>Unknown or incorrect language: ".$isoCodes[$i].".<br/>");
+							$wgOut->addHTML("Languages must be ISO-639_3 language codes.</p>");
+							return false;
+						}
 					}
+					
+					$wgOut->disable();
 					
 					$languages = $this->getLanguages($isoCodes);
 					$isoLookup = $this->createIsoLookup($languages);
@@ -63,15 +72,17 @@
 					echo("\r\n");
 					
 					// get all the defined meanings in the collection
-					$query = 'SELECT dm.defined_meaning_id, exp.spelling ';
-					$query .= 'FROM uw_collection_contents col, uw_defined_meaning dm, uw_expression exp ';
-					$query .= 'WHERE col.collection_id=376322 ';
-					$query .= 'AND col.member_mid=dm.defined_meaning_id ';
-					$query .= 'AND dm.expression_id = exp.expression_id ';
-					$query .= 'AND '. getLatestTransactionRestriction('col');
-					$query .= 'AND '. getLatestTransactionRestriction('dm');
-					$query .= 'AND '. getLatestTransactionRestriction('exp');
-					$query .= 'ORDER BY exp.spelling';
+					$query = "SELECT dm.defined_meaning_id, exp.spelling ";
+					$query .= "FROM {$dc}_collection_contents col, {$dc}_defined_meaning dm, {$dc}_expression exp ";
+					$query .= "WHERE col.collection_id=" . $collectionId . " ";
+					$query .= "AND col.member_mid=dm.defined_meaning_id ";
+					$query .= "AND dm.expression_id = exp.expression_id ";
+					$query .= "AND ". getLatestTransactionRestriction("col");
+					$query .= "AND ". getLatestTransactionRestriction("dm");
+					$query .= "AND ". getLatestTransactionRestriction("exp");
+					$query .= "ORDER BY exp.spelling";
+					
+					//wfDebug($query."\n");					
 					
 					$queryResult = $dbr->query($query);
 					while ($row = $dbr->fetchRow($queryResult)) {
@@ -91,7 +102,7 @@
 						// query to get the definitions
 						// ****************************
 						$qry = 'SELECT txt.text_text, trans.language_id ';
-						$qry .= 'FROM uw_text txt, uw_translated_content trans, uw_defined_meaning dm ';
+						$qry .= "FROM {$dc}_text txt, {$dc}_translated_content trans, {$dc}_defined_meaning dm ";
 						$qry .= 'WHERE txt.text_id = trans.text_id ';
 						$qry .= 'AND trans.translated_content_id = dm.meaning_text_tcid ';
 						$qry .= "AND dm.defined_meaning_id = $dm_id ";
@@ -102,8 +113,8 @@
 								$qry .= ",";
 							$qry .= $language['language_id'];
 						}
-						$qry .= ') AND trans.remove_transaction_id IS NULL ';
-						$qry .= 'AND dm.remove_transaction_id IS NULL';
+						$qry .= ') AND ' . getLatestTransactionRestriction('trans');
+						$qry .= 'AND ' . getLatestTransactionRestriction('dm');
 						
 						//wfDebug($qry."\n"); // uncomment this if you accept having 1700+ queries in the log
 												
@@ -118,12 +129,12 @@
 						// *****************************
 						// query to get the translations
 						// *****************************
-						$qry = 'SELECT exp.spelling, exp.language_id ';
-						$qry .= 'FROM uw_expression exp ';
-						$qry .= 'INNER JOIN uw_syntrans trans ON exp.expression_id=trans.expression_id ';
+						$qry = "SELECT exp.spelling, exp.language_id ";
+						$qry .= "FROM {$dc}_expression exp ";
+						$qry .= "INNER JOIN {$dc}_syntrans trans ON exp.expression_id=trans.expression_id ";
 						$qry .= "WHERE trans.defined_meaning_id=$dm_id ";
-						$qry .= 'AND exp.remove_transaction_id IS NULL ';
-						$qry .= 'AND trans.remove_transaction_id IS NULL';
+						$qry .= "AND " . getLatestTransactionRestriction("exp");
+						$qry .= "AND " . getLatestTransactionRestriction("trans");
 						
 						//wfDebug($qry."\n"); // uncomment this if you accept having 1700+ queries in the log
 						
@@ -161,16 +172,29 @@
 					
 				}
 				else {
+					
+					// Get the collections
+					$colQuery = "SELECT col.collection_id, exp.spelling " .
+								"FROM {$dc}_collection col INNER JOIN {$dc}_defined_meaning dm ON col.collection_mid=dm.defined_meaning_id " .
+								"INNER JOIN {$dc}_expression exp ON dm.expression_id=exp.expression_id " .
+								"WHERE " . getLatestTransactionRestriction('col');
+					
+					$collections = array();
+					$colResults = $dbr->query($colQuery);
+					while ($row = $dbr->fetchRow($colResults)) {
+						$collections['cid'.$row['collection_id']] = $row['spelling'];
+					}
+										
 					// render the page
 					$wgOut->setPageTitle('Export a collection to tsv');
-					$wgOut->addHTML('<p>Export a collection to a tab delimited text format that you can import in Excell or other spreadsheet software.<br/>');
-					$wgOut->addHTML('The collection is fixed right now, do not change it. In the languages text box, enter a comma separated list of ');
+					$wgOut->addHTML('<p>Export a collection to a tab separated text format that you can import in Excell or other spreadsheet software.<br/>');
+					$wgOut->addHTML('Select a collection to export. In the languages text box, enter a comma separated list of ');
 					$wgOut->addHTML('ISO 639-3 languages codes. Start with the languages that you will be translating from (pick as many as you like) and ');
-					$wgOut->addHTML('finish with the ones you\'ll be translating to.</p>');
+					$wgOut->addHTML('finish with the ones you\'ll be translating to. Then click \'Create\' to create the file. </p>');
 					
 					$wgOut->addHTML(getOptionPanel(
 						array(
-							'Collection id' => getTextBox('collection', '376322'),
+							'Collection' => getSelect('collection', $collections, 'cid376322'),
 							'Languages' => getTextBox('languages', 'ita, eng, deu, fra, cat'),
 						),
 						'',array('create' => 'Create')
