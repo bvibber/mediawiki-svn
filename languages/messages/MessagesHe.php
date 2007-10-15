@@ -1595,9 +1595,9 @@ $NEWPAGE
 'undeletereset'                => 'איפוס',
 'undeletecomment'              => 'תקציר:',
 'undeletedarticle'             => 'שחזר את [[$1]]',
-'undeletedrevisions'           => 'שחזר $1 גרסאות',
-'undeletedrevisions-files'     => 'שחזר $1 גרסאות ו־$2 קבצים',
-'undeletedfiles'               => 'שחזר $1 קבצים',
+'undeletedrevisions'           => 'שחזר {{plural:$1|גרסה אחת|$1 גרסאות}}',
+'undeletedrevisions-files'     => 'שחזר {{plural:$1|גרסה אחת|$1 גרסאות}} ו{{plural:$2|קובץ אחד|־$2 קבצים}}',
+'undeletedfiles'               => 'שחזר {{plural:$1|קובץ אחד|$1 קבצים}}',
 'cannotundelete'               => 'השחזור נכשל; ייתכן שמישהו אחר כבר שחזר את הדף.',
 'undeletedpage'                => "'''הדף $1 שוחזר בהצלחה.'''
 
@@ -1909,6 +1909,8 @@ $1
 'tooltip-ca-watch'                => 'הוסיפו דף זה לרשימת המעקב',
 'tooltip-ca-unwatch'              => 'הסירו דף זה מרשימת המעקב',
 'tooltip-search'                  => 'חיפוש ב{{grammar:תחילית|{{SITENAME}}}}',
+'tooltip-search-go'               => 'עברו לדף בשם הזה בדיוק, אם הוא קיים',
+'tooltip-search-fulltext'         => 'חפשו טקסט זה בדפים',
 'tooltip-p-logo'                  => 'עמוד ראשי',
 'tooltip-n-mainpage'              => 'בקרו בעמוד הראשי',
 'tooltip-n-portal'                => 'אודות המיזם, איך תוכלו לעזור, איפה למצוא דברים',

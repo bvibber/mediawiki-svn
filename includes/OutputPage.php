@@ -63,6 +63,9 @@ class OutputPage {
 		$this->mRedirect = str_replace( "\n", '', $url );
 		$this->mRedirectCode = $responsecode;
 	}
+	public function getRedirect() {
+		return $this->mRedirect;
+	}
 
 	/**
 	 * Set the HTTP status code to send with the output.
@@ -1028,7 +1031,7 @@ class OutputPage {
 					$titles = '';
 					foreach( $cascadeSources as $title )
 						$titles .= "* [[:" . $title->getPrefixedText()  . "]]\n";
-					$this->addWikiText( wfMsgExt( 'cascadeprotected', 'parsemag', $count ) . "\n{$titles}" );
+					$this->addWikiText( wfMsgExt( 'cascadeprotected', 'parsemag', $count, "\n{$titles}" ) );
 			} elseif( !$wgTitle->isProtected( 'edit' ) && $wgTitle->isNamespaceProtected() ) {
 				// Namespace protection
 				$ns = $wgTitle->getNamespace() == NS_MAIN
