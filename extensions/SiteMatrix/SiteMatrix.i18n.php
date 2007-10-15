@@ -184,7 +184,10 @@ $wgSiteMatrixMessages['ru'] = array(
 	"sitematrix" => "Проекты Викимедиа",
 );
 $wgSiteMatrixMessages['sk'] = array(
-	"sitematrix" => "Zoznam wiki projektov Nadácie Wikimedia",
+	'sitematrix' => 'Zoznam wiki projektov Nadácie Wikimedia',
+	'sitematrix-language' => 'Jazyk',
+	'sitematrix-project' => 'Názov projektu, medziprojektový odkaz a interwiki odkaz',
+	'sitematrix-others' => 'Iné projekty nadácie Wikimedia',
 );
 $wgSiteMatrixMessages['sq'] = array(
 	'sitematrix' => 'Lista e wiki-ve të Wikimedia-s',

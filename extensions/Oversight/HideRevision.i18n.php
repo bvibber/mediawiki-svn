@@ -579,25 +579,20 @@ Liberar tais dados poderá resultar na perda em definitivo dos privilégios de o
 /* Slovak (helix84) */
 'sk' => array(
 'hiderevision' => 'Natrvalo skryť revízie',
-// Empty form
 'hiderevision-prompt' => 'Číslo revízie, ktorá sa má odstrániť:',
 'hiderevision-continue' => 'Pokračovať',
-// Confirmation form
-'hiderevision-text' =>
-"Táto funkcia by sa mala využívať '''výlučne''' v nasledovných prípadoch:
+'hiderevision-text' => 'Táto funkcia by sa mala využívať \'\'\'výlučne\'\'\' v nasledovných prípadoch:
 * Nevhodné osobné informácie
-*: ''domáce adresy a telefónne čísla, čísla sociálneho poistenia atď.''
+*: \'\'domáce adresy a telefónne čísla, čísla sociálneho poistenia atď.\'\'
 
-'''Zneužitie tohto systému bude potrestané odňatím privilégií.'''
+\'\'\'Zneužitie tohto systému bude potrestané odňatím privilégií.\'\'\'
 
 Odstránené položky nebudú viditeľné nikomu prostredníctvom webstránky,
 ale o mazaniach sa vedie záznam a je možné ich obnoviť ručne
-administrátorom databázy v prípade, že spravíte chybu.",
+administrátorom databázy v prípade, že spravíte chybu.',
 'hiderevision-reason' => 'Dôvod (bude privátne zaznamenaný):',
 'hiderevision-submit' => 'Natrvalo skryť tieto údaje',
-// Tab displayed to allowed users on old revision display
 'hiderevision-tab' => 'Skryť revíziu',
-// Status & errors on action
 'hiderevision-norevisions' => 'Neboli uvedené revízie, ktoré majú byť skryté.',
 'hiderevision-noreason' => 'Musíte uviesť dôvod odstránenia.',
 'hiderevision-status' => 'Revízia $1: $2',
@@ -606,11 +601,15 @@ administrátorom databázy v prípade, že spravíte chybu.",
 'hiderevision-error-current' => 'Nebolo možné zmazať poslednú úpravu stránky. Najprv túto zmenu vráťte.',
 'hiderevision-error-delete' => 'Nebolo možné archivovať; bolo už predtým zmazané?',
 'hiderevision-archive-status' => 'Zmazané revízie počínajúc $1: $2',
-// Logging
+'oversight-nodiff' => 'Nie je možné sledovať zmeny, lebo momentálne neexistuje predošlá revízia stránky. Buď
+* stránka bola zmazaná, alebo
+* táto skrytá revízia bola prvá revízia',
 'oversight-log-hiderev' => 'Odstránená úprava z $1',
-// Oversight review page
-'oversight' => 'Oversight',
 'oversight-view' => 'podrobnosti',
+'oversight-difference' => '(Rozdiel s predchádzajúcou zostávajúcou revíziou)',
+'oversight-prev' => 'Posledná predošlá revízia',
+'oversight-hidden' => 'Skrytá revízia',
+'oversight-header' => 'Dolu je zoznam revízií, ktoré boli nedávno permanentne skryté pohľadu verejnosti. Šírenie týchto informácií môže mať za dôsledok premanentnú stratu práv Oversight.',
 ),
 
 /* Serbian default (Sasa Stefanovic) */

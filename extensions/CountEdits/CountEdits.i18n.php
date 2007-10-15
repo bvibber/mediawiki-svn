@@ -233,6 +233,7 @@ function efCountEditsMessages( $single = false ) {
 'countedits' => 'Tell redigeringer',
 'countedits-warning' => '\'\'\'Advarsel:\'\'\' Ikke sku hunden på hårene. Ikke døm en bidragsyter på antall redigeringer.',
 'countedits-username' => 'Brukernavn:',
+'countedits-ok' => 'OK',#identical but defined
 'countedits-nosuchuser' => 'Det er ingen bruker ved navnet $1.',
 'countedits-resultheader' => 'Resultater for $1',
 'countedits-resulttext' => '$1 har gjort $2 redigeringer',

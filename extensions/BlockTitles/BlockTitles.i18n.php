@@ -73,6 +73,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'O planhem, lo títol d\'aqueste article es pas autorizat a èsser salvagardat.',
 ),
 
+'scn' => array(
+	'block_title_error_page_title' => 'Tìtulu bluccatu',
+	'block_title_error' => 'Semu spiacenti, nun è cunzintitu sarvari na vuci cu chistu tìtulu.',
+),
+
 'sk' => array(
 	'block_title_error_page_title' => '',
 	'block_title_error' => 'Prepáčte, články s týmto názvom nie je povolené ukladať.',

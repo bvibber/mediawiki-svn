@@ -141,6 +141,7 @@ daftar hitam nama pengguna]]. Harap pilih nama lain.',
 ),
 
 'is' => array(
+'blacklistedusername' => 'Bannað notendanafn',
 'blacklistedusernametext' => 'Þetta notendanafn sem þú hefur valið passar við [[MediaWiki:Usernameblacklist|listann með bönnuðum notendanöfnum]]. Vinsamlegast veldu annað nafn.',
 ),
 

@@ -510,6 +510,39 @@ $messages = array(
 		'ogg-desc-link'        => 'Информация об этом файле',
 	),
 
+	'sk' => array(
+	'ogg-short-audio' => 'Zvukový súbor ogg $1, $2',
+	'ogg-short-video' => 'Video súbor ogg $1, $2',
+	'ogg-short-general' => 'Multimediálny súbor ogg $1, $2',
+	'ogg-long-audio' => '(Zvukový súbor ogg $1, dĺžka $2, $3)',
+	'ogg-long-video' => '(Video súbor ogg $1, dĺžka $2, $3)',
+	'ogg-long-multiplexed' => '(Multiplexovaný zvukový/video súbor ogg, $1, dĺžka $2, $4×$5 pixelov, $3 celkom)',
+	'ogg-long-general' => '(Multimediálny súbor ogg $1, dĺžka $2, $3)',
+	'ogg-long-error' => '(Neplatný súbor ogg: $1)',
+	'ogg-play' => 'Prehrať',
+	'ogg-pause' => 'Pozastaviť',
+	'ogg-stop' => 'Zastaviť',
+	'ogg-play-video' => 'Prehrať video',
+	'ogg-play-sound' => 'Prehrať zvuk',
+	'ogg-no-player' => 'Prepáčte, zdá sa, že váš systém nemá žiadny podporovaný softvér na prehrávanie. Prosím, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">stiahnite si prehrávač</a>.',
+	'ogg-no-xiphqt' => 'Zdá sa, že nemáte komponent QuickTime XiphQT. QuickTime nedokáže prehrávať ogg súbory bez tohto komponentu. Prosím, <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">stiahnite si XiphQT</a> alebo si vyberte iný prehrávač.',
+	'ogg-player-videoElement' => 'element <video>',
+	'ogg-player-oggPlugin' => 'zásovný modul ogg',
+	'ogg-player-cortado' => 'Cortado (Java)',#identical but defined
+	'ogg-player-vlc-mozilla' => 'VLC',#identical but defined
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',#identical but defined
+	'ogg-player-quicktime-mozilla' => 'QuickTime',#identical but defined
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',#identical but defined
+	'ogg-player-thumbnail' => 'iba nepohyblivý obraz',
+	'ogg-player-soundthumb' => 'žiadny prehrávač',
+	'ogg-player-selected' => '(vybraný)',
+	'ogg-use-player' => 'Použiť prehrávač:',
+	'ogg-more' => 'viac...',
+	'ogg-dismiss' => 'Zatvoriť',
+	'ogg-download' => 'Stiahnuť súbor',
+	'ogg-desc-link' => 'O tomto súbore',
+	),
+
 	'sv' => array(
 		'ogg-short-audio'      => 'Ogg $1 ljudfil, $2',
 		'ogg-short-video'      => 'Ogg $1 videofil, $2',

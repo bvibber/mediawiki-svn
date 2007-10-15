@@ -56,6 +56,7 @@ $wgLanguageManagerMessages['nl'] = array(
 );
 $wgLanguageManagerMessages['sk'] = array(
 	'langman_title' => 'Správca jazykov',
+	'languages' => 'Wikidata: Správca jazykov',
 );
 $wgLanguageManagerMessages['zh-hans'] = array(
 	'langman_title' => '语言管理员',

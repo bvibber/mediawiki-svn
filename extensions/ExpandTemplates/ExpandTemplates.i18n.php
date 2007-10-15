@@ -251,7 +251,9 @@ $wgExpandTemplatesMessages['no'] = array(
 	'expand_templates_title'           => 'Konteksttittel, for {{PAGENAME}}, etc.:',
 	'expand_templates_input'           => 'Skriv inn tekst:',
 	'expand_templates_output'          => 'Resultat',
+	'expand_templates_ok'              => 'OK',#identical but defined
 	'expand_templates_remove_comments' => 'Fjern kommentarer',
+	'expand_templates_preview'         => 'Forhåndsvisning',
 );
 $wgExpandTemplatesMessages['oc'] = array(
 	'expandtemplates'                  => 'Espandiment dels modèls',

@@ -464,6 +464,27 @@ function efBadImageMessages() {
 'badimages-log-remove' => '[[$1]] көҥүллэммэт ойуулар испииһэктэриттэн сотулунна',
 ),
 
+'scn' => array(
+'badimages' => 'Alencu file discutibbili',
+'badimages-add-btn' => 'Agghiunci',
+'badimages-added' => 'Lu file $1 hà statu agghiunciutu â lista.',
+'badimages-count' => 'L\'alencu dî file discutibbili cunteni \'\'\'$1\'\'\' file.',
+'badimages-name' => 'Nomu:',
+'badimages-not-added' => 'Mpussibbili agghiunciri lu file.',
+'badimages-not-removed' => 'Mpussibbili rimòviri lu file.',
+'badimages-reason' => 'Mutivu:',
+'badimages-remove' => '(rimovi)',
+'badimages-remove-btn' => 'Rimovi',
+'badimages-remove-confirm' => 'Confirmari la rimozzioni dô file $1 di l\'alencu:',
+'badimages-removed' => 'Lu file $1 hà statu rimossu di l\'alencu.',
+'badimages-subheading' => 'Elimenti attuarmenti prisenti',
+'badimages-unprivileged' => '(Nun hai li pirmissi sufficienti pi canciari l\'alencu)',
+'badimages-log-name' => 'File discutibbili',
+'badimages-log-header' => 'Chistu è nu riggistru dî canciamenti fatti â lista dê file discutibbili.',
+'badimages-log-add' => 'agghiuncìu [[$1]] â lista dê file discutibbili',
+'badimages-log-remove' => 'rimovìu [[$1]] dâ lista dê file discutibbili',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'badimages' => 'Zoznam zlých obrázkov',

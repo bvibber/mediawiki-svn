@@ -52,6 +52,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount'  =>  'Deze gebruiker heeft $1 bewerkingen.',
 ),
 
+'no' => array(
+	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
+),
+
 'sah' => array(
 	'contributionseditcount' => 'Бу кыттааччы $1 көннөрүүлээх.',
 ),

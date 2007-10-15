@@ -238,6 +238,19 @@ Această opţiune încarcă de obicei serverul, deci vă rugăm să o folosiţi 
 'querysuccessful'  => 'Ыйытык оҥоһулунна',
 ),
 
+'scn' => array(
+'asksql'           => 'Query SQL',
+'asksqltext'       => 'Lu mòdulu riportatu ccà sutta cunzenti di esequiri query diretti supra lu databbasi.
+Usari apici singuli (\'comu chisti\') pi nnicari li stringhi costanti.
+Chista funzioni pò èssiri moltu pisanti pô server, pirciò 
+si prega di usàrila cu giudizziu.',
+'sqlislogged'      => 'Accura: tutti li query vennu arriggistrati.',
+'sqlquery'         => 'Nzeriri la query',
+'querybtn'         => 'Suttamitta query',
+'selectonly'       => 'Sugnu cunzintiti sulu query di littura.',
+'querysuccessful'  => 'Query esequita currittamenti',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'asksql' => 'SQL požiadavka',

@@ -235,7 +235,25 @@ $wgChemFunctions_Messages['nl'] = array(
 );
 
 $wgChemFunctions_Messages['no'] = array(
+	'chemicalsources' => 'Kjemiske kilder',
+	'ChemFunctions_ListPage' => 'Kjemiske kilder',
+	'ChemFunctions_DataList' => 'Nedenunder er en liste over lenker til sider som kan gi nyttig informasjon om den kjemiske substansen du leter etter.<br /><br />
+* <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compound $MIXCASNameFormula ved NIST</a><br />
+* <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS ved Oxford University (UK) (ikke søkbar)</a><br />',
 	'ChemFunctions_CAS' => 'CAS-nummer',
+	'ChemFunctions_EINECS' => 'Einecs',#identical but defined
+	'ChemFunctions_CHEBI' => 'CHEBI',#identical but defined
+	'ChemFunctions_PubChem' => 'PubChem',#identical but defined
+	'ChemFunctions_SMILES' => 'SMILES',#identical but defined
+	'ChemFunctions_InChI' => 'InChI',#identical but defined
+	'ChemFunctions_RTECS' => 'RTECS',#identical but defined
+	'ChemFunctions_KEGG' => 'KEGG',#identical but defined
+	'ChemFunctions_ATCCode' => 'ATCCode',#identical but defined
+	'ChemFunctions_DrugBank' => 'DrugBank',#identical but defined
+	'ChemFunctions_ECNumber' => 'ECNumber',#identical but defined
+	'ChemFunctions_Formula' => 'Formula',#identical but defined
+	'ChemFunctions_Name' => 'IUPAC-navn',
+	'ChemFunctions_ChemFormInputError' => 'Chemform: Input-feil!',
 );
 
 /**

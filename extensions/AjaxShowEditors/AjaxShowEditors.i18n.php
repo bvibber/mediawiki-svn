@@ -132,6 +132,11 @@ $wgAjaxShowEditorsMessages['sah'] = array(
 	'ajax-se-pending' => 'саҥардылларын кэтэс ... (маны баттаа эбэтэр көннөрүүнү саҕалаа)',
 	'ajax-se-idling' => '($1 c анараа өттүгэр)',
 );
+$wgAjaxShowEditorsMessages['scn'] = array(
+	'ajax-se-title' => 'Canciamentu \'n corsu:',
+	'ajax-se-pending' => '\'n attesa d\'aggiornamentu ... (fari clic su chista casidda o ncignari lu canciamentu)',
+	'ajax-se-idling' => '(di $1 s)',
+);
 $wgAjaxShowEditorsMessages['sk'] = array(
 	'ajax-se-title' => 'Práve upravuje:',
 	'ajax-se-pending' => 'čaká sa na obnovenie... (kliknite do tohto poľa alebo začnite upravovať)',

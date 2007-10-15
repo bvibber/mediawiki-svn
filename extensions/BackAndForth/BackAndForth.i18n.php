@@ -88,6 +88,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Иннинээҕи ($1)',
 ),
 
+'scn' => array(
+	'backforth-next' => 'Succissivi ($1)',
+	'backforth-prev' => 'Pricidenti ($1)',
+),
+
 'sk' => array(
 	'backforth-next' => 'Ďalšie ($1)',
 	'backforth-prev' => 'Predošlé ($1)',

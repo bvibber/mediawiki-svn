@@ -331,9 +331,11 @@ function efInputBoxMessages() {
 ),
 
 'no' => array(
-	'tryexact'       => 'Prøv nøyaktig treff',
-	'searchfulltext' => 'Søk full tekst',
-	'createarticle'  => 'Opprett artikkel',
+	'inputbox-error-no-type'  => 'Du har ikke oppgitt hva slags inputboks du vil lage.',
+	'inputbox-error-bad-type' => 'Inputboks av typen «$1» gjenkjennes ikke. Vennligst velg «create», «comment», «search» eller «search2».',
+	'tryexact'                => 'Prøv nøyaktig treff',
+	'searchfulltext'          => 'Søk full tekst',
+	'createarticle'           => 'Opprett artikkel',
 ),
 
 'oc' => array(
