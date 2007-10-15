@@ -196,7 +196,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 	public $pathwayId = 0;
 	public $rnaEditingId = 0;
 	public $developmentalStageId = 0;
-	public $alternativeProductsId = 0;
+	public $alternativeProductId = 0;
 	public $domainId = 0;
 	public $ptmId = 0;
 	public $polymorphismId = 0;
@@ -291,7 +291,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		$this->pathwayId = $this->bootstrapConcept($this->pathwayId, "pathway", $this->functionalAspectId);
 		$this->rnaEditingId = $this->bootstrapConcept($this->rnaEditingId, "RNA editing", $this->functionalAspectId);
 		
-		$this->alternativeProductsId = $this->bootstrapConcept($this->alternativeProductsId, "alternative products", $this->structuralAspectId);
+		$this->alternativeProductId = $this->bootstrapConcept($this->alternativeProductId, "alternative product", $this->structuralAspectId);
 		$this->domainId = $this->bootstrapConcept($this->domainId, "domain", $this->structuralAspectId);
 		$this->ptmId = $this->bootstrapConcept($this->ptmId, "PTM", $this->structuralAspectId);
 		$this->polymorphismId = $this->bootstrapConcept($this->polymorphismId, "polymorphism", $this->structuralAspectId);
@@ -338,6 +338,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 //		addDefinedMeaningToCollectionIfNotPresent($this->keywordConceptId, $this->relationTypeCollectionId, "keyword");
 		addDefinedMeaningToCollectionIfNotPresent($this->consistsOfId, $this->relationTypeCollectionId, "consists of");
 		addDefinedMeaningToCollectionIfNotPresent($this->containsConceptId, $this->relationTypeCollectionId, "contains");
+		addDefinedMeaningToCollectionIfNotPresent($this->conceptualPartOfId, $this->relationTypeCollectionId, "conceptual part of");
 	}
 	
 	public function startElement($parser, $name, $attributes) {
@@ -510,14 +511,14 @@ class SwissProtXMLParser extends BaseXMLParser {
 		$definedMeaningId = createNewDefinedMeaning($expression->id, $this->languageId, $entryDefinition);
 		
 		// Add entry synonyms: protein name, Swiss-Prot entry name and species specific protein synonyms		
-		addSynonymOrTranslation($proteinName, $this->languageId, $definedMeaningId, true);
+		addSynonymOrTranslation($proteinName, $this->languageId, $definedMeaningId, false);
 		
 		// set the class of the entry:
 		addClassMembership($definedMeaningId, $this->organismSpecificProteinConceptId);
 		addClassMembership($definedMeaningId, $proteinMeaningId);
 
 		// set the gene of the swiss prot entry and relate the gene to the entry:
-		if ($organismSpecificGene >= 0) 
+		if ($organismSpecificGene > 0) 
 			addRelation($definedMeaningId, $this->isManifestationOfConceptId, $organismSpecificGene);
 		
 		// set the species of the swiss prot entry and relate the species to the entry:		
@@ -526,9 +527,33 @@ class SwissProtXMLParser extends BaseXMLParser {
 		return $definedMeaningId;
 	}
 	
-	protected function addComments(SwissProtEntry $entry, $definedMeaningId) {
+	protected function addIsoform(SwissProtEntry $entry, $entryDefinedMeaningId, $proteinMeaningId, $organismSpeciesMeaningId, Isoform $isoform) {
+		$expression = "Isoform " . $isoform->names[0] . " of " . $entry->expression();
+		$definition = $expression;
+		
+		foreach ($isoform->notes as $note) 
+			$definition .= ". " . $note;
+			
+		$expressionObject = $this->getOrCreateExpression($expression);
+		$isoformId = createNewDefinedMeaning($expressionObject->id, $this->languageId, $definition);
+		
+		for ($i = 1; $i < count($isoform->names); $i++)
+			addSynonymOrTranslation("Isoform " . $isoform->names[$i] . " of " . $entry->protein->name, $this->languageId, $isoformId, true);
+		
+		addClassMembership($isoformId, $this->organismSpecificProteinConceptId);
+		addClassMembership($isoformId, $proteinMeaningId);
+
+		addRelation($isoformId, $this->occursInConceptId, $organismSpeciesMeaningId);
+		addRelation($isoformId, $this->conceptualPartOfId, $entryDefinedMeaningId);
+		addDefinedMeaningToCollection($isoformId, $this->collectionId, $isoform->id);
+		
+		return $isoformId;
+	}
+	
+	protected function addComments(SwissProtEntry $entry, $definedMeaningId, $proteinMeaningId, $organismSpeciesMeaningId) {
 		foreach ($entry->comments as $key => $comment) {
 			$commentType = strtoupper($comment->type);
+			$comment->text = trim($comment->text);
 			
 			// f.) Information in the attribute 'caution' is imported but it many times doesn’t
 			// make sense due to the fact it refers to References (in the SP entry) that are
@@ -594,6 +619,15 @@ class SwissProtXMLParser extends BaseXMLParser {
 			// POLYMORPHISM, SIMILARITY,  MASS SPECTROMETRY, and SUBUNIT  need to be tagged
 			// with the attribute 'Structural Aspects'
 			case "ALTERNATIVE PRODUCTS":
+				if (count($comment->isoforms) != 0) {
+					echo "\n" . $entry->expression() . "\n";
+					
+					foreach ($comment->isoforms as $isoform) {
+						$isoformId = $this->addIsoform($entry, $definedMeaningId, $proteinMeaningId, $organismSpeciesMeaningId, $isoform);
+						addRelation($definedMeaningId, $this->alternativeProductId, $isoformId);
+					} 
+				}
+				break;
 			case "DOMAIN":
 			case "PTM":
 			case "POLYMORPHISM":
@@ -713,12 +747,14 @@ class SwissProtXMLParser extends BaseXMLParser {
 				if ($comment->status != "") 
 					$textValue .= " (" . $comment->status . ")";
 	
-				// add the comment fields as text attributes to the entry	
-				$textAttributeValueId = addTextAttributeValue($definedMeaningId, $attributeMeaningId, $textValue);
-				
-				// add the comment URL as URL attribute to the entry and link URL attribute with text attribute
-				if ($comment->url != "")
-					addLinkAttributeValue($textAttributeValueId, $this->onlineInformationId, $comment->url);
+				if ($textValue != "") {
+					// add the comment fields as text attributes to the entry	
+					$textAttributeValueId = addTextAttributeValue($definedMeaningId, $attributeMeaningId, $textValue);
+					
+					// add the comment URL as URL attribute to the entry and link URL attribute with text attribute
+					if ($comment->url != "")
+						addLinkAttributeValue($textAttributeValueId, $this->onlineInformationId, $comment->url);
+				}
 			}
 		}
 	}
@@ -737,7 +773,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 		
 		// add the comment fields as text attributes to the entry and link comments with
 		// the appropriate definedMeaning
-		$this->addComments($entry, $definedMeaningId);
+		$this->addComments($entry, $definedMeaningId, $proteinMeaningId, $organismSpeciesMeaningId);
 		
 		// add EC number:
 		if ($entry->EC != ""){
@@ -1128,43 +1164,49 @@ class CommentXMLElementHandler extends DefaultXMLElementHandler {
 			case "INTERACTANT":  
 				$result = new CommentChildXMLElementHandler();				
 				break;
+			case "ISOFORM":
+				$result = new IsoformXMLElementHandler();
+				break;
 			default:
 				$result = parent::getHandlerForNewElement($name);
 				break;
-			}
+		}
+		
 		$result->name = $name;
+		
 		return $result;
 	}
 
 	public function notify($childHandler) {		
-		
 		if ($childHandler instanceof CommentChildXMLElementHandler){
 				// stock all composed comment children (objects)
 				$this->comment->children[] = $childHandler->commentChild;	
 		}
+		else if ($childHandler instanceof IsoformXMLElementHandler)  
+			$this->comment->isoforms[] = $childHandler->isoform;
 		else
-		// there are different comments, so they need a different processing
-		switch ($childHandler->name) {
-			case "TEXT": // stock comment 'TEXT' child data				
-				$this->comment->text = $childHandler->data;
-				break;
-			case "NOTE": // stock comment 'NOTE' child data
-				$this->comment->note = $childHandler->data;
-				break;
-			case "LINK":
-				// stock comment URL link
-				$this->comment->url = $childHandler->attributes["URI"];
-				break;
-			case "PHDEPENDENCE":
-				$this->comment->phDependence = $childHandler->data;
-				break;
-			case "TEMPERATUREDEPENDENCE":
-				$this->comment->temperatureDependence = $childHandler->data;
-				break;							
-			default:
-				$this->comment->text = $childHandler->data;
-				break;
-		}
+			// there are different comments, so they need a different processing
+			switch ($childHandler->name) {
+				case "TEXT": // stock comment 'TEXT' child data				
+					$this->comment->text = $childHandler->data;
+					break;
+				case "NOTE": // stock comment 'NOTE' child data
+					$this->comment->note = $childHandler->data;
+					break;
+				case "LINK":
+					// stock comment URL link
+					$this->comment->url = $childHandler->attributes["URI"];
+					break;
+				case "PHDEPENDENCE":
+					$this->comment->phDependence = $childHandler->data;
+					break;
+				case "TEMPERATUREDEPENDENCE":
+					$this->comment->temperatureDependence = $childHandler->data;
+					break;							
+				default:
+					$this->comment->text = $childHandler->data;
+					break;
+			}
 	}
 }
 
@@ -1185,7 +1227,6 @@ class CommentChildXMLElementHandler extends DefaultXMLElementHandler {
 	}
 	
 	public function notify($childHandler) {
-		
 		switch ($childHandler->name) {
 			case "BEGIN": // stock mass spectrometry position
 			case "END":
@@ -1205,6 +1246,28 @@ class CommentChildXMLElementHandler extends DefaultXMLElementHandler {
 			case "LABEL": // stock interactant label
 				$this->commentChild->label = $childHandler->data;
 				break;
+		}
+	}
+}
+
+class Isoform {
+	public $id = array();
+	public $names = array();
+	public $notes = array();
+}
+
+class IsoformXMLElementHandler extends DefaultXMLElementHandler {
+	public $isoform;
+	
+	public function __construct() {
+		$this->isoform = new Isoform(); 
+	}
+	
+	public function notify($childHandler) {
+		switch ($childHandler->name) {
+			case "ID":   $this->isoform->id = $childHandler->data; break;
+			case "NAME": $this->isoform->names[] = $childHandler->data; break;
+			case "NOTE": $this->isoform->notes[] = $childHandler->data; break;
 		}
 	}
 }
@@ -1259,7 +1322,8 @@ class Comment {
 	public $error = "";
 	public $phDependence = ""	;
 	public $temperatureDependence = "";
-	public $children = array();  // 
+	public $children = array();  //
+	public $isoforms = array(); 
 }
 
 // stock data of a composed comment XML tags
