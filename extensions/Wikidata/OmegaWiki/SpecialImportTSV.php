@@ -111,18 +111,16 @@
 							
 					while($row = fgetcsv($file, $maxLineLength, "\t")) { 
 						$line++; 
-						if (count($row) != count($columns)) {
-							$wgOut->addHTML("Skipped line $line: incorrect column count.<br/>");
-							continue;
-						}
 						
 						$dmid = $row[0];
 						$exp = $row[1];
 						
 						// find the defined meaning record
-						$qry = "SELECT dm.meaning_text_tcid, exp.spelling, dm.remove_transaction_id ";
+						$qry = "SELECT dm.meaning_text_tcid, exp.spelling ";
 						$qry .= "FROM {$dc}_defined_meaning dm INNER JOIN {$dc}_expression exp ON dm.expression_id=exp.expression_id ";
-						$qry .= "WHERE dm.defined_meaning_id=$dmid";
+						$qry .= "WHERE dm.defined_meaning_id=$dmid ";
+						$qry .= "AND " . getLatestTransactionRestriction('dm');
+						$qry .= "AND " . getLatestTransactionRestriction('exp');
 						
 						$dmResult = $dbr->query($qry);
 						$dmRecord = null;
@@ -132,13 +130,9 @@
 								$wgOut->addHTML("Skipped line $line: defined meaning id $dmid does not match defining expression. Should be '{$dmRecord['spelling']}', found '$exp'.<br/>");
 								continue;
 							}
-							if ($dmRecord['remove_transaction_id']) {
-								$wgOut->addHTML("Skipped line $line: defined meaning has been removed.<br/>");
-								continue;
-							}
 						}
 						else {
-							$wgOut->addHTML("Skipped line $line: incorrect defined meaning id $dmid.<br/>");
+							$wgOut->addHTML("Skipped line $line: unknown defined meaning id $dmid. The id may have been altered in the imported file, or the defined meaning or defining expression was removed from the database.<br/>");
 							continue; 
 						}
 						
@@ -148,6 +142,13 @@
 						
 						
 						for ($columnIndex = 2; $columnIndex < count($columns); $columnIndex++) {
+							
+							// Google docs removes empty columns at the end of a row,
+							// so if column index is higher than the length of the row, we can break
+							// and move on to the next defined meaning.
+							if (columnIndex >= count($row)) {
+								break;
+							}
 							
 							$columnValue = $row[$columnIndex];
 							if (!$columnValue) {
