@@ -22,12 +22,12 @@ $wgDefaultClassMids = array(402295);
 # these code segments will fall back to (usually English) strings.
 # If you are setting up a new Wikidata instance, you may want to
 # set this to ''.
-$wdTermDBDataSet='uw';
+$wdTermDBDataSet='sp';
 
 # This is the dataset that should be shown to all users by default.
 # It _must_ exist for the Wikidata application to be executed 
 # successfully.
-$wdDefaultViewDataSet='uw';
+$wdDefaultViewDataSet='sp';
 $wdShowCopyPanel=false;
 
 $wdGroupDefaultView=array();
@@ -54,8 +54,7 @@ $wdTesting=false; #useful when testing, use as needed
 # The site prefix allows us to have multiple sets of customized
 # messages (for different, typically site-specific UIs)
 # in a single database.
-#if(!isset($wdSiteContext)) $wdSiteContext="sp";
-$wdSiteContext="uw";
+if(!isset($wdSiteContext)) $wdSiteContext="uw";
 
 $wgShowClassicPageTitles = false;
 $wgDefinedMeaningPageTitlePrefix = "";
