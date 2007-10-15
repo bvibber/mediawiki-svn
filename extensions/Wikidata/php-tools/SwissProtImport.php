@@ -511,10 +511,12 @@ class SwissProtXMLParser extends BaseXMLParser {
 		// add the comment fields as text attributes to the entry and link comments with
 		// the appropriate definedMeaning
 		foreach ($entry->comments as $key => $comment) {
+			$commentType = strtoupper($comment->type);
+			
 			// f.) Information in the attribute 'caution' is imported but it many times doesn’t
 			// make sense due to the fact it refers to References (in the SP entry) that are
 			// not shown in wikiproteins, therefore it should NOT be imported presently.
-			if (strtoupper($comment->type) == "CAUTION"){
+			if ($commentType == "CAUTION"){
 				// ignore
 				continue;
 			}
@@ -528,7 +530,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			// link comments with the appropriate definedMeaning(defined by Chrisi and Erik)
 			// we have to create relation between comment and its aspect
 			// all comments have the relation 'has aspect' 
-			switch (strtoupper($comment->type)) {
+			switch ($commentType) {
 				
 			// j.) the comments with the topic, SUBCELLULAR LOCATION and TISSUE SPECIFICITY
 			// need to be tagged with the attribute 'Localization Aspects'			
@@ -548,7 +550,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			case "PATHWAY":
 			case "RNA EDITING":			
 				// add INTERACTION comment parameters
-				if (strtoupper($comment->type) == "INTERACTION" && count($comment->children) == 2){
+				if ($commentType == "INTERACTION" && count($comment->children) == 2){
 					if ($comment->children[0]->att_intactId == $comment->children[1]->att_intactId){
 						$textValue .= "with Self (accepted by Swiss-Prot);";
 						// build URL
@@ -569,7 +571,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 					}
 				}
 				// ignore other parameters of INTERACTION comment
-				if (strtoupper($comment->type) == "INTERACTION")
+				if ($commentType == "INTERACTION")
 					$comment->text = "";				
 				break;
 			//l.)	the comments with the topic, ALTERNATIVE PRODUCTS, DOMAIN, PTM, 
@@ -594,11 +596,11 @@ class SwissProtXMLParser extends BaseXMLParser {
 					$textValue .= $comment->error . " is the accuracy or error range of the MW measurement; ";
 				}
 				// add position of MASS SPECTROMETRY to text value				
-				if (strtoupper($comment->type) == "MASS SPECTROMETRY" && count($comment->children) > 0)
+				if ($commentType == "MASS SPECTROMETRY" && count($comment->children) > 0)
 					$textValue .= $comment->children[0]->position . " is the part of the protein sequence entry that corresponds to the molecular weight;";
 				
 				// ignore note of MASS SPECTROMETRY comment
-				if (strtoupper($comment->type) == "MASS SPECTROMETRY")
+				if ($commentType == "MASS SPECTROMETRY")
 					$comment->text = "";
 				break;
 			//m.) the comments with the topic, ALLERGEN, PHARMACEUTICAL, BIOTECHNOLOGY, 
@@ -609,7 +611,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			case "BIOTECHNOLOGY":
 			case "TOXIC DOSE":
 			case "BIOPHYSICOCHEMICAL PROPERTIES":				
-				if (strtoupper($comment->type) == "BIOPHYSICOCHEMICAL PROPERTIES"){
+				if ($commentType == "BIOPHYSICOCHEMICAL PROPERTIES") {
 					// add Kinetic parameters to text value	
 					if (count($comment->children) > 0) {
 						$textValue .= "Kinetic parameters:(";
@@ -631,14 +633,31 @@ class SwissProtXMLParser extends BaseXMLParser {
 			// be tagged with the attribute 'External Information'
 			case "ONLINE INFORMATION":				
 				// add comment name to text value
-				if ($comment->name != "") 
-					$textValue .= "NAME=" . $comment->name . ";";
+				$label = "";
 				
-				// add 'NOTE' child text to text value
-				if ($comment->note != ""){
-					if ($textValue != "") $textValue .= " ";
-					$textValue .= "NOTE=" . $comment->note . ";";
+				if ($comment->name != "") 
+					$label .= $comment->name;
+				
+				// add 'NOTE' child text to link label
+				if ($comment->note != "") {
+					if ($label != "") 
+						$label .= ", ";
+					
+					$label .= $comment->note;
 				}
+				
+				if ($comment->text != "") {
+					$textValue = $comment->text;
+					
+					if ($comment->status != "") 
+						$textValue .= " (" . $comment->status . ")"; 
+					
+					$idToAddLinkTo = addTextAttributeValue($definedMeaningId, $attributeMeaningId, $textValue);
+				}
+				else
+					$idToAddLinkTo = $definedMeaningId;
+				
+				addLinkAttributeValue($idToAddLinkTo, $this->onlineInformationId, $comment->url, $label);				
 				break;
 			//n.) the comments with the topic, MISCELLANEOUS and CAUTION need to be tagged
 			// with the attribute 'Other Aspects'
@@ -648,27 +667,30 @@ class SwissProtXMLParser extends BaseXMLParser {
 			default:
 				break;
 			}
-			// add comment text to text value			
-			if ($textValue != "" && ($comment->text != "" || $comment->status != "")) 
-				$textValue .= " TEXT=";
 			
-			if  ($comment->text != "")
-				$textValue .= $comment->text;
-			
-			// add comment status to text value
-			if ($comment->status != "") 
-				$textValue .= " (" . $comment->status . ")";
-
-			// add the comment fields as text attributes to the entry	
-			$textAttributeValueId = addTextAttributeValue($definedMeaningId, $attributeMeaningId, $textValue);
-			
-			// add the comment URL as URL attribute to the entry and link URL attribute with text attribute
-			if ($comment->url != "")
-				addLinkAttributeValue($textAttributeValueId, $this->onlineInformationId, $comment->url);
+			if ($commentType != "ONLINE INFORMATION") {
+				// add comment text to text value			
+				if ($textValue != "" && ($comment->text != "" || $comment->status != "")) 
+					$textValue .= " TEXT=";
+				
+				if  ($comment->text != "")
+					$textValue .= $comment->text;
+				
+				// add comment status to text value
+				if ($comment->status != "") 
+					$textValue .= " (" . $comment->status . ")";
+	
+				// add the comment fields as text attributes to the entry	
+				$textAttributeValueId = addTextAttributeValue($definedMeaningId, $attributeMeaningId, $textValue);
+				
+				// add the comment URL as URL attribute to the entry and link URL attribute with text attribute
+				if ($comment->url != "")
+					addLinkAttributeValue($textAttributeValueId, $this->onlineInformationId, $comment->url);
+			}
 		}
 		
 		// add EC number:
-		if($entry->EC != ""){
+		if ($entry->EC != ""){
 			$ECNumberMeaningId = $this->getOrCreateECNumberMeaningId($entry->EC);
 			addRelation($definedMeaningId, $this->activityConceptId, $ECNumberMeaningId);
 		}
@@ -1168,6 +1190,10 @@ class SwissProtEntry {
 	public $keywords = array();
 	public $GOReference = array();
 	public $HGNCReference;
+	
+	public function expression() {
+		return $this->protein->name . " (" . $this->organism . ")"; 
+	}
 }
 
 // stock different data of comment XML tag
