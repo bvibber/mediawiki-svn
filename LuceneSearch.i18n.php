@@ -581,13 +581,13 @@ $wgLuceneSearchMessages['sk'] = array(
 	'searchscore'           => 'Relevantnosť: $1',
 	'searchsize'            => '$1KB ($2 slov)',
 	'searchdidyoumean'      => 'Mali ste na mysli: "<a href="$1">$2</a>"?',
-	'searchnoresults'       => 'Ľutujeme, vyhľadávanie nevrátilo na Vašu požiadavku žiadne presné výsledky.',
-	'searchnearmatches'     => '<b>Tieto stránky majú názvy podobné Vášej požiadavke:</b>',
+	'searchnoresults'       => 'Ľutujeme, vyhľadávanie nevrátilo na vašu požiadavku žiadne presné výsledky.',
+	'searchnearmatches'     => '<b>Tieto stránky majú názvy podobné vašej požiadavke:</b>',
 	'lucenepowersearchtext' => 'Vyhľadávanie v menných priestoroch: $1 Hľadanie $3 $9',
 	'lucenefallback'        => 'S vyhľadávaním na wiki nastal problém. Je možné, že je to dočasné; o chvíľu to skúste znova alebo vyhľadávajte na wiki pomocou externej indexovacej služby:',
 	'searchexactcase'       => 'Vyhľadávanie zohľadňujúce veľkosť písmen',
 	'searchall'             => 'všetko',
-	'searchincategory'      => 'vkategórii',
+	'searchincategory'      => 'v kategórii',
 );
 $wgLuceneSearchMessages['sq'] = array(
 	'lucenepowersearchtext' => 'Kërko në hapësirat: $1 për $3 $9',
