@@ -74,7 +74,7 @@ class ApiEditPage extends ApiBase {
 	}
 
     public function execute() {
-        global $wgUser, $wgRequest;
+        global $wgUser, $wgRequest, $wgParser;
 				$title = $text = $summary = $edittime = $lgtoken = $userid = $tokenid = $value = null;
 
 		if( session_id() == '' ) {
@@ -243,7 +243,44 @@ class ApiEditPage extends ApiBase {
 				break;
 
 			case EditPage::AS_FILTERING:
-				$result['result'] = 'Filtering not passed';
+				
+				// Code extracted from SpamBlacklist extension
+				$spam = new SpamBlacklist();
+				$blacklists = $spam->getBlacklists();
+				$whitelists = $spam->getWhitelists();
+	
+				if ( count( $blacklists ) ) {
+					# Run parser to strip SGML comments and such out of the markup
+					# This was being used to circumvent the filter (see bug 5185)
+					$options = new ParserOptions();
+					$text = $wgParser->preSaveTransform( $editForm->textbox1, $editForm->mTitle, $wgUser, $options );
+					$out = $wgParser->parse( $editForm->textbox1, $editForm->mTitle, $options );
+					$links = implode( "\n", array_keys( $out->getExternalLinks() ) );
+	
+					# Strip whitelisted URLs from the match
+					if( is_array( $whitelists ) ) {
+						foreach( $whitelists as $regex ) {
+							wfSuppressWarnings();
+							$newLinks = preg_replace( $regex, '', $links );
+							wfRestoreWarnings();
+							if( is_string( $newLinks ) ) {
+								// If there wasn't a regex error, strip the matching URLs
+								$links = $newLinks;
+							}
+						}
+					}
+					# Do the match
+					foreach( $blacklists as $regex ) {
+						wfSuppressWarnings();
+						$check = preg_match( $regex, $links, $matches );
+						wfRestoreWarnings();
+						if( $check ) {
+							EditPage::spamPage( $matches[0] );
+							break;
+						}
+					}
+				}
+				$result['result'] = 'Filtering not passed due to forbidden URL: ' . $matches[0];
 				break;
 
 			case EditPage::AS_HOOK_ERROR_EXPECTED:
