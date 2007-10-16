@@ -624,9 +624,6 @@ class SwissProtXMLParser extends BaseXMLParser {
 					addRelation($definedMeaningId, $this->alternativeProductId, $isoformId);
 				} 
 				break;
-			case "DOMAIN":
-			case "PTM":
-			case "POLYMORPHISM":
 			case "SIMILARITY":
 				if (startsWith($comment->text, "Belongs to the ")) {
 					$family = trim(substr($comment->text, strlen("Belongs to the ")));
@@ -637,6 +634,11 @@ class SwissProtXMLParser extends BaseXMLParser {
 				}
 				else if (startsWith($comment->text, "Contains ")) {
 					$domain = trim(substr($comment->text, strlen("Contains ")));
+					
+					while ($domain[0] >= "0" && $domain[0] <= "9")
+						$domain = substr($domain, 1);
+					
+					$domain = trim($domain);
 					$domainId = $this->addSimilarityFamily($domain); 					
 					
 					addRelation($definedMeaningId, $this->consistsOfId, $domainId);
@@ -644,6 +646,9 @@ class SwissProtXMLParser extends BaseXMLParser {
 				}
 				
 				break;
+			case "DOMAIN":
+			case "PTM":
+			case "POLYMORPHISM":
 			case "MASS SPECTROMETRY":
 			case "SUBUNIT":				
 				// add mass SPECTROMETRY to text value
@@ -823,7 +828,7 @@ class SwissProtXMLParser extends BaseXMLParser {
 			
 			addRelation($definedMeaningId, $this->containsConceptId, $componentMeaningId);
 		}
-				
+		
 		return $definedMeaningId;		
 	}
 	
