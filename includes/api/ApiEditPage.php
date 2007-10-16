@@ -82,17 +82,33 @@ class ApiEditPage extends ApiBase {
     	}
 
 		extract($this->extractRequestParams());
-		$params = new FauxRequest(array (
-	       	'wpTitle' 		=> $title,
-	       	'wpTextbox1' 	=> $text,
-	       	'wpSummary'		=> $summary,
-	       	'wpEdittime'	=> $edittime,
-	       	'wplgToken' 	=> $lgtoken,
-	       	'wpUserID'		=> $userid,
-	       	'wpEditToken'	=> $tokenid,
-	       	'wpCaptchaWord' => $captchaword,
-			'wpCaptchaId' 	=> $captchaid
-	    ));
+		if ($watch == 'yes'){
+			$params = new FauxRequest(array (
+	       		'wpTitle' 		=> $title,
+	       		'wpTextbox1' 	=> $text,
+	       		'wpSummary'		=> $summary,
+	       		'wpEdittime'	=> $edittime,
+	       		'wplgToken' 	=> $lgtoken,
+	       		'wpUserID'		=> $userid,
+	       		'wpEditToken'	=> $tokenid,
+	       		'wpCaptchaWord' => $captchaword,
+				'wpCaptchaId' 	=> $captchaid,
+				'wpWatchthis'	=> $watch
+	    	));
+		}
+	    else{
+	    	$params = new FauxRequest(array (
+	       		'wpTitle' 		=> $title,
+	       		'wpTextbox1' 	=> $text,
+	       		'wpSummary'		=> $summary,
+	       		'wpEdittime'	=> $edittime,
+	       		'wplgToken' 	=> $lgtoken,
+	       		'wpUserID'		=> $userid,
+	       		'wpEditToken'	=> $tokenid,
+	       		'wpCaptchaWord' => $captchaword,
+				'wpCaptchaId' 	=> $captchaid
+			));
+	    }
 	  	$wgRequest = $params;
 
 	  	if ((strlen($title) == 0) && ($this->checkCaptcha()) ) {
@@ -300,6 +316,9 @@ class ApiEditPage extends ApiBase {
 			'captchaid' => array(
 				ApiBase :: PARAM_TYPE => 'string'
 			),
+			'watch' => array(
+				ApiBase :: PARAM_TYPE => 'string'
+			),
        );
     }
 
@@ -312,8 +331,8 @@ class ApiEditPage extends ApiBase {
 			'edittime'		=> 'Timestamp of base revision edited',
 			'lgtoken'		=> 'Login token of the user',
 			'captchaid' 	=> 'question',
-			'captchaword' 	=> 'answer'
-
+			'captchaword' 	=> 'answer',
+			'watch'			=> 'Put article in watchlist'
         );
     }
 
