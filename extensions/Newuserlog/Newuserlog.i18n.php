@@ -285,6 +285,9 @@ $wgNewuserlogMessages['yue'] = array(
 	'newuserlog-create-entry'  => '新用戶',
 	'newuserlog-create2-entry' => '已經開咗$1嘅戶口',
 );
+$wgNewuserlogMessages['zea'] = array(
+	'newuserlog-create-entry'  => 'Nieuwe gebruker',
+);
 $wgNewuserlogMessages['zh-classical'] = array(
 	'newuserlogpage'           => '誌簿',
 	'newuserlogpagetext'       => '此為誌簿之記也',
