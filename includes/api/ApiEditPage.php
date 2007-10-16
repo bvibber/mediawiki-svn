@@ -287,6 +287,10 @@ class ApiEditPage extends ApiBase {
 
     }
 
+    protected function getDescription() {
+		return 'Create and edit articles.';
+	}
+
     protected function getAllowedParams() {
         return array (
 			'title' => array(
@@ -322,7 +326,7 @@ class ApiEditPage extends ApiBase {
        );
     }
 
-    protected function getDescription() {
+    protected function getParamDescription() {
    		return array (
             'title'			=> 'Title of article',
             'text' 			=> 'text of article',
@@ -332,7 +336,7 @@ class ApiEditPage extends ApiBase {
 			'lgtoken'		=> 'Login token of the user',
 			'captchaid' 	=> 'question',
 			'captchaword' 	=> 'answer',
-			'watch'			=> 'Put article in watchlist'
+			'watch'			=> 'Put article in watchlist [epwatch=yes]'
         );
     }
 
