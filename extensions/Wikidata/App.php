@@ -22,12 +22,12 @@ $wgDefaultClassMids = array(402295);
 # these code segments will fall back to (usually English) strings.
 # If you are setting up a new Wikidata instance, you may want to
 # set this to ''.
-$wdTermDBDataSet='sp';
+$wdTermDBDataSet='uw';
 
 # This is the dataset that should be shown to all users by default.
 # It _must_ exist for the Wikidata application to be executed 
 # successfully.
-$wdDefaultViewDataSet='sp';
+$wdDefaultViewDataSet='uw';
 $wdShowCopyPanel=false;
 
 $wdGroupDefaultView=array();
