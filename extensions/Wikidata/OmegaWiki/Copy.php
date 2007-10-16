@@ -792,9 +792,9 @@ class CopyTools {
 	 */
 	public static function newCopyTransaction($dc1, $dc2) {
 
-		$datasets=CopyTools::getRow_noDC("wikidata_sets", "WHERE set_prefix=\"$dc2\"");
+		$datasets=CopyTools::getRow_noDC("wikidata_sets", "WHERE set_prefix=\"$dc1\"");
 		if (  $datasets == false  ) {
-			throw new Exception("Dataset info for $dc2 not found.");
+			throw new Exception("Dataset info for $dc1 not found.");
 		}
 		
 		if (  array_key_exists("virtual_user_id", $datasets)  ) {
@@ -803,6 +803,7 @@ class CopyTools {
 			$virtual_user_id=0;
 		}
 	
+		# The id might exist, but still be null. 
 		if (is_null($virtual_user_id)) {
 			$virtual_user_id=0;
 		}
