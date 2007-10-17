@@ -37,7 +37,7 @@ class ApiRegUser extends ApiBase {
 
 	const GET_CAPTCHA = -1;
 	const MISSING_CAPTCHA = -2;
-
+    const INVALID_GET_REQUEST = -3;
 	public function __construct($query, $moduleName) {
 		parent :: __construct($query, $moduleName, 'ru');
 	}
@@ -59,6 +59,9 @@ class ApiRegUser extends ApiBase {
 
 	public function process($value,$results = null) { 
 		switch ($value) {
+            case ApiRegUser::INVALID_GET_REQUEST :
+                                        $result['result'] = 'InvalidGetRequest'; 
+                                        break;
 			case ApiRegUser::GET_CAPTCHA :
 										$myCaptcha = new FancyCaptcha();
 										$myCaptcha->storage->clearAll();
@@ -159,7 +162,7 @@ class ApiRegUser extends ApiBase {
 		global $wgRequest;
 
 		$resultDetails = null;
-		$value = null;
+		$value = ApiRegUser::INVALID_GET_REQUEST;
 		if( session_id() == '' ) {
 			wfSetupSession();
 		}
