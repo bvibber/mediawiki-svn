@@ -28,6 +28,7 @@ $wdTermDBDataSet='uw';
 # It _must_ exist for the Wikidata application to be executed 
 # successfully.
 $wdDefaultViewDataSet='uw';
+
 $wdShowCopyPanel=false;
 $wdShowEditCopy=true;
 
@@ -123,7 +124,7 @@ function addHistoryLinkTrail(&$trail) {
  * @param $tabs as passed by MW
  */
 function modifyTabs($skin, $content_actions) {
-	global $wgUser, $wgTitle, $wdTesting, $wgCommunity_dc;
+	global $wgUser, $wgTitle, $wdTesting, $wgCommunity_dc, $wdShowEditCopy;
 	$dc=wdGetDataSetContext();
 	$ns=Namespace::get($wgTitle->getNamespace());
 	if($ns->getHandlerClass()=='DefinedMeaning') {
