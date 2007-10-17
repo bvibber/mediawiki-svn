@@ -3,4 +3,4 @@
 
 ALTER TABLE wikidata_sets ADD COLUMN virtual_user_id int(8) unsigned;
 
-INSERT INTO `script_log` (`time`, `script_name`, `comment`) VALUES (NOW(), '36 Table changes for copying A.sql', "added virtual user id support for copying");
+INSERT INTO `script_log` (`time`, `script_name`, `comment`) VALUES (NOW(), '35 Table changes for copying A.sql', "added virtual user id support for copying");

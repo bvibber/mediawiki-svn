@@ -50,7 +50,7 @@ $wgCommunity_dc="uw";
 $wgCommunityEditPermission="editwikidata-uw"; # only used for copy for now
 global $wdTesting;
 $wdTesting=false; #useful when testing, use as needed
-$copyAltDefinitions=false;
+$wdCopyAltDefinitions=false;
 
 
 # The site prefix allows us to have multiple sets of customized

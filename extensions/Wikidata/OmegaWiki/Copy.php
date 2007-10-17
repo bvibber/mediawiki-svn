@@ -732,7 +732,7 @@ class DefinedMeaningCopier {
 			$this->save_meaning["defined_meaning_id"]);
 		$classMembershipCopier->dup();
 
-		global $copyAltDefinitions;
+		global $wdCopyAltDefinitions;
 		if (!$this->already_there && $copyAltDefinitions) {
 			$altMeaningTextCopier=new AltMeaningTextCopier(
 				$dc1,
