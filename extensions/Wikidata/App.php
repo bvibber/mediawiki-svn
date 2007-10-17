@@ -48,9 +48,9 @@ $wgGroupPermissions['wikidata-omega']['wikidata-copy']=true;
 # The permission needed to do ...
 $wgCommunity_dc="uw";
 $wgCommunityEditPermission="editwikidata-uw"; # only used for copy for now
-global $wdExtraDebugging, $wdTesting;
-$wdExtraDebugging=false; # useful when testing. Use as needed
+global $wdTesting;
 $wdTesting=false; #useful when testing, use as needed
+$copyAltDefinitions=false;
 
 
 # The site prefix allows us to have multiple sets of customized

@@ -400,8 +400,6 @@ function read_text($dc1,$text_id) {
 
 function write_text($dc2,$text) {
 	unset($text["text_id"]);
-	# inconsistent, insert_assoc should accept dc, table
-	$target_table=mysql_real_escape_string("${dc2}_text");
 	CopyTools::dc_insert_assoc($dc2, "text", $text);
 	return mysql_insert_id();
 }
@@ -733,6 +731,16 @@ class DefinedMeaningCopier {
 			$this->defined_meaning["defined_meaning_id"],
 			$this->save_meaning["defined_meaning_id"]);
 		$classMembershipCopier->dup();
+
+		global $copyAltDefinitions;
+		if (!$this->already_there && $copyAltDefinitions) {
+			$altMeaningTextCopier=new AltMeaningTextCopier(
+				$dc1,
+				$dc2,
+				$this->defined_meaning["defined_meaning_id"],
+				$this->save_meaning["defined_meaning_id"]);
+			$altMeaningTextCopier->dup();
+		}
 	}
 }
 	
@@ -969,7 +977,6 @@ class CopyTools {
 		}
 		$sql .= " ".$where;
 
-		echo "<pre>$sql</pre>\n";
 		// Same with the values
 		$result = mysql_query($sql);
 
@@ -1228,8 +1235,10 @@ abstract class Copier {
 	 *         or null, if no such id exists in this case (for instance, if we copied multiple
 	 *         items, there is no single unique id)
 	 */
-	public abstract function dup();
-
+	public function dup() {
+		$values=$this->read();
+		return $this->write($values);
+	}
 	/** reads row or rows from table in source dataset (dc1) 
 	 * @return row or array of rows for table in mysql_read_assoc() format */
 	protected abstract function read();
@@ -1246,6 +1255,15 @@ abstract class Copier {
 	public function already_there(){
 		return $this->already_there;
 	}
+
+	protected function write($values) {
+		$latest=null;
+		foreach ($values as $value) {
+			$latest=$this->write_single($value);
+		}
+		return $latest;
+	}
+
 
 	/**
 	 * A combination function to handle all the steps needed to check
@@ -1265,6 +1283,9 @@ abstract class Copier {
 	 *	   false if it did not, and we just created it
 	 */
 	protected function doDM(&$row, $dmid_column, $full=false) {
+		if ($row[$dmid_column]==0 or is_null($row[$dmid_column]));
+			return true;
+
 		$dmCopier=new DefinedMeaningCopier($row[$dmid_column], $this->dc1, $this->dc2);
 		if ($full) {
 			$row[$dmid_column]=$dmCopier->dup();
@@ -1573,7 +1594,57 @@ class TranslatedContentAttributeCopier  extends AttributeCopier{
 }
 
 
+/** Copy alternate meanings */
+class AltMeaningTextCopier extends Copier{
+	protected $src_meaning_mid;
+	protected $dst_meaning_mid;
+	protected $dc1;
+	protected $dc2;
+	protected $tableName="alt_meaningtexts";
 
+	/** you saw that right, class_mid, not class_id, there's no such thing :-/
+	 */
+	public function __construct($dc1, $dc2, $src_meaning_mid, $dst_meaning_mid) {
+		$this->dc1=$dc1;
+		$this->dc2=$dc2;
+		$this->src_meaning_mid=$src_meaning_mid;
+		$this->dst_meaning_mid=$dst_meaning_mid;
+
+	}
+
+	/** unchracteristically, returns the new class_mid, rather than object_id
+	 * because in this case, the class_mid is the key characteristic
+	 */
+	
+	# refactor candidate?
+	public function read() {
+		$dc1=$this->dc1;
+		$src_meaning_mid=$this->src_meaning_mid;
+		return CopyTools::getRows($dc1, $this->tableName, "WHERE meaning_mid=$src_meaning_mid");
+	}
+
+	
+	public function write_single($altmeaning) {
+		$dc1=$this->dc1;
+		$dc2=$this->dc2;
+		
+		# No objects table here , rut roh!
+		#if ($this->doObject($attribute,"object_id")) 
+		#	return $attribute["object_id"];
+
+		$altmeaning["meaning_mid"]=$this->dst_meaning_mid;
+		$altmeaning["meaning_text_tcid"]=dup_translated_content($dc1, $dc2, $altmeaning["meaning_text_tcid"]);
+		$this->doDM($altmeaning, "source_id");
+
+		$this->doInsert($altmeaning);
+
+		return $altmeaning["meaning_mid"];
+	}
+
+
+
+
+}
 
 
 ?>
