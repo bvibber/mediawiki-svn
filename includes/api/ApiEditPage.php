@@ -117,9 +117,9 @@ class ApiEditPage extends ApiBase {
 		  	$wgRequest = $params;
 
 		  	if ((strlen($title) == 0) && ($this->checkCaptcha()) ) {
-				$value = 'GET_CAPTCHA';
+				$value = GET_CAPTCHA;
 			} elseif ($this->checkCaptcha() && ($captchaid == 0)) {
-				$value = 'MISSING_CAPTCHA';
+				$value = MISSING_CAPTCHA;
 			}
 			else{
 				// Ensure the correct timestamp format
@@ -140,14 +140,14 @@ class ApiEditPage extends ApiBase {
 					}
 				}
 
-				if ($value != 'BAD_LGTOKEN'){
+				if ($value != BAD_LGTOKEN){
 	    			$md5 = $wgUser->editToken();
 	      			// This is only to fast testing. So must be cleanned before a Release
 	      			$tokenid = $md5;
 
 	      			// APiEditPage only accepts POST requests
 					if (!$_SERVER['REQUEST_METHOD']){
-	      				$value = 'NO_POST_REQUEST';
+	      				$value = NO_POST_REQUEST;
 	      			}
 
 	      			else{
@@ -301,11 +301,11 @@ class ApiEditPage extends ApiBase {
 				$result['result'] = 'Error.Only POST requests are allowed';
 				break;
 
-			case 'BAD_LGTOKEN':
+			case BAD_LGTOKEN:
 				$result['result'] = "Error.Login token is wrong";
 				break;
 
-			case 'BAD_EDITTOKEN':
+			case BAD_EDITTOKEN:
 				$result['result'] = "Error.Edit token is wrong";
 				break;
 
