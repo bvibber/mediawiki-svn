@@ -932,7 +932,7 @@ class CopyTools {
 			if (is_null($value)) {
 				$value="DEFAULT";
 			} else {
-				$value="\"$value\"";
+				$value='"'.mysql_real_escape_string($value).'"';
 			}
 			$sql.=" `$key`=$value";
 			$sql_comma=$sql.",";
@@ -941,7 +941,7 @@ class CopyTools {
 		// Same with the values
 		$result = mysql_query($sql);
 		if (!$result) 
-			throw new Exception("Mysql query failed: $query");
+			throw new Exception("Mysql query failed: $sql");
 
 		if ($result)
 			return true;
@@ -962,7 +962,7 @@ class CopyTools {
 		foreach($my_array as $key=>$value) {
 			if (!is_null($value)) {
 				$sql=$sql_comma;
-				$value="\"$value\"";
+				$value='"'.mysql_real_escape_string($value).'"';
 				$sql.=" `$key`=$value";
 				$sql_comma=$sql.",";
 			}
