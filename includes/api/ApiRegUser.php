@@ -160,13 +160,12 @@ class ApiRegUser extends ApiBase {
 
 	public function execute() {
 		global $wgRequest;
-
+        
 		$resultDetails = null;
 		$value = ApiRegUser::INVALID_GET_REQUEST;
 		if( session_id() == '' ) {
 			wfSetupSession();
 		}
-
 		if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 				extract($this->extractRequestParams());
 				if ( (strlen($user) == 0) && (strlen($password) == 0) && ($this->checkCaptcha()) ) {
