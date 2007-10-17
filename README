@@ -58,3 +58,23 @@ at a time might not be wise. ;)
 
 
 
+This experimental branch attempts to load the notice loader JS in an onload
+event handler instead of during initial page load, so the whole page won't
+get held up while waiting for the JS.
+
+Unfortunately, while it seems to work fine in Firefox, Opera, and even iCab,
+I had trouble in Internet Explorer and Safari.
+
+Safari 2.x and 3.x mysteriously fail to load the NoticeLoader JS when it's
+cached (with using maxage > 0), so you see the notice only on first load
+or after the maxage expires.
+
+IE 6 and 7 fail to load the loader JS at all, and further they explode when
+I try to load in FireBugLite to help debug it. Sigh.
+
+Safari 3.x (tested beta on Windows) also renders the page without the notice
+before loading it, causing visible UI jiggery-pokery even on a fast local
+network, which is mildly annoying.
+
+
+This test branch has some FireBug console calls in the JS for testing.

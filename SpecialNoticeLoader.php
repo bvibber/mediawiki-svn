@@ -25,6 +25,7 @@ class SpecialNoticeLoader extends NoticePage {
 	}
 	
 	function getJsOutput( $par ) {
+//		sleep(5); ///fixme
 		global $wgNoticeTestMode;
 		$loader = $this->loaderScript();
 		if( $wgNoticeTestMode ) {

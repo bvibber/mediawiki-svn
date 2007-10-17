@@ -11,31 +11,54 @@ $wgNoticeTimeout = 0;
 // http://meta.wikimedia.org/wiki/Special:NoticeLoader
 $wgNoticeLoader = 'http://smorgasbord.local/trunk/index.php/Special:NoticeLoader';
 $wgNoticeText = 'http://smorgasbord.local/trunk/index.php/Special:NoticeText';
+$wgNoticeStyle = 'http://smorgasbord.local/trunk/index.php?title=MediaWiki:Centralnotice-style&action=raw&ctype=text/css';
+
 //$wgNoticeEpoch = '20071003183510';
 $wgNoticeEpoch = gmdate( 'YmdHis', @filemtime( dirname( __FILE__ ) . '/SpecialNoticeText.php' ) );
 
 $wgNoticeLang = 'en';
 $wgNoticeProject = 'wikipedia';
 
+$wgHooks['BeforePageDisplay'][] = 'wfCentralNoticeStyleHook';
+
+function wfCentralNoticeStyleHook( $output ) {
+	global $wgNoticeStyle;
+	$output->addLink(
+		array(
+			'rel' => 'stylesheet',
+			'href' => $wgNoticeStyle ) );
+	return true;
+}
+
 function wfCentralNotice( &$notice ) {
 	global $wgNoticeLoader, $wgNoticeLang, $wgNoticeProject;
-
-	$encNoticeLoader = htmlspecialchars( $wgNoticeLoader );
-	$encProject = htmlspecialchars( $wgNoticeProject );
-	$encLang = htmlspecialchars( $wgNoticeLang );
 	
 	// Throw away the classic notice, use the central loader...
-	$notice = <<<EOT
+	
+	$encNoticeLoader = htmlspecialchars( $wgNoticeLoader );
+	$encScript = Xml::encodeJsVar( <<<EOT
 <script type="text/javascript">
-var wgNotice = '';
-var wgNoticeLang = '$encLang';
-var wgNoticeProject = '$encProject';
+console.log("Loading notice...");
 </script>
 <script type="text/javascript" src="$encNoticeLoader"></script>
 <script type="text/javascript">
+console.log("Notice is... " + wgNotice);
 if (wgNotice != '') {
-  document.writeln(wgNotice);
+	document.getElementById('siteNotice').innerHTML = wgNotice;
 }
+</script>
+EOT
+		 );
+	
+	$encProject = Xml::encodeJsVar( $wgNoticeProject );
+	$encLang = Xml::encodeJsVar( $wgNoticeLang );
+	$notice = <<<EOT
+<script type="text/javascript">
+var wgNotice="";
+var wgNoticeLang=$encLang;
+var wgNoticeProject=$encProject;
+console.log("adding hook...");
+addOnloadHook(function(){console.log("running hook...");document.writeln($encScript);});
 </script>
 EOT;
 	
