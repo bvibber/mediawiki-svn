@@ -76,5 +76,8 @@ Safari 3.x (tested beta on Windows) also renders the page without the notice
 before loading it, causing visible UI jiggery-pokery even on a fast local
 network, which is mildly annoying.
 
+Safari and IE 6 also don't grok the <style> when done this way, so I redid
+it to pull the style separately via a proper <link>, which would have to
+be separately maintained and cache-cleared.
 
 This test branch has some FireBug console calls in the JS for testing.
