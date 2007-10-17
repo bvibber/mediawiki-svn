@@ -41,6 +41,7 @@ class ApiEditPage extends ApiBase {
 	const NO_POST_REQUEST					= 003;
 	const GET_CAPTCHA						= 004;
 	const MISSING_CAPTCHA					= 005;
+	const WRONG_REQUEST						= -1;
 	//----------------------------------------
 
     public function __construct($query, $moduleName) {
@@ -82,86 +83,95 @@ class ApiEditPage extends ApiBase {
     	}
 
 		extract($this->extractRequestParams());
-		if ($watch == 'yes'){
-			$params = new FauxRequest(array (
-	       		'wpTitle' 		=> $title,
-	       		'wpTextbox1' 	=> $text,
-	       		'wpSummary'		=> $summary,
-	       		'wpEdittime'	=> $edittime,
-	       		'wplgToken' 	=> $lgtoken,
-	       		'wpUserID'		=> $userid,
-	       		'wpEditToken'	=> $tokenid,
-	       		'wpCaptchaWord' => $captchaword,
-				'wpCaptchaId' 	=> $captchaid,
-				'wpWatchthis'	=> $watch
-	    	));
-		}
-	    else{
-	    	$params = new FauxRequest(array (
-	       		'wpTitle' 		=> $title,
-	       		'wpTextbox1' 	=> $text,
-	       		'wpSummary'		=> $summary,
-	       		'wpEdittime'	=> $edittime,
-	       		'wplgToken' 	=> $lgtoken,
-	       		'wpUserID'		=> $userid,
-	       		'wpEditToken'	=> $tokenid,
-	       		'wpCaptchaWord' => $captchaword,
-				'wpCaptchaId' 	=> $captchaid
-			));
-	    }
-	  	$wgRequest = $params;
-
-	  	if ((strlen($title) == 0) && ($this->checkCaptcha()) ) {
-			$value = 'GET_CAPTCHA';
-		} elseif ($this->checkCaptcha() && ($captchaid == 0)) {
-			$value = 'MISSING_CAPTCHA';
+		if ($title == null){
+			$value = WRONG_REQUEST;
 		}
 		else{
-			// Ensure the correct timestamp format
-			$edittime =eregi_replace("[-,a-z,:]","",$edittime);
-    		$object_title = Title::newFromDBkey($title);
-			$myArticle = new Article($object_title);
-
-        	// User creation since UserID number
-			if ($userid != 0){
-        		$myUser = new User();
-				$myUser->setID($userid);
-				$myUser->loadFromId();
-				$myUser->setCookies();
-		 		$wgUser = $myUser;
-
-		 		if ($lgtoken != $_SESSION['wsToken']){
-					$value = BAD_LGTOKEN;
-				}
+			if ($watch == 'yes'){
+				$params = new FauxRequest(array (
+		       		'wpTitle' 		=> $title,
+		       		'wpTextbox1' 	=> $text,
+		       		'wpSummary'		=> $summary,
+		       		'wpEdittime'	=> $edittime,
+		       		'wplgToken' 	=> $lgtoken,
+		       		'wpUserID'		=> $userid,
+		       		'wpEditToken'	=> $tokenid,
+		       		'wpCaptchaWord' => $captchaword,
+					'wpCaptchaId' 	=> $captchaid,
+					'wpWatchthis'	=> $watch
+		    	));
 			}
+		    else{
+		    	$params = new FauxRequest(array (
+		       		'wpTitle' 		=> $title,
+		       		'wpTextbox1' 	=> $text,
+		       		'wpSummary'		=> $summary,
+		       		'wpEdittime'	=> $edittime,
+		       		'wplgToken' 	=> $lgtoken,
+		       		'wpUserID'		=> $userid,
+		       		'wpEditToken'	=> $tokenid,
+		       		'wpCaptchaWord' => $captchaword,
+					'wpCaptchaId' 	=> $captchaid
+				));
+		    }
+		  	$wgRequest = $params;
 
-			if ($value != 'BAD_LGTOKEN'){
-    			$md5 = $wgUser->editToken();
-      			// This is only to fast testing. So must be cleanned before a Release
-      			$tokenid = $md5;
+		  	if ((strlen($title) == 0) && ($this->checkCaptcha()) ) {
+				$value = 'GET_CAPTCHA';
+			} elseif ($this->checkCaptcha() && ($captchaid == 0)) {
+				$value = 'MISSING_CAPTCHA';
+			}
+			else{
+				// Ensure the correct timestamp format
+				$edittime =eregi_replace("[-,a-z,:]","",$edittime);
+	    		$object_title = Title::newFromDBkey($title);
+				$myArticle = new Article($object_title);
 
-      			// APiEditPage only accepts POST requests
-				if (!$_SERVER['REQUEST_METHOD']){
-      				$value = 'NO_POST_REQUEST';
-      			}
+	        	// User creation since UserID number
+				if ($userid != 0){
+	        		$myUser = new User();
+					$myUser->setID($userid);
+					$myUser->loadFromId();
+					$myUser->setCookies();
+			 		$wgUser = $myUser;
 
-      			else{
-      				$params->wasPosted = true;
-     				if ($md5 != $tokenid){
-						$value = BAD_EDITTOKEN;
-      				}
-			      	else {
-						$editForm = new EditPage($myArticle);
-						$editForm->mTitle = $object_title;
-						$editForm->importFormData($params);
-
-						$resultDetails = false;
-						$value=$editForm->internalAttemptSave( &$resultDetails );
+			 		if ($lgtoken != $_SESSION['wsToken']){
+						$value = BAD_LGTOKEN;
 					}
-    			}
+				}
+
+				if ($value != 'BAD_LGTOKEN'){
+	    			$md5 = $wgUser->editToken();
+	      			// This is only to fast testing. So must be cleanned before a Release
+	      			$tokenid = $md5;
+
+	      			// APiEditPage only accepts POST requests
+					if (!$_SERVER['REQUEST_METHOD']){
+	      				$value = 'NO_POST_REQUEST';
+	      			}
+
+	      			else{
+	      				$params->wasPosted = true;
+	     				if ($md5 != $tokenid){
+							$value = BAD_EDITTOKEN;
+	      				}
+				      	else {
+							$editForm = new EditPage($myArticle);
+							$editForm->mTitle = $object_title;
+							$editForm->importFormData($params);
+
+							$resultDetails = false;
+							$value=$editForm->internalAttemptSave( &$resultDetails );
+						}
+	    			}
+				}
 			}
 		}
 		switch ($value){
+			case WRONG_REQUEST:
+				$result['result'] = 'Error. Wrong request';
+				break;
+
 			case EditPage::AS_END:
 				$result['result'] = 'Conflict detected';
 				break;
@@ -243,12 +253,12 @@ class ApiEditPage extends ApiBase {
 				break;
 
 			case EditPage::AS_FILTERING:
-				
+
 				// Code extracted from SpamBlacklist extension
 				$spam = new SpamBlacklist();
 				$blacklists = $spam->getBlacklists();
 				$whitelists = $spam->getWhitelists();
-	
+
 				if ( count( $blacklists ) ) {
 					# Run parser to strip SGML comments and such out of the markup
 					# This was being used to circumvent the filter (see bug 5185)
@@ -256,7 +266,7 @@ class ApiEditPage extends ApiBase {
 					$text = $wgParser->preSaveTransform( $editForm->textbox1, $editForm->mTitle, $wgUser, $options );
 					$out = $wgParser->parse( $editForm->textbox1, $editForm->mTitle, $options );
 					$links = implode( "\n", array_keys( $out->getExternalLinks() ) );
-	
+
 					# Strip whitelisted URLs from the match
 					if( is_array( $whitelists ) ) {
 						foreach( $whitelists as $regex ) {
