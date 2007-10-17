@@ -1,5 +1,15 @@
 <?php
-#
+/* Copyright (c) 2007 River Tarnell <river@wikimedia.org>.        */
+/*
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
+ */
+
+/* @(#) $Id$ */
+
+
 # To use:
 # 
 # * Make sure remote API is enabled in your JIRA.
@@ -12,6 +22,7 @@
 #           'url' => 'http://whit.local/jira/rpc/soap/jirasoapservice-v2?wsdl',
 #       ),
 #   );
+# * Add to LocalSettings.php: require_once(".../path/to/JIRA.php");
 #
 # Obviously, user, password and url need to be set to the URL of your JIRA
 # installation.  You can configure as many JIRAs as you want.
