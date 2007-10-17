@@ -64,28 +64,11 @@ $messages = array(
 'dec'           => 'Dis',
 
 # Bits of text used by many pages
-'categories'            => 'Mga kategorya',
-'category_header'       => 'Mga pahina sa kategoryang "$1"',
-'subcategories'         => 'Mga subkategorya',
-'category-media-header' => 'Mga midya sa kategoryang "$1"',
-'category-empty'        => "''Kasalukuyang walang artikulo o midya ang kategoryang ito.''",
+'categories'      => 'Mga kategorya',
+'category_header' => 'Mga pahina sa kategoryang "$1"',
 
 'mainpagetext' => "<big>'''Matagumpay na ininstala ang MediaWiki.'''</big>",
 
-'cancel'         => 'Ikansela',
-'qbfind'         => 'Hanapin',
-'qbbrowse'       => 'Basa-basahin',
-'qbedit'         => 'Baguhin',
-'qbpageoptions'  => 'Itong pahina',
-'qbpageinfo'     => 'Konteksto',
-'qbmyoptions'    => 'Aking mga pahina',
-'qbspecialpages' => 'Mga natatanging pahina',
-'mypage'         => 'Aking pahina',
-'mytalk'         => 'Aking usapan',
-'navigation'     => 'Nabigasyon',
-
-'errorpagetitle'   => 'Kamalian',
-'returnto'         => 'Bumalik sa $1.',
 'tagline'          => 'Mula sa {{SITENAME}}',
 'help'             => 'Tulong',
 'search'           => 'Hanapin',
@@ -240,14 +223,6 @@ upang makapagkarga ng talaksan.',
 
 # Block/unblock
 'ipboptions' => '2 oras:2 hours,1 araw:1 day,3 araw:3 days,1 linggo:1 week,2 linggo:2 weeks,1 buwan:1 month,3 buwan:3 months,6 buwan:6 months,1 taon:1 year,walang hanggan:infinite',
-
-# Move page
-'1movedto2'       => 'Ang [[$1]] ay inilipat sa [[$2]]',
-'1movedto2_redir' => 'Ang [[$1]] ay inilipat sa [[$2]] sa ibabaw ng redireksyon',
-
-# Export
-'export'        => 'Magluwas ng pahina',
-'export-submit' => 'Magluwas',
 
 # Namespace 8 related
 'allmessages'        => 'Lahat ng mensahe',

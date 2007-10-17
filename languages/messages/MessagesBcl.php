@@ -795,8 +795,8 @@ Dai babâgohon an mga grupong dai pigpili. Pwede mong bawîon an pagpili sa pagp
 'group-bureaucrat-member'    => 'Bureaucrat',
 
 'grouppage-autoconfirmed' => '{{ns:project}}:Mga enseguidang nakonpirmar na parágamit',
-'grouppage-bot'           => '{{ns:project}}:Mga bot',
-'grouppage-sysop'         => '{{ns:project}}:Mga administrador',
+'grouppage-bot'           => '{{ns:proyekto}}:Mga bot',
+'grouppage-sysop'         => '{{ns:proyekto}}:Mga administrador',
 'grouppage-bureaucrat'    => '{{ns:project}}:Mga bureaucrat',
 
 # User rights log
@@ -917,7 +917,12 @@ An historial nin pagparâ kan ''file'' nakakaag digdi para sa konbenyensya:",
 
 'nolicense'          => 'Mayong pigpilî',
 'license-nopreview'  => '(Mayong patânaw)',
+<<<<<<< .working
 'upload_source_file' => " (sarong ''file'' sa kompyuter mo)",
+=======
+'upload_source_url'  => ' (sarong tama, na bukas sa publikong URL)',
+'upload_source_file' => " (sarong ''file'' sa kompyuter mo)",
+>>>>>>> .merge-right.r26262
 
 # Image list
 'imagelist'                 => 'Lista kan dokumento',
@@ -978,7 +983,6 @@ An historial nin pagparâ kan ''file'' nakakaag digdi para sa konbenyensya:",
 'filedelete-nofile'      => "Mayo man an '''$1''' sa ining sitio.",
 'filedelete-nofile-old'  => "Mayong bersyón na nakaarchibo kan '''$1''' na igwang kan mga piniling ''character''.",
 'filedelete-iscurrent'   => "Pigpoprobaran mong parâon an pinahuring bersyón kaining ''file''. Ibalik tabî muna sa bersyón na mas lumâ.",
-'filedelete-nofile'    => "Mayo man an '''$1''' sa ining sitio.",
 
 # MIME search
 'mimesearch'         => 'Paghanap kan MIME',
@@ -1025,7 +1029,8 @@ Maabot sa '''\$5''' na hira kada páhina sa medio, asin '''\$6''' na paghiling k
 'disambiguationspage'  => 'Template:clarip',
 'disambiguations-text' => "An mga nasunod na páhina nakatakod sa sarong '''páhina nin klaripikasyon'''. Imbis, kaipuhan na nakatakod sinda sa maninigong tema.<br />An páhina pigkokonsiderar na páhina nin klaripikasyon kun naggagamit ini nin templatong nakatakod sa [[MediaWiki:disambiguationspage]]",
 
-'doubleredirects' => 'Dobleng mga redirekta',
+'doubleredirects'     => 'Dobleng mga redirekta',
+'doubleredirectstext' => 'Piglilista kaining pahina an mga pahinang minalikay sa ibang pahinang paralikay. Kada raya may mga takod sa primero asin segundang likay, buda an destino kan segundong likay, na puro-pirme sarong "tunay " na pahinang destino, na dapat duman nakaturo an primerong likay.',
 
 'brokenredirects'        => 'Putol na mga redirekta',
 'brokenredirectstext'    => 'An nagsusunod naglilikay kan takod sa mga pahinang mayo man:',
@@ -1092,6 +1097,7 @@ Maabot sa '''\$5''' na hira kada páhina sa medio, asin '''\$6''' na paghiling k
 'booksources-search-legend' => 'Maghanap nin mga ginikanang libro',
 'booksources-go'            => 'Dumanán',
 'booksources-text'          => "Mahihiling sa babâ an lista kan mga takod sa ibang ''site'' na nagbenbenta nin mga bâgo asin nagamit nang libro, asin pwede ser na igwa pang mga ibang impormasyon manonongod sa mga librong pighahanap mo:",
+>>>>>>> .merge-right.r26262
 
 'categoriespagetext' => 'Igwa an mga minasunod na kategorya sa ining wiki.',
 'data'               => 'Datos',
@@ -1208,7 +1214,7 @@ Kun boot mong halîon an páhina sa pigbabantayan mo sa maabot na panahon, pindo
 'enotif_body'                  => 'Namómòtan na $WATCHINGUSERNAME,
 	
 
-An páhinang {{SITENAME}} na $PAGETITLE binâgo $CHANGEDORCREATED sa $PAGEEDITDATE ni $PAGEEDITOR, hilingón an $PAGETITLE_URL para sa presenteng bersyón.
+An páhinang {{SITENAME}} na $PAGETITLE binâgo $CHANGEDORCREATED sa $PAGEEDITDATE ni $PAGEEDITOR, hilingon an $PAGETITLE_URL para sa presenteng bersyón.
 
 $NEWPAGE
 
@@ -1218,13 +1224,13 @@ Apodon an editor:
 \'\'e\'\'-surat: $PAGEEDITOR_EMAIL
 wiki: $PAGEEDITOR_WIKI
 
-Mayô nang iba pang paisi na ipapadara dapit sa iba pang mga pagbabâgo kun dai mo bibisitahon giraray ining páhina. Pwede mo man na ipwesto giraray an mga patanid para sa saimong mga páhinang pigbabantayan duman sa saimong lista nin pigbabantayan.
+Mayo nang iba pang paisi na ipapadara dapit sa iba pang mga pagbabâgo kun dai mo bibisitahon giraray ining páhina. Pwede mo man na ipwesto giraray an mga patanid para sa saimong mga páhinang pigbabantayan duman sa saimong lista nin pigbabantayan.
 
              An maboot na sistema nin paisi kan {{SITENAME}} 
 
 --
 Para bâgohon an pagpwesto kan saimong mga pigbabantayan, bisitahon an
-{{fullurl:{{ns:special}}:Watchlist/edit}}
+{{fullurl:{{ns:special}}:Lista nin pigbabantayan/hira}}
 
 Komentaryo asin iba pang tabang:
 {{fullurl:{{MediaWiki:helppage}}}}',
@@ -1260,8 +1266,8 @@ Hilingón tabî an $2 para mahiling an lista nin mga kaaagi pa sanang pagparâ.'
 'alreadyrolled'               => 'Dai pwedeng ibalik an huring hirá kan [[:$1]]
 ni [[User:$2|$2]] ([[User talk:$2|Olay]]); may ibang parágamit na naghirá na o nagbalik na kaini.
 
-Huring hirá ni [[User:$3|$3]] ([[User talk:$3|Olay]]).',
-'editcomment'                 => 'Ini an nakakaag na komentaryo sa paghirá: "<i>$1</i>".', # only shown if there is an edit comment
+Huring hira ni [[User:$3|$3]] ([[User talk:$3|Olay]]).',
+'editcomment'                 => 'Ini an nakakaag na komentario sa paghihira: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'                  => 'Binawî na mga paghirá kan [[Special:Contributions/$2|$2]] ([[User talk:$2|Magtaram]]); pigbalik sa dating bersyón ni [[User:$1|$1]]',
 'rollback-success'            => 'Binawî na mga paghirá ni $1; pigbalik sa dating bersyón ni $2.',
 'sessionfailure'              => "Garo may problema sa paglaog mo;
@@ -1314,7 +1320,7 @@ Ini an mga presenteng pwesto kan páhina <strong>$1</strong>:",
 'undeletepage'                 => 'Hilingón asin ibalik an mga pinarang pahina',
 'viewdeletedpage'              => 'Hilingón an mga pinarang pahina',
 'undeletepagetext'             => 'An mga minasunod na páhina pigparâ na alagad yaon pa sa archibo asin pwedeng ibalik. Dapat limpiahan an archibo kada periodo.',
-'undeleteextrahelp'            => "Kun boot mong ibalik an enterong páhina, dai markahan an gabos na mga kahon asin pindoton an '''''Restore'''''. Para magpili nin ibábalik, markahan an mga kahon na boot mong ibalik, asin pindoton an '''''Restore'''''. An pagpindot kan '''''Reset''''' makakalimpya nin kampo kan mga kommento
+'undeleteextrahelp'            => "Kon muya mong ibalik an enterong pahina, dai markahan an gabos na mga kahon asin pindoton an '''''Restore'''''. Para magpili nin ibabalik, markahan an mga kahon na nakaturo sa mga pagriribay na buot mong ibalik, buda pindoton an  '''''Restore'''''. An pagpindot kan '''''Reset''''' makalimpia nin campo kan mga commento
 asin an gabos na mga kahon-marka.",
 'undeleterevisions'            => '$1 {{PLURAL:$1|na pagriribay|na mga pagriribay}} na nakaarchibo',
 'undeletehistory'              => "Kun ibabalik mo an páhinang ini, an gabos na mga pagribay mabalik sa historial.
@@ -1543,7 +1549,6 @@ Igwa nang páhina na "[[$1]]". Gusto mong parâon ini tangarig maibalyó?',
 Para makapadara nin mga páhina, ilaag an mga titulo sa kahon para sa teksto sa babâ, sarong titulo kada linya, dangan pilîon kun boot mo presenteng bersyón asin dating bersyón, na may mga linya kan historya, o an presenteng bersyón sana na may impormasyon manonongod sa huring hirá.
 
 Sa kaso kan huri, pwede ka man na maggamit nin takod, arog kan [[{{ns:Special}}:Export/{{MediaWiki:mainpage}}]] para sa páhinang "[[{{MediaWiki:mainpage}}]]".',
-'exportcuronly'     => 'Mga presenteng pagpakarhay sana an ibali, bakong an enterong historya',
 'exportnohistory'   => "----
 '''Paisi:''' Dai pigpatogotan an pagpadara kan enterong historya kan mga páhina sa paagi kaining forma huli sa mga rasón dapit sa pagsagibo kaini.",
 'export-submit'     => 'Ipaluwás',
@@ -1579,11 +1584,6 @@ Sa kaso kan huri, pwede ka man na maggamit nin takod, arog kan [[{{ns:Special}}:
 'import-interwiki-namespace' => 'Ibalyó an mga páhina sa ngaran-espacio:',
 'importtext'                 => "Ipadara tabì an ''file'' hali sa ginikanan na wiki gamit an Special:Export utility, itagama ini sa saimong disk dangan ikarga iyan digdi.",
 'importstart'                => 'Piglalaog an mga páhina...',
-'import-revision-count'      => '$1 {{PLURAL:$1|pagpakarhay|mga pagpakarhay}}',
-'importnopages'              => 'Mayong mga páhinang ipapadara.',
-'importfailed'               => 'Bakong matriumpo an pagpadara: $1',
-'importunknownsource'        => 'Dai aram an tipo kan gigikanan kan ipapadara',
-'importcantopen'             => "Dai mabukasan an pigpadarang ''file''",
 'importbadinterwiki'         => 'Salâ an takod na interwiki',
 'importnotext'               => 'Mayong laog o mayong teksto',
 'importsuccess'              => 'Matriumpo an pagpadara!',

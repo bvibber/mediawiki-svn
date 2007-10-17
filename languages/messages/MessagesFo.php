@@ -55,7 +55,7 @@ $messages = array(
 'tog-justify'                 => 'Stilla greinpart',
 'tog-hideminor'               => 'Goym minni broytingar í seinast broytt listanum',
 'tog-extendwatchlist'         => 'Víðkað eftirlit',
-'tog-usenewrc'                => 'víðka seinastu broytingar lista<br/>(ikki til alla kagarar)',
+'tog-usenewrc'                => 'víðka seinastu broytingar lista<br />(ikki til alla kagarar)',
 'tog-numberheadings'          => 'Sjálvtalmerking av yvirskrift',
 'tog-showtoolbar'             => 'Vís amboðslinju í rætting',
 'tog-editondblclick'          => 'Rætta síðu við at tvíklikkja (JavaScript)',
@@ -129,7 +129,6 @@ $messages = array(
 'dec'           => 'des',
 
 # Bits of text used by many pages
-'categories'     => 'Bólkar',
 'pagecategories' => '{{PLURAL:$1|Bólkur|Bólkar}}',
 'subcategories'  => 'Undirbólkur',
 
@@ -239,7 +238,6 @@ Tín konto er nú stovnað. Gloym ikki at broyta tínar {{SITENAME}} innstilling
 'image_sample'  => 'Dømi.jpg',
 'media_sample'  => 'Dømi.ogg',
 'sig_tip'       => 'Tín undurskrift við tíðarstempli',
-'hr_tip'        => 'Vatnrøtt linja (vera sparin við)',
 
 # Edit pages
 'summary'          => 'Samandráttur',
@@ -268,7 +266,6 @@ Við at senda arbeiði títt inn, lovar tú, at tú hevur skrivað tað, ella at
 
 # History pages
 'revhistory'       => 'Endurskoðanar søga',
-'loadhist'         => 'Lesur síðusøgu',
 'previousrevision' => '←Eldri endurskoðan',
 'nextrevision'     => 'Nýggjari endurskoðan→',
 'histlegend'       => 'Frágreiðing:<br />
@@ -333,6 +330,7 @@ Við at senda arbeiði títt inn, lovar tú, at tú hevur skrivað tað, ella at
 'ignorewarnings'    => 'Ikki vísa ávaringar',
 'savefile'          => 'Goym fílu',
 'watchthisupload'   => 'Hav eftirlit við hesi síðuni',
+'savefile'       => 'Goym fílu',
 
 # Image list
 'imagelist'      => 'Myndalisti',
@@ -395,18 +393,17 @@ Tú kanst avmarka sýningina við at velja gerðabókaslag, brúkaranavn ella á
 'listusers-noresult' => 'Ongin brúkari var funnin.',
 
 # E-mail user
-'emailuser'       => 'Send t-post til brúkara',
-'emailpage'       => 'Send t-post til brúkara',
-'defemailsubject' => '{{SITENAME}} t-postur',
-'noemailtitle'    => 'Ongin t-post adressa',
-'noemailtext'     => 'Hesin brúkarin hevur ikki upplýst eina gylduga t-post-adressu,
+'emailuser'     => 'Send t-post til brúkara',
+'emailpage'     => 'Send t-post til brúkara',
+'noemailtitle'  => 'Ongin t-post adressa',
+'noemailtext'   => 'Hesin brúkarin hevur ikki upplýst eina gylduga t-post-adressu,
 ella hevur hann valt ikki at taka ímóti t-posti frá øðrum brúkarum.',
-'emailfrom'       => 'Frá',
-'emailto'         => 'Til',
-'emailsubject'    => 'Evni',
-'emailmessage'    => 'Boð',
-'emailsent'       => 'T-postur sendur',
-'emailsenttext'   => 'Títt t-post boð er sent.',
+'emailfrom'     => 'Frá',
+'emailto'       => 'Til',
+'emailsubject'  => 'Evni',
+'emailmessage'  => 'Boð',
+'emailsent'     => 'T-postur sendur',
+'emailsenttext' => 'Títt t-post boð er sent.',
 
 # Watchlist
 'watchlist'            => 'Mítt eftirlit',
@@ -546,13 +543,9 @@ Vinarliga vel eitt annað navn.',
 'watchlistall2' => 'alt',
 'monthsall'     => 'allir',
 
-# action=purge
-'confirm_purge_button' => 'Í lagi',
-
 # Multipage image navigation
 'imgmultipageprev' => '← fyrrverandi síða',
 'imgmultipagenext' => 'næsta síða →',
-'imgmultigo'       => 'Far!',
 
 # Table pager
 'table_pager_next'         => 'Næsta síða',

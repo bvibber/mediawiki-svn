@@ -88,6 +88,7 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
   some browsers.
 * (bug 11574) Add an interface message loginstart, which, similarly to loginend,
   appears just before the login form. Patch by MinuteElectron.
+<<<<<<< .working
 * Do not cache category pages if using 'from' or 'until'
 * Created new hook getUserPermissionsErrors, to go with userCan changes.
 * Diff pages did not properly display css/js pages.
@@ -97,6 +98,8 @@ it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 * (bug 11612) Days to show in recent changes cannot be larger than 7
 * (bug 11131) Change filearchive width/height columns to int for Postgres
 * Support plural in undeleted{revisions,revisions-files,files}
+* (bug 11343) If the database is read-only, ensure that undelete fails.
+
 
 === API changes in 1.12 ===
 
@@ -197,6 +200,7 @@ Full API documentation is available at http://www.mediawiki.org/wiki/API
 * Tamil (ta)
 * Tetun (tet) (new)
 * Tagalog (tl) (new)
+* West Flemish (vls)
 * Walloon (wa)
 * Yiddish (yi)
 * Cantonese (yue)

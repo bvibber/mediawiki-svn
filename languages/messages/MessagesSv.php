@@ -999,10 +999,11 @@ Om du har tillgång till bilden i full storlek, ladda då hellre upp den, annars
 'destfilename'                => 'Nytt filnamn',
 'watchthisupload'             => 'Bevaka sidan',
 'filewasdeleted'              => 'En fil med detta namn har tidigare laddats upp och därefter tagits bort. Du bör kontrollera $1 innan du fortsätter att ladda upp den.',
-'upload-wasdeleted'           => "'''Varning: Du håller på att ladda upp en fil som tidigare har raderats.'''
+'upload-wasdeleted'           => "'''Varning: Du håller på att ladda upp en fil som tidigare raderats.'''
 
-Du bör tänka efter om det är rätt att fortsätta med uppladdningen av filen.
-Raderingsloggen för filen innehåller följande poster:",
+Tänk över om det är lämpligt att fortsätta ladda upp denna fil.
+
+Här finns raderingsloggen för denna fil:",
 'filename-bad-prefix'         => 'Namnet på filen du vill ladda upp börjar med <strong>"$1"</strong>. Filnamnet kommer förmodligen direkt från en digitalkamera och beskriver inte filens innehåll. Välj ett annat filnamn som bättre beskriver filen.',
 'filename-prefix-blacklist'   => ' #<!-- ändra inte den här raden --> <pre>
 # Syntaxen är följande: 
