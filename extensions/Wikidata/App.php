@@ -29,6 +29,7 @@ $wdTermDBDataSet='uw';
 # successfully.
 $wdDefaultViewDataSet='uw';
 $wdShowCopyPanel=false;
+$wdShowEditCopy=true;
 
 $wdGroupDefaultView=array();
 # Here you can set group defaults.
@@ -135,7 +136,7 @@ function modifyTabs($skin, $content_actions) {
 		if($dmid) {
 			$copyTitle=SpecialPage::getTitleFor('Copy');
 			#if(wdIsWikidataNs() && (!$wgUser->isAllowed('editwikidata-'.$dc) || $wdTesting)) {
-			if(wdIsWikidataNs() && $dc!=$wgCommunity_dc) {
+			if(wdIsWikidataNs() && $dc!=$wgCommunity_dc && $wdShowEditCopy) {
 				$content_actions['edit']=array(
 				'class'=>false, 
 				'text'=>'edit copy', 
