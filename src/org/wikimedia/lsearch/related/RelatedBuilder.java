@@ -45,12 +45,11 @@ public class RelatedBuilder {
 	
 	public static void main(String[] args) {
 		String dbname = null;
-		String dumpfile = null;
 		System.out.println("MediaWiki Lucene search indexer - build a map of related articles.\n");
 		
 		Configuration.open();
-		if(args.length > 2 || args.length < 1){
-			System.out.println("Syntax: java RelatedBuilder <dbname> [<dump file>]");
+		if(args.length != 1){
+			System.out.println("Syntax: java RelatedBuilder <dbname>");
 			return;
 		}		
 		dbname = args[0];
@@ -59,15 +58,9 @@ public class RelatedBuilder {
 			System.out.println("Invalid dbname "+iid);
 			return;
 		}
-		if(args.length == 2)
-			dumpfile = args[1];
-		
 		long start = System.currentTimeMillis();
 		try {
-			if(dumpfile != null)
-				rebuildFromDump(dumpfile,iid);
-			else
-				rebuildFromLinksNew(iid);
+			rebuildFromLinksNew(iid);
 		} catch (IOException e) {
 			log.fatal("Rebuild I/O error: "+e.getMessage());
 			e.printStackTrace();
@@ -79,6 +72,7 @@ public class RelatedBuilder {
 		System.out.println("Finished generating related in "+formatTime(end-start));
 	}
 
+	@Deprecated
 	public static void rebuildFromDump(String inputfile, IndexId iid) throws IOException{
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		String langCode = global.getLanguage(iid);
@@ -108,6 +102,7 @@ public class RelatedBuilder {
 	 * Rebuild related articles index for iid
 	 * @throws IOException 
 	 */
+	@Deprecated
 	public static void rebuildFromLinks(IndexId iid) throws IOException {
 		CompactLinks links = new CompactLinks();
 		Links temp = Links.openForRead(iid,iid.getLinks().getImportPath());
@@ -152,10 +147,12 @@ public class RelatedBuilder {
 		store(links,iid);		
 	}
 	
+	/** Calculate from links index */
 	public static void rebuildFromLinksNew(IndexId iid) throws IOException {
 		Links links = Links.openForRead(iid,iid.getLinks().getImportPath());
 		RelatedStorage store = new RelatedStorage(iid);
 		
+		log.info("Rebuilding related mapping from links");
 		Dictionary dict = links.getKeys();
 		Word w;
 		while((w = dict.next()) != null){
@@ -166,8 +163,15 @@ public class RelatedBuilder {
 				int ref = links.getNumInLinks(rel);
 				if(ref == 0)
 					continue;
-				double rscore = links.getRelatedCount(key,rel);				 
-				double score = rscore * rscore/ref;
+				double lscore = links.getRelatedCountAll(key,rel);
+				if(lscore == 0)
+					continue;
+				double rscore = links.getRelatedCountInContext(key,rel);
+				double score;
+				if(lscore == 1 && ref == 1)
+					score = 0.1;
+				else
+					score = rscore * rscore/ref + lscore/ref;
 				if(score >= 0.00001 && ref != 0){
 					related.add(new Related(key,rel,score));
 				}

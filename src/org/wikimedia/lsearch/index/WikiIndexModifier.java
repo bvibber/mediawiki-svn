@@ -26,6 +26,8 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
+import org.wikimedia.lsearch.analyzers.Aggregate;
+import org.wikimedia.lsearch.analyzers.AggregateAnalyzer;
 import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.ContextAnalyzer;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
@@ -442,6 +444,9 @@ public class WikiIndexModifier {
 					Field.Store.NO, Field.Index.UN_TOKENIZED));
 		}
 		
+		// related articles
+		ArrayList<Aggregate> relatedAg = makeRelated(doc,"related",article,iid);
+		
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			FieldNameFactory fields = bs.getFields();
 			
@@ -471,8 +476,7 @@ public class WikiIndexModifier {
 					Field.Store.NO, Field.Index.TOKENIZED); 
 			doc.add(contents);
 			
-			// related articles
-			p = makeRelated(doc,fields.related(),article,1,fields.context());
+			
 			
 			//makeContextField(doc,fields.context(),fields.related());
 			
@@ -490,15 +494,31 @@ public class WikiIndexModifier {
 		}
 		// make analyzer
 		String text = article.getContents();
-		Object[] ret = Analyzers.getIndexerAnalyzer(text,builder,article.getRedirectKeywords(),article.getAnchorText(),article.getRelated(),p,article.makeTitle(),links);
+		Object[] ret = Analyzers.getIndexerAnalyzer(text,builder,article.getRedirectKeywords(),article.getAnchorText(),article.getRelated(),p,article.makeTitle(),links,relatedAg);
 		perFieldAnalyzer = (PerFieldAnalyzerWrapper) ret[0];
 
 		
 		return new Object[] { doc, perFieldAnalyzer };
 	}
+	
+	protected static ArrayList<Aggregate> makeRelated(Document doc, String prefix, Article article, IndexId iid){
+		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
+		for(RelatedTitle rt : article.getRelated()){
+			items.add(new Aggregate(rt.getRelated().getTitle(),transformRelated(rt.getScore()),iid,false));
+		}
+		if(items.size() == 0)
+			return items; // don't add aggregate fields if they are empty
+		doc.add(new Field(prefix,"",Field.Store.NO,Field.Index.TOKENIZED));
+		doc.add(new Field(prefix+"_meta",AggregateAnalyzer.generateMetaField(items),Field.Store.COMPRESS,Field.Index.NO));
+		return items;
+	}
+	
+	protected static float transformRelated(double score){
+		return (float)Math.log10(1+score);
+	}
 
 	/** Returns partioning of related titles, or null if there aren't any */
-	protected static int[] makeRelated(Document doc, String prefix, Article article, float boost, String context) {
+	protected static int[] makeRelatedOld(Document doc, String prefix, Article article, float boost, String context) {
 		ArrayList<RelatedTitle> rel = article.getRelated();
 		if(rel == null || rel.size()==0)
 			return null;

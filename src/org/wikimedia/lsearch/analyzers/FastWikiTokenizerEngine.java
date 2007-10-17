@@ -68,7 +68,7 @@ public class FastWikiTokenizerEngine {
 	public static int KEYWORD_TOKEN_LIMIT = 250;
 	
 	/** Token gap at first section break */ 
-	public static int FIRST_SECTION_GAP = 250;	
+	public static int FIRST_SECTION_GAP = 500;	
 	/** Token gap at any section break */ 
 	public static int SECTION_GAP = 20;	
 	/** Token gap at new paragraphs */ 
@@ -529,8 +529,11 @@ public class FastWikiTokenizerEngine {
 				case ')':
 				case '?':
 				case '!':
+				case ':':
+				case ';':
 					addToken();
-					gap = SENTENCE_GAP;
+					if(gap == 1)
+						gap = SENTENCE_GAP;
 					continue;
 				case '<':
 					addToken();

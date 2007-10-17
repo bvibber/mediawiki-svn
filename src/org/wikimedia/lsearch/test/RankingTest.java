@@ -82,6 +82,10 @@ public class RankingTest {
 				"0:The Hitchhiker's Guide to the Galaxy",
 		});
 		
+		assertHits("douglas adams book",new String[] {
+				"0:The Hitchhiker's Guide to the Galaxy",
+		});
+		
 		assertHits("call me ishmael",new String[]{
 				"0:Moby Dick"
 		});

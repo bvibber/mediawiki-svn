@@ -57,12 +57,13 @@ public class Analyzers {
 	 * @return  {PerFieldAnalyzerWrapper,WikiTokenizer}
 	 */
 	public static Object[] getIndexerAnalyzer(String text, FieldBuilder builder, ArrayList<String> redirects, ArrayList<String> anchors, 
-			ArrayList<RelatedTitle> related, int[] relatedPartition, Title title, Links links) {
+			ArrayList<RelatedTitle> related, int[] relatedPartition, Title title, Links links, ArrayList<Aggregate> relatedAg) {
 		PerFieldAnalyzerWrapper perFieldAnalyzer = new PerFieldAnalyzerWrapper(new SimpleAnalyzer());
 		WikiTokenizer tokenizer = null;
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			tokenizer = addFieldsForIndexing(perFieldAnalyzer, text, bs.getFilters(), bs.getFields(),
-					redirects, anchors, related, relatedPartition, title, links, bs.isExactCase(), bs.isAddKeywords());
+					redirects, anchors, related, relatedPartition, title, links, bs.isExactCase(), bs.isAddKeywords(),
+					relatedAg);
 		} 
 		return new Object[] {perFieldAnalyzer,tokenizer};
 	}
@@ -73,7 +74,8 @@ public class Analyzers {
 	 */
 	public static WikiTokenizer addFieldsForIndexing(PerFieldAnalyzerWrapper perFieldAnalyzer, String text,
 			FilterFactory filters, FieldNameFactory fields, ArrayList<String> redirects, ArrayList<String> anchors,
-			ArrayList<RelatedTitle> related, int[] relatedPartition, Title title, Links links, boolean exactCase, boolean addKeywords) {
+			ArrayList<RelatedTitle> related, int[] relatedPartition, Title title, Links links, boolean exactCase, boolean addKeywords,
+			ArrayList<Aggregate> relatedAg) {
 		// parse wiki-text to get categories
 		WikiTokenizer tokenizer = new WikiTokenizer(text,filters.getIndexId(),exactCase);
 		tokenizer.tokenize();
@@ -114,8 +116,9 @@ public class Analyzers {
 		setKeywordAnalyzer(perFieldAnalyzer,fields.anchor(), 
 				new KeywordsAnalyzer(anchors,filters,fields.anchor(),exactCase));
 		// related
-		setRelatedAnalyzer(perFieldAnalyzer,fields.related(), 
-				new RelatedAnalyzer(related,relatedPartition,filters.getNoStemmerFilterFactory(),fields.related(),exactCase));
+		perFieldAnalyzer.addAnalyzer("related",new AggregateAnalyzer(relatedAg));
+		/*setRelatedAnalyzer(perFieldAnalyzer,fields.related(), 
+				new RelatedAnalyzer(related,relatedPartition,filters.getNoStemmerFilterFactory(),fields.related(),exactCase)); */
 		// context
 		/*setContextAnalyzer(perFieldAnalyzer,fields.context(), 
 				new ContextAnalyzer(title,links,related,relatedPartition,filters.getNoStemmerFilterFactory(),fields.context(),exactCase)); */

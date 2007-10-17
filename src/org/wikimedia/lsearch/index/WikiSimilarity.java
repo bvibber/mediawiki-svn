@@ -45,7 +45,6 @@ public class WikiSimilarity extends DefaultSimilarity {
 			return super.lengthNorm(fieldName,numTokens);
 		
 	}
-
 	
 
 }

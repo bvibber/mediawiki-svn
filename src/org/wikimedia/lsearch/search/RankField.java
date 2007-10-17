@@ -54,7 +54,7 @@ public class RankField {
 					e.printStackTrace();
 				}
 			}
-			log.info("Finished caching rank source for "+reader);
+			log.info("Finished caching rank source for "+reader.directory());
 		}
 		
 		/** Get number of references to docid (rank) */

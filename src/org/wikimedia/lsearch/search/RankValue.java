@@ -11,7 +11,7 @@ public class RankValue implements ScoreValue {
 	protected float coefficient;
 	
 	public RankValue(){
-		this(15);
+		this(20);
 	}
 	
 	public RankValue(float coefficient){
@@ -23,9 +23,17 @@ public class RankValue implements ScoreValue {
 		src = RankField.getCachedSource(reader);
 	}
 	
+	public float score(int docid, int scale){
+		float rank = src.get(docid);
+		return (float) (1 + Math.log(1+rank/coefficient)/Math.log(scale));
+	}
+	
 	/** Get a rank-based score for docid */
 	public float score(int docid){
-		float rank = src.get(docid);
-		return (float) (1 + Math.log(1+rank/coefficient)/Math.log(4));
+		return score(docid,4);
+	}
+	
+	public int value(int docid){
+		return src.get(docid);
 	}
 }

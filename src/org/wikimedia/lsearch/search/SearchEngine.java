@@ -128,6 +128,7 @@ public class SearchEngine {
 	
 	/** Convert User:Rainman into 2:Rainman  */
 	protected String getKey(String title, IndexId iid){
+		title = title.replace('_',' ');
 		int colon = title.indexOf(':');
 		if(colon != -1 && colon != title.length()-1){
 			String ns = title.substring(0,colon);

@@ -30,9 +30,12 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.index.TermDocs;
 import org.apache.lucene.index.TermEnum;
+import org.apache.lucene.search.BooleanClause;
+import org.apache.lucene.search.BooleanQuery;
 import org.apache.lucene.search.Hits;
 import org.apache.lucene.search.IndexSearcher;
 import org.apache.lucene.search.PhraseQuery;
+import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.RAMDirectory;
 import org.wikimedia.lsearch.analyzers.SplitAnalyzer;
@@ -556,13 +559,41 @@ public class Links {
 	}
 	
 	/** return how many times article key1 and key2 cooccur in same context */ 
-	public int getRelatedCount(String key1, String key2) throws IOException {
+	public int getRelatedCountInContext(String key1, String key2) throws IOException {
 		ensureRead();
 		PhraseQuery pq = new PhraseQuery();
 		pq.add(new Term("links",key1));
 		pq.add(new Term("links",key2));
 		pq.setSlop(SplitAnalyzer.GROUP_GAP/2);
 		return searcher.search(pq).length();
+	}
+	
+	/** return how many times article key1 and key2 cooccur in any article */ 
+	public int getRelatedCountAll(String key1, String key2) throws IOException {
+		ensureRead();
+		// works as an optimized boolean query on key1, key2
+		int count = 0;
+		TermDocs td1 = reader.termDocs(new Term("links",key1));
+		TermDocs td2 = reader.termDocs(new Term("links",key2));
+		TermDocs first = td1;
+		TermDocs other = td2;
+		if(!first.next())
+			return 0;
+		while(true){
+			if(!other.skipTo(first.doc()))
+				return count;
+			if(first.doc() == other.doc()){
+				count++; // match!!
+				if(!first.next())
+					return count;
+			} else{
+				// swap, in next iteration skip to the other.docid
+				TermDocs t = first;
+				first = other;
+				other = t;
+			}
+			
+		}
 	}
 	
 	/** return how many times article key1 and key2 cooccur in same context */ 
