@@ -1,38 +1,3 @@
-ALTER TABLE `archive` ENGINE = MyISAM;
-ALTER TABLE `categorylinks` ENGINE = MyISAM;
-ALTER TABLE `externallinks` ENGINE = MyISAM;
-ALTER TABLE `filearchive` ENGINE = MyISAM;
-ALTER TABLE `image` ENGINE = MyISAM;
-ALTER TABLE `imagelinks` ENGINE = MyISAM;
-ALTER TABLE `interwiki` ENGINE = MyISAM;
-ALTER TABLE `ipblocks` ENGINE = MyISAM;
-ALTER TABLE `job` ENGINE = MyISAM;
-ALTER TABLE `langlinks` ENGINE = MyISAM;
-ALTER TABLE `logging` ENGINE = MyISAM;
-ALTER TABLE `math` ENGINE = MyISAM;
-ALTER TABLE `namespace` ENGINE = MyISAM;
-ALTER TABLE `namespace_names` ENGINE = MyISAM;
-ALTER TABLE `objectcache` ENGINE = MyISAM;
-ALTER TABLE `oldimage` ENGINE = MyISAM;
-ALTER TABLE `page` ENGINE = MyISAM;
-ALTER TABLE `page_restrictions` ENGINE = MyISAM;
-ALTER TABLE `pagelinks` ENGINE = MyISAM;
-ALTER TABLE `querycache` ENGINE = MyISAM;
-ALTER TABLE `querycache_info` ENGINE = MyISAM;
-ALTER TABLE `querycachetwo` ENGINE = MyISAM;
-ALTER TABLE `recentchanges` ENGINE = MyISAM;
-ALTER TABLE `redirect` ENGINE = MyISAM;
-ALTER TABLE `revision` ENGINE = MyISAM;
-ALTER TABLE `site_stats` ENGINE = MyISAM;
-ALTER TABLE `templatelinks` ENGINE = MyISAM;
-ALTER TABLE `text` ENGINE = MyISAM;
-ALTER TABLE `trackbacks` ENGINE = MyISAM;
-ALTER TABLE `transcache` ENGINE = MyISAM;
-ALTER TABLE `user` ENGINE = MyISAM;
-ALTER TABLE `user_groups` ENGINE = MyISAM;
-ALTER TABLE `user_newtalk` ENGINE = MyISAM;
-ALTER TABLE `watchlist` ENGINE = MyISAM;
-
 ALTER TABLE page MODIFY COLUMN page_restrictions TINYBLOB DEFAULT NULL;
 ALTER TABLE page MODIFY COLUMN page_random DOUBLE UNSIGNED NOT NULL DEFAULT 0;
 ALTER TABLE page MODIFY COLUMN page_latest INT(8) UNSIGNED NOT NULL DEFAULT 0;
@@ -74,7 +39,7 @@ CREATE TABLE language (
   iso639_3 varchar(10) collate utf8_bin NOT NULL default '',
   wikimedia_key varchar(10) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (language_id)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 INSERT INTO language (language_id,dialect_of_lid,iso639_2,iso639_3,wikimedia_key) VALUES 
  (84,0,'','','bg'),
@@ -109,7 +74,7 @@ CREATE TABLE language_names (
   language_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (language_id,name_language_id),
   KEY language_id (language_id)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO language_names (language_id,name_language_id,language_name) VALUES 
  (84,85,'Bulgarian'),
@@ -165,6 +130,12 @@ CREATE TABLE wikidata_sets (
   set_prefix varchar(20) default NULL,
   set_fallback_name varchar(255) default NULL,
   set_dmid int(10) default NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+CREATE TABLE script_log (
+  `script_id` int(11) NOT NULL default '0',
+  `time` datetime NOT NULL default '0000-00-00 00:00:00',
+  `script_name` varchar(128) collate utf8_bin NOT NULL default '',
+  `comment` varchar(128) collate utf8_bin NOT NULL default ''
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  

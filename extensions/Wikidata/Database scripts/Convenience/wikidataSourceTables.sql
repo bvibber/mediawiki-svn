@@ -10,14 +10,14 @@ CREATE TABLE /*$wgWDprefix*/alt_meaningtexts (
   KEY `versioned_start_meaning` (`add_transaction_id`,`meaning_mid`,`meaning_text_tcid`,`source_id`),
   KEY `versioned_start_text` (`add_transaction_id`,`meaning_text_tcid`,`meaning_mid`,`source_id`),
   KEY `versioned_start_source` (`add_transaction_id`,`source_id`,`meaning_mid`,`meaning_text_tcid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE /*$wgWDprefix*/bootstrapped_defined_meanings (
   `name` varchar(255) NOT NULL,
   `defined_meaning_id` int(11) NOT NULL,
   KEY `unversioned_meaning` (`defined_meaning_id`),
   KEY `unversioned_name` (`name` (255),`defined_meaning_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- object_id - key for the attribute, used elsewhere as a foreign key
 -- class_mid - which class (identified by DMID) has this attribute?
@@ -39,7 +39,7 @@ CREATE TABLE /*$wgWDprefix*/class_attributes (
   KEY `versioned_start_class` (`add_transaction_id`,`class_mid`,`attribute_mid`,`object_id`),
   KEY `versioned_start_attribute` (`add_transaction_id`,`attribute_mid`,`class_mid`,`object_id`),
   KEY `versioned_start_object` (`add_transaction_id`,`object_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE /*$wgWDprefix*/class_membership (
   `class_membership_id` int(11) NOT NULL,
@@ -53,7 +53,7 @@ CREATE TABLE /*$wgWDprefix*/class_membership (
   KEY `versioned_start_class` (`add_transaction_id`,`class_mid`,`class_member_mid`),
   KEY `versioned_start_class_member` (`add_transaction_id`,`class_member_mid`,`class_mid`),
   KEY `versioned_start_class_membership` (`add_transaction_id`,`class_membership_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE /*$wgWDprefix*/collection_contents (
   `collection_id` int(10) NOT NULL default '0',
@@ -68,12 +68,12 @@ CREATE TABLE /*$wgWDprefix*/collection_contents (
   KEY `versioned_start_collection` (`add_transaction_id`,`collection_id`,`member_mid`),
   KEY `versioned_start_collection_member` (`add_transaction_id`,`member_mid`,`collection_id`),
   KEY `versioned_start_internal_id` (`add_transaction_id`,`internal_member_id`,`collection_id`,`member_mid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/collection_language (
   `collection_id` int(10) NOT NULL default '0',
   `language_id` int(10) NOT NULL default '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/collection (
   `collection_id` int(10) unsigned NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE /*$wgWDprefix*/collection (
   KEY `versioned_start_collection` (`add_transaction_id`,`collection_id`,`collection_mid`),
   KEY `versioned_start_collection_meaning` (`add_transaction_id`,`collection_mid`,`collection_id`),
   KEY `versioned_start_collection_type` (`add_transaction_id`,`collection_type` (4),`collection_id`,`collection_mid`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/defined_meaning (
   `defined_meaning_id` int(8) unsigned NOT NULL,
@@ -101,7 +101,7 @@ CREATE TABLE /*$wgWDprefix*/defined_meaning (
   KEY `versioned_start_meaning` (`add_transaction_id`,`defined_meaning_id`,`expression_id`),
   KEY `versioned_start_expression` (`add_transaction_id`,`expression_id`,`defined_meaning_id`),
   KEY `versioned_start_meaning_text` (`add_transaction_id`,`meaning_text_tcid`,`defined_meaning_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/expression (
   `expression_id` int(10) unsigned NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE /*$wgWDprefix*/expression (
   KEY `versioned_start_expression` (`add_transaction_id`,`expression_id`,`language_id`),
   KEY `versioned_start_language` (`add_transaction_id`,`language_id`,`expression_id`),
   KEY `versioned_start_spelling` (`add_transaction_id`,`spelling`,`expression_id`,`language_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/meaning_relations (
   `relation_id` int(11) NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE /*$wgWDprefix*/meaning_relations (
   KEY `versioned_start_outgoing` (`add_transaction_id`,`meaning1_mid`,`relationtype_mid`,`meaning2_mid`),
   KEY `versioned_start_incoming` (`add_transaction_id`,`meaning2_mid`,`relationtype_mid`,`meaning1_mid`),
   KEY `versioned_start_relation` (`add_transaction_id`,`relation_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/objects (
   `object_id` int(11) NOT NULL auto_increment,
@@ -140,7 +140,7 @@ CREATE TABLE /*$wgWDprefix*/objects (
   PRIMARY KEY  (`object_id`),
   KEY `table` (`table`),
   KEY `original_id` (`original_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 -- attribute_id - refers to the object_id from xx_class_attributes
 CREATE TABLE /*$wgWDprefix*/option_attribute_options (
@@ -156,7 +156,7 @@ CREATE TABLE /*$wgWDprefix*/option_attribute_options (
   KEY `versioned_start_option` (`add_transaction_id`,`option_mid`,`attribute_id`,`option_id`),
   KEY `versioned_start_attribute` (`add_transaction_id`,`attribute_id`,`option_id`,`option_mid`),
   KEY `versioned_start_id` (`add_transaction_id`,`option_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/option_attribute_values (
   `value_id` int(11) NOT NULL default '0',
@@ -170,14 +170,7 @@ CREATE TABLE /*$wgWDprefix*/option_attribute_values (
   KEY `versioned_start_object` (`add_transaction_id`,`object_id`,`option_id`,`value_id`),
   KEY `versioned_start_option` (`add_transaction_id`,`option_id`,`object_id`,`value_id`),
   KEY `versioned_start_value` (`add_transaction_id`,`value_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
-CREATE TABLE /*$wgWDprefix*/script_log (
-  `script_id` int(11) NOT NULL default '0',
-  `time` datetime NOT NULL default '0000-00-00 00:00:00',
-  `script_name` varchar(128) collate utf8_bin NOT NULL default '',
-  `comment` varchar(128) collate utf8_bin NOT NULL default ''
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/syntrans (
   `syntrans_sid` int(10) NOT NULL default '0',
@@ -192,14 +185,14 @@ CREATE TABLE /*$wgWDprefix*/syntrans (
   KEY `versioned_start_syntrans` (`add_transaction_id`,`syntrans_sid`),
   KEY `versioned_start_expression` (`add_transaction_id`,`expression_id`,`identical_meaning`,`defined_meaning_id`),
   KEY `versioned_start_defined_meaning` (`add_transaction_id`,`defined_meaning_id`,`identical_meaning`,`expression_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/text (
   `text_id` int(8) unsigned NOT NULL auto_increment,
   `text_text` mediumblob NOT NULL,
   `text_flags` tinyblob default NULL,
   PRIMARY KEY  (`text_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/text_attribute_values (
   `value_id` int(11) NOT NULL,
@@ -214,7 +207,7 @@ CREATE TABLE /*$wgWDprefix*/text_attribute_values (
   KEY `versioned_start_object` (`add_transaction_id`,`object_id`,`attribute_mid`,`value_id`),
   KEY `versioned_start_attribute` (`add_transaction_id`,`attribute_mid`,`object_id`,`value_id`),
   KEY `versioned_start_value` (`add_transaction_id`,`value_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE /*$wgWDprefix*/transactions (
   `transaction_id` int(11) NOT NULL auto_increment,
@@ -224,7 +217,7 @@ CREATE TABLE /*$wgWDprefix*/transactions (
   `comment` tinyblob NOT NULL,
   PRIMARY KEY  (`transaction_id`),
   KEY `user` (`user_id`,`transaction_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE /*$wgWDprefix*/translated_content (
   `translated_content_id` int(11) NOT NULL default '0',
@@ -236,7 +229,7 @@ CREATE TABLE /*$wgWDprefix*/translated_content (
   KEY `versioned_end_text` (`remove_transaction_id`,`text_id`,`translated_content_id`,`language_id`),
   KEY `versioned_start_translated_content` (`add_transaction_id`,`translated_content_id`,`language_id`,`text_id`),
   KEY `versioned_start_text` (`add_transaction_id`,`text_id`,`translated_content_id`,`language_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE /*$wgWDprefix*/translated_content_attribute_values (
   `value_id` int(11) NOT NULL default '0',
@@ -253,7 +246,7 @@ CREATE TABLE /*$wgWDprefix*/translated_content_attribute_values (
   KEY `versioned_start_attribute` (`add_transaction_id`,`attribute_mid`,`object_id`,`value_tcid`),
   KEY `versioned_start_translated_content` (`add_transaction_id`,`value_tcid`,`value_id`),
   KEY `versioned_start_value` (`add_transaction_id`,`value_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE /*$wgWDprefix*/url_attribute_values (
   `value_id` int(11) NOT NULL,
@@ -269,5 +262,5 @@ CREATE TABLE /*$wgWDprefix*/url_attribute_values (
   KEY `versioned_start_object` (`add_transaction_id`,`object_id`,`attribute_mid`,`value_id`),
   KEY `versioned_start_attribute` (`add_transaction_id`,`attribute_mid`,`object_id`,`value_id`),
   KEY `versioned_start_value` (`add_transaction_id`,`value_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;	
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;	
 
