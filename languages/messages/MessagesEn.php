@@ -97,6 +97,8 @@ $namespaceNames = array(
 	NS_HELP_TALK        => 'Help_talk',
 	NS_CATEGORY         => 'Category',
 	NS_CATEGORY_TALK    => 'Category_talk',
+	NS_SET		    => 'Set',
+	NS_SET_TALK	    => 'Set_talk',
 );
 
 /**
@@ -327,6 +329,8 @@ $magicWords = array(
 	'directionmark'          => array( 1,    'DIRECTIONMARK', 'DIRMARK' ),
 	'language'               => array( 0,    '#LANGUAGE:'             ),
 	'contentlanguage'        => array( 1,    'CONTENTLANGUAGE', 'CONTENTLANG' ),
+	'languagespace'		 => array( 1,    'LANGUAGESPACE', 'LANGSPACE' ),
+	'userlanguage'		 => array( 1,    'USERLANGUAGE', 'USERLANG'),
 	'pagesinnamespace'       => array( 1,    'PAGESINNAMESPACE:', 'PAGESINNS:' ),
 	'numberofadmins'         => array( 1,    'NUMBEROFADMINS'         ),
 	'formatnum'              => array( 0,    'FORMATNUM'              ),

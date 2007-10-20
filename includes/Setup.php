@@ -172,6 +172,7 @@ if($wgMetaNamespace === FALSE) {
 # These are now the same, always
 # To determine the user language, use $wgLang->getCode()
 $wgContLanguageCode = $wgLanguageCode;
+# They are not the same when wgLanguageTag = true
 
 wfProfileOut( $fname.'-misc1' );
 wfProfileIn( $fname.'-memcached' );
@@ -227,6 +228,9 @@ if ( !$wgDBservers ) {
 
 $wgLoadBalancer = new StubObject( 'wgLoadBalancer', 'LoadBalancer', 
 	array( $wgDBservers, false, $wgMasterWaitTimeout, true ) );
+
+if(array_key_exists('uselang',$_REQUEST)) $wgContLanguageCode=$_REQUEST['uselang'];
+
 $wgContLang = new StubContLang;
 
 // Now that variant lists may be available...

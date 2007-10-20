@@ -15,6 +15,9 @@ function wfOpenElement( $element, $attribs = null ) {
 function wfCloseElement( $element ) {
 	return "</$element>";
 }
+function HTMLlanguagefilterselector($selected = '', $allnamespaces = null, $includehidden=false) {
+        return Xml::languagefilterSelector( $selected, $allnamespaces, $includehidden );
+}
 function HTMLnamespaceselector($selected = '', $allnamespaces = null, $includehidden=false) {
 	return Xml::namespaceSelector( $selected, $allnamespaces, $includehidden );
 }

@@ -139,6 +139,15 @@ class SkinTemplate extends Skin {
 		$fname = 'SkinTemplate::outputPage';
 		wfProfileIn( $fname );
 
+		global $wgLanguageTag;
+		$code=$wgTitle->getLanguageCode();
+		if($wgLanguageTag && false !== ($lid = wgLanguageId($code)))  {
+			$code = wgLanguageWikimedia($code);
+		}
+	 	if($code!=$wgContLanguageCode) {
+			$wgContLang=Language::factory($code);
+		}
+
 		// Hook that allows last minute changes to the output page, e.g.
 		// adding of CSS or Javascript by extensions.
 		wfRunHooks( 'BeforePageDisplay', array( &$out ) );
@@ -270,15 +279,19 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'scriptpath', $wgScriptPath );
 		$tpl->setRef( 'serverurl', $wgServer );
 		$tpl->setRef( 'logopath', $wgLogo );
-		$tpl->setRef( "lang", $wgContLanguageCode );
-		$tpl->set( 'dir', $wgContLang->isRTL() ? "rtl" : "ltr" );
-		$tpl->set( 'rtl', $wgContLang->isRTL() );
+		$tpl->set( "lang", $wgContLanguageCode=='und'?'':$wgContLanguageCode);
+		$tpl->set( 'dir', $wgLang->isRTL() ? "rtl" : "ltr" );
+		$tpl->set( 'rtl', $wgLang->isRTL() );
+		if($wgContLang->isRTL()!=$wgLang->isRTL()||1)
+		$tpl->set( 'contentdir', $wgContLang->isRTL() ? "rtl" : "ltr");
+		$tpl->set( 'lang', $wgContLang->getCode()=='und'?'':$wgContLang->getCode());
 		$tpl->set( 'langname', $wgContLang->getLanguageName( $wgContLanguageCode ) );
 		$tpl->set( 'showjumplinks', $wgUser->getOption( 'showjumplinks' ) );
 		$tpl->set( 'username', $wgUser->isAnon() ? NULL : $this->username );
 		$tpl->setRef( 'userpage', $this->userpage);
 		$tpl->setRef( 'userpageurl', $this->userpageUrlDetails['href']);
-		$tpl->set( 'userlang', $wgLang->getCode() );
+		$userlang=
+		$tpl->set( 'userlang', $wgLang->getCode()=='und'?'':$wgLang->getCode() );
 		$tpl->set( 'pagecss', $this->setupPageCss() );
 		$tpl->setRef( 'usercss', $this->usercss);
 		$tpl->setRef( 'userjs', $this->userjs);
@@ -411,6 +424,38 @@ class SkinTemplate extends Skin {
 
 		# Language links
 		$language_urls = array();
+
+		// FIXME!  Move to Skin.php?
+		// Should do one query, use makeTitle, and have an optional page_title (if page_id is null/0)
+                global $wgLanguageTag;
+		if($wgLanguageTag) if(!(array_key_exists('action',$_REQUEST) && $_REQUEST['action']=='edit')) {
+			global $wgLanguageNames,$wgLanguageIds;
+                        $dbr =& wfGetDB( DB_SLAVE );
+                        $x=$dbr->select('pagesets',array('set_id'),array('page_id'=>$this->mTitle->mArticleID));
+			$y=$dbr->fetchRow($x); $set_id=$y[0];
+			if($this->mTitle->mNamespace===NS_SET) {
+				if($this->mTitle->mArticleID) if(!$_REQUEST['action']) $wgOut->mBodytext.="\n<hr>";//<h3>set</h3>";
+				$set_id = $this->mTitle->mArticleID;
+			}
+			if($this->mTitle->mNamespace===NS_IMAGE) { 
+                         $x=$dbr->select(array('page','langtags'),array('page_language','page_namespace','page_title','display_name','tag_name'),
+					 array(0=>'page_language=language_id','page_title'=>$this->mTitle->mDbkeyform,'page_namespace'=>NS_IMAGE),null,array('ORDER BY'=>'display_name'));
+			} else if($set_id) 
+       	                 $x=$dbr->select(array('pagesets','page','langtags'),array('page_language','page_namespace','page_title','display_name','tag_name'),
+					 array(0=>'page_language=language_id AND pagesets.page_id=page.page_id','set_id'=>$set_id),null,array('ORDER BY'=>'display_name'));
+//  set_id=page.page_id OR (pagesets.page_id=page.page_id AND page_language is null AND language_id is null)',
+                        while($row=$dbr->fetchObject($x)) {
+				$wgLanguageNames[$row->page_language]=$row->display_name;
+				$wgLanguageIds[$row->page_language]=$row->tag_name;
+				$text = $row->display_name; // $tis->mTextform;
+				if($row->page_namespace == NS_SET) $text.=" - set";
+				$ts = Title::makeTitle( $row->page_namespace, $row->page_title, $row->page_language);
+				if($this->mTitle->mNamespace==NS_SET) { if(!$_REQUEST['action']) $wgOut->mBodytext.="\n ".$this->makeKnownLinkObj($ts).'<br>'; }
+				else $language_urls[] = array ('href'=> $ts->getFullURL(), 'text'=>$text, 'class'=>'interlang-'.$ts->mLanguageCode);
+			}
+                }
+
+
 
 		if ( !$wgHideInterlanguageLinks ) {
 			foreach( $wgOut->getLanguageLinks() as $l ) {
@@ -978,7 +1023,9 @@ class SkinTemplate extends Skin {
 			$siteargs .= '&ts=' . $wgUser->mTouched;
 		}
 
-		if( $wgContLang->isRTL() ) {
+		global $wgLang;
+		if( $wgLang->isRTL() || $wgContLang->isRTL()) {
+//		if( $wgContLang->isRTL() ) {
 			global $wgStyleVersion;
 			$sitecss .= "@import \"$wgStylePath/$this->stylename/rtl.css?$wgStyleVersion\";\n";
 		}

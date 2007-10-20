@@ -26,6 +26,9 @@ class WatchedItem {
 		$wl->ns = $title->getNamespace();
 
 		$wl->ti = $title->getDBkey();
+
+		$wl->lang = $title->getLanguage();
+
 		return $wl;
 	}
 
@@ -51,26 +54,30 @@ class WatchedItem {
 		$fname = 'WatchedItem::addWatch';
 		wfProfileIn( $fname );
 
+		$fields = array (
+			'wl_user' => $this->id,
+			'wl_title' => $this->ti,
+			'wl_notificationtimestamp' => NULL
+		);
+
+		global $wgLanguageTag; if($wgLanguageTag) {
+                   $fields['wl_language']=$this->mTitle->mLanguage;
+		}
+ 
 		// Use INSERT IGNORE to avoid overwriting the notification timestamp
 		// if there's already an entry for this page
 		$dbw = wfGetDB( DB_MASTER );
+		$fields['wl_namespace'] = $this->ns & ~1;
 		$dbw->insert( 'watchlist',
-		  array(
-		    'wl_user' => $this->id,
-			'wl_namespace' => ($this->ns & ~1),
-			'wl_title' => $this->ti,
-			'wl_notificationtimestamp' => NULL
-		  ), $fname, 'IGNORE' );
+			$fields,
+			$fname, 'IGNORE' );
 
 		// Every single watched page needs now to be listed in watchlist;
 		// namespace:page and namespace_talk:page need separate entries:
+		$fields['wl_namespace'] = $this->ns | 1;
 		$dbw->insert( 'watchlist',
-		  array(
-			'wl_user' => $this->id,
-			'wl_namespace' => ($this->ns | 1 ),
-			'wl_title' => $this->ti,
-			'wl_notificationtimestamp' => NULL
-		  ), $fname, 'IGNORE' );
+		  	$fields,
+			$fname, 'IGNORE' );
 
 		wfProfileOut( $fname );
 		return true;

@@ -105,6 +105,8 @@ class LinkCache {
 	function addLinkObj( &$nt ) {
 		global $wgMemc, $wgLinkCacheMemcached, $wgAntiLockFlags;
 		$title = $nt->getPrefixedDBkey();
+		//  global $wgLanguageTag; if($wgLanguageTag && empty($nt->mLanguage)) $title=$nt->mTextform;
+
 		if ( $this->isBadLink( $title ) ) { return 0; }
 		$id = $this->getGoodLinkID( $title );
 		if ( 0 != $id ) { return $id; }
@@ -141,9 +143,15 @@ class LinkCache {
 				$options = array();
 			}
 
+			$conds=array( 'page_namespace' => $ns, 'page_title' => $t );
+			global $wgLanguageTag; if($wgLanguageTag) {
+				if(strlen($nt->getLanguage())) $conds['page_language']=$nt->getLanguage();
+				else $conds[]='page_language is null';	
+			}
 			$id = $db->selectField( 'page', 'page_id',
-					array( 'page_namespace' => $ns, 'page_title' => $t ),
+					$conds,
 					$fname, $options );
+
 			if ( !$id ) {
 				$id = 0;
 			}
@@ -156,6 +164,7 @@ class LinkCache {
 		} else {
 			$this->addGoodLinkObj( $id, $nt );
 		}
+
 		wfProfileOut( $fname );
 		return $id;
 	}

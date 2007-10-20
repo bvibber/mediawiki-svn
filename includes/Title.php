@@ -63,6 +63,9 @@ class Title {
 	var $mDefaultNamespace;   	# Namespace index when there is no namespace
 	                    		# Zero except in {{transclusion}} tags
 	var $mWatched;      		# Is $wgUser watching this page? NULL if unfilled, accessed through userIsWatching()
+        var $mLanguageCode;     # Language code
+        var $mLanguage;		# Language index
+
 	/**#@-*/
 
 
@@ -137,7 +140,7 @@ class Title {
 		$t = new Title();
 		$t->mDbkeyform = str_replace( ' ', '_', $filteredText );
 		$t->mDefaultNamespace = $defaultNamespace;
-
+		$t->mUserCaseDBKey = $t->mDbkeyform;
 		static $cachedcount = 0 ;
 		if( $t->secureAndSplit() ) {
 			if( $defaultNamespace == NS_MAIN ) {
@@ -193,13 +196,17 @@ class Title {
 	public static function newFromID( $id ) {
 		$fname = 'Title::newFromID';
 		$dbr = wfGetDB( DB_SLAVE );
-		$row = $dbr->selectRow( 'page', array( 'page_namespace', 'page_title' ),
+                global $wgLanguageTag; 
+		$fields = array( 'page_namespace', 'page_title' );
+		if($wgLanguageTag) $fields[]='page_language';
+		$row = $dbr->selectRow( 'page', $fields,
 			array( 'page_id' => $id ), $fname );
 		if ( $row !== false ) {
-			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+			$title = Title::makeTitle( $row->page_namespace, $row->page_title, $wgLanguageTag ? $row->page_language : false);
 		} else {
 			$title = NULL;
 		}
+
 		return $title;
 	}
 
@@ -208,12 +215,13 @@ class Title {
 	 */
 	public static function newFromIDs( $ids ) {
 		$dbr = wfGetDB( DB_SLAVE );
-		$res = $dbr->select( 'page', array( 'page_namespace', 'page_title' ),
+                global $wgLanguageTag; $lang = $wgLanguageTag ? array('page_language') : array();
+		$res = $dbr->select( 'page', array_merge(array( 'page_namespace', 'page_title' ) , $lang),
 			'page_id IN (' . $dbr->makeList( $ids ) . ')', __METHOD__ );
 
 		$titles = array();
 		while ( $row = $dbr->fetchObject( $res ) ) {
-			$titles[] = Title::makeTitle( $row->page_namespace, $row->page_title );
+			$titles[] = Title::makeTitle( $row->page_namespace, $row->page_title, $wgLanguageTag ? $row->page_language : false );
 		}
 		return $titles;
 	}
@@ -229,11 +237,20 @@ class Title {
 	 * @param string $title the unprefixed database key form
 	 * @return Title the new object
 	 */
-	public static function &makeTitle( $ns, $title ) {
+	public static function &makeTitle( $ns, $title , $language=false ) {
 		$t = new Title();
 		$t->mInterwiki = '';
 		$t->mFragment = '';
+
+		if($language!==false) {
+			global $wgLanguageTag;
+			if($wgLanguageTag) {
+				$t->mLanguage = $language === null ? '' : $language;
+		 		$t->mLanguageCode=$language !==null && false!==($language=wgLanguageCode($language)) ? $language : 'und';
+			}
+		}
 		$t->mNamespace = $ns = intval( $ns );
+
 		$t->mDbkeyform = str_replace( ' ', '_', $title );
 		$t->mArticleID = ( $ns >= 0 ) ? -1 : 0;
 		$t->mUrlform = wfUrlencode( $t->mDbkeyform );
@@ -250,9 +267,9 @@ class Title {
 	 * @param string $title the database key form
 	 * @return Title the new object, or NULL on an error
 	 */
-	public static function makeTitleSafe( $ns, $title ) {
+	public static function makeTitleSafe( $ns, $title, $language=false ) {
 		$t = new Title();
-		$t->mDbkeyform = Title::makeName( $ns, $title );
+		$t->mDbkeyform = Title::makeName( $ns, $title, $language );
 		if( $t->secureAndSplit() ) {
 			return $t;
 		} else {
@@ -313,11 +330,13 @@ class Title {
 	function nameOf( $id ) {
 		$fname = 'Title::nameOf';
 		$dbr = wfGetDB( DB_SLAVE );
+                global $wgLanguageTag; $lang = $wgLanguageTag ? array('page_language') : array();
 
-		$s = $dbr->selectRow( 'page', array( 'page_namespace','page_title' ),  array( 'page_id' => $id ), $fname );
+		$s = $dbr->selectRow( 'page', array_merge(array( 'page_namespace','page_title' ) , $lang),  array( 'page_id' => $id ), $fname );
 		if ( $s === false ) { return NULL; }
-
-		$n = Title::makeName( $s->page_namespace, $s->page_title );
+## Revert? FIXME
+		if($wgLanguageTag) $n = Title::makeName( $s->page_namespace, $s->page_title, $s->page_language );
+		else $n = Title::makeName( $s->page_namespace, $s->page_title );
 		return $n;
 	}
 
@@ -365,11 +384,15 @@ class Title {
 	 * @param string $title the DB key form the title
 	 * @return string the prefixed form of the title
 	 */
-	public static function makeName( $ns, $title ) {
-		global $wgContLang;
-
+	// Revert FIXME 
+	public static function makeName( $ns, $title, $language=false ) {
+		global $wgContLang,$wgLanguageTag;
 		$n = $wgContLang->getNsText( $ns );
-		return $n == '' ? $title : "$n:$title";
+		$title=$n == '' ? $title : "$n:$title";
+		if($wgLanguageTag && $language!==false) $language = !$language ? 'und' : wgLanguageCode($language);
+		if($language) $title="$language:$title";
+
+		return $title;
 	}
 
 	/**
@@ -537,6 +560,18 @@ class Title {
 	 * @return int
 	 */
 	public function getNamespace() { return $this->mNamespace; }
+	/**
+	 * Get the language index
+	 * @return int
+	 * @access public
+	 */
+	function getLanguage() { return $this->mLanguage; }
+        /**
+         * Get the language code (prefix)
+         * @return string 
+         * @access public
+         */
+	function getLanguageCode() { return $this->mLanguageCode; }
 	/**
 	 * Get the namespace text
 	 * @return string
@@ -741,7 +776,14 @@ class Title {
 			// Ugly quick hack to avoid duplicate prefixes (bug 4571 etc)
 			// Correct fix would be to move the prepending elsewhere.
 			if ($wgRequest->getVal('action') != 'render') {
-				$url = $wgServer . $url;
+				global $wgLanguageTag,$wgLanguageDomain;
+				if($wgLanguageTag && $wgLanguageDomain) {
+					$lang = strpos($wgServer,'.');
+					$url = str_replace($wgContLang->getCode3(),$this->getLanguageCode(),substr($wgServer,0,$lang)).substr($wgServer,$lang).$url;
+				}
+				else {	
+					$url = $wgServer . $url;
+				}
 			}
 		} else {
 			$baseUrl = $this->getInterwikiLink( $this->mInterwiki );
@@ -793,6 +835,7 @@ class Title {
 			}
 		} else {
 			$dbkey = wfUrlencode( $this->getPrefixedDBkey() );
+
 			if ( $query == '' ) {
 				if($variant!=false && $wgContLang->hasVariants()){
 					if($wgVariantArticlePath==false) {
@@ -836,6 +879,7 @@ class Title {
 			}
 		}
 		wfRunHooks( 'GetLocalURL', array( &$this, &$url, $query ) );
+
 		return $url;
 	}
 
@@ -1435,6 +1479,7 @@ class Title {
 	 */
 	public function getCascadeProtectionSources( $get_pages = true ) {
 		global $wgEnableCascadingProtection, $wgRestrictionTypes;
+		global $wgLanguageTag;
 
 		# Define our dimension of restrictions types
 		$pagerestrictions = array();
@@ -1467,10 +1512,12 @@ class Title {
 				'tl_title' => $this->getDBkey(),
 				'tl_from=pr_page',
 				'pr_cascade' => 1 );
+			if($wgLanguageTag) $where_clauses['tl_language'] = $this->getLanguage();
 		}
 
 		if ( $get_pages ) {
 			$cols = array('pr_page', 'page_namespace', 'page_title', 'pr_expiry', 'pr_type', 'pr_level' );
+			if($wgLanguageTag) $cols[] = 'page_language';;
 			$where_clauses[] = 'page_id=pr_page';
 			$tables[] = 'page';
 		} else {
@@ -1490,7 +1537,7 @@ class Title {
 					$page_id = $row->pr_page;
 					$page_ns = $row->page_namespace;
 					$page_title = $row->page_title;
-					$sources[$page_id] = Title::makeTitle($page_ns, $page_title);
+					$sources[$page_id] = Title::makeTitle($page_ns, $page_title,$wgLanguageTag?$row->page_language:false);
 					# Add groups needed for each restriction type if its not already there
 					# Make sure this restriction type still exists
 					if ( isset($pagerestrictions[$row->pr_type]) && !in_array($row->pr_level, $pagerestrictions[$row->pr_type]) ) {
@@ -1645,8 +1692,9 @@ class Title {
 			$n = 0;
 		} else {
 			$dbr = wfGetDB( DB_SLAVE );
-			$n = $dbr->selectField( 'archive', 'COUNT(*)', array( 'ar_namespace' => $this->getNamespace(),
-				'ar_title' => $this->getDBkey() ), $fname );
+			$conds = array( 'ar_namespace' => $this->getNamespace(), 'ar_title' => $this->getDBkey() );
+			if($GLOBALS['wgLanguageTag']) $conds['ar_language'] = $this->getLanguage();
+			$n = $dbr->selectField( 'archive', 'COUNT(*)', $conds, $fname );
 			if( $this->getNamespace() == NS_IMAGE ) {
 				$n += $dbr->selectField( 'filearchive', 'COUNT(*)',
 					array( 'fa_name' => $this->getDBkey() ), $fname );
@@ -1673,6 +1721,7 @@ class Title {
 				$this->mArticleID = $linkCache->addLinkObj( $this );
 			}
 		}
+
 		return $this->mArticleID;
 	}
 
@@ -1718,14 +1767,25 @@ class Title {
 			return;
 		}
 
+		$conds=array( 'page_namespace' => $this->getNamespace() , 
+                              'page_title' => $this->getDBkey() );
+
+		global $wgLanguageTag;
+		if($wgLanguageTag) {
+			if(strlen($this->getLanguage())) {
+				$conds['page_language']=$this->getLanguage();
+			}
+			else {
+				$conds[]='page_language is null';
+			}
+		}
+
 		$dbw = wfGetDB( DB_MASTER );
+
 		$success = $dbw->update( 'page',
 			array( /* SET */
 				'page_touched' => $dbw->timestamp()
-			), array( /* WHERE */
-				'page_namespace' => $this->getNamespace() ,
-				'page_title' => $this->getDBkey()
-			), 'Title::invalidateCache'
+			), $conds, 'Title::invalidateCache'
 		);
 
 		if ($wgUseFileCache) {
@@ -1745,7 +1805,20 @@ class Title {
 	 * @private
 	 */
 	/* private */ function prefix( $name ) {
+                global $wgContLang,$wgLanguageDomain,$wgLanguageTag;
+
 		$p = '';
+		if ( $wgLanguageTag && '' != $this->getLanguageCode() && !$wgLanguageDomain) {
+			$p = $this->getLanguageCode() . ':';
+		}
+		else if($wgLanguageTag && $wgContLang->getCode3() && !$wgLanguageDomain) {
+			if( 0!= $this->mNamespace ) {
+				$p = $wgContLang->getCode3() . ':';
+			}
+		}
+		if($p=='und:') {
+			$p='';
+		}
 		if ( '' != $this->mInterwiki ) {
 			$p = $this->mInterwiki . ':';
 		}
@@ -1766,7 +1839,8 @@ class Title {
 	 * @return bool true on success
 	 */
 	private function secureAndSplit() {
-		global $wgContLang, $wgLocalInterwiki, $wgCapitalLinks;
+		global $wgLocalInterwiki, $wgCapitalLinks;
+		global $wgLanguageTag, $wgLanguageNames, $wgLanguageDomain;
 
 		# Initialisation
 		static $rxTc = false;
@@ -1780,12 +1854,27 @@ class Title {
 		
 		$dbkey = $this->mDbkeyform;
 
+		# wgServerName
+		if($wgLanguageDomain) {
+			global $wgServerName; 
+			$lang=strpos($wgServerName,'.');
+			// if(wgLanguageMulti) $lang='und'; vs lang = 'mul'; 
+			if(false!==$lang) $lang=substr($wgServerName,0,$lang);
+			else $lang='mul'; // wgLanguageMulti $lang='und'; vs lang = 'mul';
+			if(false===wgLanguageCode($lang)) $lang='mul';
+			$this->mLanguageCode=$lang;
+			$this->mLanguage=wgLanguageId($lang);
+			# $firstPass = false;
+		}
+
+
 		# Strip Unicode bidi override characters.
 		# Sometimes they slip into cut-n-pasted page titles, where the
 		# override chars get included in list displays.
 		$dbkey = str_replace( "\xE2\x80\x8E", '', $dbkey ); // 200E LEFT-TO-RIGHT MARK
 		$dbkey = str_replace( "\xE2\x80\x8F", '', $dbkey ); // 200F RIGHT-TO-LEFT MARK
 		
+
 		# Clean up whitespace
 		#
 		$dbkey = preg_replace( '/[ _]+/', '_', $dbkey );
@@ -1809,6 +1898,18 @@ class Title {
 			$dbkey = substr( $dbkey, 1 ); # remove the colon but continue processing
 			$dbkey = trim( $dbkey, '_' ); # remove any subsequent whitespace
 		}
+		global $wgContLanguageCode,$wgLanguageWikimedia;
+
+		if(!$wgLanguageTag) $wgContLang=&$GLOBALS['wgContLang'];
+		else {
+			$wgContLang=&$GLOBALS['wgContLang'];
+			$wgContLangs=&$GLOBALS['wgContLangs'];
+			if(!$wgContLangs) $wgContLangs=array();
+
+			$wgContLangs[$GLOBALS['wgContLang']->getCode3()]=&$GLOBALS['wgContLang'];
+#			$wgContLangs[$GLOBALS['wgLang']->getCode3()]=&$GLOBALS['wgLang'];
+
+		}
 
 		# Namespace or interwiki prefix
 		$firstPass = true;
@@ -1820,6 +1921,28 @@ class Title {
 					# Ordinary namespace
 					$dbkey = $m[2];
 					$this->mNamespace = $ns;
+				} elseif( $firstPass && $wgLanguageTag && // (!$this->mLanguageCode) &&
+					// strlen($p)==3 || strlen($p)>3&&$p{3}='-' 
+					   false !== $this->mLanguage = wgLanguageId($p)) {
+
+					# Language namespace
+                                        $dbkey = $m[2]; $this->mLanguageCode = wgLanguageCode($this->mLanguage);
+					if(array_key_exists($p,$wgLanguageWikimedia)) {
+						$p = $wgLanguageWikimedia[$p];
+					}
+					if(!$wgLanguageDomain); // FIXME Redirect to Subdomain or refine query 
+					if($p != $wgContLanguageCode && $p!=$wgContLang->getCode3()) {
+						if(!$p) $p=$wgContLanguageCode;
+
+						if(!array_key_exists($p,$wgContLangs)) {
+							$wgContLangs[$p]=Language::factory($p);
+							$code = $wgContLangs[$p]->getCode3();
+							if($code!=$p) $wgContLangs[$code]=&$wgContLangs[$p];
+						}
+						$wgContLang=&$wgContLangs[$p];
+
+					}
+					$firstPass=false; continue;
 				} elseif( $this->getInterwikiLink( $p ) ) {
 					if( !$firstPass ) {
 						# Can't make a local interwiki link to an interwiki link.
@@ -1974,7 +2097,7 @@ class Title {
 	 * @return Title the object for the talk page
 	 */
 	public function getTalkPage() {
-		return Title::makeTitle( Namespace::getTalk( $this->getNamespace() ), $this->getDBkey() );
+		return Title::makeTitle( Namespace::getTalk( $this->getNamespace() ), $this->getDBkey(), $this->mLanguage );
 	}
 
 	/**
@@ -1984,7 +2107,7 @@ class Title {
 	 * @return Title the object for the subject page
 	 */
 	public function getSubjectPage() {
-		return Title::makeTitle( Namespace::getSubject( $this->getNamespace() ), $this->getDBkey() );
+		return Title::makeTitle( Namespace::getSubject( $this->getNamespace() ), $this->getDBkey(), $this->mLanguage );
 	}
 
 	/**
@@ -2006,8 +2129,10 @@ class Title {
 			$db = wfGetDB( DB_SLAVE );
 		}
 
-		$res = $db->select( array( 'page', $table ),
-			array( 'page_namespace', 'page_title', 'page_id' ),
+                global $wgLanguageTag;
+		$fields=array( 'page_namespace', 'page_title', 'page_id' );
+		if($wgLanguageTag) $fields[]='page_language';
+		$res = $db->select( array( 'page', $table ), $fields,
 			array(
 				"{$prefix}_from=page_id",
 				"{$prefix}_namespace" => $this->getNamespace(),
@@ -2018,7 +2143,8 @@ class Title {
 		$retVal = array();
 		if ( $db->numRows( $res ) ) {
 			while ( $row = $db->fetchObject( $res ) ) {
-				if ( $titleObj = Title::makeTitle( $row->page_namespace, $row->page_title ) ) {
+				$titleObj = Title::makeTitle( $row->page_namespace, $row->page_title, $wgLanguageTag ? $row->page_language : false );
+				if ( $titleObj ) {
 					$linkCache->addGoodLinkObj( $row->page_id, $titleObj );
 					$retVal[] = $titleObj;
 				}
@@ -2061,7 +2187,13 @@ class Title {
 			$db = wfGetDB( DB_SLAVE );
 		}
 
+		global $wgLanguageTag;
+		if($wgLanguageTag) $sql=
 		$res = $db->safeQuery(
+			$wgLanguageTag?"SELECT pl_namespace, pl_title, pl_language FROM ! LEFT JOIN ! 
+				ON pl_namespace=page_namespace AND pl_title=page_title and
+				 pl_language=page_language WHERE
+				pl_from=? AND page_namespace IS NULL !":
 			  "SELECT pl_namespace, pl_title
 			     FROM !
 			LEFT JOIN !
@@ -2078,7 +2210,9 @@ class Title {
 		$retVal = array();
 		if ( $db->numRows( $res ) ) {
 			while ( $row = $db->fetchObject( $res ) ) {
-				$retVal[] = Title::makeTitle( $row->pl_namespace, $row->pl_title );
+				
+				$retVal[] = $wgLanguageTag ? Title::makeTitle( $row->pl_namespace, $row->pl_title, $row->pl_language ) :
+						Title::makeTitle( $row->pl_namespace, $row->pl_title );
 			}
 		}
 		$db->freeResult( $res );
@@ -2217,7 +2351,21 @@ class Title {
 		$oldtitle = $this->getDBkey();
 		$newtitle = $nt->getDBkey();
 
+		$sametitle = true;
 		if( $oldnamespace != $newnamespace || $oldtitle != $newtitle ) {
+			$sametitle = false;
+		}
+
+		global $wgLanguageTag;
+		if($wgLanguageTag && $sametitle) {
+			$oldlang = $this->getLanguage();
+			$newlang = $nt->getLanguage();
+			if($oldlang !== $newlang) {
+				$sametitle=false;
+			}
+		} 
+
+		if( !$sametitle ) {
 			WatchedItem::duplicateEntries( $this, $nt );
 		}
 
@@ -2284,16 +2432,18 @@ class Title {
 		$nullRevId = $nullRevision->insertOn( $dbw );
 
 		# Change the name of the target page:
-		$dbw->update( 'page',
-			/* SET */ array(
-				'page_touched'   => $dbw->timestamp($now),
-				'page_namespace' => $nt->getNamespace(),
-				'page_title'     => $nt->getDBkey(),
-				'page_latest'    => $nullRevId,
-			),
-			/* WHERE */ array( 'page_id' => $oldid ),
-			$fname
+		$cols = array(
+			'page_touched'   => $dbw->timestamp($now),
+			'page_namespace' => $nt->getNamespace(),
+			'page_title'     => $nt->getDBkey(),
+			'page_latest'    => $nullRevId,
 		);
+		global $wgLanguageTag;
+		global $wgLanguageTag; if($wgLanguageTag) {
+			$cols['page_language'] = $nt->getLanguage();
+		}
+
+		$dbw->update( 'page', $cols, array( 'page_id' => $oldid ), $fname );
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
 		# Recreate the redirect, this time in the other direction.
@@ -2316,12 +2466,15 @@ class Title {
 		# Now, we record the link from the redirect to the new title.
 		# It should have no other outgoing links...
 		$dbw->delete( 'pagelinks', array( 'pl_from' => $newid ), $fname );
-		$dbw->insert( 'pagelinks',
-			array(
+		$cols = array(
 				'pl_from'      => $newid,
 				'pl_namespace' => $nt->getNamespace(),
-				'pl_title'     => $nt->getDbKey() ),
-			$fname );
+				'pl_title'     => $nt->getDbKey()
+		);
+		global $wgLanguageTag; if($wgLanguageTag) {
+			$cols['pl_language'] = $nt->getLanguage();
+		}
+		$dbw->insert( 'pagelinks', $cols, $fname );
 
 		# Purge squid
 		if ( $wgUseSquid ) {
@@ -2354,16 +2507,16 @@ class Title {
 		$nullRevId = $nullRevision->insertOn( $dbw );
 
 		# Rename cur entry
-		$dbw->update( 'page',
-			/* SET */ array(
+		$cols = array (
 				'page_touched'   => $now,
 				'page_namespace' => $nt->getNamespace(),
-				'page_title'     => $nt->getDBkey(),
-				'page_latest'    => $nullRevId,
-			),
-			/* WHERE */ array( 'page_id' => $oldid ),
-			$fname
+				'page_title'	 => $nt->getDBkey(),
+				'page_latest'	 => $nullRevId,
 		);
+		global $wgLanguageTag; if($wgLanguageTag) {
+			$cols['page_language'] = $nt->getLanguage();
+		}
+		$dbw->update( 'page', $cols, array( 'page_id' => $oldid ), $fname );
 
 		$linkCache->clearLink( $nt->getPrefixedDBkey() );
 
@@ -2388,12 +2541,16 @@ class Title {
 		Article::onArticleCreate( $nt );
 
 		# Record the just-created redirect's linking to the page
-		$dbw->insert( 'pagelinks',
-			array(
+		$cols = array (
 				'pl_from'      => $newid,
 				'pl_namespace' => $nt->getNamespace(),
-				'pl_title'     => $nt->getDBkey() ),
-			$fname );
+				'pl_title'     => $nt->getDBkey()
+		);
+                global $wgLanguageTag; if($wgLanguageTag) {
+			$cols['pl_language'] = $nt->getLanguage();
+		}
+
+		$dbw->insert( 'pagelinks', $cols, $fname );
 
 		# Purge old title from squid
 		# The new title, and links to the new title, are purged in Article::onArticleCreate()
@@ -2443,12 +2600,22 @@ class Title {
 		}
 
 		# Does the article have a history?
+		$conds = array ( 'page_namespace' => $nt->getNamespace(),
+				'page_title' => $nt->getDBkey(),
+				'page_id=rev_page AND page_latest != rev_id' );
+
+                global $wgLanguageTag; if($wgLanguageTag) {
+			if(strlen($nt->getLanguage())) {
+				$conds['page_language']=$nt->getLanguage();
+			}
+			else {
+				$conds[]='page_language IS NULL';
+			}
+		}
+
 		$row = $dbw->selectRow( array( 'page', 'revision'),
 			array( 'rev_id' ),
-			array( 'page_namespace' => $nt->getNamespace(),
-				'page_title' => $nt->getDBkey(),
-				'page_id=rev_page AND page_latest != rev_id'
-			), $fname, 'FOR UPDATE'
+			$conds, $fname, 'FOR UPDATE'
 		);
 
 		# Return true if there was no history
@@ -2464,6 +2631,7 @@ class Title {
 		return !$this->isExternal()
 			&& Namespace::isWatchable( $this->getNamespace() );
 	}
+
 
 	/**
 	 * Get categories to which this Title belongs and return an array of
@@ -2532,7 +2700,12 @@ class Title {
 	 * @return array
 	 */
 	public function pageCond() {
-		return array( 'page_namespace' => $this->mNamespace, 'page_title' => $this->mDbkeyform );
+		$cond = array( 'page_namespace' => $this->mNamespace, 'page_title' => $this->mDbkeyform );
+		global $wgLanguageTag; if($wgLanguageTag) {
+			if(!strlen($this->mLanguage)) $cond[] = 'page_language IS NULL';
+			else $cond['page_language'] = $this->mLanguage();
+		} 
+		return $cond;
 	}
 
 	/**
@@ -2584,9 +2757,11 @@ class Title {
 	 */
 	public function equals( $title ) {
 		// Note: === is necessary for proper matching of number-like titles.
+		global $wgLanguageTag;
 		return $this->getInterwiki() === $title->getInterwiki()
 			&& $this->getNamespace() == $title->getNamespace()
-			&& $this->getDbkey() === $title->getDbkey();
+			&& $this->getDbkey() === $title->getDbkey()
+			&& ( !$wgLanguageTag ? true : $this->getLanguage() === $title->getLanguage() );
 	}
 	
 	/**
@@ -2638,12 +2813,23 @@ class Title {
 	 */
 	public function getTouched() {
 		$dbr = wfGetDB( DB_SLAVE );
-		$touched = $dbr->selectField( 'page', 'page_touched',
-			array( 
+
+		$conds = array(
 				'page_namespace' => $this->getNamespace(),
 				'page_title' => $this->getDBkey()
-			), __METHOD__
 		);
+
+		global $wgLanguageTag; if($wgLanguageTag) {
+			if(strlen($this->getLanguage())) {
+				$conds['page_language'] = $this->getLanguage();
+			}
+			else {
+				$conds[] = 'page_language IS NULL';
+			} 
+		}
+	
+		$touched = $dbr->selectField( 'page', 'page_touched', $conds, __METHOD__ );
+
 		return $touched;
 	}
 

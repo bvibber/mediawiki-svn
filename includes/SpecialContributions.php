@@ -198,6 +198,7 @@ class ContribsPager extends IndexPager {
 		$ret = "<li>$ret</li>\n";
 		wfProfileOut( __METHOD__ );
 		return $ret;
+
 	}
 	
 	/**
@@ -421,14 +422,18 @@ function contributionsForm( $options ) {
 		$f .= "\t" . Xml::hidden( $name, $value ) . "\n";
 	}
 
+	global $wgLanguageCode,$wgLanguageTag;
+	$languagefilter = $wgLanguageTag ? '<br /> '.Xml::label( 'Language filter', 'languagefilter' ) . Xml::languagefilterSelector( $wgLanguageCode, null ) : '';
+
 	$f .= '<fieldset>' .
 		Xml::element( 'legend', array(), wfMsg( 'sp-contributions-search' ) ) .
-		Xml::radioLabel( wfMsgExt( 'sp-contributions-newbies', array( 'parseinline' ) ), 'contribs' , 'newbie' , 'newbie', $options['contribs'] == 'newbie' ? true : false ) . '<br />' .
+		Xml::radioLabel( wfMsgExt( 'sp-contributions-newbies', array( 'parseinline' ) ), 'contribs' , 'newbie' , 'newbie', $options['contribs'] == 'newbie' ? true : false ) . '<br /> ' .
 		Xml::radioLabel( wfMsgExt( 'sp-contributions-username', array( 'parseinline' ) ), 'contribs' , 'user', 'user', $options['contribs'] == 'user' ? true : false ) . ' ' .
 		Xml::input( 'target', 20, $options['target']) . ' '.
 		'<span style="white-space: nowrap">' .
 		Xml::label( wfMsg( 'namespace' ), 'namespace' ) . ' ' .
 		Xml::namespaceSelector( $options['namespace'], '' ) .
+                $languagefilter .
 		'</span>' .
 		Xml::openElement( 'p' ) .
 		'<span style="white-space: nowrap">' .
@@ -451,3 +456,5 @@ function contributionsForm( $options ) {
 		Xml::closeElement( 'form' );
 	return $f;
 }
+
+?>

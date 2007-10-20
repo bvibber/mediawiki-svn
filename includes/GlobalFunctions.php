@@ -346,6 +346,9 @@ function wfMsgForContent( $key ) {
 	if( is_array( $wgForceUIMsgAsContentMsg ) &&
 		in_array( $key, $wgForceUIMsgAsContentMsg ) )
 		$forcontent = false;
+	global $wgLanguageTag; if($wgLanguageTag) {
+		$forcontent=false;
+	}
 	return wfMsgReal( $key, $args, true, $forcontent );
 }
 
@@ -360,6 +363,7 @@ function wfMsgForContentNoTrans( $key ) {
 	if( is_array( $wgForceUIMsgAsContentMsg ) &&
 		in_array( $key, $wgForceUIMsgAsContentMsg ) )
 		$forcontent = false;
+	global $wgLanguageTag; if($wgLanguageTag) $forcontent=false;
 	return wfMsgReal( $key, $args, true, $forcontent, false );
 }
 

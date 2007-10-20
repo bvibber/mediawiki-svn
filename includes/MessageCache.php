@@ -314,22 +314,44 @@ class MessageCache {
 		while ( $row = $dbr->fetchObject( $res ) ) {
 			$this->mCache[$row->page_title] = '!TOO BIG';
 		}
-		$dbr->freeResult( $res );
+
+                $dbr->freeResult( $res );
+
+                $fields = array( 'page_title', 'old_text', 'old_flags' );
+
+		$conditions = array( 'page_is_redirect' => 0,
+				'page_namespace' => NS_MEDIAWIKI,
+                                'page_latest=rev_id',
+                                'rev_text_id=old_id',
+                                'page_len <= ' . intval( $wgMaxMsgCacheEntrySize ) ) ;
+
+		global $wgLanguageTag,$wgLang;
+		if($wgLanguageTag) {
+			if(!$wgLang->mCodeId) $wgLang->setCode($wgLang->getCode());
+		// FIXME  wgLang=&wgContLang and wgContLang does not have mCodeId property
+			if($wgLang->mCodeId) { 
+				if(strlen($wgLang->getCode())) $conditions['page_language']=$wgLang->mCodeId;
+				else $conditions[]='page_language is null';
+			}
+			$fields[]='page_language';;
+		}
 
 		# Load text for the remaining pages
 		$res = $dbr->select( array( 'page', 'revision', 'text' ),
-			array( 'page_title', 'old_text', 'old_flags' ),
-			array( 
-				'page_is_redirect' => 0,
-				'page_namespace' => NS_MEDIAWIKI,
-				'page_latest=rev_id',
-				'rev_text_id=old_id',
-				'page_len <= ' . intval( $wgMaxMsgCacheEntrySize ) ), 
-			__METHOD__ );
+			$fields,
+			$conditions,
+                        __METHOD__ );
+
 
 		for ( $row = $dbr->fetchObject( $res ); $row; $row = $dbr->fetchObject( $res ) ) {
-			$this->mCache[$row->page_title] = ' ' . Revision::getRevisionText( $row );
+		
+			if($wgLanguageTag && strlen($row->page_language)) {
+				$this->mCache[$row->page_title.'/'.$row->page_language] = Revision::getRevisionText( $row );
+			} else {
+				$this->mCache[$row->page_title] = ' ' . Revision::getRevisionText( $row );
+			}
 		}
+
 		$this->mCache['VERSION'] = MSG_CACHE_VERSION;
 		$dbr->freeResult( $res );
 		wfProfileOut( __METHOD__ );
@@ -426,12 +448,32 @@ class MessageCache {
 	 */
 	function get( $key, $useDB = true, $forContent = true, $isFullKey = false ) {
 		global $wgContLanguageCode, $wgContLang, $wgLang;
+
+		global $wgLanguageCode; // $forContent=0;
+		global $wgTitle; global $wgLanguageTag;
+
+		if( !$forContent ) if(!method_exists($wgLang,'getCode')) if(!$wgTitle->mLanguage) $wgLang=$wgContLang;
+
 		if( $forContent ) {
-			$lang =& $wgContLang;
+			$lang = &$wgContLang;
+			$clang = $wgContLanguageCode;
 		} else {
-			$lang =& $wgLang;
-		}
+			$lang = &$wgLang;
+                        $clang = &$wgLanguageCode;
+		} // $clang=$wgLanguageCode;
 		$langcode = $lang->getCode();
+                // if(!$lang->mCodeId)
+
+		// FIXME  $lang->mCodeId
+		if($lang->getCode3() == 'und') $lang->setCode($lang->getCode3());
+		else $lang->setCode($lang->getCode());
+
+		// if(!$lang->getCode()) $lang->setCode($wgLanguageCode);
+		// $lang->setCode($clang);
+//		$clang=$lang->getCode();
+// langcode;
+//		$lang->setCode($clang);
+
 		# If uninitialised, someone is trying to call this halfway through Setup.php
 		if( !$this->mInitialised ) {
 			return '&lt;' . htmlspecialchars($key) . '&gt;';
@@ -449,11 +491,20 @@ class MessageCache {
 
 		# Try the MediaWiki namespace
 		if( !$this->mDisable && $useDB ) {
+		if($wgLanguageTag) {
+			$title = $lang->ucfirst( $key );
+			if(!$isFullKey && ($langcode != $clang) ) {
+		 	       global $wgLanguageTag; if($wgLanguageTag) $title .= '/' . $langcode;
+			}
+			$message = $this->getMsgFromNamespace( $title , $lang->getCodeId());
+		}
+		else {	
 			$title = $wgContLang->ucfirst( $lckey );
 			if(!$isFullKey && ($langcode != $wgContLanguageCode) ) {
 				$title .= '/' . $langcode;
 			}
 			$message = $this->getMsgFromNamespace( $title );
+		}	
 		}
 		# Try the extension array
 		if( $message === false && isset( $this->mExtensionMessages[$langcode][$lckey] ) ) {
@@ -492,8 +543,14 @@ class MessageCache {
 		# Is this a custom message? Try the default language in the db...
 		if( ($message === false || $message === '-' ) &&
 			!$this->mDisable && $useDB &&
+
+			!$isFullKey && ($langcode != $clang) ) {
+			$message = $this->getMsgFromNamespace( $lang->ucfirst( $key ), $lang->mCodeId );
+/*
 			!$isFullKey && ($langcode != $wgContLanguageCode) ) {
 			$message = $this->getMsgFromNamespace( $wgContLang->ucfirst( $lckey ) );
+*/
+
 		}
 
 		# Final fallback
@@ -512,9 +569,14 @@ class MessageCache {
 	 *
 	 * @param string $title Message cache key with initial uppercase letter
 	 */
-	function getMsgFromNamespace( $title ) {
+	function getMsgFromNamespace( $title, $language=false ) {
+
 		$message = false;
+
+		$otitle=$title; if($language!==false) $title.='/'.$language;
+
 		$type = false;
+
 
 		# Try the cache
 		if( $this->mUseCache && isset( $this->mCache[$title] ) ) {
@@ -559,7 +621,7 @@ class MessageCache {
 		}
 
 		# Try loading it from the DB
-		$revision = Revision::newFromTitle( Title::makeTitle( NS_MEDIAWIKI, $title ) );
+		$revision = Revision::newFromTitle( Title::makeTitle( NS_MEDIAWIKI, $otitle, $language ) );
 		if( $revision ) {
 			$message = $revision->getText();
 			if ($this->mUseCache) {

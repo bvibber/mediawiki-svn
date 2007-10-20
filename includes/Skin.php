@@ -156,6 +156,7 @@ class Skin extends Linker {
 	}
 
 	function initPage( &$out ) {
+		global $wgFavicon, $wgScriptPath, $wgSitename, $wgContLang, $wgLanguageNames;
 		global $wgFavicon, $wgScriptPath, $wgSitename, $wgContLang;
 
 		wfProfileIn( __METHOD__ );
@@ -1417,6 +1418,7 @@ END;
 		$s = wfMsg( 'otherlanguages' ) . ': ';
 		$first = true;
 		if($wgContLang->isRTL()) $s .= '<span dir="LTR">';
+
 		foreach( $a as $l ) {
 			if ( ! $first ) { $s .= ' | '; }
 			$first = false;
@@ -1595,6 +1597,7 @@ END;
 	function buildSidebar() {
 		global $parserMemc, $wgEnableSidebarCache;
 		global $wgLang, $wgContLang;
+		global $wgLanguageTag;
 
 		$fname = 'SkinTemplate::buildSidebar';
 
@@ -1614,6 +1617,7 @@ END;
 
 		$bar = array();
 		$lines = explode( "\n", wfMsgForContent( 'sidebar' ) );
+		$href='';
 		foreach ($lines as $line) {
 			if (strpos($line, '*') !== 0)
 				continue;
@@ -1631,6 +1635,12 @@ END;
 					if (wfEmptyMsg($line[0], $link))
 						$link = $line[0];
 
+					if($wgLanguageTag && strlen($link) &&  // FIXME apply to all unnamed?
+						 false===strpos($link,':')) {
+							$link=$wgLang->getCode3().":".$link;
+							$href = self::makeInternalOrExternalUrl( $link );
+					}
+					else
 					if ( preg_match( '/^(?:' . wfUrlProtocols() . ')/', $link ) ) {
 						$href = $link;
 					} else {
@@ -1642,6 +1652,7 @@ END;
 							$href = 'INVALID-TITLE';
 						}
 					}
+
 
 					$bar[$heading][] = array(
 						'text' => $text,

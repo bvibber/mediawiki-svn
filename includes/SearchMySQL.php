@@ -133,7 +133,8 @@ class SearchMySQL extends SearchEngine {
 		$match = $this->parseQuery( $filteredTerm, $fulltext );
 		$page        = $this->db->tableName( 'page' );
 		$searchindex = $this->db->tableName( 'searchindex' );
-		return 'SELECT page_id, page_namespace, page_title ' .
+		global $wgLanguageTag; $lang = $wgLanguageTag ? ', page_language ' : '';
+		return "SELECT page_id, page_namespace, page_title{$lang} " .
 			"FROM $page,$searchindex " .
 			'WHERE page_id=si_page AND ' . $match;
 	}

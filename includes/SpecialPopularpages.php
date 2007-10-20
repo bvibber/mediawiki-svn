@@ -23,12 +23,13 @@ class PopularPagesPage extends QueryPage {
 	function getSQL() {
 		$dbr = wfGetDB( DB_SLAVE );
 		$page = $dbr->tableName( 'page' );
-
+		global $wgLanguageTag; $page_language=$wgLanguageTag?',page_language':'';
 		$query = 
 			"SELECT 'Popularpages' as type,
 			        page_namespace as namespace,
 			        page_title as title,
 			        page_counter as value
+				$page_language
 			FROM $page ";
 		$where =
 			"WHERE page_is_redirect=0 AND page_namespace";
@@ -46,8 +47,9 @@ class PopularPagesPage extends QueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
-		global $wgLang, $wgContLang;
-		$title = Title::makeTitle( $result->namespace, $result->title );
+		global $wgLang, $wgContLang,$wgLanguageTag;
+		$title = $wgLanguageTag ? Title::makeTitle( $result->namespace, $result->title, $result->page_language ) :
+				Title::makeTitle( $result->namespace, $result->title );
 		$link = $skin->makeKnownLinkObj( $title, htmlspecialchars( $wgContLang->convert( $title->getPrefixedText() ) ) );
 		$nv = wfMsgExt( 'nviews', array( 'parsemag', 'escape'),
 			$wgLang->formatNum( $result->value ) );

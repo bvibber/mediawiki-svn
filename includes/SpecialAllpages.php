@@ -50,7 +50,7 @@ class SpecialAllpages {
  * @param string $from Article name we are starting listing at.
  */
 function namespaceForm ( $namespace = NS_MAIN, $from = '' ) {
-	global $wgScript, $wgContLang;
+	global $wgScript, $wgContLang, $wgLanguageTag, $wgLanguageCode;
 	$t = SpecialPage::getTitleFor( $this->name );
 	$align = $wgContLang->isRtl() ? 'left' : 'right';
 
@@ -75,10 +75,21 @@ function namespaceForm ( $namespace = NS_MAIN, $from = '' ) {
 				Xml::submitButton( wfMsg( 'allpagessubmit' ) ) .
 			"</td>
 			</tr>";
+	if($wgLanguageTag) {
+		$out .= "<tr>
+			<td align='$align'>" .
+				Xml::label( 'Language filter', 'languagefilter' ) .
+			"</td>
+			<td>" .
+				Xml::languagefilterSelector($wgLanguageCode, null).
+			"</td>
+			</tr>";
+	}
 	$out .= Xml::closeElement( 'table' );
 	$out .= Xml::closeElement( 'form' );
 	$out .= Xml::closeElement( 'div' );
 	return $out;
+
 }
 
 /**
@@ -212,7 +223,7 @@ function showline( $inpoint, $outpoint, $namespace = NS_MAIN ) {
  * @param string $from list all pages from this name (default FALSE)
  */
 function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
-	global $wgOut, $wgUser, $wgContLang;
+	global $wgOut, $wgUser, $wgContLang, $wgLanguageTag;
 
 	$fname = 'indexShowChunk';
 	$sk = $wgUser->getSkin();
@@ -233,8 +244,11 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 		list( $namespace, $fromKey, $from ) = $fromList;
 
 		$dbr = wfGetDB( DB_SLAVE );
+		$fields = array( 'page_namespace', 'page_title', 'page_is_redirect' );
+		if($wgLanguageTag) $fields[]='page_language';
+
 		$res = $dbr->select( 'page',
-			array( 'page_namespace', 'page_title', 'page_is_redirect' ),
+			$fields,
 			array(
 				'page_namespace' => $namespace,
 				'page_title >= ' . $dbr->addQuotes( $fromKey )
@@ -250,9 +264,12 @@ function showChunk( $namespace = NS_MAIN, $from, $including = false ) {
 		$out = '<table style="background: inherit;" border="0" width="100%">';
 
 		while( ($n < $this->maxPerPage) && ($s = $dbr->fetchObject( $res )) ) {
-			$t = Title::makeTitle( $s->page_namespace, $s->page_title );
+
+			$t = $wgLanguageTag ? Title::makeTitle( $s->page_namespace, $s->page_title, $s->page_language ) :
+				Title::makeTitle( $s->page_namespace, $s->page_title );
 			if( $t ) {
-				$link = ($s->page_is_redirect ? '<div class="allpagesredirect">' : '' ) .
+				$link = ($wgLanguageTag && $t->getLanguageCode() && $t->getLanguageCode()!='und' ? $t->getLanguageCode().':':'').
+					($s->page_is_redirect ? '<div class="allpagesredirect">' : '' ) .
 					$sk->makeKnownLinkObj( $t, htmlspecialchars( $t->getText() ), false, false ) .
 					($s->page_is_redirect ? '</div>' : '' );
 			} else {

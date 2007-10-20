@@ -120,6 +120,7 @@ class WhatLinksHerePage {
 
 		$options['LIMIT'] = $queryLimit;
 		$fields = array( 'page_id', 'page_namespace', 'page_title', 'page_is_redirect' );
+		global $wgLanguageTag; if($wgLanguageTag) $fields[]='page_language';
 
 		$options['ORDER BY'] = 'pl_from';
 		$plRes = $dbr->select( array( 'pagelinks', 'page' ), $fields,
@@ -205,7 +206,8 @@ class WhatLinksHerePage {
 
 		$wgOut->addHTML( '<ul>' );
 		foreach ( $rows as $row ) {
-			$nt = Title::makeTitle( $row->page_namespace, $row->page_title );
+			if($wgLanguageTag) $nt = Title::makeTitle( $row->page_namespace, $row->page_title, $row->page_language);
+			else $nt = Title::makeTitle( $row->page_namespace, $row->page_title );
 
 			if ( $row->page_is_redirect ) {
 				$extra = 'redirect=no';

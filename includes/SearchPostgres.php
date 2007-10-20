@@ -117,6 +117,8 @@ class SearchPostgres extends SearchEngine {
 	 */
 	function searchQuery( $term, $fulltext, $colname ) {
 		global $wgDBversion;
+		global $wgLanguageTag;
+		$lang = $wgLanguageTag ? 'page_language, ' : '';
 
 		if ( !isset( $wgDBversion ) ) {
 			$this->db->getServerVersion();
@@ -135,7 +137,7 @@ class SearchPostgres extends SearchEngine {
 		$top = pg_fetch_result($res,0,0);
 
 		if ($top === "") { ## e.g. if only stopwords are used XXX return something better
-			$query = "SELECT page_id, page_namespace, page_title, 0 AS score ".
+			$query = "SELECT page_id, page_namespace, page_title,{$lang} 0 AS score ".
 				"FROM page p, revision r, pagecontent c WHERE p.page_latest = r.rev_id " .
 				"AND r.rev_text_id = c.old_id AND 1=0";
 		}
@@ -148,7 +150,7 @@ class SearchPostgres extends SearchEngine {
 			}
 
 			$rankscore = $wgDBversion > 8.2 ? 5 : 1;
-			$query = "SELECT page_id, page_namespace, page_title, ".
+			$query = "SELECT page_id, page_namespace, page_title,{$lang} ".
 			"rank($fulltext, to_tsquery('default',$searchstring), $rankscore) AS score ".
 			"FROM page p, revision r, pagecontent c WHERE p.page_latest = r.rev_id " .
 			"AND r.rev_text_id = c.old_id AND $fulltext @@ to_tsquery('default',$searchstring)";
@@ -197,7 +199,8 @@ class SearchPostgres extends SearchEngine {
  */
 class PostgresSearchResult extends SearchResult {
 	function PostgresSearchResult( $row ) {
-		$this->mTitle = Title::makeTitle( $row->page_namespace, $row->page_title );
+		global $wgLanguageTag;
+		$this->mTitle = Title::makeTitle( $row->page_namespace, $row->page_title, $wgLanguageTag?$row->page_language:false );
 		$this->score = $row->score;
 	}
 	function getScore() {

@@ -31,11 +31,16 @@ class WantedPagesPage extends QueryPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		$pagelinks = $dbr->tableName( 'pagelinks' );
 		$page      = $dbr->tableName( 'page' );
+
+		global $wgLanguageTag; $pl_language=$wgLanguageTag?',pl_language':'';
+		$pl_grp=$wgLanguageTag?',5':'';
+	
 		return
 			"SELECT 'Wantedpages' AS type,
 			        pl_namespace AS namespace,
 			        pl_title AS title,
 			        COUNT(*) AS value
+				$pl_language
 			 FROM $pagelinks
 			 LEFT JOIN $page AS pg1
 			 ON pl_namespace = pg1.page_namespace AND pl_title = pg1.page_title
@@ -44,7 +49,7 @@ class WantedPagesPage extends QueryPage {
 			 WHERE pg1.page_namespace IS NULL
 			 AND pl_namespace NOT IN ( 2, 3 )
 			 AND pg2.page_namespace != 8
-			 GROUP BY 1,2,3
+			 GROUP BY 1,2,3 {$pl_grp}
 			 HAVING COUNT(*) > $count";
 	}
 
@@ -52,9 +57,11 @@ class WantedPagesPage extends QueryPage {
 	 * Cache page existence for performance
 	 */
 	function preprocessResults( &$db, &$res ) {
+		global $wgLanguageTag;
 		$batch = new LinkBatch;
 		while ( $row = $db->fetchObject( $res ) )
-			$batch->addObj( Title::makeTitleSafe( $row->namespace, $row->title ) );
+			$batch->addObj( $wgLanguageTag ? Title::makeTitleSafe( $row->namespace, $row->title, $row->pl_language ) :
+				 Title::makeTitleSafe( $row->namespace, $row->title ) );
 		$batch->execute();
 
 		// Back to start for display
@@ -71,7 +78,12 @@ class WantedPagesPage extends QueryPage {
 	 * @return string
 	 */
 	public function formatResult( $skin, $result ) {
-		$title = Title::makeTitleSafe( $result->namespace, $result->title );
+
+		global $wgLang,$wgLanguageTag;
+
+		if($wgLanguageTag) $title = Title::makeTitleSafe( $result->namespace, $result->title, $result->pl_language );
+		else $title = Title::makeTitleSafe( $result->namespace, $result->title );
+
 		if( $title instanceof Title ) {
 			if( $this->isCached() ) {
 				$pageLink = $title->exists()

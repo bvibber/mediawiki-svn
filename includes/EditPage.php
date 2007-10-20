@@ -37,6 +37,7 @@ class EditPage {
 	var $textbox1 = '', $textbox2 = '', $summary = '';
 	var $edittime = '', $section = '', $starttime = '';
 	var $oldid = 0, $editintro = '', $scrolltop = null;
+	var $textset = '';
 
 	# Placeholders for text injection by hooks (must be HTML)
 	# extensions should take care to _append_ to the present value
@@ -477,6 +478,7 @@ class EditPage {
 			# whitespace from the text boxes. This may be significant formatting.
 			$this->textbox1 = $this->safeUnicodeInput( $request, 'wpTextbox1' );
 			$this->textbox2 = $this->safeUnicodeInput( $request, 'wpTextbox2' );
+			$this->textset = $this->safeUnicodeInput( $request, 'wpTextboxSet');
 			$this->mMetaData = rtrim( $request->getText( 'metadata'   ) );
 			# Truncate for whole multibyte characters. +5 bytes for ellipsis
 			$this->summary   = $wgLang->truncate( $request->getText( 'wpSummary'  ), 250 );
@@ -543,6 +545,7 @@ class EditPage {
 			wfDebug( "$fname: Not a posted form.\n" );
 			$this->textbox1  = '';
 			$this->textbox2  = '';
+			$this->textset   = '';
 			$this->mMetaData = '';
 			$this->summary   = '';
 			$this->edittime  = '';
@@ -878,6 +881,28 @@ class EditPage {
 		# update the article here
 		if( $this->mArticle->updateArticle( $text, $this->summary, $this->minoredit,
 			$this->watchthis, '', $sectionanchor ) ) {
+
+			if(strlen($this->textset)) {
+				$x=explode('[[',$this->textset); $textset=array();
+				global $wgLanguageTag; $dbr=$this->mArticle->getDB();
+				array_shift($x); foreach($x as $y) {
+					$t=strpos($y,']]'); 
+					if($t===false) continue;
+					$t=substr($y,0,$t); $tt=$this->mTitle->newFromText($t);
+					if(null===$tt->mLanguage) $tt->mLanguage=$this->mTitle->mLanguage;
+					$t=$this->mArticle->pageDataFromTitle($dbr,$tt);
+					if($t && $t->page_id>0) $textset[$t->page_id]=$t;
+				}
+				$x=$dbr->select('pagesets',array('page_id'),array('set_id'=>$this->mTitle->mArticleID));
+				$z=array(); while($y=$dbr->fetchRow($x)) $z[]=$y['page_id'];
+				$x=array_keys($textset); 
+				foreach($x as $v) if(!in_array($v,$z)) 
+					$dbr->insert('pagesets',array('page_id'=>$v, 'set_id'=>$this->mTitle->mArticleID));
+				$z=array_diff($z,$x);
+				if(count($z)) foreach($z as $v)
+					$dbr->delete('pagesets',array('page_id'=>$v, 'set_id'=>$this->mTitle->mArticleID));
+			}
+
 			wfProfileOut( $fname );
 			return false;
 		} else {
@@ -899,6 +924,10 @@ class EditPage {
 
 		if ( !$this->mArticle->exists() && $this->mArticle->mTitle->getNamespace() == NS_MEDIAWIKI )
 			$this->textbox1 = wfMsgWeirdKey( $this->mArticle->mTitle->getText() );
+		$dbr=&$this->mArticle->getDB();
+		$x=$dbr->select('pagesets',array('page_id'),array('set_id'=>$this->mTitle->mArticleID));
+		$z=array(); while($y=$dbr->fetchRow($x)) $z[]=$this->mArticle->mTitle->nameOf($y);
+	 	if(count($z)) $this->textset = '[['.join (']] [[', $z).']]';
 		wfProxyCheck();
 		return true;
 	}
@@ -1116,7 +1145,6 @@ class EditPage {
 			}
 		}
 
-
 		$wgOut->addHTML( $this->editFormTextTop );
 
 		# if this is a comment, show a subject line at the top, which is also the edit summary.
@@ -1149,6 +1177,25 @@ class EditPage {
 			$metadata = $top . "<textarea name='metadata' rows='3' cols='{$cols}'{$ew}>{$metadata}</textarea>" ;
 		}
 		else $metadata = "" ;
+
+		if($this->mTitle->mNamespace==NS_SET) {
+			$metadata.=wfMsgWikiHtml( 'otherlanguages');
+			$metadata.="<textarea tabindex=7 id='wpTextboxSet' name=\"wpTextboxSet\" rows='4' cols='{$cols}' wrap='virtual'>"
+				. htmlspecialchars( $this->safeUnicodeOutput( $this->textset ) ) . "\n</textarea>";
+                }
+		else if($this->mTitle->mNamespace!=NS_MEDIA) {
+
+		$dbr =& wfGetDB( DB_SLAVE );	
+		$x=$dbr->select('pagesets',array('set_id'),array('page_id'=>$this->mTitle->mArticleID));
+                $y=$dbr->fetchRow($x); $set_id=$y?$y[0]:'';
+		if($set_id) { $set_id=$this->mTitle->newFromId($set_id); $set_id=$set_id->getFullText(); }
+		if(1) $metadata.="Current page set: &nbsp;<input type='text' size='25' name=\"wpTextboxSet\" value=\"$set_id\"><br>Current language tag: &nbsp;<input type='text' size='20' name='wpLanguageTag' value='".$this->mTitle->getLanguageCode()."'><br><br>";
+                else {
+			$metadata.=wfMsgWikiHtml( 'otherlanguages');
+			$metadata.="<textarea tabindex=7 id='wpTextboxSet' name=\"wpTextboxSet\" rows='4' cols='{$cols}' wrap='virtual'>"
+                                . htmlspecialchars( $this->safeUnicodeOutput( $this->textset ) ) . "\n</textarea>";
+		}
+		}
 
 		$hidden = '';
 		$recreate = '';
@@ -1239,6 +1286,7 @@ END
 {$formattedtemplates}
 </div>
 " );
+
 
 		/**
 		 * To make it harder for someone to slip a user a page
@@ -1442,6 +1490,11 @@ END
 			# ParserOutput might have altered the page title, so reset it
 			$wgOut->setPageTitle( wfMsg( 'editing', $this->mTitle->getPrefixedText() ) );			
 
+			if($GLOBALS['wgLanguageTag']) // FIXME
+                        foreach ( $parserOutput->getTemplates() as $ns => $template)
+                                foreach ( $template as $dbk)
+                                        $this->mPreviewTemplates[] = Title::newFromId($dbk);
+			else
 			foreach ( $parserOutput->getTemplates() as $ns => $template)
 				foreach ( array_keys( $template ) as $dbk)
 					$this->mPreviewTemplates[] = Title::makeTitle($ns, $dbk);

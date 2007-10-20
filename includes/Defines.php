@@ -61,6 +61,8 @@ define('NS_HELP', 12);
 define('NS_HELP_TALK', 13);
 define('NS_CATEGORY', 14);
 define('NS_CATEGORY_TALK', 15);
+define('NS_SET', 16);
+define('NS_SET_TALK', 17);
 /**#@-*/
 
 /**

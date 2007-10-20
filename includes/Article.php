@@ -205,6 +205,7 @@ class Article {
 	 * @return int The old id for the request
 	 */
 	function getOldIDFromRequest() {
+
 		global $wgRequest;
 		$this->mRedirectUrl = false;
 		$oldid = $wgRequest->getVal( 'oldid' );
@@ -257,7 +258,7 @@ class Article {
 	 * @param array    $conditions
 	 * @private
 	 */
-	function pageData( $dbr, $conditions ) {
+	function pageData( $dbr, $conditions, $options = array() ) {
 		$fields = array(
 				'page_id',
 				'page_namespace',
@@ -269,14 +270,31 @@ class Article {
 				'page_random',
 				'page_touched',
 				'page_latest',
-				'page_len',
-		);
+				'page_len' ) ;
+
+		global $wgLanguageTag; if($wgLanguageTag) {
+			global $wgLanguageMulti; 
+			$fields[]='page_language';
+			if(array_key_exists('page_language',$conditions)) {
+                		if(!strlen($conditions['page_language'])) {
+					$conditions[]='(page_language IS NULL)';
+					unset($conditions['page_language']);
+				}
+				else if((!$wgLanguageMulti) && $conditions['page_language']) { 
+					$conditions[]="(page_language='{$conditions['page_language']}' or page_language = '0')";
+			 		unset($conditions['page_language']); 
+					$options['ORDER BY']='page_language desc';
+				}
+			}
+		}
+
 		wfRunHooks( 'ArticlePageDataBefore', array( &$this, &$fields ) );
 		$row = $dbr->selectRow(
 			'page',
 			$fields,
 			$conditions,
-			__METHOD__
+			__METHOD__ ,
+			$options
 		);
 		wfRunHooks( 'ArticlePageDataAfter', array( &$this, &$row ) );
 		return $row ;
@@ -287,9 +305,21 @@ class Article {
 	 * @param Title $title
 	 */
 	function pageDataFromTitle( $dbr, $title ) {
-		return $this->pageData( $dbr, array(
-			'page_namespace' => $title->getNamespace(),
-			'page_title'     => $title->getDBkey() ) );
+		$fields=array(
+                        'page_namespace' => $title->getNamespace(),
+                        'page_title'     => $title->getDBkey() );
+		
+		global $wgLanguageTag;
+		if($wgLanguageTag) {
+			if(strlen($title->getLanguage())) {
+				 $fields['page_language']=$title->getLanguage();
+			}
+			else {
+				$fields[]='page_language is null';
+			}
+		}
+
+		return $this->pageData( $dbr, $fields );
 	}
 
 	/**
@@ -1007,7 +1037,7 @@ class Article {
 		wfProfileIn( __METHOD__ );
 
 		$page_id = $dbw->nextSequenceValue( 'page_page_id_seq' );
-		$dbw->insert( 'page', array(
+		$fields = array(
 			'page_id'           => $page_id,
 			'page_namespace'    => $this->mTitle->getNamespace(),
 			'page_title'        => $this->mTitle->getDBkey(),
@@ -1019,7 +1049,12 @@ class Article {
 			'page_touched'      => $dbw->timestamp(),
 			'page_latest'       => 0, # Fill this in shortly...
 			'page_len'          => 0, # Fill this in shortly...
-		), __METHOD__ );
+		);
+		global $wgLanguageTag;
+		if($wgLanguageTag) {
+			$fields['page_language']=$this->mTitle->getLanguage();
+		}
+		$dbw->insert( 'page', $fields, __METHOD__ );
 		$newid = $dbw->insertId();
 
 		$this->mTitle->resetArticleId( $newid );
@@ -1849,6 +1884,10 @@ class Article {
 		# Better double-check that it hasn't been deleted yet!
 		$dbw = wfGetDB( DB_MASTER );
 		$conds = $this->mTitle->pageCond();
+		if(array_key_exists('page_language',$conds) && !strlen($conds['page_language'])) {
+			$conds[]='page_language IS NULL';
+			unset($conds['page_language']);
+		}
 		$latest = $dbw->selectField( 'page', 'page_latest', $conds, __METHOD__ );
 		if ( $latest === false ) {
 			$wgOut->showFatalError( wfMsg( 'cannotdelete' ) );
@@ -2461,6 +2500,10 @@ class Article {
 		}
 
 		if ( $this->mTitle->getNamespace() == NS_MEDIAWIKI ) {
+			global $wgLanguageTag;
+			if($wgLanguageTag && strlen($this->mTitle->getLanguage())) {
+				$shortTitle.='/'.$this->mTitle->getLanguage();
+			}
 			$wgMessageCache->replace( $shortTitle, $text );
 		}
 
@@ -2903,6 +2946,55 @@ class Article {
 		return array( 'edits' => $edits, 'authors' => $authors );
 	}
 
+        /**
+         * Return a list of language tags used by this article.
+         *
+         * @return array Array of Title objects
+         */
+        function getUsedLanguages() {
+                $result = array();
+                $id = $this->mTitle->getArticleID();
+                if( $id == 0 ) {
+                        return array();
+                }
+
+                $dbr = wfGetDB( DB_SLAVE );
+
+		$sql="
+select language_id,tag_name,wikimedia_key,rfc4646,preferred_id from langtags join ( 
+select distinct language_id from
+(
+   select pl_language from pagelinks where pl_from = '$id'
+   union 
+   select cl_language from categorylinks where cl_from = '$id'
+   union
+   select tl_language from templatelinks where tl_from = '$id' 
+   union
+   select page_language from page where page_id = '$id' 
+   union 
+   select page_language from page join pagesets on (page_id = '$id' or set_id = '$id')
+)
+as pagesets (language_id) ) pagesets using (language_id) where tag_name is not null
+";
+		GLOBAL $wgLanguageIds,$wgLanguageWikimedia,$wgLanguageProper;
+		$res = $dbr->query($sql);
+                if ( false !== $res ) {
+                        if ( $dbr->numRows( $res ) ) {
+                                while ( $row = $dbr->fetchObject( $res ) ) {
+					$wgLanguageIds[$row->language_id]=$row->tag_name;
+					if($row->wikimedia_key) {
+						$wgLanguageWikimedia[$row->tag_name] = $row->wikimedia_key;
+					}
+					if($row->rfc4646) {
+						$wgLanguageProper[$row->language_id] = $row->rfc4646;
+					}
+				}
+			}
+		}
+		$dbr->freeResult( $res );
+		return $result;
+	}
+
 	/**
 	 * Return a list of templates used by this article.
 	 * Uses the templatelinks table
@@ -2917,14 +3009,23 @@ class Article {
 		}
 
 		$dbr = wfGetDB( DB_SLAVE );
+		$fields = array( 'tl_namespace', 'tl_title' );
+		global $wgLanguageTag; if($wgLanguageTag) {
+			$fields[]='tl_language';
+		}
 		$res = $dbr->select( array( 'templatelinks' ),
-			array( 'tl_namespace', 'tl_title' ),
+			$fields,
 			array( 'tl_from' => $id ),
 			'Article:getUsedTemplates' );
 		if ( false !== $res ) {
 			if ( $dbr->numRows( $res ) ) {
 				while ( $row = $dbr->fetchObject( $res ) ) {
-					$result[] = Title::makeTitle( $row->tl_namespace, $row->tl_title );
+					if($wgLanguageTag) {
+                                        	$result[] = Title::makeTitle( $row->tl_namespace, $row->tl_title, $row->tl_language );
+					}
+					else {
+						$result[] = Title::makeTitle( $row->tl_namespace, $row->tl_title );
+					}
 				}
 			}
 		}
@@ -3044,8 +3145,10 @@ class Article {
 			$tlTemplates = array();
 
 			$dbr = wfGetDB( DB_SLAVE );
+       			$fields = array( 'tl_namespace', 'tl_title' );
+	                global $wgLanguageTag; if($wgLanguageTag) $fields[]='tl_language';
 			$res = $dbr->select( array( 'templatelinks' ),
-				array( 'tl_namespace', 'tl_title' ),
+				$fields,
 				array( 'tl_from' => $id ),
 				'Article:getUsedTemplates' );
 

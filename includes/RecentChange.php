@@ -121,7 +121,9 @@ class RecentChange
 	function &getTitle()
 	{
 		if ( $this->mTitle === false ) {
-			$this->mTitle = Title::makeTitle( $this->mAttribs['rc_namespace'], $this->mAttribs['rc_title'] );
+			global $wgLanguageTag; if($wgLanguageTag) // FIXME!
+			$this->mTitle = Title::makeTitle( $this->mAttribs['rc_namespace'], $this->mAttribs['rc_title'], $this->mAttribs['rc_language']);
+			else $this->mTitle = Title::makeTitle( $this->mAttribs['rc_namespace'], $this->mAttribs['rc_title'] );
 		}
 		return $this->mTitle;
 	}
@@ -296,6 +298,9 @@ class RecentChange
 			'rc_old_len'	=> $oldSize,
 			'rc_new_len'	=> $newSize
 		);
+
+		global $wgLanguageTag;
+		if($wgLanguageTag) $rc->mAttribs['rc_language'] = $title->getLanguage();
 
 		$rc->mExtra =  array(
 			'prefixedDBkey'	=> $title->getPrefixedDBkey(),
@@ -490,7 +495,7 @@ class RecentChange
 			'rc_old_len' => $row->rc_old_len,
 			'rc_new_len' => $row->rc_new_len,
 		);
-
+		global $wgLanguageTag; if($wgLanguageTag) $this->mAttribs['rc_language']=$row->page_language;
 		$this->mExtra = array();
 	}
 

@@ -18,6 +18,10 @@ class WantedCategoriesPage extends QueryPage {
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $categorylinks, $page ) = $dbr->tableNamesN( 'categorylinks', 'page' );
 		$name = $dbr->addQuotes( $this->getName() );
+
+		global $wgLanguageTag; $cl_language=$wgLanguageTag?',cl_language':'';
+		$pl_grp=$wgLanguageTag?',5':'';
+
 		return
 			"
 			SELECT
@@ -25,10 +29,12 @@ class WantedCategoriesPage extends QueryPage {
 				" . NS_CATEGORY . " as namespace,
 				cl_to as title,
 				COUNT(*) as value
+				$cl_language
 			FROM $categorylinks
 			LEFT JOIN $page ON cl_to = page_title AND page_namespace = ". NS_CATEGORY ."
 			WHERE page_title IS NULL
 			GROUP BY 1,2,3
+			$pl_grp
 			";
 	}
 
@@ -38,9 +44,11 @@ class WantedCategoriesPage extends QueryPage {
 	 * Fetch user page links and cache their existence
 	 */
 	function preprocessResults( &$db, &$res ) {
+		global $wgLanguageTag;
 		$batch = new LinkBatch;
 		while ( $row = $db->fetchObject( $res ) )
-			$batch->addObj( Title::makeTitleSafe( $row->namespace, $row->title ) );
+			$batch->addObj( $wgLanguageTag ? Title::makeTitleSafe( $row->namespace, $row->title, $row->cl_language ) :
+				Title::makeTitleSafe( $row->namespace, $row->title ) );
 		$batch->execute();
 
 		// Back to start for display
@@ -50,9 +58,10 @@ class WantedCategoriesPage extends QueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
-		global $wgLang, $wgContLang;
+		global $wgLang, $wgContLang, $wgLanguageTag;
 
-		$nt = Title::makeTitle( $result->namespace, $result->title );
+		$nt = $wgLanguageTag ? Title::makeTitle( $result->namespace, $result->title, $result->cl_language ) :
+			Title::makeTitle( $result->namespace, $result->title );
 		$text = $wgContLang->convert( $nt->getText() );
 
 		$plink = $this->isCached() ?

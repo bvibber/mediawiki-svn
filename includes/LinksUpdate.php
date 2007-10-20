@@ -317,12 +317,21 @@ class LinksUpdate {
 	 * @private
 	 */
 	function getLinkInsertions( $existing = array() ) {
+		global $wgLanguageTag;
 		$arr = array();
 		foreach( $this->mLinks as $ns => $dbkeys ) {
 			# array_diff_key() was introduced in PHP 5.1, there is a compatibility function
 			# in GlobalFunctions.php
 			$diffs = isset( $existing[$ns] ) ? array_diff_key( $dbkeys, $existing[$ns] ) : $dbkeys;
 			foreach ( $diffs as $dbk => $id ) {
+				if($wgLanguageTag && is_array($id)) foreach($id as $lang=>$id) {
+					$arr[] = array(
+						'pl_from'      => $this->mId,
+						'pl_namespace' => $ns,
+						'pl_title'     => $dbk,
+						'pl_language'  => $lang
+					);
+				} else
 				$arr[] = array(
 					'pl_from'      => $this->mId,
 					'pl_namespace' => $ns,
@@ -338,10 +347,18 @@ class LinksUpdate {
 	 * @private
 	 */
 	function getTemplateInsertions( $existing = array() ) {
-		$arr = array();
+		$arr = array(); global $wgLanguageTag;
 		foreach( $this->mTemplates as $ns => $dbkeys ) {
 			$diffs = isset( $existing[$ns] ) ? array_diff_key( $dbkeys, $existing[$ns] ) : $dbkeys;
 			foreach ( $diffs as $dbk => $id ) {
+                                if($wgLanguageTag && is_array($id)) foreach($id as $lang=>$id) {
+                                        $arr[] = array(
+                                                'tl_from'      => $this->mId,
+                                                'tl_namespace' => $ns,
+                                                'tl_title'     => $dbk,
+                                                'tl_language'  => $lang
+                                        );
+				} else
 				$arr[] = array(
 					'tl_from'      => $this->mId,
 					'tl_namespace' => $ns,
@@ -349,6 +366,7 @@ class LinksUpdate {
 				);
 			}
 		}
+
 		return $arr;
 	}
 
@@ -500,7 +518,8 @@ class LinksUpdate {
 	 */
 	function getExistingLinks() {
 		$fname = 'LinksUpdate::getExistingLinks';
-		$res = $this->mDb->select( 'pagelinks', array( 'pl_namespace', 'pl_title' ),
+		$fields = array( 'pl_namespace', 'pl_title' ); if($GLOBALS['wgLanguageTag']) $fields[]='pl_language';
+		$res = $this->mDb->select( 'pagelinks', $fields,
 			array( 'pl_from' => $this->mId ), $fname, $this->mOptions );
 		$arr = array();
 		while ( $row = $this->mDb->fetchObject( $res ) ) {
@@ -519,7 +538,8 @@ class LinksUpdate {
 	 */
 	function getExistingTemplates() {
 		$fname = 'LinksUpdate::getExistingTemplates';
-		$res = $this->mDb->select( 'templatelinks', array( 'tl_namespace', 'tl_title' ),
+		$fields = array( 'tl_namespace', 'tl_title' ); if($GLOBALS['wgLanguageTag']) $fields[]='tl_language';
+		$res = $this->mDb->select( 'templatelinks', $fields,
 			array( 'tl_from' => $this->mId ), $fname, $this->mOptions );
 		$arr = array();
 		while ( $row = $this->mDb->fetchObject( $res ) ) {
@@ -528,6 +548,7 @@ class LinksUpdate {
 			}
 			$arr[$row->tl_namespace][$row->tl_title] = 1;
 		}
+
 		$this->mDb->freeResult( $res );
 		return $arr;
 	}

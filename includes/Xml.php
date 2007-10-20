@@ -144,6 +144,40 @@ class Xml {
 			. self::closeElement( 'select' ); 	 
 	}
 
+        public static function &languagefilterSelector($selected = '', $alllanguagefilters = null, $includehidden=false) {
+                global $wgContLang;
+                if( $selected !== '' ) {
+                        if( is_null( $selected ) ) {
+                                // No namespace selected; let exact match work without hitting Main
+                                $selected = '';
+                        } else {
+                                // Let input be numeric strings without breaking the empty match.
+                                $selected = intval( $selected );
+                        }
+                }
+                $s = "\n<select id='languagefilter' name='languagefilter' class='languagefilterselector'>\n";
+                $arr = $wgContLang->getFormattedLanguagefilters();
+                if( !is_null($alllanguagefilters) ) {
+                        $arr = array($alllanguagefilters => wfMsg('languagefiltersall')) + $arr;
+                }
+                foreach ($arr as $index => $name) {
+                        if ($index < NS_MAIN) continue;
+
+                        $name = $index !== 0 ? $name : wfMsg('blanklanguagefilter');
+
+                        if ($index === $selected) {
+                                $s .= "\t" . self::element("option",
+                                                array("value" => $index, "selected" => "selected"),
+                                                $name) . "\n";
+                        } else {
+                                $s .= "\t" . self::element("option", array("value" => $index), $name) . "\n";
+                        }
+                }
+                $s .= "</select>\n";
+                return $s;
+        }
+
+
 	/**
 	 *
 	 * @param $language The language code of the selected language

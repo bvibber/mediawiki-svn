@@ -309,6 +309,15 @@ class Linker {
 		if ( $aprops !== '' ) $aprops = ' ' . $aprops;
 
 		list( $inside, $trail ) = Linker::splitTrail( $trail );
+		global $wgLanguageTag,$wgLanguageDomain;
+		if($wgLanguageTag && $wgLanguageDomain) {
+			global $wgServerName,$wgServer,$wgContLang;
+			if($wgContLang->getCode3()!=$nt->getLanguageCode()) {
+				$lang = strpos($wgServer,'.');
+				$langr=substr($wgServerName,0,strpos($wgServerName,'.'));
+				$u = str_replace($langr,$nt->getLanguageCode(),substr($wgServer,0,$lang)).substr($wgServer,$lang).$u;
+			}
+		}
 		$r = "<a href=\"{$u}\"{$style}{$aprops}>{$prefix}{$text}{$inside}</a>{$trail}";
 		wfProfileOut( __METHOD__ );
 		return $r;

@@ -169,9 +169,19 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 	// Fetch results, prepare a batch link existence check query
 	$rows = array();
 	$batch = new LinkBatch;
+	global $wgLanguageTag;
 	while( $row = $dbr->fetchObject( $res ) ){
 		$rows[] = $row;
 		if ( !$feedFormat ) {
+			if($wgLanguageTag) {
+                        // User page link
+                        $title = Title::makeTitleSafe( NS_USER, $row->rc_user_text, $row->rc_language );
+                        $batch->addObj( $title );
+
+                        // User talk
+                        $title = Title::makeTitleSafe( NS_USER_TALK, $row->rc_user_text , $row->rc_language);
+                        $batch->addObj( $title );
+			} else {
 			// User page link
 			$title = Title::makeTitleSafe( NS_USER, $row->rc_user_text );
 			$batch->addObj( $title );
@@ -179,6 +189,7 @@ function wfSpecialRecentchanges( $par, $specialPage ) {
 			// User talk
 			$title = Title::makeTitleSafe( NS_USER_TALK, $row->rc_user_text );
 			$batch->addObj( $title );
+			}
 		}
 
 	}
@@ -603,6 +614,12 @@ function rcNamespaceForm( $namespace, $invert, $nondefaults, $categories_any ) {
 <div id='nsselect' class='recentchanges'>
 	<label for='namespace'>" . wfMsgHtml('namespace') . "</label>
 	{$namespaceselect}{$submitbutton}{$invertbox} <label for='nsinvert'>" . wfMsgHtml('invert') . "</label>{$catbox}\n</div>";
+
+	global $wgLanguageCode,$wgLanguageTag;
+	if($wgLanguageTag) {
+		$languagefilter = HTMLlanguagefilterselector($wgLanguageCode, '');
+		$out .="<label for='languagefilter'>Language filter</label>{$languagefilter}{$submitbutton}";
+	}
 	$out .= '</form></div>';
 	return $out;
 }

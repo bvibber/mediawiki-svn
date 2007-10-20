@@ -200,7 +200,7 @@ class SpecialPage
 		$aliases = $wgContLang->getSpecialPageAliases();
 		$missingPages = self::$mList;
 		self::$mAliases = array();
-		foreach ( $aliases as $realName => $aliasList ) {
+		if($aliases) foreach ( $aliases as $realName => $aliasList ) {
 			foreach ( $aliasList as $alias ) {
 				self::$mAliases[$wgContLang->caseFold( $alias )] = $realName;
 			}
@@ -489,6 +489,7 @@ class SpecialPage
 	 */
 	static function getLocalNameFor( $name, $subpage = false ) {
 		global $wgContLang;
+
 		$aliases = $wgContLang->getSpecialPageAliases();
 		if ( isset( $aliases[$name][0] ) ) {
 			$name = $aliases[$name][0];

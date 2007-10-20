@@ -72,6 +72,10 @@ class RandomPage {
 		if( !$row )
 			$row = $this->selectRandomPageFromDB( "0" );
 
+		global $wgLanguageTag;
+
+		if( $row && $wgLanguageTag )
+			return Title::makeTitleSafe( $this->namespace, $row->page_title, $row->page_language );
 		if( $row )
 			return Title::makeTitleSafe( $this->namespace, $row->page_title );
 		else
@@ -90,8 +94,11 @@ class RandomPage {
 		$ns = (int) $this->namespace;
 		$redirect = $this->redirect ? 1 : 0;
 
+		global $wgLanguageTag;
+		$page_language = $wgLanguageTag ? ',page_language' : '';
+
 		$extra = $wgExtraRandompageSQL ? "AND ($wgExtraRandompageSQL)" : "";
-		$sql = "SELECT page_title
+		$sql = "SELECT page_title{$page_language}
 			FROM $page $use_index
 			WHERE page_namespace = $ns
 			AND page_is_redirect = $redirect

@@ -87,7 +87,6 @@ class MediaWiki {
 
 		$ret = NULL ;
 
-
 		if ( '' == $title && 'delete' != $action ) {
 			$ret = Title::newMainPage();
 		} elseif ( $curid = $request->getInt( 'curid' ) ) {
@@ -144,6 +143,26 @@ class MediaWiki {
 	function initializeSpecialCases ( &$title, &$output, $request ) {
 		global $wgRequest;
 		wfProfileIn( 'MediaWiki::initializeSpecialCases' );
+
+
+		/* FIXME wgFallbackLanguage || en */
+		if($title) $code=$title->getLanguageCode();
+		else $code='en';  global $wgLanguageWikimedia,$wgLanguageTag;
+	 	$wgLanguageCode=$GLOBALS['wgLanguageCode'];
+		if($wgLanguageTag && $code!=$wgLanguageCode) {
+			if(array_key_exists($code,$wgLanguageWikimedia)) {
+				$code = $wgLanguageWikimedia[$code];
+			}
+			if($code=='und') $code='en';
+			$wgLanguageCode=$code;
+			$wgContLang=Language::factory($code);
+			if($title->getNamespace()==NS_SPECIAL) {
+				$GLOBALS['wgContLang']=$wgContLang;
+			}
+		} else {
+			global $wgContLang;
+		}
+
 
 		$action = $this->getVal('Action');
 		if( !$title or $title->getDBkey() == '' ) {

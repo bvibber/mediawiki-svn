@@ -72,6 +72,15 @@ class StubContLang extends StubObject {
 
 	function _newObject() {
 		global $wgContLanguageCode;
+		global $wgTitle;
+		global $wgLanguageWikimedia,$wgLanguageTag;
+                if($wgLanguageTag && $wgTitle!==null) {
+			$code = $wgTitle->getLanguageCode();
+			if(array_key_exists($code,$wgLanguageWikimedia)) {
+				$wgContLanguageCode = $wgLanguageWikimedia[$code];
+			}
+		}
+
 		$obj = Language::factory( $wgContLanguageCode );
 		$obj->initEncoding();
 		$obj->initContLang();
@@ -88,8 +97,23 @@ class StubUserLang extends StubObject {
 	}
 
 	function _newObject() {
-		global $wgContLanguageCode, $wgRequest, $wgUser, $wgContLang;
-		$code = $wgRequest->getVal('uselang', $wgUser->getOption('language') );
+		global $wgContLanguageCode, $wgRequest, $wgUser, $wgContLang, $wgLanguageTag;
+
+		$code = $wgRequest->getVal('uselang', ''); // $wgUser->getOption('language') );
+
+		if( $wgUser->mId )
+                if( $code == '' )
+                        $code = $wgUser->getOption('language');
+
+                if( $code == ''  && $wgLanguageTag)  {
+				global $wgTitle,$wgLanguageWikimedia;
+				if((!$wgUser->mId) && $wgTitle) {
+					$code = $wgTitle->getLanguageCode();
+				}
+				if(array_key_exists($code,$wgLanguageWikimedia)) {
+					$code = $wgLanguageWikimedia[$code];
+				}
+		}
 
 		// if variant is explicitely selected, use it instead the one from wgUser
 		// see bug #7605
@@ -97,7 +121,7 @@ class StubUserLang extends StubObject {
 			$variant = $wgContLang->getPreferredVariant();
 			if($variant != $wgContLanguageCode)
 				$code = $variant;
-		}	 
+		}
 
 		# Validate $code
 		if( empty( $code ) || !preg_match( '/^[a-z-]+$/', $code ) ) {

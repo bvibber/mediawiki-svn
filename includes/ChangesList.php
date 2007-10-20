@@ -142,6 +142,7 @@ class ChangesList {
 		if( $rc->mAttribs['rc_type'] == RC_NEW || $rc->mAttribs['rc_type'] == RC_LOG ) {
 			$diffLink = $this->message['diff'];
 		} else {
+
 			$rcidparam = $unpatrolled
 				? array( 'rcid' => $rc->mAttribs['rc_id'] )
 				: array();

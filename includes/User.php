@@ -2146,8 +2146,13 @@ class User {
 	 */
 	function getPageRenderingHash() {
 		global $wgContLang, $wgUseDynamicDates, $wgLang;
-		if( $this->mHash ){
-			return $this->mHash;
+		$confstr=$this->mHash;
+		if( $confstr ){
+			global $wgLanguageTag,$wgTitle;
+			if($wgTitle && $wgLanguageTag) {
+				$confstr.='!'.$wgTitle->getLanguageCode();
+			}
+			return $confstr;
 		}
 
 		// stubthreshold is only included below for completeness,
@@ -2164,7 +2169,6 @@ class User {
 		// add in language specific options, if any
 		$extra = $wgContLang->getExtraHashOptions();
 		$confstr .= $extra;
-
 		// Give a chance for extensions to modify the hash, if they have
 		// extra options or other effects on the parser cache.
 		wfRunHooks( 'PageRenderingHash', array( &$confstr ) );
@@ -2172,6 +2176,10 @@ class User {
 		// Make it a valid memcached key fragment
 		$confstr = str_replace( ' ', '_', $confstr );
 		$this->mHash = $confstr;
+		global $wgLanguageTag,$wgTitle;
+		if($wgTitle && $wgLanguageTag) {
+			$confstr.='!'.$wgTitle->getLanguageCode();
+		}
 		return $confstr;
 	}
 

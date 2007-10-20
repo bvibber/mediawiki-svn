@@ -12,6 +12,11 @@ if( !defined( 'MEDIAWIKI' ) ) {
 global $wgLanguageNames;
 require_once( dirname(__FILE__) . '/Names.php' ) ;
 
+global $wgLanguageTag;
+if($wgLanguageTag) {
+	require_once( dirname(__FILE__) . '/LanguageTags.php' );
+}
+
 global $wgInputEncoding, $wgOutputEncoding;
 
 /**
@@ -47,6 +52,7 @@ class FakeConverter {
 
 class Language {
 	var $mConverter, $mVariants, $mCode, $mLoaded = false;
+	var $mCode3, $mCodeId=false;
 	var $mMagicExtensions = array(), $mMagicHookDone = false;
 
 	static public $mLocalisationKeys = array( 'fallback', 'namespaceNames',
@@ -96,6 +102,7 @@ class Language {
 	static function factory( $code ) {
 		global $IP;
 		static $recursionLevel = 0;
+		global $wgLanguageCode; $und=0; if($code=='und' || (!$code)) { $und=1; $code=$wgLanguageCode; }
 
 		if ( $code == 'en' ) {
 			$class = 'Language';
@@ -123,6 +130,7 @@ class Language {
 		} else {
 			$lang = new $class;
 		}
+		if($und) { $lang->mCode='und'; }
 
 		return $lang;
 	}
@@ -164,6 +172,14 @@ class Language {
 		$this->load();
 		return $this->bookstoreList;
 	}
+
+        function getFormattedLanguagefilters() {
+		$ns=array(''=>'Languages I speak and new communities','en'=>'English');
+                foreach($ns as $k => $v) {
+                        $ns[$k] = strtr($v, '_', ' ');
+                }
+                return $ns;
+        }
 
 	/**
 	 * @return array
@@ -368,6 +384,11 @@ class Language {
 	function getLanguageName( $code ) {
 		global $wgLanguageNames;
 		if ( ! array_key_exists( $code, $wgLanguageNames ) ) {
+			global $wgLanguageTag; if($wgLanguageTag) {
+				return ''; global $dbr;
+				$name=$dbr->fetchObject('language',array('iso639_3'=>$name));
+				$wgLanguageNames[$code]=$name?$name:''; 
+			}
 			return '';
 		}
 		return $wgLanguageNames[$code];
@@ -1135,7 +1156,8 @@ class Language {
 			} else {
 				# Fall back to English if local list is incomplete
 				$magicWords =& Language::getMagicWords();
-				$rawEntry = $magicWords[$mw->mId];
+				if($magicWords && array_key_exists($mw->mId,$magicWords)) $rawEntry = $magicWords[$mw->mId];
+				else return; // $rawEntry=false;
 			}
 		}
 
@@ -1550,8 +1572,36 @@ class Language {
 	function getCode() {
 		return $this->mCode;
 	}
+	function getCode3() {
+		global $wgLanguageTag;
+		if(!$this->mCode3) if($wgLanguageTag) {
+			global $wgLanguageWikimedia;
+			if($wgLanguageWikimedia && array_key_exists($this->mCode,$wgLanguageWikimedia)) 
+			$this->mCode3=wgLanguageCode(wgLanguageId($this->mCode));
+		}
+		return $this->mCode3?$this->mCode3:$this->mCode;
+	}
+	function getCodeId() {
+		return $this->mCodeId;
+	}
 
+	/**
+	 * Set the 639-3 and RFC 3066 codes for this language object
+	 * setCode takes an RFC 3066 identifier
+	 */
 	function setCode( $code ) {
+		global $wgLanguageTag,$wgLanguageWikimedia,$wgLanguageIds;
+
+		if($wgLanguageTag) if(function_exists('wgLanguageId')) {
+				if(!$code){
+					if($this->mCode3) $code = $this->mCode3;
+					else if($this->mCode) $code = $this->mCode;
+				}
+				$this->mCodeId = wgLanguageId($code);
+				$this->mCode3  = wgLanguageCode($this->mCodeId);
+				$code = wgLanguageCodeLegacy($code);
+		}
+
 		$this->mCode = $code;
 	}
 
@@ -1582,7 +1632,11 @@ class Language {
 	static function loadLocalisation( $code, $disableCache = false ) {
 		static $recursionGuard = array();
 		global $wgMemc;
-
+		if(!$code) $code='en';
+/*		if(strlen($code)==3) // Could be ISO 639-3
+			{ global $wgLanguageWikimedia; $tmp=array_flip($wgLanguageWikimedia);
+			  if(array_key_exists($code,$tmp)) $code=$tmp[$code]; }
+*/
 		if ( !$code ) {
 			throw new MWException( "Invalid language code requested" );
 		}
@@ -1780,7 +1834,7 @@ class Language {
 		$this->namespaceNames[NS_PROJECT] = $wgMetaNamespace;
 		if ( $wgMetaNamespaceTalk ) {
 			$this->namespaceNames[NS_PROJECT_TALK] = $wgMetaNamespaceTalk;
-		} else {
+		} else if(array_key_exists(NS_PROJECT_TALK,$this->namespaceNames)) {
 			$talk = $this->namespaceNames[NS_PROJECT_TALK];
 			$talk = str_replace( '$1', $wgMetaNamespace, $talk );
 

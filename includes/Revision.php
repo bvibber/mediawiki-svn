@@ -43,11 +43,16 @@ class Revision {
 		} else {
 			$matchId = 'page_latest';
 		}
-		return Revision::newFromConds(
-			array( "rev_id=$matchId",
-			       'page_id=rev_page',
-			       'page_namespace' => $title->getNamespace(),
-			       'page_title'     => $title->getDbkey() ) );
+
+		$conds=array( "rev_id=$matchId",
+				'page_id=rev_page',
+				'page_namespace' => $title->getNamespace(),
+				'page_title'     => $title->getDbkey() );
+
+		global $wgLanguageTag;
+		if($wgLanguageTag) $conds['page_language']=$title->getLanguage();
+
+		return Revision::newFromConds( $conds );
 	}
 
 	/**
@@ -105,12 +110,17 @@ class Revision {
 		} else {
 			$matchId = 'page_latest';
 		}
-		return Revision::loadFromConds(
-			$db,
-			array( "rev_id=$matchId",
-			       'page_id=rev_page',
-			       'page_namespace' => $title->getNamespace(),
-			       'page_title'     => $title->getDbkey() ) );
+
+		$conds=array( "rev_id=$matchId",
+			'page_id=rev_page',
+			'page_namespace' => $title->getNamespace(),
+			'page_title'     => $title->getDbkey() );
+
+                global $wgLanguageTag;
+                if($wgLanguageTag) $conds['page_language']=$title->getLanguage();
+
+		return Revision::loadFromConds( $db, $conds );
+
 	}
 
 	/**
@@ -126,12 +136,16 @@ class Revision {
 	 * @static
 	 */
 	public static function loadFromTimestamp( &$db, &$title, $timestamp ) {
-		return Revision::loadFromConds(
-			$db,
+		$conds =	
 			array( 'rev_timestamp'  => $db->timestamp( $timestamp ),
 			       'page_id=rev_page',
 			       'page_namespace' => $title->getNamespace(),
-			       'page_title'     => $title->getDbkey() ) );
+			       'page_title'     => $title->getDbkey() );
+
+		global $wgLanguageTag;
+		if($wgLanguageTag) $conds['page_language']=$title->getLanguage();
+
+		return Revision::loadFromConds( $db, $conds );
 	}
 
 	/**
@@ -187,11 +201,15 @@ class Revision {
 	 * @static
 	 */
 	public static function fetchAllRevisions( &$title ) {
-		return Revision::fetchFromConds(
-			wfGetDB( DB_SLAVE ),
+		$conds =
 			array( 'page_namespace' => $title->getNamespace(),
 			       'page_title'     => $title->getDbkey(),
-			       'page_id=rev_page' ) );
+			       'page_id=rev_page' );
+
+		global $wgLanguageTag;
+		if($wgLanguageTag) $conds['page_language']=$title->getLanguage();
+
+		return Revision::fetchFromConds( wfGetDB( DB_SLAVE ), $conds );
 	}
 
 	/**
@@ -205,12 +223,17 @@ class Revision {
 	 * @static
 	 */
 	public static function fetchRevision( &$title ) {
-		return Revision::fetchFromConds(
-			wfGetDB( DB_SLAVE ),
+		$conds =
 			array( 'rev_id=page_latest',
 			       'page_namespace' => $title->getNamespace(),
 			       'page_title'     => $title->getDbkey(),
-			       'page_id=rev_page' ) );
+			       'page_id=rev_page' );
+
+		global $wgLanguageTag;
+		if($wgLanguageTag) $conds['page_language']=$title->getLanguage();
+
+		return Revision::fetchFromConds( wfGetDB( DB_SLAVE ), $conds );
+
 	}
 
 	/**
@@ -225,8 +248,16 @@ class Revision {
 	 * @static
 	 */
 	private static function fetchFromConds( $db, $conditions ) {
-		$res = $db->select(
-			array( 'page', 'revision' ),
+
+		global $wgLanguageTag; if($wgLanguageTag) {
+			if(array_key_exists('page_language',$conditions)) {
+				if(!strlen($conditions['page_language'])) {
+					$conditions[]='(page_language IS NULL)'; 
+					unset($conditions['page_language']);
+				}
+                }}
+
+		$fields =
 			array( 'page_namespace',
 			       'page_title',
 			       'page_latest',
@@ -239,7 +270,12 @@ class Revision {
 			       'rev_minor_edit',
 			       'rev_timestamp',
 			       'rev_deleted',
-			       'rev_len' ),
+			       'rev_len' );
+		if($wgLanguageTag) $fields[]='page_language';
+
+		$res = $db->select(
+			array( 'page', 'revision' ),
+			$fields,
 			$conditions,
 			'Revision::fetchRow',
 			array( 'LIMIT' => 1 ) );
@@ -270,7 +306,7 @@ class Revision {
 	 * @param object $row
 	 * @access private
 	 */
-	function Revision( $row ) {
+	function Revision( $row ) { global $wgLanguageTag;
 		if( is_object( $row ) ) {
 			$this->mId        = intval( $row->rev_id );
 			$this->mPage      = intval( $row->rev_page );

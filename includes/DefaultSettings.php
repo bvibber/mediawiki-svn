@@ -700,7 +700,17 @@ $wgCachedMessageArrays = false;
 # Language settings
 #
 /** Site language code, should be one of ./languages/Language(.*).php */
-$wgLanguageCode     = 'en';
+$wgLanguageCode  = 'en';
+
+/* false | $wgInterwikiMagic, old behaviour; true, use language tables */
+$wgLanguageTag = false;
+/* wgLanguageDomain: true  =  [language-code].domain.com ,
+   with wgLanguageTag: true, mimicks &uselang=[language-code] */
+$wgLanguageDomain= false;
+/* On converting from monolingual multilingual,
+   wgLanguageTag defaults to treat old pages as having a null langspace.
+   with this enabled, plain page links point to the "mult" language space. */
+$wgLanguageMulti = false;
 
 /**
  * Some languages need different word forms, usually for different cases.
@@ -880,7 +890,7 @@ $wgReadOnlyFile         = false; /// defaults to "{$wgUploadDirectory}/lock_yBgM
 /**
  * The debug log file should be not be publicly accessible if it is used, as it
  * may contain private data. */
-$wgDebugLogFile         = '';
+$wgDebugLogFile         = ''; // /tmp/tot';
 
 /**#@+
  * @global bool

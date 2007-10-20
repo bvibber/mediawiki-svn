@@ -9,7 +9,8 @@
 class LinkBatch {
 	/**
 	 * 2-d array, first index namespace, second index dbkey, value arbitrary
-	 */
+	 * with $wgLanguageTag enabled, 3-d array, third index language
+	 */	
 	var $data = array();
 
 	function __construct( $arr = array() ) {
@@ -20,13 +21,13 @@ class LinkBatch {
 
 	function addObj( $title ) {
 		if ( is_object( $title ) ) {
-			$this->add( $title->getNamespace(), $title->getDBkey() );
+			$this->add( $title->getNamespace(), $title->getDBkey(), $title->getLanguage() );
 		} else {
 			wfDebug( "Warning: LinkBatch::addObj got invalid title object\n" );
 		}
 	}
 
-	function add( $ns, $dbkey ) {
+	function add( $ns, $dbkey, $language=false ) {
 		if ( $ns < 0 ) {
 			return;
 		}
@@ -34,6 +35,11 @@ class LinkBatch {
 			$this->data[$ns] = array();
 		}
 
+		if(false!==$language) { 
+			array_key_exists($dbkey, $this->data[$ns]) ? ( is_array($this->data[$ns][$dbkey])?1:
+  				$this->data[$ns][$dbkey]=array(''=>$this->data[$ns][$dbkey])):$this->data[$ns][$dbkey]=array();
+			$this->data[$ns][$dbkey][$language]=1;
+		} else
 		$this->data[$ns][$dbkey] = 1;
 	}
 
@@ -86,18 +92,30 @@ class LinkBatch {
 
 		$ids = array();
 		$remaining = $this->data;
+		global $wgLanguageTag;
 		while ( $row = $res->fetchObject() ) {
-			$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+			if($wgLanguageTag) {
+				$title = Title::makeTitle( $row->page_namespace, $row->page_title, $row->page_language );
+				unset( $remaining[$row->page_namespace][$row->page_title] ); // [$row->page_language] );
+			} else {
+				$title = Title::makeTitle( $row->page_namespace, $row->page_title );
+				unset( $remaining[$row->page_namespace][$row->page_title] );
+			}
 			$cache->addGoodLinkObj( $row->page_id, $title );
 			$ids[$title->getPrefixedDBkey()] = $row->page_id;
-			unset( $remaining[$row->page_namespace][$row->page_title] );
 		}
 		$res->free();
 
 		// The remaining links in $data are bad links, register them as such
 		foreach ( $remaining as $ns => $dbkeys ) {
-			foreach ( $dbkeys as $dbkey => $unused ) {
-				$title = Title::makeTitle( $ns, $dbkey );
+			foreach ( $dbkeys as $dbkey => $nothing ) {
+				if($wgLanguageTag && is_array($nothing)) { 
+					foreach($nothing as $lang=>$nothing2) 
+						$title = Title::makeTitle( $ns, $dbkey, $lang);
+				}
+				else {
+					$title = Title::makeTitle( $ns, $dbkey );
+				}
 				$cache->addBadLinkObj( $title );
 				$ids[$title->getPrefixedDBkey()] = 0;
 			}
@@ -126,7 +144,8 @@ class LinkBatch {
 			wfProfileOut( $fname );
 			return false;
 		}
-		$sql = "SELECT page_id, page_namespace, page_title FROM $page WHERE $set";
+		GLOBAL $wgLanguageTag; $lang=$wgLanguageTag?",page_language ":'';
+		$sql = "SELECT page_id, page_namespace, page_title{$lang} FROM $page WHERE $set";
 
 		// Do query
 		$res = new ResultWrapper( $dbr,  $dbr->query( $sql, $fname ) );
@@ -157,12 +176,66 @@ class LinkBatch {
 				$sql .= ' OR ';
 			}
 			
+
+			### MLMW Patch
+
+			$sql .= "({$prefix}_namespace=$ns AND ";
+
+			$firstTitle = true;
+
+                        global $wgLanguageTag; if($wgLanguageTag) {
+
+				foreach($dbkeys as $dbkey => $nothing) {
+
+					if(!is_array($nothing)) continue;
+					$isnull=false;
+					$nothing=array_keys($nothing);
+					if(false!==$tmp=array_search('',$nothing,1)) {
+						$isnull=true;
+						unset($nothing[$tmp]);
+					}
+					if($firstTitle) {
+						$firstTitle=false;
+						$sql.='(';
+					}
+					else {
+						$sql.=' OR ';
+					}
+                                        $sql.="({$prefix}_title = ".$db->addQuotes($dbkey);
+					if($nothing) {
+						if(count($nothing)==1) {
+							$sql.=" AND {$prefix}_language = '".current(array_keys($nothing))."'";
+						}
+						else {
+							$sql.=" AND {$prefix}_language IN (".join(',',array_keys($nothing)).')';
+						}
+					}
+					if($isnull) {
+						if($nothing) $sql.=" OR ";
+						else $sql.=" AND ";
+						$sql.="{$prefix}_language is null";
+					}
+					$sql.= ")";
+					unset($dbkeys[$dbkey]);
+				}
+				if(!$firstTitle) {
+					$sql.=')';
+					if(count($dbkeys)) $sql.=" OR ";
+				}
+			}
+
+			### Undefined Language
+
 			if (count($dbkeys)==1) { // avoid multiple-reference syntax if simple equality can be used
 				$singleKey = array_keys($dbkeys);
 				$sql .= "({$prefix}_namespace=$ns AND {$prefix}_title=".
 					$db->addQuotes($singleKey[0]).
 					")";
-			} else {
+		#		if($wgLanguageTag && is_array(current($dbkeys))) {
+		#			$sql.=" AND {$prefix}_language=".$db->addQuotes(current(array_keys(current($dbkeys))));
+		#		}
+
+			} elseif(count($dbkeys)) {
 				$sql .= "({$prefix}_namespace=$ns AND {$prefix}_title IN (";
 				
 				$firstTitle = true;
@@ -176,7 +249,9 @@ class LinkBatch {
 				}
 				$sql .= '))';
 			}
+			$sql .= ')';
 		}
+
 		if ( $first && $firstTitle ) {
 			# No titles added
 			return false;

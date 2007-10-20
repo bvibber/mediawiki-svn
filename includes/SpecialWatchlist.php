@@ -134,6 +134,7 @@ function wfSpecialWatchlist( $par ) {
 		*/
 	}
 
+
 	# If the watchlist is relatively short, it's simplest to zip
 	# down its entirety and then sort the results.
 

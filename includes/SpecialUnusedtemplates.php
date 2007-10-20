@@ -17,9 +17,10 @@ class UnusedtemplatesPage extends QueryPage {
 	function getSQL() {
 		$dbr = wfGetDB( DB_SLAVE );
 		list( $page, $templatelinks) = $dbr->tableNamesN( 'page', 'templatelinks' );
+		global $wgLanguageTag; $page_language=$wgLanguageTag?',page_language':'';
 		$sql = "SELECT 'Unusedtemplates' AS type, page_title AS title,
 			page_namespace AS namespace, 0 AS value
-			FROM $page
+			$page_language FROM $page
 			LEFT JOIN $templatelinks
 			ON page_namespace = tl_namespace AND page_title = tl_title
 			WHERE page_namespace = 10 AND tl_from IS NULL";
@@ -27,7 +28,9 @@ class UnusedtemplatesPage extends QueryPage {
 	}
 
 	function formatResult( $skin, $result ) {
-		$title = Title::makeTitle( NS_TEMPLATE, $result->title );
+		global $wgLanguageTag;
+		$title = $wgLanguageTag ? Title::makeTitle( NS_TEMPLATE, $result->title, $result->page_language ) :
+			Title::makeTitle( NS_TEMPLATE, $result->title );
 		$pageLink = $skin->makeKnownLinkObj( $title, '', 'redirect=no' );
 		$wlhLink = $skin->makeKnownLinkObj(
 			SpecialPage::getTitleFor( 'Whatlinkshere' ),

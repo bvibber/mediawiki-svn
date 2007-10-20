@@ -1031,6 +1031,10 @@ function do_all_updates( $shared = false, $purge = true ) {
 	
 	do_oldimage_user_index(); flush ();
 
+	do_pagesets_update(); flush();
+
+	do_langtags_update(); flush();
+
 	echo "Deleting old default messages (this may take a long time!)..."; flush();
 	deleteDefaultMessages();
 	echo "Done\n"; flush();
@@ -1128,6 +1132,38 @@ function do_restrictions_update() {
 	}
 	
 }
+
+function do_pagesets_update() {
+        add_table( 'pagesets', 'patch-pagesets.sql' ); flush();
+}
+
+function do_langtags_update() {
+        # Adding langtags table
+        # Importing ISO 639-3 Codes and IANA Language Subtags
+
+        global $wgDatabase,$wgLanguageTag;
+	if(!$wgLanguageTag) return;
+
+        $name = 'langtags';
+        $patch = 'patch-langtags.sql';
+
+	if ( $wgDatabase->tableExists( $name ) ) {
+		echo "...$name table already exists.\n";
+	} else {
+		add_table( 'user_langs','patch-user_langs.sql' ); flush();
+		add_table( $name, $patch ); flush();
+
+		require_once('language/importLanguageTags.php');
+		echo "Importing language tags..."; flush();
+		if(importLanguageTags()) {
+			echo "ok\n";
+		}
+		else {
+			echo "failed\n";
+		}
+	}
+}
+
 
 function
 pg_describe_table($table)
@@ -1325,6 +1361,7 @@ function do_postgres_updates() {
 		array("page_restrictions", "patch-page_restrictions.sql"),
 		array("profiling",         "patch-profiling.sql"),
 		array("redirect",          "patch-redirect.sql"),
+		array("pagesets",          "patch-pagesets.sql")
 	);
 
 	$newcols = array(
@@ -1535,7 +1572,7 @@ function do_postgres_updates() {
 		$wgDatabase->query("CREATE UNIQUE INDEX pagelink_unique ON pagelinks (pl_from,pl_namespace,pl_title)");
 	}
 	else
-		echo "... index \"pagelink_unique_index\" aready exists\n";
+		echo "... index \"pagelink_unique_index\" already exists\n";
 
 	if (pg_fkey_deltype("revision_rev_user_fkey") == 'r') {
 		echo "... constraint \"revision_rev_user_fkey\" is ON DELETE RESTRICT\n";
@@ -1578,6 +1615,9 @@ function do_postgres_updates() {
 	# Tweak the page_title tsearch2 trigger to filter out slashes
 	# This is create or replace, so harmless to call if not needed
 	dbsource(archive("patch-ts2pagetitle.sql"));
+
+	# Language tags
+        do_langtags_update();
 
 	return;
 }

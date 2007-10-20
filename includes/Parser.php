@@ -1698,6 +1698,11 @@ class Parser
 				continue;
 			}
 
+                        global $wgLanguageTag; if($wgLanguageTag && !(strlen($nt->mInterwiki) || strlen($nt->mLanguageCode))) {
+				$nt = Title::makeTitle( $nt->mNamespace, $nt->mDbkeyform, $this->mTitle->mLanguage );
+			}
+			if(!$nt->mUserCaseDBKey) $nt->mUserCaseDBKey=$nt->mDbkeyform; // FIXME: MLMW Hack
+
 			$ns = $nt->getNamespace();
 			$iw = $nt->getInterWiki();
 			wfProfileOut( "$fname-title" );
@@ -1705,6 +1710,7 @@ class Parser
 			if ($might_be_img) { # if this is actually an invalid link
 				wfProfileIn( "$fname-might_be_img" );
 				if ($ns == NS_IMAGE && $noforce) { #but might be an image
+
 					$found = false;
 					while (isset ($a[$k+1]) ) {
 						#look at the next 'line' to see if we can close it there
@@ -1842,8 +1848,10 @@ class Parser
 					continue;
 				}
 			}
+
 			$s .= $this->makeLinkHolder( $nt, $text, '', $trail, $prefix );
 		}
+
 		wfProfileOut( $fname );
 		return $s;
 	}
@@ -1857,6 +1865,7 @@ class Parser
 	 */
 	function makeLinkHolder( &$nt, $text = '', $query = '', $trail = '', $prefix = '' ) {
 		wfProfileIn( __METHOD__ );
+
 		if ( ! is_object($nt) ) {
 			# Fail gracefully
 			$retVal = "<!-- ERROR -->{$prefix}{$text}{$trail}";
@@ -2605,7 +2614,18 @@ class Parser
 				return $wgContLang->getDirMark();
 			case 'contentlanguage':
 				global $wgContLanguageCode;
+				global $wgLanguageTag;
+				if($wgLanguageTag) return $this->mTitle->getLanguageCode();
 				return $wgContLanguageCode;
+                        case 'languagespace':
+                                return $this->mTitle->getLanguageCode();
+			case 'userlanguage':
+				global $wgLang;
+				global $wgLanguageCode;
+				if($wgLang) return $wgLang->getCode3() ? $wgLang->getCode3() : $wgLanguageCode;
+                                global $wgLanguageTag;
+                                if($wgLanguageTag) return $wgLanguageCode ? $wgLanguageCode:$this->mTitle->getLanguageCode();
+                                return $wgLanguageCode;
 			default:
 				$ret = null;
 				if ( wfRunHooks( 'ParserGetVariableValueSwitch', array( &$this, &$varCache, &$index, &$ret ) ) )
@@ -4077,6 +4097,7 @@ class Parser
 	function replaceLinkHolders( &$text, $options = 0 ) {
 		global $wgUser;
 		global $wgContLang;
+		global $wgLanguageTag;
 
 		$fname = 'Parser::replaceLinkHolders';
 		wfProfileIn( $fname );
@@ -4124,6 +4145,7 @@ class Parser
 					if ( !isset( $current ) ) {
 						$current = $ns;
 						$query =  "SELECT page_id, page_namespace, page_title";
+						if($wgLanguageTag) $query.=', page_language';
 						if ( $threshold > 0 ) {
 							$query .= ', page_len, page_is_redirect';
 						}
@@ -4135,6 +4157,7 @@ class Parser
 						$query .= ', ';
 					}
 
+					# wgLanguageTag should use  LinkBatch:constructSet or similar for page_language IN
 					$query .= $dbr->addQuotes( $this->mLinkHolders['dbkeys'][$key] );
 				}
 			}
@@ -4151,7 +4174,8 @@ class Parser
 				# 1 = known
 				# 2 = stub
 				while ( $s = $dbr->fetchObject($res) ) {
-					$title = Title::makeTitle( $s->page_namespace, $s->page_title );
+					if($wgLanguageTag) $title = Title::makeTitle( $s->page_namespace, $s->page_title, $s->page_language ); 
+					else $title = Title::makeTitle( $s->page_namespace, $s->page_title );
 					$pdbk = $title->getPrefixedDBkey();
 					$linkCache->addGoodLinkObj( $s->page_id, $title );
 					$this->mOutput->addLink( $title, $s->page_id );
@@ -4218,6 +4242,7 @@ class Parser
 					$titleClause = $linkBatch->constructSet('page', $dbr);
 
 					$variantQuery =  "SELECT page_id, page_namespace, page_title";
+					global $wgLanguageTag; if($wgLanguageTag) $variantQuery.=", page_language";
 					if ( $threshold > 0 ) {
 						$variantQuery .= ', page_len, page_is_redirect';
 					}

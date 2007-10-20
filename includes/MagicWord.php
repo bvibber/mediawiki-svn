@@ -99,6 +99,8 @@ class MagicWord {
 		'contentlanguage',
 		'pagesinnamespace',
 		'numberofadmins',
+                'languagespace',
+		'userlanguage',
 		'defaultsort',
 	);
 

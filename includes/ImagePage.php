@@ -54,6 +54,14 @@ class ImagePage extends Article {
 		} else {
 			$showmeta = false;
 		}
+       
+	        global $wgLanguageTag;
+                if($wgLanguageTag && $this->mTitle->mLanguage!==0) {
+			$x=Title::makeTitle($this->mTitle->mNamespace,$this->mTitle->mTextform, 0);
+			if($x->getArticleId() && $x->getArticleID()!=$this->mTitle->getArticleId()) {
+				$wgOut->addWikiText('<noinclude>{{'.$x->getPrefixedText().'}}</noinclude>');
+			}
+		}
 
 		if ($this->img->exists())
 			$wgOut->addHTML($this->showTOC($showmeta));
@@ -304,7 +312,6 @@ class ImagePage extends Article {
 				$showLink = true;
 			}
 
-
 			if ($showLink) {
 				$filename = wfEscapeWikiText( $this->img->getName() );
 
@@ -342,6 +349,7 @@ EOT
 				'wpDestFile=' . urlencode( $this->img->getName() ) );
 			$wgOut->addHTML( wfMsgWikiHtml( 'noimage', $link ) );
 		}
+
 	}
 
 	function printSharedImageText() {
@@ -450,15 +458,16 @@ EOT
 
 	function imageLinks()
 	{
-		global $wgUser, $wgOut;
+		global $wgUser, $wgOut, $wgLanguageTag;
 
 		$wgOut->addHTML( Xml::element( 'h2', array( 'id' => 'filelinks' ), wfMsg( 'imagelinks' ) ) . "\n" );
 
 		$dbr = wfGetDB( DB_SLAVE );
 		$page = $dbr->tableName( 'page' );
 		$imagelinks = $dbr->tableName( 'imagelinks' );
+		$lang=''; if($wgLanguageTag) $lang=',page_language';
 
-		$sql = "SELECT page_namespace,page_title FROM $imagelinks,$page WHERE il_to=" .
+		$sql = "SELECT page_namespace,page_title{$lang} FROM $imagelinks,$page WHERE il_to=" .
 		  $dbr->addQuotes( $this->mTitle->getDBkey() ) . " AND il_from=page_id";
 		$sql = $dbr->limitResult($sql, 500, 0);
 		$res = $dbr->query( $sql, "ImagePage::imageLinks" );
@@ -471,7 +480,8 @@ EOT
 
 		$sk = $wgUser->getSkin();
 		while ( $s = $dbr->fetchObject( $res ) ) {
-			$name = Title::MakeTitle( $s->page_namespace, $s->page_title );
+			if($wgLanguageTag) $name = Title::MakeTitle( $s->page_namespace, $s->page_title, $s->page_language);
+			else $name = Title::MakeTitle( $s->page_namespace, $s->page_title );
 			$link = $sk->makeKnownLinkObj( $name, "" );
 			$wgOut->addHTML( "<li>{$link}</li>\n" );
 		}
