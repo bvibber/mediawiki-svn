@@ -211,6 +211,18 @@ class AuthPlugin {
 	}
 
 	/**
+	 * Check if a user should authenticate locally if the global authentication fails.
+	 * If either this or strict() returns true, local authentication is not used.
+	 *
+	 * @param $username String: username.
+	 * @return bool
+	 * @public
+	 */
+	function strictUserAuth( $username ) {
+		return false;
+	}
+
+	/**
 	 * When creating a user account, optionally fill in preferences and such.
 	 * For instance, you might pull the email address or real name from the
 	 * external user database.
@@ -219,9 +231,10 @@ class AuthPlugin {
 	 * forget the & on your function declaration.
 	 *
 	 * @param $user User object.
+	 * @param $autocreate bool True if user is being autocreated on login
 	 * @public
 	 */
-	function initUser( &$user ) {
+	function initUser( $user, $autocreate=false ) {
 		# Override this to do something.
 	}
 
@@ -234,4 +247,4 @@ class AuthPlugin {
 	}
 }
 
-?>
+

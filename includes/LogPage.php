@@ -79,18 +79,22 @@ class LogPage {
 		# And update recentchanges
 		if ( $this->updateRecentChanges ) {
 			$titleObj = SpecialPage::getTitleFor( 'Log', $this->type );
-			$rcComment = $this->actionText;
-			if( '' != $this->comment ) {
-				if ($rcComment == '')
-					$rcComment = $this->comment;
-				else
-					$rcComment .= ': ' . $this->comment;
-			}
-
+			$rcComment = $this->getRcComment();
 			RecentChange::notifyLog( $now, $titleObj, $wgUser, $rcComment, '',
 				$this->type, $this->action, $this->target, $this->comment, $this->params );
 		}
 		return true;
+	}
+
+	public function getRcComment() {
+		$rcComment = $this->actionText;
+		if( '' != $this->comment ) {
+			if ($rcComment == '')
+				$rcComment = $this->comment;
+			else
+				$rcComment .= ': ' . $this->comment;
+		}
+		return $rcComment;
 	}
 
 	/**
@@ -112,9 +116,10 @@ class LogPage {
 	 * @static
 	 */
 	public static function logName( $type ) {
-		global $wgLogNames;
+		global $wgLogNames, $wgMessageCache;
 
 		if( isset( $wgLogNames[$type] ) ) {
+			$wgMessageCache->loadAllMessages();
 			return str_replace( '_', ' ', wfMsg( $wgLogNames[$type] ) );
 		} else {
 			// Bogus log types? Perhaps an extension was removed.
@@ -134,7 +139,7 @@ class LogPage {
 	/**
 	 * @static
 	 */
-	static function actionText( $type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks=false, $translate=false ) {
+	static function actionText( $type, $action, $title = NULL, $skin = NULL, $params = array(), $filterWikilinks=false ) {
 		global $wgLang, $wgContLang, $wgLogActions;
 
 		$key = "$type/$action";
@@ -151,14 +156,17 @@ class LogPage {
 					switch( $type ) {
 						case 'move':
 							$titleLink = $skin->makeLinkObj( $title, $title->getPrefixedText(), 'redirect=no' );
-							$params[0] = $skin->makeLinkObj( Title::newFromText( $params[0] ), $params[0] );
+							$params[0] = $skin->makeLinkObj( Title::newFromText( $params[0] ), htmlspecialchars( $params[0] ) );
 							break;
 						case 'block':
 							if( substr( $title->getText(), 0, 1 ) == '#' ) {
 								$titleLink = $title->getText();
 							} else {
-								$titleLink = $skin->makeLinkObj( $title, $title->getText() );
-								$titleLink .= ' (' . $skin->makeKnownLinkObj( SpecialPage::getTitleFor( 'Contributions', $title->getDBkey() ), wfMsg( 'contribslink' ) ) . ')';
+								// TODO: Store the user identifier in the parameters
+								// to make this faster for future log entries
+								$id = User::idFromName( $title->getText() );
+								$titleLink = $skin->userLink( $id, $title->getText() )
+									. $skin->userToolLinks( $id, $title->getText(), false, Linker::TOOL_LINKS_NOBLOCK );
 							}
 							break;
 						case 'rights':
@@ -192,8 +200,10 @@ class LogPage {
 				} else {
 					array_unshift( $params, $titleLink );
 					if ( $key == 'block/block' ) {
-						if ( $translate ) {
-							$params[1] = $wgLang->translateBlockExpiry( $params[1] );
+						if ( $skin ) {
+							$params[1] = '<span title="' . htmlspecialchars( $params[1] ). '">' . $wgLang->translateBlockExpiry( $params[1] ) . '</span>';
+						} else {
+							$params[1] = $wgContLang->translateBlockExpiry( $params[1] );
 						}
 						$params[2] = isset( $params[2] )
 										? self::formatBlockFlags( $params[2] )
@@ -291,4 +301,4 @@ class LogPage {
 	
 }
 
-?>
+

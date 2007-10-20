@@ -43,9 +43,11 @@ if (!defined('MEDIAWIKI')) {
 class ApiPageSet extends ApiQueryBase {
 
 	private $mAllPages; // [ns][dbkey] => page_id or 0 when missing
-	private $mTitles, $mGoodTitles, $mMissingTitles, $mMissingPageIDs, $mRedirectTitles, $mNormalizedTitles;
+	private $mTitles, $mGoodTitles, $mMissingTitles, $mMissingPageIDs, $mRedirectTitles;
+	private $mNormalizedTitles, $mInterwikiTitles;
 	private $mResolveRedirects, $mPendingRedirectIDs;
 	private $mGoodRevIDs, $mMissingRevIDs;
+	private $mFakePageId;
 
 	private $mRequestedPageFields;
 
@@ -59,6 +61,7 @@ class ApiPageSet extends ApiQueryBase {
 		$this->mMissingPageIDs = array ();
 		$this->mRedirectTitles = array ();
 		$this->mNormalizedTitles = array ();
+		$this->mInterwikiTitles = array ();
 		$this->mGoodRevIDs = array();
 		$this->mMissingRevIDs = array();
 
@@ -66,6 +69,8 @@ class ApiPageSet extends ApiQueryBase {
 		$this->mResolveRedirects = $resolveRedirects;
 		if($resolveRedirects)
 			$this->mPendingRedirectIDs = array();
+			
+		$this->mFakePageId = -1;
 	}
 
 	public function isResolvingRedirects() {
@@ -102,6 +107,14 @@ class ApiPageSet extends ApiQueryBase {
 	}
 
 	/**
+	 * Returns an array [ns][dbkey] => page_id for all requested titles
+	 * page_id is a unique negative number in case title was not found
+	 */
+	public function getAllTitlesByNamespace() {
+		return $this->mAllPages;
+	}
+
+	/**
 	 * All Title objects provided.
 	 * @return array of Title objects
 	 */
@@ -133,6 +146,7 @@ class ApiPageSet extends ApiQueryBase {
 
 	/**
 	 * Title objects that were NOT found in the database.
+	 * The array's index will be negative for each item
 	 * @return array of Title objects
 	 */
 	public function getMissingTitles() {
@@ -162,6 +176,15 @@ class ApiPageSet extends ApiQueryBase {
 	 */
 	public function getNormalizedTitles() {
 		return $this->mNormalizedTitles;
+	}
+
+	/**
+	 * Get a list of interwiki titles - maps the title given 
+	 * with to the interwiki prefix.
+	 * @return array raw_prefixed_title (string) => interwiki_prefix (string) 
+	 */
+	public function getInterwikiTitles() {
+		return $this->mInterwikiTitles;
 	}
 
 	/**
@@ -243,7 +266,6 @@ class ApiPageSet extends ApiQueryBase {
 	 */
 	public function populateFromPageIDs($pageIDs) {
 		$this->profileIn();
-		$pageIDs = array_map('intval', $pageIDs); // paranoia
 		$this->initFromPageIds($pageIDs);
 		$this->profileOut();
 	}
@@ -275,22 +297,18 @@ class ApiPageSet extends ApiQueryBase {
 		// Store Title object in various data structures
 		$title = Title :: makeTitle($row->page_namespace, $row->page_title);
 	
-		// skip any pages that user has no rights to read
-		if ($title->userCanRead()) {
+		$pageId = intval($row->page_id);	
+		$this->mAllPages[$row->page_namespace][$row->page_title] = $pageId;
+		$this->mTitles[] = $title;
 
-			$pageId = intval($row->page_id);	
-			$this->mAllPages[$row->page_namespace][$row->page_title] = $pageId;
-			$this->mTitles[] = $title;
-	
-			if ($this->mResolveRedirects && $row->page_is_redirect == '1') {
-				$this->mPendingRedirectIDs[$pageId] = $title;
-			} else {
-				$this->mGoodTitles[$pageId] = $title;
-			}
-	
-			foreach ($this->mRequestedPageFields as $fieldName => & $fieldValues)
-				$fieldValues[$pageId] = $row-> $fieldName;
+		if ($this->mResolveRedirects && $row->page_is_redirect == '1') {
+			$this->mPendingRedirectIDs[$pageId] = $title;
+		} else {
+			$this->mGoodTitles[$pageId] = $title;
 		}
+
+		foreach ($this->mRequestedPageFields as $fieldName => & $fieldValues)
+			$fieldValues[$pageId] = $row-> $fieldName;
 	}
 	
 	public function finishPageSetGeneration() {
@@ -338,7 +356,8 @@ class ApiPageSet extends ApiQueryBase {
 	private function initFromPageIds($pageids) {
 		if(empty($pageids))
 			return;
-			
+
+		$pageids = array_map('intval', $pageids); // paranoia
 		$set = array (
 			'page_id' => $pageids
 		);
@@ -396,8 +415,9 @@ class ApiPageSet extends ApiQueryBase {
 				foreach ($remaining as $ns => $dbkeys) {
 					foreach ( $dbkeys as $dbkey => $unused ) {
 						$title = Title :: makeTitle($ns, $dbkey);
-						$this->mMissingTitles[] = $title;
-						$this->mAllPages[$ns][$dbkey] = 0;
+						$this->mAllPages[$ns][$dbkey] = $this->mFakePageId;
+						$this->mMissingTitles[$this->mFakePageId] = $title;
+						$this->mFakePageId--;
 						$this->mTitles[] = $title;
 					}
 				}
@@ -546,6 +566,7 @@ class ApiPageSet extends ApiQueryBase {
 
 	/**
 	 * Given an array of title strings, convert them into Title objects.
+	 * Alternativelly, an array of Title objects may be given.
 	 * This method validates access rights for the title, 
 	 * and appends normalization values to the output.
 	 * 
@@ -558,17 +579,22 @@ class ApiPageSet extends ApiQueryBase {
 		foreach ($titles as $title) {
 			
 			$titleObj = is_string($title) ? Title :: newFromText($title) : $title;
-
-			// Validation
 			if (!$titleObj)
-				$this->dieUsage("bad title $titleString", 'invalidtitle');
-			if ($titleObj->getNamespace() < 0)
-				$this->dieUsage("No support for special page $titleString has been implemented", 'unsupportednamespace');
-			if (!$titleObj->userCanRead())
-				$this->dieUsage("No read permission for $titleString", 'titleaccessdenied');
+				$this->dieUsage("bad title", 'invalidtitle');
 
-			$linkBatch->addObj($titleObj);
+			$iw = $titleObj->getInterwiki();
+			if (!empty($iw)) {
+				// This title is an interwiki link.
+				$this->mInterwikiTitles[$titleObj->getPrefixedText()] = $iw;
+			} else { 
 
+				// Validation
+				if ($titleObj->getNamespace() < 0)
+					$this->dieUsage("No support for special pages has been implemented", 'unsupportednamespace');
+
+				$linkBatch->addObj($titleObj);
+			}
+			
 			// Make sure we remember the original title that was given to us
 			// This way the caller can correlate new titles with the originally requested,
 			// i.e. namespace is localized or capitalization is different
@@ -608,4 +634,4 @@ class ApiPageSet extends ApiQueryBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

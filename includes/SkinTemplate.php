@@ -285,11 +285,11 @@ class SkinTemplate extends Skin {
 		$tpl->setRef( 'userjsprev', $this->userjsprev);
 		global $wgUseSiteJs;
 		if ($wgUseSiteJs) {
-			if($this->loggedin) {
-				$tpl->set( 'jsvarurl', self::makeUrl('-','action=raw&smaxage=0&gen=js') );
-			} else {
-				$tpl->set( 'jsvarurl', self::makeUrl('-','action=raw&gen=js') );
-			}
+			$jsCache = $this->loggedin ? '&smaxage=0' : '';
+			$tpl->set( 'jsvarurl',
+				self::makeUrl('-',
+					"action=raw$jsCache&gen=js&useskin=" .
+						urlencode( $this->getSkinName() ) ) );
 		} else {
 			$tpl->set('jsvarurl', false);
 		}
@@ -602,6 +602,13 @@ class SkinTemplate extends Skin {
 			global $wgContLang;
 			$text = $wgContLang->getFormattedNsText( Namespace::getSubject( $title->getNamespace() ) );
 		}
+		
+		$result = array();
+		if( !wfRunHooks('SkinTemplateTabAction', array(&$this,
+				$title, $message, $selected, $checkEdit,
+				&$classes, &$query, &$text, &$result)) ) {
+			return $result;
+		}
 
 		return array(
 			'class' => implode( ' ', $classes ),
@@ -685,7 +692,7 @@ class SkinTemplate extends Skin {
 						'href' => $this->mTitle->getLocalUrl( 'action=edit&section=new' )
 					);
 				}
-			} else {
+			} elseif ( $this->mTitle->exists() || $this->mTitle->isAlwaysKnown() ) {
 				$content_actions['viewsource'] = array(
 					'class' => ($action == 'edit') ? 'selected' : false,
 					'text' => wfMsg('viewsource'),
@@ -891,10 +898,19 @@ class SkinTemplate extends Skin {
 			$ip = false;
 		}
 
-		if($id || $ip) { # both anons and non-anons have contri list
+		if($id || $ip) { # both anons and non-anons have contribs list
 			$nav_urls['contributions'] = array(
 				'href' => self::makeSpecialUrlSubpage( 'Contributions', $this->mTitle->getText() )
 			);
+			
+			if( $id ) {
+				$logPage = SpecialPage::getTitleFor( 'Log' );
+				$nav_urls['log'] = array( 'href' => $logPage->getLocalUrl( 'user='
+					. $this->mTitle->getPartialUrl() ) );
+			} else {
+				$nav_urls['log'] = false;
+			}
+
 			if ( $wgUser->isAllowed( 'block' ) ) {
 				$nav_urls['blockip'] = array(
 					'href' => self::makeSpecialUrlSubpage( 'Blockip', $this->mTitle->getText() )
@@ -904,6 +920,7 @@ class SkinTemplate extends Skin {
 			}
 		} else {
 			$nav_urls['contributions'] = false;
+			$nav_urls['log'] = false;
 			$nav_urls['blockip'] = false;
 		}
 		$nav_urls['emailuser'] = false;
@@ -1175,4 +1192,4 @@ class QuickTemplate {
 		return ($msg != '-') && ($msg != ''); # ????
 	}
 }
-?>
+

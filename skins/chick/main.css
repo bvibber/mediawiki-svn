@@ -52,8 +52,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .editsection {
 	font-weight: normal;
-	float: right;
-	margin-left: 5px;
 }
 h1 { font-size: 188%; }
 h1 .editsection { font-size: 53.2%; }
@@ -328,8 +326,6 @@ img.thumbborder {
 .hiddenStructure {
     display: none;
 }
-img.tex { vertical-align: middle; }
-span.texhtml { font-family: serif; }
 
 /*
 ** classes for special content elements like town boxes
@@ -470,7 +466,8 @@ div.gallerytext {
 
 .templatesUsed { margin-top: 1.5em; }
 
-/* Recreating-deleted-page warning and log entries */
+/* Recreating-deleted-page/reupload file warning and log entries */
+div#mw-upload-deleted-warn ul li,
 div#mw-recreate-deleted-warn ul li {
 	font-size: 95%;
 }

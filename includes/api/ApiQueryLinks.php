@@ -73,6 +73,8 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		if ($this->getPageSet()->getGoodTitleCount() == 0)
 			return;	// nothing to do
 
+		$params = $this->extractRequestParams();
+
 		$this->addFields(array (
 			$this->prefix . '_from pl_from',
 			$this->prefix . '_namespace pl_namespace',
@@ -81,6 +83,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 
 		$this->addTables($this->table);
 		$this->addWhereFld($this->prefix . '_from', array_keys($this->getPageSet()->getGoodTitles()));
+		$this->addWhereFld($this->prefix . '_namespace', $params['namespace']);
 		$this->addOption('ORDER BY', str_replace('pl_', $this->prefix . '_', 'pl_from, pl_namespace, pl_title'));
 
 		$db = $this->getDB();
@@ -99,9 +102,8 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 					$lastId = $row->pl_from;
 				}
 
-				$title = Title :: makeTitle($row->pl_namespace, $row->pl_title);
 				$vals = array();
-				ApiQueryBase :: addTitleInfo($vals, $title, true);
+				ApiQueryBase :: addTitleInfo($vals, Title :: makeTitle($row->pl_namespace, $row->pl_title));
 				$data[] = $vals;
 			}
 
@@ -113,9 +115,7 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 
 			$titles = array();
 			while ($row = $db->fetchObject($res)) {
-				$title = Title :: makeTitle($row->pl_namespace, $row->pl_title);
-				if($title->userCanRead())
-					$titles[] = $title;
+				$titles[] = Title :: makeTitle($row->pl_namespace, $row->pl_title);
 			}
 			$resultPageSet->populateFromTitles($titles);
 		}
@@ -123,12 +123,21 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		$db->freeResult($res);
 	}
 
-	private function addPageSubItems($pageId, $data) {
-		$result = $this->getResult();
-		$result->setIndexedTagName($data, $this->prefix);
-		$result->addValue(array ('query', 'pages', intval($pageId)),
-			$this->getModuleName(),
-			$data);
+	protected function getAllowedParams()
+	{
+		return array(
+				'namespace' => array(
+					ApiBase :: PARAM_TYPE => 'namespace',
+					ApiBase :: PARAM_ISMULTI => true
+				)
+			);
+	}
+
+	protected function getParamDescription()
+	{
+		return array(
+				'namespace' => "Show {$this->description}s in this namespace(s) only"
+			);
 	}
 
 	protected function getDescription() {
@@ -140,7 +149,9 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 				"Get {$this->description}s from the [[Main Page]]:",
 				"  api.php?action=query&prop={$this->getModuleName()}&titles=Main%20Page",
 				"Get information about the {$this->description} pages in the [[Main Page]]:",
-				"  api.php?action=query&generator={$this->getModuleName()}&titles=Main%20Page&prop=info"
+				"  api.php?action=query&generator={$this->getModuleName()}&titles=Main%20Page&prop=info",
+				"Get {$this->description}s from the Main Page in the User and Template namespaces:",
+				"  api.php?action=query&prop={$this->getModuleName()}&titles=Main%20Page&{$this->prefix}namespace=2|10"
 			);
 	}
 
@@ -148,4 +159,4 @@ class ApiQueryLinks extends ApiQueryGeneratorBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

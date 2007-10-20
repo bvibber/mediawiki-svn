@@ -20,6 +20,7 @@ class Http {
 	static function request( $method, $url, $timeout = 'default' ) {
 		global $wgHTTPTimeout, $wgHTTPProxy, $wgVersion, $wgTitle;
 
+		wfDebug( __METHOD__ . ": $method $url\n" );
 		# Use curl if available
 		if ( function_exists( 'curl_init' ) ) {
 			$c = curl_init( $url );
@@ -57,12 +58,25 @@ class Http {
 			if ( curl_getinfo( $c, CURLINFO_HTTP_CODE ) != 200 ) {
 				$text = false;
 			}
+			# Don't return truncated output
+			if ( curl_errno( $c ) != CURLE_OK ) {
+				$text = false;
+			}
 			curl_close( $c );
 		} else {
-			# Otherwise use file_get_contents, or its compatibility function from GlobalFunctions.php
+			# Otherwise use file_get_contents...
 			# This may take 3 minutes to time out, and doesn't have local fetch capabilities
 
-			$opts = array('http' => array( 'method' => $method ) );
+			global $wgVersion;
+			$headers = array( "User-Agent: MediaWiki/$wgVersion" );
+			if( strcasecmp( $method, 'post' ) == 0 ) {
+				// Required for HTTP 1.0 POSTs
+				$headers[] = "Content-Length: 0";
+			}
+			$opts = array(
+				'http' => array(
+					'method' => $method,
+					'header' => implode( "\r\n", $headers ) ) );
 			$ctx = stream_context_create($opts);
 
 			$url_fopen = ini_set( 'allow_url_fopen', 1 );
@@ -104,4 +118,4 @@ class Http {
 		return false;
 	}
 }
-?>
+

@@ -248,7 +248,7 @@ $messages = array(
 'accmailtext'        => '"$1" üçün parol göndərildi bu ünvana : $2.',
 'newarticle'         => '(Yeni)',
 'newarticletext'     => "Mövcud olmayan səhifəyə olan keçidi izlədiniz. Aşağıdakı sahəyə məzmununu yazaraq bu səhifəni '''siz''' yarada bilərsiniz. (əlavə məlumat üçün [[{{MediaWiki:helppage}}|kömək səhifəsinə]] baxın). Əgər bu səhifəyə səhvən gəlmisinizsə sadəcə olaraq brauzerin '''geri''' düyməsinə vurun.",
-'noarticletext'      => "Hal-hazırda bu səhifə boşdur. Başqa səhifələrdə [[{{ns:special}}:Search/{{PAGENAME}}|bu səhifənin adını axtara]] bilər və ya '''[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} səhifəni siz redaktə edəbilərsiniz]'''.",
+'noarticletext'      => "Hal-hazırda bu səhifə boşdur. Başqa səhifələrdə [[Special:Search/{{PAGENAME}}|bu səhifənin adını axtara]] bilər və ya '''[{{fullurl:{{NAMESPACE}}:{{PAGENAME}}|action=edit}} səhifəni siz redaktə edəbilərsiniz]'''.",
 'previewnote'        => '<strong>Bu yalnız sınaq göstərişidir; dəyişikliklər hal-hazırda qeyd edilmemişdir!</strong>',
 'editing'            => 'Redaktə $1',
 'editinguser'        => 'Redaktə $1',
@@ -319,7 +319,6 @@ Açıqlama: (hh) = hal-hazırkı versiya ilə olan fərqlər,
 'userrights-user-editname' => 'İstifadəçi adınızı yazın:',
 
 # Recent changes
-'changes'           => 'dəyişiklik',
 'recentchanges'     => 'Son dəyişikliklər',
 'recentchangestext' => "'''Ən son dəyişiklikləri bu səhifədən izləyin.'''",
 'rcnote'            => 'Aşağıdakı son <strong>$1</strong> dəyişiklik son <strong>$2</strong> gün ərzində edilmişdir.',
@@ -442,7 +441,9 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: ''
 'mywatchlist'            => 'İzlədiyim səhifələr',
 'watchnologin'         => 'Daxil olmamısınız',
 'addedwatch'           => 'İzləmə siyahısına əlavə edildi.',
-'addedwatchtext'       => '"$1" səhifəsi [[Special:Watchlist|izlədiyiniz səhifələrə]] əlavə edildi. Bu səhifədə və əlaqəli müzakirə səhifəsində olacaq dəyişikliklər orada göstəriləcək və səhifə asanlıqla seçiləbilmək üçün [[Special:Recentchanges|son dəyişikliklər]]-də qalın şriftlərlə görsənəcəkdir. <p> Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə" düyməsinə vurun.',
+'addedwatchtext'       => '"$1" səhifəsi [[Special:Watchlist|izlədiyiniz səhifələrə]] əlavə edildi. Bu səhifədə və əlaqəli müzakirə səhifəsində olacaq dəyişikliklər orada göstəriləcək və səhifə asanlıqla seçiləbilmək üçün [[Special:Recentchanges|son dəyişikliklər]]-də qalın şriftlərlə görsənəcəkdir.
+
+Səhifəni izləmə sıyahınızdan çıxarmaq üçün yan lovhədəki "izləmə" düyməsinə vurun.',
 'removedwatch'         => 'İzləmə siyahısından çıxardılıb',
 'removedwatchtext'     => '"$1" səhifəsi izləmə siyahınızdan çıxardıldı.',
 'watch'                => 'İzlə',
@@ -450,15 +451,11 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: ''
 'unwatch'              => 'İzləmə',
 'unwatchthispage'      => 'İzləmə',
 'watchnochange'        => 'Verilən vaxt ərzində heç bir izlədiyiniz səhifə redaktə edilməmişdir.',
-'watchdetails'         => '* müzakirə səhifələri çıxmaq şərtilə $1 səhifəni izləyirsiniz
-* [[Special:Watchlist/edit|İzlədiyiniz səhifələrin tam siyahısının göstərilməsi və redaktəsi]]',
+'watchlist-details'    => 'müzakirə səhifələri çıxmaq şərtilə $1 səhifəni izləyirsiniz',
 'wlheader-showupdated' => "* Son ziyarətinizdən sonra edilən dəyişikliklər '''qalın şriftlərlə''' göstərilmişdir.",
 'watchmethod-recent'   => 'yeni dəyişikliklər izlənilən səhifələr üçün yoxlanılır',
 'watchmethod-list'     => 'izlənilən səhifələr yeni dəyişikliklər üçün yoxlanılır',
-'removechecked'        => 'İşarələnənləri izləmə siyahısından çıxart',
 'watchlistcontains'    => 'İzləmə siyahınızda $1 səhifə var.',
-'watcheditlist'        => "Bunlar izlədiyiniz səhifələrin əlifba sırasına görə siyahısıdır. Siyahıdan çıxartmaq istədiyiniz səhifələrin yanındakı qutuları işarələləyin və ekranın altındakı 'işarələnənləri sıyahıdan çıxart düyməsinə' vurun(məzmun səhifəsini çıxartdıqda əlaqəli müzakirə səhifəsi də (və tərsinə) çıxardılacaqdır).",
-'removingchecked'      => 'İstədikləriniz izləmə siyahısından çıxardılır...',
 'wlnote'               => 'Aşağıdakılar son <b>$2</b> saatdakı son $1 dəyişiklikdir.',
 'wlshowlast'           => 'Bunları göstər: son $1 saatı $2 günü $3',
 'wlsaved'              => 'Bu izləmə siyahınızın qeyd edilmiş halıdır.',
@@ -498,7 +495,7 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: ''
 'ipbsubmit'          => 'Bu istifadəçiyi əngəllə',
 'badipaddress'       => 'Yanlış IP',
 'blockipsuccesssub'  => 'bloklandi',
-'blockipsuccesstext' => '[[{{ns:Special}}:Contributions/$1| $1]]bloklanıb. <br />See[[{{ns:Special}}:Ipblocklist|IP blok siyahisi]] bloklanmış IP lər.',
+'blockipsuccesstext' => '[[Special:Contributions/$1| $1]]bloklanıb. <br />See[[Special:Ipblocklist|IP blok siyahisi]] bloklanmış IP lər.',
 'ipblocklist'        => 'Əngəllənmiş istifadəçilər siyahı',
 'blocklink'          => 'blokla',
 'contribslink'       => 'Köməklər',
@@ -584,7 +581,6 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: ''
 
 # 'all' in various places, this might be different for inflected languages
 'imagelistall'  => 'bütün',
-'watchlistall1' => 'hamısını',
 'watchlistall2' => 'hamısını',
 'namespacesall' => 'bütün',
 
@@ -596,9 +592,6 @@ Hal-hazırda [http://meta.wikimedia.org/wiki/Help:Job_queue job queue] sayı: ''
 'confirmemail_loggedin' => 'E-məktubunuz indi təsdiq edildi.',
 'confirmemail_subject'  => '{{SITENAME}} e-məktub təsdiq etme',
 
-# Inputbox extension, may be useful in other contexts as well
-'createarticle' => 'Məqalə yarat',
-
 );
 
-?>
+

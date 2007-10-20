@@ -28,6 +28,7 @@ class OutputPage {
 	
 	var $mNewSectionLink = false;
 	var $mNoGallery = false;
+	var $mPageTitleActionText = '';
 
 	/**
 	 * Constructor
@@ -55,7 +56,6 @@ class OutputPage {
 		$this->mRevisionId = null;
 		$this->mNewSectionLink = false;
 		$this->mTemplateIds = array();
-		$this->mImageTimestamps = array();
 	}
 	
 	public function redirect( $url, $responsecode = '302' ) {
@@ -109,6 +109,10 @@ class OutputPage {
 		$this->mHeadItems[$name] = $value;
 	}
 
+	function hasHeadItem( $name ) {
+		return isset( $this->mHeadItems[$name] );
+	}
+
 	function setETag($tag) { $this->mETag = $tag; }
 	function setArticleBodyOnly($only) { $this->mArticleBodyOnly = $only; }
 	function getArticleBodyOnly($only) { return $this->mArticleBodyOnly; }
@@ -158,7 +162,11 @@ class OutputPage {
 			# Wed, 20 Aug 2003 06:51:19 GMT; length=5202
 			# this breaks strtotime().
 			$modsince = preg_replace( '/;.*$/', '', $_SERVER["HTTP_IF_MODIFIED_SINCE"] );
+			
+			wfSuppressWarnings(); // E_STRICT system time bitching
 			$modsinceTime = strtotime( $modsince );
+			wfRestoreWarnings();
+			
 			$ismodsince = wfTimestamp( TS_MW, $modsinceTime ? $modsinceTime : 1 );
 			wfDebug( "$fname: -- client send If-Modified-Since: " . $modsince . "\n", false );
 			wfDebug( "$fname: --  we might send Last-Modified : $lastmod\n", false );
@@ -186,26 +194,13 @@ class OutputPage {
 		}
 	}
 
+	function setPageTitleActionText( $text ) {
+		$this->mPageTitleActionText = $text;
+	}
+
 	function getPageTitleActionText () {
-		global $action;
-		switch($action) {
-			case 'edit':
-			case 'delete':
-			case 'protect':
-			case 'unprotect':
-			case 'watch':
-			case 'unwatch':
-				// Display title is already customized
-				return '';
-			case 'history':
-				return wfMsg('history_short');
-			case 'submit':
-				// FIXME: bug 2735; not correct for special pages etc
-				return wfMsg('preview');
-			case 'info':
-				return wfMsg('info_short');
-			default:
-				return '';
+		if ( isset( $this->mPageTitleActionText ) ) {
+			return $this->mPageTitleActionText;
 		}
 	}
 
@@ -356,10 +351,12 @@ class OutputPage {
 		wfIncrStats('pcache_not_possible');
 
 		$popts = $this->parserOptions();
-		$popts->setTidy($tidy);
+		$oldTidy = $popts->setTidy($tidy);
 
 		$parserOutput = $wgParser->parse( $text, $title, $popts,
 			$linestart, true, $this->mRevisionId );
+			
+		$popts->setTidy( $oldTidy );
 
 		$this->addParserOutput( $parserOutput );
 
@@ -378,18 +375,24 @@ class OutputPage {
 		if ( $parserOutput->getCacheTime() == -1 ) {
 			$this->enableClientCache( false );
 		}
-		if ( $parserOutput->mHTMLtitle != "" ) {
-			$this->mPagetitle = $parserOutput->mHTMLtitle ;
-		}
-		if ( $parserOutput->mSubtitle != '' ) {
-			$this->mSubtitle .= $parserOutput->mSubtitle ;
-		}
 		$this->mNoGallery = $parserOutput->getNoGallery();
 		$this->mHeadItems = array_merge( $this->mHeadItems, (array)$parserOutput->mHeadItems );
 		// Versioning...
 		$this->mTemplateIds += (array)$parserOutput->mTemplateIds;
-		$this->mImageTimestamps += (array)$parserOutput->mImageTimestamps;
 		
+		# Display title
+		if( ( $dt = $parserOutput->getDisplayTitle() ) !== false )
+			$this->setPageTitle( $dt );
+
+		# Hooks registered in the object
+		global $wgParserOutputHooks;
+		foreach ( $parserOutput->getOutputHooks() as $hookInfo ) {
+			list( $hookName, $data ) = $hookInfo;
+			if ( isset( $wgParserOutputHooks[$hookName] ) ) {
+				call_user_func( $wgParserOutputHooks[$hookName], $this, $parserOutput, $data );
+			}
+		}
+
 		wfRunHooks( 'OutputPageParserOutput', array( &$this, $parserOutput ) );
 	}
 
@@ -755,15 +758,11 @@ class OutputPage {
 		$this->setRobotpolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
 
-		$id = $wgUser->blockedBy();
+		$name = User::whoIs( $wgUser->blockedBy() );
 		$reason = $wgUser->blockedFor();
+		$blockTimestamp = $wgLang->timeanddate( wfTimestamp( TS_MW, $wgUser->mBlock->mTimestamp ), true );
 		$ip = wfGetIP();
 
-		if ( is_numeric( $id ) ) {
-			$name = User::whoIs( $id );
-		} else {
-			$name = $id;
-		}
 		$link = '[[' . $wgContLang->getNsText( NS_USER ) . ":{$name}|{$name}]]";
 
 		$blockid = $wgUser->mBlock->mId;
@@ -796,8 +795,8 @@ class OutputPage {
 		 * This could be a username, an ip range, or a single ip. */
 		$intended = $wgUser->mBlock->mAddress;
 
-		$this->addWikiText( wfMsg( $msg, $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended ) );
-		
+		$this->addWikiText( wfMsg( $msg, $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended, $blockTimestamp ) );
+
 		# Don't auto-return to special pages
 		if( $return ) {
 			$return = $wgTitle->getNamespace() > -1 ? $wgTitle->getPrefixedText() : NULL;
@@ -825,11 +824,32 @@ class OutputPage {
 		$this->mRedirect = '';
 		$this->mBodytext = '';
 		
+		array_unshift( $params, 'parse' );
 		array_unshift( $params, $msg );
-		$message = call_user_func_array( 'wfMsg', $params );
-		$this->addWikiText( $message );
+		$this->addHtml( call_user_func_array( 'wfMsgExt', $params ) );
 		
 		$this->returnToMain( false );
+	}
+
+	/**
+	 * Output a standard permission error page
+	 *
+	 * @param array $errors Error message keys
+	 */
+	public function showPermissionsErrorPage( $errors )
+	{
+		global $wgTitle;
+
+		$this->mDebugtext .= 'Original title: ' .
+			 $wgTitle->getPrefixedText() . "\n";
+		$this->setPageTitle( wfMsg( 'permissionserrors' ) );
+		$this->setHTMLTitle( wfMsg( 'permissionserrors' ) );
+		$this->setRobotpolicy( 'noindex,nofollow' );
+		$this->setArticleRelated( false );
+		$this->enableClientCache( false );
+		$this->mRedirect = '';
+		$this->mBodytext = '';
+		$this->addWikiText( $this->formatPermissionsErrorMessage( $errors ) );
 	}
 
 	/** @deprecated */
@@ -948,38 +968,75 @@ class OutputPage {
 	}
 
 	/**
+	 * @param array $errors An array of arrays returned by Title::getUserPermissionsErrors
+	 * @return string The error-messages, formatted into a list.
+	 */
+	public function formatPermissionsErrorMessage( $errors ) {
+		$text = '';
+
+		if (sizeof( $errors ) > 1) {
+
+			$text .= wfMsgExt( 'permissionserrorstext', array( 'parse' ), count( $errors ) ) . "\n";
+			$text .= '<ul class="permissions-errors">' . "\n";
+
+			foreach( $errors as $error )
+			{
+				$text .= '<li>';
+				$text .= call_user_func_array( 'wfMsg', $error );
+				$text .= "</li>\n";
+			}
+			$text .= '</ul>';
+		} else {
+			$text .= call_user_func_array( 'wfMsg', $errors[0]);
+		}
+
+		return $text;
+	}
+
+	/**
 	 * @todo document
 	 * @param bool  $protected Is the reason the page can't be reached because it's protected?
 	 * @param mixed $source
+	 * @param bool $protected, page is protected?
+	 * @param array $reason, array of arrays( msg, args )
 	 */
-	public function readOnlyPage( $source = null, $protected = false ) {
+	public function readOnlyPage( $source = null, $protected = false, $reasons = array() ) {
 		global $wgUser, $wgReadOnlyFile, $wgReadOnly, $wgTitle;
 		$skin = $wgUser->getSkin();
 
 		$this->setRobotpolicy( 'noindex,nofollow' );
 		$this->setArticleRelated( false );
-
-		if( $protected ) {
+		
+		if ( !empty($reasons) ) {
 			$this->setPageTitle( wfMsg( 'viewsource' ) );
 			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
 
+			$this->addWikiText( $this->formatPermissionsErrorMessage( $reasons ) );
+		} else if( $protected ) {
+			$this->setPageTitle( wfMsg( 'viewsource' ) );
+			$this->setSubtitle( wfMsg( 'viewsourcefor', $skin->makeKnownLinkObj( $wgTitle ) ) );
 			list( $cascadeSources, /* $restrictions */ ) = $wgTitle->getCascadeProtectionSources();
 
-			# Determine if protection is due to the page being a system message
-			# and show an appropriate explanation
+			// Show an appropriate explanation depending upon the reason
+			// for the protection...all of these should be moved to the
+			// callers
 			if( $wgTitle->getNamespace() == NS_MEDIAWIKI ) {
+				// User isn't allowed to edit the interface
 				$this->addWikiText( wfMsg( 'protectedinterface' ) );
-			} if ( $cascadeSources && count($cascadeSources) > 0 ) {
-				$titles = '';
-	
-				foreach ( $cascadeSources as $title ) {
-					$titles .= '* [[:' . $title->getPrefixedText() . "]]\n";
-				}
-
-				$notice = wfMsgExt( 'cascadeprotected', array('parsemag'), count($cascadeSources) ) . "\n$titles";
-
-				$this->addWikiText( $notice );
+			} elseif( $cascadeSources && ( $count = count( $cascadeSources ) ) > 0 ) {
+				// Cascading protection
+					$titles = '';
+					foreach( $cascadeSources as $title )
+						$titles .= "* [[:" . $title->getPrefixedText()  . "]]\n";
+					$this->addWikiText( wfMsgExt( 'cascadeprotected', 'parsemag', $count, "\n{$titles}" ) );
+			} elseif( !$wgTitle->isProtected( 'edit' ) && $wgTitle->isNamespaceProtected() ) {
+				// Namespace protection
+				$ns = $wgTitle->getNamespace() == NS_MAIN
+					? wfMsg( 'nstab-main' )
+					: $wgTitle->getNsText();
+				$this->addWikiText( wfMsg( 'namespaceprotected', $ns ) );
 			} else {
+				// Standard protection
 				$this->addWikiText( wfMsg( 'protectedpagetext' ) );
 			}
 		} else {
@@ -1000,10 +1057,10 @@ class OutputPage {
 				htmlspecialchars( $source ) . "\n</textarea>";
 			$this->addHTML( $text );
 		}
-		$article = new Article($wgTitle);
-		$this->addHTML( $skin->formatTemplates($article->getUsedTemplates()) );
+		$article = new Article( $wgTitle );
+		$this->addHTML( $skin->formatTemplates( $article->getUsedTemplates() ) );
 
-		$this->returnToMain( false );
+		$this->returnToMain( false, $wgTitle );
 	}
 
 	/** @deprecated */
@@ -1066,12 +1123,25 @@ class OutputPage {
 	}
 
 	/**
-	 * return from error messages or notes
-	 * @param $auto automatically redirect the user after 10 seconds
-	 * @param $returnto page title to return to. Default is Main Page.
+	 * Add a "return to" link pointing to a specified title
+	 *
+	 * @param Title $title Title to link
 	 */
-	public function returnToMain( $auto = true, $returnto = NULL ) {
-		global $wgUser, $wgOut, $wgRequest;
+	public function addReturnTo( $title ) {
+		global $wgUser;
+		$link = wfMsg( 'returnto', $wgUser->getSkin()->makeLinkObj( $title ) );
+		$this->addHtml( "<p>{$link}</p>\n" );
+	}
+
+	/**
+	 * Add a "return to" link pointing to a specified title,
+	 * or the title indicated in the request, or else the main page
+	 *
+	 * @param null $unused No longer used
+	 * @param Title $returnto Title to return to
+	 */
+	public function returnToMain( $unused = null, $returnto = NULL ) {
+		global $wgRequest;
 		
 		if ( $returnto == NULL ) {
 			$returnto = $wgRequest->getText( 'returnto' );
@@ -1090,14 +1160,7 @@ class OutputPage {
 			$titleObj = Title::newMainPage();
 		}
 
-		$sk = $wgUser->getSkin();
-		$link = $sk->makeLinkObj( $titleObj, '' );
-
-		$r = wfMsg( 'returnto', $link );
-		if ( $auto ) {
-			$wgOut->addMeta( 'http:Refresh', '10;url=' . $titleObj->escapeFullURL() );
-		}
-		$wgOut->addHTML( "\n<p>$r</p>\n" );
+		$this->addReturnTo( $titleObj );
 	}
 
 	/**
@@ -1214,15 +1277,50 @@ class OutputPage {
 			}
 			$ret .= " />\n";
 		}
+		
 		if( $this->isSyndicated() ) {
 			# FIXME: centralize the mime-type and name information in Feed.php
-			$link = $wgRequest->escapeAppendQuery( 'feed=rss' );
-			$ret .= "<link rel='alternate' type='application/rss+xml' title='RSS 2.0' href='$link' />\n";
-			$link = $wgRequest->escapeAppendQuery( 'feed=atom' );
-			$ret .= "<link rel='alternate' type='application/atom+xml' title='Atom 1.0' href='$link' />\n";
+			# Use the page name for the title (accessed through $wgTitle since
+			# there's no other way).  In principle, this could lead to issues
+			# with having the same name for different feeds corresponding to
+			# the same page, but we can't avoid that at this low a level.
+			global $wgTitle;
+			$ret .= $this->feedLink(
+				'rss',
+				$wgRequest->appendQuery( 'feed=rss' ),
+				wfMsg( 'page-rss-feed', $wgTitle->getPrefixedText() ) );
+			$ret .= $this->feedLink(
+				'atom',
+				$wgRequest->appendQuery( 'feed=atom' ),
+				wfMsg( 'page-atom-feed', $wgTitle->getPrefixedText() ) );
 		}
 
+		# Recent changes feed should appear on every page
+		# Put it after the per-page feed to avoid changing existing behavior.
+		# It's still available, probably via a menu in your browser.
+		global $wgSitename;
+		$rctitle = SpecialPage::getTitleFor( 'Recentchanges' );
+		$ret .= $this->feedLink(
+			'rss',
+			$rctitle->getFullURL( 'feed=rss' ),
+			wfMsg( 'site-rss-feed', $wgSitename ) );
+		$ret .= $this->feedLink(
+			'atom',
+			$rctitle->getFullURL( 'feed=atom' ),
+			wfMsg( 'site-atom-feed', $wgSitename ) );
+
 		return $ret;
+	}
+	
+	/**
+	 * Generate a <link rel/> for an RSS feed.
+	 */
+	private function feedLink( $type, $url, $text ) {
+		return Xml::element( 'link', array(
+			'rel' => 'alternate',
+			'type' => "application/$type+xml",
+			'title' => $text,
+			'href' => $url ) ) . "\n";
 	}
 
 	/**
@@ -1241,7 +1339,7 @@ class OutputPage {
 	/**
 	 * Show an "add new section" link?
 	 *
-	 * @return bool True if the parser output instructs us to add one
+	 * @return bool
 	 */
 	public function showNewSectionLink() {
 		return $this->mNewSectionLink;
@@ -1250,22 +1348,21 @@ class OutputPage {
 	/**
 	 * Show a warning about slave lag
 	 *
-	 * If the lag is higher than 30 seconds, then the warning is
-	 * a bit more obvious
+	 * If the lag is higher than $wgSlaveLagCritical seconds,
+	 * then the warning is a bit more obvious. If the lag is
+	 * lower than $wgSlaveLagWarning, then no warning is shown.
 	 *
 	 * @param int $lag Slave lag
 	 */
 	public function showLagWarning( $lag ) {
 		global $wgSlaveLagWarning, $wgSlaveLagCritical;
-		
-		if ($lag < $wgSlaveLagWarning)
-			return;
-
-		$message = ($lag >= $wgSlaveLagCritical) ? 'lag-warn-high' : 'lag-warn-normal';
-		$warning = wfMsgHtml( $message, htmlspecialchars( $lag ) );
-		$this->addHtml( "<div class=\"mw-{$message}\">\n{$warning}\n</div>\n" );
+		if( $lag >= $wgSlaveLagWarning ) {
+			$message = $lag < $wgSlaveLagCritical
+				? 'lag-warn-normal'
+				: 'lag-warn-high';
+			$warning = wfMsgExt( $message, 'parse', $lag );
+			$this->addHtml( "<div class=\"mw-{$message}\">\n{$warning}\n</div>\n" );
+		}
 	}
 	
 }
-
-?>

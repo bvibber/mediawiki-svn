@@ -41,7 +41,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		parent :: __construct($query, $moduleName, 'rv');
 	}
 
-	private $fld_ids = false, $fld_flags = false, $fld_timestamp = false, 
+	private $fld_ids = false, $fld_flags = false, $fld_timestamp = false, $fld_size = false,
 			$fld_comment = false, $fld_user = false, $fld_content = false;
 
 	public function execute() {
@@ -53,6 +53,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		// Enumerating revisions on multiple pages make it extremelly 
 		// difficult to manage continuations and require additional sql indexes  
 		$enumRevMode = (!is_null($user) || !is_null($excludeuser) || !is_null($limit) || !is_null($startid) || !is_null($endid) || $dir === 'newer' || !is_null($start) || !is_null($end));
+		
 
 		$pageSet = $this->getPageSet();
 		$pageCount = $pageSet->getGoodTitleCount();
@@ -83,6 +84,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 		$this->fld_flags = $this->addFieldsIf('rev_minor_edit', isset ($prop['flags']));
 		$this->fld_timestamp = $this->addFieldsIf('rev_timestamp', isset ($prop['timestamp']));
 		$this->fld_comment = $this->addFieldsIf('rev_comment', isset ($prop['comment']));
+		$this->fld_size = $this->addFieldsIf('rev_len', isset ($prop['size']));
 
 		if (isset ($prop['user'])) {
 			$this->addFields('rev_user');
@@ -90,12 +92,24 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$this->fld_user = true;
 		}
 		if (isset ($prop['content'])) {
+
+			// For each page we will request, the user must have read rights for that page
+			foreach ($pageSet->getGoodTitles() as $title) {
+				if( !$title->userCanRead() )
+					$this->dieUsage(
+						'The current user is not allowed to read ' . $title->getPrefixedText(),
+						'accessdenied');
+			}
+
 			$this->addTables('text');
 			$this->addWhere('rev_text_id=old_id');
 			$this->addFields('old_id');
 			$this->addFields('old_text');
 			$this->addFields('old_flags');
+
 			$this->fld_content = true;
+			
+			$this->expandTemplates = $expandtemplates;
 		}
 
 		$userMax = ($this->fld_content ? 50 : 500);
@@ -120,7 +134,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			// one row with the same timestamp for the same page. 
 			// The order needs to be the same as start parameter to avoid SQL filesort.
 
-			if (is_null($startid))
+			if (is_null($startid) && is_null($endid))
 				$this->addWhereRange('rev_timestamp', $dir, $start, $end);
 			else
 				$this->addWhereRange('rev_id', $dir, $startid, $endid);
@@ -128,11 +142,11 @@ class ApiQueryRevisions extends ApiQueryBase {
 			// must manually initialize unset limit
 			if (is_null($limit))
 				$limit = 10;
-			$this->validateLimit($this->encodeParamName('limit'), $limit, 1, $userMax, $botMax);
+			$this->validateLimit('limit', $limit, 1, $userMax, $botMax);
 
 			// There is only one ID, use it
 			$this->addWhereFld('rev_page', current(array_keys($pageSet->getGoodTitles())));
-
+			
 			if(!is_null($user)) {
 				$this->addWhereFld('rev_user_text', $user);
 			} elseif (!is_null( $excludeuser)) {
@@ -210,7 +224,6 @@ class ApiQueryRevisions extends ApiQueryBase {
 
 		if ($this->fld_ids) {
 			$vals['revid'] = intval($row->rev_id);
-			$vals['pageid'] = intval($row->rev_page);
 			// $vals['oldid'] = intval($row->rev_text_id);	// todo: should this be exposed?
 		}
 		
@@ -227,12 +240,21 @@ class ApiQueryRevisions extends ApiQueryBase {
 			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->rev_timestamp);
 		}
 		
+		if ($this->fld_size && !is_null($row->rev_len)) {
+			$vals['size'] = intval($row->rev_len);
+		}
+
 		if ($this->fld_comment && !empty ($row->rev_comment)) {
 			$vals['comment'] = $row->rev_comment;
 		}
 		
 		if ($this->fld_content) {
-			ApiResult :: setContent($vals, Revision :: getRevisionText($row));
+			$text = Revision :: getRevisionText($row);
+			if ($this->expandTemplates) {
+				global $wgParser;
+				$text = $wgParser->preprocess( $text, Title::newFromID($row->rev_page), new ParserOptions() );
+			}
+			ApiResult :: setContent($vals, $text);
 		}
 		
 		return $vals;
@@ -248,15 +270,16 @@ class ApiQueryRevisions extends ApiQueryBase {
 					'flags',
 					'timestamp',
 					'user',
+					'size',
 					'comment',
-					'content'
+					'content',
 				)
 			),
 			'limit' => array (
 				ApiBase :: PARAM_TYPE => 'limit',
 				ApiBase :: PARAM_MIN => 1,
-				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_SML1,
-				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_SML2
+				ApiBase :: PARAM_MAX => ApiBase :: LIMIT_BIG1,
+				ApiBase :: PARAM_MAX2 => ApiBase :: LIMIT_BIG2
 			),
 			'startid' => array (
 				ApiBase :: PARAM_TYPE => 'integer'
@@ -282,7 +305,9 @@ class ApiQueryRevisions extends ApiQueryBase {
 			),
 			'excludeuser' => array(
 				ApiBase :: PARAM_TYPE => 'user'
-			)
+			),
+			
+			'expandtemplates' => false,
 		);
 	}
 
@@ -297,6 +322,7 @@ class ApiQueryRevisions extends ApiQueryBase {
 			'dir' => 'direction of enumeration - towards "newer" or "older" revisions (enum)',
 			'user' => 'only include revisions made by user',
 			'excludeuser' => 'exclude revisions made by user',
+			'expandtemplates' => 'expand templates in revision content'
 		);
 	}
 
@@ -332,4 +358,4 @@ class ApiQueryRevisions extends ApiQueryBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

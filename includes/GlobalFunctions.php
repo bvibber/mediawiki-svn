@@ -8,20 +8,6 @@ if ( !defined( 'MEDIAWIKI' ) ) {
  * Global functions used everywhere
  */
 
-/**
- * Some globals and requires needed
- */
-
-/** Total number of articles */
-$wgNumberOfArticles = -1; # Unset
-
-/** Total number of views */
-$wgTotalViews = -1;
-
-/** Total number of edits */
-$wgTotalEdits = -1;
-
-
 require_once dirname(__FILE__) . '/LogPage.php';
 require_once dirname(__FILE__) . '/normal/UtfNormalUtil.php';
 require_once dirname(__FILE__) . '/XmlFunctions.php';
@@ -110,11 +96,6 @@ if ( !function_exists( 'array_diff_key' ) ) {
 function wfClone( $object ) {
 	return clone( $object );
 }
-
-/**
- * Where as we got a random seed
- */
-$wgRandomSeeded = false;
 
 /**
  * Seed Mersenne Twister
@@ -327,20 +308,6 @@ function wfMsg( $key ) {
 }
 
 /**
- * Get a message in the user interface language and replace wiki
- * links with clickable ones, escaping other HTML
- *
- * @param string $key Message key
- * @return string
- */
-function wfMsgWithLinks( $key ) {
-	global $wgUser;
-	$args = func_get_args();
-	return $wgUser->getSkin()->formatLinksInComment( htmlspecialchars(
-		call_user_func_array( 'wfMsg', $args ) ) );
-}
-
-/**
  * Same as above except doesn't transform the message
  */
 function wfMsgNoTrans( $key ) {
@@ -380,19 +347,6 @@ function wfMsgForContent( $key ) {
 		in_array( $key, $wgForceUIMsgAsContentMsg ) )
 		$forcontent = false;
 	return wfMsgReal( $key, $args, true, $forcontent );
-}
-
-/**
- * Get a message in the content language and replace wiki
- * links with clickable ones, escaping other HTML
- *
- * @param string $key Message key
- * @return string
- */
-function wfMsgForContentWithLinks( $key ) {
-	global $wgUser;
-	return $wgUser->getSkin()->formatLinksInComment( htmlspecialchars(
-		call_user_func_array( 'wfMsgForContent', func_get_args() ) ) );
 }
 
 /**
@@ -443,11 +397,10 @@ function wfMsgNoDBForContent( $key ) {
  * @return String: the requested message.
  */
 function wfMsgReal( $key, $args, $useDB = true, $forContent=false, $transform = true ) {
-	$fname = 'wfMsgReal';
-	wfProfileIn( $fname );
+	wfProfileIn( __METHOD__ );
 	$message = wfMsgGetKey( $key, $useDB, $forContent, $transform );
 	$message = wfMsgReplaceArgs( $message, $args );
-	wfProfileOut( $fname );
+	wfProfileOut( __METHOD__ );
 	return $message;
 }
 
@@ -596,6 +549,7 @@ function wfMsgWikiHtml( $key ) {
  *  <i>escape</i>: filters message trough htmlspecialchars
  *  <i>replaceafter</i>: parameters are substituted after parsing or escaping
  *  <i>parsemag</i>: transform the message using magic phrases
+ *  <i>content</i>: fetch message for content language instead of interface
  */
 function wfMsgExt( $key, $options ) {
 	global $wgOut, $wgParser;
@@ -608,7 +562,12 @@ function wfMsgExt( $key, $options ) {
 		$options = array($options);
 	}
 
-	$string = wfMsgGetKey( $key, true, false, false );
+	$forContent = false;
+	if( in_array('content', $options) ) {
+		$forContent = true;
+	}
+
+	$string = wfMsgGetKey( $key, /*DB*/true, $forContent, /*Transform*/false );
 
 	if( !in_array('replaceafter', $options) ) {
 		$string = wfMsgReplaceArgs( $string, $args );
@@ -619,7 +578,7 @@ function wfMsgExt( $key, $options ) {
 	} elseif ( in_array('parseinline', $options) ) {
 		$string = $wgOut->parse( $string, true, true );
 		$m = array();
-		if( preg_match( '/^<p>(.*)\n?<\/p>$/sU', $string, $m ) ) {
+		if( preg_match( '/^<p>(.*)\n?<\/p>\n?$/sU', $string, $m ) ) {
 			$string = $m[1];
 		}
 	} elseif ( in_array('parsemag', $options) ) {
@@ -728,14 +687,14 @@ function wfHostname() {
 	 * @return string
 	 */
 	function wfReportTime() {
-		global $wgRequestTime;
+		global $wgRequestTime, $wgShowHostnames;
 
 		$now = wfTime();
 		$elapsed = $now - $wgRequestTime;
 
-		$com = sprintf( "<!-- Served by %s in %01.3f secs. -->",
-		  wfHostname(), $elapsed );
-		return $com;
+		return $wgShowHostnames
+			? sprintf( "<!-- Served by %s in %01.3f secs. -->", wfHostname(), $elapsed )
+			: sprintf( "<!-- Served in %01.3f secs. -->", $elapsed );
 	}
 
 /**
@@ -1690,47 +1649,11 @@ function wfTempDir() {
  * Make directory, and make all parent directories if they don't exist
  */
 function wfMkdirParents( $fullDir, $mode = 0777 ) {
-	if ( strval( $fullDir ) === '' ) {
+	if( strval( $fullDir ) === '' )
 		return true;
-	}
-	
-	# Go back through the paths to find the first directory that exists
-	$currentDir = $fullDir;
-	$createList = array();
-	while ( strval( $currentDir ) !== '' && !file_exists( $currentDir ) ) {	
-		# Strip trailing slashes
-		$currentDir = rtrim( $currentDir, '/\\' );
-
-		# Add to create list
-		$createList[] = $currentDir;
-
-		# Find next delimiter searching from the end
-		$p = max( strrpos( $currentDir, '/' ), strrpos( $currentDir, '\\' ) );
-		if ( $p === false ) {
-			$currentDir = false;
-		} else {
-			$currentDir = substr( $currentDir, 0, $p );
-		}
-	}
-	
-	if ( count( $createList ) == 0 ) {
-		# Directory specified already exists
+	if( file_exists( $fullDir ) )
 		return true;
-	} elseif ( $currentDir === false ) {
-		# Went all the way back to root and it apparently doesn't exist
-		return false;
-	}
-	
-	# Now go forward creating directories
-	$createList = array_reverse( $createList );
-	foreach ( $createList as $dir ) {
-		# use chmod to override the umask, as suggested by the PHP manual
-		if ( !mkdir( $dir, $mode ) || !chmod( $dir, $mode ) ) {
-			wfDebugLog( 'mkdir', "Unable to create directory $dir\n" );
-			return false;
-		} 
-	}
-	return true;
+	return mkdir( str_replace( '/', DIRECTORY_SEPARATOR, $fullDir ), $mode, true );
 }
 
 /**
@@ -1794,7 +1717,7 @@ function wfAppendToArrayIfNotDefault( $key, $value, $default, &$changed ) {
  * @return bool
  */
 function wfEmptyMsg( $msg, $wfMsgOut ) {
-	return $wfMsgOut === "&lt;$msg&gt;";
+	return $wfMsgOut === htmlspecialchars( "<$msg>" );
 }
 
 /**
@@ -1836,6 +1759,38 @@ function wfUrlProtocols() {
 }
 
 /**
+ * Safety wrapper around ini_get() for boolean settings.
+ * The values returned from ini_get() are pre-normalized for settings
+ * set via php.ini or php_flag/php_admin_flag... but *not*
+ * for those set via php_value/php_admin_value.
+ *
+ * It's fairly common for people to use php_value instead of php_flag,
+ * which can leave you with an 'off' setting giving a false positive
+ * for code that just takes the ini_get() return value as a boolean.
+ *
+ * To make things extra interesting, setting via php_value accepts
+ * "true" and "yes" as true, but php.ini and php_flag consider them false. :)
+ * Unrecognized values go false... again opposite PHP's own coercion
+ * from string to bool.
+ *
+ * Luckily, 'properly' set settings will always come back as '0' or '1',
+ * so we only have to worry about them and the 'improper' settings.
+ *
+ * I frickin' hate PHP... :P
+ *
+ * @param string $setting
+ * @return bool
+ */
+function wfIniGetBool( $setting ) {
+	$val = ini_get( $setting );
+	// 'on' and 'true' can't have whitespace around them, but '1' can.
+	return strtolower( $val ) == 'on'
+		|| strtolower( $val ) == 'true'
+		|| strtolower( $val ) == 'yes'
+		|| preg_match( "/^\s*[+-]?0*[1-9]/", $val ); // approx C atoi() function
+}
+
+/**
  * Execute a shell command, with time and memory limits mirrored from the PHP
  * configuration if supported.
  * @param $cmd Command line, properly escaped for shell.
@@ -1846,7 +1801,7 @@ function wfUrlProtocols() {
 function wfShellExec( $cmd, &$retval=null ) {
 	global $IP, $wgMaxShellMemory, $wgMaxShellFileSize;
 	
-	if( ini_get( 'safe_mode' ) ) {
+	if( wfIniGetBool( 'safe_mode' ) ) {
 		wfDebug( "wfShellExec can't run in safe_mode, PHP's exec functions are too broken.\n" );
 		$retval = 1;
 		return "Unable to run external programs in safe mode.";
@@ -1935,11 +1890,15 @@ function wfRegexReplacement( $string ) {
  * We'll consider it so always, as we don't want \s in our Unix paths either.
  * 
  * @param string $path
+ * @param string $suffix to remove if present
  * @return string
  */
-function wfBaseName( $path ) {
+function wfBaseName( $path, $suffix='' ) {
+	$encSuffix = ($suffix == '')
+		? ''
+		: ( '(?:' . preg_quote( $suffix, '#' ) . ')?' );
 	$matches = array();
-	if( preg_match( '#([^/\\\\]*)[/\\\\]*$#', $path, $matches ) ) {
+	if( preg_match( "#([^/\\\\]*?){$encSuffix}[/\\\\]*$#", $path, $matches ) ) {
 		return $matches[1];
 	} else {
 		return '';
@@ -2321,4 +2280,62 @@ function wfLocalFile( $title ) {
 	return RepoGroup::singleton()->getLocalRepo()->newFile( $title );
 }
 
-?>
+/**
+ * Should low-performance queries be disabled?
+ *
+ * @return bool
+ */
+function wfQueriesMustScale() {
+	global $wgMiserMode;
+	return $wgMiserMode
+		|| ( SiteStats::pages() > 100000
+		&& SiteStats::edits() > 1000000
+		&& SiteStats::users() > 10000 );
+}
+
+/**
+ * Get the path to a specified script file, respecting file
+ * extensions; this is a wrapper around $wgScriptExtension etc.
+ *
+ * @param string $script Script filename, sans extension
+ * @return string
+ */
+function wfScript( $script = 'index' ) {
+	global $wgScriptPath, $wgScriptExtension;
+	return "{$wgScriptPath}/{$script}{$wgScriptExtension}";
+}
+
+/**
+ * Convenience function converts boolean values into "true"
+ * or "false" (string) values
+ *
+ * @param bool $value
+ * @return string
+ */
+function wfBoolToStr( $value ) {
+	return $value ? 'true' : 'false';
+}
+
+/**
+ * Load an extension messages file
+ */
+function wfLoadExtensionMessages( $extensionName ) {
+	global $wgExtensionMessagesFiles, $wgMessageCache;
+	if ( !empty( $wgExtensionMessagesFiles[$extensionName] ) ) {
+		$wgMessageCache->loadMessagesFile( $wgExtensionMessagesFiles[$extensionName] );
+		// Prevent double-loading
+		$wgExtensionMessagesFiles[$extensionName] = false;
+	}
+}
+
+/**
+ * Get a platform-independent path to the null file, e.g.
+ * /dev/null
+ *
+ * @return string
+ */
+function wfGetNull() {
+	return wfIsWindows()
+		? 'NUL'
+		: '/dev/null';
+}

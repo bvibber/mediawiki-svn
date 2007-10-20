@@ -245,8 +245,12 @@ class IPUnblockForm {
 		return
 			Xml::tags( 'form', array( 'action' => $wgScript ),
 				Xml::hidden( 'title', $wgTitle->getPrefixedDbKey() ) .
-				Xml::input( 'ip', /*size*/ false, $this->ip ) .
-				Xml::submitButton( wfMsg( 'ipblocklist-submit' ) )
+				Xml::openElement( 'fieldset' ) .
+				Xml::element( 'legend', null, wfMsg( 'ipblocklist-legend' ) ) .
+				Xml::inputLabel( wfMsg( 'ipblocklist-username' ), 'ip', 'ip', /* size */ false, $this->ip ) .
+				'&nbsp;' .
+				Xml::submitButton( wfMsg( 'ipblocklist-submit' ) ) .
+				Xml::closeElement( 'fieldset' )
 			);
 	}
 
@@ -264,13 +268,12 @@ class IPUnblockForm {
 			$sk = $wgUser->getSkin();
 		if( is_null( $msg ) ) {
 			$msg = array();
-			$keys = array( 'infiniteblock', 'expiringblock', 'contribslink', 'unblocklink', 
+			$keys = array( 'infiniteblock', 'expiringblock', 'unblocklink',
 				'anononlyblock', 'createaccountblock', 'noautoblockblock', 'emailblock' );
 			foreach( $keys as $key ) {
 				$msg[$key] = wfMsgHtml( $key );
 			}
 			$msg['blocklistline'] = wfMsg( 'blocklistline' );
-			$msg['contribslink'] = wfMsg( 'contribslink' );
 		}
 
 		# Prepare links to the blocker's user and talk pages
@@ -283,8 +286,8 @@ class IPUnblockForm {
 		if( $block->mAuto ) {
 			$target = $block->getRedactedName(); # Hide the IP addresses of auto-blocks; privacy
 		} else {
-			$target = $sk->makeLinkObj( Title::makeTitle( NS_USER, $block->mAddress ), $block->mAddress );
-			$target .= ' (' . $sk->makeKnownLinkObj( SpecialPage::getSafeTitleFor( 'Contributions', $block->mAddress ), $msg['contribslink'] ) . ')';
+			$target = $sk->userLink( $block->mUser, $block->mAddress )
+				. $sk->userToolLinks( $block->mUser, $block->mAddress, false, Linker::TOOL_LINKS_NOBLOCK );
 		}
 		
 		$formattedTime = $wgLang->timeanddate( $block->mTimestamp, true );
@@ -395,4 +398,4 @@ class IPBlocklistPager extends ReverseChronologicalPager {
 	}
 }
 
-?>
+

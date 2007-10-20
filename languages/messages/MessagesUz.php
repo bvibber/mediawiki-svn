@@ -107,9 +107,9 @@ $messages = array(
 
 == Dastlabki qadamlar ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Moslamalar ro'yxati]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki haqida ko'p so'raladigan savollar]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki yangi versiyasi chiqqanda xabar berish ro'yxati]",
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Moslamalar ro'yxati]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki haqida ko'p so'raladigan savollar]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce MediaWiki yangi versiyasi chiqqanda xabar berish ro'yxati]",
 
 'about'          => 'Haqida',
 'newwindow'      => '(yangi oyanada ochiladi)',
@@ -223,7 +223,7 @@ Bundan tashqari, siz ushbu ma'lumotlarni o'zingiz yozgan bo'lishingiz yoki ruxsa
 
 # Search results
 'searchresults'    => 'Qidiruv natijalari',
-'searchresulttext' => "{{SITENAME}}da qidirish haqida qo'shimcha ma'lumotga ega bo'lishini xoxlasangiz, [[{{ns:project}}:Qidiruv|{{SITENAME}}da qidiruv]] sahifasini o'qing.",
+'searchresulttext' => "{{SITENAME}}da qidirish haqida qo'shimcha ma'lumotga ega bo'lishini xoxlasangiz, [[{{MediaWiki:helppage}}|{{SITENAME}}da qidiruv]] sahifasini o'qing.",
 'noexactmatch'     => "'''\"\$1\" nomli birorta ham sahifa yo'q.''' Bu sahifani [[:\$1|yaratishingiz]] mumkin.",
 'prevn'            => 'oldingi $1',
 'nextn'            => 'keyingi $1',
@@ -266,7 +266,6 @@ Bundan tashqari, siz ushbu ma'lumotlarni o'zingiz yozgan bo'lishingiz yoki ruxsa
 'minoreditletter'   => 'k',
 'newpageletter'     => 'Y',
 'boteditletter'     => 'b',
-'sectionlink'       => '→',
 
 # Recent changes linked
 'recentchangeslinked' => "Bog'langan o'zgarishlar",
@@ -316,8 +315,7 @@ Agar siz bu sahifani kuzatuv ro'yxatingizdan o'chirmoqchi bo'lsangiz \"Kuzatmasl
 'wlshowlast'       => "Oxirgi $1 soatdagi $2 kundagi tahrirlarni ko'rsatish. $3 tahrirlarni ko'rsatish",
 
 # Delete/protect/revert
-'deletecomment'   => "O'chirish sababi",
-'protectmoveonly' => "Faqat ko'chirishdan himoyala",
+'deletecomment' => "O'chirish sababi",
 
 # Restrictions (nouns)
 'restriction-edit' => 'Tahrirlash',
@@ -411,15 +409,9 @@ Agar siz bu sahifani kuzatuv ro'yxatingizdan o'chirmoqchi bo'lsangiz \"Kuzatmasl
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'Barchasi',
 'imagelistall'     => 'Barchasi',
-'watchlistall1'    => 'Barcha',
 'watchlistall2'    => 'Barcha',
 'namespacesall'    => 'Barchasi',
-
-# Inputbox extension, may be useful in other contexts as well
-'createarticle' => 'Maqola kiritish',
 
 'unit-pixel' => 'piksel',
 
 );
-
-?>

@@ -77,12 +77,8 @@ class ApiQueryImages extends ApiQueryGeneratorBase {
 					$lastId = $row->il_from;
 				}
 				
-				$title = Title :: makeTitle(NS_IMAGE, $row->il_to);
-				// do not check userCanRead() -- page content is already accessible,
-				// and images are listed there.
-
 				$vals = array();
-				ApiQueryBase :: addTitleInfo($vals, $title, true);
+				ApiQueryBase :: addTitleInfo($vals, Title :: makeTitle(NS_IMAGE, $row->il_to));
 				$data[] = $vals;
 			}
 
@@ -102,14 +98,6 @@ class ApiQueryImages extends ApiQueryGeneratorBase {
 		$db->freeResult($res);
 	}
 
-	private function addPageSubItems($pageId, $data) {
-		$result = $this->getResult();
-		$result->setIndexedTagName($data, 'im');
-		$result->addValue(array ('query', 'pages', intval($pageId)),
-			'images',
-			$data);
-	}
-
 	protected function getDescription() {
 		return 'Returns all images contained on the given page(s)';
 	}
@@ -127,4 +115,4 @@ class ApiQueryImages extends ApiQueryGeneratorBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

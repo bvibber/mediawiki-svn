@@ -19,8 +19,6 @@ h1, h2, h3, h4, h5, h6 { font-weight: bolder }
 /* Make edit sections (which are inside h# tags) normal-sized */
 .editsection {
 	font-weight: normal;
-	float: right;
-	margin-left: 5px;
 }
 h1 .editsection { font-size: 50% }
 h2 .editsection { font-size: 66.7% }
@@ -115,9 +113,6 @@ img.thumbborder {
 }
 
 img { border: none; }
-img.tex { vertical-align: middle; }
-span.texhtml { font-family: serif; }
-
 
 #toc,
 .toc {
@@ -452,7 +447,8 @@ p.mw-ipb-conveniencelinks {
 	float: right;
 }
 
-/* Recreating-deleted-page warning and log entries */
+/* Recreating-deleted-page/reupload file warning and log entries */
+div#mw-upload-deleted-warn ul li,
 div#mw-recreate-deleted-warn ul li {
 	font-size: 95%;
 }

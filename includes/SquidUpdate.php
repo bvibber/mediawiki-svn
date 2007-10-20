@@ -81,9 +81,14 @@ class SquidUpdate {
 			echo implode("<br />\n", $urlArr) . "<br />\n";
 			return;
 		}*/
+		
+		if( empty( $urlArr ) ) {
+			return;
+		}
 
-		if ( $wgHTCPMulticastAddress && $wgHTCPPort )
-			SquidUpdate::HTCPPurge( $urlArr );
+		if ( $wgHTCPMulticastAddress && $wgHTCPPort ) {
+			return SquidUpdate::HTCPPurge( $urlArr );
+		}
 
 		$fname = 'SquidUpdate::purge';
 		wfProfileIn( $fname );
@@ -277,4 +282,4 @@ class SquidUpdate {
 		return $url;
 	}
 }
-?>
+

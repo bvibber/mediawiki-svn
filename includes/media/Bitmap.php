@@ -58,7 +58,7 @@ class BitmapHandler extends ImageHandler {
 		if ( $physicalWidth == $srcWidth && $physicalHeight == $srcHeight ) {
 			# normaliseParams (or the user) wants us to return the unscaled image
 			wfDebug( __METHOD__.": returning unscaled image\n" );
-			return new ThumbnailImage( $image->getURL(), $clientWidth, $clientHeight, $srcPath );
+			return new ThumbnailImage( $image, $image->getURL(), $clientWidth, $clientHeight, $srcPath );
 		}
 
 		if ( !$dstPath ) {
@@ -77,11 +77,11 @@ class BitmapHandler extends ImageHandler {
 		if ( $scaler == 'client' ) {
 			# Client-side image scaling, use the source URL
 			# Using the destination URL in a TRANSFORM_LATER request would be incorrect
-			return new ThumbnailImage( $image->getURL(), $clientWidth, $clientHeight, $srcPath );
+			return new ThumbnailImage( $image, $image->getURL(), $clientWidth, $clientHeight, $srcPath );
 		}
 
 		if ( $flags & self::TRANSFORM_LATER ) {
-			return new ThumbnailImage( $dstUrl, $clientWidth, $clientHeight, $dstPath );
+			return new ThumbnailImage( $image, $dstUrl, $clientWidth, $clientHeight, $dstPath );
 		}
 
 		if ( !wfMkdirParents( dirname( $dstPath ) ) ) {
@@ -157,7 +157,7 @@ class BitmapHandler extends ImageHandler {
 				wfDebug( "$err\n" );
 				return new MediaTransformError( 'thumbnail_error', $clientWidth, $clientHeight, $err );
 			}
-			list( $loader, /* $colorStyle */, $saveType ) = $typemap[$mimeType];
+			list( $loader, $colorStyle, $saveType ) = $typemap[$mimeType];
 
 			if( !function_exists( $loader ) ) {
 				$err = "Incomplete GD library configuration: missing function $loader";
@@ -167,9 +167,27 @@ class BitmapHandler extends ImageHandler {
 
 			$src_image = call_user_func( $loader, $srcPath );
 			$dst_image = imagecreatetruecolor( $physicalWidth, $physicalHeight );
-			imagecopyresampled( $dst_image, $src_image,
-						0,0,0,0,
-						$physicalWidth, $physicalHeight, imagesx( $src_image ), imagesy( $src_image ) );
+			
+			// Initialise the destination image to transparent instead of
+			// the default solid black, to support PNG and GIF transparency nicely
+			$background = imagecolorallocate( $dst_image, 0, 0, 0 );
+			imagecolortransparent( $dst_image, $background );
+			imagealphablending( $dst_image, false ); 
+
+			if( $colorStyle == 'palette' ) {
+				// Don't resample for paletted GIF images.
+				// It may just uglify them, and completely breaks transparency.
+				imagecopyresized( $dst_image, $src_image,
+					0,0,0,0,
+					$physicalWidth, $physicalHeight, imagesx( $src_image ), imagesy( $src_image ) );
+			} else {
+				imagecopyresampled( $dst_image, $src_image,
+					0,0,0,0,
+					$physicalWidth, $physicalHeight, imagesx( $src_image ), imagesy( $src_image ) );
+			}
+
+			imagesavealpha( $dst_image, true );
+			
 			call_user_func( $saveType, $dst_image, $dstPath );
 			imagedestroy( $dst_image );
 			imagedestroy( $src_image );
@@ -183,7 +201,7 @@ class BitmapHandler extends ImageHandler {
 					wfHostname(), $retval, trim($err), $cmd ) );
 			return new MediaTransformError( 'thumbnail_error', $clientWidth, $clientHeight, $err );
 		} else {
-			return new ThumbnailImage( $dstUrl, $clientWidth, $clientHeight, $dstPath );
+			return new ThumbnailImage( $image, $dstUrl, $clientWidth, $clientHeight, $dstPath );
 		}
 	}
 
@@ -234,6 +252,56 @@ class BitmapHandler extends ImageHandler {
 		return true;
 	}
 
+	/**
+	 * Get a list of EXIF metadata items which should be displayed when
+	 * the metadata table is collapsed.
+	 *
+	 * @return array of strings
+	 * @access private
+	 */
+	function visibleMetadataFields() {
+		$fields = array();
+		$lines = explode( "\n", wfMsgForContent( 'metadata-fields' ) );
+		foreach( $lines as $line ) {
+			$matches = array();
+			if( preg_match( '/^\\*\s*(.*?)\s*$/', $line, $matches ) ) {
+				$fields[] = $matches[1];
+			}
+		}
+		$fields = array_map( 'strtolower', $fields );
+		return $fields;
+	}
+
+	function formatMetadata( $image ) {
+		$result = array(
+			'visible' => array(),
+			'collapsed' => array()
+		);
+		$metadata = $image->getMetadata();
+		if ( !$metadata ) {
+			return false;
+		}
+		$exif = unserialize( $metadata );
+		if ( !$exif ) {
+			return false;
+		}
+		unset( $exif['MEDIAWIKI_EXIF_VERSION'] );
+		$format = new FormatExif( $exif );
+
+		$formatted = $format->getFormattedData();
+		// Sort fields into visible and collapsed
+		$visibleFields = $this->visibleMetadataFields();
+		foreach ( $formatted as $name => $value ) {
+			$tag = strtolower( $name );
+			self::addMeta( $result,
+				in_array( $tag, $visibleFields ) ? 'visible' : 'collapsed',
+				'exif',
+				$tag,
+				$value
+			);
+		}
+		return $result;
+	}
 }
 
-?>
+

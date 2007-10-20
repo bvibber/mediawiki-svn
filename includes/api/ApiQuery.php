@@ -51,33 +51,32 @@ class ApiQuery extends ApiBase {
 		'links' => 'ApiQueryLinks',
 		'langlinks' => 'ApiQueryLangLinks',
 		'images' => 'ApiQueryImages',
+		'imageinfo' => 'ApiQueryImageInfo',
 		'templates' => 'ApiQueryLinks',
 		'categories' => 'ApiQueryCategories',
 		'extlinks' => 'ApiQueryExternalLinks',
 	);
-	//	'categories' => 'ApiQueryCategories',
-	//	'imageinfo' => 'ApiQueryImageinfo',
-	//	'templates' => 'ApiQueryTemplates',
 
 	private $mQueryListModules = array (
 		'allpages' => 'ApiQueryAllpages',
-		'logevents' => 'ApiQueryLogEvents',
-		'watchlist' => 'ApiQueryWatchlist',
-		'recentchanges' => 'ApiQueryRecentChanges',
+		'alllinks' => 'ApiQueryAllLinks',
+		'allusers' => 'ApiQueryAllUsers',
 		'backlinks' => 'ApiQueryBacklinks',
+		'categorymembers' => 'ApiQueryCategoryMembers',
 		'embeddedin' => 'ApiQueryBacklinks',
 		'imageusage' => 'ApiQueryBacklinks',
-		'usercontribs' => 'ApiQueryContributions'
+		'logevents' => 'ApiQueryLogEvents',
+		'recentchanges' => 'ApiQueryRecentChanges',
+		'search' => 'ApiQuerySearch',
+		'usercontribs' => 'ApiQueryContributions',
+		'watchlist' => 'ApiQueryWatchlist',
+		'exturlusage' => 'ApiQueryExtLinksUsage',
 	);
-	//	'categorymembers' => 'ApiQueryCategorymembers',
-	//	'recentchanges' => 'ApiQueryRecentchanges',
-	//	'users' => 'ApiQueryUsers',
-	//	'watchlist' => 'ApiQueryWatchlist',
 
 	private $mQueryMetaModules = array (
-		'siteinfo' => 'ApiQuerySiteinfo'
+		'siteinfo' => 'ApiQuerySiteinfo',
+		'userinfo' => 'ApiQueryUserInfo',
 	);
-	//	'userinfo' => 'ApiQueryUserinfo',
 
 	private $mSlaveDB = null;
 	private $mNamedDB = array();
@@ -243,7 +242,21 @@ class ApiQuery extends ApiBase {
 			$result->setIndexedTagName($normValues, 'n');
 			$result->addValue('query', 'normalized', $normValues);
 		}
+		
+		// Interwiki titles
+		$intrwValues = array ();
+		foreach ($pageSet->getInterwikiTitles() as $rawTitleStr => $interwikiStr) {
+			$intrwValues[] = array (
+				'title' => $rawTitleStr,
+				'iw' => $interwikiStr
+			);
+		}
 
+		if (!empty ($intrwValues)) {
+			$result->setIndexedTagName($intrwValues, 'i');
+			$result->addValue('query', 'interwiki', $intrwValues);
+		}
+		
 		// Show redirect information
 		$redirValues = array ();
 		foreach ($pageSet->getRedirectTitles() as $titleStrFrom => $titleStrTo) {
@@ -279,12 +292,11 @@ class ApiQuery extends ApiBase {
 		$pages = array ();
 
 		// Report any missing titles
-		$fakepageid = -1;
-		foreach ($pageSet->getMissingTitles() as $title) {
+		foreach ($pageSet->getMissingTitles() as $fakeId => $title) {
 			$vals = array();
-			ApiQueryBase :: addTitleInfo($vals, $title, true);
+			ApiQueryBase :: addTitleInfo($vals, $title);
 			$vals['missing'] = '';
-			$pages[$fakepageid--] = $vals;
+			$pages[$fakeId] = $vals;
 		}
 
 		// Report any missing page ids
@@ -299,7 +311,7 @@ class ApiQuery extends ApiBase {
 		foreach ($pageSet->getGoodTitles() as $pageid => $title) {
 			$vals = array();
 			$vals['pageid'] = $pageid;
-			ApiQueryBase :: addTitleInfo($vals, $title, true);
+			ApiQueryBase :: addTitleInfo($vals, $title);
 			$pages[$pageid] = $vals;
 		}
 
@@ -478,4 +490,4 @@ class ApiQuery extends ApiBase {
 		return $vers;
 	}
 }
-?>
+

@@ -115,7 +115,7 @@ class EmailUserForm {
 		$titleObj = SpecialPage::getTitleFor( "Emailuser" );
 		$action = $titleObj->escapeLocalURL( "target=" .
 			urlencode( $this->target->getName() ) . "&action=submit" );
-		$token = $wgUser->editToken();
+		$token = htmlspecialchars( $wgUser->editToken() );
 
 		$wgOut->addHTML( "
 <form id=\"emailuser\" method=\"post\" action=\"{$action}\">
@@ -192,4 +192,4 @@ class EmailUserForm {
 		$wgOut->returnToMain( false, $user->getUserPage() );
 	}
 }
-?>
+

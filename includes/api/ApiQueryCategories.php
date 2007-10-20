@@ -95,11 +95,9 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 				}
 				
 				$title = Title :: makeTitle(NS_CATEGORY, $row->cl_to);
-				// do not check userCanRead() -- page content is already accessible,
-				// and category is listed there.
 				
 				$vals = array();
-				ApiQueryBase :: addTitleInfo($vals, $title, true);
+				ApiQueryBase :: addTitleInfo($vals, $title);
 				if ($fld_sortkey)
 					$vals['sortkey'] = $row->cl_sortkey;
 
@@ -114,22 +112,12 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 
 			$titles = array();
 			while ($row = $db->fetchObject($res)) {
-				$title = Title :: makeTitle(NS_CATEGORY, $row->cl_to);
-				if($title->userCanRead())
-					$titles[] = $title;
+				$titles[] = Title :: makeTitle(NS_CATEGORY, $row->cl_to);
 			}
 			$resultPageSet->populateFromTitles($titles);
 		}
 
 		$db->freeResult($res);
-	}
-
-	private function addPageSubItems($pageId, $data) {
-		$result = $this->getResult();
-		$result->setIndexedTagName($data, 'cl');
-		$result->addValue(array ('query', 'pages', intval($pageId)),
-			'categories',
-			$data);
 	}
 
 	protected function getAllowedParams() {
@@ -150,12 +138,12 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 	}
 
 	protected function getDescription() {
-		return 'Returns all links from the given page(s)';
+		return 'List all categories the page(s) belong to';
 	}
 
 	protected function getExamples() {
 		return array (
-				"Get a list of categories used in the [[Albert Einstein]]:",
+				"Get a list of categories [[Albert Einstein]] belongs to:",
 				"  api.php?action=query&prop=categories&titles=Albert%20Einstein",
 				"Get information about all categories used in the [[Albert Einstein]]:",
 				"  api.php?action=query&generator=categories&titles=Albert%20Einstein&prop=info"
@@ -166,4 +154,4 @@ class ApiQueryCategories extends ApiQueryGeneratorBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

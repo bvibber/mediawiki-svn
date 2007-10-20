@@ -11,19 +11,6 @@
   *		Shiju Alex <shijualexonline@gmail.com>, 
   */
 
-$digitTransformTable = array(
-	'0' => '൦', # &#x0d66;
-	'1' => '൧', # &#x0d67;
-	'2' => '൨', # &#x0d68;
-	'3' => '൩', # &#x0d69;
-	'4' => '൪', # &#x0d6a;
-	'5' => '൫', # &#x0d6b;
-	'6' => '൬', # &#x0d6c;
-	'7' => '൭', # &#x0d6d;
-	'8' => '൮', # &#x0d6e;
-	'9' => '൯', # &#x0d6f;
-);
-
 $namespaceNames = array(
 	NS_MEDIA => 'മീഡിയ',
 	NS_SPECIAL => 'പ്രത്യേകം',
@@ -32,7 +19,7 @@ $namespaceNames = array(
 	NS_USER => 'ഉപയോക്താവ്',
 	NS_USER_TALK => 'ഉപയോക്താവിന്റെ_സംവാദം',
 	# NS_PROJECT set by $wgMetaNamespace
-	NS_PROJECT_TALK => '$1_പദ്ധതി',
+	NS_PROJECT_TALK => '$1_സംവാദം',
 	NS_IMAGE => 'ചിത്രം',
 	NS_IMAGE_TALK => 'ചിത്രത്തിന്റെ_സംവാദം',
 	NS_MEDIAWIKI => 'മീഡിയവിക്കി',
@@ -45,4 +32,46 @@ $namespaceNames = array(
 	NS_HELP_TALK => 'സഹായത്തിന്റെ_സംവാദം',
 );
 
-?>
+$messages = array(
+# Days of the week
+'sunday'        => 'ഞായര്‍',
+'monday'        => 'തിങ്കള്‍',
+'tuesday'       => 'ചൊവ്വ',
+'wednesday'     => 'ബുധന്‍',
+'thursday'      => 'വ്യാഴം',
+'friday'        => 'വെള്ളി',
+'saturday'      => 'ശനി',
+'sun'           => 'ഞാ.',
+'mon'           => 'തി.',
+'tue'           => 'ചൊ.',
+'wed'           => 'ബു.',
+'thu'           => 'വ്യാ.',
+'fri'           => 'വെ.',
+'sat'           => 'ശ.',
+
+# Month names
+'january'       => 'ജനുവരി',
+'february'      => 'ഫെബ്രുവരി',
+'march'         => 'മാര്‍ച്ച്‌',
+'april'         => 'ഏപ്രില്‍',
+'may_long'      => 'മേയ്‌',
+'june'          => 'ജൂണ്‍',
+'july'          => 'ജൂലൈ',
+'august'        => 'ഓഗസ്റ്റ്‌',
+'september'     => 'സെപ്റ്റംബര്‍',
+'october'       => 'ഒക്ടോബര്‍',
+'november'      => 'നവംബര്‍',
+'december'      => 'ഡിസംബര്‍',
+'jan'           => 'ജനു.',
+'feb'           => 'ഫെബ്രു.',
+'mar'           => 'മാര്‍.',
+'apr'           => 'ഏപ്രി.',
+'may'           => 'മേയ്‌',
+'jun'           => 'ജൂണ്‍',
+'jul'           => 'ജൂലൈ',
+'aug'           => 'ഓഗ.',
+'sep'           => 'സെപ്റ്റം.',
+'oct'           => 'ഒക്ടോ‍.‍',
+'nov'           => 'നവം.',
+'dec'           => 'ഡിസം.',
+);

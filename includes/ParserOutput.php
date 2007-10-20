@@ -16,13 +16,16 @@ class ParserOutput
 		$mTemplates,        # 2-D map of NS/DBK to ID for the template references. ID=zero for broken.
 		$mTemplateIds,      # 2-D map of NS/DBK to rev ID for the template references. ID=zero for broken.
 		$mImages,           # DB keys of the images used, in the array key only
-		$mImageTimestamps,  # Map of DBK to rev ID for the template references. ID=zero for broken.
 		$mExternalLinks,    # External link URLs, in the key only
-		$mHTMLtitle,        # Display HTML title
-		$mSubtitle,         # Additional subtitle
 		$mNewSection,       # Show a new section link?
 		$mNoGallery,        # No gallery on category page? (__NOGALLERY__)
-		$mHeadItems;        # Items to put in the <head> section
+		$mHeadItems,        # Items to put in the <head> section
+		$mOutputHooks;      # Hook tags as per $wgParserOutputHooks
+	
+	/**
+	 * Overridden title for display
+	 */
+	private $displayTitle = false;
 
 	function ParserOutput( $text = '', $languageLinks = array(), $categoryLinks = array(),
 		$containsOldMagic = false, $titletext = '' )
@@ -38,13 +41,11 @@ class ParserOutput
 		$this->mTemplates = array();
 		$this->mImages = array();
 		$this->mExternalLinks = array();
-		$this->mHTMLtitle = "" ;
-		$this->mSubtitle = "" ;
 		$this->mNewSection = false;
 		$this->mNoGallery = false;
 		$this->mHeadItems = array();
 		$this->mTemplateIds = array();
-		$this->mImageTimestamps = array();
+		$this->mOutputHooks = array();
 	}
 
 	function getText()                   { return $this->mText; }
@@ -59,6 +60,7 @@ class ParserOutput
 	function &getExternalLinks()         { return $this->mExternalLinks; }
 	function getNoGallery()              { return $this->mNoGallery; }
 	function getSubtitle()               { return $this->mSubtitle; }
+	function getOutputHooks()            { return (array)$this->mOutputHooks; }
 
 	function containsOldMagic()          { return $this->mContainsOldMagic; }
 	function setText( $text )            { return wfSetVar( $this->mText, $text ); }
@@ -67,11 +69,14 @@ class ParserOutput
 	function setContainsOldMagic( $com ) { return wfSetVar( $this->mContainsOldMagic, $com ); }
 	function setCacheTime( $t )          { return wfSetVar( $this->mCacheTime, $t ); }
 	function setTitleText( $t )          { return wfSetVar($this->mTitleText, $t); }
-	function setSubtitle( $st )          { return wfSetVar( $this->mSubtitle, $st ); }
 
 	function addCategory( $c, $sort )    { $this->mCategories[$c] = $sort; }
 	function addLanguageLink( $t )       { $this->mLanguageLinks[] = $t; }
 	function addExternalLink( $url )     { $this->mExternalLinks[$url] = 1; }
+
+	function addOutputHook( $hook, $data = false ) { 
+		$this->mOutputHooks[] = array( $hook, $data );
+	}
 
 	function setNewSection( $value ) {
 		$this->mNewSection = (bool)$value;
@@ -92,19 +97,8 @@ class ParserOutput
 		$this->mLinks[$ns][$dbk] = $id;
 	}
 	
-	function addImage( $name, $timestamp=NULL ) {
-		if( isset($this->mImages[$name]) ) 
-			return; // No repeated pointless DB calls!
+	function addImage( $name ) {
 		$this->mImages[$name] = 1;
-		if( is_null($timestamp) ) {
-			wfProfileIn( __METHOD__ );
-			$dbr = wfGetDB(DB_SLAVE);
-			$timestamp = $dbr->selectField('image', 'img_timestamp',
-				array('img_name' => $name),
-				__METHOD__ );
-		}
-		$timestamp = $timestamp ? $timestamp : null;
-		$this->mImageTimestamps[$name] = $timestamp; // For versioning
 	}
 
 	function addTemplate( $title, $page_id, $rev_id ) {
@@ -150,6 +144,27 @@ class ParserOutput
 			$this->mHeadItems[] = $section;
 		}
 	}
+	
+	/**
+	 * Override the title to be used for display
+	 * -- this is assumed to have been validated
+	 * (check equal normalisation, etc.)
+	 *
+	 * @param string $text Desired title text
+	 */
+	public function setDisplayTitle( $text ) {
+		$this->displayTitle = $text;
+	}
+	
+	/**
+	 * Get the title to be used for display
+	 *
+	 * @return string
+	 */
+	public function getDisplayTitle() {
+		return $this->displayTitle;
+	}
+	
 }
 
-?>
+

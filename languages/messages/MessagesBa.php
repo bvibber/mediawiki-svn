@@ -80,7 +80,7 @@ $messages = array(
 'toolbox'          => 'Ярҙамсы йүнәлештәр',
 'otherlanguages'   => 'Башҡа телдәрҙә',
 'lastmodifiedat'   => 'Был биттең һуңғы тапҡыр үҙгәртелеү ваҡыты: $2, $1 .', # $1 date, $2 time
-'copyright'        => '<p> $1 ярашлы эстәлеге менән һәр кем файҙалана ала.',
+'copyright'        => '$1 ярашлы эстәлеге менән һәр кем файҙалана ала.',
 'jumpto'           => 'Унда күсергә:',
 'jumptosearch'     => 'эҙләү',
 
@@ -156,7 +156,6 @@ $messages = array(
 'group-all' => '(бөтә)',
 
 # Recent changes
-'changes'           => 'үҙгәрештәр',
 'recentchanges'     => 'Һуңғы үҙгәртеүҙәр',
 'recentchangestext' => '{{grammar:genitive|{{SITENAME}}}}. биттәрендә индерелгән һуңғы үҙгәртеүҙәр исемлеге',
 
@@ -242,10 +241,9 @@ $messages = array(
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'бөтә',
 'imagelistall'     => 'бөтә',
-'watchlistall1'    => 'бөтә',
 'watchlistall2'    => 'бөтә',
 'namespacesall'    => 'бөтә',
 
 );
 
-?>
+

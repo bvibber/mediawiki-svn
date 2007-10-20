@@ -39,7 +39,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		parent :: __construct($query, $moduleName, 'uc');
 	}
 
-	private $params, $userTitle;
+	private $params, $username;
 	private $fld_ids = false, $fld_title = false, $fld_timestamp = false,
 			$fld_comment = false, $fld_flags = false;
 
@@ -47,23 +47,20 @@ class ApiQueryContributions extends ApiQueryBase {
 
 		// Parse some parameters
 		$this->params = $this->extractRequestParams();
-		$prop = $this->params['prop'];
-		if (!is_null($prop)) {
-			$prop = array_flip($prop);
-			
-			$this->fld_ids = isset($prop['ids']);
-			$this->fld_title = isset($prop['title']);
-			$this->fld_comment = isset($prop['comment']);
-			$this->fld_flags = isset($prop['flags']);
-			$this->fld_timestamp = isset($prop['timestamp']);
-		}
+
+		$prop = array_flip($this->params['prop']);		
+		$this->fld_ids = isset($prop['ids']);
+		$this->fld_title = isset($prop['title']);
+		$this->fld_comment = isset($prop['comment']);
+		$this->fld_flags = isset($prop['flags']);
+		$this->fld_timestamp = isset($prop['timestamp']);
 
 		// TODO: if the query is going only against the revision table, should this be done?
 		$this->selectNamedDB('contributions', DB_SLAVE, 'contributions');
 		$db = $this->getDB();
 
 		// Prepare query
-		$this->getUserTitle();
+		$this->prepareUsername();
 		$this->prepareQuery();
 
 		//Do the actual query.
@@ -78,7 +75,7 @@ class ApiQueryContributions extends ApiQueryBase {
 		while ( $row = $db->fetchObject( $res ) ) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter('start', $row->rev_timestamp);
+				$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->rev_timestamp));
 				break;
 			}
 
@@ -96,27 +93,23 @@ class ApiQueryContributions extends ApiQueryBase {
 	}
 
 	/**
-	 * Convert 'user' parameter into a proper user login name.
-	 * This method also validates that this user actually exists in the database.  
+	 * Validate the 'user' parameter and set the value to compare
+	 * against `revision`.`rev_user_text`
 	 */
-	private function getUserTitle() {
-
+	private function prepareUsername() {
 		$user = $this->params['user'];
-		if (is_null($user))
-			$this->dieUsage("User parameter may not be empty", 'param_user');
-
-		$userTitle = Title::makeTitleSafe( NS_USER, $user );
-		if ( is_null( $userTitle ) )
-			$this->dieUsage("User name $user is not valid", 'param_user');
-
-		$userid = $this->getDB()->selectField('user', 'user_id', array (
-			'user_name' => $userTitle->getText()
-		));
-		
-		if (!$userid)
-			$this->dieUsage("User name $user not found", 'param_user');
-			
-		$this->userTitle = $userTitle;
+		if( $user ) {
+			$name = User::isIP( $user )
+				? $user
+				: User::getCanonicalName( $user, 'valid' );
+			if( $name === false ) {
+				$this->dieUsage( "User name {$user} is not valid", 'param_user' );
+			} else {
+				$this->username = $name;
+			}
+		} else {
+			$this->dieUsage( 'User parameter may not be empty', 'param_user' );
+		}
 	}
 	
 	/**
@@ -132,11 +125,13 @@ class ApiQueryContributions extends ApiQueryBase {
 		$this->addWhereFld('rev_deleted', 0);
 		
 		// We only want pages by the specified user.
-		$this->addWhereFld('rev_user_text', $this->userTitle->getText());
+		$this->addWhereFld( 'rev_user_text', $this->username );
 
 		// ... and in the specified timeframe.
 		$this->addWhereRange('rev_timestamp', 
 			$this->params['dir'], $this->params['start'], $this->params['end'] );
+
+		$this->addWhereFld('page_namespace', $this->params['namespace']);
 
 		$show = $this->params['show'];
 		if (!is_null($show)) {
@@ -173,10 +168,6 @@ class ApiQueryContributions extends ApiQueryBase {
 	 */
 	private function extractRowInfo($row) {
 
-		$title = Title :: makeTitle($row->page_namespace, $row->page_title);
-		if (!$title->userCanRead())
-			return false;
-
 		$vals = array();
 
 		if ($this->fld_ids) {
@@ -186,7 +177,8 @@ class ApiQueryContributions extends ApiQueryBase {
 		}
 		
 		if ($this->fld_title)
-			ApiQueryBase :: addTitleInfo($vals, $title);
+			ApiQueryBase :: addTitleInfo($vals, 
+				Title :: makeTitle($row->page_namespace, $row->page_title));
 
 		if ($this->fld_timestamp)
 			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->rev_timestamp);
@@ -229,6 +221,10 @@ class ApiQueryContributions extends ApiQueryBase {
 					'older'
 				)
 			),
+			'namespace' => array (
+				ApiBase :: PARAM_ISMULTI => true,
+				ApiBase :: PARAM_TYPE => 'namespace'
+			),
 			'prop' => array (
 				ApiBase :: PARAM_ISMULTI => true,
 				ApiBase :: PARAM_DFLT => 'ids|title|timestamp|flags|comment',
@@ -257,13 +253,14 @@ class ApiQueryContributions extends ApiQueryBase {
 			'end' => 'The end timestamp to return to.',
 			'user' => 'The user to retrieve contributions for.',
 			'dir' => 'The direction to search (older or newer).',
+			'namespace' => 'Only list contributions in these namespaces',
 			'prop' => 'Include additional pieces of information',
 			'show' => 'Show only items that meet this criteria, e.g. non minor edits only: show=!minor',
 		);
 	}
 
 	protected function getDescription() {
-		return 'Get edits by a user..';
+		return 'Get all edits by a user';
 	}
 
 	protected function getExamples() {
@@ -276,4 +273,4 @@ class ApiQueryContributions extends ApiQueryBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

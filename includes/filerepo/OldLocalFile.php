@@ -70,7 +70,7 @@ class OldLocalFile extends LocalFile {
 		}
 		$oldImages = $wgMemc->get( $key );
 
-		if ( isset( $oldImages['version'] ) && $oldImages['version'] == MW_OLDFILE_VERSION ) {
+		if ( isset( $oldImages['version'] ) && $oldImages['version'] == self::CACHE_VERSION ) {
 			unset( $oldImages['version'] );
 			$more = isset( $oldImages['more'] );
 			unset( $oldImages['more'] );
@@ -94,7 +94,8 @@ class OldLocalFile extends LocalFile {
 			if ( $found ) {
 				wfDebug( "Pulling file metadata from cache key {$key}[{$timestamp}]\n" );
 				$this->dataLoaded = true;
-				foreach ( $cachedValues as $name => $value ) {
+				$this->fileExists = true;
+				foreach ( $info as $name => $value ) {
 					$this->$name = $value;
 				}
 			} elseif ( $more ) {
@@ -117,7 +118,10 @@ class OldLocalFile extends LocalFile {
 	}
 
 	function saveToCache() {
-		// Cache the entire history of the image (up to MAX_CACHE_ROWS).
+		// If a timestamp was specified, cache the entire history of the image (up to MAX_CACHE_ROWS).
+		if ( is_null( $this->requestedTime ) ) {
+			return;
+		}
 		// This is expensive, so we only do it if $wgMemc is real
 		global $wgMemc;
 		if ( $wgMemc instanceof FakeMemcachedClient ) {
@@ -130,7 +134,7 @@ class OldLocalFile extends LocalFile {
 		wfProfileIn( __METHOD__ );
 
 		$dbr = $this->repo->getSlaveDB();
-		$res = $dbr->select( 'oldimage', $this->getCacheFields(),
+		$res = $dbr->select( 'oldimage', $this->getCacheFields( 'oi_' ),
 			array( 'oi_name' => $this->getName() ), __METHOD__, 
 			array( 
 				'LIMIT' => self::MAX_CACHE_ROWS + 1,
@@ -144,8 +148,8 @@ class OldLocalFile extends LocalFile {
 		}
 		for ( $i = 0; $i < $numRows; $i++ ) {
 			$row = $dbr->fetchObject( $res );
-			$this->decodeRow( $row, 'oi_' );
-			$cache[$row->oi_timestamp] = $row;
+			$decoded = $this->decodeRow( $row, 'oi_' );
+			$cache[$row->oi_timestamp] = $decoded;
 		}
 		$dbr->freeResult( $res );
 		$wgMemc->set( $key, $cache, 7*86400 /* 1 week */ );
@@ -154,6 +158,7 @@ class OldLocalFile extends LocalFile {
 
 	function loadFromDB() {
 		wfProfileIn( __METHOD__ );
+		$this->dataLoaded = true;
 		$dbr = $this->repo->getSlaveDB();
 		$conds = array( 'oi_name' => $this->getName() );
 		if ( is_null( $this->requestedTime ) ) {
@@ -168,7 +173,7 @@ class OldLocalFile extends LocalFile {
 		} else {
 			$this->fileExists = false;
 		}
-		$this->dataLoaded = true;
+		wfProfileOut( __METHOD__ );
 	}
 
 	function getCacheFields( $prefix = 'img_' ) {
@@ -176,8 +181,8 @@ class OldLocalFile extends LocalFile {
 		$fields[] = $prefix . 'archive_name';
 
 		// XXX: Temporary hack before schema update
-		$fields = array_diff( $fields, array( 
-			'oi_media_type', 'oi_major_mime', 'oi_minor_mime', 'oi_metadata' ) );
+		//$fields = array_diff( $fields, array( 
+		//	'oi_media_type', 'oi_major_mime', 'oi_minor_mime', 'oi_metadata' ) );
 		return $fields;
 	}
 
@@ -191,8 +196,14 @@ class OldLocalFile extends LocalFile {
 	
 	function upgradeRow() {
 		wfProfileIn( __METHOD__ );
-
 		$this->loadFromFile();
+		
+		# Don't destroy file info of missing files
+		if ( !$this->fileExists ) {
+			wfDebug( __METHOD__.": file does not exist, aborting\n" );
+			wfProfileOut( __METHOD__ );
+			return;
+		}
 
 		$dbw = $this->repo->getMasterDB();
 		list( $major, $minor ) = self::splitMime( $this->mime );
@@ -203,20 +214,19 @@ class OldLocalFile extends LocalFile {
 				'oi_width' => $this->width,
 				'oi_height' => $this->height,
 				'oi_bits' => $this->bits,
-				#'oi_media_type' => $this->media_type,
-				#'oi_major_mime' => $major,
-				#'oi_minor_mime' => $minor,
-				#'oi_metadata' => $this->metadata,
-			), array( 'oi_name' => $this->getName(), 'oi_timestamp' => $this->requestedTime ),
+				'oi_media_type' => $this->media_type,
+				'oi_major_mime' => $major,
+				'oi_minor_mime' => $minor,
+				'oi_metadata' => $this->metadata,
+				'oi_sha1' => $this->sha1,
+			), array( 
+				'oi_name' => $this->getName(), 
+				'oi_archive_name' => $this->archive_name ),
 			__METHOD__
 		);
 		wfProfileOut( __METHOD__ );
 	}
-
-	// XXX: Temporary hack before schema update
-	function maybeUpgradeRow() {}
-
 }
 
 
-?>
+

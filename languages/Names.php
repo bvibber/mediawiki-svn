@@ -16,6 +16,7 @@
 	'ang' => 'Anglo Saxon',	# Old English
 	'ar' => 'العربية',	# Arabic
 	'arc' => 'ܐܪܡܝܐ',	# Aramaic
+	'arn' => 'Mapudungun',	# Mapuche, Mapudungu, Araucanian (Araucano)
 	'as' => 'অসমীয়া',	# Assamese
 	'ast' => 'Asturianu',	# Asturian
 	'av' => 'Авар',	# Avar
@@ -23,7 +24,8 @@
 	'az' => 'Azərbaycan',	# Azerbaijani
 	'ba' => 'Башҡорт',	# Bashkir
 	'bar' => 'Boarisch',	# Bavarian (Austro-Bavarian and South Tyrolean)
-	'bat-smg' => 'Žemaitėška', # Samogitian 
+	'bat-smg' => 'Žemaitėška', # Samogitian
+	'bcl' => 'Bikol Central', # Bikol: Central Bicolano language
 	'be' => 'Беларуская',	#  Belarusian normative
 	'be-tarask' => 'Беларуская (тарашкевіца)',	# Belarusian in Taraskievica orthography
 	'be-x-old' => 'Беларуская (тарашкевіца)',	# Belarusian in Taraskievica orthography; compat link
@@ -61,6 +63,7 @@
 	'de' => 'Deutsch',		# German
 	'diq' => 'Zazaki',		# Zazaki
 	'dk' => 'Dansk', 		# Unused code currently redirecting to Danish, 'da' is correct for the language
+	'dsb' => 'Dolnoserbski', # Lower Sorbian
 	'dv' => 'ދިވެހިބަސް',		# Dhivehi
 	'dz' => 'ཇོང་ཁ',		# Bhutani
 	'ee' => 'Eʋegbe',	# Ewe
@@ -71,6 +74,7 @@
 	'es' => 'Español',	# Spanish
 	'et' => 'Eesti',		# Estonian
 	'eu' => 'Euskara',		# Basque
+	'ext' => 'Estremeñu', # Extremaduran
 	'fa' => 'فارسی',	# Persian
 	'ff' => 'Fulfulde',		# Fulah
 	'fi' => 'Suomi',		# Finnish
@@ -78,7 +82,8 @@
 	'fj' => 'Na Vosa Vakaviti',	# Fijian
 	'fo' => 'Føroyskt',	# Faroese
 	'fr' => 'Français',	# French
-	'frp' => 'Arpitan',	# Franco-Provençal/Arpitan
+	'frc' => 'Français cadien', # Cajun French
+	'frp' => 'Arpetan',	# Franco-Provençal/Arpitan
 	'fur' => 'Furlan',		# Friulian
 	'fy' => 'Frysk',		# Frisian
 	'ga' => 'Gaeilge',		# Irish
@@ -87,6 +92,7 @@
 	'glk' => 'گیلکی',	# Gilaki
 	'gn' => 'Avañe\'ẽ',	# Guarani
 	'got' => '𐌲𐌿𐍄𐌹𐍃𐌺',	# Gothic
+	'grc' => 'Ἀρχαία ἑλληνικὴ', # Ancient Greece
 	'gsw' => 'Alemannisch',	# Alemannic
 	'gu' => 'ગુજરાતી',	# Gujarati
 	'gv' => 'Gaelg',		# Manx
@@ -99,7 +105,7 @@
 	'ho' => 'Hiri Motu',	# Hiri Motu
 	'hr' => 'Hrvatski',		# Croatian
 	'hsb' => 'Hornjoserbsce',	# Upper Sorbian
-	'ht' => 'Krèyol ayisyen',		# Haitian, common/popular form is Kreyòl
+	'ht'  => 'Kreyòl ayisyen',		# Haitian
 	'hu' => 'Magyar',		# Hungarian
 	'hy' => 'Հայերեն',	# Armenian
 	'hz' => 'Otsiherero',	# Herero
@@ -110,6 +116,7 @@
 	'ii' => 'ꆇꉙ',	# Sichuan Yi
 	'ik' => 'Iñupiak',	# Inupiak
 	'ilo' => 'Ilokano',	# Ilokano
+	'inh' => 'ГІалгІай Ğalğaj',    # Ingush
 	'io' => 'Ido',			# Ido
 	'is' => 'Íslenska',	# Icelandic
 	'it' => 'Italiano',		# Italian
@@ -132,11 +139,12 @@
 	'kn' => 'ಕನ್ನಡ',	# Kannada
 	'ko' => '한국어',	# Korean
 	'kr' => 'Kanuri',		# Kanuri (FIXME!)
+	'krj' => 'Kinaray-a', # Kinaray-a
 	'ks' => 'कश्मीरी - (كشميري)',	# Kashmiri
 	'ksh' => 'Ripoarisch', 	# Ripuarian 
-	'ksh-c-a' => 'Ripoarisch c a', 	# Ripuarian 
-	'ksh-p-b' => 'Ripoarisch p b', 	# Ripuarian 
-	'ku' => 'Kurdî / كوردي',	# Kurdish
+	'ku'  => 'Kurdî / كوردی',	# Kurdish
+	'ku-latn' => "\xE2\x80\xAAKurdî (latînî)\xE2\x80\xAC",	# Kurdish Latin script
+	'ku-arab' => "\xE2\x80\xABكوردي (عەرەبی)\xE2\x80\xAC",	# Kurdish Arabic script
 	'kv' => 'Коми', 	# Komi, cyrillic is common script but also written in latin script
 	'kw' => 'Kernewek',		# Cornish
 	'ky' => 'Кыргызча',	# Kirghiz
@@ -151,6 +159,7 @@
 	'lmo' => 'Lumbaart',	# Lombard
 	'ln' => 'Lingála',		# Lingala
 	'lo' => 'ລາວ',# Laotian
+	'loz' => 'Silozi', # Lozi
 	'lt' => 'Lietuvių',	# Lithuanian
 	'lv' => 'Latviešu',	# Latvian
 	'lzz' => 'Lazuri Nena',	#Laz
@@ -214,13 +223,17 @@
 	'ru-sib' => 'Сибирской',	# Siberian/North Russian
 	'rw' => 'Kinyarwanda',	# Kinyarwanda, should possibly be Kinyarwandi
 	'sa' => 'संस्कृत',	# Sanskrit
+	'sah' => 'Саха тыла', # Sakha
 	'sc' => 'Sardu',		# Sardinian
 	'scn' => 'Sicilianu',	# Sicilian
 	'sco' => 'Scots',       # Scots
 	'sd' => 'سنڌي',	# Sindhi
+	'sdc' => 'Sassarese',	# Sassarese
 	'se' => 'Sámegiella',	# Northern Sami
+	'sei' => 'Cmique Itom',	# Seri
 	'sg' => 'Sängö',		# Sango, possible alternative is Sangho
 	'sh' => 'Srpskohrvatski / Српскохрватски', # Serbocroatian
+	'shi' => 'Tašlḥiyt',    # Tachelhit
 	'si' => 'සිංහල',	# Sinhalese
 	'simple' => 'Simple English',	# Simple English
 	'sk' => 'Slovenčina',	# Slovak
@@ -261,7 +274,7 @@
 	'ty' => 'Reo Mā`ohi',	# Tahitian
 	'tyv' => 'Тыва дыл',	# Tyvan
 	'udm' => 'Удмурт',	# Udmurt
-	'ug' => 'Oyghurque',	# Uyghur
+	'ug' => 'Uyghurche‎ / ئۇيغۇرچە',	# Uyghur
 	'uk' => 'Українська',	# Ukrainian
 	'ur' => 'اردو',	# Urdu
 	'uz' => 'O\'zbek',	# Uzbek
@@ -294,4 +307,4 @@
 	'zh-yue' => '粵語',					# Cantonese -- (see bug 8217)
 	'zu' => 'isiZulu'		# Zulu
 );
-?>
+

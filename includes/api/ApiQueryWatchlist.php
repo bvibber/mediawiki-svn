@@ -49,7 +49,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 	}
 
 	private $fld_ids = false, $fld_title = false, $fld_patrol = false, $fld_flags = false,
-			$fld_timestamp = false, $fld_user = false, $fld_comment = false;
+			$fld_timestamp = false, $fld_user = false, $fld_comment = false, $fld_sizes = false;
 	
 	private function run($resultPageSet = null) {
 		global $wgUser, $wgDBtype;
@@ -62,9 +62,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		$allrev = $start = $end = $namespace = $dir = $limit = $prop = null;
 		extract($this->extractRequestParams());
 
-		if (!is_null($prop)) {
-			if (!is_null($resultPageSet))
-				$this->dieUsage($this->encodeParamName('prop') . ' parameter may not be used in a generator', 'params');
+		if (!is_null($prop) && is_null($resultPageSet)) {
 
 			$prop = array_flip($prop);
 
@@ -74,6 +72,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->fld_user = isset($prop['user']);
 			$this->fld_comment = isset($prop['comment']);
 			$this->fld_timestamp = isset($prop['timestamp']);
+			$this->fld_sizes = isset($prop['sizes']);
 			$this->fld_patrol = isset($prop['patrol']);
 
 			if ($this->fld_patrol) {
@@ -98,6 +97,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 			$this->addFieldsIf('rc_user_text', $this->fld_user);
 			$this->addFieldsIf('rc_comment', $this->fld_comment);
 			$this->addFieldsIf('rc_patrolled', $this->fld_patrol);
+			$this->addFieldsIf('rc_old_len', $this->fld_sizes);
+			$this->addFieldsIf('rc_new_len', $this->fld_sizes);
 		}
 		elseif ($allrev) {
 			$this->addFields(array (
@@ -147,7 +148,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		while ($row = $db->fetchObject($res)) {
 			if (++ $count > $limit) {
 				// We've reached the one extra which shows that there are additional pages to be had. Stop here...
-				$this->setContinueEnumParameter('start', $row->rc_timestamp);
+				$this->setContinueEnumParameter('start', wfTimestamp(TS_ISO_8601, $row->rc_timestamp));
 				break;
 			}
 
@@ -156,14 +157,10 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 				if ($vals)
 					$data[] = $vals;
 			} else {
-				$title = Title :: makeTitle($row->rc_namespace, $row->rc_title);
-				// skip any pages that user has no rights to read
-				if ($title->userCanRead()) {
-					if ($allrev) {
-						$data[] = intval($row->rc_this_oldid);
-					} else {
-						$data[] = intval($row->rc_cur_id);
-					}
+				if ($allrev) {
+					$data[] = intval($row->rc_this_oldid);
+				} else {
+					$data[] = intval($row->rc_cur_id);
 				}
 			}
 		}
@@ -183,10 +180,6 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 	private function extractRowInfo($row) {
 
-		$title = Title :: makeTitle($row->rc_namespace, $row->rc_title);
-		if (!$title->userCanRead())
-			return false;
-
 		$vals = array ();
 
 		if ($this->fld_ids) {
@@ -195,7 +188,7 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		}
 		
 		if ($this->fld_title)
-			ApiQueryBase :: addTitleInfo($vals, $title);
+			ApiQueryBase :: addTitleInfo($vals, Title :: makeTitle($row->rc_namespace, $row->rc_title));
 
 		if ($this->fld_user) {
 			$vals['user'] = $row->rc_user_text;
@@ -215,6 +208,13 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 
 		if ($this->fld_timestamp)
 			$vals['timestamp'] = wfTimestamp(TS_ISO_8601, $row->rc_timestamp);
+
+			$this->addFieldsIf('rc_new_len', $this->fld_sizes);
+
+		if ($this->fld_sizes) {
+			$vals['oldlen'] = intval($row->rc_old_len);
+			$vals['newlen'] = intval($row->rc_new_len);
+		}
 
 		if ($this->fld_comment && !empty ($row->rc_comment))
 			$vals['comment'] = $row->rc_comment;
@@ -259,7 +259,8 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 					'user',
 					'comment',
 					'timestamp',
-					'patrol'
+					'patrol',
+					'sizes',
 				)
 			)
 		);
@@ -295,4 +296,4 @@ class ApiQueryWatchlist extends ApiQueryGeneratorBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

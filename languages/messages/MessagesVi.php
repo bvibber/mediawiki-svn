@@ -40,7 +40,6 @@ $magicWords = array(
 	'forcetoc'               => array( 0,    '__FORCETOC__', '__LUÔNMỤCLỤC__'        ),
 	'toc'                    => array( 0,    '__TOC__' , '__MỤCLỤC__'               ),
 	'noeditsection'          => array( 0,    '__NOEDITSECTION__', '__KHÔNGSỬAMỤC__'      ),
-	'start'                  => array( 0,    '__START__' , '__BẮTĐẦU__'             ),
 	'currentmonth'           => array( 1,    'CURRENTMONTH' , 'THÁNGNÀY'          ),
 	'currentmonthname'       => array( 1,    'CURRENTMONTHNAME'  , 'TÊNTHÁNGNÀY'     ),
 	'currentmonthnamegen'    => array( 1,    'CURRENTMONTHNAMEGEN' , 'TÊNDÀITHÁNGNÀY'   ),
@@ -61,24 +60,15 @@ $magicWords = array(
 	'img_right'              => array( 1,    'right' , 'phải'                 ),
 	'img_left'               => array( 1,    'left'  , 'trái'                ),
 	'img_none'               => array( 1,    'none'  , 'không'                 ),
-	'img_width'              => array( 1,    '$1px'                   ),
 	'img_center'             => array( 1,    'center', 'centre' , 'giữa'      ),
 	'img_framed'             => array( 1,    'framed', 'enframed', 'frame' , 'khung'),
-	'int'                    => array( 0,    'INT:'                   ),
 	'sitename'               => array( 1,    'SITENAME'  , 'TÊNMẠNG'             ),
-	'ns'                     => array( 0,    'NS:'                    ),
-	'localurl'               => array( 0,    'LOCALURL:'              ),
-	'localurle'              => array( 0,    'LOCALURLE:'             ),
 	'server'                 => array( 0,    'SERVER'    , 'MÁYCHỦ'             ),
 	'servername'             => array( 0,    'SERVERNAME' , 'TÊNMÁYCHỦ'            ),
-	'scriptpath'             => array( 0,    'SCRIPTPATH'  , ''           ),
 	'grammar'                => array( 0,    'GRAMMAR:'   , 'NGỮPHÁP'            ),
-	'notitleconvert'         => array( 0,    '__NOTITLECONVERT__',
-'__NOTC__', '__KHÔNGCHUYỂNTÊN__'),
-	'nocontentconvert'       => array( 0,    '__NOCONTENTCONVERT__',
-'__NOCC__', '__KHÔNGCHUYỂNNỘIDUNG__'),
+	'notitleconvert'         => array( 0,    '__NOTITLECONVERT__', '__NOTC__', '__KHÔNGCHUYỂNTÊN__'),
+	'nocontentconvert'       => array( 0,    '__NOCONTENTCONVERT__', '__NOCC__', '__KHÔNGCHUYỂNNỘIDUNG__'),
 	'currentweek'            => array( 1,    'CURRENTWEEK' , 'TUẦNNÀY'           ),
-	'currentdow'             => array( 1,    'CURRENTDOW'             ),
 	'revisionid'             => array( 1,    'REVISIONID'  , 'SỐBẢN'           ),
  );
 
@@ -215,7 +205,7 @@ $messages = array(
 'subcategories'   => 'Tiểu thể loại',
 
 'mainpagetext'      => 'Phần mềm {{SITENAME}} đã cài đặt.',
-'mainpagedocfooter' => 'Xin đọc [http://meta.wikimedia.org/wiki/MediaWiki_i18n tài liệu hướng dẫn cách tùy biến giao diện] và [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Cẩm nang sử dụng] (bằng tiếng Anh) để biết cách dùng và thiết lập thông số.',
+'mainpagedocfooter' => 'Xin đọc [http://meta.wikimedia.org/wiki/MediaWiki_localisation tài liệu hướng dẫn cách tùy biến giao diện] và [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide Cẩm nang sử dụng] (bằng tiếng Anh) để biết cách dùng và thiết lập thông số.',
 
 'about'          => 'Giới thiệu',
 'article'        => 'Bài',
@@ -390,7 +380,6 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 'yourdomainname'             => 'Tên miền của bạn',
 'externaldberror'            => 'Có thể có lỗi cơ sở dữ liệu hoặc bạn không thể cập nhật tài khoản bên ngoài.',
 'loginproblem'               => '<b>Trục trặc đăng nhập.</b><br />Mời thử lại!',
-'alreadyloggedin'            => "'''$1, bạn đã đăng nhập rồi!'''<br />",
 'login'                      => 'Đăng nhập',
 'loginprompt'                => 'Bạn cần bật cookie để đăng nhập vào {{SITENAME}}.',
 'userlogin'                  => 'Mở tài khoản hay đăng nhập',
@@ -418,6 +407,7 @@ Bạn vẫn dùng {{SITENAME}} được như người vô danh, hoặc đăng nh
 'nosuchuser'                 => 'Thành viên "$1" không tồn tại. Xin kiểm tra lại tên, hoặc mở tài khoản mới.',
 'nosuchusershort'            => 'Không có « $1 ». Xin kiểm tra lại.',
 'wrongpassword'              => 'Mật khẩu sai, xin nhập lại.',
+'passwordtooshort'           => 'Mật khẩu cần chứa ít nhất $1 chữ.',
 'mailmypassword'             => 'Gửi tôi mật khẩu',
 'passwordremindertitle'      => 'Mật khẩu {{SITENAME}}',
 'passwordremindertext'       => 'Ai đó (có thể là bạn) có địa chỉ IP $1 đã xin gửi mật khẩu mới tới thư điện tử của bạn. Mật khẩu mới của "$2" là "$3". Bạn nên đăng nhập và thay đổi mật khẩu này.',
@@ -666,25 +656,18 @@ Sau khi truyền hình lên:
 *Người khác có thể sửa hoặc xóa những thông tin bạn tải lên, và bạn có thể bị cấm tải lên nếu lạm dụng hệ thống.',
 'uploadlog'                  => 'Nhật trình tải lên',
 'uploadlogpage'              => 'Nhật_trình_tải_lên',
-'uploadlogpagetext'          => 'Danh sách các tệp tin đã tải lên, theo giờ máy chủ (UTC).
-<ul>
-</ul>',
+'uploadlogpagetext'          => 'Danh sách các tệp tin đã tải lên, theo giờ máy chủ (UTC).',
 'filename'                   => 'Tên&nbsp;',
 'filedesc'                   => 'Mô tả&nbsp;',
 'fileuploadsummary'          => 'tóm tắt',
 'filestatus'                 => 'Bản quyền',
 'filesource'                 => 'Nguồn',
 'uploadedfiles'              => 'Đã tải xong',
-'minlength'                  => 'Tên phải dài hơn hai chữ.',
 'illegalfilename'            => 'Tên « $1 » có chứa ký tự không dùng được cho tên trang. Xin hãy đổi tên và tải lại.',
 'badfilename'                => 'Đổi thành tên « $1 ».',
 'emptyfile'                  => 'Tệp tin tải lên là rỗng. Xin kiểm tra lại tên tệp tin.',
 'fileexists'                 => "'Một tệp tin với tên này đã tồn tại, xin hãy kiểm tra $1 nếu bạn không muốn thay đổi nó.",
 'successfulupload'           => 'Đã tải xong',
-'fileuploaded'               => 'Tập tin "$1" đã được tải lên thành công.
-Xin hãy theo liên kết: $2 đến trang mô tả và điền vào thông tin về tập tin, chẳng hạn như nó đến từ đâu, được tạo ra khi nào và bởi ai, và các chi tiết khác mà bạn biết về nó.
-Nếu đây là hình ảnh, bạn có thể cho vào trong trang như sau:
-<tt><nowiki>[[Image:$1|thumb|Mô tả hình]]</nowiki></tt>.',
 'uploadwarning'              => 'Chú ý!',
 'savefile'                   => 'Lưu tệp tin',
 'uploadedimage'              => 'đã tải lên « [[$1]] »',
@@ -707,13 +690,6 @@ Nếu đây là hình ảnh, bạn có thể cho vào trong trang như sau:
 'bysize'                    => 'kích cỡ',
 'imgdelete'                 => 'xóa',
 'imgdesc'                   => 'tả',
-'imglegend'                 => 'Chú thích: (tả) = xem/sửa mô tả về hình.',
-'imghistory'                => 'Lịch sử hình',
-'revertimg'                 => 'hồi',
-'deleteimg'                 => 'xóa',
-'deleteimgcompletely'       => 'xóa hẳn',
-'imghistlegend'             => 'Chú thích: (nay) = Hình hiện nay, (xóa) = Xóa bản cũ, (hồi) = Phục hồi bản cũ.
-<br /><i>Ấn vào ngày để xem hình tải lên ngày đó</i>.',
 'imagelinks'                => 'Liên kết đến hình',
 'linkstoimage'              => 'Các trang sau có liên kết đến hình:',
 'nolinkstoimage'            => 'Không có trang nào chứa liên kết đến hình.',
@@ -834,17 +810,12 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'unwatchthispage'      => 'Ngừng theo dõi',
 'notanarticle'         => 'Không phải bài viết',
 'watchnochange'        => 'Không có trang nào bạn theo dõi được sửa đổi.',
-'watchdetails'         => '* Bạn theo dõi $1 trang không kể trang thảo luận. $3 <br />
-*[$4 Xem và sửa lại danh sách]',
+'watchlist-details'    => 'Bạn theo dõi $1 trang không kể trang thảo luận.',
 'wlheader-enotif'      => '* Đã bật thông báo qua thư điện tử.',
 'wlheader-showupdated' => "* Các trang đã thay đổi từ lần cuối bạn xem chúng được in '''đậm'''",
 'watchmethod-recent'   => 'Dưới đây hiện thay đổi mới với các trang theo dõi.',
 'watchmethod-list'     => 'Dưới đây hiện danh sách các trang theo dõi.',
-'removechecked'        => 'Ngưng theo dõi mục đã chọn',
 'watchlistcontains'    => 'Danh sách theo dõi của bạn có $1 trang.',
-'watcheditlist'        => 'Đây là sắp xếp theo chữ cái các trang bạn theo dõi. Chọn các trang bạn muốn ngưng theo dõi và nhấn "Ngưng theo dõi mục đã chọn".',
-'removingchecked'      => 'Đang ngưng theo dõi trang yêu cầu...',
-'couldntremove'        => "Không thể ngưng theo dõi trang '$1'...",
 'iteminvalidname'      => "Tên trang '$1' không hợp lệ...",
 'wlnote'               => '$1 sửa đổi mới trong <b>$2</b> giờ qua.',
 'wlshowlast'           => 'Xem $1 giờ $2 ngày qua, hoặc $3',
@@ -869,18 +840,15 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'confirmdelete'      => 'Khẳng định xóa',
 'deletesub'          => '(Xóa  "$1")',
 'historywarning'     => '<b>Chú ý</b>: trang bạn sắp xóa đã có lịch sử:',
-'confirmdeletetext'  => 'Bạn sắp xóa hẳn một trang hoặc hình cùng với tất cả lịch sử của nó khỏi cơ sở dữ liệu. Xin khẳng định bạn hiểu rõ hậu quả có thể xảy ra, và bạn thực hiện đúng [[{{ns:4}}:Quy_định|quy định]].',
+'confirmdeletetext'  => 'Bạn sắp xóa hẳn một trang hoặc hình cùng với tất cả lịch sử của nó khỏi cơ sở dữ liệu. Xin khẳng định bạn hiểu rõ hậu quả có thể xảy ra, và bạn thực hiện đúng [[{{MediaWiki:policy-url}}|quy định]].',
 'actioncomplete'     => 'Xong',
 'deletedtext'        => '"$1" đã được xóa. Xem danh sách các xóa bỏ gần nhất tại $2.',
 'deletedarticle'     => 'đã xóa "$1"',
 'dellogpage'         => 'Nhật trình xóa',
-'dellogpagetext'     => 'Danh sách xóa mới, theo giờ máy chủ (UTC).
-<ul>
-</ul>',
+'dellogpagetext'     => 'Danh sách xóa mới, theo giờ máy chủ (UTC).',
 'deletionlog'        => 'nhật trình xóa',
 'reverted'           => 'Đã quay lại phiên bản cũ',
 'deletecomment'      => 'Lý do',
-'imagereverted'      => 'Đã quay lại phiên bản cũ.',
 'rollback'           => 'Quay lại sửa đổi cũ',
 'rollback_short'     => 'Quay lại',
 'rollbacklink'       => 'quay lại',
@@ -895,9 +863,7 @@ Những sửa đổi đối với trang này và trang thảo luận của nó s
 'protectedarticle'   => 'đã khóa $1',
 'unprotectedarticle' => 'đã mở $1',
 'protectsub'         => '(Khóa "$1")',
-'confirmprotecttext' => 'Bạn thật sự muốn khóa trang này?',
 'confirmprotect'     => 'Khẳng định khóa',
-'protectmoveonly'    => 'Chỉ không cho di chuyển',
 'protectcomment'     => 'Lý do',
 'unprotectsub'       => '(Mở "$1")',
 
@@ -969,9 +935,8 @@ Chức năng này chỉ nên dùng để ngăn những hành vi phá hoại, và
 'proxyblocker'                => 'Chặn proxy',
 'proxyblockreason'            => 'Địa chỉ IP của bạn đã bị cấm vì là proxy mở. Xin hãy liên hệ nhà cung cấp dịch vụ Internet hoặc bộ phận hỗ trợ kỹ thuật của bạn và thông báo với họ về vấn đề an ninh nghiêm trọng này.',
 'proxyblocksuccess'           => 'Xong.',
-'sorbs'                       => 'SORBS DNSBL',
-'sorbsreason'                 => 'Địa chỉ IP của bạn bị liệt kê là một proxy mở theo [http://www.sorbs.net SORBS] DNSBL.',
-'sorbs_create_account_reason' => 'Địa chỉ IP của bạn bị liệt kê là một proxy mở theo [http://www.sorbs.net SORBS] DNSBL. Bạn không thể mở được tài khoản.',
+'sorbsreason'                 => 'Địa chỉ IP của bạn bị liệt kê là một proxy mở theo DNSBL.',
+'sorbs_create_account_reason' => 'Địa chỉ IP của bạn bị liệt kê là một proxy mở theo DNSBL. Bạn không thể mở được tài khoản.',
 
 # Developer tools
 'lockdb'              => 'Khóa cơ sở dữ liệu',
@@ -1010,7 +975,6 @@ Trong những trường hợp này, bạn phải di chuyển hoặc hợp nhất
 'newtitle'               => 'Tên mới',
 'movepagebtn'            => 'Di chuyển',
 'pagemovedsub'           => 'Di chuyển thành công',
-'pagemovedtext'          => 'Trang "[[$1]]" đổi thành "[[$2]]".',
 'articleexists'          => 'Đã có một trang với tên đó, hoặc tên bạn chọn không hợp lệ.
 Xin hãy chọn tên khác.',
 'talkexists'             => 'Trang được di chuyển thành công, nhưng trang thảo luận tương ứng không thể chuyển được vì đã có một trang thảo luận ở tên mới.
@@ -1045,7 +1009,6 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'allmessagesdefault'        => 'Nội dung mặc định',
 'allmessagescurrent'        => 'Nội dung hiện thời',
 'allmessagestext'           => 'Đây là toàn bộ thông báo hệ thống có trong không gian tên MediaWiki: .',
-'allmessagesnotsupportedUI' => 'Ngôn ngữ giao diện hiện tại của bạn <b>$1</b> không được Đặc_biệt:AllMessages hỗ trợ tại đây.',
 'allmessagesnotsupportedDB' => 'Đặc_biệt:AllMessages không được hỗ trợ vì wgUseDatabaseMessages bị tắt.',
 
 # Thumbnails
@@ -1147,7 +1110,7 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'spamprotectionmatch'    => 'Nội dung sau đây đã kích hoạt bộ lọc thư rác: $1',
 'subcategorycount'       => 'Có $1 tiểu thể loại trong thể loại này.',
 'categoryarticlecount'   => 'Có $1 bài trong thể loại này.',
-'listingcontinuesabbrev' => ' tiếp',
+'listingcontinuesabbrev' => 'tiếp',
 
 # Info page
 'infosubtitle'   => 'Thông tin về trang',
@@ -1174,7 +1137,7 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'rcpatroldisabledtext'  => 'Chức năng "thay đổi gần đây"  của các trang tuần tra hiện không được bật.',
 
 # Image deletion
-'deletedrevision' => 'Đã xóa phiên bản cũ $1.',
+'deletedrevision' => 'Đã xóa phiên bản cũ $1',
 
 # Browsing diffs
 'previousdiff' => '&larr; So với trước',
@@ -1185,10 +1148,9 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 'imagemaxsize' => 'Giới hạn độ phân giải ảnh là:&nbsp;',
 'thumbsize'    => 'Kích thước thu nhỏ:&nbsp;',
 
+# Special:Newimages
 'newimages' => 'Trang trưng bày hình ảnh mới',
 'noimages'  => 'Chưa có hình',
-
-'passwordtooshort' => 'Mật khẩu cần chứa ít nhất $1 chữ.',
 
 # EXIF tags
 'exif-imagewidth'                  => 'Bề ngang',
@@ -1251,7 +1213,6 @@ Bài với tên "[[$1]]" đã tồn tại. Bạn có muốn xóa nó để di ch
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'tất cả',
 'imagelistall'     => 'tất cả',
-'watchlistall1'    => 'tất cả',
 'watchlistall2'    => 'tất cả',
 'namespacesall'    => 'tất cả',
 
@@ -1274,16 +1235,9 @@ $3
 
 Nếu không phải bạn, đừng mở địa chỉ này. Mã xác nhận này sẽ hết hạn lúc $4.',
 
-# Inputbox extension, may be useful in other contexts as well
-'tryexact'       => 'Thử tìm đoạn văn khớp chính xác với từ khóa',
-'searchfulltext' => 'Tìm toàn văn',
-'createarticle'  => 'Viết bài mới',
-
 # Scary transclusion
 'scarytranscludedisabled' => 'Liên wiki bị tắt',
 'scarytranscludefailed'   => 'Tiêu bản cho $1 bị tắt',
 'scarytranscludetoolong'  => 'Địa chỉ mạng dài quá',
 
 );
-
-?>

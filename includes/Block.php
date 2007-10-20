@@ -628,11 +628,11 @@ class Block
 	/** 
 	 * Decode expiry which has come from the DB
 	 */
-	static function decodeExpiry( $expiry ) {
+	static function decodeExpiry( $expiry, $timestampType = TS_MW ) {
 		if ( $expiry == '' || $expiry == Block::infinity() ) {
 			return Block::infinity();
 		} else {
-			return wfTimestamp( TS_MW, $expiry );
+			return wfTimestamp( $timestampType, $expiry );
 		}
 	}
 	
@@ -699,4 +699,4 @@ class Block
 	}
 
 }
-?>
+

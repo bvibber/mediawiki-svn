@@ -30,6 +30,8 @@ $wgIgnoredMessages = array(
 	'accesskey-ca-watch',
 	'accesskey-ca-unwatch',
 	'accesskey-search',
+	'accesskey-search-go',
+	'accesskey-search-fulltext',
 	'accesskey-p-logo',
 	'accesskey-n-mainpage',
 	'accesskey-n-portal',
@@ -64,6 +66,7 @@ $wgIgnoredMessages = array(
 	'accesskey-diff',
 	'accesskey-compareselectedversions',
 	'accesskey-watch',
+	'accesskey-upload',
 	'addsection',
 	'anonnotice',
 	'autoblock_whitelist',
@@ -74,10 +77,12 @@ $wgIgnoredMessages = array(
 	'exif-software-value',
 	'history_copyright',
 	'licenses',
+	'loginstart',
 	'loginend',
 	'loginlanguagelinks',
 	'markaspatrolledlink',
 	'newarticletextanon',
+	'newsectionheaderdefaultlevel',
 	'newtalkseperator',
 	'noarticletextanon',
 	'number_of_watching_users_RCview',
@@ -86,6 +91,7 @@ $wgIgnoredMessages = array(
 	'pubmedurl',
 	'randompage-url',
 	'recentchanges-url',
+	'revision-info-current',
 	'revision-nav',
 	'rfcurl',
 	'shareddescriptionfollows',
@@ -105,6 +111,7 @@ $wgIgnoredMessages = array(
 $wgOptionalMessages = array(
 	'imgmultigotopost',
 	'linkprefix',
+	'editsection-brackets',
 	'feed-atom',
 	'feed-rss',
 	'sectionlink',
@@ -147,7 +154,6 @@ $wgOptionalMessages = array(
 	'doubleredirects-summary',
 	'lonelypages-summary',
 	'unusedtemplates-summary',
-	'recentchangeslinked-summary',
 	'fewestrevisions-summary',
 	'withoutinterwiki-summary',
 	'variantname-zh-cn',
@@ -164,6 +170,9 @@ $wgOptionalMessages = array(
 	'variantname-kk-kz',
 	'variantname-kk-cn',
 	'variantname-kk',
+	'variantname-ku-latn',
+	'variantname-ku-arab',
+	'variantname-ku',
 	'rc-change-size',
 	'resetpass_text',
 	'widthheight',
@@ -187,7 +196,20 @@ $wgOptionalMessages = array(
 	'exif-lightsource-22',
 	'exif-lightsource-23',
 	'exif-filesource-3',
-	);
+	'booksources-isbn',
+	'isbn',
+	'sp-contributions-explain',
+	'sorbs',
+	'video-dims',
+	'seconds-abbrev',
+	'minutes-abbrev',
+	'hours-abbrev',
+	'filerevert-backlink',
+	'filedelete-backlink',
+	'pagetitle',
+	'filename-prefix-blacklist',
+	'edittools',
+);
 
 /** EXIF messages, which may be set as optional in several checks, but are generally mandatory */
 $wgEXIFMessages = array(
@@ -409,5 +431,3 @@ $wgEXIFMessages = array(
 	'exif-gpsdirection-t',
 	'exif-gpsdirection-m',
 );
-
-?>

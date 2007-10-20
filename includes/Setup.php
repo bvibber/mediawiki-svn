@@ -28,8 +28,8 @@ if ( !isset( $wgVersion ) ) {
 }
 
 // Set various default paths sensibly...
-if( $wgScript === false ) $wgScript = "$wgScriptPath/index.php";
-if( $wgRedirectScript === false ) $wgRedirectScript = "$wgScriptPath/redirect.php";
+if( $wgScript === false ) $wgScript = "$wgScriptPath/index$wgScriptExtension";
+if( $wgRedirectScript === false ) $wgRedirectScript = "$wgScriptPath/redirect$wgScriptExtension";
 
 if( $wgArticlePath === false ) {
 	if( $wgUsePathInfo ) {
@@ -54,6 +54,11 @@ if( $wgTmpDirectory === false ) $wgTmpDirectory = "{$wgUploadDirectory}/tmp";
 if( $wgReadOnlyFile === false ) $wgReadOnlyFile = "{$wgUploadDirectory}/lock_yBgMBwiR";
 if( $wgFileCacheDirectory === false ) $wgFileCacheDirectory = "{$wgUploadDirectory}/cache";
 
+if ( empty( $wgFileStore['deleted']['directory'] ) ) {
+	$wgFileStore['deleted']['directory'] = "{$wgUploadDirectory}/deleted";
+}
+
+
 /**
  * Initialise $wgLocalFileRepo from backwards-compatible settings
  */
@@ -66,6 +71,9 @@ if ( !$wgLocalFileRepo ) {
 		'hashLevels' => $wgHashedUploadDirectory ? 2 : 0,
 		'thumbScriptUrl' => $wgThumbnailScriptPath,
 		'transformVia404' => !$wgGenerateThumbnailOnParse,
+		'initialCapital' => $wgCapitalLinks,
+		'deletedDir' => $wgFileStore['deleted']['directory'],
+		'deletedHashLevels' => $wgFileStore['deleted']['hash']
 	);
 }
 /**
@@ -86,7 +94,7 @@ if ( $wgUseSharedUploads ) {
 			'dbUser' => $wgDBuser,
 			'dbPassword' => $wgDBpassword,
 			'dbName' => $wgSharedUploadDBname,
-			'dbFlags' => DBO_DEFAULT,
+			'dbFlags' => ($wgDebugDumpSql ? DBO_DEBUG : 0) | DBO_DEFAULT,
 			'tablePrefix' => $wgSharedUploadDBprefix,
 			'hasSharedCache' => $wgCacheSharedUploads,
 			'descBaseUrl' => $wgRepositoryBaseUrl,
@@ -190,7 +198,7 @@ $wgCookiePrefix = strtr($wgCookiePrefix, "=,; +.\"'\\[", "__________");
 
 # If session.auto_start is there, we can't touch session name
 #
-if( !ini_get( 'session.auto_start' ) )
+if( !wfIniGetBool( 'session.auto_start' ) )
 	session_name( $wgSessionName ? $wgSessionName : $wgCookiePrefix . '_session' );
 
 if( !$wgCommandLineMode && ( $wgRequest->checkSessionCookie() || isset( $_COOKIE[$wgCookiePrefix.'Token'] ) ) ) {
@@ -256,6 +264,9 @@ $wgPostCommitUpdateList = array();
 
 if ( $wgAjaxSearch ) $wgAjaxExportList[] = 'wfSajaxSearch';
 if ( $wgAjaxWatch ) $wgAjaxExportList[] = 'wfAjaxWatch';
+if ( $wgAjaxUploadDestCheck ) $wgAjaxExportList[] = 'UploadForm::ajaxGetExistsWarning';
+if( $wgAjaxLicensePreview )
+	$wgAjaxExportList[] = 'UploadForm::ajaxGetLicensePreview';
 
 wfSeedRandom();
 
@@ -289,4 +300,4 @@ $wgFullyInitialised = true;
 wfProfileOut( $fname.'-extensions' );
 wfProfileOut( $fname );
 
-?>
+

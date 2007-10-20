@@ -85,7 +85,7 @@ function wfSpecialImport( $page = '' ) {
 		}
 	}
 
-	$action = $wgTitle->escapeLocalUrl( 'action=submit' );
+	$action = $wgTitle->getLocalUrl( 'action=submit' );
 
 	if( $wgUser->isAllowed( 'importupload' ) ) {
 		$wgOut->addWikiText( wfMsg( "importtext" ) );
@@ -209,6 +209,9 @@ class ImportReporter {
 			$nullRevision = Revision::newNullRevision(
 				$dbw, $title->getArticleId(), $comment, true );
 			$nullRevision->insertOn( $dbw );
+			# Update page record
+			$article = new Article( $title );
+			$article->updateRevisionOn( $dbw, $nullRevision );
 		}
 	}
 
@@ -889,4 +892,4 @@ class ImportStreamSource {
 }
 
 
-?>
+

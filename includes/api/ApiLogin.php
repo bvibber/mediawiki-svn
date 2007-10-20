@@ -37,16 +37,16 @@ if (!defined('MEDIAWIKI')) {
 class ApiLogin extends ApiBase {
 	
 	/**
-	 * The amount of time a user must wait after submitting
+	 * Time (in seconds) a user must wait after submitting
 	 * a bad login (will be multiplied by the THROTTLE_FACTOR for each bad attempt)
 	 */
-	const THROTTLE_TIME = 10;
+	const THROTTLE_TIME = 1;
 
 	/**
 	 * The factor by which the wait-time in between authentication
 	 * attempts is increased every failed attempt.
 	 */
-	const THROTTLE_FACTOR = 1.5;
+	const THROTTLE_FACTOR = 2;
 	
 	/**
 	 * The maximum number of failed logins after which the wait increase stops. 
@@ -94,7 +94,7 @@ class ApiLogin extends ApiBase {
 		$loginForm = new LoginForm($params);
 		switch ($loginForm->authenticateUserData()) {
 			case LoginForm :: SUCCESS :
-				global $wgUser;
+				global $wgUser, $wgCookiePrefix;
 
 				$wgUser->setOption('rememberpassword', 1);
 				$wgUser->setCookies();
@@ -103,6 +103,8 @@ class ApiLogin extends ApiBase {
 				$result['lguserid'] = $_SESSION['wsUserID'];
 				$result['lgusername'] = $_SESSION['wsUserName'];
 				$result['lgtoken'] = $_SESSION['wsToken'];
+				$result['cookieprefix'] = $wgCookiePrefix;
+				$result['sessionid'] = $_COOKIE["{$wgCookiePrefix}_session"];
 				break;
 
 			case LoginForm :: NO_NAME :
@@ -151,7 +153,7 @@ class ApiLogin extends ApiBase {
 		global $wgMemc;
 		
 		$key = $this->getMemCacheKey();
-		$val =& $wgMemc->get( $key );
+		$val = $wgMemc->get( $key );
 
 		$val['lastReqTime'] = time();
 		if (!isset($val['count'])) {
@@ -160,10 +162,11 @@ class ApiLogin extends ApiBase {
 			$val['count'] = 1 + $val['count'];
 		}
 		
-		$delay = ApiLogin::calculateDelay($val);
+		$delay = ApiLogin::calculateDelay($val['count']);
 		
 		$wgMemc->delete($key);
-		$wgMemc->add( $key, $val, $delay );
+		// Cache expiration should be the maximum timeout - to prevent a "try and wait" attack
+		$wgMemc->add( $key, $val, ApiLogin::calculateDelay(ApiLogin::THOTTLE_MAX_COUNT) );	
 		
 		return $delay;
 	}
@@ -178,8 +181,8 @@ class ApiLogin extends ApiBase {
 		
 		$val = $wgMemc->get($this->getMemCacheKey());
 
-		$elapse = (time() - $val['lastReqTime']) / 1000;  // in seconds
-		$canRetryIn = ApiLogin::calculateDelay($val) - $elapse;
+		$elapse = (time() - $val['lastReqTime']);  // in seconds
+		$canRetryIn = ApiLogin::calculateDelay($val['count']) - $elapse;
 
 		return $canRetryIn < 0 ? 0 : $canRetryIn;
 	}
@@ -188,9 +191,9 @@ class ApiLogin extends ApiBase {
 	 * Based on the number of previously attempted logins, returns
 	 * the delay (in seconds) when the next login attempt will be allowed.
 	 */
-	private static function calculateDelay($val) {
+	private static function calculateDelay($count) {
 		// Defensive programming
-		$count = $val['count'];
+		$count = intval($count);
 		$count = $count < 1 ? 1 : $count;
 		$count = $count > self::THOTTLE_MAX_COUNT ? self::THOTTLE_MAX_COUNT : $count;
 
@@ -227,12 +230,11 @@ class ApiLogin extends ApiBase {
 
 	protected function getDescription() {
 		return array (
-			'This module is used to login and get the authentication tokens. ' .
-			'In the event of a successful log-in, a cookie will be attached ' .
-			'to your session. In the event of a failed log-in, you will not ' .
-			'be able to attempt another log-in through this method for 60 ' .
-			'seconds--this is to prevent its use in aiding automated password ' .
-			'crackers.'
+			'This module is used to login and get the authentication tokens. ',
+			'In the event of a successful log-in, a cookie will be attached',
+			'to your session. In the event of a failed log-in, you will not ',
+			'be able to attempt another log-in through this method for 60 seconds.',
+			'This is to prevent password guessing by automated password crackers.'
 		);
 	}
 	
@@ -246,4 +248,4 @@ class ApiLogin extends ApiBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

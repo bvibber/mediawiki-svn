@@ -52,15 +52,15 @@ abstract class ApiBase {
 	const LIMIT_SML1 = 50; // Slow query, std user limit
 	const LIMIT_SML2 = 500; // Slow query, bot/sysop limit
 
-	private $mMainModule, $mModuleName, $mParamPrefix;
+	private $mMainModule, $mModuleName, $mModulePrefix;
 
 	/**
 	* Constructor
 	*/
-	public function __construct($mainModule, $moduleName, $paramPrefix = '') {
+	public function __construct($mainModule, $moduleName, $modulePrefix = '') {
 		$this->mMainModule = $mainModule;
 		$this->mModuleName = $moduleName;
-		$this->mParamPrefix = $paramPrefix;
+		$this->mModulePrefix = $modulePrefix;
 	}
 
 	/**
@@ -78,8 +78,8 @@ abstract class ApiBase {
 	/**
 	 * Get parameter prefix (usually two letters or an empty string). 
 	 */
-	public function getParamPrefix() {
-		return $this->mParamPrefix;
+	public function getModulePrefix() {
+		return $this->mModulePrefix;
 	}	
 
 	/**
@@ -122,6 +122,15 @@ abstract class ApiBase {
 	 */
 	public function & getResultData() {
 		return $this->getResult()->getData();
+	}
+
+	/**
+	 * Set warning section for this module. Users should monitor this section to notice any changes in API.
+	 */
+	public function setWarning($warning) {
+		$msg = array();
+		ApiResult :: setContent($msg, $warning);
+		$this->getResult()->addValue('warnings', $this->getModuleName(), $msg);
 	}
 
 	/**
@@ -287,7 +296,7 @@ abstract class ApiBase {
 	 * Override this method to change parameter name during runtime 
 	 */
 	public function encodeParamName($paramName) {
-		return $this->mParamPrefix . $paramName;
+		return $this->mModulePrefix . $paramName;
 	}
 
 	/**
@@ -336,7 +345,7 @@ abstract class ApiBase {
 	protected function getParameterFromSettings($paramName, $paramSettings) {
 
 		// Some classes may decide to change parameter names
-		$paramName = $this->encodeParamName($paramName);
+		$encParamName = $this->encodeParamName($paramName);
 
 		if (!is_array($paramSettings)) {
 			$default = $paramSettings;
@@ -359,19 +368,19 @@ abstract class ApiBase {
 		if ($type == 'boolean') {
 			if (isset ($default) && $default !== false) {
 				// Having a default value of anything other than 'false' is pointless
-				ApiBase :: dieDebug(__METHOD__, "Boolean param $paramName's default is set to '$default'");
+				ApiBase :: dieDebug(__METHOD__, "Boolean param $encParamName's default is set to '$default'");
 			}
 
-			$value = $this->getMain()->getRequest()->getCheck($paramName);
+			$value = $this->getMain()->getRequest()->getCheck($encParamName);
 		} else {
-			$value = $this->getMain()->getRequest()->getVal($paramName, $default);
+			$value = $this->getMain()->getRequest()->getVal($encParamName, $default);
 
 			if (isset ($value) && $type == 'namespace')
 				$type = ApiBase :: getValidNamespaces();
 		}
 
 		if (isset ($value) && ($multi || is_array($type)))
-			$value = $this->parseMultiValue($paramName, $value, $multi, is_array($type) ? $type : null);
+			$value = $this->parseMultiValue($encParamName, $value, $multi, is_array($type) ? $type : null);
 
 		// More validation only when choices were not given
 		// choices were validated in parseMultiValue()
@@ -385,51 +394,45 @@ abstract class ApiBase {
 					case 'integer' : // Force everything using intval() and optionally validate limits
 
 						$value = is_array($value) ? array_map('intval', $value) : intval($value);
-						$checkMin = isset ($paramSettings[self :: PARAM_MIN]);
-						$checkMax = isset ($paramSettings[self :: PARAM_MAX]);
+						$min = isset ($paramSettings[self :: PARAM_MIN]) ? $paramSettings[self :: PARAM_MIN] : null;
+						$max = isset ($paramSettings[self :: PARAM_MAX]) ? $paramSettings[self :: PARAM_MAX] : null;
 						
-						if ($checkMin || $checkMax) {
-							$min = $checkMin ? $paramSettings[self :: PARAM_MIN] : false;
-							$max = $checkMax ? $paramSettings[self :: PARAM_MAX] : false;
-						
+						if (!is_null($min) || !is_null($max)) {
 							$values = is_array($value) ? $value : array($value);
 							foreach ($values as $v) {
-								if ($checkMin && $v < $min)
-									$this->dieUsage("$paramName may not be less than $min (set to $v)", $paramName);
-								if ($checkMax && $v > $max)
-									$this->dieUsage("$paramName may not be over $max (set to $v)", $paramName);
+								$this->validateLimit($paramName, $v, $min, $max);
 							}
 						}
 						break;
 					case 'limit' :
 						if (!isset ($paramSettings[self :: PARAM_MAX]) || !isset ($paramSettings[self :: PARAM_MAX2]))
-							ApiBase :: dieDebug(__METHOD__, "MAX1 or MAX2 are not defined for the limit $paramName");
+							ApiBase :: dieDebug(__METHOD__, "MAX1 or MAX2 are not defined for the limit $encParamName");
 						if ($multi)
-							ApiBase :: dieDebug(__METHOD__, "Multi-values not supported for $paramName");
+							ApiBase :: dieDebug(__METHOD__, "Multi-values not supported for $encParamName");
 						$min = isset ($paramSettings[self :: PARAM_MIN]) ? $paramSettings[self :: PARAM_MIN] : 0;
 						$value = intval($value);
 						$this->validateLimit($paramName, $value, $min, $paramSettings[self :: PARAM_MAX], $paramSettings[self :: PARAM_MAX2]);
 						break;
 					case 'boolean' :
 						if ($multi)
-							ApiBase :: dieDebug(__METHOD__, "Multi-values not supported for $paramName");
+							ApiBase :: dieDebug(__METHOD__, "Multi-values not supported for $encParamName");
 						break;
 					case 'timestamp' :
 						if ($multi)
-							ApiBase :: dieDebug(__METHOD__, "Multi-values not supported for $paramName");
+							ApiBase :: dieDebug(__METHOD__, "Multi-values not supported for $encParamName");
 						$value = wfTimestamp(TS_UNIX, $value);
 						if ($value === 0)
-							$this->dieUsage("Invalid value '$value' for timestamp parameter $paramName", "badtimestamp_{$paramName}");
+							$this->dieUsage("Invalid value '$value' for timestamp parameter $encParamName", "badtimestamp_{$encParamName}");
 						$value = wfTimestamp(TS_MW, $value);
 						break;
 					case 'user' :
 						$title = Title::makeTitleSafe( NS_USER, $value );
 						if ( is_null( $title ) )
-							$this->dieUsage("Invalid value $user for user parameter $paramName", "baduser_{$paramName}");
+							$this->dieUsage("Invalid value for user parameter $encParamName", "baduser_{$encParamName}");
 						$value = $title->getText();
 						break;
 					default :
-						ApiBase :: dieDebug(__METHOD__, "Param $paramName's type is unknown - $type");
+						ApiBase :: dieDebug(__METHOD__, "Param $encParamName's type is unknown - $type");
 				}
 			}
 
@@ -470,18 +473,25 @@ abstract class ApiBase {
 	/**
 	* Validate the value against the minimum and user/bot maximum limits. Prints usage info on failure.
 	*/
-	function validateLimit($varname, $value, $min, $max, $botMax) {
-		if ($value < $min) {
-			$this->dieUsage("$varname may not be less than $min (set to $value)", $varname);
+	function validateLimit($paramName, $value, $min, $max, $botMax = null) {
+		if (!is_null($min) && $value < $min) {
+			$this->dieUsage($this->encodeParamName($paramName) . " may not be less than $min (set to $value)", $paramName);
 		}
 
-		if ($this->getMain()->isBot() || $this->getMain()->isSysop()) {
-			if ($value > $botMax) {
-				$this->dieUsage("$varname may not be over $botMax (set to $value) for bots or sysops", $varname);
+		// Minimum is always validated, whereas maximum is checked only if not running in internal call mode
+		if ($this->getMain()->isInternalMode())
+			return;
+
+		// Optimization: do not check user's bot status unless really needed -- skips db query
+		// assumes $botMax >= $max
+		if (!is_null($max) && $value > $max) {
+			if (!is_null($botMax) && ($this->getMain()->isBot() || $this->getMain()->isSysop())) {
+				if ($value > $botMax) {
+					$this->dieUsage($this->encodeParamName($paramName) . " may not be over $botMax (set to $value) for bots or sysops", $paramName);
+				}
+			} else {
+				$this->dieUsage($this->encodeParamName($paramName) . " may not be over $max (set to $value) for users", $paramName);
 			}
-		}
-		elseif ($value > $max) {
-			$this->dieUsage("$varname may not be over $max (set to $value) for users", $varname);
 		}
 	}
 
@@ -606,4 +616,4 @@ abstract class ApiBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>
+

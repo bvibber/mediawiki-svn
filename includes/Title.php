@@ -269,32 +269,33 @@ class Title {
 	}
 
 	/**
-	 * Create a new Title for a redirect
-	 * @param string $text the redirect title text
-	 * @return Title the new object, or NULL if the text is not a
-	 *	valid redirect
+	 * Extract a redirect destination from a string and return the
+	 * Title, or null if the text doesn't contain a valid redirect
+	 *
+	 * @param string $text Text with possible redirect
+	 * @return Title
 	 */
 	public static function newFromRedirect( $text ) {
-		$mwRedir = MagicWord::get( 'redirect' );
-		$rt = NULL;
-		if ( $mwRedir->matchStart( $text ) ) {
+		$redir = MagicWord::get( 'redirect' );
+		if( $redir->matchStart( $text ) ) {
+			// Extract the first link and see if it's usable
 			$m = array();
-			if ( preg_match( '/\[{2}(.*?)(?:\||\]{2})/', $text, $m ) ) {
-				# categories are escaped using : for example one can enter:
-				# #REDIRECT [[:Category:Music]]. Need to remove it.
-				if ( substr($m[1],0,1) == ':') {
-					# We don't want to keep the ':'
-					$m[1] = substr( $m[1], 1 );
+			if( preg_match( '!\[{2}(.*?)(?:\||\]{2})!', $text, $m ) ) {
+				// Strip preceding colon used to "escape" categories, etc.
+				// and URL-decode links
+				if( strpos( $m[1], '%' ) !== false ) {
+					// Match behavior of inline link parsing here;
+					// don't interpret + as " " most of the time!
+					// It might be safe to just use rawurldecode instead, though.
+					$m[1] = urldecode( ltrim( $m[1], ':' ) );
 				}
-
-				$rt = Title::newFromText( $m[1] );
-				# Disallow redirects to Special:Userlogout
-				if ( !is_null($rt) && $rt->isSpecial( 'Userlogout' ) ) {
-					$rt = NULL;
-				}
+				$title = Title::newFromText( $m[1] );
+				// Redirects to Special:Userlogout are not permitted
+				if( $title instanceof Title && !$title->isSpecial( 'Userlogout' ) )
+					return $title;
 			}
 		}
-		return $rt;
+		return null;
 	}
 
 #----------------------------------------------------------------------------
@@ -995,6 +996,23 @@ class Title {
 		return $this->userCan( $action, false );
 	}
 
+	/**
+	 * Determines if $wgUser is unable to edit this page because it has been protected
+	 * by $wgNamespaceProtection.
+	 * 
+	 * @return boolean
+	 */
+	public function isNamespaceProtected() {
+		global $wgNamespaceProtection, $wgUser;
+		if( isset( $wgNamespaceProtection[ $this->mNamespace ] ) ) {
+			foreach( (array)$wgNamespaceProtection[ $this->mNamespace ] as $right ) {
+				if( $right != '' && !$wgUser->isAllowed( $right ) )
+					return true;
+			}
+		}
+		return false;
+	}
+
  	/**
 	 * Can $wgUser perform $action on this page?
 	 * @param string $action action that permission needs to be checked for
@@ -1002,48 +1020,136 @@ class Title {
 	 * @return boolean
  	 */
 	public function userCan( $action, $doExpensiveQueries = true ) {
+		global $wgUser;
+		return ( $this->getUserPermissionsErrorsInternal( $action, $wgUser, $doExpensiveQueries ) === array());
+	}
+
+        /**
+	 * Can $user perform $action on this page?
+	 * @param string $action action that permission needs to be checked for
+	 * @param bool $doExpensiveQueries Set this to false to avoid doing unnecessary queries.
+	 * @return array Array of arrays of the arguments to wfMsg to explain permissions problems.
+	 */
+	public function getUserPermissionsErrors( $action, $user, $doExpensiveQueries = true ) {
+		$errors = $this->getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries );
+
+		global $wgContLang;
+		global $wgLang;
+
+		if ( wfReadOnly() && $action != 'read' ) {
+			global $wgReadOnly;
+			$errors[] = array( 'readonlytext', $wgReadOnly );
+		}
+
+		global $wgEmailConfirmToEdit, $wgUser;
+
+		if ( $wgEmailConfirmToEdit && !$user->isEmailConfirmed() )
+		{
+			$errors[] = array( 'confirmedittext' );
+		}
+
+		if ( $user->isBlockedFrom( $this ) ) {
+			$block = $user->mBlock;
+
+			// This is from OutputPage::blockedPage
+			// Copied at r23888 by werdna
+
+			$id = $user->blockedBy();
+			$reason = $user->blockedFor();
+			$ip = wfGetIP();
+
+			if ( is_numeric( $id ) ) {
+				$name = User::whoIs( $id );
+			} else {
+				$name = $id;
+			}
+
+			$link = '[[' . $wgContLang->getNsText( NS_USER ) . ":{$name}|{$name}]]";
+			$blockid = $block->mId;
+			$blockExpiry = $user->mBlock->mExpiry;
+			$blockTimestamp = $wgLang->timeanddate( wfTimestamp( TS_MW, $user->mBlock->mTimestamp ), true );
+
+			if ( $blockExpiry == 'infinity' ) {
+				// Entry in database (table ipblocks) is 'infinity' but 'ipboptions' uses 'infinite' or 'indefinite'
+				$scBlockExpiryOptions = wfMsg( 'ipboptions' );
+
+				foreach ( explode( ',', $scBlockExpiryOptions ) as $option ) {
+					if ( strpos( $option, ':' ) == false )
+						continue;
+
+					list ($show, $value) = explode( ":", $option );
+
+					if ( $value == 'infinite' || $value == 'indefinite' ) {
+						$blockExpiry = $show;
+						break;
+					}
+				}
+			} else {
+				$blockExpiry = $wgLang->timeanddate( wfTimestamp( TS_MW, $blockExpiry ), true );
+			}
+
+			$intended = $user->mBlock->mAddress;
+
+			$errors[] = array ( ($block->mAuto ? 'autoblockedtext' : 'blockedtext'), $link, $reason, $ip, $name, $blockid, $blockExpiry, $intended, $blockTimestamp );
+		}
+
+		return $errors;
+	}
+
+	/**
+	 * Can $user perform $action on this page?
+	 * This is an internal function, which checks ONLY that previously checked by userCan (i.e. it leaves out checks on wfReadOnly() and blocks)
+	 * @param string $action action that permission needs to be checked for
+	 * @param bool $doExpensiveQueries Set this to false to avoid doing unnecessary queries.
+	 * @return array Array of arrays of the arguments to wfMsg to explain permissions problems.
+	 */
+	private function getUserPermissionsErrorsInternal( $action, $user, $doExpensiveQueries = true ) {
 		$fname = 'Title::userCan';
 		wfProfileIn( $fname );
 
-		global $wgUser, $wgNamespaceProtection;
+		$errors = array();
 
-		$result = null;
-		wfRunHooks( 'userCan', array( &$this, &$wgUser, $action, &$result ) );
-		if ( $result !== null ) {
-			wfProfileOut( $fname );
-			return $result;
+		// Use getUserPermissionsErrors instead
+		if ( !wfRunHooks( 'userCan', array( &$this, &$user, $action, &$result ) ) ) {
+			return $result ? array() : array( array( 'badaccess-group0' ) );
+		}
+
+		if (!wfRunHooks( 'getUserPermissionsErrors', array( &$this, &$user, $action, &$result ) ) ) {
+			if ($result != array() && is_array($result) && !is_array($result[0]))
+				$errors[] = $result; # A single array representing an error
+			else if (is_array($result) && is_array($result[0]))
+				$errors = array_merge( $errors, $result ); # A nested array representing multiple errors
+			else if ($result != '' && $result != null && $result !== true && $result !== false)
+				$errors[] = array($result); # A string representing a message-id
+			else if ($result === false )
+				$errors[] = array('badaccess-group0'); # a generic "We don't want them to do that"
 		}
 
 		if( NS_SPECIAL == $this->mNamespace ) {
-			wfProfileOut( $fname );
-			return false;
+			$errors[] = array('ns-specialprotected');
 		}
 		
-		if ( array_key_exists( $this->mNamespace, $wgNamespaceProtection ) ) {
-			$nsProt = $wgNamespaceProtection[ $this->mNamespace ];
-			if ( !is_array($nsProt) ) $nsProt = array($nsProt);
-			foreach( $nsProt as $right ) {
-				if( '' != $right && !$wgUser->isAllowed( $right ) ) {
-					wfProfileOut( $fname );
-					return false;
-				}
-			}
+		if ( $this->isNamespaceProtected() ) {
+			$ns = $this->getNamespace() == NS_MAIN
+				? wfMsg( 'nstab-main' )
+				: $this->getNsText();
+			$errors[] = (NS_MEDIAWIKI == $this->mNamespace 
+				? array('protectedinterface') 
+				: array( 'namespaceprotected',  $ns ) );
 		}
 
 		if( $this->mDbkeyform == '_' ) {
 			# FIXME: Is this necessary? Shouldn't be allowed anyway...
-			wfProfileOut( $fname );
-			return false;
+			$errors[] = array('badaccess-group0');
 		}
 
 		# protect css/js subpages of user pages
 		# XXX: this might be better using restrictions
 		# XXX: Find a way to work around the php bug that prevents using $this->userCanEditCssJsSubpage() from working
 		if( $this->isCssJsSubpage()
-			&& !$wgUser->isAllowed('editinterface')
-			&& !preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) ) {
-			wfProfileOut( $fname );
-			return false;
+			&& !$user->isAllowed('editusercssjs')
+			&& !preg_match('/^'.preg_quote($user->getName(), '/').'\//', $this->mTextform) ) {
+			$errors[] = array('customcssjsprotected');
 		}
 		
 		if ( $doExpensiveQueries && !$this->isCssJsSubpage() ) {
@@ -1059,9 +1165,11 @@ class Title {
 			if( $cascadingSources > 0 && isset($restrictions[$action]) ) {
 				foreach( $restrictions[$action] as $right ) {
 					$right = ( $right == 'sysop' ) ? 'protect' : $right;
-					if( '' != $right && !$wgUser->isAllowed( $right ) ) {
-						wfProfileOut( $fname );
-						return false;
+					if( '' != $right && !$user->isAllowed( $right ) ) {
+						$pages = '';
+						foreach( $cascadingSources as $page )
+							$pages .= '* [[:' . $page->getPrefixedText() . "]]\n";
+						$errors[] = array( 'cascadeprotected', count( $cascadingSources ), $pages );
 					}
 				}
 			}
@@ -1072,28 +1180,49 @@ class Title {
 			if ( $right == 'sysop' ) {
 				$right = 'protect';
 			}
-			if( '' != $right && !$wgUser->isAllowed( $right ) ) {
-				wfProfileOut( $fname );
-				return false;
+			if( '' != $right && !$user->isAllowed( $right ) ) {
+				$errors[] = array( 'protectedpagetext', $right );
 			}
-		}
-
-		if( $action == 'move' &&
-			!( $this->isMovable() && $wgUser->isAllowed( 'move' ) ) ) {
-			wfProfileOut( $fname );
-			return false;
 		}
 
 		if( $action == 'create' ) {
-			if( (  $this->isTalkPage() && !$wgUser->isAllowed( 'createtalk' ) ) ||
-				( !$this->isTalkPage() && !$wgUser->isAllowed( 'createpage' ) ) ) {
-				wfProfileOut( $fname );
-				return false;
+			if( (  $this->isTalkPage() && !$user->isAllowed( 'createtalk' ) ) ||
+				( !$this->isTalkPage() && !$user->isAllowed( 'createpage' ) ) ) {
+				$errors[] = $user->isAnon() ? array ('nocreatetext') : array ('nocreate-loggedin');
 			}
+		} elseif( $action == 'move' && !( $this->isMovable() && $user->isAllowed( 'move' ) ) ) {
+			$errors[] = $user->isAnon() ? array ( 'movenologintext' ) : array ('movenotallowed');
+        } else if ( !$user->isAllowed( $action ) ) {
+			$return = null;
+		    $groups = array();
+			global $wgGroupPermissions;
+		        foreach( $wgGroupPermissions as $key => $value ) {
+		            if( isset( $value[$action] ) && $value[$action] == true ) {
+		                $groupName = User::getGroupName( $key );
+		                $groupPage = User::getGroupPage( $key );
+		                if( $groupPage ) {
+		                    $groups[] = '[['.$groupPage->getPrefixedText().'|'.$groupName.']]';
+		                } else {
+		                    $groups[] = $groupName;
+		                }
+		            }
+		        }
+		        $n = count( $groups );
+		        $groups = implode( ', ', $groups );
+		        switch( $n ) {
+		            case 0:
+		            case 1:
+		            case 2:
+		                $return = array( "badaccess-group$n", $groups );
+		                break;
+		            default:
+		                $return = array( 'badaccess-groups', $groups );
+		        }
+			$errors[] = $return;
 		}
 
 		wfProfileOut( $fname );
-		return true;
+		return $errors;
 	}
 
 	/**
@@ -1148,7 +1277,7 @@ class Title {
 			return $result;
 		}
 
-		if( $wgUser->isAllowed('read') ) {
+		if( $wgUser->isAllowed( 'read' ) ) {
 			return true;
 		} else {
 			global $wgWhitelistRead;
@@ -1161,18 +1290,41 @@ class Title {
 				return true;
 			}
 
-			/** some pages are explicitly allowed */
+			/**
+			 * Bail out if there isn't whitelist
+			 */
+			if( !is_array($wgWhitelistRead) ) {
+				return false;
+			}
+			
+			/**
+			 * Check for explicit whitelisting
+			 */
 			$name = $this->getPrefixedText();
-			if( $wgWhitelistRead && in_array( $name, $wgWhitelistRead ) ) {
+			if( in_array( $name, $wgWhitelistRead, true ) )
 				return true;
+			
+			/**
+			 * Old settings might have the title prefixed with
+			 * a colon for main-namespace pages
+			 */
+			if( $this->getNamespace() == NS_MAIN ) {
+				if( in_array( ':' . $name, $wgWhitelistRead ) )
+					return true;
+			}
+			
+			/**
+			 * If it's a special page, ditch the subpage bit
+			 * and check again
+			 */
+			if( $this->getNamespace() == NS_SPECIAL ) {
+				$name = $this->getText();
+				list( $name, /* $subpage */) = SpecialPage::resolveAliasWithSubpage( $name );
+				$pure = SpecialPage::getTitleFor( $name )->getPrefixedText();
+				if( in_array( $pure, $wgWhitelistRead, true ) )
+					return true;
 			}
 
-			# Compatibility with old settings
-			if( $wgWhitelistRead && $this->getNamespace() == NS_MAIN ) {
-				if( in_array( ':' . $name, $wgWhitelistRead ) ) {
-					return true;
-				}
-			}
 		}
 		return false;
 	}
@@ -1197,6 +1349,17 @@ class Title {
 		} else {
 			return false;
 		}
+	}
+	
+	/**
+	 * Could this page contain custom CSS or JavaScript, based
+	 * on the title?
+	 *
+	 * @return bool
+	 */
+	public function isCssOrJsPage() {
+		return $this->mNamespace == NS_MEDIAWIKI
+			&& preg_match( '!\.(?:css|js)$!u', $this->mTextform ) > 0;
 	}
 
 	/**
@@ -1249,7 +1412,7 @@ class Title {
 	 */
 	public function userCanEditCssJsSubpage() {
 		global $wgUser;
-		return ( $wgUser->isAllowed('editinterface') or preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
+		return ( $wgUser->isAllowed('editusercssjs') or preg_match('/^'.preg_quote($wgUser->getName(), '/').'\//', $this->mTextform) );
 	}
 
 	/**
@@ -1258,7 +1421,7 @@ class Title {
 	 * @return bool If the page is subject to cascading restrictions.
 	 */
 	public function isCascadeProtected() {
-		list( $sources, $restrictions ) = $this->getCascadeProtectionSources( false );
+		list( $sources, /* $restrictions */ ) = $this->getCascadeProtectionSources( false );
 		return ( $sources > 0 );
 	}
 
@@ -1771,7 +1934,14 @@ class Title {
 			$this->mNamespace != NS_MAIN ) {
 			return false;
 		}
-
+		// Allow IPv6 usernames to start with '::' by canonicalizing IPv6 titles.
+		// IP names are not allowed for accounts, and can only be referring to 
+		// edits from the IP. Given '::' abbreviations and caps/lowercaps, 
+		// there are numerous ways to present the same IP. Having sp:contribs scan 
+		// them all is silly and having some show the edits and others not is 
+		// inconsistent. Same for talk/userpages. Keep them normalized instead.
+		$dbkey = ($this->mNamespace == NS_USER || $this->mNamespace == NS_USER_TALK) ? 
+			IP::sanitizeIP( $dbkey ) : $dbkey;
 		// Any remaining initial :s are illegal.
 		if ( $dbkey !== '' && ':' == $dbkey{0} ) {
 			return false;
@@ -1875,10 +2045,16 @@ class Title {
 	/**
 	 * Get an array of Title objects referring to non-existent articles linked from this page
 	 *
+	 * @todo check if needed (used only in SpecialBrokenRedirects.php, and should use redirect table in this case)
 	 * @param string $options may be FOR UPDATE
 	 * @return array the Title objects
 	 */
 	public function getBrokenLinksFrom( $options = '' ) {
+		if ( $this->getArticleId() == 0 ) {
+			# All links from article ID 0 are false positives
+			return array();
+		}
+
 		if ( $options ) {
 			$db = wfGetDB( DB_MASTER );
 		} else {
@@ -2278,6 +2454,16 @@ class Title {
 		# Return true if there was no history
 		return $row === false;
 	}
+	
+	/**
+	 * Can this title be added to a user's watchlist?
+	 *
+	 * @return bool
+	 */
+	public function isWatchable() {
+		return !$this->isExternal()
+			&& Namespace::isWatchable( $this->getNamespace() );
+	}
 
 	/**
 	 * Get categories to which this Title belongs and return an array of
@@ -2402,6 +2588,15 @@ class Title {
 			&& $this->getNamespace() == $title->getNamespace()
 			&& $this->getDbkey() === $title->getDbkey();
 	}
+	
+	/**
+	 * Return a string representation of this title
+	 *
+	 * @return string
+	 */
+	public function __toString() {
+		return $this->getPrefixedText();
+	}
 
 	/**
 	 * Check if page exists
@@ -2412,16 +2607,15 @@ class Title {
 	}
 
 	/**
-	 * Should a link should be displayed as a known link, just based on its title?
+	 * Do we know that this title definitely exists, or should we otherwise
+	 * consider that it exists?
 	 *
-	 * Currently, a self-link with a fragment and special pages are in
-	 * this category. System messages that have defined default values are also
-	 * always known.
+	 * @return bool
 	 */
 	public function isAlwaysKnown() {
-		return ( $this->isExternal() ||
-			 ( 0 == $this->mNamespace && "" == $this->mDbkeyform ) ||
-			 ( NS_MEDIAWIKI == $this->mNamespace && wfMsgWeirdKey( $this->mDbkeyform ) ) );
+		return $this->isExternal()
+			|| ( $this->mNamespace == NS_MAIN && $this->mDbkeyform == '' )
+			|| ( $this->mNamespace == NS_MEDIAWIKI && wfMsgWeirdKey( $this->mDbkeyform ) );
 	}
 
 	/**
@@ -2561,4 +2755,4 @@ class Title {
 	
 }
 
-?>
+

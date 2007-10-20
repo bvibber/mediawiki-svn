@@ -4,7 +4,11 @@
  *
  * @addtogroup Language
  *
- * Translators: Valasek, helix84, Palica, Liso, Maros
+ * @author Valasek
+ * @author helix84
+ * @author Palica
+ * @author Liso
+ * @author Maros
  */
 
 $datePreferences = array(
@@ -78,7 +82,6 @@ $magicWords = array(
 	'forcetoc'   => array( 0, '__FORCETOC__', '__VYNÚŤOBSAH__' ),
 	'toc'   => array( 0, '__TOC__', '__OBSAH__' ),
 	'noeditsection'   => array( 0, '__NOEDITSECTION__', '__NEUPRAVUJSEKCIE__' ),
-	'start'   => array( 0, '__START__', '__ŠTART__' ),
 	'currentmonth'   => array( 1, 'CURRENTMONTH', 'MESIAC' ),
 	'currentmonthname'   => array( 1, 'CURRENTMONTHNAME', 'MENOMESIACA' ),
 	'currentmonthnamegen'   => array( 1, 'CURRENTMONTHNAMEGEN', 'MENOAKTUÁLNEHOMESIACAGEN' ),
@@ -89,11 +92,8 @@ $magicWords = array(
 	'currenttime'   => array( 1, 'CURRENTTIME', 'AKTUÁLNYČAS' ),
 	'numberofarticles'   => array( 1, 'NUMBEROFARTICLES', 'POČETČLÁNKOV' ),
 	'pagename'   => array( 1, 'PAGENAME', 'MENOSTRÁNKY' ),
-	'pagenamee'   => array( 1, 'PAGENAMEE' ),
 	'namespace'   => array( 1, 'NAMESPACE', 'MENNÝPRIESTOR' ),
 	'msg'   => array( 0, 'MSG:', 'SPRÁVA:' ),
-	'subst'   => array( 0, 'SUBST:' ),
-	'msgnw'   => array( 0, 'MSGNW:' ),
 	'img_thumbnail'   => array( 1, 'thumbnail', 'thumb', 'náhľad', 'náhľadobrázka' ),
 	'img_right'   => array( 1, 'right', 'vpravo' ),
 	'img_left'   => array( 1, 'left', 'vľavo' ),
@@ -101,18 +101,12 @@ $magicWords = array(
 	'img_width'   => array( 1, '$1px', '$1bod' ),
 	'img_center'   => array( 1, 'center', 'centre', 'stred' ),
 	'img_framed'   => array( 1, 'framed', 'enframed', 'frame', 'rám' ),
-	'int'   => array( 0, 'INT:' ),
 	'sitename'   => array( 1, 'SITENAME', 'MENOLOKALITY' ),
 	'ns'   => array( 0, 'NS:', 'MP:' ),
-	'localurl'   => array( 0, 'LOCALURL:' ),
-	'localurle'   => array( 0, 'LOCALURLE:' ),
-	'server'   => array( 0, 'SERVER' ),
 	'grammar'   => array( 0, 'GRAMMAR:', 'GRAMATIKA:' ),
 	'notitleconvert'   => array( 0, '__NOTITLECONVERT__', '__NOTC__' ),
 	'nocontentconvert'   => array( 0, '__NOCONTENTCONVERT__', '__NOCC__' ),
 	'currentweek'   => array( 1, 'CURRENTWEEK', 'AKTUÁLNYTÝŽDEŇ' ),
-	'currentdow'   => array( 1, 'CURRENTDOW' ),
-	'revisionid'   => array( 1, 'REVISIONID' ),
 );
 
 $namespaceNames = array(
@@ -158,14 +152,14 @@ $messages = array(
 'tog-highlightbroken'         => 'Neexistujúce odkazy formátovať <a href="" class="new">takto</a> (alternatívne: takto<a href="" class="internal">?</a>).',
 'tog-justify'                 => 'Zarovnávať okraje odstavcov',
 'tog-hideminor'               => 'V posledných úpravách nezobrazovať drobné úpravy',
-'tog-extendwatchlist'         => 'Rozšír zoznam sledovaných, aby ukazoval všetky súvisiace zmeny',
+'tog-extendwatchlist'         => 'Rozšíriť zoznam sledovaných, aby ukazoval všetky súvisiace zmeny',
 'tog-usenewrc'                => 'Špeciálne zobrazenie posledných úprav (vyžaduje JavaScript)',
 'tog-numberheadings'          => 'Automaticky číslovať odstavce',
 'tog-showtoolbar'             => 'Zobraziť nástrojový panel úprav',
 'tog-editondblclick'          => 'Upravuj stránky po dvojitom kliknutí (JavaScript)',
 'tog-editsection'             => 'Umožniť úpravu sekcie pomocu odkazov [upraviť]',
 'tog-editsectiononrightclick' => 'Umožni upravovať sekcie po kliknutí pravým tlačidlom na nadpisy sekcií (JavaScript)',
-'tog-showtoc'                 => 'Zobraz obsah (pre stránky s viac ako 3 nadpismi)',
+'tog-showtoc'                 => 'Zobrazovať obsah (pre stránky s viac ako 3 nadpismi)',
 'tog-rememberpassword'        => 'Zapamätať si heslo na tomto počítači',
 'tog-editwidth'               => 'Maximálna šírka okna na úpravy',
 'tog-watchcreations'          => 'Pridať stránky, ktoré vytvorím, automaticky medzi sledované',
@@ -173,24 +167,24 @@ $messages = array(
 'tog-watchmoves'              => 'Pridať stránky, ktoré presuniem, do môjho zoznamu sledovaných',
 'tog-watchdeletion'           => 'Pridať stránky, ktoré zmažem, do môjho zoznamu sledovaných',
 'tog-minordefault'            => 'Označovať všetky zmeny štandardne ako drobné',
-'tog-previewontop'            => 'Zobrazuj ukážku pred oknom na úpravy, a nie až za ním',
+'tog-previewontop'            => 'Zobrazovať náhľad pred oknom na úpravy, a nie až za ním',
 'tog-previewonfirst'          => 'Zobraziť náhľad pred prvou úpravou',
 'tog-nocache'                 => 'Zakázať priebežné ukladanie stránok vyrovnávacej pamäte',
-'tog-enotifwatchlistpages'    => 'Pošli mi email keď sa stránka zmení',
-'tog-enotifusertalkpages'     => 'Pošli mi email po zmene mojej používateľskej diskusnej stránky',
-'tog-enotifminoredits'        => 'Pošli mi email aj o drobných úpravách stránok',
-'tog-enotifrevealaddr'        => 'Zobraz moju emailovú adresu v notifikačných emailoch',
-'tog-shownumberswatching'     => 'Zobraz počet sledujúcich používateľov',
+'tog-enotifwatchlistpages'    => 'Upozorniť ma emailom, keď sa stránka zmení',
+'tog-enotifusertalkpages'     => 'Upozorniť ma emailom po zmene mojej používateľskej diskusnej stránky',
+'tog-enotifminoredits'        => 'Upozorniť ma emailom aj na drobné úpravy stránok',
+'tog-enotifrevealaddr'        => 'Zobraziť moju emailovú adresu v emailoch s upozorneniami',
+'tog-shownumberswatching'     => 'Zobraziť počet používateľov sledujúcich stránku',
 'tog-fancysig'                => 'Nespracovávať podpisy (bez automatických odkazov)',
-'tog-externaleditor'          => 'Používaj štandardne externý editor',
-'tog-externaldiff'            => 'Používaj štandardne externý diff',
-'tog-showjumplinks'           => 'Používaj odkazy „skočiť na“ pre lepšiu dostupnosť',
+'tog-externaleditor'          => 'Používať štandardne externý editor',
+'tog-externaldiff'            => 'Používať štandardne externý diff',
+'tog-showjumplinks'           => 'Používať odkazy „skočiť na“ pre lepšiu dostupnosť',
 'tog-uselivepreview'          => 'Používať živý náhľad (JavaScript) (experimentálna funkcia)',
-'tog-forceeditsummary'        => 'Upozorni ma, keď neuvádzam zhrnutie úprav',
+'tog-forceeditsummary'        => 'Upozoriť ma, keď nevyplním zhrnutie úprav',
 'tog-watchlisthideown'        => 'Skryť moje úpravy zo zoznamu sledovaných',
 'tog-watchlisthidebots'       => 'Skryť úpravy botov zo zoznamu sledovaných',
 'tog-watchlisthideminor'      => 'Skryť drobné úpravy zo zoznamu sledovaných',
-'tog-nolangconversion'        => 'Vypni konverziu variantov',
+'tog-nolangconversion'        => 'Vypnúť konverziu variantov',
 'tog-ccmeonemails'            => 'Pošli mi kópie mojich emailov, ktoré pošlem ostatným používateľom',
 'tog-diffonly'                => 'Nezobrazovať obsah stránky pod rozdielmi',
 
@@ -257,16 +251,17 @@ $messages = array(
 'pagecategories'        => '{{PLURAL:$1|Kategória|Kategórie|Kategórie}}',
 'category_header'       => 'stránky v kategórii „$1“',
 'subcategories'         => 'Podkategórie',
-'category-media-header' => 'Multimediálne súbory v kategórii "$1"',
+'category-media-header' => 'Multimediálne súbory v kategórii „$1“',
+'category-empty'        => "''Táto kategória momentálne neobsahuje články ani multimediálne súbory.''",
 
 'mainpagetext'      => 'Wiki softvér bol úspešne nainštalovaný.',
 'mainpagedocfooter' => 'Informácie ako používať wiki softvér nájdete v [http://meta.wikimedia.org/wiki/Help:Contents Používateľskej príručke].
 
 == Začíname ==
 
-* [http://www.mediawiki.org/wiki/Help:Configuration_settings Zoznam konfiguračných nastavení]
-* [http://www.mediawiki.org/wiki/Help:FAQ MediaWiki FAQ]
-* [http://mail.wikimedia.org/mailman/listinfo/mediawiki-announce mailing list nových verzií MediaWiki]',
+* [http://www.mediawiki.org/wiki/Manual:Configuration_settings Zoznam konfiguračných nastavení]
+* [http://www.mediawiki.org/wiki/Manual:FAQ MediaWiki FAQ]
+* [http://lists.wikimedia.org/mailman/listinfo/mediawiki-announce mailing list nových verzií MediaWiki]',
 
 'about'          => 'Projekt',
 'article'        => 'Stránka s obsahom',
@@ -292,10 +287,10 @@ $messages = array(
 'returnto'          => 'Späť na $1.',
 'tagline'           => 'Z {{GRAMMAR:genitív|{{SITENAME}}}}',
 'help'              => 'Pomoc',
-'search'            => 'Hľadaj',
-'searchbutton'      => 'Hľadaj',
+'search'            => 'Hľadať',
+'searchbutton'      => 'Hľadať',
 'go'                => 'Choď',
-'searcharticle'     => 'Choď',
+'searcharticle'     => 'Hľadať',
 'history'           => 'história stránky',
 'history_short'     => 'História',
 'updatedmarker'     => 'aktualizované od mojej poslednej návštevy',
@@ -304,40 +299,40 @@ $messages = array(
 'permalink'         => 'Trvalý odkaz',
 'print'             => 'Tlač',
 'edit'              => 'upraviť',
-'editthispage'      => 'Upravuj túto stránku',
+'editthispage'      => 'Upraviť túto stránku',
 'delete'            => 'Vymazať',
 'deletethispage'    => 'Vymazať túto stránku',
 'undelete_short'    => 'Obnov $1 úprav',
 'protect'           => 'Zamknúť',
 'protect_change'    => 'zmeniť zamknutie',
-'protectthispage'   => 'Zamkni túto stránku',
+'protectthispage'   => 'Zamknúť túto stránku',
 'unprotect'         => 'Odomknúť',
-'unprotectthispage' => 'Odomkni túto stránku',
+'unprotectthispage' => 'Odomknúť túto stránku',
 'newpage'           => 'Nová stránka',
 'talkpage'          => 'Diskusia k stránke',
 'talkpagelinktext'  => 'Diskusia',
 'specialpage'       => 'Špeciálna stránka',
 'personaltools'     => 'Osobné nástroje',
-'postcomment'       => 'Pridaj komentár',
-'articlepage'       => 'Zobraz stránku',
+'postcomment'       => 'Pridať komentár',
+'articlepage'       => 'Zobraziť stránku',
 'talk'              => 'Diskusia',
 'views'             => 'Zobrazení',
 'toolbox'           => 'Nástroje',
-'userpage'          => 'Zobraz stránku používateľa',
-'projectpage'       => 'Zobraz projektovú stránku',
-'imagepage'         => 'Zobraz popisnú stránku obrázka',
-'mediawikipage'     => 'Zobraz stránku so správou',
+'userpage'          => 'Zobraziť stránku používateľa',
+'projectpage'       => 'Zobraziť projektovú stránku',
+'imagepage'         => 'Zobraziť popisnú stránku obrázka',
+'mediawikipage'     => 'Zobraziť stránku so správou',
 'templatepage'      => 'Zobraziť stránku šablóny',
 'viewhelppage'      => 'Zobraziť stránku Pomocníka',
-'categorypage'      => 'Zobraz stránku kategórie',
-'viewtalkpage'      => 'Zobraz diskusiu k stránke',
+'categorypage'      => 'Zobraziť stránku kategórie',
+'viewtalkpage'      => 'Zobraziť diskusiu k stránke',
 'otherlanguages'    => 'Iné jazyky',
 'redirectedfrom'    => '(Presmerované z $1)',
 'redirectpagesub'   => 'Presmerovacia stránka',
 'lastmodifiedat'    => 'Čas poslednej úpravy tejto stránky je $2, $1.', # $1 date, $2 time
 'viewcount'         => 'Táto stránka bola navštívená $1-krát.',
 'protectedpage'     => 'Zamknutá stránka',
-'jumpto'            => 'Skoč na:',
+'jumpto'            => 'Prejsť na:',
 'jumptonavigation'  => 'navigácia',
 'jumptosearch'      => 'hľadanie',
 
@@ -368,31 +363,30 @@ $messages = array(
 'sitesupport-url'   => 'Project:Podpora',
 
 'badaccess'        => 'Chyba povolenia',
-'badaccess-group0' => 'Nemáte povolenie na vykonanie požadovanej akcie.',
-'badaccess-group1' => 'Akciu, ktorú požadujete môže vykonať iba člen skupiny $1.',
-'badaccess-group2' => 'Akciu, ktorú požadujete môže vykonať iba člen jednej zo skupín $1.',
-'badaccess-groups' => 'Akciu, ktorú požadujete môže vykonať iba člen jednej zo skupín $1.',
+'badaccess-group0' => 'Nemáte povolenie na vykonanie požadovanej činnosti.',
+'badaccess-group1' => 'Činnosť, ktorú požadujete môže vykonať iba člen skupiny $1.',
+'badaccess-group2' => 'Činnosť, ktorú požadujete môže vykonať iba člen jednej zo skupín $1.',
+'badaccess-groups' => 'Činnosť, ktorú požadujete môže vykonať iba člen jednej zo skupín $1.',
 
 'versionrequired'     => 'Požadovaná verzia MediaWiki $1',
 'versionrequiredtext' => 'Na použitie tejto stránky je požadovaná verzia MediaWiki $1. Pozri [[Special:Version]]',
 
-'ok'                  => 'OK',
-'pagetitle'           => '$1 - {{SITENAME}}',
-'retrievedfrom'       => 'Zdroj: "$1"',
-'youhavenewmessages'  => 'Máte $1 ($2).',
-'newmessageslink'     => 'nové správy',
-'newmessagesdifflink' => 'diff s predposlednou revíziou',
-'editsection'         => 'úprava',
-'editold'             => 'upraviť',
-'editsectionhint'     => 'Upravuj sekciu: $1',
-'toc'                 => 'Obsah',
-'showtoc'             => 'zobraziť',
-'hidetoc'             => 'skryť',
-'thisisdeleted'       => 'Zobraziť alebo obnoviť $1?',
-'viewdeleted'         => 'Zobraziť $1?',
-'restorelink'         => '{{PLURAL:$1|jedna zmazaná úprava|$1 zmazané úpravy|$1 zmazaných úprav}}',
-'feedlinks'           => 'Kanál:',
-'feed-invalid'        => 'Neplatný typ feedu.',
+'retrievedfrom'           => 'Zdroj: „$1“',
+'youhavenewmessages'      => 'Máte $1 ($2).',
+'newmessageslink'         => 'nové správy',
+'newmessagesdifflink'     => 'rozdiel s predposlednou revíziou',
+'youhavenewmessagesmulti' => 'Máte nové správy na $1',
+'editsection'             => 'úprava',
+'editold'                 => 'upraviť',
+'editsectionhint'         => 'Upraviť sekciu: $1',
+'toc'                     => 'Obsah',
+'showtoc'                 => 'zobraziť',
+'hidetoc'                 => 'skryť',
+'thisisdeleted'           => 'Zobraziť alebo obnoviť $1?',
+'viewdeleted'             => 'Zobraziť $1?',
+'restorelink'             => '{{PLURAL:$1|jednu zmazanú úpravu|$1 zmazané úpravy|$1 zmazaných úprav}}',
+'feedlinks'               => 'Kanál:',
+'feed-invalid'            => 'Neplatný typ feedu.',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Stránka',
@@ -407,7 +401,7 @@ $messages = array(
 'nstab-category'  => 'Kategória',
 
 # Main script and global functions
-'nosuchaction'      => 'Takáto akcia neexistuje',
+'nosuchaction'      => 'Takáto činnosť neexistuje',
 'nosuchactiontext'  => 'Softvér MediaWiki nepozná akciu,
 ktorú vyžadujete pomocou URL.',
 'nosuchspecialpage' => 'Takáto špeciálna stránka neexistuje',
@@ -443,21 +437,24 @@ Toto je zvyčajne zapríčinené odkazovaním na staršie verzie alebo odkazom n
 Ak to nie je ten prípad, možno ste našli chybu s softvéri. Prosím ohláste túto chybu správcovi, uveďte aj názov stránky - odkaz (URL).',
 'readonly_lag'         => 'Databáza bola automaticky zamknutá pokým záložné databázové servery nedoženú hlavný server',
 'internalerror'        => 'Vnútorná chyba',
-'filecopyerror'        => 'Neviem skopírovať súbor "$1" na "$2".',
-'filerenameerror'      => 'Neviem premenovať súbor "$1" na "$2".',
-'filedeleteerror'      => 'Neviem vymazať súbor "$1".',
-'filenotfound'         => 'Neviem nájsť súbor "$1".',
-'unexpected'           => 'Nečakaná hodnota: "$1"="$2".',
-'formerror'            => 'Chyba: neviem spracovať formulár',
-'badarticleerror'      => 'Na tejto stránke túto akciu nemožno vykonať.',
-'cannotdelete'         => 'Neviem zmazať danú stránku alebo súbor. (Možno už bol zmazaný niekým iným.)',
+'internalerror_info'   => 'Vnútorná chyba: $1',
+'filecopyerror'        => 'Nebolo možné skopírovať súbor „$1“ na „$2“.',
+'filerenameerror'      => 'Nebolo možné premenovať súbor „$1“ na „$2“.',
+'filedeleteerror'      => 'Nebolo možné vymazať súbor „$1“.',
+'directorycreateerror' => 'Nebolo možné vytvoriť adresár „$1“.',
+'filenotfound'         => 'Nebolo možné nájsť súbor „$1“.',
+'fileexistserror'      => 'Nebolo možné zapisovať do súboru „$1“: súbor existuje',
+'unexpected'           => 'Neočakávaná hodnota: „$1“=„$2“.',
+'formerror'            => 'Chyba: nepodarilo sa odoslať formulár',
+'badarticleerror'      => 'Na tejto stránke túto činnosť nemožno vykonať.',
+'cannotdelete'         => 'Nebolo možné zmazať danú stránku alebo súbor. (Možno už bol zmazaný niekým iným.)',
 'badtitle'             => 'Neplatný nadpis',
 'badtitletext'         => 'Požadovaný nadpis bol neplatný, nezadaný, alebo nesprávne odkazovaný z inej jazykovej verzie {{GRAMMAR:genitív|{{SITENAME}}}}. Mohol tiež obsahovať jeden alebo viac znakov, ktoré nie je možné použiť v nadpisoch.',
 'perfdisabled'         => 'Prepáčte! Táto funkcia bola dočasne vypnutá,
 pretože tak spomaľuje databázu, že nikto nemôže používať
 wiki.',
 'perfcached'           => '<span style="color:#ff0000"><strong>Nasledujúce dáta sú z dočasnej pamäte a nemusia byť úplne aktuálne:</strong></span>',
-'perfcachedts'         => 'Nasledujúce údaje pochádzajú z cache a naposledy boli aktualizované $1.',
+'perfcachedts'         => 'Nasledujúce údaje pochádzajú z vyrovnávacej pamäte a naposledy boli aktualizované $1.',
 'querypage-no-updates' => 'Aktualizácie tejto stránky sú momentálne vypnuté. Tieto dáta sa v súčasnosti nebudú obnovovať.',
 'wrong_wfQuery_params' => 'Nesprávny parameter pre wfQuery()<br />
 Funkcia: $1<br />
@@ -466,10 +463,14 @@ Požiadavka: $2',
 'viewsourcefor'        => '$1',
 'protectedpagetext'    => 'Táto stránka bola zamknutá aby sa zamedzilo úpravám.',
 'viewsourcetext'       => 'Môžete si zobraziť a kopírovať zdroj tejto stránky:',
-'protectedinterface'   => 'Táto stránka poskytuje text používateľského rozhrania a je zamknutá aby sa predišlo jej zneužitiu.',
+'protectedinterface'   => 'Táto stránka poskytuje text používateľského rozhrania a je zamknutá, aby sa predišlo jej zneužitiu.',
 'editinginterface'     => "'''Varovanie:''' Upravujete stránku, ktorá poskytuje text používateľského rozhrania. Zmeny tejto stránky ovplyvnia vzhľad používateľského rozhrania ostatných používateľov.",
 'sqlhidden'            => '(SQL príkaz na prehľadávanie je skrytý)',
-'cascadeprotected'     => 'Táto stránka bola zamknutá proti úpravám, pretože je použitá na {{PLURAL:$1|nasledovnej stránke, ktorá je zamknutá|nasledovných stránkach, ktoré sú zamknuté}} voľbou "kaskádového zamknutia":',
+'cascadeprotected'     => 'Táto stránka bola zamknutá proti úpravám, pretože je použitá na {{PLURAL:$1|nasledovnej stránke, ktorá je zamknutá|nasledovných stránkach, ktoré sú zamknuté}} voľbou „kaskádového zamknutia“:
+$2',
+'namespaceprotected'   => "Nemáte povolenie upravovať stránky v mennom priestore '''$1'''.",
+'customcssjsprotected' => 'Nemáte povolenie na úpravu tejto stránky, pretože obsahuje osobné nastavenia iného používateľa.',
+'ns-specialprotected'  => 'Stránky v mennom pristore {{ns:special}} nie je možné upravovať.',
 
 # Login and logout pages
 'logouttitle'                => 'Odhlásiť používateľa',
@@ -489,11 +490,10 @@ Vaše konto je vytvorené. Nezabudnite si nastaviť svoje používateľské nast
 'yourdomainname'             => 'Vaša doména',
 'externaldberror'            => 'Buď nastala chyba externej autentifikačnej databázy alebo Vám nie je povolené aktualizovať Váš externý účet.',
 'loginproblem'               => '<b>Nastal problém pri vašom prihlasovaní.</b><br />Skúste znova!',
-'alreadyloggedin'            => '<strong>Používateľ $1, vy už ste prihlásený!</strong><br />',
 'login'                      => 'Prihlásiť',
 'loginprompt'                => 'Na prihlásenie do {{GRAMMAR:genitív|{{SITENAME}}}} musíte mať zapnuté koláčiky (cookies).',
 'userlogin'                  => 'Vytvorenie konta / prihlásenie',
-'logout'                     => 'Odhlásenie',
+'logout'                     => 'Odhlásiť',
 'userlogout'                 => 'Odhlásiť',
 'notloggedin'                => 'Neprihlásený/á',
 'nologin'                    => 'Nemáte ešte účet? $1.',
@@ -506,26 +506,27 @@ Vaše konto je vytvorené. Nezabudnite si nastaviť svoje používateľské nast
 'userexists'                 => 'Zadané používateľské meno už používa niekto iný. Zadajte iné meno.',
 'youremail'                  => 'Váš e-mail²',
 'username'                   => 'Používateľské meno:',
-'uid'                        => 'ID užívateľa:',
+'uid'                        => 'ID používateľa:',
 'yourrealname'               => 'Skutočné meno *:',
 'yourlanguage'               => 'Jazyk:',
 'yourvariant'                => 'Variant jazyka',
 'yournick'                   => 'Prezývka:',
 'badsig'                     => 'Neplatný podpis v pôvodnom tvare; skontrolujte HTML tagy.',
-'email'                      => 'E-mail',
-'prefs-help-realname'        => '¹ Skutočné meno (nepovinné): ak sa rozhodnete ho poskytnúť, bude použité na označenie Vašej práce.',
+'badsiglength'               => 'Používateľské meno je príliš dlhé; musí mať menej ako $1 znakov.',
+'prefs-help-realname'        => '¹ Skutočné meno (nepovinné): ak sa rozhodnete ho poskytnúť, bude použité na označenie vašej práce.',
 'loginerror'                 => 'Chyba pri prihlasovaní',
 'prefs-help-email'           => '² E-mail (nepovinné): Umožní iným ľuďom kontaktovať vás pomocou odkazu z vašej používateľskej a diskusnej stránky bez potreby uverejňovania Vašej e-mailovej adresy a môže byť použité na poslanie nového hesla, ak zabudnete pôvodné.',
 'nocookiesnew'               => 'Používateľské konto bolo vytvorené, ale nie ste prihlásený. {{SITENAME}} používa koláčiky (cookies) na prihlásenie. Máte koláčiky (cookies) vypnuté. Zapnite ich a potom sa prihláste pomocou vášho nového používateľského mena a hesla.',
 'nocookieslogin'             => '{{SITENAME}} používa koláčiky (cookies) na prihlásenie. Vy máte koláčiky vypnuté. Prosíme, zapnite ich a skúste znovu.',
 'noname'                     => 'Nezadali ste platné používateľské meno.',
 'loginsuccesstitle'          => 'Prihlásenie úspešné',
-'loginsuccess'               => 'Teraz ste prihlásený do {{GRAMMAR:genitív|{{SITENAME}}}} ako "$1".',
-'nosuchuser'                 => 'Používateľské meno "$1" neexistuje. Skontrolujte preklepy alebo sa prihláste ako nový používateľ pomocou dolu zobrazeného formulára.',
-'nosuchusershort'            => 'V súčasnosti neexistuje používateľ s menom "$1". Skontrolujte preklepy.',
+'loginsuccess'               => 'Teraz ste prihlásený do {{GRAMMAR:genitív|{{SITENAME}}}} ako „$1“.',
+'nosuchuser'                 => 'Používateľské meno „$1“ neexistuje. Skontrolujte preklepy alebo sa prihláste ako nový používateľ pomocou dolu zobrazeného formulára.',
+'nosuchusershort'            => 'V súčasnosti neexistuje používateľ s menom „$1“. Skontrolujte preklepy.',
 'nouserspecified'            => 'Musíte uviesť meno používateľa.',
 'wrongpassword'              => 'Zadané heslo je nesprávne. Skúste  znovu.',
 'wrongpasswordempty'         => 'Zadané heslo bolo prázdne. Skúste prosím znova.',
+'passwordtooshort'           => 'Vaše heslo je príliš krátke. Musí mať dĺžku aspoň $1 znakov.',
 'mailmypassword'             => 'Pošlite mi e-mailom dočasné heslo',
 'passwordremindertitle'      => 'Oznámenie o hesle z {{GRAMMAR:genitív|{{SITENAME}}}}',
 'passwordremindertext'       => 'Niekto (pravdepodobne vy, z IP adresy $1)
@@ -535,10 +536,10 @@ Teraz by ste sa mali prihlásiť a zmeniť vaše heslo.
 
 Ak túto požiadavku poslal niekto iný alebo ste si spomenuli svoje heslo a neželáte
 si ho zmeniť, môžete túto správu ignorovať a naďalej používať svoje staré heslo.',
-'noemail'                    => 'Používateľ "$1" nezadal e-mailovú adresu.',
+'noemail'                    => 'Používateľ „$1“ nezadal e-mailovú adresu.',
 'passwordsent'               => 'Nové heslo bolo zaslané na e-mailovú adresu
-používateľa "$1".
-Prosím, prihláste sa znovu, keď ho obdržíte.',
+používateľa „$1“.
+Prosím, prihláste sa znovu, keď ho dostanete.',
 'blocked-mailpassword'       => 'Boli zablokované úpravy z vašej IP adresy, a tak nie je dovolené použiť funkciu znovuvyžiadania hesla, aby sa zabránilo zneužitiu.',
 'eauthentsent'               => 'Email s potvrdením bol zaslaný na uvedenú emailovú adresu.
 Predtým ako sa na účet pošle akákoľvek ďalšia pošta, musíte splniť inštrukcie v emaili, aby sa potvrdilo, že účet je skutočne Váš.',
@@ -554,6 +555,7 @@ nástroje nebudú prístupné.',
 'invalidemailaddress'        => 'E-mailovú adresu nemožno akceptovať, pretože sa zdá, že má neplatný formát. Zadajte dobre naformátovanú adresu alebo nechajte príslušné políčko prázdne.',
 'accountcreated'             => 'Účet vytvorený',
 'accountcreatedtext'         => 'Používateľský účet pre $1 bol vytvorený.',
+'loginlanguagelabel'         => 'Jazyk: $1',
 
 # Password reset dialog
 'resetpass'               => 'Zmeniť heslo k účtu',
@@ -601,15 +603,17 @@ nástroje nebudú prístupné.',
 'anoneditwarning'           => 'Nie ste [[Special:Userlogin|prihlásený]]. Vaša IP adresa bude zaznamenaná v <span class="plainlinks"> [{{fullurl:{{FULLPAGENAME}}|action=history}} histórii úprav]</span> tejto stránky.',
 'missingsummary'            => "'''Upozornenie:''' Neposkytli ste zhrnutie úprav. Ak kliknete znova na Uložiť, Vaše úpravy sa uložia bez zhrnutia úprav.",
 'missingcommenttext'        => 'Prosím, dolu napíšte komentár.',
-'missingcommentheader'      => "'''Pripomienka:''' Neposkutli ste predmet/hlavičku tohto komentára. Ak znova kliknete na tlačidlo Uložiť, vaša úprava sa uloží bez nej.",
+'missingcommentheader'      => "'''Pripomienka:''' Neposkytli ste predmet/hlavičku tohto komentára. Ak znova kliknete na tlačidlo Uložiť, vaša úprava sa uloží bez nej.",
 'summary-preview'           => 'Náhľad zhrnutia',
 'subject-preview'           => 'Náhľad predmetu/hlavičky',
 'blockedtitle'              => 'Používateľ je zablokovaný',
-'blockedtext'               => 'Vaše používateľské meno alebo IP adresu zablokoval $1.
-Udáva tento dôvod:<br />\'\'$2\'\'
+'blockedtext'               => '<big>\'\'\'Vaše používateľské meno alebo IP adresa bola zablokovaná.\'\'\'</big>
 
-Blokovanie vyprší: $6<br />
-Kto mal byť zablokovaný: $7
+Zablokoval vás správca $1. Udáva tento dôvod:<br />\'\'$2\'\'
+
+* Blokovanie začalo: $8
+* Blokovanie vyprší: $6
+* Kto mal byť zablokovaný: $7
 
 Môžete kontaktovať $1 alebo s jedného z ďalších 
 [[{{MediaWiki:grouppage-sysop}}|správcov]] a prediskutovať blokovanie.
@@ -618,11 +622,12 @@ Uvedomte si, že nemôžete použiť funkciu "Pošli e-mail používateľovi", p
 
 Vaša IP adresa je $3 a ID blokovania je #$5. Prosíme, zahrňte oba tieto údaje do každej správy, ktorú posielate.',
 'autoblockedtext'           => 'Vaša IP adresa bola automaticky zablokovaná, pretože je používaná iným používateľom, ktorého zablokoval $1.
-Udaný dôvod:
+Udaný dôvod zablokovania:
 
 :\'\'$2\'\'
 
-Blokovanie vypršaní: $6
+* Blokovanie začalo: $8
+* Blokovanie vyprší: $6
 
 Ak sa potrebujete informovať o blokovaní, môžete kontaktovať $1 alebo niektorého iného
 [[{{MediaWiki:grouppage-sysop}}|správcu]].
@@ -632,25 +637,25 @@ Pozn.: Nemôžete použiť funkciu "Poslať email tomuto používateľovi", ak s
 
 ID vášho blokovania je $5. Prosím, uveďte tento ID v akýchkoľvek otázkach, ktoré sa opýtate.',
 'blockedoriginalsource'     => "Zdroj '''$1''' je zobrazený nižšie:",
-'blockededitsource'         => "Text '''Vašich úprav''' stránky '''$1''' je zobrazený nižšie:",
-'whitelistedittitle'        => 'Na úpravu je nutné prihlásenie',
-'whitelistedittext'         => 'Na úpravu stránok sa musíte najskôr $1.',
-'whitelistreadtitle'        => 'Je potrebné sa prihlásiť, aby ste mohli čítať',
-'whitelistreadtext'         => 'Na čítanie stránok musíte byť [[Special:Userlogin|prihlásený/á]]',
-'whitelistacctitle'         => 'Nemáte dovolené vytvorenie konta',
+'blockededitsource'         => "Text '''vašich úprav''' stránky '''$1''' je zobrazený nižšie:",
+'whitelistedittitle'        => 'Aby ste mohli upravovať stránky, musíte sa prihlásiť',
+'whitelistedittext'         => 'Aby ste mohli upravovať stránky, musíte sa $1',
+'whitelistreadtitle'        => 'Aby ste mohli čítať stránky, musíte sa prihlásiť',
+'whitelistreadtext'         => 'Aby ste mohli čítať stránky, musíte sa [[Special:Userlogin|prihlásiť]].',
+'whitelistacctitle'         => 'Nemáte dovolené vytvoriť si účet',
 'whitelistacctext'          => 'Ak chcete na tejto Wiki vytvárať účty, musíte sa [[Special:Userlogin|prihlásiť]] a mať príslušné oprávnenia.',
 'confirmedittitle'          => 'Aby ste mohli upravovať je potrebné potvrdenie e-mailu',
 'confirmedittext'           => 'Pred úpravami stránok musíte potvrdiť vašu emailovú adresu. Prosím, nastavte a overte svoju emailovú adresu v [[Special:Preferences|používateľských nastaveniach]].',
 'nosuchsectiontitle'        => 'Sekcia neexistuje',
 'nosuchsectiontext'         => 'Pokúšali ste sa upravovať sekciu, ktorá neexistuje. Keďže sekcia $1 neexistuje, nie je kam uložiť vašu úpravu.',
-'loginreqtitle'             => 'Nutné prihlásenie',
+'loginreqtitle'             => 'Je potrebné prihlásiť sa',
 'loginreqlink'              => 'prihlásiť',
-'loginreqpagetext'          => 'Na prezeranie ďalších stránok sa musíte $1.',
+'loginreqpagetext'          => 'Aby ste mohli prezerať ďalšie stránky, musíte sa $1.',
 'accmailtitle'              => 'Heslo bolo odoslané.',
-'accmailtext'               => "Heslo pre '$1' bolo poslané na $2.",
+'accmailtext'               => 'Heslo pre „$1“ bolo poslané na $2.',
 'newarticle'                => '(Nový)',
 'newarticletext'            => "Sledovali ste odkaz na stránku, ktorá zatiaľ neexistuje.
-Stránku vytvoríte tak, že začnete písať do dolného poľa a potom stlačíte tlačidlo \"Ulož stránku\".
+Stránku vytvoríte tak, že začnete písať do dolného poľa a potom stlačíte tlačidlo „Uložiť stránku“.
 (Viac informácií nájdete na stránkach [[{{MediaWiki:helppage}}|Pomocníka]]).
 Ak ste sa sem dostali nechtiac, iba kliknite na tlačidlo '''späť''' vo svojom prehliadači.",
 'anontalkpagetext'          => "<br />
@@ -658,21 +663,21 @@ Ak ste sa sem dostali nechtiac, iba kliknite na tlačidlo '''späť''' vo svojom
 ''Toto je diskusná stránka anonymného používateľa, ktorý nemá vytvorené svoje konto alebo ho nepoužíva. Preto musíme na jeho identifikáciu použiť numerickú IP adresu. Je možné, že takúto IP adresu používajú viacerí používatelia. Ak ste anonymný používateľ a máte pocit, že vám boli adresované irelevantné diskusné príspevky, zriaďte si konto alebo sa prihláste ([[Special:Userlogin|Zriadenie konta alebo prihlásenie]]), aby sa zamedzilo budúcim zámenám s inými anonymnými používateľmi''",
 'noarticletext'             => 'Na tejto stránke sa momentálne nenachádza žiadny text. Môžete [[Special:Search/{{PAGENAME}}|vyhľadávať názov tejto stránky]] v obsahu iných stránok alebo [{{fullurl:{{FULLPAGENAME}}|action=edit}} upravovať túto stránku].',
 'clearyourcache'            => "'''Poznámka:''' Aby sa zmeny prejavili, po uložení musíte vymazať vyrovnávaciu pamäť vášho prehliadača: '''Mozilla / Firefox / Safari:''' držte stlačený ''Shift'' a kiknite na ''Reload'' alebo stlačte ''Ctrl-Shift-R'' (''Cmd-Shift-R'' na Apple Mac); '''IE:''' držte ''Ctrl'' a kliknite na ''Refresh'' alebo stlačte ''Ctrl-F5''; '''Konqueror:''': jednoducho kliknite na tlačidlo ''Reload'' alebo stlačte ''F5''; Používatelia '''Opery''' možno budú musieť úplne vymazať vyrovnávaciu pamäť prehliadača v ponuke ''Tools→Preferences''.",
-'usercssjsyoucanpreview'    => "<strong>Tip:</strong> Použite tlačítko 'Zobraz náhľad' na otestovanie Vášho nového CSS/JS pred uložením.",
+'usercssjsyoucanpreview'    => '<strong>Tip:</strong> Váš nový CSS/JS pred uložením otestujete stlačením tlačidla „Zobraziť náhľad“.',
 'usercsspreview'            => "'''Nezabudnite, že toto je iba náhľad vášho používateľského CSS, ešte nebolo uložené!'''",
 'userjspreview'             => "'''Nezabudnite, že iba testujete/náhľad vášho používateľského JavaScriptu, ešte nebol uložený!'''",
-'userinvalidcssjstitle'     => "'''Varovanie:''' Neexistuje skin \"\$1\". Pamätajte, že vlastné .css a .js stránky používajú názov s malými písmenami, napr. {{ns:user}}:Foo/monobook.css na rozdiel od {{ns:user}}:Foo/Monobook.css.",
+'userinvalidcssjstitle'     => "'''Upozornenie:''' Neexistuje vzhľad „$1“. Pamätajte, že vlastné .css a .js stránky používajú názov s malými písmenami, napr. {{ns:user}}:Foo/monobook.css a nie {{ns:user}}:Foo/Monobook.css.",
 'updated'                   => '(Aktualizovaný)',
 'note'                      => '<strong>Poznámka: </strong>',
-'previewnote'               => '<strong>Nezabudnite, toto je len náhľad vami upravovanej stránky. Zmeny ešte nie sú uložené!</strong>',
+'previewnote'               => '<strong>Nezabudnite, toto je iba náhľad stránky, ktorú upravujete. Zmeny ešte nie sú uložené!</strong>',
 'previewconflict'           => 'Tento náhľad upravenej stránky zobrazuje text z horného poľa s textom tak, ako sa zobrazí potom, keď ju uložíte.',
-'session_fail_preview'      => '<strong>Prepáčte, nemohli sme spracovať Váš príspevok kvôli strate údajov relácie (session). Skúste to prosím ešte raz. Ak to nebude fungovať, skúste sa odhlásiť a znovu prihlásiť.</strong>',
-'session_fail_preview_html' => "<strong>Prepáčte! Nemohli sme spracovať Vašu úpravu kvôli strate údajov relácie.</strong>
+'session_fail_preview'      => '<strong>Prepáčte, nemohli sme spracovať váš príspevok kvôli strate údajov relácie. Skúste to prosím ešte raz. Ak to nebude fungovať, skúste sa odhlásiť a znovu prihlásiť.</strong>',
+'session_fail_preview_html' => "<strong>Prepáčte! Nemohli sme spracovať vašu úpravu kvôli strate údajov relácie.</strong>
 
 ''Pretože táto wiki má použitie HTML umožnené, náhľad sa nezobrazí (prevencia pred JavaScript útokmi).''
 
-<strong>Ak je toto legitímny pokus o úpravu, skúste prosím znova. Ak to stále nefunguje, skúste sa odhlásiť a znovu prihlásiť.</strong>",
-'importing'                 => 'Importuje sa $1',
+<strong>Ak je toto legitímny pokus o úpravu, skúste to prosím znova. Ak to stále nefunguje, skúste sa odhlásiť a znovu prihlásiť.</strong>",
+'token_suffix_mismatch'     => '<strong>Vaša úprava bola zamietnutá, pretože váš klient pokazil znaky s diakritikou v editačnom symbole (token). Úprava bola zamietnutá, aby sa zabránilo poškodeniu textu stránky. Toto sa občas stáva, keď používate chybnú anonymnú proxy službu cez webové rozhranie.</strong>',
 'editing'                   => 'Úprava stránky $1',
 'editinguser'               => 'Úprava stránky $1',
 'editingsection'            => 'Úprava stránky $1 (sekcia)',
@@ -720,6 +725,9 @@ text do textového súboru a uložiť si ho na neskôr.</strong>',
 'nocreatetitle'             => 'Tvorba nových stránok bola obmedzená',
 'nocreatetext'              => 'Na tejto stránke je tvorba nových stránok obmedzená.
 Teraz sa môžete vrátiť späť a upravovať existujúcu stránku alebo [[Special:Userlogin|sa prihlásiť alebo vytvoriť účet]].',
+'nocreate-loggedin'         => 'Na tejto wiki nemáte povolenie vytvárať nové stránky.',
+'permissionserrors'         => 'Chyba povolení',
+'permissionserrorstext'     => 'Na to nemáte povolenie z {{PLURAL:$1|nasledujúceho dôvodu|nasledujúcich dôvodov}}:',
 'recreate-deleted-warn'     => "'''Upozornenie: Opätovne vytvárate stránku, ktorá bola predtým zmazaná.'''
 
 Mali by ste zvážiť, či je vhodné pokračovať v úpravách tejto stránky.
@@ -728,11 +736,13 @@ Odkaz na záznam zmazaní:",
 # "Undo" feature
 'undo-success' => 'Úpravu nie je možné vrátiť. Prosím skontrolujte tento rozdiel, čím overíte, že táto úprava je tá, ktorú chcete, a následne uložte zmeny, čím ukončíte vrátenie.',
 'undo-failure' => 'Úpravu nie je možné vrátiť kvôli konfliktným medziľahlým úpravám.',
-'undo-summary' => 'Revízia $1 používateľa [[Special:Contributions/$2]] ([[User talk:$2|Diskusia]]) bola vrátená',
+'undo-summary' => 'Revízia $1 používateľa [[Special:Contributions/$2|$2]] ([[User talk:$2|diskusia]]) bola vrátená',
 
 # Account creation failure
 'cantcreateaccounttitle' => 'Nedá sa vytvoriť účet',
-'cantcreateaccounttext'  => 'Vytvorenie účtu z tejto IP adresy (<b>$1</b>) bolo zablokované. Pravdepodobne je to kvôli sústavnému vandalizmu z adresy vašej školy či poskytovateľa internetového poskytovateľa.',
+'cantcreateaccount-text' => "Tvorbu účtov z tejto IP adresy (<b>$1</b>) zablokoval [[User:$3|$3]].
+
+Dôvod, ktorý $3 uviedol, je ''$2''",
 
 # History pages
 'revhistory'          => 'História úprav',
@@ -747,7 +757,7 @@ Prosím skontrolujte URL adresu, ktorú ste použili na prístup k tejto stránk
 'revision-info'       => 'Revízia z $1; $2',
 'previousrevision'    => '← Staršia verzia',
 'nextrevision'        => 'Novšia verzia →',
-'currentrevisionlink' => 'Zobrazenie aktuálnej úpravy',
+'currentrevisionlink' => 'Aktuálna úprava',
 'cur'                 => 'aktuálna',
 'next'                => 'ďalšia',
 'last'                => 'posledná',
@@ -757,8 +767,8 @@ Prosím skontrolujte URL adresu, ktorú ste použili na prístup k tejto stránk
 'histlegend'          => 'Legenda: (aktuálna) = rozdiel oproti aktuálnej verzii,
 (posledná) = rozdiel oproti predchádzajúcej verzii, D = drobná úprava',
 'deletedrev'          => '[zmazané]',
-'histfirst'           => 'Najskorší',
-'histlast'            => 'Posledný',
+'histfirst'           => 'najskoršie',
+'histlast'            => 'posledné',
 'historysize'         => '($1 bajtov)',
 'historyempty'        => '(prázdne)',
 
@@ -783,7 +793,7 @@ Táto revízia stránky bola odstránená z verejných archívov.
 Ako správca tohto projektu si ju môžete prezrieť;
 podrobnosti môžu byť v [{{fullurl:Special:Log/delete|page={{PAGENAMEE}}}} zázname mazaní].
 </div>',
-'rev-delundel'                => 'ukáž/skry',
+'rev-delundel'                => 'zobraziť/skryť',
 'revisiondelete'              => 'Zmazať/obnoviť revízie',
 'revdelete-nooldid-title'     => 'Chýba cieľová revízia',
 'revdelete-nooldid-text'      => 'Nešpecifikovali ste cieľovú revíziu alebo revízie, na ktorých sa má táto funkcia vykonať.',
@@ -798,7 +808,7 @@ nie sú stanovené ďalšie obmedzenia.',
 'revdelete-legend'            => 'Nastav obmedzenia revízie:',
 'revdelete-hide-text'         => 'Skry text revízie',
 'revdelete-hide-name'         => 'Skryť činnosť a cieľ',
-'revdelete-hide-comment'      => 'Skry zhrnutie úprav',
+'revdelete-hide-comment'      => 'Skryť zhrnutie úprav',
 'revdelete-hide-user'         => 'Skryť používateľské meno/IP',
 'revdelete-hide-restricted'   => 'Použi tieto obmedzenia na správcov ako aj na ostatných',
 'revdelete-suppress'          => 'Potlačiť dáta pred správcami rovnako ako pred ostatnými',
@@ -819,25 +829,22 @@ nie sú stanovené ďalšie obmedzenia.',
 Pozri Záznam momentálne platných [[Special:Ipblocklist|IP blokovaní]].',
 
 # Diffs
+'history-title'             => 'História revízií „$1“',
 'difference'                => '(Rozdiel medzi revíziami)',
 'loadingrev'                => 'Sťahujem verzie, na zobrazenie rozdielov',
 'lineno'                    => 'Riadok $1:',
 'editcurrent'               => 'Upraviť aktuálnu verziu tejto stránky',
 'selectnewerversionfordiff' => 'Vybrať na porovnanie novšiu verziu',
 'selectolderversionfordiff' => 'Vybrať na porovnanie staršiu verziu',
-'compareselectedversions'   => 'Porovnaj označené verzie',
+'compareselectedversions'   => 'Porovnať označené verzie',
 'editundo'                  => 'vrátiť',
 'diff-multi'                => '{{plural:$1|Jedna medziľahlá revízia nie je zobrazená|$1 medziľahlé revízie nie sú zobrazené|$1 medziľahlých revízií nie je zobrazených}}.',
 
 # Search results
 'searchresults'         => 'Výsledky vyhľadávania',
 'searchresulttext'      => 'Viac informácií o vyhľadávaní vo {{GRAMMAR:lokál|{{SITENAME}}}} je uvedených na $1.',
-'searchsubtitle'        => 'Na vyhľadávaciu požiadavku "[[:$1]]"',
+'searchsubtitle'        => 'Na vyhľadávaciu požiadavku „[[:$1]]“',
 'searchsubtitleinvalid' => 'Na vyhľadávaciu požiadavku "$1"',
-'badquery'              => 'Nesprávne formulovaná požiadavka na vyhľadávanie',
-'badquerytext'          => 'Váš text na prehľadávanie sme nemohli spracovať. Dôvodom je pravdepodobne to, že ste hľadali slovo kratšie ako tri písmená, čo zatiaľ {{SITENAME}} neumožňuje. Alebo ste možno výraz zle napísali, napríklad „dom a a záhrada“. Skúste iný text na prehľadávanie.',
-'matchtotals'           => 'Výsledkom požiadavky "$1" je {{plural:$2|jeden názov stránky|$3 názvy stránok|$3 názvov stránok}}
-a text {{plural:$3|jednej stránky|$3 názvy stránok|$3 názvov stránok}}.',
 'noexactmatch'          => "'''Neexistuje stránka nazvaná \"\$1\"'''. Chcete '''[[:\$1|vytvoriť novú stránku]]''' s týmto názvom?",
 'titlematches'          => 'Vyhovujúce názvy stránok',
 'notitlematches'        => 'V názvoch stránok nebola nájdená zhoda',
@@ -854,11 +861,11 @@ a text {{plural:$3|jednej stránky|$3 názvy stránok|$3 názvov stránok}}.',
 $1<br />
 $2 Zoznam presmerovaní &nbsp; Hľadanie pre $3 $9',
 'searchdisabled'        => 'Prepáčte! Fulltextové vyhľadávanie bolo dočasne vypnuté z dôvodu preťaženia. Zatiaľ môžete použiť hľadanie pomocou Google, ktoré však nemusí byť aktuálne.',
-'blanknamespace'        => '(Hlavný)',
 
 # Preferences page
 'preferences'              => 'Nastavenia',
 'mypreferences'            => 'nastavenia',
+'prefs-edits'              => 'Počet úprav:',
 'prefsnologin'             => 'Nie ste prihlásený/á',
 'prefsnologintext'         => 'Musíte byť [[Special:Userlogin|prihlásený/á]], aby ste mohli zmeniť vaše nastavenia.',
 'prefsreset'               => 'Boli obnovené pôvodné nastavenia.',
@@ -872,7 +879,7 @@ $2 Zoznam presmerovaní &nbsp; Hľadanie pre $3 $9',
 'skin'                     => 'Vzhľad',
 'math'                     => 'Vykreslenie matematiky',
 'dateformat'               => 'Formát dátumu',
-'datedefault'              => 'Predvolený',
+'datedefault'              => 'štandardný',
 'datetime'                 => 'Dátum a čas',
 'math_failure'             => 'Syntaktická analýza (parsing) neúspešná',
 'math_unknown_error'       => 'neznáma chyba',
@@ -889,7 +896,7 @@ $2 Zoznam presmerovaní &nbsp; Hľadanie pre $3 $9',
 'prefs-watchlist-days'     => 'Koľko dní zobrazovať v sledovaných stránkach:',
 'prefs-watchlist-edits'    => 'Počet úprav, ktorý sa zobrazí v rozšírenom zozname sledovaných:',
 'prefs-misc'               => 'Rôzne',
-'saveprefs'                => 'Ulož nastavenia',
+'saveprefs'                => 'Uložiť nastavenia',
 'resetprefs'               => 'Obnoviť pôvodné nastavenia',
 'oldpassword'              => 'Staré heslo:',
 'newpassword'              => 'Nové heslo:',
@@ -917,31 +924,36 @@ $2 Zoznam presmerovaní &nbsp; Hľadanie pre $3 $9',
 'files'                    => 'Súbory',
 
 # User rights
-'userrights-lookup-user'     => 'Spravuj skupiny používateľov',
-'userrights-user-editname'   => 'Napíš meno používateľa:',
-'editusergroup'              => 'Upraviť skupinu používateľa',
-'userrights-editusergroup'   => 'Uprav skupinu',
-'saveusergroups'             => 'Ulož skupinu',
-'userrights-groupsmember'    => 'Člen skupiny:',
-'userrights-groupsavailable' => 'Dostupné skupiny:',
-'userrights-groupshelp'      => 'Označte skupiny, do ktorých chcete pridať alebo z ktorých chcete
+'userrights-lookup-user'      => 'Spravuj skupiny používateľov',
+'userrights-user-editname'    => 'Napíš meno používateľa:',
+'editusergroup'               => 'Upraviť skupinu používateľa',
+'userrights-editusergroup'    => 'Uprav skupinu',
+'saveusergroups'              => 'Uložiť skupinu',
+'userrights-groupsmember'     => 'Člen skupiny:',
+'userrights-groupsavailable'  => 'Dostupné skupiny:',
+'userrights-groupshelp'       => 'Označte skupiny, do ktorých chcete pridať alebo z ktorých chcete
 odobrať používateľa. Neoznačené skupiny nebudú zmenené. Odobrať skupinu možete pomocou CTRL + kliknutie ľavým tlačidlom',
-'userrights-reason'          => 'Dôvod zmeny:',
+'userrights-reason'           => 'Dôvod zmeny:',
+'userrights-available-none'   => 'Nie ste oprávnený meniť členstvo v skupine.',
+'userrights-available-add'    => 'Môžete pridávať používateľov $1.',
+'userrights-available-remove' => 'Môžete odoberať používateľov $1.',
 
 # Groups
-'group'            => 'Skupina:',
-'group-bot'        => 'Boti',
-'group-sysop'      => 'Správcovia',
-'group-bureaucrat' => 'Byrokrati',
-'group-all'        => '(všetci)',
+'group'               => 'Skupina:',
+'group-autoconfirmed' => 'zaregistrovaní',
+'group-bot'           => 'Boti',
+'group-sysop'         => 'Správcovia',
+'group-bureaucrat'    => 'Byrokrati',
+'group-all'           => '(všetci)',
 
-'group-bot-member'        => 'Bot',
-'group-sysop-member'      => 'Správca',
-'group-bureaucrat-member' => 'Byrokrat',
+'group-autoconfirmed-member' => 'zaregistrovaný používateľ',
+'group-sysop-member'         => 'Správca',
+'group-bureaucrat-member'    => 'Byrokrat',
 
-'grouppage-bot'        => 'Project:Boti',
-'grouppage-sysop'      => 'Project:Správcovia',
-'grouppage-bureaucrat' => 'Project:Byrokrati',
+'grouppage-autoconfirmed' => '{{ns:project}}:Zaregistrovaní používatelia',
+'grouppage-bot'           => 'Project:Boti',
+'grouppage-sysop'         => 'Project:Správcovia',
+'grouppage-bureaucrat'    => 'Project:Byrokrati',
 
 # User rights log
 'rightslog'      => 'Záznam užívateľských práv',
@@ -973,14 +985,14 @@ Právne záväzky môžu projekt vážne poškodiť, takže Vás prosíme, aby s
 'hide'                              => 'skryť',
 'show'                              => 'zobraziť',
 'minoreditletter'                   => 'D',
-'newpageletter'                     => 'N',
-'boteditletter'                     => 'b',
 'number_of_watching_users_pageview' => '[sledujúcich používateľov: $1]',
-'rc_categories'                     => 'Obmedziť na kategórie (oddeľte "|")',
+'rc_categories'                     => 'Obmedziť na kategórie (oddeľte znakom „|“)',
 'rc_categories_any'                 => 'akékoľvek',
+'newsectionsummary'                 => '/* $1 */ nová sekcia',
 
 # Recent changes linked
 'recentchangeslinked'          => 'Súvisiace úpravy',
+'recentchangeslinked-title'    => 'Zmeny týkajúce sa $1',
 'recentchangeslinked-noresult' => 'V zadanom období neboli odkazované stránky zmenené.',
 'recentchangeslinked-summary'  => "Táto špeciálna stránka obsahuje zoznam posledných úprav na odkazovaných stránkach. Stránky, ktoré sa nachádzajú vo vašom zozname sledovaných sú vyznačené '''hrubo'''.",
 
@@ -1013,7 +1025,7 @@ Všetky uvedené časy sú časy na serveri (UTC).',
 'uploadedfiles'               => 'Nahrané súbory',
 'ignorewarning'               => 'Ignorovať varovanie a súbor napriek tomu uložiť.',
 'ignorewarnings'              => 'Ignorovať všetky varovania',
-'minlength'                   => 'Názvy obrázkov musia obsahovať najmenej tri písmená.',
+'minlength1'                  => 'Názvy súborov musia mať aspoň jedno písmeno.',
 'illegalfilename'             => 'Názov súboru "$1" obsahuje znaky, ktoré nie sú povolené v názvoch stránok. Prosím premenujte súbor a skúste ho nahrať znovu.',
 'badfilename'                 => 'Meno obrázka bolo zmenené na "$1".',
 'filetype-badmime'            => 'Nie je povolené nahrávať súbory s MIME typom "$1".',
@@ -1035,11 +1047,10 @@ Ak je kontrolovaný súbor rovnaký obrázok v pôvodnej veľkosti, nie je potre
 'fileexists-forbidden'        => 'Súbor s týmto názvom už existuje; choďte prosím späť a nahrajte tento súbor pod iným názvom. [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Súbor s týmto názvom už existuje v zdieľanom úložisku súborov; choďte prosím späť a nahrajte tento súbor pod iným názvom. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Nahranie bolo úspešné',
-'fileuploaded'                => 'Súbor "$1" bol úspešne nahraný.
-Nasledujte tento odkaz ($2) na stránku, na ktorej zadáte informácie na opis súboru, napríklad odkiaľ pochádza, kedy a kým bol vytvorený a všetko ostatné, čo o ňom prípadne viete. Ak je nahraný súbor obrázok, možno ho takto vložiť do stránky: <tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:$1|thumb|Opis]]</nowiki></tt>',
 'uploadwarning'               => 'Varovanie pri nahrávaní',
-'savefile'                    => 'Ulož súbor',
+'savefile'                    => 'Uložiť súbor',
 'uploadedimage'               => 'nahraný „[[$1]]“',
+'overwroteimage'              => 'bola nahraná nová verzia „[[$1]]“',
 'uploaddisabled'              => 'Prepáčte, nahrávanie je vypnuté.',
 'uploaddisabledtext'          => 'Nahrávanie súborov na túto wiki je vypnuté.',
 'uploadscripted'              => 'Tento súbor obsahuje kód HTML alebo skript, ktorý može byť chybne interpretovaný prehliadačom.',
@@ -1049,6 +1060,25 @@ Nasledujte tento odkaz ($2) na stránku, na ktorej zadáte informácie na opis s
 'destfilename'                => 'Názov cieľového súboru',
 'watchthisupload'             => 'Sleduj túto stránku',
 'filewasdeleted'              => 'Súbor s týmto názvom bol už nahraný a následne zmazaný. Mali by ste skontrolovať $1 predtým, ako budete pokračovať na opätovné nahranie.',
+'upload-wasdeleted'           => "'''Upozornenie: Nahrávate súbor, ktorý bol predtým zmazaný.'''
+
+Mali by ste zvážiť, či je vhodné pokračovať v nahrávaní tohto súboru.
+Tu je na záznam zmazaní tohto súboru:",
+'filename-bad-prefix'         => 'Názov súboru, ktorý nahrávate, začína <strong>„$1“</strong>, čo nie je popisné meno. Takýto názov typicky priraďujú digitálne fotoaparáty automaticky. Prosím, dajte vášmu súboru popisnejší názov.',
+'filename-prefix-blacklist'   => ' #<!-- leave this line exactly as it is --> <pre>
+# Syntax je nasledovná: 
+#   * Všetko od znaku „#“ po koniec riadka je komentár
+#   * Každý neprázdny riadok je prefix typických názvov súborov, ktoré automaticky priraďuje digitálny fotoapraát
+CIMG # Casio
+DSC_ # Nikon
+DSCF # Fuji
+DSCN # Nikon
+DUW # niektoré mobilné telefóny
+IMG # všeobecné
+JD # Jenoptik
+MGP # Pentax
+PICT # misc.
+ #</pre> <!-- leave this line exactly as it is -->',
 
 'upload-proto-error'      => 'Nesprávny protokol',
 'upload-proto-error-text' => 'Vzdialené nahrávanie vyžaduje, aby URL začínali <code>http://</code> alebo <code>ftp://</code>.',
@@ -1065,13 +1095,13 @@ Nasledujte tento odkaz ($2) na stránku, na ktorej zadáte informácie na opis s
 
 'license'            => 'Licencovanie',
 'nolicense'          => 'Nič nebolo vybrané',
+'license-nopreview'  => '(Náhľad nie je dostupný)',
 'upload_source_url'  => ' (platný, verejne prístupný URL)',
 'upload_source_file' => ' (súbor na Vašom počítači)',
 
 # Image list
 'imagelist'                 => 'Zoznam obrázkov',
 'imagelisttext'             => 'Tu je zoznam $1 obrázkov zoradený $2.',
-'imagelistforuser'          => 'Zobrazuje iba obrázky nahrané používateľom $1.',
 'getimagelist'              => 'sťahujem zoznam nahraných obrázkov',
 'ilsubmit'                  => 'Hľadať',
 'showlast'                  => 'Zobraziť posledných $1 obrázkov zoradených $2.',
@@ -1081,14 +1111,17 @@ Nasledujte tento odkaz ($2) na stránku, na ktorej zadáte informácie na opis s
 'imgdelete'                 => 'zmazať',
 'imgdesc'                   => 'popis',
 'imgfile'                   => 'súbor',
-'imglegend'                 => 'Legenda: (popis) = zobraziť/upraviť popis obrázka.',
-'imghistory'                => 'História súboru',
-'revertimg'                 => 'obnov',
-'deleteimg'                 => 'zmazať',
-'deleteimgcompletely'       => 'Vymazať všetky revízie tohto súboru',
-'imghistlegend'             => 'Vysvetlivky: (aktuálna) = toto je aktuálny obrázok, (zmazať) = zmaž
-túto starú verziu, (pôvodná) = vráť sa k tejto starej verzii.
-<br /><i>Kliknite na dátum, aby sa zobrazil obrázok nahraný v ten deň</i>.',
+'filehist'                  => 'História súboru',
+'filehist-help'             => 'Po kliknutí na dátum/čas uvidíte súbor ako vyzeral vtedy.',
+'filehist-deleteall'        => 'zmazať všetky',
+'filehist-deleteone'        => 'zmazať túto',
+'filehist-revert'           => 'obnoviť',
+'filehist-current'          => 'aktuálna',
+'filehist-datetime'         => 'dátum/čas',
+'filehist-user'             => 'používateľ',
+'filehist-dimensions'       => 'rozmery',
+'filehist-filesize'         => 'veľkosť súboru',
+'filehist-comment'          => 'komentár',
 'imagelinks'                => 'Odkazy na obrázok',
 'linkstoimage'              => 'Na tento obrázok odkazujú nasledujúce stránky:',
 'nolinkstoimage'            => 'Žiadne stránky neobsahujú odkazy na tento obrázok.',
@@ -1104,6 +1137,29 @@ túto starú verziu, (pôvodná) = vráť sa k tejto starej verzii.
 'imagelist_size'            => 'Veľkosť (v bajtoch)',
 'imagelist_description'     => 'Popis',
 'imagelist_search_for'      => 'Hľadať názov obrázka:',
+
+# File reversion
+'filerevert'                => 'Obnoviť $1',
+'filerevert-legend'         => 'Obnoviť súbor',
+'filerevert-intro'          => '<span class="plainlinks">Obnovujete \'\'\'[[Media:$1|$1]]\'\'\' na [$4 verziu z $2, $3].</span>',
+'filerevert-comment'        => 'komentár:',
+'filerevert-defaultcomment' => 'Obnovená verzia z $1, $2',
+'filerevert-submit'         => 'Obnoviť',
+'filerevert-success'        => '<span class="plainlinks">\'\'\'[[Media:$1|$1]]\'\'\' bol obnovený na [$4 verziu z $2, $3].</span>',
+'filerevert-badversion'     => 'Neexistuje predchádzajúca lokálna verzia tohto súboru s požadovanopu časovou známkou.',
+
+# File deletion
+'filedelete'             => 'Zmazať $1',
+'filedelete-legend'      => 'Zmazať súbor',
+'filedelete-intro'       => "Mažete '''[[Media:$1|$1]]'''.",
+'filedelete-intro-old'   => '<span class="plainlinks">Mažete verziu súboru \'\'\'[[Media:$1|$1]]\'\'\' z [$4 $3, $2].</span>',
+'filedelete-comment'     => 'Komentár:',
+'filedelete-submit'      => 'Zmazať',
+'filedelete-success'     => "'''$1''' bol zmazaný.",
+'filedelete-success-old' => '<span class="plainlinks">Verzia súboru \'\'\'[[Media:$1|$1]]\'\'\' z $3, $2 bola zmazaná.</span>',
+'filedelete-nofile'      => "'''$1''' na tejto wiki neexistuje.",
+'filedelete-nofile-old'  => "Neexistuje archivovaná verzia '''$1''' s uvedenými atribútmi.",
+'filedelete-iscurrent'   => 'Pokúšate sa zmazať poslednú verziu tohto súboru. Prosím, najskôr vráťte staršiu verziu.',
 
 # MIME search
 'mimesearch'         => 'MIME vyhľadávanie',
@@ -1173,6 +1229,7 @@ z čoho '''$2''' (alebo '''$4%''') sú administrátormi (pozri $5).",
 'uncategorizedpages'      => 'Stránky nezaradené do kategórií',
 'uncategorizedcategories' => 'Kategórie nezaradené do kategórií',
 'uncategorizedimages'     => 'Nekategorizované obrázky',
+'uncategorizedtemplates'  => 'Nekategorizované šablóny',
 'unusedcategories'        => 'Nepoužité kategórie',
 'unusedimages'            => 'Nepoužité obrázky',
 'popularpages'            => 'Populárne stránky',
@@ -1199,7 +1256,7 @@ z čoho '''$2''' (alebo '''$4%''') sú administrátormi (pozri $5).",
 'specialpages'            => 'Špeciálne stránky',
 'spheading'               => 'Špeciálne stránky pre všetkých používateľov',
 'restrictedpheading'      => 'Obmedzené špeciálne stránky',
-'rclsub'                  => '(na stránky, na ktoré odkazuje "$1")',
+'rclsub'                  => '(na stránky, na ktoré odkazuje „$1“)',
 'newpages'                => 'Nové stránky',
 'newpages-username'       => 'Meno používateľa:',
 'ancientpages'            => 'Najdávnejšie upravované stránky',
@@ -1212,7 +1269,6 @@ z čoho '''$2''' (alebo '''$4%''') sú administrátormi (pozri $5).",
 # Book sources
 'booksources'               => 'Knižné zdroje',
 'booksources-search-legend' => 'Vyhľadávať knižné zdroje',
-'booksources-isbn'          => 'ISBN:',
 'booksources-go'            => 'Choď',
 'booksources-text'          => 'Nižšie je zoznam odkazov na iné stránky, ktoré predávajú nové a použité knihy a tiež môžu obsahovať ďalšie informácie o knihách, ktoré hľadáte:',
 
@@ -1220,7 +1276,6 @@ z čoho '''$2''' (alebo '''$4%''') sú administrátormi (pozri $5).",
 'data'               => 'Dáta',
 'userrights'         => 'Spravovanie používateľských práv',
 'groups'             => 'Skupiny používateľov',
-'isbn'               => 'ISBN',
 'alphaindexline'     => '$1 do $2',
 'version'            => 'Verzia',
 
@@ -1228,6 +1283,7 @@ z čoho '''$2''' (alebo '''$4%''') sú administrátormi (pozri $5).",
 'specialloguserlabel'  => 'Redaktor:',
 'speciallogtitlelabel' => 'Názov:',
 'log'                  => 'Záznamy',
+'all-logs-page'        => 'Všetky záznamy',
 'log-search-legend'    => 'Hľadať záznamy',
 'log-search-submit'    => 'Spustiť',
 'alllogstext'          => 'Kombinované zobrazenie nahrávaní, mazaní, zamknutí, blokovaní a akcií správcu.
@@ -1247,6 +1303,7 @@ Môžete zmenšiť rozsah, ak zvolíte typ záznamu, používateľské meno aleb
 'allpagessubmit'    => 'Choď',
 'allpagesprefix'    => 'Zobraz stránky s predponou:',
 'allpagesbadtitle'  => 'Zadaný názov stránky je neplatný alebo mal medzijazykový alebo interwiki prefix. Môže obsahovať jeden alebo viac znakov, ktoré nie je možné použiť v názve stránky.',
+'allpages-bad-ns'   => '{{SITENAME}} nemá menný priestor "$1".',
 
 # Special:Listusers
 'listusersfrom'      => 'Zobraziť používateľov počnúc:',
@@ -1284,11 +1341,6 @@ alebo sa rozhodol, že nebude prijímať e-maily od druhých používateľov.',
 'watchlistfor'         => "(používateľa '''$1''')",
 'nowatchlist'          => 'V zozname sledovaných stránok nemáte žiadne položky.',
 'watchlistanontext'    => 'Prosím $1 pre prezeranie alebo úpravu Vášho zoznamu sledovaných stránok.',
-'watchlistcount'       => "'''Na zozname sledovaných máte $1 položiek (vrátane diskusných stránok).'''",
-'clearwatchlist'       => 'Vyčistiť zoznam sledovaných',
-'watchlistcleartext'   => 'Určite ich chcete odstrániť?',
-'watchlistclearbutton' => 'Vyčistiť zoznam sledovaných',
-'watchlistcleardone'   => 'Váš zoznam sledovaných bol vyčistený. $1 položiek bolo odstránených.',
 'watchnologin'         => 'Nie ste prihlásený/á',
 'watchnologintext'     => 'Musíte byť [[Special:Userlogin|prihlásený/á]], aby ste mohli modifikovať vaše sledované stránky.',
 'addedwatch'           => 'Pridaná do zoznamu sledovaných stránok',
@@ -1303,33 +1355,21 @@ Ak budete chcieť neskôr stránku odstrániť zo sledovaných stránok, kliknit
 'unwatchthispage'      => 'Prestať sledovať túto stránku',
 'notanarticle'         => 'Toto nie je stránka',
 'watchnochange'        => 'V rámci zobrazeného času nebola upravená žiadna z Vašich sledovaných stránok.',
-'watchdetails'         => '($1 sledovaných stránok, nepočítajúc stránky diskusie;
-$2 úprav stránok spolu od ukončenia;
-$3...
-[[Special:Watchlist/edit|zobraz a upravuj úplný zoznam]].)',
+'watchlist-details'    => '$1 sledovaných stránok, nepočítajúc stránky diskusie.',
 'wlheader-enotif'      => '* Upozorňovanie e-mailom je zapnuté.',
 'wlheader-showupdated' => "* Stránky, ktoré boli zmené od vašej poslednej návštevy sú zobrazené '''tučne'''.",
 'watchmethod-recent'   => 'kontrolujem posledné úpravy sledovaných stránok',
 'watchmethod-list'     => 'kontrolujem sledované stránky na posledné úpravy',
-'removechecked'        => 'Odstrániť vybrané položky zo zoznamu sledovaných stránok',
 'watchlistcontains'    => 'Váš zoznam sledovaných stránok obsahuje $1 položiek.',
-'watcheditlist'        => "Tu je abecedný zoznam vašich
-sledovaných stránok. Označte stránky, ktoré chcete odstrániť a kliknite na tlačidlo
-'Odstrániť vybrané položky zo zoznamu sledovaných stránok'
-na spodnej časti obrazovky (odstránenie stránky v hlavnom mennom priestore tiež odstráni príslušnú diskusnú stránku a naopak).",
-'removingchecked'      => 'Odstraňujem požadované položky zo zoznamu sledovaných stránok...',
-'couldntremove'        => "Nebolo možné odstrániť položku '$1'...",
 'iteminvalidname'      => "Problém s položkou '$1', neplatné meno...",
 'wlnote'               => 'Nižšie je posledných $1 zmien v posledných <b>$2</b> hodinách.',
 'wlshowlast'           => 'Zobraz posledných $1 hodín $2 dní $3',
-'wlsaved'              => 'Toto je uložená verzia zoznamu vašich sledovaných stránok.',
 'watchlist-show-bots'  => 'Zobraz úpravy botov',
 'watchlist-hide-bots'  => 'Skry úpravy botov',
 'watchlist-show-own'   => 'Zobraz moje úpravy',
 'watchlist-hide-own'   => 'Skry moje úpravy',
 'watchlist-show-minor' => 'Zobraziť drobné úpravy',
 'watchlist-hide-minor' => 'Skryť drobné úpravy',
-'wldone'               => 'Hotovo.',
 
 # Displayed when you click the "watch" button and it's in the process of watching
 'watching'   => 'Pridávam do zoznamu sledovaných...',
@@ -1370,8 +1410,8 @@ Návrhy a ďalšia pomoc:
 # Delete/protect/revert
 'deletepage'                  => 'Zmazať stránku',
 'confirm'                     => 'Potvrdiť',
-'excontent'                   => "obsah bol: '$1'",
-'excontentauthor'             => "obsah bol: '$1' (a jediný autor bol '[[Special:Contributions/$2]]')",
+'excontent'                   => 'obsah bol: „$1“',
+'excontentauthor'             => 'obsah bol: „$1“ (a jediný autor bol [[Special:Contributions/$2]])',
 'exbeforeblank'               => "obsah pred vyčistením stránky bol: '$1'",
 'exblank'                     => 'stránka bola prázdna',
 'confirmdelete'               => 'Potvrdiť zmazanie',
@@ -1390,10 +1430,7 @@ Všetky zobrazené časy sú časy na serveri (UTC).
 'deletionlog'                 => 'záznam zmazaní',
 'reverted'                    => 'Obnovené na skoršiu verziu',
 'deletecomment'               => 'Dôvod na zmazanie',
-'imagereverted'               => 'Obnovenie skoršej verzie bolo úspešné.',
 'rollback'                    => 'Rollback úprav',
-'rollback_short'              => 'Rollback',
-'rollbacklink'                => 'rollback',
 'rollbackfailed'              => 'Rollback neúspešný',
 'cantrollback'                => 'Nemôžem úpravu vrátiť späť, posledný autor je jediný autor tejto stránky.',
 'alreadyrolled'               => 'Nemôžem vrátiť späť poslednú úpravu [[$1]] od [[User:$2|$2]] ([[User talk:$2|Diskusia]]); niekto iný buď upravoval stránku, alebo už vrátil späť.
@@ -1401,6 +1438,7 @@ Všetky zobrazené časy sú časy na serveri (UTC).
 Autorom poslednej úpravy je [[User:$3|$3]] ([[User talk:$3|Diskusia]]).',
 'editcomment'                 => 'Komentár k úprave bol: "<i>$1</i>".', # only shown if there is an edit comment
 'revertpage'                  => 'Posledné úpravy používateľa [[Special:Contributions/$2|$2]] ([[User_talk:$2|diskusia]]) vrátené; bola obnovená posledná úprava $1',
+'rollback-success'            => 'Úpravy $1 vrátené; obnovená posledná verzia od $2.',
 'sessionfailure'              => 'Zdá sa, že je problém s vašou prihlasovacou reláciou;
 táto akcia bola zrušená ako prevencia proti zneužitiu relácie (session).
 Prosím, stlačte "naspäť", obnovte stránku, z ktorej ste sa sem dostali, a skúste to znova.',
@@ -1408,11 +1446,10 @@ Prosím, stlačte "naspäť", obnovte stránku, z ktorej ste sa sem dostali, a s
 'protectlogtext'              => 'Nižšie je zoznam zamknutí/odomknutí stránok.
 Môžete si pozrieť aj [[Special:Protectedpages|zoznam momentálne platných zamknutí]].',
 'protectedarticle'            => 'zamyká "[[$1]]"',
+'modifiedarticleprotection'   => 'zmenená úroveň ochrany "[[$1]]"',
 'unprotectedarticle'          => 'odomyká "[[$1]]"',
 'protectsub'                  => '(Zamykám "$1")',
-'confirmprotecttext'          => 'Skutočne chcete zamknúť túto stránku?',
 'confirmprotect'              => 'Potvrďte zamknutie',
-'protectmoveonly'             => 'Zamkni iba presuny stránky',
 'protectcomment'              => 'Dôvod zamknutia',
 'protectexpiry'               => 'Zamknuté do',
 'protect_expiry_invalid'      => 'Neplatný čas vypršania.',
@@ -1428,6 +1465,7 @@ Tu sú aktuálne nastavenia stránky <strong>$1</strong>:',
 Tu sú aktuálne nastavenia stránky <strong>$1</strong>:',
 'protect-cascadeon'           => 'Táto stránka je momentálne zamknutá, lebo je použitá na {{PLURAL:$1|nasledovnej stránke, ktorá má|nasledovných stránkach, ktoré majú}} zapnutú kaskádovú ochranu. Môžete zmeniť úroveň ochrany tejto stránky, ale neovplyvní to kaskádovú ochranu.',
 'protect-default'             => '(predvolené)',
+'protect-fallback'            => 'Vyžadovať povolenie „$1“',
 'protect-level-autoconfirmed' => 'Zablokovať neregistrovaných používateľov',
 'protect-level-sysop'         => 'Len pre správcov',
 'protect-summary-cascade'     => 'kaskáda',
@@ -1449,45 +1487,53 @@ Tu sú aktuálne nastavenia stránky <strong>$1</strong>:',
 'restriction-level-all'           => 'akákoľvek úroveň',
 
 # Undelete
-'undelete'                 => 'Obnoviť zmazanú stránku',
-'undeletepage'             => 'Zobraziť a obnoviť vymazané stránky',
-'viewdeletedpage'          => 'Zobraz zmazané stránky',
-'undeletepagetext'         => 'Tieto stránky boli zmazané, ale sú stále v archíve a
+'undelete'                     => 'Obnoviť zmazanú stránku',
+'undeletepage'                 => 'Zobraziť a obnoviť vymazané stránky',
+'viewdeletedpage'              => 'Zobraz zmazané stránky',
+'undeletepagetext'             => 'Tieto stránky boli zmazané, ale sú stále v archíve a
 môžu byť obnovené. Archív môže byť pravidelne vyprázdnený.',
-'undeleteextrahelp'        => "Ak chcete obnoviť celú stránku, nechajte všetky zaškrtávacie polia nezaškrtnuté a kliknite na '''''Obnov!'''''.
+'undeleteextrahelp'            => "Ak chcete obnoviť celú stránku, nechajte všetky zaškrtávacie polia nezaškrtnuté a kliknite na '''''Obnov!'''''.
 Ak chcete vykonať selektívnu obnovu, zašktrnite polia zodpovedajúce revíziám, ktoré sa majú obnoviť a kliknite na '''''Obnov'''''.
 Kliknutie na '''''Reset''''' vyčistí pole s komentárom a všetky zaškrtávacie polia.",
-'undeleterevisions'        => '$1 {{PLURAL:verzia je archivovaná|verzie sú archivované|verzií je archivovaných}}',
-'undeletehistory'          => 'Ak obnovíte túto stránku, obnovia sa aj všetky predchádzajúce verzie do zoznamu predchádzajúcich verzií.
+'undeleterevisions'            => '$1 {{PLURAL:verzia je archivovaná|verzie sú archivované|verzií je archivovaných}}',
+'undeletehistory'              => 'Ak obnovíte túto stránku, obnovia sa aj všetky predchádzajúce verzie do zoznamu predchádzajúcich verzií.
 Ak bola od zmazania vytvorená nová stránka s rovnakým názvom, zobrazia sa
 obnovené verzie ako posledné úpravy novej stránky a aktuálna verzia novej stránky
 nebude automaticky nahradená.',
-'undeleterevdel'           => 'Obnovenie sa nevykoná, ak by malo mať za dôsledok čiastočné zmazanie poslednej revízie. V takých prípadoch musíte odznačiť alebo odkryť najnovšie zmazané revízie.
+'undeleterevdel'               => 'Obnovenie sa nevykoná, ak by malo mať za dôsledok čiastočné zmazanie poslednej revízie. V takých prípadoch musíte odznačiť alebo odkryť najnovšie zmazané revízie.
 Revízie súborov
 ktoré nemáte povolenie prehliadať sa neobnovia.',
-'undeletehistorynoadmin'   => 'Táto stránka bola zmazaná. Dôvod zmazania je zobrazený dolu v zhrnutí spolu s podrobnosťami o používateľoch, ktorí túto stránku upravovali pred zmazaním. Samotný text týchto zmazaných revízií je prístupný iba správcom.',
-'undelete-revision'        => 'Zmazaná revízia $1 od $2:',
-'undeleterevision-missing' => 'Neplatná alebo chýbajúca revízia. Zrejme ste použili zlý odkaz alebo revízia bola obnovená alebo odstránená z histórie.',
-'undeletebtn'              => 'Obnoviť!',
-'undeletereset'            => 'Reset',
-'undeletecomment'          => 'Komentár:',
-'undeletedarticle'         => 'obnovený „[[$1]]“',
-'undeletedrevisions'       => '$1 verzií obnovených',
-'undeletedrevisions-files' => '$1 revízií a $2 súbor(ov) obnovených',
-'undeletedfiles'           => '$1 súbor(ov) obnovený(ch)',
-'cannotundelete'           => 'Obnovenie sa nepodarilo; pravdepodobne niekto iný obnovil stránku skôr ako Vy.',
-'undeletedpage'            => "<big>'''$1 bol obnovený'''</big>
+'undeletehistorynoadmin'       => 'Táto stránka bola zmazaná. Dôvod zmazania je zobrazený dolu v zhrnutí spolu s podrobnosťami o používateľoch, ktorí túto stránku upravovali pred zmazaním. Samotný text týchto zmazaných revízií je prístupný iba správcom.',
+'undelete-revision'            => '$3 zmazal revíziu $1 (z $2):',
+'undeleterevision-missing'     => 'Neplatná alebo chýbajúca revízia. Zrejme ste použili zlý odkaz alebo revízia bola obnovená alebo odstránená z histórie.',
+'undeletebtn'                  => 'Obnoviť!',
+'undeletecomment'              => 'Komentár:',
+'undeletedarticle'             => 'obnovený „[[$1]]“',
+'undeletedrevisions'           => '$1 verzií obnovených',
+'undeletedrevisions-files'     => '$1 revízií a $2 súbor(ov) obnovených',
+'undeletedfiles'               => '$1 súbor(ov) obnovený(ch)',
+'cannotundelete'               => 'Obnovenie sa nepodarilo; pravdepodobne niekto iný obnovil stránku skôr ako vy.',
+'undeletedpage'                => "<big>'''$1 bol obnovený'''</big>
 
 Zoznam posledných mazaní a obnovení nájdete v [[Special:Log/delete|Zázname mazaní]].",
-'undelete-header'          => 'Pozri nedávno zmazané stránky v [[Special:Log/delete|zázname mazaní]].',
-'undelete-search-box'      => 'Hľadať zmazané stránky',
-'undelete-search-prefix'   => 'Zobraziť stránky od:',
-'undelete-search-submit'   => 'Hľadať',
-'undelete-no-results'      => 'V archíve mazaní neboli nájdené zodpovedajúce stránky.',
+'undelete-header'              => 'Pozri nedávno zmazané stránky v [[Special:Log/delete|zázname mazaní]].',
+'undelete-search-box'          => 'Hľadať zmazané stránky',
+'undelete-search-prefix'       => 'Zobraziť stránky od:',
+'undelete-search-submit'       => 'Hľadať',
+'undelete-no-results'          => 'V archíve mazaní neboli nájdené zodpovedajúce stránky.',
+'undelete-filename-mismatch'   => 'Nebolo možné obnoviť revíziu súboru s časovou známkou $1: rozdiel v názvoch súborov',
+'undelete-bad-store-key'       => 'Nebolo možné obnoviť revíziu súboru s časovou známkou $1: súbor chýbal predtým, než bol zmazaný',
+'undelete-cleanup-error'       => 'Chyba pri mazaní nepoužítého archívneho súboru "$1".',
+'undelete-missing-filearchive' => 'Nebolo možné obnoviť archív s ID $1, pretože sa nenachádza v databáze. Je možné, že už bol obnovený.',
+'undelete-error-short'         => 'Chyba pri obnovovaní súboru: $1',
+'undelete-error-long'          => 'Vyskytli sa chyby pri obnovovaní súboru:
+
+$1',
 
 # Namespace form on various pages
-'namespace' => 'Menný priestor:',
-'invert'    => 'Invertovať výber',
+'namespace'      => 'Menný priestor:',
+'invert'         => 'Invertovať výber',
+'blanknamespace' => '(Hlavný)',
 
 # Contributions
 'contributions' => 'Príspevky používateľa',
@@ -1497,6 +1543,8 @@ Zoznam posledných mazaní a obnovení nájdete v [[Special:Log/delete|Zázname 
 'ucnote'        => 'Nižšie je posledných <b>$1</b> úprav od tohto používateľa uskutočnených počas posledných <b>$2</b> dní.',
 'uclinks'       => 'Zobraz posledných $1 úprav; zobraz posledných $2 dní.',
 'uctop'         => '(posledná úprava)',
+'month'         => 'Mesiac:',
+'year'          => 'Rok:',
 
 'sp-contributions-newest'      => 'Najnovšie',
 'sp-contributions-oldest'      => 'Najstaršie',
@@ -1513,6 +1561,7 @@ Zoznam posledných mazaní a obnovení nájdete v [[Special:Log/delete|Zázname 
 
 # What links here
 'whatlinkshere'       => 'Odkazy na túto stránku',
+'whatlinkshere-title' => 'Stránky odkazujúce na $1',
 'notargettitle'       => 'Nebol zadaný cieľ',
 'notargettext'        => 'Nezadali ste cieľovú stránku alebo používateľa,
 na ktorý/-ého chcete aplikovať túto funkciu.',
@@ -1536,7 +1585,7 @@ Nižšie uveďte konkrétny dôvod (napríklad uveďte konkrétne stránky, ktor
 'ipbexpiry'                   => 'Ukončenie',
 'ipbreason'                   => 'Dôvod',
 'ipbreasonotherlist'          => 'Iný dôvod',
-'ipbreason-dropdown'          => '*Bežné dôvody blokovania
+'ipbreason-dropdown'          => '* Bežné dôvody blokovania
 ** Zámerné vkladanie chybných informácií
 ** Mazanie obsahu stránok
 ** Spam odkazy na externé stránky
@@ -1546,6 +1595,7 @@ Nižšie uveďte konkrétny dôvod (napríklad uveďte konkrétne stránky, ktor
 ** Neprípustné používateľské meno',
 'ipbanononly'                 => 'Blokovať iba anonymných používateľov.',
 'ipbcreateaccount'            => 'Zabráň vytváraniu účtov',
+'ipbemailban'                 => 'Zabrániť používateľovi posielať emaily',
 'ipbenableautoblock'          => 'Automaticky blokovať poslednú IP adresu, ktorú tento používateľ použil, a všetky ďalšie adresy, z ktorých sa pokúsi upravovať.',
 'ipbsubmit'                   => 'Zablokovať tohto používateľa',
 'ipbother'                    => 'Iný čas',
@@ -1569,6 +1619,8 @@ z/od momentálne zablokovanej IP adresy/používateľa.',
 'unblocked'                   => '[[User:$1|$1]] bol odblokovaný',
 'unblocked-id'                => 'Blokovanie $1 bolo odstránené',
 'ipblocklist'                 => 'Zoznam zablokovaných používateľov/IP adries',
+'ipblocklist-legend'          => 'Nájsť zablokovaného používateľa',
+'ipblocklist-username'        => 'Používateľské meno alebo IP adresa:',
 'ipblocklist-submit'          => 'Hľadať',
 'blocklistline'               => '$1, $2 zablokoval $3 (ukončenie $4)',
 'infiniteblock'               => 'na neurčito',
@@ -1576,6 +1628,7 @@ z/od momentálne zablokovanej IP adresy/používateľa.',
 'anononlyblock'               => 'iba anon.',
 'noautoblockblock'            => 'automatické blokovanie vypnuté',
 'createaccountblock'          => 'tvorba účtov bola zablokovaná',
+'emailblock'                  => 'email blokovaný',
 'ipblocklist-empty'           => 'Zoznam blokovaní je prázdny.',
 'ipblocklist-no-results'      => 'Požadovaná IP adresa alebo používateľské meno nie je blokovaná.',
 'blocklink'                   => 'zablokovať',
@@ -1585,12 +1638,13 @@ z/od momentálne zablokovanej IP adresy/používateľa.',
 'blocklogpage'                => 'Záznam_blokovaní',
 'blocklogentry'               => 'zablokoval/a "[[$1]]" s časom ukončenia $2 $3',
 'blocklogtext'                => 'Toto je zoznam blokovaní a odblokovaní používateľov. Automaticky
-blokované IP adresy nie sú zahrnuté. Viď zoznam
+blokované IP adresy nie sú zahrnuté. Pozri zoznam
 [[Special:Ipblocklist|aktuálnych blokovaní]].',
 'unblocklogentry'             => 'odblokoval/a "$1"',
 'block-log-flags-anononly'    => 'iba anonymní používatelia',
 'block-log-flags-nocreate'    => 'možnosť vytvoriť si účet bola vypnutá',
 'block-log-flags-noautoblock' => 'autoblokovanie vypnuté',
+'block-log-flags-noemail'     => 'email blokovaný',
 'range_block_disabled'        => 'Možnosť správcov vytvárať rozsah zablokovaní je vypnutá.',
 'ipb_expiry_invalid'          => 'Neplatný čas ukončenia.',
 'ipb_already_blocked'         => '"$1" je už zablokovaný',
@@ -1599,9 +1653,8 @@ blokované IP adresy nie sú zahrnuté. Viď zoznam
 'ipb_cant_unblock'            => 'Chyba: ID bloku $1 nenájdený. Možno už bol odblokovaný.',
 'proxyblockreason'            => 'Vaša IP adresa bola zablokovaná, pretože je otvorená proxy. Prosím kontaktujte vášho internetového poskytovateľa alebo technickú podporu a informujte ich o tomto vážnom bezpečnostnom probléme.',
 'proxyblocksuccess'           => 'Hotovo.',
-'sorbs'                       => 'SORBS DNSBL',
-'sorbsreason'                 => 'Vaša IP adresa je vedená ako nezabezpečený proxy server v [http://www.sorbs.net SORBS] DNSBL.',
-'sorbs_create_account_reason' => 'Vaša IP adresa je vedená ako nezabezpečený proxy server v [http://www.sorbs.net SORBS] DNSBL. Nemôžete si vytvoriť účet.',
+'sorbsreason'                 => 'Vaša IP adresa je vedená ako nezabezpečený proxy server v DNSBL.',
+'sorbs_create_account_reason' => 'Vaša IP adresa je vedená ako nezabezpečený proxy server v DNSBL. Nemôžete si vytvoriť účet.',
 
 # Developer tools
 'lockdb'              => 'Zamknúť databázu',
@@ -1654,11 +1707,12 @@ V takých prípadoch budete musieť, ak si to želáte, premiestniť alebo zlú�
 'movearticle'             => 'Presunúť stránku',
 'movenologin'             => 'Nie ste prihlásený',
 'movenologintext'         => 'Musíte byť registrovaný používateľ a [[Special:Userlogin|prihlásený]], aby ste mohli presunúť stránku.',
+'movenotallowed'          => 'Na tejto wiki nemáte povolenie presúvať stránky.',
 'newtitle'                => 'Na nový názov',
 'move-watch'              => 'Sledovať túto stránku',
 'movepagebtn'             => 'Presunúť stránku',
 'pagemovedsub'            => 'Presun bol úspešný',
-'pagemovedtext'           => 'Stránka "[[$1]]" bola presunutá na "[[$2]]".',
+'movepage-moved'          => '<big>\'\'\'"$1" bolo presunuté na "$2"\'\'\'</big>', # The two titles are passed in plain text as $3 and $4 to allow additional goodies in the message.
 'articleexists'           => 'Stránka s týmto názvom už existuje alebo
 vami zadaný názov je neplatný.
 Prosím vyberte si iný názov.',
@@ -1696,9 +1750,9 @@ Pre export stránok zadajte názvy do tohto poľa, jeden názov na riadok, a zvo
 V druhom prípade môžete tiež použiť odkaz, napr. [[Special:Export/{{Mediawiki:Mainpage}}]] pre stránku {{Mediawiki:Mainpage}}.',
 'exportcuronly'     => 'Zahrň iba aktuálnu verziu, nie kompletnú históriu',
 'exportnohistory'   => '----',
-'export-submit'     => 'Export',
 'export-addcattext' => 'Pridať stránky z kategórie:',
 'export-addcat'     => 'Pridať',
+'export-download'   => 'Ponúknuť uloženie ako súbor',
 
 # Namespace 8 related
 'allmessages'               => 'Všetky systémové správy',
@@ -1706,7 +1760,6 @@ V druhom prípade môžete tiež použiť odkaz, napr. [[Special:Export/{{Mediaw
 'allmessagesdefault'        => 'štandardný text',
 'allmessagescurrent'        => 'aktuálny text',
 'allmessagestext'           => 'Toto je zoznam všetkých správ dostupných v mennom priestore MediaWiki.',
-'allmessagesnotsupportedUI' => "Special:AllMessages na tejto lokalite (site) nepodporuje jazyk pre vaše rozhranie ('''$1''').",
 'allmessagesnotsupportedDB' => 'Special:AllMessages nie je podporované, pretože je vypnuté wgUseDatabaseMessages.',
 'allmessagesfilter'         => 'Filter názvov správ:',
 'allmessagesmodified'       => 'Zobraz iba zmenené',
@@ -1723,7 +1776,6 @@ V druhom prípade môžete tiež použiť odkaz, napr. [[Special:Export/{{Mediaw
 
 # Special:Import
 'import'                     => 'Import stránok',
-'importinterwiki'            => 'Transwiki import',
 'import-interwiki-text'      => 'Zvoľte wiki a názov stránky, ktorá sa má importovať.
 Dátumy revízií a mená používateľov budú zachované.
 Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname importov]].',
@@ -1769,13 +1821,15 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 'tooltip-ca-addsection'           => 'Pridať komentár k tejto diskusii.',
 'tooltip-ca-viewsource'           => 'Táto stránka je zamknutá. Môžete však vidieť jej zdrojový text.',
 'tooltip-ca-history'              => 'Minulé verzie tejto stránky.',
-'tooltip-ca-protect'              => 'Zamkni túto stránku',
+'tooltip-ca-protect'              => 'Zamknúť túto stránku',
 'tooltip-ca-delete'               => 'Vymazať túto stránku',
-'tooltip-ca-undelete'             => 'Obnov úpravy tejtoto stránky až po dobu jeho vymazania',
+'tooltip-ca-undelete'             => 'Obnoviť úpravy tejto stránky až po dobu, kedy bola vymazaná',
 'tooltip-ca-move'                 => 'Presunúť túto stránku',
 'tooltip-ca-watch'                => 'Pridať túto stránku do zoznamu sledovaných stránok',
 'tooltip-ca-unwatch'              => 'Odstrániť túto stránku zo sledovaných stránok',
 'tooltip-search'                  => 'Vyhľadávanie na {{GRAMMAR:datív|{{SITENAME}}}}',
+'tooltip-search-go'               => 'Prejsť na stránku s presne takýmto názvom, ak existuje',
+'tooltip-search-fulltext'         => 'Hľadať tento text na stránkach',
 'tooltip-p-logo'                  => 'Hlavná stránka',
 'tooltip-n-mainpage'              => 'Navštíviť Hlavnú stránku',
 'tooltip-n-portal'                => 'O projekte, ako môžete prispieť, kde čo nájsť',
@@ -1807,10 +1861,11 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 'tooltip-minoredit'               => 'Označiť túto úpravu ako drobnú',
 'tooltip-save'                    => 'Uložiť vaše úpravy',
 'tooltip-preview'                 => 'Náhľad úprav, prosím použite pred uložením!',
-'tooltip-diff'                    => 'Ukáž, aké zmeny ste urobili v texte.',
+'tooltip-diff'                    => 'Zobraziť, aké zmeny ste urobili v texte.',
 'tooltip-compareselectedversions' => 'Zobraziť rozdiely medzi dvomi zvolenými verziami tejto stránky.',
 'tooltip-watch'                   => 'Pridaj túto stránku k sledovaným.',
 'tooltip-recreate'                => 'Znovu vytvoriť stránku napriek tomu, že bola zmazaná',
+'tooltip-upload'                  => 'Začať nahrávanie',
 
 # Stylesheets
 'common.css'   => '/** Tu sa nachádzajúce CSS sa použije pri všetkých skinoch */',
@@ -1821,14 +1876,14 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 'monobook.js' => '/* Zastaralé; použite [[MediaWiki:common.js]] */',
 
 # Metadata
-'nodublincore'      => 'Dublin Core RDF metadata sú pre tento server vypnuté.',
+'nodublincore'      => 'Dublin Core RDF metadáta sú pre tento server vypnuté.',
 'nocreativecommons' => 'Creative Commons RDF metadata sú pre tento server vypnuté.',
 'notacceptable'     => 'Wiki server nedokáže poskytovať dáta vo formáte, v akom ich váš klient vie čítať.',
 
 # Attribution
 'anonymous'        => 'anonymných používateľov {{GRAMMAR:genitív|{{SITENAME}}}}',
 'siteuser'         => 'používateľa {{GRAMMAR:genitív|{{SITENAME}}}} $1',
-'lastmodifiedatby' => 'Táto stránka bola naposledy upravovaná $2, $1 používateľom $3.', # $1 date, $2 time, $3 user
+'lastmodifiedatby' => 'Túto stránku naposledy upravoval používateľ $3 $2, $1.', # $1 date, $2 time, $3 user
 'and'              => 'a',
 'othercontribs'    => 'Založené na práci $1.',
 'others'           => 'iné',
@@ -1843,7 +1898,7 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 'subcategorycount'       => 'V tejto kategórii {{PLURAL:$1|je jedna podkategória|sú $1 podkategórie|je $1 podkategórií}}.',
 'categoryarticlecount'   => 'V tejto kategórii {{PLURAL:$1|je jedna stránka|sú $1 stránky|je $1 stránok}}.',
 'category-media-count'   => 'V tejto kategórii {{PLURAL:$1|je jeden súbor|sú $1 súbory|je $1 súborov}}.',
-'listingcontinuesabbrev' => ' pokrač.',
+'listingcontinuesabbrev' => 'pokrač.',
 'spambot_username'       => 'MediaWiki čistenie spamu',
 'spam_reverting'         => 'Revertujem na poslednú verziu, ktorá neobsahuje odkazy na $1',
 'spam_blanking'          => 'Všetky revízie obsahovali odkaz na $1, odstraňujem obsah',
@@ -1879,10 +1934,17 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 'patrol-log-page' => 'Záznam strážení',
 'patrol-log-line' => '$1 z $2 označených ako sledované $3',
 'patrol-log-auto' => '(automaticky)',
-'patrol-log-diff' => 'r$1',
 
 # Image deletion
-'deletedrevision' => 'Zmazať staré verzie $1.',
+'deletedrevision'                 => 'Zmazať staré verzie $1',
+'filedeleteerror-short'           => 'Chyba pri mazaní súboru: $1',
+'filedeleteerror-long'            => 'Vyskytli sa chyby pri mazaní súboru:
+
+$1',
+'filedelete-missing'              => 'Súbor "$1" nebolo možné zmazať, pretože neexistuje.',
+'filedelete-old-unregistered'     => 'Požadovaná revízia súboru "$1" sa nenachádza v databáze.',
+'filedelete-current-unregistered' => 'Požadovaný súbor "$1" sa nenachádza v databáze.',
+'filedelete-archive-read-only'    => 'Webserver nemôže zapisovať do archívneho adresára "$1".',
 
 # Browsing diffs
 'previousdiff' => '← Predchádzajúci rozdiel',
@@ -1893,24 +1955,30 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 <hr />",
 'imagemaxsize'         => 'Obmedz obrázky na popisnej stránke obrázka na:',
 'thumbsize'            => 'Veľkosť náhľadu:',
+'widthheightpage'      => '$1×$2, $3 stránky',
 'file-info'            => '(veľkosť súboru: $1, MIME typ: $2)',
 'file-info-size'       => '($1 × $2 pixel, veľkosť súboru: $3, MIME typ: $4)',
 'file-nohires'         => '<small>Nie je dostupné vyššie rozlíšenie.</small>',
-'file-svg'             => '<small>Toto je bezstratový šakálovateľný vektorový obrázok. Základná veľkosť: $1 × $2 pixelov.</small>',
+'svg-long-desc'        => '(SVG súbor, $1 × $2 pixelov, veľkosť súboru: $3)',
 'show-big-image'       => 'Obrázok vo vyššom rozlíšení',
 'show-big-image-thumb' => '<small>Veľkosť tohto náhľadu: $1 × $2 pixelov</small>',
 
+# Special:Newimages
 'newimages'    => 'Galéria nových obrázkov',
 'showhidebots' => '($1 botov)',
 'noimages'     => 'Nič na zobrazenie.',
 
-'passwordtooshort' => 'Vaše heslo je príliš krátke. Musí mať dĺžku aspoň $1 znakov.',
+# Bad image list
+'bad_image_list' => 'Formát je nasledovný:
+
+Berú sa do úvahy iba položky zoznamu (riadky začínajúce *). Prvý odkaz na riadku musí byť odkaz na zlý obrázok.
+Každý ďalší odkaz na rovnakom riadku sa považuje za výnimku, t.j. články, v ktorých sa obrázok môže vyskytnúť.',
 
 # Metadata
 'metadata'          => 'Metadáta',
-'metadata-help'     => 'Tento súbor obsahuje ďalšie informácie, pravdepodobne pochádzajúce z digitálneho fotoaparátu či scannera ktorý ho vytvoril alebo digitalizoval. Ak bol súbor zmenený, niektoré podrobnosti sa nemusia plne zhodovať so zmeneným obrázkom.',
-'metadata-expand'   => 'Zobraz detaily EXIF',
-'metadata-collapse' => 'Skry detaily EXIF',
+'metadata-help'     => 'Tento súbor obsahuje ďalšie informácie, pravdepodobne pochádzajúce z digitálneho fotoaparátu či skenera ktorý ho vytvoril alebo digitalizoval. Ak bol súbor zmenený, niektoré podrobnosti sa nemusia plne zhodovať so zmeneným obrázkom.',
+'metadata-expand'   => 'Zobraziť detaily EXIF',
+'metadata-collapse' => 'Skryť detaily EXIF',
 'metadata-fields'   => 'Polia EXIF metadát uvedených v tejto správe sa zobrazia na stránke obrázka vtedy, keď je tabuľka metadát zbalená. Ostatné sa štandardne nezobrazia.
 * make
 * model
@@ -1950,15 +2018,15 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 'exif-software'                    => 'Použitý softvér',
 'exif-artist'                      => 'Autor',
 'exif-copyright'                   => 'Držiteľ autorských práv',
-'exif-exifversion'                 => 'Verzia exif tagu',
+'exif-exifversion'                 => 'Verzia exif štítka',
 'exif-flashpixversion'             => 'Podporovaná verzia Flashpix',
 'exif-colorspace'                  => 'Farebný priestor',
 'exif-componentsconfiguration'     => 'Význam jednotlivých zložiek',
-'exif-compressedbitsperpixel'      => 'Kompresný režim obrázka',
-'exif-pixelydimension'             => 'platná šírka obrázka',
+'exif-compressedbitsperpixel'      => 'Komprimované bity na pixel',
+'exif-pixelydimension'             => 'Platná šírka obrázka',
 'exif-pixelxdimension'             => 'Platná vyška obrázka',
-'exif-makernote'                   => 'Poznámky výrobcu',
-'exif-usercomment'                 => 'Komentáre používateľa',
+'exif-makernote'                   => 'Poznámka výrobcu',
+'exif-usercomment'                 => 'Komentár používateľa',
 'exif-relatedsoundfile'            => 'Súvisiaci zvukový súbor',
 'exif-datetimeoriginal'            => 'Dátum a čas vytvorenia dát',
 'exif-datetimedigitized'           => 'Dátum a čas digitalizácie',
@@ -1997,23 +2065,23 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 'exif-customrendered'              => 'Ručné spracovanie obrazu',
 'exif-exposuremode'                => 'Expozičný režim',
 'exif-whitebalance'                => 'Vyváženie bielej',
-'exif-digitalzoomratio'            => 'Rozsah digitálneho zoomu',
+'exif-digitalzoomratio'            => 'Pomer digitálneho priblíženia',
 'exif-focallengthin35mmfilm'       => 'Ohnisková vzdialenosť 35 mm filmu',
 'exif-scenecapturetype'            => 'Typ zachytenia scény',
-'exif-gaincontrol'                 => 'Riadenie scény',
+'exif-gaincontrol'                 => 'Riadenie zosilnenia',
 'exif-contrast'                    => 'Kontrast',
 'exif-saturation'                  => 'Sýtosť',
 'exif-sharpness'                   => 'Ostrosť',
 'exif-devicesettingdescription'    => 'Opis nastavení zariadenia',
 'exif-subjectdistancerange'        => 'Rozsah vzdialenosti subjektu',
 'exif-imageuniqueid'               => 'Jedinečný ID obrázka',
-'exif-gpsversionid'                => 'Verzia GPS tagu',
+'exif-gpsversionid'                => 'Verzia GPS štítka',
 'exif-gpslatituderef'              => 'Severná alebo južná šírka',
 'exif-gpslatitude'                 => 'Zemepisná šírka',
-'exif-gpslongituderef'             => 'Západná alebo východná dĺžka',
+'exif-gpslongituderef'             => 'Východná alebo západná dĺžka',
 'exif-gpslongitude'                => 'Zemepisná dĺžka',
-'exif-gpsaltituderef'              => 'Referencia výšky',
-'exif-gpsaltitude'                 => 'Výška',
+'exif-gpsaltituderef'              => 'Referencia nadmorskej výšky',
+'exif-gpsaltitude'                 => 'Nadmorská výška',
 'exif-gpstimestamp'                => 'Čas GPS (atómové hodiny)',
 'exif-gpssatellites'               => 'Satelity použité pri meraní',
 'exif-gpsstatus'                   => 'Stav prijímača',
@@ -2177,9 +2245,9 @@ Všetky transwiki importy sa zaznamenávajú v [[Special:Log/import|Zázname imp
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'všetky',
 'imagelistall'     => 'všetky',
-'watchlistall1'    => 'všetky',
 'watchlistall2'    => 'všetky',
 'namespacesall'    => 'všetky',
+'monthsall'        => 'všetky',
 
 # E-mail address confirmation
 'confirmemail'            => 'Potvrdiť e-mailovú adresu',
@@ -2210,18 +2278,13 @@ Program, ktorý odosielal poštu vrátil: $1',
 'confirmemail_body'       => 'Niekto, pravdepodobne vy z IP adresy $1, zaregistroval účet
 "$2" s touto e-mailovou adresou na {{GRAMMAR:lokál|{{SITENAME}}}}.
 
-Pre potvrdenie, že tento účet skutočne patrí Vám a pre aktivovanie
+Pre potvrdenie, že tento účet skutočne patrí vám a pre aktivovanie
 e-mailových funkcií na {{GRAMMAR:lokál|{{SITENAME}}}}, otvorte tento odkaz vo vašom prehliadači:
 
 $3
 
-Ak ste to *neboli* Vy, neotvárajte odkaz. Tento potvrdzovací kód
+Ak ste to *neboli* vy, neotvárajte odkaz. Tento potvrdzovací kód
 vyprší o $4.',
-
-# Inputbox extension, may be useful in other contexts as well
-'tryexact'       => 'Skúste presné vyhľadávanie',
-'searchfulltext' => 'Fulltextové vyhľadávanie',
-'createarticle'  => 'Vytvoriť stránku',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Transklúzia interwiki je vypnutá]',
@@ -2234,12 +2297,11 @@ Trackback pre túto stránku:<br />
 $1
 </div>',
 'trackbackremove'   => ' ([$1 Zmazať])',
-'trackbacklink'     => 'Trackback',
 'trackbackdeleteok' => 'Trackback úspešne zmazaný.',
 
 # Delete conflict
 'deletedwhileediting' => 'Varovanie: Táto stránka bola zmazaná potom, ako ste začali s úpravami!',
-'confirmrecreate'     => "Používateľ [[User:$1|$1]] ([[User talk:$1|diskusia]]) zmazal túto stránku potom, ako ste ho začal upravovať s odôvodnením:
+'confirmrecreate'     => "Používateľ [[User:$1|$1]] ([[User talk:$1|diskusia]]) zmazal túto stránku potom, ako ste ju začali upravovať, s odôvodnením:
 : ''$2''
 Prosím, potvrďte, že túto stránku chcete skutočne znovu vytvoriť.",
 'recreate'            => 'Znova vytvoriť',
@@ -2248,22 +2310,15 @@ Prosím, potvrďte, že túto stránku chcete skutočne znovu vytvoriť.",
 'redirectingto' => 'Presmerovanie na [[$1]]...',
 
 # action=purge
-'confirm_purge'        => 'Vyčistiť cache pamäť tejto stránky?
+'confirm_purge' => 'Vyčistiť cache pamäť tejto stránky?
 
 $1',
-'confirm_purge_button' => 'OK',
 
-'youhavenewmessagesmulti' => 'Máte nové správy na $1',
-
-'searchcontaining' => "Hľadaj stránky obsahujúce ''$1''.",
-'searchnamed'      => "Hľadaj stránky s názvom ''$1''.",
+# AJAX search
+'searchcontaining' => "Hľadať stránky obsahujúce ''$1''.",
+'searchnamed'      => "Hľadať stránky s názvom ''$1''.",
 'articletitles'    => "Stránky začínajúce na ''$1''",
 'hideresults'      => 'Skryť výsledky',
-
-# DISPLAYTITLE
-'displaytitle' => '(Odkazujte na túto stránku ako [[$1]])',
-
-'loginlanguagelabel' => 'Jazyk: $1',
 
 # Multipage image navigation
 'imgmultipageprev'   => '&larr; predošlá stránka',
@@ -2279,34 +2334,61 @@ $1',
 'table_pager_prev'         => 'Predošlá stránka',
 'table_pager_first'        => 'Prvá stránka',
 'table_pager_last'         => 'Posledná stránka',
-'table_pager_limit'        => 'Zobraz $1 položiek na stránku',
-'table_pager_limit_submit' => 'Spusti',
+'table_pager_limit'        => 'Zobraziť $1 položiek na stránku',
+'table_pager_limit_submit' => 'Spustiť',
 'table_pager_empty'        => 'Bez výsledkov',
 
 # Auto-summaries
 'autosumm-blank'   => 'Odstraňujem obsah stránky',
 'autosumm-replace' => "Nahrádzam stránku textom '$1'",
-'autoredircomment' => 'Presmerovanie na [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => 'Presmerovanie na [[$1]]',
 'autosumm-new'     => 'Nová stránka: $1',
 
-# Size units
-'size-bytes'     => '$1 B',
-'size-kilobytes' => '$1 KB',
-'size-megabytes' => '$1 MB',
-'size-gigabytes' => '$1 GB',
-
 # Live preview
-'livepreview-loading' => 'Načítanie…',
-'livepreview-ready'   => 'Načítanie… Hotovo!',
+'livepreview-loading' => 'Načítava sa…',
+'livepreview-ready'   => 'Načítavanie dokončené!',
 'livepreview-failed'  => 'Živý náhľad sa nepodarilo zrealizovať!
 Skúste obyčajný náhľad.',
-'livepreview-error'   => 'Nepodarilo sa pripojiť: $1 "$2"
+'livepreview-error'   => 'Nepodarilo sa pripojiť: $1 „$2“
 Skúste obyčajný náhľad.',
 
 # Friendlier slave lag warnings
 'lag-warn-normal' => 'Zmeny novšie ako $1 sekúnd sa nemôžu v tomto zozname zobraziť.',
 'lag-warn-high'   => 'Z dôvodu dlhej odozvy databázového servera sa zmeny novšie ako $1 sekúnd nemôžu v tomto zozname zobraziť.',
 
-);
+# Watchlist editor
+'watchlistedit-numitems'       => 'Váš zoznam sledovaných stránok obsahuje {{PLURAL:$1|jednu stránku|$1 stránky|$1 stránok}} nepočítajúc diskusné stránky.',
+'watchlistedit-noitems'        => 'Váš zoznam sledovaných stránok obsahuje žiadne stránky.',
+'watchlistedit-clear-title'    => 'Vyčistiť zoznam sledovaných stránok',
+'watchlistedit-clear-legend'   => 'Vyčistiť zoznam sledovaných stránok',
+'watchlistedit-clear-confirm'  => 'Toto odstráni všetky stránky z vášho zoznamu sledovaných stránok.
+	Ste si istý, že to chcete? Tiež môžete [[Special:Watchlist/edit|odstrániť jednotlivé články]].',
+'watchlistedit-clear-submit'   => 'Vyčistiť',
+'watchlistedit-clear-done'     => 'Váš zoznam sledovaných stránok bol vyčistený. Všetky položky boli odstránené zo zoznamu.',
+'watchlistedit-normal-title'   => 'Upraviť zoznam sledovaných stránok',
+'watchlistedit-normal-legend'  => 'Odstrániť všetky stránky zo zoznamu sledovaných stránok',
+'watchlistedit-normal-explain' => 'Nižšie sú zobrazené stránky z vášho zoznamu sledovaných stránok.
+	Ak chcete odstrániť položku, začiarknite políčko vedľa nej a kliknite na Odstrániť položky.
+	Tiež môžete [[Special:Watchlist/raw|upravovať nespracovaný zoznam]],
+	alebo [[Special:Watchlist/clear|odstrániť všetky položky]].',
+'watchlistedit-normal-submit'  => 'Odstrániť položky',
+'watchlistedit-normal-done'    => '{{PLURAL:$1|jedna položka bola odstránená|$1 položky boli odstránené|$1 položiek bolo odstránených}} z vášho zoznamu sledovaných stránok:',
+'watchlistedit-raw-title'      => 'Upravovať nespracovaný zoznam sledovaných stránok',
+'watchlistedit-raw-legend'     => 'Upravovať nespracovaný zoznam sledovaných stránok',
+'watchlistedit-raw-explain'    => 'Nižšie sú zobrazené stránky z vášho zoznamu sledovaných stránok.
+	Ak chcete upravovať položky, pridajte alebo odstráňte ich zo zoznamu;
+	jednu stránku na riadok. Po skončení kliknite na Aktualizovať zoznam sledovaných stránok.
+	Tiež môžete [[Special:Watchlist/edit|použiť štandardný editor]].',
+'watchlistedit-raw-titles'     => 'Stránky:',
+'watchlistedit-raw-submit'     => 'Aktualizovať zoznam sledovaných stránok',
+'watchlistedit-raw-done'       => 'Váš zoznam sledovaných stránok bol aktualizovaný.',
+'watchlistedit-raw-added'      => '{{PLURAL:$1|Jedna položka bola pridaná|$1 položky boli pridané|$1 položiek bolo pridaných}}:',
+'watchlistedit-raw-removed'    => '{{PLURAL:$1|Jedna položka bola odstránená|$1 položky boli odstránené|$1 položiek bolo odstránených}}:',
 
-?>
+# Watchlist editing tools
+'watchlisttools-view'  => 'Zobraziť súvisiace zmeny',
+'watchlisttools-edit'  => 'Zobraziť a upraviť zoznam sledovaných stránok',
+'watchlisttools-raw'   => 'Upraviť nespracovaný zoznam sledovaných stránok',
+'watchlisttools-clear' => 'Vyčistiť zoznam sledovaných stránok',
+
+);

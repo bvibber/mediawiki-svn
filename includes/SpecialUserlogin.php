@@ -8,7 +8,6 @@
  * constructor
  */
 function wfSpecialUserlogin() {
-	global $wgCommandLineMode;
 	global $wgRequest;
 	if( session_id() == '' ) {
 		wfSetupSession();
@@ -190,7 +189,7 @@ class LoginForm {
 			$wgOut->setArticleRelated( false );
 			$wgOut->setRobotPolicy( 'noindex,nofollow' );
 			$wgOut->addHtml( wfMsgWikiHtml( 'accountcreatedtext', $u->getName() ) );
-			$wgOut->returnToMain( $self->getPrefixedText() );
+			$wgOut->returnToMain( false, $self );
 			wfRunHooks( 'AddNewAccount', array( $u ) );
 			return true;
 		}
@@ -204,6 +203,7 @@ class LoginForm {
 		global $wgEnableSorbs, $wgProxyWhitelist;
 		global $wgMemc, $wgAccountCreationThrottle;
 		global $wgAuth, $wgMinimalPasswordLength;
+		global $wgEmailConfirmToEdit;
 
 		// If the user passes an invalid domain, something is fishy
 		if( !$wgAuth->validDomain( $this->mDomain ) ) {
@@ -229,9 +229,12 @@ class LoginForm {
 			return false;
 		}
 
-		# Check anonymous user ($wgUser) limitations :
-		if (!$wgUser->isAllowedToCreateAccount()) {
+		# Check permissions
+		if ( !$wgUser->isAllowed( 'createaccount' ) ) {
 			$this->userNotPrivilegedMessage();
+			return false;
+		} elseif ( $wgUser->isBlockedFromCreateAccount() ) {
+			$this->userBlockedMessage();
 			return false;
 		}
 
@@ -266,6 +269,17 @@ class LoginForm {
 			return false;
 		}
 		
+		# if you need a confirmed email address to edit, then obviously you need an email address.
+		if ( $wgEmailConfirmToEdit && empty( $this->mEmail ) ) {
+			$this->mainLoginForm( wfMsg( 'noemailtitle' ) );
+			return false;
+		}
+		
+		if( !empty( $this->mEmail ) && !User::isValidEmailAddr( $this->mEmail ) ) {
+			$this->mainLoginForm( wfMsg( 'invalidemailaddress' ) );
+			return false;
+		}
+		
 		# Set some additional data so the AbortNewAccount hook can be
 		# used for more than just username validation
 		$u->setEmail( $this->mEmail );
@@ -296,7 +310,7 @@ class LoginForm {
 			return false;
 		}
 
-		return $this->initUser( $u );
+		return $this->initUser( $u, false );
 	}
 
 	/**
@@ -304,10 +318,11 @@ class LoginForm {
 	 * Give it a User object that has been initialised with a name.
 	 *
 	 * @param $u User object.
+	 * @param $autocreate boolean -- true if this is an autocreation via auth plugin
 	 * @return User object.
 	 * @private
 	 */
-	function initUser( $u ) {
+	function initUser( $u, $autocreate ) {
 		global $wgAuth;
 
 		$u->addToDatabase();
@@ -320,7 +335,7 @@ class LoginForm {
 		$u->setRealName( $this->mRealName );
 		$u->setToken();
 
-		$wgAuth->initUser( $u );
+		$wgAuth->initUser( $u, $autocreate );
 
 		$u->setOption( 'rememberpassword', $this->mRemember ? 1 : 0 );
 		$u->saveSettings();
@@ -359,7 +374,7 @@ class LoginForm {
 			 */
 			if ( $wgAuth->autoCreate() && $wgAuth->userExists( $u->getName() ) ) {
 				if ( $wgAuth->authenticate( $u->getName(), $this->mPassword ) ) {
-					$u = $this->initUser( $u );
+					$u = $this->initUser( $u, true );
 				} else {
 					return self::WRONG_PLUGIN_PASS;
 				}
@@ -596,7 +611,7 @@ class LoginForm {
 
 	/** */
 	function userBlockedMessage() {
-		global $wgOut;
+		global $wgOut, $wgUser;
 
 		# Let's be nice about this, it's likely that this feature will be used
 		# for blocking large numbers of innocent people, e.g. range blocks on 
@@ -611,7 +626,10 @@ class LoginForm {
 		$wgOut->setArticleRelated( false );
 
 		$ip = wfGetIP();
-		$wgOut->addWikiText( wfMsg( 'cantcreateaccounttext', $ip ) );
+		$blocker = User::whoIs( $wgUser->mBlock->mBy );
+		$block_reason = $wgUser->mBlock->mReason;
+
+		$wgOut->addWikiText( wfMsg( 'cantcreateaccount-text', $ip, $block_reason, $blocker ) );
 		$wgOut->returnToMain( false );
 	}
 
@@ -621,7 +639,7 @@ class LoginForm {
 	function mainLoginForm( $msg, $msgtype = 'error' ) {
 		global $wgUser, $wgOut, $wgAllowRealName, $wgEnableEmail;
 		global $wgCookiePrefix, $wgAuth, $wgLoginLanguageSelector;
-		global $wgAuth;
+		global $wgAuth, $wgEmailConfirmToEdit;
 
 		if ( $this->mType == 'signup' ) {
 			if ( !$wgUser->isAllowed( 'createaccount' ) ) {
@@ -689,6 +707,7 @@ class LoginForm {
 		$template->set( 'createemail', $wgEnableEmail && $wgUser->isLoggedIn() );
 		$template->set( 'userealname', $wgAllowRealName );
 		$template->set( 'useemail', $wgEnableEmail );
+		$template->set( 'emailrequired', $wgEmailConfirmToEdit );
 		$template->set( 'canreset', $wgAuth->allowPasswordChange() );
 		$template->set( 'remember', $wgUser->getOption( 'rememberpassword' ) or $this->mRemember  );
 
@@ -823,4 +842,4 @@ class LoginForm {
 		return $skin->makeKnownLinkObj( $self, htmlspecialchars( $text ), implode( '&', $attr ) );
 	}
 }
-?>
+

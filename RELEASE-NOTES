@@ -3,9 +3,9 @@
 Security reminder: MediaWiki does not require PHP's register_globals
 setting since version 1.2.0. If you have it on, turn it *off* if you can.
 
-== MediaWiki 1.11 ==
+== MediaWiki 1.12 ==
 
-THIS IS NOT A RELEASE YET.
+THIS IS NOT A RELEASE YET
 
 MediaWiki is now using a "continuous integration" development model with
 quarterly snapshot releases. The latest development code is always kept
@@ -18,232 +18,220 @@ will be made on the development trunk and appear in the next quarterly release.
 Those wishing to use the latest code instead of a branch release can obtain
 it from source control: http://www.mediawiki.org/wiki/Download_from_SVN
 
-== Configuration changes since 1.10 ==
+=== Configuration changes in 1.12 ===
 
-* $wgThumbUpright - Adjust width of upright images when parameter 'upright' is
-  used
+=== New features in 1.12 ===
+* (bug 10735) Add a warning for non-descriptive filenames at Special:Upload
+* Add {{filepath:}} parser function to get full path to an uploaded file,
+  complementing {{fullurl:}} for pages.
+* (bug 11136) If using Postgres, search path is explicitly set if wgDBmwschema is 
+  not set to 'mediawiki', allowing multiple mediawiki instances per user.
+* (bug 11151) Add descriptive <title> to revision history page
+* (bug 5412) Add feed links for the site to all pages
+* (bug 11353) Add ability to retrieve raw section content via action=raw
+* Show relevant deletion log lines when uploading a previously deleted file
+* On SkinTemplate based skins (like MonoBook), omit confusing "edit"/"view source"
+  tab entirely if the page doesn't exist and the user isn't allowed to create it
+* Clarify instructions given when an exception is thrown
+* AuthPlugin added strictUserAuth() method to allow per-user override
+  of the strict() authentication behavior.
+* (bug 7872) Deleted revisions can now be viewed as diffs showing changes
+  against the previous revision, whether currently deleted or live.
+* Added tooltips for the "Go" and "Search" buttons
+* (bug 11649) Show input form when Special:Whatlinkshere has no parameters
 
-== New features since 1.10 ==
+=== Bug fixes in 1.12 ===
 
-* (bug 8868) Separate "blocked" message for autoblocks
-* Adding expiry of block to block messages
-* Bulk mail options ($wgEnotifImpersonal, $wgEnotifUseJobQ) for large sites
-* Links to redirect pages in categories are wrapped in
-  <span class="redirect-in-category"></span>
-* Introduced 'ImageOpenShowImageInlineBefore' hook; see docs/hooks.txt for
-  more information
-* (bug 9628) Show warnings about slave lag on Special:Contributions,
-  Special:Watchlist
-* (bug 8818) Expose "wpDestFile" as parameter $1 to "uploaddisabledtext"
-* Introducing new image keyword 'upright' and corresponding variable
-  $wgThumbUpright. This allows better proportional view of upright images
-  related to landscape images on a page without nailing the width of upright
-  images to a fix value which makes views for anon unproportional and user
-  preferences useless
-* (bug 6072) Introducing 'border' keyword to the [[Image:]] syntax
-* Introducing 'frameless' keyword to [[Image:]] syntax which respects the
-  user preferences for image width like 'thumb' but without a frame.
-* (bug 7960) Link to "what links here" for each "what links here" entry
-* Added support for configuration of an arbitrary number of commons-style
-  file repositories.
-* Added a Content-Disposition header to thumb.php output
-* Improved thumb.php error handling
-* Display file history on local image description pages of shared images
-* Added $wgArticleRobotPolicies
-* (bug 10076) Additional parameter $7 added to MediaWiki:Blockedtext 
-  containing, the ip, ip range, or username whose block is affecting the
-* (bug 7691) Show relevant lines from the deletion log when re-creating a
-  previously deleted article
-* Added variables 'wgRestrictionEdit' and 'wgRestrictionMove' for JS to header
-* (bug 9898) Allow viewing all namespaces in Special:Newpages
-* (bug 10139) Introduce 'EditSectionLink' and 'EditSectionLinkForOther' hooks;
-  see docs/hooks.txt for details
-* (bug 9769) Provide "watch this page" toggle on protection form
-* (bug 9886) Provide clear example "stub link" in Special:Preferences
-* (bug 10055) Populate email address and real name properties of User objects
-  passed to the 'AbortNewAccount' hook
-* Show result of Special:Booksources in wiki content language always, it's
-  normally better maintained than the generic list from the standard message
-  files
-* (bug 7997) Allow users to be blocked from using Special:Emailuser
-* (bug 8989) Blacklist 'mhtml' and 'mht' files from upload
-* (bug 8760) Allow wiki links in "protectexpiry" message
-* (bug 5908) Add "DEFAULTSORTKEY" and "DEFAULTCATEGORYSORT" aliases for
-  "DEFAULTSORT" magic word
-* (bug 10181) Support the XCache object caching mechanism
-* (bug 9058) Introduce '--aconf' option for all maintenance scripts, to provide
-  a path to the AdminSettings.php file
-* (bug 8781) Remind users to check file permissions for LocalSettings.php
-  post-installation
-* (bug 10196) Add classes and dir="ltr" to the <pre>s on user CSS and JS pages
-  (new classes: mw-user-css, mw-user-js)
-* Use shared.css for all skins and oldshared.css in place of common.css for
-  pre-Monobook skins.  As always, modifications should go in-wiki to MediaWiki:
-  Common.css and MediaWiki:Monobook.css.
-* (bug 8869) Introduce Special:Uncategorizedtemplates
+* Subpages are now indexed for searching properly when using PostgreSQL
+* (bug 3846) Suppress warnings from, e.g. open_basedir when scanning for
+  ImageMagick, diff3 et al. during installation [patch by Jan Reininghaus]
+* (bug 7027) Shift handling of deletion permissions-checking to
+  getUserPermissionsErrors.
+* Login and signup forms are now more correct for right-to-left languages.
+* (bug 5387) Block log items on RecentChanges don't make use of possible
+  translations
+* (bug 11211) Pass, as a parameter to the protectedpagetext interface
+  message, the level of protection.
+* (bug 9611) Supply the blocker and reason for the cantcreateaccounttext
+  message.
+* (bug 8759) Fixed bug where rollback was allowed on protected pages for wikis
+  where rollback is given to non-sysops.
+* (bug 8834) Split off permission for editing user JavaScript and CSS from
+  editinterface to a new permission key editusercssjs.
+* (bug 11266) Set fallback language for Fulfulde (ff) to French
+* (bug 11179) Include image version deletion comment in public log
+* Fixed notice when accessing special page without read permission and whitelist
+  is not defined
+* (bug 9252) Fix for tidy funkiness when using editintro mode
+* (bug 4021) Fix for MySQL wildcard search
+* (bug 10699) Fix for MySQL phrase search
+* (bug 11321) Fix width of gallerybox when option "width=xxx" is used
+* (bug 7890) Special:BrokenRedirects links deleted redirects to a non-existent page
+* Fix initial statistics when installing: add correct values
+* (bug 11342) Fix several 'returnto' links in permissions/error pages which
+  linked to the main page instead of targetted page
+* Strike the link to the redirect rather than using an asterisk in Special:Listredirects
+* (bug 11355) Fix false positives in Safe Mode and other config detection
+  when boolean settings are disabled with 'Off' via php_admin_value/php_value
+* (bug 11292) Fixed unserialize errors with Postgres by creating special Blob object.
+* (bug 11363) Make all metadata fields bytea when using Postgres.
+* (bug 11331) Add buildConcat() and use CASE not IF for DB compatibility. Make oldimage 
+  cascade delete via image table for Postgres, change fa_storage_key TEXT.
+* (bug 11438) Live Preview chops returned text
+* Show the right message on account creation when the user is blocked
+* (bug 11450) Fix creation of objectcache table on upgrade
+* Fix namespace selection after submit of Special:Newpages
+* Make input form of Special:Newpages nicer for RTL wikis
+* (bug 11462) Fix typo in LanguageGetSpecialPageAliases hook name
+* (bug 11474) Fix unintentional fall-through in math error handling
+* (bug 11478) Fix undefined method call in file deletion interface
+* (bug 278) Search results no longer highlight incorrect partial word matches
+* Compatibility with incorrectly detected old-style DJVU mime types
+* (bug 11560) Fix broken HTML output from weird link nesting in edit comments.
+  Nested links (as in image caption text) still don't work _right_ but they're
+  less wrong
+* (bug 9718) Remove unnecessary css from main.css causing spacing issues on
+  some browsers.
+* (bug 11574) Add an interface message loginstart, which, similarly to loginend,
+  appears just before the login form. Patch by MinuteElectron.
+* Do not cache category pages if using 'from' or 'until'
+* Created new hook getUserPermissionsErrors, to go with userCan changes.
+* Diff pages did not properly display css/js pages.
+* (bug 11620) Add call to User::isValidEmailAddr during accout creation.
+* (bug 11629) If $wgEmailConfirmToEdit is true, require people to supply an
+  email address when registering.
+* (bug 11612) Days to show in recent changes cannot be larger than 7
+* (bug 11131) Change filearchive width/height columns to int for Postgres
+* Support plural in undeleted{revisions,revisions-files,files}
+* (bug 11343) If the database is read-only, ensure that undelete fails.
+* (bug 11690) Show revert link for page moves in Special:Log to allowed users
+  only
+* Initial-lowercase prefix checks in namespaceDupes.php now actually work.
+* Fix regression in LinkBatch.php breaking PHP 5.0
 
-== Bugfixes since 1.10 ==
 
-* (bug 9712) Use Arabic comma in date/time formats for Arabic and Farsi
-* (bug 9670) Follow redirects when render edit section links to transcluded
-  templates.
-* (bug 6204) Fix incorrect unindentation with $wgMaxTocLevel
-* (bug 3431) Suppress "next page" link in Special:Search at end of results
-* Don't show unblock form if the user doesn't have permission to use it
-  (cosmetic change, no vulnerabilities existed)
-* Subtitle success message when unblocking a block ID instead of a pseudo link
-  like [[User:#123|#123]]
-* Use the standard HTTP fetch functions when retrieving remote wiki pages
-  through transwiki, so we can take advantage of cURL goodies if available
-* Disable custom user javascript in Special:Preferences, to avoid the risk
-  of a compromised script sniffing passwords etc.
-* (bug 9854, 3770) Clip overflow text in gallery boxes for visual cleanliness
-  instead of letting it flow outside the box or trigger ugly scroll bars.
-* Tooltips for print version and permalink
-* Links to the MediaWiki namespace for system messages having their default
-  values are no longer shown as nonexistent (e.g., in red)
-* Special:Ipblocklist differentiates between empty list and no search results.
-* (bug 5375) profiling does not respect read-only mode.
-* (bug 7070) monobook/user.gif has antialias artifacts
-* (bug 9123) Safer way when applying $wgLocalTZoffset
-* (bug 9896) Documentation for $wgSquidServers and X-FORWARDED-FOR
-* (bug 9417) Uploading new versions of images when using Postgres no longer 
-  throws warnings.
-* (bug 9908) Using tsearch2 with Postgres 8.1 no longer gives an error.
-* (bug 1438) Fix for diff table layout on very wide lines.
-  Diff style rules have been broken out to common/diff.css,
-  and the dupes removed from the default skin files.
-  Skins can still override the default rules.
-* (bug 1229) Balance columns in diff display evenly
-* Right-align diff line numbers in RTL language display
-* (bug 9332) Fix instructions in tests/README
-* (bug 9813) Reject usernames containing '#' to avoid silent truncation
-  of fragments during the normalisation process
-* (bug 7989) RSS feeds content now use black text when using white background.
-* (bug 9971) Typo in a french language message.
-* (bug 9973) Changed size was shown in advanced recentchanges collapsible items
-  with $wgRCShowChangedSized = false.
-* Fix PHP strict standards warning in enhanced recent changes.
-* (bug 5850) Added hexadecimal html entities comments for $digitTransformTable
-  entries.
-* (bug 7432) Change language name for Aromanian (roa-rup)
-* (bug 908) Unexistent special pages now generate a red link.
-* (bug 7899) Added \hline and \vline to the list of allowed TeX commands
-* (bug 7993) support mathematical symbol classes
-* (bug 10007) Allow Block IP to work with Postgrs again.
-* Add Google Wireless Transcoder to the Unicode editing blacklist
-* (bug 10083) Fix for Special:Version breakage on PHP 5.2 with some hooks
-* (bug 3624) TeX: \ker, \hom, \arg, \dim treated like \sin & \cos
-* (bug 10132, 10134) Restore back-compatibility Image::imageUrl() function
-* (bug 10113) Fix double-click for view source on protected pages
-* (bug 10117) Special:Wantedpages doesn't handle invalid titles in result
-  set [now prints out a warning]
-* (bug 10118) Introduced Special:Mostlinkedtemplates, report which lists
-  templates with a high number of inclusion links
-* (bug 10104) Fixed Database::getLag() for PostgreSQL and Oracle
-* (bug 9820) session.save_path check no longer halts installation, but
-  warns of possible bad values
-* (bug 9978) Fixed session.save_path validation when using extended
-  configuration format, e.g. "5;/tmp"
-* Don't generate a diff link in the patrol log if the page doesn't exist
-* (bug 10067) Translations for former skins removed from message files
-* (bug 9993) Force $wgShowExceptionDetails on during installation
-* (bug 9980) Validate administrator username and password during
-  installation
-* (bug 9383) Don't set a default value for BLOB column in rc-deleted
-  database patch
-* (bug 10149) Don't show full template list on section-0 edit
-* Fix maintenance/importImages.php so it doesn't barf PHP errors when no
-  suitable files are found, and make the list of extensions an option (defaults
-  to $wgFileExtensions)
-* (bug 9909) Ensure access to binary fields in the math table use encodeBlob() 
-  and decodeBlob()
-* (bug 6743) Don't link broken image links to the upload form when uploads
-  are disabled
-* (bug 9679) Improve documentation for $wgSiteNotice
-* (bug 10215) Show custom editing introduction when editing existing pages
-  
-== API changes since 1.10 ==
+=== API changes in 1.12 ===
 
-(For ongoing development discussion, see http://www.mediawiki.org/wiki/API)
+Full API documentation is available at http://www.mediawiki.org/wiki/API
 
-* New properties: links, templates, images, langlinks, categories, external
-  links
-* Breaking Change: imagelinks renamed into imageusage (il->iu)
-* Bug fix: incorrect generator behavior in some cases
-* JSON format allows an optional callback function to wrap the result.
-* Login module disabled until a more secure solution can be implemented
-* (bug 9938) Querying by revision identifier returns the most recent revision
-  for the corresponding page, rather than the requested revision
-* (bug 8772) Filter page revision queries by user
-* (bug 9927) User contributions queries do not accept IP addresses
-* Watchlist feed now reports a proper feed item when the user is not logged in
-* Watchlist feed date bug fixed - automatically shows one last day
-* Watchlist feed now allows to specify number of hours to monitor
-* list=allpages now returns a list instead of a map in JSON format
-* Breaking Change: in json, revisions are now returned as a list, not as a map.
-* Add: prop=info can show page is new flag, current page length, and visit
-  counter.
-* Change: Query watchlist now shows flags only when explicitly requested with
-  wlparam=flags
-* rc_this_oldid (textid) is no longer accessible from query watchlist
-* action=usercontribs: additional filtering by ucshow=; selection of needed
-  fields with ucprop=; the textid (rev_text_id) is no longer being exposed
-* (bug 9970) Breaking Change: backlinks, embeddedin and imageusage now return
-  lists in JSON instead of a map, and do not return anything when titles do
-  not exist
-* (bug 9121) Introduced indexpageids query parameter to list the page_id
-  values of all returned page items
+* (bug 11275) Enable descending sort in categorymembers
+* (bug 11308) Allow the API to output the image metadata
+* (bug 11296) Temporary fix for escaping of ampersands inside links in pretty-printed
+  help document.
+* (bug 11405) Expand templates implementation in the API
+* (bug 11218) Add option to feedwatchlist to display multiple revisions for each page.
+* (bug 11404) Provide name of exception caught in error code field of internal api 
+  error messages.
+* (bug 11534) rvendid doesn't work
+* Fixed rvlimit of the revisions query to only enforce the lower query limit if
+  revision content is requested.
+* Include svn revision number (if install is checked-out from svn) in siteinfo query.
+* (bug 11173) Allow limited wikicode rendering via api.php
+* (bug 11572) API should provide interface for expanding templates
+* (bug 11569) Login should return the cookie prefix 
+* (bug 11632) Breaking change: Specify the type of a change in the recentchanges list
+  as 'edit', 'new', 'log' instead of 0, 1, 2, respectively.
+* Compatibility fix for PHP 5.0.x.
+* Add rctype parameter to list=recentchanges that filters by type
+* Add apprtype and apprlevel parameters to filter list=allpages by protection types and levels
+* Add apdir parameter to enable listing all pages from Z to A
 
-== Maintenance script changes since 1.10 ==
+=== Languages updated in 1.12 ===
 
-* Add support for wgMaxTocLevel option in parserTests
-* (bug 6823) Disable article view counter in maintenance/dumpHTML.php
-
-== Languages updated since 1.10 ==
-
+* Amharic (am) (new)
+* Aragonese (an)
 * Arabic (ar)
+* Mapudungun (arn) (new)
+* Asturian (ast)
+* Samogitian (bat-smg)
+* Bikol Central (bcl)
+* Belarusian Taraskievica orthography (be-tarask)
+* Bulgarian (bg)
+* Bislama (bi) (new)
+* Bengali (bn)
+* Bishnupriya Manipuri (bpy)
+* Breton (br)
 * Catalan (ca)
+* Czech (cs)
+* Cassubian (csb)
+* Welsh (cy)
 * Danish (da)
 * German (de)
+* Lower Sorbian (dsb) (new)
+* Ewe (ee) (new)
 * Greek (el)
 * Spanish (es)
-* Farsi (fa)
+* Extremaduran (ext)
 * Finnish (fi)
+* Persian (fa)
 * Võro (fiu-vro)
+* Faroese (fo)
 * French (fr)
+* Cajun French (frc)
+* Franco-Provençal (frp)
+* Frisian (fy)
+* Irish (ga)
+* Gön-gnŷ (gan) (new)
 * Galician (gl)
+* Ancient Greek (grc) (new)
 * Hakka (hak)
 * Hebrew (he)
+* Croatian (hr)
+* Upper Sorbian (hsb)
+* Armenian (hy)
 * Indonesian (id)
+* Ingush (inh) (new)
+* Icelandic (is)
 * Italian (it)
 * Japanese (ja)
-* Georgian (ka)
-* Kabyle (kab)
 * Kazakh (kk)
-* Kurdish (ku)
+* Korean (ko)
+* Kurdish (Latin) (ku-latn)
+* Latin (la)
+* Limbugian (li)
+* Lozi (loz) (new)
+* Lingala (ln)
 * Lithuanian (lt)
-* Malayalam (ml)
-* Burmese (my)
+* Malay (ms)
+* Nahuatl (nah)
+* Min-nan (nan)
+* Low Saxon (nds)
+* Dutch Low Saxon (nds-nl)
+* Dutch (nl)
 * Norwegian (no)
-* Polish (pl)
-* Portuguese (pt)
+* Pashto (ps)
+* Portugese (pt)
+* Quechua (qu)
 * Romanian (ro)
 * Russian (ru)
+* Sakha (sah)
+* Sicilian (scn)
+* Sindhi (sd)
+* Sassarese (sdc) (new)
+* Seri (sei) (new)
+* Tachelhit (shi)
 * Slovak (sk)
-* Shona (sn)
-* Somali (so)
+* Serbian (Cyrillic) (sr-ec)
 * Sundanese (su)
 * Swedish (sv)
-* Volapük (vo)
-* Old Chinese / Late Middle Chinese (zh-classical)
-* Chinese (PRC) (zh-cn)
-* Chinese (Taiwan) (zh-tw)
-* Cantonese (zh-yue)
+* Tamil (ta)
+* Tetun (tet) (new)
+* Tajik (tg)
+* Tagalog (tl) (new)
+* Uyghur (ug)
+* West Flemish (vls)
+* Walloon (wa)
+* Yiddish (yi)
+* Cantonese (yue)
+* Zhuang (za)
+* Zealandic (zea)
+* Old Chinese/Late Time Chinese (zh-classical)
+* Chinese (Simplified) (zh-hans)
+* Chinese (Traditional) (zh-hant)
 
 == Compatibility ==
 
-MediaWiki 1.11 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
+MediaWiki 1.12 requires PHP 5 (5.1 recommended). PHP 4 is no longer supported.
 
 PHP 5.0.x fails on 64-bit systems due to serious bugs with array processing:
 http://bugs.php.net/bug.php?id=34879
@@ -255,7 +243,7 @@ At this time we still recommend 4.0, but 4.1/5.0 will work fine in most cases.
 
 == Upgrading ==
 
-1.11 has several database changes since 1.10, and will not work without schema
+1.12 has several database changes since 1.11, and will not work without schema
 updates.
 
 If upgrading from before 1.7, you may want to run refreshLinks.php to ensure
@@ -267,6 +255,7 @@ break. Don't forget to always back up your database before upgrading!
 
 See the file UPGRADE for more detailed upgrade instructions.
 
+
 === Caveats ===
 
 Some output, particularly involving user-supplied inline HTML, may not
@@ -275,8 +264,7 @@ set $wgMimeType = "application/xhtml+xml"; to test for remaining problem
 cases, but this is not recommended on live sites. (This must be set for
 MathML to display properly in Mozilla.)
 
-
-For notes on 1.10.x and older releases, see HISTORY.
+For notes on 1.11.x and older releases, see HISTORY.
 
 
 === Online documentation ===

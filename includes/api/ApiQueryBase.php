@@ -52,11 +52,16 @@ abstract class ApiQueryBase extends ApiBase {
 		$this->options = array ();
 	}
 
-	protected function addTables($value) {
-		if (is_array($value))
-			$this->tables = array_merge($this->tables, $value);
-		else
-			$this->tables[] = $value;
+	protected function addTables($tables, $alias = null) {
+		if (is_array($tables)) {
+			if (!is_null($alias))
+				ApiBase :: dieDebug(__METHOD__, 'Multiple table aliases not supported');
+			$this->tables = array_merge($this->tables, $tables);
+		} else {
+			if (!is_null($alias))
+				$tables = $this->getDB()->tableName($tables) . ' ' . $alias;
+			$this->tables[] = $tables;
+		}
 	}
 
 	protected function addFields($value) {
@@ -128,13 +133,9 @@ abstract class ApiQueryBase extends ApiBase {
 		return $res;
 	}
 
-	public static function addTitleInfo(&$arr, $title, $includeRestricted=false, $prefix='') {
-		if ($includeRestricted || $title->userCanRead()) {
-			$arr[$prefix . 'ns'] = intval($title->getNamespace());
-			$arr[$prefix . 'title'] = $title->getPrefixedText();
-		}
-		if (!$title->userCanRead())
-			$arr[$prefix . 'inaccessible'] = "";
+	public static function addTitleInfo(&$arr, $title, $prefix='') {
+		$arr[$prefix . 'ns'] = intval($title->getNamespace());
+		$arr[$prefix . 'title'] = $title->getPrefixedText();
 	}
 	
 	/**
@@ -151,10 +152,25 @@ abstract class ApiQueryBase extends ApiBase {
 		return $this->mQueryModule;
 	}
 
+	/**
+	 * Add sub-element under the page element with the given pageId. 
+	 */
+	protected function addPageSubItems($pageId, $data) {
+		$result = $this->getResult();
+		$result->setIndexedTagName($data, $this->getModulePrefix());
+		$result->addValue(array ('query', 'pages', intval($pageId)),
+			$this->getModuleName(),
+			$data);
+	}
+
 	protected function setContinueEnumParameter($paramName, $paramValue) {
-		$msg = array (
-			$this->encodeParamName($paramName
-		) => $paramValue);
+		
+		$paramName = $this->encodeParamName($paramName);
+		$msg = array( $paramName => $paramValue );
+
+//		This is an alternative continue format as a part of the URL string
+//		ApiResult :: setContent($msg, $paramName . '=' . urlencode($paramValue));
+		
 		$this->getResult()->addValue('query-continue', $this->getModuleName(), $msg);
 	}
 
@@ -198,6 +214,17 @@ abstract class ApiQueryBase extends ApiBase {
 		return str_replace('_', ' ', $key);
 	}
 
+	public function getTokenFlag($tokenArr, $action) {
+		if (in_array($action, $tokenArr)) {
+			global $wgUser;
+			if ($wgUser->isAllowed($action))
+				return true;
+			else
+				$this->dieUsage("Action '$action' is not allowed for the current user", 'permissiondenied');
+		}
+		return false;
+	}
+	
 	public static function getBaseVersion() {
 		return __CLASS__ . ': $Id$';
 	}
@@ -235,4 +262,4 @@ abstract class ApiQueryGeneratorBase extends ApiQueryBase {
 	 */
 	public abstract function executeGenerator($resultPageSet);
 }
-?>
+

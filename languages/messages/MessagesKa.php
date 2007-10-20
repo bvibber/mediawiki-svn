@@ -243,29 +243,39 @@ $messages = array(
 'nstab-help'      => 'დახმარება',
 'nstab-category'  => 'კატეგორია',
 
+# General errors
+'error'         => 'შეცდომა',
+'noconnect'     => 'ბოდიში! ვიკის ტექნიკური პრობლემები აქვს და ვერ მოხერხდა მონაცემთა ბაზის სერვერთან დაკავშირება. <br />
+$1',
+'viewsource'    => 'იხილე წყარო',
+'viewsourcefor' => '$1-თვის',
+
 # Login and logout pages
-'yourname'           => 'მომხმარებელი:',
-'yourpassword'       => 'პაროლი:',
-'yourpasswordagain'  => 'ხელმეორედ შეიყვანეთ პაროლი:',
-'remembermypassword' => 'ჩემი მონაცემების დამახსოვრება',
-'yourdomainname'     => 'თქვენი დომეინი:',
-'login'              => 'შესვლა',
-'userlogin'          => 'შესვლა / ანგარიშის გახსნა',
-'logout'             => 'გასვლა',
-'userlogout'         => 'გასვლა',
-'youremail'          => 'ელექტრონული ფოსტა:',
-'username'           => 'მომხმარებლის სახელი:',
-'uid'                => 'მომხმარებლის იდენტიფიკატორი:',
-'yourrealname'       => 'ნამდვილი სახელი:',
-'yourlanguage'       => 'ენა:',
-'yourvariant'        => 'ვარიანტი',
-'yournick'           => 'მეტსახელი:',
-'noname'             => 'თქვენს მიერ მითითებული მომხმარებლის სახელი ქმედითი არ არის.',
-'loginsuccesstitle'  => 'შესვლა წარმატებით განხორციელდა',
-'loginsuccess'       => "'''თქვენ ახლა შესული ხართ {{SITENAME}}ში როგორც \"\$1\".'''",
-'mailmypassword'     => 'ახალი პაროლის გამოგზავნა',
-'accountcreated'     => 'ანგარიში შეიქმნა',
-'accountcreatedtext' => '$1 მომხმარებლის ანგარიში შექმნილია.',
+'yourname'                   => 'მომხმარებელი:',
+'yourpassword'               => 'პაროლი:',
+'yourpasswordagain'          => 'ხელმეორედ შეიყვანეთ პაროლი:',
+'remembermypassword'         => 'ჩემი მონაცემების დამახსოვრება',
+'yourdomainname'             => 'თქვენი დომეინი:',
+'alreadyloggedin'            => '<strong>თქვენ უკვე შესული ხართ, როგორც მომხმარებელი $1!</strong><br />',
+'login'                      => 'შესვლა',
+'userlogin'                  => 'შესვლა / ანგარიშის გახსნა',
+'logout'                     => 'გასვლა',
+'userlogout'                 => 'გასვლა',
+'nologinlink'                => 'ანგარიშის შექმნა',
+'youremail'                  => 'ელექტრონული ფოსტა:',
+'username'                   => 'მომხმარებლის სახელი:',
+'uid'                        => 'მომხმარებლის იდენტიფიკატორი:',
+'yourrealname'               => 'ნამდვილი სახელი:',
+'yourlanguage'               => 'ენა:',
+'yourvariant'                => 'ვარიანტი',
+'yournick'                   => 'მეტსახელი:',
+'noname'                     => 'თქვენს მიერ მითითებული მომხმარებლის სახელი ქმედითი არ არის.',
+'loginsuccesstitle'          => 'შესვლა წარმატებით განხორციელდა',
+'loginsuccess'               => "'''თქვენ ახლა შესული ხართ {{SITENAME}}ში როგორც \"\$1\".'''",
+'mailmypassword'             => 'ახალი პაროლის გამოგზავნა',
+'acct_creation_throttle_hit' => 'თქვენ უკვე შექმენით $1 ანგარიში. მეტის შექმნა არ შეგიძლიათ.',
+'accountcreated'             => 'ანგარიში შეიქმნა',
+'accountcreatedtext'         => '$1 მომხმარებლის ანგარიში შექმნილია.',
 
 # Password reset dialog
 'resetpass_text'   => '<!-- დამატებითი ტექსტი აქ -->',
@@ -273,6 +283,8 @@ $messages = array(
 
 # Edit pages
 'loginreqlink' => 'შესვლა',
+'accmailtitle' => 'პაროლი გაიგზავნა.',
+'accmailtext'  => '"$1"-ის პაროლი გადაგზავნილია $2-ზე.',
 
 # Diffs
 'difference'              => '(სხვაობა ვერსიებს შორის)',
@@ -285,37 +297,40 @@ $messages = array(
 'blanknamespace' => '(მთავარი)',
 
 # Preferences page
-'preferences'       => 'კონფიგურაცია',
-'mypreferences'     => 'ჩემი კონფიგურაცია',
-'qbsettings'        => 'სწრაფი ზოლი',
-'changepassword'    => 'პაროლის შეცვლა',
-'math'              => 'მათ',
-'dateformat'        => 'თარიღის ფორმატი',
-'datetime'          => 'თარიღი და დრო',
-'prefs-personal'    => 'მომხმარებლის მონაცემები',
-'prefs-rc'          => 'ბოლო ცვლილებები',
-'prefs-watchlist'   => 'კონტროლის სია',
-'saveprefs'         => 'შენახვა',
-'resetprefs'        => 'გადატვირთვა',
-'oldpassword'       => 'ძველი პაროლი:',
-'newpassword'       => 'ახალი პაროლი:',
-'textboxsize'       => 'რედაქტირება',
-'rows'              => 'რიგები:',
-'columns'           => 'სვეტები:',
-'searchresultshead' => 'ძიება',
-'contextlines'      => 'სტრიქონები შედეგის მიხედვით:',
-'contextchars'      => 'კონტექსტი სტრიქონების მიხედვით:',
-'savedprefs'        => 'თქვენს მიერ შერჩეული პარამეტრები დამახსოვრებულია.',
-'timezonelegend'    => 'დროის ზონა',
-'timezonetext'      => 'საათების რაოდენობა, რომლითაც თქვენი ადგილობრივი დრო განსხვავდება სერვერის დროისაგან (UTC).',
-'localtime'         => 'ლოკალური დრო',
-'timezoneoffset'    => 'ოფსეტი¹',
-'servertime'        => 'სერვერის დრო',
-'guesstimezone'     => 'ბრაუზერიდან შევსება',
-'allowemail'        => 'შესაძლებელია ელ. წერილების მიღება სხვა მომხმარებლებისაგან',
-'defaultns'         => 'სტანდარტული ძიება ამ სახელთა სივრცეებში:',
-'default'           => 'სტანდარტული',
-'files'             => 'ფაილები',
+'preferences'           => 'კონფიგურაცია',
+'mypreferences'         => 'ჩემი კონფიგურაცია',
+'qbsettings'            => 'სწრაფი ზოლი',
+'changepassword'        => 'პაროლის შეცვლა',
+'math'                  => 'მათემატიკა',
+'dateformat'            => 'თარიღის ფორმატი',
+'datetime'              => 'თარიღი და დრო',
+'math_unknown_error'    => 'უცნობი შეცდომა',
+'math_unknown_function' => 'უცნობი ფუნქცია',
+'prefs-personal'        => 'მომხმარებლის მონაცემები',
+'prefs-rc'              => 'ბოლო ცვლილებები',
+'prefs-watchlist'       => 'კონტროლის სია',
+'prefs-misc'            => 'სხვადასხვა',
+'saveprefs'             => 'შენახვა',
+'resetprefs'            => 'გადატვირთვა',
+'oldpassword'           => 'ძველი პაროლი:',
+'newpassword'           => 'ახალი პაროლი:',
+'textboxsize'           => 'რედაქტირება',
+'rows'                  => 'რიგები:',
+'columns'               => 'სვეტები:',
+'searchresultshead'     => 'ძიება',
+'contextlines'          => 'სტრიქონები შედეგის მიხედვით:',
+'contextchars'          => 'კონტექსტი სტრიქონების მიხედვით:',
+'savedprefs'            => 'თქვენს მიერ შერჩეული პარამეტრები დამახსოვრებულია.',
+'timezonelegend'        => 'დროის ზონა',
+'timezonetext'          => 'საათების რაოდენობა, რომლითაც თქვენი ადგილობრივი დრო განსხვავდება სერვერის დროისაგან (UTC).',
+'localtime'             => 'ლოკალური დრო',
+'timezoneoffset'        => 'ოფსეტი¹',
+'servertime'            => 'სერვერის დრო',
+'guesstimezone'         => 'ბრაუზერიდან შევსება',
+'allowemail'            => 'შესაძლებელია ელ. წერილების მიღება სხვა მომხმარებლებისაგან',
+'defaultns'             => 'სტანდარტული ძიება ამ სახელთა სივრცეებში:',
+'default'               => 'სტანდარტული',
+'files'                 => 'ფაილები',
 
 # Groups
 'group'            => 'ჯგუფი:',
@@ -349,7 +364,6 @@ $messages = array(
 'minoreditletter' => 'მ',
 'newpageletter'   => 'ა',
 'boteditletter'   => 'ბ',
-'sectionlink'     => '→',
 
 # Recent changes linked
 'recentchangeslinked' => 'დაკავშირებული ცვლილებები',
@@ -362,12 +376,8 @@ $messages = array(
 'fileuploadsummary' => 'მოკლე აღწერა:',
 'filestatus'        => 'საავტორო უფლებების სტატუსი',
 'filesource'        => 'წყარო',
-'fileuploaded'      => 'ფაილი $1 წარმატებულად ჩაიტვირთა.
-თუ შეიძლება, გახსენით აღწერილობის გვერდი ამ ბმულის მეშვეობით: $2 და შეავსეთ
-იგი შემდეგი ხასიათის ინფორმაციით ფაილის შესახებ: წყარო, შექმნის თარიღი და ავტორი, და
-ნებისმიერი სხვა მონაცემით, რომელიც ფაილთან დაკავშირებით გაქვთ.
-თუ ფაილი სურათია, მაშინ შეგიძლიათ ჩატვირთოთ იგი შემდეგნაირად: <tt><nowiki>[[</nowiki>{{ns:image}}<nowiki>:$1|thumb|აღწერილობა]]</nowiki></tt>',
 'uploadwarning'     => 'გადატვირთვის შეხსენება',
+'savefile'          => 'ფაილის შენახვა',
 'uploadvirus'       => 'ფაილი ვირუსს შეიცავს! დეტალები: $1',
 
 # Image list
@@ -404,11 +414,14 @@ $messages = array(
 # Statistics
 'statistics' => 'სტატისტიკა',
 
+'fewestrevisions' => 'ყველაზე ნაკლებად რედაქტირებული სტატიები',
+
 # Miscellaneous special pages
 'nbytes'                  => '$1 ბაიტი',
 'ncategories'             => '$1 კატეგორია',
 'nlinks'                  => '$1 ბმული',
 'nmembers'                => '$1 წევრი',
+'lonelypages'             => 'ობოლი გვერდები',
 'uncategorizedpages'      => 'გვერდები კატეგორიის გარეშე',
 'uncategorizedcategories' => 'კატეგორიები კატეგორიის გარეშე',
 'uncategorizedimages'     => 'სურათები კატეგორიის გარეშე',
@@ -455,12 +468,22 @@ $messages = array(
 'allpagesbadtitle'  => 'მოცემული გვერდის სათაური არასწორია ან აქვს ინტერვიკი ან ნათშორისი პრეფიქსი. 
 იგი შესაძლოა შეიცავდეს ერთ ან მეტ სიმბოლოს, რომელიც არ შეიძლება გამოყენებულ იქნას სათაურში.',
 
+# E-mail user
+'noemailtext' => 'ამ მომხმარებელს არ მიუთითებია ელექტრონული ფოსტის მოქმედი მისამართი,
+ან ამჯობინებს არ მიიღოს ფოსტა სხვა მომხმარებლებისგან.',
+
 # Watchlist
 'watchlist'   => 'ჩემი კონტროლის სია',
 'mywatchlist' => 'ჩემი კონტროლის სია',
+'addedwatch'  => 'შეტანილია კონტროლის სიაში',
 'watch'       => 'კონტროლი',
 
+'enotif_newpagetext' => 'ეს არის ახალი გვერდი.',
+
 # Delete/protect/revert
+'deletepage'       => 'გვერდის წაშლა',
+'confirmdelete'    => 'წაშლის დადასტურება',
+'actioncomplete'   => 'მოქმედება შესრულებულია',
 'restriction-type' => 'უფლება:',
 
 # Restrictions (nouns)
@@ -515,10 +538,13 @@ $messages = array(
 'nolinkshere'   => "'''[[:$1]]'''-ზე ბმული არ არის.",
 
 # Block/unblock
-'blocklink'    => 'ბლოკირება',
-'unblocklink'  => 'ბლოკი მოხსენი',
-'contribslink' => 'წვლილი',
-'autoblocker'  => 'თქვენ ავტომატურად ბლოკირებული ხართ, ვინაიდან თქვენი IP მისამართი ახლახან იქნა გამოყენებული "[[{{ns:user}}:$1|$1]]"–ის მიერ. $1-ის ბლოკირების მიზეზი: "$2"',
+'ipbanononly'        => 'მხოლოდ ანონიმური მომხმარებლების ბლოკირება',
+'blockipsuccesssub'  => 'ბლოკირება შესრულებულია',
+'ipblocklist-submit' => 'ძიება',
+'blocklink'          => 'ბლოკირება',
+'unblocklink'        => 'ბლოკი მოხსენი',
+'contribslink'       => 'წვლილი',
+'autoblocker'        => 'თქვენ ავტომატურად ბლოკირებული ხართ, ვინაიდან თქვენი IP მისამართი ახლახან იქნა გამოყენებული "[[{{ns:user}}:$1|$1]]"–ის მიერ. $1-ის ბლოკირების მიზეზი: "$2"',
 
 # Move page
 'movepage'                => 'გვერდის გადატანა',
@@ -527,7 +553,6 @@ $messages = array(
 'newtitle'                => 'ახალი სათაური',
 'move-watch'              => 'ამ გვერდის კონტროლი',
 'movepagebtn'             => 'გვერდის გადატანა',
-'pagemovedtext'           => 'გვერდი "[[$1]]" გადავიდა "[[$2]]".',
 'articleexists'           => 'ამ დასახელების გვერდი უკვე არსებობს, 
 ან თქვენს მიერ მითითებული დასახელება არასწორია. 
 თუ შეიძლება, მიუთითეთ სხვა სახელი.',
@@ -546,13 +571,13 @@ $messages = array(
 'delete_and_move_reason'  => 'წაშლილია გადატანისთვის ადგილის დასათმობად',
 
 # Namespace 8 related
-'allmessages'               => 'სისტემური შეტყობინება',
+'allmessages'               => 'სისტემური შეტყობინებები',
 'allmessagesname'           => 'დასახელება',
 'allmessagesdefault'        => 'სტანდარტული ტექსტი',
 'allmessagescurrent'        => 'მიმდინარე ტექსტი',
 'allmessagestext'           => 'ეს არის სახელთა სივრცე მედიავიკიში არსებული სისტემური შეტყობინებების ჩამონათვალი.',
 'allmessagesnotsupportedUI' => 'თქვენს ამჟამინდელ ინტერფეისის ენას <b>$1</b> არ აქვს სპეციალური:AllMessages-ის უზრუნველყოფა ამ საიტზე.',
-'allmessagesnotsupportedDB' => 'სპეციალური:AllMessages-ის უზრუნველყოფა არ ხდება, ვინაიდან wgUseDatabaseMessages გამორთულია.',
+'allmessagesnotsupportedDB' => '{{ns:special}}:AllMessages-ის უზრუნველყოფა არ ხდება, ვინაიდან wgUseDatabaseMessages გამორთულია.',
 'allmessagesfilter'         => 'ფილტრი შეტყობინების სახელის მიხედვით:',
 'allmessagesmodified'       => 'აჩვენე მხოლოდ შეცვლილი',
 
@@ -584,14 +609,11 @@ $messages = array(
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'ყველა',
 'imagelistall'     => 'ყველა',
-'watchlistall1'    => 'ყველა',
 'watchlistall2'    => 'ყველა',
 'namespacesall'    => 'ყველა',
 
-# Inputbox extension, may be useful in other contexts as well
-'tryexact'       => 'სცადეთ ზუსტი ძიება',
-'searchfulltext' => 'სრული ტექსტის ძიება',
-'createarticle'  => 'სტატიის შექმნა',
+# E-mail address confirmation
+'confirmemail' => 'ელ. ფოსტის მისამართის დადასტურება',
 
 # Delete conflict
 'deletedwhileediting' => "[[{{ns:user}}:$1|$1]] მომხმარებელმა ([[{{ns:user_talk}}:$1|განხილვა]]) წაშალა თქვენი რედაქტირების შემდეგ. მიზეზი:
@@ -608,9 +630,6 @@ $messages = array(
 
 'articletitles' => "სტატიები დაწყებული ''$1''-ით",
 'hideresults'   => 'შედეგების დამალვა',
-
-# DISPLAYTITLE
-'displaytitle' => '(ამ გვერდის ბმული როგორც [[$1]])',
 
 'loginlanguagelabel' => 'ენა: $1',
 
@@ -636,4 +655,4 @@ $messages = array(
 
 );
 
-?>
+

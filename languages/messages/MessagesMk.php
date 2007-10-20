@@ -19,7 +19,6 @@ $magicWords = array(
 	'forcetoc'              => array( 0, '__FORCETOC__', '__СОСОДРЖИНА__' ),
 	'toc'                   => array( 0, '__TOC__', '__СОДРЖИНА__' ),
 	'noeditsection'         => array( 0, '__NOEDITSECTION__' , '__БЕЗ_УРЕДУВАЊЕ_НА_СЕКЦИИ__'),
-	'start'                 => array( 0, '__START__' , '__ПОЧЕТОК__' ),
 	'currentmonth'          => array( 1, 'CURRENTMONTH', 'СЕГАШЕНМЕСЕЦ' ),
 	'currentmonthname'      => array( 1, 'CURRENTMONTHNAME', 'СЕГАШЕНМЕСЕЦИМЕ' ),
 	'currentmonthnamegen'   => array( 1, 'CURRENTMONTHNAMEGEN', 'СЕГАШЕНМЕСЕЦИМЕРОД' ),
@@ -34,7 +33,6 @@ $magicWords = array(
 	'namespace'             => array( 1, 'NAMESPACE', 'ИМЕПРОСТОР' ),
 	'subst'                 => array( 0, 'SUBST:', 'ЗАМЕСТ:' ),
 	'msgnw'                 => array( 0, 'MSGNW:', 'ИЗВЕШТNW:' ),
-	'end'                   => array( 0, '', '__КРАЈ__' ),
 	'img_thumbnail'         => array( 1, 'thumbnail', 'thumb', 'мини' ),
 	'img_right'             => array( 1, 'right', 'десно', 'д' ),
 	'img_left'              => array( 1, 'left', 'лево', 'л' ),
@@ -42,9 +40,7 @@ $magicWords = array(
 	'img_width'             => array( 1, '$1px', '$1пкс' , '$1п' ),
 	'img_center'            => array( 1, 'center', 'centre', 'центар', 'ц' ),
 	'img_framed'            => array( 1, 'framed', 'enframed', 'frame', 'рамка', 'ворамка' ),
-	'int'                   => array( 0, 'INT:' ),
 	'sitename'              => array( 1, 'SITENAME', 'ИМЕНАСАЈТ' ),
-	'ns'                    => array( 0, 'NS:' ),
 	'localurl'              => array( 0, 'LOCALURL:', 'ЛОКАЛНААДРЕСА:' ),
 	'localurle'             => array( 0, 'LOCALURLE:', 'ЛОКАЛНААДРЕСАИ:' ),
 	'server'                => array( 0, 'SERVER', 'СЕРВЕР' ),
@@ -52,8 +48,6 @@ $magicWords = array(
 	'notitleconvert'        => array( 0, '__NOTITLECONVERT__', '__NOTC__'),
 	'nocontentconvert'      => array( 0, '__NOCONTENTCONVERT__', '__NOCC__'),
 	'currentweek'           => array( 1, 'CURRENTWEEK', 'СЕГАШНАСЕДМИЦА'),
-	'currentdow'            => array( 1, 'CURRENTDOW' ),
-	'revisionid'            => array( 1, 'REVISIONID' ),
 );
 
 $namespaceNames = array(
@@ -181,7 +175,7 @@ $messages = array(
 'subcategories'   => 'Подкатегории',
 
 'mainpagetext'      => 'Вики софтверот е успешно инсталиран.',
-'mainpagedocfooter' => 'Ве молиме, видете ја [http://meta.wikimedia.org/wiki/MediaWiki_i18n документацијата] и [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide водичот] за подетална информација односно МедијаВики. Актуелната верзија на македонската јазична датотека можете да најдете на [http://meta.wikimedia.org/wiki/LanguageMk.php Мета].',
+'mainpagedocfooter' => 'Ве молиме, видете ја [http://meta.wikimedia.org/wiki/MediaWiki_localisation документацијата] и [http://meta.wikimedia.org/wiki/MediaWiki_User%27s_Guide водичот] за подетална информација односно МедијаВики. Актуелната верзија на македонската јазична датотека можете да најдете на [http://meta.wikimedia.org/wiki/LanguageMk.php Мета].',
 
 'about'          => 'За',
 'article'        => 'Статија',
@@ -288,22 +282,23 @@ $messages = array(
 'versionrequired'     => 'Верзијата $1 од МедијаВики е задолжителна',
 'versionrequiredtext' => 'Мора да имате верзија $1 од МедијаВики за да ја користите оваа страница. Видете [[Special:Version]]',
 
-'ok'                  => 'Во ред',
-'retrievedfrom'       => 'Преземено од "$1"',
-'youhavenewmessages'  => 'Имате $1 ($2).',
-'newmessageslink'     => 'нови пораки',
-'newmessagesdifflink' => 'разлики со последната видена верзија',
-'editsection'         => 'уреди',
-'editold'             => 'уреди',
-'editsectionhint'     => 'Уредување на секција: $1',
-'toc'                 => 'Содржина',
-'showtoc'             => 'прикажи',
-'hidetoc'             => 'сокриј',
-'thisisdeleted'       => 'Погледни или врати $1?',
-'viewdeleted'         => 'Прегледај $1?',
-'restorelink'         => '$1 избришани промени',
-'feedlinks'           => 'Фид:',
-'feed-invalid'        => 'Лош тип на фид пријава',
+'ok'                      => 'Во ред',
+'retrievedfrom'           => 'Преземено од "$1"',
+'youhavenewmessages'      => 'Имате $1 ($2).',
+'newmessageslink'         => 'нови пораки',
+'newmessagesdifflink'     => 'разлики со последната видена верзија',
+'youhavenewmessagesmulti' => 'Имате нови пораки на $1',
+'editsection'             => 'уреди',
+'editold'                 => 'уреди',
+'editsectionhint'         => 'Уредување на секција: $1',
+'toc'                     => 'Содржина',
+'showtoc'                 => 'прикажи',
+'hidetoc'                 => 'сокриј',
+'thisisdeleted'           => 'Погледни или врати $1?',
+'viewdeleted'             => 'Прегледај $1?',
+'restorelink'             => '$1 избришани промени',
+'feedlinks'               => 'Фид:',
+'feed-invalid'            => 'Лош тип на фид пријава',
 
 # Short words for each namespace, by default used in the 'article' tab in monobook
 'nstab-main'      => 'Статија',
@@ -383,7 +378,6 @@ $1',
 'yourdomainname'             => 'Вашиот домен',
 'externaldberror'            => 'Настана грешка при надворешното најавување на базата или немате дозвола да ја ажурирате вашата надворешна сметка.',
 'loginproblem'               => '<b>Има проблем со вашето најавување.</b><br />Обидете се повторно!',
-'alreadyloggedin'            => '<strong>Корисник $1, веќе сте најавени!</strong><br />',
 'login'                      => 'Најавување',
 'loginprompt'                => 'Морате да користите колачиња за да се најавите на {{SITENAME}}.',
 'userlogin'                  => 'Најавете се',
@@ -420,6 +414,7 @@ $1',
 'nouserspecified'            => 'Мора да назначите корисничко име.',
 'wrongpassword'              => 'Внесовте погрешна лозинка. Обидете се повторно.',
 'wrongpasswordempty'         => 'Внесената лозинка е празна. Обидете се повторно.',
+'passwordtooshort'           => 'Вашата лозинка е прекратка. Мора да има најмалку $1 знаци.',
 'mailmypassword'             => 'Испрати ми нова лозинка по е-пошта',
 'passwordremindertitle'      => 'Потсетник за лозинка од {{SITENAME}}',
 'passwordremindertext'       => 'Некој (најверојатно вие, од IP адреса $1) побара да ви испратиме нова {{SITENAME}} лозинка. Лозинката за корисникот "$2" сега е "$4". Треба да се најавите и да ја промените лозинката сега. Сега можете да се логирате со оваа привремена позинка, која е валидна само за едно логирање. Можете да продолжите да ја користите старата лозинка ако ја памтите или да поставите нова. {{fullurl:Special:Userlogin|wpName=$3&wpPassword=$4&returnto=Special:Preferences}}',
@@ -435,6 +430,7 @@ $1',
 'invalidemailaddress'        => 'Е-поштенската адреса не може да биде прифатена бидејќи има неважечки формат. Ве молиме, внесете важечки формат или испразнете го тоа поле.',
 'accountcreated'             => 'Сметката е направена',
 'accountcreatedtext'         => 'Сметката за $1 е направена.',
+'loginlanguagelabel'         => 'Јазик: $1',
 
 # Edit page toolbar
 'bold_sample'     => 'Задебелен текст',
@@ -513,7 +509,6 @@ $1',
 ''Поради тоа што викито има овозможено raw HTML, прегледот е скриен како обезбедување JavaScript напади.''
 
 <strong>Ако е ова е дозволен обид за уредување, ве молиме обидете се повторно. Ако сеуште не функционира, пробајте да се одјавите и повторно да се најавите.</strong>",
-'importing'                 => 'Увоз во тек $1',
 'editing'                   => 'Уредување на $1',
 'editinguser'               => 'Уредување на $1',
 'editingsection'            => 'Уредување на $1 (секција)',
@@ -800,7 +795,6 @@ $1',
 'uploadedfiles'               => 'Подигнати датотеки',
 'ignorewarning'               => 'Игнорирај ги предупредувањата и зачувај ја датотеката.',
 'ignorewarnings'              => 'Игнорирај ги сите предупредувања',
-'minlength'                   => 'Имињата на сликите мораат да имаат барем три букви.',
 'illegalfilename'             => 'Името на датотеката "$1" содржи знаци што не се дозволени во наслов на страници. Ве молиме преименувајте ја датотеката и подигнете ја пак.',
 'badfilename'                 => 'Името на сликата е променето во "$1".',
 'largefileserver'             => 'Датотеката е поголема од максималната дозволена големина.',
@@ -810,11 +804,6 @@ $1',
 [[Image:$1|thumb|center|$1]]',
 'fileexists-shared-forbidden' => 'Датотека со ова име веќе постои во заедничкиот склад; ве молиме вратете се и повторно подигнете ја датотеката под ново име. [[Image:$1|thumb|center|$1]]',
 'successfulupload'            => 'Успешно подигнување',
-'fileuploaded'                => 'Датотеката "$1" е успешно подигната. 
-Ве молиме следете ја оваа врска: ($2) до страницата за опис и пополнете 
-ги информациите за датотеката - од каде доаѓа, кога е 
-направена, и од кого, и било што друго што знаете за неа. Ако ова е слика, може да ја вметнете на 
-следниов начин: <tt><nowiki>[[{{ns:Image}}:$1|мини|Опис]]</nowiki></tt>',
 'uploadwarning'               => 'Предупредување при подигнување',
 'savefile'                    => 'Зачувај',
 'uploadedimage'               => 'подигнато "[[$1]]"',
@@ -836,7 +825,6 @@ $1',
 # Image list
 'imagelist'                 => 'Листа на слики',
 'imagelisttext'             => 'Подолу е листа на $1 подредени слики $2.',
-'imagelistforuser'          => 'Ова ги прикажува само сликите подигнати од $1.',
 'getimagelist'              => 'вчитување на листата',
 'ilsubmit'                  => 'Барај',
 'showlast'                  => 'Прикажи ги последните $1 подредени слики по $2.',
@@ -846,12 +834,6 @@ $1',
 'imgdelete'                 => 'избр',
 'imgdesc'                   => 'опис',
 'imgfile'                   => 'датотека',
-'imglegend'                 => 'Легенда: (опис) = прикажи/промени го описот на сликата.',
-'imghistory'                => 'Историја на сликата',
-'revertimg'                 => 'врт',
-'deleteimg'                 => 'избр',
-'deleteimgcompletely'       => 'Избриши ги сите верзии',
-'imghistlegend'             => 'Легенда: (мом) = ова е моменталната слика, (избр) = ја брише оваа стара верзија, (врт) = врати кон оваа стара верзија. <br /><i>Притиснете на датум за да ги видите сите слики пратени на тој датум</i>.',
 'imagelinks'                => 'Врски кон сликата',
 'linkstoimage'              => 'Следните страници ја користат оваа слика:',
 'nolinkstoimage'            => 'Нема страници кои ја користат оваа слика',
@@ -1015,11 +997,6 @@ $1',
 'watchlistfor'         => "(за '''$1''')",
 'nowatchlist'          => 'Немате елементи во вашите набљудувани страници.',
 'watchlistanontext'    => 'Ве молиме $1 за да гледате или менувате елементи во вашата листа на набљудувани страници.',
-'watchlistcount'       => "'''Имате $1 записи во вашата набљудувана листа, заедно со страници за разговор.'''",
-'clearwatchlist'       => 'Избриши ја листата за набљудување',
-'watchlistcleartext'   => 'Сигурно сакате да ги избришете?',
-'watchlistclearbutton' => 'Избриши ја листата на набљудувани страници',
-'watchlistcleardone'   => 'Вашата листа на набљудувани страници е избришана. $1 записи беа избришани.',
 'watchnologin'         => 'Не сте најавени',
 'watchnologintext'     => 'Мора да бидете [[Special:Userlogin|најавени]] за да се модифицира вашата листа на набљудувани страници.',
 'addedwatch'           => 'Додадено во набљудувани страници',
@@ -1032,25 +1009,16 @@ $1',
 'unwatchthispage'      => 'Престани набљудување',
 'notanarticle'         => 'Не е статија',
 'watchnochange'        => 'Ниедна од вашите набљудувани страници не беше уредувана во прикажаниот период.',
-'watchdetails'         => '* $1 набљудувани страници неброејќи ги страниците за разговор;
-* [[Special:Watchlist/edit|Прикажи и промени ја целосната листа на набљудувани страници]]
-* [[Special:Watchlist/clear|Ибриши ги сите страници]]',
+'watchlist-details'    => '$1 набљудувани страници неброејќи ги страниците за разговор.',
 'wlheader-enotif'      => '* Известувањето по е-пошта е вклучено.',
 'wlheader-showupdated' => "* Страниците кои се променети од вашата последна посета се прикажани со '''задебелени''' букви",
 'watchmethod-recent'   => 'Проверување на скорешните уредувања на набљудуваните страници',
 'watchmethod-list'     => 'Проверување на скорешните уредувања на набљудуваните страници',
-'removechecked'        => 'Отстрани ги означените елементи од набљудуваните страници',
 'watchlistcontains'    => 'Вие набљудувате $1 страници.',
-'watcheditlist'        => "Ова е азбучна листа на вашите 
-набљудувани страници. Означете ги полињата на страниците кои сакате да ги остраните од вашата листа и притиснете го копчето 'Отстрани го избраното' 
-на дното на екранот (бришењето на страница исто така ги брише и поврзаните статии за разговор, и обратно).",
-'removingchecked'      => 'Отстранување на избраните елементи од списокот...',
-'couldntremove'        => "Не може да се отстрани елементот '$1'...",
 'iteminvalidname'      => "Проблем со елементот '$1', неважечко име...",
 'wlnote'               => 'Подолу се последните $1 промени во последните <b>$2</b> часа.',
 'wlshowlast'           => 'Прикажи ги последните $1 часа $2 денови $3',
 'wlsaved'              => 'Ова е зачувана верзија од листата на набљудувани страници.',
-'wldone'               => 'Готово.',
 
 'enotif_mailer'      => '{{SITENAME}} Систем за известување',
 'enotif_reset'       => 'Означи ги сите страници како посетени',
@@ -1101,7 +1069,6 @@ $NEWPAGE
 'deletionlog'                 => 'дневник на бришењата',
 'reverted'                    => 'Вратено на претходната верзија',
 'deletecomment'               => 'Причина за бришење',
-'imagereverted'               => 'Враќањето на претходната верзија е успешно.',
 'rollback'                    => 'Врати промени',
 'rollback_short'              => 'Врати',
 'rollbacklink'                => 'Врати',
@@ -1121,9 +1088,7 @@ $NEWPAGE
 'protectedarticle'            => 'заштитена "[[$1]]"',
 'unprotectedarticle'          => 'отстранета заштита на "[[$1]]"',
 'protectsub'                  => '(Заштитување "$1")',
-'confirmprotecttext'          => 'Дали навистина сакате да ја заштитите оваа страница?',
 'confirmprotect'              => 'Потврдете ја заштитата',
-'protectmoveonly'             => 'Заштити само од преместувања',
 'protectcomment'              => 'Причина за заштитување',
 'unprotectsub'                => '(Отстранување на заштитата на "$1")',
 'protect-unchain'             => 'Отклучи ја можноста за преместување',
@@ -1248,8 +1213,8 @@ $NEWPAGE
 'ipb_cant_unblock'            => 'Грешка: $1 не постои. Можеби веќе е одблокиран.',
 'proxyblockreason'            => 'Вашата IP адреса е блокирана бидејќи е отворено прокси. Ве молиме контактирајте со вашиот доставувач на Интернет услуги или техничката поддршка и информирајте ги за овој сериозен безбедносен проблем.',
 'proxyblocksuccess'           => 'Готово.',
-'sorbsreason'                 => 'Вашата IP адреса е запишана како отворено прокси во [http://www.sorbs.net SORBS] DNSBL.',
-'sorbs_create_account_reason' => 'Вашата IP адреса е наведена како отворено прокси во [http://www.sorbs.net SORBS] DNSBL. Не можете да креирате сметка',
+'sorbsreason'                 => 'Вашата IP адреса е запишана како отворено прокси во DNSBL.',
+'sorbs_create_account_reason' => 'Вашата IP адреса е наведена како отворено прокси во DNSBL. Не можете да креирате сметка',
 
 # Developer tools
 'lockdb'              => 'Заклучи ја базата',
@@ -1288,7 +1253,6 @@ $NEWPAGE
 'newtitle'                => 'Кон новиот наслов',
 'movepagebtn'             => 'Премести ја страницата',
 'pagemovedsub'            => 'Преместувањето успеа',
-'pagemovedtext'           => 'Страницата "[[$1]]" е преместена на "[[$2]]".',
 'articleexists'           => 'Страница со тоа име веќе постои, или името што го избравте не е валидно. Ве молиме изберете друго име.',
 'talkexists'              => 'Самата страница беше преместена успешно, но страницата за разговор не можеше да биде преместена бидејќи веќе постои таква на новиот наслов. Ве молиме спојте ги рачно.',
 'movedto'                 => 'преместена како',
@@ -1329,7 +1293,6 @@ $NEWPAGE
 'allmessagesdefault'        => 'Текст по основно',
 'allmessagescurrent'        => 'Сегашен текст',
 'allmessagestext'           => 'Ова е листа на сите системски пораки досапни во МедијаВики: именскиот простор.',
-'allmessagesnotsupportedUI' => 'Моменталниот интерфејс јазик <b>$1</b> не е поддржан од Special:AllMessages на овој сајт.',
 'allmessagesnotsupportedDB' => 'Special:AllMessages не е поддржан бидејќи wgUseDatabaseMessages е исклучен.',
 'allmessagesfilter'         => 'Филтер за регуларни изрази:',
 'allmessagesmodified'       => 'Прикажи само изменети',
@@ -1375,7 +1338,7 @@ $NEWPAGE
 # Tooltip help for the actions
 'tooltip-pt-userpage'             => 'Мојата корисничка страница',
 'tooltip-pt-anonuserpage'         => 'Корисничка страница за IP адресата од која уредувате',
-'tooltip-pt-mytalk'               => 'Мојата страница за разговор ',
+'tooltip-pt-mytalk'               => 'Мојата страница за разговор',
 'tooltip-pt-anontalk'             => 'Разговор за уредувањата од оваа IP адреса',
 'tooltip-pt-preferences'          => 'Мои прилагодувања',
 'tooltip-pt-watchlist'            => 'Листа на страници кои сте избрале да ги набљудувате.',
@@ -1490,7 +1453,7 @@ $NEWPAGE
 'markedaspatrollederrortext' => 'Морате да внесете верзија за да ја означите како проверена.',
 
 # Image deletion
-'deletedrevision' => 'Избришана стара верзија $1.',
+'deletedrevision' => 'Избришана стара верзија $1',
 
 # Browsing diffs
 'previousdiff' => '< Претходна разлика',
@@ -1501,11 +1464,10 @@ $NEWPAGE
 'imagemaxsize' => 'Ограничи ги сликите на нивните описни страници до:',
 'thumbsize'    => 'Големина на мини-слика:',
 
+# Special:Newimages
 'newimages'    => 'Галерија на нови слики',
 'showhidebots' => '($1 ботови)',
 'noimages'     => 'Нема ништо.',
-
-'passwordtooshort' => 'Вашата лозинка е прекратка. Мора да има најмалку $1 знаци.',
 
 # Metadata
 'metadata'          => 'Метаподатоци',
@@ -1770,7 +1732,6 @@ $NEWPAGE
 # 'all' in various places, this might be different for inflected languages
 'recentchangesall' => 'сите',
 'imagelistall'     => 'сите',
-'watchlistall1'    => 'сите',
 'watchlistall2'    => 'сите',
 'namespacesall'    => 'сите',
 
@@ -1802,11 +1763,6 @@ $3
 
 Ако ова *не* сте вие, не одете на врската. Овој код за потврда ќе
 истече на $4.',
-
-# Inputbox extension, may be useful in other contexts as well
-'tryexact'       => 'Обиди се точно',
-'searchfulltext' => 'Барај низ целиот текст',
-'createarticle'  => 'Создади статија',
 
 # Scary transclusion
 'scarytranscludedisabled' => '[Интервики вклучувањето е оневозможено]',
@@ -1840,17 +1796,11 @@ $1
 $1',
 'confirm_purge_button' => 'Да',
 
-'youhavenewmessagesmulti' => 'Имате нови пораки на $1',
-
+# AJAX search
 'searchcontaining' => "Барам статии што содржат ''$1''.",
 'searchnamed'      => "Статии со име: ''$1''.",
 'articletitles'    => "Статии кои почнуваат со ''$1''",
 'hideresults'      => 'Сокриј резултати',
-
-# DISPLAYTITLE
-'displaytitle' => '(Врски до оваа страница како [[$1]])',
-
-'loginlanguagelabel' => 'Јазик: $1',
 
 # Multipage image navigation
 'imgmultipageprev' => '&larr; претходна страница',
@@ -1870,8 +1820,6 @@ $1',
 'table_pager_empty'        => 'Нема резултати',
 
 # Auto-summaries
-'autoredircomment' => 'Пренасочување кон [[$1]]', # This should be changed to the new naming convention, but existed beforehand
+'autoredircomment' => 'Пренасочување кон [[$1]]',
 
 );
-
-?>

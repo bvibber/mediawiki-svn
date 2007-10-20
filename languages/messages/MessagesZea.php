@@ -4,8 +4,11 @@
  *
  * @addtogroup Language
  * @author Rob Church <robchur@gmail.com>
+ * @author SQPRobin
  */
- 
+
+$fallback = 'nl';
+
 /**
  * Namespace names
  * (bug 8708)
@@ -31,4 +34,31 @@ $namespaceNames = array(
 	NS_CATEGORY_TALK    => 'Overleg_categorie',
 );
 
-?>
+$messages = array(
+'mytalk'     => 'Mien overleg',
+'navigation' => 'Navigaotie',
+
+'edit'           => 'Bewerken',
+'otherlanguages' => 'In aore taelen',
+
+# Short words for each namespace, by default used in the 'article' tab in monobook
+'nstab-main'    => 'Bladzie',
+'nstab-user'    => 'Gebruker',
+'nstab-special' => 'Speciaol',
+
+# Preferences page
+'mypreferences' => 'Mien vòkeuren',
+
+# Miscellaneous special pages
+'newpages-username' => 'Gebrukersnaem:',
+
+# Special:Allpages
+'nextpage' => 'Volgende bladzie ($1)',
+
+# Watchlist
+'mywatchlist' => 'Mien volglieste',
+
+# Contributions
+'mycontris' => 'Mien biedraegen',
+
+);

@@ -403,7 +403,7 @@ class QueryPage {
 						? ' class="not-patrolled"'
 						: '';
 					$html[] = $this->listoutput
-						? $format
+						? $line
 						: "<li{$attr}>{$line}</li>\n";
 				}
 			}
@@ -417,7 +417,7 @@ class QueryPage {
 						? ' class="not-patrolled"'
 						: '';
 					$html[] = $this->listoutput
-						? $format
+						? $line
 						: "<li{$attr}>{$line}</li>\n";
 				}
 			}
@@ -531,4 +531,4 @@ class QueryPage {
 	}
 }
 
-?>
+

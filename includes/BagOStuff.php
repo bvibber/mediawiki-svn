@@ -568,7 +568,7 @@ class eAccelBagOStuff extends BagOStuff {
  * Wrapper for XCache object caching functions; identical interface
  * to the APC wrapper
  */
-class XCacheBagOStuff extends APCBagOStuff {
+class XCacheBagOStuff extends BagOStuff {
 
 	/**
 	 * Get a value from the XCache object cache
@@ -709,6 +709,7 @@ class DBABagOStuff extends BagOStuff {
 
 	function delete( $key, $time = 0 ) {
 		wfProfileIn( __METHOD__ );
+		wfDebug( __METHOD__."($key)\n" );
 		$handle = $this->getWriter();
 		if ( !$handle ) {
 			return false;
@@ -744,4 +745,4 @@ class DBABagOStuff extends BagOStuff {
 	}
 }
 	
-?>
+

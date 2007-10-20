@@ -35,7 +35,7 @@ if (!defined('MEDIAWIKI')) {
  */
 abstract class ApiFormatBase extends ApiBase {
 
-	private $mIsHtml, $mFormat;
+	private $mIsHtml, $mFormat, $mUnescapeAmps;
 
 	/**
 	* Create a new instance of the formatter.
@@ -69,6 +69,18 @@ abstract class ApiFormatBase extends ApiBase {
 	}
 
 	/**
+	 * Specify whether or not ampersands should be escaped to '&amp;' when rendering. This
+	 * should only be set to true for the help message when rendered in the default (xmlfm)
+	 * format. This is a temporary special-case fix that should be removed once the help
+	 * has been reworked to use a fully html interface.
+	 *
+	 * @param boolean Whether or not ampersands should be escaped.
+	 */
+	public function setUnescapeAmps ( $b ) {
+		$this->mUnescapeAmps = $b;
+	}
+
+	/**
 	 * Returns true when an HTML filtering printer should be used.
 	 * The default implementation assumes that formats ending with 'fm' 
 	 * should be formatted in HTML. 
@@ -85,6 +97,7 @@ abstract class ApiFormatBase extends ApiBase {
 	function initPrinter($isError) {
 		$isHtml = $this->getIsHtml();
 		$mime = $isHtml ? 'text/html' : $this->getMimeType();
+		$script = wfScript( 'api' );
 
 		// Some printers (ex. Feed) do their own header settings,
 		// in which case $mime will be set to null
@@ -104,14 +117,14 @@ abstract class ApiFormatBase extends ApiBase {
 <?php
 
 
-			if (!$isError) {
+			if( !$isError ) {
 ?>
 <br/>
 <small>
-You are looking at the HTML representation of the <?=$this->mFormat?> format.<br/>
+You are looking at the HTML representation of the <?php echo( $this->mFormat ); ?> format.<br/>
 HTML is good for debugging, but probably is not suitable for your application.<br/>
-Please see "format" parameter documentation at the <a href='api.php'>API help</a>
-for more information.
+See <a href='http://www.mediawiki.org/wiki/API'>complete documentation</a>, or 
+<a href='<?php echo( $script ); ?>'>API help</a> for more information.
 </small>
 <?php
 
@@ -157,8 +170,11 @@ for more information.
 	* This method also replaces any '<' with &lt;
 	*/
 	protected function formatHTML($text) {
-		// encode all tags as safe blue strings
-		$text = ereg_replace('\<([^>]+)\>', '<span style="color:blue;">&lt;\1&gt;</span>', $text);
+		// Escape everything first for full coverage
+		$text = htmlspecialchars($text);
+
+		// encode all comments or tags as safe blue strings
+		$text = preg_replace('/\&lt;(!--.*?--|.*?)\&gt;/', '<span style="color:blue;">&lt;\1&gt;</span>', $text);
 		// identify URLs
 		$protos = "http|https|ftp|gopher";
 		$text = ereg_replace("($protos)://[^ \\'\"()<\n]+", '<a href="\\0">\\0</a>', $text);
@@ -168,6 +184,13 @@ for more information.
 		$text = ereg_replace("\\*[^<>\n]+\\*", '<b>\\0</b>', $text);
 		// make strings inside $ italic
 		$text = ereg_replace("\\$[^<>\n]+\\$", '<b><i>\\0</i></b>', $text);
+		
+		/* Temporary fix for bad links in help messages. As a special case,
+		 * XML-escaped metachars are de-escaped one level in the help message
+		 * for legibility. Should be removed once we have completed a fully-html
+		 * version of the help message. */
+		if ( $this->mUnescapeAmps )
+			$text = preg_replace( '/&amp;(amp|quot|lt|gt);/', '&\1;', $text );
 
 		return $text;
 	}
@@ -249,4 +272,3 @@ class ApiFormatFeedWrapper extends ApiFormatBase {
 		return __CLASS__ . ': $Id$';
 	}
 }
-?>

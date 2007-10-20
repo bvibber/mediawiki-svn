@@ -380,6 +380,7 @@ class ParserTest {
 				'hashLevels' => 2,
 				'transformVia404' => false,
 			),
+			'wgEnableUploads' => true,
 			'wgStyleSheetPath' => '/skins',
 			'wgSitename' => 'MediaWiki',
 			'wgServerName' => 'Britney Spears',
@@ -432,7 +433,7 @@ class ParserTest {
 			'watchlist', 'math', 'searchindex',
 			'interwiki', 'querycache',
 			'objectcache', 'job', 'redirect',
-			'querycachetwo'
+			'querycachetwo', 'archive', 'user_groups'
 		);
 		
 		// Allow extensions to add to the list of tables to duplicate;
@@ -602,7 +603,7 @@ class ParserTest {
 	}
 
 	/**
-	 * @desc delete the specified files, if they exist.
+	 * Delete the specified files, if they exist.
 	 * @param array $files full paths to files to delete.
 	 */
 	private static function deleteFiles( $files ) {
@@ -614,7 +615,7 @@ class ParserTest {
 	}
 
 	/**
-	 * @desc delete the specified directories, if they exist. Must be empty.
+	 * Delete the specified directories, if they exist. Must be empty.
 	 * @param array $dirs full paths to directories to delete.
 	 */
 	private static function deleteDirs( $dirs ) {
@@ -945,7 +946,7 @@ class DbTestRecorder extends TestRecorder  {
 
 		if( ! $this->db->tableExists( 'testrun' ) or ! $this->db->tableExists( 'testitem') ) {
 			print "WARNING> `testrun` table not found in database. Trying to create table.\n";
-			dbsource( 'testRunner.sql',  $this->db );
+			dbsource( dirname(__FILE__) . '/testRunner.sql',  $this->db );
 			echo "OK, resuming.\n";
 		}
 
