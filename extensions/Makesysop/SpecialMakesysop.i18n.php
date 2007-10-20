@@ -905,6 +905,10 @@ Tastează numele utilizatorului în cutie şi apasă butonul pentru a face din u
 	'group-steward-member' => 'стюард',
 	'grouppage-steward'    => '{{ns:project}}:Стюарды',
 ),
+'sd' => array(
+	'already_sysop' => 'ھيءُ يُوزر اڳي ئي منتظم آھي.',
+	'already_bureaucrat' => 'ھي يوزر اڳي ئي ڪامورو آھي.',
+),
 'sk' => array(
 	'makesysoptitle' => 'Urob z používateľa správcu',
 	'makesysoptext' => 'Tento formulár je používaný byrokratmi na udelenie stavu správca používateľom. 

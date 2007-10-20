@@ -74,6 +74,11 @@ function efMediaFunctionsMessages() {
 'mediafunctions-not-exist'     => '"$1" bestaat niet',
 ),
 
+'no' => array(
+'mediafunctions-invalid-title' => '«$1» er en ugyldig tittel',
+'mediafunctions-not-exist'     => '«$1» eksisterer ikke',
+),
+
 'yue' => array(
 'mediafunctions-invalid-title' => '"$1" 唔係一個有效嘅標題',
 'mediafunctions-not-exist'     => '"$1" 唔存在',

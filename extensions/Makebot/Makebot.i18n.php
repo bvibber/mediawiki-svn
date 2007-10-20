@@ -315,6 +315,10 @@ function efMakeBotMessages() {
 'makebot-logentryrevoke' => 'menarik status bot dari [[$1]]',
 ),
 
+'is' => array(
+'makebot-comment'         => 'Upplýsingar:',
+),
+
 /* Italian (BrokenArrow) */
 'it' => array(
 'makebot' => 'Assegna o revoca lo status di bot',
@@ -434,6 +438,16 @@ function efMakeBotMessages() {
 'makebot-logpagetext'     => 'Hic index omnes mutationes statui [[{{ns:project}}:Bot|Bot]] monstrat.',
 'makebot-logentrygrant'   => 'licuit statum bot pro [[$1]]',
 'makebot-logentryrevoke'  => 'removit statum bot usoris [[$1]]',
+),
+
+'li' => array(
+'makebot'                 => 'Gaef of nöm botsjtatus aaf',
+'makebot-username'        => 'Gebroekersnaam:',
+'makebot-search'          => 'OK',
+'makebot-change'          => 'Veranger de sjtatus:',
+'makebot-grant'           => 'Gaeve',
+'makebot-revoke'          => 'Innömme',
+'makebot-comment'         => 'Opmèrking:',
 ),
 
 /* Lao */
@@ -774,6 +788,10 @@ function efMakeBotMessages() {
 'makebot-logpage'         => 'Log fó ka hasai kuana bot',
 'makebot-logentrygrant'   => 'fó kuana bot ba [[User:$1|$1]]',
 'makebot-logentryrevoke'  => 'hasai kuana bot [[User:$1|$1]] nian',
+),
+
+'tg' => array(
+'makebot-username'        => 'Корбар:',
 ),
 
 /* Urdu */

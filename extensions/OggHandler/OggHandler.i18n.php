@@ -445,6 +445,22 @@ $messages = array(
 	'ogg-desc-link' => 'Over dit bestand',
 	),
 
+	'no' => array(
+	'ogg-short-audio' => 'Ogg $1 lydfil, $2',
+	'ogg-short-video' => 'Ogg $1 videofil, $2',
+	'ogg-short-general' => 'Ogg $1 mediefil, $2',
+	'ogg-long-audio' => '(Ogg $1 lydfil, lengde $2, $3)',
+	'ogg-long-video' => '(Ogg $1 videofil, lengde $2, $4×$5 piksler, $3)',
+	'ogg-long-multiplexed' => '(Sammensatt ogg lyd-/videofil, $1, lengde $2, $4×$5 piksler, $3 til sammen)',
+	'ogg-long-general' => '(Ogg mediefil, lengde $2, $3)',
+	'ogg-long-error' => '(Ugyldig ogg-fil: $1)',
+	'ogg-play' => 'Spill',
+	'ogg-pause' => 'Pause',#identical but defined
+	'ogg-stop' => 'Stopp',
+	'ogg-play-video' => 'Spill av video',
+	'ogg-play-sound' => 'Spill av lyd',
+	),
+
 	'pl' => array(
 	'ogg-short-audio' => 'Plik dźwiękowy Ogg $1, $2',
 	'ogg-short-video' => 'Plik wideo Ogg $1, $2',

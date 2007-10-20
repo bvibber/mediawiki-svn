@@ -202,6 +202,27 @@ On peut l’utiliser pour autoriser des non-administrateurs à révoquer des van
 'giverollback-logentryrevoke' => 'heeft terugdraairechten ingetrokken voor [[$1]]',
 ),
 
+'no' => array(
+'giverollback' => 'Gi eller fjern tilbakerullingsrettigheter',
+'giverollback-header' => '\'\'\'En lokal byråkrat kun bruke denne siden til å gi eller fjerne brukeres [[Help:Tilbakerulling|tilbakerullingsrettigheter]].\'\'\'<br />Dette kan brukes for å tillate brukere som ikke er administratorer å tilbakestille hærverk raskt. Dette burde gis i henhold til aktuelle retningslinjer.',
+'giverollback-username' => 'Brukernavn:',
+'giverollback-search' => 'Gå',
+'giverollback-hasrb' => '[[User:$1|$1]] har tilbakerullingsrettigheter.',
+'giverollback-norb' => '[[User:$1|$1]] har ikke tilbakerullingsrettigheter.',
+'giverollback-toonew' => '[[User:$1|$1]] er for ny til å få tilbakerullingsrettigheter.',
+'giverollback-sysop' => '[[User:$1|$1]] er en administrator, og har allerede tilbakerullingsrettigheter.',
+'giverollback-change' => 'Endre status:',
+'giverollback-grant' => 'Gi',
+'giverollback-revoke' => 'Fjern',
+'giverollback-comment' => 'Kommentar:',
+'giverollback-granted' => '[[User:$1|$1]] har nå tilbakerullingsrettigheter.',
+'giverollback-revoked' => '[[User:$1|$1]] har ikke lenger tilbakerullingsrettigheter.',
+'giverollback-logpage' => 'Logg for endring av tilbakerullingsrettigheter',
+'giverollback-logpagetext' => 'Dette er en logg over endringer i brukeres [[Help:Tilbakerulling|tilbakerullingsrettigheter]].',
+'giverollback-logentrygrant' => 'ga [[$1]] tilbakerullingsrettigheter',
+'giverollback-logentryrevoke' => 'fjernet tilbakerullingsrettigheter fra [[$1]]',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'giverollback' => 'Udeliť alebo odobrať právo rollback',

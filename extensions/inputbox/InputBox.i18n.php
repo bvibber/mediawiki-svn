@@ -283,7 +283,9 @@ function efInputBoxMessages() {
 ),
 
 'li' => array(
-	'createarticle' => 'Maak artikel aan',
+	'tryexact'                => 'Perbeer exacte euvereinkoms',
+	'searchfulltext'          => 'Zeuk dèr volledige tèks',
+	'createarticle'           => 'Maak \'n artikel aan',
 ),
 
 'lo' => array(
@@ -380,6 +382,10 @@ function efInputBoxMessages() {
 	'tryexact'       => 'Строгий поиск',
 	'searchfulltext' => 'Полнотекстовый поиск',
 	'createarticle'  => 'Создать статью',
+),
+
+'sd' => array(
+	'createarticle'           => 'نئون مضمون لکو',
 ),
 
 'sk' => array(

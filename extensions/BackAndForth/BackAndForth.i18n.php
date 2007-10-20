@@ -29,6 +29,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Nakaagi ($1)',
 ),
 
+'br' => array(
+	'backforth-next' => 'War-lerc\'h ($1)',
+	'backforth-prev' => 'Kent ($1)',
+),
+
 'de' => array(
 	'backforth-next' => 'Nächste ($1)',
 	'backforth-prev' => 'Vorherige ($1)',

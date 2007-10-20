@@ -116,6 +116,9 @@ Alternativ kannst du auch die externen Suchmöglichkeiten nutzen:\n",
 	'searchincategory'      => 'in Kategorie',
 
 );
+$wgLuceneSearchMessages['el'] = array(
+	'lucenefallback'        => 'Υπήρξε κάποιο πρόβλημα με την αναζήτηση στο wiki. Αυτό είναι μάλλον προσωρινό. Προσπαθήστε ξανά αργότερα ή πραγματοποιήστε την αναζήτησή σας στο wiki μέσω μιας εξωτερικής υπηρεσίας αναζήτησης:',
+);
 $wgLuceneSearchMessages['eo'] = array(
 	'searchnumber'          => '<strong>Rezultoj $1-$2 el $3</strong>',
 	'searchprev'            => '&#x00AB; <span style=\'font-size: small\'>Antaŭa</span>',
@@ -287,6 +290,9 @@ atau gunakan layanan pencari eksternal:\n"
 
 $wgLuceneSearchMessages['is'] = array(
 	'searchdidyoumean'      => 'Áttirðu við: "<a href="$1">$2</a>"?',
+	'lucenepowersearchtext' => 'Leita í eftirfarandi nafnrýmum:
+$1
+Leita að $3 $9',
 );
 
 $wgLuceneSearchMessages['it'] = array(

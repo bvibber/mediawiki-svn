@@ -26,6 +26,10 @@ $wgNewuserlogMessages['am'] = array(
 	'newuserlogpagetext'       => 'ይህ መዝገብ ወደ አባልነት የገቡትን ብዕር ስሞች ይዘርዝራል።',
 	'newuserlog-create-entry'  => 'አዲስ አባል',
 );
+$wgNewuserlogMessages['an'] = array(
+	'newuserlogpage'           => 'Rechistro de nuebos usuarios',
+	'newuserlog-create-entry'  => 'Nuebo usuario',
+);
 $wgNewuserlogMessages['ar'] = array(
 	'newuserlogpage'           => 'سجل إنشاء الحسابات الجديدة',
 	'newuserlogpagetext'       => 'هذا سجل بعمليات إنشاء الحسابات الجديدة',
@@ -52,6 +56,12 @@ $wgNewuserlogMessages['de'] = array(
 	'newuserlogpagetext'       => 'Dies ist ein Logbuch für neu erstellte Benutzerkonten.',
 	'newuserlog-create-entry'  => 'Benutzer wurde neu registriert',
 	'newuserlog-create2-entry' => 'erstellte Benutzerkonto für $1',
+);
+$wgNewuserlogMessages['el'] = array(
+	'newuserlogpage'           => 'Αρχείο δημιουργίας χρηστών',
+	'newuserlogpagetext'       => 'Αυτό είναι το αρχείο δημιουργίας χρηστών.',
+	'newuserlog-create-entry'  => 'Νέος χρήστης',
+	'newuserlog-create2-entry' => 'δημιουργία λογαριασμού: $1',
 );
 $wgNewuserlogMessages['eo'] = array(
 	'newuserlogpage'           => 'Uzantokreada loglibro',
@@ -115,7 +125,9 @@ $wgNewuserlogMessages['id'] = array(
 	'newuserlog-create2-entry' => 'mendaftarkan akun untuk $1',
 );
 $wgNewuserlogMessages['is'] = array(
+	'newuserlogpage'           => 'Skrá yfir nýja notendur',
 	'newuserlog-create-entry'  => 'Nýr notandi',
+	'newuserlog-create2-entry' => 'bjó til notanda fyrir $1',
 );
 $wgNewuserlogMessages['it'] = array(
 	'newuserlogpage'           => 'Registro nuovi utenti',
@@ -272,6 +284,9 @@ $wgNewuserlogMessages['ur'] = array(
 	'newuserlogpage'           => 'نوشتۂ آمد صارف',
 	'newuserlogpagetext'       => 'یہ نۓ صارفوں کی آمد کا نوشتہ ہے',
 	'newuserlog-create-entry'  => 'صارف جدید',
+);
+$wgNewuserlogMessages['vls'] = array(
+	'newuserlogpage'           => 'Logboek nieuwe gebrukers',
 );
 $wgNewuserlogMessages['wa'] = array(
 	'newuserlogpage'           => 'Djournå des noveas uzeus',

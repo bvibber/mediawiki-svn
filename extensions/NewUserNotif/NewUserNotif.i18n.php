@@ -44,6 +44,11 @@ Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 	'newusernotifbody' => "Hallo $1.\n\nEr is een nieuwe gebruiker $2 aangemaakt om $3 op $4.",
 ),
 
+'no' => array(
+'newusernotifsubj' => 'Beskjed om ny bruker for $1',
+'newusernotifbody' => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
+),
+
 'tet' => array(
 'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
 'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
@@ -51,7 +56,7 @@ Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 
 'tet' => array(
 'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
-'newusernotifbody' => 'Olá $1, uza-na\'in foun, $2, nakria iha $3 iha loron $4.',
+'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
 ),
 
 'yue' => array(

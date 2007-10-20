@@ -46,6 +46,18 @@ this function sparingly.",
 'querysuccessful'  => 'Matriumpo an paghapot',
 ),
 
+'br' => array(
+'asksql'           => 'Reked SQL',
+'asksqltext'       => 'Ober gant ar furmskrid a-is evit sevel ur reked war-eeun ouzh ar bank titouroù.
+Ober gant unskraboù(\'evel-hen\') evit termeniñ an neudennad.
+An dra-se a c\'hall kargañ ar servijer spontus, setu n\'emañ ket da vezañ implijet re alies.',
+'sqlislogged'      => 'Notennit mat eo marilhet an holl rekedoù.',
+'sqlquery'         => 'Sevel ur reked',
+'querybtn'         => 'Kas ar reked',
+'selectonly'       => 'N\'eo aotreet nemet ar rekedoù lenn-hepken',
+'querysuccessful'  => 'Reked disoc\'het',
+),
+
 /* Greece */
 'el' => array(
 'asksql'           => 'ερώτημα SQL',

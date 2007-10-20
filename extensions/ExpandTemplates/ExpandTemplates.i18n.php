@@ -92,6 +92,7 @@ $wgExpandTemplatesMessages['fi'] = array(
 );
 $wgExpandTemplatesMessages['fo'] = array(
 	'expand_templates_ok'              => 'Í lagi',
+	'expand_templates_preview'         => 'Forskoðan',
 );
 $wgExpandTemplatesMessages['fr'] = array(
 	'expandtemplates'                  => 'Expansion des modèles',

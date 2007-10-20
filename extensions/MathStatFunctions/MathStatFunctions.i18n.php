@@ -47,6 +47,11 @@ $wgMathStatFunctionsMessages['nl'] = array(
         'msfunc_inf' => "Resulterende waarde is oneindig" ,
         'msfunc_div_zero' => "Deling door nul",
 );
+$wgMathStatFunctionsMessages['no'] = array(
+	'msfunc_nan' => 'Resultatverdien er ikke et tall',
+	'msfunc_inf' => 'Resultatverdien er uendelig',
+	'msfunc_div_zero' => 'Deling på null',
+);
 $wgMathStatFunctionsMessages['sr-ec'] = array(
         'msfunc_nan' => "Резултат није број" ,
         'msfunc_inf' => "Резултат је бесконачан" ,

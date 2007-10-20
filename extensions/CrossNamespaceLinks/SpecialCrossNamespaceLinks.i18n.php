@@ -78,6 +78,9 @@ $wgCrossNamespaceLinksMessages['id'] = array(
 	'crossnamespacelinks-summary' => 'Halaman ini memberikan daftar pranala dari suatu halaman di ruang nama utama ke halaman lain di ruang nama lain (kecuali {{ns:special}}, {{ns:talk}}, {{ns:project}} dan {{ns:template}} namespaces), yang tidak dianjurkan untuk digunakan.',
 	'crossnamespacelinkstext' => '$1: $2 terpaut ke $3'
 );
+$wgCrossNamespaceLinksMessages['is'] = array(
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|tengja|tengir}} $3',
+);
 $wgCrossNamespaceLinksMessages['it'] = array(
 	'crossnamespacelinks'         => 'Collegamenti tra namespace',
 	'crossnamespacelinks-summary' => 'Questa pagina presenta un elenco di collegamenti tra le pagine del namespace principale e le pagine di altri namespace, che non dovrebbero essere usati.

@@ -30,6 +30,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Despensa, dai tinotogotan na itagama an titulo kaining artikulo.',
 ),
 
+'br' => array(
+	'block_title_error_page_title' => 'Titl direizh',
+	'block_title_error' => 'Ho tigarez met n\'eo ket aotreet enrollañ titl ar pennad-mañ.',
+),
+
 'de' => array(
 	'block_title_error_page_title' => 'Sperre Artikelname',
 	'block_title_error'            => 'Entschuldigung, aber ein Artikel mit diesem Namen darf nicht gespeichert werden.',

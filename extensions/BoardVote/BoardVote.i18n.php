@@ -172,10 +172,56 @@ $wgBoardVoteMessages['bcl'] = array(
 	'boardvote_welcome'       => 'Dagos \'\'\'$1\'\'\'!',
 );
 $wgBoardVoteMessages['br'] = array(
+	'boardvote'               => 'Dilennadeg Kuzul-merañ Diazezadur Wikimedia',
+	'boardvote_entry'         => '* [[Special:Boardvote/vote|Vot]]
+* [[Special:Boardvote/list|Roll ar mouezhioù evit poent]]
+* [[Special:Boardvote/dump|Enrolladennoù sifrennet]]',
+	'boardvote_intro_change'  => '<p>Mouezhiet hoc\'h eus c\'hoazh. Distreiñ war ho vot a c\'hallit ober koulskoude en ur implijout ar furmskrid a-is. Mar plij, klikit war ar logoù a-dal da anv kement emstriver aprouet ganeoc\'h.</p>',
+	'boardvote_entered'       => 'Trugarez vras, enrollet eo bet ho mouezh.
+
+Mar karit e c\'hallit enrollañ an elfennoù da-heul. Setu an titouroù evit ho vot :
+
+<pre>$1</pre>
+
+Sifrennet eo bet gant alc\'hwez foran Dilennadeg ar Verourien :
+
+<pre>$2</pre>
+
+Setu ar stumm sifrennet anezhañ. Dispaket e vo ent foran war [[Special:Boardvote/dump]].
+
+<pre>$3</pre>
+
+[[Special:Boardvote/entry|Kent]]',
+	'boardvote_nosession'     => 'N\'hallan ket termeniñ hoc\'h anv implijer war Wikimedia. Trugarez d\'en em lugañ war ar wiki m\'oc\'h bet anvet ha kit da <nowiki>[[Special:Boardvote]]</nowiki>. Ret eo deoc\'h implijout ur gont gant da nebeutañ $1 degasadenn a-raok an $2, ha gant ur c\'hemm kentañ a-raok an $3.',
+	'boardvote_notloggedin'   => 'N\'oc\'h ket luget. Evit votiñ e rankit implijout ur gont gant da nebeutañ $1 degasadenn a-raok an $2 ha gant ur c\'hemm kentañ a-raok an $3.',
+	'boardvote_notqualified'  => 'N\'hallit ket votiñ en dilennadeg-mañ. Ret eo deoc\'h bezañ graet $3 kemm a-raok an $2 hag ho kemm kentañ a rank bezañ bet graet a-raok an $5',
 	'boardvote_novotes'       => 'Den n\'eus votet c\'hoazh.',
 	'boardvote_time'          => 'Eur',
 	'boardvote_user'          => 'Implijer',
 	'boardvote_edits'         => 'Degasadennoù',
+	'boardvote_days'          => 'Deiz',
+	'boardvote_ua'            => 'Dileuriad an implijer',
+	'boardvote_listintro'     => '<p>setu aze ur roll eus an holl votoù bet enrollet evit ar mare. $1 evit ar roadennoù sifrennet.</p>',
+	'boardvote_dumplink'      => 'Klikañ amañ',
+	'boardvote_submit'        => 'Mat eo',
+	'boardvote_strike'        => 'Barrenniñ',
+	'boardvote_unstrike'      => 'Divarrenniñ',
+	'boardvote_needadmin'     => 'An ober-mañ n\'hall bezañ kaset da benn nemet gant merourien.',
+	'boardvote_sitenotice'    => '<a href="{{localurle:Special:Boardvote/vote}}">Dilennadeg Kuzul-merañ Wikimedia</a>:  Vot digor betek an 12 a viz Gouere',
+	'boardvote_notstarted'    => 'N\'eo ket digor ar vot c\'hoazh',
+	'boardvote_closed'        => 'Serr eo ar vot bremañ, gwelet [http://meta.wikimedia.org/wiki/Elections_for_the_Board_of_Trustees_of_the_Wikimedia_Foundation%2C_2006/En pajenn an dilennadeg evit an disoc\'hoù] dizale.',
+	'boardvote_edits_many'    => 'kalz',
+	'group-boardvote'         => 'Izili eus ar C\'huzul-merañ a vot',
+	'group-boardvote-member'  => 'Ezel eus ar c\'huzul-merañ a vot',
+	'grouppage-boardvote'     => '{{ns:project}} : ezel eus ar chuzul-merañ a vot',
+	'boardvote_blocked'       => 'Ho tigarez, stanket oc\'h bet war ar wiki m\'emaoc\'h enrollet. N\'eo ket aotreet an izili stanket da votiñ.',
+	'boardvote_welcome'       => 'Degemer mat \'\'\'$1\'\'\'!',
+	'go_to_board_vote'        => 'Dilennadeg Kuzul-merañ Wikimedia 2007',
+	'boardvote_redirecting'   => 'Evit gwellaat ar surentez hag an dreuzwelusted eo bet aozet ar votadeg adal ur servijer kontrollet ha dizalc\'h diavaez.
+
+Adkaset e viot war-du ar servijer diavaez-se a-benn 20 eilenn. [$1 Klikañ amañ] evit mont di diouzhtu.
+
+Ur c\'hemenn surentez diwall a-zivout un testeni disin a c\'hallo dont war wel marteze.',
 );
 $wgBoardVoteMessages['ca'] = array(
 	'boardvote'               => 'Eleccions al Consell d\'Administració de la Fundació Wikimedia',
@@ -328,6 +374,13 @@ Du wirst in 20 Sekunden zu diesem externen Server weitergeleitet. [$1 klicke hie
 
 Eine Sicherheitswarnung über ein unsigniertes Zertifikat kann angezeigt werden.',
 );
+$wgBoardVoteMessages['el'] = array(
+	'boardvote_redirecting'   => 'Για καλύτερη ασφάλεια και διαφάνεια, η ψηφοφορία διεξάγεται σε εξωτερικό, ανεξάρτητα ελεγχόμενο server.
+
+Θα μεταφερθείτε αυτόματα στον εξωτερικό αυτό server σε 20 δευτερόλεπτα. [$1 Πατήστε εδώ] για να μεταφερθείτε εκεί άμεσα.
+
+Μπορεί να εμφανιστεί μια προειδοποίηση ασφάλειας για ένα μη επικυρωμένο πιστοποιητικό.',
+);
 $wgBoardVoteMessages['es'] = array(
 	'boardvote_redirecting'   => 'Para mejorar la seguridad y la transparencia, la votación se está realizando en un servidor externo y controlado independientemente.
 
@@ -366,6 +419,9 @@ $wgBoardVoteMessages['fi'] = array(
 	'boardvote_edits_many'    => 'monta',
 	'boardvote_blocked'       => 'Valitettavasti muokkausestosi projektissa johon olet kirjautunut estää sinua äänestämästä.',
 	'boardvote_welcome'       => 'Tervetuloa \'\'\'$1\'\'\'!',
+);
+$wgBoardVoteMessages['fo'] = array(
+	'boardvote_days'          => 'Dagar',
 );
 $wgBoardVoteMessages['fr'] = array(
 	'boardvote'               => "Élections au conseil d’administration de la Wikimedia Foundation",

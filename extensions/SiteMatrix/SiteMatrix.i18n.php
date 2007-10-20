@@ -16,6 +16,10 @@ $wgSiteMatrixMessages['en'] = array(
 $wgSiteMatrixMessages['af'] = array(
 	"sitematrix" => "Lys van Wikimedia-wiki's",
 );
+$wgSiteMatrixMessages['an'] = array(
+	'sitematrix' => 'Lista de wikis de Wikimedia',
+	'sitematrix-language' => 'Lenguache',
+);
 $wgSiteMatrixMessages['ar'] = array(
 	'sitematrix' => 'قائمة بمشاريع ويكيميديا',
 	'sitematrix-language' => 'اللغة',
@@ -137,6 +141,12 @@ $wgSiteMatrixMessages['la'] = array(
 	'sitematrix-language' => 'Lingua',
 	'sitematrix-project' => 'Inceptum, nexus ad inceptum, et nexus ad linguam',
 	'sitematrix-others' => 'Alii incepta Vicimediorum',
+);
+$wgSiteMatrixMessages['li'] = array(
+	'sitematrix' => 'Lies van Wikimedia wiki\'s',
+	'sitematrix-language' => 'Taal',
+	'sitematrix-project' => 'Naam van \'t perjèk, interperjèk link enne interwiki link',
+	'sitematrix-others' => 'Anger perjèkter van Wikimedia',
 );
 $wgSiteMatrixMessages['lo'] = array(
 	"sitematrix" => "ລາຍການ wiki ໃນ Wikimedia",

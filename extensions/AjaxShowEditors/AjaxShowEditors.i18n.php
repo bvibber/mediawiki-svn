@@ -97,6 +97,11 @@ $wgAjaxShowEditorsMessages['kk-kz'] = array(
 	'ajax-se-pending' => 'жаңарту күтілуде... (бұл қабышақты нұқыңыз, немесе өңдеуді бастаңыз)',
 	'ajax-se-idling' => '($1 s бұрын)',
 );
+$wgAjaxShowEditorsMessages['li'] = array(
+	'ajax-se-title' => 'Memènteel aant bewèrke:',
+	'ajax-se-pending' => 'Herfrisse aant äöbere... (klik op deze bóks of sjtart \'t bewèrke)',
+	'ajax-se-idling' => '($1s geleje)',
+);
 $wgAjaxShowEditorsMessages['nl'] = array(
 	'ajax-se-title' => 'Bezig met het bewerken van:',
 	'ajax-se-pending' => 'moet nog bijgewerkt worden ... (klik op deze knop of begin met bewerken)',

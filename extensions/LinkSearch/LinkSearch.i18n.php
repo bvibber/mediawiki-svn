@@ -99,6 +99,9 @@ $wgLinkSearchMessages['id'] = array(
 	'linksearch-line'  => '$1 terpaut dari $2',
 	'linksearch-error' => '\'\'Wildcards\'\' hanya dapat digunakan di bagian awal dari nama host.'
 );
+$wgLinkSearchMessages['is'] = array(
+	'linksearch'       => 'Leita að vefföngum',
+);
 $wgLinkSearchMessages['it'] = array(
 	'linksearch'       => 'Ricerca collegamenti esterni',
 	'linksearch-pat'   => 'Pattern di ricerca:',
