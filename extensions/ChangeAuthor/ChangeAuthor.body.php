@@ -149,11 +149,12 @@ class ChangeAuthor extends SpecialPage
 				return $retval;
 		}
 		
-		private function buildRevisionLine($rev, $isFirst = false, $isLast = false)
+		private function buildRevisionLine($rev, $title, $isFirst = false, $isLast = false)
 		{
 				// Builds a line for revision $rev
 				// Helper to buildRevisionList() and buildOneRevForm()
 				// $rev: Revision object
+				// $title: Title object
 				// $isFirst: Set to true if $rev is the first revision
 				// $isLast: Set to true if $rev is the last revision
 				// Returns: HTML
@@ -162,14 +163,14 @@ class ChangeAuthor extends SpecialPage
 				if($isFirst)
 						$curLink = wfMsgExt('cur', array('escape'));
 				else
-						$curLink = $this->skin->makeKnownLinkObj($rev->getTitle(),
+						$curLink = $this->skin->makeKnownLinkObj($title,
 									wfMsgExt('cur', array('escape')),
 									"oldid={$rev->getId()}&diff=cur");
 									
 				if($isLast)
 						$lastLink = wfMsgExt('last', array('escape'));
 				else
-						$lastLink = $this->skin->makeKnownLinkObj($rev->getTitle(),
+						$lastLink = $this->skin->makeKnownLinkObj($title,
 									wfMsgExt('last', array('escape')),
 									"oldid=prev&diff={$rev->getId()}");
 									
@@ -177,7 +178,7 @@ class ChangeAuthor extends SpecialPage
 				global $wgLang;
 				$date = $wgLang->timeanddate(wfTimeStamp(TS_MW, $rev->getTimestamp()), true);
 				if($rev->userCan(Revision::DELETED_TEXT))
-						$link = $this->skin->makeKnownLinkObj($rev->getTitle(), $date, "oldid={$rev->getId()}");
+						$link = $this->skin->makeKnownLinkObj($title, $date, "oldid={$rev->getId()}");
 				else
 						$link = $date;
 				
@@ -193,7 +194,7 @@ class ChangeAuthor extends SpecialPage
 						else
 								$stxt = wfMsgHtml('historysize', $wgLang->formatNum( $size ) );
 				}
-                $comment = $this->skin->commentBlock($rev->getComment(), $rev->getTitle());
+                $comment = $this->skin->commentBlock($rev->getComment(), $title);
 				
 				// Now put it all together
 				return "<li>($curLink) ($lastLink) $link . . $userBox ($userText) $stxt $comment</li>\n";
@@ -240,7 +241,7 @@ class ChangeAuthor extends SpecialPage
 				$retval .= Xml::openElement('ul');
 				$count = count($revs);
 				foreach($revs as $i => $rev)
-						$retval .= $this->buildRevisionLine($rev, ($i == 0), ($i == $count - 1));
+						$retval .= $this->buildRevisionLine($rev, $title, ($i == 0), ($i == $count - 1));
 				$retval .= Xml::closeElement('ul');
 				$retval .= Xml::closeElement('fieldset');
 				$retval .= Xml::closeElement('form');
@@ -270,7 +271,7 @@ class ChangeAuthor extends SpecialPage
 				}
 				$retval .= Xml::element('h2', array(), wfMsg('changeauthor-revview', $rev->getId(), $rev->getTitle()->getPrefixedText()));
 				$retval .= Xml::openElement('ul');
-				$retval .= $this->buildRevisionLine($rev);
+				$retval .= $this->buildRevisionLine($rev, $rev->getTitle());
 				$retval .= Xml::closeElement('ul');
 				$retval .= Xml::closeElement('fieldset');
 				$retval .= Xml::closeElement('form');
