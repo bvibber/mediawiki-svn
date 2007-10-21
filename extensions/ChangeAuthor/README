@@ -9,8 +9,10 @@ TABLE OF CONTENTS
 4B. Creating a new group
 5. Using Special:ChangeAuthor
 6. The changeauth log
-7. Contact
-8. Credits
+7. Licensing
+8. Translating ChangeAuthor
+9. Contact
+10. Credits
 
 
 1. INTRODUCTION
@@ -63,8 +65,14 @@ NOTE: In the event you have both a page called 12345 and a revision ID 12345, yo
 6. THE CHANGEAUTH LOG
 Every time someone changes a revision's author, the change appears both in Special:Recentchanges and in the changeauth log. You can access this log through Special:Log/changeauth. Every log entry includes the user who made the change, the revision ID and page the change was made to, and the old and new author of the revision. You can also filter the log by user and by page.
 
-7. CONTACT
+7. LICENSING
+ChangeAuthor is made available under the conditions of the GNU General Public License version 3. For more information, see http://www.gnu.org/copyleft/gpl.html
+
+8. TRANSLATING CHANGEAUTHOR
+If ChangeAuthor hasn't been translated to your language, feel free to do so. Simply translate all the messages in the ChangeAuthor.i18n.php file, and e-mail the translations to the maintainer (see the contact section below). They will add your translations to SVN.
+
+9. CONTACT
 ChangeAuthor is currently maintained by Roan Kattouw. If you have any questions, complaints, feature requests, found a bug, or any other reason to contact the maintainer, please send your e-mails to roan.kattouw@home.nl and mention "ChangeAuthor" in the subject.
 
-8. CREDITS
+10. CREDITS
 ChangeAuthor was written for the Bokt Wiki <http://www.bokt.nl/wiki/> by Roan Kattouw <roan.kattouw@home.nl>
