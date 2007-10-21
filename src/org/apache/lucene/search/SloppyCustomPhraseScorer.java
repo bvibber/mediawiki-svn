@@ -32,8 +32,8 @@ final class SloppyCustomPhraseScorer extends CustomPhraseScorer {
 
     SloppyCustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, Similarity similarity,
                        int slop, byte[] norms, ScoreValue val, boolean beginBoost, PhraseInfo phInfo, Scorer stemtitleScorer, Scorer relatedScorer,
-                       Weight stemtitleWeight, Weight relatedWeight, IndexReader reader, boolean max) {
-   	 super(weight, tps, offsets, similarity, norms, val, beginBoost, phInfo, stemtitleScorer, relatedScorer, stemtitleWeight, relatedWeight, reader, max);
+                       Weight stemtitleWeight, Weight relatedWeight, boolean max) {
+   	 super(weight, tps, offsets, similarity, norms, val, beginBoost, phInfo, stemtitleScorer, relatedScorer, stemtitleWeight, relatedWeight, max);
    	 this.slop = slop;
     }
 

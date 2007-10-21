@@ -307,9 +307,16 @@ public class FastWikiTokenizerEngine {
 			nonContentTokens.add(t);
 			return;
 		} else if(t.getPositionIncrement() == FIRST_SECTION_GAP){
-			for(Token tt : nonContentTokens)
+			boolean first = true;
+			for(Token tt : nonContentTokens){
+				if(first){
+					tt.setPositionIncrement(FIRST_SECTION_GAP);
+					first = false;
+				}
 				tokens.add(tt); // re-add nonconent tokens
+			}
 			nonContentTokens.clear();
+			t.setPositionIncrement(PARAGRAPH_GAP);
 		}
 		tokens.add(t);
 	}
@@ -799,9 +806,15 @@ public class FastWikiTokenizerEngine {
 		}
 		addToken();
 		if(nonContentTokens.size() != 0){
+			boolean first = true;
 			// flush any remaning tokens from initial templates, etc..
-			for(Token tt : nonContentTokens)
+			for(Token tt : nonContentTokens){
+				if(first){
+					tt.setPositionIncrement(FIRST_SECTION_GAP);
+					first = false;
+				}
 				tokens.add(tt);
+			}
 			nonContentTokens.clear();
 		}
 		return tokens;

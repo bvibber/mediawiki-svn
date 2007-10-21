@@ -149,6 +149,18 @@ public class GlobalConfiguration {
 		}
 	}
 	
+	@SuppressWarnings("unchecked")
+	protected void checkSubdivisions(String dbname, String type){
+		Hashtable<String,Hashtable<String,String>> typeParams = database.get(dbname);
+		Hashtable<String,String> params = typeParams.get(type);
+		String subdiv = params.get("subdivisions");
+		if(subdiv != null){
+			int count = Integer.parseInt(subdiv);
+			for(int i=1;i<=count;i++)
+				typeParams.put(type+".sub"+i,(Hashtable<String, String>) params.clone());
+		}
+	}
+	
 	/** 
 	 * Check if the setup is correct,i.e. there is indexer and searcher
 	 * for each db  ...
@@ -170,12 +182,15 @@ public class GlobalConfiguration {
 					database.get(dbname).put("mainpart",new Hashtable<String,String>());
 				if(!types.contains("restpart"))
 					database.get(dbname).put("restpart",new Hashtable<String,String>());
+				checkSubdivisions(dbname,"mainpart");
+				checkSubdivisions(dbname,"restpart");
 			} else if(types.contains("split")){
 				int factor = Integer.parseInt(database.get(dbname).get("split").get("number"));
 				for(int i=1;i<factor+1;i++){
 					String dbpart = "part"+i;
 					if(!types.contains(dbpart))
 						database.get(dbname).put(dbpart,new Hashtable<String,String>());
+					checkSubdivisions(dbname,dbpart);
 				}
 			} else if(types.contains("nssplit")){
 				int factor = Integer.parseInt(database.get(dbname).get("nssplit").get("number"));
@@ -183,6 +198,7 @@ public class GlobalConfiguration {
 					String dbpart = "nspart"+i;
 					if(!types.contains(dbpart))
 						database.get(dbname).put(dbpart,new Hashtable<String,String>());
+					checkSubdivisions(dbname,dbpart);
 				}
 			}
 			// add the link analysis to indexers
@@ -236,6 +252,9 @@ public class GlobalConfiguration {
 					dbrole = dbname + "." + typeid;
 				} else if(typeid.equals("spell") || typeid.equals("links") || typeid.equals("related") || typeid.equals("prefix")  || typeid.equals("prefix_titles")){
 					type = typeid;
+					dbrole = dbname + "." + typeid;
+				} else if(typeid.matches(".*?\\.sub[0-9]+")){
+					type = "sub";
 					dbrole = dbname + "." + typeid;
 				} else
 					continue; // uknown type, skip
@@ -508,7 +527,7 @@ public class GlobalConfiguration {
 		for(String dbname : database.keySet()){
 			for(String typeid : database.get(dbname).keySet()){
 				String type = "";
-				String dbrole = "";
+				String dbrole = "";				
 				if(typeid.equals("single") || typeid.equals("mainsplit") || typeid.equals("split") || typeid.equals("nssplit")){
 					type = typeid;
 					dbrole = dbname;
@@ -524,6 +543,9 @@ public class GlobalConfiguration {
 				} else if(typeid.equals("spell") || typeid.equals("links") || typeid.equals("related") || typeid.equals("prefix") || typeid.equals("prefix_titles")){
 					type = typeid;
 					dbrole = dbname + "." + typeid;
+				} else if(typeid.matches(".*?\\.sub[0-9]+")){
+					type = "subdivided";
+					dbrole = dbname + "." + typeid;
 				} else
 					continue; // uknown type, skip
 						
@@ -532,6 +554,11 @@ public class GlobalConfiguration {
 				boolean mySearch = searchHosts.contains(hostAddr) || searchHosts.contains(hostName);
 				String indexHost = indexLocation.get(dbrole);
 				boolean myIndex = localIndexes.contains(dbrole);
+				Hashtable<String,String> typeidParams = database.get(dbname).get(typeid);
+				boolean isSubdivided = false;
+				if(typeidParams != null && typeidParams.containsKey("subdivisions")){
+					isSubdivided = true;
+				}
 				
 				String rsyncIndexPath = "/";
 				// if the index is on the local computer search for it
@@ -554,13 +581,14 @@ public class GlobalConfiguration {
 						                    indexHost,
 						                    rsyncIndexPath,
 						                    database.get(dbname).get(type),
-						                    database.get(dbname).get(typeid),
+						                    typeidParams,
 						                    searchHosts,
 						                    mySearchHosts,
 						                    indexPath,
 						                    myIndex,
 						                    mySearch,
-						                    oairepo);
+						                    oairepo,
+						                    isSubdivided);
 				indexIdPool.put(dbrole,iid);
 				
 			}
@@ -741,8 +769,10 @@ public class GlobalConfiguration {
 				params.put("mergeFactor",tokens[2]);
 			if(tokens.length>3)
 				params.put("maxBufDocs", tokens[3]);
-			
 			if(tokens.length>4)
+				params.put("subdivisions", tokens[4]);
+			
+			if(tokens.length>5 && verbose)
 				System.out.println("Unrecognized database parameters in ("+role+")");
 			
 			dbroles.put(type,params);
@@ -804,6 +834,11 @@ public class GlobalConfiguration {
 				params.put("mergeFactor",tokens[2]);
 			if(tokens.length>3)
 				params.put("maxBufDocs", tokens[3]);
+			if(tokens.length>4)
+				params.put("subdivisions", tokens[4]);
+			
+			if(tokens.length>5 && verbose)
+				System.out.println("Unrecognized database parameters in ("+role+")");
 			
 			dbroles.put(type,params);
 						
@@ -824,7 +859,7 @@ public class GlobalConfiguration {
 				System.out.println("Unrecognized prefix parameters in ("+role+")");
 			
 			dbroles.put(type,params);			
-		} else{
+		} else if(verbose){
 			System.out.println("Warning: Unrecognized role \""+role+"\".Ignoring.");
 		}
 		

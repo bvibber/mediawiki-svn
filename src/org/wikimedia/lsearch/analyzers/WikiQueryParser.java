@@ -1457,6 +1457,7 @@ public class WikiQueryParser {
 	
 	public Query makeMainPhrase(ArrayList<String> words, String field, int slop, float boost, Query stemtitle, Query related){
 		CustomPhraseQuery pq = new CustomPhraseQuery(new RankValue(),true,null,stemtitle,related);
+		//CustomPhraseQuery pq = new CustomPhraseQuery(new RankValue(),true,null,null,null);
 		for(String w : words){
 			//if(!stopWords.contains(w))
 			pq.add(new Term(field,w));
@@ -1695,115 +1696,29 @@ public class WikiQueryParser {
 		// whole title
 		Query wholeTitle = new TermQuery(new Term(fields.wholetitle(),join(words," ")));
 		wholeTitle.setBoost(WHOLE_TITLE_BOOST);
-		//Query wc = makePhrase(words,fields.contents(),0);
-		//wc.setBoost(EXACT_CONTENTS_BOOST);
-		// add additional score queries!
 		Query stemTitleQuery = 
 			new LogTransformScore(makeStemtitle(words,fields.stemtitle(),TITLE_ADD_BOOST,0.1f));
-		//Query phraseStemTitle = makePhraseQueriesOld(words,fields.stemtitle(),ADDITIONAL_PHRASE_SLOP_TITLE,ADDITIONAL_BOOST_TITLE);
-		//Query wordsStemTitle = makeWordQueries(words,fields.stemtitle(),ADDITIONAL_BOOST_TITLE/2,0.1f);
-		// related
-		/*Query[] pqr = new Query[RelatedAnalyzer.RELATED_GROUPS-1];
-		for(int i=1;i<RelatedAnalyzer.RELATED_GROUPS;i++){
-			pqr[i-1] = makePhraseQueriesOld(words,fields.related()+i,ADDITIONAL_PHRASE_SLOP_RELATED,ADDITIONAL_BOOST_RELATED);
-		}
-		Query[] wqr = new Query[RelatedAnalyzer.RELATED_GROUPS-1];
-		for(int i=1;i<RelatedAnalyzer.RELATED_GROUPS;i++){
-			wqr[i-1] = makeWordQueries(words,fields.related()+i,ADDITIONAL_BOOST_RELATED/2,0);
-		} */
 		Query relatedQuery = makePhrasesForRelated(words,RELATED_SLOP,RELATED_BOOST);
-		//Query[] pqx = new Query[ContextAnalyzer.CONTEXT_GROUPS];		
-		// make context queries
-		/*for(int i=1;i<=ContextAnalyzer.CONTEXT_GROUPS;i++){
-			pqx[i-1] = makePhraseQueries(words,fields.context()+i,0,ADDITIONAL_BOOST_CONTEXT);
-		} */
 		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,stemTitleQuery,relatedQuery);
 		if(mainPhrase == null)
 			return bq;
 		// build the final query
 		BooleanQuery coreQuery = new BooleanQuery(true);		
 		BooleanQuery additional = new BooleanQuery(true);
-		//BooleanQuery boostQuery = new BooleanQuery(true);
 		
-		if(mainPhrase != null){
-			//additional.add(pqc,Occur.MUST);
-			/*additional.add(new CustomScoreQuery(pqc, new RankValueSourceQuery(new RankValueSource())){
-			   public float customScore(int doc, float subQueryScore, float valSrcScore) {
-			   	return (float) (subQueryScore * Math.log10((1+valSrcScore)/50) * 2);
-			   }
-			   public Explanation customExplain(int doc, Explanation subQueryExpl, Explanation valSrcExpl) {
-			      float valSrcScore = valSrcExpl==null ? 1 : valSrcExpl.getValue();
-			      Explanation exp = new Explanation( (float)Math.log10((1+valSrcScore)/50) * 2 * subQueryExpl.getValue(), ": "+valSrcScore+" "+(float)Math.log(Math.E+valSrcScore/15)+"*"+subQueryExpl.getValue()+" custom score: product of:");
-			      exp.addDetail(subQueryExpl);
-			      if (valSrcExpl != null) {
-			        exp.addDetail(valSrcExpl);
-			      }
-			      return exp;
-			    }
-			},Occur.MUST); */
+		if(mainPhrase != null)
 			additional.add(mainPhrase,Occur.MUST);
-		}
-		/*if(phraseStemTitle != null)
-			additional.add(new LogTransformScore(phraseStemTitle),Occur.SHOULD);
-		if(wordsStemTitle != null)
-			 additional.add(new LogTransformScore(wordsStemTitle),Occur.SHOULD); */
 		if(stemTitleQuery != null)
 			additional.add(stemTitleQuery,Occur.SHOULD);
 		if(wholeTitle != null)
 			additional.add(wholeTitle,Occur.SHOULD);
-		//if(wc != null){
-			//additional.add(wc,Occur.SHOULD);
-			/*BooleanQuery boostExact = new BooleanQuery();
-			for(Query q : pqr){
-				if(q != null)
-					boostExact.add(q,Occur.SHOULD);
-			}
-			for(Query q : wqr){
-				if(q != null)
-					boostExact.add(q,Occur.SHOULD);
-			}
-			CustomBoostQuery cbq = new CustomBoostQuery(wc,boostExact); */
-			/*CustomScoreQuery csq = new CustomScoreQuery(cbq, new RankValueSourceQuery(new RankValueSource())) {
-			   public float customScore(int doc, float subQueryScore, float valSrcScore) {
-			   	return (float) (subQueryScore * Math.log10(10+valSrcScore));
-			   }
-			   public Explanation customExplain(int doc, Explanation subQueryExpl, Explanation valSrcExpl) {
-			      float valSrcScore = valSrcExpl==null ? 1 : valSrcExpl.getValue();
-			      Explanation exp = new Explanation( (float)Math.log10(10+valSrcScore) * subQueryExpl.getValue(), "custom score: product of:");
-			      exp.addDetail(subQueryExpl);
-			      if (valSrcExpl != null) {
-			        exp.addDetail(valSrcExpl);
-			      }
-			      return exp;
-			    }
-			}; */
-			//additional.add(cbq,Occur.SHOULD);
-		//}
 		if(relatedQuery != null)
 			additional.add(new LogTransformScore(relatedQuery),Occur.SHOULD);
-		/*for(Query q : pqr){
-			if(q != null)
-				additional.add(q,Occur.SHOULD);
-		}
-		for(Query q : wqr){
-			if(q != null)
-				additional.add(q,Occur.SHOULD);
-		} */
-		/*for(Query q : pqx){
-			if(q != null)
-				additional.add(q,Occur.SHOULD);
-		} */
-		
-		// anchors
-		//Query anchors = multiplySpans(nostem,0,fields.anchor(),ANCHOR_BOOST);		
 		
 		coreQuery.add(bq,Occur.MUST);
 		coreQuery.add(additional,Occur.SHOULD);
-		//if(anchors != null)
-		//	finalQuery.add(anchors,Occur.SHOULD);
 		
 		return coreQuery;
-		//return new CustomBoostQuery(coreQuery,boostQuery);
 		
 	}
 

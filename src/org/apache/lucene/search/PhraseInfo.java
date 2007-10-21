@@ -8,7 +8,7 @@ import org.apache.lucene.index.IndexReader;
  * If field is aggregate of phrases provide info 
  * about the matching phrase 
  */
-public interface PhraseInfo {
+public interface PhraseInfo{
 	/** Initialize for retrieval of info */
 	public void init(IndexReader reader, String field) throws IOException;
 	

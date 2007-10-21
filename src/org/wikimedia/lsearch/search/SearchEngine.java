@@ -235,7 +235,6 @@ public class SearchEngine {
 			SearcherCache cache = SearcherCache.getInstance();
 			IndexSearcherMul searcher;
 			long searchStart = System.currentTimeMillis();
-
 			searcher = cache.getLocalSearcher(iid);
 			NamespaceFilterWrapper localfilter = filter;
 			if(iid.isMainsplit() && iid.isMainPart())
@@ -244,10 +243,6 @@ public class SearchEngine {
 				localfilter = null;
 			if(localfilter != null)
 				log.info("Using local filter: "+localfilter);
-			/*RelatedMap map = RelatedMap.getMap(iid);
-			RelatedHitCollector hitcol = new RelatedHitCollector(map,searcher.maxDoc(),offset+limit); 
-			searcher.search(q,localfilter,hitcol);
-			TopDocs hits = hitcol.getTopDocs(); */
 			TopDocs hits = searcher.search(q,localfilter,offset+limit);
 			return makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);		
 		} catch (IOException e) {
@@ -308,67 +303,61 @@ public class SearchEngine {
 				nsfw = new NamespaceFilterWrapper(nsDefault);
 		}
 		
+		WikiSearcher searcher = null;
 		try {
 			q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll);
 			
 			TopDocs hits=null;
 			// see if we can search only part of the index
 			if(nsfw!=null && (iid.isMainsplit() || iid.isNssplit())){
-				String part = null;
+				HashSet<IndexId> parts = new HashSet<IndexId>();
 				for(NamespaceFilter f : nsfw.getFilter().decompose()){
-					if(part == null)
-						part = iid.getPartByNamespace(f.getNamespace()).toString();
-					else{
-						if(!part.equals(iid.getPartByNamespace(f.getNamespace()).toString())){
-							part = null; // namespace filter wants to search more than one index parts
-							break;
-						}
-					}					
+					parts.add(iid.getPartByNamespace(f.getNamespace()));										
 				}				
-				if(part!=null){
-					IndexId piid = IndexId.get(part);
-					String host;
-					if(piid.isMySearch())
-						host = "localhost";
-					else{
-						// load balance remote hosts
-						WikiSearcher searcher = new WikiSearcher(iid);
-						host = searcher.getHost(piid);
-					}
-					if(host == null){
-						res = new SearchResults();
-						res.setErrorMsg("Error contacting searcher for "+part);
-						log.error("Error contacting searcher for "+part);
+				if(parts.size() == 1){
+					IndexId piid = parts.iterator().next();
+					if(!piid.isFurtherSubdivided()){
+						String host;
+						if(piid.isMySearch())
+							host = "localhost";
+						else{
+							// load balance remote hosts
+							WikiSearcher ts = new WikiSearcher(iid);
+							host = ts.getHost(piid);
+						}
+						if(host == null){
+							res = new SearchResults();
+							res.setErrorMsg("Error contacting searcher for "+piid);
+							log.error("Error contacting searcher for "+piid);
+							return res;
+						}
+						RMIMessengerClient messenger = new RMIMessengerClient();
+						res = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
+						if(sug != null){
+							SuggestQuery sq = sug.suggest(searchterm,parser,res);
+							if(sq == null)
+								res.setSuggest(null);
+							else{
+								res.setSuggest(sq.getFormated());
+							}
+						}
 						return res;
 					}
-					RMIMessengerClient messenger = new RMIMessengerClient();
-					res = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
-					if(sug != null){
-						SuggestQuery sq = sug.suggest(searchterm,parser,res);
-						if(sq == null)
-							res.setSuggest(null);
-						else{
-							res.setSuggest(sq.getFormated());
-							/*if(res.getNumHits() == 0){
-								// no hits: show the spell-checked results
-								SearchResults sugres = messenger.searchPart(piid,sq.getSearchterm(),q,nsfw,offset,limit,explain,host);
-								if(sugres.getNumHits() > 0){
-									res = sugres;
-									res.setSuggest(sq.getSearchterm());
-								}
-							} else if(sq.needsCheck()){
-								q = parseQuery(sq.getSearchterm(),parser,iid,raw,nsfw,searchAll);
-								SearchResults sugres = messenger.searchPart(piid,sq.getSearchterm(),q,nsfw,0,1,explain,host);
-								if(sugres.getNumHits() > 0){
-									res.setSuggest(sq.getSearchterm());
-								}
-							}  */
-						}
-					}
-					return res;
+				} 
+				// construct a searcher on required parts
+				HashSet<IndexId> expanded = new HashSet<IndexId>();
+				for(IndexId p : parts){
+					if(p.isFurtherSubdivided())
+						expanded.addAll(p.getPhysicalIndexIds());
+					else
+						expanded.add(p);
 				}
+				log.info("Making searcher for "+expanded);
+				searcher = new WikiSearcher(expanded);
+			
 			}
-			WikiSearcher searcher = new WikiSearcher(iid);
+			if(searcher == null)
+				searcher = new WikiSearcher(iid);
 			// normal search
 			try{
 				hits = searcher.search(q,nsfw,offset+limit);

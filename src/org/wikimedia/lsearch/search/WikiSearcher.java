@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.search;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
@@ -49,7 +50,7 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	
 	public static final boolean INVALIDATE_CACHE = true;
 	
-	protected MultiSearcherMul makeMultiSearcher(ArrayList<IndexId> iids) throws IOException{
+	protected MultiSearcherMul makeMultiSearcher(Collection<IndexId> iids) throws IOException{
 		ArrayList<Searchable> ss = new ArrayList<Searchable>();
 		for(IndexId iid : iids){
 			Searchable s = null;
@@ -77,31 +78,26 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 	}
 	
 	/** New object from cache */
-	public WikiSearcher(IndexId iid) throws Exception {
+	public WikiSearcher(IndexId iid) throws IOException {
 		cache = SearcherCache.getInstance();
-		
+				
 		if(iid.isSingle()){ // is always local 
 			searcher = cache.getLocalSearcher(iid);
-		} else if(iid.isMainsplit()){
-			ArrayList<IndexId> parts = new ArrayList<IndexId>();
-			
-			parts.add(iid.getMainPart());
-			parts.add(iid.getRestPart());
-			
-			ms = makeMultiSearcher(parts);
-			searcher = ms;
-		} else if(iid.isSplit() || iid.isNssplit()){			
-			ArrayList<IndexId> parts = new ArrayList<IndexId>();
-			for(int i=1; i<=iid.getSplitFactor(); i++){
-				parts.add(iid.getPart(i));
-			}
+		} else {
+			ArrayList<IndexId> parts = iid.getPhysicalIndexIds();
 			searcher = ms = makeMultiSearcher(parts);
-		} else
-			throw new Exception("Cannot make searcher, unrecognized type of IndexId.");
+		}
 		
 		if(searcher == null)
-			throw new Exception("Error constructing searcher, check logs.");
-		
+			throw new IOException("Error constructing searcher for "+iid);		
+	}
+	
+	/** New object only with required parts */
+	public WikiSearcher(Collection<IndexId> parts) throws IOException {
+		cache = SearcherCache.getInstance();
+		searcher = ms = makeMultiSearcher(parts);
+		if(searcher == null)
+			throw new IOException("Error constructing searcher for "+parts);
 	}
 
 	/** Got host for the iid within this multi searcher */

@@ -1,13 +1,14 @@
 package org.wikimedia.lsearch.search;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.ScoreValue;
 import org.wikimedia.lsearch.search.RankField.RankFieldSource;
 
-public class RankValue implements ScoreValue {
-	protected RankFieldSource src;
+public class RankValue implements ScoreValue, Serializable {
+	protected transient RankFieldSource src;
 	protected float coefficient;
 	
 	public RankValue(){

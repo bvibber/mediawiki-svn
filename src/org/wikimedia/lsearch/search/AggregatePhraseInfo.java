@@ -1,6 +1,7 @@
 package org.wikimedia.lsearch.search;
 
 import java.io.IOException;
+import java.io.Serializable;
 
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.search.PhraseInfo;
@@ -13,8 +14,8 @@ import org.wikimedia.lsearch.search.AggregateMetaField.AggregateMetaFieldSource;
  * @author rainman
  *
  */
-public class AggregatePhraseInfo implements PhraseInfo {
-	AggregateMetaFieldSource src = null;
+public class AggregatePhraseInfo implements PhraseInfo, Serializable  {
+	protected transient AggregateMetaFieldSource src = null;
 	
 	public void init(IndexReader reader, String field) throws IOException {
 		src = AggregateMetaField.getCachedSource(reader,field);

@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Hashtable;
 import java.util.Set;
@@ -374,23 +375,61 @@ public class WikiIndexModifier {
 	public boolean updateDocuments(IndexId iid, Collection<IndexUpdateRecord> updateRecords){
 		long now = System.currentTimeMillis();
 		log.info("Starting update of "+updateRecords.size()+" records on "+iid+", started at "+now);
+		boolean succ = true;
+		if(iid.isFurtherSubdivided()){
+			ArrayList<IndexId> subs = iid.getPhysicalIndexIds();
+			HashMap<String,SimpleIndexModifier> mod = new HashMap<String,SimpleIndexModifier>();
+			HashMap<String,Transaction> trans = new HashMap<String,Transaction>();
+			// init
+			for(IndexId part : subs){
+				mod.put(part.toString(),new SimpleIndexModifier(part,part.getLangCode(),false,global.exactCaseIndex(part.getDBname())));
+				Transaction t = new Transaction(part);
+				t.begin();
+				trans.put(part.toString(),t);				
+			}
 			
-		SimpleIndexModifier modifier = new SimpleIndexModifier(iid,global.getLanguage(iid.getDBname()),false,global.exactCaseIndex(iid.getDBname()));
-		
-		Transaction trans = new Transaction(iid);
-		trans.begin();
-		boolean succDel = modifier.deleteDocuments(updateRecords);
-		boolean succAdd = modifier.addDocuments(updateRecords);
-		boolean succ = succAdd; // it's OK if articles cannot be deleted
-		trans.commit();
-		
-		// send reports back to the main indexer host
-		RMIMessengerClient messenger = new RMIMessengerClient();
-		if(modifier.reportQueue.size() != 0)
-			messenger.sendReports(modifier.reportQueue.values().toArray(new IndexReportCard[] {}),
-					IndexId.get(iid.getDBname()).getIndexHost());
-		
-		modifiedDBs.add(iid);
+			// delete all first
+			for(IndexId part : subs){
+				mod.get(part.toString()).deleteDocuments(updateRecords);
+			}
+			ArrayList<ArrayList<IndexUpdateRecord>> split = new ArrayList<ArrayList<IndexUpdateRecord>>();
+			for(int i=0;i<subs.size();i++)
+				split.add(new ArrayList<IndexUpdateRecord>());
+			// split
+			for(IndexUpdateRecord rec : updateRecords){
+				int part = (int)(Math.random()*subs.size());
+				split.get(part).add(rec);
+			}
+			// add
+			for(int i=0;i<subs.size();i++){
+				SimpleIndexModifier modifier = mod.get(subs.get(i));
+				modifier.addDocuments(split.get(i));
+			}
+			// commit
+			for(IndexId part : subs){
+				trans.get(part.toString()).commit();
+				modifiedDBs.add(part);
+			}
+			
+		} else{
+			// normal index
+			SimpleIndexModifier modifier = new SimpleIndexModifier(iid,iid.getLangCode(),false,global.exactCaseIndex(iid.getDBname()));
+			
+			Transaction trans = new Transaction(iid);
+			trans.begin();
+			boolean succDel = modifier.deleteDocuments(updateRecords);
+			boolean succAdd = modifier.addDocuments(updateRecords);
+			succ = succAdd; // it's OK if articles cannot be deleted
+			trans.commit();
+			
+			// send reports back to the main indexer host
+			RMIMessengerClient messenger = new RMIMessengerClient();
+			if(modifier.reportQueue.size() != 0)
+				messenger.sendReports(modifier.reportQueue.values().toArray(new IndexReportCard[] {}),
+						IndexId.get(iid.getDBname()).getIndexHost());
+			
+			modifiedDBs.add(iid);		
+		}
 		long delta = System.currentTimeMillis()-now;
 		if(succ)
 			log.info("Successful update ["+(int)((double)updateRecords.size()/delta*1000)+" articles/s] of "+updateRecords.size()+" records in "+delta+"ms on "+iid);

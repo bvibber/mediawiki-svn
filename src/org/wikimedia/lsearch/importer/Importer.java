@@ -166,27 +166,10 @@ public class Importer {
 		// make snapshot if needed
 		if(makeSnapshot || snapshotDb){
 			IndexId iid = IndexId.get(dbname);
-			if(iid.isMainsplit()){
-				IndexThread.makeIndexSnapshot(iid.getMainPart(),iid.getMainPart().getImportPath());
-				IndexThread.makeIndexSnapshot(iid.getRestPart(),iid.getRestPart().getImportPath());
-			} else if(iid.isSplit() || iid.isNssplit()){
-				for(String part : iid.getSplitParts()){
-					IndexId iidp = IndexId.get(part);
-					IndexThread.makeIndexSnapshot(iidp,iidp.getImportPath());
-				}
-			} else
-				IndexThread.makeIndexSnapshot(iid,iid.getImportPath());
-		}		
-		
-		// some cache stats
-		/*Cache cache = CacheManager.create().getCache("links");
-		Statistics s = cache.getStatistics();
-		
-		long hit = s.getCacheHits();
-		long miss = s.getCacheMisses();
-		
-		System.out.println("Cache stats: hits = "+hit+", miss = "+miss); */
-
+			for(IndexId p : iid.getPhysicalIndexIds()){
+				IndexThread.makeIndexSnapshot(p,p.getImportPath());
+			}
+		}
 	}
 
 	private static String formatTime(long l) {

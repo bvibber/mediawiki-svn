@@ -141,15 +141,15 @@ public class CustomPhraseQuery extends PhraseQuery {
 			if( terms.size() == 1)
 				return new TermCustomPhraseScorer(this, tps, getPositions(), similarity,
 						reader.norms(field), val, beginBoost, phInfo, stemtitleScorer, 
-						relatedScorer, stemtitleWeight, relatedWeight, reader, max);
+						relatedScorer, stemtitleWeight, relatedWeight, max);
 			else if( slop == 0 )				  // optimize exact case
 				return new ExactCustomPhraseScorer(this, tps, getPositions(), similarity,
 						reader.norms(field), val, beginBoost, phInfo, stemtitleScorer, relatedScorer, 
-						stemtitleWeight, relatedWeight, reader, max);
+						stemtitleWeight, relatedWeight, max);
 			else
 				return new SloppyCustomPhraseScorer(this, tps, getPositions(), similarity, slop,
 						reader.norms(field), val, beginBoost, phInfo, stemtitleScorer, relatedScorer, 
-						stemtitleWeight, relatedWeight, reader, max);
+						stemtitleWeight, relatedWeight, max);
 
 		}
 		

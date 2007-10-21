@@ -49,6 +49,8 @@ public class IndexId {
 	protected String part;
 	/** The string representation of IndexId, e.g. entest.mainpart */
 	protected String dbrole;
+	/** The sub-division part, e.g. sub1 in enwiki.mainpart.sub1 */
+	protected String subpart;
 	
 	/** Names of split indexes, e.g. entest.part1, entest.part2 ... */
 	protected String[] splitParts;
@@ -58,7 +60,16 @@ public class IndexId {
 	/** If true, this machine is an indexer for this index */
 	protected boolean myIndex;
 	
-	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINKS, RELATED, PREFIX, PREFIX_TITLES };
+	protected enum IndexType { SINGLE, MAINSPLIT, SPLIT, NSSPLIT, SPELL, LINKS, RELATED, PREFIX, PREFIX_TITLES, SUBDIVIDED };
+	
+	/** the index of this subdivided part */
+	protected int subpartNum;
+	/** total number of subdivided parts */
+	protected int subFactor;
+	/** if this index (e.g. enwiki.mainpart) is further subdivided */
+	protected boolean furtherSubdivided;
+	/** full dbroles of every subpart, e.g. enwiki.nspart1.sub1, enwiki.nspart1.sub2 ..  */
+	protected String[] subParts = null;
 	
 	/** Type of index, enumeration */
 	protected IndexType type;
@@ -133,7 +144,7 @@ public class IndexId {
 	public IndexId(String dbrole, String type, String indexHost, String indexRsyncPath, 
 			Hashtable<String, String> typeParams, Hashtable<String, String> params, 
 			HashSet<String> searchHosts, HashSet<String> mySearchHosts, String localIndexPath, 
-			boolean myIndex, boolean mySearch, String OAIRepository) {
+			boolean myIndex, boolean mySearch, String OAIRepository, boolean isSubdivided) {
 		final String sep = Configuration.PATH_SEP;
 		this.indexHost = indexHost;
 		if(!indexRsyncPath.endsWith("/"))
@@ -152,6 +163,7 @@ public class IndexId {
 		this.dbrole = dbrole;
 		this.params = params;
 		this.OAIRepository = OAIRepository;
+		this.furtherSubdivided = isSubdivided;
 		
 		// types
 		if(type.equals("single"))
@@ -172,14 +184,23 @@ public class IndexId {
 			this.type = IndexType.PREFIX;
 		else if(type.equals("prefix_titles"))
 			this.type = IndexType.PREFIX_TITLES;
+		else if(type.equals("subdivided"))
+			this.type = IndexType.SUBDIVIDED;
+
 		
 		// parts
+		part = null;
+		subpart = null;
+		subpartNum = -1;
 		String[] parts = dbrole.split("\\.");
-		dbname = parts[0];
+		dbname = parts[0];		
 		if(parts.length==2)
 			part = parts[1];
-		else
-			part = null;
+		else if(parts.length==3 && this.type == IndexType.SUBDIVIDED){
+			part = parts[1];
+			subpart = parts[2];
+			subpartNum = Integer.parseInt(subpart.substring(3));
+		}
 		
 		partNum = -1;
 		splitParts = null;
@@ -216,9 +237,24 @@ public class IndexId {
 					namespaceSet.add(ns.trim());	 
 			} else
 				partNum = 0;
+		} 
+		
+		// handle subdivided indexes
+		if(isSubdivided){
+			subFactor = Integer.parseInt(params.get("subdivisions"));
+			subParts = new String[subFactor];
+			for(int i=1;i<=subFactor;i++)
+				subParts[i-1] = dbname+"."+part+".sub"+i;
+			if(this.type == IndexType.SUBDIVIDED)
+				this.furtherSubdivided = false; // cannot futher subdivide
+			else
+				this.furtherSubdivided = true;
 		}
+		
 		// for split/mainsplit the main iid is logical, it doesn't have local path
-		if(myIndex && !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT || this.type==IndexType.NSSPLIT))){
+		if(myIndex 
+				&& !(part == null && (this.type==IndexType.SPLIT || this.type==IndexType.MAINSPLIT || this.type==IndexType.NSSPLIT))
+				&& !furtherSubdivided){
 			indexPath = localIndexPath + "index" + sep + dbrole;
 			importPath = localIndexPath + "import" + sep + dbrole;
 			snapshotPath = localIndexPath + "snapshot" + sep + dbrole;
@@ -245,7 +281,7 @@ public class IndexId {
 	
 	/** If this is logical name referring to a set of split indexes */
 	public boolean isLogical(){
-		return part == null && type != IndexType.SINGLE;
+		return (part == null && type != IndexType.SINGLE) || (subpart==null && furtherSubdivided);
 	}	
 	/** If type of this index is single */
 	public boolean isSingle(){
@@ -282,6 +318,10 @@ public class IndexId {
 	/** If this is the index storing titles for the prefix index */
 	public boolean isPrefixTitles(){
 		return type == IndexType.PREFIX_TITLES;
+	}	
+	/** If this is the index storing titles for the prefix index */
+	public boolean isSubdivided(){
+		return type == IndexType.SUBDIVIDED;
 	}
 	
 	/** If this is a split index, returns the current part number, e.g. for entest.part4 will return 4 */
@@ -338,6 +378,31 @@ public class IndexId {
 		return dbrole;
 	}
 
+	/** If this index (e.g. mainpart) has been subdivided into smaller indexes */
+	public boolean isFurtherSubdivided(){
+		return furtherSubdivided;
+	}
+	/** Get textual repesentation of subdivided part, e.g. sub1 */
+	public String getSubpartString(){
+		return subpart;
+	}
+	/** Get number of this index in array of subivisions, 1..subFactor */
+	public int getSubpartNum(){
+		return subpartNum;
+	}
+	/** Return the number of subdivided parts */
+	public int getSubdivisionFactor(){
+		return subFactor;
+	}
+	/** Get string representations of all subparts */
+	public String[] getSubparts(){
+		return subParts;
+	}
+	/** Get iid of subpart with index i */
+	public IndexId getSubpart(int i){
+		return get(subParts[i-1]);
+	}
+	
 	/** Get IndexId for the mainpart of mainsplit index */
 	public IndexId getMainPart(){
 		if(type == IndexType.MAINSPLIT)
@@ -428,6 +493,13 @@ public class IndexId {
 		return searchHosts;
 	}
 	
+	protected void addToHosts(HashSet<String> hosts, String[] splitParts){
+		for(String splitpart : splitParts){
+			if(get(splitpart)!=null)
+				hosts.addAll(get(splitpart).getSearchHosts());
+		}
+	}
+	
 	/** get all hosts that search db this iid belongs to */
 	public HashSet<String> getDBSearchHosts(){
 		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isPrefixTitles())
@@ -437,10 +509,11 @@ public class IndexId {
 			HashSet<String> hosts = new HashSet<String>();
 			if(get(dbname)!=null)
 				hosts.addAll(get(dbname).getSearchHosts());
-			for(String splitpart : splitParts){
-				if(get(splitpart)!=null)
-					hosts.addAll(get(splitpart).getSearchHosts());
-			}
+			if(splitParts != null)
+				addToHosts(hosts,splitParts);
+			if(subParts != null)
+				addToHosts(hosts,subParts);
+			
 			return hosts;
 		}
 	}
@@ -484,8 +557,14 @@ public class IndexId {
 		if(isSingle() || isSpell() || isLinks() || isRelated() || isPrefix() || isPrefixTitles())
 			ret.add(dbrole);
 		else if(isMainsplit() || isSplit() || isNssplit()){
-			for(String p : splitParts)
-				ret.add(p);
+			String[] parts = furtherSubdivided? subParts : splitParts;
+			for(String p : parts){
+				IndexId ip = IndexId.get(p);
+				if(ip.isFurtherSubdivided())
+					ret.addAll(ip.getPhysicalIndexes());
+				else
+					ret.add(p);
+			}
 		}
 		
 		return ret;
@@ -496,7 +575,7 @@ public class IndexId {
 	 * 
 	 * @return
 	 */
-	public ArrayList<IndexId> getAllParts(){
+	public ArrayList<IndexId> getPhysicalIndexIds(){
 		HashSet<String> physical = getPhysicalIndexes();
 		ArrayList<IndexId> parts = new ArrayList<IndexId>();
 		for(String p : physical)

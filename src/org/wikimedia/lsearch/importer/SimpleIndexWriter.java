@@ -49,18 +49,9 @@ public class SimpleIndexWriter {
 		builder = new FieldBuilder(iid,dCase);
 		indexes = new HashMap<String,IndexWriter>();
 		// open all relevant indexes
-		if(iid.isSingle())
-			indexes.put(iid.toString(),openIndex(iid));
-		else if(iid.isMainsplit()){
-			indexes.put(iid.getMainPart().toString(),openIndex(iid.getMainPart()));
-			indexes.put(iid.getRestPart().toString(),openIndex(iid.getRestPart()));
-		} else if(iid.isSplit() || iid.isNssplit()){
-			for(String dbpart : iid.getSplitParts()){
-				indexes.put(IndexId.get(dbpart).toString(),openIndex(IndexId.get(dbpart)));
-			}
-		} else
-			log.fatal("Unrecognized index architecture for "+iid);
-			
+		for(IndexId part : iid.getPhysicalIndexIds()){
+			indexes.put(part.toString(),openIndex(part));
+		}	
 	}
 	
 	/** Open and initialize index denoted by iid */
@@ -108,6 +99,10 @@ public class SimpleIndexWriter {
 			target = iid.getPartByNamespace(a.getNamespace());
 		else // split index, randomly assign to some index part
 			target = iid.getPart(1+(int)(Math.random()*iid.getSplitFactor()));
+		
+		if(target.isFurtherSubdivided()){
+			target = target.getSubpart(1+(int)(Math.random()*target.getSubdivisionFactor()));
+		}
 		
 		IndexWriter writer = indexes.get(target.toString());
 		if(writer == null)

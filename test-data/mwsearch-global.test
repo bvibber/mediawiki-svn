@@ -8,12 +8,13 @@
 #   ngram <noparams>
 #   aspell <language>
 [Database]
-entest : (mainsplit), (mainpart,false,2,10), (restpart,true,2)
+entest : (mainsplit), (mainpart,false,2,10,3), (restpart,true,2)
 entest : (ngram), (spell,1,2)
 detest,rutest : (single,true,2,10)
 frtest : (split,3) (part1) (part2) (part3)
 srwiki : (single)
 njawiki : (nssplit,3) (nspart1,[0,1],false,5) (nspart2,[12,13,14,15]) (nspart3,[])
+hmwiki : (nssplit,3) (nspart1,[0,1],false,5,20,2) (nspart2,[12,13,14,15]) (nspart3,[])
 
 # Search nodes
 # host : db1.role, db2.role
@@ -27,6 +28,7 @@ njawiki : (nssplit,3) (nspart1,[0,1],false,5) (nspart2,[12,13,14,15]) (nspart3,[
 [Search-Group]
 192.168.0.10 :entest.mainpart
 192.168.0.2 : entest.restpart, rutest
+192.168.0.2 : hmwiki.nspart1 hmwiki.nspart2 hmwiki.nspart3
 [Search-Group]
 192.168.0.1 : njawiki entest.spell
 
@@ -39,6 +41,7 @@ njawiki : (nssplit,3) (nspart1,[0,1],false,5) (nspart2,[12,13,14,15]) (nspart3,[
 192.168.0.2 : entest.ngram
 192.168.0.2 : frtest.part1, frtest.part2, frtest.part3
 192.168.0.10 : srwiki njawiki
+192.168.0.2 : hmwiki
 
 # OAI repository info, for incremental updater
 # dbSuffix : base url (to index.php)

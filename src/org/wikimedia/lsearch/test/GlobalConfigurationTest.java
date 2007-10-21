@@ -122,7 +122,7 @@ public class GlobalConfigurationTest extends TestCase {
 			assertEquals("entest.mainpart",ssr[0]);
 			assertEquals("entest.restpart",ssr[1]);
 			assertEquals("rutest",ssr[2]);
-			assertEquals(3,ssr.length);
+			assertEquals(6,ssr.length);
 			
 			// search groups
 			Hashtable<Integer,Hashtable<String,ArrayList<String>>> sg = testgc.getSearchGroups();
@@ -145,7 +145,10 @@ public class GlobalConfigurationTest extends TestCase {
 			assertEquals("detest",sir[3]);
 			assertEquals("rutest",sir[4]);
 			assertEquals("frtest",sir[5]);
-			assertEquals(11,sir.length);
+			assertTrue(ir.contains("entest.mainpart.sub1"));
+			assertTrue(ir.contains("entest.mainpart.sub2"));
+			assertTrue(ir.contains("entest.mainpart.sub3"));
+			assertEquals(22,sir.length);
 			
 			// indexLocation
 			Hashtable indexLocation = testgc.getIndexLocation();
@@ -271,6 +274,34 @@ public class GlobalConfigurationTest extends TestCase {
 		assertTrue(sug.isSpell());
 		assertFalse(sug.isLogical());
 		assertEquals(sug,sug.getSpell());
+		
+		IndexId sub1 = IndexId.get("entest.mainpart.sub1");
+		assertFalse(sub1.isLogical());
+		assertEquals(3,sub1.getSubdivisionFactor());
+		assertFalse(sub1.isFurtherSubdivided());
+		assertTrue(sub1.isSubdivided());
+		assertEquals(1,sub1.getSubpartNum());
+		assertNull(sub1.getImportPath());
+		
+		IndexId enmain = IndexId.get("entest.mainpart");
+		assertEquals(sub1,enmain.getSubpart(0));
+		assertTrue(enmain.isFurtherSubdivided());
+		assertFalse(enmain.isSubdivided());
+		assertEquals(3,enmain.getSubdivisionFactor());
+		assertNull(enmain.getImportPath());
+		
+		IndexId hmpart1 = IndexId.get("hmwiki.nspart1");
+		assertTrue(hmpart1.isFurtherSubdivided());
+		assertNull(hmpart1.getImportPath());
+		
+		assertEquals("[hmwiki.nspart1.sub1, hmwiki.nspart1.sub2]",hmpart1.getPhysicalIndexIds().toString());
+		assertEquals("[hmwiki.nspart3, hmwiki.nspart1.sub1, hmwiki.nspart2, hmwiki.nspart1.sub2]",IndexId.get("hmwiki").getPhysicalIndexIds().toString());
+		
+		IndexId hmsub1 = IndexId.get("hmwiki.nspart1.sub1");
+		assertTrue(hmsub1.isSubdivided());
+		assertNotNull(hmsub1.getImportPath());
+		assertEquals(2,hmsub1.getSubdivisionFactor());
+		assertEquals("192.168.0.2",hmsub1.getIndexHost());
 		
 	}
 }

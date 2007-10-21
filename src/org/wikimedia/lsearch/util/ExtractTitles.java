@@ -41,7 +41,7 @@ public class ExtractTitles {
 			return;
 		}
 		IndexRegistry registry = IndexRegistry.getInstance();
-		for(IndexId part : iid.getAllParts()){
+		for(IndexId part : iid.getPhysicalIndexIds()){
 			IndexReader ir = IndexReader.open(registry.getLatestSnapshot(part).getPath()); 
 			for(int i=0;i<ir.maxDoc();i++){
 				if(ir.isDeleted(i))

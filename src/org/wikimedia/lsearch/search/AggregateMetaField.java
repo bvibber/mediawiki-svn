@@ -114,7 +114,7 @@ public class AggregateMetaField {
 				System.arraycopy(boost,0,ft,0,count);
 				boost = ft;
 			}
-			log.info("Finished caching aggregate meta source for "+reader);
+			log.info("Finished caching aggregate meta source for "+reader.directory());
 		}
 
 		protected int getValueIndex(int docid, int position){

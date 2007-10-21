@@ -15,15 +15,14 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 	// following are for debug:
 	protected Scorer stemtitleScorer, relatedScorer;
 	protected Weight stemtitleWeight, relatedWeight;
-	protected IndexReader reader;
 	protected boolean max; // if true, won't sum up, but take max individual score
 	
-	public final static boolean DEBUG = true; // TODO: set to false in release
+	public final static boolean DEBUG = false; // TODO: set to false in release
 	public HashMap<Integer,ArrayList<Explanation>> explanations = null;
 	
 	CustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, Similarity similarity, byte[] norms, ScoreValue val, 
 			boolean beginBoost, PhraseInfo phInfo, Scorer stemtitleScorer, Scorer relatedScorer, Weight stemtitleWeight, Weight relatedWeight, 
-			IndexReader reader, boolean max) {
+			boolean max) {
 		super(weight, tps, offsets, similarity, norms);
 		this.val = val;
 		this.beginBoost = beginBoost;
@@ -33,7 +32,6 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 		this.relatedScorer = relatedScorer;
 		this.relatedWeight = relatedWeight;
 		this.stemtitleWeight = stemtitleWeight;
-		this.reader = reader;
 		this.max = max;
 	}
 	
@@ -125,9 +123,6 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 			sc *= 1 + relatedScorer.score();
 		}
 
-		//if(val != null)
-		//	sc *= val.score(first.doc);
-		//System.out.println("scoring " + first.doc+" with "+transformFreq(freq)+" * "+value);
 		return sc; 
 	}
 	
@@ -139,10 +134,6 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 		float transformed = transformFreq(freq);
 		float phraseFreq = (doc() == doc) ? transformed : 0.0f;
 		float rank = 1; 
-		/*if(val != null){
-			rank = val.score(doc);
-			phraseFreq *= rank;
-		} */
 		
 		tfExplanation.setValue(phraseFreq);
 		tfExplanation.setDescription("phraseFreq:");
@@ -173,16 +164,6 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 			tfExplanation.addDetail(eRelated);
 			tfExplanation.setValue(tfExplanation.getValue()*(1+relatedScorer.score()));
 		}
-
-		
-		/*if(val != null){
-			Explanation rankexp = new Explanation();
-			rankexp.setValue(rank);
-			rankexp.setDescription("rank(raw rank=" + val.value(doc) + ")");		
-			tfExplanation.addDetail(rankexp);
-		} */
-		
-		
 
 		return tfExplanation;
 	}
@@ -223,10 +204,6 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 		float title = 1;
 		float related = 1;
 		float rank = 1;
-		/*if(stemtitleScorer != null && stemtitleScorer.doc() == first.doc)
-			title = stemtitleScorer.score();
-		if(relatedScorer != null && relatedScorer.doc() == first.doc)
-			related = relatedScorer.score(); */
 		if(val != null){
 			if(begin != 1)
 				rank = val.score(first.doc,2);
@@ -241,6 +218,7 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 		
 		float baseScore = title * related * rank * begin * exact * 1.0f / (distance + 1);
 		if(DEBUG){
+			// provide very extensive explanations
 			if(explanations == null)
 				explanations = new HashMap<Integer,ArrayList<Explanation>>();
 			ArrayList<Explanation> expl = explanations.get(first.doc);
@@ -270,20 +248,6 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 				eRank.setDescription("Rank (raw rank="+val.value(first.doc)+")");
 				e.addDetail(eRank);
 			}
-			/*if(stemtitleScorer != null && stemtitleScorer.doc() == first.doc){
-				Explanation eTitle = new Explanation();			
-				eTitle.setValue(title);
-				eTitle.setDescription("Stemtitle (raw score="+stemtitleScorer.score()+")");
-				eTitle.addDetail(stemtitleWeight.explain(reader,first.doc));
-				e.addDetail(eTitle);
-			}
-			if(relatedScorer != null && relatedScorer.doc() == first.doc){
-				Explanation eRelated = new Explanation();			
-				eRelated.setValue(related);
-				eRelated.setDescription("Related (raw score="+relatedScorer.score()+")");
-				eRelated.addDetail(relatedWeight.explain(reader,first.doc));
-				e.addDetail(eRelated);
-			} */
 		}
 		if(phInfo != null){
 			// aggregate field !
