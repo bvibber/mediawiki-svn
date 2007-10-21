@@ -19,10 +19,10 @@ TABLE OF CONTENTS
 This extension allows for changing the author of a revision, e.g. an edit made by Alice can be changed to look like it was made by Bob instead. Of course, only privileged users can do this, and all changes are logged.
 
 2. WHERE TO GET CHANGEAUTHOR
-The current version of ChangeAuthor can be downloaded from the MediaWiki SVN repository at http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/ChangeAuthor You need to download three files: ChangeAuthor.body.php, ChangeAuthor.setup.php and ChangeAuthor.i18n.php To download a file, simply click on it an click the "Download" link.
+The current version of ChangeAuthor can be downloaded from the MediaWiki SVN repository at http://svn.wikimedia.org/viewvc/mediawiki/trunk/extensions/ChangeAuthor You need to download three files: ChangeAuthor.body.php, ChangeAuthor.setup.php and ChangeAuthor.i18n.php To download a file, simply click on it and click the "Download" link.
 
 3. INSTALLATION
-Download the three files mentioned in section 2, create a directory named "ChangeAuthor" (without quotes) in /path/to/your/wiki/extensions, then move the three .php files to the /path/to/your/wiki/extensions/redircite/ directory. Open LocalSettings.php and add the following line at the end:
+Download the three files mentioned in section 2, create a directory named "ChangeAuthor" (without quotes) in /path/to/your/wiki/extensions , then move the three .php files to the /path/to/your/wiki/extensions/ChangeAuthor/ directory you just created. Open LocalSettings.php and add the following line at the end:
 
 require_once("$IP/extensions/ChangeAuthor/ChangeAuthor.php");
 
@@ -63,7 +63,7 @@ Here, 12345 is the revision ID. You can now enter the revision ID (12345) in Spe
 NOTE: In the event you have both a page called 12345 and a revision ID 12345, you will need to access the page using :12345 (i.e. prepend a colon).
 
 6. THE CHANGEAUTH LOG
-Every time someone changes a revision's author, the change appears both in Special:Recentchanges and in the changeauth log. You can access this log through Special:Log/changeauth. Every log entry includes the user who made the change, the revision ID and page the change was made to, and the old and new author of the revision. You can also filter the log by user and by page.
+Every time someone changes a revision's author, the change appears both in Special:Recentchanges and in the changeauth log. You can access this log through Special:Log/changeauth . Every log entry includes the user who made the change, the revision ID and page the change was made to, and the old and new author of the revision. You can also filter the log by user and by page.
 
 7. LICENSING
 ChangeAuthor is made available under the conditions of the GNU General Public License version 3. For more information, see http://www.gnu.org/copyleft/gpl.html

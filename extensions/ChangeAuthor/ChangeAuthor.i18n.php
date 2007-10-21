@@ -1,4 +1,4 @@
-<?php
+ï»¿<?php
 /**
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -54,17 +54,21 @@ $allMessages = array(
 				'changeauthor-rev' => 'r$1',
 		),
 		'nl' => array(
-				'changeauthor' => 'Verander bewerkingsauteur',
+				'veranderauteur' => 'Verander bewerkingsauteur',
 				'changeauthor-short' => 'VeranderAuteur',
 				'changeauthor-title' => 'Verander de auteur van een bewerking',
 				'changeauthor-search-box' => 'Zoek bewerkingen',
 				'changeauthor-pagename-or-revid' => 'Naam van artikel of bewerkingsID:',
 				'changeauthor-pagenameform-go' => 'Ga',
 				'changeauthor-comment' => 'Toelichting:',
-				'changeauthor-changeauthors' => 'Verander auteur(s)',
+				'changeauthor-changeauthors-multi' => 'Verander auteur(s)',
+				'changeauthor-changeauthors-single' => 'Verander auteur',
 				'changeauthor-explanation-multi' => 'Met dit formulier kunt u de auteur van een bewerking veranderen. ' .
-								'Verander simpelweg één of meer gebruikersnamen in de lijst hieronder, voeg een ' .
+								'Verander simpelweg Ã©Ã©n of meer gebruikersnamen in de lijst hieronder, voeg een ' .
 								'toelichting toe (niet verplicht) en klik op de knop \'Verander auteur(s)\'.',
+				'changeauthor-explanation-single' => 'Met dit formulier kunt u de auteur van een bewerking veranderen. ' .
+								'Verander simpelweg de gebruikersnaam in het tekstvak hieronder, voeg een ' .
+								'toelichting toe (niet verplicht) en klik op de knop \'Verander auteur\'.',
 				'changeauthor-invalid-username' => 'Ongeldige gebruikersnaam "$1".',
 				'changeauthor-nosuchuser' => 'Gebruiker "$1" bestaat niet.',
 				'changeauthor-revview' => 'Bewerking no. $1 van $2',
