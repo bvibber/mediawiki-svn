@@ -9,11 +9,14 @@ rpc = 'http://confluence.ts.wikimedia.org/rpc/xmlrpc'
 loginfile = os.getenv("HOME") + "/.addlog"
 
 servername = socket.gethostname()
-(opts, args) = getopt(sys.argv[1:], "s:")
+(opts, args) = getopt(sys.argv[1:], "hs:")
 
 for v in opts:
 	if v[0] == '-s':
 		servername = v[1]
+	elif v[0] == '-h':
+		print "usage: addlog [-s server] [-h] <log text ...>"
+		sys.exit(0)
 
 h = open(loginfile, "r")
 username = h.readline()[:-1]
