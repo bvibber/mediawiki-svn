@@ -118,8 +118,6 @@ DROP INDEX tl_namespace
   ON /*$wgDBprefix*/templatelinks;
 CREATE UNIQUE INDEX tl_from
   ON /*$wgDBprefix*/templatelinks (tl_from, tl_namespace, tl_language, tl_title);
-CREATE INDEX tl_from
-  ON /*$wgDBprefix*/templatelinks (tl_namespace, tl_language, tl_title, tl_from);
 
 ALTER TABLE /*$wgDBprefix*/querycache
   ADD COLUMN qc_language integer unsigned;
