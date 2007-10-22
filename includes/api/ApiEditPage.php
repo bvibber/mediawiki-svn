@@ -87,6 +87,8 @@ class ApiEditPage extends ApiBase {
 			$value = WRONG_REQUEST;
 		}
 		else{
+			// Ensure the correct timestamp format
+			$edittime =eregi_replace("[-,a-z,:]","",$edittime);
 			if ($watch == 'yes'){
 				$params = new FauxRequest(array (
 		       		'wpTitle' 		=> $title,
@@ -122,8 +124,7 @@ class ApiEditPage extends ApiBase {
 				$value = MISSING_CAPTCHA;
 			}
 			else{
-				// Ensure the correct timestamp format
-				$edittime =eregi_replace("[-,a-z,:]","",$edittime);
+				
 	    		$object_title = Title::newFromDBkey($title);
 				$myArticle = new Article($object_title);
 
