@@ -427,7 +427,7 @@ class SkinTemplate extends Skin {
 
 		// FIXME!  Move to Skin.php?
 		// Should do one query, use makeTitle, and have an optional page_title (if page_id is null/0)
-                global $wgLanguageTag;
+                global $wgLanguageTag,$wgDBprefix;
 		if($wgLanguageTag) if(!(array_key_exists('action',$_REQUEST) && $_REQUEST['action']=='edit')) {
 			global $wgLanguageNames,$wgLanguageIds;
                         $dbr =& wfGetDB( DB_SLAVE );
@@ -442,7 +442,7 @@ class SkinTemplate extends Skin {
 					 array(0=>'page_language=language_id','page_title'=>$this->mTitle->mDbkeyform,'page_namespace'=>NS_IMAGE),null,array('ORDER BY'=>'display_name'));
 			} else if($set_id) 
        	                 $x=$dbr->select(array('pagesets','page','langtags'),array('page_language','page_namespace','page_title','display_name','tag_name'),
-					 array(0=>'page_language=language_id AND pagesets.page_id=page.page_id','set_id'=>$set_id),null,array('ORDER BY'=>'display_name'));
+					 array(0=>'page_language=language_id AND '.$wgDBprefix.'pagesets.page_id='.$wgDBprefix.'page.page_id','set_id'=>$set_id),null,array('ORDER BY'=>'display_name'));
 //  set_id=page.page_id OR (pagesets.page_id=page.page_id AND page_language is null AND language_id is null)',
                         while($row=$dbr->fetchObject($x)) {
 				$wgLanguageNames[$row->page_language]=$row->display_name;
