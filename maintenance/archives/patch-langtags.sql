@@ -54,14 +54,14 @@ CREATE INDEX group_name
   ON /*$wgDBprefix*/langsets (group_name);
 
 ALTER TABLE /*$wgDBprefix*/archive
- ADD COLUMN /*$wgDBprefix*/ar_language integer;
+ ADD COLUMN ar_language integer unsigned;
 DROP INDEX name_title_timestamp
   ON /*$wgDBprefix*/archive;
 CREATE INDEX name_title_timestamp
   ON /*$wgDBprefix*/archive (ar_language, ar_namespace, ar_title, ar_timestamp);
 
 ALTER TABLE /*$wgDBprefix*/page
-  ADD COLUMN /*$wgDBprefix*/page_language integer unsigned;
+  ADD COLUMN page_language integer unsigned;
 DROP INDEX name_title
   ON /*$wgDBprefix*/page;
 CREATE UNIQUE INDEX name_title

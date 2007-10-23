@@ -1060,7 +1060,11 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				print "<li>Skipped sysop account creation, no name given.</li>\n";
 			}
 
-			if($wgLanguageTag) $wgLanguageTag = false;
+			if($wgLanguageTag) {
+				do_pagesets_update(); flush();
+				do_langtags_update(); flush();
+			//	$wgLanguageTag = false;
+			}
 			$titleobj = Title::newFromText( wfMsgNoDB( "mainpage" ) );
 			$article = new Article( $titleobj );
 			$newid = $article->insertOn( $wgDatabase );

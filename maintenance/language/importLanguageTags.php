@@ -2,17 +2,17 @@
 
 function importLanguageTags($keepTables=false) {
 ### Language codes per popular standards
-global $wgDBtype,$wgDBPrefix,$wgDatabase,$wgDBTableOptions;
+global $wgDBtype,$wgDBprefix,$wgDatabase,$wgDBTableOptions;
 $wgDBTableOptions='';
 
 $db=& wfGetDB( DB_MASTER );
 $here=dirname( __FILE__ ).'/tags/';
 
 function doQueries($wgDatabase,$sql) {
-	global $wgDBPrefix,$wgDBTableOptions;
+	global $wgDBprefix,$wgDBTableOptions;
 	$sql=str_replace(
-		array("/*$wgDBPrefix*/","/*$wgDBTableOptions*/"),
-		array($wgDBPrefix,$wgDBTableOptions),$sql);
+		array("{$wgDBprefix}","/*$wgDBTableOptions*/"),
+		array($wgDBprefix,$wgDBTableOptions),$sql);
 	$sql=explode(';',$sql);
 	$wgDatabase->doQuery("begin");
 	foreach($sql AS $v) if(strlen($v=trim($v))) $wgDatabase->doQuery($v);
@@ -20,7 +20,7 @@ function doQueries($wgDatabase,$sql) {
 }
 
 $sql=<<<E
-CREATE TABLE /*$wgDBPrefix*/langtags_iso639 (
+CREATE TABLE {$wgDBprefix}langtags_iso639 (
   tag varchar(42),
   iso639 char(3),
   iso639_m varchar(3),
@@ -32,10 +32,10 @@ CREATE TABLE /*$wgDBPrefix*/langtags_iso639 (
   english_name varchar(255),
   iso639_3_revision date
 ) /*$wgDBTableOptions*/;
-CREATE INDEX tag_idx ON /*$wgDBPrefix*/langtags_iso639(tag);
-CREATE INDEX iso639_3_idx ON /*$wgDBPrefix*/langtags_iso639(iso639_3);
+CREATE INDEX tag_idx ON {$wgDBprefix}langtags_iso639(tag);
+CREATE INDEX iso639_3_idx ON {$wgDBprefix}langtags_iso639(iso639_3);
 
-CREATE TABLE /*$wgDBPrefix*/langtags_rfc4646 (
+CREATE TABLE {$wgDBprefix}langtags_rfc4646 (
   tag varchar(42),
   prefix varchar(42),
   preferred_value varchar(42),
@@ -44,21 +44,21 @@ CREATE TABLE /*$wgDBPrefix*/langtags_rfc4646 (
   description varchar(255)
 ) /*$wgDBTableOptions*/;
 
-CREATE TABLE /*$wgDBPrefix*/langtags_wikimedia (
+CREATE TABLE {$wgDBprefix}langtags_wikimedia (
   wikimedia_key varchar(15),
   native_name varchar(255)
 ) /*$wgDBTableOptions*/;
 E;
 
 if($wgDBtype=='mysql') $sql.=<<<E
-ALTER TABLE /*$wgDBPrefix*/langtags
+ALTER TABLE {$wgDBprefix}langtags
   CHANGE language_id language_id int NOT NULL AUTO_INCREMENT;
 E;
 
 else if($wgDBtype=='postgres') $sql.=<<<E
-CREATE SEQUENCE /*$wgDBPrefix*/langtags_language_id_seq;
-ALTER TABLE /*$wgDBPrefix*/langtags
-  ALTER language_id SET DEFAULT nextval('/*$wgDBPrefix*/langtags_language_id_seq');
+CREATE SEQUENCE {$wgDBprefix}langtags_language_id_seq;
+ALTER TABLE {$wgDBprefix}langtags
+  ALTER language_id SET DEFAULT nextval('{$wgDBprefix}langtags_language_id_seq');
 E;
 
 doQueries($db,$sql);
@@ -114,23 +114,23 @@ while(!feof($a)) {
 ### Apply RFC4646 Tagging
 ## Note: Does not use language subtag registry
 if($wgDBtype=='mysql') $sql=<<<E
-UPDATE /*$wgDBPrefix*/langtags_iso639 SET
+UPDATE {$wgDBprefix}langtags_iso639 SET
   iso639 = coalesce(iso639,iso639_3),
   tag = coalesce(iso639,iso639_3);
 
-UPDATE /*$wgDBPrefix*/langtags_iso639, /*$wgDBPrefix*/langtags_iso639 a SET
+UPDATE {$wgDBprefix}langtags_iso639, {$wgDBprefix}langtags_iso639 a SET
   langtags_iso639.tag = concat(COALESCE(a.tag,langtags_iso639.iso639_m), '-', langtags_iso639.tag)
   WHERE langtags_iso639.iso639_m is not null
   AND langtags_iso639.iso639_m = a.iso639_3;
 E;
 
 else if($wgDBtype=='postgres') $sql=<<<E
-UPDATE /*$wgDBPrefix*/langtags_iso639 SET
+UPDATE {$wgDBprefix}langtags_iso639 SET
   iso639 = coalesce(iso639,iso639_3),
   tag = coalesce(iso639,iso639_3);
 
-UPDATE /*$wgDBPrefix*/langtags_iso639 SET
-  tag = coalesce( (SELECT tag FROM /*$wgDBPrefix*/langtags_iso639 a WHERE a.iso639_3 = langtags_iso639.iso639_m), iso639_m) || '-' || tag 
+UPDATE {$wgDBprefix}langtags_iso639 SET
+  tag = coalesce( (SELECT tag FROM {$wgDBprefix}langtags_iso639 a WHERE a.iso639_3 = langtags_iso639.iso639_m), iso639_m) || '-' || tag 
   WHERE iso639_m is not null;
 E;
 
@@ -194,26 +194,27 @@ while(!feof($a)) {
 	} else $b.=$line;
 }
 
-dbsource( 'language/importLanguageTags.sql', $wgDatabase );
+dbsource( dirname(__FILE__).'/importLanguageTags.sql', $wgDatabase );
 
 $db->update('langtags',array('tag_touched'=>$db->timestamp()),array('tag_touched'=>$wgDBtype=='mysql'?'':null));
 
 $sql='';
-// $keepTables = 1;
+
 if(!$keepTables) $sql=<<<E
-DROP TABLE /*$wgDBPrefix*/langtags_iso639;
-DROP TABLE /*$wgDBPrefix*/langtags_rfc4646;
-DROP TABLE /*$wgDBPrefix*/langtags_wikimedia;
+DROP TABLE {$wgDBprefix}langtags_iso639;
+DROP TABLE {$wgDBprefix}langtags_rfc4646;
+DROP TABLE {$wgDBprefix}langtags_wikimedia;
 E;
 
 if($wgDBtype=='mysql') $sql.=<<<E
-ALTER TABLE /*$wgDBPrefix*/langtags DROP PRIMARY KEY;
-ALTER TABLE /*$wgDBPrefix*/langtags CHANGE language_id language_id int;
-CREATE UNIQUE INDEX language_id ON /*$wgDBPrefix*/langtags(language_id);
+ALTER TABLE {$wgDBprefix}langtags DROP PRIMARY KEY;
+ALTER TABLE {$wgDBprefix}langtags CHANGE language_id language_id int;
+CREATE UNIQUE INDEX language_id ON {$wgDBprefix}langtags(language_id);
 E;
 
+### Undefined language tag (main namespace) 
 $sql.=<<<E
-UPDATE /*$wgDBPrefix*/langtags SET language_id = null
+UPDATE {$wgDBprefix}langtags SET language_id = NULL
   WHERE iso639 = 'und';
 E;
 
