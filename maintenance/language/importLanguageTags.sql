@@ -14,10 +14,15 @@ SELECT langtags_wikimedia.native_name,langtags_wikimedia.wikimedia_key,
   /*$wgDBPrefix*/langtags_rfc4646 AS langtags_rfc4646
 
   WHERE
-  (langtags_wikimedia.wikimedia_key = langtags_iso639.tag OR langtags_wikimedia.wikimedia_key=langtags_iso639.iso639)
-  AND langtags_wikimedia.wikimedia_key = langtags_rfc4646.tag
+ (langtags_wikimedia.wikimedia_key = langtags_iso639.tag OR langtags_wikimedia.wikimedia_key=langtags_iso639.iso639)
+--  Too slow in MySQL
+--  AND (langtags_wikimedia.wikimedia_key = langtags_rfc4646.tag OR langtags_iso639.tag = langtags_rfc4646.tag)
+ AND (
+  langtags_wikimedia.wikimedia_key = langtags_rfc4646.tag
+  OR ( wikimedia_key = 'wuu' and langtags_rfc4646.tag='zh-wuu' )
+  OR ( wikimedia_key = 'yue' and langtags_rfc4646.tag='zh-yue' )
+ )
 ;
-
 
 --- Merge ISO639 AND RFC4646
 INSERT INTO /*$wgDBPrefix*/langtags (native_name,wikimedia_key,
@@ -116,8 +121,9 @@ SELECT count(*) FROM /*$wgDBPrefix*/langtags_rfc4646 WHERE NOT EXISTS (SELECT * 
 SELECT count(*) FROM /*$wgDBPrefix*/langtags_iso639 WHERE NOT EXISTS (SELECT * FROM /*$wgDBPrefix*/langtags WHERE iso639=langtags.iso639);
 SELECT count(*) FROM /*$wgDBPrefix*/langtags_wikimedia WHERE NOT EXISTS (SELECT * FROM /*$wgDBPrefix*/langtags WHERE wikimedia_key=langtags_wikimedia.wikimedia_key);
 
-UPDATE /*$wgDBPrefix*/langtags SET tag_name = coalesce(iso639_3,iso639,rfc4646,wikimedia_key,tag_name) where wikimedia_key <> 'zh-yue';
+UPDATE /*$wgDBPrefix*/langtags SET tag_name = coalesce(iso639_3,iso639,rfc4646,wikimedia_key,tag_name) where wikimedia_key <> 'yue' and wikimedia_key <> 'wuu';
 UPDATE /*$wgDBPrefix*/langtags SET display_name = coalesce(native_name,english_name,display_name);
 UPDATE /*$wgDBPrefix*/langtags SET language_id = 0 WHERE iso639='mul';
 UPDATE /*$wgDBPrefix*/langtags SET is_enabled = 1 where iso639 IS NOT NULL;
+-- UPDATE /*$wgDBPrefix*/langtags SET language_id = last_insert_id(language_id + 1) where iso639 <> 'mul' and iso639 <> 'und';
 

@@ -5,7 +5,7 @@
 --
 
 CREATE TABLE /*$wgDBprefix*/langtags (
-    language_id integer unsigned,
+    language_id integer unsigned auto_increment,
     prefix_id integer unsigned,
     preferred_id integer unsigned,
 
@@ -31,7 +31,8 @@ CREATE TABLE /*$wgDBprefix*/langtags (
     is_enabled smallint,
     is_private smallint,
     is_searchable smallint,
-    tag_touched char(14) binary default ''
+    tag_touched char(14) binary default '',
+    PRIMARY key (language_id)
 ) /*$wgDBTableOptions*/;
 
 CREATE UNIQUE INDEX langtags_tag_enabled

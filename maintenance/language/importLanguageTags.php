@@ -207,7 +207,7 @@ DROP TABLE /*$wgDBPrefix*/langtags_wikimedia;
 E;
 
 if($wgDBtype=='mysql') $sql.=<<<E
-ALTER TABLE /*$wgDBPrefix*/langtags DROP primary key;
+ALTER TABLE /*$wgDBPrefix*/langtags DROP PRIMARY KEY;
 ALTER TABLE /*$wgDBPrefix*/langtags CHANGE language_id language_id int;
 CREATE UNIQUE INDEX language_id ON /*$wgDBPrefix*/langtags(language_id);
 E;

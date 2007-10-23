@@ -583,6 +583,7 @@ print "<li style='font-weight:bold;color:green;font-size:110%'>Environment check
 	$conf->RootUser = importPost( "RootUser", "root" );
 	$conf->RootPW = importPost( "RootPW", "" );
 	$useRoot = importCheck( 'useroot', false );
+	$conf->LanguageTag = $LanguageTag = importCheck( 'LanguageTag', false);
 	$conf->LanguageCode = importPost( "LanguageCode", "en" );
 
 	## MySQL specific:
@@ -1059,6 +1060,7 @@ if( $conf->posted && ( 0 == count( $errs ) ) ) {
 				print "<li>Skipped sysop account creation, no name given.</li>\n";
 			}
 
+			if($wgLanguageTag) $wgLanguageTag = false;
 			$titleobj = Title::newFromText( wfMsgNoDB( "mainpage" ) );
 			$article = new Article( $titleobj );
 			$newid = $article->insertOn( $wgDatabase );
@@ -1153,6 +1155,14 @@ if( count( $errs ) ) {
 	<p class="config-desc">
 		Select the language for your wiki's interface. Some localizations aren't fully complete. Unicode (UTF-8) is used for all localizations.
 	</p>
+
+        <div class="config-input">
+                <label class='column' for="LanguageTag">Language Tags:</label>
+                <input type="checkbox" name="LanguageTag" id="LanguageTag" <?php if( $LanguageTag ) { ?>checked="checked" <?php } ?>/>
+        </div>
+        <p class="config-desc">
+                Enable language tags if this wiki will be multilingual.
+        </p>
 
 	<div class="config-input">
 		<label class='column'>Copyright/license:</label>
@@ -1672,6 +1682,9 @@ if ( \$wgCommandLineMode ) {
 # sure that cached pages are cleared.
 \$configdate = gmdate( 'YmdHis', @filemtime( __FILE__ ) );
 \$wgCacheEpoch = max( \$wgCacheEpoch, \$configdate );
+
+# Language Tags
+\$wgLanguageTag = \"{$slconf['LanguageTag']}\";
 	"; ## End of setting the $localsettings string
 
 	// Keep things in Unix line endings internally;
