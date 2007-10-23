@@ -24,7 +24,7 @@ The current version of ChangeAuthor can be downloaded from the MediaWiki SVN rep
 3. INSTALLATION
 Download the three files mentioned in section 2, create a directory named "ChangeAuthor" (without quotes) in /path/to/your/wiki/extensions , then move the three .php files to the /path/to/your/wiki/extensions/ChangeAuthor/ directory you just created. Open LocalSettings.php and add the following line at the end:
 
-require_once("$IP/extensions/ChangeAuthor/ChangeAuthor.php");
+require_once("$IP/extensions/ChangeAuthor/ChangeAuthor.setup.php");
 
 You should now see the ChangeAuthor extension listed on the Special:Version special page.
 

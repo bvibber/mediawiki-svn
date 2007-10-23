@@ -23,7 +23,7 @@ De huidige versie van VeranderAuteur kan gedownload worden van de MediaWiki SVN 
 3. INSTALLATIE
 Download de drie bestanden genoemd onder (2.), maak een nieuwe directory genaamd "ChangeAuthor" (zonder de aanhalingstekens) in /pad/naar/uw/wiki/extensions en kopieer de drie .php-bestanden naar de net aangemaakte /pad/naar/uw/wiki/extensions/ChangeAuthor directory. Open dan LocalSettings.php, en voeg de volgende regel toe aan het einde:
 
-require_once("$IP/extensions/ChangeAuthor/ChangeAuthor.php");
+require_once("$IP/extensions/ChangeAuthor/ChangeAuthor.setup.php");
 
 Controleer nu op de speciale pagina Speciaal:Versie of "ChangeAuthor" aan de lijst van extensies toegevoegd is.
 
