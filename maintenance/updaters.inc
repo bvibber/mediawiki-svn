@@ -1134,7 +1134,9 @@ function do_restrictions_update() {
 }
 
 function do_pagesets_update() {
-        add_table( 'pagesets', 'patch-pagesets.sql' ); flush();
+	global $wgLanguageTag;
+	if(!$wgLanguageTag) return;
+	add_table( 'pagesets', 'patch-pagesets.sql' ); flush();
 }
 
 function do_langtags_update() {

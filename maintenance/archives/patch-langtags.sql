@@ -115,8 +115,6 @@ ALTER TABLE /*$wgDBprefix*/templatelinks
   ADD COLUMN tl_language integer unsigned;
 DROP INDEX tl_from
   ON /*$wgDBprefix*/templatelinks;
-DROP INDEX tl_namespace
-  ON /*$wgDBprefix*/templatelinks;
 CREATE UNIQUE INDEX tl_from
   ON /*$wgDBprefix*/templatelinks (tl_from, tl_namespace, tl_language, tl_title);
 
