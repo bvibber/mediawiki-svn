@@ -1,0 +1,40 @@
+#! /bin/ksh
+
+. /lib/svc/share/smf_include.sh
+
+getproparg() {
+        val=`svcprop -p $1 $SMF_FMRI`
+        [ -n "$val" ] && echo $val
+}
+
+channel=`getproparg msgbot/irc-channel`
+logfile=`getproparg msgbot/logfile`
+nick=`getproparg msgbot/irc-nickname`
+server=`getproparg msgbot/irc-server`
+udpport=`getproparg msgbot/udp-port`
+udpaddr=`getproparg msgbot/udp-address`
+
+[[ -z "$channel" ]] && { echo >&2 "msgbot/irc-channel not set"; exit 1; }
+[[ -z "$nick" ]] && { echo >&2 "msgbot/irc-nickname not set"; exit 1; }
+[[ -z "$server" ]] && { echo >&2 "msgbot/irc-server not set"; exit 1; }
+
+if [[ -z "$logfile" ]]; then
+	if [[ -z "$udpport" && -z "$udpaddr" ]]; then
+		echo >&2 "if msgbot/logfile is not set, msgbot/udp-port and msgbot/udp-address must be set"
+		exit 1
+	fi
+fi
+
+case "$1" in
+	start)
+		if [[ -z "$logfile" ]]; then
+			( /usr/local/bin/udprec $udpport $udpaddr | /usr/local/bin/ircecho $channel $nick $server ) &
+		else
+			( tail +0f $logfile | /usr/local/bin/ircecho $channel $nick $server ) &
+		fi
+		;;
+	*)
+		echo >&2 "usage: $0 start"
+		exit 1
+		;;
+esac

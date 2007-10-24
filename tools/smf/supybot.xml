@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle
+  SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+
+<service_bundle type='manifest' name='supybot'>
+  <service name='application/supybot' type='service' version='1'>
+    <create_default_instance enabled='false' />
+
+    <dependency
+      name='multi-user-server'
+      grouping='optional_all'
+      type='service'
+      restart_on='none'>
+        <service_fmri value='svc:/milestone/multi-user-server' />
+    </dependency>
+
+    <exec_method type='method' name='start'
+      exec='/opt/wmf/smf/method-supybot %m'
+      timeout_seconds='60'>
+    </exec_method>
+
+    <exec_method type='method' name='stop' exec=':kill' timeout_seconds='60'>
+    </exec_method>
+
+    <instance name='tsbot' enabled='false'>
+
+      <method_context>
+        <method_credential user='tsbot' />
+      </method_context>
+
+      <property_group name='startd' type='framework'>
+	<propval name='duration' type='astring' value='transient' />
+      </property_group>
+
+    </instance>
+
+    <template>
+      <common_name><loctext xml:lang='C'>Supybot</loctext></common_name>
+    </template>
+  </service>
+</service_bundle>

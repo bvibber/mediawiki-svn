@@ -1,0 +1,31 @@
+#! /bin/ksh
+
+. /lib/svc/share/smf_include.sh
+
+getproparg() {
+        val=`svcprop -p $1 $SMF_FMRI`
+        [ -n "$val" ] && echo $val
+}
+
+jiradir=`getproparg jira/install-dir`
+
+[[ -z "$jiradir" ]] && {
+	echo >&2 "jira/install-dir property is not set"
+	exit 1
+}
+
+JAVA_HOME=/usr/java
+export JAVA_HOME
+
+case "$1" in
+	start)
+		cd $jiradir && bin/startup.sh
+		;;
+	stop)
+		cd $jiradir && bin/shutdown.sh
+		;;
+	*)
+		echo >&2 "usage: $0 <start|stop>"
+		exit 1
+		;;
+esac

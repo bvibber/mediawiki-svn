@@ -1,0 +1,34 @@
+#! /bin/ksh
+
+. /lib/svc/share/smf_include.sh
+
+getproparg() {
+        val=`svcprop -p $1 $SMF_FMRI`
+        [ -n "$val" ] && echo $val
+}
+
+PHP_FCGI_CHILDREN=`getproparg fastcgi/children`
+PHP_FCGI_MAX_REQUESTS=`getproparg fastcgi/max-requests`
+bindaddr=`getproparg fastcgi/bind-address`
+phpini=`getproparg fastcgi/php-ini-path`
+
+[[ ! -z "$PHP_FCGI_CHILDREN" ]] && export PHP_FCGI_CHILDREN
+[[ ! -z "$PHP_FCGI_MAX_REQUESTS" ]] && export PHP_FCGI_MAX_REQUESTS
+
+[[ -z "$bindaddr" ]] && {
+	echo >&2 "fastcgi/bind-address not set"
+	exit 1
+}
+
+args=""
+[[ ! -z "$phpini" ]] && args="$args -c $phpini"
+
+case "$1" in
+	start)
+		/opt/php/bin/php-cgi -b $bindaddr $args &
+		;;
+	*)
+		echo >&2 "usage: $0 start"
+		exit 1
+		;;
+esac

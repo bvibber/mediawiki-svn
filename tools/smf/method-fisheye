@@ -1,0 +1,31 @@
+#! /bin/ksh
+
+. /lib/svc/share/smf_include.sh
+
+getproparg() {
+        val=`svcprop -p $1 $SMF_FMRI`
+        [ -n "$val" ] && echo $val
+}
+
+installdir=`getproparg fisheye/install-dir`
+
+[[ -z "$installdir" ]] && {
+	echo >&2 "fisheye/install-dir property is not set"
+	exit 1
+}
+
+JAVA_HOME=/usr/java
+export JAVA_HOME
+
+case "$1" in
+	start)
+		cd $installdir && bin/start.sh
+		;;
+	stop)
+		cd $installdir && bin/stop.sh
+		;;
+	*)
+		echo >&2 "usage: $0 <start|stop>"
+		exit 1
+		;;
+esac

@@ -1,0 +1,35 @@
+#! /bin/ksh
+
+. /lib/svc/share/smf_include.sh
+
+getproparg() {
+        val=`svcprop -p $1 $SMF_FMRI`
+        [ -n "$val" ] && echo $val
+}
+
+memlimit=`getproparg memcached/memory-limit`
+listenaddress=`getproparg 2>/dev/null memcached/listen-address`
+tcpport=`getproparg 2>/dev/null memcached/tcp-port`
+udpport=`getproparg 2>/dev/null memcached/udp-port`
+socket=`getproparg 2>/dev/null memcached/socket-path`
+
+[[ -z "$memlimit" ]] && {
+	echo >&2 "memcached/memory-limit not set"
+	exit 1
+}
+
+args="-d -m $memlimit"
+[[ ! -z "$tcpport" ]] && args="$args -p $tcpport"
+[[ ! -z "$udpport" ]] && args="$args -U $tcpport"
+[[ ! -z "$socket" ]] && args="$args -s $tcpport"
+[[ ! -z "$listenaddress" ]] && args="$args -l $listenaddress"
+
+case "$1" in
+	start)
+		/usr/local/bin/memcached $args
+		;;
+	*)
+		echo >&2 "usage: $0 start"
+		exit 1
+		;;
+esac

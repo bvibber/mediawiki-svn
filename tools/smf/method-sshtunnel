@@ -1,0 +1,25 @@
+#! /bin/ksh
+
+ . /lib/svc/share/smf_include.sh
+
+getproparg() {
+	val=`svcprop -p $1 $SMF_FMRI`
+	[ -n "$val" ] && echo $val
+}
+
+localport=`getproparg tunnel/local-port`
+remoteport=`getproparg tunnel/remote-port`
+remotehost=`getproparg tunnel/remote-host`
+
+while true; do
+	ssh -Cni /usr/local/etc/id_dsa_pppuser \
+		-L$localport:$remotehost:$remoteport \
+		-cblowfish-cbc \
+		-n -N \
+		pppuser@browne.wikimedia.org
+
+	# Transitory network problem?
+	sleep 5
+done
+
+exit 0
