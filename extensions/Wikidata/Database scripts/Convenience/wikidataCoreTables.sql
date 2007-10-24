@@ -1,9 +1,3 @@
-ALTER TABLE page MODIFY COLUMN page_restrictions TINYBLOB DEFAULT NULL;
-ALTER TABLE page MODIFY COLUMN page_random DOUBLE UNSIGNED NOT NULL DEFAULT 0;
-ALTER TABLE page MODIFY COLUMN page_latest INT(8) UNSIGNED NOT NULL DEFAULT 0;
-ALTER TABLE page MODIFY COLUMN page_len INT(8) UNSIGNED NOT NULL DEFAULT 0;
-ALTER TABLE revision MODIFY COLUMN rev_text_id INT(8) UNSIGNED NOT NULL DEFAULT 0;
-
 --
 -- Add the wikidata specific namespaces
 --
@@ -39,7 +33,7 @@ CREATE TABLE language (
   iso639_3 varchar(10) collate utf8_bin NOT NULL default '',
   wikimedia_key varchar(10) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (language_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 INSERT INTO language (language_id,dialect_of_lid,iso639_2,iso639_3,wikimedia_key) VALUES 
  (84,0,'','','bg'),
@@ -74,7 +68,7 @@ CREATE TABLE language_names (
   language_name varchar(255) NOT NULL default '',
   PRIMARY KEY  (language_id,name_language_id),
   KEY language_id (language_id)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 INSERT INTO language_names (language_id,name_language_id,language_name) VALUES 
  (84,85,'Bulgarian'),
@@ -130,12 +124,6 @@ CREATE TABLE wikidata_sets (
   set_prefix varchar(20) default NULL,
   set_fallback_name varchar(255) default NULL,
   set_dmid int(10) default NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
-CREATE TABLE script_log (
-  `script_id` int(11) NOT NULL default '0',
-  `time` datetime NOT NULL default '0000-00-00 00:00:00',
-  `script_name` varchar(128) collate utf8_bin NOT NULL default '',
-  `comment` varchar(128) collate utf8_bin NOT NULL default ''
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
  
