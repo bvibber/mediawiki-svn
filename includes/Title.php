@@ -1905,10 +1905,8 @@ class Title {
 			$wgContLang=&$GLOBALS['wgContLang'];
 			$wgContLangs=&$GLOBALS['wgContLangs'];
 			if(!$wgContLangs) $wgContLangs=array();
-
 			$wgContLangs[$GLOBALS['wgContLang']->getCode3()]=&$GLOBALS['wgContLang'];
 #			$wgContLangs[$GLOBALS['wgLang']->getCode3()]=&$GLOBALS['wgLang'];
-
 		}
 
 		# Namespace or interwiki prefix
@@ -1921,10 +1919,12 @@ class Title {
 					# Ordinary namespace
 					$dbkey = $m[2];
 					$this->mNamespace = $ns;
-				} elseif( $firstPass && $wgLanguageTag && // (!$this->mLanguageCode) &&
-					// strlen($p)==3 || strlen($p)>3&&$p{3}='-' 
+					if($firstPass && $wgLanguageTag) {
+						$this->mLanguage = wgLanguageId('und');
+						$this->mLanguageCode = wgLanguageCode($this->mLanguage);
+					}
+				} elseif( $firstPass && $wgLanguageTag &&
 					   false !== $this->mLanguage = wgLanguageId($p)) {
-
 					# Language namespace
                                         $dbkey = $m[2]; $this->mLanguageCode = wgLanguageCode($this->mLanguage);
 					if(array_key_exists($p,$wgLanguageWikimedia)) {
