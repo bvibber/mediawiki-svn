@@ -244,7 +244,7 @@ if ( $row = $wdDatabase->fetchObject( $queryResult ) ){
 	echo "user already existed";
 }
 else{
-	$wdDatabase->query( "INSERT INTO user (user_name,user_real_name,user_password,user_newpassword,user_email,user_options) VALUES ('$comment','$prefix','','','','')" );
+	$wdDatabase->query( "INSERT INTO user (user_name,user_real_name,user_password,user_newpassword,user_email,user_options) VALUES ('$prefix','$prefix','','','','')" );
 }
 $wdDatabase->close();
 
