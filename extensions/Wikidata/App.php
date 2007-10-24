@@ -51,6 +51,10 @@ $wgCommunityEditPermission="editwikidata-uw"; # only used for copy for now
 global $wdTesting;
 $wdTesting=false; #useful when testing, use as needed
 $wdCopyAltDefinitions=false;
+$wdCopyDryRunOnly=false;	# Copy.php:
+				# If true: do everything needed to
+				# make a copy, but do not actually
+				# write to the database.
 
 
 # The site prefix allows us to have multiple sets of customized

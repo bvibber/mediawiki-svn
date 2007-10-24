@@ -138,7 +138,7 @@ function wfSpecialCopy() {
 			# do the redirect
 			$wgOut->disable();
 			header('Location: '.$url);
-			#$wgOut->addHTML($url);
+			#$wgOut->addHTML("<a href=\"$url\">$url</a>");
 		}
 
 

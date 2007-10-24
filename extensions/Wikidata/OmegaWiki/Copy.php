@@ -733,7 +733,7 @@ class DefinedMeaningCopier {
 		$classMembershipCopier->dup();
 
 		global $wdCopyAltDefinitions;
-		if (!$this->already_there && $copyAltDefinitions) {
+		if (!$this->already_there && $wdCopyAltDefinitions) {
 			$altMeaningTextCopier=new AltMeaningTextCopier(
 				$dc1,
 				$dc2,
@@ -946,7 +946,10 @@ class CopyTools {
 			$sql_comma=$sql.",";
 		}
 
-		// Same with the values
+		global $wdCopyDryRunOnly;	#skip writing to db
+		if ($wdCopyDryRunOnly)
+			return true;
+
 		$result = mysql_query($sql);
 		if (!$result) 
 			throw new Exception("Mysql query failed: $sql");
@@ -977,7 +980,10 @@ class CopyTools {
 		}
 		$sql .= " ".$where;
 
-		// Same with the values
+		global $wdCopyDryRunOnly;	#skip writing to db
+		if ($wdCopyDryRunOnly)
+			return true;
+
 		$result = mysql_query($sql);
 
 		if (!$result) 
@@ -1283,7 +1289,7 @@ abstract class Copier {
 	 *	   false if it did not, and we just created it
 	 */
 	protected function doDM(&$row, $dmid_column, $full=false) {
-		if ($row[$dmid_column]==0 or is_null($row[$dmid_column]));
+		if ($row[$dmid_column]==0 or is_null($row[$dmid_column]))
 			return true;
 
 		$dmCopier=new DefinedMeaningCopier($row[$dmid_column], $this->dc1, $this->dc2);
