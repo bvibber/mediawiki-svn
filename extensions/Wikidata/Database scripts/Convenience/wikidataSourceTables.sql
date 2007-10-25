@@ -56,6 +56,7 @@ CREATE TABLE /*$wgWDprefix*/class_membership (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 CREATE TABLE /*$wgWDprefix*/collection_contents (
+`object_id` int(11) default NULL,
   `collection_id` int(10) NOT NULL default '0',
   `member_mid` int(10) NOT NULL default '0',
   `internal_member_id` varchar(255) default NULL,

@@ -14,12 +14,13 @@ $IP = realpath( dirname( __FILE__ ) .  "/../../../../" );
 $currentdir = dirname( __FILE__ );
 chdir( $IP );
 
-ini_set( 'include_path', ".$sepIP$sep$IP/extensions/Wikidata/OmegaWiki$sep$IP/includes$sep$IP/languages$sep$IP/maintenance" );
+ini_set( 'include_path', ".$sep$IP/extensions/Wikidata/OmegaWiki$sep$IP/includes$sep$IP/languages$sep$IP/maintenance" );
 
 require_once( "Defines.php");
 require_once( "ProfilerStub.php");
 require_once( "LocalSettings.php");
 require_once( "Setup.php");
+ini_set( 'include_path', ".$sep$IP/extensions/Wikidata/OmegaWiki$sep$IP/includes$sep$IP/languages$sep$IP/maintenance" );
 require_once( "Attribute.php" );
 require_once( "Transaction.php");
 require_once( "WikiDataBootstrappedMeanings.php");

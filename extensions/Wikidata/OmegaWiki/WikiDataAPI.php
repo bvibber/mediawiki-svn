@@ -1256,7 +1256,7 @@ function writeDmToCollection($dc, $collid, $uuid, $dm_id, $override_transaction=
 			member_mid=$dm_id,
 			add_transaction_id=$add_transaction_id		
 		";
-	$dbr->query($sql);
+	$result=$dbr->query($sql);
 }
 
 /**read a ConceptMapping from the database
