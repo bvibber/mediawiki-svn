@@ -323,7 +323,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/grounda";
+        p["file"]="../data/shp/grounda";
         
         Layer lyr("Landmass"); 
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -336,7 +336,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/oceansea";
+        p["file"]="../data/shp/oceansea";
         
         Layer lyr("Ocean"); 
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -348,7 +348,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/seaicea";
+        p["file"]="../data/shp/seaicea";
 
         Layer lyr("Seaice");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -361,7 +361,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/coastl";
+        p["file"]="../data/shp/coastl";
 
         Layer lyr("Coastlines");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -373,7 +373,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/grassa";
+        p["file"]="../data/shp/grassa";
         
         Layer lyr("Grassland"); 
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -385,7 +385,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/treesa";
+        p["file"]="../data/shp/treesa";
         
         Layer lyr("Trees"); 
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -397,7 +397,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/inwatera";
+        p["file"]="../data/shp/inwatera";
         
         Layer lyr("Lakes"); 
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -409,7 +409,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/landicea";
+        p["file"]="../data/shp/landicea";
         
         Layer lyr("Landice"); 
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -421,7 +421,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/builtupa";
+        p["file"]="../data/shp/builtupa";
 
         Layer lyr("Built-up Areas");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -433,7 +433,7 @@ int main ( int argc , char** argv)
     if(zoom >= 8 ) {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/watrcrsl";
+        p["file"]="../data/shp/watrcrsl";
 
         Layer lyr("Streams");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -446,7 +446,7 @@ int main ( int argc , char** argv)
     {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/polbndl";
+        p["file"]="../data/shp/polbndl";
 
         Layer lyr("Regional Borders");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -459,7 +459,7 @@ int main ( int argc , char** argv)
     if(zoom >= 0 ) {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/other/nps_boundary";
+        p["file"]="../data/shp/other/nps_boundary";
 
         Layer lyr("National Parks");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -471,7 +471,7 @@ int main ( int argc , char** argv)
     if(zoom >= 8 ) {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/aquecanl";
+        p["file"]="../data/shp/aquecanl";
 
         Layer lyr("Canals");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -483,7 +483,7 @@ int main ( int argc , char** argv)
     if(zoom >= 8 ) {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/transtrl";
+        p["file"]="../data/shp/transtrl";
 
         Layer lyr("Ferry Lines");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -498,7 +498,7 @@ int main ( int argc , char** argv)
         {
             parameters p;
             p["type"]="shape";
-            p["file"]="shp/railrdl";
+            p["file"]="../data/shp/railrdl";
 
             Layer lyr("Railroads");
             lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -511,7 +511,7 @@ int main ( int argc , char** argv)
     if(zoom >= 8 ) {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/roadl";
+        p["file"]="../data/shp/roadl";
 
         Layer lyr("Highway-border");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -524,7 +524,7 @@ int main ( int argc , char** argv)
     if(zoom >= 8 ) {
         parameters p;
         p["type"]="shape";
-        p["file"]="shp/roadl";
+        p["file"]="../data/shp/roadl";
 
         Layer lyr("Highway-border");
         lyr.set_datasource(datasource_cache::instance()->create(p));
@@ -580,7 +580,7 @@ int main ( int argc , char** argv)
 
     double bx1,by1,bx2,by2;
     int xx;
-    std::string base_dir = "tiles/mapnik";
+    std::string base_dir = "../data/tiles/mapnik";
     std::stringstream fname;
 
     if( argc == 5 )

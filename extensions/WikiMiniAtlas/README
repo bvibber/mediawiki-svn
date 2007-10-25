@@ -25,4 +25,8 @@
 == Dependencies ==
 
 To build the server side code for the WikiMiniAtlas you need to install
-the Mapnik mapping library (available at http://www.mapnik.org)
+the the following packages with their respective headers and libs
+
+* Mapnik mapping library (available at http://www.mapnik.org)
+** Freetype
+** Boost (including libboost-serialization-dev!)
