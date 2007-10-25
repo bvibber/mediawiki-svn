@@ -46,7 +46,7 @@ public class DumpImporter implements DumpWriter {
 			Integer maxBufDocs, boolean newIndex, Links links, String langCode){
 		Configuration.open(); // make sure configuration is loaded
 		IndexId iid = IndexId.get(dbname);
-		writer = new SimpleIndexWriter(links, iid, optimize, mergeFactor, maxBufDocs, newIndex);
+		writer = new SimpleIndexWriter(iid, optimize, mergeFactor, maxBufDocs, newIndex);
 		this.limit = limit;
 		this.links = links;
 		this.langCode = langCode;
@@ -69,22 +69,17 @@ public class DumpImporter implements DumpWriter {
 		// make list of redirects
 		ArrayList<Redirect> redirects = new ArrayList<Redirect>();
 		ArrayList<String> anchors = new ArrayList<String>();
-		//anchors.addAll(aa.getAnchorText());
 		for(String rk : links.getRedirectsTo(key)){
 			String[] parts = rk.toString().split(":",2);
 			int redirectRef = links.getNumInLinks(rk);
 			redirects.add(new Redirect(Integer.parseInt(parts[0]),parts[1],redirectRef));
-			//anchors.addAll(raa.getAnchorText());
 		}
+		// related
 		ArrayList<RelatedTitle> rel = null;
 		if(related != null)
 			rel = related.getRelated(key);
 		else
 			rel = new ArrayList<RelatedTitle>();
-		// extract contexts
-		/*for(RelatedTitle t : rel){
-			links.getContext(t.getRelated().getKey(),key);
-		} */
 		// make article
 		Article article = new Article(page.Id,page.Title.Namespace,page.Title.Text,revision.Text,isRedirect,
 				references,redirectTargetNamespace,redirects,rel,anchors);

@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.analyzers;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Hashtable;
 
 import org.apache.log4j.Logger;
@@ -28,7 +29,10 @@ public class StopWords {
 		"for", "if", "in", "into", "is", "it",
 		"no", "not", "of", "on", "or", "such",
 		"that", "the", "their", "then", "there", "these",
-		"they", "this", "to", "was", "will", "with"
+		"they", "this", "to", "was", "will", "with",
+		// questions:
+		"when", "who", "what", "whom", "whose", "why", "how",
+		"whoever", "do", "does", "also"
 	};
 
 	public final static String[] FRENCH_STOP_WORDS = {
@@ -110,5 +114,34 @@ public class StopWords {
 			}
 			return (ArrayList<String>) stopWords.clone();
 		}
+	}
+	
+	/** Get brand new set of stop words (to be used within one thread) */
+	public static HashSet<String> getCachedSet(IndexId iid) {
+		HashSet<String> ret = new HashSet<String>();		
+		try {
+			ret.addAll(getCached(iid));
+		} catch (IOException e) {
+			log.warn("Cannot get cached stop words for "+iid);
+		}
+		return ret;
+	}
+	
+	/** Get a brand new hash set of predifined stop words (i.e. not those from spell-check files, etc..) */ 
+	public static HashSet<String> getPredefinedSet(IndexId iid){
+		HashSet<String> ret = new HashSet<String>();
+		String langCode = iid.getLangCode();
+		String[] def = null;
+		if(langCode.equals("en"))
+			def = ENGLISH_STOP_WORDS;
+		else if(langCode.equals("de"))
+			def = GERMAN_STOP_WORDS;
+		else if(langCode.equals("fr"))
+			def = FRENCH_STOP_WORDS;
+		if(def != null){
+			for(String s : def)
+				ret.add(s);
+		}
+		return ret;
 	}
 }

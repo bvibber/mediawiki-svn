@@ -39,6 +39,7 @@ public class AggregateMetaField {
 	static public class AggregateMetaFieldSource {
 		protected int[] index = null;
 		protected byte[] length  = null;
+		protected byte[] lengthNoStopWords = null;
 		protected float[] boost  = null;
 		protected IndexReader reader = null;
 		
@@ -49,57 +50,36 @@ public class AggregateMetaField {
 			if(!fields.contains(field))
 				return; // index doesn't have ranking info
 			
-			log.info("Caching aggregate meta field source for "+reader.directory());
+			log.info("Caching aggregate field "+field+" for "+reader.directory());
 			int maxdoc = reader.maxDoc();
 			index = new int[maxdoc];
 			int count = 0;
-			length = new byte[maxdoc]; // estimate
-			boost = new float[maxdoc]; // estimate
+			length = new byte[maxdoc]; // estimate maxdoc values
+			lengthNoStopWords = new byte[maxdoc]; 
+			boost = new float[maxdoc];
 			for(int i=0;i<maxdoc;i++){
-				String stored = null;
+				byte[] stored = null;
 				try{
-					stored = reader.document(i).get(field);
+					stored = reader.document(i).getBinaryValue(field);
 					index[i] = count;
 					if(stored == null)
 						continue;
-					int last = 0;
-					int cur;					
-					int j=0;
-					while(true){
-						cur = stored.indexOf(' ',last);
-						if(cur == -1){
-							if(last == 0)
-								break;
-							else
-								cur = stored.length();
+					for(int j=0;j<stored.length/6;j++){
+						if(count >= length.length){
+							length = extendBytes(length);
+							lengthNoStopWords = extendBytes(lengthNoStopWords);
+							boost = extendFloats(boost);
+						}						
+						length[count] = stored[j*6];
+						if(length[count] == 0){
+							log.warn("Broken length=0 for docid="+i+", at position "+j);
 						}
-						if(j % 2 == 0){ // every even values is length
-							if(count == length.length){ // extend array
-								byte[] t = new byte[length.length*2];
-								System.arraycopy(length,0,t,0,length.length);
-								length = t;
-							}
-							length[count] = (byte)Integer.parseInt(stored.substring(last,cur)); // treat byte values as unsigned
-						} else{ // odd value is boost
-							if(count == boost.length){ // extend array
-								float[] t = new float[boost.length*2];
-								System.arraycopy(boost,0,t,0,boost.length);
-								boost = t;
-							}
-							boost[count] = Float.parseFloat(stored.substring(last,cur));							
-							count++; // advance to next
-						}
-						last = cur + 1;
-						j++;
-						if(cur == stored.length())
-							break;
-					}
-					if(j!=0 && j % 2 != 0){
-						log.warn("Inconsistent meta field in document "+i+" : "+stored);
-					}
-				} catch(NumberFormatException e){
-					log.error("NumberFormatException for docid = "+i+", stored="+stored);
-					e.printStackTrace();
+						lengthNoStopWords[count] = stored[j*6+1];
+						int boostInt = ((stored[j*6+2] << 24) + (stored[j*6+3] << 16) + (stored[j*6+4] << 8) + (stored[j*6+5] << 0));
+						boost[count] = Float.intBitsToFloat(boostInt);
+						
+						count++;
+					}										
 				} catch(Exception e){
 					log.error("Exception during processing stored_field="+field+" on docid="+i+", with stored="+stored+" : "+e.getMessage());
 					e.printStackTrace();
@@ -107,14 +87,30 @@ public class AggregateMetaField {
 			}
 			// compact arrays
 			if(count < length.length - 1){
-				byte[] bt = new byte[count];
-				System.arraycopy(length,0,bt,0,count);
-				length = bt;
-				float[] ft = new float[count];
-				System.arraycopy(boost,0,ft,0,count);
-				boost = ft;
+				length = resizeBytes(length,count);
+				lengthNoStopWords = resizeBytes(lengthNoStopWords,count);
+				boost = resizeFloats(boost,count);
 			}
-			log.info("Finished caching aggregate meta source for "+reader.directory());
+			log.info("Finished caching aggregate "+field+" for "+reader.directory());
+		}
+		
+		protected byte[] extendBytes(byte[] array){
+			return resizeBytes(array,array.length*2);
+		}
+		
+		protected byte[] resizeBytes(byte[] array, int size){
+			byte[] t = new byte[size];
+			System.arraycopy(array,0,t,0,Math.min(array.length,size));
+			return t;
+		}
+		
+		protected float[] extendFloats(float[] array){
+			return resizeFloats(array,array.length*2);
+		}		
+		protected float[] resizeFloats(float[] array, int size){
+			float[] t = new float[size];
+			System.arraycopy(array,0,t,0,Math.min(array.length,size));
+			return t;
 		}
 
 		protected int getValueIndex(int docid, int position){
@@ -133,6 +129,10 @@ public class AggregateMetaField {
 		/** Get length for position */
 		public int getLength(int docid, int position){
 			return length[getValueIndex(docid,position)];
+		}		
+		/** Get length for position */
+		public int getLengthNoStopWords(int docid, int position){
+			return lengthNoStopWords[getValueIndex(docid,position)];
 		}
 		/** Get boost for position */
 		public float getBoost(int docid, int position){

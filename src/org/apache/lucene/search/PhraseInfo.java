@@ -15,6 +15,9 @@ public interface PhraseInfo{
 	/** length of phrase at position pos */
 	public int length(int docid, int pos);	
 	
+	/** length of phrase at position pos, excluding stop words */
+	public int lengthNoStopWords(int docid, int pos);
+	
 	/** boost for phrase at position pos*/
 	public float boost(int docid, int pos);
 }

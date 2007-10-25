@@ -2,14 +2,17 @@ package org.wikimedia.lsearch.importer;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.IndexWriter;
+import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
+import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
 import org.wikimedia.lsearch.config.GlobalConfiguration;
@@ -35,9 +38,10 @@ public class SimpleIndexWriter {
 	protected boolean newIndex;
 	protected String langCode;
 	protected Links links;
+	protected Analyzer analyzer;
+	protected HashSet<String> stopWords;
 	
-	public SimpleIndexWriter(Links links, IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
-		this.links = links;
+	public SimpleIndexWriter(IndexId iid, Boolean optimize, Integer mergeFactor, Integer maxBufDocs, boolean newIndex){
 		this.iid = iid;
 		this.optimize = optimize;
 		this.mergeFactor = mergeFactor;
@@ -48,6 +52,8 @@ public class SimpleIndexWriter {
 		FieldBuilder.Case dCase = (global.exactCaseIndex(iid.getDBname()))? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 		
 		builder = new FieldBuilder(iid,dCase);
 		indexes = new HashMap<String,IndexWriter>();
+		analyzer = Analyzers.getIndexerAnalyzer(builder);
+		stopWords = StopWords.getPredefinedSet(iid);
 		// open all relevant indexes
 		for(IndexId part : iid.getPhysicalIndexIds()){
 			indexes.put(part.toString(),openIndex(part));
@@ -107,9 +113,7 @@ public class SimpleIndexWriter {
 		IndexWriter writer = indexes.get(target.toString());
 		if(writer == null)
 			return;
-		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,builder,iid,links);
-		Document doc = (Document) ret[0];
-		Analyzer analyzer = (Analyzer) ret[1];
+		Document doc = WikiIndexModifier.makeDocument(a,builder,iid,stopWords);
 		try {
 			writer.addDocument(doc,analyzer);
 			log.debug(iid+": Adding document "+a);

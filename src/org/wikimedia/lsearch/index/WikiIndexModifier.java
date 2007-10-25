@@ -30,13 +30,16 @@ import org.apache.lucene.store.FSDirectory;
 import org.wikimedia.lsearch.analyzers.Aggregate;
 import org.wikimedia.lsearch.analyzers.AggregateAnalyzer;
 import org.wikimedia.lsearch.analyzers.Analyzers;
+import org.wikimedia.lsearch.analyzers.CategoryAnalyzer;
 import org.wikimedia.lsearch.analyzers.ContextAnalyzer;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FieldNameFactory;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.KeywordsAnalyzer;
+import org.wikimedia.lsearch.analyzers.LanguageAnalyzer;
 import org.wikimedia.lsearch.analyzers.RelatedAnalyzer;
+import org.wikimedia.lsearch.analyzers.StopWords;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
@@ -70,6 +73,9 @@ public class WikiIndexModifier {
 	static public final int MAX_FIELD_LENGTH = 100000;
 	/** number of aditional alttitle1, alttitle2, .. etc fields to be filled in with redirects */
 	static public int ALT_TITLES = 3;	
+	
+	/** Index-time boost for headings, multiplied with article rank */
+	static public final float HEADINGS_BOOST = 0.05f;
 
 	/** Simple implementation of batch addition and deletion */
 	class SimpleIndexModifier {
@@ -175,15 +181,8 @@ public class WikiIndexModifier {
 			writer.setMaxFieldLength(MAX_FIELD_LENGTH);
 			FieldBuilder.Case dCase = (exactCase)? FieldBuilder.Case.EXACT_CASE : FieldBuilder.Case.IGNORE_CASE; 
 			FieldBuilder builder = new FieldBuilder(iid,dCase);
-			// TODO: fixme
-			Links links = null;
-			try {
-				links = Links.openForRead(iid,iid.getImportPath());
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-
+			Analyzer analyzer = Analyzers.getIndexerAnalyzer(builder);
+			HashSet<String> stopWords = StopWords.getPredefinedSet(iid);
 			for(IndexUpdateRecord rec : records){								
 				if(rec.doAdd()){
 					if(!rec.isAlwaysAdd() && nonDeleteDocuments.contains(rec))
@@ -191,9 +190,7 @@ public class WikiIndexModifier {
 					if(!checkPreconditions(rec))
 						continue; // article shouldn't be added for some reason					
 					IndexReportCard card = getReportCard(rec);
-					Object[] ret = makeDocumentAndAnalyzer(rec.getArticle(),builder,iid,links);
-					Document doc = (Document) ret[0];
-					Analyzer analyzer = (Analyzer) ret[1];
+					Document doc = makeDocument(rec.getArticle(),builder,iid,stopWords);
 					try {
 						writer.addDocument(doc,analyzer);
 						log.debug(iid+": Adding document "+rec.getKey()+" "+rec.getArticle());
@@ -451,177 +448,128 @@ public class WikiIndexModifier {
 	 * @param languageAnalyzer
 	 * @return array { document, analyzer }
 	 */
-	public static Object[] makeDocumentAndAnalyzer(Article article, FieldBuilder builder, IndexId iid, Links links){
-		PerFieldAnalyzerWrapper perFieldAnalyzer = null;
+	public static Document makeDocument(Article article, FieldBuilder builder, IndexId iid, HashSet<String> stopWords){
 		Document doc = new Document();
 
 		// tranform record so that unnecessary stuff is deleted, e.g. some redirects
 		transformArticleForIndexing(article);
-		
-		// This will be used to look up and replace entries on index updates.
+				
+		// page_id from database, used to look up and replace entries on index updates
 		doc.add(new Field("key", article.getKey(), Field.Store.YES, Field.Index.UN_TOKENIZED));
 
-		// These fields are returned with results
+		// namespace, returned with results
 		doc.add(new Field("namespace", article.getNamespace(), Field.Store.YES, Field.Index.UN_TOKENIZED));
-		
-		// each token is one category (category names themself are not tokenized)
-		doc.add(new Field("category", "", 
-				Field.Store.NO, Field.Index.TOKENIZED));
-		
-		// interwiki associated with this page
-		//doc.add(new Field("interwiki", "", 
-		//    Field.Store.NO, Field.Index.TOKENIZED));
-		
+				
+		// raw rank value
 		doc.add(new Field("rank",Integer.toString(article.getRank()),
 				Field.Store.YES, Field.Index.NO));
 		
-		// related partition
-		int[] p = null;
-		
+		// redirect namespace
 		if(article.isRedirect()){
 			doc.add(new Field("redirect_namespace",Integer.toString(article.getRedirectTargetNamespace()),
 					Field.Store.NO, Field.Index.UN_TOKENIZED));
 		}
+
+		// related
+		makeRelated(doc,"related",article,iid,stopWords);
 		
-		// related articles
-		ArrayList<Aggregate> relatedAg = makeRelated(doc,"related",article,iid);
+		float rankBoost = transformRank(article.getRank());
 		
+		/** Following fields can be optionally case-dependent */  
 		for(FieldBuilder.BuilderSet bs : builder.getBuilders()){
 			FieldNameFactory fields = bs.getFields();
+			FilterFactory filters = bs.getFilters();
 			
-			// boost document title with it's article rank
-			Field title = new Field(fields.title(), article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);				
-			//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
-			float rankBoost = calculateArticleRank(article.getRank()); 
+			// tokenize the article to fill in pre-analyzed fields
+			WikiTokenizer tokenizer = new WikiTokenizer(article.getContents(),iid,bs.isExactCase());
+			tokenizer.tokenize();
+			
+			// title
+			Field title = new Field(fields.title(), article.getTitle(),Field.Store.YES, Field.Index.TOKENIZED);				 
 			title.setBoost(rankBoost);
 			doc.add(title);
-
+			
+			// contents 
+			doc.add(new Field(fields.contents(),
+					new LanguageAnalyzer(filters,tokenizer).tokenStream(fields.contents(),"")));
+			
 			if(bs.getFilters().hasStemmer()){
+				// stemtitle
 				Field stemtitle = new Field(fields.stemtitle(), article.getTitle(),Field.Store.NO, Field.Index.TOKENIZED);				
-				//log.info(article.getNamespace()+":"+article.getTitle()+" has rank "+article.getRank()+" and redirect: "+((article.getRedirects()==null)? "" : article.getRedirects().size()));
 				stemtitle.setBoost(rankBoost);
 				doc.add(stemtitle);
 			}
 
-			// put the best redirects as alternative titles
-			makeAltTitles(doc,fields.alttitle(),article);
+			// altititle
+			makeAlttitle(doc,fields.alttitle(),article,iid,stopWords,bs.isExactCase(),tokenizer,rankBoost);
 
-			// most significant words in the text, gets extra score, from analyzer
-			bs.setAddKeywords(checkKeywordPreconditions(article,iid));		
-			makeKeywordField(doc,fields.keyword(),rankBoost);
-
-			// contents - generated using wikitokenizer
-			Field contents = new Field(fields.contents(), "", 
-					Field.Store.NO, Field.Index.TOKENIZED); 
-			doc.add(contents);
+			// category
+			if(!bs.isExactCase()){
+				// each token is one category (category names themself are not tokenized)
+				doc.add(new Field("category", new CategoryAnalyzer(tokenizer.getCategories(),false).tokenStream("category","")));
+			}
 			
-			
-			
-			//makeContextField(doc,fields.context(),fields.related());
-			
-			// anchors
-			// makeKeywordField(doc,fields.anchor(),rankBoost);
-			
-			// add the whole title for extract boost
-			String wt = FastWikiTokenizerEngine.stipTitle(article.getTitle());
-			if(!bs.isExactCase())
-				wt = wt.toLowerCase();
-			Field wtitle = new Field(fields.wholetitle(),wt,Field.Store.NO, Field.Index.UN_TOKENIZED);				
-			wtitle.setBoost(rankBoost);
-			doc.add(wtitle);
+			// reverse title for wildcard searches
+			Field rtitle = new Field(fields.reverse_title(), reverseString(article.getTitle()), Field.Store.NO, Field.Index.TOKENIZED);				 
+			rtitle.setBoost(rankBoost);
+			doc.add(rtitle);
 
 		}
-		// make analyzer
-		String text = article.getContents();
-		Object[] ret = Analyzers.getIndexerAnalyzer(text,builder,article.getRedirectKeywords(),article.getAnchorText(),article.getRelated(),p,article.makeTitle(),links,relatedAg);
-		perFieldAnalyzer = (PerFieldAnalyzerWrapper) ret[0];
-
-		
-		return new Object[] { doc, perFieldAnalyzer };
+		return doc;
 	}
 	
-	protected static ArrayList<Aggregate> makeRelated(Document doc, String prefix, Article article, IndexId iid){
+	/** reverse a string */
+	public static String reverseString(String str){
+		int len = str.length();
+		char[] buf = new char[len];	
+		for(int i=0;i<len;i++)
+			buf[i] = str.charAt(len-i-1);
+		return new String(buf,0,len);
+	}
+	
+	/** add related aggregate field */
+	protected static void makeRelated(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords){
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
 		for(RelatedTitle rt : article.getRelated()){
-			items.add(new Aggregate(rt.getRelated().getTitle(),transformRelated(rt.getScore()),iid,false));
+			items.add(new Aggregate(rt.getRelated().getTitle(),transformRelated(rt.getScore()),iid,false,stopWords));
 		}
+		makeAggregate(doc,prefix,items);
+	}
+	
+	/** add alttitle aggregate field */
+	protected static void makeAlttitle(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords, 
+			boolean exactCase, WikiTokenizer tokenizer, float rankBoost){
+		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
+		// add title
+		String title = article.getTitle();		
+		addToItems(items, new Aggregate(title,transformRank(article.getRank()),iid,exactCase,stopWords));
+		// add all redirects
+		ArrayList<String> redirects = article.getRedirectKeywords();
+		ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
+		for(int i=0;i<redirects.size();i++){
+			addToItems(items, new Aggregate(redirects.get(i),transformRank(ranks.get(i)),iid,exactCase,stopWords));
+		}
+		// add section headings!
+		for(String h : tokenizer.getHeadingText()){
+			addToItems(items, new Aggregate(title+" "+h,rankBoost*HEADINGS_BOOST,iid,exactCase,stopWords));
+		}
+		makeAggregate(doc,prefix,items);
+	}
+	
+	private static void addToItems(ArrayList<Aggregate> items, Aggregate a){
+		if(a.length() != 0)
+			items.add(a);
+	}
+	
+	protected static void makeAggregate(Document doc, String prefix, ArrayList<Aggregate> items){
 		if(items.size() == 0)
-			return items; // don't add aggregate fields if they are empty
-		doc.add(new Field(prefix,"",Field.Store.NO,Field.Index.TOKENIZED));
-		doc.add(new Field(prefix+"_meta",AggregateAnalyzer.generateMetaField(items),Field.Store.COMPRESS,Field.Index.NO));
-		return items;
+			return; // don't add aggregate fields if they are empty
+		doc.add(new Field(prefix,new AggregateAnalyzer(items).tokenStream(prefix,"")));
+		doc.add(new Field(prefix+"_meta",AggregateAnalyzer.generateMetaField(items),Field.Store.YES));
 	}
 	
 	protected static float transformRelated(double score){
 		return (float)Math.log10(1+score);
-	}
-
-	/** Returns partioning of related titles, or null if there aren't any */
-	protected static int[] makeRelatedOld(Document doc, String prefix, Article article, float boost, String context) {
-		ArrayList<RelatedTitle> rel = article.getRelated();
-		if(rel == null || rel.size()==0)
-			return null;
-		double[] scores = new double[rel.size()];
-		for(int i=0;i<rel.size();i++)
-			scores[i] = rel.get(i).getScore();
-		
-		// partition the sorted scores into groups
-		int[] p = MathFunc.partitionList(scores,RelatedAnalyzer.RELATED_GROUPS);
-		// don't add last related group
-		for(int i=1;i<RelatedAnalyzer.RELATED_GROUPS;i++){
-			Field relfield = new Field(prefix+i, "", 
-					Field.Store.NO, Field.Index.TOKENIZED);
-			float fb = boost*(float)MathFunc.avg(scores,p[i-1],p[i]);
-			relfield.setBoost(fb);
-			doc.add(relfield);
-			/*if(i <= ContextAnalyzer.CONTEXT_GROUPS){
-				Field confield = new Field(context+i, "", 
-						Field.Store.NO, Field.Index.TOKENIZED);
-				confield.setBoost(fb); // use same boost as related field
-				doc.add(confield);
-			}  */
-		}
-		
-		return p;
-	}
-
-	/** Make a multiple context field ...  */
-	protected static void makeContextField(Document doc, String prefix, String related) {
-		for(int i=1;i<=ContextAnalyzer.CONTEXT_GROUPS;i++){
-			Field keyfield = new Field(prefix+i, "", 
-					Field.Store.NO, Field.Index.TOKENIZED);
-			keyfield.setBoost(doc.getField(related+i).getBoost()); // use same boost as related field
-			doc.add(keyfield);
-		}
-		
-	}
-
-	/** Make a multiple keyword field, e.g. keyword1, keyword2, keyword3 ...  */
-	protected static void makeKeywordField(Document doc, String prefix, float boost) {
-		for(int i=1;i<=KeywordsAnalyzer.KEYWORD_LEVELS;i++){
-			Field keyfield = new Field(prefix+i, "", 
-					Field.Store.NO, Field.Index.TOKENIZED);
-			keyfield.setBoost(boost);
-			doc.add(keyfield);
-		}
-		
-	}
-
-	protected static void makeAltTitles(Document doc, String prefix, Article article) {
-		// the redirects, rank list are sorted..
-		final ArrayList<String> redirects = article.getRedirectKeywords();
-		final ArrayList<Integer> ranks = article.getRedirectKeywordRanks();
-		if(redirects.size() == 0)
-			return;
-		// add alternative titles alttitle1, alttitle2 ...
-		for(int i=0;i<ALT_TITLES && i<redirects.size();i++){
-			if(ranks.get(i) == 0)
-				break; // we don't want redirects with zero links
-			//log.info("For "+article+" alttitle"+(i+1)+" "+redirects.get(i)+" = "+ranks.get(i));
-			Field alttitle = new Field(prefix+(i+1), redirects.get(i),Field.Store.NO, Field.Index.TOKENIZED);				
-			alttitle.setBoost(calculateArticleRank(ranks.get(i)));
-			doc.add(alttitle);			
-		}
 	}
 
 	/** 
@@ -632,7 +580,7 @@ public class WikiIndexModifier {
 	 * @param rank
 	 * @return
 	 */
-	public static float calculateArticleRank(int rank){
+	public static float transformRank(int rank){
 		if(rank == 0)
 			return 1;
 		else 

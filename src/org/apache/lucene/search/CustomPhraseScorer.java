@@ -8,31 +8,24 @@ import org.apache.lucene.index.TermPositions;
 import org.apache.lucene.search.*;
 
 abstract public class CustomPhraseScorer extends PhraseScorer {
-	protected ScoreValue val = null;
-	protected PhraseInfo phInfo = null;
-	protected boolean beginBoost;
 	protected int phraseLen;
+	protected int phraseLenNoStopWords;
+	protected QueryOptions options;
 	// following are for debug:
 	protected Scorer stemtitleScorer, relatedScorer;
-	protected Weight stemtitleWeight, relatedWeight;
-	protected boolean max; // if true, won't sum up, but take max individual score
 	
-	public final static boolean DEBUG = false; // TODO: set to false in release
+	
+	public final static boolean DEBUG = true; // TODO: set to false in release
 	public HashMap<Integer,ArrayList<Explanation>> explanations = null;
 	
-	CustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, Similarity similarity, byte[] norms, ScoreValue val, 
-			boolean beginBoost, PhraseInfo phInfo, Scorer stemtitleScorer, Scorer relatedScorer, Weight stemtitleWeight, Weight relatedWeight, 
-			boolean max) {
-		super(weight, tps, offsets, similarity, norms);
-		this.val = val;
-		this.beginBoost = beginBoost;
-		this.phInfo = phInfo;
+	CustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, int stopWordCount, Similarity similarity, 
+			byte[] norms, QueryOptions options, Scorer stemtitleScorer, Scorer relatedScorer) {
+		super(weight, tps, offsets, similarity, norms);		
+		this.options = options;
 		this.phraseLen = tps.length;
+		this.phraseLenNoStopWords = phraseLen - stopWordCount;
 		this.stemtitleScorer = stemtitleScorer;
 		this.relatedScorer = relatedScorer;
-		this.relatedWeight = relatedWeight;
-		this.stemtitleWeight = stemtitleWeight;
-		this.max = max;
 	}
 	
 	public boolean next() throws IOException {
@@ -131,36 +124,47 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 
 		while (next() && doc() < doc) {}
 
-		float transformed = transformFreq(freq);
-		float phraseFreq = (doc() == doc) ? transformed : 0.0f;
-		float rank = 1; 
+		float rank = options.rankMeta != null ? options.rankMeta.score(doc) : 1;
+		float totalFreq = freq * rank;
+		float transformed = transformFreq(totalFreq);
+		float phraseFreq = (doc() == doc) ? transformed : 0.0f;		
 		
 		tfExplanation.setValue(phraseFreq);
 		tfExplanation.setDescription("phraseFreq:");
 		
 		Explanation texp = new Explanation();
 		texp.setValue(transformed);
-		texp.setDescription("summed freq(freq=" + freq + ")");
+		texp.setDescription("total freq(base freq=" + freq + "), product of");
+		Explanation eRank = new Explanation();
+		eRank.setValue(rank);
+		if(options.rankMeta != null)
+			eRank.setDescription("Rank (raw rank="+options.rankMeta.score(doc)+")");
+		else
+			eRank.setDescription("Rank (no ranking data)");
+		texp.addDetail(eRank);
+		Explanation eFreq = new Explanation();
+		eFreq.setValue(freq);
+		eFreq.setDescription("summed freq");
+		texp.addDetail(eFreq);
+		
 		if(DEBUG && explanations != null && explanations.get(doc) != null){
-			texp.setDescription(texp.getDescription()+", sum of:");
+			eFreq.setDescription(texp.getDescription()+", sum of:");
 			for(Explanation e : explanations.get(doc))
-				texp.addDetail(e);
+				eFreq.addDetail(e);
 		}
 		tfExplanation.addDetail(texp);
 		
-		if(stemtitleScorer != null && stemtitleScorer.doc() == first.doc){
+		if(stemtitleScorer != null && stemtitleScorer.doc() == doc){
 			Explanation eTitle = new Explanation();
 			eTitle.setValue(1+stemtitleScorer.score());
 			eTitle.setDescription("Stemtitle (raw score="+stemtitleScorer.score()+")");
-			//eTitle.addDetail(stemtitleWeight.explain(reader,first.doc));
 			tfExplanation.addDetail(eTitle);
 			tfExplanation.setValue(tfExplanation.getValue()*(1+stemtitleScorer.score()));
 		}
-		if(relatedScorer != null && relatedScorer.doc() == first.doc){
+		if(relatedScorer != null && relatedScorer.doc() == doc){
 			Explanation eRelated = new Explanation();			
 			eRelated.setValue(1+relatedScorer.score());
 			eRelated.setDescription("Related (raw score="+relatedScorer.score()+")");
-			//eRelated.addDetail(relatedWeight.explain(reader,first.doc));
 			tfExplanation.addDetail(eRelated);
 			tfExplanation.setValue(tfExplanation.getValue()*(1+relatedScorer.score()));
 		}
@@ -174,7 +178,7 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 	
 	/** aggregate freq scores for phrases */
 	protected float addToFreq(float freq, float add){
-		if(max){
+		if(options.takeMaxScore){
 			// return max of (freq,add)
 			if(add > freq)
 				return add;
@@ -193,7 +197,7 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 		//System.out.println("freqScore at start="+start+", dist="+distance);
 		int offset = start + distance;
 		float begin = 1;
-		if(beginBoost){
+		if(options.useBeginBoost){
 			if(offset < 25)
 				begin = 16;
 			else if(offset < 200)
@@ -203,20 +207,12 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 		}
 		float title = 1;
 		float related = 1;
-		float rank = 1;
-		if(val != null){
-			if(begin != 1)
-				rank = val.score(first.doc,2);
-			else
-				rank = val.score(first.doc);
-				
-		}
 		
 		float exact = 1;
 		if(distance == 0)
-			exact = 8;
+			exact = options.exactBoost;
 		
-		float baseScore = title * related * rank * begin * exact * 1.0f / (distance + 1);
+		float baseScore = title * related * begin * exact * 1.0f / (distance + 1);
 		if(DEBUG){
 			// provide very extensive explanations
 			if(explanations == null)
@@ -242,18 +238,23 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 			eDist.setValue(1.0f / (distance+1));
 			eDist.setDescription("Distance (distance="+distance+")");
 			e.addDetail(eDist);
-			if(val != null){
-				Explanation eRank = new Explanation();			
-				eRank.setValue(rank);
-				eRank.setDescription("Rank (raw rank="+val.value(first.doc)+")");
-				e.addDetail(eRank);
-			}
 		}
-		if(phInfo != null){
+		if(options.aggregateMeta != null){
 			// aggregate field !
-			int len = phInfo.length(first.doc,start);
-			float boost = phInfo.boost(first.doc,start);
-			float score = boost * baseScore * (phraseLen / (float)len); 
+			int len = options.aggregateMeta.length(first.doc,start);
+			int lenNoStopWords = options.aggregateMeta.lengthNoStopWords(first.doc,start);
+			float wholeBoost = (phraseLen == len)? options.wholeBoost : 1;
+			float wholeBoostNoStopWords = (phraseLenNoStopWords == lenNoStopWords)? options.wholeNoStopWordsBoost : 1;
+			float boost = options.aggregateMeta.boost(first.doc,start);
+			int propPhrase, propTotal;
+			if(options.useStopWordLen){
+				propPhrase = phraseLenNoStopWords;
+				propTotal = lenNoStopWords;
+			} else{
+				propPhrase = phraseLen;
+				propTotal = len;
+			}
+			float score = boost * baseScore * (propPhrase / (float)propTotal) * wholeBoost * wholeBoostNoStopWords; 
 			if(DEBUG){
 				Explanation e = explanations.get(first.doc).get(explanations.get(first.doc).size()-1);
 				e.setValue(score);
@@ -263,8 +264,16 @@ abstract public class CustomPhraseScorer extends PhraseScorer {
 				e.addDetail(eInfo);
 				Explanation eLen = new Explanation();
 				eLen.setValue(phraseLen / (float)len);
-				eLen.setDescription("Phrase length proportion (matched="+phraseLen+", total="+len+")");
+				eLen.setDescription("Phrase length proportion (matched="+propPhrase+", total="+propTotal+")");
 				e.addDetail(eLen);
+				Explanation eW = new Explanation();
+				eW.setValue(wholeBoost);
+				eW.setDescription("Whole phrase match boost");
+				e.addDetail(eW);
+				Explanation eNS = new Explanation();
+				eNS.setValue(wholeBoostNoStopWords);
+				eNS.setDescription("Whole phrase match boost, no stop words");
+				e.addDetail(eNS);
 			}
 			return score;
 		} else

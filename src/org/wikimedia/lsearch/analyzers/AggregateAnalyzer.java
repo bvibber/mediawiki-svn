@@ -3,6 +3,7 @@ package org.wikimedia.lsearch.analyzers;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.Token;
@@ -55,20 +56,25 @@ public class AggregateAnalyzer extends Analyzer {
 		return new AggregateTokenStream();
 	}	
 	
-	/** Generate the meta field stored contents */
-	public static String generateMetaField(ArrayList<Aggregate> items){
-		StringBuilder sb = new StringBuilder();
-		boolean first = true;
-		for(Aggregate ag : items){
-			if(!first){
-				sb.append(" ");				
-			} else
-				first = false;
-			sb.append(ag.length());
-			sb.append(" ");
-			sb.append(ag.boost());
+	/** 
+	 * Generate the meta field stored contents 
+	 * format: [length] [length without stop words] [boost] (1+1+4 bytes) 
+	 */
+	public static byte[] generateMetaField(ArrayList<Aggregate> items){
+		byte[] buf = new byte[items.size() * 6];
+		
+		for(int i=0;i<items.size();i++){
+			Aggregate ag = items.get(i);
+			buf[i*6] = (byte)(ag.length() & 0xff);
+			buf[i*6+1] = (byte)(ag.getNoStopWordsLength() & 0xff);
+			int boost = Float.floatToIntBits(ag.boost()); 
+	      buf[i*6+2] = (byte)((boost >>> 24) & 0xff);
+	      buf[i*6+3] = (byte)((boost >>> 16) & 0xff);
+	      buf[i*6+4] = (byte)((boost >>> 8) & 0xff);
+	      buf[i*6+5] = (byte)((boost >>> 0) & 0xff);
 		}
-		return sb.toString();
+		
+		return buf;		
 	}
 	
 }

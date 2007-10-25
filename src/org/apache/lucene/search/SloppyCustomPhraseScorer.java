@@ -17,7 +17,6 @@ package org.apache.lucene.search;
  * limitations under the License.
  */
 
-import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.TermPositions;
 
 import java.io.IOException;
@@ -30,10 +29,9 @@ final class SloppyCustomPhraseScorer extends CustomPhraseScorer {
     private PhrasePositions repeats[];
     private boolean checkedRepeats;
 
-    SloppyCustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, Similarity similarity,
-                       int slop, byte[] norms, ScoreValue val, boolean beginBoost, PhraseInfo phInfo, Scorer stemtitleScorer, Scorer relatedScorer,
-                       Weight stemtitleWeight, Weight relatedWeight, boolean max) {
-   	 super(weight, tps, offsets, similarity, norms, val, beginBoost, phInfo, stemtitleScorer, relatedScorer, stemtitleWeight, relatedWeight, max);
+    SloppyCustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, int stopWordCount, Similarity similarity, int slop, 
+   		 byte[] norms, QueryOptions options, Scorer stemtitleScorer, Scorer relatedScorer) {
+		    super(weight, tps, offsets, stopWordCount, similarity, norms, options, stemtitleScorer, relatedScorer);
    	 this.slop = slop;
     }
 

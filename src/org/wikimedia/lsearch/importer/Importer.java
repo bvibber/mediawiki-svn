@@ -145,9 +145,9 @@ public class Importer {
 				DumpImporter dp = new DumpImporter(dbname,limit,optimize,mergeFactor,maxBufDocs,newIndex,links,langCode);
 				XmlDumpReader reader = new XmlDumpReader(input,new ProgressFilter(dp, 1000));
 				reader.readDump();
-				log.info("Closing/optimizing index...");
-				dp.closeIndex();
 				end = System.currentTimeMillis();
+				log.info("Closing/optimizing index...");
+				dp.closeIndex();				
 				System.out.println("Cache stats: "+links.getCache().getStats());
 			} catch (IOException e) {
 				if(!e.getMessage().equals("stopped")){

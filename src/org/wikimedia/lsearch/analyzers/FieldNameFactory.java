@@ -80,7 +80,14 @@ public class FieldNameFactory {
 		else
 			return "wholetitle";
 	}
-
+	
+	public String reverse_title(){
+		if(exactCase)
+			return "reverse_title_exact";
+		else
+			return "reverse_title";
+	}
+	
 	public boolean isExactCase() {
 		return exactCase;
 	}

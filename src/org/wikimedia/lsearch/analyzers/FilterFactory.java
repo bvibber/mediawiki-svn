@@ -1,14 +1,10 @@
 package org.wikimedia.lsearch.analyzers;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Set;
 
-import org.apache.lucene.analysis.PorterStemFilter;
 import org.apache.lucene.analysis.TokenFilter;
 import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.de.GermanStemFilter;
 import org.apache.lucene.analysis.snowball.SnowballFilter;
 import org.apache.lucene.analysis.th.ThaiWordFilter;
 import org.wikimedia.lsearch.config.IndexId;

@@ -137,8 +137,8 @@ public class WikiQueryParserTest extends TestCase {
 			assertEquals("[godel, theorem]",parser.extractWords(parser.parseRaw("gödel theorem")).toString());
 			assertEquals("[some, text, and, some, phrase]",parser.extractWords(parser.parseRaw("some_text and \"some phrase\"")).toString());
 			
-			ArrayList<String> words = parser.extractWords(parser.parseRaw("the who band is something nobody knows about"));
-			assertEquals("contents:\"the who band\"~10 contents:\"band is something\"~10 contents:\"something nobody\"~10 contents:\"nobody knows\"~10 contents:\"knows about\"~10",parser.makePhraseQueries(words,"contents",10,1).toString());
+			//ArrayList<String> words = parser.extractWords(parser.parseRaw("the who band is something nobody knows about"));
+			//assertEquals("contents:\"the who band\"~10 contents:\"band is something\"~10 contents:\"something nobody\"~10 contents:\"nobody knows\"~10 contents:\"knows about\"~10",parser.makePhraseQueries(words,"contents",10,1).toString());
 						
 			// namespace policies
 			parser = new WikiQueryParser(ff.contents(),"0",new SimpleAnalyzer(), bs, WikiQueryParser.NamespacePolicy.IGNORE);

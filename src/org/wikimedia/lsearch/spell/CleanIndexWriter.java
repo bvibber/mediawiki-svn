@@ -11,6 +11,7 @@ import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.index.IndexWriter;
+import org.wikimedia.lsearch.analyzers.Analyzers;
 import org.wikimedia.lsearch.analyzers.FieldBuilder;
 import org.wikimedia.lsearch.analyzers.FilterFactory;
 import org.wikimedia.lsearch.analyzers.StopWords;
@@ -38,12 +39,17 @@ public class CleanIndexWriter {
 	protected FieldBuilder builder;
 	protected String langCode;
 	protected NamespaceFilter nsf;
+	protected Analyzer analyzer;
+	protected HashSet<String> stopWords;
 	
 	public CleanIndexWriter(IndexId iid) throws IOException{
 		GlobalConfiguration global = GlobalConfiguration.getInstance();
 		this.iid = iid;		
 		this.builder = new FieldBuilder(iid,FieldBuilder.Case.IGNORE_CASE,FieldBuilder.Stemmer.NO_STEMMER,FieldBuilder.Options.SPELL_CHECK);
 		this.langCode = global.getLanguage(iid.getDBname());
+		analyzer = Analyzers.getIndexerAnalyzer(builder);
+		this.stopWords = StopWords.getPredefinedSet(iid);
+		
 		HashSet<String> stopWords = new HashSet<String>();
 		for(String w : StopWords.getStopWords(iid,langCode))
 			stopWords.add(w);			
@@ -90,9 +96,7 @@ public class CleanIndexWriter {
 		if(!WikiIndexModifier.checkAddPreconditions(a,langCode))
 			return; // don't add if preconditions are not met
 
-		Object[] ret = WikiIndexModifier.makeDocumentAndAnalyzer(a,builder,iid,null);
-		Document doc = (Document) ret[0];
-		Analyzer analyzer = (Analyzer) ret[1];
+		Document doc = WikiIndexModifier.makeDocument(a,builder,iid,stopWords);
 		try {
 			writer.addDocument(doc,analyzer);
 			log.debug(iid+": Adding document "+a);

@@ -117,6 +117,7 @@ public class CachedSearchable implements SearchableMul {
 		try{
 			return searchable.explain(weight,doc);
 		} catch(Exception e){
+			e.printStackTrace();
 			SearcherCache.getInstance().checkSearchable(searchable,this);
 			throw new IOException(e.getMessage());
 		}

@@ -33,4 +33,8 @@ public class AggregatePhraseInfo implements PhraseInfo, Serializable  {
 		return src.getBoost(docid,getSlot(pos));
 	}
 
+	public int lengthNoStopWords(int docid, int pos) {
+		return src.getLengthNoStopWords(docid,getSlot(pos));
+	}
+
 }

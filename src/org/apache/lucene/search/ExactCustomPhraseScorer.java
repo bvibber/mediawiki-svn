@@ -23,10 +23,9 @@ import org.wikimedia.lsearch.search.RankValue;
 
 final class ExactCustomPhraseScorer extends CustomPhraseScorer {
 
-  ExactCustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, Similarity similarity,
-                    byte[] norms, ScoreValue val, boolean beginBoost, PhraseInfo phInfo, Scorer stemtitleScorer, Scorer relatedScorer,
-                    Weight stemtitleWeight, Weight relatedWeight, boolean max) {
-    super(weight, tps, offsets, similarity, norms, val, beginBoost, phInfo, stemtitleScorer, relatedScorer, stemtitleWeight, relatedWeight, max);
+	ExactCustomPhraseScorer(Weight weight, TermPositions[] tps, int[] offsets, int stopWordCount, Similarity similarity, 
+  		 byte[] norms, QueryOptions options, Scorer stemtitleScorer, Scorer relatedScorer) {
+		    super(weight, tps, offsets, stopWordCount, similarity, norms, options, stemtitleScorer, relatedScorer);
   }
 
   protected final float phraseFreq() throws IOException {

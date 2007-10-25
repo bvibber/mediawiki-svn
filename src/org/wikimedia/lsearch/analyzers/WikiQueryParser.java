@@ -16,6 +16,7 @@ import org.apache.lucene.index.Term;
 import org.apache.lucene.queryParser.ParseException;
 import org.apache.lucene.search.BooleanClause;
 import org.apache.lucene.search.BooleanQuery;
+import org.apache.lucene.search.CombinedPhraseQuery;
 import org.apache.lucene.search.ConstMinScore;
 import org.apache.lucene.search.CustomBoostQuery;
 import org.apache.lucene.search.CustomPhraseQuery;
@@ -23,6 +24,7 @@ import org.apache.lucene.search.Explanation;
 import org.apache.lucene.search.LogTransformScore;
 import org.apache.lucene.search.PhraseQuery;
 import org.apache.lucene.search.Query;
+import org.apache.lucene.search.QueryOptions;
 import org.apache.lucene.search.TermQuery;
 import org.apache.lucene.search.WildcardQuery;
 import org.apache.lucene.search.BooleanClause.Occur;
@@ -94,7 +96,7 @@ public class WikiQueryParser {
 	public static float TITLE_BOOST = 6;	
 	public static float TITLE_ALIAS_BOOST = 0.2f;
 	public static float TITLE_PHRASE_BOOST = 2;
-	public static float STEM_TITLE_BOOST = 2;	
+	public static float STEM_TITLE_BOOST = 0.8f;	
 	public static float STEM_TITLE_ALIAS_BOOST = 0.4f;
 	public static float ALT_TITLE_BOOST = 4;
 	public static float ALT_TITLE_ALIAS_BOOST = 0.4f;
@@ -102,10 +104,11 @@ public class WikiQueryParser {
 	public static float CONTENTS_BOOST = 0.2f;
 	
 	public static int MAINPHRASE_SLOP = 10;
-	public static float MAINPHRASE_BOOST = 0.5f;
-	public static float TITLE_ADD_BOOST = 2f;
+	public static float MAINPHRASE_BOOST = 2f;
+	public static float TITLE_ADD_BOOST = 1f;
 	public static float RELATED_BOOST = 2f;	
 	public static int RELATED_SLOP = 0;
+	public static float ALT_PHRASES_BOOST = 0.2f;
 	
 	public static float WHOLE_TITLE_BOOST = 8f;
 	public static float EXACT_CONTENTS_BOOST = 1f;
@@ -1426,40 +1429,12 @@ public class WikiQueryParser {
 		
 	}
 	
-	public PhraseQuery makePhrase(ArrayList<String> words, String field, int slop){
-		RankValue val = field.equals("contents")? new RankValue():null;
-		boolean beginBoost = field.equals("contents")? true : false; 
-		CustomPhraseQuery pq = new CustomPhraseQuery(val,beginBoost);
-		//PhraseQuery pq = new PhraseQuery();
+	/** Make the main phrase query, finds exact phrases, and sloppy phrases without stop words */
+	public Query makeMainPhrase(ArrayList<String> words, String field, int slop, float boost, Query stemtitle, Query related, HashSet<String> preStopWords){
+		RankValue val = new RankValue();
+		CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.ContentsSloppyOptions(val,stemtitle,related),
+				new QueryOptions.ContentsExactOptions(val,stemtitle,related),preStopWords);
 		for(String w : words){
-			pq.add(new Term(field,w));
-		}
-		pq.setSlop(slop);
-		return pq;
-	}
-
-	/** Make phrase queries for additional scores */
-	public Query makePhraseQueries(ArrayList<String> words, String field, int slop, float boost){
-		if(words.size() <= 1)
-			return null;
-		else{
-			CustomPhraseQuery pq = new CustomPhraseQuery(field.equals("contents")?new RankValue():null);
-			for(String w : words){
-				//if(!stopWords.contains(w))
-				pq.add(new Term(field,w));
-			}
-			pq.setSlop(slop);
-			pq.setBoost(boost);
-			return pq;
-		}
-			
-	}
-	
-	public Query makeMainPhrase(ArrayList<String> words, String field, int slop, float boost, Query stemtitle, Query related){
-		CustomPhraseQuery pq = new CustomPhraseQuery(new RankValue(),true,null,stemtitle,related);
-		//CustomPhraseQuery pq = new CustomPhraseQuery(new RankValue(),true,null,null,null);
-		for(String w : words){
-			//if(!stopWords.contains(w))
 			pq.add(new Term(field,w));
 		}
 		pq.setSlop(slop);
@@ -1467,46 +1442,10 @@ public class WikiQueryParser {
 		return pq;
 			
 	}
-
 	
-	/** Make phrase queries for additional scores */
-	public Query makePhraseQueriesOld(ArrayList<String> words, String field, int slop, float boost){
-		if(words.size() <= 1)
-			return null;
-		else if(words.size() == 2){
-			PhraseQuery pq = makePhrase(words,field,slop);
-			pq.setBoost(boost);
-			return pq;
-		} else{
-			BooleanQuery bq = new BooleanQuery(true);
-			ArrayList<String> phrase = new ArrayList<String>();
-			int i = 0;
-			// make phrases with anchors in non-stopwords
-			while(i < words.size()){
-				phrase.clear();
-				for(;i<words.size();i++){
-					String w = words.get(i);
-					if(phrase.size() == 0 || stopWords.contains(w))
-						phrase.add(w);
-					else{
-						phrase.add(w);
-						break;
-					}
-				}
-				if(phrase.size() > 1)
-					bq.add(makePhrase(phrase,field,slop),Occur.SHOULD);
-			}
-			bq.setBoost(boost);
-			if(bq.getClauses() != null && bq.getClauses().length != 0)
-				return bq;
-			else
-				return null;
-		}
-			
-	}
-	
-	public PhraseQuery makePhraseForRelated(ArrayList<String> words, int slop, AggregatePhraseInfo aphi){
-		CustomPhraseQuery pq = new CustomPhraseQuery(aphi,true);
+	/** make single phrase for related field */
+	protected PhraseQuery makePhraseForRelated(ArrayList<String> words, int slop, AggregatePhraseInfo aphi){
+		CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.RelatedOptions(aphi));
 		for(String w : words){
 			pq.add(new Term("related",w));
 		}
@@ -1629,6 +1568,65 @@ public class WikiQueryParser {
 		return bq;		
 	} 
 	
+	public Query makeAlttitlePhrase(ArrayList<String> words, String field, AggregatePhraseInfo ap){
+		CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleOptions(ap));
+		for(String w : words)
+			pq.add(new Term(field,w));
+		return pq;
+	}
+	
+	/** Make the stemtitle query for additional score */
+	public Query makeAlttitlePhrases(ArrayList<String> words, String field, float boost){		
+		AggregatePhraseInfo ap = new AggregatePhraseInfo();
+		if(words.size() == 1){
+			CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleOptions(ap));
+			pq.add(new Term(field,words.get(0)));
+			pq.setBoost(boost);			
+			return pq;
+		} else{
+			BooleanQuery bq = new BooleanQuery(true);
+			// add words
+			for(String w : words){
+				CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleOptions(ap));
+				pq.add(new Term(field,w));
+				bq.add(pq,Occur.SHOULD);
+			}
+			// phrases
+			int i =0;
+			ArrayList<String> phrase = new ArrayList<String>();
+			while(i < words.size()){
+				phrase.clear();
+				for(;i<words.size();i++){
+					String w = words.get(i);
+					if(phrase.size() == 0 || stopWords.contains(w))
+						phrase.add(w);
+					else{
+						phrase.add(w);						
+						break;
+					}
+				}
+				if(phrase.size() > 1)
+					bq.add(makeAlttitlePhrase(phrase,field,ap),Occur.SHOULD);
+			}
+			bq.setBoost(boost);
+			return bq;
+		}				
+	} 
+	
+	/** Make the phrase that will match redirects, etc..  */
+	public Query makeAlttitlePhrase(ArrayList<String> words, String field, int slop, float boost, HashSet<String> preStopWords){
+		AggregatePhraseInfo ap = new AggregatePhraseInfo();
+		CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.AlttitleSloppyOptions(ap),
+				new QueryOptions.AlttitleExactOptions(ap),preStopWords);
+		for(String w : words){
+			pq.add(new Term(field,w));
+		}
+		pq.setSlop(slop);
+		pq.setBoost(boost);
+		return pq;
+			
+	}
+	
 	/** Join a collection via a char/string */
 	protected String join(Collection<String> col, String sep){
 		StringBuffer sb = new StringBuffer();
@@ -1671,35 +1669,15 @@ public class WikiQueryParser {
 		BooleanQuery bq = new BooleanQuery(true);
 		bq.add(qc,BooleanClause.Occur.SHOULD);
 		bq.add(qt,BooleanClause.Occur.SHOULD);
-		
-		Query nostem = null;
-		if(makeRedirect || makeKeywords){
-			String contentField = defaultField;
-			defaultField = fields.keyword(); // this field is never stemmed
-			nostem = parseRaw(queryText);
-			defaultField = contentField;
-		}
-		
-		// redirect pass
-		if(makeRedirect && nostem!=null){
-			BooleanQuery qr = makeRedirectQuery(queryText,nostem);
-			if(qr != null)
-				bq.add(qr,BooleanClause.Occur.SHOULD);
-		}
-		// keyword pass
-		if(makeKeywords && nostem!=null){
-			Query qk = multiplySpans(nostem,0,fields.keyword(),KEYWORD_BOOST);
-			if(qk != null)
-				bq.add(qk,BooleanClause.Occur.SHOULD);
-		}
-		
-		// whole title
-		Query wholeTitle = new TermQuery(new Term(fields.wholetitle(),join(words," ")));
-		wholeTitle.setBoost(WHOLE_TITLE_BOOST);
+
+		HashSet<String> preStopWords = StopWords.getPredefinedSet(builder.getFilters().getIndexId());
+		Query alttitleQuery = makeAlttitlePhrase(words,fields.alttitle(),10,1,preStopWords);
 		Query stemTitleQuery = 
-			new LogTransformScore(makeStemtitle(words,fields.stemtitle(),TITLE_ADD_BOOST,0.1f));
+			new LogTransformScore(makeStemtitle(words,fields.stemtitle(),1,0.1f));
+		stemTitleQuery.setBoost(TITLE_ADD_BOOST);
 		Query relatedQuery = makePhrasesForRelated(words,RELATED_SLOP,RELATED_BOOST);
-		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,stemTitleQuery,relatedQuery);
+		Query alttitle2Query = makeAlttitlePhrases(words,fields.alttitle(),ALT_PHRASES_BOOST);
+		Query mainPhrase = makeMainPhrase(words,fields.contents(),MAINPHRASE_SLOP,MAINPHRASE_BOOST,alttitle2Query,relatedQuery,preStopWords);
 		if(mainPhrase == null)
 			return bq;
 		// build the final query
@@ -1708,12 +1686,14 @@ public class WikiQueryParser {
 		
 		if(mainPhrase != null)
 			additional.add(mainPhrase,Occur.MUST);
+		if(alttitleQuery != null)
+			additional.add(alttitleQuery,Occur.SHOULD);
 		if(stemTitleQuery != null)
 			additional.add(stemTitleQuery,Occur.SHOULD);
-		if(wholeTitle != null)
-			additional.add(wholeTitle,Occur.SHOULD);
 		if(relatedQuery != null)
 			additional.add(new LogTransformScore(relatedQuery),Occur.SHOULD);
+		/* if(alttitle2Query != null)
+			additional.add(alttitle2Query,Occur.SHOULD); */
 		
 		coreQuery.add(bq,Occur.MUST);
 		coreQuery.add(additional,Occur.SHOULD);

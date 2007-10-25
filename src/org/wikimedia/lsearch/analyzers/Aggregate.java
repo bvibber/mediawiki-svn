@@ -1,6 +1,7 @@
 package org.wikimedia.lsearch.analyzers;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import org.apache.lucene.analysis.Token;
 import org.wikimedia.lsearch.config.IndexId;
@@ -15,11 +16,17 @@ import org.wikimedia.lsearch.config.IndexId;
 public class Aggregate {
 	protected ArrayList<Token> tokens;
 	protected float boost;
+	protected int noStopWordsLength;
 	
 	/** Construct from arbitrary text that will be tokenized */
-	public Aggregate(String text, float boost, IndexId iid, boolean exactCase){
+	public Aggregate(String text, float boost, IndexId iid, boolean exactCase, HashSet<String> stopWords){
 		tokens = new FastWikiTokenizerEngine(text,iid,exactCase).parse();
 		this.boost = boost;
+		noStopWordsLength = 0;
+		for(Token t : tokens){
+			if(!stopWords.contains(t))
+				noStopWordsLength++;
+		}
 	}
 	
 	/** Number of tokens */
@@ -28,6 +35,11 @@ public class Aggregate {
 			return tokens.size();
 		else
 			return 0;
+	}
+	
+	/** Number of tokens when stop words are excluded */
+	public int getNoStopWordsLength(){
+		return noStopWordsLength;
 	}
 	
 	/** boost factor */

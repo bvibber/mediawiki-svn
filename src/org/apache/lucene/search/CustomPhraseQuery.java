@@ -15,66 +15,54 @@ import org.apache.lucene.search.PhraseQuery.PhraseWeight;
  *
  */
 public class CustomPhraseQuery extends PhraseQuery {
-	protected ScoreValue val = null;
-	protected PhraseInfo phInfo = null;
-	protected boolean beginBoost;
-	protected Query stemtitle;
-	protected Query related;
-	protected boolean max; 
+	protected QueryOptions options; 
+	/**  for combined queries */
+	protected QueryOptions additionalOptions;
+	protected int stopWordCount = 0;
 	
-	public CustomPhraseQuery(){
-		this((ScoreValue)null);
-	}	
-	
-	public CustomPhraseQuery(ScoreValue val){
-		this(val,true,null);
+	public CustomPhraseQuery(QueryOptions options){
+		this.options = options;
 	}
 	
-	public CustomPhraseQuery(ScoreValue val, boolean beginBoost){
-		this(val,beginBoost,null);
-	}
-	
-	public CustomPhraseQuery(PhraseInfo phInfo, boolean max){
-		this(null,false,phInfo,null,null,max);
-	}
-	
-	public CustomPhraseQuery(ScoreValue val, PhraseInfo phInfo){
-		this(val,false,phInfo);
-	}
-	
-	public CustomPhraseQuery(ScoreValue val, boolean beginBoost, PhraseInfo phInfo){
-		this(val,beginBoost,phInfo,null,null);
-	}
-	
-	public CustomPhraseQuery(ScoreValue val, boolean beginBoost, PhraseInfo phInfo, Query stemtitle, Query related){
-		this(val,beginBoost,phInfo,stemtitle,related,false);
-	}
-	
-	public CustomPhraseQuery(ScoreValue val, boolean beginBoost, PhraseInfo phInfo, Query stemtitle, Query related, boolean max){
-		this.val = val;
-		this.beginBoost = beginBoost;
-		this.phInfo = phInfo;
-		this.stemtitle = stemtitle;
-		this.related = related;
-		this.max = max;
+	public CustomPhraseQuery(QueryOptions sloppyOptions, QueryOptions exactOptions){
+		this.options = sloppyOptions;
+		this.additionalOptions = exactOptions;
 	}
 
+	/** Add to end of phrase */
+	public void add(Term term, boolean isStopWord) {
+		if(isStopWord)
+			stopWordCount++;
+		add(term);
+	}
+
+	/** Add to position in phrase */
+	public void add(Term term, int position, boolean isStopWord) {
+		if(isStopWord)
+			stopWordCount++;
+		add(term,position);
+	}
+	
 	@Override
 	public Query rewrite(IndexReader reader) throws IOException {
-		if(stemtitle != null)
-			stemtitle.rewrite(reader);
-		if(related != null)
-			related.rewrite(reader);
+		if(options.stemtitle != null)
+			options.stemtitle.rewrite(reader);
+		if(options.related != null)
+			options.related.rewrite(reader);
 		return this;
 	}
 
+	public String toString(String f) {
+		String s = super.toString(f);
+		String stem="", rel="";
+		if(options.stemtitle != null)
+			stem = options.stemtitle.toString();
+		if(options.related != null)
+			rel = options.related.toString();
+		return "(custom "+s+ ((stem.length()+rel.length()>0)? " with "+stem+" "+rel : "")+")";
+	}
+	
 	protected Weight createWeight(Searcher searcher) throws IOException {
-		/*if (terms.size() == 1) {			  // optimize one-term case
-			Term term = (Term)terms.elementAt(0);
-			Query termQuery = new TermQuery(term);
-			termQuery.setBoost(getBoost());
-			return termQuery.createWeight(searcher);
-		}*/
 		return new CustomPhraseWeight(searcher);
 	}
 	
@@ -85,10 +73,10 @@ public class CustomPhraseQuery extends PhraseQuery {
 		public CustomPhraseWeight(Searcher searcher) throws IOException{
 			super(searcher);
 			// init additional weights
-			if(stemtitle != null)
-				stemtitleWeight = stemtitle.createWeight(searcher);
-			if(related != null)
-				relatedWeight = related.createWeight(searcher);
+			if(options.stemtitle != null)
+				stemtitleWeight = options.stemtitle.createWeight(searcher);
+			if(options.related != null)
+				relatedWeight = options.related.createWeight(searcher);
 		}
 		
 		public float sumOfSquaredWeights() throws IOException {
@@ -114,13 +102,11 @@ public class CustomPhraseQuery extends PhraseQuery {
 			if (terms.size() == 0)			  // optimize zero-term case
 				return null;
 			
-			// init the field value for local reader
-			if(val != null)
-				val.init(reader);
-			
-			// init phrase info
-			if(phInfo != null)
-				phInfo.init(reader,field);
+			// init meta info for this local indexreader
+			if(options.rankMeta != null)
+				options.rankMeta.init(reader);
+			if(options.aggregateMeta != null)
+				options.aggregateMeta.init(reader,field);
 			
 			TermPositions[] tps = new TermPositions[terms.size()];
 			for (int i = 0; i < terms.size(); i++) {
@@ -139,18 +125,14 @@ public class CustomPhraseQuery extends PhraseQuery {
 				relatedScorer = relatedWeight.scorer(reader);
 
 			if( terms.size() == 1)
-				return new TermCustomPhraseScorer(this, tps, getPositions(), similarity,
-						reader.norms(field), val, beginBoost, phInfo, stemtitleScorer, 
-						relatedScorer, stemtitleWeight, relatedWeight, max);
+				return new TermCustomPhraseScorer(this, tps, getPositions(), stopWordCount, 
+						similarity,reader.norms(field), options, stemtitleScorer, relatedScorer);
 			else if( slop == 0 )				  // optimize exact case
-				return new ExactCustomPhraseScorer(this, tps, getPositions(), similarity,
-						reader.norms(field), val, beginBoost, phInfo, stemtitleScorer, relatedScorer, 
-						stemtitleWeight, relatedWeight, max);
+				return new ExactCustomPhraseScorer(this, tps, getPositions(), stopWordCount,
+						similarity,	reader.norms(field), options, stemtitleScorer, relatedScorer);
 			else
-				return new SloppyCustomPhraseScorer(this, tps, getPositions(), similarity, slop,
-						reader.norms(field), val, beginBoost, phInfo, stemtitleScorer, relatedScorer, 
-						stemtitleWeight, relatedWeight, max);
-
+				return new SloppyCustomPhraseScorer(this, tps, getPositions(), stopWordCount, 
+						similarity, slop,	reader.norms(field), options, stemtitleScorer, relatedScorer);
 		}
 		
 	    public Explanation explain(IndexReader reader, int doc)
@@ -206,6 +188,14 @@ public class CustomPhraseQuery extends PhraseQuery {
 
 	      Explanation tfExpl = scorer(reader).explain(doc);
 	      fieldExpl.addDetail(tfExpl);
+	      // additional scorers
+	      /*Explanation add = new Explanation(1,"Additional explanations:");
+	      if(stemtitleWeight != null)
+	      	add.addDetail(stemtitleWeight.scorer(reader).explain(doc));
+	      if(relatedWeight != null)
+	      	add.addDetail(relatedWeight.scorer(reader).explain(doc));
+	      fieldExpl.addDetail(add); */
+	      
 	      fieldExpl.addDetail(idfExpl);
 
 	      Explanation fieldNormExpl = new Explanation();
