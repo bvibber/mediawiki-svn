@@ -129,7 +129,26 @@ class ContentProviderHTTP extends ContentProvider {
 		$use_se = false ;
 		if ( isset ( $xmlg["use_special_export"] ) && $xmlg["use_special_export"] == 1 ) $use_se = true ;
 		
-		if ( $use_se ) {
+		if ( $xmlg["useapi"] ) {
+			$url = "http://" . $xmlg["site_base_url"] . "/api.php?format=php&action=query&prop=revisions&rvexpandtemplates=1&rvprop=timestamp|user|comment|content&titles=" . urlencode ( $title ) ;
+			$data = @file_get_contents ( $url ) ;
+			$data = unserialize ( $data ) ;
+			$data = $data['query'] ; if ( !isset ( $data ) ) return "" ;
+			$data = $data['pages'] ; if ( !isset ( $data ) ) return "" ;
+			$data = array_shift ( $data ) ;
+			$data = $data['revisions'] ; if ( !isset ( $data ) ) return "" ;
+			$data = $data['0'] ; if ( !isset ( $data ) ) return "" ;
+			$data = $data['*'] ; if ( !isset ( $data ) ) return "" ;
+			return $data ;
+#			$data = $data['page'] ; if ( !isset ( $data ) ) return "" ;
+#			$data = $data['revision'] ; if ( !isset ( $data ) ) return "" ;
+#			$data = $data['ref'] ; if ( !isset ( $data ) ) return "" ;
+#print urldecode ( $url ) . "\n" ;
+			print "<pre>" ; print_r ( $data ) ; print "</pre>" ; 
+			exit ;
+			$s = "Still here..." ;
+			return $s ;
+		} else if ( $use_se ) {
 			$url = "http://" . $xmlg["site_base_url"] . "/index.php?listauthors=1&title=Special:Export/" . urlencode ( $title ) ;
 		} else {
 			if ( $xmlg["use_toolserver_url"] ) {

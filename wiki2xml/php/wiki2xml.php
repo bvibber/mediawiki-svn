@@ -257,7 +257,9 @@ class wiki2xml
 	# Template and template variable, utilizing parts of the internal link methods
 	function p_template ( &$a , &$xml )
 		{
-		global $content_provider ;
+		global $content_provider , $xmlg ;
+		if ( $xmlg["useapi"] ) return false ; # API already resolved templates
+		
 		$x = "" ;
 		$b = $a ;
 		if ( !$this->nextis ( $b , "{{" ) ) return false ;
@@ -361,6 +363,8 @@ class wiki2xml
 	}
 	
 	function replace_template_variables ( &$text , &$variables ) {
+		global $xmlg ;
+		if ( $xmlg["useapi"] ) return false ; # API already resolved templates
 		for ( $a = 0 ; $a+3 < strlen ( $text ) ; $a++ ) {
 			if ( $text[$a] != '{' ) continue ;
 			while ( $this->p_template_replace_single_variable ( $text , $a , $variables ) ) ;

@@ -31,6 +31,7 @@ function get_form ( $as_extension = false ) {
 	$out['xml'] = $out['text'] = $out['translated_text'] = $out['xhtml'] = $out['docbook_xml'] = $out['docbook_pdf'] = $out['docbook_html'] = 
 	$out['odt_xml'] = $out['odt'] = '' ;
 	$out[$_out] = 'checked' ;
+	$useapi_checked = $xmlg["useapi"] ? 'checked' : '' ;
 	
 	$optional = array () ;
 	if ( isset ( $xmlg['docbook']['command_pdf'] ) ) {
@@ -94,6 +95,7 @@ This is<br/>
 <INPUT {$wt['listpagename']} type='radio' name='whatsthis' value='listpagename'>the name of an article with a list of pages<br/>
 
 {$site}
+<input type='checkbox' name='useapi' value='1' id='useapi' $useapi_checked /><label for='useapi'>Use API</label><br/>
 Title : <input type='text' name='document_title' value='' size=40/><br/>
 <input type='checkbox' name='add_gfdl' value='1' checked>Include GFDL (for some output formats)</input><br/>
 <input type='checkbox' name='keep_categories' value='1' checked>Keep categories</input><br/>
@@ -214,6 +216,7 @@ if ( get_param('doit',false) ) { # Process
 	}
 	$converter = new MediaWikiConverter ;
 
+	$xmlg["useapi"] = isset ( $_REQUEST['useapi'] ) ;
 	$xmlg["book_title"] = get_param('document_title');
 	$xmlg["site_base_url"] = get_param('site') ;
 	$xmlg["resolvetemplates"] = get_param('use_templates','all') ;
@@ -458,6 +461,7 @@ if ( get_param('doit',false) ) { # Process
 <html><head></head><body>
 <h1>Magnus' magic MediaWiki-to-XML-to-stuff converter</h1>
 <p>All written in PHP - so portable, <s>so incredibly slow...</s> <i>about as fast as the original MediaWiki parser!</i> <small>(For the source, see <a href='http://www.mediawiki.org/wiki/Subversion'>here</a>, trunk 'wiki2xml', directory 'php')</small></p>" ;
+		$xmlg["useapi"] = 1 ;
 		print get_form () ;
 		print "</body></html>" ;
 	} else { # MediaWiki extension
