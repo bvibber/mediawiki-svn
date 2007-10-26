@@ -3,7 +3,7 @@
 # Released under GPL
 
 @set_time_limit ( 0 ) ; # No time limit
-ini_set ('memory_limit', 1024*1024*640); # 64MB upper limit
+ini_set ('memory_limit', 1024*1024*64); # 64MB upper limit
 ini_set('user_agent','MSIE 4\.0b2;'); # Fake user agent
 
 if( !defined( 'MEDIAWIKI' ) ) { # Stand-alone
