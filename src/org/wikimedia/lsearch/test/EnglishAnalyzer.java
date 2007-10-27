@@ -29,6 +29,7 @@ import java.util.HashMap;
 import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.TokenStream;
+import org.wikimedia.lsearch.analyzers.TokenizerOptions;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
 import org.wikimedia.lsearch.config.IndexId;
 
@@ -59,6 +60,6 @@ public class EnglishAnalyzer extends Analyzer {
 		if(streams.get(fieldName) != null)
 			return streams.get(fieldName);
  
-		return new AliasPorterStemFilter(new WikiTokenizer(text,IndexId.get("enwiki"),false));		
+		return new AliasPorterStemFilter(new WikiTokenizer(text,IndexId.get("enwiki"),new TokenizerOptions(false)));		
 	}
 }

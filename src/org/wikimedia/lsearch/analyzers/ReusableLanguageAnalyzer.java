@@ -6,18 +6,19 @@ import org.apache.log4j.Logger;
 import org.apache.lucene.analysis.TokenStream;
 
 /**
- * Reusable language analyzer. Can be used to tokenize arbitrary text. 
+ * Reusable language analyzer. Should be used to tokenize queries and 
+ * other non-wikitext stuff. Has template relocation, etc... turned off.  
  * 
  * @author rainman
  *
  */
 public class ReusableLanguageAnalyzer extends LanguageAnalyzer {
 	static org.apache.log4j.Logger log = Logger.getLogger(ReusableLanguageAnalyzer.class);
-	protected boolean exactCase;
+	protected TokenizerOptions options;
 	
 	public ReusableLanguageAnalyzer(FilterFactory filters, boolean exactCase){
 		super(filters,null);
-		this.exactCase = exactCase;
+		this.options = new TokenizerOptions.NoRelocation(exactCase);
 	}
 	
 	/**
@@ -25,7 +26,7 @@ public class ReusableLanguageAnalyzer extends LanguageAnalyzer {
 	 */
 	@Override
 	public TokenStream tokenStream(String fieldName, String text) {
-		wikitokenizer = new WikiTokenizer(text,filters.getIndexId(),exactCase); 
+		wikitokenizer = new WikiTokenizer(text,filters.getIndexId(),options); 
 		return super.tokenStream(fieldName,(Reader)null);
 	}
 

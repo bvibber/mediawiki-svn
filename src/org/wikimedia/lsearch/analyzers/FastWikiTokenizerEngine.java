@@ -56,6 +56,8 @@ public class FastWikiTokenizerEngine {
 	private int templateLevel = 0; // level of nestedness of templates	
 	private int gap = 1;
 	private ArrayList<Token> nonContentTokens; // tokens from the beginning of the article that are not content, but templates, images, etc..
+	private ArrayList<Token> references; // stuff between <ref></ref> tags should go to the end
+	private boolean inRef = false, firstRef = false; // if we are within a ref tag
 	
 	private int prefixLen = 0;
 	private final char[] prefixBuf = new char[MAX_WORD_LEN];
@@ -77,6 +79,8 @@ public class FastWikiTokenizerEngine {
 	public static int BULLETIN_GAP = 10;
 	/** Gap between sentences */ 
 	public static int SENTENCE_GAP = 2;
+	/** Gap between references */ 
+	public static int REFERENCE_GAP = 20;
 	
 	/** language code */
 	private String language;
@@ -87,9 +91,8 @@ public class FastWikiTokenizerEngine {
 	private static Hashtable<String,HashSet<String>> categoryLocalized = new Hashtable<String,HashSet<String>>();
 	private static HashSet<String> interwiki;
 	
-	/** if true, words won't be lowercased */
-	private boolean exactCase = false;
-	private UnicodeDecomposer decomposer;
+	private UnicodeDecomposer decomposer;	
+	private TokenizerOptions options;
 	
 	enum ParserState { WORD, LINK_BEGIN, LINK_WORDS, LINK_END, LINK_KEYWORD, 
 		LINK_FETCH, IGNORE, EXTERNAL_URL, EXTERNAL_WORDS,
@@ -108,6 +111,9 @@ public class FastWikiTokenizerEngine {
 		numberToken = false;
 		headingText = new ArrayList<String>();
 		nonContentTokens = new ArrayList<Token>();
+		inRef = false;
+		firstRef = false;
+		references = new ArrayList<Token>();
 	}
 	
 	/** Note: this will read only 1024 bytes of reader, it's
@@ -127,12 +133,12 @@ public class FastWikiTokenizerEngine {
 		}
 	}
 	
-	public FastWikiTokenizerEngine(String text, IndexId iid, boolean exactCase){
+	public FastWikiTokenizerEngine(String text, IndexId iid, TokenizerOptions options){
 		this.text = text.toCharArray();
 		this.textString = text;
 		this.language = iid.getLangCode();
 		this.iid = iid;
-		this.exactCase = exactCase;
+		this.options = options;
 		textLength = text.length();
 		init();
 	}
@@ -175,7 +181,7 @@ public class FastWikiTokenizerEngine {
 			boolean addDecomposed = false;
 			for(int i=0;i<length;i++){
 				addToAlias = true;
-				if( ! exactCase )
+				if( ! options.exactCase )
 					cl = Character.toLowerCase(buffer[i]);
 				else{
 					cl = buffer[i];
@@ -303,7 +309,19 @@ public class FastWikiTokenizerEngine {
 	 * @param t
 	 */
 	private final void addToTokens(Token t){
-		if(templateLevel > 0 && keywordTokens < FIRST_SECTION_GAP){
+		if(!options.relocationParsing){
+			tokens.add(t);
+			return;
+		}
+		// and now, relocation parsing:
+		if(inRef){
+			if(firstRef){ // delimiter whole references from each other
+				firstRef = false;
+				t.setPositionIncrement(REFERENCE_GAP);
+			}
+			references.add(t);
+			return;
+		} else if(templateLevel > 0 && keywordTokens < FIRST_SECTION_GAP){
 			nonContentTokens.add(t);
 			return;
 		} else if(t.getPositionIncrement() == FIRST_SECTION_GAP){
@@ -478,9 +496,32 @@ public class FastWikiTokenizerEngine {
 			// check
 			if(start == end && start != 0 && start+end<endOfLine-cur && start>=2 && start<=4){
 				headings++;
-				headingText.add(new String(text,cur+start,endOfLine-(cur+start+end)));
+				headingText.add(deleteRefs(new String(text,cur+start,endOfLine-(cur+start+end))));
 			}
 		}		
+	}
+	
+	/** Delete <ref></ref> text from a string */ 
+	protected String deleteRefs(String str){
+		int start;
+		while((start = str.indexOf("<ref>")) != -1){
+			int end = str.indexOf("</ref>",start+1);
+			if(end == -1)
+				break;
+			str = str.substring(0,start)+((end+6<str.length())? str.substring(end+6) : "");
+		}
+		return str;
+	}
+	
+	/** Check if starting from current position a string is matched */
+	protected boolean matchesString(String target){
+		if(cur + target.length() >= textLength)
+			return false;
+		for(lookup=cur,lc=0;lc<target.length();lookup++,lc++){
+			if(target.charAt(lc) != Character.toLowerCase(text[lookup]))
+				return false;
+		}
+		return true;
 	}
 	
 	/**
@@ -517,14 +558,16 @@ public class FastWikiTokenizerEngine {
 				case '=':
 					addToken();
 					checkHeadings();
-					if(headings == 1)
-						gap = FIRST_SECTION_GAP;
-					else if(headings > 1)
-						gap = SECTION_GAP;
+					if(options.relocationParsing){
+						if(headings == 1)
+							gap = FIRST_SECTION_GAP;
+						else if(headings > 1)
+							gap = SECTION_GAP;
+					}
 					continue;
 				case '\n':
 					addToken();
-					if(cur + 1 < textLength){
+					if(options.relocationParsing && cur + 1 < textLength){
 						switch(text[cur+1]){
 						case '\n': gap = PARAGRAPH_GAP; break;
 						case '*': case ':': case '#': gap = BULLETIN_GAP; break;
@@ -539,11 +582,19 @@ public class FastWikiTokenizerEngine {
 				case ':':
 				case ';':
 					addToken();
-					if(gap == 1)
+					if(options.relocationParsing && gap == 1)
 						gap = SENTENCE_GAP;
 					continue;
 				case '<':
 					addToken();
+					if(matchesString("<ref>")){
+						inRef = true;
+						firstRef = true;
+					}					
+					if(matchesString("</ref>")){
+						inRef = false;
+						gap = 1;
+					}					
 					state = ParserState.IGNORE;
 					ignoreEnd = '>';					
 					continue;
@@ -816,6 +867,12 @@ public class FastWikiTokenizerEngine {
 				tokens.add(tt);
 			}
 			nonContentTokens.clear();
+		}
+		// add references to end
+		if(references.size() != 0){
+			for(Token tt : references){
+				tokens.add(tt);
+			}
 		}
 		return tokens;
 	}

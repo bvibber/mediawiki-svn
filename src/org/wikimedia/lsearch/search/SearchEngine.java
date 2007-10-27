@@ -156,13 +156,10 @@ public class SearchEngine {
 				ArrayList<RelatedTitle> col = Related.convertToRelatedTitleList(new StringList(reader.document(td.doc()).get("related")).toCollection());
 				res.setNumHits(col.size());
 				res.setSuccess(true);
-				// TODO: this is extremely slow
-				//Links links = Links.openForRead(lin,lin.getSearchPath());
 				for(int i=offset;i<offset+limit && i<col.size();i++){
 					RelatedTitle rt = col.get(i);
 					Title t = rt.getRelated();
 					ResultSet rs = new ResultSet(rt.getScore(),t.getNamespaceAsString(),t.getTitle());
-					//rs.addContext(links.getContext(t.getKey(),key));
 					res.addResult(rs);
 				}
 			} else{
@@ -305,7 +302,7 @@ public class SearchEngine {
 		
 		WikiSearcher searcher = null;
 		try {
-			q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll);
+			//q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll);
 			
 			TopDocs hits=null;
 			// see if we can search only part of the index
@@ -331,7 +328,11 @@ public class SearchEngine {
 							log.error("Error contacting searcher for "+piid);
 							return res;
 						}
-						RMIMessengerClient messenger = new RMIMessengerClient();
+						// query 
+						Wildcards wildcards = new Wildcards(piid,host,exactCase);
+						q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll,wildcards);
+						
+						RMIMessengerClient messenger = new RMIMessengerClient();						
 						res = messenger.searchPart(piid,searchterm,q,nsfw,offset,limit,explain,host);
 						if(sug != null){
 							SuggestQuery sq = sug.suggest(searchterm,parser,res);
@@ -360,6 +361,10 @@ public class SearchEngine {
 				searcher = new WikiSearcher(iid);
 			// normal search
 			try{
+				// query 
+				Wildcards wildcards = new Wildcards(searcher.getAllHosts(),exactCase);
+				q = parseQuery(searchterm,parser,iid,raw,nsfw,searchAll,wildcards);
+				
 				hits = searcher.search(q,nsfw,offset+limit);
 				res = makeSearchResults(searcher,hits,offset,limit,iid,searchterm,q,searchStart,explain);
 				if(sug != null){
@@ -406,7 +411,7 @@ public class SearchEngine {
 		}
 	}
 
-	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, NamespaceFilterWrapper nsfw, boolean searchAll) throws ParseException {
+	protected Query parseQuery(String searchterm, WikiQueryParser parser, IndexId iid, boolean raw, NamespaceFilterWrapper nsfw, boolean searchAll, Wildcards wildcards) throws ParseException {
 		Query q = null;
 		if(raw){
 			// do minimal parsing, make a raw query
@@ -414,11 +419,11 @@ public class SearchEngine {
 			q = parser.parseRaw(searchterm);
 		} else if(nsfw == null){
 			if(searchAll)
-				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
+				q = parser.parseWithWildcards(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,wildcards);
 			else
-				q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.REWRITE,iid.getDBname());				
+				q = parser.parseWithWildcards(searchterm,WikiQueryParser.NamespacePolicy.REWRITE,wildcards);				
 		} else{
-			q = parser.parseFourPass(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,iid.getDBname());
+			q = parser.parseWithWildcards(searchterm,WikiQueryParser.NamespacePolicy.IGNORE,wildcards);
 			log.info("Using NamespaceFilterWrapper "+nsfw);
 		}
 		return q;

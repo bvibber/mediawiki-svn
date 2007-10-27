@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.util.Command;
+import org.wikimedia.lsearch.util.FSUtils;
 
 /**
  * Simple transaction support for indexing. Wrap index operations by 
@@ -58,20 +59,19 @@ public class Transaction {
 		// start new transaction
 		backup.getParentFile().mkdirs();
 		try{
-			if( exec("/bin/cp -lr "+iid.getIndexPath()+" "+backup.getAbsolutePath()) == 0){
-				Properties prop = new Properties();
-				// write out the status file
-				prop.setProperty("status","started at "+System.currentTimeMillis());			
-				FileOutputStream fileos = new FileOutputStream(info,false);
-				prop.store(fileos,"");
-				fileos.close();
-				// all is good, set transaction flag
-				inTransaction = true;
-				log.info("Transaction on index "+iid+" started");
-			} else
-				log.warn("Making a transaction copy for "+iid+" failed.");
+			// make a copy
+			FSUtils.createHardLinkRecursive(iid.getIndexPath(),backup.getAbsolutePath());
+			Properties prop = new Properties();
+			// write out the status file
+			prop.setProperty("status","started at "+System.currentTimeMillis());			
+			FileOutputStream fileos = new FileOutputStream(info,false);
+			prop.store(fileos,"");
+			fileos.close();
+			// all is good, set transaction flag
+			inTransaction = true;
+			log.info("Transaction on index "+iid+" started");
 		} catch(Exception e){
-			log.warn("Error while intializing transaction: "+e.getMessage());
+			log.error("Error while intializing transaction: "+e.getMessage());
 		}
 	}
 	
@@ -82,11 +82,11 @@ public class Transaction {
 		// cleanup before starting new transaction
 		try{
 			if(trans.exists())
-				exec("/bin/rm -rf "+trans.getAbsolutePath());
+				FSUtils.deleteRecursive(trans.getAbsoluteFile());
 			if(info.exists())
-				exec("/bin/rm -rf "+info.getAbsolutePath());
+				FSUtils.deleteRecursive(info.getAbsoluteFile());
 		} catch(Exception e){
-			log.warn("Error removing old transaction data from "+iid.getTransactionPath()+" : "+e.getMessage());
+			log.error("Error removing old transaction data from "+iid.getTransactionPath()+" : "+e.getMessage());
 		}
 
 	}
@@ -122,15 +122,14 @@ public class Transaction {
 		try{
 			if(index.exists()) // clear locks before recovering
 				WikiIndexModifier.unlockIndex(iid.getIndexPath());
-			if( exec("/bin/rm -rf "+iid.getIndexPath()) == 0 ){
-				if( exec("/bin/mv "+backup.getAbsolutePath()+" "+iid.getIndexPath()) == 0 ){
-					log.info("Successfully recovered index for "+iid);
-				} else
-					log.warn("Recovery of "+iid+" failed: cannot move "+backup.getAbsolutePath());
-			} else
-				log.warn("Recovery of "+iid+" failed: cannot delete "+iid.getIndexPath());
+			
+			// delete old indexpath 
+			FSUtils.deleteRecursive(new File(iid.getIndexPath()));
+			
+			FSUtils.createHardLinkRecursive(backup.getAbsolutePath(),iid.getIndexPath());
+			FSUtils.deleteRecursive(backup.getAbsoluteFile()); // cleanup 
 		} catch(Exception e){
-			log.warn("Recovery of index "+iid+" failed with error "+e.getMessage());
+			log.error("Recovery of index "+iid+" failed with error "+e.getMessage());
 		}
 	}
 	

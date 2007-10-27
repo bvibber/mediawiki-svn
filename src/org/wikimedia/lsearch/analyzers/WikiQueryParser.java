@@ -42,6 +42,7 @@ import org.wikimedia.lsearch.search.AggregatePhraseInfo;
 import org.wikimedia.lsearch.search.NamespaceFilter;
 import org.wikimedia.lsearch.search.RankField;
 import org.wikimedia.lsearch.search.RankValue;
+import org.wikimedia.lsearch.search.Wildcards;
 import org.wikimedia.lsearch.search.RankField.RankFieldSource;
 import org.wikimedia.lsearch.util.UnicodeDecomposer;
 
@@ -79,7 +80,7 @@ public class WikiQueryParser {
 	private float defaultBoost = 1;
 	private float defaultAliasBoost = ALIAS_BOOST;
 	protected enum TokenType {WORD, FIELD, AND, OR, EOF };
-		
+	
 	private TokenStream tokenStream; 
 	private ArrayList<Token> tokens; // tokens from analysis
 	
@@ -140,6 +141,7 @@ public class WikiQueryParser {
 	protected FieldBuilder.BuilderSet builder;
 	protected FieldNameFactory fields;
 	protected HashSet<String> stopWords;
+	protected Wildcards wildcards = null;
 	
 	/** default value for boolean queries */
 	public BooleanClause.Occur boolDefault = BooleanClause.Occur.MUST;
@@ -620,7 +622,7 @@ public class WikiQueryParser {
 				continue;
 			
 			// terms, fields
-			if(Character.isLetterOrDigit(c) || c == '['){
+			if(Character.isLetterOrDigit(c) || c == '[' ||  c=='*' || c=='?'){
 				// check for generic namespace prefixes, e.g. [0,1]:
 				if(c == '['){
 					if(fetchGenericPrefix())
@@ -780,6 +782,33 @@ public class WikiQueryParser {
 		return query;
 	}
 	
+	/** return true if buffer is wildcard  */
+	private boolean bufferIsWildCard(){
+		if(length < 1)
+			return false;
+		boolean wild = false;
+		int index = -1;
+		for(int i=0;i<length;i++){
+			if(buffer[i] == '*' || buffer[i] == '?'){
+				wild = true;
+				index = i;
+				break;
+			}
+		}
+		// check if it's a valid wildcard
+		if(wild){
+			if((buffer[0] == '*' || buffer[0] == '?') && (buffer[length-1]=='*' || buffer[length-1]=='?'))
+				return false; // don't support patterns like *a*
+			if(index == length-1 && buffer[index]=='?')
+				return false; // probably just an ordinary question mark
+			for(int i=0;i<length;i++){
+				if(Character.isLetterOrDigit(buffer[i]))
+					return true; // +card :P
+			}
+		}
+		return false;
+	}
+	
 	/** 
 	 * Constructs either a termquery or a boolean query depending on
 	 * analysis of the fetched token. A single "word" might be analyzed
@@ -798,11 +827,16 @@ public class WikiQueryParser {
 		
 		// check for wildcard seaches, they are also not analyzed/stemmed, only for titles
 		// wildcard signs are allowed only at the end of the word, minimum one letter word
-		if(length>1 && Character.isLetter(buffer[0]) && buffer[length-1]=='*' &&
-				defaultField.equals(fields.title())){
-			Query ret = new WildcardQuery(makeTerm());
-			ret.setBoost(defaultBoost);
-			return ret;
+		if(length>1 && wildcards != null && bufferIsWildCard()){
+			Term term = makeTerm();
+			Query ret = wildcards.makeQuery(term.text(),term.field());
+			if(ret != null){
+				ret.setBoost(defaultBoost);
+				return ret;
+			} else{
+				// something is wrong, try making normal query
+				return new TermQuery(term);
+			}
 		}
 		
 		if(toplevelOccur == BooleanClause.Occur.MUST_NOT)
@@ -1432,15 +1466,31 @@ public class WikiQueryParser {
 	/** Make the main phrase query, finds exact phrases, and sloppy phrases without stop words */
 	public Query makeMainPhrase(ArrayList<String> words, String field, int slop, float boost, Query stemtitle, Query related, HashSet<String> preStopWords){
 		RankValue val = new RankValue();
-		CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.ContentsSloppyOptions(val,stemtitle,related),
-				new QueryOptions.ContentsExactOptions(val,stemtitle,related),preStopWords);
+		boolean allStopWords = true;
 		for(String w : words){
-			pq.add(new Term(field,w));
+			if(!preStopWords.contains(w)){
+				allStopWords = false;
+				break;
+			}
 		}
-		pq.setSlop(slop);
-		pq.setBoost(boost);
-		return pq;
-			
+		if(allStopWords){
+			CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.ContentsExactOptions(val,stemtitle,related));
+			for(String w : words){
+				pq.add(new Term(field,w));
+			}
+			pq.setSlop(slop);
+			pq.setBoost(boost);
+			return pq;
+		} else{
+			CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.ContentsSloppyOptions(val,stemtitle,related),
+					new QueryOptions.ContentsExactOptions(val,stemtitle,related),preStopWords);
+			for(String w : words){
+				pq.add(new Term(field,w));
+			}
+			pq.setSlop(slop);
+			pq.setBoost(boost);
+			return pq;
+		}
 	}
 	
 	/** make single phrase for related field */
@@ -1616,14 +1666,31 @@ public class WikiQueryParser {
 	/** Make the phrase that will match redirects, etc..  */
 	public Query makeAlttitlePhrase(ArrayList<String> words, String field, int slop, float boost, HashSet<String> preStopWords){
 		AggregatePhraseInfo ap = new AggregatePhraseInfo();
-		CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.AlttitleSloppyOptions(ap),
-				new QueryOptions.AlttitleExactOptions(ap),preStopWords);
+		boolean allStopWords = true;
 		for(String w : words){
-			pq.add(new Term(field,w));
+			if(!preStopWords.contains(w)){
+				allStopWords = false;
+				break;
+			}
 		}
-		pq.setSlop(slop);
-		pq.setBoost(boost);
-		return pq;
+		if(allStopWords){
+			CustomPhraseQuery pq = new CustomPhraseQuery(new QueryOptions.AlttitleExactOptions(ap));
+			for(String w : words){
+				pq.add(new Term(field,w));
+			}
+			pq.setSlop(slop);
+			pq.setBoost(boost);
+			return pq;
+		} else{
+			CombinedPhraseQuery pq = new CombinedPhraseQuery(new QueryOptions.AlttitleSloppyOptions(ap),
+					new QueryOptions.AlttitleExactOptions(ap),preStopWords);
+			for(String w : words){
+				pq.add(new Term(field,w));
+			}
+			pq.setSlop(slop);
+			pq.setBoost(boost);
+			return pq;
+		}
 			
 	}
 	
@@ -1650,7 +1717,8 @@ public class WikiQueryParser {
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	protected Query parseMultiPass(String queryText, NamespacePolicy policy, boolean makeRedirect, boolean makeKeywords){
+	protected Query parseMultiPass(String queryText, NamespacePolicy policy, boolean makeRedirect, boolean makeKeywords, Wildcards wildcards){
+		this.wildcards = wildcards;
 		queryText = quoteCJK(queryText);
 		if(policy != null)
 			this.namespacePolicy = policy;		
@@ -1669,6 +1737,9 @@ public class WikiQueryParser {
 		BooleanQuery bq = new BooleanQuery(true);
 		bq.add(qc,BooleanClause.Occur.SHOULD);
 		bq.add(qt,BooleanClause.Occur.SHOULD);
+		
+		if(words.size() == 0)
+			return bq;
 
 		HashSet<String> preStopWords = StopWords.getPredefinedSet(builder.getFilters().getIndexId());
 		Query alttitleQuery = makeAlttitlePhrase(words,fields.alttitle(),10,1,preStopWords);
@@ -1701,7 +1772,11 @@ public class WikiQueryParser {
 		return coreQuery;
 		
 	}
-
+	
+	public Query parseWithWildcards(String queryText, NamespacePolicy policy, Wildcards wildcards){
+		return parseMultiPass(queryText,policy,false,false,wildcards);
+	}
+	
 	/**
 	 * Three parse pases: contents, title, redirect
 	 * 
@@ -1711,7 +1786,7 @@ public class WikiQueryParser {
 	 * @throws ParseException
 	 */
 	public Query parseThreePass(String queryText, NamespacePolicy policy) throws ParseException{
-		return parseMultiPass(queryText,policy,true,false);
+		return parseMultiPass(queryText,policy,true,false,null);
 	}
 	
 	/**
@@ -1723,11 +1798,11 @@ public class WikiQueryParser {
 	 */
 	public Query parseFourPass(String queryText, NamespacePolicy policy, String dbname) throws ParseException{
 		boolean makeKeywords = global.useKeywordScoring(dbname);
-		return parseMultiPass(queryText,policy,true,makeKeywords);
+		return parseMultiPass(queryText,policy,true,makeKeywords,null);
 	}
 	
 	public Query parseFourPass(String queryText, NamespacePolicy policy, boolean makeKeywords) throws ParseException{
-		return parseMultiPass(queryText,policy,true,makeKeywords);
+		return parseMultiPass(queryText,policy,true,makeKeywords,null);
 	}
 	
 	/** 
@@ -1740,7 +1815,7 @@ public class WikiQueryParser {
 	 * @throws ParseException
 	 */
 	public Query parseTwoPass(String queryText, NamespacePolicy policy) throws ParseException{
-		return parseMultiPass(queryText,policy,false,false);
+		return parseMultiPass(queryText,policy,false,false,null);
 	}
 	
 	public NamespacePolicy getNamespacePolicy() {

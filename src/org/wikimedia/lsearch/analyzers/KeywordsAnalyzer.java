@@ -64,9 +64,10 @@ public class KeywordsAnalyzer extends Analyzer{
 		ArrayList<ArrayList<String>> keywordsBySize = new ArrayList<ArrayList<String>>();
 		for(int i=0;i<KEYWORD_LEVELS;i++)
 			keywordsBySize.add(new ArrayList<String>());
+		TokenizerOptions options = new TokenizerOptions(exactCase);
 		// arange keywords into a list by token number 
 		for(String k : keywords){
-			ArrayList<Token> parsed = new FastWikiTokenizerEngine(k,iid,exactCase).parse();
+			ArrayList<Token> parsed = new FastWikiTokenizerEngine(k,iid,options).parse();
 			if(parsed.size() == 0)
 				continue;
 			else if(parsed.size() < KEYWORD_LEVELS)

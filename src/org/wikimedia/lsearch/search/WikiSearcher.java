@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.Map.Entry;
 
 import org.apache.log4j.Logger;
 import org.apache.lucene.document.Document;
@@ -107,6 +109,15 @@ public class WikiSearcher extends Searcher implements SearchableMul {
 			return null;
 		else
 			return cache.getSearchableHost(s);
+	}
+	
+	/** Get map iid->host for of all parts in this searcher */
+	public HashMap<String,String> getAllHosts(){
+		HashMap<String,String> ret = new HashMap<String,String>();
+		for(Entry<String,Searchable> e : searcherParts.entrySet()){
+			ret.put(e.getKey(),cache.getSearchableHost(e.getValue()));
+		}
+		return ret;
 	}
 
 	@Override

@@ -5,6 +5,7 @@ import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Hashtable;
@@ -20,6 +21,7 @@ import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.SearcherCache;
+import org.wikimedia.lsearch.search.Wildcards;
 
 /**
  * Invokes procedures on a remote RMIMessenger.
@@ -216,5 +218,15 @@ public class RMIMessengerClient {
 			log.warn("Error invoking remote method getIndexerQueueSize on host "+host+" : "+e.getMessage());
 			return -1;
 		}	
+	}
+	
+	public ArrayList<String> getTerms(String host, String dbrole, String wildcard, boolean exactCase) throws RemoteException {
+		try{
+			RMIMessenger r = messengerFromCache(host);
+			return r.getTerms(dbrole,wildcard,exactCase);
+		} catch(Exception e){
+			e.printStackTrace();
+			return new ArrayList<String>();
+		}
 	}
 }

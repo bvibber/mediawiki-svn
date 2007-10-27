@@ -20,7 +20,8 @@ public class Aggregate {
 	
 	/** Construct from arbitrary text that will be tokenized */
 	public Aggregate(String text, float boost, IndexId iid, boolean exactCase, HashSet<String> stopWords){
-		tokens = new FastWikiTokenizerEngine(text,iid,exactCase).parse();
+		TokenizerOptions options = new TokenizerOptions.NoRelocation(exactCase);
+		tokens = new FastWikiTokenizerEngine(text,iid,options).parse();
 		this.boost = boost;
 		noStopWordsLength = 0;
 		for(Token t : tokens){

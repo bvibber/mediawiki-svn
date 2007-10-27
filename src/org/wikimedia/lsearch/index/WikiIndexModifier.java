@@ -40,6 +40,7 @@ import org.wikimedia.lsearch.analyzers.KeywordsAnalyzer;
 import org.wikimedia.lsearch.analyzers.LanguageAnalyzer;
 import org.wikimedia.lsearch.analyzers.RelatedAnalyzer;
 import org.wikimedia.lsearch.analyzers.StopWords;
+import org.wikimedia.lsearch.analyzers.TokenizerOptions;
 import org.wikimedia.lsearch.analyzers.WikiTokenizer;
 import org.wikimedia.lsearch.beans.Article;
 import org.wikimedia.lsearch.beans.IndexReportCard;
@@ -53,6 +54,7 @@ import org.wikimedia.lsearch.related.RelatedTitle;
 import org.wikimedia.lsearch.spell.api.SpellCheckIndexer;
 import org.wikimedia.lsearch.util.Localization;
 import org.wikimedia.lsearch.util.MathFunc;
+import org.wikimedia.lsearch.util.StringUtils;
 
 /**
  * IndexModifier for batch update of local lucene index. 
@@ -481,7 +483,7 @@ public class WikiIndexModifier {
 			FilterFactory filters = bs.getFilters();
 			
 			// tokenize the article to fill in pre-analyzed fields
-			WikiTokenizer tokenizer = new WikiTokenizer(article.getContents(),iid,bs.isExactCase());
+			WikiTokenizer tokenizer = new WikiTokenizer(article.getContents(),iid,new TokenizerOptions(bs.isExactCase()));
 			tokenizer.tokenize();
 			
 			// title
@@ -510,7 +512,7 @@ public class WikiIndexModifier {
 			}
 			
 			// reverse title for wildcard searches
-			Field rtitle = new Field(fields.reverse_title(), reverseString(article.getTitle()), Field.Store.NO, Field.Index.TOKENIZED);				 
+			Field rtitle = new Field(fields.reverse_title(), StringUtils.reverseString(article.getTitle()), Field.Store.NO, Field.Index.TOKENIZED);				 
 			rtitle.setBoost(rankBoost);
 			doc.add(rtitle);
 
@@ -518,20 +520,11 @@ public class WikiIndexModifier {
 		return doc;
 	}
 	
-	/** reverse a string */
-	public static String reverseString(String str){
-		int len = str.length();
-		char[] buf = new char[len];	
-		for(int i=0;i<len;i++)
-			buf[i] = str.charAt(len-i-1);
-		return new String(buf,0,len);
-	}
-	
 	/** add related aggregate field */
 	protected static void makeRelated(Document doc, String prefix, Article article, IndexId iid, HashSet<String> stopWords){
 		ArrayList<Aggregate> items = new ArrayList<Aggregate>();
 		for(RelatedTitle rt : article.getRelated()){
-			items.add(new Aggregate(rt.getRelated().getTitle(),transformRelated(rt.getScore()),iid,false,stopWords));
+			addToItems(items,new Aggregate(rt.getRelated().getTitle(),transformRelated(rt.getScore()),iid,false,stopWords));
 		}
 		makeAggregate(doc,prefix,items);
 	}

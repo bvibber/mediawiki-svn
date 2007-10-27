@@ -24,7 +24,7 @@ public class AggregateAnalyzer extends Analyzer {
 			if(item >= items.size())
 				return null;
 			Aggregate ag = items.get(item);
-			if(token >= ag.length()){
+			if(token >= ag.length() || token >= TOKEN_GAP-1){
 				gap = true;
 				do{
 					// find next nonempty item

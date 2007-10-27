@@ -42,10 +42,11 @@ public class AggregateMetaField {
 		protected byte[] lengthNoStopWords = null;
 		protected float[] boost  = null;
 		protected IndexReader reader = null;
+		protected String field;
 		
 		protected AggregateMetaFieldSource(IndexReader reader, String fieldBase) throws IOException{
 			this.reader = reader;
-			String field = fieldBase+"_meta";
+			field = fieldBase+"_meta";
 			Collection fields = reader.getFieldNames(FieldOption.ALL);
 			if(!fields.contains(field))
 				return; // index doesn't have ranking info
@@ -118,10 +119,10 @@ public class AggregateMetaField {
 			int end = (docid == index.length-1)? length.length : index[docid+1];
 			if(position >= end-start)
 				try {
-					throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" for "+docid+" ["+reader.document(docid).get("title")+"], but last valid index is "+(end-start-1));
+					throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" on field "+field+" for "+docid+" ["+reader.document(docid).get("title")+"], but last valid index is "+(end-start-1));
 				} catch (IOException e) {
 					e.printStackTrace();
-					throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" unavailable");
+					throw new ArrayIndexOutOfBoundsException("Requestion position "+position+" on field "+field+" unavailable");
 				}
 			return start+position;
 		}

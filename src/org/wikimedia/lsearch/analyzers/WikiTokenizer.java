@@ -38,8 +38,8 @@ public class WikiTokenizer extends Tokenizer {
 	 * @param str
 	 */
 	
-	public WikiTokenizer(String str, IndexId iid, boolean exactCase){
-		parser = new FastWikiTokenizerEngine(str,iid,exactCase);		
+	public WikiTokenizer(String str, IndexId iid, TokenizerOptions options){
+		parser = new FastWikiTokenizerEngine(str,iid,options);		
 		this.input = null;
 	}
 	

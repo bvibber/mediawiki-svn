@@ -11,13 +11,14 @@ import org.apache.lucene.analysis.LowerCaseTokenizer;
 import org.apache.lucene.analysis.Token;
 import org.apache.lucene.analysis.TokenStream;
 import org.wikimedia.lsearch.analyzers.FastWikiTokenizerEngine;
+import org.wikimedia.lsearch.analyzers.TokenizerOptions;
 import org.wikimedia.lsearch.config.Configuration;
 import org.wikimedia.lsearch.config.IndexId;
 import org.wikimedia.lsearch.index.WikiIndexModifier;
 
 public class FastWikiTokenizerTest {		
 		public static void displayTokensForParser(String text) {
-			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),false);
+			FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),new TokenizerOptions(false));
 			Token[] tokens = parser.parse().toArray(new Token[] {});
 			for (int i = 0; i < tokens.length; i++) {
 				Token token = tokens[i];
@@ -125,7 +126,7 @@ public class FastWikiTokenizerTest {
 			for(int i=0;i<2000;i++){
 				for(TestArticle article : articles){
 					String text = article.content;
-					FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),false);
+					FastWikiTokenizerEngine parser = new FastWikiTokenizerEngine(text,IndexId.get("enwiki"),new TokenizerOptions(false));
 					parser.parse();
 				}
 			}

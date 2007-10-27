@@ -1,6 +1,8 @@
 package org.wikimedia.lsearch.interoperability;
 
+import java.io.IOException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.apache.log4j.Logger;
@@ -17,6 +19,8 @@ import org.wikimedia.lsearch.index.IndexUpdateRecord;
 import org.wikimedia.lsearch.search.NamespaceFilterWrapper;
 import org.wikimedia.lsearch.search.NetworkStatusThread;
 import org.wikimedia.lsearch.search.SearchEngine;
+import org.wikimedia.lsearch.search.SearcherCache;
+import org.wikimedia.lsearch.search.Wildcards;
 
 /** Local implementation for {@link RMIMessenger} */
 public class RMIMessengerImpl implements RMIMessenger {
@@ -84,6 +88,14 @@ public class RMIMessengerImpl implements RMIMessenger {
 	public SearchResults searchPart(String dbrole, String searchterm, Query query, NamespaceFilterWrapper filter, int offset, int limit, boolean explain) throws RemoteException {
 		log.debug("Received request searchMainPart("+dbrole+","+query+","+offset+","+limit+")");
 		return new SearchEngine().searchPart(IndexId.get(dbrole),searchterm,query,filter,offset,limit,explain);
+	}
+	
+	public ArrayList<String> getTerms(String dbrole, String wildcard, boolean exactCase) throws RemoteException {
+		try{
+			return Wildcards.getLocalTerms(IndexId.get(dbrole),wildcard,exactCase);
+		} catch(IOException e){
+			throw new RemoteException("IOException on "+dbrole,e);
+		}
 	}
 	
 	// inherit javadoc

@@ -2,6 +2,7 @@ package org.wikimedia.lsearch.interoperability;
 
 import java.rmi.Remote;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 
 import org.apache.lucene.search.Query;
 import org.wikimedia.lsearch.beans.IndexReportCard;
@@ -95,4 +96,16 @@ public interface RMIMessenger extends Remote {
 	 * @throws RemoteException
 	 */
 	public Boolean isSuccessfulFlush(String dbname) throws RemoteException;
+	
+	/**
+	 * Wildcard matcher,
+	 * Request all terms from title and reverse_title that match wildcard pattern   
+	 * 
+	 * @param dbrole - part of index, e.g. enwiki.nspart1
+	 * @param wildcard - wildcard pattern with * and ?
+	 * @param exactCase - if pattern is exact capitalization
+	 * @return
+	 * @throws RemoteException
+	 */
+	public ArrayList<String> getTerms(String dbrole, String wildcard, boolean exactCase) throws RemoteException;
 }
