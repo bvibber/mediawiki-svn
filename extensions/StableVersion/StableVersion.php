@@ -93,7 +93,8 @@ function wfStableVersionAddCache() {
 	global $wgLang;
 	$filename = 'language/' . addslashes( $wgLang->getCode() ) . '.php';
 	// inclusion might fail :p
-	include( $filename );
+	if( file_exists($filename) ) 
+		include( $filename );
 }
 
 /**
