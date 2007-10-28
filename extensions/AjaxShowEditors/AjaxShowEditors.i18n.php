@@ -92,6 +92,9 @@ $wgAjaxShowEditorsMessages['it'] = array(
 	'ajax-se-pending' => 'in attesa di aggiornamento ... (fare clic su questa casella o iniziare la modifica)',
 	'ajax-se-idling' => '(da $1 s)',
 );
+$wgAjaxShowEditorsMessages['ja'] = array(
+	'ajax-se-idling' => '（$1秒前）',
+);
 $wgAjaxShowEditorsMessages['kk-kz'] = array(
 	'ajax-se-title' => 'Ағымдағы өңделуде:',
 	'ajax-se-pending' => 'жаңарту күтілуде... (бұл қабышақты нұқыңыз, немесе өңдеуді бастаңыз)',
@@ -116,6 +119,11 @@ $wgAjaxShowEditorsMessages['oc'] = array(
 	'ajax-se-title' => 'A èsser modificat per :',
 	'ajax-se-pending' => 'refrescament en cors ... (clicatz sus aqueste messatge o modificatz la pagina)',
 	'ajax-se-idling' => '(i a $1 s)',
+);
+$wgAjaxShowEditorsMessages['pl'] = array(
+	'ajax-se-title' => 'Ta strona jest teraz edytowana przez:',
+	'ajax-se-pending' => 'oczekiwanie na odświeżenie... (kliknij na tę ramkę lub zacznij edycję)',
+	'ajax-se-idling' => '($1s temu)',
 );
 $wgAjaxShowEditorsMessages['pms'] = array(
 	'ajax-se-title' => 'Antramentr ch\'as modìfica:',

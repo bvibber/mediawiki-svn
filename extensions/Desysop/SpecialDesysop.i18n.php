@@ -183,6 +183,16 @@ $wgDesysopMessages['oc'] = array(
 	'desysop'              => 'Levar los dreches d’administrator',
 	'desysopnot_sysop'     => 'Aqueste utilizaire es pas un administrator',
 );
+$wgDesysopMessages['pl'] = array(
+	'desysoptitle'         => 'Odebranie uprawnień administratora',
+	'desysoptext'          => 'Ten formularz jest używany przez biurokratów by odbierać użytkownikom uprawnienia administratora. Wpisz nazwę użytkownika do pola obok i wciśnij przycisk by odebrać użytkownikowi dostęp do funkcji administratora.',
+	'desysopname'          => 'Nazwa użytkownika',
+	'desysopok'            => '<b>Użytkownikowi "$1" odebrano prawa administratora</b>',
+	'desysopsetrights'     => 'Ustaw uprawnienia użytkownika',
+	'desysoprightsfail'    => '<b>Nie udało się ustawić uprawnień użytkownika "$1". (Czy nazwa użytkownika została wpisana poprawnie?)</b>',
+	'desysop'              => 'Odebranie uprawnień administratora',
+	'desysopnot_sysop'     => 'Ten użytkownik nie jest administratorem.',
+);
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgDesysopMessages['pms'] = array(
 	'desysoptitle'         => 'Révoca dla qualìfica da aministrator',

@@ -142,6 +142,20 @@ function efBookInformationMessages() {
 'bookinfo-provider' => 'Fornissor de les balyês : $1',
 ),
 
+'gl' => array(
+'bookinfo-header' => 'Información do libro',
+'bookinfo-result-title' => 'Título:',
+'bookinfo-result-author' => 'Autor:',
+'bookinfo-result-publisher' => 'Publicación:',
+'bookinfo-result-year' => 'Ano:',
+'bookinfo-error-invalidisbn' => 'O ISBN introducido non é inválido.',
+'bookinfo-error-nosuchitem' => 'O artigo non existe ou non foi atopado.',
+'bookinfo-error-nodriver' => 'Non é posíbel comezar unha apropiada búsqueda de información sobre libros.',
+'bookinfo-error-noresponse' => 'Non se recibiu resposta ou a solicitude caducou.',
+'bookinfo-purchase' => 'Compre este libro de $1',
+'bookinfo-provider' => 'Fornecedor de datos: $1',
+),
+
 'hsb' => array(
 'bookinfo-header' => 'Informacije wo knihach',
 'bookinfo-result-title' => 'Titul:',

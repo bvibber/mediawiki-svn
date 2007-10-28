@@ -90,12 +90,16 @@ $wgDeletedContribsMessages['hr'] = array(
 	'deletedcontributions' => 'Obrisani suradnički doprinosi',
 );
 
+$wgDeletedContribsMessages['hsb'] = array(
+	'deletedcontributions' => 'wušmórnjene přinoški',
+);
+
 $wgDeletedContribsMessages['hu'] = array(
 	'deletedcontributions' => 'Törölt szerkesztések',
 );
 
-$wgDeletedContribsMessages['hsb'] = array(
-	'deletedcontributions' => 'wušmórnjene přinoški',
+$wgDeletedContribsMessages['hy'] = array(
+	'deletedcontributions' => 'Մասնակցի ջնջված ներդրում',
 );
 
 $wgDeletedContribsMessages['id'] = array(

@@ -19,6 +19,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Previous ($1)',
 ),
 
+'ang' => array(
+	'backforth-next' => 'Nīehst ($1)',
+	'backforth-prev' => 'Beforan ($1)',
+),
+
 'ar' => array(
 	'backforth-next' => 'التالي ($1)',
 	'backforth-prev' => 'السابق ($1)',
@@ -68,6 +73,11 @@ function efBackAndForthMessages() {
 	'backforth-prev' => 'Předchadne ($1)',
 ),
 
+'hy' => array(
+	'backforth-next' => 'Հաջորդ ($1)',
+	'backforth-prev' => 'Նախորդ ($1)',
+),
+
 'it' => array(
 	'backforth-next' => 'Successivi ($1)',
 	'backforth-prev' => 'Precedenti ($1)',
@@ -86,6 +96,16 @@ function efBackAndForthMessages() {
 'oc' => array(
 	'backforth-next' => 'Seguent ($1)',
 	'backforth-prev' => 'Precedent ($1)',
+),
+
+'pl' => array(
+	'backforth-next' => 'Następny ($1)',
+	'backforth-prev' => 'Poprzedni ($1)',
+),
+
+'pms' => array(
+	'backforth-next' => 'Anans ($1)',
+	'backforth-prev' => 'André ($1)',
 ),
 
 'sah' => array(

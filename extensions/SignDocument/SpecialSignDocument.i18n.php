@@ -100,6 +100,9 @@ $allMessages = array(
 		'sign-uniquequery-1signed2'    => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} '.
 		'$1] signed [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
 	),
+	'ang' => array(
+		'sign-realname' => 'Nama:',
+	),
 	'ar' => array(
 		'signdocument' => 'توقيع الوثيقة',
 		'sign-nodocselected' => 'من فضلك اختر الوثيقة التي تود توقيعها.',
@@ -379,6 +382,38 @@ $allMessages = array(
 		'sign-uniquequery-similarphone' => 'Gelijkaardige telefoonnummer',
 		'sign-uniquequery-similaremail' => 'Gelijkaardige e-mailadres',
 		'sign-uniquequery-1signed2' => '[{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs&detail=$3}} $1] ondertekende [{{SERVER}}{{localurl: Special:SignDocument|doc=$4&viewsigs}} $2].',
+	),
+	'pms' => array(
+		'signdocument' => 'Firma digital d\'un document',
+		'sign-nodocselected' => 'Për piasì, ch\'a sërna ël document ch\'a veul firmé.',
+		'sign-selectdoc' => 'Document:',#identical but defined
+		'sign-docheader' => '<div class="noarticletext">Për piasì, ch\'a dòvra ës mòdulo-sì për firmé an manera digital ël document "[[$1]]," che i-j ësmonoma ambelessì sota. Ch\'a sia gentil, ch\'a lesa tut ël document e \'\'\'ch<nowiki>\'</nowiki>a firma mach s<nowiki>\'</nowiki>a l<nowiki>\'</nowiki>é d<nowiki>\'</nowiki>acòrdi an manera completa\'\'\'. Për firmé ch\'a buta sò dat ant ij camp a pòsta.</div>',
+		'sign-error-nosuchdoc' => 'A l\'ha ciamane un document ($1) ch\'a-i é pa.',
+		'sign-realname' => 'Nòm e cognòm:',
+		'sign-address' => 'Abitant an via:',
+		'sign-city' => 'Sità:',
+		'sign-state' => 'Provinsa:',
+		'sign-zip' => 'Còdes postal:',
+		'sign-country' => 'Stat:',
+		'sign-phone' => 'Nùmer ëd telèfono:',
+		'sign-bday' => 'Età:',
+		'sign-email' => 'Adrëssa ëd pòsta eletrònica:',
+		'sign-indicates-req' => '<small><i><font color="red">*</font> a marca ij camp ch\'a-i é òbligh dë buté.</i></small>',
+		'sign-hide-note' => '<small><i><font color="red">**</font> Nòta: a l\'é n\'anformassion nen pùblica, ch\'a s-ciàiro mach j\'aministrator.</i></small>',
+		'sign-list-anonymous' => 'An pùblich march-me coma anònim, sensa gnente ch\'a peula feje capì a la gent chi ch\'i son (contut che j\'aministrator ij dat personaj a-j ës-ciàiro franch midem)',
+		'sign-list-hideaddress' => 'Pùblica nen mia adrëssa (contut che j\'aministrator ij dat personaj a-j ës-ciàiro franch midem)',
+		'sign-list-hideextaddress' => 'Pùblica nen stat, provinsa, còdes postal ò sità (contut che j\'aministrator ij dat personaj a-j ës-ciàiro franch midem)',
+		'sign-list-hidephone' => 'Pùblica nen ël telèfono (contut che j\'aministrator ij dat personaj a-j ës-ciàiro franch midem)',
+		'sign-list-hidebday' => 'Pùblica nen l\'età (contut che j\'aministrator ij dat personaj a-j ës-ciàiro franch midem)',
+		'sign-list-hideemail' => 'Pùblica nen l\'adrëssa ëd pòsta eletrònica (contut che j\'aministrator ij dat personaj a-j ës-ciàiro franch midem)',
+		'sign-submit' => 'Ch\'a-i daga \'n colp ambelessì për firmé',
+		'sign-information' => '<div class="noarticletext">Motobin mersì për avej dovrà sò temp a lese ës document-sì. S\'a l\'é d\'acòrdi con lòn ch\'a-i é scrit për piasì ch\'a lo disa ën butand sò dat personaj e dand-ie un colp ansima al boton dla firma.  
+
+Ch\'a varda che sò dat a sio giust, e che i peulo contatela për verifiché soa identità. Ch\'a ten-a present che soa [[wikipedia:IP address|adrëssa IP]] e dj\'àotre anformassion ansima soa identità a resteran registrà quand a firma e saran dovrà da j\'aministrator për eliminé le firme dobie e confermé che ij dat personaj a sio giust. 
+
+\'\'\'Nòta\'\'\': për via che ën passand për ij \'\'\'proxy duvèrt\'\'\' (ch\'a fan ëvnì anònima la gent), un an permëtt nen da fé sossì, le firme ch\'a rivo ën passand për dij canaj parej as peulo nen contesse. Se ant ës moment-sì chiel/chila a l\'é tacà a \'n proxy, për piasì, \'\'\'për firmé\'\'\' ch\'as dëstaca e \'\'\'ch\'a dòvra na conession normal\'\'\'. <br />$1
+</div>',
+		'sig-success' => 'La firma dël document a l\'é andaita a bonfin.',
 	),
 );
 ?>

@@ -256,6 +256,16 @@ $wgChemFunctions_Messages['no'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Input-feil!',
 );
 
+$wgChemFunctions_Messages['pms'] = array(
+	'chemicalsources' => 'Sorgiss Chìmiche',
+	'ChemFunctions_ListPage' => 'Sorgiss Chìmiche',
+	'ChemFunctions_DataList' => 'Ambelessì sota a-i é na lista ëd sit ch\'a peulo smon-e d\'anformassion rësgoard a le sostanse chìmica dont as parla.<br /><br /> * <a href="http://webbook.nist.gov/cgi/cbook.cgi?ID=$MIXCASNameFormula&amp;Units=SI">Compòst $MIXCASNameFormula da \'nt ël NIST</a><br /> * <a href="http://ptcl.chem.ox.ac.uk/MSDS/">MSDS a l\'Università d\'Oxford (UK) (as peul nen sërchesse d\'ambelessì)</a><br />',
+	'ChemFunctions_CAS' => 'Nùmer dël CAS',
+	'ChemFunctions_Formula' => 'Fòrmula',
+	'ChemFunctions_Name' => 'Nòm IUPAC',
+	'ChemFunctions_ChemFormInputError' => 'Chemform: eror ant ij dat!',
+);
+
 /**
  *  ru
  */

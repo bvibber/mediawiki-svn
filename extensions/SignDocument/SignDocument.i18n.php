@@ -30,6 +30,12 @@ $allMessages = array(
 		'signaturelogentry'     => 'ondertekende het document $1',
 	),
 
+	'pms' => array(
+		'signaturelogpage' => 'Registr dle firme',
+		'signaturelogpagetext' => 'Sòn a l\'é ël registr dle firme giontà ant sëj document ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]].',
+		'signaturelogentry' => 'a l\'é firmasse ël document $1',
+	),
+
 	'yue' => array(
 		'signaturelogpage'      => '簽名日誌',
 		'signaturelogpagetext'  => '呢個係全部經過[[Special:SignDocument]]簽過名嘅文件嘅日誌。',

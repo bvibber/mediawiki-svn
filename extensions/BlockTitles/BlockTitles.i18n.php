@@ -58,6 +58,11 @@ function efBlockTitlesMessages() {
 	'block_title_error' => 'Wodaj, ale njeje dowolene nastawk z tutym mjenom składować.',
 ),
 
+'hy' => array(
+	'block_title_error_page_title' => 'Արգելափակված Անվանում',
+	'block_title_error' => 'Ցավոք՝ այս հոդվածի անվանման հիշելը չի թույլատրվում։',
+),
+
 'it' => array(
 	'block_title_error_page_title' => 'Titolo bloccato',
 	'block_title_error' => 'Siamo spiacenti, non è consentito salvare una voce con questo titolo.',
@@ -76,6 +81,16 @@ function efBlockTitlesMessages() {
 'oc' => array(
 	'block_title_error_page_title' => 'Títol invalid',
 	'block_title_error' => 'O planhem, lo títol d\'aqueste article es pas autorizat a èsser salvagardat.',
+),
+
+'pl' => array(
+	'block_title_error_page_title' => 'Zablokowany tytuł',
+	'block_title_error' => 'Przepraszamy, zapisywanie tytułu tego artykułu jest niedozwolone.',
+),
+
+'pms' => array(
+	'block_title_error_page_title' => 'Tìtol blocà',
+	'block_title_error' => 'Ch\'a scusa, ma ës tìtol-sì as peul nen dovresse',
 ),
 
 'scn' => array(

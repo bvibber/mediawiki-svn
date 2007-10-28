@@ -355,9 +355,11 @@ function efInputBoxMessages() {
 ),
 
 'pms' => array(
-	'tryexact'       => 'Sërca che a sia pròpe parej',
-	'searchfulltext' => 'Sërca an tut ël test',
-	'createarticle'  => "Crea n'artìcol",
+	'inputbox-error-no-type'  => 'A l\'ha nen dit che sòrt ëd quàder ëd caria dat ch\'a debia fesse.',
+	'inputbox-error-bad-type' => 'La sòrt ëd quàder "$1" a l\'é nen conossùa. Për piasì, ch\'a sërna antra "create", "comment", "search" ò pura "search2".',
+	'tryexact'                => 'Sërca che a sia pròpe parej',
+	'searchfulltext'          => 'Sërca an tut ël test',
+	'createarticle'           => 'Crea n\'artìcol',
 ),
 
 'pt' => array(

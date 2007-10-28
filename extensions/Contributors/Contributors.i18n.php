@@ -283,6 +283,19 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'L’article $1 existís pas.',
 ),
 
+'pl' => array(
+'contributors' => 'Autorzy',
+'contributors-toolbox' => 'Główni autorzy',
+'contributors-legend' => 'Lista głównych autorów artykułu',
+'contributors-target' => 'Tytuł:',
+'contributors-submit' => 'Pokaż',
+'contributors-subtitle' => 'Główni autorzy $1',
+'contributors-others-long' => 'Jest $1 {{PLURAL:$1|inny autor|innych autorów}} tej strony.',
+'contributors-others' => 'i $1 {{PLURAL:$1|inny|innych}}',
+'contributors-badtitle' => 'Niepoprawny tytuł.',
+'contributors-nosuchpage' => 'Artykuł $1 nie istnieje.',
+),
+
 /* Piedmontese (Bèrto 'd Sèra) */
 'pms' => array(
 'contributors' => 'A l\'han contribuì',

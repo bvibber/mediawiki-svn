@@ -34,6 +34,11 @@ function efBadImageMessages() {
 'badimages-log-remove' => 'removed [[$1]] from the bad image list',
 ),
 
+'ang' => array(
+'badimages-name' => 'Nama:',
+'badimages-reason' => 'Racu:',
+),
+
 /* Arabic (Meno25) */
 'ar' => array(
 'badimages' => 'قائمة الصور السيئة',
@@ -216,6 +221,15 @@ function efBadImageMessages() {
 'badimages-not-removed' => 'A imaxe non pode ser eliminada.',
 'badimages-reason' => 'Razón:',
 'badimages-remove' => '(eliminar)',
+'badimages-remove-btn' => 'Eliminar',
+'badimages-remove-confirm' => 'Por favor confirme que vostede quere eliminar $1 da listaxe:',
+'badimages-removed' => '$1 foi eliminado da listaxe.',
+'badimages-subheading' => 'Temas actuais',
+'badimages-unprivileged' => '(Vostede non ten permisos suficientes para alterar a listaxe)',
+'badimages-log-name' => 'Listaxe de imaxes con fallas',
+'badimages-log-header' => 'Este é un rexistro dos cambios para a [[Axuda:Listaxe de imaxes con fallas|Listaxe de imaxes con fallas]].',
+'badimages-log-add' => 'engadido [[$1]] á listaxe de imaxes con fallas',
+'badimages-log-remove' => 'eliminado [[$1]] da listaxe de imaxes con fallas',
 ),
 
 'hsb' => array(
@@ -318,13 +332,13 @@ function efBadImageMessages() {
 'badimages' => 'Verwijderlijst afbeeldingen',
 'badimages-add-btn' => 'Toevoegen',
 'badimages-added' => '$1 is toegevoegd.',
-'badimages-count' => "Er staan '''$1''' afbeeldingen op de verwijderlijst afbeeldingen.",
+'badimages-count' => 'Er staan \'\'\'$1\'\'\' afbeeldingen op de verwijderlijst afbeeldingen.',
 'badimages-name' => 'Naam:',
 'badimages-not-added' => 'De afbeelding kon niet worden toegevoegd.',
 'badimages-not-removed' => 'De afbeelding kon niet verwijderd worden.',
 'badimages-reason' => 'Reden:',
 'badimages-remove' => '(verwijderen)',
-'badimages-remove-btn' => 'Verwijder',
+'badimages-remove-btn' => 'Verwijderen',
 'badimages-remove-confirm' => 'Bevestig alstublieft dat u $1 uit de lijst wilt verwijderen:',
 'badimages-removed' => '$1 is uit de lijst verwijderd.',
 'badimages-subheading' => 'Huidige inhoud',
@@ -376,6 +390,27 @@ function efBadImageMessages() {
 'badimages-log-header' => 'Istoric de las modificacions de la [[Ajuda:Lista dels imatges indesirables|lista dels imatges indesirables]].',
 'badimages-log-add' => 'a ajustat [[$1]] a la lista dels imatges indesirables',
 'badimages-log-remove' => 'a levat [[$1]] de la lista dels imatges indesirables',
+),
+
+'pl' => array(
+'badimages' => 'Zła lista grafik',
+'badimages-add-btn' => 'Dodaj',
+'badimages-added' => 'dodano $1 do listy.',
+'badimages-count' => 'Jest \'\'\'$1\'\'\' grafik na liście złych grafik.',
+'badimages-name' => 'Nazwa:',
+'badimages-not-added' => 'Nie udało się dodać tej grafiki.',
+'badimages-not-removed' => 'Nie udało się usunąć tej grafiki.',
+'badimages-reason' => 'Powód:',
+'badimages-remove' => '(usuń)',
+'badimages-remove-btn' => 'Usuń',
+'badimages-remove-confirm' => 'Potwierdź zamiar usunięcia $1 z listy:',
+'badimages-removed' => 'Usunięto $1 z listy.',
+'badimages-subheading' => 'Aktualne elementy',
+'badimages-unprivileged' => '(Nie masz wystarczających uprawnień by zmienić listę)',
+'badimages-log-name' => 'Lista złych grafik',
+'badimages-log-header' => 'Lista zmian w [[Help:Bad image list|liście złych grafik]].',
+'badimages-log-add' => 'dodano [[$1]] do listy złych grafik',
+'badimages-log-remove' => 'usunięto [[$1]] z listy złych grafik',
 ),
 
 /* Piedmontese (Bèrto 'd Sèra) */

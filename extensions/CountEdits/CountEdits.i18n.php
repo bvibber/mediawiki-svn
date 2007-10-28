@@ -253,6 +253,18 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Cap de contribucion sus aqueste wiki.',
 ),
 
+'pl' => array(
+'countedits' => 'Liczba edycji',
+'countedits-warning' => '\'\'Ostrzeżenie:\'\'\' Nie oceniaj książki po jej okładce. Nie oceniaj użytkownika po jego liczbie edycji.',
+'countedits-username' => 'Nazwa użytkownika:',
+'countedits-ok' => 'OK',#identical but defined
+'countedits-nosuchuser' => 'Nie istnieje użytkownik o nazwie $1.',
+'countedits-resultheader' => 'Wyniki dla $1',
+'countedits-resulttext' => '$1 wykonał (-a) $2 edycji',
+'countedits-mostactive' => 'Najbardziej aktywni użytkownicy',
+'countedits-nocontribs' => 'Nie wykonano edycji na tej wiki',
+),
+
 /* Piedmontese (Bèrto 'd Sèra) */
 'pms' => array(
 'countedits' => 'Total dle modìfiche',

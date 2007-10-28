@@ -39,6 +39,13 @@ function efNewUserNotifMessages() {
 Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 ),
 
+'hy' => array(
+'newusernotifsubj' => 'Նոր Մասնակցի Տեղեկացում $1 մասնակցի համար',
+'newusernotifbody' => 'Ողջո՜ւյն, $1։
+
+$3 կայքում ստեղծվել է նոր մասնակցային հաշիվ՝ $2, $4-ին։',
+),
+
 'nl' => array(
 	'newusernotifsubj' => 'Notificatie nieuwe gebruiker voor  $1',
 	'newusernotifbody' => "Hallo $1.\n\nEr is een nieuwe gebruiker $2 aangemaakt om $3 op $4.",
@@ -47,6 +54,11 @@ Nowe wužiwarske konto, $2, bu dnja $4 na $3 wutworjene.',
 'no' => array(
 'newusernotifsubj' => 'Beskjed om ny bruker for $1',
 'newusernotifbody' => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
+),
+
+'pms' => array(
+'newusernotifsubj' => 'Notìfica d\'utent neuv për $1',
+'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
 ),
 
 'tet' => array(

@@ -92,6 +92,19 @@ function efProfileMonitorMessages() {
 'profiling-no-data' => 'Geen gegevens gevonden.',
 ),
 
+'pms' => array(
+'profiling' => 'Antramentr ch\'as càlcola ël profil da \'nt ij dat',
+'profiling-process' => 'Espression processà:',
+'profiling-wildcard' => 'Dovré ël ciapatut',
+'profiling-ok' => 'Bin parej',
+'profiling-data' => 'Antramentr ch\'as amzuro ij dat për `$1`',
+'profiling-data-process' => 'Process',#identical but defined
+'profiling-data-count' => 'Cont',
+'profiling-data-time' => 'Temp (an total)',
+'profiling-data-average' => 'Temp (mojen)',
+'profiling-no-data' => 'A l\'é pa trovasse gnun dat parej.',
+),
+
 /* Slovak (helix84) */
 'sk' => array(
 'profiling' => 'Profilovacie údaje',

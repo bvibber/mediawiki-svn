@@ -52,6 +52,11 @@ $wgMathStatFunctionsMessages['no'] = array(
 	'msfunc_inf' => 'Resultatverdien er uendelig',
 	'msfunc_div_zero' => 'Deling på null',
 );
+$wgMathStatFunctionsMessages['pms'] = array(
+	'msfunc_nan' => 'L\'arzultà a l\'é nen un nùmer',
+	'msfunc_inf' => 'Arzultà anfinì',
+	'msfunc_div_zero' => 'Division për zero',
+);
 $wgMathStatFunctionsMessages['sr-ec'] = array(
         'msfunc_nan' => "Резултат није број" ,
         'msfunc_inf' => "Резултат је бесконачан" ,

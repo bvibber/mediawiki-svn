@@ -56,6 +56,14 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount' => 'Denne brukeren har $1 redigeringer.',
 ),
 
+'pl' => array(
+	'contributionseditcount' => 'Ten użytkownik ma $1 edycji.',
+),
+
+'pms' => array(
+	'contributionseditcount' => 'St\'utent-sì a l\'ha fait $1 modìfiche.',
+),
+
 'sah' => array(
 	'contributionseditcount' => 'Бу кыттааччы $1 көннөрүүлээх.',
 ),

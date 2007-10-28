@@ -469,7 +469,7 @@ $messages = array(
 	'ogg-long-video' => '(Plik wideo Ogg $1, długość $2, $4×$5 pikseli, $3)',
 	'ogg-long-multiplexed' => '(Plik audio/wideo Ogg, $1, długość $2, $4×$5 pikseli, ogółem $3)',
 	'ogg-long-general' => '(Plik multimedialny Ogg, długość $2, $3)',
-	'ogg-long-error' => '(Nieprawidłowy plik Ogg: $1)',
+	'ogg-long-error' => '(Niepoprawny plik Ogg: $1)',
 	'ogg-play' => 'Odtwórz',
 	'ogg-pause' => 'Pauza',
 	'ogg-stop' => 'Stop',#identical but defined
@@ -492,6 +492,39 @@ $messages = array(
 	'ogg-dismiss' => 'Zamknij',
 	'ogg-download' => 'Ściągnij plik',
 	'ogg-desc-link' => 'O tym pliku',
+	),
+
+	'pms' => array(
+	'ogg-short-audio' => 'Registrassion Ogg $1, $2',
+	'ogg-short-video' => 'Film Ogg $1, $2',
+	'ogg-short-general' => 'Archivi Multimojen Ogg $1, $2',
+	'ogg-long-audio' => '(Registrassion Ogg $1, ch\'a dura $2, $3)',
+	'ogg-long-video' => '(Film Ogg $1, ch\'a dura $2, formà $4×$5 px, $3)',
+	'ogg-long-multiplexed' => '(Archivi audio/video multiplessà Ogg, $1, ch\'a dura $2, formà $4×$5 px, $3 an tut)',
+	'ogg-long-general' => '(Archivi multimojen Ogg, ch\'a dura $2, $3)',
+	'ogg-long-error' => '(Archivi ogg nen bon: $1)',
+	'ogg-play' => 'Smon',
+	'ogg-pause' => 'Pàusa',
+	'ogg-stop' => 'Fërma',
+	'ogg-play-video' => 'Smon ël film',
+	'ogg-play-sound' => 'Smon ël sonòr',
+	'ogg-no-player' => 'Darmagi, ma sò calcolator a smija ch\'a l\'abia pa gnun programa ch\'a peul smon-e dj\'archivi multi-mojen. Për piasì <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ch\'as në dëscaria un</a>.',
+	'ogg-no-xiphqt' => 'A smija che ansima a sò calcolator a-i sia nen ël component XiphQT dël programa QuickTime. QuickTime a-i la fa pa a dovré dj\'archivi an forma Ogg files s\'a l\'ha nen ës component-lì. Për piasì <a href="http://www.mediawiki.org/wiki/Extension:OggHandler/Client_download">ch\'as dëscaria XiphQT</a> ò pura ch\'as sërna n\'àotr programa për dovré j\'archivi multi-mojen.',
+	'ogg-player-videoElement' => 'element <video>',
+	'ogg-player-oggPlugin' => 'Spinòt për Ogg',
+	'ogg-player-cortado' => 'Cortado (Java)',#identical but defined
+	'ogg-player-vlc-mozilla' => 'VLC',#identical but defined
+	'ogg-player-vlc-activex' => 'VLC (ActiveX)',#identical but defined
+	'ogg-player-quicktime-mozilla' => 'QuickTime',#identical but defined
+	'ogg-player-quicktime-activex' => 'QuickTime (ActiveX)',#identical but defined
+	'ogg-player-thumbnail' => 'Mach na figurin-a fissa',
+	'ogg-player-soundthumb' => 'Gnun programa për vardé/scoté',
+	'ogg-player-selected' => '(selessionà)',
+	'ogg-use-player' => 'Dovré ël programa:',
+	'ogg-more' => 'Dë pì...',
+	'ogg-dismiss' => 'sëré',
+	'ogg-download' => 'Dëscarié l\'archivi',
+	'ogg-desc-link' => 'Rësgoard a st\'archivi',
 	),
 
 	'ru' => array(

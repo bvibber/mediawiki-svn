@@ -118,6 +118,12 @@ $wgNewuserlogMessages['hu'] = array(
 	'newuserlog-create-entry'  => 'új felhasználóként regisztrált',
 	'newuserlog-create2-entry' => 'új felhasználót hozott létre $1 néven',
 );
+$wgNewuserlogMessages['hy'] = array(
+	'newuserlogpage'           => 'Մասնակիցների գրանցման տեղեկամատյան',
+	'newuserlogpagetext'       => 'Սա նոր մասնակիցների գրանցման տեղեկամատյանն է',
+	'newuserlog-create-entry'  => 'Նոր մասնակից',
+	'newuserlog-create2-entry' => 'ստեղծեց նոր հաշիվ $1 մասնակցի համար',
+);
 $wgNewuserlogMessages['id'] = array(
 	'newuserlogpage'           => 'Log pengguna baru',
 	'newuserlogpagetext'       => 'Di bawah ini adalah log pendaftaran pengguna baru',

@@ -60,6 +60,19 @@ $allMessages = array(
 		'passwordreset-success' => 'Wachtwoord voor gebruikers-ID $1 is opnieuw ingesteld',
 	),
 
+	'pms' => array(
+		'passwordreset' => 'Cambi ëd ciav',
+		'passwordreset-invalidusername' => 'Stranòm nen giust',
+		'passwordreset-emptyusername' => 'Stranòm veujd',
+		'passwordreset-nopassmatch' => 'Le doe ciav a son pa mideme',
+		'passwordreset-badtoken' => 'Còdes ëd modìfica nen bon',
+		'passwordreset-username' => 'Stranòm',
+		'passwordreset-newpass' => 'Ciav neuva',
+		'passwordreset-confirmpass' => 'Confermè la ciav',
+		'passwordreset-submit' => 'Cambié la ciav',
+		'passwordreset-success' => 'La ciav ëd l\'utent $1 a l\'é staita cambià',
+	),
+
 	'yue' => array( 
 		'passwordreset' => '密碼重設',
 		'passwordreset-invalidusername' => '無效嘅用戶名',

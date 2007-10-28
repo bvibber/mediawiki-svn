@@ -403,6 +403,28 @@ kopieën ontstaan met een volledige geschiedenis. Dit is handig voor forks, enzo
 'duplicator-toomanyrevisions' => '[[$1]] a tròp ($2) de revisions e pòt pas èsser copiat. La limita actuala es de $3.',
 ),
 
+'pl' => array(
+'duplicator' => 'Duplikowanie artykułu',
+'duplicator-toolbox' => 'Zduplikuj ten artykuł',
+'duplicator-header' => 'Ta strona pozwala na stworzenie kompletnego duplikatu artykułu, tworząc niezależne kopie wszystkich historii. Jest to przydatne przy forkowaniu artykułów itp.',
+'duplicator-options' => 'Opcje',
+'duplicator-source' => 'Źródło:',
+'duplicator-dest' => 'Cel:',
+'duplicator-dotalk' => 'Zduplikuj stronę dyskusji (jeśli istnieje)',
+'duplicator-submit' => 'Duplikuj',
+'duplicator-summary' => 'Skopiowano z [[$1]]',
+'duplicator-success' => '<big>\'\'\'Artykuł [[$1]] został skopiowany do [[$2]].\'\'\'</big>',
+'duplicator-success-revisions' => '$1 {{PLURAL:$1|edycja została skopiowana|edycji zostało skopiowanych}}.',
+'duplicator-success-talkcopied' => 'Strona dyskusji również została skopiowana.',
+'duplicator-success-talknotcopied' => 'Strona dyskusji nie mogła być skopiowana.',
+'duplicator-failed' => 'Strona nie może zostać zduplikowana. Wystąpił nieznany błąd.',
+'duplicator-source-invalid' => 'Podaj poprawny tytuł źródła.',
+'duplicator-source-notexist' => 'Artykuł [[$1]] nie istnieje. Podaj tytuł strony, która istnieje.',
+'duplicator-dest-invalid' => 'Podaj poprawny tytuł celu.',
+'duplicator-dest-exists' => 'Artykuł [[$1]] już istnieje. Wybierz tytuł celu, który nie jest używany przez istniejącą stronę.',
+'duplicator-toomanyrevisions' => 'Artykuł [[$1]] ma zbyt dużo ($2) edycji i nie może być skopiowany. Aktualny limit edycji to $3.',
+),
+
 /* Piedmontese (Bèrto 'd Sèra) */
 'pms' => array(
 'duplicator' => 'Dupliché n\'artìcol',

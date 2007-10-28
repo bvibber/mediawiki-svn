@@ -201,6 +201,16 @@ Dit kan zorgen voor zware belasting van de server, gebruik deze functie dus spaa
 'querysuccessful'  => 'La requèsta es estada executada amb succès.',
 ),
 
+'pl' => array(
+'asksql'           => 'zapytanie SQL',
+'asksqltext'       => 'Użyj formularza poniżej by wykonać bezpośrednie zapytanie do bazy danych. Napisy otocz pojedynczymi apostrofami (\'w ten sposób\'). Często takie zapytania mocno obciążają serwer, więc używaj tej funkcji rozważnie.',
+'sqlislogged'      => 'Przypomnienie: wszystkie zapytania są rejestrowane.',
+'sqlquery'         => 'Wpisz zapytanie',
+'querybtn'         => 'Wyślij zapytanie',
+'selectonly'       => 'Dozwolone są tylko zapytania czytające dane.',
+'querysuccessful'  => 'Zapytanie zakończone powodzeniem',
+),
+
 /* Piedmontese (Bèrto 'd Sèra) */
 'pms' => array(
 'asksql'           => 'Operassion SQL',

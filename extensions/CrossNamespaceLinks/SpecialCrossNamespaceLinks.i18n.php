@@ -110,6 +110,10 @@ $wgCrossNamespaceLinksMessages['kk-cn'] = array(
 	'crossnamespacelinkstext'     => '«$1» بەتٸ: «$3» ەسٸم اياسىنا $2 سٸلتەمە '
 );
 $wgCrossNamespaceLinksMessages['kk'] = $wgCrossNamespaceLinksMessages['kk-kz'];
+$wgCrossNamespaceLinksMessages['kn'] = array(
+	'crossnamespacelinks'         => 'Cross-namespace ಸಂಪರ್ಕಗಳು',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ಸಂಪರ್ಕ|ಸಂಪರ್ಕಗಳು}} $3 ಗೆ',
+);
 $wgCrossNamespaceLinksMessages['ksh'] = array(
 	'crossnamespacelinks-summary' => 'Die Sigg hee enthält en Liss met Links vun en Sigg em Appachtemeng vun de Atikkele, die en ander Appachtemengs jonn (usser de Toiminnot, Keskustelu, Betawiki and Malline Appachtemengs) - su jet sollte mer nit han.',
 );

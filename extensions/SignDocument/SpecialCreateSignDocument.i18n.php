@@ -1,4 +1,4 @@
-<?PHP
+<?php
 $allMessages = array(
 	'en' => array( 
 		'createsigndocument'         => 'Enable Document Signing',
@@ -33,6 +33,9 @@ all fields exactly as they should be, ''before submitting this form''.",
 		'createsigndoc-error-pagenoexist' => 'Error: The page [[$1]] does not exist.',
 		'createsigndoc-success'      => 'Document signing has been successfully enabled
 on [[$1]]. To test it, please visit [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} this page].',
+	),
+	'ang' => array(
+		'createsigndoc-pagename' => 'Tramet:',
 	),
 	'ar' => array(
 		'createsigndocument' => 'فعل توقيع الوثيقة',
@@ -140,6 +143,38 @@ en zorg er alstublieft voor dat alle velden de juiste waarden hebben
 		'createsigndoc-error-pagenoexist' => 'Error: De pagina [[$1]] bestaat niet.',
 		'createsigndoc-success'      => 'Documentondertekening is ingeschakeld op
 [[$1]]. Ga alstublieft naar [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} deze pagina] om het te testen.',
+	),
+	'pms' => array(
+		'createsigndocument' => 'Visché la firma digital ëd na pàgina coma document',
+		'createsigndoc-head' => 'Ch\'a dòvra la domanda ambelessì sota për visché l\'opsion ëd \'Firma Digital\' ëd n\'artìcol, ch\'a lassa che j\'utent a peulo firmé ën dovrand la fonsion ëd [[Special:SignDocument|firma digital]]. 
+
+Për piasì, ch\'an buta:
+*ël nòm dl\'artìcol andova ch\'a veul visché la fonsion ëd firma digital, 
+*ij component ëd che partìa d\'utent ch\'a resto aotorisà a firmé, 
+*che camp ch\'a debio smon-se a j\'utent e coj ch\'a debio resté opsionaj, 
+*n\'eta mìnima përché n\'utent a peula firmé (a peulo tuti s\'a buta nen ël mìnim), 
+*un cit ëspiegon ch\'a disa lòn ch\'a l\'é ës document e ch\'a-j disa a j\'utent coma fé. 
+
+Anans che dovré sossì ch\'a ten-a present che:
+#<b>Për adess a-i é gnun-a manera dë scancelé ò modifiché ij document ch\'as mando an firma, na vira ch\'a sio stait creà</b> sensa dovej travajé ant sla base dat da fòra. 
+#Ël test smonù ant sla pàgina an firma a resta col ëd quand as anandio a cheuje le firme, donca la version \'\'corenta\'\' al moment ch\'as fa sossì, e qualsëssìa modìfica ch\'as fasa peuj \'\'\'an firma a la riva pì nen\'\'\'. 
+
+Për piasì, ch\'a varda d\'avej controlà sò test coma ch\'as dev anans che mandelo an firma, e ch\'a varda che tuti ij camp a sio coma ch\'a-j ven-o bin a chiel, \'\'anans dë mandé la domanda\'\'.',
+		'createsigndoc-pagename' => 'Pàgina:',
+		'createsigndoc-allowedgroup' => 'Partìe d\'utent ch\'a peulo firmé:',
+		'createsigndoc-email' => 'Adrëssa ëd pòsta eletrònica',
+		'createsigndoc-address' => 'Adrëssa ëd ca:',
+		'createsigndoc-extaddress' => 'Sità, Provinsa, Stat:',
+		'createsigndoc-phone' => 'Nùmer ëd telèfono:',
+		'createsigndoc-bday' => 'Nait(a) dël:',
+		'createsigndoc-minage' => 'Età mìnima:',
+		'createsigndoc-introtext' => 'Spiegon:',
+		'createsigndoc-hidden' => 'Stërmà',
+		'createsigndoc-optional' => 'Opsional',
+		'createsigndoc-create' => 'Buté an firma',
+		'createsigndoc-error-generic' => 'Eror: $1',
+		'createsigndoc-error-pagenoexist' => 'Eror: a-i é pa gnun-a pàgina ch\'as ciama [[$1]].',
+		'createsigndoc-success' => 'La procedura për buté an firma [[$1]] a l\'é andaita a bonfin. Për provela, për piasì ch\'a varda [{{SERVER}}{{localurl: Special:SignDocument|doc=$2}} ambelessì].',
 	),
 );
 ?>

@@ -57,6 +57,10 @@ $wgLinkSearchMessages['fi'] = array(
 	'linksearch-line'  => '$1 on linkitetty sivulta $2',
 	'linksearch-error' => 'Jokerimerkkiä voi käyttää ainoastaan osoitteen alussa.',
 );
+$wgLinkSearchMessages['fo'] = array(
+	'linksearch-ns'    => 'Navnarúm:',
+);
+
 $wgLinkSearchMessages['fr'] = array(
 	'linksearch'	   => 'Rechercher des liens internet',
 	'linksearch-pat'   => 'Rechercher l’expression :',
@@ -174,6 +178,18 @@ $wgLinkSearchMessages['no'] = array(
 	'linksearch-text'  => 'Jokertegn som «*.wikipedia.org» kan brukes.<br />Støttede protokoller: <tt>$1</tt>',
 	'linksearch-line'  => '$1 lenkes fra $2',
 	'linksearch-error' => 'Jokertegn kan kun brukes foran tjenernavnet.',
+);
+$wgLinkSearchMessages['pl'] = array(
+	'linksearch-ok'    => 'Szukaj',
+);
+$wgLinkSearchMessages['pms'] = array(
+	'linksearch'       => 'Sërchè antra j\'anliure dla Ragnà',
+	'linksearch-pat'   => 'Schema d\'arsërca:',
+	'linksearch-ns'    => 'Spassi nominal:',
+	'linksearch-ok'    => 'Sërca',
+	'linksearch-text'  => 'As peulo dovresse dij ciapatut coma "*.wikipedia.org".<br />Protocòj ch\'as peulo dovré: <tt>$1</tt>',
+	'linksearch-line'  => '$1 a l\'ha n\'anliura ch\'a-i riva dzora da $2',
+	'linksearch-error' => 'Ij ciapatut as peulo butesse mach an prinsipi dël nòm dël servent.',
 );
 $wgLinkSearchMessages['pt'] = array(
 	'linksearch'       => 'Procurar por links da web',

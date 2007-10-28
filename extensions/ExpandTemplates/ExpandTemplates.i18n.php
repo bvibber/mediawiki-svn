@@ -91,6 +91,7 @@ $wgExpandTemplatesMessages['fi'] = array(
 	'expand_templates_preview'         => 'Esikatselu',
 );
 $wgExpandTemplatesMessages['fo'] = array(
+	'expand_templates_output'          => 'Úrslit',
 	'expand_templates_ok'              => 'Í lagi',
 	'expand_templates_preview'         => 'Forskoðan',
 );

@@ -79,6 +79,11 @@ function efMediaFunctionsMessages() {
 'mediafunctions-not-exist'     => '«$1» eksisterer ikke',
 ),
 
+'pms' => array(
+'mediafunctions-invalid-title' => '"$1" a va nen bin për tìtol',
+'mediafunctions-not-exist'     => '"$1" a-i é pa',
+),
+
 'yue' => array(
 'mediafunctions-invalid-title' => '"$1" 唔係一個有效嘅標題',
 'mediafunctions-not-exist'     => '"$1" 唔存在',
