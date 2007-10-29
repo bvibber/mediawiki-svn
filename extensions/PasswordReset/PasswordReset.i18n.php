@@ -60,6 +60,12 @@ $allMessages = array(
 		'passwordreset-success' => 'Wachtwoord voor gebruikers-ID $1 is opnieuw ingesteld',
 	),
 
+	'pl' => array(
+		'passwordreset' => 'Wyzerowanie hasła',
+		'passwordreset-invalidusername' => 'Nieprawidłowa nazwa użytkownika',
+		'passwordreset-emptyusername' => 'Pusta nazwa użytkownika',
+	),
+
 	'pms' => array(
 		'passwordreset' => 'Cambi ëd ciav',
 		'passwordreset-invalidusername' => 'Stranòm nen giust',

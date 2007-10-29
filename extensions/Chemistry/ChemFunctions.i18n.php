@@ -140,6 +140,10 @@ $wgChemFunctions_Messages['de'] = array(
 	'ChemFunctions_ChemFormInputError' => 'Chemform: Eingabe Fehler!'
 );
 
+$wgChemFunctions_Messages['gl'] = array(
+	'chemicalsources' => 'Fontes químicas',
+);
+
 $wgChemFunctions_Messages['hsb'] = array(
 	'chemicalsources' => 'Chemiske žórła',
 	'ChemFunctions_ListPage' => 'Chemiske žórła',

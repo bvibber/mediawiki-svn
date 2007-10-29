@@ -69,7 +69,13 @@ $wgLinkSearchMessages['fr'] = array(
 	'linksearch-text'  => 'Cette page spéciale permet de rechercher les pages dans lesquelles un lien externe apparaît.<br />Des caractères « joker » peuvent être utilisés, par exemple <code>*.wikipedia.org</code>.',
 	'linksearch-line'  => '$1 avec un lien à partir de $2',
 	'linksearch-error' => 'Les caractères « joker » ne peuvent être utilisés qu’au début du nom de domaine.'
-	);
+);
+$wgLinkSearchMessages['gl'] = array(
+	'linksearch'       => 'Buscar ligazóns web',
+	'linksearch-ns'    => 'Espazo de nomes:',
+	'linksearch-ok'    => 'Buscar',
+	'linksearch-line'  => '$1 vinculado a $2',
+);
 $wgLinkSearchMessages['he'] = array(
 	'linksearch'       => 'חיפוש קישורים חיצוניים',
 	'linksearch-pat'   => 'קישור לחיפוש:',
@@ -180,7 +186,13 @@ $wgLinkSearchMessages['no'] = array(
 	'linksearch-error' => 'Jokertegn kan kun brukes foran tjenernavnet.',
 );
 $wgLinkSearchMessages['pl'] = array(
+	'linksearch'       => 'Szukanie linków zewnętrznych',
+	'linksearch-pat'   => 'Wzorzec wyszukiwania:',
+	'linksearch-ns'    => 'Przestrzeń nazw:',
 	'linksearch-ok'    => 'Szukaj',
+	'linksearch-text'  => 'Można używać masek typu "*.wikipedia.org" may be used.<br />Obsługiwane protokoły: <tt>$1</tt>',
+	'linksearch-line'  => '$1 linkuje z $2',
+	'linksearch-error' => 'Maski można użyć tylko na początku nazwy hosta.',
 );
 $wgLinkSearchMessages['pms'] = array(
 	'linksearch'       => 'Sërchè antra j\'anliure dla Ragnà',

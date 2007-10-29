@@ -126,6 +126,19 @@ function efContributorsMessages() {
 'contributors-nosuchpage' => 'L’article $1 n’existe pas.',
 ),
 
+'gl' => array(
+'contributors' => 'Colaboradores',
+'contributors-toolbox' => 'Principais colaboradores',
+'contributors-legend' => 'Listaxe cos principais colaboradores dun artigo',
+'contributors-target' => 'Título:',
+'contributors-submit' => 'Amosar',
+'contributors-subtitle' => 'Principais colaboradores en $1',
+'contributors-others-long' => 'Existen outros $1 colaboradores nesta páxina.',
+'contributors-others' => 'e outros $1',
+'contributors-badtitle' => 'Título non válido.',
+'contributors-nosuchpage' => 'Non existe o artigo $1.',
+),
+
 'hsb' => array(
 'contributors' => 'Přinošowarjo',
 'contributors-toolbox' => 'Hłowni přinošowarjo',

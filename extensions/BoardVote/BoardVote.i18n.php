@@ -1255,6 +1255,7 @@ Oto zakodowana wersja. Będzie ona publicznie wyświetlona w [[Special:Boardvote
 	'boardvote_user'          => 'Użytkownik',
 	'boardvote_edits'         => 'Edycje',
 	'boardvote_days'          => 'dni',
+	'boardvote_ip'            => 'IP',#identical but defined
 	'boardvote_ua'            => 'Klient',
 	'boardvote_listintro'     => '<p>Oto lista wszystkich głosów oddanych jak dotąd. $1 dla zakodowanych danych.</p>',
 	'boardvote_dumplink'      => 'Kliknij tutaj',

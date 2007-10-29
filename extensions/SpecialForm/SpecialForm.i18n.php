@@ -158,4 +158,16 @@ $SpecialFormMessages =array(
 		'formsaveerror' => 'Fout bij opslaan formulier',
 		'formsaveerrortext' => 'Er is een onbekende fout opgetreden bij het opslaan van pagina \'$1\'.',
 	),
+
+	'pl' => array(
+		'formsave' => 'Zapisz',
+		'formarticleexists' => 'Strona istnieje',
+		'formarticleexiststext' => 'Strona [[$1]] już istnieje.',
+		'formbadpagename' => 'Zła nazwa strony',
+		'formbadpagenametext' => 'Dane wpisane do formularza tworzą złą nazwę strony, "$1".',
+		'formrequiredfieldpluralerror' => 'Pola $1 są wymagane w tym formularzu. Prosimy o wypełnienie ich.',
+		'formsavesummary' => 'Nowa strona za pomocą [[Special:Form/$1]]',
+		'formsaveerror' => 'Błąd przy zapisywaniu formularza',
+		'formsaveerrortext' => 'Wystąpił nieznany błąd przy zapisywaniu strony \'$1\'.',
+	),
 );

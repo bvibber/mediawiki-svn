@@ -318,6 +318,32 @@ in caso di errori.",
 La divulgazione di tali informazioni può dar luogo alla rimozione permanente dei diritti di oversight.',
 ),
 
+'ja' => array(
+'hiderevision' => '永久的な版の消去',
+'hiderevision-prompt' => '消去する版の番号(oldid):',
+'hiderevision-continue' => '続ける',
+'hiderevision-text' => 'これは、\'\'\'以下の場合に限って\'\'\'使用すべきです：
+* 不適切な個人情報
+*: \'\'個人の住所や電話番号、社会保障番号、その他\'\'
+
+\'\'\'このシステムを悪用したり乱用したりする事は、権限を失う事になります。\'\'\'
+
+消去されたアイテムはウェブサイト上では誰も見る事が出来ません。しかし、貴方が間違って消去した場合、削除はログ化されている為、データベース管理者により手動で復帰する事が出来ます。',
+'hiderevision-reason' => '理由(内密に記録されます):',
+'hiderevision-submit' => '永久にこのデータを消去する',
+'hiderevision-tab' => '版の消去',
+'hiderevision-noreason' => '消去する理由を記して下さい。',
+'hiderevision-status' => '版番号 $1 に就いて: $2',
+'hiderevision-success' => 'アーカイブと削除に成功しました。',
+'hiderevision-error-missing' => 'データベース内に見付かりません。',
+'hiderevision-error-current' => 'ページの最新版は削除することが出来ません。先にこの版を差し戻してください。',
+'hiderevision-error-delete' => 'アーカイブ出来ませんでした。その版は過去に消去されていませんか?',
+'oversight-nodiff' => '現在前の差分を辿る事が出来ません。ページが削除されたか、消去した版が最初の版であると考えられます。',
+'oversight-log-hiderev' => '―― $1の編集を消去',
+'oversight-view' => '詳細',
+'oversight-header' => '下記は、最近永久に消去され、非公開となった版の一覧です。この情報を公開する事は、Oversight権限を永久に失う事になりかねません。',
+),
+
 /* Kazakh Cyrillic (AlefZet) */
 'kk-kz' => array('hiderevision' => 'Нұсқаларды тұрақты жасыру',
 // Empty form
@@ -486,6 +512,32 @@ teruggeet worden door databasebeheerders als u een fout maakt.',
 'oversight-hidden' => 'Verborgen versie',
 'oversight-header' => 'Hieronder staat een lijst met versies die permanent verborgen zijn voor iedereen.
 Het vrijgeven van deze informatie kan tot gevolg hebben dat Oversightrechten worden ingenomen.',
+),
+
+'pl' => array(
+'hiderevision' => 'Trwałe usuwanie wersji',
+'hiderevision-prompt' => 'Numer wersji do usunięcia:',
+'hiderevision-continue' => 'Kontynuuj',
+'hiderevision-text' => 'Ta funkcja powinna być \'\'\'jedynie\'\'\' użyta w następujących przypadkach: * Niewłaściwe informacje osobiste *: \'\'adresy domowe i numery telefoniczne, numery ubezpieczenia zdrowotnego tip.\'\' \'\'\'Nadużywanie tej funkcji będzie skutkowało utratą uprawnień.\'\'\' Usunięte elementy nie będą widoczne dla nikogo na tej stronie, lecz usunięcia są rejestrowane i skasowane dane mogą być ręcznie przywrócone przez administratorów bazy danych w wypadku twojej pomyłki.',
+'hiderevision-reason' => 'Powód (będzie zarejestrowany prywatnie):',
+'hiderevision-submit' => 'Na stałe ukryj te dane',
+'hiderevision-tab' => 'Ukryj wersje',
+'hiderevision-norevisions' => 'Nie określono wersji do usunięcia',
+'hiderevision-noreason' => 'Musisz wpisać powód usunięcia.',
+'hiderevision-status' => 'Wersje $1: $2',
+'hiderevision-success' => 'Pomyślnie zarchiwizowane i usunięte.',
+'hiderevision-error-missing' => 'Nie znaleziono w bazie danych.',
+'hiderevision-error-current' => 'Nie można usunąć najnowszej edycji strony. Najpierw cofnij tę edycję.',
+'hiderevision-error-delete' => 'Nie można zarchiwizować; czy wcześniej była skasowana?',
+'hiderevision-archive-status' => 'Usunięto wersje z $1: $2',
+'oversight-nodiff' => 'Nie można śledzić zmian, ponieważ nie ma wcześniejszych wersji tej strony. Możliwości: *Strona została usunięta *Ta ukryta wersja była pierwszą wersją',
+'oversight-log-hiderev' => 'usunięto edycję z $1',
+'oversight' => 'Oversight',#identical but defined
+'oversight-view' => 'szczegóły',
+'oversight-difference' => '(Różnica z poprzednią pozostałą wersją)',
+'oversight-prev' => 'Ostatnia z poprzednich wersji',
+'oversight-hidden' => 'Ukryta wersja',
+'oversight-header' => 'Poniżej znajduje się lista wersji w ostatnim czasie na stałe ukrytych przed dostępem publicznym. Ujawnianie tych informacji może skutkować stałą utratą uprawnień Oversight.',
 ),
 
 'pms' => array(

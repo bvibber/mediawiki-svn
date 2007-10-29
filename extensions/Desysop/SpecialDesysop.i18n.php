@@ -81,6 +81,16 @@ $wgDesysopMessages['fr'] = array(
 	'desysop'              => 'Enlever les droits d’administrateur',
 	'desysopnot_sysop'     => 'Cet utilisateur n’est pas un administrateur',
 );
+$wgDesysopMessages['gl'] = array(
+	'desysoptitle'         => 'Retirarlle o acceso como administrador a un usuario',
+	'desysoptext'          => 'Este formulario é para que os burócratas lle retiren os permisos de administrador a un usuario. Escriba o nome do usuario na caixa e prema no botón para retirarlle o acceso como administrador ao usuario.',
+	'desysopname'          => 'Nome do usuario:',
+	'desysopok'            => '<b>Retiróuselle o acceso como administrador ao usuario "$1"</b>',
+	'desysopsetrights'     => 'Asignar dereitos de usuario',
+	'desysoprightsfail'    => '<b>Non se lle puideron asignar os dereitos a "$1". (Introduciu o nome correcto?)</b>',
+	'desysop'              => 'Retirarlle o acceso como administrador a un usuario',
+	'desysopnot_sysop'     => 'Este usuario non é administrador',
+);
 $wgDesysopMessages['he'] = array(
 	'desysoptitle'         => 'בטל הרשאת מפעיל מערכת למשתמש',
 	'desysoptext'          => "דף זה משמש ביורוקרטים לביטול הרשאת מפעיל מערכת של משתמש. אנא הקישו את שם המשתמש בתיבת הטקסט ולחצו על הכפתור על מנת להפוך את המשתמש למפעיל מערכת.",

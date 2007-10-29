@@ -65,6 +65,9 @@ $wgMiniDonationMessages['no'] = array(
 $wgMiniDonationMessages['oc'] = array(
 	'donationform-submit' => 'Far un don amb PayPal',
 );
+$wgMiniDonationMessages['pl'] = array(
+	'donationform-submit' => 'Przekaż dar pieniężny przez PayPal',
+);
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgMiniDonationMessages['pms'] = array(
 	'donationform-submit' => 'Fé na donassion con PayPal',

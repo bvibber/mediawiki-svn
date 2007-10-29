@@ -109,6 +109,18 @@ function efCountEditsMessages( $single = false ) {
 'countedits-nocontribs' => 'Aucune contribution sur ce wiki.',
 ),
 
+'gl' => array(
+'countedits' => 'Contar edicións',
+'countedits-warning' => '\'\'\'Advertencia:\'\'\' As aparencias enganan. Non xulgue a un colaborador polo seu número de edicións.',
+'countedits-username' => 'Nome de usuario:',
+'countedits-ok' => 'De acordo',
+'countedits-nosuchuser' => 'Non existe ningún usuario chamado $1.',
+'countedits-resultheader' => 'Resultados de $1',
+'countedits-resulttext' => '$1 ten feitas $2 edicións',
+'countedits-mostactive' => 'Colaboradores máis activos',
+'countedits-nocontribs' => 'Non houbo ningunha colaboración neste wiki.',
+),
+
 'hsb' => array(
 'countedits' => 'Ličak přinoškow',
 'countedits-warning' => '\'\'\'Kedźbu\'\'\': Njeposudź knihu wobalki dla, njeposudź wužiwarja ličby jeho přinoškow dla!',

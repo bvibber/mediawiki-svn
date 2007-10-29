@@ -56,6 +56,10 @@ $wgDismissableSiteNoticeMessages['fr'] = array(
 	'sitenotice_close' => 'cacher',
 );
 
+$wgDismissableSiteNoticeMessages['gl'] = array(
+	'sitenotice_close' => 'retirar',
+);
+
 $wgDismissableSiteNoticeMessages['he'] = array(
 	'sitenotice_close' => 'הסתר',
 );

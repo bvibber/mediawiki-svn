@@ -230,6 +230,29 @@ indépendantes de l’historique complet. Il sert par exemple à séparer un art
 'duplicator-toomanyrevisions' => '[[$1]] a trop ($2) de révisions et ne peut pas être copié. La limite actuelle est de $3.',
 ),
 
+'gl' => array(
+'duplicator' => 'Duplicar un artigo',
+'duplicator-toolbox' => 'Duplicar este artigo',
+'duplicator-header' => 'Esta páxina permite a duplicación completa dun artigo e crea copias independentes
+de todos os historiais. Resulta útil cando se subdivide un artigo, etc.',
+'duplicator-options' => 'Opcións',
+'duplicator-source' => 'Fonte:',
+'duplicator-dest' => 'Destino:',
+'duplicator-dotalk' => 'Duplicar a páxina de discusión (se proceder)',
+'duplicator-submit' => 'Duplicar',
+'duplicator-summary' => 'Copiado desde [[$1]]',
+'duplicator-success' => '<big>\'\'\'Copiouse [[$1]] a [[$2]].\'\'\'</big>',
+'duplicator-success-revisions' => '{{PLURAL:$1|Copiouse|Copiáronse}} $1 revisións.',
+'duplicator-success-talkcopied' => 'Tamén se copiou a páxina de discusión.',
+'duplicator-success-talknotcopied' => 'Non se puido copiar a páxina de discusión.',
+'duplicator-failed' => 'Non se puido copiar a páxina. Produciuse un erro descoñecido.',
+'duplicator-source-invalid' => 'Forneza un título de orixe válido.',
+'duplicator-source-notexist' => 'Non existe [[$1]]. Forneza un título de páxina que exista.',
+'duplicator-dest-invalid' => 'Forneza un título de destino válido.',
+'duplicator-dest-exists' => '[[$1]] xa existe. Forneza un título de destino que non exista.',
+'duplicator-toomanyrevisions' => '[[$1]] ten demasiadas ($2) revisións e non se pode copiar. O límite actual é $3.',
+),
+
 'hsb' => array(
 'duplicator' => 'Nastawk duplicěrować',
 'duplicator-toolbox' => 'Tutón nastawk duplicěrować',

@@ -106,6 +106,12 @@ $wgNewuserlogMessages['he'] = array(
 	'newuserlog-create-entry'  => 'משתמש חדש',
 	'newuserlog-create2-entry' => 'יצר חשבון עבור $1',
 );
+$wgNewuserlogMessages['hr'] = array(
+	'newuserlogpage'           => 'Evidencija novih suradnika',
+	'newuserlogpagetext'       => 'Ispod je popis nedavno otvorenih suradničkih imena',
+	'newuserlog-create-entry'  => 'Novi suradnik',
+	'newuserlog-create2-entry' => 'kreiran je novi suradnik $1',
+);
 $wgNewuserlogMessages['hsb'] = array(
 	'newuserlogpage'           => 'Protokol nowych wužiwarjow',
 	'newuserlogpagetext'       => 'To je protokol wutworjenja nowych wužiwarskich kontow.',

@@ -70,6 +70,20 @@ Muista: '''Et voi saada oikeuksiasi takaisin tämän sivun avulla!''' Sinun täy
 'resign-logentry'  => 'poisti oikeudet $2 itseltään',
 ),
 
+'gl' => array(
+'resign' => 'Dimitir',
+'resign-text' => 'Pode \'\'\'retirar os seus permisos\'\'\' (p.ex. administrador) nesta páxina. Seleccione os permisos que quere retirar.
+
+Lembre: \'\'\'Non poderá obter os seus permisos de volta deste modo!\'\'\' Terá que convencer a un burócrata ou steward de que lle devolva os permisos.
+Use esta páxina con moito tento.',
+'resign-reason' => 'Motivo:',
+'resign-confirm' => 'Confirmo que desexo retirar todos os permisos que seleccionei.',
+'resign-noconfirm' => 'Seleccione a caixiña de confirmación se quere que se lle retiren os seus permisos.',
+'resign-nogroups' => 'Seleccione os permisos que quere retirar.',
+'resign-success' => '\'\'\'Os permisos retiráronse sen problemas.\'\'\'',
+'resign-logentry' => 'eliminou permisos $2 a si mesmo',
+),
+
 'he' => array(
 'resign'           => 'התפטרות',
 'resign-text'      => "בדף זה תוכלו '''להסיר את ההרשאות שלכם''' (למשל, הרשאות מפעיל מערכת). אנא סמנו את ההרשאות שברצונכם להסיר.

@@ -258,6 +258,13 @@ function efImageMapMessages() {
 'imagemap_description'          => 'A prepaus d\'aqueste imatge',
 ),
 
+'pl' => array(
+'imagemap_no_areas'             => '&lt;imagemap&gt;: należy podać przynajmniej jedną specyfikację pola',
+'imagemap_invalid_coord'        => '&lt;imagemap&gt;: nieprawidłowa współrzędna w linii $1; należy podać liczbę',
+'imagemap_invalid_desc'         => '&lt;imagemap&gt;: nieprawidłowa specyfikacja opisu; należy wpisać jeden z wariantów: <tt>$1</tt>',
+'imagemap_description'          => 'Informacje o tej grafice',
+),
+
 /* Piedmontese (Bèrto 'd Sèra) */
 'pms' => array(
 'imagemap_no_image'             => '&lt;imagemap&gt;: ant la prima riga a venta ch\'a-i sia la specìfica ëd na figura',

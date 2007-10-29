@@ -78,6 +78,14 @@ $wgFilepathMessages['fr'] = array(
 
 Entrez le nom du fichier sans le préfixe « {{ns:image}}: »',
 );
+$wgFilepathMessages['gl'] = array(
+	'filepath'        => 'Ruta do arquivo',
+	'filepath_page'   => 'Arquivo:',
+	'filepath_submit' => 'Ruta',
+	'filepath-summary' => 'Esta páxina especial devolve a ruta completa a un ficheiro. As imaxes móstranse na súa resolución completa; outros tipos de ficheiros inícianse directamente co seu programa asociado.
+	
+	Introduza o nome do ficheiro sen o prefixo "{{ns:image}}:"',
+);
 $wgFilepathMessages['he'] = array(
 	'filepath'         => 'נתיב לקובץ',
 	'filepath_page'    => 'הקובץ:',
@@ -171,6 +179,12 @@ $wgFilepathMessages['oc'] = array(
 	'filepath_page'   => 'Fichièr:',
 	'filepath_submit' => 'Camin',
 	'filepath-summary' => 'Aquesta pagina especiala balha lo camin complet d’un fichièr ; los imatges son mostrats en nauta resolucion, los fichièrs audiò e vidèo s’executisson amb lor programa associat. Picatz lo nom del fichièr sens lo prefix « {{ns:image}}: »',
+);
+$wgFilepathMessages['pl'] = array(
+	'filepath'        => 'Ścieżka do pliku',
+	'filepath_page'   => 'Plik:',
+	'filepath_submit' => 'Ścieżka',
+	'filepath-summary' => 'Ta specjalna strona zwraca pełną ścieżkę do pliku. Grafiki są pokazywane w pełnej rozdzielczości, inne typy plików są otwierane w skojarzonym z nimi programie. Wpisz nazwę pliku bez prefiksu "{{ns:image}}:".',
 );
 /* Piedmontese (Bèrto 'd Sèra) */
 $wgFilepathMessages['pms'] = array(

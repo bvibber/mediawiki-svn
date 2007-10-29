@@ -50,6 +50,11 @@ $wgCrossNamespaceLinksMessages['fr'] = array(
 	'crossnamespacelinks-summary' => 'Cette page fournit une liste des pages de l’espace de nom principal qui ont un lien vers un autre espace de nom (excepté pour les espaces de nom {{ns:special}}, {{ns:talk}}, {{ns:project}} et {{ns:template}}), ce qui n’est recommandé.',
 	'crossnamespacelinkstext'     => '$1 : possède $2 {{PLURAL:$2|lien|liens}} vers l’espace « $3 »'
 );
+$wgCrossNamespaceLinksMessages['gl'] = array(
+	'crossnamespacelinks'         => 'Ligazóns a través de espazos de nomes',
+	'crossnamespacelinks-summary' => 'Esta páxina fornece unha listaxe con ligazóns desde unha páxina no espazo de nomes principal cara a unha páxina noutro espazo de nomes (excepto os espazos de nomes {{ns:special}}, {{ns:talk}}, {{ns:project}} e {{ns:template}} namespaces), que se recomenda non empregar.',
+	'crossnamespacelinkstext'     => '$1: $2 {{PLURAL:$2|ligazón|ligazóns}} cara $3',
+);
 $wgCrossNamespaceLinksMessages['hak'] = array(
 	'crossnamespacelinks'         => 'khiam-ko miàng-sṳ khûng-kiên ke lièn-kiet',
 	'crossnamespacelinkstext'     => '$1: $2-ke lièn-kiet to $3',

@@ -56,14 +56,13 @@ $3 կայքում ստեղծվել է նոր մասնակցային հաշիվ՝
 'newusernotifbody' => 'Hei, $1. En ny brukerkonto, $2, ble opprettet på $3 $4.',
 ),
 
+'pl' => array(
+'newusernotifsubj' => 'Powiadamianie użytkownika $1 o nowych użytkownikach',
+),
+
 'pms' => array(
 'newusernotifsubj' => 'Notìfica d\'utent neuv për $1',
 'newusernotifbody' => 'Bondì $1, un neuv utent, $2, a l\'é stait creà ansima a $3 dël $4.',
-),
-
-'tet' => array(
-'newusernotifsubj' => 'Mensajen kona-ba uza-na\'in foun ba $1',
-'newusernotifbody' => 'Olá $1,\n\nuza-na\'in foun, $2, registrar tiha iha $3 iha loron $4.',
 ),
 
 'tet' => array(

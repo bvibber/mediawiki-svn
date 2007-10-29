@@ -40,6 +40,10 @@ function efContributionseditcountMessages()  {
 	'contributionseditcount'  =>  'Cet utilisateur a $1 éditions.',
 ),
 
+'gl' => array(
+	'contributionseditcount' => 'Este usuario ten $1 edicións.',
+),
+
 'hsb' => array(
 	'contributionseditcount' => 'Wužiwar ma $1 změnow.',
 ),
