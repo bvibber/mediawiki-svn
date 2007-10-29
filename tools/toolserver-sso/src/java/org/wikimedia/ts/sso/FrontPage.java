@@ -1,12 +1,10 @@
+/* Copyright (c) 2007 River Tarnell <river@wikimedia.org>.        */
 /*
- * FrontPage.java
- *
- * Created on 28 October 2007, 14:46
- *
- * To change this template, choose Tools | Template Manager
- * and open the template in the editor.
+ * Permission is granted to anyone to use this software for any purpose,
+ * including commercial applications, and to alter it and redistribute it
+ * freely. This software is provided 'as-is', without any express or implied
+ * warranty.
  */
-
 package org.wikimedia.ts.sso;
 
 import com.atlassian.crowd.integration.authentication.PasswordCredential;
