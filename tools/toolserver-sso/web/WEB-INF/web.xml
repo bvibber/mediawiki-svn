@@ -4,6 +4,14 @@
         <filter-name>VerifyTokenFilter</filter-name>
         <filter-class>com.atlassian.crowd.integration.http.VerifyTokenFilter</filter-class>
     </filter>
+    <filter>
+        <filter-name>LocaleFilter</filter-name>
+        <filter-class>org.wikimedia.ts.sso.LocaleFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LocaleFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
     <filter-mapping>
         <filter-name>VerifyTokenFilter</filter-name>
         <url-pattern>/secure/*</url-pattern>
@@ -32,6 +40,10 @@
         <servlet-name>ChangePassword</servlet-name>
         <servlet-class>org.wikimedia.ts.sso.ChangePassword</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SetLang</servlet-name>
+        <servlet-class>org.wikimedia.ts.sso.SetLang</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SSOCreate</servlet-name>
         <url-pattern>/create</url-pattern>
@@ -55,6 +67,10 @@
     <servlet-mapping>
         <servlet-name>ChangePassword</servlet-name>
         <url-pattern>/secure/changepassword</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SetLang</servlet-name>
+        <url-pattern>/setlang</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

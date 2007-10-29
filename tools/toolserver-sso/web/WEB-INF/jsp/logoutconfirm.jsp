@@ -10,6 +10,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<fmt:setLocale value="${sessionScope['lang']}" />
 <fmt:setBundle basename="i18n" />
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
@@ -35,6 +36,8 @@
         </p>
         
     </form>
-    
+
+    <%@include file="langselect.jsp" %>
+
     </body>
 </html>

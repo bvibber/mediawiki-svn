@@ -121,3 +121,13 @@ div.banner {
     color: #666666;
     margin-right: 1em;
 }
+
+hr {
+    height: 2px;
+    color: #777777;
+}
+
+p.langselect {
+    font-size: 75%;
+    color: #444444;
+}
