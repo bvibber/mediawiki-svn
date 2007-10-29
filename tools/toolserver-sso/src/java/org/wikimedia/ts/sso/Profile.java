@@ -12,6 +12,7 @@ import com.atlassian.crowd.integration.http.HttpAuthenticator;
 import com.atlassian.crowd.integration.model.RemotePrincipal;
 import com.atlassian.crowd.integration.service.soap.client.SecurityServerClient;
 import com.atlassian.crowd.integration.soap.SOAPAttribute;
+import com.atlassian.crowd.integration.soap.SOAPGroup;
 import com.atlassian.crowd.integration.soap.SOAPPrincipal;
 import java.io.*;
 import java.net.*;
@@ -28,11 +29,16 @@ public class Profile extends HttpServlet {
         String username = null, firstname = null, lastname = null, email = null,
                 displayname = null;
         String[] groups = null;
+        SOAPGroup[] soapgroups = null;
         
         try {
             principal = HttpAuthenticator.getPrincipal(request);
             groups = SecurityServerClient.findGroupMemberships(principal.getName());
             attributes = principal.getAttributes();
+            soapgroups = new SOAPGroup[groups.length];
+
+            for (int i = 0; i < groups.length; ++i) 
+                soapgroups[i] = SecurityServerClient.findGroupByName(groups[i]);        
         } catch (Exception e) {
             response.sendRedirect(request.getContextPath());
             return;
@@ -50,7 +56,7 @@ public class Profile extends HttpServlet {
                 displayname = a.getValues()[0];
         }
         request.setAttribute("username", username);
-        request.setAttribute("groups", groups);
+        request.setAttribute("groups", soapgroups);
         request.setAttribute("email", email);
         request.setAttribute("firstname", firstname);
         request.setAttribute("lastname", lastname);

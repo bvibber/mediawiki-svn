@@ -30,7 +30,7 @@
 
     <p>
         <fmt:message key="createdone.text">
-            <fmt:param value="${fn:escapeXml(username)}" />
+            <fmt:param value="${fn:escapeXml(newusername)}" />
         </fmt:message>
     </p>
 
@@ -42,7 +42,7 @@
     </ul>
     
         <p>
-            <fmt:message key="createdone.manage">
+            <fmt:message key="createdone.profile">
                 <fmt:param><c:url value='/secure/profile' /></fmt:param>
             </fmt:message>
         </p>

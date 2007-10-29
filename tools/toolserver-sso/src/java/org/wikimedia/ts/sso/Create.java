@@ -8,6 +8,7 @@
 package org.wikimedia.ts.sso;
 
 import com.atlassian.crowd.integration.authentication.PasswordCredential;
+import com.atlassian.crowd.integration.http.HttpAuthenticator;
 import com.atlassian.crowd.integration.model.RemotePrincipal;
 import com.atlassian.crowd.integration.service.soap.client.SecurityServerClient;
 import com.atlassian.crowd.integration.soap.SOAPAttribute;
@@ -87,6 +88,7 @@ public class Create extends HttpServlet {
             principal = SecurityServerClient.addPrincipal(principal, credentials);
             SecurityServerClient.addPrincipalToGroup(username, "jira-users");
             SecurityServerClient.addPrincipalToGroup(username, "confluence-users");
+            HttpAuthenticator.authenticate(request, response, username, password);
         } catch (Exception e) {
             request.setAttribute("error", e.getMessage());
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
@@ -95,7 +97,7 @@ public class Create extends HttpServlet {
         }
         
         RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/WEB-INF/jsp/createdone.jsp");
-        request.setAttribute("username", request.getParameter("username"));
+        request.setAttribute("newusername", request.getParameter("username"));
         dispatcher.forward(request,response);
     }
 }

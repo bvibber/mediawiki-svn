@@ -28,6 +28,12 @@
 
     <jsp:include page="banner.jsp" />
 
+        <p>
+            <fmt:message key='changepassword.returntoprofile'>
+                <fmt:param><c:url value='/secure/profile'/></fmt:param>
+            </fmt:message>
+        </p>
+        
         <c:if test="${!empty error}">
             <p>
                 <span class='errorbox'><c:out value="${error}" /></span>

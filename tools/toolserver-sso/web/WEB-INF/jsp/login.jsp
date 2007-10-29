@@ -66,6 +66,34 @@
         </table>
     </form>
     
+    <h2><fmt:message key="frontpage.reset.header" /></h2>
+    
+    <c:if test="${!empty reseterror}">
+        <div style='text-align: center'>
+            <span class='errorbox'>
+                <fmt:message key="frontpage.errormsg">
+                    <fmt:param value="${fn:escapeXml(reseterror)}" />
+                </fmt:message>
+            </span>
+        </div>
+    </c:if>
+
+    <form action="<c:url value='/' />" method="post">
+        <table class="loginform" cellpadding="5" cellspacing="0">
+            <tr>
+                <th><fmt:message key="frontpage.label.username" /></th>
+                <td><input type="text" name="username"/></td>
+            </tr>
+            
+            <tr>
+                <td colspan="2" class="submit">
+                    <input type="submit" name="resetpass" 
+                        value="<fmt:message key="frontpage.reset.submit" />" />
+                </td>
+            </tr>
+        </table>
+    </form>
+    
     <h2><fmt:message key="frontpage.create.header" /></h2>
     
     <c:if test="${!empty createerror}">

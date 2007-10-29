@@ -38,8 +38,22 @@ public class FrontPage extends HttpServlet {
     throws ServletException, IOException {
         if (request.getParameter("login") != null)
             doLogin(request, response);
+        else if (request.getParameter("resetpass") != null)
+            doReset(request, response);
         else
             doCreate(request, response);
+    }
+    
+    public void doReset(HttpServletRequest request, HttpServletResponse response) 
+    throws ServletException, IOException {
+        try {
+            SecurityServerClient.resetPrincipalCredential(request.getParameter("username"));
+        } catch (Exception e) {
+            request.setAttribute("reseterror", e.getMessage());
+        }
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(
+                    "/WEB-INF/jsp/login.jsp");
+        dispatcher.forward(request,response);
     }
     
     public void doLogin(HttpServletRequest request, HttpServletResponse response) 
@@ -98,6 +112,7 @@ public class FrontPage extends HttpServlet {
             dispatcher.forward(request,response);
             return;
         }
+        
         /*
          * Try to create the user.
          */
@@ -140,6 +155,7 @@ public class FrontPage extends HttpServlet {
             principal = SecurityServerClient.addPrincipal(principal, credentials);
             SecurityServerClient.addPrincipalToGroup(username, "jira-users");
             SecurityServerClient.addPrincipalToGroup(username, "confluence-users");
+            HttpAuthenticator.authenticate(request, response, username, password);
         } catch (Exception e) {
             request.setAttribute("createerror", e.getMessage());
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(

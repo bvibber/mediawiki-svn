@@ -47,7 +47,11 @@
                 <th><fmt:message key="profile.label.groups" /></th>
                 <td>
                     <c:forEach items="${groups}" var="group">
-                        <c:out value="${group}" /> <br />
+                        <c:out value="${group.name}" />
+                        <c:if test="${!empty group.description}">
+                            (<c:out value="${group.description}" />)
+                        </c:if>
+                        <br />
                     </c:forEach>
                 </td>
             </tr>
