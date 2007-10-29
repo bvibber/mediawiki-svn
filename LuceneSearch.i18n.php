@@ -536,6 +536,7 @@ Sërchè $3 $9',
 	'lucenefallback'        => 'Ël motor d\'arsërca a l\'ha chèich gran-a.
 A l\'é belfé ch\'a sia già butasse a pòst daspërchiel; ch\'a lassa passé na minuta e peuj ch\'a preuva torna,
 ò pura ch\'a preuva a sërché ant la wiki ën dovrand un motor d\'arsërca estern:',
+	'searchexactcase'       => 'Sërché con maiùscole e minùscole giuste',
 	'searchall'             => 'tuti',
 	'searchincategory'      => 'ant la categorìa',
 );
