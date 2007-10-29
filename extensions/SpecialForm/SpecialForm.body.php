@@ -37,6 +37,9 @@ class SpecialForm extends SpecialPage
 	function execute( $par ) {
 		global $wgRequest, $wgOut;
 
+		# Must have a name, like Special:Form/Nameofform
+		# XXX: instead of an error, show a list of available forms
+		
 		if (!$par) {
 			$wgOut->showErrorPage('formnoname', 'formnonametext');
 			return;
@@ -44,18 +47,24 @@ class SpecialForm extends SpecialPage
 
 		$form = $this->loadForm($par);
 
+		# Bad form
+
 		if (!$form) {
 			$wgOut->showErrorPage('formbadname', 'formbadnametext');
 			return;
 		}
 
 		if ($wgRequest->wasPosted()) {
+			# POST is to create an article
 			$this->createArticle($form);
 		} else {
+			# GET (HEAD?) is to show the form
 			$this->showForm($form);
 		}
 	}
 
+	# Load form-related messages, per special-page guidelines
+	
 	function loadMessages() {
 		static $messagesLoaded = false;
 		global $wgMessageCache;
@@ -72,6 +81,8 @@ class SpecialForm extends SpecialPage
 		return true;
 	}
 
+	# Load and parse a form article from the DB
+	
 	function loadForm($name) {
 		$nt = Title::makeTitleSafe(NS_MEDIAWIKI, wfMsg('formpattern', $name));
 
@@ -87,6 +98,8 @@ class SpecialForm extends SpecialPage
 
 		$text = $article->getContent(true);
 
+		# Form constructor does the parsing
+		
 		return new Form($name, $text);
 	}
 
@@ -152,45 +165,76 @@ class SpecialForm extends SpecialPage
 			$this->showForm($form, $msg);
 			return;
 		}
+
+		# First, we make sure we have all the titles
+
+		$nt = array();
 		
-		$title = $this->makeTitle($form);
+		for ($i = 0; $i < count($form->template); $i++) {
+			
+			$namePattern = $form->namePattern[$i];
+			$template = $form->template[$i];
 
-		wfDebug("SpecialForm: saving article '$title'\n");
+			if (!$namePattern || !$template) {
+				$wgOut->showErrorPage('formindexmismatch', 'formindexmismatchtext', array($i));
+				return;
+			}
 
-		$nt = Title::newFromText($title);
+			wfDebug("SpecialForm: for index '$i', namePattern = '$namePattern' and template = '$template'.\n");
+			
+			$title = $this->makeTitle($form, $namePattern);
 
-		if (!$nt) {
-			$wgOut->showErrorPage('formbadpagename', 'formbadpagenametext', array($title));
-			return;
-		}
+			$nt[$i] = Title::newFromText($title);
+
+			if (!$nt[$i]) {
+				$wgOut->showErrorPage('formbadpagename', 'formbadpagenametext', array($title));
+				return;
+			}
 		
-		if ($nt->getArticleID() != 0) {
-			$wgOut->showErrorPage('formarticleexists', 'formarticleexists', array($title));
-			return;
+			if ($nt[$i]->getArticleID() != 0) {
+				$wgOut->showErrorPage('formarticleexists', 'formarticleexists', array($title));
+				return;
+			}
 		}
 
-		$text = "{{subst:$form->template";
+		# At this point, all $nt titles should be valid, although we're subject to race conditions.
 
-		foreach ($form->fields as $name => $field) {
-			# FIXME: strip/escape template-related chars (|, =, }})
-			$text .= "|$name=" . $wgRequest->getText($name);
+		for ($i = 0; $i < count($form->template); $i++) {
+
+			$template = $form->template[$i];
+			
+			$text = "{{subst:$template";
+
+			foreach ($form->fields as $name => $field) {
+				# FIXME: strip/escape template-related chars (|, =, }})
+				$text .= "|$name=" . $wgRequest->getText($name);
+			}
+
+			$text .= "}}";
+
+			$title = $nt[$i]->GetPrefixedText();
+			
+			wfDebug("SpecialForm: saving article with index '$i' and title '$title'\n");
+
+			$article = new Article($nt[$i]);
+
+			if (!$article->doEdit($text, wfMsg('formsavesummary', $form->name), EDIT_NEW)) {
+				$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext', array($title));
+				return; # Don't continue
+			}
 		}
 
-		$text .= "}}";
-
-		$article = new Article($nt);
-
-		if ($article->doEdit($text, wfMsg('formsavesummary', $form->name), EDIT_NEW)) {
-			$wgOut->redirect($nt->getFullURL());
-		} else {
-			$wgOut->showErrorPage('formsaveerror', 'formsaveerrortext', array($title));
+		# Redirect to the first article
+		
+		if ($nt && $nt[0]) {
+			$wgOut->redirect($nt[0]->getFullURL());
 		}
 	}
-
-	function makeTitle($form) {
+	
+	function makeTitle($form, $pattern) {
 		global $wgRequest;
 
-		$title = $form->namePattern;
+		$title = $pattern;
 
 		foreach ($form->fields as $name => $field) {
 			$title = preg_replace("/{{\{$name\}}}/", $wgRequest->getText($name), $title);
@@ -213,10 +257,11 @@ class Form {
 
 		$this->name = $name;
 		$this->title = wfMsg('formtitlepattern', $name);
-		$this->template = wfMsg('formtemplatepattern', $name);
+		$this->template = array();
+		$this->template[0] = wfMsg('formtemplatepattern', $name);
 
 		$this->fields = array();
-		$this->namePattern = NULL;
+		$this->namePattern = array();
 		$this->instructions = NULL;
 
 		# XXX: may be some faster ways to do this
@@ -227,11 +272,15 @@ class Form {
 
 			if (preg_match('/^(\w+)=(.*)$/', $line, $matches)) {
 				if (strcasecmp($matches[1], 'template') == 0) {
-					$this->template = $matches[2];
+					$this->template[0] = $matches[2];
+				} else if (preg_match('/template(\d+)/i', $matches[1], $tmatches)) {
+					$this->template[intval($tmatches[1])] = $matches[2];
+				} else if (strcasecmp($matches[1], 'namePattern') == 0) {
+					$this->namePattern[0] = $matches[2];
+				} else if (preg_match('/namePattern(\d+)/i', $matches[1], $tmatches)) {
+					$this->namePattern[intval($tmatches[1])] = $matches[2];
 				} else if (strcasecmp($matches[1], 'title') == 0) {
 					$this->title = $matches[2];
-				} else if (strcasecmp($matches[1], 'namePattern') == 0) {
-					$this->namePattern = $matches[2];
 				} else if (strcasecmp($matches[1], 'instructions') == 0) {
 					$this->instructions = $matches[2];
 					wfDebug("Got instructions: '" . $this->instructions . "'.\n");
