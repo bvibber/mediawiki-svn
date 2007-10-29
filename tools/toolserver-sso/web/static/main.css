@@ -1,0 +1,116 @@
+body {
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+}
+
+p {
+    margin-left: 1em;
+}
+
+h1 {
+    padding-left: 1em;
+    font-family: sans-serif;
+    font-size: 2em;
+    color: #6666aa;
+    border-bottom: solid 2px #ffdddd;
+}
+
+span.error {
+    color: red;
+    font-weight: bold;
+}
+
+.errorbox {
+    border: solid 1px red;
+    background-color: #ffdddd;
+    padding: 3px 3px 3px 3px;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+div.errorbox {
+    width: auto;
+}
+
+input[type="text"],
+input[type="password"] {
+    border: solid 1px #aaaaaa;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="submit"]:focus {
+    background-color: #ffffdd;
+}
+
+input[type="submit"] {
+    border: solid 1px #aaaaaa;
+    background-color: #fafafa;
+}
+
+input[type="submit"].flat {
+    border: solid 1px #aaaaaa
+    background-color: #fafafa;
+}
+
+table.loginform {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+table.loginform th,
+table.loginform td {
+    border: none;
+}
+
+table.loginform td {
+    text-align: left;
+}
+
+table.loginform th {
+    text-align: right;
+}
+
+table.loginform td.submit {
+    text-align: center;
+}
+
+table.profiletable {
+    margin-left: 1em;
+    border-collapse: collapse;
+}
+
+table.profiletable th,
+table.profileform td {
+    border: table;
+    vertical-align: top;
+}
+
+table.profiletable td {
+    text-align: left;
+}
+
+table.profiletable th {
+    text-align: right;
+}
+
+table.profiletable td.submit {
+    text-align: center;
+}
+
+h2 {
+    border-bottom: solid 1px #555555;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    text-align: center;
+    font-size: 115%;
+}
+
+div.banner {
+    float: right;
+    font-size: 90%;
+    color: #666666;
+    margin-right: 1em;
+}
