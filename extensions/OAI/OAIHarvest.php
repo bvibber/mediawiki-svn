@@ -357,6 +357,15 @@ class OAIUpdateRecord {
 		
 		$dbw = wfGetDB( DB_WRITE );
 		$dbw->begin();
+		
+		if( $data['id'] ) {
+			$conflictingRevision = Revision::newFromId( $data['id'] );
+			if( $conflictingRevision ) {
+				echo "SKIPPING already-applied or conflicting revision {$data['id']}\n";
+				$dbw->rollback();
+				return;
+			}
+		}
 	
 		// Take a look...
 		$article = $this->prepareArticle( $dbw, $pageId, $title );
