@@ -7,12 +7,19 @@
 --%>
 <%@page pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<fmt:setBundle basename="i18n" />
 
 <form action="<c:url value='/secure/logout' />" method="post">
     
     <div class="banner">
-        Logged in as <c:out value="${username}" /> -
-        <input type="submit" class="flat" value="log out"/>
+        <fmt:message key="banner.text">
+            <fmt:param value="${fn:escapeXml(username)}" />
+        </fmt:message>
+        -
+        <input type="submit" class="flat" 
+            value="<fmt:message key="banner.logout" />"/>
     </div>
     
 </form>
