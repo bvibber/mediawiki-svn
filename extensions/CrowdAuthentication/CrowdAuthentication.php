@@ -17,6 +17,8 @@
  *    $caApplicationPassword = 'whatever';
  *    $caCrowdServerUrl = 'http://localhost:8095/crowd/services';
  *    $caDefaultGroups = array("jira-users", "confluence-users");
+ *    $caImportGroups = true;
+ *    $caOverwriteLocalGroups = false;
  *    $wgAuth = new CrowdAuthenticator();
  *
  */
@@ -38,6 +40,12 @@ class caAuthenticatedToken {
 };
 
 class caPrincipal {
+};
+
+class caSearchRestriction {
+};
+
+class caSOAPGroup {
 };
 
 class caSOAPAttribute {
@@ -80,6 +88,8 @@ class CrowdAuthenticator extends AuthPlugin {
 							'AuthenticatedToken' => 'caAuthenticatedToken',
 							'SOAPPrincipal' => 'caPrincipal',
 							'SOAPAttribute' => 'caSOAPAttribute',
+							'SearchRestriction' => 'caSearchRestriction',
+							'SOAPGroup' => 'caSOAPGroup',
 						),
 					)
 				);
@@ -124,7 +134,7 @@ class CrowdAuthenticator extends AuthPlugin {
 	}
 
 	public function /*bool*/ authenticate(/*string*/ $username, /*string*/ $password) {
-	global	$caApplicationName;
+	global	$caApplicationName, $caImportGroups, $caOverwriteLocalGroups;
 
 		$crowd = $this->getCrowd();
 		$cred = new caPasswordCredential();
@@ -139,6 +149,31 @@ class CrowdAuthenticator extends AuthPlugin {
 			return true;
 		} catch (Exception $e) {
 			return false;
+		}
+	}
+
+	public function /*void*/ updateUser(/*User*/ &$user) {
+	global	$caImportGroups, $caOverwriteLocalGroups;
+
+		if (!$caImportGroups)
+			return true;
+
+		/*
+		 * Find the groups this user is a member of.
+		 */
+
+		$restr = new caSearchRestriction();
+		$restr->name = "group.principal.member";
+		$restr->value = $this->findUsername($user->getName());
+		$groups = $this->crowd->searchGroups(array("in0" => $this->token, "in1" => array($restr)));
+		$groups = $groups->out->SOAPGroup;
+
+		$dbw =& wfGetDB(DB_MASTER);
+		if ($caOverwriteLocalGroups)
+			$dbw->delete('user_group', array('ug_user' => $user->getId()));
+
+		foreach ($groups as $group) {
+			$user->addGroup($group->name);
 		}
 	}
 
